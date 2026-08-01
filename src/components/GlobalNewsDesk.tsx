@@ -6,10 +6,10 @@ import { globalNews, globalNewsUpdatedAt, type GlobalNewsKind, type NewsSource }
 type SourceFilter = NewsSource | 'All';
 
 const sourceFilters: Array<{ label: SourceFilter; displayName: string; accent?: string; logo?: string; monochrome?: boolean }> = [
-  { label: 'All', displayName: '전체 출처' },
+  { label: 'All', displayName: '전체' },
   { label: 'Anthropic', displayName: 'Anthropic', accent: '#d97757', logo: 'assets/anthropic.svg', monochrome: true },
   { label: 'OpenAI', displayName: 'OpenAI', accent: 'var(--openai-accent)', logo: 'assets/openai.svg', monochrome: true },
-  { label: 'Google DeepMind', displayName: 'Google', accent: '#4285f4', logo: 'assets/google.ico' },
+  { label: 'Google DeepMind', displayName: 'Google', accent: '#4285f4', logo: 'assets/google.svg' },
 ];
 
 const getSourceMeta = (source: NewsSource) => sourceFilters.find((item) => item.label === source)!;
@@ -82,7 +82,7 @@ export function GlobalNewsDesk({ showInternalLink = true, kind }: GlobalNewsDesk
                     alt=""
                     className={`news-source-logo ${filter.monochrome ? 'is-monochrome' : ''}`}
                   />
-                ) : <span className="news-source-all" />}
+                ) : null}
                 {filter.displayName}
               </button>
             ))}

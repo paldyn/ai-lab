@@ -27,7 +27,7 @@ export const globalNews: GlobalNewsItem[] = [
     category: 'Models',
     signal: 'PHYSICAL AI',
     url: 'https://deepmind.google/blog/gemini-robotics-2-brings-whole-body-intelligence-to-robots/',
-    accent: '#63c7e6',
+    accent: '#4285f4',
   },
   {
     id: 'openai-presence',
@@ -51,7 +51,7 @@ export const globalNews: GlobalNewsItem[] = [
     category: 'Models',
     signal: 'MODEL ECONOMICS',
     url: 'https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-3-6-flash-3-5-flash-lite-3-5-flash-cyber/',
-    accent: '#8ca9ff',
+    accent: '#4285f4',
   },
   {
     id: 'gpt-5-6',

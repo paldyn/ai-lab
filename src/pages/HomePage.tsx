@@ -8,7 +8,7 @@ import { globalNews, type NewsSource } from '../data/globalNews';
 const companies: Array<{ source: NewsSource; name: string; accent: string; logo: string }> = [
   { source: 'Anthropic', name: 'Anthropic', accent: '#d97757', logo: 'assets/anthropic.svg' },
   { source: 'OpenAI', name: 'OpenAI', accent: 'var(--openai-accent)', logo: 'assets/openai.svg' },
-  { source: 'Google DeepMind', name: 'Google', accent: '#4285f4', logo: 'assets/google.ico' },
+  { source: 'Google DeepMind', name: 'Google', accent: '#4285f4', logo: 'assets/google.svg' },
 ];
 
 export function HomePage() {
