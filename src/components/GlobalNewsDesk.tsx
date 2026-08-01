@@ -1,7 +1,8 @@
 import { useMemo, useState, type CSSProperties } from 'react';
-import { ArrowUpRight } from 'lucide-react';
+import { ArrowUpRight, Eye } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { globalNews, globalNewsUpdatedAt, type GlobalNewsKind, type NewsSource } from '../data/globalNews';
+import { NewsPreviewModal, type NewsPreviewItem } from './NewsPreviewModal';
 
 type SourceFilter = NewsSource | 'All';
 
@@ -21,6 +22,7 @@ interface GlobalNewsDeskProps {
 
 export function GlobalNewsDesk({ showInternalLink = true, kind }: GlobalNewsDeskProps) {
   const [source, setSource] = useState<SourceFilter>('All');
+  const [selectedNews, setSelectedNews] = useState<NewsPreviewItem | null>(null);
   const sourceItems = useMemo(() => {
     if (!kind) return globalNews;
 
@@ -50,6 +52,15 @@ export function GlobalNewsDesk({ showInternalLink = true, kind }: GlobalNewsDesk
   const description = kind === 'company'
     ? '제품과 조직의 변화가 실제 AI 사용 방식에 어떤 영향을 주는지 살펴봅니다.'
     : '새로운 발표에서 무엇이 달라졌고, 어디에 영향을 주는지 짚어봅니다.';
+  const openPreview = (item: (typeof globalNews)[number]) => {
+    const sourceMeta = getSourceMeta(item.source);
+    setSelectedNews({
+      ...item,
+      source: sourceMeta.displayName,
+      logo: `${assetBase}${sourceMeta.logo}`,
+      monochrome: sourceMeta.monochrome,
+    });
+  };
 
   return (
     <section id="global-news" className="global-news-section scroll-mt-28">
@@ -91,12 +102,11 @@ export function GlobalNewsDesk({ showInternalLink = true, kind }: GlobalNewsDesk
 
         {lead && (
           <div key={source} className="news-desk-grid news-filter-enter">
-            <a
-              href={lead.url}
-              target="_blank"
-              rel="noreferrer"
+            <button
+              type="button"
               className="news-lead group"
               style={{ '--news-accent': lead.accent } as CSSProperties}
+              onClick={() => openPreview(lead)}
             >
               <div className="news-lead-header">
                 {leadSource?.logo && (
@@ -122,14 +132,14 @@ export function GlobalNewsDesk({ showInternalLink = true, kind }: GlobalNewsDesk
                 </div>
                 <div className="news-lead-footer">
                   <span>LEAD STORY</span>
-                  <span className="external-read">공식 원문 <ArrowUpRight size={14} /></span>
+                  <span className="external-read">요약 보기 <Eye size={14} /></span>
                 </div>
               </div>
-            </a>
+            </button>
 
             <div className="news-feed">
               {feed.length > 0 ? feed.map((item, index) => (
-                <a key={item.id} href={item.url} target="_blank" rel="noreferrer" className="news-feed-row group">
+                <button key={item.id} type="button" className="news-feed-row group" onClick={() => openPreview(item)}>
                   <div className="news-feed-order">{String(index + 2).padStart(2, '0')}</div>
                   <div className="min-w-0">
                     <div className="news-feed-meta">
@@ -140,8 +150,8 @@ export function GlobalNewsDesk({ showInternalLink = true, kind }: GlobalNewsDesk
                     <h3>{item.title}</h3>
                     <p>{item.summary}</p>
                   </div>
-                  <ArrowUpRight className="news-feed-arrow" size={16} />
-                </a>
+                  <Eye className="news-feed-arrow" size={16} />
+                </button>
               )) : (
                 <div className="news-feed-empty">해당 출처의 추가 소식을 준비하고 있습니다.</div>
               )}
@@ -154,6 +164,7 @@ export function GlobalNewsDesk({ showInternalLink = true, kind }: GlobalNewsDesk
           {showInternalLink && <Link to="/news">AI 뉴스 전체 보기 <ArrowUpRight size={13} /></Link>}
         </div>
       </div>
+      <NewsPreviewModal item={selectedNews} onClose={() => setSelectedNews(null)} />
     </section>
   );
 }

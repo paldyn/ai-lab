@@ -1,6 +1,8 @@
-import { ArrowUpRight } from 'lucide-react';
+import { useState } from 'react';
+import { ArrowUpRight, Eye } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import { modelUpdates } from '../data/modelUpdates';
+import { modelUpdates, type ModelUpdate } from '../data/modelUpdates';
+import { NewsPreviewModal, type NewsPreviewItem } from './NewsPreviewModal';
 
 interface ModelRadarProps {
   limit?: number;
@@ -8,8 +10,26 @@ interface ModelRadarProps {
 }
 
 export function ModelRadar({ limit, showNewsLink = false }: ModelRadarProps) {
+  const [selectedModel, setSelectedModel] = useState<NewsPreviewItem | null>(null);
   const items = typeof limit === 'number' ? modelUpdates.slice(0, limit) : modelUpdates;
   const assetBase = import.meta.env.BASE_URL;
+  const openPreview = (item: ModelUpdate) => {
+    setSelectedModel({
+      id: item.id,
+      source: item.family,
+      publishedAt: item.publishedAt,
+      title: item.model,
+      summary: item.summary,
+      signal: 'MODEL RADAR',
+      category: `${item.kind} · ${item.status}`,
+      contextLabel: 'USE CASE',
+      contextValue: item.useCase,
+      url: item.url,
+      accent: item.accent,
+      logo: `${assetBase}${item.modelLogo}`,
+      logoTone: item.logoTone,
+    });
+  };
 
   return (
     <section id="model-radar" className="model-radar-section scroll-mt-24">
@@ -25,13 +45,12 @@ export function ModelRadar({ limit, showNewsLink = false }: ModelRadarProps) {
 
         <div className="model-radar-grid">
           {items.map((item, index) => (
-            <a
+            <button
+              type="button"
               key={item.id}
-              href={item.url}
-              target="_blank"
-              rel="noreferrer"
               className="model-radar-item"
               style={{ '--model-accent': item.accent } as React.CSSProperties}
+              onClick={() => openPreview(item)}
             >
               <div className="model-radar-top">
                 <span
@@ -56,12 +75,13 @@ export function ModelRadar({ limit, showNewsLink = false }: ModelRadarProps) {
               </div>
               <div className="model-radar-foot">
                 <b>{item.company}</b>
-                <span>공식 발표 <ArrowUpRight size={13} /></span>
+                <span>요약 보기 <Eye size={13} /></span>
               </div>
-            </a>
+            </button>
           ))}
         </div>
       </div>
+      <NewsPreviewModal item={selectedModel} onClose={() => setSelectedModel(null)} />
     </section>
   );
 }

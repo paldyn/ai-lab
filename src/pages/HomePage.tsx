@@ -1,7 +1,9 @@
-import { ArrowRight, ArrowUpRight } from 'lucide-react';
+import { useState } from 'react';
+import { ArrowRight, Eye } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { ArticleCard } from '../components/ArticleCard';
 import { ModelRadar } from '../components/ModelRadar';
+import { NewsPreviewModal, type NewsPreviewItem } from '../components/NewsPreviewModal';
 import { articles } from '../data/articles';
 import { globalNews, type NewsSource } from '../data/globalNews';
 
@@ -12,6 +14,7 @@ const companies: Array<{ source: NewsSource; name: string; accent: string; logo:
 ];
 
 export function HomePage() {
+  const [selectedNews, setSelectedNews] = useState<NewsPreviewItem | null>(null);
   const latestArticles = articles.filter((article) => article.categoryId !== 'ai-news').slice(0, 4);
   const assetBase = import.meta.env.BASE_URL;
 
@@ -80,13 +83,23 @@ export function HomePage() {
                   </header>
                   <div>
                     {items.map((item) => (
-                      <a key={item.id} href={item.url} target="_blank" rel="noreferrer">
+                      <button
+                        key={item.id}
+                        type="button"
+                        className="company-news-item"
+                        onClick={() => setSelectedNews({
+                          ...item,
+                          source: company.name,
+                          logo: `${assetBase}${company.logo}`,
+                          monochrome: company.source !== 'Google DeepMind',
+                        })}
+                      >
                         <div>
                           <p>{item.signal} · {item.publishedAt.replaceAll('-', '.')}</p>
                           <h4>{item.title}</h4>
                         </div>
-                        <ArrowUpRight size={15} />
-                      </a>
+                        <Eye size={15} />
+                      </button>
                     ))}
                   </div>
                 </section>
@@ -105,6 +118,7 @@ export function HomePage() {
           {latestArticles.map((article) => <ArticleCard key={article.slug} article={article} variant="row" />)}
         </div>
       </section>
+      <NewsPreviewModal item={selectedNews} onClose={() => setSelectedNews(null)} />
     </>
   );
 }
