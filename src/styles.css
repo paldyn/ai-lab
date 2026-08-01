@@ -2677,7 +2677,6 @@ input:focus-visible {
 }
 
 .news-page-intro {
-  border-bottom: 1px solid var(--border);
   background: var(--bg);
 }
 
@@ -2719,17 +2718,18 @@ input:focus-visible {
 
 .news-view-tabs {
   display: flex;
+  gap: 28px;
   margin-top: 38px;
   overflow-x: auto;
-  border-top: 1px solid var(--border);
   scrollbar-width: thin;
 }
 
 .news-view-tabs button {
   position: relative;
-  min-width: 110px;
+  min-width: max-content;
   height: 48px;
   flex-shrink: 0;
+  padding-inline: 6px;
   border: 0;
   background: transparent;
   color: var(--text-muted);
@@ -2744,9 +2744,9 @@ input:focus-visible {
 
 .news-view-tabs button.active::after {
   position: absolute;
-  right: 18px;
+  right: 6px;
   bottom: 0;
-  left: 18px;
+  left: 6px;
   height: 2px;
   background: var(--text-strong);
   content: '';
