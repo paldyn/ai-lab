@@ -26,7 +26,7 @@ export function HomePage() {
           <div className="home-banner-summary">
             <p>새로운 모델과 기업의 움직임부터 논문과 수학까지, AI를 이해하는 데 필요한 맥락을 선명하게 연결합니다.</p>
             <div className="home-banner-actions">
-              <a href="#model-radar">모델 업데이트 <ArrowRight size={14} /></a>
+              <Link to="/news">AI 뉴스 <ArrowRight size={14} /></Link>
               <Link to="/research">리서치 노트 <ArrowRight size={14} /></Link>
             </div>
           </div>
