@@ -1,5 +1,5 @@
 import type { CSSProperties } from 'react';
-import { ArrowLeft, ArrowRight } from 'lucide-react';
+import { ArrowLeft } from 'lucide-react';
 import { Link, Navigate, useParams } from 'react-router';
 import { ArticleExplorer } from '../components/ArticleExplorer';
 import { Seo } from '../components/Seo';
@@ -55,48 +55,51 @@ function LearnView({ active }: { active?: Category }) {
         </p>
       </section>
 
-      {/*
-        분야를 카드 그리드가 아니라 세로 목록으로 둡니다. 그리드는 개수가 늘면
-        어디선가 줄이 갈라져 남는 칸이 생기는데, 목록은 몇 개가 되든 같은 리듬으로
-        늘어납니다.
-      */}
-      <nav className="site-wrap learn-nav" aria-label="학습 분야">
-        {learnCategories.map((category) => (
-          <Link
-            key={category.id}
-            to={`/learn/${category.id}`}
-            className={`learn-row ${active?.id === category.id ? 'is-active' : ''}`}
-            style={{ '--learn-accent': category.accent } as CSSProperties}
-            aria-current={active?.id === category.id ? 'page' : undefined}
-          >
-            <span className="learn-row-index">{category.shortName}</span>
-            <strong>{category.name}</strong>
-            <p>{category.description}</p>
-            <b className="learn-row-count">
-              {counts[category.id] ?? 0}
-              <i>편</i>
-            </b>
-            <ArrowRight size={14} aria-hidden="true" />
-          </Link>
-        ))}
-      </nav>
-
       <div className="site-divider" />
 
-      <section className="site-wrap section-space research-archive">
-        {active?.curriculum && (
-          <p className="curriculum-note">
-            배우는 순서대로 정렬했습니다. 앞 글이 뒤 글의 전제가 됩니다.
-          </p>
-        )}
-        {/* 위 분야 카드가 카테고리 선택을 맡으므로 칩은 띄우지 않습니다. */}
-        <ArticleExplorer
-          key={active?.id ?? 'all'}
-          categoryIds={active ? [active.id] : learnCategoryIds}
-          hideCategoryFilter
-          curriculum={active?.curriculum}
-        />
-      </section>
+      {/*
+        분야를 목록 위가 아니라 옆에 둡니다. 위에 쌓으면 분야가 늘어날수록
+        글 목록이 아래로 밀립니다. 옆 레일은 몇 개가 되든 목록의 시작 위치를
+        건드리지 않고, 스크롤해도 따라옵니다.
+      */}
+      <div className="site-wrap learn-layout">
+        <nav className="learn-rail" aria-label="학습 분야">
+          <p className="learn-rail-label">분야</p>
+
+          <Link to="/learn" className={`learn-rail-item ${active ? '' : 'is-active'}`} aria-current={active ? undefined : 'page'}>
+            <span>전체</span>
+            <b>{total}</b>
+          </Link>
+
+          {learnCategories.map((category) => (
+            <Link
+              key={category.id}
+              to={`/learn/${category.id}`}
+              className={`learn-rail-item ${active?.id === category.id ? 'is-active' : ''}`}
+              style={{ '--learn-accent': category.accent } as CSSProperties}
+              aria-current={active?.id === category.id ? 'page' : undefined}
+            >
+              <span>{category.name}</span>
+              <b>{counts[category.id] ?? 0}</b>
+            </Link>
+          ))}
+        </nav>
+
+        <section className="learn-list">
+          {active?.curriculum && (
+            <p className="curriculum-note">
+              배우는 순서대로 정렬했습니다. 앞 글이 뒤 글의 전제가 됩니다.
+            </p>
+          )}
+          {/* 옆 레일이 분야 선택을 맡으므로 칩은 띄우지 않습니다. */}
+          <ArticleExplorer
+            key={active?.id ?? 'all'}
+            categoryIds={active ? [active.id] : learnCategoryIds}
+            hideCategoryFilter
+            curriculum={active?.curriculum}
+          />
+        </section>
+      </div>
     </>
   );
 }
