@@ -55,18 +55,51 @@ OG 이미지는 `scripts/og-image.html`을 헤드리스 Chrome으로 렌더해 `
 
 ## 콘텐츠 관리
 
-| 파일 | 내용 |
+| 위치 | 내용 |
 | --- | --- |
-| `src/data/news.ts` | 공식 발표 목록. 뉴스 데스크와 Model Radar가 모두 여기서 파생됩니다. |
+| `src/content/articles/*.md` | 글 본문. 파일 하나가 글 하나입니다. |
+| `public/assets/posts/` | 글에 들어가는 SVG 등 이미지 |
+| `src/data/news.ts` | 공식 발표 목록. 뉴스 데스크와 Model Radar가 여기서 파생됩니다. |
 | `src/data/sources.ts` | AI 기업별 표기명, 색, 로고 |
-| `src/data/articles.ts` | 리서치 노트 본문 |
 | `src/data/categories.ts` | 카테고리와 색 |
 
-발표 한 건은 항목 하나입니다. 모델 발표라면 `model` 블록을 함께 채우고, 그러면 Model Radar에도 자동으로 노출됩니다. 같은 소식을 두 곳에 따로 적지 않습니다. 데이터를 갱신할 때는 `globalNewsUpdatedAt`도 함께 올립니다.
+글의 frontmatter는 `title`, `description`, `category`, `pubDate`가 필수이고
+빠지면 빌드가 섭니다. `category`는 `ai-guide` / `agents-rag` / `ml-ops` /
+`math-for-ai` / `paper-notes` / `tools` / `lab-notes` / `ai-news` 중 하나입니다.
+`draft: true`면 목록과 프리렌더에서 빠집니다.
 
-`npm test`가 id 중복, 날짜 형식, 공식 도메인 여부, 파생 목록의 정합성을 검사합니다.
+본문에서 쓸 수 있는 것:
 
-글 데이터는 UI와 분리돼 있어 이후 `articles.ts`를 Markdown/MDX 로더로 교체할 수 있습니다. URL 규칙은 `/articles/:slug`입니다.
+- **수식** — `$$...$$`. 홑 `$`는 수식으로 보지 않습니다. 본문에 `$HF_HOME` 같은
+  셸 변수와 가격 표기가 흔해서 켜 두면 그것들이 수식으로 렌더됩니다.
+- **코드 블록** — 펜스에 언어명을 적으면 빌드 때 shiki가 하이라이트합니다.
+  등록된 언어는 `plugins/markdown.ts`의 `LANGUAGES`에 있습니다.
+- **내부 링크** — `/articles/<slug>`. 슬래시로 끝내지 않습니다.
+- **이미지** — `![설명](/assets/posts/파일명.svg)`. SVG는 `SVG-STYLE.md`를 따릅니다.
+
+`npm test`가 frontmatter 필수 필드, 내부 링크가 가리키는 글의 존재, 참조한 에셋
+파일의 존재, 뉴스 데이터 정합성을 검사합니다.
+
+### 마크다운 파이프라인
+
+Vite 플러그인 두 개로 돌아갑니다.
+
+- `plugins/markdown.ts` — `.md`를 `{ frontmatter, html, headings, readingMinutes }`
+  모듈로 바꿉니다. remark-gfm, remark-math + rehype-katex, rehype-slug를 쓰고 코드
+  블록은 shiki로 미리 하이라이트합니다. 본문 해시를 키로 디스크에 캐시합니다.
+- `plugins/article-index.ts` — `virtual:article-index`로 목록 메타데이터만
+  내보냅니다. 목록 페이지가 본문까지 끌어오면 클라이언트 번들에 전체 글이 실립니다.
+
+본문은 글마다 별도 청크입니다. 첫 화면은 프리렌더된 HTML이 이미 DOM에 있으므로
+그것을 그대로 읽어 쓰고, SPA로 이동해 들어올 때만 해당 청크를 내려받습니다.
+
+### 자동 작성 루틴
+
+AI·수학 글은 claude.ai 원격 루틴이 하루 5편씩 작성해 `main`에 직접 푸시합니다.
+계획된 슬러그 목록은 각 루틴 프롬프트 안에 있고, 루틴은 시작할 때 GitHub에서
+`src/content/articles/`를 조회해 아직 없는 슬러그부터 집습니다. 주제를 추가하려면
+루틴 프롬프트의 `PLANNED_EOF` 목록에 슬러그를 넣습니다.
+관리는 https://claude.ai/code/routines 에서 합니다.
 
 ## 색과 접근성 규칙
 
@@ -112,7 +145,7 @@ VITE_BASE_PATH=/ai-lab/ npm run build
 ```text
 src/
   components/       레이아웃, 카드, 뉴스 데스크, 모달, Seo
-  data/             뉴스·출처·글·카테고리 데이터
+  data/             뉴스·출처·카테고리 데이터
   lib/              head 관리, 명암비 계산
   pages/            홈, 뉴스, 리서치, 글 상세, 404
   types/            콘텐츠 타입 정의
@@ -121,6 +154,10 @@ src/
   entry-server.tsx  프리렌더 진입점 (renderToString)
   routes.ts         프리렌더·sitemap 대상 경로
   styles.css        테마 토큰과 컴포넌트 스타일
+  content/articles/ 글 본문 마크다운
+plugins/
+  markdown.ts       .md -> 모듈 변환 (KaTeX, shiki)
+  article-index.ts  virtual:article-index 목록 생성
 scripts/
   prerender.mjs     정적 HTML, sitemap.xml, robots.txt 생성
   og-image.mjs      OG 이미지 렌더

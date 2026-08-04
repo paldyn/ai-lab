@@ -102,7 +102,9 @@ export async function renderMarkdown(body: string): Promise<RenderedMarkdown> {
   const file = await unified()
     .use(remarkParse)
     .use(remarkGfm)
-    .use(remarkMath)
+    // 홑 $는 수식으로 보지 않습니다. 본문에 $HF_HOME, ${report} 같은 셸 변수와
+    // 가격 표기가 흔해서, 켜 두면 그것들이 수식으로 렌더됩니다.
+    .use(remarkMath, { singleDollarTextMath: false })
     .use(() => (tree: Root) => {
       headings = collectHeadings(tree);
     })
