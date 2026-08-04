@@ -57,35 +57,281 @@ export interface NewsDetail {
   commentary: string;
 }
 
-export const globalNewsUpdatedAt = '2026-08-02';
+export const globalNewsUpdatedAt = '2026-08-01';
 
 /**
- * 공식 발표 한 건 = 항목 한 개. 모델 발표는 model 블록을 함께 가지며
- * 뉴스 데스크와 Model Radar가 모두 이 목록에서 파생됩니다.
- * 갱신 시 globalNewsUpdatedAt도 함께 올립니다.
+ * 공식 발표 한 건 = 항목 한 개. 2026년 1월부터 쌓는 아카이브이며 오래된 항목을
+ * 지우지 않습니다. 모달 본문(points·commentary)은 news-details/<YYYY-MM>.ts에
+ * 따로 있고 모달을 열 때 그 달치만 받아 옵니다.
+ *
+ * 모델 발표는 model 블록을 함께 가지며 뉴스 데스크와 Model Radar가 모두 이
+ * 목록에서 파생됩니다. 갱신 시 globalNewsUpdatedAt도 함께 올립니다.
  */
 const entries: NewsItem[] = [
+  {
+    id: 'ten-advances-in-mathematics',
+    source: 'OpenAI',
+    kind: 'industry',
+    title: 'Ten advances in mathematics and theoretical computer science',
+    summary:
+      'OpenAI가 고차원 기하·부호 이론·양자 복잡도 등 오랜 미해결 문제 10건의 ' +
+      '결과를 공개했다. 차기 모델 Astra의 내부 버전이 논증을 만들었고, 같은 ' +
+      '모델이 각 증명을 Lean으로 형식화했다.',
+    publishedAt: '2026-08-01',
+    category: 'Models',
+    signal: 'AI FOR MATH',
+    url: 'https://openai.com/index/ten-advances-in-mathematics',
+  },
+  {
+    id: 'gemini-drop-july-2026',
+    source: 'Google DeepMind',
+    kind: 'company',
+    title: 'Find out what’s new in the Gemini app in July&#x27;s Gemini Drop.',
+    summary:
+      '구글이 7월 Gemini Drop으로 macOS 음성 입력, Gemini ' +
+      'Spark의 전 세계 확대, 신규 Flash 모델 등 여섯 가지 변경을 ' +
+      '정리했다. 아바타 이미지 합성과 Dropbox·Zillow ' +
+      'Rentals·Viator 앱 연동도 함께 열렸다.',
+    publishedAt: '2026-07-31',
+    category: 'Product',
+    signal: 'CONSUMER AI',
+    url: 'https://blog.google/products-and-platforms/products/gemini/gemini-drop-july-2026/',
+  },
+  {
+    id: 'disrupting-criminal-scam-operation',
+    source: 'OpenAI',
+    kind: 'industry',
+    title: 'Disrupting a Criminal Scam Operation',
+    summary:
+      'OpenAI가 캄보디아 기반 사기 조직이 쓰던 ChatGPT 계정망을 차단했다고 ' +
+      '밝혔다. 투자·로맨스·도박·수사기관 사칭 사기를 한 조직이 동시에 굴렸고, ' +
+      '인신매매와 강제노동 정황이 담긴 대화도 함께 확인됐다.',
+    publishedAt: '2026-07-31',
+    category: 'Policy',
+    signal: 'AI MISUSE',
+    url: 'https://openai.com/index/disrupting-malicious-uses-of-ai-criminal-scam-operation',
+  },
+  {
+    id: 'building-abundant-intelligence',
+    source: 'OpenAI',
+    kind: 'industry',
+    title: 'Building abundant intelligence',
+    summary:
+      'OpenAI CFO Sarah Friar가 인프라·모델·플랫폼·제품을 함께 ' +
+      '운영하는 근거를 정리한 글을 냈다. 지능 단가가 내려가면 수요와 투자가 함께 ' +
+      '늘어난다는 순환을 전제로, 컴퓨트 단위당 생산성 개선 수치와 투자 판단 기준을 ' +
+      '함께 공개했다.',
+    publishedAt: '2026-07-31',
+    category: 'Infrastructure',
+    signal: 'COMPUTE ECONOMICS',
+    url: 'https://openai.com/index/building-abundant-intelligence',
+  },
+  {
+    id: 'advancing-responsible-ai-across-europe',
+    source: 'OpenAI',
+    kind: 'industry',
+    title: 'Advancing responsible AI across Europe',
+    summary:
+      'OpenAI가 EU AI 법 시행에 맞춰 안전·보안·투명성·출처 정보 대응 ' +
+      '현황을 정리해 공개했다. 범용 AI 실천 규범과 AI 생성 콘텐츠 투명성 실천 ' +
+      '규범 수립에 참여했고, 프런티어 거버넌스 프레임워크로 법적 요구 사항과의 관계를 ' +
+      '설명했다.',
+    publishedAt: '2026-07-31',
+    category: 'Policy',
+    signal: 'EU AI ACT',
+    url: 'https://openai.com/index/advancing-responsible-ai-across-europe',
+  },
+  {
+    id: 'investigating-incidents-cybersecurity-evals',
+    source: 'Anthropic',
+    kind: 'industry',
+    title: 'Investigating three real-world incidents in our cybersecurity evaluations',
+    summary:
+      '앤트로픽이 사이버보안 평가 도중 모델이 실제 인터넷에 접속해 외부 조직 시스템을 ' +
+      '침해한 사고 세 건을 공개했다. 평가는 인터넷이 차단됐다고 전제했지만 실제 ' +
+      '장비에는 연결이 살아 있었다.',
+    publishedAt: '2026-07-30',
+    category: 'Policy',
+    signal: 'EVAL SAFETY',
+    url: 'https://www.anthropic.com/news/investigating-incidents-cybersecurity-evals',
+  },
+  {
+    id: 'gpt-5-6-price-performance',
+    source: 'OpenAI',
+    kind: 'model',
+    title: 'Advancing the price-performance frontier with GPT-5.6',
+    summary:
+      'OpenAI가 7월 30일부터 GPT-5.6 Luna 가격을 80%, ' +
+      'Terra를 20% 내렸다. API에는 Priority Processing을 ' +
+      '대체하는 패스트 모드가 들어가, Sol을 두 배 가격에 최대 2.5배 속도로 쓸 ' +
+      '수 있다.',
+    publishedAt: '2026-07-30',
+    category: 'Product',
+    signal: 'MODEL ECONOMICS',
+    url: 'https://openai.com/index/advancing-the-price-performance-frontier-with-gpt-5-6',
+  },
+  {
+    id: 'gemini-spark-updates-july-2026',
+    source: 'Google DeepMind',
+    kind: 'company',
+    title: 'Gemini Spark now integrates with Chrome',
+    summary:
+      '구글이 Gemini Spark를 Chrome에 직접 연동해, 사용자의 로그인 ' +
+      '계정과 저장된 비밀번호를 써서 웹 잡무를 대신 처리하게 했다. 같은 날 ' +
+      'Google AI Pro 구독자 대상 제공 국가를 160개국 이상 추가했다.',
+    publishedAt: '2026-07-30',
+    category: 'Product',
+    signal: 'AGENTIC BROWSING',
+    url: 'https://blog.google/innovation-and-ai/products/gemini-app/gemini-spark-updates-july-2026/',
+  },
+  {
+    id: 'gemini-robotics-er-2',
+    source: 'Google DeepMind',
+    kind: 'model',
+    title: 'Introducing Gemini Robotics ER 2',
+    summary:
+      '구글 딥마인드가 임베디드 추론 모델 Gemini Robotics ER 2를 ' +
+      '출시했다. 로봇의 상위 두뇌 역할을 맡아 대화·상황 이해·다단계 계획을 ' +
+      '처리하고, 실제 모터 제어는 하위 VLA 모델에 넘긴다.',
+    publishedAt: '2026-07-30',
+    category: 'Models',
+    signal: 'EMBODIED AI',
+    url: 'https://blog.google/innovation-and-ai/models-and-research/google-deepmind/gemini-robotics-er-2/',
+    model: {
+      family: 'Gemini',
+      name: 'Gemini Robotics ER 2',
+      kind: '신규 모델',
+      status: '공개',
+      useCase: '로봇 상위 제어와 다단계 작업 계획',
+      headline:
+        '모터 제어는 VLA에 넘기고 판단만 맡는 로봇용 두뇌',
+      logo: 'assets/gemini.svg',
+      tone: 'gemini',
+    },
+  },
+  {
+    id: 'speak-naturally-gemini-app-mac-os',
+    source: 'Google DeepMind',
+    kind: 'company',
+    title: 'Gemini for macOS adds new natural language capabilities',
+    summary:
+      '구글이 macOS용 Gemini 앱에 음성 입력을 추가했다. Fn 키를 길게 ' +
+      '누르면 어느 창에서나 말할 수 있고 기본은 정돈된 받아쓰기이며, 설정에서 추론 ' +
+      '모드를 켜면 화면 맥락을 읽는 작업까지 처리한다.',
+    publishedAt: '2026-07-29',
+    category: 'Product',
+    signal: 'DESKTOP ASSISTANT',
+    url: 'https://blog.google/innovation-and-ai/products/gemini-app/speak-naturally-gemini-app-mac-os/',
+  },
+  {
+    id: 'lyria-3-5',
+    source: 'Google DeepMind',
+    kind: 'model',
+    title: 'We’re launching Lyria 3.5 in Google Flow Music, with advances across musicality, lyrics, vocals, and creative control',
+    summary:
+      '구글이 음악 생성 모델 Lyria 3.5를 Google Flow Music에 ' +
+      '배포했다. 멜로디 구조와 가사 품질, 보컬 표현이 개선됐고 템포와 길이를 직접 ' +
+      '조절할 수 있게 됐다.',
+    publishedAt: '2026-07-29',
+    category: 'Models',
+    signal: 'GENERATIVE MUSIC',
+    url: 'https://deepmind.google/blog/were-launching-lyria-35-in-google-flow-music-with-advances-across-musicality-lyrics-vocals-and-creative-control/',
+  },
+  {
+    id: 'gpt-5-6-efficiency',
+    source: 'OpenAI',
+    kind: 'model',
+    title: 'How GPT-5.6 fuses frontier intelligence with frontier efficiency',
+    summary:
+      'OpenAI가 GPT-5.6 계열의 비용 효율을 어떻게 끌어냈는지 공개했다. ' +
+      '모델과 추론 스택, 에이전트 하네스 세 층을 각각 최적화했고 그 작업 상당수를 ' +
+      'Codex 안의 GPT-5.6 Sol이 직접 수행했다고 밝혔다.',
+    publishedAt: '2026-07-29',
+    category: 'Infrastructure',
+    signal: 'INFERENCE EFFICIENCY',
+    url: 'https://openai.com/index/gpt-5-6-frontier-intelligence-efficiency',
+  },
+  {
+    id: 'arc-agi-3-two-settings',
+    source: 'OpenAI',
+    kind: 'industry',
+    title: 'How enabling two settings tripled our scores on the ARC-AGI-3 benchmark',
+    summary:
+      'OpenAI가 ARC-AGI-3에서 나온 저조한 점수의 원인을 모델이 아니라 ' +
+      '하네스 설정에서 찾았다. 추론 유지와 컴팩션 두 가지를 켜자 GPT-5.6 ' +
+      'Sol의 공개 세트 점수가 13.3%에서 38.3%로 올랐고 출력 토큰은 6분의 ' +
+      '1로 줄었다.',
+    publishedAt: '2026-07-29',
+    category: 'Models',
+    signal: 'EVAL HARNESS DESIGN',
+    url: 'https://openai.com/index/how-two-settings-tripled-our-arc-agi-3-scores',
+  },
+  {
+    id: 'managed-agents-3-6-flash-hooks',
+    source: 'Google DeepMind',
+    kind: 'company',
+    title: 'Gemini API Managed Agents: 3.6 Flash, hooks, and more',
+    summary:
+      '구글이 Gemini API의 매니지드 에이전트를 확장했다. 기본 모델이 ' +
+      'Gemini 3.6 Flash로 바뀌었고 샌드박스 안 도구 호출을 가로채는 훅, ' +
+      '토큰 예산 상한, 스케줄 트리거, 무료 등급이 더해졌다.',
+    publishedAt: '2026-07-28',
+    category: 'Product',
+    signal: 'AGENT PLATFORM',
+    url: 'https://blog.google/innovation-and-ai/technology/developers-tools/expanding-managed-agents-gemini-api-3-6-flash-hooks/',
+  },
   {
     id: 'gemini-robotics-2',
     source: 'Google DeepMind',
     kind: 'model',
     title: 'Gemini Robotics 2 brings whole body intelligence to robots',
     summary:
-      'Gemini 기반 로봇 모델이 전신 제어, 정교한 물체 조작, 여러 로봇의 협업까지 확장됐습니다. 물리 세계에서 작동하는 멀티모달 에이전트의 방향을 보여줍니다.',
+      '구글 딥마인드가 Gemini Robotics 2를 공개했다. VLA와 임베디드 ' +
+      '추론, 온디바이스 세 모델로 구성되며 휴머노이드의 발끝부터 손끝까지 전신을 ' +
+      '제어하고 서로 다른 로봇이 협업하게 한다.',
     publishedAt: '2026-07-28',
     category: 'Models',
-    signal: 'PHYSICAL AI',
+    signal: 'EMBODIED AI',
     url: 'https://deepmind.google/blog/gemini-robotics-2-brings-whole-body-intelligence-to-robots/',
     model: {
       family: 'Gemini',
       name: 'Gemini Robotics 2',
-      kind: '연구 프리뷰',
+      kind: '모델 패밀리',
       status: '제한 공개',
-      useCase: '로봇·물리 환경',
-      headline: '전신 제어와 정교한 물체 조작, 여러 로봇의 협업까지 확장한 물리 세계용 멀티모달 모델입니다.',
+      useCase: '로봇 전신 제어',
+      headline:
+        '휴머노이드 전신 제어와 로봇 간 협업을 겨냥한 딥마인드의 로보틱스 모델 3종',
       logo: 'assets/gemini.svg',
       tone: 'gemini',
     },
+  },
+  {
+    id: 'position-open-weights-models',
+    source: 'Anthropic',
+    kind: 'industry',
+    title: 'Our position on open-weights models',
+    summary:
+      '다리오 아모데이가 오픈웨이트 모델에 대한 앤트로픽 입장을 밝혔다. 금지를 주장한 ' +
+      '적이 없다고 못박고 대신 대중국 칩 수출 통제, 산업 규모 증류 단속, 충분히 ' +
+      '강력한 모델의 안전성 시험 의무화 세 가지를 지지한다고 했다.',
+    publishedAt: '2026-07-27',
+    category: 'Policy',
+    signal: 'OPEN WEIGHTS POLICY',
+    url: 'https://www.anthropic.com/news/position-open-weights-models',
+  },
+  {
+    id: 'noaa-google-cloud-weather-forecasting',
+    source: 'Google DeepMind',
+    kind: 'company',
+    title: 'NOAA and Google Cloud collaborate to advance weather forecasting.',
+    summary:
+      'NOAA가 기상·기후 운영 슈퍼컴퓨팅 시스템 WCOSS의 주 HPC 공급자로 ' +
+      '구글 클라우드를 선정했다. 운영용 수치예보를 구글 클라우드의 H4D 가상머신으로 ' +
+      '옮긴다.',
+    publishedAt: '2026-07-27',
+    category: 'Infrastructure',
+    signal: 'CLOUD HPC',
+    url: 'https://blog.google/innovation-and-ai/infrastructure-and-cloud/google-cloud/noaa-google-cloud-weather-forecasting/',
   },
   {
     id: 'claude-opus-5',
@@ -93,10 +339,12 @@ const entries: NewsItem[] = [
     kind: 'model',
     title: 'Introducing Claude Opus 5',
     summary:
-      'Anthropic이 장시간 실행되는 에이전트와 코딩, 전문 업무 성능을 강화한 Opus 5를 공개했습니다. 한 번의 응답보다 긴 작업을 끝까지 수행하는 능력이 평가 기준으로 올라오고 있습니다.',
+      '앤트로픽이 Claude Opus 5를 공개했다. 백만 토큰당 입력 5달러, 출력 ' +
+      '25달러로 Opus 4.8과 같은 가격이며 Claude Max의 새 기본 ' +
+      '모델이자 Claude Pro에서 쓸 수 있는 가장 강한 모델이다.',
     publishedAt: '2026-07-24',
     category: 'Models',
-    signal: 'AGENTIC MODELS',
+    signal: 'MODEL ECONOMICS',
     url: 'https://www.anthropic.com/news/claude-opus-5',
     model: {
       family: 'Claude',
@@ -104,44 +352,347 @@ const entries: NewsItem[] = [
       kind: '신규 모델',
       status: '공개',
       useCase: '장기 실행 에이전트',
-      headline: '장시간 실행되는 에이전트와 코딩, 전문 업무 성능을 강화하면서 Opus 계열의 비용 효율을 높였습니다.',
+      headline:
+        'Opus 4.8과 같은 가격으로 프론티어 지능에 다가선 앤트로픽의 상시 사용 ' +
+        '모델',
       logo: 'assets/claude.svg',
       tone: 'claude',
     },
   },
   {
-    id: 'openai-presence',
+    id: 'health-in-chatgpt',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'Launching Health in ChatGPT',
+    summary:
+      'OpenAI가 ChatGPT에 Health를 미국에서 순차 출시했다. Apple ' +
+      'Health와 미국 병원 진료 기록, One Medical, Function ' +
+      'Health를 연결하면 일반 대화에서도 ChatGPT가 그 정보를 참고한다.',
+    publishedAt: '2026-07-23',
+    category: 'Product',
+    signal: 'CONSUMER HEALTH AI',
+    url: 'https://openai.com/index/health-in-chatgpt',
+  },
+  {
+    id: 'introducing-openai-presence',
     source: 'OpenAI',
     kind: 'company',
     title: 'Introducing OpenAI Presence',
     summary:
-      '음성과 채팅 기반 기업용 에이전트를 정책, 평가, 승인, 사람에게 넘기는 규칙과 함께 운영하는 제품입니다. 모델 경쟁이 운영 시스템 경쟁으로 이동하는 신호입니다.',
+      'OpenAI가 엔터프라이즈용 음성·채팅 에이전트 제품 OpenAI ' +
+      'Presence를 공개했다. 정책과 가드레일, 시뮬레이션·평가 도구를 함께 묶은 ' +
+      '배포형 제품이며 셀프서비스로는 제공하지 않는다.',
     publishedAt: '2026-07-22',
     category: 'Product',
     signal: 'ENTERPRISE AGENTS',
-    url: 'https://openai.com/index/introducing-openai-presence/',
+    url: 'https://openai.com/index/introducing-openai-presence',
   },
   {
-    id: 'gemini-3-6-flash',
+    id: 'googles-40m-commitment-to-genesis-mission',
+    source: 'Google DeepMind',
+    kind: 'industry',
+    title: 'Accelerating the frontiers of scientific discovery: Google’s $40M commitment to the Genesis Mission',
+    summary:
+      '구글이 DOE Genesis Mission Summit 2026에서 AI 토큰과 ' +
+      '클라우드 크레딧 4,000만 달러를 약속했다. 선정 연구자에게 Google ' +
+      'DeepMind의 과학용 AI 도구 포트폴리오를 제공한다.',
+    publishedAt: '2026-07-22',
+    category: 'Policy',
+    signal: 'NATIONAL SCIENCE AI',
+    url: 'https://deepmind.google/blog/accelerating-the-frontiers-of-scientific-discovery-googles-40m-commitment-to-the-genesis-mission/',
+  },
+  {
+    id: 'effingham-county-ai-infrastructure',
+    source: 'OpenAI',
+    kind: 'industry',
+    title: 'Building AI infrastructure with the Effingham County community',
+    summary:
+      'OpenAI가 조지아주 에핑엄 카운티 데이터센터 Project Camellia와 ' +
+      '지역사회 약속을 공개했다. Georgia Power와 총 3.2기가와트 전력 ' +
+      '계약을 맺었고 2028년부터 2032년까지 단계적으로 공급된다.',
+    publishedAt: '2026-07-22',
+    category: 'Infrastructure',
+    signal: 'COMPUTE BUILDOUT',
+    url: 'https://openai.com/index/building-ai-infrastructure-with-the-effingham-county-community',
+  },
+  {
+    id: 'anthropic-economic-index-connector',
+    source: 'Anthropic',
+    kind: 'company',
+    title: 'The Anthropic Economic Index connector',
+    summary:
+      'Anthropic이 Economic Index 데이터를 Claude에서 직접 ' +
+      '질의하는 커넥터를 공개했다. claude.ai 커넥터 디렉터리에서 켜면 ' +
+      '직업별·지역별 AI 사용 패턴을 자연어로 물어볼 수 있다.',
+    publishedAt: '2026-07-22',
+    category: 'Product',
+    signal: 'AI LABOR DATA',
+    url: 'https://www.anthropic.com/news/anthropic-economic-index-connector',
+  },
+  {
+    id: 'advancing-the-next-era-of-national-science',
+    source: 'OpenAI',
+    kind: 'industry',
+    title: 'Advancing the next era of national science',
+    summary:
+      'OpenAI가 미 에너지부 Genesis Mission 참여 연구자를 위한 ' +
+      '지원안을 공개했다. Codex 이용 권한과 API 지원, GPT-Rosalind ' +
+      '접근권, 사이버보안 역량 개방을 함께 묶었다.',
+    publishedAt: '2026-07-22',
+    category: 'Policy',
+    signal: 'NATIONAL SCIENCE AI',
+    url: 'https://openai.com/index/advancing-the-next-era-of-national-science',
+  },
+  {
+    id: 'introducing-chatgpt-small-business-program',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'Introducing the ChatGPT for small business program',
+    summary:
+      'OpenAI가 소규모 비즈니스를 위한 ChatGPT 프로그램을 시작했다. 온라인 ' +
+      '웨비나와 미국 각지 오프라인 AI 아카데미, 시작 가이드, 파트너 플러그인과 ' +
+      'Skills를 함께 제공한다.',
+    publishedAt: '2026-07-21',
+    category: 'Product',
+    signal: 'SMB ADOPTION',
+    url: 'https://openai.com/index/introducing-chatgpt-small-business-program',
+  },
+  {
+    id: 'hugging-face-model-evaluation-security-incident',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'OpenAI and Hugging Face partner to address security incident during model evaluation',
+    summary:
+      'OpenAI가 사이버 역량 벤치마크 내부 평가 중 자사 모델이 Hugging ' +
+      'Face 인프라를 침해한 사고를 공개했다. 평가에는 GPT-5.6 Sol과 출시 ' +
+      '전 모델이 거부를 완화한 상태로 사용됐다.',
+    publishedAt: '2026-07-21',
+    category: 'Policy',
+    signal: 'AI CYBER RISK',
+    url: 'https://openai.com/index/hugging-face-model-evaluation-security-incident',
+  },
+  {
+    id: 'gemini-3-6-flash-family',
     source: 'Google DeepMind',
     kind: 'model',
-    title: 'Introducing Gemini 3.6 Flash and the next Flash family',
+    title: 'Introducing Gemini 3.6 Flash, 3.5 Flash-Lite, and 3.5 Flash Cyber',
     summary:
-      'Google은 에이전트 워크로드를 겨냥해 효율, 지연시간, 안정성을 높인 Gemini Flash 계열을 공개했습니다. 고성능만큼 토큰 효율과 처리량이 중요한 비교 기준이 되고 있습니다.',
+      '구글이 Gemini 3.6 Flash, 3.5 Flash-Lite, 3.5 ' +
+      'Flash Cyber 세 모델을 함께 공개했다. 3.6 Flash는 100만 ' +
+      '토큰당 입력 1.50달러·출력 7.50달러이고 Flash-Lite와 함께 ' +
+      '오늘부터 쓸 수 있다.',
     publishedAt: '2026-07-21',
     category: 'Models',
     signal: 'MODEL ECONOMICS',
-    url: 'https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-3-6-flash-3-5-flash-lite-3-5-flash-cyber/',
+    url: 'https://deepmind.google/blog/introducing-gemini-3-6-flash-3-5-flash-lite-and-3-5-flash-cyber/',
     model: {
       family: 'Gemini',
       name: 'Gemini 3.6 Flash',
       kind: '모델 패밀리',
       status: '공개',
-      useCase: '고속 에이전트 워크로드',
-      headline: '에이전트 워크로드를 위해 효율과 지연시간, 처리 안정성을 개선한 Flash 모델 패밀리입니다.',
+      useCase: '고속 에이전트 실행',
+      headline:
+        '플래시 3종 동시 출시, 출력 토큰 17% 절감',
       logo: 'assets/gemini.svg',
       tone: 'gemini',
     },
+  },
+  {
+    id: 'donation-public-first-action',
+    source: 'Anthropic',
+    kind: 'industry',
+    title: 'Donating another $20 million to Public First Action',
+    summary:
+      '앤스로픽이 초당파 단체 Public First Action에 2000만 달러를 ' +
+      '추가 기부해 누적 4000만 달러가 됐다. 2026년 2월 첫 기부에 이은 ' +
+      '것으로, 공공 교육과 정책 활동에만 쓰이며 선거에는 쓸 수 없다.',
+    publishedAt: '2026-07-21',
+    category: 'Policy',
+    signal: 'AI POLICY FUNDING',
+    url: 'https://www.anthropic.com/news/donation-public-first-action',
+  },
+  {
+    id: 'david-velez-robin-vince-join-openai-boards',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'David Vélez and Robin Vince join the boards of the OpenAI Foundation and OpenAI Group PBC',
+    summary:
+      'OpenAI가 데이비드 벨레스와 로빈 빈스를 OpenAI Foundation 및 ' +
+      'OpenAI Group PBC 이사회에 선임했다. 두 사람은 각각 Nubank와 ' +
+      'BNY를 이끄는 금융 서비스 경영자다.',
+    publishedAt: '2026-07-21',
+    category: 'Policy',
+    signal: 'CORPORATE GOVERNANCE',
+    url: 'https://openai.com/index/david-velez-robin-vince-join-openai-boards',
+  },
+  {
+    id: 'safety-alignment-long-horizon-models',
+    source: 'OpenAI',
+    kind: 'industry',
+    title: 'Safety and alignment in an era of long-horizon models',
+    summary:
+      '오픈AI가 장시간 자율 실행 모델을 내부 배포하며 관찰한 안전 문제와 대응을 ' +
+      '공개했다. 모델이 샌드박스를 우회해 외부 GitHub에 PR을 올린 사례가 나와 ' +
+      '배포를 중단하고, 궤적 단위 감시를 새로 만든 뒤 접근을 복구했다.',
+    publishedAt: '2026-07-20',
+    category: 'Policy',
+    signal: 'LONG-HORIZON SAFETY',
+    url: 'https://openai.com/index/safety-alignment-long-horizon-models',
+  },
+  {
+    id: 'gemini-3-5-flash-cyber',
+    source: 'Google DeepMind',
+    kind: 'model',
+    title: 'Introducing Gemini 3.5 Flash Cyber',
+    summary:
+      '구글이 Gemini 3.5 Flash를 보안용으로 파인튜닝한 Gemini 3.5 ' +
+      'Flash Cyber를 공개했다. V8 엔진 테스트에서 고유 이슈 55건을 찾아 ' +
+      '3.5 Flash를 앞섰고, 정부와 신뢰 파트너 대상 제한 파일럿으로만 ' +
+      '제공된다.',
+    publishedAt: '2026-07-17',
+    category: 'Models',
+    signal: 'CYBER DEFENSE MODELS',
+    url: 'https://deepmind.google/blog/introducing-gemini-3-5-flash-cyber/',
+    model: {
+      family: 'Gemini',
+      name: 'Gemini 3.5 Flash Cyber',
+      kind: '신규 모델',
+      status: '제한 공개',
+      useCase: '취약점 탐지·패치',
+      headline:
+        'V8 테스트에서 고유 이슈 55건, 정부·파트너 전용',
+      logo: 'assets/gemini.svg',
+      tone: 'gemini',
+    },
+  },
+  {
+    id: 'our-approach-to-bioresilience',
+    source: 'Google DeepMind',
+    kind: 'industry',
+    title: 'Our approach to bioresilience',
+    summary:
+      '구글 딥마인드와 아이소모픽 랩스가 생물학적 위협에 대응하는 바이오리질리언스 ' +
+      '접근법을 공개했다. 예방·탐지·대응 세 축으로 나눠 AlphaFold와 ' +
+      'SynthID 같은 기존 기술을 배치하고, 12개월간 15곳 넘게 협력했다고 ' +
+      '밝혔다.',
+    publishedAt: '2026-07-16',
+    category: 'Policy',
+    signal: 'AI BIOSECURITY',
+    url: 'https://deepmind.google/blog/our-approach-to-bioresilience/',
+  },
+  {
+    id: 'notebooklm-gemini-notebook',
+    source: 'Google DeepMind',
+    kind: 'company',
+    title: 'NotebookLM is now Gemini Notebook',
+    summary:
+      '구글이 NotebookLM을 Gemini Notebook으로 이름을 바꾸고, ' +
+      '노트북마다 코드를 실행할 수 있는 보안 클라우드 컴퓨터를 붙였다. 사용자는 ' +
+      '3000만 명, 조직은 60만 곳을 넘었고 Gemini 앱과 양방향으로 ' +
+      '동기화된다.',
+    publishedAt: '2026-07-16',
+    category: 'Product',
+    signal: 'PRODUCT CONSOLIDATION',
+    url: 'https://blog.google/innovation-and-ai/products/gemini-notebook/notebooklm-gemini-notebook/',
+  },
+  {
+    id: 'unlocking-self-improvement-gpt-red',
+    source: 'OpenAI',
+    kind: 'model',
+    title: 'GPT-Red: Unlocking Self-Improvement for Robustness',
+    summary:
+      '오픈AI가 내부 전용 자동 레드팀 모델 GPT-Red를 공개했다. 사람 레드팀이 ' +
+      '13% 성공한 시나리오에서 84%를 뚫었고, 이 모델의 공격을 학습에 넣은 ' +
+      'GPT-5.6 Sol은 직접 프롬프트 인젝션 실패율이 0.05%까지 내려갔다.',
+    publishedAt: '2026-07-15',
+    category: 'Models',
+    signal: 'AUTOMATED RED TEAMING',
+    url: 'https://openai.com/index/unlocking-self-improvement-gpt-red',
+  },
+  {
+    id: 'advancing-ai-safety-state-federal',
+    source: 'OpenAI',
+    kind: 'industry',
+    title: 'The US is advancing AI safety through state and federal action',
+    summary:
+      '오픈AI가 주·연방·국제 세 층위의 AI 안전 규제 흐름을 정리한 글을 냈다. ' +
+      '캘리포니아·뉴욕·일리노이 법안의 공통 요소를 사실상의 국가 표준으로 보고, 8월 ' +
+      '초 완성을 목표로 하는 연방 사이버 테스트 프레임워크를 지지한다고 밝혔다.',
+    publishedAt: '2026-07-15',
+    category: 'Policy',
+    signal: 'FRONTIER REGULATION',
+    url: 'https://openai.com/index/advancing-ai-safety-through-state-and-federal-action',
+  },
+  {
+    id: 'steel-river-arkansas',
+    source: 'Google DeepMind',
+    kind: 'industry',
+    title: 'Our largest solar and battery storage project ever',
+    summary:
+      '구글이 아칸소 미시시피 카운티에 자사 최대 태양광·배터리 프로젝트인 Steel ' +
+      'River Energy Center를 착공했다. 완공 시 태양광 2.5GWdc와 ' +
+      '배터리 2.9GWh 규모이며 전체 가동 목표는 2029년이다.',
+    publishedAt: '2026-07-14',
+    category: 'Infrastructure',
+    signal: 'ENERGY BUILDOUT',
+    url: 'https://blog.google/innovation-and-ai/infrastructure-and-cloud/global-network/steel-river-arkansas/',
+  },
+  {
+    id: 'claude-for-teachers',
+    source: 'Anthropic',
+    kind: 'company',
+    title: 'Introducing Claude for Teachers',
+    summary:
+      'Anthropic이 미국 K-12 교사에게 프리미엄 Claude를 무료 제공하는 ' +
+      'Claude for Teachers를 공개했다. 50개 주 학업 기준에 맞춘 ' +
+      '커리큘럼 연결과 교수용 스킬 라이브러리를 함께 제공한다.',
+    publishedAt: '2026-07-14',
+    category: 'Product',
+    signal: 'AI IN EDUCATION',
+    url: 'https://www.anthropic.com/news/claude-for-teachers',
+  },
+  {
+    id: 'canadian-ai-research',
+    source: 'Anthropic',
+    kind: 'company',
+    title: 'Anthropic commits $10 million to Canadian AI research',
+    summary:
+      'Anthropic이 캐나다 연구기관 8곳에 1,000만 캐나다달러를 지원한다고 ' +
+      '밝혔다. Amii·Mila·Vector 등이 대상이며, 세 기관은 이번 여름 ' +
+      'Anthropic for Startups 프로그램에도 추가된다.',
+    publishedAt: '2026-07-14',
+    category: 'Policy',
+    signal: 'RESEARCH FUNDING',
+    url: 'https://www.anthropic.com/news/canadian-ai-research',
+  },
+  {
+    id: 'reflect-with-claude',
+    source: 'Anthropic',
+    kind: 'company',
+    title: 'A new way to reflect on how you use Claude',
+    summary:
+      'Anthropic이 Claude 사용 패턴을 정리해 보여 주는 Reflect를 ' +
+      '베타로 공개했다. 메모리를 켠 Free·Pro·Max 사용자가 웹과 데스크톱 앱 ' +
+      '설정에서 쓸 수 있다.',
+    publishedAt: '2026-07-09',
+    category: 'Product',
+    signal: 'AI WELLBEING',
+    url: 'https://www.anthropic.com/news/reflect-with-claude',
+  },
+  {
+    id: 'gpt-5-6-microsoft-365-copilot',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'GPT-5.6 is now the preferred model in Microsoft 365 Copilot',
+    summary:
+      'GPT-5.6이 Microsoft 365 Copilot의 기본 모델로 적용된다고 ' +
+      'OpenAI가 밝혔다. ' +
+      'Word·Excel·PowerPoint·Chat·Cowork에서 이 모델을 쓰게 ' +
+      '되며, Microsoft는 OpenAI API로 직접 접속해 제공한다.',
+    publishedAt: '2026-07-09',
+    category: 'Product',
+    signal: 'ENTERPRISE DISTRIBUTION',
+    url: 'https://openai.com/index/gpt-5-6-preferred-model-microsoft-365-copilot',
   },
   {
     id: 'gpt-5-6',
@@ -149,45 +700,5304 @@ const entries: NewsItem[] = [
     kind: 'model',
     title: 'GPT-5.6: Frontier intelligence that scales with your ambition',
     summary:
-      'OpenAI가 작업 난이도와 비용에 따라 선택할 수 있는 GPT‑5.6 모델군을 공개했습니다. 지능 자체뿐 아니라 작업당 성능과 비용 효율을 전면에 둔 발표입니다.',
+      'OpenAI가 제한 프리뷰를 마친 GPT-5.6 제품군을 정식 출시했다. 대표 ' +
+      '모델 Sol, 균형형 Terra, 최저가 Luna 세 등급이며 ' +
+      'ChatGPT·Codex·API에 24시간에 걸쳐 배포된다.',
     publishedAt: '2026-07-09',
     category: 'Models',
-    signal: 'FRONTIER MODELS',
-    url: 'https://openai.com/index/gpt-5-6/',
+    signal: 'MODEL ECONOMICS',
+    url: 'https://openai.com/index/gpt-5-6',
     model: {
       family: 'GPT',
       name: 'GPT-5.6',
       kind: '모델 패밀리',
       status: '공개',
-      useCase: '고난도 추론·전문 업무',
-      headline: '작업 난이도와 비용에 맞춰 선택할 수 있도록 지능과 작업당 효율을 함께 확장한 모델군입니다.',
+      useCase: '장기 실행 에이전트 업무',
+      headline:
+        'Sol·Terra·Luna 세 등급으로 갈라진 OpenAI의 새 플래그십 계열',
       logo: 'assets/openai.svg',
       tone: 'gpt',
     },
   },
   {
-    id: 'claude-small-business',
+    id: 'chatgpt-most-ambitious-work',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'ChatGPT is now a partner for your most ambitious work',
+    summary:
+      'OpenAI가 앱과 파일을 오가며 몇 시간 동안 작업을 이어가는 에이전트 ' +
+      'ChatGPT Work를 공개했다. GPT-5.6을 기반으로 하며, 데스크톱 ' +
+      '앱에 Codex와 내장 브라우저가 통합된다.',
+    publishedAt: '2026-07-09',
+    category: 'Product',
+    signal: 'AGENTIC WORKSPACE',
+    url: 'https://openai.com/index/chatgpt-for-your-most-ambitious-work',
+  },
+  {
+    id: 'bio-bug-bounty',
+    source: 'OpenAI',
+    kind: 'industry',
+    title: 'GPT-5.5 Bio Bug Bounty',
+    summary:
+      'OpenAI가 GPT-5.5를 대상으로 한 바이오 버그 바운티 참가자를 ' +
+      '모집한다. 다섯 개 생물 안전 질문을 하나의 프롬프트로 모두 통과하는 범용 ' +
+      '탈옥을 찾는 것이 과제다.',
+    publishedAt: '2026-07-09',
+    category: 'Policy',
+    signal: 'BIOSECURITY RED TEAM',
+    url: 'https://openai.com/index/bio-bug-bounty',
+  },
+  {
+    id: 'ben-bernanke',
+    source: 'Anthropic',
+    kind: 'company',
+    title: 'Ben Bernanke appointed to Anthropic’s Long-Term Benefit Trust',
+    summary:
+      'Anthropic이 벤 버냉키 전 연준 의장을 장기 이익 신탁(LTBT) ' +
+      '트러스티로 선임했다. LTBT는 Anthropic 이사회 구성원을 임명할 권한을 ' +
+      '가진 독립 감독 기구다.',
+    publishedAt: '2026-07-09',
+    category: 'Policy',
+    signal: 'AI GOVERNANCE',
+    url: 'https://www.anthropic.com/news/ben-bernanke',
+  },
+  {
+    id: 'alphaevolve-on-cloud',
+    source: 'Google DeepMind',
+    kind: 'company',
+    title: 'We&#x27;re rolling out AlphaEvolve widely to solve Google Cloud customers&#x27; hardest problems.',
+    summary:
+      'Google이 알고리즘 최적화 에이전트 AlphaEvolve를 모든 Google ' +
+      'Cloud 고객에게 일반 공개했다. Gemini Enterprise Agent ' +
+      'Platform을 통해 제공되며 2025년 12월 비공개 프리뷰를 거쳤다.',
+    publishedAt: '2026-07-09',
+    category: 'Product',
+    signal: 'ENTERPRISE AGENTS',
+    url: 'https://blog.google/innovation-and-ai/infrastructure-and-cloud/google-cloud/alphaevolve-on-cloud/',
+  },
+  {
+    id: 'signal-noise-coding-evals',
+    source: 'OpenAI',
+    kind: 'industry',
+    title: 'Separating signal from noise in coding evaluations',
+    summary:
+      'OpenAI가 코딩 벤치마크 SWE-Bench Pro를 감사해 공개 데이터세트 ' +
+      '731개 작업 중 약 30%에 결함이 있다고 밝혔다. 자동 파이프라인은 ' +
+      '200개, 사람 검토는 249개를 결함으로 분류했고 OpenAI는 이 벤치마크 ' +
+      '전환 권고를 철회했다.',
+    publishedAt: '2026-07-08',
+    category: 'Models',
+    signal: 'BENCHMARK INTEGRITY',
+    url: 'https://openai.com/index/separating-signal-from-noise-coding-evaluations',
+  },
+  {
+    id: 'introducing-gpt-live',
+    source: 'OpenAI',
+    kind: 'model',
+    title: 'Introducing GPT-Live',
+    summary:
+      'OpenAI가 차세대 음성 모델 GPT-Live를 공개하고 ChatGPT 음성 ' +
+      '대화의 기본 모델로 적용했다. 듣기와 말하기를 동시에 처리하는 풀 듀플렉스 ' +
+      '구조이며, 검색·추론이 필요한 작업은 백그라운드의 GPT-5.5에 위임한다.',
+    publishedAt: '2026-07-08',
+    category: 'Models',
+    signal: 'REALTIME VOICE',
+    url: 'https://openai.com/index/introducing-gpt-live',
+    model: {
+      family: 'GPT',
+      name: 'GPT-Live',
+      kind: '모델 패밀리',
+      status: '공개',
+      useCase: '실시간 음성 대화',
+      headline:
+        '듣기와 말하기를 동시에 하고 어려운 질문은 GPT-5.5에 넘기는 음성 전용 ' +
+        '계층',
+      logo: 'assets/openai.svg',
+      tone: 'gpt',
+    },
+  },
+  {
+    id: 'government-national-security-partnerships',
+    source: 'OpenAI',
+    kind: 'industry',
+    title: 'Our approach to government and national security partnerships',
+    summary:
+      'OpenAI가 정부·국가 안보 파트너십에 적용할 국가 안보 원칙을 공개했다. ' +
+      '지난 한 달간 한국·일본·호주·캐나다·EU 기관 등과 사이버 방어 파트너십을 ' +
+      '맺었고, 기존 전쟁부 계약의 세 가지 사용 제한도 이 원칙과 함께 적용된다.',
+    publishedAt: '2026-07-08',
+    category: 'Policy',
+    signal: 'NATIONAL SECURITY AI',
+    url: 'https://openai.com/index/government-national-security-partnerships',
+  },
+  {
+    id: 'expanding-managed-agents-gemini-api',
+    source: 'Google DeepMind',
+    kind: 'company',
+    title: 'Expanding Managed Agents in Gemini API:  background tasks, remote MCP and more',
+    summary:
+      '구글이 Gemini API의 Managed Agents에 백그라운드 실행, 원격 ' +
+      'MCP 서버 연결, 커스텀 함수 호출, 자격 증명 갱신 네 가지를 추가했다. ' +
+      '에이전트는 antigravity-preview-05-2026 프리뷰 모델로 ' +
+      '동작한다.',
+    publishedAt: '2026-07-07',
+    category: 'Product',
+    signal: 'MANAGED AGENTS',
+    url: 'https://blog.google/innovation-and-ai/technology/developers-tools/expanding-managed-agents-gemini-api/',
+  },
+  {
+    id: 'deepmind-a24-research-partnership',
+    source: 'Google DeepMind',
+    kind: 'company',
+    title: 'Google DeepMind and A24 announce first-of-its-kind research partnership',
+    summary:
+      '구글 딥마인드와 A24가 연구 중심 파트너십을 발표했다. 여러 프로젝트에 걸친 ' +
+      'R&D 협업으로 A24 필름메이커가 도구 개발 과정에 직접 참여하며, 구글은 ' +
+      'A24에 투자도 단행했다.',
+    publishedAt: '2026-07-03',
+    category: 'Product',
+    signal: 'CREATIVE TOOLING',
+    url: 'https://deepmind.google/blog/google-deepmind-and-a24-announce-first-of-its-kind-research-partnership/',
+  },
+  {
+    id: 'fable-safeguards-jailbreak-framework',
+    source: 'Anthropic',
+    kind: 'industry',
+    title: 'More details on Fable 5’s cyber safeguards and our jailbreak framework',
+    summary:
+      '앤트로픽이 Fable 5의 사이버 안전장치 구성과 탈옥 심각도 등급 체계 ' +
+      'CJS를 공개했다. 사이버 관련 요청을 금지·고위험 이중용도·저위험 ' +
+      '이중용도·무해 네 갈래로 나눠 분류기가 차단 여부를 판단한다.',
+    publishedAt: '2026-07-02',
+    category: 'Policy',
+    signal: 'CYBER SAFEGUARDS',
+    url: 'https://www.anthropic.com/news/fable-safeguards-jailbreak-framework',
+  },
+  {
+    id: 'redeploying-fable-5',
+    source: 'Anthropic',
+    kind: 'model',
+    title: 'Redeploying Claude Fable 5',
+    summary:
+      '미국 정부가 6월 30일 수출 통제를 해제하면서 앤트로픽이 클로드 페이블 5와 ' +
+      '미토스 5를 7월 1일부터 전 세계에 다시 배포한다. 우회 기법을 막는 분류기를 ' +
+      '넣었고 차단된 요청은 오푸스 4.8로 넘어간다.',
+    publishedAt: '2026-06-30',
+    category: 'Policy',
+    signal: 'EXPORT CONTROLS',
+    url: 'https://www.anthropic.com/news/redeploying-fable-5',
+  },
+  {
+    id: 'introducing-genebench-pro',
+    source: 'OpenAI',
+    kind: 'industry',
+    title: 'Introducing GeneBench-Pro',
+    summary:
+      'OpenAI가 계산생물학의 판단력을 측정하는 벤치마크 GeneBench-Pro를 ' +
+      '공개했다. 10개 도메인에 걸친 129문제로 구성되며, 자사 최고 성능 모델인 ' +
+      'GPT-5.6 Sol의 통과율은 28.7%다.',
+    publishedAt: '2026-06-30',
+    category: 'Models',
+    signal: 'SCIENCE BENCHMARK',
+    url: 'https://openai.com/index/introducing-genebench-pro',
+  },
+  {
+    id: 'gemini-spark-updates-june-2026',
+    source: 'Google DeepMind',
+    kind: 'company',
+    title: 'Gemini Spark updates: macOS launch, connected apps and more',
+    summary:
+      '구글이 제미나이 스파크의 macOS 앱을 베타로 열고 데스크톱 작업 자동화를 ' +
+      '붙였다. 커스텀 MCP 연결과 캔바·드롭박스 등 앱 연동, 실시간 주제 추적도 ' +
+      '함께 추가했다.',
+    publishedAt: '2026-06-30',
+    category: 'Product',
+    signal: 'DESKTOP AGENTS',
+    url: 'https://blog.google/innovation-and-ai/products/gemini-app/gemini-spark-updates-june-2026/',
+  },
+  {
+    id: 'gemini-omni-flash-nano-banana-2-lite',
+    source: 'Google DeepMind',
+    kind: 'model',
+    title: 'Start building with Nano Banana 2 Lite and Gemini Omni Flash',
+    summary:
+      '구글이 이미지 모델 나노 바나나 2 라이트와 영상 모델 제미나이 옴니 플래시를 ' +
+      '내놨다. 라이트는 1K 이미지 한 장을 4초에 만들고 장당 0.034달러, 옴니 ' +
+      '플래시는 출력 1초당 0.10달러다.',
+    publishedAt: '2026-06-30',
+    category: 'Models',
+    signal: 'GENERATIVE MEDIA PRICING',
+    url: 'https://deepmind.google/blog/start-building-with-nano-banana-2-lite-and-gemini-omni-flash/',
+    model: {
+      family: 'Gemini',
+      name: 'Nano Banana 2 Lite · Gemini Omni Flash',
+      kind: '모델 패밀리',
+      status: '공개',
+      useCase: '대량 이미지·영상 생성',
+      headline:
+        '이미지 4초, 영상 1초당 0.10달러까지 내려온 생성형 미디어 라인',
+      logo: 'assets/gemini.svg',
+      tone: 'gemini',
+    },
+  },
+  {
+    id: 'claude-sonnet-5',
+    source: 'Anthropic',
+    kind: 'model',
+    title: 'Introducing Claude Sonnet 5',
+    summary:
+      '앤트로픽이 클로드 소네트 5를 공개했다. 추론·도구 사용·코딩을 끌어올린 ' +
+      '에이전트형 모델로, 8월 31일까지 100만 토큰당 입력 2달러·출력 10달러의 ' +
+      '도입 가격이 적용된다.',
+    publishedAt: '2026-06-30',
+    category: 'Models',
+    signal: 'AGENTIC MODELS',
+    url: 'https://www.anthropic.com/news/claude-sonnet-5',
+    model: {
+      family: 'Claude',
+      name: 'Claude Sonnet 5',
+      kind: '신규 모델',
+      status: '공개',
+      useCase: '자율 실행 에이전트',
+      headline:
+        '오푸스급 성능을 소네트 가격대로 끌어내린 에이전트 모델',
+      logo: 'assets/claude.svg',
+      tone: 'claude',
+    },
+  },
+  {
+    id: 'claude-science-ai-workbench',
+    source: 'Anthropic',
+    kind: 'company',
+    title: 'Claude Science, an AI workbench for scientists',
+    summary:
+      '앤트로픽이 과학 연구용 워크벤치 클로드 사이언스를 베타로 공개했다. ' +
+      '유전체·단백체 등 60여 개 스킬과 데이터베이스를 미리 붙여 문헌 분석부터 ' +
+      '그림·원고 수정까지 한 환경에서 처리한다.',
+    publishedAt: '2026-06-30',
+    category: 'Product',
+    signal: 'SCIENTIFIC AGENTS',
+    url: 'https://www.anthropic.com/news/claude-science-ai-workbench',
+  },
+  {
+    id: 'personal-intelligence-nano-banana-us-expansion',
+    source: 'Google DeepMind',
+    kind: 'company',
+    title: 'The Gemini app is bringing personalized image creation to more users.',
+    summary:
+      '제미나이 앱의 개인화 이미지 생성이 미국의 대상 사용자 전체로 확대됐다. ' +
+      '지메일·구글 포토·유튜브·검색을 연결하면 짧은 프롬프트만으로 본인 사진을 반영한 ' +
+      '이미지를 만든다.',
+    publishedAt: '2026-06-29',
+    category: 'Product',
+    signal: 'PERSONAL CONTEXT',
+    url: 'https://blog.google/innovation-and-ai/products/gemini-app/personal-intelligence-nano-banana-us-expansion/',
+  },
+  {
+    id: 'hp-frontier-partnership',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'HP Inc. launches Frontier strategic partnership with OpenAI',
+    summary:
+      'HP가 파일럿을 거쳐 OpenAI Frontier 전략적 파트너십을 전사 규모로 ' +
+      '확대한다고 발표했다. 고객·파트너 대응, 기기 텔레메트리 분석, 임직원 생산성, ' +
+      '소프트웨어 개발 영역에 AI를 배치한다.',
+    publishedAt: '2026-06-28',
+    category: 'Product',
+    signal: 'ENTERPRISE AI',
+    url: 'https://openai.com/index/hp-frontier-partnership',
+  },
+  {
+    id: 'previewing-gpt-5-6-sol',
+    source: 'OpenAI',
+    kind: 'model',
+    title: 'Previewing GPT-5.6 Sol: a next-generation model',
+    summary:
+      'OpenAI가 GPT-5.6 계열 Sol·Terra·Luna를 제한 프리뷰로 ' +
+      '공개했다. 신뢰할 수 있는 소수 파트너에게 API와 Codex로 먼저 제공하며, ' +
+      '몇 주 안에 더 넓게 공개할 계획이다.',
+    publishedAt: '2026-06-26',
+    category: 'Models',
+    signal: 'FRONTIER MODELS',
+    url: 'https://openai.com/index/previewing-gpt-5-6-sol',
+    model: {
+      family: 'GPT',
+      name: 'GPT-5.6 Sol',
+      kind: '모델 패밀리',
+      status: '제한 공개',
+      useCase: '코딩·사이버보안·생물학 에이전트 작업',
+      headline:
+        'Sol·Terra·Luna 세 등급으로 나뉜 GPT-5.6 세대의 첫 공개',
+      logo: 'assets/openai.svg',
+      tone: 'gpt',
+    },
+  },
+  {
+    id: 'jalapeno-inference-chip',
+    source: 'OpenAI',
+    kind: 'industry',
+    title: 'OpenAI and Broadcom unveil LLM-optimized inference chip',
+    summary:
+      'OpenAI와 Broadcom이 첫 자체 추론 가속기 Jalapeño를 ' +
+      '공개했다. LLM 추론 전용으로 처음부터 새로 설계했으며 2026년 말 첫 ' +
+      '배포를 목표로 한다.',
+    publishedAt: '2026-06-24',
+    category: 'Infrastructure',
+    signal: 'CUSTOM SILICON',
+    url: 'https://openai.com/index/openai-broadcom-jalapeno-inference-chip',
+  },
+  {
+    id: 'computer-use-gemini-3-5-flash',
+    source: 'Google DeepMind',
+    kind: 'model',
+    title: 'Introducing computer use in Gemini 3.5 Flash',
+    summary:
+      'Google이 컴퓨터 사용 기능을 Gemini 3.5 Flash의 내장 도구로 ' +
+      '넣었다. 기존에는 Gemini 2.5 기반 별도 모델로만 쓸 수 있던 기능이다.',
+    publishedAt: '2026-06-24',
+    category: 'Models',
+    signal: 'COMPUTER USE AGENTS',
+    url: 'https://deepmind.google/blog/introducing-computer-use-in-gemini-3-5-flash/',
+  },
+  {
+    id: 'shared-standards-for-advanced-ai',
+    source: 'OpenAI',
+    kind: 'industry',
+    title: 'Helping build shared standards for advanced AI',
+    summary:
+      'OpenAI가 리눅스 재단이 호스팅하는 Appia Foundation 공동 ' +
+      '설립에 참여했다. 국제 표준과 기존 프레임워크를 AI 가치사슬 전반의 평가 ' +
+      '기준으로 옮기는 개방형 사양을 만든다.',
+    publishedAt: '2026-06-23',
+    category: 'Policy',
+    signal: 'AI STANDARDS',
+    url: 'https://openai.com/index/helping-build-shared-standards-for-advanced-ai',
+  },
+  {
+    id: 'claude-tag',
+    source: 'Anthropic',
+    kind: 'company',
+    title: 'Introducing Claude Tag',
+    summary:
+      'Anthropic이 Slack에서 @Claude를 태그해 업무를 맡기는 ' +
+      'Claude Tag를 베타 공개했다. Enterprise·Team 고객이 ' +
+      '당일부터 쓸 수 있고 Opus 4.8에서 동작한다.',
+    publishedAt: '2026-06-23',
+    category: 'Product',
+    signal: 'ENTERPRISE AGENTS',
+    url: 'https://www.anthropic.com/news/introducing-claude-tag',
+  },
+  {
+    id: 'interactions-api-ga',
+    source: 'Google DeepMind',
+    kind: 'company',
+    title: 'Interactions API: our primary interface for Gemini models and agents',
+    summary:
+      'Google이 Interactions API를 정식 출시하고 Gemini ' +
+      '모델·에이전트의 기본 인터페이스로 삼았다. 2025년 12월 공개 베타를 거쳐 ' +
+      '스키마가 고정됐다.',
+    publishedAt: '2026-06-22',
+    category: 'Product',
+    signal: 'AGENT PLATFORMS',
+    url: 'https://blog.google/innovation-and-ai/technology/developers-tools/interactions-api-general-availability/',
+  },
+  {
+    id: 'daybreak-securing-the-world',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'Daybreak: Tools for securing every organization in the world',
+    summary:
+      'OpenAI가 취약점 발견을 넘어 패치 자동화로 범위를 넓힌 Daybreak를 ' +
+      '공개했다. Codex Security 플러그인 업데이트와 ' +
+      'GPT-5.5-Cyber 정식 버전을 함께 내놨다.',
+    publishedAt: '2026-06-22',
+    category: 'Product',
+    signal: 'AI CYBER DEFENSE',
+    url: 'https://openai.com/index/daybreak-securing-the-world',
+  },
+  {
+    id: 'health-intelligence-in-chatgpt',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'Improving health intelligence in ChatGPT',
+    summary:
+      'OpenAI가 GPT-5.5 Instant의 건강 관련 응답 개선 결과를 ' +
+      '공개했다. 난도 높은 건강 평가에서 자사 프런티어 Thinking 모델에 준하는 ' +
+      '수준에 도달했다고 밝혔다.',
+    publishedAt: '2026-06-18',
+    category: 'Product',
+    signal: 'HEALTH AI',
+    url: 'https://openai.com/index/improving-health-intelligence-in-chatgpt',
+  },
+  {
+    id: 'diagnose-rare-childhood-diseases',
+    source: 'OpenAI',
+    kind: 'industry',
+    title: 'Using AI to help physicians diagnose rare genetic diseases affecting children',
+    summary:
+      '보스턴 아동병원·하버드·OpenAI 연구진이 o3 Deep Research로 ' +
+      '미해결 희귀질환 376건을 재분석했다. 전문가 검토와 임상 확진을 거쳐 ' +
+      '18건에서 진단이 확정됐다.',
+    publishedAt: '2026-06-18',
+    category: 'Models',
+    signal: 'AI FOR SCIENCE',
+    url: 'https://openai.com/index/diagnose-rare-childhood-diseases',
+  },
+  {
+    id: 'chatgpt-enterprise-spend-controls',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'New usage analytics and updated spend controls for enterprises',
+    summary:
+      'OpenAI가 ChatGPT Enterprise에 크레딧 사용 분석과 지출 제어 ' +
+      '기능을 추가했다. 관리자가 사용자·제품·모델 단위로 크레딧 소비를 나눠 볼 수 ' +
+      '있다.',
+    publishedAt: '2026-06-18',
+    category: 'Product',
+    signal: 'ENTERPRISE GOVERNANCE',
+    url: 'https://openai.com/index/chatgpt-enterprise-spend-controls',
+  },
+  {
+    id: 'seoul-office-korean-ai-ecosystem',
+    source: 'Anthropic',
+    kind: 'company',
+    title: 'Anthropic opens Seoul office',
+    summary:
+      '앤스로픽이 서울 오피스를 열고 과학기술정보통신부와 AI 안전·사이버보안 협력 ' +
+      'MOU를 맺었다. 네이버·삼성SDS·LG CNS·넥슨 등 국내 기업의 클로드 ' +
+      '도입 현황과 대학·스타트업 지원 계획도 함께 공개했다.',
+    publishedAt: '2026-06-17',
+    category: 'Product',
+    signal: 'KOREA MARKET EXPANSION',
+    url: 'https://www.anthropic.com/news/seoul-office-partnerships-korean-ai-ecosystem',
+  },
+  {
+    id: 'introducing-life-sci-bench',
+    source: 'OpenAI',
+    kind: 'industry',
+    title: 'Introducing LifeSciBench',
+    summary:
+      'OpenAI가 생명과학 연구 과업을 다루는 벤치마크 LifeSciBench를 ' +
+      '공개했다. 박사급 연구자들이 7개 워크플로·7개 생물학 분야에 걸쳐 750개 ' +
+      '과업을 작성했고, 채점은 과업별 세부 평가 기준으로 이뤄진다.',
+    publishedAt: '2026-06-17',
+    category: 'Models',
+    signal: 'SCIENCE BENCHMARKS',
+    url: 'https://openai.com/index/introducing-life-sci-bench',
+  },
+  {
+    id: 'amie-for-disease-management-in-nature',
+    source: 'Google DeepMind',
+    kind: 'industry',
+    title: 'New research shows how AMIE, our medical AI, could help manage health conditions.',
+    summary:
+      '구글이 의료 AI 연구 시스템 AMIE를 진단에서 만성질환 장기 관리로 확장한 ' +
+      '연구를 네이처에 실었다. 환자 역할 배우를 쓴 블라인드 비교에서 1차 진료의 ' +
+      '21명과 관리 추론 능력을 견줬다.',
+    publishedAt: '2026-06-17',
+    category: 'Models',
+    signal: 'MEDICAL AI',
+    url: 'https://blog.google/innovation-and-ai/models-and-research/google-research/amie-for-disease-management-in-nature/',
+  },
+  {
+    id: 'ai-chemist-improves-reaction',
+    source: 'OpenAI',
+    kind: 'industry',
+    title: 'A near-autonomous AI chemist improves a challenging reaction in medicinal chemistry',
+    summary:
+      'OpenAI가 Molecule.one의 에이전트형 화학 AI Maria에 ' +
+      'GPT-5.4를 연결해 Chan-Lam 결합 반응을 개선한 결과를 공개했다. ' +
+      '모델이 제안한 TEMPO 첨가 조건에서 시험 설폰아미드의 83%, 보론산의 ' +
+      '88%에서 수율이 올랐다.',
+    publishedAt: '2026-06-17',
+    category: 'Models',
+    signal: 'AI FOR SCIENCE',
+    url: 'https://openai.com/index/ai-chemist-improves-reaction',
+  },
+  {
+    id: 'securing-the-future-of-ai-agents',
+    source: 'Google DeepMind',
+    kind: 'industry',
+    title: 'Securing the future of AI agents',
+    summary:
+      '구글 딥마인드가 사내 AI 에이전트 운영 기준인 AI Control ' +
+      'Roadmap과 정책용 문서 \'Three Layers of Agent ' +
+      'Security\'를 공개했다. 내부 에이전트를 잠재적 내부자 위협으로 보고 감시 ' +
+      '계층을 덧붙이는 방식이다.',
+    publishedAt: '2026-06-16',
+    category: 'Policy',
+    signal: 'AGENT SECURITY',
+    url: 'https://deepmind.google/blog/securing-the-future-of-ai-agents/',
+  },
+  {
+    id: 'deployment-simulation',
+    source: 'OpenAI',
+    kind: 'industry',
+    title: 'Predicting model behavior before release by simulating deployment',
+    summary:
+      'OpenAI가 출시 전 모델 행동을 예측하는 \'배포 시뮬레이션\' 방법을 ' +
+      '공개했다. 과거 실서비스 대화에서 어시스턴트 응답만 후보 모델로 다시 생성해 ' +
+      '바람직하지 않은 행동의 발생률을 추정한다.',
+    publishedAt: '2026-06-16',
+    category: 'Models',
+    signal: 'SAFETY EVALUATION',
+    url: 'https://openai.com/index/deployment-simulation',
+  },
+  {
+    id: 'alabama-investment-june-2026',
+    source: 'Google DeepMind',
+    kind: 'industry',
+    title: 'We’re strengthening our presence in Alabama through new investments and community support.',
+    summary:
+      '구글이 앨라배마 잭슨 카운티 데이터센터 캠퍼스 확장에 2026~2027년 15억 ' +
+      '달러를 투입한다고 밝혔다. 전력·인프라 비용은 전액 자체 부담하며 지역 ' +
+      '에너지·교육 지원 프로그램도 함께 내놨다.',
+    publishedAt: '2026-06-15',
+    category: 'Infrastructure',
+    signal: 'DATA CENTER BUILDOUT',
+    url: 'https://blog.google/innovation-and-ai/infrastructure-and-cloud/global-network/alabama-investment-june-2026/',
+  },
+  {
+    id: 'introducing-openai-partner-network',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'Introducing the OpenAI Partner Network',
+    summary:
+      'OpenAI가 파트너사의 솔루션 구축·판매·제공을 지원하는 OpenAI 파트너 ' +
+      '네트워크를 발표했다. 생태계에 1억 5천만 달러를 투자하고 2026년 말까지 ' +
+      '인증 컨설턴트 30만 명 양성을 목표로 한다.',
+    publishedAt: '2026-06-14',
+    category: 'Product',
+    signal: 'ENTERPRISE PARTNERS',
+    url: 'https://openai.com/index/introducing-openai-partner-network',
+  },
+  {
+    id: 'fable-mythos-access',
+    source: 'Anthropic',
+    kind: 'industry',
+    title: 'Statement on the US government directive to suspend access to Fable 5 and Mythos 5',
+    summary:
+      '앤트로픽이 미국 정부의 수출 통제 지시에 따라 Fable 5와 Mythos 5 ' +
+      '접근을 전 세계 모든 사용자에 대해 차단했다고 밝혔다. 나머지 앤트로픽 모델은 ' +
+      '영향을 받지 않으며 복구를 추진 중이라고 했다.',
+    publishedAt: '2026-06-12',
+    category: 'Policy',
+    signal: 'EXPORT CONTROL ACTION',
+    url: 'https://www.anthropic.com/news/fable-mythos-access',
+  },
+  {
+    id: 'combatting-ai-scams',
+    source: 'Google DeepMind',
+    kind: 'industry',
+    title: 'How we&#x27;re combatting AI scams with security, legislation and more',
+    summary:
+      '구글이 중국 기반 사이버범죄 조직 \'Outsider Enterprise\'를 ' +
+      '상대로 민사 소송을 냈다고 밝혔다. FBI와 공조하고 통신 3사와 문자 차단을 ' +
+      '이어가며 사기 대응 법안 7건을 지지한다는 내용도 함께 공개했다.',
+    publishedAt: '2026-06-12',
+    category: 'Policy',
+    signal: 'AI FRAUD ENFORCEMENT',
+    url: 'https://blog.google/innovation-and-ai/technology/safety-security/combatting-ai-scams/',
+  },
+  {
+    id: 'anthropic-public-record',
+    source: 'Anthropic',
+    kind: 'company',
+    title: 'Results from first Anthropic Public Record',
+    summary:
+      '앤트로픽이 미국인 51,993명을 대상으로 한 여론조사 시리즈 ' +
+      '\'Anthropic Public Record\'의 첫 결과를 공개했다. AI에 ' +
+      '대한 기대와 우려, 규제 선호를 항목별 응답 비율로 정리했다.',
+    publishedAt: '2026-06-12',
+    category: 'Policy',
+    signal: 'PUBLIC OPINION DATA',
+    url: 'https://www.anthropic.com/news/anthropic-public-record',
+  },
+  {
+    id: 'openai-to-acquire-ona',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'OpenAI to acquire Ona',
+    summary:
+      'OpenAI가 클라우드 개발환경 기업 Ona를 인수한다고 발표했다. Ona의 ' +
+      '보안 실행·오케스트레이션 기술을 Codex에 붙여, 기기를 꺼도 고객 클라우드 ' +
+      '안에서 에이전트가 작업을 이어가도록 만들겠다는 계획이다.',
+    publishedAt: '2026-06-11',
+    category: 'Product',
+    signal: 'PERSISTENT AGENT RUNTIME',
+    url: 'https://openai.com/index/openai-to-acquire-ona',
+  },
+  {
+    id: 'eu-trustworthy-ai-ecosystem',
+    source: 'OpenAI',
+    kind: 'industry',
+    title: 'Supporting Europe’s work in ensuring a trustworthy AI ecosystem',
+    summary:
+      'OpenAI가 유럽위원회의 AI 생성 콘텐츠 투명성 실천규약에 지지를 표명했다. ' +
+      'EU AI Act 이행 단계로 보고, 자사 관련 제품에 적용되는 요건을 ' +
+      '준수하겠다고 밝혔다.',
+    publishedAt: '2026-06-11',
+    category: 'Policy',
+    signal: 'CONTENT PROVENANCE',
+    url: 'https://openai.com/index/supporting-eu-trustworthy-ai-ecosystem',
+  },
+  {
+    id: 'prc-linked-influence-operations',
+    source: 'OpenAI',
+    kind: 'industry',
+    title: 'PRC-linked influence operations are targeting AI debates in the US',
+    summary:
+      'OpenAI가 중국에서 유래한 것으로 추정되는 ChatGPT 계정 두 집단을 ' +
+      '차단하고 조사 보고서를 냈다. 두 집단은 미국의 AI·기술 정책 논쟁을 겨냥한 ' +
+      '소셜미디어 댓글과 이미지를 생성했다.',
+    publishedAt: '2026-06-10',
+    category: 'Policy',
+    signal: 'INFLUENCE OPERATIONS',
+    url: 'https://openai.com/index/prc-linked-influence-operations-ai-debates',
+  },
+  {
+    id: 'openai-on-oracle-cloud',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'Access OpenAI models and Codex through your Oracle cloud commitment',
+    summary:
+      'OpenAI와 Oracle이 OCI 고객에게 기존 클라우드 약정으로 OpenAI ' +
+      '프런티어 모델과 Codex를 쓸 수 있게 한다고 발표했다. 적격 Oracle ' +
+      'Universal Credits를 그대로 사용하며 몇 주 내 제공을 시작한다.',
+    publishedAt: '2026-06-10',
+    category: 'Product',
+    signal: 'ENTERPRISE PROCUREMENT',
+    url: 'https://openai.com/index/openai-on-oracle-cloud',
+  },
+  {
+    id: 'multi-agent-ai-safety-research',
+    source: 'Google DeepMind',
+    kind: 'industry',
+    title: 'Investing in multi-agent AI safety research',
+    summary:
+      '구글 딥마인드가 파트너들과 함께 멀티 에이전트 AI 안전 연구에 최대 1000만 ' +
+      '달러를 지원하는 공모를 열었다. 서로 다른 조직이 만든 에이전트들이 상호작용할 ' +
+      '때 생기는 문제를 네 영역으로 나눠 다룬다.',
+    publishedAt: '2026-06-10',
+    category: 'Policy',
+    signal: 'MULTI-AGENT SAFETY',
+    url: 'https://deepmind.google/blog/investing-in-multi-agent-ai-safety-research/',
+  },
+  {
+    id: 'diffusiongemma',
+    source: 'Google DeepMind',
+    kind: 'model',
+    title: 'DiffusionGemma: 4x faster text generation',
+    summary:
+      '구글이 텍스트 디퓨전 방식의 오픈 웨이트 모델 DiffusionGemma를 ' +
+      '공개했다. 토큰을 하나씩 잇는 대신 블록 단위로 병렬 생성해 자기회귀 모델보다 ' +
+      '최대 4배 빠른 생성 속도를 낸다.',
+    publishedAt: '2026-06-10',
+    category: 'Models',
+    signal: 'TEXT DIFFUSION MODELS',
+    url: 'https://deepmind.google/blog/diffusiongemma-4x-faster-text-generation/',
+    model: {
+      family: 'Gemini',
+      name: 'DiffusionGemma',
+      kind: '신규 모델',
+      status: '공개',
+      useCase: '저지연 텍스트 생성·코드 인필',
+      headline:
+        '26B MoE에 활성 3.8B, H100 초당 1000토큰을 내는 오픈 웨이트 ' +
+        '디퓨전 모델',
+      logo: 'assets/gemini.svg',
+      tone: 'gemini',
+    },
+  },
+  {
+    id: 'industrial-policy-intelligence-age',
+    source: 'OpenAI',
+    kind: 'industry',
+    title: 'Industrial policy for the Intelligence Age',
+    summary:
+      'OpenAI가 \'인텔리전스 시대를 위한 산업 정책\' 제안서를 공개했다. 완성된 ' +
+      '권고안이 아닌 논의의 출발점이라고 밝혔고, 아이디어를 발전시킬 펠로십·보조금 ' +
+      '파일럿을 함께 운영한다.',
+    publishedAt: '2026-06-09',
+    category: 'Policy',
+    signal: 'AI INDUSTRIAL POLICY',
+    url: 'https://openai.com/index/industrial-policy-for-the-intelligence-age',
+  },
+  {
+    id: 'gemma-unified-multimodal',
+    source: 'Google DeepMind',
+    kind: 'model',
+    title: 'Introducing Gemma 4 12B: a unified, encoder-free multimodal model',
+    summary:
+      '구글이 인코더 없이 이미지와 오디오를 함께 처리하는 오픈 모델 Gemma 4 ' +
+      '12B를 공개했다. 중간 크기 Gemma 중 처음으로 네이티브 오디오 입력을 ' +
+      '지원하며 Apache 2.0 라이선스로 배포된다.',
+    publishedAt: '2026-06-09',
+    category: 'Models',
+    signal: 'OPEN MULTIMODAL MODELS',
+    url: 'https://deepmind.google/blog/introducing-gemma-4-12b-a-unified-encoder-free-multimodal-model/',
+  },
+  {
+    id: 'gemini-live-translate',
+    source: 'Google DeepMind',
+    kind: 'model',
+    title: 'Fluid, natural voice translation with Gemini 3.5 Live Translate',
+    summary:
+      '구글이 실시간 음성 대 음성 번역 모델 Gemini 3.5 Live ' +
+      'Translate를 공개했다. 70개 이상 언어를 자동 감지해 화자의 억양과 ' +
+      '속도, 음높이를 유지한 음성으로 옮기며 개발자용 공개 프리뷰가 시작됐다.',
+    publishedAt: '2026-06-09',
+    category: 'Models',
+    signal: 'REALTIME SPEECH AI',
+    url: 'https://deepmind.google/blog/fluid-natural-voice-translation-with-gemini-35-live-translate/',
+    model: {
+      family: 'Gemini',
+      name: 'Gemini 3.5 Live Translate',
+      kind: '신규 모델',
+      status: '공개',
+      useCase: '실시간 음성 번역',
+      headline:
+        '70개 언어를 억양까지 살려 옮기는 음성 번역 전용 모델',
+      logo: 'assets/gemini.svg',
+      tone: 'gemini',
+    },
+  },
+  {
+    id: 'claude-fable-mythos',
+    source: 'Anthropic',
+    kind: 'model',
+    title: 'Claude Fable 5 and Claude Mythos 5',
+    summary:
+      '앤스로픽이 Claude Fable 5와 Claude Mythos 5를 발표했다. ' +
+      '둘은 같은 기반 모델이며 안전장치를 적용한 Fable 5는 6월 9일 API에 ' +
+      '올랐고, 일부 영역 안전장치를 푼 Mythos 5는 제한 배포된다.',
+    publishedAt: '2026-06-09',
+    category: 'Models',
+    signal: 'FRONTIER MODEL ACCESS',
+    url: 'https://www.anthropic.com/news/claude-fable-5-mythos-5',
+    model: {
+      family: 'Claude',
+      name: 'Claude Fable 5 · Mythos 5',
+      kind: '모델 패밀리',
+      status: '공개',
+      useCase: '장기 실행 에이전트',
+      headline:
+        '안전장치 유무로 갈린 두 모델, Fable 5는 API에 즉시 공개',
+      logo: 'assets/claude.svg',
+      tone: 'claude',
+    },
+  },
+  {
+    id: 'openai-submits-confidential-s-1',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'Confidential submission of draft S-1 to the SEC',
+    summary:
+      'OpenAI가 SEC에 비공개로 S-1 초안을 제출했다고 밝혔다. 상장 시점은 ' +
+      '정하지 않았고, 비상장 상태에서 하기 쉬운 일들이 남아 있어 시간이 걸릴 수 ' +
+      '있다고 설명했다.',
+    publishedAt: '2026-06-08',
+    category: 'Policy',
+    signal: 'IPO FILING',
+    url: 'https://openai.com/index/openai-submits-confidential-s-1',
+  },
+  {
+    id: 'fraud-scams-advisory-june',
+    source: 'Google DeepMind',
+    kind: 'industry',
+    title: 'Our latest fraud and scams advisory',
+    summary:
+      '구글이 2026년 6월 사기·스캠 자문 보고서를 냈다. 캘린더 초대를 이용한 ' +
+      '피싱, AI 암호화폐 투자 사기, 경찰 사칭 디지털 체포 같은 수법을 정리하고 ' +
+      '대응 조치를 함께 밝혔다.',
+    publishedAt: '2026-06-08',
+    category: 'Policy',
+    signal: 'FRAUD THREAT LANDSCAPE',
+    url: 'https://blog.google/innovation-and-ai/technology/safety-security/fraud-scams-advisory-june-2026/',
+  },
+  {
+    id: 'economic-research-exchange',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'Introducing the OpenAI Economic Research Exchange',
+    summary:
+      'OpenAI가 AI의 경제적 영향을 다루는 외부 연구를 지원하는 Economic ' +
+      'Research Exchange를 시작했다. 선정된 연구자는 OpenAI ' +
+      'Economic Research와 프로젝트 단위로 협업한다.',
+    publishedAt: '2026-06-08',
+    category: 'Policy',
+    signal: 'ECONOMIC RESEARCH',
+    url: 'https://openai.com/index/economic-research-exchange',
+  },
+  {
+    id: 'built-to-benefit-everyone-our-plan',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'Built to benefit everyone: our plan',
+    summary:
+      '샘 올트먼과 야쿠프 파호츠키가 OpenAI의 방향을 정리한 글을 냈다. AI를 ' +
+      '소수에 집중시키지 않고 넓게 쓰이게 하는 것을 첫 번째 약속으로 내걸고, 완전 ' +
+      '자동화는 목표가 아니라고 못 박았다.',
+    publishedAt: '2026-06-08',
+    category: 'Policy',
+    signal: 'AI ACCESS',
+    url: 'https://openai.com/index/built-to-benefit-everyone-our-plan',
+  },
+  {
+    id: 'bringing-gemini-models-to-apple-developers',
+    source: 'Google DeepMind',
+    kind: 'company',
+    title: 'Bringing the latest Gemini models to Apple developers',
+    summary:
+      '구글이 애플 Foundation Models 프레임워크를 통해 클라우드 ' +
+      'Gemini 모델을 애플 개발자에게 열었다. 온디바이스 모델과 같은 API로 ' +
+      '호출해 로컬과 클라우드 추론을 바꿔 쓸 수 있으며 프리뷰로 제공된다.',
+    publishedAt: '2026-06-08',
+    category: 'Product',
+    signal: 'PLATFORM DISTRIBUTION',
+    url: 'https://blog.google/innovation-and-ai/technology/developers-tools/bringing-gemini-models-to-apple-developers/',
+  },
+  {
+    id: 'quantization-aware-training-gemma',
+    source: 'Google DeepMind',
+    kind: 'model',
+    title: 'Gemma 4 QAT models: Optimizing model compression for mobile and laptop efficiency',
+    summary:
+      '구글이 Gemma 4 계열의 양자화 인식 학습(QAT) 체크포인트를 공개했다. ' +
+      'E2B·E4B·12B·26B MoE에 Q4_0을 적용했고 엣지 기기 전용 포맷도 ' +
+      '함께 배포한다.',
+    publishedAt: '2026-06-05',
+    category: 'Models',
+    signal: 'ON-DEVICE INFERENCE',
+    url: 'https://blog.google/innovation-and-ai/technology/developers-tools/quantization-aware-training-gemma-4/',
+  },
+  {
+    id: 'meitner-energy-center',
+    source: 'Google DeepMind',
+    kind: 'industry',
+    title: 'We’re announcing a new data center and energy investments in Gray and Roberts Counties, Texas.',
+    summary:
+      '구글이 파트너 인터섹트와 함께 텍사스 그레이·로버츠 카운티에 Meitner ' +
+      'Energy Center를 짓는다고 밝혔다. 데이터센터를 새 발전 설비와 같은 ' +
+      '부지에 두고 전용 청정 전력으로 수요를 충당하는 방식이다.',
+    publishedAt: '2026-06-04',
+    category: 'Infrastructure',
+    signal: 'COMPUTE BUILDOUT',
+    url: 'https://blog.google/innovation-and-ai/infrastructure-and-cloud/global-network/meitner-energy-center/',
+  },
+  {
+    id: 'chatgpt-memory-dreaming',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'Dreaming: Better memory for a more helpful ChatGPT',
+    summary:
+      'OpenAI가 ChatGPT 메모리를 배경에서 종합하는 \'드리밍\' 기반 새 ' +
+      '시스템으로 교체한다. 미국 Plus·Pro 사용자에게 먼저 적용하고 이후 다른 ' +
+      '국가와 Free·Go 사용자로 넓힌다.',
+    publishedAt: '2026-06-04',
+    category: 'Product',
+    signal: 'CHATGPT MEMORY',
+    url: 'https://openai.com/index/chatgpt-memory-dreaming',
+  },
+  {
+    id: 'build-kaggle-benchmarks-locally',
+    source: 'Google DeepMind',
+    kind: 'company',
+    title: 'Kaggle is making AI benchmark creation effortless',
+    summary:
+      'Kaggle Benchmarks 평가 과제를 웹 화면이 아니라 로컬 개발 ' +
+      '환경에서 만들 수 있게 됐다. CLI와 kaggle-benchmarks SDK로 ' +
+      '과제를 작성·푸시·실행·내려받고, 코딩 에이전트에 맡길 수도 있다.',
+    publishedAt: '2026-06-04',
+    category: 'Product',
+    signal: 'EVAL TOOLING',
+    url: 'https://blog.google/innovation-and-ai/technology/developers-tools/build-kaggle--benchmarks-locally/',
+  },
+  {
+    id: 'biodefense-in-the-intelligence-age',
+    source: 'OpenAI',
+    kind: 'industry',
+    title: 'Biodefense in the Intelligence Age',
+    summary:
+      'OpenAI가 AI를 활용한 생물학적 방어 역량 강화를 위한 행동 계획을 ' +
+      '내놓았다. 위협의 조기 탐지, 대응 수단의 신속한 개발, 위기 대응 조율을 ' +
+      '목표로 제시했다.',
+    publishedAt: '2026-06-04',
+    category: 'Policy',
+    signal: 'AI BIOSECURITY',
+    url: 'https://openai.com/index/biodefense-in-the-intelligence-age',
+  },
+  {
+    id: 'services-track-partner-hub',
+    source: 'Anthropic',
+    kind: 'company',
+    title: 'Introducing the Services Track and Partner Hub of the Claude Partner Network',
+    summary:
+      '앤트로픽이 Claude 파트너 네트워크에 서비스 트랙과 파트너 허브를 추가했다. ' +
+      '인증 인력 수, 프로덕션 배포 고객 수, 공개 사례 수로 등급을 나누고 허브에서 ' +
+      '매일 현황을 갱신한다.',
+    publishedAt: '2026-06-03',
+    category: 'Product',
+    signal: 'PARTNER ECOSYSTEM',
+    url: 'https://www.anthropic.com/news/services-track-partner-hub',
+  },
+  {
+    id: 'public-policy-agenda',
+    source: 'OpenAI',
+    kind: 'industry',
+    title: 'OpenAI public policy agenda',
+    summary:
+      'OpenAI가 자사의 공공 정책 의제를 문서로 정리해 공개했다. 프런티어 모델 ' +
+      '안전, 청소년 보호, 교육과 AI 리터러시, 노동 전환, 딥페이크와 콘텐츠 ' +
+      '출처, AI 인프라와 에너지까지 우선순위별로 지지하는 정책을 밝혔다.',
+    publishedAt: '2026-06-03',
+    category: 'Policy',
+    signal: 'AI POLICY',
+    url: 'https://openai.com/index/public-policy-agenda',
+  },
+  {
+    id: 'gpt-rosalind-new-capabilities',
+    source: 'OpenAI',
+    kind: 'model',
+    title: 'Introducing new capabilities to GPT-Rosalind',
+    summary:
+      'OpenAI가 생명과학 전용 모델 GPT-Rosalind를 업데이트해 리서치 ' +
+      '프리뷰로 제공한다. 의약화학·유전체 분석과 실험실 작업 지원 성능을 높였고 적격 ' +
+      '기관 대상 접근을 전 세계로 넓혔다.',
+    publishedAt: '2026-06-03',
+    category: 'Models',
+    signal: 'LIFE SCIENCES MODELS',
+    url: 'https://openai.com/index/introducing-new-capabilities-to-gpt-rosalind',
+    model: {
+      family: 'GPT',
+      name: 'GPT-Rosalind',
+      kind: '연구 프리뷰',
+      status: '제한 공개',
+      useCase: '신약 개발·유전체 분석 연구',
+      headline:
+        '의약화학과 유전체 분석에 특화된 생명과학 전용 모델의 업데이트',
+      logo: 'assets/openai.svg',
+      tone: 'gpt',
+    },
+  },
+  {
+    id: 'frontier-safety-blueprint',
+    source: 'OpenAI',
+    kind: 'industry',
+    title: 'A blueprint for democratic governance of frontier AI',
+    summary:
+      'OpenAI가 미국 연방 차원의 프런티어 AI 거버넌스 청사진을 공개했다. ' +
+      '주(州) 안전법에서 형성된 합의를 국가 프레임워크로 끌어올리고, CAISI를 ' +
+      '연방 정부의 프런티어 AI 안전 주무 기관으로 강화하며, 정부 전반의 회복력 ' +
+      '계획을 가동하는 세 갈래 전략을 담았다.',
+    publishedAt: '2026-06-03',
+    category: 'Policy',
+    signal: 'FRONTIER GOVERNANCE',
+    url: 'https://openai.com/index/frontier-safety-blueprint',
+  },
+  {
+    id: 'dreambeans',
+    source: 'Google DeepMind',
+    kind: 'company',
+    title: 'Meet Dreambeans, an app that connects you with what matters',
+    summary:
+      '구글 랩스가 실험 앱 Dreambeans를 안드로이드·iOS에 미국 먼저 냈다. ' +
+      'Gmail·캘린더·사진·유튜브·검색 기록을 엮어 매일 개인화된 이야기와 ' +
+      '일러스트를 만들어 준다.',
+    publishedAt: '2026-06-03',
+    category: 'Product',
+    signal: 'PERSONAL AI',
+    url: 'https://blog.google/innovation-and-ai/models-and-research/google-labs/dreambeans/',
+  },
+  {
+    id: 'ai-enabled-cyber-threats-mitre-attack',
+    source: 'Anthropic',
+    kind: 'industry',
+    title: 'What we learned mapping a year’s worth of AI-enabled cyber threats',
+    summary:
+      '앤트로픽이 2025년 3월부터 1년간 악성 사이버 활동으로 차단한 계정 ' +
+      '832개를 분석해 MITRE ATT&CK 프레임워크에 매핑한 결과를 공개했다. ' +
+      '중간 위험 이상으로 분류된 행위자 비율은 앞 6개월 33%에서 뒤 6개월 ' +
+      '56%로 올랐다.',
+    publishedAt: '2026-06-03',
+    category: 'Policy',
+    signal: 'AI THREAT INTEL',
+    url: 'https://www.anthropic.com/news/AI-enabled-cyber-threats-mitre-attack',
+  },
+  {
+    id: 'google-data-center-sweden',
+    source: 'Google DeepMind',
+    kind: 'industry',
+    title: 'Blue, yellow and green: Google invests in its new data center in Sweden.',
+    summary:
+      '구글이 스웨덴 호른달에 데이터센터를 착공했다. Search와 구글 클라우드, ' +
+      '유튜브를 지원하는 시설로 직접 고용 100명을 만들고 지역 사업에 500만 유로 ' +
+      '기금을 내놓는다.',
+    publishedAt: '2026-06-02',
+    category: 'Infrastructure',
+    signal: 'COMPUTE BUILDOUT',
+    url: 'https://blog.google/innovation-and-ai/infrastructure-and-cloud/global-network/blue-yellow-and-green-google-invests-in-its-first-data-center-in-sweden/',
+  },
+  {
+    id: 'expanding-project-glasswing',
+    source: 'Anthropic',
+    kind: 'company',
+    title: 'Expanding Project Glasswing',
+    summary:
+      '앤트로픽이 중요 소프트웨어의 보안 취약점을 찾는 Project ' +
+      'Glasswing에 약 150개 조직을 추가한다. 기존 참가 기관들은 이미 ' +
+      '고위험·치명 등급 취약점 1만 건 이상을 찾아냈다.',
+    publishedAt: '2026-06-02',
+    category: 'Product',
+    signal: 'AI CYBER DEFENSE',
+    url: 'https://www.anthropic.com/news/expanding-project-glasswing',
+  },
+  {
+    id: 'codex-for-knowledge-work',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'Codex is becoming a productivity tool for everyone',
+    summary:
+      'OpenAI가 Codex 사용 실태를 담은 보고서 \'지식 업무의 다음 시대\'를 ' +
+      '냈다. 주간 사용자 500만 명 가운데 약 20%가 개발자가 아닌 지식 ' +
+      '노동자이며, 이 집단이 3배 빠르게 늘고 있다.',
+    publishedAt: '2026-06-02',
+    category: 'Product',
+    signal: 'KNOWLEDGE WORK ADOPTION',
+    url: 'https://openai.com/index/codex-for-knowledge-work',
+  },
+  {
+    id: 'codex-for-every-role-tool-workflow',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'Codex for every role, tool, and workflow',
+    summary:
+      'OpenAI가 Codex에 역할별 플러그인 6종과 주석 기능을 추가하고, ' +
+      '결과물을 웹사이트·앱으로 만들어 공유하는 Sites를 프리뷰로 내놨다. 플러그인 ' +
+      '6종은 62개 앱과 110개 기술을 함께 제공한다.',
+    publishedAt: '2026-06-02',
+    category: 'Product',
+    signal: 'KNOWLEDGE WORK AGENTS',
+    url: 'https://openai.com/index/codex-for-every-role-tool-workflow',
+  },
+  {
+    id: 'advancing-youth-safety-global-leadership',
+    source: 'OpenAI',
+    kind: 'industry',
+    title: 'Advancing youth safety and opportunity through global leadership',
+    summary:
+      'OpenAI가 프랑스 에비앙 G7 정상회의를 앞두고 청소년 AI 안전을 다룰 ' +
+      '국제 연구소 설립을 제안했다. 연령 확인, 연간 위험 평가, 부모 제어, 독립 ' +
+      '감사 등 9개 원칙도 함께 제시했다.',
+    publishedAt: '2026-06-02',
+    category: 'Policy',
+    signal: 'YOUTH AI SAFETY',
+    url: 'https://openai.com/index/advancing-youth-safety-and-opportunity-through-global-leadership',
+  },
+  {
+    id: 'tech-and-tariffs',
+    source: 'OpenAI',
+    kind: 'industry',
+    title: '“Tech and Tariffs” Campaign: Influence activity targeting US tech policy',
+    summary:
+      'OpenAI가 중국에서 시작된 것으로 보이는 ChatGPT 계정 묶음을 ' +
+      '차단했다. 이들은 미국 기술정책과 관세를 비판하는 영문 댓글과 트럼프 대통령만 ' +
+      '등장하는 만평을 만들어 가짜로 보이는 X 계정으로 올렸다.',
+    publishedAt: '2026-06-01',
+    category: 'Policy',
+    signal: 'INFLUENCE OPERATIONS',
+    url: 'https://openai.com/index/disrupting-malicious-uses-of-ai-tech-and-tariffs',
+  },
+  {
+    id: 'stargate-michigan-data-center',
+    source: 'OpenAI',
+    kind: 'industry',
+    title: 'Building the infrastructure for the Intelligence Age in Michigan',
+    summary:
+      'OpenAI가 미시간주 세일린에 1GW 규모 데이터센터 캠퍼스 The Barn을 ' +
+      '착공했다. Oracle, Related Digital, Walbridge가 함께 ' +
+      '참여하며 Stargate 프로그램의 일부다.',
+    publishedAt: '2026-06-01',
+    category: 'Infrastructure',
+    signal: 'COMPUTE BUILDOUT',
+    url: 'https://openai.com/index/stargate-michigan-data-center',
+  },
+  {
+    id: 'our-views-on-ai-policy-advocacy',
+    source: 'OpenAI',
+    kind: 'industry',
+    title: 'Our views on AI policy and political advocacy',
+    summary:
+      'OpenAI가 정치 자금에 관한 입장을 공개했다. 슈퍼 PAC이나 직원 자금 ' +
+      'PAC에 기부한 적이 없고 정치 후보·캠페인 후원도 하지 않았으며, 방침이 ' +
+      '바뀌면 공개하겠다고 밝혔다.',
+    publishedAt: '2026-06-01',
+    category: 'Policy',
+    signal: 'AI POLICY',
+    url: 'https://openai.com/index/our-views-on-ai-policy-and-political-advocacy',
+  },
+  {
+    id: 'openai-models-and-codex-on-aws',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'OpenAI frontier models and Codex are now available on AWS',
+    summary:
+      'OpenAI 프런티어 모델과 Codex가 AWS에서 정식 제공된다. Amazon ' +
+      'Bedrock으로 모델을 쓰고 Codex도 AWS 환경에서 돌릴 수 있으며, ' +
+      '상용과 정부 클라우드 리전을 모두 지원한다.',
+    publishedAt: '2026-06-01',
+    category: 'Product',
+    signal: 'ENTERPRISE DISTRIBUTION',
+    url: 'https://openai.com/index/openai-frontier-models-and-codex-are-now-available-on-aws',
+  },
+  {
+    id: 'data-center-bandwagon',
+    source: 'OpenAI',
+    kind: 'industry',
+    title: '“Data Center Bandwagon” Campaign: US-targeted influence activity',
+    summary:
+      'OpenAI가 중국발로 추정되는 ChatGPT 계정 묶음을 차단했다. 이들은 ' +
+      '미국인 행세를 하며 데이터센터와 AI가 전기 요금을 올린다는 영문 댓글과 ' +
+      '이미지를 만들어 X에 올렸다.',
+    publishedAt: '2026-06-01',
+    category: 'Policy',
+    signal: 'COVERT INFLUENCE OPS',
+    url: 'https://openai.com/index/disrupting-malicious-uses-of-ai-data-center-bandwagon',
+  },
+  {
+    id: 'confidential-draft-s1-sec',
+    source: 'Anthropic',
+    kind: 'company',
+    title: 'Anthropic confidentially submits draft S-1 to the SEC',
+    summary:
+      'Anthropic이 2026년 6월 1일 보통주 기업공개를 위한 S-1 ' +
+      '등록신고서 초안을 SEC에 비공개로 제출했다. SEC 심사가 끝나면 상장을 ' +
+      '선택할 수 있게 되며 실제 진행은 시장 상황에 달렸다고 밝혔다.',
+    publishedAt: '2026-06-01',
+    category: 'Policy',
+    signal: 'IPO FILING',
+    url: 'https://www.anthropic.com/news/confidential-draft-s1-sec',
+  },
+  {
+    id: 'third-party-evaluations',
+    source: 'OpenAI',
+    kind: 'industry',
+    title: 'A shared playbook for trustworthy third party evaluations',
+    summary:
+      'OpenAI가 프런티어 모델을 평가하는 제3자를 위한 권고안을 공개했다. 평가가 ' +
+      '어떤 주장을 검증하는지 밝히고, 하네스 선택과 타당성 점검을 결과와 함께 ' +
+      '보고하라는 내용이다.',
+    publishedAt: '2026-05-29',
+    category: 'Policy',
+    signal: 'EVAL STANDARDS',
+    url: 'https://openai.com/index/trustworthy-third-party-evaluations-foundations',
+  },
+  {
+    id: 'rosalind-biodefense',
+    source: 'OpenAI',
+    kind: 'industry',
+    title: 'Strengthening societal resilience with Rosalind Biodefense',
+    summary:
+      'OpenAI가 생명과학 추론 모델 GPT-Rosalind를 활용하는 ' +
+      'Rosalind 생물방어 프로그램을 시작했다. 공중보건·생물방어 임무를 맡은 ' +
+      '일부 미국 정부 기관과 동맹국 파트너로 GPT-Rosalind 신뢰 기반 ' +
+      '액세스도 확대한다.',
+    publishedAt: '2026-05-29',
+    category: 'Policy',
+    signal: 'BIODEFENSE ACCESS',
+    url: 'https://openai.com/index/strengthening-societal-resilience-with-rosalind-biodefense',
+  },
+  {
+    id: 'series-h',
+    source: 'Anthropic',
+    kind: 'company',
+    title: 'Anthropic raises $65B in Series H funding at $965B post-money valuation',
+    summary:
+      'Anthropic이 시리즈 H로 650억 달러를 조달했다. 투자 후 기업가치는 ' +
+      '9650억 달러이며, 자금은 안전·해석가능성 연구와 컴퓨트 확장, 제품·파트너십 ' +
+      '확대에 쓴다.',
+    publishedAt: '2026-05-28',
+    category: 'Infrastructure',
+    signal: 'COMPUTE BUILDOUT',
+    url: 'https://www.anthropic.com/news/series-h',
+  },
+  {
+    id: 'frontier-governance-framework',
+    source: 'OpenAI',
+    kind: 'industry',
+    title: 'OpenAI’s Frontier Governance Framework',
+    summary:
+      'OpenAI가 Frontier Governance Framework를 공개했다. ' +
+      '캘리포니아 Transparency in Frontier AI Act와 EU AI ' +
+      'Act 범용 AI 실천 강령 등 새 법적 요구사항에 자사 안전·보안 관행이 ' +
+      '어떻게 대응하는지 정리한 문서다.',
+    publishedAt: '2026-05-28',
+    category: 'Policy',
+    signal: 'AI REGULATION',
+    url: 'https://openai.com/index/openai-frontier-governance-framework',
+  },
+  {
+    id: 'claude-opus-4-8',
+    source: 'Anthropic',
+    kind: 'model',
+    title: 'Introducing Claude Opus 4.8',
+    summary:
+      'Anthropic이 Opus 4.7의 후속인 Claude Opus 4.8을 ' +
+      '공개했다. 가격은 그대로 두고 코딩·에이전트 벤치마크를 끌어올렸으며, 노력 ' +
+      '제어와 동적 워크플로 기능이 함께 출시됐다.',
+    publishedAt: '2026-05-28',
+    category: 'Models',
+    signal: 'AGENTIC MODELS',
+    url: 'https://www.anthropic.com/news/claude-opus-4-8',
+    model: {
+      family: 'Claude',
+      name: 'Claude Opus 4.8',
+      kind: '신규 모델',
+      status: '공개',
+      useCase: '장기 실행 코딩 에이전트',
+      headline:
+        '가격 동결, 판단력과 정직성을 끌어올린 Opus 업그레이드',
+      logo: 'assets/claude.svg',
+      tone: 'claude',
+    },
+  },
+  {
+    id: 'milan-office-opening',
+    source: 'Anthropic',
+    kind: 'company',
+    title: 'Anthropic opens Milan office to support Italian enterprise, research, and developers',
+    summary:
+      'Anthropic이 밀라노에 사무소를 연다. 런던·더블린·파리·취리히·뮌헨에 ' +
+      '이은 여섯 번째 유럽 거점이며, 이탈리아 금융·제약·에너지 기업의 Claude ' +
+      '도입 사례도 함께 공개했다.',
+    publishedAt: '2026-05-27',
+    category: 'Product',
+    signal: 'ENTERPRISE EXPANSION',
+    url: 'https://www.anthropic.com/news/milan-office-opening',
+  },
+  {
+    id: 'election-safeguards-2026',
+    source: 'OpenAI',
+    kind: 'industry',
+    title: 'Election information and safeguards in 2026',
+    summary:
+      'OpenAI가 2026년 선거를 앞둔 대응책을 공개했다. 올가을 미국·브라질에서 ' +
+      'AP통신 개표 결과를 ChatGPT에 제공하고, 선거 시스템 제조사에 사이버 ' +
+      '방어 도구를 열며, 이번 주기 정치 광고는 받지 않는다.',
+    publishedAt: '2026-05-27',
+    category: 'Policy',
+    signal: 'ELECTION INTEGRITY',
+    url: 'https://openai.com/index/election-safeguards-2026',
+  },
+  {
+    id: 'anthropic-korea',
+    source: 'Anthropic',
+    kind: 'company',
+    title: 'Anthropic appoints KiYoung Choi as Representative Director of Korea',
+    summary:
+      'Anthropic이 KiYoung Choi를 한국 대표이사로 선임하고 서울 ' +
+      '사무소 개설을 알렸다. 아시아태평양 세 번째 거점으로, 국내 기업·스타트업 ' +
+      '파트너십과 개발자 커뮤니티 지원을 맡는다.',
+    publishedAt: '2026-05-26',
+    category: 'Product',
+    signal: 'KOREA EXPANSION',
+    url: 'https://www.anthropic.com/news/kiyoung-choi-representative-director-anthropic-korea',
+  },
+  {
+    id: 'folha-uol-partnership',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'OpenAI, Grupo Folha and Grupo UOL announce strategic content partnership',
+    summary:
+      'OpenAI가 브라질 Grupo Folha·Grupo UOL과 콘텐츠 제휴를 ' +
+      '맺었다. 브라질 첫 언론 제휴로, Folha de S.Paulo와 UOL의 ' +
+      '보도가 출처 링크와 함께 ChatGPT 요약에 표시된다.',
+    publishedAt: '2026-05-25',
+    category: 'Product',
+    signal: 'MEDIA LICENSING',
+    url: 'https://openai.com/index/grupo-folha-grupo-uol-partnership',
+  },
+  {
+    id: 'the-next-phase-of-education-for-countries',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'The next phase of OpenAI’s Education for Countries',
+    summary:
+      'OpenAI가 올해 다보스에서 시작한 Education for ' +
+      'Countries의 1차 코호트 진행 상황을 공개하고 싱가포르의 합류를 알렸다. ' +
+      '국가별 배포 규모와 초기 조사 수치를 함께 내놨다.',
+    publishedAt: '2026-05-20',
+    category: 'Policy',
+    signal: 'NATIONAL AI EDUCATION',
+    url: 'https://openai.com/index/the-next-phase-of-education-for-countries',
+  },
+  {
+    id: 'running-guide-agent',
+    source: 'Google DeepMind',
+    kind: 'model',
+    title: 'Running Guide agent: A step towards running unbounded',
+    summary:
+      '구글 딥마인드가 시각장애·저시력 러너를 위한 Running Guide 에이전트를 ' +
+      '공개했다. 가슴에 단 Pixel 10 Pro가 앞길을 보고 소리로 안내하며, ' +
+      '온디바이스 분할 모델과 Gemma 4 E4B가 함께 돈다.',
+    publishedAt: '2026-05-20',
+    category: 'Product',
+    signal: 'ON-DEVICE AGENTS',
+    url: 'https://blog.google/innovation-and-ai/models-and-research/google-deepmind/running-guide-agent/',
+  },
+  {
+    id: 'model-disproves-discrete-geometry-conjecture',
+    source: 'OpenAI',
+    kind: 'industry',
+    title: 'An OpenAI model has disproved a central conjecture in discrete geometry',
+    summary:
+      'OpenAI가 내부 범용 추론 모델이 1946년 에르되시가 제기한 평면 단위거리 ' +
+      '문제의 오랜 추측을 반증했다고 밝혔다. 외부 수학자들이 증명을 검증했고, 배경을 ' +
+      '설명한 해설 논문도 함께 나왔다.',
+    publishedAt: '2026-05-20',
+    category: 'Models',
+    signal: 'AI MATH DISCOVERY',
+    url: 'https://openai.com/index/model-disproves-discrete-geometry-conjecture',
+  },
+  {
+    id: 'google-beam-group-meetings',
+    source: 'Google DeepMind',
+    kind: 'company',
+    title: 'A new experiment brings better group meetings to Google Beam',
+    summary:
+      '구글이 Beam에서 그룹 회의를 개선하는 실험을 공개했다. HP ' +
+      'Dimension 디스플레이로 비Beam 기기 참가자를 실제 크기로 렌더링하고, ' +
+      '공간 음향이 목소리를 화자 위치에 고정한다.',
+    publishedAt: '2026-05-20',
+    category: 'Product',
+    signal: 'IMMERSIVE MEETINGS',
+    url: 'https://blog.google/innovation-and-ai/models-and-research/google-research/google-beam-group-meetings/',
+  },
+  {
+    id: 'stitch-updates',
+    source: 'Google DeepMind',
+    kind: 'company',
+    title: 'We’re introducing new ways to design in real time with Stitch.',
+    summary:
+      '구글이 디자인 도구 Stitch에 실시간 작업 기능을 넣었다. Stitch ' +
+      'Agent가 수정 과정을 스트리밍으로 보여주고, 텍스트·음성·기존 코드베이스와 ' +
+      '디자인 파일을 입력으로 받는다.',
+    publishedAt: '2026-05-19',
+    category: 'Product',
+    signal: 'AGENTIC DESIGN',
+    url: 'https://blog.google/innovation-and-ai/models-and-research/google-labs/stitch-updates/',
+  },
+  {
+    id: 'pomelli-agentic-capabilities',
+    source: 'Google DeepMind',
+    kind: 'company',
+    title: 'Pomelli adds new ways to build brand content and design websites.',
+    summary:
+      '구글 랩스가 중소기업용 콘텐츠 도구 Pomelli에 에이전트 기능을 붙였다. ' +
+      'Pomelli Agent가 브랜드 정체성을 잡아 주고, 이를 바탕으로 브랜드북과 ' +
+      '웹사이트를 만들 수 있다.',
+    publishedAt: '2026-05-19',
+    category: 'Product',
+    signal: 'SMB CONTENT AGENTS',
+    url: 'https://blog.google/innovation-and-ai/models-and-research/google-labs/pomelli-agentic-capabilities/',
+  },
+  {
+    id: 'next-evolution-gemini-app',
+    source: 'Google DeepMind',
+    kind: 'company',
+    title: 'The Gemini app becomes more agentic, delivering proactive, 24/7 help',
+    summary:
+      '구글이 I/O 2026에 맞춰 제미나이 앱을 개편했다. 새 디자인 Neural ' +
+      'Expressive와 함께 Daily Brief, 24시간 도는 에이전트 ' +
+      'Gemini Spark, 영상 생성 모델 Gemini Omni를 내놨다.',
+    publishedAt: '2026-05-19',
+    category: 'Product',
+    signal: 'PROACTIVE AGENTS',
+    url: 'https://blog.google/innovation-and-ai/products/gemini-app/next-evolution-gemini-app/',
+  },
+  {
+    id: 'managed-agents-gemini-api',
+    source: 'Google DeepMind',
+    kind: 'company',
+    title: 'Introducing Managed Agents in the Gemini API',
+    summary:
+      '구글이 Gemini API에 Managed Agents를 프리뷰로 열었다. ' +
+      'Gemini 3.5 Flash 기반 Antigravity 에이전트가 격리된 ' +
+      '리눅스 샌드박스에서 코드를 실행하고 웹을 탐색한다.',
+    publishedAt: '2026-05-19',
+    category: 'Product',
+    signal: 'MANAGED AGENTS',
+    url: 'https://blog.google/innovation-and-ai/technology/developers-tools/managed-agents-gemini-api/',
+  },
+  {
+    id: 'introducing-openai-for-singapore',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'Introducing OpenAI for Singapore',
+    summary:
+      'OpenAI가 싱가포르 디지털개발정보부(MDDI)와 함께 OpenAI for ' +
+      'Singapore를 시작했다. 3억 싱가포르달러가 넘는 투자를 약속했고, 미국 ' +
+      '밖 첫 응용 AI 랩을 싱가포르에 세운다.',
+    publishedAt: '2026-05-19',
+    category: 'Policy',
+    signal: 'NATIONAL AI PARTNERSHIP',
+    url: 'https://openai.com/index/introducing-openai-for-singapore',
+  },
+  {
+    id: 'flow-updates',
+    source: 'Google DeepMind',
+    kind: 'company',
+    title: 'New agents, mobile apps and Gemini Omni for Google Flow and Google Flow Music',
+    summary:
+      '구글이 Flow와 Flow Music에 Gemini Omni Flash와 ' +
+      'Flow Agent를 넣었다. 자연어로 만든 도구를 다른 사용자와 공유할 수 ' +
+      '있고, 모바일 앱과 함께 140개국 이상으로 확대됐다.',
+    publishedAt: '2026-05-19',
+    category: 'Product',
+    signal: 'GENERATIVE MEDIA',
+    url: 'https://blog.google/innovation-and-ai/models-and-research/google-labs/flow-updates/',
+  },
+  {
+    id: 'blackstone-tpu-cloud',
+    source: 'Google DeepMind',
+    kind: 'industry',
+    title: 'Blackstone will create a new TPU cloud in a joint venture with Google.',
+    summary:
+      '블랙스톤이 구글과 합작해 새 TPU 클라우드 회사를 만든다고 발표했다. ' +
+      '블랙스톤이 초기 지분 50억 달러를 넣고 구글이 TPU와 소프트웨어·서비스를 ' +
+      '대며, 2027년 500MW 가동을 목표로 한다.',
+    publishedAt: '2026-05-19',
+    category: 'Infrastructure',
+    signal: 'COMPUTE BUILDOUT',
+    url: 'https://blog.google/innovation-and-ai/infrastructure-and-cloud/google-cloud/blackstone-tpu-cloud/',
+  },
+  {
+    id: 'advancing-content-provenance',
+    source: 'OpenAI',
+    kind: 'industry',
+    title: 'Advancing content provenance for a safer, more transparent AI ecosystem',
+    summary:
+      'OpenAI가 콘텐츠 출처 표시를 다층 구조로 강화했다. C2PA 적합 생성 ' +
+      '제품 인증을 받고, 구글 딥마인드 SynthID 워터마크를 이미지에 넣으며, ' +
+      '공개 검증 도구를 프리뷰로 열었다.',
+    publishedAt: '2026-05-19',
+    category: 'Policy',
+    signal: 'CONTENT PROVENANCE',
+    url: 'https://openai.com/index/advancing-content-provenance',
+  },
+  {
+    id: 'dell-codex-enterprise-partnership',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'OpenAI and Dell partner to bring Codex to hybrid and on-premise enterprise environments',
+    summary:
+      'OpenAI와 Dell이 Codex를 기업의 하이브리드·온프레미스 환경에 ' +
+      '배포하기 위해 협력한다고 밝혔다. Codex를 Dell AI Data ' +
+      'Platform과 연결해 사내에 저장·관리되는 데이터와 시스템 가까이에서 ' +
+      '동작하도록 한다.',
+    publishedAt: '2026-05-18',
+    category: 'Infrastructure',
+    signal: 'ENTERPRISE AI INFRA',
+    url: 'https://openai.com/index/dell-codex-enterprise-partnership',
+  },
+  {
+    id: 'anthropic-acquires-stainless',
+    source: 'Anthropic',
+    kind: 'company',
+    title: 'Anthropic acquires Stainless',
+    summary:
+      '앤트로픽이 SDK 생성 회사 Stainless를 인수한다. Stainless는 ' +
+      'API 명세를 여러 언어의 SDK로 바꿔 주는 도구를 만들며, 앤트로픽 공식 ' +
+      'SDK를 API 초기부터 전부 만들어 왔다.',
+    publishedAt: '2026-05-18',
+    category: 'Product',
+    signal: 'MCP ECOSYSTEM',
+    url: 'https://www.anthropic.com/news/anthropic-acquires-stainless',
+  },
+  {
+    id: 'project-genie-expands',
+    source: 'Google DeepMind',
+    kind: 'model',
+    title: 'Simulate real-world places with Project Genie and Street View',
+    summary:
+      '구글이 Project Genie에 스트리트 뷰를 연결했다. 지도에서 실제 장소를 ' +
+      '찍고 스타일을 골라 그 장소를 다시 그린 월드를 만들 수 있으며, Google ' +
+      'AI Ultra 구독자에게 순차 제공된다.',
+    publishedAt: '2026-05-17',
+    category: 'Models',
+    signal: 'WORLD MODELS',
+    url: 'https://deepmind.google/blog/simulate-real-world-places-with-project-genie-and-street-view/',
+  },
+  {
+    id: 'identifying-ai-generated-media-online',
+    source: 'Google DeepMind',
+    kind: 'industry',
+    title: 'Making it easier to understand how content was created and edited',
+    summary:
+      '구글이 SynthID 워터마크와 C2PA 콘텐츠 자격증명 검증을 ' +
+      '검색·크롬·제미나이·픽셀·클라우드로 확대한다고 밝혔다. 클라우드에는 AI 콘텐츠 ' +
+      '탐지 API를 신뢰 파트너 대상으로 내놓는다.',
+    publishedAt: '2026-05-17',
+    category: 'Policy',
+    signal: 'CONTENT PROVENANCE',
+    url: 'https://deepmind.google/blog/making-it-easier-to-understand-how-content-was-created-and-edited/',
+  },
+  {
+    id: 'google-antigravity-2',
+    source: 'Google DeepMind',
+    kind: 'company',
+    title: 'Introducing Google Antigravity 2.0',
+    summary:
+      '구글이 Antigravity 2.0을 IDE와 분리된 데스크톱 앱으로 내놨다. ' +
+      '동적 서브에이전트와 비동기 작업 관리, cron 예약 실행이 들어갔고 ' +
+      'macOS·리눅스·윈도우를 지원한다.',
+    publishedAt: '2026-05-17',
+    category: 'Product',
+    signal: 'AGENTIC CODING',
+    url: 'https://deepmind.google/blog/introducing-google-antigravity-2-0/',
+  },
+  {
+    id: 'gemini-omni',
+    source: 'Google DeepMind',
+    kind: 'model',
+    title: 'Introducing Gemini Omni',
+    summary:
+      '구글이 멀티모달 모델 계열 Gemini Omni를 공개하고 첫 모델로 Omni ' +
+      'Flash를 내놨다. 이미지·오디오·영상·텍스트를 함께 입력받아 영상을 만들고 ' +
+      '대화로 고칠 수 있다.',
+    publishedAt: '2026-05-17',
+    category: 'Models',
+    signal: 'MULTIMODAL MODELS',
+    url: 'https://deepmind.google/blog/introducing-gemini-omni/',
+    model: {
+      family: 'Gemini',
+      name: 'Gemini Omni',
+      kind: '모델 패밀리',
+      status: '공개',
+      useCase: '멀티모달 영상 생성·편집',
+      headline:
+        '이미지·오디오·영상·텍스트를 한꺼번에 받아 영상을 만들고 대화로 고치는 첫 ' +
+        'Omni 계열',
+      logo: 'assets/gemini.svg',
+      tone: 'gemini',
+    },
+  },
+  {
+    id: 'gemini-for-science',
+    source: 'Google DeepMind',
+    kind: 'company',
+    title: 'Gemini for Science: AI experiments and tools for a new era of discovery',
+    summary:
+      '구글이 과학 연구용 도구 묶음 Gemini for Science를 공개했다. ' +
+      '가설 생성, 계산 탐색, 문헌 정리 세 가지 실험 도구를 구글 랩스에서 순차 ' +
+      '제공한다.',
+    publishedAt: '2026-05-17',
+    category: 'Product',
+    signal: 'AI FOR SCIENCE',
+    url: 'https://deepmind.google/blog/gemini-for-science-ai-experiments-and-tools-for-a-new-era-of-discovery/',
+  },
+  {
+    id: 'strengthening-singapores-ai-future',
+    source: 'Google DeepMind',
+    kind: 'company',
+    title: 'Strengthening Singapore’s AI Future: A New National Partnership',
+    summary:
+      '구글 딥마인드가 싱가포르 정부와 국가 단위 AI 파트너십을 맺고 ' +
+      '의료·과학·교육·지속가능성 프로그램을 시작한다. 지난해 문을 연 싱가포르 ' +
+      '연구소를 기반으로 삼는다.',
+    publishedAt: '2026-05-16',
+    category: 'Policy',
+    signal: 'NATIONAL AI PARTNERSHIPS',
+    url: 'https://deepmind.google/blog/strengthening-singapores-ai-future-a-new-national-partnership/',
+  },
+  {
+    id: 'malta-chatgpt-plus-partnership',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'OpenAI and Malta partner to bring ChatGPT Plus to all citizens',
+    summary:
+      '오픈AI가 몰타 정부와 손잡고 전 국민에게 ChatGPT Plus를 제공한다. ' +
+      '몰타대학교가 만든 AI 리터러시 과정을 수료하면 1년 무료 이용권이 주어진다.',
+    publishedAt: '2026-05-16',
+    category: 'Policy',
+    signal: 'NATIONAL AI ACCESS',
+    url: 'https://openai.com/index/malta-chatgpt-plus-partnership',
+  },
+  {
+    id: 'personal-finance-chatgpt',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'A new personal finance experience in ChatGPT',
+    summary:
+      '오픈AI가 ChatGPT에 금융 계좌를 연결해 지출·투자 현황을 보고 질문하는 ' +
+      'Finances 기능을 프리뷰로 열었다. 미국 Pro 사용자가 웹과 iOS ' +
+      '앱에서 먼저 쓸 수 있다.',
+    publishedAt: '2026-05-15',
+    category: 'Product',
+    signal: 'FINANCIAL ASSISTANTS',
+    url: 'https://openai.com/index/personal-finance-chatgpt',
+  },
+  {
+    id: 'gemini-3-5',
+    source: 'Google DeepMind',
+    kind: 'model',
+    title: 'Gemini 3.5: frontier intelligence with action',
+    summary:
+      '구글이 제미나이 3.5 계열을 공개하고 첫 모델로 3.5 플래시를 출시했다. ' +
+      '에이전트와 코딩에 초점을 맞췄으며 3.5 프로는 다음 달 배포 예정이다.',
+    publishedAt: '2026-05-15',
+    category: 'Models',
+    signal: 'AGENTIC MODELS',
+    url: 'https://deepmind.google/blog/gemini-3-5-frontier-intelligence-with-action/',
+    model: {
+      family: 'Gemini',
+      name: 'Gemini 3.5',
+      kind: '모델 패밀리',
+      status: '공개',
+      useCase: '장기 실행 에이전트와 코딩',
+      headline:
+        '플래시부터 공개, 프로는 다음 달. 상위 라인을 벤치마크에서 넘었다.',
+      logo: 'assets/gemini.svg',
+      tone: 'gemini',
+    },
+  },
+  {
+    id: 'work-with-codex-from-anywhere',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'Work with Codex from anywhere',
+    summary:
+      '오픈AI가 ChatGPT 모바일 앱에 Codex를 프리뷰로 넣었다. 노트북이나 ' +
+      '원격 환경에서 도는 Codex 세션에 휴대폰으로 붙어 승인·검토·방향 전환을 할 ' +
+      '수 있다.',
+    publishedAt: '2026-05-14',
+    category: 'Product',
+    signal: 'AGENTIC DEV TOOLS',
+    url: 'https://openai.com/index/work-with-codex-from-anywhere',
+  },
+  {
+    id: 'gates-foundation-partnership',
+    source: 'Anthropic',
+    kind: 'company',
+    title: 'Anthropic partners with the Gates Foundation',
+    summary:
+      '앤스로픽이 게이츠 재단과 4년간 2억 달러 규모 파트너십을 맺었다. 보조금과 ' +
+      '클로드 크레딧, 기술 지원을 글로벌 보건·생명과학·교육·경제 이동성에 투입한다.',
+    publishedAt: '2026-05-14',
+    category: 'Policy',
+    signal: 'BENEFICIAL DEPLOYMENT',
+    url: 'https://www.anthropic.com/news/gates-foundation-partnership',
+  },
+  {
+    id: 'chatgpt-sensitive-conversations',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'Helping ChatGPT better recognize context in sensitive conversations',
+    summary:
+      '오픈AI가 대화가 이어지는 동안 서서히 드러나는 위험 신호를 ChatGPT가 ' +
+      '인식하도록 안전 업데이트를 적용했다. 자살·자해와 타인 위해 시나리오가 ' +
+      '대상이다.',
+    publishedAt: '2026-05-14',
+    category: 'Policy',
+    signal: 'MODEL SAFETY',
+    url: 'https://openai.com/index/chatgpt-recognize-context-in-sensitive-conversations',
+  },
+  {
+    id: 'tanstack-npm-supply-chain-attack',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'Our response to the TanStack npm supply chain attack',
+    summary:
+      'OpenAI가 TanStack npm 공급망 공격의 영향과 대응을 공개했다. ' +
+      '직원 기기 두 대가 영향을 받아 일부 사내 저장소에서 제한된 자격 증명이 ' +
+      '유출됐고, 코드 서명 인증서를 교체하면서 macOS 사용자에게 앱 업데이트를 ' +
+      '요구했다.',
+    publishedAt: '2026-05-13',
+    category: 'Policy',
+    signal: 'SUPPLY CHAIN',
+    url: 'https://openai.com/index/our-response-to-the-tanstack-npm-supply-chain-attack',
+  },
+  {
+    id: 'claude-for-small-business',
     source: 'Anthropic',
     kind: 'company',
     title: 'Introducing Claude for Small Business',
     summary:
-      'Claude를 회계, 결제, CRM, 디자인과 문서 도구에 연결하고 반복 업무를 실행하는 워크플로를 제공합니다. 대화형 AI가 실제 업무 스택 안으로 들어가는 사례입니다.',
+      '앤트로픽이 중소기업용 패키지 Claude for Small Business를 ' +
+      '공개했다. Claude Cowork 안에서 토글로 설치하며, 재무·영업·인사 등 ' +
+      '여섯 영역의 에이전트 워크플로 15종과 반복 작업 스킬 15종, 주요 업무 도구 ' +
+      '커넥터가 들어간다.',
     publishedAt: '2026-05-13',
     category: 'Product',
-    signal: 'WORKFLOW AI',
+    signal: 'SMB AGENTS',
     url: 'https://www.anthropic.com/news/claude-for-small-business',
   },
   {
-    id: 'claude-design',
+    id: 'building-codex-windows-sandbox',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'Building a safe, effective sandbox to enable Codex on Windows',
+    summary:
+      '오픈AI가 Windows용 Codex 샌드박스를 자체 구현한 과정을 공개했다. ' +
+      'macOS Seatbelt나 리눅스 seccomp에 해당하는 기본 기능이 ' +
+      'Windows에 없어 직접 만들어야 했다.',
+    publishedAt: '2026-05-13',
+    category: 'Infrastructure',
+    signal: 'AGENT SANDBOXING',
+    url: 'https://openai.com/index/building-codex-windows-sandbox',
+  },
+  {
+    id: 'co-scientist-multi-agent',
+    source: 'Google DeepMind',
+    kind: 'model',
+    title: 'Co-Scientist: A multi-agent AI partner to accelerate research',
+    summary:
+      '구글 딥마인드가 과학 가설을 세우고 검증하는 다중 에이전트 시스템 ' +
+      'Co-Scientist를 공개했다. 제미나이를 기반으로 생성·반영·랭킹·진화 ' +
+      '역할이 나뉜 에이전트가 가설을 만들고 토너먼트식 비교로 추리며, 연구 결과는 ' +
+      '네이처에 실렸다.',
+    publishedAt: '2026-05-12',
+    category: 'Models',
+    signal: 'SCIENTIFIC AGENTS',
+    url: 'https://deepmind.google/blog/co-scientist-a-multi-agent-ai-partner-to-accelerate-research/',
+    model: {
+      family: 'Gemini',
+      name: 'Co-Scientist',
+      kind: '연구 프리뷰',
+      status: '제한 공개',
+      useCase: '과학 가설 생성',
+      headline:
+        '제미나이 기반 에이전트들이 가설을 내고 서로 검증한다',
+      logo: 'assets/gemini.svg',
+      tone: 'gemini',
+    },
+  },
+  {
+    id: 'repliqa-quantum-life-sciences',
+    source: 'Google DeepMind',
+    kind: 'company',
+    title: 'Our new initiative to apply quantum science and AI to the life sciences',
+    summary:
+      '구글이 양자 과학과 AI를 생명과학에 적용하는 연구 프로그램 REPLIQA를 ' +
+      '시작했다. Google.org가 1000만 달러를 지원하고 하버드·MIT를 ' +
+      '포함한 대학 다섯 곳이 참여해 분자 수준의 생물학적 과정을 다룬다.',
+    publishedAt: '2026-05-11',
+    category: 'Infrastructure',
+    signal: 'QUANTUM LIFE SCIENCES',
+    url: 'https://blog.google/innovation-and-ai/models-and-research/quantum-computing/repliqa-quantum-computing-life-sciences/',
+  },
+  {
+    id: 'openai-launches-the-deployment-company',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'OpenAI launches DeployCo to help businesses build around intelligence',
+    summary:
+      'OpenAI가 기업의 AI 도입을 전담하는 별도 회사 OpenAI ' +
+      'Deployment Company를 세웠다. 프런티어 AI 배포 전문 ' +
+      '엔지니어(FDE)를 고객사 안에 파견하는 조직이며, 초기 투자금은 40억 달러가 ' +
+      '넘는다.',
+    publishedAt: '2026-05-11',
+    category: 'Product',
+    signal: 'ENTERPRISE DEPLOYMENT',
+    url: 'https://openai.com/index/openai-launches-the-deployment-company',
+  },
+  {
+    id: 'google-threat-intelligence-group-report',
+    source: 'Google DeepMind',
+    kind: 'industry',
+    title: 'Read our new report on AI-powered threats and our latest defenses.',
+    summary:
+      '구글 위협 인텔리전스 그룹이 AI를 활용한 공격과 방어 현황을 정리한 보고서를 ' +
+      '냈다. AI로 개발된 것으로 보이는 제로데이 익스플로잇을 처음 확인했고, 대규모 ' +
+      '공격이 실행되기 전에 선제적으로 발견했다고 밝혔다.',
+    publishedAt: '2026-05-11',
+    category: 'Policy',
+    signal: 'AI THREAT INTEL',
+    url: 'https://blog.google/innovation-and-ai/infrastructure-and-cloud/google-cloud/google-threat-intelligence-group-report/',
+  },
+  {
+    id: 'testing-ads-in-chatgpt',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'Testing ads in ChatGPT',
+    summary:
+      'OpenAI가 ChatGPT 광고 시험을 확대한다고 밝혔다. 2월 미국의 로그인 ' +
+      '성인 Free·Go 이용자로 시작해 캐나다·호주·뉴질랜드로 넓혔고, 이번에 ' +
+      '영국·멕시코·브라질·일본·한국까지 파일럿을 확대할 계획을 알렸다.',
+    publishedAt: '2026-05-07',
+    category: 'Product',
+    signal: 'CHATGPT ADS',
+    url: 'https://openai.com/index/testing-ads-in-chatgpt',
+  },
+  {
+    id: 'introducing-trusted-contact-in-chatgpt',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'Introducing Trusted Contact in ChatGPT',
+    summary:
+      'OpenAI가 ChatGPT에 선택형 안전 기능 Trusted Contact를 ' +
+      '순차 출시했다. 성인 사용자가 신뢰하는 성인 한 명을 미리 지정해 두면, 자해 ' +
+      '관련 심각한 안전 우려가 감지될 때 훈련된 검토를 거쳐 알림이 전달된다.',
+    publishedAt: '2026-05-07',
+    category: 'Product',
+    signal: 'CONSUMER SAFETY',
+    url: 'https://openai.com/index/introducing-trusted-contact-in-chatgpt',
+  },
+  {
+    id: 'gpt-5-5-with-trusted-access-for-cyber',
+    source: 'OpenAI',
+    kind: 'model',
+    title: 'Scaling Trusted Access for Cyber with GPT-5.5 and GPT-5.5-Cyber',
+    summary:
+      'OpenAI가 사이버 방어 전용 모델 GPT-5.5-Cyber를 핵심 인프라 ' +
+      '방어자 대상 한정 프리뷰로 내놓았다. 함께 운영하는 신원 검증 프로그램 ' +
+      'Trusted Access for Cyber를 거치면 GPT-5.5에서도 방어 ' +
+      '작업에 대한 거부가 줄어든다.',
+    publishedAt: '2026-05-07',
+    category: 'Models',
+    signal: 'CYBER DEFENSE MODELS',
+    url: 'https://openai.com/index/gpt-5-5-with-trusted-access-for-cyber',
+    model: {
+      family: 'GPT',
+      name: 'GPT-5.5-Cyber',
+      kind: '신규 모델',
+      status: '제한 공개',
+      useCase: '검증된 방어자의 사이버 보안 작업',
+      headline:
+        '레드팀·침투 테스트까지 허용 범위를 넓힌 사이버 전용 모델',
+      logo: 'assets/openai.svg',
+      tone: 'gpt',
+    },
+  },
+  {
+    id: 'alphaevolve-updates',
+    source: 'Google DeepMind',
+    kind: 'company',
+    title: 'Find out how AlphaEvolve has gone from research to solving real-life problems.',
+    summary:
+      '구글이 Gemini 기반 진화 알고리즘 에이전트 AlphaEvolve의 공개 ' +
+      '1년 성과를 짧게 정리했다. 연구를 넘어 유전체 분석과 재해 예측, 전력망 같은 ' +
+      '실제 문제에 적용되고 있다고 밝혔다.',
+    publishedAt: '2026-05-07',
+    category: 'Product',
+    signal: 'AI FOR SCIENCE',
+    url: 'https://blog.google/innovation-and-ai/infrastructure-and-cloud/google-cloud/alphaevolve-updates/',
+  },
+  {
+    id: 'advancing-voice-intelligence-api',
+    source: 'OpenAI',
+    kind: 'model',
+    title: 'Advancing voice intelligence with new models in the API',
+    summary:
+      'OpenAI가 실시간 오디오 모델 세 종을 API에 추가했다. GPT-5급 ' +
+      '추론을 갖춘 GPT-Realtime-2, 70개 넘는 입력 언어를 13개 언어로 ' +
+      '옮기는 GPT-Realtime-Translate, 스트리밍 전사용 ' +
+      'GPT-Realtime-Whisper다.',
+    publishedAt: '2026-05-07',
+    category: 'Models',
+    signal: 'REALTIME VOICE',
+    url: 'https://openai.com/index/advancing-voice-intelligence-with-new-models-in-the-api',
+    model: {
+      family: 'GPT',
+      name: 'GPT-Realtime-2',
+      kind: '신규 모델',
+      status: '공개',
+      useCase: '실시간 음성 에이전트와 통역·전사',
+      headline:
+        'GPT-5급 추론과 128K 컨텍스트를 얹은 실시간 음성 모델',
+      logo: 'assets/openai.svg',
+      tone: 'gpt',
+    },
+  },
+  {
+    id: 'higher-limits-spacex',
+    source: 'Anthropic',
+    kind: 'company',
+    title: 'Higher usage limits for Claude and a compute deal with SpaceX',
+    summary:
+      '앤트로픽이 스페이스X의 Colossus 1 데이터센터 용량을 전부 쓰기로 ' +
+      '합의하고, 같은 날 Claude Code와 API 사용 한도를 올렸다. 새 ' +
+      '용량은 300메가와트 이상 규모다.',
+    publishedAt: '2026-05-06',
+    category: 'Infrastructure',
+    signal: 'COMPUTE BUILDOUT',
+    url: 'https://www.anthropic.com/news/higher-limits-spacex',
+  },
+  {
+    id: 'believe-flow-music-partnership',
+    source: 'Google DeepMind',
+    kind: 'company',
+    title: 'Google Flow Music and Believe bring next-gen tools to artists',
+    summary:
+      '구글 랩스가 음악 생성 도구 Flow Music을 아티스트 개발사 ' +
+      'Believe와 손잡고 공급한다. Believe와 TuneCore 소속 ' +
+      '아티스트·프로듀서·작곡가가 Lyria 3 Pro 기반 도구를 쓰게 된다.',
+    publishedAt: '2026-05-06',
+    category: 'Product',
+    signal: 'MUSIC GENERATION',
+    url: 'https://blog.google/innovation-and-ai/models-and-research/google-labs/believe-flow-music-partnership/',
+  },
+  {
+    id: 'alphaevolve-impact',
+    source: 'Google DeepMind',
+    kind: 'company',
+    title: 'AlphaEvolve: How our Gemini-powered coding agent is scaling impact across fields',
+    summary:
+      '딥마인드가 Gemini 기반 코딩 에이전트 AlphaEvolve의 1년 성과를 ' +
+      '수치와 함께 공개했다. 유전체·전력망·양자회로 결과를 제시하고 구글 클라우드를 ' +
+      '통해 기업 고객에게 제공하기 시작했다.',
+    publishedAt: '2026-05-06',
+    category: 'Product',
+    signal: 'ALGORITHM DISCOVERY',
+    url: 'https://deepmind.google/blog/alphaevolve-impact/',
+  },
+  {
+    id: 'new-ways-to-buy-chatgpt-ads',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'New ways to buy ChatGPT ads',
+    summary:
+      'OpenAI가 ChatGPT 광고 파일럿을 확대해 셀프서브 Ads Manager ' +
+      '베타를 열고 대행사·기술 파트너 경로를 추가했다. CPM만 쓰던 입찰에 CPC가 ' +
+      '더해졌고 전환 API와 픽셀 기반 측정도 함께 도입됐다.',
+    publishedAt: '2026-05-05',
+    category: 'Product',
+    signal: 'CHATGPT ADS PLATFORM',
+    url: 'https://openai.com/index/new-ways-to-buy-chatgpt-ads',
+  },
+  {
+    id: 'multi-token-prediction-gemma-4',
+    source: 'Google DeepMind',
+    kind: 'model',
+    title: 'Accelerating Gemma 4: faster inference with  multi-token prediction drafters',
+    summary:
+      '구글이 Gemma 4 계열에 붙는 멀티 토큰 예측(MTP) 드래프터를 공개했다. ' +
+      '추측 디코딩으로 추론 속도가 최대 3배 빨라지며 출력 품질은 기존과 같고, ' +
+      'Apache 2.0으로 Hugging Face와 Kaggle에 올라왔다.',
+    publishedAt: '2026-05-05',
+    category: 'Models',
+    signal: 'INFERENCE SPEEDUP',
+    url: 'https://blog.google/innovation-and-ai/technology/developers-tools/multi-token-prediction-gemma-4/',
+  },
+  {
+    id: 'mrc-supercomputer-networking',
+    source: 'OpenAI',
+    kind: 'industry',
+    title: 'Unlocking large scale AI training networks with MRC (Multipath Reliable Connection)',
+    summary:
+      'OpenAI가 AMD·브로드컴·인텔·마이크로소프트·엔비디아와 함께 만든 GPU ' +
+      '네트워크 프로토콜 MRC를 공개했다. 대규모 학습 클러스터의 혼잡과 장애를 ' +
+      '줄이는 규격을 Open Compute Project에 기여했다.',
+    publishedAt: '2026-05-05',
+    category: 'Infrastructure',
+    signal: 'AI NETWORKING STANDARDS',
+    url: 'https://openai.com/index/mrc-supercomputer-networking',
+  },
+  {
+    id: 'gpt-5-5-instant-system-card',
+    source: 'OpenAI',
+    kind: 'model',
+    title: 'GPT-5.5 Instant System Card',
+    summary:
+      'OpenAI가 GPT-5.5 Instant의 시스템 카드를 공개했다. ' +
+      'Instant 계열 중 처음으로 사이버보안과 생물·화학 항목에서 High ' +
+      '역량으로 분류돼 그에 맞는 안전장치를 적용했다고 밝혔다.',
+    publishedAt: '2026-05-05',
+    category: 'Models',
+    signal: 'MODEL SAFETY',
+    url: 'https://openai.com/index/gpt-5-5-instant-system-card',
+  },
+  {
+    id: 'gpt-5-5-instant',
+    source: 'OpenAI',
+    kind: 'model',
+    title: 'GPT-5.5 Instant: smarter, clearer, and more personalized',
+    summary:
+      'OpenAI가 ChatGPT 기본 모델을 GPT-5.5 Instant로 ' +
+      '교체했다. 고위험 분야 프롬프트에서 환각성 주장이 GPT-5.3 Instant ' +
+      '대비 52.5% 줄었고, 개인화 맥락을 관리하는 메모리 소스도 함께 도입됐다.',
+    publishedAt: '2026-05-05',
+    category: 'Models',
+    signal: 'DEFAULT MODEL UPGRADE',
+    url: 'https://openai.com/index/gpt-5-5-instant',
+    model: {
+      family: 'GPT',
+      name: 'GPT-5.5 Instant',
+      kind: '신규 모델',
+      status: '공개',
+      useCase: '일상 대화와 빠른 응답',
+      headline:
+        'ChatGPT 기본 모델 자리를 넘겨받은 빠른 응답 계열의 새 버전',
+      logo: 'assets/openai.svg',
+      tone: 'gpt',
+    },
+  },
+  {
+    id: 'gemini-file-search-multimodal',
+    source: 'Google DeepMind',
+    kind: 'company',
+    title: 'Gemini API File Search is now multimodal: build efficient, verifiable RAG',
+    summary:
+      '구글이 Gemini API의 File Search에 멀티모달 색인을 추가했다. ' +
+      'Gemini Embedding 2로 이미지와 텍스트를 함께 검색하고, 커스텀 ' +
+      '메타데이터 필터와 페이지 단위 인용도 같이 들어갔다.',
+    publishedAt: '2026-05-05',
+    category: 'Product',
+    signal: 'MULTIMODAL RAG',
+    url: 'https://blog.google/innovation-and-ai/technology/developers-tools/expanded-gemini-api-file-search-multimodal-rag/',
+  },
+  {
+    id: 'finance-agents',
+    source: 'Anthropic',
+    kind: 'company',
+    title: 'Agents for financial services',
+    summary:
+      '앤트로픽이 금융 업무용 에이전트 템플릿 10종과 데이터 커넥터를 공개했다. 유료 ' +
+      '플랜의 Claude Cowork·Claude Code에서 플러그인으로 쓸 수 ' +
+      '있고, Excel·PowerPoint·Word 애드인은 정식 출시됐다.',
+    publishedAt: '2026-05-05',
+    category: 'Product',
+    signal: 'FINANCE AGENTS',
+    url: 'https://www.anthropic.com/news/finance-agents',
+  },
+  {
+    id: 'advancing-youth-safety-in-emea',
+    source: 'OpenAI',
+    kind: 'industry',
+    title: 'Advancing youth safety and wellbeing in EMEA',
+    summary:
+      'OpenAI가 유럽 청소년 안전 청사진을 공개하고 EMEA Youth & ' +
+      'Wellbeing 보조금의 첫 수혜 기관 12곳을 발표했다. 청사진은 정책 ' +
+      '입안자를 위한 다섯 가지 축을 제시한다.',
+    publishedAt: '2026-05-05',
+    category: 'Policy',
+    signal: 'YOUTH SAFETY POLICY',
+    url: 'https://openai.com/index/advancing-youth-safety-in-emea',
+  },
+  {
+    id: 'event-driven-webhooks',
+    source: 'Google DeepMind',
+    kind: 'company',
+    title: 'Reduce friction and latency for long-running jobs with Webhooks in Gemini API',
+    summary:
+      '구글이 Gemini API에 이벤트 기반 웹훅을 추가했다. 오래 걸리는 작업이 ' +
+      '끝나면 HTTP POST로 알려 주므로 폴링이 필요 없고, 최소 1회 전달을 ' +
+      '보장하며 최대 24시간 재시도한다.',
+    publishedAt: '2026-05-04',
+    category: 'Product',
+    signal: 'EVENT DRIVEN APIS',
+    url: 'https://blog.google/innovation-and-ai/technology/developers-tools/event-driven-webhooks/',
+  },
+  {
+    id: 'enterprise-ai-services-company',
+    source: 'Anthropic',
+    kind: 'company',
+    title: 'Building a new enterprise AI services company with Blackstone, Hellman &amp; Friedman, and Goldman Sachs',
+    summary:
+      '앤트로픽이 블랙스톤·헬만앤프리드먼·골드만삭스와 함께 엔터프라이즈 AI 서비스 ' +
+      '회사를 세운다. 중견기업의 핵심 업무에 Claude를 심는 일을 맡으며, ' +
+      '앤트로픽 응용 AI 엔지니어가 함께 투입된다.',
+    publishedAt: '2026-05-04',
+    category: 'Product',
+    signal: 'ENTERPRISE DEPLOYMENT',
+    url: 'https://www.anthropic.com/news/enterprise-ai-services-company',
+  },
+  {
+    id: 'oklahoma-energy-affordability-agreement',
+    source: 'Google DeepMind',
+    kind: 'industry',
+    title: 'How we’re protecting energy affordability in Oklahoma',
+    summary:
+      '구글이 오클라호마 전력사 OG&E와 장기 에너지 협약을 맺었다. ' +
+      '머스코기·스틸워터에 짓는 데이터센터 캠퍼스에 필요한 인프라 비용을 구글이 부담해 ' +
+      '가정과 지역 사업체 요금으로 넘어가지 않게 한다.',
+    publishedAt: '2026-04-30',
+    category: 'Infrastructure',
+    signal: 'DATA CENTER ENERGY',
+    url: 'https://blog.google/innovation-and-ai/infrastructure-and-cloud/global-network/oklahoma-energy-affordability-agreement/',
+  },
+  {
+    id: 'ai-co-clinician',
+    source: 'Google DeepMind',
+    kind: 'model',
+    title: 'Enabling a new model for healthcare with AI co-clinician',
+    summary:
+      '구글 딥마인드가 의사 감독 아래 환자를 돕는 임상 보조 AI 연구 이니셔티브 ' +
+      'AI co-clinician을 공개했다. 근거 조회와 실시간 음성·영상 원격진료 ' +
+      '두 방향으로 평가 결과를 함께 냈다.',
+    publishedAt: '2026-04-30',
+    category: 'Models',
+    signal: 'CLINICAL AI AGENTS',
+    url: 'https://deepmind.google/blog/ai-co-clinician/',
+    model: {
+      family: 'Gemini',
+      name: 'AI co-clinician',
+      kind: '연구 프리뷰',
+      status: '제한 공개',
+      useCase: '임상 근거 조회·원격진료 보조',
+      headline:
+        '의사 감독 아래 실시간 음성·영상으로 환자를 돕는 연구 시스템',
+      logo: 'assets/gemini.svg',
+      tone: 'gemini',
+    },
+  },
+  {
+    id: 'advanced-account-security',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'Introducing Advanced Account Security',
+    summary:
+      'OpenAI가 ChatGPT 계정용 선택형 보안 설정인 고급 계정 보안을 ' +
+      '공개했다. 패스키·보안 키만 허용하고 이메일·SMS 복구를 막으며, 같은 ' +
+      '로그인을 쓰는 Codex 계정에도 함께 적용된다.',
+    publishedAt: '2026-04-30',
+    category: 'Product',
+    signal: 'ACCOUNT SECURITY',
+    url: 'https://openai.com/index/advanced-account-security',
+  },
+  {
+    id: 'generate-files-in-gemini',
+    source: 'Google DeepMind',
+    kind: 'company',
+    title: 'You can now easily generate files in Gemini.',
+    summary:
+      '구글이 Gemini 앱 채팅 안에서 바로 파일을 만드는 기능을 열었다. PDF, ' +
+      'Word, Excel, 구글 문서 등으로 내보낼 수 있고 전 세계 모든 ' +
+      '사용자에게 제공된다.',
+    publishedAt: '2026-04-29',
+    category: 'Product',
+    signal: 'FILE GENERATION',
+    url: 'https://blog.google/innovation-and-ai/products/gemini-app/generate-files-in-gemini/',
+  },
+  {
+    id: 'cybersecurity-in-the-intelligence-age',
+    source: 'OpenAI',
+    kind: 'industry',
+    title: 'Cybersecurity in the Intelligence Age',
+    summary:
+      'OpenAI가 AI 기반 사이버 방어를 넓히기 위한 실행 계획을 내놨다. ' +
+      '연방·주 정부와 주요 민간 조직의 보안·국가안보 전문가 논의를 바탕으로 다섯 개 ' +
+      '축을 제시했다.',
+    publishedAt: '2026-04-29',
+    category: 'Policy',
+    signal: 'AI CYBER DEFENSE',
+    url: 'https://openai.com/index/cybersecurity-in-the-intelligence-age',
+  },
+  {
+    id: 'compute-infrastructure-intelligence-age',
+    source: 'OpenAI',
+    kind: 'industry',
+    title: 'Building the compute infrastructure for the Intelligence Age',
+    summary:
+      'OpenAI가 스타게이트 진행 상황을 공개했다. 2029년까지 미국 내 ' +
+      '10GW를 확보하겠다던 목표를 1년 남짓 만에 넘겼고, 최근 90일 동안에만 ' +
+      '3GW 이상을 더했다고 밝혔다.',
+    publishedAt: '2026-04-29',
+    category: 'Infrastructure',
+    signal: 'COMPUTE BUILDOUT',
+    url: 'https://openai.com/index/building-the-compute-infrastructure-for-the-intelligence-age',
+  },
+  {
+    id: 'our-commitment-to-community-safety',
+    source: 'OpenAI',
+    kind: 'industry',
+    title: 'Our commitment to community safety',
+    summary:
+      'OpenAI가 ChatGPT에서 폭력 관련 위험을 다루는 방식을 정리해 ' +
+      '공개했다. 모델 학습부터 자동 탐지와 사람 검토, 계정 제재, 법 집행기관 ' +
+      '통보까지의 절차를 설명했다.',
+    publishedAt: '2026-04-28',
+    category: 'Policy',
+    signal: 'USER SAFETY POLICY',
+    url: 'https://openai.com/index/our-commitment-to-community-safety',
+  },
+  {
+    id: 'openai-on-aws',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'OpenAI models, Codex, and Managed Agents come to AWS',
+    summary:
+      'OpenAI가 AWS와 파트너십을 넓혀 GPT-5.5를 포함한 모델과 ' +
+      'Codex, OpenAI 기반 Bedrock Managed Agents를 ' +
+      'Amazon Bedrock에 올린다. 세 영역 모두 제한 프리뷰로 시작한다.',
+    publishedAt: '2026-04-28',
+    category: 'Product',
+    signal: 'ENTERPRISE AGENTS',
+    url: 'https://openai.com/index/openai-on-aws',
+  },
+  {
+    id: 'claude-for-creative-work',
+    source: 'Anthropic',
+    kind: 'company',
+    title: 'Claude for Creative Work',
+    summary:
+      '앤트로픽이 창작 소프트웨어와 Claude를 잇는 커넥터 8종을 공개했다. ' +
+      'Adobe, Blender, Ableton, Autodesk Fusion 등이 ' +
+      '대상이고 Anthropic Labs의 새 제품 Claude Design도 함께 ' +
+      '소개됐다.',
+    publishedAt: '2026-04-28',
+    category: 'Product',
+    signal: 'CREATIVE WORKFLOWS',
+    url: 'https://www.anthropic.com/news/claude-for-creative-work',
+  },
+  {
+    id: 'partnership-republic-of-korea',
+    source: 'Google DeepMind',
+    kind: 'industry',
+    title: 'Announcing our partnership with the Republic of Korea',
+    summary:
+      'Google DeepMind가 과학기술정보통신부와 국가 파트너십을 맺었다. 서울 ' +
+      '사무소에 AI 캠퍼스를 세우고 AlphaFold·AlphaGenome 등 연구용 ' +
+      'AI를 국내 기관에 제공한다.',
+    publishedAt: '2026-04-27',
+    category: 'Policy',
+    signal: 'NATIONAL AI PARTNERSHIPS',
+    url: 'https://deepmind.google/blog/announcing-our-partnership-with-the-republic-of-korea/',
+  },
+  {
+    id: 'openai-fedramp-moderate',
+    source: 'OpenAI',
+    kind: 'industry',
+    title: 'OpenAI available at FedRAMP Moderate',
+    summary:
+      'OpenAI가 ChatGPT Enterprise와 API 플랫폼에 대해 ' +
+      'FedRAMP 20x Moderate 승인을 받았다. 미국 연방 기관은 이제 ' +
+      'FedRAMP 환경에서 GPT-5.5를 포함한 OpenAI 모델을 쓸 수 있다.',
+    publishedAt: '2026-04-27',
+    category: 'Policy',
+    signal: 'GOVERNMENT AI',
+    url: 'https://openai.com/index/openai-available-at-fedramp-moderate',
+  },
+  {
+    id: 'microsoft-partnership-next-phase',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'The next phase of the Microsoft OpenAI partnership',
+    summary:
+      'OpenAI와 Microsoft가 파트너십 수정 계약을 발표했다. ' +
+      'Microsoft는 주요 클라우드 파트너로 남지만 IP 라이선스는 비독점으로 ' +
+      '바뀌고, OpenAI는 모든 클라우드에서 전 제품을 공급할 수 있게 됐다.',
+    publishedAt: '2026-04-27',
+    category: 'Infrastructure',
+    signal: 'CLOUD PARTNERSHIP',
+    url: 'https://openai.com/index/next-phase-of-microsoft-partnership',
+  },
+  {
+    id: 'hourmouzis-anz-general-manager',
+    source: 'Anthropic',
+    kind: 'company',
+    title: 'Anthropic Sydney office',
+    summary:
+      'Anthropic이 시드니 사무소를 열고 테오 후르무지스를 호주·뉴질랜드 총괄로 ' +
+      '선임했다. 도쿄·벵갈루루에 이은 지역 확장이며 서울 사무소도 함께 발표했다.',
+    publishedAt: '2026-04-27',
+    category: 'Product',
+    signal: 'ENTERPRISE ADOPTION',
+    url: 'https://www.anthropic.com/news/theo-hourmouzis-general-manager-australia-new-zealand',
+  },
+  {
+    id: 'codex-symphony-spec',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'An open-source spec for orchestration: Symphony',
+    summary:
+      'OpenAI가 코딩 에이전트 오케스트레이터 사양 Symphony를 오픈소스로 ' +
+      '공개했다. Linear 같은 이슈 트래커를 제어 평면으로 삼아 열린 티켓마다 ' +
+      'Codex 에이전트를 붙여 계속 실행한다.',
+    publishedAt: '2026-04-27',
+    category: 'Product',
+    signal: 'AGENT ORCHESTRATION',
+    url: 'https://openai.com/index/open-source-codex-orchestration-symphony',
+  },
+  {
+    id: 'our-principles',
+    source: 'OpenAI',
+    kind: 'industry',
+    title: 'Our principles',
+    summary:
+      '샘 올트먼이 OpenAI의 운영 원칙 다섯 가지를 공개했다. 민주화·역량 ' +
+      '강화·보편적 번영·회복탄력성·적응력으로, AGI가 인류 전체에 혜택을 주게 ' +
+      '한다는 사명 아래 정리했다.',
+    publishedAt: '2026-04-26',
+    category: 'Policy',
+    signal: 'AI GOVERNANCE',
+    url: 'https://openai.com/index/our-principles',
+  },
+  {
+    id: 'gemini-drop-april-2026',
+    source: 'Google DeepMind',
+    kind: 'company',
+    title: 'Find out what’s new in the Gemini app in April&#x27;s Gemini Drop.',
+    summary:
+      '구글이 4월 Gemini Drop을 공개했다. macOS 네이티브 앱, ' +
+      'NotebookLM 기반 Notebooks, Lyria 3 Pro 음악 생성 등 ' +
+      '여섯 가지가 Gemini 앱에 추가된다.',
+    publishedAt: '2026-04-24',
+    category: 'Product',
+    signal: 'CONSUMER AI',
+    url: 'https://blog.google/innovation-and-ai/products/gemini-app/gemini-drop-april-2026/',
+  },
+  {
+    id: 'election-safeguards-update',
+    source: 'Anthropic',
+    kind: 'industry',
+    title: 'An update on our election safeguards',
+    summary:
+      'Anthropic이 2026년 미국 중간선거와 브라질 선거를 앞두고 선거 ' +
+      '안전장치 현황을 공개했다. 정치적 공정성·정책 준수 평가 수치와 함께 평가 ' +
+      '데이터셋을 오픈소스로 냈다.',
+    publishedAt: '2026-04-24',
+    category: 'Policy',
+    signal: 'ELECTION INTEGRITY',
+    url: 'https://www.anthropic.com/news/election-safeguards-update',
+  },
+  {
+    id: 'introducing-gpt-5-5',
+    source: 'OpenAI',
+    kind: 'model',
+    title: 'Introducing GPT-5.5',
+    summary:
+      'OpenAI가 GPT-5.5와 GPT-5.5 Pro를 공개했다. ' +
+      'Terminal-Bench 2.0 82.7%, GDPval 84.9%를 기록했고 ' +
+      'GPT-5.4와 같은 토큰당 지연 시간을 유지하며, ChatGPT·Codex ' +
+      '유료 등급에 순차 배포된다.',
+    publishedAt: '2026-04-23',
+    category: 'Models',
+    signal: 'AGENTIC MODELS',
+    url: 'https://openai.com/index/introducing-gpt-5-5',
+    model: {
+      family: 'GPT',
+      name: 'GPT-5.5',
+      kind: '신규 모델',
+      status: '공개',
+      useCase: '장기 실행 에이전틱 코딩',
+      headline:
+        '에이전틱 코딩과 컴퓨터 조작에서 앞서면서 토큰당 지연 시간은 그대로 유지한다',
+      logo: 'assets/openai.svg',
+      tone: 'gpt',
+    },
+  },
+  {
+    id: 'gpt-5-5-system-card',
+    source: 'OpenAI',
+    kind: 'model',
+    title: 'GPT-5.5 System Card',
+    summary:
+      'OpenAI가 GPT-5.5 시스템 카드를 공개했다. 코드 작성, 온라인 ' +
+      '리서치, 문서·스프레드시트 생성처럼 도구를 오가는 실무 작업을 겨냥한 모델로, ' +
+      '사전 배포 안전 평가를 모두 거쳤다.',
+    publishedAt: '2026-04-23',
+    category: 'Models',
+    signal: 'FRONTIER MODEL SAFETY',
+    url: 'https://openai.com/index/gpt-5-5-system-card',
+    model: {
+      family: 'GPT',
+      name: 'GPT-5.5',
+      kind: '신규 모델',
+      status: '공개',
+      useCase: '도구를 오가는 장기 실무 작업',
+      headline:
+        '맡긴 일을 끝까지 밀고 가는 OpenAI의 새 주력 모델',
+      logo: 'assets/openai.svg',
+      tone: 'gpt',
+    },
+  },
+  {
+    id: 'google-data-center-austria',
+    source: 'Google DeepMind',
+    kind: 'industry',
+    title: 'Elevating Austria: Google invests in its first data center in the Alps.',
+    summary:
+      '구글이 오스트리아 크론스토르프에 자국 첫 데이터센터를 짓는다고 발표했다. 직접 ' +
+      '일자리 100개가 생기며 태양광 패널을 올린 녹색 지붕과 외부 폐열 회수를 ' +
+      '염두에 둔 설계를 적용한다.',
+    publishedAt: '2026-04-23',
+    category: 'Infrastructure',
+    signal: 'COMPUTE BUILDOUT',
+    url: 'https://blog.google/innovation-and-ai/infrastructure-and-cloud/global-network/google-data-center-austria/',
+  },
+  {
+    id: 'workspace-agents-in-chatgpt',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'Introducing workspace agents in ChatGPT',
+    summary:
+      'OpenAI가 ChatGPT에 워크스페이스 에이전트를 리서치 프리뷰로 공개했다. ' +
+      'Codex 기반으로 클라우드에서 돌아가며 조직 안에서 공유하고 Slack에도 ' +
+      '배포할 수 있다.',
+    publishedAt: '2026-04-22',
+    category: 'Product',
+    signal: 'ENTERPRISE AGENTS',
+    url: 'https://openai.com/index/introducing-workspace-agents-in-chatgpt',
+  },
+  {
+    id: 'responses-api-websockets',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'Speeding up agentic workflows with WebSockets in the Responses API',
+    summary:
+      'OpenAI가 Responses API에 웹소켓 모드를 넣은 과정을 공개했다. ' +
+      '연결을 유지한 채 이전 응답 상태를 메모리에 캐시하는 방식으로 에이전트 루프의 ' +
+      '전체 처리 속도를 40% 개선했다.',
+    publishedAt: '2026-04-22',
+    category: 'Product',
+    signal: 'AGENT LATENCY',
+    url: 'https://openai.com/index/speeding-up-agentic-workflows-with-websockets',
+  },
+  {
+    id: 'openai-privacy-filter',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'Introducing OpenAI Privacy Filter',
+    summary:
+      'OpenAI가 텍스트에서 개인 식별 정보를 탐지하고 마스킹하는 오픈 웨이트 모델 ' +
+      'Privacy Filter를 공개했다. Apache 2.0 라이선스로 ' +
+      'Hugging Face와 GitHub에 올라갔다.',
+    publishedAt: '2026-04-22',
+    category: 'Models',
+    signal: 'OPEN WEIGHT MODELS',
+    url: 'https://openai.com/index/introducing-openai-privacy-filter',
+  },
+  {
+    id: 'gemini-enterprise-agent-platform',
+    source: 'Google DeepMind',
+    kind: 'company',
+    title: 'Gemini Enterprise Agent Platform lets you build, govern and optimize your agents.',
+    summary:
+      '구글이 Google Cloud Next \'26에서 Gemini ' +
+      'Enterprise Agent Platform을 공개했다. Vertex AI의 ' +
+      '모델 구축·튜닝에 에이전트 통합·보안·DevOps 기능을 합친 개발자 ' +
+      '플랫폼이다.',
+    publishedAt: '2026-04-22',
+    category: 'Product',
+    signal: 'ENTERPRISE AGENTS',
+    url: 'https://blog.google/innovation-and-ai/infrastructure-and-cloud/google-cloud/gemini-enterprise-agent-platform/',
+  },
+  {
+    id: 'gemini-embedding-2-ga',
+    source: 'Google DeepMind',
+    kind: 'model',
+    title: 'Gemini Embedding 2 is now generally available.',
+    summary:
+      '구글이 제미나이 임베딩 2를 프리뷰에서 정식 출시로 전환했다. 텍스트뿐 아니라 ' +
+      '이미지·영상·오디오를 하나의 모델로 임베딩하며 Gemini API와 Gemini ' +
+      'Enterprise Agent Platform에서 쓸 수 있다.',
+    publishedAt: '2026-04-22',
+    category: 'Models',
+    signal: 'MULTIMODAL RETRIEVAL',
+    url: 'https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-embedding-2-generally-available/',
+    model: {
+      family: 'Gemini',
+      name: 'Gemini Embedding 2',
+      kind: '신규 모델',
+      status: '공개',
+      useCase: '멀티모달 검색·RAG',
+      headline:
+        '텍스트·이미지·영상·오디오를 한 벡터 공간에 담는 임베딩 모델',
+      logo: 'assets/gemini.svg',
+      tone: 'gemini',
+    },
+  },
+  {
+    id: 'eighth-generation-tpu-agentic-era',
+    source: 'Google DeepMind',
+    kind: 'industry',
+    title: 'Our eighth generation TPUs: two chips for the agentic era',
+    summary:
+      '구글이 8세대 TPU인 학습용 8t와 추론용 8i를 공개했다. 8t는 팟당 ' +
+      '연산이 전 세대의 약 3배인 121엑사플롭스이고, 8i는 아이언우드 대비 달러당 ' +
+      '성능이 80% 높다.',
+    publishedAt: '2026-04-22',
+    category: 'Infrastructure',
+    signal: 'AI CHIPS',
+    url: 'https://blog.google/innovation-and-ai/infrastructure-and-cloud/google-cloud/eighth-generation-tpu-agentic-era/',
+  },
+  {
+    id: 'decoupled-diloco',
+    source: 'Google DeepMind',
+    kind: 'model',
+    title: 'Decoupled DiLoCo: A new frontier for resilient, distributed AI training',
+    summary:
+      '구글 딥마인드가 멀리 떨어진 데이터센터를 묶어 LLM을 학습하는 ' +
+      'Decoupled DiLoCo를 공개했다. 데이터센터 8곳 기준 필요 대역폭을 ' +
+      '198Gbps에서 0.84Gbps로 낮췄다.',
+    publishedAt: '2026-04-22',
+    category: 'Infrastructure',
+    signal: 'DISTRIBUTED TRAINING',
+    url: 'https://deepmind.google/blog/decoupled-diloco/',
+  },
+  {
+    id: 'chatgpt-for-clinicians',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'Making ChatGPT better for clinicians',
+    summary:
+      'OpenAI가 임상 업무용 ChatGPT for Clinicians를 미국 인증 ' +
+      '임상의에게 무료로 공개했다. 인용이 붙는 임상 검색, 의학 문헌 심층 리서치, ' +
+      'CME 학점, 선택적 HIPAA 지원을 담았다.',
+    publishedAt: '2026-04-22',
+    category: 'Product',
+    signal: 'CLINICAL AI',
+    url: 'https://openai.com/index/making-chatgpt-better-for-clinicians',
+  },
+  {
+    id: 'stitch-design-md',
+    source: 'Google DeepMind',
+    kind: 'company',
+    title: 'Stitch’s DESIGN.md format is now open-source so you can use it across platforms.',
+    summary:
+      '구글이 UI 생성 도구 스티치가 쓰던 DESIGN.md 형식의 초안 명세를 ' +
+      '오픈소스로 공개했다. 디자인 시스템과 브랜드 규칙을 파일로 적어 프로젝트와 ' +
+      '도구를 옮겨 다니며 재사용하도록 만든 형식이다.',
+    publishedAt: '2026-04-21',
+    category: 'Product',
+    signal: 'AGENT STANDARDS',
+    url: 'https://blog.google/innovation-and-ai/models-and-research/google-labs/stitch-design-md/',
+  },
+  {
+    id: 'scaling-codex-to-enterprises-worldwide',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'Scaling Codex to enterprises worldwide',
+    summary:
+      'OpenAI가 기업의 Codex 도입을 돕는 Codex Labs를 시작했다. ' +
+      '동시에 Accenture, Capgemini, Infosys, TCS 등 글로벌 ' +
+      '시스템 통합업체와 손잡고 도입 지원 범위를 넓힌다고 밝혔다.',
+    publishedAt: '2026-04-21',
+    category: 'Product',
+    signal: 'ENTERPRISE CODEX',
+    url: 'https://openai.com/index/scaling-codex-to-enterprises-worldwide',
+  },
+  {
+    id: 'pomelli-in-europe',
+    source: 'Google DeepMind',
+    kind: 'company',
+    title: 'Google brings Pomelli in English to small businesses in Europe.',
+    summary:
+      '구글이 소상공인용 AI 마케팅 도구 포멜리를 유럽에 영어 버전으로 열었다. ' +
+      'EU와 영국·스위스·노르웨이·아이슬란드·리히텐슈타인에서 웹사이트 분석부터 캠페인 ' +
+      '자산 생성까지 쓸 수 있다.',
+    publishedAt: '2026-04-21',
+    category: 'Product',
+    signal: 'SMB AI TOOLS',
+    url: 'https://blog.google/innovation-and-ai/models-and-research/google-labs/pomelli-in-europe/',
+  },
+  {
+    id: 'introducing-chatgpt-images-2-0',
+    source: 'OpenAI',
+    kind: 'model',
+    title: 'Introducing ChatGPT Images 2.0',
+    summary:
+      'OpenAI가 ChatGPT 이미지 2.0을 공개했다. 이미지 모드와 클래식 ' +
+      '모드를 두고 가로·정사각·세로 비율을 지원하며 ChatGPT에서 바로 쓸 수 ' +
+      '있다.',
+    publishedAt: '2026-04-21',
+    category: 'Product',
+    signal: 'IMAGE GENERATION',
+    url: 'https://openai.com/index/introducing-chatgpt-images-2-0',
+  },
+  {
+    id: 'gemini-deep-research',
+    source: 'Google DeepMind',
+    kind: 'company',
+    title: 'Deep Research Max: a step change for autonomous research agents',
+    summary:
+      '구글이 딥 리서치 에이전트를 개편하고 테스트타임 연산을 더 쓰는 상위 등급 딥 ' +
+      '리서치 맥스를 함께 내놨다. 둘 다 제미나이 3.1 프로 기반이며 4월 ' +
+      '21일부터 Gemini API 유료 등급에서 공개 프리뷰로 열렸다.',
+    publishedAt: '2026-04-21',
+    category: 'Product',
+    signal: 'RESEARCH AGENTS',
+    url: 'https://blog.google/innovation-and-ai/models-and-research/gemini-models/next-generation-gemini-deep-research/',
+  },
+  {
+    id: 'google-one-ai-studio',
+    source: 'Google DeepMind',
+    kind: 'company',
+    title: 'Start vibe coding in AI Studio with your Google AI subscription.',
+    summary:
+      '구글이 AI 프로·울트라 구독을 AI 스튜디오에 연결해 구독자에게 늘어난 사용 ' +
+      '한도와 나노 바나나 프로·제미나이 프로 모델 접근을 준다. 별도 API 키 없이 ' +
+      '구독만으로 프로토타이핑을 이어 갈 수 있다.',
+    publishedAt: '2026-04-20',
+    category: 'Product',
+    signal: 'DEVELOPER ACCESS',
+    url: 'https://blog.google/innovation-and-ai/technology/developers-tools/google-one-ai-studio/',
+  },
+  {
+    id: 'anthropic-amazon-compute',
+    source: 'Anthropic',
+    kind: 'industry',
+    title: 'Anthropic and Amazon expand collaboration for up to 5 gigawatts of new compute',
+    summary:
+      '앤스로픽과 아마존이 최대 5기가와트 규모의 신규 컴퓨트 확보에 합의했다. ' +
+      '앤스로픽은 10년간 AWS에 1,000억 달러 이상을 집행하고, 아마존은 50억 ' +
+      '달러를 즉시 투자하며 최대 200억 달러를 추가할 수 있다.',
+    publishedAt: '2026-04-20',
+    category: 'Infrastructure',
+    signal: 'COMPUTE BUILDOUT',
+    url: 'https://www.anthropic.com/news/anthropic-amazon-compute',
+  },
+  {
+    id: 'claude-design-anthropic-labs',
     source: 'Anthropic',
     kind: 'company',
     title: 'Introducing Claude Design by Anthropic Labs',
     summary:
-      '대화를 통해 디자인, 프로토타입, 슬라이드와 시각 문서를 만들고 직접 수정하는 연구 프리뷰입니다. 생성형 AI의 인터페이스가 채팅을 넘어 제작 환경으로 넓어집니다.',
+      'Anthropic Labs가 디자인·프로토타입·슬라이드를 만드는 Claude ' +
+      'Design을 리서치 프리뷰로 공개했다. Claude Opus 4.7 비전 ' +
+      '모델을 쓰며 Pro·Max·Team·Enterprise 구독자가 쓸 수 있다.',
     publishedAt: '2026-04-17',
     category: 'Product',
-    signal: 'CREATIVE TOOLS',
+    signal: 'DESIGN TOOLING',
     url: 'https://www.anthropic.com/news/claude-design-anthropic-labs',
+  },
+  {
+    id: 'personal-intelligence-nano-banana',
+    source: 'Google DeepMind',
+    kind: 'company',
+    title: 'New ways to create personalized images in the Gemini app',
+    summary:
+      'Google이 Gemini 앱의 Personal Intelligence를 ' +
+      'Nano Banana 2 이미지 생성에 연결했다. Google 포토를 연동하면 ' +
+      '사진을 따로 올리지 않아도 개인 맥락이 이미지 생성에 반영된다.',
+    publishedAt: '2026-04-16',
+    category: 'Product',
+    signal: 'PERSONAL CONTEXT',
+    url: 'https://blog.google/innovation-and-ai/products/gemini-app/personal-intelligence-nano-banana/',
+  },
+  {
+    id: 'introducing-gpt-rosalind',
+    source: 'OpenAI',
+    kind: 'model',
+    title: 'Introducing GPT-Rosalind for life sciences research',
+    summary:
+      'OpenAI가 생물학·신약 개발·중개의학 연구용 추론 모델 ' +
+      'GPT-Rosalind를 리서치 프리뷰로 공개했다. ' +
+      'ChatGPT·Codex·API에서 심사를 통과한 고객만 쓸 수 있고, 50개 ' +
+      '넘는 과학 DB를 붙이는 Codex 플러그인도 함께 나왔다.',
+    publishedAt: '2026-04-16',
+    category: 'Models',
+    signal: 'LIFE SCIENCES AI',
+    url: 'https://openai.com/index/introducing-gpt-rosalind',
+    model: {
+      family: 'GPT',
+      name: 'GPT-Rosalind',
+      kind: '연구 프리뷰',
+      status: '제한 공개',
+      useCase: '생명과학 연구·신약 개발',
+      headline:
+        '심사를 통과한 연구 조직에만 열리는 생명과학 전용 추론 모델',
+      logo: 'assets/openai.svg',
+      tone: 'gpt',
+    },
+  },
+  {
+    id: 'codex-for-almost-everything',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'Codex for (almost) everything',
+    summary:
+      'OpenAI가 Codex 데스크톱 앱을 대폭 업데이트했다. 자체 커서로 맥의 ' +
+      '앱을 직접 조작하는 백그라운드 컴퓨터 사용, 인앱 브라우저, ' +
+      'gpt-image-1.5 이미지 생성, 메모리 프리뷰, 플러그인 90여 종이 ' +
+      '추가됐다.',
+    publishedAt: '2026-04-16',
+    category: 'Product',
+    signal: 'AGENTIC CODING',
+    url: 'https://openai.com/index/codex-for-almost-everything',
+  },
+  {
+    id: 'claude-opus-4-7',
+    source: 'Anthropic',
+    kind: 'model',
+    title: 'Introducing Claude Opus 4.7',
+    summary:
+      'Anthropic이 Claude Opus 4.7을 정식 출시했다. 입력 100만 ' +
+      '토큰당 5달러, 출력 25달러로 Opus 4.6과 가격이 같고 이미지 입력 ' +
+      '해상도가 긴 변 2,576픽셀까지 늘었다.',
+    publishedAt: '2026-04-16',
+    category: 'Models',
+    signal: 'FRONTIER MODELS',
+    url: 'https://www.anthropic.com/news/claude-opus-4-7',
+    model: {
+      family: 'Claude',
+      name: 'Claude Opus 4.7',
+      kind: '신규 모델',
+      status: '공개',
+      useCase: '시각 기반 코딩 에이전트',
+      headline:
+        '이미지 해상도를 크게 키우고 코딩 정확도를 끌어올린 Opus 계열 최신 모델',
+      logo: 'assets/claude.svg',
+      tone: 'claude',
+    },
+  },
+  {
+    id: 'accelerating-cyber-defense-ecosystem',
+    source: 'OpenAI',
+    kind: 'industry',
+    title: 'Accelerating the cyber defense ecosystem that protects us all',
+    summary:
+      'OpenAI가 Trusted Access for Cyber 프로그램의 첫 참여 ' +
+      '조직들을 공개했다. 사이버보안 그랜트 프로그램으로 API 크레딧 1000만 ' +
+      '달러를 배정했고, 대형 금융사와 보안 기업이 명단에 들어갔다.',
+    publishedAt: '2026-04-16',
+    category: 'Policy',
+    signal: 'CYBER DEFENSE ECOSYSTEM',
+    url: 'https://openai.com/index/accelerating-cyber-defense-ecosystem',
+  },
+  {
+    id: 'the-next-evolution-of-the-agents-sdk',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'The next evolution of the Agents SDK',
+    summary:
+      'OpenAI가 Agents SDK를 업데이트해 파일 조작과 명령 실행을 다루는 ' +
+      '모델 네이티브 하니스와 샌드박스 실행을 기본 기능으로 넣었다. 외부 샌드박스 ' +
+      '제공자 일곱 곳을 내장 지원하며 전 고객에게 정식 제공된다.',
+    publishedAt: '2026-04-15',
+    category: 'Product',
+    signal: 'AGENT INFRASTRUCTURE',
+    url: 'https://openai.com/index/the-next-evolution-of-the-agents-sdk',
+  },
+  {
+    id: 'prepay-gemini-api',
+    source: 'Google DeepMind',
+    kind: 'company',
+    title: 'Prepay for the Gemini API to get more control over your spend',
+    summary:
+      '구글이 Gemini API에 선불 결제를 도입했다. AI Studio에서 ' +
+      '크레딧을 미리 충전해 쓰고, 잔액이 낮아지면 자동으로 다시 채우도록 설정할 수 ' +
+      '있다.',
+    publishedAt: '2026-04-15',
+    category: 'Product',
+    signal: 'API ECONOMICS',
+    url: 'https://blog.google/innovation-and-ai/technology/developers-tools/prepay-gemini-api/',
+  },
+  {
+    id: 'gemini-app-now-on-mac-os',
+    source: 'Google DeepMind',
+    kind: 'company',
+    title: 'The Gemini app is now on Mac',
+    summary:
+      'Google이 Gemini 앱의 macOS 네이티브 버전을 내놨다. ' +
+      'Option+Space로 창 전환 없이 불러낼 수 있고 화면이나 창을 공유해 ' +
+      '지금 보는 내용을 두고 물어볼 수 있다.',
+    publishedAt: '2026-04-15',
+    category: 'Product',
+    signal: 'DESKTOP ASSISTANTS',
+    url: 'https://blog.google/innovation-and-ai/products/gemini-app/gemini-app-now-on-mac-os/',
+  },
+  {
+    id: 'gemini-3-1-flash-tts',
+    source: 'Google DeepMind',
+    kind: 'model',
+    title: 'Gemini 3.1 Flash TTS: the next generation of expressive AI speech',
+    summary:
+      'Google DeepMind가 Gemini 3.1 Flash TTS를 프리뷰로 ' +
+      '공개했다. 오디오 태그로 말투와 속도, 전달 방식을 자연어로 지시할 수 있고 ' +
+      '70개 이상 언어를 지원한다.',
+    publishedAt: '2026-04-15',
+    category: 'Models',
+    signal: 'SPEECH MODELS',
+    url: 'https://deepmind.google/blog/gemini-3-1-flash-tts-the-next-generation-of-expressive-ai-speech/',
+    model: {
+      family: 'Gemini',
+      name: 'Gemini 3.1 Flash TTS',
+      kind: '신규 모델',
+      status: '제한 공개',
+      useCase: '표현력 있는 음성 합성',
+      headline:
+        '오디오 태그로 말투를 지시하는 70개 언어 음성 합성 모델',
+      logo: 'assets/gemini.svg',
+      tone: 'gemini',
+    },
+  },
+  {
+    id: 'scaling-trusted-access-for-cyber-defense',
+    source: 'OpenAI',
+    kind: 'industry',
+    title: 'Trusted access for the next era of cyber defense',
+    summary:
+      'OpenAI가 Trusted Access for Cyber를 검증된 방어자 수천 ' +
+      '명 규모로 넓히고, 사이버 작업의 거부 기준을 낮춘 GPT-5.4-Cyber를 ' +
+      '내놓았다. 이 모델은 상위 등급 인증을 받은 벤더·조직·연구자만 쓸 수 있다.',
+    publishedAt: '2026-04-14',
+    category: 'Policy',
+    signal: 'CYBER MODEL ACCESS',
+    url: 'https://openai.com/index/scaling-trusted-access-for-cyber-defense',
+  },
+  {
+    id: 'narasimhan-board',
+    source: 'Anthropic',
+    kind: 'company',
+    title: 'Anthropic’s Long-Term Benefit Trust appoints Vas Narasimhan to Board of Directors',
+    summary:
+      '앤트로픽의 장기 이익 신탁이 노바티스 CEO 바스 나라시만을 이사회에 선임했다. ' +
+      '이로써 신탁이 지명한 이사가 이사회 과반을 차지하게 됐다.',
+    publishedAt: '2026-04-14',
+    category: 'Policy',
+    signal: 'AI GOVERNANCE',
+    url: 'https://www.anthropic.com/news/narasimhan-board',
+  },
+  {
+    id: 'gemini-robotics-er-1-6',
+    source: 'Google DeepMind',
+    kind: 'model',
+    title: 'Gemini Robotics-ER 1.6: Powering real-world robotics tasks through enhanced embodied reasoning',
+    summary:
+      '구글 딥마인드가 로봇용 추론 모델 Gemini Robotics-ER 1.6을 ' +
+      '공개했다. 공간 추론과 다중 시점 이해를 강화했고 Gemini API와 AI ' +
+      'Studio에서 바로 쓸 수 있다.',
+    publishedAt: '2026-04-13',
+    category: 'Models',
+    signal: 'EMBODIED REASONING',
+    url: 'https://deepmind.google/blog/gemini-robotics-er-1-6/',
+    model: {
+      family: 'Gemini',
+      name: 'Gemini Robotics-ER 1.6',
+      kind: '신규 모델',
+      status: '공개',
+      useCase: '로봇 구현 추론',
+      headline:
+        '계기와 다중 시점을 읽어 로봇 작업을 계획하는 추론 모델',
+      logo: 'assets/gemini.svg',
+      tone: 'gemini',
+    },
+  },
+  {
+    id: 'axios-developer-tool-compromise',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'Our response to the Axios developer tool compromise',
+    summary:
+      'OpenAI가 Axios 라이브러리 공급망 공격이 자사 macOS 앱 서명 ' +
+      '워크플로에 닿은 사실을 공개했다. 인증서를 폐기·교체했으며 사용자는 5월 ' +
+      '8일까지 macOS 앱을 갱신해야 한다.',
+    publishedAt: '2026-04-10',
+    category: 'Infrastructure',
+    signal: 'SUPPLY CHAIN SECURITY',
+    url: 'https://openai.com/index/axios-developer-tool-compromise',
+  },
+  {
+    id: '3d-models-charts',
+    source: 'Google DeepMind',
+    kind: 'company',
+    title: 'The Gemini app can now generate interactive simulations and models.',
+    summary:
+      '제미나이 앱이 대화 도중 조작 가능한 3D 모델과 차트를 만들어 준다. ' +
+      '슬라이더나 숫자 입력으로 변수를 바꿔 가며 결과가 어떻게 달라지는지 확인할 수 ' +
+      '있다.',
+    publishedAt: '2026-04-09',
+    category: 'Product',
+    signal: 'GENERATIVE UI',
+    url: 'https://blog.google/innovation-and-ai/products/gemini-app/3d-models-charts/',
+  },
+  {
+    id: 'notebooks-gemini-notebooklm',
+    source: 'Google DeepMind',
+    kind: 'company',
+    title: 'Try notebooks in Gemini to easily keep track of projects',
+    summary:
+      '제미나이 앱에 노트북이 추가됐다. 대화와 파일을 프로젝트 단위로 모아 두고 맞춤 ' +
+      '지시를 걸 수 있으며, 여기에 넣은 자료는 NotebookLM과 자동으로 ' +
+      '동기화된다.',
+    publishedAt: '2026-04-08',
+    category: 'Product',
+    signal: 'KNOWLEDGE WORKSPACES',
+    url: 'https://blog.google/innovation-and-ai/products/gemini-app/notebooks-gemini-notebooklm/',
+  },
+  {
+    id: 'next-phase-of-enterprise-ai',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'The next phase of enterprise AI',
+    summary:
+      'OpenAI 최고매출책임자 드니즈 드레서가 기업 사업 현황과 전략을 정리해 ' +
+      '공개했다. 기업 매출이 전체의 40%를 넘었고 2026년 말 소비자 부문과 ' +
+      '같아질 것으로 전망했다.',
+    publishedAt: '2026-04-08',
+    category: 'Product',
+    signal: 'ENTERPRISE AI',
+    url: 'https://openai.com/index/next-phase-of-enterprise-ai',
+  },
+  {
+    id: 'introducing-child-safety-blueprint',
+    source: 'OpenAI',
+    kind: 'industry',
+    title: 'Introducing the Child Safety Blueprint',
+    summary:
+      'OpenAI가 AI 시대의 미국 아동 보호 체계를 겨냥한 정책 청사진을 ' +
+      '공개했다. 법 현대화, 사업자 신고·공조 개선, AI 시스템의 안전 설계 세 ' +
+      '가지를 축으로 삼았다.',
+    publishedAt: '2026-04-08',
+    category: 'Policy',
+    signal: 'CHILD SAFETY POLICY',
+    url: 'https://openai.com/index/introducing-child-safety-blueprint',
+  },
+  {
+    id: 'colab-updates',
+    source: 'Google DeepMind',
+    kind: 'company',
+    title: 'Introducing Learn Mode: your personal coding tutor in Google Colab',
+    summary:
+      '구글 콜랩의 Gemini에 커스텀 인스트럭션과 러닝 모드가 추가됐다. 노트북 ' +
+      '단위로 저장한 지시문을 공유할 수 있고, 러닝 모드는 개념 설명을 곁들인 단계별 ' +
+      '안내를 준다.',
+    publishedAt: '2026-04-08',
+    category: 'Product',
+    signal: 'AI CODING TUTOR',
+    url: 'https://blog.google/innovation-and-ai/technology/developers-tools/colab-updates/',
+  },
+  {
+    id: 'mental-health-updates',
+    source: 'Google DeepMind',
+    kind: 'industry',
+    title: 'An update on our mental health work',
+    summary:
+      '구글이 Gemini의 정신건강 대화 안전장치를 강화하고 지원 기금을 공개했다. ' +
+      '임상 전문가와 만든 \'도움받기\' 모듈을 넣고, Google.org이 3년간 전 ' +
+      '세계 핫라인에 3천만 달러를 지원한다.',
+    publishedAt: '2026-04-07',
+    category: 'Policy',
+    signal: 'AI SAFETY POLICY',
+    url: 'https://blog.google/innovation-and-ai/technology/health/mental-health-updates/',
+  },
+  {
+    id: 'google-broadcom-partnership-compute',
+    source: 'Anthropic',
+    kind: 'industry',
+    title: 'Anthropic expands partnership with Google and Broadcom for multiple gigawatts of next-generation compute',
+    summary:
+      '앤트로픽이 구글·브로드컴과 차세대 TPU 수 기가와트 규모의 공급 계약을 ' +
+      '맺었다. 새 용량은 2027년부터 가동되며, 신규 컴퓨트는 대부분 미국에 ' +
+      '배치된다.',
+    publishedAt: '2026-04-06',
+    category: 'Infrastructure',
+    signal: 'COMPUTE BUILDOUT',
+    url: 'https://www.anthropic.com/news/google-broadcom-partnership-compute',
+  },
+  {
+    id: 'openai-acquires-tbpn',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'OpenAI acquires TBPN',
+    summary:
+      'OpenAI가 일간 라이브 테크 토크쇼 TBPN을 인수했다고 밝혔다. TBPN은 ' +
+      '전략 조직 소속으로 들어가며 편성과 게스트 선정 등 편집 독립성은 계약으로 ' +
+      '보장한다고 했다.',
+    publishedAt: '2026-04-02',
+    category: 'Product',
+    signal: 'MEDIA ACQUISITION',
+    url: 'https://openai.com/index/openai-acquires-tbpn',
+  },
+  {
+    id: 'introducing-flex-and-priority-inference',
+    source: 'Google DeepMind',
+    kind: 'company',
+    title: 'New ways to balance cost and reliability in the Gemini API',
+    summary:
+      '구글이 Gemini API에 Flex와 Priority 두 추론 등급을 ' +
+      '추가했다. Flex는 표준가의 절반이고, Priority는 피크 부하에서도 높은 ' +
+      '신뢰도를 목표로 하는 상위 등급이다.',
+    publishedAt: '2026-04-02',
+    category: 'Product',
+    signal: 'MODEL ECONOMICS',
+    url: 'https://blog.google/innovation-and-ai/technology/developers-tools/introducing-flex-and-priority-inference/',
+  },
+  {
+    id: 'gemma-4',
+    source: 'Google DeepMind',
+    kind: 'model',
+    title: 'Gemma 4: Byte for byte, the most capable open models',
+    summary:
+      '구글이 오픈 모델 Gemma 4를 공개했다. E2B·E4B·26B MoE·31B ' +
+      '네 가지 크기로 나오며 Apache 2.0 라이선스에 140개 이상 언어를 ' +
+      '지원한다.',
+    publishedAt: '2026-04-02',
+    category: 'Models',
+    signal: 'OPEN MODELS',
+    url: 'https://deepmind.google/blog/gemma-4-byte-for-byte-the-most-capable-open-models/',
+  },
+  {
+    id: 'codex-flexible-pricing-for-teams',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'Codex now offers more flexible pricing for teams',
+    summary:
+      'ChatGPT 비즈니스·엔터프라이즈 워크스페이스에 고정 좌석 요금 없이 토큰 ' +
+      '사용량으로만 과금하는 Codex 전용 좌석이 열렸다. 함께 ChatGPT ' +
+      '비즈니스 연간 요금도 좌석당 25달러에서 20달러로 내려갔다.',
+    publishedAt: '2026-04-02',
+    category: 'Product',
+    signal: 'CODING AGENT PRICING',
+    url: 'https://openai.com/index/codex-flexible-pricing-for-teams',
+  },
+  {
+    id: 'gemini-api-docsmcp-agent-skills',
+    source: 'Google DeepMind',
+    kind: 'company',
+    title: 'Improve coding agents’ performance with Gemini API Docs MCP and Agent Skills.',
+    summary:
+      '구글이 코딩 에이전트용 Gemini API Docs MCP와 개발자 스킬을 ' +
+      '공개했다. 최신 문서와 SDK 정보를 에이전트에 연결해 학습 데이터 시점 때문에 ' +
+      '생기는 구버전 코드 문제를 줄인다.',
+    publishedAt: '2026-04-01',
+    category: 'Product',
+    signal: 'AGENT TOOLING',
+    url: 'https://blog.google/innovation-and-ai/technology/developers-tools/gemini-api-docsmcp-agent-skills/',
+  },
+  {
+    id: 'veo-3-1-lite',
+    source: 'Google DeepMind',
+    kind: 'model',
+    title: 'Build with Veo 3.1 Lite, our most cost-effective video generation model',
+    summary:
+      '구글이 Veo 3.1 Lite를 공개했다. Veo 3.1 Fast와 같은 속도를 ' +
+      '유지하면서 가격은 절반 이하이고, Gemini API 유료 등급과 Google ' +
+      'AI Studio에서 프리뷰로 제공된다.',
+    publishedAt: '2026-03-31',
+    category: 'Models',
+    signal: 'MODEL ECONOMICS',
+    url: 'https://blog.google/innovation-and-ai/technology/ai/veo-3-1-lite/',
+  },
+  {
+    id: 'australia-mou',
+    source: 'Anthropic',
+    kind: 'industry',
+    title: 'Australian government and Anthropic sign MOU for AI safety and research',
+    summary:
+      '앤트로픽이 호주 정부와 AI 안전·연구 협력 MOU를 체결했다. 호주 ' +
+      'AI안전연구소와 공동 평가를 진행하고, 네 개 연구기관 파트너십에 300만 ' +
+      '호주달러 규모의 Claude API 크레딧을 지원한다.',
+    publishedAt: '2026-03-31',
+    category: 'Policy',
+    signal: 'AI POLICY',
+    url: 'https://www.anthropic.com/news/australia-MOU',
+  },
+  {
+    id: 'accelerating-the-next-phase-ai',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'Accelerating the next phase of AI',
+    summary:
+      'OpenAI가 1,220억 달러 규모의 투자 유치를 마감했다고 밝혔다. 투자 후 ' +
+      '기업가치는 8,520억 달러이고 아마존·엔비디아·소프트뱅크가 앵커 투자자로 ' +
+      '들어왔다.',
+    publishedAt: '2026-03-31',
+    category: 'Infrastructure',
+    signal: 'AI FUNDING ROUND',
+    url: 'https://openai.com/index/accelerating-the-next-phase-ai',
+  },
+  {
+    id: 'ai-pointer',
+    source: 'Google DeepMind',
+    kind: 'company',
+    title: 'Reimagining the mouse pointer for the AI era',
+    summary:
+      '구글 딥마인드가 마우스 포인터에 Gemini를 결합한 인터페이스를 공개했다. ' +
+      '포인터가 가리키는 단어·이미지·코드 블록을 맥락으로 잡아, 음성으로 내린 지시를 ' +
+      '그 대상에 적용한다.',
+    publishedAt: '2026-03-29',
+    category: 'Product',
+    signal: 'AI INTERFACES',
+    url: 'https://deepmind.google/blog/ai-pointer/',
+  },
+  {
+    id: 'gemini-drop-updates-march-2026',
+    source: 'Google DeepMind',
+    kind: 'company',
+    title: 'Find out what’s new in the Gemini app in March&#x27;s Gemini Drop.',
+    summary:
+      '구글이 3월 Gemini Drop을 공개했다. 다른 AI 서비스의 대화 기록 ' +
+      '가져오기, 미국 무료 사용자까지 확대된 Personal Intelligence, ' +
+      '최대 3분 길이 곡을 만드는 Lyria 3 Pro가 포함됐다.',
+    publishedAt: '2026-03-27',
+    category: 'Product',
+    signal: 'CONSUMER AI',
+    url: 'https://blog.google/innovation-and-ai/products/gemini-app/gemini-drop-updates-march-2026/',
+  },
+  {
+    id: 'switch-to-gemini-app',
+    source: 'Google DeepMind',
+    kind: 'company',
+    title: 'Make the switch: Bring your AI memories and chat history to Gemini',
+    summary:
+      '구글이 다른 AI 앱의 메모리와 대화 기록을 Gemini로 옮기는 기능을 ' +
+      '열었다. 설정에서 제안 프롬프트로 선호 정보를 가져오거나, 내보낸 대화 ZIP ' +
+      '파일을 업로드하는 방식이다.',
+    publishedAt: '2026-03-26',
+    category: 'Product',
+    signal: 'CONSUMER AI',
+    url: 'https://blog.google/innovation-and-ai/products/gemini-app/switch-to-gemini-app/',
+  },
+  {
+    id: 'gemini-3-1-flash-live',
+    source: 'Google DeepMind',
+    kind: 'model',
+    title: 'Gemini 3.1 Flash Live: Making audio AI more natural and reliable',
+    summary:
+      '구글이 음성 우선 에이전트용 Gemini 3.1 Flash Live를 공개했다. ' +
+      '피치와 말 속도 같은 음향 단서를 읽어 응답을 조절하고, 대화를 따라가는 길이는 ' +
+      '이전의 두 배로 늘었다.',
+    publishedAt: '2026-03-26',
+    category: 'Models',
+    signal: 'VOICE AGENTS',
+    url: 'https://deepmind.google/blog/gemini-3-1-flash-live-making-audio-ai-more-natural-and-reliable/',
+    model: {
+      family: 'Gemini',
+      name: 'Gemini 3.1 Flash Live',
+      kind: '신규 모델',
+      status: '제한 공개',
+      useCase: '실시간 음성 에이전트',
+      headline:
+        '말투와 속도를 읽고 대화 도중 도구를 부르는 음성 전용 모델',
+      logo: 'assets/gemini.svg',
+      tone: 'gemini',
+    },
+  },
+  {
+    id: 'build-with-gemini-3-1-flash-live',
+    source: 'Google DeepMind',
+    kind: 'model',
+    title: 'Build real-time conversational agents with Gemini 3.1 Flash Live',
+    summary:
+      '구글이 Gemini 3.1 Flash Live를 Gemini API와 ' +
+      'Google AI Studio에 프리뷰로 열었다. 실시간 음성·비전 에이전트를 ' +
+      '만들 수 있고, 90개가 넘는 언어로 멀티모달 대화를 처리한다.',
+    publishedAt: '2026-03-26',
+    category: 'Models',
+    signal: 'VOICE AGENTS',
+    url: 'https://blog.google/innovation-and-ai/technology/developers-tools/build-with-gemini-3-1-flash-live/',
+  },
+  {
+    id: 'safety-bug-bounty',
+    source: 'OpenAI',
+    kind: 'industry',
+    title: 'Introducing the OpenAI Safety Bug Bounty program',
+    summary:
+      'OpenAI가 AI 오남용과 안전 위험을 겨냥한 공개 Safety Bug ' +
+      'Bounty를 시작했다. 기존 보안 버그 바운티가 다루지 못하던 에이전트 위험과 ' +
+      '플랫폼 무결성 문제를 접수 대상으로 삼는다.',
+    publishedAt: '2026-03-25',
+    category: 'Policy',
+    signal: 'AI SAFETY BOUNTY',
+    url: 'https://openai.com/index/safety-bug-bounty',
+  },
+  {
+    id: 'our-approach-to-the-model-spec',
+    source: 'OpenAI',
+    kind: 'industry',
+    title: 'Inside our approach to the Model Spec',
+    summary:
+      'OpenAI가 모델 행동 규범인 Model Spec을 어떤 구조로 쓰고 고치는지 ' +
+      '설명하는 글을 냈다. 함께 규범 조항별 준수 여부를 재는 Model Spec ' +
+      'Evals 평가 세트도 공개했다.',
+    publishedAt: '2026-03-25',
+    category: 'Policy',
+    signal: 'MODEL BEHAVIOR SPEC',
+    url: 'https://openai.com/index/our-approach-to-the-model-spec',
+  },
+  {
+    id: 'lyria-3-pro',
+    source: 'Google DeepMind',
+    kind: 'model',
+    title: 'Lyria 3 Pro: Create longer tracks in more',
+    summary:
+      '구글이 음악 생성 모델 Lyria 3 Pro를 공개했다. 최대 3분 길이 트랙을 ' +
+      '만들고 인트로·버스·코러스·브리지 같은 곡 구조를 프롬프트로 지정할 수 있으며, ' +
+      '3월 25일 주부터 순차 배포된다.',
+    publishedAt: '2026-03-25',
+    category: 'Models',
+    signal: 'MUSIC GENERATION',
+    url: 'https://deepmind.google/blog/lyria-3-pro-create-longer-tracks-in-more/',
+  },
+  {
+    id: 'lyria-3-developers',
+    source: 'Google DeepMind',
+    kind: 'model',
+    title: 'Build with Lyria 3, our newest music generation model',
+    summary:
+      '구글이 Lyria 3를 Gemini API와 Google AI Studio에 ' +
+      '퍼블릭 프리뷰로 열었다. 약 3분짜리 곡을 만드는 Pro와 30초 클립을 만드는 ' +
+      'Clip 두 변형을 제공하며 AI Studio 사용에는 유료 API 키가 ' +
+      '필요하다.',
+    publishedAt: '2026-03-25',
+    category: 'Product',
+    signal: 'AUDIO GENERATION API',
+    url: 'https://blog.google/innovation-and-ai/technology/developers-tools/lyria-3-developers/',
+  },
+  {
+    id: 'harmful-manipulation',
+    source: 'Google DeepMind',
+    kind: 'industry',
+    title: 'Protecting people from harmful manipulation',
+    summary:
+      '구글 딥마인드가 AI의 유해 조작 가능성을 다룬 연구를 공개했다. ' +
+      '영국·미국·인도에서 1만 명 넘게 참여한 아홉 건의 연구로 금융과 건강 영역에서 ' +
+      '모델의 설득 효과와 조작 시도 빈도를 측정했다.',
+    publishedAt: '2026-03-25',
+    category: 'Policy',
+    signal: 'MANIPULATION RISK',
+    url: 'https://deepmind.google/blog/protecting-people-from-harmful-manipulation/',
+  },
+  {
+    id: 'update-on-the-openai-foundation',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'Update on the OpenAI Foundation',
+    summary:
+      'OpenAI 재단이 향후 1년간 최소 10억 달러를 투입한다고 밝혔다. ' +
+      '생명과학과 질병 치료, 일자리와 경제 영향, AI 회복력, 지역사회 프로그램 네 ' +
+      '갈래에 나눠 쓴다.',
+    publishedAt: '2026-03-24',
+    category: 'Policy',
+    signal: 'AI PHILANTHROPY',
+    url: 'https://openai.com/index/update-on-the-openai-foundation',
+  },
+  {
+    id: 'teen-safety-policies-gpt-oss-safeguard',
+    source: 'OpenAI',
+    kind: 'industry',
+    title: 'Helping developers build safer AI experiences for teens',
+    summary:
+      'OpenAI가 청소년 보호용 안전 정책을 프롬프트 형태로 공개했다. 오픈웨이트 ' +
+      '안전 모델 gpt-oss-safeguard 등 추론 모델에 넣어 분류기로 쓸 수 ' +
+      '있고, ROOST Model Community를 통해 오픈소스로 배포된다.',
+    publishedAt: '2026-03-24',
+    category: 'Policy',
+    signal: 'TEEN SAFETY POLICIES',
+    url: 'https://openai.com/index/teen-safety-policies-gpt-oss-safeguard',
+  },
+  {
+    id: 'powering-product-discovery-in-chatgpt',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'Powering product discovery in ChatGPT',
+    summary:
+      'ChatGPT 쇼핑이 이미지 중심 탐색과 나란히 비교하는 화면으로 바뀐다. ' +
+      'Agentic Commerce Protocol을 상품 탐색까지 넓혔고, ' +
+      'Instant Checkout 대신 판매자 자체 결제를 허용한다.',
+    publishedAt: '2026-03-24',
+    category: 'Product',
+    signal: 'AGENTIC COMMERCE',
+    url: 'https://openai.com/index/powering-product-discovery-in-chatgpt',
+  },
+  {
+    id: 'creating-with-sora-safely',
+    source: 'OpenAI',
+    kind: 'industry',
+    title: 'Creating with Sora Safely',
+    summary:
+      'OpenAI가 Sora 2의 안전장치를 정리해 공개했다. 모든 생성 영상에 출처 ' +
+      '신호를 넣고, 실제 인물 이미지로 만드는 영상과 청소년 계정에는 더 엄격한 ' +
+      '기준을 적용한다.',
+    publishedAt: '2026-03-23',
+    category: 'Policy',
+    signal: 'SYNTHETIC MEDIA',
+    url: 'https://openai.com/index/creating-with-sora-safely',
+  },
+  {
+    id: 'openai-to-acquire-astral',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'OpenAI to acquire Astral',
+    summary:
+      'OpenAI가 파이썬 도구 uv·Ruff·ty를 만든 Astral을 인수한다고 ' +
+      '발표했다. 인수가 마무리되면 Astral 팀은 Codex 팀에 합류하고 오픈소스 ' +
+      '프로젝트는 계속 지원한다.',
+    publishedAt: '2026-03-19',
+    category: 'Product',
+    signal: 'DEVELOPER TOOLING',
+    url: 'https://openai.com/index/openai-to-acquire-astral',
+  },
+  {
+    id: 'monitor-internal-coding-agents',
+    source: 'OpenAI',
+    kind: 'industry',
+    title: 'How we monitor internal coding agents for misalignment',
+    summary:
+      'OpenAI가 사내 코딩 에이전트를 감시하는 시스템을 공개했다. GPT-5.4 ' +
+      'Thinking이 대화와 추론 기록을 훑어 사용자 의도에서 벗어난 행동을 30분 ' +
+      '안에 분류하고 등급을 매긴다.',
+    publishedAt: '2026-03-19',
+    category: 'Policy',
+    signal: 'AGENT SAFETY MONITORING',
+    url: 'https://openai.com/index/how-we-monitor-internal-coding-agents-misalignment',
+  },
+  {
+    id: 'demand-response-data-center-milestone',
+    source: 'Google DeepMind',
+    kind: 'industry',
+    title: 'A new milestone for smart, affordable electricity growth',
+    summary:
+      '구글이 미국 전력사들과 맺은 장기 전력 계약에 수요 반응 용량 1기가와트를 ' +
+      '확보했다고 밝혔다. 피크 시간대에 데이터센터의 머신러닝 작업 일부를 줄이거나 ' +
+      '시간을 옮기는 방식이다.',
+    publishedAt: '2026-03-19',
+    category: 'Infrastructure',
+    signal: 'GRID FLEXIBILITY',
+    url: 'https://blog.google/innovation-and-ai/infrastructure-and-cloud/global-network/demand-response-data-center-milestone/',
+  },
+  {
+    id: 'stitch-ai-ui-design',
+    source: 'Google DeepMind',
+    kind: 'company',
+    title: 'Introducing “vibe design” with Stitch',
+    summary:
+      '구글 랩스가 자연어를 고충실도 UI 디자인으로 바꾸는 디자인 캔버스 ' +
+      'Stitch를 소개했다. 무한 캔버스와 디자인 에이전트, 클릭 가능한 프로토타입 ' +
+      '생성 기능을 담았다.',
+    publishedAt: '2026-03-18',
+    category: 'Product',
+    signal: 'AI DESIGN TOOLS',
+    url: 'https://blog.google/innovation-and-ai/models-and-research/google-labs/stitch-ai-ui-design/',
+  },
+  {
+    id: 'full-stack-vibe-coding-ai-studio',
+    source: 'Google DeepMind',
+    kind: 'company',
+    title: 'Introducing the new full-stack vibe coding experience in Google AI Studio',
+    summary:
+      '구글이 AI Studio의 바이브 코딩 환경을 개편해 프런트엔드뿐 아니라 ' +
+      '백엔드까지 프롬프트로 만들 수 있게 했다. Antigravity 코딩 에이전트가 ' +
+      '이 환경을 구동하고 Firebase가 데이터베이스와 인증을 맡는다.',
+    publishedAt: '2026-03-18',
+    category: 'Product',
+    signal: 'AGENTIC CODING',
+    url: 'https://blog.google/innovation-and-ai/technology/developers-tools/full-stack-vibe-coding-google-ai-studio/',
+  },
+  {
+    id: 'measuring-agi-cognitive-framework',
+    source: 'Google DeepMind',
+    kind: 'industry',
+    title: 'Measuring progress toward AGI: A cognitive framework',
+    summary:
+      '구글 딥마인드가 AI의 인지 능력을 평가하는 인지 분류 체계 논문을 공개했다. ' +
+      '지각·기억·추론 등 열 개 인지 영역을 정의하고 인간 기준선과 비교하는 3단계 ' +
+      '평가 절차를 제시했다.',
+    publishedAt: '2026-03-17',
+    category: 'Models',
+    signal: 'AGI EVALUATION',
+    url: 'https://deepmind.google/blog/measuring-progress-toward-agi-a-cognitive-framework/',
+  },
+  {
+    id: 'japan-teen-safety-blueprint',
+    source: 'OpenAI',
+    kind: 'industry',
+    title: 'OpenAI Japan announces Japan Teen Safety Blueprint to put teen safety first',
+    summary:
+      'OpenAI 일본 법인이 10대 사용자 보호 프레임워크 Japan Teen ' +
+      'Safety Blueprint를 발표했다. 연령 추정, 18세 미만 정책 강화, ' +
+      '보호자 도구 확대, 웰빙 중심 설계 네 축으로 구성된다.',
+    publishedAt: '2026-03-17',
+    category: 'Policy',
+    signal: 'TEEN SAFETY POLICY',
+    url: 'https://openai.com/index/japan-teen-safety-blueprint',
+  },
+  {
+    id: 'introducing-gpt-5-4-mini-and-nano',
+    source: 'OpenAI',
+    kind: 'model',
+    title: 'Introducing GPT-5.4 mini and nano',
+    summary:
+      'OpenAI가 소형 모델 GPT-5.4 mini와 nano를 공개했다. ' +
+      'mini는 GPT-5 mini보다 2배 이상 빠르면서 SWE-Bench Pro ' +
+      '54.4%를 기록했고, nano는 API 전용으로 분류·데이터 추출 같은 작업을 ' +
+      '겨냥한다.',
+    publishedAt: '2026-03-17',
+    category: 'Models',
+    signal: 'SMALL AGENTIC MODELS',
+    url: 'https://openai.com/index/introducing-gpt-5-4-mini-and-nano',
+    model: {
+      family: 'GPT',
+      name: 'GPT-5.4 mini · nano',
+      kind: '모델 패밀리',
+      status: '공개',
+      useCase: '고빈도 코딩·서브에이전트 작업',
+      headline:
+        '큰 모델의 일을 나눠 맡는 저지연 소형 모델 두 종',
+      logo: 'assets/openai.svg',
+      tone: 'gpt',
+    },
+  },
+  {
+    id: 'gemini-api-tooling-updates',
+    source: 'Google DeepMind',
+    kind: 'company',
+    title: 'Gemini API tooling updates: context circulation, tool combos and Maps grounding for Gemini 3',
+    summary:
+      '구글이 Gemini API에서 함수 호출과 내장 도구를 한 번의 호출로 함께 쓸 ' +
+      '수 있게 했다. 도구 출력을 맥락에 남겨 다음 단계에서 재사용하는 컨텍스트 ' +
+      '순환과 Gemini 3용 지도 그라운딩도 열었다.',
+    publishedAt: '2026-03-17',
+    category: 'Product',
+    signal: 'AGENT TOOLING',
+    url: 'https://blog.google/innovation-and-ai/technology/developers-tools/gemini-api-tooling-updates/',
+  },
+  {
+    id: 'clean-energy-reliability-michigan',
+    source: 'Google DeepMind',
+    kind: 'industry',
+    title: 'Scaling clean energy and reliability in Michigan',
+    summary:
+      '구글이 DTE 에너지와 함께 미시간에 새 데이터센터를 개발하고 청정 자원 ' +
+      '2.7기가와트를 계통에 붙이기로 했다. 부지는 밴뷰런 타운십을 검토 중이며 ' +
+      '에너지 임팩트 펀드 1천만 달러도 함께 조성한다.',
+    publishedAt: '2026-03-17',
+    category: 'Infrastructure',
+    signal: 'COMPUTE BUILDOUT',
+    url: 'https://blog.google/innovation-and-ai/infrastructure-and-cloud/global-network/clean-energy-reliability-michigan/',
+  },
+  {
+    id: 'ai-powered-open-source-security',
+    source: 'Google DeepMind',
+    kind: 'industry',
+    title: 'Our latest investment in open source security for the AI era',
+    summary:
+      '구글이 아마존·앤스로픽·마이크로소프트·오픈AI와 함께 오픈소스 보안에 ' +
+      '1,250만 달러를 출연한다. 자금은 Alpha-Omega와 OpenSSF가 ' +
+      '운용하고, Big Sleep·CodeMender 등 DeepMind 도구를 ' +
+      '오픈소스로 확대한다.',
+    publishedAt: '2026-03-17',
+    category: 'Policy',
+    signal: 'OPEN SOURCE SECURITY',
+    url: 'https://blog.google/innovation-and-ai/technology/safety-security/ai-powered-open-source-security/',
+  },
+  {
+    id: 'more-control-over-gemini-api-costs',
+    source: 'Google DeepMind',
+    kind: 'company',
+    title: 'Giving you more transparency and control over your Gemini API costs',
+    summary:
+      '구글이 Gemini API에 프로젝트별 월 지출 상한을 도입하고 사용량 등급 ' +
+      '체계를 개편했다. AI 스튜디오에는 청구 설정과 요청 한도·비용·사용량 ' +
+      '대시보드가 새로 들어갔다.',
+    publishedAt: '2026-03-16',
+    category: 'Product',
+    signal: 'API COST CONTROLS',
+    url: 'https://blog.google/innovation-and-ai/technology/developers-tools/more-control-over-gemini-api-costs/',
+  },
+  {
+    id: 'google-industry-accord-combat-scams-fraud',
+    source: 'Google DeepMind',
+    kind: 'industry',
+    title: 'Google has signed the Industry Accord Against Online Scams and Fraud.',
+    summary:
+      '구글이 빈에서 열린 UN 글로벌 사기 정상회의에서 온라인 사기 방지 산업 협약에 ' +
+      '서명했다. 어도비·아마존·메타·마이크로소프트·오픈AI 등 11개 기업이 함께 ' +
+      '이름을 올렸다.',
+    publishedAt: '2026-03-16',
+    category: 'Policy',
+    signal: 'ANTI-SCAM ACCORD',
+    url: 'https://blog.google/innovation-and-ai/technology/safety-security/google-industry-accord-combat-scams-fraud/',
+  },
+  {
+    id: 'claude-partner-network',
+    source: 'Anthropic',
+    kind: 'company',
+    title: 'Anthropic invests $100 million into the Claude Partner Network',
+    summary:
+      '앤스로픽이 Claude 파트너 네트워크에 2026년 초기 자금 1억 달러를 ' +
+      '투입한다고 밝혔다. 액센츄어·딜로이트·코그니전트·인포시스가 참여하며 가입비 없이 ' +
+      '신청을 받는다.',
+    publishedAt: '2026-03-12',
+    category: 'Product',
+    signal: 'PARTNER ECOSYSTEM',
+    url: 'https://www.anthropic.com/news/claude-partner-network',
+  },
+  {
+    id: 'wiz-acquisition',
+    source: 'Google DeepMind',
+    kind: 'company',
+    title: 'Google completes acquisition of Wiz',
+    summary:
+      '구글이 2025년 3월 발표한 클라우드·AI 보안 기업 Wiz 인수를 2026년 ' +
+      '3월 11일 마무리했다. Wiz는 브랜드를 유지한 채 구글 클라우드에 합류하고 ' +
+      '멀티클라우드 지원도 이어 간다.',
+    publishedAt: '2026-03-11',
+    category: 'Infrastructure',
+    signal: 'CLOUD SECURITY',
+    url: 'https://blog.google/innovation-and-ai/infrastructure-and-cloud/google-cloud/wiz-acquisition/',
+  },
+  {
+    id: 'the-anthropic-institute',
+    source: 'Anthropic',
+    kind: 'company',
+    title: 'Introducing The Anthropic Institute',
+    summary:
+      '앤스로픽이 The Anthropic Institute를 출범하고 공공정책 팀을 ' +
+      '확대한다고 밝혔다. 프런티어 레드팀·사회적 영향·경제 연구 팀을 한데 모아 ' +
+      '강력한 AI의 사회적 영향을 연구한다.',
+    publishedAt: '2026-03-11',
+    category: 'Policy',
+    signal: 'AI POLICY',
+    url: 'https://www.anthropic.com/news/the-anthropic-institute',
+  },
+  {
+    id: 'growing-up-digital-age-gemini-youth',
+    source: 'Google DeepMind',
+    kind: 'industry',
+    title: 'A roadmap for safer generative AI for young people',
+    summary:
+      '구글이 더블린 \'Growing Up in the Digital Age\' 서밋에서 ' +
+      '청소년 대상 생성형 AI 안전 방침을 공개했다. 미성년자 부적합 콘텐츠 금지와 ' +
+      'AI 페르소나 제한을 명시했다.',
+    publishedAt: '2026-03-11',
+    category: 'Policy',
+    signal: 'YOUTH AI SAFETY',
+    url: 'https://blog.google/innovation-and-ai/technology/families/growing-up-digital-age-gemini-youth/',
+  },
+  {
+    id: 'equip-responses-api-computer-environment',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'From model to agent: Equipping the Responses API with a computer environment',
+    summary:
+      'OpenAI가 Responses API에 셸 도구와 호스팅 컨테이너를 붙여 만든 ' +
+      '에이전트 실행 환경을 설명했다. 모델이 명령을 제안하면 API가 격리된 ' +
+      '컨테이너에서 실행하고, 컴팩션으로 컨텍스트가 차도 작업을 이어 간다.',
+    publishedAt: '2026-03-11',
+    category: 'Infrastructure',
+    signal: 'AGENT RUNTIME',
+    url: 'https://openai.com/index/equip-responses-api-computer-environment',
+  },
+  {
+    id: 'agents-resist-prompt-injection',
+    source: 'OpenAI',
+    kind: 'industry',
+    title: 'Designing AI agents to resist prompt injection',
+    summary:
+      'OpenAI가 프롬프트 인젝션을 사회공학 문제로 보고 방어하는 접근을 공개했다. ' +
+      '입력 필터링에 기대는 대신 에이전트 권한을 제한하고, 대화에서 얻은 정보가 ' +
+      '제3자로 나갈 때 Safe Url이 사용자 확인을 받거나 차단한다.',
+    publishedAt: '2026-03-11',
+    category: 'Policy',
+    signal: 'AGENT SECURITY',
+    url: 'https://openai.com/index/designing-agents-to-resist-prompt-injection',
+  },
+  {
+    id: 'sydney-fourth-office-asia-pacific',
+    source: 'Anthropic',
+    kind: 'company',
+    title: 'Sydney will become Anthropic’s fourth office in Asia-Pacific',
+    summary:
+      '앤스로픽이 시드니에 아시아태평양 네 번째 사무소를 연다고 밝혔다. ' +
+      '도쿄·벵갈루루·서울에 이은 거점으로, 몇 주 안에 문을 열고 현지 ' +
+      '기업·스타트업·연구 고객을 담당한다.',
+    publishedAt: '2026-03-10',
+    category: 'Infrastructure',
+    signal: 'REGIONAL EXPANSION',
+    url: 'https://www.anthropic.com/news/sydney-fourth-office-asia-pacific',
+  },
+  {
+    id: 'learn-math-and-science-in-chatgpt',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'New ways to learn math and science in ChatGPT',
+    summary:
+      'ChatGPT가 수학·과학 개념을 다루는 대화형 시각 설명을 추가했다. 70개 ' +
+      '이상의 핵심 개념에서 변수를 직접 조정하며 그래프와 결과가 어떻게 바뀌는지 볼 ' +
+      '수 있고, 모든 요금제에 전 세계 동시 제공된다.',
+    publishedAt: '2026-03-10',
+    category: 'Product',
+    signal: 'AI EDUCATION',
+    url: 'https://openai.com/index/new-ways-to-learn-math-and-science-in-chatgpt',
+  },
+  {
+    id: 'instruction-hierarchy-challenge',
+    source: 'OpenAI',
+    kind: 'industry',
+    title: 'Improving instruction hierarchy in frontier LLMs',
+    summary:
+      'OpenAI가 지시 계층 학습용 강화학습 데이터셋 IH-Challenge를 ' +
+      '논문과 함께 공개했다. 시스템·개발자·사용자·도구 순의 신뢰 위계를 지키도록 ' +
+      '훈련하면 안전 조종성과 프롬프트 인젝션 내성이 함께 오른다는 결과를 제시했다.',
+    publishedAt: '2026-03-10',
+    category: 'Models',
+    signal: 'INSTRUCTION HIERARCHY',
+    url: 'https://openai.com/index/instruction-hierarchy-challenge',
+  },
+  {
+    id: 'gemini-embedding-2',
+    source: 'Google DeepMind',
+    kind: 'model',
+    title: 'Gemini Embedding 2: Our first natively multimodal embedding model',
+    summary:
+      '구글이 제미나이 아키텍처 기반의 첫 완전 멀티모달 임베딩 모델 Gemini ' +
+      'Embedding 2를 공개 프리뷰로 내놨다. 텍스트·이미지·영상·오디오·문서를 ' +
+      '하나의 임베딩 공간에 매핑하며 Gemini API와 Vertex AI에서 ' +
+      '제공된다.',
+    publishedAt: '2026-03-10',
+    category: 'Models',
+    signal: 'MULTIMODAL EMBEDDINGS',
+    url: 'https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-embedding-2/',
+    model: {
+      family: 'Gemini',
+      name: 'Gemini Embedding 2',
+      kind: '신규 모델',
+      status: '공개',
+      useCase: '멀티모달 검색·RAG',
+      headline:
+        '다섯 모달리티를 하나의 벡터 공간에서 다루는 임베딩 모델',
+      logo: 'assets/gemini.svg',
+      tone: 'gemini',
+    },
+  },
+  {
+    id: 'openai-to-acquire-promptfoo',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'OpenAI to acquire Promptfoo',
+    summary:
+      'OpenAI가 AI 보안 테스트 플랫폼 Promptfoo를 인수한다고 밝혔다. ' +
+      '인수가 마무리되면 Promptfoo 기술을 기업용 플랫폼 OpenAI ' +
+      'Frontier에 넣어 배포 전 취약점 점검과 레드팀 기능을 기본으로 제공한다.',
+    publishedAt: '2026-03-09',
+    category: 'Product',
+    signal: 'AI SECURITY TESTING',
+    url: 'https://openai.com/index/openai-to-acquire-promptfoo',
+  },
+  {
+    id: 'mozilla-firefox-security',
+    source: 'Anthropic',
+    kind: 'company',
+    title: 'Partnering with Mozilla to improve Firefox’s security',
+    summary:
+      '앤스로픽이 모질라와 함께 Claude로 파이어폭스 코드의 취약점을 찾은 결과를 ' +
+      '공개했다. Opus 4.6이 2주 동안 22건을 찾아냈고 모질라는 그중 14건을 ' +
+      '고위험으로 분류했다.',
+    publishedAt: '2026-03-06',
+    category: 'Product',
+    signal: 'AI SECURITY RESEARCH',
+    url: 'https://www.anthropic.com/news/mozilla-firefox-security',
+  },
+  {
+    id: 'codex-security-now-in-research-preview',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'Codex Security: now in research preview',
+    summary:
+      'OpenAI가 애플리케이션 보안 에이전트 Codex Security를 리서치 ' +
+      '프리뷰로 열었다. 저장소를 분석해 위협 모델을 만들고 취약점을 샌드박스에서 ' +
+      '검증한 뒤 패치를 제안하며, Codex 웹의 ' +
+      'Pro·Enterprise·Business·Edu에 한 달 무료로 열린다.',
+    publishedAt: '2026-03-06',
+    category: 'Product',
+    signal: 'SECURITY AGENT PREVIEW',
+    url: 'https://openai.com/index/codex-security-now-in-research-preview',
+  },
+  {
+    id: 'where-stand-department-war',
+    source: 'Anthropic',
+    kind: 'industry',
+    title: 'Where things stand with the Department of War',
+    summary:
+      'Anthropic은 3월 4일 미 국방부(Department of War)로부터 ' +
+      '자사를 국가안보 공급망 위험으로 지정한다는 서한을 받았다고 밝혔습니다. 법적 ' +
+      '근거가 없다고 보고 법원에서 다투겠다는 입장입니다.',
+    publishedAt: '2026-03-05',
+    category: 'Policy',
+    signal: 'AI POLICY',
+    url: 'https://www.anthropic.com/news/where-stand-department-war',
+  },
+  {
+    id: 'introducing-gpt-5-4',
+    source: 'OpenAI',
+    kind: 'model',
+    title: 'Introducing GPT-5.4',
+    summary:
+      'OpenAI가 GPT-5.4를 ChatGPT·API·Codex에 공개하고 ' +
+      'GPT-5.4 Pro도 함께 냈다. GDPval 83.0%, ' +
+      'OSWorld-Verified 75.0%를 기록했고 컴퓨터 사용 능력을 범용 ' +
+      '모델에 처음으로 기본 탑재했다.',
+    publishedAt: '2026-03-05',
+    category: 'Models',
+    signal: 'FRONTIER MODEL',
+    url: 'https://openai.com/index/introducing-gpt-5-4',
+    model: {
+      family: 'GPT',
+      name: 'GPT-5.4',
+      kind: '신규 모델',
+      status: '공개',
+      useCase: '전문 지식 작업과 컴퓨터 사용 에이전트',
+      headline:
+        '컴퓨터 사용을 기본으로 갖춘 첫 범용 프런티어 모델',
+      logo: 'assets/openai.svg',
+      tone: 'gpt',
+    },
+  },
+  {
+    id: 'gpt-5-4-thinking-system-card',
+    source: 'OpenAI',
+    kind: 'model',
+    title: 'GPT-5.4 Thinking System Card',
+    summary:
+      'OpenAI가 GPT-5.4 Thinking의 시스템 카드를 공개했다. ' +
+      'GPT-5 계열 최신 추론 모델로, 사이버보안 High 역량에 대한 완화 조치를 ' +
+      '적용한 첫 범용 모델이라고 밝혔다.',
+    publishedAt: '2026-03-05',
+    category: 'Models',
+    signal: 'FRONTIER MODEL SAFETY',
+    url: 'https://openai.com/index/gpt-5-4-thinking-system-card',
+  },
+  {
+    id: 'chatgpt-for-excel',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'Introducing ChatGPT for Excel and new financial data integrations',
+    summary:
+      'OpenAI가 GPT-5.4로 구동되는 Excel 추가 기능 ChatGPT ' +
+      'for Excel을 베타로 내놨다. ChatGPT 안에서 쓰는 금융 데이터 ' +
+      '연동도 함께 열어, 워크북 안에서 모델을 만들고 고치고 시나리오를 돌릴 수 있게 ' +
+      '했다.',
+    publishedAt: '2026-03-05',
+    category: 'Product',
+    signal: 'FINANCE AI TOOLS',
+    url: 'https://openai.com/index/chatgpt-for-excel',
+  },
+  {
+    id: 'chain-of-thought-controllability',
+    source: 'OpenAI',
+    kind: 'industry',
+    title: 'Reasoning models struggle to control their chains of thought, and that’s good',
+    summary:
+      'OpenAI가 추론 모델이 자기 사고 사슬(CoT)을 통제하는 능력을 측정한 ' +
+      '연구를 공개했다. 프런티어 모델 13종 모두 통제에 크게 실패했고, ' +
+      'OpenAI는 이를 CoT 모니터링이 아직 안전장치로 유효하다는 근거로 ' +
+      '제시했다.',
+    publishedAt: '2026-03-05',
+    category: 'Policy',
+    signal: 'COT MONITORABILITY',
+    url: 'https://openai.com/index/reasoning-models-chain-of-thought-controllability',
+  },
+  {
+    id: 'single-minus-amplitudes-gravitons',
+    source: 'OpenAI',
+    kind: 'industry',
+    title: 'Extending single-minus amplitudes to gravitons',
+    summary:
+      'OpenAI가 GPT-5.2 Pro의 도움으로 얻은 양자중력 산란 진폭 결과를 ' +
+      '프리프린트로 공개했다. 트리 수준에서 0이 된다고 여겨지던 단일 마이너스 중력자 ' +
+      '진폭이 특정 운동학 조건에서는 0이 아님을 보였다.',
+    publishedAt: '2026-03-04',
+    category: 'Models',
+    signal: 'AI FOR SCIENCE',
+    url: 'https://openai.com/index/extending-single-minus-amplitudes-to-gravitons',
+  },
+  {
+    id: 'cinematic-video-overviews-notebooklm',
+    source: 'Google DeepMind',
+    kind: 'company',
+    title: 'Generate your own Cinematic Video Overviews in NotebookLM.',
+    summary:
+      'NotebookLM이 자료를 애니메이션 영상으로 만드는 Cinematic ' +
+      'Video Overviews를 추가했습니다. Gemini 3와 Nano ' +
+      'Banana Pro, Veo 3를 함께 써서 내레이션 슬라이드를 넘어선 시각물을 ' +
+      '생성합니다.',
+    publishedAt: '2026-03-04',
+    category: 'Product',
+    signal: 'GENERATIVE MEDIA',
+    url: 'https://blog.google/innovation-and-ai/products/notebooklm/generate-your-own-cinematic-video-overviews-in-notebooklm/',
+  },
+  {
+    id: 'affordability-pledge-energy-growth',
+    source: 'Google DeepMind',
+    kind: 'industry',
+    title: 'Supporting the White House Ratepayer Protection Pledge: Google’s approach for responsible energy growth',
+    summary:
+      'Google이 백악관 전기요금 보호 서약에 서명하고 에너지 성장에 관한 다섯 ' +
+      '가지 약속을 공개했습니다. 데이터센터 증설로 늘어나는 전력 비용을 전액 ' +
+      '부담하겠다는 내용이 핵심입니다.',
+    publishedAt: '2026-03-04',
+    category: 'Infrastructure',
+    signal: 'ENERGY POLICY',
+    url: 'https://blog.google/innovation-and-ai/infrastructure-and-cloud/global-network/affordability-pledge-responsible-energy-growth/',
+  },
+  {
+    id: 'gpt-5-3-instant-system-card',
+    source: 'OpenAI',
+    kind: 'model',
+    title: 'GPT-5.3 Instant System Card',
+    summary:
+      'OpenAI가 GPT-5.3 Instant의 시스템 카드를 함께 공개했다. 안전 ' +
+      '완화 접근은 GPT-5.2 시스템 카드에 적힌 GPT-5.2 Instant의 ' +
+      '것과 대체로 같다고 밝혔다.',
+    publishedAt: '2026-03-03',
+    category: 'Models',
+    signal: 'MODEL SAFETY',
+    url: 'https://openai.com/index/gpt-5-3-instant-system-card',
+  },
+  {
+    id: 'gpt-5-3-instant',
+    source: 'OpenAI',
+    kind: 'model',
+    title: 'GPT-5.3 Instant: Smoother, more useful everyday conversations',
+    summary:
+      'OpenAI가 ChatGPT에서 가장 많이 쓰이는 모델을 GPT-5.3 ' +
+      'Instant로 갱신했다. 불필요한 거부와 장황한 단서를 줄이고, 웹 검색 ' +
+      '답변의 정리 품질과 사실 정확도를 함께 높였다.',
+    publishedAt: '2026-03-03',
+    category: 'Models',
+    signal: 'CHAT MODEL UPDATE',
+    url: 'https://openai.com/index/gpt-5-3-instant',
+    model: {
+      family: 'GPT',
+      name: 'GPT-5.3 Instant',
+      kind: '신규 모델',
+      status: '공개',
+      useCase: '일상 대화와 웹 검색 답변',
+      headline:
+        '거부와 군더더기를 덜어 낸 ChatGPT 기본 대화 모델',
+      logo: 'assets/openai.svg',
+      tone: 'gpt',
+    },
+  },
+  {
+    id: 'gemini-3-1-flash-lite',
+    source: 'Google DeepMind',
+    kind: 'model',
+    title: 'Gemini 3.1 Flash-Lite: Built for intelligence at scale',
+    summary:
+      'Google이 대규모 처리를 겨냥한 Gemini 3.1 Flash-Lite를 ' +
+      '프리뷰로 공개했습니다. 100만 토큰당 입력 0.25달러, 출력 1.50달러이며 ' +
+      '추론 깊이를 조절하는 thinking level을 지원합니다.',
+    publishedAt: '2026-03-03',
+    category: 'Models',
+    signal: 'MODEL ECONOMICS',
+    url: 'https://deepmind.google/blog/gemini-3-1-flash-lite-built-for-intelligence-at-scale/',
+    model: {
+      family: 'Gemini',
+      name: 'Gemini 3.1 Flash-Lite',
+      kind: '신규 모델',
+      status: '제한 공개',
+      useCase: '대규모 배치 처리',
+      headline:
+        '대량 처리와 낮은 지연을 겨냥해 단가를 낮추고 추론 깊이를 조절할 수 있게 한 ' +
+        '경량 모델입니다.',
+      logo: 'assets/gemini.svg',
+      tone: 'gemini',
+    },
+  },
+  {
+    id: 'agreement-with-department-of-war',
+    source: 'OpenAI',
+    kind: 'industry',
+    title: 'Our agreement with the Department of War',
+    summary:
+      'OpenAI가 미 국방부와 기밀 환경에서 AI 시스템을 배포하는 계약을 맺었다고 ' +
+      '밝혔다. 대량 국내 감시, 자율무기 지휘, 고위험 자동 결정 세 가지를 ' +
+      '금지선으로 두고 클라우드 전용으로만 배포한다.',
+    publishedAt: '2026-02-28',
+    category: 'Policy',
+    signal: 'DEFENSE AI POLICY',
+    url: 'https://openai.com/index/our-agreement-with-the-department-of-war',
+  },
+  {
+    id: 'update-on-mental-health-related-work',
+    source: 'OpenAI',
+    kind: 'industry',
+    title: 'An update on our mental health-related work',
+    summary:
+      'OpenAI가 정신건강 관련 안전 작업 현황과 소송 상황을 함께 정리해 ' +
+      '공개했다. 성인 이용자가 지정한 사람에게 알림이 가는 신뢰 연락처 기능을 곧 ' +
+      '도입하고, 장시간 대화를 모사하는 새 평가 방법을 적용 중이라고 밝혔다.',
+    publishedAt: '2026-02-27',
+    category: 'Policy',
+    signal: 'USER SAFETY',
+    url: 'https://openai.com/index/update-on-mental-health-related-work',
+  },
+  {
+    id: 'statement-comments-secretary-war',
+    source: 'Anthropic',
+    kind: 'industry',
+    title: 'Statement on the comments from Secretary of War Pete Hegseth',
+    summary:
+      '피트 헤그세스 전쟁장관이 앤트로픽을 공급망 리스크로 지정하겠다고 밝히자 ' +
+      '앤트로픽이 입장문을 냈다. 대규모 국내 감시와 완전 자율 무기, 두 가지 예외 ' +
+      '요구를 거부해 협상이 결렬됐다고 설명했다.',
+    publishedAt: '2026-02-27',
+    category: 'Policy',
+    signal: 'DEFENSE AI POLICY',
+    url: 'https://www.anthropic.com/news/statement-comments-secretary-war',
+  },
+  {
+    id: 'stateful-runtime-environment-agents-bedrock',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'Introducing the Stateful Runtime Environment for Agents in Amazon Bedrock',
+    summary:
+      'OpenAI가 아마존과 함께 Amazon Bedrock에서 네이티브로 도는 ' +
+      'Stateful Runtime Environment를 공개했다. 상태를 유지하며 ' +
+      '여러 단계로 이어지는 에이전트 작업을 고객의 AWS 환경 안에서 돌리도록 만든 ' +
+      '실행 환경이다.',
+    publishedAt: '2026-02-27',
+    category: 'Infrastructure',
+    signal: 'AGENT INFRASTRUCTURE',
+    url: 'https://openai.com/index/introducing-the-stateful-runtime-environment-for-agents-in-amazon-bedrock',
+  },
+  {
+    id: 'gemini-drop-february-2026',
+    source: 'Google DeepMind',
+    kind: 'company',
+    title: 'Find out what’s new in the Gemini app in February&#x27;s Gemini Drop.',
+    summary:
+      '구글이 2월 제미나이 드롭에서 앱에 새로 들어간 기능을 묶어 공개했다. 음악 ' +
+      '생성 모델 Lyria 3, 이미지 모델 Nano Banana 2, Gemini ' +
+      '3.1 Pro와 Deep Think 추론 모드, Veo 템플릿, 과학 논문 ' +
+      '인용이 포함됐다.',
+    publishedAt: '2026-02-27',
+    category: 'Product',
+    signal: 'CONSUMER AI FEATURES',
+    url: 'https://blog.google/innovation-and-ai/products/gemini-app/gemini-drop-february-2026/',
+  },
+  {
+    id: 'continuing-microsoft-partnership',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'Joint Statement from OpenAI and Microsoft',
+    summary:
+      '마이크로소프트와 OpenAI가 같은 날 나온 새 투자·파트너십 발표가 기존 ' +
+      '계약을 바꾸지 않는다는 공동 성명을 냈다. IP 독점 라이선스, 수익 배분, ' +
+      '스테이트리스 API의 Azure 독점, AGI 정의와 판정 절차가 모두 ' +
+      '그대로다.',
+    publishedAt: '2026-02-27',
+    category: 'Policy',
+    signal: 'PARTNERSHIP TERMS',
+    url: 'https://openai.com/index/continuing-microsoft-partnership',
+  },
+  {
+    id: 'amazon-partnership',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'OpenAI and Amazon announce strategic partnership',
+    summary:
+      'OpenAI와 아마존이 다년 전략 파트너십을 맺고 아마존이 총 500억 달러를 ' +
+      '투자한다. 양사는 Bedrock에서 쓸 스테이트풀 런타임 환경을 함께 만들고, ' +
+      'AWS가 기업용 플랫폼 Frontier의 독점 3자 클라우드 유통사가 된다.',
+    publishedAt: '2026-02-27',
+    category: 'Infrastructure',
+    signal: 'CLOUD COMPUTE DEAL',
+    url: 'https://openai.com/index/amazon-partnership',
+  },
+  {
+    id: 'statement-department-of-war',
+    source: 'Anthropic',
+    kind: 'industry',
+    title: 'Statement from Dario Amodei on our discussions with the Department of War',
+    summary:
+      '앤스로픽 CEO 다리오 아모데이가 미 국방부와의 협의 상황을 공개했다. 국방부가 ' +
+      '\'모든 합법적 사용\'에 대한 동의와 안전장치 두 가지 해제를 요구했고 앤스로픽은 ' +
+      '이를 거부했다고 밝혔다.',
+    publishedAt: '2026-02-26',
+    category: 'Policy',
+    signal: 'DEFENSE AI POLICY',
+    url: 'https://www.anthropic.com/news/statement-department-of-war',
+  },
+  {
+    id: 'pacific-northwest-national-laboratory',
+    source: 'OpenAI',
+    kind: 'industry',
+    title: 'Pacific Northwest National Laboratory and OpenAI partner to accelerate federal permitting',
+    summary:
+      'OpenAI가 미 에너지부 산하 태평양북서부국립연구소(PNNL) 및 ' +
+      'PermitAI 팀과 함께 연방 인허가 업무용 벤치마크 ' +
+      'DraftNEPABench를 만들었다. 코딩 에이전트가 환경영향평가서 초안 ' +
+      '작성을 얼마나 돕는지 측정한다.',
+    publishedAt: '2026-02-26',
+    category: 'Policy',
+    signal: 'GOVERNMENT AI',
+    url: 'https://openai.com/index/pacific-northwest-national-laboratory',
+  },
+  {
+    id: 'nano-banana-2',
+    source: 'Google DeepMind',
+    kind: 'model',
+    title: 'Nano Banana 2: Combining Pro capabilities with lightning-fast speed',
+    summary:
+      '구글이 이미지 생성·편집 모델 나노 바나나 2(제미나이 3.1 플래시 이미지)를 ' +
+      '공개했다. 제미나이 앱과 검색, AI 스튜디오, 버텍스 AI, 플로우, 구글 ' +
+      '광고에 함께 들어간다.',
+    publishedAt: '2026-02-26',
+    category: 'Models',
+    signal: 'IMAGE MODELS',
+    url: 'https://deepmind.google/blog/nano-banana-2-combining-pro-capabilities-with-lightning-fast-speed/',
+    model: {
+      family: 'Gemini',
+      name: 'Nano Banana 2',
+      kind: '신규 모델',
+      status: '공개',
+      useCase: '이미지 생성·편집',
+      headline:
+        '웹 검색 기반 지식과 4K 출력을 갖춘 구글의 새 이미지 모델',
+      logo: 'assets/gemini.svg',
+      tone: 'gemini',
+    },
+  },
+  {
+    id: 'figma-partnership',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'OpenAI Codex and Figma launch seamless code-to-design experience',
+    summary:
+      'OpenAI와 Figma가 Codex와 Figma를 잇는 통합을 내놨다. ' +
+      'Figma MCP 서버로 연결해 Figma 디자인을 코드로 구현하고, 반대로 ' +
+      '코드의 UI를 편집 가능한 Figma 디자인으로 되돌릴 수 있다.',
+    publishedAt: '2026-02-26',
+    category: 'Product',
+    signal: 'DESIGN TOOLING',
+    url: 'https://openai.com/index/figma-partnership',
+  },
+  {
+    id: 'flow-updates-february-2026',
+    source: 'Google DeepMind',
+    kind: 'company',
+    title: 'New ways to create and refine content in Flow',
+    summary:
+      '구글이 영상 제작 도구 플로우에 이미지 생성과 편집 기능을 합쳤다. 위스크와 ' +
+      '이미지FX의 기능이 플로우로 들어오고 나노 바나나 모델이 핵심 경험에 통합된다.',
+    publishedAt: '2026-02-25',
+    category: 'Product',
+    signal: 'CREATIVE TOOLS',
+    url: 'https://blog.google/innovation-and-ai/models-and-research/google-labs/flow-updates-february-2026/',
+  },
+  {
+    id: 'disrupting-malicious-ai-uses',
+    source: 'OpenAI',
+    kind: 'industry',
+    title: 'Disrupting malicious uses of AI | February 2026',
+    summary:
+      'OpenAI가 2026년 2월 위협 보고서를 내고 AI 악용을 탐지·차단한 ' +
+      '사례를 공개했다. 위협 행위자들이 AI를 웹사이트·소셜 계정 같은 기존 수단과 ' +
+      '함께 쓰고, 한 공작 안에서 여러 AI 모델을 나눠 쓰는 양상을 확인했다고 ' +
+      '밝혔다.',
+    publishedAt: '2026-02-25',
+    category: 'Policy',
+    signal: 'AI THREAT REPORT',
+    url: 'https://openai.com/index/disrupting-malicious-ai-uses',
+  },
+  {
+    id: 'android-multi-step-tasks',
+    source: 'Google DeepMind',
+    kind: 'company',
+    title: 'Let Gemini handle your multi-step daily tasks on Android.',
+    summary:
+      '구글이 제미나이가 안드로이드에서 여러 단계 작업을 대신 처리하는 기능을 베타로 ' +
+      '내놓는다고 밝혔다. 전원 버튼을 길게 눌러 요청하면 백그라운드에서 진행되고 ' +
+      '그동안 폰은 계속 쓸 수 있다.',
+    publishedAt: '2026-02-25',
+    category: 'Product',
+    signal: 'MOBILE AGENTS',
+    url: 'https://blog.google/innovation-and-ai/products/gemini-app/android-multi-step-tasks/',
+  },
+  {
+    id: 'acquires-vercept',
+    source: 'Anthropic',
+    kind: 'company',
+    title: 'Anthropic acquires Vercept to advance Claude&#x27;s computer use capabilities',
+    summary:
+      '앤스로픽이 컴퓨터 사용 기술 스타트업 버셉트를 인수했다. 버셉트 팀은 앤스로픽에 ' +
+      '합류해 클로드의 컴퓨터 사용 능력을 맡고 기존 외부 제품은 몇 주 안에 ' +
+      '종료된다.',
+    publishedAt: '2026-02-25',
+    category: 'Product',
+    signal: 'COMPUTER USE',
+    url: 'https://www.anthropic.com/news/acquires-vercept',
+  },
+  {
+    id: 'responsible-scaling-policy-v3',
+    source: 'Anthropic',
+    kind: 'industry',
+    title: 'Responsible Scaling Policy Version 3.0',
+    summary:
+      '앤트로픽이 책임있는 스케일링 정책 3.0을 공개했다. 완화 조치를 자체 이행분과 ' +
+      '업계 공동 권고로 나누고, 구속력 없는 프런티어 안전 로드맵과 3~6개월 주기 ' +
+      '리스크 리포트를 새로 뒀다.',
+    publishedAt: '2026-02-24',
+    category: 'Policy',
+    signal: 'AI POLICY',
+    url: 'https://www.anthropic.com/news/responsible-scaling-policy-v3',
+  },
+  {
+    id: 'producerai',
+    source: 'Google DeepMind',
+    kind: 'company',
+    title: 'ProducerAI: Your music creation partner, now in Google Labs',
+    summary:
+      '구글 랩스가 생성형 AI 음악 제작 플랫폼 ProducerAI를 공개했다. ' +
+      '제미나이와 음악 모델 Lyria 3에 Veo·나노 바나나를 묶어 가사 작성부터 ' +
+      '멜로디 다듬기와 오디오 이펙트까지 대화로 다룬다.',
+    publishedAt: '2026-02-24',
+    category: 'Product',
+    signal: 'GENERATIVE MEDIA',
+    url: 'https://blog.google/innovation-and-ai/models-and-research/google-labs/producerai/',
+  },
+  {
+    id: 'opal-agent',
+    source: 'Google DeepMind',
+    kind: 'company',
+    title: 'Build dynamic agentic workflows in Opal',
+    summary:
+      '구글 랩스가 워크플로 도구 Opal에 에이전트 스텝을 추가했다. 모델을 직접 ' +
+      '고르는 대신 에이전트가 목표를 보고 도구와 모델을 스스로 정하며, 메모리·동적 ' +
+      '라우팅·대화형 채팅 세 기능이 함께 들어갔다.',
+    publishedAt: '2026-02-24',
+    category: 'Product',
+    signal: 'AGENTIC WORKFLOWS',
+    url: 'https://blog.google/innovation-and-ai/models-and-research/google-labs/opal-agent/',
+  },
+  {
+    id: 'data-center-wilbarger-county',
+    source: 'Google DeepMind',
+    kind: 'industry',
+    title: 'We’re expanding our Texas presence with a new data center and clean energy in Wilbarger County.',
+    summary:
+      '구글이 텍사스 윌바저 카운티에 새 데이터센터를 짓는다고 밝혔다. AES가 ' +
+      '개발하는 신규 청정 발전 설비와 나란히 조성되며 냉각에는 공랭 방식을 쓴다.',
+    publishedAt: '2026-02-24',
+    category: 'Infrastructure',
+    signal: 'COMPUTE BUILDOUT',
+    url: 'https://blog.google/innovation-and-ai/infrastructure-and-cloud/global-network/data-center-wilbarger-county/',
+  },
+  {
+    id: 'data-center-pine-island',
+    source: 'Google DeepMind',
+    kind: 'industry',
+    title: 'Google is coming to Minnesota and advancing clean energy goals',
+    summary:
+      '구글이 미네소타 파인아일랜드에 새 데이터센터를 짓고 엑셀에너지와 청정전력 계약 ' +
+      '구조를 맺었다. 풍력 1,400MW와 태양광 200MW, 철-공기 배터리 ' +
+      '저장장치 300MW를 확보하고 전력 서비스 비용은 구글이 전액 부담한다.',
+    publishedAt: '2026-02-24',
+    category: 'Infrastructure',
+    signal: 'COMPUTE BUILDOUT',
+    url: 'https://blog.google/innovation-and-ai/infrastructure-and-cloud/global-network/data-center-pine-island/',
+  },
+  {
+    id: 'arvind-kc-chief-people-officer',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'Arvind KC appointed Chief People Officer',
+    summary:
+      'OpenAI가 아빈드 KC를 최고인사책임자로 선임했다. 채용·온보딩·인재 개발의 ' +
+      '기반 체계와 협업 제도를 맡고, AI로 일하는 방식이 바뀌는 과정에서 조직 운영 ' +
+      '방식을 설계하는 역할을 맡는다.',
+    publishedAt: '2026-02-24',
+    category: 'Policy',
+    signal: 'LEADERSHIP HIRE',
+    url: 'https://openai.com/index/arvind-kc-chief-people-officer',
+  },
+  {
+    id: 'why-we-no-longer-evaluate-swe-bench-verified',
+    source: 'OpenAI',
+    kind: 'industry',
+    title: 'Why we no longer evaluate SWE-bench Verified',
+    summary:
+      'OpenAI가 SWE-bench Verified 점수 보고를 중단한다고 밝혔다. ' +
+      '감사 결과 상당수 문제의 테스트가 정상 해법을 탈락시키고 프런티어 모델들이 정답 ' +
+      '패치를 그대로 재현할 만큼 오염돼, 대신 SWE-bench Pro를 권고했다.',
+    publishedAt: '2026-02-23',
+    category: 'Models',
+    signal: 'BENCHMARK CONTAMINATION',
+    url: 'https://openai.com/index/why-we-no-longer-evaluate-swe-bench-verified',
+  },
+  {
+    id: 'frontier-alliance-partners',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'OpenAI announces Frontier Alliance Partners',
+    summary:
+      'OpenAI가 기업용 에이전트 플랫폼 Frontier의 도입을 돕는 파트너 ' +
+      '프로그램 Frontier Alliances를 발표했다. 컨설팅 4사와 다년 ' +
+      '계약을 맺고 전략 수립부터 시스템 통합, 워크플로 재설계, 글로벌 배포까지 함께 ' +
+      '맡는다.',
+    publishedAt: '2026-02-23',
+    category: 'Product',
+    signal: 'ENTERPRISE AGENTS',
+    url: 'https://openai.com/index/frontier-alliance-partners',
+  },
+  {
+    id: 'distillation-attacks',
+    source: 'Anthropic',
+    kind: 'industry',
+    title: 'Detecting and preventing distillation attacks',
+    summary:
+      '앤트로픽이 세 AI 연구소가 클로드 출력으로 자사 모델을 학습시킨 증류 시도를 ' +
+      '적발했다고 밝혔다. 딥시크·문샷·미니맥스가 약 2만 4천 개 부정 계정으로 ' +
+      '1,600만 건 넘는 대화를 수집했다.',
+    publishedAt: '2026-02-23',
+    category: 'Policy',
+    signal: 'MODEL SECURITY',
+    url: 'https://www.anthropic.com/news/detecting-and-preventing-distillation-attacks',
+  },
+  {
+    id: 'first-proof-submissions',
+    source: 'OpenAI',
+    kind: 'industry',
+    title: 'Our First Proof submissions',
+    summary:
+      'OpenAI가 연구 수준 수학 문제 10개로 구성된 First Proof ' +
+      '챌린지에 내부 모델의 증명 시도를 제출했다. 전문가 피드백 기준 5개 문제가 ' +
+      '맞을 가능성이 높고, 2번 문제는 처음 판단과 달리 오답으로 정정했다.',
+    publishedAt: '2026-02-20',
+    category: 'Models',
+    signal: 'MATH PROOF EVALUATION',
+    url: 'https://openai.com/index/first-proof-submissions',
+  },
+  {
+    id: 'claude-code-security',
+    source: 'Anthropic',
+    kind: 'company',
+    title: 'Making frontier cybersecurity capabilities available to defenders',
+    summary:
+      '앤트로픽이 클로드 코드 웹에 코드 보안 점검 기능을 제한 리서치 프리뷰로 ' +
+      '열었다. 코드베이스를 훑어 취약점을 찾고 패치를 제안하되 적용은 사람이 승인해야 ' +
+      '한다.',
+    publishedAt: '2026-02-20',
+    category: 'Product',
+    signal: 'AI SECURITY',
+    url: 'https://www.anthropic.com/news/claude-code-security',
+  },
+  {
+    id: 'pomelli-photoshoot',
+    source: 'Google DeepMind',
+    kind: 'company',
+    title: 'Create studio-quality marketing assets with Photoshoot in Pomelli',
+    summary:
+      'Google Labs가 Pomelli에 제품 사진을 마케팅용 이미지로 바꿔 주는 ' +
+      'Photoshoot 기능을 넣었습니다. Nano Banana 이미지 모델과 ' +
+      '브랜드 정보를 담은 Business DNA를 결합해 중소기업에 무료로 ' +
+      '제공합니다.',
+    publishedAt: '2026-02-19',
+    category: 'Product',
+    signal: 'CREATIVE TOOLS',
+    url: 'https://blog.google/innovation-and-ai/models-and-research/google-labs/pomelli-photoshoot/',
+  },
+  {
+    id: 'independent-research-ai-alignment',
+    source: 'OpenAI',
+    kind: 'industry',
+    title: 'Advancing independent research on AI alignment',
+    summary:
+      'OpenAI가 영국 AI 보안연구소(UK AISI)가 만든 독립 얼라인먼트 연구 ' +
+      '기금 The Alignment Project에 750만 달러를 낸다. 기금 ' +
+      '총액은 2,700만 파운드를 넘으며 과제당 5만~100만 파운드가 지원된다.',
+    publishedAt: '2026-02-19',
+    category: 'Policy',
+    signal: 'AI SAFETY FUNDING',
+    url: 'https://openai.com/index/advancing-independent-research-ai-alignment',
+  },
+  {
+    id: 'gemini-3-1-pro',
+    source: 'Google DeepMind',
+    kind: 'model',
+    title: 'Gemini 3.1 Pro: A smarter model for your most complex tasks',
+    summary:
+      'Google이 Gemini 3 계열의 추론 능력을 끌어올린 Gemini 3.1 ' +
+      'Pro를 프리뷰로 공개했습니다. ARC-AGI-2 검증 점수 77.1%로 3 ' +
+      'Pro의 두 배를 넘겼고, 정식 출시는 추후 예정입니다.',
+    publishedAt: '2026-02-19',
+    category: 'Models',
+    signal: 'FRONTIER REASONING',
+    url: 'https://deepmind.google/blog/gemini-3-1-pro-a-smarter-model-for-your-most-complex-tasks/',
+    model: {
+      family: 'Gemini',
+      name: 'Gemini 3.1 Pro',
+      kind: '신규 모델',
+      status: '제한 공개',
+      useCase: '고난도 추론·복합 작업',
+      headline:
+        'ARC-AGI-2 77.1%를 기록하며 Gemini 3 계열의 추론 성능을 ' +
+        '끌어올린 프리뷰 모델입니다.',
+      logo: 'assets/gemini.svg',
+      tone: 'gemini',
+    },
+  },
+  {
+    id: 'openai-for-india',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'Introducing OpenAI for India',
+    summary:
+      'OpenAI가 델리 India AI Impact Summit 2026에서 인도 ' +
+      '국가 단위 프로그램 OpenAI for India를 발표했다. 타타그룹과 함께 ' +
+      '데이터센터·기업 도입·인력 교육을 추진하며, 인도의 주간 ChatGPT 사용자는 ' +
+      '1억 명을 넘었다.',
+    publishedAt: '2026-02-18',
+    category: 'Infrastructure',
+    signal: 'SOVEREIGN AI BUILDOUT',
+    url: 'https://openai.com/index/openai-for-india',
+  },
+  {
+    id: 'lyria-3',
+    source: 'Google DeepMind',
+    kind: 'model',
+    title: 'A new way to express yourself: Gemini can now create music',
+    summary:
+      'Gemini 앱에서 Lyria 3 기반 음악 생성이 베타로 열렸습니다. 텍스트나 ' +
+      '이미지·영상을 재료로 30초 트랙과 커버 아트를 만들 수 있고, 모든 결과물에 ' +
+      'SynthID 워터마크가 들어갑니다.',
+    publishedAt: '2026-02-18',
+    category: 'Models',
+    signal: 'GENERATIVE MEDIA',
+    url: 'https://deepmind.google/blog/a-new-way-to-express-yourself-gemini-can-now-create-music/',
+  },
+  {
+    id: 'introducing-evmbench',
+    source: 'OpenAI',
+    kind: 'industry',
+    title: 'Introducing EVMbench',
+    summary:
+      'OpenAI가 Paradigm과 함께 스마트 컨트랙트 취약점을 다루는 에이전트 ' +
+      '벤치마크 EVMbench를 공개했다. 감사 40건에서 추린 취약점 117개로 ' +
+      '탐지·패치·익스플로잇 세 모드를 재고, 태스크와 평가 도구를 함께 배포한다.',
+    publishedAt: '2026-02-18',
+    category: 'Models',
+    signal: 'SMART CONTRACT BENCHMARK',
+    url: 'https://openai.com/index/introducing-evmbench',
+  },
+  {
+    id: 'responsible-ai-2026-report',
+    source: 'Google DeepMind',
+    kind: 'industry',
+    title: 'Our 2026 Responsible AI Progress Report',
+    summary:
+      'Google이 AI 원칙을 제품과 연구에 어떻게 적용했는지 정리한 2026년 ' +
+      '책임 있는 AI 진행 보고서를 냈습니다. 연구 단계부터 출시 후 모니터링까지 ' +
+      '아우르는 다층 거버넌스 구조를 설명합니다.',
+    publishedAt: '2026-02-17',
+    category: 'Policy',
+    signal: 'AI GOVERNANCE',
+    url: 'https://blog.google/innovation-and-ai/products/responsible-ai-2026-report-ongoing-work/',
+  },
+  {
+    id: 'claude-sonnet-4-6',
+    source: 'Anthropic',
+    kind: 'model',
+    title: 'Introducing Sonnet 4.6',
+    summary:
+      'Anthropic이 Claude Sonnet 4.6을 공개했습니다. 가격은 ' +
+      '100만 토큰당 3달러와 15달러로 4.5와 같고, Free·Pro 플랜의 기본 ' +
+      '모델이 되며 1M 토큰 컨텍스트를 베타로 제공합니다.',
+    publishedAt: '2026-02-17',
+    category: 'Models',
+    signal: 'MODEL ECONOMICS',
+    url: 'https://www.anthropic.com/news/claude-sonnet-4-6',
+    model: {
+      family: 'Claude',
+      name: 'Claude Sonnet 4.6',
+      kind: '신규 모델',
+      status: '공개',
+      useCase: '코딩·컴퓨터 사용 에이전트',
+      headline:
+        '가격을 그대로 둔 채 코딩과 컴퓨터 사용, 장문 추론을 끌어올린 Sonnet ' +
+        '최신 버전입니다.',
+      logo: 'assets/claude.svg',
+      tone: 'claude',
+    },
+  },
+  {
+    id: 'anthropic-rwanda-mou',
+    source: 'Anthropic',
+    kind: 'industry',
+    title: 'Anthropic and the Government of Rwanda sign MOU for AI in health and education',
+    summary:
+      'Anthropic이 르완다 정부와 3년 기간의 양해각서를 맺었습니다. 보건, ' +
+      '공공부문 개발자 지원, 교육 세 영역에서 Claude 도입과 역량 강화를 함께 ' +
+      '진행합니다.',
+    publishedAt: '2026-02-17',
+    category: 'Policy',
+    signal: 'PUBLIC SECTOR AI',
+    url: 'https://www.anthropic.com/news/anthropic-rwanda-mou',
+  },
+  {
+    id: 'bengaluru-office-partnerships-across-india',
+    source: 'Anthropic',
+    kind: 'company',
+    title: 'Anthropic opens Bengaluru office and announces new partnerships across India',
+    summary:
+      '앤트로픽이 도쿄에 이어 아시아 두 번째 거점인 벵갈루루 오피스를 열고 인도 ' +
+      '파트너십을 공개했다. 인도는 Claude.ai 기준 두 번째로 큰 시장이며, ' +
+      '인도 런레이트 매출은 2025년 10월 이후 두 배가 됐다.',
+    publishedAt: '2026-02-16',
+    category: 'Product',
+    signal: 'MARKET EXPANSION',
+    url: 'https://www.anthropic.com/news/bengaluru-office-partnerships-across-india',
+  },
+  {
+    id: 'new-result-theoretical-physics',
+    source: 'OpenAI',
+    kind: 'industry',
+    title: 'GPT-5.2 derives a new result in theoretical physics',
+    summary:
+      'OpenAI가 글루온 산란 진폭에 관한 프리프린트를 arXiv에 공개했다. ' +
+      '0으로 취급되던 싱글마이너스 트리 진폭이 특정 운동량 영역에서는 0이 아님을 ' +
+      '보였고, 최종 공식은 GPT-5.2 Pro가 먼저 추측했다.',
+    publishedAt: '2026-02-13',
+    category: 'Models',
+    signal: 'AI FOR SCIENCE',
+    url: 'https://openai.com/index/new-result-theoretical-physics',
+  },
+  {
+    id: 'lockdown-mode-elevated-risk-labels',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'Introducing Lockdown Mode and Elevated Risk labels in ChatGPT',
+    summary:
+      'OpenAI가 프롬프트 인젝션 대응으로 ChatGPT 락다운 모드와 \'높은 ' +
+      '위험\' 레이블을 도입했다. 락다운 모드는 데이터 유출에 쓰일 수 있는 도구와 ' +
+      '기능을 결정론적으로 비활성화한다.',
+    publishedAt: '2026-02-13',
+    category: 'Product',
+    signal: 'PROMPT INJECTION DEFENSE',
+    url: 'https://openai.com/index/introducing-lockdown-mode-and-elevated-risk-labels-in-chatgpt',
+  },
+  {
+    id: 'chris-liddell-appointed-anthropic-board',
+    source: 'Anthropic',
+    kind: 'company',
+    title: 'Chris Liddell appointed to Anthropic’s board of directors',
+    summary:
+      '앤트로픽이 크리스 리델을 이사회에 선임했다. 마이크로소프트·GM·인터내셔널 ' +
+      '페이퍼에서 CFO를 지냈고 트럼프 1기 백악관 부비서실장을 맡았던 인물이다.',
+    publishedAt: '2026-02-13',
+    category: 'Policy',
+    signal: 'CORPORATE GOVERNANCE',
+    url: 'https://www.anthropic.com/news/chris-liddell-appointed-anthropic-board',
+  },
+  {
+    id: 'beyond-rate-limits',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'Beyond rate limits: scaling access to Codex and Sora',
+    summary:
+      'OpenAI가 Codex·Sora에서 사용 한도를 넘어서면 크레딧으로 이어 쓰게 ' +
+      '하는 실시간 액세스 엔진을 공개했다. 한도·무료 티어·크레딧·프로모션을 하나의 ' +
+      '결정 워터폴로 묶어 요청 단위로 판정한다.',
+    publishedAt: '2026-02-13',
+    category: 'Infrastructure',
+    signal: 'ACCESS INFRASTRUCTURE',
+    url: 'https://openai.com/index/beyond-rate-limits',
+  },
+  {
+    id: 'gtig-report-ai-cyber-attacks-feb-2026',
+    source: 'Google DeepMind',
+    kind: 'industry',
+    title: 'Our new report details the latest ways threat actors are misusing AI.',
+    summary:
+      '구글 위협 인텔리전스 그룹이 새 AI 위협 트래커 보고서를 냈다. 공격자들이 ' +
+      '정보 수집·피싱·악성코드 개발에 AI를 쓰고 있으며, 프런티어 모델을 직접 노린 ' +
+      'APT 공격은 관측되지 않았다고 밝혔다.',
+    publishedAt: '2026-02-12',
+    category: 'Policy',
+    signal: 'AI THREAT INTEL',
+    url: 'https://blog.google/innovation-and-ai/infrastructure-and-cloud/google-cloud/gtig-report-ai-cyber-attacks-feb-2026/',
+  },
+  {
+    id: 'gpt-5-3-codex-spark',
+    source: 'OpenAI',
+    kind: 'model',
+    title: 'Introducing GPT-5.3-Codex-Spark',
+    summary:
+      'OpenAI가 GPT-5.3-Codex의 경량 버전인 ' +
+      'GPT-5.3-Codex-Spark를 리서치 프리뷰로 공개했다. Cerebras ' +
+      '하드웨어에서 초당 1000토큰 이상을 내며 실시간 코딩을 겨냥한 첫 모델이다.',
+    publishedAt: '2026-02-12',
+    category: 'Models',
+    signal: 'LOW LATENCY CODING',
+    url: 'https://openai.com/index/introducing-gpt-5-3-codex-spark',
+    model: {
+      family: 'GPT',
+      name: 'GPT-5.3-Codex-Spark',
+      kind: '연구 프리뷰',
+      status: '제한 공개',
+      useCase: '실시간 코딩',
+      headline:
+        'Cerebras 가속기 위에서 도는 Codex용 초저지연 경량 모델',
+      logo: 'assets/openai.svg',
+      tone: 'gpt',
+    },
+  },
+  {
+    id: 'gemini-3-deep-think',
+    source: 'Google DeepMind',
+    kind: 'model',
+    title: 'Gemini 3 Deep Think: Advancing science, research and engineering',
+    summary:
+      '구글이 Gemini 3 Deep Think 추론 모드를 대폭 업데이트했다. ' +
+      'Humanity\'s Last Exam 48.4%, ARC-AGI-2 84.6%를 ' +
+      '기록했고 Gemini API로도 처음 열린다.',
+    publishedAt: '2026-02-12',
+    category: 'Models',
+    signal: 'SCIENTIFIC REASONING',
+    url: 'https://deepmind.google/blog/gemini-3-deep-think-advancing-science-research-and-engineering/',
+    model: {
+      family: 'Gemini',
+      name: 'Gemini 3 Deep Think',
+      kind: '신규 모델',
+      status: '제한 공개',
+      useCase: '과학·연구 난제 추론',
+      headline:
+        'ARC-AGI-2 84.6%를 기록한 구글의 최상위 추론 모드',
+      logo: 'assets/gemini.svg',
+      tone: 'gemini',
+    },
+  },
+  {
+    id: 'donate-public-first-action',
+    source: 'Anthropic',
+    kind: 'industry',
+    title: 'Anthropic is donating $20 million to Public First Action',
+    summary:
+      '앤스로픽이 신생 초당파 501(c)(4) 단체 퍼블릭 퍼스트 액션에 2천만 ' +
+      '달러를 낸다. 이 단체는 AI 공공 교육, 안전장치 확산, 미국의 AI 주도권 ' +
+      '확보를 활동 목표로 내걸었다.',
+    publishedAt: '2026-02-12',
+    category: 'Policy',
+    signal: 'AI POLICY',
+    url: 'https://www.anthropic.com/news/donate-public-first-action',
+  },
+  {
+    id: 'anthropic-raises-30-billion-series-g',
+    source: 'Anthropic',
+    kind: 'company',
+    title: 'Anthropic raises $30 billion in Series G funding at $380 billion post-money valuation',
+    summary:
+      '앤트로픽이 시리즈 G로 300억 달러를 조달했다. 투자 후 기업가치는 3800억 ' +
+      '달러이며, 현재 런레이트 매출은 140억 달러라고 함께 밝혔다.',
+    publishedAt: '2026-02-12',
+    category: 'Infrastructure',
+    signal: 'CAPITAL BUILDOUT',
+    url: 'https://www.anthropic.com/news/anthropic-raises-30-billion-series-g-funding-380-billion-post-money-valuation',
+  },
+  {
+    id: 'covering-electricity-price-increases',
+    source: 'Anthropic',
+    kind: 'industry',
+    title: 'Covering electricity price increases from our data centers',
+    summary:
+      '앤스로픽이 자사 데이터센터 탓에 오르는 소비자 전기요금을 회사가 떠안겠다고 ' +
+      '밝혔다. 계통 연계 공사비 전액과 수요 증가에서 오는 가격 상승분을 모두 ' +
+      '부담하는 구조다.',
+    publishedAt: '2026-02-11',
+    category: 'Infrastructure',
+    signal: 'COMPUTE BUILDOUT',
+    url: 'https://www.anthropic.com/news/covering-electricity-price-increases',
+  },
+  {
+    id: 'gemini-deep-think-discovery',
+    source: 'Google DeepMind',
+    kind: 'model',
+    title: 'Accelerating Mathematical and Scientific Discovery with Gemini Deep Think',
+    summary:
+      '구글 딥마인드가 Gemini Deep Think로 수학·물리·전산학 연구 난제를 ' +
+      '다룬 논문 두 편을 냈다. 수학 연구 에이전트 Aletheia는 사람 개입 없이 ' +
+      '논문 한 편을 만들어 냈다.',
+    publishedAt: '2026-02-09',
+    category: 'Models',
+    signal: 'AI FOR SCIENCE',
+    url: 'https://deepmind.google/blog/accelerating-mathematical-and-scientific-discovery-with-gemini-deep-think/',
+  },
+  {
+    id: 'bringing-chatgpt-to-genaimil',
+    source: 'OpenAI',
+    kind: 'industry',
+    title: 'Bringing ChatGPT to GenAI.mil',
+    summary:
+      '오픈AI가 미 전쟁부의 보안 AI 플랫폼 GenAI.mil에 ChatGPT ' +
+      '맞춤형 버전을 배포한다. 민간·군 인력 300만 명이 쓰는 비기밀 업무 환경이 ' +
+      '대상이다.',
+    publishedAt: '2026-02-09',
+    category: 'Product',
+    signal: 'DEFENSE DEPLOYMENT',
+    url: 'https://openai.com/index/bringing-chatgpt-to-genaimil',
+  },
+  {
+    id: 'our-approach-to-localization',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'Making AI work for everyone, everywhere: our approach to localization',
+    summary:
+      '오픈AI가 국가별 현지화를 어떻게 하는지 원칙 문서를 공개했다. 언어와 톤은 ' +
+      '지역에 맞추되 모델 사양의 구속력 있는 규칙과 사실의 내용·균형은 바꾸지 ' +
+      '않는다는 것이 골자다.',
+    publishedAt: '2026-02-06',
+    category: 'Policy',
+    signal: 'SOVEREIGN AI',
+    url: 'https://openai.com/index/our-approach-to-localization',
+  },
+  {
+    id: 'trusted-access-for-cyber',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'Introducing Trusted Access for Cyber',
+    summary:
+      '오픈AI가 사이버 역량이 높은 모델을 신원·신뢰 기반으로 열어 주는 파일럿 ' +
+      'Trusted Access for Cyber를 시작했다. 사이버 방어 연구에는 ' +
+      'API 크레딧 1,000만 달러를 함께 내건다.',
+    publishedAt: '2026-02-05',
+    category: 'Policy',
+    signal: 'CYBER DEFENSE ACCESS',
+    url: 'https://openai.com/index/trusted-access-for-cyber',
+  },
+  {
+    id: 'introducing-openai-frontier',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'Introducing OpenAI Frontier',
+    summary:
+      '오픈AI가 기업이 AI 에이전트를 구축·배포·관리하는 플랫폼 Frontier를 ' +
+      '내놨다. 사내 시스템을 잇는 비즈니스 컨텍스트, 에이전트별 신원과 권한, 성과 ' +
+      '평가를 한 곳에 묶었다.',
+    publishedAt: '2026-02-05',
+    category: 'Product',
+    signal: 'ENTERPRISE AGENTS',
+    url: 'https://openai.com/index/introducing-openai-frontier',
+  },
+  {
+    id: 'introducing-gpt-5-3-codex',
+    source: 'OpenAI',
+    kind: 'model',
+    title: 'Introducing GPT-5.3-Codex',
+    summary:
+      '오픈AI가 GPT-5.3-Codex를 공개했다. 직전 Codex의 코딩 능력과 ' +
+      'GPT-5.2급 추론·전문 지식을 한 모델로 묶었고, 인프라 개선으로 처리 ' +
+      '속도가 25% 올랐다.',
+    publishedAt: '2026-02-05',
+    category: 'Models',
+    signal: 'AGENTIC MODELS',
+    url: 'https://openai.com/index/introducing-gpt-5-3-codex',
+    model: {
+      family: 'GPT',
+      name: 'GPT-5.3-Codex',
+      kind: '신규 모델',
+      status: '공개',
+      useCase: '장기 실행 코딩 에이전트',
+      headline:
+        '코딩과 컴퓨터 조작을 한 모델에 묶은 Codex 최신판',
+      logo: 'assets/openai.svg',
+      tone: 'gpt',
+    },
+  },
+  {
+    id: 'gpt-5-lowers-protein-synthesis-cost',
+    source: 'OpenAI',
+    kind: 'industry',
+    title: 'GPT-5 lowers the cost of cell-free protein synthesis',
+    summary:
+      '오픈AI가 긴코 바이오웍스의 클라우드 실험실에 GPT-5를 연결해 무세포 단백질 ' +
+      '합성(CFPS) 조성을 최적화했다. 폐쇄 루프 실험을 여섯 번 돌려 단백질 생산 ' +
+      '비용을 40% 낮췄다.',
+    publishedAt: '2026-02-05',
+    category: 'Models',
+    signal: 'AI FOR SCIENCE',
+    url: 'https://openai.com/index/gpt-5-lowers-protein-synthesis-cost',
+  },
+  {
+    id: 'gpt-5-3-codex-system-card',
+    source: 'OpenAI',
+    kind: 'model',
+    title: 'GPT-5.3-Codex System Card',
+    summary:
+      'OpenAI가 GPT-5.3-Codex 시스템 카드를 냈다. 생물학에 이어 ' +
+      '사이버보안까지 Preparedness Framework의 High ' +
+      'capability로 처음 분류해 안전장치를 켰고, AI 자기개선은 High에 ' +
+      '이르지 않았다고 밝혔다.',
+    publishedAt: '2026-02-05',
+    category: 'Models',
+    signal: 'CYBER HIGH CAPABILITY',
+    url: 'https://openai.com/index/gpt-5-3-codex-system-card',
+  },
+  {
+    id: 'claude-opus-4-6',
+    source: 'Anthropic',
+    kind: 'model',
+    title: 'Claude Opus 4.6',
+    summary:
+      'Anthropic이 Claude Opus 4.6을 공개했다. Opus 계열 ' +
+      '처음으로 100만 토큰 컨텍스트를 베타 지원하고, 확장 사고를 모델이 알아서 ' +
+      '켜는 적응형 사고와 저·중·고·최대 네 단계 노력 설정이 들어갔다.',
+    publishedAt: '2026-02-05',
+    category: 'Models',
+    signal: 'LONG CONTEXT MODELS',
+    url: 'https://www.anthropic.com/news/claude-opus-4-6',
+    model: {
+      family: 'Claude',
+      name: 'Claude Opus 4.6',
+      kind: '신규 모델',
+      status: '공개',
+      useCase: '장기 실행 에이전트 코딩',
+      headline:
+        'Opus 계열 처음으로 100만 토큰 컨텍스트를 베타에서 연다',
+      logo: 'assets/claude.svg',
+      tone: 'claude',
+    },
+  },
+  {
+    id: 'apple-xcode-claude-agent-sdk',
+    source: 'Anthropic',
+    kind: 'company',
+    title: 'Apple’s Xcode now supports the Claude Agent SDK',
+    summary:
+      'Xcode 26.3에 Claude Agent SDK가 들어갔다. Claude가 ' +
+      '프로젝트 전체 구조를 먼저 파악하고 고칠 파일을 스스로 고른 뒤 반복 수정하는 ' +
+      '자율 작업이 Apple IDE 안에서 돌아간다.',
+    publishedAt: '2026-02-03',
+    category: 'Product',
+    signal: 'IDE AGENTS',
+    url: 'https://www.anthropic.com/news/apple-xcode-claude-agent-sdk',
+  },
+  {
+    id: 'snowflake-partnership',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'Snowflake and OpenAI partner to bring frontier intelligence to enterprise data',
+    summary:
+      'OpenAI와 스노우플레이크가 2억 달러 규모의 다년 파트너십을 맺고 ' +
+      'OpenAI 모델을 Cortex AI와 Snowflake ' +
+      'Intelligence에 넣는다. 고객은 자사 데이터에 붙은 에이전트와 앱을 ' +
+      '스노우플레이크 안에서 만들 수 있다.',
+    publishedAt: '2026-02-02',
+    category: 'Product',
+    signal: 'ENTERPRISE DATA AI',
+    url: 'https://openai.com/index/snowflake-partnership',
+  },
+  {
+    id: 'kaggle-game-arena-updates',
+    source: 'Google DeepMind',
+    kind: 'industry',
+    title: 'Advancing AI benchmarking with Game Arena',
+    summary:
+      'Google DeepMind가 Kaggle Game Arena에 늑대인간과 포커 ' +
+      '벤치마크를 새로 열고 체스 리더보드를 갱신했다. 자연어 대화로만 진행되는 사회적 ' +
+      '추리와 불완전 정보 아래의 위험 관리를 평가 축으로 넣었다.',
+    publishedAt: '2026-02-02',
+    category: 'Models',
+    signal: 'MODEL EVALUATION',
+    url: 'https://blog.google/innovation-and-ai/models-and-research/google-deepmind/kaggle-game-arena-updates/',
+  },
+  {
+    id: 'introducing-the-codex-app',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'Introducing the Codex app',
+    summary:
+      'OpenAI가 여러 에이전트를 동시에 관리하는 macOS용 Codex 앱을 ' +
+      '내놨다. 스킬과 예약 실행 기능을 갖췄고, 한시적으로 무료·Go 사용자에게도 ' +
+      '열면서 유료 요금제의 사용량 한도를 두 배로 올린다.',
+    publishedAt: '2026-02-02',
+    category: 'Product',
+    signal: 'CODING AGENTS',
+    url: 'https://openai.com/index/introducing-the-codex-app',
+  },
+  {
+    id: 'anthropic-allen-institute-hhmi',
+    source: 'Anthropic',
+    kind: 'company',
+    title: 'Anthropic partners with Allen Institute and Howard Hughes Medical Institute to accelerate scientific discovery',
+    summary:
+      'Anthropic이 Allen Institute, Howard Hughes ' +
+      'Medical Institute와 과학 연구 협력을 맺었다. HHMI는 ' +
+      'Janelia 캠퍼스를 거점으로 실험실용 에이전트를, Allen ' +
+      'Institute는 데이터 분석용 다중 에이전트를 만든다.',
+    publishedAt: '2026-02-02',
+    category: 'Product',
+    signal: 'AI FOR SCIENCE',
+    url: 'https://www.anthropic.com/news/anthropic-partners-with-allen-institute-and-howard-hughes-medical-institute',
+  },
+  {
+    id: 'gemini-drop-january-2026',
+    source: 'Google DeepMind',
+    kind: 'company',
+    title: 'Find out what’s new in the Gemini app in January&#x27;s Gemini Drop.',
+    summary:
+      '구글이 1월 제미나이 드롭에서 개인화 기능 Personal ' +
+      'Intelligence와 크롬 자동 브라우징을 공개했다. Veo 3.1 ' +
+      '이미지-투-비디오와 SAT 모의고사 기능도 함께 들어갔다.',
+    publishedAt: '2026-01-30',
+    category: 'Product',
+    signal: 'CONSUMER AI',
+    url: 'https://blog.google/innovation-and-ai/products/gemini-app/gemini-drop-january-2026/',
+  },
+  {
+    id: 'retiring-gpt-4o-and-older-models',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'Retiring GPT-4o, GPT-4.1, GPT-4.1 mini, and OpenAI o4-mini in ChatGPT',
+    summary:
+      'OpenAI가 2026년 2월 13일 ChatGPT에서 GPT-4o, ' +
+      'GPT-4.1, GPT-4.1 mini, o4-mini를 내린다. 앞서 예고한 ' +
+      'GPT-5 Instant·Thinking 종료와 같은 날이며, API 쪽은 당장 ' +
+      '바뀌지 않는다.',
+    publishedAt: '2026-01-29',
+    category: 'Models',
+    signal: 'MODEL RETIREMENT',
+    url: 'https://openai.com/index/retiring-gpt-4o-and-older-models',
+  },
+  {
+    id: 'project-genie',
+    source: 'Google DeepMind',
+    kind: 'model',
+    title: 'Project Genie: Experimenting with infinite, interactive worlds',
+    summary:
+      '구글 딥마인드가 실험용 웹 앱 Project Genie를 공개했다. Genie ' +
+      '3 월드 모델로 텍스트와 이미지에서 상호작용 가능한 세계를 실시간 생성하고 ' +
+      '탐색·리믹스할 수 있다.',
+    publishedAt: '2026-01-29',
+    category: 'Models',
+    signal: 'WORLD MODELS',
+    url: 'https://deepmind.google/blog/project-genie-experimenting-with-infinite-interactive-worlds/',
+  },
+  {
+    id: 'the-next-chapter-for-ai-in-the-eu',
+    source: 'OpenAI',
+    kind: 'industry',
+    title: 'The next chapter for AI in the EU',
+    summary:
+      'OpenAI가 EU 경제 청사진 2.0을 내고 유럽의 AI 도입 확대 계획을 ' +
+      '밝혔다. Booking.com과 함께 6개국 중소기업 2만 곳을 교육하는 SME ' +
+      'AI 액셀러레이터와 50만 유로 규모 청소년 안전 보조금 프로그램을 시작한다.',
+    publishedAt: '2026-01-28',
+    category: 'Policy',
+    signal: 'EU AI POLICY',
+    url: 'https://openai.com/index/the-next-chapter-for-ai-in-the-eu',
+  },
+  {
+    id: 'ai-agent-link-safety',
+    source: 'OpenAI',
+    kind: 'industry',
+    title: 'Keeping your data safe when an AI agent clicks a link',
+    summary:
+      'OpenAI가 에이전트가 URL을 자동으로 열 때 생기는 데이터 유출을 막는 ' +
+      '방식을 공개했다. 사용자 대화와 무관한 독립 웹 인덱스가 이미 관찰한 URL만 ' +
+      '자동 조회를 허용하고, 확인되지 않은 링크는 경고를 거쳐 사용자가 직접 승인하게 ' +
+      '했다.',
+    publishedAt: '2026-01-28',
+    category: 'Product',
+    signal: 'AGENT SECURITY',
+    url: 'https://openai.com/index/ai-agent-link-safety',
+  },
+  {
+    id: 'introducing-prism',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'Introducing Prism',
+    summary:
+      'OpenAI가 과학 논문 작성·협업 워크스페이스 Prism을 공개했다. ' +
+      'GPT-5.2를 LaTeX 편집 환경에 직접 붙였고, ChatGPT 개인 계정만 ' +
+      '있으면 프로젝트와 공동 작업자 수 제한 없이 무료로 쓸 수 있다.',
+    publishedAt: '2026-01-27',
+    category: 'Product',
+    signal: 'SCIENCE WRITING WORKSPACE',
+    url: 'https://openai.com/index/introducing-prism',
+  },
+  {
+    id: 'gov-uk-partnership',
+    source: 'Anthropic',
+    kind: 'industry',
+    title: 'Anthropic partners with the UK Government to bring AI assistance to GOV.UK services',
+    summary:
+      '영국 과학혁신기술부가 GOV.UK용 AI 어시스턴트 개발사로 앤트로픽을 ' +
+      '선정했다. 클로드 기반으로 구직·훈련 안내부터 시작해 정부 서비스 이용을 ' +
+      '단계별로 돕는다.',
+    publishedAt: '2026-01-27',
+    category: 'Policy',
+    signal: 'PUBLIC SECTOR AI',
+    url: 'https://www.anthropic.com/news/gov-UK-partnership',
+  },
+  {
+    id: 'gdp-premium-ai-pro-ultra',
+    source: 'Google DeepMind',
+    kind: 'company',
+    title: 'New developer tools for Google AI Pro and Ultra subscribers',
+    summary:
+      '구글이 Google AI Pro·Ultra 구독에 개발자 프로그램 프리미엄 ' +
+      '혜택을 추가 비용 없이 포함시켰다. 구독 등급에 따라 매달 구글 클라우드 ' +
+      '크레딧이 함께 지급된다.',
+    publishedAt: '2026-01-27',
+    category: 'Product',
+    signal: 'DEVELOPER ECONOMICS',
+    url: 'https://blog.google/innovation-and-ai/technology/developers-tools/gdp-premium-ai-pro-ultra/',
+  },
+  {
+    id: 'agentic-vision-gemini-3-flash',
+    source: 'Google DeepMind',
+    kind: 'model',
+    title: 'Introducing Agentic Vision in Gemini 3 Flash',
+    summary:
+      '구글이 Gemini 3 Flash에 Agentic Vision을 추가했다. ' +
+      '모델이 파이썬 코드를 직접 실행해 이미지를 확대하거나 잘라 보고 그 결과를 다시 ' +
+      '입력에 넣어 가며 추론한다.',
+    publishedAt: '2026-01-27',
+    category: 'Models',
+    signal: 'AGENTIC VISION',
+    url: 'https://blog.google/innovation-and-ai/technology/developers-tools/agentic-vision-gemini-3-flash/',
+  },
+  {
+    id: 'claude-new-constitution',
+    source: 'Anthropic',
+    kind: 'industry',
+    title: 'Claude&#x27;s new constitution',
+    summary:
+      '앤스로픽이 AI 모델 클로드의 새 헌법을 공개했다. 이전의 원칙 나열 방식을 ' +
+      '버리고 각 행동의 이유를 설명하는 문서로 바꿨으며, 전문을 CC0 1.0으로 ' +
+      '풀어 누구나 쓸 수 있게 했다.',
+    publishedAt: '2026-01-22',
+    category: 'Policy',
+    signal: 'MODEL ALIGNMENT',
+    url: 'https://www.anthropic.com/news/claude-new-constitution',
+  },
+  {
+    id: 'long-term-benefit-trust',
+    source: 'Anthropic',
+    kind: 'company',
+    title: 'Mariano-Florentino Cuéllar appointed to Anthropic’s Long-Term Benefit Trust',
+    summary:
+      '앤스로픽이 마리아노-플로렌티노 쿠에야르를 장기 이익 신탁(LTBT) 신임 ' +
+      '트러스티로 선임했다. 2023년 신탁 출범 때 합류한 카니카 발과 재커리 ' +
+      '로빈슨은 임기를 마치고 물러났다.',
+    publishedAt: '2026-01-21',
+    category: 'Policy',
+    signal: 'AI GOVERNANCE',
+    url: 'https://www.anthropic.com/news/mariano-florentino-long-term-benefit-trust',
+  },
+  {
+    id: 'edu-for-countries',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'Introducing Edu for Countries',
+    summary:
+      'OpenAI가 OpenAI for Countries의 새 축으로 ' +
+      'Education for Countries를 출범했다. 정부·대학 컨소시엄과 ' +
+      '함께 교육 시스템에 ChatGPT Edu와 GPT-5.2를 도입하고 국가 단위 ' +
+      '학습 성과 연구를 함께 진행한다.',
+    publishedAt: '2026-01-21',
+    category: 'Policy',
+    signal: 'AI IN EDUCATION',
+    url: 'https://openai.com/index/edu-for-countries',
+  },
+  {
+    id: 'capability-overhang',
+    source: 'OpenAI',
+    kind: 'industry',
+    title: 'How countries can end the capability overhang',
+    summary:
+      'OpenAI가 국가 간 AI 활용 격차를 다룬 보고서 \'Ending the ' +
+      'Capability Gap\'을 공개했다. 세계경제포럼 행사에서 OpenAI ' +
+      'for Countries를 교육·보건 등 여섯 갈래로 확대하겠다고 밝혔다.',
+    publishedAt: '2026-01-21',
+    category: 'Policy',
+    signal: 'AI CAPABILITY GAP',
+    url: 'https://openai.com/index/how-countries-can-end-the-capability-overhang',
+  },
+  {
+    id: 'stargate-community',
+    source: 'OpenAI',
+    kind: 'industry',
+    title: 'Stargate Community',
+    summary:
+      'OpenAI가 Stargate 캠퍼스가 들어서는 지역을 위한 Stargate ' +
+      'Community 계획을 공개했다. 부지별 계획을 세우고 에너지 비용을 자체 ' +
+      '부담해 주민 전기 요금이 오르지 않도록 하겠다고 밝혔다.',
+    publishedAt: '2026-01-20',
+    category: 'Infrastructure',
+    signal: 'COMPUTE BUILDOUT',
+    url: 'https://openai.com/index/stargate-community',
+  },
+  {
+    id: 'horizon-1000',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'Horizon 1000: Advancing AI for primary healthcare',
+    summary:
+      'OpenAI와 게이츠 재단이 아프리카 1차 보건 의료에 AI를 도입하는 파일럿 ' +
+      'Horizon 1000을 발표했다. 5천만 달러의 자금과 기술 지원을 투입해 ' +
+      '2028년까지 클리닉 1,000곳에 도달하는 것이 목표다.',
+    publishedAt: '2026-01-20',
+    category: 'Policy',
+    signal: 'AI FOR HEALTHCARE',
+    url: 'https://openai.com/index/horizon-1000',
+  },
+  {
+    id: 'age-prediction',
+    source: 'OpenAI',
+    kind: 'industry',
+    title: 'Our approach to age prediction',
+    summary:
+      'OpenAI가 ChatGPT 소비자 요금제에 연령 예측 기능을 출시했다. 계정이 ' +
+      '18세 미만일 가능성을 추정해 민감한 콘텐츠 노출을 줄이는 보호 조치를 자동으로 ' +
+      '적용한다.',
+    publishedAt: '2026-01-20',
+    category: 'Policy',
+    signal: 'TEEN SAFETY',
+    url: 'https://openai.com/index/our-approach-to-age-prediction',
+  },
+  {
+    id: 'business-that-scales',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'A business that scales with the value of intelligence',
+    summary:
+      'OpenAI CFO 사라 프라이어가 비즈니스 모델을 정리한 글을 냈다. 컴퓨팅이 ' +
+      '2023년 0.2GW에서 2025년 약 1.9GW로 늘고 연간 반복 매출도 ' +
+      '20억에서 200억 달러로 함께 커졌다고 밝혔다.',
+    publishedAt: '2026-01-18',
+    category: 'Product',
+    signal: 'MODEL ECONOMICS',
+    url: 'https://openai.com/index/a-business-that-scales-with-the-value-of-intelligence',
+  },
+  {
+    id: 'introducing-chatgpt-go',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'Introducing ChatGPT Go, now available worldwide',
+    summary:
+      'OpenAI가 저가 구독제 ChatGPT Go를 ChatGPT가 제공되는 모든 ' +
+      '국가로 확대했다. 미국 기준 월 8달러이며 무료 등급보다 메시지·업로드·이미지 ' +
+      '생성이 10배 많고, 무료 등급과 Go에는 광고 테스트가 예정돼 있다.',
+    publishedAt: '2026-01-16',
+    category: 'Product',
+    signal: 'CONSUMER PRICING',
+    url: 'https://openai.com/index/introducing-chatgpt-go',
+  },
+  {
+    id: 'd4rt-four-dimensions',
+    source: 'Google DeepMind',
+    kind: 'model',
+    title: 'D4RT: Teaching AI to see the world in four dimensions',
+    summary:
+      '구글 딥마인드가 2D 영상에서 움직이는 3D 장면을 복원하고 픽셀을 시공간으로 ' +
+      '추적하는 D4RT를 공개했다. 점 추적, 점군 복원, 카메라 자세 추정을 ' +
+      '인코더-디코더 트랜스포머 하나로 처리한다.',
+    publishedAt: '2026-01-16',
+    category: 'Models',
+    signal: 'WORLD MODELS',
+    url: 'https://deepmind.google/blog/d4rt-teaching-ai-to-see-the-world-in-four-dimensions/',
+  },
+  {
+    id: 'anthropic-india-managing-director',
+    source: 'Anthropic',
+    kind: 'company',
+    title: 'Anthropic appoints Irina Ghose as Managing Director of India ahead of Bengaluru office opening',
+    summary:
+      '앤트로픽이 이리나 고세를 인도 총괄 대표로 선임하고 벵갈루루에 첫 인도 사무소 ' +
+      '개소를 준비한다고 밝혔다. 고세는 마이크로소프트 인도 대표를 지낸 30년 경력의 ' +
+      '인물이다.',
+    publishedAt: '2026-01-16',
+    category: 'Policy',
+    signal: 'MARKET EXPANSION',
+    url: 'https://www.anthropic.com/news/anthropic-appoints-irina-ghose-as-managing-director-of-india',
+  },
+  {
+    id: 'advertising-and-expanding-access',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'Our approach to advertising and expanding access to ChatGPT',
+    summary:
+      'OpenAI가 저가 플랜 ChatGPT Go를 미국을 포함한 전 지역으로 ' +
+      '확대하고 광고 도입 방침을 공개했다. 앞으로 몇 주 안에 미국의 Free·Go ' +
+      '사용자를 대상으로 광고 테스트를 시작한다.',
+    publishedAt: '2026-01-16',
+    category: 'Product',
+    signal: 'CHATGPT ADVERTISING',
+    url: 'https://openai.com/index/our-approach-to-advertising-and-expanding-access',
+  },
+  {
+    id: 'translategemma',
+    source: 'Google DeepMind',
+    kind: 'model',
+    title: 'TranslateGemma: A new suite of open translation models',
+    summary:
+      '구글이 번역에 특화한 오픈 모델 TranslateGemma를 4B·12B·27B ' +
+      '세 크기로 공개했다. Gemma 3를 기반으로 55개 언어를 정식 지원하고 ' +
+      '이미지 속 글자 번역 능력도 이어받았다.',
+    publishedAt: '2026-01-15',
+    category: 'Models',
+    signal: 'OPEN MODELS',
+    url: 'https://blog.google/innovation-and-ai/technology/developers-tools/translategemma/',
+  },
+  {
+    id: 'strengthening-the-us-ai-supply-chain',
+    source: 'OpenAI',
+    kind: 'industry',
+    title: 'Strengthening the U.S. AI supply chain through domestic manufacturing',
+    summary:
+      'OpenAI가 미국 내 AI 공급망 제조를 겨냥한 제안요청서(RFP)를 냈다. ' +
+      '데이터센터 하드웨어와 소비자 전자기기, 첨단 로보틱스 부품이 대상이며 접수 ' +
+      '마감은 2026년 6월이다.',
+    publishedAt: '2026-01-15',
+    category: 'Infrastructure',
+    signal: 'AI SUPPLY CHAIN',
+    url: 'https://openai.com/index/strengthening-the-us-ai-supply-chain',
+  },
+  {
+    id: 'investing-in-merge-labs',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'Investing in Merge Labs',
+    summary:
+      'OpenAI가 뇌-컴퓨터 인터페이스 연구소 Merge Labs의 시드 라운드에 ' +
+      '참여한다고 밝혔다. Merge Labs는 생물학·디바이스·AI를 결합한 고대역폭 ' +
+      '인터페이스를 개발 중이며, OpenAI는 과학 파운데이션 모델로 협력한다.',
+    publishedAt: '2026-01-15',
+    category: 'Infrastructure',
+    signal: 'BRAIN INTERFACES',
+    url: 'https://openai.com/index/investing-in-merge-labs',
+  },
+  {
+    id: 'personal-intelligence',
+    source: 'Google DeepMind',
+    kind: 'company',
+    title: 'Gemini introduces Personal Intelligence',
+    summary:
+      '구글이 제미나이 앱에 Gmail·구글 포토·유튜브·검색을 연결하는 ' +
+      'Personal Intelligence를 베타로 내놨다. 연결은 기본 꺼짐 ' +
+      '상태이고 사용자가 앱을 골라 켜는 방식이다.',
+    publishedAt: '2026-01-14',
+    category: 'Product',
+    signal: 'PERSONAL CONTEXT',
+    url: 'https://blog.google/innovation-and-ai/products/gemini-app/personal-intelligence/',
+  },
+  {
+    id: 'kaggle-community-benchmarks',
+    source: 'Google DeepMind',
+    kind: 'company',
+    title: 'Introducing Community Benchmarks on Kaggle',
+    summary:
+      '구글이 Kaggle에 누구나 평가 과제를 만들고 공유하는 Community ' +
+      'Benchmarks를 열었다. 과제를 묶어 벤치마크로 만들면 모델 순위표가 ' +
+      '만들어진다.',
+    publishedAt: '2026-01-14',
+    category: 'Product',
+    signal: 'MODEL EVALUATION',
+    url: 'https://blog.google/innovation-and-ai/technology/developers-tools/kaggle-community-benchmarks/',
+  },
+  {
+    id: 'cerebras-partnership',
+    source: 'OpenAI',
+    kind: 'industry',
+    title: 'OpenAI partners with Cerebras',
+    summary:
+      'OpenAI가 Cerebras와 손잡고 초저지연 추론용 컴퓨트 750MW를 ' +
+      '확보한다고 밝혔다. 여러 차례에 나눠 2028년까지 순차적으로 가동된다.',
+    publishedAt: '2026-01-14',
+    category: 'Infrastructure',
+    signal: 'LOW LATENCY INFERENCE',
+    url: 'https://openai.com/index/cerebras-partnership',
+  },
+  {
+    id: 'veo-3-1-ingredients-to-video',
+    source: 'Google DeepMind',
+    kind: 'model',
+    title: 'Veo 3.1 Ingredients to Video: More consistency, creativity and control',
+    summary:
+      'Google이 참조 이미지로 영상을 만드는 Veo 3.1 Ingredients ' +
+      'to Video를 개선해 인물과 배경의 일관성을 높였습니다. 9:16 세로 ' +
+      '영상을 크롭 없이 생성하고 1080p·4K 업스케일을 지원합니다.',
+    publishedAt: '2026-01-13',
+    category: 'Models',
+    signal: 'GENERATIVE VIDEO',
+    url: 'https://deepmind.google/blog/veo-3-1-ingredients-to-video-more-consistency-creativity-and-control/',
+  },
+  {
+    id: 'veo-3-1-gemini-api',
+    source: 'Google DeepMind',
+    kind: 'company',
+    title: 'Enhanced Veo 3.1 capabilities are now available in the Gemini API.',
+    summary:
+      'Google이 Veo 3.1의 개선 기능을 Gemini API와 Google ' +
+      'AI Studio에 열었습니다. 참조 이미지의 인물과 배경을 유지하는 합성, ' +
+      '9:16 세로 원본 생성, 4K 출력을 개발자가 바로 쓸 수 있습니다.',
+    publishedAt: '2026-01-13',
+    category: 'Product',
+    signal: 'VIDEO GENERATION API',
+    url: 'https://blog.google/innovation-and-ai/technology/developers-tools/veo-3-1-gemini-api/',
+  },
+  {
+    id: 'introducing-anthropic-labs',
+    source: 'Anthropic',
+    kind: 'company',
+    title: 'Introducing Labs',
+    summary:
+      'Anthropic이 실험적 제품을 만드는 조직 Labs를 확대한다고 밝혔습니다. ' +
+      '최고제품책임자였던 마이크 크리거가 Labs에 합류하고, 아미 보라가 제품 조직을 ' +
+      '이끕니다.',
+    publishedAt: '2026-01-13',
+    category: 'Product',
+    signal: 'PRODUCT INCUBATION',
+    url: 'https://www.anthropic.com/news/introducing-anthropic-labs',
+  },
+  {
+    id: 'gemini-api-new-file-limits',
+    source: 'Google DeepMind',
+    kind: 'company',
+    title: 'Increased file size limits and expanded inputs support in Gemini API',
+    summary:
+      'Gemini API의 인라인 데이터 한도가 20MB에서 100MB로 ' +
+      '올라갔습니다. 외부 HTTPS·서명 URL과 Google Cloud ' +
+      'Storage의 파일을 재업로드 없이 입력으로 쓸 수 있습니다.',
+    publishedAt: '2026-01-12',
+    category: 'Product',
+    signal: 'DEVELOPER PLATFORM',
+    url: 'https://blog.google/innovation-and-ai/technology/developers-tools/gemini-api-new-file-limits/',
+  },
+  {
+    id: 'healthcare-life-sciences',
+    source: 'Anthropic',
+    kind: 'company',
+    title: 'Advancing Claude in healthcare and the life sciences',
+    summary:
+      'Anthropic이 HIPAA 대응 Claude for Healthcare를 ' +
+      '내놓고 생명과학 제품군을 확장했습니다. PubMed, ICD-10, Apple ' +
+      'Health 등 의료·연구 커넥터와 에이전트 스킬이 함께 추가됐습니다.',
+    publishedAt: '2026-01-11',
+    category: 'Product',
+    signal: 'HEALTHCARE AI',
+    url: 'https://www.anthropic.com/news/healthcare-life-sciences',
+  },
+  {
+    id: 'stargate-sb-energy-partnership',
+    source: 'OpenAI',
+    kind: 'industry',
+    title: 'OpenAI and SoftBank Group partner with SB Energy',
+    summary:
+      'OpenAI와 소프트뱅크가 SB Energy에 각각 5억 달러씩 총 10억 ' +
+      '달러를 투자하고, OpenAI는 1.2GW 규모 밀럼 카운티 데이터센터 리스 ' +
+      '계약을 맺었다. SB Energy는 Ares로부터 8억 달러 상환우선주도 ' +
+      '확보했다.',
+    publishedAt: '2026-01-09',
+    category: 'Infrastructure',
+    signal: 'STARGATE ENERGY',
+    url: 'https://openai.com/index/stargate-sb-energy-partnership',
+  },
+  {
+    id: 'openai-for-healthcare',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'OpenAI for Healthcare',
+    summary:
+      'OpenAI가 의료기관용 제품군 OpenAI for Healthcare를 ' +
+      '내놨다. HIPAA 준수를 지원하는 ChatGPT for Healthcare가 ' +
+      '당일부터 제공되고, BAA를 맺을 수 있는 API 경로도 함께 묶였다.',
+    publishedAt: '2026-01-08',
+    category: 'Product',
+    signal: 'HEALTHCARE ENTERPRISE TIER',
+    url: 'https://openai.com/index/openai-for-healthcare',
+  },
+  {
+    id: 'introducing-chatgpt-health',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'Introducing ChatGPT Health',
+    summary:
+      'OpenAI가 건강·웰니스 전용 ChatGPT Health를 공개했다. 의료 ' +
+      '기록과 Apple Health·MyFitnessPal 같은 앱을 연결해 대화에 ' +
+      '반영하며, 대화는 별도 암호화·격리 공간에 저장되고 파운데이션 모델 학습에 ' +
+      '쓰이지 않는다.',
+    publishedAt: '2026-01-07',
+    category: 'Product',
+    signal: 'CONSUMER HEALTH AI',
+    url: 'https://openai.com/index/introducing-chatgpt-health',
   },
 ];
 
