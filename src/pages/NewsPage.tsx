@@ -69,27 +69,35 @@ export function NewsPage() {
         title="AI 뉴스"
         description="Anthropic · OpenAI · Google DeepMind의 공식 발표만 골라, 무엇이 달라졌고 어디에 영향을 주는지 함께 읽습니다."
         stats={todayStats}
-      >
-        <div className="news-view-tabs" role="tablist" aria-label="AI 뉴스 분류">
-          {newsViews.map((item, index) => (
-            <button
-              key={item.id}
-              ref={(node) => { tabRefs.current[index] = node; }}
-              type="button"
-              role="tab"
-              id={`news-tab-${item.id}`}
-              aria-selected={view === item.id}
-              aria-controls="news-tabpanel"
-              tabIndex={view === item.id ? 0 : -1}
-              className={view === item.id ? 'active' : ''}
-              onClick={() => setView(item.id)}
-              onKeyDown={(event) => handleTabKeyDown(event, index)}
-            >
-              {item.label}
-            </button>
-          ))}
+      />
+
+      {/*
+        탭은 머리말 밖에 둡니다. 안에 있을 때는 이 페이지만 아래 여백을 0으로
+        깎아야 했고, 그래서 세 페이지의 머리말 높이가 서로 달라졌습니다.
+      */}
+      <div className="news-view-tabs-bar">
+        <div className="site-wrap">
+          <div className="news-view-tabs" role="tablist" aria-label="AI 뉴스 분류">
+            {newsViews.map((item, index) => (
+              <button
+                key={item.id}
+                ref={(node) => { tabRefs.current[index] = node; }}
+                type="button"
+                role="tab"
+                id={`news-tab-${item.id}`}
+                aria-selected={view === item.id}
+                aria-controls="news-tabpanel"
+                tabIndex={view === item.id ? 0 : -1}
+                className={view === item.id ? 'active' : ''}
+                onClick={() => setView(item.id)}
+                onKeyDown={(event) => handleTabKeyDown(event, index)}
+              >
+                {item.label}
+              </button>
+            ))}
+          </div>
         </div>
-      </PageHeader>
+      </div>
 
       <div id="news-tabpanel" role="tabpanel" aria-labelledby={`news-tab-${view}`} tabIndex={-1}>
         {view === 'all' && <GlobalNewsDesk showInternalLink={false} />}

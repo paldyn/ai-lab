@@ -2924,6 +2924,12 @@ input:focus-visible {
 .page-header-description {
   margin-top: 14px;
   max-width: 38rem;
+  /*
+     설명이 두 줄이냐 세 줄이냐에 따라 머리말 높이가 26px씩 흔들려서
+     페이지를 옮길 때 화면이 튀었습니다. 세 줄 자리를 미리 잡아 둡니다.
+     좁은 화면에서 더 길어지는 건 그대로 늘어납니다 — 바닥만 깔아 둡니다.
+  */
+  min-height: 3lh;
   /* 짧은 문단이라 두 줄 길이를 고르게 나눕니다. pretty는 마지막 줄 고아만
      막아 주고 첫 줄이 꽉 차는 건 그대로여서 어색했습니다. */
   text-wrap: balance;
@@ -2966,16 +2972,20 @@ input:focus-visible {
  * 탭 자체에 선을 두면 30px 아래 머리말 경계선과 겹쳐 두 줄로 보입니다.
  * 선은 머리말 것 하나만 쓰고, 탭이 그 위에 바로 앉도록 아래 여백을 없앱니다.
  */
+/*
+  머리말 밖의 독립된 띠입니다. 안에 있을 때는 뉴스 페이지만 머리말 아래
+  여백을 0으로 깎아야 해서 세 페이지의 머리말 높이가 어긋났습니다.
+*/
+.news-view-tabs-bar {
+  border-bottom: 1px solid var(--border);
+  background: var(--bg);
+}
+
 .news-view-tabs {
   display: flex;
   gap: 28px;
-  margin-top: 34px;
   overflow-x: auto;
   scrollbar-width: thin;
-}
-
-.page-header-inner:has(.news-view-tabs) {
-  padding-bottom: 0;
 }
 
 .news-view-tabs button {
@@ -3116,10 +3126,6 @@ input:focus-visible {
 
   .news-page-title h1 {
     font-size: 34px;
-  }
-
-  .news-view-tabs {
-    margin-top: 30px;
   }
 
   .company-news-section {
