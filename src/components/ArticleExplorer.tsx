@@ -50,6 +50,15 @@ export function ArticleExplorer({
     );
   }, [fixedCategoryId, scopedArticles]);
 
+  // 태그를 빼고 지금 분야에 글이 하나라도 있는지. 0건이 필터 탓인지
+  // 아직 안 쓴 분야라서인지를 가르는 데 씁니다.
+  const categoryIsEmpty = useMemo(() => {
+    const activeCategory = fixedCategoryId ?? categoryId;
+    return !scopedArticles.some(
+      (article) => activeCategory === 'all' || article.categoryId === activeCategory,
+    );
+  }, [categoryId, fixedCategoryId, scopedArticles]);
+
   const filteredArticles = useMemo(() => {
     const matched = scopedArticles.filter((article) => {
       const activeCategory = fixedCategoryId ?? categoryId;
@@ -131,8 +140,21 @@ export function ArticleExplorer({
         </>
       ) : (
         <div className="py-20 text-center">
-          <p className="text-lg text-[var(--text-strong)]">일치하는 글이 없습니다.</p>
-          <p className="mt-2 text-sm text-[var(--text-dim)]">태그 필터를 해제하거나 검색을 이용해 보세요.</p>
+          {/*
+            아직 한 편도 없는 분야와, 필터를 걸어서 0건이 된 경우는 다른 상황입니다.
+            앞의 경우에 "태그 필터를 해제하라"고 하면 걸지도 않은 필터를 찾게 됩니다.
+          */}
+          {categoryIsEmpty ? (
+            <>
+              <p className="text-lg text-[var(--text-strong)]">아직 준비 중인 분야입니다.</p>
+              <p className="mt-2 text-sm text-[var(--text-dim)]">읽는 순서를 먼저 짜고 한 편씩 채우고 있습니다.</p>
+            </>
+          ) : (
+            <>
+              <p className="text-lg text-[var(--text-strong)]">일치하는 글이 없습니다.</p>
+              <p className="mt-2 text-sm text-[var(--text-dim)]">태그 필터를 해제하거나 검색을 이용해 보세요.</p>
+            </>
+          )}
         </div>
       )}
     </div>

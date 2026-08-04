@@ -21,7 +21,7 @@ export const categories: Category[] = [
     id: 'math-for-ai',
     name: '수학',
     shortName: 'MATH',
-    description: '수와 함수부터 선형대수·미적분·확률까지, AI를 떠받치는 수학을 순서대로 쌓습니다.',
+    description: '어텐션 한 줄에서 시작해 벡터·행렬·확률·미분을 필요한 자리에서 꺼내 씁니다.',
     section: 'learn',
     accent: '#63c7e6',
     accentText: 'var(--cat-math-for-ai-text)',
