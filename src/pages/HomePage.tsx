@@ -167,8 +167,6 @@ export function HomePage() {
         </div>
       </section>
 
-      <ModelRadar limit={4} showNewsLink />
-
       <section className="company-news-section">
         <div className="site-wrap">
           <div className="simple-section-heading">
@@ -232,6 +230,8 @@ export function HomePage() {
           </div>
         </div>
       </section>
+
+      <ModelRadar limit={4} showNewsLink />
 
       <section className="site-wrap home-articles-section">
         <div className="simple-section-heading">

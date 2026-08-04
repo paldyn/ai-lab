@@ -2,7 +2,7 @@ import { getSource, type ModelFamily, type NewsSource } from './sources';
 
 export type { NewsSource } from './sources';
 
-export type GlobalNewsKind = 'model' | 'company' | 'industry';
+export type GlobalNewsKind = 'model' | 'company';
 export type ModelReleaseKind = '신규 모델' | '모델 패밀리' | '연구 프리뷰';
 export type ModelReleaseStatus = '공개' | '제한 공개';
 export type ModelLogoTone = 'claude' | 'gemini' | 'gpt';
@@ -71,7 +71,7 @@ const entries: NewsItem[] = [
   {
     id: 'ten-advances-in-mathematics',
     source: 'OpenAI',
-    kind: 'industry',
+    kind: 'company',
     title: 'Ten advances in mathematics and theoretical computer science',
     summary:
       'OpenAI가 고차원 기하·부호 이론·양자 복잡도 등 오랜 미해결 문제 10건의 ' +
@@ -100,7 +100,7 @@ const entries: NewsItem[] = [
   {
     id: 'disrupting-criminal-scam-operation',
     source: 'OpenAI',
-    kind: 'industry',
+    kind: 'company',
     title: 'Disrupting a Criminal Scam Operation',
     summary:
       'OpenAI가 캄보디아 기반 사기 조직이 쓰던 ChatGPT 계정망을 차단했다고 ' +
@@ -114,7 +114,7 @@ const entries: NewsItem[] = [
   {
     id: 'building-abundant-intelligence',
     source: 'OpenAI',
-    kind: 'industry',
+    kind: 'company',
     title: 'Building abundant intelligence',
     summary:
       'OpenAI CFO Sarah Friar가 인프라·모델·플랫폼·제품을 함께 ' +
@@ -129,7 +129,7 @@ const entries: NewsItem[] = [
   {
     id: 'advancing-responsible-ai-across-europe',
     source: 'OpenAI',
-    kind: 'industry',
+    kind: 'company',
     title: 'Advancing responsible AI across Europe',
     summary:
       'OpenAI가 EU AI 법 시행에 맞춰 안전·보안·투명성·출처 정보 대응 ' +
@@ -144,7 +144,7 @@ const entries: NewsItem[] = [
   {
     id: 'investigating-incidents-cybersecurity-evals',
     source: 'Anthropic',
-    kind: 'industry',
+    kind: 'company',
     title: 'Investigating three real-world incidents in our cybersecurity evaluations',
     summary:
       '앤트로픽이 사이버보안 평가 도중 모델이 실제 인터넷에 접속해 외부 조직 시스템을 ' +
@@ -254,7 +254,7 @@ const entries: NewsItem[] = [
   {
     id: 'arc-agi-3-two-settings',
     source: 'OpenAI',
-    kind: 'industry',
+    kind: 'company',
     title: 'How enabling two settings tripled our scores on the ARC-AGI-3 benchmark',
     summary:
       'OpenAI가 ARC-AGI-3에서 나온 저조한 점수의 원인을 모델이 아니라 ' +
@@ -308,7 +308,7 @@ const entries: NewsItem[] = [
   {
     id: 'position-open-weights-models',
     source: 'Anthropic',
-    kind: 'industry',
+    kind: 'company',
     title: 'Our position on open-weights models',
     summary:
       '다리오 아모데이가 오픈웨이트 모델에 대한 앤트로픽 입장을 밝혔다. 금지를 주장한 ' +
@@ -390,7 +390,7 @@ const entries: NewsItem[] = [
   {
     id: 'googles-40m-commitment-to-genesis-mission',
     source: 'Google DeepMind',
-    kind: 'industry',
+    kind: 'company',
     title: 'Accelerating the frontiers of scientific discovery: Google’s $40M commitment to the Genesis Mission',
     summary:
       '구글이 DOE Genesis Mission Summit 2026에서 AI 토큰과 ' +
@@ -404,7 +404,7 @@ const entries: NewsItem[] = [
   {
     id: 'effingham-county-ai-infrastructure',
     source: 'OpenAI',
-    kind: 'industry',
+    kind: 'company',
     title: 'Building AI infrastructure with the Effingham County community',
     summary:
       'OpenAI가 조지아주 에핑엄 카운티 데이터센터 Project Camellia와 ' +
@@ -432,7 +432,7 @@ const entries: NewsItem[] = [
   {
     id: 'advancing-the-next-era-of-national-science',
     source: 'OpenAI',
-    kind: 'industry',
+    kind: 'company',
     title: 'Advancing the next era of national science',
     summary:
       'OpenAI가 미 에너지부 Genesis Mission 참여 연구자를 위한 ' +
@@ -500,7 +500,7 @@ const entries: NewsItem[] = [
   {
     id: 'donation-public-first-action',
     source: 'Anthropic',
-    kind: 'industry',
+    kind: 'company',
     title: 'Donating another $20 million to Public First Action',
     summary:
       '앤스로픽이 초당파 단체 Public First Action에 2000만 달러를 ' +
@@ -528,7 +528,7 @@ const entries: NewsItem[] = [
   {
     id: 'safety-alignment-long-horizon-models',
     source: 'OpenAI',
-    kind: 'industry',
+    kind: 'company',
     title: 'Safety and alignment in an era of long-horizon models',
     summary:
       '오픈AI가 장시간 자율 실행 모델을 내부 배포하며 관찰한 안전 문제와 대응을 ' +
@@ -568,7 +568,7 @@ const entries: NewsItem[] = [
   {
     id: 'our-approach-to-bioresilience',
     source: 'Google DeepMind',
-    kind: 'industry',
+    kind: 'company',
     title: 'Our approach to bioresilience',
     summary:
       '구글 딥마인드와 아이소모픽 랩스가 생물학적 위협에 대응하는 바이오리질리언스 ' +
@@ -612,7 +612,7 @@ const entries: NewsItem[] = [
   {
     id: 'advancing-ai-safety-state-federal',
     source: 'OpenAI',
-    kind: 'industry',
+    kind: 'company',
     title: 'The US is advancing AI safety through state and federal action',
     summary:
       '오픈AI가 주·연방·국제 세 층위의 AI 안전 규제 흐름을 정리한 글을 냈다. ' +
@@ -626,7 +626,7 @@ const entries: NewsItem[] = [
   {
     id: 'steel-river-arkansas',
     source: 'Google DeepMind',
-    kind: 'industry',
+    kind: 'company',
     title: 'Our largest solar and battery storage project ever',
     summary:
       '구글이 아칸소 미시시피 카운티에 자사 최대 태양광·배터리 프로젝트인 Steel ' +
@@ -736,7 +736,7 @@ const entries: NewsItem[] = [
   {
     id: 'bio-bug-bounty',
     source: 'OpenAI',
-    kind: 'industry',
+    kind: 'company',
     title: 'GPT-5.5 Bio Bug Bounty',
     summary:
       'OpenAI가 GPT-5.5를 대상으로 한 바이오 버그 바운티 참가자를 ' +
@@ -778,7 +778,7 @@ const entries: NewsItem[] = [
   {
     id: 'signal-noise-coding-evals',
     source: 'OpenAI',
-    kind: 'industry',
+    kind: 'company',
     title: 'Separating signal from noise in coding evaluations',
     summary:
       'OpenAI가 코딩 벤치마크 SWE-Bench Pro를 감사해 공개 데이터세트 ' +
@@ -819,7 +819,7 @@ const entries: NewsItem[] = [
   {
     id: 'government-national-security-partnerships',
     source: 'OpenAI',
-    kind: 'industry',
+    kind: 'company',
     title: 'Our approach to government and national security partnerships',
     summary:
       'OpenAI가 정부·국가 안보 파트너십에 적용할 국가 안보 원칙을 공개했다. ' +
@@ -862,7 +862,7 @@ const entries: NewsItem[] = [
   {
     id: 'fable-safeguards-jailbreak-framework',
     source: 'Anthropic',
-    kind: 'industry',
+    kind: 'company',
     title: 'More details on Fable 5’s cyber safeguards and our jailbreak framework',
     summary:
       '앤트로픽이 Fable 5의 사이버 안전장치 구성과 탈옥 심각도 등급 체계 ' +
@@ -890,7 +890,7 @@ const entries: NewsItem[] = [
   {
     id: 'introducing-genebench-pro',
     source: 'OpenAI',
-    kind: 'industry',
+    kind: 'company',
     title: 'Introducing GeneBench-Pro',
     summary:
       'OpenAI가 계산생물학의 판단력을 측정하는 벤치마크 GeneBench-Pro를 ' +
@@ -1035,7 +1035,7 @@ const entries: NewsItem[] = [
   {
     id: 'jalapeno-inference-chip',
     source: 'OpenAI',
-    kind: 'industry',
+    kind: 'company',
     title: 'OpenAI and Broadcom unveil LLM-optimized inference chip',
     summary:
       'OpenAI와 Broadcom이 첫 자체 추론 가속기 Jalapeño를 ' +
@@ -1062,7 +1062,7 @@ const entries: NewsItem[] = [
   {
     id: 'shared-standards-for-advanced-ai',
     source: 'OpenAI',
-    kind: 'industry',
+    kind: 'company',
     title: 'Helping build shared standards for advanced AI',
     summary:
       'OpenAI가 리눅스 재단이 호스팅하는 Appia Foundation 공동 ' +
@@ -1132,7 +1132,7 @@ const entries: NewsItem[] = [
   {
     id: 'diagnose-rare-childhood-diseases',
     source: 'OpenAI',
-    kind: 'industry',
+    kind: 'company',
     title: 'Using AI to help physicians diagnose rare genetic diseases affecting children',
     summary:
       '보스턴 아동병원·하버드·OpenAI 연구진이 o3 Deep Research로 ' +
@@ -1174,7 +1174,7 @@ const entries: NewsItem[] = [
   {
     id: 'introducing-life-sci-bench',
     source: 'OpenAI',
-    kind: 'industry',
+    kind: 'company',
     title: 'Introducing LifeSciBench',
     summary:
       'OpenAI가 생명과학 연구 과업을 다루는 벤치마크 LifeSciBench를 ' +
@@ -1188,7 +1188,7 @@ const entries: NewsItem[] = [
   {
     id: 'amie-for-disease-management-in-nature',
     source: 'Google DeepMind',
-    kind: 'industry',
+    kind: 'company',
     title: 'New research shows how AMIE, our medical AI, could help manage health conditions.',
     summary:
       '구글이 의료 AI 연구 시스템 AMIE를 진단에서 만성질환 장기 관리로 확장한 ' +
@@ -1202,7 +1202,7 @@ const entries: NewsItem[] = [
   {
     id: 'ai-chemist-improves-reaction',
     source: 'OpenAI',
-    kind: 'industry',
+    kind: 'company',
     title: 'A near-autonomous AI chemist improves a challenging reaction in medicinal chemistry',
     summary:
       'OpenAI가 Molecule.one의 에이전트형 화학 AI Maria에 ' +
@@ -1217,7 +1217,7 @@ const entries: NewsItem[] = [
   {
     id: 'securing-the-future-of-ai-agents',
     source: 'Google DeepMind',
-    kind: 'industry',
+    kind: 'company',
     title: 'Securing the future of AI agents',
     summary:
       '구글 딥마인드가 사내 AI 에이전트 운영 기준인 AI Control ' +
@@ -1232,7 +1232,7 @@ const entries: NewsItem[] = [
   {
     id: 'deployment-simulation',
     source: 'OpenAI',
-    kind: 'industry',
+    kind: 'company',
     title: 'Predicting model behavior before release by simulating deployment',
     summary:
       'OpenAI가 출시 전 모델 행동을 예측하는 \'배포 시뮬레이션\' 방법을 ' +
@@ -1246,7 +1246,7 @@ const entries: NewsItem[] = [
   {
     id: 'alabama-investment-june-2026',
     source: 'Google DeepMind',
-    kind: 'industry',
+    kind: 'company',
     title: 'We’re strengthening our presence in Alabama through new investments and community support.',
     summary:
       '구글이 앨라배마 잭슨 카운티 데이터센터 캠퍼스 확장에 2026~2027년 15억 ' +
@@ -1274,7 +1274,7 @@ const entries: NewsItem[] = [
   {
     id: 'fable-mythos-access',
     source: 'Anthropic',
-    kind: 'industry',
+    kind: 'company',
     title: 'Statement on the US government directive to suspend access to Fable 5 and Mythos 5',
     summary:
       '앤트로픽이 미국 정부의 수출 통제 지시에 따라 Fable 5와 Mythos 5 ' +
@@ -1288,7 +1288,7 @@ const entries: NewsItem[] = [
   {
     id: 'combatting-ai-scams',
     source: 'Google DeepMind',
-    kind: 'industry',
+    kind: 'company',
     title: 'How we&#x27;re combatting AI scams with security, legislation and more',
     summary:
       '구글이 중국 기반 사이버범죄 조직 \'Outsider Enterprise\'를 ' +
@@ -1330,7 +1330,7 @@ const entries: NewsItem[] = [
   {
     id: 'eu-trustworthy-ai-ecosystem',
     source: 'OpenAI',
-    kind: 'industry',
+    kind: 'company',
     title: 'Supporting Europe’s work in ensuring a trustworthy AI ecosystem',
     summary:
       'OpenAI가 유럽위원회의 AI 생성 콘텐츠 투명성 실천규약에 지지를 표명했다. ' +
@@ -1344,7 +1344,7 @@ const entries: NewsItem[] = [
   {
     id: 'prc-linked-influence-operations',
     source: 'OpenAI',
-    kind: 'industry',
+    kind: 'company',
     title: 'PRC-linked influence operations are targeting AI debates in the US',
     summary:
       'OpenAI가 중국에서 유래한 것으로 추정되는 ChatGPT 계정 두 집단을 ' +
@@ -1372,7 +1372,7 @@ const entries: NewsItem[] = [
   {
     id: 'multi-agent-ai-safety-research',
     source: 'Google DeepMind',
-    kind: 'industry',
+    kind: 'company',
     title: 'Investing in multi-agent AI safety research',
     summary:
       '구글 딥마인드가 파트너들과 함께 멀티 에이전트 AI 안전 연구에 최대 1000만 ' +
@@ -1412,7 +1412,7 @@ const entries: NewsItem[] = [
   {
     id: 'industrial-policy-intelligence-age',
     source: 'OpenAI',
-    kind: 'industry',
+    kind: 'company',
     title: 'Industrial policy for the Intelligence Age',
     summary:
       'OpenAI가 \'인텔리전스 시대를 위한 산업 정책\' 제안서를 공개했다. 완성된 ' +
@@ -1504,7 +1504,7 @@ const entries: NewsItem[] = [
   {
     id: 'fraud-scams-advisory-june',
     source: 'Google DeepMind',
-    kind: 'industry',
+    kind: 'company',
     title: 'Our latest fraud and scams advisory',
     summary:
       '구글이 2026년 6월 사기·스캠 자문 보고서를 냈다. 캘린더 초대를 이용한 ' +
@@ -1574,7 +1574,7 @@ const entries: NewsItem[] = [
   {
     id: 'meitner-energy-center',
     source: 'Google DeepMind',
-    kind: 'industry',
+    kind: 'company',
     title: 'We’re announcing a new data center and energy investments in Gray and Roberts Counties, Texas.',
     summary:
       '구글이 파트너 인터섹트와 함께 텍사스 그레이·로버츠 카운티에 Meitner ' +
@@ -1616,7 +1616,7 @@ const entries: NewsItem[] = [
   {
     id: 'biodefense-in-the-intelligence-age',
     source: 'OpenAI',
-    kind: 'industry',
+    kind: 'company',
     title: 'Biodefense in the Intelligence Age',
     summary:
       'OpenAI가 AI를 활용한 생물학적 방어 역량 강화를 위한 행동 계획을 ' +
@@ -1644,7 +1644,7 @@ const entries: NewsItem[] = [
   {
     id: 'public-policy-agenda',
     source: 'OpenAI',
-    kind: 'industry',
+    kind: 'company',
     title: 'OpenAI public policy agenda',
     summary:
       'OpenAI가 자사의 공공 정책 의제를 문서로 정리해 공개했다. 프런티어 모델 ' +
@@ -1683,7 +1683,7 @@ const entries: NewsItem[] = [
   {
     id: 'frontier-safety-blueprint',
     source: 'OpenAI',
-    kind: 'industry',
+    kind: 'company',
     title: 'A blueprint for democratic governance of frontier AI',
     summary:
       'OpenAI가 미국 연방 차원의 프런티어 AI 거버넌스 청사진을 공개했다. ' +
@@ -1712,7 +1712,7 @@ const entries: NewsItem[] = [
   {
     id: 'ai-enabled-cyber-threats-mitre-attack',
     source: 'Anthropic',
-    kind: 'industry',
+    kind: 'company',
     title: 'What we learned mapping a year’s worth of AI-enabled cyber threats',
     summary:
       '앤트로픽이 2025년 3월부터 1년간 악성 사이버 활동으로 차단한 계정 ' +
@@ -1727,7 +1727,7 @@ const entries: NewsItem[] = [
   {
     id: 'google-data-center-sweden',
     source: 'Google DeepMind',
-    kind: 'industry',
+    kind: 'company',
     title: 'Blue, yellow and green: Google invests in its new data center in Sweden.',
     summary:
       '구글이 스웨덴 호른달에 데이터센터를 착공했다. Search와 구글 클라우드, ' +
@@ -1783,7 +1783,7 @@ const entries: NewsItem[] = [
   {
     id: 'advancing-youth-safety-global-leadership',
     source: 'OpenAI',
-    kind: 'industry',
+    kind: 'company',
     title: 'Advancing youth safety and opportunity through global leadership',
     summary:
       'OpenAI가 프랑스 에비앙 G7 정상회의를 앞두고 청소년 AI 안전을 다룰 ' +
@@ -1797,7 +1797,7 @@ const entries: NewsItem[] = [
   {
     id: 'tech-and-tariffs',
     source: 'OpenAI',
-    kind: 'industry',
+    kind: 'company',
     title: '“Tech and Tariffs” Campaign: Influence activity targeting US tech policy',
     summary:
       'OpenAI가 중국에서 시작된 것으로 보이는 ChatGPT 계정 묶음을 ' +
@@ -1811,7 +1811,7 @@ const entries: NewsItem[] = [
   {
     id: 'stargate-michigan-data-center',
     source: 'OpenAI',
-    kind: 'industry',
+    kind: 'company',
     title: 'Building the infrastructure for the Intelligence Age in Michigan',
     summary:
       'OpenAI가 미시간주 세일린에 1GW 규모 데이터센터 캠퍼스 The Barn을 ' +
@@ -1825,7 +1825,7 @@ const entries: NewsItem[] = [
   {
     id: 'our-views-on-ai-policy-advocacy',
     source: 'OpenAI',
-    kind: 'industry',
+    kind: 'company',
     title: 'Our views on AI policy and political advocacy',
     summary:
       'OpenAI가 정치 자금에 관한 입장을 공개했다. 슈퍼 PAC이나 직원 자금 ' +
@@ -1853,7 +1853,7 @@ const entries: NewsItem[] = [
   {
     id: 'data-center-bandwagon',
     source: 'OpenAI',
-    kind: 'industry',
+    kind: 'company',
     title: '“Data Center Bandwagon” Campaign: US-targeted influence activity',
     summary:
       'OpenAI가 중국발로 추정되는 ChatGPT 계정 묶음을 차단했다. 이들은 ' +
@@ -1881,7 +1881,7 @@ const entries: NewsItem[] = [
   {
     id: 'third-party-evaluations',
     source: 'OpenAI',
-    kind: 'industry',
+    kind: 'company',
     title: 'A shared playbook for trustworthy third party evaluations',
     summary:
       'OpenAI가 프런티어 모델을 평가하는 제3자를 위한 권고안을 공개했다. 평가가 ' +
@@ -1895,7 +1895,7 @@ const entries: NewsItem[] = [
   {
     id: 'rosalind-biodefense',
     source: 'OpenAI',
-    kind: 'industry',
+    kind: 'company',
     title: 'Strengthening societal resilience with Rosalind Biodefense',
     summary:
       'OpenAI가 생명과학 추론 모델 GPT-Rosalind를 활용하는 ' +
@@ -1924,7 +1924,7 @@ const entries: NewsItem[] = [
   {
     id: 'frontier-governance-framework',
     source: 'OpenAI',
-    kind: 'industry',
+    kind: 'company',
     title: 'OpenAI’s Frontier Governance Framework',
     summary:
       'OpenAI가 Frontier Governance Framework를 공개했다. ' +
@@ -1978,7 +1978,7 @@ const entries: NewsItem[] = [
   {
     id: 'election-safeguards-2026',
     source: 'OpenAI',
-    kind: 'industry',
+    kind: 'company',
     title: 'Election information and safeguards in 2026',
     summary:
       'OpenAI가 2026년 선거를 앞둔 대응책을 공개했다. 올가을 미국·브라질에서 ' +
@@ -2048,7 +2048,7 @@ const entries: NewsItem[] = [
   {
     id: 'model-disproves-discrete-geometry-conjecture',
     source: 'OpenAI',
-    kind: 'industry',
+    kind: 'company',
     title: 'An OpenAI model has disproved a central conjecture in discrete geometry',
     summary:
       'OpenAI가 내부 범용 추론 모델이 1946년 에르되시가 제기한 평면 단위거리 ' +
@@ -2160,7 +2160,7 @@ const entries: NewsItem[] = [
   {
     id: 'blackstone-tpu-cloud',
     source: 'Google DeepMind',
-    kind: 'industry',
+    kind: 'company',
     title: 'Blackstone will create a new TPU cloud in a joint venture with Google.',
     summary:
       '블랙스톤이 구글과 합작해 새 TPU 클라우드 회사를 만든다고 발표했다. ' +
@@ -2174,7 +2174,7 @@ const entries: NewsItem[] = [
   {
     id: 'advancing-content-provenance',
     source: 'OpenAI',
-    kind: 'industry',
+    kind: 'company',
     title: 'Advancing content provenance for a safer, more transparent AI ecosystem',
     summary:
       'OpenAI가 콘텐츠 출처 표시를 다층 구조로 강화했다. C2PA 적합 생성 ' +
@@ -2231,7 +2231,7 @@ const entries: NewsItem[] = [
   {
     id: 'identifying-ai-generated-media-online',
     source: 'Google DeepMind',
-    kind: 'industry',
+    kind: 'company',
     title: 'Making it easier to understand how content was created and edited',
     summary:
       '구글이 SynthID 워터마크와 C2PA 콘텐츠 자격증명 검증을 ' +
@@ -2504,7 +2504,7 @@ const entries: NewsItem[] = [
   {
     id: 'google-threat-intelligence-group-report',
     source: 'Google DeepMind',
-    kind: 'industry',
+    kind: 'company',
     title: 'Read our new report on AI-powered threats and our latest defenses.',
     summary:
       '구글 위협 인텔리전스 그룹이 AI를 활용한 공격과 방어 현황을 정리한 보고서를 ' +
@@ -2682,7 +2682,7 @@ const entries: NewsItem[] = [
   {
     id: 'mrc-supercomputer-networking',
     source: 'OpenAI',
-    kind: 'industry',
+    kind: 'company',
     title: 'Unlocking large scale AI training networks with MRC (Multipath Reliable Connection)',
     summary:
       'OpenAI가 AMD·브로드컴·인텔·마이크로소프트·엔비디아와 함께 만든 GPU ' +
@@ -2763,7 +2763,7 @@ const entries: NewsItem[] = [
   {
     id: 'advancing-youth-safety-in-emea',
     source: 'OpenAI',
-    kind: 'industry',
+    kind: 'company',
     title: 'Advancing youth safety and wellbeing in EMEA',
     summary:
       'OpenAI가 유럽 청소년 안전 청사진을 공개하고 EMEA Youth & ' +
@@ -2805,7 +2805,7 @@ const entries: NewsItem[] = [
   {
     id: 'oklahoma-energy-affordability-agreement',
     source: 'Google DeepMind',
-    kind: 'industry',
+    kind: 'company',
     title: 'How we’re protecting energy affordability in Oklahoma',
     summary:
       '구글이 오클라호마 전력사 OG&E와 장기 에너지 협약을 맺었다. ' +
@@ -2872,7 +2872,7 @@ const entries: NewsItem[] = [
   {
     id: 'cybersecurity-in-the-intelligence-age',
     source: 'OpenAI',
-    kind: 'industry',
+    kind: 'company',
     title: 'Cybersecurity in the Intelligence Age',
     summary:
       'OpenAI가 AI 기반 사이버 방어를 넓히기 위한 실행 계획을 내놨다. ' +
@@ -2886,7 +2886,7 @@ const entries: NewsItem[] = [
   {
     id: 'compute-infrastructure-intelligence-age',
     source: 'OpenAI',
-    kind: 'industry',
+    kind: 'company',
     title: 'Building the compute infrastructure for the Intelligence Age',
     summary:
       'OpenAI가 스타게이트 진행 상황을 공개했다. 2029년까지 미국 내 ' +
@@ -2900,7 +2900,7 @@ const entries: NewsItem[] = [
   {
     id: 'our-commitment-to-community-safety',
     source: 'OpenAI',
-    kind: 'industry',
+    kind: 'company',
     title: 'Our commitment to community safety',
     summary:
       'OpenAI가 ChatGPT에서 폭력 관련 위험을 다루는 방식을 정리해 ' +
@@ -2943,7 +2943,7 @@ const entries: NewsItem[] = [
   {
     id: 'partnership-republic-of-korea',
     source: 'Google DeepMind',
-    kind: 'industry',
+    kind: 'company',
     title: 'Announcing our partnership with the Republic of Korea',
     summary:
       'Google DeepMind가 과학기술정보통신부와 국가 파트너십을 맺었다. 서울 ' +
@@ -2957,7 +2957,7 @@ const entries: NewsItem[] = [
   {
     id: 'openai-fedramp-moderate',
     source: 'OpenAI',
-    kind: 'industry',
+    kind: 'company',
     title: 'OpenAI available at FedRAMP Moderate',
     summary:
       'OpenAI가 ChatGPT Enterprise와 API 플랫폼에 대해 ' +
@@ -3012,7 +3012,7 @@ const entries: NewsItem[] = [
   {
     id: 'our-principles',
     source: 'OpenAI',
-    kind: 'industry',
+    kind: 'company',
     title: 'Our principles',
     summary:
       '샘 올트먼이 OpenAI의 운영 원칙 다섯 가지를 공개했다. 민주화·역량 ' +
@@ -3040,7 +3040,7 @@ const entries: NewsItem[] = [
   {
     id: 'election-safeguards-update',
     source: 'Anthropic',
-    kind: 'industry',
+    kind: 'company',
     title: 'An update on our election safeguards',
     summary:
       'Anthropic이 2026년 미국 중간선거와 브라질 선거를 앞두고 선거 ' +
@@ -3105,7 +3105,7 @@ const entries: NewsItem[] = [
   {
     id: 'google-data-center-austria',
     source: 'Google DeepMind',
-    kind: 'industry',
+    kind: 'company',
     title: 'Elevating Austria: Google invests in its first data center in the Alps.',
     summary:
       '구글이 오스트리아 크론스토르프에 자국 첫 데이터센터를 짓는다고 발표했다. 직접 ' +
@@ -3201,7 +3201,7 @@ const entries: NewsItem[] = [
   {
     id: 'eighth-generation-tpu-agentic-era',
     source: 'Google DeepMind',
-    kind: 'industry',
+    kind: 'company',
     title: 'Our eighth generation TPUs: two chips for the agentic era',
     summary:
       '구글이 8세대 TPU인 학습용 8t와 추론용 8i를 공개했다. 8t는 팟당 ' +
@@ -3327,7 +3327,7 @@ const entries: NewsItem[] = [
   {
     id: 'anthropic-amazon-compute',
     source: 'Anthropic',
-    kind: 'industry',
+    kind: 'company',
     title: 'Anthropic and Amazon expand collaboration for up to 5 gigawatts of new compute',
     summary:
       '앤스로픽과 아마존이 최대 5기가와트 규모의 신규 컴퓨트 확보에 합의했다. ' +
@@ -3435,7 +3435,7 @@ const entries: NewsItem[] = [
   {
     id: 'accelerating-cyber-defense-ecosystem',
     source: 'OpenAI',
-    kind: 'industry',
+    kind: 'company',
     title: 'Accelerating the cyber defense ecosystem that protects us all',
     summary:
       'OpenAI가 Trusted Access for Cyber 프로그램의 첫 참여 ' +
@@ -3516,7 +3516,7 @@ const entries: NewsItem[] = [
   {
     id: 'scaling-trusted-access-for-cyber-defense',
     source: 'OpenAI',
-    kind: 'industry',
+    kind: 'company',
     title: 'Trusted access for the next era of cyber defense',
     summary:
       'OpenAI가 Trusted Access for Cyber를 검증된 방어자 수천 ' +
@@ -3624,7 +3624,7 @@ const entries: NewsItem[] = [
   {
     id: 'introducing-child-safety-blueprint',
     source: 'OpenAI',
-    kind: 'industry',
+    kind: 'company',
     title: 'Introducing the Child Safety Blueprint',
     summary:
       'OpenAI가 AI 시대의 미국 아동 보호 체계를 겨냥한 정책 청사진을 ' +
@@ -3652,7 +3652,7 @@ const entries: NewsItem[] = [
   {
     id: 'mental-health-updates',
     source: 'Google DeepMind',
-    kind: 'industry',
+    kind: 'company',
     title: 'An update on our mental health work',
     summary:
       '구글이 Gemini의 정신건강 대화 안전장치를 강화하고 지원 기금을 공개했다. ' +
@@ -3666,7 +3666,7 @@ const entries: NewsItem[] = [
   {
     id: 'google-broadcom-partnership-compute',
     source: 'Anthropic',
-    kind: 'industry',
+    kind: 'company',
     title: 'Anthropic expands partnership with Google and Broadcom for multiple gigawatts of next-generation compute',
     summary:
       '앤트로픽이 구글·브로드컴과 차세대 TPU 수 기가와트 규모의 공급 계약을 ' +
@@ -3764,7 +3764,7 @@ const entries: NewsItem[] = [
   {
     id: 'australia-mou',
     source: 'Anthropic',
-    kind: 'industry',
+    kind: 'company',
     title: 'Australian government and Anthropic sign MOU for AI safety and research',
     summary:
       '앤트로픽이 호주 정부와 AI 안전·연구 협력 MOU를 체결했다. 호주 ' +
@@ -3873,7 +3873,7 @@ const entries: NewsItem[] = [
   {
     id: 'safety-bug-bounty',
     source: 'OpenAI',
-    kind: 'industry',
+    kind: 'company',
     title: 'Introducing the OpenAI Safety Bug Bounty program',
     summary:
       'OpenAI가 AI 오남용과 안전 위험을 겨냥한 공개 Safety Bug ' +
@@ -3887,7 +3887,7 @@ const entries: NewsItem[] = [
   {
     id: 'our-approach-to-the-model-spec',
     source: 'OpenAI',
-    kind: 'industry',
+    kind: 'company',
     title: 'Inside our approach to the Model Spec',
     summary:
       'OpenAI가 모델 행동 규범인 Model Spec을 어떤 구조로 쓰고 고치는지 ' +
@@ -3930,7 +3930,7 @@ const entries: NewsItem[] = [
   {
     id: 'harmful-manipulation',
     source: 'Google DeepMind',
-    kind: 'industry',
+    kind: 'company',
     title: 'Protecting people from harmful manipulation',
     summary:
       '구글 딥마인드가 AI의 유해 조작 가능성을 다룬 연구를 공개했다. ' +
@@ -3958,7 +3958,7 @@ const entries: NewsItem[] = [
   {
     id: 'teen-safety-policies-gpt-oss-safeguard',
     source: 'OpenAI',
-    kind: 'industry',
+    kind: 'company',
     title: 'Helping developers build safer AI experiences for teens',
     summary:
       'OpenAI가 청소년 보호용 안전 정책을 프롬프트 형태로 공개했다. 오픈웨이트 ' +
@@ -3986,7 +3986,7 @@ const entries: NewsItem[] = [
   {
     id: 'creating-with-sora-safely',
     source: 'OpenAI',
-    kind: 'industry',
+    kind: 'company',
     title: 'Creating with Sora Safely',
     summary:
       'OpenAI가 Sora 2의 안전장치를 정리해 공개했다. 모든 생성 영상에 출처 ' +
@@ -4014,7 +4014,7 @@ const entries: NewsItem[] = [
   {
     id: 'monitor-internal-coding-agents',
     source: 'OpenAI',
-    kind: 'industry',
+    kind: 'company',
     title: 'How we monitor internal coding agents for misalignment',
     summary:
       'OpenAI가 사내 코딩 에이전트를 감시하는 시스템을 공개했다. GPT-5.4 ' +
@@ -4028,7 +4028,7 @@ const entries: NewsItem[] = [
   {
     id: 'demand-response-data-center-milestone',
     source: 'Google DeepMind',
-    kind: 'industry',
+    kind: 'company',
     title: 'A new milestone for smart, affordable electricity growth',
     summary:
       '구글이 미국 전력사들과 맺은 장기 전력 계약에 수요 반응 용량 1기가와트를 ' +
@@ -4070,7 +4070,7 @@ const entries: NewsItem[] = [
   {
     id: 'measuring-agi-cognitive-framework',
     source: 'Google DeepMind',
-    kind: 'industry',
+    kind: 'company',
     title: 'Measuring progress toward AGI: A cognitive framework',
     summary:
       '구글 딥마인드가 AI의 인지 능력을 평가하는 인지 분류 체계 논문을 공개했다. ' +
@@ -4084,7 +4084,7 @@ const entries: NewsItem[] = [
   {
     id: 'japan-teen-safety-blueprint',
     source: 'OpenAI',
-    kind: 'industry',
+    kind: 'company',
     title: 'OpenAI Japan announces Japan Teen Safety Blueprint to put teen safety first',
     summary:
       'OpenAI 일본 법인이 10대 사용자 보호 프레임워크 Japan Teen ' +
@@ -4138,7 +4138,7 @@ const entries: NewsItem[] = [
   {
     id: 'clean-energy-reliability-michigan',
     source: 'Google DeepMind',
-    kind: 'industry',
+    kind: 'company',
     title: 'Scaling clean energy and reliability in Michigan',
     summary:
       '구글이 DTE 에너지와 함께 미시간에 새 데이터센터를 개발하고 청정 자원 ' +
@@ -4152,7 +4152,7 @@ const entries: NewsItem[] = [
   {
     id: 'ai-powered-open-source-security',
     source: 'Google DeepMind',
-    kind: 'industry',
+    kind: 'company',
     title: 'Our latest investment in open source security for the AI era',
     summary:
       '구글이 아마존·앤스로픽·마이크로소프트·오픈AI와 함께 오픈소스 보안에 ' +
@@ -4181,7 +4181,7 @@ const entries: NewsItem[] = [
   {
     id: 'google-industry-accord-combat-scams-fraud',
     source: 'Google DeepMind',
-    kind: 'industry',
+    kind: 'company',
     title: 'Google has signed the Industry Accord Against Online Scams and Fraud.',
     summary:
       '구글이 빈에서 열린 UN 글로벌 사기 정상회의에서 온라인 사기 방지 산업 협약에 ' +
@@ -4237,7 +4237,7 @@ const entries: NewsItem[] = [
   {
     id: 'growing-up-digital-age-gemini-youth',
     source: 'Google DeepMind',
-    kind: 'industry',
+    kind: 'company',
     title: 'A roadmap for safer generative AI for young people',
     summary:
       '구글이 더블린 \'Growing Up in the Digital Age\' 서밋에서 ' +
@@ -4265,7 +4265,7 @@ const entries: NewsItem[] = [
   {
     id: 'agents-resist-prompt-injection',
     source: 'OpenAI',
-    kind: 'industry',
+    kind: 'company',
     title: 'Designing AI agents to resist prompt injection',
     summary:
       'OpenAI가 프롬프트 인젝션을 사회공학 문제로 보고 방어하는 접근을 공개했다. ' +
@@ -4307,7 +4307,7 @@ const entries: NewsItem[] = [
   {
     id: 'instruction-hierarchy-challenge',
     source: 'OpenAI',
-    kind: 'industry',
+    kind: 'company',
     title: 'Improving instruction hierarchy in frontier LLMs',
     summary:
       'OpenAI가 지시 계층 학습용 강화학습 데이터셋 IH-Challenge를 ' +
@@ -4390,7 +4390,7 @@ const entries: NewsItem[] = [
   {
     id: 'where-stand-department-war',
     source: 'Anthropic',
-    kind: 'industry',
+    kind: 'company',
     title: 'Where things stand with the Department of War',
     summary:
       'Anthropic은 3월 4일 미 국방부(Department of War)로부터 ' +
@@ -4459,7 +4459,7 @@ const entries: NewsItem[] = [
   {
     id: 'chain-of-thought-controllability',
     source: 'OpenAI',
-    kind: 'industry',
+    kind: 'company',
     title: 'Reasoning models struggle to control their chains of thought, and that’s good',
     summary:
       'OpenAI가 추론 모델이 자기 사고 사슬(CoT)을 통제하는 능력을 측정한 ' +
@@ -4474,7 +4474,7 @@ const entries: NewsItem[] = [
   {
     id: 'single-minus-amplitudes-gravitons',
     source: 'OpenAI',
-    kind: 'industry',
+    kind: 'company',
     title: 'Extending single-minus amplitudes to gravitons',
     summary:
       'OpenAI가 GPT-5.2 Pro의 도움으로 얻은 양자중력 산란 진폭 결과를 ' +
@@ -4503,7 +4503,7 @@ const entries: NewsItem[] = [
   {
     id: 'affordability-pledge-energy-growth',
     source: 'Google DeepMind',
-    kind: 'industry',
+    kind: 'company',
     title: 'Supporting the White House Ratepayer Protection Pledge: Google’s approach for responsible energy growth',
     summary:
       'Google이 백악관 전기요금 보호 서약에 서명하고 에너지 성장에 관한 다섯 ' +
@@ -4582,7 +4582,7 @@ const entries: NewsItem[] = [
   {
     id: 'agreement-with-department-of-war',
     source: 'OpenAI',
-    kind: 'industry',
+    kind: 'company',
     title: 'Our agreement with the Department of War',
     summary:
       'OpenAI가 미 국방부와 기밀 환경에서 AI 시스템을 배포하는 계약을 맺었다고 ' +
@@ -4596,7 +4596,7 @@ const entries: NewsItem[] = [
   {
     id: 'update-on-mental-health-related-work',
     source: 'OpenAI',
-    kind: 'industry',
+    kind: 'company',
     title: 'An update on our mental health-related work',
     summary:
       'OpenAI가 정신건강 관련 안전 작업 현황과 소송 상황을 함께 정리해 ' +
@@ -4610,7 +4610,7 @@ const entries: NewsItem[] = [
   {
     id: 'statement-comments-secretary-war',
     source: 'Anthropic',
-    kind: 'industry',
+    kind: 'company',
     title: 'Statement on the comments from Secretary of War Pete Hegseth',
     summary:
       '피트 헤그세스 전쟁장관이 앤트로픽을 공급망 리스크로 지정하겠다고 밝히자 ' +
@@ -4683,7 +4683,7 @@ const entries: NewsItem[] = [
   {
     id: 'statement-department-of-war',
     source: 'Anthropic',
-    kind: 'industry',
+    kind: 'company',
     title: 'Statement from Dario Amodei on our discussions with the Department of War',
     summary:
       '앤스로픽 CEO 다리오 아모데이가 미 국방부와의 협의 상황을 공개했다. 국방부가 ' +
@@ -4697,7 +4697,7 @@ const entries: NewsItem[] = [
   {
     id: 'pacific-northwest-national-laboratory',
     source: 'OpenAI',
-    kind: 'industry',
+    kind: 'company',
     title: 'Pacific Northwest National Laboratory and OpenAI partner to accelerate federal permitting',
     summary:
       'OpenAI가 미 에너지부 산하 태평양북서부국립연구소(PNNL) 및 ' +
@@ -4764,7 +4764,7 @@ const entries: NewsItem[] = [
   {
     id: 'disrupting-malicious-ai-uses',
     source: 'OpenAI',
-    kind: 'industry',
+    kind: 'company',
     title: 'Disrupting malicious uses of AI | February 2026',
     summary:
       'OpenAI가 2026년 2월 위협 보고서를 내고 AI 악용을 탐지·차단한 ' +
@@ -4807,7 +4807,7 @@ const entries: NewsItem[] = [
   {
     id: 'responsible-scaling-policy-v3',
     source: 'Anthropic',
-    kind: 'industry',
+    kind: 'company',
     title: 'Responsible Scaling Policy Version 3.0',
     summary:
       '앤트로픽이 책임있는 스케일링 정책 3.0을 공개했다. 완화 조치를 자체 이행분과 ' +
@@ -4849,7 +4849,7 @@ const entries: NewsItem[] = [
   {
     id: 'data-center-wilbarger-county',
     source: 'Google DeepMind',
-    kind: 'industry',
+    kind: 'company',
     title: 'We’re expanding our Texas presence with a new data center and clean energy in Wilbarger County.',
     summary:
       '구글이 텍사스 윌바저 카운티에 새 데이터센터를 짓는다고 밝혔다. AES가 ' +
@@ -4862,7 +4862,7 @@ const entries: NewsItem[] = [
   {
     id: 'data-center-pine-island',
     source: 'Google DeepMind',
-    kind: 'industry',
+    kind: 'company',
     title: 'Google is coming to Minnesota and advancing clean energy goals',
     summary:
       '구글이 미네소타 파인아일랜드에 새 데이터센터를 짓고 엑셀에너지와 청정전력 계약 ' +
@@ -4890,7 +4890,7 @@ const entries: NewsItem[] = [
   {
     id: 'why-we-no-longer-evaluate-swe-bench-verified',
     source: 'OpenAI',
-    kind: 'industry',
+    kind: 'company',
     title: 'Why we no longer evaluate SWE-bench Verified',
     summary:
       'OpenAI가 SWE-bench Verified 점수 보고를 중단한다고 밝혔다. ' +
@@ -4919,7 +4919,7 @@ const entries: NewsItem[] = [
   {
     id: 'distillation-attacks',
     source: 'Anthropic',
-    kind: 'industry',
+    kind: 'company',
     title: 'Detecting and preventing distillation attacks',
     summary:
       '앤트로픽이 세 AI 연구소가 클로드 출력으로 자사 모델을 학습시킨 증류 시도를 ' +
@@ -4933,7 +4933,7 @@ const entries: NewsItem[] = [
   {
     id: 'first-proof-submissions',
     source: 'OpenAI',
-    kind: 'industry',
+    kind: 'company',
     title: 'Our First Proof submissions',
     summary:
       'OpenAI가 연구 수준 수학 문제 10개로 구성된 First Proof ' +
@@ -4976,7 +4976,7 @@ const entries: NewsItem[] = [
   {
     id: 'independent-research-ai-alignment',
     source: 'OpenAI',
-    kind: 'industry',
+    kind: 'company',
     title: 'Advancing independent research on AI alignment',
     summary:
       'OpenAI가 영국 AI 보안연구소(UK AISI)가 만든 독립 얼라인먼트 연구 ' +
@@ -5045,7 +5045,7 @@ const entries: NewsItem[] = [
   {
     id: 'introducing-evmbench',
     source: 'OpenAI',
-    kind: 'industry',
+    kind: 'company',
     title: 'Introducing EVMbench',
     summary:
       'OpenAI가 Paradigm과 함께 스마트 컨트랙트 취약점을 다루는 에이전트 ' +
@@ -5059,7 +5059,7 @@ const entries: NewsItem[] = [
   {
     id: 'responsible-ai-2026-report',
     source: 'Google DeepMind',
-    kind: 'industry',
+    kind: 'company',
     title: 'Our 2026 Responsible AI Progress Report',
     summary:
       'Google이 AI 원칙을 제품과 연구에 어떻게 적용했는지 정리한 2026년 ' +
@@ -5099,7 +5099,7 @@ const entries: NewsItem[] = [
   {
     id: 'anthropic-rwanda-mou',
     source: 'Anthropic',
-    kind: 'industry',
+    kind: 'company',
     title: 'Anthropic and the Government of Rwanda sign MOU for AI in health and education',
     summary:
       'Anthropic이 르완다 정부와 3년 기간의 양해각서를 맺었습니다. 보건, ' +
@@ -5127,7 +5127,7 @@ const entries: NewsItem[] = [
   {
     id: 'new-result-theoretical-physics',
     source: 'OpenAI',
-    kind: 'industry',
+    kind: 'company',
     title: 'GPT-5.2 derives a new result in theoretical physics',
     summary:
       'OpenAI가 글루온 산란 진폭에 관한 프리프린트를 arXiv에 공개했다. ' +
@@ -5182,7 +5182,7 @@ const entries: NewsItem[] = [
   {
     id: 'gtig-report-ai-cyber-attacks-feb-2026',
     source: 'Google DeepMind',
-    kind: 'industry',
+    kind: 'company',
     title: 'Our new report details the latest ways threat actors are misusing AI.',
     summary:
       '구글 위협 인텔리전스 그룹이 새 AI 위협 트래커 보고서를 냈다. 공격자들이 ' +
@@ -5246,7 +5246,7 @@ const entries: NewsItem[] = [
   {
     id: 'donate-public-first-action',
     source: 'Anthropic',
-    kind: 'industry',
+    kind: 'company',
     title: 'Anthropic is donating $20 million to Public First Action',
     summary:
       '앤스로픽이 신생 초당파 501(c)(4) 단체 퍼블릭 퍼스트 액션에 2천만 ' +
@@ -5273,7 +5273,7 @@ const entries: NewsItem[] = [
   {
     id: 'covering-electricity-price-increases',
     source: 'Anthropic',
-    kind: 'industry',
+    kind: 'company',
     title: 'Covering electricity price increases from our data centers',
     summary:
       '앤스로픽이 자사 데이터센터 탓에 오르는 소비자 전기요금을 회사가 떠안겠다고 ' +
@@ -5301,7 +5301,7 @@ const entries: NewsItem[] = [
   {
     id: 'bringing-chatgpt-to-genaimil',
     source: 'OpenAI',
-    kind: 'industry',
+    kind: 'company',
     title: 'Bringing ChatGPT to GenAI.mil',
     summary:
       '오픈AI가 미 전쟁부의 보안 AI 플랫폼 GenAI.mil에 ChatGPT ' +
@@ -5382,7 +5382,7 @@ const entries: NewsItem[] = [
   {
     id: 'gpt-5-lowers-protein-synthesis-cost',
     source: 'OpenAI',
-    kind: 'industry',
+    kind: 'company',
     title: 'GPT-5 lowers the cost of cell-free protein synthesis',
     summary:
       '오픈AI가 긴코 바이오웍스의 클라우드 실험실에 GPT-5를 연결해 무세포 단백질 ' +
@@ -5465,7 +5465,7 @@ const entries: NewsItem[] = [
   {
     id: 'kaggle-game-arena-updates',
     source: 'Google DeepMind',
-    kind: 'industry',
+    kind: 'company',
     title: 'Advancing AI benchmarking with Game Arena',
     summary:
       'Google DeepMind가 Kaggle Game Arena에 늑대인간과 포커 ' +
@@ -5551,7 +5551,7 @@ const entries: NewsItem[] = [
   {
     id: 'the-next-chapter-for-ai-in-the-eu',
     source: 'OpenAI',
-    kind: 'industry',
+    kind: 'company',
     title: 'The next chapter for AI in the EU',
     summary:
       'OpenAI가 EU 경제 청사진 2.0을 내고 유럽의 AI 도입 확대 계획을 ' +
@@ -5565,7 +5565,7 @@ const entries: NewsItem[] = [
   {
     id: 'ai-agent-link-safety',
     source: 'OpenAI',
-    kind: 'industry',
+    kind: 'company',
     title: 'Keeping your data safe when an AI agent clicks a link',
     summary:
       'OpenAI가 에이전트가 URL을 자동으로 열 때 생기는 데이터 유출을 막는 ' +
@@ -5594,7 +5594,7 @@ const entries: NewsItem[] = [
   {
     id: 'gov-uk-partnership',
     source: 'Anthropic',
-    kind: 'industry',
+    kind: 'company',
     title: 'Anthropic partners with the UK Government to bring AI assistance to GOV.UK services',
     summary:
       '영국 과학혁신기술부가 GOV.UK용 AI 어시스턴트 개발사로 앤트로픽을 ' +
@@ -5636,7 +5636,7 @@ const entries: NewsItem[] = [
   {
     id: 'claude-new-constitution',
     source: 'Anthropic',
-    kind: 'industry',
+    kind: 'company',
     title: 'Claude&#x27;s new constitution',
     summary:
       '앤스로픽이 AI 모델 클로드의 새 헌법을 공개했다. 이전의 원칙 나열 방식을 ' +
@@ -5679,7 +5679,7 @@ const entries: NewsItem[] = [
   {
     id: 'capability-overhang',
     source: 'OpenAI',
-    kind: 'industry',
+    kind: 'company',
     title: 'How countries can end the capability overhang',
     summary:
       'OpenAI가 국가 간 AI 활용 격차를 다룬 보고서 \'Ending the ' +
@@ -5693,7 +5693,7 @@ const entries: NewsItem[] = [
   {
     id: 'stargate-community',
     source: 'OpenAI',
-    kind: 'industry',
+    kind: 'company',
     title: 'Stargate Community',
     summary:
       'OpenAI가 Stargate 캠퍼스가 들어서는 지역을 위한 Stargate ' +
@@ -5721,7 +5721,7 @@ const entries: NewsItem[] = [
   {
     id: 'age-prediction',
     source: 'OpenAI',
-    kind: 'industry',
+    kind: 'company',
     title: 'Our approach to age prediction',
     summary:
       'OpenAI가 ChatGPT 소비자 요금제에 연령 예측 기능을 출시했다. 계정이 ' +
@@ -5819,7 +5819,7 @@ const entries: NewsItem[] = [
   {
     id: 'strengthening-the-us-ai-supply-chain',
     source: 'OpenAI',
-    kind: 'industry',
+    kind: 'company',
     title: 'Strengthening the U.S. AI supply chain through domestic manufacturing',
     summary:
       'OpenAI가 미국 내 AI 공급망 제조를 겨냥한 제안요청서(RFP)를 냈다. ' +
@@ -5875,7 +5875,7 @@ const entries: NewsItem[] = [
   {
     id: 'cerebras-partnership',
     source: 'OpenAI',
-    kind: 'industry',
+    kind: 'company',
     title: 'OpenAI partners with Cerebras',
     summary:
       'OpenAI가 Cerebras와 손잡고 초저지연 추론용 컴퓨트 750MW를 ' +
@@ -5958,7 +5958,7 @@ const entries: NewsItem[] = [
   {
     id: 'stargate-sb-energy-partnership',
     source: 'OpenAI',
-    kind: 'industry',
+    kind: 'company',
     title: 'OpenAI and SoftBank Group partner with SB Energy',
     summary:
       'OpenAI와 소프트뱅크가 SB Energy에 각각 5억 달러씩 총 10억 ' +

@@ -722,6 +722,10 @@ input:focus-visible {
   text-align: center;
 }
 
+/*
+  그리드 밖 전체 폭입니다. 위 선은 그리드의 border-bottom이 이미 그으므로
+  여기서는 두지 않습니다 — 두면 바로 붙어 두 줄이 됩니다.
+*/
 .news-feed-more {
   display: flex;
   width: 100%;
@@ -729,9 +733,9 @@ input:focus-visible {
   justify-content: space-between;
   gap: 12px;
   border: 0;
-  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
   background: none;
-  padding: 16px 0 4px;
+  padding: 17px 0;
   color: var(--text-dim);
   font-size: 12.5px;
   text-align: left;

@@ -5,13 +5,16 @@ import { newsItems, type GlobalNewsKind } from '../data/news';
 import { ModelRadar } from '../components/ModelRadar';
 import { Seo } from '../components/Seo';
 
-type NewsView = 'all' | 'models' | 'companies' | 'industry';
+type NewsView = 'all' | 'companies' | 'models';
 
+/**
+ * 산업·정책은 기업 소식에 합쳤습니다. 규제 대응도 투자도 결국 그 회사가
+ * 무엇을 하는가라 둘을 가르는 선이 매번 애매했습니다.
+ */
 const newsViews: Array<{ id: NewsView; label: string }> = [
   { id: 'all', label: '전체' },
-  { id: 'models', label: 'AI 모델' },
   { id: 'companies', label: '기업 소식' },
-  { id: 'industry', label: '산업·정책' },
+  { id: 'models', label: 'AI 모델' },
 ];
 
 /**
@@ -28,9 +31,8 @@ function buildTodayStats() {
 
   return [
     { label: '전체', value: String(sameDay.length) },
-    { label: '모델', value: String(countOf('model')) },
     { label: '기업', value: String(countOf('company')) },
-    { label: '산업·정책', value: String(countOf('industry')) },
+    { label: '모델', value: String(countOf('model')) },
   ];
 }
 
@@ -98,9 +100,8 @@ export function NewsPage() {
 
       <div id="news-tabpanel" role="tabpanel" aria-labelledby={`news-tab-${view}`} tabIndex={-1}>
         {view === 'all' && <GlobalNewsDesk showInternalLink={false} />}
-        {view === 'models' && <ModelRadar />}
         {view === 'companies' && <GlobalNewsDesk showInternalLink={false} kind="company" />}
-        {view === 'industry' && <GlobalNewsDesk showInternalLink={false} kind="industry" />}
+        {view === 'models' && <ModelRadar />}
       </div>
     </>
   );

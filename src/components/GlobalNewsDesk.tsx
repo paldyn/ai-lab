@@ -53,11 +53,7 @@ export function GlobalNewsDesk({ showInternalLink = true, kind }: GlobalNewsDesk
   const HEADINGS: Record<string, { heading: string; description: string }> = {
     company: {
       heading: 'AI 기업 소식',
-      description: '제품과 조직의 변화가 실제 AI 사용 방식에 어떤 영향을 주는지 살펴봅니다.',
-    },
-    industry: {
-      heading: '산업과 정책의 변화',
-      description: '규제, 투자, 인프라처럼 판을 바꾸는 움직임을 공식 발표에서 확인합니다.',
+      description: '제품과 조직, 규제 대응과 인프라 투자까지 각 회사의 움직임을 모아 봅니다.',
     },
     default: {
       heading: '주목할 AI 흐름',
@@ -201,19 +197,24 @@ export function GlobalNewsDesk({ showInternalLink = true, kind }: GlobalNewsDesk
               }) : (
                 <div className="news-feed-empty">해당 출처의 추가 소식을 준비하고 있습니다.</div>
               )}
-
-              {hidden > 0 && (
-                <button
-                  type="button"
-                  className="news-feed-more"
-                  onClick={() => setVisible((count) => count + FEED_STEP)}
-                >
-                  더 보기
-                  <span>{feed.length} / {rest.length}</span>
-                </button>
-              )}
             </div>
           </div>
+        )}
+
+        {/*
+          더 보기는 그리드 밖에 둡니다. 오른쪽 열 안에 있으면 폭이 절반에
+          그쳐 목록에 딸린 장치처럼 보입니다. 두 열 아래 전체 폭으로 두면
+          이 영역 전체를 늘리는 버튼이라는 게 드러납니다.
+        */}
+        {lead && hidden > 0 && (
+          <button
+            type="button"
+            className="news-feed-more"
+            onClick={() => setVisible((count) => count + FEED_STEP)}
+          >
+            더 보기
+            <span>{feed.length} / {rest.length}</span>
+          </button>
         )}
 
         <div className="news-desk-footer">

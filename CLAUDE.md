@@ -75,7 +75,9 @@ draft: false             # true면 목록·프리렌더에서 빠진다
 판단을 쓴다. 둘을 섞지 않는다. "~하는 신호다", "~가 기준이 되고 있다" 같은 문장이
 `summary`에 있으면 그건 `commentary`로 갈 문장이다.
 
-`kind`는 `model` / `company` / `industry` 셋이고 뉴스 페이지의 탭과 대응한다.
+`kind`는 `model` / `company` 둘이고 뉴스 페이지의 탭과 대응한다. 규제·정책·투자·
+인프라도 전부 `company`다 — 예전에는 `industry`로 갈랐는데 "규제 대응도 결국 그
+회사가 무엇을 하는가"라 경계가 매번 애매했고, 2026-08-04에 127건을 합쳤다.
 모델 발표는 `model` 블록을 함께 채우면 Model Radar에도 나온다.
 
 매일 20:00 UTC(05:00 KST)에 수집 루틴이 네 출처(openai.com, www.anthropic.com,
