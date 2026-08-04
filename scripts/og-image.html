@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/gh/wanteddev/wanted-sans@v1.0.3/packages/wanted-sans/fonts/webfontaggregated/variable/WantedSansVariable.min.css"
+    />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap" />
+    <style>
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+
+      body {
+        width: 1200px;
+        height: 630px;
+        overflow: hidden;
+        position: relative;
+        background: #000000;
+        color: #ffffff;
+        font-family: 'Wanted Sans Variable', system-ui, sans-serif;
+      }
+
+      .field {
+        position: absolute;
+        inset: 0;
+        background-image:
+          linear-gradient(to right, #1a1a1a 1px, transparent 1px),
+          linear-gradient(to bottom, #1a1a1a 1px, transparent 1px);
+        background-size: 42px 42px;
+        -webkit-mask-image: radial-gradient(110% 100% at 74% 34%, #000 0%, #000 44%, transparent 78%);
+      }
+
+      .sweep {
+        position: absolute;
+        top: -60%;
+        left: 34%;
+        width: 30%;
+        height: 220%;
+        transform: rotate(9deg);
+        background: linear-gradient(
+          100deg,
+          transparent 0%,
+          rgba(255, 100, 0, 0.1) 40%,
+          rgba(255, 100, 0, 0.24) 50%,
+          rgba(255, 100, 0, 0.1) 60%,
+          transparent 100%
+        );
+        filter: blur(28px);
+      }
+
+      .inner {
+        position: relative;
+        display: flex;
+        height: 100%;
+        flex-direction: column;
+        justify-content: space-between;
+        padding: 72px 80px;
+      }
+
+      .kicker {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        color: #8a8a8a;
+        font-family: 'JetBrains Mono', ui-monospace, monospace;
+        font-size: 19px;
+        letter-spacing: 0.2em;
+      }
+
+      .kicker i { width: 10px; height: 10px; background: #ff6400; }
+
+      h1 {
+        font-size: 76px;
+        font-weight: 600;
+        line-height: 1.24;
+        letter-spacing: -0.03em;
+      }
+
+      p.lede {
+        margin-top: 28px;
+        max-width: 760px;
+        color: #999999;
+        font-size: 25px;
+        font-weight: 300;
+        line-height: 1.6;
+      }
+
+      .foot {
+        display: flex;
+        align-items: flex-end;
+        justify-content: space-between;
+        border-top: 1px solid #1a1a1a;
+        padding-top: 26px;
+        color: #8a8a8a;
+        font-family: 'JetBrains Mono', ui-monospace, monospace;
+        font-size: 18px;
+        letter-spacing: 0.14em;
+      }
+
+      .foot b { color: #ffffff; font-weight: 500; }
+    </style>
+  </head>
+  <body>
+    <div class="field"></div>
+    <div class="sweep"></div>
+    <div class="inner">
+      <p class="kicker"><i></i> PALDYN AI LAB</p>
+      <div>
+        <h1>AI의 흐름을 읽고,<br />지능을 탐구합니다.</h1>
+        <p class="lede">모델과 기업의 움직임부터 논문과 수학까지, AI를 이해하는 데 필요한 맥락을 연결합니다.</p>
+      </div>
+      <div class="foot">
+        <span><b>ai.paldyn.com</b></span>
+        <span>NEWS / MODELS / RESEARCH</span>
+      </div>
+    </div>
+  </body>
+</html>

@@ -27,10 +27,16 @@ jobs:
           cache: npm
       - name: Install dependencies
         run: npm ci
+      - name: Lint
+        run: npm run lint
+      - name: Test
+        run: npm test
       - name: Build
         run: npm run build
         env:
           VITE_BASE_PATH: /
+          # canonical, OG, sitemap URL의 기준이 됩니다. 도메인이 바뀌면 여기를 고칩니다.
+          VITE_SITE_URL: https://ai.paldyn.com
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:
