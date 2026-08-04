@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { modelUpdates, newsBySource, newsItems } from './news';
+import { categoryLabel, categoryOrder, modelUpdates, newsBySource, newsItems } from './news';
 import { getSource, sourceList } from './sources';
 
 describe('뉴스 데이터', () => {
@@ -40,6 +40,46 @@ describe('뉴스 데이터', () => {
     for (const item of newsItems) {
       expect(item.title.trim().length, item.id).toBeGreaterThan(0);
       expect(item.summary.trim().length, item.id).toBeGreaterThan(20);
+    }
+  });
+
+  /**
+   * 제목은 한글로 옮겨 싣습니다. 원문 제목을 그대로 두면 목록에서 영문과
+   * 한글이 섞여 읽는 흐름이 끊깁니다. 모델명·회사명은 원문 그대로 두므로
+   * 한글이 한 글자라도 있으면 통과입니다.
+   */
+  it('제목에 한글이 들어 있다', () => {
+    for (const item of newsItems) {
+      expect(/[가-힣]/.test(item.title), `${item.id}: ${item.title}`).toBe(true);
+    }
+  });
+
+  /**
+   * 갈래는 kind마다 쓰는 집합이 다릅니다. 어긋나면 그 항목은 어느 칩으로도
+   * 걸러지지 않아 탭에서 통째로 사라집니다 — 오류 없이 조용히 빠집니다.
+   */
+  it('category가 kind에 맞는 값이다', () => {
+    for (const item of newsItems) {
+      expect(categoryOrder[item.kind], `${item.id} (${item.kind})`).toContain(item.category);
+    }
+  });
+
+  it('모든 갈래에 최소 한 건이 있다', () => {
+    for (const [kind, categories] of Object.entries(categoryOrder)) {
+      for (const category of categories) {
+        const count = newsItems.filter(
+          (item) => item.kind === kind && item.category === category,
+        ).length;
+        expect(count, `${kind}/${category}`).toBeGreaterThan(0);
+      }
+    }
+  });
+
+  it('모든 갈래에 표기 이름이 있다', () => {
+    for (const categories of Object.values(categoryOrder)) {
+      for (const category of categories) {
+        expect(categoryLabel[category]?.trim().length, category).toBeGreaterThan(0);
+      }
     }
   });
 });
