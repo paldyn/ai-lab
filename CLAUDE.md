@@ -46,6 +46,22 @@ draft: false             # true면 목록·프리렌더에서 빠진다
 - 코드 펜스에는 언어명을 명시한다. shiki가 빌드 때 하이라이트하며,
   등록된 언어는 `plugins/markdown.ts`의 `LANGUAGES`에 있다. 없는 언어는 평문이 된다.
 
+## 뉴스 데이터
+
+`src/data/news.ts`는 공식 발표 큐레이션이다. 글이 아니라 데이터다.
+
+한 항목은 `summary`(요약), `points`(원문에서 뽑은 사실 5~8개), `commentary`(팔딘 해설)로
+나뉜다. **원문을 통째로 번역해 싣지 않는다** — OpenAI·Anthropic·Google 저작물의
+재발행이다. `summary`와 `points`에는 원문에 있는 사실만 쓰고, `commentary`에만
+원문에 없는 우리 판단을 쓴다. 둘을 섞지 않는다.
+
+`kind`는 `model` / `company` / `industry` 셋이고 뉴스 페이지의 탭과 대응한다.
+모델 발표는 `model` 블록을 함께 채우면 Model Radar에도 나온다.
+
+매일 23:00 UTC(08:00 KST)에 수집 루틴이 네 출처(openai.com, www.anthropic.com,
+deepmind.google, blog.google)를 읽고 이 파일을 갱신한다. 항목이 40개를 넘으면
+오래된 것부터 지운다 — 브리핑이지 아카이브가 아니다.
+
 ## 검증
 
 ```bash
