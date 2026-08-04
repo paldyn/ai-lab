@@ -2879,6 +2879,14 @@ input:focus-visible {
   border-bottom: 1px solid var(--border);
 }
 
+/*
+  뉴스처럼 머리말 바로 뒤에 탭 띠가 오면 선이 위아래로 둘이 됩니다.
+  띠 아래 선 하나만 남기고 머리말 쪽을 없앱니다.
+*/
+.page-header:has(+ .news-view-tabs-bar) {
+  border-bottom: 0;
+}
+
 .page-header-field {
   position: absolute;
   z-index: -1;
@@ -2893,6 +2901,11 @@ input:focus-visible {
   mask-image: linear-gradient(to bottom, #000 0%, transparent 88%);
 }
 
+/*
+   위아래 여백은 세 페이지가 같습니다. 높이까지 min-height로 고정하지는
+   않습니다 — 설명이 짧은 폭에서 두 줄로 줄면 그만큼이 빈 공간으로 남고,
+   지표도 그 바닥까지 밀려나 옆 글자와 어긋납니다.
+*/
 .page-header-inner {
   padding-top: 62px;
   padding-bottom: 30px;
@@ -2924,12 +2937,6 @@ input:focus-visible {
 .page-header-description {
   margin-top: 14px;
   max-width: 38rem;
-  /*
-     설명이 두 줄이냐 세 줄이냐에 따라 머리말 높이가 26px씩 흔들려서
-     페이지를 옮길 때 화면이 튀었습니다. 세 줄 자리를 미리 잡아 둡니다.
-     좁은 화면에서 더 길어지는 건 그대로 늘어납니다 — 바닥만 깔아 둡니다.
-  */
-  min-height: 3lh;
   /* 짧은 문단이라 두 줄 길이를 고르게 나눕니다. pretty는 마지막 줄 고아만
      막아 주고 첫 줄이 꽉 차는 건 그대로여서 어색했습니다. */
   text-wrap: balance;
