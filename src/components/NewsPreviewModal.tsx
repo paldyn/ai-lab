@@ -3,6 +3,7 @@ import { createPortal } from 'react-dom';
 import { ArrowUpRight, X } from 'lucide-react';
 import type { ModelLogoTone, NewsDetail } from '../data/news';
 import { loadNewsDetail } from '../lib/newsDetail';
+import { captureFocusOrigin, restoreFocus } from '../lib/restoreFocus';
 
 export interface NewsPreviewItem {
   id: string;
@@ -75,7 +76,9 @@ export function NewsPreviewModal({ item, onClose }: NewsPreviewModalProps) {
 
     const appRoot = document.getElementById('root');
     const previousOverflow = document.body.style.overflow;
-    const previousFocus = document.activeElement as HTMLElement | null;
+    // 포커스를 닫기 버튼으로 옮기기 전에 잡습니다. 되돌릴 자리와 함께
+    // '키보드로 열었는가'까지 기록해 두어야 닫을 때 링을 낼지 고를 수 있습니다.
+    const origin = captureFocusOrigin();
 
     const handleKeyDown = (event: KeyboardEvent) => {
       if (event.key === 'Escape') {
@@ -113,7 +116,8 @@ export function NewsPreviewModal({ item, onClose }: NewsPreviewModalProps) {
       appRoot?.removeAttribute('inert');
       document.body.style.overflow = previousOverflow;
       document.removeEventListener('keydown', handleKeyDown);
-      previousFocus?.focus();
+      // inert를 먼저 벗긴 뒤에 되돌려야 트리거가 포커스를 받습니다.
+      restoreFocus(origin);
     };
   }, [isOpen, close]);
 

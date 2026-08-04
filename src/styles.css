@@ -195,6 +195,30 @@ input:focus-visible {
   outline-offset: -3px;
 }
 
+/*
+ * 마우스로 연 팝업을 Esc로 닫을 때만 잠깐 붙는 표시입니다.
+ * 브라우저는 '직전 입력이 키보드였는가'로 :focus-visible을 판정하므로, Esc 직후에
+ * 트리거로 포커스를 되돌리면 마우스로 열었어도 링이 뜹니다. 되돌리는 동작 자체는
+ * 옳으니 남겨 두고 링만 가립니다. src/lib/restoreFocus.ts가 붙였다가 다음
+ * 키 입력·클릭·포커스 이탈에서 곧바로 뗍니다 — 그 뒤 Tab 이동에는 링이 그대로 납니다.
+ *
+ * 위의 링 선언 두 개(전역 :focus-visible은 (0,1,0), .card-trigger의 ::after는
+ * (0,2,1))를 모두 이겨야 하므로 속성 선택자를 두 번 겹칩니다 — 이 규칙은 (0,3,0),
+ * ::after가 붙은 줄은 (0,3,1)입니다. 링을 outline이 아닌 방식으로 그리는 곳이
+ * 생겨도 새지 않도록 box-shadow도 함께 끕니다.
+ *
+ * 여유는 딱 한 단계뿐입니다. 링을 이보다 구체적인 선택자로 새로 선언하면
+ * (예: `.news-feed .card-trigger:focus-visible::after` = (0,3,1)) 명시도가 같아져
+ * 뒤에 온 쪽이 이기고 증상이 조용히 되살아납니다. 링 선언을 늘릴 때는 여기 속성
+ * 선택자도 한 번 더 겹쳐 주세요.
+ */
+[data-focus-ring-off][data-focus-ring-off]:focus-visible,
+[data-focus-ring-off][data-focus-ring-off]:focus-visible::before,
+[data-focus-ring-off][data-focus-ring-off]:focus-visible::after {
+  outline: none;
+  box-shadow: none;
+}
+
 .site-wrap {
   width: 100%;
   max-width: 1200px;
