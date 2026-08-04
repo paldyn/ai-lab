@@ -1,6 +1,6 @@
 # Paldyn AI Lab
 
-`ai.paldyn.com`을 위한 정적 AI 리서치 미디어입니다. 글로벌 AI 뉴스와 모델, 수학, 논문, 실험 노트를 한곳에서 탐색하도록 구성했습니다.
+`ailab.paldyn.com`을 위한 정적 AI 리서치 미디어입니다. 글로벌 AI 뉴스와 모델, 수학, 논문, 실험 노트를 한곳에서 탐색하도록 구성했습니다.
 
 ## 기술 구성
 
@@ -49,7 +49,7 @@ npm run dev
 
 각 페이지는 `<Seo>` 컴포넌트로 title, description, canonical, Open Graph, Twitter Card를 선언합니다. 같은 값을 프리렌더는 `<head>`에 직접 써 넣고, 클라이언트 라우팅에서는 `applyHead`가 DOM에 반영합니다. `sitemap.xml`과 `robots.txt`도 빌드 때 함께 생성됩니다.
 
-canonical URL의 기준은 `VITE_SITE_URL`이며 기본값은 `https://ai.paldyn.com`입니다. 도메인을 바꾸면 `.github/workflows/deploy.yml`의 값을 함께 고칩니다.
+canonical URL의 기준은 `VITE_SITE_URL`이며 기본값은 `https://ailab.paldyn.com`입니다. 도메인을 바꾸면 `.github/workflows/deploy.yml`의 값을 함께 고칩니다.
 
 OG 이미지는 `scripts/og-image.html`을 헤드리스 Chrome으로 렌더해 `public/assets/og-image.png`로 커밋합니다. 카피나 디자인을 바꾼 뒤에만 `npm run og-image`를 실행하면 됩니다.
 
@@ -89,7 +89,7 @@ OG 이미지는 `scripts/og-image.html`을 헤드리스 Chrome으로 렌더해 `
 
 ### 사용자 지정 도메인
 
-`public/CNAME`은 `ai.paldyn.com`이고 Vite base path는 `/`입니다. DNS에서 `ai.paldyn.com`을 GitHub Pages 주소로 연결하면 됩니다.
+`public/CNAME`은 `ailab.paldyn.com`이고 Vite base path는 `/`입니다. DNS에서 `ailab.paldyn.com`을 GitHub Pages 주소로 연결하면 됩니다.
 
 ### 저장소 하위 경로로 배포
 

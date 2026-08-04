@@ -8,7 +8,7 @@ export interface HeadMeta {
   noindex?: boolean;
 }
 
-const SITE_URL = (import.meta.env.VITE_SITE_URL ?? 'https://ai.paldyn.com').replace(/\/+$/, '');
+const SITE_URL = (import.meta.env.VITE_SITE_URL ?? 'https://ailab.paldyn.com').replace(/\/+$/, '');
 
 /** 사이트 루트를 포함한 절대 URL. 하위 경로 배포에서도 base가 반영됩니다. */
 export function absoluteUrl(path: string): string {
