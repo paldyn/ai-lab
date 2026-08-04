@@ -33,12 +33,18 @@ draft: false             # true면 목록·프리렌더에서 빠진다
 
   slug 접두사로 고르면 대체로 맞는다 — `agent-`·`rag-`·`prompt-`·`vector-`·
   `embedding-`은 `agents-rag`, `mlops-`·`llmops-`·`serving-`·`inference-`·
-  `finetuning-`·`quantization-`은 `ml-ops`, `math-`는 `math-for-ai`,
-  `eval-`은 `lab-notes`, 나머지는 `ai-guide`.
-- **리서치는 '무엇을 알아냈는가'를 담는 곳이다.** 평가 방법론, 논문 노트, 직접 돌린
-  실험, 선택 기준 비교만 리서치로 보낸다. `app-`·`project-`처럼 '무엇을 만드는가'를
-  다루는 구현 가이드와 SDK·프레임워크 사용법은 전부 학습이다. 만드는 법을 리서치에
-  두면 섹션 성격이 흐려진다.
+  `finetuning-`·`quantization-`·`eval-`은 `ml-ops`, `math-`는 `math-for-ai`,
+  나머지는 `ai-guide`.
+- **리서치는 '무엇을 알아냈는가'를 담는 곳이다.** 그리고 여기서 '알아냈다'는
+  **직접 돌려서 확인했다**는 뜻이다. 리서치 글은 자기 터미널 출력을 가져야 한다.
+  없으면 그건 학습 글이다.
+  - `app-`·`project-`처럼 '무엇을 만드는가'를 다루는 구현 가이드와 SDK·프레임워크
+    사용법은 전부 학습이다.
+  - **`eval-`도 기본은 학습(`ml-ops`)이다.** '평가 시스템을 어떻게 만드는가'는
+    운영 가이드지 리서치가 아니다. 2026-08-04에 지운 9편이 정확히 그것이었다 —
+    8,000~29,000자를 쓰고도 직접 돌린 숫자가 하나도 없었다.
+  - 리서치에 들어갈 글은 `RESEARCH-PLAN.md`가 관리한다. 접두사는 `lab-`(실험 노트),
+    `paper-`(논문 축소 재현), `bench-`·`cost-`·`spec-`(도구 비교)를 쓴다.
   섹션은 `src/data/categories.ts`의 `section` 필드가 정하며 코드에서 자동으로 갈린다.
 - **수학 글을 새로 쓰면 `src/data/curriculum.ts`의 목록에도 슬러그를 넣는다.**
   수학은 최신순이 아니라 이 목록의 순서로 보여 준다. 빠지면 목록 맨 뒤로 밀린다.
