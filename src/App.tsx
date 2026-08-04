@@ -1,11 +1,17 @@
-import { Navigate, Route, Routes } from 'react-router';
+import { Navigate, Route, Routes, useParams } from 'react-router';
 import { Layout } from './components/Layout';
 import { ArticlePage } from './pages/ArticlePage';
-import { ConceptsPage } from './pages/ConceptsPage';
+import { LearnPage } from './pages/LearnPage';
 import { HomePage } from './pages/HomePage';
 import { NewsPage } from './pages/NewsPage';
 import { NotFoundPage } from './pages/NotFoundPage';
 import { ResearchPage } from './pages/ResearchPage';
+
+/** /concepts/<category> 를 같은 카테고리의 /learn/<category> 로 넘깁니다. */
+function RedirectConceptCategory() {
+  const { categoryId } = useParams<{ categoryId: string }>();
+  return <Navigate to={`/learn/${categoryId ?? ''}`} replace />;
+}
 
 export default function App() {
   return (
@@ -13,14 +19,16 @@ export default function App() {
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/news" element={<NewsPage />} />
-        <Route path="/concepts" element={<ConceptsPage />} />
-        <Route path="/concepts/:categoryId" element={<ConceptsPage />} />
+        <Route path="/learn" element={<LearnPage />} />
+        <Route path="/learn/:categoryId" element={<LearnPage />} />
         <Route path="/research" element={<ResearchPage />} />
         <Route path="/articles/:slug" element={<ArticlePage />} />
-        {/* 개념 섹션이 생기기 전 주소들 */}
-        <Route path="/knowledge" element={<Navigate to="/concepts" replace />} />
+        {/* 지난 주소들. /concepts는 2026-08-04에 /learn으로 바꿨습니다. */}
+        <Route path="/concepts" element={<Navigate to="/learn" replace />} />
+        <Route path="/concepts/:categoryId" element={<RedirectConceptCategory />} />
+        <Route path="/knowledge" element={<Navigate to="/learn" replace />} />
         <Route path="/category/ai-news" element={<Navigate to="/news" replace />} />
-        <Route path="/category/:categoryId" element={<Navigate to="/concepts" replace />} />
+        <Route path="/category/:categoryId" element={<Navigate to="/learn" replace />} />
         <Route path="/about" element={<Navigate to="/" replace />} />
         <Route path="/404" element={<NotFoundPage />} />
         <Route path="*" element={<NotFoundPage />} />

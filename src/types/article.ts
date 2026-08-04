@@ -11,7 +11,7 @@ export type CategoryId =
 export type ArticleLevel = '입문' | '중급' | '심화';
 
 /** 카테고리가 속하는 상위 섹션. 네비게이션 한 칸에 대응합니다. */
-export type SectionId = 'concepts' | 'research' | 'news';
+export type SectionId = 'learn' | 'research' | 'news';
 
 export interface Category {
   id: CategoryId;

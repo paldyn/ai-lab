@@ -124,7 +124,7 @@ export function Layout({ children }: { children: ReactNode }) {
           <nav className="primary-nav hidden lg:flex" aria-label="주요 메뉴">
             <NavLink to="/" end>홈</NavLink>
             <NavLink to="/news">뉴스</NavLink>
-            <NavLink to="/concepts">개념</NavLink>
+            <NavLink to="/learn">학습</NavLink>
             <NavLink to="/research">리서치</NavLink>
           </nav>
 
@@ -160,7 +160,7 @@ export function Layout({ children }: { children: ReactNode }) {
             <div className="site-wrap grid grid-cols-2 gap-x-5">
               <NavLink to="/" end className="mobile-nav-link">홈</NavLink>
               <NavLink to="/news" className="mobile-nav-link">뉴스</NavLink>
-              <NavLink to="/concepts" className="mobile-nav-link">개념</NavLink>
+              <NavLink to="/learn" className="mobile-nav-link">학습</NavLink>
               <NavLink to="/research" className="mobile-nav-link">리서치</NavLink>
             </div>
           </nav>

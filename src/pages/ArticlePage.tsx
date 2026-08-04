@@ -34,7 +34,7 @@ function ArticleView({ article }: { article: Article }) {
   const category = categoryById[article.categoryId];
   // 글이 속한 섹션의 목록으로 돌아갑니다.
   const collectionPath =
-    category.section === 'news' ? '/news' : category.section === 'research' ? '/research' : `/concepts/${category.id}`;
+    category.section === 'news' ? '/news' : category.section === 'research' ? '/research' : `/learn/${category.id}`;
   const collectionLabel = category.section === 'news' ? '뉴스' : category.section === 'research' ? '리서치' : category.name;
   const related = relatedTo(article);
 
@@ -126,7 +126,7 @@ function ArticleView({ article }: { article: Article }) {
             <Link to={collectionPath} className="back-link">
               <ArrowLeft size={14} aria-hidden="true" /> 목록으로
             </Link>
-            <Link to="/concepts" className="back-link">
+            <Link to="/learn" className="back-link">
               전체 글 <ArrowRight size={14} aria-hidden="true" />
             </Link>
           </div>

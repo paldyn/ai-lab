@@ -27,7 +27,7 @@ draft: false             # true면 목록·프리렌더에서 빠진다
 
 | 섹션 | 주소 | 카테고리 |
 | --- | --- | --- |
-| 개념 | `/concepts` | `ai-guide` `math-for-ai` `agents-rag` `ml-ops` |
+| 학습 | `/learn` | `ai-guide` `math-for-ai` `agents-rag` `ml-ops` |
 | 리서치 | `/research` | `lab-notes` `paper-notes` `tools` |
 | 뉴스 | `/news` | `ai-news` |
 

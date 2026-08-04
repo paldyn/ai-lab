@@ -14,7 +14,7 @@ const pad = (value: number) => String(value).padStart(2, '0');
 
 export function HomePage() {
   const [selectedNews, setSelectedNews] = useState<NewsPreviewItem | null>(null);
-  const latestArticles = articles.filter((article) => categoryById[article.categoryId].section === 'concepts').slice(0, 4);
+  const latestArticles = articles.filter((article) => categoryById[article.categoryId].section === 'learn').slice(0, 4);
   const latestModel = modelUpdates[0];
   const latestModelSource = latestModel ? getSource(latestModel.source) : null;
 
@@ -43,8 +43,8 @@ export function HomePage() {
               <Link to="/news" className="hero-action is-primary">
                 AI 뉴스 <ArrowRight size={14} aria-hidden="true" />
               </Link>
-              <Link to="/concepts" className="hero-action">
-                개념 알아보기 <ArrowRight size={14} aria-hidden="true" />
+              <Link to="/learn" className="hero-action">
+                학습 시작하기 <ArrowRight size={14} aria-hidden="true" />
               </Link>
             </div>
           </div>
@@ -152,8 +152,8 @@ export function HomePage() {
 
       <section className="site-wrap home-research-section">
         <div className="simple-section-heading">
-          <div><p className="section-kicker">PALDYN CONCEPTS</p><h2>새로 올라온 개념 글</h2></div>
-          <Link to="/concepts">전체 보기 <ArrowRight size={13} aria-hidden="true" /></Link>
+          <div><p className="section-kicker">PALDYN LEARN</p><h2>새로 올라온 학습 글</h2></div>
+          <Link to="/learn">전체 보기 <ArrowRight size={13} aria-hidden="true" /></Link>
         </div>
         <div>
           {latestArticles.map((article) => <ArticleCard key={article.slug} article={article} variant="row" />)}

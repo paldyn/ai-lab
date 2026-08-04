@@ -5,8 +5,8 @@ import { categoryIdsIn } from './data/categories';
 export const staticRoutes: string[] = [
   '/',
   '/news',
-  '/concepts',
-  ...categoryIdsIn('concepts').map((id) => `/concepts/${id}`),
+  '/learn',
+  ...categoryIdsIn('learn').map((id) => `/learn/${id}`),
   '/research',
 ];
 

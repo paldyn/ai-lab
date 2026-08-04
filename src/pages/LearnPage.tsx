@@ -7,66 +7,66 @@ import { countByCategory } from '../data/articles';
 import { categoriesIn, categoryIdsIn } from '../data/categories';
 import type { Category } from '../types/article';
 
-const conceptCategories = categoriesIn('concepts');
-const conceptCategoryIds = categoryIdsIn('concepts');
+const learnCategories = categoriesIn('learn');
+const learnCategoryIds = categoryIdsIn('learn');
 
-export function ConceptsPage() {
+export function LearnPage() {
   const { categoryId } = useParams<{ categoryId?: string }>();
-  const active = categoryId ? conceptCategories.find((item) => item.id === categoryId) : undefined;
+  const active = categoryId ? learnCategories.find((item) => item.id === categoryId) : undefined;
 
   // 없는 카테고리를 주소로 치고 들어온 경우.
-  if (categoryId && !active) return <Navigate to="/concepts" replace />;
+  if (categoryId && !active) return <Navigate to="/learn" replace />;
 
-  return <ConceptsView active={active} />;
+  return <LearnView active={active} />;
 }
 
-function ConceptsView({ active }: { active?: Category }) {
+function LearnView({ active }: { active?: Category }) {
   const counts = countByCategory();
-  const total = conceptCategoryIds.reduce((sum, id) => sum + (counts[id] ?? 0), 0);
+  const total = learnCategoryIds.reduce((sum, id) => sum + (counts[id] ?? 0), 0);
 
   return (
     <>
       <Seo
-        title={active ? active.name : 'AI 개념'}
+        title={active ? active.name : 'AI 학습'}
         description={
           active
             ? `${active.description} Paldyn AI Lab이 정리한 ${active.name} 글 모음입니다.`
             : 'AI가 어떻게 작동하는지 개념부터 수학, 에이전트와 모델 운영까지 순서대로 정리합니다.'
         }
-        path={active ? `/concepts/${active.id}` : '/concepts'}
+        path={active ? `/learn/${active.id}` : '/learn'}
       />
 
       <section className="site-wrap simple-page-intro">
-        <p className="section-kicker">PALDYN CONCEPTS</p>
-        <h1>{active ? active.name : 'AI 개념'}</h1>
+        <p className="section-kicker">PALDYN LEARN</p>
+        <h1>{active ? active.name : 'AI 학습'}</h1>
         <p>
           {active
             ? active.description
-            : 'AI가 어떻게 작동하는지를 다룹니다. 모델의 원리부터 그 아래를 떠받치는 수학, 실제로 굴리는 방법까지.'}
+            : 'AI가 어떻게 작동하는지 배웁니다. 모델의 원리부터 그 아래를 떠받치는 수학, 실제로 굴리는 방법까지.'}
         </p>
-        <p className="concept-breadcrumb">
+        <p className="learn-breadcrumb">
           {active ? (
-            <Link to="/concepts">
-              <ArrowLeft size={13} aria-hidden="true" /> 개념 전체 {total}편
+            <Link to="/learn">
+              <ArrowLeft size={13} aria-hidden="true" /> 학습 전체 {total}편
             </Link>
           ) : (
-            <span>전체 {total}편 · {conceptCategories.length}개 분야</span>
+            <span>전체 {total}편 · {learnCategories.length}개 분야</span>
           )}
         </p>
       </section>
 
-      <nav className="site-wrap concept-nav" aria-label="개념 분야">
-        {conceptCategories.map((category) => (
+      <nav className="site-wrap learn-nav" aria-label="학습 분야">
+        {learnCategories.map((category) => (
           <Link
             key={category.id}
-            to={`/concepts/${category.id}`}
-            className={`concept-card ${active?.id === category.id ? 'is-active' : ''}`}
-            style={{ '--concept-accent': category.accent } as CSSProperties}
+            to={`/learn/${category.id}`}
+            className={`learn-card ${active?.id === category.id ? 'is-active' : ''}`}
+            style={{ '--learn-accent': category.accent } as CSSProperties}
             aria-current={active?.id === category.id ? 'page' : undefined}
           >
-            <span className="concept-card-index">{category.shortName}</span>
+            <span className="learn-card-index">{category.shortName}</span>
             <strong>{category.name}</strong>
-            <b className="concept-card-count">
+            <b className="learn-card-count">
               {counts[category.id] ?? 0}
               <i>편</i>
             </b>
@@ -86,7 +86,7 @@ function ConceptsView({ active }: { active?: Category }) {
         {/* 위 분야 카드가 카테고리 선택을 맡으므로 칩은 띄우지 않습니다. */}
         <ArticleExplorer
           key={active?.id ?? 'all'}
-          categoryIds={active ? [active.id] : conceptCategoryIds}
+          categoryIds={active ? [active.id] : learnCategoryIds}
           hideCategoryFilter
           curriculum={active?.curriculum}
         />

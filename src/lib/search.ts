@@ -48,7 +48,7 @@ export function searchArticles(rawQuery: string, scope: SearchScope = 'all', lim
 
 /** 검색 범위별 글 수. 오버레이의 범위 칩에 붙습니다. */
 export function countByScope(): Record<SearchScope, number> {
-  const counts: Record<SearchScope, number> = { all: articles.length, concepts: 0, research: 0, news: 0 };
+  const counts: Record<SearchScope, number> = { all: articles.length, learn: 0, research: 0, news: 0 };
   for (const article of articles) {
     counts[categoryById[article.categoryId].section] += 1;
   }

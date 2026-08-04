@@ -12,7 +12,7 @@ interface SearchOverlayProps {
 
 const SCOPES: Array<{ id: SearchScope; label: string }> = [
   { id: 'all', label: '전체' },
-  { id: 'concepts', label: '개념' },
+  { id: 'learn', label: '학습' },
   { id: 'research', label: '리서치' },
   { id: 'news', label: '뉴스' },
 ];
