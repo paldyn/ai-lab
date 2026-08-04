@@ -58,7 +58,7 @@ draft: false             # true면 목록·프리렌더에서 빠진다
 `kind`는 `model` / `company` / `industry` 셋이고 뉴스 페이지의 탭과 대응한다.
 모델 발표는 `model` 블록을 함께 채우면 Model Radar에도 나온다.
 
-매일 23:00 UTC(08:00 KST)에 수집 루틴이 네 출처(openai.com, www.anthropic.com,
+매일 20:00 UTC(05:00 KST)에 수집 루틴이 네 출처(openai.com, www.anthropic.com,
 deepmind.google, blog.google)를 읽고 이 파일을 갱신한다. 항목이 40개를 넘으면
 오래된 것부터 지운다 — 브리핑이지 아카이브가 아니다.
 
