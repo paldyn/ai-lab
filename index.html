@@ -21,13 +21,20 @@
     <!--app-head-->
 
     <script>
+      // 페인트 전에 테마를 확정합니다. 저장된 선택이 없으면 OS 설정을 따릅니다.
       (function () {
-        var theme = 'light';
+        var saved = null;
         try {
-          theme = localStorage.getItem('paldyn-ai-theme') || 'light';
+          saved = localStorage.getItem('paldyn-ai-theme');
         } catch (error) {
-          // 저장소 접근이 막힌 환경에서는 기본값을 씁니다.
+          // 저장소 접근이 막힌 환경에서는 OS 설정만 봅니다.
         }
+        var theme =
+          saved === 'dark' || saved === 'light'
+            ? saved
+            : window.matchMedia('(prefers-color-scheme: dark)').matches
+              ? 'dark'
+              : 'light';
         document.documentElement.dataset.theme = theme;
         document.documentElement.style.colorScheme = theme;
         var themeColor = document.querySelector('meta[name="theme-color"]');

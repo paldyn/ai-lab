@@ -4,23 +4,47 @@ import { Menu, Moon, Search, Sun, X } from 'lucide-react';
 import { assetUrl } from '../data/sources';
 
 const THEME_STORAGE_KEY = 'paldyn-ai-theme';
+const DARK_QUERY = '(prefers-color-scheme: dark)';
+
+type Theme = 'light' | 'dark';
 
 /**
- * 테마는 index.html의 인라인 스크립트가 먼저 documentElement에 적용합니다.
+ * 테마 규칙
+ * 저장된 값이 있으면 그것을 쓰고, 없으면 OS 설정을 따릅니다.
+ * 첫 적용은 index.html의 인라인 스크립트가 페인트 전에 끝내고,
  * 여기서는 상태를 React로 복제하지 않고 DOM을 직접 읽고 씁니다.
  * 서버 렌더 결과와 클라이언트 첫 렌더가 항상 같아야 하기 때문입니다.
  * (아이콘은 두 개를 모두 그려 두고 CSS가 골라 보여줍니다.)
  */
-function toggleTheme() {
-  const root = document.documentElement;
-  const next = root.dataset.theme === 'dark' ? 'light' : 'dark';
+const systemTheme = (): Theme => (window.matchMedia(DARK_QUERY).matches ? 'dark' : 'light');
 
-  root.dataset.theme = next;
-  root.style.colorScheme = next;
-  document.querySelector('meta[name="theme-color"]')?.setAttribute('content', next === 'dark' ? '#000000' : '#ffffff');
+function storedTheme(): Theme | null {
+  try {
+    const value = localStorage.getItem(THEME_STORAGE_KEY);
+    return value === 'dark' || value === 'light' ? value : null;
+  } catch {
+    return null;
+  }
+}
+
+function applyTheme(theme: Theme) {
+  const root = document.documentElement;
+  root.dataset.theme = theme;
+  root.style.colorScheme = theme;
+  document
+    .querySelector('meta[name="theme-color"]')
+    ?.setAttribute('content', theme === 'dark' ? '#000000' : '#ffffff');
+}
+
+function toggleTheme() {
+  const next: Theme = document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark';
+  applyTheme(next);
 
   try {
-    localStorage.setItem(THEME_STORAGE_KEY, next);
+    // 고른 값이 OS 설정과 같아지면 저장값을 지웁니다. 그래야 이후 OS를 바꿨을 때
+    // 다시 따라갑니다. 별도의 '시스템' 버튼 없이 토글만으로 되돌아올 수 있습니다.
+    if (next === systemTheme()) localStorage.removeItem(THEME_STORAGE_KEY);
+    else localStorage.setItem(THEME_STORAGE_KEY, next);
   } catch {
     // 프라이빗 모드 등 저장이 막힌 환경에서는 이번 세션에만 적용합니다.
   }
@@ -37,6 +61,17 @@ export function Layout({ children }: { children: ReactNode }) {
     setRenderedPath(location.pathname);
     setMenuOpen(false);
   }
+
+  // 저장된 선택이 없는 동안에는 OS 테마 변경을 실시간으로 따라갑니다.
+  useEffect(() => {
+    const media = window.matchMedia(DARK_QUERY);
+    const follow = () => {
+      if (!storedTheme()) applyTheme(media.matches ? 'dark' : 'light');
+    };
+
+    media.addEventListener('change', follow);
+    return () => media.removeEventListener('change', follow);
+  }, []);
 
   useEffect(() => {
     if (location.hash) {
