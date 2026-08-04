@@ -671,10 +671,18 @@ input:focus-visible {
   font-size: 11px;
 }
 
+/*
+  구분선이 리드 높이만큼 그어지도록 min-height를 두는데, 세 행을 쌓아도
+  383px이라 리드보다 77px 짧습니다. 그냥 두면 마지막 글 아래에 그만큼
+  빈 칸이 생겨 목록이 끊긴 것처럼 보였습니다. flex로 세워 남는 높이를
+  행끼리 고르게 나눠 갖게 합니다 — 줄 간격이 조금 넓어질 뿐 목록은
+  리드와 같이 끝납니다.
+*/
 .news-feed {
+  display: flex;
   min-width: 0;
-  /* 목록이 세 건뿐일 때도 구분선이 리드 높이만큼은 그어지게 합니다. */
   min-height: 460px;
+  flex-direction: column;
   padding-left: 32px;
   border-left: 1px solid var(--border);
 }
@@ -684,6 +692,14 @@ input:focus-visible {
   display: grid;
   width: 100%;
   min-width: 0;
+  /*
+    리드 옆에 설 때 남는 높이를 나눠 갖습니다. 늘어난 만큼은 위아래로
+    반씩 가도록 내용을 가운데 둡니다 — 위로만 붙으면 결국 마지막 행
+    아래에 빈 칸이 모입니다. 아래 news-feed-wide는 grid라 이 값이 놀고,
+    행 높이는 내용대로 잡힙니다.
+  */
+  flex: 1 0 auto;
+  align-content: center;
   grid-template-columns: 32px minmax(0, 1fr) 18px;
   gap: 12px;
   align-items: start;
