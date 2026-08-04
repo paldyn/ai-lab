@@ -2,6 +2,7 @@ import type { CSSProperties } from 'react';
 import { ArrowLeft } from 'lucide-react';
 import { Link, Navigate, useParams } from 'react-router';
 import { ArticleExplorer } from '../components/ArticleExplorer';
+import { PageHeader } from '../components/PageHeader';
 import { Seo } from '../components/Seo';
 import { countByCategory } from '../data/articles';
 import { categoriesIn, categoryIdsIn } from '../data/categories';
@@ -36,26 +37,32 @@ function LearnView({ active }: { active?: Category }) {
         path={active ? `/learn/${active.id}` : '/learn'}
       />
 
-      <section className="site-wrap simple-page-intro">
-        <p className="section-kicker">PALDYN LEARN</p>
-        <h1>{active ? active.name : 'AI 학습'}</h1>
-        <p>
-          {active
+      <PageHeader
+        kicker="PALDYN LEARN"
+        title={active ? active.name : 'AI 학습'}
+        description={
+          active
             ? active.description
-            : 'AI가 어떻게 작동하는지 배웁니다. 모델의 원리부터 그 아래를 떠받치는 수학, 실제로 굴리는 방법까지.'}
-        </p>
-        <p className="learn-breadcrumb">
-          {active ? (
-            <Link to="/learn">
-              <ArrowLeft size={13} aria-hidden="true" /> 학습 전체 {total}편
-            </Link>
-          ) : (
-            <span>전체 {total}편 · {learnCategories.length}개 분야</span>
-          )}
-        </p>
-      </section>
-
-      <div className="site-divider" />
+            : 'AI가 어떻게 작동하는지 배웁니다. 모델의 원리부터 그 아래를 떠받치는 수학, 실제로 굴리는 방법까지.'
+        }
+        stats={
+          active
+            ? [{ label: active.name, value: `${counts[active.id] ?? 0}편` }]
+            : [
+                { label: '전체', value: `${total}편` },
+                { label: '분야', value: String(learnCategories.length).padStart(2, '0') },
+              ]
+        }
+        note={
+          active ? (
+            <p className="learn-breadcrumb">
+              <Link to="/learn">
+                <ArrowLeft size={13} aria-hidden="true" /> 학습 전체 {total}편
+              </Link>
+            </p>
+          ) : undefined
+        }
+      />
 
       {/*
         분야를 목록 위가 아니라 옆에 둡니다. 위에 쌓으면 분야가 늘어날수록

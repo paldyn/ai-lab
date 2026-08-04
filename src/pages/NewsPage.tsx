@@ -1,9 +1,10 @@
 import { useRef, useState } from 'react';
 import { ArticleExplorer } from '../components/ArticleExplorer';
 import { GlobalNewsDesk } from '../components/GlobalNewsDesk';
+import { PageHeader } from '../components/PageHeader';
 import { ModelRadar } from '../components/ModelRadar';
 import { Seo } from '../components/Seo';
-import { globalNewsUpdatedAt } from '../data/news';
+import { globalNewsUpdatedAt, newsItems } from '../data/news';
 import { sourceList } from '../data/sources';
 
 type NewsView = 'all' | 'models' | 'companies' | 'industry';
@@ -43,40 +44,36 @@ export function NewsPage() {
         path="/news"
       />
 
-      <section className="news-page-intro">
-        <div className="site-wrap">
-          <p className="section-kicker">PALDYN AI NEWS</p>
-          <div className="news-page-title">
-            <h1>AI 뉴스</h1>
-            <div>
-              <p>공식 발표를 빠르게 확인하고, 모델과 기업의 변화가 무엇을 의미하는지 함께 읽습니다.</p>
-              <div className="news-page-meta">
-                <span>OFFICIAL SOURCES / {String(sourceList.length).padStart(2, '0')}</span>
-                <span>UPDATED / {globalNewsUpdatedAt.replaceAll('-', '.')}</span>
-              </div>
-            </div>
-          </div>
-          <div className="news-view-tabs" role="tablist" aria-label="AI 뉴스 분류">
-            {newsViews.map((item, index) => (
-              <button
-                key={item.id}
-                ref={(node) => { tabRefs.current[index] = node; }}
-                type="button"
-                role="tab"
-                id={`news-tab-${item.id}`}
-                aria-selected={view === item.id}
-                aria-controls="news-tabpanel"
-                tabIndex={view === item.id ? 0 : -1}
-                className={view === item.id ? 'active' : ''}
-                onClick={() => setView(item.id)}
-                onKeyDown={(event) => handleTabKeyDown(event, index)}
-              >
-                {item.label}
-              </button>
-            ))}
-          </div>
+      <PageHeader
+        kicker="PALDYN AI NEWS"
+        title="AI 뉴스"
+        description="공식 발표를 빠르게 확인하고, 모델과 기업의 변화가 무엇을 의미하는지 함께 읽습니다."
+        stats={[
+          { label: '공식 출처', value: String(sourceList.length).padStart(2, '0') },
+          { label: '추적 중', value: `${newsItems.length}건` },
+          { label: '갱신', value: globalNewsUpdatedAt.slice(5).replace('-', '.') },
+        ]}
+      >
+        <div className="news-view-tabs" role="tablist" aria-label="AI 뉴스 분류">
+          {newsViews.map((item, index) => (
+            <button
+              key={item.id}
+              ref={(node) => { tabRefs.current[index] = node; }}
+              type="button"
+              role="tab"
+              id={`news-tab-${item.id}`}
+              aria-selected={view === item.id}
+              aria-controls="news-tabpanel"
+              tabIndex={view === item.id ? 0 : -1}
+              className={view === item.id ? 'active' : ''}
+              onClick={() => setView(item.id)}
+              onKeyDown={(event) => handleTabKeyDown(event, index)}
+            >
+              {item.label}
+            </button>
+          ))}
         </div>
-      </section>
+      </PageHeader>
 
       <div id="news-tabpanel" role="tabpanel" aria-labelledby={`news-tab-${view}`} tabIndex={-1}>
         {view === 'all' && <GlobalNewsDesk showInternalLink={false} />}

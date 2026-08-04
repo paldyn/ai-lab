@@ -1705,26 +1705,6 @@ input:focus-visible {
   font-weight: 550;
 }
 
-.simple-page-intro {
-  padding-top: 76px;
-  padding-bottom: 66px;
-}
-
-.simple-page-intro h1 {
-  margin-top: 14px;
-  color: var(--text-strong);
-  font-size: 42px;
-  font-weight: 550;
-}
-
-.simple-page-intro > p:last-child {
-  max-width: 650px;
-  margin-top: 20px;
-  color: var(--text-dim);
-  font-size: 15px;
-  line-height: 1.8;
-}
-
 .archive-page-heading {
   max-width: 760px;
   align-items: flex-start;
@@ -2744,47 +2724,99 @@ input:focus-visible {
   font-size: 10px;
 }
 
-.news-page-intro {
-  background: var(--bg);
+/* ============================================================
+   페이지 머리말 (뉴스 · 학습 · 리서치 공통)
+   셋이 각각 다른 구조를 쓰고 있어 페이지를 옮길 때 리듬이 끊겼습니다.
+   홈과 같은 결의 격자를 옅게 깔아 톤을 잇습니다.
+   ============================================================ */
+.page-header {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  border-bottom: 1px solid var(--border);
 }
 
-.news-page-intro .site-wrap {
-  padding-top: 64px;
+.page-header-field {
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  pointer-events: none;
+  background-image:
+    linear-gradient(to right, var(--border) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--border) 1px, transparent 1px);
+  background-size: 34px 34px;
+  opacity: 0.55;
+  -webkit-mask-image: linear-gradient(to bottom, #000 0%, transparent 88%);
+  mask-image: linear-gradient(to bottom, #000 0%, transparent 88%);
 }
 
-.news-page-title {
-  display: flex;
-  align-items: flex-end;
-  justify-content: space-between;
-  gap: 50px;
-  margin-top: 13px;
+.page-header-inner {
+  padding-top: 62px;
+  padding-bottom: 30px;
 }
 
-.news-page-title h1 {
-  color: var(--text-strong);
-  font-size: 42px;
-  font-weight: 560;
-}
-
-.news-page-title p {
-  max-width: 460px;
-  color: var(--text-dim);
-  font-size: 14px;
-  line-height: 1.7;
-}
-
-.news-page-meta {
+.page-header-main {
   display: flex;
   flex-wrap: wrap;
-  gap: 8px 20px;
-  margin-top: 15px;
-  color: var(--text-muted);
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 32px 48px;
+}
+
+.page-header-copy {
+  min-width: 0;
+  flex: 1 1 380px;
+}
+
+.page-header-copy h1 {
+  margin-top: 14px;
+  color: var(--text-strong);
+  font-size: clamp(1.9rem, 3.6vw, 2.5rem);
+  font-weight: 600;
+  line-height: 1.24;
+  letter-spacing: -0.026em;
+}
+
+.page-header-description {
+  margin-top: 14px;
+  max-width: 34rem;
+  color: var(--text-dim);
+  font-size: 14.5px;
+  font-weight: 300;
+  line-height: 1.8;
+}
+
+/* 지표는 오른쪽 아래에 붙여 제목과 같은 바닥선을 씁니다. */
+.page-header-stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  padding-bottom: 4px;
+}
+
+.page-header-stats > div {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.page-header-stats dd {
+  margin: 0;
+  color: var(--text-strong);
   font-family: 'JetBrains Mono', ui-monospace, monospace;
-  font-size: 7px;
-  letter-spacing: 0.1em;
+  font-size: 22px;
+  font-weight: 500;
+  line-height: 1;
+}
+
+.page-header-stats dt {
+  color: var(--text-muted);
+  font-size: 11px;
 }
 
 .news-view-tabs {
+  margin-top: 30px;
   display: flex;
   gap: 28px;
   margin-top: 38px;
