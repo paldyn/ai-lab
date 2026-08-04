@@ -7,8 +7,15 @@ import { NewsPreviewModal, type NewsPreviewItem } from './NewsPreviewModal';
 
 type SourceFilter = NewsSource | 'All';
 
-/** 리드 아래 함께 보여 줄 소식 수. */
+/** 리드 아래 처음 보여 줄 소식 수. */
 const FEED_LIMIT = 3;
+
+/**
+ * '더 보기'를 누를 때마다 늘리는 수. 예전에는 남은 것을 한 번에 다 펼쳤는데,
+ * 아카이브가 387건이 되면서 386줄이 통째로 붙었습니다. 오른쪽 열만 수천
+ * 픽셀이 되고 왼쪽 리드 카드가 그 높이에 맞춰 늘어나 위아래가 텅 비었습니다.
+ */
+const FEED_STEP = 12;
 
 interface GlobalNewsDeskProps {
   showInternalLink?: boolean;
@@ -18,7 +25,7 @@ interface GlobalNewsDeskProps {
 export function GlobalNewsDesk({ showInternalLink = true, kind }: GlobalNewsDeskProps) {
   const [source, setSource] = useState<SourceFilter>('All');
   const [selectedNews, setSelectedNews] = useState<NewsPreviewItem | null>(null);
-  const [expanded, setExpanded] = useState(false);
+  const [visible, setVisible] = useState(FEED_LIMIT);
 
   const sourceItems = useMemo(() => {
     if (!kind) return newsItems;
@@ -38,10 +45,9 @@ export function GlobalNewsDesk({ showInternalLink = true, kind }: GlobalNewsDesk
   );
 
   const lead = items[0];
-  // 리드 아래 목록은 세 건까지만 둡니다. 더 늘리면 오른쪽 열만 길어져
-  // 리드 카드와 높이가 크게 어긋납니다. 나머지는 더 보기로 펼칩니다.
+  // 리드 아래 목록은 세 건으로 시작하고 '더 보기'로 조금씩 늘립니다.
   const rest = items.slice(1);
-  const feed = expanded ? rest : rest.slice(0, FEED_LIMIT);
+  const feed = rest.slice(0, visible);
   const hidden = rest.length - feed.length;
   const leadSource = lead ? getSource(lead.source) : null;
   const HEADINGS: Record<string, { heading: string; description: string }> = {
@@ -59,6 +65,12 @@ export function GlobalNewsDesk({ showInternalLink = true, kind }: GlobalNewsDesk
     },
   };
   const { heading, description } = HEADINGS[kind ?? 'default'] ?? HEADINGS.default;
+
+  // 출처를 바꾸면 목록이 통째로 갈리므로 펼친 만큼도 되돌립니다.
+  const pickSource = (next: SourceFilter) => {
+    setSource(next);
+    setVisible(FEED_LIMIT);
+  };
 
   const openPreview = (item: NewsItem) => {
     const meta = getSource(item.source);
@@ -98,7 +110,7 @@ export function GlobalNewsDesk({ showInternalLink = true, kind }: GlobalNewsDesk
               type="button"
               className={source === 'All' ? 'active' : ''}
               aria-pressed={source === 'All'}
-              onClick={() => setSource('All')}
+              onClick={() => pickSource('All')}
             >
               전체
             </button>
@@ -108,7 +120,7 @@ export function GlobalNewsDesk({ showInternalLink = true, kind }: GlobalNewsDesk
                 key={meta.id}
                 className={source === meta.id ? 'active' : ''}
                 aria-pressed={source === meta.id}
-                onClick={() => setSource(meta.id)}
+                onClick={() => pickSource(meta.id)}
                 style={{ '--source-accent': meta.mark } as CSSProperties}
               >
                 <img
@@ -191,8 +203,13 @@ export function GlobalNewsDesk({ showInternalLink = true, kind }: GlobalNewsDesk
               )}
 
               {hidden > 0 && (
-                <button type="button" className="news-feed-more" onClick={() => setExpanded(true)}>
-                  {hidden}건 더 보기
+                <button
+                  type="button"
+                  className="news-feed-more"
+                  onClick={() => setVisible((count) => count + FEED_STEP)}
+                >
+                  더 보기
+                  <span>{feed.length} / {rest.length}</span>
                 </button>
               )}
             </div>

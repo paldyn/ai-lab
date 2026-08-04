@@ -493,6 +493,16 @@ input:focus-visible {
 .news-desk-grid {
   display: grid;
   grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+  /*
+     기본값 stretch면 왼쪽 리드 카드가 오른쪽 목록 높이를 따라 늘어납니다.
+     리드 안쪽은 `margin-block: auto`로 글을 가운데 두므로 늘어난 만큼이
+     통째로 위아래 빈 공간이 되고, 목록을 펼칠수록 그 틈이 벌어집니다.
+     리드는 제 높이(min-height 460px)만 쓰게 둡니다.
+
+     그래서 두 열을 가르는 선은 리드의 border-right가 아니라 목록의
+     border-left가 맡습니다 — 늘어나는 쪽에 붙어야 끝까지 그어집니다.
+  */
+  align-items: start;
   border-bottom: 1px solid var(--border);
 }
 
@@ -506,7 +516,6 @@ input:focus-visible {
   justify-content: space-between;
   padding: 34px 34px 34px 0;
   border-bottom: 0;
-  border-right: 1px solid var(--border);
   cursor: pointer;
 }
 
@@ -622,7 +631,10 @@ input:focus-visible {
 
 .news-feed {
   min-width: 0;
+  /* 목록이 세 건뿐일 때도 구분선이 리드 높이만큼은 그어지게 합니다. */
+  min-height: 460px;
   padding-left: 32px;
+  border-left: 1px solid var(--border);
 }
 
 .news-feed-row {
@@ -711,7 +723,11 @@ input:focus-visible {
 }
 
 .news-feed-more {
+  display: flex;
   width: 100%;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
   border: 0;
   border-top: 1px solid var(--border);
   background: none;
@@ -720,6 +736,13 @@ input:focus-visible {
   font-size: 12.5px;
   text-align: left;
   transition: color 150ms ease;
+}
+
+/* 몇 건까지 왔는지. 글 목록의 더 보기와 같은 표기를 씁니다. */
+.news-feed-more span {
+  color: var(--text-muted);
+  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  font-size: 11px;
 }
 
 .news-feed-more:hover {
@@ -3024,12 +3047,14 @@ input:focus-visible {
 
   .news-lead {
     padding-right: 0;
-    border-right: 0;
     border-bottom: 1px solid var(--border);
   }
 
+  /* 한 열로 쌓이면 두 열을 가르던 선과 최소 높이가 필요 없습니다. */
   .news-feed {
+    min-height: 0;
     padding-left: 0;
+    border-left: 0;
   }
 
   .section-space {
