@@ -468,24 +468,6 @@ input:focus-visible {
   background: var(--brand);
 }
 
-/*
-  분야 칩은 출처 띠 위에 둡니다. 아래 띠가 회사를 고르는 칸이고, 위 칩이
-  무엇에 대한 소식인지를 고릅니다 — 넓은 것에서 좁은 것 순서입니다.
-*/
-.news-category-switch {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 7px;
-  margin-top: 30px;
-}
-
-.news-category-switch .filter-chip b {
-  margin-left: 3px;
-  font-weight: 500;
-  font-variant-numeric: tabular-nums;
-  opacity: 0.6;
-}
-
 .news-source-switch {
   display: flex;
   margin-top: 20px;
@@ -838,24 +820,12 @@ input:focus-visible {
   color: var(--text-dim);
 }
 
+/* 편집 원칙 한 줄. 오른쪽에 있던 '/news 전체 보기' 링크를 뺀 뒤로 한 칸입니다. */
 .news-desk-footer {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 24px;
   padding-top: 17px;
   color: var(--text-muted);
   font-size: 10px;
   line-height: 1.6;
-}
-
-.news-desk-footer a {
-  display: inline-flex;
-  flex-shrink: 0;
-  align-items: center;
-  gap: 7px;
-  color: var(--text-dim);
-  text-decoration: none;
 }
 
 .news-preview-backdrop {
@@ -1911,13 +1881,8 @@ input:focus-visible {
   color: var(--text-muted);
 }
 
-.external-read,
-.news-desk-footer a {
+.external-read {
   color: var(--text-strong);
-}
-
-.news-filter-enter {
-  animation: none;
 }
 
 .simple-home-hero .site-wrap {
@@ -3307,11 +3272,6 @@ input:focus-visible {
 
   .news-feed-arrow {
     display: none;
-  }
-
-  .news-desk-footer {
-    align-items: flex-start;
-    flex-direction: column;
   }
 
   .section-space {

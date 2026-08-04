@@ -86,18 +86,20 @@ draft: false             # true면 목록·프리렌더에서 빠진다
 "규제 대응도 결국 그 회사가 무엇을 하는가"라 경계가 매번 애매했고, 2026-08-04에
 127건을 합쳤다. 모델 발표는 `model` 블록을 함께 채우면 Model Radar에도 나온다.
 
-**`category`가 곧 뉴스 페이지의 탭이다.** `kind`마다 쓰는 집합이 다르다.
+**`category`는 항목이 무엇에 대한 발표인지를 적는 값이다.** 탭은 `kind`가 정하고
+`category`는 화면을 가르지 않는다 — 리드 카드와 모달이 항목마다 그대로 보여 준다.
+한때 company 다섯을 각각 탭으로 세워 봤지만, 항목에 이미 붙어 있는 값으로 한 번 더
+거르는 UI라 2026-08-05에 전체·기업 소식·AI 모델 셋으로 되돌렸다.
+`kind`마다 쓰는 집합이 다르다.
 
 | kind | 값 |
 | --- | --- |
 | `company` | `Product` `Research` `Safety` `Corporate` `Infrastructure` |
 | `model` | `Frontier` `Multimodal` `Domain` `Open` |
 
-company 다섯은 각각 탭이고(제품·연구·안전·정책·기업·조직·인프라), model 넷은
-AI 모델 탭 안에서 칩으로 갈린다. 잘못 넣으면 엉뚱한 탭에 가고, `kind`와
-어긋나면 아예 오류 없이 화면에서 사라진다.
-`src/data/news.test.ts`가 이것과 제목의 한글을 검사한다. 화면에 쓰는 이름은
-`src/data/news.ts`의 `categoryLabel`이 들고 있다 — 데이터에는 영문 키를 둔다.
+`kind`와 어긋나는 값을 넣으면 `src/data/news.test.ts`가 잡는다. 이 테스트가 제목의
+한글도 함께 검사한다. 화면에 쓰는 이름은 `src/data/news.ts`의 `categoryLabel`이
+들고 있다 — 데이터에는 영문 키를 둔다.
 
 매일 20:00 UTC(05:00 KST)에 수집 루틴이 네 출처(openai.com, www.anthropic.com,
 deepmind.google, blog.google)를 읽고 이 파일을 갱신한다. 오래된 항목을 지우지

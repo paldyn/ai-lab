@@ -5,9 +5,10 @@ export type { NewsSource } from './sources';
 export type GlobalNewsKind = 'model' | 'company';
 
 /**
- * 탭 안에서 한 번 더 거르는 값. 기업 소식이 300건을 넘으면서 제품 출시와
- * 인사·재무, 안전 문서가 한 줄에 섞였습니다. `kind`가 어느 갈래를 쓰는지
- * 정하고, 두 집합은 겹치지 않습니다.
+ * 항목이 무엇에 대한 발표인지. 화면을 가르는 데는 쓰지 않습니다 — 목록의 리드
+ * 카드와 모달이 항목마다 그대로 보여 주므로 이것으로 한 번 더 거르는 UI는
+ * 같은 일을 두 번 하는 셈이었습니다. `kind`가 어느 갈래를 쓰는지 정하고,
+ * 두 집합은 겹치지 않습니다.
  */
 export type CompanyCategory = 'Product' | 'Research' | 'Safety' | 'Corporate' | 'Infrastructure';
 export type ModelCategory = 'Frontier' | 'Multimodal' | 'Domain' | 'Open';
@@ -26,7 +27,7 @@ export const categoryLabel: Record<NewsCategory, string> = {
   Open: '오픈 웨이트',
 };
 
-/** 칩을 세우는 순서. 항목이 없는 갈래는 화면에서 빠집니다. */
+/** 어느 kind에 어떤 category가 유효한지를 정하는 표. `news.test.ts`가 이것으로 검사합니다. */
 export const categoryOrder: Record<GlobalNewsKind, NewsCategory[]> = {
   company: ['Product', 'Research', 'Safety', 'Corporate', 'Infrastructure'],
   model: ['Frontier', 'Multimodal', 'Domain', 'Open'],
