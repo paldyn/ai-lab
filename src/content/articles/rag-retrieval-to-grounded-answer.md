@@ -3,7 +3,7 @@ title: "RAG는 검색이 아니다: 근거 있는 답변이 만들어지는 전�
 description: "RAG를 단순한 벡터 검색으로 보지 않고, 질문에 맞는 근거를 구성해 답변 품질을 관리하는 시스템으로 설명합니다."
 author: "Paldyn Research"
 pubDate: "2026-07-21"
-category: "ai-guide"
+category: "agents-rag"
 level: "중급"
 tags: ["RAG", "Embedding", "Retrieval"]
 visual: "query -> retrieve -> rerank -> answer"

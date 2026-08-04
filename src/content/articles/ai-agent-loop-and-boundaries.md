@@ -3,7 +3,7 @@ title: "AI Agent의 핵심은 자율성이 아니라 반복 구조다"
 description: "Agent라는 이름 뒤에 숨은 반복 구조와 도구 호출, 중단 조건, 실패 복구의 역할을 명확히 구분합니다."
 author: "Paldyn Research"
 pubDate: "2026-07-13"
-category: "ai-guide"
+category: "agents-rag"
 level: "입문"
 tags: ["Agent", "Tool Use", "LLM"]
 visual: "plan -> act -> observe -> revise"

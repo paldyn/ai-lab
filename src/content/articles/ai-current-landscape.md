@@ -125,7 +125,6 @@ def run_agent(user_goal: str):
 
 **지난 글:** [데이터 중심 패러다임: 왜 데이터가 새로운 석유인가](/articles/ai-data-driven-paradigm)
 
-**다음 글:** [AI를 위한 선형대수 핵심: 벡터와 행렬부터 시작하자](/articles/ai-linear-algebra-essentials)
 
 <br>
 읽어주셔서 감사합니다. 😊

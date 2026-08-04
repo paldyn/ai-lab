@@ -3,7 +3,7 @@ title: "AI 에이전트와 MCP: 자율적으로 행동하는 AI 시스템"
 description: "AI 에이전트의 개념, ReAct 루프, 도구 사용, Model Context Protocol(MCP) 아키텍처를 Python 코드와 함께 완전 해설합니다."
 author: "PALDYN Team"
 pubDate: "2026-05-18"
-category: "ai-guide"
+category: "agents-rag"
 level: "중급"
 tags: ["AI에이전트", "MCP", "Model Context Protocol", "ReAct", "Tool Use", "LLM", "Anthropic"]
 featured: false
