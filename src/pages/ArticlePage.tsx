@@ -1,14 +1,15 @@
 import { ArrowLeft, ArrowRight } from 'lucide-react';
-import { Link, Redirect, useParams } from 'react-router-dom';
+import { Link, Navigate, useParams } from 'react-router';
 import { ArticleCard } from '../components/ArticleCard';
 import { ArticleVisual } from '../components/ArticleVisual';
+import { Seo } from '../components/Seo';
 import { articles, getArticleBySlug } from '../data/articles';
 import { categoryById } from '../data/categories';
 
 export function ArticlePage() {
   const { slug } = useParams<{ slug: string }>();
   const article = slug ? getArticleBySlug(slug) : undefined;
-  if (!article) return <Redirect to="/404" />;
+  if (!article) return <Navigate to="/404" replace />;
 
   const category = categoryById[article.categoryId];
   const collectionPath = article.categoryId === 'ai-news' ? '/news' : '/research';
@@ -18,11 +19,18 @@ export function ArticlePage() {
 
   return (
     <article>
+      <Seo
+        title={article.title}
+        description={article.summary}
+        path={`/articles/${article.slug}`}
+        type="article"
+        publishedAt={article.publishedAt}
+      />
       <header className="site-wrap article-header">
         <Link to={collectionPath} className="back-link"><ArrowLeft size={14} /> {article.categoryId === 'ai-news' ? '뉴스' : '리서치'}</Link>
         <div className="mt-10 grid gap-10 lg:grid-cols-[minmax(0,1fr)_420px] lg:items-end">
           <div>
-            <p className="font-mono text-[10px] tracking-[0.13em]" style={{ color: category.accent }}>{category.shortName} / {article.level}</p>
+            <p className="font-mono text-[10px] tracking-[0.13em]" style={{ color: category.accentText }}>{category.shortName} / {article.level}</p>
             <h1 className="mt-5 max-w-4xl text-[2rem] font-medium leading-[1.35] text-[var(--text-strong)] sm:text-[2.8rem]">{article.title}</h1>
             <p className="mt-6 max-w-2xl text-[16px] font-light leading-8 text-[var(--text-dim)]">{article.subtitle}</p>
             <div className="mt-8 flex flex-wrap items-center gap-x-3 gap-y-2 font-mono text-[10px] tracking-[0.06em] text-[var(--text-muted)]">

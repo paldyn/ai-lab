@@ -1,19 +1,11 @@
 import { useMemo, useState, type CSSProperties } from 'react';
 import { ArrowUpRight, Eye } from 'lucide-react';
-import { Link } from 'react-router-dom';
-import { globalNews, globalNewsUpdatedAt, type GlobalNewsKind, type NewsSource } from '../data/globalNews';
+import { Link } from 'react-router';
+import { globalNewsUpdatedAt, newsItems, type GlobalNewsKind, type NewsItem } from '../data/news';
+import { assetUrl, getSource, sourceList, type NewsSource } from '../data/sources';
 import { NewsPreviewModal, type NewsPreviewItem } from './NewsPreviewModal';
 
 type SourceFilter = NewsSource | 'All';
-
-const sourceFilters: Array<{ label: SourceFilter; displayName: string; accent?: string; logo?: string; monochrome?: boolean }> = [
-  { label: 'All', displayName: '전체' },
-  { label: 'Anthropic', displayName: 'Anthropic', accent: '#d97757', logo: 'assets/anthropic.svg', monochrome: true },
-  { label: 'OpenAI', displayName: 'OpenAI', accent: 'var(--openai-accent)', logo: 'assets/openai.svg', monochrome: true },
-  { label: 'Google DeepMind', displayName: 'Google', accent: '#4285f4', logo: 'assets/google.svg' },
-];
-
-const getSourceMeta = (source: NewsSource) => sourceFilters.find((item) => item.label === source)!;
 
 interface GlobalNewsDeskProps {
   showInternalLink?: boolean;
@@ -23,42 +15,47 @@ interface GlobalNewsDeskProps {
 export function GlobalNewsDesk({ showInternalLink = true, kind }: GlobalNewsDeskProps) {
   const [source, setSource] = useState<SourceFilter>('All');
   const [selectedNews, setSelectedNews] = useState<NewsPreviewItem | null>(null);
+
   const sourceItems = useMemo(() => {
-    if (!kind) return globalNews;
-
-    const filtered = globalNews.filter((item) => item.kind === kind);
+    if (!kind) return newsItems;
+    const filtered = newsItems.filter((item) => item.kind === kind);
     if (kind !== 'company') return filtered;
-
-    const companyOrder: Record<NewsSource, number> = {
-      Anthropic: 0,
-      OpenAI: 1,
-      'Google DeepMind': 2,
-    };
-
-    return [...filtered].sort((a, b) => companyOrder[a.source] - companyOrder[b.source]);
+    return [...filtered].sort((a, b) => getSource(a.source).order - getSource(b.source).order);
   }, [kind]);
+
   const items = useMemo(
     () => (source === 'All' ? sourceItems : sourceItems.filter((item) => item.source === source)),
     [source, sourceItems],
   );
-  const availableSourceFilters = sourceFilters.filter(
-    (filter) => filter.label === 'All' || sourceItems.some((item) => item.source === filter.label),
+
+  const availableFilters = useMemo(
+    () => sourceList.filter((meta) => sourceItems.some((item) => item.source === meta.id)),
+    [sourceItems],
   );
+
   const lead = items[0];
   const feed = items.slice(1);
-  const assetBase = import.meta.env.BASE_URL;
-  const leadSource = lead ? getSourceMeta(lead.source) : null;
+  const leadSource = lead ? getSource(lead.source) : null;
   const heading = kind === 'company' ? 'AI 기업 소식' : '오늘의 AI 흐름';
-  const description = kind === 'company'
-    ? '제품과 조직의 변화가 실제 AI 사용 방식에 어떤 영향을 주는지 살펴봅니다.'
-    : '새로운 발표에서 무엇이 달라졌고, 어디에 영향을 주는지 짚어봅니다.';
-  const openPreview = (item: (typeof globalNews)[number]) => {
-    const sourceMeta = getSourceMeta(item.source);
+  const description =
+    kind === 'company'
+      ? '제품과 조직의 변화가 실제 AI 사용 방식에 어떤 영향을 주는지 살펴봅니다.'
+      : '새로운 발표에서 무엇이 달라졌고, 어디에 영향을 주는지 짚어봅니다.';
+
+  const openPreview = (item: NewsItem) => {
+    const meta = getSource(item.source);
     setSelectedNews({
-      ...item,
-      source: sourceMeta.displayName,
-      logo: `${assetBase}${sourceMeta.logo}`,
-      monochrome: sourceMeta.monochrome,
+      id: item.id,
+      source: meta.displayName,
+      publishedAt: item.publishedAt,
+      title: item.title,
+      summary: item.summary,
+      signal: item.signal,
+      category: item.category,
+      url: item.url,
+      accent: meta.accent,
+      logo: assetUrl(meta.logo),
+      monochrome: meta.monochrome,
     });
   };
 
@@ -79,22 +76,29 @@ export function GlobalNewsDesk({ showInternalLink = true, kind }: GlobalNewsDesk
           </div>
 
           <div className="news-source-switch" aria-label="뉴스 출처 필터">
-            {availableSourceFilters.map((filter) => (
+            <button
+              type="button"
+              className={source === 'All' ? 'active' : ''}
+              aria-pressed={source === 'All'}
+              onClick={() => setSource('All')}
+            >
+              전체
+            </button>
+            {availableFilters.map((meta) => (
               <button
                 type="button"
-                key={filter.label}
-                className={source === filter.label ? 'active' : ''}
-                onClick={() => setSource(filter.label)}
-                style={filter.accent ? ({ '--source-accent': filter.accent } as CSSProperties) : undefined}
+                key={meta.id}
+                className={source === meta.id ? 'active' : ''}
+                aria-pressed={source === meta.id}
+                onClick={() => setSource(meta.id)}
+                style={{ '--source-accent': meta.mark } as CSSProperties}
               >
-                {filter.logo ? (
-                  <img
-                    src={`${assetBase}${filter.logo}`}
-                    alt=""
-                    className={`news-source-logo ${filter.monochrome ? 'is-monochrome' : ''}`}
-                  />
-                ) : null}
-                {filter.displayName}
+                <img
+                  src={assetUrl(meta.logo)}
+                  alt=""
+                  className={`news-source-logo ${meta.monochrome ? 'is-monochrome' : ''}`}
+                />
+                {meta.displayName}
               </button>
             ))}
           </div>
@@ -102,57 +106,63 @@ export function GlobalNewsDesk({ showInternalLink = true, kind }: GlobalNewsDesk
 
         {lead && (
           <div key={source} className="news-desk-grid news-filter-enter">
-            <button
-              type="button"
-              className="news-lead group"
-              style={{ '--news-accent': lead.accent } as CSSProperties}
-              onClick={() => openPreview(lead)}
-            >
+            <article className="news-lead group" style={{ '--news-accent': leadSource?.mark } as CSSProperties}>
               <div className="news-lead-header">
-                {leadSource?.logo && (
-                  <span className="news-lead-logo">
-                    <img
-                      src={`${assetBase}${leadSource.logo}`}
-                      alt=""
-                      className={leadSource.monochrome ? 'is-monochrome' : ''}
-                    />
-                  </span>
-                )}
+                <span className="news-lead-logo">
+                  <img
+                    src={assetUrl(leadSource!.logo)}
+                    alt=""
+                    className={leadSource!.monochrome ? 'is-monochrome' : ''}
+                  />
+                </span>
                 <div>
-                  <p style={{ color: lead.accent }}>{leadSource?.displayName}</p>
+                  <p style={{ color: leadSource!.accent }}>{leadSource!.displayName}</p>
                   <time dateTime={lead.publishedAt}>{lead.publishedAt.replaceAll('-', '.')}</time>
                 </div>
-                <ArrowUpRight size={17} />
+                <ArrowUpRight size={17} aria-hidden="true" />
               </div>
               <div className="news-lead-copy">
                 <div>
-                  <p className="news-source-label" style={{ color: lead.accent }}>{lead.signal} · {lead.category}</p>
-                  <h3>{lead.title}</h3>
+                  <p className="news-source-label" style={{ color: leadSource!.accent }}>
+                    {lead.signal} · {lead.category}
+                  </p>
+                  <h3>
+                    <button type="button" className="card-trigger" onClick={() => openPreview(lead)}>
+                      {lead.title}
+                    </button>
+                  </h3>
                   <p>{lead.summary}</p>
                 </div>
                 <div className="news-lead-footer">
                   <span>LEAD STORY</span>
-                  <span className="external-read">요약 보기 <Eye size={14} /></span>
+                  <span className="external-read">요약 보기 <Eye size={14} aria-hidden="true" /></span>
                 </div>
               </div>
-            </button>
+            </article>
 
             <div className="news-feed">
-              {feed.length > 0 ? feed.map((item, index) => (
-                <button key={item.id} type="button" className="news-feed-row group" onClick={() => openPreview(item)}>
-                  <div className="news-feed-order">{String(index + 2).padStart(2, '0')}</div>
-                  <div className="min-w-0">
-                    <div className="news-feed-meta">
-                      <span style={{ color: item.accent }}>{getSourceMeta(item.source).displayName}</span>
-                      <span>{item.signal}</span>
-                      <time dateTime={item.publishedAt}>{item.publishedAt.slice(5).replace('-', '.')}</time>
+              {feed.length > 0 ? feed.map((item, index) => {
+                const meta = getSource(item.source);
+                return (
+                  <article key={item.id} className="news-feed-row group">
+                    <div className="news-feed-order" aria-hidden="true">{String(index + 2).padStart(2, '0')}</div>
+                    <div className="min-w-0">
+                      <div className="news-feed-meta">
+                        <span style={{ color: meta.accent }}>{meta.displayName}</span>
+                        <span>{item.signal}</span>
+                        <time dateTime={item.publishedAt}>{item.publishedAt.slice(5).replace('-', '.')}</time>
+                      </div>
+                      <h3>
+                        <button type="button" className="card-trigger" onClick={() => openPreview(item)}>
+                          {item.title}
+                        </button>
+                      </h3>
+                      <p>{item.summary}</p>
                     </div>
-                    <h3>{item.title}</h3>
-                    <p>{item.summary}</p>
-                  </div>
-                  <Eye className="news-feed-arrow" size={16} />
-                </button>
-              )) : (
+                    <Eye className="news-feed-arrow" size={16} aria-hidden="true" />
+                  </article>
+                );
+              }) : (
                 <div className="news-feed-empty">해당 출처의 추가 소식을 준비하고 있습니다.</div>
               )}
             </div>
@@ -161,7 +171,7 @@ export function GlobalNewsDesk({ showInternalLink = true, kind }: GlobalNewsDesk
 
         <div className="news-desk-footer">
           <p>Anthropic, OpenAI, Google의 공식 발표를 직접 확인하고 선별해 요약합니다.</p>
-          {showInternalLink && <Link to="/news">AI 뉴스 전체 보기 <ArrowUpRight size={13} /></Link>}
+          {showInternalLink && <Link to="/news">AI 뉴스 전체 보기 <ArrowUpRight size={13} aria-hidden="true" /></Link>}
         </div>
       </div>
       <NewsPreviewModal item={selectedNews} onClose={() => setSelectedNews(null)} />

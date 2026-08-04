@@ -1,7 +1,8 @@
-import { useState } from 'react';
+import { useState, type CSSProperties } from 'react';
 import { ArrowUpRight, Eye } from 'lucide-react';
-import { Link } from 'react-router-dom';
-import { modelUpdates, type ModelUpdate } from '../data/modelUpdates';
+import { Link } from 'react-router';
+import { modelUpdates, type ModelUpdate } from '../data/news';
+import { assetUrl, getSource } from '../data/sources';
 import { NewsPreviewModal, type NewsPreviewItem } from './NewsPreviewModal';
 
 interface ModelRadarProps {
@@ -12,22 +13,22 @@ interface ModelRadarProps {
 export function ModelRadar({ limit, showNewsLink = false }: ModelRadarProps) {
   const [selectedModel, setSelectedModel] = useState<NewsPreviewItem | null>(null);
   const items = typeof limit === 'number' ? modelUpdates.slice(0, limit) : modelUpdates;
-  const assetBase = import.meta.env.BASE_URL;
+
   const openPreview = (item: ModelUpdate) => {
     setSelectedModel({
       id: item.id,
       source: item.family,
       publishedAt: item.publishedAt,
-      title: item.model,
-      summary: item.summary,
+      title: item.name,
+      summary: item.headline,
       signal: 'MODEL RADAR',
       category: `${item.kind} · ${item.status}`,
       contextLabel: 'USE CASE',
       contextValue: item.useCase,
       url: item.url,
       accent: item.accent,
-      logo: `${assetBase}${item.modelLogo}`,
-      logoTone: item.logoTone,
+      logo: assetUrl(item.logo),
+      logoTone: item.tone,
     });
   };
 
@@ -40,44 +41,45 @@ export function ModelRadar({ limit, showNewsLink = false }: ModelRadarProps) {
             <h2>주요 AI 모델 업데이트</h2>
             <p>새 모델이 무엇을 바꾸었는지 핵심만 빠르게 확인합니다.</p>
           </div>
-          {showNewsLink && <Link to="/news">모델 뉴스 전체 보기 <ArrowUpRight size={13} /></Link>}
+          {showNewsLink && <Link to="/news">모델 뉴스 전체 보기 <ArrowUpRight size={13} aria-hidden="true" /></Link>}
         </div>
 
         <div className="model-radar-grid">
           {items.map((item, index) => (
-            <button
-              type="button"
+            <article
               key={item.id}
               className="model-radar-item"
-              style={{ '--model-accent': item.accent } as React.CSSProperties}
-              onClick={() => openPreview(item)}
+              style={{ '--model-accent': getSource(item.source).mark } as CSSProperties}
             >
               <div className="model-radar-top">
                 <span
                   className="model-company-logo"
-                  role="img"
-                  aria-label={`${item.model} 로고`}
-                  style={{ '--model-logo': `url("${assetBase}${item.modelLogo}")` } as React.CSSProperties}
+                  style={{ '--model-logo': `url("${assetUrl(item.logo)}")` } as CSSProperties}
+                  aria-hidden="true"
                 >
-                  <span className={`model-logo-${item.logoTone}`} aria-hidden="true" />
+                  <span className={`model-logo-${item.tone}`} />
                 </span>
                 <div>
-                  <p className={`model-family-name model-family-${item.logoTone}`}>{item.family}</p>
+                  <p className={`model-family-name model-family-${item.tone}`}>{item.family}</p>
                   <time dateTime={item.publishedAt}>{item.publishedAt.replaceAll('-', '.')}</time>
                 </div>
-                <span className="model-order">{String(index + 1).padStart(2, '0')}</span>
+                <span className="model-order" aria-hidden="true">{String(index + 1).padStart(2, '0')}</span>
               </div>
               <div className="model-radar-body">
                 <p>{item.kind} · {item.status}</p>
-                <h3>{item.model}</h3>
+                <h3>
+                  <button type="button" className="card-trigger" onClick={() => openPreview(item)}>
+                    {item.name}
+                  </button>
+                </h3>
                 <div className="model-use-case"><b>활용</b><span>{item.useCase}</span></div>
-                <span>{item.summary}</span>
+                <span>{item.headline}</span>
               </div>
               <div className="model-radar-foot">
-                <b>{item.company}</b>
-                <span>요약 보기 <Eye size={13} /></span>
+                <b>{getSource(item.source).fullName}</b>
+                <span>요약 보기 <Eye size={13} aria-hidden="true" /></span>
               </div>
-            </button>
+            </article>
           ))}
         </div>
       </div>

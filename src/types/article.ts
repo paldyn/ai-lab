@@ -13,7 +13,10 @@ export interface Category {
   name: string;
   shortName: string;
   description: string;
+  /** 비텍스트 요소용 원본 색. */
   accent: string;
+  /** 글자색으로 쓸 때의 테마별 AA 대응 색(CSS 변수). */
+  accentText: string;
   index: string;
 }
 

@@ -4,29 +4,37 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="theme-color" content="#ffffff" />
-    <meta
-      name="description"
-      content="글로벌 AI 뉴스와 모델, 수학, 논문, 실험을 탐구하는 Paldyn AI Lab"
-    />
-    <meta property="og:title" content="Paldyn AI Lab" />
-    <meta
-      property="og:description"
-      content="AI의 변화를 읽고 모델, 수학, 논문과 실험을 직접 탐구합니다."
-    />
-    <meta property="og:type" content="website" />
     <link rel="icon" type="image/png" href="%BASE_URL%assets/logo-symbol-light.png" />
-    <title>Paldyn AI Lab</title>
+
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/gh/wanteddev/wanted-sans@v1.0.3/packages/wanted-sans/fonts/webfontaggregated/variable/WantedSansVariable.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap"
+    />
+
     <script>
       (function () {
-        var saved = localStorage.getItem('paldyn-ai-theme');
-        var theme = saved || 'light';
+        var theme = 'light';
+        try {
+          theme = localStorage.getItem('paldyn-ai-theme') || 'light';
+        } catch (error) {
+          // 저장소 접근이 막힌 환경에서는 기본값을 씁니다.
+        }
         document.documentElement.dataset.theme = theme;
         document.documentElement.style.colorScheme = theme;
+        var themeColor = document.querySelector('meta[name="theme-color"]');
+        if (themeColor) themeColor.setAttribute('content', theme === 'dark' ? '#000000' : '#ffffff');
       })();
     </script>
   </head>
   <body>
     <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
+    <script type="module" src="/src/entry-client.tsx"></script>
   </body>
 </html>

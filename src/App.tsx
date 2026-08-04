@@ -1,4 +1,4 @@
-import { Redirect, Route, Switch } from 'react-router-dom';
+import { Navigate, Route, Routes } from 'react-router';
 import { Layout } from './components/Layout';
 import { ArticlePage } from './pages/ArticlePage';
 import { HomePage } from './pages/HomePage';
@@ -9,18 +9,18 @@ import { ResearchPage } from './pages/ResearchPage';
 export default function App() {
   return (
     <Layout>
-      <Switch>
-        <Route exact path="/"><HomePage /></Route>
-        <Route exact path="/news"><NewsPage /></Route>
-        <Route exact path="/research"><ResearchPage /></Route>
-        <Route exact path="/knowledge"><Redirect to="/research" /></Route>
-        <Route path="/articles/:slug"><ArticlePage /></Route>
-        <Route path="/category/ai-news"><Redirect to="/news" /></Route>
-        <Route path="/category/:categoryId"><Redirect to="/research" /></Route>
-        <Route path="/about"><Redirect to="/" /></Route>
-        <Route path="/404"><NotFoundPage /></Route>
-        <Route><NotFoundPage /></Route>
-      </Switch>
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/news" element={<NewsPage />} />
+        <Route path="/research" element={<ResearchPage />} />
+        <Route path="/knowledge" element={<Navigate to="/research" replace />} />
+        <Route path="/articles/:slug" element={<ArticlePage />} />
+        <Route path="/category/ai-news" element={<Navigate to="/news" replace />} />
+        <Route path="/category/:categoryId" element={<Navigate to="/research" replace />} />
+        <Route path="/about" element={<Navigate to="/" replace />} />
+        <Route path="/404" element={<NotFoundPage />} />
+        <Route path="*" element={<NotFoundPage />} />
+      </Routes>
     </Layout>
   );
 }

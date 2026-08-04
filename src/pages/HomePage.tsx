@@ -1,64 +1,85 @@
-import { useState } from 'react';
+import { useState, type CSSProperties } from 'react';
 import { ArrowRight, Eye } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router';
 import { ArticleCard } from '../components/ArticleCard';
 import { ModelRadar } from '../components/ModelRadar';
 import { NewsPreviewModal, type NewsPreviewItem } from '../components/NewsPreviewModal';
+import { Seo } from '../components/Seo';
 import { articles } from '../data/articles';
-import { globalNews, type NewsSource } from '../data/globalNews';
+import { globalNewsUpdatedAt, modelUpdates, newsBySource, newsItems } from '../data/news';
+import { assetUrl, getSource, sourceList } from '../data/sources';
 
-const companies: Array<{ source: NewsSource; name: string; accent: string; logo: string }> = [
-  { source: 'Anthropic', name: 'Anthropic', accent: '#d97757', logo: 'assets/anthropic.svg' },
-  { source: 'OpenAI', name: 'OpenAI', accent: 'var(--openai-accent)', logo: 'assets/openai.svg' },
-  { source: 'Google DeepMind', name: 'Google', accent: '#4285f4', logo: 'assets/google.svg' },
-];
+const pad = (value: number) => String(value).padStart(2, '0');
 
 export function HomePage() {
   const [selectedNews, setSelectedNews] = useState<NewsPreviewItem | null>(null);
   const latestArticles = articles.filter((article) => article.categoryId !== 'ai-news').slice(0, 4);
-  const assetBase = import.meta.env.BASE_URL;
+  const latestModel = modelUpdates[0];
+  const latestModelSource = latestModel ? getSource(latestModel.source) : null;
 
   return (
     <>
-      <section className="home-banner">
-        <div className="site-wrap home-banner-inner">
-          <div className="home-banner-copy">
-            <p><span /> PALDYN AI LAB</p>
+      <Seo
+        title="Paldyn AI Lab"
+        description="글로벌 AI 뉴스와 모델, 수학, 논문, 실험을 한곳에서 탐구하는 Paldyn AI Lab입니다."
+        path="/"
+      />
+
+      <section className="home-hero">
+        <div className="home-hero-field" aria-hidden="true">
+          <div className="home-hero-grid" />
+          <div className="home-hero-sweep" />
+        </div>
+
+        <div className="site-wrap home-hero-inner">
+          <div className="home-hero-copy">
+            <p className="home-hero-kicker"><span aria-hidden="true" />PALDYN AI LAB</p>
             <h1>AI의 흐름을 읽고,<br />지능을 탐구합니다.</h1>
-          </div>
-          <div className="home-banner-summary">
-            <p>새로운 모델과 기업의 움직임부터 논문과 수학까지, AI를 이해하는 데 필요한 맥락을 선명하게 연결합니다.</p>
-            <div className="home-banner-actions">
-              <Link to="/news">AI 뉴스 <ArrowRight size={14} /></Link>
-              <Link to="/research">리서치 노트 <ArrowRight size={14} /></Link>
+            <p className="home-hero-lede">
+              새로운 모델과 기업의 움직임부터 논문과 수학까지, AI를 이해하는 데 필요한 맥락을 선명하게 연결합니다.
+            </p>
+            <div className="home-hero-actions">
+              <Link to="/news" className="hero-action is-primary">
+                AI 뉴스 <ArrowRight size={14} aria-hidden="true" />
+              </Link>
+              <Link to="/research" className="hero-action">
+                리서치 노트 <ArrowRight size={14} aria-hidden="true" />
+              </Link>
             </div>
           </div>
-          <div className="home-banner-ai-wave" aria-hidden="true">
-            <svg viewBox="0 0 380 180" preserveAspectRatio="none">
-              <g className="ai-wave-base">
-                <path d="M0 90 C38 90 50 88 72 70 S108 34 132 68 S164 146 190 112 S222 44 248 72 S286 104 316 92 S352 90 380 90" />
-                <path d="M0 110 C42 110 58 112 84 96 S118 58 144 86 S176 132 202 104 S234 62 260 88 S304 112 338 104 S364 102 380 102" />
-                <path d="M0 70 C36 70 54 68 78 82 S112 116 138 94 S168 50 194 76 S226 122 252 98 S292 68 320 76 S354 78 380 78" />
-              </g>
-              <g className="ai-wave-flow">
-                <path pathLength="1" d="M0 90 C38 90 50 88 72 70 S108 34 132 68 S164 146 190 112 S222 44 248 72 S286 104 316 92 S352 90 380 90" />
-                <path pathLength="1" d="M0 110 C42 110 58 112 84 96 S118 58 144 86 S176 132 202 104 S234 62 260 88 S304 112 338 104 S364 102 380 102" />
-                <path pathLength="1" d="M0 70 C36 70 54 68 78 82 S112 116 138 94 S168 50 194 76 S226 122 252 98 S292 68 320 76 S354 78 380 78" />
-              </g>
-              <g className="ai-wave-nodes">
-                <rect x="70" y="68" width="4" height="4" />
-                <rect x="130" y="66" width="4" height="4" />
-                <rect x="188" y="110" width="4" height="4" />
-                <rect x="246" y="70" width="4" height="4" />
-                <rect x="314" y="90" width="4" height="4" />
-              </g>
-            </svg>
-            <div className="ai-wave-index">
-              <span>MODELS</span>
-              <span>RESEARCH</span>
-              <span>MATHEMATICS</span>
-            </div>
-          </div>
+
+          {latestModel && latestModelSource && (
+            <aside
+              className="home-hero-signal"
+              aria-label="최신 모델 발표 요약"
+              style={{ '--signal-accent': latestModelSource.mark } as CSSProperties}
+            >
+              <p className="home-hero-signal-label">
+                <span className="news-live-dot" aria-hidden="true" />
+                LATEST RELEASE
+              </p>
+              <p className="home-hero-model">{latestModel.name}</p>
+              <p className="home-hero-model-meta">
+                {latestModelSource.fullName}
+                <span aria-hidden="true"> · </span>
+                <time dateTime={latestModel.publishedAt}>{latestModel.publishedAt.replaceAll('-', '.')}</time>
+              </p>
+              <dl className="home-hero-stats">
+                <div>
+                  <dt>공식 출처</dt>
+                  <dd>{pad(sourceList.length)}</dd>
+                </div>
+                <div>
+                  <dt>추적 중인 발표</dt>
+                  <dd>{pad(newsItems.length)}</dd>
+                </div>
+                <div>
+                  <dt>최근 갱신</dt>
+                  <dd>{globalNewsUpdatedAt.replaceAll('-', '.')}</dd>
+                </div>
+              </dl>
+            </aside>
+          )}
         </div>
       </section>
 
@@ -68,38 +89,57 @@ export function HomePage() {
         <div className="site-wrap">
           <div className="simple-section-heading">
             <div><p className="section-kicker">COMPANY UPDATES</p><h2>글로벌 AI 기업 소식</h2></div>
-            <Link to="/news">뉴스 전체 보기 <ArrowRight size={13} /></Link>
+            <Link to="/news">뉴스 전체 보기 <ArrowRight size={13} aria-hidden="true" /></Link>
           </div>
 
           <div className="company-news-grid">
-            {companies.map((company) => {
-              const items = globalNews.filter((item) => item.source === company.source).slice(0, 2);
+            {sourceList.map((company) => {
+              const all = newsBySource(company.id);
+              const items = all.slice(0, 2);
               return (
-                <section key={company.source} className="company-news-column" style={{ '--company-accent': company.accent } as React.CSSProperties}>
+                <section
+                  key={company.id}
+                  className="company-news-column"
+                  style={{ '--company-accent': company.mark } as CSSProperties}
+                  aria-label={`${company.fullName} 소식`}
+                >
                   <header>
-                    <span className="company-logo"><img src={`${assetBase}${company.logo}`} alt="" /></span>
-                    <h3>{company.name}</h3>
-                    <b>{items.length} UPDATES</b>
+                    <span className="company-logo">
+                      {/* 로고 칩은 항상 흰 배경이라 테마별 반전이 필요 없습니다. */}
+                      <img src={assetUrl(company.logo)} alt="" />
+                    </span>
+                    <h3>{company.displayName}</h3>
+                    <b>{all.length} UPDATES</b>
                   </header>
                   <div>
                     {items.map((item) => (
-                      <button
-                        key={item.id}
-                        type="button"
-                        className="company-news-item"
-                        onClick={() => setSelectedNews({
-                          ...item,
-                          source: company.name,
-                          logo: `${assetBase}${company.logo}`,
-                          monochrome: company.source !== 'Google DeepMind',
-                        })}
-                      >
+                      <article key={item.id} className="company-news-item">
                         <div>
-                          <p>{item.signal} · {item.publishedAt.replaceAll('-', '.')}</p>
-                          <h4>{item.title}</h4>
+                          <p>{item.signal}<span aria-hidden="true"> · </span>{item.publishedAt.replaceAll('-', '.')}</p>
+                          <h4>
+                            <button
+                              type="button"
+                              className="card-trigger"
+                              onClick={() => setSelectedNews({
+                                id: item.id,
+                                source: company.displayName,
+                                publishedAt: item.publishedAt,
+                                title: item.title,
+                                summary: item.summary,
+                                signal: item.signal,
+                                category: item.category,
+                                url: item.url,
+                                accent: company.accent,
+                                logo: assetUrl(company.logo),
+                                monochrome: company.monochrome,
+                              })}
+                            >
+                              {item.title}
+                            </button>
+                          </h4>
                         </div>
-                        <Eye size={15} />
-                      </button>
+                        <Eye size={15} aria-hidden="true" />
+                      </article>
                     ))}
                   </div>
                 </section>
@@ -112,7 +152,7 @@ export function HomePage() {
       <section className="site-wrap home-research-section">
         <div className="simple-section-heading">
           <div><p className="section-kicker">PALDYN RESEARCH</p><h2>새로운 리서치 노트</h2></div>
-          <Link to="/research">전체 보기 <ArrowRight size={13} /></Link>
+          <Link to="/research">전체 보기 <ArrowRight size={13} aria-hidden="true" /></Link>
         </div>
         <div>
           {latestArticles.map((article) => <ArticleCard key={article.slug} article={article} variant="row" />)}
