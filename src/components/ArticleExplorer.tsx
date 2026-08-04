@@ -116,7 +116,12 @@ export function ArticleExplorer({
       )}
 
       <div className="explorer-bar">
-        <p className="explorer-count">RESULT / {String(filteredArticles.length).padStart(2, '0')}</p>
+        {/*
+          두 자리로 맞추지 않습니다. 실제 결과는 세 자리까지 가서 패딩이 화면을
+          바꾸는 경우가 0건일 때뿐인데, 그때 '00'으로 보입니다. 바로 아래
+          '더 보기'의 `24 / 162`도 패딩 없이 찍고 있어 표기가 어긋나기도 했습니다.
+        */}
+        <p className="explorer-count">RESULT / {filteredArticles.length}</p>
         {tagCounts.length > 0 && <TagFilter tags={tagCounts} value={tag} onChange={setTag} />}
       </div>
 
