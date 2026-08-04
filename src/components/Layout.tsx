@@ -2,6 +2,7 @@ import { useEffect, useState, type ReactNode } from 'react';
 import { Link, NavLink, useLocation } from 'react-router';
 import { Menu, Moon, Search, Sun, X } from 'lucide-react';
 import { assetUrl } from '../data/sources';
+import { SearchOverlay } from './SearchOverlay';
 
 const THEME_STORAGE_KEY = 'paldyn-ai-theme';
 const DARK_QUERY = '(prefers-color-scheme: dark)';
@@ -50,8 +51,15 @@ function toggleTheme() {
   }
 }
 
+/** 입력 중에는 단축키를 가로채지 않습니다. */
+function isTypingTarget(target: EventTarget | null): boolean {
+  if (!(target instanceof HTMLElement)) return false;
+  return target.isContentEditable || ['INPUT', 'TEXTAREA', 'SELECT'].includes(target.tagName);
+}
+
 export function Layout({ children }: { children: ReactNode }) {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [searchOpen, setSearchOpen] = useState(false);
   const location = useLocation();
 
   // 경로가 바뀌면 모바일 메뉴를 닫습니다. effect에서 setState하면 렌더가 한 번 더
@@ -61,6 +69,20 @@ export function Layout({ children }: { children: ReactNode }) {
     setRenderedPath(location.pathname);
     setMenuOpen(false);
   }
+
+  // '/' 로 검색을 엽니다. 글 목록이 긴 사이트에서 흔한 규약입니다.
+  useEffect(() => {
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key !== '/' || event.metaKey || event.ctrlKey || event.altKey) return;
+      if (isTypingTarget(event.target)) return;
+
+      event.preventDefault();
+      setSearchOpen(true);
+    };
+
+    document.addEventListener('keydown', onKeyDown);
+    return () => document.removeEventListener('keydown', onKeyDown);
+  }, []);
 
   // 저장된 선택이 없는 동안에는 OS 테마 변경을 실시간으로 따라갑니다.
   useEffect(() => {
@@ -107,9 +129,15 @@ export function Layout({ children }: { children: ReactNode }) {
           </nav>
 
           <div className="flex items-center gap-1.5">
-            <Link to="/concepts" className="icon-button" aria-label="글 검색으로 이동" title="검색">
+            <button
+              type="button"
+              className="icon-button"
+              onClick={() => setSearchOpen(true)}
+              aria-label="글 검색 열기"
+              title="검색 ( / )"
+            >
               <Search size={17} strokeWidth={1.7} aria-hidden="true" />
-            </Link>
+            </button>
             <button type="button" className="icon-button" onClick={toggleTheme} aria-label="밝은 테마와 어두운 테마 전환" title="테마 전환">
               <Sun size={17} strokeWidth={1.7} className="theme-icon theme-icon-dark" aria-hidden="true" />
               <Moon size={17} strokeWidth={1.7} className="theme-icon theme-icon-light" aria-hidden="true" />
@@ -161,6 +189,8 @@ export function Layout({ children }: { children: ReactNode }) {
           </div>
         </div>
       </footer>
+
+      <SearchOverlay open={searchOpen} onClose={() => setSearchOpen(false)} />
     </div>
   );
 }
