@@ -4,8 +4,7 @@ import { GlobalNewsDesk } from '../components/GlobalNewsDesk';
 import { PageHeader } from '../components/PageHeader';
 import { ModelRadar } from '../components/ModelRadar';
 import { Seo } from '../components/Seo';
-import { globalNewsUpdatedAt, newsItems } from '../data/news';
-import { sourceList } from '../data/sources';
+import { newsItems, type GlobalNewsKind } from '../data/news';
 
 type NewsView = 'all' | 'models' | 'companies' | 'industry';
 
@@ -16,8 +15,25 @@ const newsViews: Array<{ id: NewsView; label: string }> = [
   { id: 'industry', label: '산업·정책' },
 ];
 
+/**
+ * 지표는 데이터에서 뽑습니다. 손으로 관리하던 globalNewsUpdatedAt은 지금도
+ * 실제 최신 발표일(07.30)과 어긋나 있어(08.02) 머리말에서는 쓰지 않습니다.
+ * 분류는 탭과 같은 이름을 씁니다.
+ */
+function buildNewsStats() {
+  const newest = newsItems[0]?.publishedAt;
+  const countOf = (kind: GlobalNewsKind) => newsItems.filter((item) => item.kind === kind).length;
+
+  return [
+    ...(newest ? [{ label: '최신 발표', value: newest.slice(5).replace('-', '.') }] : []),
+    { label: 'AI 모델', value: String(countOf('model')).padStart(2, '0') },
+    { label: '기업 소식', value: String(countOf('company')).padStart(2, '0') },
+  ];
+}
+
 export function NewsPage() {
   const [view, setView] = useState<NewsView>('all');
+  const newsStats = buildNewsStats();
   const tabRefs = useRef<Array<HTMLButtonElement | null>>([]);
 
   // 탭 위젯 키보드 규약: 좌우로 이동, Home/End로 양 끝. 포커스가 이동하면 선택도 함께 바뀝니다.
@@ -48,11 +64,7 @@ export function NewsPage() {
         kicker="PALDYN AI NEWS"
         title="AI 뉴스"
         description="공식 발표를 빠르게 확인하고, 모델과 기업의 변화가 무엇을 의미하는지 함께 읽습니다."
-        stats={[
-          { label: '공식 출처', value: String(sourceList.length).padStart(2, '0') },
-          { label: '추적 중', value: `${newsItems.length}건` },
-          { label: '갱신', value: globalNewsUpdatedAt.slice(5).replace('-', '.') },
-        ]}
+        stats={newsStats}
       >
         <div className="news-view-tabs" role="tablist" aria-label="AI 뉴스 분류">
           {newsViews.map((item, index) => (
