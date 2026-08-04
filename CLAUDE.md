@@ -75,10 +75,27 @@ draft: false             # true면 목록·프리렌더에서 빠진다
 판단을 쓴다. 둘을 섞지 않는다. "~하는 신호다", "~가 기준이 되고 있다" 같은 문장이
 `summary`에 있으면 그건 `commentary`로 갈 문장이다.
 
-`kind`는 `model` / `company` 둘이고 뉴스 페이지의 탭과 대응한다. 규제·정책·투자·
-인프라도 전부 `company`다 — 예전에는 `industry`로 갈랐는데 "규제 대응도 결국 그
-회사가 무엇을 하는가"라 경계가 매번 애매했고, 2026-08-04에 127건을 합쳤다.
-모델 발표는 `model` 블록을 함께 채우면 Model Radar에도 나온다.
+**`title`은 한글로 옮겨 싣는다.** 목록에서 요약은 한글인데 제목만 영문이면 읽는
+흐름이 끊긴다. 모델명·제품명·회사명은 원문 그대로 둔다. 2026-08-05에 387건을
+전부 옮겼고, 제목에 한글이 한 글자도 없으면 `npm test`가 잡는다.
+
+`kind`는 `model` / `company` 둘이고 뉴스 페이지의 탭과 대응한다. 가르는 질문은
+**"이 발표로 쓸 수 있는 모델이 새로 생겼거나 바뀌었는가"** 하나다. 벤치마크 공개,
+연구 성과, 시스템 카드, 사내 전용 모델은 전부 `company`다 — 제목에 모델 이름이
+있어도 그렇다. 규제·정책·투자·인프라도 `company`다. 예전에는 `industry`로 갈랐는데
+"규제 대응도 결국 그 회사가 무엇을 하는가"라 경계가 매번 애매했고, 2026-08-04에
+127건을 합쳤다. 모델 발표는 `model` 블록을 함께 채우면 Model Radar에도 나온다.
+
+`category`는 탭 안에서 한 번 더 거르는 값이고 **`kind`마다 쓰는 집합이 다르다.**
+
+| kind | 값 |
+| --- | --- |
+| `company` | `Product` `Research` `Safety` `Corporate` `Infrastructure` |
+| `model` | `Frontier` `Multimodal` `Domain` `Open` |
+
+어긋나면 그 항목은 어느 칩으로도 안 걸려 오류 없이 화면에서 사라진다.
+`src/data/news.test.ts`가 이것과 제목의 한글을 검사한다. 화면에 쓰는 이름은
+`src/data/news.ts`의 `categoryLabel`이 들고 있다 — 데이터에는 영문 키를 둔다.
 
 매일 20:00 UTC(05:00 KST)에 수집 루틴이 네 출처(openai.com, www.anthropic.com,
 deepmind.google, blog.google)를 읽고 이 파일을 갱신한다. 오래된 항목을 지우지
