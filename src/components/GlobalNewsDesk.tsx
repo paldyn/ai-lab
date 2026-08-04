@@ -7,6 +7,9 @@ import { NewsPreviewModal, type NewsPreviewItem } from './NewsPreviewModal';
 
 type SourceFilter = NewsSource | 'All';
 
+/** 리드 아래 함께 보여 줄 소식 수. */
+const FEED_LIMIT = 3;
+
 interface GlobalNewsDeskProps {
   showInternalLink?: boolean;
   kind?: GlobalNewsKind;
@@ -34,9 +37,11 @@ export function GlobalNewsDesk({ showInternalLink = true, kind }: GlobalNewsDesk
   );
 
   const lead = items[0];
-  const feed = items.slice(1);
+  // 리드 아래 목록은 세 건으로 고정합니다. 더 늘리면 오른쪽 열만 길어져
+  // 리드 카드와 높이가 크게 어긋납니다.
+  const feed = items.slice(1, 1 + FEED_LIMIT);
   const leadSource = lead ? getSource(lead.source) : null;
-  const heading = kind === 'company' ? 'AI 기업 소식' : '오늘의 AI 흐름';
+  const heading = kind === 'company' ? 'AI 기업 소식' : '주목할 AI 흐름';
   const description =
     kind === 'company'
       ? '제품과 조직의 변화가 실제 AI 사용 방식에 어떤 영향을 주는지 살펴봅니다.'

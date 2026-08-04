@@ -2833,14 +2833,20 @@ input:focus-visible {
   font-size: 11px;
 }
 
+/*
+ * 탭 자체에 선을 두면 30px 아래 머리말 경계선과 겹쳐 두 줄로 보입니다.
+ * 선은 머리말 것 하나만 쓰고, 탭이 그 위에 바로 앉도록 아래 여백을 없앱니다.
+ */
 .news-view-tabs {
-  margin-top: 30px;
   display: flex;
   gap: 28px;
-  margin-top: 38px;
+  margin-top: 34px;
   overflow-x: auto;
-  border-bottom: 1px solid var(--border);
   scrollbar-width: thin;
+}
+
+.page-header-inner:has(.news-view-tabs) {
+  padding-bottom: 0;
 }
 
 .news-view-tabs button {
