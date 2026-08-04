@@ -9,11 +9,17 @@ import { articles } from '../data/articles';
 import { newsBySource, newsItems } from '../data/news';
 import { categoryById } from '../data/categories';
 import { assetUrl, sourceList } from '../data/sources';
+import type { SectionId } from '../types/article';
 
 const FEED_LIMIT = 4;
 
+/** 네비게이션과 같은 순서로 세웁니다. 화면마다 순서가 다르면 읽는 사람이 다시 찾습니다. */
+const SECTION_ORDER: SectionId[] = ['news', 'learn', 'research'];
+const SECTION_LABEL: Record<SectionId, string> = { news: '뉴스', learn: '학습', research: '리서치' };
+
 interface FeedItem {
   key: string;
+  section: SectionId;
   label: string;
   accentText: string;
   title: string;
@@ -26,12 +32,13 @@ interface FeedItem {
  * 정적 사이트라 new Date()를 쓰면 빌드 시각과 접속 시각이 갈려
  * 프리렌더 결과와 하이드레이션이 어긋납니다.
  */
-function recentUpdates(): { items: FeedItem[]; total: number; date: string } {
+function recentUpdates(): { items: FeedItem[]; counts: Array<{ label: string; count: number }> } {
   const all: FeedItem[] = [
     ...articles.map((article) => {
       const category = categoryById[article.categoryId];
       return {
         key: `a-${article.slug}`,
+        section: category.section,
         label: category.name,
         accentText: category.accentText,
         title: article.title,
@@ -41,23 +48,36 @@ function recentUpdates(): { items: FeedItem[]; total: number; date: string } {
     }),
     ...newsItems.map((item) => ({
       key: `n-${item.id}`,
-      label: '뉴스',
+      section: 'news' as SectionId,
+      label: SECTION_LABEL.news,
       accentText: categoryById['ai-news'].accentText,
       title: item.title,
       date: item.publishedAt,
     })),
   ].sort((a, b) => b.date.localeCompare(a.date));
 
-  if (all.length === 0) return { items: [], total: 0, date: '' };
+  if (all.length === 0) return { items: [], counts: [] };
 
   // 가장 최근 발행일 하루치. 루틴이 매일 돌면 이 날짜가 곧 오늘이 됩니다.
-  const date = all[0].date;
-  const sameDay = all.filter((item) => item.date === date);
+  // new Date()를 쓰면 프리렌더 시각과 접속 시각이 갈려 하이드레이션이 어긋납니다.
+  const today = all[0].date;
+  const sameDay = all.filter((item) => item.date === today);
+
+  const bySection = (a: FeedItem, b: FeedItem) =>
+    SECTION_ORDER.indexOf(a.section) - SECTION_ORDER.indexOf(b.section) || b.date.localeCompare(a.date);
 
   // 그날 올라온 게 적으면 최신순으로 채워 패널이 비어 보이지 않게 합니다.
-  const items = (sameDay.length >= FEED_LIMIT ? sameDay : all).slice(0, FEED_LIMIT);
+  const items = (sameDay.length >= FEED_LIMIT ? sameDay : all).slice(0, FEED_LIMIT).sort(bySection);
 
-  return { items, total: sameDay.length, date };
+  const counts = [
+    { label: '전체', count: sameDay.length },
+    ...SECTION_ORDER.map((section) => ({
+      label: SECTION_LABEL[section],
+      count: sameDay.filter((item) => item.section === section).length,
+    })),
+  ];
+
+  return { items, counts };
 }
 
 export function HomePage() {
@@ -66,12 +86,6 @@ export function HomePage() {
   const latestArticles = learnArticles.slice(0, 4);
 
   const recent = recentUpdates();
-
-  const sectionCounts = [
-    { label: '학습', count: learnArticles.length },
-    { label: '리서치', count: articles.filter((a) => categoryById[a.categoryId].section === 'research').length },
-    { label: '뉴스', count: newsItems.length },
-  ];
 
   return (
     <>
@@ -108,7 +122,7 @@ export function HomePage() {
             <aside className="home-hero-signal" aria-label="최근 업데이트">
               <p className="home-hero-signal-label">
                 <span className="news-live-dot" aria-hidden="true" />
-                RECENT UPDATES
+                TODAY&apos;S UPDATES
               </p>
 
               <ul className="home-hero-feed">
@@ -132,14 +146,10 @@ export function HomePage() {
               </ul>
 
               <dl className="home-hero-stats">
-                <div>
-                  <dt>{recent.date.slice(5).replace('-', '.')}</dt>
-                  <dd>{recent.total}</dd>
-                </div>
-                {sectionCounts.map((section) => (
-                  <div key={section.label}>
-                    <dt>{section.label}</dt>
-                    <dd>{section.count}</dd>
+                {recent.counts.map((entry) => (
+                  <div key={entry.label}>
+                    <dt>{entry.label}</dt>
+                    <dd>{entry.count}</dd>
                   </div>
                 ))}
               </dl>

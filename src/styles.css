@@ -2414,6 +2414,8 @@ input:focus-visible {
 
 .home-hero-stats > div {
   display: flex;
+  /* 숫자를 항목 이름 폭의 가운데에 세웁니다. */
+  align-items: center;
   flex-direction: column;
   gap: 4px;
 }
