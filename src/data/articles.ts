@@ -24,7 +24,14 @@ export const articles: Article[] = articleIndex.map((entry) => {
   // frontmatter의 order가 우선이고, 없으면 커리큘럼 목록의 위치를 씁니다.
   const order = entry.order ?? curriculumOrder(entry.slug);
 
-  return { ...entry, categoryId: entry.categoryId, level: entry.level, ...(order ? { order } : {}) };
+  // order가 0이면 falsy라 `order ? …`로 거르면 커리큘럼 첫 글이 통째로 빠져
+  // 목록 맨 뒤로 갑니다. 0은 유효한 순서이므로 undefined만 걸러냅니다.
+  return {
+    ...entry,
+    categoryId: entry.categoryId,
+    level: entry.level,
+    ...(order !== undefined ? { order } : {}),
+  };
 });
 
 const bySlug = new Map(articles.map((article) => [article.slug, article]));
