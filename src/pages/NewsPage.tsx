@@ -101,7 +101,18 @@ export function NewsPage() {
       <div id="news-tabpanel" role="tabpanel" aria-labelledby={`news-tab-${view}`} tabIndex={-1}>
         {view === 'all' && <GlobalNewsDesk showInternalLink={false} />}
         {view === 'companies' && <GlobalNewsDesk showInternalLink={false} kind="company" />}
-        {view === 'models' && <ModelRadar />}
+
+        {/*
+          모델 탭도 다른 탭과 같은 구조를 씁니다. 레이더만 두면 model 블록이
+          있는 것만 보이고 나머지 모델 발표는 어느 탭에서도 안 나옵니다.
+          레이더로 한눈에 보고, 아래 데스크에서 발표 전체를 읽습니다.
+        */}
+        {view === 'models' && (
+          <>
+            <ModelRadar />
+            <GlobalNewsDesk showInternalLink={false} kind="model" />
+          </>
+        )}
       </div>
     </>
   );

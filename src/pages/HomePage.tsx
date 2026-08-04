@@ -6,7 +6,7 @@ import { ModelRadar } from '../components/ModelRadar';
 import { NewsPreviewModal, type NewsPreviewItem } from '../components/NewsPreviewModal';
 import { Seo } from '../components/Seo';
 import { articles } from '../data/articles';
-import { newsBySource, newsItems } from '../data/news';
+import { categoryLabel, newsBySource, newsItems } from '../data/news';
 import { categoryById } from '../data/categories';
 import { assetUrl, sourceList } from '../data/sources';
 import type { SectionId } from '../types/article';
@@ -209,7 +209,7 @@ export function HomePage() {
                                 title: item.title,
                                 summary: item.summary,
                                 signal: item.signal,
-                                category: item.category,
+                                category: categoryLabel[item.category],
                                 url: item.url,
                                 accent: company.accent,
                                 logo: assetUrl(company.logo),
