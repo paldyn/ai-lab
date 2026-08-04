@@ -25,8 +25,14 @@ const { render, prerenderRoutes, sitemapRoutes, absoluteUrl, siteUrl } = await i
 const fill = (html, headTags, appHtml) =>
   html.replace('<!--app-head-->', () => headTags).replace('<!--app-html-->', () => appHtml);
 
+/*
+ * <path>/index.html이 아니라 <path>.html로 씁니다.
+ * 디렉터리 형태로 두면 정적 호스팅이 /articles/foo 요청을 /articles/foo/로 한 번
+ * 리다이렉트한 뒤에야 내려주는데, canonical과 사이트 내부 링크는 슬래시 없는
+ * 주소를 쓰기 때문에 모든 글 진입에 왕복이 한 번씩 더 생깁니다.
+ */
 const outputPathFor = (route) =>
-  route === '/' ? path.join(distDir, 'index.html') : path.join(distDir, route.replace(/^\//, ''), 'index.html');
+  route === '/' ? path.join(distDir, 'index.html') : path.join(distDir, `${route.replace(/^\//, '')}.html`);
 
 async function writePage(filePath, contents) {
   await mkdir(path.dirname(filePath), { recursive: true });
@@ -35,14 +41,14 @@ async function writePage(filePath, contents) {
 
 let count = 0;
 for (const route of prerenderRoutes) {
-  const { html, head } = render(route);
+  const { html, head } = await render(route);
   await writePage(outputPathFor(route), fill(template, head, html));
   count += 1;
 }
 
 // GitHub Pages는 없는 경로에 404.html을 돌려줍니다.
 // 프리렌더된 페이지가 우선하고, 나머지는 여기서 클라이언트 라우터가 이어받습니다.
-const notFound = render('/404');
+const notFound = await render('/404');
 await writePage(path.join(distDir, '404.html'), fill(template, notFound.head, notFound.html));
 
 const sitemap = [

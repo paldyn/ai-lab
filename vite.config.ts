@@ -1,5 +1,7 @@
 import { defineConfig } from 'vitest/config';
 import react from '@vitejs/plugin-react';
+import { articleIndexPlugin } from './plugins/article-index';
+import { markdownPlugin } from './plugins/markdown';
 
 function normalizeBase(value?: string) {
   if (!value || value === '/') return '/';
@@ -9,7 +11,7 @@ function normalizeBase(value?: string) {
 
 export default defineConfig({
   base: normalizeBase(process.env.VITE_BASE_PATH),
-  plugins: [react()],
+  plugins: [markdownPlugin(), articleIndexPlugin(), react()],
   build: {
     outDir: 'dist',
     // 공개 배포에 소스맵을 함께 올리지 않습니다. 필요하면 VITE_SOURCEMAP=1로 켭니다.

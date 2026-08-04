@@ -1,6 +1,8 @@
 export type CategoryId =
   | 'ai-guide'
   | 'ai-news'
+  | 'agents-rag'
+  | 'ml-ops'
   | 'math-for-ai'
   | 'paper-notes'
   | 'tools'
@@ -20,16 +22,13 @@ export interface Category {
   index: string;
 }
 
-export interface ArticleSection {
-  heading: string;
-  paragraphs: string[];
-  bullets?: string[];
-}
-
+/**
+ * 글 목록 한 건. 본문은 여기에 없습니다.
+ * src/content/articles/<slug>.md의 frontmatter에서 빌드 시 생성됩니다.
+ */
 export interface Article {
   slug: string;
   title: string;
-  subtitle: string;
   summary: string;
   categoryId: CategoryId;
   tags: string[];
@@ -37,13 +36,19 @@ export interface Article {
   publishedAt: string;
   readTime: number;
   level: ArticleLevel;
-  featured?: boolean;
-  recommended?: boolean;
-  visual: {
-    code: string;
-    label: string;
-    formula: string;
-  };
-  takeaways: string[];
-  sections: ArticleSection[];
+  featured: boolean;
+  /** 카드 시각 요소에 쓸 짧은 식/문구. 없으면 태그로 대체합니다. */
+  visual?: string;
+}
+
+export interface ArticleHeading {
+  depth: number;
+  text: string;
+  id: string;
+}
+
+/** 글 본문. 라우트별로 따로 불러옵니다. */
+export interface ArticleBody {
+  html: string;
+  headings: ArticleHeading[];
 }

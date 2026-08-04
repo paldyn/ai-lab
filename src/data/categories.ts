@@ -25,13 +25,31 @@ export const categories: Category[] = [
     index: '02',
   },
   {
+    id: 'agents-rag',
+    name: '에이전트·RAG',
+    shortName: 'AGENT',
+    description: '도구를 쓰는 모델과 검색 기반 생성의 구조를 뜯어봅니다.',
+    accent: '#ff8fd0',
+    accentText: 'var(--cat-agents-rag-text)',
+    index: '03',
+  },
+  {
+    id: 'ml-ops',
+    name: '학습·운영',
+    shortName: 'MLOPS',
+    description: '파인튜닝부터 서빙, 추론 비용까지 모델을 굴리는 일을 다룹니다.',
+    accent: '#7de3d0',
+    accentText: 'var(--cat-ml-ops-text)',
+    index: '04',
+  },
+  {
     id: 'math-for-ai',
     name: '수학',
     shortName: 'MATH',
     description: 'AI를 이해하는 데 필요한 수학을 직관과 식으로 배웁니다.',
     accent: '#63c7e6',
     accentText: 'var(--cat-math-for-ai-text)',
-    index: '03',
+    index: '05',
   },
   {
     id: 'paper-notes',
@@ -40,7 +58,7 @@ export const categories: Category[] = [
     description: '핵심 논문의 문제의식, 방법, 한계를 읽고 정리합니다.',
     accent: '#d0a8ff',
     accentText: 'var(--cat-paper-notes-text)',
-    index: '04',
+    index: '06',
   },
   {
     id: 'tools',
@@ -49,7 +67,7 @@ export const categories: Category[] = [
     description: '모델과 서비스의 선택 기준을 비교 가능한 형태로 정리합니다.',
     accent: '#f5c75f',
     accentText: 'var(--cat-tools-text)',
-    index: '05',
+    index: '07',
   },
   {
     id: 'lab-notes',
@@ -58,7 +76,7 @@ export const categories: Category[] = [
     description: '프롬프트, 평가, 작은 실험에서 발견한 것을 기록합니다.',
     accent: '#8ca9ff',
     accentText: 'var(--cat-lab-notes-text)',
-    index: '06',
+    index: '08',
   },
 ];
 
