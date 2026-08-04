@@ -29,20 +29,31 @@ const FEED_STEP = 12;
 interface GlobalNewsDeskProps {
   showInternalLink?: boolean;
   kind?: GlobalNewsKind;
+  /** 탭이 갈래 하나만 보여 줄 때. 이 값이 있으면 갈래 칩은 세우지 않습니다. */
+  category?: NewsCategory;
+  heading?: string;
+  description?: string;
 }
 
-export function GlobalNewsDesk({ showInternalLink = true, kind }: GlobalNewsDeskProps) {
+export function GlobalNewsDesk({
+  showInternalLink = true,
+  kind,
+  category: fixedCategory,
+  heading: headingProp,
+  description: descriptionProp,
+}: GlobalNewsDeskProps) {
   const [source, setSource] = useState<SourceFilter>('All');
   const [category, setCategory] = useState<CategoryFilter>('All');
   const [selectedNews, setSelectedNews] = useState<NewsPreviewItem | null>(null);
   const [visible, setVisible] = useState(FEED_LIMIT);
 
   const kindItems = useMemo(() => {
-    if (!kind) return newsItems;
-    const filtered = newsItems.filter((item) => item.kind === kind);
-    if (kind !== 'company') return filtered;
+    let filtered = newsItems;
+    if (kind) filtered = filtered.filter((item) => item.kind === kind);
+    if (fixedCategory) filtered = filtered.filter((item) => item.category === fixedCategory);
+    if (kind !== 'company' || fixedCategory) return filtered;
     return [...filtered].sort((a, b) => getSource(a.source).order - getSource(b.source).order);
-  }, [kind]);
+  }, [kind, fixedCategory]);
 
   // 갈래를 먼저 거르고 출처를 겁니다. 순서가 반대면 출처를 고른 뒤
   // 갈래 칩에 항목이 하나도 없는 것까지 세워집니다.
@@ -61,13 +72,16 @@ export function GlobalNewsDesk({ showInternalLink = true, kind }: GlobalNewsDesk
     [categoryItems],
   );
 
-  /** 갈래 칩은 kind를 정한 탭에서만 씁니다. 전체 탭에서는 두 집합이 섞여 뜻이 흐려집니다. */
+  /**
+   * 갈래 칩은 탭이 kind만 정하고 그 안이 또 갈릴 때만 씁니다. 갈래가 곧
+   * 탭인 화면에서는 같은 것을 두 번 고르게 하는 셈이라 세우지 않습니다.
+   */
   const availableCategories = useMemo(() => {
-    if (!kind) return [];
+    if (!kind || fixedCategory) return [];
     return categoryOrder[kind]
       .map((id) => ({ id, count: kindItems.filter((item) => item.category === id).length }))
       .filter((entry) => entry.count > 0);
-  }, [kind, kindItems]);
+  }, [kind, fixedCategory, kindItems]);
 
   const lead = items[0];
   const rest = items.slice(1);
@@ -93,7 +107,9 @@ export function GlobalNewsDesk({ showInternalLink = true, kind }: GlobalNewsDesk
       description: '새로운 발표에서 무엇이 달라졌고, 어디에 영향을 주는지 짚어봅니다.',
     },
   };
-  const { heading, description } = HEADINGS[kind ?? 'default'] ?? HEADINGS.default;
+  const fallback = HEADINGS[kind ?? 'default'] ?? HEADINGS.default;
+  const heading = headingProp ?? fallback.heading;
+  const description = descriptionProp ?? fallback.description;
 
   // 목록이 통째로 갈리므로 펼친 만큼도 되돌립니다.
   const pickSource = (next: SourceFilter) => {
