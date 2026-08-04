@@ -1,11 +1,20 @@
 import { useMemo, useState, type CSSProperties } from 'react';
 import { ArrowUpRight, Eye } from 'lucide-react';
 import { Link } from 'react-router';
-import { globalNewsUpdatedAt, newsItems, type GlobalNewsKind, type NewsItem } from '../data/news';
+import {
+  categoryLabel,
+  categoryOrder,
+  globalNewsUpdatedAt,
+  newsItems,
+  type GlobalNewsKind,
+  type NewsCategory,
+  type NewsItem,
+} from '../data/news';
 import { assetUrl, getSource, sourceList, type NewsSource } from '../data/sources';
 import { NewsPreviewModal, type NewsPreviewItem } from './NewsPreviewModal';
 
 type SourceFilter = NewsSource | 'All';
+type CategoryFilter = NewsCategory | 'All';
 
 /** 리드 아래 처음 보여 줄 소식 수. */
 const FEED_LIMIT = 3;
@@ -24,36 +33,60 @@ interface GlobalNewsDeskProps {
 
 export function GlobalNewsDesk({ showInternalLink = true, kind }: GlobalNewsDeskProps) {
   const [source, setSource] = useState<SourceFilter>('All');
+  const [category, setCategory] = useState<CategoryFilter>('All');
   const [selectedNews, setSelectedNews] = useState<NewsPreviewItem | null>(null);
   const [visible, setVisible] = useState(FEED_LIMIT);
 
-  const sourceItems = useMemo(() => {
+  const kindItems = useMemo(() => {
     if (!kind) return newsItems;
     const filtered = newsItems.filter((item) => item.kind === kind);
     if (kind !== 'company') return filtered;
     return [...filtered].sort((a, b) => getSource(a.source).order - getSource(b.source).order);
   }, [kind]);
 
+  // 갈래를 먼저 거르고 출처를 겁니다. 순서가 반대면 출처를 고른 뒤
+  // 갈래 칩에 항목이 하나도 없는 것까지 세워집니다.
+  const categoryItems = useMemo(
+    () => (category === 'All' ? kindItems : kindItems.filter((item) => item.category === category)),
+    [category, kindItems],
+  );
+
   const items = useMemo(
-    () => (source === 'All' ? sourceItems : sourceItems.filter((item) => item.source === source)),
-    [source, sourceItems],
+    () => (source === 'All' ? categoryItems : categoryItems.filter((item) => item.source === source)),
+    [source, categoryItems],
   );
 
   const availableFilters = useMemo(
-    () => sourceList.filter((meta) => sourceItems.some((item) => item.source === meta.id)),
-    [sourceItems],
+    () => sourceList.filter((meta) => categoryItems.some((item) => item.source === meta.id)),
+    [categoryItems],
   );
 
+  /** 갈래 칩은 kind를 정한 탭에서만 씁니다. 전체 탭에서는 두 집합이 섞여 뜻이 흐려집니다. */
+  const availableCategories = useMemo(() => {
+    if (!kind) return [];
+    return categoryOrder[kind]
+      .map((id) => ({ id, count: kindItems.filter((item) => item.category === id).length }))
+      .filter((entry) => entry.count > 0);
+  }, [kind, kindItems]);
+
   const lead = items[0];
-  // 리드 아래 목록은 세 건으로 시작하고 '더 보기'로 조금씩 늘립니다.
   const rest = items.slice(1);
-  const feed = rest.slice(0, visible);
-  const hidden = rest.length - feed.length;
+  const shown = rest.slice(0, visible);
+  const hidden = rest.length - shown.length;
+
+  // 리드 옆에는 세 건까지만 세웁니다. 더 보기로 늘어난 것은 두 열 아래
+  // 전체 폭에 깔립니다 — 오른쪽 열만 계속 길어지면 왼쪽이 텅 빕니다.
+  const feedBeside = shown.slice(0, FEED_LIMIT);
+  const feedBelow = shown.slice(FEED_LIMIT);
   const leadSource = lead ? getSource(lead.source) : null;
   const HEADINGS: Record<string, { heading: string; description: string }> = {
     company: {
       heading: 'AI 기업 소식',
       description: '제품과 조직, 규제 대응과 인프라 투자까지 각 회사의 움직임을 모아 봅니다.',
+    },
+    model: {
+      heading: '모델 발표',
+      description: '새 모델과 계열 개편, 가용성 변화를 발표된 순서대로 읽습니다.',
     },
     default: {
       heading: '주목할 AI 흐름',
@@ -62,10 +95,42 @@ export function GlobalNewsDesk({ showInternalLink = true, kind }: GlobalNewsDesk
   };
   const { heading, description } = HEADINGS[kind ?? 'default'] ?? HEADINGS.default;
 
-  // 출처를 바꾸면 목록이 통째로 갈리므로 펼친 만큼도 되돌립니다.
+  // 목록이 통째로 갈리므로 펼친 만큼도 되돌립니다.
   const pickSource = (next: SourceFilter) => {
     setSource(next);
     setVisible(FEED_LIMIT);
+  };
+
+  // 갈래를 바꾸면 출처도 함께 풉니다. 남겨 두면 그 조합에 한 건도 없을 때
+  // 아무것도 안 고른 것처럼 보이는 빈 화면이 됩니다.
+  const pickCategory = (next: CategoryFilter) => {
+    setCategory(next);
+    setSource('All');
+    setVisible(FEED_LIMIT);
+  };
+
+  /** 리드 옆과 아래 목록이 같은 행을 쓰므로 한 곳에서 그립니다. */
+  const renderRow = (item: NewsItem, order: number) => {
+    const meta = getSource(item.source);
+    return (
+      <article key={item.id} className="news-feed-row group">
+        <div className="news-feed-order" aria-hidden="true">{String(order).padStart(2, '0')}</div>
+        <div className="min-w-0">
+          <div className="news-feed-meta">
+            <span style={{ color: meta.accent }}>{meta.displayName}</span>
+            <span>{item.signal}</span>
+            <time dateTime={item.publishedAt}>{item.publishedAt.slice(5).replace('-', '.')}</time>
+          </div>
+          <h3>
+            <button type="button" className="card-trigger" onClick={() => openPreview(item)}>
+              {item.title}
+            </button>
+          </h3>
+          <p>{item.summary}</p>
+        </div>
+        <Eye className="news-feed-arrow" size={16} aria-hidden="true" />
+      </article>
+    );
   };
 
   const openPreview = (item: NewsItem) => {
@@ -100,6 +165,30 @@ export function GlobalNewsDesk({ showInternalLink = true, kind }: GlobalNewsDesk
               업데이트 {globalNewsUpdatedAt.replaceAll('-', '.')}
             </div>
           </div>
+
+          {availableCategories.length > 1 && (
+            <div className="news-category-switch" aria-label="분야 필터">
+              <button
+                type="button"
+                className={`filter-chip ${category === 'All' ? 'active' : ''}`}
+                aria-pressed={category === 'All'}
+                onClick={() => pickCategory('All')}
+              >
+                전체 <b>{kindItems.length}</b>
+              </button>
+              {availableCategories.map((entry) => (
+                <button
+                  type="button"
+                  key={entry.id}
+                  className={`filter-chip ${category === entry.id ? 'active' : ''}`}
+                  aria-pressed={category === entry.id}
+                  onClick={() => pickCategory(entry.id)}
+                >
+                  {categoryLabel[entry.id]} <b>{entry.count}</b>
+                </button>
+              ))}
+            </div>
+          )}
 
           <div className="news-source-switch" aria-label="뉴스 출처 필터">
             <button
@@ -156,7 +245,7 @@ export function GlobalNewsDesk({ showInternalLink = true, kind }: GlobalNewsDesk
               <div className="news-lead-copy">
                 <div>
                   <p className="news-source-label" style={{ color: leadSource!.accent }}>
-                    {lead.signal} · {lead.category}
+                    {lead.signal} · {categoryLabel[lead.category]}
                   </p>
                   <h3>
                     <button type="button" className="card-trigger" onClick={() => openPreview(lead)}>
@@ -173,31 +262,18 @@ export function GlobalNewsDesk({ showInternalLink = true, kind }: GlobalNewsDesk
             </article>
 
             <div className="news-feed">
-              {feed.length > 0 ? feed.map((item, index) => {
-                const meta = getSource(item.source);
-                return (
-                  <article key={item.id} className="news-feed-row group">
-                    <div className="news-feed-order" aria-hidden="true">{String(index + 2).padStart(2, '0')}</div>
-                    <div className="min-w-0">
-                      <div className="news-feed-meta">
-                        <span style={{ color: meta.accent }}>{meta.displayName}</span>
-                        <span>{item.signal}</span>
-                        <time dateTime={item.publishedAt}>{item.publishedAt.slice(5).replace('-', '.')}</time>
-                      </div>
-                      <h3>
-                        <button type="button" className="card-trigger" onClick={() => openPreview(item)}>
-                          {item.title}
-                        </button>
-                      </h3>
-                      <p>{item.summary}</p>
-                    </div>
-                    <Eye className="news-feed-arrow" size={16} aria-hidden="true" />
-                  </article>
-                );
-              }) : (
+              {feedBeside.length > 0 ? (
+                feedBeside.map((item, index) => renderRow(item, index + 2))
+              ) : (
                 <div className="news-feed-empty">해당 출처의 추가 소식을 준비하고 있습니다.</div>
               )}
             </div>
+          </div>
+        )}
+
+        {feedBelow.length > 0 && (
+          <div className="news-feed-wide">
+            {feedBelow.map((item, index) => renderRow(item, index + 2 + FEED_LIMIT))}
           </div>
         )}
 
@@ -213,7 +289,7 @@ export function GlobalNewsDesk({ showInternalLink = true, kind }: GlobalNewsDesk
             onClick={() => setVisible((count) => count + FEED_STEP)}
           >
             더 보기
-            <span>{feed.length} / {rest.length}</span>
+            <span>{shown.length} / {rest.length}</span>
           </button>
         )}
 

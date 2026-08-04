@@ -444,9 +444,27 @@ input:focus-visible {
   background: var(--brand);
 }
 
+/*
+  분야 칩은 출처 띠 위에 둡니다. 아래 띠가 회사를 고르는 칸이고, 위 칩이
+  무엇에 대한 소식인지를 고릅니다 — 넓은 것에서 좁은 것 순서입니다.
+*/
+.news-category-switch {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+  margin-top: 30px;
+}
+
+.news-category-switch .filter-chip b {
+  margin-left: 3px;
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
+  opacity: 0.6;
+}
+
 .news-source-switch {
   display: flex;
-  margin-top: 32px;
+  margin-top: 20px;
   overflow-x: auto;
   border-top: 1px solid var(--border);
   border-bottom: 1px solid var(--border);
@@ -723,6 +741,17 @@ input:focus-visible {
 }
 
 /*
+  더 보기로 늘어난 소식은 두 열 아래 전체 폭에 깝니다. 오른쪽 열에만
+  계속 쌓으면 왼쪽이 텅 비고 목록도 한 줄로 길어집니다.
+*/
+.news-feed-wide {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  column-gap: 40px;
+  border-bottom: 1px solid var(--border);
+}
+
+/*
   그리드 밖 전체 폭입니다. 위 선은 그리드의 border-bottom이 이미 그으므로
   여기서는 두지 않습니다 — 두면 바로 붙어 두 줄이 됩니다.
 */
@@ -730,16 +759,25 @@ input:focus-visible {
   display: flex;
   width: 100%;
   align-items: center;
-  justify-content: space-between;
-  gap: 12px;
+  justify-content: center;
+  gap: 14px;
   border: 0;
   border-bottom: 1px solid var(--border);
   background: none;
-  padding: 17px 0;
-  color: var(--text-dim);
-  font-size: 12.5px;
-  text-align: left;
-  transition: color 150ms ease;
+  padding: 20px 0;
+  color: var(--text-strong);
+  font-size: 13px;
+  font-weight: 500;
+  transition: background-color 160ms ease, color 160ms ease;
+}
+
+/* 왼쪽 끝의 점. 브랜드색 한 점이면 눈이 여기서 멈춥니다. */
+.news-feed-more::before {
+  width: 5px;
+  height: 5px;
+  border-radius: 1px;
+  background: var(--brand);
+  content: '';
 }
 
 /* 몇 건까지 왔는지. 글 목록의 더 보기와 같은 표기를 씁니다. */
@@ -750,7 +788,11 @@ input:focus-visible {
 }
 
 .news-feed-more:hover {
-  color: var(--text-strong);
+  background: var(--surface);
+}
+
+.news-feed-more:hover span {
+  color: var(--text-dim);
 }
 
 .news-desk-footer {
@@ -3059,6 +3101,10 @@ input:focus-visible {
     min-height: 0;
     padding-left: 0;
     border-left: 0;
+  }
+
+  .news-feed-wide {
+    grid-template-columns: 1fr;
   }
 
   .section-space {
