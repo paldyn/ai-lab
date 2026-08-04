@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="420" viewBox="0 0 880 420">
+  <defs>
+    <marker id="bmArr" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#888"/>
+    </marker>
+  </defs>
+
+  <rect x="0" y="0" width="880" height="420" rx="12" fill="#0a0a0a"/>
+
+  <text x="50" y="46" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="22" font-weight="700" fill="#e8e8e8">추론 벤치마크에는 수명이 있다</text>
+  <text x="50" y="72" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">공개된 순간부터 유출이 시작되고, 점수가 천장에 붙으면 모델을 가르는 힘을 잃는다</text>
+
+  <text x="50" y="102" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="11" fill="#888">최고 정확도 (%)</text>
+
+  <rect x="110" y="110" width="690" height="25" fill="#e05555" opacity="0.10"/>
+
+  <line x1="110" y1="110" x2="800" y2="110" stroke="#22222c" stroke-width="1"/>
+  <line x1="110" y1="162" x2="800" y2="162" stroke="#22222c" stroke-width="1"/>
+  <line x1="110" y1="215" x2="800" y2="215" stroke="#22222c" stroke-width="1"/>
+  <line x1="110" y1="267" x2="800" y2="267" stroke="#22222c" stroke-width="1"/>
+  <line x1="110" y1="320" x2="800" y2="320" stroke="#555" stroke-width="1.5"/>
+  <line x1="110" y1="110" x2="110" y2="320" stroke="#555" stroke-width="1.5"/>
+
+  <text x="96" y="114" text-anchor="end" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="11" fill="#888">100</text>
+  <text x="96" y="166" text-anchor="end" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="11" fill="#888">75</text>
+  <text x="96" y="219" text-anchor="end" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="11" fill="#888">50</text>
+  <text x="96" y="271" text-anchor="end" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="11" fill="#888">25</text>
+  <text x="96" y="324" text-anchor="end" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="11" fill="#888">0</text>
+
+  <path d="M 110 299 C 180 296, 270 250, 340 215 C 410 180, 500 143, 570 134 C 650 124, 720 117, 800 115" fill="none" stroke="#7ec8e3" stroke-width="2.5"/>
+
+  <circle cx="340" cy="215" r="5" fill="#0a0a0a" stroke="#e05555" stroke-width="2"/>
+  <line x1="340" y1="222" x2="340" y2="258" stroke="#888" stroke-width="1.5" stroke-dasharray="4,4"/>
+  <text x="348" y="268" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="12" fill="#e05555">문항이 학습 데이터로 새어 들어간다</text>
+  <text x="348" y="288" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="11" fill="#888">풀이 블로그 · 리포지터리 · 재배포 데이터셋</text>
+
+  <circle cx="600" cy="128" r="5" fill="#0a0a0a" stroke="#e05555" stroke-width="2"/>
+  <line x1="600" y1="135" x2="600" y2="182" stroke="#888" stroke-width="1.5" stroke-dasharray="4,4"/>
+  <text x="610" y="192" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="12" fill="#e05555">상위권이 한 점 차로 붙는다</text>
+
+  <text x="126" y="128" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="11" fill="#e05555">포화 구간 — 변별력 소실</text>
+
+  <text x="110" y="344" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="11" fill="#888">공개</text>
+  <text x="340" y="344" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="11" fill="#888">+6개월</text>
+  <text x="570" y="344" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="11" fill="#888">+12개월</text>
+  <text x="795" y="344" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="11" fill="#888">+18개월</text>
+
+  <text x="50" y="384" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">공개 점수는 시간이 지날수록 능력보다 노출량을 반영한다. 도입 판단은 직접 만든 문항으로 다시 재야 한다.</text>
+</svg>
