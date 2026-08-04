@@ -115,8 +115,14 @@ export function HomePage() {
               <Link to="/news" className="hero-action is-primary">
                 AI 뉴스 <ArrowRight size={14} aria-hidden="true" />
               </Link>
-              <Link to="/learn" className="hero-action">
-                학습 시작하기 <ArrowRight size={14} aria-hidden="true" />
+              {/*
+                학습이 아니라 리서치를 둡니다. 학습은 296편으로 양이 많지만
+                다른 곳에서도 볼 수 있는 가이드고, 직접 돌려 확인한 기록은
+                여기서만 나옵니다. 학습은 상단 네비게이션과 아래 섹션으로
+                갑니다.
+              */}
+              <Link to="/research" className="hero-action">
+                리서치 보기 <ArrowRight size={14} aria-hidden="true" />
               </Link>
             </div>
           </div>
