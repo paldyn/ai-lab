@@ -82,8 +82,11 @@ function recentUpdates(): { items: FeedItem[]; counts: Array<{ label: string; co
 
 export function HomePage() {
   const [selectedNews, setSelectedNews] = useState<NewsPreviewItem | null>(null);
-  const learnArticles = articles.filter((article) => categoryById[article.categoryId].section === 'learn');
-  const latestArticles = learnArticles.slice(0, 4);
+  const bySection = (section: SectionId) =>
+    articles.filter((article) => categoryById[article.categoryId].section === section).slice(0, 4);
+
+  const latestLearn = bySection('learn');
+  const latestResearch = bySection('research');
 
   const recent = recentUpdates();
 
@@ -224,14 +227,32 @@ export function HomePage() {
         </div>
       </section>
 
-      <section className="site-wrap home-research-section">
+      <section className="site-wrap home-articles-section">
         <div className="simple-section-heading">
           <div><p className="section-kicker">PALDYN LEARN</p><h2>새로 올라온 학습 글</h2></div>
           <Link to="/learn">전체 보기 <ArrowRight size={13} aria-hidden="true" /></Link>
         </div>
         <div>
-          {latestArticles.map((article) => <ArticleCard key={article.slug} article={article} variant="row" />)}
+          {latestLearn.map((article) => <ArticleCard key={article.slug} article={article} variant="row" />)}
         </div>
+      </section>
+
+      <section className="site-wrap home-articles-section">
+        <div className="simple-section-heading">
+          <div><p className="section-kicker">PALDYN RESEARCH</p><h2>새로 올라온 리서치</h2></div>
+          <Link to="/research">전체 보기 <ArrowRight size={13} aria-hidden="true" /></Link>
+        </div>
+        {latestResearch.length > 0 ? (
+          <div>
+            {latestResearch.map((article) => <ArticleCard key={article.slug} article={article} variant="row" />)}
+          </div>
+        ) : (
+          // 아직 한 편도 없을 때. 섹션을 통째로 숨기면 리서치가 사라진 것처럼
+          // 보여서, 자리는 두고 무엇을 채우는 중인지 한 줄로 알립니다.
+          <p className="home-articles-empty">
+            직접 돌려 확인한 실험과 논문 재현을 한 편씩 채우고 있습니다.
+          </p>
+        )}
       </section>
       <NewsPreviewModal item={selectedNews} onClose={() => setSelectedNews(null)} />
     </>

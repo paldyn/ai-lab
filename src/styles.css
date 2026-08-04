@@ -2672,9 +2672,20 @@ input:focus-visible {
   transform: translate(2px, -2px);
 }
 
-.home-research-section {
+.home-articles-section {
   padding-top: 70px;
   padding-bottom: 78px;
+}
+
+/* 학습 아래 리서치가 이어지면 위 여백이 두 번 겹칩니다. 뒤쪽 것만 없앱니다. */
+.home-articles-section + .home-articles-section {
+  padding-top: 0;
+}
+
+.home-articles-empty {
+  color: var(--text-dim);
+  font-size: 14px;
+  font-weight: 300;
 }
 
 .model-radar-section {
@@ -3116,9 +3127,13 @@ input:focus-visible {
     min-height: 0;
   }
 
-  .home-research-section {
+  .home-articles-section {
     padding-top: 52px;
     padding-bottom: 58px;
+  }
+
+  .home-articles-section + .home-articles-section {
+    padding-top: 0;
   }
 
   .simple-home-hero .site-wrap {
