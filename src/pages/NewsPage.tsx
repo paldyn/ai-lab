@@ -95,13 +95,19 @@ export function NewsPage() {
         {view === 'all' && <GlobalNewsDesk showInternalLink={false} />}
         {view === 'models' && <ModelRadar />}
         {view === 'companies' && <GlobalNewsDesk showInternalLink={false} kind="company" />}
+        {view === 'industry' && <GlobalNewsDesk showInternalLink={false} kind="industry" />}
 
-        {(view === 'all' || view === 'industry') && (
+        {/*
+          우리가 쓴 해설 글은 전체 탭에만 둡니다. 예전에는 산업·정책 탭에서도
+          같은 글을 제목만 바꿔 보여 줬는데, 탭을 눌러도 내용이 그대로라
+          오해를 부르는 상태였습니다.
+        */}
+        {view === 'all' && (
           <section className="site-wrap section-space news-analysis-section">
             <div className="simple-section-heading archive-page-heading">
               <div>
                 <p className="section-kicker">PALDYN BRIEFING</p>
-                <h2>{view === 'industry' ? '산업과 정책의 변화' : '뉴스 해설과 관찰'}</h2>
+                <h2>뉴스 해설과 관찰</h2>
                 <p>발표를 나열하지 않고 변화의 맥락과 다음에 살펴볼 지점을 정리합니다.</p>
               </div>
             </div>

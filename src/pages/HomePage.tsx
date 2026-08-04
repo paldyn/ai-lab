@@ -204,6 +204,8 @@ export function HomePage() {
                                 signal: item.signal,
                                 category: item.category,
                                 url: item.url,
+                                points: item.points,
+                                commentary: item.commentary,
                                 accent: company.accent,
                                 logo: assetUrl(company.logo),
                                 monochrome: company.monochrome,

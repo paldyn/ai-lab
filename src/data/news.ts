@@ -25,7 +25,18 @@ export interface NewsItem {
   source: NewsSource;
   kind: GlobalNewsKind;
   title: string;
+  /** 한 문단 요약. 원문에 있는 내용만 쓴다. */
   summary: string;
+  /**
+   * 원문에서 뽑은 핵심 5~8개. 무엇이 달라졌는지, 수치, 가용성, 가격처럼
+   * 사실만 담는다. 원문을 통째로 옮기지 않는다 — 그건 남의 저작물 재발행이다.
+   */
+  points?: string[];
+  /**
+   * 이 발표가 왜 중요하고 무엇에 영향을 주는지에 대한 팔딘의 해설.
+   * 원문에 없는 판단이므로 우리 저작물이고, 사실과 섞이지 않게 분리해 둔다.
+   */
+  commentary?: string;
   publishedAt: string;
   category: string;
   signal: string;

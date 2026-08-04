@@ -18,6 +18,7 @@ interface GlobalNewsDeskProps {
 export function GlobalNewsDesk({ showInternalLink = true, kind }: GlobalNewsDeskProps) {
   const [source, setSource] = useState<SourceFilter>('All');
   const [selectedNews, setSelectedNews] = useState<NewsPreviewItem | null>(null);
+  const [expanded, setExpanded] = useState(false);
 
   const sourceItems = useMemo(() => {
     if (!kind) return newsItems;
@@ -37,15 +38,27 @@ export function GlobalNewsDesk({ showInternalLink = true, kind }: GlobalNewsDesk
   );
 
   const lead = items[0];
-  // 리드 아래 목록은 세 건으로 고정합니다. 더 늘리면 오른쪽 열만 길어져
-  // 리드 카드와 높이가 크게 어긋납니다.
-  const feed = items.slice(1, 1 + FEED_LIMIT);
+  // 리드 아래 목록은 세 건까지만 둡니다. 더 늘리면 오른쪽 열만 길어져
+  // 리드 카드와 높이가 크게 어긋납니다. 나머지는 더 보기로 펼칩니다.
+  const rest = items.slice(1);
+  const feed = expanded ? rest : rest.slice(0, FEED_LIMIT);
+  const hidden = rest.length - feed.length;
   const leadSource = lead ? getSource(lead.source) : null;
-  const heading = kind === 'company' ? 'AI 기업 소식' : '주목할 AI 흐름';
-  const description =
-    kind === 'company'
-      ? '제품과 조직의 변화가 실제 AI 사용 방식에 어떤 영향을 주는지 살펴봅니다.'
-      : '새로운 발표에서 무엇이 달라졌고, 어디에 영향을 주는지 짚어봅니다.';
+  const HEADINGS: Record<string, { heading: string; description: string }> = {
+    company: {
+      heading: 'AI 기업 소식',
+      description: '제품과 조직의 변화가 실제 AI 사용 방식에 어떤 영향을 주는지 살펴봅니다.',
+    },
+    industry: {
+      heading: '산업과 정책의 변화',
+      description: '규제, 투자, 인프라처럼 판을 바꾸는 움직임을 공식 발표에서 확인합니다.',
+    },
+    default: {
+      heading: '주목할 AI 흐름',
+      description: '새로운 발표에서 무엇이 달라졌고, 어디에 영향을 주는지 짚어봅니다.',
+    },
+  };
+  const { heading, description } = HEADINGS[kind ?? 'default'] ?? HEADINGS.default;
 
   const openPreview = (item: NewsItem) => {
     const meta = getSource(item.source);
@@ -58,6 +71,8 @@ export function GlobalNewsDesk({ showInternalLink = true, kind }: GlobalNewsDesk
       signal: item.signal,
       category: item.category,
       url: item.url,
+      points: item.points,
+      commentary: item.commentary,
       accent: meta.accent,
       logo: assetUrl(meta.logo),
       monochrome: meta.monochrome,
@@ -108,6 +123,12 @@ export function GlobalNewsDesk({ showInternalLink = true, kind }: GlobalNewsDesk
             ))}
           </div>
         </div>
+
+        {!lead && (
+          <p className="news-desk-empty">
+            아직 이 분류로 모인 공식 발표가 없습니다. 매일 출처를 확인해 채웁니다.
+          </p>
+        )}
 
         {lead && (
           <div key={source} className="news-desk-grid news-filter-enter">
@@ -169,6 +190,12 @@ export function GlobalNewsDesk({ showInternalLink = true, kind }: GlobalNewsDesk
                 );
               }) : (
                 <div className="news-feed-empty">해당 출처의 추가 소식을 준비하고 있습니다.</div>
+              )}
+
+              {hidden > 0 && (
+                <button type="button" className="news-feed-more" onClick={() => setExpanded(true)}>
+                  {hidden}건 더 보기
+                </button>
               )}
             </div>
           </div>

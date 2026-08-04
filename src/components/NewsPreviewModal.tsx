@@ -12,6 +12,8 @@ export interface NewsPreviewItem {
   signal: string;
   category: string;
   url: string;
+  points?: string[];
+  commentary?: string;
   accent: string;
   logo: string;
   logoTone?: ModelLogoTone;
@@ -137,6 +139,22 @@ export function NewsPreviewModal({ item, onClose }: NewsPreviewModalProps) {
           <p className="news-preview-signal" style={{ color: item.accent }}>{item.signal}</p>
           <h2 id={`news-preview-title-${item.id}`}>{item.title}</h2>
           <p className="news-preview-summary">{item.summary}</p>
+
+          {item.points && item.points.length > 0 && (
+            <section className="news-preview-points">
+              <h3>무엇이 달라졌나</h3>
+              <ul>
+                {item.points.map((point) => <li key={point}>{point}</li>)}
+              </ul>
+            </section>
+          )}
+
+          {item.commentary && (
+            <section className="news-preview-take">
+              <h3>PALDYN 해설</h3>
+              <p>{item.commentary}</p>
+            </section>
+          )}
 
           <dl className="news-preview-facts">
             <div><dt>SOURCE</dt><dd>{item.source}</dd></div>
