@@ -72,7 +72,7 @@ const entries: NewsItem[] = [
     title: 'Gemini Robotics 2 brings whole body intelligence to robots',
     summary:
       'Gemini 기반 로봇 모델이 전신 제어, 정교한 물체 조작, 여러 로봇의 협업까지 확장됐습니다. 물리 세계에서 작동하는 멀티모달 에이전트의 방향을 보여줍니다.',
-    publishedAt: '2026-07-30',
+    publishedAt: '2026-07-28',
     category: 'Models',
     signal: 'PHYSICAL AI',
     url: 'https://deepmind.google/blog/gemini-robotics-2-brings-whole-body-intelligence-to-robots/',
