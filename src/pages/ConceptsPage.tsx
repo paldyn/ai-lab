@@ -1,4 +1,5 @@
 import type { CSSProperties } from 'react';
+import { ArrowLeft } from 'lucide-react';
 import { Link, Navigate, useParams } from 'react-router';
 import { ArticleExplorer } from '../components/ArticleExplorer';
 import { Seo } from '../components/Seo';
@@ -43,19 +44,18 @@ function ConceptsView({ active }: { active?: Category }) {
             ? active.description
             : 'AI가 어떻게 작동하는지를 다룹니다. 모델의 원리부터 그 아래를 떠받치는 수학, 실제로 굴리는 방법까지.'}
         </p>
+        <p className="concept-breadcrumb">
+          {active ? (
+            <Link to="/concepts">
+              <ArrowLeft size={13} aria-hidden="true" /> 개념 전체 {total}편
+            </Link>
+          ) : (
+            <span>전체 {total}편 · {conceptCategories.length}개 분야</span>
+          )}
+        </p>
       </section>
 
-      <section className="site-wrap concept-nav" aria-label="개념 분야">
-        <Link
-          to="/concepts"
-          className={`concept-card ${active ? '' : 'is-active'}`}
-          aria-current={active ? undefined : 'page'}
-        >
-          <span className="concept-card-index">ALL</span>
-          <strong>전체</strong>
-          <span className="concept-card-count">{total}편</span>
-        </Link>
-
+      <nav className="site-wrap concept-nav" aria-label="개념 분야">
         {conceptCategories.map((category) => (
           <Link
             key={category.id}
@@ -66,11 +66,14 @@ function ConceptsView({ active }: { active?: Category }) {
           >
             <span className="concept-card-index">{category.shortName}</span>
             <strong>{category.name}</strong>
-            <span className="concept-card-count">{counts[category.id] ?? 0}편</span>
+            <b className="concept-card-count">
+              {counts[category.id] ?? 0}
+              <i>편</i>
+            </b>
             <p>{category.description}</p>
           </Link>
         ))}
-      </section>
+      </nav>
 
       <div className="site-divider" />
 
@@ -80,10 +83,11 @@ function ConceptsView({ active }: { active?: Category }) {
             배우는 순서대로 정렬했습니다. 앞 글이 뒤 글의 전제가 됩니다.
           </p>
         )}
+        {/* 위 분야 카드가 카테고리 선택을 맡으므로 칩은 띄우지 않습니다. */}
         <ArticleExplorer
           key={active?.id ?? 'all'}
           categoryIds={active ? [active.id] : conceptCategoryIds}
-          hideCategoryFilter={Boolean(active)}
+          hideCategoryFilter
           curriculum={active?.curriculum}
         />
       </section>
