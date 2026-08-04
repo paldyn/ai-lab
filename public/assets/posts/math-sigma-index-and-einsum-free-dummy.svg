@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="478" viewBox="0 0 880 478" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <rect width="880" height="478" rx="12" fill="#0a0a0a"/>
+
+  <text x="60" y="56" font-size="22" font-weight="700" fill="#e8e8e8">어떤 첨자가 남고 어떤 첨자가 사라지는가</text>
+  <text x="60" y="82" font-size="13" fill="#888">이 구별 하나가 수식과 einsum 문자열을 이어 준다</text>
+
+  <rect x="60" y="112" width="760" height="70" rx="6" fill="#000000" stroke="#3a4a6e" stroke-width="1"/>
+  <text x="440" y="153" font-size="20" text-anchor="middle" fill="#ffffff" font-family="'JetBrains Mono','Menlo','Consolas',monospace">(QKᵀ)[<tspan fill="#55c555" font-weight="600">i</tspan>, <tspan fill="#55c555" font-weight="600">j</tspan>] = Σ<tspan fill="#e05555" font-weight="600">t</tspan> Q[<tspan fill="#55c555" font-weight="600">i</tspan>, <tspan fill="#e05555" font-weight="600">t</tspan>] · K[<tspan fill="#55c555" font-weight="600">j</tspan>, <tspan fill="#e05555" font-weight="600">t</tspan>]</text>
+
+  <rect x="60" y="206" width="14" height="14" rx="3" fill="#55c555"/>
+  <text x="84" y="218" font-size="13" fill="#e8e8e8">i, j — 자유 첨자. 결과에 그대로 남는다. 그래서 결과 셰이프가 (n, n)이다</text>
+
+  <rect x="60" y="234" width="14" height="14" rx="3" fill="#e05555"/>
+  <text x="84" y="246" font-size="13" fill="#e8e8e8">t — 더미 첨자. 합쳐져 사라진다. 다른 글자로 바꿔 써도 값이 같다</text>
+
+  <rect x="60" y="272" width="760" height="146" rx="6" fill="#101010" stroke="#333" stroke-width="1"/>
+  <text x="84" y="298" font-size="13" font-weight="600" fill="#e8e8e8">einsum 문자열은 이 구별을 그대로 옮겨 적은 것이다</text>
+
+  <rect x="76" y="312" width="728" height="64" rx="6" fill="#000000" stroke="#3a4a6e" stroke-width="1"/>
+  <text x="92" y="338" font-size="13" fill="#ffffff" font-family="'JetBrains Mono','Menlo','Consolas',monospace" xml:space="preserve">scores = np.einsum('it,jt-&gt;ij', Q, K)</text>
+  <text x="92" y="358" font-size="13" fill="#9aa4b8" font-family="'JetBrains Mono','Menlo','Consolas',monospace" xml:space="preserve"># 같은 계산: Q @ K.T</text>
+
+  <text x="84" y="400" font-size="13" fill="#888">화살표 오른쪽에 안 적힌 글자가 더미 첨자다 — t가 사라지고 i, j만 남는다</text>
+</svg>

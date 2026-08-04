@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="460" viewBox="0 0 880 460" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <rect width="880" height="460" rx="12" fill="#0a0a0a"/>
+
+  <text x="60" y="56" font-size="22" font-weight="700" fill="#e8e8e8">같은 계산인데 식이 달라 보이는 이유</text>
+  <text x="60" y="82" font-size="13" fill="#888">논문은 벡터를 세로로 세우고, 코드는 배치를 가로로 눕힌다</text>
+
+  <rect x="60" y="112" width="350" height="200" rx="6" fill="#101010" stroke="#333" stroke-width="1"/>
+  <rect x="470" y="112" width="350" height="200" rx="6" fill="#101010" stroke="#333" stroke-width="1"/>
+
+  <text x="84" y="142" font-size="15" font-weight="600" fill="#e8e8e8">열벡터 관례 — 논문</text>
+  <text x="494" y="142" font-size="15" font-weight="600" fill="#e8e8e8">행 우선 관례 — 코드</text>
+
+  <rect x="76" y="156" width="318" height="100" rx="6" fill="#000000" stroke="#3a4a6e" stroke-width="1"/>
+  <rect x="486" y="156" width="318" height="100" rx="6" fill="#000000" stroke="#3a4a6e" stroke-width="1"/>
+
+  <text x="92" y="180" font-size="13" fill="#ffffff" font-family="'JetBrains Mono','Menlo','Consolas',monospace" xml:space="preserve">x ∈ ℝᵈ      (d × 1)</text>
+  <text x="92" y="200" font-size="13" fill="#ffffff" font-family="'JetBrains Mono','Menlo','Consolas',monospace" xml:space="preserve">y = W x     (W: d' × d)</text>
+  <text x="92" y="220" font-size="13" fill="#ffffff" font-family="'JetBrains Mono','Menlo','Consolas',monospace" xml:space="preserve">내적 = xᵀ y</text>
+  <text x="92" y="240" font-size="13" fill="#ffffff" font-family="'JetBrains Mono','Menlo','Consolas',monospace" xml:space="preserve">점수 = qᵀ k</text>
+
+  <text x="502" y="180" font-size="13" fill="#ffffff" font-family="'JetBrains Mono','Menlo','Consolas',monospace" xml:space="preserve">x.shape == (B, d)</text>
+  <text x="502" y="200" font-size="13" fill="#ffffff" font-family="'JetBrains Mono','Menlo','Consolas',monospace" xml:space="preserve">y = x @ W   (W: d × d')</text>
+  <text x="502" y="220" font-size="13" fill="#ffffff" font-family="'JetBrains Mono','Menlo','Consolas',monospace" xml:space="preserve">내적 = (x*y).sum(-1)</text>
+  <text x="502" y="240" font-size="13" fill="#ffffff" font-family="'JetBrains Mono','Menlo','Consolas',monospace" xml:space="preserve">점수 = Q @ K.T</text>
+
+  <text x="84" y="286" font-size="12" fill="#888">벡터 하나가 기준. 곱셈은 왼쪽에서 붙는다</text>
+  <text x="494" y="286" font-size="12" fill="#888">배치가 기준. 토큰이 행으로 쌓여 있다</text>
+
+  <rect x="60" y="332" width="760" height="68" rx="6" fill="#101010" stroke="#333" stroke-width="1"/>
+  <text x="84" y="358" font-size="13" font-weight="600" fill="#55c555">둘은 전치 관계일 뿐 같은 계산이다</text>
+  <text x="84" y="380" font-size="13" fill="#888">논문의 y = Wx 를 코드로 옮기면 y = x @ W.T 가 된다 — 축 순서만 뒤집힌다</text>
+</svg>

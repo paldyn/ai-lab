@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="618" viewBox="0 0 880 618" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <defs>
+    <marker id="shr" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#e8e8e8"/>
+    </marker>
+  </defs>
+  <rect width="880" height="618" rx="12" fill="#0a0a0a"/>
+
+  <text x="60" y="56" font-size="22" font-weight="700" fill="#e8e8e8">L1은 0을 만들고 L2는 줄이기만 한다</text>
+  <text x="60" y="82" font-size="13" fill="#888">가로는 벌점을 걸기 전의 가중치, 세로는 벌점을 걸고 난 뒤의 가중치</text>
+
+  <line x1="240" y1="280" x2="640" y2="280" stroke="#888" stroke-width="1.5"/>
+  <line x1="440" y1="470" x2="440" y2="100" stroke="#888" stroke-width="1.5"/>
+  <text x="652" y="285" font-size="13" fill="#888">w</text>
+  <text x="452" y="118" font-size="13" fill="#888">벌점 후</text>
+
+  <path d="M 260 460 L 620 100" stroke="#444" stroke-width="1.5" stroke-dasharray="4,4" fill="none"/>
+  <path d="M 260 388 L 620 172" stroke="#7777cc" stroke-width="2.5" fill="none"/>
+  <path d="M 260 415 L 395 280 L 485 280 L 620 145" stroke="#55c555" stroke-width="2.5" fill="none"/>
+  <path d="M 395 280 L 485 280" stroke="#55c555" stroke-width="6" fill="none"/>
+
+  <text x="628" y="96" font-size="13" fill="#888">벌점 없음</text>
+  <text x="628" y="141" font-size="13" font-weight="600" fill="#55c555">L1 (가중치가 0이 됨)</text>
+  <text x="628" y="177" font-size="13" font-weight="600" fill="#7777cc">L2 (비율로 축소)</text>
+
+  <line x1="600" y1="400" x2="496" y2="288" stroke="#e8e8e8" stroke-width="2" marker-end="url(#shr)"/>
+  <text x="610" y="416" font-size="13" fill="#e8e8e8">이 구간은 정확히 0 — 희소성</text>
+
+  <line x1="395" y1="276" x2="395" y2="284" stroke="#444" stroke-width="1"/>
+  <line x1="485" y1="276" x2="485" y2="284" stroke="#444" stroke-width="1"/>
+  <text x="386" y="308" font-size="12" fill="#888" text-anchor="middle">−t</text>
+  <text x="494" y="308" font-size="12" fill="#888" text-anchor="middle">+t</text>
+
+  <rect x="60" y="490" width="760" height="68" rx="6" fill="#101010" stroke="#333" stroke-width="1"/>
+  <text x="84" y="516" font-size="13" font-weight="600" fill="#e8e8e8">L1은 문턱보다 작은 값을 0으로 밀고, L2는 모든 값을 같은 비율로 줄인다</text>
+  <text x="84" y="538" font-size="13" fill="#888">L1 단위구의 꼭짓점이 축 위에 있다는 사실이 이 평평한 구간을 만든다</text>
+</svg>

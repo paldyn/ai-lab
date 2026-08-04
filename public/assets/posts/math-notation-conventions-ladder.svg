@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="450" viewBox="0 0 880 450" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <rect width="880" height="450" rx="12" fill="#0a0a0a"/>
+
+  <text x="60" y="56" font-size="22" font-weight="700" fill="#e8e8e8">글꼴이 곧 자료형이다</text>
+  <text x="60" y="82" font-size="13" fill="#888">논문은 축의 개수를 말로 쓰지 않고 글자 모양으로 알린다</text>
+
+  <rect x="60" y="112" width="175" height="190" rx="6" fill="#101010" stroke="#333" stroke-width="1"/>
+  <rect x="255" y="112" width="175" height="190" rx="6" fill="#101010" stroke="#333" stroke-width="1"/>
+  <rect x="450" y="112" width="175" height="190" rx="6" fill="#101010" stroke="#333" stroke-width="1"/>
+  <rect x="645" y="112" width="175" height="190" rx="6" fill="#101010" stroke="#333" stroke-width="1"/>
+
+  <text x="147" y="140" font-size="15" font-weight="600" fill="#e8e8e8" text-anchor="middle">스칼라</text>
+  <text x="342" y="140" font-size="15" font-weight="600" fill="#e8e8e8" text-anchor="middle">벡터</text>
+  <text x="537" y="140" font-size="15" font-weight="600" fill="#e8e8e8" text-anchor="middle">행렬</text>
+  <text x="732" y="140" font-size="15" font-weight="600" fill="#e8e8e8" text-anchor="middle">텐서</text>
+
+  <text x="147" y="182" font-size="26" font-style="italic" fill="#7ec8e3" text-anchor="middle">d</text>
+  <text x="342" y="182" font-size="26" font-weight="700" fill="#7ec8e3" text-anchor="middle">x</text>
+  <text x="537" y="182" font-size="26" font-weight="700" fill="#7ec8e3" text-anchor="middle">X</text>
+  <text x="732" y="182" font-size="26" fill="#7ec8e3" text-anchor="middle">𝒳</text>
+
+  <text x="147" y="222" font-size="12" fill="#888" text-anchor="middle">기울인 소문자</text>
+  <text x="342" y="222" font-size="12" fill="#888" text-anchor="middle">굵은 소문자</text>
+  <text x="537" y="222" font-size="12" fill="#888" text-anchor="middle">굵은 대문자</text>
+  <text x="732" y="222" font-size="12" fill="#888" text-anchor="middle">필기체 대문자</text>
+
+  <text x="147" y="256" font-size="13" fill="#ffffff" text-anchor="middle" font-family="'JetBrains Mono','Menlo','Consolas',monospace">()</text>
+  <text x="342" y="256" font-size="13" fill="#ffffff" text-anchor="middle" font-family="'JetBrains Mono','Menlo','Consolas',monospace">(768,)</text>
+  <text x="537" y="256" font-size="13" fill="#ffffff" text-anchor="middle" font-family="'JetBrains Mono','Menlo','Consolas',monospace">(512, 768)</text>
+  <text x="732" y="256" font-size="13" fill="#ffffff" text-anchor="middle" font-family="'JetBrains Mono','Menlo','Consolas',monospace">(8, 512, 768)</text>
+
+  <text x="147" y="284" font-size="12" fill="#888" text-anchor="middle">학습률, 차원 수</text>
+  <text x="342" y="284" font-size="12" fill="#888" text-anchor="middle">토큰 임베딩 하나</text>
+  <text x="537" y="284" font-size="12" fill="#888" text-anchor="middle">문장 하나의 은닉</text>
+  <text x="732" y="284" font-size="12" fill="#888" text-anchor="middle">배치 전체의 은닉</text>
+
+  <rect x="60" y="322" width="760" height="68" rx="6" fill="#101010" stroke="#333" stroke-width="1"/>
+  <text x="84" y="348" font-size="13" font-weight="600" fill="#e8e8e8">축이 하나 늘 때마다 코드의 셰이프 튜플도 한 칸 늘어난다</text>
+  <text x="84" y="370" font-size="13" fill="#888">글자 모양을 못 읽으면 같은 X가 행렬인지 텐서인지 몰라 셰이프를 못 맞춘다</text>
+</svg>

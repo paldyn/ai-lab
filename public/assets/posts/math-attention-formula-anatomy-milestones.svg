@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="500" viewBox="0 0 880 500" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <rect width="880" height="500" rx="12" fill="#0a0a0a"/>
+
+  <text x="60" y="56" font-size="22" font-weight="700" fill="#e8e8e8">어디까지 읽으면 무엇이 닫히는가</text>
+  <text x="60" y="82" font-size="13" fill="#888">커리큘럼 목록의 번호 기준 — 단원 경계마다 완결된 묶음이 남는다</text>
+
+  <line x1="100" y1="116" x2="100" y2="430" stroke="#333" stroke-width="2"/>
+
+  <circle cx="100" cy="116" r="5" fill="#e8e8e8"/>
+  <text x="126" y="121" font-size="15" font-weight="600" fill="#7ec8e3">8번까지</text>
+  <text x="236" y="121" font-size="14" fill="#e8e8e8">임베딩 공간의 기하가 닫힌다</text>
+
+  <circle cx="100" cy="161" r="5" fill="#e8e8e8"/>
+  <text x="126" y="166" font-size="15" font-weight="600" fill="#7ec8e3">17번까지</text>
+  <text x="236" y="166" font-size="14" fill="#e8e8e8">행렬 분해와 LoRA의 근거가 닫힌다</text>
+
+  <circle cx="100" cy="206" r="5" fill="#e8e8e8"/>
+  <text x="126" y="211" font-size="15" font-weight="600" fill="#7ec8e3">31번까지</text>
+  <text x="236" y="211" font-size="14" fill="#e8e8e8">사전학습 손실 한 줄의 유도가 닫힌다</text>
+
+  <circle cx="100" cy="251" r="5" fill="#e8e8e8"/>
+  <text x="126" y="256" font-size="15" font-weight="600" fill="#7ec8e3">39번까지</text>
+  <text x="236" y="256" font-size="14" fill="#e8e8e8">역전파가 연쇄법칙 한 줄로 닫힌다</text>
+
+  <circle cx="100" cy="296" r="8" fill="#55c555"/>
+  <text x="126" y="301" font-size="15" font-weight="600" fill="#55c555">43번까지</text>
+  <text x="236" y="301" font-size="14" font-weight="600" fill="#55c555">어텐션 한 줄이 통째로 닫힌다</text>
+
+  <circle cx="100" cy="341" r="5" fill="#e8e8e8"/>
+  <text x="126" y="346" font-size="15" font-weight="600" fill="#7ec8e3">51번까지</text>
+  <text x="236" y="346" font-size="14" fill="#e8e8e8">최적화기가 왜 그렇게 생겼는지 닫힌다</text>
+
+  <circle cx="100" cy="386" r="5" fill="#e8e8e8"/>
+  <text x="126" y="391" font-size="15" font-weight="600" fill="#7ec8e3">58번까지</text>
+  <text x="236" y="391" font-size="14" fill="#e8e8e8">정렬 목적식(DPO)의 유도가 닫힌다</text>
+
+  <circle cx="100" cy="430" r="5" fill="#e8e8e8"/>
+  <text x="126" y="435" font-size="15" font-weight="600" fill="#7ec8e3">80번까지</text>
+  <text x="236" y="435" font-size="14" fill="#e8e8e8">모든 점수에 오차막대를 붙일 수 있다</text>
+</svg>

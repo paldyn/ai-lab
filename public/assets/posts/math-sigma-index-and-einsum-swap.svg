@@ -1,0 +1,91 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="524" viewBox="0 0 880 524" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <rect width="880" height="524" rx="12" fill="#0a0a0a"/>
+
+  <text x="60" y="56" font-size="22" font-weight="700" fill="#e8e8e8">이중합의 순서를 바꿔도 되는 이유</text>
+  <text x="60" y="82" font-size="13" fill="#888">같은 16개 칸을 다른 순서로 훑을 뿐이다</text>
+
+  <text x="238" y="128" font-size="16" font-weight="600" fill="#e8e8e8" text-anchor="middle">행 먼저 — Σi ( Σj a[i,j] )</text>
+  <text x="642" y="128" font-size="16" font-weight="600" fill="#e8e8e8" text-anchor="middle">열 먼저 — Σj ( Σi a[i,j] )</text>
+
+  <rect x="150" y="150" width="44" height="44" fill="none" stroke="#444" stroke-width="1"/>
+  <rect x="194" y="150" width="44" height="44" fill="none" stroke="#444" stroke-width="1"/>
+  <rect x="238" y="150" width="44" height="44" fill="none" stroke="#444" stroke-width="1"/>
+  <rect x="282" y="150" width="44" height="44" fill="none" stroke="#444" stroke-width="1"/>
+  <rect x="150" y="194" width="44" height="44" fill="none" stroke="#444" stroke-width="1"/>
+  <rect x="194" y="194" width="44" height="44" fill="none" stroke="#444" stroke-width="1"/>
+  <rect x="238" y="194" width="44" height="44" fill="none" stroke="#444" stroke-width="1"/>
+  <rect x="282" y="194" width="44" height="44" fill="none" stroke="#444" stroke-width="1"/>
+  <rect x="150" y="238" width="44" height="44" fill="none" stroke="#444" stroke-width="1"/>
+  <rect x="194" y="238" width="44" height="44" fill="none" stroke="#444" stroke-width="1"/>
+  <rect x="238" y="238" width="44" height="44" fill="none" stroke="#444" stroke-width="1"/>
+  <rect x="282" y="238" width="44" height="44" fill="none" stroke="#444" stroke-width="1"/>
+  <rect x="150" y="282" width="44" height="44" fill="none" stroke="#444" stroke-width="1"/>
+  <rect x="194" y="282" width="44" height="44" fill="none" stroke="#444" stroke-width="1"/>
+  <rect x="238" y="282" width="44" height="44" fill="none" stroke="#444" stroke-width="1"/>
+  <rect x="282" y="282" width="44" height="44" fill="none" stroke="#444" stroke-width="1"/>
+  <rect x="554" y="150" width="44" height="44" fill="none" stroke="#444" stroke-width="1"/>
+  <rect x="598" y="150" width="44" height="44" fill="none" stroke="#444" stroke-width="1"/>
+  <rect x="642" y="150" width="44" height="44" fill="none" stroke="#444" stroke-width="1"/>
+  <rect x="686" y="150" width="44" height="44" fill="none" stroke="#444" stroke-width="1"/>
+  <rect x="554" y="194" width="44" height="44" fill="none" stroke="#444" stroke-width="1"/>
+  <rect x="598" y="194" width="44" height="44" fill="none" stroke="#444" stroke-width="1"/>
+  <rect x="642" y="194" width="44" height="44" fill="none" stroke="#444" stroke-width="1"/>
+  <rect x="686" y="194" width="44" height="44" fill="none" stroke="#444" stroke-width="1"/>
+  <rect x="554" y="238" width="44" height="44" fill="none" stroke="#444" stroke-width="1"/>
+  <rect x="598" y="238" width="44" height="44" fill="none" stroke="#444" stroke-width="1"/>
+  <rect x="642" y="238" width="44" height="44" fill="none" stroke="#444" stroke-width="1"/>
+  <rect x="686" y="238" width="44" height="44" fill="none" stroke="#444" stroke-width="1"/>
+  <rect x="554" y="282" width="44" height="44" fill="none" stroke="#444" stroke-width="1"/>
+  <rect x="598" y="282" width="44" height="44" fill="none" stroke="#444" stroke-width="1"/>
+  <rect x="642" y="282" width="44" height="44" fill="none" stroke="#444" stroke-width="1"/>
+  <rect x="686" y="282" width="44" height="44" fill="none" stroke="#444" stroke-width="1"/>
+
+  <rect width="44" height="44" fill="#7ec8e3" fill-opacity="0.30" stroke="#7ec8e3" stroke-width="2">
+    <animate attributeName="x" values="150;194;238;282;150;194;238;282;150;194;238;282;150;194;238;282" dur="6.4s" calcMode="discrete" repeatCount="indefinite"/>
+    <animate attributeName="y" values="150;150;150;150;194;194;194;194;238;238;238;238;282;282;282;282" dur="6.4s" calcMode="discrete" repeatCount="indefinite"/>
+  </rect>
+  <rect width="44" height="44" fill="#7ec8e3" fill-opacity="0.30" stroke="#7ec8e3" stroke-width="2">
+    <animate attributeName="x" values="554;554;554;554;598;598;598;598;642;642;642;642;686;686;686;686" dur="6.4s" calcMode="discrete" repeatCount="indefinite"/>
+    <animate attributeName="y" values="150;194;238;282;150;194;238;282;150;194;238;282;150;194;238;282" dur="6.4s" calcMode="discrete" repeatCount="indefinite"/>
+  </rect>
+
+  <text x="172" y="177" font-size="13" fill="#888" text-anchor="middle">1</text>
+  <text x="216" y="177" font-size="13" fill="#888" text-anchor="middle">2</text>
+  <text x="260" y="177" font-size="13" fill="#888" text-anchor="middle">3</text>
+  <text x="304" y="177" font-size="13" fill="#888" text-anchor="middle">4</text>
+  <text x="172" y="221" font-size="13" fill="#888" text-anchor="middle">5</text>
+  <text x="216" y="221" font-size="13" fill="#888" text-anchor="middle">6</text>
+  <text x="260" y="221" font-size="13" fill="#888" text-anchor="middle">7</text>
+  <text x="304" y="221" font-size="13" fill="#888" text-anchor="middle">8</text>
+  <text x="172" y="265" font-size="13" fill="#888" text-anchor="middle">9</text>
+  <text x="216" y="265" font-size="13" fill="#888" text-anchor="middle">10</text>
+  <text x="260" y="265" font-size="13" fill="#888" text-anchor="middle">11</text>
+  <text x="304" y="265" font-size="13" fill="#888" text-anchor="middle">12</text>
+  <text x="172" y="309" font-size="13" fill="#888" text-anchor="middle">13</text>
+  <text x="216" y="309" font-size="13" fill="#888" text-anchor="middle">14</text>
+  <text x="260" y="309" font-size="13" fill="#888" text-anchor="middle">15</text>
+  <text x="304" y="309" font-size="13" fill="#888" text-anchor="middle">16</text>
+  <text x="576" y="177" font-size="13" fill="#888" text-anchor="middle">1</text>
+  <text x="620" y="177" font-size="13" fill="#888" text-anchor="middle">2</text>
+  <text x="664" y="177" font-size="13" fill="#888" text-anchor="middle">3</text>
+  <text x="708" y="177" font-size="13" fill="#888" text-anchor="middle">4</text>
+  <text x="576" y="221" font-size="13" fill="#888" text-anchor="middle">5</text>
+  <text x="620" y="221" font-size="13" fill="#888" text-anchor="middle">6</text>
+  <text x="664" y="221" font-size="13" fill="#888" text-anchor="middle">7</text>
+  <text x="708" y="221" font-size="13" fill="#888" text-anchor="middle">8</text>
+  <text x="576" y="265" font-size="13" fill="#888" text-anchor="middle">9</text>
+  <text x="620" y="265" font-size="13" fill="#888" text-anchor="middle">10</text>
+  <text x="664" y="265" font-size="13" fill="#888" text-anchor="middle">11</text>
+  <text x="708" y="265" font-size="13" fill="#888" text-anchor="middle">12</text>
+  <text x="576" y="309" font-size="13" fill="#888" text-anchor="middle">13</text>
+  <text x="620" y="309" font-size="13" fill="#888" text-anchor="middle">14</text>
+  <text x="664" y="309" font-size="13" fill="#888" text-anchor="middle">15</text>
+  <text x="708" y="309" font-size="13" fill="#888" text-anchor="middle">16</text>
+
+  <text x="238" y="366" font-size="16" font-weight="600" fill="#55c555" text-anchor="middle">합 = 136</text>
+  <text x="642" y="366" font-size="16" font-weight="600" fill="#55c555" text-anchor="middle">합 = 136</text>
+
+  <rect x="60" y="396" width="760" height="68" rx="6" fill="#101010" stroke="#333" stroke-width="1"/>
+  <text x="84" y="422" font-size="13" font-weight="600" fill="#e8e8e8">유한한 합에서는 훑는 순서가 값을 바꾸지 않는다</text>
+  <text x="84" y="444" font-size="13" fill="#888">그래서 Σi Σj 를 Σj Σi 로 바꿔 쓰는 논문의 한 줄이 정당하다</text>
+</svg>

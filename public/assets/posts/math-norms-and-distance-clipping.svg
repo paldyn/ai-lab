@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="618" viewBox="0 0 880 618" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <defs>
+    <marker id="nred" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#e05555"/>
+    </marker>
+    <marker id="ngreen" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#55c555"/>
+    </marker>
+  </defs>
+  <rect width="880" height="618" rx="12" fill="#0a0a0a"/>
+
+  <text x="60" y="56" font-size="22" font-weight="700" fill="#e8e8e8">그래디언트 클리핑이 자르는 것은 길이뿐이다</text>
+  <text x="60" y="82" font-size="13" fill="#888">방향은 그대로 두고, L2 노름이 문턱을 넘을 때만 비율로 줄인다</text>
+
+  <line x1="150" y1="320" x2="570" y2="320" stroke="#888" stroke-width="1.5"/>
+  <line x1="300" y1="445" x2="300" y2="155" stroke="#888" stroke-width="1.5"/>
+
+  <circle cx="300" cy="320" r="110" fill="none" stroke="#55c555" stroke-width="2" stroke-dasharray="5,3"/>
+
+  <line x1="300" y1="320" x2="490.5" y2="210.0"
+        stroke="#e05555" stroke-width="2.5" stroke-dasharray="4,4" marker-end="url(#nred)">
+    <animate attributeName="x2" values="334.6;360.6;386.6;412.6;438.6;464.5;490.5;464.5;438.6;412.6;386.6;360.6;334.6" dur="6s" repeatCount="indefinite"/>
+    <animate attributeName="y2" values="300.0;285.0;270.0;255.0;240.0;225.0;210.0;225.0;240.0;255.0;270.0;285.0;300.0" dur="6s" repeatCount="indefinite"/>
+  </line>
+
+  <line x1="300" y1="320" x2="395.3" y2="265.0"
+        stroke="#55c555" stroke-width="3" marker-end="url(#ngreen)">
+    <animate attributeName="x2" values="334.6;360.6;386.6;395.3;395.3;395.3;395.3;395.3;395.3;395.3;386.6;360.6;334.6" dur="6s" repeatCount="indefinite"/>
+    <animate attributeName="y2" values="300.0;285.0;270.0;265.0;265.0;265.0;265.0;265.0;265.0;265.0;270.0;285.0;300.0" dur="6s" repeatCount="indefinite"/>
+  </line>
+
+  <circle cx="300" cy="320" r="4" fill="#e8e8e8"/>
+
+  <line x1="610" y1="232" x2="646" y2="232" stroke="#e05555" stroke-width="2.5" stroke-dasharray="4,4"/>
+  <text x="660" y="237" font-size="13" fill="#e8e8e8">원본 그래디언트 g</text>
+
+  <line x1="610" y1="268" x2="646" y2="268" stroke="#55c555" stroke-width="3"/>
+  <text x="660" y="273" font-size="13" fill="#e8e8e8">클리핑된 그래디언트</text>
+
+  <line x1="610" y1="304" x2="646" y2="304" stroke="#55c555" stroke-width="2" stroke-dasharray="5,3"/>
+  <text x="660" y="309" font-size="13" fill="#e8e8e8">‖g‖₂ = c 인 경계</text>
+
+  <rect x="60" y="470" width="760" height="88" rx="6" fill="#101010" stroke="#333" stroke-width="1"/>
+  <text x="84" y="496" font-size="13" font-weight="600" fill="#e8e8e8">클리핑은 방향을 남기고 길이만 자른다</text>
+  <text x="84" y="518" font-size="13" fill="#888">g ← g · min(1, c / ‖g‖₂) — 노름이 c를 넘을 때만 그 비율로 줄인다</text>
+  <text x="84" y="540" font-size="13" fill="#888">문턱 안에서는 원본과 클리핑 결과가 완전히 같다 — 초록이 빨강을 덮는 구간이다</text>
+</svg>
