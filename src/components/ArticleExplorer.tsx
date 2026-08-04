@@ -3,6 +3,7 @@ import { articles } from '../data/articles';
 import { categories } from '../data/categories';
 import type { CategoryId } from '../types/article';
 import { ArticleCard } from './ArticleCard';
+import { TagFilter, type TagCount } from './TagFilter';
 
 interface ArticleExplorerProps {
   fixedCategoryId?: CategoryId;
@@ -18,18 +19,6 @@ interface ArticleExplorerProps {
 
 /** 한 번에 그리는 글 수. 수백 편이 한꺼번에 붙으면 프리렌더 HTML도 스크롤도 무거워집니다. */
 const PAGE_SIZE = 24;
-
-/** 태그가 1,000개를 넘어 전부 칩으로 깔면 필터가 본문보다 길어집니다.
- *  나머지는 전역 검색('/')이 맡습니다. */
-const TAG_LIMIT = 14;
-
-/**
- * 한 편에만 붙은 태그는 필터가 아니라 그 글의 별명입니다. 걸러도 검색창으로
- * 찾을 수 있으므로 칩에서는 뺍니다. 다만 글이 적은 카테고리에서는 이 기준을
- * 적용하면 남는 게 없어, 후보가 너무 줄면 그냥 전부 보여 줍니다.
- */
-const MIN_TAG_USES = 2;
-const MIN_TAG_CANDIDATES = 12;
 
 export function ArticleExplorer({
   fixedCategoryId,
@@ -47,26 +36,19 @@ export function ArticleExplorer({
   );
   const categoryOptions = categories.filter((category) => !categoryIds || categoryIds.includes(category.id));
 
-  // 글이 많은 태그부터 보여 줍니다. 알파벳순이면 쓸모없는 꼬리 태그가 앞자리를 차지합니다.
-  const availableTags = useMemo(() => {
-    const scope =
-      !fixedCategoryId && !categoryIds
-        ? articles
-        : scopedArticles.filter((article) => !fixedCategoryId || article.categoryId === fixedCategoryId);
+  // 지금 보고 있는 범위의 태그를 글 수와 함께, 많이 쓰인 순으로.
+  const tagCounts = useMemo<TagCount[]>(() => {
+    const scope = scopedArticles.filter((article) => !fixedCategoryId || article.categoryId === fixedCategoryId);
 
     const counts = new Map<string, number>();
     for (const article of scope) {
       for (const item of article.tags) counts.set(item, (counts.get(item) ?? 0) + 1);
     }
 
-    const byUse = (a: string, b: string) =>
-      (counts.get(b) ?? 0) - (counts.get(a) ?? 0) || a.localeCompare(b, 'ko');
-
-    const repeated = Array.from(counts.keys()).filter((tag) => (counts.get(tag) ?? 0) >= MIN_TAG_USES);
-    const candidates = repeated.length >= MIN_TAG_CANDIDATES ? repeated : Array.from(counts.keys());
-
-    return candidates.sort(byUse);
-  }, [categoryIds, fixedCategoryId, scopedArticles]);
+    return Array.from(counts, ([name, count]) => ({ name, count })).sort(
+      (a, b) => b.count - a.count || a.name.localeCompare(b.name, 'ko'),
+    );
+  }, [fixedCategoryId, scopedArticles]);
 
   const filteredArticles = useMemo(() => {
     const matched = scopedArticles.filter((article) => {
@@ -96,86 +78,37 @@ export function ArticleExplorer({
     setVisible(PAGE_SIZE);
   }
 
-  const shownTags = availableTags.slice(0, TAG_LIMIT);
   const shownArticles = filteredArticles.slice(0, visible);
-  const hasFilters = tag !== 'all' || (!fixedCategoryId && categoryId !== 'all');
-
-  const reset = () => {
-    setCategoryId(fixedCategoryId ?? 'all');
-    setTag('all');
-  };
 
   return (
     <div>
-      <div className="explorer-panel">
-        {!fixedCategoryId && !hideCategoryFilter && (
-          <div className="filter-row" aria-label="카테고리 필터">
-            <span className="filter-label">CATEGORY</span>
-            <button
-              type="button"
-              className={`filter-chip ${categoryId === 'all' ? 'active' : ''}`}
-              aria-pressed={categoryId === 'all'}
-              onClick={() => setCategoryId('all')}
-            >
-              전체
-            </button>
-            {categoryOptions.map((category) => (
-              <button
-                type="button"
-                key={category.id}
-                className={`filter-chip ${categoryId === category.id ? 'active' : ''}`}
-                aria-pressed={categoryId === category.id}
-                onClick={() => setCategoryId(category.id)}
-              >
-                {category.name}
-              </button>
-            ))}
-          </div>
-        )}
-
-        <div className="filter-row" aria-label="태그 필터">
-          <span className="filter-label">TAG</span>
+      {!fixedCategoryId && !hideCategoryFilter && (
+        <div className="explorer-categories" aria-label="카테고리 필터">
           <button
             type="button"
-            className={`filter-chip ${tag === 'all' ? 'active' : ''}`}
-            aria-pressed={tag === 'all'}
-            onClick={() => setTag('all')}
+            className={`filter-chip ${categoryId === 'all' ? 'active' : ''}`}
+            aria-pressed={categoryId === 'all'}
+            onClick={() => setCategoryId('all')}
           >
             전체
           </button>
-          {shownTags.map((item) => (
+          {categoryOptions.map((category) => (
             <button
               type="button"
-              key={item}
-              className={`filter-chip ${tag === item ? 'active' : ''}`}
-              aria-pressed={tag === item}
-              onClick={() => setTag(item)}
+              key={category.id}
+              className={`filter-chip ${categoryId === category.id ? 'active' : ''}`}
+              aria-pressed={categoryId === category.id}
+              onClick={() => setCategoryId(category.id)}
             >
-              #{item}
+              {category.name}
             </button>
           ))}
-          {availableTags.length > TAG_LIMIT && (
-            <p className="filter-hint">
-              자주 쓰인 태그만 보여 줍니다. 나머지 {availableTags.length - TAG_LIMIT}개를 포함한 전체 검색은{' '}
-              <kbd>/</kbd> 를 누르세요.
-            </p>
-          )}
         </div>
-      </div>
+      )}
 
-      <div className="mb-6 mt-7 flex items-center justify-between border-b border-[var(--border)] pb-4">
-        <p className="font-mono text-[11px] tracking-[0.1em] text-[var(--text-dim)]">
-          RESULT / {String(filteredArticles.length).padStart(2, '0')}
-        </p>
-        {hasFilters && (
-          <button
-            type="button"
-            onClick={reset}
-            className="text-xs text-[var(--text-dim)] underline decoration-[var(--border)] underline-offset-4 hover:text-[var(--text)]"
-          >
-            필터 초기화
-          </button>
-        )}
+      <div className="explorer-bar">
+        <p className="explorer-count">RESULT / {String(filteredArticles.length).padStart(2, '0')}</p>
+        {tagCounts.length > 0 && <TagFilter tags={tagCounts} value={tag} onChange={setTag} />}
       </div>
 
       {filteredArticles.length > 0 ? (
@@ -199,7 +132,7 @@ export function ArticleExplorer({
       ) : (
         <div className="py-20 text-center">
           <p className="text-lg text-[var(--text-strong)]">일치하는 글이 없습니다.</p>
-          <p className="mt-2 text-sm text-[var(--text-dim)]">검색어를 줄이거나 필터를 초기화해 보세요.</p>
+          <p className="mt-2 text-sm text-[var(--text-dim)]">태그 필터를 해제하거나 검색을 이용해 보세요.</p>
         </div>
       )}
     </div>
