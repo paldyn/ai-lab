@@ -375,6 +375,59 @@ input:focus-visible {
   color: var(--text-strong);
 }
 
+/*
+ * 맨 위로.
+ * 모양은 헤더의 .icon-button을 그대로 쓰되, 글 위에 떠 있으므로 배경과 테두리를
+ * 항상 칠합니다 — 투명하게 두면 본문 글자와 겹쳐 읽히지 않습니다.
+ * 44px은 손끝으로 누르는 최소 크기입니다(헤더의 34px은 마우스 기준).
+ */
+.to-top {
+  position: fixed;
+  /* 40=태그 필터 패널, 50=헤더, 100·120=팝업. 본문 위, 팝업 아래에 둡니다. */
+  z-index: 45;
+  right: 24px;
+  bottom: 24px;
+  width: 44px;
+  height: 44px;
+  border-color: var(--border);
+  background: var(--bg);
+  box-shadow: 0 8px 24px rgb(0 0 0 / 0.16);
+  /* 숨을 때 visibility까지 꺼야 탭 순서와 접근성 트리에서 빠집니다.
+     opacity만 0으로 두면 보이지 않는 버튼에 Tab이 한 번 멈춥니다. */
+  visibility: hidden;
+  opacity: 0;
+  transform: translateY(8px);
+  /* .icon-button의 transition을 통째로 덮으므로 거기 있던 셋을 함께 적습니다. */
+  transition: opacity 180ms ease, transform 180ms ease, visibility 0s linear 180ms,
+    border-color 160ms ease, color 160ms ease, background-color 160ms ease;
+}
+
+.to-top.is-shown {
+  visibility: visible;
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0s;
+}
+
+/*
+  팝업이 열리면 #root에 inert가 붙어 눌리지도 잡히지도 않지만 그리기는 계속됩니다.
+  백드롭 뒤로 비치는 것까지 감춥니다. 명시도를 .to-top.is-shown보다 높게 두려고
+  [inert]가 아니라 #root[inert]로 씁니다 — 작성 순서에 기대지 않기 위해서입니다.
+*/
+#root[inert] .to-top {
+  visibility: hidden;
+  opacity: 0;
+}
+
+/*
+  조작하는 요소가 아니라 '여기서부터 본문'이라는 표지입니다. 맨 위로 버튼과
+  건너뛰기 링크가 포커스를 여기로 옮기는데, 링이 뜨면 본문 전체에 테두리가
+  둘리므로 링만 끕니다.
+*/
+#main-content:focus-visible {
+  outline: none;
+}
+
 .mobile-nav {
   border-top: 1px solid var(--border);
   background: var(--bg);
@@ -3136,6 +3189,12 @@ input:focus-visible {
 
   .brand-suffix {
     font-size: 10px;
+  }
+
+  /* 좌우 여백이 20px로 좁아지므로 버튼도 같이 안쪽으로 당깁니다. */
+  .to-top {
+    right: 16px;
+    bottom: 16px;
   }
 
   .theme-logo {

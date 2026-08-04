@@ -1,6 +1,6 @@
-import { useEffect, useState, type ReactNode } from 'react';
+import { useEffect, useRef, useState, type ReactNode } from 'react';
 import { Link, NavLink, useLocation } from 'react-router';
-import { Menu, Moon, Search, Sun, X } from 'lucide-react';
+import { ArrowUp, Menu, Moon, Search, Sun, X } from 'lucide-react';
 import { assetUrl } from '../data/sources';
 import { SearchOverlay } from './SearchOverlay';
 
@@ -57,10 +57,23 @@ function isTypingTarget(target: EventTarget | null): boolean {
   return target.isContentEditable || ['INPUT', 'TEXTAREA', 'SELECT'].includes(target.tagName);
 }
 
+/**
+ * 화면 한 칸의 단위. 학습은 분야를 주소로 고르지만(/learn/<분야>) 그것은 다른
+ * 페이지로 가는 게 아니라 같은 목록에 필터를 거는 일입니다. 한 칸으로 묶어 두면
+ * 분야를 바꿔도 main을 다시 마운트하지 않고 스크롤도 건드리지 않습니다.
+ * 주소와 프리렌더는 그대로입니다.
+ */
+function viewKey(pathname: string): string {
+  return pathname === '/learn' || pathname.startsWith('/learn/') ? '/learn' : pathname;
+}
+
 export function Layout({ children }: { children: ReactNode }) {
   const [menuOpen, setMenuOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
+  const [atTop, setAtTop] = useState(true);
+  const mainRef = useRef<HTMLElement>(null);
   const location = useLocation();
+  const view = viewKey(location.pathname);
 
   // 경로가 바뀌면 모바일 메뉴를 닫습니다. effect에서 setState하면 렌더가 한 번 더
   // 돌기 때문에, React가 권하는 '렌더 도중 상태 조정' 방식을 씁니다.
@@ -102,8 +115,58 @@ export function Layout({ children }: { children: ReactNode }) {
       });
       return;
     }
-    window.scrollTo({ top: 0, behavior: 'auto' });
-  }, [location.hash, location.pathname]);
+    // html에 scroll-behavior: smooth가 걸려 있어(styles.css) 'auto'는 '즉시'가 아니라
+    // '부드럽게'로 읽힙니다. 페이지를 옮길 때는 미끄러지지 않고 위에서 시작해야 합니다.
+    window.scrollTo({ top: 0, behavior: 'instant' });
+  }, [location.hash, view]);
+
+  // 한 화면 넘게 내려가야 '맨 위로'를 내놓습니다. 고정 픽셀을 기준으로 삼으면
+  // 좁은 화면에서는 너무 일찍, 넓은 화면에서는 너무 늦게 뜹니다.
+  // 첫 렌더 값은 프리렌더 결과와 같아야 하므로 숨김에서 시작하고, 마운트 뒤에
+  // 실제 위치를 한 번 잽니다 — 뒤로 가기로 중간 위치가 복원되면 스크롤 이벤트가
+  // 아예 오지 않기 때문입니다.
+  useEffect(() => {
+    let frame = 0;
+    const measure = () => {
+      frame = 0;
+      setAtTop(window.scrollY < window.innerHeight);
+    };
+    // 스크롤은 한 번 밀 때마다 수십 번 옵니다. 프레임마다 한 번으로 묶습니다.
+    const schedule = () => {
+      if (frame) return;
+      frame = window.requestAnimationFrame(measure);
+    };
+
+    measure();
+    // passive는 '이 리스너는 스크롤을 막지 않는다'는 약속이라 브라우저가 기다리지 않습니다.
+    window.addEventListener('scroll', schedule, { passive: true });
+    // 기준이 화면 높이라 창 크기가 바뀌면 다시 재야 합니다.
+    window.addEventListener('resize', schedule, { passive: true });
+    return () => {
+      window.removeEventListener('scroll', schedule);
+      window.removeEventListener('resize', schedule);
+      if (frame) window.cancelAnimationFrame(frame);
+    };
+  }, []);
+
+  /*
+    주요 메뉴의 '학습'에만 답니다. viewKey가 /learn과 /learn/<분야>를 한 칸으로
+    묶어 둔 탓에 분야 화면에서 이 링크를 눌러도 위 스크롤 effect가 돌지 않아,
+    목록 중간에 선 채로 머리말만 화면 밖에 남습니다. 자리를 지키는 것은 옆
+    레일로 분야를 바꿀 때 필요한 것이고, 헤더 메뉴는 '섹션으로 간다'는 신호라
+    맨 위에서 시작해야 합니다.
+  */
+  const startAtTop = () => window.scrollTo({ top: 0, behavior: 'instant' });
+
+  const goToTop = () => {
+    // 여기서는 behavior를 넘기지 않습니다. html의 scroll-behavior를 그대로 따르므로
+    // '동작 줄이기'를 켠 환경에서는 스타일시트가 그 값을 auto로 덮어 즉시 이동합니다.
+    // 'smooth'라고 적으면 그 덮어쓰기를 건너뛰게 됩니다.
+    window.scrollTo({ top: 0 });
+    // 화면만 올라가고 포커스가 문서 끝에 남으면 키보드 사용자는 Tab을 눌렀을 때
+    // 여전히 문서 끝에서 이어갑니다. 건너뛰기 링크와 같은 자리로 옮깁니다.
+    mainRef.current?.focus({ preventScroll: true });
+  };
 
   return (
     <div className="min-h-screen bg-[var(--bg)] text-[var(--text)]">
@@ -124,7 +187,7 @@ export function Layout({ children }: { children: ReactNode }) {
           <nav className="primary-nav hidden lg:flex" aria-label="주요 메뉴">
             <NavLink to="/" end>홈</NavLink>
             <NavLink to="/news">뉴스</NavLink>
-            <NavLink to="/learn">학습</NavLink>
+            <NavLink to="/learn" onClick={startAtTop}>학습</NavLink>
             <NavLink to="/research">리서치</NavLink>
           </nav>
 
@@ -160,14 +223,14 @@ export function Layout({ children }: { children: ReactNode }) {
             <div className="site-wrap grid grid-cols-2 gap-x-5">
               <NavLink to="/" end className="mobile-nav-link">홈</NavLink>
               <NavLink to="/news" className="mobile-nav-link">뉴스</NavLink>
-              <NavLink to="/learn" className="mobile-nav-link">학습</NavLink>
+              <NavLink to="/learn" className="mobile-nav-link" onClick={startAtTop}>학습</NavLink>
               <NavLink to="/research" className="mobile-nav-link">리서치</NavLink>
             </div>
           </nav>
         )}
       </header>
 
-      <main id="main-content" key={location.pathname} className="page-transition">
+      <main id="main-content" ref={mainRef} tabIndex={-1} key={view} className="page-transition">
         {children}
       </main>
 
@@ -189,6 +252,20 @@ export function Layout({ children }: { children: ReactNode }) {
           </div>
         </div>
       </footer>
+
+      {/*
+        맨 위로. 팝업이 열리면 #root에 inert가 붙어 여기까지 함께 잠기므로
+        따로 닫을 조건을 두지 않습니다 — 보이는 것만 CSS에서 감춥니다.
+      */}
+      <button
+        type="button"
+        className={`icon-button to-top${atTop ? '' : ' is-shown'}`}
+        onClick={goToTop}
+        aria-label="맨 위로 이동"
+        title="맨 위로"
+      >
+        <ArrowUp size={18} strokeWidth={1.7} aria-hidden="true" />
+      </button>
 
       <SearchOverlay open={searchOpen} onClose={() => setSearchOpen(false)} />
     </div>
