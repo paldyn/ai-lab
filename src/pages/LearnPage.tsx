@@ -1,5 +1,4 @@
-import type { CSSProperties } from 'react';
-import { ArrowLeft } from 'lucide-react';
+import { useEffect, useRef, type CSSProperties } from 'react';
 import { Link, Navigate, useParams } from 'react-router';
 import { ArticleExplorer } from '../components/ArticleExplorer';
 import { PageHeader } from '../components/PageHeader';
@@ -24,6 +23,20 @@ export function LearnPage() {
 function LearnView({ active }: { active?: Category }) {
   const counts = countByCategory();
   const total = learnCategoryIds.reduce((sum, id) => sum + (counts[id] ?? 0), 0);
+  const layoutRef = useRef<HTMLDivElement>(null);
+
+  /*
+    분야를 바꿔도 맨 위로 올리지 않습니다 — 올리면 '페이지가 넘어갔다'로 읽힙니다.
+    다만 목록 머리가 화면 위로 지나가 있으면 그때만 머리에 맞춥니다. 아무것도 안
+    하면 긴 분야를 '더 보기'로 펼쳐 놓고 짧은 분야로 옮길 때 문서가 줄어들며
+    푸터 앞에 떨어집니다. 96px은 sticky 헤더 보정값으로, styles.css의
+    scroll-margin-top과 레일의 top이 쓰는 값과 같습니다.
+  */
+  useEffect(() => {
+    const top = layoutRef.current?.getBoundingClientRect().top;
+    if (top === undefined || top >= 96) return;
+    window.scrollTo({ top: window.scrollY + top - 96, behavior: 'instant' });
+  }, [active?.id]);
 
   return (
     <>
@@ -37,6 +50,12 @@ function LearnView({ active }: { active?: Category }) {
         path={active ? `/learn/${active.id}` : '/learn'}
       />
 
+      {/*
+        분야를 골라도 지표는 두 칸 그대로입니다. 한 칸으로 줄면 오른쪽 열의 폭과
+        구성이 통째로 달라져 '다른 페이지'라는 신호가 됩니다. 되돌아가기 링크가
+        싣고 있던 '학습 전체 N편'도 여기서 링크 없이 이어받습니다 — 되돌아가는
+        길은 옆 레일의 '전체'가 맡습니다.
+      */}
       <PageHeader
         kicker="PALDYN LEARN"
         title={active ? active.name : 'AI 학습'}
@@ -47,20 +66,14 @@ function LearnView({ active }: { active?: Category }) {
         }
         stats={
           active
-            ? [{ label: active.name, value: `${counts[active.id] ?? 0}편` }]
+            ? [
+                { label: active.name, value: `${counts[active.id] ?? 0}편` },
+                { label: '학습 전체', value: `${total}편` },
+              ]
             : [
                 { label: '전체', value: `${total}편` },
                 { label: '분야', value: String(learnCategories.length).padStart(2, '0') },
               ]
-        }
-        note={
-          active ? (
-            <p className="learn-breadcrumb">
-              <Link to="/learn">
-                <ArrowLeft size={13} aria-hidden="true" /> 학습 전체 {total}편
-              </Link>
-            </p>
-          ) : undefined
         }
       />
 
@@ -69,7 +82,7 @@ function LearnView({ active }: { active?: Category }) {
         글 목록이 아래로 밀립니다. 옆 레일은 몇 개가 되든 목록의 시작 위치를
         건드리지 않고, 스크롤해도 따라옵니다.
       */}
-      <div className="site-wrap learn-layout">
+      <div className="site-wrap learn-layout" ref={layoutRef}>
         <nav className="learn-rail" aria-label="학습 분야">
           <p className="learn-rail-label">분야</p>
 
@@ -92,15 +105,25 @@ function LearnView({ active }: { active?: Category }) {
           ))}
         </nav>
 
-        <section className="learn-list">
+        {/*
+          key를 목록 구역에 둡니다. 탐색기에 달면 같은 일을 하면서 페이드를 걸
+          자리가 없고, main에 달면 옆 레일과 머리말까지 다시 그려집니다. 여기에
+          두면 태그 필터와 '더 보기'만 처음으로 돌아갑니다.
+        */}
+        <section key={active?.id ?? 'all'} className="learn-list learn-swap">
           {active?.curriculum && (
             <p className="curriculum-note">
               배우는 순서대로 정렬했습니다. 앞 글이 뒤 글의 전제가 됩니다.
             </p>
           )}
-          {/* 옆 레일이 분야 선택을 맡으므로 칩은 띄우지 않습니다. */}
+          {/*
+            옆 레일이 분야 선택을 맡으므로 칩은 띄우지 않습니다.
+            categoryIds는 매 렌더마다 새 배열이지만 메모하지 않습니다 — 이 배열이
+            달라지는 때가 곧 분야가 바뀌는 때고, 그때는 바로 위 key가 탐색기를
+            통째로 다시 마운트합니다. 태그 필터나 '더 보기'로 탐색기 안이 다시
+            그려질 때는 이 컴포넌트가 아예 돌지 않아 배열도 그대로입니다.
+          */}
           <ArticleExplorer
-            key={active?.id ?? 'all'}
             categoryIds={active ? [active.id] : learnCategoryIds}
             hideCategoryFilter
             curriculum={active?.curriculum}
