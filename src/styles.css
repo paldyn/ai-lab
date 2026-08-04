@@ -744,10 +744,13 @@ input:focus-visible {
   더 보기로 늘어난 소식은 두 열 아래 전체 폭에 깝니다. 오른쪽 열에만
   계속 쌓으면 왼쪽이 텅 비고 목록도 한 줄로 길어집니다.
 */
+/*
+  한 줄에 한 건입니다. 2열로 깔면 제목과 요약이 좁아져 위 리드·피드와
+  글자 크기가 같은데도 다른 목록처럼 보였습니다.
+*/
 .news-feed-wide {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  column-gap: 40px;
+  grid-template-columns: 1fr;
   border-bottom: 1px solid var(--border);
 }
 
@@ -3101,10 +3104,6 @@ input:focus-visible {
     min-height: 0;
     padding-left: 0;
     border-left: 0;
-  }
-
-  .news-feed-wide {
-    grid-template-columns: 1fr;
   }
 
   .section-space {
