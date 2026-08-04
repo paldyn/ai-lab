@@ -1,7 +1,8 @@
-import { useCallback, useEffect, useRef, type CSSProperties } from 'react';
+import { useCallback, useEffect, useRef, useState, type CSSProperties } from 'react';
 import { createPortal } from 'react-dom';
 import { ArrowUpRight, X } from 'lucide-react';
-import type { ModelLogoTone } from '../data/news';
+import type { ModelLogoTone, NewsDetail } from '../data/news';
+import { loadNewsDetail } from '../lib/newsDetail';
 
 export interface NewsPreviewItem {
   id: string;
@@ -12,8 +13,6 @@ export interface NewsPreviewItem {
   signal: string;
   category: string;
   url: string;
-  points?: string[];
-  commentary?: string;
   accent: string;
   logo: string;
   logoTone?: ModelLogoTone;
@@ -44,6 +43,32 @@ export function NewsPreviewModal({ item, onClose }: NewsPreviewModalProps) {
   const close = useCallback(() => onCloseRef.current(), []);
 
   const isOpen = Boolean(item);
+
+  // 본문은 발행 월 단위 청크에 있습니다. 호출부가 넘겨 주지 않고 모달이 직접
+  // 받아 오므로, 뉴스 데스크든 Model Radar든 같은 본문을 그대로 보여 줍니다.
+  //
+  // 결과에 id를 함께 담아 두고 열려 있는 항목과 대조합니다. 이렇게 하면 소식을
+  // 옮겨 열 때 이전 본문이 잠깐 비치지 않고, 상태를 초기화하러 effect 안에서
+  // setState를 부를 일도 없습니다.
+  const [loaded, setLoaded] = useState<{ id: string; detail: NewsDetail | null } | null>(null);
+  const itemId = item?.id;
+  const itemDate = item?.publishedAt;
+
+  useEffect(() => {
+    if (!itemId || !itemDate) return undefined;
+
+    let cancelled = false;
+    loadNewsDetail(itemId, itemDate).then((result) => {
+      if (!cancelled) setLoaded({ id: itemId, detail: result });
+    });
+
+    return () => {
+      cancelled = true;
+    };
+  }, [itemId, itemDate]);
+
+  const detail = loaded && loaded.id === itemId ? loaded.detail : null;
+  const loadingDetail = Boolean(itemId) && loaded?.id !== itemId;
 
   useEffect(() => {
     if (!isOpen) return undefined;
@@ -140,19 +165,25 @@ export function NewsPreviewModal({ item, onClose }: NewsPreviewModalProps) {
           <h2 id={`news-preview-title-${item.id}`}>{item.title}</h2>
           <p className="news-preview-summary">{item.summary}</p>
 
-          {item.points && item.points.length > 0 && (
+          {loadingDetail && (
+            <div className="news-preview-loading" aria-hidden="true">
+              <span /><span /><span /><span />
+            </div>
+          )}
+
+          {detail && detail.points.length > 0 && (
             <section className="news-preview-points">
               <h3>무엇이 달라졌나</h3>
               <ul>
-                {item.points.map((point) => <li key={point}>{point}</li>)}
+                {detail.points.map((point) => <li key={point}>{point}</li>)}
               </ul>
             </section>
           )}
 
-          {item.commentary && (
+          {detail?.commentary && (
             <section className="news-preview-take">
               <h3>PALDYN 해설</h3>
-              <p>{item.commentary}</p>
+              <p>{detail.commentary}</p>
             </section>
           )}
 

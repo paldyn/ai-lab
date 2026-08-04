@@ -20,28 +20,41 @@ export interface ModelRelease {
   tone: ModelLogoTone;
 }
 
+/**
+ * 목록과 카드에 필요한 만큼만 담습니다. 모달에 들어가는 본문은 분량이 커서
+ * `news-details/<YYYY-MM>.ts`로 따로 빼 두고 모달을 열 때 받아 옵니다.
+ * 이 파일은 홈에도 실려 초기 번들에 통째로 들어가기 때문입니다.
+ */
 export interface NewsItem {
   id: string;
   source: NewsSource;
   kind: GlobalNewsKind;
   title: string;
-  /** 한 문단 요약. 원문에 있는 내용만 쓴다. */
+  /** 한 문단 요약. **원문에 있는 사실만** 쓴다. 우리 판단은 commentary로 보낸다. */
   summary: string;
-  /**
-   * 원문에서 뽑은 핵심 5~8개. 무엇이 달라졌는지, 수치, 가용성, 가격처럼
-   * 사실만 담는다. 원문을 통째로 옮기지 않는다 — 그건 남의 저작물 재발행이다.
-   */
-  points?: string[];
-  /**
-   * 이 발표가 왜 중요하고 무엇에 영향을 주는지에 대한 팔딘의 해설.
-   * 원문에 없는 판단이므로 우리 저작물이고, 사실과 섞이지 않게 분리해 둔다.
-   */
-  commentary?: string;
   publishedAt: string;
   category: string;
   signal: string;
   url: string;
   model?: ModelRelease;
+}
+
+/**
+ * 모달에서만 쓰는 본문. `news-details/<YYYY-MM>.ts`가 id를 키로 들고 있습니다.
+ * 파일을 나누는 기준은 `publishedAt`의 앞 7자리라 다른 달에 넣으면 영영
+ * 로딩되지 않습니다 — `news-details.test.ts`가 그것을 막습니다.
+ */
+export interface NewsDetail {
+  /**
+   * 원문에서 뽑은 핵심 5~8개. 무엇이 달라졌는지, 수치, 가용성, 가격처럼
+   * 사실만 담는다. 원문을 통째로 옮기지 않는다 — 그건 남의 저작물 재발행이다.
+   */
+  points: string[];
+  /**
+   * 이 발표가 왜 중요하고 무엇에 영향을 주는지에 대한 팔딘의 해설.
+   * 원문에 없는 판단이므로 우리 저작물이고, 사실과 섞이지 않게 분리해 둔다.
+   */
+  commentary: string;
 }
 
 export const globalNewsUpdatedAt = '2026-08-02';

@@ -71,8 +71,6 @@ export function GlobalNewsDesk({ showInternalLink = true, kind }: GlobalNewsDesk
       signal: item.signal,
       category: item.category,
       url: item.url,
-      points: item.points,
-      commentary: item.commentary,
       accent: meta.accent,
       logo: assetUrl(meta.logo),
       monochrome: meta.monochrome,

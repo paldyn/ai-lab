@@ -52,19 +52,30 @@ draft: false             # true면 목록·프리렌더에서 빠진다
 
 ## 뉴스 데이터
 
-`src/data/news.ts`는 공식 발표 큐레이션이다. 글이 아니라 데이터다.
+공식 발표 큐레이션이다. 글이 아니라 데이터고, 파일이 둘로 나뉜다.
 
-한 항목은 `summary`(요약), `points`(원문에서 뽑은 사실 5~8개), `commentary`(팔딘 해설)로
-나뉜다. **원문을 통째로 번역해 싣지 않는다** — OpenAI·Anthropic·Google 저작물의
-재발행이다. `summary`와 `points`에는 원문에 있는 사실만 쓰고, `commentary`에만
-원문에 없는 우리 판단을 쓴다. 둘을 섞지 않는다.
+- `src/data/news.ts` — 목록에 필요한 것(`title`, `summary`, `publishedAt`, `kind` 등).
+  홈에도 실려 **초기 번들에 통째로 들어가므로** 여기에 긴 것을 넣지 않는다.
+- `src/data/news-details/<YYYY-MM>.ts` — 모달 본문. `points`(원문에서 뽑은 사실
+  5~8개)와 `commentary`(팔딘 해설)를 id를 키로 담는다. 모달을 열 때 그 달치만
+  받아 온다.
+
+**항목을 넣는 달은 `publishedAt`의 앞 7자리와 반드시 같아야 한다.** 로더가 그것으로
+파일을 고르기 때문에 다른 달에 넣으면 오류 없이 본문만 안 나온다.
+`src/data/news-details.test.ts`가 이 어긋남과 points 개수를 검사한다.
+
+**원문을 통째로 번역해 싣지 않는다** — OpenAI·Anthropic·Google 저작물의 재발행이다.
+`summary`와 `points`에는 원문에 있는 사실만 쓰고, `commentary`에만 원문에 없는 우리
+판단을 쓴다. 둘을 섞지 않는다. "~하는 신호다", "~가 기준이 되고 있다" 같은 문장이
+`summary`에 있으면 그건 `commentary`로 갈 문장이다.
 
 `kind`는 `model` / `company` / `industry` 셋이고 뉴스 페이지의 탭과 대응한다.
 모델 발표는 `model` 블록을 함께 채우면 Model Radar에도 나온다.
 
 매일 20:00 UTC(05:00 KST)에 수집 루틴이 네 출처(openai.com, www.anthropic.com,
-deepmind.google, blog.google)를 읽고 이 파일을 갱신한다. 항목이 40개를 넘으면
-오래된 것부터 지운다 — 브리핑이지 아카이브가 아니다.
+deepmind.google, blog.google)를 읽고 이 파일을 갱신한다. 오래된 항목을 지우지
+않는다 — 2026년 1월부터 쌓는 아카이브다. 본문을 월별로 분리해 두었으니 목록이
+길어져도 첫 로딩이 무거워지지 않는다.
 
 **중복은 `id`로만 걸러진다.** `id`는 원문 URL의 마지막 조각이라 같은 URL은 확실히
 막히고, `npm test`가 한 번 더 잡는다. 하지만 같은 발표를 두 사이트가 각각 실으면

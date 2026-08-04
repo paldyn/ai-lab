@@ -935,6 +935,47 @@ input:focus-visible {
   margin-top: 28px;
 }
 
+/*
+  본문은 발행 월 청크에서 따로 받아 오므로 짧은 공백이 생깁니다. 그 사이
+  모달 높이가 요약만큼 줄었다가 늘어나면 눈에 거슬려서, 들어올 자리를
+  미리 잡아 둡니다. 줄 길이를 달리해 목록처럼 보이게 했습니다.
+*/
+.news-preview-loading {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 28px;
+}
+
+.news-preview-loading span {
+  height: 11px;
+  border-radius: 3px;
+  background: linear-gradient(
+    90deg,
+    var(--surface) 0%,
+    var(--border) 50%,
+    var(--surface) 100%
+  );
+  background-size: 200% 100%;
+  animation: news-preview-shimmer 1.4s ease-in-out infinite;
+}
+
+.news-preview-loading span:nth-child(1) { width: 34%; }
+.news-preview-loading span:nth-child(2) { width: 92%; }
+.news-preview-loading span:nth-child(3) { width: 78%; }
+.news-preview-loading span:nth-child(4) { width: 85%; }
+
+@keyframes news-preview-shimmer {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .news-preview-loading span {
+    animation: none;
+  }
+}
+
 .news-preview-points ul {
   list-style: none;
 }
