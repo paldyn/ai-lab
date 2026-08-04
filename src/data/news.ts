@@ -2,7 +2,7 @@ import { getSource, type ModelFamily, type NewsSource } from './sources';
 
 export type { NewsSource } from './sources';
 
-export type GlobalNewsKind = 'model' | 'company';
+export type GlobalNewsKind = 'model' | 'company' | 'industry';
 export type ModelReleaseKind = '신규 모델' | '모델 패밀리' | '연구 프리뷰';
 export type ModelReleaseStatus = '공개' | '제한 공개';
 export type ModelLogoTone = 'claude' | 'gemini' | 'gpt';

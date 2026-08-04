@@ -2,6 +2,7 @@ import { useRef, useState } from 'react';
 import { ArticleExplorer } from '../components/ArticleExplorer';
 import { GlobalNewsDesk } from '../components/GlobalNewsDesk';
 import { PageHeader } from '../components/PageHeader';
+import { newsItems, type GlobalNewsKind } from '../data/news';
 import { ModelRadar } from '../components/ModelRadar';
 import { Seo } from '../components/Seo';
 
@@ -14,8 +15,29 @@ const newsViews: Array<{ id: NewsView; label: string }> = [
   { id: 'industry', label: '산업·정책' },
 ];
 
+/**
+ * 당일 들어온 양을 보여 줍니다. 탭은 누적 분류라 겹치지 않습니다.
+ * 기준일은 new Date()가 아니라 가장 최근 발표일입니다. 정적 사이트라
+ * '오늘'을 쓰면 프리렌더 시각과 접속 시각이 갈려 하이드레이션이 어긋납니다.
+ */
+function buildTodayStats() {
+  const today = newsItems[0]?.publishedAt;
+  if (!today) return [];
+
+  const sameDay = newsItems.filter((item) => item.publishedAt === today);
+  const countOf = (kind: GlobalNewsKind) => sameDay.filter((item) => item.kind === kind).length;
+
+  return [
+    { label: '전체', value: String(sameDay.length) },
+    { label: '모델', value: String(countOf('model')) },
+    { label: '기업', value: String(countOf('company')) },
+    { label: '산업·정책', value: String(countOf('industry')) },
+  ];
+}
+
 export function NewsPage() {
   const [view, setView] = useState<NewsView>('all');
+  const todayStats = buildTodayStats();
   const tabRefs = useRef<Array<HTMLButtonElement | null>>([]);
 
   // 탭 위젯 키보드 규약: 좌우로 이동, Home/End로 양 끝. 포커스가 이동하면 선택도 함께 바뀝니다.
@@ -46,6 +68,7 @@ export function NewsPage() {
         kicker="PALDYN AI NEWS"
         title="AI 뉴스"
         description="Anthropic · OpenAI · Google DeepMind의 공식 발표만 골라, 무엇이 달라졌고 어디에 영향을 주는지 함께 읽습니다."
+        stats={todayStats}
       >
         <div className="news-view-tabs" role="tablist" aria-label="AI 뉴스 분류">
           {newsViews.map((item, index) => (
