@@ -1,5 +1,5 @@
 import type { CSSProperties } from 'react';
-import { ArrowLeft } from 'lucide-react';
+import { ArrowLeft, ArrowRight } from 'lucide-react';
 import { Link, Navigate, useParams } from 'react-router';
 import { ArticleExplorer } from '../components/ArticleExplorer';
 import { Seo } from '../components/Seo';
@@ -55,22 +55,28 @@ function LearnView({ active }: { active?: Category }) {
         </p>
       </section>
 
+      {/*
+        분야를 카드 그리드가 아니라 세로 목록으로 둡니다. 그리드는 개수가 늘면
+        어디선가 줄이 갈라져 남는 칸이 생기는데, 목록은 몇 개가 되든 같은 리듬으로
+        늘어납니다.
+      */}
       <nav className="site-wrap learn-nav" aria-label="학습 분야">
         {learnCategories.map((category) => (
           <Link
             key={category.id}
             to={`/learn/${category.id}`}
-            className={`learn-card ${active?.id === category.id ? 'is-active' : ''}`}
+            className={`learn-row ${active?.id === category.id ? 'is-active' : ''}`}
             style={{ '--learn-accent': category.accent } as CSSProperties}
             aria-current={active?.id === category.id ? 'page' : undefined}
           >
-            <span className="learn-card-index">{category.shortName}</span>
+            <span className="learn-row-index">{category.shortName}</span>
             <strong>{category.name}</strong>
-            <b className="learn-card-count">
+            <p>{category.description}</p>
+            <b className="learn-row-count">
               {counts[category.id] ?? 0}
               <i>편</i>
             </b>
-            <p>{category.description}</p>
+            <ArrowRight size={14} aria-hidden="true" />
           </Link>
         ))}
       </nav>

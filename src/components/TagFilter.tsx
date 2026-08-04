@@ -81,7 +81,7 @@ export function TagFilter({ tags, value, onChange }: TagFilterProps) {
         aria-expanded={open}
         onClick={() => setOpen((current) => !current)}
       >
-        태그로 좁히기
+        태그
         <span>{tags.length}</span>
         <ChevronDown size={13} aria-hidden="true" />
       </button>
