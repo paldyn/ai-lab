@@ -72,31 +72,29 @@ export function NewsPage() {
       />
 
       {/*
-        탭은 머리말 밖에 둡니다. 안에 있을 때는 이 페이지만 아래 여백을 0으로
-        깎아야 했고, 그래서 세 페이지의 머리말 높이가 서로 달라졌습니다.
+        분류는 학습·리서치의 카테고리 필터와 같은 칩으로 둡니다. 밑줄 탭을
+        머리말 바로 아래 띠로 두면 선이 겹쳐 두 줄이 되고, 선을 지우면
+        이번엔 머리말 안에 든 것처럼 보였습니다. 칩은 본문 흐름에 놓여
+        어느 쪽으로도 읽히지 않고, 세 섹션의 거르는 방식이 하나로 맞습니다.
       */}
-      <div className="news-view-tabs-bar">
-        <div className="site-wrap">
-          <div className="news-view-tabs" role="tablist" aria-label="AI 뉴스 분류">
-            {newsViews.map((item, index) => (
-              <button
-                key={item.id}
-                ref={(node) => { tabRefs.current[index] = node; }}
-                type="button"
-                role="tab"
-                id={`news-tab-${item.id}`}
-                aria-selected={view === item.id}
-                aria-controls="news-tabpanel"
-                tabIndex={view === item.id ? 0 : -1}
-                className={view === item.id ? 'active' : ''}
-                onClick={() => setView(item.id)}
-                onKeyDown={(event) => handleTabKeyDown(event, index)}
-              >
-                {item.label}
-              </button>
-            ))}
-          </div>
-        </div>
+      <div className="site-wrap news-view-tabs" role="tablist" aria-label="AI 뉴스 분류">
+        {newsViews.map((item, index) => (
+          <button
+            key={item.id}
+            ref={(node) => { tabRefs.current[index] = node; }}
+            type="button"
+            role="tab"
+            id={`news-tab-${item.id}`}
+            aria-selected={view === item.id}
+            aria-controls="news-tabpanel"
+            tabIndex={view === item.id ? 0 : -1}
+            className={`filter-chip ${view === item.id ? 'active' : ''}`}
+            onClick={() => setView(item.id)}
+            onKeyDown={(event) => handleTabKeyDown(event, index)}
+          >
+            {item.label}
+          </button>
+        ))}
       </div>
 
       <div id="news-tabpanel" role="tabpanel" aria-labelledby={`news-tab-${view}`} tabIndex={-1}>

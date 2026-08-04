@@ -2879,14 +2879,6 @@ input:focus-visible {
   border-bottom: 1px solid var(--border);
 }
 
-/*
-  뉴스처럼 머리말 바로 뒤에 탭 띠가 오면 선이 위아래로 둘이 됩니다.
-  띠 아래 선 하나만 남기고 머리말 쪽을 없앱니다.
-*/
-.page-header:has(+ .news-view-tabs-bar) {
-  border-bottom: 0;
-}
-
 .page-header-field {
   position: absolute;
   z-index: -1;
@@ -2980,47 +2972,15 @@ input:focus-visible {
  * 선은 머리말 것 하나만 쓰고, 탭이 그 위에 바로 앉도록 아래 여백을 없앱니다.
  */
 /*
-  머리말 밖의 독립된 띠입니다. 안에 있을 때는 뉴스 페이지만 머리말 아래
-  여백을 0으로 깎아야 해서 세 페이지의 머리말 높이가 어긋났습니다.
+  분류 칩. 학습·리서치의 카테고리 필터와 같은 `.filter-chip`을 쓰므로
+  모양은 그쪽이 정하고, 여기서는 놓이는 자리만 잡습니다.
+  머리말과 본문 사이에 숨 쉴 틈을 두어 배너에 붙어 보이지 않게 합니다.
 */
-.news-view-tabs-bar {
-  border-bottom: 1px solid var(--border);
-  background: var(--bg);
-}
-
 .news-view-tabs {
   display: flex;
-  gap: 28px;
-  overflow-x: auto;
-  scrollbar-width: thin;
-}
-
-.news-view-tabs button {
-  position: relative;
-  min-width: max-content;
-  height: 48px;
-  flex-shrink: 0;
-  padding-inline: 6px;
-  border: 0;
-  background: transparent;
-  color: var(--text-muted);
-  font-size: 12px;
-  transition: color 150ms ease;
-}
-
-.news-view-tabs button:hover,
-.news-view-tabs button.active {
-  color: var(--text-strong);
-}
-
-.news-view-tabs button.active::after {
-  position: absolute;
-  right: 6px;
-  bottom: 0;
-  left: 6px;
-  height: 2px;
-  background: var(--text-strong);
-  content: '';
+  flex-wrap: wrap;
+  gap: 7px;
+  padding-top: 34px;
 }
 
 .news-analysis-section {
