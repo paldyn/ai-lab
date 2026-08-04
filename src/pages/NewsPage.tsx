@@ -12,6 +12,12 @@ type NewsView = 'all' | CompanyCategory | 'models';
  * 문서가 한 줄에 섞였습니다. 갈래를 탭 안의 칩으로 두면 같은 목록을 두 번
  * 거르게 되므로 아예 탭으로 올렸습니다. 모델은 자기 갈래를 탭 안에서
  * 한 번 더 나눕니다 — 59건이라 탭까지 쪼갤 양이 아닙니다.
+ *
+ * 순서는 건수가 아니라 **중요도**입니다. 쓸 수 있는 것이 달라지는 쪽을
+ * 앞에 둡니다 — 모델이 바뀌면 만들 수 있는 것이 바뀌고, 그다음이 제품,
+ * 그다음이 새로 알아낸 것입니다. 규칙과 회사 사정, 그것을 떠받치는
+ * 인프라가 뒤를 잇습니다. 인프라 32건이 연구 31건보다 많지만 뒤에 두는
+ * 것도 그래서입니다.
  */
 const newsViews: Array<{ id: NewsView; label: string; heading: string; description: string }> = [
   {
@@ -19,6 +25,12 @@ const newsViews: Array<{ id: NewsView; label: string; heading: string; descripti
     label: '전체',
     heading: '주목할 AI 흐름',
     description: '새로운 발표에서 무엇이 달라졌고, 어디에 영향을 주는지 짚어봅니다.',
+  },
+  {
+    id: 'models',
+    label: 'AI 모델',
+    heading: '모델 발표',
+    description: '새 모델과 계열 개편, 가용성 변화를 발표된 순서대로 읽습니다.',
   },
   {
     id: 'Product',
@@ -49,12 +61,6 @@ const newsViews: Array<{ id: NewsView; label: string; heading: string; descripti
     label: '인프라',
     heading: '컴퓨트와 인프라',
     description: '데이터센터와 컴퓨트 계약, 전력과 칩 — AI를 떠받치는 것들입니다.',
-  },
-  {
-    id: 'models',
-    label: 'AI 모델',
-    heading: '모델 발표',
-    description: '새 모델과 계열 개편, 가용성 변화를 발표된 순서대로 읽습니다.',
   },
 ];
 
