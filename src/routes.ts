@@ -1,7 +1,14 @@
 import { articles } from './data/articles';
+import { categoryIdsIn } from './data/categories';
 
 /** 정적으로 존재하는 페이지. 리다이렉트 전용 경로는 포함하지 않습니다. */
-export const staticRoutes = ['/', '/news', '/research'] as const;
+export const staticRoutes: string[] = [
+  '/',
+  '/news',
+  '/concepts',
+  ...categoryIdsIn('concepts').map((id) => `/concepts/${id}`),
+  '/research',
+];
 
 /** 빌드 시 HTML로 미리 생성할 전체 경로. */
 export const prerenderRoutes: string[] = [

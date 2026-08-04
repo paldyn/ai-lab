@@ -11,6 +11,7 @@ declare module 'virtual:article-index' {
     level: string;
     featured: boolean;
     visual?: string;
+    order?: number;
   }
 
   export const articleIndex: ArticleIndexEntry[];

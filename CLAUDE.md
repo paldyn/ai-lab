@@ -23,12 +23,21 @@ draft: false             # true면 목록·프리렌더에서 빠진다
 ---
 ```
 
-- `category` 값: `ai-guide` / `agents-rag` / `ml-ops` / `math-for-ai` /
-  `paper-notes` / `tools` / `lab-notes` / `ai-news`.
+- `category` 값과 그 카테고리가 속한 섹션:
+
+| 섹션 | 주소 | 카테고리 |
+| --- | --- | --- |
+| 개념 | `/concepts` | `ai-guide` `math-for-ai` `agents-rag` `ml-ops` |
+| 리서치 | `/research` | `lab-notes` `paper-notes` `tools` |
+| 뉴스 | `/news` | `ai-news` |
+
   slug 접두사로 고르면 대체로 맞는다 — `agent-`·`rag-`·`prompt-`·`vector-`·
   `embedding-`은 `agents-rag`, `mlops-`·`llmops-`·`serving-`·`inference-`·
   `finetuning-`·`quantization-`은 `ml-ops`, `math-`는 `math-for-ai`,
   `project-`·`app-`·`eval-`은 `lab-notes`, 나머지는 `ai-guide`.
+  섹션은 `src/data/categories.ts`의 `section` 필드가 정하며 코드에서 자동으로 갈린다.
+- **수학 글을 새로 쓰면 `src/data/curriculum.ts`의 목록에도 슬러그를 넣는다.**
+  수학은 최신순이 아니라 이 목록의 순서로 보여 준다. 빠지면 목록 맨 뒤로 밀린다.
 - 내부 링크는 `/articles/<slug>` (슬래시로 끝내지 않는다). 프리렌더가
   `dist/articles/<slug>.html`로 나가기 때문에 슬래시를 붙이면 리다이렉트가 한 번 낀다.
 - 이미지: `public/assets/posts/<slug>-<설명>.svg`에 두고 `![설명](/assets/posts/파일명.svg)`.

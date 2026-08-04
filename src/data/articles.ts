@@ -1,6 +1,7 @@
 import { articleIndex } from 'virtual:article-index';
 import type { Article, ArticleLevel, CategoryId } from '../types/article';
 import { categoryById } from './categories';
+import { curriculumOrder } from './curriculum';
 
 const LEVELS: ArticleLevel[] = ['입문', '중급', '심화'];
 
@@ -20,7 +21,10 @@ export const articles: Article[] = articleIndex.map((entry) => {
     throw new Error(`${entry.slug}: 알 수 없는 level "${entry.level}"`);
   }
 
-  return { ...entry, categoryId: entry.categoryId, level: entry.level };
+  // frontmatter의 order가 우선이고, 없으면 커리큘럼 목록의 위치를 씁니다.
+  const order = entry.order ?? curriculumOrder(entry.slug);
+
+  return { ...entry, categoryId: entry.categoryId, level: entry.level, ...(order ? { order } : {}) };
 });
 
 const bySlug = new Map(articles.map((article) => [article.slug, article]));

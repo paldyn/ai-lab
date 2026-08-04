@@ -32,7 +32,10 @@ function relatedTo(article: Article): Article[] {
 
 function ArticleView({ article }: { article: Article }) {
   const category = categoryById[article.categoryId];
-  const collectionPath = article.categoryId === 'ai-news' ? '/news' : '/research';
+  // 글이 속한 섹션의 목록으로 돌아갑니다.
+  const collectionPath =
+    category.section === 'news' ? '/news' : category.section === 'research' ? '/research' : `/concepts/${category.id}`;
+  const collectionLabel = category.section === 'news' ? '뉴스' : category.section === 'research' ? '리서치' : category.name;
   const related = relatedTo(article);
 
   // 첫 화면에서는 프리렌더된 HTML을 DOM에서 그대로 읽어 씁니다.
@@ -64,7 +67,7 @@ function ArticleView({ article }: { article: Article }) {
 
       <header className="site-wrap article-header">
         <Link to={collectionPath} className="back-link">
-          <ArrowLeft size={14} aria-hidden="true" /> {article.categoryId === 'ai-news' ? '뉴스' : '리서치'}
+          <ArrowLeft size={14} aria-hidden="true" /> {collectionLabel}
         </Link>
         <div className="mt-10 grid gap-10 lg:grid-cols-[minmax(0,1fr)_420px] lg:items-end">
           <div>
@@ -123,7 +126,7 @@ function ArticleView({ article }: { article: Article }) {
             <Link to={collectionPath} className="back-link">
               <ArrowLeft size={14} aria-hidden="true" /> 목록으로
             </Link>
-            <Link to="/research" className="back-link">
+            <Link to="/concepts" className="back-link">
               전체 글 <ArrowRight size={14} aria-hidden="true" />
             </Link>
           </div>

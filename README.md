@@ -64,9 +64,21 @@ OG 이미지는 `scripts/og-image.html`을 헤드리스 Chrome으로 렌더해 `
 | `src/data/categories.ts` | 카테고리와 색 |
 
 글의 frontmatter는 `title`, `description`, `category`, `pubDate`가 필수이고
-빠지면 빌드가 섭니다. `category`는 `ai-guide` / `agents-rag` / `ml-ops` /
-`math-for-ai` / `paper-notes` / `tools` / `lab-notes` / `ai-news` 중 하나입니다.
-`draft: true`면 목록과 프리렌더에서 빠집니다.
+빠지면 빌드가 섭니다. `draft: true`면 목록과 프리렌더에서 빠집니다.
+
+카테고리는 세 섹션으로 갈리고, 섹션이 곧 네비게이션 한 칸입니다.
+
+| 섹션 | 주소 | 카테고리 |
+| --- | --- | --- |
+| 개념 | `/concepts`, `/concepts/<category>` | `ai-guide` `math-for-ai` `agents-rag` `ml-ops` |
+| 리서치 | `/research` | `lab-notes` `paper-notes` `tools` |
+| 뉴스 | `/news` | `ai-news` |
+
+`src/data/categories.ts`의 `section` 필드가 정합니다. 카테고리를 옮기면 네비게이션,
+프리렌더 경로, 글 하단의 '목록으로' 링크가 함께 따라갑니다.
+
+수학은 앞 글이 뒤 글의 전제가 되므로 최신순이 아니라 `src/data/curriculum.ts`의
+순서로 보여 줍니다. 수학 글을 추가하면 그 목록에도 슬러그를 넣어야 합니다.
 
 본문에서 쓸 수 있는 것:
 

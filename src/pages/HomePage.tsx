@@ -7,13 +7,14 @@ import { NewsPreviewModal, type NewsPreviewItem } from '../components/NewsPrevie
 import { Seo } from '../components/Seo';
 import { articles } from '../data/articles';
 import { globalNewsUpdatedAt, modelUpdates, newsBySource, newsItems } from '../data/news';
+import { categoryById } from '../data/categories';
 import { assetUrl, getSource, sourceList } from '../data/sources';
 
 const pad = (value: number) => String(value).padStart(2, '0');
 
 export function HomePage() {
   const [selectedNews, setSelectedNews] = useState<NewsPreviewItem | null>(null);
-  const latestArticles = articles.filter((article) => article.categoryId !== 'ai-news').slice(0, 4);
+  const latestArticles = articles.filter((article) => categoryById[article.categoryId].section === 'concepts').slice(0, 4);
   const latestModel = modelUpdates[0];
   const latestModelSource = latestModel ? getSource(latestModel.source) : null;
 
@@ -42,8 +43,8 @@ export function HomePage() {
               <Link to="/news" className="hero-action is-primary">
                 AI 뉴스 <ArrowRight size={14} aria-hidden="true" />
               </Link>
-              <Link to="/research" className="hero-action">
-                리서치 노트 <ArrowRight size={14} aria-hidden="true" />
+              <Link to="/concepts" className="hero-action">
+                개념 알아보기 <ArrowRight size={14} aria-hidden="true" />
               </Link>
             </div>
           </div>
@@ -151,8 +152,8 @@ export function HomePage() {
 
       <section className="site-wrap home-research-section">
         <div className="simple-section-heading">
-          <div><p className="section-kicker">PALDYN RESEARCH</p><h2>새로운 리서치 노트</h2></div>
-          <Link to="/research">전체 보기 <ArrowRight size={13} aria-hidden="true" /></Link>
+          <div><p className="section-kicker">PALDYN CONCEPTS</p><h2>새로 올라온 개념 글</h2></div>
+          <Link to="/concepts">전체 보기 <ArrowRight size={13} aria-hidden="true" /></Link>
         </div>
         <div>
           {latestArticles.map((article) => <ArticleCard key={article.slug} article={article} variant="row" />)}

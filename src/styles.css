@@ -1206,15 +1206,16 @@ input:focus-visible {
   letter-spacing: 0.12em;
 }
 
-.filter-chip,
 /* 태그가 많을 때 나머지를 펼치는 칩 */
 .filter-more {
+  flex-shrink: 0;
   border: 1px dashed var(--border);
   border-radius: 999px;
   background: none;
   padding: 5px 13px;
   color: var(--text-dim);
   font-size: 12px;
+  white-space: nowrap;
   transition: border-color 160ms ease, color 160ms ease;
 }
 
@@ -1252,6 +1253,7 @@ input:focus-visible {
   font-size: 11px;
 }
 
+.filter-chip,
 .tag-static {
   flex-shrink: 0;
   border: 1px solid var(--border);
@@ -1659,6 +1661,97 @@ input:focus-visible {
 
 .archive-page-heading > div > p:last-child {
   margin-top: 11px;
+  color: var(--text-dim);
+  font-size: 13px;
+  line-height: 1.7;
+}
+
+/* ============================================================
+   개념 섹션 진입 카드
+   수학 144편이 가이드 267편에 묻히지 않도록, 카테고리를 목록 위에
+   먼저 펼쳐 보여 주고 각각을 별도 주소로 갖게 합니다.
+   ============================================================ */
+.concept-nav {
+  display: grid;
+  gap: 1px;
+  margin-top: 40px;
+  border: 1px solid var(--border);
+  background: var(--border);
+}
+
+@media (min-width: 640px) {
+  .concept-nav {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1024px) {
+  .concept-nav {
+    /* 전체 카드는 좁게, 분야 카드 4개는 같은 너비로. */
+    grid-template-columns: 0.6fr repeat(4, minmax(0, 1fr));
+  }
+}
+
+.concept-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  background: var(--bg);
+  padding: 20px 20px 22px;
+  transition: background-color 160ms ease;
+}
+
+.concept-card:hover {
+  background: var(--bg-subtle);
+}
+
+.concept-card.is-active {
+  background: var(--bg-subtle);
+}
+
+/* 선택된 카드 위쪽에 카테고리 색 띠. */
+.concept-card.is-active::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--concept-accent, var(--brand));
+}
+
+.concept-card-index {
+  color: var(--concept-accent, var(--text-muted));
+  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  font-size: 10px;
+  letter-spacing: 0.14em;
+}
+
+.concept-card strong {
+  color: var(--text-strong);
+  font-size: 16px;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+}
+
+.concept-card-count {
+  color: var(--text-muted);
+  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  font-size: 11px;
+}
+
+.concept-card p {
+  margin-top: 6px;
+  color: var(--text-dim);
+  font-size: 12.5px;
+  line-height: 1.7;
+}
+
+.curriculum-note {
+  margin-bottom: 20px;
+  border-left: 2px solid var(--cat-math-for-ai-text);
+  padding-left: 14px;
   color: var(--text-dim);
   font-size: 13px;
   line-height: 1.7;

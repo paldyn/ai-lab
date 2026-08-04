@@ -23,6 +23,8 @@ export interface ArticleIndexEntry {
   featured: boolean;
   /** 카드 시각 요소에 쓸 짧은 식/문구. 없으면 태그로 대체합니다. */
   visual?: string;
+  /** 커리큘럼 카테고리에서의 순서. 작을수록 앞. */
+  order?: number;
 }
 
 async function readEntry(file: string, root: string): Promise<ArticleIndexEntry | null> {
@@ -49,6 +51,7 @@ async function readEntry(file: string, root: string): Promise<ArticleIndexEntry 
     level: String(data.level ?? '중급'),
     featured: data.featured === true,
     ...(data.visual ? { visual: String(data.visual) } : {}),
+    ...(Number.isFinite(Number(data.order)) ? { order: Number(data.order) } : {}),
   };
 }
 
