@@ -3,7 +3,7 @@ title: "TensorFlow/Keras로 시작하는 딥러닝"
 description: "Keras 3.x의 Sequential·Functional·Subclassing API, model.compile/fit/evaluate 패턴, 콜백 시스템, TF Serving 배포까지 TensorFlow/Keras 실전 워크플로를 정리합니다."
 author: "PALDYN Team"
 pubDate: "2026-05-28"
-category: "tools"
+category: "ai-guide"
 level: "중급"
 tags: ["TensorFlow", "Keras", "딥러닝", "Sequential", "FunctionalAPI", "model.fit", "콜백"]
 featured: false

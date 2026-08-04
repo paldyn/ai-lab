@@ -3,7 +3,7 @@ title: "프롬프트 반복 개발: 체계적인 이터레이션 워크플로우
 description: "감으로 프롬프트를 고치는 시대는 끝났다. 버전 관리, A/B 테스트, 자동 채점, 회귀 테스트를 갖춘 체계적인 프롬프트 이터레이션 시스템을 처음부터 구축한다."
 author: "PALDYN Team"
 pubDate: "2026-05-29"
-category: "lab-notes"
+category: "ai-guide"
 level: "중급"
 tags: ["프롬프트엔지니어링", "PromptOps", "A/B테스트", "버전관리", "프로젝트", "반복개발"]
 featured: false

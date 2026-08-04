@@ -3,7 +3,7 @@ title: "RAG 시스템 처음부터 구축하기: 실전 프로젝트"
 description: "문서 수집부터 청킹, 임베딩, 벡터 DB 저장, 검색, 생성까지 — LangChain 없이 순수 Python으로 RAG 시스템을 처음부터 구축하는 단계별 프로젝트 가이드."
 author: "PALDYN Team"
 pubDate: "2026-05-29"
-category: "lab-notes"
+category: "agents-rag"
 level: "중급"
 tags: ["RAG", "벡터DB", "임베딩", "검색증강생성", "프로젝트", "Python", "FAISS"]
 featured: false

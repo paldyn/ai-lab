@@ -3,7 +3,7 @@ title: "HuggingFace Datasets로 데이터 관리하기"
 description: "load_dataset()으로 허브 데이터 로딩, Dataset.map()으로 전처리 파이프라인 구성, 스트리밍 모드와 캐싱 전략, push_to_hub()로 데이터셋 공유까지 — HuggingFace Datasets의 핵심 패턴을 실전 코드로 정리합니다."
 author: "PALDYN Team"
 pubDate: "2026-05-28"
-category: "tools"
+category: "ai-guide"
 level: "중급"
 tags: ["HuggingFace", "Datasets", "load_dataset", "DatasetDict", "IterableDataset", "KLUE", "NSMC", "KorQuAD", "데이터 전처리"]
 featured: false

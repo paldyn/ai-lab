@@ -3,7 +3,7 @@ title: "문서 Q&A 시스템 구축: RAG 기반 PDF·문서 검색"
 description: "PDF, DOCX, HTML 문서를 벡터 DB에 인덱싱하고 자연어 질문에 정확하게 답하는 RAG 기반 문서 Q&A 시스템의 전체 파이프라인을 구현합니다."
 author: "PALDYN Team"
 pubDate: "2026-05-27"
-category: "lab-notes"
+category: "agents-rag"
 level: "중급"
 tags: ["문서QA", "RAG", "벡터검색", "PDF파싱", "임베딩", "LangChain", "pgvector"]
 featured: false

@@ -3,7 +3,7 @@ title: "AI 회의 요약 시스템: 음성 인식부터 인사이트 추출까�
 description: "회의 녹음을 텍스트로 변환하고, 화자를 분리하며, 요약·결정사항·액션아이템을 자동으로 추출해 Slack·Notion·Jira에 배포하는 AI 회의 요약 시스템을 구현합니다."
 author: "PALDYN Team"
 pubDate: "2026-05-27"
-category: "lab-notes"
+category: "ai-guide"
 level: "중급"
 tags: ["회의요약", "STT", "Whisper", "화자분리", "액션아이템", "Slack연동", "생산성자동화"]
 featured: false

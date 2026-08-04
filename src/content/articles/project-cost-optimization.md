@@ -3,7 +3,7 @@ title: "LLM 비용 최적화: 더 저렴하게, 더 빠르게"
 description: "LLM API 비용의 구조를 이해하고 프롬프트 캐싱, 모델 라우팅, 응답 캐싱, 배치 처리, 더 작은 모델 선택, 토큰 절약 기법으로 비용을 80%까지 줄이는 실전 전략."
 author: "PALDYN Team"
 pubDate: "2026-05-29"
-category: "lab-notes"
+category: "ml-ops"
 level: "중급"
 tags: ["비용최적화", "프롬프트캐싱", "모델라우팅", "배치처리", "LLM비용", "프로젝트"]
 featured: false

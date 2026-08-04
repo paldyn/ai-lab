@@ -3,7 +3,7 @@ title: "평가 하네스 구축: LLM 성능을 체계적으로 측정하라"
 description: "직접 만드는 LLM 평가 시스템 — 테스트셋 설계, 자동 채점(LLM-as-Judge), 사람 평가 워크플로우, 지표 집계, 회귀 감지까지 실전 평가 하네스 구축 가이드."
 author: "PALDYN Team"
 pubDate: "2026-05-29"
-category: "lab-notes"
+category: "ml-ops"
 level: "중급"
 tags: ["LLM평가", "EvalHarness", "LLMasJudge", "벤치마크", "프로젝트", "품질관리"]
 featured: false

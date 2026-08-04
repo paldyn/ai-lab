@@ -3,7 +3,7 @@ title: "파인튜닝 파이프라인 구축: 데이터부터 배포까지"
 description: "QLoRA 기반 파인튜닝 파이프라인을 처음부터 구축한다. 데이터 준비, 학습 루프, 체크포인트, 평가, GGUF 변환, Ollama 배포까지 엔드-투-엔드 실전 가이드."
 author: "PALDYN Team"
 pubDate: "2026-05-29"
-category: "lab-notes"
+category: "ml-ops"
 level: "중급"
 tags: ["파인튜닝", "QLoRA", "LoRA", "파이프라인", "프로젝트", "Ollama", "GGUF"]
 featured: false

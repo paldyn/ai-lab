@@ -3,7 +3,7 @@ title: "OpenAI SDK 완전 정복"
 description: "Python openai 패키지로 GPT-4o부터 o1까지 — Chat Completions, 스트리밍, Function Calling, 임베딩, 비전, Structured Outputs, 배치 API, 비동기 클라이언트, 에러 핸들링, tiktoken 토큰 계산까지 실전 예제로 완벽 정리"
 author: "PALDYN Team"
 pubDate: "2026-05-28"
-category: "tools"
+category: "ai-guide"
 level: "중급"
 tags: ["OpenAI", "GPT-4o", "SDK", "FunctionCalling", "Streaming", "Embeddings", "StructuredOutputs", "tiktoken", "Python"]
 featured: false

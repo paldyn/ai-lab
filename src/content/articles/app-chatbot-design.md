@@ -3,7 +3,7 @@ title: "AI 챗봇 서비스 설계: 아키텍처부터 배포까지"
 description: "대화 이력 관리, RAG 연동, 스트리밍 응답, 안전 필터를 갖춘 프로덕션 수준 AI 챗봇 서비스의 설계 원칙과 구현 패턴을 다룹니다."
 author: "PALDYN Team"
 pubDate: "2026-05-27"
-category: "lab-notes"
+category: "agents-rag"
 level: "중급"
 tags: ["AI챗봇", "챗봇설계", "대화관리", "AnthropicSDK", "스트리밍", "RAG", "프로덕션AI"]
 featured: false

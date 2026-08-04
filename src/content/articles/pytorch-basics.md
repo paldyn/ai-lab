@@ -3,7 +3,7 @@ title: "PyTorch 기초: 텐서와 자동미분"
 description: "PyTorch의 핵심 개념인 텐서 연산, requires_grad와 자동미분(autograd), nn.Module 구조를 실제 코드로 설명합니다. 딥러닝 모델 구현의 출발점을 단단히 다집니다."
 author: "PALDYN Team"
 pubDate: "2026-05-28"
-category: "tools"
+category: "ai-guide"
 level: "중급"
 tags: ["PyTorch", "텐서", "autograd", "자동미분", "nn.Module", "딥러닝기초"]
 featured: false

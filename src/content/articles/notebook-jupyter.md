@@ -3,7 +3,7 @@ title: "Jupyter Notebook·Lab 완전 정복: AI 개발자의 필수 환경"
 description: "주피터 노트북과 JupyterLab의 구조, 커널 동작 원리, 매직 커맨드, 확장 기능, 실전 워크플로우를 AI 개발 관점에서 완전 정복한다."
 author: "PALDYN Team"
 pubDate: "2026-05-29"
-category: "lab-notes"
+category: "ai-guide"
 level: "중급"
 tags: ["Jupyter", "JupyterLab", "Python", "AI개발", "노트북", "데이터분석"]
 featured: false

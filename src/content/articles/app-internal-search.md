@@ -3,7 +3,7 @@ title: "사내 지식 검색 시스템 구축"
 description: "직원들이 회사 문서, Wiki, Confluence, Slack 메시지를 자연어로 검색할 수 있는 사내 AI 검색 시스템의 설계와 구현을 다룹니다."
 author: "PALDYN Team"
 pubDate: "2026-05-27"
-category: "lab-notes"
+category: "agents-rag"
 level: "중급"
 tags: ["사내검색", "하이브리드검색", "BM25", "벡터검색", "RRF", "Elasticsearch", "Knowledge Management"]
 featured: false

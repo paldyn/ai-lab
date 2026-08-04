@@ -3,7 +3,7 @@ title: "HuggingFace Transformers 실전 가이드"
 description: "pipeline()으로 즉시 추론, AutoModel/AutoTokenizer로 모델 로딩, Trainer API로 파인튜닝까지 — HuggingFace Transformers 라이브러리의 핵심 패턴을 실전 코드로 정리합니다."
 author: "PALDYN Team"
 pubDate: "2026-05-28"
-category: "tools"
+category: "ai-guide"
 level: "중급"
 tags: ["HuggingFace", "Transformers", "pipeline", "AutoModel", "Trainer", "파인튜닝", "BERT"]
 featured: false

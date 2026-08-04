@@ -3,7 +3,7 @@ title: "에이전트 시스템 처음부터 구축하기: 실전 프로젝트"
 description: "프레임워크 없이 순수 Python으로 Tool Use 에이전트를 구축한다. ReAct 루프, 도구 레지스트리, 메모리, 중단 조건까지 에이전트의 핵심 구성 요소를 손으로 직접 구현한다."
 author: "PALDYN Team"
 pubDate: "2026-05-29"
-category: "lab-notes"
+category: "agents-rag"
 level: "중급"
 tags: ["에이전트", "ToolUse", "ReAct", "Python", "프로젝트", "LLM에이전트"]
 featured: false

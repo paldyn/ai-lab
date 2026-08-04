@@ -3,7 +3,7 @@ title: "LLM 서비스 배포: API 서버부터 모니터링까지"
 description: "FastAPI로 LLM API 서버를 구축하고, 스트리밍 응답, 요청 큐, 레이트 리미팅, 헬스체크, 로깅, 프로메테우스 메트릭 수집, Docker 컨테이너화까지 프로덕션 배포의 모든 것."
 author: "PALDYN Team"
 pubDate: "2026-05-29"
-category: "lab-notes"
+category: "ml-ops"
 level: "중급"
 tags: ["LLM배포", "FastAPI", "스트리밍", "Docker", "모니터링", "프로덕션", "프로젝트"]
 featured: false

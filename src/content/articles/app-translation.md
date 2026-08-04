@@ -3,7 +3,7 @@ title: "AI 번역 시스템 구축: 도메인 특화 고품질 번역"
 description: "법률, 의료, 기술 문서 등 도메인 특화 용어집과 스타일 가이드를 활용해 일관성 있는 고품질 AI 번역 시스템을 구축하는 방법을 다룹니다."
 author: "PALDYN Team"
 pubDate: "2026-05-27"
-category: "lab-notes"
+category: "ai-guide"
 level: "중급"
 tags: ["AI번역", "NMT", "용어집", "도메인번역", "번역품질", "BLEU", "현지화"]
 featured: false

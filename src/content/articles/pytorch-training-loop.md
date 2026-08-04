@@ -3,7 +3,7 @@ title: "PyTorch 학습 루프 완전 정복"
 description: "Dataset·DataLoader 구성, 전체 학습 루프(forward→loss→backward→step), 검증 단계, 조기 종료, LR 스케줄러, 체크포인트 저장까지 PyTorch 실전 학습 파이프라인을 완성합니다."
 author: "PALDYN Team"
 pubDate: "2026-05-28"
-category: "tools"
+category: "ai-guide"
 level: "중급"
 tags: ["PyTorch", "학습루프", "DataLoader", "Dataset", "체크포인트", "LR스케줄러", "조기종료"]
 featured: false

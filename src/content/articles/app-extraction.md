@@ -3,7 +3,7 @@ title: "AI 정보 추출 파이프라인: 비정형 데이터에서 구조화 �
 description: "계약서, 청구서, 이메일, 이미지 등 비정형 문서에서 원하는 정보를 자동으로 추출해 구조화된 데이터로 변환하는 AI 파이프라인을 구현합니다."
 author: "PALDYN Team"
 pubDate: "2026-05-27"
-category: "lab-notes"
+category: "ai-guide"
 level: "중급"
 tags: ["정보추출", "Pydantic", "구조화출력", "DocumentAI", "OCR", "VisionLLM", "데이터파이프라인"]
 featured: false

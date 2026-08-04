@@ -3,7 +3,7 @@ title: "AI 콘텐츠 생성 자동화 파이프라인"
 description: "블로그 포스트, 마케팅 카피, 제품 설명을 자동으로 생성하는 AI 파이프라인을 설계하고, 품질 검토 루프와 톤앤매너 일관성 유지 방법을 다룹니다."
 author: "PALDYN Team"
 pubDate: "2026-05-27"
-category: "lab-notes"
+category: "ai-guide"
 level: "중급"
 tags: ["콘텐츠생성", "AI작성", "마케팅자동화", "품질검토", "프롬프트엔지니어링", "SEO", "톤앤매너"]
 featured: false

@@ -3,7 +3,7 @@ title: "AI 고객 지원 자동화: 티켓 분류부터 답변 생성까지"
 description: "AI를 활용해 고객 문의를 자동 분류하고, FAQ를 기반으로 답변을 생성하며, 복잡한 케이스는 상담원에게 에스컬레이션하는 고객 지원 자동화 시스템을 구현합니다."
 author: "PALDYN Team"
 pubDate: "2026-05-27"
-category: "lab-notes"
+category: "ai-guide"
 level: "중급"
 tags: ["고객지원", "티켓분류", "에스컬레이션", "AI자동화", "챗봇", "감정분석", "CRM연동"]
 featured: false
