@@ -4,7 +4,7 @@ description: "Agent라는 이름 뒤에 숨은 반복 구조와 도구 호출, �
 author: "Paldyn Research"
 pubDate: "2026-07-13"
 category: "agents-rag"
-level: "입문"
+level: "초급"
 tags: ["Agent", "Tool Use", "LLM"]
 visual: "plan -> act -> observe -> revise"
 featured: false

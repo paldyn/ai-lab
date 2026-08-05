@@ -16,7 +16,7 @@ description: ""          # 카드 요약이자 검색 결과 설명. 20~220자
 author: "PALDYN Team"
 pubDate: "YYYY-MM-DD"    # TZ='Asia/Seoul' date +%Y-%m-%d
 category: ""             # 아래 8개 중 하나
-level: "입문" | "중급" | "심화"
+level: "초급" | "중급" | "고급"
 tags: []
 featured: false
 draft: false             # true면 목록·프리렌더에서 빠진다

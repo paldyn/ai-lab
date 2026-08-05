@@ -4,7 +4,7 @@ description: "Query, Key, Value의 역할을 일상적인 검색 과정에 빗�
 author: "Paldyn Research"
 pubDate: "2026-07-28"
 category: "ai-guide"
-level: "입문"
+level: "초급"
 tags: ["Transformer", "Attention", "LLM"]
 visual: "softmax(QK^T / sqrt(d))V"
 featured: true

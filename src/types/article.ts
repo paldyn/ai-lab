@@ -8,7 +8,7 @@ export type CategoryId =
   | 'tools'
   | 'lab-notes';
 
-export type ArticleLevel = '입문' | '중급' | '심화';
+export type ArticleLevel = '초급' | '중급' | '고급';
 
 /** 카테고리가 속하는 상위 섹션. 네비게이션 한 칸에 대응합니다. */
 export type SectionId = 'learn' | 'research' | 'news';

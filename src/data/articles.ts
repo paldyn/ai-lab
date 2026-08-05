@@ -3,7 +3,7 @@ import type { Article, ArticleLevel, CategoryId } from '../types/article';
 import { categoryById } from './categories';
 import { curriculumOrder } from './curriculum';
 
-const LEVELS: ArticleLevel[] = ['입문', '중급', '심화'];
+const LEVELS: ArticleLevel[] = ['초급', '중급', '고급'];
 
 const isCategoryId = (value: string): value is CategoryId => value in categoryById;
 const isLevel = (value: string): value is ArticleLevel => (LEVELS as string[]).includes(value);
