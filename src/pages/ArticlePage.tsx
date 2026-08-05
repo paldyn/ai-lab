@@ -26,57 +26,52 @@ const TOC_TOP = 88;
 /**
  * 목차에서 지금 보고 있는 절을 짚어 줍니다.
  *
- * 스크롤 위치를 프레임마다 재지 않고 IntersectionObserver가 경계를 넘을 때만
- * 알려 주게 합니다. 관찰 띠는 화면 상단 88px에서 30% 지점까지고, 그 안에 들어온
- * 헤딩을 지금 절로 봅니다 — 띠를 넓게 잡으면 긴 절을 읽는 동안 아래에 잠깐
- * 보이는 다음 절 제목 때문에 표시가 앞서갑니다.
+ * **머리 위를 지나간 헤딩 중 마지막**이 지금 절입니다. 스크롤이 멈춘 자리에서
+ * 위로 가장 가까운 제목이 곧 읽고 있는 절이라는 뜻이고, 절이 화면보다 길든
+ * 짧든 답이 하나로 정해집니다.
  *
- * 다만 띠에 걸친 것이 하나도 없는 때가 흔합니다 — 맨 위에 있을 때와 한 절이
- * 화면보다 길 때입니다. 그때는 **띠 위로 이미 지나간 것 중 마지막**을 씁니다.
- * 그래야 읽는 내내 목차의 어딘가는 늘 짚혀 있습니다.
+ * 예전에는 IntersectionObserver로 '화면 상단 88px~30% 띠에 들어온 헤딩'을
+ * 찾고, 띠가 비면 지나간 것 중 마지막으로 되돌리는 두 갈래였습니다. 그런데
+ * 자리를 다시 계산하는 곳이 **관찰자 콜백 하나뿐**이라, 콜백이 안 오는 동안은
+ * 마운트 때 계산한 첫 절에 그대로 굳었습니다. 긴 절을 읽는 내내 경계를 넘는
+ * 헤딩이 없으면 콜백이 안 오고, 관찰자를 아예 안 돌려주는 환경도 있습니다.
+ * 헤딩은 글 하나에 열 개 안팎이라 스크롤마다 재도 충분히 쌉니다 — 관찰자로
+ * 아끼려던 비용보다 '안 따라온다'는 고장이 훨씬 비쌉니다.
  */
 function useActiveHeading(ids: string[]): string | undefined {
   const [active, setActive] = useState<string | undefined>(undefined);
 
   useEffect(() => {
     if (ids.length === 0) return undefined;
-    // 프리렌더에는 없는 API입니다. effect 안이라 서버에서는 돌지 않습니다.
-    if (typeof IntersectionObserver === 'undefined') return undefined;
 
-    const seen = new Map<string, boolean>();
+    let frame = 0;
 
     const pick = () => {
-      const inBand = ids.filter((id) => seen.get(id));
-      if (inBand.length > 0) {
-        setActive(inBand[0]);
-        return;
-      }
-
-      let passed: string | undefined;
+      frame = 0;
+      // 아무것도 안 지났으면 첫 절입니다 — 글 맨 위가 곧 첫 절입니다.
+      let current = ids[0];
       for (const id of ids) {
         const node = document.getElementById(id);
-        if (node && node.getBoundingClientRect().top < TOC_TOP) passed = id;
+        if (node && node.getBoundingClientRect().top <= TOC_TOP) current = id;
       }
-      // 아직 아무것도 안 지났으면 첫 절을 짚습니다 — 글 맨 위가 곧 첫 절입니다.
-      setActive(passed ?? ids[0]);
+      setActive(current);
     };
 
-    const observer = new IntersectionObserver(
-      (entries) => {
-        for (const entry of entries) seen.set(entry.target.id, entry.isIntersecting);
-        pick();
-      },
-      { rootMargin: `-${TOC_TOP}px 0px -70% 0px` },
-    );
-
-    const nodes = ids
-      .map((id) => document.getElementById(id))
-      .filter((node): node is HTMLElement => node !== null);
-    for (const node of nodes) observer.observe(node);
+    // 스크롤은 프레임보다 자주 옵니다. rAF로 한 프레임에 한 번만 재게 묶습니다.
+    const schedule = () => {
+      if (frame) return;
+      frame = requestAnimationFrame(pick);
+    };
 
     pick();
+    window.addEventListener('scroll', schedule, { passive: true });
+    window.addEventListener('resize', schedule);
 
-    return () => observer.disconnect();
+    return () => {
+      if (frame) cancelAnimationFrame(frame);
+      window.removeEventListener('scroll', schedule);
+      window.removeEventListener('resize', schedule);
+    };
   }, [ids]);
 
   return active;
