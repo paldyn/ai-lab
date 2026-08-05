@@ -204,7 +204,12 @@ export function NewsPreviewModal({ item, onClose }: NewsPreviewModalProps) {
 
           {detail && detail.points.length > 0 && (
             <section className="news-preview-points">
-              <h3>무엇이 달라졌나</h3>
+              {/*
+                두 제목이 이 팝업의 약속입니다 — 위는 원문에 있는 말만, 아래는
+                원문에 없는 우리 판단만. 예전 '무엇이 달라졌나'는 모델 발표에는
+                맞았지만 규제·투자·조직 소식에는 달라진 것이 없어 맞지 않았습니다.
+              */}
+              <h3>원문이 말한 것</h3>
               <ul>
                 {detail.points.map((point) => <li key={point}>{point}</li>)}
               </ul>
@@ -213,27 +218,11 @@ export function NewsPreviewModal({ item, onClose }: NewsPreviewModalProps) {
 
           {detail?.commentary && (
             <section className="news-preview-take">
-              <h3>PALDYN 해설</h3>
+              <h3>PALDYN의 판단</h3>
               <p>{detail.commentary}</p>
             </section>
           )}
-
-          <dl className="news-preview-facts">
-            <div><dt>SOURCE</dt><dd>{item.source}</dd></div>
-            <div><dt>CATEGORY</dt><dd>{item.category}</dd></div>
-            <div><dt>PUBLISHED</dt><dd>{item.publishedAt.replaceAll('-', '.')}</dd></div>
-            {item.contextLabel && item.contextValue && (
-              <div><dt>{item.contextLabel}</dt><dd>{item.contextValue}</dd></div>
-            )}
-          </dl>
         </div>
-
-        <footer className="news-preview-footer">
-          <button type="button" onClick={close}>닫기</button>
-          <a href={item.url} target="_blank" rel="noreferrer">
-            공식 원문 <ArrowUpRight size={15} />
-          </a>
-        </footer>
       </section>
     </div>,
     document.body,
