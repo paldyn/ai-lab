@@ -2740,15 +2740,19 @@ input:focus-visible {
   white-space: nowrap;
 }
 
+/*
+  min-height 118px를 두었더니 제목이 한 줄인 항목 아래가 40px 가까이 비었습니다.
+  네 회사의 칸 높이를 맞추려던 것인데, 어차피 제목 길이가 제각각이라 맞지도
+  않았습니다. 높이는 내용이 정하게 두고 세 건이 나란히 서게 합니다.
+*/
 .company-news-item {
   position: relative;
   display: grid;
   width: 100%;
-  min-height: 118px;
   grid-template-columns: minmax(0, 1fr) 16px;
   gap: 14px;
   align-items: start;
-  padding-block: 20px;
+  padding-block: 18px;
   border-bottom: 1px solid var(--border);
   cursor: pointer;
 }

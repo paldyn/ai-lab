@@ -177,7 +177,7 @@ export function HomePage() {
           <div className="company-news-grid">
             {sourceList.map((company) => {
               const all = newsBySource(company.id);
-              const items = all.slice(0, 2);
+              const items = all.slice(0, 3);
               return (
                 <section
                   key={company.id}
