@@ -1042,7 +1042,17 @@ input:focus-visible {
   height: 17px;
   flex-shrink: 0;
   place-items: center;
-  /* 15px/1.45 첫 줄의 글자 가운데에 맞춥니다. */
+}
+
+/*
+  목록 행에서만 3px 내립니다. 그 제목은 15px/1.45라 첫 줄의 글자 가운데가
+  블록 위쪽에서 그만큼 내려와 있습니다.
+
+  **이 값을 .news-feed-mark 자체에 두지 않습니다.** 한 번 그렇게 뒀다가 홈 카드가
+  같은 클래스를 10px 줄에 쓰면서 마크만 1.75px 내려앉았습니다 — 쓰는 줄의
+  글자 크기에 매인 값이라 클래스가 아니라 쓰는 자리가 정해야 합니다.
+*/
+.news-feed-row h3 .news-feed-mark {
   margin-top: 3px;
 }
 
