@@ -101,6 +101,12 @@ draft: false             # true면 목록·프리렌더에서 빠진다
 한글도 함께 검사한다. 화면에 쓰는 이름은 `src/data/news.ts`의 `categoryLabel`이
 들고 있다 — 데이터에는 영문 키를 둔다.
 
+**뉴스 머리말의 '최근 7일' 지표는 코드가 센다.** `src/pages/NewsPage.tsx`가
+`publishedAt`에서 가장 최근 발표일을 찾아 그날부터 7일을 거꾸로 세고 `kind`로
+나눈다. 항목을 넣으면 저절로 바뀌므로 숫자를 어디에도 적어 두지 않는다 —
+적어 두면 그날부터 실제와 갈린다. 대신 `publishedAt`이 하루라도 틀리면 그
+항목이 창 밖으로 나가거나 없는 날에 들어간다.
+
 매일 20:00 UTC(05:00 KST)에 수집 루틴이 네 출처(openai.com, www.anthropic.com,
 deepmind.google, blog.google)를 읽고 이 파일을 갱신한다. 오래된 항목을 지우지
 않는다 — 2026년 1월부터 쌓는 아카이브다. 본문을 월별로 분리해 두었으니 목록이
