@@ -457,6 +457,23 @@ input:focus-visible {
   background: var(--bg);
   color: var(--text-nav-hint);
   font-size: 12px;
+  /*
+    기술블로그의 같은 알약과 글자 높이를 맞춥니다. 거기에는 Tailwind가 없어 이
+    버튼이 브라우저 기본값 normal을 받는데, 여기서는 preflight의
+    html { line-height: 1.5 }가 물려 내려와 줄 상자가 18px이 됩니다.
+
+    **0.5px이 생기는 조건은 줄 상자가 홀수인 것뿐입니다.** 18px 줄 상자는 짝수라
+    반쪽 여백이 정수로 떨어져 글자를 알약 한가운데 놓고, normal은 이 라벨에서
+    15px(홀수)이라 1.5px씩이 되어 글자가 0.5px 위로 올라섭니다. 그 홀수를
+    만드는 것은 라벨의 한글입니다 — 라틴 글자만이면 normal이 14px이라 이 줄은
+    아무것도 하지 않습니다. 즉 문구(Layout.tsx의 `'/'로 검색`)와 한글 폴백
+    폰트가 이 값의 전제입니다.
+
+    그래서 이 줄은 '가운데 정렬을 고치는 규칙'이 아니라 '기술블로그를 그대로
+    재현하는 규칙'입니다. 저쪽도 돋보기와 글자가 똑같이 0.5px 어긋나 있고,
+    헤더 안 다른 글자와의 관계까지 두 사이트가 같은 값이 됩니다.
+  */
+  line-height: normal;
   letter-spacing: 0.02em;
   transition: border-color 200ms ease, background-color 200ms ease;
 }
