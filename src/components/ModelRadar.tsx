@@ -10,9 +10,22 @@ interface ModelRadarProps {
   showNewsLink?: boolean;
 }
 
+/**
+ * 한 번에 내놓는 수. 넓은 화면에서 카드가 네 칸이므로 두 줄입니다.
+ * 좁은 화면은 두 칸이라 같은 수가 네 줄이 되는데, 줄 수를 화면마다
+ * 맞추려면 JS가 열 수를 알아야 합니다 — 그러자고 리사이즈를 듣기보다
+ * 한 번에 늘어나는 양을 고정하는 편이 낫습니다.
+ */
+const RADAR_STEP = 8;
+
 export function ModelRadar({ limit, showNewsLink = false }: ModelRadarProps) {
   const [selectedModel, setSelectedModel] = useState<NewsPreviewItem | null>(null);
-  const items = typeof limit === 'number' ? modelUpdates.slice(0, limit) : modelUpdates;
+  const [visible, setVisible] = useState(RADAR_STEP);
+
+  // limit을 받으면 홈처럼 정해진 만큼만 보여 주는 자리라 더 보기를 두지 않습니다.
+  const paged = typeof limit !== 'number';
+  const items = paged ? modelUpdates.slice(0, visible) : modelUpdates.slice(0, limit);
+  const hidden = paged ? modelUpdates.length - items.length : 0;
 
   const openPreview = (item: ModelUpdate) => {
     setSelectedModel({
@@ -82,6 +95,17 @@ export function ModelRadar({ limit, showNewsLink = false }: ModelRadarProps) {
             </article>
           ))}
         </div>
+
+        {hidden > 0 && (
+          <button
+            type="button"
+            className="news-feed-more"
+            onClick={() => setVisible((count) => count + RADAR_STEP)}
+          >
+            더 보기
+            <span>{items.length} / {modelUpdates.length}</span>
+          </button>
+        )}
       </div>
       <NewsPreviewModal item={selectedModel} onClose={() => setSelectedModel(null)} />
     </section>
