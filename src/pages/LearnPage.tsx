@@ -111,9 +111,16 @@ function LearnView({ active }: { active?: Category }) {
           두면 태그 필터와 '더 보기'만 처음으로 돌아갑니다.
         */}
         <section key={active?.id ?? 'all'} className="learn-list learn-swap">
+          {/*
+            날짜가 아니라 커리큘럼 순서로 세우는 분야에만 답니다. 정렬 방향이
+            배우는 순서의 역순(나중에 쓴 글이 위)이므로 '순서대로 정렬했다'고만
+            적으면 위에서부터 읽으라는 안내가 됩니다. 어느 쪽 끝이 시작인지를
+            문장이 직접 말해야 합니다.
+          */}
           {active?.curriculum && (
             <p className="curriculum-note">
-              배우는 순서대로 정렬했습니다. 앞 글이 뒤 글의 전제가 됩니다.
+              나중에 쓴 글이 위에 옵니다. 앞 글이 뒤 글의 전제가 되므로, 맨 아래에서부터
+              거슬러 올라가는 것이 배우는 순서입니다.
             </p>
           )}
           {/*

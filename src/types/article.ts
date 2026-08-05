@@ -25,8 +25,10 @@ export interface Category {
   accentText: string;
   index: string;
   /**
-   * 최신순이 아니라 배우는 순서로 읽어야 하는 카테고리.
-   * 수학처럼 앞 글이 뒤 글의 전제가 되는 경우에 씁니다.
+   * 날짜가 아니라 커리큘럼이 순서를 정하는 카테고리. 수학처럼 앞 글이 뒤 글의
+   * 전제가 되고, 같은 날 여러 편이 나가 `pubDate`만으로는 순서가 안 잡히는 경우입니다.
+   * **정렬 방향은 여기가 아니라 `curriculumOrder()`가 정합니다** — 지금은 배우는
+   * 순서가 아니라 그 역순(나중에 쓴 글이 위)입니다.
    */
   curriculum?: boolean;
 }

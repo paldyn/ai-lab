@@ -11,8 +11,9 @@ interface ArticleExplorerProps {
   /** 카테고리 칩을 숨깁니다. 카테고리를 URL로 이미 고른 화면에서 씁니다. */
   hideCategoryFilter?: boolean;
   /**
-   * 배우는 순서로 읽어야 하는 카테고리. 최신순 대신 order 오름차순으로 정렬합니다.
-   * 수학처럼 앞 글이 뒤 글의 전제가 되는 경우입니다.
+   * 날짜가 아니라 커리큘럼이 순서를 정하는 카테고리. 최신순 대신 order 오름차순으로
+   * 정렬합니다. 수학처럼 앞 글이 뒤 글의 전제가 되는 경우인데, **order가 곧 배우는
+   * 순서는 아닙니다** — 방향은 `curriculumOrder()`가 정하고 지금은 그 역순입니다.
    */
   curriculum?: boolean;
 }
@@ -69,12 +70,19 @@ export function ArticleExplorer({
 
     if (!curriculum) return matched;
 
-    // order가 없는 글은 뒤로 보냅니다. 루틴이 순서대로 쓰므로 같은 날 쓰인 글은
-    // order로만 구분됩니다.
+    /*
+      order가 없는 글은 뒤로 보냅니다 — 커리큘럼에 안 적힌 글이라 자리를 알 수 없고,
+      끼워 넣으면 그 아래가 통째로 한 칸씩 밀려 순서가 거짓말이 됩니다.
+
+      날짜는 order가 겹칠 때만 봅니다. 커리큘럼 안에서는 겹칠 일이 없으므로
+      실제로는 '목록에 없는 글끼리'의 순서만 정합니다. 그때도 새로 쓴 것이 위로
+      오게 내림차순입니다 — 목록 전체가 그 방향이라(curriculumOrder가 쓰는 순서를
+      뒤집습니다) 꼬리만 반대로 서면 읽는 사람이 알아채지 못합니다.
+    */
     return matched.slice().sort((a, b) => {
       const ao = a.order ?? Number.MAX_SAFE_INTEGER;
       const bo = b.order ?? Number.MAX_SAFE_INTEGER;
-      return ao - bo || a.publishedAt.localeCompare(b.publishedAt);
+      return ao - bo || b.publishedAt.localeCompare(a.publishedAt);
     });
   }, [categoryId, curriculum, fixedCategoryId, scopedArticles, tag]);
 
