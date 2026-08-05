@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="440" viewBox="0 0 880 440" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <rect width="880" height="440" rx="12" fill="#0a0a0a"/>
+
+  <text x="60" y="56" font-size="22" font-weight="700" fill="#e8e8e8">한 줄에 한 조작, 그리고 무엇을 했는지 적기</text>
+  <text x="60" y="82" font-size="13" fill="#888">답이 틀렸을 때 어느 줄에서 틀렸는지 짚을 수 있어야 한다</text>
+
+  <rect x="60" y="112" width="360" height="180" rx="6" fill="#101010" stroke="#e05555" stroke-width="1"/>
+  <rect x="460" y="112" width="360" height="180" rx="6" fill="#101010" stroke="#55c555" stroke-width="1"/>
+
+  <text x="84" y="140" font-size="15" font-weight="600" fill="#e8e8e8">몰아 쓴 풀이</text>
+  <text x="484" y="140" font-size="15" font-weight="600" fill="#e8e8e8">한 줄에 한 조작</text>
+
+  <rect x="84" y="154" width="312" height="78" rx="6" fill="#000000" stroke="#3a4a6e" stroke-width="1"/>
+  <text x="100" y="180" font-size="13" xml:space="preserve" font-family="'JetBrains Mono','Menlo','Consolas',monospace" fill="#ffffff">3(x + 5) = 21</text>
+  <text x="100" y="198" font-size="13" xml:space="preserve" font-family="'JetBrains Mono','Menlo','Consolas',monospace" fill="#ffffff">3x = 6</text>
+  <text x="100" y="216" font-size="13" xml:space="preserve" font-family="'JetBrains Mono','Menlo','Consolas',monospace" fill="#ffffff">x = 2</text>
+
+  <rect x="484" y="154" width="312" height="96" rx="6" fill="#000000" stroke="#3a4a6e" stroke-width="1"/>
+  <text x="500" y="180" font-size="13" xml:space="preserve" font-family="'JetBrains Mono','Menlo','Consolas',monospace" fill="#ffffff">3(x + 5) = 21</text>
+  <text x="500" y="198" font-size="13" xml:space="preserve" font-family="'JetBrains Mono','Menlo','Consolas',monospace" fill="#ffffff">3x + 15 = 21<tspan fill="#9aa4b8">   괄호 풀기</tspan></text>
+  <text x="500" y="216" font-size="13" xml:space="preserve" font-family="'JetBrains Mono','Menlo','Consolas',monospace" fill="#ffffff">3x = 6      <tspan fill="#9aa4b8">   양변 −15</tspan></text>
+  <text x="500" y="234" font-size="13" xml:space="preserve" font-family="'JetBrains Mono','Menlo','Consolas',monospace" fill="#ffffff">x = 2       <tspan fill="#9aa4b8">   양변 ÷3</tspan></text>
+
+  <text x="84" y="256" font-size="13" fill="#888">둘째 줄에 조작이 둘 들어 있다</text>
+  <text x="84" y="276" font-size="13" fill="#888">답이 틀리면 어디부터 볼지 모른다</text>
+
+  <text x="484" y="274" font-size="13" fill="#888">줄마다 딱 하나만 바뀐다 — 틀린 줄이 바로 보인다</text>
+
+  <rect x="60" y="320" width="760" height="60" rx="6" fill="#101010" stroke="#333" stroke-width="1"/>
+  <text x="84" y="344" font-size="13" font-weight="600" fill="#e8e8e8">등호를 세로로 맞춰 쓰고, 줄 오른쪽에 무슨 조작을 했는지 이름을 적는다</text>
+  <text x="84" y="364" font-size="13" fill="#888">줄이 길어져도 손해가 없다 — 되돌아가 찾는 시간이 훨씬 길다</text>
+</svg>

@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="452" viewBox="0 0 880 452" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <rect width="880" height="452" rx="12" fill="#0a0a0a"/>
+
+  <text x="60" y="56" font-size="22" font-weight="700" fill="#e8e8e8">작은 소수부터 나눠 내려간다</text>
+  <text x="60" y="82" font-size="13" fill="#888">몫이 1 이 되면 끝이고, 왼쪽에 적힌 것이 소인수다</text>
+
+  <text x="60" y="140" font-size="15" font-weight="600" fill="#e8e8e8">나눠 내려가기</text>
+  <text x="460" y="140" font-size="15" font-weight="600" fill="#e8e8e8">결과</text>
+
+  <rect x="60" y="154" width="360" height="150" rx="6" fill="#000000" stroke="#3a4a6e" stroke-width="1"/>
+  <text x="84" y="180" font-size="13" xml:space="preserve" font-family="'JetBrains Mono','Menlo','Consolas',monospace" fill="#7ec8e3">2 <tspan fill="#9aa4b8">)</tspan> <tspan fill="#ffffff">360</tspan></text>
+  <text x="84" y="198" font-size="13" xml:space="preserve" font-family="'JetBrains Mono','Menlo','Consolas',monospace" fill="#7ec8e3">2 <tspan fill="#9aa4b8">)</tspan> <tspan fill="#ffffff">180</tspan></text>
+  <text x="84" y="216" font-size="13" xml:space="preserve" font-family="'JetBrains Mono','Menlo','Consolas',monospace" fill="#7ec8e3">2 <tspan fill="#9aa4b8">)</tspan> <tspan fill="#ffffff"> 90</tspan></text>
+  <text x="84" y="234" font-size="13" xml:space="preserve" font-family="'JetBrains Mono','Menlo','Consolas',monospace" fill="#7ec8e3">3 <tspan fill="#9aa4b8">)</tspan> <tspan fill="#ffffff"> 45</tspan></text>
+  <text x="84" y="252" font-size="13" xml:space="preserve" font-family="'JetBrains Mono','Menlo','Consolas',monospace" fill="#7ec8e3">3 <tspan fill="#9aa4b8">)</tspan> <tspan fill="#ffffff"> 15</tspan></text>
+  <text x="84" y="270" font-size="13" xml:space="preserve" font-family="'JetBrains Mono','Menlo','Consolas',monospace" fill="#7ec8e3">5 <tspan fill="#9aa4b8">)</tspan> <tspan fill="#ffffff">  5</tspan></text>
+  <text x="84" y="288" font-size="13" xml:space="preserve" font-family="'JetBrains Mono','Menlo','Consolas',monospace" fill="#9aa4b8">      1</text>
+
+  <rect x="460" y="154" width="360" height="150" rx="6" fill="#101010" stroke="#333" stroke-width="1"/>
+  <text x="640" y="192" font-size="15" fill="#e8e8e8" text-anchor="middle">360 = 2 × 2 × 2 × 3 × 3 × 5</text>
+  <text x="640" y="234" font-size="24" font-weight="700" fill="#7ec8e3" text-anchor="middle">= 2³ × 3² × 5</text>
+  <text x="640" y="268" font-size="13" fill="#888" text-anchor="middle">위첨자는 그 소수로 몇 번 나눴는지를</text>
+  <text x="640" y="288" font-size="13" fill="#888" text-anchor="middle">센 것이다</text>
+
+  <rect x="60" y="332" width="760" height="60" rx="6" fill="#101010" stroke="#333" stroke-width="1"/>
+  <text x="84" y="356" font-size="13" font-weight="600" fill="#e8e8e8">순서를 빼면 이렇게 쪼개는 방법은 360 에 대해 한 가지뿐이다</text>
+  <text x="84" y="376" font-size="13" fill="#888">1 을 소수에 끼워 주면 1 을 몇 개든 붙일 수 있어 그 한 가지가 깨진다</text>
+</svg>

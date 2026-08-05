@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="416" viewBox="0 0 880 416" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <rect width="880" height="416" rx="12" fill="#0a0a0a"/>
+
+  <text x="60" y="56" font-size="22" font-weight="700" fill="#e8e8e8">검산 세 가지</text>
+  <text x="60" y="82" font-size="13" fill="#888">앞으로 마흔다섯 편에서 계속 쓰게 될 확인 방법이다</text>
+
+  <rect x="60" y="112" width="240" height="148" rx="6" fill="#101010" stroke="#333" stroke-width="1"/>
+  <rect x="320" y="112" width="240" height="148" rx="6" fill="#101010" stroke="#333" stroke-width="1"/>
+  <rect x="580" y="112" width="240" height="148" rx="6" fill="#101010" stroke="#333" stroke-width="1"/>
+
+  <text x="180" y="140" font-size="15" font-weight="600" fill="#e8e8e8" text-anchor="middle">숫자를 넣어 본다</text>
+  <text x="440" y="140" font-size="15" font-weight="600" fill="#e8e8e8" text-anchor="middle">극단값을 넣어 본다</text>
+  <text x="700" y="140" font-size="15" font-weight="600" fill="#e8e8e8" text-anchor="middle">두 방법으로 센다</text>
+
+  <text x="180" y="178" font-size="15" fill="#7ec8e3" text-anchor="middle">x = 0, 1, 2</text>
+  <text x="440" y="178" font-size="15" fill="#7ec8e3" text-anchor="middle">0 또는 아주 큰 수</text>
+  <text x="700" y="178" font-size="15" fill="#7ec8e3" text-anchor="middle">차례로 vs 짝지어</text>
+
+  <text x="180" y="212" font-size="13" fill="#888" text-anchor="middle">양변 값이 갈리면</text>
+  <text x="440" y="212" font-size="13" fill="#888" text-anchor="middle">답이 말이 되는지</text>
+  <text x="700" y="212" font-size="13" fill="#888" text-anchor="middle">값이 같으면</text>
+
+  <text x="180" y="234" font-size="13" fill="#888" text-anchor="middle">유도가 틀린 것이 확실</text>
+  <text x="440" y="234" font-size="13" fill="#888" text-anchor="middle">눈으로 바로 안다</text>
+  <text x="700" y="234" font-size="13" fill="#888" text-anchor="middle">둘 다 믿을 만하다</text>
+
+  <rect x="60" y="296" width="760" height="60" rx="6" fill="#101010" stroke="#333" stroke-width="1"/>
+  <text x="84" y="320" font-size="13" font-weight="600" fill="#e8e8e8">값이 갈리면 틀렸다는 것이 확실하다. 맞았다고 맞다는 보장은 없다</text>
+  <text x="84" y="340" font-size="13" fill="#888">그래서 한 숫자로 끝내지 않고 0 과 1 과 2 를 차례로 넣어 본다</text>
+</svg>

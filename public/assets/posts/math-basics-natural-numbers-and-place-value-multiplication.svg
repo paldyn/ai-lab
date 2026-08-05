@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="452" viewBox="0 0 880 452" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <rect width="880" height="452" rx="12" fill="#0a0a0a"/>
+
+  <text x="60" y="56" font-size="22" font-weight="700" fill="#e8e8e8">23 × 45 는 자리별 곱 넷을 더한 것이다</text>
+  <text x="60" y="82" font-size="13" fill="#888">곱셈 세로셈의 두 줄이 바로 그 넷을 둘씩 묶은 것이다</text>
+
+  <text x="60" y="140" font-size="15" font-weight="600" fill="#e8e8e8">세로셈</text>
+  <text x="460" y="140" font-size="15" font-weight="600" fill="#e8e8e8">자리별 곱 넷</text>
+
+  <rect x="60" y="154" width="360" height="150" rx="6" fill="#000000" stroke="#3a4a6e" stroke-width="1"/>
+  <text x="84" y="180" font-size="13" xml:space="preserve" font-family="'JetBrains Mono','Menlo','Consolas',monospace" fill="#ffffff">      23</text>
+  <text x="84" y="198" font-size="13" xml:space="preserve" font-family="'JetBrains Mono','Menlo','Consolas',monospace" fill="#ffffff">   ×  45</text>
+  <text x="84" y="216" font-size="13" xml:space="preserve" font-family="'JetBrains Mono','Menlo','Consolas',monospace" fill="#9aa4b8">  ------</text>
+  <text x="84" y="234" font-size="13" xml:space="preserve" font-family="'JetBrains Mono','Menlo','Consolas',monospace" fill="#ffffff">     115<tspan fill="#9aa4b8">   23 × 5</tspan></text>
+  <text x="84" y="252" font-size="13" xml:space="preserve" font-family="'JetBrains Mono','Menlo','Consolas',monospace" fill="#ffffff">     920<tspan fill="#9aa4b8">   23 × 40</tspan></text>
+  <text x="84" y="270" font-size="13" xml:space="preserve" font-family="'JetBrains Mono','Menlo','Consolas',monospace" fill="#9aa4b8">  ------</text>
+  <text x="84" y="288" font-size="13" xml:space="preserve" font-family="'JetBrains Mono','Menlo','Consolas',monospace" fill="#7ec8e3">    1035</text>
+
+  <rect x="460" y="154" width="360" height="150" rx="6" fill="#101010" stroke="#333" stroke-width="1"/>
+  <text x="484" y="182" font-size="14" xml:space="preserve" font-family="'JetBrains Mono','Menlo','Consolas',monospace" fill="#e8e8e8">20 × 40 =  800</text>
+  <text x="484" y="206" font-size="14" xml:space="preserve" font-family="'JetBrains Mono','Menlo','Consolas',monospace" fill="#e8e8e8">20 ×  5 =  100</text>
+  <text x="484" y="230" font-size="14" xml:space="preserve" font-family="'JetBrains Mono','Menlo','Consolas',monospace" fill="#e8e8e8"> 3 × 40 =  120</text>
+  <text x="484" y="254" font-size="14" xml:space="preserve" font-family="'JetBrains Mono','Menlo','Consolas',monospace" fill="#e8e8e8"> 3 ×  5 =   15</text>
+  <text x="484" y="282" font-size="14" xml:space="preserve" font-weight="600" font-family="'JetBrains Mono','Menlo','Consolas',monospace" fill="#7ec8e3">   합   = 1035</text>
+
+  <rect x="60" y="332" width="760" height="60" rx="6" fill="#101010" stroke="#333" stroke-width="1"/>
+  <text x="84" y="356" font-size="13" font-weight="600" fill="#e8e8e8">세로셈의 115 는 100 + 15 이고, 920 은 800 + 120 이다</text>
+  <text x="84" y="376" font-size="13" fill="#888">자리를 맞춰 쓰는 이유는 같은 자리끼리만 더할 수 있기 때문이다</text>
+</svg>

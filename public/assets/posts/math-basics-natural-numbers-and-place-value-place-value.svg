@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="446" viewBox="0 0 880 446" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <rect width="880" height="446" rx="12" fill="#0a0a0a"/>
+
+  <text x="60" y="56" font-size="22" font-weight="700" fill="#e8e8e8">3705 는 자리마다 다른 값을 뜻한다</text>
+  <text x="60" y="82" font-size="13" fill="#888">같은 숫자라도 어느 자리에 앉았느냐가 값을 정한다</text>
+
+  <rect x="60" y="112" width="175" height="132" rx="6" fill="#101010" stroke="#333" stroke-width="1"/>
+  <rect x="255" y="112" width="175" height="132" rx="6" fill="#101010" stroke="#333" stroke-width="1"/>
+  <rect x="450" y="112" width="175" height="132" rx="6" fill="#101010" stroke="#7777cc" stroke-width="1"/>
+  <rect x="645" y="112" width="175" height="132" rx="6" fill="#101010" stroke="#333" stroke-width="1"/>
+
+  <text x="147" y="156" font-size="32" font-weight="700" fill="#7ec8e3" text-anchor="middle">3</text>
+  <text x="342" y="156" font-size="32" font-weight="700" fill="#7ec8e3" text-anchor="middle">7</text>
+  <text x="537" y="156" font-size="32" font-weight="700" fill="#7777cc" text-anchor="middle">0</text>
+  <text x="732" y="156" font-size="32" font-weight="700" fill="#7ec8e3" text-anchor="middle">5</text>
+
+  <text x="147" y="192" font-size="13" fill="#888" text-anchor="middle">천의 자리</text>
+  <text x="342" y="192" font-size="13" fill="#888" text-anchor="middle">백의 자리</text>
+  <text x="537" y="192" font-size="13" fill="#888" text-anchor="middle">십의 자리</text>
+  <text x="732" y="192" font-size="13" fill="#888" text-anchor="middle">일의 자리</text>
+
+  <text x="147" y="218" font-size="14" fill="#e8e8e8" text-anchor="middle">3 × 1000 = 3000</text>
+  <text x="342" y="218" font-size="14" fill="#e8e8e8" text-anchor="middle">7 × 100 = 700</text>
+  <text x="537" y="218" font-size="14" fill="#e8e8e8" text-anchor="middle">0 × 10 = 0</text>
+  <text x="732" y="218" font-size="14" fill="#e8e8e8" text-anchor="middle">5 × 1 = 5</text>
+
+  <text x="440" y="292" font-size="18" fill="#e8e8e8" text-anchor="middle">3000 + 700 + 0 + 5 = 3705</text>
+
+  <rect x="60" y="326" width="760" height="60" rx="6" fill="#101010" stroke="#333" stroke-width="1"/>
+  <text x="84" y="350" font-size="13" font-weight="600" fill="#e8e8e8">0 은 '아무것도 없다'가 아니라 십의 자리를 비워 두는 표시다</text>
+  <text x="84" y="370" font-size="13" fill="#888">0 을 빼고 375 라고 적으면 3 과 7 이 한 자리씩 내려와 값이 달라진다</text>
+</svg>

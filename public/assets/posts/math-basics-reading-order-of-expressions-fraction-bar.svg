@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="432" viewBox="0 0 880 432" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <rect width="880" height="432" rx="12" fill="#0a0a0a"/>
+
+  <defs>
+    <marker id="rt" viewBox="0 0 14 14" refX="12" refY="7"
+            markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#7ec8e3"/>
+    </marker>
+  </defs>
+
+  <text x="60" y="56" font-size="22" font-weight="700" fill="#e8e8e8">분수선은 위아래를 통째로 묶는 괄호다</text>
+  <text x="60" y="82" font-size="13" fill="#888">한 줄로 옮겨 적을 때 그 괄호가 사라지면 다른 식이 된다</text>
+
+  <text x="220" y="172" font-size="24" fill="#e8e8e8" text-anchor="middle">a + b</text>
+  <line x1="160" y1="188" x2="280" y2="188" stroke="#e8e8e8" stroke-width="2"/>
+  <text x="220" y="218" font-size="24" fill="#e8e8e8" text-anchor="middle">2</text>
+  <text x="220" y="262" font-size="13" fill="#888" text-anchor="middle">손으로 쓴 모양</text>
+
+  <line x1="310" y1="190" x2="400" y2="190" stroke="#7ec8e3" stroke-width="2" marker-end="url(#rt)"/>
+  <text x="355" y="168" font-size="13" fill="#888" text-anchor="middle">한 줄로</text>
+
+  <rect x="420" y="140" width="400" height="60" rx="6" fill="#101010" stroke="#55c555" stroke-width="1"/>
+  <text x="444" y="164" font-size="13" xml:space="preserve" font-family="'JetBrains Mono','Menlo','Consolas',monospace" fill="#ffffff">(a + b) / 2</text>
+  <text x="444" y="184" font-size="13" fill="#55c555">위아래를 괄호로 묶어 옮겼다</text>
+
+  <rect x="420" y="216" width="400" height="60" rx="6" fill="#101010" stroke="#e05555" stroke-width="1"/>
+  <text x="444" y="240" font-size="13" xml:space="preserve" font-family="'JetBrains Mono','Menlo','Consolas',monospace" fill="#ffffff">a + b / 2</text>
+  <text x="444" y="260" font-size="13" fill="#e05555">b 만 2로 나눠진다 — 다른 식이다</text>
+
+  <rect x="60" y="312" width="760" height="60" rx="6" fill="#101010" stroke="#333" stroke-width="1"/>
+  <text x="84" y="336" font-size="13" font-weight="600" fill="#e8e8e8">a = 4, b = 6 을 넣어 보면 (4 + 6) / 2 = 5 이고 4 + 6 / 2 = 7 이다</text>
+  <text x="84" y="356" font-size="13" fill="#888">값이 갈리므로 두 식은 같지 않다 — 숫자 하나로 확인이 끝난다</text>
+</svg>

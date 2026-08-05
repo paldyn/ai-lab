@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="490" viewBox="0 0 880 490" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <rect width="880" height="490" rx="12" fill="#0a0a0a"/>
+
+  <defs>
+    <marker id="dn" viewBox="0 0 14 14" refX="12" refY="7"
+            markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#7ec8e3"/>
+    </marker>
+  </defs>
+
+  <text x="60" y="56" font-size="22" font-weight="700" fill="#e8e8e8">무엇을 먼저 하는가</text>
+  <text x="60" y="82" font-size="13" fill="#888">위 칸부터 차례로, 같은 칸에 있으면 왼쪽부터</text>
+
+  <line x1="76" y1="118" x2="76" y2="342" stroke="#7ec8e3" stroke-width="2" marker-end="url(#dn)"/>
+
+  <rect x="100" y="112" width="720" height="52" rx="6" fill="#101010" stroke="#333" stroke-width="1"/>
+  <rect x="100" y="172" width="720" height="52" rx="6" fill="#101010" stroke="#333" stroke-width="1"/>
+  <rect x="100" y="232" width="720" height="52" rx="6" fill="#101010" stroke="#333" stroke-width="1"/>
+  <rect x="100" y="292" width="720" height="52" rx="6" fill="#101010" stroke="#333" stroke-width="1"/>
+
+  <text x="124" y="144" font-size="15" font-weight="600" fill="#e8e8e8">1 &#160;괄호 ( )</text>
+  <text x="124" y="204" font-size="15" font-weight="600" fill="#e8e8e8">2 &#160;거듭제곱</text>
+  <text x="124" y="264" font-size="15" font-weight="600" fill="#e8e8e8">3 &#160;곱셈 × 나눗셈 ÷</text>
+  <text x="124" y="324" font-size="15" font-weight="600" fill="#e8e8e8">4 &#160;덧셈 + 뺄셈 −</text>
+
+  <text x="400" y="144" font-size="13" fill="#7ec8e3">(2 + 3) × 4 = 5 × 4 = 20</text>
+  <text x="400" y="204" font-size="13" fill="#7ec8e3">2 × 3² = 2 × 9 = 18</text>
+  <text x="400" y="264" font-size="13" fill="#7ec8e3">8 ÷ 4 × 2 = 2 × 2 = 4</text>
+  <text x="400" y="324" font-size="13" fill="#7ec8e3">10 − 3 − 2 = 7 − 2 = 5</text>
+
+  <text x="660" y="264" font-size="13" fill="#888">왼쪽부터</text>
+  <text x="660" y="324" font-size="13" fill="#888">왼쪽부터</text>
+
+  <rect x="60" y="372" width="760" height="60" rx="6" fill="#101010" stroke="#333" stroke-width="1"/>
+  <text x="84" y="396" font-size="13" font-weight="600" fill="#e8e8e8">이 순서가 있어서 괄호를 다 적지 않아도 식이 한 가지 뜻으로 읽힌다</text>
+  <text x="84" y="416" font-size="13" fill="#888">뺄셈과 나눗셈은 순서를 바꾸면 값이 달라져서 '왼쪽부터'가 꼭 필요했다</text>
+</svg>

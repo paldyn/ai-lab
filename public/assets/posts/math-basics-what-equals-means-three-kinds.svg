@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="416" viewBox="0 0 880 416" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <rect width="880" height="416" rx="12" fill="#0a0a0a"/>
+
+  <text x="60" y="56" font-size="22" font-weight="700" fill="#e8e8e8">같은 = 를 세 갈래로 가려 읽는다</text>
+  <text x="60" y="82" font-size="13" fill="#888">언제 참인가 — 언제나 / 특정한 값에서만 / 약속이라서</text>
+
+  <rect x="60" y="112" width="240" height="148" rx="6" fill="#101010" stroke="#333" stroke-width="1"/>
+  <rect x="320" y="112" width="240" height="148" rx="6" fill="#101010" stroke="#333" stroke-width="1"/>
+  <rect x="580" y="112" width="240" height="148" rx="6" fill="#101010" stroke="#333" stroke-width="1"/>
+
+  <text x="180" y="140" font-size="15" font-weight="600" fill="#e8e8e8" text-anchor="middle">항등식</text>
+  <text x="440" y="140" font-size="15" font-weight="600" fill="#e8e8e8" text-anchor="middle">방정식</text>
+  <text x="700" y="140" font-size="15" font-weight="600" fill="#e8e8e8" text-anchor="middle">정의</text>
+
+  <text x="180" y="178" font-size="17" fill="#7ec8e3" text-anchor="middle">2(x + 3) = 2x + 6</text>
+  <text x="440" y="178" font-size="17" fill="#7ec8e3" text-anchor="middle">2x + 6 = 14</text>
+  <text x="700" y="178" font-size="17" fill="#7ec8e3" text-anchor="middle">s = 1 + 2 + 3</text>
+
+  <text x="180" y="212" font-size="13" fill="#888" text-anchor="middle">어떤 수를 넣어도 참</text>
+  <text x="440" y="212" font-size="13" fill="#888" text-anchor="middle">x 가 4 일 때만 참</text>
+  <text x="700" y="212" font-size="13" fill="#888" text-anchor="middle">s 라는 새 이름을 붙였다</text>
+
+  <text x="180" y="234" font-size="13" fill="#888" text-anchor="middle">유도에 그대로 쓴다</text>
+  <text x="440" y="234" font-size="13" fill="#888" text-anchor="middle">그 x 를 찾는 것이 푸는 것</text>
+  <text x="700" y="234" font-size="13" fill="#888" text-anchor="middle">참·거짓을 따지지 않는다</text>
+
+  <rect x="60" y="296" width="760" height="60" rx="6" fill="#101010" stroke="#333" stroke-width="1"/>
+  <text x="84" y="320" font-size="13" font-weight="600" fill="#e8e8e8">셋 다 = 하나를 쓴다. 어느 갈래인지는 기호가 아니라 문맥이 알려 준다</text>
+  <text x="84" y="340" font-size="13" fill="#888">아무 수나 넣어도 참인가 — 이 질문 하나로 앞의 둘이 갈린다</text>
+</svg>
