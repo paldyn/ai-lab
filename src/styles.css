@@ -2639,9 +2639,9 @@ input:focus-visible {
   font-size: 10px;
 }
 
+/* 위 목록이 이미 줄마다 선을 긋고 끝나므로 여기서 한 번 더 그으면 선이 겹칩니다. */
 .home-hero-stats {
   margin-top: 22px;
-  border-top: 1px solid var(--border);
 }
 
 /* 최근 편수와 아카이브 규모를 한 줄로. */
