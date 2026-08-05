@@ -13,11 +13,25 @@ import type { SectionId } from '../types/article';
 
 const FEED_LIMIT = 4;
 
+/**
+ * 목록과 지표가 함께 보는 폭. 뉴스 페이지의 주간 지표와 같은 값입니다.
+ *
+ * 하루치만 보던 때는 목록과 지표가 서로 다른 것을 셌습니다 — 그날 올라온 게
+ * 넷에 못 미치면 목록만 전체에서 채우고 지표는 늘 하루치를 세서, 목록에 '학습'
+ * 줄이 둘 보이는데 발밑의 학습이 0인 날이 생겼습니다. 실제 데이터의 날짜 148개
+ * 가운데 80개가 그 경로에 걸립니다.
+ *
+ * 채우는 대신 창을 넓혔습니다. 둘이 한 모집단을 보므로 지표가 목록보다 작아질
+ * 수 없고, 창 안이 넷보다 적으면 그만큼만 서는 것이 맞습니다 — 비어 보이지
+ * 않게 하려고 다른 데서 끌어오는 것이 애초의 어긋남이었습니다.
+ */
+const WINDOW_DAYS = 7;
+
 /** 네비게이션과 같은 순서로 세웁니다. 화면마다 순서가 다르면 읽는 사람이 다시 찾습니다. */
 const SECTION_ORDER: SectionId[] = ['news', 'learn', 'research'];
 const SECTION_LABEL: Record<SectionId, string> = { news: '뉴스', learn: '학습', research: '리서치' };
 
-interface FeedItem {
+export interface FeedItem {
   key: string;
   section: SectionId;
   label: string;
@@ -27,13 +41,9 @@ interface FeedItem {
   href?: string;
 }
 
-/**
- * '오늘'을 쓰지 않고 가장 최신 항목의 날짜에서 거슬러 셉니다.
- * 정적 사이트라 new Date()를 쓰면 빌드 시각과 접속 시각이 갈려
- * 프리렌더 결과와 하이드레이션이 어긋납니다.
- */
-function recentUpdates(): { items: FeedItem[]; counts: Array<{ label: string; count: number }> } {
-  const all: FeedItem[] = [
+/** 글과 소식을 한 줄로 합쳐 최신순으로 세웁니다. */
+export function feedCorpus(): FeedItem[] {
+  return [
     ...articles.map((article) => {
       const category = categoryById[article.categoryId];
       return {
@@ -55,29 +65,51 @@ function recentUpdates(): { items: FeedItem[]; counts: Array<{ label: string; co
       date: item.publishedAt,
     })),
   ].sort((a, b) => b.date.localeCompare(a.date));
+}
 
-  if (all.length === 0) return { items: [], counts: [] };
+/**
+ * 기준일에서 WINDOW_DAYS만큼 거슬러 자른 창 하나로 목록과 지표를 모두 만듭니다.
+ *
+ * 기준일을 넘겨받는 이유는 검사 때문입니다. 이 함수의 계약은 '어느 날을 기준으로
+ * 삼든 지표가 목록을 담는다'이고, 그것은 실제 날짜 하나로는 확인되지 않습니다 —
+ * 어긋남이 나오던 날은 하루치가 넷에 못 미치는 날이었고 지금 최신일은 열둘입니다.
+ */
+export function buildRecent(
+  all: FeedItem[],
+  latest: string,
+): { items: FeedItem[]; counts: Array<{ label: string; count: number }> } {
+  // 날짜만 다루므로 UTC 정오에 맞춰 셉니다. 자정에 두면 시간대에 따라 하루가 밀립니다.
+  const start = new Date(`${latest}T12:00:00Z`);
+  start.setUTCDate(start.getUTCDate() - (WINDOW_DAYS - 1));
+  const from = start.toISOString().slice(0, 10);
 
-  // 가장 최근 발행일 하루치. 루틴이 매일 돌면 이 날짜가 곧 오늘이 됩니다.
-  // new Date()를 쓰면 프리렌더 시각과 접속 시각이 갈려 하이드레이션이 어긋납니다.
-  const today = all[0].date;
-  const sameDay = all.filter((item) => item.date === today);
+  // 목록도 지표도 이 하나를 봅니다.
+  const pool = all.filter((item) => item.date >= from && item.date <= latest);
 
   const bySection = (a: FeedItem, b: FeedItem) =>
     SECTION_ORDER.indexOf(a.section) - SECTION_ORDER.indexOf(b.section) || b.date.localeCompare(a.date);
 
-  // 그날 올라온 게 적으면 최신순으로 채워 패널이 비어 보이지 않게 합니다.
-  const items = (sameDay.length >= FEED_LIMIT ? sameDay : all).slice(0, FEED_LIMIT).sort(bySection);
+  return {
+    items: pool.slice(0, FEED_LIMIT).sort(bySection),
+    counts: [
+      { label: '전체', count: pool.length },
+      ...SECTION_ORDER.map((section) => ({
+        label: SECTION_LABEL[section],
+        count: pool.filter((item) => item.section === section).length,
+      })),
+    ],
+  };
+}
 
-  const counts = [
-    { label: '전체', count: sameDay.length },
-    ...SECTION_ORDER.map((section) => ({
-      label: SECTION_LABEL[section],
-      count: sameDay.filter((item) => item.section === section).length,
-    })),
-  ];
-
-  return { items, counts };
+/**
+ * '오늘'을 쓰지 않고 가장 최신 항목의 날짜에서 거슬러 셉니다.
+ * 정적 사이트라 new Date()를 쓰면 빌드 시각과 접속 시각이 갈려
+ * 프리렌더 결과와 하이드레이션이 어긋납니다.
+ */
+export function recentUpdates(): { items: FeedItem[]; counts: Array<{ label: string; count: number }> } {
+  const all = feedCorpus();
+  if (all.length === 0) return { items: [], counts: [] };
+  return buildRecent(all, all[0].date);
 }
 
 export function HomePage() {
@@ -129,9 +161,11 @@ export function HomePage() {
 
           {recent.items.length > 0 && (
             <aside className="home-hero-signal" aria-label="최근 업데이트">
+              {/* 지표가 세는 폭을 그대로 적습니다. 'TODAY'라고 적어 두면
+                  일주일치를 세는 숫자가 하루치인 양 읽힙니다. */}
               <p className="home-hero-signal-label">
                 <span className="news-live-dot" aria-hidden="true" />
-                TODAY&apos;S UPDATES
+                LAST {WINDOW_DAYS} DAYS
               </p>
 
               <ul className="home-hero-feed">
