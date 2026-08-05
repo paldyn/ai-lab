@@ -14,9 +14,8 @@ for (const marker of ['<!--app-head-->', '<!--app-html-->']) {
   }
 }
 
-const { render, prerenderRoutes, sitemapRoutes, absoluteUrl, siteUrl } = await import(
-  pathToFileURL(path.join(ssrDir, 'entry-server.js')).href
-);
+const { render, prerenderRoutes, sitemapRoutes, absoluteUrl, siteUrl, buildId, newsCount } =
+  await import(pathToFileURL(path.join(ssrDir, 'entry-server.js')).href);
 
 /**
  * String.replace는 치환 문자열의 $&, $1 같은 패턴을 특수 처리합니다.
@@ -73,6 +72,34 @@ await writeFile(path.join(distDir, 'sitemap.xml'), sitemap, 'utf8');
 const robots = ['User-agent: *', 'Allow: /', '', `Sitemap: ${siteUrl}/sitemap.xml`, ''].join('\n');
 await writeFile(path.join(distDir, 'robots.txt'), robots, 'utf8');
 
+/*
+ * 배포 표식.
+ * 글 목록은 virtual:article-index로 빌드 때 번들에 박히므로, 탭을 열어 둔 채
+ * 새 배포가 나가면 클라이언트 라우팅만으로는 새 글을 볼 방법이 없습니다.
+ * 열려 있는 탭이 "내가 든 번들이 최신인가"를 물어볼 자리를 하나 만들어 둡니다.
+ *
+ * dist에는 그걸 알려 줄 것이 없었습니다 — 에셋 해시는 index.html 안에만 있어
+ * 수십 KB를 다시 받아 파싱해야 하고, sitemap의 lastmod는 글 발행일이라 코드만
+ * 고친 배포에는 움직이지 않습니다.
+ *
+ * articles·latestPublishedAt·news는 '새 내용이 생겼는가'와 '코드만 바뀌었는가'를
+ * 가릅니다. 배너로 사람을 부르는 것은 앞쪽뿐입니다. 뉴스를 함께 싣는 이유는
+ * 그것도 번들에 박히는 콘텐츠이고, 수집 루틴이 매일 돌아 글이 없는 날에도
+ * 목록이 늘기 때문입니다 — 빼 두면 그런 배포는 열린 탭에 아무 표시도 못 남깁니다.
+ * sitemapRoutes에서 lastModified가 붙는 것은 글뿐이라 목록을 따로 넘기지 않아도 셉니다.
+ */
+const articleDates = sitemapRoutes.map((route) => route.lastModified).filter(Boolean).sort();
+const version = {
+  buildId,
+  builtAt: new Date().toISOString(),
+  articles: articleDates.length,
+  latestPublishedAt: articleDates.at(-1) ?? '',
+  news: newsCount,
+};
+await writeFile(path.join(distDir, 'version.json'), `${JSON.stringify(version)}\n`, 'utf8');
+
 await rm(ssrDir, { recursive: true, force: true });
 
-console.log(`Prerendered ${count} routes + 404.html, sitemap.xml, robots.txt`);
+console.log(
+  `Prerendered ${count} routes + 404.html, sitemap.xml, robots.txt, version.json (build ${buildId})`,
+);

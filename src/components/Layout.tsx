@@ -3,6 +3,7 @@ import { Link, NavLink, useLocation } from 'react-router';
 import { ArrowUp, Menu, Moon, Search, Sun, X } from 'lucide-react';
 import { assetUrl } from '../data/sources';
 import { SearchOverlay } from './SearchOverlay';
+import { SiteUpdateBanner } from './SiteUpdateBanner';
 
 const THEME_STORAGE_KEY = 'paldyn-ai-theme';
 const DARK_QUERY = '(prefers-color-scheme: dark)';
@@ -266,6 +267,12 @@ export function Layout({ children }: { children: ReactNode }) {
       >
         <ArrowUp size={18} strokeWidth={1.7} aria-hidden="true" />
       </button>
+
+      {/*
+        새 배포 알림. 여기 두는 이유는 모든 화면에 함께 있어야 하고, 경로 이동을
+        경계로 삼기 때문입니다 — Layout이 그 둘을 다 아는 유일한 자리입니다.
+      */}
+      <SiteUpdateBanner />
 
       <SearchOverlay open={searchOpen} onClose={() => setSearchOpen(false)} />
     </div>
