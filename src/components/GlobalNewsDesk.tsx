@@ -1,4 +1,4 @@
-import { useMemo, useState, type CSSProperties } from 'react';
+import { useMemo, useState, useSyncExternalStore, type CSSProperties } from 'react';
 import { ArrowUpRight, Eye } from 'lucide-react';
 import { useSearchParams } from 'react-router';
 import {
@@ -76,10 +76,27 @@ interface GlobalNewsDeskProps {
  */
 const ITEM_PARAM = 'item';
 
+/*
+  하이드레이션이 끝난 뒤에만 true. 서버 스냅샷과 클라이언트 스냅샷을 나눠 두면
+  React가 첫 렌더에는 서버 값을 쓰고 그 다음에 다시 그립니다 — effect로
+  setState 하는 흔한 방법과 결과는 같은데, 이 저장소가 막아 둔
+  react-hooks/set-state-in-effect에 걸리지 않습니다.
+
+  왜 필요한가. 모달은 createPortal로 #root 밖에 붙는데, **React는 하이드레이션
+  때 포탈도 함께 맞춰 봅니다.** 프리렌더는 쿼리 없는 /news를 그리므로 서버
+  HTML에는 그 포탈이 없고, /news?item=<id>로 처음 들어오면 클라이언트 첫 렌더에만
+  포탈이 생겨 어긋납니다(React #418). 그러면 React가 그 가지를 버리고 다시 그리므로
+  프리렌더가 하는 일이 없어집니다. 눌러서 여는 경우는 이미 하이드레이션 뒤라
+  원래 문제가 없었고, 이 한 줄이 링크로 들어온 경우를 거기에 맞춰 줍니다.
+*/
+const subscribeNever = () => () => {};
+const useHydrated = () => useSyncExternalStore(subscribeNever, () => true, () => false);
+
 export function GlobalNewsDesk({ kind }: GlobalNewsDeskProps) {
   const [source, setSource] = useState<SourceFilter>('All');
   const [visible, setVisible] = useState(FEED_INITIAL);
   const [searchParams, setSearchParams] = useSearchParams();
+  const hydrated = useHydrated();
 
   // 어느 탭이든 발표된 순서 그대로 읽습니다. 회사별로 묶어 보고 싶으면
   // 바로 아래 출처 띠가 그 일을 맡습니다 — 목록까지 회사순으로 뭉치면
@@ -209,7 +226,7 @@ export function GlobalNewsDesk({ kind }: GlobalNewsDeskProps) {
     항목은 `kindItems`가 아니라 전체에서 찾습니다 — 모델 탭에 서 있는 사람이
     기업 소식 링크를 받았을 때도 열려야 하고, 모달 자체는 어느 탭인지와 무관합니다.
   */
-  const openId = searchParams.get(ITEM_PARAM);
+  const openId = hydrated ? searchParams.get(ITEM_PARAM) : null;
   const selectedNews = useMemo(() => {
     if (!openId) return null;
     const item = newsItems.find((entry) => entry.id === openId);
