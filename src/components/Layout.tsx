@@ -1,7 +1,10 @@
-import { useEffect, useRef, useState, type ReactNode } from 'react';
+import { useEffect, useMemo, useRef, useState, type ReactNode } from 'react';
 import { Link, NavLink, useLocation } from 'react-router';
 import { ArrowUp, Menu, Moon, Search, Sun, X } from 'lucide-react';
+import { getArticleBySlug } from '../data/articles';
+import { categoryById } from '../data/categories';
 import { assetUrl } from '../data/sources';
+import type { SectionId } from '../types/article';
 import { SearchOverlay } from './SearchOverlay';
 import { SiteUpdateBanner } from './SiteUpdateBanner';
 
@@ -59,6 +62,24 @@ function isTypingTarget(target: EventTarget | null): boolean {
 }
 
 /**
+ * 글을 읽는 동안에도 그 글이 속한 섹션을 네비게이션에 켜 둡니다.
+ *
+ * 글 주소는 `/articles/<slug>` 하나라 경로만 보면 어느 칸도 안 켜지고, 글에 들어가는
+ * 순간 '지금 어디에 있는가'가 사라집니다. 대신 카테고리에서 섹션을 꺼내 켭니다 —
+ * 학습 글이면 학습이, 리서치 글이면 리서치가 켜집니다.
+ *
+ * 주소 구조로 푸는 방법도 있지만(글을 `/learn/<slug>` 아래로 옮기는 식) 그러면
+ * 카테고리를 옮길 때마다 글 주소가 바뀝니다. 방금 186편을 다시 나눈 참이라
+ * 그 비용이 실제로 크다는 것을 확인했습니다.
+ */
+function sectionOf(pathname: string): SectionId | undefined {
+  const prefix = '/articles/';
+  if (!pathname.startsWith(prefix)) return undefined;
+  const article = getArticleBySlug(pathname.slice(prefix.length));
+  return article ? categoryById[article.categoryId].section : undefined;
+}
+
+/**
  * 화면 한 칸의 단위. 학습은 분야를(/learn/<분야>), 뉴스는 탭을(/news/<탭>) 주소로
  * 고르지만 둘 다 다른 페이지로 가는 게 아니라 같은 목록을 거르는 일입니다. 한 칸으로
  * 묶어 두면 분야나 탭을 바꿔도 main을 다시 마운트하지 않습니다. 다시 마운트하면
@@ -80,6 +101,15 @@ export function Layout({ children }: { children: ReactNode }) {
   const mainRef = useRef<HTMLElement>(null);
   const location = useLocation();
   const view = viewKey(location.pathname);
+
+  /*
+    글 화면에서도 그 글이 속한 섹션을 켜 둡니다. NavLink는 경로만 보므로
+    `/articles/<slug>`에서는 아무것도 안 켜집니다 — 켤 칸을 여기서 정해 줍니다.
+  */
+  const readingSection = useMemo(() => sectionOf(location.pathname), [location.pathname]);
+  const navClass = (section: SectionId, base = '') =>
+    ({ isActive }: { isActive: boolean }) =>
+      [base, isActive || readingSection === section ? 'active' : ''].filter(Boolean).join(' ');
 
   // 경로가 바뀌면 모바일 메뉴를 닫습니다. effect에서 setState하면 렌더가 한 번 더
   // 돌기 때문에, React가 권하는 '렌더 도중 상태 조정' 방식을 씁니다.
@@ -192,20 +222,27 @@ export function Layout({ children }: { children: ReactNode }) {
 
           <nav className="primary-nav hidden lg:flex" aria-label="주요 메뉴">
             <NavLink to="/" end>홈</NavLink>
-            <NavLink to="/news" onClick={startAtTop}>뉴스</NavLink>
-            <NavLink to="/learn" onClick={startAtTop}>학습</NavLink>
-            <NavLink to="/research">리서치</NavLink>
+            <NavLink to="/news" className={navClass('news')} onClick={startAtTop}>뉴스</NavLink>
+            <NavLink to="/learn" className={navClass('learn')} onClick={startAtTop}>학습</NavLink>
+            <NavLink to="/research" className={navClass('research')}>리서치</NavLink>
           </nav>
 
           <div className="flex items-center gap-1.5">
+            {/*
+              모양은 techblog.paldyn.com의 검색 입력창과 같지만 실제로는 버튼입니다 —
+              누르면 오버레이가 열립니다. `<input>`으로 두면 여기에 글자를 칠 수 있는
+              것처럼 보이는데 실제로는 첫 글자가 오버레이로 넘어가야 해서, 두 곳에
+                포커스가 오가고 IME 조합이 끊깁니다. 보이는 것만 맞추고 동작은 그대로 둡니다.
+            */}
             <button
               type="button"
-              className="icon-button"
+              className="nav-search-trigger"
               onClick={() => setSearchOpen(true)}
               aria-label="글 검색 열기"
               title="검색 ( / )"
             >
-              <Search size={16} strokeWidth={1.7} aria-hidden="true" />
+              <Search size={16} strokeWidth={1.8} aria-hidden="true" />
+              <span>&apos;/&apos;로 검색</span>
             </button>
             <button type="button" className="icon-button" onClick={toggleTheme} aria-label="밝은 테마와 어두운 테마 전환" title="테마 전환">
               <Sun size={16} strokeWidth={1.7} className="theme-icon theme-icon-dark" aria-hidden="true" />
@@ -228,9 +265,9 @@ export function Layout({ children }: { children: ReactNode }) {
           <nav id="mobile-nav" className="mobile-nav" aria-label="모바일 메뉴">
             <div className="site-wrap grid grid-cols-2 gap-x-5">
               <NavLink to="/" end className="mobile-nav-link">홈</NavLink>
-              <NavLink to="/news" className="mobile-nav-link" onClick={startAtTop}>뉴스</NavLink>
-              <NavLink to="/learn" className="mobile-nav-link" onClick={startAtTop}>학습</NavLink>
-              <NavLink to="/research" className="mobile-nav-link">리서치</NavLink>
+              <NavLink to="/news" className={navClass('news', 'mobile-nav-link')} onClick={startAtTop}>뉴스</NavLink>
+              <NavLink to="/learn" className={navClass('learn', 'mobile-nav-link')} onClick={startAtTop}>학습</NavLink>
+              <NavLink to="/research" className={navClass('research', 'mobile-nav-link')}>리서치</NavLink>
             </div>
           </nav>
         )}
