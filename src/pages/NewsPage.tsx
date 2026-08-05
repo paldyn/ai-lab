@@ -47,7 +47,7 @@ function buildWeekStats() {
   const countOf = (kind: GlobalNewsKind) => recent.filter((item) => item.kind === kind).length;
 
   return {
-    label: `최근 7일 · ${from.replaceAll('-', '.')} — ${latest.replaceAll('-', '.')}`,
+    label: `최근 ${STATS_DAYS}일`,
     stats: [
       { label: '전체', value: String(recent.length) },
       { label: '기업 소식', value: String(countOf('company')) },
