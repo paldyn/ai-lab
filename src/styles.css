@@ -3070,6 +3070,22 @@ input:focus-visible {
 }
 
 /* 지표는 오른쪽 아래에 붙여 제목과 같은 바닥선을 씁니다. */
+/* 지표 묶음을 오른쪽 끝에 맞춰 세웁니다. 이름줄이 붙어도 숫자 자리가 안 흔들립니다. */
+.page-header-stats-block {
+  display: flex;
+  align-items: flex-end;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.page-header-stats-label {
+  color: var(--text-muted);
+  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  font-size: 9px;
+  letter-spacing: 0.08em;
+  white-space: nowrap;
+}
+
 .page-header-stats {
   display: flex;
   flex-wrap: wrap;

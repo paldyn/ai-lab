@@ -19,28 +19,46 @@ const newsViews: Array<{ id: NewsView; label: string }> = [
   { id: 'models', label: 'AI 모델' },
 ];
 
-/**
- * 아카이브 전체 규모를 탭과 같은 갈래로 보여 줍니다.
- *
- * 예전에는 '가장 최근 발표일 하루치'를 셌습니다. 매일 새 발표가 있을 때를
- * 생각한 값인데, 실제로는 하루에 한두 건이라 화면에 1·1·0이 떠 무엇을 세는
- * 숫자인지 알 수 없었습니다. 학습·리서치 머리말이 전체 편수를 보여 주는 것과도
- * 어긋났습니다. 여기 숫자는 아래 탭에서 각각 몇 건을 읽게 되는지와 정확히
- * 같습니다 — 전체 = 기업 + 모델.
- */
-function buildArchiveStats() {
-  const countOf = (kind: GlobalNewsKind) => newsItems.filter((item) => item.kind === kind).length;
+/** 최근 며칠치를 셀 것인가. */
+const STATS_DAYS = 7;
 
-  return [
-    { label: '전체', value: String(newsItems.length) },
-    { label: '기업 소식', value: String(countOf('company')) },
-    { label: 'AI 모델', value: String(countOf('model')) },
-  ];
+/**
+ * 최근 일주일에 들어온 양을 탭과 같은 갈래로 보여 줍니다. 전체 = 기업 + 모델.
+ *
+ * 기준일은 `new Date()`가 아니라 가장 최근 발표일입니다. 정적 사이트라 '오늘'을
+ * 쓰면 프리렌더 시각과 접속 시각이 갈려 하이드레이션이 어긋나고, 수집이 하루
+ * 쉬면 창이 통째로 비어 0만 남습니다.
+ *
+ * 하루치를 세던 때는 실제로 하루에 한두 건이라 1·1·0이 떠 무엇을 세는 숫자인지
+ * 알 수 없었고, 아카이브 전체를 세던 때는 387이 고정값이라 매일 봐도 달라지는
+ * 것이 없었습니다. 일주일이 '요즘 무엇이 나왔나'를 보여 주는 폭입니다.
+ */
+function buildWeekStats() {
+  const latest = newsItems[0]?.publishedAt;
+  if (!latest) return { label: '', stats: [] };
+
+  // 날짜만 다루므로 UTC 정오에 맞춰 셉니다. 자정에 두면 시간대에 따라 하루가 밀립니다.
+  const end = new Date(`${latest}T12:00:00Z`);
+  const start = new Date(end);
+  start.setUTCDate(start.getUTCDate() - (STATS_DAYS - 1));
+  const from = start.toISOString().slice(0, 10);
+
+  const recent = newsItems.filter((item) => item.publishedAt >= from && item.publishedAt <= latest);
+  const countOf = (kind: GlobalNewsKind) => recent.filter((item) => item.kind === kind).length;
+
+  return {
+    label: `최근 7일 · ${from.replaceAll('-', '.')} — ${latest.replaceAll('-', '.')}`,
+    stats: [
+      { label: '전체', value: String(recent.length) },
+      { label: '기업 소식', value: String(countOf('company')) },
+      { label: 'AI 모델', value: String(countOf('model')) },
+    ],
+  };
 }
 
 export function NewsPage() {
   const [view, setView] = useState<NewsView>('all');
-  const archiveStats = buildArchiveStats();
+  const week = buildWeekStats();
   const tabRefs = useRef<Array<HTMLButtonElement | null>>([]);
 
   // 탭 위젯 키보드 규약: 좌우로 이동, Home/End로 양 끝. 포커스가 이동하면 선택도 함께 바뀝니다.
@@ -71,7 +89,8 @@ export function NewsPage() {
         kicker="PALDYN AI NEWS"
         title="AI 뉴스"
         description="Anthropic · OpenAI · Google DeepMind의 공식 발표만 골라, 무엇이 달라졌고 어디에 영향을 주는지 함께 읽습니다."
-        stats={archiveStats}
+        stats={week.stats}
+        statsLabel={week.label}
       />
 
       {/*

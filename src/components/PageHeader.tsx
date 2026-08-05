@@ -9,6 +9,8 @@ interface PageHeaderProps {
   description: string;
   /** 오른쪽에 세우는 지표. 페이지마다 규모나 갱신 시점을 다르게 붙입니다. */
   stats?: PageStat[];
+  /** 지표 위 한 줄. 무엇을 센 숫자인지 밝혀야 할 때만 붙입니다. */
+  statsLabel?: string;
 }
 
 /**
@@ -20,7 +22,7 @@ interface PageHeaderProps {
  * 여기 들어와 그 페이지만 아래 여백이 0이 됐고, 세 페이지의 머리말 높이가
  * 서로 달라졌습니다. 탭처럼 페이지 고유한 것은 머리말 밖에 둡니다.
  */
-export function PageHeader({ kicker, title, description, stats }: PageHeaderProps) {
+export function PageHeader({ kicker, title, description, stats, statsLabel }: PageHeaderProps) {
   return (
     <section className="page-header">
       <div className="page-header-field" aria-hidden="true" />
@@ -34,14 +36,17 @@ export function PageHeader({ kicker, title, description, stats }: PageHeaderProp
           </div>
 
           {stats && stats.length > 0 && (
-            <dl className="page-header-stats">
-              {stats.map((stat) => (
-                <div key={stat.label}>
-                  <dd>{stat.value}</dd>
-                  <dt>{stat.label}</dt>
-                </div>
-              ))}
-            </dl>
+            <div className="page-header-stats-block">
+              {statsLabel && <p className="page-header-stats-label">{statsLabel}</p>}
+              <dl className="page-header-stats">
+                {stats.map((stat) => (
+                  <div key={stat.label}>
+                    <dd>{stat.value}</dd>
+                    <dt>{stat.label}</dt>
+                  </div>
+                ))}
+              </dl>
+            </div>
           )}
         </div>
       </div>
