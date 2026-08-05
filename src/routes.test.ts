@@ -63,11 +63,15 @@ describe('글 데이터', () => {
     }
   });
 
+  /**
+   * 슬러그 뒤를 `)`로 닫지 않는 형태까지 잡습니다. `](/articles/x/)`나
+   * `](/articles/x#절)`은 예전 정규식을 통째로 빠져나가 죽은 링크가 남았습니다.
+   */
   it('본문의 내부 링크가 존재하는 글을 가리킨다', () => {
     const slugs = new Set(articles.map((article) => article.slug));
     for (const article of articles) {
       const raw = readFileSync(new URL(`./content/articles/${article.slug}.md`, import.meta.url), 'utf8');
-      for (const [, target] of raw.matchAll(/\]\(\/articles\/([a-z0-9-]+)\)/g)) {
+      for (const [, target] of raw.matchAll(/\]\(\/articles\/([a-z0-9-]+)/g)) {
         expect(slugs.has(target), `${article.slug} -> /articles/${target}`).toBe(true);
       }
     }
