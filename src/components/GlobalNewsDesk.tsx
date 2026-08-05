@@ -22,11 +22,54 @@ const FEED_LIMIT = 3;
  */
 const FEED_STEP = 12;
 
+/** 아직 아무 발표도 모이지 않은 갈래에 쓰는 문구. */
+const NOTHING_YET = '아직 이 분류로 모인 공식 발표가 없습니다. 매일 출처를 확인해 채웁니다.';
+
+/**
+ * 이 데스크가 낼 수 있는 목소리. 모델 탭 몫이 'model-rest' 하나뿐인 것은
+ * 그 탭이 위에 레이더를 세우고 여기는 나머지만 맡기 때문입니다 — '모델 발표
+ * 전부'를 부르는 자리가 없어졌는데도 그 문구를 남겨 두면 화면에 뜰 수 없는
+ * 설정이 하나 남고, 나중에 모델 탭 문구를 고칠 때 반영되지 않는 쪽을 고치게 됩니다.
+ */
+type DeskVoice = 'company' | 'model-rest' | 'default';
+
+/**
+ * 갈래마다 머리말과 빈 상태 문구. 렌더 때마다 새로 만들 이유가 없어 모듈에 둡니다.
+ * 키를 실제로 부르는 셋으로만 좁혀 두면 `?? 기본값` 같은 폴백도 필요 없습니다.
+ */
+const VOICES: Record<DeskVoice, { heading: string; description: string; empty: string }> = {
+  company: {
+    heading: 'AI 기업 소식',
+    description: '제품과 조직, 규제 대응과 인프라 투자까지 각 회사의 움직임을 모아 봅니다.',
+    empty: NOTHING_YET,
+  },
+  'model-rest': {
+    heading: '그 밖의 모델 소식',
+    description:
+      '위 카드로 세우지 않은 나머지입니다 — 가격과 가용성 변화, 기존 계열에 붙은 기능, ' +
+      '오픈·양자화·특화 파생판을 발표된 순서대로 읽습니다.',
+    // 여기가 비는 것은 '모을 것이 없다'가 아니라 '전부 위 카드가 맡았다'는 뜻입니다.
+    empty: '이 기간의 모델 발표는 위 카드가 모두 맡았습니다. 카드로 세우지 않은 소식이 생기면 여기에 쌓입니다.',
+  },
+  default: {
+    heading: '주목할 AI 흐름',
+    description: '새로운 발표에서 무엇이 달라졌고, 어디에 영향을 주는지 짚어봅니다.',
+    empty: NOTHING_YET,
+  },
+};
+
 interface GlobalNewsDeskProps {
   kind?: GlobalNewsKind;
+  /**
+   * `model` 블록이 붙은 항목을 뺍니다. 모델 탭은 위 레이더가 그것들을 카드로 이미
+   * 세우므로, 빼지 않으면 같은 발표가 한 화면에 두 번 나옵니다. 뺄 것을 id 목록으로
+   * 받지 않는 이유는 '레이더가 맡는 것'의 정의가 `Boolean(item.model)` 하나뿐이라
+   * 같은 사실을 두 곳에서 따로 계산하게 되기 때문입니다.
+   */
+  excludeModelCards?: boolean;
 }
 
-export function GlobalNewsDesk({ kind }: GlobalNewsDeskProps) {
+export function GlobalNewsDesk({ kind, excludeModelCards = false }: GlobalNewsDeskProps) {
   const [source, setSource] = useState<SourceFilter>('All');
   const [selectedNews, setSelectedNews] = useState<NewsPreviewItem | null>(null);
   const [visible, setVisible] = useState(FEED_LIMIT);
@@ -34,10 +77,12 @@ export function GlobalNewsDesk({ kind }: GlobalNewsDeskProps) {
   // 어느 탭이든 발표된 순서 그대로 읽습니다. 회사별로 묶어 보고 싶으면
   // 바로 아래 출처 띠가 그 일을 맡습니다 — 목록까지 회사순으로 뭉치면
   // 같은 것을 두 번 거르는 셈이고, 첫 화면이 한 회사로 채워집니다.
-  const kindItems = useMemo(
-    () => (kind ? newsItems.filter((item) => item.kind === kind) : newsItems),
-    [kind],
-  );
+  const kindItems = useMemo(() => {
+    const byKind = kind ? newsItems.filter((item) => item.kind === kind) : newsItems;
+    // 여기서 한 번 빼면 출처 띠도 더 보기 개수도 알아서 따라옵니다 — 아래 것들이
+    // 전부 이 목록에서 파생되기 때문입니다. 플래그를 안 준 탭은 그대로입니다.
+    return excludeModelCards ? byKind.filter((item) => !item.model) : byKind;
+  }, [kind, excludeModelCards]);
 
   const items = useMemo(
     () => (source === 'All' ? kindItems : kindItems.filter((item) => item.source === source)),
@@ -59,21 +104,12 @@ export function GlobalNewsDesk({ kind }: GlobalNewsDeskProps) {
   const feedBeside = shown.slice(0, FEED_LIMIT);
   const feedBelow = shown.slice(FEED_LIMIT);
   const leadSource = lead ? getSource(lead.source) : null;
-  const HEADINGS: Record<string, { heading: string; description: string }> = {
-    company: {
-      heading: 'AI 기업 소식',
-      description: '제품과 조직, 규제 대응과 인프라 투자까지 각 회사의 움직임을 모아 봅니다.',
-    },
-    model: {
-      heading: '모델 발표',
-      description: '새 모델과 계열 개편, 가용성 변화를 발표된 순서대로 읽습니다.',
-    },
-    default: {
-      heading: '주목할 AI 흐름',
-      description: '새로운 발표에서 무엇이 달라졌고, 어디에 영향을 주는지 짚어봅니다.',
-    },
-  };
-  const { heading, description } = HEADINGS[kind ?? 'default'] ?? HEADINGS.default;
+  /*
+    레이더가 카드를 맡은 탭이면 여기는 늘 '나머지'입니다. 모델 탭이 레이더 없이
+    서는 일은 없으므로 kind만 'model'인 경우는 전체 탭과 같은 목소리로 둡니다.
+  */
+  const voice: DeskVoice = excludeModelCards ? 'model-rest' : kind === 'company' ? 'company' : 'default';
+  const { heading, description, empty } = VOICES[voice];
 
   // 목록이 통째로 갈리므로 펼친 만큼도 되돌립니다.
   const pickSource = (next: SourceFilter) => {
@@ -169,11 +205,7 @@ export function GlobalNewsDesk({ kind }: GlobalNewsDeskProps) {
           </div>
         </div>
 
-        {!lead && (
-          <p className="news-desk-empty">
-            아직 이 분류로 모인 공식 발표가 없습니다. 매일 출처를 확인해 채웁니다.
-          </p>
-        )}
+        {!lead && <p className="news-desk-empty">{empty}</p>}
 
         {lead && (
           <div className="news-desk-grid">
@@ -236,6 +268,11 @@ export function GlobalNewsDesk({ kind }: GlobalNewsDeskProps) {
           <button
             type="button"
             className="news-feed-more"
+            /*
+              모델 탭에는 레이더에도 같은 글자의 버튼이 있어, 스크린 리더의 버튼
+              목록에서 '더 보기' 둘이 똑같이 읽힙니다. 무엇을 늘리는지 이름에 적습니다.
+            */
+            aria-label={`${heading} 더 보기`}
             onClick={() => setVisible((count) => count + FEED_STEP)}
           >
             더 보기

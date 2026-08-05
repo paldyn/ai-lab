@@ -121,9 +121,12 @@ export function NewsPage() {
 
       <div id="news-tabpanel" role="tabpanel" aria-labelledby={`news-tab-${view}`} tabIndex={-1}>
         {/*
-          모델 탭은 레이더를 위에 얹습니다. 레이더만 두면 model 블록이 있는
-          것만 보이고 나머지 모델 발표는 어느 탭에서도 안 나오니, 아래
-          데스크에서 59건 전부를 읽게 합니다.
+          모델 탭은 위아래가 한 목록을 나눠 맡습니다. 레이더는 스펙을 카드로 세울 수
+          있는 것(model 블록이 붙은 것), 데스크는 그러지 못하는 나머지 — 가격 개편,
+          가용성 변화, 기존 계열에 붙은 기능, 파생판입니다. 한때는 데스크가 모델
+          발표 전부를 실었는데, 그러면 레이더에 있는 것이 바로 아래에 한 번 더
+          나왔습니다. 나머지를 어느 탭에서도 못 보게 되는 일은 excludeModelCards가
+          '레이더가 맡는 것'만 정확히 빼므로 생기지 않습니다.
         */}
         {view === 'models' && <ModelRadar />}
 
@@ -131,6 +134,7 @@ export function NewsPage() {
         <GlobalNewsDesk
           key={view}
           kind={view === 'all' ? undefined : view === 'models' ? 'model' : 'company'}
+          excludeModelCards={view === 'models'}
         />
       </div>
     </>

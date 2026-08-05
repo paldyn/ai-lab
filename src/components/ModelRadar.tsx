@@ -52,7 +52,12 @@ export function ModelRadar({ limit, showNewsLink = false }: ModelRadarProps) {
           <div>
             <p className="section-kicker">MODEL RADAR</p>
             <h2>주요 AI 모델 업데이트</h2>
-            <p>새 모델이 무엇을 바꾸었는지 핵심만 빠르게 확인합니다.</p>
+            {/*
+              h2는 홈과 함께 씁니다. 설명만 '이 영역이 무엇을 세우는가'를 말하게
+              두었습니다 — 뉴스 페이지에서는 아래 데스크가 맡는 나머지와 갈라지고,
+              홈에서도 그대로 참인 문장입니다.
+            */}
+            <p>새 모델이 무엇을 할 수 있고 어디에 쓰는지 카드 한 장으로 확인합니다.</p>
           </div>
           {showNewsLink && <Link to="/news">모델 뉴스 전체 보기 <ArrowUpRight size={13} aria-hidden="true" /></Link>}
         </div>
@@ -100,6 +105,8 @@ export function ModelRadar({ limit, showNewsLink = false }: ModelRadarProps) {
           <button
             type="button"
             className="news-feed-more"
+            /* 뉴스 페이지에는 아래 데스크에도 '더 보기'가 있어 이름으로 갈라 둡니다. */
+            aria-label="모델 카드 더 보기"
             onClick={() => setVisible((count) => count + RADAR_STEP)}
           >
             더 보기
