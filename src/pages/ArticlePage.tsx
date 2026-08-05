@@ -95,7 +95,7 @@ function relatedTo(article: Article): Article[] {
 
 /**
  * 트랙 사이를 잇는 배지. 수학 원고는 아직 쓰지 않은 글을 본문에서 링크할 수 없어
- * 「본선 12번 · 고윳값과 고유벡터」처럼 번호와 제목만 적습니다. 눌러서 이동하는
+ * 「중급 12번 · 고윳값과 고유벡터」처럼 번호와 제목만 적습니다. 눌러서 이동하는
  * 길은 여기가 냅니다 — `curriculum.ts`의 대응 데이터에서 슬러그를 받아
  * **실제로 `.md`가 있는 것만** 링크합니다. 아직 없는 글은 조용히 빠지고,
  * 그 글이 나가는 날 저절로 채워집니다.
@@ -104,14 +104,14 @@ function CurriculumLinks({ article }: { article: Article }) {
   const links = curriculumLinks(article.slug);
   /*
     이름은 '이 링크를 누르면 무엇을 하게 되는가'로 짓습니다. 예전 문구는
-    '막히면 먼저'처럼 조건을 걸거나 '이 글이 받치는 본선'처럼 글끼리의 관계를
+    '막히면 먼저'처럼 조건을 걸거나 '이 글이 받치는 중급'처럼 글끼리의 관계를
     설명해서, 읽는 사람이 자기가 무엇을 얻는지 알기 어려웠습니다.
   */
   const groups: { label: string; slugs: string[]; numbered: boolean }[] = [
     { label: '먼저 읽기', slugs: links.foundation, numbered: false },
     { label: '더 들어가기', slugs: links.advanced, numbered: false },
     {
-      // 입문 글에서는 '이걸 배우면 어디에 쓰는가', 심화 글에서는 '어디서 이어졌는가'입니다.
+      // 초급 글에서는 '이걸 배우면 어디에 쓰는가', 고급 글에서는 '어디서 이어졌는가'입니다.
       label: article.slug.startsWith('math-adv-') ? '이 글의 출발점' : '여기에 쓰입니다',
       slugs: links.mainTrack,
       numbered: true,

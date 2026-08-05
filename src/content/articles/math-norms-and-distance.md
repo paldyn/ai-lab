@@ -5,7 +5,7 @@ author: "PALDYN Team"
 pubDate: "2026-08-05"
 category: "math-for-ai"
 level: "중급"
-tags: ["본선", "노름", "정규화", "최적화"]
+tags: ["중급", "노름", "정규화", "최적화"]
 featured: false
 draft: false
 ---

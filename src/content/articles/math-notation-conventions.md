@@ -5,7 +5,7 @@ author: "PALDYN Team"
 pubDate: "2026-08-05"
 category: "math-for-ai"
 level: "중급"
-tags: ["본선", "수식 읽기", "텐서", "선형대수"]
+tags: ["중급", "수식 읽기", "텐서", "선형대수"]
 featured: false
 draft: false
 ---
