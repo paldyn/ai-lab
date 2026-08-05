@@ -36,6 +36,19 @@
   --text-strong: #050505;
   --text-dim: #666666;
   --text-muted: #6f6f6f;
+  /*
+    헤더의 아이콘과 검색 힌트 글자. techblog.paldyn.com과 같은 밝기로 맞춥니다 —
+    두 사이트를 나란히 두면 상단 띠에서 이 셋이 가장 먼저 어긋나 보입니다.
+
+    전역 --text-dim / --text-muted를 기술블로그 값으로 바꾸지 않습니다. 그 둘은
+    본문 옆 설명글까지 아흔 곳에서 쓰여 사이트 전체가 따라 바뀝니다.
+
+    힌트 글자는 기술블로그 값을 그대로 쓸 수 없습니다. 거기 --text-muted는 배경
+    대비가 라이트 3.45:1, 다크 3.88:1로 AA에 못 미칩니다. 4.5:1을 넘는 선에서
+    가장 가까운 회색을 씁니다 — 흰 배경에서 그게 #767676(4.54:1)입니다.
+  */
+  --text-nav-icon: #666666;
+  --text-nav-hint: #767676;
   --brand: #e95d00;
   --brand-text: #bd4c00;
   --header-bg: rgba(255, 255, 255, 0.9);
@@ -74,6 +87,10 @@
   --text-strong: #ffffff;
   --text-dim: #999999;
   --text-muted: #8a8a8a;
+  /* 아이콘은 기술블로그와 같은 값입니다. 힌트 글자는 거기 #6a6a6a가 3.88:1이라
+     검은 배경에서 AA를 넘는 가장 어두운 회색 #757575(4.56:1)를 씁니다. */
+  --text-nav-icon: #888888;
+  --text-nav-hint: #757575;
   --brand: #ff6400;
   --brand-text: #ff6400;
   --header-bg: rgba(0, 0, 0, 0.88);
@@ -438,7 +455,7 @@ input:focus-visible {
   border: 1px solid var(--border);
   border-radius: 999px;
   background: var(--bg);
-  color: var(--text-muted);
+  color: var(--text-nav-hint);
   font-size: 12px;
   letter-spacing: 0.02em;
   transition: border-color 200ms ease, background-color 200ms ease;
@@ -446,11 +463,11 @@ input:focus-visible {
 
 .nav-search-trigger svg {
   flex-shrink: 0;
-  color: var(--text-dim);
+  color: var(--text-nav-icon);
 }
 
 .nav-search-trigger:hover {
-  border-color: var(--text-dim);
+  border-color: var(--text-nav-icon);
   background: var(--bg-subtle);
 }
 
@@ -481,7 +498,7 @@ input:focus-visible {
   border: 1px solid var(--border);
   border-radius: 999px;
   background: transparent;
-  color: var(--text-dim);
+  color: var(--text-nav-icon);
   transition: border-color 160ms ease, color 160ms ease, background-color 160ms ease;
 }
 
