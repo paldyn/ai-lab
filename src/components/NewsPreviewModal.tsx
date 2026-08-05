@@ -144,13 +144,27 @@ export function NewsPreviewModal({ item, onClose }: NewsPreviewModalProps) {
       >
         <header className="news-preview-bar">
           <div><span /> PALDYN AI NEWS</div>
-          <p>BRIEFING PREVIEW</p>
+          {/*
+            원문 링크가 맨 위에 있습니다. 아래에 두면 본문이 길 때 스크롤해야
+            닿는데, 이 팝업에서 밖으로 나가는 길은 이것 하나뿐입니다.
+          */}
+          <a href={item.url} target="_blank" rel="noreferrer">
+            공식 원문 <ArrowUpRight size={14} />
+          </a>
           <button ref={closeButtonRef} type="button" onClick={close} aria-label="팝업 닫기" title="닫기">
             <X size={18} />
           </button>
         </header>
 
-        <div className="news-preview-body">
+        {/*
+          넘칠 때 구르는 것은 이 상자입니다. 링크와 닫기는 머리띠로 올라가
+          이 안에 포커스 받을 것이 하나도 없으므로, 키보드만 쓰면 넘친 본문에
+          닿을 방법이 없습니다. tabIndex 0으로 상자 자체를 포커스 대상에 넣습니다
+          — FOCUSABLE이 `[tabindex]:not([tabindex="-1"])`를 이미 포함해 위의
+          포커스 순환에도 그대로 들어갑니다. 이름 없는 포커스 정거장이 되지 않게
+          role과 라벨을 함께 답니다.
+        */}
+        <div className="news-preview-body" tabIndex={0} role="group" aria-label="소식 본문">
           <div className="news-preview-source">
             <span className={`news-preview-logo ${item.logoTone ? `is-${item.logoTone}` : ''}`}>
               {item.logoTone ? (
@@ -159,10 +173,23 @@ export function NewsPreviewModal({ item, onClose }: NewsPreviewModalProps) {
                 <img src={item.logo} alt="" className={item.monochrome ? 'is-monochrome' : ''} />
               )}
             </span>
-            <div>
+            <div className="news-preview-source-name">
               <p style={{ color: item.accent }}>{item.source}</p>
               <time dateTime={item.publishedAt}>{item.publishedAt.replaceAll('-', '.')}</time>
             </div>
+
+            {/*
+              분류는 로고 줄의 오른쪽 끝에 붙습니다. 예전에는 본문 맨 아래
+              박스였는데, 스크롤을 만드는 대신 이미 비어 있던 이 줄을 씁니다.
+              SOURCE·PUBLISHED는 여기 넣지 않습니다 — 같은 줄 왼쪽의 로고
+              블록이 이미 그 둘입니다.
+            */}
+            <dl className="news-preview-facts">
+              <div><dt>CATEGORY</dt><dd>{item.category}</dd></div>
+              {item.contextLabel && item.contextValue && (
+                <div><dt>{item.contextLabel}</dt><dd>{item.contextValue}</dd></div>
+              )}
+            </dl>
           </div>
 
           <p className="news-preview-signal" style={{ color: item.accent }}>{item.signal}</p>
