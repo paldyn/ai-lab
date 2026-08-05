@@ -20,8 +20,22 @@ export function ArticlePage() {
   return <ArticleView article={article} />;
 }
 
-/** sticky 헤더가 가리는 높이. 이 아래로 들어와야 '읽고 있는 자리'로 칩니다. */
-const TOC_TOP = 88;
+/**
+ * 목차로 뛰어든 헤딩이 멈추는 자리(`--heading-anchor-offset`, styles.css)를 읽어
+ * 판정선으로 씁니다. 이 위로 올라간 헤딩을 '지나갔다'로 칩니다.
+ *
+ * 상수로 박아 두었다가 어긋난 적이 있습니다 — CSS는 96px인데 여기는 88px이라,
+ * 목차 3번을 누르면 그 헤딩이 96px에 서고 88 이하가 아니라서 '아직 안 지나간 것'이
+ * 되어 2번이 짚혔습니다. 값을 한 곳에서만 정하게 두면 다시 갈리지 않습니다.
+ *
+ * 2px은 소수점 여유입니다. 브라우저가 96.4px에 세우는 일이 있어 딱 같은 값으로
+ * 비교하면 같은 증상이 그대로 돌아옵니다.
+ */
+function readingLine(): number {
+  const raw = getComputedStyle(document.documentElement).getPropertyValue('--heading-anchor-offset');
+  const px = Number.parseFloat(raw);
+  return (Number.isFinite(px) ? px : 96) + 2;
+}
 
 /**
  * 목차에서 지금 보고 있는 절을 짚어 줍니다.
@@ -45,6 +59,9 @@ function useActiveHeading(ids: string[]): string | undefined {
     if (ids.length === 0) return undefined;
 
     let frame = 0;
+    // 프레임마다 읽으면 스크롤 중에 스타일 재계산이 걸립니다. 한 번 재 두고
+    // 창 크기가 바뀔 때만 다시 잽니다(반응형에서 값이 달라질 수 있습니다).
+    let line = readingLine();
 
     const pick = () => {
       frame = 0;
@@ -52,7 +69,7 @@ function useActiveHeading(ids: string[]): string | undefined {
       let current = ids[0];
       for (const id of ids) {
         const node = document.getElementById(id);
-        if (node && node.getBoundingClientRect().top <= TOC_TOP) current = id;
+        if (node && node.getBoundingClientRect().top <= line) current = id;
       }
       setActive(current);
     };
@@ -63,14 +80,19 @@ function useActiveHeading(ids: string[]): string | undefined {
       frame = requestAnimationFrame(pick);
     };
 
+    const onResize = () => {
+      line = readingLine();
+      schedule();
+    };
+
     pick();
     window.addEventListener('scroll', schedule, { passive: true });
-    window.addEventListener('resize', schedule);
+    window.addEventListener('resize', onResize);
 
     return () => {
       if (frame) cancelAnimationFrame(frame);
       window.removeEventListener('scroll', schedule);
-      window.removeEventListener('resize', schedule);
+      window.removeEventListener('resize', onResize);
     };
   }, [ids]);
 

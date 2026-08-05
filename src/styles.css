@@ -17,6 +17,14 @@
   --border: #e5e5e5;
   --border-strong: #1a1a1a;
   /*
+    목차나 링크로 헤딩에 뛰어들 때 그 헤딩이 화면 위에서 멈추는 자리.
+    sticky 헤더에 가리지 않을 만큼 띄웁니다. **ArticlePage의 목차 강조가 이 값을
+    읽어 판정선으로 씁니다** — 둘이 갈리면 방금 누른 절이 아니라 그 앞 절이
+    짚힙니다(실제로 8px 차이로 그랬습니다).
+  */
+  --heading-anchor-offset: 96px;
+
+  /*
     팝업의 가장자리와 바탕. 팝업은 흐려진 배경 위에 떠 있어서, 본문용 --border를
     그대로 쓰면 가장자리가 사라집니다.
 
@@ -2010,7 +2018,7 @@ input:focus-visible {
   font-size: 26px;
   font-weight: 450;
   line-height: 1.4;
-  scroll-margin-top: 96px;
+  scroll-margin-top: var(--heading-anchor-offset);
 }
 
 .article-prose h3 {
@@ -2020,7 +2028,7 @@ input:focus-visible {
   font-size: 19px;
   font-weight: 500;
   line-height: 1.45;
-  scroll-margin-top: 96px;
+  scroll-margin-top: var(--heading-anchor-offset);
 }
 
 .article-prose h4 {
