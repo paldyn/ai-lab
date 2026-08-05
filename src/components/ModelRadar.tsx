@@ -97,17 +97,15 @@ export function ModelRadar() {
                 </div>
 
                 <div className="model-radar-body">
-                  {/* 스펙이 있으면 그것을, 없으면 그 발표의 갈래를 적습니다. */}
-                  <p>{release ? `${release.kind} · ${release.status}` : item.signal}</p>
                   {/*
-                    제목은 뉴스 제목입니다 — 모델 이름을 제목 자리에 넣으면 스펙이
-                    없는 발표에는 쓸 것이 없고, 같은 소식이 홈과 뉴스에서 다른
-                    제목으로 보입니다. 모델 이름은 위 회사 줄에 붙습니다.
+                    계열 마크는 이 갈래 줄에 붙습니다. 마크가 가리키는 것이 바로
+                    '어느 계열의 새 모델인가'라 이 줄이 제 자리입니다.
 
-                    계열 마크는 제목 옆, 그리고 버튼 밖입니다 — 뉴스 목록과 같은
-                    규칙입니다. 안에 넣으면 접근성 이름이 마크 설명과 이어 붙습니다.
+                    제목 옆에 두었다가 옮겼습니다 — flex 항목이라 제목 블록 전체를
+                    밀어내서, 마크가 있는 카드만 같은 폭에서 제목이 한 줄 더
+                    접혔습니다(2줄 → 3줄). 갈래 줄은 짧아 마크가 들어갈 자리가 있습니다.
                   */}
-                  <h3 className={release ? 'has-mark' : undefined}>
+                  <p className={release ? 'has-mark' : undefined}>
                     {release && (
                       <span
                         className="news-feed-mark"
@@ -117,6 +115,15 @@ export function ModelRadar() {
                         <b className="sr-only">{release.family} 새 모델</b>
                       </span>
                     )}
+                    {/* 스펙이 있으면 그것을, 없으면 그 발표의 갈래를 적습니다. */}
+                    <span>{release ? `${release.kind} · ${release.status}` : item.signal}</span>
+                  </p>
+                  {/*
+                    제목은 뉴스 제목입니다 — 모델 이름을 제목 자리에 넣으면 스펙이
+                    없는 발표에는 쓸 것이 없고, 같은 소식이 홈과 뉴스에서 다른
+                    제목으로 보입니다. 모델 이름은 위 회사 줄에 붙습니다.
+                  */}
+                  <h3>
                     <button type="button" className="card-trigger" onClick={() => openPreview(item)}>
                       {item.title}
                     </button>

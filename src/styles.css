@@ -3406,6 +3406,13 @@ input:focus-visible {
   font-weight: 600;
 }
 
+/* 마크가 붙는 갈래 줄. 글자와 같은 줄에 서게 baseline이 아니라 가운데로 맞춥니다. */
+.model-radar-body > p.has-mark {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+
 .model-radar-body h3 {
   margin-top: 10px;
   color: var(--text-strong);
@@ -3423,10 +3430,11 @@ input:focus-visible {
 }
 
 /* 카드 제목은 목록보다 크므로 마크도 그만큼 올립니다. */
-.model-radar-body h3 .news-feed-mark,
-.model-radar-body h3 .news-feed-mark > span {
-  width: 19px;
-  height: 19px;
+/* 갈래 줄은 10px이라 목록(17px)보다 작게 둡니다. */
+.model-radar-body > p .news-feed-mark,
+.model-radar-body > p .news-feed-mark > span {
+  width: 15px;
+  height: 15px;
 }
 
 .model-use-case {
