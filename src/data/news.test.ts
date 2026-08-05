@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { categoryLabel, categoryOrder, modelUpdates, newsBySource, newsItems, releaseOf } from './news';
+import { categoryLabel, categoryOrder, newsBySource, newsItems, releaseOf } from './news';
 import { getSource, sourceList } from './sources';
 
 describe('뉴스 데이터', () => {
@@ -86,32 +86,25 @@ describe('뉴스 데이터', () => {
   });
 });
 
-describe('모델 업데이트 파생 목록', () => {
+describe('모델 발표 판정', () => {
   /*
     기준은 `releaseOf` 하나입니다 — model 블록이 붙어 있어도 kind가 company면 빠집니다.
     목록에 붙는 '새 모델' 마크와 모델 탭이 같은 답을 내야 하기 때문입니다.
+    한때 이 판정으로 만든 파생 목록(modelUpdates)이 따로 있었는데, 홈 카드가
+    뉴스 항목을 그대로 쓰게 되면서 아무도 안 읽는 사본이 되어 걷어냈습니다.
   */
-  it('kind가 model인 항목만 포함한다', () => {
-    expect(modelUpdates.length).toBe(newsItems.filter((item) => releaseOf(item)).length);
-    expect(modelUpdates.every((update) => {
-      const source = newsItems.find((item) => item.id === update.id);
-      return source?.kind === 'model';
-    })).toBe(true);
-  });
-
-  it('뉴스 목록과 id, 날짜, 링크가 일치한다', () => {
-    for (const update of modelUpdates) {
-      const source = newsItems.find((item) => item.id === update.id);
-      expect(source, update.id).toBeDefined();
-      expect(update.publishedAt).toBe(source!.publishedAt);
-      expect(update.url).toBe(source!.url);
+  it('kind가 model인 항목만 통과시킨다', () => {
+    for (const item of newsItems) {
+      expect(Boolean(releaseOf(item)), item.id).toBe(item.kind === 'model' && Boolean(item.model));
     }
   });
 
-  it('로고 경로와 톤이 채워져 있다', () => {
-    for (const update of modelUpdates) {
-      expect(update.logo, update.id).toMatch(/^assets\/.+\.svg$/);
-      expect(['claude', 'gemini', 'gpt'], update.id).toContain(update.tone);
+  it('통과한 항목은 로고 경로와 톤이 채워져 있다', () => {
+    for (const item of newsItems) {
+      const release = releaseOf(item);
+      if (!release) continue;
+      expect(release.logo, item.id).toMatch(/^assets\/.+\.svg$/);
+      expect(['claude', 'gemini', 'gpt'], item.id).toContain(release.tone);
     }
   });
 });

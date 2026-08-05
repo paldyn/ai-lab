@@ -1,4 +1,4 @@
-import { getSource, type ModelFamily, type NewsSource } from './sources';
+import type { ModelFamily, NewsSource } from './sources';
 
 export type { NewsSource } from './sources';
 
@@ -6092,14 +6092,6 @@ const byNewestFirst = (a: NewsItem, b: NewsItem) => b.publishedAt.localeCompare(
 /** 뉴스 데스크가 쓰는 전체 목록. 최신순. */
 export const newsItems: NewsItem[] = [...entries].sort(byNewestFirst);
 
-export interface ModelUpdate extends ModelRelease {
-  id: string;
-  source: NewsSource;
-  publishedAt: string;
-  url: string;
-  accent: string;
-}
-
 /**
  * 이 항목이 '쓸 수 있는 모델이 새로 생긴 발표'인가. 답을 여기 한 곳에서만 냅니다.
  *
@@ -6128,18 +6120,6 @@ export function feedDate(publishedAt: string): string {
   const [year, month, day] = publishedAt.split('-');
   return year === LATEST_YEAR ? `${month}.${day}` : `${year}.${month}.${day}`;
 }
-
-/** Model Radar가 쓰는 파생 목록. 모델 발표만 최신순으로 남깁니다. */
-export const modelUpdates: ModelUpdate[] = newsItems
-  .filter((item): item is NewsItem & { model: ModelRelease } => Boolean(releaseOf(item)))
-  .map((item) => ({
-    ...item.model,
-    id: item.id,
-    source: item.source,
-    publishedAt: item.publishedAt,
-    url: item.url,
-    accent: getSource(item.source).accent,
-  }));
 
 export function newsBySource(source: NewsSource, limit?: number): NewsItem[] {
   const filtered = newsItems.filter((item) => item.source === source);

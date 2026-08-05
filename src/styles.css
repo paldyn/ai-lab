@@ -3300,11 +3300,26 @@ input:focus-visible {
 }
 
 .model-radar-top {
-  display: grid;
-  /* 위 `.company-news-column header`와 같은 이유로 로고 폭에 맞춥니다. */
-  grid-template-columns: 26px minmax(0, 1fr) auto;
-  gap: 11px;
-  align-items: center;
+  /*
+    회사 로고와 이름이 한 덩어리(.news-feed-source)로 들어오므로 격자를 쓰지
+    않습니다 — 로고 칸을 따로 잡던 26px 열은 이제 비어 있게 됩니다.
+    날짜와 순번은 오른쪽 끝으로 밀어 둡니다.
+  */
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+}
+
+.model-radar-top .news-feed-source {
+  overflow: hidden;
+  font-size: 13px;
+  font-weight: 650;
+  letter-spacing: 0;
+  text-overflow: ellipsis;
+}
+
+.model-radar-top .news-feed-date {
+  margin-left: auto;
 }
 
 /*
@@ -3348,26 +3363,8 @@ input:focus-visible {
   background: var(--source-openai);
 }
 
-.model-radar-top > div p,
-.model-order {
-  font-family: 'JetBrains Mono', ui-monospace, monospace;
-  font-size: 8px;
-  letter-spacing: 0.06em;
-}
 
-.model-radar-top > div p {
-  overflow: hidden;
-  font-family: 'Wanted Sans Variable', 'Wanted Sans', system-ui, sans-serif;
-  font-size: 13px;
-  font-weight: 650;
-  letter-spacing: 0;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
 
-.model-family-name {
-  color: var(--model-accent);
-}
 
 .model-family-gemini {
   color: #4285f4;
@@ -3378,14 +3375,14 @@ input:focus-visible {
   칼럼과 같은 급으로 서야 하는 값이라 이 카드만 8px 회색으로 둘 이유가 없습니다.
   여기서는 계열 이름 아래 줄로 내리는 자리만 잡습니다.
 */
-.model-radar-top > div time {
-  display: block;
-  margin-top: 3px;
-}
 
 .model-order {
   display: block;
+  flex-shrink: 0;
   color: var(--text-muted);
+  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  font-size: 8px;
+  letter-spacing: 0.06em;
 }
 
 .model-radar-body {
@@ -3412,6 +3409,13 @@ input:focus-visible {
   color: var(--text-dim);
   font-size: 12px;
   line-height: 1.7;
+}
+
+/* 카드 제목은 목록보다 크므로 마크도 그만큼 올립니다. */
+.model-radar-body h3 .news-feed-mark,
+.model-radar-body h3 .news-feed-mark > span {
+  width: 19px;
+  height: 19px;
 }
 
 .model-use-case {
