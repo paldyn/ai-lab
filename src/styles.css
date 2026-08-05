@@ -270,11 +270,15 @@ input:focus-visible {
   backdrop-filter: blur(16px);
 }
 
+/*
+  간격 12px은 techblog.paldyn.com과 맞춘 값입니다 — 그쪽은 gap 10에 글자와
+  구분자의 margin 2px을 더해 12가 됩니다. 여기서는 gap 하나로 같은 결과를 냅니다.
+*/
 .brand-lockup {
   display: inline-flex;
   flex-shrink: 0;
   align-items: center;
-  gap: 10px;
+  gap: 12px;
   color: var(--text-strong);
   text-decoration: none;
 }
