@@ -3322,6 +3322,17 @@ input:focus-visible {
   margin-left: auto;
 }
 
+/* 모델 이름. 회사 이름 옆에 붙습니다 — 뉴스 목록의 meta 줄과 같은 자리입니다. */
+.model-radar-name {
+  overflow: hidden;
+  color: var(--text-muted);
+  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  font-size: 9px;
+  letter-spacing: 0.04em;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
 /*
   칩 없이 마크만 놓습니다. 마크는 mask라 색을 우리가 정하므로, 칩이 사라져도
   아래 `.model-logo-*`가 테마마다 보이는 색을 줍니다 — 검정 GPT 마크만 다크에서

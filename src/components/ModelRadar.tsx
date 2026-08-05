@@ -6,18 +6,20 @@ import { assetUrl, getSource } from '../data/sources';
 import { NewsPreviewModal, releasePreviewFields, type NewsPreviewItem } from './NewsPreviewModal';
 
 /**
- * 홈에서만 씁니다. 뉴스 페이지에도 같은 격자를 세우던 때가 있었는데, 그러면 모델
- * 탭이 위는 카드 아래는 목록으로 한 벌의 발표를 두 번 읽게 만들었습니다. 지금
- * 뉴스 페이지는 목록 하나로 읽고 새 모델에는 마크만 붙입니다(GlobalNewsDesk).
+ * 홈의 AI 모델 소식. 뉴스 페이지 모델 탭의 앞머리 넉 장입니다.
  *
- * 여기에 카드가 남은 이유는 맡는 일이 다르기 때문입니다 — 홈은 '요즘 무엇이
- * 나왔나'를 훑는 자리라 스펙 몇 줄을 펼쳐 보여 주는 편이 낫고, 목록으로 바꾸면
- * 바로 위 기업 소식 칼럼과 생김새가 겹쳐 두 영역이 한 덩어리로 보입니다.
+ * **`kind: 'model'`을 그대로 씁니다.** 예전에는 `model` 블록이 붙은 것만 뽑아
+ * 41건을 봤는데, 모델 탭은 60건입니다 — 가격 개편·가용성 변경·지원 종료처럼
+ * 스펙 카드로 세울 수 없는 발표가 통째로 빠져 있었고, 그중에 가장 최신
+ * 모델 소식이 들어 있었습니다. 홈이 다루는 것은 '주요 모델 업데이트'가 아니라
+ * 'AI 모델 뉴스'입니다.
  *
- * 다만 **누가 무엇을 냈는가를 적는 방식은 뉴스 목록과 같습니다** — 회사 로고와
- * 회사 이름이 머리에 서고, 계열 마크는 모델 이름 옆에 붙습니다. 예전에는 계열
- * (Gemini)을 출처 자리에 놓아서, 같은 발표가 홈에서는 'Gemini'가 낸 것으로
- * 뉴스에서는 'Google'이 낸 것으로 보였습니다.
+ * 카드로 두는 이유는 맡는 일이 달라서입니다 — 홈은 훑는 자리라 한 줄 요약을
+ * 펼쳐 보여 주는 편이 낫고, 목록으로 바꾸면 바로 위 기업 소식 칼럼과 생김새가
+ * 겹쳐 두 영역이 한 덩어리로 보입니다.
+ *
+ * 누가 무엇을 냈는가를 적는 방식은 뉴스 목록과 같습니다 — 회사 로고와 회사
+ * 이름이 머리에 서고, 계열 마크는 제목 옆에 붙습니다.
  */
 const HOME_LIMIT = 4;
 
@@ -25,11 +27,11 @@ export function ModelRadar() {
   const [selectedModel, setSelectedModel] = useState<NewsPreviewItem | null>(null);
 
   /*
-    파생 목록(modelUpdates)을 쓰지 않고 뉴스 항목을 그대로 씁니다. 카드가 여는
-    모달이 뉴스 목록에서 여는 것과 한 글자도 다르지 않아야 하는데, 파생 목록에는
-    뉴스 제목과 요약이 없어 카드 쪽만 모델 이름과 headline을 채워 넣고 있었습니다.
+    파생 목록을 쓰지 않고 뉴스 항목을 그대로 씁니다. 카드가 여는 모달이 뉴스
+    목록에서 여는 것과 한 글자도 다르지 않아야 하는데, 파생 목록에는 뉴스
+    제목과 요약이 없어 카드 쪽만 모델 이름을 제목 자리에 넣고 있었습니다.
   */
-  const items = newsItems.filter((item) => releaseOf(item)).slice(0, HOME_LIMIT);
+  const items = newsItems.filter((item) => item.kind === 'model').slice(0, HOME_LIMIT);
 
   const openPreview = (item: NewsItem) => {
     const meta = getSource(item.source);
@@ -55,9 +57,9 @@ export function ModelRadar() {
       <div className="site-wrap">
         <div className="simple-section-heading model-radar-heading">
           <div>
-            <p className="section-kicker">MODEL RADAR</p>
-            <h2>주요 AI 모델 업데이트</h2>
-            <p>새 모델이 무엇을 할 수 있고 어디에 쓰는지 카드 한 장으로 확인합니다.</p>
+            <p className="section-kicker">MODEL NEWS</p>
+            <h2>AI 모델 소식</h2>
+            <p>새로 나온 모델과 계열 확장, 가격·가용성 변화를 최근 순으로 봅니다.</p>
           </div>
           {/* 뉴스 페이지의 모델 탭을 바로 엽니다 — 여기서 이어 읽을 곳이 그 탭입니다. */}
           <Link to="/news/models">
@@ -68,7 +70,8 @@ export function ModelRadar() {
         <div className="model-radar-grid">
           {items.map((item, index) => {
             const meta = getSource(item.source);
-            const release = releaseOf(item)!;
+            // 모델 탭 60건 중 19건은 스펙 블록이 없습니다. 없어도 서야 합니다.
+            const release = releaseOf(item);
             return (
               <article
                 key={item.id}
@@ -86,6 +89,7 @@ export function ModelRadar() {
                     />
                     {meta.displayName}
                   </span>
+                  {release && <span className="model-radar-name">{release.name}</span>}
                   <time className="news-feed-date" dateTime={item.publishedAt}>
                     {feedDate(item.publishedAt)}
                   </time>
@@ -93,30 +97,38 @@ export function ModelRadar() {
                 </div>
 
                 <div className="model-radar-body">
-                  <p>{release.kind} · {release.status}</p>
+                  {/* 스펙이 있으면 그것을, 없으면 그 발표의 갈래를 적습니다. */}
+                  <p>{release ? `${release.kind} · ${release.status}` : item.signal}</p>
                   {/*
-                    계열 마크는 모델 이름 옆, 그리고 버튼 밖입니다 — 뉴스 목록의
-                    제목과 같은 규칙입니다. 안에 넣으면 접근성 이름이 마크의
-                    설명과 이어 붙습니다.
+                    제목은 뉴스 제목입니다 — 모델 이름을 제목 자리에 넣으면 스펙이
+                    없는 발표에는 쓸 것이 없고, 같은 소식이 홈과 뉴스에서 다른
+                    제목으로 보입니다. 모델 이름은 위 회사 줄에 붙습니다.
+
+                    계열 마크는 제목 옆, 그리고 버튼 밖입니다 — 뉴스 목록과 같은
+                    규칙입니다. 안에 넣으면 접근성 이름이 마크 설명과 이어 붙습니다.
                   */}
-                  <h3 className="has-mark">
-                    <span
-                      className="news-feed-mark"
-                      style={{ '--model-logo': `url("${assetUrl(release.logo)}")` } as CSSProperties}
-                    >
-                      <span className={`model-logo-${release.tone}`} aria-hidden="true" />
-                      <b className="sr-only">{release.family} 새 모델</b>
-                    </span>
+                  <h3 className={release ? 'has-mark' : undefined}>
+                    {release && (
+                      <span
+                        className="news-feed-mark"
+                        style={{ '--model-logo': `url("${assetUrl(release.logo)}")` } as CSSProperties}
+                      >
+                        <span className={`model-logo-${release.tone}`} aria-hidden="true" />
+                        <b className="sr-only">{release.family} 새 모델</b>
+                      </span>
+                    )}
                     <button type="button" className="card-trigger" onClick={() => openPreview(item)}>
-                      {release.name}
+                      {item.title}
                     </button>
                   </h3>
-                  <div className="model-use-case"><b>활용</b><span>{release.useCase}</span></div>
+                  {release && (
+                    <div className="model-use-case"><b>활용</b><span>{release.useCase}</span></div>
+                  )}
                   {/*
-                    headline은 이 카드에만 나옵니다. 뉴스 목록은 summary(사실을
-                    풀어 쓴 문단)를 쓰는데, 훑는 자리에는 한 줄로 벼린 쪽이 맞습니다.
+                    headline은 카드용으로 벼린 한 줄이라 훑는 자리에 맞습니다.
+                    스펙이 없는 발표는 요약을 그대로 씁니다.
                   */}
-                  <span>{release.headline}</span>
+                  <span>{release?.headline ?? item.summary}</span>
                 </div>
 
                 <div className="model-radar-foot">
