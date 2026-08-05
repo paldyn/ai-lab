@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="516" viewBox="0 0 880 516" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <rect width="880" height="516" rx="12" fill="#0a0a0a"/>
+
+  <defs>
+    <marker id="down" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#7777cc"/>
+    </marker>
+  </defs>
+
+  <text x="60" y="56" font-size="22" font-weight="700" fill="#e8e8e8">근과 계수의 관계가 곧 대각합과 행렬식이다</text>
+  <text x="60" y="82" font-size="13" fill="#888">2×2 특성방정식을 전개하면 이차식 하나가 되고, 두 근의 합과 곱이 그대로 tr A와 det A다</text>
+
+  <rect x="60" y="110" width="760" height="116" rx="6" fill="#101010" stroke="#3a4a6e" stroke-width="1"/>
+  <text x="84" y="138" font-size="13" font-weight="600" fill="#7ec8e3">① 2×2 행렬 하나</text>
+  <text x="90" y="192" font-size="16" fill="#e8e8e8">A =</text>
+  <path d="M 136 158 L 128 158 L 128 216 L 136 216" fill="none" stroke="#888" stroke-width="1.5"/>
+  <path d="M 208 158 L 216 158 L 216 216 L 208 216" fill="none" stroke="#888" stroke-width="1.5"/>
+  <text x="150" y="180" font-size="16" fill="#ffffff">3</text>
+  <text x="188" y="180" font-size="16" fill="#ffffff">1</text>
+  <text x="150" y="208" font-size="16" fill="#ffffff">2</text>
+  <text x="188" y="208" font-size="16" fill="#ffffff">2</text>
+  <text x="300" y="180" font-size="15" fill="#e8e8e8">tr A = 3 + 2 = 5</text>
+  <text x="300" y="208" font-size="15" fill="#e8e8e8">det A = 3·2 − 1·2 = 4</text>
+
+  <line x1="440" y1="226" x2="440" y2="258" stroke="#7777cc" stroke-width="2.5" marker-end="url(#down)"/>
+
+  <rect x="60" y="262" width="760" height="76" rx="6" fill="#101010" stroke="#3a4a6e" stroke-width="1"/>
+  <text x="84" y="288" font-size="13" font-weight="600" fill="#7ec8e3">② 특성방정식을 전개한다</text>
+  <text x="84" y="322" font-size="15" fill="#ffffff">det(A − λI) = 0  →  λ² − (tr A)λ + det A = 0  →  λ² − 5λ + 4 = 0</text>
+
+  <line x1="440" y1="338" x2="440" y2="370" stroke="#7777cc" stroke-width="2.5" marker-end="url(#down)"/>
+
+  <rect x="60" y="374" width="760" height="76" rx="6" fill="#101010" stroke="#3a4a6e" stroke-width="1"/>
+  <text x="84" y="400" font-size="13" font-weight="600" fill="#7ec8e3">③ 근과 계수의 관계로 읽는다</text>
+  <text x="84" y="434" font-size="15" fill="#ffffff">λ₁ + λ₂ = 5 = tr A   |   λ₁λ₂ = 4 = det A   |   따라서 λ = 1, 4</text>
+
+  <text x="60" y="486" font-size="13" fill="#9aa4b8">고윳값을 풀지 않고도 대각합과 행렬식만으로 두 근의 합과 곱을 먼저 알 수 있다</text>
+</svg>

@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="420" viewBox="0 0 880 420" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <rect width="880" height="420" rx="12" fill="#0a0a0a"/>
+
+  <text x="60" y="56" font-size="22" font-weight="700" fill="#e8e8e8">같은 글자가 자리에 따라 다른 것을 가리킨다</text>
+  <text x="60" y="82" font-size="13" fill="#888">무엇을 뜻하는지는 글자가 아니라 그 글자가 놓인 식이 정한다</text>
+
+  <text x="170" y="140" font-size="40" font-weight="700" fill="#7ec8e3" text-anchor="middle">λ</text>
+  <rect x="60" y="162" width="220" height="84" rx="6" fill="#101010" stroke="#3a4a6e" stroke-width="1"/>
+  <text x="78" y="186" font-size="13" font-weight="600" fill="#7ec8e3">정규화 계수</text>
+  <text x="78" y="208" font-size="13" fill="#e8e8e8">가중치 벌점의 세기</text>
+  <text x="78" y="228" font-size="12" fill="#9aa4b8">L = L₀ + λ‖w‖²</text>
+  <rect x="60" y="262" width="220" height="84" rx="6" fill="#101010" stroke="#3a4a6e" stroke-width="1"/>
+  <text x="78" y="286" font-size="13" font-weight="600" fill="#7ec8e3">고윳값</text>
+  <text x="78" y="308" font-size="13" fill="#e8e8e8">그 축에서의 늘림 배율</text>
+  <text x="78" y="328" font-size="12" fill="#9aa4b8">Av = λv</text>
+
+  <text x="440" y="140" font-size="40" font-weight="700" fill="#7ec8e3" text-anchor="middle">σ</text>
+  <rect x="330" y="162" width="220" height="84" rx="6" fill="#101010" stroke="#3a4a6e" stroke-width="1"/>
+  <text x="348" y="186" font-size="13" font-weight="600" fill="#7ec8e3">표준편차</text>
+  <text x="348" y="208" font-size="13" fill="#e8e8e8">흩어진 정도</text>
+  <text x="348" y="228" font-size="12" fill="#9aa4b8">N(μ, σ²)</text>
+  <rect x="330" y="262" width="220" height="84" rx="6" fill="#101010" stroke="#3a4a6e" stroke-width="1"/>
+  <text x="348" y="286" font-size="13" font-weight="600" fill="#7ec8e3">시그모이드 함수</text>
+  <text x="348" y="308" font-size="13" fill="#e8e8e8">0과 1 사이로 누른다</text>
+  <text x="348" y="328" font-size="12" fill="#9aa4b8">σ(x) = 1/(1+exp(−x))</text>
+
+  <text x="710" y="140" font-size="40" font-weight="700" fill="#7ec8e3" text-anchor="middle">π</text>
+  <rect x="600" y="162" width="220" height="84" rx="6" fill="#101010" stroke="#3a4a6e" stroke-width="1"/>
+  <text x="618" y="186" font-size="13" font-weight="600" fill="#7ec8e3">정책</text>
+  <text x="618" y="208" font-size="13" fill="#e8e8e8">상태에서 행동을 고르는 규칙</text>
+  <text x="618" y="228" font-size="12" fill="#9aa4b8">π(a | s)</text>
+  <rect x="600" y="262" width="220" height="84" rx="6" fill="#101010" stroke="#3a4a6e" stroke-width="1"/>
+  <text x="618" y="286" font-size="13" font-weight="600" fill="#7ec8e3">원주율</text>
+  <text x="618" y="308" font-size="13" fill="#e8e8e8">3.14159…</text>
+  <text x="618" y="328" font-size="12" fill="#9aa4b8">정규분포 밀도의 상수</text>
+
+  <text x="60" y="386" font-size="13" fill="#9aa4b8">그래서 논문에서 처음 보는 글자를 만나면 뜻을 외우는 대신 그 글자가 처음 정의된 줄을 찾는다</text>
+</svg>

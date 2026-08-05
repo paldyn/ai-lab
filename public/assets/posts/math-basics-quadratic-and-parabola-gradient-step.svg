@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="510" viewBox="0 0 880 510" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <rect width="880" height="510" rx="12" fill="#0a0a0a"/>
+
+  <text x="60" y="56" font-size="22" font-weight="700" fill="#e8e8e8">같은 그릇, 다른 학습률 — 경계는 2/a다</text>
+  <text x="60" y="82" font-size="13" fill="#888">f(x) = ½ax² 위에서 한 걸음은 x ← (1 − ηa)x 이고, |1 − ηa| 가 1을 넘는 순간 값이 커진다</text>
+
+  <text x="230" y="124" font-size="16" font-weight="600" fill="#55c555" text-anchor="middle">η = 0.6 (a = 1)</text>
+  <text x="230" y="148" font-size="13" fill="#888" text-anchor="middle">1 − ηa = 0.4 → 수렴</text>
+
+  <text x="650" y="124" font-size="16" font-weight="600" fill="#e05555" text-anchor="middle">η = 2.4 (a = 1)</text>
+  <text x="650" y="148" font-size="13" fill="#888" text-anchor="middle">1 − ηa = −1.4 → 발산</text>
+
+  <line x1="60" y1="400" x2="400" y2="400" stroke="#888" stroke-width="1.5"/>
+  <line x1="230" y1="420" x2="230" y2="230" stroke="#888" stroke-width="1.5"/>
+  <polyline points="70,240 90,277.5 110,310 130,337.5 150,360 170,377.5 190,390 210,397.5 230,400 250,397.5 270,390 290,377.5 310,360 330,337.5 350,310 370,277.5 390,240"
+    fill="none" stroke="#7ec8e3" stroke-width="2.5"/>
+
+  <line x1="480" y1="400" x2="820" y2="400" stroke="#888" stroke-width="1.5"/>
+  <line x1="650" y1="420" x2="650" y2="230" stroke="#888" stroke-width="1.5"/>
+  <polyline points="490,240 510,277.5 530,310 550,337.5 570,360 590,377.5 610,390 630,397.5 650,400 670,397.5 690,390 710,377.5 730,360 750,337.5 770,310 790,277.5 810,240"
+    fill="none" stroke="#7ec8e3" stroke-width="2.5"/>
+
+  <circle cx="390" cy="240" r="7" fill="#55c555">
+    <animate attributeName="cx" values="390;294;255.6;240.2;234.1;231.6;230.6"
+      keyTimes="0;0.1429;0.2857;0.4286;0.5714;0.7143;0.8571" calcMode="discrete" dur="5.6s" repeatCount="indefinite"/>
+    <animate attributeName="cy" values="240;374.4;395.9;399.3;399.9;400;400"
+      keyTimes="0;0.1429;0.2857;0.4286;0.5714;0.7143;0.8571" calcMode="discrete" dur="5.6s" repeatCount="indefinite"/>
+  </circle>
+
+  <circle cx="670" cy="397.5" r="7" fill="#e05555">
+    <animate attributeName="cx" values="670;622;689.2;595.1;726.8;542.4;800.6"
+      keyTimes="0;0.1429;0.2857;0.4286;0.5714;0.7143;0.8571" calcMode="discrete" dur="5.6s" repeatCount="indefinite"/>
+    <animate attributeName="cy" values="397.5;395.1;390.4;381.2;363.1;327.7;258.2"
+      keyTimes="0;0.1429;0.2857;0.4286;0.5714;0.7143;0.8571" calcMode="discrete" dur="5.6s" repeatCount="indefinite"/>
+  </circle>
+
+  <text x="230" y="442" font-size="13" fill="#9aa4b8" text-anchor="middle">4 → 1.6 → 0.64 → 0.26 → 0.10 → 0.04</text>
+  <text x="650" y="442" font-size="13" fill="#9aa4b8" text-anchor="middle">0.5 → −0.7 → 0.98 → −1.37 → 1.92 → −2.69</text>
+
+  <text x="60" y="484" font-size="13" fill="#9aa4b8">부호가 번갈아 바뀌면서 커지는 것이 발산의 신호다. 경계는 η = 2/a 이고 a는 그릇의 휘어진 정도다</text>
+</svg>

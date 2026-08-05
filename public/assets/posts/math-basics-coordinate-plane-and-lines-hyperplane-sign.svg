@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="610" viewBox="0 0 880 610" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <rect width="880" height="610" rx="12" fill="#0a0a0a"/>
+
+  <defs>
+    <marker id="wvec" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#e8e8e8"/>
+    </marker>
+  </defs>
+
+  <text x="60" y="56" font-size="22" font-weight="700" fill="#e8e8e8">b만 바꾸면 직선은 w 방향으로 나란히 밀린다</text>
+  <text x="60" y="82" font-size="13" fill="#888">직선이 지나간 점은 그 순간 wᵀx + b의 부호가 뒤집힌다</text>
+
+  <text x="60" y="124" font-size="14" fill="#7ec8e3">0.6x + 0.8y + b = 0</text>
+
+  <line x1="202" y1="310" x2="678" y2="310" stroke="#888" stroke-width="1.5"/>
+  <line x1="440" y1="430" x2="440" y2="190" stroke="#888" stroke-width="1.5"/>
+  <text x="692" y="315" font-size="13" fill="#888">x</text>
+  <text x="430" y="186" font-size="13" fill="#888" text-anchor="end">y</text>
+
+  <g>
+    <line x1="318" y1="218" x2="562" y2="402" stroke="#7ec8e3" stroke-width="2.5"/>
+    <animateTransform attributeName="transform" type="translate"
+      values="-61.2,81.6; 61.2,-81.6" dur="6s" repeatCount="indefinite"/>
+  </g>
+
+  <line x1="440" y1="310" x2="485" y2="250" stroke="#e8e8e8" stroke-width="2" marker-end="url(#wvec)"/>
+  <text x="496" y="244" font-size="13" fill="#e8e8e8">w</text>
+
+  <circle cx="304" cy="242" r="6" fill="#55c555">
+    <animate attributeName="fill" values="#55c555;#e05555" keyTimes="0;0.367" calcMode="discrete" dur="6s" repeatCount="indefinite"/>
+  </circle>
+  <circle cx="372" cy="378" r="6" fill="#55c555">
+    <animate attributeName="fill" values="#55c555;#e05555" keyTimes="0;0.033" calcMode="discrete" dur="6s" repeatCount="indefinite"/>
+  </circle>
+  <circle cx="406" cy="208" r="6" fill="#55c555">
+    <animate attributeName="fill" values="#55c555;#e05555" keyTimes="0;0.8" calcMode="discrete" dur="6s" repeatCount="indefinite"/>
+  </circle>
+  <circle cx="542" cy="344" r="6" fill="#55c555">
+    <animate attributeName="fill" values="#55c555;#e05555" keyTimes="0;0.667" calcMode="discrete" dur="6s" repeatCount="indefinite"/>
+  </circle>
+  <circle cx="304" cy="293" r="6" fill="#55c555">
+    <animate attributeName="fill" values="#55c555;#e05555" keyTimes="0;0.167" calcMode="discrete" dur="6s" repeatCount="indefinite"/>
+  </circle>
+  <circle cx="542" cy="276" r="6" fill="#55c555">
+    <animate attributeName="fill" values="#55c555;#e05555" keyTimes="0;0.933" calcMode="discrete" dur="6s" repeatCount="indefinite"/>
+  </circle>
+
+  <circle cx="200" cy="519" r="6" fill="#55c555"/>
+  <text x="218" y="524" font-size="13" fill="#e8e8e8">wᵀx + b &gt; 0 — w가 가리키는 쪽</text>
+  <circle cx="200" cy="551" r="6" fill="#e05555"/>
+  <text x="218" y="556" font-size="13" fill="#e8e8e8">wᵀx + b &lt; 0 — 반대쪽</text>
+
+  <text x="60" y="588" font-size="13" fill="#9aa4b8">w는 처음부터 끝까지 그대로다. 움직이는 것은 b 하나뿐이고, 그래서 기울기가 아니라 위치만 바뀐다</text>
+</svg>
