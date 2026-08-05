@@ -984,19 +984,32 @@ input:focus-visible {
   회사 마크. 회사 이름 바로 앞에 붙어 한 덩어리로 읽힙니다 — 마크가 가리키는
   것이 그 이름이므로 자리도 거기입니다.
 
+  **inline-flex로 두지 않습니다.** 그러면 이 칩의 baseline을 첫 항목인 로고가
+  정하는데(이미지에는 baseline이 없어 아래 모서리를 씁니다), 부모 meta 줄이
+  baseline 정렬이라 회사명만 3.5px 떠서 옆 글자들과 줄이 안 맞았습니다.
+  평범한 inline으로 두면 칩의 baseline이 곧 회사 이름의 baseline입니다.
+
   Anthropic·OpenAI 마크는 단색 검정이라 다크에서 그대로 두면 사라집니다.
   칩을 씌우는 대신 다른 로고 자리들과 같은 반전을 씁니다.
 */
 .news-feed-source {
-  display: inline-flex;
-  align-items: center;
-  gap: 5px;
+  /* 로고와 이름 사이에서 줄이 접히면 마크만 앞 줄에 남습니다. */
+  white-space: nowrap;
 }
 
 .news-feed-logo {
+  /*
+    Tailwind preflight이 img를 block으로 만들어 두어 그대로 두면 로고가 제 줄을
+    차지하고 이름이 아래로 밀립니다. inline-block이라야 글자와 같은 줄에 서고
+    vertical-align도 먹습니다(블록 박스에는 적용되지 않습니다).
+  */
+  display: inline-block;
   width: 13px;
   height: 13px;
-  flex-shrink: 0;
+  /* gap 대신 마진입니다 — inline이라 flex의 gap이 없습니다. */
+  margin-right: 5px;
+  /* 글자 가운데에 맞춥니다. baseline에 그대로 앉히면 로고가 위로 솟습니다. */
+  vertical-align: -2px;
   object-fit: contain;
 }
 
@@ -1047,8 +1060,9 @@ input:focus-visible {
   align-items: baseline;
   color: var(--text-muted);
   font-family: 'JetBrains Mono', ui-monospace, monospace;
-  font-size: 8px;
-  letter-spacing: 0.08em;
+  /* 8px이던 것을 올렸습니다 — 10.5px 날짜 옆에서 너무 작아 한 줄로 안 읽혔습니다. */
+  font-size: 10px;
+  letter-spacing: 0.06em;
 }
 
 /*
