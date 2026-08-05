@@ -1962,6 +1962,43 @@ input:focus-visible {
   padding-left: 12px;
 }
 
+/*
+  지금 보고 있는 절. 목록이 왼쪽 세로선에 붙어 있으므로 그 선 위에 짧은 막대를
+  덧그어 자리를 짚습니다 — 글자만 밝게 하면 긴 목록에서 눈이 못 찾습니다.
+  li의 padding-left(16px)와 선 두께를 감안해 왼쪽으로 17px 밀어 세로선에 겹칩니다.
+*/
+.article-toc-item {
+  position: relative;
+}
+
+.article-toc-item.is-current::before {
+  position: absolute;
+  top: 2px;
+  bottom: 2px;
+  left: -17px;
+  width: 2px;
+  border-radius: 1px;
+  background: var(--brand);
+  content: '';
+}
+
+/*
+  li에 색을 주어 링크가 물려받게 합니다. 목록의 색은 `<ol>`에 붙은 유틸리티가
+  정하는데, 링크를 직접 겨냥하면 그 유틸리티와 어느 쪽이 이기는지가 클래스
+  이름 순서에 달립니다. 한 칸 가까운 조상에서 물려주면 그 다툼이 없습니다.
+*/
+.article-toc-item.is-current,
+.article-toc-item.is-current > a {
+  color: var(--text-strong);
+}
+
+/* 위치가 튀지 않게 색만 바꿉니다. 굵기를 바꾸면 글자 폭이 변해 목록이 흔들립니다. */
+@media (prefers-reduced-motion: no-preference) {
+  .article-toc-item > a {
+    transition: color 140ms ease;
+  }
+}
+
 .article-section-number {
   margin-bottom: 12px !important;
   color: var(--text-muted);

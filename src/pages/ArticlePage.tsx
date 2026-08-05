@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { ArrowLeft, ArrowRight } from 'lucide-react';
 import { Link, Navigate, useParams } from 'react-router';
 import { ArticleCard } from '../components/ArticleCard';
@@ -18,6 +18,68 @@ export function ArticlePage() {
 
   // 훅이 조기 반환 뒤에 오지 않도록 본문 렌더는 별도 컴포넌트로 둡니다.
   return <ArticleView article={article} />;
+}
+
+/** sticky 헤더가 가리는 높이. 이 아래로 들어와야 '읽고 있는 자리'로 칩니다. */
+const TOC_TOP = 88;
+
+/**
+ * 목차에서 지금 보고 있는 절을 짚어 줍니다.
+ *
+ * 스크롤 위치를 프레임마다 재지 않고 IntersectionObserver가 경계를 넘을 때만
+ * 알려 주게 합니다. 관찰 띠는 화면 상단 88px에서 30% 지점까지고, 그 안에 들어온
+ * 헤딩을 지금 절로 봅니다 — 띠를 넓게 잡으면 긴 절을 읽는 동안 아래에 잠깐
+ * 보이는 다음 절 제목 때문에 표시가 앞서갑니다.
+ *
+ * 다만 띠에 걸친 것이 하나도 없는 때가 흔합니다 — 맨 위에 있을 때와 한 절이
+ * 화면보다 길 때입니다. 그때는 **띠 위로 이미 지나간 것 중 마지막**을 씁니다.
+ * 그래야 읽는 내내 목차의 어딘가는 늘 짚혀 있습니다.
+ */
+function useActiveHeading(ids: string[]): string | undefined {
+  const [active, setActive] = useState<string | undefined>(undefined);
+
+  useEffect(() => {
+    if (ids.length === 0) return undefined;
+    // 프리렌더에는 없는 API입니다. effect 안이라 서버에서는 돌지 않습니다.
+    if (typeof IntersectionObserver === 'undefined') return undefined;
+
+    const seen = new Map<string, boolean>();
+
+    const pick = () => {
+      const inBand = ids.filter((id) => seen.get(id));
+      if (inBand.length > 0) {
+        setActive(inBand[0]);
+        return;
+      }
+
+      let passed: string | undefined;
+      for (const id of ids) {
+        const node = document.getElementById(id);
+        if (node && node.getBoundingClientRect().top < TOC_TOP) passed = id;
+      }
+      // 아직 아무것도 안 지났으면 첫 절을 짚습니다 — 글 맨 위가 곧 첫 절입니다.
+      setActive(passed ?? ids[0]);
+    };
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) seen.set(entry.target.id, entry.isIntersecting);
+        pick();
+      },
+      { rootMargin: `-${TOC_TOP}px 0px -70% 0px` },
+    );
+
+    const nodes = ids
+      .map((id) => document.getElementById(id))
+      .filter((node): node is HTMLElement => node !== null);
+    for (const node of nodes) observer.observe(node);
+
+    pick();
+
+    return () => observer.disconnect();
+  }, [ids]);
+
+  return active;
 }
 
 function relatedTo(article: Article): Article[] {
@@ -40,11 +102,17 @@ function relatedTo(article: Article): Article[] {
  */
 function CurriculumLinks({ article }: { article: Article }) {
   const links = curriculumLinks(article.slug);
+  /*
+    이름은 '이 링크를 누르면 무엇을 하게 되는가'로 짓습니다. 예전 문구는
+    '막히면 먼저'처럼 조건을 걸거나 '이 글이 받치는 본선'처럼 글끼리의 관계를
+    설명해서, 읽는 사람이 자기가 무엇을 얻는지 알기 어려웠습니다.
+  */
   const groups: { label: string; slugs: string[]; numbered: boolean }[] = [
-    { label: '막히면 먼저', slugs: links.foundation, numbered: false },
-    { label: '더 깊이', slugs: links.advanced, numbered: false },
+    { label: '먼저 읽기', slugs: links.foundation, numbered: false },
+    { label: '더 들어가기', slugs: links.advanced, numbered: false },
     {
-      label: article.slug.startsWith('math-adv-') ? '이 글이 확장하는 본선' : '이 글이 받치는 본선',
+      // 입문 글에서는 '이걸 배우면 어디에 쓰는가', 심화 글에서는 '어디서 이어졌는가'입니다.
+      label: article.slug.startsWith('math-adv-') ? '이 글의 출발점' : '여기에 쓰입니다',
       slugs: links.mainTrack,
       numbered: true,
     },
@@ -71,7 +139,7 @@ function CurriculumLinks({ article }: { article: Article }) {
               <li key={item.slug}>
                 {group.numbered && (
                   <span className="block font-mono text-[9px] tracking-[0.1em] text-[var(--text-muted)]">
-                    본선 {mainTrackNumber(item.slug)}번
+                    중급 {mainTrackNumber(item.slug)}번
                   </span>
                 )}
                 <Link to={`/articles/${item.slug}`} className="text-[var(--text-dim)] hover:text-[var(--text)]">
@@ -106,6 +174,10 @@ function ArticleView({ article }: { article: Article }) {
   // 첫 화면에서는 프리렌더된 HTML을 DOM에서 그대로 읽어 씁니다.
   // SPA로 이동해 들어온 경우에만 해당 글의 청크를 내려받습니다.
   const [body, setBody] = useState<ArticleBody | null>(() => initialArticleBody(article.slug));
+
+  // 본문이 늦게 오는 경로가 있어 목록이 바뀔 때만 관찰을 다시 겁니다.
+  const headingIds = useMemo(() => (body?.headings ?? []).map((heading) => heading.id), [body]);
+  const activeHeading = useActiveHeading(headingIds);
 
   useEffect(() => {
     if (body) return undefined;
@@ -163,8 +235,17 @@ function ArticleView({ article }: { article: Article }) {
           {body && body.headings.length > 0 && (
             <ol className="mt-4 space-y-3 border-l border-[var(--border)] pl-4 text-xs leading-5 text-[var(--text-dim)]">
               {body.headings.map((heading, index) => (
-                <li key={heading.id} className={heading.depth === 3 ? 'pl-3' : undefined}>
-                  <a href={`#${heading.id}`} className="hover:text-[var(--text)]">
+                <li
+                  key={heading.id}
+                  className={`article-toc-item${heading.depth === 3 ? ' pl-3' : ''}${
+                    heading.id === activeHeading ? ' is-current' : ''
+                  }`}
+                >
+                  <a
+                    href={`#${heading.id}`}
+                    className="hover:text-[var(--text)]"
+                    aria-current={heading.id === activeHeading ? 'true' : undefined}
+                  >
                     {heading.depth === 2 ? `${String(index + 1).padStart(2, '0')} ` : ''}
                     {heading.text}
                   </a>
