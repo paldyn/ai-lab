@@ -70,7 +70,7 @@ OG 이미지는 `scripts/og-image.html`을 헤드리스 Chrome으로 렌더해 `
 
 | 섹션 | 주소 | 카테고리 |
 | --- | --- | --- |
-| 학습 | `/learn`, `/learn/<category>` | `ai-guide` `math-for-ai` `agents-rag` `ml-ops` |
+| 학습 | `/learn`, `/learn/<category>` | `ai-guide` `math-for-ai` `deep-learning` `llm-core` `domain-models` `agents-rag` `build-with-ai` `ml-ops` |
 | 리서치 | `/research` | `lab-notes` `paper-notes` `tools` |
 | 뉴스 | `/news` | `ai-news` |
 

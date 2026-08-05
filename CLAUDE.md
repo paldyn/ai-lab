@@ -15,7 +15,7 @@ title: ""
 description: ""          # 카드 요약이자 검색 결과 설명. 20~220자
 author: "PALDYN Team"
 pubDate: "YYYY-MM-DD"    # TZ='Asia/Seoul' date +%Y-%m-%d
-category: ""             # 아래 8개 중 하나
+category: ""             # 아래 12개 중 하나
 level: "초급" | "중급" | "고급"
 tags: []
 featured: false
@@ -27,14 +27,49 @@ draft: false             # true면 목록·프리렌더에서 빠진다
 
 | 섹션 | 주소 | 카테고리 |
 | --- | --- | --- |
-| 학습 | `/learn` | `ai-guide` `math-for-ai` `agents-rag` `ml-ops` |
+| 학습 | `/learn` | `ai-guide` `math-for-ai` `deep-learning` `llm-core` `domain-models` `agents-rag` `build-with-ai` `ml-ops` |
 | 리서치 | `/research` | `lab-notes` `paper-notes` `tools` |
 | 뉴스 | `/news` | `ai-news` |
 
-  slug 접두사로 고르면 대체로 맞는다 — `agent-`·`rag-`·`prompt-`·`vector-`·
-  `embedding-`은 `agents-rag`, `mlops-`·`llmops-`·`serving-`·`inference-`·
-  `finetuning-`·`quantization-`·`eval-`은 `ml-ops`, `math-`는 `math-for-ai`,
-  나머지는 `ai-guide`.
+  **학습 여덟 칸은 slug 접두사가 정한다.** 아래 표에서 **위에서부터** 찾아 쓴다 —
+  `ai-coding-`은 `ai-`보다 위에 있으므로 `build-with-ai`다. 표는 학습 여덟 칸
+  전용이고, 리서치 접두사(`lab-` `paper-` `bench-` `cost-` `spec-`)는 아래 리서치
+  항목이 담당한다.
+
+| 카테고리 | 접두사 |
+| --- | --- |
+| `build-with-ai` | `ai-coding-` `app-`(만드는 것이 RAG여도 여기다) `huggingface-` `pytorch-` `*-sdk` `python-for-ai` `notebook-` `tensorflow-` |
+| `agents-rag` | `ai-agent` `agent-` `rag-` `prompt-` `vector-` `embedding-`(검색용) `project-`(에이전트·RAG를 만드는 것) |
+| `math-for-ai` | `math-basics-` `math-` `math-adv-` |
+| `deep-learning` | `ml-` `nn-` `rnn-` `embedding-`(단어·문장 표현 학습) `neural-network-` |
+| `llm-core` | `llm-` `transformer-` `tokenizer-` `reasoning-` |
+| `domain-models` | `cnn-` `cv-` `nlp-` `rl-` `recsys-` `audio-` `multimodal-` |
+| `ml-ops` | `mlops-` `llmops-` `serving-` `inference-` `finetuning-` `quantization-` `eval-` `gpu-` `project-`(운영) `data-` `distillation` `pruning` `speculative-` |
+| `ai-guide` | 남은 `ai-` — **개론·역사·지형과 안전·윤리·정책만** |
+
+  **표에 없는 접두사는 만들지 않는다.** 새 글의 슬러그가 위 어느 줄에도 안 걸리면
+  칸을 추측하지 말고 **슬러그를 표에 있는 접두사로 바꿔 붙인다**(예: `data-versioning`
+  처럼 표의 접두사를 쓴다). 표를 늘려야 할 만큼 새로운 주제라면 이 표와
+  `src/data/categories.test.ts`의 `prefixRules`를 함께 고친다 — 그 테스트가
+  306편 전부를 표에 대조하므로 한쪽만 고치면 `npm test`가 선다.
+
+  **`ai-`는 더 이상 잔여 칸이 아니다.** `ai-guide`에는 「AI란 무엇인가」와
+  「AI를 어떻게 안전하게 쓰는가」만 들어간다. 2026-08-05에 186편짜리였던
+  `ai-guide`를 14편으로 줄이고 나머지를 넷으로 나눴다.
+  표만으로 안 갈리는 자리가 셋 있고, 어긋나는 글 여섯 편은
+  `src/data/categories.test.ts`가 예외 목록으로 들고 있다:
+  - `ai-`로 시작해도 신경망 학습 기본기면 `deep-learning`이다 —
+    `ai-loss-functions`·`ai-regularization` 둘.
+  - `embedding-`은 다루는 것이 **단어·문장을 벡터로 만드는 학습**이면 `deep-learning`
+    (word2vec·GloVe·FastText·ELMo), **검색에 쓰는 벡터**면 `agents-rag`
+    (SBERT·멀티모달 검색). 본문에 검색·벡터 DB가 안 나오면 앞쪽이다.
+  - `project-`는 **무엇을 만드는가**가 정한다 — 에이전트·RAG를 만들면 `agents-rag`,
+    평가·배포·비용 같은 운영이면 `ml-ops`.
+  시리즈(`지난 글` 사슬로 이어지는 묶음)는 되도록 한 칸에 둔다. 사슬 한가운데가
+  갈리면 독자가 '다음 글'을 눌렀을 때 다른 칸으로 튕기므로, 한 편이 내용상 다른
+  칸에 조금 어울리는 정도면 시리즈를 따른다. 지금 갈려 있는 자리는 위의
+  `embedding-`·`project-` 둘뿐이고, 둘 다 다루는 대상 자체가 바뀌는 지점이다.
+  `app-` 10편은 전부 `build-with-ai`다 — RAG를 만드는 두 편도 시리즈를 따른다.
 - **리서치는 '무엇을 알아냈는가'를 담는 곳이다.** 그리고 여기서 '알아냈다'는
   **직접 돌려서 확인했다**는 뜻이다. 리서치 글은 자기 터미널 출력을 가져야 한다.
   없으면 그건 학습 글이다.
