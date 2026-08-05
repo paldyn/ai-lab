@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="500" viewBox="0 0 880 500">
+  <rect x="0" y="0" width="880" height="500" rx="12" fill="#0a0a0a"/>
+
+  <text x="50" y="46" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="22" font-weight="700" fill="#e8e8e8">구조를 지키게 하는 세 가지 방식</text>
+  <text x="50" y="72" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">아래로 갈수록 보장이 세지고, 그만큼 남는 실패의 성격이 달라진다</text>
+
+  <rect x="50" y="110" width="780" height="90" rx="8" fill="#12121a" stroke="#e05555" stroke-width="1"/>
+  <text x="74" y="140" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="14" font-weight="600" fill="#e05555">1. 프롬프트로 부탁하기</text>
+  <text x="74" y="162" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="11.5" fill="#888">"JSON으로만 답해 주세요" — 모델의 협조에 기댄다</text>
+  <text x="74" y="182" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="11.5" fill="#888">앞뒤 인사말, 코드 펜스, 임의로 바뀌는 필드 이름이 그대로 나온다</text>
+  <line x1="586" y1="126" x2="586" y2="184" stroke="#2a2a35" stroke-width="1"/>
+  <text x="610" y="147" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="11.5" fill="#e05555">보장 없음</text>
+  <text x="610" y="171" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="11.5" fill="#888">파싱부터 실패한다</text>
+
+  <rect x="50" y="222" width="780" height="90" rx="8" fill="#12121a" stroke="#e0a555" stroke-width="1"/>
+  <text x="74" y="252" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="14" font-weight="600" fill="#e0a555">2. JSON 모드</text>
+  <text x="74" y="274" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="11.5" fill="#888">출력이 문법적으로 올바른 JSON이 되도록만 강제한다</text>
+  <text x="74" y="294" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="11.5" fill="#888">키 이름·타입·필수 여부는 여전히 호출마다 흔들린다</text>
+  <line x1="586" y1="238" x2="586" y2="296" stroke="#2a2a35" stroke-width="1"/>
+  <text x="610" y="259" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="11.5" fill="#e0a555">문법만 보장</text>
+  <text x="610" y="283" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="11.5" fill="#888">스키마 검증이 튕긴다</text>
+
+  <rect x="50" y="334" width="780" height="90" rx="8" fill="#12121a" stroke="#55c555" stroke-width="1"/>
+  <text x="74" y="364" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="14" font-weight="600" fill="#55c555">3. 스키마 강제</text>
+  <text x="74" y="386" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="11.5" fill="#888">디코딩 단계에서 스키마를 어기는 토큰을 아예 못 고르게 한다</text>
+  <text x="74" y="406" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="11.5" fill="#888">형태는 항상 맞는다 — 대신 값이 틀릴 수 있다</text>
+  <line x1="586" y1="350" x2="586" y2="408" stroke="#2a2a35" stroke-width="1"/>
+  <text x="610" y="371" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="11.5" fill="#55c555">구조 보장</text>
+  <text x="610" y="395" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="11.5" fill="#888">의미는 직접 검증</text>
+
+  <text x="50" y="462" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#7ec8e3">3단계로 올려도 검증 코드를 지우면 안 된다. 없어지는 것은 파싱 오류이지 잘못된 값이 아니다.</text>
+</svg>

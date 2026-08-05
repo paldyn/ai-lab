@@ -1,0 +1,109 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="470" viewBox="0 0 880 470">
+  <rect x="0" y="0" width="880" height="470" rx="12" fill="#0a0a0a"/>
+
+  <text x="50" y="46" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="22" font-weight="700" fill="#e8e8e8">스키마는 매 스텝마다 후보를 지운다</text>
+  <text x="50" y="72" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">지금까지 쓴 것이 파서 상태를 정하고, 그 상태가 다음에 허용되는 토큰을 정한다</text>
+
+  <text x="50" y="112" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="600" fill="#888">지금까지 생성된 출력</text>
+
+  <rect x="50" y="126" width="780" height="56" rx="6" fill="#000000" stroke="#3a4a6e" stroke-width="1"/>
+
+  <g>
+    <text x="70" y="160" xml:space="preserve" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#ffffff">{</text>
+    <animate attributeName="opacity" dur="6s" repeatCount="indefinite"
+             values="1;1;0;0;0;0" keyTimes="0;0.33;0.34;0.66;0.67;1"/>
+  </g>
+  <g>
+    <text x="70" y="160" xml:space="preserve" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#ffffff">{"prior</text>
+    <animate attributeName="opacity" dur="6s" repeatCount="indefinite"
+             values="0;0;1;1;0;0" keyTimes="0;0.33;0.34;0.66;0.67;1"/>
+  </g>
+  <g>
+    <text x="70" y="160" xml:space="preserve" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#ffffff">{"priority": "</text>
+    <animate attributeName="opacity" dur="6s" repeatCount="indefinite"
+             values="0;0;0;0;1;1" keyTimes="0;0.33;0.34;0.66;0.67;1"/>
+  </g>
+
+  <text x="50" y="216" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="600" fill="#888">파서 상태</text>
+
+  <g>
+    <text x="50" y="242" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="15" fill="#7ec8e3">객체를 연 직후 — 키 문자열이 시작되어야 한다</text>
+    <animate attributeName="opacity" dur="6s" repeatCount="indefinite"
+             values="1;1;0;0;0;0" keyTimes="0;0.33;0.34;0.66;0.67;1"/>
+  </g>
+  <g>
+    <text x="50" y="242" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="15" fill="#7ec8e3">키 이름 도중 — properties의 키 중 이 접두사를 잇는 것만 남았다</text>
+    <animate attributeName="opacity" dur="6s" repeatCount="indefinite"
+             values="0;0;1;1;0;0" keyTimes="0;0.33;0.34;0.66;0.67;1"/>
+  </g>
+  <g>
+    <text x="50" y="242" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="15" fill="#7ec8e3">priority의 값 자리 — enum의 세 값만 남았다</text>
+    <animate attributeName="opacity" dur="6s" repeatCount="indefinite"
+             values="0;0;0;0;1;1" keyTimes="0;0.33;0.34;0.66;0.67;1"/>
+  </g>
+
+  <text x="50" y="288" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="600" fill="#888">다음 토큰 후보</text>
+
+  <g>
+    <animate attributeName="opacity" dur="6s" repeatCount="indefinite"
+             values="1;1;0;0;0;0" keyTimes="0;0.33;0.34;0.66;0.67;1"/>
+    <rect x="50" y="304" width="140" height="54" rx="8" fill="#12121a" stroke="#55c555" stroke-width="1"/>
+    <text x="120" y="330" text-anchor="middle" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="15" fill="#55c555">"</text>
+    <text x="120" y="348" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="11" fill="#888">허용</text>
+    <rect x="210" y="304" width="140" height="54" rx="8" fill="#12121a" stroke="#e05555" stroke-width="1"/>
+    <text x="280" y="330" text-anchor="middle" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="15" fill="#e05555">{</text>
+    <text x="280" y="348" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="11" fill="#888">차단</text>
+    <rect x="370" y="304" width="140" height="54" rx="8" fill="#12121a" stroke="#e05555" stroke-width="1"/>
+    <text x="440" y="330" text-anchor="middle" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="15" fill="#e05555">1</text>
+    <text x="440" y="348" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="11" fill="#888">차단</text>
+    <rect x="530" y="304" width="140" height="54" rx="8" fill="#12121a" stroke="#e05555" stroke-width="1"/>
+    <text x="600" y="330" text-anchor="middle" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="15" fill="#e05555">[</text>
+    <text x="600" y="348" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="11" fill="#888">차단</text>
+    <rect x="690" y="304" width="140" height="54" rx="8" fill="#12121a" stroke="#e05555" stroke-width="1"/>
+    <text x="760" y="330" text-anchor="middle" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="15" fill="#e05555">true</text>
+    <text x="760" y="348" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="11" fill="#888">차단</text>
+  </g>
+
+  <g>
+    <animate attributeName="opacity" dur="6s" repeatCount="indefinite"
+             values="0;0;1;1;0;0" keyTimes="0;0.33;0.34;0.66;0.67;1"/>
+    <rect x="50" y="304" width="140" height="54" rx="8" fill="#12121a" stroke="#55c555" stroke-width="1"/>
+    <text x="120" y="330" text-anchor="middle" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="15" fill="#55c555">ity</text>
+    <text x="120" y="348" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="11" fill="#888">허용</text>
+    <rect x="210" y="304" width="140" height="54" rx="8" fill="#12121a" stroke="#e05555" stroke-width="1"/>
+    <text x="280" y="330" text-anchor="middle" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="15" fill="#e05555">ities</text>
+    <text x="280" y="348" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="11" fill="#888">차단</text>
+    <rect x="370" y="304" width="140" height="54" rx="8" fill="#12121a" stroke="#e05555" stroke-width="1"/>
+    <text x="440" y="330" text-anchor="middle" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="15" fill="#e05555">_id</text>
+    <text x="440" y="348" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="11" fill="#888">차단</text>
+    <rect x="530" y="304" width="140" height="54" rx="8" fill="#12121a" stroke="#e05555" stroke-width="1"/>
+    <text x="600" y="330" text-anchor="middle" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="15" fill="#e05555">9</text>
+    <text x="600" y="348" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="11" fill="#888">차단</text>
+    <rect x="690" y="304" width="140" height="54" rx="8" fill="#12121a" stroke="#e05555" stroke-width="1"/>
+    <text x="760" y="330" text-anchor="middle" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="15" fill="#e05555">"</text>
+    <text x="760" y="348" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="11" fill="#888">차단</text>
+  </g>
+
+  <g>
+    <animate attributeName="opacity" dur="6s" repeatCount="indefinite"
+             values="0;0;0;0;1;1" keyTimes="0;0.33;0.34;0.66;0.67;1"/>
+    <rect x="50" y="304" width="140" height="54" rx="8" fill="#12121a" stroke="#55c555" stroke-width="1"/>
+    <text x="120" y="330" text-anchor="middle" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="15" fill="#55c555">P1</text>
+    <text x="120" y="348" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="11" fill="#888">허용</text>
+    <rect x="210" y="304" width="140" height="54" rx="8" fill="#12121a" stroke="#55c555" stroke-width="1"/>
+    <text x="280" y="330" text-anchor="middle" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="15" fill="#55c555">P2</text>
+    <text x="280" y="348" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="11" fill="#888">허용</text>
+    <rect x="370" y="304" width="140" height="54" rx="8" fill="#12121a" stroke="#55c555" stroke-width="1"/>
+    <text x="440" y="330" text-anchor="middle" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="15" fill="#55c555">P3</text>
+    <text x="440" y="348" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="11" fill="#888">허용</text>
+    <rect x="530" y="304" width="140" height="54" rx="8" fill="#12121a" stroke="#e05555" stroke-width="1"/>
+    <text x="600" y="330" text-anchor="middle" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="15" fill="#e05555">높음</text>
+    <text x="600" y="348" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="11" fill="#888">차단</text>
+    <rect x="690" y="304" width="140" height="54" rx="8" fill="#12121a" stroke="#e05555" stroke-width="1"/>
+    <text x="760" y="330" text-anchor="middle" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="15" fill="#e05555">urgent</text>
+    <text x="760" y="348" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="11" fill="#888">차단</text>
+  </g>
+
+  <text x="50" y="404" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">차단은 확률을 낮추는 것이 아니라 후보에서 빼는 것이다 — 로짓을 음의 무한대로 만든다.</text>
+  <text x="50" y="430" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#7ec8e3">그래서 어긴 출력이 "드물게" 나오는 것이 아니라 아예 나올 수 없다.</text>
+</svg>

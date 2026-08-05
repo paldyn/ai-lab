@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="420" viewBox="0 0 880 420">
+  <defs>
+    <marker id="gsArr" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#7ec8e3"/>
+    </marker>
+  </defs>
+
+  <rect x="0" y="0" width="880" height="420" rx="12" fill="#0a0a0a"/>
+
+  <text x="50" y="46" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="22" font-weight="700" fill="#e8e8e8">규칙이 남은 일의 목록을 만든다</text>
+  <text x="50" y="72" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">규칙을 펼칠 때마다 스택이 쌓이고, 스택의 맨 위가 다음 허용 토큰을 정한다</text>
+
+  <text x="50" y="112" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="600" fill="#888">문법</text>
+
+  <rect x="50" y="126" width="380" height="192" rx="6" fill="#000000" stroke="#3a4a6e" stroke-width="1"/>
+  <text x="66" y="152" xml:space="preserve" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#ffffff"><tspan fill="#7ec8e3" font-weight="600">root</tspan>  ::= <tspan fill="#ce9178">"SELECT "</tspan> cols</text>
+  <text x="66" y="171" xml:space="preserve" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#ffffff">          <tspan fill="#ce9178">" FROM "</tspan> name cond?</text>
+  <text x="66" y="190" xml:space="preserve" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#ffffff"><tspan fill="#7ec8e3" font-weight="600">cols</tspan>  ::= <tspan fill="#ce9178">"*"</tspan> | name (<tspan fill="#ce9178">", "</tspan> name)*</text>
+  <text x="66" y="209" xml:space="preserve" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#ffffff"><tspan fill="#7ec8e3" font-weight="600">cond</tspan>  ::= <tspan fill="#ce9178">" WHERE "</tspan> name op num</text>
+  <text x="66" y="228" xml:space="preserve" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#ffffff"><tspan fill="#7ec8e3" font-weight="600">op</tspan>    ::= <tspan fill="#ce9178">"="</tspan> | <tspan fill="#ce9178">"&gt;"</tspan> | <tspan fill="#ce9178">"&lt;"</tspan></text>
+  <text x="66" y="247" xml:space="preserve" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#ffffff"><tspan fill="#7ec8e3" font-weight="600">name</tspan>  ::= <tspan fill="#ce9178">"orders"</tspan> | <tspan fill="#ce9178">"users"</tspan></text>
+  <text x="66" y="266" xml:space="preserve" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#ffffff">          | <tspan fill="#ce9178">"amount"</tspan> | <tspan fill="#ce9178">"id"</tspan></text>
+  <text x="66" y="285" xml:space="preserve" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#ffffff"><tspan fill="#7ec8e3" font-weight="600">num</tspan>   ::= [<tspan fill="#b5cea8">0-9</tspan>]+</text>
+  <text x="66" y="304" xml:space="preserve" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#9aa4b8"># 테이블·컬럼 이름이 문법에 박혀 있다</text>
+
+  <line x1="430" y1="222" x2="470" y2="222" stroke="#7ec8e3" stroke-width="2" marker-end="url(#gsArr)"/>
+
+  <text x="490" y="112" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="600" fill="#888">생성 도중의 스택</text>
+
+  <rect x="490" y="126" width="340" height="56" rx="8" fill="#12121a" stroke="#55c555" stroke-width="1"/>
+  <text x="512" y="150" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#ffffff">SELECT </text>
+  <text x="512" y="170" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="11" fill="#888">남은 것: cols · " FROM " · name · cond?</text>
+
+  <rect x="490" y="194" width="340" height="56" rx="8" fill="#12121a" stroke="#55c555" stroke-width="1"/>
+  <text x="512" y="218" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#ffffff">SELECT amount FROM </text>
+  <text x="512" y="238" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="11" fill="#888">남은 것: name · cond?</text>
+
+  <rect x="490" y="262" width="340" height="56" rx="8" fill="#12121a" stroke="#55c555" stroke-width="1"/>
+  <text x="512" y="286" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#ffffff">SELECT amount FROM orders</text>
+  <text x="512" y="306" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="11" fill="#888">남은 것: cond? — 끝내도 되고 WHERE를 열어도 된다</text>
+
+  <text x="50" y="356" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">이름을 문법에 넣어 두면 없는 테이블·컬럼이 생성될 수 없다. 스키마 카탈로그에서 문법을 만들어 쓰는 이유다.</text>
+  <text x="50" y="382" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e05555">대신 "amount는 orders에만 있다" 같은 조합 제약은 문법으로 못 적는다 — 그건 받은 뒤에 본다.</text>
+</svg>

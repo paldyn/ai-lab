@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="440" viewBox="0 0 880 440">
+  <defs>
+    <marker id="cdArr" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#7ec8e3"/>
+    </marker>
+    <marker id="cdArrLoop" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#7777cc"/>
+    </marker>
+  </defs>
+
+  <rect x="0" y="0" width="880" height="440" rx="12" fill="#0a0a0a"/>
+
+  <text x="50" y="46" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="22" font-weight="700" fill="#e8e8e8">비용이 어디에 붙는가</text>
+  <text x="50" y="72" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">무거운 일은 한 번만 하고, 토큰마다 하는 일은 조회 한 번으로 끝나게 만든다</text>
+
+  <rect x="50" y="140" width="240" height="116" rx="8" fill="#12121a" stroke="#e0a555" stroke-width="1"/>
+  <text x="72" y="171" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="600" fill="#e0a555">1. 스키마 → 오토마톤</text>
+  <text x="72" y="197" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="11.5" fill="#888">스키마를 상태 기계로 바꾼다</text>
+  <text x="72" y="217" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="11.5" fill="#888">스키마당 한 번</text>
+  <text x="72" y="237" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="11.5" fill="#e0a555">첫 호출에만 지연이 보인다</text>
+
+  <line x1="290" y1="198" x2="320" y2="198" stroke="#7ec8e3" stroke-width="2" marker-end="url(#cdArr)"/>
+
+  <rect x="320" y="140" width="240" height="116" rx="8" fill="#12121a" stroke="#e0a555" stroke-width="1"/>
+  <text x="342" y="171" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="600" fill="#e0a555">2. 상태별 허용 집합</text>
+  <text x="342" y="197" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="11.5" fill="#888">상태마다 어휘 전체를 훑어</text>
+  <text x="342" y="217" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="11.5" fill="#888">쓸 수 있는 토큰을 미리 모은다</text>
+  <text x="342" y="237" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="11.5" fill="#e0a555">캐시에 남는다</text>
+
+  <line x1="560" y1="198" x2="590" y2="198" stroke="#7ec8e3" stroke-width="2" marker-end="url(#cdArr)"/>
+
+  <rect x="590" y="140" width="240" height="116" rx="8" fill="#12121a" stroke="#55c555" stroke-width="1"/>
+  <text x="612" y="171" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="600" fill="#55c555">3. 스텝마다 마스크</text>
+  <text x="612" y="197" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="11.5" fill="#888">현재 상태의 집합을 꺼내</text>
+  <text x="612" y="217" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="11.5" fill="#888">로짓에 덮고 샘플링한다</text>
+  <text x="612" y="237" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="11.5" fill="#55c555">조회 한 번 — 사실상 공짜</text>
+
+  <path d="M 700 256 C 700 298 620 298 620 258" fill="none" stroke="#7777cc" stroke-width="2" stroke-dasharray="4,4" marker-end="url(#cdArrLoop)"/>
+  <text x="356" y="292" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="11.5" fill="#7777cc">토큰 하나마다 상태 전이 후 반복</text>
+
+  <rect x="50" y="336" width="780" height="66" rx="8" fill="#12121a" stroke="#e05555" stroke-width="1"/>
+  <text x="72" y="364" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="600" fill="#e05555">2번을 매 요청마다 다시 하면 느려진다</text>
+  <text x="72" y="386" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="11.5" fill="#888">스키마를 요청마다 새로 조립하면 캐시가 안 맞는다. 스키마 객체는 모듈 수준에 한 번만 만들어 재사용한다.</text>
+</svg>
