@@ -3,7 +3,7 @@ title: "LLM 사전학습: 수조 개 토큰으로 무엇을 배우나"
 description: "LLM 사전학습의 전체 파이프라인을 해설한다. 데이터 수집·필터링·중복 제거·토큰화·Document Packing, 분산 학습 전략(Data/Tensor/Pipeline Parallelism), Chinchilla 스케일링 법칙, 체크포인트 관리까지 실전 코드와 함께 완전히 다룬다."
 author: "PALDYN Team"
 pubDate: "2026-05-10"
-category: "ai-guide"
+category: "llm-core"
 level: "중급"
 tags: ["LLM사전학습", "사전학습", "스케일링법칙", "Chinchilla", "분산학습", "데이터필터링", "토큰화", "LLM"]
 featured: false

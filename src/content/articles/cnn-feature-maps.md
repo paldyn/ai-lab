@@ -3,7 +3,7 @@ title: "특징 맵: CNN이 이미지에서 보는 것"
 description: "CNN 각 레이어의 특징 맵(Feature Map)이 무엇을 표현하는지 저수준·중수준·고수준 특징 관점에서 분석한다. 특징 맵 시각화 방법과 전이학습 전략을 코드와 함께 이해한다."
 author: "PALDYN Team"
 pubDate: "2026-05-02"
-category: "ai-guide"
+category: "domain-models"
 level: "중급"
 tags: ["CNN", "특징맵", "FeatureMap", "전이학습", "딥러닝기초"]
 featured: false

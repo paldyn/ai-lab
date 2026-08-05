@@ -3,7 +3,7 @@ title: "기울기 소실과 폭발: 깊은 네트워크의 고질적 문제"
 description: "깊은 신경망 학습을 방해하는 기울기 소실(Vanishing Gradient)과 기울기 폭발(Exploding Gradient)의 수학적 원인을 이해한다. ReLU, 잔차 연결, 배치 정규화, Gradient Clipping 등 현대적 해결책을 코드와 함께 정리한다."
 author: "PALDYN Team"
 pubDate: "2026-05-01"
-category: "ai-guide"
+category: "deep-learning"
 level: "중급"
 tags: ["기울기소실", "기울기폭발", "VanishingGradient", "잔차연결", "딥러닝기초"]
 featured: false

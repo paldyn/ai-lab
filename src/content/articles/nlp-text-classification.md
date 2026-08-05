@@ -3,7 +3,7 @@ title: "텍스트 분류: 언어에 레이블을 붙이는 기술"
 description: "TF-IDF + 로지스틱 회귀부터 BERT 파인튜닝까지, 텍스트 분류의 전체 스펙트럼을 주제 분류·감성 분류·의도 분류·독성 감지 예제와 함께 한국어 실전 코드로 완전히 해설한다."
 author: "PALDYN Team"
 pubDate: "2026-05-10"
-category: "ai-guide"
+category: "domain-models"
 level: "중급"
 tags: ["텍스트분류", "NLP", "BERT", "파인튜닝", "KoBERT", "KLUE", "감성분석", "의도분류"]
 featured: false

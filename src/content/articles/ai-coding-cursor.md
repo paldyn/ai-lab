@@ -3,7 +3,7 @@ title: "Cursor: AI 네이티브 IDE의 새로운 기준"
 description: "VS Code 포크 기반의 Cursor가 Tab 자동완성·Chat·Composer·Agent 모드로 개발 흐름을 어떻게 바꾸는지, .cursorrules 작성법부터 Agent 실전 활용까지 정리합니다."
 author: "PALDYN Team"
 pubDate: "2026-05-26"
-category: "ai-guide"
+category: "build-with-ai"
 level: "중급"
 tags: ["Cursor", "AI코딩", "CursorIDE", "Composer", "CursorRules", "개발생산성"]
 featured: false

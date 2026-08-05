@@ -3,7 +3,7 @@ title: "RLHF 심화: 인간 피드백으로 LLM 정렬하기"
 description: "RLHF의 3단계 파이프라인(SFT→보상모델→PPO), Bradley-Terry 모델, KL 페널티, 보상 해킹 문제를 완전히 이해하고 DPO와의 비교까지 다룹니다."
 author: "PALDYN Team"
 pubDate: "2026-05-22"
-category: "ai-guide"
+category: "domain-models"
 level: "중급"
 tags: ["RLHF", "인간피드백", "보상모델", "PPO", "KL발산", "보상해킹", "LLM정렬", "DPO"]
 featured: false

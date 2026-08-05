@@ -3,7 +3,7 @@ title: "현대 CNN: MobileNet, EfficientNet, ConvNeXt"
 description: "ResNet 이후 등장한 현대 CNN 아키텍처를 비교 분석한다. 모바일 환경을 위한 깊이별 분리 합성곱(MobileNet), 복합 스케일링(EfficientNet), ViT 설계 원리를 CNN에 적용한 ConvNeXt를 코드와 함께 이해한다."
 author: "PALDYN Team"
 pubDate: "2026-05-02"
-category: "ai-guide"
+category: "domain-models"
 level: "중급"
 tags: ["CNN", "MobileNet", "EfficientNet", "ConvNeXt", "경량모델"]
 featured: false

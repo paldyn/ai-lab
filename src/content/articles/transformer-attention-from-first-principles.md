@@ -3,7 +3,7 @@ title: "Transformer를 이해하는 가장 짧은 길: Attention부터 시작하
 description: "Query, Key, Value의 역할을 일상적인 검색 과정에 빗대어 이해하고, Self-Attention의 계산 흐름을 단계별로 살펴봅니다."
 author: "Paldyn Research"
 pubDate: "2026-07-28"
-category: "ai-guide"
+category: "llm-core"
 level: "초급"
 tags: ["Transformer", "Attention", "LLM"]
 visual: "softmax(QK^T / sqrt(d))V"

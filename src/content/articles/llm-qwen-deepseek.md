@@ -3,7 +3,7 @@ title: "Qwen과 DeepSeek: 중국 오픈소스 LLM의 도전"
 description: "Alibaba의 Qwen 시리즈와 High-Flyer의 DeepSeek 시리즈의 탄생 배경, 기술적 혁신(MLA, MoE), DeepSeek-R1의 강화학습 추론, 그리고 미국 AI 업계에 미친 충격을 한국어로 완전 해설한다."
 author: "PALDYN Team"
 pubDate: "2026-05-12"
-category: "ai-guide"
+category: "llm-core"
 level: "중급"
 tags: ["Qwen", "DeepSeek", "중국LLM", "오픈소스", "DeepSeekR1", "MoE", "강화학습", "추론모델"]
 featured: false

@@ -3,7 +3,7 @@ title: "합성곱 연산: CNN의 핵심 원리"
 description: "합성곱 신경망(CNN)의 핵심인 합성곱 연산을 수식과 예제로 상세히 설명한다. 커널, 스트라이드, 패딩의 역할과 파라미터 수 계산법, 가중치 공유가 주는 이점을 코드와 함께 이해한다."
 author: "PALDYN Team"
 pubDate: "2026-05-02"
-category: "ai-guide"
+category: "domain-models"
 level: "중급"
 tags: ["CNN", "합성곱", "Convolution", "커널", "딥러닝기초"]
 featured: false

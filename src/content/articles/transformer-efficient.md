@@ -3,7 +3,7 @@ title: "효율적인 트랜스포머: 긴 시퀀스를 다루는 방법들"
 description: "Self-Attention의 O(N²) 복잡도 병목, Longformer·BigBird의 희소 어텐션, Flash Attention의 IO-aware 최적화, Sliding Window와 State Space Model까지 한눈에 정리한다."
 author: "PALDYN Team"
 pubDate: "2026-05-06"
-category: "ai-guide"
+category: "llm-core"
 level: "중급"
 tags: ["트랜스포머", "효율화", "Flash Attention", "Longformer", "Mamba", "LLM"]
 featured: false

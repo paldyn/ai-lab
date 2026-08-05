@@ -3,7 +3,7 @@ title: "MQA와 GQA: KV Cache 경량화 전략"
 description: "Multi-Query Attention과 Grouped-Query Attention이 KV 헤드 수를 줄여 추론 시 KV Cache 메모리와 디코딩 지연을 극적으로 줄이는 원리와 실전 적용을 설명한다."
 author: "PALDYN Team"
 pubDate: "2026-05-07"
-category: "ai-guide"
+category: "llm-core"
 level: "중급"
 tags: ["MQA", "GQA", "KV Cache", "트랜스포머", "LLM 추론", "LLaMA"]
 featured: false

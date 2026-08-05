@@ -3,7 +3,7 @@ title: "컨텍스트 윈도우: LLM의 작업 기억"
 description: "컨텍스트 윈도우의 개념과 토큰 제한의 의미, KV 캐시와 메모리 사용량, 긴 컨텍스트 처리 기법(Sliding Window, Sparse Attention, RoPE), 그리고 RAG vs 긴 컨텍스트의 실용적 판단 기준을 완전히 해설한다."
 author: "PALDYN Team"
 pubDate: "2026-05-11"
-category: "ai-guide"
+category: "llm-core"
 level: "중급"
 tags: ["LLM", "컨텍스트윈도우", "KV캐시", "RAG", "SlidingWindow", "RoPE", "토큰", "메모리"]
 featured: false

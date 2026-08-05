@@ -3,7 +3,7 @@ title: "액터-크리틱: 정책과 가치 함수의 시너지"
 description: "Actor-Critic 방법의 원리, 어드밴티지 함수, A2C/A3C 알고리즘을 이해하고 공유 백본 아키텍처로 직접 구현합니다. PPO와 SAC의 공통 기반을 완전히 해설합니다."
 author: "PALDYN Team"
 pubDate: "2026-05-22"
-category: "ai-guide"
+category: "domain-models"
 level: "중급"
 tags: ["ActorCritic", "A2C", "A3C", "어드밴티지함수", "강화학습", "가치함수", "정책경사", "PyTorch"]
 featured: false

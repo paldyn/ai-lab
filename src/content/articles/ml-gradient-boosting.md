@@ -3,7 +3,7 @@ title: "그래디언트 부스팅: XGBoost·LightGBM의 기반 원리"
 description: "잔차를 학습하는 부스팅의 원리부터 XGBoost·LightGBM·CatBoost 비교까지, 캐글을 지배한 알고리즘을 완전 정복한다."
 author: "PALDYN Team"
 pubDate: "2026-04-29"
-category: "ai-guide"
+category: "deep-learning"
 level: "중급"
 tags: ["그래디언트부스팅", "XGBoost", "LightGBM", "부스팅", "앙상블학습"]
 featured: false

@@ -3,7 +3,7 @@ title: "비디오 생성 모델: Sora·AnimateDiff·Stable Video Diffusion 완�
 description: "비디오 확산 모델의 시간 어텐션 구조, AnimateDiff·SVD·CogVideoX 비교, diffusers 비디오 생성 코드, Sora·Veo·Kling 등 SOTA 모델 분석을 완전 해설합니다."
 author: "PALDYN Team"
 pubDate: "2026-05-20"
-category: "ai-guide"
+category: "domain-models"
 level: "중급"
 tags: ["비디오생성", "AnimateDiff", "SVD", "Sora", "CogVideoX", "시간어텐션", "diffusers", "텍스트비디오"]
 featured: false

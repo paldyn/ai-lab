@@ -3,7 +3,7 @@ title: "GPT: 자기회귀적 언어 모델의 진화"
 description: "GPT-1부터 GPT-4까지, Decoder-only 트랜스포머가 어떻게 텍스트 생성과 In-Context Learning을 가능하게 했는지, BERT와의 차이를 코드와 함께 설명한다."
 author: "PALDYN Team"
 pubDate: "2026-05-06"
-category: "ai-guide"
+category: "llm-core"
 level: "중급"
 tags: ["GPT", "트랜스포머", "언어모델", "자기회귀", "생성AI", "NLP"]
 featured: false

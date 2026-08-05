@@ -3,7 +3,7 @@ title: "GloVe: 전역 공기 통계로 단어 벡터를 만들다"
 description: "GloVe가 공기 행렬의 전역 통계와 국소 문맥 창의 장점을 결합하는 방법, 목적 함수의 수학적 의미, 사전 학습 벡터 활용법을 깊이 있게 다룬다."
 author: "PALDYN Team"
 pubDate: "2026-05-08"
-category: "agents-rag"
+category: "deep-learning"
 level: "중급"
 tags: ["GloVe", "임베딩", "공기 행렬", "NLP", "단어 벡터", "전역 통계"]
 featured: false

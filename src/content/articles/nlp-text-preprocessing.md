@@ -3,7 +3,7 @@ title: "NLP 텍스트 전처리: 데이터를 모델에 맞게 다듬다"
 description: "왜 전처리가 필요한지부터 정제, 토큰화, 정규화, 불용어 제거, 어간 추출까지 텍스트 전처리 파이프라인의 각 단계를 한국어 예시와 KoNLPy 코드로 완전히 해설한다."
 author: "PALDYN Team"
 pubDate: "2026-05-08"
-category: "ai-guide"
+category: "domain-models"
 level: "중급"
 tags: ["NLP", "텍스트전처리", "토큰화", "KoNLPy", "형태소분석", "불용어제거", "정규화"]
 featured: false

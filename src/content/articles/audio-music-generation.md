@@ -3,7 +3,7 @@ title: "AI 음악 생성: MusicGen·AudioCraft·Suno AI 완전 해설"
 description: "오디오 토큰화·EnCodec 구조, MusicGen 자기회귀 생성, AudioCraft·Stable Audio·Suno AI 비교, Python MusicGen 실전 코드까지 완전 해설합니다."
 author: "PALDYN Team"
 pubDate: "2026-05-21"
-category: "ai-guide"
+category: "domain-models"
 level: "중급"
 tags: ["MusicGen", "AudioCraft", "Suno AI", "음악생성", "EnCodec", "오디오토큰화", "Stable Audio"]
 featured: false

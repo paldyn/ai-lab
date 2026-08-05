@@ -3,7 +3,7 @@ title: "CLIP: 이미지와 텍스트를 같은 공간에 정렬하는 대조 학
 description: "OpenAI CLIP의 대조 학습 원리, InfoNCE 손실, 제로샷 이미지 분류 메커니즘, 그리고 Stable Diffusion·VLM에서의 활용까지 완전 해설합니다."
 author: "PALDYN Team"
 pubDate: "2026-05-20"
-category: "ai-guide"
+category: "domain-models"
 level: "중급"
 tags: ["CLIP", "대조학습", "멀티모달", "제로샷", "비전언어모델", "InfoNCE", "임베딩", "StableDiffusion"]
 featured: false

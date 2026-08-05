@@ -3,7 +3,7 @@ title: "신경망 음성 합성(TTS): VITS·XTTS·CosyVoice 완전 해설"
 description: "멜 스펙트로그램 생성·보코더 구조, FastSpeech2·VITS·XTTS·CosyVoice 아키텍처, Python TTS 실전 코드, 한국어 TTS 모델 비교까지 완전 해설합니다."
 author: "PALDYN Team"
 pubDate: "2026-05-21"
-category: "ai-guide"
+category: "domain-models"
 level: "중급"
 tags: ["TTS", "음성합성", "VITS", "XTTS", "CosyVoice", "FastSpeech2", "HiFi-GAN", "보코더"]
 featured: false

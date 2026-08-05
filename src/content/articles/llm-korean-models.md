@@ -3,7 +3,7 @@ title: "한국 LLM 완전 해부: EXAONE, HyperCLOVA X, SOLAR"
 description: "HyperCLOVA X, EXAONE, SOLAR 등 한국 LLM의 기술적 특징, 한국어 토크나이저의 효율성, 벤치마크 비교, API 사용법, 그리고 한국어 AI 서비스 구축 실전 가이드를 완전 해설한다."
 author: "PALDYN Team"
 pubDate: "2026-05-12"
-category: "ai-guide"
+category: "llm-core"
 level: "중급"
 tags: ["한국LLM", "HyperCLOVAX", "EXAONE", "SOLAR", "LG", "NAVER", "Upstage", "한국어AI"]
 featured: false

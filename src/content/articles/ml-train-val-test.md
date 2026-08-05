@@ -3,7 +3,7 @@ title: "훈련·검증·테스트 세트 분리: 올바른 모델 평가의 기�
 description: "데이터를 훈련·검증·테스트 세트로 나누는 원칙, 비율 설정 방법, 데이터 누수를 방지하는 파이프라인 설계까지 머신러닝 평가의 기초를 완전히 이해한다."
 author: "PALDYN Team"
 pubDate: "2026-04-30"
-category: "ai-guide"
+category: "deep-learning"
 level: "중급"
 tags: ["훈련세트", "테스트세트", "데이터분할", "데이터누수", "모델평가"]
 featured: false

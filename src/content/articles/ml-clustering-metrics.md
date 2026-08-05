@@ -3,7 +3,7 @@ title: "클러스터링 평가 지표: 실루엣·DB·칼린스키-하라바시"
 description: "레이블 없이 클러스터링 품질을 측정하는 내부 지표(실루엣·Davies-Bouldin·Calinski-Harabász), 정답 레이블을 사용하는 외부 지표(ARI·NMI), 최적 K 선택 방법을 실전 코드와 함께 이해한다."
 author: "PALDYN Team"
 pubDate: "2026-04-30"
-category: "ai-guide"
+category: "deep-learning"
 level: "중급"
 tags: ["클러스터링평가", "실루엣계수", "ARI", "비지도학습", "모델평가"]
 featured: false

@@ -3,7 +3,7 @@ title: "서포트 벡터 머신(SVM): 최대 마진 분류기의 원리"
 description: "서포트 벡터, 마진, 커널 트릭까지 SVM의 핵심 원리를 시각적으로 이해하고 scikit-learn으로 구현한다."
 author: "PALDYN Team"
 pubDate: "2026-04-29"
-category: "ai-guide"
+category: "deep-learning"
 level: "중급"
 tags: ["SVM", "서포트벡터머신", "커널트릭", "마진", "ML기초"]
 featured: false

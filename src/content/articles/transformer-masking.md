@@ -3,7 +3,7 @@ title: "Masking: 트랜스포머의 정보 차단 전략"
 description: "Padding Mask와 Causal Mask(Look-Ahead Mask)가 어텐션 점수에 어떻게 적용되는지, 인코더와 디코더 각 위치에서 어떤 마스크를 사용하는지 코드와 함께 설명한다."
 author: "PALDYN Team"
 pubDate: "2026-05-06"
-category: "ai-guide"
+category: "llm-core"
 level: "중급"
 tags: ["트랜스포머", "Masking", "Causal Mask", "Padding Mask", "딥러닝"]
 featured: false

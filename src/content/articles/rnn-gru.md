@@ -3,7 +3,7 @@ title: "GRU: 게이트 순환 유닛, LSTM의 경량 대안"
 description: "GRU(Gated Recurrent Unit)의 Reset·Update 게이트 구조를 LSTM과 비교해 이해하고, 언제 GRU를 선택해야 하는지 실용적 기준을 제시한다."
 author: "PALDYN Team"
 pubDate: "2026-05-05"
-category: "ai-guide"
+category: "deep-learning"
 level: "중급"
 tags: ["GRU", "게이트순환유닛", "LSTM", "RNN", "딥러닝"]
 featured: false

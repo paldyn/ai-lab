@@ -3,7 +3,7 @@ title: "혼동 행렬로 분류 오류 해부하기"
 description: "이진·다중 클래스 혼동 행렬의 구조, TP·FP·TN·FN에서 지표 유도, 정규화 방법, 오류 패턴 분석, sklearn ConfusionMatrixDisplay 시각화까지 완전히 이해한다."
 author: "PALDYN Team"
 pubDate: "2026-04-30"
-category: "ai-guide"
+category: "deep-learning"
 level: "중급"
 tags: ["혼동행렬", "ConfusionMatrix", "분류평가", "오류분석", "모델평가"]
 featured: false

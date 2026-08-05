@@ -3,7 +3,7 @@ title: "Google Gemini SDK 활용 가이드"
 description: "google-generativeai 패키지로 Gemini 2.0 Flash부터 1.5 Pro까지 — generate_content(), 스트리밍, 채팅 세션, 멀티모달 입력, Function Declarations, safety_settings, generation_config, 비동기 클라이언트, Google AI Studio vs Vertex AI까지 실전 예제 완전 정리"
 author: "PALDYN Team"
 pubDate: "2026-05-28"
-category: "ai-guide"
+category: "build-with-ai"
 level: "중급"
 tags: ["Gemini", "Google", "SDK", "GenerativeAI", "Multimodal", "FunctionCalling", "VertexAI", "Python", "gemini-2.0-flash"]
 featured: false

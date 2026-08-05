@@ -3,7 +3,7 @@ title: "Attention 메커니즘: Seq2Seq 병목을 극복하다"
 description: "Bahdanau Attention의 핵심 아이디어—Context Vector를 동적으로 계산하기—와 Luong Attention, Scaled Dot-Product Attention의 차이를 코드와 시각화로 완전히 이해한다."
 author: "PALDYN Team"
 pubDate: "2026-05-05"
-category: "ai-guide"
+category: "deep-learning"
 level: "중급"
 tags: ["Attention", "어텐션메커니즘", "Bahdanau", "Seq2Seq", "NLP"]
 featured: false

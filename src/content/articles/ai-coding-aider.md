@@ -3,7 +3,7 @@ title: "Aider: AI 페어 프로그래머와 Git 통합 개발"
 description: "오픈소스 AI 코딩 CLI Aider의 Git 자동 커밋, Architect 모드, 멀티모델 전략, .aider.conf.yml 설정을 실전 예시와 함께 정리합니다."
 author: "PALDYN Team"
 pubDate: "2026-05-26"
-category: "ai-guide"
+category: "build-with-ai"
 level: "중급"
 tags: ["Aider", "AI코딩", "오픈소스", "페어프로그래밍", "Git통합", "ArchitectMode"]
 featured: false

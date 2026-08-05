@@ -3,7 +3,7 @@ title: "Transformer 기초: Attention Is All You Need"
 description: "2017년 Vaswani et al.이 발표한 Transformer 아키텍처의 전체 구조—인코더, 디코더, Self-Attention, FFN, Positional Encoding, Add & Norm—을 처음부터 이해한다."
 author: "PALDYN Team"
 pubDate: "2026-05-05"
-category: "ai-guide"
+category: "llm-core"
 level: "중급"
 tags: ["Transformer", "셀프어텐션", "인코더디코더", "딥러닝", "NLP"]
 featured: false

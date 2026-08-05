@@ -3,7 +3,7 @@ title: "ControlNet: 포즈·깊이·엣지로 확산 모델을 정밀 제어하�
 description: "ControlNet의 Zero Conv 아키텍처, OpenPose·Canny·Depth 등 제어 유형, diffusers 구현 코드, 다중 조건 결합까지 완전 해설합니다."
 author: "PALDYN Team"
 pubDate: "2026-05-20"
-category: "ai-guide"
+category: "domain-models"
 level: "중급"
 tags: ["ControlNet", "StableDiffusion", "OpenPose", "Canny", "DepthMap", "이미지제어", "생성AI", "diffusers"]
 featured: false

@@ -3,7 +3,7 @@ title: "Mistral 패밀리 완전 해부: 유럽 오픈소스 LLM의 반격"
 description: "Mistral AI의 탄생 배경, Mistral 7B의 Sliding Window Attention, Mixtral 8x7B의 Sparse MoE 아키텍처, Mistral Large API, Codestral 코딩 모델, 그리고 La Plateforme 활용법을 한국어로 완전 해설한다."
 author: "PALDYN Team"
 pubDate: "2026-05-12"
-category: "ai-guide"
+category: "llm-core"
 level: "중급"
 tags: ["Mistral", "MistralAI", "오픈소스LLM", "MoE", "Mixtral", "SlidingWindowAttention", "유럽AI", "효율적LLM"]
 featured: false

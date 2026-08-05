@@ -3,7 +3,7 @@ title: "SentencePiece: 언어에 구애받지 않는 토크나이저"
 description: "SentencePiece가 공백 사전 분리 없이 원시 유니코드를 직접 처리해 한국어·중국어·일본어 등 어떤 언어도 동일하게 다루는 원리와 커스텀 어휘 학습 방법을 해설한다."
 author: "PALDYN Team"
 pubDate: "2026-05-07"
-category: "ai-guide"
+category: "llm-core"
 level: "중급"
 tags: ["SentencePiece", "토크나이저", "다국어", "한국어", "LLaMA", "T5"]
 featured: false

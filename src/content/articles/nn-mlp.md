@@ -3,7 +3,7 @@ title: "MLP: 다층 퍼셉트론으로 임의의 함수를 근사하다"
 description: "다층 퍼셉트론(MLP)의 구조와 보편 근사 정리를 이해한다. 깊이와 너비의 트레이드오프, MNIST 분류기 완전 구현, 하이퍼파라미터 선택 가이드까지 실전 중심으로 MLP를 완전히 파악한다."
 author: "PALDYN Team"
 pubDate: "2026-05-01"
-category: "ai-guide"
+category: "deep-learning"
 level: "중급"
 tags: ["MLP", "다층퍼셉트론", "보편근사정리", "딥러닝기초", "MNIST"]
 featured: false

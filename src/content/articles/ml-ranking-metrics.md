@@ -3,7 +3,7 @@ title: "랭킹 모델 평가: NDCG·MAP·MRR 이해하기"
 description: "검색·추천 시스템의 랭킹 품질을 평가하는 NDCG·MAP·MRR의 계산 원리, 각각의 적용 시나리오, Python 구현 코드를 완전히 이해한다."
 author: "PALDYN Team"
 pubDate: "2026-04-30"
-category: "ai-guide"
+category: "deep-learning"
 level: "중급"
 tags: ["랭킹평가", "NDCG", "MAP", "MRR", "추천시스템"]
 featured: false

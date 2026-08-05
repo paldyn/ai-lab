@@ -3,7 +3,7 @@ title: "Q-러닝: 테이블로 배우는 최적 행동 전략"
 description: "Q-러닝의 원리, Bellman 방정식, TD 오류, ε-greedy 탐험 전략을 이해하고 FrozenLake 환경에서 직접 구현하는 완전 가이드입니다."
 author: "PALDYN Team"
 pubDate: "2026-05-22"
-category: "ai-guide"
+category: "domain-models"
 level: "중급"
 tags: ["Q러닝", "강화학습", "Bellman방정식", "TD오류", "ε-greedy", "Q테이블", "FrozenLake", "가치함수"]
 featured: false

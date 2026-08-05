@@ -3,7 +3,7 @@ title: "교차 검증: K-Fold로 모델 성능을 더 정확히 추정하기"
 description: "K-겹 교차 검증의 원리와 편향-분산 트레이드오프, Stratified·Time-Series·Leave-One-Out 등 다양한 변형, GridSearchCV와의 결합까지 완전히 이해한다."
 author: "PALDYN Team"
 pubDate: "2026-04-30"
-category: "ai-guide"
+category: "deep-learning"
 level: "중급"
 tags: ["교차검증", "K-Fold", "StratifiedKFold", "하이퍼파라미터튜닝", "모델평가"]
 featured: false

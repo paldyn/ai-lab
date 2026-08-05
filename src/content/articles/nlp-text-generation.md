@@ -3,7 +3,7 @@ title: "텍스트 생성: 언어 모델이 글을 쓰는 방법"
 description: "자동회귀 생성의 원리부터 Greedy·Beam Search·Top-k·Top-p·Temperature 디코딩 전략, 반복 패널티, perplexity 평가, 한국어 GPT 활용까지 텍스트 생성 기술의 전체 스펙트럼을 실전 코드로 해설한다."
 author: "PALDYN Team"
 pubDate: "2026-05-10"
-category: "ai-guide"
+category: "domain-models"
 level: "중급"
 tags: ["텍스트생성", "언어모델", "GPT", "디코딩전략", "Top-p", "Beam Search", "자동회귀", "NLP"]
 featured: false

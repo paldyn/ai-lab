@@ -3,7 +3,7 @@ title: "추론 능력은 어떻게 훈련되는가: 검증 가능한 보상과 �
 description: "추론 모델이 되돌아가기와 자기 검증을 학습하는 원리를 검증 가능한 보상(RLVR)과 그룹 상대 정책 최적화를 중심으로 설명하고, 보상 해킹과 학습 붕괴를 막는 실무 장치를 정리합니다."
 author: "PALDYN Team"
 pubDate: "2026-07-29"
-category: "ai-guide"
+category: "llm-core"
 level: "중급"
 tags: ["강화학습", "RLVR", "GRPO", "추론모델훈련", "보상설계", "보상해킹"]
 featured: false

@@ -3,7 +3,7 @@ title: "AI 개발을 위한 Python 핵심 라이브러리"
 description: "NumPy, Pandas, Matplotlib, Scikit-learn부터 PyTorch, HuggingFace Transformers, Anthropic SDK까지 — AI 개발자가 반드시 알아야 할 Python 생태계 핵심 라이브러리를 체계적으로 정리합니다."
 author: "PALDYN Team"
 pubDate: "2026-05-28"
-category: "ai-guide"
+category: "build-with-ai"
 level: "중급"
 tags: ["Python", "NumPy", "Pandas", "Scikit-learn", "PyTorch", "HuggingFace", "AI라이브러리"]
 featured: false

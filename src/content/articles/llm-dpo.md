@@ -3,7 +3,7 @@ title: "DPO: 보상 모델 없는 직접 선호도 최적화"
 description: "DPO(Direct Preference Optimization)의 수학적 원리와 RLHF와의 차이를 상세히 설명하고, TRL 라이브러리를 활용한 실제 구현부터 SimPO·IPO 등 변형 알고리즘까지 다룬다."
 author: "PALDYN Team"
 pubDate: "2026-05-11"
-category: "ai-guide"
+category: "llm-core"
 level: "중급"
 tags: ["DPO", "RLHF", "선호도최적화", "LLM정렬", "TRL", "SimPO", "IPO", "파인튜닝"]
 featured: false

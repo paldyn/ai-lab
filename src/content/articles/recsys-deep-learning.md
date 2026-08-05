@@ -3,7 +3,7 @@ title: "딥러닝 추천 시스템: NCF·Wide&Deep·DIN 완전 해설"
 description: "Neural Collaborative Filtering·Wide&Deep·Deep Interest Network 아키텍처, 임베딩 기반 추천, 행동 시퀀스 모델링, Python PyTorch NCF 구현까지 완전 해설합니다."
 author: "PALDYN Team"
 pubDate: "2026-05-21"
-category: "ai-guide"
+category: "domain-models"
 level: "중급"
 tags: ["딥러닝추천", "NCF", "Wide&Deep", "DIN", "신경망추천", "임베딩추천", "행동시퀀스", "추천시스템"]
 featured: false

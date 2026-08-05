@@ -3,7 +3,7 @@ title: "퍼셉트론: 딥러닝의 기원이 된 인공 뉴런"
 description: "1957년 Rosenblatt의 퍼셉트론부터 학습 규칙, 수렴 정리, 한계(XOR 문제)까지. 딥러닝 시대를 연 최초의 학습 가능한 뉴런 모델을 코드와 함께 완전히 이해한다."
 author: "PALDYN Team"
 pubDate: "2026-05-01"
-category: "ai-guide"
+category: "deep-learning"
 level: "중급"
 tags: ["퍼셉트론", "신경망기초", "딥러닝입문", "인공뉴런", "분류알고리즘"]
 featured: false

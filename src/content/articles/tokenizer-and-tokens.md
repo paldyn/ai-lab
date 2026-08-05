@@ -3,7 +3,7 @@ title: "토크나이저와 토큰: LLM이 텍스트를 보는 방법"
 description: "LLM이 텍스트를 정수 ID 시퀀스로 변환하는 토크나이저의 개념, 토큰의 정의, 특수 토큰, 언어별 토큰 효율 차이를 코드와 함께 완전히 해설한다."
 author: "PALDYN Team"
 pubDate: "2026-05-07"
-category: "ai-guide"
+category: "llm-core"
 level: "중급"
 tags: ["토크나이저", "토큰", "BPE", "LLM", "NLP", "한국어"]
 featured: false

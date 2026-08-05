@@ -3,7 +3,7 @@ title: "추론 벤치마크 읽는 법"
 description: "공개 추론 벤치마크 점수가 왜 시간이 지날수록 능력보다 노출량을 반영하게 되는지, 오염과 포화를 어떻게 알아채는지, 그리고 도입 판단에 쓸 자체 평가를 어떻게 세우는지 정리합니다."
 author: "PALDYN Team"
 pubDate: "2026-08-05"
-category: "ai-guide"
+category: "llm-core"
 level: "중급"
 tags: ["벤치마크", "평가", "추론모델", "데이터오염", "모델선택", "pass@k"]
 featured: false

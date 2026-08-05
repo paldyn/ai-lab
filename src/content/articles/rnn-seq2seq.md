@@ -3,7 +3,7 @@ title: "Seq2Seq: 인코더-디코더로 시퀀스를 시퀀스로"
 description: "Seq2Seq 아키텍처의 인코더-디코더 구조, Teacher Forcing, Beam Search를 이해하고, 기계 번역·요약·대화 시스템에 어떻게 적용하는지 코드로 살펴본다."
 author: "PALDYN Team"
 pubDate: "2026-05-05"
-category: "ai-guide"
+category: "deep-learning"
 level: "중급"
 tags: ["Seq2Seq", "인코더디코더", "기계번역", "TeacherForcing", "BeamSearch"]
 featured: false

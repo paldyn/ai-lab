@@ -3,7 +3,7 @@ title: "Positional Encoding: 트랜스포머에 순서를 알려주는 방법"
 description: "Self-Attention이 순서를 모르는 이유, 사인·코사인 함수로 위치 정보를 인코딩하는 원리, 그리고 PyTorch 직접 구현까지 단계별로 살펴본다."
 author: "PALDYN Team"
 pubDate: "2026-05-06"
-category: "ai-guide"
+category: "llm-core"
 level: "중급"
 tags: ["트랜스포머", "Positional Encoding", "딥러닝", "NLP"]
 featured: false

@@ -3,7 +3,7 @@ title: "개체명 인식(NER): 텍스트에서 정보를 추출하다"
 description: "BIO/BIOES 태깅 체계, BERT 기반 NER 아키텍처, 정밀도·재현율·F1 평가 지표, 한국어 NER의 특수 과제를 transformers 파이프라인 코드와 함께 완전히 해설한다."
 author: "PALDYN Team"
 pubDate: "2026-05-08"
-category: "ai-guide"
+category: "domain-models"
 level: "중급"
 tags: ["NER", "개체명인식", "BIO태깅", "BERT", "정보추출", "NLP", "한국어NLP"]
 featured: false

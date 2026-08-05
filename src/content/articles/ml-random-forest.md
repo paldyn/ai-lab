@@ -3,7 +3,7 @@ title: "랜덤 포레스트: 앙상블 학습의 교과서"
 description: "배깅과 랜덤 서브스페이스로 수백 개의 결정 트리를 합치는 랜덤 포레스트의 원리와 실전 튜닝 가이드를 다룬다."
 author: "PALDYN Team"
 pubDate: "2026-04-29"
-category: "ai-guide"
+category: "deep-learning"
 level: "중급"
 tags: ["랜덤포레스트", "앙상블학습", "배깅", "부트스트랩", "ML기초"]
 featured: false

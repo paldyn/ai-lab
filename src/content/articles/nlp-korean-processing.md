@@ -3,7 +3,7 @@ title: "한국어 NLP: 교착어 처리와 한국어 특화 모델"
 description: "한국어의 교착어 특성과 NLP 파이프라인 구성, KoNLPy·Kiwi 형태소 분석, KLUE 벤치마크, KoBERT·KoELECTRA·HyperCLOVA X까지 한국어 NLP 생태계 전체를 실전 코드로 완전히 해설한다."
 author: "PALDYN Team"
 pubDate: "2026-05-10"
-category: "ai-guide"
+category: "domain-models"
 level: "중급"
 tags: ["한국어NLP", "형태소분석", "Kiwi", "KoNLPy", "KLUE", "KoBERT", "KoELECTRA", "HyperCLOVA"]
 featured: false

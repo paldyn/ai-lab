@@ -3,7 +3,7 @@ title: "편향-분산 트레이드오프: 과소적합과 과대적합의 근본
 description: "편향과 분산의 수학적 정의, 모델 복잡도와의 관계, 학습 곡선으로 진단하는 방법, 편향·분산을 각각 줄이는 실전 전략을 완전히 이해한다."
 author: "PALDYN Team"
 pubDate: "2026-04-30"
-category: "ai-guide"
+category: "deep-learning"
 level: "중급"
 tags: ["편향분산트레이드오프", "과소적합", "과대적합", "모델복잡도", "ML기초"]
 featured: false

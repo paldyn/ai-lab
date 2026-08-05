@@ -3,7 +3,7 @@ title: "Transformer Encoder: 문맥을 이해하는 핵심 블록"
 description: "트랜스포머 인코더 블록의 내부 구조를 Multi-Head Self-Attention, FFN, 잔차 연결, Layer Normalization으로 나누어 살펴보고 PyTorch로 직접 구현한다."
 author: "PALDYN Team"
 pubDate: "2026-05-06"
-category: "ai-guide"
+category: "llm-core"
 level: "중급"
 tags: ["트랜스포머", "Encoder", "Self-Attention", "딥러닝", "NLP"]
 featured: false

@@ -3,7 +3,7 @@ title: "결정 트리: 질문의 연쇄로 만드는 분류 모델"
 description: "엔트로피, 지니 불순도, 정보 이득을 이해하고, 결정 트리의 학습 원리와 과적합 제어를 scikit-learn으로 실습한다."
 author: "PALDYN Team"
 pubDate: "2026-04-29"
-category: "ai-guide"
+category: "deep-learning"
 level: "중급"
 tags: ["결정트리", "엔트로피", "정보이득", "지니불순도", "ML기초"]
 featured: false

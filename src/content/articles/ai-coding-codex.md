@@ -3,7 +3,7 @@ title: "OpenAI Codex와 ChatGPT: AI 코딩의 시작점"
 description: "2021년 Codex부터 ChatGPT, GPT-4, GPT-4o, o-series까지 OpenAI 코딩 AI의 진화를 추적하고, Code Interpreter·Canvas·Codex CLI의 실전 활용법을 정리합니다."
 author: "PALDYN Team"
 pubDate: "2026-05-26"
-category: "ai-guide"
+category: "build-with-ai"
 level: "중급"
 tags: ["Codex", "ChatGPT", "GPT4o", "OpenAI", "AI코딩", "CodeInterpreter", "o-series"]
 featured: false

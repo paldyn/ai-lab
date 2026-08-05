@@ -3,7 +3,7 @@ title: "정책 경사법: 정책을 직접 최적화하기"
 description: "정책 경사 정리(Policy Gradient Theorem), REINFORCE 알고리즘, 기준선(baseline)을 이용한 분산 감소를 완전히 이해하고 PyTorch로 구현합니다."
 author: "PALDYN Team"
 pubDate: "2026-05-22"
-category: "ai-guide"
+category: "domain-models"
 level: "중급"
 tags: ["정책경사법", "PolicyGradient", "REINFORCE", "강화학습", "기준선", "분산감소", "확률적정책", "PyTorch"]
 featured: false

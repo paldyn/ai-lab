@@ -3,7 +3,7 @@ title: "기계 번역: 언어의 장벽을 넘는 기술"
 description: "규칙 기반·통계 기반·신경망 기반 MT의 발전사부터 Transformer 인코더-디코더 구조, NLLB-200 활용, BLEU/COMET 평가, 한국어 번역 특수성까지 기계 번역의 전체 기술 스택을 실전 코드로 해설한다."
 author: "PALDYN Team"
 pubDate: "2026-05-10"
-category: "ai-guide"
+category: "domain-models"
 level: "중급"
 tags: ["기계번역", "NMT", "Transformer", "NLLB", "BLEU", "COMET", "다국어", "한국어번역"]
 featured: false

@@ -3,7 +3,7 @@ title: "객체 탐지: 이미지에서 물체 찾기"
 description: "CNN 기반 객체 탐지의 원리를 2-Stage(Faster R-CNN)와 1-Stage(YOLO) 관점에서 설명한다. 앵커 박스, IoU, NMS, mAP 등 핵심 개념을 수식 없이 직관적으로 이해하고 YOLOv8로 실전 구현해 본다."
 author: "PALDYN Team"
 pubDate: "2026-05-02"
-category: "ai-guide"
+category: "domain-models"
 level: "중급"
 tags: ["CNN", "객체탐지", "YOLO", "FasterRCNN", "컴퓨터비전"]
 featured: false

@@ -3,7 +3,7 @@ title: "FlashAttention: IO-Aware 어텐션 연산"
 description: "FlashAttention이 GPU 메모리 계층(HBM↔SRAM)을 타일링으로 활용해 어텐션의 속도와 메모리 효율을 동시에 극적으로 개선하는 원리를 완전히 해설한다."
 author: "PALDYN Team"
 pubDate: "2026-05-07"
-category: "ai-guide"
+category: "llm-core"
 level: "중급"
 tags: ["FlashAttention", "GPU 최적화", "트랜스포머", "어텐션", "LLM"]
 featured: false

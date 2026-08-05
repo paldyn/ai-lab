@@ -3,7 +3,7 @@ title: "딥러닝 이미지 분류 완전 정복: 백본·전이학습·실전 �
 description: "ResNet, EfficientNet, ViT, ConvNeXt 등 주요 백본 비교, Feature Extraction vs Fine-Tuning 전이학습 전략, 그리고 PyTorch 실전 분류 코드를 완전 해설합니다."
 author: "PALDYN Team"
 pubDate: "2026-05-20"
-category: "ai-guide"
+category: "domain-models"
 level: "중급"
 tags: ["이미지분류", "딥러닝", "CNN", "전이학습", "ResNet", "EfficientNet", "ViT", "PyTorch"]
 featured: false

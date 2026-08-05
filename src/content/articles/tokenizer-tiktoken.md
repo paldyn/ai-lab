@@ -3,7 +3,7 @@ title: "tiktoken: OpenAI의 빠른 BPE 토크나이저"
 description: "tiktoken이 Rust로 구현한 고속 BPE 엔진으로 cl100k_base, o200k_base 인코딩을 지원하며 실제 LLM 앱에서 토큰 수 계산, 컨텍스트 관리, 배치 인코딩에 어떻게 활용되는지 완전히 설명한다."
 author: "PALDYN Team"
 pubDate: "2026-05-07"
-category: "ai-guide"
+category: "llm-core"
 level: "중급"
 tags: ["tiktoken", "토크나이저", "BPE", "OpenAI", "GPT-4", "LLM"]
 featured: false

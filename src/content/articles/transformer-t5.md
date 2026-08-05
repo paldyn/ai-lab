@@ -3,7 +3,7 @@ title: "T5: 텍스트를 텍스트로 변환하는 통합 프레임워크"
 description: "Google의 T5가 모든 NLP 태스크를 텍스트→텍스트로 통일한 방법, Span Corruption 사전학습, 상대 위치 인코딩, Flan-T5까지 코드와 함께 설명한다."
 author: "PALDYN Team"
 pubDate: "2026-05-06"
-category: "ai-guide"
+category: "llm-core"
 level: "중급"
 tags: ["T5", "트랜스포머", "Seq2Seq", "사전학습", "Flan", "NLP"]
 featured: false

@@ -3,7 +3,7 @@ title: "AI로 코드 리뷰하기: 자동화와 사람 리뷰의 균형"
 description: "Claude·GPT API를 활용한 자동 코드 리뷰 시스템 구축, GitHub Actions 통합, 리뷰봇 프롬프트 설계, 그리고 AI 리뷰와 사람 리뷰의 올바른 역할 분담을 다룹니다."
 author: "PALDYN Team"
 pubDate: "2026-05-26"
-category: "ai-guide"
+category: "build-with-ai"
 level: "중급"
 tags: ["AI코드리뷰", "코드리뷰자동화", "GitHubActions", "ClaudeAPI", "DevOps", "코드품질"]
 featured: false

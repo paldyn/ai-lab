@@ -3,7 +3,7 @@ title: "Mixture of Experts: 희소 활성화로 거대 모델 만들기"
 description: "Mixture of Experts(MoE)가 FFN 레이어를 다수의 전문가로 교체하고 토큰마다 Top-K만 활성화해 파라미터는 늘리되 연산량은 유지하는 원리와 실전 구현을 해설한다."
 author: "PALDYN Team"
 pubDate: "2026-05-07"
-category: "ai-guide"
+category: "llm-core"
 level: "중급"
 tags: ["MoE", "Mixture of Experts", "희소 활성화", "트랜스포머", "Mixtral", "DeepSeek"]
 featured: false

@@ -3,7 +3,7 @@ title: "활성화 함수: ReLU·Sigmoid·GELU의 모든 것"
 description: "신경망의 비선형성을 담당하는 활성화 함수를 완전 정복한다. Sigmoid, Tanh, ReLU, Leaky ReLU, GELU, Swish의 수식·특성·한계를 비교하고, 실무에서 어떤 상황에 어떤 함수를 선택해야 하는지를 알아본다."
 author: "PALDYN Team"
 pubDate: "2026-05-01"
-category: "ai-guide"
+category: "deep-learning"
 level: "중급"
 tags: ["활성화함수", "ReLU", "GELU", "Sigmoid", "딥러닝기초"]
 featured: false

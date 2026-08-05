@@ -3,7 +3,7 @@ title: "LLaMA 패밀리 완전 해부: 오픈소스 LLM 혁명"
 description: "Meta LLaMA 시리즈의 탄생 배경, LLaMA 1·2·3 버전별 혁신, 오픈소스 생태계(Vicuna·Alpaca·Code Llama), 로컬 실행 방법(Ollama·llama.cpp), 그리고 상업 모델과의 실전 비교를 한국어로 완전 해설한다."
 author: "PALDYN Team"
 pubDate: "2026-05-12"
-category: "ai-guide"
+category: "llm-core"
 level: "중급"
 tags: ["LLaMA", "Meta", "오픈소스LLM", "Ollama", "llama.cpp", "LLaMA3", "로컬AI", "파인튜닝"]
 featured: false

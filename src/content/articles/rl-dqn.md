@@ -3,7 +3,7 @@ title: "DQN: 딥러닝으로 확장하는 Q-러닝"
 description: "DeepMind의 DQN이 Q-테이블의 한계를 어떻게 극복했는지, 경험 재생과 타겟 네트워크라는 두 핵심 혁신을 PyTorch로 완전 구현합니다."
 author: "PALDYN Team"
 pubDate: "2026-05-22"
-category: "ai-guide"
+category: "domain-models"
 level: "중급"
 tags: ["DQN", "DeepQLearning", "강화학습", "경험재생", "타겟네트워크", "PyTorch", "Atari", "딥러닝"]
 featured: false

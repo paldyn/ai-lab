@@ -3,7 +3,7 @@ title: "t-SNE와 UMAP: 고차원 데이터를 눈으로 보다"
 description: "t-SNE의 확률 분포 기반 원리와 UMAP의 위상수학적 접근을 비교하고, 임베딩 시각화 실전 코드와 하이퍼파라미터 튜닝 가이드를 제공한다."
 author: "PALDYN Team"
 pubDate: "2026-04-29"
-category: "ai-guide"
+category: "deep-learning"
 level: "중급"
 tags: ["tSNE", "UMAP", "차원축소", "시각화", "고차원데이터"]
 featured: false

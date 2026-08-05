@@ -3,7 +3,7 @@ title: "BPE: 바이트 쌍 인코딩 토크나이저"
 description: "BPE(Byte Pair Encoding)가 말뭉치에서 가장 빈번한 인접 바이트 쌍을 반복 병합해 서브워드 어휘를 구축하는 알고리즘과 학습·인코딩 과정을 코드로 완전히 해설한다."
 author: "PALDYN Team"
 pubDate: "2026-05-07"
-category: "ai-guide"
+category: "llm-core"
 level: "중급"
 tags: ["BPE", "토크나이저", "서브워드", "GPT", "NLP"]
 featured: false

@@ -3,7 +3,7 @@ title: "멀티모달 AI 평가: MMBench·MMMU·VQA 벤치마크 완전 해설"
 description: "VQA·MMBench·MMMU·MMStar 등 멀티모달 평가 벤치마크 구조, LLM-as-Judge 방식, 멀티모달 환각 평가 POPE·HallusionBench, Python 평가 코드까지 완전 해설합니다."
 author: "PALDYN Team"
 pubDate: "2026-05-21"
-category: "ai-guide"
+category: "domain-models"
 level: "중급"
 tags: ["멀티모달평가", "MMBench", "MMMU", "VQA", "벤치마크", "LLM-as-Judge", "환각평가", "POPE"]
 featured: false

@@ -3,7 +3,7 @@ title: "Vision Transformer(ViT): 이미지를 문장처럼 처리하는 Transfor
 description: "ViT의 패치 분할·위치 인코딩·Transformer Encoder 구조를 완전 해설하고, DeiT·Swin·BEiT·MAE 등 후속 모델 계보와 PyTorch 구현 코드를 다룹니다."
 author: "PALDYN Team"
 pubDate: "2026-05-20"
-category: "ai-guide"
+category: "domain-models"
 level: "중급"
 tags: ["ViT", "VisionTransformer", "Swin", "DeiT", "MAE", "컴퓨터비전", "자기어텐션", "패치임베딩"]
 featured: false

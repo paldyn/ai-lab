@@ -3,7 +3,7 @@ title: "텍스트 요약: 길고 복잡한 문서를 한 문단으로"
 description: "추출적·추상적 요약의 원리 차이부터 TextRank, BART, T5, KoBART 파인튜닝, ROUGE/BERTScore 평가까지 텍스트 요약의 전체 기술 스택을 한국어 실전 코드와 함께 완전히 해설한다."
 author: "PALDYN Team"
 pubDate: "2026-05-10"
-category: "ai-guide"
+category: "domain-models"
 level: "중급"
 tags: ["텍스트요약", "BART", "KoBART", "T5", "ROUGE", "BERTScore", "추출적요약", "추상적요약"]
 featured: false

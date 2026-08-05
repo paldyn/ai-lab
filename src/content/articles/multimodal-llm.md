@@ -3,7 +3,7 @@ title: "멀티모달 LLM: 텍스트·이미지·오디오를 함께 이해하는
 description: "멀티모달 LLM의 입력 인코더·프로젝션·LLM 디코더 구조, GPT-4o·Claude·Gemini 멀티모달 아키텍처 비교, Python API 실전 코드까지 완전 해설합니다."
 author: "PALDYN Team"
 pubDate: "2026-05-21"
-category: "ai-guide"
+category: "domain-models"
 level: "중급"
 tags: ["멀티모달LLM", "GPT-4o", "Gemini", "Claude", "이미지이해", "멀티모달AI", "비전언어모델"]
 featured: false

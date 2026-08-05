@@ -3,7 +3,7 @@ title: "창발적 능력: 규모에서 탄생하는 새로운 역량"
 description: "LLM의 창발적 능력(Emergent Abilities)이란 무엇인지, Chain-of-Thought와 산술 능력 등 실제 사례와 함께 규모 임계값 현상을 분석하고, 창발 논쟁과 AI 안전 함의까지 다룬다."
 author: "PALDYN Team"
 pubDate: "2026-05-11"
-category: "ai-guide"
+category: "llm-core"
 level: "중급"
 tags: ["창발", "EmergentAbilities", "스케일링", "ChainOfThought", "LLM", "AI안전", "규모임계값"]
 featured: false

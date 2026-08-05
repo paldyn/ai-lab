@@ -3,7 +3,7 @@ title: "HuggingFace Hub: 모델 공유와 배포"
 description: "huggingface_hub 라이브러리로 모델 다운로드·업로드하기, 모델 카드 작성, Gradio/Streamlit Spaces 배포, from_pretrained()이 내부적으로 하는 일까지 — HuggingFace Hub 활용법을 실전 코드로 정리합니다."
 author: "PALDYN Team"
 pubDate: "2026-05-28"
-category: "ai-guide"
+category: "build-with-ai"
 level: "중급"
 tags: ["HuggingFace", "Hub", "huggingface_hub", "Spaces", "Gradio", "Streamlit", "push_to_hub", "모델 배포"]
 featured: false

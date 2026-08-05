@@ -3,7 +3,7 @@ title: "Constitutional AI: 원칙 기반 AI 정렬"
 description: "Anthropic의 Constitutional AI(CAI) 방법론을 SL-CAI와 RL-CAI 두 단계로 상세히 해설하고, RLAIF가 RLHF를 어떻게 대체하는지, 무해성과 유용성의 균형을 어떻게 맞추는지 살펴본다."
 author: "PALDYN Team"
 pubDate: "2026-05-11"
-category: "ai-guide"
+category: "llm-core"
 level: "중급"
 tags: ["ConstitutionalAI", "CAI", "RLAIF", "Anthropic", "Claude", "AI정렬", "무해성", "원칙기반"]
 featured: false

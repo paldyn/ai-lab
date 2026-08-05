@@ -3,7 +3,7 @@ title: "LLM의 본질: 거대 언어 모델이란 무엇인가"
 description: "LLM이 단순한 '더 큰 모델'이 아닌 이유, 창발적 능력의 정체, 파라미터-데이터-컴퓨팅의 3요소, ChatGPT 충격의 기술적 배경, 그리고 LLM API 첫 호출까지 LLM의 본질을 완전히 해설한다."
 author: "PALDYN Team"
 pubDate: "2026-05-10"
-category: "ai-guide"
+category: "llm-core"
 level: "중급"
 tags: ["LLM", "대규모언어모델", "GPT", "Claude", "창발적능력", "파운데이션모델", "스케일링법칙"]
 featured: false

@@ -3,7 +3,7 @@ title: "투타워 모델: 대규모 추천 시스템 구조 완전 해설"
 description: "투타워(Two-Tower) 아키텍처 원리, 사용자·아이템 타워 구조, ANN 근사 최근접 이웃 검색, FAISS 벡터 검색, 실시간 서빙 파이프라인, Python 구현까지 완전 해설합니다."
 author: "PALDYN Team"
 pubDate: "2026-05-21"
-category: "ai-guide"
+category: "domain-models"
 level: "중급"
 tags: ["투타워모델", "Two-Tower", "추천시스템", "ANN", "FAISS", "벡터검색", "실시간추천", "대규모추천"]
 featured: false

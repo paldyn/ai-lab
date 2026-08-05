@@ -3,7 +3,7 @@ title: "K-평균 군집화: 데이터를 K개 그룹으로 나누는 법"
 description: "K-평균 알고리즘의 반복 수렴 원리, 최적 K 선택법(엘보우·실루엣), 초기화 전략 K-means++까지 완전 정복한다."
 author: "PALDYN Team"
 pubDate: "2026-04-29"
-category: "ai-guide"
+category: "deep-learning"
 level: "중급"
 tags: ["K평균", "군집화", "클러스터링", "엘보우법", "비지도학습"]
 featured: false

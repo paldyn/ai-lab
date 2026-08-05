@@ -3,7 +3,7 @@ title: "협업 필터링: 유사 사용자·아이템 기반 추천 완전 해�
 description: "사용자 기반·아이템 기반 협업 필터링 원리, 코사인 유사도·피어슨 상관계수, 메모리 기반 vs 모델 기반 CF, Python 구현 코드까지 완전 해설합니다."
 author: "PALDYN Team"
 pubDate: "2026-05-21"
-category: "ai-guide"
+category: "domain-models"
 level: "중급"
 tags: ["협업필터링", "추천시스템", "사용자기반CF", "아이템기반CF", "코사인유사도", "피어슨상관계수", "추천알고리즘"]
 featured: false

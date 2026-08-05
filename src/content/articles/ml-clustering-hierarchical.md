@@ -3,7 +3,7 @@ title: "계층적 군집화: 덴드로그램으로 보는 군집 구조"
 description: "응집형·분리형 계층 군집화의 원리, 연결 기준(Ward·Complete·Average), 덴드로그램 해석법을 scipy와 scikit-learn으로 실습한다."
 author: "PALDYN Team"
 pubDate: "2026-04-29"
-category: "ai-guide"
+category: "deep-learning"
 level: "중급"
 tags: ["계층적군집화", "덴드로그램", "응집형군집화", "Ward연결", "비지도학습"]
 featured: false

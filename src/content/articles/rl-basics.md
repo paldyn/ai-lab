@@ -3,7 +3,7 @@ title: "강화학습 기초: 에이전트, 환경, 보상의 언어"
 description: "강화학습의 핵심 개념인 에이전트, 환경, 상태, 행동, 보상, 정책, 가치 함수를 직관적으로 이해하고 Gymnasium으로 실제 RL 루프를 구현합니다."
 author: "PALDYN Team"
 pubDate: "2026-05-22"
-category: "ai-guide"
+category: "domain-models"
 level: "중급"
 tags: ["강화학습", "RL", "에이전트", "환경", "보상", "정책", "가치함수", "Gymnasium"]
 featured: false

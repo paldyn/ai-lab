@@ -3,7 +3,7 @@ title: "이미지 분류: CNN 파이프라인 완전 가이드"
 description: "CNN 기반 이미지 분류의 전체 파이프라인을 처음부터 끝까지 구현한다. 데이터 증강(Mixup, CutMix, RandAugment), 현대적 학습 레시피, 전이학습 전략, 그리고 실전 팁을 PyTorch 코드와 함께 설명한다."
 author: "PALDYN Team"
 pubDate: "2026-05-02"
-category: "ai-guide"
+category: "domain-models"
 level: "중급"
 tags: ["CNN", "이미지분류", "전이학습", "데이터증강", "PyTorch"]
 featured: false

@@ -3,7 +3,7 @@ title: "Multi-Head Attention: 여러 관점으로 동시에 보기"
 description: "Multi-Head Attention이 단일 어텐션 헤드의 한계를 넘어 다양한 언어 관계를 병렬로 포착하는 원리를 이해하고, PyTorch로 처음부터 구현한다."
 author: "PALDYN Team"
 pubDate: "2026-05-05"
-category: "ai-guide"
+category: "llm-core"
 level: "중급"
 tags: ["MultiHeadAttention", "Transformer", "셀프어텐션", "딥러닝", "NLP"]
 featured: false

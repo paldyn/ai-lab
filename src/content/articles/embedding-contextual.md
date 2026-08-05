@@ -3,7 +3,7 @@ title: "문맥적 임베딩: ELMo부터 BERT까지"
 description: "정적 임베딩의 다의어 문제를 해결하는 문맥적 임베딩의 원리, ELMo의 양방향 LSTM 레이어 표현, BERT의 트랜스포머 기반 서브워드 임베딩 추출법을 수식과 코드로 완전히 해설한다."
 author: "PALDYN Team"
 pubDate: "2026-05-08"
-category: "agents-rag"
+category: "deep-learning"
 level: "중급"
 tags: ["문맥적 임베딩", "ELMo", "BERT", "트랜스포머", "NLP", "KLUE", "transformers"]
 featured: false

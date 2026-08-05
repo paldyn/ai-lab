@@ -3,7 +3,7 @@ title: "회귀 모델 평가 지표: MAE·MSE·RMSE·R² 완전 이해"
 description: "MAE·MSE·RMSE·MAPE·R²의 공식·특성·적용 조건, 이상치 민감도 비교, Adjusted R²·Huber 손실, 잔차 분석으로 모델 진단하는 방법을 실전 코드와 함께 이해한다."
 author: "PALDYN Team"
 pubDate: "2026-04-30"
-category: "ai-guide"
+category: "deep-learning"
 level: "중급"
 tags: ["회귀평가", "MAE", "RMSE", "R2", "모델평가"]
 featured: false

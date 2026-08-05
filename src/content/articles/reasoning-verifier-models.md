@@ -3,7 +3,7 @@ title: "검증자 모델: 답을 고르는 눈을 따로 기른다"
 description: "규칙 검증기, 결과 보상 모델(ORM), 과정 보상 모델(PRM), 자기 검증의 특성과 한계를 비교하고, 여러 후보 중 정답을 골라내는 검증 계층을 실무에서 어떻게 구성할지 코드와 함께 정리합니다."
 author: "PALDYN Team"
 pubDate: "2026-07-29"
-category: "ai-guide"
+category: "llm-core"
 level: "중급"
 tags: ["검증자모델", "ORM", "PRM", "보상모델", "best-of-n", "자기검증"]
 featured: false

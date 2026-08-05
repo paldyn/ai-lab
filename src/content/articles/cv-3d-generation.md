@@ -3,7 +3,7 @@ title: "3D 생성 AI: NeRF·3D Gaussian Splatting·Point-E 완전 해설"
 description: "NeRF 볼륨 렌더링 원리, 3DGS 명시적 가우시안 표현, DreamFusion SDS Loss, Zero123++ 단일 이미지 3D, 실전 코드까지 3D 생성 AI를 완전 해설합니다."
 author: "PALDYN Team"
 pubDate: "2026-05-20"
-category: "ai-guide"
+category: "domain-models"
 level: "중급"
 tags: ["NeRF", "3DGaussianSplatting", "DreamFusion", "3D생성", "볼륨렌더링", "Point-E", "3D재구성", "Zero123"]
 featured: false

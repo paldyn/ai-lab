@@ -3,7 +3,7 @@ title: "순전파와 역전파: 신경망 학습의 핵심 원리"
 description: "신경망 학습의 핵심인 순전파(Forward Pass)와 역전파(Backpropagation)를 수식과 코드로 완전히 이해한다. 연쇄 법칙(Chain Rule)이 어떻게 다층 신경망의 기울기를 계산하는지, PyTorch Autograd가 이를 어떻게 자동화하는지를 설명한다."
 author: "PALDYN Team"
 pubDate: "2026-05-01"
-category: "ai-guide"
+category: "deep-learning"
 level: "중급"
 tags: ["역전파", "순전파", "연쇄법칙", "Autograd", "딥러닝기초"]
 featured: false

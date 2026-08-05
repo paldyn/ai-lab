@@ -3,7 +3,7 @@ title: "AI 이미지 편집: 인페인팅·아웃페인팅·스타일 전이·DD
 description: "SD 인페인팅, SAM 기반 객체 제거, InstructPix2Pix, DDIM Inversion, DreamBooth·LoRA 스타일 개인화까지 AI 이미지 편집 기법 전체를 코드와 함께 해설합니다."
 author: "PALDYN Team"
 pubDate: "2026-05-20"
-category: "ai-guide"
+category: "domain-models"
 level: "중급"
 tags: ["이미지편집", "인페인팅", "아웃페인팅", "DDIM", "DreamBooth", "LoRA", "스타일전이", "SAM"]
 featured: false

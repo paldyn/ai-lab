@@ -3,7 +3,7 @@ title: "GPT 패밀리 완전 해부: GPT-1부터 GPT-4o까지"
 description: "OpenAI GPT 시리즈의 탄생 배경, GPT-1·2·3·3.5·4·4o의 핵심 변화, Transformer Decoder-only 아키텍처, RLHF 적용, 멀티모달 확장까지 한국어로 깊이 해설한다."
 author: "PALDYN Team"
 pubDate: "2026-05-12"
-category: "ai-guide"
+category: "llm-core"
 level: "중급"
 tags: ["GPT", "OpenAI", "LLM", "ChatGPT", "GPT-4", "Transformer", "RLHF", "언어모델"]
 featured: false

@@ -3,7 +3,7 @@ title: "콘텐츠 기반 필터링: 아이템 특성으로 추천하는 방법 �
 description: "TF-IDF·아이템 특성 벡터화, 코사인 유사도 기반 콘텐츠 추천, 사용자 프로파일 구축, CF와의 비교, Python 영화 추천 구현까지 완전 해설합니다."
 author: "PALDYN Team"
 pubDate: "2026-05-21"
-category: "ai-guide"
+category: "domain-models"
 level: "중급"
 tags: ["콘텐츠기반필터링", "추천시스템", "TF-IDF", "코사인유사도", "아이템프로파일", "사용자프로파일", "CBF"]
 featured: false

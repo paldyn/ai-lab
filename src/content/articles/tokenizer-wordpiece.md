@@ -3,7 +3,7 @@ title: "WordPiece: BERT의 서브워드 토크나이저"
 description: "WordPiece가 언어 모델 우도를 기준으로 서브워드를 병합하는 원리, BPE와의 핵심 차이, ## 접두사 표기법, 그리고 BERT에서의 실전 사용법을 완전히 해설한다."
 author: "PALDYN Team"
 pubDate: "2026-05-07"
-category: "ai-guide"
+category: "llm-core"
 level: "중급"
 tags: ["WordPiece", "BERT", "토크나이저", "서브워드", "NLP"]
 featured: false

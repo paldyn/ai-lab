@@ -3,7 +3,7 @@ title: "ROC 곡선과 AUC: 임계값 독립적 분류 성능 평가"
 description: "ROC 곡선의 TPR-FPR 트레이드오프, AUC의 확률론적 해석, PR-AUC와의 차이, 다중 클래스 확장, 최적 임계값 선택 방법을 실전 코드와 함께 완전히 이해한다."
 author: "PALDYN Team"
 pubDate: "2026-04-30"
-category: "ai-guide"
+category: "deep-learning"
 level: "중급"
 tags: ["ROC곡선", "AUC", "분류평가", "임계값", "모델평가"]
 featured: false

@@ -3,7 +3,7 @@ title: "자동 음성 인식(ASR): Whisper와 스트리밍 음성 처리 완전 
 description: "멜 스펙트로그램·CTC·Whisper Encoder-Decoder 구조, faster-whisper 실전 코드, VAD 기반 스트리밍 ASR, 한국어 특화 모델 비교까지 완전 해설합니다."
 author: "PALDYN Team"
 pubDate: "2026-05-20"
-category: "ai-guide"
+category: "domain-models"
 level: "중급"
 tags: ["ASR", "Whisper", "음성인식", "멜스펙트로그램", "faster-whisper", "스트리밍ASR", "VAD", "한국어ASR"]
 featured: false

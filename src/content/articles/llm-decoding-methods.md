@@ -3,7 +3,7 @@ title: "디코딩 방법: Greedy에서 Beam Search까지"
 description: "LLM의 텍스트 생성 과정에서 핵심인 디코딩 방법들—Greedy Decoding, Beam Search, Diverse Beam Search, 그리고 자동회귀 생성의 원리—을 품질·속도·다양성 트레이드오프와 함께 실전 코드로 완전 해설한다."
 author: "PALDYN Team"
 pubDate: "2026-05-11"
-category: "ai-guide"
+category: "llm-core"
 level: "중급"
 tags: ["LLM", "디코딩", "BeamSearch", "GreedyDecoding", "자동회귀생성", "DiverseBeamSearch", "텍스트생성", "NLP"]
 featured: false

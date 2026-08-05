@@ -3,7 +3,7 @@ title: "AI 데이터 분석 보조 시스템"
 description: "자연어로 SQL 쿼리를 생성하고, 시각화 코드를 작성하며, 데이터 인사이트를 자동으로 요약하는 AI 데이터 분석 보조 시스템의 설계와 구현을 다룹니다."
 author: "PALDYN Team"
 pubDate: "2026-05-27"
-category: "ai-guide"
+category: "build-with-ai"
 level: "중급"
 tags: ["데이터분석", "NL2SQL", "자연어쿼리", "이상탐지", "시각화자동화", "BI", "AnthropicSDK"]
 featured: false

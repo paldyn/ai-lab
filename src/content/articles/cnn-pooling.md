@@ -3,7 +3,7 @@ title: "풀링: 공간 정보 압축과 불변성"
 description: "CNN의 풀링(Pooling) 레이어가 하는 일을 최대 풀링, 평균 풀링, 글로벌 평균 풀링 관점에서 설명한다. 공간 크기 감소, 위치 불변성, 수용야 확장, 그리고 Flatten 대비 GAP의 이점을 코드와 함께 이해한다."
 author: "PALDYN Team"
 pubDate: "2026-05-02"
-category: "ai-guide"
+category: "domain-models"
 level: "중급"
 tags: ["CNN", "풀링", "MaxPooling", "GlobalAveragePooling", "딥러닝기초"]
 featured: false

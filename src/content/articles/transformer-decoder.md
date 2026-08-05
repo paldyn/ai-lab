@@ -3,7 +3,7 @@ title: "Transformer Decoder: 문장을 생성하는 블록"
 description: "Masked Self-Attention, Cross-Attention, FFN으로 구성된 디코더 블록의 원리와 Teacher Forcing 학습 방식, 자기 회귀 추론 흐름을 PyTorch 코드와 함께 설명한다."
 author: "PALDYN Team"
 pubDate: "2026-05-06"
-category: "ai-guide"
+category: "llm-core"
 level: "중급"
 tags: ["트랜스포머", "Decoder", "Cross-Attention", "자기회귀", "NLP"]
 featured: false

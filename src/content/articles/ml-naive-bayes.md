@@ -3,7 +3,7 @@ title: "나이브 베이즈: 빠르고 강력한 확률적 분류기"
 description: "베이즈 정리부터 가우시안·다항식·베르누이 나이브 베이즈까지, 스팸 필터와 텍스트 분류 구현 코드로 완전 정복한다."
 author: "PALDYN Team"
 pubDate: "2026-04-29"
-category: "ai-guide"
+category: "deep-learning"
 level: "중급"
 tags: ["나이브베이즈", "베이즈정리", "텍스트분류", "확률적분류", "ML기초"]
 featured: false

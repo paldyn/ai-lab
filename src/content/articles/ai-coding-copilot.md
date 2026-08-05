@@ -3,7 +3,7 @@ title: "AI 코딩 도구의 시대: GitHub Copilot 완전 해부"
 description: "GitHub Copilot의 FIM 방식 동작 원리, Inline Completion·Chat·Edits·Agent 4가지 모드, 효과적인 프롬프팅 전략과 보안·라이선스 이슈까지 실무 관점에서 완전히 정리합니다."
 author: "PALDYN Team"
 pubDate: "2026-05-26"
-category: "ai-guide"
+category: "build-with-ai"
 level: "중급"
 tags: ["GitHubCopilot", "AI코딩", "코드자동완성", "FIM", "CopilotChat", "개발생산성"]
 featured: false

@@ -3,7 +3,7 @@ title: "LLM 기반 추천 시스템: 언어 모델이 바꾸는 추천의 패러
 description: "LLM을 추천 시스템에 활용하는 방법, 프롬프트 기반 추천, 임베딩 기반 검색, 설명 생성, LLM 재랭킹 파이프라인을 실제 코드와 함께 완전 해설합니다."
 author: "PALDYN Team"
 pubDate: "2026-05-22"
-category: "ai-guide"
+category: "domain-models"
 level: "중급"
 tags: ["LLM추천", "추천시스템", "언어모델", "임베딩", "RAG추천", "개인화", "재랭킹", "설명생성"]
 featured: false

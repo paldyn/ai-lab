@@ -3,7 +3,7 @@ title: "FastText: 부분 단어로 OOV를 정복하다"
 description: "FastText가 문자 n-gram 기반의 부분 단어 모델로 OOV 문제를 해결하는 방법, 한국어 형태론에서의 강점, 실전 학습과 추론 코드를 완전히 해설한다."
 author: "PALDYN Team"
 pubDate: "2026-05-08"
-category: "agents-rag"
+category: "deep-learning"
 level: "중급"
 tags: ["FastText", "임베딩", "OOV", "부분 단어", "NLP", "한국어", "문자 n-gram"]
 featured: false

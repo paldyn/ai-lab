@@ -3,7 +3,7 @@ title: "Claude Code: 터미널에서 만나는 AI 소프트웨어 엔지니어"
 description: "Anthropic의 Claude Code CLI 에이전트를 완전 해부합니다. 설치·CLAUDE.md 작성·에이전트 모드·MCP 통합·서브 에이전트 병렬화까지 실무 활용 전략을 다룹니다."
 author: "PALDYN Team"
 pubDate: "2026-05-26"
-category: "ai-guide"
+category: "build-with-ai"
 level: "중급"
 tags: ["ClaudeCode", "Anthropic", "AI코딩", "CLI에이전트", "CLAUDE.md", "MCP", "개발생산성"]
 featured: false

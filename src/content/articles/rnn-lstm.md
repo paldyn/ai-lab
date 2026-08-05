@@ -3,7 +3,7 @@ title: "LSTM: 장단기 메모리 게이트 완전 해부"
 description: "LSTM의 세 게이트(Forget·Input·Output)와 셀 상태 흐름을 수식·코드·시각화로 완벽히 이해한다. 기울기 소실을 왜 LSTM이 해결하는지 수학적으로 확인한다."
 author: "PALDYN Team"
 pubDate: "2026-05-05"
-category: "ai-guide"
+category: "deep-learning"
 level: "중급"
 tags: ["LSTM", "장단기메모리", "게이트", "RNN", "딥러닝"]
 featured: false

@@ -3,7 +3,7 @@ title: "Temperature·Top-k·Top-p: 생성 다양성 제어"
 description: "Temperature, Top-k, Top-p(nucleus) 세 가지 샘플링 파라미터의 원리와 효과, 확률 분포 스케일링 메커니즘, 그리고 태스크별 최적 파라미터 조합을 실전 코드와 함께 완전 해설한다."
 author: "PALDYN Team"
 pubDate: "2026-05-11"
-category: "ai-guide"
+category: "llm-core"
 level: "중급"
 tags: ["LLM", "Temperature", "Top-k", "Top-p", "NucleusSampling", "샘플링", "생성파라미터", "텍스트생성"]
 featured: false

@@ -3,7 +3,7 @@ title: "DBSCAN: 밀도로 찾는 군집과 이상치"
 description: "핵심 포인트·경계 포인트·잡음 포인트의 개념, epsilon과 min_samples 튜닝, 이상치 탐지까지 DBSCAN의 모든 것을 scikit-learn으로 완전 정복한다."
 author: "PALDYN Team"
 pubDate: "2026-04-29"
-category: "ai-guide"
+category: "deep-learning"
 level: "중급"
 tags: ["DBSCAN", "밀도기반군집화", "이상치탐지", "군집화", "비지도학습"]
 featured: false

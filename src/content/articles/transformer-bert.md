@@ -3,7 +3,7 @@ title: "BERT: 양방향 사전학습 언어 모델의 등장"
 description: "GPT가 단방향인 이유, BERT가 MLM으로 양방향 컨텍스트를 학습하는 방법, NSP 태스크, 파인튜닝 패턴, RoBERTa·ALBERT와의 비교를 코드와 함께 설명한다."
 author: "PALDYN Team"
 pubDate: "2026-05-06"
-category: "ai-guide"
+category: "llm-core"
 level: "중급"
 tags: ["BERT", "트랜스포머", "사전학습", "MLM", "파인튜닝", "NLP"]
 featured: false

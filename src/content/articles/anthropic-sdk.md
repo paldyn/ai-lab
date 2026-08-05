@@ -3,7 +3,7 @@ title: "Anthropic SDK로 Claude API 활용하기"
 description: "anthropic.Anthropic()으로 클라이언트 초기화, messages.create()로 대화 생성, 스트리밍·도구 사용·비전·프롬프트 캐싱까지 — Anthropic Python SDK의 핵심 패턴을 실전 코드로 정리합니다."
 author: "PALDYN Team"
 pubDate: "2026-05-28"
-category: "ai-guide"
+category: "build-with-ai"
 level: "중급"
 tags: ["Anthropic", "Claude", "SDK", "messages.create", "streaming", "tool_use", "vision", "프롬프트 캐싱", "API"]
 featured: false

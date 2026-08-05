@@ -3,7 +3,7 @@ title: "질의응답: 문서에서 답을 찾는 기술"
 description: "추출형·생성형·오픈도메인 QA의 원리부터 BERT 스팬 예측, KorQuAD 파인튜닝, RAG 기반 오픈도메인 QA까지 질의응답 시스템의 전체 기술 스택을 한국어 코드와 함께 완전히 해설한다."
 author: "PALDYN Team"
 pubDate: "2026-05-10"
-category: "ai-guide"
+category: "domain-models"
 level: "중급"
 tags: ["QA", "질의응답", "KorQuAD", "BERT", "오픈도메인QA", "RAG", "스팬예측", "NLP"]
 featured: false

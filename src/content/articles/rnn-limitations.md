@@ -3,7 +3,7 @@ title: "RNN의 한계와 Transformer로의 전환"
 description: "RNN 계열(RNN·LSTM·GRU)의 세 가지 본질적 한계—기울기 소실, 순차 처리, 장거리 의존성—를 정리하고, Transformer가 어떻게 이를 한꺼번에 해결하는지 살펴본다."
 author: "PALDYN Team"
 pubDate: "2026-05-05"
-category: "ai-guide"
+category: "deep-learning"
 level: "중급"
 tags: ["RNN한계", "Transformer", "순차처리", "기울기소실", "딥러닝역사"]
 featured: false

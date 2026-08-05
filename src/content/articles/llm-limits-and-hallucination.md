@@ -3,7 +3,7 @@ title: "LLM의 한계와 환각: AI가 틀리는 이유"
 description: "LLM 환각(Hallucination)의 정의와 유형(사실적·충실성·추론 오류), 발생 원인의 근본 메커니즘, 자가 일관성 측정 방법, 그리고 RAG·구조화 출력·RLHF를 활용한 실전 완화 전략을 코드와 함께 완전 해설한다."
 author: "PALDYN Team"
 pubDate: "2026-05-11"
-category: "ai-guide"
+category: "llm-core"
 level: "중급"
 tags: ["LLM", "환각", "Hallucination", "RAG", "RLHF", "AI안전성", "팩트체크", "LLM한계"]
 featured: false

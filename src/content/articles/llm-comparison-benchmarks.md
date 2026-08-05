@@ -3,7 +3,7 @@ title: "LLM 벤치마크 완전 해부: MMLU, HumanEval, LMSYS Chatbot Arena"
 description: "MMLU·HumanEval·SWE-bench·LMSYS Chatbot Arena 등 주요 LLM 벤치마크의 측정 방법, 한계, 벤치마크 해킹 문제, 그리고 실무에서 모델을 올바르게 비교하는 방법을 한국어로 완전 해설한다."
 author: "PALDYN Team"
 pubDate: "2026-05-12"
-category: "ai-guide"
+category: "llm-core"
 level: "중급"
 tags: ["LLM벤치마크", "MMLU", "HumanEval", "ChatbotArena", "ELO", "모델비교", "LLM평가", "SWEbench"]
 featured: false

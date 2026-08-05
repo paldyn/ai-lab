@@ -3,7 +3,7 @@ title: "Word2Vec: 신경망으로 단어 의미를 학습하다"
 description: "CBOW와 Skip-gram 아키텍처부터 네거티브 샘플링, 계층적 소프트맥스, 단어 유추 태스크까지 — Word2Vec의 작동 원리를 수식과 gensim 코드로 완전히 해설한다."
 author: "PALDYN Team"
 pubDate: "2026-05-08"
-category: "agents-rag"
+category: "deep-learning"
 level: "중급"
 tags: ["Word2Vec", "임베딩", "CBOW", "Skip-gram", "NLP", "gensim", "단어 벡터"]
 featured: false

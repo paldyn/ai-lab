@@ -3,7 +3,7 @@ title: "Encoder-Decoder 구조: 번역에서 요약까지"
 description: "트랜스포머의 완전한 Encoder-Decoder 아키텍처가 어떻게 소스 시퀀스를 타깃 시퀀스로 변환하는지, Cross-Attention의 역할과 대표 모델(T5, BART)을 중심으로 설명한다."
 author: "PALDYN Team"
 pubDate: "2026-05-06"
-category: "ai-guide"
+category: "llm-core"
 level: "중급"
 tags: ["트랜스포머", "Encoder-Decoder", "Seq2Seq", "T5", "BART", "NLP"]
 featured: false

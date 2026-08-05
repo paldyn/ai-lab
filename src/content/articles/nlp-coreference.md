@@ -3,7 +3,7 @@ title: "지시 해소: 대명사가 가리키는 것을 찾아라"
 description: "지시 해소(Coreference Resolution)의 개념부터 멘션 감지·클러스터링 알고리즘, SpanBERT Coref, 한국어 조사 처리의 특수성, LLM 프롬프팅 접근법까지 완전히 해설한다."
 author: "PALDYN Team"
 pubDate: "2026-05-10"
-category: "ai-guide"
+category: "domain-models"
 level: "중급"
 tags: ["지시해소", "CoreferenceResolution", "SpanBERT", "NLP", "한국어NLP", "대명사", "멘션클러스터링"]
 featured: false

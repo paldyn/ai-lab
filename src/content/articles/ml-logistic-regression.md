@@ -3,7 +3,7 @@ title: "로지스틱 회귀: 분류 문제의 첫 걸음"
 description: "시그모이드 함수, BCE 손실, 결정 경계, 소프트맥스 다중 분류까지 로지스틱 회귀의 원리와 scikit-learn·PyTorch 구현을 완전 정복한다."
 author: "PALDYN Team"
 pubDate: "2026-04-28"
-category: "ai-guide"
+category: "deep-learning"
 level: "중급"
 tags: ["로지스틱회귀", "LogisticRegression", "시그모이드", "분류", "ML기초"]
 featured: false

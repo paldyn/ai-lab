@@ -3,7 +3,7 @@ title: "추론 모델의 비용과 지연을 다루는 법"
 description: "사고 토큰이 요청 단가와 지연을 어떻게 바꾸는지 식으로 정리하고, 침묵 구간·꼬리 지연·캐시 무효화처럼 추론 모델에서만 생기는 운영 문제와 그 대응책을 다룹니다."
 author: "PALDYN Team"
 pubDate: "2026-08-05"
-category: "ai-guide"
+category: "llm-core"
 level: "중급"
 tags: ["비용최적화", "지연", "추론모델", "사고토큰", "프롬프트캐싱", "SLO"]
 featured: false

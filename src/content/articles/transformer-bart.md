@@ -3,7 +3,7 @@ title: "BART: 시퀀스-투-시퀀스 사전학습 모델"
 description: "Meta(Facebook)의 BART가 다양한 노이즈 기법으로 사전학습해 추상 요약·번역에서 강력한 성능을 내는 원리와 mBART·PEGASUS와의 비교를 코드와 함께 설명한다."
 author: "PALDYN Team"
 pubDate: "2026-05-06"
-category: "ai-guide"
+category: "llm-core"
 level: "중급"
 tags: ["BART", "트랜스포머", "Seq2Seq", "요약", "사전학습", "NLP"]
 featured: false

@@ -3,7 +3,7 @@ title: "인스턴스 분할: 물체를 개별로 구분하기"
 description: "인스턴스 세그멘테이션(Instance Segmentation)의 원리를 Mask R-CNN 중심으로 설명한다. 시맨틱 세그멘테이션과의 차이, RoI Align, 마스크 헤드, Panoptic Segmentation, 그리고 SOLOv2 등 현대 아키텍처를 코드와 함께 이해한다."
 author: "PALDYN Team"
 pubDate: "2026-05-02"
-category: "ai-guide"
+category: "domain-models"
 level: "중급"
 tags: ["CNN", "인스턴스분할", "MaskRCNN", "PanopticSegmentation", "컴퓨터비전"]
 featured: false

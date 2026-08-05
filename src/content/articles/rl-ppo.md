@@ -3,7 +3,7 @@ title: "PPO: 안정적인 정책 최적화의 표준"
 description: "PPO(Proximal Policy Optimization)의 클리핑 목적 함수, GAE 어드밴티지 추정, 엔트로피 보너스, Actor-Critic 아키텍처를 PyTorch로 완전 구현합니다."
 author: "PALDYN Team"
 pubDate: "2026-05-22"
-category: "ai-guide"
+category: "domain-models"
 level: "중급"
 tags: ["PPO", "강화학습", "ProximalPolicyOptimization", "클리핑", "GAE", "RLHF", "연속행동", "PyTorch"]
 featured: false

@@ -3,7 +3,7 @@ title: "테스트 타임 컴퓨트: 추론 시점에 계산을 더 쓴다는 것
 description: "병렬 샘플링, 순차 수정, 트리 탐색으로 추론 시점 컴퓨트를 늘리는 방법과 각각의 비용·지연 특성, 그리고 수확 체감이 시작되는 지점을 실전 코드와 함께 정리합니다."
 author: "PALDYN Team"
 pubDate: "2026-07-29"
-category: "ai-guide"
+category: "llm-core"
 level: "중급"
 tags: ["테스트타임컴퓨트", "best-of-n", "self-consistency", "추론모델", "샘플링", "LLM최적화"]
 featured: false

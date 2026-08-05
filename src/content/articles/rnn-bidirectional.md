@@ -3,7 +3,7 @@ title: "양방향 RNN: 과거와 미래를 동시에 보기"
 description: "양방향 RNN(Bidirectional RNN)이 Forward·Backward 두 방향으로 시퀀스를 처리해 각 토큰에 풍부한 문맥을 부여하는 원리와 구현을 살펴본다."
 author: "PALDYN Team"
 pubDate: "2026-05-05"
-category: "ai-guide"
+category: "deep-learning"
 level: "중급"
 tags: ["양방향RNN", "BiLSTM", "BiGRU", "NER", "딥러닝"]
 featured: false

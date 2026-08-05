@@ -3,7 +3,7 @@ title: "확산 모델(Diffusion Model) 기초: 노이즈에서 이미지로"
 description: "DDPM의 순방향·역방향 과정, U-Net 노이즈 예측, InfoNCE 손실 수식, DDIM·DPM-Solver·LCM 스케줄러 비교를 완전 해설합니다."
 author: "PALDYN Team"
 pubDate: "2026-05-20"
-category: "ai-guide"
+category: "domain-models"
 level: "중급"
 tags: ["확산모델", "DDPM", "DDIM", "UNet", "노이즈스케줄러", "생성AI", "StableDiffusion", "이미지생성"]
 featured: false

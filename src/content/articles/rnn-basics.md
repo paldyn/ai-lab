@@ -3,7 +3,7 @@ title: "RNN 기초: 순환 신경망의 작동 원리"
 description: "순환 신경망(RNN)의 기본 개념부터 셀 구조, 시간에 따른 전개(BPTT), 기울기 소실까지 코드와 시각화로 완전히 이해한다."
 author: "PALDYN Team"
 pubDate: "2026-05-05"
-category: "ai-guide"
+category: "deep-learning"
 level: "중급"
 tags: ["RNN", "순환신경망", "BPTT", "딥러닝", "시퀀스모델"]
 featured: false

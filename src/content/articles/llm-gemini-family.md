@@ -3,7 +3,7 @@ title: "Gemini 패밀리 완전 해부: Google의 멀티모달 LLM 전략"
 description: "Google Gemini 시리즈의 탄생 배경, Ultra·Pro·Flash·Nano 티어 구조, 1M 토큰 컨텍스트, 멀티모달 네이티브 설계, Gemini 2.0의 실시간 처리 능력, 그리고 Google AI Studio API 사용법을 한국어로 완전 해설한다."
 author: "PALDYN Team"
 pubDate: "2026-05-12"
-category: "ai-guide"
+category: "llm-core"
 level: "중급"
 tags: ["Gemini", "Google", "LLM", "멀티모달", "Gemini15Pro", "1M컨텍스트", "VertexAI", "GoogleAI"]
 featured: false

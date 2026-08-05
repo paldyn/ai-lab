@@ -3,7 +3,7 @@ title: "감성 분석: 텍스트에서 감정과 의견을 읽다"
 description: "규칙/사전 기반(VADER, KNU)부터 ML, BERT 파인튜닝, 속성 기반 감성 분석(ABSA)까지 감성 분석의 전체 스펙트럼을 한국어 예시와 실전 코드로 완전히 해설한다."
 author: "PALDYN Team"
 pubDate: "2026-05-08"
-category: "ai-guide"
+category: "domain-models"
 level: "중급"
 tags: ["감성분석", "Sentiment Analysis", "BERT", "ABSA", "NLP", "KNU감성사전", "VADER"]
 featured: false

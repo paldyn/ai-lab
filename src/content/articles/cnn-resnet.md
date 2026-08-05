@@ -3,7 +3,7 @@ title: "ResNet: 잔차 연결이 깊은 네트워크를 가능하게 한 이유"
 description: "ResNet의 잔차 연결(Residual Connection)이 기울기 소실을 어떻게 해결하는지 수학적으로 분석한다. Basic Block과 Bottleneck Block의 차이, Pre-activation ResNet, WideResNet 변형까지 PyTorch 코드와 함께 이해한다."
 author: "PALDYN Team"
 pubDate: "2026-05-02"
-category: "ai-guide"
+category: "domain-models"
 level: "중급"
 tags: ["ResNet", "잔차연결", "SkipConnection", "딥러닝기초", "CNN"]
 featured: false

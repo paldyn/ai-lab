@@ -3,7 +3,7 @@ title: "스케일링 법칙: 더 크게, 더 많이, 더 강하게"
 description: "Kaplan의 스케일링 법칙부터 DeepMind의 Chinchilla 법칙까지, LLM 성능을 결정하는 파라미터·데이터·컴퓨팅의 관계를 수식과 실제 사례로 깊이 이해한다."
 author: "PALDYN Team"
 pubDate: "2026-05-11"
-category: "ai-guide"
+category: "llm-core"
 level: "중급"
 tags: ["스케일링법칙", "Chinchilla", "Kaplan", "LLM", "사전학습", "컴퓨팅최적", "GPT-3", "파라미터"]
 featured: false

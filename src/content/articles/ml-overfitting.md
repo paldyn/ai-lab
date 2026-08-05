@@ -3,7 +3,7 @@ title: "과대적합 완전 정복: 탐지·진단·해결 전략"
 description: "과대적합의 원인과 증상, 학습 곡선·검증 손실로 탐지하는 방법, L1·L2 정규화·드롭아웃·조기 종료·데이터 증강 등 해결 전략을 실전 코드와 함께 완전히 이해한다."
 author: "PALDYN Team"
 pubDate: "2026-04-30"
-category: "ai-guide"
+category: "deep-learning"
 level: "중급"
 tags: ["과대적합", "정규화", "드롭아웃", "조기종료", "ML기초"]
 featured: false

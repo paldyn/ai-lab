@@ -3,7 +3,7 @@ title: "임베딩 기초: 단어를 벡터 공간에 배치하다"
 description: "임베딩이 이산적인 토큰을 연속적인 고차원 벡터로 변환하는 원리, 임베딩 행렬의 구조, 코사인 유사도로 의미 관계를 측정하는 방법을 수식과 PyTorch 코드로 완전히 해설한다."
 author: "PALDYN Team"
 pubDate: "2026-05-07"
-category: "agents-rag"
+category: "deep-learning"
 level: "중급"
 tags: ["임베딩", "벡터", "Word2Vec", "코사인 유사도", "NLP", "LLM"]
 featured: false

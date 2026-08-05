@@ -3,7 +3,7 @@ title: "가중치 초기화: Xavier, He, 그리고 수렴의 비밀"
 description: "신경망 학습 성패를 좌우하는 가중치 초기화를 완전히 이해한다. 제로 초기화의 위험, Xavier/Glorot 초기화, He/Kaiming 초기화의 수학적 근거와 PyTorch 구현, 실무 선택 기준을 다룬다."
 author: "PALDYN Team"
 pubDate: "2026-05-01"
-category: "ai-guide"
+category: "deep-learning"
 level: "중급"
 tags: ["가중치초기화", "Xavier", "He초기화", "Kaiming", "딥러닝기초"]
 featured: false

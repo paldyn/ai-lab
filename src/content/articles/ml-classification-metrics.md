@@ -3,7 +3,7 @@ title: "분류 모델 평가 지표 완전 정복: 정확도·정밀도·재현�
 description: "TP·FP·TN·FN에서 도출되는 정확도·정밀도·재현율·F1·MCC 공식, 정밀도-재현율 트레이드오프, 다중 클래스 평균 방법, 실전 sklearn 코드까지 완전히 이해한다."
 author: "PALDYN Team"
 pubDate: "2026-04-30"
-category: "ai-guide"
+category: "deep-learning"
 level: "중급"
 tags: ["분류평가", "F1스코어", "정밀도재현율", "혼동행렬", "모델평가"]
 featured: false

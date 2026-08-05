@@ -3,7 +3,7 @@ title: "비전-언어 모델(VLM): CLIP·BLIP2·LLaVA 완전 해설"
 description: "CLIP 대조 학습·BLIP2 Q-Former·LLaVA 비주얼 인스트럭션 튜닝 구조, 비전 인코더와 언어 모델 연결 방식, Python 실전 코드까지 완전 해설합니다."
 author: "PALDYN Team"
 pubDate: "2026-05-21"
-category: "ai-guide"
+category: "domain-models"
 level: "중급"
 tags: ["VLM", "CLIP", "BLIP2", "LLaVA", "비전언어모델", "대조학습", "Q-Former", "비주얼인스트럭션튜닝"]
 featured: false

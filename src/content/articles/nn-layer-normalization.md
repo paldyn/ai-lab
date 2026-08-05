@@ -3,7 +3,7 @@ title: "레이어 정규화: 트랜스포머가 선택한 정규화"
 description: "배치 정규화의 한계를 극복하고 트랜스포머 시대를 이끈 레이어 정규화(Layer Normalization)를 이해한다. BN·LN·IN·GN의 차이, Pre-LN 패턴, RMSNorm까지 정규화 방법을 완전히 정리한다."
 author: "PALDYN Team"
 pubDate: "2026-05-01"
-category: "ai-guide"
+category: "deep-learning"
 level: "중급"
 tags: ["레이어정규화", "LayerNorm", "RMSNorm", "트랜스포머", "정규화"]
 featured: false

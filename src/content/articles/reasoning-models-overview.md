@@ -3,7 +3,7 @@ title: "추론 모델은 무엇이 다른가: 사고 토큰과 그 청구서"
 description: "추론 모델이 일반 LLM과 구조적으로 어떻게 다른지, 사고 토큰이 정확도와 비용에 어떤 영향을 주는지, 그리고 어떤 작업에서만 그 대가가 회수되는지 실무 기준으로 정리합니다."
 author: "PALDYN Team"
 pubDate: "2026-07-29"
-category: "ai-guide"
+category: "llm-core"
 level: "중급"
 tags: ["추론모델", "reasoning", "thinking", "사고토큰", "LLM비용", "모델선택"]
 featured: false

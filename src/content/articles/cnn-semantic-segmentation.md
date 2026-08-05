@@ -3,7 +3,7 @@ title: "의미론적 분할: 픽셀 단위 이미지 이해"
 description: "시맨틱 세그멘테이션(Semantic Segmentation)의 원리를 FCN, U-Net, DeepLabV3+, SegFormer 관점에서 설명한다. 픽셀 단위 분류, 업샘플링, 스킵 연결, Atrous 합성곱, mIoU 지표를 코드와 함께 이해한다."
 author: "PALDYN Team"
 pubDate: "2026-05-02"
-category: "ai-guide"
+category: "domain-models"
 level: "중급"
 tags: ["CNN", "세그멘테이션", "UNet", "DeepLab", "컴퓨터비전"]
 featured: false

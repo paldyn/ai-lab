@@ -3,7 +3,7 @@ title: "Self-Attention: 모든 토큰이 모든 토큰과 대화한다"
 description: "Scaled Dot-Product Self-Attention의 Q·K·V 계산 과정을 수식, 코드, 시각화로 완전히 이해한다. √d_k 스케일링이 왜 필요한지, 어텐션 행렬을 어떻게 해석하는지 살펴본다."
 author: "PALDYN Team"
 pubDate: "2026-05-05"
-category: "ai-guide"
+category: "llm-core"
 level: "중급"
 tags: ["SelfAttention", "ScaledDotProduct", "QKV", "Transformer", "딥러닝"]
 featured: false

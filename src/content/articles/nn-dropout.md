@@ -3,7 +3,7 @@ title: "드롭아웃: 과적합을 막는 앙상블 정규화"
 description: "2014년 Srivastava et al.이 제안한 드롭아웃(Dropout)의 원리, Inverted Dropout 구현, 훈련/추론 모드 차이, Dropout2d·DropPath 변형, 실무 사용 가이드를 코드와 함께 완전히 이해한다."
 author: "PALDYN Team"
 pubDate: "2026-05-01"
-category: "ai-guide"
+category: "deep-learning"
 level: "중급"
 tags: ["드롭아웃", "Dropout", "과적합방지", "정규화", "딥러닝기초"]
 featured: false

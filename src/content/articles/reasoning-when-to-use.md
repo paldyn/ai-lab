@@ -3,7 +3,7 @@ title: "추론 모델을 언제 쓸 것인가"
 description: "정답 검증 가능성, 실패율, 지연 예산 세 가지로 추론 모델 도입을 판단하는 기준과, 추론 모델이 오히려 손해인 작업 유형, 그리고 트래픽을 등급으로 나눠 붙이는 실무 형태를 정리합니다."
 author: "PALDYN Team"
 pubDate: "2026-08-05"
-category: "ai-guide"
+category: "llm-core"
 level: "중급"
 tags: ["모델선택", "추론모델", "라우팅", "비용최적화", "의사결정", "LLM운영"]
 featured: false

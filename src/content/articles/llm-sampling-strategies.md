@@ -3,7 +3,7 @@ title: "샘플링 전략: LLM 출력 제어의 과학"
 description: "Greedy Decoding부터 Contrastive Search까지 LLM 텍스트 생성의 핵심 샘플링 전략들을 원리·장단점·적합 태스크별로 체계적으로 비교하고, transformers 실전 코드와 함께 해설한다."
 author: "PALDYN Team"
 pubDate: "2026-05-11"
-category: "ai-guide"
+category: "llm-core"
 level: "중급"
 tags: ["LLM", "샘플링전략", "GreedyDecoding", "NucleusSampling", "ContrastiveSearch", "TypicalSampling", "텍스트생성", "transformers"]
 featured: false

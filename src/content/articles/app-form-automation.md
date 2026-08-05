@@ -3,7 +3,7 @@ title: "AI 폼·서류 자동화: OCR부터 자동 입력까지"
 description: "스캔 문서, 이미지, PDF에서 구조화 데이터를 추출해 ERP·CRM 시스템에 자동으로 입력하는 AI 폼 자동화 파이프라인을 구현합니다."
 author: "PALDYN Team"
 pubDate: "2026-05-27"
-category: "ai-guide"
+category: "build-with-ai"
 level: "중급"
 tags: ["폼자동화", "서류처리", "OCR", "VisionLLM", "RPA", "데이터입력자동화", "DocumentAI"]
 featured: false

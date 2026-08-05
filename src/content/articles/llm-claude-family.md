@@ -3,7 +3,7 @@ title: "Claude 패밀리 완전 해부: Constitutional AI와 안전성 우선 �
 description: "Anthropic Claude 시리즈의 탄생 배경, Constitutional AI 원칙, Claude 1·2·3·3.5·4 모델별 특징, Haiku·Sonnet·Opus 티어 선택 기준, 그리고 실전 API 사용법을 한국어로 완전 해설한다."
 author: "PALDYN Team"
 pubDate: "2026-05-12"
-category: "ai-guide"
+category: "llm-core"
 level: "중급"
 tags: ["Claude", "Anthropic", "LLM", "ConstitutionalAI", "RLAIF", "Claude3", "Claude4", "AI안전성"]
 featured: false

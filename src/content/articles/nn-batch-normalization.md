@@ -3,7 +3,7 @@ title: "배치 정규화: 내부 공변량 이동을 잡아라"
 description: "2015년 딥러닝 학습을 혁신한 배치 정규화(Batch Normalization)의 작동 원리, 수식, PyTorch 구현, 훈련/추론 모드 차이, 배치 크기의 영향, Pre-BN vs Post-BN 선택까지 실전 중심으로 완전히 이해한다."
 author: "PALDYN Team"
 pubDate: "2026-05-01"
-category: "ai-guide"
+category: "deep-learning"
 level: "중급"
 tags: ["배치정규화", "BatchNorm", "내부공변량이동", "딥러닝안정화", "정규화"]
 featured: false

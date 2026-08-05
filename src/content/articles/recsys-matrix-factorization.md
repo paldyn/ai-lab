@@ -3,7 +3,7 @@ title: "행렬 분해(MF): SVD·ALS·FunkSVD 추천 알고리즘 완전 해설"
 description: "잠재 요인 모델·행렬 분해 원리, SVD·FunkSVD·ALS·BPR 알고리즘, SGD 최적화, Python Surprise 라이브러리 실전 코드까지 완전 해설합니다."
 author: "PALDYN Team"
 pubDate: "2026-05-21"
-category: "ai-guide"
+category: "domain-models"
 level: "중급"
 tags: ["행렬분해", "SVD", "ALS", "FunkSVD", "BPR", "잠재요인모델", "추천시스템", "MF"]
 featured: false

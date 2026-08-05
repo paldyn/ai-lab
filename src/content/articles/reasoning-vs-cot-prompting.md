@@ -3,7 +3,7 @@ title: "추론 모델과 CoT 프롬프팅: 같은 사고, 다른 자리"
 description: "\"단계별로 생각해 봐\"를 붙이는 것과 추론 모델을 쓰는 것은 무엇이 다른지, 둘을 겹치면 왜 손해가 나는지, 그리고 어느 쪽을 골라야 하는지를 비용·품질 기준으로 정리합니다."
 author: "PALDYN Team"
 pubDate: "2026-08-05"
-category: "ai-guide"
+category: "llm-core"
 level: "중급"
 tags: ["CoT", "추론모델", "프롬프팅", "사고토큰", "모델선택", "LLM최적화"]
 featured: false

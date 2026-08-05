@@ -3,7 +3,7 @@ title: "PCA: 고차원 데이터를 압축하는 차원 축소"
 description: "주성분 분석(PCA)의 수학적 원리(공분산·고유값·고유벡터), 설명 분산비로 적정 차원 결정, 이미지 압축과 특성 추출 실전 코드까지 완전 정복한다."
 author: "PALDYN Team"
 pubDate: "2026-04-29"
-category: "ai-guide"
+category: "deep-learning"
 level: "중급"
 tags: ["PCA", "차원축소", "주성분분석", "고유값분해", "ML기초"]
 featured: false

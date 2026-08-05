@@ -3,7 +3,7 @@ title: "추론 증류: 큰 모델의 사고를 작은 모델에 옮긴다"
 description: "교사 모델의 사고 궤적을 모아 작은 모델을 학습시키는 방법과, 정답 필터가 왜 품질의 대부분을 결정하는지, 그리고 증류로 넘어가지 않는 능력이 무엇인지 정리합니다."
 author: "PALDYN Team"
 pubDate: "2026-08-05"
-category: "ai-guide"
+category: "llm-core"
 level: "중급"
 tags: ["증류", "distillation", "추론모델", "SFT", "합성데이터", "모델경량화"]
 featured: false

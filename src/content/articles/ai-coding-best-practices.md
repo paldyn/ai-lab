@@ -3,7 +3,7 @@ title: "AI 코딩 모범 사례: 생산성과 품질을 동시에 잡는 전략"
 description: "AI 코딩 도구 5종을 경험한 개발자라면 알아야 할 컨텍스트 최적화·코드 검증·작업 분해·반복 개선·보안 관리 5가지 원칙과 효과적인 프롬프트 패턴을 정리합니다."
 author: "PALDYN Team"
 pubDate: "2026-05-26"
-category: "ai-guide"
+category: "build-with-ai"
 level: "중급"
 tags: ["AI코딩", "모범사례", "프롬프트엔지니어링", "코드품질", "개발생산성", "보안"]
 featured: false

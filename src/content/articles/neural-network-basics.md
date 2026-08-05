@@ -3,7 +3,7 @@ title: "신경망 기초: 층, 파라미터, 순전파의 모든 것"
 description: "신경망의 구성 요소인 층(Layer), 가중치(Weight), 편향(Bias), 활성화 함수를 수학과 코드로 이해한다. 순전파(Forward Pass)가 어떻게 예측을 만드는지, 파라미터 수는 어떻게 계산하는지를 완전히 파악한다."
 author: "PALDYN Team"
 pubDate: "2026-05-01"
-category: "ai-guide"
+category: "deep-learning"
 level: "중급"
 tags: ["신경망기초", "딥러닝", "순전파", "가중치", "PyTorch"]
 featured: false

@@ -3,7 +3,7 @@ title: "RLHF: 인간 피드백으로 LLM 정렬하기"
 description: "RLHF(Reinforcement Learning from Human Feedback)의 3단계 파이프라인을 SFT·보상 모델·PPO 알고리즘 순으로 상세히 해설하고, KL divergence 페널티와 reward hacking 문제까지 실제 코드와 함께 살펴본다."
 author: "PALDYN Team"
 pubDate: "2026-05-11"
-category: "ai-guide"
+category: "llm-core"
 level: "중급"
 tags: ["RLHF", "PPO", "보상모델", "LLM정렬", "강화학습", "KL페널티", "InstructGPT", "TRL"]
 featured: false

@@ -3,7 +3,7 @@ title: "사고 예산 제어: 얼마나 생각하게 할 것인가"
 description: "사고 예산과 출력 상한의 관계, 난도에 따른 적응형 예산 배분, 예산 소진으로 답변이 잘리는 실패 모드와 그 방어책을 실무 코드와 운영 지표 중심으로 정리합니다."
 author: "PALDYN Team"
 pubDate: "2026-07-29"
-category: "ai-guide"
+category: "llm-core"
 level: "중급"
 tags: ["사고예산", "budget-tokens", "추론모델", "지연최적화", "비용관리", "적응형라우팅"]
 featured: false

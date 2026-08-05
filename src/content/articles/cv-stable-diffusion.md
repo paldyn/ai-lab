@@ -3,7 +3,7 @@ title: "Stable Diffusion: 잠재 확산 모델의 구조와 실전 활용"
 description: "LDM 아키텍처, VAE·U-Net·CLIP 구성, text2img·img2img·inpainting 코드, SDXL·SD3까지 버전 비교와 diffusers 실전 사용법을 완전 해설합니다."
 author: "PALDYN Team"
 pubDate: "2026-05-20"
-category: "ai-guide"
+category: "domain-models"
 level: "중급"
 tags: ["StableDiffusion", "LDM", "SDXL", "diffusers", "텍스트이미지생성", "VAE", "ControlNet", "img2img"]
 featured: false

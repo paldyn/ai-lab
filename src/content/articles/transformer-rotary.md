@@ -3,7 +3,7 @@ title: "RoPE: 회전으로 위치를 인코딩하다"
 description: "Rotary Position Embedding(RoPE)이 쿼리·키 벡터를 위치별 각도로 회전시켜 상대 위치 의존성을 내적에 자연스럽게 녹여내는 원리를 수식과 코드로 완전히 해부한다."
 author: "PALDYN Team"
 pubDate: "2026-05-07"
-category: "ai-guide"
+category: "llm-core"
 level: "중급"
 tags: ["RoPE", "위치 인코딩", "트랜스포머", "LLM", "어텐션"]
 featured: false

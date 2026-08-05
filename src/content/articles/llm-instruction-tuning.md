@@ -3,7 +3,7 @@ title: "LLM 인스트럭션 튜닝: 지시를 따르는 모델 만들기"
 description: "SFT(지도 파인튜닝)부터 RLHF·DPO까지, 베이스 LLM을 유용하고 안전한 어시스턴트로 변환하는 인스트럭션 튜닝의 전체 과정을 데이터 포맷·TRL 코드·LoRA 최적화·평가 방법과 함께 완전히 해설한다."
 author: "PALDYN Team"
 pubDate: "2026-05-10"
-category: "ai-guide"
+category: "llm-core"
 level: "중급"
 tags: ["InstructionTuning", "SFT", "RLHF", "DPO", "LoRA", "TRL", "파인튜닝", "LLM정렬"]
 featured: false

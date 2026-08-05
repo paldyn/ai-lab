@@ -3,7 +3,7 @@ title: "CNN 아키텍처 역사: LeNet에서 EfficientNet까지"
 description: "1998년 LeNet-5부터 2019년 EfficientNet까지 CNN 아키텍처의 역사적 발전을 추적한다. 각 모델이 도입한 핵심 혁신(ReLU, Dropout, 잔차 연결, 1×1 합성곱, Inception 모듈)과 ImageNet 오류율 감소 과정을 코드와 함께 이해한다."
 author: "PALDYN Team"
 pubDate: "2026-05-02"
-category: "ai-guide"
+category: "domain-models"
 level: "중급"
 tags: ["CNN", "AlexNet", "ResNet", "VGGNet", "딥러닝역사"]
 featured: false

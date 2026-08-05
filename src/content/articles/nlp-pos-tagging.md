@@ -3,7 +3,7 @@ title: "품사 태깅(POS): 단어의 문법적 역할 파악"
 description: "품사 태깅의 개념, Penn Treebank와 세종 태그셋 비교, HMM에서 CRF, BERT 기반 태거까지의 발전 과정, KoNLPy를 활용한 한국어 품사 태깅 실전 코드를 완전히 해설한다."
 author: "PALDYN Team"
 pubDate: "2026-05-08"
-category: "ai-guide"
+category: "domain-models"
 level: "중급"
 tags: ["품사태깅", "POS Tagging", "KoNLPy", "Komoran", "형태소분석", "세종태그셋", "NLP"]
 featured: false
