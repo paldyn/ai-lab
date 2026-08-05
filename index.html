@@ -9,9 +9,15 @@
     <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <!--
+      본문 글꼴. 경로를 두 군데 고쳤습니다 — jsDelivr의 gh 배포는 이 저장소가
+      50MB를 넘어 통째로 막혀 있고(403), 디렉터리 이름도 webfontaggregated가
+      아니라 webfonts입니다. 예전 URL은 404를 받아 왔고, 그동안 사이트 전체가
+      styles.css의 폴백(system-ui)으로 그려지고 있었습니다.
+    -->
     <link
       rel="stylesheet"
-      href="https://cdn.jsdelivr.net/gh/wanteddev/wanted-sans@v1.0.3/packages/wanted-sans/fonts/webfontaggregated/variable/WantedSansVariable.min.css"
+      href="https://cdn.jsdelivr.net/npm/wanted-sans@1.0.3/fonts/webfonts/variable/complete/WantedSansVariable.css"
     />
     <link
       rel="stylesheet"
