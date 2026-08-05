@@ -26,6 +26,21 @@ describe('뉴스 본문 청크', () => {
     }
   });
 
+  /*
+    반대 방향도 봅니다. 위 검사만 있던 동안 387건 중 한 건이 본문 없이 서
+    있었고(2026-04-21 introducing-chatgpt-images-2-0) 아무 검사에도 걸리지
+    않았습니다. 모달은 detail이 없으면 '원문 핵심'과 '시사점'을 통째로 그리지
+    않으므로, 그 소식만 로딩 점 뒤에 요약 한 문단으로 끝났습니다.
+  */
+  it('뉴스 항목마다 본문이 있다', () => {
+    const filedIds = new Set(filed.map((entry) => entry.id));
+    const missing = newsItems.filter((item) => !filedIds.has(item.id));
+    expect(
+      missing.map((item) => `${item.publishedAt} ${item.id}`),
+      '본문이 없으면 모달이 요약 한 문단으로 끝난다',
+    ).toEqual([]);
+  });
+
   it('발행 월과 같은 파일에 들어 있다', () => {
     for (const { id, month } of filed) {
       const item = itemById.get(id);
