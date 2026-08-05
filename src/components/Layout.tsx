@@ -59,13 +59,18 @@ function isTypingTarget(target: EventTarget | null): boolean {
 }
 
 /**
- * 화면 한 칸의 단위. 학습은 분야를 주소로 고르지만(/learn/<분야>) 그것은 다른
- * 페이지로 가는 게 아니라 같은 목록에 필터를 거는 일입니다. 한 칸으로 묶어 두면
- * 분야를 바꿔도 main을 다시 마운트하지 않고 스크롤도 건드리지 않습니다.
- * 주소와 프리렌더는 그대로입니다.
+ * 화면 한 칸의 단위. 학습은 분야를(/learn/<분야>), 뉴스는 탭을(/news/<탭>) 주소로
+ * 고르지만 둘 다 다른 페이지로 가는 게 아니라 같은 목록을 거르는 일입니다. 한 칸으로
+ * 묶어 두면 분야나 탭을 바꿔도 main을 다시 마운트하지 않습니다. 다시 마운트하면
+ * 방금 누른 탭 버튼이 통째로 갈려 포커스가 body로 튕겨 나가고(좌우 화살표로 탭을
+ * 잇달아 옮길 수 없게 됩니다), 아래 스크롤 effect가 돌아 읽던 자리가 맨 위로
+ * 돌아가며, 진입 애니메이션이 다시 돕니다. 주소와 프리렌더는 그대로입니다.
  */
 function viewKey(pathname: string): string {
-  return pathname === '/learn' || pathname.startsWith('/learn/') ? '/learn' : pathname;
+  for (const section of ['/learn', '/news']) {
+    if (pathname === section || pathname.startsWith(`${section}/`)) return section;
+  }
+  return pathname;
 }
 
 export function Layout({ children }: { children: ReactNode }) {
@@ -151,11 +156,11 @@ export function Layout({ children }: { children: ReactNode }) {
   }, []);
 
   /*
-    주요 메뉴의 '학습'에만 답니다. viewKey가 /learn과 /learn/<분야>를 한 칸으로
-    묶어 둔 탓에 분야 화면에서 이 링크를 눌러도 위 스크롤 effect가 돌지 않아,
-    목록 중간에 선 채로 머리말만 화면 밖에 남습니다. 자리를 지키는 것은 옆
-    레일로 분야를 바꿀 때 필요한 것이고, 헤더 메뉴는 '섹션으로 간다'는 신호라
-    맨 위에서 시작해야 합니다.
+    주요 메뉴의 '학습'과 '뉴스'에 답니다. viewKey가 /learn·/news를 하위 주소까지
+    한 칸으로 묶어 둔 탓에 분야나 탭 화면에서 이 링크를 눌러도 위 스크롤 effect가
+    돌지 않아, 목록 중간에 선 채로 머리말만 화면 밖에 남습니다. 자리를 지키는 것은
+    옆 레일이나 탭으로 목록을 바꿀 때 필요한 것이고, 헤더 메뉴는 '섹션으로 간다'는
+    신호라 맨 위에서 시작해야 합니다.
   */
   const startAtTop = () => window.scrollTo({ top: 0, behavior: 'instant' });
 
@@ -174,7 +179,7 @@ export function Layout({ children }: { children: ReactNode }) {
       <a href="#main-content" className="skip-link">본문으로 건너뛰기</a>
 
       <header className="site-header">
-        <div className="site-wrap flex h-[68px] items-center justify-between gap-6">
+        <div className="site-wrap flex h-[70px] items-center justify-between gap-6">
           <Link to="/" className="brand-lockup" aria-label="Paldyn AI Lab 홈">
             <span className="relative h-7 w-7 shrink-0">
               <img src={assetUrl('assets/logo-symbol-dark.png')} alt="" className="theme-logo theme-logo-light" />
@@ -187,7 +192,7 @@ export function Layout({ children }: { children: ReactNode }) {
 
           <nav className="primary-nav hidden lg:flex" aria-label="주요 메뉴">
             <NavLink to="/" end>홈</NavLink>
-            <NavLink to="/news">뉴스</NavLink>
+            <NavLink to="/news" onClick={startAtTop}>뉴스</NavLink>
             <NavLink to="/learn" onClick={startAtTop}>학습</NavLink>
             <NavLink to="/research">리서치</NavLink>
           </nav>
@@ -200,11 +205,11 @@ export function Layout({ children }: { children: ReactNode }) {
               aria-label="글 검색 열기"
               title="검색 ( / )"
             >
-              <Search size={17} strokeWidth={1.7} aria-hidden="true" />
+              <Search size={16} strokeWidth={1.7} aria-hidden="true" />
             </button>
             <button type="button" className="icon-button" onClick={toggleTheme} aria-label="밝은 테마와 어두운 테마 전환" title="테마 전환">
-              <Sun size={17} strokeWidth={1.7} className="theme-icon theme-icon-dark" aria-hidden="true" />
-              <Moon size={17} strokeWidth={1.7} className="theme-icon theme-icon-light" aria-hidden="true" />
+              <Sun size={16} strokeWidth={1.7} className="theme-icon theme-icon-dark" aria-hidden="true" />
+              <Moon size={16} strokeWidth={1.7} className="theme-icon theme-icon-light" aria-hidden="true" />
             </button>
             <button
               type="button"
@@ -223,7 +228,7 @@ export function Layout({ children }: { children: ReactNode }) {
           <nav id="mobile-nav" className="mobile-nav" aria-label="모바일 메뉴">
             <div className="site-wrap grid grid-cols-2 gap-x-5">
               <NavLink to="/" end className="mobile-nav-link">홈</NavLink>
-              <NavLink to="/news" className="mobile-nav-link">뉴스</NavLink>
+              <NavLink to="/news" className="mobile-nav-link" onClick={startAtTop}>뉴스</NavLink>
               <NavLink to="/learn" className="mobile-nav-link" onClick={startAtTop}>학습</NavLink>
               <NavLink to="/research" className="mobile-nav-link">리서치</NavLink>
             </div>

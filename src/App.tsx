@@ -19,6 +19,8 @@ export default function App() {
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/news" element={<NewsPage />} />
+        {/* 뉴스 탭은 주소를 갖습니다 — /news/companies, /news/models. 셋 다 프리렌더됩니다. */}
+        <Route path="/news/:view" element={<NewsPage />} />
         <Route path="/learn" element={<LearnPage />} />
         <Route path="/learn/:categoryId" element={<LearnPage />} />
         <Route path="/research" element={<ResearchPage />} />

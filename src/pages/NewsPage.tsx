@@ -1,23 +1,9 @@
-import { useRef, useState } from 'react';
+import { useRef } from 'react';
+import { Navigate, useNavigate, useParams } from 'react-router';
 import { GlobalNewsDesk } from '../components/GlobalNewsDesk';
 import { PageHeader } from '../components/PageHeader';
-import { newsItems, type GlobalNewsKind } from '../data/news';
-import { ModelRadar } from '../components/ModelRadar';
+import { getNewsView, newsItems, newsViews, type GlobalNewsKind } from '../data/news';
 import { Seo } from '../components/Seo';
-
-type NewsView = 'all' | 'companies' | 'models';
-
-/**
- * 탭은 `kind`와 같은 셋입니다. 한때 기업 소식의 갈래(제품·연구·안전·기업·인프라)를
- * 탭으로 올려 일곱 개까지 늘렸는데, 갈래는 항목마다 이미 붙어 있어 따로 거를
- * 화면을 둘 이유가 없었습니다. 여기서 가르는 질문은 하나뿐입니다 —
- * "이 발표로 쓸 수 있는 모델이 새로 생겼거나 바뀌었는가".
- */
-const newsViews: Array<{ id: NewsView; label: string }> = [
-  { id: 'all', label: '전체' },
-  { id: 'companies', label: '기업 소식' },
-  { id: 'models', label: 'AI 모델' },
-];
 
 /** 최근 며칠치를 셀 것인가. */
 const STATS_DAYS = 7;
@@ -57,9 +43,28 @@ function buildWeekStats() {
 }
 
 export function NewsPage() {
-  const [view, setView] = useState<NewsView>('all');
+  // `/news`면 undefined라 첫 탭이 섭니다. 없는 값이면 아래에서 /news로 넘깁니다.
+  const { view: viewId } = useParams<{ view: string }>();
+  const view = getNewsView(viewId);
+  const navigate = useNavigate();
   const week = buildWeekStats();
   const tabRefs = useRef<Array<HTMLButtonElement | null>>([]);
+
+  if (!view) return <Navigate to="/news" replace />;
+
+  const activeIndex = newsViews.findIndex((item) => item.id === view.id);
+
+  /*
+    탭을 고르면 주소가 바뀝니다. 링크가 아니라 버튼으로 둔 것은 탭 위젯의
+    키보드 규약(좌우 이동, Home/End) 때문입니다 — 그 규약은 tab role을 가진
+    버튼 묶음을 전제합니다. replace를 쓰므로 탭을 여럿 눌러 봐도 뒤로 가기가
+    탭 이력으로 채워지지 않고 들어온 화면으로 한 번에 돌아갑니다.
+  */
+  const pickView = (index: number) => {
+    const next = newsViews[index];
+    navigate(next.id === 'all' ? '/news' : `/news/${next.id}`, { replace: true });
+    tabRefs.current[index]?.focus();
+  };
 
   // 탭 위젯 키보드 규약: 좌우로 이동, Home/End로 양 끝. 포커스가 이동하면 선택도 함께 바뀝니다.
   const handleTabKeyDown = (event: React.KeyboardEvent<HTMLButtonElement>, index: number) => {
@@ -73,16 +78,15 @@ export function NewsPage() {
 
     if (nextIndex === null) return;
     event.preventDefault();
-    setView(newsViews[nextIndex].id);
-    tabRefs.current[nextIndex]?.focus();
+    pickView(nextIndex);
   };
 
   return (
     <>
       <Seo
-        title="AI 뉴스"
-        description="Anthropic, OpenAI, Google DeepMind의 공식 발표를 선별해 무엇이 달라졌고 어디에 영향을 주는지 정리합니다."
-        path="/news"
+        title={view.title}
+        description={view.description}
+        path={view.id === 'all' ? '/news' : `/news/${view.id}`}
       />
 
       <PageHeader
@@ -107,11 +111,11 @@ export function NewsPage() {
             type="button"
             role="tab"
             id={`news-tab-${item.id}`}
-            aria-selected={view === item.id}
+            aria-selected={index === activeIndex}
             aria-controls="news-tabpanel"
-            tabIndex={view === item.id ? 0 : -1}
-            className={`filter-chip ${view === item.id ? 'active' : ''}`}
-            onClick={() => setView(item.id)}
+            tabIndex={index === activeIndex ? 0 : -1}
+            className={`filter-chip ${index === activeIndex ? 'active' : ''}`}
+            onClick={() => pickView(index)}
             onKeyDown={(event) => handleTabKeyDown(event, index)}
           >
             {item.label}
@@ -119,23 +123,16 @@ export function NewsPage() {
         ))}
       </div>
 
-      <div id="news-tabpanel" role="tabpanel" aria-labelledby={`news-tab-${view}`} tabIndex={-1}>
-        {/*
-          모델 탭은 위아래가 한 목록을 나눠 맡습니다. 레이더는 스펙을 카드로 세울 수
-          있는 것(model 블록이 붙은 것), 데스크는 그러지 못하는 나머지 — 가격 개편,
-          가용성 변화, 기존 계열에 붙은 기능, 파생판입니다. 한때는 데스크가 모델
-          발표 전부를 실었는데, 그러면 레이더에 있는 것이 바로 아래에 한 번 더
-          나왔습니다. 나머지를 어느 탭에서도 못 보게 되는 일은 excludeModelCards가
-          '레이더가 맡는 것'만 정확히 빼므로 생기지 않습니다.
-        */}
-        {view === 'models' && <ModelRadar />}
+      {/*
+        탭마다 목록 하나입니다. 모델 탭은 한때 위에 카드 격자(Model Radar)를 세우고
+        아래에 '그 밖의 모델 소식'을 두었는데, 같은 탭을 두 벌로 읽게 만들면서
+        "카드에 없으면 덜 중요한 것"이라는 없는 위계까지 만들었습니다. 지금은 한
+        목록으로 읽고, 쓸 수 있는 모델이 새로 생긴 발표에만 그 계열의 마크를 붙입니다.
 
-        {/* key로 탭마다 갈아 끼웁니다 — 앞 탭에서 고른 출처와 펼친 개수를 되돌립니다. */}
-        <GlobalNewsDesk
-          key={view}
-          kind={view === 'all' ? undefined : view === 'models' ? 'model' : 'company'}
-          excludeModelCards={view === 'models'}
-        />
+        key로 탭마다 갈아 끼웁니다 — 앞 탭에서 고른 출처와 펼친 개수를 되돌립니다.
+      */}
+      <div id="news-tabpanel" role="tabpanel" aria-labelledby={`news-tab-${view.id}`} tabIndex={-1}>
+        <GlobalNewsDesk key={view.id} kind={view.kind} />
       </div>
     </>
   );
