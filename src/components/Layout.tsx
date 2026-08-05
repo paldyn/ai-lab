@@ -216,7 +216,7 @@ export function Layout({ children }: { children: ReactNode }) {
               <img src={assetUrl('assets/logo-symbol-light.png')} alt="" className="theme-logo theme-logo-dark" />
             </span>
             <span className="brand-name">PALDYN</span>
-            <span className="h-4 w-px bg-[var(--border)]" aria-hidden="true" />
+            <span className="brand-divider" aria-hidden="true">|</span>
             <span className="brand-suffix">AI LAB</span>
           </Link>
 
