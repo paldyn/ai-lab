@@ -42,7 +42,7 @@ draft: false             # true면 목록·프리렌더에서 빠진다
 | `agents-rag` | `ai-agent` `agent-` `rag-` `prompt-` `vector-` `embedding-`(검색용) `project-`(에이전트·RAG를 만드는 것) |
 | `math-for-ai` | `math-basics-` `math-` `math-adv-` |
 | `deep-learning` | `ml-` `nn-` `rnn-` `embedding-`(단어·문장 표현 학습) `neural-network-` |
-| `llm-core` | `llm-` `transformer-` `tokenizer-` `reasoning-` |
+| `llm-core` | `llm-` `transformer-` `tokenizer-` `reasoning-` `structured-output-` |
 | `domain-models` | `cnn-` `cv-` `nlp-` `rl-` `recsys-` `audio-` `multimodal-` |
 | `ml-ops` | `mlops-` `llmops-` `serving-` `inference-` `finetuning-` `quantization-` `eval-` `gpu-` `project-`(운영) `data-` `distillation` `pruning` `speculative-` |
 | `ai-guide` | 남은 `ai-` — **개론·역사·지형과 안전·윤리·정책만** |

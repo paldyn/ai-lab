@@ -40,6 +40,7 @@ const prefixRules: [prefix: string, categoryId: CategoryId][] = [
   ['transformer-', 'llm-core'],
   ['tokenizer-', 'llm-core'],
   ['reasoning-', 'llm-core'],
+  ['structured-output-', 'llm-core'],
 
   ['cnn-', 'domain-models'],
   ['cv-', 'domain-models'],
