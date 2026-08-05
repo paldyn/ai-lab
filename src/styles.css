@@ -2821,15 +2821,17 @@ input:focus-visible {
 
 /*
   줄 사이를 여백이 아니라 선으로 가릅니다. 더 보기로 네 줄, 여덟 줄이 되면
-  28px 여백만으로는 어디까지가 한 줄인지 읽히지 않았습니다. 세로 여백을 없애고
-  카드마다 아래 선을 그으면 뉴스 목록과 같은 결이 되고, 마지막 줄의 선이 그대로
-  구역을 닫습니다.
+  여백만으로는 어디까지가 한 줄인지 읽히지 않았습니다.
+
+  선을 카드마다 긋되 **칼럼 간격은 0**으로 둡니다. column-gap을 주면 카드
+  사이마다 선이 끊겨 한 줄 아래에 짧은 토막 넷이 남고, 그건 행을 가르는
+  선으로 읽히지 않습니다. 카드 사이는 안쪽 좌우 여백으로 벌리고 양 끝만
+  0으로 되돌리면 선이 구역 폭 전체를 한 줄로 지나갑니다.
 */
 .model-radar-grid {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
-  column-gap: 28px;
-  row-gap: 0;
+  gap: 0;
   border-top: 1px solid var(--border);
 }
 
@@ -2840,17 +2842,18 @@ input:focus-visible {
   min-width: 0;
   min-height: 310px;
   flex-direction: column;
-  padding: 22px 0 24px;
+  padding: 28px 14px 32px;
   border-bottom: 1px solid var(--border);
   cursor: pointer;
   transition: background-color 160ms ease;
 }
 
-.model-radar-item:first-child {
+/* 줄의 양 끝은 구역 가장자리에 붙어야 위아래 다른 요소와 세로선이 맞습니다. */
+.model-radar-item:nth-child(4n + 1) {
   padding-left: 0;
 }
 
-.model-radar-item:last-child {
+.model-radar-item:nth-child(4n) {
   padding-right: 0;
 }
 
@@ -3154,10 +3157,23 @@ input:focus-visible {
 }
 
 @media (max-width: 1023px) {
+  /* 두 칸이 되므로 줄 끝을 짚는 자리도 4n에서 2n으로 옮깁니다. */
   .model-radar-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    column-gap: 28px;
-    row-gap: 0;
+  }
+
+  .model-radar-item:nth-child(4n + 1),
+  .model-radar-item:nth-child(4n) {
+    padding-right: 14px;
+    padding-left: 14px;
+  }
+
+  .model-radar-item:nth-child(2n + 1) {
+    padding-left: 0;
+  }
+
+  .model-radar-item:nth-child(2n) {
+    padding-right: 0;
   }
 
 
