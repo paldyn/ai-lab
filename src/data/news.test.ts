@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { categoryLabel, categoryOrder, modelUpdates, newsBySource, newsItems } from './news';
+import { categoryLabel, categoryOrder, modelUpdates, newsBySource, newsItems, releaseOf } from './news';
 import { getSource, sourceList } from './sources';
 
 describe('뉴스 데이터', () => {
@@ -87,8 +87,16 @@ describe('뉴스 데이터', () => {
 });
 
 describe('모델 업데이트 파생 목록', () => {
-  it('model 블록이 있는 항목만 포함한다', () => {
-    expect(modelUpdates.length).toBe(newsItems.filter((item) => item.model).length);
+  /*
+    기준은 `releaseOf` 하나입니다 — model 블록이 붙어 있어도 kind가 company면 빠집니다.
+    목록에 붙는 '새 모델' 마크와 모델 탭이 같은 답을 내야 하기 때문입니다.
+  */
+  it('kind가 model인 항목만 포함한다', () => {
+    expect(modelUpdates.length).toBe(newsItems.filter((item) => releaseOf(item)).length);
+    expect(modelUpdates.every((update) => {
+      const source = newsItems.find((item) => item.id === update.id);
+      return source?.kind === 'model';
+    })).toBe(true);
   });
 
   it('뉴스 목록과 id, 날짜, 링크가 일치한다', () => {

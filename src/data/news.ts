@@ -5,6 +5,60 @@ export type { NewsSource } from './sources';
 export type GlobalNewsKind = 'model' | 'company';
 
 /**
+ * 뉴스 페이지의 탭. 여기서 가르는 질문은 하나뿐입니다 —
+ * "이 발표로 쓸 수 있는 모델이 새로 생겼거나 바뀌었는가". 한때 기업 소식의
+ * 갈래(제품·연구·안전·기업·인프라)를 탭으로 올려 일곱 개까지 늘렸는데, 갈래는
+ * 항목마다 이미 붙어 있어 따로 거를 화면을 둘 이유가 없었습니다.
+ *
+ * **탭마다 주소가 있습니다** — `all`은 `/news`, 나머지는 `/news/<id>`입니다.
+ * 클라이언트 상태로만 두면 다른 화면에서 특정 탭을 열어 줄 수 없어서인데,
+ * 그래서 이 목록이 화면이 아니라 데이터 쪽에 있습니다. `routes.ts`가 프리렌더
+ * 경로를 여기서 뽑고 `NewsPage`가 같은 목록으로 탭을 그립니다.
+ */
+export interface NewsView {
+  id: string;
+  label: string;
+  /** 이 탭이 거를 갈래. `all`은 거르지 않으므로 없습니다. */
+  kind?: GlobalNewsKind;
+  /** 탭마다 다른 제목을 달아야 세 주소가 검색 결과에서 구분됩니다. */
+  title: string;
+  description: string;
+}
+
+export const newsViews: NewsView[] = [
+  {
+    id: 'all',
+    label: '전체',
+    title: 'AI 뉴스',
+    description:
+      'Anthropic, OpenAI, Google DeepMind의 공식 발표를 선별해 무엇이 달라졌고 어디에 영향을 주는지 정리합니다.',
+  },
+  {
+    id: 'companies',
+    label: '기업 소식',
+    kind: 'company',
+    title: 'AI 기업 소식',
+    description:
+      'Anthropic, OpenAI, Google DeepMind의 제품과 조직, 규제 대응과 인프라 투자를 공식 발표에서 확인합니다.',
+  },
+  {
+    id: 'models',
+    label: 'AI 모델',
+    kind: 'model',
+    title: 'AI 모델 소식',
+    description:
+      '새로 나온 모델과 계열 확장, 가격·가용성 변화를 공식 발표에서 확인합니다. 쓸 수 있는 모델이 무엇이 생겼는지 한 목록으로 읽습니다.',
+  },
+];
+
+/** `/news/<id>`로 나가는 것들. `all`은 `/news` 하나로 충분해 빠집니다. */
+export const newsViewIds: string[] = newsViews.filter((view) => view.id !== 'all').map((view) => view.id);
+
+export function getNewsView(id: string | undefined): NewsView | undefined {
+  return id === undefined ? newsViews[0] : newsViews.find((view) => view.id === id);
+}
+
+/**
  * 항목이 무엇에 대한 발표인지. 화면을 가르는 데는 쓰지 않습니다 — 목록의 리드
  * 카드와 모달이 항목마다 그대로 보여 주므로 이것으로 한 번 더 거르는 UI는
  * 같은 일을 두 번 하는 셈이었습니다. `kind`가 어느 갈래를 쓰는지 정하고,
@@ -6046,9 +6100,38 @@ export interface ModelUpdate extends ModelRelease {
   accent: string;
 }
 
+/**
+ * 이 항목이 '쓸 수 있는 모델이 새로 생긴 발표'인가. 답을 여기 한 곳에서만 냅니다.
+ *
+ * `model` 블록이 붙어 있는지만 보면 기준이 갈립니다 — 탭은 `kind`로 가르는데
+ * 시스템 카드처럼 `kind: 'company'`인데도 스펙을 적어 둔 항목이 있어서, 그 항목이
+ * 기업 소식에서는 '새 모델' 표시를 달고 정작 모델 탭에는 없는 상태가 됩니다.
+ * `kind`가 정본입니다(CLAUDE.md — 시스템 카드·벤치마크는 전부 company).
+ */
+export function releaseOf(item: NewsItem): ModelRelease | undefined {
+  return item.kind === 'model' ? item.model : undefined;
+}
+
+/**
+ * 목록에 적는 날짜. 이 아카이브는 2026년 1월부터 지우지 않고 쌓으므로 해가
+ * 넘어가면 '08.01'만으로는 언제 것인지 알 수 없습니다. 가장 최근 항목과 같은
+ * 해면 월·일만 적고, 다르면 해까지 적습니다 — 흔한 경우는 짧게 두면서 아래로
+ * 내려갈수록 저절로 밝혀집니다.
+ *
+ * 화면이 아니라 여기 있는 것은 `.news-feed-date`를 쓰는 자리가 뉴스 목록과 홈
+ * 기업 소식 둘이기 때문입니다. 한쪽만 고치면 같은 크기·같은 색인데 형식만 다른
+ * 날짜가 생깁니다.
+ */
+const LATEST_YEAR = newsItems[0]?.publishedAt.slice(0, 4) ?? '';
+
+export function feedDate(publishedAt: string): string {
+  const [year, month, day] = publishedAt.split('-');
+  return year === LATEST_YEAR ? `${month}.${day}` : `${year}.${month}.${day}`;
+}
+
 /** Model Radar가 쓰는 파생 목록. 모델 발표만 최신순으로 남깁니다. */
 export const modelUpdates: ModelUpdate[] = newsItems
-  .filter((item): item is NewsItem & { model: ModelRelease } => Boolean(item.model))
+  .filter((item): item is NewsItem & { model: ModelRelease } => Boolean(releaseOf(item)))
   .map((item) => ({
     ...item.model,
     id: item.id,

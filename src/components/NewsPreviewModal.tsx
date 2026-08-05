@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useRef, useState, type CSSProperties } from 'react';
 import { createPortal } from 'react-dom';
 import { ArrowUpRight, X } from 'lucide-react';
-import type { ModelLogoTone, NewsDetail } from '../data/news';
+import { releaseOf, type ModelLogoTone, type ModelRelease, type NewsDetail, type NewsItem } from '../data/news';
 import { loadNewsDetail } from '../lib/newsDetail';
 import { captureFocusOrigin, restoreFocus } from '../lib/restoreFocus';
 
@@ -20,11 +20,37 @@ export interface NewsPreviewItem {
   monochrome?: boolean;
   contextLabel?: string;
   contextValue?: string;
+  /**
+   * 모델 발표의 스펙 한 줄. 카드 격자를 걷기 전에는 `kind`·`status`·`headline`을
+   * Model Radar 카드만 그렸고, 그 카드가 홈 넉 장으로 줄면서 나머지 발표의 값은
+   * 어느 화면에도 나오지 않은 채 번들에만 남았습니다. 목록에서 연 팝업이
+   * 그 자리를 대신합니다 — 카드가 맡던 세 값이 모두 여기로 옵니다.
+   */
+  release?: Pick<ModelRelease, 'kind' | 'status' | 'headline'>;
 }
 
 interface NewsPreviewModalProps {
   item: NewsPreviewItem | null;
   onClose: () => void;
+}
+
+/**
+ * 모델 발표가 팝업에 더 싣는 것. 뉴스 목록과 홈이 같은 팝업을 여므로 한 곳에서
+ * 만듭니다 — 한쪽만 채우면 같은 소식인데 들어온 경로에 따라 내용이 갈립니다.
+ * 모델 발표가 아니면 빈 객체라 그대로 펼쳐 쓸 수 있습니다.
+ */
+export function releasePreviewFields(
+  item: NewsItem,
+): Pick<NewsPreviewItem, 'contextLabel' | 'contextValue' | 'release'> {
+  const release = releaseOf(item);
+  if (!release) return {};
+
+  return {
+    // 모델 발표는 '무엇에 쓰는가'를 함께 답니다.
+    contextLabel: 'USE CASE',
+    contextValue: release.useCase,
+    release: { kind: release.kind, status: release.status, headline: release.headline },
+  };
 }
 
 const FOCUSABLE =
@@ -195,6 +221,17 @@ export function NewsPreviewModal({ item, onClose }: NewsPreviewModalProps) {
           <p className="news-preview-signal" style={{ color: item.accent }}>{item.signal}</p>
           <h2 id={`news-preview-title-${item.id}`}>{item.title}</h2>
           <p className="news-preview-summary">{item.summary}</p>
+
+          {/*
+            모델 발표만 한 줄 더 답니다. 위 요약은 발표 전체를 줄인 것이고,
+            이쪽은 '무엇이 새로 생겼는가'만 남긴 카드의 문장입니다.
+          */}
+          {item.release && (
+            <p className="news-preview-release">
+              <b>{item.release.kind} · {item.release.status}</b>
+              <span>{item.release.headline}</span>
+            </p>
+          )}
 
           {loadingDetail && (
             <div className="news-preview-loading" aria-hidden="true">

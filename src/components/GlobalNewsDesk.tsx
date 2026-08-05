@@ -2,17 +2,19 @@ import { useMemo, useState, type CSSProperties } from 'react';
 import { ArrowUpRight, Eye } from 'lucide-react';
 import {
   categoryLabel,
+  feedDate,
   globalNewsUpdatedAt,
   newsItems,
+  releaseOf,
   type GlobalNewsKind,
   type NewsItem,
 } from '../data/news';
 import { assetUrl, getSource, sourceList, type NewsSource } from '../data/sources';
-import { NewsPreviewModal, type NewsPreviewItem } from './NewsPreviewModal';
+import { NewsPreviewModal, releasePreviewFields, type NewsPreviewItem } from './NewsPreviewModal';
 
 type SourceFilter = NewsSource | 'All';
 
-/** 리드 아래 처음 보여 줄 소식 수. */
+/** 리드 카드 옆에 세우는 수. 여기까지가 두 열 구간이고 나머지는 아래로 깔립니다. */
 const FEED_LIMIT = 3;
 
 /**
@@ -22,16 +24,18 @@ const FEED_LIMIT = 3;
  */
 const FEED_STEP = 12;
 
+/**
+ * 처음부터 보여 줄 수. 예전에는 리드 옆 세 줄이 전부라 화면에 소식이 넷뿐이었고,
+ * 뉴스 목록에 왔는데 무엇이 있는지 보려면 반드시 한 번 눌러야 했습니다. 그
+ * 한 번을 이미 누른 상태에서 시작합니다 — '더 보기'는 그 뒤로 더 볼 사람의 것입니다.
+ */
+const FEED_INITIAL = FEED_LIMIT + FEED_STEP;
+
 /** 아직 아무 발표도 모이지 않은 갈래에 쓰는 문구. */
 const NOTHING_YET = '아직 이 분류로 모인 공식 발표가 없습니다. 매일 출처를 확인해 채웁니다.';
 
-/**
- * 이 데스크가 낼 수 있는 목소리. 모델 탭 몫이 'model-rest' 하나뿐인 것은
- * 그 탭이 위에 레이더를 세우고 여기는 나머지만 맡기 때문입니다 — '모델 발표
- * 전부'를 부르는 자리가 없어졌는데도 그 문구를 남겨 두면 화면에 뜰 수 없는
- * 설정이 하나 남고, 나중에 모델 탭 문구를 고칠 때 반영되지 않는 쪽을 고치게 됩니다.
- */
-type DeskVoice = 'company' | 'model-rest' | 'default';
+/** 이 데스크가 낼 수 있는 목소리. 탭 셋과 그대로 짝입니다. */
+type DeskVoice = 'company' | 'model' | 'default';
 
 /**
  * 갈래마다 머리말과 빈 상태 문구. 렌더 때마다 새로 만들 이유가 없어 모듈에 둡니다.
@@ -43,13 +47,12 @@ const VOICES: Record<DeskVoice, { heading: string; description: string; empty: s
     description: '제품과 조직, 규제 대응과 인프라 투자까지 각 회사의 움직임을 모아 봅니다.',
     empty: NOTHING_YET,
   },
-  'model-rest': {
-    heading: '그 밖의 모델 소식',
+  model: {
+    heading: 'AI 모델 소식',
     description:
-      '위 카드로 세우지 않은 나머지입니다 — 가격과 가용성 변화, 기존 계열에 붙은 기능, ' +
-      '오픈·양자화·특화 파생판을 발표된 순서대로 읽습니다.',
-    // 여기가 비는 것은 '모을 것이 없다'가 아니라 '전부 위 카드가 맡았다'는 뜻입니다.
-    empty: '이 기간의 모델 발표는 위 카드가 모두 맡았습니다. 카드로 세우지 않은 소식이 생기면 여기에 쌓입니다.',
+      '새 모델과 계열 확장, 가격·가용성 변화까지 발표된 순서대로 읽습니다. ' +
+      '쓸 수 있는 모델이 새로 생긴 발표에는 그 계열의 마크가 붙습니다.',
+    empty: NOTHING_YET,
   },
   default: {
     heading: '주목할 AI 흐름',
@@ -60,29 +63,20 @@ const VOICES: Record<DeskVoice, { heading: string; description: string; empty: s
 
 interface GlobalNewsDeskProps {
   kind?: GlobalNewsKind;
-  /**
-   * `model` 블록이 붙은 항목을 뺍니다. 모델 탭은 위 레이더가 그것들을 카드로 이미
-   * 세우므로, 빼지 않으면 같은 발표가 한 화면에 두 번 나옵니다. 뺄 것을 id 목록으로
-   * 받지 않는 이유는 '레이더가 맡는 것'의 정의가 `Boolean(item.model)` 하나뿐이라
-   * 같은 사실을 두 곳에서 따로 계산하게 되기 때문입니다.
-   */
-  excludeModelCards?: boolean;
 }
 
-export function GlobalNewsDesk({ kind, excludeModelCards = false }: GlobalNewsDeskProps) {
+export function GlobalNewsDesk({ kind }: GlobalNewsDeskProps) {
   const [source, setSource] = useState<SourceFilter>('All');
   const [selectedNews, setSelectedNews] = useState<NewsPreviewItem | null>(null);
-  const [visible, setVisible] = useState(FEED_LIMIT);
+  const [visible, setVisible] = useState(FEED_INITIAL);
 
   // 어느 탭이든 발표된 순서 그대로 읽습니다. 회사별로 묶어 보고 싶으면
   // 바로 아래 출처 띠가 그 일을 맡습니다 — 목록까지 회사순으로 뭉치면
   // 같은 것을 두 번 거르는 셈이고, 첫 화면이 한 회사로 채워집니다.
-  const kindItems = useMemo(() => {
-    const byKind = kind ? newsItems.filter((item) => item.kind === kind) : newsItems;
-    // 여기서 한 번 빼면 출처 띠도 더 보기 개수도 알아서 따라옵니다 — 아래 것들이
-    // 전부 이 목록에서 파생되기 때문입니다. 플래그를 안 준 탭은 그대로입니다.
-    return excludeModelCards ? byKind.filter((item) => !item.model) : byKind;
-  }, [kind, excludeModelCards]);
+  const kindItems = useMemo(
+    () => (kind ? newsItems.filter((item) => item.kind === kind) : newsItems),
+    [kind],
+  );
 
   const items = useMemo(
     () => (source === 'All' ? kindItems : kindItems.filter((item) => item.source === source)),
@@ -104,32 +98,62 @@ export function GlobalNewsDesk({ kind, excludeModelCards = false }: GlobalNewsDe
   const feedBeside = shown.slice(0, FEED_LIMIT);
   const feedBelow = shown.slice(FEED_LIMIT);
   const leadSource = lead ? getSource(lead.source) : null;
-  /*
-    레이더가 카드를 맡은 탭이면 여기는 늘 '나머지'입니다. 모델 탭이 레이더 없이
-    서는 일은 없으므로 kind만 'model'인 경우는 전체 탭과 같은 목소리로 둡니다.
-  */
-  const voice: DeskVoice = excludeModelCards ? 'model-rest' : kind === 'company' ? 'company' : 'default';
-  const { heading, description, empty } = VOICES[voice];
+  const leadRelease = lead ? releaseOf(lead) : undefined;
+  const { heading, description, empty } = VOICES[kind ?? 'default'];
 
   // 목록이 통째로 갈리므로 펼친 만큼도 되돌립니다.
   const pickSource = (next: SourceFilter) => {
     setSource(next);
-    setVisible(FEED_LIMIT);
+    setVisible(FEED_INITIAL);
   };
 
   /** 리드 옆과 아래 목록이 같은 행을 쓰므로 한 곳에서 그립니다. */
   const renderRow = (item: NewsItem, order: number) => {
     const meta = getSource(item.source);
+    // item.model이 아니라 releaseOf를 씁니다 — kind가 company인데 model 블록이
+    // 붙은 항목에 '새 모델' 마크를 달면 안 됩니다.
+    const release = releaseOf(item);
     return (
       <article key={item.id} className="news-feed-row group">
         <div className="news-feed-order" aria-hidden="true">{String(order).padStart(2, '0')}</div>
         <div className="min-w-0">
+          {/*
+            날짜가 맨 앞입니다. 뒤에 두었을 때는 8px 회색 글자 셋 중 마지막이라
+            '언제 것인가'를 보려면 줄 끝까지 훑어야 했습니다. 목록이 날짜순인데
+            정작 그 날짜가 가장 안 보이는 값이었습니다.
+
+            회사 마크는 회사 이름과 한 덩어리로 묶습니다 — 따로 두면 flex의 gap이
+            둘 사이를 벌리고, 줄이 접힐 때 마크만 앞 줄에 남습니다.
+          */}
           <div className="news-feed-meta">
-            <span style={{ color: meta.accent }}>{meta.displayName}</span>
-            <span>{item.signal}</span>
-            <time dateTime={item.publishedAt}>{item.publishedAt.slice(5).replace('-', '.')}</time>
+            <time className="news-feed-date" dateTime={item.publishedAt}>{feedDate(item.publishedAt)}</time>
+            <span className="news-feed-source" style={{ color: meta.accent }}>
+              <img
+                src={assetUrl(meta.logo)}
+                alt=""
+                aria-hidden="true"
+                className={`news-feed-logo ${meta.monochrome ? 'is-monochrome' : ''}`}
+              />
+              {meta.displayName}
+            </span>
+            <span>{release ? release.name : item.signal}</span>
           </div>
-          <h3>
+          {/*
+            모델 마크는 제목 옆에 서지만 **버튼 밖**입니다. 안에 넣으면 접근성
+            이름이 '새 모델 …제목'으로 이어 붙고, 제목이 두 줄로 접힐 때 둘째
+            줄이 마크 아래로 흘러 들어갑니다. 밖에 두고 h3를 flex로 세우면
+            제목은 제 블록을 그대로 쓰고 마크는 첫 줄 옆에 고정됩니다.
+          */}
+          <h3 className={release ? 'has-mark' : undefined}>
+            {release && (
+              <span
+                className="news-feed-mark"
+                style={{ '--model-logo': `url("${assetUrl(release.logo)}")` } as CSSProperties}
+              >
+                <span className={`model-logo-${release.tone}`} aria-hidden="true" />
+                <b className="sr-only">{release.family} 새 모델</b>
+              </span>
+            )}
             <button type="button" className="card-trigger" onClick={() => openPreview(item)}>
               {item.title}
             </button>
@@ -157,6 +181,14 @@ export function GlobalNewsDesk({ kind, excludeModelCards = false }: GlobalNewsDe
       accent: meta.accent,
       logo: assetUrl(meta.logo),
       monochrome: meta.monochrome,
+      /*
+        카드가 그리던 값들(`useCase`·`kind`·`status`·`headline`)을 팝업이 이어받습니다.
+        격자를 걷으면서 이것까지 같이 사라지면 합치는 것이 아니라 잃는 것이 됩니다 —
+        Model Radar는 홈 넉 장으로 줄어 나머지 발표의 값은 그리는 화면이 없어졌습니다.
+        출처는 발표한 회사 그대로 둡니다 — 카드는 계열(Gemini)을 출처 자리에
+        놓았는데, 같은 모달을 기업 소식과 나눠 쓰는 지금은 그러면 기준이 갈립니다.
+      */
+      ...releasePreviewFields(item),
     });
   };
 
@@ -220,14 +252,17 @@ export function GlobalNewsDesk({ kind, excludeModelCards = false }: GlobalNewsDe
                 </span>
                 <div>
                   <p style={{ color: leadSource!.accent }}>{leadSource!.displayName}</p>
-                  <time dateTime={lead.publishedAt}>{lead.publishedAt.replaceAll('-', '.')}</time>
+                  {/* 오른쪽 행들과 같은 형식으로 적습니다 — 같은 화면에서 리드만 '2026.07.30'이면 형식이 갈립니다. */}
+                  <time dateTime={lead.publishedAt}>{feedDate(lead.publishedAt)}</time>
                 </div>
                 <ArrowUpRight size={17} aria-hidden="true" />
               </div>
               <div className="news-lead-copy">
                 <div>
                   <p className="news-source-label" style={{ color: leadSource!.accent }}>
-                    {lead.signal} · {categoryLabel[lead.category]}
+                    {leadRelease ? `${leadRelease.name} · ${leadRelease.kind}` : lead.signal}
+                    {' · '}
+                    {categoryLabel[lead.category]}
                   </p>
                   <h3>
                     <button type="button" className="card-trigger" onClick={() => openPreview(lead)}>
@@ -268,10 +303,7 @@ export function GlobalNewsDesk({ kind, excludeModelCards = false }: GlobalNewsDe
           <button
             type="button"
             className="news-feed-more"
-            /*
-              모델 탭에는 레이더에도 같은 글자의 버튼이 있어, 스크린 리더의 버튼
-              목록에서 '더 보기' 둘이 똑같이 읽힙니다. 무엇을 늘리는지 이름에 적습니다.
-            */
+            /* 버튼 목록에서 '더 보기'만 읽히지 않게 무엇을 늘리는지 이름에 적습니다. */
             aria-label={`${heading} 더 보기`}
             onClick={() => setVisible((count) => count + FEED_STEP)}
           >

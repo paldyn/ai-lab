@@ -1,31 +1,24 @@
 import { useState, type CSSProperties } from 'react';
 import { ArrowUpRight, Eye } from 'lucide-react';
 import { Link } from 'react-router';
-import { modelUpdates, type ModelUpdate } from '../data/news';
+import { feedDate, modelUpdates, type ModelUpdate } from '../data/news';
 import { assetUrl, getSource } from '../data/sources';
 import { NewsPreviewModal, type NewsPreviewItem } from './NewsPreviewModal';
 
-interface ModelRadarProps {
-  limit?: number;
-  showNewsLink?: boolean;
-}
-
 /**
- * 한 번에 내놓는 수. 넓은 화면에서 카드가 네 칸이므로 두 줄입니다.
- * 좁은 화면은 두 칸이라 같은 수가 네 줄이 되는데, 줄 수를 화면마다
- * 맞추려면 JS가 열 수를 알아야 합니다 — 그러자고 리사이즈를 듣기보다
- * 한 번에 늘어나는 양을 고정하는 편이 낫습니다.
+ * 홈에서만 씁니다. 뉴스 페이지에도 같은 격자를 세우던 때가 있었는데, 그러면 모델
+ * 탭이 위는 카드 아래는 목록으로 한 벌의 발표를 두 번 읽게 만들었습니다. 지금
+ * 뉴스 페이지는 목록 하나로 읽고 새 모델에는 마크만 붙입니다(GlobalNewsDesk).
+ *
+ * 여기에 카드가 남은 이유는 맡는 일이 다르기 때문입니다 — 홈은 '요즘 무엇이
+ * 나왔나'를 훑는 자리라 스펙 몇 줄을 펼쳐 보여 주는 편이 낫고, 목록으로 바꾸면
+ * 바로 위 기업 소식 칼럼과 생김새가 겹쳐 두 영역이 한 덩어리로 보입니다.
  */
-const RADAR_STEP = 8;
+const HOME_LIMIT = 4;
 
-export function ModelRadar({ limit, showNewsLink = false }: ModelRadarProps) {
+export function ModelRadar() {
   const [selectedModel, setSelectedModel] = useState<NewsPreviewItem | null>(null);
-  const [visible, setVisible] = useState(RADAR_STEP);
-
-  // limit을 받으면 홈처럼 정해진 만큼만 보여 주는 자리라 더 보기를 두지 않습니다.
-  const paged = typeof limit !== 'number';
-  const items = paged ? modelUpdates.slice(0, visible) : modelUpdates.slice(0, limit);
-  const hidden = paged ? modelUpdates.length - items.length : 0;
+  const items = modelUpdates.slice(0, HOME_LIMIT);
 
   const openPreview = (item: ModelUpdate) => {
     setSelectedModel({
@@ -52,14 +45,12 @@ export function ModelRadar({ limit, showNewsLink = false }: ModelRadarProps) {
           <div>
             <p className="section-kicker">MODEL RADAR</p>
             <h2>주요 AI 모델 업데이트</h2>
-            {/*
-              h2는 홈과 함께 씁니다. 설명만 '이 영역이 무엇을 세우는가'를 말하게
-              두었습니다 — 뉴스 페이지에서는 아래 데스크가 맡는 나머지와 갈라지고,
-              홈에서도 그대로 참인 문장입니다.
-            */}
             <p>새 모델이 무엇을 할 수 있고 어디에 쓰는지 카드 한 장으로 확인합니다.</p>
           </div>
-          {showNewsLink && <Link to="/news">모델 뉴스 전체 보기 <ArrowUpRight size={13} aria-hidden="true" /></Link>}
+          {/* 뉴스 페이지의 모델 탭을 바로 엽니다 — 여기서 이어 읽을 곳이 그 탭입니다. */}
+          <Link to="/news/models">
+            모델 뉴스 전체 보기 <ArrowUpRight size={13} aria-hidden="true" />
+          </Link>
         </div>
 
         <div className="model-radar-grid">
@@ -79,7 +70,11 @@ export function ModelRadar({ limit, showNewsLink = false }: ModelRadarProps) {
                 </span>
                 <div>
                   <p className={`model-family-name model-family-${item.tone}`}>{item.family}</p>
-                  <time dateTime={item.publishedAt}>{item.publishedAt.replaceAll('-', '.')}</time>
+                  {/*
+                    바로 위 기업 소식 칼럼과 같은 형식·같은 급으로 적습니다. 여기만
+                    8px 회색으로 두었더니 한 화면에서 날짜 위계가 두 갈래로 보였습니다.
+                  */}
+                  <time className="news-feed-date" dateTime={item.publishedAt}>{feedDate(item.publishedAt)}</time>
                 </div>
                 <span className="model-order" aria-hidden="true">{String(index + 1).padStart(2, '0')}</span>
               </div>
@@ -100,19 +95,6 @@ export function ModelRadar({ limit, showNewsLink = false }: ModelRadarProps) {
             </article>
           ))}
         </div>
-
-        {hidden > 0 && (
-          <button
-            type="button"
-            className="news-feed-more"
-            /* 뉴스 페이지에는 아래 데스크에도 '더 보기'가 있어 이름으로 갈라 둡니다. */
-            aria-label="모델 카드 더 보기"
-            onClick={() => setVisible((count) => count + RADAR_STEP)}
-          >
-            더 보기
-            <span>{items.length} / {modelUpdates.length}</span>
-          </button>
-        )}
       </div>
       <NewsPreviewModal item={selectedModel} onClose={() => setSelectedModel(null)} />
     </section>
