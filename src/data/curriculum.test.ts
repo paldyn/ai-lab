@@ -11,9 +11,9 @@ import {
 } from './curriculum';
 
 const TRACKS = [
-  ['본선', mathCurriculum, /^math-(?!basics-|adv-)[a-z0-9-]+$/],
-  ['기초', mathFoundation, /^math-basics-[a-z0-9-]+$/],
-  ['심화', mathAdvanced, /^math-adv-[a-z0-9-]+$/],
+  ['중급', mathCurriculum, /^math-(?!basics-|adv-)[a-z0-9-]+$/],
+  ['초급', mathFoundation, /^math-basics-[a-z0-9-]+$/],
+  ['고급', mathAdvanced, /^math-adv-[a-z0-9-]+$/],
 ] as const;
 
 describe('수학 커리큘럼', () => {
@@ -29,84 +29,90 @@ describe('수학 커리큘럼', () => {
     expect(new Set(mathWritingOrder).size).toBe(mathWritingOrder.length);
   });
 
+  it('편수는 초급 48 · 중급 80 · 고급 63이다', () => {
+    // 계획 문서가 편수로 일정을 세우므로 여기가 어긋나면 계획이 먼저 틀립니다.
+    expect(mathFoundation).toHaveLength(48);
+    expect(mathCurriculum).toHaveLength(80);
+    expect(mathAdvanced).toHaveLength(63);
+  });
+
   /**
-   * 2026-08-05에 본선 → 기초에서 뒤집었습니다. 본선부터 쓰면 첫 배치가 전부
-   * `level: 중급`이라 '기초부터'라는 약속과 어긋납니다. 링크는 '아직 쓰지 않은 글을
+   * 2026-08-05에 중급 → 초급에서 뒤집었습니다. 중급부터 쓰면 첫 배치가 전부
+   * `level: 중급`이라 '초급부터'라는 약속과 어긋납니다. 링크는 '아직 쓰지 않은 글을
    * 본문에서 링크하지 않는다'는 규칙으로 풀고, 대응은 curriculum.ts 데이터가 그립니다.
    *
    * 배열 deep-equal 대신 불변식으로 둡니다 — 사본이 아니라 결정을 검사해야 합니다.
    */
-  describe('쓰기 순서는 기초 → 본선 → 심화다', () => {
-    const DIAGNOSIS = 'math-basics-self-diagnosis';
-    const foundationFirst = mathFoundation.filter((slug) => slug !== DIAGNOSIS);
-
+  describe('쓰기 순서는 초급 → 중급 → 고급이다', () => {
     it('세 배열의 슬러그를 하나도 빠뜨리지 않는다', () => {
       const all = [...mathCurriculum, ...mathFoundation, ...mathAdvanced];
       expect([...mathWritingOrder].sort()).toEqual([...all].sort());
     });
 
-    it('자가진단을 뺀 기초가 맨 앞 블록이다', () => {
-      expect(mathWritingOrder.slice(0, foundationFirst.length)).toEqual(foundationFirst);
+    it('초급 48편이 맨 앞 블록이다', () => {
+      expect(mathWritingOrder.slice(0, mathFoundation.length)).toEqual(mathFoundation);
     });
 
-    it('자가진단은 본선을 전부 쓴 뒤에 온다', () => {
-      // 30문항의 처방이 본선 여러 편으로 이동하는 글이라 맨 마지막입니다.
-      const diagnosis = mathWritingOrder.indexOf(DIAGNOSIS);
-      for (const slug of mathCurriculum) {
-        expect(mathWritingOrder.indexOf(slug), slug).toBeLessThan(diagnosis);
-      }
-    });
-
-    it('심화가 맨 뒤 블록이다', () => {
+    it('고급이 맨 뒤 블록이다', () => {
       expect(mathWritingOrder.slice(-mathAdvanced.length)).toEqual(mathAdvanced);
     });
   });
 
   /**
-   * 본선 첫 글의 order는 0입니다. `articles.ts`가 한때 `...(order ? { order } : {})`로
-   * 걸러 0을 falsy로 버렸고, 그러면 1번 글만 order 없이 목록 맨 뒤로 밀립니다.
-   * 화면에서는 순서가 이상해 보일 뿐 오류가 나지 않아 눈에 띄지 않습니다.
+   * 목록은 order 오름차순이고 최신 글이 맨 위입니다. 수학은 같은 날 여러 편이 나가
+   * `pubDate`로는 하루 안의 순서가 잡히지 않으므로 쓰는 순서를 뒤집어 씁니다.
    */
-  it('본선 첫 글의 순서는 0이며 undefined가 아니다', () => {
-    expect(curriculumOrder(mathCurriculum[0])).toBe(0);
-    expect(curriculumOrder(mathCurriculum[0])).not.toBeUndefined();
-  });
+  describe('화면 순서는 쓰는 순서의 역순이다', () => {
+    it('마지막에 쓰는 글이 0이고 첫 글이 맨 뒤다', () => {
+      const last = mathWritingOrder[mathWritingOrder.length - 1];
+      expect(curriculumOrder(last)).toBe(0);
+      // 0은 유효한 순서입니다. `articles.ts`가 한때 `...(order ? { order } : {})`로
+      // 걸러 0을 falsy로 버렸고, 그러면 그 글만 order 없이 목록 맨 뒤로 밀립니다.
+      // 화면에서는 순서가 이상해 보일 뿐 오류가 나지 않아 눈에 띄지 않습니다.
+      expect(curriculumOrder(last)).not.toBeUndefined();
+      expect(curriculumOrder(mathWritingOrder[0])).toBe(mathWritingOrder.length - 1);
+    });
 
-  it('본선이 맨 앞, 기초와 심화가 그 뒤로 간다', () => {
-    const lastMain = curriculumOrder(mathCurriculum[mathCurriculum.length - 1])!;
-    const firstFoundation = curriculumOrder(mathFoundation[0])!;
-    const firstAdvanced = curriculumOrder(mathAdvanced[0])!;
+    it('쓰는 순서가 뒤인 글일수록 order가 작다', () => {
+      const orders = mathWritingOrder.map((slug) => curriculumOrder(slug)!);
+      for (let i = 1; i < orders.length; i += 1) {
+        expect(orders[i], mathWritingOrder[i]).toBeLessThan(orders[i - 1]);
+      }
+    });
 
-    expect(lastMain).toBeLessThan(firstFoundation);
-    expect(firstFoundation).toBeLessThan(firstAdvanced);
-  });
+    it('고급이 맨 앞, 그다음 중급, 초급 1번이 맨 아래다', () => {
+      const lastAdvanced = curriculumOrder(mathAdvanced[mathAdvanced.length - 1])!;
+      const firstAdvanced = curriculumOrder(mathAdvanced[0])!;
+      const lastMain = curriculumOrder(mathCurriculum[mathCurriculum.length - 1])!;
+      const firstFoundation = curriculumOrder(mathFoundation[0])!;
 
-  it('본선은 목록 인덱스를 그대로 순서로 쓴다', () => {
-    mathCurriculum.forEach((slug, index) => {
-      expect(curriculumOrder(slug), slug).toBe(index);
+      expect(lastAdvanced).toBeLessThan(firstAdvanced);
+      expect(firstAdvanced).toBeLessThan(lastMain);
+      expect(lastMain).toBeLessThan(firstFoundation);
+      expect(firstFoundation).toBe(mathWritingOrder.length - 1);
+    });
+
+    it('목록에 없는 슬러그는 undefined를 준다', () => {
+      expect(curriculumOrder('math-not-in-any-track')).toBeUndefined();
     });
   });
 
-  it('목록에 없는 슬러그는 undefined를 준다', () => {
-    expect(curriculumOrder('math-not-in-any-track')).toBeUndefined();
-  });
-
   /**
-   * 기초·심화 원고는 아직 없는 본선을 본문에서 링크할 수 없어 번호와 제목만 적습니다.
+   * 초급·고급 원고는 아직 없는 중급을 본문에서 링크할 수 없어 번호와 제목만 적습니다.
    * 눌러서 이동하는 길은 이 대응 데이터가 유일하게 냅니다 — 여기가 어긋나면
    * 화면에서 조용히 엉뚱한 글로 가거나 배지가 통째로 사라집니다.
    */
-  describe('기초·심화 ↔ 본선 대응', () => {
+  describe('초급·고급 ↔ 중급 대응', () => {
     const supportSlugs = Object.keys(mathSupport);
 
-    it('키는 전부 기초 아니면 심화다', () => {
+    it('키는 전부 초급 아니면 고급이다', () => {
       const known = new Set([...mathFoundation, ...mathAdvanced]);
       for (const slug of supportSlugs) {
         expect(known.has(slug), slug).toBe(true);
       }
     });
 
-    it('값은 전부 본선 번호(1~80) 안이다', () => {
+    it('값은 전부 중급 번호(1~80) 안이다', () => {
       for (const [slug, numbers] of Object.entries(mathSupport)) {
         expect(numbers.length, slug).toBeGreaterThan(0);
         for (const number of numbers) {
@@ -118,14 +124,14 @@ describe('수학 커리큘럼', () => {
       }
     });
 
-    it('기초는 22편 전부 대응을 갖는다', () => {
-      // 기초는 "본선 N번에서 막혔을 때 꺼내 보는 것"이라 대응 없는 편이 있으면 안 됩니다.
+    it('초급은 48편 전부 대응을 갖는다', () => {
+      // 초급 글의 존재 이유가 중급 어딘가를 받치는 것이라 빈 편이 있으면 안 됩니다.
       for (const slug of mathFoundation) {
         expect(mathSupport[slug], slug).toBeDefined();
       }
     });
 
-    it('기초·심화 글은 자기가 받치는 본선을 슬러그로 되돌려 준다', () => {
+    it('초급·고급 글은 자기가 받치는 중급을 슬러그로 되돌려 준다', () => {
       const links = curriculumLinks('math-basics-quadratic-and-parabola');
       expect(links.mainTrack[0]).toBe('math-eigenvalues');
       expect(mainTrackNumber(links.mainTrack[0])).toBe(12);
@@ -133,7 +139,7 @@ describe('수학 커리큘럼', () => {
       expect(links.advanced).toEqual([]);
     });
 
-    it('본선 글은 자기를 받치는 기초와 심화를 되돌려 준다', () => {
+    it('중급 글은 자기를 받치는 초급과 고급을 되돌려 준다', () => {
       const links = curriculumLinks('math-eigenvalues');
       expect(links.foundation).toContain('math-basics-quadratic-and-parabola');
       expect(links.foundation).toContain('math-basics-determinant-and-inverse');

@@ -1,18 +1,22 @@
 /**
  * 수학 글을 읽는 순서. 트랙이 셋이고 슬러그 접두사가 트랙을 정합니다.
+ * 이름은 frontmatter의 `level` 값과 같은 어휘를 씁니다 — **초급 / 중급 / 고급**.
  *
- * - `math-basics-` 기초 — 본선을 읽다 막혔을 때 한 편만 꺼내 보는 사전입니다.
- *   **순서가 없습니다.** 번호를 매기면 '순서대로 읽어야 하는 것'이 되고,
- *   그것이 이전 144편 계획을 10편에서 멈추게 한 인식입니다.
- * - `math-` 본선 — 세로 축입니다. 1번부터 아무 선행 없이 시작합니다.
+ * - `math-basics-` 초급 48편 — **1번부터 순서대로 읽는 과정입니다.** 앞 글이 뒤 글의
+ *   전제가 되게 배치했으므로 막혔을 때 한 편만 꺼내 보는 사전이 아닙니다.
+ *   2026-08-05에 뒤집었습니다. 그전에는 23편짜리 사전이었고 순서를 두지 않았는데,
+ *   계산을 할 줄 안다고 전제하지 않는다고 적어 놓고 첫 글이 유리수에서 시작하는
+ *   빈 자리가 있었습니다. 지금은 등호와 연산 우선순위부터 세웁니다.
+ * - `math-` 중급 80편 — 세로 축입니다. 1번부터 아무 선행 없이 시작합니다.
  *   순서의 기준은 교과서의 논리 전개가 아니라 AI 시스템의 데이터 흐름입니다.
- * - `math-adv-` 심화 — 본선을 마친 뒤 읽습니다. 논문의 이론 절을 스스로 읽는 것이 목표입니다.
+ * - `math-adv-` 고급 63편 — 중급을 마친 뒤 읽습니다. 논문의 이론 절을 스스로 읽는 것이 목표입니다.
  *
  * 단원 경계에 절단점을 두어 중간에 멈춰도 완결된 묶음이 남게 했습니다.
- * 본선은 8·17·31·39·43·51·58편, 심화는 10·27·36·46·49·59·63편입니다.
+ * 중급은 8·17·31·39·43·51·58편, 고급은 10·27·36·46·49·59·63편입니다.
  *
  * 자동 작성 루틴이 이 파일을 직접 읽습니다. **쓰는 순서는 `mathWritingOrder`가 정하고,
- * 목록에 보이는 순서는 `curriculumOrder()`가 정합니다. 둘은 일부러 다릅니다.**
+ * 목록에 보이는 순서는 `curriculumOrder()`가 정합니다. 둘은 서로 역순입니다** —
+ * 이유는 `curriculumOrder()`에 적었습니다.
  * 각 글이 무엇을 다루는지는 `MATH-PLAN.md`에 있습니다.
  */
 export const mathCurriculum: string[] = [
@@ -125,40 +129,93 @@ export const mathCurriculum: string[] = [
 
 
 /**
- * 기초 트랙. **읽는 순서가 아니라 목록입니다** — 어느 편을 언제 꺼내 보는지는
- * 아래 `mathSupport`가 "본선 몇 번 앞"으로 들고 있습니다.
+ * 초급 트랙 48편. **배열의 자리가 곧 1~48번이고 그 번호대로 읽습니다** —
+ * 앞 글이 세운 것을 뒤 글이 전제로 받으므로 중간부터 꺼내 보는 목록이 아닙니다.
  *
- * 다만 배열 안의 자리가 곧 목록 화면의 순서(1000 + i)이므로,
- * 2026-08-05에 되살린 학교 수학 넷(좌표평면·직선, 이차식, 곡면·등고선, 비·비율)은
- * 앞쪽에 둡니다 — 가장 낮은 계단이 목록에서도 먼저 보이게 하려는 것입니다.
+ * 계단은 −1단계부터 9단계까지 열하나이고 편수는 3·5·7·3·5·3·3·7·5·4·3입니다.
+ * −1단계 셋은 학년 밖입니다 — 개발자가 막히는 첫 자리가 계산이 아니라 표기
+ * 관습이라는 판단에서 나왔고, 코드와 대조하는 것을 허용하는 유일한 세 편입니다.
+ * 0단계 다섯은 뒤 글들이 빌려 쓰기만 하던 것(넓이 그림·피타고라스·닮음)을 갚습니다.
+ *
+ * 2026-08-05에 23편에서 다시 썼습니다. 열아홉 편은 슬러그가 그대로 살아남았고,
+ * `math-basics-symbolic-and-axis-checking`은 `-symbolic-checking`으로 이름을 바꿨으며,
+ * 셋(자가진단·비와 정규화·수열과 극한)은 지웠습니다. 자가진단은 트랙이 순서 있는
+ * 과정이 되면서 대상이 없어졌고 — 읽는 사람이 자기 수준을 판정할 필요가 없습니다,
+ * 나머지 둘은 내용이 12번과 27~29번으로 갈라져 들어갔습니다.
  */
 export const mathFoundation: string[] = [
-  'math-basics-self-diagnosis',
+  // −1단계 · 수학을 읽고 쓰는 법
+  'math-basics-what-equals-means',
+  'math-basics-reading-order-of-expressions',
+  'math-basics-working-by-hand',
+
+  // 0단계 · 자연수와 도형
+  'math-basics-natural-numbers-and-place-value',
+  'math-basics-divisors-and-prime-factorization',
+  'math-basics-area-and-volume',
+  'math-basics-pythagorean-theorem',
+  'math-basics-similarity-and-proportion',
+
+  // 1단계 · 수와 계산
   'math-basics-symbol-glossary',
-  'math-basics-coordinate-plane-and-lines',
-  'math-basics-quadratic-and-parabola',
-  'math-basics-functions-and-graphs',
-  'math-basics-surfaces-and-contours',
-  'math-basics-reading-proofs',
+  'math-basics-numbers-and-number-line',
+  'math-basics-fractions',
+  'math-basics-decimals-percent-ratio',
+  'math-basics-powers-and-roots',
+  'math-basics-variables-and-expressions',
+  'math-basics-expanding-and-factoring',
+
+  // 2단계 · 방정식과 부등식
+  'math-basics-linear-equations',
+  'math-basics-inequalities-and-signs',
   'math-basics-algebra-manipulation',
-  'math-basics-orders-of-magnitude-and-error',
-  'math-basics-ratio-and-normalization',
-  'math-basics-sequences-limits-and-series',
-  'math-basics-linear-systems-and-elimination',
-  'math-basics-determinant-and-inverse',
+
+  // 3단계 · 함수
+  'math-basics-functions-and-graphs',
+  'math-basics-graph-transformations',
+  'math-basics-exponential-function',
+  'math-basics-logarithms',
+  'math-basics-quadratic-and-parabola',
+
+  // 4단계 · 좌표와 도형
+  'math-basics-coordinate-plane-and-lines',
   'math-basics-trigonometry-and-unit-circle',
   'math-basics-complex-numbers-and-euler',
+
+  // 5단계 · 수열과 극한
+  'math-basics-sequences-and-sigma',
+  'math-basics-limits',
+  'math-basics-geometric-series',
+
+  // 6단계 · 미적분
+  'math-basics-average-rate-of-change',
+  'math-basics-what-is-a-derivative',
   'math-basics-derivative-rules',
   'math-basics-integral-as-area',
+  'math-basics-fundamental-theorem-of-calculus',
   'math-basics-taylor-first-steps',
   'math-basics-ode-first-steps',
+
+  // 7단계 · 확률과 통계
+  'math-basics-probability-and-sample-space',
+  'math-basics-conditional-probability-and-expectation',
   'math-basics-counting-and-binomial',
   'math-basics-descriptive-statistics',
   'math-basics-hypothesis-testing-logic',
-  'math-basics-symbolic-and-axis-checking',
+
+  // 8단계 · 선형대수 준비
+  'math-basics-matrix-notation',
+  'math-basics-linear-systems-and-elimination',
+  'math-basics-determinant-and-inverse',
+  'math-basics-surfaces-and-contours',
+
+  // 9단계 · 읽기와 검산
+  'math-basics-reading-proofs',
+  'math-basics-orders-of-magnitude-and-error',
+  'math-basics-symbolic-checking',
 ];
 
-/** 심화 트랙. 이 안에서는 순서를 지킵니다 — 뒤 글이 앞 단원을 이름으로 참조합니다. */
+/** 고급 트랙. 이 안에서는 순서를 지킵니다 — 뒤 글이 앞 단원을 이름으로 참조합니다. */
 export const mathAdvanced: string[] = [
   // A1 · 엄밀함의 도구 (5편)
   'math-adv-metric-normed-and-fixed-points',
@@ -240,50 +297,82 @@ export const mathAdvanced: string[] = [
 ];
 
 /**
- * 기초·심화 글이 **본선 몇 번을 받치는가.** `MATH-PLAN.md` 각 표의 「본선 대응」
- * 칸을 그대로 옮긴 것이고, 값은 그 칸에 적힌 순서 그대로라 첫 번호가 대표입니다.
+ * 초급·고급 글이 **중급 몇 번을 받치는가.** `MATH-PLAN.md` 각 표의 대응 칸을 옮긴
+ * 것이고, 값은 그 칸에 적힌 순서 그대로라 첫 번호가 대표입니다.
  *
- * 이 데이터가 있는 이유는 **원고가 본선을 링크하지 못하기 때문**입니다. 쓰는 순서가
- * 기초 → 본선 → 심화라 기초 원고를 쓰는 시점에 본선 `.md`가 아직 없고, 없는 글을
+ * 이 데이터가 있는 이유는 **원고가 중급을 링크하지 못하기 때문**입니다. 쓰는 순서가
+ * 초급 → 중급 → 고급이라 초급 원고를 쓰는 시점에 중급 `.md`가 아직 없고, 없는 글을
  * 링크하면 `src/routes.test.ts`의 내부 링크 검사가 섭니다. 그래서 원고 안에서는
- * 「본선 12번 · 고윳값과 고유벡터」처럼 번호와 제목만 적고, **눌러서 이동하는 것은
+ * 「중급 12번 · 고윳값과 고유벡터」처럼 번호와 제목만 적고, **눌러서 이동하는 것은
  * 이 데이터가 그립니다.** 대응이 바뀌면 원고가 아니라 여기를 고칩니다.
  *
- * 슬러그가 아니라 번호를 담는 것은 원고·계획이 본선을 부르는 단위가 번호이기
- * 때문입니다 — 「본선 12번」이라고 적힌 문장과 이 값이 같은 것을 가리켜야 합니다.
+ * 슬러그가 아니라 번호를 담는 것은 원고·계획이 중급을 부르는 단위가 번호이기
+ * 때문입니다 — 「중급 12번」이라고 적힌 문장과 이 값이 같은 것을 가리켜야 합니다.
  * 번호는 1부터이며 `mathCurriculum`의 자리와 대응합니다.
  *
- * 심화 여섯 편(마르코프 연쇄·랑주뱅·등변 신경망·구면조화함수·DP 회계·밴딧)은
- * 계획의 대응 칸이 본선을 하나도 부르지 않아 뺐습니다. 없는 것과 빈 것을 굳이
- * 구별하지 않습니다 — 어느 쪽이든 배지가 안 그려집니다.
+ * 고급 여섯 편(마르코프 연쇄·랑주뱅·등변 신경망·구면조화함수·DP 회계·밴딧)은
+ * 계획의 대응 칸이 중급을 하나도 부르지 않아 뺐습니다. 없는 것과 빈 것을 굳이
+ * 구별하지 않습니다 — 어느 쪽이든 배지가 안 그려집니다. **초급은 48편 전부가 대응을
+ * 갖습니다** — 초급 글의 존재 이유가 중급 어딘가를 받치는 것이라 빈 편이 있으면
+ * 그 편은 트랙에 있을 이유가 없습니다.
  */
 export const mathSupport: Record<string, number[]> = {
-  // 기초 23편
-  'math-basics-self-diagnosis': [1],
+  // 초급 48편 (배열 순서 = 1~48번)
+  'math-basics-what-equals-means': [1, 2],
+  'math-basics-reading-order-of-expressions': [1, 2, 3],
+  'math-basics-working-by-hand': [1, 39],
+  'math-basics-natural-numbers-and-place-value': [70, 73],
+  'math-basics-divisors-and-prime-factorization': [15, 16],
+  'math-basics-area-and-volume': [9, 34],
+  'math-basics-pythagorean-theorem': [5, 6, 7],
+  'math-basics-similarity-and-proportion': [4, 6, 11],
   'math-basics-symbol-glossary': [1, 2, 3, 17],
-  'math-basics-coordinate-plane-and-lines': [5, 6, 7, 9, 67],
-  'math-basics-quadratic-and-parabola': [12, 14, 44, 45, 46],
-  'math-basics-functions-and-graphs': [18, 24, 25],
-  'math-basics-surfaces-and-contours': [32, 14, 23, 44, 45],
-  'math-basics-reading-proofs': [6, 29, 30, 43, 54],
+  'math-basics-numbers-and-number-line': [4, 5, 17],
+  'math-basics-fractions': [24, 58],
+  // 지운 `math-basics-ratio-and-normalization`의 본론(∝ 표기, 합으로 나눠 전체를 1로
+  // 맞추기)이 여기로 왔으므로 그 대응도 그대로 받습니다.
+  'math-basics-decimals-percent-ratio': [19, 24, 21, 49, 57, 61],
+  'math-basics-powers-and-roots': [18, 40, 73],
+  'math-basics-variables-and-expressions': [2, 3],
+  'math-basics-expanding-and-factoring': [6, 14],
+  'math-basics-linear-equations': [8, 56],
+  'math-basics-inequalities-and-signs': [6, 29, 46],
   'math-basics-algebra-manipulation': [5, 6, 22, 28, 29, 46],
-  'math-basics-orders-of-magnitude-and-error': [39, 70, 71, 72],
-  'math-basics-ratio-and-normalization': [19, 24, 21, 49, 57, 61],
-  'math-basics-sequences-limits-and-series': [32, 13, 47, 48],
-  'math-basics-linear-systems-and-elimination': [7, 8, 15],
-  'math-basics-determinant-and-inverse': [12, 7, 15, 34],
+  'math-basics-functions-and-graphs': [18, 24, 25],
+  'math-basics-graph-transformations': [18, 22, 24],
+  'math-basics-exponential-function': [18, 47],
+  'math-basics-logarithms': [18, 26, 28],
+  'math-basics-quadratic-and-parabola': [12, 14, 44, 45, 46],
+  'math-basics-coordinate-plane-and-lines': [5, 6, 7, 9, 67],
   'math-basics-trigonometry-and-unit-circle': [6, 11, 43],
   'math-basics-complex-numbers-and-euler': [43],
+  // 지운 `math-basics-sequences-limits-and-series`의 대응을 27·28·29번이 나눠 받습니다.
+  'math-basics-sequences-and-sigma': [3, 13, 20],
+  'math-basics-limits': [32, 47, 73],
+  'math-basics-geometric-series': [13, 47],
+  'math-basics-average-rate-of-change': [32, 46],
+  'math-basics-what-is-a-derivative': [32, 33],
   'math-basics-derivative-rules': [29, 32, 33, 34, 35, 36, 37, 38],
-  'math-basics-integral-as-area': [20, 22, 34, 53, 65],
+  'math-basics-integral-as-area': [20, 22, 53],
+  'math-basics-fundamental-theorem-of-calculus': [20, 53, 62],
   'math-basics-taylor-first-steps': [39, 45, 46, 71],
   'math-basics-ode-first-steps': [62],
+  'math-basics-probability-and-sample-space': [19, 25],
+  'math-basics-conditional-probability-and-expectation': [19, 20],
   'math-basics-counting-and-binomial': [19, 20, 44, 67, 77],
   'math-basics-descriptive-statistics': [21, 74, 75, 79],
   'math-basics-hypothesis-testing-logic': [76, 74],
-  'math-basics-symbolic-and-axis-checking': [3, 37, 10, 39],
+  'math-basics-matrix-notation': [9, 10, 12],
+  'math-basics-linear-systems-and-elimination': [7, 8, 15],
+  'math-basics-determinant-and-inverse': [12, 7, 15, 34],
+  // 옛 초급 적분 글이 갖고 있던 '다중적분을 한 축씩 읽기'가 45번으로 왔으므로
+  // 중급 65번(고차원 기하)도 33번이 아니라 여기가 받습니다.
+  'math-basics-surfaces-and-contours': [32, 14, 23, 44, 45, 65],
+  'math-basics-reading-proofs': [6, 29, 30, 43, 54],
+  'math-basics-orders-of-magnitude-and-error': [39, 70, 71, 72, 73],
+  'math-basics-symbolic-checking': [3, 37, 10, 39],
 
-  // 심화 57편
+  // 고급 57편
   'math-adv-metric-normed-and-fixed-points': [5, 17, 46],
   'math-adv-hilbert-spaces-and-spectral-theorem': [7, 14, 15, 17],
   'math-adv-lebesgue-integral-and-convergence': [20, 22, 53, 74],
@@ -343,12 +432,12 @@ export const mathSupport: Record<string, number[]> = {
   'math-adv-social-choice-and-preference-aggregation': [55, 78],
 };
 
-/** 본선 번호(1부터)를 슬러그로. 범위 밖이면 undefined입니다. */
+/** 중급 번호(1부터)를 슬러그로. 범위 밖이면 undefined입니다. */
 export function mainTrackSlugAt(number: number): string | undefined {
   return mathCurriculum[number - 1];
 }
 
-/** 본선 슬러그의 번호(1부터). 본선이 아니면 undefined입니다. */
+/** 중급 슬러그의 번호(1부터). 중급이 아니면 undefined입니다. */
 export function mainTrackNumber(slug: string): number | undefined {
   const index = mathCurriculum.indexOf(slug);
   return index === -1 ? undefined : index + 1;
@@ -356,19 +445,19 @@ export function mainTrackNumber(slug: string): number | undefined {
 
 /** 한 글에서 뻗어 나가는 대응. 없는 방향은 빈 배열입니다. */
 export interface CurriculumLinks {
-  /** 이 글이 본선일 때, 막히면 먼저 볼 기초 */
+  /** 이 글이 중급일 때, 막히면 먼저 볼 초급 */
   foundation: string[];
-  /** 이 글이 본선일 때, 다 읽고 더 깊이 갈 심화 */
+  /** 이 글이 중급일 때, 다 읽고 더 깊이 갈 고급 */
   advanced: string[];
-  /** 이 글이 기초·심화일 때, 이 글이 받치는 본선 */
+  /** 이 글이 초급·고급일 때, 이 글이 받치는 중급 */
   mainTrack: string[];
 }
 
 const EMPTY_LINKS: CurriculumLinks = { foundation: [], advanced: [], mainTrack: [] };
 
 /**
- * `mathSupport`를 본선 쪽에서 읽을 수 있게 뒤집어 둡니다. 선언 순서를 그대로
- * 따르므로 기초는 `mathFoundation`, 심화는 `mathAdvanced` 차례로 붙습니다.
+ * `mathSupport`를 중급 쪽에서 읽을 수 있게 뒤집어 둡니다. 선언 순서를 그대로
+ * 따르므로 초급은 `mathFoundation`, 고급은 `mathAdvanced` 차례로 붙습니다.
  */
 const incoming = new Map<string, { foundation: string[]; advanced: string[] }>();
 
@@ -389,8 +478,8 @@ for (const [support, numbers] of Object.entries(mathSupport)) {
 
 /**
  * 이 글과 이어지는 다른 트랙의 글들. **슬러그만 주고 실재 여부는 보지 않습니다** —
- * 아직 `.md`가 없는 글을 거르는 것은 화면(`ArticlePage`)의 몫입니다. 기초를 먼저
- * 쓰는 동안에는 본선 대응이 거의 다 비어 있고, 본선이 나가는 대로 채워집니다.
+ * 아직 `.md`가 없는 글을 거르는 것은 화면(`ArticlePage`)의 몫입니다. 초급을 먼저
+ * 쓰는 동안에는 중급 대응이 거의 다 비어 있고, 중급이 나가는 대로 채워집니다.
  */
 export function curriculumLinks(slug: string): CurriculumLinks {
   const mainNumbers = mathSupport[slug];
@@ -408,39 +497,39 @@ export function curriculumLinks(slug: string): CurriculumLinks {
 }
 
 /**
- * 목록에서의 위치. 본선은 0부터, 기초와 심화는 오프셋을 줘서 뒤로 보냅니다.
- * 없으면 undefined라 맨 뒤로 갑니다.
- */
-export function curriculumOrder(slug: string): number | undefined {
-  const main = mathCurriculum.indexOf(slug);
-  if (main !== -1) return main;
-
-  const foundation = mathFoundation.indexOf(slug);
-  if (foundation !== -1) return 1000 + foundation;
-
-  const advanced = mathAdvanced.indexOf(slug);
-  if (advanced !== -1) return 3000 + advanced;
-
-  return undefined;
-}
-
-/** 자가진단은 처방이 본선으로 나가는 글이라 전체의 맨 마지막에 씁니다. */
-const SELF_DIAGNOSIS = 'math-basics-self-diagnosis';
-
-/**
- * 루틴이 쓰는 순서. **화면 순서와 다릅니다 — 일부러 그렇습니다.**
- * 화면은 위 `curriculumOrder()`대로 본선 → 기초 → 심화이고, 쓰는 것은 기초부터입니다.
- * 2026-08-05에 뒤집었습니다. 본선부터 쓰면 첫 배치가 전부 `level: 중급`이라
- * '기초부터'라는 약속과 어긋납니다.
+ * 루틴이 쓰는 순서. 초급 1번부터 시작해 중급, 고급으로 갑니다.
+ * 2026-08-05에 중급 → 초급에서 뒤집었습니다. 중급부터 쓰면 첫 배치가 전부
+ * `level: 중급`이라 '초급부터'라는 약속과 어긋납니다.
  *
  * 뒤집어도 링크가 깨지지 않는 이유는 규칙 하나 때문입니다 —
- * **기초·심화 글은 본문에서 아직 쓰지 않은 글을 링크하지 않습니다.**
- * 본선을 가리킬 때는 번호와 제목만 텍스트로 적고, 눌러서 이동하는 대응 배지는
+ * **초급·고급 글은 본문에서 아직 쓰지 않은 글을 링크하지 않습니다.**
+ * 중급을 가리킬 때는 번호와 제목만 텍스트로 적고, 눌러서 이동하는 대응 배지는
  * 이 파일의 데이터로 그리되 실제 `.md`가 있는 슬러그만 렌더합니다.
  */
 export const mathWritingOrder: string[] = [
-  ...mathFoundation.filter((slug) => slug !== SELF_DIAGNOSIS),
+  ...mathFoundation,
   ...mathCurriculum,
-  SELF_DIAGNOSIS,
   ...mathAdvanced,
 ];
+
+const writingIndex = new Map(mathWritingOrder.map((slug, index) => [slug, index]));
+
+/**
+ * 목록에서의 위치. `ArticleExplorer`가 이 값의 **오름차순**으로 세우므로
+ * 작을수록 위입니다.
+ *
+ * **화면 순서는 쓰는 순서의 역순입니다.** 최신 글이 맨 위여야 하는데 수학은 같은 날
+ * 다섯 편씩 나가 `pubDate`만으로는 하루 안의 순서가 잡히지 않습니다. 그래서 날짜가
+ * 아니라 `mathWritingOrder`의 자리를 뒤집어 씁니다 — 나중에 쓴 글일수록 값이 작습니다.
+ * 결과적으로 고급 마지막 편이 맨 위, 초급 1번이 맨 아래입니다.
+ *
+ * 없으면 undefined이고, 그런 글은 `ArticleExplorer`가 맨 뒤로 보냅니다.
+ */
+export function curriculumOrder(slug: string): number | undefined {
+  const index = writingIndex.get(slug);
+  if (index === undefined) return undefined;
+
+  // 마지막에 쓰는 글이 0입니다. 0은 유효한 순서이므로 호출하는 쪽이 falsy로
+  // 걸러 버리면 그 글 하나만 order 없이 목록 맨 뒤로 밀립니다.
+  return mathWritingOrder.length - 1 - index;
+}
