@@ -2,8 +2,7 @@ import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { useNavigate } from 'react-router';
 import { CornerDownLeft, Search, X } from 'lucide-react';
-import { categoryById } from '../data/categories';
-import { countByScope, searchArticles, splitMatch, type SearchScope } from '../lib/search';
+import { countByScope, search, splitMatch, type SearchScope } from '../lib/search';
 import { captureFocusOrigin, restoreFocus } from '../lib/restoreFocus';
 
 interface SearchOverlayProps {
@@ -28,7 +27,7 @@ export function SearchOverlay({ open, onClose }: SearchOverlayProps) {
   const [cursor, setCursor] = useState(0);
 
   const counts = useMemo(() => countByScope(), []);
-  const hits = useMemo(() => searchArticles(query, scope), [query, scope]);
+  const hits = useMemo(() => search(query, scope), [query, scope]);
 
   const close = useCallback(() => {
     onClose();
@@ -38,9 +37,9 @@ export function SearchOverlay({ open, onClose }: SearchOverlayProps) {
   }, [onClose]);
 
   const goTo = useCallback(
-    (slug: string) => {
+    (href: string) => {
       close();
-      navigate(`/articles/${slug}`);
+      navigate(href);
     },
     [close, navigate],
   );
@@ -97,7 +96,7 @@ export function SearchOverlay({ open, onClose }: SearchOverlayProps) {
       setCursor((index) => (index - 1 + hits.length) % hits.length);
     } else if (event.key === 'Enter') {
       event.preventDefault();
-      goTo(hits[cursor].article.slug);
+      goTo(hits[cursor].href);
     }
   };
 
@@ -113,7 +112,7 @@ export function SearchOverlay({ open, onClose }: SearchOverlayProps) {
         className="search-panel"
         role="dialog"
         aria-modal="true"
-        aria-label="글 검색"
+        aria-label="글과 소식 검색"
         onKeyDown={handleKeyDown}
       >
         <div className="search-panel-input">
@@ -127,7 +126,7 @@ export function SearchOverlay({ open, onClose }: SearchOverlayProps) {
             aria-activedescendant={hits.length > 0 ? `search-hit-${cursor}` : undefined}
             aria-autocomplete="list"
             autoComplete="off"
-            placeholder="제목, 개념, 태그로 검색"
+            placeholder="글 제목, 개념, 소식으로 검색"
             value={query}
             onChange={(event) => setQuery(event.target.value)}
           />
@@ -154,11 +153,10 @@ export function SearchOverlay({ open, onClose }: SearchOverlayProps) {
         {query.trim().length > 0 && (
           <ul className="search-results" id="search-results" role="listbox" aria-label="검색 결과" ref={listRef}>
             {hits.map((hit, index) => {
-              const category = categoryById[hit.article.categoryId];
-              const [before, match, after] = splitMatch(hit.article.title, query);
+              const [before, match, after] = splitMatch(hit.title, query);
 
               return (
-                <li key={hit.article.slug}>
+                <li key={hit.key}>
                   <button
                     type="button"
                     id={`search-hit-${index}`}
@@ -181,22 +179,24 @@ export function SearchOverlay({ open, onClose }: SearchOverlayProps) {
                     */
                     tabIndex={-1}
                     onMouseEnter={() => setCursor(index)}
-                    onClick={() => goTo(hit.article.slug)}
+                    onClick={() => goTo(hit.href)}
                   >
-                    <span className="search-hit-category" style={{ color: category.accentText }}>
-                      {category.name}
+                    {/* 글은 카테고리 이름, 소식은 회사 이름이 섭니다. */}
+                    <span className="search-hit-category" style={{ color: hit.labelColor }}>
+                      {hit.label}
                     </span>
                     <span className="search-hit-title">
                       {before}
                       {match && <mark>{match}</mark>}
                       {after}
                     </span>
-                    <span className="search-hit-meta">{hit.article.readTime} MIN</span>
+                    {/* 글은 읽는 시간, 소식은 발표 날짜. */}
+                    <span className="search-hit-meta">{hit.meta}</span>
                   </button>
                 </li>
               );
             })}
-            {hits.length === 0 && <li className="search-empty">일치하는 글이 없습니다.</li>}
+            {hits.length === 0 && <li className="search-empty">일치하는 것이 없습니다.</li>}
           </ul>
         )}
 

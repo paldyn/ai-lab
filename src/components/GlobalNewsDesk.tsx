@@ -1,5 +1,6 @@
 import { useMemo, useState, type CSSProperties } from 'react';
 import { ArrowUpRight, Eye } from 'lucide-react';
+import { useSearchParams } from 'react-router';
 import {
   categoryLabel,
   feedDate,
@@ -65,10 +66,20 @@ interface GlobalNewsDeskProps {
   kind?: GlobalNewsKind;
 }
 
+/**
+ * 열려 있는 모달을 가리키는 쿼리 이름. `/news?item=<id>`.
+ *
+ * 소식에는 자기 주소가 없어 검색 결과가 가리킬 곳이 없었습니다. 상태로만 들고
+ * 있으면 이미 /news에 서 있는 사람이 검색으로 다른 소식을 골랐을 때 아무 일도
+ * 일어나지 않습니다 — 화면이 다시 마운트되지 않으니 초기값을 다시 읽지 않습니다.
+ * 그래서 주소를 유일한 근거로 둡니다. 링크로 특정 소식을 여는 길도 함께 생깁니다.
+ */
+const ITEM_PARAM = 'item';
+
 export function GlobalNewsDesk({ kind }: GlobalNewsDeskProps) {
   const [source, setSource] = useState<SourceFilter>('All');
-  const [selectedNews, setSelectedNews] = useState<NewsPreviewItem | null>(null);
   const [visible, setVisible] = useState(FEED_INITIAL);
+  const [searchParams, setSearchParams] = useSearchParams();
 
   // 어느 탭이든 발표된 순서 그대로 읽습니다. 회사별로 묶어 보고 싶으면
   // 바로 아래 출처 띠가 그 일을 맡습니다 — 목록까지 회사순으로 뭉치면
@@ -165,9 +176,9 @@ export function GlobalNewsDesk({ kind }: GlobalNewsDeskProps) {
     );
   };
 
-  const openPreview = (item: NewsItem) => {
+  const previewOf = (item: NewsItem): NewsPreviewItem => {
     const meta = getSource(item.source);
-    setSelectedNews({
+    return {
       id: item.id,
       source: meta.displayName,
       publishedAt: item.publishedAt,
@@ -189,8 +200,32 @@ export function GlobalNewsDesk({ kind }: GlobalNewsDeskProps) {
         놓았는데, 같은 모달을 기업 소식과 나눠 쓰는 지금은 그러면 기준이 갈립니다.
       */
       ...releasePreviewFields(item),
-    });
+    };
   };
+
+  /*
+    모달은 주소가 정합니다. 눌러서 열든 검색 결과로 들어오든 한 경로만 씁니다.
+
+    항목은 `kindItems`가 아니라 전체에서 찾습니다 — 모델 탭에 서 있는 사람이
+    기업 소식 링크를 받았을 때도 열려야 하고, 모달 자체는 어느 탭인지와 무관합니다.
+  */
+  const openId = searchParams.get(ITEM_PARAM);
+  const selectedNews = useMemo(() => {
+    if (!openId) return null;
+    const item = newsItems.find((entry) => entry.id === openId);
+    return item ? previewOf(item) : null;
+  }, [openId]);
+
+  const setOpenId = (id: string | null) => {
+    // 다른 쿼리를 건드리지 않습니다. 지금은 없지만 나중에 생기면 지워집니다.
+    const next = new URLSearchParams(searchParams);
+    if (id) next.set(ITEM_PARAM, id);
+    else next.delete(ITEM_PARAM);
+    // 히스토리를 남기지 않습니다. 목록에서 여덟 건을 훑어보면 뒤로 가기가 여덟 번이 됩니다.
+    setSearchParams(next, { replace: true });
+  };
+
+  const openPreview = (item: NewsItem) => setOpenId(item.id);
 
   return (
     <section id="global-news" className="global-news-section scroll-mt-28">
@@ -321,7 +356,7 @@ export function GlobalNewsDesk({ kind }: GlobalNewsDeskProps) {
           <p>Anthropic, OpenAI, Google의 공식 발표를 직접 확인하고 선별해 요약합니다.</p>
         </div>
       </div>
-      <NewsPreviewModal item={selectedNews} onClose={() => setSelectedNews(null)} />
+      <NewsPreviewModal item={selectedNews} onClose={() => setOpenId(null)} />
     </section>
   );
 }
