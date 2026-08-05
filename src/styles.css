@@ -726,19 +726,22 @@ input:focus-visible {
   gap: 12px;
 }
 
+/*
+  로고를 감싸던 칩을 걷었습니다. 마크만 남기고 그만큼 키웁니다 — 칩이 없으면
+  같은 크기의 마크가 허공에 뜬 것처럼 작아 보입니다. 칩이 하던 다른 일(어두운
+  마크를 흰 바탕에 올려 보이게 하는 것)은 테마별 반전이 대신합니다.
+*/
 .news-lead-logo {
   display: grid;
-  width: 42px;
-  height: 42px;
+  width: 28px;
+  height: 28px;
   flex-shrink: 0;
   place-items: center;
-  border: 1px solid var(--border);
-  background: var(--bg);
 }
 
 .news-lead-logo img {
-  width: 20px;
-  height: 20px;
+  width: 28px;
+  height: 28px;
   object-fit: contain;
 }
 
@@ -2892,7 +2895,8 @@ input:focus-visible {
 .company-news-column header {
   display: grid;
   min-height: 76px;
-  grid-template-columns: 40px minmax(0, 1fr) auto;
+  /* 첫 열은 로고 폭과 같아야 합니다. 더 넓으면 gap 말고 빈칸이 한 번 더 낍니다. */
+  grid-template-columns: 26px minmax(0, 1fr) auto;
   gap: 12px;
   align-items: center;
   border-bottom: 1px solid var(--border);
@@ -2908,18 +2912,25 @@ input:focus-visible {
 
 .company-logo {
   display: inline-flex;
-  width: 40px;
-  height: 40px;
+  width: 26px;
+  height: 26px;
   align-items: center;
   justify-content: center;
-  border: 1px solid #e5e5e5;
-  background: #ffffff;
 }
 
 .company-logo img {
-  width: 20px;
-  height: 20px;
+  width: 26px;
+  height: 26px;
   object-fit: contain;
+}
+
+/*
+  칩을 걷으면서 생긴 일. Anthropic·OpenAI 마크는 단색 검정이라 흰 칩 위에서는
+  테마와 무관했는데, 이제 페이지 배경 위에 바로 놓여 다크에서 사라집니다.
+  다른 로고들이 이미 쓰는 반전을 여기에도 겁니다. Google은 컬러라 그대로 둡니다.
+*/
+[data-theme='dark'] .company-logo img.is-monochrome {
+  filter: invert(1);
 }
 
 .company-news-column header h3 {
@@ -3054,34 +3065,28 @@ input:focus-visible {
 
 .model-radar-top {
   display: grid;
-  grid-template-columns: 38px minmax(0, 1fr) auto;
+  /* 위 `.company-news-column header`와 같은 이유로 로고 폭에 맞춥니다. */
+  grid-template-columns: 26px minmax(0, 1fr) auto;
   gap: 11px;
   align-items: center;
 }
 
 /*
-  로고 칩. 라이트에서는 흰 바탕에 얹지만, 다크에서 흰 사각형만 그대로 두면
-  검은 화면에 조각이 떠 있는 것처럼 보입니다. 아래 다크 규칙이 바탕과 테두리를
-  테마 토큰으로 바꾸고, 그 위에서 안 보이게 되는 GPT 마크만 밝은 색으로 뒤집습니다.
+  칩 없이 마크만 놓습니다. 마크는 mask라 색을 우리가 정하므로, 칩이 사라져도
+  아래 `.model-logo-*`가 테마마다 보이는 색을 줍니다 — 검정 GPT 마크만 다크에서
+  밝은 값으로 갈립니다.
 */
 .model-company-logo {
   display: inline-flex;
-  width: 38px;
-  height: 38px;
+  width: 26px;
+  height: 26px;
   align-items: center;
   justify-content: center;
-  border: 1px solid #e5e5e5;
-  background: #ffffff;
-}
-
-[data-theme='dark'] .model-company-logo {
-  border-color: var(--border);
-  background: var(--surface);
 }
 
 .model-company-logo > span {
-  width: 19px;
-  height: 19px;
+  width: 26px;
+  height: 26px;
   mask: var(--model-logo) center / contain no-repeat;
   -webkit-mask: var(--model-logo) center / contain no-repeat;
 }

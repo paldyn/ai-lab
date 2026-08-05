@@ -187,8 +187,11 @@ export function HomePage() {
                 >
                   <header>
                     <span className="company-logo">
-                      {/* 로고 칩은 항상 흰 배경이라 테마별 반전이 필요 없습니다. */}
-                      <img src={assetUrl(company.logo)} alt="" />
+                      <img
+                        src={assetUrl(company.logo)}
+                        alt=""
+                        className={company.monochrome ? 'is-monochrome' : ''}
+                      />
                     </span>
                     <h3>{company.displayName}</h3>
                     <b>{all.length} UPDATES</b>
