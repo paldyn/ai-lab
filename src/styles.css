@@ -2819,10 +2819,17 @@ input:focus-visible {
   font-size: 13px;
 }
 
+/*
+  줄 사이를 여백이 아니라 선으로 가릅니다. 더 보기로 네 줄, 여덟 줄이 되면
+  28px 여백만으로는 어디까지가 한 줄인지 읽히지 않았습니다. 세로 여백을 없애고
+  카드마다 아래 선을 그으면 뉴스 목록과 같은 결이 되고, 마지막 줄의 선이 그대로
+  구역을 닫습니다.
+*/
 .model-radar-grid {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 28px;
+  column-gap: 28px;
+  row-gap: 0;
   border-top: 1px solid var(--border);
 }
 
@@ -2833,7 +2840,8 @@ input:focus-visible {
   min-width: 0;
   min-height: 310px;
   flex-direction: column;
-  padding: 22px 0 0;
+  padding: 22px 0 24px;
+  border-bottom: 1px solid var(--border);
   cursor: pointer;
   transition: background-color 160ms ease;
 }
@@ -3137,22 +3145,6 @@ input:focus-visible {
     row-gap: 0;
   }
 
-  .model-radar-item:nth-child(2) {
-    border-right: 0;
-  }
-
-  .model-radar-item:nth-child(-n + 2) {
-    border-bottom: 1px solid var(--border);
-  }
-
-  .model-radar-item:nth-child(3) {
-    padding-left: 0;
-  }
-
-  .model-radar-item:nth-child(4) {
-    padding-right: 0;
-    border-right: 0;
-  }
 
   .news-desk-grid {
     grid-template-columns: 1fr;
