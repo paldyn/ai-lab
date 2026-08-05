@@ -3,10 +3,10 @@ import { ArrowRight, Eye } from 'lucide-react';
 import { Link } from 'react-router';
 import { ArticleCard } from '../components/ArticleCard';
 import { ModelRadar } from '../components/ModelRadar';
-import { NewsPreviewModal, type NewsPreviewItem } from '../components/NewsPreviewModal';
+import { NewsPreviewModal, releasePreviewFields, type NewsPreviewItem } from '../components/NewsPreviewModal';
 import { Seo } from '../components/Seo';
 import { articles } from '../data/articles';
-import { categoryLabel, newsBySource, newsItems } from '../data/news';
+import { categoryLabel, feedDate, newsBySource, newsItems } from '../data/news';
 import { categoryById } from '../data/categories';
 import { assetUrl, sourceList } from '../data/sources';
 import type { SectionId } from '../types/article';
@@ -200,7 +200,18 @@ export function HomePage() {
                     {items.map((item) => (
                       <article key={item.id} className="company-news-item">
                         <div>
-                          <p>{item.signal}<span aria-hidden="true"> · </span>{item.publishedAt.replaceAll('-', '.')}</p>
+                          {/*
+                            뉴스 목록과 같은 순서 — 날짜가 앞이고 한 급 크게 섭니다.
+                            형식도 같은 `feedDate`로 냅니다. 클래스가 같은데 한쪽만
+                            '2026.07.30'이면 크기·색이 같고 형식만 다른 날짜가 생깁니다.
+                          */}
+                          <p>
+                            <time className="news-feed-date" dateTime={item.publishedAt}>
+                              {feedDate(item.publishedAt)}
+                            </time>
+                            <span aria-hidden="true"> · </span>
+                            {item.signal}
+                          </p>
                           <h4>
                             <button
                               type="button"
@@ -217,6 +228,8 @@ export function HomePage() {
                                 accent: company.accent,
                                 logo: assetUrl(company.logo),
                                 monochrome: company.monochrome,
+                                // 같은 항목을 뉴스 목록에서 열었을 때와 같은 팝업이어야 합니다.
+                                ...releasePreviewFields(item),
                               })}
                             >
                               {item.title}
@@ -234,7 +247,7 @@ export function HomePage() {
         </div>
       </section>
 
-      <ModelRadar limit={4} showNewsLink />
+      <ModelRadar />
 
       <section className="site-wrap home-articles-section">
         <div className="simple-section-heading">
