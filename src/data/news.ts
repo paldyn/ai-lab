@@ -165,7 +165,7 @@ const entries: NewsItem[] = [
       '모델이 각 증명을 Lean으로 형식화했다.',
     publishedAt: '2026-08-01',
     category: 'Research',
-    signal: 'AI FOR MATH',
+    signal: '수학과 AI',
     url: 'https://openai.com/index/ten-advances-in-mathematics',
   },
   {
@@ -180,7 +180,7 @@ const entries: NewsItem[] = [
       'Rentals·Viator 앱 연동도 함께 열렸다.',
     publishedAt: '2026-07-31',
     category: 'Product',
-    signal: 'CONSUMER AI',
+    signal: '소비자 AI',
     url: 'https://blog.google/products-and-platforms/products/gemini/gemini-drop-july-2026/',
   },
   {
@@ -194,7 +194,7 @@ const entries: NewsItem[] = [
       '인신매매와 강제노동 정황이 담긴 대화도 함께 확인됐다.',
     publishedAt: '2026-07-31',
     category: 'Safety',
-    signal: 'AI MISUSE',
+    signal: 'AI 악용',
     url: 'https://openai.com/index/disrupting-malicious-uses-of-ai-criminal-scam-operation',
   },
   {
@@ -209,7 +209,7 @@ const entries: NewsItem[] = [
       '함께 공개했다.',
     publishedAt: '2026-07-31',
     category: 'Infrastructure',
-    signal: 'COMPUTE ECONOMICS',
+    signal: '컴퓨트 경제성',
     url: 'https://openai.com/index/building-abundant-intelligence',
   },
   {
@@ -224,7 +224,7 @@ const entries: NewsItem[] = [
       '설명했다.',
     publishedAt: '2026-07-31',
     category: 'Safety',
-    signal: 'EU AI ACT',
+    signal: 'EU AI 법',
     url: 'https://openai.com/index/advancing-responsible-ai-across-europe',
   },
   {
@@ -238,7 +238,7 @@ const entries: NewsItem[] = [
       '장비에는 연결이 살아 있었다.',
     publishedAt: '2026-07-30',
     category: 'Safety',
-    signal: 'EVAL SAFETY',
+    signal: '평가 중 안전',
     url: 'https://www.anthropic.com/news/investigating-incidents-cybersecurity-evals',
   },
   {
@@ -253,7 +253,7 @@ const entries: NewsItem[] = [
       '수 있다.',
     publishedAt: '2026-07-30',
     category: 'Frontier',
-    signal: 'MODEL ECONOMICS',
+    signal: '모델 경제성',
     url: 'https://openai.com/index/advancing-the-price-performance-frontier-with-gpt-5-6',
   },
   {
@@ -267,7 +267,7 @@ const entries: NewsItem[] = [
       'Google AI Pro 구독자 대상 제공 국가를 160개국 이상 추가했다.',
     publishedAt: '2026-07-30',
     category: 'Product',
-    signal: 'AGENTIC BROWSING',
+    signal: '에이전틱 브라우징',
     url: 'https://blog.google/innovation-and-ai/products/gemini-app/gemini-spark-updates-july-2026/',
   },
   {
@@ -281,7 +281,7 @@ const entries: NewsItem[] = [
       '처리하고, 실제 모터 제어는 하위 VLA 모델에 넘긴다.',
     publishedAt: '2026-07-30',
     category: 'Domain',
-    signal: 'EMBODIED AI',
+    signal: '체화 AI',
     url: 'https://blog.google/innovation-and-ai/models-and-research/google-deepmind/gemini-robotics-er-2/',
     model: {
       family: 'Gemini',
@@ -306,7 +306,7 @@ const entries: NewsItem[] = [
       '모드를 켜면 화면 맥락을 읽는 작업까지 처리한다.',
     publishedAt: '2026-07-29',
     category: 'Product',
-    signal: 'DESKTOP ASSISTANT',
+    signal: '데스크톱 어시스턴트',
     url: 'https://blog.google/innovation-and-ai/products/gemini-app/speak-naturally-gemini-app-mac-os/',
   },
   {
@@ -320,7 +320,7 @@ const entries: NewsItem[] = [
       '조절할 수 있게 됐다.',
     publishedAt: '2026-07-29',
     category: 'Multimodal',
-    signal: 'GENERATIVE MUSIC',
+    signal: '생성형 음악',
     url: 'https://deepmind.google/blog/were-launching-lyria-35-in-google-flow-music-with-advances-across-musicality-lyrics-vocals-and-creative-control/',
   },
   {
@@ -334,7 +334,7 @@ const entries: NewsItem[] = [
       'Codex 안의 GPT-5.6 Sol이 직접 수행했다고 밝혔다.',
     publishedAt: '2026-07-29',
     category: 'Infrastructure',
-    signal: 'INFERENCE EFFICIENCY',
+    signal: '추론 효율',
     url: 'https://openai.com/index/gpt-5-6-frontier-intelligence-efficiency',
   },
   {
@@ -349,7 +349,7 @@ const entries: NewsItem[] = [
       '1로 줄었다.',
     publishedAt: '2026-07-29',
     category: 'Research',
-    signal: 'EVAL HARNESS DESIGN',
+    signal: '평가 하네스 설계',
     url: 'https://openai.com/index/how-two-settings-tripled-our-arc-agi-3-scores',
   },
   {
@@ -363,7 +363,7 @@ const entries: NewsItem[] = [
       '토큰 예산 상한, 스케줄 트리거, 무료 등급이 더해졌다.',
     publishedAt: '2026-07-28',
     category: 'Product',
-    signal: 'AGENT PLATFORM',
+    signal: '에이전트 플랫폼',
     url: 'https://blog.google/innovation-and-ai/technology/developers-tools/expanding-managed-agents-gemini-api-3-6-flash-hooks/',
   },
   {
@@ -377,7 +377,7 @@ const entries: NewsItem[] = [
       '제어하고 서로 다른 로봇이 협업하게 한다.',
     publishedAt: '2026-07-28',
     category: 'Domain',
-    signal: 'EMBODIED AI',
+    signal: '체화 AI',
     url: 'https://deepmind.google/blog/gemini-robotics-2-brings-whole-body-intelligence-to-robots/',
     model: {
       family: 'Gemini',
@@ -402,7 +402,7 @@ const entries: NewsItem[] = [
       '강력한 모델의 안전성 시험 의무화 세 가지를 지지한다고 했다.',
     publishedAt: '2026-07-27',
     category: 'Safety',
-    signal: 'OPEN WEIGHTS POLICY',
+    signal: '오픈 웨이트 정책',
     url: 'https://www.anthropic.com/news/position-open-weights-models',
   },
   {
@@ -416,7 +416,7 @@ const entries: NewsItem[] = [
       '옮긴다.',
     publishedAt: '2026-07-27',
     category: 'Infrastructure',
-    signal: 'CLOUD HPC',
+    signal: '클라우드 HPC',
     url: 'https://blog.google/innovation-and-ai/infrastructure-and-cloud/google-cloud/noaa-google-cloud-weather-forecasting/',
   },
   {
@@ -430,7 +430,7 @@ const entries: NewsItem[] = [
       '모델이자 Claude Pro에서 쓸 수 있는 가장 강한 모델이다.',
     publishedAt: '2026-07-24',
     category: 'Frontier',
-    signal: 'MODEL ECONOMICS',
+    signal: '모델 경제성',
     url: 'https://www.anthropic.com/news/claude-opus-5',
     model: {
       family: 'Claude',
@@ -456,7 +456,7 @@ const entries: NewsItem[] = [
       'Health를 연결하면 일반 대화에서도 ChatGPT가 그 정보를 참고한다.',
     publishedAt: '2026-07-23',
     category: 'Product',
-    signal: 'CONSUMER HEALTH AI',
+    signal: '소비자 건강 AI',
     url: 'https://openai.com/index/health-in-chatgpt',
   },
   {
@@ -470,7 +470,7 @@ const entries: NewsItem[] = [
       '배포형 제품이며 셀프서비스로는 제공하지 않는다.',
     publishedAt: '2026-07-22',
     category: 'Product',
-    signal: 'ENTERPRISE AGENTS',
+    signal: '기업용 에이전트',
     url: 'https://openai.com/index/introducing-openai-presence',
   },
   {
@@ -484,7 +484,7 @@ const entries: NewsItem[] = [
       'DeepMind의 과학용 AI 도구 포트폴리오를 제공한다.',
     publishedAt: '2026-07-22',
     category: 'Safety',
-    signal: 'NATIONAL SCIENCE AI',
+    signal: '국가 과학 AI',
     url: 'https://deepmind.google/blog/accelerating-the-frontiers-of-scientific-discovery-googles-40m-commitment-to-the-genesis-mission/',
   },
   {
@@ -498,7 +498,7 @@ const entries: NewsItem[] = [
       '계약을 맺었고 2028년부터 2032년까지 단계적으로 공급된다.',
     publishedAt: '2026-07-22',
     category: 'Infrastructure',
-    signal: 'COMPUTE BUILDOUT',
+    signal: '컴퓨트 증설',
     url: 'https://openai.com/index/building-ai-infrastructure-with-the-effingham-county-community',
   },
   {
@@ -512,7 +512,7 @@ const entries: NewsItem[] = [
       '직업별·지역별 AI 사용 패턴을 자연어로 물어볼 수 있다.',
     publishedAt: '2026-07-22',
     category: 'Product',
-    signal: 'AI LABOR DATA',
+    signal: 'AI 노동 데이터',
     url: 'https://www.anthropic.com/news/anthropic-economic-index-connector',
   },
   {
@@ -526,7 +526,7 @@ const entries: NewsItem[] = [
       '접근권, 사이버보안 역량 개방을 함께 묶었다.',
     publishedAt: '2026-07-22',
     category: 'Safety',
-    signal: 'NATIONAL SCIENCE AI',
+    signal: '국가 과학 AI',
     url: 'https://openai.com/index/advancing-the-next-era-of-national-science',
   },
   {
@@ -540,7 +540,7 @@ const entries: NewsItem[] = [
       'Skills를 함께 제공한다.',
     publishedAt: '2026-07-21',
     category: 'Product',
-    signal: 'SMB ADOPTION',
+    signal: '중소기업 도입',
     url: 'https://openai.com/index/introducing-chatgpt-small-business-program',
   },
   {
@@ -554,7 +554,7 @@ const entries: NewsItem[] = [
       '전 모델이 거부를 완화한 상태로 사용됐다.',
     publishedAt: '2026-07-21',
     category: 'Safety',
-    signal: 'AI CYBER RISK',
+    signal: 'AI 사이버 위험',
     url: 'https://openai.com/index/hugging-face-model-evaluation-security-incident',
   },
   {
@@ -569,7 +569,7 @@ const entries: NewsItem[] = [
       '오늘부터 쓸 수 있다.',
     publishedAt: '2026-07-21',
     category: 'Frontier',
-    signal: 'MODEL ECONOMICS',
+    signal: '모델 경제성',
     url: 'https://deepmind.google/blog/introducing-gemini-3-6-flash-3-5-flash-lite-and-3-5-flash-cyber/',
     model: {
       family: 'Gemini',
@@ -594,7 +594,7 @@ const entries: NewsItem[] = [
       '것으로, 공공 교육과 정책 활동에만 쓰이며 선거에는 쓸 수 없다.',
     publishedAt: '2026-07-21',
     category: 'Corporate',
-    signal: 'AI POLICY FUNDING',
+    signal: 'AI 정책 후원',
     url: 'https://www.anthropic.com/news/donation-public-first-action',
   },
   {
@@ -608,7 +608,7 @@ const entries: NewsItem[] = [
       'BNY를 이끄는 금융 서비스 경영자다.',
     publishedAt: '2026-07-21',
     category: 'Corporate',
-    signal: 'CORPORATE GOVERNANCE',
+    signal: '기업 지배구조',
     url: 'https://openai.com/index/david-velez-robin-vince-join-openai-boards',
   },
   {
@@ -622,7 +622,7 @@ const entries: NewsItem[] = [
       '배포를 중단하고, 궤적 단위 감시를 새로 만든 뒤 접근을 복구했다.',
     publishedAt: '2026-07-20',
     category: 'Safety',
-    signal: 'LONG-HORIZON SAFETY',
+    signal: '장기 실행 안전',
     url: 'https://openai.com/index/safety-alignment-long-horizon-models',
   },
   {
@@ -637,7 +637,7 @@ const entries: NewsItem[] = [
       '제공된다.',
     publishedAt: '2026-07-17',
     category: 'Domain',
-    signal: 'CYBER DEFENSE MODELS',
+    signal: '사이버 방어 모델',
     url: 'https://deepmind.google/blog/introducing-gemini-3-5-flash-cyber/',
     model: {
       family: 'Gemini',
@@ -663,7 +663,7 @@ const entries: NewsItem[] = [
       '밝혔다.',
     publishedAt: '2026-07-16',
     category: 'Safety',
-    signal: 'AI BIOSECURITY',
+    signal: 'AI 생물보안',
     url: 'https://deepmind.google/blog/our-approach-to-bioresilience/',
   },
   {
@@ -678,7 +678,7 @@ const entries: NewsItem[] = [
       '동기화된다.',
     publishedAt: '2026-07-16',
     category: 'Product',
-    signal: 'PRODUCT CONSOLIDATION',
+    signal: '제품 통합',
     url: 'https://blog.google/innovation-and-ai/products/gemini-notebook/notebooklm-gemini-notebook/',
   },
   {
@@ -692,7 +692,7 @@ const entries: NewsItem[] = [
       'GPT-5.6 Sol은 직접 프롬프트 인젝션 실패율이 0.05%까지 내려갔다.',
     publishedAt: '2026-07-15',
     category: 'Safety',
-    signal: 'AUTOMATED RED TEAMING',
+    signal: '자동 레드팀',
     url: 'https://openai.com/index/unlocking-self-improvement-gpt-red',
   },
   {
@@ -706,7 +706,7 @@ const entries: NewsItem[] = [
       '초 완성을 목표로 하는 연방 사이버 테스트 프레임워크를 지지한다고 밝혔다.',
     publishedAt: '2026-07-15',
     category: 'Safety',
-    signal: 'FRONTIER REGULATION',
+    signal: '프런티어 규제',
     url: 'https://openai.com/index/advancing-ai-safety-through-state-and-federal-action',
   },
   {
@@ -720,7 +720,7 @@ const entries: NewsItem[] = [
       '배터리 2.9GWh 규모이며 전체 가동 목표는 2029년이다.',
     publishedAt: '2026-07-14',
     category: 'Infrastructure',
-    signal: 'ENERGY BUILDOUT',
+    signal: '에너지 증설',
     url: 'https://blog.google/innovation-and-ai/infrastructure-and-cloud/global-network/steel-river-arkansas/',
   },
   {
@@ -734,7 +734,7 @@ const entries: NewsItem[] = [
       '커리큘럼 연결과 교수용 스킬 라이브러리를 함께 제공한다.',
     publishedAt: '2026-07-14',
     category: 'Product',
-    signal: 'AI IN EDUCATION',
+    signal: '교육 현장 AI',
     url: 'https://www.anthropic.com/news/claude-for-teachers',
   },
   {
@@ -748,7 +748,7 @@ const entries: NewsItem[] = [
       'Anthropic for Startups 프로그램에도 추가된다.',
     publishedAt: '2026-07-14',
     category: 'Corporate',
-    signal: 'RESEARCH FUNDING',
+    signal: '연구 지원금',
     url: 'https://www.anthropic.com/news/canadian-ai-research',
   },
   {
@@ -762,7 +762,7 @@ const entries: NewsItem[] = [
       '설정에서 쓸 수 있다.',
     publishedAt: '2026-07-09',
     category: 'Product',
-    signal: 'AI WELLBEING',
+    signal: 'AI 웰빙',
     url: 'https://www.anthropic.com/news/reflect-with-claude',
   },
   {
@@ -777,7 +777,7 @@ const entries: NewsItem[] = [
       '되며, Microsoft는 OpenAI API로 직접 접속해 제공한다.',
     publishedAt: '2026-07-09',
     category: 'Product',
-    signal: 'ENTERPRISE DISTRIBUTION',
+    signal: '기업 공급 확대',
     url: 'https://openai.com/index/gpt-5-6-preferred-model-microsoft-365-copilot',
   },
   {
@@ -791,7 +791,7 @@ const entries: NewsItem[] = [
       'ChatGPT·Codex·API에 24시간에 걸쳐 배포된다.',
     publishedAt: '2026-07-09',
     category: 'Frontier',
-    signal: 'MODEL ECONOMICS',
+    signal: '모델 경제성',
     url: 'https://openai.com/index/gpt-5-6',
     model: {
       family: 'GPT',
@@ -816,7 +816,7 @@ const entries: NewsItem[] = [
       '앱에 Codex와 내장 브라우저가 통합된다.',
     publishedAt: '2026-07-09',
     category: 'Product',
-    signal: 'AGENTIC WORKSPACE',
+    signal: '에이전틱 작업 공간',
     url: 'https://openai.com/index/chatgpt-for-your-most-ambitious-work',
   },
   {
@@ -830,7 +830,7 @@ const entries: NewsItem[] = [
       '탈옥을 찾는 것이 과제다.',
     publishedAt: '2026-07-09',
     category: 'Safety',
-    signal: 'BIOSECURITY RED TEAM',
+    signal: '바이오 레드팀',
     url: 'https://openai.com/index/bio-bug-bounty',
   },
   {
@@ -844,7 +844,7 @@ const entries: NewsItem[] = [
       '가진 독립 감독 기구다.',
     publishedAt: '2026-07-09',
     category: 'Corporate',
-    signal: 'AI GOVERNANCE',
+    signal: 'AI 거버넌스',
     url: 'https://www.anthropic.com/news/ben-bernanke',
   },
   {
@@ -858,7 +858,7 @@ const entries: NewsItem[] = [
       'Platform을 통해 제공되며 2025년 12월 비공개 프리뷰를 거쳤다.',
     publishedAt: '2026-07-09',
     category: 'Product',
-    signal: 'ENTERPRISE AGENTS',
+    signal: '기업용 에이전트',
     url: 'https://blog.google/innovation-and-ai/infrastructure-and-cloud/google-cloud/alphaevolve-on-cloud/',
   },
   {
@@ -873,7 +873,7 @@ const entries: NewsItem[] = [
       '전환 권고를 철회했다.',
     publishedAt: '2026-07-08',
     category: 'Research',
-    signal: 'BENCHMARK INTEGRITY',
+    signal: '벤치마크 신뢰성',
     url: 'https://openai.com/index/separating-signal-from-noise-coding-evaluations',
   },
   {
@@ -887,7 +887,7 @@ const entries: NewsItem[] = [
       '구조이며, 검색·추론이 필요한 작업은 백그라운드의 GPT-5.5에 위임한다.',
     publishedAt: '2026-07-08',
     category: 'Multimodal',
-    signal: 'REALTIME VOICE',
+    signal: '실시간 음성',
     url: 'https://openai.com/index/introducing-gpt-live',
     model: {
       family: 'GPT',
@@ -913,7 +913,7 @@ const entries: NewsItem[] = [
       '맺었고, 기존 전쟁부 계약의 세 가지 사용 제한도 이 원칙과 함께 적용된다.',
     publishedAt: '2026-07-08',
     category: 'Safety',
-    signal: 'NATIONAL SECURITY AI',
+    signal: '국가안보 AI',
     url: 'https://openai.com/index/government-national-security-partnerships',
   },
   {
@@ -928,7 +928,7 @@ const entries: NewsItem[] = [
       '동작한다.',
     publishedAt: '2026-07-07',
     category: 'Product',
-    signal: 'MANAGED AGENTS',
+    signal: '관리형 에이전트',
     url: 'https://blog.google/innovation-and-ai/technology/developers-tools/expanding-managed-agents-gemini-api/',
   },
   {
@@ -942,7 +942,7 @@ const entries: NewsItem[] = [
       'A24에 투자도 단행했다.',
     publishedAt: '2026-07-03',
     category: 'Corporate',
-    signal: 'CREATIVE TOOLING',
+    signal: '창작 도구 개발',
     url: 'https://deepmind.google/blog/google-deepmind-and-a24-announce-first-of-its-kind-research-partnership/',
   },
   {
@@ -956,7 +956,7 @@ const entries: NewsItem[] = [
       '이중용도·무해 네 갈래로 나눠 분류기가 차단 여부를 판단한다.',
     publishedAt: '2026-07-02',
     category: 'Safety',
-    signal: 'CYBER SAFEGUARDS',
+    signal: '사이버 안전장치',
     url: 'https://www.anthropic.com/news/fable-safeguards-jailbreak-framework',
   },
   {
@@ -970,7 +970,7 @@ const entries: NewsItem[] = [
       '넣었고 차단된 요청은 오푸스 4.8로 넘어간다.',
     publishedAt: '2026-06-30',
     category: 'Frontier',
-    signal: 'EXPORT CONTROLS',
+    signal: '수출 통제',
     url: 'https://www.anthropic.com/news/redeploying-fable-5',
   },
   {
@@ -984,7 +984,7 @@ const entries: NewsItem[] = [
       'GPT-5.6 Sol의 통과율은 28.7%다.',
     publishedAt: '2026-06-30',
     category: 'Research',
-    signal: 'SCIENCE BENCHMARK',
+    signal: '과학 벤치마크',
     url: 'https://openai.com/index/introducing-genebench-pro',
   },
   {
@@ -998,7 +998,7 @@ const entries: NewsItem[] = [
       '함께 추가했다.',
     publishedAt: '2026-06-30',
     category: 'Product',
-    signal: 'DESKTOP AGENTS',
+    signal: '데스크톱 에이전트',
     url: 'https://blog.google/innovation-and-ai/products/gemini-app/gemini-spark-updates-june-2026/',
   },
   {
@@ -1012,7 +1012,7 @@ const entries: NewsItem[] = [
       '플래시는 출력 1초당 0.10달러다.',
     publishedAt: '2026-06-30',
     category: 'Multimodal',
-    signal: 'GENERATIVE MEDIA PRICING',
+    signal: '생성 미디어 가격',
     url: 'https://deepmind.google/blog/start-building-with-nano-banana-2-lite-and-gemini-omni-flash/',
     model: {
       family: 'Gemini',
@@ -1037,7 +1037,7 @@ const entries: NewsItem[] = [
       '도입 가격이 적용된다.',
     publishedAt: '2026-06-30',
     category: 'Frontier',
-    signal: 'AGENTIC MODELS',
+    signal: '에이전틱 모델',
     url: 'https://www.anthropic.com/news/claude-sonnet-5',
     model: {
       family: 'Claude',
@@ -1062,7 +1062,7 @@ const entries: NewsItem[] = [
       '그림·원고 수정까지 한 환경에서 처리한다.',
     publishedAt: '2026-06-30',
     category: 'Product',
-    signal: 'SCIENTIFIC AGENTS',
+    signal: '과학 에이전트',
     url: 'https://www.anthropic.com/news/claude-science-ai-workbench',
   },
   {
@@ -1076,7 +1076,7 @@ const entries: NewsItem[] = [
       '이미지를 만든다.',
     publishedAt: '2026-06-29',
     category: 'Product',
-    signal: 'PERSONAL CONTEXT',
+    signal: '개인 컨텍스트',
     url: 'https://blog.google/innovation-and-ai/products/gemini-app/personal-intelligence-nano-banana-us-expansion/',
   },
   {
@@ -1090,7 +1090,7 @@ const entries: NewsItem[] = [
       '소프트웨어 개발 영역에 AI를 배치한다.',
     publishedAt: '2026-06-28',
     category: 'Product',
-    signal: 'ENTERPRISE AI',
+    signal: '기업용 AI',
     url: 'https://openai.com/index/hp-frontier-partnership',
   },
   {
@@ -1104,7 +1104,7 @@ const entries: NewsItem[] = [
       '몇 주 안에 더 넓게 공개할 계획이다.',
     publishedAt: '2026-06-26',
     category: 'Frontier',
-    signal: 'FRONTIER MODELS',
+    signal: '프런티어 모델군',
     url: 'https://openai.com/index/previewing-gpt-5-6-sol',
     model: {
       family: 'GPT',
@@ -1129,7 +1129,7 @@ const entries: NewsItem[] = [
       '배포를 목표로 한다.',
     publishedAt: '2026-06-24',
     category: 'Infrastructure',
-    signal: 'CUSTOM SILICON',
+    signal: '자체 칩',
     url: 'https://openai.com/index/openai-broadcom-jalapeno-inference-chip',
   },
   {
@@ -1142,7 +1142,7 @@ const entries: NewsItem[] = [
       '넣었다. 기존에는 Gemini 2.5 기반 별도 모델로만 쓸 수 있던 기능이다.',
     publishedAt: '2026-06-24',
     category: 'Frontier',
-    signal: 'COMPUTER USE AGENTS',
+    signal: '컴퓨터 사용 에이전트',
     url: 'https://deepmind.google/blog/introducing-computer-use-in-gemini-3-5-flash/',
   },
   {
@@ -1156,7 +1156,7 @@ const entries: NewsItem[] = [
       '기준으로 옮기는 개방형 사양을 만든다.',
     publishedAt: '2026-06-23',
     category: 'Safety',
-    signal: 'AI STANDARDS',
+    signal: 'AI 표준',
     url: 'https://openai.com/index/helping-build-shared-standards-for-advanced-ai',
   },
   {
@@ -1170,7 +1170,7 @@ const entries: NewsItem[] = [
       '당일부터 쓸 수 있고 Opus 4.8에서 동작한다.',
     publishedAt: '2026-06-23',
     category: 'Product',
-    signal: 'ENTERPRISE AGENTS',
+    signal: '기업용 에이전트',
     url: 'https://www.anthropic.com/news/introducing-claude-tag',
   },
   {
@@ -1184,7 +1184,7 @@ const entries: NewsItem[] = [
       '스키마가 고정됐다.',
     publishedAt: '2026-06-22',
     category: 'Product',
-    signal: 'AGENT PLATFORMS',
+    signal: '에이전트 플랫폼 전환',
     url: 'https://blog.google/innovation-and-ai/technology/developers-tools/interactions-api-general-availability/',
   },
   {
@@ -1198,7 +1198,7 @@ const entries: NewsItem[] = [
       'GPT-5.5-Cyber 정식 버전을 함께 내놨다.',
     publishedAt: '2026-06-22',
     category: 'Product',
-    signal: 'AI CYBER DEFENSE',
+    signal: 'AI 사이버 방어',
     url: 'https://openai.com/index/daybreak-securing-the-world',
   },
   {
@@ -1212,7 +1212,7 @@ const entries: NewsItem[] = [
       '수준에 도달했다고 밝혔다.',
     publishedAt: '2026-06-18',
     category: 'Product',
-    signal: 'HEALTH AI',
+    signal: '건강 AI',
     url: 'https://openai.com/index/improving-health-intelligence-in-chatgpt',
   },
   {
@@ -1226,7 +1226,7 @@ const entries: NewsItem[] = [
       '18건에서 진단이 확정됐다.',
     publishedAt: '2026-06-18',
     category: 'Research',
-    signal: 'AI FOR SCIENCE',
+    signal: '과학 AI',
     url: 'https://openai.com/index/diagnose-rare-childhood-diseases',
   },
   {
@@ -1240,7 +1240,7 @@ const entries: NewsItem[] = [
       '있다.',
     publishedAt: '2026-06-18',
     category: 'Product',
-    signal: 'ENTERPRISE GOVERNANCE',
+    signal: '기업 관리 기능',
     url: 'https://openai.com/index/chatgpt-enterprise-spend-controls',
   },
   {
@@ -1254,7 +1254,7 @@ const entries: NewsItem[] = [
       '도입 현황과 대학·스타트업 지원 계획도 함께 공개했다.',
     publishedAt: '2026-06-17',
     category: 'Corporate',
-    signal: 'KOREA MARKET EXPANSION',
+    signal: '한국 시장 진출',
     url: 'https://www.anthropic.com/news/seoul-office-partnerships-korean-ai-ecosystem',
   },
   {
@@ -1268,7 +1268,7 @@ const entries: NewsItem[] = [
       '과업을 작성했고, 채점은 과업별 세부 평가 기준으로 이뤄진다.',
     publishedAt: '2026-06-17',
     category: 'Research',
-    signal: 'SCIENCE BENCHMARKS',
+    signal: '생명과학 벤치마크',
     url: 'https://openai.com/index/introducing-life-sci-bench',
   },
   {
@@ -1282,7 +1282,7 @@ const entries: NewsItem[] = [
       '21명과 관리 추론 능력을 견줬다.',
     publishedAt: '2026-06-17',
     category: 'Research',
-    signal: 'MEDICAL AI',
+    signal: '의료 AI',
     url: 'https://blog.google/innovation-and-ai/models-and-research/google-research/amie-for-disease-management-in-nature/',
   },
   {
@@ -1297,7 +1297,7 @@ const entries: NewsItem[] = [
       '88%에서 수율이 올랐다.',
     publishedAt: '2026-06-17',
     category: 'Research',
-    signal: 'AI FOR SCIENCE',
+    signal: '과학 AI',
     url: 'https://openai.com/index/ai-chemist-improves-reaction',
   },
   {
@@ -1312,7 +1312,7 @@ const entries: NewsItem[] = [
       '계층을 덧붙이는 방식이다.',
     publishedAt: '2026-06-16',
     category: 'Safety',
-    signal: 'AGENT SECURITY',
+    signal: '에이전트 보안',
     url: 'https://deepmind.google/blog/securing-the-future-of-ai-agents/',
   },
   {
@@ -1326,7 +1326,7 @@ const entries: NewsItem[] = [
       '바람직하지 않은 행동의 발생률을 추정한다.',
     publishedAt: '2026-06-16',
     category: 'Research',
-    signal: 'SAFETY EVALUATION',
+    signal: '안전성 평가',
     url: 'https://openai.com/index/deployment-simulation',
   },
   {
@@ -1340,7 +1340,7 @@ const entries: NewsItem[] = [
       '에너지·교육 지원 프로그램도 함께 내놨다.',
     publishedAt: '2026-06-15',
     category: 'Infrastructure',
-    signal: 'DATA CENTER BUILDOUT',
+    signal: '데이터센터 증설',
     url: 'https://blog.google/innovation-and-ai/infrastructure-and-cloud/global-network/alabama-investment-june-2026/',
   },
   {
@@ -1354,7 +1354,7 @@ const entries: NewsItem[] = [
       '인증 컨설턴트 30만 명 양성을 목표로 한다.',
     publishedAt: '2026-06-14',
     category: 'Corporate',
-    signal: 'ENTERPRISE PARTNERS',
+    signal: '기업 파트너',
     url: 'https://openai.com/index/introducing-openai-partner-network',
   },
   {
@@ -1368,7 +1368,7 @@ const entries: NewsItem[] = [
       '영향을 받지 않으며 복구를 추진 중이라고 했다.',
     publishedAt: '2026-06-12',
     category: 'Safety',
-    signal: 'EXPORT CONTROL ACTION',
+    signal: '수출 통제 조치',
     url: 'https://www.anthropic.com/news/fable-mythos-access',
   },
   {
@@ -1382,7 +1382,7 @@ const entries: NewsItem[] = [
       '이어가며 사기 대응 법안 7건을 지지한다는 내용도 함께 공개했다.',
     publishedAt: '2026-06-12',
     category: 'Safety',
-    signal: 'AI FRAUD ENFORCEMENT',
+    signal: 'AI 사기 단속',
     url: 'https://blog.google/innovation-and-ai/technology/safety-security/combatting-ai-scams/',
   },
   {
@@ -1396,7 +1396,7 @@ const entries: NewsItem[] = [
       '대한 기대와 우려, 규제 선호를 항목별 응답 비율로 정리했다.',
     publishedAt: '2026-06-12',
     category: 'Corporate',
-    signal: 'PUBLIC OPINION DATA',
+    signal: '여론 데이터',
     url: 'https://www.anthropic.com/news/anthropic-public-record',
   },
   {
@@ -1410,7 +1410,7 @@ const entries: NewsItem[] = [
       '안에서 에이전트가 작업을 이어가도록 만들겠다는 계획이다.',
     publishedAt: '2026-06-11',
     category: 'Corporate',
-    signal: 'PERSISTENT AGENT RUNTIME',
+    signal: '상시 에이전트 런타임',
     url: 'https://openai.com/index/openai-to-acquire-ona',
   },
   {
@@ -1424,7 +1424,7 @@ const entries: NewsItem[] = [
       '준수하겠다고 밝혔다.',
     publishedAt: '2026-06-11',
     category: 'Safety',
-    signal: 'CONTENT PROVENANCE',
+    signal: '콘텐츠 출처 표시',
     url: 'https://openai.com/index/supporting-eu-trustworthy-ai-ecosystem',
   },
   {
@@ -1438,7 +1438,7 @@ const entries: NewsItem[] = [
       '소셜미디어 댓글과 이미지를 생성했다.',
     publishedAt: '2026-06-10',
     category: 'Safety',
-    signal: 'INFLUENCE OPERATIONS',
+    signal: '영향력 공작',
     url: 'https://openai.com/index/prc-linked-influence-operations-ai-debates',
   },
   {
@@ -1452,7 +1452,7 @@ const entries: NewsItem[] = [
       'Universal Credits를 그대로 사용하며 몇 주 내 제공을 시작한다.',
     publishedAt: '2026-06-10',
     category: 'Product',
-    signal: 'ENTERPRISE PROCUREMENT',
+    signal: '기업 조달',
     url: 'https://openai.com/index/openai-on-oracle-cloud',
   },
   {
@@ -1466,7 +1466,7 @@ const entries: NewsItem[] = [
       '때 생기는 문제를 네 영역으로 나눠 다룬다.',
     publishedAt: '2026-06-10',
     category: 'Safety',
-    signal: 'MULTI-AGENT SAFETY',
+    signal: '멀티 에이전트 안전',
     url: 'https://deepmind.google/blog/investing-in-multi-agent-ai-safety-research/',
   },
   {
@@ -1480,7 +1480,7 @@ const entries: NewsItem[] = [
       '최대 4배 빠른 생성 속도를 낸다.',
     publishedAt: '2026-06-10',
     category: 'Open',
-    signal: 'TEXT DIFFUSION MODELS',
+    signal: '텍스트 디퓨전 모델',
     url: 'https://deepmind.google/blog/diffusiongemma-4x-faster-text-generation/',
     model: {
       family: 'Gemini',
@@ -1506,7 +1506,7 @@ const entries: NewsItem[] = [
       '파일럿을 함께 운영한다.',
     publishedAt: '2026-06-09',
     category: 'Safety',
-    signal: 'AI INDUSTRIAL POLICY',
+    signal: 'AI 산업 정책',
     url: 'https://openai.com/index/industrial-policy-for-the-intelligence-age',
   },
   {
@@ -1520,7 +1520,7 @@ const entries: NewsItem[] = [
       '지원하며 Apache 2.0 라이선스로 배포된다.',
     publishedAt: '2026-06-09',
     category: 'Open',
-    signal: 'OPEN MULTIMODAL MODELS',
+    signal: '오픈 멀티모달 모델',
     url: 'https://deepmind.google/blog/introducing-gemma-4-12b-a-unified-encoder-free-multimodal-model/',
   },
   {
@@ -1534,7 +1534,7 @@ const entries: NewsItem[] = [
       '속도, 음높이를 유지한 음성으로 옮기며 개발자용 공개 프리뷰가 시작됐다.',
     publishedAt: '2026-06-09',
     category: 'Multimodal',
-    signal: 'REALTIME SPEECH AI',
+    signal: '실시간 음성 AI',
     url: 'https://deepmind.google/blog/fluid-natural-voice-translation-with-gemini-35-live-translate/',
     model: {
       family: 'Gemini',
@@ -1559,7 +1559,7 @@ const entries: NewsItem[] = [
       '올랐고, 일부 영역 안전장치를 푼 Mythos 5는 제한 배포된다.',
     publishedAt: '2026-06-09',
     category: 'Frontier',
-    signal: 'FRONTIER MODEL ACCESS',
+    signal: '프런티어 모델 접근',
     url: 'https://www.anthropic.com/news/claude-fable-5-mythos-5',
     model: {
       family: 'Claude',
@@ -1584,7 +1584,7 @@ const entries: NewsItem[] = [
       '있다고 설명했다.',
     publishedAt: '2026-06-08',
     category: 'Corporate',
-    signal: 'IPO FILING',
+    signal: '상장 서류 제출',
     url: 'https://openai.com/index/openai-submits-confidential-s-1',
   },
   {
@@ -1598,7 +1598,7 @@ const entries: NewsItem[] = [
       '대응 조치를 함께 밝혔다.',
     publishedAt: '2026-06-08',
     category: 'Safety',
-    signal: 'FRAUD THREAT LANDSCAPE',
+    signal: '사기 위협 동향',
     url: 'https://blog.google/innovation-and-ai/technology/safety-security/fraud-scams-advisory-june-2026/',
   },
   {
@@ -1612,7 +1612,7 @@ const entries: NewsItem[] = [
       'Economic Research와 프로젝트 단위로 협업한다.',
     publishedAt: '2026-06-08',
     category: 'Corporate',
-    signal: 'ECONOMIC RESEARCH',
+    signal: '경제 연구',
     url: 'https://openai.com/index/economic-research-exchange',
   },
   {
@@ -1626,7 +1626,7 @@ const entries: NewsItem[] = [
       '자동화는 목표가 아니라고 못 박았다.',
     publishedAt: '2026-06-08',
     category: 'Corporate',
-    signal: 'AI ACCESS',
+    signal: 'AI 접근성',
     url: 'https://openai.com/index/built-to-benefit-everyone-our-plan',
   },
   {
@@ -1640,7 +1640,7 @@ const entries: NewsItem[] = [
       '호출해 로컬과 클라우드 추론을 바꿔 쓸 수 있으며 프리뷰로 제공된다.',
     publishedAt: '2026-06-08',
     category: 'Product',
-    signal: 'PLATFORM DISTRIBUTION',
+    signal: '플랫폼 배포',
     url: 'https://blog.google/innovation-and-ai/technology/developers-tools/bringing-gemini-models-to-apple-developers/',
   },
   {
@@ -1654,7 +1654,7 @@ const entries: NewsItem[] = [
       '함께 배포한다.',
     publishedAt: '2026-06-05',
     category: 'Open',
-    signal: 'ON-DEVICE INFERENCE',
+    signal: '온디바이스 추론',
     url: 'https://blog.google/innovation-and-ai/technology/developers-tools/quantization-aware-training-gemma-4/',
   },
   {
@@ -1668,7 +1668,7 @@ const entries: NewsItem[] = [
       '부지에 두고 전용 청정 전력으로 수요를 충당하는 방식이다.',
     publishedAt: '2026-06-04',
     category: 'Infrastructure',
-    signal: 'COMPUTE BUILDOUT',
+    signal: '컴퓨트 증설',
     url: 'https://blog.google/innovation-and-ai/infrastructure-and-cloud/global-network/meitner-energy-center/',
   },
   {
@@ -1682,7 +1682,7 @@ const entries: NewsItem[] = [
       '국가와 Free·Go 사용자로 넓힌다.',
     publishedAt: '2026-06-04',
     category: 'Product',
-    signal: 'CHATGPT MEMORY',
+    signal: 'ChatGPT 기억',
     url: 'https://openai.com/index/chatgpt-memory-dreaming',
   },
   {
@@ -1696,7 +1696,7 @@ const entries: NewsItem[] = [
       '과제를 작성·푸시·실행·내려받고, 코딩 에이전트에 맡길 수도 있다.',
     publishedAt: '2026-06-04',
     category: 'Research',
-    signal: 'EVAL TOOLING',
+    signal: '평가 도구',
     url: 'https://blog.google/innovation-and-ai/technology/developers-tools/build-kaggle--benchmarks-locally/',
   },
   {
@@ -1710,7 +1710,7 @@ const entries: NewsItem[] = [
       '목표로 제시했다.',
     publishedAt: '2026-06-04',
     category: 'Safety',
-    signal: 'AI BIOSECURITY',
+    signal: 'AI 생물보안',
     url: 'https://openai.com/index/biodefense-in-the-intelligence-age',
   },
   {
@@ -1724,7 +1724,7 @@ const entries: NewsItem[] = [
       '매일 현황을 갱신한다.',
     publishedAt: '2026-06-03',
     category: 'Corporate',
-    signal: 'PARTNER ECOSYSTEM',
+    signal: '파트너 생태계',
     url: 'https://www.anthropic.com/news/services-track-partner-hub',
   },
   {
@@ -1738,7 +1738,7 @@ const entries: NewsItem[] = [
       '출처, AI 인프라와 에너지까지 우선순위별로 지지하는 정책을 밝혔다.',
     publishedAt: '2026-06-03',
     category: 'Safety',
-    signal: 'AI POLICY',
+    signal: 'AI 정책',
     url: 'https://openai.com/index/public-policy-agenda',
   },
   {
@@ -1752,7 +1752,7 @@ const entries: NewsItem[] = [
       '기관 대상 접근을 전 세계로 넓혔다.',
     publishedAt: '2026-06-03',
     category: 'Domain',
-    signal: 'LIFE SCIENCES MODELS',
+    signal: '생명과학 모델',
     url: 'https://openai.com/index/introducing-new-capabilities-to-gpt-rosalind',
     model: {
       family: 'GPT',
@@ -1778,7 +1778,7 @@ const entries: NewsItem[] = [
       '계획을 가동하는 세 갈래 전략을 담았다.',
     publishedAt: '2026-06-03',
     category: 'Safety',
-    signal: 'FRONTIER GOVERNANCE',
+    signal: '프런티어 거버넌스',
     url: 'https://openai.com/index/frontier-safety-blueprint',
   },
   {
@@ -1792,7 +1792,7 @@ const entries: NewsItem[] = [
       '일러스트를 만들어 준다.',
     publishedAt: '2026-06-03',
     category: 'Product',
-    signal: 'PERSONAL AI',
+    signal: '개인용 AI',
     url: 'https://blog.google/innovation-and-ai/models-and-research/google-labs/dreambeans/',
   },
   {
@@ -1807,7 +1807,7 @@ const entries: NewsItem[] = [
       '56%로 올랐다.',
     publishedAt: '2026-06-03',
     category: 'Safety',
-    signal: 'AI THREAT INTEL',
+    signal: 'AI 위협 인텔리전스',
     url: 'https://www.anthropic.com/news/AI-enabled-cyber-threats-mitre-attack',
   },
   {
@@ -1821,7 +1821,7 @@ const entries: NewsItem[] = [
       '기금을 내놓는다.',
     publishedAt: '2026-06-02',
     category: 'Infrastructure',
-    signal: 'COMPUTE BUILDOUT',
+    signal: '컴퓨트 증설',
     url: 'https://blog.google/innovation-and-ai/infrastructure-and-cloud/global-network/blue-yellow-and-green-google-invests-in-its-first-data-center-in-sweden/',
   },
   {
@@ -1835,7 +1835,7 @@ const entries: NewsItem[] = [
       '고위험·치명 등급 취약점 1만 건 이상을 찾아냈다.',
     publishedAt: '2026-06-02',
     category: 'Safety',
-    signal: 'AI CYBER DEFENSE',
+    signal: 'AI 사이버 방어',
     url: 'https://www.anthropic.com/news/expanding-project-glasswing',
   },
   {
@@ -1849,7 +1849,7 @@ const entries: NewsItem[] = [
       '노동자이며, 이 집단이 3배 빠르게 늘고 있다.',
     publishedAt: '2026-06-02',
     category: 'Product',
-    signal: 'KNOWLEDGE WORK ADOPTION',
+    signal: '지식 노동 확산',
     url: 'https://openai.com/index/codex-for-knowledge-work',
   },
   {
@@ -1863,7 +1863,7 @@ const entries: NewsItem[] = [
       '6종은 62개 앱과 110개 기술을 함께 제공한다.',
     publishedAt: '2026-06-02',
     category: 'Product',
-    signal: 'KNOWLEDGE WORK AGENTS',
+    signal: '지식 노동 에이전트',
     url: 'https://openai.com/index/codex-for-every-role-tool-workflow',
   },
   {
@@ -1877,7 +1877,7 @@ const entries: NewsItem[] = [
       '감사 등 9개 원칙도 함께 제시했다.',
     publishedAt: '2026-06-02',
     category: 'Safety',
-    signal: 'YOUTH AI SAFETY',
+    signal: '청소년 AI 안전',
     url: 'https://openai.com/index/advancing-youth-safety-and-opportunity-through-global-leadership',
   },
   {
@@ -1891,7 +1891,7 @@ const entries: NewsItem[] = [
       '등장하는 만평을 만들어 가짜로 보이는 X 계정으로 올렸다.',
     publishedAt: '2026-06-01',
     category: 'Safety',
-    signal: 'INFLUENCE OPERATIONS',
+    signal: '영향력 공작',
     url: 'https://openai.com/index/disrupting-malicious-uses-of-ai-tech-and-tariffs',
   },
   {
@@ -1905,7 +1905,7 @@ const entries: NewsItem[] = [
       '참여하며 Stargate 프로그램의 일부다.',
     publishedAt: '2026-06-01',
     category: 'Infrastructure',
-    signal: 'COMPUTE BUILDOUT',
+    signal: '컴퓨트 증설',
     url: 'https://openai.com/index/stargate-michigan-data-center',
   },
   {
@@ -1919,7 +1919,7 @@ const entries: NewsItem[] = [
       '바뀌면 공개하겠다고 밝혔다.',
     publishedAt: '2026-06-01',
     category: 'Safety',
-    signal: 'AI POLICY',
+    signal: 'AI 정책',
     url: 'https://openai.com/index/our-views-on-ai-policy-and-political-advocacy',
   },
   {
@@ -1933,7 +1933,7 @@ const entries: NewsItem[] = [
       '상용과 정부 클라우드 리전을 모두 지원한다.',
     publishedAt: '2026-06-01',
     category: 'Product',
-    signal: 'ENTERPRISE DISTRIBUTION',
+    signal: '기업 공급 확대',
     url: 'https://openai.com/index/openai-frontier-models-and-codex-are-now-available-on-aws',
   },
   {
@@ -1947,7 +1947,7 @@ const entries: NewsItem[] = [
       '이미지를 만들어 X에 올렸다.',
     publishedAt: '2026-06-01',
     category: 'Safety',
-    signal: 'COVERT INFLUENCE OPS',
+    signal: '비밀 영향력 공작',
     url: 'https://openai.com/index/disrupting-malicious-uses-of-ai-data-center-bandwagon',
   },
   {
@@ -1961,7 +1961,7 @@ const entries: NewsItem[] = [
       '선택할 수 있게 되며 실제 진행은 시장 상황에 달렸다고 밝혔다.',
     publishedAt: '2026-06-01',
     category: 'Corporate',
-    signal: 'IPO FILING',
+    signal: '상장 서류 제출',
     url: 'https://www.anthropic.com/news/confidential-draft-s1-sec',
   },
   {
@@ -1975,7 +1975,7 @@ const entries: NewsItem[] = [
       '보고하라는 내용이다.',
     publishedAt: '2026-05-29',
     category: 'Safety',
-    signal: 'EVAL STANDARDS',
+    signal: '평가 표준',
     url: 'https://openai.com/index/trustworthy-third-party-evaluations-foundations',
   },
   {
@@ -1990,7 +1990,7 @@ const entries: NewsItem[] = [
       '액세스도 확대한다.',
     publishedAt: '2026-05-29',
     category: 'Safety',
-    signal: 'BIODEFENSE ACCESS',
+    signal: '생물방어 접근',
     url: 'https://openai.com/index/strengthening-societal-resilience-with-rosalind-biodefense',
   },
   {
@@ -2004,7 +2004,7 @@ const entries: NewsItem[] = [
       '확대에 쓴다.',
     publishedAt: '2026-05-28',
     category: 'Corporate',
-    signal: 'COMPUTE BUILDOUT',
+    signal: '컴퓨트 증설',
     url: 'https://www.anthropic.com/news/series-h',
   },
   {
@@ -2019,7 +2019,7 @@ const entries: NewsItem[] = [
       '어떻게 대응하는지 정리한 문서다.',
     publishedAt: '2026-05-28',
     category: 'Safety',
-    signal: 'AI REGULATION',
+    signal: 'AI 규제',
     url: 'https://openai.com/index/openai-frontier-governance-framework',
   },
   {
@@ -2033,7 +2033,7 @@ const entries: NewsItem[] = [
       '제어와 동적 워크플로 기능이 함께 출시됐다.',
     publishedAt: '2026-05-28',
     category: 'Frontier',
-    signal: 'AGENTIC MODELS',
+    signal: '에이전틱 모델',
     url: 'https://www.anthropic.com/news/claude-opus-4-8',
     model: {
       family: 'Claude',
@@ -2058,7 +2058,7 @@ const entries: NewsItem[] = [
       '도입 사례도 함께 공개했다.',
     publishedAt: '2026-05-27',
     category: 'Corporate',
-    signal: 'ENTERPRISE EXPANSION',
+    signal: '기업 사업 확장',
     url: 'https://www.anthropic.com/news/milan-office-opening',
   },
   {
@@ -2072,7 +2072,7 @@ const entries: NewsItem[] = [
       '방어 도구를 열며, 이번 주기 정치 광고는 받지 않는다.',
     publishedAt: '2026-05-27',
     category: 'Safety',
-    signal: 'ELECTION INTEGRITY',
+    signal: '선거 무결성',
     url: 'https://openai.com/index/election-safeguards-2026',
   },
   {
@@ -2086,7 +2086,7 @@ const entries: NewsItem[] = [
       '파트너십과 개발자 커뮤니티 지원을 맡는다.',
     publishedAt: '2026-05-26',
     category: 'Corporate',
-    signal: 'KOREA EXPANSION',
+    signal: '한국 진출',
     url: 'https://www.anthropic.com/news/kiyoung-choi-representative-director-anthropic-korea',
   },
   {
@@ -2100,7 +2100,7 @@ const entries: NewsItem[] = [
       '보도가 출처 링크와 함께 ChatGPT 요약에 표시된다.',
     publishedAt: '2026-05-25',
     category: 'Product',
-    signal: 'MEDIA LICENSING',
+    signal: '미디어 라이선스',
     url: 'https://openai.com/index/grupo-folha-grupo-uol-partnership',
   },
   {
@@ -2114,7 +2114,7 @@ const entries: NewsItem[] = [
       '국가별 배포 규모와 초기 조사 수치를 함께 내놨다.',
     publishedAt: '2026-05-20',
     category: 'Corporate',
-    signal: 'NATIONAL AI EDUCATION',
+    signal: '국가 AI 교육',
     url: 'https://openai.com/index/the-next-phase-of-education-for-countries',
   },
   {
@@ -2128,7 +2128,7 @@ const entries: NewsItem[] = [
       '온디바이스 분할 모델과 Gemma 4 E4B가 함께 돈다.',
     publishedAt: '2026-05-20',
     category: 'Product',
-    signal: 'ON-DEVICE AGENTS',
+    signal: '온디바이스 에이전트',
     url: 'https://blog.google/innovation-and-ai/models-and-research/google-deepmind/running-guide-agent/',
   },
   {
@@ -2142,7 +2142,7 @@ const entries: NewsItem[] = [
       '설명한 해설 논문도 함께 나왔다.',
     publishedAt: '2026-05-20',
     category: 'Research',
-    signal: 'AI MATH DISCOVERY',
+    signal: 'AI 수학 발견',
     url: 'https://openai.com/index/model-disproves-discrete-geometry-conjecture',
   },
   {
@@ -2156,7 +2156,7 @@ const entries: NewsItem[] = [
       '공간 음향이 목소리를 화자 위치에 고정한다.',
     publishedAt: '2026-05-20',
     category: 'Product',
-    signal: 'IMMERSIVE MEETINGS',
+    signal: '몰입형 회의',
     url: 'https://blog.google/innovation-and-ai/models-and-research/google-research/google-beam-group-meetings/',
   },
   {
@@ -2170,7 +2170,7 @@ const entries: NewsItem[] = [
       '디자인 파일을 입력으로 받는다.',
     publishedAt: '2026-05-19',
     category: 'Product',
-    signal: 'AGENTIC DESIGN',
+    signal: '에이전틱 디자인',
     url: 'https://blog.google/innovation-and-ai/models-and-research/google-labs/stitch-updates/',
   },
   {
@@ -2184,7 +2184,7 @@ const entries: NewsItem[] = [
       '웹사이트를 만들 수 있다.',
     publishedAt: '2026-05-19',
     category: 'Product',
-    signal: 'SMB CONTENT AGENTS',
+    signal: '중소기업 콘텐츠 에이전트',
     url: 'https://blog.google/innovation-and-ai/models-and-research/google-labs/pomelli-agentic-capabilities/',
   },
   {
@@ -2198,7 +2198,7 @@ const entries: NewsItem[] = [
       'Gemini Spark, 영상 생성 모델 Gemini Omni를 내놨다.',
     publishedAt: '2026-05-19',
     category: 'Product',
-    signal: 'PROACTIVE AGENTS',
+    signal: '선제형 에이전트',
     url: 'https://blog.google/innovation-and-ai/products/gemini-app/next-evolution-gemini-app/',
   },
   {
@@ -2212,7 +2212,7 @@ const entries: NewsItem[] = [
       '리눅스 샌드박스에서 코드를 실행하고 웹을 탐색한다.',
     publishedAt: '2026-05-19',
     category: 'Product',
-    signal: 'MANAGED AGENTS',
+    signal: '관리형 에이전트',
     url: 'https://blog.google/innovation-and-ai/technology/developers-tools/managed-agents-gemini-api/',
   },
   {
@@ -2226,7 +2226,7 @@ const entries: NewsItem[] = [
       '밖 첫 응용 AI 랩을 싱가포르에 세운다.',
     publishedAt: '2026-05-19',
     category: 'Corporate',
-    signal: 'NATIONAL AI PARTNERSHIP',
+    signal: '국가 AI 파트너십',
     url: 'https://openai.com/index/introducing-openai-for-singapore',
   },
   {
@@ -2240,7 +2240,7 @@ const entries: NewsItem[] = [
       '있고, 모바일 앱과 함께 140개국 이상으로 확대됐다.',
     publishedAt: '2026-05-19',
     category: 'Product',
-    signal: 'GENERATIVE MEDIA',
+    signal: '생성형 미디어',
     url: 'https://blog.google/innovation-and-ai/models-and-research/google-labs/flow-updates/',
   },
   {
@@ -2254,7 +2254,7 @@ const entries: NewsItem[] = [
       '대며, 2027년 500MW 가동을 목표로 한다.',
     publishedAt: '2026-05-19',
     category: 'Infrastructure',
-    signal: 'COMPUTE BUILDOUT',
+    signal: '컴퓨트 증설',
     url: 'https://blog.google/innovation-and-ai/infrastructure-and-cloud/google-cloud/blackstone-tpu-cloud/',
   },
   {
@@ -2268,7 +2268,7 @@ const entries: NewsItem[] = [
       '공개 검증 도구를 프리뷰로 열었다.',
     publishedAt: '2026-05-19',
     category: 'Safety',
-    signal: 'CONTENT PROVENANCE',
+    signal: '콘텐츠 출처 표시',
     url: 'https://openai.com/index/advancing-content-provenance',
   },
   {
@@ -2283,7 +2283,7 @@ const entries: NewsItem[] = [
       '동작하도록 한다.',
     publishedAt: '2026-05-18',
     category: 'Infrastructure',
-    signal: 'ENTERPRISE AI INFRA',
+    signal: '기업 AI 인프라',
     url: 'https://openai.com/index/dell-codex-enterprise-partnership',
   },
   {
@@ -2297,7 +2297,7 @@ const entries: NewsItem[] = [
       'SDK를 API 초기부터 전부 만들어 왔다.',
     publishedAt: '2026-05-18',
     category: 'Corporate',
-    signal: 'MCP ECOSYSTEM',
+    signal: 'MCP 생태계',
     url: 'https://www.anthropic.com/news/anthropic-acquires-stainless',
   },
   {
@@ -2311,7 +2311,7 @@ const entries: NewsItem[] = [
       'AI Ultra 구독자에게 순차 제공된다.',
     publishedAt: '2026-05-17',
     category: 'Product',
-    signal: 'WORLD MODELS',
+    signal: '월드 모델',
     url: 'https://deepmind.google/blog/simulate-real-world-places-with-project-genie-and-street-view/',
   },
   {
@@ -2325,7 +2325,7 @@ const entries: NewsItem[] = [
       '탐지 API를 신뢰 파트너 대상으로 내놓는다.',
     publishedAt: '2026-05-17',
     category: 'Safety',
-    signal: 'CONTENT PROVENANCE',
+    signal: '콘텐츠 출처 표시',
     url: 'https://deepmind.google/blog/making-it-easier-to-understand-how-content-was-created-and-edited/',
   },
   {
@@ -2339,7 +2339,7 @@ const entries: NewsItem[] = [
       'macOS·리눅스·윈도우를 지원한다.',
     publishedAt: '2026-05-17',
     category: 'Product',
-    signal: 'AGENTIC CODING',
+    signal: '에이전틱 코딩',
     url: 'https://deepmind.google/blog/introducing-google-antigravity-2-0/',
   },
   {
@@ -2353,7 +2353,7 @@ const entries: NewsItem[] = [
       '대화로 고칠 수 있다.',
     publishedAt: '2026-05-17',
     category: 'Multimodal',
-    signal: 'MULTIMODAL MODELS',
+    signal: '멀티모달 모델',
     url: 'https://deepmind.google/blog/introducing-gemini-omni/',
     model: {
       family: 'Gemini',
@@ -2379,7 +2379,7 @@ const entries: NewsItem[] = [
       '제공한다.',
     publishedAt: '2026-05-17',
     category: 'Product',
-    signal: 'AI FOR SCIENCE',
+    signal: '과학 AI',
     url: 'https://deepmind.google/blog/gemini-for-science-ai-experiments-and-tools-for-a-new-era-of-discovery/',
   },
   {
@@ -2393,7 +2393,7 @@ const entries: NewsItem[] = [
       '연구소를 기반으로 삼는다.',
     publishedAt: '2026-05-16',
     category: 'Corporate',
-    signal: 'NATIONAL AI PARTNERSHIPS',
+    signal: '국가 AI 파트너십',
     url: 'https://deepmind.google/blog/strengthening-singapores-ai-future-a-new-national-partnership/',
   },
   {
@@ -2406,7 +2406,7 @@ const entries: NewsItem[] = [
       '몰타대학교가 만든 AI 리터러시 과정을 수료하면 1년 무료 이용권이 주어진다.',
     publishedAt: '2026-05-16',
     category: 'Corporate',
-    signal: 'NATIONAL AI ACCESS',
+    signal: '전국민 AI 보급',
     url: 'https://openai.com/index/malta-chatgpt-plus-partnership',
   },
   {
@@ -2420,7 +2420,7 @@ const entries: NewsItem[] = [
       '앱에서 먼저 쓸 수 있다.',
     publishedAt: '2026-05-15',
     category: 'Product',
-    signal: 'FINANCIAL ASSISTANTS',
+    signal: '재무 어시스턴트',
     url: 'https://openai.com/index/personal-finance-chatgpt',
   },
   {
@@ -2433,7 +2433,7 @@ const entries: NewsItem[] = [
       '에이전트와 코딩에 초점을 맞췄으며 3.5 프로는 다음 달 배포 예정이다.',
     publishedAt: '2026-05-15',
     category: 'Frontier',
-    signal: 'AGENTIC MODELS',
+    signal: '에이전틱 모델',
     url: 'https://deepmind.google/blog/gemini-3-5-frontier-intelligence-with-action/',
     model: {
       family: 'Gemini',
@@ -2458,7 +2458,7 @@ const entries: NewsItem[] = [
       '수 있다.',
     publishedAt: '2026-05-14',
     category: 'Product',
-    signal: 'AGENTIC DEV TOOLS',
+    signal: '에이전틱 개발 도구',
     url: 'https://openai.com/index/work-with-codex-from-anywhere',
   },
   {
@@ -2471,7 +2471,7 @@ const entries: NewsItem[] = [
       '클로드 크레딧, 기술 지원을 글로벌 보건·생명과학·교육·경제 이동성에 투입한다.',
     publishedAt: '2026-05-14',
     category: 'Corporate',
-    signal: 'BENEFICIAL DEPLOYMENT',
+    signal: '이로운 활용',
     url: 'https://www.anthropic.com/news/gates-foundation-partnership',
   },
   {
@@ -2485,7 +2485,7 @@ const entries: NewsItem[] = [
       '대상이다.',
     publishedAt: '2026-05-14',
     category: 'Safety',
-    signal: 'MODEL SAFETY',
+    signal: '모델 안전',
     url: 'https://openai.com/index/chatgpt-recognize-context-in-sensitive-conversations',
   },
   {
@@ -2500,7 +2500,7 @@ const entries: NewsItem[] = [
       '요구했다.',
     publishedAt: '2026-05-13',
     category: 'Safety',
-    signal: 'SUPPLY CHAIN',
+    signal: '공급망 공격',
     url: 'https://openai.com/index/our-response-to-the-tanstack-npm-supply-chain-attack',
   },
   {
@@ -2515,7 +2515,7 @@ const entries: NewsItem[] = [
       '커넥터가 들어간다.',
     publishedAt: '2026-05-13',
     category: 'Product',
-    signal: 'SMB AGENTS',
+    signal: '중소기업 에이전트',
     url: 'https://www.anthropic.com/news/claude-for-small-business',
   },
   {
@@ -2529,7 +2529,7 @@ const entries: NewsItem[] = [
       'Windows에 없어 직접 만들어야 했다.',
     publishedAt: '2026-05-13',
     category: 'Infrastructure',
-    signal: 'AGENT SANDBOXING',
+    signal: '에이전트 샌드박스',
     url: 'https://openai.com/index/building-codex-windows-sandbox',
   },
   {
@@ -2544,7 +2544,7 @@ const entries: NewsItem[] = [
       '네이처에 실렸다.',
     publishedAt: '2026-05-12',
     category: 'Domain',
-    signal: 'SCIENTIFIC AGENTS',
+    signal: '과학 에이전트',
     url: 'https://deepmind.google/blog/co-scientist-a-multi-agent-ai-partner-to-accelerate-research/',
     model: {
       family: 'Gemini',
@@ -2569,7 +2569,7 @@ const entries: NewsItem[] = [
       '포함한 대학 다섯 곳이 참여해 분자 수준의 생물학적 과정을 다룬다.',
     publishedAt: '2026-05-11',
     category: 'Research',
-    signal: 'QUANTUM LIFE SCIENCES',
+    signal: '양자 생명과학',
     url: 'https://blog.google/innovation-and-ai/models-and-research/quantum-computing/repliqa-quantum-computing-life-sciences/',
   },
   {
@@ -2584,7 +2584,7 @@ const entries: NewsItem[] = [
       '넘는다.',
     publishedAt: '2026-05-11',
     category: 'Corporate',
-    signal: 'ENTERPRISE DEPLOYMENT',
+    signal: '기업 AI 도입',
     url: 'https://openai.com/index/openai-launches-the-deployment-company',
   },
   {
@@ -2598,7 +2598,7 @@ const entries: NewsItem[] = [
       '공격이 실행되기 전에 선제적으로 발견했다고 밝혔다.',
     publishedAt: '2026-05-11',
     category: 'Safety',
-    signal: 'AI THREAT INTEL',
+    signal: 'AI 위협 인텔리전스',
     url: 'https://blog.google/innovation-and-ai/infrastructure-and-cloud/google-cloud/google-threat-intelligence-group-report/',
   },
   {
@@ -2612,7 +2612,7 @@ const entries: NewsItem[] = [
       '영국·멕시코·브라질·일본·한국까지 파일럿을 확대할 계획을 알렸다.',
     publishedAt: '2026-05-07',
     category: 'Product',
-    signal: 'CHATGPT ADS',
+    signal: 'ChatGPT 광고',
     url: 'https://openai.com/index/testing-ads-in-chatgpt',
   },
   {
@@ -2626,7 +2626,7 @@ const entries: NewsItem[] = [
       '관련 심각한 안전 우려가 감지될 때 훈련된 검토를 거쳐 알림이 전달된다.',
     publishedAt: '2026-05-07',
     category: 'Product',
-    signal: 'CONSUMER SAFETY',
+    signal: '소비자 안전',
     url: 'https://openai.com/index/introducing-trusted-contact-in-chatgpt',
   },
   {
@@ -2641,7 +2641,7 @@ const entries: NewsItem[] = [
       '작업에 대한 거부가 줄어든다.',
     publishedAt: '2026-05-07',
     category: 'Domain',
-    signal: 'CYBER DEFENSE MODELS',
+    signal: '사이버 방어 모델',
     url: 'https://openai.com/index/gpt-5-5-with-trusted-access-for-cyber',
     model: {
       family: 'GPT',
@@ -2666,7 +2666,7 @@ const entries: NewsItem[] = [
       '실제 문제에 적용되고 있다고 밝혔다.',
     publishedAt: '2026-05-07',
     category: 'Research',
-    signal: 'AI FOR SCIENCE',
+    signal: '과학 AI',
     url: 'https://blog.google/innovation-and-ai/infrastructure-and-cloud/google-cloud/alphaevolve-updates/',
   },
   {
@@ -2681,7 +2681,7 @@ const entries: NewsItem[] = [
       'GPT-Realtime-Whisper다.',
     publishedAt: '2026-05-07',
     category: 'Multimodal',
-    signal: 'REALTIME VOICE',
+    signal: '실시간 음성',
     url: 'https://openai.com/index/advancing-voice-intelligence-with-new-models-in-the-api',
     model: {
       family: 'GPT',
@@ -2706,7 +2706,7 @@ const entries: NewsItem[] = [
       '용량은 300메가와트 이상 규모다.',
     publishedAt: '2026-05-06',
     category: 'Infrastructure',
-    signal: 'COMPUTE BUILDOUT',
+    signal: '컴퓨트 증설',
     url: 'https://www.anthropic.com/news/higher-limits-spacex',
   },
   {
@@ -2720,7 +2720,7 @@ const entries: NewsItem[] = [
       '아티스트·프로듀서·작곡가가 Lyria 3 Pro 기반 도구를 쓰게 된다.',
     publishedAt: '2026-05-06',
     category: 'Product',
-    signal: 'MUSIC GENERATION',
+    signal: '음악 생성',
     url: 'https://blog.google/innovation-and-ai/models-and-research/google-labs/believe-flow-music-partnership/',
   },
   {
@@ -2734,7 +2734,7 @@ const entries: NewsItem[] = [
       '통해 기업 고객에게 제공하기 시작했다.',
     publishedAt: '2026-05-06',
     category: 'Research',
-    signal: 'ALGORITHM DISCOVERY',
+    signal: '알고리즘 발견',
     url: 'https://deepmind.google/blog/alphaevolve-impact/',
   },
   {
@@ -2748,7 +2748,7 @@ const entries: NewsItem[] = [
       '더해졌고 전환 API와 픽셀 기반 측정도 함께 도입됐다.',
     publishedAt: '2026-05-05',
     category: 'Product',
-    signal: 'CHATGPT ADS PLATFORM',
+    signal: 'ChatGPT 광고 플랫폼',
     url: 'https://openai.com/index/new-ways-to-buy-chatgpt-ads',
   },
   {
@@ -2762,7 +2762,7 @@ const entries: NewsItem[] = [
       'Apache 2.0으로 Hugging Face와 Kaggle에 올라왔다.',
     publishedAt: '2026-05-05',
     category: 'Open',
-    signal: 'INFERENCE SPEEDUP',
+    signal: '추론 가속',
     url: 'https://blog.google/innovation-and-ai/technology/developers-tools/multi-token-prediction-gemma-4/',
   },
   {
@@ -2776,7 +2776,7 @@ const entries: NewsItem[] = [
       '줄이는 규격을 Open Compute Project에 기여했다.',
     publishedAt: '2026-05-05',
     category: 'Research',
-    signal: 'AI NETWORKING STANDARDS',
+    signal: 'AI 네트워크 표준',
     url: 'https://openai.com/index/mrc-supercomputer-networking',
   },
   {
@@ -2790,7 +2790,7 @@ const entries: NewsItem[] = [
       '역량으로 분류돼 그에 맞는 안전장치를 적용했다고 밝혔다.',
     publishedAt: '2026-05-05',
     category: 'Safety',
-    signal: 'MODEL SAFETY',
+    signal: '모델 안전',
     url: 'https://openai.com/index/gpt-5-5-instant-system-card',
   },
   {
@@ -2804,7 +2804,7 @@ const entries: NewsItem[] = [
       '대비 52.5% 줄었고, 개인화 맥락을 관리하는 메모리 소스도 함께 도입됐다.',
     publishedAt: '2026-05-05',
     category: 'Frontier',
-    signal: 'DEFAULT MODEL UPGRADE',
+    signal: '기본 모델 업그레이드',
     url: 'https://openai.com/index/gpt-5-5-instant',
     model: {
       family: 'GPT',
@@ -2829,7 +2829,7 @@ const entries: NewsItem[] = [
       '메타데이터 필터와 페이지 단위 인용도 같이 들어갔다.',
     publishedAt: '2026-05-05',
     category: 'Product',
-    signal: 'MULTIMODAL RAG',
+    signal: '멀티모달 RAG',
     url: 'https://blog.google/innovation-and-ai/technology/developers-tools/expanded-gemini-api-file-search-multimodal-rag/',
   },
   {
@@ -2843,7 +2843,7 @@ const entries: NewsItem[] = [
       '있고, Excel·PowerPoint·Word 애드인은 정식 출시됐다.',
     publishedAt: '2026-05-05',
     category: 'Product',
-    signal: 'FINANCE AGENTS',
+    signal: '금융 에이전트',
     url: 'https://www.anthropic.com/news/finance-agents',
   },
   {
@@ -2857,7 +2857,7 @@ const entries: NewsItem[] = [
       '입안자를 위한 다섯 가지 축을 제시한다.',
     publishedAt: '2026-05-05',
     category: 'Safety',
-    signal: 'YOUTH SAFETY POLICY',
+    signal: '청소년 안전 정책',
     url: 'https://openai.com/index/advancing-youth-safety-in-emea',
   },
   {
@@ -2871,7 +2871,7 @@ const entries: NewsItem[] = [
       '보장하며 최대 24시간 재시도한다.',
     publishedAt: '2026-05-04',
     category: 'Product',
-    signal: 'EVENT DRIVEN APIS',
+    signal: '이벤트 기반 API',
     url: 'https://blog.google/innovation-and-ai/technology/developers-tools/event-driven-webhooks/',
   },
   {
@@ -2885,7 +2885,7 @@ const entries: NewsItem[] = [
       '앤트로픽 응용 AI 엔지니어가 함께 투입된다.',
     publishedAt: '2026-05-04',
     category: 'Corporate',
-    signal: 'ENTERPRISE DEPLOYMENT',
+    signal: '기업 AI 도입',
     url: 'https://www.anthropic.com/news/enterprise-ai-services-company',
   },
   {
@@ -2899,7 +2899,7 @@ const entries: NewsItem[] = [
       '가정과 지역 사업체 요금으로 넘어가지 않게 한다.',
     publishedAt: '2026-04-30',
     category: 'Infrastructure',
-    signal: 'DATA CENTER ENERGY',
+    signal: '데이터센터 전력',
     url: 'https://blog.google/innovation-and-ai/infrastructure-and-cloud/global-network/oklahoma-energy-affordability-agreement/',
   },
   {
@@ -2913,7 +2913,7 @@ const entries: NewsItem[] = [
       '두 방향으로 평가 결과를 함께 냈다.',
     publishedAt: '2026-04-30',
     category: 'Domain',
-    signal: 'CLINICAL AI AGENTS',
+    signal: '임상 AI 에이전트',
     url: 'https://deepmind.google/blog/ai-co-clinician/',
     model: {
       family: 'Gemini',
@@ -2938,7 +2938,7 @@ const entries: NewsItem[] = [
       '로그인을 쓰는 Codex 계정에도 함께 적용된다.',
     publishedAt: '2026-04-30',
     category: 'Product',
-    signal: 'ACCOUNT SECURITY',
+    signal: '계정 보안',
     url: 'https://openai.com/index/advanced-account-security',
   },
   {
@@ -2952,7 +2952,7 @@ const entries: NewsItem[] = [
       '사용자에게 제공된다.',
     publishedAt: '2026-04-29',
     category: 'Product',
-    signal: 'FILE GENERATION',
+    signal: '파일 생성',
     url: 'https://blog.google/innovation-and-ai/products/gemini-app/generate-files-in-gemini/',
   },
   {
@@ -2966,7 +2966,7 @@ const entries: NewsItem[] = [
       '축을 제시했다.',
     publishedAt: '2026-04-29',
     category: 'Safety',
-    signal: 'AI CYBER DEFENSE',
+    signal: 'AI 사이버 방어',
     url: 'https://openai.com/index/cybersecurity-in-the-intelligence-age',
   },
   {
@@ -2980,7 +2980,7 @@ const entries: NewsItem[] = [
       '3GW 이상을 더했다고 밝혔다.',
     publishedAt: '2026-04-29',
     category: 'Infrastructure',
-    signal: 'COMPUTE BUILDOUT',
+    signal: '컴퓨트 증설',
     url: 'https://openai.com/index/building-the-compute-infrastructure-for-the-intelligence-age',
   },
   {
@@ -2994,7 +2994,7 @@ const entries: NewsItem[] = [
       '통보까지의 절차를 설명했다.',
     publishedAt: '2026-04-28',
     category: 'Safety',
-    signal: 'USER SAFETY POLICY',
+    signal: '이용자 안전 정책',
     url: 'https://openai.com/index/our-commitment-to-community-safety',
   },
   {
@@ -3008,7 +3008,7 @@ const entries: NewsItem[] = [
       'Amazon Bedrock에 올린다. 세 영역 모두 제한 프리뷰로 시작한다.',
     publishedAt: '2026-04-28',
     category: 'Product',
-    signal: 'ENTERPRISE AGENTS',
+    signal: '기업용 에이전트',
     url: 'https://openai.com/index/openai-on-aws',
   },
   {
@@ -3023,7 +3023,7 @@ const entries: NewsItem[] = [
       '소개됐다.',
     publishedAt: '2026-04-28',
     category: 'Product',
-    signal: 'CREATIVE WORKFLOWS',
+    signal: '창작 워크플로',
     url: 'https://www.anthropic.com/news/claude-for-creative-work',
   },
   {
@@ -3037,7 +3037,7 @@ const entries: NewsItem[] = [
       'AI를 국내 기관에 제공한다.',
     publishedAt: '2026-04-27',
     category: 'Corporate',
-    signal: 'NATIONAL AI PARTNERSHIPS',
+    signal: '국가 AI 파트너십',
     url: 'https://deepmind.google/blog/announcing-our-partnership-with-the-republic-of-korea/',
   },
   {
@@ -3051,7 +3051,7 @@ const entries: NewsItem[] = [
       'FedRAMP 환경에서 GPT-5.5를 포함한 OpenAI 모델을 쓸 수 있다.',
     publishedAt: '2026-04-27',
     category: 'Corporate',
-    signal: 'GOVERNMENT AI',
+    signal: '정부 AI',
     url: 'https://openai.com/index/openai-available-at-fedramp-moderate',
   },
   {
@@ -3065,7 +3065,7 @@ const entries: NewsItem[] = [
       '바뀌고, OpenAI는 모든 클라우드에서 전 제품을 공급할 수 있게 됐다.',
     publishedAt: '2026-04-27',
     category: 'Corporate',
-    signal: 'CLOUD PARTNERSHIP',
+    signal: '클라우드 제휴',
     url: 'https://openai.com/index/next-phase-of-microsoft-partnership',
   },
   {
@@ -3078,7 +3078,7 @@ const entries: NewsItem[] = [
       '선임했다. 도쿄·벵갈루루에 이은 지역 확장이며 서울 사무소도 함께 발표했다.',
     publishedAt: '2026-04-27',
     category: 'Corporate',
-    signal: 'ENTERPRISE ADOPTION',
+    signal: '기업 도입',
     url: 'https://www.anthropic.com/news/theo-hourmouzis-general-manager-australia-new-zealand',
   },
   {
@@ -3092,7 +3092,7 @@ const entries: NewsItem[] = [
       'Codex 에이전트를 붙여 계속 실행한다.',
     publishedAt: '2026-04-27',
     category: 'Product',
-    signal: 'AGENT ORCHESTRATION',
+    signal: '에이전트 조율',
     url: 'https://openai.com/index/open-source-codex-orchestration-symphony',
   },
   {
@@ -3106,7 +3106,7 @@ const entries: NewsItem[] = [
       '한다는 사명 아래 정리했다.',
     publishedAt: '2026-04-26',
     category: 'Corporate',
-    signal: 'AI GOVERNANCE',
+    signal: 'AI 거버넌스',
     url: 'https://openai.com/index/our-principles',
   },
   {
@@ -3120,7 +3120,7 @@ const entries: NewsItem[] = [
       '여섯 가지가 Gemini 앱에 추가된다.',
     publishedAt: '2026-04-24',
     category: 'Product',
-    signal: 'CONSUMER AI',
+    signal: '소비자 AI',
     url: 'https://blog.google/innovation-and-ai/products/gemini-app/gemini-drop-april-2026/',
   },
   {
@@ -3134,7 +3134,7 @@ const entries: NewsItem[] = [
       '데이터셋을 오픈소스로 냈다.',
     publishedAt: '2026-04-24',
     category: 'Safety',
-    signal: 'ELECTION INTEGRITY',
+    signal: '선거 무결성',
     url: 'https://www.anthropic.com/news/election-safeguards-update',
   },
   {
@@ -3149,7 +3149,7 @@ const entries: NewsItem[] = [
       '유료 등급에 순차 배포된다.',
     publishedAt: '2026-04-23',
     category: 'Frontier',
-    signal: 'AGENTIC MODELS',
+    signal: '에이전틱 모델',
     url: 'https://openai.com/index/introducing-gpt-5-5',
     model: {
       family: 'GPT',
@@ -3174,7 +3174,7 @@ const entries: NewsItem[] = [
       '사전 배포 안전 평가를 모두 거쳤다.',
     publishedAt: '2026-04-23',
     category: 'Safety',
-    signal: 'FRONTIER MODEL SAFETY',
+    signal: '프런티어 모델 안전',
     url: 'https://openai.com/index/gpt-5-5-system-card',
     model: {
       family: 'GPT',
@@ -3199,7 +3199,7 @@ const entries: NewsItem[] = [
       '염두에 둔 설계를 적용한다.',
     publishedAt: '2026-04-23',
     category: 'Infrastructure',
-    signal: 'COMPUTE BUILDOUT',
+    signal: '컴퓨트 증설',
     url: 'https://blog.google/innovation-and-ai/infrastructure-and-cloud/global-network/google-data-center-austria/',
   },
   {
@@ -3213,7 +3213,7 @@ const entries: NewsItem[] = [
       '배포할 수 있다.',
     publishedAt: '2026-04-22',
     category: 'Product',
-    signal: 'ENTERPRISE AGENTS',
+    signal: '기업용 에이전트',
     url: 'https://openai.com/index/introducing-workspace-agents-in-chatgpt',
   },
   {
@@ -3227,7 +3227,7 @@ const entries: NewsItem[] = [
       '전체 처리 속도를 40% 개선했다.',
     publishedAt: '2026-04-22',
     category: 'Product',
-    signal: 'AGENT LATENCY',
+    signal: '에이전트 지연 시간',
     url: 'https://openai.com/index/speeding-up-agentic-workflows-with-websockets',
   },
   {
@@ -3241,7 +3241,7 @@ const entries: NewsItem[] = [
       'Hugging Face와 GitHub에 올라갔다.',
     publishedAt: '2026-04-22',
     category: 'Open',
-    signal: 'OPEN WEIGHT MODELS',
+    signal: '오픈 웨이트 모델',
     url: 'https://openai.com/index/introducing-openai-privacy-filter',
   },
   {
@@ -3256,7 +3256,7 @@ const entries: NewsItem[] = [
       '플랫폼이다.',
     publishedAt: '2026-04-22',
     category: 'Product',
-    signal: 'ENTERPRISE AGENTS',
+    signal: '기업용 에이전트',
     url: 'https://blog.google/innovation-and-ai/infrastructure-and-cloud/google-cloud/gemini-enterprise-agent-platform/',
   },
   {
@@ -3270,7 +3270,7 @@ const entries: NewsItem[] = [
       'Enterprise Agent Platform에서 쓸 수 있다.',
     publishedAt: '2026-04-22',
     category: 'Multimodal',
-    signal: 'MULTIMODAL RETRIEVAL',
+    signal: '멀티모달 검색',
     url: 'https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-embedding-2-generally-available/',
     model: {
       family: 'Gemini',
@@ -3295,7 +3295,7 @@ const entries: NewsItem[] = [
       '성능이 80% 높다.',
     publishedAt: '2026-04-22',
     category: 'Infrastructure',
-    signal: 'AI CHIPS',
+    signal: 'AI 칩',
     url: 'https://blog.google/innovation-and-ai/infrastructure-and-cloud/google-cloud/eighth-generation-tpu-agentic-era/',
   },
   {
@@ -3309,7 +3309,7 @@ const entries: NewsItem[] = [
       '198Gbps에서 0.84Gbps로 낮췄다.',
     publishedAt: '2026-04-22',
     category: 'Research',
-    signal: 'DISTRIBUTED TRAINING',
+    signal: '분산 학습',
     url: 'https://deepmind.google/blog/decoupled-diloco/',
   },
   {
@@ -3323,7 +3323,7 @@ const entries: NewsItem[] = [
       'CME 학점, 선택적 HIPAA 지원을 담았다.',
     publishedAt: '2026-04-22',
     category: 'Product',
-    signal: 'CLINICAL AI',
+    signal: '임상 AI',
     url: 'https://openai.com/index/making-chatgpt-better-for-clinicians',
   },
   {
@@ -3337,7 +3337,7 @@ const entries: NewsItem[] = [
       '도구를 옮겨 다니며 재사용하도록 만든 형식이다.',
     publishedAt: '2026-04-21',
     category: 'Product',
-    signal: 'AGENT STANDARDS',
+    signal: '에이전트 표준',
     url: 'https://blog.google/innovation-and-ai/models-and-research/google-labs/stitch-design-md/',
   },
   {
@@ -3351,7 +3351,7 @@ const entries: NewsItem[] = [
       '시스템 통합업체와 손잡고 도입 지원 범위를 넓힌다고 밝혔다.',
     publishedAt: '2026-04-21',
     category: 'Product',
-    signal: 'ENTERPRISE CODEX',
+    signal: '기업용 Codex',
     url: 'https://openai.com/index/scaling-codex-to-enterprises-worldwide',
   },
   {
@@ -3365,7 +3365,7 @@ const entries: NewsItem[] = [
       '자산 생성까지 쓸 수 있다.',
     publishedAt: '2026-04-21',
     category: 'Product',
-    signal: 'SMB AI TOOLS',
+    signal: '중소기업 AI 도구',
     url: 'https://blog.google/innovation-and-ai/models-and-research/google-labs/pomelli-in-europe/',
   },
   {
@@ -3379,7 +3379,7 @@ const entries: NewsItem[] = [
       '있다.',
     publishedAt: '2026-04-21',
     category: 'Product',
-    signal: 'IMAGE GENERATION',
+    signal: '이미지 생성',
     url: 'https://openai.com/index/introducing-chatgpt-images-2-0',
   },
   {
@@ -3393,7 +3393,7 @@ const entries: NewsItem[] = [
       '21일부터 Gemini API 유료 등급에서 공개 프리뷰로 열렸다.',
     publishedAt: '2026-04-21',
     category: 'Product',
-    signal: 'RESEARCH AGENTS',
+    signal: '리서치 에이전트',
     url: 'https://blog.google/innovation-and-ai/models-and-research/gemini-models/next-generation-gemini-deep-research/',
   },
   {
@@ -3407,7 +3407,7 @@ const entries: NewsItem[] = [
       '구독만으로 프로토타이핑을 이어 갈 수 있다.',
     publishedAt: '2026-04-20',
     category: 'Product',
-    signal: 'DEVELOPER ACCESS',
+    signal: '개발자 접근',
     url: 'https://blog.google/innovation-and-ai/technology/developers-tools/google-one-ai-studio/',
   },
   {
@@ -3421,7 +3421,7 @@ const entries: NewsItem[] = [
       '달러를 즉시 투자하며 최대 200억 달러를 추가할 수 있다.',
     publishedAt: '2026-04-20',
     category: 'Infrastructure',
-    signal: 'COMPUTE BUILDOUT',
+    signal: '컴퓨트 증설',
     url: 'https://www.anthropic.com/news/anthropic-amazon-compute',
   },
   {
@@ -3435,7 +3435,7 @@ const entries: NewsItem[] = [
       '모델을 쓰며 Pro·Max·Team·Enterprise 구독자가 쓸 수 있다.',
     publishedAt: '2026-04-17',
     category: 'Product',
-    signal: 'DESIGN TOOLING',
+    signal: '디자인 도구',
     url: 'https://www.anthropic.com/news/claude-design-anthropic-labs',
   },
   {
@@ -3449,7 +3449,7 @@ const entries: NewsItem[] = [
       '사진을 따로 올리지 않아도 개인 맥락이 이미지 생성에 반영된다.',
     publishedAt: '2026-04-16',
     category: 'Product',
-    signal: 'PERSONAL CONTEXT',
+    signal: '개인 컨텍스트',
     url: 'https://blog.google/innovation-and-ai/products/gemini-app/personal-intelligence-nano-banana/',
   },
   {
@@ -3464,7 +3464,7 @@ const entries: NewsItem[] = [
       '넘는 과학 DB를 붙이는 Codex 플러그인도 함께 나왔다.',
     publishedAt: '2026-04-16',
     category: 'Domain',
-    signal: 'LIFE SCIENCES AI',
+    signal: '생명과학 AI',
     url: 'https://openai.com/index/introducing-gpt-rosalind',
     model: {
       family: 'GPT',
@@ -3490,7 +3490,7 @@ const entries: NewsItem[] = [
       '추가됐다.',
     publishedAt: '2026-04-16',
     category: 'Product',
-    signal: 'AGENTIC CODING',
+    signal: '에이전틱 코딩',
     url: 'https://openai.com/index/codex-for-almost-everything',
   },
   {
@@ -3504,7 +3504,7 @@ const entries: NewsItem[] = [
       '해상도가 긴 변 2,576픽셀까지 늘었다.',
     publishedAt: '2026-04-16',
     category: 'Frontier',
-    signal: 'FRONTIER MODELS',
+    signal: '프런티어 모델군',
     url: 'https://www.anthropic.com/news/claude-opus-4-7',
     model: {
       family: 'Claude',
@@ -3529,7 +3529,7 @@ const entries: NewsItem[] = [
       '달러를 배정했고, 대형 금융사와 보안 기업이 명단에 들어갔다.',
     publishedAt: '2026-04-16',
     category: 'Safety',
-    signal: 'CYBER DEFENSE ECOSYSTEM',
+    signal: '사이버 방어 생태계',
     url: 'https://openai.com/index/accelerating-cyber-defense-ecosystem',
   },
   {
@@ -3543,7 +3543,7 @@ const entries: NewsItem[] = [
       '제공자 일곱 곳을 내장 지원하며 전 고객에게 정식 제공된다.',
     publishedAt: '2026-04-15',
     category: 'Product',
-    signal: 'AGENT INFRASTRUCTURE',
+    signal: '에이전트 인프라',
     url: 'https://openai.com/index/the-next-evolution-of-the-agents-sdk',
   },
   {
@@ -3557,7 +3557,7 @@ const entries: NewsItem[] = [
       '있다.',
     publishedAt: '2026-04-15',
     category: 'Product',
-    signal: 'API ECONOMICS',
+    signal: 'API 과금',
     url: 'https://blog.google/innovation-and-ai/technology/developers-tools/prepay-gemini-api/',
   },
   {
@@ -3571,7 +3571,7 @@ const entries: NewsItem[] = [
       '지금 보는 내용을 두고 물어볼 수 있다.',
     publishedAt: '2026-04-15',
     category: 'Product',
-    signal: 'DESKTOP ASSISTANTS',
+    signal: '데스크톱 어시스턴트',
     url: 'https://blog.google/innovation-and-ai/products/gemini-app/gemini-app-now-on-mac-os/',
   },
   {
@@ -3585,7 +3585,7 @@ const entries: NewsItem[] = [
       '70개 이상 언어를 지원한다.',
     publishedAt: '2026-04-15',
     category: 'Multimodal',
-    signal: 'SPEECH MODELS',
+    signal: '음성 모델',
     url: 'https://deepmind.google/blog/gemini-3-1-flash-tts-the-next-generation-of-expressive-ai-speech/',
     model: {
       family: 'Gemini',
@@ -3610,7 +3610,7 @@ const entries: NewsItem[] = [
       '내놓았다. 이 모델은 상위 등급 인증을 받은 벤더·조직·연구자만 쓸 수 있다.',
     publishedAt: '2026-04-14',
     category: 'Safety',
-    signal: 'CYBER MODEL ACCESS',
+    signal: '사이버 모델 접근권',
     url: 'https://openai.com/index/scaling-trusted-access-for-cyber-defense',
   },
   {
@@ -3623,7 +3623,7 @@ const entries: NewsItem[] = [
       '이로써 신탁이 지명한 이사가 이사회 과반을 차지하게 됐다.',
     publishedAt: '2026-04-14',
     category: 'Corporate',
-    signal: 'AI GOVERNANCE',
+    signal: 'AI 거버넌스',
     url: 'https://www.anthropic.com/news/narasimhan-board',
   },
   {
@@ -3637,7 +3637,7 @@ const entries: NewsItem[] = [
       'Studio에서 바로 쓸 수 있다.',
     publishedAt: '2026-04-13',
     category: 'Domain',
-    signal: 'EMBODIED REASONING',
+    signal: '체화 추론',
     url: 'https://deepmind.google/blog/gemini-robotics-er-1-6/',
     model: {
       family: 'Gemini',
@@ -3662,7 +3662,7 @@ const entries: NewsItem[] = [
       '8일까지 macOS 앱을 갱신해야 한다.',
     publishedAt: '2026-04-10',
     category: 'Safety',
-    signal: 'SUPPLY CHAIN SECURITY',
+    signal: '공급망 보안',
     url: 'https://openai.com/index/axios-developer-tool-compromise',
   },
   {
@@ -3676,7 +3676,7 @@ const entries: NewsItem[] = [
       '있다.',
     publishedAt: '2026-04-09',
     category: 'Product',
-    signal: 'GENERATIVE UI',
+    signal: '생성형 UI',
     url: 'https://blog.google/innovation-and-ai/products/gemini-app/3d-models-charts/',
   },
   {
@@ -3690,7 +3690,7 @@ const entries: NewsItem[] = [
       '동기화된다.',
     publishedAt: '2026-04-08',
     category: 'Product',
-    signal: 'KNOWLEDGE WORKSPACES',
+    signal: '지식 작업 공간',
     url: 'https://blog.google/innovation-and-ai/products/gemini-app/notebooks-gemini-notebooklm/',
   },
   {
@@ -3704,7 +3704,7 @@ const entries: NewsItem[] = [
       '같아질 것으로 전망했다.',
     publishedAt: '2026-04-08',
     category: 'Corporate',
-    signal: 'ENTERPRISE AI',
+    signal: '기업용 AI',
     url: 'https://openai.com/index/next-phase-of-enterprise-ai',
   },
   {
@@ -3718,7 +3718,7 @@ const entries: NewsItem[] = [
       '가지를 축으로 삼았다.',
     publishedAt: '2026-04-08',
     category: 'Safety',
-    signal: 'CHILD SAFETY POLICY',
+    signal: '아동 보호 정책',
     url: 'https://openai.com/index/introducing-child-safety-blueprint',
   },
   {
@@ -3732,7 +3732,7 @@ const entries: NewsItem[] = [
       '안내를 준다.',
     publishedAt: '2026-04-08',
     category: 'Product',
-    signal: 'AI CODING TUTOR',
+    signal: 'AI 코딩 튜터',
     url: 'https://blog.google/innovation-and-ai/technology/developers-tools/colab-updates/',
   },
   {
@@ -3746,7 +3746,7 @@ const entries: NewsItem[] = [
       '세계 핫라인에 3천만 달러를 지원한다.',
     publishedAt: '2026-04-07',
     category: 'Safety',
-    signal: 'AI SAFETY POLICY',
+    signal: 'AI 안전 정책',
     url: 'https://blog.google/innovation-and-ai/technology/health/mental-health-updates/',
   },
   {
@@ -3760,7 +3760,7 @@ const entries: NewsItem[] = [
       '배치된다.',
     publishedAt: '2026-04-06',
     category: 'Infrastructure',
-    signal: 'COMPUTE BUILDOUT',
+    signal: '컴퓨트 증설',
     url: 'https://www.anthropic.com/news/google-broadcom-partnership-compute',
   },
   {
@@ -3774,7 +3774,7 @@ const entries: NewsItem[] = [
       '보장한다고 했다.',
     publishedAt: '2026-04-02',
     category: 'Corporate',
-    signal: 'MEDIA ACQUISITION',
+    signal: '미디어 인수',
     url: 'https://openai.com/index/openai-acquires-tbpn',
   },
   {
@@ -3788,7 +3788,7 @@ const entries: NewsItem[] = [
       '신뢰도를 목표로 하는 상위 등급이다.',
     publishedAt: '2026-04-02',
     category: 'Product',
-    signal: 'MODEL ECONOMICS',
+    signal: '모델 경제성',
     url: 'https://blog.google/innovation-and-ai/technology/developers-tools/introducing-flex-and-priority-inference/',
   },
   {
@@ -3802,7 +3802,7 @@ const entries: NewsItem[] = [
       '지원한다.',
     publishedAt: '2026-04-02',
     category: 'Open',
-    signal: 'OPEN MODELS',
+    signal: '오픈 모델',
     url: 'https://deepmind.google/blog/gemma-4-byte-for-byte-the-most-capable-open-models/',
   },
   {
@@ -3816,7 +3816,7 @@ const entries: NewsItem[] = [
       '비즈니스 연간 요금도 좌석당 25달러에서 20달러로 내려갔다.',
     publishedAt: '2026-04-02',
     category: 'Product',
-    signal: 'CODING AGENT PRICING',
+    signal: '코딩 에이전트 요금제',
     url: 'https://openai.com/index/codex-flexible-pricing-for-teams',
   },
   {
@@ -3830,7 +3830,7 @@ const entries: NewsItem[] = [
       '생기는 구버전 코드 문제를 줄인다.',
     publishedAt: '2026-04-01',
     category: 'Product',
-    signal: 'AGENT TOOLING',
+    signal: '에이전트 도구',
     url: 'https://blog.google/innovation-and-ai/technology/developers-tools/gemini-api-docsmcp-agent-skills/',
   },
   {
@@ -3844,7 +3844,7 @@ const entries: NewsItem[] = [
       'AI Studio에서 프리뷰로 제공된다.',
     publishedAt: '2026-03-31',
     category: 'Multimodal',
-    signal: 'MODEL ECONOMICS',
+    signal: '모델 경제성',
     url: 'https://blog.google/innovation-and-ai/technology/ai/veo-3-1-lite/',
   },
   {
@@ -3858,7 +3858,7 @@ const entries: NewsItem[] = [
       '호주달러 규모의 Claude API 크레딧을 지원한다.',
     publishedAt: '2026-03-31',
     category: 'Corporate',
-    signal: 'AI POLICY',
+    signal: 'AI 정책',
     url: 'https://www.anthropic.com/news/australia-MOU',
   },
   {
@@ -3872,7 +3872,7 @@ const entries: NewsItem[] = [
       '들어왔다.',
     publishedAt: '2026-03-31',
     category: 'Corporate',
-    signal: 'AI FUNDING ROUND',
+    signal: 'AI 투자 유치',
     url: 'https://openai.com/index/accelerating-the-next-phase-ai',
   },
   {
@@ -3886,7 +3886,7 @@ const entries: NewsItem[] = [
       '그 대상에 적용한다.',
     publishedAt: '2026-03-29',
     category: 'Product',
-    signal: 'AI INTERFACES',
+    signal: 'AI 인터페이스',
     url: 'https://deepmind.google/blog/ai-pointer/',
   },
   {
@@ -3900,7 +3900,7 @@ const entries: NewsItem[] = [
       '최대 3분 길이 곡을 만드는 Lyria 3 Pro가 포함됐다.',
     publishedAt: '2026-03-27',
     category: 'Product',
-    signal: 'CONSUMER AI',
+    signal: '소비자 AI',
     url: 'https://blog.google/innovation-and-ai/products/gemini-app/gemini-drop-updates-march-2026/',
   },
   {
@@ -3914,7 +3914,7 @@ const entries: NewsItem[] = [
       '파일을 업로드하는 방식이다.',
     publishedAt: '2026-03-26',
     category: 'Product',
-    signal: 'CONSUMER AI',
+    signal: '소비자 AI',
     url: 'https://blog.google/innovation-and-ai/products/gemini-app/switch-to-gemini-app/',
   },
   {
@@ -3928,7 +3928,7 @@ const entries: NewsItem[] = [
       '이전의 두 배로 늘었다.',
     publishedAt: '2026-03-26',
     category: 'Multimodal',
-    signal: 'VOICE AGENTS',
+    signal: '음성 에이전트',
     url: 'https://deepmind.google/blog/gemini-3-1-flash-live-making-audio-ai-more-natural-and-reliable/',
     model: {
       family: 'Gemini',
@@ -3953,7 +3953,7 @@ const entries: NewsItem[] = [
       '만들 수 있고, 90개가 넘는 언어로 멀티모달 대화를 처리한다.',
     publishedAt: '2026-03-26',
     category: 'Multimodal',
-    signal: 'VOICE AGENTS',
+    signal: '음성 에이전트',
     url: 'https://blog.google/innovation-and-ai/technology/developers-tools/build-with-gemini-3-1-flash-live/',
   },
   {
@@ -3967,7 +3967,7 @@ const entries: NewsItem[] = [
       '플랫폼 무결성 문제를 접수 대상으로 삼는다.',
     publishedAt: '2026-03-25',
     category: 'Safety',
-    signal: 'AI SAFETY BOUNTY',
+    signal: 'AI 안전 바운티',
     url: 'https://openai.com/index/safety-bug-bounty',
   },
   {
@@ -3981,7 +3981,7 @@ const entries: NewsItem[] = [
       'Evals 평가 세트도 공개했다.',
     publishedAt: '2026-03-25',
     category: 'Safety',
-    signal: 'MODEL BEHAVIOR SPEC',
+    signal: '모델 행동 규범',
     url: 'https://openai.com/index/our-approach-to-the-model-spec',
   },
   {
@@ -3995,7 +3995,7 @@ const entries: NewsItem[] = [
       '3월 25일 주부터 순차 배포된다.',
     publishedAt: '2026-03-25',
     category: 'Multimodal',
-    signal: 'MUSIC GENERATION',
+    signal: '음악 생성',
     url: 'https://deepmind.google/blog/lyria-3-pro-create-longer-tracks-in-more/',
   },
   {
@@ -4010,7 +4010,7 @@ const entries: NewsItem[] = [
       '필요하다.',
     publishedAt: '2026-03-25',
     category: 'Multimodal',
-    signal: 'AUDIO GENERATION API',
+    signal: '오디오 생성 API',
     url: 'https://blog.google/innovation-and-ai/technology/developers-tools/lyria-3-developers/',
   },
   {
@@ -4024,7 +4024,7 @@ const entries: NewsItem[] = [
       '모델의 설득 효과와 조작 시도 빈도를 측정했다.',
     publishedAt: '2026-03-25',
     category: 'Research',
-    signal: 'MANIPULATION RISK',
+    signal: '조작 위험',
     url: 'https://deepmind.google/blog/protecting-people-from-harmful-manipulation/',
   },
   {
@@ -4038,7 +4038,7 @@ const entries: NewsItem[] = [
       '갈래에 나눠 쓴다.',
     publishedAt: '2026-03-24',
     category: 'Corporate',
-    signal: 'AI PHILANTHROPY',
+    signal: 'AI 자선 사업',
     url: 'https://openai.com/index/update-on-the-openai-foundation',
   },
   {
@@ -4052,7 +4052,7 @@ const entries: NewsItem[] = [
       '있고, ROOST Model Community를 통해 오픈소스로 배포된다.',
     publishedAt: '2026-03-24',
     category: 'Safety',
-    signal: 'TEEN SAFETY POLICIES',
+    signal: '10대 안전 정책',
     url: 'https://openai.com/index/teen-safety-policies-gpt-oss-safeguard',
   },
   {
@@ -4066,7 +4066,7 @@ const entries: NewsItem[] = [
       'Instant Checkout 대신 판매자 자체 결제를 허용한다.',
     publishedAt: '2026-03-24',
     category: 'Product',
-    signal: 'AGENTIC COMMERCE',
+    signal: '에이전틱 커머스',
     url: 'https://openai.com/index/powering-product-discovery-in-chatgpt',
   },
   {
@@ -4080,7 +4080,7 @@ const entries: NewsItem[] = [
       '기준을 적용한다.',
     publishedAt: '2026-03-23',
     category: 'Safety',
-    signal: 'SYNTHETIC MEDIA',
+    signal: '합성 미디어',
     url: 'https://openai.com/index/creating-with-sora-safely',
   },
   {
@@ -4094,7 +4094,7 @@ const entries: NewsItem[] = [
       '프로젝트는 계속 지원한다.',
     publishedAt: '2026-03-19',
     category: 'Corporate',
-    signal: 'DEVELOPER TOOLING',
+    signal: '개발자 도구',
     url: 'https://openai.com/index/openai-to-acquire-astral',
   },
   {
@@ -4108,7 +4108,7 @@ const entries: NewsItem[] = [
       '안에 분류하고 등급을 매긴다.',
     publishedAt: '2026-03-19',
     category: 'Safety',
-    signal: 'AGENT SAFETY MONITORING',
+    signal: '에이전트 안전 감시',
     url: 'https://openai.com/index/how-we-monitor-internal-coding-agents-misalignment',
   },
   {
@@ -4122,7 +4122,7 @@ const entries: NewsItem[] = [
       '시간을 옮기는 방식이다.',
     publishedAt: '2026-03-19',
     category: 'Infrastructure',
-    signal: 'GRID FLEXIBILITY',
+    signal: '전력망 유연성',
     url: 'https://blog.google/innovation-and-ai/infrastructure-and-cloud/global-network/demand-response-data-center-milestone/',
   },
   {
@@ -4136,7 +4136,7 @@ const entries: NewsItem[] = [
       '생성 기능을 담았다.',
     publishedAt: '2026-03-18',
     category: 'Product',
-    signal: 'AI DESIGN TOOLS',
+    signal: 'AI 디자인 도구',
     url: 'https://blog.google/innovation-and-ai/models-and-research/google-labs/stitch-ai-ui-design/',
   },
   {
@@ -4150,7 +4150,7 @@ const entries: NewsItem[] = [
       '이 환경을 구동하고 Firebase가 데이터베이스와 인증을 맡는다.',
     publishedAt: '2026-03-18',
     category: 'Product',
-    signal: 'AGENTIC CODING',
+    signal: '에이전틱 코딩',
     url: 'https://blog.google/innovation-and-ai/technology/developers-tools/full-stack-vibe-coding-google-ai-studio/',
   },
   {
@@ -4164,7 +4164,7 @@ const entries: NewsItem[] = [
       '평가 절차를 제시했다.',
     publishedAt: '2026-03-17',
     category: 'Research',
-    signal: 'AGI EVALUATION',
+    signal: 'AGI 평가',
     url: 'https://deepmind.google/blog/measuring-progress-toward-agi-a-cognitive-framework/',
   },
   {
@@ -4178,7 +4178,7 @@ const entries: NewsItem[] = [
       '보호자 도구 확대, 웰빙 중심 설계 네 축으로 구성된다.',
     publishedAt: '2026-03-17',
     category: 'Safety',
-    signal: 'TEEN SAFETY POLICY',
+    signal: '청소년 보호 정책',
     url: 'https://openai.com/index/japan-teen-safety-blueprint',
   },
   {
@@ -4193,7 +4193,7 @@ const entries: NewsItem[] = [
       '겨냥한다.',
     publishedAt: '2026-03-17',
     category: 'Frontier',
-    signal: 'SMALL AGENTIC MODELS',
+    signal: '소형 에이전틱 모델',
     url: 'https://openai.com/index/introducing-gpt-5-4-mini-and-nano',
     model: {
       family: 'GPT',
@@ -4218,7 +4218,7 @@ const entries: NewsItem[] = [
       '순환과 Gemini 3용 지도 그라운딩도 열었다.',
     publishedAt: '2026-03-17',
     category: 'Product',
-    signal: 'AGENT TOOLING',
+    signal: '에이전트 도구',
     url: 'https://blog.google/innovation-and-ai/technology/developers-tools/gemini-api-tooling-updates/',
   },
   {
@@ -4232,7 +4232,7 @@ const entries: NewsItem[] = [
       '에너지 임팩트 펀드 1천만 달러도 함께 조성한다.',
     publishedAt: '2026-03-17',
     category: 'Infrastructure',
-    signal: 'COMPUTE BUILDOUT',
+    signal: '컴퓨트 증설',
     url: 'https://blog.google/innovation-and-ai/infrastructure-and-cloud/global-network/clean-energy-reliability-michigan/',
   },
   {
@@ -4247,7 +4247,7 @@ const entries: NewsItem[] = [
       '오픈소스로 확대한다.',
     publishedAt: '2026-03-17',
     category: 'Safety',
-    signal: 'OPEN SOURCE SECURITY',
+    signal: '오픈소스 보안',
     url: 'https://blog.google/innovation-and-ai/technology/safety-security/ai-powered-open-source-security/',
   },
   {
@@ -4261,7 +4261,7 @@ const entries: NewsItem[] = [
       '대시보드가 새로 들어갔다.',
     publishedAt: '2026-03-16',
     category: 'Product',
-    signal: 'API COST CONTROLS',
+    signal: 'API 지출 관리',
     url: 'https://blog.google/innovation-and-ai/technology/developers-tools/more-control-over-gemini-api-costs/',
   },
   {
@@ -4275,7 +4275,7 @@ const entries: NewsItem[] = [
       '이름을 올렸다.',
     publishedAt: '2026-03-16',
     category: 'Safety',
-    signal: 'ANTI-SCAM ACCORD',
+    signal: '사기 방지 협약',
     url: 'https://blog.google/innovation-and-ai/technology/safety-security/google-industry-accord-combat-scams-fraud/',
   },
   {
@@ -4289,7 +4289,7 @@ const entries: NewsItem[] = [
       '신청을 받는다.',
     publishedAt: '2026-03-12',
     category: 'Corporate',
-    signal: 'PARTNER ECOSYSTEM',
+    signal: '파트너 생태계',
     url: 'https://www.anthropic.com/news/claude-partner-network',
   },
   {
@@ -4303,7 +4303,7 @@ const entries: NewsItem[] = [
       '멀티클라우드 지원도 이어 간다.',
     publishedAt: '2026-03-11',
     category: 'Corporate',
-    signal: 'CLOUD SECURITY',
+    signal: '클라우드 보안',
     url: 'https://blog.google/innovation-and-ai/infrastructure-and-cloud/google-cloud/wiz-acquisition/',
   },
   {
@@ -4317,7 +4317,7 @@ const entries: NewsItem[] = [
       '강력한 AI의 사회적 영향을 연구한다.',
     publishedAt: '2026-03-11',
     category: 'Corporate',
-    signal: 'AI POLICY',
+    signal: 'AI 정책',
     url: 'https://www.anthropic.com/news/the-anthropic-institute',
   },
   {
@@ -4331,7 +4331,7 @@ const entries: NewsItem[] = [
       'AI 페르소나 제한을 명시했다.',
     publishedAt: '2026-03-11',
     category: 'Safety',
-    signal: 'YOUTH AI SAFETY',
+    signal: '청소년 AI 안전',
     url: 'https://blog.google/innovation-and-ai/technology/families/growing-up-digital-age-gemini-youth/',
   },
   {
@@ -4345,7 +4345,7 @@ const entries: NewsItem[] = [
       '컨테이너에서 실행하고, 컴팩션으로 컨텍스트가 차도 작업을 이어 간다.',
     publishedAt: '2026-03-11',
     category: 'Product',
-    signal: 'AGENT RUNTIME',
+    signal: '에이전트 런타임',
     url: 'https://openai.com/index/equip-responses-api-computer-environment',
   },
   {
@@ -4359,7 +4359,7 @@ const entries: NewsItem[] = [
       '제3자로 나갈 때 Safe Url이 사용자 확인을 받거나 차단한다.',
     publishedAt: '2026-03-11',
     category: 'Research',
-    signal: 'AGENT SECURITY',
+    signal: '에이전트 보안',
     url: 'https://openai.com/index/designing-agents-to-resist-prompt-injection',
   },
   {
@@ -4373,7 +4373,7 @@ const entries: NewsItem[] = [
       '기업·스타트업·연구 고객을 담당한다.',
     publishedAt: '2026-03-10',
     category: 'Corporate',
-    signal: 'REGIONAL EXPANSION',
+    signal: '지역 확장',
     url: 'https://www.anthropic.com/news/sydney-fourth-office-asia-pacific',
   },
   {
@@ -4387,7 +4387,7 @@ const entries: NewsItem[] = [
       '수 있고, 모든 요금제에 전 세계 동시 제공된다.',
     publishedAt: '2026-03-10',
     category: 'Product',
-    signal: 'AI EDUCATION',
+    signal: 'AI 교육',
     url: 'https://openai.com/index/new-ways-to-learn-math-and-science-in-chatgpt',
   },
   {
@@ -4401,7 +4401,7 @@ const entries: NewsItem[] = [
       '훈련하면 안전 조종성과 프롬프트 인젝션 내성이 함께 오른다는 결과를 제시했다.',
     publishedAt: '2026-03-10',
     category: 'Research',
-    signal: 'INSTRUCTION HIERARCHY',
+    signal: '지시 계층',
     url: 'https://openai.com/index/instruction-hierarchy-challenge',
   },
   {
@@ -4416,7 +4416,7 @@ const entries: NewsItem[] = [
       '제공된다.',
     publishedAt: '2026-03-10',
     category: 'Multimodal',
-    signal: 'MULTIMODAL EMBEDDINGS',
+    signal: '멀티모달 임베딩',
     url: 'https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-embedding-2/',
     model: {
       family: 'Gemini',
@@ -4441,7 +4441,7 @@ const entries: NewsItem[] = [
       'Frontier에 넣어 배포 전 취약점 점검과 레드팀 기능을 기본으로 제공한다.',
     publishedAt: '2026-03-09',
     category: 'Corporate',
-    signal: 'AI SECURITY TESTING',
+    signal: 'AI 보안 테스트',
     url: 'https://openai.com/index/openai-to-acquire-promptfoo',
   },
   {
@@ -4455,7 +4455,7 @@ const entries: NewsItem[] = [
       '고위험으로 분류했다.',
     publishedAt: '2026-03-06',
     category: 'Product',
-    signal: 'AI SECURITY RESEARCH',
+    signal: 'AI 보안 연구',
     url: 'https://www.anthropic.com/news/mozilla-firefox-security',
   },
   {
@@ -4470,7 +4470,7 @@ const entries: NewsItem[] = [
       'Pro·Enterprise·Business·Edu에 한 달 무료로 열린다.',
     publishedAt: '2026-03-06',
     category: 'Product',
-    signal: 'SECURITY AGENT PREVIEW',
+    signal: '보안 에이전트 프리뷰',
     url: 'https://openai.com/index/codex-security-now-in-research-preview',
   },
   {
@@ -4484,7 +4484,7 @@ const entries: NewsItem[] = [
       '근거가 없다고 보고 법원에서 다투겠다는 입장입니다.',
     publishedAt: '2026-03-05',
     category: 'Corporate',
-    signal: 'AI POLICY',
+    signal: 'AI 정책',
     url: 'https://www.anthropic.com/news/where-stand-department-war',
   },
   {
@@ -4499,7 +4499,7 @@ const entries: NewsItem[] = [
       '모델에 처음으로 기본 탑재했다.',
     publishedAt: '2026-03-05',
     category: 'Frontier',
-    signal: 'FRONTIER MODEL',
+    signal: '프런티어 모델',
     url: 'https://openai.com/index/introducing-gpt-5-4',
     model: {
       family: 'GPT',
@@ -4524,7 +4524,7 @@ const entries: NewsItem[] = [
       '적용한 첫 범용 모델이라고 밝혔다.',
     publishedAt: '2026-03-05',
     category: 'Safety',
-    signal: 'FRONTIER MODEL SAFETY',
+    signal: '프런티어 모델 안전',
     url: 'https://openai.com/index/gpt-5-4-thinking-system-card',
   },
   {
@@ -4539,7 +4539,7 @@ const entries: NewsItem[] = [
       '했다.',
     publishedAt: '2026-03-05',
     category: 'Product',
-    signal: 'FINANCE AI TOOLS',
+    signal: '금융 AI 도구',
     url: 'https://openai.com/index/chatgpt-for-excel',
   },
   {
@@ -4554,7 +4554,7 @@ const entries: NewsItem[] = [
       '제시했다.',
     publishedAt: '2026-03-05',
     category: 'Research',
-    signal: 'COT MONITORABILITY',
+    signal: '사고 사슬 감시 가능성',
     url: 'https://openai.com/index/reasoning-models-chain-of-thought-controllability',
   },
   {
@@ -4568,7 +4568,7 @@ const entries: NewsItem[] = [
       '진폭이 특정 운동학 조건에서는 0이 아님을 보였다.',
     publishedAt: '2026-03-04',
     category: 'Research',
-    signal: 'AI FOR SCIENCE',
+    signal: '과학 AI',
     url: 'https://openai.com/index/extending-single-minus-amplitudes-to-gravitons',
   },
   {
@@ -4583,7 +4583,7 @@ const entries: NewsItem[] = [
       '생성합니다.',
     publishedAt: '2026-03-04',
     category: 'Product',
-    signal: 'GENERATIVE MEDIA',
+    signal: '생성형 미디어',
     url: 'https://blog.google/innovation-and-ai/products/notebooklm/generate-your-own-cinematic-video-overviews-in-notebooklm/',
   },
   {
@@ -4597,7 +4597,7 @@ const entries: NewsItem[] = [
       '부담하겠다는 내용이 핵심입니다.',
     publishedAt: '2026-03-04',
     category: 'Infrastructure',
-    signal: 'ENERGY POLICY',
+    signal: '에너지 정책',
     url: 'https://blog.google/innovation-and-ai/infrastructure-and-cloud/global-network/affordability-pledge-responsible-energy-growth/',
   },
   {
@@ -4611,7 +4611,7 @@ const entries: NewsItem[] = [
       '것과 대체로 같다고 밝혔다.',
     publishedAt: '2026-03-03',
     category: 'Safety',
-    signal: 'MODEL SAFETY',
+    signal: '모델 안전',
     url: 'https://openai.com/index/gpt-5-3-instant-system-card',
   },
   {
@@ -4625,7 +4625,7 @@ const entries: NewsItem[] = [
       '답변의 정리 품질과 사실 정확도를 함께 높였다.',
     publishedAt: '2026-03-03',
     category: 'Frontier',
-    signal: 'CHAT MODEL UPDATE',
+    signal: '대화 모델 업데이트',
     url: 'https://openai.com/index/gpt-5-3-instant',
     model: {
       family: 'GPT',
@@ -4650,7 +4650,7 @@ const entries: NewsItem[] = [
       '추론 깊이를 조절하는 thinking level을 지원합니다.',
     publishedAt: '2026-03-03',
     category: 'Frontier',
-    signal: 'MODEL ECONOMICS',
+    signal: '모델 경제성',
     url: 'https://deepmind.google/blog/gemini-3-1-flash-lite-built-for-intelligence-at-scale/',
     model: {
       family: 'Gemini',
@@ -4676,7 +4676,7 @@ const entries: NewsItem[] = [
       '금지선으로 두고 클라우드 전용으로만 배포한다.',
     publishedAt: '2026-02-28',
     category: 'Corporate',
-    signal: 'DEFENSE AI POLICY',
+    signal: '국방 AI 정책',
     url: 'https://openai.com/index/our-agreement-with-the-department-of-war',
   },
   {
@@ -4690,7 +4690,7 @@ const entries: NewsItem[] = [
       '도입하고, 장시간 대화를 모사하는 새 평가 방법을 적용 중이라고 밝혔다.',
     publishedAt: '2026-02-27',
     category: 'Safety',
-    signal: 'USER SAFETY',
+    signal: '이용자 안전',
     url: 'https://openai.com/index/update-on-mental-health-related-work',
   },
   {
@@ -4704,7 +4704,7 @@ const entries: NewsItem[] = [
       '요구를 거부해 협상이 결렬됐다고 설명했다.',
     publishedAt: '2026-02-27',
     category: 'Corporate',
-    signal: 'DEFENSE AI POLICY',
+    signal: '국방 AI 정책',
     url: 'https://www.anthropic.com/news/statement-comments-secretary-war',
   },
   {
@@ -4719,7 +4719,7 @@ const entries: NewsItem[] = [
       '실행 환경이다.',
     publishedAt: '2026-02-27',
     category: 'Product',
-    signal: 'AGENT INFRASTRUCTURE',
+    signal: '에이전트 인프라',
     url: 'https://openai.com/index/introducing-the-stateful-runtime-environment-for-agents-in-amazon-bedrock',
   },
   {
@@ -4734,7 +4734,7 @@ const entries: NewsItem[] = [
       '인용이 포함됐다.',
     publishedAt: '2026-02-27',
     category: 'Product',
-    signal: 'CONSUMER AI FEATURES',
+    signal: '소비자 AI 기능',
     url: 'https://blog.google/innovation-and-ai/products/gemini-app/gemini-drop-february-2026/',
   },
   {
@@ -4749,7 +4749,7 @@ const entries: NewsItem[] = [
       '그대로다.',
     publishedAt: '2026-02-27',
     category: 'Corporate',
-    signal: 'PARTNERSHIP TERMS',
+    signal: '파트너십 조건',
     url: 'https://openai.com/index/continuing-microsoft-partnership',
   },
   {
@@ -4763,7 +4763,7 @@ const entries: NewsItem[] = [
       'AWS가 기업용 플랫폼 Frontier의 독점 3자 클라우드 유통사가 된다.',
     publishedAt: '2026-02-27',
     category: 'Infrastructure',
-    signal: 'CLOUD COMPUTE DEAL',
+    signal: '클라우드 컴퓨트 계약',
     url: 'https://openai.com/index/amazon-partnership',
   },
   {
@@ -4777,7 +4777,7 @@ const entries: NewsItem[] = [
       '이를 거부했다고 밝혔다.',
     publishedAt: '2026-02-26',
     category: 'Corporate',
-    signal: 'DEFENSE AI POLICY',
+    signal: '국방 AI 정책',
     url: 'https://www.anthropic.com/news/statement-department-of-war',
   },
   {
@@ -4792,7 +4792,7 @@ const entries: NewsItem[] = [
       '작성을 얼마나 돕는지 측정한다.',
     publishedAt: '2026-02-26',
     category: 'Research',
-    signal: 'GOVERNMENT AI',
+    signal: '정부 AI',
     url: 'https://openai.com/index/pacific-northwest-national-laboratory',
   },
   {
@@ -4806,7 +4806,7 @@ const entries: NewsItem[] = [
       '광고에 함께 들어간다.',
     publishedAt: '2026-02-26',
     category: 'Multimodal',
-    signal: 'IMAGE MODELS',
+    signal: '이미지 모델',
     url: 'https://deepmind.google/blog/nano-banana-2-combining-pro-capabilities-with-lightning-fast-speed/',
     model: {
       family: 'Gemini',
@@ -4831,7 +4831,7 @@ const entries: NewsItem[] = [
       '코드의 UI를 편집 가능한 Figma 디자인으로 되돌릴 수 있다.',
     publishedAt: '2026-02-26',
     category: 'Product',
-    signal: 'DESIGN TOOLING',
+    signal: '디자인 도구',
     url: 'https://openai.com/index/figma-partnership',
   },
   {
@@ -4844,7 +4844,7 @@ const entries: NewsItem[] = [
       '이미지FX의 기능이 플로우로 들어오고 나노 바나나 모델이 핵심 경험에 통합된다.',
     publishedAt: '2026-02-25',
     category: 'Product',
-    signal: 'CREATIVE TOOLS',
+    signal: '창작 도구',
     url: 'https://blog.google/innovation-and-ai/models-and-research/google-labs/flow-updates-february-2026/',
   },
   {
@@ -4859,7 +4859,7 @@ const entries: NewsItem[] = [
       '밝혔다.',
     publishedAt: '2026-02-25',
     category: 'Safety',
-    signal: 'AI THREAT REPORT',
+    signal: 'AI 위협 보고서',
     url: 'https://openai.com/index/disrupting-malicious-ai-uses',
   },
   {
@@ -4873,7 +4873,7 @@ const entries: NewsItem[] = [
       '그동안 폰은 계속 쓸 수 있다.',
     publishedAt: '2026-02-25',
     category: 'Product',
-    signal: 'MOBILE AGENTS',
+    signal: '모바일 에이전트',
     url: 'https://blog.google/innovation-and-ai/products/gemini-app/android-multi-step-tasks/',
   },
   {
@@ -4887,7 +4887,7 @@ const entries: NewsItem[] = [
       '종료된다.',
     publishedAt: '2026-02-25',
     category: 'Corporate',
-    signal: 'COMPUTER USE',
+    signal: '컴퓨터 사용',
     url: 'https://www.anthropic.com/news/acquires-vercept',
   },
   {
@@ -4901,7 +4901,7 @@ const entries: NewsItem[] = [
       '리스크 리포트를 새로 뒀다.',
     publishedAt: '2026-02-24',
     category: 'Safety',
-    signal: 'AI POLICY',
+    signal: 'AI 정책',
     url: 'https://www.anthropic.com/news/responsible-scaling-policy-v3',
   },
   {
@@ -4915,7 +4915,7 @@ const entries: NewsItem[] = [
       '멜로디 다듬기와 오디오 이펙트까지 대화로 다룬다.',
     publishedAt: '2026-02-24',
     category: 'Product',
-    signal: 'GENERATIVE MEDIA',
+    signal: '생성형 미디어',
     url: 'https://blog.google/innovation-and-ai/models-and-research/google-labs/producerai/',
   },
   {
@@ -4929,7 +4929,7 @@ const entries: NewsItem[] = [
       '라우팅·대화형 채팅 세 기능이 함께 들어갔다.',
     publishedAt: '2026-02-24',
     category: 'Product',
-    signal: 'AGENTIC WORKFLOWS',
+    signal: '에이전틱 워크플로',
     url: 'https://blog.google/innovation-and-ai/models-and-research/google-labs/opal-agent/',
   },
   {
@@ -4942,7 +4942,7 @@ const entries: NewsItem[] = [
       '개발하는 신규 청정 발전 설비와 나란히 조성되며 냉각에는 공랭 방식을 쓴다.',
     publishedAt: '2026-02-24',
     category: 'Infrastructure',
-    signal: 'COMPUTE BUILDOUT',
+    signal: '컴퓨트 증설',
     url: 'https://blog.google/innovation-and-ai/infrastructure-and-cloud/global-network/data-center-wilbarger-county/',
   },
   {
@@ -4956,7 +4956,7 @@ const entries: NewsItem[] = [
       '저장장치 300MW를 확보하고 전력 서비스 비용은 구글이 전액 부담한다.',
     publishedAt: '2026-02-24',
     category: 'Infrastructure',
-    signal: 'COMPUTE BUILDOUT',
+    signal: '컴퓨트 증설',
     url: 'https://blog.google/innovation-and-ai/infrastructure-and-cloud/global-network/data-center-pine-island/',
   },
   {
@@ -4970,7 +4970,7 @@ const entries: NewsItem[] = [
       '방식을 설계하는 역할을 맡는다.',
     publishedAt: '2026-02-24',
     category: 'Corporate',
-    signal: 'LEADERSHIP HIRE',
+    signal: '경영진 선임',
     url: 'https://openai.com/index/arvind-kc-chief-people-officer',
   },
   {
@@ -4984,7 +4984,7 @@ const entries: NewsItem[] = [
       '패치를 그대로 재현할 만큼 오염돼, 대신 SWE-bench Pro를 권고했다.',
     publishedAt: '2026-02-23',
     category: 'Research',
-    signal: 'BENCHMARK CONTAMINATION',
+    signal: '벤치마크 오염',
     url: 'https://openai.com/index/why-we-no-longer-evaluate-swe-bench-verified',
   },
   {
@@ -4999,7 +4999,7 @@ const entries: NewsItem[] = [
       '맡는다.',
     publishedAt: '2026-02-23',
     category: 'Corporate',
-    signal: 'ENTERPRISE AGENTS',
+    signal: '기업용 에이전트',
     url: 'https://openai.com/index/frontier-alliance-partners',
   },
   {
@@ -5013,7 +5013,7 @@ const entries: NewsItem[] = [
       '1,600만 건 넘는 대화를 수집했다.',
     publishedAt: '2026-02-23',
     category: 'Safety',
-    signal: 'MODEL SECURITY',
+    signal: '모델 보안',
     url: 'https://www.anthropic.com/news/detecting-and-preventing-distillation-attacks',
   },
   {
@@ -5027,7 +5027,7 @@ const entries: NewsItem[] = [
       '맞을 가능성이 높고, 2번 문제는 처음 판단과 달리 오답으로 정정했다.',
     publishedAt: '2026-02-20',
     category: 'Research',
-    signal: 'MATH PROOF EVALUATION',
+    signal: '수학 증명 평가',
     url: 'https://openai.com/index/first-proof-submissions',
   },
   {
@@ -5041,7 +5041,7 @@ const entries: NewsItem[] = [
       '한다.',
     publishedAt: '2026-02-20',
     category: 'Product',
-    signal: 'AI SECURITY',
+    signal: 'AI 보안',
     url: 'https://www.anthropic.com/news/claude-code-security',
   },
   {
@@ -5056,7 +5056,7 @@ const entries: NewsItem[] = [
       '제공합니다.',
     publishedAt: '2026-02-19',
     category: 'Product',
-    signal: 'CREATIVE TOOLS',
+    signal: '창작 도구',
     url: 'https://blog.google/innovation-and-ai/models-and-research/google-labs/pomelli-photoshoot/',
   },
   {
@@ -5070,7 +5070,7 @@ const entries: NewsItem[] = [
       '총액은 2,700만 파운드를 넘으며 과제당 5만~100만 파운드가 지원된다.',
     publishedAt: '2026-02-19',
     category: 'Corporate',
-    signal: 'AI SAFETY FUNDING',
+    signal: 'AI 안전 기금',
     url: 'https://openai.com/index/advancing-independent-research-ai-alignment',
   },
   {
@@ -5084,7 +5084,7 @@ const entries: NewsItem[] = [
       'Pro의 두 배를 넘겼고, 정식 출시는 추후 예정입니다.',
     publishedAt: '2026-02-19',
     category: 'Frontier',
-    signal: 'FRONTIER REASONING',
+    signal: '프런티어 추론',
     url: 'https://deepmind.google/blog/gemini-3-1-pro-a-smarter-model-for-your-most-complex-tasks/',
     model: {
       family: 'Gemini',
@@ -5111,7 +5111,7 @@ const entries: NewsItem[] = [
       '1억 명을 넘었다.',
     publishedAt: '2026-02-18',
     category: 'Corporate',
-    signal: 'SOVEREIGN AI BUILDOUT',
+    signal: '소버린 AI 구축',
     url: 'https://openai.com/index/openai-for-india',
   },
   {
@@ -5125,7 +5125,7 @@ const entries: NewsItem[] = [
       'SynthID 워터마크가 들어갑니다.',
     publishedAt: '2026-02-18',
     category: 'Product',
-    signal: 'GENERATIVE MEDIA',
+    signal: '생성형 미디어',
     url: 'https://deepmind.google/blog/a-new-way-to-express-yourself-gemini-can-now-create-music/',
   },
   {
@@ -5139,7 +5139,7 @@ const entries: NewsItem[] = [
       '탐지·패치·익스플로잇 세 모드를 재고, 태스크와 평가 도구를 함께 배포한다.',
     publishedAt: '2026-02-18',
     category: 'Research',
-    signal: 'SMART CONTRACT BENCHMARK',
+    signal: '스마트 컨트랙트 벤치마크',
     url: 'https://openai.com/index/introducing-evmbench',
   },
   {
@@ -5153,7 +5153,7 @@ const entries: NewsItem[] = [
       '아우르는 다층 거버넌스 구조를 설명합니다.',
     publishedAt: '2026-02-17',
     category: 'Safety',
-    signal: 'AI GOVERNANCE',
+    signal: 'AI 거버넌스',
     url: 'https://blog.google/innovation-and-ai/products/responsible-ai-2026-report-ongoing-work/',
   },
   {
@@ -5167,7 +5167,7 @@ const entries: NewsItem[] = [
       '모델이 되며 1M 토큰 컨텍스트를 베타로 제공합니다.',
     publishedAt: '2026-02-17',
     category: 'Frontier',
-    signal: 'MODEL ECONOMICS',
+    signal: '모델 경제성',
     url: 'https://www.anthropic.com/news/claude-sonnet-4-6',
     model: {
       family: 'Claude',
@@ -5193,7 +5193,7 @@ const entries: NewsItem[] = [
       '진행합니다.',
     publishedAt: '2026-02-17',
     category: 'Corporate',
-    signal: 'PUBLIC SECTOR AI',
+    signal: '공공부문 AI',
     url: 'https://www.anthropic.com/news/anthropic-rwanda-mou',
   },
   {
@@ -5207,7 +5207,7 @@ const entries: NewsItem[] = [
       '인도 런레이트 매출은 2025년 10월 이후 두 배가 됐다.',
     publishedAt: '2026-02-16',
     category: 'Corporate',
-    signal: 'MARKET EXPANSION',
+    signal: '시장 확대',
     url: 'https://www.anthropic.com/news/bengaluru-office-partnerships-across-india',
   },
   {
@@ -5221,7 +5221,7 @@ const entries: NewsItem[] = [
       '보였고, 최종 공식은 GPT-5.2 Pro가 먼저 추측했다.',
     publishedAt: '2026-02-13',
     category: 'Research',
-    signal: 'AI FOR SCIENCE',
+    signal: '과학 AI',
     url: 'https://openai.com/index/new-result-theoretical-physics',
   },
   {
@@ -5235,7 +5235,7 @@ const entries: NewsItem[] = [
       '기능을 결정론적으로 비활성화한다.',
     publishedAt: '2026-02-13',
     category: 'Product',
-    signal: 'PROMPT INJECTION DEFENSE',
+    signal: '프롬프트 인젝션 방어',
     url: 'https://openai.com/index/introducing-lockdown-mode-and-elevated-risk-labels-in-chatgpt',
   },
   {
@@ -5248,7 +5248,7 @@ const entries: NewsItem[] = [
       '페이퍼에서 CFO를 지냈고 트럼프 1기 백악관 부비서실장을 맡았던 인물이다.',
     publishedAt: '2026-02-13',
     category: 'Corporate',
-    signal: 'CORPORATE GOVERNANCE',
+    signal: '기업 지배구조',
     url: 'https://www.anthropic.com/news/chris-liddell-appointed-anthropic-board',
   },
   {
@@ -5262,7 +5262,7 @@ const entries: NewsItem[] = [
       '결정 워터폴로 묶어 요청 단위로 판정한다.',
     publishedAt: '2026-02-13',
     category: 'Infrastructure',
-    signal: 'ACCESS INFRASTRUCTURE',
+    signal: '접근 인프라',
     url: 'https://openai.com/index/beyond-rate-limits',
   },
   {
@@ -5276,7 +5276,7 @@ const entries: NewsItem[] = [
       'APT 공격은 관측되지 않았다고 밝혔다.',
     publishedAt: '2026-02-12',
     category: 'Safety',
-    signal: 'AI THREAT INTEL',
+    signal: 'AI 위협 인텔리전스',
     url: 'https://blog.google/innovation-and-ai/infrastructure-and-cloud/google-cloud/gtig-report-ai-cyber-attacks-feb-2026/',
   },
   {
@@ -5290,7 +5290,7 @@ const entries: NewsItem[] = [
       '하드웨어에서 초당 1000토큰 이상을 내며 실시간 코딩을 겨냥한 첫 모델이다.',
     publishedAt: '2026-02-12',
     category: 'Domain',
-    signal: 'LOW LATENCY CODING',
+    signal: '저지연 코딩',
     url: 'https://openai.com/index/introducing-gpt-5-3-codex-spark',
     model: {
       family: 'GPT',
@@ -5315,7 +5315,7 @@ const entries: NewsItem[] = [
       '기록했고 Gemini API로도 처음 열린다.',
     publishedAt: '2026-02-12',
     category: 'Frontier',
-    signal: 'SCIENTIFIC REASONING',
+    signal: '과학 추론',
     url: 'https://deepmind.google/blog/gemini-3-deep-think-advancing-science-research-and-engineering/',
     model: {
       family: 'Gemini',
@@ -5340,7 +5340,7 @@ const entries: NewsItem[] = [
       '확보를 활동 목표로 내걸었다.',
     publishedAt: '2026-02-12',
     category: 'Corporate',
-    signal: 'AI POLICY',
+    signal: 'AI 정책',
     url: 'https://www.anthropic.com/news/donate-public-first-action',
   },
   {
@@ -5353,7 +5353,7 @@ const entries: NewsItem[] = [
       '달러이며, 현재 런레이트 매출은 140억 달러라고 함께 밝혔다.',
     publishedAt: '2026-02-12',
     category: 'Corporate',
-    signal: 'CAPITAL BUILDOUT',
+    signal: '자본 확충',
     url: 'https://www.anthropic.com/news/anthropic-raises-30-billion-series-g-funding-380-billion-post-money-valuation',
   },
   {
@@ -5367,7 +5367,7 @@ const entries: NewsItem[] = [
       '부담하는 구조다.',
     publishedAt: '2026-02-11',
     category: 'Infrastructure',
-    signal: 'COMPUTE BUILDOUT',
+    signal: '컴퓨트 증설',
     url: 'https://www.anthropic.com/news/covering-electricity-price-increases',
   },
   {
@@ -5381,7 +5381,7 @@ const entries: NewsItem[] = [
       '논문 한 편을 만들어 냈다.',
     publishedAt: '2026-02-09',
     category: 'Research',
-    signal: 'AI FOR SCIENCE',
+    signal: '과학 AI',
     url: 'https://deepmind.google/blog/accelerating-mathematical-and-scientific-discovery-with-gemini-deep-think/',
   },
   {
@@ -5395,7 +5395,7 @@ const entries: NewsItem[] = [
       '대상이다.',
     publishedAt: '2026-02-09',
     category: 'Corporate',
-    signal: 'DEFENSE DEPLOYMENT',
+    signal: '국방 도입',
     url: 'https://openai.com/index/bringing-chatgpt-to-genaimil',
   },
   {
@@ -5409,7 +5409,7 @@ const entries: NewsItem[] = [
       '않는다는 것이 골자다.',
     publishedAt: '2026-02-06',
     category: 'Corporate',
-    signal: 'SOVEREIGN AI',
+    signal: '소버린 AI',
     url: 'https://openai.com/index/our-approach-to-localization',
   },
   {
@@ -5423,7 +5423,7 @@ const entries: NewsItem[] = [
       'API 크레딧 1,000만 달러를 함께 내건다.',
     publishedAt: '2026-02-05',
     category: 'Safety',
-    signal: 'CYBER DEFENSE ACCESS',
+    signal: '사이버 방어 접근',
     url: 'https://openai.com/index/trusted-access-for-cyber',
   },
   {
@@ -5437,7 +5437,7 @@ const entries: NewsItem[] = [
       '평가를 한 곳에 묶었다.',
     publishedAt: '2026-02-05',
     category: 'Product',
-    signal: 'ENTERPRISE AGENTS',
+    signal: '기업용 에이전트',
     url: 'https://openai.com/index/introducing-openai-frontier',
   },
   {
@@ -5451,7 +5451,7 @@ const entries: NewsItem[] = [
       '속도가 25% 올랐다.',
     publishedAt: '2026-02-05',
     category: 'Domain',
-    signal: 'AGENTIC MODELS',
+    signal: '에이전틱 모델',
     url: 'https://openai.com/index/introducing-gpt-5-3-codex',
     model: {
       family: 'GPT',
@@ -5476,7 +5476,7 @@ const entries: NewsItem[] = [
       '비용을 40% 낮췄다.',
     publishedAt: '2026-02-05',
     category: 'Research',
-    signal: 'AI FOR SCIENCE',
+    signal: '과학 AI',
     url: 'https://openai.com/index/gpt-5-lowers-protein-synthesis-cost',
   },
   {
@@ -5491,7 +5491,7 @@ const entries: NewsItem[] = [
       '이르지 않았다고 밝혔다.',
     publishedAt: '2026-02-05',
     category: 'Safety',
-    signal: 'CYBER HIGH CAPABILITY',
+    signal: '사이버 High 등급',
     url: 'https://openai.com/index/gpt-5-3-codex-system-card',
   },
   {
@@ -5505,7 +5505,7 @@ const entries: NewsItem[] = [
       '켜는 적응형 사고와 저·중·고·최대 네 단계 노력 설정이 들어갔다.',
     publishedAt: '2026-02-05',
     category: 'Frontier',
-    signal: 'LONG CONTEXT MODELS',
+    signal: '롱 컨텍스트 모델',
     url: 'https://www.anthropic.com/news/claude-opus-4-6',
     model: {
       family: 'Claude',
@@ -5530,7 +5530,7 @@ const entries: NewsItem[] = [
       '자율 작업이 Apple IDE 안에서 돌아간다.',
     publishedAt: '2026-02-03',
     category: 'Product',
-    signal: 'IDE AGENTS',
+    signal: 'IDE 에이전트',
     url: 'https://www.anthropic.com/news/apple-xcode-claude-agent-sdk',
   },
   {
@@ -5545,7 +5545,7 @@ const entries: NewsItem[] = [
       '스노우플레이크 안에서 만들 수 있다.',
     publishedAt: '2026-02-02',
     category: 'Product',
-    signal: 'ENTERPRISE DATA AI',
+    signal: '기업 데이터 AI',
     url: 'https://openai.com/index/snowflake-partnership',
   },
   {
@@ -5559,7 +5559,7 @@ const entries: NewsItem[] = [
       '추리와 불완전 정보 아래의 위험 관리를 평가 축으로 넣었다.',
     publishedAt: '2026-02-02',
     category: 'Research',
-    signal: 'MODEL EVALUATION',
+    signal: '모델 평가',
     url: 'https://blog.google/innovation-and-ai/models-and-research/google-deepmind/kaggle-game-arena-updates/',
   },
   {
@@ -5573,7 +5573,7 @@ const entries: NewsItem[] = [
       '열면서 유료 요금제의 사용량 한도를 두 배로 올린다.',
     publishedAt: '2026-02-02',
     category: 'Product',
-    signal: 'CODING AGENTS',
+    signal: '코딩 에이전트',
     url: 'https://openai.com/index/introducing-the-codex-app',
   },
   {
@@ -5588,7 +5588,7 @@ const entries: NewsItem[] = [
       'Institute는 데이터 분석용 다중 에이전트를 만든다.',
     publishedAt: '2026-02-02',
     category: 'Corporate',
-    signal: 'AI FOR SCIENCE',
+    signal: '과학 AI',
     url: 'https://www.anthropic.com/news/anthropic-partners-with-allen-institute-and-howard-hughes-medical-institute',
   },
   {
@@ -5602,7 +5602,7 @@ const entries: NewsItem[] = [
       '이미지-투-비디오와 SAT 모의고사 기능도 함께 들어갔다.',
     publishedAt: '2026-01-30',
     category: 'Product',
-    signal: 'CONSUMER AI',
+    signal: '소비자 AI',
     url: 'https://blog.google/innovation-and-ai/products/gemini-app/gemini-drop-january-2026/',
   },
   {
@@ -5617,7 +5617,7 @@ const entries: NewsItem[] = [
       '바뀌지 않는다.',
     publishedAt: '2026-01-29',
     category: 'Frontier',
-    signal: 'MODEL RETIREMENT',
+    signal: '모델 지원 종료',
     url: 'https://openai.com/index/retiring-gpt-4o-and-older-models',
   },
   {
@@ -5631,7 +5631,7 @@ const entries: NewsItem[] = [
       '탐색·리믹스할 수 있다.',
     publishedAt: '2026-01-29',
     category: 'Product',
-    signal: 'WORLD MODELS',
+    signal: '월드 모델',
     url: 'https://deepmind.google/blog/project-genie-experimenting-with-infinite-interactive-worlds/',
   },
   {
@@ -5645,7 +5645,7 @@ const entries: NewsItem[] = [
       'AI 액셀러레이터와 50만 유로 규모 청소년 안전 보조금 프로그램을 시작한다.',
     publishedAt: '2026-01-28',
     category: 'Safety',
-    signal: 'EU AI POLICY',
+    signal: 'EU AI 정책',
     url: 'https://openai.com/index/the-next-chapter-for-ai-in-the-eu',
   },
   {
@@ -5660,7 +5660,7 @@ const entries: NewsItem[] = [
       '했다.',
     publishedAt: '2026-01-28',
     category: 'Safety',
-    signal: 'AGENT SECURITY',
+    signal: '에이전트 보안',
     url: 'https://openai.com/index/ai-agent-link-safety',
   },
   {
@@ -5674,7 +5674,7 @@ const entries: NewsItem[] = [
       '있으면 프로젝트와 공동 작업자 수 제한 없이 무료로 쓸 수 있다.',
     publishedAt: '2026-01-27',
     category: 'Product',
-    signal: 'SCIENCE WRITING WORKSPACE',
+    signal: '논문 작성 공간',
     url: 'https://openai.com/index/introducing-prism',
   },
   {
@@ -5688,7 +5688,7 @@ const entries: NewsItem[] = [
       '단계별로 돕는다.',
     publishedAt: '2026-01-27',
     category: 'Corporate',
-    signal: 'PUBLIC SECTOR AI',
+    signal: '공공부문 AI',
     url: 'https://www.anthropic.com/news/gov-UK-partnership',
   },
   {
@@ -5702,7 +5702,7 @@ const entries: NewsItem[] = [
       '크레딧이 함께 지급된다.',
     publishedAt: '2026-01-27',
     category: 'Product',
-    signal: 'DEVELOPER ECONOMICS',
+    signal: '개발자 요금제',
     url: 'https://blog.google/innovation-and-ai/technology/developers-tools/gdp-premium-ai-pro-ultra/',
   },
   {
@@ -5716,7 +5716,7 @@ const entries: NewsItem[] = [
       '입력에 넣어 가며 추론한다.',
     publishedAt: '2026-01-27',
     category: 'Frontier',
-    signal: 'AGENTIC VISION',
+    signal: '에이전틱 비전',
     url: 'https://blog.google/innovation-and-ai/technology/developers-tools/agentic-vision-gemini-3-flash/',
   },
   {
@@ -5730,7 +5730,7 @@ const entries: NewsItem[] = [
       '풀어 누구나 쓸 수 있게 했다.',
     publishedAt: '2026-01-22',
     category: 'Safety',
-    signal: 'MODEL ALIGNMENT',
+    signal: '모델 정렬',
     url: 'https://www.anthropic.com/news/claude-new-constitution',
   },
   {
@@ -5744,7 +5744,7 @@ const entries: NewsItem[] = [
       '로빈슨은 임기를 마치고 물러났다.',
     publishedAt: '2026-01-21',
     category: 'Corporate',
-    signal: 'AI GOVERNANCE',
+    signal: 'AI 거버넌스',
     url: 'https://www.anthropic.com/news/mariano-florentino-long-term-benefit-trust',
   },
   {
@@ -5759,7 +5759,7 @@ const entries: NewsItem[] = [
       '학습 성과 연구를 함께 진행한다.',
     publishedAt: '2026-01-21',
     category: 'Corporate',
-    signal: 'AI IN EDUCATION',
+    signal: '교육 현장 AI',
     url: 'https://openai.com/index/edu-for-countries',
   },
   {
@@ -5773,7 +5773,7 @@ const entries: NewsItem[] = [
       'for Countries를 교육·보건 등 여섯 갈래로 확대하겠다고 밝혔다.',
     publishedAt: '2026-01-21',
     category: 'Safety',
-    signal: 'AI CAPABILITY GAP',
+    signal: 'AI 역량 격차',
     url: 'https://openai.com/index/how-countries-can-end-the-capability-overhang',
   },
   {
@@ -5787,7 +5787,7 @@ const entries: NewsItem[] = [
       '부담해 주민 전기 요금이 오르지 않도록 하겠다고 밝혔다.',
     publishedAt: '2026-01-20',
     category: 'Infrastructure',
-    signal: 'COMPUTE BUILDOUT',
+    signal: '컴퓨트 증설',
     url: 'https://openai.com/index/stargate-community',
   },
   {
@@ -5801,7 +5801,7 @@ const entries: NewsItem[] = [
       '2028년까지 클리닉 1,000곳에 도달하는 것이 목표다.',
     publishedAt: '2026-01-20',
     category: 'Corporate',
-    signal: 'AI FOR HEALTHCARE',
+    signal: '보건 의료 AI',
     url: 'https://openai.com/index/horizon-1000',
   },
   {
@@ -5815,7 +5815,7 @@ const entries: NewsItem[] = [
       '적용한다.',
     publishedAt: '2026-01-20',
     category: 'Safety',
-    signal: 'TEEN SAFETY',
+    signal: '청소년 보호',
     url: 'https://openai.com/index/our-approach-to-age-prediction',
   },
   {
@@ -5829,7 +5829,7 @@ const entries: NewsItem[] = [
       '20억에서 200억 달러로 함께 커졌다고 밝혔다.',
     publishedAt: '2026-01-18',
     category: 'Corporate',
-    signal: 'MODEL ECONOMICS',
+    signal: '모델 경제성',
     url: 'https://openai.com/index/a-business-that-scales-with-the-value-of-intelligence',
   },
   {
@@ -5843,7 +5843,7 @@ const entries: NewsItem[] = [
       '생성이 10배 많고, 무료 등급과 Go에는 광고 테스트가 예정돼 있다.',
     publishedAt: '2026-01-16',
     category: 'Product',
-    signal: 'CONSUMER PRICING',
+    signal: '소비자 요금제',
     url: 'https://openai.com/index/introducing-chatgpt-go',
   },
   {
@@ -5857,7 +5857,7 @@ const entries: NewsItem[] = [
       '인코더-디코더 트랜스포머 하나로 처리한다.',
     publishedAt: '2026-01-16',
     category: 'Domain',
-    signal: 'WORLD MODELS',
+    signal: '월드 모델',
     url: 'https://deepmind.google/blog/d4rt-teaching-ai-to-see-the-world-in-four-dimensions/',
   },
   {
@@ -5871,7 +5871,7 @@ const entries: NewsItem[] = [
       '인물이다.',
     publishedAt: '2026-01-16',
     category: 'Corporate',
-    signal: 'MARKET EXPANSION',
+    signal: '시장 확대',
     url: 'https://www.anthropic.com/news/anthropic-appoints-irina-ghose-as-managing-director-of-india',
   },
   {
@@ -5885,7 +5885,7 @@ const entries: NewsItem[] = [
       '사용자를 대상으로 광고 테스트를 시작한다.',
     publishedAt: '2026-01-16',
     category: 'Product',
-    signal: 'CHATGPT ADVERTISING',
+    signal: 'ChatGPT 광고 도입',
     url: 'https://openai.com/index/our-approach-to-advertising-and-expanding-access',
   },
   {
@@ -5899,7 +5899,7 @@ const entries: NewsItem[] = [
       '이미지 속 글자 번역 능력도 이어받았다.',
     publishedAt: '2026-01-15',
     category: 'Open',
-    signal: 'OPEN MODELS',
+    signal: '오픈 모델',
     url: 'https://blog.google/innovation-and-ai/technology/developers-tools/translategemma/',
   },
   {
@@ -5913,7 +5913,7 @@ const entries: NewsItem[] = [
       '마감은 2026년 6월이다.',
     publishedAt: '2026-01-15',
     category: 'Infrastructure',
-    signal: 'AI SUPPLY CHAIN',
+    signal: 'AI 공급망',
     url: 'https://openai.com/index/strengthening-the-us-ai-supply-chain',
   },
   {
@@ -5927,7 +5927,7 @@ const entries: NewsItem[] = [
       '인터페이스를 개발 중이며, OpenAI는 과학 파운데이션 모델로 협력한다.',
     publishedAt: '2026-01-15',
     category: 'Corporate',
-    signal: 'BRAIN INTERFACES',
+    signal: '뇌 인터페이스',
     url: 'https://openai.com/index/investing-in-merge-labs',
   },
   {
@@ -5941,7 +5941,7 @@ const entries: NewsItem[] = [
       '상태이고 사용자가 앱을 골라 켜는 방식이다.',
     publishedAt: '2026-01-14',
     category: 'Product',
-    signal: 'PERSONAL CONTEXT',
+    signal: '개인 컨텍스트',
     url: 'https://blog.google/innovation-and-ai/products/gemini-app/personal-intelligence/',
   },
   {
@@ -5955,7 +5955,7 @@ const entries: NewsItem[] = [
       '만들어진다.',
     publishedAt: '2026-01-14',
     category: 'Research',
-    signal: 'MODEL EVALUATION',
+    signal: '모델 평가',
     url: 'https://blog.google/innovation-and-ai/technology/developers-tools/kaggle-community-benchmarks/',
   },
   {
@@ -5968,7 +5968,7 @@ const entries: NewsItem[] = [
       '확보한다고 밝혔다. 여러 차례에 나눠 2028년까지 순차적으로 가동된다.',
     publishedAt: '2026-01-14',
     category: 'Infrastructure',
-    signal: 'LOW LATENCY INFERENCE',
+    signal: '저지연 추론',
     url: 'https://openai.com/index/cerebras-partnership',
   },
   {
@@ -5982,7 +5982,7 @@ const entries: NewsItem[] = [
       '영상을 크롭 없이 생성하고 1080p·4K 업스케일을 지원합니다.',
     publishedAt: '2026-01-13',
     category: 'Multimodal',
-    signal: 'GENERATIVE VIDEO',
+    signal: '생성형 영상',
     url: 'https://deepmind.google/blog/veo-3-1-ingredients-to-video-more-consistency-creativity-and-control/',
   },
   {
@@ -5996,7 +5996,7 @@ const entries: NewsItem[] = [
       '9:16 세로 원본 생성, 4K 출력을 개발자가 바로 쓸 수 있습니다.',
     publishedAt: '2026-01-13',
     category: 'Product',
-    signal: 'VIDEO GENERATION API',
+    signal: '영상 생성 API',
     url: 'https://blog.google/innovation-and-ai/technology/developers-tools/veo-3-1-gemini-api/',
   },
   {
@@ -6010,7 +6010,7 @@ const entries: NewsItem[] = [
       '이끕니다.',
     publishedAt: '2026-01-13',
     category: 'Corporate',
-    signal: 'PRODUCT INCUBATION',
+    signal: '제품 인큐베이션',
     url: 'https://www.anthropic.com/news/introducing-anthropic-labs',
   },
   {
@@ -6024,7 +6024,7 @@ const entries: NewsItem[] = [
       'Storage의 파일을 재업로드 없이 입력으로 쓸 수 있습니다.',
     publishedAt: '2026-01-12',
     category: 'Product',
-    signal: 'DEVELOPER PLATFORM',
+    signal: '개발자 플랫폼',
     url: 'https://blog.google/innovation-and-ai/technology/developers-tools/gemini-api-new-file-limits/',
   },
   {
@@ -6038,7 +6038,7 @@ const entries: NewsItem[] = [
       'Health 등 의료·연구 커넥터와 에이전트 스킬이 함께 추가됐습니다.',
     publishedAt: '2026-01-11',
     category: 'Product',
-    signal: 'HEALTHCARE AI',
+    signal: '헬스케어 AI',
     url: 'https://www.anthropic.com/news/healthcare-life-sciences',
   },
   {
@@ -6053,7 +6053,7 @@ const entries: NewsItem[] = [
       '확보했다.',
     publishedAt: '2026-01-09',
     category: 'Infrastructure',
-    signal: 'STARGATE ENERGY',
+    signal: 'Stargate 전력',
     url: 'https://openai.com/index/stargate-sb-energy-partnership',
   },
   {
@@ -6067,7 +6067,7 @@ const entries: NewsItem[] = [
       '당일부터 제공되고, BAA를 맺을 수 있는 API 경로도 함께 묶였다.',
     publishedAt: '2026-01-08',
     category: 'Product',
-    signal: 'HEALTHCARE ENTERPRISE TIER',
+    signal: '의료기관 전용 플랜',
     url: 'https://openai.com/index/openai-for-healthcare',
   },
   {
@@ -6082,7 +6082,7 @@ const entries: NewsItem[] = [
       '쓰이지 않는다.',
     publishedAt: '2026-01-07',
     category: 'Product',
-    signal: 'CONSUMER HEALTH AI',
+    signal: '소비자 건강 AI',
     url: 'https://openai.com/index/introducing-chatgpt-health',
   },
 ];

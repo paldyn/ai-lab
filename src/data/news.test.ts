@@ -55,6 +55,30 @@ describe('뉴스 데이터', () => {
   });
 
   /**
+   * signal은 목록에서 날짜·회사 옆에 붙는 꼬리표입니다. 제목과 같은 줄에
+   * 놓이므로 여기만 영문이면 눈에 튑니다. 제목과 같은 규칙 — 모델명·제품명은
+   * 원문 그대로 두되 한글이 한 글자라도 있어야 합니다. 2026-08-05에 387건을
+   * 전부 옮겼고, 지금은 예외가 하나도 없습니다.
+   */
+  it('signal에 한글이 들어 있다', () => {
+    for (const item of newsItems) {
+      expect(/[가-힣]/.test(item.signal), `${item.id}: ${item.signal}`).toBe(true);
+    }
+  });
+
+  /**
+   * 꼬리표지 문장이 아닙니다. mono 10px 한 줄에 들어가야 하므로 길이를
+   * 묶어 둡니다 — 대부분 10자 안쪽이고, 고유명사가 낀 것만 14자까지입니다.
+   */
+  it('signal이 비어 있지 않고 14자를 넘지 않는다', () => {
+    for (const item of newsItems) {
+      expect(item.signal.trim(), item.id).toBe(item.signal);
+      expect(item.signal.length, `${item.id}: ${item.signal}`).toBeGreaterThan(0);
+      expect(item.signal.length, `${item.id}: ${item.signal}`).toBeLessThanOrEqual(14);
+    }
+  });
+
+  /**
    * 갈래는 kind마다 쓰는 집합이 다릅니다. 화면을 가르는 데는 쓰지 않으므로
    * 어긋나도 항목이 사라지지는 않지만, 리드 카드와 모달이 이 값을 그대로
    * 찍기 때문에 기업 소식에 '프런티어' 같은 이름이 붙습니다. 한 항목의
