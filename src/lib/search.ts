@@ -30,7 +30,18 @@ function scoreArticle(article: Article, query: string): number {
   return 0;
 }
 
-export function searchArticles(rawQuery: string, scope: SearchScope = 'all', limit = 30): SearchHit[] {
+/**
+ * 걸린 글을 **전부** 돌려줍니다.
+ *
+ * 한때 상위 30건에서 잘랐습니다. 두 가지가 잘못됐습니다 — 31번째부터는 사이트에
+ * 있는데도 검색으로 닿을 길이 없었고, 오버레이 발밑의 '○○건'이 자른 뒤의 수를
+ * 세서 107건 걸린 검색어에 30건이라고 적었습니다. 범위 칩은 306을 보여 주는데
+ * 결과는 30에서 멈추니 숫자끼리도 어긋났습니다.
+ *
+ * 자를 이유가 없습니다. 글이 306편이라 최악의 검색어("a")도 275건이고, 결과
+ * 목록은 이미 넘칠 때만 스크롤합니다(.search-results의 overflow-y).
+ */
+export function searchArticles(rawQuery: string, scope: SearchScope = 'all'): SearchHit[] {
   const query = normalize(rawQuery);
   if (query.length === 0) return [];
 
@@ -43,7 +54,7 @@ export function searchArticles(rawQuery: string, scope: SearchScope = 'all', lim
   }
 
   hits.sort((a, b) => b.score - a.score || b.article.publishedAt.localeCompare(a.article.publishedAt));
-  return hits.slice(0, limit);
+  return hits;
 }
 
 /** 검색 범위별 글 수. 오버레이의 범위 칩에 붙습니다. */

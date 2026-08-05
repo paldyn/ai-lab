@@ -164,6 +164,22 @@ export function SearchOverlay({ open, onClose }: SearchOverlayProps) {
                     id={`search-hit-${index}`}
                     role="option"
                     aria-selected={index === cursor}
+                    /*
+                      결과는 Tab 순서에서 빠집니다. 포커스는 입력창에 머무르고
+                      선택은 aria-activedescendant가 옮기는 방식이라(위 input),
+                      이 패턴에서 option에 포커스가 가면 두 가지가 어긋납니다.
+
+                      첫째, 화면 낭독기는 activedescendant가 가리키는 0번을
+                      읽는데 DOM 포커스는 Tab이 멈춘 곳에 있습니다. 둘째, Enter를
+                      받는 곳이 이 버튼이 아니라 패널의 onKeyDown이라
+                      preventDefault가 버튼의 기본 동작을 막고 cursor가 가리키는
+                      글로 갑니다 — 5번에 포커스를 두고 Enter를 눌러도 0번이
+                      열립니다.
+
+                      상한 30건일 때는 Tab 한 번에 하나씩 지나가는 정도였지만,
+                      전부 보여 주기로 하면서 최대 275개가 이 줄에 걸립니다.
+                    */
+                    tabIndex={-1}
                     onMouseEnter={() => setCursor(index)}
                     onClick={() => goTo(hit.article.slug)}
                   >
