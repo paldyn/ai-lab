@@ -77,7 +77,7 @@ draft: false             # true면 목록·프리렌더에서 빠진다
 - `src/data/news.ts` — 목록에 필요한 것(`title`, `summary`, `publishedAt`, `kind` 등).
   홈에도 실려 **초기 번들에 통째로 들어가므로** 여기에 긴 것을 넣지 않는다.
 - `src/data/news-details/<YYYY-MM>.ts` — 모달 본문. `points`(원문에서 뽑은 사실
-  5~8개)와 `commentary`(팔딘 해설)를 id를 키로 담는다. 모달을 열 때 그 달치만
+  5~8개)와 `commentary`(팔딘의 시사점)를 id를 키로 담는다. 모달을 열 때 그 달치만
   받아 온다.
 
 **항목을 넣는 달은 `publishedAt`의 앞 7자리와 반드시 같아야 한다.** 로더가 그것으로

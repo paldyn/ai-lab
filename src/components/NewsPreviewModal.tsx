@@ -206,8 +206,13 @@ export function NewsPreviewModal({ item, onClose }: NewsPreviewModalProps) {
             <section className="news-preview-points">
               {/*
                 두 제목이 이 팝업의 약속입니다 — 위는 원문에 있는 말만, 아래는
-                원문에 없는 우리 판단만. 예전 '무엇이 달라졌나'는 모델 발표에는
+                원문에 없는 우리 읽기만. 예전 '무엇이 달라졌나'는 모델 발표에는
                 맞았지만 규제·투자·조직 소식에는 달라진 것이 없어 맞지 않았습니다.
+
+                아래를 '시사점'으로 둔 것은 실제 commentary가 대부분 '무엇을
+                뜻하는가·무엇이 관건인가'라서입니다. 다만 이 낱말은 누구의
+                읽기인지를 밝히지 않으므로, 경계는 위 제목과의 대비와 accent
+                선·다른 면이 함께 집니다.
               */}
               <h3>원문이 말한 것</h3>
               <ul>
@@ -218,7 +223,7 @@ export function NewsPreviewModal({ item, onClose }: NewsPreviewModalProps) {
 
           {detail?.commentary && (
             <section className="news-preview-take">
-              <h3>PALDYN의 판단</h3>
+              <h3>시사점</h3>
               <p>{detail.commentary}</p>
             </section>
           )}
