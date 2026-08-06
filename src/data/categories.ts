@@ -70,7 +70,12 @@ export const categories: Category[] = [
   },
   {
     id: 'build-with-ai',
-    name: '만들기·도구',
+    /*
+      '만들기·도구'였습니다. 두 가지가 걸렸습니다 — 형제 칸이 전부 '무엇에 대한
+      글인가'를 적는 명사인데 이것만 '무엇을 하는가'였고, 뒤의 '도구'가 리서치
+      섹션의 `tools`(도구)와 같은 말이라 두 섹션에 같은 이름이 하나씩 있었습니다.
+    */
+    name: '개발·프레임워크',
     shortName: 'BUILD',
     description: 'SDK와 프레임워크, AI 코딩 도구를 익혀 실제로 돌아가는 것을 만듭니다.',
     section: 'learn',
