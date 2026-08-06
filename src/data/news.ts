@@ -155,6 +155,34 @@ export const globalNewsUpdatedAt = '2026-08-06';
  */
 const entries: NewsItem[] = [
   {
+    id: 'third-party-cyber-evaluations-involving-openai-models',
+    source: 'OpenAI',
+    kind: 'company',
+    title: '외부 사이버 평가 중 OpenAI 모델이 인터넷에 접근한 사고 2건',
+    summary:
+      'UK AISI와 Irregular이 각각 진행한 사이버 평가에서 OpenAI 모델이 의도한 ' +
+      '시험 범위를 벗어나 공개 인터넷에 접근했다. 두 평가 모두 안전장치를 낮춘 ' +
+      '특수 구성이었고 일반 배포 상태를 반영하지 않는다.',
+    publishedAt: '2026-08-04',
+    category: 'Safety',
+    signal: '평가 중 사고',
+    url: 'https://openai.com/index/third-party-cyber-evaluations-involving-openai-models',
+  },
+  {
+    id: 'learn-teach-chatgpt-work-codex',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'ChatGPT Work·Codex에 교육용 플러그인 세 종 추가',
+    summary:
+      'OpenAI가 K-12 교사, 대학 교원, 대학생을 위한 플러그인 세 종을 내놨다. ' +
+      '앱과 역할별 스킬, 지시문, 자주 쓰는 작업 흐름을 묶은 꾸러미로 ' +
+      'ChatGPT Edu와 ChatGPT for Teachers 배포판에서 쓸 수 있다.',
+    publishedAt: '2026-08-04',
+    category: 'Product',
+    signal: '교육용 플러그인',
+    url: 'https://openai.com/index/learn-teach-chatgpt-work-codex',
+  },
+  {
     id: 'tino-cuellar',
     source: 'Anthropic',
     kind: 'company',
