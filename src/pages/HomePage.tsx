@@ -210,7 +210,9 @@ export function HomePage() {
 
           <div className="company-news-grid">
             {sourceList.map((company) => {
-              const all = newsBySource(company.id);
+              // 기업 소식만입니다. 모델 발표는 바로 아래 「AI 모델 소식」의 몫이고,
+              // 거르지 않으면 같은 항목이 한 화면에 두 번 섭니다.
+              const all = newsBySource(company.id, 'company');
               const items = all.slice(0, 3);
               return (
                 <section

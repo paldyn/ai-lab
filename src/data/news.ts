@@ -6121,7 +6121,14 @@ export function feedDate(publishedAt: string): string {
   return year === LATEST_YEAR ? `${month}.${day}` : `${year}.${month}.${day}`;
 }
 
-export function newsBySource(source: NewsSource, limit?: number): NewsItem[] {
-  const filtered = newsItems.filter((item) => item.source === source);
-  return typeof limit === 'number' ? filtered.slice(0, limit) : filtered;
+/**
+ * 한 회사의 발표. `kind`를 주면 그 갈래만 셉니다.
+ *
+ * 갈래를 받게 된 이유가 있습니다. 홈의 「글로벌 AI 기업 소식」이 이 함수를
+ * 출처로만 불러서 모델 발표가 섞여 들어갔습니다 — 바로 아래에 「AI 모델 소식」이
+ * 따로 있는데 같은 항목이 두 곳에 서고, 머리의 'N UPDATES'도 모델을 함께 셌습니다.
+ * 예전 두 번째 인자였던 `limit`은 아무도 넘기지 않았습니다.
+ */
+export function newsBySource(source: NewsSource, kind?: GlobalNewsKind): NewsItem[] {
+  return newsItems.filter((item) => item.source === source && (!kind || item.kind === kind));
 }
