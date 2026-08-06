@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react';
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { ArrowLeft, ArrowRight } from 'lucide-react';
 import { Link, Navigate, useParams } from 'react-router';
 import { ArticleCard } from '../components/ArticleCard';
@@ -51,9 +51,28 @@ function readingLine(): number {
  * 헤딩이 없으면 콜백이 안 오고, 관찰자를 아예 안 돌려주는 환경도 있습니다.
  * 헤딩은 글 하나에 열 개 안팎이라 스크롤마다 재도 충분히 쌉니다 — 관찰자로
  * 아끼려던 비용보다 '안 따라온다'는 고장이 훨씬 비쌉니다.
+ *
+ * 목차를 눌러 이동하는 일도 여기서 맡습니다. 짚는 자리와 옮기는 동작이 서로를
+ * 보고 움직여야 해서(이동 중에는 짚기를 멈춥니다) 나눠 두면 상태가 둘로 갈립니다.
  */
-function useActiveHeading(ids: string[]): string | undefined {
+const easeOut = (t: number) => 1 - (1 - t) ** 3;
+
+/** 목차로 이동하는 시간. 가까우면 짧게, 멀어도 이 위를 넘지 않습니다. */
+const GLIDE_MIN_MS = 160;
+const GLIDE_MAX_MS = 320;
+
+function useActiveHeading(ids: string[]): {
+  active: string | undefined;
+  goTo: (id: string) => void;
+} {
   const [active, setActive] = useState<string | undefined>(undefined);
+
+  /*
+    목차를 눌러 이동하는 동안에는 스크롤이 짚는 절을 무시합니다. 잠그지 않으면
+    내려가는 내내 지나치는 절마다 강조가 옮겨 다니다 맨 끝에야 제자리를 잡습니다.
+  */
+  const locked = useRef(false);
+  const glide = useRef(0);
 
   useEffect(() => {
     if (ids.length === 0) return undefined;
@@ -65,6 +84,7 @@ function useActiveHeading(ids: string[]): string | undefined {
 
     const pick = () => {
       frame = 0;
+      if (locked.current) return;
       // 아무것도 안 지났으면 첫 절입니다 — 글 맨 위가 곧 첫 절입니다.
       let current = ids[0];
       for (const id of ids) {
@@ -85,18 +105,89 @@ function useActiveHeading(ids: string[]): string | undefined {
       schedule();
     };
 
+    // 이동하는 도중 직접 굴리면 즉시 손을 뗍니다 — 화면을 두고 다투지 않습니다.
+    const release = () => {
+      if (!locked.current) return;
+      cancelAnimationFrame(glide.current);
+      locked.current = false;
+      schedule();
+    };
+
     pick();
     window.addEventListener('scroll', schedule, { passive: true });
     window.addEventListener('resize', onResize);
+    window.addEventListener('wheel', release, { passive: true });
+    window.addEventListener('touchstart', release, { passive: true });
 
     return () => {
       if (frame) cancelAnimationFrame(frame);
+      cancelAnimationFrame(glide.current);
+      locked.current = false;
       window.removeEventListener('scroll', schedule);
       window.removeEventListener('resize', onResize);
+      window.removeEventListener('wheel', release);
+      window.removeEventListener('touchstart', release);
     };
   }, [ids]);
 
-  return active;
+  /**
+   * 목차 항목으로 이동합니다.
+   *
+   * 브라우저 기본(`html { scroll-behavior: smooth }`)을 쓰지 않고 직접 굴립니다.
+   * 그쪽은 이동 거리에 비례해 길어져서, 글 아래쪽 절을 누르면 한참 내려간 뒤에야
+   * 강조가 따라붙는 것처럼 보였습니다. 여기서는 누르는 즉시 강조를 옮기고 이동은
+   * 320ms 안에 끝냅니다. techblog.paldyn.com의 목차와 같은 방식입니다.
+   */
+  const goTo = useCallback((id: string) => {
+    const target = document.getElementById(id);
+    if (!target) return;
+
+    locked.current = true;
+    setActive(id);
+
+    // 헤딩에 걸어 둔 scroll-margin-top(고정 헤더 높이 + 여백)을 그대로 씁니다.
+    const offset = Number.parseFloat(getComputedStyle(target).scrollMarginTop) || 0;
+    const top = target.getBoundingClientRect().top + window.scrollY - offset;
+
+    cancelAnimationFrame(glide.current);
+    const start = window.scrollY;
+    const limit = document.documentElement.scrollHeight - window.innerHeight;
+    const distance = Math.max(0, Math.min(top, limit)) - start;
+
+    const settle = () => {
+      locked.current = false;
+      // 주소는 도착한 뒤에 바꿉니다. 히스토리에 쌓지 않아 뒤로 가기가 글을 빠져나갑니다.
+      window.history.replaceState(null, '', `#${id}`);
+    };
+
+    /*
+      굴리지 않고 바로 놓는 세 경우입니다.
+
+      `document.hidden`이 여기 있는 이유가 중요합니다. 숨은 탭에서는
+      requestAnimationFrame이 멎습니다 — 그대로 두면 `step`이 한 번도 안 불려
+      스크롤도 안 되고 `locked`가 영영 안 풀려, 탭을 다시 열었을 때 목차가
+      한 항목에 얼어붙은 채로 남습니다.
+    */
+    const still =
+      document.hidden || window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (still || Math.abs(distance) < 2) {
+      window.scrollTo({ top: start + distance, behavior: 'instant' });
+      settle();
+      return;
+    }
+
+    const duration = Math.min(GLIDE_MAX_MS, Math.max(GLIDE_MIN_MS, Math.abs(distance) * 0.25));
+    const began = performance.now();
+    const step = (now: number) => {
+      const progress = Math.min(1, (now - began) / duration);
+      window.scrollTo({ top: start + distance * easeOut(progress), behavior: 'instant' });
+      if (progress < 1) glide.current = requestAnimationFrame(step);
+      else settle();
+    };
+    glide.current = requestAnimationFrame(step);
+  }, []);
+
+  return { active, goTo };
 }
 
 function relatedTo(article: Article): Article[] {
@@ -194,7 +285,7 @@ function ArticleView({ article }: { article: Article }) {
 
   // 본문이 늦게 오는 경로가 있어 목록이 바뀔 때만 관찰을 다시 겁니다.
   const headingIds = useMemo(() => (body?.headings ?? []).map((heading) => heading.id), [body]);
-  const activeHeading = useActiveHeading(headingIds);
+  const { active: activeHeading, goTo: goToHeading } = useActiveHeading(headingIds);
 
   useEffect(() => {
     if (body) return undefined;
@@ -262,6 +353,12 @@ function ArticleView({ article }: { article: Article }) {
                     href={`#${heading.id}`}
                     className="hover:text-[var(--text)]"
                     aria-current={heading.id === activeHeading ? 'true' : undefined}
+                    onClick={(event) => {
+                      // 새 탭·다운로드 같은 보조 클릭은 브라우저에 맡깁니다.
+                      if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+                      event.preventDefault();
+                      goToHeading(heading.id);
+                    }}
                   >
                     {heading.depth === 2 ? `${String(index + 1).padStart(2, '0')} ` : ''}
                     {heading.text}
