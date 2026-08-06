@@ -143,7 +143,7 @@ export interface NewsDetail {
   commentary: string;
 }
 
-export const globalNewsUpdatedAt = '2026-08-01';
+export const globalNewsUpdatedAt = '2026-08-06';
 
 /**
  * 공식 발표 한 건 = 항목 한 개. 2026년 1월부터 쌓는 아카이브이며 오래된 항목을
@@ -154,6 +154,20 @@ export const globalNewsUpdatedAt = '2026-08-01';
  * 목록에서 파생됩니다. 갱신 시 globalNewsUpdatedAt도 함께 올립니다.
  */
 const entries: NewsItem[] = [
+  {
+    id: 'tino-cuellar',
+    source: 'Anthropic',
+    kind: 'company',
+    title: 'Anthropic, 첫 최고 대외정책 책임자에 Tino Cuéllar 선임',
+    summary:
+      'Anthropic이 첫 Chief Global Affairs Officer에 Mariano-Florentino ' +
+      '(Tino) Cuéllar를 선임했다. 정책·국제 협력·각국 정부 관계를 총괄하며, ' +
+      '카네기 국제평화재단 총재와 캘리포니아주 대법관을 지냈다.',
+    publishedAt: '2026-08-04',
+    category: 'Corporate',
+    signal: '경영진 선임',
+    url: 'https://www.anthropic.com/news/tino-cuellar',
+  },
   {
     id: 'ten-advances-in-mathematics',
     source: 'OpenAI',
