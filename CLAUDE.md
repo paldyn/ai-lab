@@ -39,7 +39,7 @@ draft: false             # true면 목록·프리렌더에서 빠진다
 | 카테고리 | 접두사 |
 | --- | --- |
 | `build-with-ai` | `ai-coding-` `app-`(만드는 것이 RAG여도 여기다) `huggingface-` `pytorch-` `*-sdk` `python-for-ai` `notebook-` `tensorflow-` |
-| `agents-rag` | `ai-agent` `agent-` `rag-` `prompt-` `vector-` `embedding-`(검색용) `project-`(에이전트·RAG를 만드는 것) |
+| `agents-rag` | `ai-agent` `agent-` `rag-` `prompt-` `vector-` `tool-` `function-calling-` `context-`(모델에 넣는 컨텍스트를 다루는 것) `embedding-`(검색용) `project-`(에이전트·RAG를 만드는 것) |
 | `math-for-ai` | `math-basics-` `math-` `math-adv-` |
 | `deep-learning` | `ml-` `nn-` `rnn-` `embedding-`(단어·문장 표현 학습) `neural-network-` |
 | `llm-core` | `llm-` `transformer-` `tokenizer-` `reasoning-` `structured-output-` |

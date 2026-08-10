@@ -27,6 +27,9 @@ const prefixRules: [prefix: string, categoryId: CategoryId][] = [
   ['rag-', 'agents-rag'],
   ['prompt-', 'agents-rag'],
   ['vector-', 'agents-rag'],
+  ['tool-', 'agents-rag'],
+  ['function-calling-', 'agents-rag'],
+  ['context-', 'agents-rag'],
 
   ['math-', 'math-for-ai'],
 
