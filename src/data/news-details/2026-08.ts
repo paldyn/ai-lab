@@ -2,6 +2,24 @@ import type { NewsDetail } from '../news';
 
 /** 2026-08 발표의 모달 본문. 목록은 news.ts에 있습니다. */
 export const details: Record<string, NewsDetail> = {
+  'google-ads-analytics-ai-updates': {
+    points: [
+      'Google Analytics 홈에 지난 접속 이후의 변화를 요약하는 AI Overviews가 생겼다',
+      '이 요약은 이메일이나 휴대전화 알림으로도 받아 볼 수 있다',
+      'Google Ads 홈에는 맞춤 인사이트 카드가 붙고 프롬프트로 직접 물어볼 수 있다',
+      '경쟁 상황이나 캠페인 추세 같은 질문을 카드에서 바로 던질 수 있다',
+      '텍스트 프롬프트로 리포트를 만드는 대시보드는 Google Ads에 먼저 열렸다',
+      'Analytics의 대시보드는 곧 제공한다고 밝혔다',
+      'Ask Advisor에 비슷한 업체의 익명 평균과 비교하는 벤치마킹이 들어갔다',
+      'Ask Advisor 베타는 영어 계정에서만 쓸 수 있다',
+    ],
+    commentary:
+      '광고·분석 도구의 접점이 대시보드 설정에서 프롬프트 한 줄로 옮겨 가는 흐름이다. ' +
+      '리포트를 짜고 지표를 찾는 일은 원래 대행사와 인하우스 마케터의 시간 대부분을 ' +
+      '먹던 작업이라, 이런 기능이 자리를 잡으면 광고 운영의 인건비 구조가 먼저 흔들린다. ' +
+      '다만 익명 벤치마킹은 비교 대상 집단을 어떻게 묶었는지가 숫자의 값을 좌우하고, ' +
+      '영어 계정 한정 베타라 한국어 환경에서 같은 품질이 나올지는 아직 확인할 수 없다.',
+  },
   'tino-cuellar': {
     points: [
       'Anthropic의 초대 Chief Global Affairs Officer로 합류한다',

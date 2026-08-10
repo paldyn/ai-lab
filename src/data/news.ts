@@ -143,7 +143,7 @@ export interface NewsDetail {
   commentary: string;
 }
 
-export const globalNewsUpdatedAt = '2026-08-06';
+export const globalNewsUpdatedAt = '2026-08-11';
 
 /**
  * 공식 발표 한 건 = 항목 한 개. 2026년 1월부터 쌓는 아카이브이며 오래된 항목을
@@ -154,6 +154,20 @@ export const globalNewsUpdatedAt = '2026-08-06';
  * 목록에서 파생됩니다. 갱신 시 globalNewsUpdatedAt도 함께 올립니다.
  */
 const entries: NewsItem[] = [
+  {
+    id: 'google-ads-analytics-ai-updates',
+    source: 'Google DeepMind',
+    kind: 'company',
+    title: 'Google Ads·Analytics에 AI 인사이트와 대시보드 추가',
+    summary:
+      '구글이 Google Ads와 Analytics에 Gemini 기반 기능을 더했다. Analytics ' +
+      '홈에는 지난 접속 이후의 변화를 요약하는 AI Overviews가, Ads 홈에는 맞춤 ' +
+      '인사이트 카드가 붙는다. 텍스트로 리포트를 만드는 대시보드는 Ads에 먼저 열렸다.',
+    publishedAt: '2026-08-10',
+    category: 'Product',
+    signal: '광고·분석 AI',
+    url: 'https://blog.google/products/ads-commerce/google-ads-analytics-ai-updates/',
+  },
   {
     id: 'third-party-cyber-evaluations-involving-openai-models',
     source: 'OpenAI',
