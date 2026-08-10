@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="470" viewBox="0 0 880 470">
+  <rect x="0" y="0" width="880" height="470" rx="12" fill="#0a0a0a"/>
+
+  <text x="50" y="46" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="22" font-weight="700" fill="#e8e8e8">순차 호출과 병렬 호출의 시간 축</text>
+  <text x="50" y="72" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">서로를 안 보는 세 도구를 순서대로 부르면 대기 시간이 그대로 더해진다</text>
+
+  <text x="50" y="118" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#e05555">순차</text>
+
+  <rect x="120" y="132" width="710" height="26" rx="4" fill="#12121a" stroke="#2a2a35" stroke-width="1"/>
+  <rect x="120" y="132" width="0" height="26" rx="4" fill="#3a2020">
+    <animate attributeName="width" values="0;230;230;230;230" keyTimes="0;0.28;0.6;0.92;1" dur="4s" repeatCount="indefinite"/>
+  </rect>
+  <rect x="350" y="132" width="0" height="26" rx="4" fill="#3a2020">
+    <animate attributeName="width" values="0;0;250;250;250" keyTimes="0;0.28;0.6;0.92;1" dur="4s" repeatCount="indefinite"/>
+  </rect>
+  <rect x="600" y="132" width="0" height="26" rx="4" fill="#3a2020">
+    <animate attributeName="width" values="0;0;0;230;230" keyTimes="0;0.28;0.6;0.92;1" dur="4s" repeatCount="indefinite"/>
+  </rect>
+  <text x="140" y="150" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="11.5" fill="#e8e8e8">날씨 조회</text>
+  <text x="370" y="150" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="11.5" fill="#e8e8e8">환율 조회</text>
+  <text x="620" y="150" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="11.5" fill="#e8e8e8">캘린더 조회</text>
+
+  <text x="120" y="182" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="11.5" fill="#e05555">호출 사이마다 모델이 한 번 더 돌아 다음 도구를 정한다</text>
+
+  <text x="50" y="242" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#55c555">병렬</text>
+
+  <rect x="120" y="222" width="710" height="26" rx="4" fill="#12121a" stroke="#2a2a35" stroke-width="1"/>
+  <rect x="120" y="222" width="0" height="26" rx="4" fill="#183018">
+    <animate attributeName="width" values="0;230;230" keyTimes="0;0.28;1" dur="4s" repeatCount="indefinite"/>
+  </rect>
+  <text x="140" y="240" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="11.5" fill="#e8e8e8">날씨 조회</text>
+
+  <rect x="120" y="256" width="710" height="26" rx="4" fill="#12121a" stroke="#2a2a35" stroke-width="1"/>
+  <rect x="120" y="256" width="0" height="26" rx="4" fill="#183018">
+    <animate attributeName="width" values="0;250;250" keyTimes="0;0.31;1" dur="4s" repeatCount="indefinite"/>
+  </rect>
+  <text x="140" y="274" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="11.5" fill="#e8e8e8">환율 조회</text>
+
+  <rect x="120" y="290" width="710" height="26" rx="4" fill="#12121a" stroke="#2a2a35" stroke-width="1"/>
+  <rect x="120" y="290" width="0" height="26" rx="4" fill="#183018">
+    <animate attributeName="width" values="0;220;220" keyTimes="0;0.26;1" dur="4s" repeatCount="indefinite"/>
+  </rect>
+  <text x="140" y="308" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="11.5" fill="#e8e8e8">캘린더 조회</text>
+
+  <line x1="370" y1="214" x2="370" y2="324" stroke="#55c555" stroke-width="2" stroke-dasharray="4,4"/>
+  <text x="386" y="340" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="11.5" fill="#55c555">가장 느린 하나가 끝나면 전체가 끝난다</text>
+
+  <rect x="50" y="366" width="780" height="66" rx="8" fill="#000000" stroke="#3a4a6e" stroke-width="1"/>
+  <text x="74" y="392" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="600" fill="#7ec8e3">줄어드는 것은 두 가지다</text>
+  <text x="74" y="414" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="11.5" fill="#9aa4b8">도구 대기 시간의 합, 그리고 중간에 끼던 모델 왕복 횟수</text>
+</svg>

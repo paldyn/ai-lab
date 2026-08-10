@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="560" viewBox="0 0 880 560">
+  <rect x="0" y="0" width="880" height="560" rx="12" fill="#0a0a0a"/>
+
+  <defs>
+    <marker id="fcr-arr" viewBox="0 0 14 14" refX="12" refY="7"
+            markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#7ec8e3"/>
+    </marker>
+  </defs>
+
+  <text x="50" y="46" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="22" font-weight="700" fill="#e8e8e8">함수 호출은 다섯 지점에서 따로 실패한다</text>
+  <text x="50" y="72" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">"도구 호출이 안 된다"는 증상 하나가 아니라 서로 다른 다섯 가지 문제다</text>
+
+  <rect x="50" y="106" width="330" height="72" rx="8" fill="#12121a" stroke="#e05555" stroke-width="1"/>
+  <text x="74" y="134" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13.5" font-weight="600" fill="#e05555">1. 도구 선택</text>
+  <text x="74" y="158" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="11.5" fill="#888">써야 할 때 안 쓰거나, 비슷한 도구를 잘못 고른다</text>
+
+  <rect x="500" y="106" width="330" height="72" rx="8" fill="#12121a" stroke="#e05555" stroke-width="1"/>
+  <text x="524" y="134" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13.5" font-weight="600" fill="#e05555">2. 인자 구성</text>
+  <text x="524" y="158" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="11.5" fill="#888">없는 값을 지어내거나, 형식·단위를 어긴다</text>
+
+  <line x1="380" y1="142" x2="500" y2="142" stroke="#7ec8e3" stroke-width="2" marker-end="url(#fcr-arr)"/>
+
+  <rect x="500" y="216" width="330" height="72" rx="8" fill="#12121a" stroke="#e0a555" stroke-width="1"/>
+  <text x="524" y="244" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13.5" font-weight="600" fill="#e0a555">3. 실행</text>
+  <text x="524" y="268" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="11.5" fill="#888">타임아웃·권한·레이트리밋 — 모델이 아닌 우리 쪽 문제</text>
+
+  <path d="M 665 178 L 665 216" stroke="#7ec8e3" stroke-width="2" fill="none" marker-end="url(#fcr-arr)"/>
+
+  <rect x="50" y="216" width="330" height="72" rx="8" fill="#12121a" stroke="#e05555" stroke-width="1"/>
+  <text x="74" y="244" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13.5" font-weight="600" fill="#e05555">4. 결과 해석</text>
+  <text x="74" y="268" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="11.5" fill="#888">빈 결과를 성공으로 읽거나, 오류 메시지를 답으로 옮긴다</text>
+
+  <line x1="500" y1="252" x2="380" y2="252" stroke="#7ec8e3" stroke-width="2" marker-end="url(#fcr-arr)"/>
+
+  <rect x="50" y="326" width="330" height="72" rx="8" fill="#12121a" stroke="#e05555" stroke-width="1"/>
+  <text x="74" y="354" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13.5" font-weight="600" fill="#e05555">5. 종료 판단</text>
+  <text x="74" y="378" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="11.5" fill="#888">같은 도구를 무한히 다시 부르거나, 덜 끝내고 답을 낸다</text>
+
+  <path d="M 215 288 L 215 326" stroke="#7ec8e3" stroke-width="2" fill="none" marker-end="url(#fcr-arr)"/>
+
+  <rect x="500" y="326" width="330" height="72" rx="8" fill="#000000" stroke="#3a4a6e" stroke-width="1"/>
+  <text x="524" y="354" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13.5" font-weight="600" fill="#7ec8e3">고칠 곳이 다르다</text>
+  <text x="524" y="378" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="11.5" fill="#9aa4b8">1·2는 스키마, 3은 인프라, 4·5는 루프 코드</text>
+
+  <rect x="50" y="436" width="780" height="70" rx="8" fill="#12121a" stroke="#2a2a35" stroke-width="1"/>
+  <text x="74" y="464" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="600" fill="#55c555">먼저 할 일: 실패를 다섯 갈래로 세어 보기</text>
+  <text x="74" y="488" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="11.5" fill="#888">분포를 모르면 프롬프트만 계속 고치게 된다. 대개 2번이 절반 이상이다.</text>
+
+  <text x="50" y="536" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#7ec8e3">모델을 바꿔서 나아지는 것은 1·2뿐이다. 3·4·5는 우리가 짠 코드의 문제다.</text>
+</svg>

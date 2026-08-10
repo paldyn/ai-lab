@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="540" viewBox="0 0 880 540">
+  <rect x="0" y="0" width="880" height="540" rx="12" fill="#0a0a0a"/>
+
+  <text x="50" y="46" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="22" font-weight="700" fill="#e8e8e8">컨텍스트 창은 예산이고, 항목마다 주인이 다르다</text>
+  <text x="50" y="72" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">한 창에 다섯 종류가 같이 들어가는데, 늘어나는 속도와 줄이는 방법이 전부 다르다</text>
+
+  <rect x="50" y="106" width="780" height="52" rx="6" fill="#12121a" stroke="#2a2a35" stroke-width="1"/>
+  <rect x="50" y="106" width="94" height="52" rx="6" fill="#1a2440"/>
+  <rect x="144" y="106" width="140" height="52" fill="#20304a"/>
+  <rect x="284" y="106" width="250" height="52" fill="#2a3a2a"/>
+  <rect x="534" y="106" width="200" height="52" fill="#3a2a3a"/>
+  <rect x="734" y="106" width="96" height="52" rx="6" fill="#3a3320"/>
+
+  <text x="60" y="137" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="11.5" fill="#e8e8e8">시스템</text>
+  <text x="156" y="137" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="11.5" fill="#e8e8e8">도구 스키마</text>
+  <text x="296" y="137" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="11.5" fill="#e8e8e8">대화 이력</text>
+  <text x="546" y="137" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="11.5" fill="#e8e8e8">검색해 온 문서</text>
+  <text x="746" y="137" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="11.5" fill="#e8e8e8">출력 몫</text>
+
+  <rect x="50" y="192" width="780" height="66" rx="8" fill="#12121a" stroke="#7777cc" stroke-width="1"/>
+  <text x="74" y="218" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="600" fill="#7777cc">고정 — 시스템 프롬프트, 도구 스키마</text>
+  <text x="74" y="240" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="11.5" fill="#888">요청마다 똑같이 들어간다. 캐시가 가장 잘 듣는 자리이므로 앞쪽에 고정해 둔다.</text>
+
+  <rect x="50" y="272" width="780" height="66" rx="8" fill="#12121a" stroke="#55c555" stroke-width="1"/>
+  <text x="74" y="298" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="600" fill="#55c555">누적 — 대화 이력, 도구 결과</text>
+  <text x="74" y="320" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="11.5" fill="#888">턴마다 자란다. 방치하면 가장 먼저 창을 먹는다. 요약·잘라내기의 대상이다.</text>
+
+  <rect x="50" y="352" width="780" height="66" rx="8" fill="#12121a" stroke="#e0a555" stroke-width="1"/>
+  <text x="74" y="378" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="600" fill="#e0a555">선택 — 검색해 온 문서</text>
+  <text x="74" y="400" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="11.5" fill="#888">요청마다 새로 고른다. 개수를 늘릴수록 답이 좋아지다가 어느 지점부터 나빠진다.</text>
+
+  <rect x="50" y="432" width="780" height="66" rx="8" fill="#12121a" stroke="#e05555" stroke-width="1"/>
+  <text x="74" y="458" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="600" fill="#e05555">예약 — 출력 몫</text>
+  <text x="74" y="480" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="11.5" fill="#888">입력이 창을 다 먹으면 답이 중간에 끊긴다. 먼저 떼어 두고 나머지를 나눈다.</text>
+
+  <text x="50" y="524" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#7ec8e3">"토큰이 모자란다"는 문제는 없다. 어느 항목이 자기 몫을 넘겼는지의 문제만 있다.</text>
+</svg>

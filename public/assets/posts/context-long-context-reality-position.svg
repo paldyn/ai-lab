@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="500" viewBox="0 0 880 500">
+  <rect x="0" y="0" width="880" height="500" rx="12" fill="#0a0a0a"/>
+
+  <defs>
+    <marker id="clc-arr" viewBox="0 0 14 14" refX="12" refY="7"
+            markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#888"/>
+    </marker>
+  </defs>
+
+  <text x="50" y="46" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="22" font-weight="700" fill="#e8e8e8">같은 정보라도 놓인 자리에 따라 다르게 읽힌다</text>
+  <text x="50" y="72" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">정답 한 조각을 긴 컨텍스트의 여러 위치에 옮겨 넣으며 정확도를 재면 나타나는 모양</text>
+
+  <line x1="110" y1="360" x2="830" y2="360" stroke="#2a2a35" stroke-width="1" marker-end="url(#clc-arr)"/>
+  <line x1="110" y1="360" x2="110" y2="120" stroke="#2a2a35" stroke-width="1"/>
+
+  <text x="110" y="392" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="11.5" fill="#888">맨 앞</text>
+  <text x="440" y="392" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="11.5" fill="#888">가운데</text>
+  <text x="770" y="392" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="11.5" fill="#888">맨 뒤</text>
+  <text x="50" y="126" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="11.5" fill="#888">정확도</text>
+
+  <path d="M 110 160 C 240 210, 330 296, 470 300 C 610 304, 700 216, 830 172"
+        stroke="#7ec8e3" stroke-width="2.5" fill="none"/>
+
+  <circle cx="110" cy="160" r="5" fill="#55c555"/>
+  <circle cx="470" cy="300" r="5" fill="#e05555"/>
+  <circle cx="830" cy="172" r="5" fill="#55c555"/>
+
+  <text x="128" y="152" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="11.5" fill="#55c555">앞머리는 잘 본다</text>
+  <text x="374" y="332" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="11.5" fill="#e05555">가운데가 가장 약하다</text>
+  <text x="700" y="150" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="11.5" fill="#55c555">끝머리도 잘 본다</text>
+
+  <line x1="110" y1="240" x2="830" y2="240" stroke="#7777cc" stroke-width="2" stroke-dasharray="4,4"/>
+  <text x="600" y="222" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="11.5" fill="#7777cc">짧은 컨텍스트에서의 정확도</text>
+
+  <rect x="50" y="418" width="780" height="60" rx="8" fill="#000000" stroke="#3a4a6e" stroke-width="1"/>
+  <text x="74" y="443" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="600" fill="#7ec8e3">"창에 들어간다"와 "제대로 쓰인다"는 다른 말이다</text>
+  <text x="74" y="465" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="11.5" fill="#9aa4b8">그래서 무엇을 넣느냐만큼 어디에 넣느냐가 품질을 가른다</text>
+</svg>
