@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="460" viewBox="0 0 880 460" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <rect width="880" height="460" rx="12" fill="#0a0a0a"/>
+
+  <text x="60" y="56" font-size="22" font-weight="700" fill="#e8e8e8">모눈 위에서 비스듬한 길이를 재는 법</text>
+  <text x="60" y="82" font-size="13" fill="#888">가로 차이와 세로 차이로 직각삼각형을 만들면, 비스듬한 변이 빗변이 된다</text>
+
+  <line x1="100" y1="140" x2="100" y2="340" stroke="#444" stroke-width="1"/>
+  <line x1="140" y1="140" x2="140" y2="340" stroke="#444" stroke-width="1"/>
+  <line x1="180" y1="140" x2="180" y2="340" stroke="#444" stroke-width="1"/>
+  <line x1="220" y1="140" x2="220" y2="340" stroke="#444" stroke-width="1"/>
+  <line x1="260" y1="140" x2="260" y2="340" stroke="#444" stroke-width="1"/>
+  <line x1="300" y1="140" x2="300" y2="340" stroke="#444" stroke-width="1"/>
+  <line x1="340" y1="140" x2="340" y2="340" stroke="#444" stroke-width="1"/>
+  <line x1="100" y1="140" x2="340" y2="140" stroke="#444" stroke-width="1"/>
+  <line x1="100" y1="180" x2="340" y2="180" stroke="#444" stroke-width="1"/>
+  <line x1="100" y1="220" x2="340" y2="220" stroke="#444" stroke-width="1"/>
+  <line x1="100" y1="260" x2="340" y2="260" stroke="#444" stroke-width="1"/>
+  <line x1="100" y1="300" x2="340" y2="300" stroke="#444" stroke-width="1"/>
+  <line x1="100" y1="340" x2="340" y2="340" stroke="#444" stroke-width="1"/>
+
+  <line x1="100" y1="340" x2="260" y2="340" stroke="#7777cc" stroke-width="2" stroke-dasharray="5,3"/>
+  <line x1="260" y1="340" x2="260" y2="220" stroke="#7777cc" stroke-width="2" stroke-dasharray="5,3"/>
+  <line x1="100" y1="340" x2="260" y2="220" stroke="#7ec8e3" stroke-width="2.5"/>
+  <circle cx="100" cy="340" r="5" fill="#e8e8e8"/>
+  <circle cx="260" cy="220" r="5" fill="#e8e8e8"/>
+
+  <text x="180" y="366" font-size="13" fill="#888" text-anchor="middle">가로 4칸</text>
+  <text x="356" y="286" font-size="13" fill="#888">세로 3칸</text>
+  <text x="166" y="264" font-size="14" fill="#7ec8e3" text-anchor="end">빗변</text>
+  <text x="220" y="410" font-size="14" fill="#7ec8e3" text-anchor="middle">4² + 3² = 25 이므로 빗변은 5</text>
+
+  <rect x="560" y="200" width="100" height="100" fill="#7ec8e3" fill-opacity="0.12" stroke="#7ec8e3" stroke-width="2.5"/>
+  <line x1="560" y1="300" x2="660" y2="200" stroke="#7ec8e3" stroke-width="2.5"/>
+  <text x="610" y="324" font-size="13" fill="#888" text-anchor="middle">1</text>
+  <text x="546" y="256" font-size="13" fill="#888" text-anchor="end">1</text>
+  <text x="674" y="244" font-size="15" fill="#7ec8e3">√2</text>
+  <text x="610" y="386" font-size="14" fill="#7ec8e3" text-anchor="middle">1² + 1² = 2</text>
+  <text x="610" y="410" font-size="13" fill="#888" text-anchor="middle">제곱해서 2가 되는 양수를 √2 라 적는다</text>
+</svg>

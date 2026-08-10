@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="460" viewBox="0 0 880 460" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <rect width="880" height="460" rx="12" fill="#0a0a0a"/>
+
+  <text x="60" y="56" font-size="22" font-weight="700" fill="#e8e8e8">그림자로 나무의 높이를 잰다</text>
+  <text x="60" y="82" font-size="13" fill="#888">해가 같은 각으로 비추므로 막대와 나무가 만드는 두 직각삼각형은 닮음이다</text>
+
+  <line x1="80" y1="300" x2="820" y2="300" stroke="#888" stroke-width="1.5"/>
+
+  <line x1="180" y1="300" x2="180" y2="240" stroke="#7ec8e3" stroke-width="4"/>
+  <line x1="180" y1="300" x2="270" y2="300" stroke="#7777cc" stroke-width="4"/>
+  <line x1="270" y1="300" x2="180" y2="240" stroke="#888" stroke-width="2" stroke-dasharray="5,3"/>
+  <text x="166" y="274" font-size="13" fill="#7ec8e3" text-anchor="end">막대 2 m</text>
+  <text x="225" y="324" font-size="13" fill="#7777cc" text-anchor="middle">그림자 3 m</text>
+
+  <line x1="520" y1="300" x2="520" y2="120" stroke="#7ec8e3" stroke-width="4"/>
+  <line x1="520" y1="300" x2="790" y2="300" stroke="#7777cc" stroke-width="4"/>
+  <line x1="790" y1="300" x2="520" y2="120" stroke="#888" stroke-width="2" stroke-dasharray="5,3"/>
+  <text x="506" y="214" font-size="13" fill="#7ec8e3" text-anchor="end">나무 ? m</text>
+  <text x="655" y="324" font-size="13" fill="#7777cc" text-anchor="middle">그림자 9 m</text>
+
+  <rect x="60" y="346" width="760" height="54" rx="6" fill="#101010" stroke="#333" stroke-width="1"/>
+  <text x="84" y="368" font-size="13" font-weight="600" fill="#e8e8e8">그림자가 3배로 길어졌으니 높이도 3배다</text>
+  <text x="84" y="388" font-size="13" fill="#888">막대가 2 m 였으므로 나무의 높이는 6 m — 올라가 재지 않고 그림자만 재면 된다</text>
+</svg>

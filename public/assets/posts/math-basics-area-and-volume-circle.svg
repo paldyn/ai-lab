@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="514" viewBox="0 0 880 514" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <rect width="880" height="514" rx="12" fill="#0a0a0a"/>
+  <defs>
+    <marker id="ciArr" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#888"/>
+    </marker>
+    <marker id="ciArrS" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#888"/>
+    </marker>
+  </defs>
+
+  <text x="60" y="56" font-size="22" font-weight="700" fill="#e8e8e8">원도 잘라 붙이면 평행사변형에 가까워진다</text>
+  <text x="60" y="82" font-size="13" fill="#888">부채꼴로 잘라 번갈아 붙이면 밑변이 π r, 높이가 r 인 도형이 된다</text>
+
+  <path d="M 210,265 L 305,265 A 95,95 0 0 1 277.2,332.2 Z" fill="#7ec8e3" fill-opacity="0.18"/>
+  <path d="M 210,265 L 210,360 A 95,95 0 0 1 142.8,332.2 Z" fill="#7ec8e3" fill-opacity="0.18"/>
+  <path d="M 210,265 L 115,265 A 95,95 0 0 1 142.8,197.8 Z" fill="#7ec8e3" fill-opacity="0.18"/>
+  <path d="M 210,265 L 210,170 A 95,95 0 0 1 277.2,197.8 Z" fill="#7ec8e3" fill-opacity="0.18"/>
+  <circle cx="210" cy="265" r="95" fill="none" stroke="#7ec8e3" stroke-width="2.5"/>
+  <line x1="115" y1="265" x2="305" y2="265" stroke="#7777cc" stroke-width="1.5"/>
+  <line x1="210" y1="170" x2="210" y2="360" stroke="#7777cc" stroke-width="1.5"/>
+  <line x1="142.8" y1="197.8" x2="277.2" y2="332.2" stroke="#7777cc" stroke-width="1.5"/>
+  <line x1="277.2" y1="197.8" x2="142.8" y2="332.2" stroke="#7777cc" stroke-width="1.5"/>
+  <text x="210" y="392" font-size="13" fill="#888" text-anchor="middle">반지름 r 인 원을 여덟 조각으로</text>
+
+  <line x1="340" y1="265" x2="410" y2="265" stroke="#888" stroke-width="2" marker-end="url(#ciArr)"/>
+
+  <polygon points="460,330 524,330 492,235" fill="#7ec8e3" fill-opacity="0.18" stroke="#7777cc" stroke-width="1.5"/>
+  <polygon points="524,330 588,330 556,235" fill="#7ec8e3" fill-opacity="0.18" stroke="#7777cc" stroke-width="1.5"/>
+  <polygon points="588,330 652,330 620,235" fill="#7ec8e3" fill-opacity="0.18" stroke="#7777cc" stroke-width="1.5"/>
+  <polygon points="652,330 716,330 684,235" fill="#7ec8e3" fill-opacity="0.18" stroke="#7777cc" stroke-width="1.5"/>
+  <polygon points="716,330 780,330 748,235" fill="#7ec8e3" fill-opacity="0.18" stroke="#7777cc" stroke-width="1.5"/>
+  <polygon points="492,235 556,235 524,330" fill="#7777cc" fill-opacity="0.18" stroke="#7777cc" stroke-width="1.5"/>
+  <polygon points="556,235 620,235 588,330" fill="#7777cc" fill-opacity="0.18" stroke="#7777cc" stroke-width="1.5"/>
+  <polygon points="620,235 684,235 652,330" fill="#7777cc" fill-opacity="0.18" stroke="#7777cc" stroke-width="1.5"/>
+  <polygon points="684,235 748,235 716,330" fill="#7777cc" fill-opacity="0.18" stroke="#7777cc" stroke-width="1.5"/>
+
+  <line x1="438" y1="235" x2="438" y2="330" stroke="#888" stroke-width="1.5" marker-end="url(#ciArrS)"/>
+  <text x="424" y="287" font-size="13" fill="#888" text-anchor="end">r</text>
+  <line x1="460" y1="352" x2="780" y2="352" stroke="#888" stroke-width="1.5" marker-end="url(#ciArrS)"/>
+  <text x="620" y="392" font-size="13" fill="#888" text-anchor="middle">밑변은 원둘레의 절반, 곧 π r</text>
+
+  <rect x="60" y="418" width="760" height="62" rx="6" fill="#101010" stroke="#333" stroke-width="1"/>
+  <text x="84" y="442" font-size="13" font-weight="600" fill="#e8e8e8">잘게 자를수록 위아래 톱니가 평평해져 진짜 평행사변형에 가까워진다</text>
+  <text x="84" y="464" font-size="13" fill="#888">밑변 π r 에 높이 r 이므로 넓이는 π r × r = π r²</text>
+</svg>
