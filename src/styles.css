@@ -1832,7 +1832,14 @@ input:focus-visible {
   font-size: 9px;
 }
 
-.article-visual-compact p:first-child,
+/*
+  작은 썸네일에서는 난이도 줄과 분야 이름을 뺍니다 — 목록 행에 이미 둘 다 있습니다.
+
+  난이도 줄을 `p:first-child`로 지목했다가 **난이도가 없는 글에서는 캡션이 첫
+  자식이라 캡션이 지워졌습니다.** 수학 밖 315편의 썸네일이 통째로 비어 있었고,
+  코드(`L-42`)가 유일하게 남은 글자라 그 사실이 가려져 있었습니다. 클래스로 지목합니다.
+*/
+.article-visual-compact .visual-level,
 .article-visual-compact .relative > div:first-child span:last-child {
   display: none;
 }

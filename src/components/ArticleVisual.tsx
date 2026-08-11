@@ -62,7 +62,7 @@ export function ArticleVisual({ article, compact = false }: ArticleVisualProps) 
         <div>
           {/* 난이도는 수학에서만 붙습니다 — displayLevel의 주석을 보세요. */}
           {displayLevel(article) && (
-            <p className="mb-2 font-mono text-[10px] tracking-[0.16em] text-[var(--visual-accent)]">
+            <p className="visual-level mb-2 font-mono text-[10px] tracking-[0.16em] text-[var(--visual-accent)]">
               {displayLevel(article)}
             </p>
           )}
