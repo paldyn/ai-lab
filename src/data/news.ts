@@ -115,7 +115,24 @@ export interface NewsItem {
   title: string;
   /** 한 문단 요약. **원문에 있는 사실만** 쓴다. 우리 판단은 commentary로 보낸다. */
   summary: string;
+  /** **원문이 발표된 날(UTC).** 목록·모달·'최근 7일' 지표가 전부 이 값을 쓴다. */
   publishedAt: string;
+  /**
+   * **이 사이트에 실린 날(KST).** 홈 배너의 「TODAY'S UPDATES」만 이 값을 본다.
+   *
+   * 둘을 가른 이유가 있다. `publishedAt`은 원문 발행일이라 UTC이고, 글의
+   * `pubDate`는 우리가 쓴 날이라 KST다 — 뜻도 시간대도 다르다. 뉴스 루틴은
+   * 04:00 KST에 돌아 '어제 UTC' 발표를 담는데, 한 시간 뒤 글 루틴들이 '오늘'
+   * 글을 올려 배너의 오늘 포인터를 앞으로 민다. 그래서 배너의 뉴스 칸이
+   * 구조적으로 늘 0이었다.
+   *
+   * `publishedAt`을 KST로 옮기는 대신 이 값을 따로 둔다. 발행일을 바꾸면
+   * 「OpenAI가 8월 11일에 발표했다」처럼 사실이 틀어지고, 애초에 날짜만 있고
+   * 시각이 없어 되돌릴 수도 없다.
+   *
+   * 없으면 `publishedAt`으로 떨어진다. 옛 항목은 배너의 창(하루) 밖이라 상관없다.
+   */
+  collectedAt?: string;
   category: NewsCategory;
   signal: string;
   url: string;
@@ -164,6 +181,7 @@ const entries: NewsItem[] = [
       '접근으로 넓혔다. Daybreak Blue는 GPT-5.6 Sol을 포함한 범용 모델을 방어 ' +
       '업무용 안전장치와 함께 승인된 방어자에게 제공한다.',
     publishedAt: '2026-08-10',
+    collectedAt: '2026-08-11',
     category: 'Domain',
     signal: '보안 모델',
     url: 'https://openai.com/index/expanding-daybreak-as-the-cyber-defense-window-narrows',
@@ -187,6 +205,7 @@ const entries: NewsItem[] = [
       'OpenAI가 프런티어 사이버 모델을 보안 업체의 제품과 서비스에 넣는 Daybreak ' +
       'Cyber Partner 프로그램을 넓혔다. Accenture와 IBM 등이 참여한다.',
     publishedAt: '2026-08-10',
+    collectedAt: '2026-08-11',
     category: 'Product',
     signal: '보안 파트너십',
     url: 'https://openai.com/index/putting-frontier-cyber-models-in-more-trusted-hands',
@@ -200,6 +219,7 @@ const entries: NewsItem[] = [
       'OpenAI가 텍사스 주지사 Greg Abbott에게 주 내 AI 인프라 개발에 대한 ' +
       '약속을 담은 서한을 보냈다. 주·지역 지도자와 전력회사, 지역사회와 협력하겠다고 밝혔다.',
     publishedAt: '2026-08-10',
+    collectedAt: '2026-08-11',
     category: 'Safety',
     signal: 'AI 정책',
     url: 'https://openai.com/index/responsible-ai-infrastructure-texas',
@@ -214,6 +234,7 @@ const entries: NewsItem[] = [
       '5시간 사용 한도가 없고 월 125달러(연간 결제 시 100달러)다. 한 워크스페이스에서 ' +
       '두 좌석을 섞어 쓸 수 있다.',
     publishedAt: '2026-08-10',
+    collectedAt: '2026-08-11',
     category: 'Product',
     signal: '기업 요금제',
     url: 'https://openai.com/index/premium-seats-chatgpt-business',
@@ -228,6 +249,7 @@ const entries: NewsItem[] = [
       '능력이 크게 올라, Preparedness Framework의 Critical 사이버 역량을 배제할 수 ' +
       '없다고 결론지었다. GPT-5.6-Sol까지는 High 단계로 평가됐다.',
     publishedAt: '2026-08-07',
+    collectedAt: '2026-08-11',
     category: 'Safety',
     signal: '역량 임계 도달',
     url: 'https://openai.com/index/responding-next-frontier-critical-cyber-capabilities',
@@ -242,6 +264,7 @@ const entries: NewsItem[] = [
       '슬라이더가 붙었다. 무료 사용자는 기본 모델이 GPT-5.6 Luna로 바뀌고 텍스트 ' +
       '대화가 무제한이 되며 Think 버튼으로 더 깊은 추론을 쓸 수 있다.',
     publishedAt: '2026-08-06',
+    collectedAt: '2026-08-11',
     category: 'Frontier',
     signal: '모델 개선',
     url: 'https://openai.com/index/improving-gpt-5-6-sol-in-chatgpt',
@@ -266,6 +289,7 @@ const entries: NewsItem[] = [
       '작업을 시작했다. 무엇이 밝혀졌고 무엇이 불확실한지, 책임 있는 설계가 무엇인지를 ' +
       '정리하는 것이 목표다.',
     publishedAt: '2026-08-06',
+    collectedAt: '2026-08-11',
     category: 'Safety',
     signal: '청소년 안전',
     url: 'https://openai.com/index/openai-and-apa-partner-to-advance-responsible-ai',
@@ -280,6 +304,7 @@ const entries: NewsItem[] = [
       '기록한 WeatherNext를 Nature에 싣고 모델을 오픈소스로 공개했다. 3일 예보가 ' +
       '기존 모델의 2일 예보 수준이라 예보관에게 하루를 더 준다.',
     publishedAt: '2026-08-06',
+    collectedAt: '2026-08-11',
     category: 'Open',
     signal: '기상 예측 모델',
     url: 'https://deepmind.google/blog/weathernext-ai-model-achieves-breakthrough-in-forecasting-cyclones',
@@ -304,6 +329,7 @@ const entries: NewsItem[] = [
       '홈에는 지난 접속 이후의 변화를 요약하는 AI Overviews가, Ads 홈에는 맞춤 ' +
       '인사이트 카드가 붙는다. 텍스트로 리포트를 만드는 대시보드는 Ads에 먼저 열렸다.',
     publishedAt: '2026-08-10',
+    collectedAt: '2026-08-11',
     category: 'Product',
     signal: '광고·분석 AI',
     url: 'https://blog.google/products/ads-commerce/google-ads-analytics-ai-updates/',

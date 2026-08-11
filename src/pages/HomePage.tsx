@@ -56,13 +56,26 @@ export function feedCorpus(): FeedItem[] {
         href: `/articles/${article.slug}`,
       };
     }),
+    /*
+      뉴스는 **실린 날**로 센다. 이 패널이 묻는 것은 '원문이 언제 나왔나'가 아니라
+      '오늘 이 사이트에 뭐가 새로 올라왔나'이고, 글은 이미 그 뜻이다(pubDate = 쓴 날).
+
+      `publishedAt`을 그대로 쓰면 뉴스 칸이 늘 0이었다 — 그 값은 원문 발행일이라
+      UTC고, 04:00 KST에 도는 뉴스 루틴이 담는 것은 대개 '어제 UTC' 발표다.
+      한 시간 뒤 글 루틴들이 오늘 글을 올리면 오늘 포인터가 앞으로 밀려 방금 담은
+      뉴스가 창 밖으로 나갔다.
+
+      날짜도 collectedAt으로 적는다. 창이 하루라 어느 값을 쓰든 모든 줄이 같은
+      날짜라 정보가 줄지 않고, 「TODAY'S UPDATES」 아래에 지난 날짜가 찍히지 않는다.
+      원문 발행일은 뉴스 페이지가 그대로 보여 준다.
+    */
     ...newsItems.map((item) => ({
       key: `n-${item.id}`,
       section: 'news' as SectionId,
       label: SECTION_LABEL.news,
       accentText: categoryById['ai-news'].accentText,
       title: item.title,
-      date: item.publishedAt,
+      date: item.collectedAt ?? item.publishedAt,
     })),
   ].sort((a, b) => b.date.localeCompare(a.date));
 }
@@ -90,7 +103,25 @@ export function buildRecent(
     SECTION_ORDER.indexOf(a.section) - SECTION_ORDER.indexOf(b.section) || b.date.localeCompare(a.date);
 
   return {
-    items: pool.slice(0, FEED_LIMIT).sort(bySection),
+    /*
+      갈래를 한 바퀴 돌며 하나씩 집고, 남는 자리를 최신순으로 채운다.
+
+      앞에서 그냥 넷을 자르면 그날 많이 나온 갈래가 네 자리를 다 먹는다. 글 루틴
+      셋이 하루 열두 편을 올리므로 실제로 늘 그렇게 됐고, 발밑에 '뉴스 9'라고
+      적혀 있는데 목록에는 뉴스가 한 줄도 없었다.
+    */
+    items: (() => {
+      const picked: FeedItem[] = [];
+      for (const section of SECTION_ORDER) {
+        const first = pool.find((item) => item.section === section);
+        if (first && picked.length < FEED_LIMIT) picked.push(first);
+      }
+      for (const item of pool) {
+        if (picked.length >= FEED_LIMIT) break;
+        if (!picked.includes(item)) picked.push(item);
+      }
+      return picked.sort(bySection);
+    })(),
     counts: [
       { label: '전체', count: pool.length },
       ...SECTION_ORDER.map((section) => ({
