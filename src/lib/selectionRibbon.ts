@@ -97,8 +97,17 @@ export function bandOf(rects: readonly Span[], lineHeight: number): Span {
   const top = widest.top - (height - (widest.bottom - widest.top)) / 2;
 
   return {
-    top: Math.min(top, ...rects.map((r) => r.top)),
-    bottom: Math.max(top + height, ...rects.map((r) => r.bottom)),
+    /*
+      위아래를 픽셀에 맞춰 **한 픽셀씩 겹치게** 만듭니다.
+
+      줄과 줄의 띠는 이미 정확히 맞닿습니다(틈 0). 그런데도 경계에 검은 줄이 보였습니다 —
+      가장자리가 29.3처럼 소수점이라 그 픽셀 줄을 위 띠가 30%, 아래 띠가 70%만 덮고,
+      배경 층은 알파로 합성되므로 합쳐도 1 - 0.7 × 0.3 = 79%밖에 안 찹니다. 나머지
+      21%로 바탕이 비칩니다. 같은 색이라 겹치는 것은 눈에 안 보이고, 이렇게 하면
+      경계 픽셀이 어느 한쪽으로 꽉 찹니다.
+    */
+    top: Math.floor(Math.min(top, ...rects.map((r) => r.top))),
+    bottom: Math.ceil(Math.max(top + height, ...rects.map((r) => r.bottom))),
     left: Math.min(...rects.map((r) => r.left)),
     right: Math.max(...rects.map((r) => r.right)),
   };

@@ -62,6 +62,16 @@ describe('bandOf', () => {
     expect(band.top).toBe(196);
     expect(band.bottom).toBe(226);
   });
+
+  it('위아래를 픽셀에 맞춰 이웃한 줄과 한 픽셀 겹치게 한다', () => {
+    // 실제로 나온 값이다. 29.3과 29.29로 맞닿으면 그 픽셀 줄을 둘이 30%·70%만
+    // 덮고 알파 합성이라 21%가 비어 검은 줄이 보였다.
+    const first = bandOf([span(0, -0.3, 300, 20)], 29.6);
+    const second = bandOf([span(0, 29.29, 300, 20)], 29.6);
+
+    expect(first.bottom).toBeGreaterThan(second.top);
+    expect([first.top, first.bottom, second.top, second.bottom]).toEqual([-6, 25, 24, 55]);
+  });
 });
 
 describe('sameEdges', () => {
