@@ -12,6 +12,8 @@ declare module 'virtual:article-index' {
     featured: boolean;
     visual?: string;
     order?: number;
+    /** 그 카테고리에서 몇 번째로 쓴 글인가. 1부터. */
+    seq: number;
   }
 
   export const articleIndex: ArticleIndexEntry[];

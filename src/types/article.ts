@@ -56,6 +56,11 @@ export interface Article {
   visual?: string;
   /** 커리큘럼 카테고리에서의 순서. 작을수록 앞. */
   order?: number;
+  /**
+   * 그 카테고리에서 몇 번째로 쓴 글인가. 1부터.
+   * 빌드가 「지난 글」 사슬을 따라 매깁니다 — plugins/article-index.ts의 orderArticles.
+   */
+  seq: number;
 }
 
 export interface ArticleHeading {
