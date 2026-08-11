@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { sameEdges, toBands } from './inlineSelection';
+import { fragmentFor, sameEdges, toBands } from './inlineSelection';
 
 /** DOMRect 대신 필요한 네 값만 든 가짜. toBands는 이 넷만 봅니다. */
 function rect(left: number, top: number, width: number, height: number): DOMRect {
@@ -46,6 +46,29 @@ describe('toBands', () => {
 
   it('빈 입력에는 아무 띠도 만들지 않는다', () => {
     expect(toBands([])).toEqual([]);
+  });
+});
+
+describe('fragmentFor', () => {
+  /*
+    줄바꿈된 코드 칩에서 실제로 잰 세 조각입니다. 감싼 상자는 20~349라, 이걸 세 줄에
+    모두 쓰면 1번 줄에서 띠가 칩보다 58px 왼쪽에서 시작해 옆 글자를 덮었습니다.
+  */
+  const fragments = [rect(78, 100, 271, 24), rect(20, 130, 206, 24), rect(20, 160, 172, 24)];
+
+  it('띠가 앉은 줄의 조각을 고른다', () => {
+    expect(fragmentFor(fragments, { top: 100, bottom: 124 })?.left).toBe(78);
+    expect(fragmentFor(fragments, { top: 130, bottom: 154 })?.left).toBe(20);
+    expect(fragmentFor(fragments, { top: 160, bottom: 184 })?.right).toBe(192);
+  });
+
+  it('조금씩 걸치면 더 많이 겹치는 쪽을 고른다', () => {
+    expect(fragmentFor(fragments, { top: 122, bottom: 146 })?.top).toBe(130);
+  });
+
+  it('겹치는 줄이 없으면 null이다 — 그때는 띠 자신의 폭을 쓴다', () => {
+    expect(fragmentFor(fragments, { top: 300, bottom: 320 })).toBeNull();
+    expect(fragmentFor([], { top: 100, bottom: 124 })).toBeNull();
   });
 });
 

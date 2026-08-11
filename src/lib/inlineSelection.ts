@@ -91,19 +91,27 @@ interface Clipped {
 /**
  * 선택 범위를 조각 하나로 좁힙니다. 본문에서 수식을 지나 계속 끌었을 때
  * 그 조각 안에 걸친 부분만 남깁니다. 겹치는 데가 없으면 null입니다.
+ *
+ * '통째로 잡혔는가'는 **글자를 비교해서** 봅니다. `compareBoundaryPoints`로
+ * 가리면 안 됩니다 — 경계점 비교는 자손 노드의 오프셋을 무시하고 '몇 번째
+ * 자식인가'만 보므로, 칩 한가운데에서 시작한 선택도 `(글자노드, 3)`이
+ * `(code, 0)`보다 **앞**으로 판정됩니다. 그러면 걸치기만 해도 늘 참이 되어
+ * 반쯤 잡힌 칩까지 녹습니다.
  */
 function clipToNode(range: Range, node: Node): Clipped | null {
   const all = range.cloneRange();
   all.selectNodeContents(node);
 
   const part = range.cloneRange();
-  const startsBefore = part.compareBoundaryPoints(Range.START_TO_START, all) <= 0;
-  const endsAfter = part.compareBoundaryPoints(Range.END_TO_END, all) >= 0;
+  if (part.compareBoundaryPoints(Range.START_TO_START, all) < 0) {
+    part.setStart(all.startContainer, all.startOffset);
+  }
+  if (part.compareBoundaryPoints(Range.END_TO_END, all) > 0) {
+    part.setEnd(all.endContainer, all.endOffset);
+  }
+  if (part.collapsed) return null;
 
-  if (startsBefore) part.setStart(all.startContainer, all.startOffset);
-  if (endsAfter) part.setEnd(all.endContainer, all.endOffset);
-
-  return part.collapsed ? null : { range: part, whole: startsBefore && endsAfter };
+  return { range: part, whole: part.toString() === (node.textContent ?? '') };
 }
 
 /** 본문 글자 한 조각: 글자 상자와, 그 글자가 앉은 줄 상자. */
@@ -122,18 +130,53 @@ interface TextRun {
  * 줄 상자는 글자 상자 위아래에 `(line-height − 글자 상자) / 2`씩(half-leading)
  * 더한 것입니다. `line-height: normal`처럼 px로 안 읽히면 글자 상자를 그대로 씁니다.
  */
-function lineBoxOf(rect: DOMRect, element: Element): { top: number; height: number } {
-  const lineHeight = Number.parseFloat(getComputedStyle(element).lineHeight);
-  if (!Number.isFinite(lineHeight) || lineHeight <= 0) return { top: rect.top, height: rect.height };
+function lineBoxOf(rect: DOMRect, element: Element, cache: Map<Element, number>): { top: number; height: number } {
+  const lineHeight = lineHeightOf(element, cache);
+  if (!lineHeight) return { top: rect.top, height: rect.height };
 
   return { top: rect.top - (lineHeight - rect.height) / 2, height: lineHeight };
+}
+
+/** 그릇의 줄 높이(px). `normal`처럼 px로 안 읽히면 0입니다. 한 번 그리는 동안 캐시합니다. */
+function lineHeightOf(element: Element, cache: Map<Element, number>): number {
+  const hit = cache.get(element);
+  if (hit !== undefined) return hit;
+
+  const raw = Number.parseFloat(getComputedStyle(element).lineHeight);
+  const value = Number.isFinite(raw) && raw > 0 ? raw : 0;
+  cache.set(element, value);
+  return value;
+}
+
+/** 세로로 겹치는 넓이. 같은 줄인지 가릴 때 씁니다. */
+function overlapOf(a: { top: number; bottom: number }, b: { top: number; bottom: number }): number {
+  return Math.min(a.bottom, b.bottom) - Math.max(a.top, b.top);
+}
+
+/** 여러 조각으로 흩어진 상자 중 이 띠와 같은 줄에 있는 것. 줄바꿈된 코드 칩에 씁니다. */
+export function fragmentFor<T extends { top: number; bottom: number }>(
+  fragments: readonly T[],
+  band: { top: number; bottom: number },
+): T | null {
+  let best: T | null = null;
+  let bestOverlap = 0;
+
+  for (const fragment of fragments) {
+    const overlap = overlapOf(fragment, band);
+    if (overlap > bestOverlap) {
+      bestOverlap = overlap;
+      best = fragment;
+    }
+  }
+
+  return best;
 }
 
 /**
  * 한 그릇 안에서 **조각이 아닌 본문 글자**를 모읍니다.
  * 한 번 그리는 동안 같은 그릇을 여러 조각이 물어보므로 결과를 캐시합니다.
  */
-function textRunsOf(block: Element, cache: Map<Element, TextRun[]>): TextRun[] {
+function textRunsOf(block: Element, cache: Map<Element, TextRun[]>, lines: Map<Element, number>): TextRun[] {
   const hit = cache.get(block);
   if (hit) return hit;
 
@@ -148,7 +191,7 @@ function textRunsOf(block: Element, cache: Map<Element, TextRun[]>): TextRun[] {
     const range = block.ownerDocument.createRange();
     range.selectNodeContents(node);
     for (const rect of range.getClientRects()) {
-      if (rect.height > 0) runs.push({ rect, ...lineBoxOf(rect, parent) });
+      if (rect.height > 0) runs.push({ rect, ...lineBoxOf(rect, parent, lines) });
     }
   }
 
@@ -156,23 +199,39 @@ function textRunsOf(block: Element, cache: Map<Element, TextRun[]>): TextRun[] {
   return runs;
 }
 
-/** 이 띠와 같은 줄에 있는 본문 글자의 줄 상자. 같은 줄에 글자가 없으면 null입니다. */
-function lineOf(host: Element, band: Band, cache: Map<Element, TextRun[]>): TextRun | null {
+/**
+ * 이 띠와 같은 줄인 본문 글자의 줄 상자.
+ *
+ * 같은 줄에 글자가 없는 경우가 둘인데 답이 다릅니다. 줄바꿈된 코드 칩의 가운데
+ * 줄처럼 **그릇은 있는데 그 줄에 다른 글자가 없는** 경우는 그릇의 줄 높이를 띠
+ * 한가운데에 맞춰 씁니다 — 안 그러면 그 줄만 얇아져 홈이 도로 팹니다. 블록
+ * 수식처럼 **그릇 자체가 없는** 경우는 조각 자신의 크기를 씁니다(null).
+ */
+function lineOf(
+  host: Element,
+  band: Band,
+  cache: Map<Element, TextRun[]>,
+  lines: Map<Element, number>,
+): { top: number; height: number } | null {
   const block = host.closest(BLOCK);
   if (!block) return null;
 
   let best: TextRun | null = null;
   let bestOverlap = 0;
-
-  for (const run of textRunsOf(block, cache)) {
-    const overlap = Math.min(run.rect.bottom, band.bottom) - Math.max(run.rect.top, band.top);
+  for (const run of textRunsOf(block, cache, lines)) {
+    const overlap = overlapOf(run.rect, band);
     if (overlap > bestOverlap) {
       bestOverlap = overlap;
       best = run;
     }
   }
+  if (best) return { top: best.top, height: best.height };
 
-  return best;
+  const lineHeight = lineHeightOf(block, lines);
+  if (!lineHeight) return null;
+
+  const middle = (band.top + band.bottom) / 2;
+  return { top: middle - lineHeight / 2, height: lineHeight };
 }
 
 function clearMarks(root: HTMLElement): void {
@@ -181,29 +240,27 @@ function clearMarks(root: HTMLElement): void {
 }
 
 /**
- * 띠를 놓을 기준점을 **재서** 구합니다.
+ * 띠를 놓을 기준점 — 절대 위치가 (0, 0)으로 앉는 자리.
  *
- * `getBoundingClientRect()`를 그냥 쓰면 안 됩니다. 절대 위치의 기준이 되는 상자는
- * 인라인 요소의 경우 **글꼴이 만드는 상자**인데, 그 값은 안에 든 inline-block
- * 자식까지 감싸는 bounding rect와 다를 수 있습니다. 어긋나면 띠 전체가 몇 px씩
- * 밀려 다시 울퉁불퉁해 보입니다.
+ * `getBoundingClientRect()`를 그냥 쓰면 안 됩니다. 인라인 요소가 줄바꿈되면 그
+ * 값은 **모든 조각을 감싼 상자**인데, 절대 위치의 기준은 **첫 조각**입니다.
+ * 실제로 세 줄로 나뉜 코드 칩에서 기준점이 79.03인데 감싼 상자로 계산하면
+ * 21.00이 나와 58px이 어긋났습니다.
  *
- * 그래서 크기 0짜리를 (0, 0)에 한 번 놓고 그것이 실제로 앉은 자리를 읽습니다.
- * 조각 하나당 한 번이라 비용도 여기서 끝납니다.
+ * 그리고 기준이 되는 것은 테두리 상자가 아니라 그 안쪽(padding box)이라
+ * 테두리 두께만큼 들어갑니다. 크기 0짜리를 실제로 놓아 본 값과 표본 10개
+ * (수식·코드 칩, 줄바꿈된 것 포함)에서 전부 일치하는 것을 확인했습니다.
+ * 재지 않고 계산하는 이유는 값이 같으면서 **DOM을 건드리지 않기** 때문입니다 —
+ * 재려면 붙였다 떼야 하고, 그때마다 레이아웃이 강제로 다시 계산됩니다.
  */
-function originOf(host: HTMLElement): DOMRect {
-  const probe = host.ownerDocument.createElement('span');
-  probe.className = MARK_CLASS;
-  probe.style.left = '0';
-  probe.style.top = '0';
-  probe.style.width = '0';
-  probe.style.height = '0';
+function originOf(host: HTMLElement, fragments: readonly DOMRect[]): { left: number; top: number } {
+  const first = fragments[0] ?? host.getBoundingClientRect();
+  const style = getComputedStyle(host);
 
-  host.appendChild(probe);
-  const origin = probe.getBoundingClientRect();
-  probe.remove();
-
-  return origin;
+  return {
+    left: first.left + (Number.parseFloat(style.borderLeftWidth) || 0),
+    top: first.top + (Number.parseFloat(style.borderTopWidth) || 0),
+  };
 }
 
 /** 선택의 양끝. 이것이 그대로면 다시 그릴 이유가 없습니다. */
@@ -229,14 +286,21 @@ export function sameEdges(a: Edges, b: Edges): boolean {
  * 뒤에 있는 Range 오프셋만 밀므로, 맨 뒤에 붙이는 한 지금 잡혀 있는 선택은
  * 건드려지지 않습니다. 중간에 끼우면 끌고 있던 선택이 끊깁니다.
  */
-function paint(root: HTMLElement): void {
-  clearMarks(root);
+interface Plan {
+  host: HTMLElement;
+  melt: boolean;
+  marks: { left: number; top: number; width: number; height: number }[];
+}
 
-  const selection = root.ownerDocument.getSelection();
-  if (!selection || selection.isCollapsed || selection.rangeCount === 0) return;
-
-  const ranges = Array.from({ length: selection.rangeCount }, (_, i) => selection.getRangeAt(i));
-  const lineCache = new Map<Element, TextRun[]>();
+/**
+ * **재는 일과 쓰는 일을 갈라 둡니다.** 한 조각을 재고 붙이고 다음 조각을 재면
+ * 브라우저가 그때마다 레이아웃을 다시 계산합니다(layout thrashing). 수식이 빽빽한
+ * 글에서 한 프레임에 200ms 넘게 걸리던 원인이라, 전부 재고 나서 한꺼번에 붙입니다.
+ */
+function measure(root: HTMLElement, ranges: readonly Range[]): Plan[] {
+  const plans: Plan[] = [];
+  const runCache = new Map<Element, TextRun[]>();
+  const lineCache = new Map<Element, number>();
 
   for (const host of root.querySelectorAll<HTMLElement>(ODD_PIECE)) {
     // 코드 블록은 그대로 둡니다 — 한 벌의 글꼴로만 그려져 어긋날 일이 없습니다.
@@ -257,8 +321,6 @@ function paint(root: HTMLElement): void {
     }
 
     if (rects.length === 0) continue;
-    const box = host.getBoundingClientRect();
-    const origin = originOf(host);
 
     /*
       코드 칩은 테두리와 좌우 6px 여백을 두른 상자라, 글자 폭만 칠하면 그 여백이
@@ -267,24 +329,67 @@ function paint(root: HTMLElement): void {
       수식은 여백이 없어 그대로 두고, 일부만 잡힌 칩도 원래 모습을 지킵니다.
     */
     const melt = whole && host.tagName === 'CODE';
-    if (melt) host.setAttribute(MELTED_ATTR, '');
+    // 칩은 줄바꿈될 수 있습니다. **줄마다 그 줄의 조각**에 맞춰야 합니다 — 감싼
+    // 상자를 쓰면 세 줄짜리 칩에서 띠가 옆 글자 위로 58px 넘게 번집니다.
+    const fragments = [...host.getClientRects()];
+    const origin = originOf(host, fragments);
 
-    for (const band of toBands(rects)) {
-      // 같은 줄의 본문 글자가 있으면 그 세로 자리를 그대로 씁니다.
-      const line = lineOf(host, band, lineCache);
-      const top = line ? line.top : band.top;
-      const height = line ? line.height : band.bottom - band.top;
-      const left = melt ? box.left : band.left;
-      const right = melt ? box.right : band.right;
+    const marks = toBands(rects).map((band) => {
+      const line = lineOf(host, band, runCache, lineCache);
+      /*
+        줄 상자와 **선택된 잉크를 함께** 덮습니다. 분수처럼 줄 상자보다 큰 수식은
+        잉크가 띠 밖으로 나가는데, 선택된 글자는 흰색으로 칠해지므로 밝은 테마에서
+        그 부분이 흰 바탕에 흰 글자가 됩니다.
+      */
+      const top = Math.min(line ? line.top : band.top, band.top);
+      const bottom = Math.max(line ? line.top + line.height : band.bottom, band.bottom);
 
-      const mark = document.createElement('span');
+      const fragment = melt ? fragmentFor(fragments, band) : null;
+      const left = fragment ? fragment.left : band.left;
+      const right = fragment ? fragment.right : band.right;
+
+      return {
+        left: left - origin.left,
+        top: top - origin.top,
+        width: right - left,
+        height: bottom - top,
+      };
+    });
+
+    plans.push({ host, melt, marks });
+  }
+
+  return plans;
+}
+
+/**
+ * 사각형은 조각 안에 넣습니다. 조각과 함께 움직이므로 스크롤할 때마다 다시 그릴
+ * 필요가 없고, 가로 스크롤되는 긴 블록 수식에서도 따라갑니다.
+ *
+ * **항상 마지막 자식으로 붙였다가 그것만 지웁니다.** DOM 명세는 삽입·삭제 위치보다
+ * 뒤에 있는 Range 오프셋만 밀므로, 맨 뒤에 붙이는 한 지금 잡혀 있는 선택은
+ * 건드려지지 않습니다. 중간에 끼우면 끌고 있던 선택이 끊깁니다.
+ */
+function paint(root: HTMLElement): void {
+  clearMarks(root);
+
+  const selection = root.ownerDocument.getSelection();
+  if (!selection || selection.isCollapsed || selection.rangeCount === 0) return;
+
+  const ranges = Array.from({ length: selection.rangeCount }, (_, i) => selection.getRangeAt(i));
+
+  for (const plan of measure(root, ranges)) {
+    if (plan.melt) plan.host.setAttribute(MELTED_ATTR, '');
+
+    for (const box of plan.marks) {
+      const mark = root.ownerDocument.createElement('span');
       mark.className = MARK_CLASS;
       mark.setAttribute('aria-hidden', 'true');
-      mark.style.left = `${left - origin.left}px`;
-      mark.style.top = `${top - origin.top}px`;
-      mark.style.width = `${right - left}px`;
-      mark.style.height = `${height}px`;
-      host.appendChild(mark);
+      mark.style.left = `${box.left}px`;
+      mark.style.top = `${box.top}px`;
+      mark.style.width = `${box.width}px`;
+      mark.style.height = `${box.height}px`;
+      plan.host.appendChild(mark);
     }
   }
 }
