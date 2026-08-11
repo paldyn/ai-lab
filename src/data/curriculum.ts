@@ -437,13 +437,20 @@ export const mathSupport: Record<string, number[]> = {
  * 배열의 자리가 곧 「초급 9번」의 9입니다.
  */
 const TRACKS = [
-  { level: '초급', slugs: mathFoundation },
-  { level: '중급', slugs: mathCurriculum },
-  { level: '고급', slugs: mathAdvanced },
+  { level: '초급', tier: 1, slugs: mathFoundation },
+  { level: '중급', tier: 2, slugs: mathCurriculum },
+  { level: '고급', tier: 3, slugs: mathAdvanced },
 ] as const;
 
 export interface TrackPlace {
   level: (typeof TRACKS)[number]['level'];
+  /**
+   * 트랙의 차례. 초급 1, 중급 2, 고급 3입니다.
+   *
+   * 카드 코드가 트랙을 구별하는 데 씁니다. 번호만 쓰면 셋 다 1번부터 시작해
+   * `M-01`이 초급 1번에도 중급 1번에도 붙습니다.
+   */
+  tier: (typeof TRACKS)[number]['tier'];
   /** 트랙 안의 번호. 1부터 셉니다. */
   number: number;
   /** 그 트랙의 총 편수. 「9 / 48」처럼 쓰려고 함께 냅니다. */
@@ -461,24 +468,29 @@ export interface TrackPlace {
 export function trackPlace(slug: string): TrackPlace | undefined {
   for (const track of TRACKS) {
     const index = track.slugs.indexOf(slug);
-    if (index !== -1) return { level: track.level, number: index + 1, total: track.slugs.length };
+    if (index === -1) continue;
+    return { level: track.level, tier: track.tier, number: index + 1, total: track.slugs.length };
   }
   return undefined;
 }
 
 /**
- * 같은 트랙에서 바로 앞·뒤 편. 트랙의 끝이면 그쪽은 undefined입니다.
+ * 같은 트랙에서 이 글의 앞뒤로 이어지는 편들. `after`는 다음 편부터 순서대로,
+ * `before`는 지난 편부터 거슬러 올라가는 순서입니다.
+ *
+ * **트랙을 넘어가지 않습니다** — 초급 마지막 다음은 중급 1번이 아니라 없음입니다.
+ * 트랙마다 전제가 다르므로 이어서 읽을 것이 아닙니다.
  *
  * **슬러그만 주고 실재 여부는 보지 않습니다** — 아직 `.md`가 없는 글을 거르는 것은
  * 부르는 쪽의 몫입니다. `curriculumLinks`와 같은 약속입니다.
  */
-export function trackNeighbours(slug: string): { previous?: string; next?: string } {
+export function trackAround(slug: string): { before: string[]; after: string[] } {
   for (const track of TRACKS) {
     const index = track.slugs.indexOf(slug);
     if (index === -1) continue;
-    return { previous: track.slugs[index - 1], next: track.slugs[index + 1] };
+    return { before: track.slugs.slice(0, index).reverse(), after: track.slugs.slice(index + 1) };
   }
-  return {};
+  return { before: [], after: [] };
 }
 
 /** 중급 번호(1부터)를 슬러그로. 범위 밖이면 undefined입니다. */

@@ -8,7 +8,7 @@ import {
   mathFoundation,
   mathSupport,
   mathWritingOrder,
-  trackNeighbours,
+  trackAround,
   trackPlace,
 } from './curriculum';
 
@@ -171,9 +171,9 @@ describe('수학 커리큘럼', () => {
 
 describe('트랙 번호', () => {
   it('트랙 안의 자리를 1부터 센다', () => {
-    expect(trackPlace(mathFoundation[0])).toEqual({ level: '초급', number: 1, total: 48 });
-    expect(trackPlace(mathCurriculum[0])).toEqual({ level: '중급', number: 1, total: 80 });
-    expect(trackPlace(mathAdvanced[62])).toEqual({ level: '고급', number: 63, total: 63 });
+    expect(trackPlace(mathFoundation[0])).toEqual({ level: '초급', tier: 1, number: 1, total: 48 });
+    expect(trackPlace(mathCurriculum[0])).toEqual({ level: '중급', tier: 2, number: 1, total: 80 });
+    expect(trackPlace(mathAdvanced[62])).toEqual({ level: '고급', tier: 3, number: 63, total: 63 });
   });
 
   it('카드에 붙던 해시가 아니라 진짜 번호를 준다', () => {
@@ -187,28 +187,48 @@ describe('트랙 번호', () => {
     }
   });
 
+  it('트랙마다 차례가 달라 같은 번호가 겹치지 않는다', () => {
+    // 셋 다 1번부터 시작한다. 차례가 없으면 M-01이 초급 1번에도 중급 1번에도 붙는다.
+    const tiers = [mathFoundation[0], mathCurriculum[0], mathAdvanced[0]].map(
+      (slug) => trackPlace(slug)?.tier,
+    );
+    expect(tiers).toEqual([1, 2, 3]);
+    expect(new Set(tiers).size).toBe(3);
+  });
+
   it('수학이 아니면 자리가 없다', () => {
     expect(trackPlace('transformer-attention-from-first-principles')).toBeUndefined();
-    expect(trackNeighbours('transformer-attention-from-first-principles')).toEqual({});
+    expect(trackAround('transformer-attention-from-first-principles')).toEqual({
+      before: [],
+      after: [],
+    });
   });
 });
 
-describe('앞뒤 편', () => {
-  it('같은 트랙의 바로 앞과 뒤를 준다', () => {
-    expect(trackNeighbours(mathFoundation[4])).toEqual({
-      previous: mathFoundation[3],
-      next: mathFoundation[5],
-    });
+describe('이어지는 편', () => {
+  it('다음 편부터 순서대로 준다', () => {
+    const { after } = trackAround(mathFoundation[4]);
+    expect(after.slice(0, 3)).toEqual([mathFoundation[5], mathFoundation[6], mathFoundation[7]]);
+  });
+
+  it('지난 편은 거슬러 올라가는 순서다', () => {
+    const { before } = trackAround(mathFoundation[4]);
+    expect(before.slice(0, 3)).toEqual([mathFoundation[3], mathFoundation[2], mathFoundation[1]]);
   });
 
   it('트랙의 끝은 한쪽이 비어 있다', () => {
-    expect(trackNeighbours(mathFoundation[0]).previous).toBeUndefined();
-    expect(trackNeighbours(mathFoundation[0]).next).toBe(mathFoundation[1]);
-    expect(trackNeighbours(mathAdvanced[62]).next).toBeUndefined();
+    expect(trackAround(mathFoundation[0]).before).toEqual([]);
+    expect(trackAround(mathAdvanced[62]).after).toEqual([]);
   });
 
   it('트랙을 넘어가지 않는다 — 초급 마지막의 다음은 중급 1번이 아니다', () => {
-    expect(trackNeighbours(mathFoundation[47]).next).toBeUndefined();
-    expect(trackNeighbours(mathCurriculum[0]).previous).toBeUndefined();
+    expect(trackAround(mathFoundation[47]).after).toEqual([]);
+    expect(trackAround(mathCurriculum[0]).before).toEqual([]);
+  });
+
+  it('자기 자신은 들어 있지 않다', () => {
+    const { before, after } = trackAround(mathCurriculum[10]);
+    expect([...before, ...after]).not.toContain(mathCurriculum[10]);
+    expect(before.length + after.length).toBe(mathCurriculum.length - 1);
   });
 });

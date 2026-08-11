@@ -26,14 +26,16 @@ function slugNumber(slug: string): string {
  * 「16번 · 일차방정식」처럼 번호로 서로를 가리키는 트랙이라 읽는 사람이 그
  * 숫자를 번호로 읽습니다 — 초급 7번인 피타고라스 정리에 `M-96`이 붙어 있었습니다.
  *
- * 트랙이 셋이라 같은 번호가 셋 나올 수 있는데, 카드 아래에 난이도가 함께
- * 찍히므로(`displayLevel`) 「초급 · M-09」로 읽힙니다.
+ * **트랙의 차례를 함께 적습니다**(`M1`·`M2`·`M3` = 초급·중급·고급). 셋 다 1번부터
+ * 시작하므로 번호만 쓰면 `M-01`이 초급 1번에도 중급 1번에도 붙습니다. 실제로 지금
+ * 나간 글만 봐도 초급 1~10번과 중급 1~5번이 겹쳤습니다.
  */
 function articleCode(article: Article, category: Category): string {
   const initial = category.shortName.slice(0, 1);
   const place = trackPlace(article.slug);
+  if (!place) return `${initial}-${slugNumber(article.slug)}`;
 
-  return `${initial}-${place ? String(place.number).padStart(2, '0') : slugNumber(article.slug)}`;
+  return `${initial}${place.tier}-${String(place.number).padStart(2, '0')}`;
 }
 
 export function ArticleVisual({ article, compact = false }: ArticleVisualProps) {
