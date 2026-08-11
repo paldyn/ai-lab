@@ -202,6 +202,30 @@ function rehypeAnswerToggle() {
     children,
   });
 
+  /**
+   * 묶음마다 답을 한꺼번에 여닫는 단추를 목록 앞에 둡니다.
+   *
+   * **글자도 상태도 담지 않은 빈 단추입니다.** 무엇이라 적을지와 보일지 말지는
+   * styles.css가 `:has()`로 정하고, 누르는 동작은 본문 전체에 건 위임 클릭이
+   * 받습니다(src/lib/answerToggle.ts). 본문은 React가 `innerHTML`로 쥐고 있어서
+   * 다시 그릴 때 **노드에 얹어 둔 것이 전부 초기화**되기 때문입니다 — JS로 단추를
+   * 만들어 끼웠더니 82ms에 붙었다가 사라졌고, `hidden`을 벗겨 두었더니 도로
+   * 씌워졌습니다. 노드에 아무것도 안 얹으면 다시 그려도 잃을 것이 없습니다.
+   *
+   * 스크립트가 없으면 CSS가 감춥니다 — 아무 일도 못 하는 단추는 안 보이는 편이 맞습니다.
+   */
+  const answersIn = (node: Node): number => {
+    if (node.type === 'element' && node.tagName === 'details') return 1;
+    return childrenOf(node).reduce((n, child) => n + answersIn(child), 0);
+  };
+
+  const bulk = (): Node => ({
+    type: 'element',
+    tagName: 'button',
+    properties: { type: 'button', className: ['answer-all'] },
+    children: [],
+  });
+
   return (tree: unknown) => {
     const walk = (node: Node) => {
       for (const child of childrenOf(node)) {
@@ -243,7 +267,23 @@ function rehypeAnswerToggle() {
       }
     };
 
+    // 목록마다 일괄 단추를 앞에 끼웁니다. 하나뿐이면 낱개 칩과 하는 일이 같습니다.
+    const addBulk = (node: Node) => {
+      const children = childrenOf(node);
+      if (children.length === 0) return;
+
+      const next: Node[] = [];
+      for (const child of children) {
+        addBulk(child);
+        const list = child.type === 'element' && (child.tagName === 'ol' || child.tagName === 'ul');
+        if (list && answersIn(child) >= 2) next.push(bulk());
+        next.push(child);
+      }
+      node.children = next;
+    };
+
     walk(tree as Node);
+    addBulk(tree as Node);
   };
 }
 
@@ -295,7 +335,7 @@ const CACHE_DIR = 'node_modules/.cache/paldyn-markdown';
  * 선택 가능하게 바꾸고도 화면이 그대로여서 한 번 헤맸습니다 — 캐시가 예전 결과를
  * 돌려주고 있었습니다.
  */
-const RENDERER_VERSION = '2026-08-11-answer-chip';
+const RENDERER_VERSION = '2026-08-11-answer-all-2';
 
 async function renderCached(body: string): Promise<RenderedMarkdown> {
   const key = createHash('sha256').update(RENDERER_VERSION).update(body).digest('hex').slice(0, 32);
