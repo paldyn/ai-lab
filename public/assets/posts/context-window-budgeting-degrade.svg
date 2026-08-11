@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="630" viewBox="0 0 880 630">
+  <rect x="0" y="0" width="880" height="630" rx="12" fill="#0a0a0a"/>
+
+  <defs>
+    <marker id="bud-arr" viewBox="0 0 14 14" refX="12" refY="7"
+            markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#7777cc"/>
+    </marker>
+  </defs>
+
+  <text x="50" y="46" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="22" font-weight="700" fill="#e8e8e8">예산을 넘겼을 때 버리는 순서</text>
+  <text x="50" y="72" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">위에서부터 적용하고 예산 안에 들어오면 멈춘다. 아래로 갈수록 되돌리기 어려워진다</text>
+
+  <text x="50" y="112" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="11.5" fill="#888">적용 순서</text>
+  <text x="520" y="112" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="11.5" fill="#888">그 대가로 잃는 것</text>
+
+  <rect x="50" y="126" width="400" height="52" rx="8" fill="#14141c" stroke="#55c555" stroke-width="1.5"/>
+  <text x="72" y="157" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="600" fill="#e8e8e8">① 검색 문서를 평가로 정한 상한까지 줄인다</text>
+  <text x="520" y="157" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="11.5" fill="#9aa4b8">낮은 순위 근거 — 손실이 가장 작다</text>
+
+  <line x1="250" y1="178" x2="250" y2="196" stroke="#7777cc" stroke-width="2" marker-end="url(#bud-arr)"/>
+
+  <rect x="50" y="200" width="400" height="52" rx="8" fill="#14141c" stroke="#7ec8e3" stroke-width="1.5"/>
+  <text x="72" y="231" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="600" fill="#e8e8e8">② 오래된 도구 결과를 축약한다</text>
+  <text x="520" y="231" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="11.5" fill="#9aa4b8">세부 값 — 다시 부르면 복구된다</text>
+
+  <line x1="250" y1="252" x2="250" y2="270" stroke="#7777cc" stroke-width="2" marker-end="url(#bud-arr)"/>
+
+  <rect x="50" y="274" width="400" height="52" rx="8" fill="#14141c" stroke="#7ec8e3" stroke-width="1.5"/>
+  <text x="72" y="305" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="600" fill="#e8e8e8">③ 오래된 대화 턴을 짝 단위로 잘라낸다</text>
+  <text x="520" y="305" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="11.5" fill="#9aa4b8">초반 맥락 — 과제 서술은 남긴다</text>
+
+  <line x1="250" y1="326" x2="250" y2="344" stroke="#7777cc" stroke-width="2" marker-end="url(#bud-arr)"/>
+
+  <rect x="50" y="348" width="400" height="52" rx="8" fill="#14141c" stroke="#e05555" stroke-width="1.5"/>
+  <text x="72" y="379" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="600" fill="#e8e8e8">④ 잘라낸 구간을 요약으로 대체한다</text>
+  <text x="520" y="379" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="11.5" fill="#9aa4b8">원문 — 여기부터 되돌릴 수 없다</text>
+
+  <line x1="250" y1="400" x2="250" y2="418" stroke="#7777cc" stroke-width="2" marker-end="url(#bud-arr)"/>
+
+  <rect x="50" y="422" width="400" height="52" rx="8" fill="#14141c" stroke="#e05555" stroke-width="1.5"/>
+  <text x="72" y="453" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="600" fill="#e8e8e8">⑤ 작업을 나누거나 사용자에게 알린다</text>
+  <text x="520" y="453" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="11.5" fill="#9aa4b8">한 번에 끝내는 경험</text>
+
+  <rect x="50" y="506" width="780" height="64" rx="8" fill="#000000" stroke="#3a4a6e" stroke-width="1"/>
+  <text x="74" y="532" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="600" fill="#7ec8e3">순서가 없으면 그때그때 손에 잡히는 것을 버리게 된다</text>
+  <text x="74" y="554" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="11.5" fill="#9aa4b8">그리고 그 자리는 대개 ④다 — 가장 눈에 띄게 줄어들기 때문이다</text>
+</svg>

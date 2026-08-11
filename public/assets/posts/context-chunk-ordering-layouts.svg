@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="500" viewBox="0 0 880 500">
+  <rect x="0" y="0" width="880" height="500" rx="12" fill="#0a0a0a"/>
+
+  <text x="50" y="46" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="22" font-weight="700" fill="#e8e8e8">같은 일곱 조각, 세 가지 배치</text>
+  <text x="50" y="72" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">숫자는 검색 순위, 색이 진할수록 관련도가 높다. 창 안에서 약한 자리는 가운데다</text>
+
+  <text x="190" y="114" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="11.5" fill="#888">창의 앞</text>
+  <text x="470" y="114" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="11.5" fill="#e05555">가운데 — 가장 덜 읽히는 자리</text>
+  <text x="830" y="114" text-anchor="end" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="11.5" fill="#888">질문 직전</text>
+
+  <text x="50" y="152" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="600" fill="#e8e8e8">순위 그대로</text>
+  <text x="50" y="172" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="11.5" fill="#888">가장 흔한 배치</text>
+  <rect x="190" y="130" width="82" height="48" rx="6" fill="#7ec8e3" opacity="0.55"/>
+  <rect x="283" y="130" width="82" height="48" rx="6" fill="#7ec8e3" opacity="0.46"/>
+  <rect x="376" y="130" width="82" height="48" rx="6" fill="#7ec8e3" opacity="0.38"/>
+  <rect x="469" y="130" width="82" height="48" rx="6" fill="#7ec8e3" opacity="0.30"/>
+  <rect x="562" y="130" width="82" height="48" rx="6" fill="#7ec8e3" opacity="0.22"/>
+  <rect x="655" y="130" width="82" height="48" rx="6" fill="#7ec8e3" opacity="0.15"/>
+  <rect x="748" y="130" width="82" height="48" rx="6" fill="#7ec8e3" opacity="0.09"/>
+  <text x="231" y="160" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#ffffff">1</text>
+  <text x="324" y="160" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#ffffff">2</text>
+  <text x="417" y="160" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#ffffff">3</text>
+  <text x="510" y="160" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#ffffff">4</text>
+  <text x="603" y="160" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#ffffff">5</text>
+  <text x="696" y="160" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#ffffff">6</text>
+  <text x="789" y="160" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#ffffff">7</text>
+
+  <text x="50" y="232" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="600" fill="#e8e8e8">역순</text>
+  <text x="50" y="252" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="11.5" fill="#888">질문에 붙인다</text>
+  <rect x="190" y="210" width="82" height="48" rx="6" fill="#7ec8e3" opacity="0.09"/>
+  <rect x="283" y="210" width="82" height="48" rx="6" fill="#7ec8e3" opacity="0.15"/>
+  <rect x="376" y="210" width="82" height="48" rx="6" fill="#7ec8e3" opacity="0.22"/>
+  <rect x="469" y="210" width="82" height="48" rx="6" fill="#7ec8e3" opacity="0.30"/>
+  <rect x="562" y="210" width="82" height="48" rx="6" fill="#7ec8e3" opacity="0.38"/>
+  <rect x="655" y="210" width="82" height="48" rx="6" fill="#7ec8e3" opacity="0.46"/>
+  <rect x="748" y="210" width="82" height="48" rx="6" fill="#7ec8e3" opacity="0.55"/>
+  <text x="231" y="240" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#ffffff">7</text>
+  <text x="324" y="240" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#ffffff">6</text>
+  <text x="417" y="240" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#ffffff">5</text>
+  <text x="510" y="240" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#ffffff">4</text>
+  <text x="603" y="240" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#ffffff">3</text>
+  <text x="696" y="240" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#ffffff">2</text>
+  <text x="789" y="240" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#ffffff">1</text>
+
+  <text x="50" y="312" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="600" fill="#55c555">샌드위치</text>
+  <text x="50" y="332" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="11.5" fill="#888">약한 것을 가운데로</text>
+  <rect x="190" y="290" width="82" height="48" rx="6" fill="#7ec8e3" opacity="0.55"/>
+  <rect x="283" y="290" width="82" height="48" rx="6" fill="#7ec8e3" opacity="0.38"/>
+  <rect x="376" y="290" width="82" height="48" rx="6" fill="#7ec8e3" opacity="0.22"/>
+  <rect x="469" y="290" width="82" height="48" rx="6" fill="#7ec8e3" opacity="0.09"/>
+  <rect x="562" y="290" width="82" height="48" rx="6" fill="#7ec8e3" opacity="0.15"/>
+  <rect x="655" y="290" width="82" height="48" rx="6" fill="#7ec8e3" opacity="0.30"/>
+  <rect x="748" y="290" width="82" height="48" rx="6" fill="#7ec8e3" opacity="0.46"/>
+  <text x="231" y="320" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#ffffff">1</text>
+  <text x="324" y="320" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#ffffff">3</text>
+  <text x="417" y="320" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#ffffff">5</text>
+  <text x="510" y="320" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#ffffff">7</text>
+  <text x="603" y="320" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#ffffff">6</text>
+  <text x="696" y="320" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#ffffff">4</text>
+  <text x="789" y="320" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#ffffff">2</text>
+
+  <rect x="50" y="374" width="780" height="68" rx="8" fill="#000000" stroke="#3a4a6e" stroke-width="1"/>
+  <text x="74" y="400" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="600" fill="#7ec8e3">배치는 검색을 고치는 방법이 아니라 이미 뽑은 것을 덜 낭비하는 방법이다</text>
+  <text x="74" y="422" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="11.5" fill="#9aa4b8">조각이 서넛뿐이면 셋의 차이는 거의 없다 — 개수가 열을 넘어갈 때부터 벌어진다</text>
+</svg>

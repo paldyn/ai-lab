@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="480" viewBox="0 0 880 480">
+  <rect x="0" y="0" width="880" height="480" rx="12" fill="#0a0a0a"/>
+
+  <defs>
+    <marker id="cmp-arr" viewBox="0 0 14 14" refX="12" refY="7"
+            markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#7777cc"/>
+    </marker>
+  </defs>
+
+  <text x="50" y="46" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="22" font-weight="700" fill="#e8e8e8">싼 것부터 차례로 줄인다</text>
+  <text x="50" y="72" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">뒤로 갈수록 절감은 커지지만 원문에서 멀어진다. 앞 단계로 목표에 닿으면 뒤는 안 쓴다</text>
+
+  <rect x="50" y="130" width="165" height="76" rx="8" fill="#14141c" stroke="#2a2a35" stroke-width="1"/>
+  <text x="70" y="155" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="600" fill="#e8e8e8">① 필드 선별</text>
+  <text x="70" y="175" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="11.5" fill="#888">쓰는 값만 남긴다</text>
+  <text x="70" y="193" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="11.5" fill="#55c555">손실 없음</text>
+
+  <rect x="255" y="130" width="165" height="76" rx="8" fill="#14141c" stroke="#2a2a35" stroke-width="1"/>
+  <text x="275" y="155" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="600" fill="#e8e8e8">② 형식 바꾸기</text>
+  <text x="275" y="175" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="11.5" fill="#888">반복되는 키를 뺀다</text>
+  <text x="275" y="193" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="11.5" fill="#55c555">손실 없음</text>
+
+  <rect x="460" y="130" width="165" height="76" rx="8" fill="#14141c" stroke="#2a2a35" stroke-width="1"/>
+  <text x="480" y="155" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="600" fill="#e8e8e8">③ 오래된 것 축약</text>
+  <text x="480" y="175" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="11.5" fill="#888">최근 것만 전문으로</text>
+  <text x="480" y="193" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="11.5" fill="#7ec8e3">되불러 복구 가능</text>
+
+  <rect x="665" y="130" width="165" height="76" rx="8" fill="#14141c" stroke="#2a2a35" stroke-width="1"/>
+  <text x="685" y="155" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="600" fill="#e8e8e8">④ 요약 대체</text>
+  <text x="685" y="175" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="11.5" fill="#888">구간을 한 덩어리로</text>
+  <text x="685" y="193" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="11.5" fill="#e05555">되돌릴 수 없음</text>
+
+  <line x1="215" y1="168" x2="255" y2="168" stroke="#7777cc" stroke-width="2" marker-end="url(#cmp-arr)"/>
+  <line x1="420" y1="168" x2="460" y2="168" stroke="#7777cc" stroke-width="2" marker-end="url(#cmp-arr)"/>
+  <line x1="625" y1="168" x2="665" y2="168" stroke="#7777cc" stroke-width="2" marker-end="url(#cmp-arr)"/>
+
+  <text x="50" y="264" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="11.5" fill="#888">한 요청의 도구 결과가 단계를 지나며 줄어드는 모습 (예시)</text>
+
+  <rect x="50" y="276" width="780" height="34" rx="6" fill="#14141c" stroke="#2a2a35" stroke-width="1"/>
+  <rect x="50" y="276" width="780" height="34" rx="6" fill="#7ec8e3" opacity="0.32">
+    <animate attributeName="width" values="780;416;267;169;110;110"
+             keyTimes="0;0.18;0.36;0.54;0.72;1" dur="5s" repeatCount="indefinite"/>
+  </rect>
+
+  <text x="50" y="336" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="11.5" fill="#9aa4b8">12,000</text>
+  <text x="230" y="336" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="11.5" fill="#9aa4b8">6,400</text>
+  <text x="410" y="336" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="11.5" fill="#9aa4b8">4,100</text>
+  <text x="590" y="336" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="11.5" fill="#9aa4b8">2,600</text>
+  <text x="770" y="336" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="11.5" fill="#9aa4b8">1,700</text>
+
+  <rect x="50" y="366" width="780" height="68" rx="8" fill="#000000" stroke="#3a4a6e" stroke-width="1"/>
+  <text x="74" y="392" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="600" fill="#7ec8e3">①②만으로 절반 넘게 줄어드는 시스템이 많다</text>
+  <text x="74" y="414" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="11.5" fill="#9aa4b8">그런데 대개 ④부터 손을 댄다 — 가장 비싸고 가장 되돌리기 어려운 쪽이다</text>
+</svg>

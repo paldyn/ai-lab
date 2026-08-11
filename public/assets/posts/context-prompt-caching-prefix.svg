@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="500" viewBox="0 0 880 500">
+  <rect x="0" y="0" width="880" height="500" rx="12" fill="#0a0a0a"/>
+
+  <text x="50" y="46" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="22" font-weight="700" fill="#e8e8e8">캐시는 앞에서부터 훑다가 처음 달라지는 곳에서 멈춘다</text>
+  <text x="50" y="72" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">두 요청이 공유하는 앞부분만 캐시에서 읽히고, 갈라진 지점부터는 처음부터 다시 계산된다</text>
+
+  <text x="50" y="112" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="11.5" fill="#888">요청 1 — 먼저 보낸 것</text>
+  <rect x="50" y="124" width="780" height="56" rx="8" fill="#14141c" stroke="#2a2a35" stroke-width="1"/>
+  <line x1="260" y1="124" x2="260" y2="180" stroke="#2a2a35" stroke-width="1"/>
+  <line x1="430" y1="124" x2="430" y2="180" stroke="#2a2a35" stroke-width="1"/>
+  <line x1="640" y1="124" x2="640" y2="180" stroke="#2a2a35" stroke-width="1"/>
+  <text x="155" y="158" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e8e8e8">시스템 프롬프트</text>
+  <text x="345" y="158" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e8e8e8">도구 스키마</text>
+  <text x="535" y="158" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e8e8e8">대화 이력</text>
+  <text x="735" y="158" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e8e8e8">이번 질문</text>
+
+  <text x="50" y="232" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="11.5" fill="#888">요청 2 — 이력부터 달라진 것</text>
+  <rect x="50" y="244" width="780" height="56" rx="8" fill="#14141c" stroke="#2a2a35" stroke-width="1"/>
+
+  <rect x="50" y="244" width="0" height="56" rx="8" fill="#55c555" opacity="0.20">
+    <animate attributeName="width" values="0;380;380;0" keyTimes="0;0.42;0.96;1" dur="4s" repeatCount="indefinite"/>
+  </rect>
+  <rect x="430" y="244" width="0" height="56" fill="#e05555" opacity="0.20">
+    <animate attributeName="width" values="0;0;400;0" keyTimes="0;0.46;0.96;1" dur="4s" repeatCount="indefinite"/>
+  </rect>
+
+  <line x1="260" y1="244" x2="260" y2="300" stroke="#2a2a35" stroke-width="1"/>
+  <line x1="640" y1="244" x2="640" y2="300" stroke="#2a2a35" stroke-width="1"/>
+  <text x="155" y="278" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e8e8e8">시스템 프롬프트</text>
+  <text x="345" y="278" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e8e8e8">도구 스키마</text>
+  <text x="535" y="278" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e8e8e8">대화 이력</text>
+  <text x="735" y="278" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e8e8e8">이번 질문</text>
+
+  <line x1="430" y1="108" x2="430" y2="316" stroke="#e05555" stroke-width="2" stroke-dasharray="4,4"/>
+
+  <text x="60" y="340" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="11.5" fill="#55c555">캐시에서 읽는 구간</text>
+  <text x="444" y="340" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="11.5" fill="#e05555">갈라지는 지점부터 끝까지 다시 계산</text>
+
+  <rect x="50" y="374" width="780" height="68" rx="8" fill="#000000" stroke="#3a4a6e" stroke-width="1"/>
+  <text x="74" y="400" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="600" fill="#7ec8e3">그래서 시스템 프롬프트에 넣은 현재 시각 한 줄이 뒤의 전부를 무효로 만든다</text>
+  <text x="74" y="422" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="11.5" fill="#9aa4b8">캐시 설계의 규칙은 하나다 — 안 바뀌는 것을 앞에, 바뀌는 것을 뒤에</text>
+</svg>
