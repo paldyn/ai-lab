@@ -1,7 +1,7 @@
 import { articleIndex } from 'virtual:article-index';
 import type { Article, ArticleLevel, Category, CategoryId, SectionId } from '../types/article';
-import { categoriesIn, categoryById } from './categories';
-import { curriculumOrder } from './curriculum';
+import { categoriesIn, categoryById, displayLevel } from './categories';
+import { curriculumOrder, trackPlace } from './curriculum';
 
 const LEVELS: ArticleLevel[] = ['초급', '중급', '고급'];
 
@@ -50,6 +50,30 @@ export function countByCategory(): Partial<Record<CategoryId, number>> {
     counts[article.categoryId] = (counts[article.categoryId] ?? 0) + 1;
   }
   return counts;
+}
+
+/**
+ * 카드 왼쪽 위에 찍는 번호.
+ *
+ * 수학은 커리큘럼이 정한 트랙 안 번호를 씁니다 — 원고가 서로를 「중급 12번」이라
+ * 부르고 `curriculum.ts`의 `mathSupport`도 그 번호를 담고 있어서, 카드가 다른 수를
+ * 적으면 사이트 안에 번호 체계가 둘이 됩니다. 나머지는 그 카테고리에서 몇 번째로
+ * 쓴 글인가(`seq`)입니다.
+ */
+export function articleNumber(article: Article): number {
+  return trackPlace(article.slug)?.number ?? article.seq;
+}
+
+/**
+ * 그 번호를 글 페이지에서 풀어 적는 말 — 「초급 7번」·「42번째 글」.
+ * 카드의 두 자리 숫자만으로는 무슨 수인지 끝내 확정할 수 없어서 한 번은 적어 둡니다.
+ */
+export function articleOrdinal(article: Article): string {
+  const place = trackPlace(article.slug);
+  if (place) return `${place.level} ${place.number}번`;
+
+  const level = displayLevel(article);
+  return level ? `${level} / ${article.seq}번째 글` : `${article.seq}번째 글`;
 }
 
 /** 난이도 이름인 태그. 주제 태그와 갈라 쓸 때 씁니다. */

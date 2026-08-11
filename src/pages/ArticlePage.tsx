@@ -4,8 +4,8 @@ import { Link, Navigate, useParams } from 'react-router';
 import { ArticleCard } from '../components/ArticleCard';
 import { ArticleVisual } from '../components/ArticleVisual';
 import { Seo } from '../components/Seo';
-import { articles, getArticleBySlug } from '../data/articles';
-import { categoryById, displayLevel } from '../data/categories';
+import { articleOrdinal, articles, getArticleBySlug } from '../data/articles';
+import { categoryById } from '../data/categories';
 import { curriculumLinks, mainTrackNumber, trackAround } from '../data/curriculum';
 import { initialArticleBody, loadArticleBody } from '../lib/articleBody';
 import { watchAnswerToggle } from '../lib/answerToggle';
@@ -359,10 +359,13 @@ function ArticleView({ article }: { article: Article }) {
         </Link>
         <div className="mt-10 grid gap-10 lg:grid-cols-[minmax(0,1fr)_420px] lg:items-end">
           <div>
-            {/* 난이도는 수학에서만 붙습니다 — displayLevel의 주석을 보세요. */}
+            {/*
+              카드 왼쪽 위의 두 자리 숫자를 여기서 한 번 풀어 적습니다 —
+              「LLM / 42번째 글」. 카드만으로는 무슨 수인지 확정할 수 없습니다.
+              난이도는 수학에서만 붙고, 그때는 「초급 7번」이 난이도까지 겸합니다.
+            */}
             <p className="font-mono text-[10px] tracking-[0.13em]" style={{ color: category.accentText }}>
-              {category.shortName}
-              {displayLevel(article) && ` / ${displayLevel(article)}`}
+              {category.shortName} / {articleOrdinal(article)}
             </p>
             <h1 className="mt-5 max-w-4xl text-[2rem] font-medium leading-[1.35] text-[var(--text-strong)] sm:text-[2.8rem]">
               {article.title}

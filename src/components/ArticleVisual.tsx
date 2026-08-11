@@ -1,8 +1,7 @@
 import type { CSSProperties } from 'react';
-import { isLevelTag } from '../data/articles';
+import { articleNumber, isLevelTag } from '../data/articles';
 import { categoryById, displayLevel } from '../data/categories';
-import { trackPlace } from '../data/curriculum';
-import type { Article, Category } from '../types/article';
+import type { Article } from '../types/article';
 
 interface ArticleVisualProps {
   article: Article;
@@ -10,36 +9,26 @@ interface ArticleVisualProps {
 }
 
 /**
- * 카드 왼쪽 위에 붙는 코드. **진짜 번호가 있는 글에만 붙습니다.**
+ * 카드 왼쪽 위에는 **번호만** 찍고 카테고리는 오른쪽 위 `shortName`에 맡깁니다.
+ * 왼쪽이 '어디쯤', 오른쪽이 '어느 줄'을 하나씩 말해서 같은 낱말이 두 번 나오지
+ * 않습니다 — `LLM-42`처럼 접두사를 붙이면 30px 옆의 `LLM`과 같은 말이 됩니다.
  *
- * 수학은 커리큘럼이라 「초급 7번」이 실재합니다. 트랙의 차례를 함께 적어
- * `M1`·`M2`·`M3`(초급·중급·고급)로 가릅니다 — 셋 다 1번부터 시작하므로 번호만
- * 쓰면 `M-01`이 초급 1번에도 중급 1번에도 붙습니다.
+ * 그래서 **작은 썸네일에서도 `shortName`을 감추지 않습니다**(styles.css). 감추면
+ * 왼쪽의 `42`가 홀로 남아 뜻을 잃고, 카테고리가 섞이는 목록에서는 LLM의 23과
+ * MLOPS의 42가 같은 자로 잰 수처럼 보입니다.
  *
- * **나머지는 비웁니다.** 예전에는 전부 슬러그 해시를 100으로 나눈 나머지였는데,
- * 뜻이 없는 것은 물론이고 유일하지도 않았습니다 — 수학 뺀 315편 중 143편(45%)이
- * 남과 같은 코드를 달고 있었고(`A-14`가 두 편, `A-20`이 두 편 하는 식으로 66개),
- * 접두사 글자마저 겹쳤습니다(D는 DL과 DOMAIN, L은 LAB과 LLM, M은 MATH와 MLOPS).
- *
- * 번호를 새로 매기지 않는 이유가 있습니다. 다른 카테고리에는 정해진 순서가 없고,
- * 목록이 `publishedAt` 내림차순이라 발행순으로 매기면 **새 글이 하나 나올 때마다
- * 뒤 번호가 전부 밀립니다.** 어제 `L-42`였던 글이 오늘 `L-43`이 되는 편이
- * 지금보다 나쁩니다.
- *
- * 빈 자리로 두어도 어색하지 않습니다. 카드 오른쪽에 분야 이름이 이미 있고,
- * 빈 span이 flex 첫 칸을 그대로 차지해 그 이름이 왼쪽으로 밀리지 않습니다.
+ * 예전에는 슬러그 해시를 100으로 나눈 나머지였습니다. 뜻이 없는 것은 물론이고
+ * 유일하지도 않아서, 수학 뺀 315편 중 143편(45%)이 남과 같은 코드를 달고
+ * 있었습니다(`A-14`가 두 편, `A-20`이 두 편 하는 식으로 66개).
  */
-function articleCode(article: Article, category: Category): string {
-  const place = trackPlace(article.slug);
-  if (!place) return '';
-
-  return `${category.shortName.slice(0, 1)}${place.tier}-${String(place.number).padStart(2, '0')}`;
+function articleCode(article: Article): string {
+  return String(articleNumber(article)).padStart(2, '0');
 }
 
 export function ArticleVisual({ article, compact = false }: ArticleVisualProps) {
   const category = categoryById[article.categoryId];
   const style = { '--visual-accent': category.accent } as CSSProperties;
-  const code = articleCode(article, category);
+  const code = articleCode(article);
   /*
     캡션에서 난이도 태그를 뺍니다.
 
