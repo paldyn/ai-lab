@@ -3,7 +3,7 @@ import { createPortal } from 'react-dom';
 import { ArrowUpRight, X } from 'lucide-react';
 import { releaseOf, type ModelLogoTone, type ModelRelease, type NewsDetail, type NewsItem } from '../data/news';
 import { loadNewsDetail } from '../lib/newsDetail';
-import { captureFocusOrigin, restoreFocus } from '../lib/restoreFocus';
+import { captureFocusOrigin, focusQuietly, restoreFocus } from '../lib/restoreFocus';
 
 export interface NewsPreviewItem {
   id: string;
@@ -136,7 +136,14 @@ export function NewsPreviewModal({ item, onClose }: NewsPreviewModalProps) {
     appRoot?.setAttribute('inert', '');
     document.body.style.overflow = 'hidden';
     document.addEventListener('keydown', handleKeyDown);
-    closeButtonRef.current?.focus();
+
+    /*
+      키보드로 열었으면 링을 보여 줍니다 — 포커스가 팝업 안으로 들어간 것을
+      알려야 합니다. 마우스로 열었으면 조용히 잡습니다. `focusQuietly`의 주석에
+      Esc 뒤 다시 클릭했을 때 왜 그냥 focus()로는 링이 남는지 적어 두었습니다.
+    */
+    if (origin.keyboard) closeButtonRef.current?.focus();
+    else focusQuietly(closeButtonRef.current);
 
     return () => {
       appRoot?.removeAttribute('inert');

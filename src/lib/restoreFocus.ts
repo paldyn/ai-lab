@@ -121,6 +121,28 @@ function hideRingOnce(element: HTMLElement): void {
 }
 
 /**
+ * 팝업이 **열리며** 안쪽 요소를 자동으로 잡을 때 씁니다. 링 없이 포커스만 옮깁니다.
+ *
+ * 되돌릴 때와 같은 증상이 여는 쪽에도 있습니다. Esc는 키 입력이라 브라우저를
+ * '키보드 모드'로 바꾸는데, 그 상태에서 **이미 포커스를 쥐고 있는 트리거를 다시
+ * 클릭하면 포커스가 움직이지 않아 모드가 풀리지 않습니다.** 그래서 마우스로 다시
+ * 열었는데도 팝업이 잡는 요소에 링이 붙습니다. 실제로 재 보면 그 순간 새로 만든
+ * 버튼을 프로그램으로 잡아도 :focus-visible이 참입니다 — 요소가 아니라 모드가
+ * 남아 있는 것이라 트리거 쪽만 고쳐서는 막히지 않습니다.
+ *
+ * 그러니 '어떻게 열었는가'로 고릅니다. 키보드로 열었으면(`origin.keyboard`)
+ * 링이 보여야 하고 — 포커스가 팝업 안으로 들어간 것을 알려야 합니다 —
+ * 마우스로 열었으면 이 함수로 조용히 잡습니다.
+ */
+export function focusQuietly(element: HTMLElement | null): void {
+  if (!element) return;
+
+  hideRingOnce(element);
+  const options: FocusVisibleOptions = { preventScroll: true, focusVisible: false };
+  element.focus(options);
+}
+
+/**
  * 팝업이 닫힐 때(대개 effect cleanup에서) 부릅니다.
  * `captureFocusOrigin()`이 잡아 둔 요소로 포커스를 되돌립니다.
  */
