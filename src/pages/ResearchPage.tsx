@@ -1,8 +1,8 @@
 import { ArticleExplorer } from '../components/ArticleExplorer';
 import { PageHeader } from '../components/PageHeader';
 import { Seo } from '../components/Seo';
-import { countByCategory } from '../data/articles';
-import { categoriesIn, categoryIdsIn } from '../data/categories';
+import { countByCategory, sectionCategoriesInUse } from '../data/articles';
+import { categoryIdsIn } from '../data/categories';
 
 const researchCategories = categoryIdsIn('research');
 
@@ -23,7 +23,7 @@ export function ResearchPage() {
         description="논문을 읽고, 도구를 비교하고, 작은 실험으로 직접 확인한 것을 남깁니다."
         stats={[
           { label: '기록', value: `${total}편` },
-          { label: '갈래', value: String(categoriesIn('research').length).padStart(2, '0') },
+          { label: '갈래', value: String(sectionCategoriesInUse('research').length).padStart(2, '0') },
         ]}
       />
       <section className="site-wrap section-space research-archive">

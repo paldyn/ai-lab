@@ -35,7 +35,17 @@ export function ArticleExplorer({
     () => articles.filter((article) => !categoryIds || categoryIds.includes(article.categoryId)),
     [categoryIds],
   );
-  const categoryOptions = categories.filter((category) => !categoryIds || categoryIds.includes(category.id));
+  /*
+    글이 한 편도 없는 칸은 칩을 세우지 않습니다. 눌러도 빈 목록만 나오는 버튼이라
+    거를 것이 없는데 거르는 시늉만 합니다 — 리서치의 `paper-notes`·`tools`가
+    그랬습니다. 카테고리 정의는 그대로 두므로 첫 글이 나가는 날 저절로 돌아옵니다.
+  */
+  const categoryOptions = useMemo(() => {
+    const inScope = categories.filter((category) => !categoryIds || categoryIds.includes(category.id));
+    return inScope.filter((category) =>
+      scopedArticles.some((article) => article.categoryId === category.id),
+    );
+  }, [categoryIds, scopedArticles]);
 
   // 지금 보고 있는 범위의 태그를 글 수와 함께, 많이 쓰인 순으로.
   const tagCounts = useMemo<TagCount[]>(() => {
