@@ -2,7 +2,7 @@
 title: "전개와 인수분해: 괄호를 풀고 다시 묶기"
 description: "분배법칙을 문자로 확장해 괄호를 풀고, 그 반대로 공통인수를 찾아 묶습니다. 곱셈 공식은 외우지 않고 정사각형 넓이 그림에서 매번 복원할 수 있게 세웁니다."
 author: "PALDYN Team"
-pubDate: "2026-08-11"
+pubDate: "2026-08-12"
 category: "math-for-ai"
 level: "초급"
 tags: ["초급", "전개", "인수분해"]

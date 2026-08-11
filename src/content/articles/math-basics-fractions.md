@@ -2,7 +2,7 @@
 title: "분수의 사칙연산: 나눗셈이 왜 역수의 곱인가"
 description: "분수를 끝내지 않은 나눗셈으로 세우고 사칙연산 넷을 손에 익힙니다. 뒤집어 곱하는 규칙은 외우지 않고, 나눈다는 말이 원래 무엇을 묻는 것인지에서 얻습니다."
 author: "PALDYN Team"
-pubDate: "2026-08-11"
+pubDate: "2026-08-12"
 category: "math-for-ai"
 level: "초급"
 tags: ["초급", "분수", "약분과 통분"]

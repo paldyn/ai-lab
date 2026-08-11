@@ -2,7 +2,7 @@
 title: "문자와 대입: 문자 하나가 수 전부를 대신할 때"
 description: "글자가 미지수인지 변수인지 상수인지 계수인지를 가르고, 그 자리에 값을 넣어 계산하는 훈련을 합니다. 음수를 넣을 때 괄호를 치는 습관을 여기서 못 박습니다."
 author: "PALDYN Team"
-pubDate: "2026-08-11"
+pubDate: "2026-08-12"
 category: "math-for-ai"
 level: "초급"
 tags: ["초급", "문자식", "대입"]
