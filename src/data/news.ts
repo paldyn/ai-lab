@@ -155,6 +155,146 @@ export const globalNewsUpdatedAt = '2026-08-11';
  */
 const entries: NewsItem[] = [
   {
+    id: 'expanding-daybreak-as-the-cyber-defense-window-narrows',
+    source: 'OpenAI',
+    kind: 'model',
+    title: '보안 특화 모델 GPT-5.6-Cyber와 Daybreak 2단 접근 공개',
+    summary:
+      'OpenAI가 보안 특화 모델 GPT-5.6-Cyber를 내놓고 Daybreak를 두 단계 ' +
+      '접근으로 넓혔다. Daybreak Blue는 GPT-5.6 Sol을 포함한 범용 모델을 방어 ' +
+      '업무용 안전장치와 함께 승인된 방어자에게 제공한다.',
+    publishedAt: '2026-08-10',
+    category: 'Domain',
+    signal: '보안 모델',
+    url: 'https://openai.com/index/expanding-daybreak-as-the-cyber-defense-window-narrows',
+    model: {
+      family: 'GPT',
+      name: 'GPT-5.6-Cyber',
+      kind: '신규 모델',
+      status: '제한 공개',
+      useCase: '방어 보안 업무',
+      headline: '공격이 자동화되기 전에 방어자 손에 프런티어 모델을 쥐여 주겠다는 발표다.',
+      logo: 'assets/openai.svg',
+      tone: 'gpt',
+    },
+  },
+  {
+    id: 'putting-frontier-cyber-models-in-more-trusted-hands',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'Daybreak 사이버 파트너 프로그램에 Accenture·IBM 합류',
+    summary:
+      'OpenAI가 프런티어 사이버 모델을 보안 업체의 제품과 서비스에 넣는 Daybreak ' +
+      'Cyber Partner 프로그램을 넓혔다. Accenture와 IBM 등이 참여한다.',
+    publishedAt: '2026-08-10',
+    category: 'Product',
+    signal: '보안 파트너십',
+    url: 'https://openai.com/index/putting-frontier-cyber-models-in-more-trusted-hands',
+  },
+  {
+    id: 'responsible-ai-infrastructure-texas',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'OpenAI, 텍사스 주지사에 AI 인프라 관련 서한 발송',
+    summary:
+      'OpenAI가 텍사스 주지사 Greg Abbott에게 주 내 AI 인프라 개발에 대한 ' +
+      '약속을 담은 서한을 보냈다. 주·지역 지도자와 전력회사, 지역사회와 협력하겠다고 밝혔다.',
+    publishedAt: '2026-08-10',
+    category: 'Safety',
+    signal: 'AI 정책',
+    url: 'https://openai.com/index/responsible-ai-infrastructure-texas',
+  },
+  {
+    id: 'premium-seats-chatgpt-business',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'ChatGPT Business에 사용량 5배 Premium 좌석 추가',
+    summary:
+      'OpenAI가 ChatGPT Business에 Premium 좌석을 더한다. Standard의 5배 사용량에 ' +
+      '5시간 사용 한도가 없고 월 125달러(연간 결제 시 100달러)다. 한 워크스페이스에서 ' +
+      '두 좌석을 섞어 쓸 수 있다.',
+    publishedAt: '2026-08-10',
+    category: 'Product',
+    signal: '기업 요금제',
+    url: 'https://openai.com/index/premium-seats-chatgpt-business',
+  },
+  {
+    id: 'responding-next-frontier-critical-cyber-capabilities',
+    source: 'OpenAI',
+    kind: 'company',
+    title: '차기 모델 Astra가 사이버 Critical 기준에 닿을 가능성 공개',
+    summary:
+      'OpenAI가 준비 중인 모델 Astra의 내부 평가에서 에이전틱 코딩과 사이버보안 ' +
+      '능력이 크게 올라, Preparedness Framework의 Critical 사이버 역량을 배제할 수 ' +
+      '없다고 결론지었다. GPT-5.6-Sol까지는 High 단계로 평가됐다.',
+    publishedAt: '2026-08-07',
+    category: 'Safety',
+    signal: '역량 임계 도달',
+    url: 'https://openai.com/index/responding-next-frontier-critical-cyber-capabilities',
+  },
+  {
+    id: 'improving-gpt-5-6-sol-in-chatgpt',
+    source: 'OpenAI',
+    kind: 'model',
+    title: 'GPT-5.6 Sol 개선과 무료 사용자 GPT-5.6 Luna 기본 전환',
+    summary:
+      'Plus·Pro의 GPT-5.6 Sol이 사실 정확도와 답변 집중도를 높이고 사고량을 고르는 ' +
+      '슬라이더가 붙었다. 무료 사용자는 기본 모델이 GPT-5.6 Luna로 바뀌고 텍스트 ' +
+      '대화가 무제한이 되며 Think 버튼으로 더 깊은 추론을 쓸 수 있다.',
+    publishedAt: '2026-08-06',
+    category: 'Frontier',
+    signal: '모델 개선',
+    url: 'https://openai.com/index/improving-gpt-5-6-sol-in-chatgpt',
+    model: {
+      family: 'GPT',
+      name: 'GPT-5.6 Sol',
+      kind: '모델 패밀리',
+      status: '공개',
+      useCase: '일상 대화와 다단계 작업',
+      headline: '유료는 답변을 조이고 무료는 문을 넓혔다 — 같은 발표가 두 방향으로 간다.',
+      logo: 'assets/openai.svg',
+      tone: 'gpt',
+    },
+  },
+  {
+    id: 'openai-and-apa-partner-to-advance-responsible-ai',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'OpenAI, 미국심리학회와 청소년 정신건강 협력',
+    summary:
+      'OpenAI가 미국심리학회(APA)와 함께 청소년의 AI 이용에 심리과학을 반영하는 ' +
+      '작업을 시작했다. 무엇이 밝혀졌고 무엇이 불확실한지, 책임 있는 설계가 무엇인지를 ' +
+      '정리하는 것이 목표다.',
+    publishedAt: '2026-08-06',
+    category: 'Safety',
+    signal: '청소년 안전',
+    url: 'https://openai.com/index/openai-and-apa-partner-to-advance-responsible-ai',
+  },
+  {
+    id: 'weathernext-ai-model-achieves-breakthrough-in-forecasting-cyclones',
+    source: 'Google DeepMind',
+    kind: 'model',
+    title: '사이클론 예보 모델 WeatherNext 공개, 가중치도 개방',
+    summary:
+      'Google DeepMind가 사이클론의 경로·강도·바람 구조 예측에서 최고 정확도를 ' +
+      '기록한 WeatherNext를 Nature에 싣고 모델을 오픈소스로 공개했다. 3일 예보가 ' +
+      '기존 모델의 2일 예보 수준이라 예보관에게 하루를 더 준다.',
+    publishedAt: '2026-08-06',
+    category: 'Open',
+    signal: '기상 예측 모델',
+    url: 'https://deepmind.google/blog/weathernext-ai-model-achieves-breakthrough-in-forecasting-cyclones',
+    model: {
+      family: 'Gemini',
+      name: 'WeatherNext',
+      kind: '신규 모델',
+      status: '공개',
+      useCase: '열대 사이클론 예보',
+      headline: '예보 하루를 벌어 주는 모델을 가중치까지 열어 두었다.',
+      logo: 'assets/gemini.svg',
+      tone: 'gemini',
+    },
+  },
+  {
     id: 'google-ads-analytics-ai-updates',
     source: 'Google DeepMind',
     kind: 'company',
