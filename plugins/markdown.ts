@@ -224,9 +224,18 @@ function rehypeAnswerToggle() {
         const head = answer[0];
         if (head?.type === 'text') head.value = String(head.value ?? '').replace(ANSWER_PREFIX, '');
 
+        /*
+          칩은 **비어 있는 진짜 요소**입니다. `summary::after`로 그렸더니 줄 어디에
+          마우스가 있어도 칩이 켜졌습니다 — hover 대상이 summary 전체이고, 의사
+          요소는 따로 hover를 받지 못하기 때문입니다. 요소로 두면 칩에 정확히
+          올렸을 때만 켜집니다. 글자는 CSS가 넣으므로 복사한 글에 섞이지 않습니다.
+        */
+        const chip = element('span', 'answer-chip', []);
+        (chip.properties as Record<string, unknown>)['aria-hidden'] = 'true';
+
         child.children = [
           element('details', 'answer', [
-            element('summary', 'answer-ask', asked),
+            element('summary', 'answer-ask', [...asked, chip]),
             element('div', 'answer-body', answer),
             ...items.slice(at + 1),
           ]),
@@ -286,7 +295,7 @@ const CACHE_DIR = 'node_modules/.cache/paldyn-markdown';
  * 선택 가능하게 바꾸고도 화면이 그대로여서 한 번 헤맸습니다 — 캐시가 예전 결과를
  * 돌려주고 있었습니다.
  */
-const RENDERER_VERSION = '2026-08-11-answer-toggle';
+const RENDERER_VERSION = '2026-08-11-answer-chip';
 
 async function renderCached(body: string): Promise<RenderedMarkdown> {
   const key = createHash('sha256').update(RENDERER_VERSION).update(body).digest('hex').slice(0, 32);

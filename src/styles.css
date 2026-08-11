@@ -2197,14 +2197,18 @@ input:focus-visible {
   display: none;
 }
 
-.article-prose details.answer > summary::after {
+/*
+  칩은 비어 있는 진짜 요소다(plugins/markdown.ts). 글자는 여기서 넣으므로 복사한
+  글에 섞이지 않고, 요소이므로 **칩에 정확히 올렸을 때만** hover를 받는다 —
+  `summary::after`로 그렸을 때는 줄 어디에 마우스가 있어도 켜졌다.
+*/
+.article-prose .answer-chip {
   display: inline-block;
   margin-left: 8px;
   border: 1px solid var(--border);
   border-radius: 3px;
   padding: 1px 7px;
   color: var(--text-muted);
-  content: '답';
   font-family: 'JetBrains Mono', ui-monospace, monospace;
   font-size: 0.72em;
   letter-spacing: 0.04em;
@@ -2212,14 +2216,18 @@ input:focus-visible {
   transition: color 0.15s, border-color 0.15s;
 }
 
-.article-prose details.answer > summary:hover::after,
-.article-prose details.answer[open] > summary::after {
-  border-color: var(--brand);
-  color: var(--brand-text);
+.article-prose .answer-chip::after {
+  content: '답';
 }
 
-.article-prose details.answer[open] > summary::after {
+.article-prose details.answer[open] .answer-chip::after {
   content: '닫기';
+}
+
+.article-prose .answer-chip:hover,
+.article-prose details.answer[open] .answer-chip {
+  border-color: var(--brand);
+  color: var(--brand-text);
 }
 
 .article-prose details.answer > summary:focus-visible {
