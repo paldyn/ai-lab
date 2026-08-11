@@ -146,3 +146,22 @@ export function categoriesIn(section: SectionId): Category[] {
 export function categoryIdsIn(section: SectionId): CategoryId[] {
   return categoriesIn(section).map((category) => category.id);
 }
+
+/**
+ * 화면에 적을 난이도. **수학 밖에서는 적지 않습니다.**
+ *
+ * `level`은 글 전부가 갖고 있지만 318편 가운데 311편이 「중급」이고 「고급」은
+ * 하나도 없습니다. 98%가 같은 값이라 읽는 사람에게 아무것도 갈라 주지 못하면서
+ * 카테고리 이름 옆에 나란히 서서 그 자리가 뜻을 가진 것처럼 보이게 합니다 —
+ * 리서치 글 넷이 전부 「중급」인 것을 보고 리서치도 난이도로 나뉜 줄 알기 쉽습니다.
+ *
+ * 수학에서는 다릅니다. `MATH-PLAN.md`가 슬러그 접두사로 트랙을 가르고
+ * (`math-basics-` 초급 · `math-` 중급 · `math-adv-` 고급) 실제로 값이 갈려
+ * 있으므로, 거기서는 그대로 보여 줍니다.
+ *
+ * 값을 지우지 않고 표시만 거릅니다. 나중에 다른 칸에도 난이도를 제대로 매기면
+ * 이 함수 하나만 고치면 됩니다.
+ */
+export function displayLevel(article: { categoryId: CategoryId; level: string }): string | null {
+  return article.categoryId === 'math-for-ai' ? article.level : null;
+}

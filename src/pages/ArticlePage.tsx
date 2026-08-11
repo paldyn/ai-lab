@@ -5,7 +5,7 @@ import { ArticleCard } from '../components/ArticleCard';
 import { ArticleVisual } from '../components/ArticleVisual';
 import { Seo } from '../components/Seo';
 import { articles, getArticleBySlug } from '../data/articles';
-import { categoryById } from '../data/categories';
+import { categoryById, displayLevel } from '../data/categories';
 import { curriculumLinks, mainTrackNumber } from '../data/curriculum';
 import { initialArticleBody, loadArticleBody } from '../lib/articleBody';
 import type { Article, ArticleBody } from '../types/article';
@@ -316,8 +316,10 @@ function ArticleView({ article }: { article: Article }) {
         </Link>
         <div className="mt-10 grid gap-10 lg:grid-cols-[minmax(0,1fr)_420px] lg:items-end">
           <div>
+            {/* 난이도는 수학에서만 붙습니다 — displayLevel의 주석을 보세요. */}
             <p className="font-mono text-[10px] tracking-[0.13em]" style={{ color: category.accentText }}>
-              {category.shortName} / {article.level}
+              {category.shortName}
+              {displayLevel(article) && ` / ${displayLevel(article)}`}
             </p>
             <h1 className="mt-5 max-w-4xl text-[2rem] font-medium leading-[1.35] text-[var(--text-strong)] sm:text-[2.8rem]">
               {article.title}

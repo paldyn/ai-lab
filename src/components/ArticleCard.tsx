@@ -1,6 +1,6 @@
 import { ArrowUpRight } from 'lucide-react';
 import { Link } from 'react-router';
-import { categoryById } from '../data/categories';
+import { categoryById, displayLevel } from '../data/categories';
 import type { Article } from '../types/article';
 import { ArticleVisual } from './ArticleVisual';
 
@@ -57,8 +57,15 @@ export function ArticleCard({ article, variant = 'card' }: ArticleCardProps) {
           <Link to={`/articles/${article.slug}`} className="card-trigger">{article.title}</Link>
         </h3>
         <p className="mt-3 line-clamp-3 text-sm leading-6 text-[var(--text-dim)]">{article.summary}</p>
+        {/* 난이도는 수학 카드에만 붙습니다 — displayLevel의 주석을 보세요. */}
         <div className="mt-5 flex items-center gap-2 font-mono text-[10px] tracking-[0.06em] text-[var(--text-muted)]">
-          <span>{article.level}</span><span aria-hidden="true">/</span><span>{article.readTime} MIN</span>
+          {displayLevel(article) && (
+            <>
+              <span>{displayLevel(article)}</span>
+              <span aria-hidden="true">/</span>
+            </>
+          )}
+          <span>{article.readTime} MIN</span>
         </div>
       </div>
     </article>

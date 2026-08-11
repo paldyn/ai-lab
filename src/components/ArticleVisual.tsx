@@ -1,5 +1,5 @@
 import type { CSSProperties } from 'react';
-import { categoryById } from '../data/categories';
+import { categoryById, displayLevel } from '../data/categories';
 import type { Article } from '../types/article';
 
 interface ArticleVisualProps {
@@ -31,7 +31,12 @@ export function ArticleVisual({ article, compact = false }: ArticleVisualProps) 
           <span>{category.shortName}</span>
         </div>
         <div>
-          <p className="mb-2 font-mono text-[10px] tracking-[0.16em] text-[var(--visual-accent)]">{article.level}</p>
+          {/* 난이도는 수학에서만 붙습니다 — displayLevel의 주석을 보세요. */}
+          {displayLevel(article) && (
+            <p className="mb-2 font-mono text-[10px] tracking-[0.16em] text-[var(--visual-accent)]">
+              {displayLevel(article)}
+            </p>
+          )}
           <p className="visual-formula">{caption}</p>
         </div>
       </div>
