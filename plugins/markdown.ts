@@ -158,6 +158,86 @@ function rehypeSelectableMathSpace() {
   };
 }
 
+/**
+ * 연습 문제의 답을 문제마다 접어 둡니다.
+ *
+ * 예전에는 문제 열 개를 늘어놓고 그 아래에 답을 한 문단으로 이어 적었습니다.
+ * 「1 항등식(0을 넣으면…). 2 방정식(4일 때만 참). 3 정의…」 이런 줄이 470자까지
+ * 갔고, 몇 번 답을 보려면 눈으로 번호를 세어 가며 찾아야 했습니다. 게다가 답이
+ * 문제 바로 아래 늘 펼쳐져 있어 **풀어 보기 전에 눈에 먼저 들어옵니다** —
+ * 연습의 목적이 사라집니다.
+ *
+ * 그래서 문제 하나가 곧 토글이 됩니다. 원고에는 문제 항목 안에 `답.`으로 시작하는
+ * 문단을 하나 두면 됩니다.
+ *
+ * ```md
+ * 1. $$x + x = 2x$$
+ *
+ *    답. 항등식 — 0을 넣으면 0과 0, 1이면 2와 2입니다.
+ * ```
+ *
+ * 문제 줄이 `<summary>`가 되고 답이 그 안에 들어갑니다. 눌러야 펼쳐지고, 번호는
+ * `<ol>`이 그대로 매깁니다. `<details>`라 자바스크립트가 없어도 열리고 키보드로도
+ * 열립니다.
+ *
+ * **rehype 단계에서 바꿉니다.** remark 단계에서 손대면 답 안의 `$$…$$`가 아직
+ * 수식이 아니라 글자라서 KaTeX를 못 거칩니다. 여기서는 이미 렌더가 끝난 뒤라
+ * 답 안에 수식이든 코드든 그대로 들어갑니다.
+ */
+const ANSWER_PREFIX = /^답\.\s*/;
+
+function rehypeAnswerToggle() {
+  type Node = Record<string, unknown>;
+  const childrenOf = (node: Node) => (node.children ?? []) as Node[];
+
+  const textOf = (node: Node): string => {
+    if (node.type === 'text') return String(node.value ?? '');
+    return childrenOf(node).map(textOf).join('');
+  };
+
+  const element = (tagName: string, className: string, children: Node[]): Node => ({
+    type: 'element',
+    tagName,
+    properties: { className: [className] },
+    children,
+  });
+
+  return (tree: unknown) => {
+    const walk = (node: Node) => {
+      for (const child of childrenOf(node)) {
+        walk(child);
+        if (child.type !== 'element' || child.tagName !== 'li') continue;
+
+        const items = childrenOf(child);
+        const at = items.findIndex(
+          (item) => item.type === 'element' && item.tagName === 'p' && ANSWER_PREFIX.test(textOf(item)),
+        );
+        if (at < 0) continue;
+
+        // 문제 줄. 문단으로 감싸여 있으면 벗겨 냅니다 — summary 안에는 문단이 못 들어갑니다.
+        const asked = items.slice(0, at).flatMap((item) =>
+          item.type === 'element' && item.tagName === 'p' ? childrenOf(item) : [item],
+        );
+
+        // 답에서 `답.` 표시를 떼어 냅니다. 그 자리는 summary가 대신 알려 줍니다.
+        const answer = childrenOf(items[at]);
+        const head = answer[0];
+        if (head?.type === 'text') head.value = String(head.value ?? '').replace(ANSWER_PREFIX, '');
+
+        child.children = [
+          element('details', 'answer', [
+            element('summary', 'answer-ask', asked),
+            element('div', 'answer-body', answer),
+            ...items.slice(at + 1),
+          ]),
+        ];
+      }
+    };
+
+    walk(tree as Node);
+  };
+}
+
 export interface RenderedMarkdown {
   html: string;
   headings: MarkdownHeading[];
@@ -182,6 +262,7 @@ export async function renderMarkdown(body: string): Promise<RenderedMarkdown> {
     .use(rehypeSlug)
     .use(rehypeKatex)
     .use(rehypeSelectableMathSpace)
+    .use(rehypeAnswerToggle)
     .use(rehypeStringify, { allowDangerousHtml: true })
     .process(body);
 
@@ -205,7 +286,7 @@ const CACHE_DIR = 'node_modules/.cache/paldyn-markdown';
  * 선택 가능하게 바꾸고도 화면이 그대로여서 한 번 헤맸습니다 — 캐시가 예전 결과를
  * 돌려주고 있었습니다.
  */
-const RENDERER_VERSION = '2026-08-11-katex-space-2';
+const RENDERER_VERSION = '2026-08-11-answer-toggle';
 
 async function renderCached(body: string): Promise<RenderedMarkdown> {
   const key = createHash('sha256').update(RENDERER_VERSION).update(body).digest('hex').slice(0, 32);
