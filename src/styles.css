@@ -2284,6 +2284,40 @@ input:focus-visible {
 }
 
 /*
+  수식과 인라인 코드는 본문과 글꼴이 달라 선택 상자의 높이·위치가 어긋납니다.
+  한 줄을 끌면 그 자리만 위아래로 튀어나오므로, 이 조각들 안에서는 브라우저가
+  칠하는 색을 끄고 src/lib/inlineSelection.ts가 옆 글자와 같은 띠를 그립니다.
+  왜 CSS로는 안 되는지는 그 파일에 적어 두었습니다.
+
+  `isolation`으로 쌓임 맥락을 만들어 두면 `z-index: -1`이 이 안에서만 해석되므로,
+  바깥 어디에 배경색이 있든 띠가 글자 밑·배경 위에 정확히 들어갑니다.
+*/
+.article-prose .katex,
+.article-prose :not(pre) > code {
+  position: relative;
+  isolation: isolate;
+}
+
+/*
+  표시(`data-inline-selection`)는 스크립트가 붙입니다. 프리렌더된 HTML만 떠 있는
+  동안에는 브라우저 기본 칠이 그대로 보입니다 — 최악이 '예전처럼 튀어나온다'입니다.
+*/
+.article-prose[data-inline-selection] .katex ::selection,
+.article-prose[data-inline-selection] :not(pre) > code::selection,
+.article-prose[data-inline-selection] :not(pre) > code ::selection {
+  background: transparent;
+}
+
+.inline-selection {
+  position: absolute;
+  z-index: -1;
+  pointer-events: none;
+  user-select: none;
+  -webkit-user-select: none;
+  background: var(--brand);
+}
+
+/*
   KaTeX는 수식을 두 벌로 냅니다 — 눈에 보이는 HTML과, 화면 낭독기용으로 숨긴
   MathML입니다. 숨기는 방법이 `position: absolute; height: 1px`이라 **보이지만
   않을 뿐 선택에는 그대로 잡힙니다.**

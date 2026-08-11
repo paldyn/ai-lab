@@ -8,6 +8,7 @@ import { articles, getArticleBySlug } from '../data/articles';
 import { categoryById, displayLevel } from '../data/categories';
 import { curriculumLinks, mainTrackNumber } from '../data/curriculum';
 import { initialArticleBody, loadArticleBody } from '../lib/articleBody';
+import { watchInlineSelection } from '../lib/inlineSelection';
 import type { Article, ArticleBody } from '../types/article';
 
 export function ArticlePage() {
@@ -300,6 +301,13 @@ function ArticleView({ article }: { article: Article }) {
     };
   }, [article.slug, body]);
 
+  // 수식·코드 조각의 선택 영역은 직접 그립니다 — 이유는 lib/inlineSelection.ts에 있습니다.
+  const proseRef = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+    if (!proseRef.current) return undefined;
+    return watchInlineSelection(proseRef.current);
+  }, [body]);
+
   return (
     <article>
       <Seo
@@ -380,6 +388,7 @@ function ArticleView({ article }: { article: Article }) {
 
         <div className="min-w-0">
           <div
+            ref={proseRef}
             id="article-body"
             data-slug={article.slug}
             className="article-prose"
