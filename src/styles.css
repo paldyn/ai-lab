@@ -2308,6 +2308,16 @@ input:focus-visible {
   background: transparent;
 }
 
+/*
+  통째로 잡힌 코드 칩은 배경과 테두리를 지워 띠에 녹입니다. 칩은 좌우 6px 여백과
+  테두리를 두른 상자라 글자 폭만 칠하면 그 자리가 어두운 테두리로 남아 띠가
+  끊겨 보입니다. 자리는 그대로 두고 색만 지우므로 글이 밀리지 않습니다.
+*/
+.article-prose :not(pre) > code[data-selection-melted] {
+  border-color: transparent;
+  background: transparent;
+}
+
 .inline-selection {
   position: absolute;
   z-index: -1;

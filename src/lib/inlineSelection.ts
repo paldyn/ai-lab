@@ -39,6 +39,9 @@ const MARK_CLASS = 'inline-selection';
 /** 본문에 붙는 표시. 이것이 있을 때만 기본 선택 칠이 꺼집니다. */
 const ACTIVE_ATTR = 'data-inline-selection';
 
+/** 통째로 잡힌 코드 칩에 붙는 표시. 배경과 테두리를 지워 띠에 녹입니다. */
+const MELTED_ATTR = 'data-selection-melted';
+
 /** 주변 글자와 선택 상자가 어긋나는 조각들. */
 const ODD_PIECE = '.katex, code';
 
@@ -79,64 +82,93 @@ export function toBands(rects: readonly DOMRect[]): Band[] {
   return bands;
 }
 
+interface Clipped {
+  range: Range;
+  /** 이 조각이 통째로 잡혔는가. 코드 칩을 띠에 녹여도 되는지를 이걸로 가릅니다. */
+  whole: boolean;
+}
+
 /**
  * 선택 범위를 조각 하나로 좁힙니다. 본문에서 수식을 지나 계속 끌었을 때
  * 그 조각 안에 걸친 부분만 남깁니다. 겹치는 데가 없으면 null입니다.
  */
-function clipToNode(range: Range, node: Node): Range | null {
-  const whole = range.cloneRange();
-  whole.selectNodeContents(node);
+function clipToNode(range: Range, node: Node): Clipped | null {
+  const all = range.cloneRange();
+  all.selectNodeContents(node);
 
   const part = range.cloneRange();
-  if (part.compareBoundaryPoints(Range.START_TO_START, whole) < 0) {
-    part.setStart(whole.startContainer, whole.startOffset);
-  }
-  if (part.compareBoundaryPoints(Range.END_TO_END, whole) > 0) {
-    part.setEnd(whole.endContainer, whole.endOffset);
-  }
+  const startsBefore = part.compareBoundaryPoints(Range.START_TO_START, all) <= 0;
+  const endsAfter = part.compareBoundaryPoints(Range.END_TO_END, all) >= 0;
 
-  return part.collapsed ? null : part;
+  if (startsBefore) part.setStart(all.startContainer, all.startOffset);
+  if (endsAfter) part.setEnd(all.endContainer, all.endOffset);
+
+  return part.collapsed ? null : { range: part, whole: startsBefore && endsAfter };
+}
+
+/** 본문 글자 한 조각: 글자 상자와, 그 글자가 앉은 줄 상자. */
+interface TextRun {
+  rect: DOMRect;
+  top: number;
+  height: number;
 }
 
 /**
- * 한 그릇 안에서 **조각이 아닌 본문 글자**의 선택 상자들을 모읍니다.
+ * 글자가 앉은 **줄 상자**를 냅니다. 브라우저는 선택 색을 글자 상자가 아니라 줄
+ * 상자에 칠하기 때문에 이 값을 써야 옆 글자와 아귀가 맞습니다 — 본문 글자 상자가
+ * 20px인데 줄 상자는 32.3px이라, 글자 상자에 맞추면 위아래로 6.15px씩 모자라
+ * 수식 자리마다 어두운 홈이 팹니다. 정확히 그것 때문에 두 번 헛돌았습니다.
+ *
+ * 줄 상자는 글자 상자 위아래에 `(line-height − 글자 상자) / 2`씩(half-leading)
+ * 더한 것입니다. `line-height: normal`처럼 px로 안 읽히면 글자 상자를 그대로 씁니다.
+ */
+function lineBoxOf(rect: DOMRect, element: Element): { top: number; height: number } {
+  const lineHeight = Number.parseFloat(getComputedStyle(element).lineHeight);
+  if (!Number.isFinite(lineHeight) || lineHeight <= 0) return { top: rect.top, height: rect.height };
+
+  return { top: rect.top - (lineHeight - rect.height) / 2, height: lineHeight };
+}
+
+/**
+ * 한 그릇 안에서 **조각이 아닌 본문 글자**를 모읍니다.
  * 한 번 그리는 동안 같은 그릇을 여러 조각이 물어보므로 결과를 캐시합니다.
  */
-function textRectsOf(block: Element, cache: Map<Element, DOMRect[]>): DOMRect[] {
+function textRunsOf(block: Element, cache: Map<Element, TextRun[]>): TextRun[] {
   const hit = cache.get(block);
   if (hit) return hit;
 
-  const rects: DOMRect[] = [];
+  const runs: TextRun[] = [];
   const walker = block.ownerDocument.createTreeWalker(block, NodeFilter.SHOW_TEXT);
 
   for (let node = walker.nextNode(); node; node = walker.nextNode()) {
-    if (!node.nodeValue?.trim()) continue;
-    if (node.parentElement?.closest(ODD_PIECE)) continue;
+    const parent = node.parentElement;
+    if (!parent || !node.nodeValue?.trim()) continue;
+    if (parent.closest(ODD_PIECE)) continue;
 
     const range = block.ownerDocument.createRange();
     range.selectNodeContents(node);
     for (const rect of range.getClientRects()) {
-      if (rect.height > 0) rects.push(rect);
+      if (rect.height > 0) runs.push({ rect, ...lineBoxOf(rect, parent) });
     }
   }
 
-  cache.set(block, rects);
-  return rects;
+  cache.set(block, runs);
+  return runs;
 }
 
-/** 이 띠와 같은 줄에 있는 본문 글자의 세로 자리. 같은 줄에 글자가 없으면 null입니다. */
-function lineOf(host: Element, band: Band, cache: Map<Element, DOMRect[]>): DOMRect | null {
+/** 이 띠와 같은 줄에 있는 본문 글자의 줄 상자. 같은 줄에 글자가 없으면 null입니다. */
+function lineOf(host: Element, band: Band, cache: Map<Element, TextRun[]>): TextRun | null {
   const block = host.closest(BLOCK);
   if (!block) return null;
 
-  let best: DOMRect | null = null;
+  let best: TextRun | null = null;
   let bestOverlap = 0;
 
-  for (const rect of textRectsOf(block, cache)) {
-    const overlap = Math.min(rect.bottom, band.bottom) - Math.max(rect.top, band.top);
+  for (const run of textRunsOf(block, cache)) {
+    const overlap = Math.min(run.rect.bottom, band.bottom) - Math.max(run.rect.top, band.top);
     if (overlap > bestOverlap) {
       bestOverlap = overlap;
-      best = rect;
+      best = run;
     }
   }
 
@@ -145,6 +177,33 @@ function lineOf(host: Element, band: Band, cache: Map<Element, DOMRect[]>): DOMR
 
 function clearMarks(root: HTMLElement): void {
   for (const mark of root.querySelectorAll(`.${MARK_CLASS}`)) mark.remove();
+  for (const host of root.querySelectorAll(`[${MELTED_ATTR}]`)) host.removeAttribute(MELTED_ATTR);
+}
+
+/**
+ * 띠를 놓을 기준점을 **재서** 구합니다.
+ *
+ * `getBoundingClientRect()`를 그냥 쓰면 안 됩니다. 절대 위치의 기준이 되는 상자는
+ * 인라인 요소의 경우 **글꼴이 만드는 상자**인데, 그 값은 안에 든 inline-block
+ * 자식까지 감싸는 bounding rect와 다를 수 있습니다. 어긋나면 띠 전체가 몇 px씩
+ * 밀려 다시 울퉁불퉁해 보입니다.
+ *
+ * 그래서 크기 0짜리를 (0, 0)에 한 번 놓고 그것이 실제로 앉은 자리를 읽습니다.
+ * 조각 하나당 한 번이라 비용도 여기서 끝납니다.
+ */
+function originOf(host: HTMLElement): DOMRect {
+  const probe = host.ownerDocument.createElement('span');
+  probe.className = MARK_CLASS;
+  probe.style.left = '0';
+  probe.style.top = '0';
+  probe.style.width = '0';
+  probe.style.height = '0';
+
+  host.appendChild(probe);
+  const origin = probe.getBoundingClientRect();
+  probe.remove();
+
+  return origin;
 }
 
 /** 선택의 양끝. 이것이 그대로면 다시 그릴 이유가 없습니다. */
@@ -177,7 +236,7 @@ function paint(root: HTMLElement): void {
   if (!selection || selection.isCollapsed || selection.rangeCount === 0) return;
 
   const ranges = Array.from({ length: selection.rangeCount }, (_, i) => selection.getRangeAt(i));
-  const lineCache = new Map<Element, DOMRect[]>();
+  const lineCache = new Map<Element, TextRun[]>();
 
   for (const host of root.querySelectorAll<HTMLElement>(ODD_PIECE)) {
     // 코드 블록은 그대로 둡니다 — 한 벌의 글꼴로만 그려져 어긋날 일이 없습니다.
@@ -186,30 +245,44 @@ function paint(root: HTMLElement): void {
     const content = host.querySelector('.katex-html') ?? host;
 
     const rects: DOMRect[] = [];
+    let whole = false;
     for (const range of ranges) {
       if (!range.intersectsNode(content)) continue;
       const part = clipToNode(range, content);
       if (!part) continue;
-      for (const rect of part.getClientRects()) {
+      whole ||= part.whole;
+      for (const rect of part.range.getClientRects()) {
         if (rect.width > 0 && rect.height > 0) rects.push(rect);
       }
     }
 
     if (rects.length === 0) continue;
-    const origin = host.getBoundingClientRect();
+    const box = host.getBoundingClientRect();
+    const origin = originOf(host);
+
+    /*
+      코드 칩은 테두리와 좌우 6px 여백을 두른 상자라, 글자 폭만 칠하면 그 여백이
+      어두운 테두리로 남아 띠가 끊겨 보입니다. 통째로 잡혔을 때는 칩의 배경과
+      테두리를 지우고(styles.css) 띠를 상자 끝까지 늘려 한 줄로 잇습니다.
+      수식은 여백이 없어 그대로 두고, 일부만 잡힌 칩도 원래 모습을 지킵니다.
+    */
+    const melt = whole && host.tagName === 'CODE';
+    if (melt) host.setAttribute(MELTED_ATTR, '');
 
     for (const band of toBands(rects)) {
       // 같은 줄의 본문 글자가 있으면 그 세로 자리를 그대로 씁니다.
       const line = lineOf(host, band, lineCache);
       const top = line ? line.top : band.top;
       const height = line ? line.height : band.bottom - band.top;
+      const left = melt ? box.left : band.left;
+      const right = melt ? box.right : band.right;
 
       const mark = document.createElement('span');
       mark.className = MARK_CLASS;
       mark.setAttribute('aria-hidden', 'true');
-      mark.style.left = `${band.left - origin.left}px`;
+      mark.style.left = `${left - origin.left}px`;
       mark.style.top = `${top - origin.top}px`;
-      mark.style.width = `${band.right - band.left}px`;
+      mark.style.width = `${right - left}px`;
       mark.style.height = `${height}px`;
       host.appendChild(mark);
     }
@@ -249,7 +322,11 @@ export function watchInlineSelection(root: HTMLElement): () => void {
       }) ?? 0;
   };
 
-  // 창 크기가 바뀌면 자리는 그대로여도 좌표가 달라집니다. 비교를 건너뛰게 비웁니다.
+  /*
+    선택은 그대로인데 글이 움직이는 경우가 있습니다 — 창 크기 변경, 늦게 온 웹폰트,
+    뒤늦게 자리를 잡는 이미지. 그러면 이미 그려 둔 띠만 옛 좌표에 남아 엉뚱한 데를
+    덮습니다. 양끝 비교를 건너뛰도록 비우고 다시 그립니다.
+  */
   const relayout = () => {
     edges = [];
     schedule();
@@ -258,8 +335,13 @@ export function watchInlineSelection(root: HTMLElement): () => void {
   document_.addEventListener('selectionchange', schedule);
   window_?.addEventListener('resize', relayout);
 
+  // 본문 높이가 달라지는 것으로 '글이 움직였다'를 잡습니다. 없는 환경은 창 크기만 봅니다.
+  const observer = typeof ResizeObserver === 'function' ? new ResizeObserver(relayout) : null;
+  observer?.observe(root);
+
   return () => {
     if (frame) window_?.cancelAnimationFrame(frame);
+    observer?.disconnect();
     document_.removeEventListener('selectionchange', schedule);
     window_?.removeEventListener('resize', relayout);
     clearMarks(root);
