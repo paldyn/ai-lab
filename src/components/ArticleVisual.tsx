@@ -1,4 +1,5 @@
 import type { CSSProperties } from 'react';
+import { isLevelTag } from '../data/articles';
 import { categoryById, displayLevel } from '../data/categories';
 import type { Article } from '../types/article';
 
@@ -20,7 +21,16 @@ export function ArticleVisual({ article, compact = false }: ArticleVisualProps) 
   const category = categoryById[article.categoryId];
   const style = { '--visual-accent': category.accent } as CSSProperties;
   const code = `${category.shortName.slice(0, 1)}-${slugNumber(article.slug)}`;
-  const caption = article.visual || article.tags.slice(0, 2).join(' · ') || category.name;
+  /*
+    캡션에서 난이도 태그를 뺍니다.
+
+    수학 글은 MATH-PLAN의 규칙대로 트랙 이름(초급·중급·고급)을 **첫 태그**로 답니다 —
+    목록에서 같은 트랙끼리 묶어 보는 용도라 태그 자체는 그대로 둡니다. 다만 캡션이
+    앞 두 태그를 이어 붙이는 자리라, 그대로 두면 바로 위 강조 라벨과 겹쳐
+    「중급」 / 「중급 · 벡터」가 됩니다. 캡션이 말할 것은 난이도가 아니라 주제입니다.
+  */
+  const topicTags = article.tags.filter((tag) => !isLevelTag(tag));
+  const caption = article.visual || topicTags.slice(0, 2).join(' · ') || category.name;
 
   return (
     <div className={`article-visual ${compact ? 'article-visual-compact' : ''}`} style={style} aria-hidden="true">

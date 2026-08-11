@@ -1,6 +1,6 @@
 import { articleIndex } from 'virtual:article-index';
-import type { Article, ArticleLevel, CategoryId } from '../types/article';
-import { categoryById } from './categories';
+import type { Article, ArticleLevel, Category, CategoryId, SectionId } from '../types/article';
+import { categoriesIn, categoryById } from './categories';
 import { curriculumOrder } from './curriculum';
 
 const LEVELS: ArticleLevel[] = ['초급', '중급', '고급'];
@@ -50,4 +50,20 @@ export function countByCategory(): Partial<Record<CategoryId, number>> {
     counts[article.categoryId] = (counts[article.categoryId] ?? 0) + 1;
   }
   return counts;
+}
+
+/** 난이도 이름인 태그. 주제 태그와 갈라 쓸 때 씁니다. */
+export const isLevelTag = (tag: string): boolean => (LEVELS as string[]).includes(tag);
+
+/**
+ * 그 섹션에서 **글이 실제로 있는** 카테고리만.
+ *
+ * 리서치의 `paper-notes`·`tools`처럼 계획은 서 있지만 아직 한 편도 없는 칸이
+ * 있습니다. 그대로 두면 눌러도 빈 목록만 나오는 필터 칩이 서고, 머리말의 갈래
+ * 수도 화면이 보여 주지 않는 것을 셉니다. 카테고리 정의는 남겨 두고 화면에서만
+ * 거릅니다 — 첫 글이 나가는 날 저절로 다시 나타납니다.
+ */
+export function sectionCategoriesInUse(section: SectionId): Category[] {
+  const counts = countByCategory();
+  return categoriesIn(section).filter((category) => (counts[category.id] ?? 0) > 0);
 }
