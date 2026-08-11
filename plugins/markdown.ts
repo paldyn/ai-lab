@@ -91,7 +91,7 @@ function shikiPlugin(highlighter: Highlighter) {
 
 /**
  * KaTeX 폰트에서 공백 한 칸의 전진폭. 직접 재서 얻은 값입니다(Main·Math 모두 0.25em).
- * 이 값이 있어야 '몇 em짜리 여백'을 '공백 한 칸의 font-size 몇 em'으로 옮길 수 있습니다.
+ * 여백을 공백 한 칸으로 바꿀 때 모자라거나 남는 만큼을 이 값으로 계산합니다.
  */
 const KATEX_SPACE_ADVANCE_EM = 0.25;
 
@@ -109,8 +109,13 @@ const KATEX_SPACE_ADVANCE_EM = 0.25;
  * - 폭 0 문자에 `letter-spacing`을 주면 틈은 사라지지만 그 여백이 레이아웃에서 빠집니다.
  *
  * 그래서 여백 자체를 **글자**로 바꿉니다. 공백 한 칸의 전진폭이 제 font-size의
- * 0.25배이므로, X em짜리 여백은 `font-size: 4X em`인 공백 한 칸과 폭이 같습니다.
- * 이 비율은 바깥 font-size와 무관해서 `mtight`처럼 작아진 자리에서도 그대로 맞습니다.
+ * 0.25배이므로, X em짜리 여백은 `letter-spacing: (X − 0.25)em`을 준 공백 한 칸과
+ * 폭이 같습니다. X가 0.25보다 작으면 음수가 되는데 그대로 동작합니다.
+ *
+ * **font-size는 절대 건드리지 않습니다.** 한 번 `font-size: 4X em`인 공백으로
+ * 폭을 맞춰 봤는데, 선택 상자의 높이는 그 조각의 폰트 지표를 따르므로 그 공백만
+ * 위아래로 튀어 **선택 영역이 성벽처럼 울퉁불퉁해졌습니다**(높이 종류 2 → 4,
+ * 윗변 편차 3px → 4.5px). `letter-spacing`은 폭만 늘리므로 높이가 그대로입니다.
  *
  * 줄바꿈 없는 공백(U+00A0)을 씁니다. 보통 공백은 HTML에서 접혀 폭이 사라집니다 —
  * 실제로 그렇게 해 보고 270px가 211px로 줄었습니다.
@@ -118,6 +123,11 @@ const KATEX_SPACE_ADVANCE_EM = 0.25;
  * 음수 여백(`-0.1667em`)은 건너뜁니다. 글자로는 흉내 낼 수 없습니다.
  *
  * 복사 결과도 좋아집니다: `2(x+4)+1=2x+9` → `2(x + 4) + 1 = 2x + 9`.
+ *
+ * 남는 것이 하나 있습니다. 선택 상자 높이는 **원래 KaTeX도 두 종류**입니다
+ * (숫자·괄호는 KaTeX_Main, 문자는 KaTeX_Math라 지표가 다릅니다). 그건 여백과
+ * 무관해서 여기서 못 없앱니다 — `line-height`를 바꿔도 그대로입니다. 완전히 평평한
+ * 한 줄로 만들려면 선택 영역 위에 사각형을 직접 그리는 수밖에 없습니다.
  */
 function rehypeSelectableMathSpace() {
   const MARGIN_ONLY = /^margin-right:\s*([0-9.]+)em;?$/;
@@ -136,7 +146,7 @@ function rehypeSelectableMathSpace() {
           const em = match ? Number(match[1]) : NaN;
 
           if (Number.isFinite(em) && em > 0) {
-            props.style = `font-size:${+(em / KATEX_SPACE_ADVANCE_EM).toFixed(4)}em`;
+            props.style = `letter-spacing:${+(em - KATEX_SPACE_ADVANCE_EM).toFixed(4)}em`;
             child.properties = props;
             child.children = [{ type: 'text', value: ' ' }];
             continue;
@@ -197,7 +207,7 @@ const CACHE_DIR = 'node_modules/.cache/paldyn-markdown';
  * 선택 가능하게 바꾸고도 화면이 그대로여서 한 번 헤맸습니다 — 캐시가 예전 결과를
  * 돌려주고 있었습니다.
  */
-const RENDERER_VERSION = '2026-08-11-katex-space';
+const RENDERER_VERSION = '2026-08-11-katex-space-2';
 
 async function renderCached(body: string): Promise<RenderedMarkdown> {
   const key = createHash('sha256').update(RENDERER_VERSION).update(body).digest('hex').slice(0, 32);
