@@ -1,7 +1,8 @@
 import type { CSSProperties } from 'react';
 import { isLevelTag } from '../data/articles';
 import { categoryById, displayLevel } from '../data/categories';
-import type { Article } from '../types/article';
+import { trackPlace } from '../data/curriculum';
+import type { Article, Category } from '../types/article';
 
 interface ArticleVisualProps {
   article: Article;
@@ -17,10 +18,28 @@ function slugNumber(slug: string): string {
   return String(Math.abs(hash) % 100).padStart(2, '0');
 }
 
+/**
+ * 카드 왼쪽 위에 붙는 코드.
+ *
+ * **수학은 진짜 번호를 씁니다.** 커리큘럼이 있는 글은 트랙 안의 번호를 쓰고,
+ * 없는 글만 슬러그 해시를 씁니다. 예전에는 전부 해시였는데, 수학은 본문이
+ * 「16번 · 일차방정식」처럼 번호로 서로를 가리키는 트랙이라 읽는 사람이 그
+ * 숫자를 번호로 읽습니다 — 초급 7번인 피타고라스 정리에 `M-96`이 붙어 있었습니다.
+ *
+ * 트랙이 셋이라 같은 번호가 셋 나올 수 있는데, 카드 아래에 난이도가 함께
+ * 찍히므로(`displayLevel`) 「초급 · M-09」로 읽힙니다.
+ */
+function articleCode(article: Article, category: Category): string {
+  const initial = category.shortName.slice(0, 1);
+  const place = trackPlace(article.slug);
+
+  return `${initial}-${place ? String(place.number).padStart(2, '0') : slugNumber(article.slug)}`;
+}
+
 export function ArticleVisual({ article, compact = false }: ArticleVisualProps) {
   const category = categoryById[article.categoryId];
   const style = { '--visual-accent': category.accent } as CSSProperties;
-  const code = `${category.shortName.slice(0, 1)}-${slugNumber(article.slug)}`;
+  const code = articleCode(article, category);
   /*
     캡션에서 난이도 태그를 뺍니다.
 
