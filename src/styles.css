@@ -2283,6 +2283,23 @@ input:focus-visible {
   font-size: 1.04em;
 }
 
+/*
+  KaTeX는 수식을 두 벌로 냅니다 — 눈에 보이는 HTML과, 화면 낭독기용으로 숨긴
+  MathML입니다. 숨기는 방법이 `position: absolute; height: 1px`이라 **보이지만
+  않을 뿐 선택에는 그대로 잡힙니다.**
+
+  그래서 수식이 든 문단을 끌어 복사하면 수식이 두 번 들어가고 그 사이에 줄바꿈이
+  낍니다. 「함수 ∥⋅∥가」를 복사하면 「함수 \n∥\n⋅\n∥\n∥⋅∥가」가 나옵니다 —
+  붙여 넣으면 띄어쓰기가 어긋난 것처럼 보입니다.
+
+  선택에서만 뺍니다. `user-select`는 접근성 트리를 건드리지 않으므로 낭독기는
+  MathML을 그대로 읽습니다.
+*/
+.article-prose .katex-mathml {
+  user-select: none;
+  -webkit-user-select: none;
+}
+
 /* 블록 수식이 길면 가로로만 스크롤합니다. */
 .article-prose .katex-display {
   margin: 26px 0;
