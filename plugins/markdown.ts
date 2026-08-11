@@ -89,6 +89,67 @@ function shikiPlugin(highlighter: Highlighter) {
   };
 }
 
+/**
+ * KaTeX 폰트에서 공백 한 칸의 전진폭. 직접 재서 얻은 값입니다(Main·Math 모두 0.25em).
+ * 이 값이 있어야 '몇 em짜리 여백'을 '공백 한 칸의 font-size 몇 em'으로 옮길 수 있습니다.
+ */
+const KATEX_SPACE_ADVANCE_EM = 0.25;
+
+/**
+ * 수식의 여백을 드래그로 잡히게 만듭니다.
+ *
+ * KaTeX는 항 사이 간격을 **글자가 없는 빈 `<span class="mspace">`의 `margin-right`**로
+ * 냅니다. `::selection`은 글자의 전진폭만 칠하므로 그 자리는 선택해도 색이 안 들어가고,
+ * 수식을 끌면 주황 블록이 잘게 끊겨 보입니다. 실제로 재 보면 한 수식에서 폭 270px 중
+ * 59px(틈 14개)이 빈 자리였습니다.
+ *
+ * CSS로는 못 막습니다 — 직접 확인한 것들입니다.
+ * - `display: inline-block`, `user-select: all` 둘 다 칠하는 방식을 바꾸지 못합니다.
+ * - margin을 padding으로 옮겨도 **Chrome은 인라인 padding을 선택 색으로 칠하지 않습니다.**
+ * - 폭 0 문자에 `letter-spacing`을 주면 틈은 사라지지만 그 여백이 레이아웃에서 빠집니다.
+ *
+ * 그래서 여백 자체를 **글자**로 바꿉니다. 공백 한 칸의 전진폭이 제 font-size의
+ * 0.25배이므로, X em짜리 여백은 `font-size: 4X em`인 공백 한 칸과 폭이 같습니다.
+ * 이 비율은 바깥 font-size와 무관해서 `mtight`처럼 작아진 자리에서도 그대로 맞습니다.
+ *
+ * 줄바꿈 없는 공백(U+00A0)을 씁니다. 보통 공백은 HTML에서 접혀 폭이 사라집니다 —
+ * 실제로 그렇게 해 보고 270px가 211px로 줄었습니다.
+ *
+ * 음수 여백(`-0.1667em`)은 건너뜁니다. 글자로는 흉내 낼 수 없습니다.
+ *
+ * 복사 결과도 좋아집니다: `2(x+4)+1=2x+9` → `2(x + 4) + 1 = 2x + 9`.
+ */
+function rehypeSelectableMathSpace() {
+  const MARGIN_ONLY = /^margin-right:\s*([0-9.]+)em;?$/;
+
+  return (tree: unknown) => {
+    const walk = (node: Record<string, unknown>) => {
+      const children = node.children as Array<Record<string, unknown>> | undefined;
+      if (!children) return;
+
+      for (const child of children) {
+        if (child.type === 'element' && child.tagName === 'span') {
+          const props = (child.properties ?? {}) as Record<string, unknown>;
+          const classes = props.className;
+          const isSpace = Array.isArray(classes) && classes.includes('mspace');
+          const match = isSpace ? MARGIN_ONLY.exec(String(props.style ?? '').trim()) : null;
+          const em = match ? Number(match[1]) : NaN;
+
+          if (Number.isFinite(em) && em > 0) {
+            props.style = `font-size:${+(em / KATEX_SPACE_ADVANCE_EM).toFixed(4)}em`;
+            child.properties = props;
+            child.children = [{ type: 'text', value: ' ' }];
+            continue;
+          }
+        }
+        walk(child);
+      }
+    };
+
+    walk(tree as Record<string, unknown>);
+  };
+}
+
 export interface RenderedMarkdown {
   html: string;
   headings: MarkdownHeading[];
@@ -112,6 +173,7 @@ export async function renderMarkdown(body: string): Promise<RenderedMarkdown> {
     .use(remarkRehype, { allowDangerousHtml: true })
     .use(rehypeSlug)
     .use(rehypeKatex)
+    .use(rehypeSelectableMathSpace)
     .use(rehypeStringify, { allowDangerousHtml: true })
     .process(body);
 
@@ -128,8 +190,17 @@ export async function renderMarkdown(body: string): Promise<RenderedMarkdown> {
  */
 const CACHE_DIR = 'node_modules/.cache/paldyn-markdown';
 
+/**
+ * 캐시 키에 함께 넣는 렌더러 판. **파이프라인을 고치면 이 값을 올립니다.**
+ *
+ * 본문 해시만 키로 쓰면 원고가 안 바뀐 글은 옛 HTML이 그대로 나옵니다. 수식 여백을
+ * 선택 가능하게 바꾸고도 화면이 그대로여서 한 번 헤맸습니다 — 캐시가 예전 결과를
+ * 돌려주고 있었습니다.
+ */
+const RENDERER_VERSION = '2026-08-11-katex-space';
+
 async function renderCached(body: string): Promise<RenderedMarkdown> {
-  const key = createHash('sha256').update(body).digest('hex').slice(0, 32);
+  const key = createHash('sha256').update(RENDERER_VERSION).update(body).digest('hex').slice(0, 32);
   const file = path.join(CACHE_DIR, `${key}.json`);
 
   try {
