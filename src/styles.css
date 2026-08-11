@@ -1805,7 +1805,7 @@ input:focus-visible {
 }
 
 .article-visual-compact {
-  min-height: 94px;
+  min-height: 104px;
   aspect-ratio: 16 / 9;
   padding: 12px;
 }
@@ -1828,8 +1828,27 @@ input:focus-visible {
   overflow-wrap: anywhere;
 }
 
+/*
+  **작은 썸네일은 높이가 고정이고 `overflow: hidden`이라 조금만 넘쳐도 말없이 잘립니다.**
+
+  목록 행의 상자는 170×104입니다. 여기에 번호·분야·난이도·캡션 넷이 들어가는데,
+  캡션만 줄 수가 정해져 있지 않아 긴 것이 들어오면 아래가 통째로 밀려 나갑니다.
+  두 줄로 못을 박아 상한을 정합니다 — 최악이 15+15+4+29 = 63px이라 80px 안에 듭니다.
+
+  9px이었습니다. 태블릿·PC 목록에서는 그럭저럭 읽혔지만 640px 아래에서는 상자가
+  335px로 넓어지는데 글자만 그대로라 허공에 뜬 것처럼 보입니다. 상자 크기를 따라
+  키웁니다.
+*/
 .article-visual-compact .visual-formula {
-  font-size: 9px;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  font-size: 10px;
+  line-height: 1.45;
+}
+
+.article-visual-compact .visual-level {
+  margin-bottom: 4px;
 }
 
 /*
@@ -4079,8 +4098,16 @@ input:focus-visible {
     min-height: 180px;
   }
 
+  /*
+    좁은 화면에서는 목록 행이 한 줄로 서서 작은 썸네일이 335px까지 넓어집니다.
+    상자만 커지고 글자는 10px 그대로면 큰 판에 글자 몇 개가 떠 있는 꼴이 됩니다.
+  */
   .article-visual-compact {
     min-height: 150px;
+  }
+
+  .article-visual-compact .visual-formula {
+    font-size: 12px;
   }
 
   .filter-label {
