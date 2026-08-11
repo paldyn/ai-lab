@@ -2284,48 +2284,54 @@ input:focus-visible {
 }
 
 /*
-  수식과 인라인 코드는 본문과 글꼴이 달라 선택 상자의 높이·위치가 어긋납니다.
-  한 줄을 끌면 그 자리만 위아래로 튀어나오므로, 이 조각들 안에서는 브라우저가
-  칠하는 색을 끄고 src/lib/inlineSelection.ts가 옆 글자와 같은 띠를 그립니다.
-  왜 CSS로는 안 되는지는 그 파일에 적어 두었습니다.
+  ---- 선택 영역 ----
 
-  `isolation`으로 쌓임 맥락을 만들어 두면 `z-index: -1`이 이 안에서만 해석되므로,
-  바깥 어디에 배경색이 있든 띠가 글자 밑·배경 위에 정확히 들어갑니다.
+  본문에서는 브라우저의 선택 칠을 모두 끄고 src/lib/selectionRibbon.ts가 줄마다
+  띠를 직접 그립니다. 수식과 코드 칩은 본문과 글꼴이 달라 선택 상자의 크기·자리가
+  어긋나는데, 조각만 따로 그려서는 옆 글자가 받는 칠에 높이를 맞출 수가 없습니다 —
+  브라우저가 칠하는 것은 줄 상자이고, 줄 상자는 그 줄에 놓인 모든 인라인 상자의
+  지표가 함께 정하기 때문입니다(코드 칩의 mono 폰트 descent가 본문보다 깊습니다).
+  줄 전체를 우리가 그리면 맞출 대상이 없어집니다. 자세한 사연은 그 파일에 있습니다.
+
+  표시(`data-selection-ribbon`)는 스크립트가 붙입니다. 프리렌더된 HTML만 떠 있는
+  동안에는 브라우저 기본 칠이 그대로 보입니다.
 */
-.article-prose .katex,
-.article-prose :not(pre) > code {
-  position: relative;
-  isolation: isolate;
+.article-prose[data-selection-ribbon] ::selection,
+.article-prose[data-selection-ribbon]::selection {
+  background: transparent;
+}
+
+/* 코드 블록은 한 벌의 글꼴로만 그려져 어긋날 일이 없습니다. 브라우저에 맡깁니다. */
+.article-prose[data-selection-ribbon] pre ::selection,
+.article-prose[data-selection-ribbon] pre::selection {
+  background: var(--brand);
 }
 
 /*
-  표시(`data-inline-selection`)는 스크립트가 붙입니다. 프리렌더된 HTML만 떠 있는
-  동안에는 브라우저 기본 칠이 그대로 보입니다 — 최악이 '예전처럼 튀어나온다'입니다.
+  일부만 잡힌 코드 칩도 브라우저에 맡깁니다. 칩의 배경을 지우지 않으므로 띠가
+  가려지는데, 드래그가 칩 한가운데를 지나는 짧은 순간뿐이고 색이 아예 없는
+  것보다 낫습니다.
 */
-.article-prose[data-inline-selection] .katex ::selection,
-.article-prose[data-inline-selection] :not(pre) > code::selection,
-.article-prose[data-inline-selection] :not(pre) > code ::selection {
-  background: transparent;
+.article-prose[data-selection-ribbon] :not(pre) > code:not([data-selection-melted])::selection,
+.article-prose[data-selection-ribbon] :not(pre) > code:not([data-selection-melted]) ::selection {
+  background: var(--brand);
 }
 
 /*
   통째로 잡힌 코드 칩은 배경과 테두리를 지워 띠에 녹입니다. 칩은 좌우 6px 여백과
-  테두리를 두른 상자라 글자 폭만 칠하면 그 자리가 어두운 테두리로 남아 띠가
-  끊겨 보입니다. 자리는 그대로 두고 색만 지우므로 글이 밀리지 않습니다.
+  테두리를 두른 상자라 그러지 않으면 그 자리가 어두운 테두리로 남습니다.
+  자리는 그대로 두고 색만 지우므로 글이 밀리지 않습니다.
 */
 .article-prose :not(pre) > code[data-selection-melted] {
   border-color: transparent;
   background: transparent;
 }
 
-.inline-selection {
-  position: absolute;
-  z-index: -1;
-  pointer-events: none;
-  user-select: none;
-  -webkit-user-select: none;
-  background: var(--brand);
-}
+/*
+  띠는 그릇의 배경 그림으로 그립니다 — 요소를 만들어 얹지 않습니다. 배경 그림은
+  배경색 위, 글자 아래에 깔리므로 자리가 정확하고, 상자가 하나도 안 늘어나
+  글 전체를 잡아도 한 프레임 안에 끝납니다. 값은 selectionRibbon.ts가 넣습니다.
+*/
 
 /*
   KaTeX는 수식을 두 벌로 냅니다 — 눈에 보이는 HTML과, 화면 낭독기용으로 숨긴
