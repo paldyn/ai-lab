@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="480" viewBox="0 0 880 480" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <rect width="880" height="480" rx="12" fill="#0a0a0a"/>
+  <defs>
+    <marker id="peArr" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#888"/>
+    </marker>
+  </defs>
+
+  <text x="60" y="56" font-size="22" font-weight="700" fill="#e8e8e8">같은 식을 두 방향으로 계산해 본다</text>
+  <text x="60" y="82" font-size="13" fill="#888">지수법칙이 계속 성립하려면 오른쪽 값이 왼쪽 값과 같을 수밖에 없다</text>
+
+  <text x="60" y="132" font-size="16" font-weight="600" fill="#e8e8e8">첫째 — a³ ÷ a³</text>
+
+  <rect x="60" y="152" width="330" height="86" rx="6" fill="#101010" stroke="#333" stroke-width="1"/>
+  <text x="84" y="178" font-size="13" fill="#888">약분해서 세면</text>
+  <text x="84" y="206" font-size="17" fill="#7ec8e3">(a·a·a) ÷ (a·a·a)</text>
+  <text x="84" y="228" font-size="17" font-weight="700" fill="#55c555">= 1</text>
+
+  <line x1="400" y1="195" x2="480" y2="195" stroke="#888" stroke-width="2" marker-end="url(#peArr)"/>
+  <line x1="480" y1="195" x2="400" y2="195" stroke="#888" stroke-width="2" marker-end="url(#peArr)"/>
+  <text x="440" y="176" font-size="14" fill="#e8e8e8" text-anchor="middle">같다</text>
+
+  <rect x="490" y="152" width="330" height="86" rx="6" fill="#101010" stroke="#333" stroke-width="1"/>
+  <text x="514" y="178" font-size="13" fill="#888">지수를 빼면</text>
+  <text x="514" y="206" font-size="17" fill="#7ec8e3">a³⁻³</text>
+  <text x="514" y="228" font-size="17" font-weight="700" fill="#7777cc">= a⁰</text>
+
+  <text x="60" y="292" font-size="16" font-weight="600" fill="#e8e8e8">둘째 — a³ ÷ a⁵</text>
+
+  <rect x="60" y="312" width="330" height="86" rx="6" fill="#101010" stroke="#333" stroke-width="1"/>
+  <text x="84" y="338" font-size="13" fill="#888">약분해서 세면</text>
+  <text x="84" y="366" font-size="17" fill="#7ec8e3">(a·a·a) ÷ (a·a·a·a·a)</text>
+  <text x="84" y="388" font-size="17" font-weight="700" fill="#55c555">= 1 / a²</text>
+
+  <line x1="400" y1="355" x2="480" y2="355" stroke="#888" stroke-width="2" marker-end="url(#peArr)"/>
+  <line x1="480" y1="355" x2="400" y2="355" stroke="#888" stroke-width="2" marker-end="url(#peArr)"/>
+  <text x="440" y="336" font-size="14" fill="#e8e8e8" text-anchor="middle">같다</text>
+
+  <rect x="490" y="312" width="330" height="86" rx="6" fill="#101010" stroke="#333" stroke-width="1"/>
+  <text x="514" y="338" font-size="13" fill="#888">지수를 빼면</text>
+  <text x="514" y="366" font-size="17" fill="#7ec8e3">a³⁻⁵</text>
+  <text x="514" y="388" font-size="17" font-weight="700" fill="#7777cc">= a⁻²</text>
+
+  <rect x="60" y="414" width="760" height="46" rx="6" fill="#101010" stroke="#333" stroke-width="1"/>
+  <text x="84" y="442" font-size="14" font-weight="600" fill="#e8e8e8">그래서 a⁰ = 1 이고 a⁻² = 1/a² 이다 — 외울 약속이 아니라 두 계산이 맞아떨어져야 해서 나온 값이다</text>
+</svg>

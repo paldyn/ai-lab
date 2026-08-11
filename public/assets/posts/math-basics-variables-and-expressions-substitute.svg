@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="410" viewBox="0 0 880 410" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <rect width="880" height="410" rx="12" fill="#0a0a0a"/>
+  <defs>
+    <marker id="sbArr" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#888"/>
+    </marker>
+  </defs>
+
+  <text x="60" y="56" font-size="22" font-weight="700" fill="#e8e8e8">음수를 넣을 때는 괄호가 필수다</text>
+  <text x="60" y="82" font-size="13" fill="#888">x² 에 x = −3 을 넣는 같은 작업인데 괄호 하나로 답의 부호가 뒤집힌다</text>
+
+  <rect x="60" y="126" width="360" height="180" rx="6" fill="#101010" stroke="#55c555" stroke-width="1.5"/>
+  <text x="240" y="158" font-size="16" font-weight="600" fill="#55c555" text-anchor="middle">괄호를 쳤을 때</text>
+  <text x="240" y="200" font-size="20" fill="#ffffff" text-anchor="middle">x²  에  x = −3</text>
+  <line x1="240" y1="216" x2="240" y2="242" stroke="#888" stroke-width="2" marker-end="url(#sbArr)"/>
+  <text x="240" y="270" font-size="22" fill="#e8e8e8" text-anchor="middle">(−3)²</text>
+  <text x="240" y="296" font-size="22" font-weight="700" fill="#55c555" text-anchor="middle">= 9</text>
+
+  <rect x="460" y="126" width="360" height="180" rx="6" fill="#101010" stroke="#e05555" stroke-width="1.5"/>
+  <text x="640" y="158" font-size="16" font-weight="600" fill="#e05555" text-anchor="middle">괄호를 빠뜨렸을 때</text>
+  <text x="640" y="200" font-size="20" fill="#ffffff" text-anchor="middle">x²  에  x = −3</text>
+  <line x1="640" y1="216" x2="640" y2="242" stroke="#888" stroke-width="2" marker-end="url(#sbArr)"/>
+  <text x="640" y="270" font-size="22" fill="#e8e8e8" text-anchor="middle">−3²</text>
+  <text x="640" y="296" font-size="22" font-weight="700" fill="#e05555" text-anchor="middle">= −9</text>
+
+  <rect x="60" y="330" width="760" height="56" rx="6" fill="#101010" stroke="#333" stroke-width="1"/>
+  <text x="84" y="354" font-size="13" font-weight="600" fill="#e8e8e8">−3² 은 3 을 먼저 제곱하고 부호를 붙인 것이라 −9 다</text>
+  <text x="84" y="374" font-size="13" fill="#888">넣는 값이 음수이면 그 값 전체가 한 덩어리이므로 괄호로 묶어 두고 시작한다</text>
+</svg>

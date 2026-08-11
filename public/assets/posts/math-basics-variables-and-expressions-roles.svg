@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="450" viewBox="0 0 880 450" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <rect width="880" height="450" rx="12" fill="#0a0a0a"/>
+  <defs>
+    <marker id="vrArr" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#7777cc"/>
+    </marker>
+  </defs>
+
+  <text x="60" y="56" font-size="22" font-weight="700" fill="#e8e8e8">같은 글자라도 하는 일이 다르다</text>
+  <text x="60" y="82" font-size="13" fill="#888">글자가 무엇을 대신하는지는 식 안의 자리가 알려 준다</text>
+
+  <rect x="60" y="116" width="760" height="88" rx="6" fill="#101010" stroke="#333" stroke-width="1"/>
+  <text x="88" y="152" font-size="13" fill="#888">값이 변하면서 서로 따라 움직인다</text>
+  <text x="88" y="188" font-size="26" font-weight="700" fill="#e8e8e8">y = 3x + 5</text>
+
+  <text x="300" y="152" font-size="13" fill="#7777cc">3 은 x 에 붙은 계수</text>
+  <text x="300" y="188" font-size="13" fill="#7777cc">5 는 변하지 않는 상수</text>
+  <text x="580" y="152" font-size="13" fill="#7ec8e3">x 와 y 는 변수</text>
+  <text x="580" y="188" font-size="13" fill="#888">x 를 정하면 y 가 따라 정해진다</text>
+
+  <rect x="60" y="228" width="760" height="88" rx="6" fill="#101010" stroke="#333" stroke-width="1"/>
+  <text x="88" y="264" font-size="13" fill="#888">아직 모르는 값 하나를 찾는 중이다</text>
+  <text x="88" y="300" font-size="26" font-weight="700" fill="#e8e8e8">2x + 1 = 7</text>
+
+  <text x="300" y="264" font-size="13" fill="#e05555">x 는 미지수</text>
+  <text x="300" y="300" font-size="13" fill="#888">참이 되게 하는 값이 정해져 있고 그것을 찾는다</text>
+
+  <line x1="440" y1="320" x2="440" y2="384" stroke="#7777cc" stroke-width="2" marker-end="url(#vrArr)"/>
+
+  <rect x="60" y="384" width="760" height="46" rx="6" fill="#101010" stroke="#333" stroke-width="1"/>
+  <text x="88" y="412" font-size="14" font-weight="600" fill="#e8e8e8">셋 다 같은 x 지만 하는 일이 다르다 — 변수는 움직이고, 미지수는 찾는 대상이고, 상수는 가만히 있다</text>
+</svg>

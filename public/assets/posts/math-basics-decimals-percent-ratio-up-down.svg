@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="420" viewBox="0 0 880 420" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <rect width="880" height="420" rx="12" fill="#0a0a0a"/>
+  <defs>
+    <marker id="pctArr" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#888"/>
+    </marker>
+  </defs>
+
+  <text x="60" y="56" font-size="22" font-weight="700" fill="#e8e8e8">20% 올랐다가 20% 내리면 제자리가 아니다</text>
+  <text x="60" y="82" font-size="13" fill="#888">두 번째 20% 는 더 큰 값의 20% 라서 내려가는 폭이 더 크다</text>
+
+  <rect x="60" y="180" width="180" height="100" rx="6" fill="#101010" stroke="#333" stroke-width="1.5"/>
+  <text x="150" y="216" font-size="13" fill="#888" text-anchor="middle">처음</text>
+  <text x="150" y="252" font-size="26" font-weight="700" fill="#e8e8e8" text-anchor="middle">100</text>
+
+  <line x1="240" y1="230" x2="350" y2="230" stroke="#888" stroke-width="2" marker-end="url(#pctArr)"/>
+  <text x="295" y="212" font-size="13" fill="#55c555" text-anchor="middle">+20%</text>
+  <text x="295" y="256" font-size="12" fill="#888" text-anchor="middle">× 1.2</text>
+
+  <rect x="350" y="180" width="180" height="100" rx="6" fill="#101010" stroke="#333" stroke-width="1.5"/>
+  <text x="440" y="216" font-size="13" fill="#888" text-anchor="middle">오른 뒤</text>
+  <text x="440" y="252" font-size="26" font-weight="700" fill="#55c555" text-anchor="middle">120</text>
+
+  <line x1="530" y1="230" x2="640" y2="230" stroke="#888" stroke-width="2" marker-end="url(#pctArr)"/>
+  <text x="585" y="212" font-size="13" fill="#e05555" text-anchor="middle">−20%</text>
+  <text x="585" y="256" font-size="12" fill="#888" text-anchor="middle">× 0.8</text>
+
+  <rect x="640" y="180" width="180" height="100" rx="6" fill="#101010" stroke="#333" stroke-width="1.5"/>
+  <text x="730" y="216" font-size="13" fill="#888" text-anchor="middle">내린 뒤</text>
+  <text x="730" y="252" font-size="26" font-weight="700" fill="#e05555" text-anchor="middle">96</text>
+
+  <text x="295" y="322" font-size="13" fill="#888" text-anchor="middle">올린 폭 20</text>
+  <text x="585" y="322" font-size="13" fill="#888" text-anchor="middle">내린 폭 24</text>
+
+  <rect x="60" y="346" width="760" height="56" rx="6" fill="#101010" stroke="#333" stroke-width="1"/>
+  <text x="84" y="370" font-size="13" font-weight="600" fill="#e8e8e8">퍼센트 변화는 더하지 않고 곱한다 — 1.2 × 0.8 = 0.96</text>
+  <text x="84" y="390" font-size="13" fill="#888">+20% 와 −20% 를 더해 0 이라고 보면 4% 를 놓친다. 기준이 매번 바뀌기 때문이다</text>
+</svg>

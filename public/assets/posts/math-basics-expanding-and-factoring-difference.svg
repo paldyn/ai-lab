@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="520" viewBox="0 0 880 520" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <rect width="880" height="520" rx="12" fill="#0a0a0a"/>
+  <defs>
+    <marker id="dfArr" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#888"/>
+    </marker>
+  </defs>
+
+  <text x="60" y="56" font-size="22" font-weight="700" fill="#e8e8e8">a² − b² 를 잘라 붙이면 직사각형이 된다</text>
+  <text x="60" y="82" font-size="13" fill="#888">큰 정사각형에서 작은 정사각형을 도려내고 남은 ㄱ자를 한 번 잘라 옮긴다</text>
+
+  <text x="90" y="128" font-size="14" font-weight="600" fill="#e8e8e8">도려낸 뒤</text>
+
+  <path d="M 90 150 L 350 150 L 350 310 L 250 310 L 250 410 L 90 410 Z" fill="#7ec8e3" fill-opacity="0.18" stroke="#666" stroke-width="1.5"/>
+  <rect x="250" y="310" width="100" height="100" fill="none" stroke="#e05555" stroke-width="1.5" stroke-dasharray="5,3"/>
+  <text x="300" y="366" font-size="15" fill="#e05555" text-anchor="middle">b²</text>
+
+  <text x="220" y="140" font-size="13" fill="#888" text-anchor="middle">a</text>
+  <text x="72" y="286" font-size="13" fill="#888" text-anchor="end">a</text>
+  <text x="170" y="440" font-size="15" fill="#7ec8e3" text-anchor="middle">넓이 = a² − b²</text>
+
+  <line x1="90" y1="310" x2="350" y2="310" stroke="#7777cc" stroke-width="2" stroke-dasharray="4,4"/>
+  <text x="170" y="298" font-size="12" fill="#9aa4cc" text-anchor="middle">여기서 자른다</text>
+
+  <line x1="380" y1="280" x2="450" y2="280" stroke="#888" stroke-width="2" marker-end="url(#dfArr)"/>
+  <text x="415" y="262" font-size="13" fill="#888" text-anchor="middle">옮겨 붙이면</text>
+
+  <text x="540" y="128" font-size="14" font-weight="600" fill="#e8e8e8">붙인 뒤</text>
+
+  <rect x="540" y="200" width="300" height="160" fill="#7ec8e3" fill-opacity="0.18" stroke="#666" stroke-width="1.5"/>
+  <line x1="765" y1="200" x2="765" y2="360" stroke="#7777cc" stroke-width="2" stroke-dasharray="4,4"/>
+
+  <text x="690" y="190" font-size="13" fill="#888" text-anchor="middle">a + b</text>
+  <text x="528" y="286" font-size="13" fill="#888" text-anchor="end">a − b</text>
+  <text x="690" y="290" font-size="15" fill="#7ec8e3" text-anchor="middle">넓이 = (a+b)(a−b)</text>
+
+  <rect x="60" y="452" width="760" height="46" rx="6" fill="#101010" stroke="#333" stroke-width="1"/>
+  <text x="84" y="480" font-size="14" font-weight="600" fill="#e8e8e8">같은 넓이를 두 가지로 적은 것이므로 a² − b² = (a+b)(a−b) 다</text>
+</svg>
