@@ -8,6 +8,8 @@ import {
   mathFoundation,
   mathSupport,
   mathWritingOrder,
+  trackNeighbours,
+  trackPlace,
 } from './curriculum';
 
 const TRACKS = [
@@ -164,5 +166,49 @@ describe('수학 커리큘럼', () => {
         mainTrack: [],
       });
     });
+  });
+});
+
+describe('트랙 번호', () => {
+  it('트랙 안의 자리를 1부터 센다', () => {
+    expect(trackPlace(mathFoundation[0])).toEqual({ level: '초급', number: 1, total: 48 });
+    expect(trackPlace(mathCurriculum[0])).toEqual({ level: '중급', number: 1, total: 80 });
+    expect(trackPlace(mathAdvanced[62])).toEqual({ level: '고급', number: 63, total: 63 });
+  });
+
+  it('카드에 붙던 해시가 아니라 진짜 번호를 준다', () => {
+    // 초급 7번인데 슬러그 해시로는 96이 나와 M-96으로 찍히고 있었다.
+    expect(trackPlace('math-basics-pythagorean-theorem')?.number).toBe(7);
+  });
+
+  it('중급 번호는 mainTrackNumber와 같은 값을 준다', () => {
+    for (const slug of mathCurriculum) {
+      expect(trackPlace(slug)?.number, slug).toBe(mainTrackNumber(slug));
+    }
+  });
+
+  it('수학이 아니면 자리가 없다', () => {
+    expect(trackPlace('transformer-attention-from-first-principles')).toBeUndefined();
+    expect(trackNeighbours('transformer-attention-from-first-principles')).toEqual({});
+  });
+});
+
+describe('앞뒤 편', () => {
+  it('같은 트랙의 바로 앞과 뒤를 준다', () => {
+    expect(trackNeighbours(mathFoundation[4])).toEqual({
+      previous: mathFoundation[3],
+      next: mathFoundation[5],
+    });
+  });
+
+  it('트랙의 끝은 한쪽이 비어 있다', () => {
+    expect(trackNeighbours(mathFoundation[0]).previous).toBeUndefined();
+    expect(trackNeighbours(mathFoundation[0]).next).toBe(mathFoundation[1]);
+    expect(trackNeighbours(mathAdvanced[62]).next).toBeUndefined();
+  });
+
+  it('트랙을 넘어가지 않는다 — 초급 마지막의 다음은 중급 1번이 아니다', () => {
+    expect(trackNeighbours(mathFoundation[47]).next).toBeUndefined();
+    expect(trackNeighbours(mathCurriculum[0]).previous).toBeUndefined();
   });
 });

@@ -432,6 +432,55 @@ export const mathSupport: Record<string, number[]> = {
   'math-adv-social-choice-and-preference-aggregation': [55, 78],
 };
 
+/**
+ * 트랙 셋을 한 자리에 모아 둡니다. 순서는 읽는 순서이자 번호 순서입니다 —
+ * 배열의 자리가 곧 「초급 9번」의 9입니다.
+ */
+const TRACKS = [
+  { level: '초급', slugs: mathFoundation },
+  { level: '중급', slugs: mathCurriculum },
+  { level: '고급', slugs: mathAdvanced },
+] as const;
+
+export interface TrackPlace {
+  level: (typeof TRACKS)[number]['level'];
+  /** 트랙 안의 번호. 1부터 셉니다. */
+  number: number;
+  /** 그 트랙의 총 편수. 「9 / 48」처럼 쓰려고 함께 냅니다. */
+  total: number;
+}
+
+/**
+ * 이 글이 트랙의 몇 번인가. 수학이 아니면 undefined입니다.
+ *
+ * 카드에 붙는 번호가 이것입니다. 예전에는 슬러그 해시를 100으로 나눈 나머지를
+ * 썼는데, 수학은 「16번 · 일차방정식」처럼 **본문이 번호로 서로를 가리키는**
+ * 트랙이라 읽는 사람이 그 숫자를 번호로 읽습니다. 초급 7번인 피타고라스 정리에
+ * `M-96`이 붙어 있었습니다.
+ */
+export function trackPlace(slug: string): TrackPlace | undefined {
+  for (const track of TRACKS) {
+    const index = track.slugs.indexOf(slug);
+    if (index !== -1) return { level: track.level, number: index + 1, total: track.slugs.length };
+  }
+  return undefined;
+}
+
+/**
+ * 같은 트랙에서 바로 앞·뒤 편. 트랙의 끝이면 그쪽은 undefined입니다.
+ *
+ * **슬러그만 주고 실재 여부는 보지 않습니다** — 아직 `.md`가 없는 글을 거르는 것은
+ * 부르는 쪽의 몫입니다. `curriculumLinks`와 같은 약속입니다.
+ */
+export function trackNeighbours(slug: string): { previous?: string; next?: string } {
+  for (const track of TRACKS) {
+    const index = track.slugs.indexOf(slug);
+    if (index === -1) continue;
+    return { previous: track.slugs[index - 1], next: track.slugs[index + 1] };
+  }
+  return {};
+}
+
 /** 중급 번호(1부터)를 슬러그로. 범위 밖이면 undefined입니다. */
 export function mainTrackSlugAt(number: number): string | undefined {
   return mathCurriculum[number - 1];
