@@ -6,7 +6,7 @@ import { ArticleVisual } from '../components/ArticleVisual';
 import { Seo } from '../components/Seo';
 import { articles, getArticleBySlug } from '../data/articles';
 import { categoryById, displayLevel } from '../data/categories';
-import { curriculumLinks, mainTrackNumber, trackNeighbours } from '../data/curriculum';
+import { curriculumLinks, mainTrackNumber, trackAround } from '../data/curriculum';
 import { initialArticleBody, loadArticleBody } from '../lib/articleBody';
 import { watchAnswerToggle } from '../lib/answerToggle';
 import { watchSelectionRibbon } from '../lib/selectionRibbon';
@@ -197,13 +197,14 @@ const RELATED_LIMIT = 3;
 /**
  * 「이어 읽기」에 세울 세 편.
  *
- * **수학은 다음 편과 지난 편이 먼저입니다.** 순서가 정해진 트랙이라 9번을 읽은
- * 사람이 다음에 볼 것은 10번이지 최신 글이 아닙니다. 예전에는 「같은 카테고리이거나
- * 태그가 겹치는 글」을 발행일 순으로 세 편 잘라 썼는데, 수학은 태그에 난이도가
- * 들어 있어(`초급`·`중급`·`고급`) **카테고리가 달라도 난이도만 같으면 후보**가
- * 되는 데다 결국 최신 세 편이 나왔습니다.
+ * **수학은 다음 편부터 차례로 세웁니다.** 순서가 정해진 트랙이라 7번을 읽은 사람이
+ * 다음에 볼 것은 8·9·10번입니다. 예전에는 「같은 카테고리이거나 태그가 겹치는 글」을
+ * 발행일 순으로 세 편 잘라 썼는데, 수학은 태그에 난이도가 들어 있어(`초급`·`중급`·
+ * `고급`) **카테고리가 달라도 난이도만 같으면 후보**가 되는 데다 결국 최신 세 편이
+ * 나왔습니다.
  *
- * 그 뒤를 예전 규칙으로 채웁니다. 수학이 아닌 글은 앞자리가 비므로 예전과 같습니다.
+ * 트랙 끝이라 다음 편이 모자라면 지난 편으로 거슬러 채우고, 그래도 모자라면 예전
+ * 규칙으로 채웁니다. 수학이 아닌 글은 앞 두 갈래가 비므로 예전과 같습니다.
  * 아직 쓰지 않은 편은 `getArticleBySlug`가 걸러 냅니다.
  */
 function relatedTo(article: Article): Article[] {
@@ -216,9 +217,8 @@ function relatedTo(article: Article): Article[] {
     picked.push(candidate);
   };
 
-  const { next, previous } = trackNeighbours(article.slug);
-  add(next ? getArticleBySlug(next) : undefined);
-  add(previous ? getArticleBySlug(previous) : undefined);
+  const { after, before } = trackAround(article.slug);
+  for (const slug of [...after, ...before]) add(getArticleBySlug(slug));
 
   for (const candidate of articles) {
     if (picked.length >= RELATED_LIMIT) break;
