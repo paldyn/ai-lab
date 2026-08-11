@@ -172,6 +172,21 @@ export const globalNewsUpdatedAt = '2026-08-11';
  */
 const entries: NewsItem[] = [
   {
+    id: 'amie-video-consultations',
+    source: 'Google DeepMind',
+    kind: 'company',
+    title: 'Google, 의료 AI AMIE의 실시간 화상 진료 연구 공개',
+    summary:
+      'Google Research와 Google DeepMind가 의료 AI 연구 시스템 AMIE를 실시간 화상 ' +
+      '진료로 확장한 연구를 공개했다. Gemini와 Project Astra 위에 멀티 에이전트 ' +
+      '구조로 만들었고, 환자 역할 배우를 쓴 무작위 비교 연구에서 1차 진료의와 견줬다.',
+    publishedAt: '2026-08-11',
+    collectedAt: '2026-08-12',
+    category: 'Research',
+    signal: '의료 AI',
+    url: 'https://blog.google/innovation-and-ai/models-and-research/google-research/amie-video-consultations/',
+  },
+  {
     id: 'expanding-daybreak-as-the-cyber-defense-window-narrows',
     source: 'OpenAI',
     kind: 'model',
@@ -238,6 +253,21 @@ const entries: NewsItem[] = [
     category: 'Product',
     signal: '기업 요금제',
     url: 'https://openai.com/index/premium-seats-chatgpt-business',
+  },
+  {
+    id: 'improving-fable-5-s-biology-safeguards',
+    source: 'Anthropic',
+    kind: 'company',
+    title: 'Anthropic, Claude Fable 5의 생물학 안전장치 조정',
+    summary:
+      '앤트로픽이 Claude Fable 5의 생물학 분류기를 다시 써 오탐을 줄였다. 자체 시험에서 ' +
+      '생물학 관련 폴백이 제품 전반에 걸쳐 약 85% 줄었고, 바이러스학·독성학·분자 설계 ' +
+      '같은 이중 용도 요청은 계속 Opus 5로 넘긴다.',
+    publishedAt: '2026-08-07',
+    collectedAt: '2026-08-12',
+    category: 'Safety',
+    signal: '생물 안전장치',
+    url: 'https://www.anthropic.com/news/improving-fable-5-s-biology-safeguards',
   },
   {
     id: 'responding-next-frontier-critical-cyber-capabilities',
