@@ -8,6 +8,7 @@ import { articles, getArticleBySlug } from '../data/articles';
 import { categoryById, displayLevel } from '../data/categories';
 import { curriculumLinks, mainTrackNumber } from '../data/curriculum';
 import { initialArticleBody, loadArticleBody } from '../lib/articleBody';
+import { watchAnswerToggle } from '../lib/answerToggle';
 import { watchSelectionRibbon } from '../lib/selectionRibbon';
 import type { Article, ArticleBody } from '../types/article';
 
@@ -306,6 +307,12 @@ function ArticleView({ article }: { article: Article }) {
   useEffect(() => {
     if (!proseRef.current) return undefined;
     return watchSelectionRibbon(proseRef.current);
+  }, [body]);
+
+  // 연습 문제의 답은 「답」 칩을 눌러야만 펼쳐집니다 — lib/answerToggle.ts를 보세요.
+  useEffect(() => {
+    if (!proseRef.current) return undefined;
+    return watchAnswerToggle(proseRef.current);
   }, [body]);
 
   return (

@@ -2186,9 +2186,11 @@ input:focus-visible {
 /*
   summary는 보통 흐름 그대로 둡니다. flex로 만들면 문제 줄의 글자와 수식이
   각각 flex 항목이 되어 「직사각형의 / 둘레를 / p 라 할 / 때,」처럼 조각납니다.
+
+  손가락 모양도 칩에만 줍니다. 눌리는 자리가 칩뿐이기 때문입니다
+  (src/lib/answerToggle.ts). 줄 위에서는 글자를 짚는 커서 그대로 둡니다.
 */
 .article-prose details.answer > summary {
-  cursor: pointer;
   list-style: none;
 }
 
@@ -2204,6 +2206,7 @@ input:focus-visible {
 */
 .article-prose .answer-chip {
   display: inline-block;
+  cursor: pointer;
   margin-left: 8px;
   border: 1px solid var(--border);
   border-radius: 3px;
