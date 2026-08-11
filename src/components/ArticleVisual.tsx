@@ -9,33 +9,31 @@ interface ArticleVisualProps {
   compact?: boolean;
 }
 
-/** slug에서 안정적인 번호를 뽑습니다. 같은 글은 언제나 같은 코드가 나옵니다. */
-function slugNumber(slug: string): string {
-  let hash = 0;
-  for (let i = 0; i < slug.length; i += 1) {
-    hash = (hash * 31 + slug.charCodeAt(i)) | 0;
-  }
-  return String(Math.abs(hash) % 100).padStart(2, '0');
-}
-
 /**
- * 카드 왼쪽 위에 붙는 코드.
+ * 카드 왼쪽 위에 붙는 코드. **진짜 번호가 있는 글에만 붙습니다.**
  *
- * **수학은 진짜 번호를 씁니다.** 커리큘럼이 있는 글은 트랙 안의 번호를 쓰고,
- * 없는 글만 슬러그 해시를 씁니다. 예전에는 전부 해시였는데, 수학은 본문이
- * 「16번 · 일차방정식」처럼 번호로 서로를 가리키는 트랙이라 읽는 사람이 그
- * 숫자를 번호로 읽습니다 — 초급 7번인 피타고라스 정리에 `M-96`이 붙어 있었습니다.
+ * 수학은 커리큘럼이라 「초급 7번」이 실재합니다. 트랙의 차례를 함께 적어
+ * `M1`·`M2`·`M3`(초급·중급·고급)로 가릅니다 — 셋 다 1번부터 시작하므로 번호만
+ * 쓰면 `M-01`이 초급 1번에도 중급 1번에도 붙습니다.
  *
- * **트랙의 차례를 함께 적습니다**(`M1`·`M2`·`M3` = 초급·중급·고급). 셋 다 1번부터
- * 시작하므로 번호만 쓰면 `M-01`이 초급 1번에도 중급 1번에도 붙습니다. 실제로 지금
- * 나간 글만 봐도 초급 1~10번과 중급 1~5번이 겹쳤습니다.
+ * **나머지는 비웁니다.** 예전에는 전부 슬러그 해시를 100으로 나눈 나머지였는데,
+ * 뜻이 없는 것은 물론이고 유일하지도 않았습니다 — 수학 뺀 315편 중 143편(45%)이
+ * 남과 같은 코드를 달고 있었고(`A-14`가 두 편, `A-20`이 두 편 하는 식으로 66개),
+ * 접두사 글자마저 겹쳤습니다(D는 DL과 DOMAIN, L은 LAB과 LLM, M은 MATH와 MLOPS).
+ *
+ * 번호를 새로 매기지 않는 이유가 있습니다. 다른 카테고리에는 정해진 순서가 없고,
+ * 목록이 `publishedAt` 내림차순이라 발행순으로 매기면 **새 글이 하나 나올 때마다
+ * 뒤 번호가 전부 밀립니다.** 어제 `L-42`였던 글이 오늘 `L-43`이 되는 편이
+ * 지금보다 나쁩니다.
+ *
+ * 빈 자리로 두어도 어색하지 않습니다. 카드 오른쪽에 분야 이름이 이미 있고,
+ * 빈 span이 flex 첫 칸을 그대로 차지해 그 이름이 왼쪽으로 밀리지 않습니다.
  */
 function articleCode(article: Article, category: Category): string {
-  const initial = category.shortName.slice(0, 1);
   const place = trackPlace(article.slug);
-  if (!place) return `${initial}-${slugNumber(article.slug)}`;
+  if (!place) return '';
 
-  return `${initial}${place.tier}-${String(place.number).padStart(2, '0')}`;
+  return `${category.shortName.slice(0, 1)}${place.tier}-${String(place.number).padStart(2, '0')}`;
 }
 
 export function ArticleVisual({ article, compact = false }: ArticleVisualProps) {
