@@ -386,3 +386,5 @@ python3 boot.py
 ---
 
 **지난 글:** [int8로 줄인 벡터는 순위를 얼마나 흔드는가: 난수로 재면 왜 틀리는가](/articles/lab-int8-quantization-ranking)
+
+**다음 글:** [문단 앞에 제목을 붙이면 검색이 오르는가: 300질의로는 볼 수 없는 크기였다](/articles/lab-title-prefix-effect)
