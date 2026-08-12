@@ -287,6 +287,111 @@ function rehypeAnswerToggle() {
   };
 }
 
+/**
+ * 글 맨 아래의 **지난 글 · 다음 글**을 두 칸짜리 이동 칸으로 바꿉니다.
+ *
+ * 원고는 `**지난 글:** [제목](/articles/…)` 한 줄로 적습니다 — 쓰는 쪽은 그게 제일
+ * 쉽고, 그 링크가 곧 목록 순서를 정하는 사슬 데이터이기도 합니다. 다만 그대로
+ * 두면 굵은 글씨 두 문단이라, 다 읽고 나서 다음으로 갈 곳을 찾는 자리로는 약합니다.
+ *
+ * 마지막 두 문단만 봅니다. 본문 한가운데서 「지난 글에서 …」라고 쓰는 문장은
+ * 산문이므로 건드리지 않습니다.
+ */
+const END_LABELS = new Set(['지난 글', '다음 글']);
+
+function rehypeEndNav() {
+  type Node = Record<string, unknown>;
+  const childrenOf = (node: Node) => (node.children ?? []) as Node[];
+
+  const textOf = (node: Node): string => {
+    if (node.type === 'text') return String(node.value ?? '');
+    return childrenOf(node).map(textOf).join('');
+  };
+
+  const find = (node: Node, tagName: string): Node | undefined => {
+    if (node.type === 'element' && node.tagName === tagName) return node;
+    for (const child of childrenOf(node)) {
+      const found = find(child, tagName);
+      if (found) return found;
+    }
+    return undefined;
+  };
+
+  /** 이동 칸으로 바꿀 수 있는 문단이면 {label, href, title}, 아니면 undefined. */
+  const readItem = (node: Node) => {
+    if (node.type !== 'element' || node.tagName !== 'p') return undefined;
+    const strong = childrenOf(node)[0];
+    if (!strong || strong.type !== 'element' || strong.tagName !== 'strong') return undefined;
+
+    const label = textOf(strong).replace(/:$/, '').trim();
+    if (!END_LABELS.has(label)) return undefined;
+
+    const anchor = find(node, 'a');
+    const href = (anchor?.properties as Record<string, unknown> | undefined)?.href;
+    if (!anchor || typeof href !== 'string') return undefined;
+
+    return { label, href, title: textOf(anchor) };
+  };
+
+  const item = (read: { label: string; href: string; title: string }): Node => ({
+    type: 'element',
+    tagName: 'a',
+    properties: {
+      href: read.href,
+      className: ['endnav-item', read.label === '지난 글' ? 'endnav-prev' : 'endnav-next'],
+    },
+    children: [
+      {
+        type: 'element',
+        tagName: 'span',
+        properties: { className: ['endnav-label'] },
+        children: [{ type: 'text', value: read.label }],
+      },
+      {
+        type: 'element',
+        tagName: 'span',
+        properties: { className: ['endnav-title'] },
+        children: [{ type: 'text', value: read.title }],
+      },
+    ],
+  });
+
+  return (tree: unknown) => {
+    const root = tree as Node;
+    const children = childrenOf(root);
+
+    /*
+      뒤에서부터 이동 칸 후보만 걷어 냅니다. 블록 사이의 줄바꿈 텍스트 노드는
+      건너뜁니다 — 이걸 안 건너뛰면 문단 사이에서 멈춰 마지막 하나만 잡힙니다.
+    */
+    const blank = (node: Node) => node.type === 'text' && String(node.value ?? '').trim() === '';
+    const items: Node[] = [];
+    let end = children.length;
+    while (end > 0) {
+      const child = children[end - 1];
+      if (blank(child)) {
+        end -= 1;
+        continue;
+      }
+      const read = readItem(child);
+      if (!read) break;
+      items.unshift(item(read));
+      end -= 1;
+    }
+    if (items.length === 0) return;
+
+    root.children = [
+      ...children.slice(0, end),
+      {
+        type: 'element',
+        tagName: 'nav',
+        properties: { className: ['article-endnav'], 'aria-label': '글 사이 이동' },
+        children: items,
+      },
+    ];
+  };
+}
+
 export interface RenderedMarkdown {
   html: string;
   headings: MarkdownHeading[];
@@ -312,6 +417,7 @@ export async function renderMarkdown(body: string): Promise<RenderedMarkdown> {
     .use(rehypeKatex)
     .use(rehypeSelectableMathSpace)
     .use(rehypeAnswerToggle)
+    .use(rehypeEndNav)
     .use(rehypeStringify, { allowDangerousHtml: true })
     .process(body);
 
@@ -335,7 +441,7 @@ const CACHE_DIR = 'node_modules/.cache/paldyn-markdown';
  * 선택 가능하게 바꾸고도 화면이 그대로여서 한 번 헤맸습니다 — 캐시가 예전 결과를
  * 돌려주고 있었습니다.
  */
-const RENDERER_VERSION = '2026-08-11-answer-all-2';
+const RENDERER_VERSION = '2026-08-12-endnav-2';
 
 async function renderCached(body: string): Promise<RenderedMarkdown> {
   const key = createHash('sha256').update(RENDERER_VERSION).update(body).digest('hex').slice(0, 32);

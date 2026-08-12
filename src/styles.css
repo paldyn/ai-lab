@@ -2342,6 +2342,63 @@ input:focus-visible {
   border-top: 1px solid var(--border);
 }
 
+/*
+  글 맨 아래의 지난 글 · 다음 글.
+
+  원고는 `**지난 글:** [제목](/articles/…)` 한 줄로 적고 빌드가 이 모양으로
+  바꿉니다(plugins/markdown.ts의 rehypeEndNav). 두 칸이 다 있으면 나란히,
+  하나뿐이면 그 칸이 온폭을 씁니다 — 사슬의 머리와 끝이 그렇습니다.
+
+  다음 글은 오른쪽에 붙여 글자를 오른쪽으로 정렬합니다. 다 읽고 내려온 눈이
+  '앞으로 갈 곳'을 오른쪽에서 찾습니다.
+*/
+.article-endnav {
+  display: grid;
+  gap: 12px;
+  margin-top: 32px;
+}
+
+@media (min-width: 640px) {
+  .article-endnav:has(.endnav-prev):has(.endnav-next) {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.article-prose .endnav-item {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  border: 1px solid var(--border);
+  border-radius: 3px;
+  padding: 16px 18px;
+  color: var(--text-strong);
+  text-decoration: none;
+  transition: border-color 0.2s, background-color 0.2s;
+}
+
+.article-prose .endnav-item:hover {
+  border-color: var(--brand);
+  background: var(--bg-subtle);
+  color: var(--brand-text);
+}
+
+.endnav-next {
+  align-items: flex-end;
+  text-align: right;
+}
+
+.endnav-label {
+  color: var(--text-muted);
+  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  font-size: 10px;
+  letter-spacing: 0.12em;
+}
+
+.endnav-title {
+  font-size: 15px;
+  line-height: 1.5;
+}
+
 .article-prose img {
   display: block;
   width: 100%;
