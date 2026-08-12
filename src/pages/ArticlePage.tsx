@@ -329,8 +329,8 @@ function ArticleView({ article }: { article: Article }) {
   const collectionPath =
     category.section === 'news' ? '/news' : category.section === 'research' ? '/research' : `/learn/${category.id}`;
   const collectionLabel = category.section === 'news' ? '뉴스' : category.section === 'research' ? '리서치' : category.name;
-  /* 사슬의 앞뒤 편. 둘 다 없으면 이동 칸을 아예 안 그립니다(342편 중 4편). */
-  const { prev, next } = chainNeighbors(article.slug);
+  /* 같은 분야(수학은 트랙)의 앞뒤 편. 둘 다 없으면 이동 칸을 안 그립니다. */
+  const { prev, next } = chainNeighbors(article);
   const latest = latestBeside(article, [prev, next].filter(Boolean) as Article[]);
 
   // 첫 화면에서는 프리렌더된 HTML을 DOM에서 그대로 읽어 씁니다.

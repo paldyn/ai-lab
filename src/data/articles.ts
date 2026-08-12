@@ -1,7 +1,7 @@
 import { articleIndex } from 'virtual:article-index';
 import type { Article, ArticleLevel, Category, CategoryId, SectionId } from '../types/article';
 import { categoriesIn, categoryById, displayLevel } from './categories';
-import { curriculumOrder, trackPlace } from './curriculum';
+import { curriculumOrder, trackAround, trackPlace } from './curriculum';
 
 const LEVELS: ArticleLevel[] = ['초급', '중급', '고급'];
 
@@ -53,27 +53,37 @@ export function countByCategory(): Partial<Record<CategoryId, number>> {
 }
 
 /**
- * 사슬에서 이 글의 앞뒤 편.
+ * 글 맨 아래 이동 칸에 세울 **같은 줄의 앞뒤 편**.
  *
- * 「지난 글」 링크가 순서 데이터이므로 앞 편은 `prev`가 그대로 답하고, 뒤 편은
- * 그 대응을 한 번 뒤집어 얻습니다. **가리키는 글이 목록에 없으면 없는 것으로 칩니다** —
- * 초안이거나 지워진 글을 가리키는 경우이고, `orderArticles`가 사슬을 이을 때 쓰는
- * 규칙과 같습니다(먼저 만난 후속만 잇는 것도 같습니다). 그렇게 안 하면 코드가 없는
- * 글로 가는 링크를 만드는데, 그건 원고가 아니라서 `npm test`의 내부 링크 검사에 안 걸립니다.
+ * **사슬을 그대로 따라가지 않습니다.** 「지난 글」 사슬은 분야를 넘나듭니다 —
+ * 열여덟 자리에서 다음 편이 다른 칸으로 넘어가고, 그래서 그 칸의 최신 글인데도
+ * 「다음 글」이 붙어 있었습니다. 읽는 사람이 「다음 글」에서 기대하는 것은 같은 줄의
+ * 다음 편이므로 **분야 안에서** 찾습니다.
+ *
+ * 번호가 곧 자리입니다. `seq`는 카테고리마다 1..N을 빈틈없이 쓰므로(그 불변식은
+ * `src/content/articleOrder.test.ts`가 지킵니다) 앞뒤는 `seq ± 1`입니다.
+ * 그 결과 **1번에는 지난 글이, N번에는 다음 글이 없습니다.**
+ *
+ * 수학만 예외로 커리큘럼 트랙을 따릅니다. 카드에 찍히는 번호가 트랙 번호라
+ * (「초급 7번」) `seq`로 이으면 초급 마지막 편의 다음이 중급 첫 편이 됩니다.
+ * 아직 안 쓴 편은 건너뛰고 그 트랙에서 **실제로 나간 가장 가까운 편**을 세웁니다.
  */
-const nextBySlug = new Map<string, string>();
-for (const article of articles) {
-  const prev = article.prev;
-  if (!prev || !bySlug.has(prev) || nextBySlug.has(prev)) continue;
-  nextBySlug.set(prev, article.slug);
-}
+const byPlace = new Map<string, Article>();
+for (const article of articles) byPlace.set(`${article.categoryId}#${article.seq}`, article);
 
-export function chainNeighbors(slug: string): { prev?: Article; next?: Article } {
-  const prevSlug = bySlug.get(slug)?.prev;
-  const prev = prevSlug ? bySlug.get(prevSlug) : undefined;
-  const nextSlug = nextBySlug.get(slug);
-  const next = nextSlug ? bySlug.get(nextSlug) : undefined;
-  return { ...(prev ? { prev } : {}), ...(next ? { next } : {}) };
+const firstWritten = (slugs: readonly string[]): Article | undefined =>
+  slugs.map((slug) => bySlug.get(slug)).find(Boolean);
+
+export function chainNeighbors(article: Article): { prev?: Article; next?: Article } {
+  if (trackPlace(article.slug)) {
+    const { before, after } = trackAround(article.slug);
+    return { prev: firstWritten(before), next: firstWritten(after) };
+  }
+
+  return {
+    prev: byPlace.get(`${article.categoryId}#${article.seq - 1}`),
+    next: byPlace.get(`${article.categoryId}#${article.seq + 1}`),
+  };
 }
 
 /**
