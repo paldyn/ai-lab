@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import { useCallback, useEffect, useMemo, useRef, useState, type CSSProperties } from 'react';
 import { ArrowLeft, ArrowRight } from 'lucide-react';
 import { Link, Navigate, useParams } from 'react-router';
 import { ArticleCard } from '../components/ArticleCard';
@@ -404,11 +404,17 @@ function ArticleView({ article }: { article: Article }) {
         </aside>
 
         <div className="min-w-0">
+          {/*
+            분야 색을 본문에 흘려 넣습니다. 지금은 맨 아래 이동 칸의 화살표와
+            라벨이 씁니다 — 카드마다 그 글이 속한 줄의 색을 답니다.
+            `accentText`는 두 테마 모두 배경 대비 4.5:1을 넘는 글자용 값입니다.
+          */}
           <div
             ref={proseRef}
             id="article-body"
             data-slug={article.slug}
             className="article-prose"
+            style={{ '--article-accent': category.accentText } as CSSProperties}
             dangerouslySetInnerHTML={{ __html: body?.html ?? '' }}
           />
 
