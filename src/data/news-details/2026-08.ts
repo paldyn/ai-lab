@@ -2,6 +2,40 @@ import type { NewsDetail } from '../news';
 
 /** 2026-08 발표의 모달 본문. 목록은 news.ts에 있습니다. */
 export const details: Record<string, NewsDetail> = {
+  'putting-sign-language-ai-into-users-hands': {
+    points: [
+      '수어를 텍스트로 옮기는 모델 SL2T를 공개했다',
+      '50개 이상 수어에 걸친 10만 시간 넘는 데이터로 학습했고 약 25%가 미국 수어다',
+      'FLEURS-ASL 벤치마크에서 제로샷 70 BLEURT로 기존 최고 기록을 넘었다고 밝혔다',
+      '기기에서 MediaPipe Holistic이 신체 좌표만 추출해 서버로 보내 번역한다',
+      'Gboard에 수어 받아쓰기가 붙어 검색·메시지 작성·Gemini 요청을 수어로 할 수 있다',
+      'Live Transcribe에서는 대화 중 답을 타이핑하지 않고 수어로 할 수 있다',
+      'Pixel 11에서 먼저 쓸 수 있고 추가 비용은 없으며 기기·언어를 더 넓힐 계획이다',
+      '드문 수어, 빠른 지문자, 수동태, 문맥 없는 시제에서는 여전히 오류가 난다고 적었다',
+    ],
+    commentary:
+      '수어 번역은 그동안 논문과 데모에 머물러 있었고, 손 모양만 읽어서는 문법이 얼굴과 ' +
+      '몸에 실리는 언어를 옮길 수 없다는 점이 벽이었다. 좌표만 서버로 보내는 구조는 ' +
+      '영상을 올리지 않아도 되게 만들어 이런 기능이 늘 걸리던 촬영 부담을 줄인다. ' +
+      '다만 200개가 넘는 수어 가운데 실제로 쓸 수 있는 것은 아직 하나이고, ' +
+      '개발자용 접근이나 논문 공개는 이번 발표에 없다.',
+  },
+  'daybreak-models-are-now-available-on-aws': {
+    points: [
+      'Daybreak 기능을 Amazon Bedrock을 통해 제공한다고 밝혔다',
+      '올해 초 OpenAI 프런티어 모델과 Codex가 AWS에서 정식 제공된 데 이은 조치다',
+      'Daybreak Blue는 GPT-5.6 Sol을 포함한 범용 모델을 방어 업무용 안전장치와 함께 준다',
+      'Daybreak Red는 승인된 취약점 연구·익스플로잇 검증·보안 테스트용 특화 모델을 준다',
+      '취약점 연구, 탐지 엔지니어링, 사고 대응, 익스플로잇 재현과 완화 개발에 쓰는 용도다',
+      '두 등급 모두 Daybreak Access 등록과 승인을 거쳐야 쓸 수 있다',
+      'Bedrock 콘솔이나 Responses API의 bedrock-mantle 엔드포인트로 호출한다',
+    ],
+    commentary:
+      '모델 성능보다 조달·감사·접근 통제가 도입을 막는 쪽이 보안 조직이다. 이미 심사를 ' +
+      '끝낸 클라우드 안에서 부를 수 있게 되면 그 절차를 새로 밟지 않아도 되므로, 이 발표의 ' +
+      '무게는 능력이 아니라 도입 경로에 있다. 승인제는 그대로여서 누가 쓸 수 있는지의 ' +
+      '문턱은 낮아지지 않았다.',
+  },
   'amie-video-consultations': {
     points: [
       'Google Research와 Google DeepMind가 함께 내놓은 연구다',

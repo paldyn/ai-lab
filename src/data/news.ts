@@ -160,7 +160,7 @@ export interface NewsDetail {
   commentary: string;
 }
 
-export const globalNewsUpdatedAt = '2026-08-11';
+export const globalNewsUpdatedAt = '2026-08-12';
 
 /**
  * 공식 발표 한 건 = 항목 한 개. 2026년 1월부터 쌓는 아카이브이며 오래된 항목을
@@ -171,6 +171,46 @@ export const globalNewsUpdatedAt = '2026-08-11';
  * 목록에서 파생됩니다. 갱신 시 globalNewsUpdatedAt도 함께 올립니다.
  */
 const entries: NewsItem[] = [
+  {
+    id: 'putting-sign-language-ai-into-users-hands',
+    source: 'Google DeepMind',
+    kind: 'model',
+    title: '수어를 텍스트로 옮기는 SL2T, Pixel 11에 탑재',
+    summary:
+      'Google DeepMind가 수어를 텍스트로 옮기는 모델 SL2T를 Gboard와 Live Transcribe에 ' +
+      '넣었다. 50개 이상 수어의 10만 시간 넘는 데이터로 학습했고, Pixel 11에서 ' +
+      '미국 수어–영어 번역을 추가 비용 없이 먼저 쓸 수 있다.',
+    publishedAt: '2026-08-12',
+    collectedAt: '2026-08-13',
+    category: 'Domain',
+    signal: '수어 번역 모델',
+    url: 'https://deepmind.google/blog/putting-sign-language-ai-into-users-hands',
+    model: {
+      family: 'Gemini',
+      name: 'SL2T',
+      kind: '신규 모델',
+      status: '공개',
+      useCase: '수어를 텍스트로 옮기는 입력·대화',
+      headline: '수어 번역이 연구 데모를 벗어나 키보드 앱 안으로 들어왔다.',
+      logo: 'assets/gemini.svg',
+      tone: 'gemini',
+    },
+  },
+  {
+    id: 'daybreak-models-are-now-available-on-aws',
+    source: 'OpenAI',
+    kind: 'model',
+    title: 'Daybreak 사이버 모델, Amazon Bedrock에서 제공 시작',
+    summary:
+      'OpenAI가 사이버보안용 Daybreak 모델을 Amazon Bedrock에서 쓸 수 있게 했다. ' +
+      'Daybreak Blue와 Daybreak Red 두 접근 등급이 모두 AWS에 올라가며, ' +
+      'Daybreak Access 승인을 받은 고객이 대상이다.',
+    publishedAt: '2026-08-11',
+    collectedAt: '2026-08-13',
+    category: 'Domain',
+    signal: '플랫폼 배포',
+    url: 'https://openai.com/index/daybreak-models-are-now-available-on-aws',
+  },
   {
     id: 'amie-video-consultations',
     source: 'Google DeepMind',
