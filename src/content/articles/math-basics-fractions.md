@@ -128,7 +128,7 @@ $$\frac{3}{4} = \frac{21}{28}, \qquad \frac{5}{7} = \frac{20}{28} \;\Rightarrow\
 
 [10번 글](/articles/math-basics-numbers-and-number-line)의 수직선 위에 앉히면 $$\frac{5}{7}$$ 이 조금 더 왼쪽입니다. 둘 다 0과 1 사이이고 $$\frac{3}{4}$$ 쪽이 1에 가깝습니다.
 
-## 손으로 해 봅니다
+## 연습 문제
 
 ### 연습 — 분수 계산 스무 문제
 
