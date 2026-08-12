@@ -6,7 +6,7 @@ import { ArticleVisual } from '../components/ArticleVisual';
 import { Seo } from '../components/Seo';
 import { articleOrdinal, articles, getArticleBySlug } from '../data/articles';
 import { categoryById } from '../data/categories';
-import { curriculumLinks, mainTrackNumber, trackAround } from '../data/curriculum';
+import { curriculumLinks, mainTrackNumber } from '../data/curriculum';
 import { initialArticleBody, loadArticleBody } from '../lib/articleBody';
 import { watchAnswerToggle } from '../lib/answerToggle';
 import { watchSelectionRibbon } from '../lib/selectionRibbon';
@@ -192,43 +192,22 @@ function useActiveHeading(ids: string[]): {
   return { active, goTo };
 }
 
-const RELATED_LIMIT = 3;
+const LATEST_LIMIT = 3;
 
 /**
- * 「이어 읽기」에 세울 세 편.
+ * 글 아래에 세우는 **같은 분야의 최신 세 편**.
  *
- * **수학은 다음 편부터 차례로 세웁니다.** 순서가 정해진 트랙이라 7번을 읽은 사람이
- * 다음에 볼 것은 8·9·10번입니다. 예전에는 「같은 카테고리이거나 태그가 겹치는 글」을
- * 발행일 순으로 세 편 잘라 썼는데, 수학은 태그에 난이도가 들어 있어(`초급`·`중급`·
- * `고급`) **카테고리가 달라도 난이도만 같으면 후보**가 되는 데다 결국 최신 세 편이
- * 나왔습니다.
+ * 예전에는 「이어 읽기」였습니다. 수학은 트랙의 다음 편부터, 나머지는 카테고리나
+ * 태그가 겹치는 글을 채워 넣었는데, 이제 순서를 잇는 일은 본문 맨 아래의
+ * 지난 글·다음 글이 맡습니다. 여기서 두 번 할 필요가 없습니다.
  *
- * 트랙 끝이라 다음 편이 모자라면 지난 편으로 거슬러 채우고, 그래도 모자라면 예전
- * 규칙으로 채웁니다. 수학이 아닌 글은 앞 두 갈래가 비므로 예전과 같습니다.
- * 아직 쓰지 않은 편은 `getArticleBySlug`가 걸러 냅니다.
+ * `articles`는 이미 최신순이라(같은 날은 「지난 글」 사슬의 역순) 자기만 빼고
+ * 앞에서 세 편 자르면 됩니다.
  */
-function relatedTo(article: Article): Article[] {
-  const picked: Article[] = [];
-
-  const add = (candidate: Article | undefined) => {
-    if (!candidate || candidate.slug === article.slug) return;
-    if (picked.length >= RELATED_LIMIT) return;
-    if (picked.some((chosen) => chosen.slug === candidate.slug)) return;
-    picked.push(candidate);
-  };
-
-  const { after, before } = trackAround(article.slug);
-  for (const slug of [...after, ...before]) add(getArticleBySlug(slug));
-
-  for (const candidate of articles) {
-    if (picked.length >= RELATED_LIMIT) break;
-    const related =
-      candidate.categoryId === article.categoryId ||
-      candidate.tags.some((tag) => article.tags.includes(tag));
-    if (related) add(candidate);
-  }
-
-  return picked;
+function latestBeside(article: Article): Article[] {
+  return articles
+    .filter((candidate) => candidate.categoryId === article.categoryId && candidate.slug !== article.slug)
+    .slice(0, LATEST_LIMIT);
 }
 
 /**
@@ -307,7 +286,7 @@ function ArticleView({ article }: { article: Article }) {
   const collectionPath =
     category.section === 'news' ? '/news' : category.section === 'research' ? '/research' : `/learn/${category.id}`;
   const collectionLabel = category.section === 'news' ? '뉴스' : category.section === 'research' ? '리서치' : category.name;
-  const related = relatedTo(article);
+  const latest = latestBeside(article);
 
   // 첫 화면에서는 프리렌더된 HTML을 DOM에서 그대로 읽어 씁니다.
   // SPA로 이동해 들어온 경우에만 해당 글의 청크를 내려받습니다.
@@ -444,17 +423,17 @@ function ArticleView({ article }: { article: Article }) {
         </div>
       </div>
 
-      {related.length > 0 && (
+      {latest.length > 0 && (
         <section className="section-band">
           <div className="site-wrap section-space">
             <div className="section-heading">
               <div>
-                <p className="section-kicker">KEEP READING</p>
-                <h2>이어 읽기</h2>
+                <p className="section-kicker">LATEST</p>
+                <h2>{category.name}의 최신 글</h2>
               </div>
             </div>
             <div className="grid gap-8 md:grid-cols-3">
-              {related.map((item) => (
+              {latest.map((item) => (
                 <ArticleCard key={item.slug} article={item} />
               ))}
             </div>
