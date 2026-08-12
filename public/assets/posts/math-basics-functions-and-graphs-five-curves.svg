@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="580" viewBox="0 0 880 580" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <rect width="880" height="580" rx="12" fill="#0a0a0a"/>
+  <defs>
+    <marker id="fcAx" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#888"/>
+    </marker>
+  </defs>
+
+  <text x="60" y="56" font-size="22" font-weight="700" fill="#e8e8e8">앞으로 계속 소재가 되는 다섯 곡선</text>
+  <text x="60" y="82" font-size="13" fill="#888">표를 채워 점을 찍고 이으면 나오는 개형이다 — 값이 없는 자리와 꺾이는 자리를 함께 본다</text>
+
+  <line x1="70" y1="215" x2="270" y2="215" stroke="#888" stroke-width="1.5" marker-end="url(#fcAx)"/>
+  <line x1="170" y1="285" x2="170" y2="130" stroke="#888" stroke-width="1.5" marker-end="url(#fcAx)"/>
+  <text x="276" y="219" font-size="13" fill="#888">x</text>
+  <text x="176" y="134" font-size="13" fill="#888">y</text>
+  <line x1="101" y1="284" x2="254" y2="131" stroke="#7ec8e3" stroke-width="2.5" fill="none"/>
+  <text x="60" y="316" font-size="15" fill="#e8e8e8">y = x</text>
+  <text x="122" y="316" font-size="12" fill="#888">모든 수에서 값이 있다</text>
+
+  <line x1="340" y1="215" x2="540" y2="215" stroke="#888" stroke-width="1.5" marker-end="url(#fcAx)"/>
+  <line x1="440" y1="285" x2="440" y2="130" stroke="#888" stroke-width="1.5" marker-end="url(#fcAx)"/>
+  <text x="546" y="219" font-size="13" fill="#888">x</text>
+  <text x="446" y="134" font-size="13" fill="#888">y</text>
+  <polyline points="390,131 395,148 410,185 425,208 440,215 455,208 470,185 485,148 490,131" fill="none" stroke="#7ec8e3" stroke-width="2.5"/>
+  <text x="330" y="316" font-size="15" fill="#e8e8e8">y = x²</text>
+  <text x="398" y="316" font-size="12" fill="#888">음수를 넣어도 값은 양수</text>
+
+  <line x1="610" y1="215" x2="810" y2="215" stroke="#888" stroke-width="1.5" marker-end="url(#fcAx)"/>
+  <line x1="710" y1="285" x2="710" y2="130" stroke="#888" stroke-width="1.5" marker-end="url(#fcAx)"/>
+  <text x="816" y="219" font-size="13" fill="#888">x</text>
+  <text x="716" y="134" font-size="13" fill="#888">y</text>
+  <polyline points="722,140 725,155 731,172 740,185 755,195 770,200 800,205 809,206" fill="none" stroke="#7ec8e3" stroke-width="2.5"/>
+  <polyline points="611,224 620,225 650,230 665,235 680,245 689,258 695,275 696,282" fill="none" stroke="#7ec8e3" stroke-width="2.5"/>
+  <text x="600" y="316" font-size="15" fill="#e8e8e8">y = 1/x</text>
+  <text x="672" y="316" font-size="12" fill="#e05555">x = 0 에는 값이 없다</text>
+
+  <line x1="205" y1="440" x2="405" y2="440" stroke="#888" stroke-width="1.5" marker-end="url(#fcAx)"/>
+  <line x1="305" y1="510" x2="305" y2="355" stroke="#888" stroke-width="1.5" marker-end="url(#fcAx)"/>
+  <text x="411" y="444" font-size="13" fill="#888">x</text>
+  <text x="311" y="359" font-size="13" fill="#888">y</text>
+  <polyline points="305,440 312,425 320,419 335,410 365,398 395,388 404,386" fill="none" stroke="#7ec8e3" stroke-width="2.5"/>
+  <circle cx="305" cy="440" r="5" fill="#e8e8e8"/>
+  <text x="195" y="541" font-size="15" fill="#e8e8e8">y = √x</text>
+  <text x="264" y="541" font-size="12" fill="#e05555">음수에는 값이 없다</text>
+
+  <line x1="475" y1="440" x2="675" y2="440" stroke="#888" stroke-width="1.5" marker-end="url(#fcAx)"/>
+  <line x1="575" y1="510" x2="575" y2="355" stroke="#888" stroke-width="1.5" marker-end="url(#fcAx)"/>
+  <text x="681" y="444" font-size="13" fill="#888">x</text>
+  <text x="581" y="359" font-size="13" fill="#888">y</text>
+  <polyline points="491,356 575,440 659,356" fill="none" stroke="#7ec8e3" stroke-width="2.5"/>
+  <text x="465" y="541" font-size="15" fill="#e8e8e8">y = |x|</text>
+  <text x="534" y="541" font-size="12" fill="#e05555">원점에서 꺾인다</text>
+</svg>

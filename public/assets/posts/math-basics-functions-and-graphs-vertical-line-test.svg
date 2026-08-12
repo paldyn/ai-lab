@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="460" viewBox="0 0 880 460" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <rect width="880" height="460" rx="12" fill="#0a0a0a"/>
+  <defs>
+    <marker id="vlAx" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#888"/>
+    </marker>
+  </defs>
+
+  <text x="60" y="56" font-size="22" font-weight="700" fill="#e8e8e8">세로선을 그어 보면 함수인지 알 수 있다</text>
+  <text x="60" y="82" font-size="13" fill="#888">세로선 하나가 곡선을 두 번 이상 만나면 입력 하나에 출력이 여럿이라는 뜻이다</text>
+
+  <line x1="80" y1="300" x2="400" y2="300" stroke="#888" stroke-width="1.5" marker-end="url(#vlAx)"/>
+  <line x1="240" y1="350" x2="240" y2="140" stroke="#888" stroke-width="1.5" marker-end="url(#vlAx)"/>
+  <text x="406" y="304" font-size="13" fill="#888">x</text>
+  <text x="246" y="144" font-size="13" fill="#888">y</text>
+  <polyline points="168,170 180,210 200,260 220,290 240,300 260,290 280,260 300,210 312,170" fill="none" stroke="#7ec8e3" stroke-width="2.5"/>
+  <line x1="280" y1="150" x2="280" y2="345" stroke="#55c555" stroke-width="2" stroke-dasharray="5,3"/>
+  <circle cx="280" cy="260" r="5" fill="#55c555"/>
+  <text x="60" y="384" font-size="15" font-weight="600" fill="#55c555">함수다</text>
+  <text x="60" y="408" font-size="13" fill="#888">어디에 세로선을 그어도 만나는 점이 하나뿐이다</text>
+
+  <line x1="480" y1="300" x2="800" y2="300" stroke="#888" stroke-width="1.5" marker-end="url(#vlAx)"/>
+  <line x1="640" y1="350" x2="640" y2="140" stroke="#888" stroke-width="1.5" marker-end="url(#vlAx)"/>
+  <text x="806" y="304" font-size="13" fill="#888">x</text>
+  <text x="646" y="144" font-size="13" fill="#888">y</text>
+  <circle cx="640" cy="250" r="80" fill="none" stroke="#7ec8e3" stroke-width="2.5"/>
+  <line x1="690" y1="150" x2="690" y2="345" stroke="#e05555" stroke-width="2" stroke-dasharray="5,3"/>
+  <circle cx="690" cy="188" r="5" fill="#e05555"/>
+  <circle cx="690" cy="312" r="5" fill="#e05555"/>
+  <text x="480" y="384" font-size="15" font-weight="600" fill="#e05555">함수가 아니다</text>
+  <text x="480" y="408" font-size="13" fill="#888">같은 x 에 y 가 둘이라 어느 쪽인지 정해지지 않는다</text>
+</svg>

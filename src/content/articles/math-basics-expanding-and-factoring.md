@@ -225,3 +225,5 @@ $$x = 4$$ 일 때만 참입니다. 방정식입니다.
 읽어주셔서 감사합니다. 😊
 
 **지난 글:** [문자와 대입: 문자 하나가 수 전부를 대신할 때](/articles/math-basics-variables-and-expressions)
+
+**다음 글:** [일차방정식과 이항: 등식의 성질 넷으로 x만 남기기](/articles/math-basics-linear-equations)

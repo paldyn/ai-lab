@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="430" viewBox="0 0 880 430" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <rect width="880" height="430" rx="12" fill="#0a0a0a"/>
+
+  <text x="60" y="56" font-size="22" font-weight="700" fill="#e8e8e8">등식은 양팔 저울이다</text>
+  <text x="60" y="82" font-size="13" fill="#888">양쪽에 똑같이 해 주는 동안에는 기울지 않는다 — 도구는 이 넷뿐이다</text>
+
+  <line x1="235" y1="150" x2="645" y2="150" stroke="#7ec8e3" stroke-width="3"/>
+  <circle cx="440" cy="150" r="6" fill="#7ec8e3"/>
+  <path d="M 440 156 L 414 208 L 466 208 z" fill="#333" stroke="#7ec8e3" stroke-width="1.5"/>
+  <line x1="400" y1="208" x2="480" y2="208" stroke="#7ec8e3" stroke-width="2.5"/>
+
+  <line x1="235" y1="150" x2="235" y2="196" stroke="#888" stroke-width="1.5"/>
+  <line x1="645" y1="150" x2="645" y2="196" stroke="#888" stroke-width="1.5"/>
+
+  <rect x="165" y="196" width="140" height="52" rx="6" fill="#101010" stroke="#7ec8e3" stroke-width="1.5"/>
+  <text x="235" y="228" font-size="19" fill="#e8e8e8" text-anchor="middle">2x + 3</text>
+
+  <rect x="575" y="196" width="140" height="52" rx="6" fill="#101010" stroke="#7ec8e3" stroke-width="1.5"/>
+  <text x="645" y="228" font-size="19" fill="#e8e8e8" text-anchor="middle">11</text>
+
+  <text x="440" y="286" font-size="14" fill="#7777cc" text-anchor="middle">한쪽에만 손대면 그 순간 기운다</text>
+
+  <rect x="60" y="310" width="178" height="62" rx="6" fill="#101010" stroke="#333" stroke-width="1"/>
+  <text x="76" y="334" font-size="13" font-weight="600" fill="#e8e8e8">같은 수를 더한다</text>
+  <text x="76" y="354" font-size="12" fill="#7ec8e3">a=b 이면 a+c=b+c</text>
+
+  <rect x="254" y="310" width="178" height="62" rx="6" fill="#101010" stroke="#333" stroke-width="1"/>
+  <text x="270" y="334" font-size="13" font-weight="600" fill="#e8e8e8">같은 수를 뺀다</text>
+  <text x="270" y="354" font-size="12" fill="#7ec8e3">a=b 이면 a−c=b−c</text>
+
+  <rect x="448" y="310" width="178" height="62" rx="6" fill="#101010" stroke="#333" stroke-width="1"/>
+  <text x="464" y="334" font-size="13" font-weight="600" fill="#e8e8e8">같은 수를 곱한다</text>
+  <text x="464" y="354" font-size="12" fill="#7ec8e3">a=b 이면 ac=bc</text>
+
+  <rect x="642" y="310" width="178" height="62" rx="6" fill="#101010" stroke="#333" stroke-width="1"/>
+  <text x="658" y="334" font-size="13" font-weight="600" fill="#e8e8e8">0 아닌 수로 나눈다</text>
+  <text x="658" y="354" font-size="12" fill="#7ec8e3">a=b 이면 a/c=b/c</text>
+</svg>

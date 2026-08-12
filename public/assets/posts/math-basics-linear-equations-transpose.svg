@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="400" viewBox="0 0 880 400" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <rect width="880" height="400" rx="12" fill="#0a0a0a"/>
+  <defs>
+    <marker id="trArr" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#7777cc"/>
+    </marker>
+  </defs>
+
+  <text x="60" y="56" font-size="22" font-weight="700" fill="#e8e8e8">이항은 새 규칙이 아니다</text>
+  <text x="60" y="82" font-size="13" fill="#888">「넘기면 부호가 바뀐다」는 양변에서 같은 것을 뺀 두 줄을 줄여 적은 말이다</text>
+
+  <text x="60" y="146" font-size="13" fill="#888">처음 식</text>
+  <text x="60" y="176" font-size="20" fill="#e8e8e8">2x + 3 = 11</text>
+
+  <line x1="72" y1="196" x2="72" y2="228" stroke="#7777cc" stroke-width="2" marker-end="url(#trArr)"/>
+  <text x="92" y="220" font-size="13" fill="#7777cc">양변에서 3을 뺀다</text>
+
+  <text x="60" y="266" font-size="20" fill="#e8e8e8">2x + 3 − 3 = 11 − 3</text>
+
+  <line x1="72" y1="286" x2="72" y2="318" stroke="#7777cc" stroke-width="2" marker-end="url(#trArr)"/>
+  <text x="92" y="310" font-size="13" fill="#7777cc">양쪽을 정리한다</text>
+
+  <text x="60" y="356" font-size="20" fill="#55c555">2x = 8</text>
+
+  <rect x="520" y="130" width="300" height="226" rx="6" fill="#101010" stroke="#333" stroke-width="1"/>
+  <text x="544" y="162" font-size="14" font-weight="600" fill="#e8e8e8">줄여 적으면 이렇게 보인다</text>
+  <text x="544" y="196" font-size="17" fill="#e8e8e8">2x + 3 = 11</text>
+  <text x="544" y="226" font-size="17" fill="#e8e8e8">2x = 11 − 3</text>
+  <text x="544" y="262" font-size="13" fill="#888">왼쪽의 +3 이 오른쪽에서 −3 으로</text>
+  <text x="544" y="282" font-size="13" fill="#888">나타난 것처럼 보인다. 실제로 한</text>
+  <text x="544" y="302" font-size="13" fill="#888">일은 양변에서 3을 뺀 것뿐이다.</text>
+  <text x="544" y="334" font-size="13" fill="#7ec8e3">외울 규칙이 하나 줄었다</text>
+</svg>

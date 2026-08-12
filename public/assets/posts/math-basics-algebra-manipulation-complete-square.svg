@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="470" viewBox="0 0 880 470" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <rect width="880" height="470" rx="12" fill="#0a0a0a"/>
+
+  <text x="60" y="56" font-size="22" font-weight="700" fill="#e8e8e8">완전제곱 만들기는 빈 모서리를 채우는 일</text>
+  <text x="60" y="82" font-size="13" fill="#888">채워 넣은 만큼 도로 빼면 값은 그대로이고 모양만 정사각형이 된다</text>
+
+  <rect x="120" y="130" width="180" height="180" fill="#7ec8e3" fill-opacity="0.18" stroke="#7ec8e3" stroke-width="2"/>
+  <text x="210" y="228" font-size="20" fill="#e8e8e8" text-anchor="middle">x²</text>
+
+  <rect x="300" y="130" width="80" height="180" fill="#7777cc" fill-opacity="0.2" stroke="#7777cc" stroke-width="2"/>
+  <text x="340" y="228" font-size="17" fill="#e8e8e8" text-anchor="middle">4x</text>
+
+  <rect x="120" y="310" width="180" height="80" fill="#7777cc" fill-opacity="0.2" stroke="#7777cc" stroke-width="2"/>
+  <text x="210" y="358" font-size="17" fill="#e8e8e8" text-anchor="middle">4x</text>
+
+  <rect x="300" y="310" width="80" height="80" fill="#e05555" fill-opacity="0.15" stroke="#e05555" stroke-width="2" stroke-dasharray="5,3"/>
+  <text x="340" y="358" font-size="17" fill="#e05555" text-anchor="middle">16</text>
+
+  <text x="210" y="118" font-size="13" fill="#888" text-anchor="middle">x</text>
+  <text x="340" y="118" font-size="13" fill="#888" text-anchor="middle">4</text>
+  <text x="100" y="228" font-size="13" fill="#888" text-anchor="middle">x</text>
+  <text x="100" y="358" font-size="13" fill="#888" text-anchor="middle">4</text>
+
+  <text x="250" y="426" font-size="14" fill="#e05555" text-anchor="middle">이 한 칸이 비어 있다</text>
+
+  <rect x="460" y="130" width="360" height="260" rx="6" fill="#101010" stroke="#333" stroke-width="1"/>
+  <text x="484" y="162" font-size="14" font-weight="600" fill="#e8e8e8">빈 칸을 채우고 그만큼 도로 뺀다</text>
+  <text x="484" y="200" font-size="18" fill="#e8e8e8">x² + 8x + 3</text>
+  <text x="484" y="236" font-size="18" fill="#e8e8e8">= x² + 8x + 16 − 16 + 3</text>
+  <text x="484" y="272" font-size="18" fill="#e8e8e8">= (x + 4)² − 13</text>
+  <text x="484" y="312" font-size="13" fill="#888">가운데 항의 계수 8을 반으로 나눈 4가</text>
+  <text x="484" y="332" font-size="13" fill="#888">괄호 안에 들어가고, 그 제곱 16이</text>
+  <text x="484" y="352" font-size="13" fill="#888">빼는 값이 된다.</text>
+  <text x="484" y="376" font-size="13" fill="#7ec8e3">제곱은 0 이상이므로 최솟값은 −13</text>
+</svg>

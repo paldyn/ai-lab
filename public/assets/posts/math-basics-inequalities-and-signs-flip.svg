@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="420" viewBox="0 0 880 420" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <rect width="880" height="420" rx="12" fill="#0a0a0a"/>
+  <defs>
+    <marker id="ineqAx" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#888"/>
+    </marker>
+    <marker id="ineqFlip" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#e05555"/>
+    </marker>
+  </defs>
+
+  <text x="60" y="56" font-size="22" font-weight="700" fill="#e8e8e8">음수를 곱하면 순서가 뒤집힌다</text>
+  <text x="60" y="82" font-size="13" fill="#888">두 수가 자리를 맞바꾸는 것이 눈에 보인다 — 왼쪽에 있던 것이 오른쪽으로 간다</text>
+
+  <line x1="90" y1="150" x2="810" y2="150" stroke="#888" stroke-width="1.5" marker-end="url(#ineqAx)"/>
+  <line x1="810" y1="150" x2="90" y2="150" stroke="#888" stroke-width="1.5" marker-end="url(#ineqAx)"/>
+  <line x1="450" y1="142" x2="450" y2="158" stroke="#e8e8e8" stroke-width="2"/>
+  <text x="450" y="176" font-size="12" fill="#888" text-anchor="middle">0</text>
+  <circle cx="570" cy="150" r="5" fill="#e8e8e8"/>
+  <circle cx="750" cy="150" r="5" fill="#e8e8e8"/>
+  <text x="570" y="132" font-size="14" fill="#7ec8e3" text-anchor="middle">2</text>
+  <text x="750" y="132" font-size="14" fill="#7ec8e3" text-anchor="middle">5</text>
+  <text x="140" y="132" font-size="17" fill="#55c555">2 &lt; 5</text>
+
+  <path d="M 570 168 Q 470 250 336 292" fill="none" stroke="#e05555" stroke-width="2.5" stroke-dasharray="5,3" marker-end="url(#ineqFlip)"/>
+  <path d="M 750 168 Q 520 250 158 292" fill="none" stroke="#e05555" stroke-width="2.5" stroke-dasharray="5,3" marker-end="url(#ineqFlip)"/>
+  <text x="700" y="248" font-size="15" fill="#e05555">양변에 −1 을 곱한다</text>
+
+  <line x1="90" y1="310" x2="810" y2="310" stroke="#888" stroke-width="1.5" marker-end="url(#ineqAx)"/>
+  <line x1="810" y1="310" x2="90" y2="310" stroke="#888" stroke-width="1.5" marker-end="url(#ineqAx)"/>
+  <line x1="450" y1="302" x2="450" y2="318" stroke="#e8e8e8" stroke-width="2"/>
+  <text x="450" y="336" font-size="12" fill="#888" text-anchor="middle">0</text>
+  <circle cx="330" cy="310" r="5" fill="#e8e8e8"/>
+  <circle cx="150" cy="310" r="5" fill="#e8e8e8"/>
+  <text x="330" y="336" font-size="14" fill="#7ec8e3" text-anchor="middle">−2</text>
+  <text x="150" y="336" font-size="14" fill="#7ec8e3" text-anchor="middle">−5</text>
+  <text x="600" y="336" font-size="17" fill="#e05555">−2 &gt; −5</text>
+
+  <rect x="60" y="356" width="760" height="44" rx="6" fill="#101010" stroke="#333" stroke-width="1"/>
+  <text x="84" y="384" font-size="13" fill="#e8e8e8">5 가 2 보다 오른쪽에 있었는데, −5 는 −2 보다 왼쪽에 있다. 그래서 부등호를 돌려 적는다.</text>
+</svg>
