@@ -231,10 +231,8 @@ print(f"드리프트 감지 컬럼: {drifted_columns}")
 
 ---
 
+읽어주셔서 감사합니다. 😊
+
 **지난 글:** [합성 데이터: 실제 데이터 없이 AI 학습 데이터 만들기](/articles/data-synthetic)
 
 **다음 글:** [데이터 중복 제거: 정확한 매칭부터 시맨틱 디덥까지](/articles/data-deduplication)
-
-<br>
-읽어주셔서 감사합니다. 😊
-

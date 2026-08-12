@@ -469,10 +469,8 @@ if __name__ == "__main__":
 
 ---
 
-**지난 글:** [파인튜닝 파이프라인: QLoRA부터 Ollama 배포까지](/articles/project-finetune-pipeline)
-
-**다음 글:** [프롬프트 반복 개발: 체계적인 이터레이션 워크플로우](/articles/project-prompt-iterating)
-
-<br>
 읽어주셔서 감사합니다. 😊
 
+**지난 글:** [파인튜닝 파이프라인 구축: 데이터부터 배포까지](/articles/project-finetune-pipeline)
+
+**다음 글:** [프롬프트 반복 개발: 체계적인 이터레이션 워크플로우](/articles/project-prompt-iterating)

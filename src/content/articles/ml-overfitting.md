@@ -200,10 +200,8 @@ def simple_interpolation(X, y, n_aug=2):
 
 ---
 
+읽어주셔서 감사합니다. 😊
+
 **지난 글:** [편향-분산 트레이드오프: 과소적합과 과대적합의 근본 원인](/articles/ml-bias-variance)
 
 **다음 글:** [분류 모델 평가 지표 완전 정복: 정확도·정밀도·재현율·F1](/articles/ml-classification-metrics)
-
-<br>
-읽어주셔서 감사합니다. 😊
-

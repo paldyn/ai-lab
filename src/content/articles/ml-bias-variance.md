@@ -191,10 +191,8 @@ rf = RandomForestRegressor(
 
 ---
 
+읽어주셔서 감사합니다. 😊
+
 **지난 글:** [교차 검증: K-Fold로 모델 성능을 더 정확히 추정하기](/articles/ml-cross-validation)
 
 **다음 글:** [과대적합 완전 정복: 탐지·진단·해결 전략](/articles/ml-overfitting)
-
-<br>
-읽어주셔서 감사합니다. 😊
-

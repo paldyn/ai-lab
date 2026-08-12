@@ -168,10 +168,8 @@ GitHub의 자체 연구에 따르면 Copilot 사용 개발자는 동일 태스�
 
 ---
 
+읽어주셔서 감사합니다. 😊
+
 **지난 글:** [데이터 중복 제거: 정확한 매칭부터 시맨틱 디덥까지](/articles/data-deduplication)
 
 **다음 글:** [Cursor: AI 네이티브 IDE의 새로운 기준](/articles/ai-coding-cursor)
-
-<br>
-읽어주셔서 감사합니다. 😊
-

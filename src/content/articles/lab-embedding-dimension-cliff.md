@@ -226,3 +226,7 @@ for name, f in (("scifact / MiniLM", "scifact_D.npy"), ("KorQuAD / e5-small", "k
 | 스윕 전체 실행 시간 | 10.5초 (차원 5개 × 시드 5개 × 코퍼스 2개 = 50회 적합) |
 | 자기검사 | 새 가상환경에서 두 스크립트를 다시 돌려 위 출력이 전부 같은지 확인함 |
 | 측정일 | 2026-08-06 |
+
+---
+
+**지난 글:** [CPU만으로 세우는 검색 실험대: 시간은 두 배 흔들려도 nDCG@10은 같았다](/articles/lab-retrieval-testbed)

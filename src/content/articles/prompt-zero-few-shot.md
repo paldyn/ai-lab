@@ -223,10 +223,8 @@ Zero-shot과 Few-shot은 프롬프트 엔지니어링의 가장 기초적인 기
 
 ---
 
-**지난 글:** [프롬프트 엔지니어링 완전 정복: AI와 대화하는 기술](/articles/prompt-engineering)
-
-**다음 글:** [Chain-of-Thought 프롬프팅: 단계별 추론의 마법](/articles/prompt-chain-of-thought)
-
-<br>
 읽어주셔서 감사합니다. 😊
 
+**지난 글:** [프롬프트 엔지니어링 완전 정복: AI와 대화하는 기술](/articles/prompt-engineering)
+
+**다음 글:** [Chain-of-Thought 프롬프팅: LLM이 생각하게 만드는 기술](/articles/prompt-chain-of-thought)

@@ -139,9 +139,8 @@ def call_with_repair(model, messages, tools, max_repair=2):
 
 ---
 
+읽어주셔서 감사합니다. 😊
+
 **지난 글:** [RAG는 검색이 아니다: 근거 있는 답변이 만들어지는 전체 과정](/articles/rag-retrieval-to-grounded-answer)
 
 **다음 글:** [도구를 한꺼번에 부를 때](/articles/function-calling-parallel)
-
-<br>
-읽어주셔서 감사합니다. 😊

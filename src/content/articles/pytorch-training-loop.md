@@ -147,10 +147,8 @@ scheduler = ReduceLROnPlateau(optimizer, mode="min", factor=0.5, patience=3)
 
 ---
 
+읽어주셔서 감사합니다. 😊
+
 **지난 글:** [PyTorch 기초: 텐서와 자동미분](/articles/pytorch-basics)
 
 **다음 글:** [TensorFlow/Keras로 시작하는 딥러닝](/articles/tensorflow-keras)
-
-<br>
-읽어주셔서 감사합니다. 😊
-

@@ -247,9 +247,8 @@ scores = np.einsum('bhid,bhjd->bhij', Q, K)
 
 ---
 
+읽어주셔서 감사합니다. 😊
+
 **지난 글:** [논문 수식 표기 규약: 스칼라·벡터·행렬·텐서를 구별해서 읽기](/articles/math-notation-conventions)
 
 **다음 글:** [벡터: 임베딩 한 줄이 숫자 배열이 아니라 벡터인 이유](/articles/math-vector-as-meaning)
-
-<br>
-읽어주셔서 감사합니다. 😊

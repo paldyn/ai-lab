@@ -177,10 +177,8 @@ print(f"Huber MAE: {mean_absolute_error(y_test, y_pred_huber):.4f}")
 
 ---
 
+읽어주셔서 감사합니다. 😊
+
 **지난 글:** [ROC 곡선과 AUC: 임계값 독립적 분류 성능 평가](/articles/ml-roc-auc)
 
 **다음 글:** [랭킹 모델 평가: NDCG·MAP·MRR 이해하기](/articles/ml-ranking-metrics)
-
-<br>
-읽어주셔서 감사합니다. 😊
-

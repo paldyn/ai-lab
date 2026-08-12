@@ -336,10 +336,8 @@ print(results["documents"])
 
 ---
 
+읽어주셔서 감사합니다. 😊
+
 **지난 글:** [ANN 알고리즘 완전 정복: HNSW·IVF·LSH 비교 분석](/articles/vector-ann-algorithms)
 
 **다음 글:** [pgvector 완전 정복: PostgreSQL로 벡터 검색 구현하기](/articles/vector-db-pgvector)
-
-<br>
-읽어주셔서 감사합니다. 😊
-

@@ -216,7 +216,8 @@ $$2 \times 3 = 6$$
 
 ---
 
+읽어주셔서 감사합니다. 😊
+
 **지난 글:** [피타고라스 정리: 정사각형 하나를 두 가지로 채워 증명하기](/articles/math-basics-pythagorean-theorem)
 
-<br>
-읽어주셔서 감사합니다. 😊
+**다음 글:** [수식 기호 읽기: 앞으로 만날 기호를 소리 내어 읽어 두기](/articles/math-basics-symbol-glossary)

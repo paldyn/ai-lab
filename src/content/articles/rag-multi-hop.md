@@ -178,10 +178,8 @@ async def parallel_multihop(sub_questions, retriever):
 
 ---
 
+읽어주셔서 감사합니다. 😊
+
 **지난 글:** [RAG 쿼리 재작성: 검색 품질을 높이는 쿼리 변환 기법](/articles/rag-query-rewriting)
 
 **다음 글:** [Agentic RAG: 에이전트가 스스로 검색하고 추론하는 시스템](/articles/rag-agentic-rag)
-
-<br>
-읽어주셔서 감사합니다. 😊
-

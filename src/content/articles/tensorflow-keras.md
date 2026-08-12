@@ -160,10 +160,8 @@ PyTorch가 연구 유연성에서 강점이라면, TensorFlow/Keras는 모바일
 
 ---
 
+읽어주셔서 감사합니다. 😊
+
 **지난 글:** [PyTorch 학습 루프 완전 정복](/articles/pytorch-training-loop)
 
 **다음 글:** [HuggingFace Transformers 실전 가이드](/articles/huggingface-transformers)
-
-<br>
-읽어주셔서 감사합니다. 😊
-

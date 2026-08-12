@@ -191,10 +191,8 @@ A/B 테스트로 자동 답변 품질을 사람 답변과 지속적으로 비교
 
 ---
 
+읽어주셔서 감사합니다. 😊
+
 **지난 글:** [사내 지식 검색 시스템 구축](/articles/app-internal-search)
 
 **다음 글:** [AI 콘텐츠 생성 자동화 파이프라인](/articles/app-content-generation)
-
-<br>
-읽어주셔서 감사합니다. 😊
-

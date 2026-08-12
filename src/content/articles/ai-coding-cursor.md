@@ -147,10 +147,8 @@ Cursor는 기본적으로 코드를 서버에 전송한다. 기업 코드 보안
 
 ---
 
+읽어주셔서 감사합니다. 😊
+
 **지난 글:** [AI 코딩 도구의 시대: GitHub Copilot 완전 해부](/articles/ai-coding-copilot)
 
 **다음 글:** [Claude Code: 터미널에서 만나는 AI 소프트웨어 엔지니어](/articles/ai-coding-claude-code)
-
-<br>
-읽어주셔서 감사합니다. 😊
-

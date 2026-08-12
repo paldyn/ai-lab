@@ -159,10 +159,8 @@ AI 프라이버시는 기술적 해결책과 함께 데이터 최소 수집, 목
 
 ---
 
+읽어주셔서 감사합니다. 😊
+
 **지난 글:** [설명 가능한 AI(XAI): 블랙박스를 열다](/articles/ai-explainability-xai)
 
 **다음 글:** [AI 탈옥(Jailbreak): 공격 유형과 방어 전략](/articles/ai-jailbreak)
-
-<br>
-읽어주셔서 감사합니다. 😊
-

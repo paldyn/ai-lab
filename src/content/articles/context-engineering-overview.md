@@ -108,9 +108,8 @@ def build_context(model_window, max_output):
 
 ---
 
+읽어주셔서 감사합니다. 😊
+
 **지난 글:** [모델이 읽는 것은 구현이 아니라 스키마다](/articles/tool-schema-design)
 
 **다음 글:** [창이 크다는 말과 잘 읽는다는 말](/articles/context-long-context-reality)
-
-<br>
-읽어주셔서 감사합니다. 😊

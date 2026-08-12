@@ -222,10 +222,8 @@ print(f"총 시간: {elapsed:.1f}s, 처리량: {total_tokens/elapsed:.0f} tok/s"
 
 ---
 
-**지난 글:** [Ollama 완전 가이드: 로컬 LLM을 가장 쉽게 실행하기](/articles/inference-ollama)
-
-**다음 글:** [LLM 추론 배치 전략: Continuous Batching과 PagedAttention 완전 해설](/articles/inference-batching)
-
-<br>
 읽어주셔서 감사합니다. 😊
 
+**지난 글:** [Ollama 완전 가이드: 로컬 LLM을 가장 쉽게 실행하기](/articles/inference-ollama)
+
+**다음 글:** [LLM 추론 배치 전략: Continuous Batching과 KV 캐시 완전 해설](/articles/inference-batching)

@@ -413,8 +413,8 @@ pipeline_obj.summarize(reviews)
 
 ---
 
-**지난 글:** [품사 태깅(POS): 단어의 문법적 역할 파악](/articles/nlp-pos-tagging)
-
-<br>
 읽어주셔서 감사합니다. 😊
 
+**지난 글:** [품사 태깅(POS): 단어의 문법적 역할 파악](/articles/nlp-pos-tagging)
+
+**다음 글:** [텍스트 분류: 언어에 레이블을 붙이는 기술](/articles/nlp-text-classification)

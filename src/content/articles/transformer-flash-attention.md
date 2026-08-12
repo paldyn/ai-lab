@@ -100,10 +100,8 @@ FlashAttention은 시퀀스 병렬(Sequence Parallelism) 없이는 단일 GPU에
 
 ---
 
+읽어주셔서 감사합니다. 😊
+
 **지난 글:** [RoPE: 회전으로 위치를 인코딩하다](/articles/transformer-rotary)
 
 **다음 글:** [MQA와 GQA: KV Cache 경량화 전략](/articles/transformer-mqa-gqa)
-
-<br>
-읽어주셔서 감사합니다. 😊
-

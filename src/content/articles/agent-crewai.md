@@ -276,10 +276,8 @@ CrewAI는 **인간 팀의 협업 방식을 AI 에이전트로 재현**하는 프
 
 ---
 
+읽어주셔서 감사합니다. 😊
+
 **지난 글:** [LlamaIndex 완전 가이드: 데이터 중심 LLM 프레임워크](/articles/agent-llamaindex)
 
 **다음 글:** [AutoGen 완전 가이드: 대화 기반 멀티 에이전트 프레임워크](/articles/agent-autogen)
-
-<br>
-읽어주셔서 감사합니다. 😊
-

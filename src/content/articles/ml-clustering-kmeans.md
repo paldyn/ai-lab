@@ -216,10 +216,8 @@ K-평균은 단순하고 빠르며 해석이 쉽다는 장점 때문에 여전�
 
 ---
 
+읽어주셔서 감사합니다. 😊
+
 **지난 글:** [그래디언트 부스팅: XGBoost·LightGBM의 기반 원리](/articles/ml-gradient-boosting)
 
 **다음 글:** [계층적 군집화: 덴드로그램으로 보는 군집 구조](/articles/ml-clustering-hierarchical)
-
-<br>
-읽어주셔서 감사합니다. 😊
-

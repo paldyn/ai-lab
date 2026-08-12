@@ -247,10 +247,8 @@ async def batch_process_documents(input_dir: str, output_dir: str):
 
 ---
 
+읽어주셔서 감사합니다. 😊
+
 **지난 글:** [AI 번역 시스템 구축: 도메인 특화 고품질 번역](/articles/app-translation)
 
 **다음 글:** [AI 회의 요약 시스템: 음성 인식부터 인사이트 추출까지](/articles/app-meeting-summary)
-
-<br>
-읽어주셔서 감사합니다. 😊
-

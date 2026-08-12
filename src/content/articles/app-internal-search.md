@@ -210,10 +210,8 @@ def log_search_event(query: str, results: list[str], clicked_id: str | None):
 
 ---
 
+읽어주셔서 감사합니다. 😊
+
 **지난 글:** [문서 Q&A 시스템 구축: RAG 기반 PDF·문서 검색](/articles/app-document-qa)
 
 **다음 글:** [AI 고객 지원 자동화: 티켓 분류부터 답변 생성까지](/articles/app-customer-support)
-
-<br>
-읽어주셔서 감사합니다. 😊
-

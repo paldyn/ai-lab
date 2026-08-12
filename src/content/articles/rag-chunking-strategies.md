@@ -276,10 +276,8 @@ stats = evaluate_chunks(chunks)
 
 ---
 
+읽어주셔서 감사합니다. 😊
+
 **지난 글:** [RAG 아키텍처 심화: Naive RAG에서 Modular RAG까지](/articles/rag-architecture)
 
 **다음 글:** [RAG 임베딩 모델 선택 가이드: 성능·비용·언어 지원 완전 비교](/articles/rag-embedding-models)
-
-<br>
-읽어주셔서 감사합니다. 😊
-

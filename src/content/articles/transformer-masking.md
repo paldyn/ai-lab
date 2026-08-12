@@ -114,10 +114,8 @@ loss = F.cross_entropy(
 
 ---
 
+읽어주셔서 감사합니다. 😊
+
 **지난 글:** [Encoder-Decoder 구조: 번역에서 요약까지](/articles/transformer-encoder-decoder)
 
 **다음 글:** [BERT: 양방향 사전학습 언어 모델의 등장](/articles/transformer-bert)
-
-<br>
-읽어주셔서 감사합니다. 😊
-

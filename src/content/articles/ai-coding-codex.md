@@ -228,10 +228,8 @@ Canvas 활용 패턴:
 
 ---
 
+읽어주셔서 감사합니다. 😊
+
 **지난 글:** [Claude Code: 터미널에서 만나는 AI 소프트웨어 엔지니어](/articles/ai-coding-claude-code)
 
 **다음 글:** [Aider: AI 페어 프로그래머와 Git 통합 개발](/articles/ai-coding-aider)
-
-<br>
-읽어주셔서 감사합니다. 😊
-

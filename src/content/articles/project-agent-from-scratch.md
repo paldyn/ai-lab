@@ -537,10 +537,8 @@ if __name__ == "__main__":
 
 ---
 
+읽어주셔서 감사합니다. 😊
+
 **지난 글:** [RAG 시스템 처음부터 구축하기: 실전 프로젝트](/articles/project-rag-from-scratch)
 
 **다음 글:** [파인튜닝 파이프라인 구축: 데이터부터 배포까지](/articles/project-finetune-pipeline)
-
-<br>
-읽어주셔서 감사합니다. 😊
-

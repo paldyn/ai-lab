@@ -145,10 +145,8 @@ print(f"Train: {train_end} / Val: {val_end - train_end} / Test: {n - val_end}")
 
 ---
 
+읽어주셔서 감사합니다. 😊
+
 **지난 글:** [t-SNE와 UMAP: 고차원 데이터를 눈으로 보다](/articles/ml-tsne-umap)
 
 **다음 글:** [교차 검증: K-Fold로 모델 성능을 더 정확히 추정하기](/articles/ml-cross-validation)
-
-<br>
-읽어주셔서 감사합니다. 😊
-

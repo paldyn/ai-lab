@@ -351,8 +351,8 @@ def safe_generate(model, prompt: str, max_retries: int = 3) -> str:
 
 ---
 
-**지난 글:** [OpenAI SDK 완전 정복](/articles/openai-sdk)
-
-<br>
 읽어주셔서 감사합니다. 😊
 
+**지난 글:** [OpenAI SDK 완전 정복](/articles/openai-sdk)
+
+**다음 글:** [Jupyter Notebook·Lab 완전 정복: AI 개발자의 필수 환경](/articles/notebook-jupyter)

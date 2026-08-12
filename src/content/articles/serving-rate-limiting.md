@@ -289,10 +289,8 @@ LLM API Rate Limiting의 핵심:
 
 ---
 
+읽어주셔서 감사합니다. 😊
+
 **지난 글:** [LLM 스트리밍 완전 가이드: SSE부터 WebSocket까지](/articles/serving-streaming)
 
 **다음 글:** [LLM 서빙 비용 최적화: 토큰·GPU·캐싱 전략](/articles/serving-cost-optimization)
-
-<br>
-읽어주셔서 감사합니다. 😊
-

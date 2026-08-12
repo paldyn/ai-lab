@@ -120,10 +120,8 @@ Anthropic이 개발하는 Claude 시리즈 모델들은 CAI를 핵심 정렬 방
 
 ---
 
+읽어주셔서 감사합니다. 😊
+
 **지난 글:** [DPO: 보상 모델 없는 직접 선호도 최적화](/articles/llm-dpo)
 
 **다음 글:** [스케일링 법칙: 더 크게, 더 많이, 더 강하게](/articles/llm-scaling-laws)
-
-<br>
-읽어주셔서 감사합니다. 😊
-

@@ -154,10 +154,8 @@ print(f"공격 성공률: {attack_success_rate:.1%}")
 
 ---
 
+읽어주셔서 감사합니다. 😊
+
 **지난 글:** [AI와 프라이버시: 개인정보를 지키는 기술](/articles/ai-privacy)
 
 **다음 글:** [AI 워터마킹: AI 생성 콘텐츠를 추적하는 기술](/articles/ai-watermarking)
-
-<br>
-읽어주셔서 감사합니다. 😊
-

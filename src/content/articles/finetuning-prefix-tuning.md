@@ -200,10 +200,8 @@ LoRA가 범용성과 성능에서 앞서지만, 동일한 모델 위에서 여�
 
 ---
 
+읽어주셔서 감사합니다. 😊
+
 **지난 글:** [QLoRA: 4비트 양자화로 소비자 GPU에서 LLM 파인튜닝하기](/articles/finetuning-qlora)
 
 **다음 글:** [Adapter: 트랜스포머 레이어에 소형 모듈을 삽입하는 파인튜닝](/articles/finetuning-adapter)
-
-<br>
-읽어주셔서 감사합니다. 😊
-

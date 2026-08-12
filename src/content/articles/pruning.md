@@ -202,10 +202,8 @@ model.print_trainable_parameters()
 
 ---
 
-**지난 글:** [지식 증류: 대형 모델의 지식을 소형 모델로 이전하기](/articles/distillation)
-
-**다음 글:** [투기적 디코딩: LLM 추론 속도를 2~3배 높이는 기술](/articles/speculative-decoding)
-
-<br>
 읽어주셔서 감사합니다. 😊
 
+**지난 글:** [지식 증류: 대형 모델의 지식을 소형 모델로 이전하기](/articles/distillation)
+
+**다음 글:** [투기적 디코딩: LLM 추론 속도를 2~4배 높이는 기술](/articles/speculative-decoding)

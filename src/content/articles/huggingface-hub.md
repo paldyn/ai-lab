@@ -302,10 +302,8 @@ print(info.siblings)     # 파일 목록
 
 ---
 
+읽어주셔서 감사합니다. 😊
+
 **지난 글:** [HuggingFace Datasets로 데이터 관리하기](/articles/huggingface-datasets)
 
 **다음 글:** [Anthropic SDK로 Claude API 활용하기](/articles/anthropic-sdk)
-
-<br>
-읽어주셔서 감사합니다. 😊
-

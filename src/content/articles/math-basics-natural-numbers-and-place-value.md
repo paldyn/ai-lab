@@ -254,7 +254,8 @@ $$36 \times 24$$ 를 자리별 곱 넷으로도 확인해 보세요. $$30 \times
 
 ---
 
+읽어주셔서 감사합니다. 😊
+
 **지난 글:** [손으로 푸는 습관: 한 줄에 한 조작, 그리고 숫자로 검산](/articles/math-basics-working-by-hand)
 
-<br>
-읽어주셔서 감사합니다. 😊
+**다음 글:** [약수와 배수·소인수분해: 수를 곱으로 쪼개 두기](/articles/math-basics-divisors-and-prime-factorization)

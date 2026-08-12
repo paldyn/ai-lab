@@ -220,10 +220,8 @@ EfficientNet-B7은 당시 ImageNet 최고 정확도(84.4%)를 달성하면서도
 
 ---
 
+읽어주셔서 감사합니다. 😊
+
 **지난 글:** [특징 맵: CNN이 이미지에서 보는 것](/articles/cnn-feature-maps)
 
 **다음 글:** [ResNet: 잔차 연결이 깊은 네트워크를 가능하게 한 이유](/articles/cnn-resnet)
-
-<br>
-읽어주셔서 감사합니다. 😊
-

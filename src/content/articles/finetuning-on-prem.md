@@ -236,10 +236,8 @@ for i in range(torch.cuda.device_count()):
 
 ---
 
+읽어주셔서 감사합니다. 😊
+
 **지난 글:** [클라우드에서 LLM 파인튜닝: AWS·GCP·Azure 완전 가이드](/articles/finetuning-on-cloud)
 
 **다음 글:** [양자화 완전 정복: 모델 크기를 절반으로 줄이는 기술](/articles/quantization-basics)
-
-<br>
-읽어주셔서 감사합니다. 😊
-

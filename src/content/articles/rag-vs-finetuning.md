@@ -114,10 +114,8 @@ Microsoft Research의 연구(2023)에 따르면 GPT-4 기반 RAG는 GPT-3.5 파�
 
 ---
 
+읽어주셔서 감사합니다. 😊
+
 **지난 글:** [RAG 평가: RAGAS로 검색 품질과 답변 품질 측정하기](/articles/rag-evaluation)
 
 **다음 글:** [파인튜닝 vs 프롬프트 엔지니어링 vs RAG: 세 전략의 완전 비교](/articles/finetuning-vs-prompt-vs-rag)
-
-<br>
-읽어주셔서 감사합니다. 😊
-

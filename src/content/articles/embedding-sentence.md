@@ -291,10 +291,8 @@ for i in range(len(sentences)):
 
 ---
 
+읽어주셔서 감사합니다. 😊
+
 **지난 글:** [문맥적 임베딩: ELMo부터 BERT까지](/articles/embedding-contextual)
 
 **다음 글:** [멀티모달 임베딩: 텍스트와 이미지를 같은 공간에](/articles/embedding-multimodal)
-
-<br>
-읽어주셔서 감사합니다. 😊
-

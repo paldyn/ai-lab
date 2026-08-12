@@ -273,10 +273,8 @@ AI 이미지 편집은 완성된 작품을 "얼마나 원하는 방향으로 변
 
 ---
 
-**지난 글:** [ControlNet: 포즈·깊이·엣지로 확산 모델을 정밀 제어하기](/articles/cv-controlnet)
-
-**다음 글:** [비디오 생성 모델: Sora·AnimateDiff·SVD 완전 해설](/articles/cv-video-models)
-
-<br>
 읽어주셔서 감사합니다. 😊
 
+**지난 글:** [ControlNet: 포즈·깊이·엣지로 확산 모델을 정밀 제어하기](/articles/cv-controlnet)
+
+**다음 글:** [비디오 생성 모델: Sora·AnimateDiff·Stable Video Diffusion 완전 해설](/articles/cv-video-models)

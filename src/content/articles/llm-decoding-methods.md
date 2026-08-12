@@ -119,10 +119,8 @@ Beam Search에서 중요한 문제 중 하나는 **짧은 시퀀스 편향**이�
 
 ---
 
+읽어주셔서 감사합니다. 😊
+
 **지난 글:** [샘플링 전략: LLM 출력 제어의 과학](/articles/llm-sampling-strategies)
 
 **다음 글:** [LLM의 한계와 환각: AI가 틀리는 이유](/articles/llm-limits-and-hallucination)
-
-<br>
-읽어주셔서 감사합니다. 😊
-

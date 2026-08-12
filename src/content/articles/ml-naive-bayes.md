@@ -231,10 +231,8 @@ print(classification_report(test.target, y_pred,
 
 ---
 
+읽어주셔서 감사합니다. 😊
+
 **지난 글:** [K-최근접 이웃(KNN): 가장 직관적인 분류 알고리즘](/articles/ml-knn)
 
 **다음 글:** [서포트 벡터 머신(SVM): 최대 마진 분류기의 원리](/articles/ml-svm)
-
-<br>
-읽어주셔서 감사합니다. 😊
-

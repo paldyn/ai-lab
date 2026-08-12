@@ -228,10 +228,8 @@ texts = ["고양이 사진", "강아지 사진", "새 사진"]
 
 ---
 
+읽어주셔서 감사합니다. 😊
+
 **지난 글:** [문장 임베딩: SBERT와 의미 검색](/articles/embedding-sentence)
 
 **다음 글:** [NLP 텍스트 전처리: 데이터를 모델에 맞게 다듬다](/articles/nlp-text-preprocessing)
-
-<br>
-읽어주셔서 감사합니다. 😊
-

@@ -226,10 +226,8 @@ print(f"mAP@50:95: {result['map']:.3f}")
 
 ---
 
+읽어주셔서 감사합니다. 😊
+
 **지난 글:** [이미지 분류: CNN 파이프라인 완전 가이드](/articles/cnn-image-classification)
 
 **다음 글:** [의미론적 분할: 픽셀 단위 이미지 이해](/articles/cnn-semantic-segmentation)
-
-<br>
-읽어주셔서 감사합니다. 😊
-

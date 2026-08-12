@@ -218,8 +218,8 @@ SOLOv2는 Mask R-CNN보다 **단순하고 빠르면서** 비슷한 정확도를 
 
 ---
 
-**지난 글:** [의미론적 분할: 픽셀 단위 이미지 이해](/articles/cnn-semantic-segmentation)
-
-<br>
 읽어주셔서 감사합니다. 😊
 
+**지난 글:** [의미론적 분할: 픽셀 단위 이미지 이해](/articles/cnn-semantic-segmentation)
+
+**다음 글:** [RNN 기초: 순환 신경망의 작동 원리](/articles/rnn-basics)

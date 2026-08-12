@@ -202,8 +202,8 @@ async def solve_with_escalation(prompt: str, task: dict) -> str | None:
 
 ---
 
-**지난 글:** [검증자 모델: 답을 고르는 눈을 따로 기른다](/articles/reasoning-verifier-models)
-
-<br>
 읽어주셔서 감사합니다. 😊
 
+**지난 글:** [검증자 모델: 답을 고르는 눈을 따로 기른다](/articles/reasoning-verifier-models)
+
+**다음 글:** [추론 모델과 CoT 프롬프팅: 같은 사고, 다른 자리](/articles/reasoning-vs-cot-prompting)

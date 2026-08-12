@@ -172,10 +172,8 @@ class PreNormBlock(nn.Module):
 
 ---
 
+읽어주셔서 감사합니다. 😊
+
 **지난 글:** [가중치 초기화: Xavier, He, 그리고 수렴의 비밀](/articles/nn-weight-init)
 
 **다음 글:** [레이어 정규화: 트랜스포머가 선택한 정규화](/articles/nn-layer-normalization)
-
-<br>
-읽어주셔서 감사합니다. 😊
-

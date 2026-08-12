@@ -273,10 +273,8 @@ llama.cpp는 GPU 없이 LLM을 실행하는 가장 성숙한 방법이다.
 
 ---
 
+읽어주셔서 감사합니다. 😊
+
 **지난 글:** [LLM 추론 엔진 완전 비교: vLLM·TGI·llama.cpp·Ollama](/articles/inference-engines)
 
 **다음 글:** [Ollama 완전 가이드: 로컬 LLM을 가장 쉽게 실행하기](/articles/inference-ollama)
-
-<br>
-읽어주셔서 감사합니다. 😊
-

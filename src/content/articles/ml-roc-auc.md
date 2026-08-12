@@ -161,10 +161,8 @@ print(f"Weighted AUC: {auc_weighted:.4f}")
 
 ---
 
+읽어주셔서 감사합니다. 😊
+
 **지난 글:** [혼동 행렬로 분류 오류 해부하기](/articles/ml-confusion-matrix)
 
 **다음 글:** [회귀 모델 평가 지표: MAE·MSE·RMSE·R² 완전 이해](/articles/ml-regression-metrics)
-
-<br>
-읽어주셔서 감사합니다. 😊
-

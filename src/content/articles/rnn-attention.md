@@ -104,10 +104,8 @@ Attention은 RNN 계열의 한계를 극복하는 핵심 열쇠였고, 결국 Tr
 
 ---
 
+읽어주셔서 감사합니다. 😊
+
 **지난 글:** [Seq2Seq: 인코더-디코더로 시퀀스를 시퀀스로](/articles/rnn-seq2seq)
 
 **다음 글:** [RNN의 한계와 Transformer로의 전환](/articles/rnn-limitations)
-
-<br>
-읽어주셔서 감사합니다. 😊
-

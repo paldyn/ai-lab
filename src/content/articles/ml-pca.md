@@ -320,10 +320,8 @@ X_lda = lda.fit_transform(X_train, y_train)  # y 레이블 사용!
 
 ---
 
+읽어주셔서 감사합니다. 😊
+
 **지난 글:** [DBSCAN: 밀도로 찾는 군집과 이상치](/articles/ml-dbscan)
 
 **다음 글:** [t-SNE와 UMAP: 고차원 데이터를 눈으로 보다](/articles/ml-tsne-umap)
-
-<br>
-읽어주셔서 감사합니다. 😊
-

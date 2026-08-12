@@ -199,10 +199,8 @@ def answer_with_citations(question: str, conn) -> dict:
 
 ---
 
+읽어주셔서 감사합니다. 😊
+
 **지난 글:** [AI 챗봇 서비스 설계: 아키텍처부터 배포까지](/articles/app-chatbot-design)
 
 **다음 글:** [사내 지식 검색 시스템 구축](/articles/app-internal-search)
-
-<br>
-읽어주셔서 감사합니다. 😊
-

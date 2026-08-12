@@ -101,10 +101,8 @@ print(enc.encode(" Hello"))   # [22691]  — 다른 토큰!
 
 ---
 
+읽어주셔서 감사합니다. 😊
+
 **지난 글:** [Mixture of Experts: 희소 활성화로 거대 모델 만들기](/articles/transformer-moe)
 
 **다음 글:** [BPE: 바이트 쌍 인코딩 토크나이저](/articles/tokenizer-bpe)
-
-<br>
-읽어주셔서 감사합니다. 😊
-

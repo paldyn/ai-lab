@@ -127,10 +127,8 @@ Claude의 **Constitutional AI**는 RLHF를 발전시킨 방법으로, "모르는
 
 ---
 
-**지난 글:** [디코딩 방법: Greedy에서 Beam Search까지](/articles/llm-decoding-methods)
-
-**다음 글:** [GPT 패밀리: OpenAI 모델의 진화](/articles/llm-gpt-family)
-
-<br>
 읽어주셔서 감사합니다. 😊
 
+**지난 글:** [디코딩 방법: Greedy에서 Beam Search까지](/articles/llm-decoding-methods)
+
+**다음 글:** [GPT 패밀리 완전 해부: GPT-1부터 GPT-4o까지](/articles/llm-gpt-family)

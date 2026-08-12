@@ -253,7 +253,8 @@ $$1 \text{ m}^3 = 100 \times 100 \times 100 = 1{,}000{,}000 \text{ cm}^3$$
 
 ---
 
+읽어주셔서 감사합니다. 😊
+
 **지난 글:** [약수와 배수·소인수분해: 수를 곱으로 쪼개 두기](/articles/math-basics-divisors-and-prime-factorization)
 
-<br>
-읽어주셔서 감사합니다. 😊
+**다음 글:** [피타고라스 정리: 정사각형 하나를 두 가지로 채워 증명하기](/articles/math-basics-pythagorean-theorem)

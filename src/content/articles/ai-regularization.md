@@ -237,10 +237,8 @@ train_transform = transforms.Compose([
 
 ---
 
+읽어주셔서 감사합니다. 😊
+
 **지난 글:** [손실 함수 완전 정복: 무엇을 최소화하는가](/articles/ai-loss-functions)
 
 **다음 글:** [지도학습 vs 비지도학습: 머신러닝의 두 패러다임](/articles/ml-supervised-vs-unsupervised)
-
-<br>
-읽어주셔서 감사합니다. 😊
-

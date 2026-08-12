@@ -212,10 +212,8 @@ print(normalized)
 
 ---
 
+읽어주셔서 감사합니다. 😊
+
 **지난 글:** [텍스트 생성: 언어 모델이 글을 쓰는 방법](/articles/nlp-text-generation)
 
 **다음 글:** [한국어 NLP: 교착어 처리와 한국어 특화 모델](/articles/nlp-korean-processing)
-
-<br>
-읽어주셔서 감사합니다. 😊
-

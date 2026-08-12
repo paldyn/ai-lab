@@ -171,9 +171,6 @@ LLM과 생성 모델은 대부분 Cross-Entropy 또는 그 변형을 쓰지만, 
 
 ---
 
-
-**다음 글:** [정규화: 과적합을 막는 AI의 방패](/articles/ai-regularization)
-
-<br>
 읽어주셔서 감사합니다. 😊
 
+**다음 글:** [정규화: 과적합을 막는 AI의 방패](/articles/ai-regularization)

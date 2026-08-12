@@ -268,10 +268,8 @@ Netflix는 단순한 2-모델 혼합을 넘어 수십 개의 서브 모델을 �
 
 ---
 
+읽어주셔서 감사합니다. 😊
+
 **지난 글:** [협업 필터링: 유사 사용자·아이템 기반 추천 완전 해설](/articles/recsys-collaborative-filtering)
 
 **다음 글:** [행렬 분해(MF): SVD·ALS·FunkSVD 추천 알고리즘 완전 해설](/articles/recsys-matrix-factorization)
-
-<br>
-읽어주셔서 감사합니다. 😊
-

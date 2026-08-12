@@ -125,10 +125,8 @@ def evaluate_partial_credit(model, problems):
 
 ---
 
-**지난 글:** [스케일링 법칙: 더 크게, 더 많이, 더 강하게](/articles/llm-scaling-laws)
-
-**다음 글:** [컨텍스트 윈도우: LLM의 작업 메모리](/articles/llm-context-window)
-
-<br>
 읽어주셔서 감사합니다. 😊
 
+**지난 글:** [스케일링 법칙: 더 크게, 더 많이, 더 강하게](/articles/llm-scaling-laws)
+
+**다음 글:** [컨텍스트 윈도우: LLM의 작업 기억](/articles/llm-context-window)

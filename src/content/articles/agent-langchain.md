@@ -319,10 +319,8 @@ LangChain은 LLM 애플리케이션의 **모든 구성 요소를 모듈화**한 
 
 ---
 
+읽어주셔서 감사합니다. 😊
+
 **지난 글:** [MCP 프로토콜 심층: 서버 구현과 통합](/articles/agent-mcp-protocol)
 
 **다음 글:** [LangGraph 완전 가이드: 상태 기반 에이전트 워크플로우](/articles/agent-langgraph)
-
-<br>
-읽어주셔서 감사합니다. 😊
-

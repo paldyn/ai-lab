@@ -199,10 +199,8 @@ L_ORPO = L_NLL + λ · L_OR
 
 ---
 
+읽어주셔서 감사합니다. 😊
+
 **지난 글:** [RLHF: 인간 피드백으로 LLM 정렬하기](/articles/llm-rlhf)
 
 **다음 글:** [Constitutional AI: 원칙 기반 AI 정렬](/articles/llm-constitutional-ai)
-
-<br>
-읽어주셔서 감사합니다. 😊
-

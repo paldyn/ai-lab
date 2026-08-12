@@ -221,9 +221,8 @@ np.linalg.norm(a + b)   # 1.414...
 
 ---
 
+읽어주셔서 감사합니다. 😊
+
 **지난 글:** [Σ와 첨자, 그리고 einsum: 수식을 그대로 코드로 옮기기](/articles/math-sigma-index-and-einsum)
 
 **다음 글:** [노름과 거리: L1·L2·L∞와 단위구의 모양](/articles/math-norms-and-distance)
-
-<br>
-읽어주셔서 감사합니다. 😊

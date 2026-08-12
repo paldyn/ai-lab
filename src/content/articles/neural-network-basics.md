@@ -165,10 +165,8 @@ for epoch in range(100):
 
 ---
 
-**지난 글:** [퍼셉트론: 딥러닝의 기원이 된 인공 뉴런](/articles/nn-perceptron)
-
-**다음 글:** [활성화 함수: ReLU, Sigmoid, GELU의 모든 것](/articles/nn-activation-functions)
-
-<br>
 읽어주셔서 감사합니다. 😊
 
+**지난 글:** [퍼셉트론: 딥러닝의 기원이 된 인공 뉴런](/articles/nn-perceptron)
+
+**다음 글:** [활성화 함수: ReLU·Sigmoid·GELU의 모든 것](/articles/nn-activation-functions)

@@ -200,10 +200,8 @@ def tot_with_cache(problem: str, n_steps: int = 3) -> str:
 
 ---
 
+읽어주셔서 감사합니다. 😊
+
 **지난 글:** [Chain-of-Thought 프롬프팅: LLM이 생각하게 만드는 기술](/articles/prompt-chain-of-thought)
 
 **다음 글:** [ReAct: 추론과 행동을 결합한 에이전트 프롬프팅](/articles/prompt-react)
-
-<br>
-읽어주셔서 감사합니다. 😊
-

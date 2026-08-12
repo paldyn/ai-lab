@@ -163,10 +163,8 @@ compliance_checklist = {
 
 ---
 
+읽어주셔서 감사합니다. 😊
+
 **지난 글:** [AI 워터마킹: AI 생성 콘텐츠를 추적하는 기술](/articles/ai-watermarking)
 
 **다음 글:** [데이터 수집: AI 모델의 연료를 모으는 방법](/articles/data-collection)
-
-<br>
-읽어주셔서 감사합니다. 😊
-

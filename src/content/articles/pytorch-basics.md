@@ -138,10 +138,8 @@ optimizer = torch.optim.Adam(model.parameters(), lr=1e-3)
 
 ---
 
+읽어주셔서 감사합니다. 😊
+
 **지난 글:** [AI 개발을 위한 Python 핵심 라이브러리](/articles/python-for-ai)
 
 **다음 글:** [PyTorch 학습 루프 완전 정복](/articles/pytorch-training-loop)
-
-<br>
-읽어주셔서 감사합니다. 😊
-

@@ -228,8 +228,8 @@ KNN은 그 자체로도 유용하지만, 임베딩 기반 유사도 검색의 �
 
 ---
 
-**지난 글:** [로지스틱 회귀: 분류 문제의 첫 걸음](/articles/ml-logistic-regression)
-
-<br>
 읽어주셔서 감사합니다. 😊
 
+**지난 글:** [로지스틱 회귀: 분류 문제의 첫 걸음](/articles/ml-logistic-regression)
+
+**다음 글:** [나이브 베이즈: 빠르고 강력한 확률적 분류기](/articles/ml-naive-bayes)

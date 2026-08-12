@@ -186,10 +186,8 @@ LLM도 우선순위가 불명확하면 헷갈린다. 지시사항이 10개를 �
 
 ---
 
+읽어주셔서 감사합니다. 😊
+
 **지난 글:** [Self-Consistency: 다수결로 정확도를 높이다](/articles/prompt-self-consistency)
 
 **다음 글:** [프롬프트 템플릿: 재사용 가능한 프롬프트 설계](/articles/prompt-templates)
-
-<br>
-읽어주셔서 감사합니다. 😊
-

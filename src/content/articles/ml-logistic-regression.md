@@ -219,10 +219,8 @@ clf_balanced.fit(X_train, y_train)
 
 ---
 
+읽어주셔서 감사합니다. 😊
+
 **지난 글:** [선형 회귀: 예측 모델의 출발점](/articles/ml-linear-regression)
 
 **다음 글:** [K-최근접 이웃(KNN): 가장 직관적인 분류 알고리즘](/articles/ml-knn)
-
-<br>
-읽어주셔서 감사합니다. 😊
-

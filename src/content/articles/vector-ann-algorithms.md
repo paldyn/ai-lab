@@ -330,10 +330,8 @@ ANN 알고리즘 선택도 중요하지만, 더 중요한 것은 **임베딩 모
 
 ---
 
+읽어주셔서 감사합니다. 😊
+
 **지난 글:** [벡터 유사도 지표: 코사인·유클리드·내적의 모든 것](/articles/vector-similarity-metrics)
 
 **다음 글:** [벡터 데이터베이스 비교: Pinecone·Weaviate·Milvus·Qdrant·Chroma](/articles/vector-db-comparison)
-
-<br>
-읽어주셔서 감사합니다. 😊
-

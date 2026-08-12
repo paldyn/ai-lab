@@ -140,9 +140,8 @@ def stream_fields(chunks):
 
 ---
 
+읽어주셔서 감사합니다. 😊
+
 **지난 글:** [JSON Schema로 출력 형태를 못 박기](/articles/structured-output-json-schema)
 
 **다음 글:** [문법으로 출력을 제약하기](/articles/structured-output-grammar)
-
-<br>
-읽어주셔서 감사합니다. 😊

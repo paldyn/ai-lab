@@ -284,10 +284,8 @@ shap.force_plot(
 
 ---
 
+읽어주셔서 감사합니다. 😊
+
 **지난 글:** [결정 트리: 질문의 연쇄로 만드는 분류 모델](/articles/ml-decision-tree)
 
 **다음 글:** [그래디언트 부스팅: XGBoost·LightGBM의 기반 원리](/articles/ml-gradient-boosting)
-
-<br>
-읽어주셔서 감사합니다. 😊
-

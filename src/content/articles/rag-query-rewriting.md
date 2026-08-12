@@ -175,10 +175,8 @@ def decompose_and_retrieve(question, llm, retriever):
 
 ---
 
+읽어주셔서 감사합니다. 😊
+
 **지난 글:** [RAG 리랭킹: 검색 품질을 한 단계 끌어올리는 기술](/articles/rag-reranking)
 
 **다음 글:** [RAG 멀티홉 추론: 복잡한 질문을 단계적으로 해결하기](/articles/rag-multi-hop)
-
-<br>
-읽어주셔서 감사합니다. 😊
-

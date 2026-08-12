@@ -129,10 +129,8 @@ SynthID 이미지 워터마크는 픽셀 도메인이 아닌 latent space에서 
 
 ---
 
+읽어주셔서 감사합니다. 😊
+
 **지난 글:** [AI 탈옥(Jailbreak): 공격 유형과 방어 전략](/articles/ai-jailbreak)
 
 **다음 글:** [AI 규제: 전 세계 AI 법안과 거버넌스 현황](/articles/ai-regulation)
-
-<br>
-읽어주셔서 감사합니다. 😊
-

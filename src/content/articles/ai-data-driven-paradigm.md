@@ -142,10 +142,8 @@ def generate_training_examples(topic, num_examples=10):
 
 ---
 
-**지난 글:** [기호주의 AI vs 통계적 AI: 두 패러다임의 대충돌](/articles/ai-symbolic-vs-statistical)
-
-**다음 글:** [2025년 AI 생태계 전체 지도](/articles/ai-current-landscape)
-
-<br>
 읽어주셔서 감사합니다. 😊
 
+**지난 글:** [기호주의 AI vs 통계적 AI: 두 패러다임의 70년 대결](/articles/ai-symbolic-vs-statistical)
+
+**다음 글:** [2025~2026 AI 생태계 전체 지도: 지금 무슨 일이 벌어지고 있나](/articles/ai-current-landscape)

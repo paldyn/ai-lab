@@ -235,10 +235,8 @@ Serial vs Parallel 삽입 방식, AdapterFusion을 통한 멀티태스크 지식
 
 ---
 
+읽어주셔서 감사합니다. 😊
+
 **지난 글:** [Prefix Tuning & P-Tuning: 접두사 토큰으로 LLM 조율하기](/articles/finetuning-prefix-tuning)
 
 **다음 글:** [파인튜닝 데이터 준비: 형식·품질·양 완전 가이드](/articles/finetuning-data-prep)
-
-<br>
-읽어주셔서 감사합니다. 😊
-

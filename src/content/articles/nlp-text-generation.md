@@ -194,10 +194,8 @@ for token in streamer:
 
 ---
 
+읽어주셔서 감사합니다. 😊
+
 **지난 글:** [기계 번역: 언어의 장벽을 넘는 기술](/articles/nlp-machine-translation)
 
 **다음 글:** [지시 해소: 대명사가 가리키는 것을 찾아라](/articles/nlp-coreference)
-
-<br>
-읽어주셔서 감사합니다. 😊
-

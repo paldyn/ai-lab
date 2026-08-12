@@ -245,10 +245,8 @@ jobs:
 
 ---
 
+읽어주셔서 감사합니다. 😊
+
 **지난 글:** [Cursor: AI 네이티브 IDE의 새로운 기준](/articles/ai-coding-cursor)
 
 **다음 글:** [OpenAI Codex와 ChatGPT: AI 코딩의 시작점](/articles/ai-coding-codex)
-
-<br>
-읽어주셔서 감사합니다. 😊
-

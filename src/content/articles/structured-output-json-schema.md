@@ -132,9 +132,8 @@ FINDINGS = {
 
 ---
 
+읽어주셔서 감사합니다. 😊
+
 **지난 글:** [구조화 출력: 모델의 답을 프로그램이 쓸 수 있는 형태로](/articles/structured-output-basics)
 
 **다음 글:** [제약 디코딩: 스키마가 토큰을 막는 방식](/articles/structured-output-constrained-decoding)
-
-<br>
-읽어주셔서 감사합니다. 😊

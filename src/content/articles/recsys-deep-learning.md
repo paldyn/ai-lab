@@ -207,10 +207,8 @@ for user_ids, item_ids, labels in dataloader:
 
 ---
 
+읽어주셔서 감사합니다. 😊
+
 **지난 글:** [행렬 분해(MF): SVD·ALS·FunkSVD 추천 알고리즘 완전 해설](/articles/recsys-matrix-factorization)
 
 **다음 글:** [투타워 모델: 대규모 추천 시스템 구조 완전 해설](/articles/recsys-two-tower)
-
-<br>
-읽어주셔서 감사합니다. 😊
-

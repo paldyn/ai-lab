@@ -210,10 +210,8 @@ pipe.enable_xformers_memory_efficient_attention()
 
 ---
 
+읽어주셔서 감사합니다. 😊
+
 **지난 글:** [확산 모델(Diffusion Model) 기초: 노이즈에서 이미지로](/articles/cv-diffusion-basics)
 
 **다음 글:** [ControlNet: 포즈·깊이·엣지로 확산 모델을 정밀 제어하기](/articles/cv-controlnet)
-
-<br>
-읽어주셔서 감사합니다. 😊
-

@@ -170,7 +170,6 @@ $$\mathrm{Attention}(Q, K, V) = \mathrm{softmax}\!\left(\frac{QK^\top}{\sqrt{d_k
 
 ---
 
-**다음 글:** [논문 수식 표기 규약: 스칼라·벡터·행렬·텐서를 구별해서 읽기](/articles/math-notation-conventions)
-
-<br>
 읽어주셔서 감사합니다. 😊
+
+**다음 글:** [논문 수식 표기 규약: 스칼라·벡터·행렬·텐서를 구별해서 읽기](/articles/math-notation-conventions)

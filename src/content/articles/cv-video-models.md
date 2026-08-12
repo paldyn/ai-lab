@@ -196,10 +196,8 @@ pipe.unet.enable_forward_chunking(
 
 ---
 
-**지난 글:** [AI 이미지 편집: 인페인팅·아웃페인팅·스타일 전이](/articles/cv-image-editing)
-
-**다음 글:** [3D 생성 AI: NeRF·3D Gaussian Splatting·Point-E 완전 해설](/articles/cv-3d-generation)
-
-<br>
 읽어주셔서 감사합니다. 😊
 
+**지난 글:** [AI 이미지 편집: 인페인팅·아웃페인팅·스타일 전이·DDIM Inversion](/articles/cv-image-editing)
+
+**다음 글:** [3D 생성 AI: NeRF·3D Gaussian Splatting·Point-E 완전 해설](/articles/cv-3d-generation)

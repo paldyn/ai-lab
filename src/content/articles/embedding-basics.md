@@ -123,10 +123,8 @@ model.lm_head.weight = model.embedding.weight
 
 ---
 
+읽어주셔서 감사합니다. 😊
+
 **지난 글:** [tiktoken: OpenAI의 빠른 BPE 토크나이저](/articles/tokenizer-tiktoken)
 
 **다음 글:** [Word2Vec: 신경망으로 단어 의미를 학습하다](/articles/embedding-word2vec)
-
-<br>
-읽어주셔서 감사합니다. 😊
-

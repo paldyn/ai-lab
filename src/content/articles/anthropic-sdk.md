@@ -375,10 +375,8 @@ print(f"배치 ID: {batch.id}")
 
 ---
 
-**지난 글:** [HuggingFace Hub: 모델 공유와 배포](/articles/huggingface-hub)
-
-**다음 글:** [OpenAI SDK로 GPT API 활용하기](/articles/openai-sdk)
-
-<br>
 읽어주셔서 감사합니다. 😊
 
+**지난 글:** [HuggingFace Hub: 모델 공유와 배포](/articles/huggingface-hub)
+
+**다음 글:** [OpenAI SDK 완전 정복](/articles/openai-sdk)

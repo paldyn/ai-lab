@@ -213,10 +213,8 @@ eval:
 
 ---
 
+읽어주셔서 감사합니다. 😊
+
 **지난 글:** [LLMOps 개요: LLM 운영의 새로운 과제](/articles/llmops-overview)
 
 **다음 글:** [LLM 평가 파이프라인: 자동화된 품질 보장](/articles/llmops-eval-pipelines)
-
-<br>
-읽어주셔서 감사합니다. 😊
-

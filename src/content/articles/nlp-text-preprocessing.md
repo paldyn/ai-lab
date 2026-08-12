@@ -321,10 +321,8 @@ print(result)
 
 ---
 
+읽어주셔서 감사합니다. 😊
+
 **지난 글:** [멀티모달 임베딩: 텍스트와 이미지를 같은 공간에](/articles/embedding-multimodal)
 
 **다음 글:** [개체명 인식(NER): 텍스트에서 정보를 추출하다](/articles/nlp-named-entity-recognition)
-
-<br>
-읽어주셔서 감사합니다. 😊
-

@@ -98,10 +98,8 @@ MoE 추론에서는 배치 내 다른 토큰이 서로 다른 전문가를 선�
 
 ---
 
+읽어주셔서 감사합니다. 😊
+
 **지난 글:** [MQA와 GQA: KV Cache 경량화 전략](/articles/transformer-mqa-gqa)
 
 **다음 글:** [토크나이저와 토큰: LLM이 텍스트를 보는 방법](/articles/tokenizer-and-tokens)
-
-<br>
-읽어주셔서 감사합니다. 😊
-

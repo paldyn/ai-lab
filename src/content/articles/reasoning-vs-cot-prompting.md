@@ -136,9 +136,8 @@ def solve(task: str, hard: bool) -> str:
 
 ---
 
+읽어주셔서 감사합니다. 😊
+
 **지난 글:** [사고 예산 제어: 얼마나 생각하게 할 것인가](/articles/reasoning-budget-control)
 
 **다음 글:** [추론 증류: 큰 모델의 사고를 작은 모델에 옮긴다](/articles/reasoning-distillation)
-
-<br>
-읽어주셔서 감사합니다. 😊

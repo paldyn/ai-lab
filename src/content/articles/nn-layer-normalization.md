@@ -141,10 +141,8 @@ RMSNorm의 장점:
 
 ---
 
+읽어주셔서 감사합니다. 😊
+
 **지난 글:** [배치 정규화: 내부 공변량 이동을 잡아라](/articles/nn-batch-normalization)
 
 **다음 글:** [드롭아웃: 과적합을 막는 앙상블 정규화](/articles/nn-dropout)
-
-<br>
-읽어주셔서 감사합니다. 😊
-

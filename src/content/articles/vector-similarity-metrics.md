@@ -227,10 +227,8 @@ pgvector: embedding <=> query  → 코사인 거리 반환
 
 ---
 
+읽어주셔서 감사합니다. 😊
+
 **지난 글:** [벡터 검색 완전 정복: 의미 기반 검색의 동작 원리](/articles/vector-search-basics)
 
 **다음 글:** [ANN 알고리즘 완전 정복: HNSW·IVF·LSH 비교 분석](/articles/vector-ann-algorithms)
-
-<br>
-읽어주셔서 감사합니다. 😊
-

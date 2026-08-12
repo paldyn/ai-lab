@@ -202,10 +202,8 @@ Self-Consistency는 구현이 단순하고 효과가 검증된 기법이다. 다
 
 ---
 
+읽어주셔서 감사합니다. 😊
+
 **지난 글:** [ReAct: 추론과 행동을 결합한 에이전트 프롬프팅](/articles/prompt-react)
 
 **다음 글:** [시스템 메시지 설계: LLM의 역할과 경계를 정의하다](/articles/prompt-system-message)
-
-<br>
-읽어주셔서 감사합니다. 😊
-

@@ -249,10 +249,8 @@ RAG는 LLM을 실제 비즈니스 문제에 적용할 때 가장 먼저 시도�
 
 ---
 
+읽어주셔서 감사합니다. 😊
+
 **지난 글:** [pgvector 완전 정복: PostgreSQL로 벡터 검색 구현하기](/articles/vector-db-pgvector)
 
 **다음 글:** [RAG 아키텍처 심화: Naive RAG에서 Modular RAG까지](/articles/rag-architecture)
-
-<br>
-읽어주셔서 감사합니다. 😊
-

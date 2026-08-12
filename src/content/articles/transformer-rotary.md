@@ -105,10 +105,8 @@ RoPE는 구현이 간결하고 KV 캐시와 잘 결합되며 외삽 확장이 �
 
 ---
 
+읽어주셔서 감사합니다. 😊
+
 **지난 글:** [효율적인 트랜스포머: 긴 시퀀스를 다루는 방법들](/articles/transformer-efficient)
 
 **다음 글:** [FlashAttention: IO-Aware 어텐션 연산](/articles/transformer-flash-attention)
-
-<br>
-읽어주셔서 감사합니다. 😊
-

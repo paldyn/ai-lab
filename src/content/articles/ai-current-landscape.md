@@ -123,9 +123,6 @@ def run_agent(user_goal: str):
 
 ---
 
-**지난 글:** [데이터 중심 패러다임: 왜 데이터가 새로운 석유인가](/articles/ai-data-driven-paradigm)
-
-
-<br>
 읽어주셔서 감사합니다. 😊
 
+**지난 글:** [데이터 중심 패러다임: 왜 데이터가 새로운 석유인가](/articles/ai-data-driven-paradigm)

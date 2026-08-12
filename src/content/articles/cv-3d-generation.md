@@ -274,10 +274,8 @@ python scripts/run.py \
 
 ---
 
-**지난 글:** [비디오 생성 모델: Sora·AnimateDiff·SVD 완전 해설](/articles/cv-video-models)
-
-**다음 글:** [자동 음성 인식(ASR): Whisper와 스트리밍 음성 처리 완전 해설](/articles/audio-asr)
-
-<br>
 읽어주셔서 감사합니다. 😊
 
+**지난 글:** [비디오 생성 모델: Sora·AnimateDiff·Stable Video Diffusion 완전 해설](/articles/cv-video-models)
+
+**다음 글:** [자동 음성 인식(ASR): Whisper와 스트리밍 음성 처리 완전 해설](/articles/audio-asr)

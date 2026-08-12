@@ -218,10 +218,8 @@ TTS 품질 평가는 크게 주관 평가와 객관 평가로 나뉜다.
 
 ---
 
+읽어주셔서 감사합니다. 😊
+
 **지난 글:** [자동 음성 인식(ASR): Whisper와 스트리밍 음성 처리 완전 해설](/articles/audio-asr)
 
 **다음 글:** [AI 음악 생성: MusicGen·AudioCraft·Suno AI 완전 해설](/articles/audio-music-generation)
-
-<br>
-읽어주셔서 감사합니다. 😊
-

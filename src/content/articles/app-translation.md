@@ -255,10 +255,8 @@ def translate_to_multiple(text: str, target_langs: list[str], domain: str = "gen
 
 ---
 
+읽어주셔서 감사합니다. 😊
+
 **지난 글:** [AI 정보 추출 파이프라인: 비정형 데이터에서 구조화 데이터로](/articles/app-extraction)
 
 **다음 글:** [AI 폼·서류 자동화: OCR부터 자동 입력까지](/articles/app-form-automation)
-
-<br>
-읽어주셔서 감사합니다. 😊
-

@@ -134,10 +134,8 @@ Mistral AI의 성공은 LLM 세계에 중요한 메시지를 전달했다.
 
 ---
 
+읽어주셔서 감사합니다. 😊
+
 **지난 글:** [LLaMA 패밀리 완전 해부: 오픈소스 LLM 혁명](/articles/llm-llama-family)
 
 **다음 글:** [Qwen과 DeepSeek: 중국 오픈소스 LLM의 도전](/articles/llm-qwen-deepseek)
-
-<br>
-읽어주셔서 감사합니다. 😊
-

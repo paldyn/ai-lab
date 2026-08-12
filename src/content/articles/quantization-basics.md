@@ -190,8 +190,8 @@ INT8은 FP16 대비 성능 손실이 거의 없어 대부분의 서비스 환경
 
 ---
 
-**지난 글:** [온프레미스에서 LLM 파인튜닝: GPU 서버 구성 완전 가이드](/articles/finetuning-on-prem)
-
-<br>
 읽어주셔서 감사합니다. 😊
 
+**지난 글:** [온프레미스에서 LLM 파인튜닝: GPU 서버 구성 완전 가이드](/articles/finetuning-on-prem)
+
+**다음 글:** [GGUF 완전 정복: llama.cpp의 양자화 포맷과 실전 사용법](/articles/quantization-gguf)

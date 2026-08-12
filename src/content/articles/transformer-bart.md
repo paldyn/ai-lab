@@ -108,10 +108,8 @@ print(tokenizer.decode(translated[0], skip_special_tokens=True))
 
 ---
 
+읽어주셔서 감사합니다. 😊
+
 **지난 글:** [T5: 텍스트를 텍스트로 변환하는 통합 프레임워크](/articles/transformer-t5)
 
 **다음 글:** [효율적인 트랜스포머: 긴 시퀀스를 다루는 방법들](/articles/transformer-efficient)
-
-<br>
-읽어주셔서 감사합니다. 😊
-

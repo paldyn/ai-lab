@@ -139,10 +139,8 @@ criterion = torch.nn.CrossEntropyLoss()
 
 ---
 
-**지난 글:** [신경망 기초: 층, 파라미터, 순전파의 모든 것](/articles/neural-network-basics)
-
-**다음 글:** [순전파와 역전파: 그래디언트 흐름 완전 이해](/articles/nn-forward-backward)
-
-<br>
 읽어주셔서 감사합니다. 😊
 
+**지난 글:** [신경망 기초: 층, 파라미터, 순전파의 모든 것](/articles/neural-network-basics)
+
+**다음 글:** [순전파와 역전파: 신경망 학습의 핵심 원리](/articles/nn-forward-backward)

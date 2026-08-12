@@ -169,10 +169,8 @@ MLP는 여전히 분류 헤드(classifier head), 피드포워드 레이어(FFN),
 
 ---
 
+읽어주셔서 감사합니다. 😊
+
 **지난 글:** [순전파와 역전파: 신경망 학습의 핵심 원리](/articles/nn-forward-backward)
 
 **다음 글:** [가중치 초기화: Xavier, He, 그리고 수렴의 비밀](/articles/nn-weight-init)
-
-<br>
-읽어주셔서 감사합니다. 😊
-

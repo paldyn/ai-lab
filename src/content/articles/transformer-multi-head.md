@@ -128,8 +128,8 @@ Multi-Head Attention을 이해했으니, 앞으로 다룰 주제들이 훨씬 �
 
 ---
 
-**지난 글:** [Self-Attention: 모든 토큰이 모든 토큰과 대화한다](/articles/transformer-self-attention)
-
-<br>
 읽어주셔서 감사합니다. 😊
 
+**지난 글:** [Self-Attention: 모든 토큰이 모든 토큰과 대화한다](/articles/transformer-self-attention)
+
+**다음 글:** [Positional Encoding: 트랜스포머에 순서를 알려주는 방법](/articles/transformer-positional-encoding)

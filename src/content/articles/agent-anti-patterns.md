@@ -343,10 +343,8 @@ for category, items in PRODUCTION_CHECKLIST.items():
 
 ---
 
-**지난 글:** [에이전트 평가: 성능 측정과 벤치마킹 방법론](/articles/agent-evaluation)
-
-**다음 글:** [컴퓨터 비전 심층: 딥러닝 기반 이미지 분류](/articles/cv-image-classification-deep)
-
-<br>
 읽어주셔서 감사합니다. 😊
 
+**지난 글:** [에이전트 평가: 성능 측정과 벤치마킹 방법론](/articles/agent-evaluation)
+
+**다음 글:** [딥러닝 이미지 분류 완전 정복: 백본·전이학습·실전 코드](/articles/cv-image-classification-deep)

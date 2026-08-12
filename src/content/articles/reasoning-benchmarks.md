@@ -115,9 +115,8 @@ def evaluate(model_fn, items: list[dict], repeats: int = 5) -> dict:
 
 ---
 
+읽어주셔서 감사합니다. 😊
+
 **지난 글:** [추론 증류: 큰 모델의 사고를 작은 모델에 옮긴다](/articles/reasoning-distillation)
 
 **다음 글:** [추론 모델의 비용과 지연을 다루는 법](/articles/reasoning-cost-latency)
-
-<br>
-읽어주셔서 감사합니다. 😊

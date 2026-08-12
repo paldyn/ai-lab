@@ -231,10 +231,8 @@ class CostTracker:
 
 ---
 
+읽어주셔서 감사합니다. 😊
+
 **지난 글:** [LLMOps 관측성: 프로덕션 LLM 시스템 들여다보기](/articles/llmops-observability)
 
 **다음 글:** [LLM 시맨틱 캐시: 반복 요청 비용 제로화 전략](/articles/llmops-cache)
-
-<br>
-읽어주셔서 감사합니다. 😊
-

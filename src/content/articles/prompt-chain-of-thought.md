@@ -210,10 +210,8 @@ def cot_solve(
 
 ---
 
+읽어주셔서 감사합니다. 😊
+
 **지난 글:** [Zero-shot과 Few-shot Learning: 예시의 힘](/articles/prompt-zero-few-shot)
 
 **다음 글:** [Tree-of-Thought: 여러 추론 경로를 탐색하다](/articles/prompt-tree-of-thought)
-
-<br>
-읽어주셔서 감사합니다. 😊
-

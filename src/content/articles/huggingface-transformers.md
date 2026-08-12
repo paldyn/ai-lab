@@ -180,10 +180,8 @@ print(tokenizer.decode(output[0], skip_special_tokens=True))
 
 ---
 
+읽어주셔서 감사합니다. 😊
+
 **지난 글:** [TensorFlow/Keras로 시작하는 딥러닝](/articles/tensorflow-keras)
 
 **다음 글:** [HuggingFace Datasets로 데이터 관리하기](/articles/huggingface-datasets)
-
-<br>
-읽어주셔서 감사합니다. 😊
-

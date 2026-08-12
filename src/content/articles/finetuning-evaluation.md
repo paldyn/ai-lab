@@ -292,10 +292,8 @@ lm_eval \
 
 ---
 
+읽어주셔서 감사합니다. 😊
+
 **지난 글:** [파인튜닝 하이퍼파라미터: 최적 설정 완전 가이드](/articles/finetuning-hyperparameters)
 
 **다음 글:** [클라우드에서 LLM 파인튜닝: AWS·GCP·Azure 완전 가이드](/articles/finetuning-on-cloud)
-
-<br>
-읽어주셔서 감사합니다. 😊
-

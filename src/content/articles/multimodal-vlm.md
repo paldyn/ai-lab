@@ -253,10 +253,8 @@ VLM 평가에는 다양한 벤치마크가 사용된다. **MMBench**는 총 6K�
 
 ---
 
+읽어주셔서 감사합니다. 😊
+
 **지난 글:** [멀티모달 LLM: 텍스트·이미지·오디오를 함께 이해하는 AI 완전 해설](/articles/multimodal-llm)
 
 **다음 글:** [멀티모달 AI 평가: MMBench·MMMU·VQA 벤치마크 완전 해설](/articles/multimodal-evaluation)
-
-<br>
-읽어주셔서 감사합니다. 😊
-

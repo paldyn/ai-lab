@@ -121,9 +121,8 @@ draft: false
 
 ---
 
+읽어주셔서 감사합니다. 😊
+
 **지난 글:** [도구를 한꺼번에 부를 때](/articles/function-calling-parallel)
 
 **다음 글:** [컨텍스트를 예산으로 다루기](/articles/context-engineering-overview)
-
-<br>
-읽어주셔서 감사합니다. 😊

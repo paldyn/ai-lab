@@ -198,10 +198,8 @@ EU AI Act(2024)는 AI를 위험도에 따라 분류하고 고위험 AI(의료·�
 
 ---
 
+읽어주셔서 감사합니다. 😊
+
 **지난 글:** [LLM Fallback 전략: 장애에도 살아남는 서비스 설계](/articles/llmops-fallback-strategies)
 
 **다음 글:** [AI 정렬: 인간의 가치와 AI 목표를 일치시키기](/articles/ai-alignment)
-
-<br>
-읽어주셔서 감사합니다. 😊
-

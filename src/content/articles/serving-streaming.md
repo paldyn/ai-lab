@@ -319,10 +319,8 @@ async def resilient_stream(client, messages: list, max_retries: int = 3):
 
 ---
 
+읽어주셔서 감사합니다. 😊
+
 **지난 글:** [LLM 서빙 API 설계: OpenAI 호환 인터페이스 구축](/articles/serving-api-design)
 
 **다음 글:** [LLM API 속도 제한: Rate Limiting 전략과 구현](/articles/serving-rate-limiting)
-
-<br>
-읽어주셔서 감사합니다. 😊
-

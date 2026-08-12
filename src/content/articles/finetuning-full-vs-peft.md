@@ -156,10 +156,8 @@ LoRA와 QLoRA는 파인튜닝 민주화를 이끈 기술이다. 수십만 달러
 
 ---
 
-**지난 글:** [파인튜닝 완전 정복: 사전 학습 모델을 내 데이터로 특화하는 방법](/articles/finetuning-overview)
-
-**다음 글:** [LoRA 심화: DoRA·rsLoRA·LoftQ와 최적 하이퍼파라미터 찾기](/articles/finetuning-lora)
-
-<br>
 읽어주셔서 감사합니다. 😊
 
+**지난 글:** [파인튜닝 완전 정복: 사전 학습 모델을 내 데이터로 특화하는 방법](/articles/finetuning-overview)
+
+**다음 글:** [LoRA 완전 정복: 저랭크 어댑테이션의 수학과 실전](/articles/finetuning-lora)

@@ -219,10 +219,8 @@ print(response.choices[0].message.content)
 
 ---
 
+읽어주셔서 감사합니다. 😊
+
 **지난 글:** [AI 음악 생성: MusicGen·AudioCraft·Suno AI 완전 해설](/articles/audio-music-generation)
 
 **다음 글:** [비전-언어 모델(VLM): CLIP·BLIP2·LLaVA 완전 해설](/articles/multimodal-vlm)
-
-<br>
-읽어주셔서 감사합니다. 😊
-

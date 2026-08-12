@@ -216,10 +216,8 @@ def adaptive_sampling(prompt: str, max_n: int = 16) -> str | None:
 
 ---
 
-**지난 글:** [추론 모델은 무엇이 다른가: 사고 토큰과 그 청구서](/articles/reasoning-models-overview)
-
-**다음 글:** [추론 능력은 어떻게 훈련되는가: 강화학습과 검증 가능한 보상](/articles/reasoning-rl-training)
-
-<br>
 읽어주셔서 감사합니다. 😊
 
+**지난 글:** [추론 모델은 무엇이 다른가: 사고 토큰과 그 청구서](/articles/reasoning-models-overview)
+
+**다음 글:** [추론 능력은 어떻게 훈련되는가: 검증 가능한 보상과 강화학습](/articles/reasoning-rl-training)

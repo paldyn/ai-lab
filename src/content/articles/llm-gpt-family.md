@@ -135,8 +135,8 @@ GPT 시리즈는 단순한 언어모델을 넘어, AI와 인간이 상호작용�
 
 ---
 
-**다음 글:** [Claude 패밀리 완전 해부: Constitutional AI와 안전성 우선 설계](/articles/llm-claude-family)
-
-<br>
 읽어주셔서 감사합니다. 😊
 
+**지난 글:** [LLM의 한계와 환각: AI가 틀리는 이유](/articles/llm-limits-and-hallucination)
+
+**다음 글:** [Claude 패밀리 완전 해부: Constitutional AI와 안전성 우선 설계](/articles/llm-claude-family)

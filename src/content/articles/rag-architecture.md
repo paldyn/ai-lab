@@ -336,10 +336,8 @@ print(result["answer"])
 
 ---
 
+읽어주셔서 감사합니다. 😊
+
 **지난 글:** [RAG 완전 정복: 검색 증강 생성의 핵심 원리](/articles/rag-basics)
 
 **다음 글:** [RAG 청킹 전략 완전 정복: 문서를 어떻게 나눠야 하는가](/articles/rag-chunking-strategies)
-
-<br>
-읽어주셔서 감사합니다. 😊
-

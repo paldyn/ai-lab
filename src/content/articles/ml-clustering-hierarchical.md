@@ -286,10 +286,8 @@ model_manhattan = AgglomerativeClustering(
 
 ---
 
+읽어주셔서 감사합니다. 😊
+
 **지난 글:** [K-평균 군집화: 데이터를 K개 그룹으로 나누는 법](/articles/ml-clustering-kmeans)
 
 **다음 글:** [DBSCAN: 밀도로 찾는 군집과 이상치](/articles/ml-dbscan)
-
-<br>
-읽어주셔서 감사합니다. 😊
-

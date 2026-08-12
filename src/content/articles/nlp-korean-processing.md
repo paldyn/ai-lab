@@ -246,10 +246,8 @@ print(result)
 
 ---
 
+읽어주셔서 감사합니다. 😊
+
 **지난 글:** [지시 해소: 대명사가 가리키는 것을 찾아라](/articles/nlp-coreference)
 
 **다음 글:** [LLM의 본질: 거대 언어 모델이란 무엇인가](/articles/llm-essence)
-
-<br>
-읽어주셔서 감사합니다. 😊
-

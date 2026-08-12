@@ -412,10 +412,8 @@ def compute_agent_scorecard(
 
 ---
 
+읽어주셔서 감사합니다. 😊
+
 **지난 글:** [에이전트 리플렉션: 자기 평가와 반복 개선 패턴](/articles/agent-reflection)
 
 **다음 글:** [에이전트 안티패턴: 흔한 실수와 피해야 할 설계](/articles/agent-anti-patterns)
-
-<br>
-읽어주셔서 감사합니다. 😊
-

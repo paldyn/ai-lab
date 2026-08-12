@@ -248,7 +248,8 @@ $$k$$ 를 구하려면 값 한 쌍이면 됩니다. $$x = 4$$ 일 때 $$y = 20$$
 
 ---
 
+읽어주셔서 감사합니다. 😊
+
 **지난 글:** [거듭제곱과 근호: a⁰=1은 약속이 아니라 결론이다](/articles/math-basics-powers-and-roots)
 
-<br>
-읽어주셔서 감사합니다. 😊
+**다음 글:** [전개와 인수분해: 괄호를 풀고 다시 묶기](/articles/math-basics-expanding-and-factoring)

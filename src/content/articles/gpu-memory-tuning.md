@@ -289,10 +289,8 @@ OOM이 발생했을 때 순서대로 시도하자.
 
 ---
 
-**지난 글:** [GPU와 CUDA: 딥러닝 가속의 핵심 이해하기](/articles/gpu-cuda)
-
-**다음 글:** [RAG 시스템 처음부터 구축하기: 실전 프로젝트](/articles/project-rag-from-scratch)
-
-<br>
 읽어주셔서 감사합니다. 😊
 
+**지난 글:** [GPU와 CUDA: 딥러닝 연산의 심장을 이해하다](/articles/gpu-cuda)
+
+**다음 글:** [RAG 시스템 처음부터 구축하기: 실전 프로젝트](/articles/project-rag-from-scratch)

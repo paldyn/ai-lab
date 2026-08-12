@@ -292,10 +292,8 @@ model = DDP(model, device_ids=[local_rank])
 
 ---
 
+읽어주셔서 감사합니다. 😊
+
 **지난 글:** [Jupyter Notebook·Lab 완전 정복: AI 개발자의 필수 환경](/articles/notebook-jupyter)
 
 **다음 글:** [GPU 메모리 최적화: OOM 없이 더 크게 훈련하는 법](/articles/gpu-memory-tuning)
-
-<br>
-읽어주셔서 감사합니다. 😊
-

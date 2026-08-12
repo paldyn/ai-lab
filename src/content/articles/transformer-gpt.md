@@ -100,10 +100,8 @@ GPT-4의 정확한 사양은 공개되지 않았으나, Mixture-of-Experts 구�
 
 ---
 
+읽어주셔서 감사합니다. 😊
+
 **지난 글:** [BERT: 양방향 사전학습 언어 모델의 등장](/articles/transformer-bert)
 
 **다음 글:** [T5: 텍스트를 텍스트로 변환하는 통합 프레임워크](/articles/transformer-t5)
-
-<br>
-읽어주셔서 감사합니다. 😊
-

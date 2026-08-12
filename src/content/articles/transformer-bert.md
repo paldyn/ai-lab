@@ -124,10 +124,8 @@ for batch in dataloader:
 
 ---
 
+읽어주셔서 감사합니다. 😊
+
 **지난 글:** [Masking: 트랜스포머의 정보 차단 전략](/articles/transformer-masking)
 
 **다음 글:** [GPT: 자기회귀적 언어 모델의 진화](/articles/transformer-gpt)
-
-<br>
-읽어주셔서 감사합니다. 😊
-

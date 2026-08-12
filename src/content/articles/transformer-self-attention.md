@@ -116,10 +116,8 @@ O(n²) 복잡도는 긴 시퀀스의 병목이 된다. n=8192 토큰이면 어�
 
 ---
 
+읽어주셔서 감사합니다. 😊
+
 **지난 글:** [Transformer 기초: Attention Is All You Need](/articles/transformer-basics)
 
 **다음 글:** [Multi-Head Attention: 여러 관점으로 동시에 보기](/articles/transformer-multi-head)
-
-<br>
-읽어주셔서 감사합니다. 😊
-

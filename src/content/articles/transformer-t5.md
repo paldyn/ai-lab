@@ -107,10 +107,8 @@ print(tokenizer.decode(out[0], skip_special_tokens=True))
 
 ---
 
+읽어주셔서 감사합니다. 😊
+
 **지난 글:** [GPT: 자기회귀적 언어 모델의 진화](/articles/transformer-gpt)
 
 **다음 글:** [BART: 시퀀스-투-시퀀스 사전학습 모델](/articles/transformer-bart)
-
-<br>
-읽어주셔서 감사합니다. 😊
-

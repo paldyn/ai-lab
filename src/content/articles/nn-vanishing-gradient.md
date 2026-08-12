@@ -205,10 +205,8 @@ def log_gradient_norms(model, step, writer=None):
 
 ---
 
+읽어주셔서 감사합니다. 😊
+
 **지난 글:** [드롭아웃: 과적합을 막는 앙상블 정규화](/articles/nn-dropout)
 
 **다음 글:** [합성곱 연산: CNN의 핵심 원리](/articles/cnn-convolution-basics)
-
-<br>
-읽어주셔서 감사합니다. 😊
-

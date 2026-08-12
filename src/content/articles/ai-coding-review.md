@@ -249,10 +249,8 @@ def estimate_cost(diff: str, model: str = "claude-sonnet-4-6") -> float:
 
 ---
 
-**지난 글:** [AI 코딩 모범 사례: 생산성과 품질을 동시에 잡는 전략](/articles/ai-coding-best-practices)
-
-**다음 글:** [AI 챗봇 설계: 사용자 경험부터 백엔드까지](/articles/app-chatbot-design)
-
-<br>
 읽어주셔서 감사합니다. 😊
 
+**지난 글:** [AI 코딩 모범 사례: 생산성과 품질을 동시에 잡는 전략](/articles/ai-coding-best-practices)
+
+**다음 글:** [AI 챗봇 서비스 설계: 아키텍처부터 배포까지](/articles/app-chatbot-design)

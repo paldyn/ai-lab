@@ -169,10 +169,8 @@ EAGLE(Extrapolation Algorithm for Greater Language-model Efficiency)은 Target �
 
 ---
 
+읽어주셔서 감사합니다. 😊
+
 **지난 글:** [모델 프루닝: 신경망의 불필요한 가중치 제거하기](/articles/pruning)
 
 **다음 글:** [LLM 추론 엔진 완전 비교: vLLM·TGI·llama.cpp·Ollama](/articles/inference-engines)
-
-<br>
-읽어주셔서 감사합니다. 😊
-

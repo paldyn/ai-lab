@@ -189,9 +189,8 @@ RuntimeError: mat1 and mat2 shapes cannot be multiplied (512x768 and 768x512)
 
 ---
 
+읽어주셔서 감사합니다. 😊
+
 **지난 글:** [어텐션 식 한 줄에 들어 있는 수학 전부: 이 커리큘럼의 지도](/articles/math-attention-formula-anatomy)
 
 **다음 글:** [Σ와 첨자, 그리고 einsum: 수식을 그대로 코드로 옮기기](/articles/math-sigma-index-and-einsum)
-
-<br>
-읽어주셔서 감사합니다. 😊

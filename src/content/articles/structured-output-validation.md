@@ -154,7 +154,6 @@ def verify_grounding(data: dict, source: str) -> list[Violation]:
 
 ---
 
-**지난 글:** [문법으로 출력을 제약하기](/articles/structured-output-grammar)
-
-<br>
 읽어주셔서 감사합니다. 😊
+
+**지난 글:** [문법으로 출력을 제약하기](/articles/structured-output-grammar)

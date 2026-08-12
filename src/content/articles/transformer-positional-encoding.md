@@ -92,8 +92,8 @@ BERT와 GPT 계열은 학습형 PE를 선택해 데이터에서 위치 표현을
 
 ---
 
-**다음 글:** [Transformer Encoder: 문맥을 이해하는 핵심 블록](/articles/transformer-encoder)
-
-<br>
 읽어주셔서 감사합니다. 😊
 
+**지난 글:** [Multi-Head Attention: 여러 관점으로 동시에 보기](/articles/transformer-multi-head)
+
+**다음 글:** [Transformer Encoder: 문맥을 이해하는 핵심 블록](/articles/transformer-encoder)

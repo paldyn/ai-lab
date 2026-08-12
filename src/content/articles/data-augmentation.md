@@ -199,10 +199,8 @@ def spec_augment(
 
 ---
 
-**지난 글:** [데이터 레이블링: AI가 학습할 정답을 만드는 과정](/articles/data-labeling)
-
-**다음 글:** [합성 데이터: AI가 AI를 위한 데이터를 만들다](/articles/data-synthetic)
-
-<br>
 읽어주셔서 감사합니다. 😊
 
+**지난 글:** [데이터 레이블링: AI가 학습할 정답을 만드는 과정](/articles/data-labeling)
+
+**다음 글:** [합성 데이터: 실제 데이터 없이 AI 학습 데이터 만들기](/articles/data-synthetic)

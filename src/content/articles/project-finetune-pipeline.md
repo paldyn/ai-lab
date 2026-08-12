@@ -545,10 +545,8 @@ model = get_peft_model(model, lora_config)
 
 ---
 
+읽어주셔서 감사합니다. 😊
+
 **지난 글:** [에이전트 시스템 처음부터 구축하기: 실전 프로젝트](/articles/project-agent-from-scratch)
 
 **다음 글:** [평가 하네스 구축: LLM 성능을 체계적으로 측정하라](/articles/project-evaluation-harness)
-
-<br>
-읽어주셔서 감사합니다. 😊
-

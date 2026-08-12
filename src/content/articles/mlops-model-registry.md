@@ -372,9 +372,8 @@ def ensemble_predict(features):
 
 ---
 
+읽어주셔서 감사합니다. 😊
+
 **지난 글:** [피처 스토어: 피처 재사용과 일관성 확보](/articles/mlops-feature-store)
 
 **다음 글:** [ML CI/CD: 자동화된 모델 배포 파이프라인](/articles/mlops-ci-cd)
-
-읽어주셔서 감사합니다. 😊
-

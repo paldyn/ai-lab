@@ -561,8 +561,8 @@ print(f"12개월 ROI: {roi['roi_12m']:.0f}%")
 
 ---
 
-**지난 글:** [LLM 서비스 배포: API 서버부터 모니터링까지](/articles/project-deploying-llm)
-
-<br>
 읽어주셔서 감사합니다. 😊
 
+**지난 글:** [LLM 서비스 배포: API 서버부터 모니터링까지](/articles/project-deploying-llm)
+
+**다음 글:** [추론 모델은 무엇이 다른가: 사고 토큰과 그 청구서](/articles/reasoning-models-overview)

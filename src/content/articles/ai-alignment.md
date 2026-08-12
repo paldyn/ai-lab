@@ -126,10 +126,8 @@ def dpo_loss(policy, ref_policy, prompt, chosen, rejected, beta=0.1):
 
 ---
 
+읽어주셔서 감사합니다. 😊
+
 **지난 글:** [AI 안전성 개요: 신뢰할 수 있는 AI를 만들기 위한 기반](/articles/ai-safety-overview)
 
 **다음 글:** [AI 편향과 공정성: 알고리즘 차별을 막는 방법](/articles/ai-bias-fairness)
-
-<br>
-읽어주셔서 감사합니다. 😊
-

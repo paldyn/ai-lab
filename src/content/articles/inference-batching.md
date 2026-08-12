@@ -221,8 +221,8 @@ LLM 추론 최적화의 핵심 기술을 요약하면:
 
 ---
 
-**지난 글:** [TGI 완전 가이드: Hugging Face의 프로덕션급 LLM 서빙](/articles/inference-tgi)
-
-<br>
 읽어주셔서 감사합니다. 😊
 
+**지난 글:** [TGI 완전 가이드: Hugging Face의 프로덕션급 LLM 서빙](/articles/inference-tgi)
+
+**다음 글:** [KV 캐시 완전 해설: LLM 추론 메모리의 핵심](/articles/inference-kv-cache)

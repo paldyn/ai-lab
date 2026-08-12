@@ -225,10 +225,8 @@ FastText는 Word2Vec의 단순 확장이지만, 그 효과는 극적이다. 문�
 
 ---
 
+읽어주셔서 감사합니다. 😊
+
 **지난 글:** [GloVe: 전역 공기 통계로 단어 벡터를 만들다](/articles/embedding-glove)
 
 **다음 글:** [문맥적 임베딩: ELMo부터 BERT까지](/articles/embedding-contextual)
-
-<br>
-읽어주셔서 감사합니다. 😊
-

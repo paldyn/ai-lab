@@ -142,10 +142,8 @@ Upstage는 SOLAR 이후 상업 서비스 **Solar Pro**를 출시했다. Document
 
 ---
 
+읽어주셔서 감사합니다. 😊
+
 **지난 글:** [Qwen과 DeepSeek: 중국 오픈소스 LLM의 도전](/articles/llm-qwen-deepseek)
 
 **다음 글:** [LLM 벤치마크 완전 해부: MMLU, HumanEval, LMSYS Chatbot Arena](/articles/llm-comparison-benchmarks)
-
-<br>
-읽어주셔서 감사합니다. 😊
-

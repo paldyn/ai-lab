@@ -209,10 +209,8 @@ def evaluate_extraction(predicted: dict, ground_truth: dict) -> dict:
 
 ---
 
+읽어주셔서 감사합니다. 😊
+
 **지난 글:** [AI 데이터 분석 보조 시스템](/articles/app-data-analysis)
 
 **다음 글:** [AI 번역 시스템 구축: 도메인 특화 고품질 번역](/articles/app-translation)
-
-<br>
-읽어주셔서 감사합니다. 😊
-

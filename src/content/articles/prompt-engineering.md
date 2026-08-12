@@ -191,10 +191,8 @@ class PromptExperiment:
 
 ---
 
+읽어주셔서 감사합니다. 😊
+
 **지난 글:** [LLM 벤치마크 완전 해부: MMLU, HumanEval, LMSYS Chatbot Arena](/articles/llm-comparison-benchmarks)
 
 **다음 글:** [Zero-shot과 Few-shot Learning: 예시의 힘](/articles/prompt-zero-few-shot)
-
-<br>
-읽어주셔서 감사합니다. 😊
-

@@ -123,9 +123,8 @@ def dedupe(ranked, threshold=0.92):
 
 ---
 
+읽어주셔서 감사합니다. 😊
+
 **지난 글:** [대화를 기억으로 바꾸기](/articles/context-summarization-memory)
 
 **다음 글:** [예산을 넘겼을 때 무엇부터 버릴 것인가](/articles/context-window-budgeting)
-
-<br>
-읽어주셔서 감사합니다. 😊

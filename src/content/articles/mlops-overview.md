@@ -248,7 +248,6 @@ MLOps는 ML 프로젝트를 "연구 프로토타입"에서 "운영 가능한 시
 
 ---
 
-**다음 글:** [MLOps 실험 트래킹: 재현 가능한 ML 개발](/articles/mlops-experiment-tracking)
-
 읽어주셔서 감사합니다. 😊
 
+**다음 글:** [MLOps 실험 트래킹: 재현 가능한 ML 개발](/articles/mlops-experiment-tracking)

@@ -324,10 +324,8 @@ RAG 시스템 구축에는 LlamaIndex, 에이전트·도구 조합에는 LangCha
 
 ---
 
+읽어주셔서 감사합니다. 😊
+
 **지난 글:** [LangGraph 완전 가이드: 상태 기반 에이전트 워크플로우](/articles/agent-langgraph)
 
 **다음 글:** [CrewAI 완전 가이드: 역할 기반 멀티 에이전트 협업](/articles/agent-crewai)
-
-<br>
-읽어주셔서 감사합니다. 😊
-

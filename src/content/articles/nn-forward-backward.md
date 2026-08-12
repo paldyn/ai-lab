@@ -162,10 +162,8 @@ for batch in dataloader:
 
 ---
 
+읽어주셔서 감사합니다. 😊
+
 **지난 글:** [활성화 함수: ReLU·Sigmoid·GELU의 모든 것](/articles/nn-activation-functions)
 
 **다음 글:** [MLP: 다층 퍼셉트론으로 임의의 함수를 근사하다](/articles/nn-mlp)
-
-<br>
-읽어주셔서 감사합니다. 😊
-

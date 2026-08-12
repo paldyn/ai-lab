@@ -236,10 +236,8 @@ def create_content_calendar(
 
 ---
 
+읽어주셔서 감사합니다. 😊
+
 **지난 글:** [AI 고객 지원 자동화: 티켓 분류부터 답변 생성까지](/articles/app-customer-support)
 
 **다음 글:** [AI 데이터 분석 보조 시스템](/articles/app-data-analysis)
-
-<br>
-읽어주셔서 감사합니다. 😊
-

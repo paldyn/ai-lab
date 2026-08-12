@@ -155,10 +155,8 @@ def verifiable_reward(output: str, task: dict) -> float:
 
 ---
 
+읽어주셔서 감사합니다. 😊
+
 **지난 글:** [테스트 타임 컴퓨트: 추론 시점에 계산을 더 쓴다는 것](/articles/reasoning-test-time-compute)
 
 **다음 글:** [검증자 모델: 답을 고르는 눈을 따로 기른다](/articles/reasoning-verifier-models)
-
-<br>
-읽어주셔서 감사합니다. 😊
-

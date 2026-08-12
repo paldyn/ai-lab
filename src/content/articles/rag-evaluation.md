@@ -169,10 +169,8 @@ session.get_leaderboard()
 
 ---
 
+읽어주셔서 감사합니다. 😊
+
 **지난 글:** [Graph RAG: 지식 그래프로 RAG의 한계를 극복하다](/articles/rag-graph-rag)
 
 **다음 글:** [RAG vs 파인튜닝: 언제 무엇을 선택해야 하나](/articles/rag-vs-finetuning)
-
-<br>
-읽어주셔서 감사합니다. 😊
-

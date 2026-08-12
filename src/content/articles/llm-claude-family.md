@@ -137,10 +137,8 @@ GPT와 Claude, 두 패밀리 중 어느 것이 더 좋은가는 태스크에 따
 
 ---
 
+읽어주셔서 감사합니다. 😊
+
 **지난 글:** [GPT 패밀리 완전 해부: GPT-1부터 GPT-4o까지](/articles/llm-gpt-family)
 
 **다음 글:** [Gemini 패밀리 완전 해부: Google의 멀티모달 LLM 전략](/articles/llm-gemini-family)
-
-<br>
-읽어주셔서 감사합니다. 😊
-

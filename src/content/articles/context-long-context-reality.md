@@ -91,7 +91,8 @@ def reorder_edges(docs):
 
 ---
 
+읽어주셔서 감사합니다. 😊
+
 **지난 글:** [컨텍스트를 예산으로 다루기](/articles/context-engineering-overview)
 
-<br>
-읽어주셔서 감사합니다. 😊
+**다음 글:** [캐시가 듣는 프롬프트와 듣지 않는 프롬프트](/articles/context-prompt-caching)

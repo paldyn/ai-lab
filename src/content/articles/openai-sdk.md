@@ -366,10 +366,8 @@ print(f"예상 프롬프트 토큰: {count_tokens(messages)}")
 
 ---
 
+읽어주셔서 감사합니다. 😊
+
 **지난 글:** [Anthropic SDK로 Claude API 활용하기](/articles/anthropic-sdk)
 
 **다음 글:** [Google Gemini SDK 활용 가이드](/articles/gemini-sdk)
-
-<br>
-읽어주셔서 감사합니다. 😊
-

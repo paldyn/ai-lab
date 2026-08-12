@@ -358,10 +358,8 @@ if result["success"]:
 
 ---
 
+읽어주셔서 감사합니다. 😊
+
 **지난 글:** [에이전트 플래닝: ReAct, Plan-and-Execute, Reflexion 전략](/articles/agent-planning)
 
 **다음 글:** [에이전트 평가: 성능 측정과 벤치마킹 방법론](/articles/agent-evaluation)
-
-<br>
-읽어주셔서 감사합니다. 😊
-

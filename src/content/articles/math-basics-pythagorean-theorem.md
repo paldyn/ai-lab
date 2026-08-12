@@ -201,7 +201,8 @@ $$\sqrt{2}$$
 
 ---
 
+읽어주셔서 감사합니다. 😊
+
 **지난 글:** [넓이와 부피: 잘라 붙여 직사각형으로 만들기](/articles/math-basics-area-and-volume)
 
-<br>
-읽어주셔서 감사합니다. 😊
+**다음 글:** [닮음과 비례: 크기가 달라도 변하지 않는 것](/articles/math-basics-similarity-and-proportion)

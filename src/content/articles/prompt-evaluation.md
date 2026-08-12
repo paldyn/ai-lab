@@ -280,8 +280,8 @@ def compare_versions(results_a: list[EvalResult], results_b: list[EvalResult]) -
 
 ---
 
-**지난 글:** [프롬프트 버전 관리: 프롬프트를 코드처럼 관리하기](/articles/prompt-versioning)
-
-<br>
 읽어주셔서 감사합니다. 😊
 
+**지난 글:** [프롬프트 버전 관리: 프롬프트를 코드처럼 관리하기](/articles/prompt-versioning)
+
+**다음 글:** [벡터 검색 완전 정복: 의미 기반 검색의 동작 원리](/articles/vector-search-basics)

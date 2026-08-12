@@ -227,10 +227,8 @@ KV 캐시는 LLM 추론의 메모리 병목이자 최적화의 핵심이다. 네
 
 ---
 
+읽어주셔서 감사합니다. 😊
+
 **지난 글:** [LLM 추론 배치 전략: Continuous Batching과 KV 캐시 완전 해설](/articles/inference-batching)
 
 **다음 글:** [LLM 서빙 API 설계: OpenAI 호환 인터페이스 구축](/articles/serving-api-design)
-
-<br>
-읽어주셔서 감사합니다. 😊
-

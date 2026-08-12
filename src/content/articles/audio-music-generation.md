@@ -212,10 +212,8 @@ torchaudio.save("melody_jazz.wav", wav[0].cpu(), model.sample_rate)
 
 ---
 
+읽어주셔서 감사합니다. 😊
+
 **지난 글:** [신경망 음성 합성(TTS): VITS·XTTS·CosyVoice 완전 해설](/articles/audio-tts)
 
 **다음 글:** [멀티모달 LLM: 텍스트·이미지·오디오를 함께 이해하는 AI 완전 해설](/articles/multimodal-llm)
-
-<br>
-읽어주셔서 감사합니다. 😊
-

@@ -251,10 +251,8 @@ NER은 독립적인 태스크이기도 하지만, 관계 추출(Relation Extract
 
 ---
 
+읽어주셔서 감사합니다. 😊
+
 **지난 글:** [NLP 텍스트 전처리: 데이터를 모델에 맞게 다듬다](/articles/nlp-text-preprocessing)
 
 **다음 글:** [품사 태깅(POS): 단어의 문법적 역할 파악](/articles/nlp-pos-tagging)
-
-<br>
-읽어주셔서 감사합니다. 😊
-

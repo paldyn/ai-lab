@@ -248,10 +248,8 @@ ControlNet은 SD의 텍스트 제어 한계를 보완해 "정확히 이런 포�
 
 ---
 
-**지난 글:** [Stable Diffusion: 잠재 확산 모델의 구조와 실전 활용](/articles/cv-stable-diffusion)
-
-**다음 글:** [AI 이미지 편집: 인페인팅·아웃페인팅·스타일 전이](/articles/cv-image-editing)
-
-<br>
 읽어주셔서 감사합니다. 😊
 
+**지난 글:** [Stable Diffusion: 잠재 확산 모델의 구조와 실전 활용](/articles/cv-stable-diffusion)
+
+**다음 글:** [AI 이미지 편집: 인페인팅·아웃페인팅·스타일 전이·DDIM Inversion](/articles/cv-image-editing)

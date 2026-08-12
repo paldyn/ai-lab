@@ -300,10 +300,8 @@ for i in range(min(10, len(indices))):
 
 ---
 
+읽어주셔서 감사합니다. 😊
+
 **지난 글:** [랜덤 포레스트: 앙상블 학습의 교과서](/articles/ml-random-forest)
 
 **다음 글:** [K-평균 군집화: 데이터를 K개 그룹으로 나누는 법](/articles/ml-clustering-kmeans)
-
-<br>
-읽어주셔서 감사합니다. 😊
-

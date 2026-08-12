@@ -105,10 +105,8 @@ Context Vector가 고정 크기이므로 **긴 시퀀스의 정보를 모두 담
 
 ---
 
+읽어주셔서 감사합니다. 😊
+
 **지난 글:** [양방향 RNN: 과거와 미래를 동시에 보기](/articles/rnn-bidirectional)
 
 **다음 글:** [Attention 메커니즘: Seq2Seq 병목을 극복하다](/articles/rnn-attention)
-
-<br>
-읽어주셔서 감사합니다. 😊
-

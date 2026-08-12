@@ -268,10 +268,8 @@ HuggingFace Datasets는 Transformers의 Trainer API와 자연스럽게 통합된
 
 ---
 
+읽어주셔서 감사합니다. 😊
+
 **지난 글:** [HuggingFace Transformers 실전 가이드](/articles/huggingface-transformers)
 
 **다음 글:** [HuggingFace Hub: 모델 공유와 배포](/articles/huggingface-hub)
-
-<br>
-읽어주셔서 감사합니다. 😊
-

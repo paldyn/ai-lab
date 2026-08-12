@@ -147,10 +147,8 @@ print(out.shape)  # torch.Size([1, 64, 32, 32])
 
 ---
 
+읽어주셔서 감사합니다. 😊
+
 **지난 글:** [기울기 소실과 폭발: 깊은 네트워크의 고질적 문제](/articles/nn-vanishing-gradient)
 
 **다음 글:** [풀링: 공간 정보 압축과 불변성](/articles/cnn-pooling)
-
-<br>
-읽어주셔서 감사합니다. 😊
-

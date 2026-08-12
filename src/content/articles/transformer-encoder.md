@@ -119,10 +119,8 @@ class Encoder(nn.Module):
 
 ---
 
+읽어주셔서 감사합니다. 😊
+
 **지난 글:** [Positional Encoding: 트랜스포머에 순서를 알려주는 방법](/articles/transformer-positional-encoding)
 
 **다음 글:** [Transformer Decoder: 문장을 생성하는 블록](/articles/transformer-decoder)
-
-<br>
-읽어주셔서 감사합니다. 😊
-

@@ -266,10 +266,8 @@ train_loader = DataLoader(train_dataset, batch_size=256, sampler=sampler)
 
 ---
 
+읽어주셔서 감사합니다. 😊
+
 **지난 글:** [현대 CNN: MobileNet, EfficientNet, ConvNeXt](/articles/cnn-modern)
 
 **다음 글:** [객체 탐지: 이미지에서 물체 찾기](/articles/cnn-object-detection)
-
-<br>
-읽어주셔서 감사합니다. 😊
-

@@ -95,10 +95,8 @@ class Seq2SeqTransformer(nn.Module):
 
 ---
 
+읽어주셔서 감사합니다. 😊
+
 **지난 글:** [Transformer Decoder: 문장을 생성하는 블록](/articles/transformer-decoder)
 
 **다음 글:** [Masking: 트랜스포머의 정보 차단 전략](/articles/transformer-masking)
-
-<br>
-읽어주셔서 감사합니다. 😊
-

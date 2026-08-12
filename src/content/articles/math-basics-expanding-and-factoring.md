@@ -222,7 +222,6 @@ $$x = 4$$ 일 때만 참입니다. 방정식입니다.
 
 ---
 
-**지난 글:** [문자와 대입: 문자 하나가 수 전부를 대신할 때](/articles/math-basics-variables-and-expressions)
-
-<br>
 읽어주셔서 감사합니다. 😊
+
+**지난 글:** [문자와 대입: 문자 하나가 수 전부를 대신할 때](/articles/math-basics-variables-and-expressions)

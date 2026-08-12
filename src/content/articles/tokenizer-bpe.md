@@ -127,10 +127,8 @@ base_vocab = {bytes([i]).decode('latin-1'): i for i in range(256)}
 
 ---
 
+읽어주셔서 감사합니다. 😊
+
 **지난 글:** [토크나이저와 토큰: LLM이 텍스트를 보는 방법](/articles/tokenizer-and-tokens)
 
 **다음 글:** [WordPiece: BERT의 서브워드 토크나이저](/articles/tokenizer-wordpiece)
-
-<br>
-읽어주셔서 감사합니다. 😊
-

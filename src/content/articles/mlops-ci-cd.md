@@ -477,9 +477,8 @@ GitHub Actions는 소규모 팀의 시작점으로 적합하고, 스케일이 �
 
 ---
 
+읽어주셔서 감사합니다. 😊
+
 **지난 글:** [모델 레지스트리: 모델 생애주기 관리](/articles/mlops-model-registry)
 
 **다음 글:** [모델 모니터링: 프로덕션 ML 감시](/articles/mlops-monitoring)
-
-읽어주셔서 감사합니다. 😊
-

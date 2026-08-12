@@ -186,8 +186,8 @@ for r in best[:3]:
 
 ---
 
-**지난 글:** [랭킹 모델 평가: NDCG·MAP·MRR 이해하기](/articles/ml-ranking-metrics)
-
-<br>
 읽어주셔서 감사합니다. 😊
 
+**지난 글:** [랭킹 모델 평가: NDCG·MAP·MRR 이해하기](/articles/ml-ranking-metrics)
+
+**다음 글:** [퍼셉트론: 딥러닝의 기원이 된 인공 뉴런](/articles/nn-perceptron)

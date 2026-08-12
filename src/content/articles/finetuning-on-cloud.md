@@ -386,10 +386,8 @@ merged_model.push_to_hub("my-org/my-finetuned-model", private=True)
 
 ---
 
+읽어주셔서 감사합니다. 😊
+
 **지난 글:** [파인튜닝 평가: 내 모델이 얼마나 좋아졌는지 측정하기](/articles/finetuning-evaluation)
 
 **다음 글:** [온프레미스에서 LLM 파인튜닝: GPU 서버 구성 완전 가이드](/articles/finetuning-on-prem)
-
-<br>
-읽어주셔서 감사합니다. 😊
-

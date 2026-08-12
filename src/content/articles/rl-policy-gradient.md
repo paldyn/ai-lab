@@ -208,10 +208,8 @@ for prompt in prompts:
 
 ---
 
+읽어주셔서 감사합니다. 😊
+
 **지난 글:** [DQN: 딥러닝으로 확장하는 Q-러닝](/articles/rl-dqn)
 
 **다음 글:** [PPO: 안정적인 정책 최적화의 표준](/articles/rl-ppo)
-
-<br>
-읽어주셔서 감사합니다. 😊
-

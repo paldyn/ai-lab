@@ -217,10 +217,8 @@ AI의 70년 역사는 과장→실망→겨울→혁신의 반복입니다.
 
 ---
 
+읽어주셔서 감사합니다. 😊
+
 **지난 글:** [AI · ML · DL · LLM, 뭐가 다른가](/articles/ai-ml-dl-llm-concepts)
 
 **다음 글:** [Narrow AI vs General AI vs Super AI — 세 가지 AI 유형 완전 정리](/articles/ai-types)
-
-<br>
-읽어주셔서 감사합니다. 😊
-

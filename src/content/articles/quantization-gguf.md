@@ -204,10 +204,8 @@ GGUF는 로컬 LLM 추론의 사실상 표준 포맷이다. 핵심을 요약하�
 
 ---
 
+읽어주셔서 감사합니다. 😊
+
 **지난 글:** [양자화 완전 정복: 모델 크기를 절반으로 줄이는 기술](/articles/quantization-basics)
 
 **다음 글:** [AWQ vs GPTQ: 고급 INT4 양자화 완전 비교](/articles/quantization-awq-gptq)
-
-<br>
-읽어주셔서 감사합니다. 😊
-

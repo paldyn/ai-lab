@@ -272,10 +272,8 @@ print(koalpaca['train'][0])
 
 ---
 
+읽어주셔서 감사합니다. 😊
+
 **지난 글:** [Adapter: 트랜스포머 레이어에 소형 모듈을 삽입하는 파인튜닝](/articles/finetuning-adapter)
 
 **다음 글:** [파인튜닝 하이퍼파라미터: 최적 설정 완전 가이드](/articles/finetuning-hyperparameters)
-
-<br>
-읽어주셔서 감사합니다. 😊
-

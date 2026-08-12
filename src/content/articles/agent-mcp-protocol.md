@@ -325,10 +325,8 @@ MCP는 에이전트 생태계의 표준 인터페이스다:
 
 ---
 
+읽어주셔서 감사합니다. 😊
+
 **지난 글:** [에이전트 도구 사용: Tool Use 완전 가이드](/articles/agent-tool-use)
 
 **다음 글:** [LangChain 완전 가이드: 에이전트 프레임워크의 표준](/articles/agent-langchain)
-
-<br>
-읽어주셔서 감사합니다. 😊
-

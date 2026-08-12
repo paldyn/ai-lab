@@ -240,10 +240,8 @@ def log_inference(prompt_name: str, version: str, result: dict) -> None:
 
 ---
 
+읽어주셔서 감사합니다. 😊
+
 **지난 글:** [컨텍스트 관리: 긴 대화에서 LLM이 기억을 유지하는 방법](/articles/prompt-context-management)
 
 **다음 글:** [프롬프트 평가: 좋은 프롬프트를 측정하는 방법](/articles/prompt-evaluation)
-
-<br>
-읽어주셔서 감사합니다. 😊
-

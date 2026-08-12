@@ -382,3 +382,7 @@ python3 boot.py
 | 측정일 | 2026-08-11 |
 
 `.npy` 네 개를 만드는 코드는 [실험대 글](/articles/lab-retrieval-testbed)에 있다. 이 글의 두 스크립트 자체는 numpy만 있으면 돌아간다.
+
+---
+
+**지난 글:** [int8로 줄인 벡터는 순위를 얼마나 흔드는가: 난수로 재면 왜 틀리는가](/articles/lab-int8-quantization-ranking)

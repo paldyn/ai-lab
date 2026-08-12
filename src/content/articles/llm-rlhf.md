@@ -129,10 +129,8 @@ RLHF는 ChatGPT 이후 거의 모든 상용 LLM의 핵심 정렬 기법이 됐�
 
 ---
 
+읽어주셔서 감사합니다. 😊
+
 **지난 글:** [LLM 인스트럭션 튜닝: 지시를 따르는 모델 만들기](/articles/llm-instruction-tuning)
 
 **다음 글:** [DPO: 보상 모델 없는 직접 선호도 최적화](/articles/llm-dpo)
-
-<br>
-읽어주셔서 감사합니다. 😊
-

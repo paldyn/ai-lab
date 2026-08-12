@@ -107,10 +107,8 @@ class DecoderLayer(nn.Module):
 
 ---
 
+읽어주셔서 감사합니다. 😊
+
 **지난 글:** [Transformer Encoder: 문맥을 이해하는 핵심 블록](/articles/transformer-encoder)
 
 **다음 글:** [Encoder-Decoder 구조: 번역에서 요약까지](/articles/transformer-encoder-decoder)
-
-<br>
-읽어주셔서 감사합니다. 😊
-

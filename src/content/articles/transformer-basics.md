@@ -143,10 +143,8 @@ out = transformer(src, tgt)       # (32, 8, 512)
 
 ---
 
+읽어주셔서 감사합니다. 😊
+
 **지난 글:** [RNN의 한계와 Transformer로의 전환](/articles/rnn-limitations)
 
 **다음 글:** [Self-Attention: 모든 토큰이 모든 토큰과 대화한다](/articles/transformer-self-attention)
-
-<br>
-읽어주셔서 감사합니다. 😊
-

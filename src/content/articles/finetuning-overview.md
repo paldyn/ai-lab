@@ -164,10 +164,8 @@ response = llm.invoke("""다음 텍스트에서 날짜와 금액을 추출해 JS
 
 ---
 
+읽어주셔서 감사합니다. 😊
+
 **지난 글:** [파인튜닝 vs 프롬프트 엔지니어링 vs RAG: 세 전략의 완전 비교](/articles/finetuning-vs-prompt-vs-rag)
 
 **다음 글:** [Full Fine-tuning vs PEFT: 전체 파라미터 vs 효율적 파인튜닝 완전 비교](/articles/finetuning-full-vs-peft)
-
-<br>
-읽어주셔서 감사합니다. 😊
-

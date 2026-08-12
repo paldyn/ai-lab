@@ -289,10 +289,8 @@ db = DBSCAN(
 
 ---
 
+읽어주셔서 감사합니다. 😊
+
 **지난 글:** [계층적 군집화: 덴드로그램으로 보는 군집 구조](/articles/ml-clustering-hierarchical)
 
 **다음 글:** [PCA: 고차원 데이터를 압축하는 차원 축소](/articles/ml-pca)
-
-<br>
-읽어주셔서 감사합니다. 😊
-

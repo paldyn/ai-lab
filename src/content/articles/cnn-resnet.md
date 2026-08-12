@@ -203,10 +203,8 @@ WideResNet-28-10(28층, 너비 10배)은 ResNet-1000보다 높은 정확도를 �
 
 ---
 
+읽어주셔서 감사합니다. 😊
+
 **지난 글:** [CNN 아키텍처 역사: LeNet에서 EfficientNet까지](/articles/cnn-architectures-history)
 
 **다음 글:** [현대 CNN: MobileNet, EfficientNet, ConvNeXt](/articles/cnn-modern)
-
-<br>
-읽어주셔서 감사합니다. 😊
-

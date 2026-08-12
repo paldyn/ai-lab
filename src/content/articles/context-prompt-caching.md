@@ -117,9 +117,8 @@ $$H = \frac{T_{\text{read}}}{T_{\text{read}} + T_{\text{write}} + T_{\text{fresh
 
 ---
 
+읽어주셔서 감사합니다. 😊
+
 **지난 글:** [창이 크다는 말과 잘 읽는다는 말](/articles/context-long-context-reality)
 
 **다음 글:** [넣기 전에 줄이는 방법들](/articles/context-compression)
-
-<br>
-읽어주셔서 감사합니다. 😊

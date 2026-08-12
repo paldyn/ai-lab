@@ -113,10 +113,8 @@ tokens = tokenizer.tokenize("한국어 처리도 됩니다")
 
 ---
 
+읽어주셔서 감사합니다. 😊
+
 **지난 글:** [WordPiece: BERT의 서브워드 토크나이저](/articles/tokenizer-wordpiece)
 
 **다음 글:** [tiktoken: OpenAI의 빠른 BPE 토크나이저](/articles/tokenizer-tiktoken)
-
-<br>
-읽어주셔서 감사합니다. 😊
-

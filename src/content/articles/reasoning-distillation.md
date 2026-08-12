@@ -133,9 +133,8 @@ def keep(traces: list[dict], per_item: int = 2) -> list[dict]:
 
 ---
 
+읽어주셔서 감사합니다. 😊
+
 **지난 글:** [추론 모델과 CoT 프롬프팅: 같은 사고, 다른 자리](/articles/reasoning-vs-cot-prompting)
 
 **다음 글:** [추론 벤치마크 읽는 법](/articles/reasoning-benchmarks)
-
-<br>
-읽어주셔서 감사합니다. 😊

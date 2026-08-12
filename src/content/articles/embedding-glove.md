@@ -207,10 +207,8 @@ GloVe는 "왜 공기 확률의 비율이 의미 관계를 포착하는가"라는
 
 ---
 
+읽어주셔서 감사합니다. 😊
+
 **지난 글:** [Word2Vec: 신경망으로 단어 의미를 학습하다](/articles/embedding-word2vec)
 
 **다음 글:** [FastText: 부분 단어로 OOV를 정복하다](/articles/embedding-fasttext)
-
-<br>
-읽어주셔서 감사합니다. 😊
-

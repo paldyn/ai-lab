@@ -141,10 +141,8 @@ Vision Transformer(ViT)는 풀링을 거의 사용하지 않는다. 대신 패�
 
 ---
 
+읽어주셔서 감사합니다. 😊
+
 **지난 글:** [합성곱 연산: CNN의 핵심 원리](/articles/cnn-convolution-basics)
 
 **다음 글:** [특징 맵: CNN이 이미지에서 보는 것](/articles/cnn-feature-maps)
-
-<br>
-읽어주셔서 감사합니다. 😊
-

@@ -334,10 +334,8 @@ def segments_to_srt(segments, output_path: str):
 
 ---
 
+읽어주셔서 감사합니다. 😊
+
 **지난 글:** [3D 생성 AI: NeRF·3D Gaussian Splatting·Point-E 완전 해설](/articles/cv-3d-generation)
 
 **다음 글:** [신경망 음성 합성(TTS): VITS·XTTS·CosyVoice 완전 해설](/articles/audio-tts)
-
-<br>
-읽어주셔서 감사합니다. 😊
-

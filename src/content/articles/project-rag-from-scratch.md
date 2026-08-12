@@ -409,10 +409,8 @@ print(f"Relevance: {rel:.3f} | Faithfulness: {faith:.3f}")
 
 ---
 
+읽어주셔서 감사합니다. 😊
+
 **지난 글:** [GPU 메모리 최적화: OOM 없이 더 크게 훈련하는 법](/articles/gpu-memory-tuning)
 
 **다음 글:** [에이전트 시스템 처음부터 구축하기: 실전 프로젝트](/articles/project-agent-from-scratch)
-
-<br>
-읽어주셔서 감사합니다. 😊
-

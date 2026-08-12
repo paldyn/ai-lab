@@ -198,10 +198,8 @@ def calibration_report(scores: list[float], labels: list[bool], bins: int = 10):
 
 ---
 
+읽어주셔서 감사합니다. 😊
+
 **지난 글:** [추론 능력은 어떻게 훈련되는가: 검증 가능한 보상과 강화학습](/articles/reasoning-rl-training)
 
 **다음 글:** [사고 예산 제어: 얼마나 생각하게 할 것인가](/articles/reasoning-budget-control)
-
-<br>
-읽어주셔서 감사합니다. 😊
-

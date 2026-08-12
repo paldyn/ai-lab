@@ -552,10 +552,8 @@ nvidia-smi --query-gpu=memory.used,memory.free --format=csv
 
 ---
 
-**지난 글:** [프롬프트 이터레이션: 체계적으로 개선하기](/articles/project-prompt-iterating)
-
-**다음 글:** [LLM 비용 최적화: 더 저렴하게, 더 빠르게](/articles/project-cost-optimization)
-
-<br>
 읽어주셔서 감사합니다. 😊
 
+**지난 글:** [프롬프트 반복 개발: 체계적인 이터레이션 워크플로우](/articles/project-prompt-iterating)
+
+**다음 글:** [LLM 비용 최적화: 더 저렴하게, 더 빠르게](/articles/project-cost-optimization)

@@ -400,8 +400,8 @@ RAG 시스템의 품질을 결정하는 핵심은 세 가지다. **좋은 청킹
 
 ---
 
-**지난 글:** [RAG 임베딩 모델 선택 가이드: 성능·비용·언어 지원 완전 비교](/articles/rag-embedding-models)
-
-<br>
 읽어주셔서 감사합니다. 😊
 
+**지난 글:** [RAG 임베딩 모델 선택 가이드: 성능·비용·언어 지원 완전 비교](/articles/rag-embedding-models)
+
+**다음 글:** [RAG 리랭킹: 검색 품질을 한 단계 끌어올리는 기술](/articles/rag-reranking)

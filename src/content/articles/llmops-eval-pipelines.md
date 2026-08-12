@@ -249,10 +249,8 @@ if regressions:
 
 ---
 
+읽어주셔서 감사합니다. 😊
+
 **지난 글:** [LLM 프롬프트 관리: 버전, 테스트, 배포까지](/articles/llmops-prompt-management)
 
 **다음 글:** [LLMOps 관측성: 프로덕션 LLM 시스템 들여다보기](/articles/llmops-observability)
-
-<br>
-읽어주셔서 감사합니다. 😊
-

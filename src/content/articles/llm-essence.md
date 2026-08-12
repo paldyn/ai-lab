@@ -142,10 +142,8 @@ print(response.content[0].text)
 
 ---
 
+읽어주셔서 감사합니다. 😊
+
 **지난 글:** [한국어 NLP: 교착어 처리와 한국어 특화 모델](/articles/nlp-korean-processing)
 
 **다음 글:** [LLM 사전학습: 수조 개 토큰으로 무엇을 배우나](/articles/llm-pretraining)
-
-<br>
-읽어주셔서 감사합니다. 😊
-

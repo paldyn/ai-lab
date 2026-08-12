@@ -112,8 +112,8 @@ with torch.backends.cuda.sdp_kernel(
 
 ---
 
-**지난 글:** [BART: 시퀀스-투-시퀀스 사전학습 모델](/articles/transformer-bart)
-
-<br>
 읽어주셔서 감사합니다. 😊
 
+**지난 글:** [BART: 시퀀스-투-시퀀스 사전학습 모델](/articles/transformer-bart)
+
+**다음 글:** [RoPE: 회전으로 위치를 인코딩하다](/articles/transformer-rotary)

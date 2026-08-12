@@ -119,10 +119,8 @@ Chinchilla 법칙 발표 이후 LLM 학습 전략이 완전히 바뀌었다:
 
 ---
 
+읽어주셔서 감사합니다. 😊
+
 **지난 글:** [Constitutional AI: 원칙 기반 AI 정렬](/articles/llm-constitutional-ai)
 
 **다음 글:** [창발적 능력: 규모에서 탄생하는 새로운 역량](/articles/llm-emergent-abilities)
-
-<br>
-읽어주셔서 감사합니다. 😊
-

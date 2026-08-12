@@ -276,10 +276,8 @@ def process_meeting_recording(
 
 ---
 
+읽어주셔서 감사합니다. 😊
+
 **지난 글:** [AI 폼·서류 자동화: OCR부터 자동 입력까지](/articles/app-form-automation)
 
 **다음 글:** [AI 개발을 위한 Python 핵심 라이브러리](/articles/python-for-ai)
-
-<br>
-읽어주셔서 감사합니다. 😊
-

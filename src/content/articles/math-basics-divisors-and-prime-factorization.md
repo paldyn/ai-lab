@@ -232,7 +232,8 @@ $$24 \times 360 = 8640$$ 이고, 원래 두 수의 곱은 $$72 \times 120 = 8640
 
 ---
 
+읽어주셔서 감사합니다. 😊
+
 **지난 글:** [자연수의 사칙연산과 자릿수: 세로셈이 자리를 맞추는 이유](/articles/math-basics-natural-numbers-and-place-value)
 
-<br>
-읽어주셔서 감사합니다. 😊
+**다음 글:** [넓이와 부피: 잘라 붙여 직사각형으로 만들기](/articles/math-basics-area-and-volume)

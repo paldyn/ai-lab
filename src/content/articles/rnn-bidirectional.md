@@ -91,10 +91,8 @@ BERT는 양방향 Transformer를 사용해 같은 원리를 훨씬 효과적으�
 
 ---
 
+읽어주셔서 감사합니다. 😊
+
 **지난 글:** [GRU: 게이트 순환 유닛, LSTM의 경량 대안](/articles/rnn-gru)
 
 **다음 글:** [Seq2Seq: 인코더-디코더로 시퀀스를 시퀀스로](/articles/rnn-seq2seq)
-
-<br>
-읽어주셔서 감사합니다. 😊
-

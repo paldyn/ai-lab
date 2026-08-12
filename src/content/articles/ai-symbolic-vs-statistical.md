@@ -123,10 +123,8 @@ response = client.messages.create(
 
 ---
 
-**지난 글:** [AI의 종류: 약한 AI부터 강한 AI, 범용 AI까지](/articles/ai-types)
-
-**다음 글:** [데이터 중심 패러다임: 왜 데이터가 새로운 석유인가](/articles/ai-data-driven-paradigm)
-
-<br>
 읽어주셔서 감사합니다. 😊
 
+**지난 글:** [Narrow AI vs General AI vs Super AI — 세 가지 AI 유형 완전 정리](/articles/ai-types)
+
+**다음 글:** [데이터 중심 패러다임: 왜 데이터가 새로운 석유인가](/articles/ai-data-driven-paradigm)

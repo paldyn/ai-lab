@@ -117,10 +117,8 @@ RoPE의 큰 장점은 **길이 외삽**(Length Extrapolation)이 가능하다는
 
 ---
 
+읽어주셔서 감사합니다. 😊
+
 **지난 글:** [창발적 능력: 규모에서 탄생하는 새로운 역량](/articles/llm-emergent-abilities)
 
 **다음 글:** [Temperature·Top-k·Top-p: 생성 다양성 제어](/articles/llm-temperature-top-k-top-p)
-
-<br>
-읽어주셔서 감사합니다. 😊
-

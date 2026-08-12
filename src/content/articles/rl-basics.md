@@ -153,10 +153,8 @@ epsilon_schedule = lambda ep: max(0.01, 1.0 - ep / 500)
 
 ---
 
+읽어주셔서 감사합니다. 😊
+
 **지난 글:** [LLM 기반 추천 시스템: 언어 모델이 바꾸는 추천의 패러다임](/articles/recsys-llm-based)
 
 **다음 글:** [Q-러닝: 테이블로 배우는 최적 행동 전략](/articles/rl-q-learning)
-
-<br>
-읽어주셔서 감사합니다. 😊
-

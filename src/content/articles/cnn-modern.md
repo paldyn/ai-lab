@@ -212,10 +212,8 @@ print(models.list_models(module=models))
 
 ---
 
+읽어주셔서 감사합니다. 😊
+
 **지난 글:** [ResNet: 잔차 연결이 깊은 네트워크를 가능하게 한 이유](/articles/cnn-resnet)
 
 **다음 글:** [이미지 분류: CNN 파이프라인 완전 가이드](/articles/cnn-image-classification)
-
-<br>
-읽어주셔서 감사합니다. 😊
-

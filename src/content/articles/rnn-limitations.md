@@ -91,10 +91,8 @@ RNN은 완전히 사라진 것이 아니다. 2023년 이후 Mamba(S4/SSM 계열)
 
 ---
 
+읽어주셔서 감사합니다. 😊
+
 **지난 글:** [Attention 메커니즘: Seq2Seq 병목을 극복하다](/articles/rnn-attention)
 
 **다음 글:** [Transformer 기초: Attention Is All You Need](/articles/transformer-basics)
-
-<br>
-읽어주셔서 감사합니다. 😊
-

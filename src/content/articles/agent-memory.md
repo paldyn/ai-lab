@@ -289,10 +289,8 @@ memory_agent = graph.compile()
 
 ---
 
-**지난 글:** [OpenAI Swarm: 경량 멀티 에이전트 핸드오프 패턴](/articles/agent-swarm)
-
-**다음 글:** [에이전트 플래닝: ReAct, Plan-and-Execute, MCTS 전략](/articles/agent-planning)
-
-<br>
 읽어주셔서 감사합니다. 😊
 
+**지난 글:** [OpenAI Swarm: 경량 멀티 에이전트 핸드오프 패턴](/articles/agent-swarm)
+
+**다음 글:** [에이전트 플래닝: ReAct, Plan-and-Execute, Reflexion 전략](/articles/agent-planning)

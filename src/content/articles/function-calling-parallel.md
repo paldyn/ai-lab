@@ -100,9 +100,8 @@ async def run_one(call, timeout):
 
 ---
 
+읽어주셔서 감사합니다. 😊
+
 **지난 글:** [도구 호출은 왜 실패하는가](/articles/function-calling-reliability)
 
 **다음 글:** [모델이 읽는 것은 구현이 아니라 스키마다](/articles/tool-schema-design)
-
-<br>
-읽어주셔서 감사합니다. 😊

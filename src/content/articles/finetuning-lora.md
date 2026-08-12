@@ -203,10 +203,8 @@ LoRA는 "파인튜닝 중 발생하는 가중치 변화량이 저랭크 구조�
 
 ---
 
+읽어주셔서 감사합니다. 😊
+
 **지난 글:** [Full Fine-tuning vs PEFT: 전체 파라미터 vs 효율적 파인튜닝 완전 비교](/articles/finetuning-full-vs-peft)
 
 **다음 글:** [QLoRA: 4비트 양자화로 소비자 GPU에서 LLM 파인튜닝하기](/articles/finetuning-qlora)
-
-<br>
-읽어주셔서 감사합니다. 😊
-

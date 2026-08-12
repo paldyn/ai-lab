@@ -301,10 +301,8 @@ LLM API 설계의 핵심은 **OpenAI 호환성**이다. 표준 인터페이스�
 
 ---
 
+읽어주셔서 감사합니다. 😊
+
 **지난 글:** [KV 캐시 완전 해설: LLM 추론 메모리의 핵심](/articles/inference-kv-cache)
 
 **다음 글:** [LLM 스트리밍 완전 가이드: SSE부터 WebSocket까지](/articles/serving-streaming)
-
-<br>
-읽어주셔서 감사합니다. 😊
-

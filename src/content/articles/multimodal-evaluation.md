@@ -150,10 +150,8 @@ def llm_judge_score(judge_model, question, image, model_answer, reference_answer
 
 ---
 
+읽어주셔서 감사합니다. 😊
+
 **지난 글:** [비전-언어 모델(VLM): CLIP·BLIP2·LLaVA 완전 해설](/articles/multimodal-vlm)
 
 **다음 글:** [협업 필터링: 유사 사용자·아이템 기반 추천 완전 해설](/articles/recsys-collaborative-filtering)
-
-<br>
-읽어주셔서 감사합니다. 😊
-

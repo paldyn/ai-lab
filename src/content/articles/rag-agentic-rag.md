@@ -161,10 +161,8 @@ Agentic RAG는 강력하지만 예측 불가능성이 증가한다. 단순한 �
 
 ---
 
+읽어주셔서 감사합니다. 😊
+
 **지난 글:** [RAG 멀티홉 추론: 복잡한 질문을 단계적으로 해결하기](/articles/rag-multi-hop)
 
 **다음 글:** [Graph RAG: 지식 그래프로 RAG의 한계를 극복하다](/articles/rag-graph-rag)
-
-<br>
-읽어주셔서 감사합니다. 😊
-

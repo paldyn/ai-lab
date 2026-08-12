@@ -230,10 +230,8 @@ print(f"RMSE: {accuracy.rmse(predictions):.4f}")
 
 ---
 
+읽어주셔서 감사합니다. 😊
+
 **지난 글:** [멀티모달 AI 평가: MMBench·MMMU·VQA 벤치마크 완전 해설](/articles/multimodal-evaluation)
 
 **다음 글:** [콘텐츠 기반 필터링: 아이템 특성으로 추천하는 방법 완전 해설](/articles/recsys-content-based)
-
-<br>
-읽어주셔서 감사합니다. 😊
-

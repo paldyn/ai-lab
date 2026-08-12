@@ -105,10 +105,8 @@ LLaMA가 오픈소스 생태계에 미친 가장 큰 영향은 파생 모델의 
 
 ---
 
+읽어주셔서 감사합니다. 😊
+
 **지난 글:** [Gemini 패밀리 완전 해부: Google의 멀티모달 LLM 전략](/articles/llm-gemini-family)
 
 **다음 글:** [Mistral 패밀리 완전 해부: 유럽 오픈소스 LLM의 반격](/articles/llm-mistral-family)
-
-<br>
-읽어주셔서 감사합니다. 😊
-

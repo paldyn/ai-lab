@@ -173,10 +173,8 @@ def drop_path(x, drop_prob, training):
 
 ---
 
+읽어주셔서 감사합니다. 😊
+
 **지난 글:** [레이어 정규화: 트랜스포머가 선택한 정규화](/articles/nn-layer-normalization)
 
 **다음 글:** [기울기 소실과 폭발: 깊은 네트워크의 고질적 문제](/articles/nn-vanishing-gradient)
-
-<br>
-읽어주셔서 감사합니다. 😊
-

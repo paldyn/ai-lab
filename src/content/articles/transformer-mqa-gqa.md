@@ -130,10 +130,8 @@ GQA는 KV Cache 절감뿐 아니라 **디코딩 속도**도 향상시킨다. KV 
 
 ---
 
+읽어주셔서 감사합니다. 😊
+
 **지난 글:** [FlashAttention: IO-Aware 어텐션 연산](/articles/transformer-flash-attention)
 
 **다음 글:** [Mixture of Experts: 희소 활성화로 거대 모델 만들기](/articles/transformer-moe)
-
-<br>
-읽어주셔서 감사합니다. 😊
-

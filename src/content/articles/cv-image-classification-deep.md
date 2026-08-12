@@ -227,8 +227,8 @@ for epoch in range(50):
 
 ---
 
-**다음 글:** [Vision Transformer(ViT): 이미지를 문장처럼 처리하는 Transformer](/articles/cv-vision-transformer)
-
-<br>
 읽어주셔서 감사합니다. 😊
 
+**지난 글:** [에이전트 안티패턴: 흔한 실수와 피해야 할 설계](/articles/agent-anti-patterns)
+
+**다음 글:** [Vision Transformer(ViT): 이미지를 문장처럼 처리하는 Transformer](/articles/cv-vision-transformer)

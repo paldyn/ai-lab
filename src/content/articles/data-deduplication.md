@@ -224,10 +224,8 @@ dedup_report(df_raw, df_dedup)
 
 ---
 
+읽어주셔서 감사합니다. 😊
+
 **지난 글:** [데이터 품질 관리: 쓰레기 in, 쓰레기 out을 막는 법](/articles/data-quality)
 
 **다음 글:** [AI 코딩 도구의 시대: GitHub Copilot 완전 해부](/articles/ai-coding-copilot)
-
-<br>
-읽어주셔서 감사합니다. 😊
-

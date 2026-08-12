@@ -106,8 +106,8 @@ for i in range(0, seq_len, chunk_size):
 
 ---
 
-**다음 글:** [LSTM: 장단기 메모리 게이트 완전 해부](/articles/rnn-lstm)
-
-<br>
 읽어주셔서 감사합니다. 😊
 
+**지난 글:** [인스턴스 분할: 물체를 개별로 구분하기](/articles/cnn-instance-segmentation)
+
+**다음 글:** [LSTM: 장단기 메모리 게이트 완전 해부](/articles/rnn-lstm)

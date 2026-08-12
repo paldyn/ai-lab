@@ -153,10 +153,8 @@ print(output.scores)  # [0.87] — 0~1 스케일
 
 ---
 
+읽어주셔서 감사합니다. 😊
+
 **지난 글:** [질의응답: 문서에서 답을 찾는 기술](/articles/nlp-question-answering)
 
 **다음 글:** [텍스트 생성: 언어 모델이 글을 쓰는 방법](/articles/nlp-text-generation)
-
-<br>
-읽어주셔서 감사합니다. 😊
-

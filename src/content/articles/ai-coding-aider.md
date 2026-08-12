@@ -193,10 +193,8 @@ Aider는 Git 히스토리를 깔끔하게 유지하면서 AI 코딩을 하고 �
 
 ---
 
+읽어주셔서 감사합니다. 😊
+
 **지난 글:** [OpenAI Codex와 ChatGPT: AI 코딩의 시작점](/articles/ai-coding-codex)
 
 **다음 글:** [AI 코딩 모범 사례: 생산성과 품질을 동시에 잡는 전략](/articles/ai-coding-best-practices)
-
-<br>
-읽어주셔서 감사합니다. 😊
-

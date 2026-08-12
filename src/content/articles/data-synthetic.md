@@ -189,10 +189,8 @@ SDV는 `anonymize` 파라미터로 기본적인 프라이버시 보호를 제공
 
 ---
 
+읽어주셔서 감사합니다. 😊
+
 **지난 글:** [데이터 증강: 적은 데이터로 더 강한 모델 만들기](/articles/data-augmentation)
 
 **다음 글:** [데이터 품질 관리: 쓰레기 in, 쓰레기 out을 막는 법](/articles/data-quality)
-
-<br>
-읽어주셔서 감사합니다. 😊
-

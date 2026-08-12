@@ -595,7 +595,8 @@ class MLMonitoringPipeline:
 
 ---
 
-**지난 글:** [ML CI/CD: 자동화된 모델 배포 파이프라인](/articles/mlops-ci-cd)
-
 읽어주셔서 감사합니다. 😊
 
+**지난 글:** [ML CI/CD: 자동화된 모델 배포 파이프라인](/articles/mlops-ci-cd)
+
+**다음 글:** [데이터 버전 관리: DVC로 ML 데이터를 코드처럼 추적하기](/articles/mlops-data-versioning)

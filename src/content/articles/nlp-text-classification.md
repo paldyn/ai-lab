@@ -187,10 +187,8 @@ trainer.train()
 
 ---
 
+읽어주셔서 감사합니다. 😊
+
 **지난 글:** [감성 분석: 텍스트에서 감정과 의견을 읽다](/articles/nlp-sentiment-analysis)
 
 **다음 글:** [텍스트 요약: 길고 복잡한 문서를 한 문단으로](/articles/nlp-summarization)
-
-<br>
-읽어주셔서 감사합니다. 😊
-

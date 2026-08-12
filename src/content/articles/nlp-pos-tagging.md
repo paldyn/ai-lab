@@ -334,10 +334,8 @@ print(top_keywords)
 
 ---
 
+읽어주셔서 감사합니다. 😊
+
 **지난 글:** [개체명 인식(NER): 텍스트에서 정보를 추출하다](/articles/nlp-named-entity-recognition)
 
 **다음 글:** [감성 분석: 텍스트에서 감정과 의견을 읽다](/articles/nlp-sentiment-analysis)
-
-<br>
-읽어주셔서 감사합니다. 😊
-

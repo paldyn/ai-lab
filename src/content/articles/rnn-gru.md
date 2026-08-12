@@ -98,10 +98,8 @@ LSTM의 Forget gate와 비슷하지만, GRU는 이것을 **후보 상태 계산 
 
 ---
 
+읽어주셔서 감사합니다. 😊
+
 **지난 글:** [LSTM: 장단기 메모리 게이트 완전 해부](/articles/rnn-lstm)
 
 **다음 글:** [양방향 RNN: 과거와 미래를 동시에 보기](/articles/rnn-bidirectional)
-
-<br>
-읽어주셔서 감사합니다. 😊
-

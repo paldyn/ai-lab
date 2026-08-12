@@ -142,10 +142,8 @@ for request in sample(production_logs, n=100):
 
 ---
 
+읽어주셔서 감사합니다. 😊
+
 **지난 글:** [ML 파이프라인 자동화: 끝까지 이어지는 워크플로우](/articles/mlops-pipeline)
 
 **다음 글:** [LLM 프롬프트 관리: 버전, 테스트, 배포까지](/articles/llmops-prompt-management)
-
-<br>
-읽어주셔서 감사합니다. 😊
-

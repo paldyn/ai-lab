@@ -181,10 +181,8 @@ for out in outputs:
 
 ---
 
+읽어주셔서 감사합니다. 😊
+
 **지난 글:** [GGUF 완전 정복: llama.cpp의 양자화 포맷과 실전 사용법](/articles/quantization-gguf)
 
 **다음 글:** [지식 증류: 대형 모델의 지식을 소형 모델로 이전하기](/articles/distillation)
-
-<br>
-읽어주셔서 감사합니다. 😊
-

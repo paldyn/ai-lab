@@ -152,10 +152,8 @@ def simclr_loss(z1, z2, temperature=0.5):
 
 ---
 
+읽어주셔서 감사합니다. 😊
+
 **지난 글:** [정규화: 과적합을 막는 AI의 방패](/articles/ai-regularization)
 
 **다음 글:** [선형 회귀: 예측 모델의 출발점](/articles/ml-linear-regression)
-
-<br>
-읽어주셔서 감사합니다. 😊
-

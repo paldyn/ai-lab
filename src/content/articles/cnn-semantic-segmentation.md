@@ -230,10 +230,8 @@ model.aux_classifier[4] = nn.Conv2d(256, num_classes, 1)
 
 ---
 
+읽어주셔서 감사합니다. 😊
+
 **지난 글:** [객체 탐지: 이미지에서 물체 찾기](/articles/cnn-object-detection)
 
 **다음 글:** [인스턴스 분할: 물체를 개별로 구분하기](/articles/cnn-instance-segmentation)
-
-<br>
-읽어주셔서 감사합니다. 😊
-

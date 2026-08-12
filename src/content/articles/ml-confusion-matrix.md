@@ -171,10 +171,8 @@ print(f"\n정규화 행렬:\n{cm_imb_norm.round(3)}")
 
 ---
 
+읽어주셔서 감사합니다. 😊
+
 **지난 글:** [분류 모델 평가 지표 완전 정복: 정확도·정밀도·재현율·F1](/articles/ml-classification-metrics)
 
 **다음 글:** [ROC 곡선과 AUC: 임계값 독립적 분류 성능 평가](/articles/ml-roc-auc)
-
-<br>
-읽어주셔서 감사합니다. 😊
-

@@ -111,9 +111,8 @@ $\rho$ 하나로는 아무 판단도 못 한다. 필요한 것은 평가셋에�
 
 ---
 
+읽어주셔서 감사합니다. 😊
+
 **지난 글:** [캐시가 듣는 프롬프트와 듣지 않는 프롬프트](/articles/context-prompt-caching)
 
 **다음 글:** [대화를 기억으로 바꾸기](/articles/context-summarization-memory)
-
-<br>
-읽어주셔서 감사합니다. 😊

@@ -114,10 +114,8 @@ Temperature, Top-k, Top-p는 LLM API를 사용할 때 가장 먼저 마주치는
 
 ---
 
+읽어주셔서 감사합니다. 😊
+
 **지난 글:** [컨텍스트 윈도우: LLM의 작업 기억](/articles/llm-context-window)
 
 **다음 글:** [샘플링 전략: LLM 출력 제어의 과학](/articles/llm-sampling-strategies)
-
-<br>
-읽어주셔서 감사합니다. 😊
-

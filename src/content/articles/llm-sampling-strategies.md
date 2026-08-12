@@ -126,10 +126,8 @@ contrastive = gen(
 
 ---
 
+읽어주셔서 감사합니다. 😊
+
 **지난 글:** [Temperature·Top-k·Top-p: 생성 다양성 제어](/articles/llm-temperature-top-k-top-p)
 
 **다음 글:** [디코딩 방법: Greedy에서 Beam Search까지](/articles/llm-decoding-methods)
-
-<br>
-읽어주셔서 감사합니다. 😊
-

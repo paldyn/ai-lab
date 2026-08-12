@@ -127,10 +127,8 @@ docs = compression_retriever.invoke("AI 규제 현황은?")
 
 ---
 
+읽어주셔서 감사합니다. 😊
+
 **지난 글:** [RAG 검색 전략 완전 정복: Sparse·Dense·Hybrid 검색 비교](/articles/rag-retrieval-strategies)
 
 **다음 글:** [RAG 쿼리 재작성: 검색 품질을 높이는 쿼리 변환 기법](/articles/rag-query-rewriting)
-
-<br>
-읽어주셔서 감사합니다. 😊
-

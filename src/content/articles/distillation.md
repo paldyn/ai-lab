@@ -182,10 +182,8 @@ print(tokenizer.decode(out[0], skip_special_tokens=True))
 
 ---
 
+읽어주셔서 감사합니다. 😊
+
 **지난 글:** [AWQ vs GPTQ: 고급 INT4 양자화 완전 비교](/articles/quantization-awq-gptq)
 
 **다음 글:** [모델 프루닝: 신경망의 불필요한 가중치 제거하기](/articles/pruning)
-
-<br>
-읽어주셔서 감사합니다. 😊
-

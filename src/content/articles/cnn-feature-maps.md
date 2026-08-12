@@ -218,10 +218,8 @@ CAM은 "왜 이 이미지를 고양이로 분류했는가?"에 대한 설명 가
 
 ---
 
+읽어주셔서 감사합니다. 😊
+
 **지난 글:** [풀링: 공간 정보 압축과 불변성](/articles/cnn-pooling)
 
 **다음 글:** [CNN 아키텍처 역사: LeNet에서 EfficientNet까지](/articles/cnn-architectures-history)
-
-<br>
-읽어주셔서 감사합니다. 😊
-

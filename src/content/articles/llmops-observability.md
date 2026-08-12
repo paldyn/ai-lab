@@ -243,10 +243,8 @@ def log_llm_event(
 
 ---
 
+읽어주셔서 감사합니다. 😊
+
 **지난 글:** [LLM 평가 파이프라인: 자동화된 품질 보장](/articles/llmops-eval-pipelines)
 
 **다음 글:** [LLM 비용 추적: 토큰 낭비 없이 운영하기](/articles/llmops-cost-tracking)
-
-<br>
-읽어주셔서 감사합니다. 😊
-

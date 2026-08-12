@@ -204,10 +204,8 @@ for batch in train_dataloader:
 
 ---
 
+읽어주셔서 감사합니다. 😊
+
 **지난 글:** [LLM의 본질: 거대 언어 모델이란 무엇인가](/articles/llm-essence)
 
 **다음 글:** [LLM 인스트럭션 튜닝: 지시를 따르는 모델 만들기](/articles/llm-instruction-tuning)
-
-<br>
-읽어주셔서 감사합니다. 😊
-

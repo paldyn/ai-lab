@@ -289,9 +289,8 @@ def predict(user_id: int) -> float:
 
 ---
 
+읽어주셔서 감사합니다. 😊
+
 **지난 글:** [MLOps 실험 트래킹: 재현 가능한 ML 개발](/articles/mlops-experiment-tracking)
 
 **다음 글:** [모델 레지스트리: 모델 생애주기 관리](/articles/mlops-model-registry)
-
-읽어주셔서 감사합니다. 😊
-

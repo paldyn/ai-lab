@@ -211,10 +211,8 @@ def hybrid_search(
 
 ---
 
+읽어주셔서 감사합니다. 😊
+
 **지난 글:** [프롬프트 평가: 좋은 프롬프트를 측정하는 방법](/articles/prompt-evaluation)
 
 **다음 글:** [벡터 유사도 지표: 코사인·유클리드·내적의 모든 것](/articles/vector-similarity-metrics)
-
-<br>
-읽어주셔서 감사합니다. 😊
-

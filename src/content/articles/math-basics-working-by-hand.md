@@ -165,7 +165,8 @@ $$x = 0$$ 을 넣으면 양쪽 다 0. $$x = 2$$ 를 넣으면 양쪽 다 4. 두 
 
 ---
 
+읽어주셔서 감사합니다. 😊
+
 **지난 글:** [식을 읽는 순서: 괄호 없이 묶여 있는 것들](/articles/math-basics-reading-order-of-expressions)
 
-<br>
-읽어주셔서 감사합니다. 😊
+**다음 글:** [자연수의 사칙연산과 자릿수: 세로셈이 자리를 맞추는 이유](/articles/math-basics-natural-numbers-and-place-value)

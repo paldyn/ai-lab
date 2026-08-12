@@ -105,10 +105,8 @@ WordPiece는 GPT 계열의 Byte-Level BPE에 비해 두 가지 약점이 있다.
 
 ---
 
+읽어주셔서 감사합니다. 😊
+
 **지난 글:** [BPE: 바이트 쌍 인코딩 토크나이저](/articles/tokenizer-bpe)
 
 **다음 글:** [SentencePiece: 언어에 구애받지 않는 토크나이저](/articles/tokenizer-sentencepiece)
-
-<br>
-읽어주셔서 감사합니다. 😊
-

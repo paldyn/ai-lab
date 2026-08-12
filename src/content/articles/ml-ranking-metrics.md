@@ -192,10 +192,8 @@ for k in [3, 5, 10]:
 
 ---
 
+읽어주셔서 감사합니다. 😊
+
 **지난 글:** [회귀 모델 평가 지표: MAE·MSE·RMSE·R² 완전 이해](/articles/ml-regression-metrics)
 
 **다음 글:** [클러스터링 평가 지표: 실루엣·DB·칼린스키-하라바시](/articles/ml-clustering-metrics)
-
-<br>
-읽어주셔서 감사합니다. 😊
-

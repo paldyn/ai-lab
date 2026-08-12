@@ -190,10 +190,8 @@ Redis의 `setex`로 TTL을 설정하면 오래된 세션이 자동으로 만료�
 
 ---
 
+읽어주셔서 감사합니다. 😊
+
 **지난 글:** [AI로 코드 리뷰하기: 자동화와 사람 리뷰의 균형](/articles/ai-coding-review)
 
 **다음 글:** [문서 Q&A 시스템 구축: RAG 기반 PDF·문서 검색](/articles/app-document-qa)
-
-<br>
-읽어주셔서 감사합니다. 😊
-

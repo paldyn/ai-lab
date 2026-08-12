@@ -207,10 +207,8 @@ print(f"R²:   {r2:.4f}  (0~1, 높을수록 좋음)")
 
 ---
 
+읽어주셔서 감사합니다. 😊
+
 **지난 글:** [지도학습 vs 비지도학습: 머신러닝의 두 패러다임](/articles/ml-supervised-vs-unsupervised)
 
 **다음 글:** [로지스틱 회귀: 분류 문제의 첫 걸음](/articles/ml-logistic-regression)
-
-<br>
-읽어주셔서 감사합니다. 😊
-

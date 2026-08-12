@@ -128,9 +128,8 @@ query  ::= "SELECT " cols " FROM " table cond?
 
 ---
 
+읽어주셔서 감사합니다. 😊
+
 **지난 글:** [제약 디코딩: 스키마가 토큰을 막는 방식](/articles/structured-output-constrained-decoding)
 
 **다음 글:** [형태는 맞는데 값이 틀릴 때](/articles/structured-output-validation)
-
-<br>
-읽어주셔서 감사합니다. 😊

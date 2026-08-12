@@ -133,10 +133,8 @@ ollama run deepseek-r1:8b  # R1의 증류 버전
 
 ---
 
-**지난 글:** [Mistral 패밀리 완전 해부: 유럽 오픈소스 LLM의 반격](/articles/llm-mistral-family)
-
-**다음 글:** [한국 LLM 완전 해부: EXAONE, HyperCLOVA X, 그리고 한국어 AI](/articles/llm-korean-models)
-
-<br>
 읽어주셔서 감사합니다. 😊
 
+**지난 글:** [Mistral 패밀리 완전 해부: 유럽 오픈소스 LLM의 반격](/articles/llm-mistral-family)
+
+**다음 글:** [한국 LLM 완전 해부: EXAONE, HyperCLOVA X, SOLAR](/articles/llm-korean-models)

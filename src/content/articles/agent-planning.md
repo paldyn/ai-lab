@@ -313,10 +313,8 @@ for strategy, use_case in strategies.items():
 
 ---
 
+읽어주셔서 감사합니다. 😊
+
 **지난 글:** [에이전트 메모리: 단기·장기·시맨틱 메모리 아키텍처](/articles/agent-memory)
 
 **다음 글:** [에이전트 리플렉션: 자기 평가와 반복 개선 패턴](/articles/agent-reflection)
-
-<br>
-읽어주셔서 감사합니다. 😊
-

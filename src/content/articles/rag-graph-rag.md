@@ -130,10 +130,8 @@ Global Search는 전체 문서를 커뮤니티로 클러스터링하고 각 커�
 
 ---
 
+읽어주셔서 감사합니다. 😊
+
 **지난 글:** [Agentic RAG: 에이전트가 스스로 검색하고 추론하는 시스템](/articles/rag-agentic-rag)
 
 **다음 글:** [RAG 평가: RAGAS로 검색 품질과 답변 품질 측정하기](/articles/rag-evaluation)
-
-<br>
-읽어주셔서 감사합니다. 😊
-

@@ -226,10 +226,8 @@ summary_result = safe_agent_execute(
 
 ---
 
+읽어주셔서 감사합니다. 😊
+
 **지난 글:** [프롬프트 템플릿: 재사용 가능한 프롬프트 설계](/articles/prompt-templates)
 
 **다음 글:** [컨텍스트 관리: 긴 대화에서 LLM이 기억을 유지하는 방법](/articles/prompt-context-management)
-
-<br>
-읽어주셔서 감사합니다. 😊
-

@@ -306,10 +306,8 @@ AutoGen은 **에이전트 간 대화로 문제를 해결**하는 독특한 패�
 
 ---
 
+읽어주셔서 감사합니다. 😊
+
 **지난 글:** [CrewAI 완전 가이드: 역할 기반 멀티 에이전트 협업](/articles/agent-crewai)
 
 **다음 글:** [OpenAI Swarm: 경량 멀티 에이전트 핸드오프 패턴](/articles/agent-swarm)
-
-<br>
-읽어주셔서 감사합니다. 😊
-

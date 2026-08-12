@@ -118,10 +118,8 @@ Gemini가 GPT나 Claude와 가장 다른 강점은 **Google 생태계와의 통�
 
 ---
 
+읽어주셔서 감사합니다. 😊
+
 **지난 글:** [Claude 패밀리 완전 해부: Constitutional AI와 안전성 우선 설계](/articles/llm-claude-family)
 
 **다음 글:** [LLaMA 패밀리 완전 해부: 오픈소스 LLM 혁명](/articles/llm-llama-family)
-
-<br>
-읽어주셔서 감사합니다. 😊
-

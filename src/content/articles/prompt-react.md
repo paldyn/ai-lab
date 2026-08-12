@@ -207,10 +207,8 @@ ReAct는 오늘날 LangChain, LlamaIndex, CrewAI 등 거의 모든 에이전트 
 
 ---
 
+읽어주셔서 감사합니다. 😊
+
 **지난 글:** [Tree-of-Thought: 여러 추론 경로를 탐색하다](/articles/prompt-tree-of-thought)
 
 **다음 글:** [Self-Consistency: 다수결로 정확도를 높이다](/articles/prompt-self-consistency)
-
-<br>
-읽어주셔서 감사합니다. 😊
-

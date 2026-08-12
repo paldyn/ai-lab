@@ -281,10 +281,8 @@ warmup = 5%, cosine decay, weight_decay = 0.01
 
 ---
 
+읽어주셔서 감사합니다. 😊
+
 **지난 글:** [파인튜닝 데이터 준비: 형식·품질·양 완전 가이드](/articles/finetuning-data-prep)
 
 **다음 글:** [파인튜닝 평가: 내 모델이 얼마나 좋아졌는지 측정하기](/articles/finetuning-evaluation)
-
-<br>
-읽어주셔서 감사합니다. 😊
-

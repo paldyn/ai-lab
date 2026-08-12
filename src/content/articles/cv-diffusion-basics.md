@@ -224,10 +224,8 @@ w(guidance_scale)가 클수록 텍스트 정합도가 높아지지만, 다양성
 
 ---
 
+읽어주셔서 감사합니다. 😊
+
 **지난 글:** [CLIP: 이미지와 텍스트를 같은 공간에 정렬하는 대조 학습](/articles/cv-clip)
 
 **다음 글:** [Stable Diffusion: 잠재 확산 모델의 구조와 실전 활용](/articles/cv-stable-diffusion)
-
-<br>
-읽어주셔서 감사합니다. 😊
-

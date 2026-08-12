@@ -269,10 +269,8 @@ AI 에이전트는 LLM에 **행동 능력**을 부여하는 시스템이다:
 
 ---
 
+읽어주셔서 감사합니다. 😊
+
 **지난 글:** [LLM 서빙 비용 최적화: 토큰·GPU·캐싱 전략](/articles/serving-cost-optimization)
 
 **다음 글:** [에이전트 아키텍처: ReAct·Plan-and-Execute·Reflexion](/articles/agent-architecture)
-
-<br>
-읽어주셔서 감사합니다. 😊
-

@@ -159,10 +159,8 @@ for block in resp.content:
 
 ---
 
-**지난 글:** [LLM 비용 최적화: 더 저렴하게, 더 빠르게](/articles/project-cost-optimization)
-
-**다음 글:** [테스트 타임 컴퓨트: 생각할 시간을 사는 법](/articles/reasoning-test-time-compute)
-
-<br>
 읽어주셔서 감사합니다. 😊
 
+**지난 글:** [LLM 비용 최적화: 더 저렴하게, 더 빠르게](/articles/project-cost-optimization)
+
+**다음 글:** [테스트 타임 컴퓨트: 추론 시점에 계산을 더 쓴다는 것](/articles/reasoning-test-time-compute)

@@ -314,10 +314,8 @@ Tool Use는 에이전트의 핵심이다:
 
 ---
 
+읽어주셔서 감사합니다. 😊
+
 **지난 글:** [에이전트 아키텍처: ReAct·Plan-and-Execute·Reflexion](/articles/agent-architecture)
 
 **다음 글:** [MCP 프로토콜 심층: 서버 구현과 통합](/articles/agent-mcp-protocol)
-
-<br>
-읽어주셔서 감사합니다. 😊
-

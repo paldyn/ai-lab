@@ -299,10 +299,8 @@ prompt = library.render(
 
 ---
 
+읽어주셔서 감사합니다. 😊
+
 **지난 글:** [시스템 메시지 설계: LLM의 역할과 경계를 정의하다](/articles/prompt-system-message)
 
 **다음 글:** [프롬프트 인젝션 방어: LLM 보안의 첫 번째 전선](/articles/prompt-injection-defense)
-
-<br>
-읽어주셔서 감사합니다. 😊
-

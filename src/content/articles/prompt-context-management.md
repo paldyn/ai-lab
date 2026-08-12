@@ -258,10 +258,8 @@ def arrange_for_attention(docs: list[str], query: str) -> list[str]:
 
 ---
 
+읽어주셔서 감사합니다. 😊
+
 **지난 글:** [프롬프트 인젝션 방어: LLM 보안의 첫 번째 전선](/articles/prompt-injection-defense)
 
 **다음 글:** [프롬프트 버전 관리: 프롬프트를 코드처럼 관리하기](/articles/prompt-versioning)
-
-<br>
-읽어주셔서 감사합니다. 😊
-

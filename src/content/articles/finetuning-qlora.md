@@ -184,10 +184,8 @@ QLoRA는 NF4 4비트 양자화, 이중 양자화, 페이지드 옵티마이저 �
 
 ---
 
+읽어주셔서 감사합니다. 😊
+
 **지난 글:** [LoRA 완전 정복: 저랭크 어댑테이션의 수학과 실전](/articles/finetuning-lora)
 
 **다음 글:** [Prefix Tuning & P-Tuning: 접두사 토큰으로 LLM 조율하기](/articles/finetuning-prefix-tuning)
-
-<br>
-읽어주셔서 감사합니다. 😊
-
