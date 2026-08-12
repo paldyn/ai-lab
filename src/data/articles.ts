@@ -53,6 +53,30 @@ export function countByCategory(): Partial<Record<CategoryId, number>> {
 }
 
 /**
+ * 사슬에서 이 글의 앞뒤 편.
+ *
+ * 「지난 글」 링크가 순서 데이터이므로 앞 편은 `prev`가 그대로 답하고, 뒤 편은
+ * 그 대응을 한 번 뒤집어 얻습니다. **가리키는 글이 목록에 없으면 없는 것으로 칩니다** —
+ * 초안이거나 지워진 글을 가리키는 경우이고, `orderArticles`가 사슬을 이을 때 쓰는
+ * 규칙과 같습니다(먼저 만난 후속만 잇는 것도 같습니다). 그렇게 안 하면 코드가 없는
+ * 글로 가는 링크를 만드는데, 그건 원고가 아니라서 `npm test`의 내부 링크 검사에 안 걸립니다.
+ */
+const nextBySlug = new Map<string, string>();
+for (const article of articles) {
+  const prev = article.prev;
+  if (!prev || !bySlug.has(prev) || nextBySlug.has(prev)) continue;
+  nextBySlug.set(prev, article.slug);
+}
+
+export function chainNeighbors(slug: string): { prev?: Article; next?: Article } {
+  const prevSlug = bySlug.get(slug)?.prev;
+  const prev = prevSlug ? bySlug.get(prevSlug) : undefined;
+  const nextSlug = nextBySlug.get(slug);
+  const next = nextSlug ? bySlug.get(nextSlug) : undefined;
+  return { ...(prev ? { prev } : {}), ...(next ? { next } : {}) };
+}
+
+/**
  * 카드 왼쪽 위에 찍는 번호.
  *
  * 수학은 커리큘럼이 정한 트랙 안 번호를 씁니다 — 원고가 서로를 「중급 12번」이라

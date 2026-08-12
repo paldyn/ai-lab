@@ -27,10 +27,18 @@ export interface ArticleIndexEntry {
   order?: number;
   /** 그 카테고리에서 몇 번째로 쓴 글인가. 1부터. orderArticles가 매깁니다. */
   seq: number;
+  /**
+   * 「지난 글」이 가리키는 슬러그. 사슬의 머리는 없습니다.
+   *
+   * 순서를 매기는 데도 쓰고 화면에도 씁니다 — 글 맨 아래 이동 칸이 이 값으로
+   * 앞뒤 글을 찾아 그 글의 번호와 분야까지 함께 적습니다. 슬러그 하나라
+   * 목록 전체에 실려도 가상 모듈이 10KB 남짓 늘어납니다.
+   */
+  prev?: string;
 }
 
-/** 순서를 매기기 전 단계. `prev`는 여기서만 쓰고 가상 모듈에는 안 싣습니다. */
-type RawEntry = Omit<ArticleIndexEntry, 'seq'> & { prev?: string };
+/** 순서를 매기기 전 단계. `seq`만 아직 없습니다. */
+type RawEntry = Omit<ArticleIndexEntry, 'seq'>;
 
 /**
  * 본문이 가리키는 **선행 글**의 슬러그.
@@ -122,7 +130,7 @@ export function orderArticles(entries: RawEntry[]): ArticleIndexEntry[] {
     seq.set(entry.slug, number);
   }
 
-  return sorted.map(({ prev: _prev, ...entry }) => ({ ...entry, seq: seq.get(entry.slug) ?? 1 }));
+  return sorted.map((entry) => ({ ...entry, seq: seq.get(entry.slug) ?? 1 }));
 }
 
 async function readEntry(file: string, root: string): Promise<RawEntry | null> {

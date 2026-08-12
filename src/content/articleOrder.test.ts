@@ -140,6 +140,16 @@ describe('글 아래 이동 칸', () => {
 });
 
 describe('카테고리 안 번호', () => {
+  /**
+   * 이동 칸은 이제 이 `prev`로 앞뒤 글을 찾아 React가 그립니다. 없는 글을 가리키면
+   * **코드가 만든 죽은 링크**가 되는데, 원고가 아니라서 내부 링크 검사에 안 걸립니다.
+   */
+  it('목록에 실리는 prev는 전부 목록 안의 글을 가리킨다', () => {
+    const known = new Set(ordered.map((entry) => entry.slug));
+    const dangling = ordered.filter((entry) => entry.prev && !known.has(entry.prev));
+    expect(dangling.map((entry) => `${entry.slug} → ${entry.prev}`)).toEqual([]);
+  });
+
   it('카테고리마다 1..N을 빈틈없이 한 번씩 쓴다', () => {
     const byCategory = new Map<string, number[]>();
     for (const entry of ordered) {

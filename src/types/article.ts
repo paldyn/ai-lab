@@ -61,6 +61,8 @@ export interface Article {
    * 빌드가 「지난 글」 사슬을 따라 매깁니다 — plugins/article-index.ts의 orderArticles.
    */
   seq: number;
+  /** 「지난 글」이 가리키는 슬러그. 사슬의 머리는 없습니다. */
+  prev?: string;
 }
 
 export interface ArticleHeading {

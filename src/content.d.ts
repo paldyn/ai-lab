@@ -14,6 +14,8 @@ declare module 'virtual:article-index' {
     order?: number;
     /** 그 카테고리에서 몇 번째로 쓴 글인가. 1부터. */
     seq: number;
+    /** 「지난 글」이 가리키는 슬러그. 사슬의 머리는 없습니다. */
+    prev?: string;
   }
 
   export const articleIndex: ArticleIndexEntry[];
