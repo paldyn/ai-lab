@@ -46,6 +46,22 @@ function toggleAll(button: Element): void {
   for (const answer of answers) answer.open = opening;
 }
 
+/**
+ * **마우스로 누른 뒤에는 포커스를 놓습니다.**
+ *
+ * 단추를 누르면 그 단추가 포커스를 쥡니다. 그 상태에서 스페이스바를 치면 브라우저는
+ * 페이지를 내리는 대신 **포커스된 단추를 한 번 더 누릅니다** — 「답 모두 보기」로
+ * 다 펼쳐 놓고 스페이스로 내려 읽으려는 순간 답이 통째로 도로 접힙니다.
+ * 답 칩(`summary`)도 같습니다. 그 하나가 닫힙니다.
+ *
+ * 키보드로 누른 것(`detail === 0`)은 그대로 둡니다. 그쪽은 포커스가 남아야 다음
+ * Tab이 이어지고, 스페이스로 다시 여닫는 것도 의도한 동작입니다.
+ */
+const releaseAfterPointer = (event: MouseEvent, element: Element) => {
+  if (event.detail === 0) return;
+  if (element instanceof HTMLElement) element.blur();
+};
+
 export function watchAnswerToggle(root: HTMLElement): () => void {
   const onClick = (event: MouseEvent) => {
     const target = event.target;
@@ -54,6 +70,7 @@ export function watchAnswerToggle(root: HTMLElement): () => void {
     const bulk = target.closest('button.answer-all');
     if (bulk) {
       toggleAll(bulk);
+      releaseAfterPointer(event, bulk);
       return;
     }
 
@@ -62,7 +79,10 @@ export function watchAnswerToggle(root: HTMLElement): () => void {
 
     // 키보드로 연 것(Enter·Space)은 그대로 둡니다.
     if (event.detail === 0) return;
-    if (target.closest('.answer-chip')) return;
+    if (target.closest('.answer-chip')) {
+      releaseAfterPointer(event, summary);
+      return;
+    }
 
     event.preventDefault();
   };
