@@ -84,6 +84,45 @@ describe('「지난 글」 사슬', () => {
   });
 });
 
+/**
+ * 글 맨 아래의 이동 칸. 원고에 적는 것은 두 줄뿐이고
+ * `plugins/markdown.ts`의 `rehypeEndNav`가 그것을 두 칸짜리 링크로 바꿉니다.
+ *
+ * **다음 글은 앞 글을 고쳐야 생깁니다.** 새 글이 나가면 그 앞 글에 한 줄을 더해야
+ * 하는데, 루틴이 그 일을 빠뜨려도 화면에는 아무 표시가 안 납니다 — 예전에 38편이
+ * 그렇게 비어 있었습니다. 사슬과 대조해 여기서 잡습니다.
+ */
+const FOOTER = (label: string) => new RegExp(`^\\*\\*${label}:\\*\\* \\[[^\\]]*\\]\\(/articles/([a-z0-9-]+)\\)$`, 'm');
+
+describe('글 아래 이동 칸', () => {
+  const footerOf = (slug: string, label: string): string | undefined => {
+    const body = readFileSync(path.join(DIR, `${slug}.md`), 'utf8');
+    const tail = body.slice(body.lastIndexOf('\n---\n'));
+    return tail.match(FOOTER(label))?.[1];
+  };
+
+  const nextOf = new Map<string, string>();
+  for (const entry of raw) {
+    if (!entry.prev || nextOf.has(entry.prev)) continue;
+    nextOf.set(entry.prev, entry.slug);
+  }
+
+  it('앞 글이 있으면 맨 아래에서 그 글을 가리킨다', () => {
+    const wrong = raw
+      .filter((entry) => entry.prev)
+      .filter((entry) => footerOf(entry.slug, '지난 글') !== entry.prev)
+      .map((entry) => `${entry.slug}: 사슬은 ${entry.prev}, 맨 아래는 ${footerOf(entry.slug, '지난 글') ?? '없음'}`);
+    expect(wrong).toEqual([]);
+  });
+
+  it('뒤 글이 있으면 맨 아래에서 그 글을 가리킨다', () => {
+    const wrong = [...nextOf]
+      .filter(([slug, next]) => footerOf(slug, '다음 글') !== next)
+      .map(([slug, next]) => `${slug}: 사슬은 ${next}, 맨 아래는 ${footerOf(slug, '다음 글') ?? '없음'}`);
+    expect(wrong).toEqual([]);
+  });
+});
+
 describe('카테고리 안 번호', () => {
   it('카테고리마다 1..N을 빈틈없이 한 번씩 쓴다', () => {
     const byCategory = new Map<string, number[]>();
