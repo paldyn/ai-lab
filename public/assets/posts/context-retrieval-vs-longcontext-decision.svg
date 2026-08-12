@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="500" viewBox="0 0 880 500">
+  <defs>
+    <marker id="arrGray" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#8a8a8a"/>
+    </marker>
+    <marker id="arrBlue" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#7ec8e3"/>
+    </marker>
+    <marker id="arrGreen" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#55c555"/>
+    </marker>
+  </defs>
+
+  <rect x="0" y="0" width="880" height="500" rx="12" fill="#0a0a0a"/>
+
+  <text x="60" y="46" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="22" font-weight="700" fill="#e8e8e8">검색과 긴 문맥, 무엇으로 갈지 정하는 순서</text>
+
+  <rect x="340" y="82" width="320" height="56" rx="8" fill="#12161c" stroke="#555555" stroke-width="1.5"/>
+  <text x="500" y="116" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#e8e8e8">문서 전체가 창에 들어가는가</text>
+
+  <rect x="340" y="182" width="320" height="56" rx="8" fill="#12161c" stroke="#555555" stroke-width="1.5"/>
+  <text x="500" y="216" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#e8e8e8">같은 문서에 질문이 여러 번 오는가</text>
+
+  <rect x="340" y="282" width="320" height="56" rx="8" fill="#12161c" stroke="#555555" stroke-width="1.5"/>
+  <text x="500" y="316" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#e8e8e8">프롬프트 캐시를 쓸 수 있는가</text>
+
+  <rect x="340" y="382" width="320" height="56" rx="8" fill="#101c10" stroke="#55c555" stroke-width="1.5"/>
+  <text x="500" y="416" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#e8e8e8">캐시해 둔 긴 문맥</text>
+
+  <rect x="60" y="88" width="190" height="44" rx="8" fill="#101820" stroke="#7ec8e3" stroke-width="1.5"/>
+  <text x="155" y="115" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="15" font-weight="600" fill="#e8e8e8">검색이 유일한 선택</text>
+
+  <rect x="60" y="188" width="190" height="44" rx="8" fill="#101c10" stroke="#55c555" stroke-width="1.5"/>
+  <text x="155" y="215" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="15" font-weight="600" fill="#e8e8e8">그냥 통째로 넣는다</text>
+
+  <rect x="60" y="288" width="190" height="44" rx="8" fill="#101820" stroke="#7ec8e3" stroke-width="1.5"/>
+  <text x="155" y="315" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="15" font-weight="600" fill="#e8e8e8">검색으로 줄인다</text>
+
+  <line x1="500" y1="138" x2="500" y2="182" stroke="#8a8a8a" stroke-width="1.5" marker-end="url(#arrGray)"/>
+  <text x="514" y="166" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">예</text>
+
+  <line x1="500" y1="238" x2="500" y2="282" stroke="#8a8a8a" stroke-width="1.5" marker-end="url(#arrGray)"/>
+  <text x="514" y="266" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">예</text>
+
+  <line x1="500" y1="338" x2="500" y2="382" stroke="#55c555" stroke-width="1.5" marker-end="url(#arrGreen)"/>
+  <text x="514" y="366" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">예</text>
+
+  <line x1="340" y1="110" x2="250" y2="110" stroke="#7ec8e3" stroke-width="1.5" marker-end="url(#arrBlue)"/>
+  <text x="295" y="96" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">아니오</text>
+
+  <line x1="340" y1="210" x2="250" y2="210" stroke="#55c555" stroke-width="1.5" marker-end="url(#arrGreen)"/>
+  <text x="295" y="196" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">아니오</text>
+
+  <line x1="340" y1="310" x2="250" y2="310" stroke="#7ec8e3" stroke-width="1.5" marker-end="url(#arrBlue)"/>
+  <text x="295" y="296" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">아니오</text>
+
+  <text x="690" y="416" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">두 번째부터 싸진다</text>
+  <text x="690" y="115" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">여유를 빼고 센다</text>
+  <text x="690" y="215" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">한 번뿐이면 손해</text>
+</svg>

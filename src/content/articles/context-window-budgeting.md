@@ -130,3 +130,5 @@ def input_budget(tier):
 읽어주셔서 감사합니다. 😊
 
 **지난 글:** [같은 문서라도 어디에 두느냐가 다르다](/articles/context-chunk-ordering)
+
+**다음 글:** [검색해서 넣을 것인가, 통째로 넣을 것인가](/articles/context-retrieval-vs-longcontext)

@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="330" viewBox="0 0 880 330">
+  <defs>
+    <marker id="axisArr" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#8a8a8a"/>
+    </marker>
+  </defs>
+
+  <rect x="0" y="0" width="880" height="330" rx="12" fill="#0a0a0a"/>
+
+  <text x="60" y="46" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="22" font-weight="700" fill="#e8e8e8">크기가 정하는 것은 성능이 아니라 도는 자리다</text>
+
+  <rect x="60" y="86" width="180" height="120" rx="8" fill="#101c10" stroke="#55c555" stroke-width="1.5"/>
+  <text x="150" y="118" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#e8e8e8">1B 미만</text>
+  <text x="150" y="146" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">4비트 0.5GB 안팎</text>
+  <text x="150" y="170" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">휴대폰·브라우저</text>
+  <text x="150" y="192" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">분류·태깅</text>
+
+  <rect x="260" y="86" width="180" height="120" rx="8" fill="#101c10" stroke="#55c555" stroke-width="1.5"/>
+  <text x="350" y="118" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#e8e8e8">1~4B</text>
+  <text x="350" y="146" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">4비트 1~2GB</text>
+  <text x="350" y="170" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">노트북·엣지 장비</text>
+  <text x="350" y="192" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">추출·요약·라우팅</text>
+
+  <rect x="460" y="86" width="180" height="120" rx="8" fill="#101820" stroke="#7ec8e3" stroke-width="1.5"/>
+  <text x="550" y="118" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#e8e8e8">7~15B</text>
+  <text x="550" y="146" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">4비트 4~9GB</text>
+  <text x="550" y="170" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">GPU 한 장</text>
+  <text x="550" y="192" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">도구 호출·초안</text>
+
+  <rect x="660" y="86" width="160" height="120" rx="8" fill="#12161c" stroke="#555555" stroke-width="1.5"/>
+  <text x="740" y="118" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#e8e8e8">30B 이상</text>
+  <text x="740" y="146" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">여러 장 또는 API</text>
+  <text x="740" y="170" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">서버 전용</text>
+  <text x="740" y="192" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">긴 추론·복잡한 계획</text>
+
+  <line x1="60" y1="244" x2="820" y2="244" stroke="#8a8a8a" stroke-width="1.5" marker-end="url(#axisArr)"/>
+  <text x="60" y="270" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">파라미터 수</text>
+
+  <text x="60" y="302" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">메모리는 파라미터만 센 값이다. KV 캐시가 문맥 길이에 비례해 따로 더 붙는다.</text>
+</svg>

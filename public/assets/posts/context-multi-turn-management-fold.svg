@@ -1,0 +1,72 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="330" viewBox="0 0 880 330">
+  <rect x="0" y="0" width="880" height="330" rx="12" fill="#0a0a0a"/>
+
+  <text x="60" y="46" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="22" font-weight="700" fill="#e8e8e8">턴이 쌓이고, 한계에 닿으면 접고, 다시 채운다</text>
+
+  <rect x="60" y="120" width="770" height="90" rx="10" fill="#101010" stroke="#333333" stroke-width="1.5"/>
+
+  <rect x="70" y="140" width="95" height="50" rx="6" fill="#191933" stroke="#7777cc" stroke-width="1.5"/>
+  <text x="117" y="170" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e8e8e8">시스템</text>
+
+  <g>
+    <rect x="170" y="140" width="105" height="50" rx="6" fill="#16202e" stroke="#7ec8e3" stroke-width="1.5"/>
+    <text x="222" y="170" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e8e8e8">턴 1</text>
+    <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.05;0.08;0.55;0.59;1" dur="6s" repeatCount="indefinite"/>
+  </g>
+  <g>
+    <rect x="280" y="140" width="105" height="50" rx="6" fill="#16202e" stroke="#7ec8e3" stroke-width="1.5"/>
+    <text x="332" y="170" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e8e8e8">턴 2</text>
+    <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.117;0.147;0.55;0.59;1" dur="6s" repeatCount="indefinite"/>
+  </g>
+  <g>
+    <rect x="390" y="140" width="105" height="50" rx="6" fill="#16202e" stroke="#7ec8e3" stroke-width="1.5"/>
+    <text x="442" y="170" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e8e8e8">턴 3</text>
+    <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.183;0.213;0.55;0.59;1" dur="6s" repeatCount="indefinite"/>
+  </g>
+  <g>
+    <rect x="500" y="140" width="105" height="50" rx="6" fill="#16202e" stroke="#7ec8e3" stroke-width="1.5"/>
+    <text x="552" y="170" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e8e8e8">턴 4</text>
+    <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.25;0.28;0.55;0.59;1" dur="6s" repeatCount="indefinite"/>
+  </g>
+
+  <g>
+    <rect x="170" y="140" width="85" height="50" rx="6" fill="#101c10" stroke="#55c555" stroke-width="1.5"/>
+    <text x="212" y="170" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e8e8e8">요약</text>
+    <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.55;0.59;0.93;0.97;1" dur="6s" repeatCount="indefinite"/>
+  </g>
+
+  <g>
+    <animateTransform attributeName="transform" type="translate" values="0 0;0 0;-345 0;-345 0" keyTimes="0;0.55;0.60;1" dur="6s" repeatCount="indefinite"/>
+    <g>
+      <rect x="610" y="140" width="105" height="50" rx="6" fill="#16202e" stroke="#7ec8e3" stroke-width="1.5"/>
+      <text x="662" y="170" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e8e8e8">턴 5</text>
+      <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.317;0.347;0.93;0.97;1" dur="6s" repeatCount="indefinite"/>
+    </g>
+    <g>
+      <rect x="720" y="140" width="105" height="50" rx="6" fill="#16202e" stroke="#7ec8e3" stroke-width="1.5"/>
+      <text x="772" y="170" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e8e8e8">턴 6</text>
+      <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.383;0.413;0.93;0.97;1" dur="6s" repeatCount="indefinite"/>
+    </g>
+  </g>
+
+  <g>
+    <rect x="490" y="140" width="105" height="50" rx="6" fill="#16202e" stroke="#7ec8e3" stroke-width="1.5"/>
+    <text x="542" y="170" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e8e8e8">턴 7</text>
+    <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.70;0.73;0.93;0.97;1" dur="6s" repeatCount="indefinite"/>
+  </g>
+  <g>
+    <rect x="600" y="140" width="105" height="50" rx="6" fill="#16202e" stroke="#7ec8e3" stroke-width="1.5"/>
+    <text x="652" y="170" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e8e8e8">턴 8</text>
+    <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.767;0.797;0.93;0.97;1" dur="6s" repeatCount="indefinite"/>
+  </g>
+
+  <line x1="830" y1="112" x2="830" y2="218" stroke="#e05555" stroke-width="2" stroke-dasharray="4,4"/>
+  <text x="830" y="102" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e05555">한계</text>
+
+  <g>
+    <text x="640" y="240" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e05555">여기서 접는다</text>
+    <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.45;0.48;0.55;0.59;1" dur="6s" repeatCount="indefinite"/>
+  </g>
+
+  <text x="60" y="284" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">시스템 블록은 어느 단계에서도 접지 않는다. 접히는 것은 오래된 턴뿐이고, 최근 턴은 원문 그대로 남는다.</text>
+</svg>

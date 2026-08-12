@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="440" viewBox="0 0 880 440">
+  <rect x="0" y="0" width="880" height="440" rx="12" fill="#0a0a0a"/>
+
+  <text x="60" y="46" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="22" font-weight="700" fill="#e8e8e8">변하지 않는 것부터 쌓아야 캐시가 산다</text>
+
+  <rect x="60" y="82" width="520" height="52" rx="8" fill="#191933" stroke="#7777cc" stroke-width="1.5"/>
+  <text x="80" y="113" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="15" font-weight="600" fill="#e8e8e8">역할과 범위 — 무엇을 하는 시스템인가</text>
+  <text x="600" y="113" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">배포 때만 바뀐다</text>
+
+  <rect x="60" y="144" width="520" height="52" rx="8" fill="#191933" stroke="#7777cc" stroke-width="1.5"/>
+  <text x="80" y="175" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="15" font-weight="600" fill="#e8e8e8">규칙 — 금지 대신 대체 행동으로</text>
+  <text x="600" y="175" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">배포 때만 바뀐다</text>
+
+  <rect x="60" y="206" width="520" height="52" rx="8" fill="#191933" stroke="#7777cc" stroke-width="1.5"/>
+  <text x="80" y="237" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="15" font-weight="600" fill="#e8e8e8">도구 설명과 출력 형식</text>
+  <text x="600" y="237" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">배포 때만 바뀐다</text>
+
+  <line x1="60" y1="274" x2="820" y2="274" stroke="#55c555" stroke-width="2" stroke-dasharray="4,4"/>
+  <text x="60" y="296" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#55c555">여기까지가 캐시 경계 — 위쪽은 요청마다 그대로 재사용된다</text>
+
+  <rect x="60" y="312" width="520" height="52" rx="8" fill="#16202e" stroke="#7ec8e3" stroke-width="1.5"/>
+  <text x="80" y="343" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="15" font-weight="600" fill="#e8e8e8">조직·사용자 설정</text>
+  <text x="600" y="343" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">사용자마다 바뀐다</text>
+
+  <rect x="60" y="374" width="520" height="52" rx="8" fill="#2a1a1a" stroke="#e05555" stroke-width="1.5"/>
+  <text x="80" y="405" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="15" font-weight="600" fill="#e8e8e8">오늘 날짜·세션 상태</text>
+  <text x="600" y="405" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">요청마다 바뀐다</text>
+</svg>
