@@ -115,6 +115,22 @@ describe('글 아래 이동 칸', () => {
     expect(wrong).toEqual([]);
   });
 
+  /**
+   * 순서도 못 박습니다 — 구분선, 감사 문구, 지난 글, 다음 글.
+   * 링크가 인사말 위에 있으면 `rehypeEndNav`가 마지막 두 문단을 못 찾아 이동 칸이
+   * 아예 안 생깁니다. 그래도 링크 자체는 멀쩡하니 다른 검사에는 안 걸립니다.
+   */
+  it('이동 링크가 마무리 블록의 맨 끝에 온다', () => {
+    const wrong = raw
+      .filter((entry) => entry.prev || nextOf.has(entry.slug))
+      .filter((entry) => {
+        const lines = readFileSync(path.join(DIR, `${entry.slug}.md`), 'utf8').trimEnd().split('\n');
+        return !/^\*\*(지난|다음) 글:\*\*/.test(lines[lines.length - 1]);
+      })
+      .map((entry) => entry.slug);
+    expect(wrong).toEqual([]);
+  });
+
   it('뒤 글이 있으면 맨 아래에서 그 글을 가리킨다', () => {
     const wrong = [...nextOf]
       .filter(([slug, next]) => footerOf(slug, '다음 글') !== next)
