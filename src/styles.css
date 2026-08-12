@@ -2232,9 +2232,16 @@ input:focus-visible {
   글에 섞이지 않고, 요소이므로 **칩에 정확히 올렸을 때만** hover를 받는다 —
   `summary::after`로 그렸을 때는 줄 어디에 마우스가 있어도 켜졌다.
 */
+/*
+  `user-select: none`은 여닫는 동안 글자가 잡히지 않게 합니다. 이 칩과 아래 단추는
+  글자가 아니라 조작 도구이고, 적힌 말도 `::after`가 넣는 것이라 잡아도 복사되지
+  않습니다. 문제 줄의 글자는 그대로 끌어 잡을 수 있습니다 — 막는 것은 컨트롤 위뿐입니다.
+  겹클릭이 근처 낱말을 잡는 것은 src/lib/answerToggle.ts가 따로 막습니다.
+*/
 .article-prose .answer-chip {
   display: inline-block;
   cursor: pointer;
+  user-select: none;
   margin-left: 8px;
   border: 1px solid var(--border);
   border-radius: 3px;
@@ -2272,6 +2279,7 @@ input:focus-visible {
 */
 .article-prose .answer-all {
   display: none;
+  user-select: none;
   margin: 0 0 12px auto;
   border: 1px solid var(--border);
   border-radius: 3px;

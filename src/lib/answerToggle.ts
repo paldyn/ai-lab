@@ -115,6 +115,26 @@ export function watchAnswerToggle(root: HTMLElement): () => void {
     restoring = false;
   };
 
+  /*
+    **연달아 누르면 근처 글자가 잡히던 것.**
+
+    같은 자리를 빠르게 두 번 누르면 브라우저는 그것을 겹클릭으로 보고 **커서 아래
+    낱말을**, 세 번이면 **문단 전체를** 선택합니다. 여닫는 단추와 답 칩은 문제 줄
+    한가운데 있으므로, 답을 몇 번 여닫다 보면 문제 글자가 통째로 파랗게 잡혔습니다.
+
+    두 번째 누름부터 `mousedown`의 기본 동작을 막으면 선택이 시작되지 않습니다.
+    `click`은 그대로 오므로 여닫는 동작은 달라지지 않습니다. 문제 줄의 글자는
+    여전히 끌어서 잡을 수 있습니다 — 막는 것은 두 컨트롤 위에서의 겹클릭뿐입니다.
+  */
+  const onMouseDown = (event: MouseEvent) => {
+    if (event.detail < 2) return;
+    const target = event.target;
+    if (!(target instanceof Element)) return;
+    if (target.closest('button.answer-all') || target.closest('.answer-chip')) {
+      event.preventDefault();
+    }
+  };
+
   const onClick = (event: MouseEvent) => {
     const target = event.target;
     if (!(target instanceof Element)) return;
@@ -167,6 +187,7 @@ export function watchAnswerToggle(root: HTMLElement): () => void {
   });
   observer.observe(root, { childList: true, subtree: true });
 
+  root.addEventListener('mousedown', onMouseDown);
   root.addEventListener('click', onClick);
   root.addEventListener('toggle', onToggle, true);
   root.addEventListener('pointerdown', markGesture, true);
@@ -178,6 +199,7 @@ export function watchAnswerToggle(root: HTMLElement): () => void {
 
   return () => {
     observer.disconnect();
+    root.removeEventListener('mousedown', onMouseDown);
     root.removeEventListener('click', onClick);
     root.removeEventListener('toggle', onToggle, true);
     root.removeEventListener('pointerdown', markGesture, true);
