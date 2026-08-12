@@ -44,6 +44,7 @@ const prefixRules: [prefix: string, categoryId: CategoryId][] = [
   ['tokenizer-', 'llm-core'],
   ['reasoning-', 'llm-core'],
   ['structured-output-', 'llm-core'],
+  ['slm-', 'llm-core'],
 
   ['cnn-', 'domain-models'],
   ['cv-', 'domain-models'],
