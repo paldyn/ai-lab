@@ -2343,131 +2343,125 @@ input:focus-visible {
 }
 
 /*
-  글 맨 아래의 지난 글 · 다음 글.
+  글 맨 아래 이동 칸.
 
-  원고는 `**지난 글:** [제목](/articles/…)` 한 줄로 적고 빌드가 이 모양으로
-  바꿉니다(plugins/markdown.ts의 rehypeEndNav). 두 칸이 다 있으면 나란히,
-  하나뿐이면 그 칸이 온폭을 씁니다 — 사슬의 머리와 끝이 그렇습니다.
+  **목록 행(.article-row)을 본문 끝에 두 줄 놓은 것입니다.** 모노 10px 메타 줄,
+  제목, 오른쪽 18px 화살표, 아래 머리카락 선 — 이 사이트가 항목을 그리는 방식을
+  그대로 씁니다. 새로 만든 조형이 없습니다.
 
-  **테두리만 두른 칸은 눈에 안 띕니다.** 본문 색과 같은 글자에 1px 선만 있으면
-  마지막 문단과 구별이 안 됩니다. 셋을 줍니다 — 바닥을 채워 본문에서 떼어 놓고,
-  화살표를 크게 세워 방향을 먼저 읽히게 하고, 라벨과 화살표에 그 글이 속한 분야의
-  색을 씁니다(`--article-accent`, ArticlePage가 넣습니다).
+  **선은 눈에 띄는 일을 못 합니다.** `--border`는 배경 대비가 라이트 1.26:1,
+  다크 1.21:1입니다. 이 사이트의 선은 전부 그 값이고 어디서도 선 혼자 무게를
+  지지 않습니다 — `.section-heading`은 26px 제목이, 목록 행은 제목과 화살표가 집니다.
+  여기서도 글자 크기와 분야색이 그 일을 합니다.
 
-  다음 글은 오른쪽 정렬입니다. 다 읽고 내려온 눈이 '앞으로 갈 곳'을 오른쪽에서 찾습니다.
+  **면을 채우지 않는 이유는 대비입니다.** 분야색을 `--surface` 위에 글자로 쓰면
+  머신러닝·신경망이 4.43:1로 4.5 아래로 떨어집니다. `--bg` 위에서는 4.92:1이고
+  (다크는 최악이 7.88:1) `src/lib/theme.test.ts`가 재는 조합도 그쪽입니다.
+  채우지 않으면 그 색을 메타 줄에 그대로 쓸 수 있고, 그 색이 이 칸을 세웁니다.
+
+  본문(`.article-prose`) 밖에 있습니다. 안에 두면 `.article-prose a`의 브랜드색과
+  밑줄을 매번 덮어야 하고, 링크가 react-router를 안 거쳐 문서를 통째로 다시 받습니다.
 */
 .article-endnav {
+  margin-top: 52px;
+  border-top: 1px solid var(--border);
+}
+
+.endnav-row {
+  /* .card-trigger::after가 이 상자를 덮습니다 — 행 전체가 클릭 영역입니다. */
+  position: relative;
   display: grid;
-  gap: 14px;
-  margin-top: 40px;
-}
-
-@media (min-width: 640px) {
-  .article-endnav:has(.endnav-prev):has(.endnav-next) {
-    grid-template-columns: 1fr 1fr;
-  }
-}
-
-.article-prose .endnav-item {
-  display: grid;
-  align-items: center;
-  gap: 4px 16px;
-  border: 1px solid var(--border);
-  border-radius: 4px;
-  background: var(--surface);
-  padding: 18px 20px;
-  color: var(--text-strong);
-  text-decoration: none;
-  transition: border-color 0.2s, background-color 0.2s, transform 0.2s;
-}
-
-.endnav-prev {
-  grid-template-columns: auto minmax(0, 1fr);
-}
-
-.endnav-next {
   grid-template-columns: minmax(0, 1fr) auto;
-  text-align: right;
+  align-items: center;
+  column-gap: 20px;
+  border-bottom: 1px solid var(--border);
+  padding-block: 22px;
 }
 
-/*
-  화살표는 CSS가 넣습니다. 마크업에 두면 제목을 복사할 때 같이 딸려 갑니다.
-  두 줄에 걸쳐 세로 가운데에 섭니다.
-*/
-.endnav-prev::before,
-.endnav-next::after {
-  grid-row: 1 / span 2;
-  color: var(--article-accent, var(--brand-text));
-  font-size: 26px;
-  line-height: 1;
-  transition: transform 0.2s;
+.endnav-lead {
+  padding-block: 24px 28px;
 }
 
-.endnav-prev::before {
-  grid-column: 1;
-  content: '←';
-}
-
-.endnav-next::after {
-  grid-column: 2;
-  content: '→';
-}
-
-.endnav-prev .endnav-label,
-.endnav-prev .endnav-title {
-  grid-column: 2;
-}
-
-.endnav-next .endnav-label,
-.endnav-next .endnav-title {
-  grid-column: 1;
-}
-
-/*
-  **색은 화살표만 씁니다.** 라벨까지 분야 색으로 칠해 봤더니 라이트 테마에서
-  머신러닝·신경망(`--cat-deep-learning-text`)이 이 칸 배경(`--surface`, #f3f3f3)
-  위에서 4.43:1이 됩니다 — 페이지 배경(#fff) 위에서는 4.92:1이라 통과하던 색이
-  칸을 채우자 4.5 아래로 내려갑니다. 화살표는 글자가 아니라 그림이라 3:1이면
-  되므로 그대로 두고, 10px짜리 라벨은 두 테마 모두 4.5를 넘는 값으로 되돌립니다
-  (`--text-muted`는 이 배경에서 5.43 / 4.53입니다).
-*/
-.endnav-label {
-  grid-row: 1;
+/* 카드 메타 줄과 같은 값입니다 — ArticleCard의 row 변형(10px / 0.08em / 슬래시). */
+.endnav-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 4px 8px;
+  margin-bottom: 10px;
   color: var(--text-muted);
   font-family: 'JetBrains Mono', ui-monospace, monospace;
   font-size: 10px;
-  letter-spacing: 0.14em;
+  letter-spacing: 0.08em;
 }
 
-.endnav-title {
+.endnav-title a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/*
+  지난 글은 카드 제목 급, 다음 글은 그보다 한 단 큽니다. 22px을 쓰는 이유가 있습니다 —
+  `.section-heading h2`가 26px/350인데 그 제목(「…의 최신 글」)이 바로 아래 서므로,
+  같은 값을 쓰면 링크와 섹션 머리가 같은 얼굴로 한 화면에 놓입니다.
+*/
+.endnav-quiet .endnav-title {
   display: -webkit-box;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 2;
-  grid-row: 2;
   overflow: hidden;
-  font-size: 16px;
+  color: var(--text-dim);
+  font-size: 17px;
   font-weight: 500;
   line-height: 1.5;
+  transition: color 150ms ease;
 }
 
-.article-prose .endnav-item:hover {
-  border-color: var(--brand);
-  background: var(--bg-subtle);
+.endnav-lead .endnav-title {
+  color: var(--text-strong);
+  font-size: 22px;
+  font-weight: 400;
+  line-height: 1.4;
+  transition: color 150ms ease;
+}
+
+/* 두 줄에 걸쳐 세로 가운데에 섭니다. */
+.endnav-arrow {
+  grid-column: 2;
+  grid-row: 1 / span 2;
+  color: var(--text-muted);
+  transition: color 150ms ease, transform 150ms ease;
+}
+
+.endnav-row:hover .endnav-title {
   color: var(--brand-text);
 }
 
-.article-prose .endnav-prev:hover::before {
-  transform: translateX(-3px);
+/* ArticleCard·news-feed-row의 화살표 hover와 같은 2px입니다. */
+.endnav-row:hover .endnav-arrow {
+  color: var(--text);
+  transform: translate(2px, -2px);
 }
 
-.article-prose .endnav-next:hover::after {
-  transform: translateX(3px);
+@media (max-width: 640px) {
+  .endnav-row {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  /* .news-feed-arrow와 같습니다 — 좁은 화면에서는 행 전체가 이미 누를 것입니다. */
+  .endnav-arrow {
+    display: none;
+  }
+
+  .endnav-lead .endnav-title {
+    font-size: 19px;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .article-prose .endnav-item,
-  .endnav-prev::before,
-  .endnav-next::after {
+  .endnav-quiet .endnav-title,
+  .endnav-lead .endnav-title,
+  .endnav-arrow {
     transition: none;
   }
 }

@@ -288,18 +288,25 @@ function rehypeAnswerToggle() {
 }
 
 /**
- * 글 맨 아래의 **지난 글 · 다음 글**을 두 칸짜리 이동 칸으로 바꿉니다.
+ * 글 맨 아래의 **지난 글 · 다음 글 두 문단을 본문에서 걷어냅니다.**
  *
- * 원고는 `**지난 글:** [제목](/articles/…)` 한 줄로 적습니다 — 쓰는 쪽은 그게 제일
- * 쉽고, 그 링크가 곧 목록 순서를 정하는 사슬 데이터이기도 합니다. 다만 그대로
- * 두면 굵은 글씨 두 문단이라, 다 읽고 나서 다음으로 갈 곳을 찾는 자리로는 약합니다.
+ * 원고는 그 두 줄을 그대로 적습니다 — 쓰는 쪽이 제일 쉽고, 그 링크가 곧 목록 순서를
+ * 정하는 사슬 데이터입니다(plugins/article-index.ts). 다만 **화면은 여기서 그리지
+ * 않습니다.** 이동 칸은 ArticlePage가 사슬에서 앞뒤 글을 찾아 그립니다 — 그래야
+ * 상대 글의 번호와 분야까지 함께 적을 수 있고, 링크도 react-router로 나가 문서를
+ * 통째로 다시 받지 않습니다.
+ *
+ * **여기서 그리면 안 되는 이유가 하나 더 있습니다.** `renderCached`는 본문 해시와
+ * `RENDERER_VERSION`만으로 캐시 키를 잡습니다. 이웃 글의 제목이나 번호가 바뀌어도
+ * 이 파일의 캐시는 안 깨지므로, 이웃의 값을 본문 HTML에 구워 넣으면 조용히 옛 값이
+ * 나갑니다.
  *
  * 마지막 두 문단만 봅니다. 본문 한가운데서 「지난 글에서 …」라고 쓰는 문장은
  * 산문이므로 건드리지 않습니다.
  */
 const END_LABELS = new Set(['지난 글', '다음 글']);
 
-function rehypeEndNav() {
+function rehypeDropEndNav() {
   type Node = Record<string, unknown>;
   const childrenOf = (node: Node) => (node.children ?? []) as Node[];
 
@@ -308,87 +315,38 @@ function rehypeEndNav() {
     return childrenOf(node).map(textOf).join('');
   };
 
-  const find = (node: Node, tagName: string): Node | undefined => {
-    if (node.type === 'element' && node.tagName === tagName) return node;
-    for (const child of childrenOf(node)) {
-      const found = find(child, tagName);
-      if (found) return found;
-    }
-    return undefined;
-  };
-
-  /** 이동 칸으로 바꿀 수 있는 문단이면 {label, href, title}, 아니면 undefined. */
-  const readItem = (node: Node) => {
-    if (node.type !== 'element' || node.tagName !== 'p') return undefined;
+  /** 걷어낼 문단이면 true. 굵은 라벨로 시작하고 글 링크를 가진 문단입니다. */
+  const isEndNavLine = (node: Node): boolean => {
+    if (node.type !== 'element' || node.tagName !== 'p') return false;
     const strong = childrenOf(node)[0];
-    if (!strong || strong.type !== 'element' || strong.tagName !== 'strong') return undefined;
-
-    const label = textOf(strong).replace(/:$/, '').trim();
-    if (!END_LABELS.has(label)) return undefined;
-
-    const anchor = find(node, 'a');
-    const href = (anchor?.properties as Record<string, unknown> | undefined)?.href;
-    if (!anchor || typeof href !== 'string') return undefined;
-
-    return { label, href, title: textOf(anchor) };
+    if (!strong || strong.type !== 'element' || strong.tagName !== 'strong') return false;
+    return END_LABELS.has(textOf(strong).replace(/:$/, '').trim());
   };
-
-  const item = (read: { label: string; href: string; title: string }): Node => ({
-    type: 'element',
-    tagName: 'a',
-    properties: {
-      href: read.href,
-      className: ['endnav-item', read.label === '지난 글' ? 'endnav-prev' : 'endnav-next'],
-    },
-    children: [
-      {
-        type: 'element',
-        tagName: 'span',
-        properties: { className: ['endnav-label'] },
-        children: [{ type: 'text', value: read.label }],
-      },
-      {
-        type: 'element',
-        tagName: 'span',
-        properties: { className: ['endnav-title'] },
-        children: [{ type: 'text', value: read.title }],
-      },
-    ],
-  });
 
   return (tree: unknown) => {
     const root = tree as Node;
     const children = childrenOf(root);
 
     /*
-      뒤에서부터 이동 칸 후보만 걷어 냅니다. 블록 사이의 줄바꿈 텍스트 노드는
-      건너뜁니다 — 이걸 안 건너뛰면 문단 사이에서 멈춰 마지막 하나만 잡힙니다.
+      뒤에서부터 걷어 냅니다. 블록 사이의 줄바꿈 텍스트 노드는 건너뜁니다 —
+      안 건너뛰면 문단 사이에서 멈춰 마지막 하나만 잡힙니다.
     */
     const blank = (node: Node) => node.type === 'text' && String(node.value ?? '').trim() === '';
-    const items: Node[] = [];
     let end = children.length;
+    let dropped = 0;
     while (end > 0) {
       const child = children[end - 1];
       if (blank(child)) {
         end -= 1;
         continue;
       }
-      const read = readItem(child);
-      if (!read) break;
-      items.unshift(item(read));
+      if (!isEndNavLine(child)) break;
+      dropped += 1;
       end -= 1;
     }
-    if (items.length === 0) return;
+    if (dropped === 0) return;
 
-    root.children = [
-      ...children.slice(0, end),
-      {
-        type: 'element',
-        tagName: 'nav',
-        properties: { className: ['article-endnav'], 'aria-label': '글 사이 이동' },
-        children: items,
-      },
-    ];
+    root.children = children.slice(0, end);
   };
 }
 
@@ -417,7 +375,7 @@ export async function renderMarkdown(body: string): Promise<RenderedMarkdown> {
     .use(rehypeKatex)
     .use(rehypeSelectableMathSpace)
     .use(rehypeAnswerToggle)
-    .use(rehypeEndNav)
+    .use(rehypeDropEndNav)
     .use(rehypeStringify, { allowDangerousHtml: true })
     .process(body);
 
@@ -441,7 +399,7 @@ const CACHE_DIR = 'node_modules/.cache/paldyn-markdown';
  * 선택 가능하게 바꾸고도 화면이 그대로여서 한 번 헤맸습니다 — 캐시가 예전 결과를
  * 돌려주고 있었습니다.
  */
-const RENDERER_VERSION = '2026-08-12-endnav-2';
+const RENDERER_VERSION = '2026-08-12-endnav-drop';
 
 async function renderCached(body: string): Promise<RenderedMarkdown> {
   const key = createHash('sha256').update(RENDERER_VERSION).update(body).digest('hex').slice(0, 32);

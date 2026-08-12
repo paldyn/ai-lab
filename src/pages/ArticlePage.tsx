@@ -1,10 +1,10 @@
-import { useCallback, useEffect, useMemo, useRef, useState, type CSSProperties } from 'react';
-import { ArrowLeft, ArrowRight } from 'lucide-react';
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import { ArrowLeft, ArrowRight, ArrowUpRight } from 'lucide-react';
 import { Link, Navigate, useParams } from 'react-router';
 import { ArticleCard } from '../components/ArticleCard';
 import { ArticleVisual } from '../components/ArticleVisual';
 import { Seo } from '../components/Seo';
-import { articleOrdinal, articles, getArticleBySlug } from '../data/articles';
+import { articleOrdinal, articles, chainNeighbors, getArticleBySlug } from '../data/articles';
 import { categoryById } from '../data/categories';
 import { curriculumLinks, mainTrackNumber } from '../data/curriculum';
 import { initialArticleBody, loadArticleBody } from '../lib/articleBody';
@@ -203,11 +203,54 @@ const LATEST_LIMIT = 3;
  *
  * `articles`는 이미 최신순이라(같은 날은 「지난 글」 사슬의 역순) 자기만 빼고
  * 앞에서 세 편 자르면 됩니다.
+ *
+ * **바로 위 이동 칸에 세운 앞뒤 편도 뺍니다.** 안 빼면 같은 글이 한 화면에 두 번
+ * 나옵니다 — 방금 나간 글일수록 그렇고, 실측으로 최근 30편 중 아홉 편이 그랬습니다.
  */
-function latestBeside(article: Article): Article[] {
+function latestBeside(article: Article, beside: Article[]): Article[] {
+  const shown = new Set([article.slug, ...beside.map((item) => item.slug)]);
   return articles
-    .filter((candidate) => candidate.categoryId === article.categoryId && candidate.slug !== article.slug)
+    .filter((candidate) => candidate.categoryId === article.categoryId && !shown.has(candidate.slug))
     .slice(0, LATEST_LIMIT);
+}
+
+/**
+ * 글 맨 아래 이동 칸의 한 줄.
+ *
+ * **목록 행(`.article-row`)을 본문 끝에 한 번 더 놓은 것입니다.** 모노 10px 메타 줄,
+ * 제목, 오른쪽 18px 화살표, 아래 머리카락 선 — 이 사이트가 '항목'을 그리는 방식
+ * 그대로입니다. 채운 면도 둥근 모서리도 큰 화살표도 쓰지 않습니다.
+ *
+ * 메타에 상대 글의 **번호**를 적는 것이 이 칸의 핵심입니다. 글 머리가
+ * 「MATH / 초급 7번」으로 열리고 글 끝이 「초급 8번」으로 닫혀 한 페이지가 같은
+ * 카운터로 시작하고 끝납니다. 같은 카테고리로 이어지는 사슬 간선은 전부
+ * 번호가 1씩 커지므로(312/312) 읽는 사람이 자기 자리를 놓치지 않습니다.
+ *
+ * **다음 글이 크고 지난 글이 작습니다.** 다 읽은 사람이 정할 것은 앞으로 갈 곳이고,
+ * 지난 글은 방금 지나온 자리라 확인용입니다. 원고에 적는 순서(지난 → 다음)는
+ * 그대로 두어 화면과 데이터가 갈리지 않게 합니다.
+ */
+function EndNavRow({ article, label, lead }: { article: Article; label: string; lead: boolean }) {
+  const category = categoryById[article.categoryId];
+
+  return (
+    <div className={`endnav-row ${lead ? 'endnav-lead' : 'endnav-quiet'}`}>
+      <p className="endnav-meta">
+        <span>{label}</span>
+        <span aria-hidden="true">/</span>
+        {/* 분야색은 --bg 위에서만 씁니다 — 면을 깔면 4.5:1 아래로 떨어집니다. */}
+        <span style={{ color: category.accentText }}>
+          {category.name} {articleOrdinal(article)}
+        </span>
+      </p>
+      <p className="endnav-title">
+        <Link to={`/articles/${article.slug}`} className="card-trigger" aria-label={`${label}: ${article.title}`}>
+          {article.title}
+        </Link>
+      </p>
+      <ArrowUpRight className="endnav-arrow" size={18} aria-hidden="true" />
+    </div>
+  );
 }
 
 /**
@@ -286,7 +329,9 @@ function ArticleView({ article }: { article: Article }) {
   const collectionPath =
     category.section === 'news' ? '/news' : category.section === 'research' ? '/research' : `/learn/${category.id}`;
   const collectionLabel = category.section === 'news' ? '뉴스' : category.section === 'research' ? '리서치' : category.name;
-  const latest = latestBeside(article);
+  /* 사슬의 앞뒤 편. 둘 다 없으면 이동 칸을 아예 안 그립니다(342편 중 4편). */
+  const { prev, next } = chainNeighbors(article.slug);
+  const latest = latestBeside(article, [prev, next].filter(Boolean) as Article[]);
 
   // 첫 화면에서는 프리렌더된 HTML을 DOM에서 그대로 읽어 씁니다.
   // SPA로 이동해 들어온 경우에만 해당 글의 청크를 내려받습니다.
@@ -404,19 +449,20 @@ function ArticleView({ article }: { article: Article }) {
         </aside>
 
         <div className="min-w-0">
-          {/*
-            분야 색을 본문에 흘려 넣습니다. 지금은 맨 아래 이동 칸의 화살표와
-            라벨이 씁니다 — 카드마다 그 글이 속한 줄의 색을 답니다.
-            `accentText`는 두 테마 모두 배경 대비 4.5:1을 넘는 글자용 값입니다.
-          */}
           <div
             ref={proseRef}
             id="article-body"
             data-slug={article.slug}
             className="article-prose"
-            style={{ '--article-accent': category.accentText } as CSSProperties}
             dangerouslySetInnerHTML={{ __html: body?.html ?? '' }}
           />
+
+          {(prev || next) && (
+            <nav className="article-endnav" aria-label="글 사이 이동">
+              {prev && <EndNavRow article={prev} label="지난 글" lead={!next} />}
+              {next && <EndNavRow article={next} label="다음 글" lead />}
+            </nav>
+          )}
 
           <div className="mt-16 flex items-center justify-between border-y border-[var(--border)] py-5">
             <Link to={collectionPath} className="back-link">
