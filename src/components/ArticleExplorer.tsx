@@ -1,7 +1,6 @@
 import { useMemo, useState } from 'react';
 import { articles } from '../data/articles';
 import { categories } from '../data/categories';
-import { useReadCheck } from '../lib/readLog';
 import type { CategoryId } from '../types/article';
 import { ArticleCard } from './ArticleCard';
 import { TagFilter, type TagCount } from './TagFilter';
@@ -31,13 +30,6 @@ export function ArticleExplorer({
   const [categoryId, setCategoryId] = useState<CategoryId | 'all'>(fixedCategoryId ?? 'all');
   const [tag, setTag] = useState<string>('all');
   const [visible, setVisible] = useState(PAGE_SIZE);
-  /*
-    **기본값은 켜짐입니다(UNREAD).** 목록에 오는 이유가 대개 '다음에 뭘 읽지'라서
-    이미 본 것을 매번 걸러 내는 것보다 이쪽이 손이 덜 갑니다. 처음 온 사람은
-    읽은 것이 없어 아무것도 안 걸러지므로 전체 목록과 같습니다.
-  */
-  const [unreadOnly, setUnreadOnly] = useState(true);
-  const readCheck = useReadCheck();
 
   const scopedArticles = useMemo(
     () => articles.filter((article) => !categoryIds || categoryIds.includes(article.categoryId)),
@@ -83,8 +75,7 @@ export function ArticleExplorer({
       const activeCategory = fixedCategoryId ?? categoryId;
       const matchesCategory = activeCategory === 'all' || article.categoryId === activeCategory;
       const matchesTag = tag === 'all' || article.tags.includes(tag);
-      const matchesRead = !unreadOnly || !readCheck('article', article.slug);
-      return matchesCategory && matchesTag && matchesRead;
+      return matchesCategory && matchesTag;
     });
 
     if (!curriculum) return matched;
@@ -103,11 +94,11 @@ export function ArticleExplorer({
       const bo = b.order ?? Number.MAX_SAFE_INTEGER;
       return ao - bo || b.publishedAt.localeCompare(a.publishedAt);
     });
-  }, [categoryId, curriculum, fixedCategoryId, readCheck, scopedArticles, tag, unreadOnly]);
+  }, [categoryId, curriculum, fixedCategoryId, scopedArticles, tag]);
 
   // 조건이 바뀌면 다시 처음부터 보여 줍니다. effect에서 setState하면 렌더가 한 번 더
   // 돌기 때문에 React가 권하는 '렌더 도중 상태 조정'을 씁니다.
-  const filterKey = `${categoryId} ${tag} ${unreadOnly}`;
+  const filterKey = `${categoryId} ${tag}`;
   const [renderedFilterKey, setRenderedFilterKey] = useState(filterKey);
   if (renderedFilterKey !== filterKey) {
     setRenderedFilterKey(filterKey);
@@ -149,18 +140,7 @@ export function ArticleExplorer({
           '더 보기'의 `24 / 162`도 패딩 없이 찍고 있어 표기가 어긋나기도 했습니다.
         */}
         <p className="explorer-count">RESULT / {filteredArticles.length}</p>
-        <div className="explorer-tools">
-          {/* 켜 두는 것이 기본이라 늘 세웁니다 — 목록이 왜 줄었는지 여기서 읽힙니다. */}
-          <button
-            type="button"
-            className={`filter-chip ${unreadOnly ? 'active' : ''}`}
-            aria-pressed={unreadOnly}
-            onClick={() => setUnreadOnly((on) => !on)}
-          >
-            UNREAD
-          </button>
-          {tagCounts.length > 0 && <TagFilter tags={tagCounts} value={tag} onChange={setTag} />}
-        </div>
+        {tagCounts.length > 0 && <TagFilter tags={tagCounts} value={tag} onChange={setTag} />}
       </div>
 
       {filteredArticles.length > 0 ? (
@@ -194,15 +174,8 @@ export function ArticleExplorer({
             </>
           ) : (
             <>
-              {/* 다 읽어서 0건인 경우와 태그 탓인 경우를 가릅니다. */}
-              <p className="text-lg text-[var(--text-strong)]">
-                {unreadOnly && tag === 'all' ? '여기는 다 읽으셨습니다.' : '일치하는 글이 없습니다.'}
-              </p>
-              <p className="mt-2 text-sm text-[var(--text-dim)]">
-                {unreadOnly && tag === 'all'
-                  ? 'UNREAD를 끄면 읽은 글도 함께 나옵니다.'
-                  : '태그 필터를 해제하거나 검색을 이용해 보세요.'}
-              </p>
+              <p className="text-lg text-[var(--text-strong)]">일치하는 글이 없습니다.</p>
+              <p className="mt-2 text-sm text-[var(--text-dim)]">태그 필터를 해제하거나 검색을 이용해 보세요.</p>
             </>
           )}
         </div>

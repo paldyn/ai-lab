@@ -96,8 +96,6 @@ const useHydrated = () => useSyncExternalStore(subscribeNever, () => true, () =>
 export function GlobalNewsDesk({ kind }: GlobalNewsDeskProps) {
   const [source, setSource] = useState<SourceFilter>('All');
   const [visible, setVisible] = useState(FEED_INITIAL);
-  /* 기본값은 켜짐입니다(UNREAD) — 목록에 오는 이유가 대개 '새로 뭐가 있나'입니다. */
-  const [unreadOnly, setUnreadOnly] = useState(true);
   const readCheck = useReadCheck();
   const [searchParams, setSearchParams] = useSearchParams();
   const hydrated = useHydrated();
@@ -110,10 +108,10 @@ export function GlobalNewsDesk({ kind }: GlobalNewsDeskProps) {
     [kind],
   );
 
-  const items = useMemo(() => {
-    const bySource = source === 'All' ? kindItems : kindItems.filter((item) => item.source === source);
-    return unreadOnly ? bySource.filter((item) => !readCheck('news', item.id)) : bySource;
-  }, [source, kindItems, readCheck, unreadOnly]);
+  const items = useMemo(
+    () => (source === 'All' ? kindItems : kindItems.filter((item) => item.source === source)),
+    [source, kindItems],
+  );
 
   const availableFilters = useMemo(
     () => sourceList.filter((meta) => kindItems.some((item) => item.source === meta.id)),
@@ -260,21 +258,9 @@ export function GlobalNewsDesk({ kind }: GlobalNewsDeskProps) {
               <h2>{heading}</h2>
               <p>{description}</p>
             </div>
-            {/* 머리 오른쪽 — 거르개가 앞, 업데이트 날짜가 뒤로 한 줄에 섭니다. */}
-            <div className="news-desk-tools">
-              {/* 학습 목록의 거르개와 **같은 단추**입니다 — 모양도 켜짐 상태도 같습니다. */}
-              <button
-                type="button"
-                className={`filter-chip ${unreadOnly ? 'active' : ''}`}
-                aria-pressed={unreadOnly}
-                onClick={() => setUnreadOnly((on) => !on)}
-              >
-                UNREAD
-              </button>
-              <div className="news-updated">
-                <span className="news-live-dot" />
-                업데이트 {globalNewsUpdatedAt.replaceAll('-', '.')}
-              </div>
+            <div className="news-updated">
+              <span className="news-live-dot" />
+              업데이트 {globalNewsUpdatedAt.replaceAll('-', '.')}
             </div>
           </div>
 
