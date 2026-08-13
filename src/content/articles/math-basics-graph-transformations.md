@@ -235,3 +235,5 @@ $$y = \frac{1}{x-2} + 3$$
 읽어주셔서 감사합니다. 😊
 
 **지난 글:** [함수란 무엇인가: 입력 하나에 출력 하나, 그리고 그것을 그림으로 보기](/articles/math-basics-functions-and-graphs)
+
+**다음 글:** [지수함수: 한 칸 갈 때 몇 배가 되는가, 그리고 e](/articles/math-basics-exponential-function)

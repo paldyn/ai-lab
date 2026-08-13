@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="540" viewBox="0 0 880 540" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <rect width="880" height="540" rx="12" fill="#0a0a0a"/>
+  <defs>
+    <marker id="logAx" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#888"/>
+    </marker>
+  </defs>
+
+  <text x="60" y="48" font-size="22" font-weight="700" fill="#e8e8e8">로그 곡선은 지수 곡선을 y = x 에 비춘 것이다</text>
+  <text x="60" y="74" font-size="13" fill="#888">좌표를 맞바꾸면 (0, 1) 이 (1, 0) 으로 간다</text>
+
+  <line x1="300" y1="320" x2="730" y2="320" stroke="#888" stroke-width="1.5" marker-end="url(#logAx)"/>
+  <line x1="440" y1="430" x2="440" y2="140" stroke="#888" stroke-width="1.5" marker-end="url(#logAx)"/>
+  <text x="736" y="324" font-size="13" fill="#888">x</text>
+  <text x="446" y="144" font-size="13" fill="#888">y</text>
+
+  <line x1="482" y1="314" x2="482" y2="326" stroke="#888" stroke-width="1.5"/>
+  <line x1="524" y1="314" x2="524" y2="326" stroke="#888" stroke-width="1.5"/>
+  <line x1="566" y1="314" x2="566" y2="326" stroke="#888" stroke-width="1.5"/>
+  <line x1="608" y1="314" x2="608" y2="326" stroke="#888" stroke-width="1.5"/>
+  <line x1="650" y1="314" x2="650" y2="326" stroke="#888" stroke-width="1.5"/>
+  <line x1="692" y1="314" x2="692" y2="326" stroke="#888" stroke-width="1.5"/>
+  <text x="482" y="338" font-size="12" fill="#888" text-anchor="middle">1</text>
+  <text x="524" y="338" font-size="12" fill="#888" text-anchor="middle">2</text>
+  <text x="566" y="338" font-size="12" fill="#888" text-anchor="middle">3</text>
+  <text x="608" y="338" font-size="12" fill="#888" text-anchor="middle">4</text>
+  <text x="650" y="338" font-size="12" fill="#888" text-anchor="middle">5</text>
+  <text x="692" y="338" font-size="12" fill="#888" text-anchor="middle">6</text>
+
+  <line x1="434" y1="278" x2="446" y2="278" stroke="#444" stroke-width="1.5"/>
+  <line x1="434" y1="236" x2="446" y2="236" stroke="#444" stroke-width="1.5"/>
+  <line x1="434" y1="194" x2="446" y2="194" stroke="#444" stroke-width="1.5"/>
+  <line x1="434" y1="362" x2="446" y2="362" stroke="#444" stroke-width="1.5"/>
+  <line x1="434" y1="404" x2="446" y2="404" stroke="#444" stroke-width="1.5"/>
+  <text x="428" y="282" font-size="12" fill="#888" text-anchor="end">1</text>
+  <text x="428" y="240" font-size="12" fill="#888" text-anchor="end">2</text>
+  <text x="428" y="198" font-size="12" fill="#888" text-anchor="end">3</text>
+  <text x="428" y="366" font-size="12" fill="#888" text-anchor="end">−1</text>
+  <text x="428" y="408" font-size="12" fill="#888" text-anchor="end">−2</text>
+
+  <line x1="356" y1="404" x2="574" y2="186" stroke="#888" stroke-width="2" stroke-dasharray="5,3"/>
+  <text x="584" y="182" font-size="13" fill="#888">y = x</text>
+
+  <polyline points="314,314.8 356,309.5 398,299 440,278 461,260.6 482,236 503,201.1 524,152" fill="none" stroke="#7ec8e3" stroke-width="2.5"/>
+  <polyline points="450.5,404 461,362 482,320 499.4,299 524,278 558.9,257 608,236 677.7,215 692,211.4" fill="none" stroke="#7777cc" stroke-width="2.5"/>
+
+  <circle cx="440" cy="278" r="5" fill="#e8e8e8"/>
+  <circle cx="482" cy="320" r="5" fill="#e8e8e8"/>
+  <rect x="326" y="258" width="56" height="18" fill="#0a0a0a"/>
+  <text x="380" y="272" font-size="13" fill="#e8e8e8" text-anchor="end">(0, 1)</text>
+  <rect x="494" y="340" width="56" height="18" fill="#0a0a0a"/>
+  <text x="498" y="354" font-size="13" fill="#e8e8e8">(1, 0)</text>
+
+  <text x="534" y="148" font-size="14" fill="#7ec8e3">y = 2ˣ</text>
+  <text x="700" y="208" font-size="14" fill="#7777cc">y = log₂ x</text>
+
+  <rect x="60" y="456" width="760" height="56" rx="6" fill="#101010" stroke="#333" stroke-width="1"/>
+  <text x="84" y="483" font-size="13" fill="#e8e8e8">2ˣ 이 양수만 내놓았으므로 거꾸로 돌린 log₂ x 는 양수만 받는다 — 정의역이 x &gt; 0 이다.</text>
+  <text x="84" y="503" font-size="13" fill="#e8e8e8">2ˣ 의 점근선 y = 0 도 함께 비춰져 로그 곡선의 점근선 x = 0, 곧 y 축이 된다.</text>
+</svg>

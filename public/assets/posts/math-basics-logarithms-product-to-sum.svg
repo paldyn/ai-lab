@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="470" viewBox="0 0 880 470" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <rect width="880" height="470" rx="12" fill="#0a0a0a"/>
+  <defs>
+    <marker id="lawArr" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#55c555"/>
+    </marker>
+  </defs>
+
+  <text x="60" y="48" font-size="22" font-weight="700" fill="#e8e8e8">로그 법칙은 지수법칙을 그대로 옮겨 적은 것이다</text>
+  <text x="60" y="74" font-size="13" fill="#888">곱이 합이 되는 이유는 지수가 더해지기 때문이다</text>
+
+  <rect x="140" y="104" width="600" height="106" rx="6" fill="#101010" stroke="#333" stroke-width="1"/>
+  <text x="440" y="130" font-size="14" font-weight="600" fill="#e8e8e8" text-anchor="middle">지수 쪽 — 곱하면 지수가 더해진다</text>
+  <text x="440" y="166" font-size="18" fill="#7ec8e3" text-anchor="middle">2³ × 2⁵ = 2³⁺⁵ = 2⁸</text>
+  <text x="440" y="198" font-size="13" fill="#888" text-anchor="middle">8 × 32 = 256</text>
+
+  <line x1="440" y1="210" x2="440" y2="262" stroke="#55c555" stroke-width="2" marker-end="url(#lawArr)"/>
+  <text x="462" y="242" font-size="13" fill="#55c555">양변에 log₂ 를 취하면</text>
+
+  <rect x="140" y="262" width="600" height="106" rx="6" fill="#101010" stroke="#333" stroke-width="1"/>
+  <text x="440" y="288" font-size="14" font-weight="600" fill="#e8e8e8" text-anchor="middle">로그 쪽 — 곱이 합이 된다</text>
+  <text x="440" y="324" font-size="18" fill="#7777cc" text-anchor="middle">log₂(8 × 32) = log₂ 8 + log₂ 32</text>
+  <text x="440" y="356" font-size="13" fill="#888" text-anchor="middle">8 = 3 + 5</text>
+
+  <rect x="60" y="392" width="760" height="44" rx="6" fill="#101010" stroke="#333" stroke-width="1"/>
+  <text x="84" y="420" font-size="13" fill="#e8e8e8">덧셈은 쪼갤 수 없다 — log₂(8 + 32) = log₂ 40 ≈ 5.32 인데 log₂ 8 + log₂ 32 = 8 이라 서로 다르다.</text>
+</svg>

@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="530" viewBox="0 0 880 530" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <rect width="880" height="530" rx="12" fill="#0a0a0a"/>
+  <defs>
+    <marker id="ucAx" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#888"/>
+    </marker>
+  </defs>
+
+  <text x="60" y="48" font-size="22" font-weight="700" fill="#e8e8e8">반지름 1인 원 위의 점 하나가 곧 (cos θ, sin θ) 다</text>
+  <text x="60" y="74" font-size="13" fill="#888">각을 좌표로 적으면 90°를 넘는 각도 값이 정해진다</text>
+
+  <line x1="140" y1="280" x2="470" y2="280" stroke="#888" stroke-width="1.5" marker-end="url(#ucAx)"/>
+  <line x1="300" y1="430" x2="300" y2="130" stroke="#888" stroke-width="1.5" marker-end="url(#ucAx)"/>
+  <text x="476" y="284" font-size="13" fill="#888">x</text>
+  <text x="306" y="134" font-size="13" fill="#888">y</text>
+
+  <circle cx="300" cy="280" r="130" fill="none" stroke="#7777cc" stroke-width="2"/>
+  <text x="410" y="175" font-size="13" fill="#7777cc">반지름 1</text>
+
+  <rect x="422" y="288" width="16" height="15" fill="#0a0a0a"/>
+  <text x="430" y="300" font-size="12" fill="#888" text-anchor="middle">1</text>
+  <rect x="157" y="288" width="26" height="15" fill="#0a0a0a"/>
+  <text x="170" y="300" font-size="12" fill="#888" text-anchor="middle">−1</text>
+
+  <line x1="300" y1="280" x2="235" y2="167.4" stroke="#e8e8e8" stroke-width="2"/>
+  <line x1="235" y1="167.4" x2="235" y2="280" stroke="#55c555" stroke-width="2" stroke-dasharray="4,4"/>
+  <line x1="300" y1="280" x2="235" y2="280" stroke="#7ec8e3" stroke-width="4"/>
+  <path d="M 345 280 A 45 45 0 0 0 277.5 241" fill="none" stroke="#e05555" stroke-width="2"/>
+  <text x="352" y="240" font-size="13" fill="#e05555">θ = 120°</text>
+
+  <circle cx="235" cy="167.4" r="5" fill="#e8e8e8"/>
+  <text x="222" y="152" font-size="13" fill="#e8e8e8" text-anchor="end">P(cos θ, sin θ)</text>
+  <text x="214" y="226" font-size="13" fill="#55c555" text-anchor="end">sin θ = √3/2</text>
+  <rect x="212" y="308" width="112" height="18" fill="#0a0a0a"/>
+  <text x="268" y="322" font-size="13" fill="#7ec8e3" text-anchor="middle">cos θ = −1/2</text>
+
+  <rect x="540" y="140" width="280" height="218" rx="6" fill="#101010" stroke="#333" stroke-width="1"/>
+  <text x="564" y="166" font-size="14" font-weight="600" fill="#e8e8e8">사분면마다 부호가 갈린다</text>
+  <line x1="564" y1="178" x2="796" y2="178" stroke="#333" stroke-width="1"/>
+  <text x="564" y="200" font-size="13" fill="#888">사분면</text>
+  <text x="676" y="200" font-size="13" fill="#888">sin</text>
+  <text x="726" y="200" font-size="13" fill="#888">cos</text>
+  <text x="776" y="200" font-size="13" fill="#888">tan</text>
+  <text x="564" y="224" font-size="13" fill="#e8e8e8">제1</text>
+  <text x="676" y="224" font-size="13" fill="#55c555">+</text>
+  <text x="726" y="224" font-size="13" fill="#55c555">+</text>
+  <text x="776" y="224" font-size="13" fill="#55c555">+</text>
+  <text x="564" y="246" font-size="13" fill="#e8e8e8">제2</text>
+  <text x="676" y="246" font-size="13" fill="#55c555">+</text>
+  <text x="726" y="246" font-size="13" fill="#e05555">−</text>
+  <text x="776" y="246" font-size="13" fill="#e05555">−</text>
+  <text x="564" y="268" font-size="13" fill="#e8e8e8">제3</text>
+  <text x="676" y="268" font-size="13" fill="#e05555">−</text>
+  <text x="726" y="268" font-size="13" fill="#e05555">−</text>
+  <text x="776" y="268" font-size="13" fill="#55c555">+</text>
+  <text x="564" y="290" font-size="13" fill="#e8e8e8">제4</text>
+  <text x="676" y="290" font-size="13" fill="#e05555">−</text>
+  <text x="726" y="290" font-size="13" fill="#55c555">+</text>
+  <text x="776" y="290" font-size="13" fill="#e05555">−</text>
+  <line x1="564" y1="302" x2="796" y2="302" stroke="#333" stroke-width="1"/>
+  <text x="564" y="324" font-size="13" fill="#7ec8e3">sin²θ + cos²θ = 1</text>
+  <text x="564" y="346" font-size="13" fill="#888">반지름 1인 원의 방정식 그대로</text>
+
+  <rect x="60" y="450" width="760" height="44" rx="6" fill="#101010" stroke="#333" stroke-width="1"/>
+  <text x="84" y="478" font-size="13" fill="#e8e8e8">음의 각은 반대로 돌린 것이고 한 바퀴를 넘는 각은 같은 자리로 돌아온 것이다 — 값도 그대로 정해진다.</text>
+</svg>

@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="510" viewBox="0 0 880 510" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <rect width="880" height="510" rx="12" fill="#0a0a0a"/>
+
+  <text x="60" y="48" font-size="22" font-weight="700" fill="#e8e8e8">판별식의 부호가 x 축과 만나는 횟수다</text>
+  <text x="60" y="74" font-size="13" fill="#888">세 곡선은 꼭짓점의 높이만 다르다 — 위아래로 한 칸씩 옮긴 것이다</text>
+
+  <line x1="110" y1="280" x2="290" y2="280" stroke="#888" stroke-width="1.5"/>
+  <line x1="350" y1="280" x2="530" y2="280" stroke="#888" stroke-width="1.5"/>
+  <line x1="590" y1="280" x2="770" y2="280" stroke="#888" stroke-width="1.5"/>
+
+  <polyline points="132,190 149,242.5 166,280 183,302.5 200,310 217,302.5 234,280 251,242.5 268,190" fill="none" stroke="#7ec8e3" stroke-width="2.5"/>
+  <polyline points="372,160 389,212.5 406,250 423,272.5 440,280 457,272.5 474,250 491,212.5 508,160" fill="none" stroke="#55c555" stroke-width="2.5"/>
+  <polyline points="612,130 629,182.5 646,220 663,242.5 680,250 697,242.5 714,220 731,182.5 748,130" fill="none" stroke="#7777cc" stroke-width="2.5"/>
+
+  <circle cx="166" cy="280" r="5" fill="#e8e8e8"/>
+  <circle cx="234" cy="280" r="5" fill="#e8e8e8"/>
+  <circle cx="440" cy="280" r="5" fill="#e8e8e8"/>
+
+  <text x="200" y="342" font-size="16" font-weight="600" fill="#7ec8e3" text-anchor="middle">D &gt; 0</text>
+  <text x="200" y="366" font-size="13" fill="#888" text-anchor="middle">y = x² − 4x + 3</text>
+  <text x="200" y="390" font-size="13" fill="#e8e8e8" text-anchor="middle">두 점에서 만난다</text>
+  <text x="200" y="414" font-size="13" fill="#e8e8e8" text-anchor="middle">D = 16 − 12 = 4</text>
+
+  <text x="440" y="342" font-size="16" font-weight="600" fill="#55c555" text-anchor="middle">D = 0</text>
+  <text x="440" y="366" font-size="13" fill="#888" text-anchor="middle">y = x² − 4x + 4</text>
+  <text x="440" y="390" font-size="13" fill="#e8e8e8" text-anchor="middle">한 점에서 닿는다</text>
+  <text x="440" y="414" font-size="13" fill="#e8e8e8" text-anchor="middle">D = 16 − 16 = 0</text>
+
+  <text x="680" y="342" font-size="16" font-weight="600" fill="#7777cc" text-anchor="middle">D &lt; 0</text>
+  <text x="680" y="366" font-size="13" fill="#888" text-anchor="middle">y = x² − 4x + 5</text>
+  <text x="680" y="390" font-size="13" fill="#e8e8e8" text-anchor="middle">만나지 않는다</text>
+  <text x="680" y="414" font-size="13" fill="#e8e8e8" text-anchor="middle">D = 16 − 20 = −4</text>
+
+  <rect x="60" y="440" width="760" height="44" rx="6" fill="#101010" stroke="#333" stroke-width="1"/>
+  <text x="84" y="468" font-size="13" fill="#e8e8e8">D = b² − 4ac 는 근의 공식에서 근호 안에 들어가는 값이다 — 음수면 근호를 씌울 수 없어 근이 없다.</text>
+</svg>

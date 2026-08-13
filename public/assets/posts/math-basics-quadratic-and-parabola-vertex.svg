@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="500" viewBox="0 0 880 500" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <rect width="880" height="500" rx="12" fill="#0a0a0a"/>
+  <defs>
+    <marker id="qvAx" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#888"/>
+    </marker>
+  </defs>
+
+  <text x="60" y="48" font-size="22" font-weight="700" fill="#e8e8e8">완전제곱으로 고치면 꼭짓점이 그 자리에 적혀 있다</text>
+  <text x="60" y="74" font-size="13" fill="#888">y = a(x − p)² + q 로 고쳐 쓰면 꼭짓점이 (p, q) 다</text>
+
+  <line x1="220" y1="260" x2="510" y2="260" stroke="#888" stroke-width="1.5" marker-end="url(#qvAx)"/>
+  <line x1="250" y1="400" x2="250" y2="110" stroke="#888" stroke-width="1.5" marker-end="url(#qvAx)"/>
+  <text x="516" y="264" font-size="13" fill="#888">x</text>
+  <text x="256" y="114" font-size="13" fill="#888">y</text>
+
+  <line x1="286" y1="254" x2="286" y2="266" stroke="#888" stroke-width="1.5"/>
+  <line x1="322" y1="254" x2="322" y2="266" stroke="#888" stroke-width="1.5"/>
+  <line x1="358" y1="254" x2="358" y2="266" stroke="#888" stroke-width="1.5"/>
+  <line x1="394" y1="254" x2="394" y2="266" stroke="#888" stroke-width="1.5"/>
+  <line x1="430" y1="254" x2="430" y2="266" stroke="#888" stroke-width="1.5"/>
+  <line x1="466" y1="254" x2="466" y2="266" stroke="#888" stroke-width="1.5"/>
+  <text x="286" y="280" font-size="12" fill="#888" text-anchor="middle">1</text>
+  <text x="322" y="280" font-size="12" fill="#888" text-anchor="middle">2</text>
+  <text x="358" y="280" font-size="12" fill="#888" text-anchor="middle">3</text>
+  <text x="394" y="280" font-size="12" fill="#888" text-anchor="middle">4</text>
+  <text x="430" y="280" font-size="12" fill="#888" text-anchor="middle">5</text>
+  <text x="466" y="280" font-size="12" fill="#888" text-anchor="middle">6</text>
+
+  <line x1="244" y1="130" x2="256" y2="130" stroke="#444" stroke-width="1.5"/>
+  <line x1="244" y1="364" x2="256" y2="364" stroke="#444" stroke-width="1.5"/>
+  <text x="238" y="134" font-size="12" fill="#888" text-anchor="end">5</text>
+  <text x="238" y="368" font-size="12" fill="#888" text-anchor="end">−4</text>
+
+  <line x1="358" y1="140" x2="358" y2="266" stroke="#55c555" stroke-width="2" stroke-dasharray="4,4"/>
+  <line x1="358" y1="288" x2="358" y2="384" stroke="#55c555" stroke-width="2" stroke-dasharray="4,4"/>
+  <text x="366" y="152" font-size="13" fill="#55c555">x = 3</text>
+
+  <polyline points="250,130 268,201.5 286,260 304,305.5 322,338 340,357.5 358,364 376,357.5 394,338 412,305.5 430,260 448,201.5 466,130" fill="none" stroke="#7ec8e3" stroke-width="2.5"/>
+
+  <circle cx="358" cy="364" r="5" fill="#e8e8e8"/>
+  <circle cx="286" cy="260" r="5" fill="#e8e8e8"/>
+  <circle cx="430" cy="260" r="5" fill="#e8e8e8"/>
+  <rect x="366" y="368" width="70" height="18" fill="#0a0a0a"/>
+  <text x="370" y="382" font-size="13" fill="#e8e8e8">(3, −4)</text>
+
+  <text x="478" y="140" font-size="13" fill="#7ec8e3">y = x² − 6x + 5</text>
+
+  <rect x="600" y="130" width="220" height="174" rx="6" fill="#101010" stroke="#333" stroke-width="1"/>
+  <text x="624" y="156" font-size="14" font-weight="600" fill="#e8e8e8">완전제곱으로 고치면</text>
+  <text x="624" y="186" font-size="14" fill="#e8e8e8">y = x² − 6x + 5</text>
+  <text x="624" y="212" font-size="14" fill="#e8e8e8">= (x − 3)² − 9 + 5</text>
+  <text x="624" y="238" font-size="14" fill="#e8e8e8">= (x − 3)² − 4</text>
+  <text x="624" y="268" font-size="13" fill="#7ec8e3">꼭짓점 (3, −4)</text>
+  <text x="624" y="292" font-size="13" fill="#55c555">대칭축 x = 3</text>
+
+  <rect x="60" y="420" width="760" height="44" rx="6" fill="#101010" stroke="#333" stroke-width="1"/>
+  <text x="84" y="448" font-size="13" fill="#e8e8e8">꼭짓점을 읽는 것이 곧 최솟값을 읽는 것이다 — 이 곡선의 값은 x = 3 에서 −4 이고 그보다 작아지지 않는다.</text>
+</svg>
