@@ -160,7 +160,7 @@ export interface NewsDetail {
   commentary: string;
 }
 
-export const globalNewsUpdatedAt = '2026-08-12';
+export const globalNewsUpdatedAt = '2026-08-13';
 
 /**
  * 공식 발표 한 건 = 항목 한 개. 2026년 1월부터 쌓는 아카이브이며 오래된 항목을
@@ -171,6 +171,46 @@ export const globalNewsUpdatedAt = '2026-08-12';
  * 목록에서 파생됩니다. 갱신 시 globalNewsUpdatedAt도 함께 올립니다.
  */
 const entries: NewsItem[] = [
+  {
+    id: 'introducing-gemini-3-7-flash',
+    source: 'Google DeepMind',
+    kind: 'model',
+    title: 'Google, 코딩·에이전트용 Gemini 3.7 Flash 공개',
+    summary:
+      'Google이 Gemini 3.6 Flash를 낸 지 3주 만에 코딩과 에이전트를 겨냥한 ' +
+      'Gemini 3.7 Flash를 내놨다. DeepSWE v1.1이 49.0%에서 65.3%로 올랐고, ' +
+      '2026년 12월 31일까지 100만 입력 토큰당 0.75달러 도입가가 적용된다.',
+    publishedAt: '2026-08-13',
+    collectedAt: '2026-08-14',
+    category: 'Frontier',
+    signal: '에이전틱 코딩',
+    url: 'https://deepmind.google/blog/introducing-gemini-3-7-flash',
+    model: {
+      family: 'Gemini',
+      name: 'Gemini 3.7 Flash',
+      kind: '신규 모델',
+      status: '공개',
+      useCase: '코딩과 에이전트 자동화',
+      headline: '가격은 그대로 두고 코딩·자동화 점수만 끌어올린 Flash 계열 후속이다.',
+      logo: 'assets/gemini.svg',
+      tone: 'gemini',
+    },
+  },
+  {
+    id: 'sheets-canvas-for-google-sheets-spreadsheets',
+    source: 'Google DeepMind',
+    kind: 'company',
+    title: 'Google Sheets에 Gemini로 미니 앱 만드는 캔버스 추가',
+    summary:
+      'Google이 스프레드시트 데이터를 대화형 미니 앱으로 바꾸는 Sheets canvas를 ' +
+      '공개했다. 원하는 것을 말로 적으면 Gemini가 대시보드나 트래커를 만들고 ' +
+      '캔버스와 시트가 실시간으로 함께 바뀐다. 영어로 전 세계에 배포한다.',
+    publishedAt: '2026-08-13',
+    collectedAt: '2026-08-14',
+    category: 'Product',
+    signal: '생성형 UI',
+    url: 'https://blog.google/products-and-platforms/products/workspace/sheets-canvas-for-google-sheets-spreadsheets/',
+  },
   {
     id: 'putting-sign-language-ai-into-users-hands',
     source: 'Google DeepMind',

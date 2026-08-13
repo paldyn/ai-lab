@@ -2,6 +2,41 @@ import type { NewsDetail } from '../news';
 
 /** 2026-08 발표의 모달 본문. 목록은 news.ts에 있습니다. */
 export const details: Record<string, NewsDetail> = {
+  'introducing-gemini-3-7-flash': {
+    points: [
+      'Gemini 3.6 Flash를 낸 지 3주 만에 내놓은 후속 모델이라고 밝혔다',
+      '코딩·소프트웨어 엔지니어링과 에이전트 작업을 겨냥한 주력 모델로 소개했다',
+      'FrontierCode 1.1이 34.4%에서 43.6%로, DeepSWE v1.1이 49.0%에서 65.3%로 올랐다',
+      'WebDev Arena Elo는 1538에서 1588로, AutomationBench는 17.0%에서 30.4%로 올랐다',
+      '문서 이해를 재는 GDP.pdf는 22.0%에서 34.0%로 올랐다',
+      '2026년 12월 31일까지 100만 토큰당 입력 0.75달러·출력 3.75달러 도입가를 적용하고 2027년 1월 1일부터 두 배가 된다',
+      '개발자는 Google AI Studio·Android Studio·Antigravity에서, 기업은 Gemini Enterprise Agent Platform에서 쓸 수 있다',
+      'Gemini Spark는 160개국 이상의 Google AI Pro·Ultra 구독자에게 제공된다',
+    ],
+    commentary:
+      'Flash 계열이 3주 만에 다시 올라온 것은 이 등급의 교체 주기가 프런티어 모델보다 ' +
+      '훨씬 짧아졌다는 뜻이다. 오른 점수가 코딩·자동화·문서 이해에 몰려 있어 일반 대화보다 ' +
+      '에이전트 파이프라인에서 차이가 먼저 드러날 자리다. 정가의 절반인 도입가를 연말까지만 ' +
+      '걸어 둔 것도 그 시기에 통합을 끝내라는 신호에 가깝다 — 내년 1월에 같은 워크로드의 ' +
+      '비용이 두 배가 되므로 도입가를 기준으로 단가를 잡아 두면 예산이 어긋난다.',
+  },
+  'sheets-canvas-for-google-sheets-spreadsheets': {
+    points: [
+      '스프레드시트 데이터를 대화형 미니 앱으로 바꾸는 Sheets canvas를 공개했다',
+      '수식이나 프로그래밍 없이 원하는 것을 말로 적으면 Gemini가 화면을 만든다고 밝혔다',
+      '대시보드, 학습 트래커, 좌석 배치도 같은 시각 레이아웃을 예로 들었다',
+      '캔버스와 스프레드시트가 실시간으로 동기화되고 끌어 놓기로 고칠 수 있다',
+      '만든 캔버스는 Google Sheets 탭으로 공유된다',
+      '시트를 열고 Ask Gemini 사이드 패널에서 Create canvas를 고르면 된다',
+      'Google AI Pro·Ultra 구독자에게 영어로 전 세계에 제공한다',
+      '8월 13일부터 Workspace Business·Enterprise Standard·Plus와 교육용 Google AI Pro 애드온 구독자에게 배포를 시작한다',
+    ],
+    commentary:
+      '스프레드시트에 붙은 AI는 그동안 수식을 대신 써 주거나 표를 요약하는 데 머물렀는데, ' +
+      '이번 것은 결과물 자체가 화면이라 성격이 다르다. 시트를 데이터베이스로 두고 그 위에 ' +
+      '보는 화면을 얹는 구조는 사내 도구를 만들던 노코드 제품들이 팔던 자리다. ' +
+      '다만 지금은 영어와 유료 등급으로 묶여 있어 팀 전체가 쓰려면 좌석 비용부터 걸린다.',
+  },
   'putting-sign-language-ai-into-users-hands': {
     points: [
       '수어를 텍스트로 옮기는 모델 SL2T를 공개했다',
