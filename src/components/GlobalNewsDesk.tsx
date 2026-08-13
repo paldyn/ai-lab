@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState, useSyncExternalStore, type CSSProperties } from 'react';
+import { useMemo, useState, useSyncExternalStore, type CSSProperties } from 'react';
 import { ArrowUpRight, Eye } from 'lucide-react';
 import { useSearchParams } from 'react-router';
 import {
@@ -11,7 +11,7 @@ import {
   type NewsItem,
 } from '../data/news';
 import { assetUrl, getSource, sourceList, type NewsSource } from '../data/sources';
-import { markRead, useReadCheck } from '../lib/readLog';
+import { useReadCheck } from '../lib/readLog';
 import { NewsPreviewModal, releasePreviewFields, type NewsPreviewItem } from './NewsPreviewModal';
 
 type SourceFilter = NewsSource | 'All';
@@ -249,16 +249,6 @@ export function GlobalNewsDesk({ kind }: GlobalNewsDeskProps) {
 
   const openPreview = (item: NewsItem) => setOpenId(item.id);
 
-  /*
-    모달이 뜨면 읽은 것으로 칩니다 — 뉴스는 그 모달이 본문 전부입니다.
-
-    누르는 자리가 아니라 **열린 것을 보고** 적습니다. 모달은 주소가 정하므로
-    홈의 「TODAY'S UPDATES」나 검색 결과처럼 `?item=`으로 바로 들어오는 길이
-    있고, 누를 때 적으면 그쪽으로 들어온 것은 안 세집니다.
-  */
-  useEffect(() => {
-    if (openId) markRead('news', openId);
-  }, [openId]);
 
   return (
     <section id="global-news" className="global-news-section scroll-mt-28">
@@ -347,6 +337,7 @@ export function GlobalNewsDesk({ kind }: GlobalNewsDeskProps) {
                     {' · '}
                     {categoryLabel[lead.category]}
                   </p>
+                  {readCheck('news', lead.id) && <p className="news-lead-read"><span className="read-mark">읽음</span></p>}
                   <h3>
                     <button type="button" className="card-trigger" onClick={() => openPreview(lead)}>
                       {lead.title}

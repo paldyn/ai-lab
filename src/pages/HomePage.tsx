@@ -3,6 +3,7 @@ import { ArrowRight, Eye } from 'lucide-react';
 import { Link } from 'react-router';
 import { ArticleCard } from '../components/ArticleCard';
 import { ITEM_PARAM } from '../components/GlobalNewsDesk';
+import { useReadCheck } from '../lib/readLog';
 import { ModelRadar } from '../components/ModelRadar';
 import { NewsPreviewModal, releasePreviewFields, type NewsPreviewItem } from '../components/NewsPreviewModal';
 import { Seo } from '../components/Seo';
@@ -152,6 +153,7 @@ export function recentUpdates(): { items: FeedItem[]; counts: Array<{ label: str
 
 export function HomePage() {
   const [selectedNews, setSelectedNews] = useState<NewsPreviewItem | null>(null);
+  const readCheck = useReadCheck();
   const bySection = (section: SectionId) =>
     articles.filter((article) => categoryById[article.categoryId].section === section).slice(0, 4);
 
@@ -264,7 +266,10 @@ export function HomePage() {
                   </header>
                   <div>
                     {items.map((item) => (
-                      <article key={item.id} className="company-news-item">
+                      <article
+                        key={item.id}
+                        className={`company-news-item ${readCheck('news', item.id) ? 'is-read' : ''}`}
+                      >
                         <div>
                           {/*
                             뉴스 목록과 같은 순서 — 날짜가 앞이고 한 급 크게 섭니다.
@@ -277,6 +282,12 @@ export function HomePage() {
                             </time>
                             <span aria-hidden="true"> · </span>
                             {item.signal}
+                            {readCheck('news', item.id) && (
+                              <>
+                                <span aria-hidden="true"> · </span>
+                                <span className="read-mark">읽음</span>
+                              </>
+                            )}
                           </p>
                           <h4>
                             <button

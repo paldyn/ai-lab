@@ -3,6 +3,7 @@ import { createPortal } from 'react-dom';
 import { ArrowUpRight, X } from 'lucide-react';
 import { releaseOf, type ModelLogoTone, type ModelRelease, type NewsDetail, type NewsItem } from '../data/news';
 import { loadNewsDetail } from '../lib/newsDetail';
+import { markRead } from '../lib/readLog';
 import { captureFocusOrigin, focusQuietly, restoreFocus } from '../lib/restoreFocus';
 
 export interface NewsPreviewItem {
@@ -59,6 +60,17 @@ const FOCUSABLE =
 export function NewsPreviewModal({ item, onClose }: NewsPreviewModalProps) {
   const dialogRef = useRef<HTMLElement>(null);
   const closeButtonRef = useRef<HTMLButtonElement>(null);
+
+  /*
+    **읽음은 여기 한 곳에서 적습니다.** 이 모달을 여는 화면이 셋이고(뉴스 목록,
+    홈의 기업 소식, 홈의 모델 소식) 저마다 다른 상태로 엽니다 — 목록은 주소,
+    나머지 둘은 각자의 useState입니다. 누르는 자리마다 적으면 한 곳만 빠뜨려도
+    그 화면에서만 조용히 안 세집니다. 실제로 홈 두 곳이 그렇게 빠져 있었습니다.
+  */
+  const openedId = item?.id;
+  useEffect(() => {
+    if (openedId) markRead('news', openedId);
+  }, [openedId]);
 
   // onClose는 호출부에서 인라인 화살표 함수로 넘어오는 경우가 많아 렌더마다 정체성이
   // 바뀝니다. ref로 감싸 두면 effect가 모달 열림/닫힘에만 반응합니다.

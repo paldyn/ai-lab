@@ -1917,8 +1917,17 @@ input:focus-visible {
 .news-feed-row.is-read h3,
 .news-feed-row.is-read h3 button,
 .news-lead.is-read .news-lead-copy h3,
-.news-lead.is-read .news-lead-copy h3 button {
+.news-lead.is-read .news-lead-copy h3 button,
+.company-news-item.is-read h4,
+.company-news-item.is-read h4 button,
+.model-radar-item.is-read h3,
+.model-radar-item.is-read h3 button {
   color: var(--text-muted);
+}
+
+/* 리드 카드에는 메타 줄이 한 칸뿐이라 표시를 제 줄에 세웁니다. */
+.news-lead-read {
+  margin-top: 6px;
 }
 
 /*
@@ -1937,7 +1946,11 @@ input:focus-visible {
 .news-feed-row.is-read:hover h3,
 .news-feed-row.is-read:hover h3 button,
 .news-lead.is-read:hover .news-lead-copy h3,
-.news-lead.is-read:hover .news-lead-copy h3 button {
+.news-lead.is-read:hover .news-lead-copy h3 button,
+.company-news-item.is-read:hover h4,
+.company-news-item.is-read:hover h4 button,
+.model-radar-item.is-read:hover h3,
+.model-radar-item.is-read:hover h3 button {
   color: var(--brand-text);
 }
 

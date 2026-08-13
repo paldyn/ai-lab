@@ -3,6 +3,7 @@ import { ArrowUpRight, Eye } from 'lucide-react';
 import { Link } from 'react-router';
 import { categoryLabel, feedDate, newsItems, releaseOf, type NewsItem } from '../data/news';
 import { assetUrl, getSource } from '../data/sources';
+import { useReadCheck } from '../lib/readLog';
 import { NewsPreviewModal, releasePreviewFields, type NewsPreviewItem } from './NewsPreviewModal';
 
 /**
@@ -25,6 +26,7 @@ const HOME_LIMIT = 4;
 
 export function ModelRadar() {
   const [selectedModel, setSelectedModel] = useState<NewsPreviewItem | null>(null);
+  const readCheck = useReadCheck();
 
   /*
     파생 목록을 쓰지 않고 뉴스 항목을 그대로 씁니다. 카드가 여는 모달이 뉴스
@@ -75,7 +77,7 @@ export function ModelRadar() {
             return (
               <article
                 key={item.id}
-                className="model-radar-item"
+                className={`model-radar-item ${readCheck('news', item.id) ? 'is-read' : ''}`}
                 style={{ '--model-accent': meta.mark } as CSSProperties}
               >
                 <div className="model-radar-top">
@@ -93,6 +95,7 @@ export function ModelRadar() {
                   <time className="news-feed-date" dateTime={item.publishedAt}>
                     {feedDate(item.publishedAt)}
                   </time>
+                  {readCheck('news', item.id) && <span className="read-mark">읽음</span>}
                   <span className="model-order" aria-hidden="true">{String(index + 1).padStart(2, '0')}</span>
                 </div>
 
