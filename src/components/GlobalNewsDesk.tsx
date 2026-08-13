@@ -262,9 +262,10 @@ export function GlobalNewsDesk({ kind }: GlobalNewsDeskProps) {
             </div>
             {/* 머리 오른쪽 — 거르개가 앞, 업데이트 날짜가 뒤로 한 줄에 섭니다. */}
             <div className="news-desk-tools">
+              {/* 학습 목록의 거르개와 **같은 단추**입니다 — 모양도 켜짐 상태도 같습니다. */}
               <button
                 type="button"
-                className={`news-unread ${unreadOnly ? 'active' : ''}`}
+                className={`filter-chip ${unreadOnly ? 'active' : ''}`}
                 aria-pressed={unreadOnly}
                 onClick={() => setUnreadOnly((on) => !on)}
               >
