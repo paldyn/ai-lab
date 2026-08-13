@@ -1871,6 +1871,40 @@ input:focus-visible {
 }
 
 /* 목록형 카드. 시각 요소·본문·화살표 3단이고 제목만 링크입니다. */
+/*
+  **읽은 것은 한 단 물러납니다.**
+
+  글 342편에 뉴스 401건이라 목록만 보고는 읽은 것과 안 읽은 것이 안 갈립니다.
+  안 읽은 것에 점을 찍는 대신 읽은 것을 흐리게 하는 쪽을 골랐습니다 — 처음에는
+  아무것도 안 바뀌고, 읽을수록 지나온 것이 뒤로 물러납니다. 브라우저가 방문한
+  링크를 다루는 방식과 같은 방향입니다.
+
+  **글자에는 투명도를 쓰지 않습니다.** 배경과 섞여 대비가 내려갑니다. 대신 색
+  토큰을 한 단 내립니다 — --text-strong(20.4 / 21.0)에서 --text-dim(5.74 / 7.37)이라
+  두 테마 모두 4.5:1을 넘습니다. 그림인 썸네일에만 투명도를 씁니다.
+
+  **선택자에 항목 클래스를 함께 답니다.** `.is-read h3`만으로는 뒤에 오는
+  `.news-feed-row h3`와 특이도가 같아서 순서에 지고, 뉴스 제목만 안 흐려졌습니다.
+*/
+.article-row.is-read .article-visual,
+.article-card.is-read .article-visual {
+  opacity: 0.45;
+}
+
+.article-row.is-read h3,
+.article-card.is-read h3,
+.news-feed-row.is-read h3,
+.news-lead.is-read .news-lead-copy h3 {
+  color: var(--text-dim);
+}
+
+.article-row.is-read:hover h3,
+.article-card.is-read:hover h3,
+.news-feed-row.is-read:hover h3,
+.news-lead.is-read:hover .news-lead-copy h3 {
+  color: var(--brand-text);
+}
+
 .article-row {
   position: relative;
   display: grid;
@@ -1907,6 +1941,42 @@ input:focus-visible {
   margin-bottom: 24px;
   border-bottom: 1px solid var(--border);
   padding-bottom: 14px;
+}
+
+/* 오른쪽에 모이는 조작들 — 안 읽은 것만, 읽음 기록 지우기, 태그 고르개. */
+.explorer-tools {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 8px;
+}
+
+.explorer-reset {
+  border: 0;
+  background: none;
+  cursor: pointer;
+  padding: 0 2px;
+  color: var(--text-muted);
+  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  font-size: 10px;
+  letter-spacing: 0.06em;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  transition: color 0.15s;
+}
+
+.explorer-reset:hover {
+  color: var(--brand-text);
+}
+
+/* 뉴스 쪽 읽음 조작. 출처 띠 아래에 붙습니다. */
+.news-read-tools {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  margin-top: 14px;
 }
 
 .explorer-count {

@@ -2,6 +2,7 @@ import { ArrowUpRight } from 'lucide-react';
 import { Link } from 'react-router';
 import { categoryById, displayLevel } from '../data/categories';
 import type { Article } from '../types/article';
+import { useReadCheck } from '../lib/readLog';
 import { ArticleVisual } from './ArticleVisual';
 
 interface ArticleCardProps {
@@ -16,10 +17,17 @@ interface ArticleCardProps {
  */
 export function ArticleCard({ article, variant = 'card' }: ArticleCardProps) {
   const category = categoryById[article.categoryId];
+  /*
+    읽은 글은 한 단 흐려집니다 — 제목이 --text-strong에서 --text-dim으로 내려가고
+    썸네일이 옅어집니다. 처음에는 아무것도 안 바뀌고 읽을수록 지나온 것이 뒤로
+    물러나는 방향이라, 342편에 점을 다 찍는 것보다 조용합니다.
+    글자에는 투명도를 안 씁니다 — 배경과 섞여 대비가 4.5:1 아래로 내려갑니다.
+  */
+  const read = useReadCheck()('article', article.slug);
 
   if (variant === 'row') {
     return (
-      <article className="article-row group">
+      <article className={`article-row group ${read ? 'is-read' : ''}`}>
         <div className="article-row-visual">
           <ArticleVisual article={article} compact />
         </div>
@@ -46,7 +54,7 @@ export function ArticleCard({ article, variant = 'card' }: ArticleCardProps) {
   }
 
   return (
-    <article className="article-card group">
+    <article className={`article-card group ${read ? 'is-read' : ''}`}>
       <ArticleVisual article={article} />
       <div className="pt-5">
         <div className="mb-3 flex items-center justify-between gap-3 font-mono text-[10px] tracking-[0.08em] text-[var(--text-muted)]">

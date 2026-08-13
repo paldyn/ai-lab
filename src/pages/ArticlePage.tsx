@@ -9,6 +9,7 @@ import { categoryById } from '../data/categories';
 import { curriculumLinks, mainTrackNumber } from '../data/curriculum';
 import { initialArticleBody, loadArticleBody } from '../lib/articleBody';
 import { watchAnswerToggle } from '../lib/answerToggle';
+import { markRead } from '../lib/readLog';
 import { watchSelectionRibbon } from '../lib/selectionRibbon';
 import type { Article, ArticleBody } from '../types/article';
 
@@ -353,6 +354,14 @@ function ArticleView({ article }: { article: Article }) {
       cancelled = true;
     };
   }, [article.slug, body]);
+
+  /*
+    연 순간 읽은 것으로 칩니다. 얼마나 내려 읽었는지로 재지 않습니다 — 훑고 나가는
+    것도 '봤다'이고, 목록에서 알고 싶은 것은 '여기 들어가 봤는가'입니다.
+  */
+  useEffect(() => {
+    markRead('article', article.slug);
+  }, [article.slug]);
 
   // 선택 영역은 줄마다 직접 그립니다 — 이유는 lib/selectionRibbon.ts에 있습니다.
   const proseRef = useRef<HTMLDivElement>(null);

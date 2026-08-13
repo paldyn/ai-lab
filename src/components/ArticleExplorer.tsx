@@ -1,6 +1,7 @@
 import { useMemo, useState } from 'react';
 import { articles } from '../data/articles';
 import { categories } from '../data/categories';
+import { clearRead, useReadCheck, useReadCount } from '../lib/readLog';
 import type { CategoryId } from '../types/article';
 import { ArticleCard } from './ArticleCard';
 import { TagFilter, type TagCount } from './TagFilter';
@@ -30,6 +31,15 @@ export function ArticleExplorer({
   const [categoryId, setCategoryId] = useState<CategoryId | 'all'>(fixedCategoryId ?? 'all');
   const [tag, setTag] = useState<string>('all');
   const [visible, setVisible] = useState(PAGE_SIZE);
+  const [unreadOnly, setUnreadOnly] = useState(false);
+
+  /*
+    읽은 것을 거르는 칩은 **읽은 것이 하나라도 있을 때만** 섭니다. 아무것도 안 읽은
+    사람에게는 아무것도 안 거르는 버튼이라 자리만 차지합니다. 하이드레이션 전에는
+    0이므로 프리렌더 HTML과도 어긋나지 않습니다.
+  */
+  const readCheck = useReadCheck();
+  const readCount = useReadCount();
 
   const scopedArticles = useMemo(
     () => articles.filter((article) => !categoryIds || categoryIds.includes(article.categoryId)),
@@ -75,7 +85,8 @@ export function ArticleExplorer({
       const activeCategory = fixedCategoryId ?? categoryId;
       const matchesCategory = activeCategory === 'all' || article.categoryId === activeCategory;
       const matchesTag = tag === 'all' || article.tags.includes(tag);
-      return matchesCategory && matchesTag;
+      const matchesRead = !unreadOnly || !readCheck('article', article.slug);
+      return matchesCategory && matchesTag && matchesRead;
     });
 
     if (!curriculum) return matched;
@@ -94,11 +105,11 @@ export function ArticleExplorer({
       const bo = b.order ?? Number.MAX_SAFE_INTEGER;
       return ao - bo || b.publishedAt.localeCompare(a.publishedAt);
     });
-  }, [categoryId, curriculum, fixedCategoryId, scopedArticles, tag]);
+  }, [categoryId, curriculum, fixedCategoryId, readCheck, scopedArticles, tag, unreadOnly]);
 
   // 조건이 바뀌면 다시 처음부터 보여 줍니다. effect에서 setState하면 렌더가 한 번 더
   // 돌기 때문에 React가 권하는 '렌더 도중 상태 조정'을 씁니다.
-  const filterKey = `${categoryId} ${tag}`;
+  const filterKey = `${categoryId} ${tag} ${unreadOnly}`;
   const [renderedFilterKey, setRenderedFilterKey] = useState(filterKey);
   if (renderedFilterKey !== filterKey) {
     setRenderedFilterKey(filterKey);
@@ -140,7 +151,25 @@ export function ArticleExplorer({
           '더 보기'의 `24 / 162`도 패딩 없이 찍고 있어 표기가 어긋나기도 했습니다.
         */}
         <p className="explorer-count">RESULT / {filteredArticles.length}</p>
-        {tagCounts.length > 0 && <TagFilter tags={tagCounts} value={tag} onChange={setTag} />}
+        <div className="explorer-tools">
+          {readCount > 0 && (
+            <>
+              <button
+                type="button"
+                className={`filter-chip ${unreadOnly ? 'active' : ''}`}
+                aria-pressed={unreadOnly}
+                onClick={() => setUnreadOnly((on) => !on)}
+              >
+                안 읽은 것만
+              </button>
+              {/* 되돌릴 길이 없으면 실수로 다 읽음이 된 순간 빠져나올 데가 없습니다. */}
+              <button type="button" className="explorer-reset" onClick={clearRead}>
+                읽음 기록 지우기
+              </button>
+            </>
+          )}
+          {tagCounts.length > 0 && <TagFilter tags={tagCounts} value={tag} onChange={setTag} />}
+        </div>
       </div>
 
       {filteredArticles.length > 0 ? (

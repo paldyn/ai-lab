@@ -11,6 +11,7 @@ import {
   type NewsItem,
 } from '../data/news';
 import { assetUrl, getSource, sourceList, type NewsSource } from '../data/sources';
+import { clearRead, markRead, useReadCheck, useReadCount } from '../lib/readLog';
 import { NewsPreviewModal, releasePreviewFields, type NewsPreviewItem } from './NewsPreviewModal';
 
 type SourceFilter = NewsSource | 'All';
@@ -95,6 +96,9 @@ const useHydrated = () => useSyncExternalStore(subscribeNever, () => true, () =>
 export function GlobalNewsDesk({ kind }: GlobalNewsDeskProps) {
   const [source, setSource] = useState<SourceFilter>('All');
   const [visible, setVisible] = useState(FEED_INITIAL);
+  const [unreadOnly, setUnreadOnly] = useState(false);
+  const readCheck = useReadCheck();
+  const readCount = useReadCount();
   const [searchParams, setSearchParams] = useSearchParams();
   const hydrated = useHydrated();
 
@@ -106,10 +110,10 @@ export function GlobalNewsDesk({ kind }: GlobalNewsDeskProps) {
     [kind],
   );
 
-  const items = useMemo(
-    () => (source === 'All' ? kindItems : kindItems.filter((item) => item.source === source)),
-    [source, kindItems],
-  );
+  const items = useMemo(() => {
+    const bySource = source === 'All' ? kindItems : kindItems.filter((item) => item.source === source);
+    return unreadOnly ? bySource.filter((item) => !readCheck('news', item.id)) : bySource;
+  }, [source, kindItems, readCheck, unreadOnly]);
 
   const availableFilters = useMemo(
     () => sourceList.filter((meta) => kindItems.some((item) => item.source === meta.id)),
@@ -142,7 +146,7 @@ export function GlobalNewsDesk({ kind }: GlobalNewsDeskProps) {
     // 붙은 항목에 '새 모델' 마크를 달면 안 됩니다.
     const release = releaseOf(item);
     return (
-      <article key={item.id} className="news-feed-row group">
+      <article key={item.id} className={`news-feed-row group ${readCheck('news', item.id) ? 'is-read' : ''}`}>
         <div className="news-feed-order" aria-hidden="true">{String(order).padStart(2, '0')}</div>
         <div className="min-w-0">
           {/*
@@ -242,7 +246,11 @@ export function GlobalNewsDesk({ kind }: GlobalNewsDeskProps) {
     setSearchParams(next, { replace: true });
   };
 
-  const openPreview = (item: NewsItem) => setOpenId(item.id);
+  /* 모달을 여는 순간 읽은 것으로 칩니다 — 뉴스는 그 모달이 본문 전부입니다. */
+  const openPreview = (item: NewsItem) => {
+    markRead('news', item.id);
+    setOpenId(item.id);
+  };
 
   return (
     <section id="global-news" className="global-news-section scroll-mt-28">
@@ -287,13 +295,36 @@ export function GlobalNewsDesk({ kind }: GlobalNewsDeskProps) {
               </button>
             ))}
           </div>
+
+          {/*
+            읽은 것이 하나라도 있을 때만 세웁니다 — 아무것도 안 읽었으면 아무것도
+            안 거르는 버튼이라 자리만 차지합니다.
+          */}
+          {readCount > 0 && (
+            <div className="news-read-tools">
+              <button
+                type="button"
+                className={`filter-chip ${unreadOnly ? 'active' : ''}`}
+                aria-pressed={unreadOnly}
+                onClick={() => setUnreadOnly((on) => !on)}
+              >
+                안 읽은 것만
+              </button>
+              <button type="button" className="explorer-reset" onClick={clearRead}>
+                읽음 기록 지우기
+              </button>
+            </div>
+          )}
         </div>
 
         {!lead && <p className="news-desk-empty">{empty}</p>}
 
         {lead && (
           <div className="news-desk-grid">
-            <article className="news-lead group" style={{ '--news-accent': leadSource?.mark } as CSSProperties}>
+            <article
+              className={`news-lead group ${readCheck('news', lead.id) ? 'is-read' : ''}`}
+              style={{ '--news-accent': leadSource?.mark } as CSSProperties}
+            >
               <div className="news-lead-header">
                 <span className="news-lead-logo">
                   <img
