@@ -1,4 +1,4 @@
-import { useMemo, useState, useSyncExternalStore, type CSSProperties } from 'react';
+import { useEffect, useMemo, useState, useSyncExternalStore, type CSSProperties } from 'react';
 import { ArrowUpRight, Eye } from 'lucide-react';
 import { useSearchParams } from 'react-router';
 import {
@@ -75,7 +75,7 @@ interface GlobalNewsDeskProps {
  * 일어나지 않습니다 — 화면이 다시 마운트되지 않으니 초기값을 다시 읽지 않습니다.
  * 그래서 주소를 유일한 근거로 둡니다. 링크로 특정 소식을 여는 길도 함께 생깁니다.
  */
-const ITEM_PARAM = 'item';
+export const ITEM_PARAM = 'item';
 
 /*
   하이드레이션이 끝난 뒤에만 true. 서버 스냅샷과 클라이언트 스냅샷을 나눠 두면
@@ -246,11 +246,18 @@ export function GlobalNewsDesk({ kind }: GlobalNewsDeskProps) {
     setSearchParams(next, { replace: true });
   };
 
-  /* 모달을 여는 순간 읽은 것으로 칩니다 — 뉴스는 그 모달이 본문 전부입니다. */
-  const openPreview = (item: NewsItem) => {
-    markRead('news', item.id);
-    setOpenId(item.id);
-  };
+  const openPreview = (item: NewsItem) => setOpenId(item.id);
+
+  /*
+    모달이 뜨면 읽은 것으로 칩니다 — 뉴스는 그 모달이 본문 전부입니다.
+
+    누르는 자리가 아니라 **열린 것을 보고** 적습니다. 모달은 주소가 정하므로
+    홈의 「TODAY'S UPDATES」나 검색 결과처럼 `?item=`으로 바로 들어오는 길이
+    있고, 누를 때 적으면 그쪽으로 들어온 것은 안 세집니다.
+  */
+  useEffect(() => {
+    if (openId) markRead('news', openId);
+  }, [openId]);
 
   return (
     <section id="global-news" className="global-news-section scroll-mt-28">

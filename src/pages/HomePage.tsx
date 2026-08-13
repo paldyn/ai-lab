@@ -2,6 +2,7 @@ import { useState, type CSSProperties } from 'react';
 import { ArrowRight, Eye } from 'lucide-react';
 import { Link } from 'react-router';
 import { ArticleCard } from '../components/ArticleCard';
+import { ITEM_PARAM } from '../components/GlobalNewsDesk';
 import { ModelRadar } from '../components/ModelRadar';
 import { NewsPreviewModal, releasePreviewFields, type NewsPreviewItem } from '../components/NewsPreviewModal';
 import { Seo } from '../components/Seo';
@@ -38,7 +39,8 @@ export interface FeedItem {
   accentText: string;
   title: string;
   date: string;
-  href?: string;
+  /** 눌러서 갈 곳. **모든 줄이 갖습니다** — 없으면 그 줄만 조용히 안 눌립니다. */
+  href: string;
 }
 
 /** 글과 소식을 한 줄로 합쳐 최신순으로 세웁니다. */
@@ -76,6 +78,11 @@ export function feedCorpus(): FeedItem[] {
       accentText: categoryById['ai-news'].accentText,
       title: item.title,
       date: item.collectedAt ?? item.publishedAt,
+      /*
+        뉴스는 그 자리에서 모달로 열립니다. 주소로 여는 길이 이미 있으므로
+        (`GlobalNewsDesk`가 `item` 파라미터를 읽습니다) 그것을 그대로 씁니다.
+      */
+      href: `/news?${ITEM_PARAM}=${encodeURIComponent(item.id)}`,
     })),
   ].sort((a, b) => b.date.localeCompare(a.date));
 }
@@ -202,19 +209,11 @@ export function HomePage() {
               <ul className="home-hero-feed">
                 {recent.items.map((item) => (
                   <li key={item.key}>
-                    {item.href ? (
-                      <Link to={item.href}>
-                        <span className="home-hero-feed-label" style={{ color: item.accentText }}>{item.label}</span>
-                        <span className="home-hero-feed-title">{item.title}</span>
-                        <time dateTime={item.date}>{item.date.slice(5).replace('-', '.')}</time>
-                      </Link>
-                    ) : (
-                      <span>
-                        <span className="home-hero-feed-label" style={{ color: item.accentText }}>{item.label}</span>
-                        <span className="home-hero-feed-title">{item.title}</span>
-                        <time dateTime={item.date}>{item.date.slice(5).replace('-', '.')}</time>
-                      </span>
-                    )}
+                    <Link to={item.href}>
+                      <span className="home-hero-feed-label" style={{ color: item.accentText }}>{item.label}</span>
+                      <span className="home-hero-feed-title">{item.title}</span>
+                      <time dateTime={item.date}>{item.date.slice(5).replace('-', '.')}</time>
+                    </Link>
                   </li>
                 ))}
               </ul>

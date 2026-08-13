@@ -30,6 +30,16 @@ describe('홈 히어로의 최근 업데이트', () => {
     expect(모든날짜.length).toBeGreaterThan(50);
   });
 
+  /**
+   * 뉴스 줄에는 `href`가 없어서 맨 위 한 줄만 안 눌렸습니다. 갈래를 한 바퀴 도는
+   * 규칙상 그 자리는 늘 뉴스라(SECTION_ORDER의 첫 칸) 언제 봐도 첫 줄이 죽어
+   * 있었고, 아래 셋은 글이라 멀쩡해 더 헷갈렸습니다.
+   */
+  it('모든 줄이 눌러서 갈 곳을 갖는다', () => {
+    const 링크없음 = corpus.filter((item) => !item.href);
+    expect(링크없음.map((item) => `${item.section} ${item.title}`)).toEqual([]);
+  });
+
   it('보여 줄 것이 있다', () => {
     const { items, counts } = recentUpdates();
     expect(items.length).toBeGreaterThan(0);
