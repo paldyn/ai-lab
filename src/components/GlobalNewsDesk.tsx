@@ -260,23 +260,9 @@ export function GlobalNewsDesk({ kind }: GlobalNewsDeskProps) {
               <h2>{heading}</h2>
               <p>{description}</p>
             </div>
-            {/*
-              거르개는 머리 오른쪽에 둡니다. 출처 띠 아래에 제 줄로 두었더니 어디에도
-              안 붙은 채 떠 있었습니다 — 학습 목록에서도 이 칩은 목록 위 오른쪽입니다.
-            */}
-            <div className="news-desk-tools">
-              <button
-                type="button"
-                className={`filter-chip ${unreadOnly ? 'active' : ''}`}
-                aria-pressed={unreadOnly}
-                onClick={() => setUnreadOnly((on) => !on)}
-              >
-                UNREAD
-              </button>
-              <div className="news-updated">
-                <span className="news-live-dot" />
-                업데이트 {globalNewsUpdatedAt.replaceAll('-', '.')}
-              </div>
+            <div className="news-updated">
+              <span className="news-live-dot" />
+              업데이트 {globalNewsUpdatedAt.replaceAll('-', '.')}
             </div>
           </div>
 
@@ -306,6 +292,18 @@ export function GlobalNewsDesk({ kind }: GlobalNewsDeskProps) {
                 {meta.displayName}
               </button>
             ))}
+            {/*
+              거르개는 이 띠의 오른쪽 끝입니다 — 전체·회사 단추와 같은 종류의
+              조작이라 같은 줄에 섭니다. 켜 두는 것이 기본이라 늘 세웁니다.
+            */}
+            <button
+              type="button"
+              className={`news-unread ${unreadOnly ? 'active' : ''}`}
+              aria-pressed={unreadOnly}
+              onClick={() => setUnreadOnly((on) => !on)}
+            >
+              UNREAD
+            </button>
           </div>
 
         </div>

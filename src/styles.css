@@ -1897,11 +1897,25 @@ input:focus-visible {
   읽히는 말이 하나 필요합니다. 테두리를 둘러 같은 크기의 다른 메타 조각과 갈립니다.
 */
 .read-mark {
+  /*
+    크기를 물려받지 않습니다. 붙는 자리마다 메타 줄의 글자 크기가 달라서(목록 행은
+    10px, 홈의 기업·모델 소식은 12~13px) 물려받으면 홈에서만 커집니다.
+  */
   border: 1px solid var(--border);
   border-radius: 2px;
   padding: 1px 5px;
   color: var(--text-muted);
+  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  /*
+    10px가 상한이고, 붙은 줄이 그보다 작으면 그 줄을 따릅니다. 홈의 모델 소식은
+    이 표시가 들어가는 줄이 16px이라 그대로 물려받으면 제목만큼 커지고, 기업 소식은
+    8px이라 10px로 못 박으면 옆 글자보다 커집니다.
+  */
+  font-size: min(10px, 1.1em);
+  line-height: 1.4;
   letter-spacing: 0.06em;
+  vertical-align: middle;
+  white-space: nowrap;
 }
 
 /*
