@@ -169,6 +169,7 @@ export function GlobalNewsDesk({ kind }: GlobalNewsDeskProps) {
               {meta.displayName}
             </span>
             <span>{release ? release.name : item.signal}</span>
+            {readCheck('news', item.id) && <span className="read-mark">읽음</span>}
           </div>
           {/*
             모델 마크는 제목 옆에 서지만 **버튼 밖**입니다. 안에 넣으면 접근성
