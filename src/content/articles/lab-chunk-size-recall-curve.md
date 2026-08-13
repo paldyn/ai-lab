@@ -371,3 +371,5 @@ queries whose gold paragraph is truncated when unsplit: 333 / 5774  (5.8%)
 ---
 
 **지난 글:** [문단 앞에 제목을 붙이면 검색이 오르는가: 300질의로는 볼 수 없는 크기였다](/articles/lab-title-prefix-effect)
+
+**다음 글:** [e5의 query:/passage: 접두사를 빼면 정말 손해인가: 뒤집힘도 손해도 300질의가 만든 것이었다](/articles/lab-e5-prefix-ablation)
