@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="340" viewBox="0 0 880 340">
+  <rect x="0" y="0" width="880" height="340" rx="12" fill="#0a0a0a"/>
+
+  <text x="60" y="46" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="22" font-weight="700" fill="#e8e8e8">품질은 일찍 포화하고 비용은 끝까지 오른다</text>
+  <text x="60" y="76" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">임계값을 낮춰 승격률을 올릴 때 두 값이 움직이는 모양</text>
+
+  <line x1="100" y1="94" x2="100" y2="250" stroke="#555555" stroke-width="1.5"/>
+  <line x1="100" y1="250" x2="820" y2="250" stroke="#555555" stroke-width="1.5"/>
+
+  <text x="88" y="105" text-anchor="end" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">높음</text>
+  <text x="88" y="255" text-anchor="end" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">낮음</text>
+
+  <text x="100" y="274" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">0%</text>
+  <text x="244" y="274" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">20%</text>
+  <text x="460" y="274" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">50%</text>
+  <text x="820" y="274" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">100%</text>
+  <text x="440" y="300" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">큰 모델로 올려 보내는 요청의 비율</text>
+
+  <path d="M 100 157 L 172 133 L 244 121 L 316 115 L 460 108 L 604 104 L 820 100" fill="none" stroke="#55c555" stroke-width="2.5"/>
+  <line x1="100" y1="235" x2="820" y2="100" stroke="#e05555" stroke-width="2.5"/>
+
+  <line x1="244" y1="100" x2="244" y2="250" stroke="#888888" stroke-width="2" stroke-dasharray="4,4"/>
+  <text x="256" y="146" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">여기까지가 품질 이득의 대부분</text>
+
+  <rect x="600" y="140" width="16" height="16" fill="#101c10" stroke="#55c555" stroke-width="1.5"/>
+  <text x="624" y="153" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">품질</text>
+
+  <rect x="690" y="140" width="16" height="16" fill="#1c1010" stroke="#e05555" stroke-width="1.5"/>
+  <text x="714" y="153" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">요청당 비용</text>
+
+  <text x="60" y="326" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">곡선의 모양은 검사기의 성능이 정한다. 승격 대상을 잘 고를수록 왼쪽에서 더 가파르게 오른다.</text>
+</svg>

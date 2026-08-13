@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="350" viewBox="0 0 880 350">
+  <rect x="0" y="0" width="880" height="350" rx="12" fill="#0a0a0a"/>
+
+  <text x="60" y="46" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="22" font-weight="700" fill="#e8e8e8">카탈로그의 TOPS는 생성 속도를 거의 설명하지 못한다</text>
+  <text x="60" y="76" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">같은 7B 4비트 모델을 한 사람이 쓸 때, 연산 성능이 2.75배인 장비가 더 느리다</text>
+
+  <text x="60" y="108" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#e8e8e8">피크 연산 성능 (INT8 TOPS)</text>
+
+  <text x="232" y="142" text-anchor="end" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">장비 A</text>
+  <rect x="240" y="120" width="440" height="32" fill="#12161c" stroke="#555555" stroke-width="1.5"/>
+  <text x="692" y="142" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">275</text>
+
+  <text x="232" y="182" text-anchor="end" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">장비 B</text>
+  <rect x="240" y="160" width="160" height="32" fill="#12161c" stroke="#555555" stroke-width="1.5"/>
+  <text x="412" y="182" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">100</text>
+
+  <text x="60" y="228" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#e8e8e8">한 사람이 쓸 때의 생성 속도 (토큰/초)</text>
+
+  <text x="232" y="262" text-anchor="end" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">장비 A</text>
+  <rect x="240" y="240" width="200" height="32" fill="#1c1410" stroke="#e0a055" stroke-width="1.5"/>
+  <text x="452" y="262" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">25 · 대역폭 100GB/s</text>
+
+  <text x="232" y="302" text-anchor="end" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">장비 B</text>
+  <rect x="240" y="280" width="400" height="32" fill="#101820" stroke="#7ec8e3" stroke-width="1.5"/>
+  <text x="652" y="302" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">50 · 대역폭 200GB/s</text>
+
+  <text x="60" y="336" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">TOPS가 힘을 쓰는 자리는 입력을 한 번에 통과시키는 프리필과 여러 요청을 묶어 처리할 때다.</text>
+</svg>

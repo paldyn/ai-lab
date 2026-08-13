@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="360" viewBox="0 0 880 360">
+  <defs>
+    <marker id="bwArr" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#7ec8e3"/>
+    </marker>
+  </defs>
+
+  <rect x="0" y="0" width="880" height="360" rx="12" fill="#0a0a0a"/>
+
+  <text x="60" y="46" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="22" font-weight="700" fill="#e8e8e8">기기에서의 속도는 연산기가 아니라 대역폭이 정한다</text>
+  <text x="60" y="76" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">토큰 하나를 뱉을 때마다 가중치 전부를 메모리에서 다시 읽어 온다</text>
+
+  <rect x="60" y="110" width="250" height="140" rx="8" fill="#101820" stroke="#7ec8e3" stroke-width="1.5"/>
+  <text x="185" y="146" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#e8e8e8">메모리</text>
+  <text x="185" y="176" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">4비트 3B 모델 ≈ 1.5GB</text>
+  <text x="185" y="200" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">가중치가 여기 누워 있다</text>
+  <text x="185" y="224" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">대역폭 50GB/s</text>
+
+  <rect x="570" y="110" width="250" height="140" rx="8" fill="#12161c" stroke="#555555" stroke-width="1.5"/>
+  <text x="695" y="146" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#e8e8e8">연산기</text>
+  <text x="695" y="176" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">초당 수 조 회를 곱한다</text>
+  <text x="695" y="200" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">그러나 한 토큰의 계산량은</text>
+  <text x="695" y="224" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">그에 비해 아주 적다</text>
+
+  <line x1="310" y1="180" x2="570" y2="180" stroke="#7ec8e3" stroke-width="1.5" marker-end="url(#bwArr)"/>
+
+  <circle cy="180" r="5" fill="#7ec8e3">
+    <animate attributeName="cx" from="316" to="556" dur="2s" begin="0s" repeatCount="indefinite"/>
+  </circle>
+  <circle cy="180" r="5" fill="#7ec8e3">
+    <animate attributeName="cx" from="316" to="556" dur="2s" begin="0.4s" repeatCount="indefinite"/>
+  </circle>
+  <circle cy="180" r="5" fill="#7ec8e3">
+    <animate attributeName="cx" from="316" to="556" dur="2s" begin="0.8s" repeatCount="indefinite"/>
+  </circle>
+  <circle cy="180" r="5" fill="#7ec8e3">
+    <animate attributeName="cx" from="316" to="556" dur="2s" begin="1.2s" repeatCount="indefinite"/>
+  </circle>
+  <circle cy="180" r="5" fill="#7ec8e3">
+    <animate attributeName="cx" from="316" to="556" dur="2s" begin="1.6s" repeatCount="indefinite"/>
+  </circle>
+
+  <text x="60" y="296" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#e8e8e8">1.5GB ÷ 50GB/s ≈ 30ms → 초당 33토큰이 상한이다</text>
+  <text x="60" y="326" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">연산 성능을 두 배로 올려도 이 숫자는 거의 그대로다. 모델을 절반으로 누르면 두 배가 된다.</text>
+</svg>

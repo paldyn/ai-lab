@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="360" viewBox="0 0 880 360">
+  <defs>
+    <marker id="casArr" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#8a8a8a"/>
+    </marker>
+    <marker id="casArrUp" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#e0a055"/>
+    </marker>
+  </defs>
+
+  <rect x="0" y="0" width="880" height="360" rx="12" fill="#0a0a0a"/>
+
+  <text x="60" y="46" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="22" font-weight="700" fill="#e8e8e8">캐스케이드는 작은 모델을 먼저 쓰고 미덥지 않을 때만 올린다</text>
+
+  <rect x="60" y="120" width="110" height="60" rx="8" fill="#12161c" stroke="#555555" stroke-width="1.5"/>
+  <text x="115" y="156" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#e8e8e8">요청</text>
+
+  <rect x="240" y="120" width="160" height="60" rx="8" fill="#101c10" stroke="#55c555" stroke-width="1.5"/>
+  <text x="320" y="156" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#e8e8e8">작은 모델</text>
+
+  <rect x="470" y="120" width="130" height="60" rx="8" fill="#101820" stroke="#7ec8e3" stroke-width="1.5"/>
+  <text x="535" y="156" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#e8e8e8">검사</text>
+
+  <rect x="690" y="120" width="120" height="60" rx="8" fill="#12161c" stroke="#555555" stroke-width="1.5"/>
+  <text x="750" y="156" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#e8e8e8">응답</text>
+
+  <rect x="470" y="250" width="160" height="60" rx="8" fill="#1c1410" stroke="#e0a055" stroke-width="1.5"/>
+  <text x="550" y="286" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#e8e8e8">큰 모델</text>
+
+  <line x1="170" y1="150" x2="240" y2="150" stroke="#8a8a8a" stroke-width="1.5" marker-end="url(#casArr)"/>
+  <line x1="400" y1="150" x2="470" y2="150" stroke="#8a8a8a" stroke-width="1.5" marker-end="url(#casArr)"/>
+  <line x1="600" y1="150" x2="690" y2="150" stroke="#55c555" stroke-width="1.5" marker-end="url(#casArr)"/>
+  <text x="645" y="132" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">통과</text>
+
+  <line x1="535" y1="180" x2="535" y2="250" stroke="#e0a055" stroke-width="1.5" marker-end="url(#casArrUp)"/>
+  <text x="521" y="222" text-anchor="end" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">승격</text>
+
+  <path d="M 630 280 L 750 280 L 750 180" fill="none" stroke="#e0a055" stroke-width="1.5" marker-end="url(#casArrUp)"/>
+
+  <circle r="5" fill="#55c555">
+    <animateMotion dur="3s" repeatCount="indefinite" path="M 170 150 L 400 150 L 600 150 L 690 150"/>
+  </circle>
+  <circle r="5" fill="#e0a055">
+    <animateMotion dur="4.5s" begin="1.5s" repeatCount="indefinite" path="M 170 150 L 535 150 L 535 280 L 750 280 L 750 180"/>
+  </circle>
+
+  <text x="60" y="336" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">승격된 요청은 두 모델의 비용을 모두 낸다. 그래서 이 구조의 손익은 검사가 얼마나 정확한가에 달려 있다.</text>
+</svg>

@@ -98,3 +98,5 @@ $$T = t_s + p \cdot t_l$$
 읽어주셔서 감사합니다. 😊
 
 **지난 글:** [작은 모델이 다시 쓸 만해진 이유](/articles/slm-overview)
+
+**다음 글:** [작은 모델을 우리 일에 맞추는 법](/articles/slm-finetuning)

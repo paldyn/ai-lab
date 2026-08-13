@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="330" viewBox="0 0 880 330">
+  <defs>
+    <marker id="gateArr" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#8a8a8a"/>
+    </marker>
+    <marker id="gateBack" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#e05555"/>
+    </marker>
+  </defs>
+
+  <rect x="0" y="0" width="880" height="330" rx="12" fill="#0a0a0a"/>
+
+  <text x="60" y="46" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="22" font-weight="700" fill="#e8e8e8">장비는 네 관문을 순서대로 통과해야 후보가 된다</text>
+
+  <rect x="60" y="100" width="170" height="104" rx="8" fill="#101820" stroke="#7ec8e3" stroke-width="1.5"/>
+  <text x="145" y="132" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#e8e8e8">① 들어가는가</text>
+  <text x="145" y="160" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">가중치 + KV 캐시</text>
+  <text x="145" y="184" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">여유 20% 남기고</text>
+
+  <rect x="255" y="100" width="170" height="104" rx="8" fill="#101820" stroke="#7ec8e3" stroke-width="1.5"/>
+  <text x="340" y="132" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#e8e8e8">② 빠른가</text>
+  <text x="340" y="160" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">대역폭 ÷ 모델 크기</text>
+  <text x="340" y="184" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">TOPS가 아니다</text>
+
+  <rect x="450" y="100" width="170" height="104" rx="8" fill="#101c10" stroke="#55c555" stroke-width="1.5"/>
+  <text x="535" y="132" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#e8e8e8">③ 몇 명인가</text>
+  <text x="535" y="160" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">동시 요청 × KV 캐시</text>
+  <text x="535" y="184" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">묶음 처리 여력</text>
+
+  <rect x="645" y="100" width="170" height="104" rx="8" fill="#1c1410" stroke="#e0a055" stroke-width="1.5"/>
+  <text x="730" y="132" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#e8e8e8">④ 돌볼 수 있는가</text>
+  <text x="730" y="160" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">런타임·드라이버 지원</text>
+  <text x="730" y="184" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">원격 갱신·교체</text>
+
+  <line x1="230" y1="152" x2="255" y2="152" stroke="#8a8a8a" stroke-width="1.5" marker-end="url(#gateArr)"/>
+  <line x1="425" y1="152" x2="450" y2="152" stroke="#8a8a8a" stroke-width="1.5" marker-end="url(#gateArr)"/>
+  <line x1="620" y1="152" x2="645" y2="152" stroke="#8a8a8a" stroke-width="1.5" marker-end="url(#gateArr)"/>
+
+  <path d="M 730 204 L 730 252 L 145 252 L 145 204" fill="none" stroke="#e05555" stroke-width="2" stroke-dasharray="4,4" marker-end="url(#gateBack)"/>
+  <text x="440" y="278" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">한 관문이라도 못 지나면 사양을 올려 처음부터 다시 센다</text>
+
+  <text x="60" y="312" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">가장 자주 무너지는 곳은 ④다. 성능은 하루면 재 보지만 지원이 끊긴 것은 몇 달 뒤에 드러난다.</text>
+</svg>

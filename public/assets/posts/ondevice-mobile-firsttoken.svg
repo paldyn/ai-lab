@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="330" viewBox="0 0 880 330">
+  <rect x="0" y="0" width="880" height="330" rx="12" fill="#0a0a0a"/>
+
+  <text x="60" y="46" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="22" font-weight="700" fill="#e8e8e8">첫 글자까지의 침묵은 대부분 계산이 아니다</text>
+  <text x="60" y="76" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">사용자가 버튼을 누르고 첫 토큰을 볼 때까지 시간이 어디로 가는가</text>
+
+  <text x="60" y="140" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">그냥 만들면</text>
+  <rect x="180" y="110" width="42" height="48" fill="#12161c" stroke="#555555" stroke-width="1.5"/>
+  <rect x="222" y="110" width="420" height="48" fill="#1c1410" stroke="#e0a055" stroke-width="1.5"/>
+  <text x="432" y="140" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#e8e8e8">모델 로드 3.0초</text>
+  <rect x="642" y="110" width="112" height="48" fill="#101820" stroke="#7ec8e3" stroke-width="1.5"/>
+  <rect x="754" y="110" width="28" height="48" fill="#101c10" stroke="#55c555" stroke-width="1.5"/>
+  <text x="800" y="140" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">4.3초</text>
+
+  <text x="60" y="220" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">데워 두면</text>
+  <rect x="180" y="190" width="84" height="48" fill="#101820" stroke="#7ec8e3" stroke-width="1.5"/>
+  <rect x="264" y="190" width="28" height="48" fill="#101c10" stroke="#55c555" stroke-width="1.5"/>
+  <text x="310" y="220" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">0.8초 — 앱을 켤 때 이미 올려 두고 프롬프트 앞부분을 미리 계산해 둔 결과</text>
+
+  <rect x="180" y="272" width="16" height="16" fill="#12161c" stroke="#555555" stroke-width="1.5"/>
+  <text x="204" y="285" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">앱 준비</text>
+
+  <rect x="290" y="272" width="16" height="16" fill="#1c1410" stroke="#e0a055" stroke-width="1.5"/>
+  <text x="314" y="285" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">모델을 메모리에 올리는 시간</text>
+
+  <rect x="530" y="272" width="16" height="16" fill="#101820" stroke="#7ec8e3" stroke-width="1.5"/>
+  <text x="554" y="285" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">프리필</text>
+
+  <rect x="640" y="272" width="16" height="16" fill="#101c10" stroke="#55c555" stroke-width="1.5"/>
+  <text x="664" y="285" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">첫 토큰 생성</text>
+</svg>

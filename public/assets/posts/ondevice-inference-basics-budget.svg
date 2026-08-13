@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="330" viewBox="0 0 880 330">
+  <rect x="0" y="0" width="880" height="330" rx="12" fill="#0a0a0a"/>
+
+  <text x="60" y="46" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="22" font-weight="700" fill="#e8e8e8">모델이 들어갈 자리는 램 용량이 아니라 남는 자리다</text>
+  <text x="60" y="78" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">램 8GB 휴대폰에서 우리 앱이 실제로 만질 수 있는 몫</text>
+
+  <rect x="60" y="100" width="332" height="64" fill="#12161c" stroke="#555555" stroke-width="1.5"/>
+  <text x="226" y="138" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#e8e8e8">OS · 다른 앱 3.5GB</text>
+
+  <rect x="392" y="100" width="38" height="64" fill="#1c1410" stroke="#e0a055" stroke-width="1.5"/>
+
+  <rect x="430" y="100" width="143" height="64" fill="#101820" stroke="#7ec8e3" stroke-width="1.5"/>
+  <text x="502" y="138" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#e8e8e8">모델 1.5GB</text>
+
+  <rect x="573" y="100" width="38" height="64" fill="#101c10" stroke="#55c555" stroke-width="1.5"/>
+
+  <rect x="611" y="100" width="209" height="64" fill="#0f0f0f" stroke="#444444" stroke-width="1.5" stroke-dasharray="4,4"/>
+  <text x="716" y="138" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#888">여유 2.2GB</text>
+
+  <line x1="411" y1="164" x2="411" y2="196" stroke="#e0a055" stroke-width="1.5"/>
+  <text x="411" y="216" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">앱 자체 0.4GB</text>
+
+  <line x1="592" y1="164" x2="592" y2="196" stroke="#55c555" stroke-width="1.5"/>
+  <text x="600" y="216" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">KV 캐시 0.4GB · 문맥 4k</text>
+
+  <text x="60" y="266" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">KV 캐시는 문맥 길이에 비례해 늘어난다. 문맥을 16k로 열면 이 칸만 1.8GB가 되어 여유의 대부분을 먹는다.</text>
+  <text x="60" y="294" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">여유가 얇아지면 OS가 앱을 조용히 종료시킨다. 모델 크기는 남는 자리가 아니라 최악의 순간을 기준으로 고른다.</text>
+</svg>

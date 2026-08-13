@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="340" viewBox="0 0 880 340">
+  <rect x="0" y="0" width="880" height="340" rx="12" fill="#0a0a0a"/>
+
+  <text x="60" y="46" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="22" font-weight="700" fill="#e8e8e8">휴대폰의 속도는 1분쯤 뒤에 절반이 된다</text>
+  <text x="60" y="76" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">같은 모델을 5분 동안 쉬지 않고 돌렸을 때의 초당 토큰 수</text>
+
+  <line x1="100" y1="94" x2="100" y2="250" stroke="#555555" stroke-width="1.5"/>
+  <line x1="100" y1="250" x2="820" y2="250" stroke="#555555" stroke-width="1.5"/>
+
+  <line x1="100" y1="175" x2="820" y2="175" stroke="#222222" stroke-width="1"/>
+  <line x1="100" y1="100" x2="820" y2="100" stroke="#222222" stroke-width="1"/>
+
+  <text x="88" y="105" text-anchor="end" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">40</text>
+  <text x="88" y="180" text-anchor="end" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">20</text>
+  <text x="88" y="255" text-anchor="end" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">0</text>
+
+  <text x="100" y="274" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">0</text>
+  <text x="244" y="274" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">1분</text>
+  <text x="388" y="274" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">2분</text>
+  <text x="532" y="274" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">3분</text>
+  <text x="820" y="274" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">5분</text>
+
+  <path d="M 100 130 L 172 134 L 244 141 L 280 168 L 316 186 L 388 194 L 532 198 L 820 198" fill="none" stroke="#7ec8e3" stroke-width="2.5"/>
+
+  <line x1="280" y1="100" x2="280" y2="250" stroke="#e05555" stroke-width="2" stroke-dasharray="4,4"/>
+  <text x="294" y="118" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e05555">칩이 온도 한계에 닿는 지점</text>
+
+  <text x="120" y="120" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">32 tok/s</text>
+  <text x="560" y="190" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">14 tok/s에서 평평해진다</text>
+
+  <text x="60" y="308" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">벤치마크 수치는 대개 왼쪽 끝 구간이다. 용량 산정은 오른쪽의 평평한 값으로 해야 어긋나지 않는다.</text>
+</svg>

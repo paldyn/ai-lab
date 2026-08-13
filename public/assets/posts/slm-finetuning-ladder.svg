@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="330" viewBox="0 0 880 330">
+  <defs>
+    <marker id="stepArr" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#8a8a8a"/>
+    </marker>
+  </defs>
+
+  <rect x="0" y="0" width="880" height="330" rx="12" fill="#0a0a0a"/>
+
+  <text x="60" y="46" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="22" font-weight="700" fill="#e8e8e8">파인튜닝은 첫 계단이 아니라 마지막 계단이다</text>
+
+  <rect x="60" y="80" width="180" height="124" rx="8" fill="#101c10" stroke="#55c555" stroke-width="1.5"/>
+  <text x="150" y="110" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#e8e8e8">지시 다듬기</text>
+  <text x="150" y="138" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">출력 형식을 못 박는다</text>
+  <text x="150" y="162" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">비용 0 · 반영 즉시</text>
+  <text x="150" y="184" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">여기서 절반이 끝난다</text>
+
+  <rect x="260" y="80" width="180" height="124" rx="8" fill="#101c10" stroke="#55c555" stroke-width="1.5"/>
+  <text x="350" y="110" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#e8e8e8">예시 붙이기</text>
+  <text x="350" y="138" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">까다로운 사례 3~8개</text>
+  <text x="350" y="162" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">말투·경계가 잡힌다</text>
+  <text x="350" y="184" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">대신 토큰이 늘어난다</text>
+
+  <rect x="460" y="80" width="180" height="124" rx="8" fill="#101820" stroke="#7ec8e3" stroke-width="1.5"/>
+  <text x="550" y="110" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#e8e8e8">검색 붙이기</text>
+  <text x="550" y="138" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">사내·최신 지식 주입</text>
+  <text x="550" y="162" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">문서가 바뀌어도 즉시</text>
+  <text x="550" y="184" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">지식 문제는 여기까지</text>
+
+  <rect x="660" y="80" width="160" height="124" rx="8" fill="#1c1410" stroke="#e0a055" stroke-width="1.5"/>
+  <text x="740" y="110" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#e8e8e8">파인튜닝</text>
+  <text x="740" y="138" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">좁은 작업의 행동</text>
+  <text x="740" y="162" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">프롬프트가 짧아진다</text>
+  <text x="740" y="184" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">데이터·평가·재학습</text>
+
+  <line x1="60" y1="242" x2="820" y2="242" stroke="#8a8a8a" stroke-width="1.5" marker-end="url(#stepArr)"/>
+  <text x="60" y="268" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">앞 계단에서 안 풀린 것만 다음 계단으로</text>
+  <text x="820" y="268" text-anchor="end" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">되돌리는 비용이 커진다</text>
+
+  <text x="60" y="302" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">파인튜닝으로 지식을 넣으려는 시도는 대개 실패한다. 모델은 사실보다 형식을 먼저 외운다.</text>
+</svg>
