@@ -67,14 +67,6 @@ export function markRead(kind: ReadKind, id: string): void {
   announce();
 }
 
-export function clearRead(): void {
-  if (typeof localStorage === 'undefined') return;
-
-  entries = new Set<string>();
-  save();
-  announce();
-}
-
 function subscribe(listener: () => void): () => void {
   listeners.add(listener);
   return () => listeners.delete(listener);
@@ -99,10 +91,4 @@ export function useReadCheck(): (kind: ReadKind, id: string) => boolean {
   const current = useSyncExternalStore(subscribe, clientVersion, serverVersion);
   if (current === 0) return () => false;
   return (kind, id) => (entries ?? new Set<string>()).has(keyOf(kind, id));
-}
-
-/** 읽은 것이 몇 개인지. 「안 읽은 것만 보기」 칩을 세울지 정하는 데 씁니다. */
-export function useReadCount(): number {
-  const current = useSyncExternalStore(subscribe, clientVersion, serverVersion);
-  return current === 0 ? 0 : (entries?.size ?? 0);
 }

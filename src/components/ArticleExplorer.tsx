@@ -1,7 +1,7 @@
 import { useMemo, useState } from 'react';
 import { articles } from '../data/articles';
 import { categories } from '../data/categories';
-import { clearRead, useReadCheck, useReadCount } from '../lib/readLog';
+import { useReadCheck } from '../lib/readLog';
 import type { CategoryId } from '../types/article';
 import { ArticleCard } from './ArticleCard';
 import { TagFilter, type TagCount } from './TagFilter';
@@ -31,15 +31,13 @@ export function ArticleExplorer({
   const [categoryId, setCategoryId] = useState<CategoryId | 'all'>(fixedCategoryId ?? 'all');
   const [tag, setTag] = useState<string>('all');
   const [visible, setVisible] = useState(PAGE_SIZE);
-  const [unreadOnly, setUnreadOnly] = useState(false);
-
   /*
-    읽은 것을 거르는 칩은 **읽은 것이 하나라도 있을 때만** 섭니다. 아무것도 안 읽은
-    사람에게는 아무것도 안 거르는 버튼이라 자리만 차지합니다. 하이드레이션 전에는
-    0이므로 프리렌더 HTML과도 어긋나지 않습니다.
+    **기본값은 「읽을 것」입니다.** 목록에 오는 이유가 대개 '다음에 뭘 읽지'라서
+    이미 본 것을 매번 걸러 내는 것보다 이쪽이 손이 덜 갑니다. 처음 온 사람은
+    읽은 것이 없어 아무것도 안 걸러지므로 전체 목록과 같습니다.
   */
+  const [unreadOnly, setUnreadOnly] = useState(true);
   const readCheck = useReadCheck();
-  const readCount = useReadCount();
 
   const scopedArticles = useMemo(
     () => articles.filter((article) => !categoryIds || categoryIds.includes(article.categoryId)),
@@ -152,22 +150,15 @@ export function ArticleExplorer({
         */}
         <p className="explorer-count">RESULT / {filteredArticles.length}</p>
         <div className="explorer-tools">
-          {readCount > 0 && (
-            <>
-              <button
-                type="button"
-                className={`filter-chip ${unreadOnly ? 'active' : ''}`}
-                aria-pressed={unreadOnly}
-                onClick={() => setUnreadOnly((on) => !on)}
-              >
-                안 읽은 것만
-              </button>
-              {/* 되돌릴 길이 없으면 실수로 다 읽음이 된 순간 빠져나올 데가 없습니다. */}
-              <button type="button" className="explorer-reset" onClick={clearRead}>
-                읽음 기록 지우기
-              </button>
-            </>
-          )}
+          {/* 켜 두는 것이 기본이라 늘 세웁니다 — 목록이 왜 줄었는지 여기서 읽힙니다. */}
+          <button
+            type="button"
+            className={`filter-chip ${unreadOnly ? 'active' : ''}`}
+            aria-pressed={unreadOnly}
+            onClick={() => setUnreadOnly((on) => !on)}
+          >
+            읽을 것
+          </button>
           {tagCounts.length > 0 && <TagFilter tags={tagCounts} value={tag} onChange={setTag} />}
         </div>
       </div>
@@ -203,8 +194,15 @@ export function ArticleExplorer({
             </>
           ) : (
             <>
-              <p className="text-lg text-[var(--text-strong)]">일치하는 글이 없습니다.</p>
-              <p className="mt-2 text-sm text-[var(--text-dim)]">태그 필터를 해제하거나 검색을 이용해 보세요.</p>
+              {/* 다 읽어서 0건인 경우와 태그 탓인 경우를 가릅니다. */}
+              <p className="text-lg text-[var(--text-strong)]">
+                {unreadOnly && tag === 'all' ? '여기는 다 읽으셨습니다.' : '일치하는 글이 없습니다.'}
+              </p>
+              <p className="mt-2 text-sm text-[var(--text-dim)]">
+                {unreadOnly && tag === 'all'
+                  ? '「읽을 것」을 끄면 읽은 글도 함께 나옵니다.'
+                  : '태그 필터를 해제하거나 검색을 이용해 보세요.'}
+              </p>
             </>
           )}
         </div>

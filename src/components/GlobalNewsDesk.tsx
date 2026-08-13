@@ -11,7 +11,7 @@ import {
   type NewsItem,
 } from '../data/news';
 import { assetUrl, getSource, sourceList, type NewsSource } from '../data/sources';
-import { clearRead, markRead, useReadCheck, useReadCount } from '../lib/readLog';
+import { markRead, useReadCheck } from '../lib/readLog';
 import { NewsPreviewModal, releasePreviewFields, type NewsPreviewItem } from './NewsPreviewModal';
 
 type SourceFilter = NewsSource | 'All';
@@ -96,9 +96,9 @@ const useHydrated = () => useSyncExternalStore(subscribeNever, () => true, () =>
 export function GlobalNewsDesk({ kind }: GlobalNewsDeskProps) {
   const [source, setSource] = useState<SourceFilter>('All');
   const [visible, setVisible] = useState(FEED_INITIAL);
-  const [unreadOnly, setUnreadOnly] = useState(false);
+  /* 기본값은 「읽을 것」입니다 — 목록에 오는 이유가 대개 '새로 뭐가 있나'입니다. */
+  const [unreadOnly, setUnreadOnly] = useState(true);
   const readCheck = useReadCheck();
-  const readCount = useReadCount();
   const [searchParams, setSearchParams] = useSearchParams();
   const hydrated = useHydrated();
 
@@ -304,25 +304,17 @@ export function GlobalNewsDesk({ kind }: GlobalNewsDeskProps) {
             ))}
           </div>
 
-          {/*
-            읽은 것이 하나라도 있을 때만 세웁니다 — 아무것도 안 읽었으면 아무것도
-            안 거르는 버튼이라 자리만 차지합니다.
-          */}
-          {readCount > 0 && (
-            <div className="news-read-tools">
-              <button
-                type="button"
-                className={`filter-chip ${unreadOnly ? 'active' : ''}`}
-                aria-pressed={unreadOnly}
-                onClick={() => setUnreadOnly((on) => !on)}
-              >
-                안 읽은 것만
-              </button>
-              <button type="button" className="explorer-reset" onClick={clearRead}>
-                읽음 기록 지우기
-              </button>
-            </div>
-          )}
+          {/* 켜 두는 것이 기본이라 늘 세웁니다 — 목록이 왜 줄었는지 여기서 읽힙니다. */}
+          <div className="news-read-tools">
+            <button
+              type="button"
+              className={`filter-chip ${unreadOnly ? 'active' : ''}`}
+              aria-pressed={unreadOnly}
+              onClick={() => setUnreadOnly((on) => !on)}
+            >
+              읽을 것
+            </button>
+          </div>
         </div>
 
         {!lead && <p className="news-desk-empty">{empty}</p>}

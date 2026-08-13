@@ -1979,40 +1979,13 @@ input:focus-visible {
   padding-bottom: 14px;
 }
 
-/* 오른쪽에 모이는 조작들 — 안 읽은 것만, 읽음 기록 지우기, 태그 고르개. */
+/* 오른쪽에 모이는 조작들 — 「읽을 것」 거르개와 태그 고르개. */
 .explorer-tools {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   justify-content: flex-end;
   gap: 8px;
-}
-
-.explorer-reset {
-  border: 0;
-  background: none;
-  cursor: pointer;
-  padding: 0 2px;
-  color: var(--text-muted);
-  font-family: 'JetBrains Mono', ui-monospace, monospace;
-  font-size: 10px;
-  letter-spacing: 0.06em;
-  text-decoration: underline;
-  text-underline-offset: 3px;
-  transition: color 0.15s;
-}
-
-.explorer-reset:hover {
-  color: var(--brand-text);
-}
-
-/* 뉴스 쪽 읽음 조작. 출처 띠 아래에 붙습니다. */
-.news-read-tools {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 8px;
-  margin-top: 14px;
 }
 
 .explorer-count {
