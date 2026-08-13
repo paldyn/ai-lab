@@ -782,6 +782,52 @@ input:focus-visible {
   background: var(--brand);
 }
 
+/*
+  머리 오른쪽 — 거르개가 앞, 업데이트 날짜가 뒤로 **한 줄에** 섭니다.
+
+  두 번 옮겼습니다. 처음엔 출처 띠 아래 제 줄이라 어디에도 안 붙어 떠 있었고,
+  다음엔 여기에 두었는데 `flex-wrap: wrap` 탓에 폭이 모자라면 위로 접혀 흰 알약이
+  날짜 위에 떠 버렸습니다. 접지 않고(`nowrap`) 줄어들지도 않게(`flex-shrink: 0`)
+  두면 옆의 제목 블록이 대신 줄어듭니다 — 그쪽은 줄 바꿈이 자연스럽습니다.
+
+  모양은 알약이 아니라 **업데이트 줄과 같은 급의 작은 표식**입니다. 8px 모노 한 줄
+  옆에 흰 알약을 놓으면 그것만 화면에서 튑니다. 켜짐은 브랜드색 글자와 테두리로
+  알립니다 — 채우지 않으므로 --bg 위 대비(5.00 / 7.07)를 그대로 씁니다.
+*/
+.news-desk-tools {
+  display: flex;
+  flex-shrink: 0;
+  flex-wrap: nowrap;
+  align-items: center;
+  gap: 10px;
+  padding-bottom: 4px;
+}
+
+/* 세로 여백은 위 묶음이 잡습니다. */
+.news-desk-tools .news-updated {
+  padding-bottom: 0;
+}
+
+.news-unread {
+  border: 1px solid var(--border);
+  border-radius: 2px;
+  background: transparent;
+  cursor: pointer;
+  padding: 3px 8px;
+  color: var(--text-muted);
+  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  font-size: 9px;
+  letter-spacing: 0.12em;
+  white-space: nowrap;
+  transition: color 0.15s, border-color 0.15s;
+}
+
+.news-unread:hover,
+.news-unread.active {
+  border-color: var(--brand);
+  color: var(--brand-text);
+}
+
 .news-source-switch {
   display: flex;
   margin-top: 20px;

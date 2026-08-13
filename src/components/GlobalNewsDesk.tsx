@@ -260,9 +260,20 @@ export function GlobalNewsDesk({ kind }: GlobalNewsDeskProps) {
               <h2>{heading}</h2>
               <p>{description}</p>
             </div>
-            <div className="news-updated">
-              <span className="news-live-dot" />
-              업데이트 {globalNewsUpdatedAt.replaceAll('-', '.')}
+            {/* 머리 오른쪽 — 거르개가 앞, 업데이트 날짜가 뒤로 한 줄에 섭니다. */}
+            <div className="news-desk-tools">
+              <button
+                type="button"
+                className={`news-unread ${unreadOnly ? 'active' : ''}`}
+                aria-pressed={unreadOnly}
+                onClick={() => setUnreadOnly((on) => !on)}
+              >
+                UNREAD
+              </button>
+              <div className="news-updated">
+                <span className="news-live-dot" />
+                업데이트 {globalNewsUpdatedAt.replaceAll('-', '.')}
+              </div>
             </div>
           </div>
 
@@ -292,18 +303,6 @@ export function GlobalNewsDesk({ kind }: GlobalNewsDeskProps) {
                 {meta.displayName}
               </button>
             ))}
-            {/*
-              거르개는 이 띠의 오른쪽 끝입니다 — 전체·회사 단추와 같은 종류의
-              조작이라 같은 줄에 섭니다. 켜 두는 것이 기본이라 늘 세웁니다.
-            */}
-            <button
-              type="button"
-              className={`news-unread ${unreadOnly ? 'active' : ''}`}
-              aria-pressed={unreadOnly}
-              onClick={() => setUnreadOnly((on) => !on)}
-            >
-              UNREAD
-            </button>
           </div>
 
         </div>
