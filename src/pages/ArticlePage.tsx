@@ -3,12 +3,14 @@ import { ArrowLeft, ArrowRight, ArrowUpRight } from 'lucide-react';
 import { Link, Navigate, useParams } from 'react-router';
 import { ArticleCard } from '../components/ArticleCard';
 import { ArticleVisual } from '../components/ArticleVisual';
+import { ImageLightbox } from '../components/ImageLightbox';
 import { Seo } from '../components/Seo';
 import { articleOrdinal, articles, chainNeighbors, getArticleBySlug } from '../data/articles';
 import { categoryById } from '../data/categories';
 import { curriculumLinks, mainTrackNumber } from '../data/curriculum';
 import { initialArticleBody, loadArticleBody } from '../lib/articleBody';
 import { watchAnswerToggle } from '../lib/answerToggle';
+import { watchImageZoom, type ZoomedImage } from '../lib/imageZoom';
 import { markRead } from '../lib/readLog';
 import { watchSelectionRibbon } from '../lib/selectionRibbon';
 import type { Article, ArticleBody } from '../types/article';
@@ -338,6 +340,10 @@ function ArticleView({ article }: { article: Article }) {
   // SPA로 이동해 들어온 경우에만 해당 글의 청크를 내려받습니다.
   const [body, setBody] = useState<ArticleBody | null>(() => initialArticleBody(article.slug));
 
+  /* 본문 그림을 눌러 크게 봅니다 — lib/imageZoom.ts를 보세요. */
+  const [zoomed, setZoomed] = useState<ZoomedImage | null>(null);
+  const closeZoom = useCallback(() => setZoomed(null), []);
+
   // 본문이 늦게 오는 경로가 있어 목록이 바뀔 때만 관찰을 다시 겁니다.
   const headingIds = useMemo(() => (body?.headings ?? []).map((heading) => heading.id), [body]);
   const { active: activeHeading, goTo: goToHeading } = useActiveHeading(headingIds);
@@ -368,6 +374,11 @@ function ArticleView({ article }: { article: Article }) {
   useEffect(() => {
     if (!proseRef.current) return undefined;
     return watchSelectionRibbon(proseRef.current);
+  }, [body]);
+
+  useEffect(() => {
+    if (!proseRef.current) return undefined;
+    return watchImageZoom(proseRef.current, setZoomed);
   }, [body]);
 
   // 연습 문제의 답은 「답」 칩을 눌러야만 펼쳐집니다 — lib/answerToggle.ts를 보세요.
@@ -465,6 +476,8 @@ function ArticleView({ article }: { article: Article }) {
             className="article-prose"
             dangerouslySetInnerHTML={{ __html: body?.html ?? '' }}
           />
+
+          <ImageLightbox image={zoomed} onClose={closeZoom} />
 
           {(prev || next) && (
             <nav className="article-endnav" aria-label="글 사이 이동">
