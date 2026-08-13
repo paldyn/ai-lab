@@ -44,7 +44,7 @@ draft: false             # true면 목록·프리렌더에서 빠진다
 | `deep-learning` | `ml-` `nn-` `rnn-` `embedding-`(단어·문장 표현 학습) `neural-network-` |
 | `llm-core` | `llm-` `transformer-` `tokenizer-` `reasoning-` `structured-output-` `slm-`(작은 언어 모델 자체를 다루는 것) |
 | `domain-models` | `cnn-` `cv-` `nlp-` `rl-` `recsys-` `audio-` `multimodal-` |
-| `ml-ops` | `mlops-` `llmops-` `serving-` `inference-` `finetuning-` `quantization-` `eval-` `gpu-` `project-`(운영) `data-` `distillation` `pruning` `speculative-` |
+| `ml-ops` | `mlops-` `llmops-` `serving-` `inference-` `ondevice-` `edge-` `model-`(어느 모델로 보낼지 정하는 것) `finetuning-` `quantization-` `eval-` `gpu-` `project-`(운영) `data-` `distillation` `pruning` `speculative-` |
 | `ai-guide` | 남은 `ai-` — **개론·역사·지형과 안전·윤리·정책만** |
 
   **표에 없는 접두사는 만들지 않는다.** 새 글의 슬러그가 위 어느 줄에도 안 걸리면
