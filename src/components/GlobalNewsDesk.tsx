@@ -96,7 +96,7 @@ const useHydrated = () => useSyncExternalStore(subscribeNever, () => true, () =>
 export function GlobalNewsDesk({ kind }: GlobalNewsDeskProps) {
   const [source, setSource] = useState<SourceFilter>('All');
   const [visible, setVisible] = useState(FEED_INITIAL);
-  /* 기본값은 「읽을 것」입니다 — 목록에 오는 이유가 대개 '새로 뭐가 있나'입니다. */
+  /* 기본값은 켜짐입니다(UNREAD) — 목록에 오는 이유가 대개 '새로 뭐가 있나'입니다. */
   const [unreadOnly, setUnreadOnly] = useState(true);
   const readCheck = useReadCheck();
   const [searchParams, setSearchParams] = useSearchParams();
@@ -260,9 +260,23 @@ export function GlobalNewsDesk({ kind }: GlobalNewsDeskProps) {
               <h2>{heading}</h2>
               <p>{description}</p>
             </div>
-            <div className="news-updated">
-              <span className="news-live-dot" />
-              업데이트 {globalNewsUpdatedAt.replaceAll('-', '.')}
+            {/*
+              거르개는 머리 오른쪽에 둡니다. 출처 띠 아래에 제 줄로 두었더니 어디에도
+              안 붙은 채 떠 있었습니다 — 학습 목록에서도 이 칩은 목록 위 오른쪽입니다.
+            */}
+            <div className="news-desk-tools">
+              <button
+                type="button"
+                className={`filter-chip ${unreadOnly ? 'active' : ''}`}
+                aria-pressed={unreadOnly}
+                onClick={() => setUnreadOnly((on) => !on)}
+              >
+                UNREAD
+              </button>
+              <div className="news-updated">
+                <span className="news-live-dot" />
+                업데이트 {globalNewsUpdatedAt.replaceAll('-', '.')}
+              </div>
             </div>
           </div>
 
@@ -294,17 +308,6 @@ export function GlobalNewsDesk({ kind }: GlobalNewsDeskProps) {
             ))}
           </div>
 
-          {/* 켜 두는 것이 기본이라 늘 세웁니다 — 목록이 왜 줄었는지 여기서 읽힙니다. */}
-          <div className="news-read-tools">
-            <button
-              type="button"
-              className={`filter-chip ${unreadOnly ? 'active' : ''}`}
-              aria-pressed={unreadOnly}
-              onClick={() => setUnreadOnly((on) => !on)}
-            >
-              읽을 것
-            </button>
-          </div>
         </div>
 
         {!lead && <p className="news-desk-empty">{empty}</p>}

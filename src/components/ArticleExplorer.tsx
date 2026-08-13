@@ -32,7 +32,7 @@ export function ArticleExplorer({
   const [tag, setTag] = useState<string>('all');
   const [visible, setVisible] = useState(PAGE_SIZE);
   /*
-    **기본값은 「읽을 것」입니다.** 목록에 오는 이유가 대개 '다음에 뭘 읽지'라서
+    **기본값은 켜짐입니다(UNREAD).** 목록에 오는 이유가 대개 '다음에 뭘 읽지'라서
     이미 본 것을 매번 걸러 내는 것보다 이쪽이 손이 덜 갑니다. 처음 온 사람은
     읽은 것이 없어 아무것도 안 걸러지므로 전체 목록과 같습니다.
   */
@@ -157,7 +157,7 @@ export function ArticleExplorer({
             aria-pressed={unreadOnly}
             onClick={() => setUnreadOnly((on) => !on)}
           >
-            읽을 것
+            UNREAD
           </button>
           {tagCounts.length > 0 && <TagFilter tags={tagCounts} value={tag} onChange={setTag} />}
         </div>
@@ -200,7 +200,7 @@ export function ArticleExplorer({
               </p>
               <p className="mt-2 text-sm text-[var(--text-dim)]">
                 {unreadOnly && tag === 'all'
-                  ? '「읽을 것」을 끄면 읽은 글도 함께 나옵니다.'
+                  ? 'UNREAD를 끄면 읽은 글도 함께 나옵니다.'
                   : '태그 필터를 해제하거나 검색을 이용해 보세요.'}
               </p>
             </>
