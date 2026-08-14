@@ -10,6 +10,10 @@ featured: false
 draft: false
 ---
 
+> **지수함수**는 밑을 고정하고 지수 자리에 $$x$$ 를 앉힌 함수 $$y = a^x$$ 입니다. 밑 $$a$$ 는 양수이고 1이 아닙니다.
+>
+> **자연상수** $$e$$ 는 $$\left(1+\frac{1}{n}\right)^n$$ 에서 $$n$$ 을 키울 때 값이 다가가는 수입니다. $$2.718281828\ldots$$ 로 이어집니다.
+
 [지난 글](/articles/math-basics-graph-transformations)까지는 이미 그린 곡선을 옮기고 늘이고 뒤집었습니다. 이 글에서는 곡선이 하나 늘어납니다.
 
 [13번 글](/articles/math-basics-powers-and-roots)에서 거듭제곱의 지수를 정수 너머 유리수까지 넓혔습니다. 그때 지수는 고정된 수였습니다. 이번에는 그 자리에 변수를 앉힙니다.
