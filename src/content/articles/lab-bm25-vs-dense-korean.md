@@ -371,3 +371,5 @@ by query/gold morpheme overlap
 ---
 
 **지난 글:** [e5의 query:/passage: 접두사를 빼면 정말 손해인가: 뒤집힘도 손해도 300질의가 만든 것이었다](/articles/lab-e5-prefix-ablation)
+
+**다음 글:** [RRF의 k를 흔들어 보기: 기본값 60은 문제가 아니었고 아무도 안 흔드는 가중치가 문제였다](/articles/lab-hybrid-rrf-sweep)
