@@ -325,7 +325,21 @@ export function GlobalNewsDesk({ kind }: GlobalNewsDeskProps) {
                     {categoryLabel[lead.category]}
                   </p>
                   {readCheck('news', lead.id) && <p className="news-lead-read"><span className="read-mark">읽음</span></p>}
-                  <h3>
+                  {/*
+                    계열 마크는 목록 행과 같은 규칙입니다 — 새 모델 발표면 제목 옆에
+                    그 계열 로고가 붙습니다. 리드 카드에만 빠져 있어서, 가장 최신 소식이
+                    모델 발표인 날에는 정작 그 자리에 마크가 없었습니다.
+                  */}
+                  <h3 className={leadRelease ? 'has-mark' : undefined}>
+                    {leadRelease && (
+                      <span
+                        className="news-feed-mark"
+                        style={{ '--model-logo': `url("${assetUrl(leadRelease.logo)}")` } as CSSProperties}
+                      >
+                        <span className={`model-logo-${leadRelease.tone}`} aria-hidden="true" />
+                        <b className="sr-only">{leadRelease.family} 새 모델</b>
+                      </span>
+                    )}
                     <button type="button" className="card-trigger" onClick={() => openPreview(lead)}>
                       {lead.title}
                     </button>

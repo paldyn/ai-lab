@@ -965,10 +965,31 @@ input:focus-visible {
   '새 모델 …제목'으로 이어 붙고, 제목이 두 줄로 접힐 때 둘째 줄이 마크 아래로
   흘러 들어갑니다. 밖에 두면 제목 블록은 그대로 남고 마크는 첫 줄 옆에 섭니다.
 */
-.news-feed-row h3.has-mark {
+.news-feed-row h3.has-mark,
+.news-lead-copy h3.has-mark {
   display: flex;
   align-items: flex-start;
   gap: 9px;
+}
+
+/*
+  리드 제목은 31px/1.3(모바일 24px)이라 마크도 그 급으로 키웁니다. 목록 행의
+  17px를 그대로 쓰면 제목 옆에서 점처럼 보입니다.
+
+  px가 아니라 em으로 적습니다 — 화면 폭에 따라 제목이 31px와 24px를 오가므로,
+  고정값을 쓰면 한쪽에서만 맞습니다. 0.9em 마크에 (1.3em − 0.9em) / 2 = 0.2em을
+  내리면 첫 줄 한가운데에 섭니다. 아래 목록 행의 3px도 같은 계산이고, 그쪽은
+  크기가 하나뿐이라 px로 굳어 있습니다.
+*/
+.news-lead-copy h3 .news-feed-mark {
+  width: 0.9em;
+  height: 0.9em;
+  margin-top: 0.2em;
+}
+
+.news-lead-copy h3 .news-feed-mark > span {
+  width: 0.9em;
+  height: 0.9em;
 }
 
 .news-feed-mark {
