@@ -156,6 +156,53 @@ body {
   transition: background-color 180ms ease, color 180ms ease;
 }
 
+/*
+  **끌어서 잡는 것은 글자 위에서 시작할 때만 되게 합니다.**
+
+  기본값에서는 빈자리에서 끌어도 브라우저가 가장 가까운 글자 자리를 찾아 그
+  x좌표를 지나는 문단을 통째로 잡습니다. 본문 오른쪽 여백에서 아래로 250px만
+  끌어도 문단과 코드 블록 335자가 파랗게 잡혔습니다 — 잡을 것이 없는 자리인데도
+  그렇습니다.
+
+  그래서 바탕은 안 잡히게 두고 **글자를 담는 요소만** 되살립니다. ul·table·dl
+  같은 묶음이 아니라 li·td·dd처럼 글자가 실제로 든 칸을 적는 것이 요령입니다 —
+  묶음을 적으면 글머리표 왼쪽이나 칸 사이 여백에서 끌어도 다시 잡힙니다.
+
+  화면 장치(카드 메타 줄, 팝업 머리띠, 단추)는 대부분 div·span이라 저절로
+  빠집니다. 낭독기와 복사 자체에는 영향이 없습니다 — user-select는 접근성
+  트리를 건드리지 않고, 글자에서 시작한 드래그는 그대로 다른 문단까지 이어집니다.
+*/
+body {
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+p, h1, h2, h3, h4, h5, h6,
+li, dt, dd, blockquote, figcaption, caption,
+pre, code, td, th, time, summary, label,
+input, textarea, .katex {
+  user-select: text;
+  -webkit-user-select: text;
+}
+
+/*
+  **여러 문단을 걸쳐 잡아야 하는 곳은 상자째 되살립니다.**
+
+  크로뮴은 잡을 수 없는 조상 아래에서는 자식들을 넘나드는 선택을 만들지 않습니다.
+  요소 하나하나만 되살려 두면 한 문단 안에서는 잡히는데 다음 문단으로 끌면 잡힌
+  것이 통째로 풀립니다 — 글에서 대여섯 줄을 긁어 인용하는 것이 안 됩니다.
+  그래서 본문과 팝업 본문은 상자 자체를 잡히게 둡니다.
+
+  대신 이 안에서는 문단 사이 여백에서 끌어도 잡힙니다. 그 자리는 글줄 사이라
+  원래 그렇게 동작하는 것이 맞고, 성가신 것은 옆 여백이나 팝업 바깥처럼 글이
+  아예 없는 넓은 자리였습니다.
+*/
+.article-prose,
+.news-preview-body {
+  user-select: text;
+  -webkit-user-select: text;
+}
+
 button,
 input {
   font: inherit;
