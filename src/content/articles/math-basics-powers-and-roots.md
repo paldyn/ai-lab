@@ -10,12 +10,6 @@ featured: false
 draft: false
 ---
 
-> **거듭제곱**은 같은 수를 여러 번 곱한 것입니다. $$a^n$$ 에서 $$a$$ 를 밑, $$n$$ 을 지수라고 합니다.
->
-> **제곱근**은 제곱해서 그 수가 되는 음이 아닌 수입니다. $$\sqrt{a}$$ 처럼 적고 이 기호를 근호라고 합니다.
->
-> **유리화**는 분모에 있는 근호를 없애는 조작입니다.
-
 위첨자를 "같은 것을 몇 번 곱했는가"로 읽는 약속은 [2번 글](/articles/math-basics-reading-order-of-expressions)에서 이미 받았습니다. 근호 기호도 [7번 글](/articles/math-basics-pythagorean-theorem)에서 대각선 길이를 $$\sqrt{2}$$ 로 적을 때 썼습니다.
 
 이 글이 세우는 것은 **그 표기 위의 법칙과 계산**입니다. 표기는 있는데 규칙이 없으면 $$a^6 \times a^9$$ 처럼 적힌 것을 매번 풀어 세야 합니다.
@@ -90,7 +84,7 @@ $$\dfrac{3}{\sqrt{6}}$$ 처럼 분모에 근호가 있으면 값을 어림하기
 
 $$\frac{3}{\sqrt{6}} = \frac{3 \times \sqrt{6}}{\sqrt{6} \times \sqrt{6}} = \frac{3\sqrt{6}}{6} = \frac{\sqrt{6}}{2}$$
 
-$$\sqrt{6} \times \sqrt{6} = 6$$ 이라 분모의 근호가 사라집니다.
+$$\sqrt{6} \times \sqrt{6} = 6$$ 이라 분모의 근호가 사라집니다. 이렇게 **분모에서 근호를 없애는 조작을 유리화**라고 합니다.
 
 ![분모의 유리화](/assets/posts/math-basics-powers-and-roots-rationalize.svg)
 

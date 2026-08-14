@@ -10,12 +10,6 @@ featured: false
 draft: false
 ---
 
-> **어텐션**은 각 토큰이 다른 토큰을 얼마나 참고할지 정하고, 그 비율로 값을 섞는 계산입니다.
->
-> **softmax**는 여러 수를 모두 양수이고 합이 1인 비율로 바꾸는 함수입니다.
->
-> **질의·열쇠·값**($$Q$$·$$K$$·$$V$$)은 같은 입력에 서로 다른 행렬을 곱해 만든 세 벌입니다. 무엇을 찾는가, 무엇으로 찾히는가, 무엇을 꺼내 오는가에 해당합니다.
-
 논문 PDF를 열어 3페이지쯤 내려가면 Scaled Dot-Product Attention 절이 나오고, 거기에 식이 딱 한 줄 있습니다.
 
 $$\mathrm{Attention}(Q, K, V) = \mathrm{softmax}\!\left(\frac{QK^\top}{\sqrt{d_k}}\right)V$$
