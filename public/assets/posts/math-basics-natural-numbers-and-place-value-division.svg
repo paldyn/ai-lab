@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="330" viewBox="0 0 880 330" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <rect width="880" height="330" rx="12" fill="#0a0a0a"/>
+
+  <text x="60" y="56" font-size="22" font-weight="700" fill="#e8e8e8">몫은 묶음의 개수, 나머지는 못 채운 것</text>
+  <text x="60" y="82" font-size="13" fill="#888">17을 5씩 묶으면 세 묶음이 나오고 2가 남는다</text>
+
+  <rect x="60" y="120" width="200" height="56" rx="6" fill="#7ec8e3" fill-opacity="0.14" stroke="#7ec8e3" stroke-width="2"/>
+  <rect x="272" y="120" width="200" height="56" rx="6" fill="#7ec8e3" fill-opacity="0.14" stroke="#7ec8e3" stroke-width="2"/>
+  <rect x="484" y="120" width="200" height="56" rx="6" fill="#7ec8e3" fill-opacity="0.14" stroke="#7ec8e3" stroke-width="2"/>
+  <rect x="696" y="120" width="80" height="56" rx="6" fill="#e05555" fill-opacity="0.14" stroke="#e05555" stroke-width="2"/>
+
+  <text x="160" y="155" font-size="17" fill="#e8e8e8" text-anchor="middle">5</text>
+  <text x="372" y="155" font-size="17" fill="#e8e8e8" text-anchor="middle">5</text>
+  <text x="584" y="155" font-size="17" fill="#e8e8e8" text-anchor="middle">5</text>
+  <text x="736" y="155" font-size="17" fill="#e8e8e8" text-anchor="middle">2</text>
+
+  <path d="M 60 194 L 60 206 L 684 206 L 684 194" fill="none" stroke="#7ec8e3" stroke-width="1.5"/>
+  <text x="372" y="230" font-size="14" font-weight="600" fill="#7ec8e3" text-anchor="middle">5씩 세 묶음 — 몫 3</text>
+  <text x="736" y="230" font-size="14" font-weight="600" fill="#e05555" text-anchor="middle">남은 것 — 나머지 2</text>
+
+  <text x="60" y="278" font-size="20" font-weight="700" fill="#e8e8e8">17 = 5 × 3 + 2</text>
+  <text x="290" y="278" font-size="16" fill="#888">그리고 0 ≤ 2 &lt; 5</text>
+
+  <text x="60" y="306" font-size="13" fill="#7777cc">나머지가 5 이상이면 묶음을 하나 더 만들 수 있다는 뜻이다. 그래서 이 조건이 곧 「묶음을 최대한 만들었다」이고, 몫과 나머지가 한 쌍으로 정해진다</text>
+</svg>

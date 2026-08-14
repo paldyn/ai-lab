@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="360" viewBox="0 0 880 360" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <rect width="880" height="360" rx="12" fill="#0a0a0a"/>
+
+  <text x="60" y="56" font-size="22" font-weight="700" fill="#e8e8e8">기둥의 부피는 밑면을 높이만큼 쌓은 것</text>
+  <text x="60" y="82" font-size="13" fill="#888">넓이가 단위 정사각형의 개수였듯, 부피는 단위 정육면체의 개수다</text>
+
+  <polygon points="120,270 260,270 320,230 180,230" fill="#7ec8e3" fill-opacity="0.22" stroke="#7ec8e3" stroke-width="2"/>
+  <text x="220" y="256" font-size="14" font-weight="600" fill="#e8e8e8" text-anchor="middle">밑넓이 S</text>
+  <text x="220" y="300" font-size="13" fill="#888" text-anchor="middle">한 층에 단위 정육면체가 S 개</text>
+
+  <polygon points="420,270 560,270 620,230 480,230" fill="#7ec8e3" fill-opacity="0.22" stroke="#7ec8e3" stroke-width="2"/>
+  <polygon points="420,150 560,150 620,110 480,110" fill="#7ec8e3" fill-opacity="0.22" stroke="#7ec8e3" stroke-width="2"/>
+  <line x1="420" y1="270" x2="420" y2="150" stroke="#7ec8e3" stroke-width="2"/>
+  <line x1="560" y1="270" x2="560" y2="150" stroke="#7ec8e3" stroke-width="2"/>
+  <line x1="620" y1="230" x2="620" y2="110" stroke="#7ec8e3" stroke-width="2"/>
+  <line x1="480" y1="230" x2="480" y2="110" stroke="#888" stroke-width="1" stroke-dasharray="4,4"/>
+  <line x1="420" y1="190" x2="560" y2="190" stroke="#7777cc" stroke-width="1" stroke-dasharray="4,4"/>
+  <line x1="420" y1="230" x2="560" y2="230" stroke="#7777cc" stroke-width="1" stroke-dasharray="4,4"/>
+  <text x="648" y="176" font-size="14" font-weight="600" fill="#7777cc">높이 h 만큼</text>
+  <text x="648" y="198" font-size="14" font-weight="600" fill="#7777cc">층을 쌓는다</text>
+  <text x="490" y="316" font-size="15" font-weight="700" fill="#e8e8e8" text-anchor="middle">부피 = S × h</text>
+
+  <text x="60" y="348" font-size="13" fill="#7777cc">밑면이 무엇이든 같다 — 원기둥이면 S 자리에 πr² 이 들어갈 뿐이다. 뿔은 같은 밑면·높이의 기둥의 3분의 1이고, 이 값은 결과로 받아 둔다</text>
+</svg>

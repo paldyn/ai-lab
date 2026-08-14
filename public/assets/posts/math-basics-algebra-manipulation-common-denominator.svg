@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="340" viewBox="0 0 880 340" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <rect width="880" height="340" rx="12" fill="#0a0a0a"/>
+  <defs>
+    <marker id="cd" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#7ec8e3"/>
+    </marker>
+  </defs>
+
+  <text x="60" y="56" font-size="22" font-weight="700" fill="#e8e8e8">문자가 들어와도 분수 규칙은 그대로다</text>
+  <text x="60" y="82" font-size="13" fill="#888">더하려면 분모를 맞추고, 지우려면 인수분해부터 한다</text>
+
+  <text x="100" y="146" font-size="20" fill="#e8e8e8" text-anchor="middle">1</text>
+  <line x1="76" y1="158" x2="124" y2="158" stroke="#888" stroke-width="1.5"/>
+  <text x="100" y="186" font-size="20" fill="#7ec8e3" text-anchor="middle">x</text>
+  <text x="144" y="168" font-size="20" fill="#888">+</text>
+  <text x="210" y="146" font-size="20" fill="#e8e8e8" text-anchor="middle">1</text>
+  <line x1="172" y1="158" x2="248" y2="158" stroke="#888" stroke-width="1.5"/>
+  <text x="210" y="186" font-size="20" fill="#7777cc" text-anchor="middle">x + 2</text>
+
+  <line x1="280" y1="164" x2="330" y2="164" stroke="#7ec8e3" stroke-width="2" marker-end="url(#cd)"/>
+  <text x="305" y="140" font-size="13" fill="#7ec8e3" text-anchor="middle">위아래에</text>
+  <text x="305" y="200" font-size="13" fill="#7ec8e3" text-anchor="middle">모자란 쪽을 곱한다</text>
+
+  <text x="430" y="146" font-size="20" fill="#e8e8e8" text-anchor="middle">(x + 2) + x</text>
+  <line x1="360" y1="158" x2="500" y2="158" stroke="#888" stroke-width="1.5"/>
+  <text x="430" y="186" font-size="20" fill="#e8e8e8" text-anchor="middle">x(x + 2)</text>
+
+  <line x1="530" y1="164" x2="580" y2="164" stroke="#7ec8e3" stroke-width="2" marker-end="url(#cd)"/>
+
+  <text x="680" y="146" font-size="20" font-weight="700" fill="#55c555" text-anchor="middle">2x + 2</text>
+  <line x1="610" y1="158" x2="750" y2="158" stroke="#888" stroke-width="1.5"/>
+  <text x="680" y="186" font-size="20" font-weight="700" fill="#55c555" text-anchor="middle">x(x + 2)</text>
+
+  <rect x="60" y="234" width="760" height="76" rx="8" fill="none" stroke="#e05555" stroke-width="1.5"/>
+  <text x="80" y="264" font-size="15" font-weight="600" fill="#e05555">약분은 인수분해가 먼저다</text>
+  <text x="80" y="292" font-size="14" fill="#888">(x² − 4) / (x² + 5x + 6) 은 더하기로 늘어놓은 채로는 지울 것이 안 보인다. 곱으로 바꿔 (x+2)(x−2) / (x+2)(x+3) 이 되어야 x+2 가 눈에 든다</text>
+</svg>

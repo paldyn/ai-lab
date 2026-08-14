@@ -34,6 +34,8 @@ $$(QK^\top)_{ij} = \sum_{t=1}^{d_k} Q_{it} K_{jt}$$
 
 시그마의 정의는 간단합니다.
 
+![시그마와 for 루프의 대응](/assets/posts/math-sigma-index-and-einsum-loop.svg)
+
 $$\sum_{i=1}^{n} a_i = a_1 + a_2 + \cdots + a_n$$
 
 아래에 시작값, 위에 끝값, 오른쪽에 더할 것. 코드로 옮기면 그대로 루프입니다.

@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="330" viewBox="0 0 880 330" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <rect width="880" height="330" rx="12" fill="#0a0a0a"/>
+
+  <text x="60" y="56" font-size="22" font-weight="700" fill="#e8e8e8">공통인수 빼기는 넓이를 가로세로로 되돌리는 일</text>
+  <text x="60" y="82" font-size="13" fill="#888">6x² + 4x 를 가로 2x 인 직사각형 두 장으로 보면 답이 그림에 있다</text>
+
+  <rect x="120" y="120" width="240" height="120" fill="#7ec8e3" fill-opacity="0.20" stroke="#7ec8e3" stroke-width="2"/>
+  <text x="240" y="188" font-size="20" font-weight="700" fill="#e8e8e8" text-anchor="middle">6x²</text>
+  <rect x="360" y="120" width="160" height="120" fill="#7777cc" fill-opacity="0.20" stroke="#7777cc" stroke-width="2"/>
+  <text x="440" y="188" font-size="20" font-weight="700" fill="#e8e8e8" text-anchor="middle">4x</text>
+
+  <text x="240" y="110" font-size="15" fill="#7ec8e3" text-anchor="middle">3x</text>
+  <text x="440" y="110" font-size="15" fill="#7777cc" text-anchor="middle">2</text>
+  <text x="106" y="186" font-size="15" fill="#e8e8e8" text-anchor="end">2x</text>
+
+  <path d="M 120 258 L 120 272 L 520 272 L 520 258" fill="none" stroke="#888" stroke-width="1.5"/>
+  <text x="320" y="296" font-size="15" fill="#888" text-anchor="middle">가로를 합치면 3x + 2</text>
+
+  <text x="580" y="160" font-size="15" fill="#888">두 장의 세로가 똑같이 2x 다</text>
+  <text x="580" y="196" font-size="20" font-weight="700" fill="#55c555">6x² + 4x = 2x(3x + 2)</text>
+  <text x="580" y="228" font-size="13" fill="#7777cc">6과 4의 공약수 2, 두 항에 다 있는 x</text>
+  <text x="580" y="250" font-size="13" fill="#7777cc">를 함께 꺼낸 것이다</text>
+  <text x="580" y="292" font-size="13" fill="#888">가장 먼저 확인할 것이 이것이다</text>
+</svg>

@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="340" viewBox="0 0 880 340" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <rect width="880" height="340" rx="12" fill="#0a0a0a"/>
+
+  <text x="60" y="56" font-size="22" font-weight="700" fill="#e8e8e8">퍼센트와 퍼센트포인트는 다른 것을 잰다</text>
+  <text x="60" y="82" font-size="13" fill="#888">4%에서 5%로 올랐을 때, 두 말이 각각 무엇을 세는지 본다</text>
+
+  <line x1="120" y1="250" x2="120" y2="120" stroke="#888" stroke-width="1.5"/>
+  <line x1="120" y1="250" x2="480" y2="250" stroke="#888" stroke-width="1.5"/>
+  <rect x="180" y="186" width="80" height="64" fill="#7777cc" fill-opacity="0.35" stroke="#7777cc" stroke-width="2"/>
+  <rect x="340" y="170" width="80" height="80" fill="#7ec8e3" fill-opacity="0.35" stroke="#7ec8e3" stroke-width="2"/>
+  <text x="220" y="272" font-size="14" fill="#888" text-anchor="middle">지난달 4%</text>
+  <text x="380" y="272" font-size="14" fill="#888" text-anchor="middle">이번달 5%</text>
+  <line x1="300" y1="186" x2="300" y2="170" stroke="#55c555" stroke-width="2"/>
+  <line x1="292" y1="186" x2="308" y2="186" stroke="#55c555" stroke-width="2"/>
+  <line x1="292" y1="170" x2="308" y2="170" stroke="#55c555" stroke-width="2"/>
+  <text x="300" y="152" font-size="13" font-weight="600" fill="#55c555" text-anchor="middle">이 차이</text>
+
+  <rect x="540" y="120" width="280" height="76" rx="8" fill="none" stroke="#55c555" stroke-width="1.5"/>
+  <text x="560" y="150" font-size="16" font-weight="600" fill="#55c555">1 퍼센트포인트 올랐다</text>
+  <text x="560" y="178" font-size="13" fill="#888">5 − 4 = 1 — 두 비율의 차이를 잰다</text>
+
+  <rect x="540" y="212" width="280" height="76" rx="8" fill="none" stroke="#7ec8e3" stroke-width="1.5"/>
+  <text x="560" y="242" font-size="16" font-weight="600" fill="#7ec8e3">25% 올랐다</text>
+  <text x="560" y="270" font-size="13" fill="#888">1 ÷ 4 = 0.25 — 원래 값에 견준 비율이다</text>
+
+  <text x="60" y="322" font-size="14" fill="#7777cc">같은 변화를 두고 「1」과 「25」가 함께 나올 수 있다. 어느 쪽을 말하는지는 단위가 알려 준다</text>
+</svg>

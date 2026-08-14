@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="330" viewBox="0 0 880 330" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <rect width="880" height="330" rx="12" fill="#0a0a0a"/>
+  <defs>
+    <marker id="next" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#888"/>
+    </marker>
+  </defs>
+
+  <text x="60" y="56" font-size="22" font-weight="700" fill="#e8e8e8">틀렸을 때 의심하는 순서</text>
+  <text x="60" y="82" font-size="13" fill="#888">아무 데나 다시 보지 말고, 실제로 자주 틀리는 자리부터 훑는다</text>
+
+  <rect x="60" y="130" width="170" height="86" rx="8" fill="#e05555" fill-opacity="0.10" stroke="#e05555" stroke-width="1.5"/>
+  <text x="145" y="164" font-size="17" font-weight="700" fill="#e05555" text-anchor="middle">1. 부호</text>
+  <text x="145" y="192" font-size="13" fill="#888" text-anchor="middle">−를 넘길 때 뒤집혔나</text>
+
+  <line x1="240" y1="173" x2="278" y2="173" stroke="#888" stroke-width="2" marker-end="url(#next)"/>
+
+  <rect x="290" y="130" width="170" height="86" rx="8" fill="#e05555" fill-opacity="0.08" stroke="#e05555" stroke-width="1.5"/>
+  <text x="375" y="164" font-size="17" font-weight="700" fill="#e05555" text-anchor="middle">2. 괄호</text>
+  <text x="375" y="192" font-size="13" fill="#888" text-anchor="middle">덩어리 전체에 곱했나</text>
+
+  <line x1="470" y1="173" x2="508" y2="173" stroke="#888" stroke-width="2" marker-end="url(#next)"/>
+
+  <rect x="520" y="130" width="170" height="86" rx="8" fill="#7777cc" fill-opacity="0.10" stroke="#7777cc" stroke-width="1.5"/>
+  <text x="605" y="164" font-size="17" font-weight="700" fill="#7777cc" text-anchor="middle">3. 빠뜨린 항</text>
+  <text x="605" y="192" font-size="13" fill="#888" text-anchor="middle">옮기다 하나 흘렸나</text>
+
+  <line x1="700" y1="173" x2="738" y2="173" stroke="#888" stroke-width="2" marker-end="url(#next)"/>
+
+  <rect x="750" y="130" width="70" height="86" rx="8" fill="#7777cc" fill-opacity="0.10" stroke="#7777cc" stroke-width="1.5"/>
+  <text x="785" y="164" font-size="17" font-weight="700" fill="#7777cc" text-anchor="middle">4.</text>
+  <text x="785" y="192" font-size="14" font-weight="600" fill="#7777cc" text-anchor="middle">분모</text>
+
+  <text x="60" y="266" font-size="14" fill="#e8e8e8">한 줄에 한 조작으로 적어 두었다면, 이 넷을 훑는 것만으로 대개 그 줄이 잡힌다</text>
+  <text x="60" y="294" font-size="14" fill="#7777cc">그래도 안 잡히면 숫자를 넣어 가며 줄마다 값을 재 본다 — 값이 갈리는 첫 줄이 범인이다</text>
+</svg>

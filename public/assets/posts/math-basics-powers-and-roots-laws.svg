@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="360" viewBox="0 0 880 360" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <rect width="880" height="360" rx="12" fill="#0a0a0a"/>
+
+  <text x="60" y="56" font-size="22" font-weight="700" fill="#e8e8e8">막히면 풀어 써서 개수를 세면 된다</text>
+  <text x="60" y="82" font-size="13" fill="#888">지수법칙은 외울 것이 아니라, a 를 몇 개 곱했는지 세는 일이다</text>
+
+  <text x="60" y="126" font-size="16" font-weight="600" fill="#7ec8e3">a² × a³</text>
+  <rect x="180" y="106" width="130" height="34" rx="5" fill="#7ec8e3" fill-opacity="0.14" stroke="#7ec8e3" stroke-width="1.5"/>
+  <text x="245" y="129" font-size="15" fill="#e8e8e8" text-anchor="middle">a · a</text>
+  <rect x="320" y="106" width="190" height="34" rx="5" fill="#7777cc" fill-opacity="0.14" stroke="#7777cc" stroke-width="1.5"/>
+  <text x="415" y="129" font-size="15" fill="#e8e8e8" text-anchor="middle">a · a · a</text>
+  <text x="540" y="129" font-size="15" fill="#888">이어 놓으면 다섯 개</text>
+  <text x="720" y="129" font-size="17" font-weight="700" fill="#e8e8e8">= a⁵</text>
+
+  <text x="60" y="196" font-size="16" font-weight="600" fill="#7ec8e3">a⁵ ÷ a²</text>
+  <text x="180" y="196" font-size="15" fill="#e8e8e8">a · a · a · a · a</text>
+  <line x1="176" y1="206" x2="330" y2="206" stroke="#888" stroke-width="1.5"/>
+  <text x="210" y="230" font-size="15" fill="#e8e8e8">a · a</text>
+  <text x="360" y="196" font-size="15" fill="#888">아래 둘이 위의 둘을 지운다</text>
+  <text x="720" y="200" font-size="17" font-weight="700" fill="#e8e8e8">= a³</text>
+  <line x1="182" y1="192" x2="222" y2="192" stroke="#e05555" stroke-width="1.5"/>
+  <line x1="185" y1="226" x2="225" y2="226" stroke="#e05555" stroke-width="1.5"/>
+
+  <text x="60" y="286" font-size="16" font-weight="600" fill="#7ec8e3">(a²)³</text>
+  <rect x="180" y="266" width="100" height="34" rx="5" fill="#7ec8e3" fill-opacity="0.14" stroke="#7ec8e3" stroke-width="1.5"/>
+  <text x="230" y="289" font-size="15" fill="#e8e8e8" text-anchor="middle">a · a</text>
+  <rect x="290" y="266" width="100" height="34" rx="5" fill="#7ec8e3" fill-opacity="0.14" stroke="#7ec8e3" stroke-width="1.5"/>
+  <text x="340" y="289" font-size="15" fill="#e8e8e8" text-anchor="middle">a · a</text>
+  <rect x="400" y="266" width="100" height="34" rx="5" fill="#7ec8e3" fill-opacity="0.14" stroke="#7ec8e3" stroke-width="1.5"/>
+  <text x="450" y="289" font-size="15" fill="#e8e8e8" text-anchor="middle">a · a</text>
+  <text x="530" y="289" font-size="15" fill="#888">두 개짜리 묶음이 세 개</text>
+  <text x="720" y="289" font-size="17" font-weight="700" fill="#e8e8e8">= a⁶</text>
+
+  <text x="60" y="336" font-size="14" fill="#7777cc">(3x)² 이 3x² 이 아니라 9x² 인 것도 같은 이야기다 — 괄호 안에 든 것이 통째로 두 번 곱해진다</text>
+</svg>

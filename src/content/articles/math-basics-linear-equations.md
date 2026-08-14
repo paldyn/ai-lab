@@ -79,6 +79,8 @@ $$2x + 3 = 11 \;\to\; 2x = 11 - 3$$
 
 순서를 고정해 두면 생각할 것이 없어집니다.
 
+![일차방정식을 푸는 다섯 걸음](/assets/posts/math-basics-linear-equations-five-steps.svg)
+
 | 걸음 | 하는 일 |
 | --- | --- |
 | 1 | 괄호를 푼다 |
@@ -196,6 +198,8 @@ $$(x + y) + (2x - y) = 7 + 2$$
 $$3x = 9$$
 
 $$y$$ 와 $$-y$$ 가 상쇄돼 사라졌습니다. 이렇게 부호가 반대이면 그냥 더하면 됩니다.
+
+![가감법으로 미지수 하나를 지우기](/assets/posts/math-basics-linear-equations-elimination.svg)
 
 계수가 안 맞으면 한쪽 식에 수를 곱해 맞춥니다. 등식의 성질 셋째입니다.
 

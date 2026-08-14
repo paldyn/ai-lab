@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="420" viewBox="0 0 880 420" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <rect width="880" height="420" rx="12" fill="#0a0a0a"/>
+
+  <text x="60" y="56" font-size="22" font-weight="700" fill="#e8e8e8">등호 사슬은 두 가지를 약속한다</text>
+  <text x="60" y="82" font-size="13" fill="#888">이웃한 칸끼리 같다. 그래서 맨 왼쪽과 맨 오른쪽도 같다</text>
+
+  <rect x="60" y="126" width="220" height="62" rx="6" fill="none" stroke="#7ec8e3" stroke-width="1.5"/>
+  <text x="170" y="164" font-size="18" fill="#e8e8e8" text-anchor="middle">2(x + 4) + 1</text>
+  <text x="305" y="164" font-size="20" fill="#888" text-anchor="middle">=</text>
+
+  <rect x="330" y="126" width="220" height="62" rx="6" fill="none" stroke="#7ec8e3" stroke-width="1.5"/>
+  <text x="440" y="164" font-size="18" fill="#e8e8e8" text-anchor="middle">2x + 8 + 1</text>
+  <text x="575" y="164" font-size="20" fill="#888" text-anchor="middle">=</text>
+
+  <rect x="600" y="126" width="220" height="62" rx="6" fill="none" stroke="#7ec8e3" stroke-width="1.5"/>
+  <text x="710" y="164" font-size="18" fill="#e8e8e8" text-anchor="middle">2x + 9</text>
+
+  <path d="M 170 206 L 170 222 L 440 222 L 440 206" fill="none" stroke="#7777cc" stroke-width="1.5"/>
+  <text x="305" y="246" font-size="14" font-weight="600" fill="#7777cc" text-anchor="middle">괄호를 풀었다 · 같다</text>
+
+  <path d="M 440 206 L 440 222 L 710 222 L 710 206" fill="none" stroke="#7777cc" stroke-width="1.5"/>
+  <text x="575" y="246" font-size="14" font-weight="600" fill="#7777cc" text-anchor="middle">8+1을 합쳤다 · 같다</text>
+
+  <path d="M 170 276 L 170 296 L 710 296 L 710 276" fill="none" stroke="#55c555" stroke-width="2"/>
+  <text x="440" y="322" font-size="16" font-weight="600" fill="#55c555" text-anchor="middle">그래서 2(x + 4) + 1 = 2x + 9</text>
+
+  <rect x="60" y="344" width="760" height="52" rx="6" fill="#0a0a0a" stroke="#e05555" stroke-width="1.5"/>
+  <text x="80" y="376" font-size="14" fill="#e05555">가운데 한 칸이 틀리면 왼쪽 고리도 오른쪽 고리도 끊어져, 양 끝이 같다는 결론까지 함께 무너진다</text>
+</svg>

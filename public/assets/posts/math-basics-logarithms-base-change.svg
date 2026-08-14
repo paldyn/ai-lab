@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="330" viewBox="0 0 880 330" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <rect width="880" height="330" rx="12" fill="#0a0a0a"/>
+
+  <text x="60" y="56" font-size="22" font-weight="700" fill="#e8e8e8">밑변환은 자를 바꿔 다시 재는 일</text>
+  <text x="60" y="82" font-size="13" fill="#888">손에 있는 자가 밑 10뿐이어도, 밑 2로 잰 값을 그 자로 구할 수 있다</text>
+
+  <text x="60" y="150" font-size="16" font-weight="600" fill="#7ec8e3">구하려는 것</text>
+  <rect x="200" y="122" width="160" height="46" rx="6" fill="#7ec8e3" fill-opacity="0.12" stroke="#7ec8e3" stroke-width="1.5"/>
+  <text x="280" y="152" font-size="20" fill="#e8e8e8" text-anchor="middle">log₂ 8</text>
+
+  <text x="400" y="152" font-size="20" fill="#888">=</text>
+
+  <text x="520" y="140" font-size="18" fill="#e8e8e8" text-anchor="middle">log₁₀ 8</text>
+  <line x1="450" y1="152" x2="590" y2="152" stroke="#888" stroke-width="1.5"/>
+  <text x="520" y="180" font-size="18" fill="#e8e8e8" text-anchor="middle">log₁₀ 2</text>
+
+  <text x="620" y="152" font-size="20" fill="#888">=</text>
+
+  <text x="720" y="140" font-size="16" fill="#888" text-anchor="middle">0.9031</text>
+  <line x1="670" y1="152" x2="770" y2="152" stroke="#888" stroke-width="1.5"/>
+  <text x="720" y="180" font-size="16" fill="#888" text-anchor="middle">0.3010</text>
+  <text x="800" y="158" font-size="18" font-weight="700" fill="#55c555">= 3</text>
+
+  <rect x="60" y="216" width="760" height="52" rx="6" fill="none" stroke="#7777cc" stroke-width="1.5"/>
+  <text x="80" y="248" font-size="16" fill="#e8e8e8">일반형 &#160;log_a b = log_c b ÷ log_c a &#160;— 새 밑 c 는 아무거나 골라도 되고, 값은 같다</text>
+
+  <text x="60" y="302" font-size="14" fill="#888">계산기에 log 와 ln 두 개만 있어도 어떤 밑이든 잴 수 있는 이유가 이것이다</text>
+</svg>

@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="380" viewBox="0 0 880 380" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <rect width="880" height="380" rx="12" fill="#0a0a0a"/>
+  <defs>
+    <marker id="sub" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#7ec8e3"/>
+    </marker>
+    <marker id="back" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#e05555"/>
+    </marker>
+  </defs>
+
+  <text x="60" y="56" font-size="22" font-weight="700" fill="#e8e8e8">치환은 덩어리에 이름을 붙였다 돌려놓는 일</text>
+  <text x="60" y="82" font-size="13" fill="#888">되돌리는 것을 잊는 것이 이 조작의 유일한 함정이다</text>
+
+  <rect x="60" y="120" width="360" height="60" rx="6" fill="none" stroke="#888" stroke-width="1.5"/>
+  <text x="240" y="158" font-size="17" fill="#e8e8e8" text-anchor="middle">(x² + 1)² − 5(x² + 1) + 6</text>
+
+  <line x1="240" y1="188" x2="240" y2="222" stroke="#7ec8e3" stroke-width="2" marker-end="url(#sub)"/>
+  <text x="260" y="212" font-size="14" font-weight="600" fill="#7ec8e3">x² + 1 을 t 라 놓는다</text>
+
+  <rect x="60" y="230" width="360" height="60" rx="6" fill="#7ec8e3" fill-opacity="0.10" stroke="#7ec8e3" stroke-width="1.5"/>
+  <text x="240" y="268" font-size="17" fill="#e8e8e8" text-anchor="middle">t² − 5t + 6 = (t − 2)(t − 3)</text>
+
+  <path d="M 430 260 L 490 260" fill="none" stroke="#e05555" stroke-width="2" marker-end="url(#back)"/>
+  <text x="460" y="240" font-size="14" font-weight="600" fill="#e05555" text-anchor="middle">t 를 돌려놓는다</text>
+
+  <rect x="500" y="230" width="320" height="60" rx="6" fill="none" stroke="#888" stroke-width="1.5"/>
+  <text x="660" y="268" font-size="16" fill="#e8e8e8" text-anchor="middle">(x² − 1)(x² − 2)</text>
+
+  <rect x="500" y="120" width="320" height="60" rx="6" fill="#55c555" fill-opacity="0.10" stroke="#55c555" stroke-width="1.5"/>
+  <text x="660" y="158" font-size="16" fill="#e8e8e8" text-anchor="middle">(x + 1)(x − 1)(x² − 2)</text>
+  <line x1="660" y1="222" x2="660" y2="188" stroke="#55c555" stroke-width="2"/>
+  <text x="680" y="208" font-size="13" fill="#55c555">더 쪼개진다</text>
+
+  <text x="60" y="336" font-size="14" fill="#7777cc">덩어리가 문자 하나가 되면 이미 아는 모양이 된다 — t² − 5t + 6 은 곱이 6, 합이 −5 인 두 수를 찾는 문제다</text>
+</svg>

@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="340" viewBox="0 0 880 340" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <rect width="880" height="340" rx="12" fill="#0a0a0a"/>
+
+  <text x="60" y="56" font-size="22" font-weight="700" fill="#e8e8e8">한 변이 1인 정사각형의 대각선</text>
+  <text x="60" y="82" font-size="13" fill="#888">자로 그릴 수 있는 길이인데, 어떤 분수로도 적을 수 없는 수가 여기서 나온다</text>
+
+  <rect x="130" y="130" width="150" height="150" fill="none" stroke="#888" stroke-width="1.5"/>
+  <line x1="130" y1="280" x2="280" y2="130" stroke="#7ec8e3" stroke-width="2.5"/>
+  <polygon points="130,130 130,280 280,130" fill="#7ec8e3" fill-opacity="0.10"/>
+  <text x="205" y="122" font-size="14" fill="#888" text-anchor="middle">1</text>
+  <text x="118" y="212" font-size="14" fill="#888" text-anchor="end">1</text>
+  <text x="222" y="222" font-size="16" font-weight="700" fill="#7ec8e3" text-anchor="middle">c</text>
+  <rect x="130" y="264" width="16" height="16" fill="none" stroke="#888" stroke-width="1"/>
+
+  <text x="360" y="168" font-size="17" fill="#e8e8e8">1² + 1² = c²</text>
+  <text x="360" y="202" font-size="17" fill="#e8e8e8">c² = 2</text>
+  <text x="360" y="240" font-size="17" font-weight="700" fill="#7ec8e3">c = √2 &#160;— 제곱해서 2가 되는 양수</text>
+  <text x="360" y="276" font-size="14" fill="#888">1.41421356… 으로 끝없이 이어지고 반복되지도 않는다</text>
+
+  <text x="60" y="318" font-size="14" fill="#7777cc">길이는 분명히 있는데 분수로는 못 적는다 — 10번 글에서 무리수라 불렀던 것이 바로 이 수다</text>
+</svg>

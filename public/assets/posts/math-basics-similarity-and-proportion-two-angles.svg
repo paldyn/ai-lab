@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="360" viewBox="0 0 880 360" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <rect width="880" height="360" rx="12" fill="#0a0a0a"/>
+
+  <text x="60" y="56" font-size="22" font-weight="700" fill="#e8e8e8">두 각만 같으면 닮음이다</text>
+  <text x="60" y="82" font-size="13" fill="#888">세 각의 합이 180°이므로 나머지 한 각은 저절로 같아진다</text>
+
+  <polygon points="120,290 300,290 180,150" fill="#7ec8e3" fill-opacity="0.14" stroke="#7ec8e3" stroke-width="2"/>
+  <path d="M 152 290 A 32 32 0 0 0 137 262" fill="none" stroke="#55c555" stroke-width="2"/>
+  <text x="160" y="272" font-size="13" font-weight="600" fill="#55c555">50°</text>
+  <path d="M 270 290 A 30 30 0 0 0 268 268" fill="none" stroke="#e05555" stroke-width="2"/>
+  <text x="252" y="278" font-size="13" font-weight="600" fill="#e05555">70°</text>
+  <text x="210" y="322" font-size="13" fill="#888" text-anchor="middle">작은 삼각형</text>
+
+  <polygon points="480,290 800,290 620,42" fill="#7777cc" fill-opacity="0.14" stroke="#7777cc" stroke-width="2"/>
+  <path d="M 522 290 A 42 42 0 0 0 501 254" fill="none" stroke="#55c555" stroke-width="2"/>
+  <text x="532" y="272" font-size="13" font-weight="600" fill="#55c555">50°</text>
+  <path d="M 760 290 A 40 40 0 0 0 757 260" fill="none" stroke="#e05555" stroke-width="2"/>
+  <text x="736" y="276" font-size="13" font-weight="600" fill="#e05555">70°</text>
+  <text x="640" y="322" font-size="13" fill="#888" text-anchor="middle">크기만 키운 삼각형</text>
+
+  <text x="390" y="180" font-size="15" font-weight="700" fill="#e8e8e8" text-anchor="middle">닮음</text>
+  <text x="390" y="206" font-size="13" fill="#888" text-anchor="middle">나머지 각은</text>
+  <text x="390" y="226" font-size="13" fill="#888" text-anchor="middle">둘 다 60°</text>
+
+  <text x="60" y="348" font-size="14" fill="#7777cc">그래서 직각삼각형은 예각 하나만 정해지면 닮음이 된다 — 삼각비가 크기와 무관하게 각 하나에만 달린 이유가 이것이다</text>
+</svg>

@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="380" viewBox="0 0 880 380" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <rect width="880" height="380" rx="12" fill="#0a0a0a"/>
+  <defs>
+    <marker id="elim" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#7ec8e3"/>
+    </marker>
+  </defs>
+
+  <text x="60" y="56" font-size="22" font-weight="700" fill="#e8e8e8">가감법은 미지수 하나를 지워 없애는 일</text>
+  <text x="60" y="82" font-size="13" fill="#888">부호가 반대인 항끼리 만나면 더하는 것만으로 사라진다</text>
+
+  <text x="90" y="150" font-size="22" fill="#e8e8e8">x</text>
+  <text x="118" y="150" font-size="22" fill="#55c555">+ y</text>
+  <text x="190" y="150" font-size="22" fill="#888">=</text>
+  <text x="230" y="150" font-size="22" fill="#e8e8e8">7</text>
+
+  <text x="76" y="196" font-size="22" fill="#888">+</text>
+  <text x="90" y="196" font-size="22" fill="#e8e8e8">2x</text>
+  <text x="128" y="196" font-size="22" fill="#e05555">− y</text>
+  <text x="190" y="196" font-size="22" fill="#888">=</text>
+  <text x="230" y="196" font-size="22" fill="#e8e8e8">2</text>
+
+  <line x1="70" y1="214" x2="270" y2="214" stroke="#888" stroke-width="1.5"/>
+  <text x="90" y="252" font-size="22" font-weight="700" fill="#7ec8e3">3x</text>
+  <text x="190" y="252" font-size="22" fill="#888">=</text>
+  <text x="230" y="252" font-size="22" font-weight="700" fill="#7ec8e3">9</text>
+
+  <path d="M 148 162 L 148 178" fill="none" stroke="#888" stroke-width="1.5" stroke-dasharray="4,4"/>
+  <text x="290" y="176" font-size="14" font-weight="600" fill="#e8e8e8">+y 와 −y 가 상쇄돼 사라진다</text>
+  <text x="290" y="200" font-size="13" fill="#888">왼쪽끼리, 오른쪽끼리 더했을 뿐이다</text>
+  <text x="290" y="252" font-size="14" font-weight="600" fill="#7ec8e3">미지수가 하나 남았다 — 이미 푸는 법을 안다</text>
+
+  <rect x="560" y="120" width="260" height="150" rx="8" fill="none" stroke="#333" stroke-width="1"/>
+  <text x="580" y="148" font-size="14" font-weight="600" fill="#e8e8e8">계수가 안 맞으면</text>
+  <text x="580" y="176" font-size="15" fill="#e8e8e8">2x + 3y = 13</text>
+  <text x="580" y="202" font-size="15" fill="#e8e8e8">4x − y = 5</text>
+  <text x="580" y="228" font-size="13" fill="#7777cc">아래 식을 3배 하면 −3y 가 되고</text>
+  <text x="580" y="250" font-size="13" fill="#7777cc">위 식과 더하면 y 가 사라진다</text>
+
+  <text x="60" y="320" font-size="14" fill="#7777cc">양변에 같은 수를 곱해도 등식은 유지된다 — 등식의 성질 셋째를 그대로 쓴 것이다</text>
+  <text x="60" y="346" font-size="14" fill="#888">한쪽 식이 이미 y = … 꼴이면 대입법이, 계수가 나란히 놓여 있으면 가감법이 손이 덜 간다</text>
+</svg>

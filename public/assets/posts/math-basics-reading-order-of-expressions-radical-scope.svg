@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="340" viewBox="0 0 880 340" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <rect width="880" height="340" rx="12" fill="#0a0a0a"/>
+
+  <text x="60" y="56" font-size="22" font-weight="700" fill="#e8e8e8">근호는 지붕이 덮은 만큼만 덮는다</text>
+  <text x="60" y="82" font-size="13" fill="#888">손으로 쓸 때 선의 길이가 하던 일을, 한 줄로 적으면 괄호가 대신한다</text>
+
+  <rect x="60" y="120" width="360" height="180" rx="8" fill="none" stroke="#333" stroke-width="1"/>
+  <rect x="150" y="158" width="34" height="46" fill="#7ec8e3" fill-opacity="0.16"/>
+  <path d="M 128 190 L 140 200 L 150 156 L 184 156" fill="none" stroke="#7ec8e3" stroke-width="2.5"/>
+  <text x="167" y="196" font-size="26" fill="#e8e8e8" text-anchor="middle">a</text>
+  <text x="230" y="196" font-size="26" fill="#e8e8e8">+ b</text>
+  <text x="240" y="240" font-size="14" font-weight="600" fill="#7ec8e3" text-anchor="middle">지붕이 a 에서 끝난다</text>
+  <text x="240" y="268" font-size="14" fill="#888" text-anchor="middle">한 줄로는 sqrt(a) + b</text>
+
+  <rect x="460" y="120" width="360" height="180" rx="8" fill="none" stroke="#333" stroke-width="1"/>
+  <rect x="550" y="158" width="106" height="46" fill="#7ec8e3" fill-opacity="0.16"/>
+  <path d="M 528 190 L 540 200 L 550 156 L 656 156" fill="none" stroke="#7ec8e3" stroke-width="2.5"/>
+  <text x="603" y="196" font-size="26" fill="#e8e8e8" text-anchor="middle">a + b</text>
+  <text x="640" y="240" font-size="14" font-weight="600" fill="#7ec8e3" text-anchor="middle">지붕이 a + b 전체를 덮는다</text>
+  <text x="640" y="268" font-size="14" fill="#888" text-anchor="middle">한 줄로는 sqrt(a + b)</text>
+</svg>

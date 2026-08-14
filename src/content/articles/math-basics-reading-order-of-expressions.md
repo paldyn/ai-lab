@@ -87,6 +87,8 @@ $$\sqrt{a} + b \qquad \text{와} \qquad \sqrt{a + b}$$
 
 앞의 것은 $$a$$ 에만 지붕이 있고 $$b$$ 는 밖에 있습니다. 뒤의 것은 지붕이 $$a+b$$ 전체를 덮습니다. 한 줄로 적으면 각각 `sqrt(a) + b` 와 `sqrt(a + b)` 입니다. **분수선과 완전히 같은 이야기**입니다 — 손글씨에서 선의 길이가 하던 일을 한 줄에서는 괄호가 대신합니다.
 
+![근호가 덮는 범위](/assets/posts/math-basics-reading-order-of-expressions-radical-scope.svg)
+
 ## (라) 위첨자와 아래첨자
 
 **위첨자는 같은 것을 몇 번 곱했는지를 적은 것입니다.**

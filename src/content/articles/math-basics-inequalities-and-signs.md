@@ -114,6 +114,8 @@ $$2 < x \le 5 \quad \to \quad (2, 5]$$
 
 왼쪽 경계는 빈 점, 오른쪽은 찬 점입니다. **두 부등식의 부등호를 각각 그대로 가져옵니다.**
 
+![연립부등식을 수직선에 나란히 칠하기](/assets/posts/math-basics-inequalities-and-signs-system.svg)
+
 겹치는 데가 없으면 해가 없습니다. $$x > 5$$ 와 $$x < 1$$ 을 함께 만족하는 수는 없습니다.
 
 ## 절댓값 부등식 — 거리로 읽는다
@@ -135,6 +137,8 @@ $$|x - c| < r \;\Longleftrightarrow\; c - r < x < c + r$$
 $$|x - c| > r \;\Longleftrightarrow\; x < c - r \;\text{또는}\; x > c + r$$
 
 **"가깝다"는 한 덩어리, "멀다"는 두 덩어리**입니다. 그림을 한 번 그려 두면 부호를 헷갈릴 일이 없습니다.
+
+![절댓값 부등식을 거리로 읽기](/assets/posts/math-basics-inequalities-and-signs-absolute.svg)
 
 ## 양변을 제곱해도 되는 때
 

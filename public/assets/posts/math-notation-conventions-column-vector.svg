@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="380" viewBox="0 0 880 380" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <rect width="880" height="380" rx="12" fill="#0a0a0a"/>
+
+  <text x="60" y="56" font-size="22" font-weight="700" fill="#e8e8e8">셰이프 에러의 진짜 원인은 관례 충돌이다</text>
+  <text x="60" y="82" font-size="13" fill="#888">논문은 벡터를 세워 두고, 코드는 토큰을 행에 쌓는다</text>
+
+  <text x="60" y="126" font-size="15" font-weight="700" fill="#7ec8e3">논문 — 열벡터 관례</text>
+  <rect x="60" y="146" width="60" height="120" rx="4" fill="#7ec8e3" fill-opacity="0.14" stroke="#7ec8e3" stroke-width="1.5"/>
+  <text x="90" y="212" font-size="14" fill="#e8e8e8" text-anchor="middle">x</text>
+  <text x="90" y="288" font-size="13" fill="#888" text-anchor="middle">d × 1</text>
+  <text x="140" y="212" font-size="20" fill="#888">→</text>
+  <rect x="180" y="166" width="120" height="80" rx="4" fill="#7777cc" fill-opacity="0.14" stroke="#7777cc" stroke-width="1.5"/>
+  <text x="240" y="212" font-size="14" fill="#e8e8e8" text-anchor="middle">W</text>
+  <text x="240" y="288" font-size="13" fill="#888" text-anchor="middle">d′ × d</text>
+  <text x="180" y="322" font-size="15" font-weight="600" fill="#7ec8e3">Wx 로 적는다</text>
+
+  <line x1="420" y1="120" x2="420" y2="330" stroke="#333" stroke-width="1"/>
+
+  <text x="470" y="126" font-size="15" font-weight="700" fill="#55c555">코드 — 토큰을 행에 쌓는다</text>
+  <rect x="470" y="146" width="140" height="90" rx="4" fill="#55c555" fill-opacity="0.14" stroke="#55c555" stroke-width="1.5"/>
+  <text x="540" y="196" font-size="14" fill="#e8e8e8" text-anchor="middle">x</text>
+  <text x="540" y="258" font-size="13" fill="#888" text-anchor="middle">n × d &#160;— 한 줄이 토큰 하나</text>
+  <text x="470" y="300" font-size="15" font-weight="600" fill="#e05555">x @ W 는 축이 안 맞는다</text>
+  <text x="470" y="326" font-size="15" font-weight="600" fill="#55c555">x @ W.T 가 옳은 번역이다</text>
+
+  <rect x="640" y="146" width="180" height="90" rx="6" fill="#000000" stroke="#3a4a6e" stroke-width="1"/>
+  <text x="656" y="176" font-size="13" font-family="'JetBrains Mono','Menlo','Consolas',monospace" fill="#9aa4b8" xml:space="preserve"># 512x768 · 768x512</text>
+  <text x="656" y="198" font-size="13" font-family="'JetBrains Mono','Menlo','Consolas',monospace" fill="#ffffff" xml:space="preserve">mat1 and mat2</text>
+  <text x="656" y="218" font-size="13" font-family="'JetBrains Mono','Menlo','Consolas',monospace" fill="#ffffff" xml:space="preserve">cannot be multiplied</text>
+
+  <text x="60" y="366" font-size="14" fill="#7777cc">셰이프를 출력해 가며 전치를 붙였다 뗐다 할 필요가 없다 — 식을 보고 미리 알 수 있다</text>
+</svg>

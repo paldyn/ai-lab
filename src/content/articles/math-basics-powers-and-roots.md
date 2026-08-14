@@ -34,6 +34,8 @@ $$a^n$$ 은 $$a$$ 를 $$n$$ 번 곱한 것입니다. 이 한 줄에서 법칙 �
 
 외울 것이 아니라 **막히면 풀어 써 보면 되는 것들**입니다. $$(a^2)^3$$ 이 헷갈리면 $$(a \cdot a)(a \cdot a)(a \cdot a)$$ 라고 적어 세면 $$a^6$$ 입니다.
 
+![지수법칙을 풀어 써서 세기](/assets/posts/math-basics-powers-and-roots-laws.svg)
+
 $$(3x)^2 = 9x^2$$ 처럼 **괄호 안 전체가 제곱된다**는 것도 여기서 옵니다. 3도 같이 제곱되므로 $$3x^2$$ 이 아닙니다.
 
 ## a⁰ 과 음수 지수는 어디서 오는가
@@ -89,6 +91,8 @@ $$\dfrac{3}{\sqrt{6}}$$ 처럼 분모에 근호가 있으면 값을 어림하기
 $$\frac{3}{\sqrt{6}} = \frac{3 \times \sqrt{6}}{\sqrt{6} \times \sqrt{6}} = \frac{3\sqrt{6}}{6} = \frac{\sqrt{6}}{2}$$
 
 $$\sqrt{6} \times \sqrt{6} = 6$$ 이라 분모의 근호가 사라집니다.
+
+![분모의 유리화](/assets/posts/math-basics-powers-and-roots-rationalize.svg)
 
 분모가 $$\sqrt{5} - \sqrt{3}$$ 처럼 두 항이면 같은 것을 곱해도 근호가 안 없어집니다. 이때는 **부호만 바꾼 짝**을 곱합니다. 이 짝을 켤레라고 합니다.
 

@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="360" viewBox="0 0 880 360" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <rect width="880" height="360" rx="12" fill="#0a0a0a"/>
+  <defs>
+    <marker id="step" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#7777cc"/>
+    </marker>
+  </defs>
+
+  <text x="60" y="56" font-size="22" font-weight="700" fill="#e8e8e8">푸는 절차를 다섯 걸음으로 고정한다</text>
+  <text x="60" y="82" font-size="13" fill="#888">막히면 순서를 의심하지 말고, 지금 몇 번째 걸음인지만 확인하면 된다</text>
+
+  <rect x="60" y="120" width="146" height="70" rx="8" fill="#7ec8e3" fill-opacity="0.10" stroke="#7ec8e3" stroke-width="1.5"/>
+  <text x="133" y="150" font-size="15" font-weight="600" fill="#e8e8e8" text-anchor="middle">1. 괄호 풀기</text>
+  <text x="133" y="172" font-size="12" fill="#888" text-anchor="middle">분배법칙</text>
+
+  <rect x="226" y="120" width="146" height="70" rx="8" fill="#7ec8e3" fill-opacity="0.10" stroke="#7ec8e3" stroke-width="1.5"/>
+  <text x="299" y="150" font-size="15" font-weight="600" fill="#e8e8e8" text-anchor="middle">2. 분모 없애기</text>
+  <text x="299" y="172" font-size="12" fill="#888" text-anchor="middle">양변에 최소공배수</text>
+
+  <rect x="392" y="120" width="146" height="70" rx="8" fill="#7ec8e3" fill-opacity="0.10" stroke="#7ec8e3" stroke-width="1.5"/>
+  <text x="465" y="150" font-size="15" font-weight="600" fill="#e8e8e8" text-anchor="middle">3. 동류항 정리</text>
+  <text x="465" y="172" font-size="12" fill="#888" text-anchor="middle">한 변씩 줄인다</text>
+
+  <rect x="558" y="120" width="146" height="70" rx="8" fill="#7777cc" fill-opacity="0.12" stroke="#7777cc" stroke-width="1.5"/>
+  <text x="631" y="150" font-size="15" font-weight="600" fill="#e8e8e8" text-anchor="middle">4. 이항</text>
+  <text x="631" y="172" font-size="12" fill="#888" text-anchor="middle">x 는 왼쪽, 수는 오른쪽</text>
+
+  <rect x="724" y="120" width="96" height="70" rx="8" fill="#55c555" fill-opacity="0.12" stroke="#55c555" stroke-width="1.5"/>
+  <text x="772" y="150" font-size="15" font-weight="600" fill="#e8e8e8" text-anchor="middle">5. 나누기</text>
+  <text x="772" y="172" font-size="12" fill="#888" text-anchor="middle">계수로</text>
+
+  <line x1="206" y1="155" x2="218" y2="155" stroke="#7777cc" stroke-width="2" marker-end="url(#step)"/>
+  <line x1="372" y1="155" x2="384" y2="155" stroke="#7777cc" stroke-width="2" marker-end="url(#step)"/>
+  <line x1="538" y1="155" x2="550" y2="155" stroke="#7777cc" stroke-width="2" marker-end="url(#step)"/>
+  <line x1="704" y1="155" x2="716" y2="155" stroke="#7777cc" stroke-width="2" marker-end="url(#step)"/>
+
+  <text x="60" y="240" font-size="15" fill="#e8e8e8">쓰는 도구는 내내 등식의 성질 넷뿐이다 — 양변에 같은 수를 더하고, 빼고, 곱하고, 0이 아닌 수로 나눈다</text>
+  <text x="60" y="272" font-size="15" fill="#7777cc">이항은 새 규칙이 아니라 그중 둘을 줄여 적은 이름이다. 부호가 바뀌어 보이는 것은 뺐기 때문이다</text>
+  <text x="60" y="316" font-size="14" fill="#888">끝나면 검산은 정리한 식이 아니라 원래 식에 넣는다. 정리하다 틀렸으면 정리한 식에서는 안 잡힌다</text>
+</svg>

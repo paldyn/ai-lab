@@ -49,6 +49,8 @@ RuntimeError: mat1 and mat2 shapes cannot be multiplied (512x768 and 768x512)
 
 앞의 에러로 돌아갑니다. $$y = Wx$$가 코드에서 `W @ x`로 안 되는 이유는, **논문의 $$x$$가 열벡터이기 때문**입니다.
 
+![열벡터 관례와 행 우선 코드](/assets/posts/math-notation-conventions-column-vector.svg)
+
 수학에서 아무 말 없이 $$x \in \mathbb{R}^d$$라고 쓰면 그것은 $$d \times 1$$짜리 세로 벡터입니다. 그래서 $$W \in \mathbb{R}^{d' \times d}$$를 왼쪽에 곱하면 $$(d' \times d)(d \times 1) = d' \times 1$$로 모양이 맞습니다.
 
 $$\underbrace{W}_{d' \times d} \; \underbrace{x}_{d \times 1} = \underbrace{y}_{d' \times 1}$$

@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="330" viewBox="0 0 880 330" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <rect width="880" height="330" rx="12" fill="#0a0a0a"/>
+  <defs>
+    <marker id="turn" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#7777cc"/>
+    </marker>
+  </defs>
+
+  <text x="60" y="56" font-size="22" font-weight="700" fill="#e8e8e8">같은 사실을 어느 쪽에서 부르느냐의 차이</text>
+  <text x="60" y="82" font-size="13" fill="#888">2를 세 제곱하면 8이다 — 이 한 사실을 두 가지로 적는다</text>
+
+  <rect x="80" y="120" width="300" height="100" rx="8" fill="none" stroke="#7ec8e3" stroke-width="2"/>
+  <text x="230" y="166" font-size="26" fill="#e8e8e8" text-anchor="middle">2³ = 8</text>
+  <text x="230" y="198" font-size="13" fill="#7ec8e3" text-anchor="middle">지수를 알고 값을 묻는다</text>
+
+  <rect x="500" y="120" width="300" height="100" rx="8" fill="none" stroke="#7777cc" stroke-width="2"/>
+  <text x="650" y="166" font-size="26" fill="#e8e8e8" text-anchor="middle">log₂ 8 = 3</text>
+  <text x="650" y="198" font-size="13" fill="#7777cc" text-anchor="middle">값을 알고 지수를 묻는다</text>
+
+  <path d="M 390 154 L 490 154" fill="none" stroke="#7777cc" stroke-width="2" marker-end="url(#turn)"/>
+  <path d="M 490 186 L 390 186" fill="none" stroke="#7777cc" stroke-width="2" marker-end="url(#turn)"/>
+  <text x="440" y="122" font-size="13" fill="#888" text-anchor="middle">같은 말</text>
+
+  <text x="230" y="264" font-size="15" fill="#e8e8e8" text-anchor="middle">밑 2 · 지수 3 · 값 8</text>
+  <text x="650" y="264" font-size="15" fill="#e8e8e8" text-anchor="middle">밑 2 · 진수 8 · 답이 지수 3</text>
+
+  <text x="60" y="304" font-size="14" fill="#7777cc">그래서 로그는 새 계산이 아니라 이름이다. aˣ = b 와 x = log_a b 는 한 사실을 두 번 적은 것이다</text>
+</svg>

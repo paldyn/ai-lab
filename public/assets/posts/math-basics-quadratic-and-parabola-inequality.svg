@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="400" viewBox="0 0 880 400" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <rect width="880" height="400" rx="12" fill="#0a0a0a"/>
+
+  <text x="60" y="56" font-size="22" font-weight="700" fill="#e8e8e8">이차부등식은 곡선이 x 축의 어느 쪽에 있는지를 읽는 것</text>
+  <text x="60" y="82" font-size="13" fill="#888">y = x² − 6x + 5 는 (x − 1)(x − 5) 라서 1과 5에서 x 축을 지난다</text>
+
+  <line x1="150" y1="230" x2="540" y2="230" stroke="#888" stroke-width="1.5"/>
+  <line x1="200" y1="110" x2="200" y2="340" stroke="#888" stroke-width="1.5"/>
+  <text x="550" y="235" font-size="13" fill="#888">x</text>
+  <text x="206" y="112" font-size="13" fill="#888">y</text>
+
+  <path d="M 245 230 Q 335 380 425 230 Z" fill="#e05555" fill-opacity="0.16"/>
+  <polyline points="200,130 222,185 245,230 267,265 290,290 312,305 335,310 357,305 380,290 402,265 425,230 447,185 470,130" fill="none" stroke="#7ec8e3" stroke-width="2.5"/>
+
+  <line x1="245" y1="225" x2="245" y2="235" stroke="#888" stroke-width="1"/>
+  <line x1="425" y1="225" x2="425" y2="235" stroke="#888" stroke-width="1"/>
+  <text x="245" y="254" font-size="13" fill="#888" text-anchor="middle">1</text>
+  <text x="425" y="254" font-size="13" fill="#888" text-anchor="middle">5</text>
+
+  <line x1="150" y1="230" x2="245" y2="230" stroke="#7ec8e3" stroke-width="7" stroke-opacity="0.55"/>
+  <line x1="425" y1="230" x2="540" y2="230" stroke="#7ec8e3" stroke-width="7" stroke-opacity="0.55"/>
+  <line x1="245" y1="230" x2="425" y2="230" stroke="#e05555" stroke-width="7" stroke-opacity="0.55"/>
+
+  <text x="335" y="348" font-size="13" font-weight="600" fill="#e05555" text-anchor="middle">두 근 사이에서 곡선이 축 아래에 있다</text>
+
+  <rect x="590" y="120" width="230" height="80" rx="8" fill="none" stroke="#7ec8e3" stroke-width="1.5"/>
+  <text x="610" y="150" font-size="16" font-weight="600" fill="#7ec8e3">x² − 6x + 5 &gt; 0</text>
+  <text x="610" y="178" font-size="15" fill="#e8e8e8">x &lt; 1 또는 x &gt; 5</text>
+
+  <rect x="590" y="220" width="230" height="80" rx="8" fill="none" stroke="#e05555" stroke-width="1.5"/>
+  <text x="610" y="250" font-size="16" font-weight="600" fill="#e05555">x² − 6x + 5 &lt; 0</text>
+  <text x="610" y="278" font-size="15" fill="#e8e8e8">1 &lt; x &lt; 5</text>
+
+  <text x="60" y="382" font-size="14" fill="#7777cc">부호 규칙을 외울 것이 아니라 그림에서 읽는 것이다. 근을 먼저 구해 축을 지나는 자리를 찍고, 위인지 아래인지만 보면 된다</text>
+</svg>

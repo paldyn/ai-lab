@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="380" viewBox="0 0 880 380" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <rect width="880" height="380" rx="12" fill="#0a0a0a"/>
+
+  <text x="60" y="56" font-size="22" font-weight="700" fill="#e8e8e8">표가 붙어 더 움직이지 않는 자리가 e 다</text>
+  <text x="60" y="82" font-size="13" fill="#888">(1 + 1/n)ⁿ 에서 n 을 키우면 값이 한 자리로 다가가 멈춘다</text>
+
+  <line x1="120" y1="300" x2="560" y2="300" stroke="#888" stroke-width="1.5"/>
+  <line x1="120" y1="120" x2="120" y2="310" stroke="#888" stroke-width="1.5"/>
+  <line x1="120" y1="160" x2="560" y2="160" stroke="#e05555" stroke-width="1.5" stroke-dasharray="5,3"/>
+  <text x="570" y="165" font-size="14" font-weight="600" fill="#e05555">e = 2.71828…</text>
+
+  <polyline points="140,300 180,232 220,206 260,192 300,183 340,177 380,173 420,170 460,168 500,166 540,165" fill="none" stroke="#7ec8e3" stroke-width="2.5"/>
+  <circle cx="140" cy="300" r="4" fill="#7ec8e3"/>
+  <circle cx="220" cy="206" r="4" fill="#7ec8e3"/>
+  <circle cx="340" cy="177" r="4" fill="#7ec8e3"/>
+  <circle cx="540" cy="165" r="4" fill="#7ec8e3"/>
+  <text x="140" y="322" font-size="13" fill="#888" text-anchor="middle">n=1</text>
+  <text x="220" y="322" font-size="13" fill="#888" text-anchor="middle">10</text>
+  <text x="340" y="322" font-size="13" fill="#888" text-anchor="middle">1,000</text>
+  <text x="540" y="322" font-size="13" fill="#888" text-anchor="middle">n 을 키울수록</text>
+
+  <rect x="620" y="120" width="200" height="196" rx="8" fill="none" stroke="#333" stroke-width="1"/>
+  <text x="640" y="150" font-size="14" font-weight="600" fill="#e8e8e8">n</text>
+  <text x="800" y="150" font-size="14" font-weight="600" fill="#e8e8e8" text-anchor="end">(1 + 1/n)ⁿ</text>
+  <line x1="636" y1="162" x2="804" y2="162" stroke="#333" stroke-width="1"/>
+  <text x="640" y="188" font-size="14" fill="#888">1</text>
+  <text x="800" y="188" font-size="14" fill="#e8e8e8" text-anchor="end">2</text>
+  <text x="640" y="216" font-size="14" fill="#888">10</text>
+  <text x="800" y="216" font-size="14" fill="#e8e8e8" text-anchor="end">2.5937…</text>
+  <text x="640" y="244" font-size="14" fill="#888">100</text>
+  <text x="800" y="244" font-size="14" fill="#e8e8e8" text-anchor="end">2.7048…</text>
+  <text x="640" y="272" font-size="14" fill="#888">1,000</text>
+  <text x="800" y="272" font-size="14" fill="#e8e8e8" text-anchor="end">2.7169…</text>
+  <text x="640" y="300" font-size="14" fill="#888">10,000</text>
+  <text x="800" y="300" font-size="14" fill="#e8e8e8" text-anchor="end">2.7181…</text>
+
+  <text x="60" y="356" font-size="14" fill="#7777cc">앞자리부터 하나씩 굳어 간다. 이 값이 자연상수 e 이고, 밑을 e 로 둔 지수함수가 뒤에서 계속 나온다</text>
+</svg>

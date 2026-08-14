@@ -75,6 +75,8 @@ $$v \in V,\; c \in \mathbb{R} \;\Longrightarrow\; cv \in V$$
 
 벡터 여러 개에 각각 계수를 곱해 더한 것을 선형결합이라 합니다.
 
+![선형결합 하나로 모이는 셋](/assets/posts/math-vector-as-meaning-linear-combination.svg)
+
 $$c_1 v_1 + c_2 v_2 + \cdots + c_n v_n = \sum_{i=1}^{n} c_i v_i$$
 
 닫힘 조건 둘을 합치면 **선형결합의 결과도 반드시 같은 공간 안에 있습니다.** 스칼라배로 각 항이 공간 안에 남고, 덧셈으로 합도 공간 안에 남습니다.

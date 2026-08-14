@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="400" viewBox="0 0 880 400" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <rect width="880" height="400" rx="12" fill="#0a0a0a"/>
+  <defs>
+    <marker id="carry" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#e05555"/>
+    </marker>
+  </defs>
+
+  <text x="60" y="56" font-size="22" font-weight="700" fill="#e8e8e8">받아올림은 규칙이 아니라 자릿값 그 자체다</text>
+  <text x="60" y="82" font-size="13" fill="#888">한 자리에 열이 모이면 윗자리의 1과 같은 값이다</text>
+
+  <text x="120" y="126" font-size="13" fill="#888" text-anchor="middle">백</text>
+  <text x="200" y="126" font-size="13" fill="#888" text-anchor="middle">십</text>
+  <text x="280" y="126" font-size="13" fill="#888" text-anchor="middle">일</text>
+
+  <text x="200" y="160" font-size="17" font-weight="700" fill="#e05555" text-anchor="middle">1</text>
+  <text x="120" y="160" font-size="17" font-weight="700" fill="#e05555" text-anchor="middle">1</text>
+
+  <text x="120" y="200" font-size="28" fill="#e8e8e8" text-anchor="middle">4</text>
+  <text x="200" y="200" font-size="28" fill="#e8e8e8" text-anchor="middle">7</text>
+  <text x="280" y="200" font-size="28" fill="#e8e8e8" text-anchor="middle">6</text>
+  <text x="56" y="244" font-size="28" fill="#888">+</text>
+  <text x="120" y="244" font-size="28" fill="#e8e8e8" text-anchor="middle">2</text>
+  <text x="200" y="244" font-size="28" fill="#e8e8e8" text-anchor="middle">5</text>
+  <text x="280" y="244" font-size="28" fill="#e8e8e8" text-anchor="middle">8</text>
+  <line x1="70" y1="262" x2="320" y2="262" stroke="#888" stroke-width="1.5"/>
+  <text x="120" y="300" font-size="28" font-weight="700" fill="#7ec8e3" text-anchor="middle">7</text>
+  <text x="200" y="300" font-size="28" font-weight="700" fill="#7ec8e3" text-anchor="middle">3</text>
+  <text x="280" y="300" font-size="28" font-weight="700" fill="#7ec8e3" text-anchor="middle">4</text>
+
+  <path d="M 262 148 L 218 148" fill="none" stroke="#e05555" stroke-width="2" marker-end="url(#carry)"/>
+  <path d="M 182 148 L 138 148" fill="none" stroke="#e05555" stroke-width="2" marker-end="url(#carry)"/>
+
+  <rect x="400" y="120" width="420" height="60" rx="6" fill="none" stroke="#333" stroke-width="1"/>
+  <text x="420" y="146" font-size="14" font-weight="600" fill="#e8e8e8">일의 자리 &#160;6 + 8 = 14</text>
+  <text x="420" y="168" font-size="13" fill="#888">4를 적고, 남은 10 하나를 십의 자리로 올린다</text>
+
+  <rect x="400" y="196" width="420" height="60" rx="6" fill="none" stroke="#333" stroke-width="1"/>
+  <text x="420" y="222" font-size="14" font-weight="600" fill="#e8e8e8">십의 자리 &#160;7 + 5 + 1 = 13</text>
+  <text x="420" y="244" font-size="13" fill="#888">3을 적고, 다시 10 하나를 백의 자리로 올린다</text>
+
+  <rect x="400" y="272" width="420" height="60" rx="6" fill="none" stroke="#333" stroke-width="1"/>
+  <text x="420" y="298" font-size="14" font-weight="600" fill="#e8e8e8">백의 자리 &#160;4 + 2 + 1 = 7</text>
+  <text x="420" y="320" font-size="13" fill="#888">올릴 것이 없으니 그대로 적는다</text>
+
+  <text x="60" y="366" font-size="14" fill="#7777cc">세로셈이 오른쪽 끝을 맞추는 것은, 같은 자리끼리만 더할 수 있기 때문이다</text>
+</svg>

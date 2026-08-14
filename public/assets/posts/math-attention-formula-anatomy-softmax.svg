@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="360" viewBox="0 0 880 360" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <rect width="880" height="360" rx="12" fill="#0a0a0a"/>
+  <defs>
+    <marker id="sm" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#7ec8e3"/>
+    </marker>
+  </defs>
+
+  <text x="60" y="56" font-size="22" font-weight="700" fill="#e8e8e8">softmax 는 점수를 합이 1인 비율로 바꾼다</text>
+  <text x="60" y="82" font-size="13" fill="#888">큰 점수는 더 크게 벌어지고, 음수여도 결과는 모두 양수가 된다</text>
+
+  <text x="120" y="120" font-size="14" font-weight="600" fill="#888" text-anchor="middle">점수</text>
+  <rect x="80" y="140" width="80" height="30" fill="#7777cc" fill-opacity="0.35" stroke="#7777cc" stroke-width="1.5"/>
+  <text x="180" y="162" font-size="14" fill="#e8e8e8">2.0</text>
+  <rect x="80" y="190" width="40" height="30" fill="#7777cc" fill-opacity="0.35" stroke="#7777cc" stroke-width="1.5"/>
+  <text x="180" y="212" font-size="14" fill="#e8e8e8">1.0</text>
+  <rect x="80" y="240" width="4" height="30" fill="#7777cc" fill-opacity="0.35" stroke="#7777cc" stroke-width="1.5"/>
+  <text x="180" y="262" font-size="14" fill="#e8e8e8">0.1</text>
+
+  <line x1="240" y1="200" x2="320" y2="200" stroke="#7ec8e3" stroke-width="2" marker-end="url(#sm)"/>
+  <text x="280" y="182" font-size="13" fill="#7ec8e3" text-anchor="middle">지수를 씌우고</text>
+  <text x="280" y="228" font-size="13" fill="#7ec8e3" text-anchor="middle">합으로 나눈다</text>
+
+  <text x="440" y="120" font-size="14" font-weight="600" fill="#888" text-anchor="middle">비율</text>
+  <rect x="360" y="140" width="264" height="30" fill="#7ec8e3" fill-opacity="0.35" stroke="#7ec8e3" stroke-width="1.5"/>
+  <text x="640" y="162" font-size="14" font-weight="700" fill="#e8e8e8">0.66</text>
+  <rect x="360" y="190" width="97" height="30" fill="#7ec8e3" fill-opacity="0.35" stroke="#7ec8e3" stroke-width="1.5"/>
+  <text x="640" y="212" font-size="14" font-weight="700" fill="#e8e8e8">0.24</text>
+  <rect x="360" y="240" width="40" height="30" fill="#7ec8e3" fill-opacity="0.35" stroke="#7ec8e3" stroke-width="1.5"/>
+  <text x="640" y="262" font-size="14" font-weight="700" fill="#e8e8e8">0.10</text>
+  <text x="700" y="212" font-size="16" font-weight="700" fill="#55c555">합이 1</text>
+
+  <text x="60" y="310" font-size="14" fill="#e8e8e8">그래서 이 비율을 V 에 곱해 더한 것이 어텐션의 출력이다 — 가중치가 정해진 선형결합이다</text>
+  <text x="60" y="336" font-size="13" fill="#7777cc">점수 차이가 클수록 한쪽으로 쏠린다. √dₖ 로 나누는 것은 그 쏠림이 너무 일찍 굳지 않게 하려는 장치다</text>
+</svg>

@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="400" viewBox="0 0 880 400" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <rect width="880" height="400" rx="12" fill="#0a0a0a"/>
+
+  <text x="60" y="56" font-size="22" font-weight="700" fill="#e8e8e8">라디안은 호의 길이로 각을 잰다</text>
+  <text x="60" y="82" font-size="13" fill="#888">반지름과 같은 길이의 호가 만드는 중심각이 1 라디안이다</text>
+
+  <circle cx="250" cy="240" r="110" fill="none" stroke="#888" stroke-width="1.5"/>
+  <line x1="250" y1="240" x2="360" y2="240" stroke="#e8e8e8" stroke-width="2"/>
+  <line x1="250" y1="240" x2="309" y2="147" stroke="#e8e8e8" stroke-width="2"/>
+  <path d="M 360 240 A 110 110 0 0 0 309 147" fill="none" stroke="#7ec8e3" stroke-width="4"/>
+  <path d="M 290 240 A 40 40 0 0 0 271 206" fill="none" stroke="#7777cc" stroke-width="2"/>
+  <text x="300" y="228" font-size="14" font-weight="600" fill="#7777cc">1 rad</text>
+  <text x="305" y="266" font-size="13" fill="#e8e8e8">반지름 r</text>
+  <text x="360" y="170" font-size="14" font-weight="600" fill="#7ec8e3">호의 길이도 r</text>
+  <text x="250" y="382" font-size="13" fill="#888" text-anchor="middle">약 57.3° — 반지름을 원 둘레에 대고 잰 각</text>
+
+  <text x="520" y="150" font-size="16" font-weight="600" fill="#e8e8e8">한 바퀴는 둘레 2πr 이므로</text>
+  <text x="520" y="182" font-size="20" font-weight="700" fill="#7ec8e3">360° = 2π &#160;→&#160; 180° = π</text>
+
+  <rect x="520" y="212" width="300" height="120" rx="8" fill="none" stroke="#333" stroke-width="1"/>
+  <text x="540" y="240" font-size="14" fill="#888">30° = π/6</text>
+  <text x="700" y="240" font-size="14" fill="#888">45° = π/4</text>
+  <text x="540" y="270" font-size="14" fill="#888">60° = π/3</text>
+  <text x="700" y="270" font-size="14" fill="#888">90° = π/2</text>
+  <text x="540" y="306" font-size="13" fill="#7777cc">호의 길이는 rθ, 부채꼴 넓이는 ½r²θ</text>
+
+  <text x="60" y="368" font-size="14" fill="#7777cc">각을 길이로 재 두면 호와 넓이 공식에서 단위 변환이 사라진다. 그래서 이 뒤로는 도 대신 라디안을 쓴다</text>
+</svg>

@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="390" viewBox="0 0 880 390" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <rect width="880" height="390" rx="12" fill="#0a0a0a"/>
+
+  <text x="60" y="56" font-size="22" font-weight="700" fill="#e8e8e8">연립부등식은 나란히 칠하고 겹치는 데를 읽는다</text>
+  <text x="60" y="82" font-size="13" fill="#888">3x − 1 &gt; 5 는 x &gt; 2, x + 2 ≤ 7 은 x ≤ 5</text>
+
+  <line x1="100" y1="150" x2="800" y2="150" stroke="#888" stroke-width="1.5"/>
+  <line x1="300" y1="144" x2="300" y2="156" stroke="#888" stroke-width="1"/>
+  <line x1="600" y1="144" x2="600" y2="156" stroke="#888" stroke-width="1"/>
+  <text x="300" y="176" font-size="13" fill="#888" text-anchor="middle">2</text>
+  <text x="600" y="176" font-size="13" fill="#888" text-anchor="middle">5</text>
+  <line x1="300" y1="122" x2="800" y2="122" stroke="#7ec8e3" stroke-width="6" stroke-opacity="0.5"/>
+  <circle cx="300" cy="122" r="6" fill="#0a0a0a" stroke="#7ec8e3" stroke-width="2"/>
+  <text x="800" y="108" font-size="14" font-weight="600" fill="#7ec8e3" text-anchor="end">x &gt; 2</text>
+
+  <line x1="100" y1="230" x2="800" y2="230" stroke="#888" stroke-width="1.5"/>
+  <line x1="300" y1="224" x2="300" y2="236" stroke="#888" stroke-width="1"/>
+  <line x1="600" y1="224" x2="600" y2="236" stroke="#888" stroke-width="1"/>
+  <text x="300" y="256" font-size="13" fill="#888" text-anchor="middle">2</text>
+  <text x="600" y="256" font-size="13" fill="#888" text-anchor="middle">5</text>
+  <line x1="100" y1="202" x2="600" y2="202" stroke="#7777cc" stroke-width="6" stroke-opacity="0.5"/>
+  <circle cx="600" cy="202" r="6" fill="#7777cc"/>
+  <text x="800" y="188" font-size="14" font-weight="600" fill="#7777cc" text-anchor="end">x ≤ 5</text>
+
+  <line x1="100" y1="310" x2="800" y2="310" stroke="#888" stroke-width="1.5"/>
+  <line x1="300" y1="304" x2="300" y2="316" stroke="#888" stroke-width="1"/>
+  <line x1="600" y1="304" x2="600" y2="316" stroke="#888" stroke-width="1"/>
+  <text x="300" y="336" font-size="13" fill="#888" text-anchor="middle">2</text>
+  <text x="600" y="336" font-size="13" fill="#888" text-anchor="middle">5</text>
+  <line x1="300" y1="282" x2="600" y2="282" stroke="#55c555" stroke-width="8" stroke-opacity="0.6"/>
+  <circle cx="300" cy="282" r="6" fill="#0a0a0a" stroke="#55c555" stroke-width="2"/>
+  <circle cx="600" cy="282" r="6" fill="#55c555"/>
+  <text x="800" y="268" font-size="14" font-weight="600" fill="#55c555" text-anchor="end">둘 다 칠해진 곳 — 2 &lt; x ≤ 5</text>
+
+  <text x="60" y="370" font-size="14" fill="#7777cc">빈 점은 그 값을 안 넣는다는 뜻, 찬 점은 넣는다는 뜻이다. 두 부등식의 부등호를 각각 그대로 가져온다</text>
+</svg>

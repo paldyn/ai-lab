@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="340" viewBox="0 0 880 340" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <rect width="880" height="340" rx="12" fill="#0a0a0a"/>
+
+  <text x="60" y="56" font-size="22" font-weight="700" fill="#e8e8e8">항은 + 와 − 로 끊어지는 덩어리다</text>
+  <text x="60" y="82" font-size="13" fill="#888">부호는 뒤에 오는 항의 것이다 — 둘째 항은 5x 가 아니라 −5x</text>
+
+  <rect x="90" y="120" width="180" height="60" rx="6" fill="#7ec8e3" fill-opacity="0.12" stroke="#7ec8e3" stroke-width="1.5"/>
+  <text x="180" y="158" font-size="24" fill="#e8e8e8" text-anchor="middle">3x²</text>
+  <rect x="300" y="120" width="180" height="60" rx="6" fill="#7777cc" fill-opacity="0.12" stroke="#7777cc" stroke-width="1.5"/>
+  <text x="390" y="158" font-size="24" fill="#e8e8e8" text-anchor="middle">− 5x</text>
+  <rect x="510" y="120" width="180" height="60" rx="6" fill="#55c555" fill-opacity="0.12" stroke="#55c555" stroke-width="1.5"/>
+  <text x="600" y="158" font-size="24" fill="#e8e8e8" text-anchor="middle">+ 7</text>
+
+  <text x="180" y="208" font-size="14" font-weight="600" fill="#7ec8e3" text-anchor="middle">2차 항</text>
+  <text x="180" y="230" font-size="13" fill="#888" text-anchor="middle">계수 3 · 문자 두 번 곱함</text>
+  <text x="390" y="208" font-size="14" font-weight="600" fill="#7777cc" text-anchor="middle">1차 항</text>
+  <text x="390" y="230" font-size="13" fill="#888" text-anchor="middle">계수 −5 · 부호까지가 항</text>
+  <text x="600" y="208" font-size="14" font-weight="600" fill="#55c555" text-anchor="middle">상수항</text>
+  <text x="600" y="230" font-size="13" fill="#888" text-anchor="middle">문자가 없으니 0차</text>
+
+  <text x="60" y="286" font-size="15" fill="#e8e8e8">식 전체의 차수는 가장 높은 항을 따라 <tspan font-weight="700" fill="#7ec8e3">2차</tspan>. 항이 셋이므로 다항식이다</text>
+  <text x="60" y="314" font-size="14" fill="#7777cc">문자 부분이 똑같은 항끼리만 합칠 수 있다 — 3x² 과 −5x 는 문자 부분이 다르므로 더는 줄지 않는다</text>
+</svg>

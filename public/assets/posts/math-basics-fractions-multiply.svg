@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="400" viewBox="0 0 880 400" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <rect width="880" height="400" rx="12" fill="#0a0a0a"/>
+
+  <text x="60" y="56" font-size="22" font-weight="700" fill="#e8e8e8">분수의 곱셈은 자른 것을 다시 자르는 일</text>
+  <text x="60" y="82" font-size="13" fill="#888">가로를 5칸으로 잘라 3칸, 세로를 3칸으로 잘라 2칸 — 겹치는 칸이 답이다</text>
+
+  <rect x="140" y="120" width="450" height="180" fill="none" stroke="#888" stroke-width="1.5"/>
+  <rect x="140" y="120" width="270" height="120" fill="#7ec8e3" fill-opacity="0.28"/>
+  <rect x="140" y="120" width="270" height="180" fill="#7ec8e3" fill-opacity="0.10"/>
+  <line x1="230" y1="120" x2="230" y2="300" stroke="#888" stroke-width="1"/>
+  <line x1="320" y1="120" x2="320" y2="300" stroke="#888" stroke-width="1"/>
+  <line x1="410" y1="120" x2="410" y2="300" stroke="#7ec8e3" stroke-width="2"/>
+  <line x1="500" y1="120" x2="500" y2="300" stroke="#888" stroke-width="1"/>
+  <line x1="140" y1="180" x2="590" y2="180" stroke="#888" stroke-width="1"/>
+  <line x1="140" y1="240" x2="590" y2="240" stroke="#7ec8e3" stroke-width="2"/>
+
+  <text x="365" y="112" font-size="13" fill="#7ec8e3" text-anchor="middle">가로 5칸 중 3칸</text>
+  <text x="128" y="186" font-size="13" fill="#7ec8e3" text-anchor="end">세로</text>
+  <text x="128" y="204" font-size="13" fill="#7ec8e3" text-anchor="end">3칸 중</text>
+  <text x="128" y="222" font-size="13" fill="#7ec8e3" text-anchor="end">2칸</text>
+  <text x="275" y="188" font-size="18" font-weight="700" fill="#e8e8e8" text-anchor="middle">겹친 6칸</text>
+
+  <text x="640" y="160" font-size="16" fill="#e8e8e8">전체는 15칸</text>
+  <text x="640" y="190" font-size="16" fill="#e8e8e8">겹친 것은 6칸</text>
+  <text x="640" y="232" font-size="16" font-weight="700" fill="#7ec8e3">6 / 15 = 2 / 5</text>
+
+  <text x="60" y="346" font-size="14" fill="#7777cc">분자끼리, 분모끼리 곱하면 그대로 나온다 — 2×3 이 겹친 칸, 3×5 가 전체 칸이다</text>
+  <text x="60" y="372" font-size="14" fill="#888">통분이 필요 없는 이유도 여기 있다. 조각 위에서 다시 자르는 것이라 크기를 맞출 일이 없다</text>
+</svg>

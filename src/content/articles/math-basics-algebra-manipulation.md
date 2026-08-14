@@ -26,6 +26,8 @@ $$\frac{1}{\sqrt{5}+\sqrt{3}} = \frac{\sqrt{5}-\sqrt{3}}{2}$$
 
 문자가 든 분수도 [11번 글](/articles/math-basics-fractions)의 규칙 그대로입니다. 더하려면 분모를 맞추고, 분모와 분자에 같은 인수가 있으면 지웁니다.
 
+![유리식의 통분과 약분](/assets/posts/math-basics-algebra-manipulation-common-denominator.svg)
+
 $$\frac{1}{x} + \frac{1}{x+2} = \frac{(x+2) + x}{x(x+2)} = \frac{2x+2}{x(x+2)}$$
 
 약분은 **인수분해가 먼저**입니다. 더하기로 늘어놓은 상태에서는 지울 것이 안 보입니다.
@@ -79,6 +81,8 @@ $$x^2+1$$ 을 $$t$$ 라 놓습니다.
 $$t^2 - 5t + 6 = (t-2)(t-3)$$
 
 이제 $$t$$ 를 도로 돌려놓습니다. **되돌리는 것을 잊는 것이 이 조작의 유일한 함정입니다.**
+
+![치환하고 되돌리기](/assets/posts/math-basics-algebra-manipulation-substitution.svg)
 
 $$(x^2+1-2)(x^2+1-3) = (x^2-1)(x^2-2) = (x+1)(x-1)(x^2-2)$$
 

@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="380" viewBox="0 0 880 380" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <rect width="880" height="380" rx="12" fill="#0a0a0a"/>
+  <defs>
+    <marker id="map" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#7ec8e3"/>
+    </marker>
+    <marker id="mapbad" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#e05555"/>
+    </marker>
+  </defs>
+
+  <text x="60" y="56" font-size="22" font-weight="700" fill="#e8e8e8">함수는 입력 하나에 출력 하나</text>
+  <text x="60" y="82" font-size="13" fill="#888">출력이 겹치는 것은 괜찮다. 한 입력에서 화살표가 둘 나가면 그때는 함수가 아니다</text>
+
+  <text x="60" y="118" font-size="14" font-weight="600" fill="#55c555">함수다</text>
+  <ellipse cx="130" cy="230" rx="60" ry="90" fill="none" stroke="#888" stroke-width="1.5"/>
+  <ellipse cx="330" cy="230" rx="60" ry="90" fill="none" stroke="#888" stroke-width="1.5"/>
+  <circle cx="130" cy="180" r="5" fill="#e8e8e8"/>
+  <circle cx="130" cy="230" r="5" fill="#e8e8e8"/>
+  <circle cx="130" cy="280" r="5" fill="#e8e8e8"/>
+  <circle cx="330" cy="190" r="5" fill="#e8e8e8"/>
+  <circle cx="330" cy="270" r="5" fill="#e8e8e8"/>
+  <path d="M 140 180 L 318 190" fill="none" stroke="#7ec8e3" stroke-width="2" marker-end="url(#map)"/>
+  <path d="M 140 230 L 318 194" fill="none" stroke="#7ec8e3" stroke-width="2" marker-end="url(#map)"/>
+  <path d="M 140 280 L 318 270" fill="none" stroke="#7ec8e3" stroke-width="2" marker-end="url(#map)"/>
+  <text x="230" y="342" font-size="13" fill="#888" text-anchor="middle">두 입력이 같은 출력으로 가도 된다</text>
+
+  <text x="480" y="118" font-size="14" font-weight="600" fill="#e05555">함수가 아니다</text>
+  <ellipse cx="550" cy="230" rx="60" ry="90" fill="none" stroke="#888" stroke-width="1.5"/>
+  <ellipse cx="750" cy="230" rx="60" ry="90" fill="none" stroke="#888" stroke-width="1.5"/>
+  <circle cx="550" cy="180" r="5" fill="#e8e8e8"/>
+  <circle cx="550" cy="230" r="5" fill="#e8e8e8"/>
+  <circle cx="550" cy="280" r="5" fill="#e8e8e8"/>
+  <circle cx="750" cy="180" r="5" fill="#e8e8e8"/>
+  <circle cx="750" cy="240" r="5" fill="#e8e8e8"/>
+  <circle cx="750" cy="290" r="5" fill="#e8e8e8"/>
+  <path d="M 560 180 L 738 180" fill="none" stroke="#e05555" stroke-width="2" marker-end="url(#mapbad)"/>
+  <path d="M 560 184 L 738 238" fill="none" stroke="#e05555" stroke-width="2" marker-end="url(#mapbad)"/>
+  <path d="M 560 280 L 738 290" fill="none" stroke="#7ec8e3" stroke-width="2" marker-end="url(#map)"/>
+  <text x="650" y="342" font-size="13" fill="#e05555" text-anchor="middle">한 입력에서 화살표가 둘 나갔다</text>
+
+  <text x="130" y="132" font-size="13" fill="#888" text-anchor="middle">정의역</text>
+  <text x="330" y="132" font-size="13" fill="#888" text-anchor="middle">공역</text>
+  <text x="550" y="132" font-size="13" fill="#888" text-anchor="middle">정의역</text>
+  <text x="750" y="132" font-size="13" fill="#888" text-anchor="middle">공역</text>
+</svg>
