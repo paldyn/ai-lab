@@ -2,6 +2,7 @@ import { useEffect, useRef } from 'react';
 import { createPortal } from 'react-dom';
 import { X } from 'lucide-react';
 import { captureFocusOrigin, focusQuietly, restoreFocus } from '../lib/restoreFocus';
+import { lockScroll } from '../lib/scrollLock';
 
 import type { ZoomedImage } from '../lib/imageZoom';
 
@@ -25,7 +26,6 @@ export function ImageLightbox({ image, onClose }: { image: ZoomedImage | null; o
     if (!isOpen) return undefined;
 
     const appRoot = document.getElementById('root');
-    const previousOverflow = document.body.style.overflow;
     const origin = captureFocusOrigin();
 
     const handleKeyDown = (event: KeyboardEvent) => {
@@ -35,7 +35,7 @@ export function ImageLightbox({ image, onClose }: { image: ZoomedImage | null; o
     };
 
     appRoot?.setAttribute('inert', '');
-    document.body.style.overflow = 'hidden';
+    const unlock = lockScroll();
     document.addEventListener('keydown', handleKeyDown);
 
     if (origin.keyboard) closeButtonRef.current?.focus();
@@ -43,7 +43,7 @@ export function ImageLightbox({ image, onClose }: { image: ZoomedImage | null; o
 
     return () => {
       appRoot?.removeAttribute('inert');
-      document.body.style.overflow = previousOverflow;
+      unlock();
       document.removeEventListener('keydown', handleKeyDown);
       restoreFocus(origin);
     };

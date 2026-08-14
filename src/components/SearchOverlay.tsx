@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router';
 import { CornerDownLeft, Search, X } from 'lucide-react';
 import { countByScope, search, splitMatch, type SearchScope } from '../lib/search';
 import { captureFocusOrigin, restoreFocus } from '../lib/restoreFocus';
+import { lockScroll } from '../lib/scrollLock';
 
 interface SearchOverlayProps {
   open: boolean;
@@ -56,18 +57,17 @@ export function SearchOverlay({ open, onClose }: SearchOverlayProps) {
     if (!open) return undefined;
 
     const appRoot = document.getElementById('root');
-    const previousOverflow = document.body.style.overflow;
     // 입력창으로 포커스를 옮기기 전에 잡습니다. 헤더 검색 버튼을 마우스로 눌러
     // 열었는지, '/'나 Enter 같은 키로 열었는지가 여기서 갈립니다.
     const origin = captureFocusOrigin();
 
     appRoot?.setAttribute('inert', '');
-    document.body.style.overflow = 'hidden';
+    const unlock = lockScroll();
     inputRef.current?.focus();
 
     return () => {
       appRoot?.removeAttribute('inert');
-      document.body.style.overflow = previousOverflow;
+      unlock();
       // inert를 먼저 벗긴 뒤에 되돌려야 트리거가 포커스를 받습니다.
       restoreFocus(origin);
     };

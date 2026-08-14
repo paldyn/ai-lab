@@ -5,6 +5,7 @@ import { releaseOf, type ModelLogoTone, type ModelRelease, type NewsDetail, type
 import { loadNewsDetail } from '../lib/newsDetail';
 import { markRead } from '../lib/readLog';
 import { captureFocusOrigin, focusQuietly, restoreFocus } from '../lib/restoreFocus';
+import { lockScroll } from '../lib/scrollLock';
 
 export interface NewsPreviewItem {
   id: string;
@@ -113,7 +114,6 @@ export function NewsPreviewModal({ item, onClose }: NewsPreviewModalProps) {
     if (!isOpen) return undefined;
 
     const appRoot = document.getElementById('root');
-    const previousOverflow = document.body.style.overflow;
     // 포커스를 닫기 버튼으로 옮기기 전에 잡습니다. 되돌릴 자리와 함께
     // '키보드로 열었는가'까지 기록해 두어야 닫을 때 링을 낼지 고를 수 있습니다.
     const origin = captureFocusOrigin();
@@ -146,7 +146,7 @@ export function NewsPreviewModal({ item, onClose }: NewsPreviewModalProps) {
 
     // 배경을 inert로 만들면 탭 순서와 접근성 트리에서 함께 제거됩니다.
     appRoot?.setAttribute('inert', '');
-    document.body.style.overflow = 'hidden';
+    const unlock = lockScroll();
     document.addEventListener('keydown', handleKeyDown);
 
     /*
@@ -159,7 +159,7 @@ export function NewsPreviewModal({ item, onClose }: NewsPreviewModalProps) {
 
     return () => {
       appRoot?.removeAttribute('inert');
-      document.body.style.overflow = previousOverflow;
+      unlock();
       document.removeEventListener('keydown', handleKeyDown);
       // inert를 먼저 벗긴 뒤에 되돌려야 트리거가 포커스를 받습니다.
       restoreFocus(origin);

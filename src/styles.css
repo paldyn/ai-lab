@@ -1171,7 +1171,12 @@ input:focus-visible {
   z-index: 100;
   inset: 0;
   display: grid;
+  /*
+    이 상자에서 스크롤이 끝나도 뒤 페이지로 넘어가지 않게 합니다. 뒤 문서는
+    lockScroll이 이미 묶지만, 그 안에서 스크롤이 이어지는 것은 별개입니다.
+  */
   overflow-y: auto;
+  overscroll-behavior: contain;
   place-items: center;
   padding: 14px;
   background: rgba(0, 0, 0, 0.74);
@@ -1280,6 +1285,7 @@ input:focus-visible {
 /* 넘칠 때 구르는 것은 여기뿐입니다. 머리띠는 늘 제자리에 남습니다. */
 .news-preview-body {
   overflow-y: auto;
+  overscroll-behavior: contain;
   padding: 30px 40px 34px;
 }
 
