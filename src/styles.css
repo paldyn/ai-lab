@@ -2441,6 +2441,46 @@ input:focus-visible {
   color: var(--text-dim);
 }
 
+/*
+  **글 첫머리의 「한 줄 정의」.**
+
+  「에라토스테네스의 체가 뭐였더라」에서 읽기가 멈춘다는 말이 있었습니다. 본문
+  어딘가에 정의가 적혀 있어도 찾아 올라가야 하면 늦습니다. 그래서 그 글에서
+  처음 만나는 낱말 두어 개를 맨 위에 한 줄씩 못 박아 둡니다.
+
+  원고에는 맨 앞 인용문 하나로 적고 상자는 여기서 세웁니다 — 원고에 꾸밈을
+  적지 않는 것은 마무리 블록과 같은 원칙입니다. 첫 자식일 때만 걸리므로 글
+  중간의 인용문은 그대로 인용문입니다.
+*/
+.article-prose > blockquote:first-child {
+  margin: 0 0 34px;
+  border: 1px solid var(--border);
+  border-left: 2px solid var(--brand);
+  padding: 20px 24px 22px;
+  background: var(--bg-subtle);
+  color: var(--text);
+}
+
+.article-prose > blockquote:first-child::before {
+  display: block;
+  margin-bottom: 13px;
+  color: var(--text-muted);
+  content: '한 줄 정의';
+  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  font-size: 10px;
+  letter-spacing: 0.16em;
+}
+
+.article-prose > blockquote:first-child p {
+  margin: 0;
+  font-size: 15.5px;
+  line-height: 1.75;
+}
+
+.article-prose > blockquote:first-child p + p {
+  margin-top: 11px;
+}
+
 .article-prose blockquote p:last-child {
   margin-bottom: 0;
 }
