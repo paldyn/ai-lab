@@ -168,16 +168,14 @@ export function NewsPreviewModal({ item, onClose }: NewsPreviewModalProps) {
 
   if (!item) return null;
 
+  /*
+    **배경을 눌러도 안 닫힙니다.** 닫는 길은 오른쪽 위 닫기 단추와 Esc 둘입니다.
+    팝업이 화면을 다 덮지 않게 된 뒤로 바깥이 넓어져, 본문을 짚거나 스크롤하려다
+    가장자리를 스쳐 닫히는 일이 잦았습니다. 읽던 것이 사라지는 쪽이 단추를 한 번
+    더 누르는 것보다 비쌉니다.
+  */
   return createPortal(
-    <div
-      className="news-preview-backdrop"
-      // 배경은 장식이고 닫기는 마우스 편의 기능입니다.
-      // 키보드로는 Esc와 닫기 버튼으로 동일하게 닫을 수 있습니다.
-      role="presentation"
-      onMouseDown={(event) => {
-        if (event.target === event.currentTarget) close();
-      }}
-    >
+    <div className="news-preview-backdrop">
       <section
         ref={dialogRef}
         className="news-preview-modal"
@@ -185,7 +183,6 @@ export function NewsPreviewModal({ item, onClose }: NewsPreviewModalProps) {
         aria-modal="true"
         aria-labelledby={`news-preview-title-${item.id}`}
         style={{ '--preview-accent': item.accent } as CSSProperties}
-        onMouseDown={(event) => event.stopPropagation()}
       >
         <header className="news-preview-bar">
           <div><span /> PALDYN AI NEWS</div>
