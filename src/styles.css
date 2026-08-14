@@ -1569,17 +1569,28 @@ input:focus-visible {
 }
 
 @media (max-width: 640px) {
+  /*
+    아래쪽에 붙되 가장자리에서 한 뼘 띄웁니다. 엄지에 가까운 자리이면서,
+    사방으로 흐린 배경이 남아 있어야 뒤에 목록이 그대로 있다는 것이 보입니다.
+  */
   .news-preview-backdrop {
     align-items: end;
-    padding: 0;
+    padding: 12px;
   }
 
+  /*
+    높이를 화면의 4분의 3에서 끊습니다. 예전에는 100vh − 18px, 즉 화면을 거의
+    다 덮어 팝업이 아니라 페이지가 바뀐 것처럼 보였습니다. 넘치는 소식은
+    그대로 안쪽 본문만 구릅니다.
+
+    dvh를 vh 다음에 겹쳐 적습니다 — 모르는 브라우저는 뒷줄을 버리고 앞줄을
+    씁니다. 모바일 브라우저는 주소창이 접히고 펴지는 만큼 100vh가 실제 보이는
+    높이보다 커서, 아는 쪽에서는 dvh가 맞습니다.
+  */
   .news-preview-modal {
     width: 100%;
-    max-height: calc(100vh - 18px);
-    border-right: 0;
-    border-bottom: 0;
-    border-left: 0;
+    max-height: 76vh;
+    max-height: 76dvh;
   }
 
   /*
