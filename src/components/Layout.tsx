@@ -6,7 +6,7 @@ import { categoryById } from '../data/categories';
 import { assetUrl } from '../data/sources';
 import type { SectionId } from '../types/article';
 import { SearchOverlay } from './SearchOverlay';
-import { SiteUpdateBanner } from './SiteUpdateBanner';
+import { SiteUpdateGuard } from './SiteUpdateGuard';
 
 const THEME_STORAGE_KEY = 'paldyn-ai-theme';
 const DARK_QUERY = '(prefers-color-scheme: dark)';
@@ -315,7 +315,7 @@ export function Layout({ children }: { children: ReactNode }) {
         새 배포 알림. 여기 두는 이유는 모든 화면에 함께 있어야 하고, 경로 이동을
         경계로 삼기 때문입니다 — Layout이 그 둘을 다 아는 유일한 자리입니다.
       */}
-      <SiteUpdateBanner />
+      <SiteUpdateGuard />
 
       <SearchOverlay open={searchOpen} onClose={() => setSearchOpen(false)} />
     </div>
