@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="480" viewBox="0 0 880 480">
+  <defs>
+    <marker id="phArr" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#8a8a8a"/>
+    </marker>
+  </defs>
+
+  <rect x="0" y="0" width="880" height="480" rx="12" fill="#0a0a0a"/>
+
+  <text x="60" y="46" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="22" font-weight="700" fill="#e8e8e8">자리표로 바꿔 보내고, 돌아온 답에서 되돌린다</text>
+
+  <text x="60" y="122" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">원문</text>
+  <rect x="200" y="90" width="620" height="54" rx="6" fill="#000000" stroke="#3a4a6e" stroke-width="1"/>
+  <text x="216" y="122" xml:space="preserve" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#ffffff">김민수 님 주문 A-1024, 010-1234-5678로 연락 요청</text>
+
+  <line x1="510" y1="144" x2="510" y2="180" stroke="#8a8a8a" stroke-width="1.5" marker-end="url(#phArr)"/>
+
+  <text x="60" y="212" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">모델 입력</text>
+  <rect x="200" y="180" width="620" height="54" rx="6" fill="#000000" stroke="#3a4a6e" stroke-width="1"/>
+  <text x="216" y="212" xml:space="preserve" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#ffffff">&lt;PERSON_1&gt; 님 주문 A-1024, &lt;PHONE_1&gt;로 연락 요청</text>
+
+  <line x1="510" y1="234" x2="510" y2="270" stroke="#8a8a8a" stroke-width="1.5" marker-end="url(#phArr)"/>
+
+  <text x="60" y="302" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">모델 출력</text>
+  <rect x="200" y="270" width="620" height="54" rx="6" fill="#000000" stroke="#3a4a6e" stroke-width="1"/>
+  <text x="216" y="302" xml:space="preserve" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#ffffff">&lt;PERSON_1&gt; 님께 &lt;PHONE_1&gt;로 회신 예정으로 처리했습니다</text>
+
+  <line x1="510" y1="324" x2="510" y2="360" stroke="#8a8a8a" stroke-width="1.5" marker-end="url(#phArr)"/>
+
+  <text x="60" y="392" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">사용자 화면</text>
+  <rect x="200" y="360" width="620" height="54" rx="6" fill="#000000" stroke="#3a4a6e" stroke-width="1"/>
+  <text x="216" y="392" xml:space="preserve" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#ffffff">김민수 님께 010-1234-5678로 회신 예정으로 처리했습니다</text>
+
+  <text x="60" y="452" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">주문번호는 그대로 두었다. 답하는 데 필요하고 그 자체로 사람을 가리키지 않기 때문이다.</text>
+</svg>

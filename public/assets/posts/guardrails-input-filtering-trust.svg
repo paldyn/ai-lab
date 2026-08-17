@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="420" viewBox="0 0 880 420">
+  <defs>
+    <marker id="trArr" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#8a8a8a"/>
+    </marker>
+  </defs>
+
+  <rect x="0" y="0" width="880" height="420" rx="12" fill="#0a0a0a"/>
+
+  <text x="60" y="46" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="22" font-weight="700" fill="#e8e8e8">같은 창에 들어가지만 셋의 자격은 다르다</text>
+
+  <rect x="60" y="100" width="260" height="60" rx="8" fill="#101c10" stroke="#55c555" stroke-width="1.5"/>
+  <text x="190" y="124" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#e8e8e8">시스템 정책</text>
+  <text x="190" y="144" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">우리가 적었고 바뀌지 않는다</text>
+
+  <rect x="60" y="190" width="260" height="60" rx="8" fill="#101820" stroke="#7ec8e3" stroke-width="1.5"/>
+  <text x="190" y="214" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#e8e8e8">사용자 입력</text>
+  <text x="190" y="234" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">권한 안에서만 요청할 수 있다</text>
+
+  <rect x="60" y="280" width="260" height="60" rx="8" fill="#1c1010" stroke="#e05555" stroke-width="1.5"/>
+  <text x="190" y="304" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#e8e8e8">문서 · 도구 결과</text>
+  <text x="190" y="324" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">누가 썼는지 우리는 모른다</text>
+
+  <rect x="660" y="160" width="160" height="120" rx="8" fill="#12161c" stroke="#7777cc" stroke-width="1.5"/>
+  <text x="740" y="228" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#e8e8e8">모델</text>
+
+  <line x1="320" y1="130" x2="660" y2="190" stroke="#55c555" stroke-width="1.5" marker-end="url(#trArr)"/>
+  <text x="470" y="140" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">지시로 취급</text>
+
+  <line x1="320" y1="220" x2="660" y2="220" stroke="#7ec8e3" stroke-width="1.5" marker-end="url(#trArr)"/>
+  <text x="470" y="206" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">요청으로 취급</text>
+
+  <line x1="320" y1="310" x2="440" y2="310" stroke="#e05555" stroke-width="1.5" marker-end="url(#trArr)"/>
+
+  <rect x="450" y="284" width="170" height="52" rx="6" fill="#12161c" stroke="#e05555" stroke-width="2" stroke-dasharray="4,4"/>
+  <text x="535" y="315" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e8e8e8">인용 블록으로 감싸 넣는다</text>
+
+  <line x1="620" y1="310" x2="740" y2="310" stroke="#e05555" stroke-width="1.5"/>
+  <line x1="740" y1="310" x2="740" y2="280" stroke="#e05555" stroke-width="1.5" marker-end="url(#trArr)"/>
+  <text x="680" y="352" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">자료로만 취급</text>
+
+  <text x="60" y="392" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">세 번째 줄에 적힌 「이전 지시를 무시하라」는 명령이 아니라 그 문서에 그런 문장이 있다는 사실일 뿐이다.</text>
+</svg>

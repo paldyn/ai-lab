@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="420" viewBox="0 0 880 420">
+  <defs>
+    <marker id="inpArr" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#8a8a8a"/>
+    </marker>
+    <marker id="inpArrRed" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#e05555"/>
+    </marker>
+  </defs>
+
+  <rect x="0" y="0" width="880" height="420" rx="12" fill="#0a0a0a"/>
+
+  <text x="60" y="46" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="22" font-weight="700" fill="#e8e8e8">입력 가드는 네 걸음이고, 대부분 첫 두 걸음에서 끝난다</text>
+
+  <rect x="60" y="120" width="150" height="60" rx="8" fill="#12161c" stroke="#555555" stroke-width="1.5"/>
+  <text x="135" y="144" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#e8e8e8">정규화</text>
+  <text x="135" y="164" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">보이지 않는 문자 제거</text>
+
+  <rect x="263" y="120" width="150" height="60" rx="8" fill="#101c10" stroke="#55c555" stroke-width="1.5"/>
+  <text x="338" y="144" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#e8e8e8">형식 · 용량</text>
+  <text x="338" y="164" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">길이 · 첨부 · 토큰 예산</text>
+
+  <rect x="466" y="120" width="150" height="60" rx="8" fill="#101820" stroke="#7ec8e3" stroke-width="1.5"/>
+  <text x="541" y="144" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#e8e8e8">규칙</text>
+  <text x="541" y="164" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">권한 · 범위 · 허용 목록</text>
+
+  <rect x="669" y="120" width="150" height="60" rx="8" fill="#1c1410" stroke="#e0a055" stroke-width="1.5"/>
+  <text x="744" y="144" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#e8e8e8">분류기</text>
+  <text x="744" y="164" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">규칙으로 못 적는 것만</text>
+
+  <line x1="210" y1="150" x2="263" y2="150" stroke="#8a8a8a" stroke-width="1.5" marker-end="url(#inpArr)"/>
+  <line x1="413" y1="150" x2="466" y2="150" stroke="#8a8a8a" stroke-width="1.5" marker-end="url(#inpArr)"/>
+  <line x1="616" y1="150" x2="669" y2="150" stroke="#8a8a8a" stroke-width="1.5" marker-end="url(#inpArr)"/>
+
+  <line x1="338" y1="180" x2="392" y2="290" stroke="#e05555" stroke-width="1.5" marker-end="url(#inpArrRed)"/>
+  <line x1="541" y1="180" x2="450" y2="290" stroke="#e05555" stroke-width="1.5" marker-end="url(#inpArrRed)"/>
+  <line x1="744" y1="180" x2="508" y2="290" stroke="#e05555" stroke-width="1.5" marker-end="url(#inpArrRed)"/>
+
+  <rect x="330" y="290" width="240" height="60" rx="8" fill="#1c1010" stroke="#e05555" stroke-width="1.5"/>
+  <text x="450" y="314" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#e8e8e8">거절 · 되물음 · 축소 실행</text>
+  <text x="450" y="334" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">이유를 남기고 사용자에게 알린다</text>
+
+  <circle r="5" fill="#55c555">
+    <animateMotion dur="4s" repeatCount="indefinite" path="M 60 150 L 819 150"/>
+  </circle>
+
+  <text x="60" y="392" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">정규화가 앞에 서는 이유는 하나다. 뒤의 검사들은 정규화되지 않은 문자열을 아예 다른 문자열로 본다.</text>
+</svg>

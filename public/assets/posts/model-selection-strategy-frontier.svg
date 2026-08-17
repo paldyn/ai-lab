@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="470" viewBox="0 0 880 470">
+  <rect x="0" y="0" width="880" height="470" rx="12" fill="#0a0a0a"/>
+
+  <text x="60" y="46" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="22" font-weight="700" fill="#e8e8e8">두 개의 선이 상자를 만들고, 답은 그 안 가장 왼쪽에 있다</text>
+
+  <rect x="140" y="100" width="420" height="150" fill="#101c10" opacity="0.55"/>
+
+  <line x1="140" y1="100" x2="140" y2="380" stroke="#555555" stroke-width="1.5"/>
+  <line x1="140" y1="380" x2="800" y2="380" stroke="#555555" stroke-width="1.5"/>
+
+  <text x="80" y="106" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">품질</text>
+  <text x="800" y="404" text-anchor="end" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">요청당 비용</text>
+
+  <line x1="140" y1="250" x2="800" y2="250" stroke="#55c555" stroke-width="2" stroke-dasharray="4,4"/>
+  <text x="152" y="242" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#55c555">품질 하한</text>
+
+  <line x1="560" y1="100" x2="560" y2="380" stroke="#e0a055" stroke-width="2" stroke-dasharray="4,4"/>
+  <text x="570" y="118" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e0a055">비용 상한</text>
+
+  <path d="M 200 320 L 330 232 L 470 180 L 660 130" fill="none" stroke="#7777cc" stroke-width="2"/>
+
+  <circle cx="200" cy="320" r="7" fill="#555555"/>
+  <text x="200" y="348" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">A · 품질 미달</text>
+
+  <circle cx="330" cy="232" r="9" fill="#55c555"/>
+  <text x="330" y="206" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#e8e8e8">B · 선택</text>
+
+  <circle cx="470" cy="180" r="7" fill="#7ec8e3"/>
+  <text x="470" y="156" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">C · 더 좋지만 더 비싸다</text>
+
+  <circle cx="420" cy="292" r="7" fill="#555555"/>
+  <text x="420" y="320" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">D · B에 밀린다</text>
+
+  <circle cx="660" cy="130" r="7" fill="#555555"/>
+  <text x="660" y="106" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">E · 상한 밖</text>
+
+  <circle cx="740" cy="214" r="7" fill="#555555"/>
+  <text x="740" y="242" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">F · E에 밀린다</text>
+
+  <text x="60" y="440" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">보라색 선 위의 점만 후보다. 선 아래의 D는 더 싸면서 더 나은 B가 있으므로 논의할 이유가 없다.</text>
+</svg>

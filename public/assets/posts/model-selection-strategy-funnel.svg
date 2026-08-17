@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="500" viewBox="0 0 880 500">
+  <defs>
+    <marker id="selArr" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#8a8a8a"/>
+    </marker>
+  </defs>
+
+  <rect x="0" y="0" width="880" height="500" rx="12" fill="#0a0a0a"/>
+
+  <text x="60" y="46" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="22" font-weight="700" fill="#e8e8e8">후보는 네 단계로 줄어든다</text>
+
+  <rect x="140" y="76" width="600" height="60" rx="8" fill="#12161c" stroke="#555555" stroke-width="1.5"/>
+  <text x="440" y="100" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#e8e8e8">쓸 수 있는 모델을 전부 적는다</text>
+  <text x="440" y="120" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">계약된 공급자 + 자체 호스팅 가능한 오픈 웨이트</text>
+
+  <line x1="440" y1="136" x2="440" y2="166" stroke="#8a8a8a" stroke-width="1.5" marker-end="url(#selArr)"/>
+
+  <rect x="200" y="176" width="480" height="60" rx="8" fill="#101820" stroke="#7ec8e3" stroke-width="1.5"/>
+  <text x="440" y="200" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#e8e8e8">하드 제약으로 자른다</text>
+  <text x="440" y="220" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">데이터 위치 · 모달리티 · 도구 호출 · 라이선스</text>
+
+  <line x1="440" y1="236" x2="440" y2="266" stroke="#8a8a8a" stroke-width="1.5" marker-end="url(#selArr)"/>
+
+  <rect x="260" y="276" width="360" height="60" rx="8" fill="#101c10" stroke="#55c555" stroke-width="1.5"/>
+  <text x="440" y="300" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#e8e8e8">골든셋으로 잰다</text>
+  <text x="440" y="320" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">우리 작업 100~300건 · 후보마다 같은 손질 예산</text>
+
+  <line x1="440" y1="336" x2="440" y2="366" stroke="#8a8a8a" stroke-width="1.5" marker-end="url(#selArr)"/>
+
+  <rect x="320" y="376" width="240" height="60" rx="8" fill="#1c1410" stroke="#e0a055" stroke-width="1.5"/>
+  <text x="440" y="400" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#e8e8e8">비용과 지연으로 고른다</text>
+  <text x="440" y="420" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">품질 하한을 넘는 것 중 가장 싼 것</text>
+
+  <circle r="5" fill="#7ec8e3">
+    <animateMotion dur="4s" repeatCount="indefinite" path="M 440 76 L 440 436"/>
+  </circle>
+
+  <text x="60" y="472" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">순서가 뒤집히면 비용부터 보게 되고, 그러면 제약을 어기는 모델을 아깝다는 이유로 다시 들여다보게 된다.</text>
+</svg>

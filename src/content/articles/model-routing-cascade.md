@@ -102,3 +102,5 @@ $$L = l_s + p \cdot (l_v + l_l)$$
 읽어주셔서 감사합니다. 😊
 
 **지난 글:** [엣지 추론 장비를 고르는 기준](/articles/edge-inference-hardware)
+
+**다음 글:** [모델 고르기를 취향 논쟁에서 절차로 바꾸기](/articles/model-selection-strategy)

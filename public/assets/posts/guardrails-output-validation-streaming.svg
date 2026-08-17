@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="440" viewBox="0 0 880 440">
+  <defs>
+    <marker id="tmArr" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#8a8a8a"/>
+    </marker>
+  </defs>
+
+  <rect x="0" y="0" width="880" height="440" rx="12" fill="#0a0a0a"/>
+
+  <text x="60" y="46" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="22" font-weight="700" fill="#e8e8e8">스트리밍과 출력 검사를 섞는 세 가지 방법</text>
+
+  <text x="60" y="132" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#e8e8e8">다 받고 검사</text>
+  <rect x="230" y="110" width="290" height="34" rx="6" fill="#12161c" stroke="#7777cc" stroke-width="1.5"/>
+  <text x="375" y="132" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e8e8e8">생성</text>
+  <rect x="520" y="110" width="80" height="34" rx="6" fill="#101820" stroke="#7ec8e3" stroke-width="1.5"/>
+  <text x="560" y="132" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e8e8e8">검사</text>
+  <rect x="600" y="110" width="200" height="34" rx="6" fill="#101c10" stroke="#55c555" stroke-width="1.5"/>
+  <text x="700" y="132" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e8e8e8">한 번에 표시</text>
+
+  <text x="60" y="232" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#e8e8e8">문단 단위</text>
+  <rect x="230" y="210" width="100" height="34" rx="6" fill="#12161c" stroke="#7777cc" stroke-width="1.5"/>
+  <text x="280" y="232" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e8e8e8">생성</text>
+  <rect x="330" y="210" width="50" height="34" rx="6" fill="#101820" stroke="#7ec8e3" stroke-width="1.5"/>
+  <text x="355" y="232" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e8e8e8">검사</text>
+  <rect x="380" y="210" width="100" height="34" rx="6" fill="#101c10" stroke="#55c555" stroke-width="1.5"/>
+  <text x="430" y="232" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e8e8e8">표시</text>
+  <rect x="480" y="210" width="100" height="34" rx="6" fill="#12161c" stroke="#7777cc" stroke-width="1.5"/>
+  <text x="530" y="232" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e8e8e8">생성</text>
+  <rect x="580" y="210" width="50" height="34" rx="6" fill="#101820" stroke="#7ec8e3" stroke-width="1.5"/>
+  <text x="605" y="232" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e8e8e8">검사</text>
+  <rect x="630" y="210" width="100" height="34" rx="6" fill="#101c10" stroke="#55c555" stroke-width="1.5"/>
+  <text x="680" y="232" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e8e8e8">표시</text>
+
+  <text x="60" y="332" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#e8e8e8">낙관적 표시</text>
+  <rect x="230" y="310" width="370" height="34" rx="6" fill="#101c10" stroke="#55c555" stroke-width="1.5"/>
+  <text x="415" y="332" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e8e8e8">생성과 동시에 표시</text>
+  <rect x="600" y="310" width="90" height="34" rx="6" fill="#1c1010" stroke="#e05555" stroke-width="1.5"/>
+  <text x="645" y="332" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e8e8e8">회수</text>
+  <rect x="690" y="310" width="110" height="34" rx="6" fill="#1c1410" stroke="#e0a055" stroke-width="1.5"/>
+  <text x="745" y="332" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e8e8e8">정정본</text>
+
+  <line x1="230" y1="378" x2="800" y2="378" stroke="#8a8a8a" stroke-width="1.5" marker-end="url(#tmArr)"/>
+  <text x="800" y="400" text-anchor="end" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">시간</text>
+
+  <text x="60" y="424" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">셋째 방식은 이미 읽은 문장을 지운다. 실수가 드물고 되돌려도 해가 없는 자리에서만 쓴다.</text>
+</svg>

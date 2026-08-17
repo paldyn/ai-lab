@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="420" viewBox="0 0 880 420">
+  <defs>
+    <marker id="grdArr" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#8a8a8a"/>
+    </marker>
+    <marker id="grdArrStop" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#e05555"/>
+    </marker>
+  </defs>
+
+  <rect x="0" y="0" width="880" height="420" rx="12" fill="#0a0a0a"/>
+
+  <text x="60" y="46" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="22" font-weight="700" fill="#e8e8e8">가드레일은 모델 안이 아니라 모델 앞뒤에 있다</text>
+
+  <rect x="60" y="120" width="90" height="60" rx="8" fill="#12161c" stroke="#555555" stroke-width="1.5"/>
+  <text x="105" y="156" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#e8e8e8">요청</text>
+
+  <rect x="200" y="120" width="140" height="60" rx="8" fill="#101820" stroke="#7ec8e3" stroke-width="1.5"/>
+  <text x="270" y="156" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#e8e8e8">입력 가드</text>
+
+  <rect x="390" y="120" width="110" height="60" rx="8" fill="#12161c" stroke="#7777cc" stroke-width="1.5"/>
+  <text x="445" y="156" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#e8e8e8">모델</text>
+
+  <rect x="550" y="120" width="140" height="60" rx="8" fill="#101820" stroke="#7ec8e3" stroke-width="1.5"/>
+  <text x="620" y="156" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#e8e8e8">출력 가드</text>
+
+  <rect x="740" y="120" width="80" height="60" rx="8" fill="#101c10" stroke="#55c555" stroke-width="1.5"/>
+  <text x="780" y="156" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#e8e8e8">응답</text>
+
+  <line x1="150" y1="150" x2="200" y2="150" stroke="#8a8a8a" stroke-width="1.5" marker-end="url(#grdArr)"/>
+  <line x1="340" y1="150" x2="390" y2="150" stroke="#8a8a8a" stroke-width="1.5" marker-end="url(#grdArr)"/>
+  <line x1="500" y1="150" x2="550" y2="150" stroke="#8a8a8a" stroke-width="1.5" marker-end="url(#grdArr)"/>
+  <line x1="690" y1="150" x2="740" y2="150" stroke="#55c555" stroke-width="1.5" marker-end="url(#grdArr)"/>
+
+  <line x1="270" y1="180" x2="270" y2="270" stroke="#e05555" stroke-width="1.5" marker-end="url(#grdArrStop)"/>
+  <line x1="445" y1="180" x2="445" y2="270" stroke="#e0a055" stroke-width="1.5" marker-end="url(#grdArr)"/>
+  <line x1="620" y1="180" x2="620" y2="270" stroke="#e05555" stroke-width="1.5" marker-end="url(#grdArrStop)"/>
+
+  <rect x="200" y="270" width="140" height="60" rx="8" fill="#1c1010" stroke="#e05555" stroke-width="1.5"/>
+  <text x="270" y="294" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#e8e8e8">거절 · 되물음</text>
+  <text x="270" y="314" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">모델을 부르기 전에</text>
+
+  <rect x="375" y="270" width="140" height="60" rx="8" fill="#1c1410" stroke="#e0a055" stroke-width="1.5"/>
+  <text x="445" y="294" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#e8e8e8">행동 가드</text>
+  <text x="445" y="314" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">도구 권한 · 승인</text>
+
+  <rect x="550" y="270" width="140" height="60" rx="8" fill="#1c1010" stroke="#e05555" stroke-width="1.5"/>
+  <text x="620" y="294" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#e8e8e8">차단 · 재생성</text>
+  <text x="620" y="314" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">사용자에게 닿기 전에</text>
+
+  <circle r="5" fill="#55c555">
+    <animateMotion dur="3.5s" repeatCount="indefinite" path="M 150 150 L 340 150 L 500 150 L 690 150 L 740 150"/>
+  </circle>
+  <circle r="5" fill="#e05555">
+    <animateMotion dur="3.5s" begin="1.7s" repeatCount="indefinite" path="M 150 150 L 270 150 L 270 270"/>
+  </circle>
+
+  <text x="60" y="386" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">세 자리 모두 모델의 협조 없이 동작한다. 모델이 지시를 무시해도 검사는 그대로 돈다.</text>
+</svg>

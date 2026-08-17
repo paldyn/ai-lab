@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="450" viewBox="0 0 880 450">
+  <defs>
+    <marker id="ordArr" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#8a8a8a"/>
+    </marker>
+  </defs>
+
+  <rect x="0" y="0" width="880" height="450" rx="12" fill="#0a0a0a"/>
+
+  <text x="60" y="46" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="22" font-weight="700" fill="#e8e8e8">싼 검사부터 세우고, 남는 것만 위로 올린다</text>
+
+  <line x1="70" y1="380" x2="70" y2="140" stroke="#8a8a8a" stroke-width="1.5" marker-end="url(#ordArr)"/>
+  <text x="100" y="122" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">위로 갈수록 비용과 지연이 커진다</text>
+
+  <rect x="100" y="310" width="210" height="60" rx="8" fill="#101c10" stroke="#55c555" stroke-width="1.5"/>
+  <text x="205" y="334" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#e8e8e8">결정론 규칙</text>
+  <text x="205" y="354" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">스키마 · 허용 목록 · 1ms 미만</text>
+
+  <rect x="340" y="230" width="210" height="60" rx="8" fill="#101820" stroke="#7ec8e3" stroke-width="1.5"/>
+  <text x="445" y="254" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#e8e8e8">작은 분류기</text>
+  <text x="445" y="274" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">학습된 판별 모델 · 10~30ms</text>
+
+  <rect x="580" y="150" width="210" height="60" rx="8" fill="#1c1410" stroke="#e0a055" stroke-width="1.5"/>
+  <text x="685" y="174" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#e8e8e8">판정 모델</text>
+  <text x="685" y="194" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">애매한 것만 · 300ms 이상</text>
+
+  <line x1="310" y1="336" x2="340" y2="272" stroke="#8a8a8a" stroke-width="1.5" marker-end="url(#ordArr)"/>
+  <line x1="550" y1="256" x2="580" y2="192" stroke="#8a8a8a" stroke-width="1.5" marker-end="url(#ordArr)"/>
+
+  <text x="100" y="412" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">아래 칸에서 판정이 끝난 요청은 위 칸을 부르지 않는다. 대부분의 트래픽은 첫 칸에서 끝난다.</text>
+</svg>

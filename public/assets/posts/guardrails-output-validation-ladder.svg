@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="470" viewBox="0 0 880 470">
+  <defs>
+    <marker id="outArr" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#e05555"/>
+    </marker>
+  </defs>
+
+  <rect x="0" y="0" width="880" height="470" rx="12" fill="#0a0a0a"/>
+
+  <text x="60" y="46" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="22" font-weight="700" fill="#e8e8e8">검사마다 걸렸을 때 할 일이 다르다</text>
+
+  <text x="60" y="76" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">무엇을 보는가</text>
+  <text x="480" y="76" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">걸렸을 때</text>
+
+  <rect x="60" y="90" width="340" height="60" rx="8" fill="#101c10" stroke="#55c555" stroke-width="1.5"/>
+  <text x="80" y="114" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#e8e8e8">스키마와 참조 무결성</text>
+  <text x="80" y="134" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">필드 · 열거값 · 실제로 존재하는 ID인가</text>
+
+  <rect x="480" y="90" width="340" height="60" rx="8" fill="#12161c" stroke="#555555" stroke-width="1.5"/>
+  <text x="500" y="114" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#e8e8e8">한 번 재생성</text>
+  <text x="500" y="134" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">오류 메시지를 붙여 다시 시킨다</text>
+
+  <rect x="60" y="175" width="340" height="60" rx="8" fill="#101820" stroke="#7ec8e3" stroke-width="1.5"/>
+  <text x="80" y="199" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#e8e8e8">근거 대조</text>
+  <text x="80" y="219" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">인용한 문장이 문서에 실제로 있는가</text>
+
+  <rect x="480" y="175" width="340" height="60" rx="8" fill="#12161c" stroke="#555555" stroke-width="1.5"/>
+  <text x="500" y="199" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#e8e8e8">그 문장만 떨어뜨린다</text>
+  <text x="500" y="219" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">답 전체를 버리지 않는다</text>
+
+  <rect x="60" y="260" width="340" height="60" rx="8" fill="#1c1410" stroke="#e0a055" stroke-width="1.5"/>
+  <text x="80" y="284" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#e8e8e8">정책 검사</text>
+  <text x="80" y="304" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">민감정보 · 금지 표현 · 어조</text>
+
+  <rect x="480" y="260" width="340" height="60" rx="8" fill="#12161c" stroke="#555555" stroke-width="1.5"/>
+  <text x="500" y="284" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#e8e8e8">마스킹, 안 되면 차단</text>
+  <text x="500" y="304" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">고칠 수 있는 것은 고쳐서 내보낸다</text>
+
+  <rect x="60" y="345" width="340" height="60" rx="8" fill="#12161c" stroke="#7777cc" stroke-width="1.5"/>
+  <text x="80" y="369" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#e8e8e8">규정 일관성</text>
+  <text x="80" y="389" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">사규 · 약관과 어긋나지 않는가</text>
+
+  <rect x="480" y="345" width="340" height="60" rx="8" fill="#12161c" stroke="#555555" stroke-width="1.5"/>
+  <text x="500" y="369" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#e8e8e8">사람 검토 큐로 보낸다</text>
+  <text x="500" y="389" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">자동으로 고쳐 내보내지 않는다</text>
+
+  <line x1="400" y1="120" x2="480" y2="120" stroke="#e05555" stroke-width="1.5" marker-end="url(#outArr)"/>
+  <line x1="400" y1="205" x2="480" y2="205" stroke="#e05555" stroke-width="1.5" marker-end="url(#outArr)"/>
+  <line x1="400" y1="290" x2="480" y2="290" stroke="#e05555" stroke-width="1.5" marker-end="url(#outArr)"/>
+  <line x1="400" y1="375" x2="480" y2="375" stroke="#e05555" stroke-width="1.5" marker-end="url(#outArr)"/>
+
+  <text x="60" y="442" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">아래로 갈수록 자동 수정이 위험해진다. 규정 판단을 모델에게 고치라고 시키면 틀린 근거가 그럴듯해질 뿐이다.</text>
+</svg>
