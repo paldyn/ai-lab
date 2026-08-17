@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="460" viewBox="0 0 880 460" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <rect width="880" height="460" rx="12" fill="#0a0a0a"/>
+  <defs>
+    <marker id="grAx" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#888"/>
+    </marker>
+    <marker id="grUp" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#e05555"/>
+    </marker>
+  </defs>
+
+  <text x="60" y="48" font-size="22" font-weight="700" fill="#e8e8e8">누가 더 빨리 커지는가</text>
+  <text x="60" y="74" font-size="13" fill="#888">세로 눈금은 0 부터 100 까지다. 지수는 x = 6.6 쯤에서 벌써 칸을 넘어간다</text>
+
+  <line x1="150" y1="380" x2="740" y2="380" stroke="#888" stroke-width="1.5" marker-end="url(#grAx)"/>
+  <line x1="150" y1="400" x2="150" y2="110" stroke="#888" stroke-width="1.5" marker-end="url(#grAx)"/>
+  <text x="746" y="384" font-size="13" fill="#888">x</text>
+  <text x="164" y="120" font-size="13" fill="#888">값</text>
+
+  <line x1="146" y1="250" x2="154" y2="250" stroke="#444" stroke-width="1.5"/>
+  <line x1="146" y1="120" x2="154" y2="120" stroke="#444" stroke-width="1.5"/>
+  <text x="140" y="254" font-size="12" fill="#888" text-anchor="end">50</text>
+  <text x="140" y="124" font-size="12" fill="#888" text-anchor="end">100</text>
+  <line x1="425" y1="376" x2="425" y2="384" stroke="#444" stroke-width="1.5"/>
+  <line x1="700" y1="376" x2="700" y2="384" stroke="#444" stroke-width="1.5"/>
+  <text x="425" y="402" font-size="12" fill="#888" text-anchor="middle">5</text>
+  <text x="700" y="402" font-size="12" fill="#888" text-anchor="middle">10</text>
+
+  <path d="M 205 380 L 260 377 L 315 376 L 370 375.5 L 425 375 L 480 374 L 535 373.5 L 590 373 L 645 372 L 700 371.4"
+        fill="none" stroke="#55c555" stroke-width="2.5"/>
+  <text x="710" y="366" font-size="13" fill="#55c555">log₂ x</text>
+
+  <path d="M 150 380 L 205 377.4 L 260 369.6 L 315 356.6 L 370 338.4 L 425 315 L 480 286.4 L 535 252.6 L 590 213.6 L 645 169.4 L 700 120"
+        fill="none" stroke="#7ec8e3" stroke-width="2.5"/>
+  <text x="710" y="124" font-size="13" fill="#7ec8e3">x²</text>
+
+  <path d="M 150 377.4 L 205 374.8 L 260 369.6 L 315 359.2 L 370 338.4 L 425 296.8 L 480 213.6 L 515 120"
+        fill="none" stroke="#e05555" stroke-width="2.5"/>
+  <line x1="517" y1="117" x2="545" y2="99" stroke="#e05555" stroke-width="2.5" stroke-dasharray="5,3" marker-end="url(#grUp)"/>
+  <text x="470" y="150" font-size="13" fill="#e05555" text-anchor="end">2ˣ</text>
+
+  <rect x="60" y="418" width="760" height="34" rx="6" fill="#101010" stroke="#333" stroke-width="1"/>
+  <text x="84" y="440" font-size="13" fill="#e8e8e8">x = 1000 에서 log₂x 는 약 10, x² 은 100만, 2ˣ 은 301 자리 수다 — 로그 &lt; 다항 &lt; 지수.</text>
+</svg>

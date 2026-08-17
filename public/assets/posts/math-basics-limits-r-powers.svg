@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="440" viewBox="0 0 880 440" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <rect width="880" height="440" rx="12" fill="#0a0a0a"/>
+  <defs>
+    <marker id="rpUp" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#e05555"/>
+    </marker>
+  </defs>
+
+  <text x="60" y="48" font-size="22" font-weight="700" fill="#e8e8e8">공비 하나가 네 갈래를 가른다</text>
+  <text x="60" y="74" font-size="13" fill="#888">n 을 1 부터 5 까지 키우며 rⁿ 을 찍었다. 가로선은 0 이다</text>
+
+  <text x="147" y="112" font-size="16" font-weight="600" fill="#55c555" text-anchor="middle">r = 0.5</text>
+  <rect x="60" y="126" width="175" height="184" rx="6" fill="#101010" stroke="#333" stroke-width="1"/>
+  <line x1="76" y1="230" x2="219" y2="230" stroke="#666" stroke-width="1.5"/>
+  <circle cx="88" cy="205" r="5" fill="#55c555"/>
+  <circle cx="116" cy="217" r="5" fill="#55c555"/>
+  <circle cx="144" cy="224" r="5" fill="#55c555"/>
+  <circle cx="172" cy="227" r="5" fill="#55c555"/>
+  <circle cx="200" cy="228" r="5" fill="#55c555"/>
+  <text x="88" y="190" font-size="12" fill="#888" text-anchor="middle">0.5</text>
+  <text x="122" y="252" font-size="12" fill="#888" text-anchor="middle">점점 0 에 눕는다</text>
+  <text x="147" y="340" font-size="14" font-weight="600" fill="#55c555" text-anchor="middle">0 으로 수렴</text>
+
+  <text x="342" y="112" font-size="16" font-weight="600" fill="#7ec8e3" text-anchor="middle">r = 1</text>
+  <rect x="255" y="126" width="175" height="184" rx="6" fill="#101010" stroke="#333" stroke-width="1"/>
+  <line x1="271" y1="230" x2="414" y2="230" stroke="#666" stroke-width="1.5"/>
+  <circle cx="283" cy="180" r="5" fill="#7ec8e3"/>
+  <circle cx="311" cy="180" r="5" fill="#7ec8e3"/>
+  <circle cx="339" cy="180" r="5" fill="#7ec8e3"/>
+  <circle cx="367" cy="180" r="5" fill="#7ec8e3"/>
+  <circle cx="395" cy="180" r="5" fill="#7ec8e3"/>
+  <text x="283" y="165" font-size="12" fill="#888" text-anchor="middle">1</text>
+  <text x="342" y="252" font-size="12" fill="#888" text-anchor="middle">움직이지 않는다</text>
+  <text x="342" y="340" font-size="14" font-weight="600" fill="#7ec8e3" text-anchor="middle">1 로 수렴</text>
+
+  <text x="537" y="112" font-size="16" font-weight="600" fill="#e05555" text-anchor="middle">r = 2</text>
+  <rect x="450" y="126" width="175" height="184" rx="6" fill="#101010" stroke="#333" stroke-width="1"/>
+  <line x1="466" y1="230" x2="609" y2="230" stroke="#666" stroke-width="1.5"/>
+  <circle cx="478" cy="206" r="5" fill="#e05555"/>
+  <circle cx="506" cy="182" r="5" fill="#e05555"/>
+  <circle cx="534" cy="134" r="5" fill="#e05555"/>
+  <text x="478" y="222" font-size="12" fill="#888" text-anchor="middle">2</text>
+  <text x="512" y="170" font-size="12" fill="#888" text-anchor="start">4</text>
+  <text x="546" y="140" font-size="12" fill="#888" text-anchor="start">8</text>
+  <line x1="570" y1="200" x2="596" y2="140" stroke="#e05555" stroke-width="2.5" stroke-dasharray="5,3" marker-end="url(#rpUp)"/>
+  <text x="537" y="264" font-size="12" fill="#888" text-anchor="middle">칸을 넘어 계속 올라간다</text>
+  <text x="537" y="340" font-size="14" font-weight="600" fill="#e05555" text-anchor="middle">발산</text>
+
+  <text x="732" y="112" font-size="16" font-weight="600" fill="#7777cc" text-anchor="middle">r = −1</text>
+  <rect x="645" y="126" width="175" height="184" rx="6" fill="#101010" stroke="#333" stroke-width="1"/>
+  <line x1="661" y1="218" x2="804" y2="218" stroke="#666" stroke-width="1.5"/>
+  <circle cx="673" cy="268" r="5" fill="#7777cc"/>
+  <circle cx="701" cy="168" r="5" fill="#7777cc"/>
+  <circle cx="729" cy="268" r="5" fill="#7777cc"/>
+  <circle cx="757" cy="168" r="5" fill="#7777cc"/>
+  <circle cx="785" cy="268" r="5" fill="#7777cc"/>
+  <text x="707" y="158" font-size="12" fill="#888" text-anchor="start">1</text>
+  <text x="679" y="288" font-size="12" fill="#888" text-anchor="start">−1</text>
+  <text x="732" y="302" font-size="12" fill="#888" text-anchor="middle">한 자리에 머물지 않는다</text>
+  <text x="732" y="340" font-size="14" font-weight="600" fill="#7777cc" text-anchor="middle">진동</text>
+
+  <rect x="60" y="366" width="760" height="44" rx="6" fill="#101010" stroke="#333" stroke-width="1"/>
+  <text x="84" y="394" font-size="13" fill="#e8e8e8">1 보다 작은 수를 거듭 곱하면 깎여 나가므로, |r| &lt; 1 일 때만 0 에 붙는다.</text>
+</svg>

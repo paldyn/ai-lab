@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="480" viewBox="0 0 880 480" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <rect width="880" height="480" rx="12" fill="#0a0a0a"/>
+
+  <text x="60" y="48" font-size="22" font-weight="700" fill="#e8e8e8">항을 더할 때마다 남은 자리의 절반만 채운다</text>
+  <text x="60" y="74" font-size="13" fill="#888">넓이 1 인 정사각형 — 넘지 못하면서 빈틈은 계속 반으로 줄어든다</text>
+
+  <rect x="120" y="130" width="280" height="280" fill="none" stroke="#666" stroke-width="1.5"/>
+  <rect x="120" y="130" width="140" height="280" fill="#7ec8e3" fill-opacity="0.34" stroke="#7ec8e3" stroke-width="1"/>
+  <rect x="260" y="130" width="140" height="140" fill="#7ec8e3" fill-opacity="0.26" stroke="#7ec8e3" stroke-width="1"/>
+  <rect x="260" y="270" width="70" height="140" fill="#7ec8e3" fill-opacity="0.20" stroke="#7ec8e3" stroke-width="1"/>
+  <rect x="330" y="270" width="70" height="70" fill="#7ec8e3" fill-opacity="0.15" stroke="#7ec8e3" stroke-width="1"/>
+  <rect x="330" y="340" width="35" height="70" fill="#7ec8e3" fill-opacity="0.11" stroke="#7ec8e3" stroke-width="1"/>
+  <rect x="365" y="340" width="35" height="35" fill="#7ec8e3" fill-opacity="0.08" stroke="#7ec8e3" stroke-width="1"/>
+
+  <text x="190" y="276" font-size="18" fill="#e8e8e8" text-anchor="middle">1/2</text>
+  <text x="330" y="206" font-size="16" fill="#e8e8e8" text-anchor="middle">1/4</text>
+  <text x="295" y="346" font-size="14" fill="#e8e8e8" text-anchor="middle">1/8</text>
+  <text x="365" y="310" font-size="12" fill="#e8e8e8" text-anchor="middle">1/16</text>
+
+  <text x="120" y="436" font-size="13" fill="#888">한 변이 1 인 정사각형</text>
+  <text x="404" y="392" font-size="12" fill="#7777cc">남은 빈틈</text>
+
+  <rect x="460" y="130" width="360" height="230" rx="6" fill="#101010" stroke="#333" stroke-width="1"/>
+  <text x="484" y="158" font-size="14" font-weight="600" fill="#e8e8e8">채운 넓이 = 부분합</text>
+  <line x1="484" y1="170" x2="796" y2="170" stroke="#333" stroke-width="1"/>
+  <text x="484" y="194" font-size="13" fill="#888">항 수</text>
+  <text x="620" y="194" font-size="13" fill="#888">채운 넓이</text>
+  <text x="760" y="194" font-size="13" fill="#888">빈틈</text>
+  <text x="484" y="220" font-size="13" fill="#e8e8e8">1</text>
+  <text x="620" y="220" font-size="13" fill="#e8e8e8">0.5</text>
+  <text x="760" y="220" font-size="13" fill="#7777cc">0.5</text>
+  <text x="484" y="244" font-size="13" fill="#e8e8e8">2</text>
+  <text x="620" y="244" font-size="13" fill="#e8e8e8">0.75</text>
+  <text x="760" y="244" font-size="13" fill="#7777cc">0.25</text>
+  <text x="484" y="268" font-size="13" fill="#e8e8e8">3</text>
+  <text x="620" y="268" font-size="13" fill="#e8e8e8">0.875</text>
+  <text x="760" y="268" font-size="13" fill="#7777cc">0.125</text>
+  <text x="484" y="292" font-size="13" fill="#e8e8e8">4</text>
+  <text x="620" y="292" font-size="13" fill="#e8e8e8">0.9375</text>
+  <text x="760" y="292" font-size="13" fill="#7777cc">0.0625</text>
+  <text x="484" y="316" font-size="13" fill="#e8e8e8">10</text>
+  <text x="620" y="316" font-size="13" fill="#e8e8e8">0.99902…</text>
+  <text x="760" y="316" font-size="13" fill="#7777cc">0.00098</text>
+  <line x1="484" y1="330" x2="796" y2="330" stroke="#333" stroke-width="1"/>
+  <text x="484" y="352" font-size="13" fill="#55c555">빈틈이 반씩 줄어드니 넓이는 1 에 붙는다</text>
+
+  <rect x="460" y="380" width="360" height="56" rx="6" fill="#101010" stroke="#333" stroke-width="1"/>
+  <text x="484" y="404" font-size="13" fill="#e8e8e8">「무한히 더해도 값이 유한하다」는</text>
+  <text x="484" y="424" font-size="13" fill="#e8e8e8">더하는 것이 충분히 빨리 작아진다는 말이다</text>
+</svg>

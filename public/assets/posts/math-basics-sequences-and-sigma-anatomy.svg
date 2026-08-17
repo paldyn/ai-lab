@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="440" viewBox="0 0 880 440" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <rect width="880" height="440" rx="12" fill="#0a0a0a"/>
+  <defs>
+    <marker id="sgTo" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#888"/>
+    </marker>
+  </defs>
+
+  <text x="60" y="48" font-size="22" font-weight="700" fill="#e8e8e8">Σ 는 계산이 아니라 지시문이다</text>
+  <text x="60" y="74" font-size="13" fill="#888">어디부터, 어디까지, 무엇을 더할지 — 세 자리에 나눠 적는다</text>
+
+  <text x="200" y="240" font-size="84" fill="#e8e8e8" text-anchor="middle">∑</text>
+  <text x="200" y="146" font-size="24" fill="#7ec8e3" text-anchor="middle">n</text>
+  <text x="200" y="286" font-size="20" fill="#55c555" text-anchor="middle">k = 1</text>
+  <text x="252" y="228" font-size="30" fill="#e05555">aₖ</text>
+
+  <line x1="440" y1="140" x2="226" y2="140" stroke="#888" stroke-width="2" marker-end="url(#sgTo)"/>
+  <text x="454" y="145" font-size="13" fill="#7ec8e3">도착값 — k 가 여기까지 올라간다</text>
+
+  <line x1="440" y1="222" x2="306" y2="222" stroke="#888" stroke-width="2" marker-end="url(#sgTo)"/>
+  <text x="454" y="227" font-size="13" fill="#e05555">더할 것 — k 자리에 값을 넣어 만든다</text>
+
+  <line x1="440" y1="282" x2="248" y2="282" stroke="#888" stroke-width="2" marker-end="url(#sgTo)"/>
+  <text x="454" y="287" font-size="13" fill="#55c555">출발값 — k 가 여기서 시작한다</text>
+
+  <line x1="100" y1="322" x2="820" y2="322" stroke="#333" stroke-width="1"/>
+  <text x="100" y="356" font-size="20" fill="#e8e8e8">= a₁ + a₂ + a₃ + ⋯ + aₙ</text>
+
+  <rect x="60" y="376" width="760" height="44" rx="6" fill="#101010" stroke="#333" stroke-width="1"/>
+  <text x="84" y="404" font-size="13" fill="#e8e8e8">「k 가 1부터 n 까지 갈 동안 aₖ 를 전부 더하라」 — 소리 내어 읽으면 그것이 전부다.</text>
+</svg>

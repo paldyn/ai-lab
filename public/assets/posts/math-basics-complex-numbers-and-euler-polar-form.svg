@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="470" viewBox="0 0 880 470" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <rect width="880" height="470" rx="12" fill="#0a0a0a"/>
+  <defs>
+    <marker id="pfAx" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#888"/>
+    </marker>
+  </defs>
+
+  <text x="60" y="48" font-size="22" font-weight="700" fill="#e8e8e8">같은 점을 가로·세로로 적거나, 거리와 각으로 적거나</text>
+  <text x="60" y="74" font-size="13" fill="#888">뒤쪽으로 적은 것이 극형식이다</text>
+
+  <line x1="160" y1="330" x2="480" y2="330" stroke="#888" stroke-width="1.5" marker-end="url(#pfAx)"/>
+  <line x1="260" y1="420" x2="260" y2="140" stroke="#888" stroke-width="1.5" marker-end="url(#pfAx)"/>
+  <text x="486" y="334" font-size="13" fill="#888">실수부</text>
+  <text x="268" y="142" font-size="13" fill="#888">허수부</text>
+
+  <line x1="360" y1="326" x2="360" y2="334" stroke="#444" stroke-width="1.5"/>
+  <text x="360" y="352" font-size="12" fill="#888" text-anchor="middle">1</text>
+  <line x1="256" y1="230" x2="264" y2="230" stroke="#444" stroke-width="1.5"/>
+  <text x="250" y="234" font-size="12" fill="#888" text-anchor="end">i</text>
+
+  <line x1="360" y1="230" x2="360" y2="330" stroke="#55c555" stroke-width="2" stroke-dasharray="4,4"/>
+  <line x1="260" y1="230" x2="360" y2="230" stroke="#7777cc" stroke-width="2" stroke-dasharray="4,4"/>
+
+  <line x1="260" y1="330" x2="360" y2="230" stroke="#7ec8e3" stroke-width="2.5"/>
+  <path d="M 316 330 A 56 56 0 0 0 299.6 290.4" fill="none" stroke="#e05555" stroke-width="2"/>
+  <text x="330" y="296" font-size="13" fill="#e05555">θ = 45°</text>
+
+  <text x="286" y="264" font-size="13" fill="#7ec8e3" text-anchor="end" transform="rotate(-45 286 264)">r = √2</text>
+
+  <circle cx="360" cy="230" r="5" fill="#e8e8e8"/>
+  <text x="372" y="220" font-size="14" font-weight="600" fill="#e8e8e8">1 + i</text>
+
+  <text x="368" y="290" font-size="13" fill="#55c555">세로 1</text>
+  <text x="310" y="214" font-size="13" fill="#7777cc" text-anchor="middle">가로 1</text>
+
+  <rect x="540" y="130" width="280" height="196" rx="6" fill="#101010" stroke="#333" stroke-width="1"/>
+  <text x="564" y="158" font-size="14" font-weight="600" fill="#e8e8e8">한 점을 두 가지로 적는다</text>
+  <line x1="564" y1="170" x2="796" y2="170" stroke="#333" stroke-width="1"/>
+  <text x="564" y="194" font-size="13" fill="#888">가로·세로로</text>
+  <text x="564" y="216" font-size="14" fill="#e8e8e8">1 + i</text>
+  <text x="564" y="252" font-size="13" fill="#888">거리와 각으로</text>
+  <text x="564" y="274" font-size="14" fill="#7ec8e3">√2 (cos 45° + i sin 45°)</text>
+  <line x1="564" y1="288" x2="796" y2="288" stroke="#333" stroke-width="1"/>
+  <text x="564" y="312" font-size="13" fill="#888">√2 × 1/√2 = 1 — 되짚으면 같다</text>
+
+  <rect x="60" y="392" width="760" height="44" rx="6" fill="#101010" stroke="#333" stroke-width="1"/>
+  <text x="84" y="420" font-size="13" fill="#e8e8e8">거리 r 은 절댓값, 각 θ 는 편각이다. 곱셈이 짧아지는 것은 뒤쪽 표기 덕분이다.</text>
+</svg>

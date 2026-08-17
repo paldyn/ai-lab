@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="380" viewBox="0 0 880 380" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <rect width="880" height="380" rx="12" fill="#0a0a0a"/>
+  <defs>
+    <marker id="rcArr" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#55c555"/>
+    </marker>
+  </defs>
+
+  <text x="60" y="48" font-size="22" font-weight="700" fill="#e8e8e8">점화식은 손으로 굴려 보면 안다</text>
+  <text x="60" y="74" font-size="13" fill="#888">a₁ = 1 이고 다음 항은 늘 「두 배 하고 1 더하기」다</text>
+
+  <rect x="90" y="170" width="90" height="60" rx="6" fill="#101010" stroke="#55c555" stroke-width="1.5"/>
+  <text x="135" y="194" font-size="12" fill="#888" text-anchor="middle">a₁</text>
+  <text x="135" y="216" font-size="18" fill="#e8e8e8" text-anchor="middle">1</text>
+  <rect x="235" y="170" width="90" height="60" rx="6" fill="#101010" stroke="#333" stroke-width="1"/>
+  <text x="280" y="194" font-size="12" fill="#888" text-anchor="middle">a₂</text>
+  <text x="280" y="216" font-size="18" fill="#e8e8e8" text-anchor="middle">3</text>
+  <rect x="380" y="170" width="90" height="60" rx="6" fill="#101010" stroke="#333" stroke-width="1"/>
+  <text x="425" y="194" font-size="12" fill="#888" text-anchor="middle">a₃</text>
+  <text x="425" y="216" font-size="18" fill="#e8e8e8" text-anchor="middle">7</text>
+  <rect x="525" y="170" width="90" height="60" rx="6" fill="#101010" stroke="#333" stroke-width="1"/>
+  <text x="570" y="194" font-size="12" fill="#888" text-anchor="middle">a₄</text>
+  <text x="570" y="216" font-size="18" fill="#e8e8e8" text-anchor="middle">15</text>
+  <rect x="670" y="170" width="90" height="60" rx="6" fill="#101010" stroke="#333" stroke-width="1"/>
+  <text x="715" y="194" font-size="12" fill="#888" text-anchor="middle">a₅</text>
+  <text x="715" y="216" font-size="18" fill="#e8e8e8" text-anchor="middle">31</text>
+
+  <line x1="180" y1="200" x2="235" y2="200" stroke="#55c555" stroke-width="2" marker-end="url(#rcArr)"/>
+  <line x1="325" y1="200" x2="380" y2="200" stroke="#55c555" stroke-width="2" marker-end="url(#rcArr)"/>
+  <line x1="470" y1="200" x2="525" y2="200" stroke="#55c555" stroke-width="2" marker-end="url(#rcArr)"/>
+  <line x1="615" y1="200" x2="670" y2="200" stroke="#55c555" stroke-width="2" marker-end="url(#rcArr)"/>
+
+  <text x="207" y="146" font-size="12" fill="#55c555" text-anchor="middle">2×1+1</text>
+  <text x="352" y="146" font-size="12" fill="#55c555" text-anchor="middle">2×3+1</text>
+  <text x="497" y="146" font-size="12" fill="#55c555" text-anchor="middle">2×7+1</text>
+  <text x="642" y="146" font-size="12" fill="#55c555" text-anchor="middle">2×15+1</text>
+
+  <text x="135" y="266" font-size="12" fill="#7ec8e3" text-anchor="middle">2¹ − 1</text>
+  <text x="280" y="266" font-size="12" fill="#7ec8e3" text-anchor="middle">2² − 1</text>
+  <text x="425" y="266" font-size="12" fill="#7ec8e3" text-anchor="middle">2³ − 1</text>
+  <text x="570" y="266" font-size="12" fill="#7ec8e3" text-anchor="middle">2⁴ − 1</text>
+  <text x="715" y="266" font-size="12" fill="#7ec8e3" text-anchor="middle">2⁵ − 1</text>
+
+  <rect x="60" y="296" width="760" height="44" rx="6" fill="#101010" stroke="#333" stroke-width="1"/>
+  <text x="84" y="324" font-size="13" fill="#e8e8e8">다섯 항을 늘어놓고 나서야 아래 줄의 규칙이 보인다. 굴려 보는 것이 먼저다.</text>
+</svg>

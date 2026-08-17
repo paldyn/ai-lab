@@ -214,3 +214,5 @@ $$\cos^2\theta+\sin^2\theta=1$$ 을 보면 두 수의 제곱의 합이 1이라�
 읽어주셔서 감사합니다. 😊
 
 **지난 글:** [좌표평면과 직선: 거리, 기울기, 그리고 원](/articles/math-basics-coordinate-plane-and-lines)
+
+**다음 글:** [복소수와 오일러 공식: 곱셈이 회전이 되는 자리](/articles/math-basics-complex-numbers-and-euler)

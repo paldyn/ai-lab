@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="500" viewBox="0 0 880 500" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <rect width="880" height="500" rx="12" fill="#0a0a0a"/>
+  <defs>
+    <marker id="cpAx" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#888"/>
+    </marker>
+    <marker id="cpMove" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#55c555"/>
+    </marker>
+  </defs>
+
+  <text x="60" y="48" font-size="22" font-weight="700" fill="#e8e8e8">a + bi 는 평면 위의 점이고, 더하기는 평행이동이다</text>
+  <text x="60" y="74" font-size="13" fill="#888">가로축에 실수부, 세로축에 허수부를 잡는다</text>
+
+  <line x1="130" y1="300" x2="510" y2="300" stroke="#888" stroke-width="1.5" marker-end="url(#cpAx)"/>
+  <line x1="270" y1="440" x2="270" y2="150" stroke="#888" stroke-width="1.5" marker-end="url(#cpAx)"/>
+  <text x="516" y="304" font-size="13" fill="#888">실수부</text>
+  <text x="278" y="152" font-size="13" fill="#888">허수부</text>
+
+  <line x1="316" y1="296" x2="316" y2="304" stroke="#444" stroke-width="1.5"/>
+  <line x1="362" y1="296" x2="362" y2="304" stroke="#444" stroke-width="1.5"/>
+  <line x1="408" y1="296" x2="408" y2="304" stroke="#444" stroke-width="1.5"/>
+  <line x1="454" y1="296" x2="454" y2="304" stroke="#444" stroke-width="1.5"/>
+  <text x="316" y="320" font-size="12" fill="#888" text-anchor="middle">1</text>
+  <text x="362" y="320" font-size="12" fill="#888" text-anchor="middle">2</text>
+  <text x="408" y="320" font-size="12" fill="#888" text-anchor="middle">3</text>
+  <text x="454" y="320" font-size="12" fill="#888" text-anchor="middle">4</text>
+
+  <line x1="266" y1="254" x2="274" y2="254" stroke="#444" stroke-width="1.5"/>
+  <line x1="266" y1="208" x2="274" y2="208" stroke="#444" stroke-width="1.5"/>
+  <line x1="266" y1="162" x2="274" y2="162" stroke="#444" stroke-width="1.5"/>
+  <line x1="266" y1="392" x2="274" y2="392" stroke="#444" stroke-width="1.5"/>
+  <text x="258" y="258" font-size="12" fill="#888" text-anchor="end">i</text>
+  <text x="258" y="212" font-size="12" fill="#888" text-anchor="end">2i</text>
+  <text x="258" y="166" font-size="12" fill="#888" text-anchor="end">3i</text>
+  <text x="258" y="396" font-size="12" fill="#888" text-anchor="end">−2i</text>
+
+  <line x1="408" y1="208" x2="454" y2="162" stroke="#55c555" stroke-width="2.5" stroke-dasharray="5,3" marker-end="url(#cpMove)"/>
+  <text x="470" y="216" font-size="13" fill="#55c555">+ (1 + i)</text>
+  <text x="470" y="234" font-size="13" fill="#55c555">오른쪽 1, 위 1</text>
+
+  <line x1="270" y1="300" x2="454" y2="162" stroke="#7ec8e3" stroke-width="2"/>
+
+  <circle cx="408" cy="208" r="5" fill="#e8e8e8"/>
+  <text x="398" y="194" font-size="13" fill="#e8e8e8" text-anchor="end">3 + 2i</text>
+  <circle cx="454" cy="162" r="5" fill="#e8e8e8"/>
+  <text x="464" y="150" font-size="13" fill="#e8e8e8">4 + 3i</text>
+  <circle cx="408" cy="392" r="5" fill="#7777cc"/>
+  <text x="420" y="396" font-size="13" fill="#7777cc">3 − 2i (켤레)</text>
+
+  <line x1="408" y1="216" x2="408" y2="384" stroke="#7777cc" stroke-width="2" stroke-dasharray="4,4"/>
+
+  <rect x="560" y="130" width="260" height="230" rx="6" fill="#101010" stroke="#333" stroke-width="1"/>
+  <text x="584" y="158" font-size="14" font-weight="600" fill="#e8e8e8">그림으로 읽는 세 가지</text>
+  <line x1="584" y1="170" x2="796" y2="170" stroke="#333" stroke-width="1"/>
+  <text x="584" y="194" font-size="13" fill="#55c555">더하기</text>
+  <text x="584" y="212" font-size="13" fill="#888">가로·세로로 그만큼 옮긴다</text>
+  <text x="584" y="248" font-size="13" fill="#7ec8e3">절댓값</text>
+  <text x="584" y="266" font-size="13" fill="#888">원점에서의 거리 (파란 선)</text>
+  <text x="584" y="284" font-size="13" fill="#888">√(16 + 9) = 5</text>
+  <text x="584" y="320" font-size="13" fill="#7777cc">켤레</text>
+  <text x="584" y="338" font-size="13" fill="#888">가로축에 대해 접은 자리</text>
+
+  <rect x="60" y="440" width="760" height="44" rx="6" fill="#101010" stroke="#333" stroke-width="1"/>
+  <text x="84" y="468" font-size="13" fill="#e8e8e8">곱하기만 아직 그림이 없다 — 그 자리를 채우는 것이 이 글의 본론이다.</text>
+</svg>

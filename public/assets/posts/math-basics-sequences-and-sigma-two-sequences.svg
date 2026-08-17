@@ -1,0 +1,75 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="490" viewBox="0 0 880 490" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <rect width="880" height="490" rx="12" fill="#0a0a0a"/>
+  <defs>
+    <marker id="tsAdd" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#55c555"/>
+    </marker>
+    <marker id="tsMul" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#7ec8e3"/>
+    </marker>
+  </defs>
+
+  <text x="60" y="48" font-size="22" font-weight="700" fill="#e8e8e8">차가 일정한가, 비가 일정한가</text>
+  <text x="60" y="74" font-size="13" fill="#888">둘 다 n 번째 항까지 오는 데 규칙을 n − 1 번 쓴다</text>
+
+  <text x="60" y="120" font-size="16" font-weight="600" fill="#55c555">등차수열 — 이웃한 차가 늘 4</text>
+
+  <rect x="90" y="140" width="90" height="60" rx="6" fill="#101010" stroke="#333" stroke-width="1"/>
+  <text x="135" y="164" font-size="12" fill="#888" text-anchor="middle">a₁</text>
+  <text x="135" y="186" font-size="16" fill="#e8e8e8" text-anchor="middle">3</text>
+  <rect x="235" y="140" width="90" height="60" rx="6" fill="#101010" stroke="#333" stroke-width="1"/>
+  <text x="280" y="164" font-size="12" fill="#888" text-anchor="middle">a₂</text>
+  <text x="280" y="186" font-size="16" fill="#e8e8e8" text-anchor="middle">7</text>
+  <rect x="380" y="140" width="90" height="60" rx="6" fill="#101010" stroke="#333" stroke-width="1"/>
+  <text x="425" y="164" font-size="12" fill="#888" text-anchor="middle">a₃</text>
+  <text x="425" y="186" font-size="16" fill="#e8e8e8" text-anchor="middle">11</text>
+  <rect x="525" y="140" width="90" height="60" rx="6" fill="#101010" stroke="#333" stroke-width="1"/>
+  <text x="570" y="164" font-size="12" fill="#888" text-anchor="middle">a₄</text>
+  <text x="570" y="186" font-size="16" fill="#e8e8e8" text-anchor="middle">15</text>
+  <rect x="670" y="140" width="90" height="60" rx="6" fill="#101010" stroke="#333" stroke-width="1"/>
+  <text x="715" y="164" font-size="12" fill="#888" text-anchor="middle">a₅</text>
+  <text x="715" y="186" font-size="16" fill="#e8e8e8" text-anchor="middle">19</text>
+
+  <line x1="180" y1="170" x2="235" y2="170" stroke="#55c555" stroke-width="2" marker-end="url(#tsAdd)"/>
+  <line x1="325" y1="170" x2="380" y2="170" stroke="#55c555" stroke-width="2" marker-end="url(#tsAdd)"/>
+  <line x1="470" y1="170" x2="525" y2="170" stroke="#55c555" stroke-width="2" marker-end="url(#tsAdd)"/>
+  <line x1="615" y1="170" x2="670" y2="170" stroke="#55c555" stroke-width="2" marker-end="url(#tsAdd)"/>
+  <text x="207" y="154" font-size="13" fill="#55c555" text-anchor="middle">+4</text>
+  <text x="352" y="154" font-size="13" fill="#55c555" text-anchor="middle">+4</text>
+  <text x="497" y="154" font-size="13" fill="#55c555" text-anchor="middle">+4</text>
+  <text x="642" y="154" font-size="13" fill="#55c555" text-anchor="middle">+4</text>
+
+  <text x="90" y="228" font-size="13" fill="#888">a₅ 까지 오는 데 +4 를 네 번 썼다 → aₙ = 3 + (n − 1) × 4</text>
+
+  <text x="60" y="280" font-size="16" font-weight="600" fill="#7ec8e3">등비수열 — 이웃한 비가 늘 3</text>
+
+  <rect x="90" y="300" width="90" height="60" rx="6" fill="#101010" stroke="#333" stroke-width="1"/>
+  <text x="135" y="324" font-size="12" fill="#888" text-anchor="middle">a₁</text>
+  <text x="135" y="346" font-size="16" fill="#e8e8e8" text-anchor="middle">2</text>
+  <rect x="235" y="300" width="90" height="60" rx="6" fill="#101010" stroke="#333" stroke-width="1"/>
+  <text x="280" y="324" font-size="12" fill="#888" text-anchor="middle">a₂</text>
+  <text x="280" y="346" font-size="16" fill="#e8e8e8" text-anchor="middle">6</text>
+  <rect x="380" y="300" width="90" height="60" rx="6" fill="#101010" stroke="#333" stroke-width="1"/>
+  <text x="425" y="324" font-size="12" fill="#888" text-anchor="middle">a₃</text>
+  <text x="425" y="346" font-size="16" fill="#e8e8e8" text-anchor="middle">18</text>
+  <rect x="525" y="300" width="90" height="60" rx="6" fill="#101010" stroke="#333" stroke-width="1"/>
+  <text x="570" y="324" font-size="12" fill="#888" text-anchor="middle">a₄</text>
+  <text x="570" y="346" font-size="16" fill="#e8e8e8" text-anchor="middle">54</text>
+  <rect x="670" y="300" width="90" height="60" rx="6" fill="#101010" stroke="#333" stroke-width="1"/>
+  <text x="715" y="324" font-size="12" fill="#888" text-anchor="middle">a₅</text>
+  <text x="715" y="346" font-size="16" fill="#e8e8e8" text-anchor="middle">162</text>
+
+  <line x1="180" y1="330" x2="235" y2="330" stroke="#7ec8e3" stroke-width="2" marker-end="url(#tsMul)"/>
+  <line x1="325" y1="330" x2="380" y2="330" stroke="#7ec8e3" stroke-width="2" marker-end="url(#tsMul)"/>
+  <line x1="470" y1="330" x2="525" y2="330" stroke="#7ec8e3" stroke-width="2" marker-end="url(#tsMul)"/>
+  <line x1="615" y1="330" x2="670" y2="330" stroke="#7ec8e3" stroke-width="2" marker-end="url(#tsMul)"/>
+  <text x="207" y="314" font-size="13" fill="#7ec8e3" text-anchor="middle">×3</text>
+  <text x="352" y="314" font-size="13" fill="#7ec8e3" text-anchor="middle">×3</text>
+  <text x="497" y="314" font-size="13" fill="#7ec8e3" text-anchor="middle">×3</text>
+  <text x="642" y="314" font-size="13" fill="#7ec8e3" text-anchor="middle">×3</text>
+
+  <text x="90" y="388" font-size="13" fill="#888">a₅ 까지 오는 데 ×3 을 네 번 썼다 → aₙ = 2 × 3ⁿ⁻¹</text>
+
+  <rect x="60" y="416" width="760" height="44" rx="6" fill="#101010" stroke="#333" stroke-width="1"/>
+  <text x="84" y="444" font-size="13" fill="#e8e8e8">규칙을 쓴 횟수가 n 이 아니라 n − 1 인 것이 두 공식의 −1 이다.</text>
+</svg>

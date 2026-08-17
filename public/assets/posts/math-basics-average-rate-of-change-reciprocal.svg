@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="450" viewBox="0 0 880 450" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <rect width="880" height="450" rx="12" fill="#0a0a0a"/>
+  <defs>
+    <marker id="rcpAx" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#888"/>
+    </marker>
+  </defs>
+
+  <text x="60" y="48" font-size="22" font-weight="700" fill="#e8e8e8">값이 내려가는 함수에서는 평균변화율이 음수다</text>
+  <text x="60" y="74" font-size="13" fill="#888">f(x) = 1/x 의 구간 [2, 3] — 가로로 1 가는 동안 세로가 내려온다</text>
+
+  <line x1="170" y1="380" x2="700" y2="380" stroke="#888" stroke-width="1.5" marker-end="url(#rcpAx)"/>
+  <line x1="200" y1="410" x2="200" y2="140" stroke="#888" stroke-width="1.5" marker-end="url(#rcpAx)"/>
+  <text x="706" y="384" font-size="13" fill="#888">x</text>
+  <text x="208" y="142" font-size="13" fill="#888">y</text>
+
+  <path d="M 236 155 L 245 200 L 260 245 L 290 290 L 335 320 L 380 335 L 425 344 L 470 350 L 515 354 L 560 357.5 L 605 360 L 650 362"
+        fill="none" stroke="#7ec8e3" stroke-width="2.5"/>
+
+  <line x1="344" y1="329" x2="524" y2="359" stroke="#e05555" stroke-width="2.5"/>
+
+  <line x1="380" y1="335" x2="470" y2="335" stroke="#55c555" stroke-width="2" stroke-dasharray="5,3"/>
+  <line x1="470" y1="335" x2="470" y2="350" stroke="#e05555" stroke-width="2.5"/>
+
+  <text x="425" y="318" font-size="13" fill="#55c555" text-anchor="middle">Δx = 1</text>
+  <text x="486" y="346" font-size="13" fill="#e05555">Δy = 1/3 − 1/2 = −1/6</text>
+
+  <circle cx="380" cy="335" r="5" fill="#e8e8e8"/>
+  <circle cx="470" cy="350" r="5" fill="#e8e8e8"/>
+
+  <line x1="380" y1="376" x2="380" y2="384" stroke="#444" stroke-width="1.5"/>
+  <line x1="470" y1="376" x2="470" y2="384" stroke="#444" stroke-width="1.5"/>
+  <text x="380" y="402" font-size="12" fill="#888" text-anchor="middle">2</text>
+  <text x="470" y="402" font-size="12" fill="#888" text-anchor="middle">3</text>
+
+  <rect x="600" y="150" width="220" height="130" rx="6" fill="#101010" stroke="#333" stroke-width="1"/>
+  <text x="624" y="178" font-size="14" font-weight="600" fill="#e8e8e8">이 구간의 평균변화율</text>
+  <line x1="624" y1="190" x2="796" y2="190" stroke="#333" stroke-width="1"/>
+  <text x="624" y="218" font-size="14" fill="#e05555">−1/6 ≈ −0.1667</text>
+  <text x="624" y="248" font-size="13" fill="#888">구간을 좁히면 이 값이</text>
+  <text x="624" y="268" font-size="13" fill="#888">−1/4 쪽으로 간다</text>
+
+  <rect x="60" y="410" width="760" height="30" rx="6" fill="#101010" stroke="#333" stroke-width="1"/>
+  <text x="84" y="430" font-size="13" fill="#e8e8e8">부호가 음수라는 것은 「오른쪽으로 갈수록 값이 내려간다」는 말이다.</text>
+</svg>

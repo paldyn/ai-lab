@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="510" viewBox="0 0 880 510" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <rect width="880" height="510" rx="12" fill="#0a0a0a"/>
+  <defs>
+    <marker id="scAx" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#888"/>
+    </marker>
+  </defs>
+
+  <text x="60" y="48" font-size="22" font-weight="700" fill="#e8e8e8">곡선을 가로질러 두 점을 잇는 직선이 할선이다</text>
+  <text x="60" y="74" font-size="13" fill="#888">그 기울기가 그 구간의 평균변화율이다</text>
+
+  <line x1="240" y1="400" x2="600" y2="400" stroke="#888" stroke-width="1.5" marker-end="url(#scAx)"/>
+  <line x1="280" y1="430" x2="280" y2="140" stroke="#888" stroke-width="1.5" marker-end="url(#scAx)"/>
+  <text x="606" y="404" font-size="13" fill="#888">x</text>
+  <text x="288" y="142" font-size="13" fill="#888">y</text>
+
+  <path d="M 280 400 L 320 394.5 L 360 378 L 400 350.5 L 440 312 L 480 262.5 L 520 202 L 552 126"
+        fill="none" stroke="#7ec8e3" stroke-width="2.5"/>
+
+  <line x1="330" y1="411" x2="560" y2="158" stroke="#e05555" stroke-width="2.5"/>
+
+  <line x1="360" y1="378" x2="520" y2="378" stroke="#55c555" stroke-width="2" stroke-dasharray="5,3"/>
+  <line x1="520" y1="378" x2="520" y2="202" stroke="#55c555" stroke-width="2" stroke-dasharray="5,3"/>
+  <text x="440" y="366" font-size="14" fill="#55c555" text-anchor="middle">Δx</text>
+  <text x="534" y="296" font-size="14" fill="#55c555">Δy</text>
+
+  <line x1="360" y1="378" x2="284" y2="378" stroke="#444" stroke-width="1" stroke-dasharray="3,3"/>
+  <line x1="520" y1="202" x2="284" y2="202" stroke="#444" stroke-width="1" stroke-dasharray="3,3"/>
+  <text x="272" y="382" font-size="12" fill="#888" text-anchor="end">f(a)</text>
+  <text x="272" y="206" font-size="12" fill="#888" text-anchor="end">f(b)</text>
+
+  <line x1="360" y1="396" x2="360" y2="404" stroke="#444" stroke-width="1.5"/>
+  <line x1="520" y1="396" x2="520" y2="404" stroke="#444" stroke-width="1.5"/>
+  <text x="360" y="422" font-size="13" fill="#888" text-anchor="middle">a</text>
+  <text x="520" y="422" font-size="13" fill="#888" text-anchor="middle">b</text>
+
+  <circle cx="360" cy="378" r="5" fill="#e8e8e8"/>
+  <circle cx="520" cy="202" r="5" fill="#e8e8e8"/>
+
+  <text x="574" y="150" font-size="13" fill="#e05555">할선</text>
+
+  <rect x="640" y="180" width="180" height="150" rx="6" fill="#101010" stroke="#333" stroke-width="1"/>
+  <text x="664" y="208" font-size="14" font-weight="600" fill="#e8e8e8">평균변화율</text>
+  <line x1="664" y1="220" x2="796" y2="220" stroke="#333" stroke-width="1"/>
+  <text x="664" y="248" font-size="14" fill="#55c555">Δy / Δx</text>
+  <text x="664" y="278" font-size="13" fill="#888">= 할선의 기울기</text>
+  <text x="664" y="308" font-size="13" fill="#888">= 구간 [a, b] 의 값</text>
+
+  <rect x="60" y="444" width="760" height="46" rx="6" fill="#101010" stroke="#333" stroke-width="1"/>
+  <text x="84" y="473" font-size="13" fill="#e8e8e8">「평균」이 붙은 것은 구간 안에서 빨랐다 느렸다 하는 것을 값 하나로 뭉갰기 때문이다.</text>
+</svg>

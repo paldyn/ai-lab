@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="480" viewBox="0 0 880 480" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <rect width="880" height="480" rx="12" fill="#0a0a0a"/>
+  <defs>
+    <marker id="mrTurn" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#55c555"/>
+    </marker>
+    <marker id="mrBeta" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#e05555"/>
+    </marker>
+  </defs>
+
+  <text x="60" y="48" font-size="22" font-weight="700" fill="#e8e8e8">곱하기는 돌리기다</text>
+  <text x="60" y="74" font-size="13" fill="#888">크기 1짜리를 곱하면 길이는 그대로이고 각만 더해진다</text>
+
+  <text x="230" y="118" font-size="16" font-weight="600" fill="#e8e8e8" text-anchor="middle">i 를 곱하면 90° 돈다</text>
+  <circle cx="230" cy="290" r="100" fill="none" stroke="#333" stroke-width="1.5"/>
+  <line x1="110" y1="290" x2="350" y2="290" stroke="#444" stroke-width="1"/>
+  <line x1="230" y1="410" x2="230" y2="170" stroke="#444" stroke-width="1"/>
+
+  <path d="M 355 267 A 125 125 0 0 0 253 165" fill="none" stroke="#55c555" stroke-width="2.5" marker-end="url(#mrTurn)"/>
+  <path d="M 207 165 A 125 125 0 0 0 105 267" fill="none" stroke="#55c555" stroke-width="2.5" marker-end="url(#mrTurn)"/>
+  <path d="M 105 313 A 125 125 0 0 0 207 415" fill="none" stroke="#55c555" stroke-width="2.5" marker-end="url(#mrTurn)"/>
+  <path d="M 253 415 A 125 125 0 0 0 355 313" fill="none" stroke="#55c555" stroke-width="2.5" marker-end="url(#mrTurn)"/>
+  <text x="345" y="205" font-size="13" fill="#55c555">× i</text>
+  <text x="102" y="205" font-size="13" fill="#55c555" text-anchor="end">× i</text>
+  <text x="102" y="384" font-size="13" fill="#55c555" text-anchor="end">× i</text>
+  <text x="345" y="384" font-size="13" fill="#55c555">× i</text>
+
+  <circle cx="330" cy="290" r="5" fill="#e8e8e8"/>
+  <text x="322" y="312" font-size="13" fill="#e8e8e8" text-anchor="end">1</text>
+  <circle cx="230" cy="190" r="5" fill="#e8e8e8"/>
+  <text x="246" y="184" font-size="13" fill="#e8e8e8">i</text>
+  <circle cx="130" cy="290" r="5" fill="#e8e8e8"/>
+  <text x="138" y="312" font-size="13" fill="#e8e8e8">−1</text>
+  <circle cx="230" cy="390" r="5" fill="#e8e8e8"/>
+  <text x="246" y="394" font-size="13" fill="#e8e8e8">−i</text>
+
+  <text x="640" y="118" font-size="16" font-weight="600" fill="#e8e8e8" text-anchor="middle">각 α 에 각 β 를 곱하면 α + β 로 간다</text>
+  <circle cx="640" cy="290" r="100" fill="none" stroke="#333" stroke-width="1.5"/>
+  <line x1="520" y1="290" x2="770" y2="290" stroke="#444" stroke-width="1"/>
+  <line x1="640" y1="410" x2="640" y2="170" stroke="#444" stroke-width="1"/>
+
+  <line x1="640" y1="290" x2="726.6" y2="240" stroke="#7ec8e3" stroke-width="2.5"/>
+  <line x1="640" y1="290" x2="622.6" y2="191.5" stroke="#7777cc" stroke-width="2.5"/>
+  <path d="M 690 290 A 50 50 0 0 0 683.3 265" fill="none" stroke="#888" stroke-width="1.5"/>
+  <text x="700" y="278" font-size="13" fill="#888">α</text>
+
+  <path d="M 752 262 A 130 130 0 0 0 662 162" fill="none" stroke="#e05555" stroke-width="2.5" stroke-dasharray="5,3" marker-end="url(#mrBeta)"/>
+  <text x="700" y="148" font-size="13" fill="#e05555">β 만큼 더 돈다</text>
+
+  <circle cx="726.6" cy="240" r="5" fill="#e8e8e8"/>
+  <text x="738" y="256" font-size="13" fill="#7ec8e3">cos α + i sin α</text>
+  <circle cx="622.6" cy="191.5" r="5" fill="#e8e8e8"/>
+  <text x="610" y="180" font-size="13" fill="#7777cc" text-anchor="end">cos(α+β) + i sin(α+β)</text>
+
+  <rect x="60" y="426" width="760" height="40" rx="6" fill="#101010" stroke="#333" stroke-width="1"/>
+  <text x="84" y="452" font-size="13" fill="#e8e8e8">왼쪽 식을 그냥 전개하면 실수부와 허수부가 각각 cos(α+β) 와 sin(α+β) 의 덧셈정리가 된다.</text>
+</svg>

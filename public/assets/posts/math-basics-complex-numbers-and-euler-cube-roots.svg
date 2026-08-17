@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="460" viewBox="0 0 880 460" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <rect width="880" height="460" rx="12" fill="#0a0a0a"/>
+  <defs>
+    <marker id="crAx" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#888"/>
+    </marker>
+  </defs>
+
+  <text x="60" y="48" font-size="22" font-weight="700" fill="#e8e8e8">세제곱해서 1이 되는 수는 셋이고, 원을 삼등분한다</text>
+  <text x="60" y="74" font-size="13" fill="#888">각을 세 배 해서 한 바퀴의 배수가 되는 자리를 모두 찾는다</text>
+
+  <line x1="120" y1="270" x2="420" y2="270" stroke="#888" stroke-width="1.5" marker-end="url(#crAx)"/>
+  <line x1="270" y1="410" x2="270" y2="130" stroke="#888" stroke-width="1.5" marker-end="url(#crAx)"/>
+  <text x="426" y="274" font-size="13" fill="#888">실수부</text>
+  <text x="278" y="132" font-size="13" fill="#888">허수부</text>
+
+  <circle cx="270" cy="270" r="110" fill="none" stroke="#7777cc" stroke-width="2"/>
+  <path d="M 380 270 L 215 174.7 L 215 365.3 Z" fill="#7ec8e3" fill-opacity="0.12" stroke="#7ec8e3" stroke-width="2"/>
+
+  <path d="M 320 270 A 50 50 0 0 0 245 226.7" fill="none" stroke="#e05555" stroke-width="2"/>
+  <text x="300" y="222" font-size="13" fill="#e05555">120°</text>
+
+  <circle cx="380" cy="270" r="5" fill="#e8e8e8"/>
+  <text x="392" y="290" font-size="13" fill="#e8e8e8">1</text>
+  <circle cx="215" cy="174.7" r="5" fill="#e8e8e8"/>
+  <text x="205" y="162" font-size="13" fill="#e8e8e8" text-anchor="end">−1/2 + (√3/2) i</text>
+  <circle cx="215" cy="365.3" r="5" fill="#e8e8e8"/>
+  <text x="205" y="382" font-size="13" fill="#e8e8e8" text-anchor="end">−1/2 − (√3/2) i</text>
+
+  <rect x="500" y="130" width="320" height="230" rx="6" fill="#101010" stroke="#333" stroke-width="1"/>
+  <text x="524" y="158" font-size="14" font-weight="600" fill="#e8e8e8">각을 세 배 해서 제자리로 오는 각</text>
+  <line x1="524" y1="170" x2="796" y2="170" stroke="#333" stroke-width="1"/>
+  <text x="524" y="194" font-size="13" fill="#888">θ</text>
+  <text x="640" y="194" font-size="13" fill="#888">3θ</text>
+  <text x="740" y="194" font-size="13" fill="#888">한 바퀴</text>
+  <text x="524" y="220" font-size="13" fill="#e8e8e8">0°</text>
+  <text x="640" y="220" font-size="13" fill="#e8e8e8">0°</text>
+  <text x="740" y="220" font-size="13" fill="#55c555">0 바퀴</text>
+  <text x="524" y="246" font-size="13" fill="#e8e8e8">120°</text>
+  <text x="640" y="246" font-size="13" fill="#e8e8e8">360°</text>
+  <text x="740" y="246" font-size="13" fill="#55c555">1 바퀴</text>
+  <text x="524" y="272" font-size="13" fill="#e8e8e8">240°</text>
+  <text x="640" y="272" font-size="13" fill="#e8e8e8">720°</text>
+  <text x="740" y="272" font-size="13" fill="#55c555">2 바퀴</text>
+  <text x="524" y="298" font-size="13" fill="#888">360°</text>
+  <text x="640" y="298" font-size="13" fill="#888">1080°</text>
+  <text x="740" y="298" font-size="13" fill="#888">0° 과 같은 자리</text>
+  <line x1="524" y1="312" x2="796" y2="312" stroke="#333" stroke-width="1"/>
+  <text x="524" y="336" font-size="13" fill="#7ec8e3">서로 다른 자리는 셋뿐이다</text>
+
+  <rect x="60" y="392" width="760" height="44" rx="6" fill="#101010" stroke="#333" stroke-width="1"/>
+  <text x="84" y="420" font-size="13" fill="#e8e8e8">1 의 n 제곱근은 언제나 단위원 위의 정 n 각형이 된다. 크기는 모두 1이고 각만 360°/n 씩 벌어진다.</text>
+</svg>
