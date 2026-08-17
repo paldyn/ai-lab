@@ -78,7 +78,9 @@ const prefixRules: [prefix: string, categoryId: CategoryId][] = [
   ['cost-', 'tools'],
   ['spec-', 'tools'],
 
-  // 남은 `ai-`만 개론·안전 칸으로 갑니다. 잔여 칸이 아닙니다.
+  // 남은 `ai-`와 안전 운영을 다루는 `guardrails-`만 개론·안전 칸으로 갑니다.
+  // 잔여 칸이 아닙니다.
+  ['guardrails-', 'ai-guide'],
   ['ai-', 'ai-guide'],
 ];
 
