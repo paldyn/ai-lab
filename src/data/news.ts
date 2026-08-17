@@ -172,6 +172,21 @@ export const globalNewsUpdatedAt = '2026-08-13';
  */
 const entries: NewsItem[] = [
   {
+    id: 'claude-text-watermark',
+    source: 'Anthropic',
+    kind: 'company',
+    title: 'Anthropic, Claude 텍스트에 보이지 않는 워터마크 넣는다',
+    summary:
+      'Anthropic이 앞으로 출시하는 Claude 모델의 텍스트 출력에 눈에 보이지 않는 ' +
+      '워터마크를 넣는다고 밝혔다. Google DeepMind의 SynthID-Text 방식을 변형해 ' +
+      '단어 선택이 아니라 고를 때 쓰는 무작위성의 출처를 바꾸며, EU AI 법에 따른 조치라고 설명했다.',
+    publishedAt: '2026-08-14',
+    collectedAt: '2026-08-18',
+    category: 'Safety',
+    signal: '콘텐츠 출처 표시',
+    url: 'https://www.anthropic.com/news/claude-text-watermark',
+  },
+  {
     id: 'introducing-gemini-3-7-flash',
     source: 'Google DeepMind',
     kind: 'model',
