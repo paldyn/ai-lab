@@ -31,24 +31,24 @@
         font-size="11" fill="#888" text-anchor="middle">Technical Safety</text>
 
   <!-- Sub 1 -->
-  <rect x="40" y="250" width="140" height="60" rx="6" fill="#1a2a2a" stroke="#7ec8e3" stroke-width="1"/>
-  <text x="110" y="276" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+  <rect x="40" y="250" width="125" height="60" rx="6" fill="#1a2a2a" stroke="#7ec8e3" stroke-width="1"/>
+  <text x="102" y="276" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
         font-size="12" font-weight="600" fill="#7ec8e3" text-anchor="middle">환각</text>
-  <text x="110" y="294" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+  <text x="102" y="294" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
         font-size="11" fill="#888" text-anchor="middle">Hallucination</text>
-  <text x="110" y="306" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+  <text x="102" y="306" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
         font-size="10" fill="#888" text-anchor="middle">사실과 다른 출력</text>
 
-  <rect x="200" y="250" width="140" height="60" rx="6" fill="#1a2a2a" stroke="#7ec8e3" stroke-width="1"/>
-  <text x="270" y="276" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+  <rect x="175" y="250" width="125" height="60" rx="6" fill="#1a2a2a" stroke="#7ec8e3" stroke-width="1"/>
+  <text x="237" y="276" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
         font-size="12" font-weight="600" fill="#7ec8e3" text-anchor="middle">취약한 견고성</text>
-  <text x="270" y="294" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+  <text x="237" y="294" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
         font-size="11" fill="#888" text-anchor="middle">Robustness</text>
-  <text x="270" y="306" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+  <text x="237" y="306" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
         font-size="10" fill="#888" text-anchor="middle">적대적 입력 취약</text>
 
-  <line x1="180" y1="224" x2="110" y2="250" stroke="#7ec8e3" stroke-width="1.5" marker-end="url(#as-arr)"/>
-  <line x1="180" y1="224" x2="270" y2="250" stroke="#7ec8e3" stroke-width="1.5" marker-end="url(#as-arr)"/>
+  <line x1="180" y1="224" x2="102" y2="250" stroke="#7ec8e3" stroke-width="1.5" marker-end="url(#as-arr)"/>
+  <line x1="180" y1="224" x2="237" y2="250" stroke="#7ec8e3" stroke-width="1.5" marker-end="url(#as-arr)"/>
 
   <!-- Category 2: 사회적 위험 -->
   <rect x="320" y="170" width="240" height="54" rx="8" fill="#2a1a1a" stroke="#e05555" stroke-width="1.5"/>
@@ -58,24 +58,24 @@
         font-size="11" fill="#888" text-anchor="middle">Societal Safety</text>
 
   <!-- Sub 2 -->
-  <rect x="300" y="250" width="140" height="60" rx="6" fill="#2a1a1a" stroke="#e05555" stroke-width="1"/>
-  <text x="370" y="276" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+  <rect x="310" y="250" width="125" height="60" rx="6" fill="#2a1a1a" stroke="#e05555" stroke-width="1"/>
+  <text x="372" y="276" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
         font-size="12" font-weight="600" fill="#e05555" text-anchor="middle">편향·차별</text>
-  <text x="370" y="294" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+  <text x="372" y="294" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
         font-size="11" fill="#888" text-anchor="middle">Bias &amp; Fairness</text>
-  <text x="370" y="306" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+  <text x="372" y="306" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
         font-size="10" fill="#888" text-anchor="middle">불평등 재생산</text>
 
-  <rect x="460" y="250" width="140" height="60" rx="6" fill="#2a1a1a" stroke="#e05555" stroke-width="1"/>
-  <text x="530" y="276" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+  <rect x="445" y="250" width="125" height="60" rx="6" fill="#2a1a1a" stroke="#e05555" stroke-width="1"/>
+  <text x="507" y="276" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
         font-size="12" font-weight="600" fill="#e05555" text-anchor="middle">유해 콘텐츠</text>
-  <text x="530" y="294" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+  <text x="507" y="294" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
         font-size="11" fill="#888" text-anchor="middle">Harmful Content</text>
-  <text x="530" y="306" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+  <text x="507" y="306" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
         font-size="10" fill="#888" text-anchor="middle">CSAM·자해 조장</text>
 
-  <line x1="440" y1="224" x2="370" y2="250" stroke="#e05555" stroke-width="1.5" marker-end="url(#as-arr)"/>
-  <line x1="440" y1="224" x2="530" y2="250" stroke="#e05555" stroke-width="1.5" marker-end="url(#as-arr)"/>
+  <line x1="440" y1="224" x2="372" y2="250" stroke="#e05555" stroke-width="1.5" marker-end="url(#as-arr)"/>
+  <line x1="440" y1="224" x2="507" y2="250" stroke="#e05555" stroke-width="1.5" marker-end="url(#as-arr)"/>
 
   <!-- Category 3: 정렬 위험 -->
   <rect x="580" y="170" width="240" height="54" rx="8" fill="#2a2a1a" stroke="#7777cc" stroke-width="1.5"/>
@@ -84,24 +84,24 @@
   <text x="700" y="212" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
         font-size="11" fill="#888" text-anchor="middle">Alignment Risk</text>
 
-  <rect x="560" y="250" width="140" height="60" rx="6" fill="#2a2a1a" stroke="#7777cc" stroke-width="1"/>
-  <text x="630" y="276" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+  <rect x="580" y="250" width="125" height="60" rx="6" fill="#2a2a1a" stroke="#7777cc" stroke-width="1"/>
+  <text x="642" y="276" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
         font-size="12" font-weight="600" fill="#7777cc" text-anchor="middle">목적 불일치</text>
-  <text x="630" y="294" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+  <text x="642" y="294" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
         font-size="11" fill="#888" text-anchor="middle">Misalignment</text>
-  <text x="630" y="306" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+  <text x="642" y="306" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
         font-size="10" fill="#888" text-anchor="middle">의도와 다른 행동</text>
 
-  <rect x="720" y="250" width="140" height="60" rx="6" fill="#2a2a1a" stroke="#7777cc" stroke-width="1"/>
-  <text x="790" y="276" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+  <rect x="715" y="250" width="125" height="60" rx="6" fill="#2a2a1a" stroke="#7777cc" stroke-width="1"/>
+  <text x="777" y="276" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
         font-size="12" font-weight="600" fill="#7777cc" text-anchor="middle">프라이버시</text>
-  <text x="790" y="294" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+  <text x="777" y="294" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
         font-size="11" fill="#888" text-anchor="middle">Privacy</text>
-  <text x="790" y="306" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+  <text x="777" y="306" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
         font-size="10" fill="#888" text-anchor="middle">개인정보 노출</text>
 
-  <line x1="700" y1="224" x2="630" y2="250" stroke="#7777cc" stroke-width="1.5" marker-end="url(#as-arr)"/>
-  <line x1="700" y1="224" x2="790" y2="250" stroke="#7777cc" stroke-width="1.5" marker-end="url(#as-arr)"/>
+  <line x1="700" y1="224" x2="642" y2="250" stroke="#7777cc" stroke-width="1.5" marker-end="url(#as-arr)"/>
+  <line x1="700" y1="224" x2="777" y2="250" stroke="#7777cc" stroke-width="1.5" marker-end="url(#as-arr)"/>
 
   <!-- Code block -->
   <rect x="60" y="334" width="760" height="148" rx="6" fill="#000000" stroke="#3a4a6e" stroke-width="1"/>

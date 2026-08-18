@@ -28,7 +28,7 @@
   <text x="60" y="158" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#e0a855" font-weight="600" xml:space="preserve">Action 1:</text>
   <text x="60" y="158" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#ffffff" xml:space="preserve">          web_search(query=</text>
   <text x="60" y="158" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#ce9178" xml:space="preserve">                           "서울 현재 기온"</text>
-  <text x="60" y="158" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#ffffff" xml:space="preserve">                                          )</text>
+  <text x="60" y="158" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#ffffff" xml:space="preserve">                                        )</text>
 
   <text x="60" y="178" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#55c555" font-weight="600" xml:space="preserve">Observation 1:</text>
   <text x="60" y="178" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#ffffff" xml:space="preserve">               서울 현재 기온: 23°C (맑음, 습도 55%)</text>

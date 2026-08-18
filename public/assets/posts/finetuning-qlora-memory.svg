@@ -26,8 +26,8 @@
 
   <!-- A100 80GB reference line -->
   <line x1="110" y1="250" x2="840" y2="250" stroke="#55c555" stroke-width="2" stroke-dasharray="4,4" opacity="0.7"/>
-  <rect x="700" y="237" width="132" height="18" rx="4" fill="#0d1f0d"/>
-  <text x="766" y="250" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="11" fill="#55c555" text-anchor="middle">단일 A100 80GB 한계</text>
+  <rect x="196" y="237" width="132" height="18" rx="4" fill="#0d1f0d"/>
+  <text x="262" y="250" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="11" fill="#55c555" text-anchor="middle">단일 A100 80GB 한계</text>
 
   <!-- === 7B model group === -->
   <text x="230" y="420" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="14" font-weight="700" fill="#e8e8e8" text-anchor="middle">7B 모델</text>

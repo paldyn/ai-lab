@@ -1,11 +1,11 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="880" height="380" viewBox="0 0 880 380">
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="404" viewBox="0 0 880 404">
   <defs>
     <marker id="arr" viewBox="0 0 14 14" refX="12" refY="7"
             markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
       <path d="M 0 0 L 13 7 L 0 14 z" fill="#7ec8e3"/>
     </marker>
   </defs>
-  <rect width="880" height="380" fill="#0a0a0a" rx="12"/>
+  <rect width="880" height="404" fill="#0a0a0a" rx="12"/>
 
   <text x="440" y="44" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
         font-size="22" font-weight="700" fill="#e8e8e8" text-anchor="middle">NeRF 볼륨 렌더링 원리</text>
@@ -88,11 +88,9 @@
   <text x="800" y="108" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
         font-size="12" font-weight="600" fill="#55c555" text-anchor="middle">볼륨 렌더링</text>
   <text x="800" y="130" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
-        font-size="10" fill="#888" text-anchor="middle">C(r) = ∫T(t)</text>
+        font-size="10" fill="#888" text-anchor="middle">C(r) = ∫ T(t)·σ(t)·</text>
   <text x="800" y="148" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
-        font-size="10" fill="#888" text-anchor="middle">σ(r(t))c(r(t)</text>
-  <text x="800" y="166" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
-        font-size="10" fill="#888" text-anchor="middle">,d)dt</text>
+        font-size="10" fill="#888" text-anchor="middle">c(t, d) dt</text>
   <text x="800" y="192" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
         font-size="11" fill="#55c555" text-anchor="middle">픽셀 RGB</text>
 
@@ -105,6 +103,6 @@
   <text x="800" y="278" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
         font-size="10" fill="#888" text-anchor="middle">MSE 최소화</text>
 
-  <text x="440" y="352" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+  <text x="440" y="386" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
         font-size="11" fill="#666" text-anchor="middle">T(t) = exp(-∫₀ᵗ σ(r(s))ds) : 누적 투과도 — 표면 앞 포인트일수록 렌더링에 더 기여</text>
 </svg>

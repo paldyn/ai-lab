@@ -101,9 +101,9 @@
 
   <!-- θ → θ⁻ 복사 화살표 -->
   <path d="M 520 108 Q 600 200 520 370" fill="none" stroke="#e05555" stroke-width="1.5" stroke-dasharray="4,4" marker-end="url(#arr-red)"/>
-  <text x="590" y="240" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+  <text x="600" y="288" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
         font-size="11" fill="#e05555" text-anchor="middle">N스텝마다</text>
-  <text x="590" y="256" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+  <text x="600" y="304" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
         font-size="11" fill="#e05555" text-anchor="middle">θ→θ⁻ 복사</text>
 
   <!-- 두 핵심 혁신 설명 -->
@@ -118,6 +118,6 @@
         font-size="12" fill="#55c555">② 타겟 네트워크</text>
   <text x="60" y="436" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
         font-size="12" fill="#888">  학습 안정성 확보</text>
-  <text x="60" y="452" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+  <text x="60" y="446" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
         font-size="11" fill="#555">  → Atari 26개 게임 인간 수준 달성</text>
 </svg>

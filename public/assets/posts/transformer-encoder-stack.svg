@@ -48,8 +48,7 @@
   <!-- Right panel: code -->
   <rect x="560" y="96" width="270" height="350" fill="#000000" rx="6" stroke="#3a4a6e" stroke-width="1"/>
   <text x="576" y="118" xml:space="preserve" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#9aa4b8"># 단일 Encoder 레이어</text>
-  <text x="576" y="136" xml:space="preserve" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#7ec8e3">class </text>
-  <text x="618" y="136" xml:space="preserve" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#ffffff">EncoderLayer(nn.Module):</text>
+  <text x="576" y="136" xml:space="preserve" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13"><tspan fill="#7ec8e3">class </tspan><tspan fill="#ffffff">EncoderLayer(nn.Module):</tspan></text>
   <text x="576" y="154" xml:space="preserve" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13"><tspan fill="#7ec8e3">  def </tspan><tspan fill="#ffffff">__init__(self, d, h, d_ff):</tspan></text>
   
   <text x="576" y="172" xml:space="preserve" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#ffffff">    super().__init__()</text>
