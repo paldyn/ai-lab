@@ -42,8 +42,34 @@
 - **font-size 13** (12는 흐림 — 사용자 디스플레이 따라 가독성 떨어짐)
 - 줄 높이 정확히 18~20px씩
 - `text-anchor` 금지, base x 동일
-- 들여쓰기 방식 A(x +14px/단계) 또는 B(`xml:space="preserve"` + 실공백 4칸) — 한 SVG에서 하나만 사용
+- 들여쓰기는 `xml:space="preserve"` + 실공백 4칸으로만 한다. x를 단계마다 밀어 맞추면 글자 폭 어림이 어긋나 줄이 틀어진다
 - 줄당 ≤36자, 코드 블록 ≤12줄
+
+### 한 줄에 색이 여럿이면 `<tspan>` 하나로 잇는다
+
+한 줄을 색깔별로 `<text>` 여럿으로 자르고 토막마다 x를 적는 방식은 쓰지 않는다.
+x는 손으로 계산해야 하는데 JetBrains Mono 13px의 실제 글자 폭은 7.83px이고,
+한글은 그것의 두 배가 아니라 13px다. 어림한 값이 조금만 어긋나도 「importtorch」처럼
+낱말이 붙거나 글자 위에 글자가 얹힌다. 2026-08-18에 이 방식으로 그린 71편에서
+280군데가 어긋나 있었다.
+
+```svg
+<!-- 이렇게 -->
+<text x="76" y="137" xml:space="preserve" font-family="..." font-size="13">
+  <tspan fill="#7ec8e3">from</tspan><tspan fill="#ffffff"> sklearn.svm </tspan>
+  <tspan fill="#7ec8e3">import</tspan><tspan fill="#ffffff"> SVC</tspan></text>
+
+<!-- 이렇게 말고 -->
+<text x="76" y="137" fill="#7ec8e3">from</text>
+<text x="120" y="137" fill="#ffffff">sklearn.svm</text>
+```
+
+**tspan 사이에 개행을 넣지 않는다.** `xml:space="preserve"`가 걸려 있으므로 줄바꿈과
+들여쓰기가 그대로 공백이 되어 `from   sklearn` 처럼 벌어진다 — 위 예시가 두 줄로
+보이는 것은 문서에 싣느라 접은 것이고, 실제 파일에서는 `</tspan><tspan`이 붙어 있어야 한다.
+
+줄 하나를 통째로 흰 글자로 깔고 그 위에 키워드만 덧그리는 방식은 x 계산이 필요 없으므로
+써도 된다. 다만 덧그리는 자리는 아래 줄에서 공백이어야 한다.
 
 ### 신택스 색 (콘트라스트 강화)
 
