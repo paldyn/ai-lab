@@ -172,6 +172,53 @@ export const globalNewsUpdatedAt = '2026-08-17';
  */
 const entries: NewsItem[] = [
   {
+    id: 'the-defenders-window',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'OpenAI, Hugging Face 침해 뒤의 사이버 방어 지침 공개',
+    summary:
+      'OpenAI가 OpenAI-Hugging Face 침해를 계기로 자사 방어 방식과 다른 조직이 지금 할 ' +
+      '일을 정리해 내놓았다. 초기 보안 경보는 대부분 모델이 먼저 선별하고 Codex 보안 ' +
+      '플러그인이 배포 전 코드를 검증하며, 방어자에게는 보안팀에 에이전트를 붙이고 ' +
+      '인터넷에 노출된 서비스부터 점검하라고 권했다.',
+    publishedAt: '2026-08-17',
+    collectedAt: '2026-08-18',
+    category: 'Safety',
+    signal: '기업 보안 권고',
+    url: 'https://openai.com/index/the-defenders-window/',
+  },
+  {
+    id: 'openai-joins-ports-pike-project',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'OpenAI, 오하이오에 8GW 데이터센터 캠퍼스 계약',
+    summary:
+      'OpenAI가 오하이오 파이크 카운티 PORTS-Pike 캠퍼스에서 약 8기가와트-IT를 확보하는 ' +
+      '계약을 맺었다. SB Energy·NVIDIA·미 에너지부와 함께 2032년까지 6년에 걸쳐 짓고, ' +
+      '건설 일자리 35,000개와 상시 운영 일자리 2,500개를 예상한다.',
+    publishedAt: '2026-08-17',
+    collectedAt: '2026-08-18',
+    category: 'Infrastructure',
+    signal: '컴퓨트 증설',
+    url: 'https://openai.com/index/openai-joins-ports-pike-project/',
+  },
+  {
+    id: 'new-policy-ideas-for-the-intelligence-age',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'OpenAI, AI 시대 정책 연구 14곳에 100만 달러 지원',
+    summary:
+      'OpenAI가 독립 기관이 이끄는 정책 연구 14개 프로젝트에 총 100만 달러와 최대 ' +
+      '100만 달러어치 API 크레딧을 지원한다. 2026년 4월 「Industrial Policy for the ' +
+      'Intelligence Age」를 내며 한 약속을 이행하는 것으로, 미국·EU·브라질·싱가포르· ' +
+      '한국의 기관이 뽑혔다.',
+    publishedAt: '2026-08-17',
+    collectedAt: '2026-08-18',
+    category: 'Corporate',
+    signal: 'AI 정책 후원',
+    url: 'https://openai.com/index/new-policy-ideas-for-the-intelligence-age/',
+  },
+  {
     id: 'google-gemini-pixel-football-club-partnerships',
     source: 'Google DeepMind',
     kind: 'company',
