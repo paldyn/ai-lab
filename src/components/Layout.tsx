@@ -212,8 +212,8 @@ export function Layout({ children }: { children: ReactNode }) {
         <div className="site-wrap flex h-[70px] items-center justify-between gap-6">
           <Link to="/" className="brand-lockup" aria-label="Paldyn AI Lab 홈">
             <span className="relative h-7 w-7 shrink-0">
-              <img src={assetUrl('assets/logo-symbol-dark.png')} alt="" className="theme-logo theme-logo-light" />
-              <img src={assetUrl('assets/logo-symbol-light.png')} alt="" className="theme-logo theme-logo-dark" />
+              <img src={assetUrl('assets/logo-symbol-black.svg')} alt="" className="theme-logo theme-logo-light" />
+              <img src={assetUrl('assets/logo-symbol-white.svg')} alt="" className="theme-logo theme-logo-dark" />
             </span>
             <span className="brand-name">PALDYN</span>
             <span className="brand-divider" aria-hidden="true">|</span>

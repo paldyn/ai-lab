@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="200 95 600 760">
+  <style>
+    /* 탭 막대가 어두우면 흰 마크, 밝으면 검은 마크. 배경은 비워 둔다. */
+    polygon { fill: #0a0a0a; }
+    @media (prefers-color-scheme: dark) { polygon { fill: #ffffff; } }
+  </style>
+  <polygon points="220,260 455,115 455,675 220,835"/>
+  <polygon points="545,115 780,260 780,835 545,675"/>
+</svg>
