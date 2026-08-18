@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="360" viewBox="0 0 880 360" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <defs>
+    <marker id="arrRed" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#e05555"/>
+    </marker>
+  </defs>
+
+  <rect x="0" y="0" width="880" height="360" rx="12" fill="#0a0a0a"/>
+
+  <text x="60" y="50" font-size="22" font-weight="700" fill="#e8e8e8">요청 하나씩만 보면 전부 통과한다</text>
+  <text x="60" y="76" font-size="13" fill="#888">같은 계정에서 12분 동안 들어온 요청 8건. 개별 판정은 모두 정상이다.</text>
+
+  <g font-size="12">
+    <rect x="67" y="104" width="74" height="52" rx="8" fill="#101418" stroke="#3a4a6e" stroke-width="1"/>
+    <text x="104" y="126" fill="#e8e8e8" text-anchor="middle">요청 1</text>
+    <text x="104" y="146" fill="#55c555" text-anchor="middle">통과</text>
+
+    <rect x="163" y="104" width="74" height="52" rx="8" fill="#101418" stroke="#3a4a6e" stroke-width="1"/>
+    <text x="200" y="126" fill="#e8e8e8" text-anchor="middle">요청 2</text>
+    <text x="200" y="146" fill="#55c555" text-anchor="middle">통과</text>
+
+    <rect x="259" y="104" width="74" height="52" rx="8" fill="#101418" stroke="#3a4a6e" stroke-width="1"/>
+    <text x="296" y="126" fill="#e8e8e8" text-anchor="middle">요청 3</text>
+    <text x="296" y="146" fill="#55c555" text-anchor="middle">통과</text>
+
+    <rect x="355" y="104" width="74" height="52" rx="8" fill="#101418" stroke="#3a4a6e" stroke-width="1"/>
+    <text x="392" y="126" fill="#e8e8e8" text-anchor="middle">요청 4</text>
+    <text x="392" y="146" fill="#55c555" text-anchor="middle">통과</text>
+
+    <rect x="451" y="104" width="74" height="52" rx="8" fill="#101418" stroke="#3a4a6e" stroke-width="1"/>
+    <text x="488" y="126" fill="#e8e8e8" text-anchor="middle">요청 5</text>
+    <text x="488" y="146" fill="#55c555" text-anchor="middle">통과</text>
+
+    <rect x="547" y="104" width="74" height="52" rx="8" fill="#101418" stroke="#3a4a6e" stroke-width="1"/>
+    <text x="584" y="126" fill="#e8e8e8" text-anchor="middle">요청 6</text>
+    <text x="584" y="146" fill="#55c555" text-anchor="middle">통과</text>
+
+    <rect x="643" y="104" width="74" height="52" rx="8" fill="#101418" stroke="#3a4a6e" stroke-width="1"/>
+    <text x="680" y="126" fill="#e8e8e8" text-anchor="middle">요청 7</text>
+    <text x="680" y="146" fill="#55c555" text-anchor="middle">통과</text>
+
+    <rect x="739" y="104" width="74" height="52" rx="8" fill="#101418" stroke="#3a4a6e" stroke-width="1"/>
+    <text x="776" y="126" fill="#e8e8e8" text-anchor="middle">요청 8</text>
+    <text x="776" y="146" fill="#55c555" text-anchor="middle">통과</text>
+  </g>
+
+  <line x1="440" y1="156" x2="440" y2="206" stroke="#e05555" stroke-width="2" stroke-dasharray="4,4" marker-end="url(#arrRed)"/>
+  <text x="456" y="188" font-size="12" fill="#888">계정 단위로 묶어서 보면</text>
+
+  <rect x="67" y="214" width="746" height="86" rx="10" fill="#101418" stroke="#e05555" stroke-width="1.5"/>
+  <text x="91" y="248" font-size="16" font-weight="600" fill="#e8e8e8">같은 계정 · 12분 · 문장 하나만 바뀐 시도 8회 · 거절 6회</text>
+  <text x="91" y="274" font-size="13" fill="#888">개별 판정은 정상, 집계는 명백한 탐색이다. 조치는 차단이 아니라 속도 제한과 검토 큐.</text>
+
+  <text x="60" y="332" font-size="13" fill="#888">탐지 신호를 요청 하나에만 걸어 두면 이 패턴은 영원히 안 보인다.</text>
+</svg>

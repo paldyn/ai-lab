@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="420" viewBox="0 0 880 420" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <defs>
+    <marker id="arrBlue" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#7ec8e3"/>
+    </marker>
+    <marker id="arrPurple" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#7777cc"/>
+    </marker>
+    <marker id="arrGreen" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#55c555"/>
+    </marker>
+  </defs>
+
+  <rect x="0" y="0" width="880" height="420" rx="12" fill="#0a0a0a"/>
+
+  <text x="60" y="50" font-size="22" font-weight="700" fill="#e8e8e8">탈옥 방어는 세워 두는 벽이 아니라 도는 고리다</text>
+
+  <rect x="60" y="100" width="300" height="80" rx="10" fill="#101418" stroke="#7ec8e3" stroke-width="1.5"/>
+  <text x="84" y="134" font-size="16" font-weight="600" fill="#e8e8e8">1. 관측</text>
+  <text x="84" y="158" font-size="12" fill="#888">뚫린 요청을 로그에서 건진다</text>
+
+  <rect x="520" y="100" width="300" height="80" rx="10" fill="#101418" stroke="#7777cc" stroke-width="1.5"/>
+  <text x="544" y="134" font-size="16" font-weight="600" fill="#e8e8e8">2. 재현</text>
+  <text x="544" y="158" font-size="12" fill="#888">최소 형태로 줄여 다시 쏜다</text>
+
+  <rect x="520" y="270" width="300" height="80" rx="10" fill="#101418" stroke="#55c555" stroke-width="1.5"/>
+  <text x="544" y="304" font-size="16" font-weight="600" fill="#e8e8e8">3. 패치</text>
+  <text x="544" y="328" font-size="12" fill="#888">가드와 정책 문구를 고친다</text>
+
+  <rect x="60" y="270" width="300" height="80" rx="10" fill="#101418" stroke="#55c555" stroke-width="1.5"/>
+  <text x="84" y="304" font-size="16" font-weight="600" fill="#e8e8e8">4. 고정</text>
+  <text x="84" y="328" font-size="12" fill="#888">회귀 테스트에 그 사례를 넣는다</text>
+
+  <line x1="360" y1="140" x2="520" y2="140" stroke="#7ec8e3" stroke-width="2" marker-end="url(#arrBlue)"/>
+  <text x="440" y="124" font-size="12" fill="#888" text-anchor="middle">이상 신호</text>
+
+  <line x1="670" y1="180" x2="670" y2="270" stroke="#7777cc" stroke-width="2" marker-end="url(#arrPurple)"/>
+  <text x="690" y="229" font-size="12" fill="#888">재현되면</text>
+
+  <line x1="520" y1="310" x2="360" y2="310" stroke="#55c555" stroke-width="2" marker-end="url(#arrGreen)"/>
+  <text x="440" y="294" font-size="12" fill="#888" text-anchor="middle">고친 뒤</text>
+
+  <line x1="210" y1="270" x2="210" y2="180" stroke="#7ec8e3" stroke-width="2" marker-end="url(#arrBlue)"/>
+  <text x="190" y="229" font-size="12" fill="#888" text-anchor="end">다시 관측</text>
+
+  <circle r="6" fill="#7ec8e3" opacity="0">
+    <animateMotion path="M 360 140 L 512 140" dur="1.25s" begin="0s" repeatCount="indefinite"/>
+    <animate attributeName="opacity" dur="5s" begin="0s" repeatCount="indefinite" calcMode="discrete" values="1;0;0;0" keyTimes="0;0.25;0.5;0.75"/>
+  </circle>
+  <circle r="6" fill="#7777cc" opacity="0">
+    <animateMotion path="M 670 180 L 670 262" dur="1.25s" begin="1.25s" repeatCount="indefinite"/>
+    <animate attributeName="opacity" dur="5s" begin="0s" repeatCount="indefinite" calcMode="discrete" values="0;1;0;0" keyTimes="0;0.25;0.5;0.75"/>
+  </circle>
+  <circle r="6" fill="#55c555" opacity="0">
+    <animateMotion path="M 520 310 L 368 310" dur="1.25s" begin="2.5s" repeatCount="indefinite"/>
+    <animate attributeName="opacity" dur="5s" begin="0s" repeatCount="indefinite" calcMode="discrete" values="0;0;1;0" keyTimes="0;0.25;0.5;0.75"/>
+  </circle>
+  <circle r="6" fill="#7ec8e3" opacity="0">
+    <animateMotion path="M 210 270 L 210 188" dur="1.25s" begin="3.75s" repeatCount="indefinite"/>
+    <animate attributeName="opacity" dur="5s" begin="0s" repeatCount="indefinite" calcMode="discrete" values="0;0;0;1" keyTimes="0;0.25;0.5;0.75"/>
+  </circle>
+
+  <text x="60" y="392" font-size="13" fill="#888">한 바퀴 도는 데 걸리는 시간이 곧 방어의 실력이다 — 막은 개수가 아니라.</text>
+</svg>

@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="380" viewBox="0 0 880 380" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <defs>
+    <marker id="arrK" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#7ec8e3"/>
+    </marker>
+  </defs>
+
+  <rect x="0" y="0" width="880" height="380" rx="12" fill="#0a0a0a"/>
+
+  <text x="60" y="46" font-size="22" font-weight="700" fill="#e8e8e8">손잡이는 네 자리에 있고, 만지는 순서가 있다</text>
+  <text x="60" y="72" font-size="13" fill="#888">앞쪽 손잡이가 뒤쪽의 상한을 정한다 — 1차 검색이 못 건진 문서는 리랭커도 못 살린다.</text>
+
+  <rect x="60" y="110" width="180" height="70" rx="8" fill="#101418" stroke="#55c555" stroke-width="1.5"/>
+  <text x="150" y="140" font-size="14" font-weight="600" fill="#e8e8e8" text-anchor="middle">키워드 검색</text>
+  <text x="150" y="162" font-size="11" fill="#888" text-anchor="middle">BM25 · 상위 N건</text>
+
+  <rect x="60" y="200" width="180" height="70" rx="8" fill="#101418" stroke="#55c555" stroke-width="1.5"/>
+  <text x="150" y="230" font-size="14" font-weight="600" fill="#e8e8e8" text-anchor="middle">벡터 검색</text>
+  <text x="150" y="252" font-size="11" fill="#888" text-anchor="middle">임베딩 · 상위 N건</text>
+
+  <rect x="320" y="155" width="150" height="70" rx="8" fill="#101418" stroke="#7ec8e3" stroke-width="1.5"/>
+  <text x="395" y="185" font-size="14" font-weight="600" fill="#e8e8e8" text-anchor="middle">융합</text>
+  <text x="395" y="207" font-size="11" fill="#888" text-anchor="middle">RRF · 가중치</text>
+
+  <rect x="530" y="155" width="150" height="70" rx="8" fill="#101418" stroke="#7777cc" stroke-width="1.5"/>
+  <text x="605" y="185" font-size="14" font-weight="600" fill="#e8e8e8" text-anchor="middle">리랭커</text>
+  <text x="605" y="207" font-size="11" fill="#888" text-anchor="middle">상위 M건으로</text>
+
+  <rect x="740" y="155" width="80" height="70" rx="8" fill="#101418" stroke="#3a4a6e" stroke-width="1.5"/>
+  <text x="780" y="185" font-size="14" font-weight="600" fill="#e8e8e8" text-anchor="middle">LLM</text>
+  <text x="780" y="207" font-size="11" fill="#888" text-anchor="middle">K건</text>
+
+  <path d="M 240 145 L 280 145 L 280 178 L 312 178" fill="none" stroke="#7ec8e3" stroke-width="2" marker-end="url(#arrK)"/>
+  <path d="M 240 235 L 280 235 L 280 202 L 312 202" fill="none" stroke="#7ec8e3" stroke-width="2" marker-end="url(#arrK)"/>
+  <line x1="470" y1="190" x2="530" y2="190" stroke="#7ec8e3" stroke-width="2" marker-end="url(#arrK)"/>
+  <line x1="680" y1="190" x2="740" y2="190" stroke="#7ec8e3" stroke-width="2" marker-end="url(#arrK)"/>
+
+  <text x="150" y="302" font-size="13" font-weight="600" fill="#55c555" text-anchor="middle">1. N = 50~200</text>
+  <text x="150" y="324" font-size="12" fill="#888" text-anchor="middle">그리고 토크나이저</text>
+
+  <text x="395" y="302" font-size="13" font-weight="600" fill="#7ec8e3" text-anchor="middle">2. k와 가중치</text>
+  <text x="395" y="324" font-size="12" fill="#888" text-anchor="middle">순위 융합 파라미터</text>
+
+  <text x="605" y="302" font-size="13" font-weight="600" fill="#7777cc" text-anchor="middle">3. M = 10~30</text>
+  <text x="605" y="324" font-size="12" fill="#888" text-anchor="middle">지연이 여기서 는다</text>
+
+  <text x="780" y="302" font-size="13" font-weight="600" fill="#e8e8e8" text-anchor="middle">4. K = 3~8</text>
+  <text x="780" y="324" font-size="12" fill="#888" text-anchor="middle">문맥 예산</text>
+
+  <text x="60" y="362" font-size="13" fill="#888">순서를 거꾸로 가면 헛수고가 된다 — 리랭커부터 바꾸는 것이 가장 흔한 낭비다.</text>
+</svg>

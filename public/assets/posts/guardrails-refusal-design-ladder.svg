@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="390" viewBox="0 0 880 390" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <rect x="0" y="0" width="880" height="390" rx="12" fill="#0a0a0a"/>
+
+  <text x="60" y="46" font-size="22" font-weight="700" fill="#e8e8e8">거절은 켜고 끄는 스위치가 아니라 다섯 칸짜리 사다리다</text>
+  <text x="60" y="72" font-size="13" fill="#888">위험이 조금 있다고 곧바로 맨 오른쪽으로 갈 이유가 없다. 대개 답은 가운데 셋에 있다.</text>
+
+  <line x1="60" y1="290" x2="820" y2="290" stroke="#3a4a6e" stroke-width="1"/>
+
+  <rect x="71" y="250" width="130" height="40" rx="6" fill="#16301a" stroke="#55c555" stroke-width="1.5"/>
+  <rect x="223" y="220" width="130" height="70" rx="6" fill="#16301a" stroke="#55c555" stroke-width="1.5"/>
+  <rect x="375" y="190" width="130" height="100" rx="6" fill="#0f2530" stroke="#7ec8e3" stroke-width="1.5"/>
+  <rect x="527" y="160" width="130" height="130" rx="6" fill="#1b1b33" stroke="#7777cc" stroke-width="1.5"/>
+  <rect x="679" y="130" width="130" height="160" rx="6" fill="#2e1414" stroke="#e05555" stroke-width="1.5"/>
+
+  <text x="136" y="314" font-size="13" font-weight="600" fill="#e8e8e8" text-anchor="middle">그대로 수행</text>
+  <text x="136" y="334" font-size="12" fill="#888" text-anchor="middle">위험 없음</text>
+
+  <text x="288" y="314" font-size="13" font-weight="600" fill="#e8e8e8" text-anchor="middle">줄여서 수행</text>
+  <text x="288" y="334" font-size="12" fill="#888" text-anchor="middle">민감한 부분만 뺀다</text>
+
+  <text x="440" y="314" font-size="13" font-weight="600" fill="#e8e8e8" text-anchor="middle">대안 제시</text>
+  <text x="440" y="334" font-size="12" fill="#888" text-anchor="middle">인접한 안전한 답</text>
+
+  <text x="592" y="314" font-size="13" font-weight="600" fill="#e8e8e8" text-anchor="middle">확인 요청</text>
+  <text x="592" y="334" font-size="12" fill="#888" text-anchor="middle">의도를 되묻는다</text>
+
+  <text x="744" y="314" font-size="13" font-weight="600" fill="#e8e8e8" text-anchor="middle">거절</text>
+  <text x="744" y="334" font-size="12" fill="#888" text-anchor="middle">이유와 다음 걸음</text>
+
+  <text x="60" y="368" font-size="13" fill="#888">두 번째와 네 번째 칸이 비어 있는 제품이 많다 — 그래서 거절이 갑작스럽게 느껴진다.</text>
+</svg>

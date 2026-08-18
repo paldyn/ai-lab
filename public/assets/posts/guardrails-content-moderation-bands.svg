@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="340" viewBox="0 0 880 340" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <rect x="0" y="0" width="880" height="340" rx="12" fill="#0a0a0a"/>
+
+  <text x="60" y="46" font-size="22" font-weight="700" fill="#e8e8e8">임계값은 하나가 아니라 둘이다</text>
+  <text x="60" y="72" font-size="13" fill="#888">하나로 자르면 애매한 구간이 통째로 통과 쪽이나 차단 쪽에 붙는다.</text>
+
+  <path d="M 80 100 C 170 100 190 150 300 154 C 430 158 560 156 800 158" fill="none" stroke="#7777cc" stroke-width="2"/>
+  <text x="620" y="132" font-size="12" fill="#888">분류기 점수 분포</text>
+
+  <rect x="80" y="166" width="252" height="52" rx="6" fill="#16301a" stroke="#55c555" stroke-width="1.5"/>
+  <rect x="332" y="166" width="252" height="52" rx="6" fill="#1b1b33" stroke="#7777cc" stroke-width="1.5"/>
+  <rect x="584" y="166" width="216" height="52" rx="6" fill="#2e1414" stroke="#e05555" stroke-width="1.5"/>
+
+  <text x="206" y="198" font-size="16" font-weight="600" fill="#e8e8e8" text-anchor="middle">통과</text>
+  <text x="458" y="198" font-size="16" font-weight="600" fill="#e8e8e8" text-anchor="middle">사람 검토</text>
+  <text x="692" y="198" font-size="16" font-weight="600" fill="#e8e8e8" text-anchor="middle">차단</text>
+
+  <text x="80" y="240" font-size="12" fill="#888" text-anchor="middle">0.00</text>
+  <text x="332" y="240" font-size="12" fill="#888" text-anchor="middle">0.35</text>
+  <text x="584" y="240" font-size="12" fill="#888" text-anchor="middle">0.70</text>
+  <text x="800" y="240" font-size="12" fill="#888" text-anchor="middle">1.00</text>
+
+  <text x="206" y="270" font-size="12" fill="#e8e8e8" text-anchor="middle">그대로 내보낸다</text>
+  <text x="206" y="290" font-size="12" fill="#888" text-anchor="middle">판정 기록만 남긴다</text>
+
+  <text x="458" y="270" font-size="12" fill="#e8e8e8" text-anchor="middle">응답을 줄이거나 보류</text>
+  <text x="458" y="290" font-size="12" fill="#888" text-anchor="middle">검토 큐로 보낸다</text>
+
+  <text x="692" y="270" font-size="12" fill="#e8e8e8" text-anchor="middle">거절한다</text>
+  <text x="692" y="290" font-size="12" fill="#888" text-anchor="middle">사유 코드를 함께 남긴다</text>
+
+  <text x="60" y="322" font-size="13" fill="#888">가운데 띠의 폭이 곧 사람 검토 비용이다 — 좁히면 오판이, 넓히면 큐가 늘어난다.</text>
+</svg>

@@ -134,3 +134,5 @@ draft: false
 읽어주셔서 감사합니다. 😊
 
 **지난 글:** [출력 가드: 답이 사용자에게 닿기 전에](/articles/guardrails-output-validation)
+
+**다음 글:** [탈옥 방어는 기능이 아니라 운영이다](/articles/guardrails-jailbreak-defense-ops)

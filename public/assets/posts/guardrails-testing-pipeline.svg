@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="300" viewBox="0 0 880 300" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <defs>
+    <marker id="arrCyan" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#7ec8e3"/>
+    </marker>
+  </defs>
+
+  <rect x="0" y="0" width="880" height="300" rx="12" fill="#0a0a0a"/>
+
+  <text x="60" y="46" font-size="22" font-weight="700" fill="#e8e8e8">세트 하나를 어디서나 돌리면 아무 데서도 안 돌아간다</text>
+  <text x="60" y="72" font-size="13" fill="#888">돌리는 자리마다 걸 수 있는 시간이 달라서, 세트도 자리에 맞춰 셋으로 나눈다.</text>
+
+  <rect x="60" y="120" width="150" height="76" rx="8" fill="#101418" stroke="#3a4a6e" stroke-width="1.5"/>
+  <text x="135" y="150" font-size="14" font-weight="600" fill="#e8e8e8" text-anchor="middle">변경</text>
+  <text x="135" y="172" font-size="11" fill="#888" text-anchor="middle">프롬프트·임계값</text>
+
+  <rect x="263" y="120" width="150" height="76" rx="8" fill="#101418" stroke="#55c555" stroke-width="1.5"/>
+  <text x="338" y="150" font-size="14" font-weight="600" fill="#e8e8e8" text-anchor="middle">PR 체크</text>
+  <text x="338" y="172" font-size="11" fill="#888" text-anchor="middle">빠른 세트 · 2분</text>
+
+  <rect x="466" y="120" width="150" height="76" rx="8" fill="#101418" stroke="#7ec8e3" stroke-width="1.5"/>
+  <text x="541" y="150" font-size="14" font-weight="600" fill="#e8e8e8" text-anchor="middle">배포 전</text>
+  <text x="541" y="172" font-size="11" fill="#888" text-anchor="middle">전체 세트 · 20분</text>
+
+  <rect x="669" y="120" width="150" height="76" rx="8" fill="#101418" stroke="#7777cc" stroke-width="1.5"/>
+  <text x="744" y="150" font-size="14" font-weight="600" fill="#e8e8e8" text-anchor="middle">모델 교체</text>
+  <text x="744" y="172" font-size="11" fill="#888" text-anchor="middle">전수 · 2시간</text>
+
+  <line x1="210" y1="158" x2="263" y2="158" stroke="#7ec8e3" stroke-width="2" marker-end="url(#arrCyan)"/>
+  <line x1="413" y1="158" x2="466" y2="158" stroke="#7ec8e3" stroke-width="2" marker-end="url(#arrCyan)"/>
+  <line x1="616" y1="158" x2="669" y2="158" stroke="#7ec8e3" stroke-width="2" marker-end="url(#arrCyan)"/>
+
+  <text x="236" y="142" font-size="11" fill="#888" text-anchor="middle">커밋마다</text>
+  <text x="439" y="142" font-size="11" fill="#888" text-anchor="middle">머지마다</text>
+  <text x="642" y="142" font-size="11" fill="#888" text-anchor="middle">새 모델마다</text>
+
+  <circle r="5" fill="#7ec8e3" opacity="0">
+    <animateMotion path="M 210 158 L 255 158" dur="1.5s" begin="0s" repeatCount="indefinite"/>
+    <animate attributeName="opacity" dur="4.5s" begin="0s" repeatCount="indefinite" calcMode="discrete" values="1;0;0" keyTimes="0;0.333;0.667"/>
+  </circle>
+  <circle r="5" fill="#7ec8e3" opacity="0">
+    <animateMotion path="M 413 158 L 458 158" dur="1.5s" begin="1.5s" repeatCount="indefinite"/>
+    <animate attributeName="opacity" dur="4.5s" begin="0s" repeatCount="indefinite" calcMode="discrete" values="0;1;0" keyTimes="0;0.333;0.667"/>
+  </circle>
+  <circle r="5" fill="#7ec8e3" opacity="0">
+    <animateMotion path="M 616 158 L 661 158" dur="1.5s" begin="3s" repeatCount="indefinite"/>
+    <animate attributeName="opacity" dur="4.5s" begin="0s" repeatCount="indefinite" calcMode="discrete" values="0;0;1" keyTimes="0;0.333;0.667"/>
+  </circle>
+
+  <text x="60" y="242" font-size="13" fill="#e8e8e8">빠른 세트에는 회귀 사례와 정상 세트 표본만 넣는다 — 2분을 넘기면 아무도 안 기다린다.</text>
+  <text x="60" y="266" font-size="13" fill="#888">모델을 갈아 끼울 때만 전수를 돌린다. 이때가 옛 우회가 되살아나는 유일한 순간이다.</text>
+</svg>

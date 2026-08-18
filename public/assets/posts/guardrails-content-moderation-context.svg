@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="340" viewBox="0 0 880 340" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <defs>
+    <marker id="arrGray" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#888888"/>
+    </marker>
+  </defs>
+
+  <rect x="0" y="0" width="880" height="340" rx="12" fill="#0a0a0a"/>
+
+  <text x="60" y="46" font-size="22" font-weight="700" fill="#e8e8e8">같은 문장이 맥락에 따라 셋으로 갈린다</text>
+
+  <rect x="60" y="72" width="758" height="56" rx="10" fill="#101418" stroke="#3a4a6e" stroke-width="1.5"/>
+  <text x="439" y="106" font-size="16" fill="#e8e8e8" text-anchor="middle">「어떻게 하면 티 안 나게 할 수 있을까요?」</text>
+
+  <path d="M 439 128 L 439 152" stroke="#888888" stroke-width="2" fill="none"/>
+  <path d="M 173 152 L 705 152" stroke="#888888" stroke-width="2" fill="none"/>
+  <line x1="173" y1="152" x2="173" y2="176" stroke="#888888" stroke-width="2" marker-end="url(#arrGray)"/>
+  <line x1="439" y1="152" x2="439" y2="176" stroke="#888888" stroke-width="2" marker-end="url(#arrGray)"/>
+  <line x1="705" y1="152" x2="705" y2="176" stroke="#888888" stroke-width="2" marker-end="url(#arrGray)"/>
+
+  <rect x="60" y="176" width="226" height="110" rx="10" fill="#101418" stroke="#55c555" stroke-width="1.5"/>
+  <text x="80" y="206" font-size="16" font-weight="600" fill="#e8e8e8">의료 상담</text>
+  <text x="80" y="230" font-size="12" fill="#888">복약 부작용을 주변에</text>
+  <text x="80" y="248" font-size="12" fill="#888">알리지 않는 방법 문의</text>
+  <text x="80" y="266" font-size="13" font-weight="600" fill="#55c555">판정: 통과</text>
+
+  <rect x="326" y="176" width="226" height="110" rx="10" fill="#101418" stroke="#7777cc" stroke-width="1.5"/>
+  <text x="346" y="206" font-size="16" font-weight="600" fill="#e8e8e8">창작 지원</text>
+  <text x="346" y="230" font-size="12" fill="#888">추리 소설 인물의</text>
+  <text x="346" y="248" font-size="12" fill="#888">대사로 쓰겠다는 요청</text>
+  <text x="346" y="266" font-size="13" font-weight="600" fill="#7777cc">판정: 검토</text>
+
+  <rect x="592" y="176" width="226" height="110" rx="10" fill="#101418" stroke="#e05555" stroke-width="1.5"/>
+  <text x="612" y="206" font-size="16" font-weight="600" fill="#e8e8e8">일반 대화</text>
+  <text x="612" y="230" font-size="12" fill="#888">앞 턴에서 특정인을</text>
+  <text x="612" y="248" font-size="12" fill="#888">해치겠다고 말한 뒤</text>
+  <text x="612" y="266" font-size="13" font-weight="600" fill="#e05555">판정: 차단</text>
+
+  <text x="60" y="318" font-size="13" fill="#888">그래서 판정기에 넣는 것은 문장 하나가 아니라 서비스 종류와 앞 턴까지다.</text>
+</svg>
