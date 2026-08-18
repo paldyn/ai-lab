@@ -101,63 +101,39 @@
         ># Gemini SDK: 기본 generate_content() 예시</text>
 
   <text x="50" y="303" xml:space="preserve"
-        font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13">
-    <tspan fill="#7ec8e3" font-weight="600">import</tspan><tspan fill="#ffffff"> google.generativeai </tspan><tspan fill="#7ec8e3" font-weight="600">as</tspan><tspan fill="#ffffff"> genai</tspan>
-  </text>
+        font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13"><tspan fill="#7ec8e3" font-weight="600">import</tspan><tspan fill="#ffffff"> google.generativeai </tspan><tspan fill="#7ec8e3" font-weight="600">as</tspan><tspan fill="#ffffff"> genai</tspan></text>
 
   <text x="50" y="323" xml:space="preserve"
-        font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13">
-    <tspan fill="#7ec8e3" font-weight="600">from</tspan><tspan fill="#ffffff"> google.generativeai.types </tspan><tspan fill="#7ec8e3" font-weight="600">import</tspan><tspan fill="#ffffff"> GenerationConfig</tspan>
-  </text>
+        font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13"><tspan fill="#7ec8e3" font-weight="600">from</tspan><tspan fill="#ffffff"> google.generativeai.types </tspan><tspan fill="#7ec8e3" font-weight="600">import</tspan><tspan fill="#ffffff"> GenerationConfig</tspan></text>
 
   <text x="50" y="343" xml:space="preserve"
-        font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13">
-    <tspan fill="#ffffff">genai.configure(api_key=</tspan><tspan fill="#ce9178">"YOUR_API_KEY"</tspan><tspan fill="#ffffff">)</tspan>
-  </text>
+        font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13"><tspan fill="#ffffff">genai.configure(api_key=</tspan><tspan fill="#ce9178">"YOUR_API_KEY"</tspan><tspan fill="#ffffff">)</tspan></text>
 
   <text x="50" y="363" xml:space="preserve"
-        font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13">
-    <tspan fill="#ffffff">model = genai.GenerativeModel(</tspan><tspan fill="#ce9178">"gemini-2.0-flash"</tspan><tspan fill="#ffffff">,</tspan>
-  </text>
+        font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13"><tspan fill="#ffffff">model = genai.GenerativeModel(</tspan><tspan fill="#ce9178">"gemini-2.0-flash"</tspan><tspan fill="#ffffff">,</tspan></text>
 
   <text x="50" y="383" xml:space="preserve"
-        font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13">
-    <tspan fill="#ffffff">    generation_config=GenerationConfig(temperature=</tspan><tspan fill="#b5cea8">0.4</tspan><tspan fill="#ffffff">,</tspan>
-  </text>
+        font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13"><tspan fill="#ffffff">    generation_config=GenerationConfig(temperature=</tspan><tspan fill="#b5cea8">0.4</tspan><tspan fill="#ffffff">,</tspan></text>
 
   <text x="50" y="403" xml:space="preserve"
-        font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13">
-    <tspan fill="#ffffff">        top_p=</tspan><tspan fill="#b5cea8">0.95</tspan><tspan fill="#ffffff">, max_output_tokens=</tspan><tspan fill="#b5cea8">1024</tspan><tspan fill="#ffffff">))</tspan>
-  </text>
+        font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13"><tspan fill="#ffffff">        top_p=</tspan><tspan fill="#b5cea8">0.95</tspan><tspan fill="#ffffff">, max_output_tokens=</tspan><tspan fill="#b5cea8">1024</tspan><tspan fill="#ffffff">))</tspan></text>
 
   <text x="50" y="423" xml:space="preserve"
-        font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13">
-    <tspan fill="#ffffff">response = model.generate_content(</tspan><tspan fill="#ce9178">"딥러닝이란?"</tspan><tspan fill="#ffffff">)</tspan>
-  </text>
+        font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13"><tspan fill="#ffffff">response = model.generate_content(</tspan><tspan fill="#ce9178">"딥러닝이란?"</tspan><tspan fill="#ffffff">)</tspan></text>
 
   <text x="50" y="443" xml:space="preserve"
-        font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13">
-    <tspan fill="#7ec8e3" font-weight="600">print</tspan><tspan fill="#ffffff">(response.text)</tspan>
-  </text>
+        font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13"><tspan fill="#7ec8e3" font-weight="600">print</tspan><tspan fill="#ffffff">(response.text)</tspan></text>
 
   <text x="50" y="463" xml:space="preserve"
-        font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#9aa4b8">
-    <tspan># 토큰 사용량 확인</tspan>
-  </text>
+        font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#9aa4b8"><tspan># 토큰 사용량 확인</tspan></text>
 
   <text x="50" y="483" xml:space="preserve"
-        font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13">
-    <tspan fill="#7ec8e3" font-weight="600">print</tspan><tspan fill="#ffffff">(response.usage_metadata.prompt_token_count)</tspan>
-  </text>
+        font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13"><tspan fill="#7ec8e3" font-weight="600">print</tspan><tspan fill="#ffffff">(response.usage_metadata.prompt_token_count)</tspan></text>
 
   <text x="50" y="503" xml:space="preserve"
-        font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#9aa4b8">
-    <tspan># 스트리밍: stream=True → chunk.text 로 실시간 출력</tspan>
-  </text>
+        font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#9aa4b8"><tspan># 스트리밍: stream=True → chunk.text 로 실시간 출력</tspan></text>
 
   <text x="50" y="523" xml:space="preserve"
-        font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13">
-    <tspan fill="#7ec8e3" font-weight="600">for</tspan><tspan fill="#ffffff"> chunk </tspan><tspan fill="#7ec8e3" font-weight="600">in</tspan><tspan fill="#ffffff"> model.generate_content(prompt, stream=</tspan><tspan fill="#7ec8e3" font-weight="600">True</tspan><tspan fill="#ffffff">):</tspan>
-  </text>
+        font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13"><tspan fill="#7ec8e3" font-weight="600">for</tspan><tspan fill="#ffffff"> chunk </tspan><tspan fill="#7ec8e3" font-weight="600">in</tspan><tspan fill="#ffffff"> model.generate_content(prompt, stream=</tspan><tspan fill="#7ec8e3" font-weight="600">True</tspan><tspan fill="#ffffff">):</tspan></text>
 
 </svg>

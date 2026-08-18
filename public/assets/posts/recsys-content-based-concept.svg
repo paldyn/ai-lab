@@ -106,7 +106,7 @@
   <line x1="722" y1="232" x2="774" y2="232" stroke="#7777cc" stroke-width="2" marker-end="url(#arr-p)"/>
 
   <!-- ── 우측: 추천 결과 ── -->
-  <rect x="774" y="68" width="80" height="328" rx="6" fill="#1a0a1a" stroke="#6e3a6e" stroke-width="1.5"/>
+  <rect x="774" y="68" width="80" height="300" rx="6" fill="#1a0a1a" stroke="#6e3a6e" stroke-width="1.5"/>
   <text x="814" y="95" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
         font-size="12" font-weight="700" fill="#7777cc" text-anchor="middle">추천</text>
   <text x="814" y="113" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"

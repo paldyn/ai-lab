@@ -124,24 +124,13 @@
         font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#9aa4b8"
         ># Llama-3.1-8B KV 캐시 메모리 계산</text>
   <text x="80" y="457" xml:space="preserve"
-        font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13">
-    <tspan fill="#7ec8e3" font-weight="600">n_layers</tspan><tspan fill="#ffffff"> = 32  </tspan>
-    <tspan fill="#7ec8e3" font-weight="600">n_kv_heads</tspan><tspan fill="#ffffff"> = 8  </tspan>
-    <tspan fill="#7ec8e3" font-weight="600">head_dim</tspan><tspan fill="#ffffff"> = 128</tspan>
-  </text>
+        font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13"><tspan fill="#7ec8e3" font-weight="600">n_layers</tspan><tspan fill="#ffffff"> = 32  </tspan><tspan fill="#7ec8e3" font-weight="600">n_kv_heads</tspan><tspan fill="#ffffff"> = 8  </tspan><tspan fill="#7ec8e3" font-weight="600">head_dim</tspan><tspan fill="#ffffff"> = 128</tspan></text>
   <text x="80" y="477" xml:space="preserve"
-        font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13">
-    <tspan fill="#9aa4b8"># KV 캐시(FP16) = 2 × n_layers × n_kv_heads × head_dim × seq_len × batch</tspan>
-  </text>
+        font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13"><tspan fill="#9aa4b8"># KV 캐시(FP16) = 2 × n_layers × n_kv_heads × head_dim × seq_len × batch</tspan></text>
   <text x="80" y="497" xml:space="preserve"
-        font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13">
-    <tspan fill="#7ec8e3" font-weight="600">kv_mem</tspan><tspan fill="#ffffff"> = 2 × 32 × 8 × 128 × 8192 × 32 × 2B </tspan>
-    <tspan fill="#9aa4b8">≈ 34 GB</tspan>
-  </text>
+        font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13"><tspan fill="#7ec8e3" font-weight="600">kv_mem</tspan><tspan fill="#ffffff"> = 2 × 32 × 8 × 128 × 8192 × 32 × 2B </tspan><tspan fill="#9aa4b8">≈ 34 GB</tspan></text>
   <text x="80" y="513" xml:space="preserve"
-        font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13">
-    <tspan fill="#9aa4b8"># 모델 가중치(BF16) ≈ 16 GB &lt; KV 캐시 메모리!</tspan>
-  </text>
+        font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13"><tspan fill="#9aa4b8"># 모델 가중치(BF16) ≈ 16 GB &lt; KV 캐시 메모리!</tspan></text>
 
   <!-- 총 메모리 표시 -->
   <rect x="490" y="360" width="320" height="44" rx="8" fill="#1a0a0a" stroke="#6e3a3a" stroke-width="1.5"/>

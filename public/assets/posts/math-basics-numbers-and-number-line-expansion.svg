@@ -29,9 +29,9 @@
   <text x="600" y="196" font-size="13" fill="#55c555">√2, π</text>
 
   <path d="M 740 250 L 740 200" fill="none" stroke="#7777cc" stroke-width="2" marker-end="url(#grow)"/>
-  <text x="760" y="200" font-size="13" fill="#888">빼기가 늘 되게 → 정수</text>
-  <text x="760" y="240" font-size="13" fill="#888">나누기가 늘 되게 → 유리수</text>
-  <text x="760" y="280" font-size="13" fill="#888">길이를 빠짐없이 → 실수</text>
+  <text x="760" y="200" font-size="13" fill="#888">빼기 때문에 → 정수</text>
+  <text x="760" y="240" font-size="13" fill="#888">나누기 때문에 → 유리수</text>
+  <text x="760" y="280" font-size="13" fill="#888">길이 때문에 → 실수</text>
 
   <text x="60" y="366" font-size="14" fill="#7777cc">실수는 수직선을 빈틈없이 채운다. 한 변이 1인 정사각형의 대각선처럼, 그릴 수는 있는데 분수로는 못 적는 길이가 무리수다</text>
 </svg>

@@ -115,30 +115,15 @@
         font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#9aa4b8"
         ># LLM 특화: 토큰 기반 Rate Limiting (요청 수 + 토큰 수 동시 제한)</text>
   <text x="80" y="352" xml:space="preserve"
-        font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13">
-    <tspan fill="#7ec8e3" font-weight="600">class</tspan><tspan fill="#ffffff"> LLMRateLimiter:</tspan>
-  </text>
+        font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13"><tspan fill="#7ec8e3" font-weight="600">class</tspan><tspan fill="#ffffff"> LLMRateLimiter:</tspan></text>
   <text x="80" y="372" xml:space="preserve"
-        font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13">
-    <tspan fill="#ffffff">    req_limit = </tspan><tspan fill="#b5cea8">60</tspan><tspan fill="#ffffff">   </tspan>
-    <tspan fill="#9aa4b8"># 분당 요청 수</tspan>
-  </text>
+        font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13"><tspan fill="#ffffff">    req_limit = </tspan><tspan fill="#b5cea8">60</tspan><tspan fill="#ffffff">   </tspan><tspan fill="#9aa4b8"># 분당 요청 수</tspan></text>
   <text x="80" y="392" xml:space="preserve"
-        font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13">
-    <tspan fill="#ffffff">    tok_limit = </tspan><tspan fill="#b5cea8">100000</tspan><tspan fill="#ffffff"> </tspan>
-    <tspan fill="#9aa4b8"># 분당 토큰 수 (입력+출력)</tspan>
-  </text>
+        font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13"><tspan fill="#ffffff">    tok_limit = </tspan><tspan fill="#b5cea8">100000</tspan><tspan fill="#ffffff"> </tspan><tspan fill="#9aa4b8"># 분당 토큰 수 (입력+출력)</tspan></text>
   <text x="80" y="412" xml:space="preserve"
-        font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13">
-    <tspan fill="#7ec8e3" font-weight="600">    async def</tspan><tspan fill="#ffffff"> check(self, api_key, input_tokens):</tspan>
-  </text>
+        font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13"><tspan fill="#7ec8e3" font-weight="600">    async def</tspan><tspan fill="#ffffff"> check(self, api_key, input_tokens):</tspan></text>
   <text x="80" y="432" xml:space="preserve"
-        font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13">
-    <tspan fill="#9aa4b8">        # Redis에서 현재 윈도우의 req/tok 카운트 조회 후 판단</tspan>
-  </text>
+        font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13"><tspan fill="#9aa4b8">        # Redis에서 현재 윈도우의 req/tok 카운트 조회 후 판단</tspan></text>
   <text x="80" y="452" xml:space="preserve"
-        font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13">
-    <tspan fill="#7ec8e3" font-weight="600">        return</tspan><tspan fill="#ffffff"> req_count &lt; self.req_limit </tspan>
-    <tspan fill="#7ec8e3" font-weight="600">and</tspan><tspan fill="#ffffff"> tok_count &lt; self.tok_limit</tspan>
-  </text>
+        font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13"><tspan fill="#7ec8e3" font-weight="600">        return</tspan><tspan fill="#ffffff"> req_count &lt; self.req_limit </tspan><tspan fill="#7ec8e3" font-weight="600">and</tspan><tspan fill="#ffffff"> tok_count &lt; self.tok_limit</tspan></text>
 </svg>

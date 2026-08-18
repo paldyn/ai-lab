@@ -91,34 +91,19 @@
         font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#9aa4b8"
         ># 요청 (OpenAI 호환 형식)</text>
   <text x="80" y="322" xml:space="preserve"
-        font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13">
-    <tspan fill="#7ec8e3" font-weight="600">POST</tspan><tspan fill="#ffffff"> /v1/chat/completions</tspan>
-  </text>
+        font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13"><tspan fill="#7ec8e3" font-weight="600">POST</tspan><tspan fill="#ffffff"> /v1/chat/completions</tspan></text>
   <text x="80" y="342" xml:space="preserve"
-        font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13">
-    <tspan fill="#ffffff">{</tspan>
-  </text>
+        font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13"><tspan fill="#ffffff">{</tspan></text>
   <text x="80" y="362" xml:space="preserve"
-        font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13">
-    <tspan fill="#ce9178">  "model"</tspan><tspan fill="#ffffff">: </tspan><tspan fill="#ce9178">"llama-3.1-8b"</tspan><tspan fill="#ffffff">,</tspan>
-  </text>
+        font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13"><tspan fill="#ce9178">  "model"</tspan><tspan fill="#ffffff">: </tspan><tspan fill="#ce9178">"llama-3.1-8b"</tspan><tspan fill="#ffffff">,</tspan></text>
   <text x="80" y="382" xml:space="preserve"
-        font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13">
-    <tspan fill="#ce9178">  "messages"</tspan><tspan fill="#ffffff">: [{</tspan><tspan fill="#ce9178">"role"</tspan><tspan fill="#ffffff">:</tspan><tspan fill="#ce9178">"user"</tspan><tspan fill="#ffffff">,</tspan>
-  </text>
+        font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13"><tspan fill="#ce9178">  "messages"</tspan><tspan fill="#ffffff">: [{</tspan><tspan fill="#ce9178">"role"</tspan><tspan fill="#ffffff">:</tspan><tspan fill="#ce9178">"user"</tspan><tspan fill="#ffffff">,</tspan></text>
   <text x="80" y="402" xml:space="preserve"
-        font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13">
-    <tspan fill="#ce9178">    "content"</tspan><tspan fill="#ffffff">: </tspan><tspan fill="#ce9178">"안녕"</tspan><tspan fill="#ffffff">}],</tspan>
-  </text>
+        font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13"><tspan fill="#ce9178">    "content"</tspan><tspan fill="#ffffff">: </tspan><tspan fill="#ce9178">"안녕"</tspan><tspan fill="#ffffff">}],</tspan></text>
   <text x="80" y="422" xml:space="preserve"
-        font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13">
-    <tspan fill="#ce9178">  "temperature"</tspan><tspan fill="#ffffff">: </tspan><tspan fill="#b5cea8">0.7</tspan><tspan fill="#ffffff">,</tspan>
-    <tspan fill="#ce9178"> "stream"</tspan><tspan fill="#ffffff">: </tspan><tspan fill="#7ec8e3" font-weight="600">true</tspan>
-  </text>
+        font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13"><tspan fill="#ce9178">  "temperature"</tspan><tspan fill="#ffffff">: </tspan><tspan fill="#b5cea8">0.7</tspan><tspan fill="#ffffff">,</tspan><tspan fill="#ce9178"> "stream"</tspan><tspan fill="#ffffff">: </tspan><tspan fill="#7ec8e3" font-weight="600">true</tspan></text>
   <text x="80" y="442" xml:space="preserve"
-        font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13">
-    <tspan fill="#ffffff">}</tspan>
-  </text>
+        font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13"><tspan fill="#ffffff">}</tspan></text>
   <text x="80" y="462" xml:space="preserve"
         font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#9aa4b8"
         ># Authorization: Bearer sk-...</text>

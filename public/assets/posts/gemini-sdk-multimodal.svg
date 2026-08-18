@@ -110,38 +110,24 @@
         ># 멀티모달: 이미지 + 텍스트 동시 입력</text>
 
   <text x="50" y="411" xml:space="preserve"
-        font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13">
-    <tspan fill="#7ec8e3" font-weight="600">from</tspan><tspan fill="#ffffff"> PIL </tspan><tspan fill="#7ec8e3" font-weight="600">import</tspan><tspan fill="#ffffff"> Image</tspan>
-  </text>
+        font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13"><tspan fill="#7ec8e3" font-weight="600">from</tspan><tspan fill="#ffffff"> PIL </tspan><tspan fill="#7ec8e3" font-weight="600">import</tspan><tspan fill="#ffffff"> Image</tspan></text>
 
   <text x="50" y="431" xml:space="preserve"
-        font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13">
-    <tspan fill="#ffffff">model = genai.GenerativeModel(</tspan><tspan fill="#ce9178">"gemini-2.0-flash"</tspan><tspan fill="#ffffff">)</tspan>
-  </text>
+        font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13"><tspan fill="#ffffff">model = genai.GenerativeModel(</tspan><tspan fill="#ce9178">"gemini-2.0-flash"</tspan><tspan fill="#ffffff">)</tspan></text>
 
   <text x="50" y="451" xml:space="preserve"
-        font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13">
-    <tspan fill="#ffffff">image = Image.open(</tspan><tspan fill="#ce9178">"diagram.png"</tspan><tspan fill="#ffffff">)</tspan>
-  </text>
+        font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13"><tspan fill="#ffffff">image = Image.open(</tspan><tspan fill="#ce9178">"diagram.png"</tspan><tspan fill="#ffffff">)</tspan></text>
 
   <text x="50" y="471" xml:space="preserve"
-        font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13">
-    <tspan fill="#ffffff">response = model.generate_content([</tspan>
-  </text>
+        font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13"><tspan fill="#ffffff">response = model.generate_content([</tspan></text>
 
   <text x="50" y="491" xml:space="preserve"
-        font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13">
-    <tspan fill="#ffffff">    image, </tspan><tspan fill="#ce9178">"이 다이어그램의 SPOF를 찾아주세요."</tspan>
-  </text>
+        font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13"><tspan fill="#ffffff">    image, </tspan><tspan fill="#ce9178">"이 다이어그램의 SPOF를 찾아주세요."</tspan></text>
 
   <text x="50" y="511" xml:space="preserve"
-        font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13">
-    <tspan fill="#ffffff">])</tspan>
-  </text>
+        font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13"><tspan fill="#ffffff">])</tspan></text>
 
   <text x="50" y="531" xml:space="preserve"
-        font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13">
-    <tspan fill="#7ec8e3" font-weight="600">print</tspan><tspan fill="#ffffff">(response.text)</tspan>
-  </text>
+        font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13"><tspan fill="#7ec8e3" font-weight="600">print</tspan><tspan fill="#ffffff">(response.text)</tspan></text>
 
 </svg>

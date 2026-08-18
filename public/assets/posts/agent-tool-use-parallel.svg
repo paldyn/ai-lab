@@ -60,71 +60,33 @@
         font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#9aa4b8"
         ># 병렬 도구 실행 처리</text>
   <text x="480" y="110" xml:space="preserve"
-        font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13">
-    <tspan fill="#7ec8e3" font-weight="600">import</tspan><tspan fill="#ffffff"> asyncio</tspan>
-  </text>
+        font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13"><tspan fill="#7ec8e3" font-weight="600">import</tspan><tspan fill="#ffffff"> asyncio</tspan></text>
   <text x="480" y="134" xml:space="preserve"
-        font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13">
-    <tspan fill="#7ec8e3" font-weight="600">async def</tspan><tspan fill="#ffffff"> run_tools_parallel(blocks, funcs):</tspan>
-  </text>
+        font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13"><tspan fill="#7ec8e3" font-weight="600">async def</tspan><tspan fill="#ffffff"> run_tools_parallel(blocks, funcs):</tspan></text>
   <text x="480" y="154" xml:space="preserve"
-        font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13">
-    <tspan fill="#9aa4b8">    """여러 tool_use 블록을 병렬 실행"""</tspan>
-  </text>
+        font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13"><tspan fill="#9aa4b8">    """여러 tool_use 블록을 병렬 실행"""</tspan></text>
   <text x="480" y="174" xml:space="preserve"
-        font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13">
-    <tspan fill="#7ec8e3" font-weight="600">    async def</tspan><tspan fill="#ffffff"> run_one(block):</tspan>
-  </text>
+        font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13"><tspan fill="#7ec8e3" font-weight="600">    async def</tspan><tspan fill="#ffffff"> run_one(block):</tspan></text>
   <text x="480" y="194" xml:space="preserve"
-        font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13">
-    <tspan fill="#ffffff">        func = funcs.get(block.name)</tspan>
-  </text>
+        font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13"><tspan fill="#ffffff">        func = funcs.get(block.name)</tspan></text>
   <text x="480" y="214" xml:space="preserve"
-        font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13">
-    <tspan fill="#7ec8e3" font-weight="600">        if not</tspan><tspan fill="#ffffff"> func:</tspan>
-    <tspan fill="#7ec8e3" font-weight="600"> return</tspan><tspan fill="#ffffff"> {</tspan><tspan fill="#ce9178">"error"</tspan><tspan fill="#ffffff">: </tspan><tspan fill="#ce9178">"unknown"</tspan><tspan fill="#ffffff">}</tspan>
-  </text>
+        font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13"><tspan fill="#7ec8e3" font-weight="600">        if not</tspan><tspan fill="#ffffff"> func:</tspan><tspan fill="#7ec8e3" font-weight="600"> return</tspan><tspan fill="#ffffff"> {</tspan><tspan fill="#ce9178">"error"</tspan><tspan fill="#ffffff">: </tspan><tspan fill="#ce9178">"unknown"</tspan><tspan fill="#ffffff">}</tspan></text>
   <text x="480" y="234" xml:space="preserve"
-        font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13">
-    <tspan fill="#7ec8e3" font-weight="600">        try</tspan><tspan fill="#ffffff">:</tspan>
-    <tspan fill="#7ec8e3" font-weight="600"> return await</tspan><tspan fill="#ffffff"> func(**block.input)</tspan>
-  </text>
+        font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13"><tspan fill="#7ec8e3" font-weight="600">        try</tspan><tspan fill="#ffffff">:</tspan><tspan fill="#7ec8e3" font-weight="600"> return await</tspan><tspan fill="#ffffff"> func(**block.input)</tspan></text>
   <text x="480" y="254" xml:space="preserve"
-        font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13">
-    <tspan fill="#7ec8e3" font-weight="600">        except</tspan><tspan fill="#ffffff"> Exception </tspan>
-    <tspan fill="#7ec8e3" font-weight="600">as</tspan><tspan fill="#ffffff"> e:</tspan>
-    <tspan fill="#7ec8e3" font-weight="600"> return</tspan><tspan fill="#ffffff"> {</tspan><tspan fill="#ce9178">"error"</tspan><tspan fill="#ffffff">: str(e)}</tspan>
-  </text>
+        font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13"><tspan fill="#7ec8e3" font-weight="600">        except</tspan><tspan fill="#ffffff"> Exception </tspan><tspan fill="#7ec8e3" font-weight="600">as</tspan><tspan fill="#ffffff"> e:</tspan><tspan fill="#7ec8e3" font-weight="600"> return</tspan><tspan fill="#ffffff"> {</tspan><tspan fill="#ce9178">"error"</tspan><tspan fill="#ffffff">: str(e)}</tspan></text>
   <text x="480" y="278" xml:space="preserve"
-        font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13">
-    <tspan fill="#9aa4b8">    # tool_use 블록만 필터링 후 병렬 실행</tspan>
-  </text>
+        font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13"><tspan fill="#9aa4b8">    # tool_use 블록만 필터링 후 병렬 실행</tspan></text>
   <text x="480" y="298" xml:space="preserve"
-        font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13">
-    <tspan fill="#ffffff">    tool_blocks = [b </tspan>
-    <tspan fill="#7ec8e3" font-weight="600">for</tspan><tspan fill="#ffffff"> b </tspan>
-    <tspan fill="#7ec8e3" font-weight="600">in</tspan><tspan fill="#ffffff"> blocks</tspan>
-  </text>
+        font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13"><tspan fill="#ffffff">    tool_blocks = [b </tspan><tspan fill="#7ec8e3" font-weight="600">for</tspan><tspan fill="#ffffff"> b </tspan><tspan fill="#7ec8e3" font-weight="600">in</tspan><tspan fill="#ffffff"> blocks</tspan></text>
   <text x="480" y="318" xml:space="preserve"
-        font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13">
-    <tspan fill="#ffffff">                   </tspan><tspan fill="#7ec8e3" font-weight="600">if</tspan><tspan fill="#ffffff"> b.type == </tspan><tspan fill="#ce9178">"tool_use"</tspan><tspan fill="#ffffff">]</tspan>
-  </text>
+        font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13"><tspan fill="#ffffff">                   </tspan><tspan fill="#7ec8e3" font-weight="600">if</tspan><tspan fill="#ffffff"> b.type == </tspan><tspan fill="#ce9178">"tool_use"</tspan><tspan fill="#ffffff">]</tspan></text>
   <text x="480" y="338" xml:space="preserve"
-        font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13">
-    <tspan fill="#ffffff">    results = </tspan><tspan fill="#7ec8e3" font-weight="600">await</tspan><tspan fill="#ffffff"> asyncio.gather(</tspan>
-  </text>
+        font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13"><tspan fill="#ffffff">    results = </tspan><tspan fill="#7ec8e3" font-weight="600">await</tspan><tspan fill="#ffffff"> asyncio.gather(</tspan></text>
   <text x="480" y="358" xml:space="preserve"
-        font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13">
-    <tspan fill="#ffffff">        *[run_one(b) </tspan>
-    <tspan fill="#7ec8e3" font-weight="600">for</tspan><tspan fill="#ffffff"> b </tspan>
-    <tspan fill="#7ec8e3" font-weight="600">in</tspan><tspan fill="#ffffff"> tool_blocks]</tspan>
-  </text>
+        font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13"><tspan fill="#ffffff">        *[run_one(b) </tspan><tspan fill="#7ec8e3" font-weight="600">for</tspan><tspan fill="#ffffff"> b </tspan><tspan fill="#7ec8e3" font-weight="600">in</tspan><tspan fill="#ffffff"> tool_blocks]</tspan></text>
   <text x="480" y="378" xml:space="preserve"
-        font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13">
-    <tspan fill="#ffffff">    )</tspan>
-  </text>
+        font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13"><tspan fill="#ffffff">    )</tspan></text>
   <text x="480" y="398" xml:space="preserve"
-        font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13">
-    <tspan fill="#7ec8e3" font-weight="600">    return</tspan><tspan fill="#ffffff"> [{</tspan><tspan fill="#ce9178">"type"</tspan><tspan fill="#ffffff">:</tspan><tspan fill="#ce9178">"tool_result"</tspan><tspan fill="#ffffff">,</tspan>
-  </text>
+        font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13"><tspan fill="#7ec8e3" font-weight="600">    return</tspan><tspan fill="#ffffff"> [{</tspan><tspan fill="#ce9178">"type"</tspan><tspan fill="#ffffff">:</tspan><tspan fill="#ce9178">"tool_result"</tspan><tspan fill="#ffffff">,</tspan></text>
 </svg>

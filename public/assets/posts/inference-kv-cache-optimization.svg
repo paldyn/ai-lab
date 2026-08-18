@@ -115,25 +115,13 @@
         font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#9aa4b8"
         ># vLLM: KV 캐시 최적화 설정 조합</text>
   <text x="80" y="302" xml:space="preserve"
-        font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13">
-    <tspan fill="#7ec8e3" font-weight="600">llm</tspan><tspan fill="#ffffff"> = LLM(</tspan>
-    <tspan fill="#7ec8e3" font-weight="600">model</tspan><tspan fill="#ffffff">=</tspan><tspan fill="#ce9178">"meta-llama/Llama-3.1-8B-Instruct"</tspan><tspan fill="#ffffff">,</tspan>
-  </text>
+        font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13"><tspan fill="#7ec8e3" font-weight="600">llm</tspan><tspan fill="#ffffff"> = LLM(</tspan><tspan fill="#7ec8e3" font-weight="600">model</tspan><tspan fill="#ffffff">=</tspan><tspan fill="#ce9178">"meta-llama/Llama-3.1-8B-Instruct"</tspan><tspan fill="#ffffff">,</tspan></text>
   <text x="80" y="322" xml:space="preserve"
-        font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13">
-    <tspan fill="#7ec8e3" font-weight="600">    kv_cache_dtype</tspan><tspan fill="#ffffff">=</tspan><tspan fill="#ce9178">"fp8"</tspan><tspan fill="#ffffff">,           </tspan>
-    <tspan fill="#9aa4b8"># ① 50% 절감</tspan>
-  </text>
+        font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13"><tspan fill="#7ec8e3" font-weight="600">    kv_cache_dtype</tspan><tspan fill="#ffffff">=</tspan><tspan fill="#ce9178">"fp8"</tspan><tspan fill="#ffffff">,           </tspan><tspan fill="#9aa4b8"># ① 50% 절감</tspan></text>
   <text x="80" y="342" xml:space="preserve"
-        font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13">
-    <tspan fill="#7ec8e3" font-weight="600">    enable_prefix_caching</tspan><tspan fill="#ffffff">=</tspan><tspan fill="#7ec8e3" font-weight="600">True</tspan><tspan fill="#ffffff">,  </tspan>
-    <tspan fill="#9aa4b8"># ③ Prefix 재사용</tspan>
-  </text>
+        font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13"><tspan fill="#7ec8e3" font-weight="600">    enable_prefix_caching</tspan><tspan fill="#ffffff">=</tspan><tspan fill="#7ec8e3" font-weight="600">True</tspan><tspan fill="#ffffff">,  </tspan><tspan fill="#9aa4b8"># ③ Prefix 재사용</tspan></text>
   <text x="80" y="362" xml:space="preserve"
-        font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13">
-    <tspan fill="#7ec8e3" font-weight="600">    gpu_memory_utilization</tspan><tspan fill="#ffffff">=</tspan><tspan fill="#b5cea8">0.92</tspan><tspan fill="#ffffff">)</tspan>
-    <tspan fill="#9aa4b8">  # ④ 최대한 활용</tspan>
-  </text>
+        font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13"><tspan fill="#7ec8e3" font-weight="600">    gpu_memory_utilization</tspan><tspan fill="#ffffff">=</tspan><tspan fill="#b5cea8">0.92</tspan><tspan fill="#ffffff">)</tspan><tspan fill="#9aa4b8">  # ④ 최대한 활용</tspan></text>
 
   <!-- ── 하단: 조합 효과 ── -->
   <rect x="60" y="382" width="760" height="96" rx="8" fill="#0a1a0a" stroke="#3a6e3a" stroke-width="1.5"/>

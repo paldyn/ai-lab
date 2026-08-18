@@ -106,58 +106,36 @@
         ># OpenAI SDK: 기본 Chat Completions 예시</text>
 
   <text x="50" y="303" xml:space="preserve"
-        font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13">
-    <tspan fill="#7ec8e3" font-weight="600">from</tspan><tspan fill="#ffffff"> openai </tspan><tspan fill="#7ec8e3" font-weight="600">import</tspan><tspan fill="#ffffff"> OpenAI</tspan>
-  </text>
+        font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13"><tspan fill="#7ec8e3" font-weight="600">from</tspan><tspan fill="#ffffff"> openai </tspan><tspan fill="#7ec8e3" font-weight="600">import</tspan><tspan fill="#ffffff"> OpenAI</tspan></text>
 
   <text x="50" y="323" xml:space="preserve"
-        font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13">
-    <tspan fill="#ffffff">client = OpenAI(api_key=</tspan><tspan fill="#ce9178">"sk-..."</tspan><tspan fill="#ffffff">)</tspan>
-  </text>
+        font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13"><tspan fill="#ffffff">client = OpenAI(api_key=</tspan><tspan fill="#ce9178">"sk-..."</tspan><tspan fill="#ffffff">)</tspan></text>
 
   <text x="50" y="343" xml:space="preserve"
-        font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13">
-    <tspan fill="#ffffff">response = client.chat.completions.create(</tspan>
-  </text>
+        font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13"><tspan fill="#ffffff">response = client.chat.completions.create(</tspan></text>
 
   <text x="50" y="363" xml:space="preserve"
-        font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13">
-    <tspan fill="#ffffff">    model=</tspan><tspan fill="#ce9178">"gpt-4o"</tspan><tspan fill="#ffffff">,</tspan>
-  </text>
+        font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13"><tspan fill="#ffffff">    model=</tspan><tspan fill="#ce9178">"gpt-4o"</tspan><tspan fill="#ffffff">,</tspan></text>
 
   <text x="50" y="383" xml:space="preserve"
-        font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13">
-    <tspan fill="#ffffff">    messages=[</tspan>
-  </text>
+        font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13"><tspan fill="#ffffff">    messages=[</tspan></text>
 
   <text x="50" y="403" xml:space="preserve"
-        font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13">
-    <tspan fill="#ffffff">        {</tspan><tspan fill="#ce9178">"role"</tspan><tspan fill="#ffffff">: </tspan><tspan fill="#ce9178">"system"</tspan><tspan fill="#ffffff">, </tspan><tspan fill="#ce9178">"content"</tspan><tspan fill="#ffffff">: </tspan><tspan fill="#ce9178">"당신은 친절한 어시스턴트입니다."</tspan><tspan fill="#ffffff">},</tspan>
-  </text>
+        font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13"><tspan fill="#ffffff">        {</tspan><tspan fill="#ce9178">"role"</tspan><tspan fill="#ffffff">: </tspan><tspan fill="#ce9178">"system"</tspan><tspan fill="#ffffff">, </tspan><tspan fill="#ce9178">"content"</tspan><tspan fill="#ffffff">: </tspan><tspan fill="#ce9178">"당신은 친절한 어시스턴트입니다."</tspan><tspan fill="#ffffff">},</tspan></text>
 
   <text x="50" y="423" xml:space="preserve"
-        font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13">
-    <tspan fill="#ffffff">        {</tspan><tspan fill="#ce9178">"role"</tspan><tspan fill="#ffffff">: </tspan><tspan fill="#ce9178">"user"</tspan><tspan fill="#ffffff">, </tspan><tspan fill="#ce9178">"content"</tspan><tspan fill="#ffffff">: </tspan><tspan fill="#ce9178">"파이썬이란 무엇인가요?"</tspan><tspan fill="#ffffff">},</tspan>
-  </text>
+        font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13"><tspan fill="#ffffff">        {</tspan><tspan fill="#ce9178">"role"</tspan><tspan fill="#ffffff">: </tspan><tspan fill="#ce9178">"user"</tspan><tspan fill="#ffffff">, </tspan><tspan fill="#ce9178">"content"</tspan><tspan fill="#ffffff">: </tspan><tspan fill="#ce9178">"파이썬이란 무엇인가요?"</tspan><tspan fill="#ffffff">},</tspan></text>
 
   <text x="50" y="443" xml:space="preserve"
-        font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13">
-    <tspan fill="#ffffff">    ], temperature=</tspan><tspan fill="#b5cea8">0.7</tspan><tspan fill="#ffffff">, max_tokens=</tspan><tspan fill="#b5cea8">500</tspan>
-  </text>
+        font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13"><tspan fill="#ffffff">    ], temperature=</tspan><tspan fill="#b5cea8">0.7</tspan><tspan fill="#ffffff">, max_tokens=</tspan><tspan fill="#b5cea8">500</tspan></text>
 
   <text x="50" y="463" xml:space="preserve"
-        font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13">
-    <tspan fill="#ffffff">)</tspan>
-  </text>
+        font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13"><tspan fill="#ffffff">)</tspan></text>
 
   <text x="50" y="483" xml:space="preserve"
-        font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13">
-    <tspan fill="#7ec8e3" font-weight="600">print</tspan><tspan fill="#ffffff">(response.choices[</tspan><tspan fill="#b5cea8">0</tspan><tspan fill="#ffffff">].message.content)</tspan>
-  </text>
+        font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13"><tspan fill="#7ec8e3" font-weight="600">print</tspan><tspan fill="#ffffff">(response.choices[</tspan><tspan fill="#b5cea8">0</tspan><tspan fill="#ffffff">].message.content)</tspan></text>
 
   <text x="50" y="503" xml:space="preserve"
-        font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#9aa4b8">
-    <tspan># 사용량: response.usage.total_tokens</tspan>
-  </text>
+        font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#9aa4b8"><tspan># 사용량: response.usage.total_tokens</tspan></text>
 
 </svg>

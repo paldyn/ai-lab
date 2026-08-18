@@ -14,19 +14,7 @@
   <!-- Code block -->
   <rect x="40" y="108" width="800" height="222" rx="6" fill="#000000" stroke="#3a4a6e" stroke-width="1"/>
 
-  <text xml:space="preserve" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13">
-    <tspan x="60" dy="0" y="132"><tspan fill="#7ec8e3" font-weight="600">from</tspan><tspan fill="#ffffff"> feast </tspan><tspan fill="#7ec8e3" font-weight="600">import</tspan><tspan fill="#ffffff"> (</tspan></tspan>
-    <tspan x="60" dy="19"><tspan fill="#ffffff">    Entity, FeatureView, Field, FileSource</tspan></tspan>
-    <tspan x="60" dy="19"><tspan fill="#ffffff">)</tspan></tspan>
-    <tspan x="60" dy="19"><tspan fill="#7ec8e3" font-weight="600">from</tspan><tspan fill="#ffffff"> feast.types </tspan><tspan fill="#7ec8e3" font-weight="600">import</tspan><tspan fill="#ffffff"> Float32, Int64</tspan></tspan>
-    <tspan x="60" dy="22"><tspan fill="#9aa4b8"># 엔티티 정의</tspan></tspan>
-    <tspan x="60" dy="19"><tspan fill="#ffffff">user = Entity(name=</tspan><tspan fill="#ce9178">"user_id"</tspan><tspan fill="#ffffff">, join_keys=[</tspan><tspan fill="#ce9178">"user_id"</tspan><tspan fill="#ffffff">])</tspan></tspan>
-    <tspan x="60" dy="22"><tspan fill="#9aa4b8"># 피처 소스</tspan></tspan>
-    <tspan x="60" dy="19"><tspan fill="#ffffff">user_stats_source = FileSource(</tspan></tspan>
-    <tspan x="60" dy="19"><tspan fill="#ffffff">    path=</tspan><tspan fill="#ce9178">"data/user_stats.parquet"</tspan><tspan fill="#ffffff">,</tspan></tspan>
-    <tspan x="60" dy="19"><tspan fill="#ffffff">    timestamp_field=</tspan><tspan fill="#ce9178">"event_timestamp"</tspan><tspan fill="#ffffff">,</tspan></tspan>
-    <tspan x="60" dy="19"><tspan fill="#ffffff">)</tspan></tspan>
-  </text>
+  <text xml:space="preserve" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13"><tspan x="60" dy="0" y="132"><tspan fill="#7ec8e3" font-weight="600">from</tspan><tspan fill="#ffffff"> feast </tspan><tspan fill="#7ec8e3" font-weight="600">import</tspan><tspan fill="#ffffff"> (</tspan></tspan><tspan x="60" dy="19"><tspan fill="#ffffff">    Entity, FeatureView, Field, FileSource</tspan></tspan><tspan x="60" dy="19"><tspan fill="#ffffff">)</tspan></tspan><tspan x="60" dy="19"><tspan fill="#7ec8e3" font-weight="600">from</tspan><tspan fill="#ffffff"> feast.types </tspan><tspan fill="#7ec8e3" font-weight="600">import</tspan><tspan fill="#ffffff"> Float32, Int64</tspan></tspan><tspan x="60" dy="22"><tspan fill="#9aa4b8"># 엔티티 정의</tspan></tspan><tspan x="60" dy="19"><tspan fill="#ffffff">user = Entity(name=</tspan><tspan fill="#ce9178">"user_id"</tspan><tspan fill="#ffffff">, join_keys=[</tspan><tspan fill="#ce9178">"user_id"</tspan><tspan fill="#ffffff">])</tspan></tspan><tspan x="60" dy="22"><tspan fill="#9aa4b8"># 피처 소스</tspan></tspan><tspan x="60" dy="19"><tspan fill="#ffffff">user_stats_source = FileSource(</tspan></tspan><tspan x="60" dy="19"><tspan fill="#ffffff">    path=</tspan><tspan fill="#ce9178">"data/user_stats.parquet"</tspan><tspan fill="#ffffff">,</tspan></tspan><tspan x="60" dy="19"><tspan fill="#ffffff">    timestamp_field=</tspan><tspan fill="#ce9178">"event_timestamp"</tspan><tspan fill="#ffffff">,</tspan></tspan><tspan x="60" dy="19"><tspan fill="#ffffff">)</tspan></tspan></text>
 
   <!-- Second code block for FeatureView -->
   <rect x="40" y="338" width="800" height="42" rx="6" fill="#0a0a0a" stroke="#3a4a6e" stroke-width="0"/>
