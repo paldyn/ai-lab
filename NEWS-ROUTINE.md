@@ -293,15 +293,21 @@ policy denial`로 남는다). 웨이백도 같은 이유로 막힌다.
 openai.com 후보 전부를 포기하고 **제목·URL·발행일을 보고에 적어 사람에게 넘긴다.**
 사람은 로컬에서 읽어 채울 수 있다 — 2026-08-17 발표 셋이 그렇게 들어갔다.
 
-**허용 목록에 넣어 봤지만 그대로였다(2026-08-18).** 환경 설정에서 `web.archive.org`를
-더한 뒤 곧바로 확인했는데 경로가 있든(`/web/2026/...`) 루트든 똑같이
-`curl: (35) Recv failure: Connection reset by peer`, HTTP `000`, 0바이트다. 같은 실행에서
-대조군으로 부른 `openai.com`은 403이지만 4,973바이트가 왔다 — curl·프록시·TLS는 멀쩡하고
-그 호스트로 나가는 연결만 끊긴다는 뜻이다. 프록시 상태는 `enabled: true`,
-`recentRelayFailures: []`였고 `web.archive.org`는 `noProxy`에도 없었다.
+**허용 목록을 두 번 손보고 확인한 결과다(2026-08-18).**
 
-그러니 **openai.com 기사는 사람이 채우는 것이 현재의 정상 경로다.** 다시 뚫으려 시간을
-쓰지 마라. 허용 목록이 실제로 반영되면 이 문단을 고친다.
+| 호스트 | 결과 |
+| --- | --- |
+| `archive.org` | **200** — 허용 목록에 넣으니 진짜로 열렸다(Internet Archive 셸 789바이트) |
+| `web.archive.org` | **000** — 경로든 루트든 `curl: (35) Recv failure: Connection reset by peer` |
+| `openai.com/news/rss.xml` (대조군) | **200**, 117,906바이트 |
+
+**서브도메인은 별개 호스트다.** `archive.org`를 열어 줘도 `web.archive.org`는 안 열린다.
+스냅샷 본문은 `web.archive.org`에만 있으므로 그 호스트가 허용 목록에 들어가야
+(와일드카드를 쓸 수 있으면 `*.archive.org`) 이 길이 뚫린다. 오류가 프록시의 403/407이
+아니라 TLS 단계 리셋인 것이 허용되지 않은 호스트의 모습이다.
+
+그때까지 **openai.com 기사는 사람이 채우는 것이 정상 경로다.** 다시 뚫으려 시간을 쓰지
+말고 제목·URL·발행일을 보고에 남겨라.
 
 프록시를 거쳐 읽었어도 **`url`에는 원문 주소를 적는다.** 그리고 프록시가 준 본문에는
 원문에 없는 안내 줄(`Title:`, `URL Source:`, `Markdown Content:`)이 머리에 붙으니
