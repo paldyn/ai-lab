@@ -172,6 +172,21 @@ export const globalNewsUpdatedAt = '2026-08-13';
  */
 const entries: NewsItem[] = [
   {
+    id: 'google-gemini-pixel-football-club-partnerships',
+    source: 'Google DeepMind',
+    kind: 'company',
+    title: 'Google, Gemini·Pixel 유럽 축구 5개 구단과 파트너십',
+    summary:
+      'Google이 Arsenal FC·FC Barcelona·FC Bayern München·Liverpool FC·' +
+      'Paris Saint-Germain 다섯 구단과 장기 파트너십을 맺었다. Gemini는 공식 컨슈머 AI ' +
+      '파트너, Pixel은 공식 스마트폰 파트너로 참여하며 시작 시기와 지역은 밝히지 않았다.',
+    publishedAt: '2026-08-17',
+    collectedAt: '2026-08-18',
+    category: 'Product',
+    signal: '스포츠 제휴',
+    url: 'https://blog.google/products-and-platforms/products/gemini/google-gemini-pixel-football-club-partnerships/',
+  },
+  {
     id: 'claude-text-watermark',
     source: 'Anthropic',
     kind: 'company',

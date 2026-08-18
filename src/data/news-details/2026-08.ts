@@ -2,6 +2,23 @@ import type { NewsDetail } from '../news';
 
 /** 2026-08 발표의 모달 본문. 목록은 news.ts에 있습니다. */
 export const details: Record<string, NewsDetail> = {
+  'google-gemini-pixel-football-club-partnerships': {
+    points: [
+      'Arsenal FC·FC Barcelona·FC Bayern München·Liverpool FC·Paris Saint-Germain 다섯 구단과 장기 파트너십을 맺었다',
+      'Gemini는 공식 컨슈머 AI 파트너, Pixel은 공식 스마트폰 파트너 자격으로 참여한다',
+      'Gemini가 경기 중 심층 분석과 기록을 보여 주는 용도를 들었다',
+      '상대 전적을 불러와 경기가 끝난 뒤의 논쟁을 정리하는 쓰임을 예로 들었다',
+      '구단 미디어팀이 Pixel로 비하인드 영상을 찍는 「Shot on Pixel」 시리즈를 연다',
+      'Pixel 11에서 공식 구단 배경화면을 쓸 수 있다',
+      '남자팀과 여자팀을 같은 비중으로 다루고 여자 축구의 노출 격차를 줄이겠다고 밝혔다',
+      '시작 시기, 지역, 구독 조건, 가격은 밝히지 않았다',
+    ],
+    commentary:
+      '기술 발표가 아니라 브랜드 노출 계약이라 새로 쓸 수 있게 된 기능은 사실상 배경화면뿐이다. ' +
+      '그럼에도 눈여겨볼 자리는 「공식 컨슈머 AI 파트너」라는 명칭이다 — 검색 엔진이나 ' +
+      '통신사처럼 구단이 갈래마다 하나씩 두던 자리에 AI 비서 칸이 새로 생겼다는 뜻이고, ' +
+      '한 시즌 단위가 아니라 장기로 묶었다. 발표에 시기·지역이 없는 것도 함께 봐야 한다.',
+  },
   'claude-text-watermark': {
     points: [
       '앞으로 출시하는 Claude 모델의 텍스트 출력에 보이지 않는 워터마크를 넣는다고 밝혔다',
