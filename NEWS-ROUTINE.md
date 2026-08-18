@@ -1,11 +1,17 @@
 # AI 뉴스 수집 루틴 프롬프트
 
-「PALDYN AI Lab — AI 뉴스 수집 (매일)」 Routine의 프롬프트 원본이다. 웹 UI로 만든
-루틴이라 에이전트가 API로 못 고친다 — 여기서 고치고 **아래 구분선 이후 전문을 복사해
-Routine 설정의 프롬프트에 붙여 넣는다.** 두 곳이 갈리면 실행이 어긋난 지시 둘을 받는다.
+「PALDYN AI Lab — AI 뉴스 수집 (매일)」 Routine(`trig_01XU4LyKxEtjEkBqdgcdLWJy`)의 프롬프트
+원본이다. **여기서 고치고 아래 구분선 이후 전문을 Routine의 프롬프트로 올린다.**
+두 곳이 갈리면 실행이 어긋난 지시 둘을 받는다 — 2026-08-18에 실제로 갈려 있었다.
+08-18에 적은 제외 목록 삭제·openai.com 대응·체크포인트 규칙이 라이브에 없는 채로
+이틀을 돌았다.
 
-마지막 갱신: 2026-08-18 (제외 목록 삭제, openai.com 차단 대응, 체크포인트 규칙)
+**올리는 것은 로컬 세션이 한다.** 이 루틴은 `created_via: http_api`라 RemoteTrigger의
+`update`로 `job_config`를 통째로 다시 올리면 된다. 클라우드에서 도는 루틴 자신은 그
+도구가 없어 스스로 못 고친다 — 그래서 이 파일이 원본이다. 올린 뒤에는 `get`으로 받아
+와 sha256이 이 파일의 구분선 이후 본문과 같은지 확인한다.
 
+마지막 갱신: 2026-08-18 (앱·제품 소식의 갈래 표, 벤더 릴리스 노트 조사 결과, 체크포인트 확인)
 ---
 
 이 저장소는 **paldyn/ai-lab** (ailab.paldyn.com)이다. 작업 규칙은 루트의 `CLAUDE.md`에 있으니 시작할 때 한 번 읽는다.
@@ -53,6 +59,25 @@ TZ='Asia/Seoul' date +%Y-%m-%d
 **항목의 실제 URL은 RSS의 `<link>`에서 가져온다.** blog.google은 피드 주소와 기사
 주소의 경로가 다르다 — `technology/ai/` 피드에 실린 글이 `products-and-platforms/...`에
 있는 식이라 주소를 손으로 조립하면 404가 난다.
+
+### 벤더 릴리스 노트는 보지 않는다 — 2026-08-18에 다섯 경로를 받아 봤다
+
+「클로드·GPT 앱이 계속 바뀌는데 그것도 담자」는 물음이 나와 위와 같은 curl 플래그로
+직접 받아 보고 넣지 않기로 했다.
+
+| 경로 | 받아 본 결과 | 판정 |
+| --- | --- | --- |
+| `openai.com/products/release-notes/rss.xml` | **403** (Cloudflare) | 진짜 RSS이고 내용도 가장 진하지만 받을 수 없다 |
+| `help.openai.com/en/articles/6825453-…` | **403** | 못 받는다 |
+| `support.claude.com/en/articles/12138966-release-notes` | 200 HTML | 항목이 한 페이지에 쌓여 URL 마지막 조각이 전부 같다 — id가 겹쳐 `npm test`가 선다 |
+| `gemini.google/release-notes/?hl=en` | 200 HTML | 카드마다 사실이 `What:`·`Why:` 두 줄뿐이라 points 다섯을 못 채운다. 최근 넷 중 셋은 이미 아카이브에 있다 |
+| `platform.claude.com/docs/en/release-notes/feed.xml` | 200, 진짜 RSS | 대상이 다르다 — Claude 앱이 아니라 API·Console·Claude Code다 |
+
+**다시 조사하지 마라.** 앱 소식은 어차피 큰 것이면 네 출처의 블로그에 실린다.
+
+그리고 **`.rss`를 붙였더니 200이 오더라도 피드라고 믿지 마라.**
+`support.claude.com/en/articles/12138966-release-notes.rss`는 200에 `text/html`로 같은
+문서를 돌려준다. 새 피드를 쓸 일이 생기면 Content-Type을 먼저 본다.
 
 ### 발행일은 출처마다 기준이 다르다
 
@@ -168,6 +193,30 @@ for path in ("/tmp/news/openai.xml", "/tmp/news/deepmind.xml", "/tmp/news/google
 
 파트너십도 주체로 가르지 않고 전부 담는다. 갈래만 정하면 된다 — AI·인프라 기업 간
 계약은 `Infrastructure`나 `Corporate`, 제품 통합·브랜드 제휴는 `Product`다.
+
+### 앱·제품 소식은 이 표대로 — 선은 이미 그어져 있다
+
+네 출처에 가장 자주 실리는 것이 「앱이 이렇게 좋아졌다」이다. 갈래를 매번 새로 고민하지
+말고 아래를 따른다. 오른쪽 열은 지금 데이터에 그대로 들어 있는 항목이다.
+
+| 무엇이 달라졌나 | `kind` | `category` | `model` 블록 | 이미 있는 예 |
+| --- | --- | --- | --- | --- |
+| 앱에 기능이 늘었다 (음성·메모리·프로젝트·커넥터) | `company` | `Product` | 없음 | `chatgpt-memory-dreaming` |
+| 앱이 새 플랫폼에 나왔다 (macOS·Linux·모바일) | `company` | `Product` | 없음 | `gemini-app-now-on-mac-os` |
+| 월간 기능 묶음 (Gemini Drop 같은 것) | `company` | `Product` | 없음 | `gemini-drop-july-2026` |
+| 요금제·티어가 생기거나 바뀌었다 | `company` | `Product` | 없음 | `introducing-chatgpt-go` |
+| 사용 한도·접근 경로 자체가 바뀌었다 | `company` | `Infrastructure` | 없음 | `beyond-rate-limits` |
+| 정부·기관 제휴로 구독을 배포한다 | `company` | `Corporate` | 없음 | `malta-chatgpt-plus-partnership` |
+| 앱에서 쓸 수 있는 모델이 바뀌었다 (성능 개선, 기본 모델 전환, 티어 개방) | `model` | 그 모델의 갈래 | 채우되 `kind: '모델 패밀리'` | `improving-gpt-5-6-sol-in-chatgpt` |
+| 특정 모델을 어떻게 쓰는지 다룬다 (가이드·활용법) | `model` | 그 모델의 갈래 | **없음** | — |
+| 새 모델이 나왔다 | `model` | 그 모델의 갈래 | 채우고 `kind: '신규 모델'` | `claude-opus-5` |
+| 모델 퇴역·지원 종료 | `model` | 그 모델의 갈래 | 없음, `signal`에 「모델 지원 종료」 | — |
+
+가르는 질문은 하나다 — **이 발표로 쓸 수 있는 모델이 새로 생겼거나 바뀌었는가.**
+앱이 좋아진 것은 `company`/`Product`, 앱 안의 모델이 달라진 것은 `model`이다.
+그리고 **모델이 달라진 것과 쓰는 법을 알려 주는 것은 다르다** — 앞쪽은 블록을 채우되
+`신규 모델`이 아니라 `모델 패밀리`로 두고, 뒤쪽은 블록을 아예 안 붙인다. 홈의 모델
+카드에 가이드가 '신규 모델'로 서면 안 된다.
 
 ## STEP 2 — 각 발표를 읽고 항목 쓰기
 
@@ -404,6 +453,14 @@ model 블록을 붙이지 않는다.** family가 Claude·Gemini·GPT 셋 중 하
   **오늘 날짜를 적지 마라.** 이 값은 체크포인트다 — 20건 상한에 걸려 08-08까지만
   채웠는데 오늘로 적어 두면 08-09·08-10이 영영 빠진다. 원문을 못 읽어 건너뛴 것이
   있는 날도 끝난 날이 아니므로 그 앞 날에서 멈춘다.
+- **값을 실제로 고쳤는지 커밋 전에 눈으로 확인한다.** 안 올려도 아무 데도 안 깨지고
+  다음 실행이 창을 넓게 잡아 조용히 넘어가기 때문에 빠뜨리기 쉽다 — 08-17과 08-18
+  실행이 연달아 빠뜨려 값이 08-13에 멈춰 있었고 그 뒤 실행마다 닷새를 다시 훑었다.
+
+  ```bash
+  grep -n "globalNewsUpdatedAt" src/data/news.ts
+  # 이번에 담은 것 중 가장 늦은 publishedAt과 같은지 본다. 다르면 지금 고친다.
+  ```
 - **머리말의 '최근 7일' 지표는 손대지 마라.** 화면에 뜨는 세 숫자는
   `src/pages/NewsPage.tsx`가 `publishedAt`에서 그때그때 세는 값이다.
   **숫자를 어디에도 적어 두지 마라** — 적어 두면 그날부터 실제와 갈린다.

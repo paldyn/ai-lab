@@ -282,6 +282,27 @@ draft: false             # true면 목록·프리렌더에서 빠진다
 담는 갈래가 넓어져도 **points 5~8개 규칙은 그대로다.** 원문이 얇아 다섯을 못 채우면
 그 항목은 넣지 않는다 — 제외 목록을 없앤 것이지 사실 없이 채워도 된다는 뜻이 아니다.
 
+**앱이 좋아진 것과 앱 안의 모델이 달라진 것은 다르다.** 네 출처에 가장 자주 실리는 것이
+앱·제품 소식이라 갈래를 매번 새로 고민하게 되는데, 선은 이미 데이터에 그어져 있다.
+
+| 무엇이 달라졌나 | kind | category | `model` 블록 | 이미 있는 예 |
+| --- | --- | --- | --- | --- |
+| 앱 기능이 늘었다, 새 플랫폼에 나왔다, 요금제가 바뀌었다 | `company` | `Product` | 없음 | `chatgpt-memory-dreaming` `gemini-app-now-on-mac-os` `introducing-chatgpt-go` |
+| 사용 한도·접근 경로 자체가 바뀌었다 | `company` | `Infrastructure` | 없음 | `beyond-rate-limits` |
+| 정부·기관 제휴로 구독을 배포한다 | `company` | `Corporate` | 없음 | `malta-chatgpt-plus-partnership` |
+| 앱에서 쓸 수 있는 모델이 바뀌었다(성능 개선·기본 모델 전환·티어 개방) | `model` | 그 모델의 갈래 | 채우되 `kind: '모델 패밀리'` | `improving-gpt-5-6-sol-in-chatgpt` |
+| 특정 모델을 어떻게 쓰는지 다룬다 | `model` | 그 모델의 갈래 | 없음 | 위 2번 |
+| 새 모델이 나왔다 | `model` | 그 모델의 갈래 | 채우고 `kind: '신규 모델'` | `claude-opus-5` |
+
+**벤더의 릴리스 노트 페이지는 출처로 쓰지 않는다.** 2026-08-18에 다섯 경로를 직접 받아
+보고 정했다. OpenAI 릴리스 노트(`openai.com/products/release-notes/rss.xml`)는 진짜 RSS에
+내용도 가장 진하지만 **403**이고 `help.openai.com`도 403이다. Claude 앱 노트
+(`support.claude.com/…/12138966-release-notes`)는 항목이 한 페이지에 쌓여 **URL 마지막
+조각이 전부 같아** id가 겹친다 — 중복을 막는 유일한 기계적 방어가 그 id다. Gemini 노트
+(`gemini.google/release-notes/`)는 카드마다 사실이 `What:`·`Why:` 두 줄뿐이라 points
+다섯을 못 채우고, 최근 넷 중 셋은 이미 아카이브에 있었다. **앱 소식은 큰 것이면 어차피
+네 출처의 블로그에 실린다.** 다시 조사하지 않는다.
+
 **`model` 블록은 `kind: 'model'`일 때만 효력이 있다.** `src/data/news.ts`의
 `releaseOf()`가 그 둘을 함께 보고, `kind`가 `company`면 블록이 붙어 있어도 없는
 것으로 친다 — 벤치마크 공개나 시스템 카드에 모델 이름이 있다고 블록을 채우면
