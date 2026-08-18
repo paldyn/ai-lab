@@ -20,8 +20,19 @@ describe('뉴스 데이터', () => {
     }
   });
 
+  /**
+   * platform.claude.com은 Claude 플랫폼(API·Console·Claude Code) 릴리스 노트입니다.
+   * 날짜별 묶음이라 URL이 `…/overview#august-11-2026`처럼 앵커까지 있어야 그날
+   * 자리로 갑니다 — `new URL()`은 fragment를 hostname 검사에서 무시하므로 그대로 둡니다.
+   */
   it('원문 링크가 공식 도메인의 https URL이다', () => {
-    const allowedHosts = ['openai.com', 'www.anthropic.com', 'deepmind.google', 'blog.google'];
+    const allowedHosts = [
+      'openai.com',
+      'www.anthropic.com',
+      'deepmind.google',
+      'blog.google',
+      'platform.claude.com',
+    ];
     for (const item of newsItems) {
       const url = new URL(item.url);
       expect(url.protocol, item.id).toBe('https:');

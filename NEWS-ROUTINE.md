@@ -15,8 +15,8 @@
 `job_config`를 통째로 다시 올린다. 이 루틴은 `created_via: http_api`라 그게 된다 —
 클라우드에서 도는 루틴 자신은 그 도구가 없어 스스로 못 고친다.
 
-마지막 갱신: 2026-08-18 (지시서를 저장소 한 벌로 줄임, 앱·제품 소식의 갈래 표,
-벤더 릴리스 노트 조사 결과, 체크포인트 확인)
+마지막 갱신: 2026-08-18 (지시서를 저장소 한 벌로 줄임, Claude 플랫폼 노트 추가,
+앱·제품 소식의 갈래 표, 벤더 릴리스 노트 조사 결과, 체크포인트 확인)
 
 ---
 
@@ -37,7 +37,8 @@ AI 기업의 공식 발표를 모아 `src/data/news.ts`와 `src/data/news-detail
 
 ## STEP 1 — 무엇이 나왔나
 
-네 곳을 본다. 앞 세 곳은 RSS, Anthropic은 RSS가 없어 목록 페이지를 직접 읽는다.
+다섯 곳을 본다. 앞 세 곳은 블로그 RSS, Anthropic 블로그는 RSS가 없어 목록 페이지를
+직접 읽고, 다섯째는 Claude 플랫폼 릴리스 노트 RSS다.
 
 ```bash
 mkdir -p /tmp/news
@@ -45,6 +46,8 @@ curl -sL --compressed -A 'Mozilla/5.0' -m 30 https://openai.com/news/rss.xml    
 curl -sL --compressed -A 'Mozilla/5.0' -m 30 https://deepmind.google/blog/rss.xml   -o /tmp/news/deepmind.xml
 curl -sL --compressed -A 'Mozilla/5.0' -m 30 https://blog.google/technology/ai/rss/ -o /tmp/news/googleai.xml
 curl -sL --compressed -A 'Mozilla/5.0' -m 30 https://www.anthropic.com/news         -o /tmp/news/anthropic.html
+curl -sL --compressed -A 'Mozilla/5.0' -m 30 \
+  https://platform.claude.com/docs/en/release-notes/feed.xml -o /tmp/news/claude-platform.xml
 
 # 이미 실려 있는 id 목록
 grep -oE "^    id: '[^']+'" src/data/news.ts | sed "s/.*id: '//;s/'//" | sort > /tmp/news/existing.txt
@@ -77,13 +80,33 @@ TZ='Asia/Seoul' date +%Y-%m-%d
 | `help.openai.com/en/articles/6825453-…` | **403** | 못 받는다 |
 | `support.claude.com/en/articles/12138966-release-notes` | 200 HTML | 항목이 한 페이지에 쌓여 URL 마지막 조각이 전부 같다 — id가 겹쳐 `npm test`가 선다 |
 | `gemini.google/release-notes/?hl=en` | 200 HTML | 카드마다 사실이 `What:`·`Why:` 두 줄뿐이라 points 다섯을 못 채운다. 최근 넷 중 셋은 이미 아카이브에 있다 |
-| `platform.claude.com/docs/en/release-notes/feed.xml` | 200, 진짜 RSS | 대상이 다르다 — Claude 앱이 아니라 API·Console·Claude Code다 |
+| `platform.claude.com/docs/en/release-notes/feed.xml` | 200, 진짜 RSS | **이것만 담기로 했다.** 앱이 아니라 API·Console·Claude Code 변경이다 — 취급은 아래 절에 |
 
-**다시 조사하지 마라.** 앱 소식은 어차피 큰 것이면 네 출처의 블로그에 실린다.
+**다시 조사하지 마라.** 앱 소식은 어차피 큰 것이면 블로그 네 곳에 실린다.
 
 그리고 **`.rss`를 붙였더니 200이 오더라도 피드라고 믿지 마라.**
 `support.claude.com/en/articles/12138966-release-notes.rss`는 200에 `text/html`로 같은
 문서를 돌려준다. 새 피드를 쓸 일이 생기면 Content-Type을 먼저 본다.
+
+### Claude 플랫폼 노트는 하루 한 항목으로 담는다
+
+`platform.claude.com/docs/en/release-notes/feed.xml`은 날짜별 묶음이다. 하루치가 한
+`<item>`이고 그 안에 그날 바뀐 것이 여럿 들어 있다. 다른 출처와 다르게 다뤄야 한다.
+
+- **하루치를 한 항목으로 담는다.** 그날 바뀐 것이 셋이어도 항목은 하나다. 나누면
+  URL이 같아 id가 겹친다.
+- **`id`는 `claude-platform-<앵커>`다.** 링크가
+  `…/release-notes/overview#august-11-2026`이므로 id는 `claude-platform-august-11-2026`.
+  URL은 앵커까지 그대로 적는다 — 그래야 모달의 「공식 원문」이 그날 자리로 간다.
+- **`source`는 `Anthropic`,** `signal`은 「플랫폼 변경」처럼 이 출처임이 드러나게 적는다.
+- **`title`은 그날 가장 큰 변경을 적는다.** 「Claude 플랫폼 8월 11일 변경」처럼 날짜만
+  적으면 목록에서 무슨 일이 있었는지 안 보인다.
+- **`kind`·`category`는 그날 가장 큰 변경이 정한다.** 대개 `company`/`Product`이고,
+  모델의 가격·가용성이 바뀐 날이면 `model`이다.
+- **points 다섯을 못 채우는 날은 통째로 건너뛴다.** 한 줄짜리 날이 절반쯤 된다
+  (2026-08-01은 87자였다). 그런 날은 담지 않는다 — 주 1건쯤 남는 것이 정상이다.
+- **블로그와 겹치면 블로그를 남긴다.** 모델 출시는 `www.anthropic.com`에도 실리고
+  그쪽이 원문이다. 플랫폼 노트에서 같은 내용을 다시 담지 마라.
 
 ### 발행일은 출처마다 기준이 다르다
 
@@ -94,6 +117,7 @@ TZ='Asia/Seoul' date +%Y-%m-%d
   `datePublished`를 믿을 수 없다. 값이 아예 없거나 **최신 글의 날짜가 박혀 있다.**
 - **openai.com, blog.google — RSS `pubDate` 또는 페이지의 `datePublished`.** 둘 다 맞는다.
 - **www.anthropic.com — 페이지 본문의 `Mon D, YYYY` 표기.** JSON-LD도 og 태그도 없다.
+- **platform.claude.com — RSS의 `pubDate`.** 항목 자체가 날짜 단위라 그 날짜가 곧 발행일이다.
   목록 페이지의 `PublicationList` 항목마다 날짜가 붙어 있어 거기서 한 번에 읽어도 된다.
 
 ### 창 — 24시간이 기본이고, 빠진 날이 있으면 거기까지 거슬러 올라간다
@@ -124,7 +148,8 @@ cutoff = max(cutoff, now - timedelta(days=14))
 print("cutoff:", cutoff.isoformat(), "| 마지막으로 끝낸 날:", last)
 
 existing = set(open("/tmp/news/existing.txt").read().split())
-for path in ("/tmp/news/openai.xml", "/tmp/news/deepmind.xml", "/tmp/news/googleai.xml"):
+for path in ("/tmp/news/openai.xml", "/tmp/news/deepmind.xml", "/tmp/news/googleai.xml",
+             "/tmp/news/claude-platform.xml"):
     for it in ET.parse(path).getroot().findall(".//item"):
         dt = parsedate_to_datetime(it.findtext("pubDate"))
         if dt >= cutoff:
@@ -179,7 +204,7 @@ for path in ("/tmp/news/openai.xml", "/tmp/news/deepmind.xml", "/tmp/news/google
 교육·입문 콘텐츠, 행사·후기·커뮤니티, 채용 공고, 사회공헌, 경쟁사 비판 오피니언,
 사내 엔지니어링 회고를 통째로 건너뛰었는데, 이런 글에 새 API 표면이나 새 티어가
 섞여 나오는 일이 있고 「GPT-5.6으로 만드는 법」 같은 글을 찾는 사람이 서 있는 자리가
-곧 뉴스의 'AI 모델' 탭이다. **네 출처의 공식 발표는 창 안에 있으면 전부 담는다.**
+곧 뉴스의 'AI 모델' 탭이다. **다섯 출처의 공식 발표는 창 안에 있으면 전부 담는다.**
 무엇을 뺄지는 쌓인 것을 보고 사람이 정한다.
 
 그래서 남는 일은 갈래를 고르는 것뿐이다. 위에서부터 물어 **처음 '그렇다'가 나온 곳**에 넣는다.
@@ -202,7 +227,7 @@ for path in ("/tmp/news/openai.xml", "/tmp/news/deepmind.xml", "/tmp/news/google
 
 ### 앱·제품 소식은 이 표대로 — 선은 이미 그어져 있다
 
-네 출처에 가장 자주 실리는 것이 「앱이 이렇게 좋아졌다」이다. 갈래를 매번 새로 고민하지
+블로그 네 곳에 가장 자주 실리는 것이 「앱이 이렇게 좋아졌다」이다. 갈래를 매번 새로 고민하지
 말고 아래를 따른다. 오른쪽 열은 지금 데이터에 그대로 들어 있는 항목이다.
 
 | 무엇이 달라졌나 | `kind` | `category` | `model` 블록 | 이미 있는 예 |
@@ -251,6 +276,21 @@ curl -sL --compressed -A 'Mozilla/5.0' -m 60 \
 `archive.org` API와 다른 우회 경로는 `CONNECT tunnel failed, 403`이 났다.
 **한 슬러그로 한 번만 확인하고, 이 증상이면 그날 openai.com 후보 전부를 즉시 포기하고
 보고에 적는다** — 슬러그마다 되풀이하지 마라.
+
+**웨이백이 막혔으면 읽기 프록시를 한 번 더 시도한다.**
+
+```bash
+curl -sL --compressed -m 60 "https://r.jina.ai/https://openai.com/index/<slug>/" \
+  -o /tmp/news/oa.md
+```
+
+`r.jina.ai`는 페이지를 마크다운으로 바꿔 주는 공개 프록시다. 2026-08-18에 12,658자짜리
+본문이 통째로 왔다(로컬에서 확인). 이 환경에서 열리는지는 **슬러그 하나로 한 번만**
+확인하고, 막혔으면 웨이백과 마찬가지로 그날 openai.com 후보 전부를 포기하고 보고에 적는다.
+
+프록시를 거쳐 읽었어도 **`url`에는 원문 주소를 적는다.** 그리고 프록시가 준 본문에는
+원문에 없는 안내 줄(`Title:`, `URL Source:`, `Markdown Content:`)이 머리에 붙으니
+사실로 착각하지 마라.
 
 **헤드리스 Chromium으로 우회하려 들지 마라.** `/opt/pw-browsers`에 Chromium이
 있지만 프록시를 통해 어느 사이트도 열지 못한다(`ERR_CONNECTION_RESET`,
@@ -489,7 +529,8 @@ npm run build
 **signal에 한글이 있고 14자 이하인지**, **category가 kind에 맞는지**,
 **본문이 발행 월 파일에 들어갔는지**, **항목마다 본문이 있는지**를 본다.
 
-허용 호스트는 openai.com, www.anthropic.com, deepmind.google, blog.google 네 곳뿐이다.
+허용 호스트는 openai.com, www.anthropic.com, deepmind.google, blog.google,
+platform.claude.com 다섯 곳뿐이다.
 아카이브를 경유해 읽었더라도 **`url`은 원문 주소를 적는다** — web.archive.org 주소를
 넣으면 테스트가 실패한다.
 
