@@ -160,7 +160,7 @@ export interface NewsDetail {
   commentary: string;
 }
 
-export const globalNewsUpdatedAt = '2026-08-13';
+export const globalNewsUpdatedAt = '2026-08-17';
 
 /**
  * 공식 발표 한 건 = 항목 한 개. 2026년 1월부터 쌓는 아카이브이며 오래된 항목을
@@ -3538,17 +3538,6 @@ const entries: NewsItem[] = [
     category: 'Safety',
     signal: '프런티어 모델 안전',
     url: 'https://openai.com/index/gpt-5-5-system-card',
-    model: {
-      family: 'GPT',
-      name: 'GPT-5.5',
-      kind: '신규 모델',
-      status: '공개',
-      useCase: '도구를 오가는 장기 실무 작업',
-      headline:
-        '맡긴 일을 끝까지 밀고 가는 OpenAI의 새 주력 모델',
-      logo: 'assets/openai.svg',
-      tone: 'gpt',
-    },
   },
   {
     id: 'google-data-center-austria',
