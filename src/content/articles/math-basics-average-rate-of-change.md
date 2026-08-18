@@ -201,3 +201,5 @@ $$2a+h$$ 에서 $$h$$ 를 지우면 $$2a$$ 만 남습니다. 다음 글은 그 �
 읽어주셔서 감사합니다. 😊
 
 **지난 글:** [등비급수: 무한히 더해도 값이 유한한 이유와 1/(1−r)](/articles/math-basics-geometric-series)
+
+**다음 글:** [도함수의 정의: 할선이 접선이 되는 자리에 이름 붙이기](/articles/math-basics-what-is-a-derivative)

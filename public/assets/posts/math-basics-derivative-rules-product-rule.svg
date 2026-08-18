@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="430" viewBox="0 0 880 430" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <rect width="880" height="430" rx="12" fill="#0a0a0a"/>
+  <text x="60" y="46" font-size="22" font-weight="700" fill="#e8e8e8">곱의 규칙: 직사각형이 늘어나는 넓이를 세 조각으로 나눈다</text>
+
+  <!-- base rectangle -->
+  <rect x="160" y="180" width="260" height="150" fill="#7ec8e3" fill-opacity="0.18" stroke="#7ec8e3" stroke-width="2"/>
+  <text x="252" y="262" font-size="16" font-weight="600" fill="#e8e8e8">f · g</text>
+
+  <!-- right strip: g * df -->
+  <rect x="420" y="180" width="56" height="150" fill="#55c555" fill-opacity="0.25" stroke="#55c555" stroke-width="2"/>
+  <text x="428" y="262" font-size="13" fill="#55c555">g·Δf</text>
+
+  <!-- top strip: f * dg -->
+  <rect x="160" y="124" width="260" height="56" fill="#7777cc" fill-opacity="0.30" stroke="#7777cc" stroke-width="2"/>
+  <text x="266" y="158" font-size="13" fill="#9a9ade">f·Δg</text>
+
+  <!-- corner -->
+  <rect x="420" y="124" width="56" height="56" fill="#e05555" fill-opacity="0.30" stroke="#e05555" stroke-width="2"/>
+  <text x="424" y="158" font-size="13" fill="#e05555">Δf·Δg</text>
+
+  <!-- side labels -->
+  <text x="272" y="356" font-size="13" fill="#888">f(x)</text>
+  <text x="436" y="356" font-size="13" fill="#888">Δf</text>
+  <text x="118" y="262" font-size="13" fill="#888">g(x)</text>
+  <text x="122" y="158" font-size="13" fill="#888">Δg</text>
+
+  <!-- explanation -->
+  <text x="540" y="150" font-size="16" font-weight="600" fill="#e8e8e8">늘어난 넓이는 세 조각</text>
+  <text x="540" y="182" font-size="13" fill="#888">f·Δg  +  g·Δf  +  Δf·Δg</text>
+  <text x="540" y="220" font-size="16" font-weight="600" fill="#e8e8e8">h로 나누면</text>
+  <text x="540" y="252" font-size="13" fill="#888">f·(Δg/h) + g·(Δf/h) + Δf·(Δg/h)</text>
+  <text x="540" y="290" font-size="16" font-weight="600" fill="#e05555">셋째 조각만 사라진다</text>
+  <text x="540" y="322" font-size="13" fill="#888">Δf가 0으로 줄기 때문입니다.</text>
+  <text x="540" y="356" font-size="16" font-weight="600" fill="#55c555">(fg)' = f'g + fg'</text>
+
+  <text x="60" y="400" font-size="13" fill="#888">가로가 f, 세로가 g인 직사각형에서 가로를 Δf, 세로를 Δg 만큼 늘리면 넓이가 세 조각 늘어납니다.</text>
+</svg>

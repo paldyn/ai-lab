@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="420" viewBox="0 0 880 420" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <rect width="880" height="420" rx="12" fill="#0a0a0a"/>
+  <text x="60" y="46" font-size="22" font-weight="700" fill="#e8e8e8">누적 넓이가 한 걸음 늘어난 만큼이 띠 하나의 넓이다</text>
+
+  <!-- accumulated area -->
+  <path d="M 140 320 L 140 280 Q 270 255 400 213 L 400 320 Z" fill="#7ec8e3" fill-opacity="0.18" stroke="none"/>
+  <!-- thin strip -->
+  <rect x="400" y="213" width="60" height="107" fill="#55c555" fill-opacity="0.30" stroke="#55c555" stroke-width="1.5"/>
+
+  <line x1="100" y1="320" x2="580" y2="320" stroke="#888" stroke-width="1.5"/>
+  <text x="586" y="325" font-size="13" fill="#888">x</text>
+  <path d="M 140 280 Q 300 250 560 160" stroke="#7ec8e3" stroke-width="2.5" fill="none"/>
+  <text x="500" y="188" font-size="13" fill="#7ec8e3">y = f(x)</text>
+
+  <line x1="140" y1="315" x2="140" y2="325" stroke="#444" stroke-width="1.5"/>
+  <line x1="400" y1="315" x2="400" y2="325" stroke="#444" stroke-width="1.5"/>
+  <line x1="460" y1="315" x2="460" y2="325" stroke="#444" stroke-width="1.5"/>
+  <text x="136" y="344" font-size="13" fill="#888">a</text>
+  <text x="396" y="344" font-size="13" fill="#888">x</text>
+  <text x="442" y="366" font-size="13" fill="#888">x+h</text>
+
+  <text x="212" y="296" font-size="16" font-weight="600" fill="#7ec8e3">A(x)</text>
+  <text x="404" y="196" font-size="13" fill="#55c555">폭 h · 높이 f(x)</text>
+
+  <text x="620" y="126" font-size="16" font-weight="600" fill="#e8e8e8">A(x)는 a부터 x까지의 넓이</text>
+  <text x="620" y="168" font-size="13" fill="#888">띠 하나만큼 늘어났으므로</text>
+  <text x="620" y="196" font-size="13" fill="#55c555">A(x+h) − A(x) ≈ f(x) · h</text>
+  <text x="620" y="238" font-size="13" fill="#888">양변을 h로 나누면</text>
+  <text x="620" y="266" font-size="13" fill="#55c555">[A(x+h) − A(x)] / h ≈ f(x)</text>
+  <text x="620" y="308" font-size="13" fill="#888">h를 0으로 보내면 왼쪽은</text>
+  <text x="620" y="334" font-size="13" fill="#888">도함수의 정의 그 자체입니다.</text>
+  <text x="620" y="368" font-size="16" font-weight="600" fill="#e8e8e8">A'(x) = f(x)</text>
+
+  <text x="60" y="398" font-size="13" fill="#888">h가 작으면 띠는 거의 직사각형입니다. 위쪽의 얇은 조각은 h를 줄일수록 먼저 사라집니다.</text>
+</svg>

@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="400" viewBox="0 0 880 400" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <rect width="880" height="400" rx="12" fill="#0a0a0a"/>
+  <text x="60" y="46" font-size="22" font-weight="700" fill="#e8e8e8">왼쪽 끝으로 재면 모자라고, 오른쪽 끝으로 재면 넘친다</text>
+
+  <text x="60" y="92" font-size="16" font-weight="600" fill="#7777cc">왼쪽 끝 — 합이 0.21875</text>
+  <text x="470" y="92" font-size="16" font-weight="600" fill="#55c555">오른쪽 끝 — 합이 0.46875</text>
+
+  <rect x="180" y="290.625" width="70" height="9.375" fill="#7777cc" fill-opacity="0.22" stroke="#7777cc" stroke-width="1.5"/>
+  <rect x="250" y="262.5" width="70" height="37.5" fill="#7777cc" fill-opacity="0.22" stroke="#7777cc" stroke-width="1.5"/>
+  <rect x="320" y="215.625" width="70" height="84.375" fill="#7777cc" fill-opacity="0.22" stroke="#7777cc" stroke-width="1.5"/>
+  <line x1="85" y1="300" x2="420" y2="300" stroke="#888" stroke-width="1.5"/>
+  <line x1="110" y1="130" x2="110" y2="326" stroke="#888" stroke-width="1.5"/>
+  <path d="M 110 300 Q 250 300 390 150" stroke="#7ec8e3" stroke-width="2.5" fill="none"/>
+  <text x="104" y="322" font-size="13" fill="#888">0</text>
+  <text x="386" y="322" font-size="13" fill="#888">1</text>
+  <text x="60" y="356" font-size="13" fill="#888">첫 칸은 높이가 0이라 아예 없고,</text>
+  <text x="60" y="376" font-size="13" fill="#888">나머지도 곡선 아래에만 있습니다.</text>
+
+  <rect x="520" y="290.625" width="70" height="9.375" fill="#55c555" fill-opacity="0.22" stroke="#55c555" stroke-width="1.5"/>
+  <rect x="590" y="262.5" width="70" height="37.5" fill="#55c555" fill-opacity="0.22" stroke="#55c555" stroke-width="1.5"/>
+  <rect x="660" y="215.625" width="70" height="84.375" fill="#55c555" fill-opacity="0.22" stroke="#55c555" stroke-width="1.5"/>
+  <rect x="730" y="150" width="70" height="150" fill="#55c555" fill-opacity="0.22" stroke="#55c555" stroke-width="1.5"/>
+  <line x1="495" y1="300" x2="826" y2="300" stroke="#888" stroke-width="1.5"/>
+  <line x1="520" y1="130" x2="520" y2="326" stroke="#888" stroke-width="1.5"/>
+  <path d="M 520 300 Q 660 300 800 150" stroke="#7ec8e3" stroke-width="2.5" fill="none"/>
+  <text x="514" y="322" font-size="13" fill="#888">0</text>
+  <text x="796" y="322" font-size="13" fill="#888">1</text>
+  <text x="470" y="356" font-size="13" fill="#888">네 칸 모두 곡선 위로 조금씩</text>
+  <text x="470" y="376" font-size="13" fill="#888">넘칩니다.</text>
+</svg>

@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="420" viewBox="0 0 880 420" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <rect width="880" height="420" rx="12" fill="#0a0a0a"/>
+  <text x="60" y="46" font-size="22" font-weight="700" fill="#e8e8e8">곡선 아래를 직사각형 넷으로 덮는다 (n = 4)</text>
+
+  <!-- rectangles -->
+  <rect x="140" y="318.125" width="95" height="11.875" fill="#7ec8e3" fill-opacity="0.18" stroke="#7ec8e3" stroke-width="1.5"/>
+  <rect x="235" y="282.5" width="95" height="47.5" fill="#7ec8e3" fill-opacity="0.18" stroke="#7ec8e3" stroke-width="1.5"/>
+  <rect x="330" y="223.125" width="95" height="106.875" fill="#7ec8e3" fill-opacity="0.18" stroke="#7ec8e3" stroke-width="1.5"/>
+  <rect x="425" y="140" width="95" height="190" fill="#7ec8e3" fill-opacity="0.18" stroke="#7ec8e3" stroke-width="1.5"/>
+
+  <!-- axes -->
+  <line x1="110" y1="330" x2="560" y2="330" stroke="#888" stroke-width="1.5"/>
+  <line x1="140" y1="120" x2="140" y2="360" stroke="#888" stroke-width="1.5"/>
+  <text x="566" y="335" font-size="13" fill="#888">x</text>
+  <text x="132" y="114" font-size="13" fill="#888">y</text>
+
+  <!-- curve -->
+  <path d="M 140 330 Q 330 330 520 140" stroke="#7ec8e3" stroke-width="2.5" fill="none"/>
+  <text x="528" y="146" font-size="13" fill="#7ec8e3">y = x²</text>
+
+  <!-- ticks -->
+  <line x1="235" y1="325" x2="235" y2="335" stroke="#444" stroke-width="1.5"/>
+  <line x1="330" y1="325" x2="330" y2="335" stroke="#444" stroke-width="1.5"/>
+  <line x1="425" y1="325" x2="425" y2="335" stroke="#444" stroke-width="1.5"/>
+  <line x1="520" y1="325" x2="520" y2="335" stroke="#444" stroke-width="1.5"/>
+  <text x="134" y="352" font-size="13" fill="#888">0</text>
+  <text x="218" y="352" font-size="13" fill="#888">0.25</text>
+  <text x="316" y="352" font-size="13" fill="#888">0.5</text>
+  <text x="408" y="352" font-size="13" fill="#888">0.75</text>
+  <text x="516" y="352" font-size="13" fill="#888">1</text>
+
+  <!-- right column -->
+  <text x="592" y="140" font-size="16" font-weight="600" fill="#e8e8e8">폭 0.25 × 오른쪽 끝의 높이</text>
+  <text x="592" y="180" font-size="13" fill="#888">0.25 × 0.0625 = 0.015625</text>
+  <text x="592" y="206" font-size="13" fill="#888">0.25 × 0.25 = 0.0625</text>
+  <text x="592" y="232" font-size="13" fill="#888">0.25 × 0.5625 = 0.140625</text>
+  <text x="592" y="258" font-size="13" fill="#888">0.25 × 1 = 0.25</text>
+  <line x1="592" y1="278" x2="820" y2="278" stroke="#444" stroke-width="1.5"/>
+  <text x="592" y="306" font-size="16" font-weight="600" fill="#55c555">합 = 0.46875</text>
+
+  <text x="60" y="392" font-size="13" fill="#888">각 칸의 높이를 그 칸의 오른쪽 끝에서 잽니다. 곡선이 올라가는 구간이라 직사각형이 곡선 위로 조금씩 넘칩니다.</text>
+</svg>

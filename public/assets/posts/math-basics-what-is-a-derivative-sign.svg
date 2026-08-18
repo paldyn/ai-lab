@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="430" viewBox="0 0 880 430" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <rect width="880" height="430" rx="12" fill="#0a0a0a"/>
+  <text x="60" y="46" font-size="22" font-weight="700" fill="#e8e8e8">f'의 부호는 오르내림을 말하지만, f'=0이 곧 극값은 아니다</text>
+
+  <text x="60" y="90" font-size="16" font-weight="600" fill="#e8e8e8">f(x) = x²  — 부호가 x=0에서 바뀐다</text>
+  <text x="480" y="90" font-size="16" font-weight="600" fill="#e8e8e8">f(x) = x³  — f'(0)=0 인데 계속 오른다</text>
+
+  <!-- left -->
+  <line x1="100" y1="290" x2="372" y2="290" stroke="#888" stroke-width="1.5"/>
+  <line x1="230" y1="150" x2="230" y2="326" stroke="#888" stroke-width="1.5"/>
+  <text x="378" y="295" font-size="13" fill="#888">x</text>
+  <text x="222" y="144" font-size="13" fill="#888">y</text>
+  <path d="M 120 178 Q 230 402 340 178" stroke="#7ec8e3" stroke-width="2.5" fill="none"/>
+  <circle cx="230" cy="290" r="5" fill="#e8e8e8"/>
+  <line x1="196" y1="290" x2="264" y2="290" stroke="#55c555" stroke-width="2.5"/>
+
+  <text x="104" y="352" font-size="13" fill="#e05555">x &lt; 0 에서 f' &lt; 0 · 내려간다</text>
+  <text x="244" y="352" font-size="13" fill="#55c555">x &gt; 0 에서 f' &gt; 0 · 올라간다</text>
+  <text x="178" y="378" font-size="13" fill="#888">x=0 에서 f'=0 — 여기가 꼭짓점</text>
+
+  <!-- right -->
+  <line x1="520" y1="290" x2="792" y2="290" stroke="#888" stroke-width="1.5"/>
+  <line x1="650" y1="170" x2="650" y2="392" stroke="#888" stroke-width="1.5"/>
+  <text x="798" y="295" font-size="13" fill="#888">x</text>
+  <text x="642" y="164" font-size="13" fill="#888">y</text>
+  <path d="M 562 372 C 595 310, 622 293, 650 290 C 678 287, 705 270, 738 208" stroke="#7ec8e3" stroke-width="2.5" fill="none"/>
+  <line x1="606" y1="290" x2="694" y2="290" stroke="#55c555" stroke-width="2.5"/>
+  <circle cx="650" cy="290" r="5" fill="#e8e8e8"/>
+
+  <text x="586" y="262" font-size="13" fill="#55c555">여기서 접선이 수평이다</text>
+  <text x="556" y="352" font-size="13" fill="#888">왼쪽에서도 오른쪽에서도 f' &gt; 0 이라</text>
+  <text x="556" y="374" font-size="13" fill="#888">꺾이지 않고 그대로 올라갑니다.</text>
+</svg>

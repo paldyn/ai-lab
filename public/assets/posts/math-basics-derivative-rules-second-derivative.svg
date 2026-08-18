@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="400" viewBox="0 0 880 400" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <rect width="880" height="400" rx="12" fill="#0a0a0a"/>
+  <text x="60" y="46" font-size="22" font-weight="700" fill="#e8e8e8">f″의 부호는 휘는 방향을 말한다</text>
+
+  <text x="60" y="104" font-size="16" font-weight="600" fill="#55c555">f″ &gt; 0 — 아래로 볼록</text>
+  <text x="327" y="104" font-size="16" font-weight="600" fill="#e05555">f″ &lt; 0 — 위로 볼록</text>
+  <text x="594" y="104" font-size="16" font-weight="600" fill="#7ec8e3">f″ 의 부호가 바뀌는 자리</text>
+
+  <!-- panel 1 -->
+  <line x1="93" y1="290" x2="253" y2="290" stroke="#888" stroke-width="1.5"/>
+  <line x1="173" y1="150" x2="173" y2="320" stroke="#888" stroke-width="1.5"/>
+  <path d="M 113 190 Q 173 330 233 190" stroke="#7ec8e3" stroke-width="2.5" fill="none"/>
+  <text x="60" y="352" font-size="13" fill="#888">그릇처럼 위로 열립니다. 접선의</text>
+  <text x="60" y="374" font-size="13" fill="#888">기울기가 왼쪽부터 커집니다.</text>
+
+  <!-- panel 2 -->
+  <line x1="360" y1="290" x2="520" y2="290" stroke="#888" stroke-width="1.5"/>
+  <line x1="440" y1="150" x2="440" y2="320" stroke="#888" stroke-width="1.5"/>
+  <path d="M 380 270 Q 440 130 500 270" stroke="#7ec8e3" stroke-width="2.5" fill="none"/>
+  <text x="327" y="352" font-size="13" fill="#888">덮개처럼 아래로 열립니다. 접선의</text>
+  <text x="327" y="374" font-size="13" fill="#888">기울기가 왼쪽부터 작아집니다.</text>
+
+  <!-- panel 3 -->
+  <line x1="614" y1="240" x2="800" y2="240" stroke="#888" stroke-width="1.5"/>
+  <line x1="707" y1="150" x2="707" y2="330" stroke="#888" stroke-width="1.5"/>
+  <path d="M 599 310 C 647 254, 680 242, 707 240 C 734 238, 767 226, 815 170" stroke="#7ec8e3" stroke-width="2.5" fill="none"/>
+  <circle cx="707" cy="240" r="5" fill="#e05555"/>
+  <text x="716" y="212" font-size="13" fill="#e05555">변곡점</text>
+  <text x="594" y="352" font-size="13" fill="#888">왼쪽은 위로 볼록, 오른쪽은 아래로</text>
+  <text x="594" y="374" font-size="13" fill="#888">볼록입니다. 그 경계가 변곡점입니다.</text>
+</svg>

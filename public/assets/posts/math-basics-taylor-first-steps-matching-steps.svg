@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="360" viewBox="0 0 880 360" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <rect width="880" height="360" rx="12" fill="#0a0a0a"/>
+  <defs>
+    <marker id="msarr" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#888"/>
+    </marker>
+  </defs>
+
+  <text x="60" y="46" font-size="22" font-weight="700" fill="#e8e8e8">계수는 a에서 값을 맞춰 하나씩 정한다</text>
+
+  <rect x="60" y="96" width="230" height="130" rx="8" fill="#111827" stroke="#3a4a6e" stroke-width="1"/>
+  <text x="84" y="128" font-size="16" font-weight="600" fill="#7ec8e3">① 값을 맞춘다</text>
+  <text x="84" y="158" font-size="13" fill="#888">a를 넣으면 상수항만</text>
+  <text x="84" y="180" font-size="13" fill="#888">남습니다.</text>
+  <text x="84" y="208" font-size="13" fill="#55c555">c₀ = f(a)</text>
+
+  <line x1="290" y1="161" x2="322" y2="161" stroke="#888" stroke-width="2" marker-end="url(#msarr)"/>
+
+  <rect x="332" y="96" width="230" height="130" rx="8" fill="#111827" stroke="#3a4a6e" stroke-width="1"/>
+  <text x="356" y="128" font-size="16" font-weight="600" fill="#7ec8e3">② 기울기를 맞춘다</text>
+  <text x="356" y="158" font-size="13" fill="#888">한 번 미분하고 a를</text>
+  <text x="356" y="180" font-size="13" fill="#888">넣습니다.</text>
+  <text x="356" y="208" font-size="13" fill="#55c555">c₁ = f'(a)</text>
+
+  <line x1="562" y1="161" x2="594" y2="161" stroke="#888" stroke-width="2" marker-end="url(#msarr)"/>
+
+  <rect x="604" y="96" width="230" height="130" rx="8" fill="#111827" stroke="#3a4a6e" stroke-width="1"/>
+  <text x="628" y="128" font-size="16" font-weight="600" fill="#7ec8e3">③ 휘는 정도를 맞춘다</text>
+  <text x="628" y="158" font-size="13" fill="#888">두 번 미분하면 2c₂만</text>
+  <text x="628" y="180" font-size="13" fill="#888">남습니다.</text>
+  <text x="628" y="208" font-size="13" fill="#55c555">c₂ = f″(a) / 2</text>
+
+  <text x="60" y="278" font-size="16" font-weight="600" fill="#e8e8e8">n번 미분하면 앞에 1×2×⋯×n 이 딸려 나오므로</text>
+  <text x="60" y="314" font-size="16" font-weight="600" fill="#55c555">cₙ = f⁽ⁿ⁾(a) / n!</text>
+</svg>

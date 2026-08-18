@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="380" viewBox="0 0 880 380" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <rect width="880" height="380" rx="12" fill="#0a0a0a"/>
+  <defs>
+    <marker id="ntarr" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#7ec8e3"/>
+    </marker>
+  </defs>
+
+  <text x="60" y="46" font-size="22" font-weight="700" fill="#e8e8e8">기호 네 자리를 갈라 읽는다</text>
+
+  <!-- the expression -->
+  <text x="300" y="210" font-size="64" font-weight="700" fill="#e8e8e8">∫</text>
+  <text x="336" y="182" font-size="20" font-weight="600" fill="#e8e8e8">1</text>
+  <text x="336" y="232" font-size="20" font-weight="600" fill="#e8e8e8">0</text>
+  <text x="366" y="210" font-size="34" font-weight="600" fill="#e8e8e8">x²</text>
+  <text x="420" y="210" font-size="34" font-weight="600" fill="#e8e8e8">dx</text>
+
+  <!-- callouts -->
+  <line x1="230" y1="120" x2="296" y2="164" stroke="#7ec8e3" stroke-width="2" marker-end="url(#ntarr)"/>
+  <text x="60" y="106" font-size="16" font-weight="600" fill="#7ec8e3">늘여 쓴 S</text>
+  <text x="60" y="128" font-size="13" fill="#888">'더한다'는 뜻입니다.</text>
+
+  <line x1="470" y1="140" x2="358" y2="172" stroke="#7ec8e3" stroke-width="2" marker-end="url(#ntarr)"/>
+  <text x="486" y="126" font-size="16" font-weight="600" fill="#7ec8e3">위끝 — 어디까지</text>
+  <text x="486" y="148" font-size="13" fill="#888">더할지의 오른쪽 끝입니다.</text>
+
+  <line x1="470" y1="260" x2="358" y2="230" stroke="#7ec8e3" stroke-width="2" marker-end="url(#ntarr)"/>
+  <text x="486" y="252" font-size="16" font-weight="600" fill="#7ec8e3">아래끝 — 어디부터</text>
+  <text x="486" y="274" font-size="13" fill="#888">더할지의 왼쪽 끝입니다.</text>
+
+  <line x1="330" y1="300" x2="378" y2="228" stroke="#7ec8e3" stroke-width="2" marker-end="url(#ntarr)"/>
+  <text x="120" y="316" font-size="16" font-weight="600" fill="#7ec8e3">피적분함수 — 직사각형의 높이</text>
+
+  <line x1="600" y1="330" x2="452" y2="228" stroke="#7ec8e3" stroke-width="2" marker-end="url(#ntarr)"/>
+  <text x="606" y="336" font-size="16" font-weight="600" fill="#7ec8e3">dx — 가늘게 쪼갠 폭</text>
+
+  <text x="60" y="364" font-size="13" fill="#888">소리 내어 읽으면 "0부터 1까지 x제곱 dx의 적분"입니다.</text>
+</svg>

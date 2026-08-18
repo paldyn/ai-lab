@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="360" viewBox="0 0 880 360" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <rect width="880" height="360" rx="12" fill="#0a0a0a"/>
+  <defs>
+    <marker id="ipd" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#e05555"/>
+    </marker>
+    <marker id="ipi" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#55c555"/>
+    </marker>
+  </defs>
+
+  <text x="60" y="46" font-size="22" font-weight="700" fill="#e8e8e8">미분과 적분은 서로를 되돌린다</text>
+
+  <rect x="90" y="140" width="240" height="90" rx="8" fill="#111827" stroke="#3a4a6e" stroke-width="1"/>
+  <text x="210" y="178" font-size="20" font-weight="700" fill="#e8e8e8" text-anchor="middle">F(x) = x³/3</text>
+  <text x="210" y="206" font-size="13" fill="#888" text-anchor="middle">넓이를 재 주는 쪽</text>
+
+  <rect x="550" y="140" width="240" height="90" rx="8" fill="#111827" stroke="#3a4a6e" stroke-width="1"/>
+  <text x="670" y="178" font-size="20" font-weight="700" fill="#e8e8e8" text-anchor="middle">f(x) = x²</text>
+  <text x="670" y="206" font-size="13" fill="#888" text-anchor="middle">덮개가 되는 쪽</text>
+
+  <path d="M 330 162 Q 440 118 550 162" stroke="#e05555" stroke-width="2.5" fill="none" marker-end="url(#ipd)"/>
+  <text x="404" y="112" font-size="16" font-weight="600" fill="#e05555">미분한다</text>
+
+  <path d="M 550 208 Q 440 252 330 208" stroke="#55c555" stroke-width="2.5" fill="none" marker-end="url(#ipi)"/>
+  <text x="392" y="284" font-size="16" font-weight="600" fill="#55c555">적분한다 (+C)</text>
+
+  <text x="60" y="326" font-size="13" fill="#888">적분으로 돌아올 때만 상수 C가 붙습니다 — 미분하면 상수가 0이 되어 사라지므로, 되돌아올 때는 얼마였는지 알 수 없기 때문입니다.</text>
+</svg>

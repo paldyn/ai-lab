@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="420" viewBox="0 0 880 420" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <rect width="880" height="420" rx="12" fill="#0a0a0a"/>
+  <text x="60" y="46" font-size="22" font-weight="700" fill="#e8e8e8">축 아래에 있는 넓이는 음수로 센다</text>
+
+  <polygon points="200,360 380,240 380,360" fill="#e05555" fill-opacity="0.25" stroke="#e05555" stroke-width="1.5"/>
+  <polygon points="380,240 560,120 560,240" fill="#55c555" fill-opacity="0.25" stroke="#55c555" stroke-width="1.5"/>
+
+  <line x1="160" y1="240" x2="620" y2="240" stroke="#888" stroke-width="1.5"/>
+  <line x1="200" y1="100" x2="200" y2="384" stroke="#888" stroke-width="1.5"/>
+  <text x="626" y="245" font-size="13" fill="#888">x</text>
+  <text x="192" y="94" font-size="13" fill="#888">y</text>
+
+  <line x1="380" y1="235" x2="380" y2="245" stroke="#444" stroke-width="1.5"/>
+  <line x1="560" y1="235" x2="560" y2="245" stroke="#444" stroke-width="1.5"/>
+  <text x="194" y="262" font-size="13" fill="#888">0</text>
+  <text x="376" y="262" font-size="13" fill="#888">1</text>
+  <text x="556" y="262" font-size="13" fill="#888">2</text>
+
+  <line x1="200" y1="360" x2="560" y2="120" stroke="#7ec8e3" stroke-width="2.5"/>
+  <text x="566" y="116" font-size="13" fill="#7ec8e3">y = x − 1</text>
+
+  <text x="272" y="336" font-size="16" font-weight="600" fill="#e05555">−0.5</text>
+  <text x="470" y="212" font-size="16" font-weight="600" fill="#55c555">+0.5</text>
+
+  <text x="660" y="150" font-size="16" font-weight="600" fill="#e8e8e8">부호 규약</text>
+  <text x="660" y="184" font-size="13" fill="#55c555">축 위의 넓이는 그대로 더하고</text>
+  <text x="660" y="210" font-size="13" fill="#e05555">축 아래의 넓이는 빼면서 더합니다.</text>
+  <text x="660" y="256" font-size="16" font-weight="600" fill="#e8e8e8">그래서 여기서는</text>
+  <text x="660" y="290" font-size="13" fill="#888">−0.5 + 0.5 = 0 입니다.</text>
+
+  <text x="60" y="398" font-size="13" fill="#888">두 삼각형의 넓이는 둘 다 0.5인데, 왼쪽은 축 아래에 있어 부호가 음수입니다.</text>
+</svg>

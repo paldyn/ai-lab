@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="400" viewBox="0 0 880 400" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <rect width="880" height="400" rx="12" fill="#0a0a0a"/>
+  <defs>
+    <marker id="bparr" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#888"/>
+    </marker>
+  </defs>
+
+  <text x="60" y="46" font-size="22" font-weight="700" fill="#e8e8e8">부분적분에서 u를 무엇으로 잡을까</text>
+
+  <text x="60" y="92" font-size="16" font-weight="600" fill="#e8e8e8">고르는 기준은 하나 — 미분해서 간단해지는 쪽을 u로</text>
+
+  <rect x="60" y="118" width="360" height="70" rx="8" fill="#0e1b12" stroke="#55c555" stroke-width="1.5"/>
+  <text x="84" y="148" font-size="16" font-weight="600" fill="#55c555">u 로 잡는 쪽</text>
+  <text x="84" y="172" font-size="13" fill="#888">ln x → 1/x,  x² → 2x  처럼 줄어듭니다.</text>
+
+  <rect x="460" y="118" width="360" height="70" rx="8" fill="#2a1214" stroke="#e05555" stroke-width="1.5"/>
+  <text x="484" y="148" font-size="16" font-weight="600" fill="#e05555">dv 로 넘기는 쪽</text>
+  <text x="484" y="172" font-size="13" fill="#888">eˣ, sin x 는 미분해도 그대로입니다.</text>
+
+  <text x="60" y="234" font-size="16" font-weight="600" fill="#e8e8e8">그래서 순서는 이렇게 됩니다</text>
+
+  <rect x="60" y="252" width="220" height="64" rx="8" fill="#111827" stroke="#3a4a6e" stroke-width="1"/>
+  <text x="170" y="278" font-size="13" fill="#888" text-anchor="middle">ln 이 있는가</text>
+  <text x="170" y="302" font-size="13" fill="#7ec8e3" text-anchor="middle">있으면 그것이 u</text>
+
+  <line x1="280" y1="284" x2="332" y2="284" stroke="#888" stroke-width="2" marker-end="url(#bparr)"/>
+
+  <rect x="342" y="252" width="220" height="64" rx="8" fill="#111827" stroke="#3a4a6e" stroke-width="1"/>
+  <text x="452" y="278" font-size="13" fill="#888" text-anchor="middle">없으면 다항식이</text>
+  <text x="452" y="302" font-size="13" fill="#7ec8e3" text-anchor="middle">u, 나머지가 dv</text>
+
+  <line x1="562" y1="284" x2="614" y2="284" stroke="#888" stroke-width="2" marker-end="url(#bparr)"/>
+
+  <rect x="624" y="252" width="196" height="64" rx="8" fill="#111827" stroke="#3a4a6e" stroke-width="1"/>
+  <text x="722" y="278" font-size="13" fill="#888" text-anchor="middle">남은 적분이 더</text>
+  <text x="722" y="302" font-size="13" fill="#7ec8e3" text-anchor="middle">어려우면 뒤집는다</text>
+
+  <text x="60" y="366" font-size="13" fill="#888">u 를 잘못 잡으면 오른쪽에 남는 적분이 원래보다 어려워집니다. 그때는 두 자리를 맞바꿔 다시 합니다.</text>
+</svg>
