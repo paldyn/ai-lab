@@ -344,6 +344,21 @@ const entries: NewsItem[] = [
     url: 'https://blog.google/innovation-and-ai/models-and-research/google-research/amie-video-consultations/',
   },
   {
+    id: 'claude-platform-august-11-2026',
+    source: 'Anthropic',
+    kind: 'company',
+    title: 'Compliance API로 Cowork·Claude Code 세션 기록 조회',
+    summary:
+      'Anthropic이 Compliance API에 사용자 기기에서 돌아간 Cowork·Claude Code 세션을 ' +
+      '조회하는 엔드포인트 셋을 열었다. Claude Enterprise 조직용 베타이며, 같은 날 ' +
+      '응답이 어느 워크스페이스에서 나왔는지 알려 주는 헤더도 추가됐다.',
+    publishedAt: '2026-08-11',
+    collectedAt: '2026-08-18',
+    category: 'Product',
+    signal: '컴플라이언스 API',
+    url: 'https://platform.claude.com/docs/en/release-notes/overview#august-11-2026',
+  },
+  {
     id: 'expanding-daybreak-as-the-cyber-defense-window-narrows',
     source: 'OpenAI',
     kind: 'model',
@@ -442,6 +457,21 @@ const entries: NewsItem[] = [
     url: 'https://openai.com/index/responding-next-frontier-critical-cyber-capabilities',
   },
   {
+    id: 'claude-platform-august-7-2026',
+    source: 'Anthropic',
+    kind: 'company',
+    title: '관리형 에이전트에 세션 예산·조언 모델·추론 지역 설정 추가',
+    summary:
+      'Claude Managed Agents에 네 가지가 붙었다. 세션마다 지출 상한을 걸 수 있고, ' +
+      '주 스레드가 작업 도중 물어볼 조언 모델을 둘 수 있으며, 추론이 돌아갈 지역을 ' +
+      '고를 수 있고, GitHub 저장소의 스킬을 세션 시작 때 자동으로 읽어 온다.',
+    publishedAt: '2026-08-07',
+    collectedAt: '2026-08-18',
+    category: 'Product',
+    signal: '관리형 에이전트',
+    url: 'https://platform.claude.com/docs/en/release-notes/overview#august-7-2026',
+  },
+  {
     id: 'improving-gpt-5-6-sol-in-chatgpt',
     source: 'OpenAI',
     kind: 'model',
@@ -520,6 +550,21 @@ const entries: NewsItem[] = [
     category: 'Product',
     signal: '광고·분석 AI',
     url: 'https://blog.google/products/ads-commerce/google-ads-analytics-ai-updates/',
+  },
+  {
+    id: 'claude-platform-august-5-2026',
+    source: 'Anthropic',
+    kind: 'company',
+    title: '조직 보안 서버가 프롬프트를 검사하는 추론 훅 베타',
+    summary:
+      'Claude Enterprise 조직이 자체 AI 보안 서버를 물리면 claude.ai·Cowork·Claude Code의 ' +
+      '프롬프트가 추론 전에 그 서버의 허용·거부 판정을 받는다. 같은 날 Claude Opus 4.1은 ' +
+      'API에서 은퇴해 요청이 오류를 돌려준다.',
+    publishedAt: '2026-08-05',
+    collectedAt: '2026-08-18',
+    category: 'Product',
+    signal: '추론 훅',
+    url: 'https://platform.claude.com/docs/en/release-notes/overview#august-5-2026',
   },
   {
     id: 'third-party-cyber-evaluations-involving-openai-models',
@@ -855,6 +900,21 @@ const entries: NewsItem[] = [
     },
   },
   {
+    id: 'claude-platform-july-24-2026',
+    source: 'Anthropic',
+    kind: 'company',
+    title: 'Claude Opus 5와 함께 온 API 변경과 fast mode 제거',
+    summary:
+      'Claude Opus 5부터 thinking 끄기가 effort high 이하에서만 허용돼 xhigh·max로 끄면 ' +
+      '400을 돌려준다. 대화 도중 도구 교체와 기본 폴백 모드가 베타로 열렸고, ' +
+      'Claude Opus 4.7의 fast mode는 폴백 없이 제거돼 오류가 난다.',
+    publishedAt: '2026-07-24',
+    collectedAt: '2026-08-18',
+    category: 'Product',
+    signal: 'Opus 5 API 변경',
+    url: 'https://platform.claude.com/docs/en/release-notes/overview#july-24-2026',
+  },
+  {
     id: 'health-in-chatgpt',
     source: 'OpenAI',
     kind: 'company',
@@ -937,6 +997,21 @@ const entries: NewsItem[] = [
     category: 'Safety',
     signal: '국가 과학 AI',
     url: 'https://openai.com/index/advancing-the-next-era-of-national-science',
+  },
+  {
+    id: 'claude-platform-july-22-2026',
+    source: 'Anthropic',
+    kind: 'company',
+    title: '관리형 에이전트에 effort 설정과 초기 이벤트 주입 추가',
+    summary:
+      'Claude Managed Agents 에이전트에 effort 수준을 지정할 수 있게 됐고, 세션을 만들 때 ' +
+      '이벤트를 최대 50개까지 함께 넣어 같은 호출에서 바로 일을 시작시킬 수 있다. ' +
+      '환경·메모리 저장소 수명주기 웹훅과 스레드 단위 이벤트 델타도 열렸다.',
+    publishedAt: '2026-07-22',
+    collectedAt: '2026-08-18',
+    category: 'Product',
+    signal: '관리형 에이전트',
+    url: 'https://platform.claude.com/docs/en/release-notes/overview#july-22-2026',
   },
   {
     id: 'introducing-chatgpt-small-business-program',
@@ -1059,6 +1134,21 @@ const entries: NewsItem[] = [
       logo: 'assets/gemini.svg',
       tone: 'gemini',
     },
+  },
+  {
+    id: 'claude-platform-july-17-2026',
+    source: 'Anthropic',
+    kind: 'company',
+    title: '레거시 Workbench와 실험용 프롬프트 API 8월 종료 예고',
+    summary:
+      'Claude Console의 레거시 Workbench 접근이 2026년 8월 17일에 끝난다. 저장된 프롬프트와 ' +
+      '변수·평가는 새 Workbench로 옮겨 가지 않아 직접 내보내야 하고, 프롬프트를 생성· ' +
+      '개선·템플릿화하던 실험용 API 셋도 같은 날 은퇴한다.',
+    publishedAt: '2026-07-17',
+    collectedAt: '2026-08-18',
+    category: 'Product',
+    signal: '도구 지원 종료',
+    url: 'https://platform.claude.com/docs/en/release-notes/overview#july-17-2026',
   },
   {
     id: 'our-approach-to-bioresilience',

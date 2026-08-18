@@ -2,6 +2,52 @@ import type { NewsDetail } from '../news';
 
 /** 2026-08 발표의 모달 본문. 목록은 news.ts에 있습니다. */
 export const details: Record<string, NewsDetail> = {
+  'claude-platform-august-11-2026': {
+    points: [
+      'Compliance API가 사용자 기기에서 돌아간 Cowork·Claude Code 세션의 기록을 돌려준다 — Claude Enterprise 조직용 베타다',
+      'GET /v1/compliance/apps/sessions/local이 조직 전체의 세션 목록을 준다',
+      'GET /v1/compliance/apps/sessions/local/{session_id}은 세션 하나의 메타데이터를, 뒤에 /messages를 붙이면 대화 기록을 준다',
+      '기존 Compliance Access Key와 read:compliance_user_data 스코프를 그대로 쓴다',
+      'Claude API 응답에 anthropic-workspace-id 헤더가 추가됐다',
+      '이 헤더에는 요청의 API 키나 액세스 토큰이 가리키는 워크스페이스의 wrkspc_ 접두사 ID가 담기며, 조직의 기본 워크스페이스도 포함된다',
+    ],
+    commentary:
+      '기록이 서버가 아니라 직원 노트북에서 만들어진다는 것이 이 API의 전제다. Cowork와 ' +
+      'Claude Code는 로컬에서 도는데, 그 세션까지 조직이 조회할 수 있게 열었다는 것은 ' +
+      '감사 대상이 「우리 서버를 지나간 것」에서 「직원이 Claude와 한 일」로 넓어졌다는 뜻이다. ' +
+      '워크스페이스 헤더도 같은 방향이다 — 어느 지갑에서 나간 호출인지 응답만 보고 가릴 수 있게 됐다.',
+  },
+  'claude-platform-august-7-2026': {
+    points: [
+      'Claude Managed Agents 세션에 예산 상한을 걸 수 있다 — 공개 정가 기준으로 계산한다',
+      '상한에 닿은 세션은 budget_reached 사유로 멈추고 새 모델 요청을 시작하지 않으며, 예산을 바꾸거나 없애면 다시 움직인다',
+      '배포(Deployment)도 같은 예산 값을 받아 시작하는 세션마다 적용한다',
+      '세션에 조언 모델(advisor)을 붙일 수 있다 — 에이전트 자신만큼 유능한 모델을 골라 주 스레드가 작업 도중 전략을 물어본다',
+      '멀티에이전트 명단에 {"type": "advisor"} 항목으로 넣고 물어볼 모델 이름을 적는다',
+      '추론이 돌아갈 지역을 고를 수 있다 — 에이전트를 만들 때 model 안의 inference_geo로 정하거나 세션 하나만 따로 덮어쓴다',
+      '세션이 GitHub 저장소를 마운트하면 그 저장소 루트의 .claude/skills에 있는 스킬을 시작할 때 자동으로 찾아 쓴다',
+    ],
+    commentary:
+      '네 가지가 한 방향을 가리킨다 — 맡겨 놓고 잊어도 되게 만드는 것이다. 예산 상한은 ' +
+      '폭주하는 비용을, 지역 지정은 데이터가 어디서 처리되는지를, 스킬 자동 로드는 매번 ' +
+      '설정을 붙여 주는 수고를 없앤다. 조언 모델은 결이 다르다 — 에이전트가 막혔을 때 ' +
+      '사람을 부르는 대신 더 큰 모델에게 묻게 하는 장치라, 사람이 개입하는 지점을 하나 더 뒤로 민다.',
+  },
+  'claude-platform-august-5-2026': {
+    points: [
+      '추론 훅(Inference hooks)이 Claude Enterprise 조직용 베타로 열렸다',
+      '조직의 AI 보안 서버를 지정하면 claude.ai·Cowork·Claude Code를 지나는 프롬프트가 추론 전에 그 서버의 허용·거부 판정을 기다린다',
+      '요청에는 서명이 붙고, 서버가 응답하지 못할 때의 처리 방식은 설정할 수 있다',
+      '거부된 요청은 모두 컴플라이언스 Activity Feed에 남는다',
+      '같은 날 Claude Opus 4.1(claude-opus-4-1-20250805)이 은퇴해 Claude API 요청이 오류를 돌려준다',
+      'Anthropic은 Claude Opus 5로 옮기라고 안내했고, 연구자는 External Researcher Access Program으로 접근을 신청할 수 있다',
+    ],
+    commentary:
+      '기업이 AI 사용을 막는 방식이 「도구를 못 쓰게 한다」에서 「프롬프트마다 검문한다」로 ' +
+      '옮겨 가는 자리다. 눈여겨볼 것은 검문소를 Anthropic이 아니라 고객사가 세운다는 점이다 — ' +
+      '무엇을 막을지의 판단이 모델 제공자 밖에 있다. 대신 판정이 추론 앞에 서므로 그 서버가 ' +
+      '느리거나 죽으면 회사 전체의 Claude가 함께 느려진다. 실패 처리 방식을 설정으로 둔 이유다.',
+  },
   'the-defenders-window': {
     points: [
       'OpenAI-Hugging Face 침해에서 에이전트 집단이 OpenAI 연구 인프라와 다른 회사의 프로덕션 인프라까지 자율로 뚫었다',

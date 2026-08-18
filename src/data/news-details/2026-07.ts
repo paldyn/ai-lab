@@ -2,6 +2,51 @@ import type { NewsDetail } from '../news';
 
 /** 2026-07 발표의 모달 본문. 목록은 news.ts에 있습니다. */
 export const details: Record<string, NewsDetail> = {
+  'claude-platform-july-24-2026': {
+    points: [
+      'Claude Opus 5부터 thinking 끄기가 effort high 이하에서만 허용된다 — xhigh나 max에서 끄면 400 오류가 나며 Opus 4.8과 달라진 부분이다',
+      'effort는 Opus 5를 다루는 주 조절 손잡이로 low·medium·high·xhigh·max 다섯 단계를 다 지원하고, 한계까지 밀어야 하는 일에 max를 쓴다',
+      '대화 도중 도구를 더하거나 빼는 기능이 베타로 열렸다 — 프롬프트 캐시를 유지한 채 바꿀 수 있다',
+      '이 기능은 Claude Fable 5·Mythos 5·Opus 4.8·Opus 5에서 쓸 수 있고 mid-conversation-tool-changes-2026-07-01 베타 헤더가 필요하다',
+      'fallbacks 파라미터에 "default" 모드가 생겨 거부 갈래별로 Anthropic이 권하는 폴백 모델을 그대로 쓴다 — server-side-fallback-2026-07-01 헤더가 필요한 베타다',
+      'Claude Opus 4.7의 fast mode가 제거됐다 — speed: "fast" 요청이 오류를 내고, Opus 4.6과 달리 표준 속도로 떨어지지도 않는다',
+      'fast mode를 계속 쓰려면 Claude Opus 5나 Opus 4.8로 옮겨야 한다',
+    ],
+    commentary:
+      'Opus 5 출시 자체보다 같은 날 조용히 바뀐 규칙들이 실무에 먼저 닿는다. thinking을 끄는 ' +
+      '호출이 effort 값에 따라 400을 내는 것은 코드를 고쳐야 하는 변경이고, fast mode 제거는 ' +
+      '폴백조차 없다. 큰 발표에 묻히는 이런 줄이 릴리스 노트를 따로 보는 이유다.',
+  },
+  'claude-platform-july-22-2026': {
+    points: [
+      'Claude Managed Agents 에이전트의 model 설정에 effort 수준을 넣을 수 있다',
+      '웹훅이 환경과 메모리 저장소의 수명주기까지 다룬다 — environment.* 네 가지와 memory_store.* 세 가지 이벤트가 생겼다',
+      '폴링 없이 환경·메모리 저장소의 변화에 반응할 수 있게 됐다',
+      '세션을 만들 때 initial_events로 user.message와 user.define_outcome 이벤트를 최대 50개까지 함께 넣을 수 있다',
+      '목록이 비어 있지 않으면 그 호출에서 바로 에이전트 루프가 시작돼 따로 이벤트를 보낼 필요가 없다',
+      '에이전트를 수정할 때 version 필드가 선택이 됐다 — 넣으면 낙관적 동시성 검사를 하고 어긋나면 409, 빼면 조건 없이 적용된다',
+      '세션 스레드 이벤트 스트림도 event_deltas[] 파라미터를 받아 서브에이전트가 만들어 내는 글을 생성 중에 미리 볼 수 있다',
+    ],
+    commentary:
+      '에이전트를 「띄우고 지켜보는 것」에서 「시스템에 물려 두는 것」으로 옮기는 변경들이다. ' +
+      '초기 이벤트 주입은 왕복을 한 번 줄이고, 수명주기 웹훅은 폴링 루프를 지우고, 스레드 ' +
+      '델타는 서브에이전트가 무슨 생각을 하는지 끝나기 전에 보여 준다. 셋 다 사람이 붙어 ' +
+      '있지 않아도 되게 만드는 쪽이다.',
+  },
+  'claude-platform-july-17-2026': {
+    points: [
+      'Claude Console의 레거시 Workbench(platform.claude.com/workbench) 접근이 2026년 8월 17일에 끝난다',
+      '새 Workbench는 저장된 프롬프트·변수·평가를 지원하지 않는다',
+      '남기고 싶은 데이터는 배너와 조직 설정에서 직접 내보내야 한다',
+      '프롬프트를 생성·개선·템플릿화하던 실험용 API 셋(/v1/experimental/generate_prompt, improve_prompt, templatize_prompt)도 같은 날 함께 은퇴한다',
+      '은퇴 뒤 이 엔드포인트로 보낸 요청은 오류를 돌려준다',
+    ],
+    commentary:
+      '프롬프트를 콘솔에 저장해 두고 쓰던 방식이 사라진다는 뜻이다. 새 Workbench가 저장을 ' +
+      '지원하지 않는 것은 기능 후퇴가 아니라 자리 이동으로 읽힌다 — 프롬프트는 이제 콘솔이 ' +
+      '아니라 저장소의 코드와 스킬 파일에 두는 것이 기본이 됐다. 다만 옮겨 주지는 않으므로 ' +
+      '내보내기는 사람 몫이다.',
+  },
   'gemini-drop-july-2026': {
     points: [
       'macOS에서 활성 창에 대고 말해 받아쓰기·문서 변환·이미지 생성이 가능',
