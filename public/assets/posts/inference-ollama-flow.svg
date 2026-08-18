@@ -49,24 +49,9 @@
   <!-- Code -->
   <rect x="60" y="330" width="760" height="108" rx="6" fill="#000000" stroke="#3a4a6e"/>
   <text x="76" y="352" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#9aa4b8" xml:space="preserve"># Ollama Python SDK 사용</text>
-  <text x="76" y="370" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#7ec8e3" xml:space="preserve">import</text>
-  <text x="120" y="370" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#ffffff" xml:space="preserve"> ollama</text>
+  <text x="76" y="370" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" xml:space="preserve"><tspan fill="#7ec8e3">import</tspan><tspan fill="#ffffff"> ollama</tspan></text>
   <text x="76" y="388" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#ffffff" xml:space="preserve">response = ollama.chat(</text>
-  <text x="76" y="406" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#ffffff" xml:space="preserve">    model=</text>
-  <text x="136" y="406" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#ce9178" xml:space="preserve">"llama3.1:8b"</text>
-  <text x="232" y="406" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#ffffff" xml:space="preserve">,</text>
-  <text x="76" y="424" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#ffffff" xml:space="preserve">    messages=[{</text>
-  <text x="172" y="424" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#ce9178" xml:space="preserve">"role"</text>
-  <text x="220" y="424" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#ffffff" xml:space="preserve">: </text>
-  <text x="232" y="424" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#ce9178" xml:space="preserve">"user"</text>
-  <text x="280" y="424" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#ffffff" xml:space="preserve">, </text>
-  <text x="296" y="424" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#ce9178" xml:space="preserve">"content"</text>
-  <text x="368" y="424" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#ffffff" xml:space="preserve">: </text>
-  <text x="380" y="424" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#ce9178" xml:space="preserve">"안녕!"</text>
-  <text x="424" y="424" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#ffffff" xml:space="preserve">}])</text>
-  <text x="76" y="442" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#ffffff" xml:space="preserve">print(response[</text>
-  <text x="196" y="442" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#ce9178" xml:space="preserve">"message"</text>
-  <text x="268" y="442" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#ffffff" xml:space="preserve">][</text>
-  <text x="284" y="442" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#ce9178" xml:space="preserve">"content"</text>
-  <text x="356" y="442" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#ffffff" xml:space="preserve">])</text>
+  <text x="76" y="406" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" xml:space="preserve"><tspan fill="#ffffff">    model=</tspan><tspan fill="#ce9178">&quot;llama3.1:8b&quot;</tspan><tspan fill="#ffffff">,</tspan></text>
+  <text x="76" y="424" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" xml:space="preserve"><tspan fill="#ffffff">    messages=[{</tspan><tspan fill="#ce9178">&quot;role&quot;</tspan><tspan fill="#ffffff">: </tspan><tspan fill="#ce9178">&quot;user&quot;</tspan><tspan fill="#ffffff">, </tspan><tspan fill="#ce9178">&quot;content&quot;</tspan><tspan fill="#ffffff">: </tspan><tspan fill="#ce9178">&quot;안녕!&quot;</tspan><tspan fill="#ffffff">}])</tspan></text>
+  <text x="76" y="442" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" xml:space="preserve"><tspan fill="#ffffff">print(response[</tspan><tspan fill="#ce9178">&quot;message&quot;</tspan><tspan fill="#ffffff">][</tspan><tspan fill="#ce9178">&quot;content&quot;</tspan><tspan fill="#ffffff">])</tspan></text>
 </svg>

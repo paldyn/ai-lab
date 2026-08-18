@@ -20,45 +20,17 @@
         font-size="14" font-weight="700" fill="#7ec8e3" text-anchor="middle">스트리밍 (stream)</text>
 
   <text x="76" y="120" font-family="'JetBrains Mono','Menlo','Consolas',monospace"
-        font-size="12" fill="#7ec8e3" font-weight="600" xml:space="preserve">with</text>
-  <text x="118" y="120" font-family="'JetBrains Mono','Menlo','Consolas',monospace"
-        font-size="12" fill="#ffffff" xml:space="preserve"> client.messages.stream(</text>
+        font-size="12" font-weight="600" xml:space="preserve"><tspan fill="#7ec8e3">with</tspan><tspan fill="#ffffff"> client.messages.stream(</tspan></text>
   <text x="76" y="140" font-family="'JetBrains Mono','Menlo','Consolas',monospace"
-        font-size="12" fill="#ffffff" xml:space="preserve">    model=</text>
-  <text x="154" y="140" font-family="'JetBrains Mono','Menlo','Consolas',monospace"
-        font-size="12" fill="#ce9178" xml:space="preserve">"claude-sonnet-4-6"</text>
-  <text x="294" y="140" font-family="'JetBrains Mono','Menlo','Consolas',monospace"
-        font-size="12" fill="#ffffff" xml:space="preserve">,</text>
+        font-size="12" xml:space="preserve"><tspan fill="#ffffff">    model=</tspan><tspan fill="#ce9178">&quot;claude-sonnet-4-6&quot;</tspan><tspan fill="#ffffff">,</tspan></text>
   <text x="76" y="160" font-family="'JetBrains Mono','Menlo','Consolas',monospace"
-        font-size="12" fill="#ffffff" xml:space="preserve">    max_tokens=</text>
-  <text x="196" y="160" font-family="'JetBrains Mono','Menlo','Consolas',monospace"
-        font-size="12" fill="#b5cea8" xml:space="preserve">1024</text>
-  <text x="222" y="160" font-family="'JetBrains Mono','Menlo','Consolas',monospace"
-        font-size="12" fill="#ffffff" xml:space="preserve">, messages=[...]</text>
+        font-size="12" xml:space="preserve"><tspan fill="#ffffff">    max_tokens=</tspan><tspan fill="#b5cea8">1024</tspan><tspan fill="#ffffff">, messages=[...]</tspan></text>
   <text x="76" y="180" font-family="'JetBrains Mono','Menlo','Consolas',monospace"
-        font-size="12" fill="#ffffff" xml:space="preserve">) </text>
-  <text x="98" y="180" font-family="'JetBrains Mono','Menlo','Consolas',monospace"
-        font-size="12" fill="#7ec8e3" font-weight="600" xml:space="preserve">as</text>
-  <text x="120" y="180" font-family="'JetBrains Mono','Menlo','Consolas',monospace"
-        font-size="12" fill="#ffffff" xml:space="preserve"> stream:</text>
+        font-size="12" xml:space="preserve"><tspan fill="#ffffff">) </tspan><tspan fill="#7ec8e3">as</tspan><tspan fill="#ffffff"> stream:</tspan></text>
   <text x="76" y="200" font-family="'JetBrains Mono','Menlo','Consolas',monospace"
-        font-size="12" fill="#7ec8e3" font-weight="600" xml:space="preserve">    for</text>
-  <text x="116" y="200" font-family="'JetBrains Mono','Menlo','Consolas',monospace"
-        font-size="12" fill="#ffffff" xml:space="preserve"> text </text>
-  <text x="156" y="200" font-family="'JetBrains Mono','Menlo','Consolas',monospace"
-        font-size="12" fill="#7ec8e3" font-weight="600" xml:space="preserve">in</text>
-  <text x="176" y="200" font-family="'JetBrains Mono','Menlo','Consolas',monospace"
-        font-size="12" fill="#ffffff" xml:space="preserve"> stream.text_stream:</text>
+        font-size="12" font-weight="600" xml:space="preserve"><tspan fill="#7ec8e3">    for</tspan><tspan fill="#ffffff"> text </tspan><tspan fill="#7ec8e3">in</tspan><tspan fill="#ffffff"> stream.text_stream:</tspan></text>
   <text x="76" y="220" font-family="'JetBrains Mono','Menlo','Consolas',monospace"
-        font-size="12" fill="#ffffff" xml:space="preserve">        print(text, end=</text>
-  <text x="268" y="220" font-family="'JetBrains Mono','Menlo','Consolas',monospace"
-        font-size="12" fill="#ce9178" xml:space="preserve">""</text>
-  <text x="286" y="220" font-family="'JetBrains Mono','Menlo','Consolas',monospace"
-        font-size="12" fill="#ffffff" xml:space="preserve">, flush=</text>
-  <text x="366" y="220" font-family="'JetBrains Mono','Menlo','Consolas',monospace"
-        font-size="12" fill="#b5cea8" xml:space="preserve">True</text>
-  <text x="392" y="220" font-family="'JetBrains Mono','Menlo','Consolas',monospace"
-        font-size="12" fill="#ffffff" xml:space="preserve">)</text>
+        font-size="12" xml:space="preserve"><tspan fill="#ffffff">        print(text, end=</tspan><tspan fill="#ce9178">&quot;&quot;</tspan><tspan fill="#ffffff">, flush=</tspan><tspan fill="#b5cea8">True</tspan><tspan fill="#ffffff">)</tspan></text>
 
   <!-- Right column: tool_use -->
   <rect x="460" y="70" width="360" height="170" rx="8" fill="#1a2c1a" stroke="#3a6e3a" stroke-width="1.5"/>
@@ -68,41 +40,13 @@
   <text x="476" y="120" font-family="'JetBrains Mono','Menlo','Consolas',monospace"
         font-size="12" fill="#ffffff" xml:space="preserve">tools = [{</text>
   <text x="476" y="140" font-family="'JetBrains Mono','Menlo','Consolas',monospace"
-        font-size="12" fill="#ffffff" xml:space="preserve">  </text>
-  <text x="492" y="140" font-family="'JetBrains Mono','Menlo','Consolas',monospace"
-        font-size="12" fill="#ce9178" xml:space="preserve">"name"</text>
-  <text x="542" y="140" font-family="'JetBrains Mono','Menlo','Consolas',monospace"
-        font-size="12" fill="#ffffff" xml:space="preserve">: </text>
-  <text x="556" y="140" font-family="'JetBrains Mono','Menlo','Consolas',monospace"
-        font-size="12" fill="#ce9178" xml:space="preserve">"get_weather"</text>
-  <text x="656" y="140" font-family="'JetBrains Mono','Menlo','Consolas',monospace"
-        font-size="12" fill="#ffffff" xml:space="preserve">,</text>
+        font-size="12" xml:space="preserve"><tspan fill="#ffffff">  </tspan><tspan fill="#ce9178">&quot;name&quot;</tspan><tspan fill="#ffffff"> : </tspan><tspan fill="#ce9178">&quot;get_weather&quot;</tspan><tspan fill="#ffffff"> ,</tspan></text>
   <text x="476" y="160" font-family="'JetBrains Mono','Menlo','Consolas',monospace"
-        font-size="12" fill="#ffffff" xml:space="preserve">  </text>
-  <text x="492" y="160" font-family="'JetBrains Mono','Menlo','Consolas',monospace"
-        font-size="12" fill="#ce9178" xml:space="preserve">"description"</text>
-  <text x="592" y="160" font-family="'JetBrains Mono','Menlo','Consolas',monospace"
-        font-size="12" fill="#ffffff" xml:space="preserve">: </text>
-  <text x="606" y="160" font-family="'JetBrains Mono','Menlo','Consolas',monospace"
-        font-size="12" fill="#ce9178" xml:space="preserve">"날씨 조회"</text>
-  <text x="672" y="160" font-family="'JetBrains Mono','Menlo','Consolas',monospace"
-        font-size="12" fill="#ffffff" xml:space="preserve">,</text>
+        font-size="12" xml:space="preserve"><tspan fill="#ffffff">  </tspan><tspan fill="#ce9178">&quot;description&quot;</tspan><tspan fill="#ffffff"> : </tspan><tspan fill="#ce9178">&quot;날씨 조회&quot;</tspan><tspan fill="#ffffff">,</tspan></text>
   <text x="476" y="180" font-family="'JetBrains Mono','Menlo','Consolas',monospace"
-        font-size="12" fill="#ffffff" xml:space="preserve">  </text>
-  <text x="492" y="180" font-family="'JetBrains Mono','Menlo','Consolas',monospace"
-        font-size="12" fill="#ce9178" xml:space="preserve">"input_schema"</text>
-  <text x="592" y="180" font-family="'JetBrains Mono','Menlo','Consolas',monospace"
-        font-size="12" fill="#ffffff" xml:space="preserve">: {</text>
+        font-size="12" xml:space="preserve"><tspan fill="#ffffff">  </tspan><tspan fill="#ce9178">&quot;input_schema&quot;</tspan><tspan fill="#ffffff">: {</tspan></text>
   <text x="476" y="200" font-family="'JetBrains Mono','Menlo','Consolas',monospace"
-        font-size="12" fill="#ffffff" xml:space="preserve">    </text>
-  <text x="508" y="200" font-family="'JetBrains Mono','Menlo','Consolas',monospace"
-        font-size="12" fill="#ce9178" xml:space="preserve">"type"</text>
-  <text x="554" y="200" font-family="'JetBrains Mono','Menlo','Consolas',monospace"
-        font-size="12" fill="#ffffff" xml:space="preserve">: </text>
-  <text x="566" y="200" font-family="'JetBrains Mono','Menlo','Consolas',monospace"
-        font-size="12" fill="#ce9178" xml:space="preserve">"object"</text>
-  <text x="626" y="200" font-family="'JetBrains Mono','Menlo','Consolas',monospace"
-        font-size="12" fill="#ffffff" xml:space="preserve">, ...}}]</text>
+        font-size="12" xml:space="preserve"><tspan fill="#ffffff">    </tspan><tspan fill="#ce9178">&quot;type&quot;</tspan><tspan fill="#ffffff">: </tspan><tspan fill="#ce9178">&quot;object&quot;</tspan><tspan fill="#ffffff">, ...}}]</tspan></text>
   <text x="476" y="222" font-family="'JetBrains Mono','Menlo','Consolas',monospace"
         font-size="12" fill="#9aa4b8" xml:space="preserve"># stop_reason == "tool_use"이면 실행 후 재요청</text>
 
@@ -136,29 +80,13 @@
   <text x="76" y="386" font-family="'JetBrains Mono','Menlo','Consolas',monospace"
         font-size="13" fill="#9aa4b8" xml:space="preserve"># 에러 처리</text>
   <text x="76" y="406" font-family="'JetBrains Mono','Menlo','Consolas',monospace"
-        font-size="13" fill="#7ec8e3" font-weight="600" xml:space="preserve">from</text>
-  <text x="116" y="406" font-family="'JetBrains Mono','Menlo','Consolas',monospace"
-        font-size="13" fill="#ffffff" xml:space="preserve"> anthropic </text>
-  <text x="208" y="406" font-family="'JetBrains Mono','Menlo','Consolas',monospace"
-        font-size="13" fill="#7ec8e3" font-weight="600" xml:space="preserve">import</text>
-  <text x="256" y="406" font-family="'JetBrains Mono','Menlo','Consolas',monospace"
-        font-size="13" fill="#ffffff" xml:space="preserve"> APIStatusError, RateLimitError</text>
+        font-size="13" font-weight="600" xml:space="preserve"><tspan fill="#7ec8e3">from</tspan><tspan fill="#ffffff"> anthropic </tspan><tspan fill="#7ec8e3">import</tspan><tspan fill="#ffffff"> APIStatusError, RateLimitError</tspan></text>
   <text x="76" y="426" font-family="'JetBrains Mono','Menlo','Consolas',monospace"
-        font-size="13" fill="#7ec8e3" font-weight="600" xml:space="preserve">try</text>
-  <text x="106" y="426" font-family="'JetBrains Mono','Menlo','Consolas',monospace"
-        font-size="13" fill="#ffffff" xml:space="preserve">:</text>
+        font-size="13" font-weight="600" xml:space="preserve"><tspan fill="#7ec8e3">try</tspan><tspan fill="#ffffff"> :</tspan></text>
   <text x="76" y="446" font-family="'JetBrains Mono','Menlo','Consolas',monospace"
         font-size="13" fill="#ffffff" xml:space="preserve">    msg = client.messages.create(...)</text>
   <text x="76" y="466" font-family="'JetBrains Mono','Menlo','Consolas',monospace"
-        font-size="13" fill="#7ec8e3" font-weight="600" xml:space="preserve">except</text>
-  <text x="128" y="466" font-family="'JetBrains Mono','Menlo','Consolas',monospace"
-        font-size="13" fill="#ffffff" xml:space="preserve"> RateLimitError:</text>
+        font-size="13" font-weight="600" xml:space="preserve"><tspan fill="#7ec8e3">except</tspan><tspan fill="#ffffff"> RateLimitError:</tspan></text>
   <text x="76" y="486" font-family="'JetBrains Mono','Menlo','Consolas',monospace"
-        font-size="13" fill="#ffffff" xml:space="preserve">    time.sleep(</text>
-  <text x="192" y="486" font-family="'JetBrains Mono','Menlo','Consolas',monospace"
-        font-size="13" fill="#b5cea8" xml:space="preserve">60</text>
-  <text x="206" y="486" font-family="'JetBrains Mono','Menlo','Consolas',monospace"
-        font-size="13" fill="#ffffff" xml:space="preserve">)</text>
-  <text x="226" y="486" font-family="'JetBrains Mono','Menlo','Consolas',monospace"
-        font-size="13" fill="#9aa4b8" xml:space="preserve"># 429 — 재시도 전 대기</text>
+        font-size="13" xml:space="preserve"><tspan fill="#ffffff">    time.sleep(</tspan><tspan fill="#b5cea8">60</tspan><tspan fill="#ffffff">)</tspan><tspan fill="#9aa4b8">  # 429 — 재시도 전 대기</tspan></text>
 </svg>

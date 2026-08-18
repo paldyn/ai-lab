@@ -89,7 +89,7 @@
 
   <!-- Code example box -->
   <rect x="60" y="398" width="760" height="24" rx="4" fill="#000000" stroke="#3a4a6e" stroke-width="1"/>
-  <text x="80" y="414" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#9aa4b8" xml:space="preserve">groupchat = GroupChat(agents=[planner, coder, executor, reviewer], messages=[], max_round=</text>
-  <text x="80" y="414" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#b5cea8" xml:space="preserve">                                                                                           20</text>
-  <text x="80" y="414" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#ffffff" xml:space="preserve">                                                                                             )</text>
+  <text x="80" y="414" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#9aa4b8" xml:space="preserve">groupchat = GroupChat(agents=[planner, coder, executor, critic], messages=[], max_round=</text>
+  <text x="80" y="414" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#b5cea8" xml:space="preserve">                                                                                         20</text>
+  <text x="80" y="414" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#ffffff" xml:space="preserve">                                                                                           )</text>
 </svg>

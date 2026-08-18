@@ -14,10 +14,7 @@
   <text x="76" y="144" xml:space="preserve" fill="#ffffff" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13">    mean_squared_error,</text>
   <text x="76" y="162" xml:space="preserve" fill="#ffffff" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13">    mean_absolute_percentage_error,</text>
   <text x="76" y="180" xml:space="preserve" fill="#ffffff" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13">    r2_score)</text>
-  <text x="76" y="198" xml:space="preserve" fill="#7ec8e3" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13">import</text>
-  <text x="117" y="198" xml:space="preserve" fill="#ffffff" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13"> numpy </text>
-  <text x="170" y="198" xml:space="preserve" fill="#7ec8e3" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13">as</text>
-  <text x="185" y="198" xml:space="preserve" fill="#ffffff" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13"> np</text>
+  <text x="76" y="198" xml:space="preserve" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13"><tspan fill="#7ec8e3">import</tspan><tspan fill="#ffffff"> numpy </tspan><tspan fill="#7ec8e3">as</tspan><tspan fill="#ffffff"> np</tspan></text>
 
   <line x1="76" y1="212" x2="804" y2="212" stroke="#3a4a6e" stroke-width="1"/>
 
@@ -25,8 +22,7 @@
   <text x="76" y="248" xml:space="preserve" fill="#ffffff" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13">mse  = mean_squared_error(y_ts, y_pred)</text>
   <text x="76" y="266" xml:space="preserve" fill="#ffffff" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13">rmse = np.sqrt(mse)</text>
   <text x="76" y="284" xml:space="preserve" fill="#ffffff" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13">mape = mean_absolute_percentage_error(</text>
-  <text x="76" y="302" xml:space="preserve" fill="#ffffff" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13">    y_ts, y_pred) *</text>
-  <text x="218" y="302" xml:space="preserve" fill="#b5cea8" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13">100</text>
+  <text x="76" y="302" xml:space="preserve" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13"><tspan fill="#ffffff">    y_ts, y_pred) *</tspan><tspan fill="#b5cea8">100</tspan></text>
   <text x="76" y="320" xml:space="preserve" fill="#ffffff" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13">r2   = r2_score(y_ts, y_pred)</text>
 
   <line x1="76" y1="334" x2="804" y2="334" stroke="#3a4a6e" stroke-width="1"/>

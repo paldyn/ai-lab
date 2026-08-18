@@ -19,9 +19,7 @@
 
   <text x="66" y="220" xml:space="preserve" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#ffffff">result = gen(</text>
   <text x="66" y="238" xml:space="preserve" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#ce9178">    "AI의 미래는"</text>
-  <text x="66" y="256" xml:space="preserve" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#ffffff">    max_new_tokens=</text>
-  <text x="204" y="256" xml:space="preserve" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#b5cea8">100</text>
-  <text x="228" y="256" xml:space="preserve" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#ffffff">,</text>
+  <text x="66" y="256" xml:space="preserve" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13"><tspan fill="#ffffff">    max_new_tokens=</tspan><tspan fill="#b5cea8">100</tspan><tspan fill="#ffffff">,</tspan></text>
   <text x="66" y="274" xml:space="preserve" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13"><tspan fill="#ffffff">    temperature=</tspan><tspan fill="#b5cea8">0.8</tspan><tspan fill="#ffffff">,</tspan></text>
 
   <text x="66" y="292" xml:space="preserve" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13"><tspan fill="#ffffff">    do_sample=</tspan><tspan fill="#b5cea8">True</tspan><tspan fill="#ffffff">,</tspan></text>

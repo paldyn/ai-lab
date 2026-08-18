@@ -46,13 +46,10 @@
   <text x="60" y="194" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">완전한 PyTorch 학습 루프</text>
   <rect x="60" y="201" width="760" height="236" rx="6" fill="#000000" stroke="#3a4a6e"/>
 
-  <text x="76" y="223" xml:space="preserve" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#7ec8e3">import</text>
-  <text x="124" y="223" xml:space="preserve" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#ffffff">torch, torch.nn as nn</text>
+  <text x="76" y="223" xml:space="preserve" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13"><tspan fill="#7ec8e3">import</tspan><tspan fill="#ffffff"> torch, torch.nn as nn</tspan></text>
 
   <text x="76" y="241" xml:space="preserve" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#9aa4b8"># 모델, 손실 함수, 옵티마이저 초기화</text>
-  <text x="76" y="259" xml:space="preserve" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#ffffff">model     = nn.Linear(</text>
-  <text x="256" y="259" xml:space="preserve" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#b5cea8">10, 1</text>
-  <text x="296" y="259" xml:space="preserve" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#ffffff">)</text>
+  <text x="76" y="259" xml:space="preserve" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13"><tspan fill="#ffffff">model     = nn.Linear(</tspan><tspan fill="#b5cea8">10, 1</tspan><tspan fill="#ffffff">)</tspan></text>
   <text x="76" y="277" xml:space="preserve" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#ffffff">criterion = nn.MSELoss()</text>
   <text x="76" y="295" xml:space="preserve" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13"><tspan fill="#ffffff">optimizer = torch.optim.SGD(model.parameters(), lr=</tspan><tspan fill="#b5cea8">0.01</tspan><tspan fill="#ffffff">)</tspan></text>
 
@@ -60,16 +57,11 @@
 
   <text x="76" y="331" xml:space="preserve" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13"><tspan fill="#7ec8e3">    for</tspan><tspan fill="#ffffff"> X_batch, y_batch in dataloader:</tspan></text>
   
-  <text x="92" y="349" xml:space="preserve" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#ffffff">    optimizer.zero_grad()          </text>
-  <text x="400" y="349" xml:space="preserve" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#9aa4b8"># 그래디언트 초기화</text>
-  <text x="92" y="367" xml:space="preserve" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#ffffff">    pred = model(X_batch)          </text>
-  <text x="400" y="367" xml:space="preserve" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#9aa4b8"># ① 순전파</text>
-  <text x="92" y="385" xml:space="preserve" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#ffffff">    loss = criterion(pred, y_batch)</text>
-  <text x="400" y="385" xml:space="preserve" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#9aa4b8"># ② 손실 계산</text>
-  <text x="92" y="403" xml:space="preserve" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#ffffff">    loss.backward()                </text>
-  <text x="400" y="403" xml:space="preserve" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#9aa4b8"># ③ 역전파 (연쇄 법칙)</text>
-  <text x="92" y="421" xml:space="preserve" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#ffffff">    optimizer.step()               </text>
-  <text x="400" y="421" xml:space="preserve" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#9aa4b8"># ④ 파라미터 업데이트</text>
+  <text x="92" y="349" xml:space="preserve" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13"><tspan fill="#ffffff">    optimizer.zero_grad()          </tspan><tspan fill="#9aa4b8">    # 그래디언트 초기화</tspan></text>
+  <text x="92" y="367" xml:space="preserve" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13"><tspan fill="#ffffff">    pred = model(X_batch)          </tspan><tspan fill="#9aa4b8">    # ① 순전파</tspan></text>
+  <text x="92" y="385" xml:space="preserve" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13"><tspan fill="#ffffff">    loss = criterion(pred, y_batch)</tspan><tspan fill="#9aa4b8">    # ② 손실 계산</tspan></text>
+  <text x="92" y="403" xml:space="preserve" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13"><tspan fill="#ffffff">    loss.backward()                </tspan><tspan fill="#9aa4b8">    # ③ 역전파 (연쇄 법칙)</tspan></text>
+  <text x="92" y="421" xml:space="preserve" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13"><tspan fill="#ffffff">    optimizer.step()               </tspan><tspan fill="#9aa4b8">    # ④ 파라미터 업데이트</tspan></text>
 
   <!-- Footer -->
 </svg>

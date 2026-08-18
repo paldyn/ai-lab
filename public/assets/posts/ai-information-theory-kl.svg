@@ -58,16 +58,9 @@
   <!-- Code box -->
   <text x="60" y="375" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">Python: KL 발산과 교차 엔트로피 계산</text>
   <rect x="60" y="382" width="760" height="90" rx="6" fill="#000000" stroke="#3a4a6e"/>
-  <text x="76" y="404" xml:space="preserve" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#7ec8e3">import</text>
-  <text x="124" y="404" xml:space="preserve" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#ffffff">numpy as np</text>
-  <text x="76" y="422" xml:space="preserve" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#ffffff">P = np.array([</text>
-  <text x="180" y="422" xml:space="preserve" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#b5cea8">0.5, 0.3, 0.15, 0.05</text>
-  <text x="360" y="422" xml:space="preserve" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#ffffff">])  </text>
-  <text x="396" y="422" xml:space="preserve" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#9aa4b8"># 실제 분포</text>
-  <text x="76" y="440" xml:space="preserve" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#ffffff">Q = np.array([</text>
-  <text x="180" y="440" xml:space="preserve" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#b5cea8">0.4, 0.35, 0.15, 0.1</text>
-  <text x="352" y="440" xml:space="preserve" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#ffffff">])   </text>
-  <text x="396" y="440" xml:space="preserve" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#9aa4b8"># 근사 분포</text>
+  <text x="76" y="404" xml:space="preserve" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13"><tspan fill="#7ec8e3">import</tspan><tspan fill="#ffffff"> numpy as np</tspan></text>
+  <text x="76" y="422" xml:space="preserve" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13"><tspan fill="#ffffff">P = np.array([</tspan><tspan fill="#b5cea8">0.5, 0.3, 0.15, 0.05</tspan><tspan fill="#ffffff">   ])  </tspan><tspan fill="#9aa4b8"># 실제 분포</tspan></text>
+  <text x="76" y="440" xml:space="preserve" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13"><tspan fill="#ffffff">Q = np.array([</tspan><tspan fill="#b5cea8">0.4, 0.35, 0.15, 0.1</tspan><tspan fill="#ffffff">  ])   </tspan><tspan fill="#9aa4b8"># 근사 분포</tspan></text>
   <text x="76" y="458" xml:space="preserve" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#ffffff">kl = np.sum(P * np.log(P / Q))         </text>
   <text x="432" y="458" xml:space="preserve" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#9aa4b8"># D_KL(P‖Q)</text>
   <text x="76" y="464" xml:space="preserve" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#ffffff">cross_h = -np.sum(P * np.log(Q))       </text>

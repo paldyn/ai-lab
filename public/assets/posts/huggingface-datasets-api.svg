@@ -78,39 +78,15 @@
   <!-- Code block -->
   <rect x="60" y="368" width="760" height="112" rx="6" fill="#000000" stroke="#3a4a6e" stroke-width="1"/>
   <text x="76" y="390" font-family="'JetBrains Mono','Menlo','Consolas',monospace"
-        font-size="13" fill="#7ec8e3" font-weight="600" xml:space="preserve">from</text>
-  <text x="116" y="390" font-family="'JetBrains Mono','Menlo','Consolas',monospace"
-        font-size="13" fill="#ffffff" xml:space="preserve"> datasets </text>
-  <text x="198" y="390" font-family="'JetBrains Mono','Menlo','Consolas',monospace"
-        font-size="13" fill="#7ec8e3" font-weight="600" xml:space="preserve">import</text>
-  <text x="248" y="390" font-family="'JetBrains Mono','Menlo','Consolas',monospace"
-        font-size="13" fill="#ffffff" xml:space="preserve"> load_dataset</text>
+        font-size="13" font-weight="600" xml:space="preserve"><tspan fill="#7ec8e3">from</tspan><tspan fill="#ffffff"> datasets </tspan><tspan fill="#7ec8e3">import</tspan><tspan fill="#ffffff"> load_dataset</tspan></text>
   <text x="76" y="410" font-family="'JetBrains Mono','Menlo','Consolas',monospace"
         font-size="13" fill="#9aa4b8" xml:space="preserve"># 허브에서 KLUE 데이터셋 로드</text>
   <text x="76" y="430" font-family="'JetBrains Mono','Menlo','Consolas',monospace"
-        font-size="13" fill="#ffffff" xml:space="preserve">ds = load_dataset(</text>
-  <text x="228" y="430" font-family="'JetBrains Mono','Menlo','Consolas',monospace"
-        font-size="13" fill="#ce9178" xml:space="preserve">"klue"</text>
-  <text x="276" y="430" font-family="'JetBrains Mono','Menlo','Consolas',monospace"
-        font-size="13" fill="#ffffff" xml:space="preserve">, </text>
-  <text x="294" y="430" font-family="'JetBrains Mono','Menlo','Consolas',monospace"
-        font-size="13" fill="#ce9178" xml:space="preserve">"ynat"</text>
-  <text x="342" y="430" font-family="'JetBrains Mono','Menlo','Consolas',monospace"
-        font-size="13" fill="#ffffff" xml:space="preserve">)</text>
+        font-size="13" xml:space="preserve"><tspan fill="#ffffff">ds = load_dataset(</tspan><tspan fill="#ce9178">&quot;klue&quot;</tspan><tspan fill="#ffffff">, </tspan><tspan fill="#ce9178">&quot;ynat&quot;</tspan><tspan fill="#ffffff">)</tspan></text>
   <text x="76" y="450" font-family="'JetBrains Mono','Menlo','Consolas',monospace"
-        font-size="13" fill="#ffffff" xml:space="preserve">stream = load_dataset(</text>
-  <text x="248" y="450" font-family="'JetBrains Mono','Menlo','Consolas',monospace"
-        font-size="13" fill="#ce9178" xml:space="preserve">"oscar"</text>
-  <text x="296" y="450" font-family="'JetBrains Mono','Menlo','Consolas',monospace"
-        font-size="13" fill="#ffffff" xml:space="preserve">, </text>
-  <text x="314" y="450" font-family="'JetBrains Mono','Menlo','Consolas',monospace"
-        font-size="13" fill="#ce9178" xml:space="preserve">"unshuffled_deduplicated_ko"</text>
+        font-size="13" xml:space="preserve"><tspan fill="#ffffff">stream = load_dataset(</tspan><tspan fill="#ce9178">&quot;oscar&quot;</tspan><tspan fill="#ffffff">, </tspan><tspan fill="#ce9178">&quot;unshuffled_deduplicated_ko&quot;</tspan></text>
   <text x="626" y="450" font-family="'JetBrains Mono','Menlo','Consolas',monospace"
-        font-size="13" fill="#ffffff" xml:space="preserve">, streaming=</text>
-  <text x="738" y="450" font-family="'JetBrains Mono','Menlo','Consolas',monospace"
-        font-size="13" fill="#b5cea8" xml:space="preserve">True</text>
-  <text x="762" y="450" font-family="'JetBrains Mono','Menlo','Consolas',monospace"
-        font-size="13" fill="#ffffff" xml:space="preserve">)</text>
+        font-size="13" xml:space="preserve"><tspan fill="#ffffff">, streaming=</tspan><tspan fill="#b5cea8">True</tspan><tspan fill="#ffffff">)</tspan></text>
   <text x="76" y="470" font-family="'JetBrains Mono','Menlo','Consolas',monospace"
         font-size="13" fill="#9aa4b8" xml:space="preserve"># IterableDataset — 다운로드 없이 스트리밍</text>
 </svg>

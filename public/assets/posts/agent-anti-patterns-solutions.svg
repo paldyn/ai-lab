@@ -19,94 +19,72 @@
 
   <!-- Left: Loop prevention -->
   <rect x="40" y="90" width="380" height="170" rx="8" fill="#000000" stroke="#3a4a6e" stroke-width="1.5"/>
-  <text x="60" y="112" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#9aa4b8" xml:space="preserve"># 안티패턴 ①: 무한 루프 방지</text>
-  <text x="60" y="132" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#7ec8e3" font-weight="600" xml:space="preserve">class</text>
-  <text x="60" y="132" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#ffffff" xml:space="preserve">       SafeAgentExecutor:</text>
-  <text x="60" y="152" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#7ec8e3" font-weight="600" xml:space="preserve">    def</text>
-  <text x="60" y="152" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#ffffff" xml:space="preserve">         __init__(self, max_iter=</text>
-  <text x="60" y="152" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#b5cea8" xml:space="preserve">                                10</text>
-  <text x="60" y="152" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#ffffff" xml:space="preserve">                                  , timeout=</text>
-  <text x="60" y="152" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#b5cea8" xml:space="preserve">                                             60</text>
-  <text x="60" y="152" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#ffffff" xml:space="preserve">                                               ):</text>
-  <text x="60" y="172" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#ffffff" xml:space="preserve">        self.max_iter = max_iter</text>
-  <text x="60" y="192" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#ffffff" xml:space="preserve">        self.seen_calls = </text>
-  <text x="60" y="192" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#7ec8e3" font-weight="600" xml:space="preserve">                          set</text>
-  <text x="60" y="192" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#ffffff" xml:space="preserve">                             ()  </text>
-  <text x="60" y="192" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#9aa4b8" xml:space="preserve">                                 # 중복 감지</text>
-  <text x="60" y="212" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#7ec8e3" font-weight="600" xml:space="preserve">    def</text>
-  <text x="60" y="212" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#ffffff" xml:space="preserve">         check_loop(self, call_key):</text>
-  <text x="60" y="232" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#7ec8e3" font-weight="600" xml:space="preserve">        if</text>
-  <text x="60" y="232" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#ffffff" xml:space="preserve">            call_key </text>
-  <text x="60" y="232" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#7ec8e3" font-weight="600" xml:space="preserve">                      in</text>
-  <text x="60" y="232" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#ffffff" xml:space="preserve">                         self.seen_calls:</text>
-  <text x="60" y="252" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#7ec8e3" font-weight="600" xml:space="preserve">            raise</text>
-  <text x="60" y="252" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#ffffff" xml:space="preserve">                   LoopDetectedError(call_key)</text>
+  <text x="60" y="112" xml:space="preserve" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13"><tspan fill="#9aa4b8"># 안티패턴 ①: 무한 루프 방지</tspan></text>
+  <text x="60" y="132" xml:space="preserve" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13"><tspan fill="#7ec8e3">class</tspan><tspan fill="#ffffff"> SafeAgentExecutor:</tspan></text>
+  <text x="60" y="152" xml:space="preserve" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13"><tspan fill="#7ec8e3">    def</tspan><tspan fill="#ffffff"> __init__(self, max_iter=</tspan><tspan fill="#b5cea8">10</tspan><tspan fill="#ffffff">,</tspan></text>
+  <text x="60" y="172" xml:space="preserve" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13"><tspan fill="#ffffff">                 timeout=</tspan><tspan fill="#b5cea8">60</tspan><tspan fill="#ffffff">):</tspan></text>
+  <text x="60" y="192" xml:space="preserve" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13"><tspan fill="#ffffff">        self.seen = </tspan><tspan fill="#7ec8e3">set</tspan><tspan fill="#9aa4b8">()  # 중복 호출 감지</tspan></text>
+  <text x="60" y="212" xml:space="preserve" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13"><tspan fill="#7ec8e3">    def</tspan><tspan fill="#ffffff"> check_loop(self, call_key):</tspan></text>
+  <text x="60" y="232" xml:space="preserve" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13"><tspan fill="#7ec8e3">        if</tspan><tspan fill="#ffffff"> call_key </tspan><tspan fill="#7ec8e3">in</tspan><tspan fill="#ffffff"> self.seen:</tspan></text>
+  <text x="60" y="252" xml:space="preserve" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13"><tspan fill="#7ec8e3">            raise</tspan><tspan fill="#ffffff"> LoopDetectedError(call_key)</tspan></text>
 
   <!-- Right: Error recovery -->
   <rect x="460" y="90" width="380" height="170" rx="8" fill="#000000" stroke="#3a4a6e" stroke-width="1.5"/>
-  <text x="480" y="112" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#9aa4b8" xml:space="preserve"># 안티패턴 ⑧: 강건한 도구 오류 처리</text>
-  <text x="480" y="132" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#7ec8e3" font-weight="600" xml:space="preserve">def</text>
-  <text x="480" y="132" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#ffffff" xml:space="preserve">     safe_tool_wrapper(tool_fn):</text>
-  <text x="480" y="152" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#7ec8e3" font-weight="600" xml:space="preserve">    def</text>
-  <text x="480" y="152" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#ffffff" xml:space="preserve">         wrapper(*args, **kwargs):</text>
-  <text x="480" y="172" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#7ec8e3" font-weight="600" xml:space="preserve">        try</text>
-  <text x="480" y="172" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#ffffff" xml:space="preserve">            :</text>
-  <text x="480" y="192" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#ffffff" xml:space="preserve">            </text>
-  <text x="480" y="192" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#7ec8e3" font-weight="600" xml:space="preserve">                return</text>
-  <text x="480" y="192" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#ffffff" xml:space="preserve">                       tool_fn(*args, **kwargs)</text>
-  <text x="480" y="212" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#7ec8e3" font-weight="600" xml:space="preserve">        except</text>
-  <text x="480" y="212" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#ffffff" xml:space="preserve">               TimeoutError:</text>
-  <text x="480" y="232" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#7ec8e3" font-weight="600" xml:space="preserve">            return</text>
-  <text x="480" y="232" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#ce9178" xml:space="preserve">                   "도구 타임아웃. 다른 방법 시도."</text>
-  <text x="480" y="252" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#7ec8e3" font-weight="600" xml:space="preserve">        except Exception</text>
-  <text x="480" y="252" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#ffffff" xml:space="preserve">                          as e:</text>
+  <text x="480" y="112" xml:space="preserve" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13"><tspan fill="#9aa4b8"># 안티패턴 ⑧: 강건한 도구 오류 처리</tspan></text>
+  <text x="480" y="132" xml:space="preserve" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13"><tspan fill="#7ec8e3">def</tspan><tspan fill="#ffffff"> safe_tool_wrapper(tool_fn):</tspan></text>
+  <text x="480" y="152" xml:space="preserve" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13"><tspan fill="#7ec8e3">    def</tspan><tspan fill="#ffffff"> wrapper(*args, **kwargs):</tspan></text>
+  <text x="480" y="172" xml:space="preserve" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13"><tspan fill="#7ec8e3">        try</tspan><tspan fill="#ffffff">:</tspan></text>
+  <text x="480" y="192" xml:space="preserve" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13"><tspan fill="#7ec8e3">            return</tspan><tspan fill="#ffffff"> tool_fn(*args, **kwargs)</tspan></text>
+  <text x="480" y="212" xml:space="preserve" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13"><tspan fill="#7ec8e3">        except</tspan><tspan fill="#ffffff"> TimeoutError:</tspan></text>
+  <text x="480" y="232" xml:space="preserve" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13"><tspan fill="#7ec8e3">            return</tspan><tspan fill="#ffffff"> </tspan><tspan fill="#ce9178">&quot;타임아웃 — 다른 방법 시도&quot;</tspan></text>
+  <text x="480" y="252" xml:space="preserve" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13"><tspan fill="#7ec8e3">        except</tspan><tspan fill="#ffffff"> Exception </tspan><tspan fill="#7ec8e3">as</tspan><tspan fill="#ffffff"> e:</tspan></text>
 
   <!-- Checklist -->
   <rect x="40" y="280" width="800" height="116" rx="8" fill="#0f0f0f" stroke="#333" stroke-width="1"/>
   <text x="440" y="302" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
         font-size="13" font-weight="600" fill="#888">프로덕션 에이전트 체크리스트</text>
 
-  <text x="60" y="324" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+  <text x="60" y="322" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
         font-size="12" fill="#55c555">✅</text>
-  <text x="80" y="324" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+  <text x="80" y="322" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
         font-size="12" fill="#888">max_iterations + timeout 설정</text>
-  <text x="310" y="324" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+  <text x="310" y="322" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
         font-size="12" fill="#55c555">✅</text>
-  <text x="330" y="324" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+  <text x="330" y="322" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
         font-size="12" fill="#888">도구 오류 핸들링 + fallback</text>
-  <text x="560" y="324" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+  <text x="560" y="322" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
         font-size="12" fill="#55c555">✅</text>
-  <text x="580" y="324" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+  <text x="580" y="322" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
         font-size="12" fill="#888">평가 데이터셋 + CI 통합</text>
 
-  <text x="60" y="346" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+  <text x="60" y="342" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
         font-size="12" fill="#55c555">✅</text>
-  <text x="80" y="346" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+  <text x="80" y="342" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
         font-size="12" fill="#888">중복 도구 호출 감지</text>
-  <text x="310" y="346" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+  <text x="310" y="342" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
         font-size="12" fill="#55c555">✅</text>
-  <text x="330" y="346" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+  <text x="330" y="342" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
         font-size="12" fill="#888">컨텍스트 트리밍 전략</text>
-  <text x="560" y="346" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+  <text x="560" y="342" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
         font-size="12" fill="#55c555">✅</text>
-  <text x="580" y="346" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+  <text x="580" y="342" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
         font-size="12" fill="#888">도구 결과 길이 제한</text>
 
-  <text x="60" y="368" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+  <text x="60" y="362" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
         font-size="12" fill="#55c555">✅</text>
-  <text x="80" y="368" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+  <text x="80" y="362" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
         font-size="12" fill="#888">입력 검증 + 인젝션 방어</text>
-  <text x="310" y="368" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+  <text x="310" y="362" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
         font-size="12" fill="#55c555">✅</text>
-  <text x="330" y="368" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+  <text x="330" y="362" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
         font-size="12" fill="#888">메모리 영속화 (세션 간)</text>
-  <text x="560" y="368" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+  <text x="560" y="362" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
         font-size="12" fill="#55c555">✅</text>
-  <text x="580" y="368" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+  <text x="580" y="362" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
         font-size="12" fill="#888">비용 모니터링 + 알림</text>
 
-  <text x="60" y="384" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+  <text x="60" y="382" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
         font-size="12" fill="#55c555">✅</text>
-  <text x="80" y="384" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+  <text x="80" y="382" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
         font-size="12" fill="#888">에이전트 필요성 검토 (단순 RAG로 충분한지)</text>
 </svg>

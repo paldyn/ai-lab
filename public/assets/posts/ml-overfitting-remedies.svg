@@ -19,29 +19,17 @@
   <!-- Early Stopping -->
   <text x="76" y="176" xml:space="preserve" fill="#9aa4b8" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13"># ② Early Stopping (sklearn SGD)</text>
   <text x="76" y="194" xml:space="preserve" fill="#ffffff" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13">sgd = SGDClassifier(</text>
-  <text x="76" y="212" xml:space="preserve" fill="#ffffff" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13">    early_stopping=</text>
-  <text x="216" y="212" xml:space="preserve" fill="#7ec8e3" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13">True</text>
-  <text x="244" y="212" xml:space="preserve" fill="#ffffff" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13">,</text>
-  <text x="76" y="230" xml:space="preserve" fill="#ffffff" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13">    n_iter_no_change=</text>
-  <text x="230" y="230" xml:space="preserve" fill="#b5cea8" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13">10</text>
-  <text x="250" y="230" xml:space="preserve" fill="#ffffff" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13">, validation_fraction=</text>
-  <text x="441" y="230" xml:space="preserve" fill="#b5cea8" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13">0.1</text>
-  <text x="465" y="230" xml:space="preserve" fill="#ffffff" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13">)</text>
+  <text x="76" y="212" xml:space="preserve" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13"><tspan fill="#ffffff">    early_stopping=</tspan><tspan fill="#7ec8e3">True</tspan><tspan fill="#ffffff">,</tspan></text>
+  <text x="76" y="230" xml:space="preserve" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13"><tspan fill="#ffffff">    n_iter_no_change=</tspan><tspan fill="#b5cea8">10</tspan><tspan fill="#ffffff"> , validation_fraction=</tspan><tspan fill="#b5cea8">0.1</tspan><tspan fill="#ffffff">)</tspan></text>
 
   <line x1="76" y1="244" x2="804" y2="244" stroke="#3a4a6e" stroke-width="1"/>
 
   <!-- Max depth (tree) -->
   <text x="76" y="262" xml:space="preserve" fill="#9aa4b8" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13"># ③ 트리 복잡도 제한</text>
   <text x="76" y="280" xml:space="preserve" fill="#ffffff" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13">rf = RandomForestClassifier(</text>
-  <text x="76" y="298" xml:space="preserve" fill="#ffffff" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13">    max_depth=</text>
-  <text x="175" y="298" xml:space="preserve" fill="#b5cea8" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13">8</text>
-  <text x="182" y="298" xml:space="preserve" fill="#ffffff" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13">,</text>
-  <text x="76" y="316" xml:space="preserve" fill="#ffffff" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13">    min_samples_leaf=</text>
-  <text x="234" y="316" xml:space="preserve" fill="#b5cea8" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13">5</text>
-  <text x="241" y="316" xml:space="preserve" fill="#ffffff" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13">,</text>
-  <text x="76" y="334" xml:space="preserve" fill="#ffffff" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13">    max_features=</text>
-  <text x="209" y="334" xml:space="preserve" fill="#ce9178" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13">'sqrt'</text>
-  <text x="255" y="334" xml:space="preserve" fill="#ffffff" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13">)</text>
+  <text x="76" y="298" xml:space="preserve" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13"><tspan fill="#ffffff">    max_depth=</tspan><tspan fill="#b5cea8">8</tspan><tspan fill="#ffffff">,</tspan></text>
+  <text x="76" y="316" xml:space="preserve" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13"><tspan fill="#ffffff">    min_samples_leaf=</tspan><tspan fill="#b5cea8">5</tspan><tspan fill="#ffffff">,</tspan></text>
+  <text x="76" y="334" xml:space="preserve" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13"><tspan fill="#ffffff">    max_features=</tspan><tspan fill="#ce9178">'sqrt'</tspan><tspan fill="#ffffff">)</tspan></text>
 
   <line x1="76" y1="348" x2="804" y2="348" stroke="#3a4a6e" stroke-width="1"/>
 

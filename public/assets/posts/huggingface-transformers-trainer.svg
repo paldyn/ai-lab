@@ -8,11 +8,7 @@
         font-size="16" font-weight="600" fill="#7ec8e3">TrainingArguments</text>
   <rect x="60" y="92" width="380" height="202" rx="6" fill="#000000" stroke="#3a4a6e" stroke-width="1"/>
   <text x="76" y="114" font-family="'JetBrains Mono','Menlo','Consolas',monospace"
-        font-size="13" fill="#7ec8e3" font-weight="600" xml:space="preserve">from</text>
-  <text x="114" y="114" font-family="'JetBrains Mono','Menlo','Consolas',monospace"
-        font-size="13" fill="#ffffff" xml:space="preserve"> transformers </text>
-  <text x="238" y="114" font-family="'JetBrains Mono','Menlo','Consolas',monospace"
-        font-size="13" fill="#7ec8e3" font-weight="600" xml:space="preserve">import</text>
+        font-size="13" font-weight="600" xml:space="preserve"><tspan fill="#7ec8e3">from</tspan><tspan fill="#ffffff"> transformers </tspan><tspan fill="#7ec8e3">import</tspan></text>
   <text x="76" y="132" font-family="'JetBrains Mono','Menlo','Consolas',monospace"
         font-size="13" fill="#ffffff" xml:space="preserve">    TrainingArguments, Trainer</text>
   <text x="76" y="150" font-family="'JetBrains Mono','Menlo','Consolas',monospace"
@@ -20,35 +16,15 @@
   <text x="76" y="168" font-family="'JetBrains Mono','Menlo','Consolas',monospace"
         font-size="13" fill="#ffffff" xml:space="preserve">args = TrainingArguments(</text>
   <text x="76" y="186" font-family="'JetBrains Mono','Menlo','Consolas',monospace"
-        font-size="13" fill="#ffffff" xml:space="preserve">    output_dir=</text>
-  <text x="198" y="186" font-family="'JetBrains Mono','Menlo','Consolas',monospace"
-        font-size="13" fill="#ce9178" xml:space="preserve">"./output"</text>
-  <text x="266" y="186" font-family="'JetBrains Mono','Menlo','Consolas',monospace"
-        font-size="13" fill="#ffffff" xml:space="preserve">,</text>
+        font-size="13" xml:space="preserve"><tspan fill="#ffffff">    output_dir=</tspan><tspan fill="#ce9178">&quot;./output&quot;</tspan><tspan fill="#ffffff">,</tspan></text>
   <text x="76" y="204" font-family="'JetBrains Mono','Menlo','Consolas',monospace"
-        font-size="13" fill="#ffffff" xml:space="preserve">    num_train_epochs=</text>
-  <text x="264" y="204" font-family="'JetBrains Mono','Menlo','Consolas',monospace"
-        font-size="13" fill="#b5cea8" xml:space="preserve">3</text>
-  <text x="272" y="204" font-family="'JetBrains Mono','Menlo','Consolas',monospace"
-        font-size="13" fill="#ffffff" xml:space="preserve">,</text>
+        font-size="13" xml:space="preserve"><tspan fill="#ffffff">    num_train_epochs=</tspan><tspan fill="#b5cea8">3</tspan><tspan fill="#ffffff">,</tspan></text>
   <text x="76" y="222" font-family="'JetBrains Mono','Menlo','Consolas',monospace"
-        font-size="13" fill="#ffffff" xml:space="preserve">    per_device_train_batch_size=</text>
-  <text x="324" y="222" font-family="'JetBrains Mono','Menlo','Consolas',monospace"
-        font-size="13" fill="#b5cea8" xml:space="preserve">16</text>
-  <text x="340" y="222" font-family="'JetBrains Mono','Menlo','Consolas',monospace"
-        font-size="13" fill="#ffffff" xml:space="preserve">,</text>
+        font-size="13" xml:space="preserve"><tspan fill="#ffffff">    per_device_train_batch_size=</tspan><tspan fill="#b5cea8">16</tspan><tspan fill="#ffffff">,</tspan></text>
   <text x="76" y="240" font-family="'JetBrains Mono','Menlo','Consolas',monospace"
-        font-size="13" fill="#ffffff" xml:space="preserve">    learning_rate=</text>
-  <text x="226" y="240" font-family="'JetBrains Mono','Menlo','Consolas',monospace"
-        font-size="13" fill="#b5cea8" xml:space="preserve">2e-5</text>
-  <text x="258" y="240" font-family="'JetBrains Mono','Menlo','Consolas',monospace"
-        font-size="13" fill="#ffffff" xml:space="preserve">,</text>
+        font-size="13" xml:space="preserve"><tspan fill="#ffffff">    learning_rate=</tspan><tspan fill="#b5cea8">2e-5</tspan><tspan fill="#ffffff">,</tspan></text>
   <text x="76" y="258" font-family="'JetBrains Mono','Menlo','Consolas',monospace"
-        font-size="13" fill="#ffffff" xml:space="preserve">    evaluation_strategy=</text>
-  <text x="282" y="258" font-family="'JetBrains Mono','Menlo','Consolas',monospace"
-        font-size="13" fill="#ce9178" xml:space="preserve">"epoch"</text>
-  <text x="334" y="258" font-family="'JetBrains Mono','Menlo','Consolas',monospace"
-        font-size="13" fill="#ffffff" xml:space="preserve">,</text>
+        font-size="13" xml:space="preserve"><tspan fill="#ffffff">    evaluation_strategy=</tspan><tspan fill="#ce9178">&quot;epoch&quot;</tspan><tspan fill="#ffffff">,</tspan></text>
   <text x="76" y="276" font-family="'JetBrains Mono','Menlo','Consolas',monospace"
         font-size="13" fill="#ffffff" xml:space="preserve">)</text>
 

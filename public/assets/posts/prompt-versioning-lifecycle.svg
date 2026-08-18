@@ -55,32 +55,14 @@
   <rect x="60" y="208" width="760" height="220" rx="6" fill="#000000" stroke="#3a4a6e"/>
 
   <text x="76" y="230" xml:space="preserve" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#9aa4b8"># prompts/v1.2.0/summarizer.yaml</text>
-  <text x="76" y="248" xml:space="preserve" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#ce9178">version</text>
-  <text x="148" y="248" xml:space="preserve" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#ffffff">: </text>
-  <text x="160" y="248" xml:space="preserve" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#ce9178">"1.2.0"</text>
-  <text x="76" y="266" xml:space="preserve" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#ce9178">name</text>
-  <text x="124" y="266" xml:space="preserve" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#ffffff">: </text>
-  <text x="136" y="266" xml:space="preserve" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#ce9178">"document-summarizer"</text>
-  <text x="76" y="284" xml:space="preserve" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#ce9178">status</text>
-  <text x="136" y="284" xml:space="preserve" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#ffffff">: </text>
-  <text x="148" y="284" xml:space="preserve" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#55c555">"production"</text>
-  <text x="76" y="302" xml:space="preserve" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#ce9178">model</text>
-  <text x="130" y="302" xml:space="preserve" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#ffffff">: </text>
-  <text x="142" y="302" xml:space="preserve" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#ce9178">"claude-opus-4-7"</text>
-  <text x="76" y="320" xml:space="preserve" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#ce9178">changelog</text>
-  <text x="166" y="320" xml:space="preserve" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#ffffff">: </text>
-  <text x="178" y="320" xml:space="preserve" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#ce9178">"CoT 추가로 요약 품질 +12%"</text>
-  <text x="76" y="338" xml:space="preserve" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#ce9178">rollback_to</text>
-  <text x="184" y="338" xml:space="preserve" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#ffffff">: </text>
-  <text x="196" y="338" xml:space="preserve" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#ce9178">"1.1.0"</text>
-  <text x="76" y="356" xml:space="preserve" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#ce9178">template</text>
-  <text x="156" y="356" xml:space="preserve" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#ffffff">: |</text>
+  <text x="76" y="248" xml:space="preserve" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13"><tspan fill="#ce9178">version</tspan><tspan fill="#ffffff">  : </tspan><tspan fill="#ce9178">&quot;1.2.0&quot;</tspan></text>
+  <text x="76" y="266" xml:space="preserve" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13"><tspan fill="#ce9178">name</tspan><tspan fill="#ffffff">  : </tspan><tspan fill="#ce9178">&quot;document-summarizer&quot;</tspan></text>
+  <text x="76" y="284" xml:space="preserve" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13"><tspan fill="#ce9178">status</tspan><tspan fill="#ffffff">  : </tspan><tspan fill="#55c555">&quot;production&quot;</tspan></text>
+  <text x="76" y="302" xml:space="preserve" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13"><tspan fill="#ce9178">model</tspan><tspan fill="#ffffff">  : </tspan><tspan fill="#ce9178">&quot;claude-opus-4-7&quot;</tspan></text>
+  <text x="76" y="320" xml:space="preserve" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13"><tspan fill="#ce9178">changelog</tspan><tspan fill="#ffffff">  : </tspan><tspan fill="#ce9178">&quot;CoT 추가로 요약 품질 +12%&quot;</tspan></text>
+  <text x="76" y="338" xml:space="preserve" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13"><tspan fill="#ce9178">rollback_to</tspan><tspan fill="#ffffff">   : </tspan><tspan fill="#ce9178">&quot;1.1.0&quot;</tspan></text>
+  <text x="76" y="356" xml:space="preserve" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13"><tspan fill="#ce9178">template</tspan><tspan fill="#ffffff">  : |</tspan></text>
   <text x="76" y="374" xml:space="preserve" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#9aa4b8">  다음 {doc_type}을 {style} 스타일로 요약하세요...</text>
-  <text x="76" y="392" xml:space="preserve" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#ce9178">metrics</text>
-  <text x="148" y="392" xml:space="preserve" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#ffffff">: {rouge_l: </text>
-  <text x="248" y="392" xml:space="preserve" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#b5cea8">0.82</text>
-  <text x="272" y="392" xml:space="preserve" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#ffffff">, latency_ms: </text>
-  <text x="374" y="392" xml:space="preserve" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#b5cea8">1240</text>
-  <text x="404" y="392" xml:space="preserve" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#ffffff">}</text>
+  <text x="76" y="392" xml:space="preserve" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13"><tspan fill="#ce9178">metrics</tspan><tspan fill="#ffffff">  : {rouge_l: </tspan><tspan fill="#b5cea8">0.82</tspan><tspan fill="#ffffff">, latency_ms: </tspan><tspan fill="#b5cea8">1240</tspan><tspan fill="#ffffff">}</tspan></text>
   <text x="76" y="416" xml:space="preserve" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#9aa4b8">  # 성능 지표를 메타데이터로 함께 보관</text>
 </svg>

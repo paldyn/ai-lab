@@ -7,13 +7,9 @@
   <!-- Left: Code -->
   <rect x="60" y="96" width="460" height="326" rx="6" fill="#000000" stroke="#3a4a6e"/>
   <text x="76" y="120" xml:space="preserve" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#9aa4b8"># PyTorch 2.0+ 내장 FlashAttention</text>
-  <text x="76" y="138" xml:space="preserve" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#7ec8e3">import</text>
-  <text x="130" y="138" xml:space="preserve" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#ffffff"> torch.nn.functional </text>
-  <text x="286" y="138" xml:space="preserve" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#7ec8e3">as</text>
-  <text x="304" y="138" xml:space="preserve" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#ffffff"> F</text>
+  <text x="76" y="138" xml:space="preserve" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13"><tspan fill="#7ec8e3">import</tspan><tspan fill="#ffffff"> torch.nn.functional </tspan><tspan fill="#7ec8e3">as</tspan><tspan fill="#ffffff"> F</tspan></text>
 
-  <text x="76" y="166" xml:space="preserve" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#7ec8e3">with</text>
-  <text x="106" y="166" xml:space="preserve" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#ffffff"> torch.backends.cuda.sdp_kernel(</text>
+  <text x="76" y="166" xml:space="preserve" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13"><tspan fill="#7ec8e3">with</tspan><tspan fill="#ffffff"> torch.backends.cuda.sdp_kernel(</tspan></text>
   <text x="76" y="184" xml:space="preserve" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13"><tspan fill="#ffffff">    enable_flash=</tspan><tspan fill="#b5cea8">True</tspan><tspan fill="#ffffff">,</tspan></text>
 
   <text x="76" y="202" xml:space="preserve" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13"><tspan fill="#ffffff">    enable_math=</tspan><tspan fill="#b5cea8">False</tspan><tspan fill="#ffffff">):</tspan></text>
@@ -28,9 +24,7 @@
   <text x="76" y="326" xml:space="preserve" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#9aa4b8"># flash-attn 패키지 직접 사용</text>
   <text x="76" y="344" xml:space="preserve" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13"><tspan fill="#7ec8e3">from</tspan><tspan fill="#ffffff"> flash_attn </tspan><tspan fill="#7ec8e3">import</tspan><tspan fill="#ffffff"> flash_attn_func</tspan></text>
 
-  <text x="76" y="362" xml:space="preserve" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#ffffff">out = flash_attn_func(q, k, v, causal=</text>
-  <text x="370" y="362" xml:space="preserve" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#b5cea8">True</text>
-  <text x="406" y="362" xml:space="preserve" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#ffffff">)</text>
+  <text x="76" y="362" xml:space="preserve" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13"><tspan fill="#ffffff">out = flash_attn_func(q, k, v, causal=</tspan><tspan fill="#b5cea8">True</tspan><tspan fill="#ffffff"> )</tspan></text>
 
   <text x="76" y="396" xml:space="preserve" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#9aa4b8"># q,k,v shape: (batch, seqlen, nheads, headdim)</text>
 

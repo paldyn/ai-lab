@@ -48,13 +48,8 @@
   <!-- Code block -->
   <rect x="60" y="288" width="760" height="72" rx="6" fill="#000000" stroke="#3a4a6e"/>
   <text x="76" y="308" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#9aa4b8" xml:space="preserve"># HyDE 구현 핵심 패턴</text>
-  <text x="76" y="326" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#7ec8e3" xml:space="preserve">def</text>
-  <text x="106" y="326" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#ffffff" xml:space="preserve"> hyde_retrieve(query, llm, vectorstore):</text>
-  <text x="76" y="344" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#ffffff" xml:space="preserve">    hyp = llm.invoke(</text>
-  <text x="220" y="344" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#ce9178" xml:space="preserve">f"다음 질문에 한 단락으로 답하라: {query}"</text>
+  <text x="76" y="326" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" xml:space="preserve"><tspan fill="#7ec8e3">def</tspan><tspan fill="#ffffff"> hyde_retrieve(query, llm, vectorstore):</tspan></text>
+  <text x="76" y="344" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" xml:space="preserve"><tspan fill="#ffffff">    hyp = llm.invoke(</tspan><tspan fill="#ce9178">f&quot;다음 질문에 한 단락으로 답하라: {query}&quot;</tspan></text>
   <text x="616" y="344" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#ffffff" xml:space="preserve">)</text>
-  <text x="76" y="352" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#7ec8e3" xml:space="preserve">    return</text>
-  <text x="124" y="352" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#ffffff" xml:space="preserve"> vectorstore.similarity_search(hyp.content, k=</text>
-  <text x="472" y="352" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#b5cea8" xml:space="preserve">5</text>
-  <text x="480" y="352" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#ffffff" xml:space="preserve">)</text>
+  <text x="76" y="352" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" xml:space="preserve"><tspan fill="#7ec8e3">    return</tspan><tspan fill="#ffffff"> vectorstore.similarity_search(hyp.content, k=</tspan><tspan fill="#b5cea8">5</tspan><tspan fill="#ffffff">)</tspan></text>
 </svg>

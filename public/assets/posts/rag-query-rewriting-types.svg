@@ -62,9 +62,7 @@
   <text x="108" y="354" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#ffffff" xml:space="preserve">                            MultiQueryRetriever</text>
   <text x="76" y="372" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#ffffff" xml:space="preserve">retriever = MultiQueryRetriever.from_llm(</text>
   <text x="76" y="390" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#ffffff" xml:space="preserve">    retriever=vectorstore.as_retriever(),</text>
-  <text x="76" y="408" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#ffffff" xml:space="preserve">    llm=ChatAnthropic(model=</text>
-  <text x="280" y="408" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#ce9178" xml:space="preserve">"claude-sonnet-4-6"</text>
+  <text x="76" y="408" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" xml:space="preserve"><tspan fill="#ffffff">    llm=ChatAnthropic(model=</tspan><tspan fill="#ce9178">&quot;claude-sonnet-4-6&quot;</tspan></text>
   <text x="472" y="408" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#ffffff" xml:space="preserve">)</text>
-  <text x="76" y="426" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#ffffff" xml:space="preserve">)  </text>
-  <text x="100" y="426" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#9aa4b8" xml:space="preserve"># 원본 쿼리 → 3~5개 변형 쿼리 자동 생성 → 결과 통합</text>
+  <text x="76" y="426" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" xml:space="preserve"><tspan fill="#ffffff">)  </tspan><tspan fill="#9aa4b8"># 원본 쿼리 → 3~5개 변형 쿼리 자동 생성 → 결과 통합</tspan></text>
 </svg>

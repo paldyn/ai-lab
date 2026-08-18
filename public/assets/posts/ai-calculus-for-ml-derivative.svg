@@ -56,23 +56,11 @@
   <!-- Code Box -->
   <text x="60" y="383" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">PyTorch 자동 미분 (Autograd)</text>
   <rect x="60" y="390" width="760" height="100" rx="6" fill="#000000" stroke="#3a4a6e"/>
-  <text x="76" y="412" xml:space="preserve" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#7ec8e3">import</text>
-  <text x="124" y="412" xml:space="preserve" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#ffffff">torch</text>
-  <text x="76" y="430" xml:space="preserve" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#ffffff">x = torch.tensor(</text>
-  <text x="228" y="430" xml:space="preserve" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#b5cea8">3.0</text>
-  <text x="252" y="430" xml:space="preserve" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#ffffff">, requires_grad=</text>
-  <text x="396" y="430" xml:space="preserve" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#7ec8e3">True</text>
-  <text x="432" y="430" xml:space="preserve" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#ffffff">)</text>
-  <text x="76" y="448" xml:space="preserve" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#ffffff">y = x ** </text>
-  <text x="148" y="448" xml:space="preserve" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#b5cea8">2</text>
-  <text x="160" y="448" xml:space="preserve" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#ffffff"> + </text>
-  <text x="184" y="448" xml:space="preserve" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#b5cea8">3</text>
-  <text x="196" y="448" xml:space="preserve" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#ffffff"> * x</text>
-  <text x="230" y="448" xml:space="preserve" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#9aa4b8">  # y = x² + 3x</text>
-  <text x="76" y="466" xml:space="preserve" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#ffffff">y.backward()                        </text>
-  <text x="330" y="466" xml:space="preserve" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#9aa4b8"># 역전파 실행</text>
-  <text x="76" y="484" xml:space="preserve" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#ffffff">print(x.grad)                       </text>
-  <text x="330" y="484" xml:space="preserve" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#9aa4b8"># dy/dx = 2x+3 = 9.0</text>
+  <text x="76" y="412" xml:space="preserve" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13"><tspan fill="#7ec8e3">import</tspan><tspan fill="#ffffff"> torch</tspan></text>
+  <text x="76" y="430" xml:space="preserve" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13"><tspan fill="#ffffff">x = torch.tensor(</tspan><tspan fill="#b5cea8">3.0</tspan><tspan fill="#ffffff">, requires_grad=</tspan><tspan fill="#7ec8e3">True</tspan><tspan fill="#ffffff"> )</tspan></text>
+  <text x="76" y="448" xml:space="preserve" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13"><tspan fill="#ffffff">y = x ** </tspan><tspan fill="#b5cea8">2</tspan><tspan fill="#ffffff"> + </tspan><tspan fill="#b5cea8">3</tspan><tspan fill="#ffffff"> * x</tspan><tspan fill="#9aa4b8">  # y = x² + 3x</tspan></text>
+  <text x="76" y="466" xml:space="preserve" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13"><tspan fill="#ffffff">y.backward()                        </tspan><tspan fill="#9aa4b8"># 역전파 실행</tspan></text>
+  <text x="76" y="484" xml:space="preserve" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13"><tspan fill="#ffffff">print(x.grad)                       </tspan><tspan fill="#9aa4b8"># dy/dx = 2x+3 = 9.0</tspan></text>
 
   <!-- Footer -->
 </svg>

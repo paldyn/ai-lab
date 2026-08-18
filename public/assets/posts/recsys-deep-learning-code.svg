@@ -13,39 +13,21 @@
 
   <!-- 코드 라인 1 -->
   <text x="76" y="92" xml:space="preserve"
-        font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#7ec8e3" font-weight="600">import</text>
-  <text x="130" y="92" xml:space="preserve"
-        font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#ffffff"> torch</text>
+        font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" font-weight="600"><tspan fill="#7ec8e3">import</tspan><tspan fill="#ffffff"> torch</tspan></text>
 
   <!-- 코드 라인 2 -->
   <text x="76" y="112" xml:space="preserve"
-        font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#7ec8e3" font-weight="600">import</text>
-  <text x="130" y="112" xml:space="preserve"
-        font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#ffffff"> torch.nn </text>
-  <text x="244" y="112" xml:space="preserve"
-        font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#7ec8e3" font-weight="600">as</text>
-  <text x="265" y="112" xml:space="preserve"
-        font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#ffffff"> nn</text>
+        font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" font-weight="600"><tspan fill="#7ec8e3">import</tspan><tspan fill="#ffffff"> torch.nn </tspan><tspan fill="#7ec8e3">     as</tspan><tspan fill="#ffffff"> nn</tspan></text>
 
   <!-- 코드 라인 3: blank -->
 
   <!-- 코드 라인 4 -->
   <text x="76" y="148" xml:space="preserve"
-        font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#7ec8e3" font-weight="600">class</text>
-  <text x="120" y="148" xml:space="preserve"
-        font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#ffffff"> NCF(nn.Module):</text>
+        font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" font-weight="600"><tspan fill="#7ec8e3">class</tspan><tspan fill="#ffffff"> NCF(nn.Module):</tspan></text>
 
   <!-- 코드 라인 5 -->
   <text x="76" y="168" xml:space="preserve"
-        font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#ffffff">    </text>
-  <text x="104" y="168" xml:space="preserve"
-        font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#7ec8e3" font-weight="600">def</text>
-  <text x="128" y="168" xml:space="preserve"
-        font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#ffffff"> __init__(self, n_users, n_items, emb_dim=</text>
-  <text x="446" y="168" xml:space="preserve"
-        font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#b5cea8">64</text>
-  <text x="456" y="168" xml:space="preserve"
-        font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#ffffff">):</text>
+        font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13"><tspan fill="#ffffff">    </tspan><tspan fill="#7ec8e3">def</tspan><tspan fill="#ffffff"> __init__(self, n_users, n_items, emb_dim=</tspan><tspan fill="#b5cea8">64</tspan><tspan fill="#ffffff">):</tspan></text>
 
   <!-- 코드 라인 6 -->
   <text x="76" y="188" xml:space="preserve"
@@ -65,27 +47,11 @@
 
   <!-- 코드 라인 10 -->
   <text x="76" y="268" xml:space="preserve"
-        font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#ffffff">            nn.Linear(emb_dim * </text>
-  <text x="261" y="268" xml:space="preserve"
-        font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#b5cea8">2</text>
-  <text x="270" y="268" xml:space="preserve"
-        font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#ffffff">, </text>
-  <text x="285" y="268" xml:space="preserve"
-        font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#b5cea8">128</text>
-  <text x="313" y="268" xml:space="preserve"
-        font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#ffffff">),</text>
+        font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13"><tspan fill="#ffffff">            nn.Linear(emb_dim * </tspan><tspan fill="#b5cea8">2</tspan><tspan fill="#ffffff">, </tspan><tspan fill="#b5cea8">128</tspan><tspan fill="#ffffff"> ),</tspan></text>
 
   <!-- 코드 라인 11 -->
   <text x="76" y="288" xml:space="preserve"
-        font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#ffffff">            nn.ReLU(), nn.Linear(</text>
-  <text x="288" y="288" xml:space="preserve"
-        font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#b5cea8">128</text>
-  <text x="316" y="288" xml:space="preserve"
-        font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#ffffff">, </text>
-  <text x="331" y="288" xml:space="preserve"
-        font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#b5cea8">1</text>
-  <text x="340" y="288" xml:space="preserve"
-        font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#ffffff">), nn.Sigmoid())</text>
+        font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13"><tspan fill="#ffffff">            nn.ReLU(), nn.Linear(</tspan><tspan fill="#b5cea8">128</tspan><tspan fill="#ffffff"> , </tspan><tspan fill="#b5cea8">1</tspan><tspan fill="#ffffff">), nn.Sigmoid())</tspan></text>
 
   <!-- 코드 라인 12 - forward -->
   <text x="76" y="308" xml:space="preserve"

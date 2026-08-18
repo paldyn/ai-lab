@@ -22,38 +22,26 @@
   <!-- model -->
   <rect x="76" y="108" width="328" height="34" rx="4" fill="#0d1a2b" stroke="#2a3a5e" stroke-width="1"/>
   <text x="92" y="130" font-family="'JetBrains Mono','Menlo','Consolas',monospace"
-        font-size="12" fill="#9aa4b8" xml:space="preserve">model</text>
-  <text x="168" y="130" font-family="'JetBrains Mono','Menlo','Consolas',monospace"
-        font-size="12" fill="#ce9178" xml:space="preserve">"claude-sonnet-4-6"</text>
+        font-size="12" xml:space="preserve"><tspan fill="#9aa4b8">model</tspan><tspan fill="#ce9178">      &quot;claude-sonnet-4-6&quot;</tspan></text>
 
   <!-- messages -->
   <rect x="76" y="150" width="328" height="56" rx="4" fill="#0d1a2b" stroke="#2a3a5e" stroke-width="1"/>
   <text x="92" y="170" font-family="'JetBrains Mono','Menlo','Consolas',monospace"
-        font-size="12" fill="#9aa4b8" xml:space="preserve">messages</text>
-  <text x="176" y="170" font-family="'JetBrains Mono','Menlo','Consolas',monospace"
-        font-size="12" fill="#ffffff" xml:space="preserve">[{"role": </text>
+        font-size="12" xml:space="preserve"><tspan fill="#9aa4b8">messages</tspan><tspan fill="#ffffff">    [{&quot;role&quot;: </tspan></text>
   <text x="296" y="170" font-family="'JetBrains Mono','Menlo','Consolas',monospace"
-        font-size="12" fill="#ce9178" xml:space="preserve">"user"</text>
-  <text x="340" y="170" font-family="'JetBrains Mono','Menlo','Consolas',monospace"
-        font-size="12" fill="#ffffff" xml:space="preserve">,</text>
+        font-size="12" xml:space="preserve"><tspan fill="#ce9178">&quot;user&quot;</tspan><tspan fill="#ffffff">,</tspan></text>
   <text x="192" y="188" font-family="'JetBrains Mono','Menlo','Consolas',monospace"
-        font-size="12" fill="#ffffff" xml:space="preserve">  "content": </text>
-  <text x="310" y="188" font-family="'JetBrains Mono','Menlo','Consolas',monospace"
-        font-size="12" fill="#ce9178" xml:space="preserve">"..."}]</text>
+        font-size="12" xml:space="preserve"><tspan fill="#ffffff">  &quot;content&quot;: </tspan><tspan fill="#ce9178">   &quot;...&quot;}]</tspan></text>
 
   <!-- system -->
   <rect x="76" y="214" width="328" height="34" rx="4" fill="#0d1a2b" stroke="#2a3a5e" stroke-width="1"/>
   <text x="92" y="236" font-family="'JetBrains Mono','Menlo','Consolas',monospace"
-        font-size="12" fill="#9aa4b8" xml:space="preserve">system</text>
-  <text x="164" y="236" font-family="'JetBrains Mono','Menlo','Consolas',monospace"
-        font-size="12" fill="#ce9178" xml:space="preserve">"You are a helpful assistant."</text>
+        font-size="12" xml:space="preserve"><tspan fill="#9aa4b8">system</tspan><tspan fill="#ce9178">    &quot;You are a helpful assistant.&quot;</tspan></text>
 
   <!-- max_tokens -->
   <rect x="76" y="256" width="328" height="34" rx="4" fill="#0d1a2b" stroke="#2a3a5e" stroke-width="1"/>
   <text x="92" y="278" font-family="'JetBrains Mono','Menlo','Consolas',monospace"
-        font-size="12" fill="#9aa4b8" xml:space="preserve">max_tokens</text>
-  <text x="200" y="278" font-family="'JetBrains Mono','Menlo','Consolas',monospace"
-        font-size="12" fill="#b5cea8" xml:space="preserve">1024</text>
+        font-size="12" xml:space="preserve"><tspan fill="#9aa4b8">max_tokens</tspan><tspan fill="#b5cea8">     1024</tspan></text>
 
   <!-- Arrow -->
   <line x1="420" y1="190" x2="458" y2="190" stroke="#7ec8e3" stroke-width="2" marker-end="url(#arr)"/>
@@ -68,42 +56,26 @@
   <!-- id -->
   <rect x="476" y="108" width="328" height="34" rx="4" fill="#0d1a2b" stroke="#1a3a1a" stroke-width="1"/>
   <text x="492" y="130" font-family="'JetBrains Mono','Menlo','Consolas',monospace"
-        font-size="12" fill="#9aa4b8" xml:space="preserve">id</text>
-  <text x="524" y="130" font-family="'JetBrains Mono','Menlo','Consolas',monospace"
-        font-size="12" fill="#ce9178" xml:space="preserve">"msg_01XFDUDYJgAACzvnptvVoYEL"</text>
+        font-size="12" xml:space="preserve"><tspan fill="#9aa4b8">id</tspan><tspan fill="#ce9178">  &quot;msg_01XFDUDYJgAACzvnptvVoYEL&quot;</tspan></text>
 
   <!-- content -->
   <rect x="476" y="150" width="328" height="56" rx="4" fill="#0d1a2b" stroke="#1a3a1a" stroke-width="1"/>
   <text x="492" y="170" font-family="'JetBrains Mono','Menlo','Consolas',monospace"
-        font-size="12" fill="#9aa4b8" xml:space="preserve">content</text>
-  <text x="568" y="170" font-family="'JetBrains Mono','Menlo','Consolas',monospace"
-        font-size="12" fill="#ffffff" xml:space="preserve">[TextBlock(type=</text>
+        font-size="12" xml:space="preserve"><tspan fill="#9aa4b8">content</tspan><tspan fill="#ffffff">    [TextBlock(type=</tspan></text>
   <text x="724" y="170" font-family="'JetBrains Mono','Menlo','Consolas',monospace"
-        font-size="12" fill="#ce9178" xml:space="preserve">"text"</text>
-  <text x="764" y="170" font-family="'JetBrains Mono','Menlo','Consolas',monospace"
-        font-size="12" fill="#ffffff" xml:space="preserve">,</text>
+        font-size="12" xml:space="preserve"><tspan fill="#ce9178">&quot;text&quot;</tspan><tspan fill="#ffffff">,</tspan></text>
   <text x="568" y="188" font-family="'JetBrains Mono','Menlo','Consolas',monospace"
-        font-size="12" fill="#ffffff" xml:space="preserve">  text=</text>
-  <text x="624" y="188" font-family="'JetBrains Mono','Menlo','Consolas',monospace"
-        font-size="12" fill="#ce9178" xml:space="preserve">"답변 내용...")]</text>
+        font-size="12" xml:space="preserve"><tspan fill="#ffffff">  text=</tspan><tspan fill="#ce9178">&quot;답변 내용...&quot;)]</tspan></text>
 
   <!-- stop_reason -->
   <rect x="476" y="214" width="328" height="34" rx="4" fill="#0d1a2b" stroke="#1a3a1a" stroke-width="1"/>
   <text x="492" y="236" font-family="'JetBrains Mono','Menlo','Consolas',monospace"
-        font-size="12" fill="#9aa4b8" xml:space="preserve">stop_reason</text>
-  <text x="604" y="236" font-family="'JetBrains Mono','Menlo','Consolas',monospace"
-        font-size="12" fill="#ce9178" xml:space="preserve">"end_turn"</text>
+        font-size="12" xml:space="preserve"><tspan fill="#9aa4b8">stop_reason</tspan><tspan fill="#ce9178">     &quot;end_turn&quot;</tspan></text>
 
   <!-- usage -->
   <rect x="476" y="256" width="328" height="34" rx="4" fill="#0d1a2b" stroke="#1a3a1a" stroke-width="1"/>
   <text x="492" y="278" font-family="'JetBrains Mono','Menlo','Consolas',monospace"
-        font-size="12" fill="#9aa4b8" xml:space="preserve">usage</text>
-  <text x="548" y="278" font-family="'JetBrains Mono','Menlo','Consolas',monospace"
-        font-size="12" fill="#ffffff" xml:space="preserve">Usage(input_tokens=</text>
-  <text x="724" y="278" font-family="'JetBrains Mono','Menlo','Consolas',monospace"
-        font-size="12" fill="#b5cea8" xml:space="preserve">42</text>
-  <text x="736" y="278" font-family="'JetBrains Mono','Menlo','Consolas',monospace"
-        font-size="12" fill="#ffffff" xml:space="preserve">, ...)</text>
+        font-size="12" xml:space="preserve"><tspan fill="#9aa4b8">usage</tspan><tspan fill="#ffffff">   Usage(input_tokens=</tspan><tspan fill="#b5cea8">42</tspan><tspan fill="#ffffff">, ...)</tspan></text>
 
   <!-- Models row -->
   <text x="60" y="340" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
@@ -130,19 +102,9 @@
   <!-- Code block -->
   <rect x="60" y="432" width="760" height="72" rx="6" fill="#000000" stroke="#3a4a6e" stroke-width="1"/>
   <text x="76" y="452" font-family="'JetBrains Mono','Menlo','Consolas',monospace"
-        font-size="13" fill="#7ec8e3" font-weight="600" xml:space="preserve">import</text>
-  <text x="124" y="452" font-family="'JetBrains Mono','Menlo','Consolas',monospace"
-        font-size="13" fill="#ffffff" xml:space="preserve"> anthropic</text>
+        font-size="13" font-weight="600" xml:space="preserve"><tspan fill="#7ec8e3">import</tspan><tspan fill="#ffffff"> anthropic</tspan></text>
   <text x="76" y="472" font-family="'JetBrains Mono','Menlo','Consolas',monospace"
         font-size="13" fill="#ffffff" xml:space="preserve">client = anthropic.Anthropic()</text>
   <text x="76" y="492" font-family="'JetBrains Mono','Menlo','Consolas',monospace"
-        font-size="13" fill="#ffffff" xml:space="preserve">msg = client.messages.create(model=</text>
-  <text x="384" y="492" font-family="'JetBrains Mono','Menlo','Consolas',monospace"
-        font-size="13" fill="#ce9178" xml:space="preserve">"claude-sonnet-4-6"</text>
-  <text x="524" y="492" font-family="'JetBrains Mono','Menlo','Consolas',monospace"
-        font-size="13" fill="#ffffff" xml:space="preserve">, max_tokens=</text>
-  <text x="656" y="492" font-family="'JetBrains Mono','Menlo','Consolas',monospace"
-        font-size="13" fill="#b5cea8" xml:space="preserve">1024</text>
-  <text x="682" y="492" font-family="'JetBrains Mono','Menlo','Consolas',monospace"
-        font-size="13" fill="#ffffff" xml:space="preserve">, messages=[...])</text>
+        font-size="13" xml:space="preserve"><tspan fill="#ffffff">msg = client.messages.create(model=</tspan><tspan fill="#ce9178">&quot;claude-sonnet-4-6&quot;</tspan><tspan fill="#ffffff">, max_tokens=</tspan><tspan fill="#b5cea8">1024</tspan><tspan fill="#ffffff">, messages=[...])</tspan></text>
 </svg>

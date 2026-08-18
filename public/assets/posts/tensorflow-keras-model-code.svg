@@ -8,49 +8,21 @@
         font-size="16" font-weight="600" fill="#55c555">모델 정의</text>
   <rect x="60" y="92" width="380" height="202" rx="6" fill="#000000" stroke="#3a4a6e" stroke-width="1"/>
   <text x="76" y="114" font-family="'JetBrains Mono','Menlo','Consolas',monospace"
-        font-size="13" fill="#7ec8e3" font-weight="600" xml:space="preserve">import</text>
-  <text x="138" y="114" font-family="'JetBrains Mono','Menlo','Consolas',monospace"
-        font-size="13" fill="#ffffff" xml:space="preserve"> keras</text>
+        font-size="13" font-weight="600" xml:space="preserve"><tspan fill="#7ec8e3">import</tspan><tspan fill="#ffffff"> keras</tspan></text>
   <text x="76" y="132" font-family="'JetBrains Mono','Menlo','Consolas',monospace"
-        font-size="13" fill="#7ec8e3" font-weight="600" xml:space="preserve">from</text>
-  <text x="114" y="132" font-family="'JetBrains Mono','Menlo','Consolas',monospace"
-        font-size="13" fill="#ffffff" xml:space="preserve"> keras </text>
-  <text x="172" y="132" font-family="'JetBrains Mono','Menlo','Consolas',monospace"
-        font-size="13" fill="#7ec8e3" font-weight="600" xml:space="preserve">import</text>
-  <text x="230" y="132" font-family="'JetBrains Mono','Menlo','Consolas',monospace"
-        font-size="13" fill="#ffffff" xml:space="preserve"> layers</text>
+        font-size="13" font-weight="600" xml:space="preserve"><tspan fill="#7ec8e3">from</tspan><tspan fill="#ffffff"> keras </tspan><tspan fill="#7ec8e3">import</tspan><tspan fill="#ffffff"> layers</tspan></text>
   <text x="76" y="150" font-family="'JetBrains Mono','Menlo','Consolas',monospace"
         font-size="13" fill="#ffffff" xml:space="preserve"> </text>
   <text x="76" y="168" font-family="'JetBrains Mono','Menlo','Consolas',monospace"
-        font-size="13" fill="#ffffff" xml:space="preserve">inputs = keras.Input(shape=(</text>
-  <text x="286" y="168" font-family="'JetBrains Mono','Menlo','Consolas',monospace"
-        font-size="13" fill="#b5cea8" xml:space="preserve">784</text>
-  <text x="312" y="168" font-family="'JetBrains Mono','Menlo','Consolas',monospace"
-        font-size="13" fill="#ffffff" xml:space="preserve">,))</text>
+        font-size="13" xml:space="preserve"><tspan fill="#ffffff">inp = keras.Input(shape=(</tspan><tspan fill="#b5cea8">784</tspan><tspan fill="#ffffff">,))</tspan></text>
   <text x="76" y="186" font-family="'JetBrains Mono','Menlo','Consolas',monospace"
-        font-size="13" fill="#ffffff" xml:space="preserve">x = layers.Dense(</text>
-  <text x="230" y="186" font-family="'JetBrains Mono','Menlo','Consolas',monospace"
-        font-size="13" fill="#b5cea8" xml:space="preserve">256</text>
-  <text x="256" y="186" font-family="'JetBrains Mono','Menlo','Consolas',monospace"
-        font-size="13" fill="#ffffff" xml:space="preserve">, activation=</text>
-  <text x="362" y="186" font-family="'JetBrains Mono','Menlo','Consolas',monospace"
-        font-size="13" fill="#ce9178" xml:space="preserve">"relu"</text>
-  <text x="406" y="186" font-family="'JetBrains Mono','Menlo','Consolas',monospace"
-        font-size="13" fill="#ffffff" xml:space="preserve">)(inputs)</text>
+        font-size="13" xml:space="preserve"><tspan fill="#ffffff">x = layers.Dense(</tspan><tspan fill="#b5cea8">256</tspan><tspan fill="#ffffff">, activation=</tspan><tspan fill="#ce9178">&quot;relu&quot;</tspan><tspan fill="#ffffff">)(inp)</tspan></text>
   <text x="76" y="204" font-family="'JetBrains Mono','Menlo','Consolas',monospace"
-        font-size="13" fill="#ffffff" xml:space="preserve">x = layers.Dropout(</text>
-  <text x="240" y="204" font-family="'JetBrains Mono','Menlo','Consolas',monospace"
-        font-size="13" fill="#b5cea8" xml:space="preserve">0.3</text>
-  <text x="266" y="204" font-family="'JetBrains Mono','Menlo','Consolas',monospace"
-        font-size="13" fill="#ffffff" xml:space="preserve">)(x)</text>
+        font-size="13" xml:space="preserve"><tspan fill="#ffffff">x = layers.Dropout(</tspan><tspan fill="#b5cea8">0.3</tspan><tspan fill="#ffffff">)(x)</tspan></text>
   <text x="76" y="222" font-family="'JetBrains Mono','Menlo','Consolas',monospace"
-        font-size="13" fill="#ffffff" xml:space="preserve">outputs = layers.Dense(</text>
-  <text x="260" y="222" font-family="'JetBrains Mono','Menlo','Consolas',monospace"
-        font-size="13" fill="#b5cea8" xml:space="preserve">10</text>
-  <text x="276" y="222" font-family="'JetBrains Mono','Menlo','Consolas',monospace"
-        font-size="13" fill="#ffffff" xml:space="preserve">)(x)</text>
+        font-size="13" xml:space="preserve"><tspan fill="#ffffff">outputs = layers.Dense(</tspan><tspan fill="#b5cea8">10</tspan><tspan fill="#ffffff">)(x)</tspan></text>
   <text x="76" y="240" font-family="'JetBrains Mono','Menlo','Consolas',monospace"
-        font-size="13" fill="#ffffff" xml:space="preserve">model = keras.Model(inputs, outputs)</text>
+        font-size="13" fill="#ffffff" xml:space="preserve">model = keras.Model(inp, outputs)</text>
   <text x="76" y="258" font-family="'JetBrains Mono','Menlo','Consolas',monospace"
         font-size="13" fill="#ffffff" xml:space="preserve">model.summary()</text>
   <text x="76" y="276" font-family="'JetBrains Mono','Menlo','Consolas',monospace"
@@ -63,21 +35,11 @@
   <text x="496" y="114" font-family="'JetBrains Mono','Menlo','Consolas',monospace"
         font-size="13" fill="#ffffff" xml:space="preserve">model.compile(</text>
   <text x="496" y="132" font-family="'JetBrains Mono','Menlo','Consolas',monospace"
-        font-size="13" fill="#ffffff" xml:space="preserve">    optimizer=</text>
-  <text x="612" y="132" font-family="'JetBrains Mono','Menlo','Consolas',monospace"
-        font-size="13" fill="#ce9178" xml:space="preserve">"adam"</text>
-  <text x="656" y="132" font-family="'JetBrains Mono','Menlo','Consolas',monospace"
-        font-size="13" fill="#ffffff" xml:space="preserve">,</text>
+        font-size="13" xml:space="preserve"><tspan fill="#ffffff">    optimizer=</tspan><tspan fill="#ce9178">&quot;adam&quot;</tspan><tspan fill="#ffffff">,</tspan></text>
   <text x="496" y="150" font-family="'JetBrains Mono','Menlo','Consolas',monospace"
-        font-size="13" fill="#ffffff" xml:space="preserve">    loss=</text>
-  <text x="564" y="150" font-family="'JetBrains Mono','Menlo','Consolas',monospace"
-        font-size="13" fill="#ce9178" xml:space="preserve">"sparse_categorical..."</text>
+        font-size="13" xml:space="preserve"><tspan fill="#ffffff">    loss=</tspan><tspan fill="#ce9178">&quot;sparse_categorical...&quot;</tspan></text>
   <text x="496" y="168" font-family="'JetBrains Mono','Menlo','Consolas',monospace"
-        font-size="13" fill="#ffffff" xml:space="preserve">    metrics=[</text>
-  <text x="588" y="168" font-family="'JetBrains Mono','Menlo','Consolas',monospace"
-        font-size="13" fill="#ce9178" xml:space="preserve">"accuracy"</text>
-  <text x="670" y="168" font-family="'JetBrains Mono','Menlo','Consolas',monospace"
-        font-size="13" fill="#ffffff" xml:space="preserve">])</text>
+        font-size="13" xml:space="preserve"><tspan fill="#ffffff">    metrics=[</tspan><tspan fill="#ce9178">&quot;accuracy&quot;</tspan><tspan fill="#ffffff">])</tspan></text>
   <text x="496" y="186" font-family="'JetBrains Mono','Menlo','Consolas',monospace"
         font-size="13" fill="#ffffff" xml:space="preserve"> </text>
   <text x="496" y="204" font-family="'JetBrains Mono','Menlo','Consolas',monospace"
@@ -85,19 +47,9 @@
   <text x="496" y="222" font-family="'JetBrains Mono','Menlo','Consolas',monospace"
         font-size="13" fill="#ffffff" xml:space="preserve">    X_train, y_train,</text>
   <text x="496" y="240" font-family="'JetBrains Mono','Menlo','Consolas',monospace"
-        font-size="13" fill="#ffffff" xml:space="preserve">    epochs=</text>
-  <text x="584" y="240" font-family="'JetBrains Mono','Menlo','Consolas',monospace"
-        font-size="13" fill="#b5cea8" xml:space="preserve">20</text>
-  <text x="600" y="240" font-family="'JetBrains Mono','Menlo','Consolas',monospace"
-        font-size="13" fill="#ffffff" xml:space="preserve">, batch_size=</text>
-  <text x="708" y="240" font-family="'JetBrains Mono','Menlo','Consolas',monospace"
-        font-size="13" fill="#b5cea8" xml:space="preserve">64</text>
+        font-size="13" xml:space="preserve"><tspan fill="#ffffff">    epochs=</tspan><tspan fill="#b5cea8">20</tspan><tspan fill="#ffffff">, batch_size=</tspan><tspan fill="#b5cea8">64</tspan></text>
   <text x="496" y="258" font-family="'JetBrains Mono','Menlo','Consolas',monospace"
-        font-size="13" fill="#ffffff" xml:space="preserve">    validation_split=</text>
-  <text x="644" y="258" font-family="'JetBrains Mono','Menlo','Consolas',monospace"
-        font-size="13" fill="#b5cea8" xml:space="preserve">0.2</text>
-  <text x="670" y="258" font-family="'JetBrains Mono','Menlo','Consolas',monospace"
-        font-size="13" fill="#ffffff" xml:space="preserve">,</text>
+        font-size="13" xml:space="preserve"><tspan fill="#ffffff">    validation_split=</tspan><tspan fill="#b5cea8">0.2</tspan><tspan fill="#ffffff">,</tspan></text>
   <text x="496" y="276" font-family="'JetBrains Mono','Menlo','Consolas',monospace"
         font-size="13" fill="#ffffff" xml:space="preserve">    callbacks=[es, ckpt])</text>
 

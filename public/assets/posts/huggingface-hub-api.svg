@@ -95,31 +95,11 @@
   <!-- Code block -->
   <rect x="60" y="416" width="760" height="68" rx="6" fill="#000000" stroke="#3a4a6e" stroke-width="1"/>
   <text x="76" y="438" font-family="'JetBrains Mono','Menlo','Consolas',monospace"
-        font-size="13" fill="#7ec8e3" font-weight="600" xml:space="preserve">from</text>
-  <text x="116" y="438" font-family="'JetBrains Mono','Menlo','Consolas',monospace"
-        font-size="13" fill="#ffffff" xml:space="preserve"> huggingface_hub </text>
-  <text x="264" y="438" font-family="'JetBrains Mono','Menlo','Consolas',monospace"
-        font-size="13" fill="#7ec8e3" font-weight="600" xml:space="preserve">import</text>
-  <text x="314" y="438" font-family="'JetBrains Mono','Menlo','Consolas',monospace"
-        font-size="13" fill="#ffffff" xml:space="preserve"> hf_hub_download, snapshot_download</text>
+        font-size="13" font-weight="600" xml:space="preserve"><tspan fill="#7ec8e3">from</tspan><tspan fill="#ffffff"> huggingface_hub </tspan><tspan fill="#7ec8e3">import</tspan><tspan fill="#ffffff"> hf_hub_download, snapshot_download</tspan></text>
   <text x="76" y="458" font-family="'JetBrains Mono','Menlo','Consolas',monospace"
         font-size="13" fill="#ffffff" xml:space="preserve">path = hf_hub_download(repo_id=</text>
   <text x="360" y="458" font-family="'JetBrains Mono','Menlo','Consolas',monospace"
-        font-size="13" fill="#ce9178" xml:space="preserve">"klue/bert-base"</text>
-  <text x="478" y="458" font-family="'JetBrains Mono','Menlo','Consolas',monospace"
-        font-size="13" fill="#ffffff" xml:space="preserve">, filename=</text>
-  <text x="578" y="458" font-family="'JetBrains Mono','Menlo','Consolas',monospace"
-        font-size="13" fill="#ce9178" xml:space="preserve">"config.json"</text>
-  <text x="670" y="458" font-family="'JetBrains Mono','Menlo','Consolas',monospace"
-        font-size="13" fill="#ffffff" xml:space="preserve">)</text>
+        font-size="13" xml:space="preserve"><tspan fill="#ce9178">&quot;klue/bert-base&quot;</tspan><tspan fill="#ffffff">, filename=</tspan><tspan fill="#ce9178">&quot;config.json&quot;</tspan><tspan fill="#ffffff">)</tspan></text>
   <text x="76" y="476" font-family="'JetBrains Mono','Menlo','Consolas',monospace"
-        font-size="13" fill="#ffffff" xml:space="preserve">local_dir = snapshot_download(</text>
-  <text x="332" y="476" font-family="'JetBrains Mono','Menlo','Consolas',monospace"
-        font-size="13" fill="#ce9178" xml:space="preserve">"klue/bert-base"</text>
-  <text x="450" y="476" font-family="'JetBrains Mono','Menlo','Consolas',monospace"
-        font-size="13" fill="#ffffff" xml:space="preserve">, ignore_patterns=[</text>
-  <text x="612" y="476" font-family="'JetBrains Mono','Menlo','Consolas',monospace"
-        font-size="13" fill="#ce9178" xml:space="preserve">"*.msgpack"</text>
-  <text x="700" y="476" font-family="'JetBrains Mono','Menlo','Consolas',monospace"
-        font-size="13" fill="#ffffff" xml:space="preserve">])</text>
+        font-size="13" xml:space="preserve"><tspan fill="#ffffff">local_dir = snapshot_download(</tspan><tspan fill="#ce9178">&quot;klue/bert-base&quot;</tspan><tspan fill="#ffffff">, ignore_patterns=[</tspan><tspan fill="#ce9178">&quot;*.msgpack&quot;</tspan><tspan fill="#ffffff">])</tspan></text>
 </svg>

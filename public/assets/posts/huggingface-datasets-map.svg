@@ -109,33 +109,9 @@
   <text x="76" y="388" font-family="'JetBrains Mono','Menlo','Consolas',monospace"
         font-size="13" fill="#9aa4b8" xml:space="preserve"># batched=True — 배치 단위로 처리하여 토크나이저 속도 10x 향상</text>
   <text x="76" y="408" font-family="'JetBrains Mono','Menlo','Consolas',monospace"
-        font-size="13" fill="#ffffff" xml:space="preserve">tokenized = ds.map(preprocess, batched=</text>
-  <text x="418" y="408" font-family="'JetBrains Mono','Menlo','Consolas',monospace"
-        font-size="13" fill="#b5cea8" xml:space="preserve">True</text>
-  <text x="444" y="408" font-family="'JetBrains Mono','Menlo','Consolas',monospace"
-        font-size="13" fill="#ffffff" xml:space="preserve">, num_proc=</text>
-  <text x="556" y="408" font-family="'JetBrains Mono','Menlo','Consolas',monospace"
-        font-size="13" fill="#b5cea8" xml:space="preserve">4</text>
-  <text x="564" y="408" font-family="'JetBrains Mono','Menlo','Consolas',monospace"
-        font-size="13" fill="#ffffff" xml:space="preserve">)</text>
+        font-size="13" xml:space="preserve"><tspan fill="#ffffff">tokenized = ds.map(preprocess, batched=</tspan><tspan fill="#b5cea8">True</tspan><tspan fill="#ffffff">, num_proc=</tspan><tspan fill="#b5cea8">4</tspan><tspan fill="#ffffff">)</tspan></text>
   <text x="76" y="428" font-family="'JetBrains Mono','Menlo','Consolas',monospace"
-        font-size="13" fill="#ffffff" xml:space="preserve">tokenized = tokenized.remove_columns([</text>
-  <text x="400" y="428" font-family="'JetBrains Mono','Menlo','Consolas',monospace"
-        font-size="13" fill="#ce9178" xml:space="preserve">"text"</text>
-  <text x="440" y="428" font-family="'JetBrains Mono','Menlo','Consolas',monospace"
-        font-size="13" fill="#ffffff" xml:space="preserve">])</text>
+        font-size="13" xml:space="preserve"><tspan fill="#ffffff">tokenized = tokenized.remove_columns([</tspan><tspan fill="#ce9178">&quot;text&quot;</tspan><tspan fill="#ffffff">])</tspan></text>
   <text x="76" y="448" font-family="'JetBrains Mono','Menlo','Consolas',monospace"
-        font-size="13" fill="#ffffff" xml:space="preserve">tokenized.set_format(</text>
-  <text x="232" y="448" font-family="'JetBrains Mono','Menlo','Consolas',monospace"
-        font-size="13" fill="#ce9178" xml:space="preserve">"torch"</text>
-  <text x="284" y="448" font-family="'JetBrains Mono','Menlo','Consolas',monospace"
-        font-size="13" fill="#ffffff" xml:space="preserve">, columns=[</text>
-  <text x="374" y="448" font-family="'JetBrains Mono','Menlo','Consolas',monospace"
-        font-size="13" fill="#ce9178" xml:space="preserve">"input_ids"</text>
-  <text x="452" y="448" font-family="'JetBrains Mono','Menlo','Consolas',monospace"
-        font-size="13" fill="#ffffff" xml:space="preserve">, </text>
-  <text x="466" y="448" font-family="'JetBrains Mono','Menlo','Consolas',monospace"
-        font-size="13" fill="#ce9178" xml:space="preserve">"label"</text>
-  <text x="514" y="448" font-family="'JetBrains Mono','Menlo','Consolas',monospace"
-        font-size="13" fill="#ffffff" xml:space="preserve">])</text>
+        font-size="13" xml:space="preserve"><tspan fill="#ffffff">tokenized.set_format(</tspan><tspan fill="#ce9178">&quot;torch&quot;</tspan><tspan fill="#ffffff">, columns=[</tspan><tspan fill="#ce9178">&quot;input_ids&quot;</tspan><tspan fill="#ffffff">, </tspan><tspan fill="#ce9178">&quot;label&quot;</tspan><tspan fill="#ffffff">])</tspan></text>
 </svg>

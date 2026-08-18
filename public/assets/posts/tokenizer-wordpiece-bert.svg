@@ -6,26 +6,19 @@
 
   <rect x="60" y="90" width="760" height="280" rx="6" fill="#000000" stroke="#3a4a6e"/>
 
-  <text x="76" y="114" xml:space="preserve" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#7ec8e3">from</text>
-  <text x="110" y="114" xml:space="preserve" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#ffffff"> transformers </text>
-  <text x="210" y="114" xml:space="preserve" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#7ec8e3">import</text>
-  <text x="252" y="114" xml:space="preserve" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#ffffff"> BertTokenizer</text>
+  <text x="76" y="114" xml:space="preserve" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13"><tspan fill="#7ec8e3">from</tspan><tspan fill="#ffffff"> transformers </tspan><tspan fill="#7ec8e3">import</tspan><tspan fill="#ffffff"> BertTokenizer</tspan></text>
 
   <text x="76" y="142" xml:space="preserve" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#ffffff">tokenizer = BertTokenizer.from_pretrained(</text>
   <text x="76" y="160" xml:space="preserve" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13"><tspan fill="#ce9178">    "bert-base-uncased"</tspan><tspan fill="#ffffff">)</tspan></text>
 
-  <text x="76" y="188" xml:space="preserve" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#ffffff">text = </text>
-  <text x="118" y="188" xml:space="preserve" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#ce9178">"Unaffable characters tokenize differently."</text>
+  <text x="76" y="188" xml:space="preserve" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13"><tspan fill="#ffffff">text = </tspan><tspan fill="#ce9178">&quot;Unaffable characters tokenize differently.&quot;</tspan></text>
   <text x="76" y="206" xml:space="preserve" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#ffffff">tokens = tokenizer.tokenize(text)</text>
-  <text x="76" y="224" xml:space="preserve" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#7ec8e3">print</text>
-  <text x="118" y="224" xml:space="preserve" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#ffffff">(tokens)</text>
+  <text x="76" y="224" xml:space="preserve" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13"><tspan fill="#7ec8e3">print</tspan><tspan fill="#ffffff">(tokens)</tspan></text>
   <text x="76" y="242" xml:space="preserve" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#9aa4b8"># ['un', '##aff', '##able', 'characters',</text>
   <text x="76" y="260" xml:space="preserve" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#9aa4b8">#  'token', '##ize', 'differently', '.']</text>
 
   <text x="76" y="292" xml:space="preserve" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#9aa4b8"># [CLS], [SEP] 포함 전체 인코딩</text>
-  <text x="76" y="310" xml:space="preserve" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#ffffff">enc = tokenizer(text, return_tensors=</text>
-  <text x="354" y="310" xml:space="preserve" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#ce9178">"pt"</text>
-  <text x="382" y="310" xml:space="preserve" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#ffffff">)</text>
+  <text x="76" y="310" xml:space="preserve" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13"><tspan fill="#ffffff">enc = tokenizer(text, return_tensors=</tspan><tspan fill="#ce9178">&quot;pt&quot;</tspan><tspan fill="#ffffff">)</tspan></text>
   <text x="76" y="328" xml:space="preserve" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#9aa4b8"># enc: {'input_ids': tensor([[101, 4895, ...]]),</text>
   <text x="76" y="346" xml:space="preserve" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#9aa4b8">#       'attention_mask': tensor([[1, 1, ...]])}</text>
   <text x="76" y="364" xml:space="preserve" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#9aa4b8"># 101=[CLS], 102=[SEP], 100=[UNK]</text>
