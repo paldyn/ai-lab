@@ -30,7 +30,7 @@
   </line>
 
   <circle cx="370" cy="360" r="6" fill="#55c555"/>
-  <text x="356" y="386" font-size="13" fill="#55c555" text-anchor="end">x = 1 고정</text>
+  <text x="356" y="344" font-size="13" fill="#55c555" text-anchor="end">x = 1 고정</text>
 
   <circle cx="490" cy="240" r="6" fill="#e05555">
     <animate attributeName="cx" dur="4s" repeatCount="indefinite"

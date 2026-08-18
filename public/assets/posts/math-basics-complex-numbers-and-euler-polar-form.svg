@@ -31,7 +31,7 @@
   <circle cx="360" cy="230" r="5" fill="#e8e8e8"/>
   <text x="372" y="220" font-size="14" font-weight="600" fill="#e8e8e8">1 + i</text>
 
-  <text x="368" y="290" font-size="13" fill="#55c555">세로 1</text>
+  <text x="396" y="290" font-size="13" fill="#55c555">세로 1</text>
   <text x="310" y="214" font-size="13" fill="#7777cc" text-anchor="middle">가로 1</text>
 
   <rect x="540" y="130" width="280" height="196" rx="6" fill="#101010" stroke="#333" stroke-width="1"/>

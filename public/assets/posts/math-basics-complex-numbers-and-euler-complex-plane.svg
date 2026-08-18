@@ -23,7 +23,7 @@
   <line x1="454" y1="296" x2="454" y2="304" stroke="#444" stroke-width="1.5"/>
   <text x="316" y="320" font-size="12" fill="#888" text-anchor="middle">1</text>
   <text x="362" y="320" font-size="12" fill="#888" text-anchor="middle">2</text>
-  <text x="408" y="320" font-size="12" fill="#888" text-anchor="middle">3</text>
+  <text x="402" y="320" font-size="12" fill="#888" text-anchor="end">3</text>
   <text x="454" y="320" font-size="12" fill="#888" text-anchor="middle">4</text>
 
   <line x1="266" y1="254" x2="274" y2="254" stroke="#444" stroke-width="1.5"/>
