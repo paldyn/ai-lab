@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="462" viewBox="0 0 880 462" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <rect x="0" y="0" width="880" height="462" rx="12" fill="#0a0a0a"/>
+
+  <text x="60" y="46" font-size="22" font-weight="700" fill="#e8e8e8">글자 두 개가 틀리면 층마다 다르게 드러난다</text>
+  <text x="60" y="72" font-size="13" fill="#888">같은 오류인데 키워드 검색은 통째로 못 찾고, 벡터 검색은 찾긴 하고, 답변은 틀린 채로 나간다.</text>
+
+  <text x="60" y="106" font-size="12" fill="#888">원문</text>
+  <rect x="60" y="114" width="760" height="44" rx="8" fill="#101418" stroke="#55c555" stroke-width="1.5"/>
+  <text x="84" y="141" font-size="14" fill="#e8e8e8">환불은 수령일로부터 7일 이내에 접수합니다.</text>
+
+  <text x="60" y="188" font-size="12" fill="#888">OCR 결과</text>
+  <rect x="60" y="196" width="760" height="44" rx="8" fill="#101418" stroke="#e05555" stroke-width="1.5"/>
+  <text x="84" y="223" font-size="14" fill="#e8e8e8">환불은 <tspan fill="#e05555" font-weight="600">수렴</tspan>일로부터 <tspan fill="#e05555" font-weight="600">7밀</tspan> 이내에 접수합니다.</text>
+
+  <rect x="60" y="270" width="213" height="110" rx="8" fill="#101418" stroke="#e05555" stroke-width="1.5"/>
+  <text x="166" y="296" font-size="13" font-weight="600" fill="#e05555" text-anchor="middle">키워드 검색</text>
+  <text x="166" y="318" font-size="11.5" fill="#888" text-anchor="middle">「7일」로는 못 찾는다</text>
+  <text x="166" y="340" font-size="11.5" fill="#888" text-anchor="middle">글자가 다르면 0점이다</text>
+  <text x="166" y="362" font-size="11.5" fill="#888" text-anchor="middle">가장 크게 무너지는 층</text>
+
+  <rect x="333" y="270" width="213" height="110" rx="8" fill="#101418" stroke="#7777cc" stroke-width="1.5"/>
+  <text x="439" y="296" font-size="13" font-weight="600" fill="#7777cc" text-anchor="middle">벡터 검색</text>
+  <text x="439" y="318" font-size="11.5" fill="#888" text-anchor="middle">흐려질 뿐 찾긴 한다</text>
+  <text x="439" y="340" font-size="11.5" fill="#888" text-anchor="middle">오타를 어느 정도 견딘다</text>
+  <text x="439" y="362" font-size="11.5" fill="#888" text-anchor="middle">그래서 늦게 알아챈다</text>
+
+  <rect x="606" y="270" width="214" height="110" rx="8" fill="#101418" stroke="#e05555" stroke-width="1.5"/>
+  <text x="713" y="296" font-size="13" font-weight="600" fill="#e05555" text-anchor="middle">답변 생성</text>
+  <text x="713" y="318" font-size="11.5" fill="#888" text-anchor="middle">「7밀」을 그대로 옮긴다</text>
+  <text x="713" y="340" font-size="11.5" fill="#888" text-anchor="middle">근거를 지어내지 않으므로</text>
+  <text x="713" y="362" font-size="11.5" fill="#888" text-anchor="middle">틀린 채로 나간다</text>
+
+  <text x="60" y="414" font-size="13" fill="#888">벡터 검색이 견뎌 주는 것이 오히려 함정이다 — 검색 지표는 멀쩡한데 답만 틀리므로 원인을 엉뚱한 데서 찾게 된다.</text>
+  <text x="60" y="438" font-size="13" fill="#888">그래서 OCR 문서는 검색 지표가 아니라 인식 품질을 따로 재야 한다.</text>
+</svg>

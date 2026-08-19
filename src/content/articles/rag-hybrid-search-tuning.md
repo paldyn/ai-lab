@@ -169,3 +169,5 @@ BM25 점수는 상한이 없고 문서 길이와 코퍼스 통계에 따라 범�
 읽어주셔서 감사합니다. 😊
 
 **지난 글:** [시스템 프롬프트는 어디까지 적어야 하는가](/articles/context-system-prompt-design)
+
+**다음 글:** [문서를 벡터 하나로 뭉개지 않는 검색](/articles/rag-late-interaction)

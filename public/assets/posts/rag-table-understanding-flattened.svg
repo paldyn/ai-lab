@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="438" viewBox="0 0 880 438" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <defs>
+    <marker id="arrTB" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#e05555"/>
+    </marker>
+  </defs>
+
+  <rect x="0" y="0" width="880" height="438" rx="12" fill="#0a0a0a"/>
+
+  <text x="60" y="46" font-size="22" font-weight="700" fill="#e8e8e8">표를 줄글로 펴면 대응이 사라진다</text>
+  <text x="60" y="72" font-size="13" fill="#888">표에서 뜻을 만드는 것은 값이 아니라 「어느 행과 어느 열이 만나는 자리인가」다.</text>
+
+  <text x="60" y="106" font-size="12" fill="#888">원래 표</text>
+
+  <rect x="60" y="120" width="130" height="40" fill="#16181c" stroke="#3a4a6e" stroke-width="1"/>
+  <rect x="190" y="120" width="100" height="40" fill="#16181c" stroke="#3a4a6e" stroke-width="1"/>
+  <rect x="290" y="120" width="100" height="40" fill="#16181c" stroke="#3a4a6e" stroke-width="1"/>
+  <text x="76" y="145" font-size="13" font-weight="600" fill="#e8e8e8">구분</text>
+  <text x="240" y="145" font-size="13" font-weight="600" fill="#e8e8e8" text-anchor="middle">2024년</text>
+  <text x="340" y="145" font-size="13" font-weight="600" fill="#55c555" text-anchor="middle">2025년</text>
+
+  <rect x="60" y="160" width="130" height="40" fill="#101418" stroke="#3a4a6e" stroke-width="1"/>
+  <rect x="190" y="160" width="100" height="40" fill="#101418" stroke="#3a4a6e" stroke-width="1"/>
+  <rect x="290" y="160" width="100" height="40" fill="#101418" stroke="#3a4a6e" stroke-width="1"/>
+  <text x="76" y="185" font-size="13" fill="#e8e8e8">매출</text>
+  <text x="240" y="185" font-size="13" fill="#888" text-anchor="middle">120</text>
+  <text x="340" y="185" font-size="13" fill="#888" text-anchor="middle">138</text>
+
+  <rect x="60" y="200" width="130" height="40" fill="#101418" stroke="#3a4a6e" stroke-width="1"/>
+  <rect x="190" y="200" width="100" height="40" fill="#101418" stroke="#3a4a6e" stroke-width="1"/>
+  <rect x="290" y="200" width="100" height="40" fill="#0f2a0f" stroke="#55c555" stroke-width="1.5"/>
+  <text x="76" y="225" font-size="13" font-weight="600" fill="#55c555">영업이익</text>
+  <text x="240" y="225" font-size="13" fill="#888" text-anchor="middle">8</text>
+  <text x="340" y="225" font-size="13" font-weight="700" fill="#55c555" text-anchor="middle">11</text>
+
+  <text x="470" y="106" font-size="12" fill="#888">청크에 담긴 글자</text>
+  <rect x="470" y="120" width="350" height="76" rx="8" fill="#101418" stroke="#e05555" stroke-width="1.5"/>
+  <text x="490" y="150" font-size="13" fill="#e8e8e8">구분 2024년 2025년 매출 120 138</text>
+  <text x="490" y="174" font-size="13" fill="#e8e8e8">영업이익 8 <tspan fill="#e05555" font-weight="700">11</tspan></text>
+
+  <line x1="392" y1="158" x2="466" y2="158" stroke="#e05555" stroke-width="2" marker-end="url(#arrTB)"/>
+  <text x="429" y="140" font-size="11.5" fill="#888" text-anchor="middle">펴면</text>
+
+  <text x="440" y="288" font-size="14" font-weight="600" fill="#e8e8e8" text-anchor="middle">질의 — 「2025년 영업이익은 얼마인가」</text>
+
+  <rect x="60" y="308" width="330" height="64" rx="8" fill="#101418" stroke="#55c555" stroke-width="1.5"/>
+  <text x="84" y="333" font-size="13" font-weight="600" fill="#55c555">표 구조가 남아 있으면 11이다</text>
+  <text x="84" y="353" font-size="11.5" fill="#888">행 「영업이익」과 열 「2025년」이 만나는 칸</text>
+
+  <rect x="470" y="308" width="350" height="64" rx="8" fill="#101418" stroke="#e05555" stroke-width="1.5"/>
+  <text x="494" y="333" font-size="13" font-weight="600" fill="#e05555">펴 놓으면 8인지 11인지 알 수 없다</text>
+  <text x="494" y="353" font-size="11.5" fill="#888">숫자 넷이 나란히 있을 뿐 짝이 안 적혀 있다</text>
+
+  <text x="60" y="412" font-size="13" fill="#888">모델은 대개 순서로 추측해 맞히지만, 열이 다섯 개를 넘거나 셀이 비면 그 추측이 조용히 틀린다.</text>
+</svg>

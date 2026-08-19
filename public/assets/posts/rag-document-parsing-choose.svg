@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="480" viewBox="0 0 880 480" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <defs>
+    <marker id="arrDP" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#7ec8e3"/>
+    </marker>
+  </defs>
+
+  <rect x="0" y="0" width="880" height="480" rx="12" fill="#0a0a0a"/>
+
+  <text x="60" y="46" font-size="22" font-weight="700" fill="#e8e8e8">파서는 문서가 고른다</text>
+  <text x="60" y="72" font-size="13" fill="#888">위에서부터 물어 처음 「아니오」가 나온 곳에서 멈춘다 — 필요 없는 단계를 태우면 정확도가 오히려 떨어진다.</text>
+
+  <rect x="60" y="108" width="280" height="56" rx="8" fill="#101418" stroke="#7ec8e3" stroke-width="1.5"/>
+  <text x="200" y="141" font-size="14" font-weight="600" fill="#e8e8e8" text-anchor="middle">본문 글자가 파일 안에 들어 있는가</text>
+
+  <rect x="60" y="196" width="280" height="56" rx="8" fill="#101418" stroke="#7ec8e3" stroke-width="1.5"/>
+  <text x="200" y="229" font-size="14" font-weight="600" fill="#e8e8e8" text-anchor="middle">단·표·그림이 섞인 편집인가</text>
+
+  <rect x="60" y="284" width="280" height="56" rx="8" fill="#101418" stroke="#7ec8e3" stroke-width="1.5"/>
+  <text x="200" y="317" font-size="14" font-weight="600" fill="#e8e8e8" text-anchor="middle">표가 답의 근거가 되는가</text>
+
+  <rect x="456" y="108" width="364" height="56" rx="8" fill="#101418" stroke="#e05555" stroke-width="1.5"/>
+  <text x="480" y="130" font-size="13" font-weight="600" fill="#e05555">OCR을 먼저 태운다</text>
+  <text x="480" y="150" font-size="11.5" fill="#888">스캔본·사진 PDF. 글자 자체를 만들어 내야 한다</text>
+
+  <rect x="456" y="196" width="364" height="56" rx="8" fill="#101418" stroke="#55c555" stroke-width="1.5"/>
+  <text x="480" y="218" font-size="13" font-weight="600" fill="#55c555">텍스트 추출기로 충분하다</text>
+  <text x="480" y="238" font-size="11.5" fill="#888">가장 싸고 빠르다. 여기서 멈출 수 있으면 멈춘다</text>
+
+  <rect x="456" y="284" width="364" height="56" rx="8" fill="#101418" stroke="#7ec8e3" stroke-width="1.5"/>
+  <text x="480" y="306" font-size="13" font-weight="600" fill="#7ec8e3">레이아웃을 알아보는 파서</text>
+  <text x="480" y="326" font-size="11.5" fill="#888">블록을 잡고 읽기 순서를 정한 뒤 헤딩을 살린다</text>
+
+  <rect x="456" y="372" width="364" height="56" rx="8" fill="#101418" stroke="#7777cc" stroke-width="1.5"/>
+  <text x="480" y="394" font-size="13" font-weight="600" fill="#7777cc">표를 본문과 따로 떼어 다룬다</text>
+  <text x="480" y="414" font-size="11.5" fill="#888">같은 청크에 섞으면 행과 열의 대응이 깨진다</text>
+
+  <line x1="340" y1="136" x2="452" y2="136" stroke="#7ec8e3" stroke-width="2" marker-end="url(#arrDP)"/>
+  <line x1="340" y1="224" x2="452" y2="224" stroke="#7ec8e3" stroke-width="2" marker-end="url(#arrDP)"/>
+  <line x1="340" y1="312" x2="452" y2="312" stroke="#7ec8e3" stroke-width="2" marker-end="url(#arrDP)"/>
+  <text x="396" y="122" font-size="11.5" fill="#888" text-anchor="middle">아니오</text>
+  <text x="396" y="210" font-size="11.5" fill="#888" text-anchor="middle">아니오</text>
+  <text x="396" y="298" font-size="11.5" fill="#888" text-anchor="middle">아니오</text>
+
+  <line x1="200" y1="164" x2="200" y2="192" stroke="#7ec8e3" stroke-width="2" marker-end="url(#arrDP)"/>
+  <line x1="200" y1="252" x2="200" y2="280" stroke="#7ec8e3" stroke-width="2" marker-end="url(#arrDP)"/>
+  <path d="M 200 340 L 200 400 L 452 400" fill="none" stroke="#7ec8e3" stroke-width="2" marker-end="url(#arrDP)"/>
+  <text x="216" y="182" font-size="11.5" fill="#888">예</text>
+  <text x="216" y="270" font-size="11.5" fill="#888">예</text>
+  <text x="216" y="362" font-size="11.5" fill="#888">예</text>
+
+  <text x="60" y="458" font-size="13" fill="#888">한 저장소 안에서도 문서마다 답이 다르다. 파일 하나씩 물어서 정하는 것이지 전체에 하나를 고르는 것이 아니다.</text>
+</svg>

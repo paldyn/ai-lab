@@ -1,0 +1,75 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="424" viewBox="0 0 880 424" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <defs>
+    <marker id="arrTW" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#7777cc"/>
+    </marker>
+  </defs>
+
+  <rect x="0" y="0" width="880" height="424" rx="12" fill="#0a0a0a"/>
+
+  <text x="60" y="46" font-size="22" font-weight="700" fill="#e8e8e8">질의와 문서를 언제 만나게 하는가</text>
+  <text x="60" y="72" font-size="13" fill="#888">셋의 차이는 정확도 이전에 「비교를 어디서 하느냐」다 — 색인할 때 미리 할 수 있는 일이 달라진다.</text>
+
+  <rect x="60" y="98" width="213" height="60" rx="8" fill="#101418" stroke="#55c555" stroke-width="1.5"/>
+  <text x="166" y="122" font-size="14" font-weight="600" fill="#e8e8e8" text-anchor="middle">바이인코더</text>
+  <text x="166" y="142" font-size="11" fill="#888" text-anchor="middle">문서 하나 = 벡터 하나</text>
+
+  <rect x="333" y="98" width="213" height="60" rx="8" fill="#101418" stroke="#7ec8e3" stroke-width="1.5"/>
+  <text x="439" y="122" font-size="14" font-weight="600" fill="#e8e8e8" text-anchor="middle">레이트 인터랙션</text>
+  <text x="439" y="142" font-size="11" fill="#888" text-anchor="middle">토큰마다 벡터 하나</text>
+
+  <rect x="606" y="98" width="214" height="60" rx="8" fill="#101418" stroke="#7777cc" stroke-width="1.5"/>
+  <text x="713" y="122" font-size="14" font-weight="600" fill="#e8e8e8" text-anchor="middle">크로스 인코더</text>
+  <text x="713" y="142" font-size="11" fill="#888" text-anchor="middle">둘을 붙여 한 번에</text>
+
+  <text x="110" y="195" font-size="12" fill="#888" text-anchor="middle">질의</text>
+  <text x="223" y="195" font-size="12" fill="#888" text-anchor="middle">문서</text>
+  <text x="383" y="195" font-size="12" fill="#888" text-anchor="middle">질의</text>
+  <text x="496" y="195" font-size="12" fill="#888" text-anchor="middle">문서</text>
+
+  <circle cx="110" cy="248" r="9" fill="#55c555"/>
+  <circle cx="223" cy="248" r="9" fill="#55c555"/>
+  <line x1="119" y1="248" x2="214" y2="248" stroke="#55c555" stroke-width="2"/>
+
+  <circle cx="383" cy="222" r="8" fill="#7ec8e3"/>
+  <circle cx="383" cy="248" r="8" fill="#7ec8e3"/>
+  <circle cx="383" cy="274" r="8" fill="#7ec8e3"/>
+  <circle cx="496" cy="212" r="8" fill="#7ec8e3"/>
+  <circle cx="496" cy="236" r="8" fill="#7ec8e3"/>
+  <circle cx="496" cy="260" r="8" fill="#7ec8e3"/>
+  <circle cx="496" cy="284" r="8" fill="#7ec8e3"/>
+
+  <line x1="391" y1="222" x2="488" y2="212" stroke="#3a4a6e" stroke-width="1"/>
+  <line x1="391" y1="222" x2="488" y2="236" stroke="#3a4a6e" stroke-width="1"/>
+  <line x1="391" y1="222" x2="488" y2="260" stroke="#3a4a6e" stroke-width="1"/>
+  <line x1="391" y1="222" x2="488" y2="284" stroke="#3a4a6e" stroke-width="1"/>
+  <line x1="391" y1="248" x2="488" y2="212" stroke="#3a4a6e" stroke-width="1"/>
+  <line x1="391" y1="248" x2="488" y2="236" stroke="#3a4a6e" stroke-width="1"/>
+  <line x1="391" y1="248" x2="488" y2="260" stroke="#3a4a6e" stroke-width="1"/>
+  <line x1="391" y1="248" x2="488" y2="284" stroke="#3a4a6e" stroke-width="1"/>
+  <line x1="391" y1="274" x2="488" y2="212" stroke="#3a4a6e" stroke-width="1"/>
+  <line x1="391" y1="274" x2="488" y2="236" stroke="#3a4a6e" stroke-width="1"/>
+  <line x1="391" y1="274" x2="488" y2="260" stroke="#3a4a6e" stroke-width="1"/>
+  <line x1="391" y1="274" x2="488" y2="284" stroke="#3a4a6e" stroke-width="1"/>
+
+  <line x1="391" y1="222" x2="488" y2="236" stroke="#55c555" stroke-width="2.5"/>
+  <line x1="391" y1="248" x2="488" y2="212" stroke="#55c555" stroke-width="2.5"/>
+  <line x1="391" y1="274" x2="488" y2="284" stroke="#55c555" stroke-width="2.5"/>
+
+  <rect x="626" y="200" width="174" height="40" rx="6" fill="#101418" stroke="#7777cc" stroke-width="1.5"/>
+  <text x="713" y="225" font-size="13" fill="#e8e8e8" text-anchor="middle">질의 + 문서 한 덩어리</text>
+  <line x1="713" y1="240" x2="713" y2="262" stroke="#7777cc" stroke-width="2" marker-end="url(#arrTW)"/>
+  <rect x="626" y="262" width="174" height="40" rx="6" fill="#101418" stroke="#7777cc" stroke-width="1.5"/>
+  <text x="713" y="287" font-size="13" fill="#e8e8e8" text-anchor="middle">모델을 한 번 통과</text>
+
+  <text x="166" y="348" font-size="13" font-weight="600" fill="#55c555" text-anchor="middle">내적 1회</text>
+  <text x="166" y="370" font-size="12" fill="#888" text-anchor="middle">문서 벡터는 미리 만들어 둠</text>
+
+  <text x="439" y="348" font-size="13" font-weight="600" fill="#7ec8e3" text-anchor="middle">3 × 4 = 12회</text>
+  <text x="439" y="370" font-size="12" fill="#888" text-anchor="middle">토큰 벡터도 미리 만들어 둠</text>
+
+  <text x="713" y="348" font-size="13" font-weight="600" fill="#7777cc" text-anchor="middle">모델 통과 1회</text>
+  <text x="713" y="370" font-size="12" fill="#888" text-anchor="middle">미리 해 둘 수 있는 것이 없음</text>
+
+  <text x="60" y="404" font-size="13" fill="#888">가운데가 레이트 인터랙션이다 — 만남을 늦추되, 모델을 다시 돌리지 않는 선까지만 늦춘다.</text>
+</svg>
