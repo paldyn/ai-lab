@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" viewBox="0 0 880 470" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+<rect x="0" y="0" width="880" height="470" rx="12" fill="#0a0a0a"/>
+<text x="440" y="44" text-anchor="middle" font-size="22" font-weight="700" fill="#e8e8e8">서른 명이면 생일이 겹칠 확률이 70%를 넘는다</text>
+<text x="440" y="70" text-anchor="middle" font-size="13" fill="#888">반대인 "모두 다르다"를 세면 사람이 늘 때마다 쓸 수 있는 날이 하루씩 줄어든다</text>
+<line x1="130" y1="380" x2="780" y2="380" stroke="#888" stroke-width="1.5"/>
+<line x1="130" y1="388" x2="130" y2="110" stroke="#888" stroke-width="1.5"/>
+<text x="792" y="385" font-size="13" fill="#888">사람 수</text>
+<text x="140" y="104" font-size="13" fill="#888">겹칠 확률</text>
+<line x1="130.0" y1="380" x2="130.0" y2="385" stroke="#444" stroke-width="1.5"/>
+<text x="130.0" y="404" text-anchor="middle" font-size="13" fill="#888">0</text>
+<line x1="233.3" y1="380" x2="233.3" y2="385" stroke="#444" stroke-width="1.5"/>
+<text x="233.3" y="404" text-anchor="middle" font-size="13" fill="#888">10</text>
+<line x1="336.7" y1="380" x2="336.7" y2="385" stroke="#444" stroke-width="1.5"/>
+<text x="336.7" y="404" text-anchor="middle" font-size="13" fill="#888">20</text>
+<line x1="440.0" y1="380" x2="440.0" y2="385" stroke="#444" stroke-width="1.5"/>
+<text x="440.0" y="404" text-anchor="middle" font-size="13" fill="#888">30</text>
+<line x1="543.3" y1="380" x2="543.3" y2="385" stroke="#444" stroke-width="1.5"/>
+<text x="543.3" y="404" text-anchor="middle" font-size="13" fill="#888">40</text>
+<line x1="646.7" y1="380" x2="646.7" y2="385" stroke="#444" stroke-width="1.5"/>
+<text x="646.7" y="404" text-anchor="middle" font-size="13" fill="#888">50</text>
+<line x1="750.0" y1="380" x2="750.0" y2="385" stroke="#444" stroke-width="1.5"/>
+<text x="750.0" y="404" text-anchor="middle" font-size="13" fill="#888">60</text>
+<line x1="125" y1="255.0" x2="130" y2="255.0" stroke="#444" stroke-width="1.5"/>
+<text x="118" y="260.0" text-anchor="end" font-size="13" fill="#888">50%</text>
+<line x1="125" y1="130.0" x2="130" y2="130.0" stroke="#444" stroke-width="1.5"/>
+<text x="118" y="135.0" text-anchor="end" font-size="13" fill="#888">100%</text>
+<polyline points="130.0,380.0 140.3,380.0 150.7,379.3 161.0,377.9 171.3,375.9 181.7,373.2 192.0,369.9 202.3,365.9 212.7,361.4 223.0,356.3 233.3,350.8 243.7,344.7 254.0,338.2 264.3,331.4 274.7,324.2 285.0,316.8 295.3,309.1 305.7,301.2 316.0,293.3 326.3,285.2 336.7,277.1 347.0,269.1 357.3,261.1 367.7,253.2 378.0,245.4 388.3,237.8 398.7,230.4 409.0,223.3 419.3,216.4 429.7,209.8 440.0,203.4 450.3,197.4 460.7,191.7 471.0,186.3 481.3,181.2 491.7,176.4 502.0,172.0 512.3,167.8 522.7,164.0 533.0,160.4 543.3,157.2 553.7,154.2 564.0,151.5 574.3,149.0 584.7,146.8 595.0,144.8 605.3,142.9 615.7,141.3 626.0,139.9 636.3,138.6 646.7,137.4 657.0,136.4 667.3,135.5 677.7,134.7 688.0,134.0 698.3,133.4 708.7,132.9 719.0,132.5 729.3,132.1 739.7,131.8 750.0,131.5" fill="none" stroke="#7ec8e3" stroke-width="2.5"/>
+<line x1="440.0" y1="380" x2="440.0" y2="203.4" stroke="#e05555" stroke-width="2" stroke-dasharray="5,3"/>
+<circle cx="440.0" cy="203.4" r="5" fill="#e8e8e8"/>
+<text x="456.0" y="189.4" font-size="16" font-weight="600" fill="#e05555">30명 — 70.6%</text>
+<circle cx="367.7" cy="253.2" r="5" fill="#e8e8e8"/>
+<line x1="367.7" y1="263.2" x2="367.7" y2="380" stroke="#555" stroke-width="2" stroke-dasharray="5,3"/>
+<text x="367.7" y="426" text-anchor="middle" font-size="13" fill="#888">23명에서 이미 절반을 넘는다</text>
+<text x="440" y="452" text-anchor="middle" font-size="13" fill="#888">365일이나 되는데도 사람이 서른이면 거의 확실해진다</text>
+</svg>

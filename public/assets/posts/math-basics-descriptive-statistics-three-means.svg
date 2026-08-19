@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" viewBox="0 0 880 430" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+<rect x="0" y="0" width="880" height="430" rx="12" fill="#0a0a0a"/>
+<text x="440" y="44" text-anchor="middle" font-size="22" font-weight="700" fill="#e8e8e8">같은 두 수인데 평균이 셋이다</text>
+<text x="440" y="70" text-anchor="middle" font-size="13" fill="#888">갈 때 60km/h, 올 때 40km/h로 같은 거리를 왕복하면 평균 속도는 48km/h다</text>
+<rect x="150" y="106" width="580" height="96" rx="8" fill="none" stroke="#555" stroke-width="1.5"/>
+<line x1="440" y1="106" x2="440" y2="202" stroke="#555" stroke-width="1.5"/>
+<text x="295" y="136" text-anchor="middle" font-size="16" font-weight="600" fill="#7ec8e3">갈 때 60 km/h</text>
+<text x="295" y="160" text-anchor="middle" font-size="13" fill="#888">120 km 를 2시간</text>
+<text x="295" y="184" text-anchor="middle" font-size="13" fill="#888">에 간다</text>
+<text x="585" y="136" text-anchor="middle" font-size="16" font-weight="600" fill="#7777cc">올 때 40 km/h</text>
+<text x="585" y="160" text-anchor="middle" font-size="13" fill="#888">같은 120 km 를 3시간</text>
+<text x="585" y="184" text-anchor="middle" font-size="13" fill="#888">에 온다</text>
+<text x="440" y="230" text-anchor="middle" font-size="13" fill="#888">모두 240 km 를 5시간 — 240 ÷ 5 = 48</text>
+<line x1="160" y1="320" x2="740" y2="320" stroke="#888" stroke-width="1.5"/>
+<line x1="180.0" y1="315" x2="180.0" y2="325" stroke="#444" stroke-width="1.5"/>
+<text x="180.0" y="344" text-anchor="middle" font-size="13" fill="#888">46</text>
+<line x1="288.0" y1="315" x2="288.0" y2="325" stroke="#444" stroke-width="1.5"/>
+<text x="288.0" y="344" text-anchor="middle" font-size="13" fill="#888">47</text>
+<line x1="396.0" y1="315" x2="396.0" y2="325" stroke="#444" stroke-width="1.5"/>
+<text x="396.0" y="344" text-anchor="middle" font-size="13" fill="#888">48</text>
+<line x1="504.0" y1="315" x2="504.0" y2="325" stroke="#444" stroke-width="1.5"/>
+<text x="504.0" y="344" text-anchor="middle" font-size="13" fill="#888">49</text>
+<line x1="612.0" y1="315" x2="612.0" y2="325" stroke="#444" stroke-width="1.5"/>
+<text x="612.0" y="344" text-anchor="middle" font-size="13" fill="#888">50</text>
+<line x1="720.0" y1="315" x2="720.0" y2="325" stroke="#444" stroke-width="1.5"/>
+<text x="720.0" y="344" text-anchor="middle" font-size="13" fill="#888">51</text>
+<circle cx="396.0" cy="320" r="5" fill="#7ec8e3"/>
+<line x1="396.0" y1="312" x2="396.0" y2="280" stroke="#7ec8e3" stroke-width="2"/>
+<text x="396.0" y="270" text-anchor="middle" font-size="16" font-weight="600" fill="#7ec8e3">조화평균 48</text>
+<circle cx="502.9" cy="320" r="5" fill="#55c555"/>
+<line x1="502.9" y1="328" x2="502.9" y2="362" stroke="#55c555" stroke-width="2"/>
+<text x="502.9" y="382" text-anchor="middle" font-size="16" font-weight="600" fill="#55c555">기하평균 48.99</text>
+<circle cx="612.0" cy="320" r="5" fill="#7777cc"/>
+<line x1="612.0" y1="312" x2="612.0" y2="280" stroke="#7777cc" stroke-width="2"/>
+<text x="612.0" y="270" text-anchor="middle" font-size="16" font-weight="600" fill="#7777cc">산술평균 50</text>
+<text x="440" y="410" text-anchor="middle" font-size="13" fill="#888">왼쪽부터 조화 ≤ 기하 ≤ 산술 — 두 수가 같을 때만 셋이 겹친다</text>
+</svg>

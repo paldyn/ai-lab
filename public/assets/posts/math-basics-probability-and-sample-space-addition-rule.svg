@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" viewBox="0 0 880 400" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+<rect x="0" y="0" width="880" height="400" rx="12" fill="#0a0a0a"/>
+<text x="440" y="44" text-anchor="middle" font-size="22" font-weight="700" fill="#e8e8e8">더하면 겹친 자리를 두 번 센다</text>
+<text x="440" y="70" text-anchor="middle" font-size="13" fill="#888">그래서 한 번 빼 준다 — 겹치지 않으면 뺄 것이 없다</text>
+<rect x="60" y="130" width="300" height="180" rx="8" fill="none" stroke="#555" stroke-width="1.5"/>
+<text x="70" y="150" font-size="13" fill="#888">S</text>
+<circle cx="170" cy="220" r="64" fill="#7ec8e3" fill-opacity="0.22" stroke="#7ec8e3" stroke-width="2"/>
+<circle cx="250" cy="220" r="64" fill="#7777cc" fill-opacity="0.22" stroke="#7777cc" stroke-width="2"/>
+<defs><clipPath id="ov60"><circle cx="170" cy="220" r="64"/></clipPath></defs>
+<circle cx="250" cy="220" r="64" fill="#e05555" fill-opacity="0.55" clip-path="url(#ov60)"/>
+<text x="210" y="226" text-anchor="middle" font-size="13" fill="#e8e8e8">두 번</text>
+<text x="120" y="160" font-size="16" font-weight="600" fill="#7ec8e3">A</text>
+<text x="288" y="160" font-size="16" font-weight="600" fill="#7777cc">B</text>
+<text x="210" y="346" text-anchor="middle" font-size="16" font-weight="600" fill="#e8e8e8">겹치는 두 사건</text>
+<text x="210" y="372" text-anchor="middle" font-size="13" fill="#888">P(A ∪ B) = P(A) + P(B) − P(A ∩ B)</text>
+<rect x="520" y="130" width="300" height="180" rx="8" fill="none" stroke="#555" stroke-width="1.5"/>
+<text x="530" y="150" font-size="13" fill="#888">S</text>
+<circle cx="600" cy="220" r="64" fill="#7ec8e3" fill-opacity="0.22" stroke="#7ec8e3" stroke-width="2"/>
+<circle cx="740" cy="220" r="64" fill="#7777cc" fill-opacity="0.22" stroke="#7777cc" stroke-width="2"/>
+<text x="550" y="160" font-size="16" font-weight="600" fill="#7ec8e3">A</text>
+<text x="778" y="160" font-size="16" font-weight="600" fill="#7777cc">B</text>
+<text x="670" y="346" text-anchor="middle" font-size="16" font-weight="600" fill="#e8e8e8">배반인 두 사건</text>
+<text x="670" y="372" text-anchor="middle" font-size="13" fill="#888">P(A ∪ B) = P(A) + P(B)</text>
+</svg>

@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" viewBox="0 0 880 470" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+<rect x="0" y="0" width="880" height="470" rx="12" fill="#0a0a0a"/>
+<text x="440" y="44" text-anchor="middle" font-size="22" font-weight="700" fill="#e8e8e8">확률분포표를 막대로 세우면 기댓값은 균형점이다</text>
+<text x="440" y="70" text-anchor="middle" font-size="13" fill="#888">동전 세 번, X = 앞면이 나온 횟수</text>
+<line x1="120" y1="360" x2="720" y2="360" stroke="#888" stroke-width="1.5"/>
+<rect x="162" y="295.0" width="76" height="65.0" fill="#7ec8e3" fill-opacity="0.45" stroke="#7ec8e3" stroke-width="2"/>
+<text x="200" y="281.0" text-anchor="middle" font-size="16" font-weight="600" fill="#7ec8e3">1/8</text>
+<text x="200" y="384" text-anchor="middle" font-size="16" font-weight="600" fill="#e8e8e8">0</text>
+<rect x="302" y="165.0" width="76" height="195.0" fill="#7ec8e3" fill-opacity="0.45" stroke="#7ec8e3" stroke-width="2"/>
+<text x="340" y="151.0" text-anchor="middle" font-size="16" font-weight="600" fill="#7ec8e3">3/8</text>
+<text x="340" y="384" text-anchor="middle" font-size="16" font-weight="600" fill="#e8e8e8">1</text>
+<rect x="442" y="165.0" width="76" height="195.0" fill="#7ec8e3" fill-opacity="0.45" stroke="#7ec8e3" stroke-width="2"/>
+<text x="480" y="151.0" text-anchor="middle" font-size="16" font-weight="600" fill="#7ec8e3">3/8</text>
+<text x="480" y="384" text-anchor="middle" font-size="16" font-weight="600" fill="#e8e8e8">2</text>
+<rect x="582" y="295.0" width="76" height="65.0" fill="#7ec8e3" fill-opacity="0.45" stroke="#7ec8e3" stroke-width="2"/>
+<text x="620" y="281.0" text-anchor="middle" font-size="16" font-weight="600" fill="#7ec8e3">1/8</text>
+<text x="620" y="384" text-anchor="middle" font-size="16" font-weight="600" fill="#e8e8e8">3</text>
+<text x="420" y="412" text-anchor="middle" font-size="13" fill="#888">X — 앞면이 나온 횟수</text>
+<path d="M 410 358 L 394 326 L 426 326 z" fill="#55c555"/>
+<line x1="410" y1="130" x2="410" y2="322" stroke="#55c555" stroke-width="2" stroke-dasharray="5,3"/>
+<text x="410" y="120" text-anchor="middle" font-size="16" font-weight="600" fill="#55c555">기댓값 1.5</text>
+<text x="440" y="442" text-anchor="middle" font-size="13" fill="#888">막대들이 좌우로 균형을 이루는 자리이며, 실제로 나올 수 있는 값은 아니다</text>
+</svg>

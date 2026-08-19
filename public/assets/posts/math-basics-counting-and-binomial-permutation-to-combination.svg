@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" viewBox="0 0 880 420" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+<rect x="0" y="0" width="880" height="420" rx="12" fill="#0a0a0a"/>
+<text x="440" y="44" text-anchor="middle" font-size="22" font-weight="700" fill="#e8e8e8">순서를 세지 않으면 같은 것끼리 묶인다</text>
+<text x="440" y="70" text-anchor="middle" font-size="13" fill="#888">A · B · C 세 사람 중 둘을 뽑을 때 — 순열 6가지가 조합 3가지로 묶인다</text>
+<defs><marker id="ar" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto"><path d="M 0 0 L 13 7 L 0 14 z" fill="#888"/></marker></defs>
+<text x="230" y="118" text-anchor="middle" font-size="16" font-weight="600" fill="#e8e8e8">순열 P(3, 2) = 6</text>
+<text x="230" y="140" text-anchor="middle" font-size="13" fill="#888">뽑아서 줄을 세운다</text>
+<text x="670" y="118" text-anchor="middle" font-size="16" font-weight="600" fill="#e8e8e8">조합 C(3, 2) = 3</text>
+<text x="670" y="140" text-anchor="middle" font-size="13" fill="#888">뽑기만 한다</text>
+<rect x="120" y="180" width="90" height="46" rx="8" fill="none" stroke="#7ec8e3" stroke-width="1.5"/>
+<text x="165" y="210" text-anchor="middle" font-size="16" font-weight="600" fill="#7ec8e3">AB</text>
+<rect x="222" y="180" width="90" height="46" rx="8" fill="none" stroke="#7ec8e3" stroke-width="1.5"/>
+<text x="267" y="210" text-anchor="middle" font-size="16" font-weight="600" fill="#7ec8e3">BA</text>
+<line x1="330" y1="203" x2="580" y2="203" stroke="#888" stroke-width="2" marker-end="url(#ar)"/>
+<text x="455" y="193" text-anchor="middle" font-size="13" fill="#888">2! = 2 가지가 한 묶음</text>
+<rect x="596" y="180" width="150" height="46" rx="8" fill="none" stroke="#55c555" stroke-width="1.5"/>
+<text x="671" y="210" text-anchor="middle" font-size="16" font-weight="600" fill="#55c555">{A, B}</text>
+<rect x="120" y="250" width="90" height="46" rx="8" fill="none" stroke="#7ec8e3" stroke-width="1.5"/>
+<text x="165" y="280" text-anchor="middle" font-size="16" font-weight="600" fill="#7ec8e3">AC</text>
+<rect x="222" y="250" width="90" height="46" rx="8" fill="none" stroke="#7ec8e3" stroke-width="1.5"/>
+<text x="267" y="280" text-anchor="middle" font-size="16" font-weight="600" fill="#7ec8e3">CA</text>
+<line x1="330" y1="273" x2="580" y2="273" stroke="#888" stroke-width="2" marker-end="url(#ar)"/>
+<text x="455" y="263" text-anchor="middle" font-size="13" fill="#888">2! = 2 가지가 한 묶음</text>
+<rect x="596" y="250" width="150" height="46" rx="8" fill="none" stroke="#55c555" stroke-width="1.5"/>
+<text x="671" y="280" text-anchor="middle" font-size="16" font-weight="600" fill="#55c555">{A, C}</text>
+<rect x="120" y="320" width="90" height="46" rx="8" fill="none" stroke="#7ec8e3" stroke-width="1.5"/>
+<text x="165" y="350" text-anchor="middle" font-size="16" font-weight="600" fill="#7ec8e3">BC</text>
+<rect x="222" y="320" width="90" height="46" rx="8" fill="none" stroke="#7ec8e3" stroke-width="1.5"/>
+<text x="267" y="350" text-anchor="middle" font-size="16" font-weight="600" fill="#7ec8e3">CB</text>
+<line x1="330" y1="343" x2="580" y2="343" stroke="#888" stroke-width="2" marker-end="url(#ar)"/>
+<text x="455" y="333" text-anchor="middle" font-size="13" fill="#888">2! = 2 가지가 한 묶음</text>
+<rect x="596" y="320" width="150" height="46" rx="8" fill="none" stroke="#55c555" stroke-width="1.5"/>
+<text x="671" y="350" text-anchor="middle" font-size="16" font-weight="600" fill="#55c555">{B, C}</text>
+<text x="440" y="400" text-anchor="middle" font-size="16" font-weight="600" fill="#e8e8e8">6 ÷ 2! = 3 — 줄 세우는 방법의 수만큼 나눈다</text>
+</svg>

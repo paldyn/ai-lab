@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" viewBox="0 0 880 440" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+<rect x="0" y="0" width="880" height="440" rx="12" fill="#0a0a0a"/>
+<text x="440" y="44" text-anchor="middle" font-size="22" font-weight="700" fill="#e8e8e8">칸을 어떻게 나누느냐가 그림을 통째로 바꾼다</text>
+<text x="440" y="70" text-anchor="middle" font-size="13" fill="#888">똑같은 자료 12개를 칸 넓이만 달리해 그렸다</text>
+<text x="170" y="112" text-anchor="middle" font-size="16" font-weight="600" fill="#e8e8e8">칸 넓이 4 — 네 칸</text>
+<line x1="50" y1="340" x2="290" y2="340" stroke="#888" stroke-width="1.5"/>
+<rect x="50.0" y="306.0" width="60.0" height="34.0" fill="#7ec8e3" fill-opacity="0.4" stroke="#7ec8e3" stroke-width="1.5"/>
+<text x="80.0" y="298.0" text-anchor="middle" font-size="13" fill="#7ec8e3">1</text>
+<rect x="110.0" y="238.0" width="60.0" height="102.0" fill="#7ec8e3" fill-opacity="0.4" stroke="#7ec8e3" stroke-width="1.5"/>
+<text x="140.0" y="230.0" text-anchor="middle" font-size="13" fill="#7ec8e3">3</text>
+<rect x="170.0" y="170.0" width="60.0" height="170.0" fill="#7ec8e3" fill-opacity="0.4" stroke="#7ec8e3" stroke-width="1.5"/>
+<text x="200.0" y="162.0" text-anchor="middle" font-size="13" fill="#7ec8e3">5</text>
+<rect x="230.0" y="238.0" width="60.0" height="102.0" fill="#7ec8e3" fill-opacity="0.4" stroke="#7ec8e3" stroke-width="1.5"/>
+<text x="260.0" y="230.0" text-anchor="middle" font-size="13" fill="#7ec8e3">3</text>
+<text x="170" y="364" text-anchor="middle" font-size="13" fill="#888">막대 높이는 그 칸에 든 자료의 개수</text>
+<text x="440" y="112" text-anchor="middle" font-size="16" font-weight="600" fill="#e8e8e8">칸 넓이 2 — 여덟 칸</text>
+<line x1="320" y1="340" x2="560" y2="340" stroke="#888" stroke-width="1.5"/>
+<rect x="350.0" y="306.0" width="30.0" height="34.0" fill="#7ec8e3" fill-opacity="0.4" stroke="#7ec8e3" stroke-width="1.5"/>
+<text x="365.0" y="298.0" text-anchor="middle" font-size="13" fill="#7ec8e3">1</text>
+<rect x="380.0" y="272.0" width="30.0" height="68.0" fill="#7ec8e3" fill-opacity="0.4" stroke="#7ec8e3" stroke-width="1.5"/>
+<text x="395.0" y="264.0" text-anchor="middle" font-size="13" fill="#7ec8e3">2</text>
+<rect x="410.0" y="306.0" width="30.0" height="34.0" fill="#7ec8e3" fill-opacity="0.4" stroke="#7ec8e3" stroke-width="1.5"/>
+<text x="425.0" y="298.0" text-anchor="middle" font-size="13" fill="#7ec8e3">1</text>
+<rect x="440.0" y="272.0" width="30.0" height="68.0" fill="#7ec8e3" fill-opacity="0.4" stroke="#7ec8e3" stroke-width="1.5"/>
+<text x="455.0" y="264.0" text-anchor="middle" font-size="13" fill="#7ec8e3">2</text>
+<rect x="470.0" y="238.0" width="30.0" height="102.0" fill="#7ec8e3" fill-opacity="0.4" stroke="#7ec8e3" stroke-width="1.5"/>
+<text x="485.0" y="230.0" text-anchor="middle" font-size="13" fill="#7ec8e3">3</text>
+<rect x="500.0" y="306.0" width="30.0" height="34.0" fill="#7ec8e3" fill-opacity="0.4" stroke="#7ec8e3" stroke-width="1.5"/>
+<text x="515.0" y="298.0" text-anchor="middle" font-size="13" fill="#7ec8e3">1</text>
+<rect x="530.0" y="272.0" width="30.0" height="68.0" fill="#7ec8e3" fill-opacity="0.4" stroke="#7ec8e3" stroke-width="1.5"/>
+<text x="545.0" y="264.0" text-anchor="middle" font-size="13" fill="#7ec8e3">2</text>
+<text x="440" y="364" text-anchor="middle" font-size="13" fill="#888">막대 높이는 그 칸에 든 자료의 개수</text>
+<text x="710" y="112" text-anchor="middle" font-size="16" font-weight="600" fill="#e8e8e8">칸 넓이 1 — 열여섯 칸</text>
+<line x1="590" y1="340" x2="830" y2="340" stroke="#888" stroke-width="1.5"/>
+<rect x="620.0" y="306.0" width="15.0" height="34.0" fill="#7ec8e3" fill-opacity="0.4" stroke="#7ec8e3" stroke-width="1.5"/>
+<text x="627.5" y="298.0" text-anchor="middle" font-size="13" fill="#7ec8e3">1</text>
+<rect x="650.0" y="306.0" width="15.0" height="34.0" fill="#7ec8e3" fill-opacity="0.4" stroke="#7ec8e3" stroke-width="1.5"/>
+<text x="657.5" y="298.0" text-anchor="middle" font-size="13" fill="#7ec8e3">1</text>
+<rect x="665.0" y="306.0" width="15.0" height="34.0" fill="#7ec8e3" fill-opacity="0.4" stroke="#7ec8e3" stroke-width="1.5"/>
+<text x="672.5" y="298.0" text-anchor="middle" font-size="13" fill="#7ec8e3">1</text>
+<rect x="695.0" y="306.0" width="15.0" height="34.0" fill="#7ec8e3" fill-opacity="0.4" stroke="#7ec8e3" stroke-width="1.5"/>
+<text x="702.5" y="298.0" text-anchor="middle" font-size="13" fill="#7ec8e3">1</text>
+<rect x="710.0" y="272.0" width="15.0" height="68.0" fill="#7ec8e3" fill-opacity="0.4" stroke="#7ec8e3" stroke-width="1.5"/>
+<text x="717.5" y="264.0" text-anchor="middle" font-size="13" fill="#7ec8e3">2</text>
+<rect x="740.0" y="272.0" width="15.0" height="68.0" fill="#7ec8e3" fill-opacity="0.4" stroke="#7ec8e3" stroke-width="1.5"/>
+<text x="747.5" y="264.0" text-anchor="middle" font-size="13" fill="#7ec8e3">2</text>
+<rect x="755.0" y="306.0" width="15.0" height="34.0" fill="#7ec8e3" fill-opacity="0.4" stroke="#7ec8e3" stroke-width="1.5"/>
+<text x="762.5" y="298.0" text-anchor="middle" font-size="13" fill="#7ec8e3">1</text>
+<rect x="785.0" y="306.0" width="15.0" height="34.0" fill="#7ec8e3" fill-opacity="0.4" stroke="#7ec8e3" stroke-width="1.5"/>
+<text x="792.5" y="298.0" text-anchor="middle" font-size="13" fill="#7ec8e3">1</text>
+<rect x="800.0" y="306.0" width="15.0" height="34.0" fill="#7ec8e3" fill-opacity="0.4" stroke="#7ec8e3" stroke-width="1.5"/>
+<text x="807.5" y="298.0" text-anchor="middle" font-size="13" fill="#7ec8e3">1</text>
+<rect x="815.0" y="306.0" width="15.0" height="34.0" fill="#7ec8e3" fill-opacity="0.4" stroke="#7ec8e3" stroke-width="1.5"/>
+<text x="822.5" y="298.0" text-anchor="middle" font-size="13" fill="#7ec8e3">1</text>
+<text x="710" y="364" text-anchor="middle" font-size="13" fill="#888">막대 높이는 그 칸에 든 자료의 개수</text>
+<text x="170" y="400" text-anchor="middle" font-size="13" fill="#55c555">가운데가 볼록한 한 봉우리</text>
+<text x="440" y="400" text-anchor="middle" font-size="13" fill="#888">울퉁불퉁해지고 봉우리도 옮겨 간다</text>
+<text x="710" y="400" text-anchor="middle" font-size="13" fill="#e05555">빈 칸투성이라 모양이 없다</text>
+</svg>

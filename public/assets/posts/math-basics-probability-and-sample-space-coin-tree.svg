@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" viewBox="0 0 880 500" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+<rect x="0" y="0" width="880" height="500" rx="12" fill="#0a0a0a"/>
+<text x="440" y="44" text-anchor="middle" font-size="22" font-weight="700" fill="#e8e8e8">동전 세 번 — 갈래를 따라가면 여덟 가지</text>
+<text x="440" y="70" text-anchor="middle" font-size="13" fill="#888">한 번 던질 때마다 갈래가 둘로 늘어난다</text>
+<text x="150" y="98" text-anchor="middle" font-size="13" fill="#888">시작</text>
+<text x="320" y="98" text-anchor="middle" font-size="13" fill="#888">첫 번째</text>
+<text x="490" y="98" text-anchor="middle" font-size="13" fill="#888">두 번째</text>
+<text x="660" y="98" text-anchor="middle" font-size="13" fill="#888">세 번째</text>
+<line x1="162" y1="285.0" x2="308" y2="202.5" stroke="#7ec8e3" stroke-width="2"/>
+<text x="235.0" y="235.8" text-anchor="middle" font-size="13" fill="#7ec8e3">앞</text>
+<line x1="162" y1="285.0" x2="308" y2="367.5" stroke="#7777cc" stroke-width="2"/>
+<text x="235.0" y="318.2" text-anchor="middle" font-size="13" fill="#7777cc">뒤</text>
+<line x1="332" y1="202.5" x2="478" y2="161.2" stroke="#7ec8e3" stroke-width="2"/>
+<text x="405.0" y="173.9" text-anchor="middle" font-size="13" fill="#7ec8e3">앞</text>
+<line x1="332" y1="202.5" x2="478" y2="243.8" stroke="#7777cc" stroke-width="2"/>
+<text x="405.0" y="215.1" text-anchor="middle" font-size="13" fill="#7777cc">뒤</text>
+<line x1="332" y1="367.5" x2="478" y2="326.2" stroke="#7ec8e3" stroke-width="2"/>
+<text x="405.0" y="338.9" text-anchor="middle" font-size="13" fill="#7ec8e3">앞</text>
+<line x1="332" y1="367.5" x2="478" y2="408.8" stroke="#7777cc" stroke-width="2"/>
+<text x="405.0" y="380.1" text-anchor="middle" font-size="13" fill="#7777cc">뒤</text>
+<line x1="502" y1="161.2" x2="648" y2="140.6" stroke="#7ec8e3" stroke-width="2"/>
+<text x="575.0" y="142.9" text-anchor="middle" font-size="13" fill="#7ec8e3">앞</text>
+<line x1="502" y1="161.2" x2="648" y2="181.9" stroke="#7777cc" stroke-width="2"/>
+<text x="575.0" y="163.6" text-anchor="middle" font-size="13" fill="#7777cc">뒤</text>
+<line x1="502" y1="243.8" x2="648" y2="223.1" stroke="#7ec8e3" stroke-width="2"/>
+<text x="575.0" y="225.4" text-anchor="middle" font-size="13" fill="#7ec8e3">앞</text>
+<line x1="502" y1="243.8" x2="648" y2="264.4" stroke="#7777cc" stroke-width="2"/>
+<text x="575.0" y="246.1" text-anchor="middle" font-size="13" fill="#7777cc">뒤</text>
+<line x1="502" y1="326.2" x2="648" y2="305.6" stroke="#7ec8e3" stroke-width="2"/>
+<text x="575.0" y="307.9" text-anchor="middle" font-size="13" fill="#7ec8e3">앞</text>
+<line x1="502" y1="326.2" x2="648" y2="346.9" stroke="#7777cc" stroke-width="2"/>
+<text x="575.0" y="328.6" text-anchor="middle" font-size="13" fill="#7777cc">뒤</text>
+<line x1="502" y1="408.8" x2="648" y2="388.1" stroke="#7ec8e3" stroke-width="2"/>
+<text x="575.0" y="390.4" text-anchor="middle" font-size="13" fill="#7ec8e3">앞</text>
+<line x1="502" y1="408.8" x2="648" y2="429.4" stroke="#7777cc" stroke-width="2"/>
+<text x="575.0" y="411.1" text-anchor="middle" font-size="13" fill="#7777cc">뒤</text>
+<circle cx="150" cy="285.0" r="5" fill="#e8e8e8"/>
+<circle cx="320" cy="202.5" r="5" fill="#e8e8e8"/>
+<circle cx="320" cy="367.5" r="5" fill="#e8e8e8"/>
+<circle cx="490" cy="161.2" r="5" fill="#e8e8e8"/>
+<circle cx="490" cy="243.8" r="5" fill="#e8e8e8"/>
+<circle cx="490" cy="326.2" r="5" fill="#e8e8e8"/>
+<circle cx="490" cy="408.8" r="5" fill="#e8e8e8"/>
+<circle cx="660" cy="140.6" r="5" fill="#e8e8e8"/>
+<circle cx="660" cy="181.9" r="5" fill="#e8e8e8"/>
+<circle cx="660" cy="223.1" r="5" fill="#e8e8e8"/>
+<circle cx="660" cy="264.4" r="5" fill="#e8e8e8"/>
+<circle cx="660" cy="305.6" r="5" fill="#e8e8e8"/>
+<circle cx="660" cy="346.9" r="5" fill="#e8e8e8"/>
+<circle cx="660" cy="388.1" r="5" fill="#e8e8e8"/>
+<circle cx="660" cy="429.4" r="5" fill="#e8e8e8"/>
+<text x="680" y="145.6" font-size="16" font-weight="600" fill="#888">앞앞앞</text>
+<text x="680" y="186.9" font-size="16" font-weight="600" fill="#55c555">앞앞뒤</text>
+<text x="680" y="228.1" font-size="16" font-weight="600" fill="#55c555">앞뒤앞</text>
+<text x="680" y="269.4" font-size="16" font-weight="600" fill="#888">앞뒤뒤</text>
+<text x="680" y="310.6" font-size="16" font-weight="600" fill="#55c555">뒤앞앞</text>
+<text x="680" y="351.9" font-size="16" font-weight="600" fill="#888">뒤앞뒤</text>
+<text x="680" y="393.1" font-size="16" font-weight="600" fill="#888">뒤뒤앞</text>
+<text x="680" y="434.4" font-size="16" font-weight="600" fill="#888">뒤뒤뒤</text>
+<text x="740" y="478" text-anchor="middle" font-size="13" fill="#55c555">초록 셋이 앞면 두 번</text>
+</svg>

@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" viewBox="0 0 880 424" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+<rect x="0" y="0" width="880" height="424" rx="12" fill="#0a0a0a"/>
+<text x="440" y="44" text-anchor="middle" font-size="22" font-weight="700" fill="#e8e8e8">세 가지 연산을 그림으로 가른다</text>
+<text x="440" y="70" text-anchor="middle" font-size="13" fill="#888">S = 1부터 10까지, A = 짝수, B = 3의 배수</text>
+<defs>
+<clipPath id="clipu"><circle cx="145" cy="225" r="56"/></clipPath>
+<mask id="masku"><rect x="50" y="140" width="250" height="170" fill="#ffffff"/><circle cx="145" cy="225" r="56" fill="#000000"/></mask>
+</defs>
+<rect x="50" y="140" width="250" height="170" rx="8" fill="none" stroke="#555" stroke-width="1.5"/>
+<text x="60" y="160" font-size="13" fill="#888">S</text>
+<g opacity="0.3"><circle cx="145" cy="225" r="56" fill="#7ec8e3"/><circle cx="205" cy="225" r="56" fill="#7ec8e3"/></g>
+<circle cx="145" cy="225" r="56" fill="none" stroke="#e8e8e8" stroke-width="2"/>
+<circle cx="205" cy="225" r="56" fill="none" stroke="#e8e8e8" stroke-width="2"/>
+<text x="103" y="187" font-size="16" font-weight="600" fill="#e8e8e8">A</text>
+<text x="239" y="187" font-size="16" font-weight="600" fill="#e8e8e8">B</text>
+<text x="113" y="231" text-anchor="middle" font-size="13" fill="#888">2 4 8 10</text>
+<text x="175" y="231" text-anchor="middle" font-size="13" fill="#e8e8e8">6</text>
+<text x="235" y="231" text-anchor="middle" font-size="13" fill="#888">3 9</text>
+<text x="290" y="298" text-anchor="end" font-size="13" fill="#888">1 5 7</text>
+<text x="175" y="344" text-anchor="middle" font-size="16" font-weight="600" fill="#7ec8e3">A ∪ B — 둘 중 하나라도</text>
+<defs>
+<clipPath id="clipi"><circle cx="410" cy="225" r="56"/></clipPath>
+<mask id="maski"><rect x="315" y="140" width="250" height="170" fill="#ffffff"/><circle cx="410" cy="225" r="56" fill="#000000"/></mask>
+</defs>
+<rect x="315" y="140" width="250" height="170" rx="8" fill="none" stroke="#555" stroke-width="1.5"/>
+<text x="325" y="160" font-size="13" fill="#888">S</text>
+<circle cx="470" cy="225" r="56" fill="#7ec8e3" fill-opacity="0.4" clip-path="url(#clipi)"/>
+<circle cx="410" cy="225" r="56" fill="none" stroke="#e8e8e8" stroke-width="2"/>
+<circle cx="470" cy="225" r="56" fill="none" stroke="#e8e8e8" stroke-width="2"/>
+<text x="368" y="187" font-size="16" font-weight="600" fill="#e8e8e8">A</text>
+<text x="504" y="187" font-size="16" font-weight="600" fill="#e8e8e8">B</text>
+<text x="378" y="231" text-anchor="middle" font-size="13" fill="#888">2 4 8 10</text>
+<text x="440" y="231" text-anchor="middle" font-size="13" fill="#e8e8e8">6</text>
+<text x="500" y="231" text-anchor="middle" font-size="13" fill="#888">3 9</text>
+<text x="555" y="298" text-anchor="end" font-size="13" fill="#888">1 5 7</text>
+<text x="440" y="344" text-anchor="middle" font-size="16" font-weight="600" fill="#7ec8e3">A ∩ B — 둘 다</text>
+<defs>
+<clipPath id="clipc"><circle cx="675" cy="225" r="56"/></clipPath>
+<mask id="maskc"><rect x="580" y="140" width="250" height="170" fill="#ffffff"/><circle cx="675" cy="225" r="56" fill="#000000"/></mask>
+</defs>
+<rect x="580" y="140" width="250" height="170" rx="8" fill="none" stroke="#555" stroke-width="1.5"/>
+<text x="590" y="160" font-size="13" fill="#888">S</text>
+<rect x="580" y="140" width="250" height="170" rx="8" fill="#7ec8e3" fill-opacity="0.3" mask="url(#maskc)"/>
+<circle cx="675" cy="225" r="56" fill="none" stroke="#e8e8e8" stroke-width="2"/>
+<circle cx="735" cy="225" r="56" fill="none" stroke="#e8e8e8" stroke-width="2"/>
+<text x="633" y="187" font-size="16" font-weight="600" fill="#e8e8e8">A</text>
+<text x="769" y="187" font-size="16" font-weight="600" fill="#e8e8e8">B</text>
+<text x="643" y="231" text-anchor="middle" font-size="13" fill="#888">2 4 8 10</text>
+<text x="705" y="231" text-anchor="middle" font-size="13" fill="#e8e8e8">6</text>
+<text x="765" y="231" text-anchor="middle" font-size="13" fill="#888">3 9</text>
+<text x="820" y="298" text-anchor="end" font-size="13" fill="#888">1 5 7</text>
+<text x="705" y="344" text-anchor="middle" font-size="16" font-weight="600" fill="#7ec8e3">A의 여집합 — A가 아닌 것</text>
+<text x="440" y="396" text-anchor="middle" font-size="13" fill="#888">|A ∪ B| = 7, |A ∩ B| = 1, |A의 여집합| = 5</text>
+</svg>

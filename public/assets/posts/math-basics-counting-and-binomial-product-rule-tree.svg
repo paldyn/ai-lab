@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" viewBox="0 0 880 470" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+<rect x="0" y="0" width="880" height="470" rx="12" fill="#0a0a0a"/>
+<text x="440" y="44" text-anchor="middle" font-size="22" font-weight="700" fill="#e8e8e8">곱의 법칙 — 갈래마다 다시 갈래가 생긴다</text>
+<text x="440" y="70" text-anchor="middle" font-size="13" fill="#888">윗옷 3가지 각각에 아래옷 4가지가 붙어 3 × 4 = 12가지</text>
+<circle cx="130" cy="270" r="5" fill="#e8e8e8"/>
+<text x="130" y="252" text-anchor="middle" font-size="13" fill="#888">시작</text>
+<line x1="142" y1="270" x2="274" y2="150.0" stroke="#7ec8e3" stroke-width="2"/>
+<text x="330" y="155.0" text-anchor="middle" font-size="13" font-weight="600" fill="#7ec8e3">흰 셔츠</text>
+<line x1="382" y1="150.0" x2="546" y2="123.3" stroke="#7777cc" stroke-width="2"/>
+<text x="560" y="128.3" font-size="13" fill="#e8e8e8">흰 셔츠 + 청바지</text>
+<line x1="382" y1="150.0" x2="546" y2="150.0" stroke="#7777cc" stroke-width="2"/>
+<text x="560" y="155.0" font-size="13" fill="#e8e8e8">흰 셔츠 + 면바지</text>
+<line x1="382" y1="150.0" x2="546" y2="176.7" stroke="#7777cc" stroke-width="2"/>
+<text x="560" y="181.7" font-size="13" fill="#e8e8e8">흰 셔츠 + 반바지</text>
+<line x1="382" y1="150.0" x2="546" y2="203.3" stroke="#7777cc" stroke-width="2"/>
+<text x="560" y="208.3" font-size="13" fill="#e8e8e8">흰 셔츠 + 치마</text>
+<line x1="142" y1="270" x2="274" y2="256.7" stroke="#7ec8e3" stroke-width="2"/>
+<text x="330" y="261.7" text-anchor="middle" font-size="13" font-weight="600" fill="#7ec8e3">검은 셔츠</text>
+<line x1="382" y1="256.7" x2="546" y2="230.0" stroke="#7777cc" stroke-width="2"/>
+<text x="560" y="235.0" font-size="13" fill="#e8e8e8">검은 셔츠 + 청바지</text>
+<line x1="382" y1="256.7" x2="546" y2="256.7" stroke="#7777cc" stroke-width="2"/>
+<text x="560" y="261.7" font-size="13" fill="#e8e8e8">검은 셔츠 + 면바지</text>
+<line x1="382" y1="256.7" x2="546" y2="283.3" stroke="#7777cc" stroke-width="2"/>
+<text x="560" y="288.3" font-size="13" fill="#e8e8e8">검은 셔츠 + 반바지</text>
+<line x1="382" y1="256.7" x2="546" y2="310.0" stroke="#7777cc" stroke-width="2"/>
+<text x="560" y="315.0" font-size="13" fill="#e8e8e8">검은 셔츠 + 치마</text>
+<line x1="142" y1="270" x2="274" y2="363.3" stroke="#7ec8e3" stroke-width="2"/>
+<text x="330" y="368.3" text-anchor="middle" font-size="13" font-weight="600" fill="#7ec8e3">회색 셔츠</text>
+<line x1="382" y1="363.3" x2="546" y2="336.7" stroke="#7777cc" stroke-width="2"/>
+<text x="560" y="341.7" font-size="13" fill="#e8e8e8">회색 셔츠 + 청바지</text>
+<line x1="382" y1="363.3" x2="546" y2="363.3" stroke="#7777cc" stroke-width="2"/>
+<text x="560" y="368.3" font-size="13" fill="#e8e8e8">회색 셔츠 + 면바지</text>
+<line x1="382" y1="363.3" x2="546" y2="390.0" stroke="#7777cc" stroke-width="2"/>
+<text x="560" y="395.0" font-size="13" fill="#e8e8e8">회색 셔츠 + 반바지</text>
+<line x1="382" y1="363.3" x2="546" y2="416.7" stroke="#7777cc" stroke-width="2"/>
+<text x="560" y="421.7" font-size="13" fill="#e8e8e8">회색 셔츠 + 치마</text>
+<text x="440" y="458" text-anchor="middle" font-size="13" fill="#888">오른쪽 끝이 12줄 — 3가지 갈래 각각이 다시 4가지로 갈린다</text>
+</svg>

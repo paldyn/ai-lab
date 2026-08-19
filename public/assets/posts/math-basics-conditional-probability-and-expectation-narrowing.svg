@@ -1,0 +1,119 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" viewBox="0 0 880 470" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+<rect x="0" y="0" width="880" height="470" rx="12" fill="#0a0a0a"/>
+<text x="440" y="44" text-anchor="middle" font-size="22" font-weight="700" fill="#e8e8e8">조건이 붙으면 표본공간이 좁아진다</text>
+<text x="440" y="70" text-anchor="middle" font-size="13" fill="#888">A = 합이 7,  B = 적어도 하나가 6</text>
+<defs><marker id="ar" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto"><path d="M 0 0 L 13 7 L 0 14 z" fill="#888"/></marker></defs>
+<text x="222" y="118" text-anchor="middle" font-size="16" font-weight="600" fill="#e8e8e8">조건 없이</text>
+<text x="137" y="140" text-anchor="middle" font-size="13" fill="#888">1</text>
+<text x="171" y="140" text-anchor="middle" font-size="13" fill="#888">2</text>
+<text x="205" y="140" text-anchor="middle" font-size="13" fill="#888">3</text>
+<text x="239" y="140" text-anchor="middle" font-size="13" fill="#888">4</text>
+<text x="273" y="140" text-anchor="middle" font-size="13" fill="#888">5</text>
+<text x="307" y="140" text-anchor="middle" font-size="13" fill="#888">6</text>
+<text x="106" y="172" text-anchor="middle" font-size="13" fill="#888">1</text>
+<text x="106" y="206" text-anchor="middle" font-size="13" fill="#888">2</text>
+<text x="106" y="240" text-anchor="middle" font-size="13" fill="#888">3</text>
+<text x="106" y="274" text-anchor="middle" font-size="13" fill="#888">4</text>
+<text x="106" y="308" text-anchor="middle" font-size="13" fill="#888">5</text>
+<text x="106" y="342" text-anchor="middle" font-size="13" fill="#888">6</text>
+<rect x="120" y="150" width="34" height="34" fill="none" fill-opacity="1" stroke="#444" stroke-width="1.5"/>
+<rect x="154" y="150" width="34" height="34" fill="none" fill-opacity="1" stroke="#444" stroke-width="1.5"/>
+<rect x="188" y="150" width="34" height="34" fill="none" fill-opacity="1" stroke="#444" stroke-width="1.5"/>
+<rect x="222" y="150" width="34" height="34" fill="none" fill-opacity="1" stroke="#444" stroke-width="1.5"/>
+<rect x="256" y="150" width="34" height="34" fill="none" fill-opacity="1" stroke="#444" stroke-width="1.5"/>
+<rect x="290" y="150" width="34" height="34" fill="#7ec8e3" fill-opacity="0.85" stroke="#7ec8e3" stroke-width="1.5"/>
+<text x="307" y="172" text-anchor="middle" font-size="13" font-weight="600" fill="#0a0a0a">7</text>
+<rect x="120" y="184" width="34" height="34" fill="none" fill-opacity="1" stroke="#444" stroke-width="1.5"/>
+<rect x="154" y="184" width="34" height="34" fill="none" fill-opacity="1" stroke="#444" stroke-width="1.5"/>
+<rect x="188" y="184" width="34" height="34" fill="none" fill-opacity="1" stroke="#444" stroke-width="1.5"/>
+<rect x="222" y="184" width="34" height="34" fill="none" fill-opacity="1" stroke="#444" stroke-width="1.5"/>
+<rect x="256" y="184" width="34" height="34" fill="#7ec8e3" fill-opacity="0.85" stroke="#7ec8e3" stroke-width="1.5"/>
+<text x="273" y="206" text-anchor="middle" font-size="13" font-weight="600" fill="#0a0a0a">7</text>
+<rect x="290" y="184" width="34" height="34" fill="none" fill-opacity="1" stroke="#444" stroke-width="1.5"/>
+<rect x="120" y="218" width="34" height="34" fill="none" fill-opacity="1" stroke="#444" stroke-width="1.5"/>
+<rect x="154" y="218" width="34" height="34" fill="none" fill-opacity="1" stroke="#444" stroke-width="1.5"/>
+<rect x="188" y="218" width="34" height="34" fill="none" fill-opacity="1" stroke="#444" stroke-width="1.5"/>
+<rect x="222" y="218" width="34" height="34" fill="#7ec8e3" fill-opacity="0.85" stroke="#7ec8e3" stroke-width="1.5"/>
+<text x="239" y="240" text-anchor="middle" font-size="13" font-weight="600" fill="#0a0a0a">7</text>
+<rect x="256" y="218" width="34" height="34" fill="none" fill-opacity="1" stroke="#444" stroke-width="1.5"/>
+<rect x="290" y="218" width="34" height="34" fill="none" fill-opacity="1" stroke="#444" stroke-width="1.5"/>
+<rect x="120" y="252" width="34" height="34" fill="none" fill-opacity="1" stroke="#444" stroke-width="1.5"/>
+<rect x="154" y="252" width="34" height="34" fill="none" fill-opacity="1" stroke="#444" stroke-width="1.5"/>
+<rect x="188" y="252" width="34" height="34" fill="#7ec8e3" fill-opacity="0.85" stroke="#7ec8e3" stroke-width="1.5"/>
+<text x="205" y="274" text-anchor="middle" font-size="13" font-weight="600" fill="#0a0a0a">7</text>
+<rect x="222" y="252" width="34" height="34" fill="none" fill-opacity="1" stroke="#444" stroke-width="1.5"/>
+<rect x="256" y="252" width="34" height="34" fill="none" fill-opacity="1" stroke="#444" stroke-width="1.5"/>
+<rect x="290" y="252" width="34" height="34" fill="none" fill-opacity="1" stroke="#444" stroke-width="1.5"/>
+<rect x="120" y="286" width="34" height="34" fill="none" fill-opacity="1" stroke="#444" stroke-width="1.5"/>
+<rect x="154" y="286" width="34" height="34" fill="#7ec8e3" fill-opacity="0.85" stroke="#7ec8e3" stroke-width="1.5"/>
+<text x="171" y="308" text-anchor="middle" font-size="13" font-weight="600" fill="#0a0a0a">7</text>
+<rect x="188" y="286" width="34" height="34" fill="none" fill-opacity="1" stroke="#444" stroke-width="1.5"/>
+<rect x="222" y="286" width="34" height="34" fill="none" fill-opacity="1" stroke="#444" stroke-width="1.5"/>
+<rect x="256" y="286" width="34" height="34" fill="none" fill-opacity="1" stroke="#444" stroke-width="1.5"/>
+<rect x="290" y="286" width="34" height="34" fill="none" fill-opacity="1" stroke="#444" stroke-width="1.5"/>
+<rect x="120" y="320" width="34" height="34" fill="#7ec8e3" fill-opacity="0.85" stroke="#7ec8e3" stroke-width="1.5"/>
+<text x="137" y="342" text-anchor="middle" font-size="13" font-weight="600" fill="#0a0a0a">7</text>
+<rect x="154" y="320" width="34" height="34" fill="none" fill-opacity="1" stroke="#444" stroke-width="1.5"/>
+<rect x="188" y="320" width="34" height="34" fill="none" fill-opacity="1" stroke="#444" stroke-width="1.5"/>
+<rect x="222" y="320" width="34" height="34" fill="none" fill-opacity="1" stroke="#444" stroke-width="1.5"/>
+<rect x="256" y="320" width="34" height="34" fill="none" fill-opacity="1" stroke="#444" stroke-width="1.5"/>
+<rect x="290" y="320" width="34" height="34" fill="none" fill-opacity="1" stroke="#444" stroke-width="1.5"/>
+<text x="222" y="388" text-anchor="middle" font-size="13" fill="#888">서른여섯 칸 가운데 여섯 칸</text>
+<text x="222" y="414" text-anchor="middle" font-size="16" font-weight="600" fill="#7ec8e3">P(A) = 6 / 36 = 1/6</text>
+<text x="658" y="118" text-anchor="middle" font-size="16" font-weight="600" fill="#e8e8e8">B가 일어났다고 알 때</text>
+<text x="573" y="140" text-anchor="middle" font-size="13" fill="#888">1</text>
+<text x="607" y="140" text-anchor="middle" font-size="13" fill="#888">2</text>
+<text x="641" y="140" text-anchor="middle" font-size="13" fill="#888">3</text>
+<text x="675" y="140" text-anchor="middle" font-size="13" fill="#888">4</text>
+<text x="709" y="140" text-anchor="middle" font-size="13" fill="#888">5</text>
+<text x="743" y="140" text-anchor="middle" font-size="13" fill="#888">6</text>
+<text x="542" y="172" text-anchor="middle" font-size="13" fill="#888">1</text>
+<text x="542" y="206" text-anchor="middle" font-size="13" fill="#888">2</text>
+<text x="542" y="240" text-anchor="middle" font-size="13" fill="#888">3</text>
+<text x="542" y="274" text-anchor="middle" font-size="13" fill="#888">4</text>
+<text x="542" y="308" text-anchor="middle" font-size="13" fill="#888">5</text>
+<text x="542" y="342" text-anchor="middle" font-size="13" fill="#888">6</text>
+<rect x="556" y="150" width="34" height="34" fill="#111111" fill-opacity="1" stroke="#1f1f1f" stroke-width="1.5"/>
+<rect x="590" y="150" width="34" height="34" fill="#111111" fill-opacity="1" stroke="#1f1f1f" stroke-width="1.5"/>
+<rect x="624" y="150" width="34" height="34" fill="#111111" fill-opacity="1" stroke="#1f1f1f" stroke-width="1.5"/>
+<rect x="658" y="150" width="34" height="34" fill="#111111" fill-opacity="1" stroke="#1f1f1f" stroke-width="1.5"/>
+<rect x="692" y="150" width="34" height="34" fill="#111111" fill-opacity="1" stroke="#1f1f1f" stroke-width="1.5"/>
+<rect x="726" y="150" width="34" height="34" fill="#7ec8e3" fill-opacity="0.85" stroke="#7ec8e3" stroke-width="1.5"/>
+<text x="743" y="172" text-anchor="middle" font-size="13" font-weight="600" fill="#0a0a0a">7</text>
+<rect x="556" y="184" width="34" height="34" fill="#111111" fill-opacity="1" stroke="#1f1f1f" stroke-width="1.5"/>
+<rect x="590" y="184" width="34" height="34" fill="#111111" fill-opacity="1" stroke="#1f1f1f" stroke-width="1.5"/>
+<rect x="624" y="184" width="34" height="34" fill="#111111" fill-opacity="1" stroke="#1f1f1f" stroke-width="1.5"/>
+<rect x="658" y="184" width="34" height="34" fill="#111111" fill-opacity="1" stroke="#1f1f1f" stroke-width="1.5"/>
+<rect x="692" y="184" width="34" height="34" fill="#111111" fill-opacity="1" stroke="#1f1f1f" stroke-width="1.5"/>
+<rect x="726" y="184" width="34" height="34" fill="none" fill-opacity="1" stroke="#888" stroke-width="1.5"/>
+<rect x="556" y="218" width="34" height="34" fill="#111111" fill-opacity="1" stroke="#1f1f1f" stroke-width="1.5"/>
+<rect x="590" y="218" width="34" height="34" fill="#111111" fill-opacity="1" stroke="#1f1f1f" stroke-width="1.5"/>
+<rect x="624" y="218" width="34" height="34" fill="#111111" fill-opacity="1" stroke="#1f1f1f" stroke-width="1.5"/>
+<rect x="658" y="218" width="34" height="34" fill="#111111" fill-opacity="1" stroke="#1f1f1f" stroke-width="1.5"/>
+<rect x="692" y="218" width="34" height="34" fill="#111111" fill-opacity="1" stroke="#1f1f1f" stroke-width="1.5"/>
+<rect x="726" y="218" width="34" height="34" fill="none" fill-opacity="1" stroke="#888" stroke-width="1.5"/>
+<rect x="556" y="252" width="34" height="34" fill="#111111" fill-opacity="1" stroke="#1f1f1f" stroke-width="1.5"/>
+<rect x="590" y="252" width="34" height="34" fill="#111111" fill-opacity="1" stroke="#1f1f1f" stroke-width="1.5"/>
+<rect x="624" y="252" width="34" height="34" fill="#111111" fill-opacity="1" stroke="#1f1f1f" stroke-width="1.5"/>
+<rect x="658" y="252" width="34" height="34" fill="#111111" fill-opacity="1" stroke="#1f1f1f" stroke-width="1.5"/>
+<rect x="692" y="252" width="34" height="34" fill="#111111" fill-opacity="1" stroke="#1f1f1f" stroke-width="1.5"/>
+<rect x="726" y="252" width="34" height="34" fill="none" fill-opacity="1" stroke="#888" stroke-width="1.5"/>
+<rect x="556" y="286" width="34" height="34" fill="#111111" fill-opacity="1" stroke="#1f1f1f" stroke-width="1.5"/>
+<rect x="590" y="286" width="34" height="34" fill="#111111" fill-opacity="1" stroke="#1f1f1f" stroke-width="1.5"/>
+<rect x="624" y="286" width="34" height="34" fill="#111111" fill-opacity="1" stroke="#1f1f1f" stroke-width="1.5"/>
+<rect x="658" y="286" width="34" height="34" fill="#111111" fill-opacity="1" stroke="#1f1f1f" stroke-width="1.5"/>
+<rect x="692" y="286" width="34" height="34" fill="#111111" fill-opacity="1" stroke="#1f1f1f" stroke-width="1.5"/>
+<rect x="726" y="286" width="34" height="34" fill="none" fill-opacity="1" stroke="#888" stroke-width="1.5"/>
+<rect x="556" y="320" width="34" height="34" fill="#7ec8e3" fill-opacity="0.85" stroke="#7ec8e3" stroke-width="1.5"/>
+<text x="573" y="342" text-anchor="middle" font-size="13" font-weight="600" fill="#0a0a0a">7</text>
+<rect x="590" y="320" width="34" height="34" fill="none" fill-opacity="1" stroke="#888" stroke-width="1.5"/>
+<rect x="624" y="320" width="34" height="34" fill="none" fill-opacity="1" stroke="#888" stroke-width="1.5"/>
+<rect x="658" y="320" width="34" height="34" fill="none" fill-opacity="1" stroke="#888" stroke-width="1.5"/>
+<rect x="692" y="320" width="34" height="34" fill="none" fill-opacity="1" stroke="#888" stroke-width="1.5"/>
+<rect x="726" y="320" width="34" height="34" fill="none" fill-opacity="1" stroke="#888" stroke-width="1.5"/>
+<text x="658" y="388" text-anchor="middle" font-size="13" fill="#888">남은 열한 칸 가운데 두 칸</text>
+<text x="658" y="414" text-anchor="middle" font-size="16" font-weight="600" fill="#7ec8e3">P(A | B) = 2 / 11</text>
+<line x1="352" y1="252" x2="524" y2="252" stroke="#888" stroke-width="2" marker-end="url(#ar)"/>
+<text x="438" y="234" text-anchor="middle" font-size="13" fill="#888">바탕이 36칸에서</text>
+<text x="438" y="288" text-anchor="middle" font-size="13" fill="#888">11칸으로 줄어든다</text>
+</svg>
