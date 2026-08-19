@@ -172,6 +172,22 @@ export const globalNewsUpdatedAt = '2026-08-17';
  */
 const entries: NewsItem[] = [
   {
+    id: 'back-to-school-study-tools',
+    source: 'Google DeepMind',
+    kind: 'company',
+    title: 'Google 검색에 퀴즈·노트북 등 학습 도구 5종 추가',
+    summary:
+      'Google이 검색의 AI 기능에 학습 도구 다섯 가지를 더했다. AI 모드와 AI 개요에서 ' +
+      '대화형 시각 자료와 맞춤 연습 퀴즈를 만들어 주고, Gemini Notebook의 노트북을 검색 ' +
+      '안으로 들여왔으며, 올린 자료로 문서·슬라이드를 만들어 준다. Lens의 단계별 풀이 ' +
+      '도우미는 몇 주 안에 나온다.',
+    publishedAt: '2026-08-19',
+    collectedAt: '2026-08-20',
+    category: 'Product',
+    signal: 'AI 교육',
+    url: 'https://blog.google/products-and-platforms/products/search/back-to-school-study-tools/',
+  },
+  {
     id: 'claude-platform-august-18-2026',
     source: 'Anthropic',
     kind: 'company',

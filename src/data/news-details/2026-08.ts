@@ -2,6 +2,23 @@ import type { NewsDetail } from '../news';
 
 /** 2026-08 발표의 모달 본문. 목록은 news.ts에 있습니다. */
 export const details: Record<string, NewsDetail> = {
+  'back-to-school-study-tools': {
+    points: [
+      '「ph scale」처럼 검색하면 AI 개요에 대화형 시각 자료가 붙는다',
+      '생성형 UI는 AI 모드에서 영어로 전 세계에 나갔고 AI 개요에도 배포가 시작됐다',
+      '과목을 가리지 않는 맞춤 연습 퀴즈를 만들어 주며 SAT·ACT·GRE·MCAT 등 9개 시험 대비도 된다',
+      '시험 대비 콘텐츠는 The Princeton Review 등 교육 기업 네 곳과 제휴해 가져온다',
+      '연습 퀴즈는 AI 개요와 AI 모드 양쪽에서 영어로 무료 제공된다',
+      'Lens로 문제를 찍으면 풀이 단계와 틀린 지점을 짚어 주는 기능이 몇 주 안에 나온다',
+      'Gemini Notebook의 노트북이 AI 모드에 들어온다 — 180개국 이상에 영어로 배포되고 EEA는 빠진다',
+      '올린 파일과 AI 모드 대화로 문서·슬라이드·스프레드시트를 만들어 주는 기능이 AI 모드에 나갔다',
+    ],
+    commentary:
+      '다섯 가지가 한 자리를 겨눈다 — 학생이 공부하며 오가는 곳을 검색 안으로 모으는 것이다. ' +
+      '노트북을 Gemini Notebook에서 검색으로 옮겨 온 것이 특히 그렇다. 별도 앱으로 가야 했던 ' +
+      '자료 정리가 검색 결과 옆에 붙으면 학습 도구를 따로 고르는 단계 자체가 사라진다. ' +
+      '전용 학습 서비스들이 서 있던 자리다.',
+  },
   'claude-platform-august-18-2026': {
     points: [
       'Claude Console의 Workbench가 Playground로 이름을 바꿨다',
