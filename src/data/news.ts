@@ -6610,6 +6610,18 @@ export function feedDate(publishedAt: string): string {
 }
 
 /**
+ * 해를 늘 적는 날짜.
+ *
+ * 검색 결과가 쓰는 형식입니다. `feedDate`가 올해를 생략하는 것은 **위아래가 전부
+ * 날짜순 목록이라 문맥이 해를 알려 주기 때문**인데, 검색 결과에는 그 문맥이 없습니다 —
+ * 글과 소식이 점수순으로 섞여 서고 해도 제각각이라 '08.19' 하나만으로는 언제 것인지
+ * 알 수 없습니다. 그래서 여기서는 늘 적습니다.
+ */
+export function fullDate(publishedAt: string): string {
+  return publishedAt.replaceAll('-', '.');
+}
+
+/**
  * 한 회사의 발표. `kind`를 주면 그 갈래만 셉니다.
  *
  * 갈래를 받게 된 이유가 있습니다. 홈의 「글로벌 AI 기업 소식」이 이 함수를

@@ -1,6 +1,6 @@
 import { articles } from '../data/articles';
 import { categoryById } from '../data/categories';
-import { feedDate, newsItems, releaseOf } from '../data/news';
+import { fullDate, newsItems, releaseOf } from '../data/news';
 import { getSource } from '../data/sources';
 import type { SectionId } from '../types/article';
 
@@ -108,7 +108,7 @@ function newsHits(query: string, scope: SearchScope): SearchHit[] {
       title: item.title,
       label: source.displayName,
       labelColor: source.accent,
-      meta: feedDate(item.publishedAt),
+      meta: fullDate(item.publishedAt),
       date: item.publishedAt,
     });
   }
