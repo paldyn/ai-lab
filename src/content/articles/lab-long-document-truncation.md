@@ -343,7 +343,3 @@ where the answer sits inside its own passage
 ---
 
 읽어주셔서 감사합니다. 😊
-
-**지난 글:** [RRF의 k를 흔들어 보기: 기본값 60은 문제가 아니었고 아무도 안 흔드는 가중치가 문제였다](/articles/lab-hybrid-rrf-sweep)
-
-**다음 글:** [정규화를 빠뜨리면 얼마나 손해인가: 모델 12개 중 9개는 빠뜨릴 수가 없었다](/articles/lab-normalization-bug-cost)

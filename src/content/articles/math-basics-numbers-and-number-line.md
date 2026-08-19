@@ -262,7 +262,3 @@ $$\sqrt{2}$$ 의 자리를 못 잡았다면 이렇게 하세요. **제곱해서 
 ---
 
 읽어주셔서 감사합니다. 😊
-
-**지난 글:** [수식 기호 읽기: 앞으로 만날 기호를 소리 내어 읽어 두기](/articles/math-basics-symbol-glossary)
-
-**다음 글:** [분수의 사칙연산: 나눗셈이 왜 역수의 곱인가](/articles/math-basics-fractions)

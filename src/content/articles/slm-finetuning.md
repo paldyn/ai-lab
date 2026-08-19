@@ -120,5 +120,3 @@ QLoRA는 원본을 4비트로 눌러 얼려 두고 어댑터만 fp16으로 학�
 읽어주셔서 감사합니다. 😊
 
 **지난 글:** [작은 모델로 내려도 되는지 판단하는 법](/articles/slm-vs-llm-tradeoff)
-
-**다음 글:** [기기에서 모델을 돌린다는 것](/articles/ondevice-inference-basics)

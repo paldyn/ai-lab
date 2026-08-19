@@ -9,7 +9,7 @@ tags: ["프롬프트엔지니어링", "PromptEngineering", "LLM활용", "SystemP
 featured: false
 draft: false
 ---
-[지난 글](/articles/llm-comparison-benchmarks)에서 LLM 벤치마크와 평가 방법론을 살펴봤다. 이제부터는 LLM을 실제로 잘 활용하는 기술로 넘어간다. 그 첫 번째 주제가 **프롬프트 엔지니어링**(Prompt Engineering)이다. "AI에게 어떻게 말하느냐"가 결과의 70%를 결정한다는 말이 있을 정도로, 프롬프트는 LLM 활용의 핵심이다.
+[지난 글](/articles/embedding-multimodal)에서 CLIP이 이미지와 텍스트를 하나의 벡터 공간에 배치하는 원리를 살펴봤다. 임베딩 이야기는 여기서 잠시 접어 두고, 이제부터는 LLM을 실제로 잘 활용하는 기술로 넘어간다. 그 첫 번째 주제가 **프롬프트 엔지니어링**(Prompt Engineering)이다. "AI에게 어떻게 말하느냐"가 결과의 70%를 결정한다는 말이 있을 정도로, 프롬프트는 LLM 활용의 핵심이다.
 
 ## 프롬프트 엔지니어링이란
 
@@ -193,6 +193,6 @@ class PromptExperiment:
 
 읽어주셔서 감사합니다. 😊
 
-**지난 글:** [LLM 벤치마크 완전 해부: MMLU, HumanEval, LMSYS Chatbot Arena](/articles/llm-comparison-benchmarks)
+**지난 글:** [멀티모달 임베딩: 텍스트와 이미지를 같은 공간에](/articles/embedding-multimodal)
 
 **다음 글:** [Zero-shot과 Few-shot Learning: 예시의 힘](/articles/prompt-zero-few-shot)

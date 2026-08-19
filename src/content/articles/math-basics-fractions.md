@@ -215,6 +215,4 @@ $$\frac{3}{4} = \frac{21}{28}, \qquad \frac{5}{7} = \frac{20}{28} \;\Rightarrow\
 
 읽어주셔서 감사합니다. 😊
 
-**지난 글:** [수의 종류와 수직선: 음수끼리 곱하면 왜 양수가 되는가](/articles/math-basics-numbers-and-number-line)
-
 **다음 글:** [소수·백분율과 비: 같은 양을 적는 세 가지 옷](/articles/math-basics-decimals-percent-ratio)

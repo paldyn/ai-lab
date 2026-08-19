@@ -209,4 +209,4 @@ def log_gradient_norms(model, step, writer=None):
 
 **지난 글:** [드롭아웃: 과적합을 막는 앙상블 정규화](/articles/nn-dropout)
 
-**다음 글:** [합성곱 연산: CNN의 핵심 원리](/articles/cnn-convolution-basics)
+**다음 글:** [RNN 기초: 순환 신경망의 작동 원리](/articles/rnn-basics)

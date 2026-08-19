@@ -9,7 +9,7 @@ tags: ["Transformer", "셀프어텐션", "인코더디코더", "딥러닝", "NLP
 featured: false
 draft: false
 ---
-[지난 글](/articles/rnn-limitations)에서 RNN의 세 가지 본질적 한계—기울기 소실, 순차 처리, 장거리 의존성—를 정리하고 Transformer가 이를 해결한다는 것을 확인했다. 2017년 Google의 Vaswani et al.이 발표한 논문 "Attention Is All You Need"는 제목 그대로 RNN을 완전히 제거하고 **Attention만으로** 시퀀스 변환을 수행하는 혁명적 아키텍처를 제시했다. BERT, GPT, T5, LLaMA 등 현재 모든 대형 언어 모델의 기반이다.
+2017년 Google의 Vaswani et al.이 발표한 논문 "Attention Is All You Need"는 제목 그대로 RNN을 완전히 제거하고 **Attention만으로** 시퀀스 변환을 수행하는 혁명적 아키텍처를 제시했다. RNN이 안고 있던 기울기 소실, 순차 처리, 장거리 의존성이라는 세 가지 한계를 한꺼번에 걷어낸 셈이다. BERT, GPT, T5, LLaMA 등 현재 모든 대형 언어 모델의 기반이다.
 
 ## 전체 아키텍처 개요
 
@@ -144,7 +144,5 @@ out = transformer(src, tgt)       # (32, 8, 512)
 ---
 
 읽어주셔서 감사합니다. 😊
-
-**지난 글:** [RNN의 한계와 Transformer로의 전환](/articles/rnn-limitations)
 
 **다음 글:** [Self-Attention: 모든 토큰이 모든 토큰과 대화한다](/articles/transformer-self-attention)

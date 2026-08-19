@@ -9,7 +9,7 @@ tags: ["GitHubCopilot", "AI코딩", "코드자동완성", "FIM", "CopilotChat", 
 featured: false
 draft: false
 ---
-[지난 글](/articles/data-deduplication)에서 데이터 파이프라인에서 중복을 제거하는 방법을 살펴봤다. 이제부터는 AI가 코딩 자체를 어떻게 변화시키고 있는지, 핵심 도구들을 하나씩 해부한다. 첫 번째 주인공은 **GitHub Copilot**이다. 2021년 등장한 이후 불과 4년 만에 전 세계 170만 명 이상의 개발자가 유료로 사용하는, AI 코딩 도구의 표준이 됐다.
+AI는 코딩이라는 일 자체를 바꾸고 있다. 이 글부터 그 변화를 이끄는 핵심 도구들을 하나씩 해부한다. 첫 번째 주인공은 **GitHub Copilot**이다. 2021년 등장한 이후 불과 4년 만에 전 세계 170만 명 이상의 개발자가 유료로 사용하는, AI 코딩 도구의 표준이 됐다.
 
 ## Copilot은 어떻게 작동하는가
 
@@ -169,7 +169,5 @@ GitHub의 자체 연구에 따르면 Copilot 사용 개발자는 동일 태스�
 ---
 
 읽어주셔서 감사합니다. 😊
-
-**지난 글:** [데이터 중복 제거: 정확한 매칭부터 시맨틱 디덥까지](/articles/data-deduplication)
 
 **다음 글:** [Cursor: AI 네이티브 IDE의 새로운 기준](/articles/ai-coding-cursor)

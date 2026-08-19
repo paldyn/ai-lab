@@ -9,7 +9,7 @@ tags: ["문장 임베딩", "SBERT", "의미 검색", "sentence-transformers", "N
 featured: false
 draft: false
 ---
-[지난 글](/articles/embedding-contextual)에서 ELMo와 BERT가 문맥에 따라 다른 벡터를 생성하는 문맥적 임베딩을 살펴봤다. 이제 현실적인 질문이 남는다. "AI 기술이 발전했다"와 "인공지능이 급속히 성장하고 있다" — 이 두 문장이 의미상 비슷한가? BERT는 문장의 각 토큰에 문맥적 벡터를 만들어주지만, **문장 전체를 하나의 벡터로** 표현하는 것은 별도의 문제다. 문서 검색, 의미 유사도 측정, RAG(Retrieval-Augmented Generation)의 핵심인 **문장 임베딩**이 바로 이 공백을 메운다. 그 중심에는 2019년 Reimers & Gurevych가 발표한 **SBERT**(Sentence-BERT)가 있다.
+ELMo와 BERT가 등장하면서 단어는 문맥에 따라 다른 벡터를 갖게 됐다. 그런데 여기서 현실적인 질문이 하나 남는다. "AI 기술이 발전했다"와 "인공지능이 급속히 성장하고 있다" — 이 두 문장이 의미상 비슷한가? BERT는 문장의 각 토큰에 문맥적 벡터를 만들어주지만, **문장 전체를 하나의 벡터로** 표현하는 것은 별도의 문제다. 문서 검색, 의미 유사도 측정, RAG(Retrieval-Augmented Generation)의 핵심인 **문장 임베딩**이 바로 이 공백을 메운다. 그 중심에는 2019년 Reimers & Gurevych가 발표한 **SBERT**(Sentence-BERT)가 있다.
 
 ## 왜 BERT를 그대로 쓰면 안 되는가
 
@@ -292,7 +292,5 @@ for i in range(len(sentences)):
 ---
 
 읽어주셔서 감사합니다. 😊
-
-**지난 글:** [문맥적 임베딩: ELMo부터 BERT까지](/articles/embedding-contextual)
 
 **다음 글:** [멀티모달 임베딩: 텍스트와 이미지를 같은 공간에](/articles/embedding-multimodal)

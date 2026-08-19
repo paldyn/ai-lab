@@ -150,6 +150,4 @@ GOOD = {"properties": {"evidence": {...}, "is_spam": {...}}}
 
 읽어주셔서 감사합니다. 😊
 
-**지난 글:** [추론 모델을 언제 쓸 것인가](/articles/reasoning-when-to-use)
-
 **다음 글:** [JSON Schema로 출력 형태를 못 박기](/articles/structured-output-json-schema)

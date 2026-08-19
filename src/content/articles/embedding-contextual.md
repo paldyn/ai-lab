@@ -261,5 +261,3 @@ ELMo와 BERT는 "단어에 고정 벡터를 부여한다"는 패러다임을 "�
 읽어주셔서 감사합니다. 😊
 
 **지난 글:** [FastText: 부분 단어로 OOV를 정복하다](/articles/embedding-fasttext)
-
-**다음 글:** [문장 임베딩: SBERT와 의미 검색](/articles/embedding-sentence)

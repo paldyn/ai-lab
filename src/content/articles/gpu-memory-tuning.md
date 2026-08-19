@@ -293,4 +293,4 @@ OOM이 발생했을 때 순서대로 시도하자.
 
 **지난 글:** [GPU와 CUDA: 딥러닝 연산의 심장을 이해하다](/articles/gpu-cuda)
 
-**다음 글:** [RAG 시스템 처음부터 구축하기: 실전 프로젝트](/articles/project-rag-from-scratch)
+**다음 글:** [파인튜닝 파이프라인 구축: 데이터부터 배포까지](/articles/project-finetune-pipeline)

@@ -9,7 +9,7 @@ tags: ["AI안전성", "환각", "AI편향", "Constitutional AI", "RLHF", "AI정�
 featured: false
 draft: false
 ---
-[지난 글](/articles/llmops-fallback-strategies)에서 LLM 서비스의 가용성을 높이는 Fallback 전략을 다뤘다. 이번 글은 한 발짝 물러서서 더 근본적인 질문을 다룬다. **이 AI가 제대로 작동하는지 어떻게 알 수 있는가? 올바르게 작동하지 않을 때 어떤 일이 벌어지는가?**
+[지난 글](/articles/ai-current-landscape)에서 파운데이션 모델부터 인프라·응용까지 지금 AI 생태계의 전체 지도를 훑었다. 이번 글은 그 지도 위에서 더 근본적인 질문을 다룬다. **이 AI가 제대로 작동하는지 어떻게 알 수 있는가? 올바르게 작동하지 않을 때 어떤 일이 벌어지는가?**
 
 AI 안전성(AI Safety)은 단순히 악용 방지가 아니다. AI 시스템이 개발자의 의도대로, 사용자에게 해가 되지 않게, 사회에 이롭게 작동하도록 보장하는 광범위한 공학·윤리·거버넌스 영역이다. GPT-4나 Claude 같은 강력한 시스템일수록 잘못된 방향으로 작동할 때의 파급력이 크다. 이것이 AI 안전성이 기술 논의의 중심으로 올라온 이유다.
 
@@ -200,6 +200,6 @@ EU AI Act(2024)는 AI를 위험도에 따라 분류하고 고위험 AI(의료·�
 
 읽어주셔서 감사합니다. 😊
 
-**지난 글:** [LLM Fallback 전략: 장애에도 살아남는 서비스 설계](/articles/llmops-fallback-strategies)
+**지난 글:** [2025~2026 AI 생태계 전체 지도: 지금 무슨 일이 벌어지고 있나](/articles/ai-current-landscape)
 
 **다음 글:** [AI 정렬: 인간의 가치와 AI 목표를 일치시키기](/articles/ai-alignment)

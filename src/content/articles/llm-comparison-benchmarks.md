@@ -179,5 +179,3 @@ def llm_judge(question: str, response_a: str, response_b: str) -> dict:
 읽어주셔서 감사합니다. 😊
 
 **지난 글:** [한국 LLM 완전 해부: EXAONE, HyperCLOVA X, SOLAR](/articles/llm-korean-models)
-
-**다음 글:** [프롬프트 엔지니어링 완전 정복: AI와 대화하는 기술](/articles/prompt-engineering)

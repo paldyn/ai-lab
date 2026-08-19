@@ -248,5 +248,3 @@ $$43\%$$ 입니다. 두 번째 30%가 이미 늘어난 값에 붙기 때문에 3
 읽어주셔서 감사합니다. 😊
 
 **지난 글:** [분수의 사칙연산: 나눗셈이 왜 역수의 곱인가](/articles/math-basics-fractions)
-
-**다음 글:** [거듭제곱과 근호: a⁰=1은 약속이 아니라 결론이다](/articles/math-basics-powers-and-roots)

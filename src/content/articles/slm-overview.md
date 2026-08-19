@@ -98,6 +98,4 @@ $L$은 층 수, $H_{kv}$는 키·값 헤드 수, $d_h$는 헤드 차원, $S$는 
 
 읽어주셔서 감사합니다. 😊
 
-**지난 글:** [시스템 프롬프트는 어디까지 적어야 하는가](/articles/context-system-prompt-design)
-
 **다음 글:** [작은 모델로 내려도 되는지 판단하는 법](/articles/slm-vs-llm-tradeoff)

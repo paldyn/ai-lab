@@ -9,7 +9,7 @@ tags: ["추론모델", "reasoning", "thinking", "사고토큰", "LLM비용", "�
 featured: false
 draft: false
 ---
-[지난 글](/articles/project-cost-optimization)에서 LLM 비용을 줄이는 방법을 다뤘는데, 실무에서 그 계산을 가장 크게 흔드는 변수가 하나 있다. 추론 모델(reasoning model)을 쓸 것이냐다. 같은 프롬프트를 넣어도 응답 시간이 20배 늘고 출력 토큰이 15배 나오는데, 정작 정확도는 거의 안 오르는 경우가 절반쯤 된다. 반대로 일반 모델로는 아무리 프롬프트를 다듬어도 못 풀던 문제가 추론 모델에서는 한 번에 풀리기도 한다. 이 차이가 어디서 오는지 알면 어떤 요청에 어떤 모델을 붙일지가 훨씬 명확해진다.
+[지난 글](/articles/transformer-attention-from-first-principles)에서 Attention이 토큰 사이의 관계를 점수로 만들어 문맥 표현을 뽑아내는 과정을 봤다. 그런데 같은 구조를 쓰면서도 답을 내는 절차가 갈리는 지점이 하나 있다. 추론 모델(reasoning model)을 쓸 것이냐다. 같은 프롬프트를 넣어도 응답 시간이 20배 늘고 출력 토큰이 15배 나오는데, 정작 정확도는 거의 안 오르는 경우가 절반쯤 된다. 반대로 일반 모델로는 아무리 프롬프트를 다듬어도 못 풀던 문제가 추론 모델에서는 한 번에 풀리기도 한다. 이 차이가 어디서 오는지 알면 어떤 요청에 어떤 모델을 붙일지가 훨씬 명확해진다.
 
 ## 구조적으로 무엇이 다른가
 
@@ -161,6 +161,6 @@ for block in resp.content:
 
 읽어주셔서 감사합니다. 😊
 
-**지난 글:** [LLM 비용 최적화: 더 저렴하게, 더 빠르게](/articles/project-cost-optimization)
+**지난 글:** [Transformer를 이해하는 가장 짧은 길: Attention부터 시작하기](/articles/transformer-attention-from-first-principles)
 
 **다음 글:** [테스트 타임 컴퓨트: 추론 시점에 계산을 더 쓴다는 것](/articles/reasoning-test-time-compute)

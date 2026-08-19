@@ -274,7 +274,3 @@ D 블록은 Table 2 캡션의 주장을 검산한다. "at a fraction of the trai
 ---
 
 읽어주셔서 감사합니다. 😊
-
-**지난 글:** [정규화를 빠뜨리면 얼마나 손해인가: 모델 12개 중 9개는 빠뜨릴 수가 없었다](/articles/lab-normalization-bug-cost)
-
-**다음 글:** [Chinchilla의 계수로 최적 배분을 직접 풀어 봤다: 20토큰/파라미터는 Approach 3에 없었다](/articles/lab-chinchilla-recompute)

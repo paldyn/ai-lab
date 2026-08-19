@@ -303,4 +303,4 @@ Fallback 발생 빈도가 높아지면 Primary 제공자에 문제가 생겼다�
 
 **지난 글:** [LLM 시맨틱 캐시: 반복 요청 비용 제로화 전략](/articles/llmops-cache)
 
-**다음 글:** [AI 안전성 개요: 신뢰할 수 있는 AI를 만들기 위한 기반](/articles/ai-safety-overview)
+**다음 글:** [데이터 수집: AI 모델의 연료를 모으는 방법](/articles/data-collection)

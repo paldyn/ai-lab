@@ -322,5 +322,3 @@ import my_module  # my_module.py 수정 후 자동 반영
 읽어주셔서 감사합니다. 😊
 
 **지난 글:** [Google Gemini SDK 활용 가이드](/articles/gemini-sdk)
-
-**다음 글:** [GPU와 CUDA: 딥러닝 연산의 심장을 이해하다](/articles/gpu-cuda)

@@ -141,4 +141,4 @@ LLM 앱에서 수백만 토큰을 처리해야 하는 전처리 파이프라인�
 
 **지난 글:** [SentencePiece: 언어에 구애받지 않는 토크나이저](/articles/tokenizer-sentencepiece)
 
-**다음 글:** [임베딩 기초: 단어를 벡터 공간에 배치하다](/articles/embedding-basics)
+**다음 글:** [LLM의 본질: 거대 언어 모델이란 무엇인가](/articles/llm-essence)

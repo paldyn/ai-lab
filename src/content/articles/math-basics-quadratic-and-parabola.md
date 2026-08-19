@@ -222,5 +222,3 @@ $$x^2+2x+3$$ 으로 확인합니다. $$a=1>0$$ 이고 $$D = 4-12 = -8 <0$$ 이�
 읽어주셔서 감사합니다. 😊
 
 **지난 글:** [로그: 되돌리는 계산에 이름 붙이기](/articles/math-basics-logarithms)
-
-**다음 글:** [좌표평면과 직선: 거리, 기울기, 그리고 원](/articles/math-basics-coordinate-plane-and-lines)

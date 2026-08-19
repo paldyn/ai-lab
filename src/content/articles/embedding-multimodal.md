@@ -232,4 +232,4 @@ texts = ["고양이 사진", "강아지 사진", "새 사진"]
 
 **지난 글:** [문장 임베딩: SBERT와 의미 검색](/articles/embedding-sentence)
 
-**다음 글:** [NLP 텍스트 전처리: 데이터를 모델에 맞게 다듬다](/articles/nlp-text-preprocessing)
+**다음 글:** [프롬프트 엔지니어링 완전 정복: AI와 대화하는 기술](/articles/prompt-engineering)

@@ -246,7 +246,3 @@ $$384{,}000{,}000 = 3.84 \times 10^8, \qquad 0.000042 = 4.2 \times 10^{-5}$$
 ---
 
 읽어주셔서 감사합니다. 😊
-
-**지난 글:** [소수·백분율과 비: 같은 양을 적는 세 가지 옷](/articles/math-basics-decimals-percent-ratio)
-
-**다음 글:** [문자와 대입: 문자 하나가 수 전부를 대신할 때](/articles/math-basics-variables-and-expressions)

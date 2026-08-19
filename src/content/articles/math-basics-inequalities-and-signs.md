@@ -293,5 +293,3 @@ $$a + b \ge 2\sqrt{ab}$$
 읽어주셔서 감사합니다. 😊
 
 **지난 글:** [일차방정식과 이항: 등식의 성질 넷으로 x만 남기기](/articles/math-basics-linear-equations)
-
-**다음 글:** [식 조작: 유도의 생략된 줄을 복원하는 기술](/articles/math-basics-algebra-manipulation)

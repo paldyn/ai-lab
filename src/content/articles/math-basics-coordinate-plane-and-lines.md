@@ -210,6 +210,4 @@ $$(x+1)^2 + (y-4)^2 = 9$$
 
 읽어주셔서 감사합니다. 😊
 
-**지난 글:** [이차함수와 포물선: 꼭짓점, 근, 그리고 판별식](/articles/math-basics-quadratic-and-parabola)
-
 **다음 글:** [삼각비와 단위원: 각을 좌표로 적는 법](/articles/math-basics-trigonometry-and-unit-circle)

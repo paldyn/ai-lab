@@ -9,7 +9,7 @@ tags: ["RNN", "순환신경망", "BPTT", "딥러닝", "시퀀스모델"]
 featured: false
 draft: false
 ---
-[지난 글](/articles/cnn-instance-segmentation)에서 인스턴스 세그멘테이션으로 CNN 계열의 정점을 살펴봤다. 이미지처럼 공간 구조가 고정된 데이터와 달리, **텍스트·음성·시계열**처럼 순서가 중요한 데이터를 다루려면 다른 접근이 필요하다. 그 해답이 **순환 신경망**(Recurrent Neural Network, RNN)이다.
+[지난 글](/articles/nn-vanishing-gradient)에서 깊은 신경망의 기울기 소실과 폭발, 그리고 ReLU·잔차 연결 같은 해결책을 살펴봤다. 그것이 층을 따라 깊어질 때의 문제였다면, **텍스트·음성·시계열**처럼 순서가 중요한 데이터는 시간을 따라 이어지는 다른 접근을 요구한다. 그 해답이 **순환 신경망**(Recurrent Neural Network, RNN)이다.
 
 ## RNN이 풀려는 문제
 
@@ -108,6 +108,6 @@ for i in range(0, seq_len, chunk_size):
 
 읽어주셔서 감사합니다. 😊
 
-**지난 글:** [인스턴스 분할: 물체를 개별로 구분하기](/articles/cnn-instance-segmentation)
+**지난 글:** [기울기 소실과 폭발: 깊은 네트워크의 고질적 문제](/articles/nn-vanishing-gradient)
 
 **다음 글:** [LSTM: 장단기 메모리 게이트 완전 해부](/articles/rnn-lstm)

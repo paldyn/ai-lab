@@ -167,4 +167,4 @@ compliance_checklist = {
 
 **지난 글:** [AI 워터마킹: AI 생성 콘텐츠를 추적하는 기술](/articles/ai-watermarking)
 
-**다음 글:** [데이터 수집: AI 모델의 연료를 모으는 방법](/articles/data-collection)
+**다음 글:** [가드레일: 모델을 믿는 대신 둘러싸는 구조](/articles/guardrails-overview)

@@ -225,6 +225,4 @@ $$a \neq b$$ 라는 단서도 함께 복원됩니다.
 
 읽어주셔서 감사합니다. 😊
 
-**지난 글:** [부등식과 부호: 음수를 곱하면 왜 방향이 뒤집히는가](/articles/math-basics-inequalities-and-signs)
-
 **다음 글:** [함수란 무엇인가: 입력 하나에 출력 하나, 그리고 그것을 그림으로 보기](/articles/math-basics-functions-and-graphs)

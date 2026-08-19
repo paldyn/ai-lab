@@ -268,7 +268,3 @@ $$\pi$$ 와 $$\phi$$ 는 한국어로 둘 다 '파이'라 불릴 때가 있습�
 ---
 
 읽어주셔서 감사합니다. 😊
-
-**지난 글:** [닮음과 비례: 크기가 달라도 변하지 않는 것](/articles/math-basics-similarity-and-proportion)
-
-**다음 글:** [수의 종류와 수직선: 음수끼리 곱하면 왜 양수가 되는가](/articles/math-basics-numbers-and-number-line)

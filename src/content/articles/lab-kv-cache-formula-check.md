@@ -371,5 +371,3 @@ RSS 열은 **의도한 것을 재지 못했다.** 캐시가 12MB일 때 RSS가 7
 ---
 
 읽어주셔서 감사합니다. 😊
-
-**지난 글:** [Chinchilla의 계수로 최적 배분을 직접 풀어 봤다: 20토큰/파라미터는 Approach 3에 없었다](/articles/lab-chinchilla-recompute)

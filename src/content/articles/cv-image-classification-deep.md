@@ -9,7 +9,7 @@ tags: ["이미지분류", "딥러닝", "CNN", "전이학습", "ResNet", "Efficie
 featured: false
 draft: false
 ---
-[지난 글](/articles/agent-anti-patterns)에서 AI 에이전트 개발의 안티패턴을 살펴봤다. 이번 글부터는 컴퓨터 비전(CV) 영역으로 넘어가, 딥러닝 이미지 분류의 전 과정을 완전 해설한다. 이미지 분류는 CV의 출발점이자, 객체 탐지·세그멘테이션·생성 모델 모두의 기반이 되는 핵심 태스크다.
+[지난 글](/articles/nlp-korean-processing)에서 한국어의 교착어 특성과 형태소 분석 도구를 살펴봤다. 이번 글부터는 텍스트를 떠나 컴퓨터 비전(CV) 영역으로 넘어가, 딥러닝 이미지 분류의 전 과정을 완전 해설한다. 이미지 분류는 CV의 출발점이자, 객체 탐지·세그멘테이션·생성 모델 모두의 기반이 되는 핵심 태스크다.
 
 ## 딥러닝 이미지 분류 파이프라인
 
@@ -229,6 +229,6 @@ for epoch in range(50):
 
 읽어주셔서 감사합니다. 😊
 
-**지난 글:** [에이전트 안티패턴: 흔한 실수와 피해야 할 설계](/articles/agent-anti-patterns)
+**지난 글:** [한국어 NLP: 교착어 처리와 한국어 특화 모델](/articles/nlp-korean-processing)
 
 **다음 글:** [Vision Transformer(ViT): 이미지를 문장처럼 처리하는 Transformer](/articles/cv-vision-transformer)

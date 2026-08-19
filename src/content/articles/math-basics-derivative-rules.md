@@ -296,5 +296,3 @@ $$y' = -\frac{x}{y}$$
 읽어주셔서 감사합니다. 😊
 
 **지난 글:** [도함수의 정의: 할선이 접선이 되는 자리에 이름 붙이기](/articles/math-basics-what-is-a-derivative)
-
-**다음 글:** [정적분: 넓이를 잘게 쪼개 더하기](/articles/math-basics-integral-as-area)

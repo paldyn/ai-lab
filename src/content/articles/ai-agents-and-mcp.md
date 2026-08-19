@@ -9,7 +9,7 @@ tags: ["AI에이전트", "MCP", "Model Context Protocol", "ReAct", "Tool Use", "
 featured: false
 draft: false
 ---
-[지난 글](/articles/serving-cost-optimization)에서 LLM 서빙 비용을 최적화하는 전략을 다뤘다. 이제 LLM을 단순 텍스트 생성 도구로 쓰는 것을 넘어, 스스로 목표를 분석하고 도구를 사용해 행동하는 AI 에이전트의 세계로 넘어간다. 에이전트는 현재 AI 개발의 가장 뜨거운 영역이며, Model Context Protocol(MCP)은 에이전트 생태계를 표준화하는 핵심 인프라다.
+[지난 글](/articles/rag-vs-finetuning)에서 지식을 외부 데이터베이스에 둘지 모델 가중치에 넣을지, RAG와 파인튜닝의 선택 기준을 다뤘다. 이제 LLM을 단순 텍스트 생성 도구로 쓰는 것을 넘어, 스스로 목표를 분석하고 도구를 사용해 행동하는 AI 에이전트의 세계로 넘어간다. 에이전트는 현재 AI 개발의 가장 뜨거운 영역이며, Model Context Protocol(MCP)은 에이전트 생태계를 표준화하는 핵심 인프라다.
 
 ## AI 에이전트란 무엇인가
 
@@ -271,6 +271,6 @@ AI 에이전트는 LLM에 **행동 능력**을 부여하는 시스템이다:
 
 읽어주셔서 감사합니다. 😊
 
-**지난 글:** [LLM 서빙 비용 최적화: 토큰·GPU·캐싱 전략](/articles/serving-cost-optimization)
+**지난 글:** [RAG vs 파인튜닝: 언제 무엇을 선택해야 하나](/articles/rag-vs-finetuning)
 
 **다음 글:** [에이전트 아키텍처: ReAct·Plan-and-Execute·Reflexion](/articles/agent-architecture)

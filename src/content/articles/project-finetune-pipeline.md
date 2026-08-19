@@ -9,7 +9,7 @@ tags: ["파인튜닝", "QLoRA", "LoRA", "파이프라인", "프로젝트", "Olla
 featured: false
 draft: false
 ---
-[지난 글](/articles/project-agent-from-scratch)에서 순수 Python으로 ReAct 에이전트를 직접 구축했다. 도구 레지스트리, 루프 제어, 메모리까지 에이전트의 내부 구조를 손으로 조립하면서 프레임워크가 무엇을 대신해주는지 명확히 파악했다. 이번에는 모델 자체를 바꾸는 작업, 즉 **파인튜닝 파이프라인**을 처음부터 구축한다. QLoRA로 베이스 모델을 학습하고, 평가하고, GGUF로 변환해서 Ollama로 배포하는 엔드-투-엔드 과정을 단계별로 직접 구현한다.
+[지난 글](/articles/gpu-memory-tuning)에서 제한된 VRAM으로 더 큰 모델을 훈련하는 방법을 다뤘다. 파라미터·그래디언트·옵티마이저 상태·액티베이션이 메모리를 어떻게 나눠 쓰는지 따져 보고, gradient checkpointing과 mixed precision으로 어디를 줄일 수 있는지 확인했다. 이번에는 그 위에서 모델 자체를 바꾸는 작업, 즉 **파인튜닝 파이프라인**을 처음부터 구축한다. QLoRA로 베이스 모델을 학습하고, 평가하고, GGUF로 변환해서 Ollama로 배포하는 엔드-투-엔드 과정을 단계별로 직접 구현한다.
 
 ## 파이프라인 전체 구조
 
@@ -547,6 +547,6 @@ model = get_peft_model(model, lora_config)
 
 읽어주셔서 감사합니다. 😊
 
-**지난 글:** [에이전트 시스템 처음부터 구축하기: 실전 프로젝트](/articles/project-agent-from-scratch)
+**지난 글:** [GPU 메모리 최적화: OOM 없이 더 크게 훈련하는 법](/articles/gpu-memory-tuning)
 
 **다음 글:** [평가 하네스 구축: LLM 성능을 체계적으로 측정하라](/articles/project-evaluation-harness)

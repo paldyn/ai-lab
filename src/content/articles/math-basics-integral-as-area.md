@@ -218,6 +218,4 @@ $$\dfrac13$$ 하나 구하는 데 시그마 공식과 극한이 필요했습니�
 
 읽어주셔서 감사합니다. 😊
 
-**지난 글:** [도함수 계산 규칙: 곱·몫·연쇄법칙을 손으로 스무 문제](/articles/math-basics-derivative-rules)
-
 **다음 글:** [미적분의 기본정리와 적분 기법: 미분을 거꾸로 돌리면 넓이가 나온다](/articles/math-basics-fundamental-theorem-of-calculus)

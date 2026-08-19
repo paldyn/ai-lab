@@ -342,7 +342,3 @@ Hoffmann 계수에서 D*/N* 를 59.1 -> 20 으로 옮기려면 예산이 몇 배
 ---
 
 읽어주셔서 감사합니다. 😊
-
-**지난 글:** [Transformer 논문의 학습 비용을 다시 계산했다: 표의 FLOPs는 연산량이 아니라 시계였다](/articles/lab-transformer-cost-recompute)
-
-**다음 글:** [KV 캐시 메모리 공식을 실측으로 검증했다: 13칸이 오차 없이 맞았고, 4배 큰 모델이 캐시는 3분의 1이었다](/articles/lab-kv-cache-formula-check)

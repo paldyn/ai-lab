@@ -124,5 +124,3 @@ $$SE = \sqrt{\frac{p(1-p)}{n}}$$
 읽어주셔서 감사합니다. 😊
 
 **지난 글:** [거절도 설계한다: 안 된다고 말하는 법](/articles/guardrails-refusal-design)
-
-**다음 글:** [하이브리드 검색은 붙이는 것보다 맞추는 것이 일이다](/articles/rag-hybrid-search-tuning)

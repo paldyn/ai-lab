@@ -9,7 +9,7 @@ tags: ["RAG", "벡터DB", "임베딩", "검색증강생성", "프로젝트", "Py
 featured: false
 draft: false
 ---
-[지난 글](/articles/gpu-memory-tuning)에서 GPU 메모리 최적화 기법을 살펴봤다. 이번에는 방향을 바꿔 **RAG(Retrieval-Augmented Generation) 시스템을 LangChain 없이 순수 Python으로 처음부터** 구축하는 실전 프로젝트를 진행한다. 라이브러리가 내부에서 무엇을 하는지 이해하지 못한 채 사용하면 디버깅이 어렵고 커스터마이징에 한계가 생긴다. 이 글은 문서 로딩부터 청킹, 임베딩, FAISS 벡터 저장, 검색, 프롬프트 조립, LLM 생성, 평가까지 — 모든 단계를 직접 코드로 구현한다.
+[지난 글](/articles/agent-anti-patterns)에서 프로덕션 에이전트가 반복해서 빠지는 열 가지 안티패턴과 방어 코드를 살펴봤다. 그중 하나가 단순 RAG로 충분한 자리에 에이전트를 얹는 것이었으니, 이번에는 그 **RAG(Retrieval-Augmented Generation) 시스템을 LangChain 없이 순수 Python으로 처음부터** 구축하는 실전 프로젝트를 진행한다. 라이브러리가 내부에서 무엇을 하는지 이해하지 못한 채 사용하면 디버깅이 어렵고 커스터마이징에 한계가 생긴다. 이 글은 문서 로딩부터 청킹, 임베딩, FAISS 벡터 저장, 검색, 프롬프트 조립, LLM 생성, 평가까지 — 모든 단계를 직접 코드로 구현한다.
 
 ## 프로젝트 구조
 
@@ -411,6 +411,6 @@ print(f"Relevance: {rel:.3f} | Faithfulness: {faith:.3f}")
 
 읽어주셔서 감사합니다. 😊
 
-**지난 글:** [GPU 메모리 최적화: OOM 없이 더 크게 훈련하는 법](/articles/gpu-memory-tuning)
+**지난 글:** [에이전트 안티패턴: 흔한 실수와 피해야 할 설계](/articles/agent-anti-patterns)
 
 **다음 글:** [에이전트 시스템 처음부터 구축하기: 실전 프로젝트](/articles/project-agent-from-scratch)

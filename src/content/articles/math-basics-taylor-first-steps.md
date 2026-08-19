@@ -254,5 +254,3 @@ $$(1+x)^{\alpha}\approx 1+\alpha x$$ 를 씁니다.
 ---
 
 읽어주셔서 감사합니다. 😊
-
-**지난 글:** [미적분의 기본정리와 적분 기법: 미분을 거꾸로 돌리면 넓이가 나온다](/articles/math-basics-fundamental-theorem-of-calculus)

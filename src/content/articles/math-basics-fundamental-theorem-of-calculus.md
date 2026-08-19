@@ -262,5 +262,3 @@ $$\int \ln x\,dx = x\ln x - \int x\cdot\frac1x\,dx = x\ln x - \int 1\,dx = x\ln 
 읽어주셔서 감사합니다. 😊
 
 **지난 글:** [정적분: 넓이를 잘게 쪼개 더하기](/articles/math-basics-integral-as-area)
-
-**다음 글:** [테일러 첫걸음: 함수를 다항식으로 흉내 내기](/articles/math-basics-taylor-first-steps)

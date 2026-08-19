@@ -250,4 +250,4 @@ print(result)
 
 **지난 글:** [지시 해소: 대명사가 가리키는 것을 찾아라](/articles/nlp-coreference)
 
-**다음 글:** [LLM의 본질: 거대 언어 모델이란 무엇인가](/articles/llm-essence)
+**다음 글:** [딥러닝 이미지 분류 완전 정복: 백본·전이학습·실전 코드](/articles/cv-image-classification-deep)

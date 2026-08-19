@@ -98,4 +98,4 @@ draft: false
 
 **지난 글:** [대화가 길어질수록 무엇을 기억하게 할 것인가](/articles/context-multi-turn-management)
 
-**다음 글:** [작은 모델이 다시 쓸 만해진 이유](/articles/slm-overview)
+**다음 글:** [하이브리드 검색은 붙이는 것보다 맞추는 것이 일이다](/articles/rag-hybrid-search-tuning)

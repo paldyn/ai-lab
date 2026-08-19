@@ -9,7 +9,7 @@ tags: ["GPU", "CUDA", "딥러닝", "PyTorch", "병렬컴퓨팅", "NVIDIA"]
 featured: false
 draft: false
 ---
-[지난 글](/articles/notebook-jupyter)에서 Jupyter Notebook과 JupyterLab의 구조, 매직 커맨드, ML 실전 워크플로우를 살펴봤다. 이번에는 그 노트북 안에서 실제로 훈련이 얼마나 빨리 돌아가느냐를 결정하는 핵심 하드웨어인 **GPU와 CUDA**를 파고든다. "GPU를 쓰면 빠르다"는 사실은 누구나 알지만, 왜 빠른지, 어떤 원리로 병렬 연산을 수행하는지, PyTorch가 CUDA와 어떻게 대화하는지를 이해하면 OOM 에러 해결부터 연산 최적화까지 훨씬 깊은 수준에서 대응할 수 있다.
+[지난 글](/articles/data-deduplication)에서 해시 기반 정확 매칭부터 퍼지 매칭, MinHash LSH, 임베딩 기반 시맨틱 디덥까지 학습 데이터의 중복을 걸러내는 방법을 살펴봤다. 이번에는 그렇게 정리한 데이터로 실제 훈련이 얼마나 빨리 돌아가느냐를 결정하는 핵심 하드웨어인 **GPU와 CUDA**를 파고든다. "GPU를 쓰면 빠르다"는 사실은 누구나 알지만, 왜 빠른지, 어떤 원리로 병렬 연산을 수행하는지, PyTorch가 CUDA와 어떻게 대화하는지를 이해하면 OOM 에러 해결부터 연산 최적화까지 훨씬 깊은 수준에서 대응할 수 있다.
 
 ## CPU vs GPU: 근본적인 설계 철학의 차이
 
@@ -294,6 +294,6 @@ model = DDP(model, device_ids=[local_rank])
 
 읽어주셔서 감사합니다. 😊
 
-**지난 글:** [Jupyter Notebook·Lab 완전 정복: AI 개발자의 필수 환경](/articles/notebook-jupyter)
+**지난 글:** [데이터 중복 제거: 정확한 매칭부터 시맨틱 디덥까지](/articles/data-deduplication)
 
 **다음 글:** [GPU 메모리 최적화: OOM 없이 더 크게 훈련하는 법](/articles/gpu-memory-tuning)

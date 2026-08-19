@@ -9,7 +9,7 @@ tags: ["LLM", "대규모언어모델", "GPT", "Claude", "창발적능력", "파�
 featured: false
 draft: false
 ---
-[지난 글](/articles/nlp-korean-processing)에서 한국어 NLP의 특수성과 주요 도구를 살펴봤다. 이제 NLP의 전체 역사가 수렴하는 정점, **대규모 언어 모델**(Large Language Model, LLM)을 본격적으로 탐구한다. LLM은 단순히 "크기가 큰 언어 모델"이 아니다. 특정 규모를 넘어서면 기존 모델과는 질적으로 다른 능력이 나타나기 시작한다. 수학 문제를 풀고, 코드를 작성하고, 철학적 논쟁을 하고, 새로운 언어를 가르친다. 이 "창발(Emergence)"의 정체가 무엇인지, 그리고 LLM이 왜 AI 역사를 바꿨는지를 이 글에서 다룬다.
+[지난 글](/articles/tokenizer-tiktoken)에서 tiktoken으로 텍스트를 토큰으로 쪼개고 그 수를 세는 법을 살펴봤다. 이제 그 토큰을 받아 처리하는 쪽, NLP의 전체 역사가 수렴하는 정점인 **대규모 언어 모델**(Large Language Model, LLM)을 본격적으로 탐구한다. LLM은 단순히 "크기가 큰 언어 모델"이 아니다. 특정 규모를 넘어서면 기존 모델과는 질적으로 다른 능력이 나타나기 시작한다. 수학 문제를 풀고, 코드를 작성하고, 철학적 논쟁을 하고, 새로운 언어를 가르친다. 이 "창발(Emergence)"의 정체가 무엇인지, 그리고 LLM이 왜 AI 역사를 바꿨는지를 이 글에서 다룬다.
 
 ## ChatGPT 충격: 무엇이 달랐나
 
@@ -144,6 +144,6 @@ print(response.content[0].text)
 
 읽어주셔서 감사합니다. 😊
 
-**지난 글:** [한국어 NLP: 교착어 처리와 한국어 특화 모델](/articles/nlp-korean-processing)
+**지난 글:** [tiktoken: OpenAI의 빠른 BPE 토크나이저](/articles/tokenizer-tiktoken)
 
 **다음 글:** [LLM 사전학습: 수조 개 토큰으로 무엇을 배우나](/articles/llm-pretraining)

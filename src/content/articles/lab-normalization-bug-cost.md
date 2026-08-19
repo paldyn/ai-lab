@@ -470,7 +470,3 @@ sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2
 ---
 
 읽어주셔서 감사합니다. 😊
-
-**지난 글:** [512토큰에서 잘리는 문서는 얼마를 잃는가: 잘린 문단이 아니라 잘린 답만 잃었다](/articles/lab-long-document-truncation)
-
-**다음 글:** [Transformer 논문의 학습 비용을 다시 계산했다: 표의 FLOPs는 연산량이 아니라 시계였다](/articles/lab-transformer-cost-recompute)

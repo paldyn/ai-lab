@@ -9,7 +9,7 @@ tags: ["CNN", "합성곱", "Convolution", "커널", "딥러닝기초"]
 featured: false
 draft: false
 ---
-[지난 글](/articles/nn-vanishing-gradient)에서 기울기 소실·폭발 문제와 현대적 해결책을 살펴봤다. 이번 글부터는 이미지를 위한 합성곱 신경망(Convolutional Neural Network, CNN)을 다룬다. CNN은 2012년 AlexNet이 ImageNet 대회에서 압도적인 성능을 보이며 딥러닝 붐을 이끈 핵심 아키텍처다. 오늘은 CNN의 가장 기본 단위인 **합성곱 연산**(Convolution Operation)을 깊이 이해해 보자.
+이번 글부터는 이미지를 위한 합성곱 신경망(Convolutional Neural Network, CNN)을 다룬다. 2012년 AlexNet이 ImageNet 대회에서 압도적인 성능을 보이며 딥러닝 붐을 이끈 핵심 아키텍처이자, 완전연결 신경망이 이미지 앞에서 부딪히는 파라미터 폭발과 공간 관계 무시를 한꺼번에 푸는 구조다. 오늘은 CNN의 가장 기본 단위인 **합성곱 연산**(Convolution Operation)을 깊이 이해해 보자.
 
 ## 왜 완전연결층으로는 이미지를 처리하기 어려운가
 
@@ -148,7 +148,5 @@ print(out.shape)  # torch.Size([1, 64, 32, 32])
 ---
 
 읽어주셔서 감사합니다. 😊
-
-**지난 글:** [기울기 소실과 폭발: 깊은 네트워크의 고질적 문제](/articles/nn-vanishing-gradient)
 
 **다음 글:** [풀링: 공간 정보 압축과 불변성](/articles/cnn-pooling)

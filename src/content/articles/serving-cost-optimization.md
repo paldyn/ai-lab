@@ -340,5 +340,3 @@ LLM 비용 최적화는 계층적으로 접근해야 한다. 단계별 적용으
 읽어주셔서 감사합니다. 😊
 
 **지난 글:** [LLM API 속도 제한: Rate Limiting 전략과 구현](/articles/serving-rate-limiting)
-
-**다음 글:** [AI 에이전트와 MCP: 자율적으로 행동하는 AI 시스템](/articles/ai-agents-and-mcp)

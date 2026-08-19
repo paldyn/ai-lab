@@ -9,7 +9,7 @@ tags: ["데이터수집", "CommonCrawl", "합성데이터", "데이터파이프�
 featured: false
 draft: false
 ---
-[지난 글](/articles/ai-regulation)에서 AI 규제 환경을 살펴봤다. 어떤 규제를 따르든, AI 모델의 성능은 궁극적으로 학습 데이터의 질과 양에 달려 있다. "Garbage in, garbage out" — 이 절은 데이터 수집의 전 과정을 다룬다.
+[지난 글](/articles/llmops-fallback-strategies)에서 Circuit Breaker와 다중 제공자 Fallback으로 LLM API 장애를 견디는 방법을 살펴봤다. 운영을 아무리 촘촘히 짜도, AI 모델의 성능은 궁극적으로 학습 데이터의 질과 양에 달려 있다. "Garbage in, garbage out" — 이 절은 데이터 수집의 전 과정을 다룬다.
 
 ## 데이터가 모델을 결정한다
 
@@ -177,6 +177,6 @@ def minhash_dedup(texts: list[str], threshold=0.8, num_perm=128):
 
 읽어주셔서 감사합니다. 😊
 
-**지난 글:** [AI 규제: 전 세계 AI 법안과 거버넌스 현황](/articles/ai-regulation)
+**지난 글:** [LLM Fallback 전략: 장애에도 살아남는 서비스 설계](/articles/llmops-fallback-strategies)
 
 **다음 글:** [데이터 레이블링: AI가 학습할 정답을 만드는 과정](/articles/data-labeling)

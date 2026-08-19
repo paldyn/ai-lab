@@ -9,7 +9,7 @@ tags: ["임베딩", "벡터", "Word2Vec", "코사인 유사도", "NLP", "LLM"]
 featured: false
 draft: false
 ---
-[지난 글](/articles/tokenizer-tiktoken)에서 tiktoken으로 텍스트를 정수 ID로 변환하는 방법을 살펴봤다. 이제 그 정수 ID들이 신경망으로 들어가기 전에 거치는 첫 번째 변환, **임베딩**(Embedding)을 다룬다. 임베딩은 이산적인 토큰 ID를 연속적인 고차원 실수 벡터로 바꾸는 과정이다. "개"와 "고양이"는 정수 ID 상으로는 아무 관계가 없지만, 임베딩 공간에서는 두 벡터가 가까이 위치하도록 학습된다. 이 개념이 현대 NLP와 LLM의 가장 근본적인 기반이다.
+[지난 글](/articles/rnn-limitations)에서 RNN 계열의 세 가지 한계와 Transformer가 이를 한꺼번에 해결한 방식을 정리했다. 그런데 RNN이든 Transformer든, 토큰이 신경망으로 들어가려면 먼저 같은 변환을 한 번 거쳐야 한다. **임베딩**(Embedding)이다. 임베딩은 이산적인 토큰 ID를 연속적인 고차원 실수 벡터로 바꾸는 과정이다. "개"와 "고양이"는 정수 ID 상으로는 아무 관계가 없지만, 임베딩 공간에서는 두 벡터가 가까이 위치하도록 학습된다. 이 개념이 현대 NLP와 LLM의 가장 근본적인 기반이다.
 
 ## 왜 임베딩이 필요한가
 
@@ -125,6 +125,6 @@ model.lm_head.weight = model.embedding.weight
 
 읽어주셔서 감사합니다. 😊
 
-**지난 글:** [tiktoken: OpenAI의 빠른 BPE 토크나이저](/articles/tokenizer-tiktoken)
+**지난 글:** [RNN의 한계와 Transformer로의 전환](/articles/rnn-limitations)
 
 **다음 글:** [Word2Vec: 신경망으로 단어 의미를 학습하다](/articles/embedding-word2vec)
