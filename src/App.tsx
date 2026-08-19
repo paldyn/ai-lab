@@ -5,6 +5,7 @@ import { LearnPage } from './pages/LearnPage';
 import { HomePage } from './pages/HomePage';
 import { NewsPage } from './pages/NewsPage';
 import { NotFoundPage } from './pages/NotFoundPage';
+import { PrivacyPage } from './pages/PrivacyPage';
 import { ResearchPage } from './pages/ResearchPage';
 
 /** /concepts/<category> 를 같은 카테고리의 /learn/<category> 로 넘깁니다. */
@@ -25,6 +26,7 @@ export default function App() {
         <Route path="/learn/:categoryId" element={<LearnPage />} />
         <Route path="/research" element={<ResearchPage />} />
         <Route path="/articles/:slug" element={<ArticlePage />} />
+        <Route path="/privacy" element={<PrivacyPage />} />
         {/* 지난 주소들. /concepts는 2026-08-04에 /learn으로 바꿨습니다. */}
         <Route path="/concepts" element={<Navigate to="/learn" replace />} />
         <Route path="/concepts/:categoryId" element={<RedirectConceptCategory />} />

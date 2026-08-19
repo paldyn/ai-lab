@@ -16,6 +16,7 @@ export const staticRoutes: string[] = [
   '/learn',
   ...categoryIdsIn('learn').map((id) => `/learn/${id}`),
   '/research',
+  '/privacy',
 ];
 
 /** 빌드 시 HTML로 미리 생성할 전체 경로. */

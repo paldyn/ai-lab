@@ -292,6 +292,7 @@ export function Layout({ children }: { children: ReactNode }) {
           <div className="flex flex-wrap gap-x-6 gap-y-2 text-xs text-[var(--text-dim)]">
             <a href="https://paldyn.com" className="footer-link">Official</a>
             <a href="https://techblog.paldyn.com" className="footer-link">Tech Blog</a>
+            <Link to="/privacy" className="footer-link">개인정보 처리방침</Link>
             <span>© 2026 PALDYN</span>
           </div>
         </div>
