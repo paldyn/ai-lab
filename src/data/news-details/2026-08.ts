@@ -2,6 +2,21 @@ import type { NewsDetail } from '../news';
 
 /** 2026-08 발표의 모달 본문. 목록은 news.ts에 있습니다. */
 export const details: Record<string, NewsDetail> = {
+  'claude-platform-august-18-2026': {
+    points: [
+      'Claude Console의 Workbench가 Playground로 이름을 바꿨다',
+      'Playground는 Messages API의 파라미터를 빠짐없이 지원한다',
+      '코드 실행·웹 검색처럼 API 기능을 보여 주는 템플릿이 들어 있다',
+      '실행할 때마다 전체 SDK 요청과 그에 대한 API 응답을 함께 보여 준다',
+      'API를 이해하고 그 위에서 만들도록 돕는 것이 목적이라고 밝혔다',
+      'platform.claude.com/playground에서 열리고 안내는 Claude 헬프 센터에 있다',
+    ],
+    commentary:
+      'Workbench는 프롬프트를 다듬는 자리였고 Playground는 요청을 만들어 보는 자리다. ' +
+      'SDK 요청과 응답을 나란히 보여 준다는 대목이 그 차이를 그대로 드러낸다 — 콘솔에서 ' +
+      '시험한 것이 코드로 옮겨 가는 길을 짧게 만드는 설계다. 7월 17일 노트가 레거시 ' +
+      'Workbench 종료를 예고했으니, 이번 것이 그 자리를 대신할 도구인 셈이다.',
+  },
   'claude-platform-august-11-2026': {
     points: [
       'Compliance API가 사용자 기기에서 돌아간 Cowork·Claude Code 세션의 기록을 돌려준다 — Claude Enterprise 조직용 베타다',

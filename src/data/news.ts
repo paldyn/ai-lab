@@ -172,6 +172,21 @@ export const globalNewsUpdatedAt = '2026-08-17';
  */
 const entries: NewsItem[] = [
   {
+    id: 'claude-platform-august-18-2026',
+    source: 'Anthropic',
+    kind: 'company',
+    title: 'Claude Console의 Workbench, Playground로 개편',
+    summary:
+      'Claude Console의 Workbench가 Playground로 바뀌었다. Messages API의 모든 파라미터를 ' +
+      '지원하고 코드 실행·웹 검색 같은 기능을 보여 주는 템플릿이 들어 있으며, 실행할 때마다 ' +
+      '전체 SDK 요청과 API 응답을 함께 보여 준다.',
+    publishedAt: '2026-08-18',
+    collectedAt: '2026-08-20',
+    category: 'Product',
+    signal: '콘솔 Playground',
+    url: 'https://platform.claude.com/docs/en/release-notes/overview#august-18-2026',
+  },
+  {
     id: 'the-defenders-window',
     source: 'OpenAI',
     kind: 'company',
