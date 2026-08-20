@@ -257,9 +257,16 @@ function measure(root: HTMLElement, ranges: readonly Range[], melt: HTMLElement[
 
   for (let node = walker.nextNode(); node; node = walker.nextNode()) {
     const parent = node.parentElement;
-    if (!parent || !node.nodeValue?.trim()) continue;
+    if (!parent) continue;
     // 낭독기용 MathML 사본은 눈에 안 보입니다.
     if (parent.closest('.katex-mathml')) continue;
+    /*
+      공백뿐인 노드는 대개 블록과 블록 사이의 줄바꿈이라 건너뜁니다. **코드 블록
+      안에서만 내용으로 칩니다** — 거기서는 빈 줄과 들여쓰기가 그 자리에 있습니다.
+      건너뛰면 아래에서 재는 범위가 잉크 있는 노드까지 안쪽으로 당겨져, 선택의
+      첫 줄이나 마지막 줄이 빈 줄이면 그 줄만 안 칠해집니다.
+    */
+    if (!node.nodeValue?.trim() && !parent.closest('pre')) continue;
 
     let part: Clipped | null = null;
     for (const range of ranges) {
@@ -319,13 +326,16 @@ function measure(root: HTMLElement, ranges: readonly Range[], melt: HTMLElement[
     for (const chip of span.extra) {
       for (const rect of chip.getClientRects()) rects.push(rect);
     }
-    if (rects.length === 0) continue;
 
     const style = getComputedStyle(host);
-    for (const mark of blankLinesOf(marks, rects, style)) rects.push(mark);
+    const lines = splitLines(rects);
+    // 빈 줄의 자리표끼리도 한 번 묶습니다. 한 줄에 폭 0짜리가 둘씩 오기 때문입니다.
+    for (const blank of splitLines(blankLinesOf(marks, rects, style))) lines.push(blank);
+    if (lines.length === 0) continue;
+
     const origin = originOf(host, style);
     const lineHeight = Number.parseFloat(style.lineHeight) || 0;
-    const bands = splitLines(rects)
+    const bands = lines
       .map((line) => bandOf(line, lineHeight))
       .map((band) => ({
         top: band.top - origin.top,
