@@ -2783,16 +2783,15 @@ input:focus-visible {
 
   표시(`data-selection-ribbon`)는 스크립트가 붙입니다. 프리렌더된 HTML만 떠 있는
   동안에는 브라우저 기본 칠이 그대로 보입니다.
+
+  **코드 블록도 여기에 들어갑니다.** 한동안 예외로 두어 브라우저에 맡겼는데,
+  칠하는 높이가 글자 상자라(13.5px 글꼴이면 약 17px) 줄 높이 1.75배(약 24px)
+  사이마다 검은 틈이 남았습니다. `line-height`는 선택 상자 높이를 바꾸지 못하므로
+  CSS로 메울 방법이 없어 그 예외를 걷어냈습니다.
 */
 .article-prose[data-selection-ribbon] ::selection,
 .article-prose[data-selection-ribbon]::selection {
   background: transparent;
-}
-
-/* 코드 블록은 한 벌의 글꼴로만 그려져 어긋날 일이 없습니다. 브라우저에 맡깁니다. */
-.article-prose[data-selection-ribbon] pre ::selection,
-.article-prose[data-selection-ribbon] pre::selection {
-  background: var(--brand);
 }
 
 /*

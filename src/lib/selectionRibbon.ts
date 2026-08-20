@@ -24,8 +24,14 @@
  *
  * 그래서 **줄 전체를 우리가 그립니다.** 본문 안에서는 브라우저의 선택 칠을 모두
  * 끄고(styles.css), 줄마다 띠 하나를 놓습니다. 맞출 대상이 없어지므로 어긋날
- * 자리도 없습니다. 코드 블록(`pre`)만 예외로 두어 브라우저에 맡깁니다 — 거기는
- * 한 벌의 글꼴로만 그려져 어긋날 일이 없습니다.
+ * 자리도 없습니다.
+ *
+ * **코드 블록도 우리가 그립니다.** 한동안 브라우저에 맡겼습니다 — 한 벌의 글꼴로만
+ * 그려져 어긋날 일이 없다고 봤기 때문입니다. 그런데 어긋남이 아니라 **틈**이
+ * 문제였습니다. 브라우저가 칠하는 높이는 글자 상자(13.5px 글꼴이면 약 17px)인데
+ * 줄 높이는 1.75배(약 24px)라, 여러 줄을 끌면 줄 사이마다 검은 띠가 남습니다.
+ * `line-height`는 선택 상자 높이를 바꾸지 못하므로 CSS로는 못 없앱니다.
+ * 줄 상자를 우리가 그리면 그 틈이 사라집니다.
  *
  * 끄는 스위치를 JS가 붙이는 것이 중요합니다. 이 저장소는 프리렌더한 HTML을
  * 내보내므로 스크립트가 아직 안 붙은 동안이 있는데, CSS에 무조건 걸어 두면 그
@@ -175,6 +181,7 @@ function clear(root: HTMLElement): void {
     host.style.removeProperty('background-position');
     host.style.removeProperty('background-size');
     host.style.removeProperty('background-repeat');
+    host.style.removeProperty('background-attachment');
     host.removeAttribute(HOST_ATTR);
   }
   for (const chip of root.querySelectorAll(`[${MELTED_ATTR}]`)) chip.removeAttribute(MELTED_ATTR);
@@ -183,13 +190,18 @@ function clear(root: HTMLElement): void {
 /**
  * 띠를 놓을 기준점 — 배경이 (0, 0)에서 시작하는 자리(padding box의 왼쪽 위).
  * 그릇은 블록이라 줄바꿈으로 조각나지 않으므로 감싼 상자에서 테두리만 빼면 됩니다.
+ *
+ * **그릇이 스스로 스크롤하면 그만큼 되돌립니다.** 코드 블록은 `overflow-x: auto`라
+ * 긴 줄이 있으면 옆으로 밀리는데, 좌표는 지금 보이는 자리를 잰 값이라 밀린 만큼
+ * 어긋나 있습니다. 띠도 `background-attachment: local`로 내용과 함께 밀리므로
+ * (paint 참고) 기준점을 스크롤 안 한 자리로 되돌려 두 값을 맞춥니다.
  */
 function originOf(host: HTMLElement, style: CSSStyleDeclaration): { left: number; top: number } {
   const box = host.getBoundingClientRect();
 
   return {
-    left: box.left + (Number.parseFloat(style.borderLeftWidth) || 0),
-    top: box.top + (Number.parseFloat(style.borderTopWidth) || 0),
+    left: box.left + (Number.parseFloat(style.borderLeftWidth) || 0) - host.scrollLeft,
+    top: box.top + (Number.parseFloat(style.borderTopWidth) || 0) - host.scrollTop,
   };
 }
 
@@ -223,8 +235,8 @@ function measure(root: HTMLElement, ranges: readonly Range[], melt: HTMLElement[
   for (let node = walker.nextNode(); node; node = walker.nextNode()) {
     const parent = node.parentElement;
     if (!parent || !node.nodeValue?.trim()) continue;
-    // 코드 블록은 브라우저에 맡깁니다. 낭독기용 MathML 사본은 눈에 안 보입니다.
-    if (parent.closest('pre, .katex-mathml')) continue;
+    // 낭독기용 MathML 사본은 눈에 안 보입니다.
+    if (parent.closest('.katex-mathml')) continue;
 
     let part: Clipped | null = null;
     for (const range of ranges) {
@@ -357,6 +369,8 @@ function paint(root: HTMLElement): void {
     plan.host.style.setProperty('background-position', positions.join(','));
     plan.host.style.setProperty('background-size', sizes.join(','));
     plan.host.style.setProperty('background-repeat', 'no-repeat');
+    // 코드 블록은 옆으로 스크롤합니다. 띠가 글자와 함께 밀리도록 내용에 붙입니다.
+    plan.host.style.setProperty('background-attachment', 'local');
   }
 }
 
