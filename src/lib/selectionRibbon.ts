@@ -352,16 +352,28 @@ function measure(root: HTMLElement, ranges: readonly Range[], melt: HTMLElement[
 
     const origin = originOf(host, style);
     const lineHeight = Number.parseFloat(style.lineHeight) || 0;
-    const bands = lines
-      .map((line) => bandOf(line, lineHeight))
-      .map((band) => ({
+    const bands = lines.map((line) => bandOf(line, lineHeight)).sort((a, b) => a.top - b.top);
+
+    /*
+      **맞닿은 띠는 한 픽셀 겹치게 만듭니다.** `bandOf`가 위아래를 픽셀에 맞추지만
+      경계가 마침 정수이면 겹침이 0이 됩니다 — 줄 높이가 23.625px이라 여덟 줄에 한 번
+      그 자리에 닿습니다. 겹침이 0이면 확대 배율이 정수가 아닐 때(125%·150%) 경계
+      픽셀을 두 층이 나눠 칠해 실선이 비칩니다. `bandOf`의 주석이 적은 그 합성입니다.
+    */
+    for (let i = 0; i + 1 < bands.length; i += 1) {
+      const next = bands[i + 1];
+      if (next.top <= bands[i].bottom && bands[i].bottom < next.top + 1) bands[i].bottom = next.top + 1;
+    }
+
+    plans.push({
+      host,
+      bands: bands.map((band) => ({
         top: band.top - origin.top,
         bottom: band.bottom - origin.top,
         left: band.left - origin.left,
         right: band.right - origin.left,
-      }));
-
-    plans.push({ host, bands });
+      })),
+    });
   }
 
   return plans;
