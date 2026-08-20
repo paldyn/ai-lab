@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="440" viewBox="0 0 880 440" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <rect width="880" height="440" fill="#0a0a0a" rx="12"/>
+  <text x="60" y="46" fill="#e8e8e8" font-size="22" font-weight="700">네 개의 두 변수 함수와 등고선</text>
+  <text x="60" y="72" fill="#888" font-size="13">같은 평면 위에 z = 1, 2, 4 세 높이의 등고선을 그렸습니다. 촘촘한 곳이 가파른 곳입니다.</text>
+
+  <!-- Panel 1: bowl z = x^2 + y^2. Contours are circles r = sqrt(z) -->
+  <g transform="translate(80, 100)">
+    <rect x="0" y="0" width="160" height="200" fill="#0f1a2a" stroke="#3a4a6e" stroke-width="1" rx="6"/>
+    <text x="80" y="22" fill="#7ec8e3" font-size="13" font-weight="700" text-anchor="middle">그릇 z = x² + y²</text>
+    <!-- center at (80, 120), scale 24 px per unit for smaller contours -->
+    <line x1="10" y1="120" x2="150" y2="120" stroke="#666" stroke-width="0.8"/>
+    <line x1="80" y1="50" x2="80" y2="190" stroke="#666" stroke-width="0.8"/>
+    <!-- z=1 r=1 -->
+    <circle cx="80" cy="120" r="24" fill="none" stroke="#7ec8e3" stroke-width="1.8"/>
+    <!-- z=2 r≈1.41 -->
+    <circle cx="80" cy="120" r="34" fill="none" stroke="#7ec8e3" stroke-width="1.8"/>
+    <!-- z=4 r=2 -->
+    <circle cx="80" cy="120" r="48" fill="none" stroke="#7ec8e3" stroke-width="1.8"/>
+    <text x="80" y="186" fill="#888" font-size="11" text-anchor="middle">동심원</text>
+  </g>
+
+  <!-- Panel 2: saddle z = x^2 - y^2. Contours: x^2 - y^2 = k are hyperbolas -->
+  <g transform="translate(260, 100)">
+    <rect x="0" y="0" width="160" height="200" fill="#2a1a0f" stroke="#3a4a6e" stroke-width="1" rx="6"/>
+    <text x="80" y="22" fill="#e59866" font-size="13" font-weight="700" text-anchor="middle">안장 z = x² − y²</text>
+    <line x1="10" y1="120" x2="150" y2="120" stroke="#666" stroke-width="0.8"/>
+    <line x1="80" y1="50" x2="80" y2="190" stroke="#666" stroke-width="0.8"/>
+    <!-- Asymptotes y = +-x -->
+    <line x1="20" y1="60" x2="140" y2="180" stroke="#444" stroke-width="0.8" stroke-dasharray="3,3"/>
+    <line x1="20" y1="180" x2="140" y2="60" stroke="#444" stroke-width="0.8" stroke-dasharray="3,3"/>
+    <!-- k=1: x = ±sqrt(1+y²). Two branches opening right/left. Use scale 24 -->
+    <path d="M 104,60 Q 106,90 104,120 Q 106,150 104,180" stroke="#e59866" stroke-width="1.6" fill="none"/>
+    <path d="M 56,60 Q 54,90 56,120 Q 54,150 56,180" stroke="#e59866" stroke-width="1.6" fill="none"/>
+    <!-- k=-1: y = ±sqrt(1+x²) branches opening up/down -->
+    <path d="M 20,96 Q 50,94 80,96 Q 110,94 140,96" stroke="#e59866" stroke-width="1.6" fill="none"/>
+    <path d="M 20,144 Q 50,146 80,144 Q 110,146 140,144" stroke="#e59866" stroke-width="1.6" fill="none"/>
+    <text x="80" y="186" fill="#888" font-size="11" text-anchor="middle">쌍곡선</text>
+  </g>
+
+  <!-- Panel 3: elongated valley z = x^2 + 10y^2. Contours ellipses stretched -->
+  <g transform="translate(440, 100)">
+    <rect x="0" y="0" width="160" height="200" fill="#1a2a0f" stroke="#3a4a6e" stroke-width="1" rx="6"/>
+    <text x="80" y="22" fill="#55c555" font-size="13" font-weight="700" text-anchor="middle">골짜기 z = x² + 10y²</text>
+    <line x1="10" y1="120" x2="150" y2="120" stroke="#666" stroke-width="0.8"/>
+    <line x1="80" y1="50" x2="80" y2="190" stroke="#666" stroke-width="0.8"/>
+    <!-- z=1: x^2 + 10y^2 = 1. x in [-1,1] scale 24, y in [-0.316, 0.316] scale 24 -> 7.6px -->
+    <ellipse cx="80" cy="120" rx="24" ry="8" fill="none" stroke="#55c555" stroke-width="1.6"/>
+    <ellipse cx="80" cy="120" rx="34" ry="11" fill="none" stroke="#55c555" stroke-width="1.6"/>
+    <ellipse cx="80" cy="120" rx="48" ry="15" fill="none" stroke="#55c555" stroke-width="1.6"/>
+    <text x="80" y="186" fill="#888" font-size="11" text-anchor="middle">가로로 늘어진 타원</text>
+  </g>
+
+  <!-- Panel 4: peak z = exp(-(x^2+y^2)/2). Contours: x^2 + y^2 = -2 ln(z). z=0.6 -> r≈1.01, z=0.3 -> r≈1.55, z=0.1 -> r≈2.15 -->
+  <g transform="translate(620, 100)">
+    <rect x="0" y="0" width="160" height="200" fill="#2a0f2a" stroke="#3a4a6e" stroke-width="1" rx="6"/>
+    <text x="80" y="22" fill="#c894e5" font-size="13" font-weight="700" text-anchor="middle">봉우리 z = e^(−(x²+y²)/2)</text>
+    <line x1="10" y1="120" x2="150" y2="120" stroke="#666" stroke-width="0.8"/>
+    <line x1="80" y1="50" x2="80" y2="190" stroke="#666" stroke-width="0.8"/>
+    <circle cx="80" cy="120" r="24" fill="none" stroke="#c894e5" stroke-width="1.8"/>
+    <circle cx="80" cy="120" r="37" fill="none" stroke="#c894e5" stroke-width="1.8"/>
+    <circle cx="80" cy="120" r="52" fill="none" stroke="#c894e5" stroke-width="1.8"/>
+    <text x="80" y="186" fill="#888" font-size="11" text-anchor="middle">가운데가 가장 높음</text>
+  </g>
+
+  <!-- Legend -->
+  <text x="60" y="350" fill="#e8e8e8" font-size="13">동심원(그릇)과 늘어진 타원(골짜기)은 가운데가 낮고 밖으로 갈수록 높습니다. 안장은 두 갈래가 서로 반대 방향으로 오르내리고, 봉우리는 가운데가 가장 높아 밖으로 갈수록 낮아집니다.</text>
+  <text x="60" y="376" fill="#e8e8e8" font-size="13">골짜기에서 등고선이 가로로 늘어진 이유는 x·y 방향 계수 비 1:10 때문입니다 — 같은 높이를 만들려면 y는 x보다 훨씬 조금만 움직여도 됩니다.</text>
+  <text x="60" y="402" fill="#888" font-size="12">등고선이 촘촘한 곳(밖으로 갈수록)이 그 방향으로 z가 가파르게 변하는 자리입니다.</text>
+</svg>

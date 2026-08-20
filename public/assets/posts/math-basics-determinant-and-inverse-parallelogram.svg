@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="400" viewBox="0 0 880 400" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <rect width="880" height="400" fill="#0a0a0a" rx="12"/>
+  <text x="60" y="46" fill="#e8e8e8" font-size="22" font-weight="700">2×2 행렬식 ad − bc는 평행사변형의 넓이</text>
+  <text x="60" y="72" fill="#888" font-size="13">두 열을 좌표평면의 점으로 읽으면 그 두 점과 원점이 만드는 평행사변형의 넓이가 ad − bc입니다.</text>
+
+  <!-- Axes: origin at (300, 340) -->
+  <line x1="120" y1="340" x2="540" y2="340" stroke="#888" stroke-width="1.5"/>
+  <line x1="300" y1="120" x2="300" y2="380" stroke="#888" stroke-width="1.5"/>
+  <text x="546" y="345" fill="#888" font-size="13">x</text>
+  <text x="306" y="118" fill="#888" font-size="13">y</text>
+
+  <!-- Grid at 40px per unit -->
+  <g stroke="#444" stroke-width="0.6">
+    <line x1="340" y1="120" x2="340" y2="380"/>
+    <line x1="380" y1="120" x2="380" y2="380"/>
+    <line x1="420" y1="120" x2="420" y2="380"/>
+    <line x1="460" y1="120" x2="460" y2="380"/>
+    <line x1="260" y1="120" x2="260" y2="380"/>
+    <line x1="220" y1="120" x2="220" y2="380"/>
+    <line x1="120" y1="300" x2="540" y2="300"/>
+    <line x1="120" y1="260" x2="540" y2="260"/>
+    <line x1="120" y1="220" x2="540" y2="220"/>
+    <line x1="120" y1="180" x2="540" y2="180"/>
+    <line x1="120" y1="140" x2="540" y2="140"/>
+  </g>
+
+  <!-- A = [[3,1],[1,2]]. Column 1 = (3,1) -> (300+120, 340-40) = (420, 300). Column 2 = (1,2) -> (300+40, 340-80) = (340, 260) -->
+  <!-- Parallelogram vertices: (0,0), (3,1), (4,3), (1,2) -> (300,340),(420,300),(460,220),(340,260) -->
+  <polygon points="300,340 420,300 460,220 340,260" fill="#7ec8e3" fill-opacity="0.25" stroke="#7ec8e3" stroke-width="2"/>
+
+  <!-- Vectors -->
+  <defs>
+    <marker id="arrpg" viewBox="0 0 12 12" refX="10" refY="6"
+            markerUnits="userSpaceOnUse" markerWidth="12" markerHeight="12" orient="auto">
+      <path d="M 0 0 L 11 6 L 0 12 z" fill="#e8e8e8"/>
+    </marker>
+  </defs>
+  <line x1="300" y1="340" x2="416" y2="302" stroke="#e59866" stroke-width="2.2" marker-end="url(#arrpg)"/>
+  <line x1="300" y1="340" x2="338" y2="262" stroke="#e59866" stroke-width="2.2" marker-end="url(#arrpg)"/>
+
+  <!-- Labels -->
+  <circle cx="420" cy="300" r="4" fill="#e8e8e8"/>
+  <circle cx="340" cy="260" r="4" fill="#e8e8e8"/>
+  <text x="428" y="316" fill="#e8e8e8" font-size="13">(3, 1) = 1열</text>
+  <text x="308" y="256" fill="#e8e8e8" font-size="13">(1, 2) = 2열</text>
+  <text x="380" y="290" fill="#7ec8e3" font-size="16" font-weight="700" text-anchor="middle">넓이 = 5</text>
+
+  <!-- Side box: computation -->
+  <rect x="620" y="110" width="230" height="230" fill="#111827" stroke="#3a4a6e" stroke-width="1" rx="6"/>
+  <text x="640" y="140" fill="#7ec8e3" font-size="14" font-weight="700">A = ( 3  1 )</text>
+  <text x="640" y="160" fill="#7ec8e3" font-size="14" font-weight="700">    ( 1  2 )</text>
+  <text x="640" y="196" fill="#e8e8e8" font-size="14">det A = ad − bc</text>
+  <text x="640" y="220" fill="#e8e8e8" font-size="14">      = 3·2 − 1·1</text>
+  <text x="640" y="244" fill="#55c555" font-size="18" font-weight="700">      = 5</text>
+  <text x="640" y="290" fill="#888" font-size="12">두 열의 순서가 바뀌면</text>
+  <text x="640" y="308" fill="#888" font-size="12">부호가 뒤집힙니다.</text>
+  <text x="640" y="326" fill="#888" font-size="12">그래서 "부호 있는 넓이".</text>
+</svg>

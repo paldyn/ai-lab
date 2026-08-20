@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="360" viewBox="0 0 880 360" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <rect width="880" height="360" fill="#0a0a0a" rx="12"/>
+  <text x="60" y="46" fill="#e8e8e8" font-size="22" font-weight="700">이중적분: 한 축 단면 넓이를 다시 다른 축으로 더한다</text>
+  <text x="60" y="72" fill="#888" font-size="13">z = f(x, y) 아래의 부피를 세로 단면 여러 장으로 자르고, 각 단면의 넓이를 x축을 따라 다시 더합니다.</text>
+
+  <!-- 3D sketch: box in x-y with vertical slices -->
+  <g transform="translate(120, 110)">
+    <defs>
+      <marker id="arrdi" viewBox="0 0 12 12" refX="10" refY="6"
+              markerUnits="userSpaceOnUse" markerWidth="12" markerHeight="12" orient="auto">
+        <path d="M 0 0 L 11 6 L 0 12 z" fill="#888"/>
+      </marker>
+    </defs>
+    <!-- axes -->
+    <line x1="200" y1="200" x2="80" y2="180" stroke="#888" stroke-width="1.4" marker-end="url(#arrdi)"/>
+    <text x="72" y="176" fill="#888" font-size="13">y</text>
+    <line x1="200" y1="200" x2="340" y2="200" stroke="#888" stroke-width="1.4" marker-end="url(#arrdi)"/>
+    <text x="346" y="204" fill="#888" font-size="13">x</text>
+    <line x1="200" y1="200" x2="200" y2="30" stroke="#888" stroke-width="1.4" marker-end="url(#arrdi)"/>
+    <text x="205" y="28" fill="#888" font-size="13">z</text>
+
+    <!-- Base rectangle projected -->
+    <polygon points="200,200 320,200 260,180 140,180" fill="#111827" stroke="#3a4a6e" stroke-width="1"/>
+
+    <!-- Slices at fixed x: vertical rectangles at x=1,2,3 stacked forward -->
+    <!-- slice at x closest -->
+    <polygon points="230,200 230,90 173,71 173,181" fill="#7ec8e3" fill-opacity="0.25" stroke="#7ec8e3" stroke-width="1.6"/>
+    <polygon points="260,200 260,110 203,91 203,181" fill="#7ec8e3" fill-opacity="0.25" stroke="#7ec8e3" stroke-width="1.6"/>
+    <polygon points="290,200 290,130 233,111 233,181" fill="#7ec8e3" fill-opacity="0.25" stroke="#7ec8e3" stroke-width="1.6"/>
+
+    <text x="260,110" fill="none"/>
+
+    <text x="180" y="240" fill="#7ec8e3" font-size="13" font-weight="700" text-anchor="middle">x를 하나 고정한 세로 단면들</text>
+  </g>
+
+  <!-- Right: formula -->
+  <rect x="500" y="120" width="320" height="200" fill="#111827" stroke="#3a4a6e" stroke-width="1" rx="6"/>
+  <text x="660" y="150" fill="#7ec8e3" font-size="14" font-weight="700" text-anchor="middle">이중적분은 두 번의 1축 적분</text>
+
+  <g font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="14" fill="#e8e8e8" text-anchor="middle">
+    <text x="660" y="188">∬ f(x,y) dx dy</text>
+    <text x="660" y="216">=  ∫ [ ∫ f(x,y) dy ] dx</text>
+  </g>
+
+  <text x="520" y="256" fill="#e59866" font-size="12">안쪽 [ ]: x가 고정된 세로 단면의 넓이</text>
+  <text x="520" y="278" fill="#e59866" font-size="12">바깥 ∫: 그 넓이를 x축을 따라 다시 더함</text>
+
+  <text x="520" y="308" fill="#888" font-size="11">직사각형 구간에서는 순서를 바꿔도</text>
+  <text x="520" y="322" fill="#888" font-size="11">같은 값이 나옵니다.</text>
+</svg>

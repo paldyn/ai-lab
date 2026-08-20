@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="440" viewBox="0 0 880 440" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <rect width="880" height="440" fill="#0a0a0a" rx="12"/>
+  <text x="60" y="46" fill="#e8e8e8" font-size="22" font-weight="700">15/20이 관측되었을 때 기각되지 않는 앞면 확률 $$p$$ 의 범위</text>
+  <text x="60" y="72" fill="#888" font-size="13">양쪽 꼬리가 각각 0.025 이상인 $$p$$ 를 남깁니다 (α=0.05, 양측)</text>
+
+  <!-- axes: x = p from 0.3 to 1.0, y = tail probability 0 to 1 -->
+  <!-- plot area: x 100..820, y 100..380 -->
+  <line x1="100" y1="380" x2="820" y2="380" stroke="#888" stroke-width="1.5"/>
+  <line x1="100" y1="380" x2="100" y2="100" stroke="#888" stroke-width="1.5"/>
+  <text x="825" y="400" fill="#888" font-size="13">p</text>
+  <text x="90" y="105" fill="#888" font-size="13" text-anchor="end">꼬리 확률</text>
+
+  <!-- x ticks p = 0.3, 0.5, 0.51, 0.75, 0.91, 1.0 -->
+  <!-- x = 100 + (p-0.3)/0.7 * 720 -->
+  <g fill="#888" font-size="12" text-anchor="middle">
+    <line x1="100" y1="380" x2="100" y2="384" stroke="#888"/>
+    <text x="100" y="400">0.3</text>
+    <line x1="305.7" y1="380" x2="305.7" y2="384" stroke="#888"/>
+    <text x="305.7" y="400">0.5</text>
+    <line x1="512.1" y1="380" x2="512.1" y2="384" stroke="#888"/>
+    <text x="512.1" y="400">0.7</text>
+    <line x1="717.7" y1="380" x2="717.7" y2="400" stroke="#888"/>
+    <text x="717.7" y="416">0.9</text>
+    <line x1="820" y1="380" x2="820" y2="384" stroke="#888"/>
+    <text x="820" y="400">1.0</text>
+  </g>
+
+  <!-- y ticks 0, 0.025, 0.5, 1.0. y = 380 - v * 280 -->
+  <g fill="#888" font-size="12" text-anchor="end">
+    <line x1="96" y1="380" x2="100" y2="380" stroke="#888"/>
+    <text x="94" y="384">0</text>
+    <line x1="96" y1="373" x2="100" y2="373" stroke="#888"/>
+    <text x="94" y="377">0.025</text>
+    <line x1="96" y1="240" x2="100" y2="240" stroke="#888"/>
+    <text x="94" y="244">0.5</text>
+    <line x1="96" y1="100" x2="100" y2="100" stroke="#888"/>
+    <text x="94" y="104">1</text>
+  </g>
+
+  <!-- 0.025 threshold line -->
+  <line x1="100" y1="373" x2="820" y2="373" stroke="#e05555" stroke-width="1.2" stroke-dasharray="5,3"/>
+  <text x="820" y="368" fill="#e05555" font-size="12" text-anchor="end">α/2 = 0.025</text>
+
+  <!-- P(X>=15 | p) — blue curve: rises with p -->
+  <path d="M 100,379.8 L 150,379.3 L 200,378.1 L 250,375.5 L 300,368.1
+           L 305.7,367.2 L 350,353.1 L 400,326.6 L 450,283.0 L 500,220.9
+           L 512.1,203.1 L 550,146.9 L 600,64.6 L 620,29.4 L 640,10.2
+           L 660,3.6 L 680,1.4 L 700,0.5 L 717.7,0.4 L 760,0.2 L 800,0.1 L 820,0.1"
+        stroke="#7ec8e3" stroke-width="2.5" fill="none"/>
+  <text x="440" y="290" fill="#7ec8e3" font-size="13">P(X ≥ 15 | p)</text>
+
+  <!-- P(X<=15 | p) — orange curve: falls with p -->
+  <path d="M 100,100 L 200,100 L 260,100.3 L 300,101.2 L 350,105.7 L 400,116.2 L 450,135.6
+           L 500,167.4 L 550,213.9 L 600,272.8 L 620,296.6 L 640,317.7 L 660,335.1
+           L 680,349.0 L 700,359.2 L 717.7,367.2 L 750,375.3 L 800,379.4 L 820,379.7"
+        stroke="#e59866" stroke-width="2.5" fill="none"/>
+  <text x="660" y="322" fill="#e59866" font-size="13">P(X ≤ 15 | p)</text>
+
+  <!-- Boundary markers: p=0.51 and p=0.91 -->
+  <!-- p=0.51 -> x = 100 + (0.51-0.3)/0.7 * 720 = 316 -->
+  <!-- p=0.91 -> x = 100 + (0.91-0.3)/0.7 * 720 = 727.4 -->
+  <line x1="316" y1="380" x2="316" y2="100" stroke="#55c555" stroke-width="1" stroke-dasharray="3,3"/>
+  <line x1="727.4" y1="380" x2="727.4" y2="100" stroke="#55c555" stroke-width="1" stroke-dasharray="3,3"/>
+  <rect x="316" y="380" width="411.4" height="8" fill="#55c555" fill-opacity="0.4"/>
+  <text x="522" y="405" fill="#55c555" font-size="13" font-weight="700" text-anchor="middle">기각되지 않는 p 범위 (약 0.51 ~ 0.91)</text>
+</svg>

@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="380" viewBox="0 0 880 380" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <rect width="880" height="380" fill="#0a0a0a" rx="12"/>
+  <text x="60" y="46" fill="#e8e8e8" font-size="22" font-weight="700">행렬과 열의 곱 Ax: 각 행과 x의 내적</text>
+  <text x="60" y="72" fill="#888" font-size="13">A의 첫 행과 x를 성분끼리 곱해 더하면 결과의 첫 성분이 됩니다.</text>
+
+  <!-- A matrix 2x3 -->
+  <path d="M 130,120 L 110,120 L 110,240 L 130,240" stroke="#e8e8e8" stroke-width="2" fill="none"/>
+  <path d="M 300,120 L 320,120 L 320,240 L 300,240" stroke="#e8e8e8" stroke-width="2" fill="none"/>
+  <g font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="18" text-anchor="middle">
+    <text x="150" y="160" fill="#55c555" font-weight="700">2</text>
+    <text x="215" y="160" fill="#55c555" font-weight="700">1</text>
+    <text x="280" y="160" fill="#55c555" font-weight="700">3</text>
+    <text x="150" y="220" fill="#e8e8e8">0</text>
+    <text x="215" y="220" fill="#e8e8e8">4</text>
+    <text x="280" y="220" fill="#e8e8e8">5</text>
+  </g>
+  <text x="215" y="105" fill="#7ec8e3" font-size="14" font-weight="700" text-anchor="middle">A (2×3)</text>
+
+  <!-- times sign -->
+  <text x="345" y="185" fill="#e8e8e8" font-size="22">×</text>
+
+  <!-- x vector 3x1 -->
+  <path d="M 400,120 L 380,120 L 380,290 L 400,290" stroke="#e8e8e8" stroke-width="2" fill="none"/>
+  <path d="M 460,120 L 480,120 L 480,290 L 460,290" stroke="#e8e8e8" stroke-width="2" fill="none"/>
+  <g font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="18" text-anchor="middle">
+    <text x="430" y="165" fill="#e59866" font-weight="700">1</text>
+    <text x="430" y="215" fill="#e59866" font-weight="700">2</text>
+    <text x="430" y="265" fill="#e59866" font-weight="700">3</text>
+  </g>
+  <text x="430" y="105" fill="#7ec8e3" font-size="14" font-weight="700" text-anchor="middle">x (3×1)</text>
+
+  <!-- equals -->
+  <text x="510" y="192" fill="#e8e8e8" font-size="22">=</text>
+
+  <!-- result 2x1 -->
+  <path d="M 560,120 L 540,120 L 540,240 L 560,240" stroke="#e8e8e8" stroke-width="2" fill="none"/>
+  <path d="M 700,120 L 720,120 L 720,240 L 700,240" stroke="#e8e8e8" stroke-width="2" fill="none"/>
+  <text x="630" y="160" fill="#55c555" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="16" font-weight="700" text-anchor="middle">2·1+1·2+3·3</text>
+  <text x="630" y="220" fill="#e8e8e8" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="16" text-anchor="middle">0·1+4·2+5·3</text>
+  <text x="630" y="105" fill="#7ec8e3" font-size="14" font-weight="700" text-anchor="middle">Ax (2×1)</text>
+
+  <!-- arrow with calc -->
+  <text x="780" y="192" fill="#e8e8e8" font-size="22">=</text>
+  <path d="M 800,120 L 780,120 L 780,240 L 800,240" stroke="#e8e8e8" stroke-width="2" fill="none"/>
+  <path d="M 840,120 L 860,120 L 860,240 L 840,240" stroke="#e8e8e8" stroke-width="2" fill="none"/>
+  <text x="820" y="160" fill="#55c555" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="18" font-weight="700" text-anchor="middle">13</text>
+  <text x="820" y="220" fill="#e8e8e8" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="18" text-anchor="middle">23</text>
+
+  <!-- crucial rule -->
+  <rect x="60" y="290" width="760" height="70" fill="#111827" stroke="#3a4a6e" stroke-width="1" rx="6"/>
+  <text x="80" y="316" fill="#7ec8e3" font-size="13" font-weight="700">크기가 맞아야 곱해집니다:</text>
+  <text x="80" y="340" fill="#e8e8e8" font-size="13">A가 (m×n), x가 (n×1)일 때에만 Ax가 만들어지고, 결과는 (m×1)입니다. 여기서는 (2×3)×(3×1)=(2×1).</text>
+</svg>

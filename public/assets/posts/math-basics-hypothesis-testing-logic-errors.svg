@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="380" viewBox="0 0 880 380" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <rect width="880" height="380" fill="#0a0a0a" rx="12"/>
+  <text x="60" y="46" fill="#e8e8e8" font-size="22" font-weight="700">1종 오류와 2종 오류</text>
+  <text x="60" y="72" fill="#888" font-size="13">가로줄이 실제, 세로줄이 판정입니다. 대각선에 있으면 옳게 맞힌 것입니다.</text>
+
+  <!-- header -->
+  <text x="380" y="120" fill="#7ec8e3" font-size="15" font-weight="700" text-anchor="middle">실제로 H₀가 참</text>
+  <text x="640" y="120" fill="#7ec8e3" font-size="15" font-weight="700" text-anchor="middle">실제로 H₀가 거짓</text>
+  <text x="200" y="200" fill="#7ec8e3" font-size="15" font-weight="700" text-anchor="middle">H₀ 기각 안 함</text>
+  <text x="200" y="300" fill="#7ec8e3" font-size="15" font-weight="700" text-anchor="middle">H₀ 기각</text>
+
+  <!-- cells -->
+  <rect x="270" y="140" width="220" height="100" fill="#0f1a1a" stroke="#3a4a6e" stroke-width="1" rx="6"/>
+  <text x="380" y="176" fill="#55c555" font-size="16" font-weight="700" text-anchor="middle">옳은 판정</text>
+  <text x="380" y="204" fill="#888" font-size="12" text-anchor="middle">확률 1 − α</text>
+  <text x="380" y="224" fill="#888" font-size="12" text-anchor="middle">(공정한 동전을 공정하다고 함)</text>
+
+  <rect x="530" y="140" width="220" height="100" fill="#1a0f0f" stroke="#3a4a6e" stroke-width="1" rx="6"/>
+  <text x="640" y="176" fill="#e05555" font-size="16" font-weight="700" text-anchor="middle">2종 오류 (β)</text>
+  <text x="640" y="204" fill="#888" font-size="12" text-anchor="middle">있는 차이를 놓침</text>
+  <text x="640" y="224" fill="#888" font-size="12" text-anchor="middle">(편향된 동전을 공정하다고 함)</text>
+
+  <rect x="270" y="250" width="220" height="100" fill="#1a0f0f" stroke="#3a4a6e" stroke-width="1" rx="6"/>
+  <text x="380" y="286" fill="#e05555" font-size="16" font-weight="700" text-anchor="middle">1종 오류 (α)</text>
+  <text x="380" y="314" fill="#888" font-size="12" text-anchor="middle">없는 차이를 있다고 함</text>
+  <text x="380" y="334" fill="#888" font-size="12" text-anchor="middle">(공정한 동전을 편향되었다고 함)</text>
+
+  <rect x="530" y="250" width="220" height="100" fill="#0f1a1a" stroke="#3a4a6e" stroke-width="1" rx="6"/>
+  <text x="640" y="286" fill="#55c555" font-size="16" font-weight="700" text-anchor="middle">옳은 판정</text>
+  <text x="640" y="314" fill="#888" font-size="12" text-anchor="middle">확률 1 − β (검정력)</text>
+  <text x="640" y="334" fill="#888" font-size="12" text-anchor="middle">(편향된 동전을 편향되었다고 함)</text>
+</svg>

@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="380" viewBox="0 0 880 380" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <rect width="880" height="380" fill="#0a0a0a" rx="12"/>
+  <text x="60" y="46" fill="#e8e8e8" font-size="22" font-weight="700">단면: y를 고정하면 1변수 그래프가 된다</text>
+  <text x="60" y="72" fill="#888" font-size="13">z = x² + y²에서 y = 0으로 고정하면 z = x² 이 됩니다. 이 단면을 x축을 따라 놓인 미분으로 하는 것이 편미분입니다.</text>
+
+  <!-- Left: pseudo-3D surface of z = x^2 + y^2 -->
+  <g transform="translate(100, 110)">
+    <!-- axes -->
+    <defs>
+      <marker id="arrsc" viewBox="0 0 12 12" refX="10" refY="6"
+              markerUnits="userSpaceOnUse" markerWidth="12" markerHeight="12" orient="auto">
+        <path d="M 0 0 L 11 6 L 0 12 z" fill="#888"/>
+      </marker>
+    </defs>
+    <line x1="180" y1="230" x2="20" y2="200" stroke="#888" stroke-width="1.4" marker-end="url(#arrsc)"/>
+    <text x="10" y="196" fill="#888" font-size="13">y</text>
+    <line x1="180" y1="230" x2="320" y2="230" stroke="#888" stroke-width="1.4" marker-end="url(#arrsc)"/>
+    <text x="325" y="234" fill="#888" font-size="13">x</text>
+    <line x1="180" y1="230" x2="180" y2="20" stroke="#888" stroke-width="1.4" marker-end="url(#arrsc)"/>
+    <text x="185" y="20" fill="#888" font-size="13">z</text>
+
+    <!-- Bowl surface — bunch of parabolic strips as sketch -->
+    <path d="M 40,220 Q 180,20 320,220" fill="none" stroke="#7ec8e3" stroke-width="2"/>
+    <path d="M 60,215 Q 180,80 300,215" fill="none" stroke="#7ec8e3" stroke-width="1.4" opacity="0.7"/>
+    <path d="M 80,215 Q 180,120 280,215" fill="none" stroke="#7ec8e3" stroke-width="1.4" opacity="0.7"/>
+    <!-- y-direction strips -->
+    <path d="M 300,215 Q 220,205 40,220" fill="none" stroke="#7777cc" stroke-width="1.4" opacity="0.6"/>
+    <path d="M 280,215 Q 220,200 60,215" fill="none" stroke="#7777cc" stroke-width="1.4" opacity="0.6"/>
+
+    <!-- Highlighted section y = 0 (front) -->
+    <path d="M 40,220 Q 180,20 320,220" fill="none" stroke="#e05555" stroke-width="3"/>
+    <text x="180" y="270" fill="#e05555" font-size="13" font-weight="700" text-anchor="middle">y = 0 단면 (붉은 곡선)</text>
+    <text x="180" y="290" fill="#888" font-size="11" text-anchor="middle">이 곡선 위에서 x로 미분하는 것이 ∂z/∂x</text>
+  </g>
+
+  <!-- Right: the section as 1-variable graph -->
+  <g transform="translate(500, 110)">
+    <text x="140" y="0" fill="#e05555" font-size="14" font-weight="700" text-anchor="middle">y=0 단면을 1변수 그래프로 옮기면</text>
+    <!-- axes -->
+    <line x1="140" y1="240" x2="140" y2="20" stroke="#888" stroke-width="1.4"/>
+    <line x1="20" y1="240" x2="280" y2="240" stroke="#888" stroke-width="1.4"/>
+    <text x="285" y="244" fill="#888" font-size="13">x</text>
+    <text x="146" y="20" fill="#888" font-size="13">z</text>
+    <!-- parabola z = x^2, at x=0 -> (140, 240). Scale 30 px per unit in x. z at x=1 -> 30. Scale z by 30 px too. z=x^2: x=2 -> z=4 -> 120px up -> y=120. x=-2 -> 120px up -->
+    <path d="M 20,60 Q 40,150 80,210 Q 140,240 200,210 Q 240,150 260,60"
+          fill="none" stroke="#e05555" stroke-width="2.5"/>
+    <text x="230" y="70" fill="#e05555" font-size="14" font-weight="700">z = x²</text>
+    <text x="145" y="270" fill="#888" font-size="12" text-anchor="middle">여기서 dz/dx = 2x</text>
+  </g>
+
+  <!-- bottom rule -->
+  <rect x="60" y="340" width="760" height="30" fill="#111827" stroke="#3a4a6e" stroke-width="1" rx="6"/>
+  <text x="80" y="360" fill="#7ec8e3" font-size="13" font-weight="700">편미분의 정의:</text>
+  <text x="200" y="360" fill="#e8e8e8" font-size="13">∂f/∂x 는 다른 변수를 상수로 두고 x로만 하는 보통의 미분입니다.</text>
+</svg>

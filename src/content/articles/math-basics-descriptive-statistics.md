@@ -233,3 +233,5 @@ $$\operatorname{Var}(X)=E[X^2]-\mu^2$$ 을 씁니다.
 읽어주셔서 감사합니다. 😊
 
 **지난 글:** [세는 법: 곱의 법칙에서 조합 C(n,k)와 이항정리까지](/articles/math-basics-counting-and-binomial)
+
+**다음 글:** [가설검정의 논리: 귀무가설·유의수준·p값이 실제로 말하는 것](/articles/math-basics-hypothesis-testing-logic)

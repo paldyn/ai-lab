@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="360" viewBox="0 0 880 360" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <rect width="880" height="360" fill="#0a0a0a" rx="12"/>
+  <text x="60" y="46" fill="#e8e8e8" font-size="22" font-weight="700">행렬의 크기와 첨자: 행 먼저, 열 나중</text>
+  <text x="60" y="72" fill="#888" font-size="13">m×n 행렬 A의 성분 a<tspan font-size="10" dy="4">ij</tspan><tspan dy="-4"> </tspan>는 i번째 행, j번째 열의 수입니다.</text>
+
+  <!-- Big bracket + 3x4 matrix -->
+  <!-- Left bracket -->
+  <path d="M 200,120 L 180,120 L 180,300 L 200,300" stroke="#e8e8e8" stroke-width="2" fill="none"/>
+  <path d="M 540,120 L 560,120 L 560,300 L 540,300" stroke="#e8e8e8" stroke-width="2" fill="none"/>
+
+  <!-- Cells 3 rows x 4 cols, each 80 wide 60 tall -->
+  <g font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="16" fill="#e8e8e8" text-anchor="middle">
+    <text x="230" y="158">a₁₁</text><text x="310" y="158">a₁₂</text><text x="390" y="158">a₁₃</text><text x="470" y="158">a₁₄</text>
+    <text x="230" y="218">a₂₁</text><text x="310" y="218">a₂₂</text><text x="390" y="218">a₂₃</text><text x="470" y="218">a₂₄</text>
+    <text x="230" y="278">a₃₁</text><text x="310" y="278">a₃₂</text><text x="390" y="278">a₃₃</text><text x="470" y="278">a₃₄</text>
+  </g>
+
+  <!-- Row / Col labels -->
+  <text x="150" y="163" fill="#7ec8e3" font-size="13" text-anchor="end">i=1</text>
+  <text x="150" y="223" fill="#7ec8e3" font-size="13" text-anchor="end">i=2</text>
+  <text x="150" y="283" fill="#7ec8e3" font-size="13" text-anchor="end">i=3</text>
+  <text x="230" y="105" fill="#e59866" font-size="13" text-anchor="middle">j=1</text>
+  <text x="310" y="105" fill="#e59866" font-size="13" text-anchor="middle">j=2</text>
+  <text x="390" y="105" fill="#e59866" font-size="13" text-anchor="middle">j=3</text>
+  <text x="470" y="105" fill="#e59866" font-size="13" text-anchor="middle">j=4</text>
+
+  <!-- Highlight a23 -->
+  <rect x="360" y="196" width="60" height="34" fill="none" stroke="#55c555" stroke-width="2" rx="4"/>
+
+  <!-- Side legend -->
+  <rect x="620" y="120" width="230" height="180" fill="#111827" stroke="#3a4a6e" stroke-width="1" rx="6"/>
+  <text x="640" y="150" fill="#7ec8e3" font-size="14" font-weight="700">이 행렬은 3×4</text>
+  <text x="640" y="176" fill="#e8e8e8" font-size="13">행이 셋, 열이 넷입니다.</text>
+  <text x="640" y="214" fill="#55c555" font-size="14" font-weight="700">a₂₃ 는</text>
+  <text x="640" y="238" fill="#e8e8e8" font-size="13">2행 3열의 수입니다.</text>
+  <text x="640" y="270" fill="#e8e8e8" font-size="12">항상 행 먼저, 열 나중</text>
+  <text x="640" y="286" fill="#e8e8e8" font-size="12">— 뒤집으면 다른 자리입니다.</text>
+</svg>

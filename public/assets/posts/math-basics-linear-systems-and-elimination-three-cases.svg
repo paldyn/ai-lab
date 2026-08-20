@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="380" viewBox="0 0 880 380" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <rect width="880" height="380" fill="#0a0a0a" rx="12"/>
+  <text x="60" y="46" fill="#e8e8e8" font-size="22" font-weight="700">소거 마지막 줄이 세 갈래를 정한다</text>
+  <text x="60" y="72" fill="#888" font-size="13">사다리꼴로 만들었을 때 마지막 행이 어떤 모양인지에 따라 해가 결정됩니다.</text>
+
+  <g>
+    <rect x="60" y="110" width="240" height="230" fill="#111827" stroke="#3a4a6e" stroke-width="1" rx="8"/>
+    <text x="180" y="140" fill="#55c555" font-size="15" font-weight="700" text-anchor="middle">해가 하나</text>
+    <text x="180" y="170" fill="#e8e8e8" font-size="12" text-anchor="middle">마지막 줄: $$0\,z = 0$$ 이 아닌 것</text>
+    <g font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#e8e8e8" text-anchor="middle">
+      <text x="180" y="210">1  1  1 |  6</text>
+      <text x="180" y="230">0  2  3 | 14</text>
+      <text x="180" y="250">0  0  4 | 12</text>
+    </g>
+    <text x="180" y="290" fill="#55c555" font-size="12" text-anchor="middle">z = 3, y = 5/2, x = 1/2</text>
+    <text x="180" y="315" fill="#888" font-size="11" text-anchor="middle">피벗이 열마다 하나씩</text>
+  </g>
+
+  <g>
+    <rect x="320" y="110" width="240" height="230" fill="#111827" stroke="#3a4a6e" stroke-width="1" rx="8"/>
+    <text x="440" y="140" fill="#e59866" font-size="15" font-weight="700" text-anchor="middle">해가 무한히 많음</text>
+    <text x="440" y="170" fill="#e8e8e8" font-size="12" text-anchor="middle">마지막 줄: $$0 = 0$$</text>
+    <g font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#e8e8e8" text-anchor="middle">
+      <text x="440" y="210">1  1  1 |  6</text>
+      <text x="440" y="230">0  2  3 | 14</text>
+      <text x="440" y="250">0  0  0 |  0</text>
+    </g>
+    <text x="440" y="290" fill="#e59866" font-size="12" text-anchor="middle">한 방정식이 남는 둘의 결과</text>
+    <text x="440" y="315" fill="#888" font-size="11" text-anchor="middle">피벗이 열 개수보다 적음</text>
+  </g>
+
+  <g>
+    <rect x="580" y="110" width="240" height="230" fill="#111827" stroke="#3a4a6e" stroke-width="1" rx="8"/>
+    <text x="700" y="140" fill="#e05555" font-size="15" font-weight="700" text-anchor="middle">해가 없음</text>
+    <text x="700" y="170" fill="#e8e8e8" font-size="12" text-anchor="middle">마지막 줄: $$0 = 5$$</text>
+    <g font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#e8e8e8" text-anchor="middle">
+      <text x="700" y="210">1  1  1 |  6</text>
+      <text x="700" y="230">0  2  3 | 14</text>
+      <text x="700" y="250">0  0  0 |  5</text>
+    </g>
+    <text x="700" y="290" fill="#e05555" font-size="12" text-anchor="middle">모순: 0은 5가 될 수 없음</text>
+    <text x="700" y="315" fill="#888" font-size="11" text-anchor="middle">우변이 안 맞음</text>
+  </g>
+</svg>
