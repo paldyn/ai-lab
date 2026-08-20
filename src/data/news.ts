@@ -160,7 +160,7 @@ export interface NewsDetail {
   commentary: string;
 }
 
-export const globalNewsUpdatedAt = '2026-08-17';
+export const globalNewsUpdatedAt = '2026-08-19';
 
 /**
  * 공식 발표 한 건 = 항목 한 개. 2026년 1월부터 쌓는 아카이브이며 오래된 항목을
@@ -188,6 +188,34 @@ const entries: NewsItem[] = [
     url: 'https://blog.google/products-and-platforms/products/search/back-to-school-study-tools/',
   },
   {
+    id: 'replit',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'Replit, GPT-5.6 Luna로 Free Mode를 수백만 사용자에게 제공',
+    summary:
+      'Replit의 무료 티어 Free Mode가 GPT-5.6 Luna로 구동된다. OpenAI는 GPT-5.6 계열의 가격 대비 성능과 최근 가격 인하가 수백만 사용자 ' +
+      '개방을 가능하게 했다고 밝혔고, 고급 추론이 필요한 작업은 GPT-5.6 Sol로 넘겼다가 맥락을 유지한 채 돌아온다.',
+    publishedAt: '2026-08-19',
+    collectedAt: '2026-08-20',
+    category: 'Product',
+    signal: '모델 경제성',
+    url: 'https://openai.com/index/replit',
+  },
+  {
+    id: 'offering-zero-data-retention-for-frontier-models',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'OpenAI, ZDR 고객용 Private Safety Processing 프리뷰',
+    summary:
+      'OpenAI가 ZDR 고객용 안전 감시 Private Safety Processing을 미리 공개했다. 상호작용을 하나씩 보던 기존 방식과 달리 여러 건에 걸친 ' +
+      '패턴을 살피되, 콘텐츠는 고객이 쥔 인프라나 고객 키로 암호화된 저장소에 남는다.',
+    publishedAt: '2026-08-19',
+    collectedAt: '2026-08-20',
+    category: 'Safety',
+    signal: '데이터 미보관 안전',
+    url: 'https://openai.com/index/offering-zero-data-retention-for-frontier-models',
+  },
+  {
     id: 'claude-platform-august-18-2026',
     source: 'Anthropic',
     kind: 'company',
@@ -201,6 +229,104 @@ const entries: NewsItem[] = [
     category: 'Product',
     signal: '콘솔 Playground',
     url: 'https://platform.claude.com/docs/en/release-notes/overview#august-18-2026',
+  },
+  {
+    id: 'pacing-model-development-cyber-capabilities',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'OpenAI, Astra 사이버 역량 임계 징후에 RL 학습 2주 중단',
+    summary:
+      '차기 모델 Astra가 Preparedness Framework의 임계 사이버 역량 기준에 닿을 수 있다는 예비 증거가 나와, 배포용 최신 모델의 RL 훈련을 2주간 ' +
+      '멈추고 연구 환경 격리와 모니터링을 강화했다.',
+    publishedAt: '2026-08-18',
+    collectedAt: '2026-08-20',
+    category: 'Safety',
+    signal: '학습 속도 조절',
+    url: 'https://openai.com/index/pacing-model-development-cyber-capabilities',
+  },
+  {
+    id: 'chatgpt-for-teens',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'OpenAI, 학습·보호를 기본으로 한 ChatGPT for Teens 공개',
+    summary:
+      'OpenAI가 만 13~17세 또는 미성년으로 추정되는 이용자를 자동 배정하는 ChatGPT for Teens를 공개했다. 스터디 모드와 숙제 리마인더, 스터디 ' +
+      '아워를 묶고 자해·섭식장애 등 고위험 영역 보호를 기본으로 켠다.',
+    publishedAt: '2026-08-18',
+    collectedAt: '2026-08-20',
+    category: 'Product',
+    signal: '청소년 학습 경험',
+    url: 'https://openai.com/index/chatgpt-for-teens',
+  },
+  {
+    id: 'strengthening-democratic-oversight-in-national-security',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'OpenAI, 국가안보 AI 감독 강화에 500만 달러 지원',
+    summary:
+      'OpenAI가 국가안보 분야의 AI 사용을 감독하는 민주적 기관을 돕겠다고 밝혔다. 앞으로 1년간 교육·기술 지원과 크레딧으로 500만 달러를 제공하고, AI가 ' +
+      '관여한 결정의 기록을 검토하는 도구를 감독 기관과 함께 시범 운영한다.',
+    publishedAt: '2026-08-18',
+    collectedAt: '2026-08-20',
+    category: 'Corporate',
+    signal: '민주적 AI 감독',
+    url: 'https://openai.com/index/strengthening-democratic-oversight-in-national-security',
+  },
+  {
+    id: 'chatgpt-ads-expands-across-europe',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'ChatGPT 광고, 독일·프랑스 등 유럽 31개국으로 확대',
+    summary:
+      'OpenAI가 다음 주 ChatGPT Ads를 독일·프랑스·스페인·이탈리아 등 유럽 31개국으로 넓힌다. 광고는 Free·Go 요금제에만 노출되고 ' +
+      'Plus·Pro·Enterprise는 광고가 없다. 초기 집행은 광고 솔루션팀과 파트너를 통하며 셀프서브 Ads Manager는 올여름 늦게 열린다.',
+    publishedAt: '2026-08-18',
+    collectedAt: '2026-08-20',
+    category: 'Product',
+    signal: '광고 유럽 확대',
+    url: 'https://openai.com/index/chatgpt-ads-expands-across-europe',
+  },
+  {
+    id: 'partnering-with-codeai',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'OpenAI, CodeAI와 청소년 AI 교육 파트너십 체결',
+    summary:
+      'OpenAI가 CodeAI와 파트너십을 맺고 학생·교사에게 AI를 배우고 활용할 도구와 자료를 제공한다고 발표했다. 청소년용 ChatGPT for Teens 출시에 ' +
+      '맞춘 것으로, 앞으로 1년간 공동 자문위원회와 Hour of AI, Builders Challenge 등을 함께 운영한다.',
+    publishedAt: '2026-08-18',
+    collectedAt: '2026-08-20',
+    category: 'Corporate',
+    signal: 'CodeAI 제휴',
+    url: 'https://openai.com/index/partnering-with-codeai',
+  },
+  {
+    id: 'asana',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'Asana, Codex로 5년치 Enzyme 제거 작업 2주 만에 완료',
+    summary:
+      'Asana가 구식 테스트 도구 Enzyme을 걷어내는 작업을 Codex로 약 2주 만에 끝냈다고 OpenAI가 전했다. 이전 인력 계획으로는 최소 5년, 약 600만 ' +
+      '달러가 들 것으로 봤던 일이며 실제 모델·인프라 비용은 약 1만 2,000달러였다.',
+    publishedAt: '2026-08-18',
+    collectedAt: '2026-08-20',
+    category: 'Product',
+    signal: '에이전틱 코딩',
+    url: 'https://openai.com/index/asana',
+  },
+  {
+    id: 'nvidia-chatgpt-work',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'NVIDIA가 ChatGPT Work로 GTC 준비와 정보 선별을 자동화한 사례',
+    summary:
+      'NVIDIA의 GTM·솔루션 아키텍트 팀이 ChatGPT Work를 쓴 사례다. GTC 준비 수작업을 주 2회 자동 실행 프로세스로 옮겨 12주 주기 동안 주당 약 ' +
+      '16시간을 아꼈고, 매주 외부 AI 업데이트 25~40건을 시그널 5~8개로 줄이는 워크플로도 만들었다.',
+    publishedAt: '2026-08-18',
+    collectedAt: '2026-08-20',
+    category: 'Product',
+    signal: '기업 도입 사례',
+    url: 'https://openai.com/index/nvidia/chatgpt-work',
   },
   {
     id: 'the-defenders-window',
