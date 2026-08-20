@@ -2,6 +2,21 @@ import type { NewsDetail } from '../news';
 
 /** 2026-08 발표의 모달 본문. 목록은 news.ts에 있습니다. */
 export const details: Record<string, NewsDetail> = {
+  'claude-platform-august-19-2026': {
+    points: [
+      'Files API가 Claude API에서 정식 출시돼 files-api-2025-04-14 베타 헤더가 필요 없어졌다',
+      '정식 응답 형식은 파일 만료를 포함한다 — 업로드 시 expires_in_seconds를 지정하고 file 객체가 expires_at을 보고한다',
+      '파일 목록 조회에 page·next_page 페이지네이션과 ids[] 필터가 추가됐다',
+      'Agent Skills와 Skills API(/v1/skills)도 정식 출시돼 skills-2025-10-02 베타 헤더가 필요 없어졌다',
+      'container 파라미터로 Skills를 불러오는 Messages API 요청도 헤더 없이 동작한다',
+      'Claude Enterprise 조직용 Admin API의 사용자 관리 엔드포인트(멤버·초대·그룹·커스텀 역할)가 정식 출시됐다',
+      '그룹·커스텀 역할 요청에 ce-user-management-2026-07-13 베타 헤더가 더 이상 필요 없다',
+      '기존 베타 헤더를 계속 보내는 요청은 이전 응답 형식으로 그대로 동작한다',
+    ],
+    commentary:
+      '세 가지 기능이 하루에 나란히 정식 출시된 것은 Claude 개발자 플랫폼이 프리뷰 단계를 지나 안정 단계로 넘어가고 있다는 신호다. 베타 헤더를 걷어내면 프로덕션 ' +
+      '코드가 실험 기능이라는 표식 없이 돌아가고, 특히 Enterprise용 사용자 관리 Admin API의 GA는 조직 단위 도입에서 걸림돌 하나가 사라졌다는 뜻이다.',
+  },
   'replit': {
     points: [
       'Replit의 무료 티어 Free Mode가 GPT-5.6 Luna로 구동된다',

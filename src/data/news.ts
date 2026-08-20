@@ -161,6 +161,7 @@ export interface NewsDetail {
 }
 
 export const globalNewsUpdatedAt = '2026-08-19';
+// 2026-08-20 openai.com/index/stampli 은 본문을 읽지 못해(403 + 웨이백 연결 리셋) 건너뜀 — 그날은 아직 미완이므로 값을 올리지 않는다
 
 /**
  * 공식 발표 한 건 = 항목 한 개. 2026년 1월부터 쌓는 아카이브이며 오래된 항목을
@@ -171,6 +172,21 @@ export const globalNewsUpdatedAt = '2026-08-19';
  * 목록에서 파생됩니다. 갱신 시 globalNewsUpdatedAt도 함께 올립니다.
  */
 const entries: NewsItem[] = [
+  {
+    id: 'claude-platform-august-19-2026',
+    source: 'Anthropic',
+    kind: 'company',
+    title: 'Claude API, Files·Skills·Admin 사용자 관리 정식 출시',
+    summary:
+      'Claude API에서 Files API와 Agent Skills·Skills API가 정식 출시돼 그동안 필요하던 ' +
+      '베타 헤더 없이 쓸 수 있게 됐다. Claude Enterprise 조직용 Admin API의 사용자 관리 ' +
+      '엔드포인트(멤버·초대·그룹·커스텀 역할)도 함께 정식 출시됐다.',
+    publishedAt: '2026-08-19',
+    collectedAt: '2026-08-21',
+    category: 'Product',
+    signal: 'API 정식 출시',
+    url: 'https://platform.claude.com/docs/en/release-notes/overview#august-19-2026',
+  },
   {
     id: 'back-to-school-study-tools',
     source: 'Google DeepMind',
