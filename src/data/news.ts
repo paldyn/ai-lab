@@ -160,8 +160,7 @@ export interface NewsDetail {
   commentary: string;
 }
 
-export const globalNewsUpdatedAt = '2026-08-19';
-// 2026-08-20 openai.com/index/stampli 은 본문을 읽지 못해(403 + 웨이백 연결 리셋) 건너뜀 — 그날은 아직 미완이므로 값을 올리지 않는다
+export const globalNewsUpdatedAt = '2026-08-20';
 
 /**
  * 공식 발표 한 건 = 항목 한 개. 2026년 1월부터 쌓는 아카이브이며 오래된 항목을
@@ -172,6 +171,35 @@ export const globalNewsUpdatedAt = '2026-08-19';
  * 목록에서 파생됩니다. 갱신 시 globalNewsUpdatedAt도 함께 올립니다.
  */
 const entries: NewsItem[] = [
+  {
+    id: 'introducing-ai-futures',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'OpenAI, 권력 집중 위험 다루는 블로그 AI Futures 출범',
+    summary:
+      'OpenAI가 신설한 Strategic Futures 팀의 블로그 AI Futures를 열었다. 변혁적 AI를 받아들이면서 ' +
+      '개인의 권리와 주체성을 지키려면 자유 사회를 어떻게 재구성해야 하는가를 다루며, 팀은 권력 집중 ' +
+      '위험을 가장 크고 심각한 범주로 규정했다.',
+    publishedAt: '2026-08-20',
+    collectedAt: '2026-08-21',
+    category: 'Safety',
+    signal: 'AI 거버넌스',
+    url: 'https://openai.com/index/introducing-ai-futures',
+  },
+  {
+    id: 'stampli',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'Stampli, ChatGPT Work와 Codex로 출시 작업 68% 단축',
+    summary:
+      'Stampli가 Deep Finance 출시 준비에 ChatGPT Work와 Codex를 써서 243시간으로 잡았던 제작 작업을 ' +
+      '약 77시간에 끝냈다고 밝혔다. 프로토타입 시연에서 공개 출시와 첫 제품 출하까지 약 6주가 걸렸다.',
+    publishedAt: '2026-08-20',
+    collectedAt: '2026-08-21',
+    category: 'Product',
+    signal: '기업 도입 사례',
+    url: 'https://openai.com/index/stampli',
+  },
   {
     id: 'claude-platform-august-19-2026',
     source: 'Anthropic',
