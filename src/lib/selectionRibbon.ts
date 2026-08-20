@@ -214,17 +214,34 @@ function originOf(host: HTMLElement, style: CSSStyleDeclaration): { left: number
  *
  * **잉크가 하나도 없는 줄만 고릅니다.** 폭 0짜리는 글자가 있는 줄에도 줄 끝마다
  * 하나씩 딸려 오는데(줄바꿈 자리), 그것까지 세우면 모든 줄이 글자 끝에서 한 글자
- * 더 튀어나옵니다. 세로로 겹치는 사각형이 하나도 없을 때만 빈 줄입니다.
+ * 더 튀어나옵니다. 세로로 겹치는 것이 하나도 없을 때만 빈 줄입니다.
  *
- * 폭은 한 글자입니다. 코드 글꼴은 mono라 전진폭이 글자 크기의 정확히 0.6배입니다 —
- * 13.5px에서 8.1px이고, 실제로 이 저장소의 코드 줄 폭이 전부 8.1의 배수입니다.
+ * **마디가 아니라 줄과 견줍니다.** 마디 하나하나와 대 보면 줄 수에 제곱으로 커집니다 —
+ * 152줄짜리 블록이 마디 1,026개를 가지므로 16만 번이고, 재 보니 3.8ms입니다. 줄의
+ * 위아래 끝만 남기면 143번에 0.4ms입니다.
+ *
+ * 폭은 한 글자입니다. 코드 글꼴 JetBrains Mono의 전진폭이 0.6em이라 13.5px에서
+ * 8.1px입니다. 글꼴이 아직 안 실렸거나 대체 글꼴로 그려지면(한글이 그렇습니다) 조금
+ * 어긋나지만, 빈 줄에 세우는 자리표라 눈에 띄지 않습니다.
  */
-function blankLinesOf(marks: readonly Span[], rects: readonly Span[], style: CSSStyleDeclaration): Span[] {
+function blankLinesOf(
+  marks: readonly Span[],
+  lines: readonly (readonly Span[])[],
+  style: CSSStyleDeclaration,
+): Span[] {
+  // 대부분의 그릇에는 빈 줄이 없습니다. 줄의 끝을 재기 전에 빠져나갑니다.
+  if (marks.length === 0) return [];
+
   const width = (Number.parseFloat(style.fontSize) || 0) * 0.6;
   if (!width) return [];
 
+  const inked = lines.map((line) => ({
+    top: Math.min(...line.map((rect) => rect.top)),
+    bottom: Math.max(...line.map((rect) => rect.bottom)),
+  }));
+
   return marks
-    .filter((mark) => !rects.some((rect) => overlapOf(rect, mark) > 0))
+    .filter((mark) => !inked.some((line) => overlapOf(line, mark) > 0))
     .map((mark) => ({ top: mark.top, bottom: mark.bottom, left: mark.left, right: mark.left + width }));
 }
 
@@ -330,7 +347,7 @@ function measure(root: HTMLElement, ranges: readonly Range[], melt: HTMLElement[
     const style = getComputedStyle(host);
     const lines = splitLines(rects);
     // 빈 줄의 자리표끼리도 한 번 묶습니다. 한 줄에 폭 0짜리가 둘씩 오기 때문입니다.
-    for (const blank of splitLines(blankLinesOf(marks, rects, style))) lines.push(blank);
+    for (const blank of splitLines(blankLinesOf(marks, lines, style))) lines.push(blank);
     if (lines.length === 0) continue;
 
     const origin = originOf(host, style);
