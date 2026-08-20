@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="440" viewBox="0 0 880 440" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <rect x="0" y="0" width="880" height="440" rx="12" fill="#0a0a0a"/>
+  <defs>
+    <marker id="arrR" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#e05555"/>
+    </marker>
+    <marker id="arrG" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#55c555"/>
+    </marker>
+  </defs>
+
+  <text x="60" y="46" font-size="22" font-weight="700" fill="#e8e8e8">필터를 벡터 탐색 앞에 두느냐 뒤에 두느냐</text>
+  <text x="60" y="72" font-size="13" fill="#888">같은 조건, 같은 색인, 같은 질의인데 결과 개수가 달라진다. 순서만 바뀌었을 뿐이다.</text>
+
+  <text x="60" y="112" font-size="16" font-weight="600" fill="#e05555">사후 필터링 — 먼저 찾고 나중에 거른다</text>
+
+  <rect x="60" y="126" width="145" height="60" rx="8" fill="#101418" stroke="#3a4a6e" stroke-width="1.5"/>
+  <text x="132" y="150" font-size="13" font-weight="600" fill="#e8e8e8" text-anchor="middle">질의</text>
+  <text x="132" y="170" font-size="11" fill="#888" text-anchor="middle">지난달 · 계약서</text>
+
+  <rect x="265" y="126" width="145" height="60" rx="8" fill="#101418" stroke="#3a4a6e" stroke-width="1.5"/>
+  <text x="337" y="150" font-size="13" font-weight="600" fill="#e8e8e8" text-anchor="middle">벡터 탐색</text>
+  <text x="337" y="170" font-size="11" fill="#888" text-anchor="middle">가까운 순 50개</text>
+
+  <rect x="470" y="126" width="145" height="60" rx="8" fill="#101418" stroke="#3a4a6e" stroke-width="1.5"/>
+  <text x="542" y="150" font-size="13" font-weight="600" fill="#e8e8e8" text-anchor="middle">조건 대조</text>
+  <text x="542" y="170" font-size="11" fill="#888" text-anchor="middle">메타데이터 확인</text>
+
+  <rect x="675" y="126" width="145" height="60" rx="8" fill="#101418" stroke="#e05555" stroke-width="1.5"/>
+  <text x="747" y="150" font-size="13" font-weight="600" fill="#e05555" text-anchor="middle">남은 것 2개</text>
+  <text x="747" y="170" font-size="11" fill="#888" text-anchor="middle">10개를 달랬는데</text>
+
+  <line x1="205" y1="156" x2="263" y2="156" stroke="#e05555" stroke-width="2" marker-end="url(#arrR)"/>
+  <line x1="410" y1="156" x2="468" y2="156" stroke="#e05555" stroke-width="2" marker-end="url(#arrR)"/>
+  <line x1="615" y1="156" x2="673" y2="156" stroke="#e05555" stroke-width="2" marker-end="url(#arrR)"/>
+
+  <text x="60" y="212" font-size="12" fill="#888">조건에 맞는 문서가 전체의 2%면 50개 중 한 개쯤만 살아남는다. 더 뒤에 있던 좋은 후보는 애초에 안 뽑혔다.</text>
+
+  <text x="60" y="266" font-size="16" font-weight="600" fill="#55c555">사전 필터링 — 범위를 먼저 좁힌다</text>
+
+  <rect x="60" y="280" width="145" height="60" rx="8" fill="#101418" stroke="#3a4a6e" stroke-width="1.5"/>
+  <text x="132" y="304" font-size="13" font-weight="600" fill="#e8e8e8" text-anchor="middle">질의</text>
+  <text x="132" y="324" font-size="11" fill="#888" text-anchor="middle">지난달 · 계약서</text>
+
+  <rect x="265" y="280" width="145" height="60" rx="8" fill="#101418" stroke="#3a4a6e" stroke-width="1.5"/>
+  <text x="337" y="304" font-size="13" font-weight="600" fill="#e8e8e8" text-anchor="middle">조건 대조</text>
+  <text x="337" y="324" font-size="11" fill="#888" text-anchor="middle">해당 청크 800개</text>
+
+  <rect x="470" y="280" width="145" height="60" rx="8" fill="#101418" stroke="#3a4a6e" stroke-width="1.5"/>
+  <text x="542" y="304" font-size="13" font-weight="600" fill="#e8e8e8" text-anchor="middle">벡터 탐색</text>
+  <text x="542" y="324" font-size="11" fill="#888" text-anchor="middle">그 800개 안에서</text>
+
+  <rect x="675" y="280" width="145" height="60" rx="8" fill="#101418" stroke="#55c555" stroke-width="1.5"/>
+  <text x="747" y="304" font-size="13" font-weight="600" fill="#55c555" text-anchor="middle">결과 10개</text>
+  <text x="747" y="324" font-size="11" fill="#888" text-anchor="middle">요청한 만큼 찬다</text>
+
+  <line x1="205" y1="310" x2="263" y2="310" stroke="#55c555" stroke-width="2" marker-end="url(#arrG)"/>
+  <line x1="410" y1="310" x2="468" y2="310" stroke="#55c555" stroke-width="2" marker-end="url(#arrG)"/>
+  <line x1="615" y1="310" x2="673" y2="310" stroke="#55c555" stroke-width="2" marker-end="url(#arrG)"/>
+
+  <text x="60" y="366" font-size="12" fill="#888">개수는 채워진다. 대신 후보 집합이 작아질수록 근사 탐색이 쓰던 그래프가 흔들린다 — 다음 그림이 그 이야기다.</text>
+
+  <text x="60" y="408" font-size="13" fill="#7ec8e3">고를 문제가 아니다. 조건이 얼마나 좁히는지를 재고, 그 값에 따라 저장소가 알아서 갈아타게 두는 것이 맞다.</text>
+</svg>

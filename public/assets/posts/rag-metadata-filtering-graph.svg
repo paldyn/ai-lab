@@ -1,0 +1,87 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="446" viewBox="0 0 880 446" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <rect x="0" y="0" width="880" height="446" rx="12" fill="#0a0a0a"/>
+  <text x="60" y="46" font-size="22" font-weight="700" fill="#e8e8e8">조건이 좁아지면 근사 탐색의 길이 끊긴다</text>
+  <text x="60" y="72" font-size="13" fill="#888">근사 최근접 탐색은 이웃을 타고 걸어가며 답을 찾는다. 통과하지 못한 노드는 길목까지 함께 사라진다.</text>
+  <text x="60" y="110" font-size="16" font-weight="600" fill="#e8e8e8">필터가 없을 때</text>
+  <text x="470" y="110" font-size="16" font-weight="600" fill="#e8e8e8">조건 통과분만 남겼을 때</text>
+  <rect x="60" y="126" width="350" height="214" rx="8" fill="#0d1014" stroke="#3a4a6e" stroke-width="1"/>
+  <rect x="470" y="126" width="350" height="214" rx="8" fill="#0d1014" stroke="#3a4a6e" stroke-width="1"/>
+  <line x1="105" y1="168" x2="175" y2="150" stroke="#3a4a6e" stroke-width="1.5"/>
+  <line x1="175" y1="150" x2="245" y2="180" stroke="#3a4a6e" stroke-width="1.5"/>
+  <line x1="245" y1="180" x2="315" y2="156" stroke="#3a4a6e" stroke-width="1.5"/>
+  <line x1="315" y1="156" x2="372" y2="196" stroke="#3a4a6e" stroke-width="1.5"/>
+  <line x1="105" y1="168" x2="92" y2="236" stroke="#3a4a6e" stroke-width="1.5"/>
+  <line x1="175" y1="150" x2="165" y2="220" stroke="#3a4a6e" stroke-width="1.5"/>
+  <line x1="245" y1="180" x2="238" y2="246" stroke="#3a4a6e" stroke-width="1.5"/>
+  <line x1="315" y1="156" x2="308" y2="226" stroke="#3a4a6e" stroke-width="1.5"/>
+  <line x1="372" y1="196" x2="375" y2="266" stroke="#3a4a6e" stroke-width="1.5"/>
+  <line x1="92" y1="236" x2="165" y2="220" stroke="#3a4a6e" stroke-width="1.5"/>
+  <line x1="165" y1="220" x2="238" y2="246" stroke="#3a4a6e" stroke-width="1.5"/>
+  <line x1="238" y1="246" x2="308" y2="226" stroke="#3a4a6e" stroke-width="1.5"/>
+  <line x1="308" y1="226" x2="375" y2="266" stroke="#3a4a6e" stroke-width="1.5"/>
+  <line x1="92" y1="236" x2="132" y2="296" stroke="#3a4a6e" stroke-width="1.5"/>
+  <line x1="165" y1="220" x2="212" y2="310" stroke="#3a4a6e" stroke-width="1.5"/>
+  <line x1="238" y1="246" x2="212" y2="310" stroke="#3a4a6e" stroke-width="1.5"/>
+  <line x1="308" y1="226" x2="292" y2="290" stroke="#3a4a6e" stroke-width="1.5"/>
+  <line x1="375" y1="266" x2="360" y2="320" stroke="#3a4a6e" stroke-width="1.5"/>
+  <line x1="132" y1="296" x2="212" y2="310" stroke="#3a4a6e" stroke-width="1.5"/>
+  <line x1="212" y1="310" x2="292" y2="290" stroke="#3a4a6e" stroke-width="1.5"/>
+  <line x1="292" y1="290" x2="360" y2="320" stroke="#3a4a6e" stroke-width="1.5"/>
+  <circle cx="105" cy="168" r="9" fill="#101418" stroke="#7777cc" stroke-width="1.5"/>
+  <circle cx="175" cy="150" r="9" fill="#101418" stroke="#7777cc" stroke-width="1.5"/>
+  <circle cx="245" cy="180" r="9" fill="#101418" stroke="#7777cc" stroke-width="1.5"/>
+  <circle cx="315" cy="156" r="9" fill="#101418" stroke="#7777cc" stroke-width="1.5"/>
+  <circle cx="372" cy="196" r="9" fill="#101418" stroke="#7777cc" stroke-width="1.5"/>
+  <circle cx="92" cy="236" r="9" fill="#101418" stroke="#7777cc" stroke-width="1.5"/>
+  <circle cx="165" cy="220" r="9" fill="#101418" stroke="#7777cc" stroke-width="1.5"/>
+  <circle cx="238" cy="246" r="9" fill="#101418" stroke="#7777cc" stroke-width="1.5"/>
+  <circle cx="308" cy="226" r="9" fill="#101418" stroke="#7777cc" stroke-width="1.5"/>
+  <circle cx="375" cy="266" r="9" fill="#101418" stroke="#7777cc" stroke-width="1.5"/>
+  <circle cx="132" cy="296" r="9" fill="#101418" stroke="#7777cc" stroke-width="1.5"/>
+  <circle cx="212" cy="310" r="9" fill="#101418" stroke="#7777cc" stroke-width="1.5"/>
+  <circle cx="292" cy="290" r="9" fill="#101418" stroke="#7777cc" stroke-width="1.5"/>
+  <circle cx="360" cy="320" r="9" fill="#101418" stroke="#7777cc" stroke-width="1.5"/>
+  <line x1="515" y1="168" x2="585" y2="150" stroke="#55c555" stroke-width="2"/>
+  <line x1="585" y1="150" x2="655" y2="180" stroke="#242424" stroke-width="1.5"/>
+  <line x1="655" y1="180" x2="725" y2="156" stroke="#242424" stroke-width="1.5"/>
+  <line x1="725" y1="156" x2="782" y2="196" stroke="#242424" stroke-width="1.5"/>
+  <line x1="515" y1="168" x2="502" y2="236" stroke="#55c555" stroke-width="2"/>
+  <line x1="585" y1="150" x2="575" y2="220" stroke="#55c555" stroke-width="2"/>
+  <line x1="655" y1="180" x2="648" y2="246" stroke="#242424" stroke-width="1.5"/>
+  <line x1="725" y1="156" x2="718" y2="226" stroke="#242424" stroke-width="1.5"/>
+  <line x1="782" y1="196" x2="785" y2="266" stroke="#55c555" stroke-width="2"/>
+  <line x1="502" y1="236" x2="575" y2="220" stroke="#55c555" stroke-width="2"/>
+  <line x1="575" y1="220" x2="648" y2="246" stroke="#242424" stroke-width="1.5"/>
+  <line x1="648" y1="246" x2="718" y2="226" stroke="#242424" stroke-width="1.5"/>
+  <line x1="718" y1="226" x2="785" y2="266" stroke="#242424" stroke-width="1.5"/>
+  <line x1="502" y1="236" x2="542" y2="296" stroke="#55c555" stroke-width="2"/>
+  <line x1="575" y1="220" x2="622" y2="310" stroke="#242424" stroke-width="1.5"/>
+  <line x1="648" y1="246" x2="622" y2="310" stroke="#242424" stroke-width="1.5"/>
+  <line x1="718" y1="226" x2="702" y2="290" stroke="#242424" stroke-width="1.5"/>
+  <line x1="785" y1="266" x2="770" y2="320" stroke="#55c555" stroke-width="2"/>
+  <line x1="542" y1="296" x2="622" y2="310" stroke="#242424" stroke-width="1.5"/>
+  <line x1="622" y1="310" x2="702" y2="290" stroke="#242424" stroke-width="1.5"/>
+  <line x1="702" y1="290" x2="770" y2="320" stroke="#242424" stroke-width="1.5"/>
+  <ellipse cx="779" cy="258" rx="30" ry="80" fill="none" stroke="#e05555" stroke-width="2" stroke-dasharray="4,4"/>
+  <circle cx="515" cy="168" r="9" fill="#1a2a1a" stroke="#55c555" stroke-width="1.5"/>
+  <circle cx="585" cy="150" r="9" fill="#1a2a1a" stroke="#55c555" stroke-width="1.5"/>
+  <circle cx="655" cy="180" r="9" fill="#0e0e0e" stroke="#282828" stroke-width="1.5"/>
+  <circle cx="725" cy="156" r="9" fill="#0e0e0e" stroke="#282828" stroke-width="1.5"/>
+  <circle cx="782" cy="196" r="9" fill="#1a2a1a" stroke="#55c555" stroke-width="1.5"/>
+  <circle cx="502" cy="236" r="9" fill="#1a2a1a" stroke="#55c555" stroke-width="1.5"/>
+  <circle cx="575" cy="220" r="9" fill="#1a2a1a" stroke="#55c555" stroke-width="1.5"/>
+  <circle cx="648" cy="246" r="9" fill="#0e0e0e" stroke="#282828" stroke-width="1.5"/>
+  <circle cx="718" cy="226" r="9" fill="#0e0e0e" stroke="#282828" stroke-width="1.5"/>
+  <circle cx="785" cy="266" r="9" fill="#1a2a1a" stroke="#55c555" stroke-width="1.5"/>
+  <circle cx="542" cy="296" r="9" fill="#1a2a1a" stroke="#55c555" stroke-width="1.5"/>
+  <circle cx="622" cy="310" r="9" fill="#0e0e0e" stroke="#282828" stroke-width="1.5"/>
+  <circle cx="702" cy="290" r="9" fill="#0e0e0e" stroke="#282828" stroke-width="1.5"/>
+  <circle cx="770" cy="320" r="9" fill="#1a2a1a" stroke="#55c555" stroke-width="1.5"/>
+  <text x="105" y="148" font-size="11" font-weight="600" fill="#7ec8e3" text-anchor="middle">출발</text>
+  <text x="515" y="148" font-size="11" font-weight="600" fill="#7ec8e3" text-anchor="middle">출발</text>
+  <text x="60" y="368" font-size="12.5" fill="#888">어느 노드에서 출발해도 이웃을 타고 전체를 훑을 수 있다.</text>
+  <text x="60" y="390" font-size="12.5" fill="#888">가까운 것 열 개를 달라고 하면 열 개가 나온다.</text>
+  <text x="470" y="368" font-size="12.5" fill="#888">남은 노드가 두 덩어리로 갈라졌다. 출발점에서 걸어가면</text>
+  <text x="470" y="390" font-size="12.5" fill="#e05555">붉은 점선 안쪽에는 영영 못 닿는다 — 있는데 안 나온다.</text>
+  <text x="60" y="428" font-size="13" fill="#7ec8e3">그래서 후보가 아주 적을 때는 그래프를 버리고 전부 비교하는 편이 오히려 빠르고 정확하다.</text>
+</svg>

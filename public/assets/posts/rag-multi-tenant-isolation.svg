@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="466" viewBox="0 0 880 466" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <rect x="0" y="0" width="880" height="466" rx="12" fill="#0a0a0a"/>
+  <text x="60" y="46" font-size="22" font-weight="700" fill="#e8e8e8">여러 고객사를 담는 세 가지 모양</text>
+  <text x="60" y="72" font-size="13" fill="#888">격리가 셀수록 비용이 오르고 담을 수 있는 고객사 수가 줄어든다. 셋을 섞어 쓰는 것이 보통이다.</text>
+  <rect x="60" y="100" width="213" height="46" rx="8" fill="#101418" stroke="#55c555" stroke-width="1.5"/>
+  <text x="166" y="128" font-size="14" font-weight="600" fill="#e8e8e8" text-anchor="middle">고객사마다 색인 하나</text>
+  <rect x="333" y="100" width="213" height="46" rx="8" fill="#101418" stroke="#7ec8e3" stroke-width="1.5"/>
+  <text x="439" y="128" font-size="14" font-weight="600" fill="#e8e8e8" text-anchor="middle">한 색인, 고객사마다 칸</text>
+  <rect x="606" y="100" width="214" height="46" rx="8" fill="#101418" stroke="#7777cc" stroke-width="1.5"/>
+  <text x="713" y="128" font-size="14" font-weight="600" fill="#e8e8e8" text-anchor="middle">한 색인, 값으로만 구분</text>
+  <rect x="76" y="164" width="181" height="36" rx="6" fill="#0d1014" stroke="#55c555" stroke-width="1.5"/>
+  <text x="166" y="187" font-size="12.5" fill="#e8e8e8" text-anchor="middle">고객사 A 색인</text>
+  <rect x="76" y="208" width="181" height="36" rx="6" fill="#0d1014" stroke="#55c555" stroke-width="1.5"/>
+  <text x="166" y="231" font-size="12.5" fill="#e8e8e8" text-anchor="middle">고객사 B 색인</text>
+  <rect x="76" y="252" width="181" height="36" rx="6" fill="#0d1014" stroke="#55c555" stroke-width="1.5"/>
+  <text x="166" y="275" font-size="12.5" fill="#e8e8e8" text-anchor="middle">고객사 C 색인</text>
+  <rect x="349" y="164" width="181" height="124" rx="6" fill="#0d1014" stroke="#7ec8e3" stroke-width="1.5"/>
+  <rect x="361" y="172" width="157" height="32" rx="4" fill="#101418" stroke="#3a4a6e" stroke-width="1" stroke-dasharray="4,4"/>
+  <text x="439" y="193" font-size="12" fill="#e8e8e8" text-anchor="middle">칸 A</text>
+  <rect x="361" y="212" width="157" height="32" rx="4" fill="#101418" stroke="#3a4a6e" stroke-width="1" stroke-dasharray="4,4"/>
+  <text x="439" y="233" font-size="12" fill="#e8e8e8" text-anchor="middle">칸 B</text>
+  <rect x="361" y="252" width="157" height="32" rx="4" fill="#101418" stroke="#3a4a6e" stroke-width="1" stroke-dasharray="4,4"/>
+  <text x="439" y="273" font-size="12" fill="#e8e8e8" text-anchor="middle">칸 C</text>
+  <rect x="622" y="164" width="181" height="124" rx="6" fill="#0d1014" stroke="#7777cc" stroke-width="1.5"/>
+  <circle cx="646" cy="190" r="6" fill="#55c555"/>
+  <circle cx="676" cy="182" r="6" fill="#7ec8e3"/>
+  <circle cx="708" cy="196" r="6" fill="#7777cc"/>
+  <circle cx="740" cy="184" r="6" fill="#55c555"/>
+  <circle cx="772" cy="194" r="6" fill="#7ec8e3"/>
+  <circle cx="640" cy="222" r="6" fill="#7777cc"/>
+  <circle cx="672" cy="214" r="6" fill="#55c555"/>
+  <circle cx="704" cy="228" r="6" fill="#7ec8e3"/>
+  <circle cx="736" cy="216" r="6" fill="#7777cc"/>
+  <circle cx="770" cy="226" r="6" fill="#55c555"/>
+  <circle cx="652" cy="254" r="6" fill="#7ec8e3"/>
+  <circle cx="686" cy="248" r="6" fill="#7777cc"/>
+  <circle cx="718" cy="258" r="6" fill="#55c555"/>
+  <circle cx="752" cy="250" r="6" fill="#7ec8e3"/>
+  <circle cx="780" cy="258" r="6" fill="#7777cc"/>
+  <text x="712" y="280" font-size="11.5" fill="#888" text-anchor="middle">색 = tenant 값</text>
+  <text x="60" y="308" font-size="12" font-weight="600" fill="#888">격리</text>
+  <text x="60" y="326" font-size="12.5" fill="#e8e8e8">물리적으로 갈라진다</text>
+  <text x="333" y="308" font-size="12" font-weight="600" fill="#888">격리</text>
+  <text x="333" y="326" font-size="12.5" fill="#e8e8e8">같은 파일, 칸이 다르다</text>
+  <text x="606" y="308" font-size="12" font-weight="600" fill="#888">격리</text>
+  <text x="606" y="326" font-size="12.5" fill="#e8e8e8">조건 하나에 달렸다</text>
+  <text x="60" y="350" font-size="12" font-weight="600" fill="#888">비용</text>
+  <text x="60" y="368" font-size="12.5" fill="#e8e8e8">고객사 수만큼 붙는다</text>
+  <text x="333" y="350" font-size="12" font-weight="600" fill="#888">비용</text>
+  <text x="333" y="368" font-size="12.5" fill="#e8e8e8">칸마다 조금씩 붙는다</text>
+  <text x="606" y="350" font-size="12" font-weight="600" fill="#888">비용</text>
+  <text x="606" y="368" font-size="12.5" fill="#e8e8e8">거의 안 붙는다</text>
+  <text x="60" y="392" font-size="12" font-weight="600" fill="#888">한계</text>
+  <text x="60" y="410" font-size="12.5" fill="#e8e8e8">수백 개가 벽이다</text>
+  <text x="333" y="392" font-size="12" font-weight="600" fill="#888">한계</text>
+  <text x="333" y="410" font-size="12.5" fill="#e8e8e8">수만 개까지 간다</text>
+  <text x="606" y="392" font-size="12" font-weight="600" fill="#888">한계</text>
+  <text x="606" y="410" font-size="12.5" fill="#e8e8e8">조건을 빼면 곧바로 샌다</text>
+  <text x="60" y="444" font-size="13" fill="#7ec8e3">큰 고객사만 전용 색인으로 떼고 나머지는 한 색인에 담는 식으로 나누는 경우가 많다.</text>
+</svg>

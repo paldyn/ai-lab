@@ -112,3 +112,5 @@ def chunk_table(header, rows, max_rows=20):
 읽어주셔서 감사합니다. 😊
 
 **지난 글:** [스캔본에서 글자를 만들어 낼 때 생기는 일](/articles/rag-ocr-pipeline)
+
+**다음 글:** [필터를 어디에 거느냐가 검색 결과를 바꾼다](/articles/rag-metadata-filtering)

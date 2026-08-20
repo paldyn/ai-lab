@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="452" viewBox="0 0 880 452" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <rect x="0" y="0" width="880" height="452" rx="12" fill="#0a0a0a"/>
+
+  <text x="60" y="46" font-size="22" font-weight="700" fill="#e8e8e8">쌓는 순서가 캐시 적중을 정한다</text>
+  <text x="60" y="72" font-size="13" fill="#888">프롬프트 캐시는 앞에서부터 같은 데까지만 걸린다. 매번 바뀌는 것을 앞에 두면 뒤가 아무리 고정이어도 소용없다.</text>
+
+  <text x="60" y="110" font-size="16" font-weight="600" fill="#e05555">근거를 앞에 둔 순서</text>
+  <text x="470" y="110" font-size="16" font-weight="600" fill="#55c555">고정된 것을 앞에 둔 순서</text>
+
+  <rect x="60" y="126" width="330" height="60" rx="8" fill="#1a1012" stroke="#e05555" stroke-width="1.5"/>
+  <text x="76" y="150" font-size="13" font-weight="600" fill="#e8e8e8">근거 문서</text>
+  <text x="76" y="170" font-size="11" fill="#888">질의마다 다른 청크가 온다</text>
+
+  <rect x="60" y="194" width="330" height="60" rx="8" fill="#101418" stroke="#3a4a6e" stroke-width="1.5"/>
+  <text x="76" y="218" font-size="13" font-weight="600" fill="#e8e8e8">시스템 지침</text>
+  <text x="76" y="238" font-size="11" fill="#888">고정인데도 캐시에 못 걸린다</text>
+
+  <rect x="60" y="262" width="330" height="60" rx="8" fill="#101418" stroke="#3a4a6e" stroke-width="1.5"/>
+  <text x="76" y="286" font-size="13" font-weight="600" fill="#e8e8e8">고정 예시</text>
+  <text x="76" y="306" font-size="11" fill="#888">앞이 깨졌으니 여기도 마찬가지</text>
+
+  <rect x="60" y="330" width="330" height="60" rx="8" fill="#101418" stroke="#3a4a6e" stroke-width="1.5"/>
+  <text x="76" y="354" font-size="13" font-weight="600" fill="#e8e8e8">이번 질문</text>
+  <text x="76" y="374" font-size="11" fill="#888">매번 다르다</text>
+
+  <rect x="470" y="126" width="330" height="60" rx="8" fill="#101a12" stroke="#55c555" stroke-width="1.5"/>
+  <text x="486" y="150" font-size="13" font-weight="600" fill="#e8e8e8">시스템 지침</text>
+  <text x="486" y="170" font-size="11" fill="#888">토큰 수가 가장 큰 고정 덩어리</text>
+  <text x="784" y="162" font-size="11.5" font-weight="600" fill="#55c555" text-anchor="end">캐시</text>
+
+  <rect x="470" y="194" width="330" height="60" rx="8" fill="#101a12" stroke="#55c555" stroke-width="1.5"/>
+  <text x="486" y="218" font-size="13" font-weight="600" fill="#e8e8e8">고정 예시</text>
+  <text x="486" y="238" font-size="11" fill="#888">여기까지가 매 요청 같은 앞부분</text>
+  <text x="784" y="230" font-size="11.5" font-weight="600" fill="#55c555" text-anchor="end">캐시</text>
+
+  <rect x="470" y="262" width="330" height="60" rx="8" fill="#101418" stroke="#3a4a6e" stroke-width="1.5"/>
+  <text x="486" y="286" font-size="13" font-weight="600" fill="#e8e8e8">근거 문서</text>
+  <text x="486" y="306" font-size="11" fill="#888">여기서부터 매번 새로 읽는다</text>
+
+  <rect x="470" y="330" width="330" height="60" rx="8" fill="#101418" stroke="#3a4a6e" stroke-width="1.5"/>
+  <text x="486" y="354" font-size="13" font-weight="600" fill="#e8e8e8">이번 질문</text>
+  <text x="486" y="374" font-size="11" fill="#888">매번 다르다</text>
+
+  <text x="60" y="424" font-size="13" fill="#7ec8e3">근거 청크를 붙이는 순서도 매번 흔들리면 안 된다 — 같은 문서라도 자리가 바뀌면 그 뒤는 전부 다른 글이 된다.</text>
+</svg>

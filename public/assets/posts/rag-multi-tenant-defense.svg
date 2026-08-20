@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="300" viewBox="0 0 880 300" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <rect x="0" y="0" width="880" height="300" rx="12" fill="#0a0a0a"/>
+  <defs>
+    <marker id="mt-arr" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#7777cc"/>
+    </marker>
+  </defs>
+
+  <text x="60" y="46" font-size="22" font-weight="700" fill="#e8e8e8">한 겹으로 막지 않는다</text>
+  <text x="60" y="72" font-size="13" fill="#888">조건 하나에 격리를 맡기면 그 하나를 빠뜨린 날이 사고 나는 날이다. 층마다 잡는 실수가 다르다.</text>
+
+  <rect x="60" y="102" width="145" height="70" rx="8" fill="#101418" stroke="#55c555" stroke-width="1.5"/>
+  <text x="132" y="124" font-size="13" font-weight="600" fill="#e8e8e8" text-anchor="middle">① 세션에서 확정</text>
+  <text x="132" y="142" font-size="11" fill="#888" text-anchor="middle">인증 토큰에서 읽는다</text>
+  <text x="132" y="160" font-size="11" fill="#888" text-anchor="middle">질의에서 뽑지 않는다</text>
+
+  <rect x="265" y="102" width="145" height="70" rx="8" fill="#101418" stroke="#55c555" stroke-width="1.5"/>
+  <text x="337" y="124" font-size="13" font-weight="600" fill="#e8e8e8" text-anchor="middle">② 계층이 붙인다</text>
+  <text x="337" y="142" font-size="11" fill="#888" text-anchor="middle">부르는 쪽이 빼먹어도</text>
+  <text x="337" y="160" font-size="11" fill="#888" text-anchor="middle">조건은 항상 들어간다</text>
+
+  <rect x="470" y="102" width="145" height="70" rx="8" fill="#101418" stroke="#55c555" stroke-width="1.5"/>
+  <text x="542" y="124" font-size="13" font-weight="600" fill="#e8e8e8" text-anchor="middle">③ 결과를 재확인</text>
+  <text x="542" y="142" font-size="11" fill="#888" text-anchor="middle">다른 값이 섞여 있으면</text>
+  <text x="542" y="160" font-size="11" fill="#888" text-anchor="middle">버리고 경보를 올린다</text>
+
+  <rect x="675" y="102" width="145" height="70" rx="8" fill="#101418" stroke="#55c555" stroke-width="1.5"/>
+  <text x="747" y="124" font-size="13" font-weight="600" fill="#e8e8e8" text-anchor="middle">④ 캐시·로그 분리</text>
+  <text x="747" y="142" font-size="11" fill="#888" text-anchor="middle">캐시 키와 로그에도</text>
+  <text x="747" y="160" font-size="11" fill="#888" text-anchor="middle">테넌트를 함께 넣는다</text>
+
+  <line x1="205" y1="137" x2="263" y2="137" stroke="#7777cc" stroke-width="2" marker-end="url(#mt-arr)"/>
+  <line x1="410" y1="137" x2="468" y2="137" stroke="#7777cc" stroke-width="2" marker-end="url(#mt-arr)"/>
+  <line x1="615" y1="137" x2="673" y2="137" stroke="#7777cc" stroke-width="2" marker-end="url(#mt-arr)"/>
+
+  <text x="60" y="208" font-size="12" font-weight="600" fill="#888">여기서 잡히는 실수</text>
+
+  <text x="132" y="238" font-size="12.5" font-weight="600" fill="#e05555" text-anchor="middle">남의 테넌트를 지정</text>
+  <text x="337" y="238" font-size="12.5" font-weight="600" fill="#e05555" text-anchor="middle">호출에서 조건 누락</text>
+  <text x="542" y="238" font-size="12.5" font-weight="600" fill="#e05555" text-anchor="middle">적재 때 값이 어긋남</text>
+  <text x="747" y="238" font-size="12.5" font-weight="600" fill="#e05555" text-anchor="middle">캐시로 남의 답이 감</text>
+
+  <text x="60" y="278" font-size="13" fill="#7ec8e3">③이 경보를 올린 적이 있다면 ②가 한 번 뚫렸다는 뜻이다 — 그 기록이 없으면 확인할 방법도 없다.</text>
+</svg>

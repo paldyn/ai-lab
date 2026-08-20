@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="384" viewBox="0 0 880 384" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <rect x="0" y="0" width="880" height="384" rx="12" fill="#0a0a0a"/>
+  <text x="60" y="46" font-size="22" font-weight="700" fill="#e8e8e8">한 문단이 늘면 뒤 청크가 전부 딴것이 된다</text>
+  <text x="60" y="72" font-size="13" fill="#888">문서 한 곳을 고쳤는데 청크 다섯 개를 다시 임베딩해야 하는 이유. 자르는 기준이 무엇이냐에 달렸다.</text>
+  <text x="60" y="106" font-size="14" font-weight="600" fill="#e8e8e8">원본 — 청크 다섯 개</text>
+  <text x="820" y="106" font-size="13" font-weight="600" fill="#888" text-anchor="end"></text>
+  <rect x="60" y="118" width="140" height="44" rx="6" fill="#101418" stroke="#7777cc" stroke-width="1.5"/>
+  <text x="130" y="146" font-size="14" font-weight="600" fill="#e8e8e8" text-anchor="middle">A</text>
+  <rect x="200" y="118" width="140" height="44" rx="6" fill="#101418" stroke="#7777cc" stroke-width="1.5"/>
+  <text x="270" y="146" font-size="14" font-weight="600" fill="#e8e8e8" text-anchor="middle">B</text>
+  <rect x="340" y="118" width="140" height="44" rx="6" fill="#101418" stroke="#7777cc" stroke-width="1.5"/>
+  <text x="410" y="146" font-size="14" font-weight="600" fill="#e8e8e8" text-anchor="middle">C</text>
+  <rect x="480" y="118" width="140" height="44" rx="6" fill="#101418" stroke="#7777cc" stroke-width="1.5"/>
+  <text x="550" y="146" font-size="14" font-weight="600" fill="#e8e8e8" text-anchor="middle">D</text>
+  <rect x="620" y="118" width="140" height="44" rx="6" fill="#101418" stroke="#7777cc" stroke-width="1.5"/>
+  <text x="690" y="146" font-size="14" font-weight="600" fill="#e8e8e8" text-anchor="middle">E</text>
+  <text x="60" y="188" font-size="14" font-weight="600" fill="#e8e8e8">글자 수로 자를 때 — B에 두 문장이 늘면</text>
+  <text x="820" y="188" font-size="13" font-weight="600" fill="#e05555" text-anchor="end">다시 임베딩 5개</text>
+  <rect x="60" y="200" width="140" height="44" rx="6" fill="#101418" stroke="#55c555" stroke-width="1.5"/>
+  <text x="130" y="228" font-size="14" font-weight="600" fill="#e8e8e8" text-anchor="middle">A</text>
+  <rect x="200" y="200" width="140" height="44" rx="6" fill="#1a1012" stroke="#e05555" stroke-width="1.5"/>
+  <text x="270" y="228" font-size="14" font-weight="600" fill="#e05555" text-anchor="middle">B′</text>
+  <rect x="340" y="200" width="140" height="44" rx="6" fill="#1a1012" stroke="#e05555" stroke-width="1.5"/>
+  <text x="410" y="228" font-size="14" font-weight="600" fill="#e05555" text-anchor="middle">C′</text>
+  <rect x="480" y="200" width="140" height="44" rx="6" fill="#1a1012" stroke="#e05555" stroke-width="1.5"/>
+  <text x="550" y="228" font-size="14" font-weight="600" fill="#e05555" text-anchor="middle">D′</text>
+  <rect x="620" y="200" width="140" height="44" rx="6" fill="#1a1012" stroke="#e05555" stroke-width="1.5"/>
+  <text x="690" y="228" font-size="14" font-weight="600" fill="#e05555" text-anchor="middle">E′</text>
+  <rect x="760" y="200" width="46" height="44" rx="6" fill="#1a1012" stroke="#e05555" stroke-width="1.5"/>
+  <text x="783" y="228" font-size="14" font-weight="600" fill="#e05555" text-anchor="middle">F′</text>
+  <text x="60" y="270" font-size="14" font-weight="600" fill="#e8e8e8">문단 경계로 자를 때</text>
+  <text x="820" y="270" font-size="13" font-weight="600" fill="#55c555" text-anchor="end">다시 임베딩 1개</text>
+  <rect x="60" y="282" width="140" height="44" rx="6" fill="#101418" stroke="#55c555" stroke-width="1.5"/>
+  <text x="130" y="310" font-size="14" font-weight="600" fill="#e8e8e8" text-anchor="middle">A</text>
+  <rect x="200" y="282" width="186" height="44" rx="6" fill="#1a1012" stroke="#e05555" stroke-width="1.5"/>
+  <text x="293" y="310" font-size="14" font-weight="600" fill="#e05555" text-anchor="middle">B′</text>
+  <rect x="386" y="282" width="140" height="44" rx="6" fill="#101418" stroke="#55c555" stroke-width="1.5"/>
+  <text x="456" y="310" font-size="14" font-weight="600" fill="#e8e8e8" text-anchor="middle">C</text>
+  <rect x="526" y="282" width="140" height="44" rx="6" fill="#101418" stroke="#55c555" stroke-width="1.5"/>
+  <text x="596" y="310" font-size="14" font-weight="600" fill="#e8e8e8" text-anchor="middle">D</text>
+  <rect x="666" y="282" width="140" height="44" rx="6" fill="#101418" stroke="#55c555" stroke-width="1.5"/>
+  <text x="736" y="310" font-size="14" font-weight="600" fill="#e8e8e8" text-anchor="middle">E</text>
+  <text x="60" y="356" font-size="13" fill="#7ec8e3">경계를 글자 수가 아니라 문서 자체의 구획에 맞춰 두면, 고친 자리 하나만 다시 계산하면 된다.</text>
+</svg>

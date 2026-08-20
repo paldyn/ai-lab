@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="320" viewBox="0 0 880 320" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <rect x="0" y="0" width="880" height="320" rx="12" fill="#0a0a0a"/>
+  <defs>
+    <marker id="fu-arr" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#7777cc"/>
+    </marker>
+  </defs>
+
+  <text x="60" y="46" font-size="22" font-weight="700" fill="#e8e8e8">바뀐 문서가 검색에 보이기까지 지연이 셋</text>
+  <text x="60" y="72" font-size="13" fill="#888">「실시간 갱신」이라고 부르는 것의 실제 값은 이 셋을 더한 값이다. 하나만 재고 말하는 경우가 많다.</text>
+
+  <rect x="60" y="102" width="145" height="60" rx="8" fill="#101418" stroke="#3a4a6e" stroke-width="1.5">
+    <animate attributeName="stroke" values="#55c555;#55c555;#3a4a6e;#3a4a6e" keyTimes="0;0.13;0.15;1" dur="5s" repeatCount="indefinite"/>
+  </rect>
+  <text x="132" y="126" font-size="13" font-weight="600" fill="#e8e8e8" text-anchor="middle">원본이 바뀐다</text>
+  <text x="132" y="146" font-size="11" fill="#888" text-anchor="middle">누가 문서를 고친다</text>
+
+  <rect x="265" y="102" width="145" height="60" rx="8" fill="#101418" stroke="#3a4a6e" stroke-width="1.5">
+    <animate attributeName="stroke" values="#3a4a6e;#3a4a6e;#7ec8e3;#7ec8e3;#3a4a6e;#3a4a6e" keyTimes="0;0.23;0.25;0.43;0.45;1" dur="5s" repeatCount="indefinite"/>
+  </rect>
+  <text x="337" y="126" font-size="13" font-weight="600" fill="#e8e8e8" text-anchor="middle">변경을 알아챈다</text>
+  <text x="337" y="146" font-size="11" fill="#888" text-anchor="middle">훑기 또는 변경 알림</text>
+
+  <rect x="470" y="102" width="145" height="60" rx="8" fill="#101418" stroke="#3a4a6e" stroke-width="1.5">
+    <animate attributeName="stroke" values="#3a4a6e;#3a4a6e;#7ec8e3;#7ec8e3;#3a4a6e;#3a4a6e" keyTimes="0;0.53;0.55;0.73;0.75;1" dur="5s" repeatCount="indefinite"/>
+  </rect>
+  <text x="542" y="126" font-size="13" font-weight="600" fill="#e8e8e8" text-anchor="middle">다시 자르고 임베딩</text>
+  <text x="542" y="146" font-size="11" fill="#888" text-anchor="middle">바뀐 청크만 골라서</text>
+
+  <rect x="675" y="102" width="145" height="60" rx="8" fill="#101418" stroke="#3a4a6e" stroke-width="1.5">
+    <animate attributeName="stroke" values="#3a4a6e;#3a4a6e;#55c555;#55c555" keyTimes="0;0.83;0.85;1" dur="5s" repeatCount="indefinite"/>
+  </rect>
+  <text x="747" y="126" font-size="13" font-weight="600" fill="#e8e8e8" text-anchor="middle">검색에 보인다</text>
+  <text x="747" y="146" font-size="11" fill="#888" text-anchor="middle">색인에 반영된 뒤</text>
+
+  <line x1="205" y1="132" x2="263" y2="132" stroke="#7777cc" stroke-width="2" marker-end="url(#fu-arr)"/>
+  <line x1="410" y1="132" x2="468" y2="132" stroke="#7777cc" stroke-width="2" marker-end="url(#fu-arr)"/>
+  <line x1="615" y1="132" x2="673" y2="132" stroke="#7777cc" stroke-width="2" marker-end="url(#fu-arr)"/>
+
+  <circle cx="208" cy="132" r="6" fill="#55c555" opacity="0">
+    <animate attributeName="cx" values="208;208;262;262" keyTimes="0;0.14;0.24;1" dur="5s" repeatCount="indefinite"/>
+    <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.13;0.14;0.24;0.25;1" dur="5s" repeatCount="indefinite"/>
+  </circle>
+  <circle cx="413" cy="132" r="6" fill="#55c555" opacity="0">
+    <animate attributeName="cx" values="413;413;467;467" keyTimes="0;0.44;0.54;1" dur="5s" repeatCount="indefinite"/>
+    <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.43;0.44;0.54;0.55;1" dur="5s" repeatCount="indefinite"/>
+  </circle>
+  <circle cx="618" cy="132" r="6" fill="#55c555" opacity="0">
+    <animate attributeName="cx" values="618;618;672;672" keyTimes="0;0.74;0.84;1" dur="5s" repeatCount="indefinite"/>
+    <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.73;0.74;0.84;0.85;1" dur="5s" repeatCount="indefinite"/>
+  </circle>
+
+  <path d="M 132 190 L 132 198 L 337 198 L 337 190" fill="none" stroke="#e05555" stroke-width="1.5"/>
+  <path d="M 337 208 L 337 216 L 615 216 L 615 208" fill="none" stroke="#e05555" stroke-width="1.5"/>
+  <path d="M 615 190 L 615 198 L 747 198 L 747 190" fill="none" stroke="#e05555" stroke-width="1.5"/>
+
+  <text x="234" y="238" font-size="13" font-weight="600" fill="#e05555" text-anchor="middle">감지 지연</text>
+  <text x="234" y="258" font-size="11.5" fill="#888" text-anchor="middle">훑는 주기가 그대로 값이 된다</text>
+
+  <text x="476" y="256" font-size="13" font-weight="600" fill="#e05555" text-anchor="middle">처리 지연</text>
+  <text x="476" y="276" font-size="11.5" fill="#888" text-anchor="middle">밀린 작업이 있으면 여기서 쌓인다</text>
+
+  <text x="681" y="238" font-size="13" font-weight="600" fill="#e05555" text-anchor="middle">반영 지연</text>
+  <text x="681" y="258" font-size="11.5" fill="#888" text-anchor="middle">쓰기와 검색 노출 사이</text>
+
+  <text x="60" y="302" font-size="13" fill="#7ec8e3">고칠 곳을 찾으려면 셋을 따로 재야 한다 — 대개 한 구간이 나머지 둘을 합친 것보다 크다.</text>
+</svg>

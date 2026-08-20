@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="424" viewBox="0 0 880 424" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <rect x="0" y="0" width="880" height="424" rx="12" fill="#0a0a0a"/>
+  <text x="60" y="46" font-size="22" font-weight="700" fill="#e8e8e8">화면의 무엇을 가리키느냐가 갈린다</text>
+  <text x="60" y="72" font-size="13" fill="#888">같은 「저장」 버튼을 누르는 일인데, 무엇으로 가리키느냐에 따라 되는 곳과 깨지는 조건이 달라진다.</text>
+  <rect x="60" y="100" width="213" height="46" rx="8" fill="#101418" stroke="#e05555" stroke-width="1.5"/>
+  <text x="166" y="128" font-size="14" font-weight="600" fill="#e8e8e8" text-anchor="middle">픽셀 좌표</text>
+  <rect x="333" y="100" width="213" height="46" rx="8" fill="#101418" stroke="#7ec8e3" stroke-width="1.5"/>
+  <text x="439" y="128" font-size="14" font-weight="600" fill="#e8e8e8" text-anchor="middle">접근성 트리</text>
+  <rect x="606" y="100" width="214" height="46" rx="8" fill="#101418" stroke="#55c555" stroke-width="1.5"/>
+  <text x="713" y="128" font-size="14" font-weight="600" fill="#e8e8e8" text-anchor="middle">브라우저 DOM</text>
+  <rect x="60" y="164" width="213" height="66" rx="6" fill="#000000" stroke="#3a4a6e" stroke-width="1"/>
+  <text x="76" y="192" xml:space="preserve" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13"><tspan fill="#7ec8e3" font-weight="600">click</tspan><tspan fill="#ffffff">(x=</tspan><tspan fill="#b5cea8">812</tspan><tspan fill="#ffffff">, y=</tspan><tspan fill="#b5cea8">337</tspan><tspan fill="#ffffff">)</tspan></text>
+  <text x="76" y="214" xml:space="preserve" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13"><tspan fill="#9aa4b8"># 화면 위 한 점</tspan></text>
+  <rect x="333" y="164" width="213" height="66" rx="6" fill="#000000" stroke="#3a4a6e" stroke-width="1"/>
+  <text x="349" y="192" xml:space="preserve" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13"><tspan fill="#7ec8e3" font-weight="600">press</tspan><tspan fill="#ffffff">(</tspan><tspan fill="#ce9178">"저장"</tspan><tspan fill="#ffffff">)</tspan></text>
+  <text x="349" y="214" xml:space="preserve" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13"><tspan fill="#9aa4b8"># 이름 붙은 요소</tspan></text>
+  <rect x="606" y="164" width="214" height="66" rx="6" fill="#000000" stroke="#3a4a6e" stroke-width="1"/>
+  <text x="622" y="192" xml:space="preserve" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13"><tspan fill="#7ec8e3" font-weight="600">click</tspan><tspan fill="#ffffff">(</tspan><tspan fill="#ce9178">"#save-btn"</tspan><tspan fill="#ffffff">)</tspan></text>
+  <text x="622" y="214" xml:space="preserve" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13"><tspan fill="#9aa4b8"># 선택자로 지정</tspan></text>
+  <text x="60" y="264" font-size="12" font-weight="600" fill="#888">되는 곳</text>
+  <text x="60" y="282" font-size="12.5" fill="#e8e8e8">어떤 앱이든</text>
+  <text x="333" y="264" font-size="12" font-weight="600" fill="#888">되는 곳</text>
+  <text x="333" y="282" font-size="12.5" fill="#e8e8e8">OS가 내주는 앱</text>
+  <text x="606" y="264" font-size="12" font-weight="600" fill="#888">되는 곳</text>
+  <text x="606" y="282" font-size="12.5" fill="#e8e8e8">웹 페이지만</text>
+  <text x="60" y="306" font-size="12" font-weight="600" fill="#888">강점</text>
+  <text x="60" y="324" font-size="12.5" fill="#e8e8e8">앱을 안 가린다</text>
+  <text x="333" y="306" font-size="12" font-weight="600" fill="#888">강점</text>
+  <text x="333" y="324" font-size="12.5" fill="#e8e8e8">이름으로 가리켜 안정적</text>
+  <text x="606" y="306" font-size="12" font-weight="600" fill="#888">강점</text>
+  <text x="606" y="324" font-size="12.5" fill="#e8e8e8">가장 빠르고 정확하다</text>
+  <text x="60" y="348" font-size="12" font-weight="600" fill="#888">깨지는 조건</text>
+  <text x="60" y="366" font-size="12.5" fill="#e8e8e8">해상도·배율이 바뀌면</text>
+  <text x="333" y="348" font-size="12" font-weight="600" fill="#888">깨지는 조건</text>
+  <text x="333" y="366" font-size="12.5" fill="#e8e8e8">라벨 없는 요소는 안 보임</text>
+  <text x="606" y="348" font-size="12" font-weight="600" fill="#888">깨지는 조건</text>
+  <text x="606" y="366" font-size="12.5" fill="#e8e8e8">웹을 벗어나면 못 쓴다</text>
+  <text x="60" y="404" font-size="13" fill="#7ec8e3">되는 것 중 가장 오른쪽을 쓰고, 안 되는 자리에서만 왼쪽으로 물러선다.</text>
+</svg>
