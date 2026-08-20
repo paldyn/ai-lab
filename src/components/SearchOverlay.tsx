@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { useNavigate } from 'react-router';
+import { prefetchArticleBody } from '../lib/articleBody';
 import { CornerDownLeft, Search, X } from 'lucide-react';
 import { countByScope, search, splitMatch, type SearchScope } from '../lib/search';
 import { captureFocusOrigin, restoreFocus } from '../lib/restoreFocus';
@@ -178,7 +179,11 @@ export function SearchOverlay({ open, onClose }: SearchOverlayProps) {
                       전부 보여 주기로 하면서 최대 275개가 이 줄에 걸립니다.
                     */
                     tabIndex={-1}
-                    onMouseEnter={() => setCursor(index)}
+                    onMouseEnter={() => {
+                      setCursor(index);
+                      // 글이면 본문을 미리 받아 둔다. 소식은 모달이라 받을 청크가 없다.
+                      if (hit.href.startsWith('/articles/')) prefetchArticleBody(hit.href.slice('/articles/'.length));
+                    }}
                     onClick={() => goTo(hit.href)}
                   >
                     {/* 글은 카테고리 이름, 소식은 회사 이름이 섭니다. */}

@@ -8,7 +8,7 @@ import { Seo } from '../components/Seo';
 import { articleOrdinal, articles, chainNeighbors, getArticleBySlug } from '../data/articles';
 import { categoryById } from '../data/categories';
 import { curriculumLinks, mainTrackNumber } from '../data/curriculum';
-import { initialArticleBody, loadArticleBody } from '../lib/articleBody';
+import { initialArticleBody, loadArticleBody, prefetchHandlers } from '../lib/articleBody';
 import { watchAnswerToggle } from '../lib/answerToggle';
 import { watchImageZoom, type ZoomedImage } from '../lib/imageZoom';
 import { markRead } from '../lib/readLog';
@@ -247,7 +247,12 @@ function EndNavRow({ article, label, lead }: { article: Article; label: string; 
         </span>
       </p>
       <p className="endnav-title">
-        <Link to={`/articles/${article.slug}`} className="card-trigger" aria-label={`${label}: ${article.title}`}>
+        <Link
+          to={`/articles/${article.slug}`}
+          className="card-trigger"
+          aria-label={`${label}: ${article.title}`}
+          {...prefetchHandlers(article.slug)}
+        >
           {article.title}
         </Link>
       </p>
@@ -469,13 +474,32 @@ function ArticleView({ article }: { article: Article }) {
         </aside>
 
         <div className="min-w-0">
-          <div
-            ref={proseRef}
-            id="article-body"
-            data-slug={article.slug}
-            className="article-prose"
-            dangerouslySetInnerHTML={{ __html: body?.html ?? '' }}
-          />
+          {/*
+            본문이 아직 없으면 뼈대를 세웁니다. 목록에서 눌러 들어오면 그 글의 청크를
+            그때 받는데, 예전에는 그동안 이 자리가 빈 문자열이라 「글이 안 뜬다」로
+            보였습니다. 오는 중이라는 것만 보여도 체감이 달라집니다.
+
+            프리렌더로 연 첫 화면은 본문이 이미 DOM에 있어 이 가지를 타지 않습니다.
+          */}
+          {body ? (
+            <div
+              ref={proseRef}
+              id="article-body"
+              data-slug={article.slug}
+              className="article-prose"
+              dangerouslySetInnerHTML={{ __html: body.html }}
+            />
+          ) : (
+            <div className="article-skeleton" role="status" aria-label="본문을 불러오는 중입니다">
+              <span className="skeleton-line" style={{ width: '92%' }} />
+              <span className="skeleton-line" style={{ width: '88%' }} />
+              <span className="skeleton-line" style={{ width: '95%' }} />
+              <span className="skeleton-line" style={{ width: '64%' }} />
+              <span className="skeleton-line skeleton-gap" style={{ width: '90%' }} />
+              <span className="skeleton-line" style={{ width: '86%' }} />
+              <span className="skeleton-line" style={{ width: '72%' }} />
+            </div>
+          )}
 
           <ImageLightbox image={zoomed} onClose={closeZoom} />
 

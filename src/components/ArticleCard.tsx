@@ -1,5 +1,6 @@
 import { ArrowUpRight } from 'lucide-react';
 import { Link } from 'react-router';
+import { prefetchHandlers } from '../lib/articleBody';
 import { categoryById, displayLevel } from '../data/categories';
 import type { Article } from '../types/article';
 import { useReadCheck } from '../lib/readLog';
@@ -57,7 +58,9 @@ export function ArticleCard({ article, variant = 'card' }: ArticleCardProps) {
             {read && <ReadMark />}
           </div>
           <h3 className="text-lg font-medium leading-snug text-[var(--text-strong)] transition-colors group-hover:text-[var(--brand-text)]">
-            <Link to={`/articles/${article.slug}`} className="card-trigger">{article.title}</Link>
+            <Link to={`/articles/${article.slug}`} className="card-trigger" {...prefetchHandlers(article.slug)}>
+            {article.title}
+          </Link>
           </h3>
           <p className="article-summary mt-2 line-clamp-2 text-sm leading-6 text-[var(--text-dim)]">{article.summary}</p>
         </div>
@@ -79,7 +82,9 @@ export function ArticleCard({ article, variant = 'card' }: ArticleCardProps) {
           <span>{formatDate(article.publishedAt)}</span>
         </div>
         <h3 className="text-[17px] font-medium leading-[1.45] text-[var(--text-strong)] transition-colors group-hover:text-[var(--brand-text)]">
-          <Link to={`/articles/${article.slug}`} className="card-trigger">{article.title}</Link>
+          <Link to={`/articles/${article.slug}`} className="card-trigger" {...prefetchHandlers(article.slug)}>
+            {article.title}
+          </Link>
         </h3>
         <p className="article-summary mt-3 line-clamp-3 text-sm leading-6 text-[var(--text-dim)]">{article.summary}</p>
         {/* 난이도는 수학 카드에만 붙습니다 — displayLevel의 주석을 보세요. */}
