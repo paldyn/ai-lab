@@ -205,6 +205,29 @@ function originOf(host: HTMLElement, style: CSSStyleDeclaration): { left: number
   };
 }
 
+/**
+ * 빈 줄에 세울 자리표를 만듭니다.
+ *
+ * 코드 블록에는 빈 줄이 있고, 잡아 놓으면 그 줄만 안 칠해져 검은 틈으로 보입니다.
+ * 브라우저는 폭 0짜리 사각형 하나만 돌려주므로(잉크가 없으니 당연합니다) 그대로는
+ * 띠가 안 서고, `bandOf`에 넣어도 폭 0이라 안 보입니다.
+ *
+ * **잉크가 하나도 없는 줄만 고릅니다.** 폭 0짜리는 글자가 있는 줄에도 줄 끝마다
+ * 하나씩 딸려 오는데(줄바꿈 자리), 그것까지 세우면 모든 줄이 글자 끝에서 한 글자
+ * 더 튀어나옵니다. 세로로 겹치는 사각형이 하나도 없을 때만 빈 줄입니다.
+ *
+ * 폭은 한 글자입니다. 코드 글꼴은 mono라 전진폭이 글자 크기의 정확히 0.6배입니다 —
+ * 13.5px에서 8.1px이고, 실제로 이 저장소의 코드 줄 폭이 전부 8.1의 배수입니다.
+ */
+function blankLinesOf(marks: readonly Span[], rects: readonly Span[], style: CSSStyleDeclaration): Span[] {
+  const width = (Number.parseFloat(style.fontSize) || 0) * 0.6;
+  if (!width) return [];
+
+  return marks
+    .filter((mark) => !rects.some((rect) => overlapOf(rect, mark) > 0))
+    .map((mark) => ({ top: mark.top, bottom: mark.bottom, left: mark.left, right: mark.left + width }));
+}
+
 interface Plan {
   host: HTMLElement;
   bands: Span[];
@@ -286,8 +309,12 @@ function measure(root: HTMLElement, ranges: readonly Range[], melt: HTMLElement[
     range.setEnd(span.end[0], span.end[1]);
 
     const rects: Span[] = [];
+    // 잉크가 없는 자리. 빈 줄인지는 다른 사각형과 견줘 봐야 알 수 있어 따로 둡니다.
+    const marks: Span[] = [];
     for (const rect of range.getClientRects()) {
-      if (rect.width > 0 && rect.height > 0) rects.push(rect);
+      if (rect.height <= 0) continue;
+      if (rect.width > 0) rects.push(rect);
+      else marks.push(rect);
     }
     for (const chip of span.extra) {
       for (const rect of chip.getClientRects()) rects.push(rect);
@@ -295,6 +322,7 @@ function measure(root: HTMLElement, ranges: readonly Range[], melt: HTMLElement[
     if (rects.length === 0) continue;
 
     const style = getComputedStyle(host);
+    for (const mark of blankLinesOf(marks, rects, style)) rects.push(mark);
     const origin = originOf(host, style);
     const lineHeight = Number.parseFloat(style.lineHeight) || 0;
     const bands = splitLines(rects)
