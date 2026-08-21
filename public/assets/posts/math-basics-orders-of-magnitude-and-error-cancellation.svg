@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="412" viewBox="0 0 880 412" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <rect x="0" y="0" width="880" height="412" rx="12" fill="#0a0a0a"/>
+
+  <text x="60" y="46" font-size="22" font-weight="700" fill="#e8e8e8">자릿수 소거 — 앞자리가 같으면 빼기가 자리를 지운다</text>
+  <text x="60" y="70" font-size="13" fill="#888">두 수 모두 유효숫자 5자리. 칸 하나가 한 자리다.</text>
+
+  <text x="60" y="135" font-size="15" fill="#e8e8e8">1.2345 × 10³</text>
+  <rect x="300" y="100" width="56" height="56" rx="6" fill="#101820" stroke="#7ec8e3" stroke-width="1.5"/>
+  <text x="328" y="135" text-anchor="middle" font-size="18" fill="#ffffff">1</text>
+  <rect x="364" y="100" width="56" height="56" rx="6" fill="#101820" stroke="#7ec8e3" stroke-width="1.5"/>
+  <text x="392" y="135" text-anchor="middle" font-size="18" fill="#ffffff">2</text>
+  <rect x="428" y="100" width="56" height="56" rx="6" fill="#101820" stroke="#7ec8e3" stroke-width="1.5"/>
+  <text x="456" y="135" text-anchor="middle" font-size="18" fill="#ffffff">3</text>
+  <rect x="492" y="100" width="56" height="56" rx="6" fill="#101820" stroke="#7ec8e3" stroke-width="1.5"/>
+  <text x="520" y="135" text-anchor="middle" font-size="18" fill="#ffffff">4</text>
+  <rect x="556" y="100" width="56" height="56" rx="6" fill="#101820" stroke="#7ec8e3" stroke-width="1.5"/>
+  <text x="584" y="135" text-anchor="middle" font-size="18" fill="#ffffff">5</text>
+
+  <text x="60" y="203" font-size="15" fill="#e8e8e8">− 1.2344 × 10³</text>
+  <rect x="300" y="168" width="56" height="56" rx="6" fill="#101820" stroke="#7ec8e3" stroke-width="1.5"/>
+  <text x="328" y="203" text-anchor="middle" font-size="18" fill="#ffffff">1</text>
+  <rect x="364" y="168" width="56" height="56" rx="6" fill="#101820" stroke="#7ec8e3" stroke-width="1.5"/>
+  <text x="392" y="203" text-anchor="middle" font-size="18" fill="#ffffff">2</text>
+  <rect x="428" y="168" width="56" height="56" rx="6" fill="#101820" stroke="#7ec8e3" stroke-width="1.5"/>
+  <text x="456" y="203" text-anchor="middle" font-size="18" fill="#ffffff">3</text>
+  <rect x="492" y="168" width="56" height="56" rx="6" fill="#101820" stroke="#7ec8e3" stroke-width="1.5"/>
+  <text x="520" y="203" text-anchor="middle" font-size="18" fill="#ffffff">4</text>
+  <rect x="556" y="168" width="56" height="56" rx="6" fill="#101820" stroke="#7ec8e3" stroke-width="1.5"/>
+  <text x="584" y="203" text-anchor="middle" font-size="18" fill="#ffffff">4</text>
+
+  <line x1="290" y1="242" x2="622" y2="242" stroke="#888" stroke-width="1.5"/>
+
+  <text x="60" y="293" font-size="15" fill="#e8e8e8">= 0.0001 × 10³</text>
+  <rect x="300" y="258" width="56" height="56" rx="6" fill="#1a0f0f" stroke="#e05555" stroke-width="1.5"/>
+  <text x="328" y="293" text-anchor="middle" font-size="18" fill="#e05555">0</text>
+  <rect x="364" y="258" width="56" height="56" rx="6" fill="#1a0f0f" stroke="#e05555" stroke-width="1.5"/>
+  <text x="392" y="293" text-anchor="middle" font-size="18" fill="#e05555">0</text>
+  <rect x="428" y="258" width="56" height="56" rx="6" fill="#1a0f0f" stroke="#e05555" stroke-width="1.5"/>
+  <text x="456" y="293" text-anchor="middle" font-size="18" fill="#e05555">0</text>
+  <rect x="492" y="258" width="56" height="56" rx="6" fill="#1a0f0f" stroke="#e05555" stroke-width="1.5"/>
+  <text x="520" y="293" text-anchor="middle" font-size="18" fill="#e05555">0</text>
+  <rect x="556" y="258" width="56" height="56" rx="6" fill="#0f1a10" stroke="#55c555" stroke-width="2"/>
+  <text x="584" y="293" text-anchor="middle" font-size="18" fill="#55c555">1</text>
+
+  <text x="640" y="286" font-size="13" fill="#e05555">붉은 네 칸이 지워졌다</text>
+  <text x="640" y="306" font-size="13" fill="#55c555">남은 유효숫자는 1자리</text>
+
+  <rect x="60" y="344" width="740" height="48" rx="8" fill="#14141c" stroke="#7777cc" stroke-width="1.5"/>
+  <text x="84" y="364" font-size="13" fill="#e8e8e8">절대오차는 그대로인데 값이 작아졌으므로 상대오차만 크게 뛴다.</text>
+  <text x="84" y="384" font-size="13" fill="#888">빼기를 없애도록 식을 고쳐 쓰면 이 손실을 피할 수 있다.</text>
+</svg>

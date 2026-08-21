@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="546" viewBox="0 0 880 546" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <defs>
+    <marker id="rpArrBlue" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#7ec8e3"/>
+    </marker>
+    <marker id="rpArrGreen" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#55c555"/>
+    </marker>
+  </defs>
+
+  <rect x="0" y="0" width="880" height="546" rx="12" fill="#0a0a0a"/>
+
+  <text x="60" y="52" font-size="22" font-weight="700" fill="#e8e8e8">수학 문서의 여섯 낱말 — 무엇이 무엇에 기대는가</text>
+
+  <rect x="110" y="86" width="300" height="64" rx="8" fill="#14141c" stroke="#7777cc" stroke-width="1.5"/>
+  <text x="134" y="112" font-size="16" font-weight="600" fill="#e8e8e8">정의</text>
+  <text x="134" y="132" font-size="13" fill="#888">낱말의 뜻을 정하는 약속</text>
+
+  <rect x="470" y="86" width="300" height="64" rx="8" fill="#14141c" stroke="#7777cc" stroke-width="1.5"/>
+  <text x="494" y="112" font-size="16" font-weight="600" fill="#e8e8e8">공리</text>
+  <text x="494" y="132" font-size="13" fill="#888">증명 없이 참으로 받는 출발점</text>
+
+  <path d="M 260 150 L 336 196" stroke="#7ec8e3" stroke-width="2" fill="none" marker-end="url(#rpArrBlue)"/>
+  <path d="M 620 150 L 544 196" stroke="#7ec8e3" stroke-width="2" fill="none" marker-end="url(#rpArrBlue)"/>
+
+  <rect x="230" y="202" width="420" height="64" rx="8" fill="#101820" stroke="#7ec8e3" stroke-width="1.5"/>
+  <text x="254" y="228" font-size="16" font-weight="600" fill="#e8e8e8">보조정리</text>
+  <text x="254" y="248" font-size="13" fill="#888">정리를 짧게 하려고 미리 떼어 증명해 두는 문장</text>
+
+  <line x1="440" y1="266" x2="440" y2="314" stroke="#7ec8e3" stroke-width="2" marker-end="url(#rpArrBlue)"/>
+  <text x="460" y="294" font-size="13" fill="#888">재료가 된다</text>
+
+  <rect x="230" y="320" width="420" height="64" rx="8" fill="#0f1a10" stroke="#55c555" stroke-width="2"/>
+  <text x="254" y="346" font-size="16" font-weight="600" fill="#e8e8e8">정리</text>
+  <text x="254" y="366" font-size="13" fill="#888">그 절이 목표로 삼은 큰 문장</text>
+
+  <line x1="440" y1="384" x2="440" y2="432" stroke="#55c555" stroke-width="2" marker-end="url(#rpArrGreen)"/>
+  <text x="460" y="412" font-size="13" fill="#888">거의 바로 따라 나온다</text>
+
+  <rect x="230" y="438" width="420" height="64" rx="8" fill="#101820" stroke="#7ec8e3" stroke-width="1.5"/>
+  <text x="254" y="464" font-size="16" font-weight="600" fill="#e8e8e8">따름정리</text>
+  <text x="254" y="484" font-size="13" fill="#888">방금 증명한 정리를 한 번 더 쓰는 문장</text>
+
+  <text x="60" y="526" font-size="13" fill="#888">명제 — 참임을 보인 문장 가운데 크기가 작은 것. 이 사슬 어디에나 놓인다.</text>
+</svg>

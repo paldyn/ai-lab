@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="420" viewBox="0 0 880 420" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <defs>
+    <marker id="dpVec" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#7ec8e3"/>
+    </marker>
+    <marker id="dpVecG" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#55c555"/>
+    </marker>
+  </defs>
+
+  <rect x="0" y="0" width="880" height="420" rx="12" fill="#0a0a0a"/>
+
+  <text x="60" y="46" font-size="22" font-weight="700" fill="#e8e8e8">내적의 두 얼굴</text>
+
+  <line x1="90" y1="300" x2="440" y2="300" stroke="#444" stroke-width="1"/>
+  <line x1="140" y1="330" x2="140" y2="110" stroke="#444" stroke-width="1"/>
+
+  <line x1="140" y1="300" x2="400" y2="240" stroke="#7ec8e3" stroke-width="2.5" marker-end="url(#dpVec)"/>
+  <line x1="140" y1="300" x2="300" y2="140" stroke="#7ec8e3" stroke-width="2.5" marker-end="url(#dpVec)"/>
+  <line x1="140" y1="300" x2="327" y2="257" stroke="#55c555" stroke-width="5" opacity="0.55"/>
+  <line x1="300" y1="140" x2="327" y2="257" stroke="#888" stroke-width="1.5" stroke-dasharray="4,4"/>
+
+  <path d="M 185 290 A 46 46 0 0 0 173 268" stroke="#e05555" stroke-width="2" fill="none"/>
+  <text x="198" y="273" font-size="15" fill="#e05555">θ</text>
+
+  <text x="308" y="130" font-size="16" font-weight="600" fill="#e8e8e8">a</text>
+  <text x="410" y="236" font-size="16" font-weight="600" fill="#e8e8e8">b</text>
+  <text x="150" y="330" font-size="13" fill="#55c555">‖a‖ cos θ — b 위에 드리운 그림자</text>
+
+  <rect x="500" y="100" width="320" height="96" rx="8" fill="#101820" stroke="#7ec8e3" stroke-width="1.5"/>
+  <text x="524" y="126" font-size="13" fill="#7ec8e3">대수적 정의</text>
+  <text x="524" y="154" font-size="16" font-weight="600" fill="#e8e8e8">a · b = Σ aᵢ bᵢ</text>
+  <text x="524" y="178" font-size="13" fill="#888">자리마다 곱해서 더한다</text>
+
+  <rect x="500" y="216" width="320" height="96" rx="8" fill="#0f1a10" stroke="#55c555" stroke-width="2"/>
+  <text x="524" y="242" font-size="13" fill="#55c555">기하적 의미</text>
+  <text x="524" y="270" font-size="16" font-weight="600" fill="#e8e8e8">a · b = ‖a‖ ‖b‖ cos θ</text>
+  <text x="524" y="294" font-size="13" fill="#888">크기 둘 × 방향의 일치도</text>
+
+  <text x="60" y="378" font-size="13" fill="#e8e8e8">두 식이 같다는 것은 ‖a − b‖² 을 대수와 기하 두 방법으로 재서 견주면 나온다.</text>
+  <text x="60" y="400" font-size="13" fill="#888">그래서 좌표를 곱해 더한 수 하나가 각도를 알고 있다.</text>
+</svg>

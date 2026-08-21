@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="464" viewBox="0 0 880 464" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <rect x="0" y="0" width="880" height="464" rx="12" fill="#0a0a0a"/>
+
+  <text x="60" y="46" font-size="22" font-weight="700" fill="#e8e8e8">중심차분 — 양쪽 점을 잇는 할선의 기울기</text>
+  <text x="60" y="70" font-size="13" fill="#888">한쪽만 쓰는 것보다 접선에 훨씬 가깝다</text>
+
+  <line x1="120" y1="340" x2="800" y2="340" stroke="#888" stroke-width="1.5"/>
+  <line x1="120" y1="340" x2="120" y2="100" stroke="#888" stroke-width="1.5"/>
+  <text x="808" y="345" font-size="13" fill="#888">x</text>
+  <text x="114" y="94" font-size="13" fill="#888">y</text>
+
+  <path d="M 160 322 Q 300 272 440 210 Q 580 148 800 118" stroke="#7ec8e3" stroke-width="2.5" fill="none"/>
+
+  <line x1="342" y1="252" x2="342" y2="340" stroke="#444" stroke-width="1" stroke-dasharray="4,4"/>
+  <line x1="440" y1="210" x2="440" y2="340" stroke="#444" stroke-width="1" stroke-dasharray="4,4"/>
+  <line x1="548" y1="170" x2="548" y2="340" stroke="#444" stroke-width="1" stroke-dasharray="4,4"/>
+
+  <line x1="330" y1="243" x2="560" y2="174" stroke="#55c555" stroke-width="2.5" stroke-dasharray="5,3"/>
+  <line x1="330" y1="257" x2="560" y2="165" stroke="#e8e8e8" stroke-width="2.5"/>
+
+  <circle cx="342" cy="252" r="5" fill="#e8e8e8"/>
+  <circle cx="548" cy="170" r="5" fill="#e8e8e8"/>
+  <circle cx="440" cy="210" r="5" fill="#55c555"/>
+
+  <text x="326" y="240" text-anchor="end" font-size="13" fill="#e8e8e8">f(x − h)</text>
+  <text x="568" y="166" font-size="13" fill="#e8e8e8">f(x + h)</text>
+
+  <text x="600" y="212" font-size="13" fill="#e8e8e8">할선 — 두 점을 잇는다</text>
+  <text x="600" y="248" font-size="13" fill="#55c555">접선 — 구하려는 참 기울기</text>
+
+  <text x="342" y="362" text-anchor="middle" font-size="13" fill="#888">x − h</text>
+  <text x="440" y="362" text-anchor="middle" font-size="13" fill="#888">x</text>
+  <text x="548" y="362" text-anchor="middle" font-size="13" fill="#888">x + h</text>
+
+  <rect x="60" y="384" width="760" height="56" rx="8" fill="#14141c" stroke="#7777cc" stroke-width="1.5"/>
+  <text x="84" y="408" font-size="15" font-weight="600" fill="#e8e8e8">기울기 = ( f(x + h) − f(x − h) ) / 2h</text>
+  <text x="84" y="428" font-size="13" fill="#888">오차는 O(h²) — h를 10분의 1로 줄이면 오차는 100분의 1이 된다.</text>
+</svg>

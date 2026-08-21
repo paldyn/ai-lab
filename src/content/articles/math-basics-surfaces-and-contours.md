@@ -173,3 +173,5 @@ $$\int_0^1 \left[ \int_0^1 (x + y)\, dx \right] dy = \int_0^1 \left[ \frac{x^2}{
 읽어주셔서 감사합니다. 😊
 
 **지난 글:** [행렬식과 역행렬: ad−bc는 무엇을 재는 수인가](/articles/math-basics-determinant-and-inverse)
+
+**다음 글:** [증명 읽는 법: 정의·정리·따름정리와 '따라서'의 정체](/articles/math-basics-reading-proofs)

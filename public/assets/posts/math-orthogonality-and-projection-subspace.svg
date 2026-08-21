@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="420" viewBox="0 0 880 420" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <defs>
+    <marker id="spVec" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#7ec8e3"/>
+    </marker>
+    <marker id="spRes" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#e05555"/>
+    </marker>
+    <marker id="spGrn" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#55c555"/>
+    </marker>
+  </defs>
+
+  <rect x="0" y="0" width="880" height="420" rx="12" fill="#0a0a0a"/>
+
+  <text x="60" y="46" font-size="22" font-weight="700" fill="#e8e8e8">부분공간 위로의 사영 — 조건은 똑같다</text>
+
+  <path d="M 100 296 L 400 246 L 500 336 L 200 386 Z" fill="#7777cc" fill-opacity="0.16" stroke="#7777cc" stroke-width="1.5"/>
+  <text x="112" y="376" font-size="13" fill="#7777cc">A 의 열공간</text>
+
+  <circle cx="220" cy="316" r="5" fill="#e8e8e8"/>
+  <text x="176" y="312" text-anchor="end" font-size="13" fill="#888">원점</text>
+
+  <line x1="220" y1="316" x2="380" y2="110" stroke="#7ec8e3" stroke-width="2.5" marker-end="url(#spVec)"/>
+  <line x1="220" y1="316" x2="404" y2="292" stroke="#55c555" stroke-width="2.5" marker-end="url(#spGrn)"/>
+  <line x1="410" y1="290" x2="380" y2="110" stroke="#e05555" stroke-width="2.5" stroke-dasharray="5,3" marker-end="url(#spRes)"/>
+  <path d="M 396 288 L 393 270 L 411 267" stroke="#e05555" stroke-width="1.5" fill="none"/>
+
+  <text x="392" y="102" font-size="15" font-weight="600" fill="#e8e8e8">b</text>
+  <text x="424" y="308" font-size="13" fill="#55c555">A x̂ — 평면 위의 그림자</text>
+  <text x="430" y="190" font-size="13" fill="#e05555">잔차 b − A x̂</text>
+
+  <rect x="560" y="96" width="260" height="112" rx="8" fill="#101820" stroke="#7ec8e3" stroke-width="1.5"/>
+  <text x="582" y="122" font-size="13" fill="#7ec8e3">잔차가 모든 열과 직교</text>
+  <text x="582" y="150" font-size="15" font-weight="600" fill="#e8e8e8">Aᵀ (b − A x̂) = 0</text>
+  <text x="582" y="178" font-size="15" font-weight="600" fill="#e8e8e8">AᵀA x̂ = Aᵀb</text>
+  <text x="582" y="198" font-size="13" fill="#888">정규방정식</text>
+
+  <rect x="560" y="224" width="260" height="96" rx="8" fill="#0f1a10" stroke="#55c555" stroke-width="2"/>
+  <text x="582" y="250" font-size="13" fill="#55c555">사영 행렬</text>
+  <text x="582" y="278" font-size="15" font-weight="600" fill="#e8e8e8">P = A(AᵀA)⁻¹Aᵀ</text>
+  <text x="582" y="302" font-size="13" fill="#888">P² = P · Pᵀ = P</text>
+
+  <text x="60" y="404" font-size="13" fill="#888">A 의 열이 정규직교이면 AᵀA = I 라서 P = AAᵀ 로 줄고 역행렬이 통째로 사라진다.</text>
+</svg>

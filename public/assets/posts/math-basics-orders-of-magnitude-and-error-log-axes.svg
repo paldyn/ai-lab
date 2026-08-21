@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="428" viewBox="0 0 880 428" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <rect x="0" y="0" width="880" height="428" rx="12" fill="#0a0a0a"/>
+
+  <text x="60" y="42" font-size="22" font-weight="700" fill="#e8e8e8">로그 축은 무엇을 직선으로 펴는가</text>
+
+  <text x="60" y="76" font-size="16" font-weight="600" fill="#e8e8e8">반로그 축 — 세로만 로그</text>
+
+  <line x1="100" y1="236" x2="390" y2="236" stroke="#444" stroke-width="1"/>
+  <line x1="100" y1="172" x2="390" y2="172" stroke="#444" stroke-width="1"/>
+  <line x1="100" y1="108" x2="390" y2="108" stroke="#444" stroke-width="1"/>
+  <line x1="100" y1="300" x2="390" y2="300" stroke="#888" stroke-width="1.5"/>
+  <line x1="100" y1="300" x2="100" y2="100" stroke="#888" stroke-width="1.5"/>
+  <text x="88" y="305" text-anchor="end" font-size="13" fill="#888">1</text>
+  <text x="88" y="241" text-anchor="end" font-size="13" fill="#888">10</text>
+  <text x="88" y="177" text-anchor="end" font-size="13" fill="#888">100</text>
+  <text x="88" y="113" text-anchor="end" font-size="13" fill="#888">1000</text>
+  <text x="100" y="320" text-anchor="middle" font-size="13" fill="#888">0</text>
+  <text x="245" y="320" text-anchor="middle" font-size="13" fill="#888">5</text>
+  <text x="390" y="320" text-anchor="middle" font-size="13" fill="#888">10</text>
+  <text x="398" y="305" font-size="13" fill="#888">x</text>
+  <text x="94" y="94" font-size="13" fill="#888">y</text>
+
+  <line x1="100" y1="300" x2="390" y2="107" stroke="#7ec8e3" stroke-width="2.5"/>
+  <circle cx="100" cy="300" r="5" fill="#e8e8e8"/>
+  <circle cx="158" cy="262" r="5" fill="#e8e8e8"/>
+  <circle cx="216" cy="223" r="5" fill="#e8e8e8"/>
+  <circle cx="274" cy="184" r="5" fill="#e8e8e8"/>
+  <circle cx="332" cy="146" r="5" fill="#e8e8e8"/>
+  <circle cx="390" cy="107" r="5" fill="#e8e8e8"/>
+  <text x="150" y="150" font-size="15" font-weight="600" fill="#7ec8e3">y = 2ˣ</text>
+
+  <text x="100" y="346" font-size="13" fill="#888">기울기 = log₁₀2 ≈ 0.301</text>
+
+  <text x="480" y="76" font-size="16" font-weight="600" fill="#e8e8e8">로그-로그 축 — 가로세로 다 로그</text>
+
+  <line x1="520" y1="205" x2="810" y2="205" stroke="#444" stroke-width="1"/>
+  <line x1="665" y1="300" x2="665" y2="100" stroke="#444" stroke-width="1"/>
+  <line x1="520" y1="300" x2="810" y2="300" stroke="#888" stroke-width="1.5"/>
+  <line x1="520" y1="300" x2="520" y2="100" stroke="#888" stroke-width="1.5"/>
+  <text x="508" y="305" text-anchor="end" font-size="13" fill="#888">1</text>
+  <text x="508" y="210" text-anchor="end" font-size="13" fill="#888">10²</text>
+  <text x="508" y="115" text-anchor="end" font-size="13" fill="#888">10⁴</text>
+  <text x="520" y="320" text-anchor="middle" font-size="13" fill="#888">1</text>
+  <text x="665" y="320" text-anchor="middle" font-size="13" fill="#888">10</text>
+  <text x="810" y="320" text-anchor="middle" font-size="13" fill="#888">100</text>
+  <text x="818" y="305" font-size="13" fill="#888">x</text>
+  <text x="514" y="94" font-size="13" fill="#888">y</text>
+
+  <line x1="520" y1="300" x2="810" y2="110" stroke="#7ec8e3" stroke-width="2.5"/>
+  <circle cx="520" cy="300" r="5" fill="#e8e8e8"/>
+  <circle cx="665" cy="205" r="5" fill="#e8e8e8"/>
+  <circle cx="810" cy="110" r="5" fill="#e8e8e8"/>
+  <text x="600" y="150" font-size="15" font-weight="600" fill="#7ec8e3">y = x²</text>
+
+  <text x="520" y="346" font-size="13" fill="#888">기울기 = 지수 2</text>
+
+  <rect x="60" y="364" width="760" height="48" rx="8" fill="#14141c" stroke="#7777cc" stroke-width="1.5"/>
+  <text x="84" y="384" font-size="13" fill="#e8e8e8">반로그 축은 몇 배씩 자라는 것을, 로그-로그 축은 거듭제곱 관계를 직선으로 편다.</text>
+  <text x="84" y="404" font-size="13" fill="#888">직선이 되면 기울기를 자로 재는 것만으로 밑이나 지수를 읽어 낼 수 있다.</text>
+</svg>

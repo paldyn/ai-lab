@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="424" viewBox="0 0 880 424" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <defs>
+    <marker id="opVec" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#7ec8e3"/>
+    </marker>
+    <marker id="opRes" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#e05555"/>
+    </marker>
+  </defs>
+
+  <rect x="0" y="0" width="880" height="424" rx="12" fill="#0a0a0a"/>
+
+  <text x="60" y="46" font-size="22" font-weight="700" fill="#e8e8e8">사영 — 남은 것이 직교하도록 자른다</text>
+
+  <line x1="130" y1="340" x2="510" y2="340" stroke="#333" stroke-width="1"/>
+  <line x1="160" y1="360" x2="160" y2="80" stroke="#333" stroke-width="1"/>
+  <text x="220" y="360" text-anchor="middle" font-size="13" fill="#666">1</text>
+  <text x="280" y="360" text-anchor="middle" font-size="13" fill="#666">2</text>
+  <text x="340" y="360" text-anchor="middle" font-size="13" fill="#666">3</text>
+  <text x="150" y="285" text-anchor="end" font-size="13" fill="#666">1</text>
+  <text x="150" y="165" text-anchor="end" font-size="13" fill="#666">3</text>
+
+  <line x1="160" y1="340" x2="340" y2="340" stroke="#55c555" stroke-width="7" opacity="0.5"/>
+  <line x1="160" y1="340" x2="280" y2="340" stroke="#7ec8e3" stroke-width="2.5" marker-end="url(#opVec)"/>
+  <line x1="160" y1="340" x2="340" y2="100" stroke="#7ec8e3" stroke-width="2.5" marker-end="url(#opVec)"/>
+  <line x1="340" y1="340" x2="340" y2="100" stroke="#e05555" stroke-width="2.5" stroke-dasharray="5,3" marker-end="url(#opRes)"/>
+  <path d="M 322 340 L 322 322 L 340 322" stroke="#e05555" stroke-width="1.5" fill="none"/>
+
+  <text x="352" y="96" font-size="15" font-weight="600" fill="#e8e8e8">a = (3, 4)</text>
+  <text x="196" y="382" font-size="15" font-weight="600" fill="#e8e8e8">b = (2, 0)</text>
+  <text x="352" y="346" font-size="13" fill="#55c555">사영 = (3, 0)</text>
+  <text x="352" y="224" font-size="13" fill="#e05555">잔차 = (0, 4)</text>
+
+  <rect x="560" y="96" width="260" height="104" rx="8" fill="#101820" stroke="#7ec8e3" stroke-width="1.5"/>
+  <text x="582" y="122" font-size="13" fill="#7ec8e3">조건 하나에서 나온다</text>
+  <text x="582" y="150" font-size="15" font-weight="600" fill="#e8e8e8">(a − t b) · b = 0</text>
+  <text x="582" y="178" font-size="15" font-weight="600" fill="#e8e8e8">t = (a · b) / ‖b‖²</text>
+
+  <rect x="560" y="216" width="260" height="104" rx="8" fill="#0f1a10" stroke="#55c555" stroke-width="2"/>
+  <text x="582" y="242" font-size="13" fill="#55c555">이 그림의 값</text>
+  <text x="582" y="270" font-size="15" font-weight="600" fill="#e8e8e8">t = 6 / 4 = 1.5</text>
+  <text x="582" y="298" font-size="13" fill="#888">잔차 · b = 0·2 + 4·0 = 0</text>
+
+  <text x="60" y="404" font-size="13" fill="#888">사영은 b 방향으로 설명할 수 있는 만큼이고, 잔차는 b로는 설명되지 않는 나머지다.</text>
+</svg>

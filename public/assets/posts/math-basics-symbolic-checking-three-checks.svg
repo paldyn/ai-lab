@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="380" viewBox="0 0 880 380" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <defs>
+    <marker id="tcArr" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#7ec8e3"/>
+    </marker>
+  </defs>
+
+  <rect x="0" y="0" width="880" height="380" rx="12" fill="#0a0a0a"/>
+
+  <text x="60" y="46" font-size="22" font-weight="700" fill="#e8e8e8">3번의 검산 셋이 그대로 도구가 된다</text>
+
+  <text x="60" y="84" font-size="16" font-weight="600" fill="#888">손으로 하던 것</text>
+  <text x="520" y="84" font-size="16" font-weight="600" fill="#7ec8e3">코드로 옮긴 것</text>
+
+  <rect x="60" y="102" width="330" height="64" rx="8" fill="#14141c" stroke="#7777cc" stroke-width="1.5"/>
+  <text x="84" y="128" font-size="15" font-weight="600" fill="#e8e8e8">숫자 넣기</text>
+  <text x="84" y="148" font-size="13" fill="#888">0·1·2를 넣어 양변이 같은지 본다</text>
+  <line x1="400" y1="134" x2="500" y2="134" stroke="#7ec8e3" stroke-width="2" marker-end="url(#tcArr)"/>
+  <rect x="510" y="102" width="310" height="64" rx="8" fill="#101820" stroke="#7ec8e3" stroke-width="1.5"/>
+  <text x="534" y="128" font-size="15" font-weight="600" fill="#e8e8e8">특수값 대입과 수치 평가</text>
+  <text x="534" y="148" font-size="13" fill="#888">중심차분 · 리만합 · 난수</text>
+
+  <rect x="60" y="184" width="330" height="64" rx="8" fill="#14141c" stroke="#7777cc" stroke-width="1.5"/>
+  <text x="84" y="210" font-size="15" font-weight="600" fill="#e8e8e8">극단값 보기</text>
+  <text x="84" y="230" font-size="13" fill="#888">말이 되는 범위인지만 확인한다</text>
+  <line x1="400" y1="216" x2="500" y2="216" stroke="#7ec8e3" stroke-width="2" marker-end="url(#tcArr)"/>
+  <rect x="510" y="184" width="310" height="64" rx="8" fill="#101820" stroke="#7ec8e3" stroke-width="1.5"/>
+  <text x="534" y="210" font-size="15" font-weight="600" fill="#e8e8e8">여러 점에서 겹쳐 보기</text>
+  <text x="534" y="230" font-size="13" fill="#888">한 점이 아니라 구간 전체를 본다</text>
+
+  <rect x="60" y="266" width="330" height="64" rx="8" fill="#14141c" stroke="#7777cc" stroke-width="1.5"/>
+  <text x="84" y="292" font-size="15" font-weight="600" fill="#e8e8e8">두 방법으로 세기</text>
+  <text x="84" y="312" font-size="13" fill="#888">다른 길로 가서 같은 곳에 닿는지</text>
+  <line x1="400" y1="298" x2="500" y2="298" stroke="#7ec8e3" stroke-width="2" marker-end="url(#tcArr)"/>
+  <rect x="510" y="266" width="310" height="64" rx="8" fill="#101820" stroke="#7ec8e3" stroke-width="1.5"/>
+  <text x="534" y="292" font-size="15" font-weight="600" fill="#e8e8e8">기호 대조와 이중합 뒤집기</text>
+  <text x="534" y="312" font-size="13" fill="#888">simplify(a − b) == 0</text>
+
+  <text x="60" y="360" font-size="13" fill="#888">새로 배우는 것은 도구 사용법뿐이고, 검산의 뼈대는 3번에서 이미 세웠다.</text>
+</svg>

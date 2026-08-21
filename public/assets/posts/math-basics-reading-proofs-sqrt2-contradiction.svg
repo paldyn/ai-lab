@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="546" viewBox="0 0 880 546" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <defs>
+    <marker id="sqArr" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#7ec8e3"/>
+    </marker>
+    <marker id="sqArrRed" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#e05555"/>
+    </marker>
+  </defs>
+
+  <rect x="0" y="0" width="880" height="546" rx="12" fill="#0a0a0a"/>
+
+  <text x="60" y="46" font-size="22" font-weight="700" fill="#e8e8e8">귀류법 — √2 가 유리수라고 해 보면 어디서 어긋나는가</text>
+  <text x="60" y="70" font-size="13" fill="#888">보이려는 것: √2 는 두 정수의 비로 적을 수 없다</text>
+
+  <rect x="60" y="96" width="760" height="60" rx="8" fill="#14141c" stroke="#7777cc" stroke-width="1.5" stroke-dasharray="5,3"/>
+  <text x="84" y="120" font-size="13" fill="#7777cc">1단계 · 반대를 가정한다</text>
+  <text x="84" y="141" font-size="15" font-weight="600" fill="#e8e8e8">정수 p, q 가 있어 √2 = p / q 라고 하자</text>
+
+  <line x1="440" y1="156" x2="440" y2="176" stroke="#7ec8e3" stroke-width="2" marker-end="url(#sqArr)"/>
+
+  <rect x="60" y="180" width="760" height="60" rx="8" fill="#101820" stroke="#7ec8e3" stroke-width="1.5"/>
+  <text x="84" y="204" font-size="13" fill="#7ec8e3">2단계 · 제곱하고 분모를 넘긴다</text>
+  <text x="84" y="225" font-size="15" font-weight="600" fill="#e8e8e8">p² = 2q²</text>
+
+  <line x1="440" y1="240" x2="440" y2="260" stroke="#7ec8e3" stroke-width="2" marker-end="url(#sqArr)"/>
+
+  <rect x="60" y="264" width="760" height="60" rx="8" fill="#101820" stroke="#7ec8e3" stroke-width="1.5"/>
+  <text x="84" y="288" font-size="13" fill="#7ec8e3">3단계 · 양쪽을 소인수분해해 2가 몇 개인지만 센다</text>
+  <text x="84" y="309" font-size="15" font-weight="600" fill="#e8e8e8">소인수분해는 순서를 빼면 한 가지뿐이므로 개수가 하나로 정해진다</text>
+
+  <line x1="440" y1="324" x2="440" y2="344" stroke="#7ec8e3" stroke-width="2" marker-end="url(#sqArr)"/>
+
+  <rect x="60" y="348" width="760" height="60" rx="8" fill="#101820" stroke="#7ec8e3" stroke-width="1.5"/>
+  <text x="84" y="372" font-size="13" fill="#7ec8e3">4단계 · 양쪽의 개수를 따로 센다</text>
+  <text x="84" y="393" font-size="15" font-weight="600" fill="#e8e8e8">왼쪽 p² 은 짝수 개 (p의 개수 × 2) · 오른쪽 2q² 은 홀수 개 (그 짝수 + 1)</text>
+
+  <line x1="440" y1="408" x2="440" y2="428" stroke="#e05555" stroke-width="2" marker-end="url(#sqArrRed)"/>
+
+  <rect x="60" y="432" width="760" height="60" rx="8" fill="#1a0f0f" stroke="#e05555" stroke-width="2"/>
+  <text x="84" y="456" font-size="13" fill="#e05555">5단계 · 모순</text>
+  <text x="84" y="477" font-size="15" font-weight="600" fill="#e8e8e8">같은 수에 든 2의 개수가 짝수이면서 홀수가 되었다</text>
+
+  <text x="60" y="522" font-size="13" fill="#888">계산은 어디도 틀리지 않았으므로, 어긋난 것은 1단계의 가정이다.</text>
+</svg>

@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="424" viewBox="0 0 880 424" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <rect x="0" y="0" width="880" height="424" rx="12" fill="#0a0a0a"/>
+
+  <text x="60" y="46" font-size="22" font-weight="700" fill="#e8e8e8">최소제곱 — 잔차가 직교하면 그것이 가장 가깝다</text>
+  <text x="60" y="70" font-size="13" fill="#888">세 점 (0, 1) · (1, 3) · (2, 2) 에 직선을 맞춘다</text>
+
+  <line x1="120" y1="340" x2="520" y2="340" stroke="#888" stroke-width="1.5"/>
+  <line x1="140" y1="360" x2="140" y2="90" stroke="#888" stroke-width="1.5"/>
+  <text x="528" y="345" font-size="13" fill="#888">t</text>
+  <text x="134" y="84" font-size="13" fill="#888">y</text>
+  <text x="140" y="362" text-anchor="middle" font-size="13" fill="#888">0</text>
+  <text x="300" y="362" text-anchor="middle" font-size="13" fill="#888">1</text>
+  <text x="460" y="362" text-anchor="middle" font-size="13" fill="#888">2</text>
+  <text x="130" y="265" text-anchor="end" font-size="13" fill="#888">1</text>
+  <text x="130" y="185" text-anchor="end" font-size="13" fill="#888">2</text>
+  <text x="130" y="105" text-anchor="end" font-size="13" fill="#888">3</text>
+
+  <line x1="124" y1="224" x2="492" y2="132" stroke="#7ec8e3" stroke-width="2.5"/>
+  <text x="440" y="112" font-size="15" font-weight="600" fill="#7ec8e3">y = 1.5 + 0.5 t</text>
+
+  <line x1="140" y1="220" x2="140" y2="260" stroke="#e05555" stroke-width="2.5"/>
+  <line x1="300" y1="100" x2="300" y2="180" stroke="#e05555" stroke-width="2.5"/>
+  <line x1="460" y1="140" x2="460" y2="180" stroke="#e05555" stroke-width="2.5"/>
+
+  <circle cx="140" cy="260" r="5" fill="#e8e8e8"/>
+  <circle cx="300" cy="100" r="5" fill="#e8e8e8"/>
+  <circle cx="460" cy="180" r="5" fill="#e8e8e8"/>
+
+  <text x="156" y="248" font-size="13" fill="#e05555">−0.5</text>
+  <text x="316" y="146" font-size="13" fill="#e05555">+1</text>
+  <text x="476" y="166" font-size="13" fill="#e05555">−0.5</text>
+
+  <rect x="560" y="96" width="260" height="112" rx="8" fill="#101820" stroke="#7ec8e3" stroke-width="1.5"/>
+  <text x="582" y="122" font-size="13" fill="#7ec8e3">정규방정식을 풀면</text>
+  <text x="582" y="150" font-size="15" font-weight="600" fill="#e8e8e8">AᵀA = [[3, 3], [3, 5]]</text>
+  <text x="582" y="174" font-size="15" font-weight="600" fill="#e8e8e8">Aᵀb = [6, 7]</text>
+  <text x="582" y="198" font-size="13" fill="#888">x̂ = (1.5, 0.5)</text>
+
+  <rect x="560" y="224" width="260" height="112" rx="8" fill="#0f1a10" stroke="#55c555" stroke-width="2"/>
+  <text x="582" y="250" font-size="13" fill="#55c555">잔차가 두 열과 직교</text>
+  <text x="582" y="278" font-size="15" font-weight="600" fill="#e8e8e8">r · (1,1,1) = 0</text>
+  <text x="582" y="302" font-size="15" font-weight="600" fill="#e8e8e8">r · (0,1,2) = 0</text>
+  <text x="582" y="324" font-size="13" fill="#888">잔차 합 0 · 입력과 무상관</text>
+
+  <text x="60" y="404" font-size="13" fill="#888">이 두 성질은 통계적 가정이 아니라 사영의 정의에서 나오는 기하적 사실이다.</text>
+</svg>

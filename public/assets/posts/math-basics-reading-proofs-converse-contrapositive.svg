@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="452" viewBox="0 0 880 452" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <rect x="0" y="0" width="880" height="452" rx="12" fill="#0a0a0a"/>
+
+  <text x="95" y="46" font-size="22" font-weight="700" fill="#e8e8e8">P ⇒ Q 에서 만들어지는 네 문장</text>
+  <text x="95" y="70" font-size="13" fill="#888">n은 자연수 · P: n이 4의 배수 · Q: n이 짝수</text>
+
+  <rect x="95" y="98" width="310" height="86" rx="8" fill="#0f1a10" stroke="#55c555" stroke-width="2"/>
+  <text x="119" y="124" font-size="15" font-weight="600" fill="#e8e8e8">원 명제</text>
+  <text x="219" y="124" font-size="15" fill="#7ec8e3">P ⇒ Q</text>
+  <text x="119" y="144" font-size="13" fill="#888">4의 배수이면 짝수이다</text>
+  <text x="119" y="164" font-size="13" font-weight="600" fill="#55c555">참</text>
+
+  <rect x="475" y="98" width="310" height="86" rx="8" fill="#1a0f0f" stroke="#e05555" stroke-width="1.5"/>
+  <text x="499" y="124" font-size="15" font-weight="600" fill="#e8e8e8">역</text>
+  <text x="599" y="124" font-size="15" fill="#7ec8e3">Q ⇒ P</text>
+  <text x="499" y="144" font-size="13" fill="#888">짝수이면 4의 배수이다</text>
+  <text x="499" y="164" font-size="13" font-weight="600" fill="#e05555">거짓 — 반례 n = 6</text>
+
+  <rect x="95" y="220" width="310" height="86" rx="8" fill="#1a0f0f" stroke="#e05555" stroke-width="1.5"/>
+  <text x="119" y="246" font-size="15" font-weight="600" fill="#e8e8e8">이</text>
+  <text x="219" y="246" font-size="15" fill="#7ec8e3">¬P ⇒ ¬Q</text>
+  <text x="119" y="266" font-size="13" fill="#888">4의 배수가 아니면 짝수가 아니다</text>
+  <text x="119" y="286" font-size="13" font-weight="600" fill="#e05555">거짓 — 반례 n = 6</text>
+
+  <rect x="475" y="220" width="310" height="86" rx="8" fill="#0f1a10" stroke="#55c555" stroke-width="2"/>
+  <text x="499" y="246" font-size="15" font-weight="600" fill="#e8e8e8">대우</text>
+  <text x="599" y="246" font-size="15" fill="#7ec8e3">¬Q ⇒ ¬P</text>
+  <text x="499" y="266" font-size="13" fill="#888">홀수이면 4의 배수가 아니다</text>
+  <text x="499" y="286" font-size="13" font-weight="600" fill="#55c555">참</text>
+
+  <path d="M 405 141 L 475 263" stroke="#55c555" stroke-width="2.5" stroke-dasharray="5,3" fill="none"/>
+
+  <rect x="95" y="342" width="690" height="70" rx="8" fill="#14141c" stroke="#7777cc" stroke-width="1.5"/>
+  <text x="119" y="370" font-size="15" font-weight="600" fill="#e8e8e8">초록 대각선의 두 문장은 언제나 함께 참이거나 함께 거짓이다</text>
+  <text x="119" y="392" font-size="13" fill="#888">그래서 원 명제 대신 대우를 보여도 된다. 역과 이는 원 명제와 아무 관계가 없다.</text>
+</svg>

@@ -255,3 +255,5 @@ step 8414  loss 2.34  grad_norm 9284.1
 읽어주셔서 감사합니다. 😊
 
 **지난 글:** [벡터: 임베딩 한 줄이 숫자 배열이 아니라 벡터인 이유](/articles/math-vector-as-meaning)
+
+**다음 글:** [내적·코사인·L2 거리는 언제 같은 순위를 주고 언제 갈리는가](/articles/math-dot-product-and-cosine)

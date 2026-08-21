@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="450" viewBox="0 0 880 450" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <defs>
+    <marker id="indArr" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#7ec8e3"/>
+    </marker>
+    <marker id="indArrGreen" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#55c555"/>
+    </marker>
+  </defs>
+
+  <rect x="0" y="0" width="880" height="450" rx="12" fill="#0a0a0a"/>
+
+  <text x="60" y="46" font-size="22" font-weight="700" fill="#e8e8e8">귀납법의 두 걸음 — 출발과 이음</text>
+
+  <text x="425" y="88" text-anchor="middle" font-size="13" fill="#7ec8e3">이음 · k에서 참이면 k+1에서도 참임을 보인다</text>
+
+  <path d="M 178 158 Q 209 116 240 158" stroke="#7ec8e3" stroke-width="2" fill="none" marker-end="url(#indArr)"/>
+  <path d="M 288 158 Q 319 116 350 158" stroke="#7ec8e3" stroke-width="2" fill="none" marker-end="url(#indArr)"/>
+  <path d="M 398 158 Q 429 116 460 158" stroke="#7ec8e3" stroke-width="2" fill="none" marker-end="url(#indArr)"/>
+  <path d="M 508 158 Q 539 116 570 158" stroke="#7ec8e3" stroke-width="2" fill="none" marker-end="url(#indArr)"/>
+  <path d="M 618 158 Q 649 116 680 158" stroke="#7ec8e3" stroke-width="2" fill="none" marker-end="url(#indArr)"/>
+
+  <rect x="130" y="160" width="48" height="96" rx="4" fill="#0f1a10" stroke="#55c555" stroke-width="2"/>
+  <text x="154" y="213" text-anchor="middle" font-size="13" fill="#e8e8e8">n = 1</text>
+
+  <rect x="240" y="160" width="48" height="96" rx="4" fill="#14141c" stroke="#7ec8e3" stroke-width="1.5"/>
+  <text x="264" y="213" text-anchor="middle" font-size="13" fill="#e8e8e8">n = 2</text>
+
+  <rect x="350" y="160" width="48" height="96" rx="4" fill="#14141c" stroke="#7ec8e3" stroke-width="1.5"/>
+  <text x="374" y="213" text-anchor="middle" font-size="13" fill="#e8e8e8">n = 3</text>
+
+  <rect x="460" y="160" width="48" height="96" rx="4" fill="#14141c" stroke="#7ec8e3" stroke-width="1.5"/>
+  <text x="484" y="213" text-anchor="middle" font-size="13" fill="#e8e8e8">n = 4</text>
+
+  <rect x="570" y="160" width="48" height="96" rx="4" fill="#14141c" stroke="#7ec8e3" stroke-width="1.5"/>
+  <text x="594" y="213" text-anchor="middle" font-size="13" fill="#e8e8e8">n = 5</text>
+
+  <rect x="680" y="160" width="48" height="96" rx="4" fill="#14141c" stroke="#7ec8e3" stroke-width="1.5"/>
+  <text x="704" y="213" text-anchor="middle" font-size="13" fill="#e8e8e8">n = 6</text>
+
+  <text x="770" y="216" font-size="22" fill="#888">···</text>
+
+  <line x1="154" y1="300" x2="154" y2="258" stroke="#55c555" stroke-width="2" marker-end="url(#indArrGreen)"/>
+  <text x="130" y="330" font-size="13" fill="#55c555">출발 · n = 1에서 참임을 손으로 확인한다</text>
+
+  <rect x="60" y="352" width="350" height="68" rx="8" fill="#1a0f0f" stroke="#e05555" stroke-width="1.5"/>
+  <text x="84" y="378" font-size="15" font-weight="600" fill="#e8e8e8">출발이 빠지면</text>
+  <text x="84" y="400" font-size="13" fill="#888">이음은 있는데 아무도 첫 장을 밀지 않는다</text>
+
+  <rect x="470" y="352" width="350" height="68" rx="8" fill="#1a0f0f" stroke="#e05555" stroke-width="1.5"/>
+  <text x="494" y="378" font-size="15" font-weight="600" fill="#e8e8e8">이음이 빠지면</text>
+  <text x="494" y="400" font-size="13" fill="#888">첫 장 하나가 넘어졌을 뿐이다</text>
+</svg>

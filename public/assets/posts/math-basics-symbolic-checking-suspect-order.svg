@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="392" viewBox="0 0 880 392" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <defs>
+    <marker id="soArr" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#7ec8e3"/>
+    </marker>
+  </defs>
+
+  <rect x="0" y="0" width="880" height="392" rx="12" fill="#0a0a0a"/>
+
+  <text x="60" y="46" font-size="22" font-weight="700" fill="#e8e8e8">대조가 False 를 뱉으면 이 순서로 의심한다</text>
+  <text x="60" y="70" font-size="13" fill="#888">위에서부터 본다. 자주 틀리는 자리가 위에 있다.</text>
+
+  <rect x="60" y="96" width="760" height="60" rx="8" fill="#1a0f0f" stroke="#e05555" stroke-width="2"/>
+  <text x="84" y="120" font-size="15" font-weight="600" fill="#e8e8e8">1 · 부호</text>
+  <text x="84" y="141" font-size="13" fill="#888">빼기를 옮기다 하나 놓쳤거나, cos 를 미분하고 마이너스를 안 붙였다</text>
+
+  <line x1="440" y1="156" x2="440" y2="172" stroke="#7ec8e3" stroke-width="2" marker-end="url(#soArr)"/>
+
+  <rect x="60" y="176" width="760" height="60" rx="8" fill="#101820" stroke="#7ec8e3" stroke-width="1.5"/>
+  <text x="84" y="200" font-size="15" font-weight="600" fill="#e8e8e8">2 · 연쇄법칙의 속미분</text>
+  <text x="84" y="221" font-size="13" fill="#888">sin(3x) 를 미분해 cos(3x) 라고 적었다면 안쪽의 3이 빠졌다</text>
+
+  <line x1="440" y1="236" x2="440" y2="252" stroke="#7ec8e3" stroke-width="2" marker-end="url(#soArr)"/>
+
+  <rect x="60" y="256" width="760" height="60" rx="8" fill="#101820" stroke="#7ec8e3" stroke-width="1.5"/>
+  <text x="84" y="280" font-size="15" font-weight="600" fill="#e8e8e8">3 · 괄호</text>
+  <text x="84" y="301" font-size="13" fill="#888">종이에서 보이던 묶음이 한 줄로 적히며 풀렸다 — 1/(2x) 와 1/2*x 는 다르다</text>
+
+  <line x1="440" y1="316" x2="440" y2="332" stroke="#7ec8e3" stroke-width="2" marker-end="url(#soArr)"/>
+
+  <rect x="60" y="336" width="760" height="44" rx="8" fill="#14141c" stroke="#7777cc" stroke-width="1.5"/>
+  <text x="84" y="363" font-size="15" font-weight="600" fill="#e8e8e8">4 · 정의역 조건 — 두 식이 어떤 x 에서 같은가</text>
+</svg>

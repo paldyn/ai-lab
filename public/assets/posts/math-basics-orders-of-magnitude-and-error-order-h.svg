@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="416" viewBox="0 0 880 416" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <defs>
+    <marker id="ohArr" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#7ec8e3"/>
+    </marker>
+  </defs>
+
+  <rect x="0" y="0" width="880" height="416" rx="12" fill="#0a0a0a"/>
+
+  <text x="60" y="46" font-size="22" font-weight="700" fill="#e8e8e8">오차의 차수는 h를 반으로 줄여 보면 읽힌다</text>
+
+  <rect x="250" y="80" width="380" height="56" rx="8" fill="#14141c" stroke="#7777cc" stroke-width="1.5"/>
+  <text x="440" y="114" text-anchor="middle" font-size="16" font-weight="600" fill="#e8e8e8">h를 반으로 줄이고 오차를 다시 잰다</text>
+
+  <path d="M 400 136 L 268 176" stroke="#7ec8e3" stroke-width="2" fill="none" marker-end="url(#ohArr)"/>
+  <path d="M 480 136 L 612 176" stroke="#7ec8e3" stroke-width="2" fill="none" marker-end="url(#ohArr)"/>
+
+  <rect x="90" y="180" width="320" height="104" rx="8" fill="#101820" stroke="#7ec8e3" stroke-width="1.5"/>
+  <text x="250" y="208" text-anchor="middle" font-size="13" fill="#888">오차도 반이 되었다</text>
+  <text x="250" y="230" text-anchor="middle" font-size="13" fill="#888">앞 줄과의 비 ≈ 2</text>
+  <text x="250" y="264" text-anchor="middle" font-size="22" font-weight="700" fill="#7ec8e3">O(h)</text>
+
+  <rect x="470" y="180" width="320" height="104" rx="8" fill="#0f1a10" stroke="#55c555" stroke-width="2"/>
+  <text x="630" y="208" text-anchor="middle" font-size="13" fill="#888">오차가 넷으로 나뉘었다</text>
+  <text x="630" y="230" text-anchor="middle" font-size="13" fill="#888">앞 줄과의 비 ≈ 4</text>
+  <text x="630" y="264" text-anchor="middle" font-size="22" font-weight="700" fill="#55c555">O(h²)</text>
+
+  <rect x="60" y="316" width="760" height="76" rx="8" fill="#14141c" stroke="#7777cc" stroke-width="1.5"/>
+  <text x="84" y="344" font-size="15" font-weight="600" fill="#e8e8e8">본문의 실험 — eʰ 를 1 + h 로 흉내 냈을 때</text>
+  <text x="84" y="368" font-size="13" fill="#888">h = 0.1 → 0.05 에서 비 4.07,  h = 0.05 → 0.025 에서 비 4.03.  따라서 O(h²).</text>
+</svg>

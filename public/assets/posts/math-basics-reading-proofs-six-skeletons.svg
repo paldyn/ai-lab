@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="502" viewBox="0 0 880 502" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <defs>
+    <marker id="skArr" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#7ec8e3"/>
+    </marker>
+  </defs>
+
+  <rect x="0" y="0" width="880" height="502" rx="12" fill="#0a0a0a"/>
+
+  <text x="60" y="46" font-size="22" font-weight="700" fill="#e8e8e8">증명 뼈대 여섯 — 무엇에서 출발해 무엇에 도착하는가</text>
+  <text x="60" y="70" font-size="13" fill="#888">보이려는 것은 모두 같다: 가정 P 아래에서 결론 Q</text>
+
+  <rect x="60" y="96" width="760" height="52" rx="8" fill="#14141c" stroke="#7777cc" stroke-width="1.5"/>
+  <text x="80" y="127" font-size="15" font-weight="600" fill="#e8e8e8">직접 증명</text>
+  <text x="250" y="127" font-size="13" fill="#888">가정 P</text>
+  <line x1="500" y1="123" x2="550" y2="123" stroke="#7ec8e3" stroke-width="2" marker-end="url(#skArr)"/>
+  <text x="565" y="127" font-size="13" fill="#7ec8e3">결론 Q</text>
+
+  <rect x="60" y="158" width="760" height="52" rx="8" fill="#14141c" stroke="#7777cc" stroke-width="1.5"/>
+  <text x="80" y="189" font-size="15" font-weight="600" fill="#e8e8e8">대우 증명</text>
+  <text x="250" y="189" font-size="13" fill="#888">Q가 거짓이라 하자</text>
+  <line x1="500" y1="185" x2="550" y2="185" stroke="#7ec8e3" stroke-width="2" marker-end="url(#skArr)"/>
+  <text x="565" y="189" font-size="13" fill="#7ec8e3">P도 거짓이다</text>
+
+  <rect x="60" y="220" width="760" height="52" rx="8" fill="#14141c" stroke="#7777cc" stroke-width="1.5"/>
+  <text x="80" y="251" font-size="15" font-weight="600" fill="#e8e8e8">귀류법</text>
+  <text x="250" y="251" font-size="13" fill="#888">P인데 Q가 거짓이라 하자</text>
+  <line x1="500" y1="247" x2="550" y2="247" stroke="#7ec8e3" stroke-width="2" marker-end="url(#skArr)"/>
+  <text x="565" y="251" font-size="13" fill="#e05555">모순</text>
+
+  <rect x="60" y="282" width="760" height="52" rx="8" fill="#14141c" stroke="#7777cc" stroke-width="1.5"/>
+  <text x="80" y="313" font-size="15" font-weight="600" fill="#e8e8e8">경우 나누기</text>
+  <text x="250" y="313" font-size="13" fill="#888">빠짐없이 나눈 경우들</text>
+  <line x1="500" y1="309" x2="550" y2="309" stroke="#7ec8e3" stroke-width="2" marker-end="url(#skArr)"/>
+  <text x="565" y="313" font-size="13" fill="#7ec8e3">각 경우에서 결론 Q</text>
+
+  <rect x="60" y="344" width="760" height="52" rx="8" fill="#14141c" stroke="#7777cc" stroke-width="1.5"/>
+  <text x="80" y="375" font-size="15" font-weight="600" fill="#e8e8e8">수학적 귀납법</text>
+  <text x="250" y="375" font-size="13" fill="#888">n = 1 확인 + k이면 k+1</text>
+  <line x1="500" y1="371" x2="550" y2="371" stroke="#7ec8e3" stroke-width="2" marker-end="url(#skArr)"/>
+  <text x="565" y="375" font-size="13" fill="#7ec8e3">모든 자연수 n</text>
+
+  <rect x="60" y="406" width="760" height="52" rx="8" fill="#14141c" stroke="#7777cc" stroke-width="1.5"/>
+  <text x="80" y="437" font-size="15" font-weight="600" fill="#e8e8e8">구성적 증명</text>
+  <text x="250" y="437" font-size="13" fill="#888">조건에 맞는 것을 만든다</text>
+  <line x1="500" y1="433" x2="550" y2="433" stroke="#7ec8e3" stroke-width="2" marker-end="url(#skArr)"/>
+  <text x="565" y="437" font-size="13" fill="#7ec8e3">존재한다</text>
+
+  <text x="60" y="484" font-size="13" fill="#888">앞의 둘은 곧장 가고, 가운데 둘은 길을 나누고, 뒤의 둘은 하나씩 쌓거나 직접 만든다.</text>
+</svg>
