@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="490" viewBox="0 0 880 490" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <defs>
+    <marker id="a1" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#7ec8e3"/>
+    </marker>
+  </defs>
+  <rect x="0" y="0" width="880" height="490" rx="12" fill="#0a0a0a"/>
+  <text x="60" y="46" font-size="22" font-weight="700" fill="#e8e8e8">나누는 방식은 넷뿐이다</text>
+  <text x="60" y="72" font-size="13" fill="#888">이름은 프레임워크마다 다르지만 모양은 이 넷 중 하나이고, 조합해서 쓴다.</text>
+
+  <rect x="60" y="100" width="350" height="150" rx="10" fill="#0d1117" stroke="#333333" stroke-width="1"/>
+  <text x="80" y="128" font-size="15" font-weight="600" fill="#e8e8e8">① 하나로 둔다</text>
+  <rect x="86" y="160" width="110" height="48" rx="8" fill="#101418" stroke="#55c555" stroke-width="1.5"/>
+  <text x="141" y="189" font-size="13" fill="#e8e8e8" text-anchor="middle">에이전트</text>
+  <line x1="196" y1="184" x2="250" y2="159" stroke="#7ec8e3" stroke-width="2" marker-end="url(#a1)"/>
+  <line x1="196" y1="184" x2="250" y2="191" stroke="#7ec8e3" stroke-width="2" marker-end="url(#a1)"/>
+  <line x1="196" y1="184" x2="250" y2="223" stroke="#7ec8e3" stroke-width="2" marker-end="url(#a1)"/>
+  <rect x="264" y="146" width="100" height="26" rx="6" fill="#101418" stroke="#555555" stroke-width="1"/>
+  <text x="314" y="164" font-size="12" fill="#888" text-anchor="middle">도구</text>
+  <rect x="264" y="178" width="100" height="26" rx="6" fill="#101418" stroke="#555555" stroke-width="1"/>
+  <text x="314" y="196" font-size="12" fill="#888" text-anchor="middle">도구</text>
+  <rect x="264" y="210" width="100" height="26" rx="6" fill="#101418" stroke="#555555" stroke-width="1"/>
+  <text x="314" y="228" font-size="12" fill="#888" text-anchor="middle">도구</text>
+
+  <rect x="470" y="100" width="350" height="150" rx="10" fill="#0d1117" stroke="#333333" stroke-width="1"/>
+  <text x="490" y="128" font-size="15" font-weight="600" fill="#e8e8e8">② 관리자가 나눠 준다</text>
+  <rect x="580" y="146" width="130" height="36" rx="8" fill="#101418" stroke="#55c555" stroke-width="1.5"/>
+  <text x="645" y="169" font-size="13" fill="#e8e8e8" text-anchor="middle">관리자</text>
+  <line x1="645" y1="182" x2="531" y2="204" stroke="#7ec8e3" stroke-width="2" marker-end="url(#a1)"/>
+  <line x1="645" y1="182" x2="645" y2="204" stroke="#7ec8e3" stroke-width="2" marker-end="url(#a1)"/>
+  <line x1="645" y1="182" x2="759" y2="204" stroke="#7ec8e3" stroke-width="2" marker-end="url(#a1)"/>
+  <rect x="486" y="206" width="90" height="32" rx="6" fill="#101418" stroke="#7777cc" stroke-width="1"/>
+  <text x="531" y="227" font-size="12" fill="#e8e8e8" text-anchor="middle">일꾼</text>
+  <rect x="600" y="206" width="90" height="32" rx="6" fill="#101418" stroke="#7777cc" stroke-width="1"/>
+  <text x="645" y="227" font-size="12" fill="#e8e8e8" text-anchor="middle">일꾼</text>
+  <rect x="714" y="206" width="90" height="32" rx="6" fill="#101418" stroke="#7777cc" stroke-width="1"/>
+  <text x="759" y="227" font-size="12" fill="#e8e8e8" text-anchor="middle">일꾼</text>
+
+  <rect x="60" y="280" width="350" height="150" rx="10" fill="#0d1117" stroke="#333333" stroke-width="1"/>
+  <text x="80" y="308" font-size="15" font-weight="600" fill="#e8e8e8">③ 줄지어 넘긴다</text>
+  <rect x="76" y="342" width="80" height="40" rx="8" fill="#101418" stroke="#7ec8e3" stroke-width="1.5"/>
+  <text x="116" y="367" font-size="12" fill="#e8e8e8" text-anchor="middle">조사</text>
+  <line x1="156" y1="362" x2="196" y2="362" stroke="#7ec8e3" stroke-width="2" marker-end="url(#a1)"/>
+  <rect x="196" y="342" width="80" height="40" rx="8" fill="#101418" stroke="#7ec8e3" stroke-width="1.5"/>
+  <text x="236" y="367" font-size="12" fill="#e8e8e8" text-anchor="middle">작성</text>
+  <line x1="276" y1="362" x2="316" y2="362" stroke="#7ec8e3" stroke-width="2" marker-end="url(#a1)"/>
+  <rect x="316" y="342" width="80" height="40" rx="8" fill="#101418" stroke="#7ec8e3" stroke-width="1.5"/>
+  <text x="356" y="367" font-size="12" fill="#e8e8e8" text-anchor="middle">교정</text>
+  <text x="80" y="410" font-size="12" fill="#888">앞 단계의 결과가 다음 단계의 입력이 된다</text>
+
+  <rect x="470" y="280" width="350" height="150" rx="10" fill="#0d1117" stroke="#333333" stroke-width="1"/>
+  <text x="490" y="308" font-size="15" font-weight="600" fill="#e8e8e8">④ 서로 검토하고 하나를 고른다</text>
+  <rect x="496" y="326" width="110" height="34" rx="8" fill="#101418" stroke="#7777cc" stroke-width="1.5"/>
+  <text x="551" y="348" font-size="12" fill="#e8e8e8" text-anchor="middle">안 A</text>
+  <rect x="690" y="326" width="110" height="34" rx="8" fill="#101418" stroke="#7777cc" stroke-width="1.5"/>
+  <text x="745" y="348" font-size="12" fill="#e8e8e8" text-anchor="middle">안 B</text>
+  <line x1="606" y1="336" x2="690" y2="336" stroke="#7ec8e3" stroke-width="2" marker-end="url(#a1)"/>
+  <line x1="690" y1="352" x2="606" y2="352" stroke="#7ec8e3" stroke-width="2" marker-end="url(#a1)"/>
+  <line x1="551" y1="360" x2="612" y2="386" stroke="#7ec8e3" stroke-width="2" marker-end="url(#a1)"/>
+  <line x1="745" y1="360" x2="684" y2="386" stroke="#7ec8e3" stroke-width="2" marker-end="url(#a1)"/>
+  <rect x="578" y="388" width="140" height="34" rx="8" fill="#101418" stroke="#55c555" stroke-width="1.5"/>
+  <text x="648" y="410" font-size="12" fill="#e8e8e8" text-anchor="middle">고르는 쪽</text>
+
+  <text x="60" y="466" font-size="13" fill="#7ec8e3">기본값은 ①이다. 나머지 셋은 ①로 안 되는 이유가 분명할 때 꺼낸다.</text>
+</svg>

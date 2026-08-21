@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="400" viewBox="0 0 880 400" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <rect x="0" y="0" width="880" height="400" rx="12" fill="#0a0a0a"/>
+  <text x="60" y="46" font-size="22" font-weight="700" fill="#e8e8e8">몇 초를 세느냐, 무엇을 보느냐</text>
+  <text x="60" y="72" font-size="13" fill="#888">같은 클릭인데 기다리는 방식이 다르다. 화면은 3.2초에 준비되지만 그 시각은 미리 알 수 없다.</text>
+
+  <text x="472" y="98" font-size="12" fill="#7ec8e3" text-anchor="middle">3.2초 · 저장 버튼이 실제로 뜨는 시각</text>
+  <line x1="472" y1="106" x2="472" y2="318" stroke="#7ec8e3" stroke-width="2" stroke-dasharray="4,4"/>
+
+  <text x="60" y="130" font-size="14" font-weight="600" fill="#e05555">고정 대기 — 2초 세고 누른다</text>
+  <rect x="120" y="142" width="660" height="36" rx="6" fill="#101418" stroke="#333333" stroke-width="1"/>
+  <rect x="120" y="142" height="36" rx="6" fill="#3a1c1c">
+    <animate attributeName="width" values="0;220;220" keyTimes="0;0.333;1" dur="6s" repeatCount="indefinite"/>
+  </rect>
+  <text x="230" y="165" font-size="13" fill="#e8e8e8" text-anchor="middle">sleep(2초)</text>
+  <g opacity="0">
+    <animate attributeName="opacity" values="0;0;1;1" keyTimes="0;0.32;0.36;1" dur="6s" repeatCount="indefinite"/>
+    <line x1="333" y1="153" x2="347" y2="167" stroke="#e05555" stroke-width="3"/>
+    <line x1="347" y1="153" x2="333" y2="167" stroke="#e05555" stroke-width="3"/>
+    <text x="356" y="165" font-size="13" font-weight="600" fill="#e05555">아직 없는 버튼을 누른다</text>
+  </g>
+
+  <text x="60" y="228" font-size="14" font-weight="600" fill="#55c555">조건 대기 — 버튼이 보일 때까지 기다린다</text>
+  <rect x="120" y="240" width="660" height="36" rx="6" fill="#101418" stroke="#333333" stroke-width="1"/>
+  <rect x="120" y="240" height="36" rx="6" fill="#12331a">
+    <animate attributeName="width" values="0;352;352" keyTimes="0;0.533;1" dur="6s" repeatCount="indefinite"/>
+  </rect>
+  <text x="296" y="263" font-size="13" fill="#e8e8e8" text-anchor="middle">200ms마다 「보이는가」를 다시 묻는다</text>
+  <g opacity="0">
+    <animate attributeName="opacity" values="0;0;1;1" keyTimes="0;0.52;0.56;1" dur="6s" repeatCount="indefinite"/>
+    <path d="M 482 261 L 489 268 L 502 251" stroke="#55c555" stroke-width="3" fill="none"/>
+    <text x="512" y="263" font-size="13" font-weight="600" fill="#55c555">뜨자마자 눌린다</text>
+  </g>
+
+  <line x1="120" y1="112" x2="120" y2="306" stroke="#55c555" stroke-width="2" opacity="0.9">
+    <animate attributeName="x1" values="120;780" dur="6s" repeatCount="indefinite"/>
+    <animate attributeName="x2" values="120;780" dur="6s" repeatCount="indefinite"/>
+  </line>
+
+  <line x1="120" y1="318" x2="780" y2="318" stroke="#555555" stroke-width="1"/>
+  <line x1="120" y1="318" x2="120" y2="324" stroke="#555555" stroke-width="1"/>
+  <line x1="230" y1="318" x2="230" y2="324" stroke="#555555" stroke-width="1"/>
+  <line x1="340" y1="318" x2="340" y2="324" stroke="#555555" stroke-width="1"/>
+  <line x1="450" y1="318" x2="450" y2="324" stroke="#555555" stroke-width="1"/>
+  <line x1="560" y1="318" x2="560" y2="324" stroke="#555555" stroke-width="1"/>
+  <line x1="670" y1="318" x2="670" y2="324" stroke="#555555" stroke-width="1"/>
+  <line x1="780" y1="318" x2="780" y2="324" stroke="#555555" stroke-width="1"/>
+  <text x="120" y="342" font-size="12" fill="#888" text-anchor="middle">0초</text>
+  <text x="230" y="342" font-size="12" fill="#888" text-anchor="middle">1</text>
+  <text x="340" y="342" font-size="12" fill="#888" text-anchor="middle">2</text>
+  <text x="450" y="342" font-size="12" fill="#888" text-anchor="middle">3</text>
+  <text x="560" y="342" font-size="12" fill="#888" text-anchor="middle">4</text>
+  <text x="670" y="342" font-size="12" fill="#888" text-anchor="middle">5</text>
+  <text x="780" y="342" font-size="12" fill="#888" text-anchor="middle">6</text>
+
+  <text x="60" y="378" font-size="13" fill="#7ec8e3">고정 대기는 짧으면 깨지고 길면 느리다. 조건 대기는 빠른 날엔 빠르고 느린 날에도 버틴다.</text>
+</svg>

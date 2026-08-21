@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="432" viewBox="0 0 880 432" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <defs>
+    <marker id="rd" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#7ec8e3"/>
+    </marker>
+    <marker id="wr" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#55c555"/>
+    </marker>
+  </defs>
+  <rect x="0" y="0" width="880" height="432" rx="12" fill="#0a0a0a"/>
+  <text x="60" y="46" font-size="22" font-weight="700" fill="#e8e8e8">어디까지 했는지를 어디에 적어 두는가</text>
+  <text x="60" y="72" font-size="13" fill="#888">짧은 일에서는 차이가 안 나고, 걸음이 서른을 넘어가면 이 선택이 전부를 가른다.</text>
+
+  <rect x="60" y="100" width="350" height="270" rx="10" fill="#0d1117" stroke="#e05555" stroke-width="1.5"/>
+  <text x="80" y="128" font-size="15" font-weight="600" fill="#e8e8e8">대화 안에만 쌓는다</text>
+  <line x1="340" y1="150" x2="340" y2="300" stroke="#e05555" stroke-width="2" stroke-dasharray="4,4"/>
+  <text x="340" y="320" font-size="12" fill="#e05555" text-anchor="middle">문맥 창의 한계</text>
+  <text x="80" y="177" font-size="12" fill="#888">걸음 1</text>
+  <rect x="140" y="160" width="30" height="24" rx="4" fill="#1a3550"/>
+  <text x="80" y="213" font-size="12" fill="#888">걸음 5</text>
+  <rect x="140" y="196" width="90" height="24" rx="4" fill="#1a3550"/>
+  <text x="80" y="249" font-size="12" fill="#888">걸음 15</text>
+  <rect x="140" y="232" width="170" height="24" rx="4" fill="#1a3550"/>
+  <text x="80" y="285" font-size="12" fill="#888">걸음 30</text>
+  <rect x="140" y="268" width="250" height="24" rx="4" fill="#4a1f1f"/>
+  <text x="80" y="350" font-size="12.5" fill="#888">넘치면 앞부분부터 잘려 나가고, 잘린 것이 무엇인지 모른다</text>
+
+  <rect x="470" y="100" width="350" height="270" rx="10" fill="#0d1117" stroke="#55c555" stroke-width="1.5"/>
+  <text x="490" y="128" font-size="15" font-weight="600" fill="#e8e8e8">밖의 작업 기록에 적는다</text>
+  <rect x="490" y="150" width="310" height="54" rx="8" fill="#101418" stroke="#55c555" stroke-width="1.5"/>
+  <text x="645" y="172" font-size="13" font-weight="600" fill="#e8e8e8" text-anchor="middle">작업 기록</text>
+  <text x="645" y="192" font-size="12" fill="#888" text-anchor="middle">어디까지 했고 무엇을 알아냈는가</text>
+  <line x1="580" y1="204" x2="580" y2="260" stroke="#7ec8e3" stroke-width="2" marker-end="url(#rd)"/>
+  <text x="562" y="236" font-size="12" fill="#7ec8e3" text-anchor="end">읽는다</text>
+  <line x1="710" y1="260" x2="710" y2="204" stroke="#55c555" stroke-width="2" marker-end="url(#wr)"/>
+  <text x="728" y="236" font-size="12" fill="#55c555">적는다</text>
+  <rect x="490" y="260" width="310" height="54" rx="8" fill="#101418" stroke="#7ec8e3" stroke-width="1.5"/>
+  <text x="645" y="282" font-size="13" font-weight="600" fill="#e8e8e8" text-anchor="middle">이번 걸음</text>
+  <text x="645" y="302" font-size="12" fill="#888" text-anchor="middle">지금 필요한 것만 문맥에 담는다</text>
+  <text x="490" y="350" font-size="12.5" fill="#888">문맥 크기가 걸음 수와 상관없이 일정하다</text>
+
+  <text x="60" y="410" font-size="13" fill="#7ec8e3">오래 도는 에이전트에서 대화 기록은 상태가 아니라 그때그때의 작업 공간이다.</text>
+</svg>

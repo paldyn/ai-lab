@@ -108,3 +108,5 @@ draft: false
 읽어주셔서 감사합니다. 😊
 
 **지난 글:** [RAG의 비용과 지연은 어디서 생기는가](/articles/rag-cost-latency-tuning)
+
+**다음 글:** [에이전트에게 브라우저를 쥐여 줄 때](/articles/agent-browser-automation)

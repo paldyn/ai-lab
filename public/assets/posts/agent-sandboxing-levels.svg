@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="454" viewBox="0 0 880 454" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <defs>
+    <marker id="rt" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#7ec8e3"/>
+    </marker>
+  </defs>
+  <rect x="0" y="0" width="880" height="454" rx="12" fill="#0a0a0a"/>
+  <text x="60" y="46" font-size="22" font-weight="700" fill="#e8e8e8">격리를 어디까지 세울 것인가</text>
+  <text x="60" y="72" font-size="13" fill="#888">오른쪽으로 갈수록 막히는 것이 늘고 띄우는 시간도 는다. 하는 일에 맞는 칸을 고른다.</text>
+
+  <line x1="60" y1="98" x2="820" y2="98" stroke="#7ec8e3" stroke-width="2" marker-end="url(#rt)"/>
+
+  <rect x="60" y="116" width="175" height="46" rx="8" fill="#101418" stroke="#e05555" stroke-width="1.5"/>
+  <text x="147" y="144" font-size="14" font-weight="600" fill="#e8e8e8" text-anchor="middle">같은 프로세스</text>
+  <rect x="255" y="116" width="175" height="46" rx="8" fill="#101418" stroke="#e0a055" stroke-width="1.5"/>
+  <text x="342" y="144" font-size="14" font-weight="600" fill="#e8e8e8" text-anchor="middle">별도 프로세스</text>
+  <rect x="450" y="116" width="175" height="46" rx="8" fill="#101418" stroke="#7ec8e3" stroke-width="1.5"/>
+  <text x="537" y="144" font-size="14" font-weight="600" fill="#e8e8e8" text-anchor="middle">컨테이너</text>
+  <rect x="645" y="116" width="175" height="46" rx="8" fill="#101418" stroke="#55c555" stroke-width="1.5"/>
+  <text x="732" y="144" font-size="14" font-weight="600" fill="#e8e8e8" text-anchor="middle">가상 머신</text>
+
+  <text x="60" y="196" font-size="12" font-weight="600" fill="#888">어떻게 도는가</text>
+  <text x="60" y="216" font-size="12.5" fill="#e8e8e8">우리 코드가 직접</text>
+  <text x="255" y="196" font-size="12" font-weight="600" fill="#888">어떻게 도는가</text>
+  <text x="255" y="216" font-size="12.5" fill="#e8e8e8">권한 낮은 사용자로</text>
+  <text x="450" y="196" font-size="12" font-weight="600" fill="#888">어떻게 도는가</text>
+  <text x="450" y="216" font-size="12.5" fill="#e8e8e8">따로 판 파일·네트워크</text>
+  <text x="645" y="196" font-size="12" font-weight="600" fill="#888">어떻게 도는가</text>
+  <text x="645" y="216" font-size="12.5" fill="#e8e8e8">커널부터 따로</text>
+
+  <text x="60" y="252" font-size="12" font-weight="600" fill="#888">막히는 것</text>
+  <text x="60" y="272" font-size="12.5" fill="#e8e8e8">없다</text>
+  <text x="255" y="252" font-size="12" font-weight="600" fill="#888">막히는 것</text>
+  <text x="255" y="272" font-size="12.5" fill="#e8e8e8">우리 메모리·변수</text>
+  <text x="450" y="252" font-size="12" font-weight="600" fill="#888">막히는 것</text>
+  <text x="450" y="272" font-size="12.5" fill="#e8e8e8">디스크·포트·프로세스</text>
+  <text x="645" y="252" font-size="12" font-weight="600" fill="#888">막히는 것</text>
+  <text x="645" y="272" font-size="12.5" fill="#e8e8e8">위의 전부와 커널</text>
+
+  <text x="60" y="308" font-size="12" font-weight="600" fill="#888">그래도 새는 곳</text>
+  <text x="60" y="328" font-size="12.5" fill="#e8e8e8">전부</text>
+  <text x="255" y="308" font-size="12" font-weight="600" fill="#888">그래도 새는 곳</text>
+  <text x="255" y="328" font-size="12.5" fill="#e8e8e8">같은 디스크·네트워크</text>
+  <text x="450" y="308" font-size="12" font-weight="600" fill="#888">그래도 새는 곳</text>
+  <text x="450" y="328" font-size="12.5" fill="#e8e8e8">커널 구멍·열어 둔 길</text>
+  <text x="645" y="308" font-size="12" font-weight="600" fill="#888">그래도 새는 곳</text>
+  <text x="645" y="328" font-size="12.5" fill="#e8e8e8">우리가 열어 준 것</text>
+
+  <text x="60" y="364" font-size="12" font-weight="600" fill="#888">띄우는 데</text>
+  <text x="60" y="384" font-size="12.5" fill="#e8e8e8">0에 가깝다</text>
+  <text x="255" y="364" font-size="12" font-weight="600" fill="#888">띄우는 데</text>
+  <text x="255" y="384" font-size="12.5" fill="#e8e8e8">수 밀리초</text>
+  <text x="450" y="364" font-size="12" font-weight="600" fill="#888">띄우는 데</text>
+  <text x="450" y="384" font-size="12.5" fill="#e8e8e8">0.1~1초</text>
+  <text x="645" y="364" font-size="12" font-weight="600" fill="#888">띄우는 데</text>
+  <text x="645" y="384" font-size="12.5" fill="#e8e8e8">수 초</text>
+
+  <text x="60" y="428" font-size="13" fill="#7ec8e3">모델이 만든 코드를 그대로 돌린다면 첫 칸은 후보가 아니다. 기본값은 셋째 칸이다.</text>
+</svg>

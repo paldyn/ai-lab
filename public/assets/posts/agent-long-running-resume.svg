@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="348" viewBox="0 0 880 348" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <rect x="0" y="0" width="880" height="348" rx="12" fill="#0a0a0a"/>
+  <text x="60" y="46" font-size="22" font-weight="700" fill="#e8e8e8">죽으면 어디서 다시 시작하는가</text>
+  <text x="60" y="72" font-size="13" fill="#888">체크포인트를 세 걸음마다 남겨 두면, 서른 걸음짜리 일이 죽어도 잃는 것은 두 걸음이다.</text>
+
+  <text x="450" y="140" font-size="12" fill="#55c555" text-anchor="middle">체크포인트 — 여기까지는 저장돼 있다</text>
+  <line x1="270" y1="150" x2="270" y2="228" stroke="#55c555" stroke-width="2" stroke-dasharray="4,4"/>
+  <line x1="450" y1="150" x2="450" y2="228" stroke="#55c555" stroke-width="2" stroke-dasharray="4,4"/>
+  <line x1="630" y1="150" x2="630" y2="228" stroke="#55c555" stroke-width="2" stroke-dasharray="4,4"/>
+
+  <rect x="100" y="170" width="50" height="44" rx="6" fill="#101418" stroke="#333333" stroke-width="1"/>
+  <rect x="160" y="170" width="50" height="44" rx="6" fill="#101418" stroke="#333333" stroke-width="1"/>
+  <rect x="220" y="170" width="50" height="44" rx="6" fill="#101418" stroke="#333333" stroke-width="1"/>
+  <rect x="280" y="170" width="50" height="44" rx="6" fill="#101418" stroke="#333333" stroke-width="1"/>
+  <rect x="340" y="170" width="50" height="44" rx="6" fill="#101418" stroke="#333333" stroke-width="1"/>
+  <rect x="400" y="170" width="50" height="44" rx="6" fill="#101418" stroke="#333333" stroke-width="1"/>
+  <rect x="460" y="170" width="50" height="44" rx="6" fill="#101418" stroke="#333333" stroke-width="1"/>
+  <rect x="520" y="170" width="50" height="44" rx="6" fill="#101418" stroke="#333333" stroke-width="1"/>
+  <rect x="580" y="170" width="50" height="44" rx="6" fill="#101418" stroke="#333333" stroke-width="1"/>
+  <rect x="640" y="170" width="50" height="44" rx="6" fill="#101418" stroke="#333333" stroke-width="1"/>
+  <rect x="700" y="170" width="50" height="44" rx="6" fill="#101418" stroke="#333333" stroke-width="1"/>
+  <rect x="760" y="170" width="50" height="44" rx="6" fill="#101418" stroke="#333333" stroke-width="1"/>
+
+  <rect x="100" y="170" height="44" rx="6" fill="#1a3550" opacity="0.85">
+    <animate attributeName="width" values="0;470;470;350;350;710;710" keyTimes="0;0.375;0.44;0.47;0.60;0.94;1" dur="8s" repeatCount="indefinite"/>
+  </rect>
+
+  <text x="125" y="198" font-size="12" fill="#888" text-anchor="middle">1</text>
+  <text x="185" y="198" font-size="12" fill="#888" text-anchor="middle">2</text>
+  <text x="245" y="198" font-size="12" fill="#888" text-anchor="middle">3</text>
+  <text x="305" y="198" font-size="12" fill="#888" text-anchor="middle">4</text>
+  <text x="365" y="198" font-size="12" fill="#888" text-anchor="middle">5</text>
+  <text x="425" y="198" font-size="12" fill="#888" text-anchor="middle">6</text>
+  <text x="485" y="198" font-size="12" fill="#888" text-anchor="middle">7</text>
+  <text x="545" y="198" font-size="12" fill="#888" text-anchor="middle">8</text>
+  <text x="605" y="198" font-size="12" fill="#888" text-anchor="middle">9</text>
+  <text x="665" y="198" font-size="12" fill="#888" text-anchor="middle">10</text>
+  <text x="725" y="198" font-size="12" fill="#888" text-anchor="middle">11</text>
+  <text x="785" y="198" font-size="12" fill="#888" text-anchor="middle">12</text>
+
+  <g opacity="0">
+    <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.37;0.385;0.455;0.47;1" dur="8s" repeatCount="indefinite"/>
+    <line x1="536" y1="183" x2="554" y2="201" stroke="#e05555" stroke-width="3"/>
+    <line x1="554" y1="183" x2="536" y2="201" stroke="#e05555" stroke-width="3"/>
+  </g>
+
+  <text x="100" y="272" font-size="14" font-weight="600" fill="#7ec8e3" opacity="0">걸음이 하나씩 쌓인다
+    <animate attributeName="opacity" values="1;1;0;0" keyTimes="0;0.36;0.375;1" dur="8s" repeatCount="indefinite"/>
+  </text>
+  <text x="100" y="272" font-size="14" font-weight="600" fill="#e05555" opacity="0">8번째 걸음에서 프로세스가 죽는다
+    <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.37;0.385;0.455;0.47;1" dur="8s" repeatCount="indefinite"/>
+  </text>
+  <text x="100" y="272" font-size="14" font-weight="600" fill="#55c555" opacity="0">6번째 체크포인트를 읽어 거기서부터 다시
+    <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.465;0.48;0.585;0.6;1" dur="8s" repeatCount="indefinite"/>
+  </text>
+  <text x="100" y="272" font-size="14" font-weight="600" fill="#7ec8e3" opacity="0">잃은 것은 두 걸음뿐이고 끝까지 간다
+    <animate attributeName="opacity" values="0;0;1;1" keyTimes="0;0.595;0.61;1" dur="8s" repeatCount="indefinite"/>
+  </text>
+
+  <text x="60" y="316" font-size="13" fill="#7ec8e3">체크포인트가 없으면 죽은 자리가 곧 처음이다. 서른 걸음을 다시 돌면서 값도 다시 낸다.</text>
+</svg>

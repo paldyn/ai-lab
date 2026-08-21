@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="452" viewBox="0 0 880 452" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <defs>
+    <marker id="leak" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#e05555"/>
+    </marker>
+  </defs>
+  <rect x="0" y="0" width="880" height="452" rx="12" fill="#0a0a0a"/>
+  <text x="60" y="46" font-size="22" font-weight="700" fill="#e8e8e8">밖으로 나가는 길은 넷이다</text>
+  <text x="60" y="72" font-size="13" fill="#888">「샌드박스에 넣었다」는 이 넷을 각각 닫았다는 뜻이다. 하나만 열려 있으면 나머지는 의미가 없다.</text>
+
+  <rect x="60" y="110" width="220" height="276" rx="10" fill="#101418" stroke="#7ec8e3" stroke-width="1.5" stroke-dasharray="5,3"/>
+  <text x="170" y="238" font-size="15" font-weight="600" fill="#e8e8e8" text-anchor="middle">모델이 만든 코드가</text>
+  <text x="170" y="262" font-size="15" font-weight="600" fill="#e8e8e8" text-anchor="middle">도는 자리</text>
+
+  <line x1="280" y1="140" x2="380" y2="140" stroke="#e05555" stroke-width="2" marker-end="url(#leak)"/>
+  <line x1="280" y1="212" x2="380" y2="212" stroke="#e05555" stroke-width="2" marker-end="url(#leak)"/>
+  <line x1="280" y1="284" x2="380" y2="284" stroke="#e05555" stroke-width="2" marker-end="url(#leak)"/>
+  <line x1="280" y1="356" x2="380" y2="356" stroke="#e05555" stroke-width="2" marker-end="url(#leak)"/>
+
+  <rect x="394" y="110" width="426" height="60" rx="8" fill="#101418" stroke="#333333" stroke-width="1"/>
+  <text x="414" y="134" font-size="13" font-weight="600" fill="#e05555">파일 — 우리 소스와 키 파일이 같은 디스크에 있다</text>
+  <text x="414" y="154" font-size="12.5" fill="#e8e8e8">읽기 전용으로 붙이고, 쓰기는 작업 폴더 하나만 연다</text>
+
+  <rect x="394" y="182" width="426" height="60" rx="8" fill="#101418" stroke="#333333" stroke-width="1"/>
+  <text x="414" y="206" font-size="13" font-weight="600" fill="#e05555">네트워크 — 사내 관리 화면이 그대로 열려 있다</text>
+  <text x="414" y="226" font-size="12.5" fill="#e8e8e8">기본은 전부 막고, 필요한 주소만 하나씩 연다</text>
+
+  <rect x="394" y="254" width="426" height="60" rx="8" fill="#101418" stroke="#333333" stroke-width="1"/>
+  <text x="414" y="278" font-size="13" font-weight="600" fill="#e05555">자격 증명 — 환경 변수에 API 키가 통째로 있다</text>
+  <text x="414" y="298" font-size="12.5" fill="#e8e8e8">키는 밖에 두고, 짧게 사는 토큰만 안으로 넣는다</text>
+
+  <rect x="394" y="326" width="426" height="60" rx="8" fill="#101418" stroke="#333333" stroke-width="1"/>
+  <text x="414" y="350" font-size="13" font-weight="600" fill="#e05555">자원 — 무한 루프 하나가 서버를 멈춘다</text>
+  <text x="414" y="370" font-size="12.5" fill="#e8e8e8">CPU·메모리·시간에 상한을 걸고 넘으면 끝낸다</text>
+
+  <text x="60" y="424" font-size="13" fill="#7ec8e3">넷 다 「기본은 막고 필요한 것만 연다」 하나의 규칙이다. 반대로 하면 빠뜨린 자리가 곧 구멍이 된다.</text>
+</svg>

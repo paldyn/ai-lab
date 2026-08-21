@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="476" viewBox="0 0 880 476" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <defs>
+    <marker id="dn" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#e05555"/>
+    </marker>
+    <marker id="up" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#7ec8e3"/>
+    </marker>
+  </defs>
+  <rect x="0" y="0" width="880" height="476" rx="12" fill="#0a0a0a"/>
+  <text x="60" y="46" font-size="22" font-weight="700" fill="#e8e8e8">브라우저 자동화는 층으로 나뉘어 있다</text>
+  <text x="60" y="72" font-size="13" fill="#888">에이전트가 새로 짜야 하는 것은 맨 위 한 층뿐이다. 아래 셋은 이미 만들어져 있다.</text>
+  <text x="740" y="94" font-size="12.5" font-weight="600" fill="#7ec8e3" text-anchor="middle">관측이 올라온다</text>
+
+  <line x1="140" y1="100" x2="140" y2="428" stroke="#e05555" stroke-width="2" marker-end="url(#dn)"/>
+  <line x1="740" y1="428" x2="740" y2="100" stroke="#7ec8e3" stroke-width="2" marker-end="url(#up)"/>
+
+  <rect x="190" y="100" width="500" height="64" rx="8" fill="#101418" stroke="#55c555" stroke-width="1.5"/>
+  <text x="214" y="126" font-size="14" font-weight="600" fill="#e8e8e8">에이전트</text>
+  <text x="214" y="146" font-size="12.5" fill="#888">지금 화면에서 다음 동작 하나를 고른다</text>
+
+  <rect x="190" y="188" width="500" height="64" rx="8" fill="#101418" stroke="#7ec8e3" stroke-width="1.5"/>
+  <text x="214" y="214" font-size="14" font-weight="600" fill="#e8e8e8">자동화 라이브러리 · Playwright · Puppeteer</text>
+  <text x="214" y="234" font-size="12.5" fill="#888">요소를 집고, 기다리고, 페이지를 스냅샷으로 뜬다</text>
+
+  <rect x="190" y="276" width="500" height="64" rx="8" fill="#101418" stroke="#7777cc" stroke-width="1.5"/>
+  <text x="214" y="302" font-size="14" font-weight="600" fill="#e8e8e8">제어 프로토콜 · CDP · WebDriver BiDi</text>
+  <text x="214" y="322" font-size="12.5" fill="#888">명령과 이벤트를 브라우저와 주고받는 통로</text>
+
+  <rect x="190" y="364" width="500" height="64" rx="8" fill="#101418" stroke="#888888" stroke-width="1.5"/>
+  <text x="214" y="390" font-size="14" font-weight="600" fill="#e8e8e8">브라우저</text>
+  <text x="214" y="410" font-size="12.5" fill="#888">페이지를 받아 그리고 자바스크립트를 돌린다</text>
+
+  <text x="140" y="452" font-size="12.5" font-weight="600" fill="#e05555" text-anchor="middle">동작이 내려간다</text>
+</svg>

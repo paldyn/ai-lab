@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="466" viewBox="0 0 880 466" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <defs>
+    <marker id="d1" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#55c555"/>
+    </marker>
+    <marker id="d2" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#888888"/>
+    </marker>
+  </defs>
+  <rect x="0" y="0" width="880" height="466" rx="12" fill="#0a0a0a"/>
+  <text x="60" y="46" font-size="22" font-weight="700" fill="#e8e8e8">나눌 이유가 있는가</text>
+  <text x="60" y="72" font-size="13" fill="#888">위에서부터 묻는다. 아래로 내려가는 것은 전부 「아니오」이고, 끝까지 내려가면 나누지 않는다.</text>
+
+  <rect x="60" y="110" width="440" height="58" rx="8" fill="#101418" stroke="#7ec8e3" stroke-width="1.5"/>
+  <text x="84" y="145" font-size="14" fill="#e8e8e8">도구가 너무 많아 엉뚱한 것을 부르는가</text>
+  <text x="530" y="125" font-size="12" font-weight="600" fill="#55c555" text-anchor="middle">예</text>
+  <line x1="500" y1="139" x2="560" y2="139" stroke="#55c555" stroke-width="2" marker-end="url(#d1)"/>
+  <rect x="574" y="117" width="246" height="44" rx="8" fill="#101418" stroke="#55c555" stroke-width="1.5"/>
+  <text x="697" y="145" font-size="13" fill="#e8e8e8" text-anchor="middle">일감별로 나눈다 · 관리자와 일꾼</text>
+
+  <line x1="280" y1="168" x2="280" y2="194" stroke="#888888" stroke-width="2" marker-end="url(#d2)"/>
+
+  <rect x="60" y="194" width="440" height="58" rx="8" fill="#101418" stroke="#7ec8e3" stroke-width="1.5"/>
+  <text x="84" y="229" font-size="14" fill="#e8e8e8">서로 기다리지 않아도 되는 일이 여럿인가</text>
+  <text x="530" y="209" font-size="12" font-weight="600" fill="#55c555" text-anchor="middle">예</text>
+  <line x1="500" y1="223" x2="560" y2="223" stroke="#55c555" stroke-width="2" marker-end="url(#d1)"/>
+  <rect x="574" y="201" width="246" height="44" rx="8" fill="#101418" stroke="#55c555" stroke-width="1.5"/>
+  <text x="697" y="229" font-size="13" fill="#e8e8e8" text-anchor="middle">동시에 돌린다 · 지연이 줄어든다</text>
+
+  <line x1="280" y1="252" x2="280" y2="278" stroke="#888888" stroke-width="2" marker-end="url(#d2)"/>
+
+  <rect x="60" y="278" width="440" height="58" rx="8" fill="#101418" stroke="#7ec8e3" stroke-width="1.5"/>
+  <text x="84" y="313" font-size="14" fill="#e8e8e8">다른 눈으로 다시 봐야 품질이 오르는가</text>
+  <text x="530" y="293" font-size="12" font-weight="600" fill="#55c555" text-anchor="middle">예</text>
+  <line x1="500" y1="307" x2="560" y2="307" stroke="#55c555" stroke-width="2" marker-end="url(#d1)"/>
+  <rect x="574" y="285" width="246" height="44" rx="8" fill="#101418" stroke="#55c555" stroke-width="1.5"/>
+  <text x="697" y="313" font-size="13" fill="#e8e8e8" text-anchor="middle">검토를 따로 세운다 · 비용이 는다</text>
+
+  <line x1="280" y1="336" x2="280" y2="362" stroke="#888888" stroke-width="2" marker-end="url(#d2)"/>
+
+  <rect x="60" y="362" width="440" height="48" rx="8" fill="#101418" stroke="#e05555" stroke-width="1.5"/>
+  <text x="280" y="392" font-size="14" font-weight="600" fill="#e8e8e8" text-anchor="middle">나누지 않는다 — 하나로 둔다</text>
+
+  <text x="60" y="442" font-size="13" fill="#7ec8e3">세 질문에 전부 「아니오」인데 나눈 구조는, 비용과 실패 지점만 늘고 얻는 것이 없다.</text>
+</svg>
