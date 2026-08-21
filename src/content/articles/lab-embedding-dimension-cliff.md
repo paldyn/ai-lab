@@ -230,5 +230,3 @@ for name, f in (("scifact / MiniLM", "scifact_D.npy"), ("KorQuAD / e5-small", "k
 ---
 
 **지난 글:** [CPU만으로 세우는 검색 실험대: 시간은 두 배 흔들려도 nDCG@10은 같았다](/articles/lab-retrieval-testbed)
-
-**다음 글:** [코퍼스가 커지면 저차원은 더 빨리 무너진다: 손실은 문서 수의 로그에 비례했다](/articles/lab-dimension-vs-corpus-size)

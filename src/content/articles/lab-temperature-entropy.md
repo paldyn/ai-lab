@@ -303,3 +303,5 @@ float32에서 그냥 0이 되고, `log`가 `-inf`를 내면 $$0 \times (-\infty)
 읽어주셔서 감사합니다. 😊
 
 **지난 글:** [첫 토큰이 어텐션을 다 먹는다: 3층에서 절벽이 생기고, 한국어가 약해 보인 것은 길이였다](/articles/lab-attention-sink-probe)
+
+**다음 글:** [코퍼스가 커지면 저차원은 더 빨리 무너진다: 손실은 문서 수의 로그에 비례했다](/articles/lab-dimension-vs-corpus-size)
