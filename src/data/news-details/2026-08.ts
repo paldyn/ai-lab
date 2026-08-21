@@ -2,6 +2,22 @@ import type { NewsDetail } from '../news';
 
 /** 2026-08 발표의 모달 본문. 목록은 news.ts에 있습니다. */
 export const details: Record<string, NewsDetail> = {
+  'from-atari-to-eve-online-building-on-15-years-of-ai-research-in-games': {
+    points: [
+      '2010년 창립 이래 Atari·바둑·StarCraft II를 AI 연구 환경으로 써 온 15년을 정리했다',
+      'DQN은 게임별 설계 없이 화면 픽셀만으로 Atari 2600 게임 49종을 학습했다',
+      'Gemini로 구동되는 SIMA 2는 API나 소스 코드 없이 화면과 키보드·마우스만으로 게임을 조작한다',
+      'EVE Online은 2003년 출시된 단일 샤드 우주로 20년 넘게 이어진 플레이어 주도 경제를 갖는다',
+      '제휴가 겨냥한 역량은 연속 학습, 기억, 장기 계획, 복잡한 다중 에이전트 상호작용 넷이다',
+      '연구는 라이브 플레이어와 분리된 오프라인 EVE Online 인스턴스에서 시작해 EVE Frontier로 넘어간다',
+      'EVE Online·EVE Vanguard 적용은 역량이 충분히 무르익은 뒤에야 검토한다고 밝혔다',
+      'Aura Guidance는 Gemini로 Rookie Help 문답을 신규 이용자에게 전달하며 이미 적용돼 있다',
+    ],
+    commentary:
+      '게임은 오래도록 AI의 시험대였지만 이번에 고른 무대는 점수판이 아니라 20년째 돌아가는 세계다. 컨텍스트 창을 넘는 기억과 몇 달짜리 계획은 지금 ' +
+      '에이전트가 가장 못하는 부분이고, 사람이 실제로 사는 경제 안에서 그것을 재겠다는 점이 이전 세대의 게임 연구와 갈리는 자리다. 오프라인 인스턴스에서 ' +
+      '시작한다는 순서도 라이브 경제를 흔들지 않으려는 장치로 읽힌다.',
+  },
   'introducing-ai-futures': {
     points: [
       'OpenAI가 신설한 Strategic Futures 팀이 블로그 AI Futures를 열었다',

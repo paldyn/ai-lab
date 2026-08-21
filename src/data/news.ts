@@ -160,7 +160,7 @@ export interface NewsDetail {
   commentary: string;
 }
 
-export const globalNewsUpdatedAt = '2026-08-20';
+export const globalNewsUpdatedAt = '2026-08-21';
 
 /**
  * 공식 발표 한 건 = 항목 한 개. 2026년 1월부터 쌓는 아카이브이며 오래된 항목을
@@ -171,6 +171,21 @@ export const globalNewsUpdatedAt = '2026-08-20';
  * 목록에서 파생됩니다. 갱신 시 globalNewsUpdatedAt도 함께 올립니다.
  */
 const entries: NewsItem[] = [
+  {
+    id: 'from-atari-to-eve-online-building-on-15-years-of-ai-research-in-games',
+    source: 'Google DeepMind',
+    kind: 'company',
+    title: 'Google DeepMind, EVE Online 개발사와 게임 AI 연구 확대',
+    summary:
+      'Google DeepMind가 EVE Online을 만든 Fenris Creations와의 연구 제휴를 EVE Vanguard와 ' +
+      'EVE Frontier까지 넓혔다. 연속 학습·기억·장기 계획·다중 에이전트 상호작용을 시험할 ' +
+      '환경으로 삼으며, 라이브 서버와 분리된 오프라인 EVE Online 인스턴스에서 시작한다.',
+    publishedAt: '2026-08-21',
+    collectedAt: '2026-08-22',
+    category: 'Research',
+    signal: '게임 AI 연구',
+    url: 'https://deepmind.google/blog/from-atari-to-eve-online-building-on-15-years-of-ai-research-in-games/',
+  },
   {
     id: 'introducing-ai-futures',
     source: 'OpenAI',
