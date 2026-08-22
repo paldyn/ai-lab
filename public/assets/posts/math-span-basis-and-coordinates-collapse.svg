@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="460" viewBox="0 0 880 460" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <rect x="0" y="0" width="880" height="460" rx="12" fill="#0a0a0a"/>
+
+  <text x="60" y="46" font-size="22" font-weight="700" fill="#e8e8e8">차원을 d개 준다고 d개를 쓰는 것은 아니다</text>
+
+  <!-- left cube -->
+  <text x="230" y="88" text-anchor="middle" font-size="16" font-weight="600" fill="#55c555">span의 차원 = 3</text>
+  <g stroke="#444" stroke-width="1.5" fill="none">
+    <rect x="110" y="150" width="180" height="180"/>
+    <rect x="170" y="110" width="180" height="180"/>
+    <line x1="110" y1="150" x2="170" y2="110"/>
+    <line x1="290" y1="150" x2="350" y2="110"/>
+    <line x1="110" y1="330" x2="170" y2="290"/>
+    <line x1="290" y1="330" x2="350" y2="290"/>
+  </g>
+  <g fill="#7ec8e3">
+    <circle cx="150" cy="300" r="5"/>
+    <circle cx="205" cy="248" r="5"/>
+    <circle cx="252" cy="196" r="5"/>
+    <circle cx="182" cy="176" r="5"/>
+    <circle cx="278" cy="262" r="5"/>
+    <circle cx="222" cy="316" r="5"/>
+    <circle cx="164" cy="222" r="5"/>
+    <circle cx="298" cy="182" r="5"/>
+    <circle cx="242" cy="144" r="5"/>
+    <circle cx="196" cy="132" r="5"/>
+    <circle cx="316" cy="228" r="5"/>
+    <circle cx="262" cy="286" r="5"/>
+  </g>
+  <text x="230" y="366" text-anchor="middle" font-size="13" fill="#888">어느 방향으로도 퍼져 있다</text>
+
+  <!-- right cube -->
+  <text x="670" y="88" text-anchor="middle" font-size="16" font-weight="600" fill="#e05555">span의 차원 = 2</text>
+  <path d="M 560 300 L 720 210 L 780 175 L 620 265 Z" fill="#e05555" opacity="0.22"/>
+  <g stroke="#444" stroke-width="1.5" fill="none">
+    <rect x="550" y="150" width="180" height="180"/>
+    <rect x="610" y="110" width="180" height="180"/>
+    <line x1="550" y1="150" x2="610" y2="110"/>
+    <line x1="730" y1="150" x2="790" y2="110"/>
+    <line x1="550" y1="330" x2="610" y2="290"/>
+    <line x1="730" y1="330" x2="790" y2="290"/>
+  </g>
+  <g fill="#7ec8e3">
+    <circle cx="590" cy="283" r="5"/>
+    <circle cx="640" cy="255" r="5"/>
+    <circle cx="690" cy="227" r="5"/>
+    <circle cx="730" cy="204" r="5"/>
+    <circle cx="612" cy="284" r="5"/>
+    <circle cx="662" cy="256" r="5"/>
+    <circle cx="712" cy="228" r="5"/>
+    <circle cx="752" cy="198" r="5"/>
+    <circle cx="604" cy="268" r="5"/>
+    <circle cx="678" cy="238" r="5"/>
+    <circle cx="628" cy="270" r="5"/>
+    <circle cx="736" cy="222" r="5"/>
+  </g>
+  <text x="670" y="366" text-anchor="middle" font-size="13" fill="#888">3차원에 놓였지만 사실상 평면 하나에 붙어 있다</text>
+
+  <rect x="60" y="390" width="760" height="52" rx="8" fill="#101820" stroke="#7ec8e3" stroke-width="1.5"/>
+  <text x="82" y="422" font-size="15" font-weight="600" fill="#e8e8e8">「임베딩이 몇 차원을 쓰는가」는 그 벡터들의 span이 몇 차원인가를 묻는 질문이다.</text>
+</svg>

@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="440" viewBox="0 0 880 440" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <defs>
+    <marker id="rbA" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#7ec8e3"/>
+    </marker>
+    <marker id="rbB" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#7777cc"/>
+    </marker>
+    <marker id="rbG" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#666"/>
+    </marker>
+  </defs>
+
+  <rect x="0" y="0" width="880" height="440" rx="12" fill="#0a0a0a"/>
+
+  <text x="60" y="46" font-size="22" font-weight="700" fill="#e8e8e8">회전행렬 세우기 — 기저 둘이 어디로 가는지만 적는다</text>
+
+  <circle cx="260" cy="250" r="110" fill="none" stroke="#333" stroke-width="1.5"/>
+  <line x1="120" y1="250" x2="410" y2="250" stroke="#888" stroke-width="1.5"/>
+  <line x1="260" y1="386" x2="260" y2="110" stroke="#888" stroke-width="1.5"/>
+  <text x="404" y="272" font-size="13" fill="#888">x</text>
+  <text x="242" y="120" font-size="13" fill="#888">y</text>
+
+  <line x1="260" y1="250" x2="370" y2="250" stroke="#666" stroke-width="2" stroke-dasharray="5,3" marker-end="url(#rbG)"/>
+  <line x1="260" y1="250" x2="260" y2="140" stroke="#666" stroke-width="2" stroke-dasharray="5,3" marker-end="url(#rbG)"/>
+  <text x="330" y="272" font-size="13" fill="#666">e₁</text>
+  <text x="272" y="152" font-size="13" fill="#666">e₂</text>
+
+  <line x1="260" y1="250" x2="344" y2="179" stroke="#7ec8e3" stroke-width="2.5" marker-end="url(#rbA)"/>
+  <line x1="260" y1="250" x2="189" y2="166" stroke="#7777cc" stroke-width="2.5" marker-end="url(#rbB)"/>
+
+  <path d="M 305 250 A 45 45 0 0 0 294 221" fill="none" stroke="#55c555" stroke-width="2"/>
+  <text x="316" y="230" font-size="14" font-weight="600" fill="#55c555">θ</text>
+  <path d="M 260 205 A 45 45 0 0 0 231 216" fill="none" stroke="#55c555" stroke-width="2"/>
+  <text x="222" y="200" font-size="14" font-weight="600" fill="#55c555">θ</text>
+
+  <text x="352" y="172" font-size="14" font-weight="600" fill="#7ec8e3">(cos θ, sin θ)</text>
+  <text x="96" y="152" font-size="14" font-weight="600" fill="#7777cc">(−sin θ, cos θ)</text>
+
+  <text x="260" y="410" text-anchor="middle" font-size="13" fill="#888">e₂ 는 e₁ 보다 90도 앞서 있으므로 그 상도 90도 앞선다</text>
+
+  <rect x="470" y="130" width="350" height="90" rx="8" fill="#101820" stroke="#7ec8e3" stroke-width="1.5"/>
+  <text x="492" y="158" font-size="13" fill="#7ec8e3">열에 적으면 그것이 회전행렬</text>
+  <text x="492" y="186" font-size="15" font-weight="600" fill="#e8e8e8">1열 = (cos θ, sin θ)</text>
+  <text x="492" y="210" font-size="15" font-weight="600" fill="#e8e8e8">2열 = (−sin θ, cos θ)</text>
+
+  <rect x="470" y="240" width="350" height="126" rx="8" fill="#0f1a10" stroke="#55c555" stroke-width="1.5"/>
+  <text x="492" y="268" font-size="13" fill="#55c555">넣어 보기</text>
+  <text x="492" y="296" font-size="14" fill="#e8e8e8">θ = 0 이면 열이 (1,0), (0,1) → 그대로</text>
+  <text x="492" y="322" font-size="14" fill="#e8e8e8">θ = 90도면 열이 (0,1), (−1,0)</text>
+  <text x="492" y="348" font-size="14" fill="#9aa4b8">지난 글에서 쓴 그 90도 회전이다</text>
+</svg>

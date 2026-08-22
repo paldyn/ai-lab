@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="470" viewBox="0 0 880 470" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <defs>
+    <marker id="mcA" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#7ec8e3"/>
+    </marker>
+    <marker id="mcB" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#7777cc"/>
+    </marker>
+    <marker id="mcT" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#e8e8e8"/>
+    </marker>
+  </defs>
+
+  <rect x="0" y="0" width="880" height="470" rx="12" fill="#0a0a0a"/>
+
+  <text x="60" y="46" font-size="22" font-weight="700" fill="#e8e8e8">행렬의 열에는 기저가 어디로 갔는지가 적혀 있다</text>
+
+  <!-- left -->
+  <text x="230" y="88" text-anchor="middle" font-size="16" font-weight="600" fill="#e8e8e8">보내기 전</text>
+  <rect x="170" y="270" width="60" height="60" fill="#55c555" opacity="0.16"/>
+  <line x1="110" y1="330" x2="358" y2="330" stroke="#888" stroke-width="1.5"/>
+  <line x1="170" y1="350" x2="170" y2="128" stroke="#888" stroke-width="1.5"/>
+  <text x="352" y="352" font-size="13" fill="#888">x</text>
+  <text x="152" y="138" font-size="13" fill="#888">y</text>
+  <line x1="170" y1="330" x2="230" y2="330" stroke="#7ec8e3" stroke-width="2.5" marker-end="url(#mcA)"/>
+  <line x1="170" y1="330" x2="170" y2="270" stroke="#7777cc" stroke-width="2.5" marker-end="url(#mcB)"/>
+  <text x="228" y="352" font-size="14" font-weight="600" fill="#7ec8e3">e₁</text>
+  <text x="182" y="264" font-size="14" font-weight="600" fill="#7777cc">e₂</text>
+  <text x="230" y="382" text-anchor="middle" font-size="13" fill="#888">단위 정사각형</text>
+
+  <!-- arrow -->
+  <line x1="382" y1="240" x2="486" y2="240" stroke="#e8e8e8" stroke-width="2.5" marker-end="url(#mcT)"/>
+  <text x="434" y="226" text-anchor="middle" font-size="15" font-weight="600" fill="#e8e8e8">T</text>
+
+  <!-- right -->
+  <text x="640" y="88" text-anchor="middle" font-size="16" font-weight="600" fill="#e8e8e8">보낸 뒤</text>
+  <path d="M 560 330 L 680 330 L 740 150 L 620 150 Z" fill="#55c555" opacity="0.16"/>
+  <line x1="500" y1="330" x2="800" y2="330" stroke="#888" stroke-width="1.5"/>
+  <line x1="560" y1="350" x2="560" y2="128" stroke="#888" stroke-width="1.5"/>
+  <text x="794" y="352" font-size="13" fill="#888">x</text>
+  <text x="542" y="138" font-size="13" fill="#888">y</text>
+  <line x1="560" y1="330" x2="680" y2="330" stroke="#7ec8e3" stroke-width="2.5" marker-end="url(#mcA)"/>
+  <line x1="560" y1="330" x2="620" y2="150" stroke="#7777cc" stroke-width="2.5" marker-end="url(#mcB)"/>
+  <text x="656" y="352" font-size="14" font-weight="600" fill="#7ec8e3">T(e₁) = (2, 0)</text>
+  <text x="632" y="150" font-size="14" font-weight="600" fill="#7777cc">T(e₂) = (1, 3)</text>
+  <text x="670" y="382" text-anchor="middle" font-size="13" fill="#888">평행사변형</text>
+
+  <!-- matrix box -->
+  <rect x="230" y="406" width="420" height="52" rx="8" fill="#101820" stroke="#7ec8e3" stroke-width="1.5"/>
+  <text x="252" y="438" font-size="15" font-weight="600" fill="#e8e8e8">A 의 1열 = </text>
+  <text x="352" y="438" font-size="15" font-weight="600" fill="#7ec8e3">(2, 0)</text>
+  <text x="416" y="438" font-size="15" font-weight="600" fill="#e8e8e8">,  2열 = </text>
+  <text x="494" y="438" font-size="15" font-weight="600" fill="#7777cc">(1, 3)</text>
+  <text x="558" y="438" font-size="15" font-weight="600" fill="#e8e8e8">— 그게 전부</text>
+</svg>

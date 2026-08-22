@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="330" viewBox="0 0 880 330" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <rect x="0" y="0" width="880" height="330" rx="12" fill="#0a0a0a"/>
+
+  <text x="60" y="46" font-size="22" font-weight="700" fill="#e8e8e8">외적의 합 — 곱 하나가 판 세 장을 겹친 것</text>
+  <text x="60" y="76" font-size="13" fill="#888">A = 열 (1,0), (2,1), (0,3) · B = 행 (2,1), (0,1), (1,0)</text>
+
+  <!-- plate 1 -->
+  <text x="108" y="118" text-anchor="middle" font-size="12" fill="#7ec8e3">A 1열 (1, 0)</text>
+  <text x="108" y="136" text-anchor="middle" font-size="12" fill="#7777cc">B 1행 (2, 1)</text>
+  <g stroke="#555" stroke-width="1" fill="none">
+    <rect x="80" y="160" width="56" height="56"/><line x1="108" y1="160" x2="108" y2="216"/><line x1="80" y1="188" x2="136" y2="188"/>
+  </g>
+  <text x="94" y="183" text-anchor="middle" font-size="15" fill="#e8e8e8">2</text>
+  <text x="122" y="183" text-anchor="middle" font-size="15" fill="#e8e8e8">1</text>
+  <text x="94" y="211" text-anchor="middle" font-size="15" fill="#666">0</text>
+  <text x="122" y="211" text-anchor="middle" font-size="15" fill="#666">0</text>
+
+  <text x="168" y="195" text-anchor="middle" font-size="20" fill="#888">+</text>
+
+  <!-- plate 2 -->
+  <text x="244" y="118" text-anchor="middle" font-size="12" fill="#7ec8e3">A 2열 (2, 1)</text>
+  <text x="244" y="136" text-anchor="middle" font-size="12" fill="#7777cc">B 2행 (0, 1)</text>
+  <g stroke="#555" stroke-width="1" fill="none">
+    <rect x="216" y="160" width="56" height="56"/><line x1="244" y1="160" x2="244" y2="216"/><line x1="216" y1="188" x2="272" y2="188"/>
+  </g>
+  <text x="230" y="183" text-anchor="middle" font-size="15" fill="#666">0</text>
+  <text x="258" y="183" text-anchor="middle" font-size="15" fill="#e8e8e8">2</text>
+  <text x="230" y="211" text-anchor="middle" font-size="15" fill="#666">0</text>
+  <text x="258" y="211" text-anchor="middle" font-size="15" fill="#e8e8e8">1</text>
+
+  <text x="304" y="195" text-anchor="middle" font-size="20" fill="#888">+</text>
+
+  <!-- plate 3 -->
+  <text x="380" y="118" text-anchor="middle" font-size="12" fill="#7ec8e3">A 3열 (0, 3)</text>
+  <text x="380" y="136" text-anchor="middle" font-size="12" fill="#7777cc">B 3행 (1, 0)</text>
+  <g stroke="#555" stroke-width="1" fill="none">
+    <rect x="352" y="160" width="56" height="56"/><line x1="380" y1="160" x2="380" y2="216"/><line x1="352" y1="188" x2="408" y2="188"/>
+  </g>
+  <text x="366" y="183" text-anchor="middle" font-size="15" fill="#666">0</text>
+  <text x="394" y="183" text-anchor="middle" font-size="15" fill="#666">0</text>
+  <text x="366" y="211" text-anchor="middle" font-size="15" fill="#e8e8e8">3</text>
+  <text x="394" y="211" text-anchor="middle" font-size="15" fill="#666">0</text>
+
+  <text x="456" y="195" text-anchor="middle" font-size="20" fill="#888">=</text>
+
+  <!-- result -->
+  <text x="548" y="136" text-anchor="middle" font-size="13" font-weight="600" fill="#55c555">C = AB</text>
+  <g stroke="#55c555" stroke-width="1.5" fill="none">
+    <rect x="520" y="160" width="56" height="56"/><line x1="548" y1="160" x2="548" y2="216"/><line x1="520" y1="188" x2="576" y2="188"/>
+  </g>
+  <text x="534" y="183" text-anchor="middle" font-size="15" font-weight="600" fill="#e8e8e8">2</text>
+  <text x="562" y="183" text-anchor="middle" font-size="15" font-weight="600" fill="#e8e8e8">3</text>
+  <text x="534" y="211" text-anchor="middle" font-size="15" font-weight="600" fill="#e8e8e8">3</text>
+  <text x="562" y="211" text-anchor="middle" font-size="15" font-weight="600" fill="#e8e8e8">1</text>
+
+  <rect x="620" y="150" width="200" height="76" rx="8" fill="#101820" stroke="#7ec8e3" stroke-width="1.5"/>
+  <text x="642" y="178" font-size="13" fill="#7ec8e3">판 한 장은</text>
+  <text x="642" y="200" font-size="13" fill="#e8e8e8">열 하나와 행 하나로</text>
+  <text x="642" y="220" font-size="13" fill="#e8e8e8">전부 결정된다</text>
+
+  <text x="60" y="290" font-size="13" fill="#888">더하는 판의 수는 축약되는 축의 길이(여기서는 3)와 같다.</text>
+</svg>

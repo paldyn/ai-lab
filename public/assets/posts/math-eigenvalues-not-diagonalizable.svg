@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="430" viewBox="0 0 880 430" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <defs>
+    <marker id="ndG" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#666"/>
+    </marker>
+    <marker id="ndA" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#7ec8e3"/>
+    </marker>
+    <marker id="ndS" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#55c555"/>
+    </marker>
+  </defs>
+
+  <rect x="0" y="0" width="880" height="430" rx="12" fill="#0a0a0a"/>
+
+  <text x="60" y="46" font-size="22" font-weight="700" fill="#e8e8e8">고유 방향이 모자란 두 가지 경우</text>
+
+  <!-- shear -->
+  <text x="230" y="88" text-anchor="middle" font-size="16" font-weight="600" fill="#e8e8e8">전단 — 방향이 하나뿐</text>
+  <line x1="140" y1="280" x2="410" y2="280" stroke="#888" stroke-width="1.5"/>
+  <line x1="230" y1="300" x2="230" y2="130" stroke="#888" stroke-width="1.5"/>
+  <line x1="230" y1="280" x2="280" y2="280" stroke="#55c555" stroke-width="3" marker-end="url(#ndS)"/>
+  <line x1="230" y1="280" x2="230" y2="230" stroke="#666" stroke-width="2" stroke-dasharray="5,3" marker-end="url(#ndG)"/>
+  <line x1="230" y1="280" x2="280" y2="230" stroke="#7ec8e3" stroke-width="2.5" marker-end="url(#ndA)"/>
+  <line x1="230" y1="280" x2="280" y2="180" stroke="#666" stroke-width="2" stroke-dasharray="5,3" marker-end="url(#ndG)"/>
+  <line x1="230" y1="280" x2="380" y2="180" stroke="#7ec8e3" stroke-width="2.5" marker-end="url(#ndA)"/>
+  <text x="252" y="302" font-size="13" font-weight="600" fill="#55c555">여기만 제자리</text>
+  <text x="288" y="222" font-size="13" fill="#7ec8e3">(0,1) → (1,1)</text>
+  <text x="300" y="168" font-size="13" fill="#7ec8e3">(1,2) → (3,2)</text>
+  <text x="230" y="336" text-anchor="middle" font-size="13" fill="#888">λ = 1 이 중근인데 방향은 하나만 남는다</text>
+
+  <!-- rotation -->
+  <text x="650" y="88" text-anchor="middle" font-size="16" font-weight="600" fill="#e8e8e8">회전 — 방향이 아예 없다</text>
+  <line x1="540" y1="280" x2="790" y2="280" stroke="#888" stroke-width="1.5"/>
+  <line x1="650" y1="320" x2="650" y2="130" stroke="#888" stroke-width="1.5"/>
+  <line x1="650" y1="280" x2="710" y2="280" stroke="#666" stroke-width="2" stroke-dasharray="5,3" marker-end="url(#ndG)"/>
+  <line x1="650" y1="280" x2="650" y2="220" stroke="#7ec8e3" stroke-width="2.5" marker-end="url(#ndA)"/>
+  <line x1="650" y1="280" x2="710" y2="220" stroke="#666" stroke-width="2" stroke-dasharray="5,3" marker-end="url(#ndG)"/>
+  <line x1="650" y1="280" x2="590" y2="220" stroke="#7ec8e3" stroke-width="2.5" marker-end="url(#ndA)"/>
+  <text x="676" y="302" font-size="13" fill="#666">(1,0)</text>
+  <text x="662" y="206" font-size="13" fill="#7ec8e3">(0,1)</text>
+  <text x="722" y="212" font-size="13" fill="#666">(1,1)</text>
+  <text x="548" y="206" font-size="13" fill="#7ec8e3">(−1,1)</text>
+  <text x="650" y="336" text-anchor="middle" font-size="13" fill="#888">실수 고윳값이 없다 — 판별식이 음수다</text>
+
+  <rect x="60" y="356" width="760" height="52" rx="8" fill="#1a0d0d" stroke="#e05555" stroke-width="1.5"/>
+  <text x="82" y="388" font-size="14" fill="#e8e8e8">일차독립인 고유벡터가 n개 모여야 P 가 가역이다. 둘 다 그 개수를 못 채워 대각화되지 않는다.</text>
+</svg>

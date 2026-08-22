@@ -196,3 +196,5 @@ print(np.linalg.norm(v), np.linalg.norm(Q @ v))         # 3.1623 3.1623
 읽어주셔서 감사합니다. 😊
 
 **지난 글:** [내적·코사인·L2 거리는 언제 같은 순위를 주고 언제 갈리는가](/articles/math-dot-product-and-cosine)
+
+**다음 글:** [생성·일차독립·기저: 같은 벡터를 다른 축으로 다시 쓰기](/articles/math-span-basis-and-coordinates)

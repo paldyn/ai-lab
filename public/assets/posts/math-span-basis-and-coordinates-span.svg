@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="420" viewBox="0 0 880 420" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <defs>
+    <marker id="spA" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#7ec8e3"/>
+    </marker>
+    <marker id="spB" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#7777cc"/>
+    </marker>
+  </defs>
+
+  <rect x="0" y="0" width="880" height="420" rx="12" fill="#0a0a0a"/>
+
+  <text x="60" y="46" font-size="22" font-weight="700" fill="#e8e8e8">생성(span) — 그 벡터들로 만들 수 있는 것 전부</text>
+
+  <!-- panel 1 -->
+  <text x="170" y="88" text-anchor="middle" font-size="16" font-weight="600" fill="#e8e8e8">벡터 하나</text>
+  <line x1="64" y1="330" x2="276" y2="330" stroke="#333" stroke-width="1"/>
+  <line x1="170" y1="342" x2="170" y2="110" stroke="#333" stroke-width="1"/>
+  <line x1="74" y1="310" x2="266" y2="150" stroke="#55c555" stroke-width="6" opacity="0.28"/>
+  <line x1="170" y1="230" x2="230" y2="180" stroke="#7ec8e3" stroke-width="2.5" marker-end="url(#spA)"/>
+  <text x="238" y="176" font-size="14" font-weight="600" fill="#e8e8e8">v</text>
+  <text x="170" y="376" text-anchor="middle" font-size="13" fill="#55c555">span = 원점을 지나는 직선</text>
+
+  <!-- panel 2 -->
+  <text x="450" y="88" text-anchor="middle" font-size="16" font-weight="600" fill="#e8e8e8">나란하지 않은 둘</text>
+  <rect x="344" y="128" width="212" height="204" rx="6" fill="#55c555" opacity="0.18"/>
+  <line x1="344" y1="330" x2="556" y2="330" stroke="#333" stroke-width="1"/>
+  <line x1="450" y1="342" x2="450" y2="110" stroke="#333" stroke-width="1"/>
+  <line x1="450" y1="230" x2="510" y2="180" stroke="#7ec8e3" stroke-width="2.5" marker-end="url(#spA)"/>
+  <line x1="450" y1="230" x2="400" y2="175" stroke="#7777cc" stroke-width="2.5" marker-end="url(#spB)"/>
+  <text x="518" y="176" font-size="14" font-weight="600" fill="#e8e8e8">v</text>
+  <text x="376" y="164" font-size="14" font-weight="600" fill="#e8e8e8">w</text>
+  <text x="450" y="376" text-anchor="middle" font-size="13" fill="#55c555">span = 평면 전체</text>
+
+  <!-- panel 3 -->
+  <text x="730" y="88" text-anchor="middle" font-size="16" font-weight="600" fill="#e8e8e8">나란한 둘</text>
+  <line x1="624" y1="330" x2="836" y2="330" stroke="#333" stroke-width="1"/>
+  <line x1="730" y1="342" x2="730" y2="110" stroke="#333" stroke-width="1"/>
+  <line x1="634" y1="310" x2="826" y2="150" stroke="#55c555" stroke-width="6" opacity="0.28"/>
+  <line x1="730" y1="230" x2="790" y2="180" stroke="#7ec8e3" stroke-width="2.5" marker-end="url(#spA)"/>
+  <line x1="730" y1="230" x2="670" y2="280" stroke="#7777cc" stroke-width="2.5" marker-end="url(#spB)"/>
+  <text x="798" y="176" font-size="14" font-weight="600" fill="#e8e8e8">v</text>
+  <text x="644" y="298" font-size="14" font-weight="600" fill="#e8e8e8">w = −v</text>
+  <text x="730" y="376" text-anchor="middle" font-size="13" fill="#55c555">span = 여전히 직선</text>
+
+  <text x="60" y="406" font-size="13" fill="#888">벡터를 더 준다고 span이 반드시 커지지는 않는다 — 새 방향을 줄 때만 커진다.</text>
+</svg>

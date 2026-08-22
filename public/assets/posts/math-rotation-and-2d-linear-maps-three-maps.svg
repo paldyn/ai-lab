@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="400" viewBox="0 0 880 400" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <rect x="0" y="0" width="880" height="400" rx="12" fill="#0a0a0a"/>
+
+  <text x="60" y="46" font-size="22" font-weight="700" fill="#e8e8e8">2×2 행렬 셋이 원 하나에 하는 일</text>
+
+  <!-- rotation -->
+  <text x="175" y="92" text-anchor="middle" font-size="16" font-weight="600" fill="#e8e8e8">회전</text>
+  <circle cx="175" cy="215" r="60" fill="none" stroke="#666" stroke-width="1.5" stroke-dasharray="5,3"/>
+  <circle cx="175" cy="215" r="60" fill="#7ec8e3" opacity="0.14"/>
+  <circle cx="175" cy="215" r="60" fill="none" stroke="#7ec8e3" stroke-width="2"/>
+  <circle cx="235" cy="215" r="5" fill="#666"/>
+  <circle cx="214" cy="169" r="5" fill="#7ec8e3"/>
+  <text x="222" y="156" font-size="12" fill="#7ec8e3">점만 옮겨간다</text>
+  <text x="175" y="312" text-anchor="middle" font-size="13" fill="#55c555">길이 · 각도 · 넓이 모두 보존</text>
+  <text x="175" y="336" text-anchor="middle" font-size="13" fill="#888">원이 원 그대로다</text>
+
+  <!-- scale -->
+  <text x="440" y="92" text-anchor="middle" font-size="16" font-weight="600" fill="#e8e8e8">스케일</text>
+  <circle cx="440" cy="215" r="60" fill="none" stroke="#666" stroke-width="1.5" stroke-dasharray="5,3"/>
+  <ellipse cx="440" cy="215" rx="36" ry="84" fill="#7ec8e3" opacity="0.14"/>
+  <ellipse cx="440" cy="215" rx="36" ry="84" fill="none" stroke="#7ec8e3" stroke-width="2"/>
+  <text x="440" y="312" text-anchor="middle" font-size="13" fill="#e05555">길이가 방향마다 달라진다</text>
+  <text x="440" y="336" text-anchor="middle" font-size="13" fill="#888">축 방향은 그대로 남는다</text>
+
+  <!-- shear -->
+  <text x="705" y="92" text-anchor="middle" font-size="16" font-weight="600" fill="#e8e8e8">전단</text>
+  <circle cx="705" cy="215" r="60" fill="none" stroke="#666" stroke-width="1.5" stroke-dasharray="5,3"/>
+  <g transform="translate(705,215) matrix(1,0,-0.6,1,0,0)">
+    <ellipse cx="0" cy="0" rx="60" ry="60" fill="#7ec8e3" opacity="0.14"/>
+    <ellipse cx="0" cy="0" rx="60" ry="60" fill="none" stroke="#7ec8e3" stroke-width="2"/>
+  </g>
+  <text x="705" y="312" text-anchor="middle" font-size="13" fill="#e05555">각도가 바뀐다</text>
+  <text x="705" y="336" text-anchor="middle" font-size="13" fill="#888">넓이는 그대로다</text>
+
+  <text x="60" y="378" font-size="13" fill="#888">점선이 보내기 전의 단위원이다. 세 행렬 모두 원점은 움직이지 않고 직선은 직선으로 남는다.</text>
+</svg>

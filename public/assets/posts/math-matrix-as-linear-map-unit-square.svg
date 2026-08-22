@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="420" viewBox="0 0 880 420" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <rect x="0" y="0" width="880" height="420" rx="12" fill="#0a0a0a"/>
+
+  <text x="60" y="46" font-size="22" font-weight="700" fill="#e8e8e8">단위 정사각형 하나만 보면 그 행렬이 무엇인지 보인다</text>
+
+  <!-- panel 1: scale -->
+  <text x="165" y="88" text-anchor="middle" font-size="16" font-weight="600" fill="#e8e8e8">늘이고 줄이기</text>
+  <line x1="100" y1="280" x2="240" y2="280" stroke="#888" stroke-width="1.5"/>
+  <line x1="140" y1="300" x2="140" y2="160" stroke="#888" stroke-width="1.5"/>
+  <rect x="140" y="220" width="60" height="60" fill="none" stroke="#666" stroke-width="1.5" stroke-dasharray="5,3"/>
+  <rect x="140" y="190" width="30" height="90" fill="#7ec8e3" opacity="0.25" stroke="#7ec8e3" stroke-width="2"/>
+  <text x="165" y="326" text-anchor="middle" font-size="13" fill="#7ec8e3">열 = (0.5, 0), (0, 1.5)</text>
+  <text x="165" y="350" text-anchor="middle" font-size="13" fill="#888">x는 반으로, y는 1.5배로</text>
+  <text x="165" y="374" text-anchor="middle" font-size="13" fill="#55c555">넓이 배율 0.75</text>
+
+  <!-- panel 2: shear -->
+  <text x="450" y="88" text-anchor="middle" font-size="16" font-weight="600" fill="#e8e8e8">전단(shear)</text>
+  <line x1="380" y1="280" x2="560" y2="280" stroke="#888" stroke-width="1.5"/>
+  <line x1="420" y1="300" x2="420" y2="160" stroke="#888" stroke-width="1.5"/>
+  <rect x="420" y="220" width="60" height="60" fill="none" stroke="#666" stroke-width="1.5" stroke-dasharray="5,3"/>
+  <path d="M 420 280 L 480 280 L 540 220 L 480 220 Z" fill="#7ec8e3" opacity="0.25" stroke="#7ec8e3" stroke-width="2"/>
+  <text x="450" y="326" text-anchor="middle" font-size="13" fill="#7ec8e3">열 = (1, 0), (1, 1)</text>
+  <text x="450" y="350" text-anchor="middle" font-size="13" fill="#888">위로 갈수록 오른쪽으로 밀린다</text>
+  <text x="450" y="374" text-anchor="middle" font-size="13" fill="#55c555">넓이 배율 1</text>
+
+  <!-- panel 3: rotation -->
+  <text x="710" y="88" text-anchor="middle" font-size="16" font-weight="600" fill="#e8e8e8">90도 회전</text>
+  <line x1="620" y1="280" x2="790" y2="280" stroke="#888" stroke-width="1.5"/>
+  <line x1="700" y1="300" x2="700" y2="160" stroke="#888" stroke-width="1.5"/>
+  <rect x="700" y="220" width="60" height="60" fill="none" stroke="#666" stroke-width="1.5" stroke-dasharray="5,3"/>
+  <rect x="640" y="220" width="60" height="60" fill="#7ec8e3" opacity="0.25" stroke="#7ec8e3" stroke-width="2"/>
+  <text x="710" y="326" text-anchor="middle" font-size="13" fill="#7ec8e3">열 = (0, 1), (−1, 0)</text>
+  <text x="710" y="350" text-anchor="middle" font-size="13" fill="#888">모양도 넓이도 그대로</text>
+  <text x="710" y="374" text-anchor="middle" font-size="13" fill="#55c555">넓이 배율 1</text>
+
+  <text x="60" y="406" font-size="13" fill="#888">점선이 보내기 전의 단위 정사각형이고, 칠한 것이 보낸 뒤다. 원점은 어느 경우에도 움직이지 않는다.</text>
+</svg>

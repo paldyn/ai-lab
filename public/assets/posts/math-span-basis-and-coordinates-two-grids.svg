@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="440" viewBox="0 0 880 440" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <defs>
+    <marker id="tgA" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#7ec8e3"/>
+    </marker>
+    <marker id="tgB" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#7777cc"/>
+    </marker>
+  </defs>
+
+  <rect x="0" y="0" width="880" height="440" rx="12" fill="#0a0a0a"/>
+
+  <text x="60" y="46" font-size="22" font-weight="700" fill="#e8e8e8">같은 점, 다른 좌표 — 좌표는 기저에 붙는다</text>
+
+  <!-- left: standard basis -->
+  <text x="214" y="88" text-anchor="middle" font-size="16" font-weight="600" fill="#e8e8e8">표준기저로 읽으면 (3, 1)</text>
+  <g stroke="#2a2a2a" stroke-width="1">
+    <line x1="88" y1="144" x2="340" y2="144"/>
+    <line x1="88" y1="186" x2="340" y2="186"/>
+    <line x1="88" y1="228" x2="340" y2="228"/>
+    <line x1="88" y1="312" x2="340" y2="312"/>
+    <line x1="88" y1="144" x2="88" y2="312"/>
+    <line x1="172" y1="144" x2="172" y2="312"/>
+    <line x1="214" y1="144" x2="214" y2="312"/>
+    <line x1="256" y1="144" x2="256" y2="312"/>
+    <line x1="298" y1="144" x2="298" y2="312"/>
+    <line x1="340" y1="144" x2="340" y2="312"/>
+  </g>
+  <line x1="88" y1="270" x2="348" y2="270" stroke="#888" stroke-width="1.5"/>
+  <line x1="130" y1="320" x2="130" y2="136" stroke="#888" stroke-width="1.5"/>
+  <text x="344" y="292" font-size="13" fill="#888">x</text>
+  <text x="112" y="146" font-size="13" fill="#888">y</text>
+
+  <line x1="130" y1="270" x2="256" y2="270" stroke="#7ec8e3" stroke-width="2.5" marker-end="url(#tgA)"/>
+  <line x1="256" y1="270" x2="256" y2="228" stroke="#7777cc" stroke-width="2.5" marker-end="url(#tgB)"/>
+  <circle cx="256" cy="228" r="5" fill="#e8e8e8"/>
+  <text x="272" y="212" font-size="14" font-weight="600" fill="#e8e8e8">이 점</text>
+  <text x="186" y="292" text-anchor="middle" font-size="13" fill="#7ec8e3">3·e₁</text>
+  <text x="272" y="256" font-size="13" fill="#7777cc">1·e₂</text>
+
+  <!-- right: basis B -->
+  <text x="660" y="88" text-anchor="middle" font-size="16" font-weight="600" fill="#e8e8e8">기저 B로 읽으면 (2, 1)</text>
+  <g stroke="#2a2a2a" stroke-width="1">
+    <line x1="530" y1="350" x2="757" y2="123"/>
+    <line x1="614" y1="350" x2="800" y2="164"/>
+    <line x1="520" y1="276" x2="686" y2="110"/>
+    <line x1="520" y1="192" x2="602" y2="110"/>
+    <line x1="520" y1="180" x2="690" y2="350"/>
+    <line x1="534" y1="110" x2="774" y2="350"/>
+    <line x1="618" y1="110" x2="800" y2="292"/>
+    <line x1="702" y1="110" x2="800" y2="208"/>
+    <line x1="520" y1="264" x2="606" y2="350"/>
+  </g>
+
+  <line x1="610" y1="270" x2="694" y2="186" stroke="#7ec8e3" stroke-width="2.5" marker-end="url(#tgA)"/>
+  <line x1="694" y1="186" x2="736" y2="228" stroke="#7777cc" stroke-width="2.5" marker-end="url(#tgB)"/>
+  <circle cx="610" cy="270" r="4" fill="#888"/>
+  <circle cx="736" cy="228" r="5" fill="#e8e8e8"/>
+  <text x="752" y="216" font-size="14" font-weight="600" fill="#e8e8e8">같은 점</text>
+  <text x="616" y="200" font-size="13" fill="#7ec8e3">2·b₁</text>
+  <text x="700" y="238" font-size="13" fill="#7777cc">1·b₂</text>
+  <text x="560" y="286" font-size="13" fill="#888">원점</text>
+
+  <rect x="60" y="366" width="760" height="52" rx="8" fill="#101820" stroke="#7ec8e3" stroke-width="1.5"/>
+  <text x="82" y="398" font-size="15" font-weight="600" fill="#e8e8e8">b₁ = (1, 1), b₂ = (1, −1) 일 때 2b₁ + 1b₂ = (3, 1) — 점은 그대로, 읽는 눈금만 바뀌었다.</text>
+</svg>

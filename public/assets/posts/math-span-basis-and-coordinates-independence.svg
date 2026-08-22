@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="440" viewBox="0 0 880 440" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <defs>
+    <marker id="inA" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#7ec8e3"/>
+    </marker>
+    <marker id="inB" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#7777cc"/>
+    </marker>
+  </defs>
+
+  <rect x="0" y="0" width="880" height="440" rx="12" fill="#0a0a0a"/>
+
+  <text x="60" y="46" font-size="22" font-weight="700" fill="#e8e8e8">일차종속과 일차독립 — 같은 그림을 두 번</text>
+
+  <!-- left panel -->
+  <text x="230" y="86" text-anchor="middle" font-size="16" font-weight="600" fill="#e05555">(1, 2)와 (2, 4)</text>
+  <line x1="80" y1="300" x2="380" y2="300" stroke="#888" stroke-width="1.5"/>
+  <line x1="140" y1="330" x2="140" y2="106" stroke="#888" stroke-width="1.5"/>
+  <text x="374" y="322" font-size="13" fill="#888">x</text>
+  <text x="122" y="116" font-size="13" fill="#888">y</text>
+  <line x1="185" y1="304" x2="185" y2="296" stroke="#444" stroke-width="1"/>
+  <line x1="230" y1="304" x2="230" y2="296" stroke="#444" stroke-width="1"/>
+  <line x1="136" y1="255" x2="144" y2="255" stroke="#444" stroke-width="1"/>
+  <line x1="136" y1="210" x2="144" y2="210" stroke="#444" stroke-width="1"/>
+  <line x1="136" y1="120" x2="144" y2="120" stroke="#444" stroke-width="1"/>
+  <text x="185" y="320" text-anchor="middle" font-size="12" fill="#666">1</text>
+  <text x="230" y="320" text-anchor="middle" font-size="12" fill="#666">2</text>
+  <text x="130" y="215" text-anchor="end" font-size="12" fill="#666">2</text>
+  <text x="130" y="125" text-anchor="end" font-size="12" fill="#666">4</text>
+
+  <line x1="127" y1="326" x2="238" y2="104" stroke="#e05555" stroke-width="5" opacity="0.3"/>
+  <line x1="140" y1="300" x2="230" y2="120" stroke="#7777cc" stroke-width="2.5" marker-end="url(#inB)"/>
+  <line x1="140" y1="300" x2="185" y2="210" stroke="#7ec8e3" stroke-width="2.5" marker-end="url(#inA)"/>
+  <text x="196" y="200" font-size="14" font-weight="600" fill="#e8e8e8">(1, 2)</text>
+  <text x="242" y="128" font-size="14" font-weight="600" fill="#e8e8e8">(2, 4)</text>
+
+  <rect x="80" y="346" width="300" height="66" rx="8" fill="#1a0d0d" stroke="#e05555" stroke-width="1.5"/>
+  <text x="102" y="370" font-size="13" fill="#e05555">둘째 = 첫째의 2배</text>
+  <text x="102" y="392" font-size="14" font-weight="600" fill="#e8e8e8">2(1,2) − 1(2,4) = 0 → 일차종속</text>
+
+  <!-- right panel -->
+  <text x="650" y="86" text-anchor="middle" font-size="16" font-weight="600" fill="#55c555">(1, 2)와 (2, 1)</text>
+  <line x1="500" y1="300" x2="800" y2="300" stroke="#888" stroke-width="1.5"/>
+  <line x1="560" y1="330" x2="560" y2="106" stroke="#888" stroke-width="1.5"/>
+  <text x="794" y="322" font-size="13" fill="#888">x</text>
+  <text x="542" y="116" font-size="13" fill="#888">y</text>
+  <line x1="605" y1="304" x2="605" y2="296" stroke="#444" stroke-width="1"/>
+  <line x1="650" y1="304" x2="650" y2="296" stroke="#444" stroke-width="1"/>
+  <line x1="556" y1="255" x2="564" y2="255" stroke="#444" stroke-width="1"/>
+  <line x1="556" y1="210" x2="564" y2="210" stroke="#444" stroke-width="1"/>
+  <text x="605" y="320" text-anchor="middle" font-size="12" fill="#666">1</text>
+  <text x="650" y="320" text-anchor="middle" font-size="12" fill="#666">2</text>
+  <text x="550" y="260" text-anchor="end" font-size="12" fill="#666">1</text>
+  <text x="550" y="215" text-anchor="end" font-size="12" fill="#666">2</text>
+
+  <path d="M 560 300 L 605 210 L 695 165 L 650 255 Z" fill="#55c555" opacity="0.16"/>
+  <line x1="560" y1="300" x2="605" y2="210" stroke="#7ec8e3" stroke-width="2.5" marker-end="url(#inA)"/>
+  <line x1="560" y1="300" x2="650" y2="255" stroke="#7777cc" stroke-width="2.5" marker-end="url(#inB)"/>
+  <text x="616" y="200" font-size="14" font-weight="600" fill="#e8e8e8">(1, 2)</text>
+  <text x="662" y="248" font-size="14" font-weight="600" fill="#e8e8e8">(2, 1)</text>
+
+  <rect x="500" y="346" width="300" height="66" rx="8" fill="#0f1a10" stroke="#55c555" stroke-width="1.5"/>
+  <text x="522" y="370" font-size="13" fill="#55c555">0을 만드는 방법이 하나뿐</text>
+  <text x="522" y="392" font-size="14" font-weight="600" fill="#e8e8e8">c₁ = c₂ = 0 → 일차독립</text>
+</svg>

@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="560" viewBox="0 0 880 560" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <defs>
+    <marker id="fwA" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#888"/>
+    </marker>
+  </defs>
+
+  <rect x="0" y="0" width="880" height="560" rx="12" fill="#0a0a0a"/>
+
+  <text x="60" y="46" font-size="22" font-weight="700" fill="#e8e8e8">멀티헤드 한 바퀴, 축만 따라가기 (H = 12, d_h = 64)</text>
+
+  <g stroke="#888" stroke-width="2" marker-end="url(#fwA)">
+    <line x1="270" y1="114" x2="270" y2="142"/>
+    <line x1="270" y1="180" x2="270" y2="208"/>
+    <line x1="270" y1="246" x2="270" y2="274"/>
+    <line x1="270" y1="312" x2="270" y2="340"/>
+    <line x1="270" y1="378" x2="270" y2="406"/>
+    <line x1="270" y1="444" x2="270" y2="472"/>
+  </g>
+
+  <rect x="120" y="78" width="300" height="36" rx="6" fill="#101820" stroke="#555" stroke-width="1.5"/>
+  <text x="270" y="102" text-anchor="middle" font-size="15" font-weight="600" fill="#e8e8e8">(B, T, 768)</text>
+  <text x="450" y="102" font-size="14" fill="#9aa4b8">토큰마다 768개의 성분</text>
+
+  <rect x="120" y="144" width="300" height="36" rx="6" fill="#101820" stroke="#555" stroke-width="1.5"/>
+  <text x="270" y="168" text-anchor="middle" font-size="15" font-weight="600" fill="#e8e8e8">(B, T, 768)</text>
+  <text x="450" y="136" font-size="14" fill="#7ec8e3">q_proj — 마지막 축만 바뀐다</text>
+  <text x="450" y="168" font-size="14" fill="#9aa4b8">앞의 B, T는 손대지 않는다</text>
+
+  <rect x="120" y="210" width="300" height="36" rx="6" fill="#101820" stroke="#7ec8e3" stroke-width="1.5"/>
+  <text x="270" y="234" text-anchor="middle" font-size="15" font-weight="600" fill="#e8e8e8">(B, T, 12, 64)</text>
+  <text x="450" y="202" font-size="14" fill="#7ec8e3">view — 768을 12 × 64로 쪼갠다</text>
+  <text x="450" y="234" font-size="14" fill="#9aa4b8">숫자는 그대로, 칸만 다시 나눈 것</text>
+
+  <rect x="120" y="276" width="300" height="36" rx="6" fill="#101820" stroke="#7ec8e3" stroke-width="1.5"/>
+  <text x="270" y="300" text-anchor="middle" font-size="15" font-weight="600" fill="#e8e8e8">(B, 12, T, 64)</text>
+  <text x="450" y="268" font-size="14" fill="#7ec8e3">transpose(1, 2) — 헤드를 앞으로</text>
+  <text x="450" y="300" font-size="14" fill="#9aa4b8">뒤 두 축이 (T, 64)가 되어야 곱한다</text>
+
+  <rect x="120" y="342" width="300" height="36" rx="6" fill="#0f1a10" stroke="#55c555" stroke-width="2"/>
+  <text x="270" y="366" text-anchor="middle" font-size="15" font-weight="600" fill="#e8e8e8">(B, 12, T, T)</text>
+  <text x="450" y="334" font-size="14" fill="#55c555">Q @ K를 뒤집은 것</text>
+  <text x="450" y="366" font-size="14" fill="#9aa4b8">64가 맞닿아 사라진다</text>
+
+  <rect x="120" y="408" width="300" height="36" rx="6" fill="#0f1a10" stroke="#55c555" stroke-width="2"/>
+  <text x="270" y="432" text-anchor="middle" font-size="15" font-weight="600" fill="#e8e8e8">(B, 12, T, 64)</text>
+  <text x="450" y="400" font-size="14" fill="#55c555">가중치 @ V</text>
+  <text x="450" y="432" font-size="14" fill="#9aa4b8">이번에는 T가 맞닿아 사라진다</text>
+
+  <rect x="120" y="474" width="300" height="36" rx="6" fill="#101820" stroke="#555" stroke-width="1.5"/>
+  <text x="270" y="498" text-anchor="middle" font-size="15" font-weight="600" fill="#e8e8e8">(B, T, 768)</text>
+  <text x="450" y="466" font-size="14" fill="#7ec8e3">transpose 되돌리고 reshape</text>
+  <text x="450" y="498" font-size="14" fill="#9aa4b8">들어온 모양 그대로 나간다</text>
+</svg>

@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="424" viewBox="0 0 880 424" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <rect x="0" y="0" width="880" height="424" rx="12" fill="#0a0a0a"/>
+
+  <text x="60" y="46" font-size="22" font-weight="700" fill="#e8e8e8">같은 곱 C = AB 를 보는 네 가지 시선</text>
+  <text x="270" y="84" font-size="13" fill="#888">A (2×3)</text>
+  <text x="352" y="84" font-size="13" fill="#888">B (3×2)</text>
+  <text x="416" y="84" font-size="13" fill="#888">C (2×2)</text>
+
+  <!-- row 1: element -->
+  <text x="70" y="125" font-size="15" font-weight="600" fill="#e8e8e8">① 원소 하나씩</text>
+  <rect x="270" y="102" width="54" height="18" fill="#7ec8e3" opacity="0.35"/>
+  <rect x="352" y="93" width="18" height="54" fill="#7ec8e3" opacity="0.35"/>
+  <rect x="416" y="102" width="18" height="18" fill="#55c555" opacity="0.45"/>
+  <g stroke="#555" stroke-width="1" fill="none">
+    <rect x="270" y="102" width="54" height="36"/><line x1="288" y1="102" x2="288" y2="138"/><line x1="306" y1="102" x2="306" y2="138"/><line x1="270" y1="120" x2="324" y2="120"/>
+    <rect x="352" y="93" width="36" height="54"/><line x1="370" y1="93" x2="370" y2="147"/><line x1="352" y1="111" x2="388" y2="111"/><line x1="352" y1="129" x2="388" y2="129"/>
+    <rect x="416" y="102" width="36" height="36"/><line x1="434" y1="102" x2="434" y2="138"/><line x1="416" y1="120" x2="452" y2="120"/>
+  </g>
+  <text x="336" y="125" font-size="14" fill="#888">×</text>
+  <text x="400" y="125" font-size="14" fill="#888">=</text>
+  <text x="480" y="125" font-size="13" fill="#9aa4b8">i행과 j열의 내적이 한 칸</text>
+
+  <!-- row 2: row view -->
+  <text x="70" y="205" font-size="15" font-weight="600" fill="#e8e8e8">② 행 시선</text>
+  <rect x="270" y="182" width="54" height="18" fill="#7ec8e3" opacity="0.35"/>
+  <rect x="352" y="173" width="36" height="54" fill="#7ec8e3" opacity="0.2"/>
+  <rect x="416" y="182" width="36" height="18" fill="#55c555" opacity="0.45"/>
+  <g stroke="#555" stroke-width="1" fill="none">
+    <rect x="270" y="182" width="54" height="36"/><line x1="288" y1="182" x2="288" y2="218"/><line x1="306" y1="182" x2="306" y2="218"/><line x1="270" y1="200" x2="324" y2="200"/>
+    <rect x="352" y="173" width="36" height="54"/><line x1="370" y1="173" x2="370" y2="227"/><line x1="352" y1="191" x2="388" y2="191"/><line x1="352" y1="209" x2="388" y2="209"/>
+    <rect x="416" y="182" width="36" height="36"/><line x1="434" y1="182" x2="434" y2="218"/><line x1="416" y1="200" x2="452" y2="200"/>
+  </g>
+  <text x="336" y="205" font-size="14" fill="#888">×</text>
+  <text x="400" y="205" font-size="14" fill="#888">=</text>
+  <text x="480" y="205" font-size="13" fill="#9aa4b8">C의 한 행 = B의 행들을 섞은 것</text>
+
+  <!-- row 3: column view -->
+  <text x="70" y="285" font-size="15" font-weight="600" fill="#e8e8e8">③ 열 시선</text>
+  <rect x="270" y="262" width="54" height="36" fill="#7ec8e3" opacity="0.2"/>
+  <rect x="352" y="253" width="18" height="54" fill="#7ec8e3" opacity="0.35"/>
+  <rect x="416" y="262" width="18" height="36" fill="#55c555" opacity="0.45"/>
+  <g stroke="#555" stroke-width="1" fill="none">
+    <rect x="270" y="262" width="54" height="36"/><line x1="288" y1="262" x2="288" y2="298"/><line x1="306" y1="262" x2="306" y2="298"/><line x1="270" y1="280" x2="324" y2="280"/>
+    <rect x="352" y="253" width="36" height="54"/><line x1="370" y1="253" x2="370" y2="307"/><line x1="352" y1="271" x2="388" y2="271"/><line x1="352" y1="289" x2="388" y2="289"/>
+    <rect x="416" y="262" width="36" height="36"/><line x1="434" y1="262" x2="434" y2="298"/><line x1="416" y1="280" x2="452" y2="280"/>
+  </g>
+  <text x="336" y="285" font-size="14" fill="#888">×</text>
+  <text x="400" y="285" font-size="14" fill="#888">=</text>
+  <text x="480" y="285" font-size="13" fill="#9aa4b8">C의 한 열 = A의 열들을 섞은 것</text>
+
+  <!-- row 4: outer product -->
+  <text x="70" y="365" font-size="15" font-weight="600" fill="#e8e8e8">④ 외적의 합</text>
+  <rect x="288" y="342" width="18" height="36" fill="#7ec8e3" opacity="0.35"/>
+  <rect x="352" y="351" width="36" height="18" fill="#7ec8e3" opacity="0.35"/>
+  <rect x="416" y="342" width="36" height="36" fill="#55c555" opacity="0.45"/>
+  <g stroke="#555" stroke-width="1" fill="none">
+    <rect x="270" y="342" width="54" height="36"/><line x1="288" y1="342" x2="288" y2="378"/><line x1="306" y1="342" x2="306" y2="378"/><line x1="270" y1="360" x2="324" y2="360"/>
+    <rect x="352" y="333" width="36" height="54"/><line x1="370" y1="333" x2="370" y2="387"/><line x1="352" y1="351" x2="388" y2="351"/><line x1="352" y1="369" x2="388" y2="369"/>
+    <rect x="416" y="342" width="36" height="36"/><line x1="434" y1="342" x2="434" y2="378"/><line x1="416" y1="360" x2="452" y2="360"/>
+  </g>
+  <text x="336" y="365" font-size="14" fill="#888">×</text>
+  <text x="400" y="365" font-size="14" fill="#888">=</text>
+  <text x="480" y="365" font-size="13" fill="#9aa4b8">k열 × k행 판을 3장 겹친 것</text>
+
+  <text x="60" y="412" font-size="13" fill="#888">네 시선의 값은 언제나 같다. 무엇을 알고 싶은가에 따라 편한 시선이 다를 뿐이다.</text>
+</svg>

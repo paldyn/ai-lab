@@ -1,0 +1,74 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="370" viewBox="0 0 880 370" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <rect x="0" y="0" width="880" height="370" rx="12" fill="#0a0a0a"/>
+
+  <text x="60" y="46" font-size="22" font-weight="700" fill="#e8e8e8">shape 산수 — 뒤 두 축만 곱하고 앞은 따라온다</text>
+
+  <text x="184" y="108" text-anchor="middle" font-size="15" font-weight="600" fill="#e8e8e8">Q</text>
+  <text x="444" y="108" text-anchor="middle" font-size="15" font-weight="600" fill="#e8e8e8">K를 뒤집은 것</text>
+  <text x="704" y="108" text-anchor="middle" font-size="15" font-weight="600" fill="#e8e8e8">어텐션 점수</text>
+
+  <!-- group 1 -->
+  <rect x="80" y="130" width="52" height="44" fill="#55c555" opacity="0.22"/>
+  <rect x="132" y="130" width="52" height="44" fill="#55c555" opacity="0.22"/>
+  <rect x="184" y="130" width="52" height="44" fill="#7ec8e3" opacity="0.3"/>
+  <rect x="236" y="130" width="52" height="44" fill="#e05555" opacity="0.3"/>
+  <g stroke="#555" stroke-width="1" fill="none">
+    <rect x="80" y="130" width="208" height="44"/>
+    <line x1="132" y1="130" x2="132" y2="174"/><line x1="184" y1="130" x2="184" y2="174"/><line x1="236" y1="130" x2="236" y2="174"/>
+  </g>
+  <text x="106" y="158" text-anchor="middle" font-size="15" font-weight="600" fill="#e8e8e8">B</text>
+  <text x="158" y="158" text-anchor="middle" font-size="15" font-weight="600" fill="#e8e8e8">H</text>
+  <text x="210" y="158" text-anchor="middle" font-size="15" font-weight="600" fill="#e8e8e8">T</text>
+  <text x="262" y="158" text-anchor="middle" font-size="15" font-weight="600" fill="#e8e8e8">d_h</text>
+
+  <text x="314" y="160" text-anchor="middle" font-size="20" fill="#888">×</text>
+
+  <!-- group 2 -->
+  <rect x="340" y="130" width="52" height="44" fill="#55c555" opacity="0.22"/>
+  <rect x="392" y="130" width="52" height="44" fill="#55c555" opacity="0.22"/>
+  <rect x="444" y="130" width="52" height="44" fill="#e05555" opacity="0.3"/>
+  <rect x="496" y="130" width="52" height="44" fill="#7ec8e3" opacity="0.3"/>
+  <g stroke="#555" stroke-width="1" fill="none">
+    <rect x="340" y="130" width="208" height="44"/>
+    <line x1="392" y1="130" x2="392" y2="174"/><line x1="444" y1="130" x2="444" y2="174"/><line x1="496" y1="130" x2="496" y2="174"/>
+  </g>
+  <text x="366" y="158" text-anchor="middle" font-size="15" font-weight="600" fill="#e8e8e8">B</text>
+  <text x="418" y="158" text-anchor="middle" font-size="15" font-weight="600" fill="#e8e8e8">H</text>
+  <text x="470" y="158" text-anchor="middle" font-size="15" font-weight="600" fill="#e8e8e8">d_h</text>
+  <text x="522" y="158" text-anchor="middle" font-size="15" font-weight="600" fill="#e8e8e8">T</text>
+
+  <text x="574" y="160" text-anchor="middle" font-size="20" fill="#888">=</text>
+
+  <!-- group 3 -->
+  <rect x="600" y="130" width="52" height="44" fill="#55c555" opacity="0.22"/>
+  <rect x="652" y="130" width="52" height="44" fill="#55c555" opacity="0.22"/>
+  <rect x="704" y="130" width="52" height="44" fill="#7ec8e3" opacity="0.3"/>
+  <rect x="756" y="130" width="52" height="44" fill="#7ec8e3" opacity="0.3"/>
+  <g stroke="#555" stroke-width="1" fill="none">
+    <rect x="600" y="130" width="208" height="44"/>
+    <line x1="652" y1="130" x2="652" y2="174"/><line x1="704" y1="130" x2="704" y2="174"/><line x1="756" y1="130" x2="756" y2="174"/>
+  </g>
+  <text x="626" y="158" text-anchor="middle" font-size="15" font-weight="600" fill="#e8e8e8">B</text>
+  <text x="678" y="158" text-anchor="middle" font-size="15" font-weight="600" fill="#e8e8e8">H</text>
+  <text x="730" y="158" text-anchor="middle" font-size="15" font-weight="600" fill="#e8e8e8">T</text>
+  <text x="782" y="158" text-anchor="middle" font-size="15" font-weight="600" fill="#e8e8e8">T</text>
+
+  <!-- legend -->
+  <rect x="60" y="222" width="244" height="112" rx="8" fill="#0f1a10" stroke="#55c555" stroke-width="1.5"/>
+  <text x="82" y="252" font-size="14" font-weight="600" fill="#55c555">앞 축 B, H</text>
+  <text x="82" y="280" font-size="13" fill="#e8e8e8">곱셈에 끼지 않는다.</text>
+  <text x="82" y="302" font-size="13" fill="#e8e8e8">양쪽이 같으면 그대로</text>
+  <text x="82" y="324" font-size="13" fill="#e8e8e8">결과로 따라 나온다.</text>
+
+  <rect x="318" y="222" width="244" height="112" rx="8" fill="#1a0d0d" stroke="#e05555" stroke-width="1.5"/>
+  <text x="340" y="252" font-size="14" font-weight="600" fill="#e05555">맞닿은 축 d_h</text>
+  <text x="340" y="280" font-size="13" fill="#e8e8e8">두 값이 같아야 한다.</text>
+  <text x="340" y="302" font-size="13" fill="#e8e8e8">여기가 어긋난 것이</text>
+  <text x="340" y="324" font-size="13" fill="#e8e8e8">shape 오류의 전부다.</text>
+
+  <rect x="576" y="222" width="244" height="112" rx="8" fill="#101820" stroke="#7ec8e3" stroke-width="1.5"/>
+  <text x="598" y="252" font-size="14" font-weight="600" fill="#7ec8e3">바깥 축 T, T</text>
+  <text x="598" y="280" font-size="13" fill="#e8e8e8">각각 결과의 행과 열이</text>
+  <text x="598" y="302" font-size="13" fill="#e8e8e8">된다. 질의 T개마다</text>
+  <text x="598" y="324" font-size="13" fill="#e8e8e8">키 T개의 점수가 선다.</text>
+</svg>

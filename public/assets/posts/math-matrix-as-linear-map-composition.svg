@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="420" viewBox="0 0 880 420" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <defs>
+    <marker id="cpV" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#7ec8e3"/>
+    </marker>
+    <marker id="cpT" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#e8e8e8"/>
+    </marker>
+    <marker id="cpD" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#55c555"/>
+    </marker>
+  </defs>
+
+  <rect x="0" y="0" width="880" height="420" rx="12" fill="#0a0a0a"/>
+
+  <text x="60" y="46" font-size="22" font-weight="700" fill="#e8e8e8">두 번 보내는 것과 한 행렬로 보내는 것은 같다</text>
+
+  <!-- panel 1 -->
+  <text x="140" y="90" text-anchor="middle" font-size="15" font-weight="600" fill="#e8e8e8">처음 벡터</text>
+  <text x="140" y="112" text-anchor="middle" font-size="13" fill="#888">x = (1, 1)</text>
+  <line x1="100" y1="250" x2="210" y2="250" stroke="#888" stroke-width="1.5"/>
+  <line x1="140" y1="280" x2="140" y2="190" stroke="#888" stroke-width="1.5"/>
+  <line x1="140" y1="250" x2="166" y2="224" stroke="#7ec8e3" stroke-width="2.5" marker-end="url(#cpV)"/>
+
+  <line x1="230" y1="240" x2="370" y2="240" stroke="#e8e8e8" stroke-width="2.5" marker-end="url(#cpT)"/>
+  <text x="300" y="222" text-anchor="middle" font-size="15" font-weight="600" fill="#e8e8e8">A = 열 (2,0), (1,3)</text>
+
+  <!-- panel 2 -->
+  <text x="430" y="90" text-anchor="middle" font-size="15" font-weight="600" fill="#e8e8e8">A를 먹인 뒤</text>
+  <text x="430" y="112" text-anchor="middle" font-size="13" fill="#888">Ax = (3, 3)</text>
+  <line x1="390" y1="250" x2="530" y2="250" stroke="#888" stroke-width="1.5"/>
+  <line x1="430" y1="285" x2="430" y2="155" stroke="#888" stroke-width="1.5"/>
+  <line x1="430" y1="250" x2="508" y2="172" stroke="#7ec8e3" stroke-width="2.5" marker-end="url(#cpV)"/>
+
+  <line x1="546" y1="240" x2="606" y2="240" stroke="#e8e8e8" stroke-width="2.5" marker-end="url(#cpT)"/>
+  <text x="576" y="222" text-anchor="middle" font-size="15" font-weight="600" fill="#e8e8e8">B</text>
+
+  <!-- panel 3 -->
+  <text x="740" y="90" text-anchor="middle" font-size="15" font-weight="600" fill="#e8e8e8">그 다음 B (90도 회전)</text>
+  <text x="740" y="112" text-anchor="middle" font-size="13" fill="#888">B(Ax) = (−3, 3)</text>
+  <line x1="620" y1="250" x2="810" y2="250" stroke="#888" stroke-width="1.5"/>
+  <line x1="740" y1="285" x2="740" y2="155" stroke="#888" stroke-width="1.5"/>
+  <line x1="740" y1="250" x2="662" y2="172" stroke="#7ec8e3" stroke-width="2.5" marker-end="url(#cpV)"/>
+
+  <path d="M 140 302 C 300 372, 580 372, 726 300" stroke="#55c555" stroke-width="2.5" stroke-dasharray="5,3" fill="none" marker-end="url(#cpD)"/>
+  <text x="440" y="404" text-anchor="middle" font-size="15" font-weight="600" fill="#55c555">BA = 열 (0, 2), (−3, 1) 하나로 같은 자리에 보낸다</text>
+</svg>

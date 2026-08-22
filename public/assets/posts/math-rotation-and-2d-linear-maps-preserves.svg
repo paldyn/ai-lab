@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="420" viewBox="0 0 880 420" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <defs>
+    <marker id="prA" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#7ec8e3"/>
+    </marker>
+    <marker id="prB" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#7777cc"/>
+    </marker>
+    <marker id="prT" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#e8e8e8"/>
+    </marker>
+  </defs>
+
+  <rect x="0" y="0" width="880" height="420" rx="12" fill="#0a0a0a"/>
+
+  <text x="60" y="46" font-size="22" font-weight="700" fill="#e8e8e8">회전은 길이도 사잇각도 건드리지 않는다</text>
+
+  <!-- before -->
+  <text x="230" y="92" text-anchor="middle" font-size="16" font-weight="600" fill="#e8e8e8">돌리기 전</text>
+  <line x1="120" y1="250" x2="360" y2="250" stroke="#888" stroke-width="1.5"/>
+  <line x1="230" y1="300" x2="230" y2="130" stroke="#888" stroke-width="1.5"/>
+  <line x1="230" y1="250" x2="333" y2="212" stroke="#7ec8e3" stroke-width="2.5" marker-end="url(#prA)"/>
+  <line x1="230" y1="250" x2="244" y2="171" stroke="#7777cc" stroke-width="2.5" marker-end="url(#prB)"/>
+  <path d="M 282 231 A 55 55 0 0 0 240 196" fill="none" stroke="#55c555" stroke-width="2"/>
+  <text x="278" y="184" font-size="13" font-weight="600" fill="#55c555">60도</text>
+  <text x="342" y="206" font-size="14" font-weight="600" fill="#7ec8e3">u</text>
+  <text x="252" y="162" font-size="14" font-weight="600" fill="#7777cc">v</text>
+
+  <line x1="402" y1="240" x2="498" y2="240" stroke="#e8e8e8" stroke-width="2.5" marker-end="url(#prT)"/>
+  <text x="450" y="222" text-anchor="middle" font-size="15" font-weight="600" fill="#e8e8e8">R(50도)</text>
+
+  <!-- after -->
+  <text x="650" y="92" text-anchor="middle" font-size="16" font-weight="600" fill="#e8e8e8">돌린 뒤</text>
+  <line x1="540" y1="250" x2="780" y2="250" stroke="#888" stroke-width="1.5"/>
+  <line x1="650" y1="300" x2="650" y2="130" stroke="#888" stroke-width="1.5"/>
+  <line x1="650" y1="250" x2="688" y2="147" stroke="#7ec8e3" stroke-width="2.5" marker-end="url(#prA)"/>
+  <line x1="650" y1="250" x2="599" y2="189" stroke="#7777cc" stroke-width="2.5" marker-end="url(#prB)"/>
+  <path d="M 669 198 A 55 55 0 0 0 615 208" fill="none" stroke="#55c555" stroke-width="2"/>
+  <text x="614" y="168" font-size="13" font-weight="600" fill="#55c555">60도</text>
+  <text x="698" y="140" font-size="14" font-weight="600" fill="#7ec8e3">Ru</text>
+  <text x="566" y="180" font-size="14" font-weight="600" fill="#7777cc">Rv</text>
+
+  <rect x="60" y="330" width="760" height="66" rx="8" fill="#0f1a10" stroke="#55c555" stroke-width="1.5"/>
+  <text x="82" y="358" font-size="14" font-weight="600" fill="#e8e8e8">‖Ru‖ = ‖u‖,  ‖Rv‖ = ‖v‖,  (Ru)·(Rv) = u·v</text>
+  <text x="82" y="384" font-size="13" fill="#9aa4b8">세 값이 모두 남는 이유는 Rᵀ R = I 한 줄이다. 내적이 남으면 사잇각도 남는다.</text>
+</svg>
