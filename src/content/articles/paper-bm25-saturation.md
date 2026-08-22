@@ -553,3 +553,5 @@ df가 큰 토큰을 걷어내고 같은 k1 스윕을 다시 한다 (b=0.75, kiwi
 ---
 
 읽어주셔서 감사합니다. 😊
+
+**다음 글:** [BEIR 정독과 scifact 재측정](/articles/paper-beir-zero-shot)
