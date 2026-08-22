@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="596" viewBox="0 0 880 596" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <defs>
+    <marker id="yes" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#55c555"/>
+    </marker>
+    <marker id="no" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#e05555"/>
+    </marker>
+  </defs>
+  <rect x="0" y="0" width="880" height="596" rx="12" fill="#0a0a0a"/>
+  <text x="60" y="46" font-size="22" font-weight="700" fill="#e8e8e8">이 걸음에 사람을 얼마나 붙일 것인가</text>
+  <text x="60" y="72" font-size="13" fill="#888">위에서부터 물어 처음 「그렇다」가 나온 곳에서 멈춘다. 끝까지 아니면 사전 승인이다.</text>
+
+  <rect x="60" y="110" width="420" height="64" rx="10" fill="#0d1117" stroke="#7ec8e3" stroke-width="1.5"/>
+  <text x="270" y="148" font-size="15" font-weight="600" fill="#e8e8e8" text-anchor="middle">이 걸음을 나중에 되돌릴 수 있는가?</text>
+  <line x1="480" y1="142" x2="560" y2="142" stroke="#55c555" stroke-width="2" marker-end="url(#yes)"/>
+  <text x="516" y="128" font-size="12.5" fill="#55c555" text-anchor="middle">그렇다</text>
+  <rect x="560" y="110" width="260" height="64" rx="10" fill="#0d1117" stroke="#55c555" stroke-width="1.5"/>
+  <text x="580" y="136" font-size="14" font-weight="600" fill="#e8e8e8">그냥 한다</text>
+  <text x="580" y="156" font-size="12" fill="#888">기록만 남기고 사람은 안 부른다</text>
+  <line x1="270" y1="174" x2="270" y2="230" stroke="#e05555" stroke-width="2" marker-end="url(#no)"/>
+  <text x="286" y="206" font-size="12.5" fill="#e05555">아니다</text>
+
+  <rect x="60" y="230" width="420" height="64" rx="10" fill="#0d1117" stroke="#7ec8e3" stroke-width="1.5"/>
+  <text x="270" y="268" font-size="15" font-weight="600" fill="#e8e8e8" text-anchor="middle">틀렸을 때 피해가 작고 금방 드러나는가?</text>
+  <line x1="480" y1="262" x2="560" y2="262" stroke="#55c555" stroke-width="2" marker-end="url(#yes)"/>
+  <text x="516" y="248" font-size="12.5" fill="#55c555" text-anchor="middle">그렇다</text>
+  <rect x="560" y="230" width="260" height="64" rx="10" fill="#0d1117" stroke="#7777cc" stroke-width="1.5"/>
+  <text x="580" y="256" font-size="14" font-weight="600" fill="#e8e8e8">사후 검수</text>
+  <text x="580" y="276" font-size="12" fill="#888">지나간 것을 표본으로 뽑아 본다</text>
+  <line x1="270" y1="294" x2="270" y2="350" stroke="#e05555" stroke-width="2" marker-end="url(#no)"/>
+  <text x="286" y="326" font-size="12.5" fill="#e05555">아니다</text>
+
+  <rect x="60" y="350" width="420" height="64" rx="10" fill="#0d1117" stroke="#7ec8e3" stroke-width="1.5"/>
+  <text x="270" y="388" font-size="15" font-weight="600" fill="#e8e8e8" text-anchor="middle">전례가 쌓였고 실패율을 재 봤는가?</text>
+  <line x1="480" y1="382" x2="560" y2="382" stroke="#55c555" stroke-width="2" marker-end="url(#yes)"/>
+  <text x="516" y="368" font-size="12.5" fill="#55c555" text-anchor="middle">그렇다</text>
+  <rect x="560" y="350" width="260" height="64" rx="10" fill="#0d1117" stroke="#7777cc" stroke-width="1.5"/>
+  <text x="580" y="376" font-size="14" font-weight="600" fill="#e8e8e8">조건부 자동</text>
+  <text x="580" y="396" font-size="12" fill="#888">기준 밖일 때만 사람에게 올린다</text>
+  <line x1="270" y1="414" x2="270" y2="470" stroke="#e05555" stroke-width="2" marker-end="url(#no)"/>
+  <text x="286" y="446" font-size="12.5" fill="#e05555">아니다</text>
+
+  <rect x="60" y="470" width="420" height="64" rx="10" fill="#0d1117" stroke="#e05555" stroke-width="1.5"/>
+  <text x="270" y="498" font-size="15" font-weight="600" fill="#e8e8e8" text-anchor="middle">사전 승인</text>
+  <text x="270" y="518" font-size="12" fill="#888" text-anchor="middle">사람이 누르기 전에는 실행하지 않는다</text>
+
+  <text x="60" y="566" font-size="13" fill="#7ec8e3">셋째 질문이 핵심이다. 실패율을 재 본 적이 없으면 「확신한다」는 말은 근거가 아니다.</text>
+</svg>

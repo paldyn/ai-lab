@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="524" viewBox="0 0 880 524" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <rect x="0" y="0" width="880" height="524" rx="12" fill="#0a0a0a"/>
+  <text x="60" y="46" font-size="22" font-weight="700" fill="#e8e8e8">한 걸음은 여섯 자리 중 하나에서 어긋난다</text>
+  <text x="60" y="72" font-size="13" fill="#888">증상은 대개 마지막에 보이지만, 어긋난 자리는 그보다 앞이다.</text>
+
+  <rect x="60" y="110" width="350" height="104" rx="10" fill="#0d1117" stroke="#2a2a2a" stroke-width="1"/>
+  <rect x="60" y="110" width="4" height="104" rx="2" fill="#e05555"/>
+  <text x="82" y="136" font-size="13" font-weight="600" fill="#7ec8e3">1. 이해</text>
+  <text x="82" y="160" font-size="15" font-weight="600" fill="#e8e8e8">엉뚱한 문제를 푼다</text>
+  <text x="82" y="182" font-size="12" fill="#888">요청의 조건 하나를 흘렸고,</text>
+  <text x="82" y="200" font-size="12" fill="#888">그 뒤 걸음이 전부 그 위에 쌓인다</text>
+
+  <rect x="470" y="110" width="350" height="104" rx="10" fill="#0d1117" stroke="#2a2a2a" stroke-width="1"/>
+  <rect x="470" y="110" width="4" height="104" rx="2" fill="#e05555"/>
+  <text x="492" y="136" font-size="13" font-weight="600" fill="#7ec8e3">2. 계획</text>
+  <text x="492" y="160" font-size="15" font-weight="600" fill="#e8e8e8">걸음이 끝나지 않는다</text>
+  <text x="492" y="182" font-size="12" fill="#888">끝났다고 볼 기준이 없어</text>
+  <text x="492" y="200" font-size="12" fill="#888">같은 조회를 조금씩 바꿔 반복한다</text>
+
+  <rect x="60" y="234" width="350" height="104" rx="10" fill="#0d1117" stroke="#2a2a2a" stroke-width="1"/>
+  <rect x="60" y="234" width="4" height="104" rx="2" fill="#e05555"/>
+  <text x="82" y="260" font-size="13" font-weight="600" fill="#7ec8e3">3. 도구 선택</text>
+  <text x="82" y="284" font-size="15" font-weight="600" fill="#e8e8e8">있는 도구를 안 쓴다</text>
+  <text x="82" y="306" font-size="12" fill="#888">설명이 겹치거나 모호해서</text>
+  <text x="82" y="324" font-size="12" fill="#888">가까워 보이는 다른 도구를 부른다</text>
+
+  <rect x="470" y="234" width="350" height="104" rx="10" fill="#0d1117" stroke="#2a2a2a" stroke-width="1"/>
+  <rect x="470" y="234" width="4" height="104" rx="2" fill="#e05555"/>
+  <text x="492" y="260" font-size="13" font-weight="600" fill="#7ec8e3">4. 인자 채우기</text>
+  <text x="492" y="284" font-size="15" font-weight="600" fill="#e8e8e8">형식이 틀린 호출</text>
+  <text x="492" y="306" font-size="12" fill="#888">필수 값을 빼먹거나 형을 틀리고,</text>
+  <text x="492" y="324" font-size="12" fill="#888">재시도해도 같은 자리에서 틀린다</text>
+
+  <rect x="60" y="358" width="350" height="104" rx="10" fill="#0d1117" stroke="#2a2a2a" stroke-width="1"/>
+  <rect x="60" y="358" width="4" height="104" rx="2" fill="#e05555"/>
+  <text x="82" y="384" font-size="13" font-weight="600" fill="#7ec8e3">5. 결과 해석</text>
+  <text x="82" y="408" font-size="15" font-weight="600" fill="#e8e8e8">빈 결과를 성공으로 읽는다</text>
+  <text x="82" y="430" font-size="12" fill="#888">0건 반환을 「없음이 확인됨」으로</text>
+  <text x="82" y="448" font-size="12" fill="#888">받아들이고 다음으로 넘어간다</text>
+
+  <rect x="470" y="358" width="350" height="104" rx="10" fill="#0d1117" stroke="#2a2a2a" stroke-width="1"/>
+  <rect x="470" y="358" width="4" height="104" rx="2" fill="#e05555"/>
+  <text x="492" y="384" font-size="13" font-weight="600" fill="#7ec8e3">6. 종료 판단</text>
+  <text x="492" y="408" font-size="15" font-weight="600" fill="#e8e8e8">덜 끝났는데 답을 낸다</text>
+  <text x="492" y="430" font-size="12" fill="#888">확인 못 한 것을 확인했다고 쓰고</text>
+  <text x="492" y="448" font-size="12" fill="#888">빈 자리를 그럴듯한 말로 채운다</text>
+
+  <text x="60" y="500" font-size="13" fill="#7ec8e3">5번이 가장 늦게 발견된다 — 오류도 안 나고 로그도 깨끗한데 답만 틀리기 때문이다.</text>
+</svg>

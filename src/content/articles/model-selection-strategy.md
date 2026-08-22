@@ -126,3 +126,5 @@ $$C = \frac{n_{in}}{10^6} p_{in} + \frac{n_{out}}{10^6} p_{out}$$
 읽어주셔서 감사합니다. 😊
 
 **지난 글:** [라우팅과 캐스케이드로 모델 여러 개를 함께 쓰기](/articles/model-routing-cascade)
+
+**다음 글:** [vLLM이 같은 GPU로 처리량을 몇 배 올리는 이유](/articles/serving-vllm)

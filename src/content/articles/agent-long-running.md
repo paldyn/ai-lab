@@ -113,3 +113,5 @@ draft: false
 읽어주셔서 감사합니다. 😊
 
 **지난 글:** [에이전트끼리 일을 넘길 때 무엇을 함께 넘기는가](/articles/agent-handoff-protocols)
+
+**다음 글:** [에이전트에 사람을 어디까지 붙일 것인가](/articles/agent-human-in-the-loop)

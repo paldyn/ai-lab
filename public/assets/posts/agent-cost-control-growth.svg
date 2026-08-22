@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="430" viewBox="0 0 880 430" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <rect x="0" y="0" width="880" height="430" rx="12" fill="#0a0a0a"/>
+  <text x="60" y="46" font-size="22" font-weight="700" fill="#e8e8e8">걸음 수가 두 배면 비용은 두 배가 아니다</text>
+  <text x="60" y="72" font-size="13" fill="#888">걸음마다 앞의 도구 결과가 문맥에 남으므로, 같은 일을 해도 입력이 매번 길어진다.</text>
+
+  <text x="60" y="134" font-size="13" fill="#888">문맥 길이</text>
+  <rect x="150" y="112" width="620" height="32" rx="6" fill="#0d1117" stroke="#2a2a2a" stroke-width="1"/>
+  <rect x="150" y="112" width="620" height="32" rx="6" fill="#1f3a5f" stroke="#7ec8e3" stroke-width="1.5">
+    <animate attributeName="width" dur="4.5s" repeatCount="indefinite" calcMode="discrete"
+             keyTimes="0;0.06;0.15;0.24;0.33;0.42;0.51;0.6;0.69"
+             values="0;120;192;264;336;408;480;552;620"/>
+  </rect>
+  <line x1="650" y1="102" x2="650" y2="154" stroke="#e05555" stroke-width="2" stroke-dasharray="4,4"/>
+  <text x="650" y="174" font-size="12" fill="#e05555" text-anchor="middle">문맥 창 한계</text>
+
+  <text x="60" y="214" font-size="13" fill="#888">걸음 하나에 드는 입력 토큰</text>
+  <line x1="140" y1="332" x2="790" y2="332" stroke="#2a2a2a" stroke-width="1"/>
+
+  <rect x="150" y="312" width="54" height="20" rx="3" fill="#1f3a5f" stroke="#7ec8e3" stroke-width="1" opacity="1">
+    <animate attributeName="opacity" dur="4.5s" repeatCount="indefinite" calcMode="discrete" keyTimes="0;0.06" values="0;1"/>
+  </rect>
+  <rect x="228" y="300" width="54" height="32" rx="3" fill="#1f3a5f" stroke="#7ec8e3" stroke-width="1" opacity="1">
+    <animate attributeName="opacity" dur="4.5s" repeatCount="indefinite" calcMode="discrete" keyTimes="0;0.15" values="0;1"/>
+  </rect>
+  <rect x="306" y="288" width="54" height="44" rx="3" fill="#1f3a5f" stroke="#7ec8e3" stroke-width="1" opacity="1">
+    <animate attributeName="opacity" dur="4.5s" repeatCount="indefinite" calcMode="discrete" keyTimes="0;0.24" values="0;1"/>
+  </rect>
+  <rect x="384" y="276" width="54" height="56" rx="3" fill="#1f3a5f" stroke="#7ec8e3" stroke-width="1" opacity="1">
+    <animate attributeName="opacity" dur="4.5s" repeatCount="indefinite" calcMode="discrete" keyTimes="0;0.33" values="0;1"/>
+  </rect>
+  <rect x="462" y="264" width="54" height="68" rx="3" fill="#1f3a5f" stroke="#7ec8e3" stroke-width="1" opacity="1">
+    <animate attributeName="opacity" dur="4.5s" repeatCount="indefinite" calcMode="discrete" keyTimes="0;0.42" values="0;1"/>
+  </rect>
+  <rect x="540" y="252" width="54" height="80" rx="3" fill="#3a2a3a" stroke="#7777cc" stroke-width="1" opacity="1">
+    <animate attributeName="opacity" dur="4.5s" repeatCount="indefinite" calcMode="discrete" keyTimes="0;0.51" values="0;1"/>
+  </rect>
+  <rect x="618" y="240" width="54" height="92" rx="3" fill="#4a1f1f" stroke="#e05555" stroke-width="1" opacity="1">
+    <animate attributeName="opacity" dur="4.5s" repeatCount="indefinite" calcMode="discrete" keyTimes="0;0.6" values="0;1"/>
+  </rect>
+  <rect x="696" y="228" width="54" height="104" rx="3" fill="#4a1f1f" stroke="#e05555" stroke-width="1" opacity="1">
+    <animate attributeName="opacity" dur="4.5s" repeatCount="indefinite" calcMode="discrete" keyTimes="0;0.69" values="0;1"/>
+  </rect>
+
+  <text x="177" y="352" font-size="12" fill="#888" text-anchor="middle">1</text>
+  <text x="255" y="352" font-size="12" fill="#888" text-anchor="middle">2</text>
+  <text x="333" y="352" font-size="12" fill="#888" text-anchor="middle">3</text>
+  <text x="411" y="352" font-size="12" fill="#888" text-anchor="middle">4</text>
+  <text x="489" y="352" font-size="12" fill="#888" text-anchor="middle">5</text>
+  <text x="567" y="352" font-size="12" fill="#888" text-anchor="middle">6</text>
+  <text x="645" y="352" font-size="12" fill="#888" text-anchor="middle">7</text>
+  <text x="723" y="352" font-size="12" fill="#888" text-anchor="middle">8</text>
+  <text x="790" y="352" font-size="12" fill="#888">걸음</text>
+
+  <text x="60" y="400" font-size="13" fill="#7ec8e3">여덟째 걸음의 입력은 첫 걸음의 다섯 배다. 총합은 걸음 수의 제곱에 가깝게 늘어난다.</text>
+</svg>
