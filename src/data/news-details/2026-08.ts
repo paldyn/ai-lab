@@ -2,6 +2,21 @@ import type { NewsDetail } from '../news';
 
 /** 2026-08 발표의 모달 본문. 목록은 news.ts에 있습니다. */
 export const details: Record<string, NewsDetail> = {
+  'claude-platform-august-20-2026': {
+    points: [
+      'Python SDK v1.0을 공개하고 HTTP 계층을 httpx에서 httpx2로 옮겼다',
+      'httpx2는 유지보수되는 API 호환 포크이며 커스텀 http_client·transport를 여기서 만든다',
+      'httpx를 패치하는 추적·모킹 라이브러리를 쓰면 시작 시 httpx2.alias_httpx()를 호출한다',
+      'v1.0은 Python 3.10 이상을 요구한다',
+      '레거시 Text Completions API와 툴 러너의 클라이언트 측 compaction_control을 제거했다',
+      'Messages 메서드의 temperature·top_p·top_k 파라미터를 제거했다',
+      '비동기 클라이언트의 .with_raw_response 결과는 await response.parse()가 필요해졌다',
+      'AnthropicBedrock은 AWS 리전이 없으면 us-east-1로 떨어지지 않고 오류를 낸다',
+    ],
+    commentary:
+      '메이저 버전 하나에 전송 계층 교체와 구 파라미터 제거가 함께 들어갔다. temperature·top_p·top_k를 그대로 넘기던 코드와 httpx 객체를 직접 ' +
+      '만들어 주입하던 코드는 올리는 즉시 멈추므로, 고정 버전을 올리는 시점을 따로 잡고 마이그레이션 가이드를 먼저 훑는 편이 안전하다.',
+  },
   'from-atari-to-eve-online-building-on-15-years-of-ai-research-in-games': {
     points: [
       '2010년 창립 이래 Atari·바둑·StarCraft II를 AI 연구 환경으로 써 온 15년을 정리했다',

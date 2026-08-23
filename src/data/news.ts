@@ -160,7 +160,7 @@ export interface NewsDetail {
   commentary: string;
 }
 
-export const globalNewsUpdatedAt = '2026-08-21';
+export const globalNewsUpdatedAt = '2026-08-22';
 
 /**
  * 공식 발표 한 건 = 항목 한 개. 2026년 1월부터 쌓는 아카이브이며 오래된 항목을
@@ -214,6 +214,21 @@ const entries: NewsItem[] = [
     category: 'Product',
     signal: '기업 도입 사례',
     url: 'https://openai.com/index/stampli',
+  },
+  {
+    id: 'claude-platform-august-20-2026',
+    source: 'Anthropic',
+    kind: 'company',
+    title: 'Claude Python SDK v1.0 공개, httpx2로 전환',
+    summary:
+      'Claude의 Python SDK가 v1.0으로 올라가며 HTTP 계층을 httpx에서 API 호환 포크인 httpx2로 ' +
+      '옮겼다. Python 3.10 이상을 요구하고 레거시 Text Completions API와 Messages 메서드의 ' +
+      'temperature·top_p·top_k 파라미터를 제거했다.',
+    publishedAt: '2026-08-20',
+    collectedAt: '2026-08-24',
+    category: 'Product',
+    signal: 'Python SDK 개편',
+    url: 'https://platform.claude.com/docs/en/release-notes/overview#august-20-2026',
   },
   {
     id: 'claude-platform-august-19-2026',
