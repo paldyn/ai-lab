@@ -198,3 +198,5 @@ RC 스윕은 고차원에서 거리 계산이 무거워 약 3분이 든다(질�
 읽어주셔서 감사합니다. 😊
 
 **지난 글:** [BEIR 정독과 scifact 재측정](/articles/paper-beir-zero-shot)
+
+**다음 글:** [RRF는 정말 학습 없이 이기는가](/articles/paper-rrf-original-claim)
