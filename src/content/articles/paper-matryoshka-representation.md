@@ -390,3 +390,5 @@ CHECK_세 가지가 보인다.
 읽어주셔서 감사합니다. 😊
 
 **지난 글:** [RRF는 정말 학습 없이 이기는가](/articles/paper-rrf-original-claim)
+
+**다음 글:** [HNSW를 5,183 벡터로 재현했다](/articles/paper-hnsw-graph-structure)
