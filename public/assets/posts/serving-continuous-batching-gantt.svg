@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="470" viewBox="0 0 880 470" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <rect x="0" y="0" width="880" height="470" rx="12" fill="#0a0a0a"/>
+  <text x="60" y="46" font-size="22" font-weight="700" fill="#e8e8e8">끝난 자리를 기다리게 두느냐, 바로 채우느냐</text>
+  <text x="60" y="72" font-size="13" fill="#888">자리 두 개짜리 배치에 요청 넷. A는 8걸음, B는 2걸음, C는 3걸음, D는 4걸음이 걸린다.</text>
+
+  <text x="60" y="112" font-size="16" font-weight="600" fill="#e05555">① 고정 배치 — 묶음이 다 끝나야 다음 묶음</text>
+
+  <text x="89" y="134" font-size="11" fill="#666" text-anchor="middle">1</text>
+  <text x="147" y="134" font-size="11" fill="#666" text-anchor="middle">2</text>
+  <text x="205" y="134" font-size="11" fill="#666" text-anchor="middle">3</text>
+  <text x="263" y="134" font-size="11" fill="#666" text-anchor="middle">4</text>
+  <text x="321" y="134" font-size="11" fill="#666" text-anchor="middle">5</text>
+  <text x="379" y="134" font-size="11" fill="#666" text-anchor="middle">6</text>
+  <text x="437" y="134" font-size="11" fill="#666" text-anchor="middle">7</text>
+  <text x="495" y="134" font-size="11" fill="#666" text-anchor="middle">8</text>
+  <text x="553" y="134" font-size="11" fill="#666" text-anchor="middle">9</text>
+  <text x="611" y="134" font-size="11" fill="#666" text-anchor="middle">10</text>
+  <text x="669" y="134" font-size="11" fill="#666" text-anchor="middle">11</text>
+  <text x="727" y="134" font-size="11" fill="#666" text-anchor="middle">12</text>
+
+  <rect x="62" y="142" width="460" height="40" rx="5" fill="#22401f" stroke="#55c555" stroke-width="1.5"/>
+  <text x="292" y="167" font-size="13" fill="#e8e8e8" text-anchor="middle">요청 A</text>
+  <rect x="526" y="142" width="170" height="40" rx="5" fill="#241f3d" stroke="#7777cc" stroke-width="1.5"/>
+  <text x="611" y="167" font-size="13" fill="#e8e8e8" text-anchor="middle">요청 C</text>
+  <rect x="700" y="142" width="54" height="40" rx="5" fill="#1a1a1a" stroke="#555" stroke-width="1"/>
+
+  <rect x="62" y="190" width="112" height="40" rx="5" fill="#16303d" stroke="#7ec8e3" stroke-width="1.5"/>
+  <text x="118" y="215" font-size="13" fill="#e8e8e8" text-anchor="middle">B</text>
+  <rect x="178" y="190" width="344" height="40" rx="5" fill="#1a1a1a" stroke="#555" stroke-width="1"/>
+  <text x="350" y="215" font-size="13" fill="#e05555" text-anchor="middle">노는 자리 — B는 끝났는데 A를 기다린다</text>
+  <rect x="526" y="190" width="228" height="40" rx="5" fill="#3a2a1a" stroke="#c58a55" stroke-width="1.5"/>
+  <text x="640" y="215" font-size="13" fill="#e8e8e8" text-anchor="middle">요청 D</text>
+
+  <text x="60" y="262" font-size="13" fill="#e05555">12걸음이 걸리고 24칸 가운데 7칸이 비어 있다.</text>
+
+  <text x="60" y="302" font-size="16" font-weight="600" fill="#55c555">② 연속 배칭 — 끝난 자리에 대기 요청이 바로 들어온다</text>
+
+  <text x="89" y="324" font-size="11" fill="#666" text-anchor="middle">1</text>
+  <text x="147" y="324" font-size="11" fill="#666" text-anchor="middle">2</text>
+  <text x="205" y="324" font-size="11" fill="#666" text-anchor="middle">3</text>
+  <text x="263" y="324" font-size="11" fill="#666" text-anchor="middle">4</text>
+  <text x="321" y="324" font-size="11" fill="#666" text-anchor="middle">5</text>
+  <text x="379" y="324" font-size="11" fill="#666" text-anchor="middle">6</text>
+  <text x="437" y="324" font-size="11" fill="#666" text-anchor="middle">7</text>
+  <text x="495" y="324" font-size="11" fill="#666" text-anchor="middle">8</text>
+  <text x="553" y="324" font-size="11" fill="#666" text-anchor="middle">9</text>
+
+  <rect x="62" y="332" width="460" height="40" rx="5" fill="#22401f" stroke="#55c555" stroke-width="1.5"/>
+  <text x="292" y="357" font-size="13" fill="#e8e8e8" text-anchor="middle">요청 A</text>
+  <rect x="526" y="332" width="54" height="40" rx="5" fill="#1a1a1a" stroke="#555" stroke-width="1"/>
+
+  <rect x="62" y="380" width="112" height="40" rx="5" fill="#16303d" stroke="#7ec8e3" stroke-width="1.5"/>
+  <text x="118" y="405" font-size="13" fill="#e8e8e8" text-anchor="middle">B</text>
+  <rect x="178" y="380" width="170" height="40" rx="5" fill="#241f3d" stroke="#7777cc" stroke-width="1.5"/>
+  <text x="263" y="405" font-size="13" fill="#e8e8e8" text-anchor="middle">요청 C</text>
+  <rect x="352" y="380" width="228" height="40" rx="5" fill="#3a2a1a" stroke="#c58a55" stroke-width="1.5"/>
+  <text x="466" y="405" font-size="13" fill="#e8e8e8" text-anchor="middle">요청 D</text>
+
+  <text x="60" y="452" font-size="13" fill="#55c555">9걸음으로 끝나고 18칸 가운데 1칸만 빈다. 같은 GPU, 같은 요청이다.</text>
+</svg>

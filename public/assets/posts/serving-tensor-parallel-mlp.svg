@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="420" viewBox="0 0 880 420" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <defs>
+    <marker id="tp1" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#7ec8e3"/>
+    </marker>
+    <marker id="tp2" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#e05555"/>
+    </marker>
+    <marker id="tp3" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#55c555"/>
+    </marker>
+  </defs>
+  <rect x="0" y="0" width="880" height="420" rx="12" fill="#0a0a0a"/>
+  <text x="60" y="46" font-size="22" font-weight="700" fill="#e8e8e8">가중치를 세로로 자르고 가로로 자르면 통신이 한 번뿐이다</text>
+  <text x="60" y="72" font-size="13" fill="#888">MLP 블록 하나를 카드 두 장에 나눈 모습.</text>
+
+  <rect x="60" y="200" width="110" height="70" rx="10" fill="#0d1117" stroke="#7ec8e3" stroke-width="1.5"/>
+  <text x="115" y="230" font-size="14" font-weight="600" fill="#7ec8e3" text-anchor="middle">입력 X</text>
+  <text x="115" y="252" font-size="11.5" fill="#888" text-anchor="middle">두 카드에 같이</text>
+
+  <path d="M 170 218 C 200 218 200 165 230 165" fill="none" stroke="#7ec8e3" stroke-width="2" marker-end="url(#tp1)"/>
+  <path d="M 170 252 C 200 252 200 305 230 305" fill="none" stroke="#7ec8e3" stroke-width="2" marker-end="url(#tp1)"/>
+
+  <rect x="230" y="110" width="270" height="110" rx="10" fill="#0d1117" stroke="#7777cc" stroke-width="1.5"/>
+  <text x="250" y="134" font-size="13" font-weight="600" fill="#7777cc">GPU 0</text>
+  <text x="250" y="160" font-size="12" fill="#e8e8e8">W1의 왼쪽 절반만 들고 곱한다</text>
+  <text x="250" y="182" font-size="12" fill="#e8e8e8">GELU — 옆 카드와 무관하다</text>
+  <text x="250" y="204" font-size="12" fill="#e8e8e8">W2의 위쪽 절반을 곱한다</text>
+
+  <rect x="230" y="250" width="270" height="110" rx="10" fill="#0d1117" stroke="#7777cc" stroke-width="1.5"/>
+  <text x="250" y="274" font-size="13" font-weight="600" fill="#7777cc">GPU 1</text>
+  <text x="250" y="300" font-size="12" fill="#e8e8e8">W1의 오른쪽 절반만 들고 곱한다</text>
+  <text x="250" y="322" font-size="12" fill="#e8e8e8">GELU — 옆 카드와 무관하다</text>
+  <text x="250" y="344" font-size="12" fill="#e8e8e8">W2의 아래쪽 절반을 곱한다</text>
+
+  <path d="M 500 165 C 530 165 530 218 560 218" fill="none" stroke="#e05555" stroke-width="2" marker-end="url(#tp2)"/>
+  <path d="M 500 305 C 530 305 530 252 560 252" fill="none" stroke="#e05555" stroke-width="2" marker-end="url(#tp2)"/>
+  <text x="530" y="140" font-size="11.5" fill="#e05555" text-anchor="middle">부분합</text>
+  <text x="530" y="336" font-size="11.5" fill="#e05555" text-anchor="middle">부분합</text>
+
+  <rect x="560" y="200" width="150" height="70" rx="10" fill="#0d1117" stroke="#e05555" stroke-width="1.5"/>
+  <text x="635" y="228" font-size="13" font-weight="600" fill="#e05555" text-anchor="middle">All-Reduce</text>
+  <text x="635" y="250" font-size="11.5" fill="#888" text-anchor="middle">둘을 더한다</text>
+
+  <line x1="710" y1="235" x2="760" y2="235" stroke="#55c555" stroke-width="2" marker-end="url(#tp3)"/>
+
+  <rect x="760" y="200" width="60" height="70" rx="10" fill="#0d1117" stroke="#55c555" stroke-width="1.5"/>
+  <text x="790" y="228" font-size="13" font-weight="600" fill="#55c555" text-anchor="middle">출력</text>
+  <text x="790" y="250" font-size="11.5" fill="#888" text-anchor="middle">Y</text>
+
+  <text x="60" y="398" font-size="13" fill="#888">첫 곱을 세로로, 둘째 곱을 가로로 자른 덕에 중간 결과를 주고받을 필요가 없다. 통신은 블록 끝의 All-Reduce 한 번이다.</text>
+</svg>

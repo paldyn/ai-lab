@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="370" viewBox="0 0 880 370" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <rect x="0" y="0" width="880" height="370" rx="12" fill="#0a0a0a"/>
+  <text x="60" y="46" font-size="22" font-weight="700" fill="#e8e8e8">배치는 고정된 묶음이 아니라 매 걸음 갈아 끼우는 자리다</text>
+  <text x="60" y="72" font-size="13" fill="#888">A와 D는 계속 도는 중이고, 끝난 요청 자리에 대기 중이던 요청이 들어온다.</text>
+
+  <rect x="60" y="126" width="760" height="180" rx="10" fill="#0d1117" stroke="#4a6a86" stroke-width="1.5"/>
+
+  <g>
+    <animate attributeName="opacity" values="1;0;0" keyTimes="0;0.3333;0.6667" calcMode="discrete" dur="4.8s" repeatCount="indefinite"/>
+    <text x="60" y="112" font-size="16" font-weight="600" fill="#7ec8e3">걸음 1</text>
+    <rect x="80" y="142" width="720" height="32" rx="5" fill="#101820" stroke="#4a6a86" stroke-width="1"/>
+    <text x="96" y="163" font-size="13" fill="#e8e8e8">요청 A · 412번째 토큰</text>
+    <text x="784" y="163" font-size="12" fill="#888" text-anchor="end">진행 중</text>
+    <rect x="80" y="182" width="720" height="32" rx="5" fill="#101820" stroke="#4a6a86" stroke-width="1"/>
+    <text x="96" y="203" font-size="13" fill="#e8e8e8">요청 B · 37번째 토큰</text>
+    <text x="784" y="203" font-size="12" fill="#888" text-anchor="end">진행 중</text>
+    <rect x="80" y="222" width="720" height="32" rx="5" fill="#3a2a1a" stroke="#c58a55" stroke-width="1.5"/>
+    <text x="96" y="243" font-size="13" fill="#e8e8e8">요청 C · 마지막 토큰</text>
+    <text x="784" y="243" font-size="12" fill="#c58a55" text-anchor="end">이번 걸음에 끝난다</text>
+    <rect x="80" y="262" width="720" height="32" rx="5" fill="#101820" stroke="#4a6a86" stroke-width="1"/>
+    <text x="96" y="283" font-size="13" fill="#e8e8e8">요청 D · 88번째 토큰</text>
+    <text x="784" y="283" font-size="12" fill="#888" text-anchor="end">진행 중</text>
+  </g>
+
+  <g>
+    <animate attributeName="opacity" values="0;1;0" keyTimes="0;0.3333;0.6667" calcMode="discrete" dur="4.8s" repeatCount="indefinite"/>
+    <text x="60" y="112" font-size="16" font-weight="600" fill="#7ec8e3">걸음 2</text>
+    <rect x="80" y="142" width="720" height="32" rx="5" fill="#101820" stroke="#4a6a86" stroke-width="1"/>
+    <text x="96" y="163" font-size="13" fill="#e8e8e8">요청 A · 413번째 토큰</text>
+    <text x="784" y="163" font-size="12" fill="#888" text-anchor="end">진행 중</text>
+    <rect x="80" y="182" width="720" height="32" rx="5" fill="#3a2a1a" stroke="#c58a55" stroke-width="1.5"/>
+    <text x="96" y="203" font-size="13" fill="#e8e8e8">요청 B · 마지막 토큰</text>
+    <text x="784" y="203" font-size="12" fill="#c58a55" text-anchor="end">이번 걸음에 끝난다</text>
+    <rect x="80" y="222" width="720" height="32" rx="5" fill="#22401f" stroke="#55c555" stroke-width="1.5"/>
+    <text x="96" y="243" font-size="13" fill="#e8e8e8">요청 E · 1번째 토큰</text>
+    <text x="784" y="243" font-size="12" fill="#55c555" text-anchor="end">C가 비운 자리</text>
+    <rect x="80" y="262" width="720" height="32" rx="5" fill="#101820" stroke="#4a6a86" stroke-width="1"/>
+    <text x="96" y="283" font-size="13" fill="#e8e8e8">요청 D · 89번째 토큰</text>
+    <text x="784" y="283" font-size="12" fill="#888" text-anchor="end">진행 중</text>
+  </g>
+
+  <g>
+    <animate attributeName="opacity" values="0;0;1" keyTimes="0;0.3333;0.6667" calcMode="discrete" dur="4.8s" repeatCount="indefinite"/>
+    <text x="60" y="112" font-size="16" font-weight="600" fill="#7ec8e3">걸음 3</text>
+    <rect x="80" y="142" width="720" height="32" rx="5" fill="#101820" stroke="#4a6a86" stroke-width="1"/>
+    <text x="96" y="163" font-size="13" fill="#e8e8e8">요청 A · 414번째 토큰</text>
+    <text x="784" y="163" font-size="12" fill="#888" text-anchor="end">진행 중</text>
+    <rect x="80" y="182" width="720" height="32" rx="5" fill="#22401f" stroke="#55c555" stroke-width="1.5"/>
+    <text x="96" y="203" font-size="13" fill="#e8e8e8">요청 F · 1번째 토큰</text>
+    <text x="784" y="203" font-size="12" fill="#55c555" text-anchor="end">B가 비운 자리</text>
+    <rect x="80" y="222" width="720" height="32" rx="5" fill="#101820" stroke="#4a6a86" stroke-width="1"/>
+    <text x="96" y="243" font-size="13" fill="#e8e8e8">요청 E · 2번째 토큰</text>
+    <text x="784" y="243" font-size="12" fill="#888" text-anchor="end">진행 중</text>
+    <rect x="80" y="262" width="720" height="32" rx="5" fill="#101820" stroke="#4a6a86" stroke-width="1"/>
+    <text x="96" y="283" font-size="13" fill="#e8e8e8">요청 D · 90번째 토큰</text>
+    <text x="784" y="283" font-size="12" fill="#888" text-anchor="end">진행 중</text>
+  </g>
+
+  <text x="60" y="340" font-size="13" fill="#888">묶음이 끝나기를 기다리는 자리가 없으므로 대기열의 요청이 첫 토큰을 훨씬 빨리 받는다.</text>
+</svg>
