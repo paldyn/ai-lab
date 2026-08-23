@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="440" viewBox="0 0 880 440" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <rect x="0" y="0" width="880" height="440" rx="12" fill="#0a0a0a"/>
+
+  <text x="60" y="46" font-size="22" font-weight="700" fill="#e8e8e8">세 기법이 상한을 거는 자리</text>
+  <text x="60" y="70" font-size="13" fill="#888">이름과 라이브러리가 달라도 재는 자는 노름 하나다</text>
+
+  <defs>
+    <marker id="tt-arr" viewBox="0 0 14 14" refX="12" refY="7"
+            markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#888"/>
+    </marker>
+  </defs>
+
+  <rect x="90" y="126" width="110" height="70" rx="8" fill="#101820" stroke="#7777cc" stroke-width="1.5"/>
+  <text x="145" y="158" font-size="15" font-weight="600" fill="#e8e8e8" text-anchor="middle">W₁</text>
+  <text x="145" y="180" font-size="13" fill="#9aa4b8" text-anchor="middle">선형층</text>
+
+  <rect x="260" y="126" width="110" height="70" rx="8" fill="#101820" stroke="#7777cc" stroke-width="1.5"/>
+  <text x="315" y="158" font-size="15" font-weight="600" fill="#e8e8e8" text-anchor="middle">W₂</text>
+  <text x="315" y="180" font-size="13" fill="#9aa4b8" text-anchor="middle">선형층</text>
+
+  <rect x="430" y="126" width="110" height="70" rx="8" fill="#101820" stroke="#7777cc" stroke-width="1.5"/>
+  <text x="485" y="158" font-size="15" font-weight="600" fill="#e8e8e8" text-anchor="middle">W₃</text>
+  <text x="485" y="180" font-size="13" fill="#9aa4b8" text-anchor="middle">선형층</text>
+
+  <line x1="208" y1="161" x2="252" y2="161" stroke="#888" stroke-width="2" marker-end="url(#tt-arr)"/>
+  <line x1="378" y1="161" x2="422" y2="161" stroke="#888" stroke-width="2" marker-end="url(#tt-arr)"/>
+  <line x1="548" y1="161" x2="592" y2="161" stroke="#888" stroke-width="2" marker-end="url(#tt-arr)"/>
+
+  <rect x="600" y="126" width="180" height="70" rx="8" fill="#101820" stroke="#e05555" stroke-width="1.5"/>
+  <text x="690" y="152" font-size="14" font-weight="600" fill="#e05555" text-anchor="middle">손실 → 기울기</text>
+  <text x="690" y="176" font-size="13" fill="#9aa4b8" text-anchor="middle">역전파로 되돌아간다</text>
+
+  <line x1="145" y1="204" x2="145" y2="244" stroke="#55c555" stroke-width="2" marker-end="url(#tt-arr)"/>
+  <line x1="315" y1="204" x2="315" y2="244" stroke="#55c555" stroke-width="2" marker-end="url(#tt-arr)"/>
+  <line x1="485" y1="204" x2="485" y2="244" stroke="#55c555" stroke-width="2" marker-end="url(#tt-arr)"/>
+
+  <rect x="70" y="252" width="500" height="56" rx="8" fill="#101820" stroke="#55c555" stroke-width="1.5"/>
+  <text x="92" y="276" font-size="14" font-weight="600" fill="#55c555">스펙트럼 정규화 — 층마다 W / ‖W‖₂ 로 바꿔 쓴다</text>
+  <text x="92" y="298" font-size="13" fill="#9aa4b8">그 층의 립시츠 상수를 1로 고정한다. 특잇값 전체가 1 이하로 눌린다.</text>
+
+  <line x1="690" y1="204" x2="690" y2="244" stroke="#e05555" stroke-width="2" marker-end="url(#tt-arr)"/>
+  <rect x="590" y="252" width="230" height="56" rx="8" fill="#101820" stroke="#e05555" stroke-width="1.5"/>
+  <text x="612" y="276" font-size="14" font-weight="600" fill="#e05555">그래디언트 클리핑</text>
+  <text x="612" y="298" font-size="13" fill="#9aa4b8">기울기 벡터의 L² 노름에 상한</text>
+
+  <rect x="70" y="330" width="750" height="56" rx="8" fill="#101820" stroke="#7ec8e3" stroke-width="1.5"/>
+  <text x="92" y="354" font-size="14" font-weight="600" fill="#7ec8e3">립시츠 제약 — 전체 함수가 입력 변화를 못 키우게 한다</text>
+  <text x="92" y="376" font-size="13" fill="#9aa4b8">L_net ≤ ‖W₁‖₂ ‖W₂‖₂ ‖W₃‖₂ · · ·  (ReLU 같은 활성함수는 상수가 1 이하라 곱에 영향이 없다)</text>
+
+  <rect x="70" y="398" width="750" height="30" rx="8" fill="#000000" stroke="#3a4a6e" stroke-width="1"/>
+  <text x="92" y="418" font-size="13" fill="#9aa4b8">부분곱셈성이 부등호라, 층별로 묶은 이 상한은 실제 립시츠 상수보다 늘 헐겁다.</text>
+</svg>

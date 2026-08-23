@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="430" viewBox="0 0 880 430" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <rect x="0" y="0" width="880" height="430" rx="12" fill="#0a0a0a"/>
+
+  <text x="60" y="46" font-size="22" font-weight="700" fill="#e8e8e8">같은 전단 행렬을 두 분해가 다르게 읽는다</text>
+  <text x="60" y="70" font-size="13" fill="#888">N = 열 (1,0),(1,1) · 고윳값은 1 하나뿐이지만 특잇값은 1.618과 0.618이다</text>
+
+  <defs>
+    <marker id="evs-g" viewBox="0 0 14 14" refX="12" refY="7"
+            markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#55c555"/>
+    </marker>
+    <marker id="evs-r" viewBox="0 0 14 14" refX="12" refY="7"
+            markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#e05555"/>
+    </marker>
+  </defs>
+
+  <rect x="50" y="94" width="380" height="252" rx="10" fill="#101820" stroke="#7777cc" stroke-width="1.5"/>
+  <text x="240" y="124" font-size="16" font-weight="600" fill="#e8e8e8" text-anchor="middle">고윳값이 보는 것</text>
+
+  <line x1="110" y1="288" x2="400" y2="288" stroke="#888" stroke-width="1.5"/>
+  <line x1="150" y1="310" x2="150" y2="146" stroke="#888" stroke-width="1.5"/>
+
+  <polygon points="150,288 240,288 240,198 150,198" fill="none" stroke="#666" stroke-width="1.5" stroke-dasharray="5,3"/>
+  <polygon points="150,288 240,288 330,198 240,198" fill="#7ec8e3" fill-opacity="0.18" stroke="#7ec8e3" stroke-width="2.5"/>
+
+  <line x1="150" y1="288" x2="234" y2="288" stroke="#55c555" stroke-width="3.5" marker-end="url(#evs-g)"/>
+  <text x="230" y="316" font-size="13" font-weight="600" fill="#55c555" text-anchor="middle">λ = 1 — 유일한 고유 방향</text>
+
+  <text x="256" y="182" font-size="13" fill="#9aa4b8">밀린 정사각형</text>
+  <text x="74" y="338" font-size="13" fill="#e05555">방향이 하나뿐이라 대각화 실패 — 「아무것도 안 늘어난다」</text>
+
+  <rect x="450" y="94" width="380" height="252" rx="10" fill="#101820" stroke="#55c555" stroke-width="1.5"/>
+  <text x="640" y="124" font-size="16" font-weight="600" fill="#e8e8e8" text-anchor="middle">특잇값이 보는 것</text>
+
+  <circle cx="640" cy="238" r="58" fill="none" stroke="#666" stroke-width="1.5" stroke-dasharray="5,3"/>
+  <g transform="rotate(-31.7 640 238)">
+    <ellipse cx="640" cy="238" rx="94" ry="36" fill="#7ec8e3" fill-opacity="0.18" stroke="#7ec8e3" stroke-width="2.5"/>
+    <line x1="640" y1="238" x2="734" y2="238" stroke="#55c555" stroke-width="3" marker-end="url(#evs-g)"/>
+    <line x1="640" y1="238" x2="640" y2="274" stroke="#e05555" stroke-width="3" marker-end="url(#evs-r)"/>
+  </g>
+  <text x="756" y="184" font-size="13" font-weight="600" fill="#55c555">σ₁ = 1.618</text>
+  <text x="588" y="316" font-size="13" font-weight="600" fill="#e05555">σ₂ = 0.618</text>
+  <text x="474" y="336" font-size="13" fill="#55c555">직교하는 두 축 — 「한쪽은 1.6배, 다른 쪽은 0.6배」</text>
+
+  <rect x="50" y="362" width="780" height="52" rx="8" fill="#000000" stroke="#3a4a6e" stroke-width="1"/>
+  <text x="74" y="386" font-size="14" fill="#e8e8e8">둘 다 참이지만 도형이 실제로 찌그러진 정도를 담은 것은 오른쪽이다.</text>
+  <text x="74" y="406" font-size="13" fill="#9aa4b8">넓이는 그대로다 — 1.618 × 0.618 = 1 이고, 행렬식도 1이다.</text>
+</svg>

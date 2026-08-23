@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="420" viewBox="0 0 880 420" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <rect x="0" y="0" width="880" height="420" rx="12" fill="#0a0a0a"/>
+
+  <text x="60" y="46" font-size="22" font-weight="700" fill="#e8e8e8">A = QΛQᵀ — 돌리고, 축마다 늘이고, 되돌린다</text>
+  <text x="60" y="70" font-size="13" fill="#888">A = 열 (2,1),(1,2) · 고윳값 3과 1 · 초록 점선·초록 축이 고유축이다 · 길이는 Qᵀ와 Q에서 안 바뀐다</text>
+
+  <defs>
+    <marker id="sq-arr" viewBox="0 0 14 14" refX="12" refY="7"
+            markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#888"/>
+    </marker>
+    <marker id="sq-vec" viewBox="0 0 14 14" refX="12" refY="7"
+            markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#7ec8e3"/>
+    </marker>
+  </defs>
+
+  <rect x="50" y="96" width="165" height="204" rx="10" fill="#101820" stroke="#7777cc" stroke-width="1.5"/>
+  <text x="132" y="122" font-size="15" font-weight="600" fill="#e8e8e8" text-anchor="middle">원래 좌표</text>
+  <line x1="66" y1="225" x2="200" y2="225" stroke="#888" stroke-width="1.5"/>
+  <line x1="110" y1="270" x2="110" y2="150" stroke="#888" stroke-width="1.5"/>
+  <line x1="66" y1="269" x2="155" y2="180" stroke="#55c555" stroke-width="1.5" stroke-dasharray="5,3"/>
+  <line x1="66" y1="181" x2="155" y2="270" stroke="#55c555" stroke-width="1.5" stroke-dasharray="5,3"/>
+  <line x1="110" y1="225" x2="147" y2="225" stroke="#7ec8e3" stroke-width="3" marker-end="url(#sq-vec)"/>
+  <text x="140" y="212" font-size="14" font-weight="600" fill="#7ec8e3">x</text>
+  <text x="132" y="290" font-size="13" fill="#9aa4b8" text-anchor="middle">고유축이 비스듬하다</text>
+
+  <rect x="255" y="96" width="165" height="204" rx="10" fill="#101820" stroke="#7777cc" stroke-width="1.5"/>
+  <text x="337" y="122" font-size="15" font-weight="600" fill="#e8e8e8" text-anchor="middle">고유축 좌표 y</text>
+  <line x1="271" y1="235" x2="405" y2="235" stroke="#55c555" stroke-width="1.5"/>
+  <line x1="300" y1="280" x2="300" y2="155" stroke="#55c555" stroke-width="1.5"/>
+  <line x1="300" y1="235" x2="326" y2="209" stroke="#7ec8e3" stroke-width="3" marker-end="url(#sq-vec)"/>
+  <text x="332" y="200" font-size="14" font-weight="600" fill="#7ec8e3">y</text>
+  <text x="337" y="290" font-size="13" fill="#9aa4b8" text-anchor="middle">축만 바뀌었다</text>
+
+  <rect x="460" y="96" width="165" height="204" rx="10" fill="#101820" stroke="#7777cc" stroke-width="1.5"/>
+  <text x="542" y="122" font-size="15" font-weight="600" fill="#e8e8e8" text-anchor="middle">축마다 λ배</text>
+  <line x1="471" y1="235" x2="615" y2="235" stroke="#55c555" stroke-width="1.5"/>
+  <line x1="490" y1="280" x2="490" y2="155" stroke="#55c555" stroke-width="1.5"/>
+  <line x1="490" y1="235" x2="568" y2="209" stroke="#7ec8e3" stroke-width="3" marker-end="url(#sq-vec)"/>
+  <text x="574" y="200" font-size="14" font-weight="600" fill="#7ec8e3">Λy</text>
+  <text x="542" y="290" font-size="13" fill="#9aa4b8" text-anchor="middle">가로 3배, 세로 1배</text>
+
+  <rect x="665" y="96" width="165" height="204" rx="10" fill="#101820" stroke="#55c555" stroke-width="1.5"/>
+  <text x="747" y="122" font-size="15" font-weight="600" fill="#e8e8e8" text-anchor="middle">되돌린 결과</text>
+  <line x1="676" y1="245" x2="820" y2="245" stroke="#888" stroke-width="1.5"/>
+  <line x1="695" y1="285" x2="695" y2="165" stroke="#888" stroke-width="1.5"/>
+  <line x1="676" y1="264" x2="775" y2="165" stroke="#55c555" stroke-width="1.5" stroke-dasharray="5,3"/>
+  <line x1="695" y1="245" x2="769" y2="208" stroke="#7ec8e3" stroke-width="3" marker-end="url(#sq-vec)"/>
+  <text x="762" y="198" font-size="14" font-weight="600" fill="#7ec8e3">Ax</text>
+  <text x="747" y="290" font-size="13" fill="#9aa4b8" text-anchor="middle">원래 축으로 돌아왔다</text>
+
+  <line x1="221" y1="200" x2="249" y2="200" stroke="#888" stroke-width="2" marker-end="url(#sq-arr)"/>
+  <text x="235" y="186" font-size="14" font-weight="600" fill="#e8e8e8" text-anchor="middle">Qᵀ</text>
+  <line x1="426" y1="200" x2="454" y2="200" stroke="#888" stroke-width="2" marker-end="url(#sq-arr)"/>
+  <text x="440" y="186" font-size="14" font-weight="600" fill="#e8e8e8" text-anchor="middle">Λ</text>
+  <line x1="631" y1="200" x2="659" y2="200" stroke="#888" stroke-width="2" marker-end="url(#sq-arr)"/>
+  <text x="645" y="186" font-size="14" font-weight="600" fill="#e8e8e8" text-anchor="middle">Q</text>
+
+  <rect x="50" y="316" width="780" height="82" rx="8" fill="#000000" stroke="#3a4a6e" stroke-width="1"/>
+  <text x="74" y="342" font-size="14" fill="#e8e8e8">일반 대각화 A = PΛP⁻¹ 과 다른 두 곳</text>
+  <text x="74" y="366" font-size="13" fill="#9aa4b8">① 조건이 없다 — 대칭이기만 하면 늘 된다 (전단·회전 같은 사고가 없다)</text>
+  <text x="74" y="388" font-size="13" fill="#9aa4b8">② P⁻¹ 자리가 Qᵀ 다 — 직교행렬은 역행렬이 곧 전치라 역행렬 계산이 사라진다</text>
+</svg>

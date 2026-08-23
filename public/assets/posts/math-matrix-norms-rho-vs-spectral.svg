@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="410" viewBox="0 0 880 410" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <rect x="0" y="0" width="880" height="410" rx="12" fill="#0a0a0a"/>
+
+  <text x="60" y="46" font-size="22" font-weight="700" fill="#e8e8e8">ρ(A) 와 ‖A‖₂ 는 다른 질문에 답한다</text>
+  <text x="60" y="70" font-size="13" fill="#888">전단 열 (1,0),(1,1) 에서 두 값이 갈린다 — ρ = 1 이지만 ‖A‖₂ = 1.618 이다</text>
+
+  <rect x="50" y="98" width="380" height="200" rx="10" fill="#101820" stroke="#7777cc" stroke-width="1.5"/>
+  <text x="240" y="128" font-size="16" font-weight="600" fill="#7777cc" text-anchor="middle">ρ(A) = max |λᵢ| = 1</text>
+  <text x="72" y="160" font-size="14" fill="#e8e8e8">묻는 것 — 계속 곱하면 어떻게 되는가</text>
+  <text x="72" y="188" font-size="13" fill="#9aa4b8">Aᵏ 의 장기 운명. 1보다 크면 폭발, 작으면 소멸.</text>
+  <text x="72" y="214" font-size="13" fill="#9aa4b8">전단은 ρ = 1 이라 지수적으로 터지지 않는다.</text>
+  <text x="72" y="246" font-size="13" fill="#e8e8e8">쓰는 자리 — 순환망 기울기, 반복 곱셈</text>
+  <text x="72" y="274" font-size="13" fill="#7777cc">한 번 통과할 때 얼마나 커지는지는 말하지 않는다</text>
+
+  <rect x="450" y="98" width="380" height="200" rx="10" fill="#101820" stroke="#55c555" stroke-width="1.5"/>
+  <text x="640" y="128" font-size="16" font-weight="600" fill="#55c555" text-anchor="middle">‖A‖₂ = σ_max = 1.618</text>
+  <text x="472" y="160" font-size="14" fill="#e8e8e8">묻는 것 — 한 번 통과하면 얼마나 커지는가</text>
+  <text x="472" y="188" font-size="13" fill="#9aa4b8">최대 증폭률. 그대로 립시츠 상수다.</text>
+  <text x="472" y="214" font-size="13" fill="#9aa4b8">전단은 어떤 방향을 1.618배까지 늘인다.</text>
+  <text x="472" y="246" font-size="13" fill="#e8e8e8">쓰는 자리 — 스펙트럼 정규화, 립시츠 제약</text>
+  <text x="472" y="274" font-size="13" fill="#55c555">반복했을 때의 운명은 말하지 않는다</text>
+
+  <rect x="50" y="320" width="780" height="70" rx="8" fill="#000000" stroke="#3a4a6e" stroke-width="1"/>
+  <text x="74" y="346" font-size="14" fill="#e8e8e8">ρ(A) ≤ ‖A‖₂ 는 언제나 성립하고, 대칭 행렬에서는 등호가 된다.</text>
+  <text x="74" y="368" font-size="13" fill="#9aa4b8">고윳값과 특잇값이 갈리는 만큼 두 값도 갈린다. 대칭이면 σᵢ = |λᵢ| 라 가장 큰 것도 같아진다.</text>
+  <text x="74" y="386" font-size="13" fill="#9aa4b8">전단처럼 대각화가 안 되는 자리에서 차이가 가장 크게 벌어진다.</text>
+</svg>

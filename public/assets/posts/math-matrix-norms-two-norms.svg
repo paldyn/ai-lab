@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="420" viewBox="0 0 880 420" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <rect x="0" y="0" width="880" height="420" rx="12" fill="#0a0a0a"/>
+
+  <text x="60" y="46" font-size="22" font-weight="700" fill="#e8e8e8">같은 특잇값 목록을 두 자가 다르게 요약한다</text>
+  <text x="60" y="70" font-size="13" fill="#888">A = 열 (3,4,0),(0,5,0) 의 특잇값은 √45 = 6.708 과 √5 = 2.236 이다</text>
+
+  <line x1="90" y1="290" x2="470" y2="290" stroke="#888" stroke-width="1.5"/>
+  <rect x="130" y="120" width="70" height="170" fill="#7ec8e3" fill-opacity="0.7" stroke="#7ec8e3" stroke-width="1.5"/>
+  <rect x="250" y="233" width="70" height="57" fill="#7ec8e3" fill-opacity="0.7" stroke="#7ec8e3" stroke-width="1.5"/>
+  <text x="165" y="312" font-size="13" fill="#9aa4b8" text-anchor="middle">σ₁ = 6.708</text>
+  <text x="285" y="312" font-size="13" fill="#9aa4b8" text-anchor="middle">σ₂ = 2.236</text>
+
+  <line x1="120" y1="120" x2="392" y2="120" stroke="#55c555" stroke-width="2" stroke-dasharray="5,3"/>
+  <text x="398" y="146" font-size="14" font-weight="600" fill="#55c555">‖A‖₂ = 6.708</text>
+  <text x="398" y="166" font-size="13" fill="#9aa4b8">가장 큰 하나만 본다</text>
+
+  <line x1="120" y1="111" x2="560" y2="111" stroke="#7777cc" stroke-width="2" stroke-dasharray="5,3"/>
+  <text x="566" y="108" font-size="14" font-weight="600" fill="#7777cc">‖A‖_F = 7.071</text>
+  <text x="566" y="128" font-size="13" fill="#9aa4b8">둘을 제곱해 모으고 제곱근</text>
+  <text x="566" y="148" font-size="13" fill="#9aa4b8">√(45 + 5) = √50</text>
+
+  <rect x="60" y="332" width="380" height="70" rx="8" fill="#101820" stroke="#7ec8e3" stroke-width="1.5"/>
+  <text x="82" y="356" font-size="14" font-weight="600" fill="#e8e8e8">부등식</text>
+  <text x="82" y="378" font-size="14" fill="#e8e8e8">‖A‖₂ ≤ ‖A‖_F ≤ √r · ‖A‖₂</text>
+  <text x="82" y="396" font-size="13" fill="#9aa4b8">6.708 ≤ 7.071 ≤ 9.487</text>
+
+  <rect x="470" y="332" width="350" height="70" rx="8" fill="#000000" stroke="#3a4a6e" stroke-width="1"/>
+  <text x="492" y="356" font-size="13" fill="#9aa4b8">왼쪽 등호 — 랭크가 1일 때</text>
+  <text x="492" y="376" font-size="13" fill="#9aa4b8">오른쪽 등호 — 특잇값이 전부 같을 때</text>
+  <text x="492" y="396" font-size="13" fill="#9aa4b8">그 사이가 특잇값이 얼마나 고른지를 말한다</text>
+
+  <rect x="500" y="214" width="320" height="70" rx="8" fill="#101820" stroke="#55c555" stroke-width="1.5"/>
+  <text x="522" y="238" font-size="13" fill="#e8e8e8">성분으로 세도 같은 값이 나온다</text>
+  <text x="522" y="260" font-size="13" fill="#55c555">√(3² + 4² + 5²) = √50 = 7.071</text>
+  <text x="522" y="278" font-size="13" fill="#9aa4b8">그래서 프로베니우스 노름이 훨씬 싸다</text>
+</svg>

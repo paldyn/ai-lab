@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="430" viewBox="0 0 880 430" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <rect x="0" y="0" width="880" height="430" rx="12" fill="#0a0a0a"/>
+
+  <text x="60" y="46" font-size="22" font-weight="700" fill="#e8e8e8">고유기저로 옮기면 교차항이 사라지고 부호만 남는다</text>
+  <text x="60" y="70" font-size="13" fill="#888">C = 열 (1,2),(2,1) · 고윳값 3과 −1</text>
+
+  <defs>
+    <marker id="qf-arr" viewBox="0 0 14 14" refX="12" refY="7"
+            markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#888"/>
+    </marker>
+  </defs>
+
+  <rect x="60" y="100" width="330" height="94" rx="10" fill="#101820" stroke="#7777cc" stroke-width="1.5"/>
+  <text x="82" y="128" font-size="14" font-weight="600" fill="#e8e8e8">원래 좌표에서</text>
+  <text x="82" y="156" font-size="16" fill="#7ec8e3">q = x₁² + 4x₁x₂ + x₂²</text>
+  <text x="82" y="180" font-size="13" fill="#e05555">교차항 4x₁x₂ 때문에 부호를 눈으로 못 읽는다</text>
+
+  <line x1="410" y1="147" x2="470" y2="147" stroke="#888" stroke-width="2" marker-end="url(#qf-arr)"/>
+  <text x="440" y="132" font-size="13" fill="#888" text-anchor="middle">y = Qᵀx</text>
+
+  <rect x="490" y="100" width="330" height="94" rx="10" fill="#101820" stroke="#55c555" stroke-width="1.5"/>
+  <text x="512" y="128" font-size="14" font-weight="600" fill="#e8e8e8">고유축 좌표에서</text>
+  <text x="512" y="156" font-size="16" fill="#7ec8e3">q = 3y₁² − y₂²</text>
+  <text x="512" y="180" font-size="13" fill="#55c555">제곱항뿐 — 부호는 계수가 정한다</text>
+
+  <text x="60" y="234" font-size="16" font-weight="600" fill="#e8e8e8">각 항이 값에 기여하는 방향</text>
+
+  <line x1="90" y1="248" x2="90" y2="374" stroke="#888" stroke-width="1.5"/>
+  <line x1="90" y1="316" x2="800" y2="316" stroke="#888" stroke-width="1.5"/>
+  <text x="76" y="272" font-size="14" fill="#888" text-anchor="end">+</text>
+  <text x="76" y="360" font-size="14" fill="#888" text-anchor="end">−</text>
+
+  <rect x="180" y="252" width="150" height="64" fill="#55c555" fill-opacity="0.35" stroke="#55c555" stroke-width="1.5"/>
+  <text x="255" y="290" font-size="15" font-weight="600" fill="#e8e8e8" text-anchor="middle">3y₁² ≥ 0</text>
+  <text x="255" y="340" font-size="13" fill="#55c555" text-anchor="middle">λ₁ = 3 이 양수라 늘 올린다</text>
+
+  <rect x="520" y="316" width="150" height="52" fill="#e05555" fill-opacity="0.35" stroke="#e05555" stroke-width="1.5"/>
+  <text x="595" y="348" font-size="15" font-weight="600" fill="#e8e8e8" text-anchor="middle">−y₂² ≤ 0</text>
+  <text x="595" y="296" font-size="13" fill="#e05555" text-anchor="middle">λ₂ = −1 이 음수라 늘 내린다</text>
+
+  <rect x="60" y="390" width="760" height="32" rx="8" fill="#101820" stroke="#7ec8e3" stroke-width="1.5"/>
+  <text x="82" y="411" font-size="14" fill="#e8e8e8">두 부호가 섞여 있으므로 방향에 따라 q의 부호가 갈린다 — 이것이 부정부호, 곧 안장이다.</text>
+</svg>

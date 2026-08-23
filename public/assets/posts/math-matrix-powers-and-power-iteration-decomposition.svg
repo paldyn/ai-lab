@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="420" viewBox="0 0 880 420" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <rect x="0" y="0" width="880" height="420" rx="12" fill="#0a0a0a"/>
+
+  <text x="60" y="46" font-size="22" font-weight="700" fill="#e8e8e8">반복 곱셈은 고유방향마다 따로 진행된다</text>
+  <text x="60" y="70" font-size="13" fill="#888">x = c₁v₁ + c₂v₂ 로 쪼개 두면 A를 k번 먹인 결과는 항마다 λ의 k제곱이 붙은 것뿐이다</text>
+
+  <defs>
+    <marker id="mp-a1" viewBox="0 0 14 14" refX="12" refY="7"
+            markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#7ec8e3"/>
+    </marker>
+    <marker id="mp-a2" viewBox="0 0 14 14" refX="12" refY="7"
+            markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#7777cc"/>
+    </marker>
+    <marker id="mp-a3" viewBox="0 0 14 14" refX="12" refY="7"
+            markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#888"/>
+    </marker>
+  </defs>
+
+  <text x="60" y="112" font-size="16" font-weight="600" fill="#e8e8e8">|λ₁| &gt; 1 인 방향 — 커진다</text>
+  <line x1="60" y1="150" x2="180" y2="150" stroke="#7ec8e3" stroke-width="4" marker-end="url(#mp-a1)"/>
+  <text x="60" y="176" font-size="13" fill="#9aa4b8">c₁v₁</text>
+
+  <line x1="300" y1="150" x2="420" y2="150" stroke="#7ec8e3" stroke-width="4" marker-end="url(#mp-a1)"/>
+  <text x="300" y="176" font-size="13" fill="#9aa4b8">λ₁ c₁v₁</text>
+
+  <line x1="540" y1="150" x2="800" y2="150" stroke="#7ec8e3" stroke-width="4" marker-end="url(#mp-a1)"/>
+  <text x="540" y="176" font-size="13" fill="#9aa4b8">λ₁ᵏ c₁v₁ — 지수적으로 길어진다</text>
+
+  <text x="60" y="238" font-size="16" font-weight="600" fill="#e8e8e8">|λ₂| &lt; 1 인 방향 — 줄어든다</text>
+  <line x1="60" y1="276" x2="180" y2="276" stroke="#7777cc" stroke-width="4" marker-end="url(#mp-a2)"/>
+  <text x="60" y="302" font-size="13" fill="#9aa4b8">c₂v₂</text>
+
+  <line x1="300" y1="276" x2="360" y2="276" stroke="#7777cc" stroke-width="4" marker-end="url(#mp-a2)"/>
+  <text x="300" y="302" font-size="13" fill="#9aa4b8">λ₂ c₂v₂</text>
+
+  <line x1="540" y1="276" x2="556" y2="276" stroke="#7777cc" stroke-width="4" marker-end="url(#mp-a2)"/>
+  <text x="540" y="302" font-size="13" fill="#9aa4b8">λ₂ᵏ c₂v₂ — 지수적으로 짧아진다</text>
+
+  <line x1="200" y1="212" x2="280" y2="212" stroke="#888" stroke-width="2" marker-end="url(#mp-a3)"/>
+  <text x="204" y="198" font-size="13" fill="#888">A 한 번</text>
+  <line x1="440" y1="212" x2="520" y2="212" stroke="#888" stroke-width="2" marker-end="url(#mp-a3)"/>
+  <text x="444" y="198" font-size="13" fill="#888">A 를 k번까지</text>
+
+  <rect x="60" y="336" width="760" height="52" rx="8" fill="#101820" stroke="#7ec8e3" stroke-width="1.5"/>
+  <text x="82" y="360" font-size="14" fill="#e8e8e8">k가 커질수록 두 막대의 길이 차가 벌어진다. 합쳐 놓으면 위쪽 방향만 남으므로,</text>
+  <text x="82" y="379" font-size="14" fill="#e8e8e8">Aᵏx 의 방향은 결국 v₁ 이 된다 — 이것이 &quot;가장 큰 고윳값이 지배한다&quot;는 말이다.</text>
+</svg>

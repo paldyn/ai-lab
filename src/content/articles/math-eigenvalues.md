@@ -185,3 +185,5 @@ print(np.linalg.eigvals(R))                   # [0.+1.j 0.-1.j]  실수가 아�
 읽어주셔서 감사합니다. 😊
 
 **지난 글:** [회전·전단·스케일: 2×2 행렬로 보는 선형변환의 전부](/articles/math-rotation-and-2d-linear-maps)
+
+**다음 글:** [행렬 거듭제곱과 거듭제곱법: 스펙트럼 반지름이 정하는 것](/articles/math-matrix-powers-and-power-iteration)

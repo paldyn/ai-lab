@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="440" viewBox="0 0 880 440" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <rect x="0" y="0" width="880" height="440" rx="12" fill="#0a0a0a"/>
+
+  <text x="60" y="46" font-size="22" font-weight="700" fill="#e8e8e8">스크리 플롯 — 무릎이 구조와 잡음을 가른다</text>
+  <text x="60" y="70" font-size="13" fill="#888">200×16 행렬의 특잇값 16개. 막대가 크기, 보라 곡선이 누적 에너지다.</text>
+
+  <line x1="90" y1="330" x2="800" y2="330" stroke="#888" stroke-width="1.5"/>
+  <line x1="90" y1="352" x2="90" y2="110" stroke="#888" stroke-width="1.5"/>
+  <line x1="120" y1="120" x2="790" y2="120" stroke="#444" stroke-width="1"/>
+  <line x1="120" y1="225" x2="790" y2="225" stroke="#444" stroke-width="1"/>
+
+  <text x="812" y="125" font-size="13" fill="#7777cc" text-anchor="end">100%</text>
+  <text x="812" y="230" font-size="13" fill="#7777cc" text-anchor="end">50%</text>
+  <text x="80" y="125" font-size="13" fill="#888" text-anchor="end">80</text>
+  <text x="80" y="230" font-size="13" fill="#888" text-anchor="end">40</text>
+  <text x="80" y="335" font-size="13" fill="#888" text-anchor="end">0</text>
+
+  <rect x="100.0" y="120.0" width="28" height="210.0" fill="#7ec8e3" fill-opacity="0.7" stroke="#7ec8e3" stroke-width="1"/>
+  <rect x="142.5" y="166.0" width="28" height="164.0" fill="#7ec8e3" fill-opacity="0.7" stroke="#7ec8e3" stroke-width="1"/>
+  <rect x="185.0" y="183.1" width="28" height="146.9" fill="#7ec8e3" fill-opacity="0.7" stroke="#7ec8e3" stroke-width="1"/>
+  <rect x="227.5" y="208.1" width="28" height="121.9" fill="#7ec8e3" fill-opacity="0.7" stroke="#7ec8e3" stroke-width="1"/>
+  <rect x="270.0" y="227.7" width="28" height="102.3" fill="#7ec8e3" fill-opacity="0.7" stroke="#7ec8e3" stroke-width="1"/>
+  <rect x="312.5" y="326.0" width="28" height="4.0" fill="#666666" fill-opacity="0.8" stroke="#666666" stroke-width="1"/>
+  <rect x="355.0" y="326.0" width="28" height="4.0" fill="#666666" fill-opacity="0.8" stroke="#666666" stroke-width="1"/>
+  <rect x="397.5" y="326.0" width="28" height="4.0" fill="#666666" fill-opacity="0.8" stroke="#666666" stroke-width="1"/>
+  <rect x="440.0" y="326.0" width="28" height="4.0" fill="#666666" fill-opacity="0.8" stroke="#666666" stroke-width="1"/>
+  <rect x="482.5" y="326.0" width="28" height="4.0" fill="#666666" fill-opacity="0.8" stroke="#666666" stroke-width="1"/>
+  <rect x="525.0" y="326.0" width="28" height="4.0" fill="#666666" fill-opacity="0.8" stroke="#666666" stroke-width="1"/>
+  <rect x="567.5" y="326.0" width="28" height="4.0" fill="#666666" fill-opacity="0.8" stroke="#666666" stroke-width="1"/>
+  <rect x="610.0" y="326.0" width="28" height="4.0" fill="#666666" fill-opacity="0.8" stroke="#666666" stroke-width="1"/>
+  <rect x="652.5" y="326.0" width="28" height="4.0" fill="#666666" fill-opacity="0.8" stroke="#666666" stroke-width="1"/>
+  <rect x="695.0" y="326.0" width="28" height="4.0" fill="#666666" fill-opacity="0.8" stroke="#666666" stroke-width="1"/>
+  <rect x="737.5" y="326.0" width="28" height="4.0" fill="#666666" fill-opacity="0.8" stroke="#666666" stroke-width="1"/>
+
+  <polyline fill="none" stroke="#7777cc" stroke-width="2.5"
+            points="114.0,251.5 156.5,203.6 199.0,165.2 241.5,138.7 284.0,120.1 326.5,120.1 369.0,120.0 411.5,120.0 454.0,120.0 496.5,120.0 539.0,120.0 581.5,120.0 624.0,120.0 666.5,120.0 709.0,120.0 751.5,120.0"/>
+  <text x="590" y="142" font-size="13" font-weight="600" fill="#7777cc">누적 에너지 — 5개로 99.97%</text>
+
+  <line x1="298" y1="352" x2="298" y2="106" stroke="#e05555" stroke-width="2" stroke-dasharray="5,3"/>
+  <text x="288" y="102" font-size="14" font-weight="600" fill="#e05555" text-anchor="end">무릎 — 여기서 40배 떨어진다</text>
+
+  <text x="114" y="352" font-size="13" fill="#888" text-anchor="middle">1</text>
+  <text x="284" y="352" font-size="13" fill="#888" text-anchor="middle">5</text>
+  <text x="326" y="352" font-size="13" fill="#888" text-anchor="middle">6</text>
+  <text x="751" y="352" font-size="13" fill="#888" text-anchor="middle">16</text>
+
+  <rect x="60" y="380" width="760" height="46" rx="8" fill="#101820" stroke="#7ec8e3" stroke-width="1.5"/>
+  <text x="82" y="402" font-size="14" fill="#e8e8e8">0이 아닌 개수를 세면 16이지만, 뒤의 열하나는 0.6~0.9로 앞의 40분의 1이다.</text>
+  <text x="82" y="420" font-size="14" fill="#e8e8e8">이 행렬이 실제로 쓰는 차원은 5다 — 그것이 수치 랭크다.</text>
+</svg>

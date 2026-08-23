@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="430" viewBox="0 0 880 430" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <rect x="0" y="0" width="880" height="430" rx="12" fill="#0a0a0a"/>
+
+  <text x="60" y="46" font-size="22" font-weight="700" fill="#e8e8e8">ΔW = BA — 넓은 판 하나를 좁은 판 둘로 바꾼다</text>
+  <text x="60" y="70" font-size="13" fill="#888">d = k = 4096, r = 8 · 실제 비율대로 그리면 B와 A가 선으로 보이므로 두께를 부풀렸다</text>
+
+  <text x="60" y="112" font-size="15" font-weight="600" fill="#e8e8e8">전체 파인튜닝</text>
+  <rect x="60" y="128" width="180" height="180" rx="6" fill="#e05555" fill-opacity="0.30" stroke="#e05555" stroke-width="2"/>
+  <text x="150" y="212" font-size="16" font-weight="600" fill="#e8e8e8" text-anchor="middle">ΔW</text>
+  <text x="150" y="236" font-size="13" fill="#9aa4b8" text-anchor="middle">4096 × 4096</text>
+  <text x="150" y="332" font-size="14" font-weight="600" fill="#e05555" text-anchor="middle">16,777,216 개</text>
+  <text x="150" y="354" font-size="13" fill="#9aa4b8" text-anchor="middle">100%</text>
+
+  <text x="300" y="212" font-size="20" fill="#888" text-anchor="middle">=</text>
+
+  <text x="352" y="112" font-size="15" font-weight="600" fill="#e8e8e8">LoRA</text>
+  <rect x="352" y="128" width="14" height="180" rx="3" fill="#55c555" fill-opacity="0.45" stroke="#55c555" stroke-width="2"/>
+  <text x="359" y="332" font-size="14" font-weight="600" fill="#55c555" text-anchor="middle">B</text>
+  <text x="359" y="354" font-size="13" fill="#9aa4b8" text-anchor="middle">4096 × 8</text>
+
+  <text x="392" y="212" font-size="20" fill="#888" text-anchor="middle">×</text>
+
+  <rect x="420" y="128" width="180" height="14" rx="3" fill="#55c555" fill-opacity="0.45" stroke="#55c555" stroke-width="2"/>
+  <text x="510" y="170" font-size="14" font-weight="600" fill="#55c555" text-anchor="middle">A</text>
+  <text x="510" y="192" font-size="13" fill="#9aa4b8" text-anchor="middle">8 × 4096</text>
+  <text x="510" y="332" font-size="14" font-weight="600" fill="#55c555" text-anchor="middle">합쳐서 65,536 개</text>
+  <text x="510" y="354" font-size="13" fill="#9aa4b8" text-anchor="middle">0.39%</text>
+
+  <rect x="640" y="128" width="180" height="180" rx="8" fill="#000000" stroke="#3a4a6e" stroke-width="1"/>
+  <text x="662" y="154" font-size="14" font-weight="600" fill="#e8e8e8">r 을 바꾸면</text>
+  <text x="662" y="182" font-size="13" fill="#ffffff" xml:space="preserve">r =  4    32,768   0.20%</text>
+  <text x="662" y="206" font-size="13" fill="#ffffff" xml:space="preserve">r =  8    65,536   0.39%</text>
+  <text x="662" y="230" font-size="13" fill="#ffffff" xml:space="preserve">r = 16   131,072   0.78%</text>
+  <text x="662" y="254" font-size="13" fill="#ffffff" xml:space="preserve">r = 64   524,288   3.13%</text>
+  <text x="662" y="284" font-size="13" fill="#9aa4b8">r · (d + k) 로 선형이다</text>
+
+  <rect x="60" y="376" width="760" height="34" rx="8" fill="#101820" stroke="#7ec8e3" stroke-width="1.5"/>
+  <text x="82" y="398" font-size="14" fill="#e8e8e8">A의 랭크가 최대 r 이므로 곱 BA의 랭크도 r 이하다 — 랭크 1 층을 r 개까지만 쓰겠다는 선언이다.</text>
+</svg>

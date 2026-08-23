@@ -1,0 +1,76 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="460" viewBox="0 0 880 460" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <rect x="0" y="0" width="880" height="460" rx="12" fill="#0a0a0a"/>
+
+  <text x="60" y="46" font-size="22" font-weight="700" fill="#e8e8e8">곱하고 정규화하기를 반복하면 최대 고유방향에 붙는다</text>
+  <text x="60" y="70" font-size="13" fill="#888">A = 열 (2,1),(1,2) · 출발 (1,0) · 매번 첫 성분으로 나눠 x = 1 선 위에 세운다</text>
+
+  <defs>
+    <marker id="pi-blue" viewBox="0 0 14 14" refX="12" refY="7"
+            markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#7ec8e3"/>
+    </marker>
+    <marker id="pi-gray" viewBox="0 0 14 14" refX="12" refY="7"
+            markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#666"/>
+    </marker>
+  </defs>
+
+  <line x1="100" y1="380" x2="500" y2="380" stroke="#888" stroke-width="1.5"/>
+  <line x1="140" y1="410" x2="140" y2="106" stroke="#888" stroke-width="1.5"/>
+  <text x="496" y="402" font-size="13" fill="#888">x</text>
+  <text x="152" y="116" font-size="13" fill="#888">y</text>
+  <line x1="400" y1="375" x2="400" y2="385" stroke="#888" stroke-width="1.5"/>
+  <text x="400" y="402" font-size="13" fill="#888" text-anchor="middle">1</text>
+  <line x1="135" y1="120" x2="145" y2="120" stroke="#888" stroke-width="1.5"/>
+  <text x="128" y="125" font-size="13" fill="#888" text-anchor="end">1</text>
+
+  <line x1="400" y1="392" x2="400" y2="110" stroke="#444" stroke-width="1" stroke-dasharray="4,4"/>
+
+  <line x1="140" y1="380" x2="428" y2="92" stroke="#55c555" stroke-width="2" stroke-dasharray="5,3"/>
+  <text x="440" y="96" font-size="13" font-weight="600" fill="#55c555">v₁ = (1,1) 방향</text>
+
+  <line x1="140" y1="380" x2="392" y2="380" stroke="#666" stroke-width="2.5" marker-end="url(#pi-gray)"/>
+  <line x1="140" y1="380" x2="400" y2="250" stroke="#7ec8e3" stroke-width="2.5" marker-end="url(#pi-blue)"/>
+  <line x1="140" y1="380" x2="400" y2="172" stroke="#7ec8e3" stroke-width="2.5" marker-end="url(#pi-blue)"/>
+  <line x1="140" y1="380" x2="400" y2="139" stroke="#7ec8e3" stroke-width="2.5" marker-end="url(#pi-blue)"/>
+  <line x1="140" y1="380" x2="400" y2="126" stroke="#7ec8e3" stroke-width="2.5" marker-end="url(#pi-blue)"/>
+
+  <text x="300" y="366" font-size="13" fill="#9aa4b8">k = 0</text>
+  <text x="418" y="254" font-size="13" fill="#9aa4b8">k = 1</text>
+  <text x="418" y="176" font-size="13" fill="#9aa4b8">k = 2</text>
+  <text x="418" y="140" font-size="13" fill="#9aa4b8">k = 3</text>
+  <text x="418" y="124" font-size="13" fill="#9aa4b8">k = 4</text>
+
+  <rect x="560" y="106" width="270" height="200" rx="8" fill="#000000" stroke="#3a4a6e" stroke-width="1"/>
+  <text x="584" y="134" font-size="14" font-weight="600" fill="#e8e8e8">k</text>
+  <text x="622" y="134" font-size="14" font-weight="600" fill="#e8e8e8">xₖ</text>
+  <text x="736" y="134" font-size="14" font-weight="600" fill="#e8e8e8">나눈 값</text>
+
+  <text x="584" y="162" font-size="13" fill="#9aa4b8">0</text>
+  <text x="622" y="162" font-size="13" fill="#9aa4b8">(1, 0)</text>
+  <text x="736" y="162" font-size="13" fill="#9aa4b8">—</text>
+
+  <text x="584" y="188" font-size="13" fill="#ffffff">1</text>
+  <text x="622" y="188" font-size="13" fill="#ffffff">(1, 0.5)</text>
+  <text x="736" y="188" font-size="13" fill="#ffffff">2</text>
+
+  <text x="584" y="214" font-size="13" fill="#ffffff">2</text>
+  <text x="622" y="214" font-size="13" fill="#ffffff">(1, 0.8)</text>
+  <text x="736" y="214" font-size="13" fill="#ffffff">2.5</text>
+
+  <text x="584" y="240" font-size="13" fill="#ffffff">3</text>
+  <text x="622" y="240" font-size="13" fill="#ffffff">(1, 0.9286)</text>
+  <text x="736" y="240" font-size="13" fill="#ffffff">2.8</text>
+
+  <text x="584" y="266" font-size="13" fill="#ffffff">4</text>
+  <text x="622" y="266" font-size="13" fill="#ffffff">(1, 0.9756)</text>
+  <text x="736" y="266" font-size="13" fill="#ffffff">2.9286</text>
+
+  <line x1="576" y1="280" x2="814" y2="280" stroke="#3a4a6e" stroke-width="1"/>
+  <text x="584" y="298" font-size="13" font-weight="600" fill="#55c555">→</text>
+  <text x="622" y="298" font-size="13" font-weight="600" fill="#55c555">(1, 1)</text>
+  <text x="736" y="298" font-size="13" font-weight="600" fill="#55c555">3</text>
+
+  <rect x="60" y="416" width="760" height="34" rx="8" fill="#101820" stroke="#7ec8e3" stroke-width="1.5"/>
+  <text x="82" y="438" font-size="14" fill="#e8e8e8">화살표 끝이 초록 직선으로 붙고, 나눈 값은 3으로 붙는다. 고윳값 방정식은 세운 적이 없다.</text>
+</svg>

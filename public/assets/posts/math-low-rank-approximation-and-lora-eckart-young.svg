@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="420" viewBox="0 0 880 420" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <rect x="0" y="0" width="880" height="420" rx="12" fill="#0a0a0a"/>
+
+  <text x="60" y="46" font-size="22" font-weight="700" fill="#e8e8e8">랭크 k 이하인 것 중에서 가장 가까운 것이 잘라 낸 SVD다</text>
+  <text x="60" y="70" font-size="13" fill="#888">후보를 비교할 필요가 없다. 특잇값 분해 한 번이 답을 준다.</text>
+
+  <defs>
+    <marker id="ey-arr" viewBox="0 0 14 14" refX="12" refY="7"
+            markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#55c555"/>
+    </marker>
+    <marker id="ey-gray" viewBox="0 0 14 14" refX="12" refY="7"
+            markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#888"/>
+    </marker>
+  </defs>
+
+  <ellipse cx="400" cy="290" rx="290" ry="76" fill="#7777cc" fill-opacity="0.14" stroke="#7777cc" stroke-width="2"/>
+  <text x="400" y="382" font-size="15" font-weight="600" fill="#7777cc" text-anchor="middle">랭크가 k 이하인 행렬들</text>
+
+  <circle cx="400" cy="122" r="7" fill="#e8e8e8"/>
+  <text x="400" y="104" font-size="16" font-weight="600" fill="#e8e8e8" text-anchor="middle">A</text>
+
+  <circle cx="400" cy="256" r="7" fill="#55c555"/>
+  <line x1="400" y1="132" x2="400" y2="246" stroke="#55c555" stroke-width="3" marker-end="url(#ey-arr)"/>
+  <text x="412" y="222" font-size="13" font-weight="600" fill="#55c555">‖A − Aₖ‖_F =</text>
+  <text x="412" y="242" font-size="13" font-weight="600" fill="#55c555">√(σ²ₖ₊₁ + ⋯ + σ²ᵣ)</text>
+  <text x="400" y="282" font-size="15" font-weight="600" fill="#55c555" text-anchor="middle">Aₖ</text>
+
+  <circle cx="196" cy="300" r="6" fill="#9aa4b8"/>
+  <line x1="394" y1="130" x2="202" y2="292" stroke="#888" stroke-width="2" stroke-dasharray="5,3" marker-end="url(#ey-gray)"/>
+  <text x="182" y="322" font-size="13" fill="#9aa4b8" text-anchor="middle">다른 후보 X</text>
+
+  <circle cx="660" cy="306" r="6" fill="#9aa4b8"/>
+  <line x1="406" y1="130" x2="654" y2="298" stroke="#888" stroke-width="2" stroke-dasharray="5,3" marker-end="url(#ey-gray)"/>
+  <text x="676" y="330" font-size="13" fill="#9aa4b8" text-anchor="middle">또 다른 후보</text>
+
+  <rect x="60" y="140" width="230" height="66" rx="8" fill="#000000" stroke="#3a4a6e" stroke-width="1"/>
+  <text x="82" y="164" font-size="13" fill="#9aa4b8">두 자로 재도 답이 같다 —</text>
+  <text x="82" y="184" font-size="13" fill="#9aa4b8">프로베니우스 노름에서도,</text>
+  <text x="82" y="198" font-size="13" fill="#9aa4b8">스펙트럼 노름에서도.</text>
+
+  <rect x="590" y="140" width="230" height="66" rx="8" fill="#000000" stroke="#3a4a6e" stroke-width="1"/>
+  <text x="612" y="164" font-size="13" fill="#9aa4b8">최적화를 돌릴 필요가 없다.</text>
+  <text x="612" y="184" font-size="13" fill="#9aa4b8">특잇값을 큰 것부터 k개</text>
+  <text x="612" y="198" font-size="13" fill="#9aa4b8">남기면 그것이 최적이다.</text>
+</svg>
