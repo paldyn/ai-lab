@@ -325,3 +325,5 @@ PPL 순위와 BLEU 순위가 세 계단 넘게 어긋난 행
 읽어주셔서 감사합니다. 😊
 
 **지난 글:** [HNSW를 5,183 벡터로 재현했다](/articles/paper-hnsw-graph-structure)
+
+**다음 글:** [Chinchilla 정독: 20토큰/파라미터는 Table 3에서 나왔다](/articles/paper-chinchilla-compute-optimal)
