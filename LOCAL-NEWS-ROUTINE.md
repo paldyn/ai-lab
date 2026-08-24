@@ -16,8 +16,11 @@
 | 경로 | 클라우드 | 이 맥 |
 | --- | --- | --- |
 | `openai.com/index/<slug>/` | 403 (Cloudflare) | 403 |
-| `web.archive.org/web/2026/…` | 연결 리셋 (프록시 정책) | 200 |
-| `r.jina.ai/…` | `CONNECT tunnel failed, 403` | 200 |
+| `web.archive.org/web/2026/…` | 연결 리셋 (프록시 정책) | **200 — 지금 쓰는 경로** |
+| `r.jina.ai/…` | `CONNECT tunnel failed, 403` | 403 (2026-08-24부터) |
+
+`r.jina.ai`는 2026-08-24에 이 맥에서도 403이 되었다. 웨이백 하나만 남았으므로
+**그것도 막히면 이 루틴은 아무것도 못 채운다** — 그때는 건너뛰고 보고만 한다.
 
 허용 목록에 `archive.org`를 넣으니 루트는 열렸지만 `web.archive.org`는 별개 호스트라
 여전히 막힌다. 그래서 **본문 읽기는 이 맥이 맡는다.**
@@ -42,9 +45,10 @@ from datetime import datetime, timedelta, timezone
 
 src = open('src/data/news.ts', encoding='utf-8').read()
 have = set(re.findall(r"^    id: '([^']+)'", src, re.M))
-last = re.search(r"globalNewsUpdatedAt = '(\d{4}-\d{2}-\d{2})'", src).group(1)
-floor = max(datetime.fromisoformat(last + 'T00:00:00+00:00'),
-            datetime.now(timezone.utc) - timedelta(days=14))
+# 체크포인트를 바닥으로 쓰지 않는다. 이 루틴이 채울 것은 정의상 체크포인트보다 **뒤에**
+# 있다 — 클라우드가 못 읽고 지나가면서 그 값을 앞으로 밀어 놓기 때문이다. RSS가 들고
+# 있는 만큼(14일)을 통째로 훑고, 이미 실린 것은 아래 id 대조가 거른다.
+floor = datetime.now(timezone.utc) - timedelta(days=14)
 
 for it in ET.parse('/tmp/localnews/openai.xml').getroot().findall('.//item'):
     dt = parsedate_to_datetime(it.findtext('pubDate'))
@@ -68,6 +72,19 @@ EOF
 **링크는 RSS의 `<link>`를 그대로 쓴다.** 슬러그로 주소를 조립하지 마라 — 고객 사례는
 `/index/<회사>/<제품>` 꼴이라 `/index/<제품>`은 404다. 2026-08-20에 사람이 그렇게 틀렸다.
 
+**웨이백을 먼저 쓴다.**
+
+```bash
+curl -sL --compressed -A 'Mozilla/5.0' -m 90 \
+  "https://web.archive.org/web/2026/<원문 URL 끝에 슬래시>" -o /tmp/localnews/<id>.html
+```
+
+`<title>`이 기사 제목이고 본문이 8,000자 넘게 나오면 제대로 받은 것이다. 스냅숏이
+없으면 웨이백 자체의 안내 페이지가 200으로 오므로 **길이와 제목을 반드시 확인한다.**
+
+안 되면 프록시를 시도한다. **다만 2026-08-24 기준 이 맥에서도 403이라 기대하지 마라** —
+예전에는 여기서만 200이었는데 그쪽이 막혔다. 살아나면 다시 첫 경로가 된다.
+
 ```bash
 curl -sL --compressed -m 60 "https://r.jina.ai/<RSS의 link 전체>/" -o /tmp/localnews/<id>.md
 ```
@@ -75,13 +92,6 @@ curl -sL --compressed -m 60 "https://r.jina.ai/<RSS의 link 전체>/" -o /tmp/lo
 받은 파일 머리의 `Title:` `URL Source:` `Markdown Content:` 세 줄과 맨 아래 사이트
 네비게이션은 원문이 아니다. 사실로 쓰지 마라. 첫 줄에 `returned error 404`가 있으면
 주소가 틀린 것이니 RSS 링크를 다시 확인한다.
-
-프록시가 막히면 웨이백을 쓴다.
-
-```bash
-curl -sL --compressed -A 'Mozilla/5.0' -m 60 \
-  "https://web.archive.org/web/2026/<원문 URL 끝에 슬래시>" -o /tmp/localnews/<id>.html
-```
 
 둘 다 실패하면 그 항목은 건너뛰고 보고에 URL과 사유를 적는다. **지어내지 마라.**
 
