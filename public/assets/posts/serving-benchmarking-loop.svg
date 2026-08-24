@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="404" viewBox="0 0 880 404" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <defs>
+    <marker id="lparr" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#888"/>
+    </marker>
+    <marker id="lpred" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#e05555"/>
+    </marker>
+  </defs>
+  <rect x="0" y="0" width="880" height="404" rx="12" fill="#0a0a0a"/>
+  <text x="60" y="46" font-size="22" font-weight="700" fill="#e8e8e8">부하 생성기가 요청을 내보내는 두 가지 방식</text>
+  <text x="60" y="72" font-size="13" fill="#888">서버가 느려졌을 때 두 방식이 서로 다른 것을 잰다.</text>
+
+  <text x="60" y="112" font-size="16" font-weight="600" fill="#c58a55">① 닫힌 루프 — 응답을 받아야 다음 요청</text>
+  <rect x="60" y="140" width="130" height="56" rx="8" fill="#141414" stroke="#7777cc" stroke-width="1.5"/>
+  <text x="125" y="173" font-size="13" fill="#e8e8e8" text-anchor="middle">가상 사용자 10</text>
+  <line x1="192" y1="168" x2="278" y2="168" stroke="#888" stroke-width="2" marker-end="url(#lparr)"/>
+  <text x="235" y="154" font-size="12" fill="#888" text-anchor="middle">요청</text>
+  <rect x="280" y="140" width="130" height="56" rx="8" fill="#141414" stroke="#888" stroke-width="1.5"/>
+  <text x="345" y="173" font-size="13" fill="#e8e8e8" text-anchor="middle">서버</text>
+  <path d="M 345 196 C 345 260, 125 260, 125 202" stroke="#888" stroke-width="2" stroke-dasharray="4,4" fill="none" marker-end="url(#lparr)"/>
+  <text x="235" y="292" font-size="12" fill="#888" text-anchor="middle">응답이 와야 다음 요청이 나간다</text>
+
+  <text x="470" y="112" font-size="16" font-weight="600" fill="#7ec8e3">② 열린 루프 — 시계에 맞춰 계속 보낸다</text>
+  <rect x="470" y="140" width="130" height="56" rx="8" fill="#141414" stroke="#7777cc" stroke-width="1.5"/>
+  <text x="535" y="166" font-size="13" fill="#e8e8e8" text-anchor="middle">초당 20건</text>
+  <text x="535" y="184" font-size="11" fill="#888" text-anchor="middle">50ms마다 하나</text>
+  <line x1="602" y1="168" x2="688" y2="168" stroke="#888" stroke-width="2" marker-end="url(#lparr)"/>
+  <text x="645" y="154" font-size="12" fill="#888" text-anchor="middle">요청</text>
+  <rect x="690" y="140" width="130" height="56" rx="8" fill="#141414" stroke="#888" stroke-width="1.5"/>
+  <text x="755" y="173" font-size="13" fill="#e8e8e8" text-anchor="middle">서버</text>
+  <rect x="690" y="212" width="130" height="20" rx="3" fill="#3a1f1f" stroke="#e05555" stroke-width="1.5"/>
+  <text x="755" y="227" font-size="11" fill="#e8e8e8" text-anchor="middle">대기열</text>
+  <rect x="690" y="236" width="130" height="20" rx="3" fill="#3a1f1f" stroke="#e05555" stroke-width="1.5"/>
+  <rect x="690" y="260" width="130" height="20" rx="3" fill="#3a1f1f" stroke="#e05555" stroke-width="1.5"/>
+  <line x1="755" y1="196" x2="755" y2="208" stroke="#e05555" stroke-width="2" marker-end="url(#lpred)"/>
+  <text x="645" y="292" font-size="12" fill="#888" text-anchor="middle">서버가 느려지면 밀린 것이 쌓인다</text>
+
+  <text x="60" y="342" font-size="13" fill="#e05555">닫힌 루프는 서버가 느려지면 부하도 같이 줄어, 서버가 감당 못 하는 구간을 아예 재지 않는다.</text>
+  <text x="60" y="368" font-size="12" fill="#888">실제 트래픽은 우리 서버 사정을 봐주지 않으므로 용량을 재려면 열린 루프여야 하고, 지연은 「보내려던 시각」부터 세야 한다.</text>
+</svg>

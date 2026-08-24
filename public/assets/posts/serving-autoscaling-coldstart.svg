@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="404" viewBox="0 0 880 404" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <rect x="0" y="0" width="880" height="404" rx="12" fill="#0a0a0a"/>
+  <text x="60" y="46" font-size="22" font-weight="700" fill="#e8e8e8">GPU 복제본 하나가 늘어나기까지 걸리는 7분</text>
+  <text x="60" y="72" font-size="13" fill="#888">70B 모델을 A100 두 장에 올리는 흔한 구성. 가로는 시간이고 막대 길이가 곧 걸린 시간이다.</text>
+
+  <line x1="130" y1="118" x2="820" y2="118" stroke="#333" stroke-width="1"/>
+  <text x="130" y="110" font-size="11" fill="#666" text-anchor="middle">0분</text>
+  <text x="229" y="110" font-size="11" fill="#666" text-anchor="middle">1분</text>
+  <text x="426" y="110" font-size="11" fill="#666" text-anchor="middle">3분</text>
+  <text x="623" y="110" font-size="11" fill="#666" text-anchor="middle">5분</text>
+  <text x="820" y="110" font-size="11" fill="#666" text-anchor="middle">7분</text>
+
+  <rect x="130" y="132" width="98" height="44" rx="4" fill="#3a1f1f" stroke="#e05555" stroke-width="1.5"/>
+  <text x="179" y="160" font-size="14" font-weight="600" fill="#e8e8e8" text-anchor="middle">①</text>
+  <rect x="228" y="132" width="49" height="44" rx="4" fill="#3a2a1a" stroke="#c58a55" stroke-width="1.5"/>
+  <text x="252" y="160" font-size="14" font-weight="600" fill="#e8e8e8" text-anchor="middle">②</text>
+  <rect x="277" y="132" width="197" height="44" rx="4" fill="#22401f" stroke="#55c555" stroke-width="1.5"/>
+  <text x="375" y="160" font-size="14" font-weight="600" fill="#e8e8e8" text-anchor="middle">③</text>
+  <rect x="474" y="132" width="148" height="44" rx="4" fill="#16303d" stroke="#7ec8e3" stroke-width="1.5"/>
+  <text x="548" y="160" font-size="14" font-weight="600" fill="#e8e8e8" text-anchor="middle">④</text>
+  <rect x="622" y="132" width="115" height="44" rx="4" fill="#241f3d" stroke="#7777cc" stroke-width="1.5"/>
+  <text x="679" y="160" font-size="14" font-weight="600" fill="#e8e8e8" text-anchor="middle">⑤</text>
+  <rect x="737" y="132" width="83" height="44" rx="4" fill="#2a3320" stroke="#b5cea8" stroke-width="1.5"/>
+  <text x="778" y="160" font-size="14" font-weight="600" fill="#e8e8e8" text-anchor="middle">⑥</text>
+
+  <rect x="60" y="216" width="12" height="12" rx="3" fill="#3a1f1f" stroke="#e05555" stroke-width="1.5"/>
+  <text x="82" y="227" font-size="13" fill="#e8e8e8">① 지표가 임계를 넘기까지 · 60초</text>
+  <rect x="60" y="248" width="12" height="12" rx="3" fill="#3a2a1a" stroke="#c58a55" stroke-width="1.5"/>
+  <text x="82" y="259" font-size="13" fill="#e8e8e8">② 스케일러의 판단과 쿨다운 · 30초</text>
+  <rect x="60" y="280" width="12" height="12" rx="3" fill="#22401f" stroke="#55c555" stroke-width="1.5"/>
+  <text x="82" y="291" font-size="13" fill="#e8e8e8">③ GPU 노드 확보와 부팅 · 120초</text>
+
+  <rect x="470" y="216" width="12" height="12" rx="3" fill="#16303d" stroke="#7ec8e3" stroke-width="1.5"/>
+  <text x="492" y="227" font-size="13" fill="#e8e8e8">④ 컨테이너 이미지 내려받기 · 90초</text>
+  <rect x="470" y="248" width="12" height="12" rx="3" fill="#241f3d" stroke="#7777cc" stroke-width="1.5"/>
+  <text x="492" y="259" font-size="13" fill="#e8e8e8">⑤ 가중치 140GB 적재 · 70초</text>
+  <rect x="470" y="280" width="12" height="12" rx="3" fill="#2a3320" stroke="#b5cea8" stroke-width="1.5"/>
+  <text x="492" y="291" font-size="13" fill="#e8e8e8">⑥ CUDA 그래프 캡처와 워밍업 · 50초</text>
+
+  <text x="60" y="340" font-size="13" fill="#e05555">줄일 수 있는 자리는 ③~⑥ 넷뿐이고, 셋은 미리 준비해 두는 것으로만 줄어든다.</text>
+  <text x="60" y="366" font-size="12" fill="#888">①과 ②는 스케일러 설정값이라 공짜로 줄지만, 너무 줄이면 잠깐의 요동에도 복제본이 늘었다 줄었다 한다.</text>
+</svg>

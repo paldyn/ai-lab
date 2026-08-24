@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="552" viewBox="0 0 880 552" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <defs>
+    <marker id="gsarr" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#888"/>
+    </marker>
+  </defs>
+  <rect x="0" y="0" width="880" height="552" rx="12" fill="#0a0a0a"/>
+  <text x="60" y="46" font-size="22" font-weight="700" fill="#e8e8e8">나눠 쓸지, 어떻게 나눌지를 정하는 순서</text>
+  <text x="60" y="72" font-size="13" fill="#888">위에서부터 묻고, 처음 「예」가 나온 자리에서 멈춘다.</text>
+
+  <rect x="60" y="108" width="380" height="56" rx="8" fill="#141414" stroke="#7777cc" stroke-width="1.5"/>
+  <text x="80" y="141" font-size="14" fill="#e8e8e8">모델 하나가 카드 한 장을 거의 다 쓰는가?</text>
+  <line x1="440" y1="136" x2="518" y2="136" stroke="#888" stroke-width="2" marker-end="url(#gsarr)"/>
+  <text x="479" y="122" font-size="12" fill="#888" text-anchor="middle">예</text>
+  <rect x="520" y="108" width="300" height="56" rx="8" fill="#141414" stroke="#888" stroke-width="1.5"/>
+  <text x="540" y="141" font-size="13" font-weight="600" fill="#e8e8e8">나누지 않는다 — 배칭으로 채운다</text>
+
+  <line x1="250" y1="164" x2="250" y2="214" stroke="#888" stroke-width="2" marker-end="url(#gsarr)"/>
+  <text x="266" y="194" font-size="12" fill="#888">아니오</text>
+
+  <rect x="60" y="216" width="380" height="56" rx="8" fill="#141414" stroke="#7777cc" stroke-width="1.5"/>
+  <text x="80" y="249" font-size="14" fill="#e8e8e8">서로 남인 팀·고객의 작업이 섞이는가?</text>
+  <line x1="440" y1="244" x2="518" y2="244" stroke="#888" stroke-width="2" marker-end="url(#gsarr)"/>
+  <text x="479" y="230" font-size="12" fill="#888" text-anchor="middle">예</text>
+  <rect x="520" y="216" width="300" height="56" rx="8" fill="#141414" stroke="#55c555" stroke-width="1.5"/>
+  <text x="540" y="249" font-size="13" font-weight="600" fill="#e8e8e8">MIG — 메모리와 성능을 갈라 준다</text>
+
+  <line x1="250" y1="272" x2="250" y2="322" stroke="#888" stroke-width="2" marker-end="url(#gsarr)"/>
+  <text x="266" y="302" font-size="12" fill="#888">아니오</text>
+
+  <rect x="60" y="324" width="380" height="56" rx="8" fill="#141414" stroke="#7777cc" stroke-width="1.5"/>
+  <text x="80" y="357" font-size="14" fill="#e8e8e8">지연 시간 약속이 걸린 서비스인가?</text>
+  <line x1="440" y1="352" x2="518" y2="352" stroke="#888" stroke-width="2" marker-end="url(#gsarr)"/>
+  <text x="479" y="338" font-size="12" fill="#888" text-anchor="middle">예</text>
+  <rect x="520" y="324" width="300" height="56" rx="8" fill="#141414" stroke="#55c555" stroke-width="1.5"/>
+  <text x="540" y="357" font-size="13" font-weight="600" fill="#e8e8e8">MIG 또는 카드 한 장을 통째로</text>
+
+  <line x1="250" y1="380" x2="250" y2="430" stroke="#888" stroke-width="2" marker-end="url(#gsarr)"/>
+  <text x="266" y="410" font-size="12" fill="#888">아니오</text>
+
+  <rect x="60" y="432" width="380" height="56" rx="8" fill="#141414" stroke="#7ec8e3" stroke-width="1.5"/>
+  <text x="80" y="465" font-size="14" font-weight="600" fill="#e8e8e8">MPS — 짧고 작은 일을 촘촘히 채운다</text>
+
+  <text x="60" y="524" font-size="12" fill="#888">시분할은 고르는 것이 아니라 아무 설정도 안 했을 때의 기본값이다. 위 셋 중 무엇도 안 했다면 지금 그것을 쓰고 있다.</text>
+</svg>

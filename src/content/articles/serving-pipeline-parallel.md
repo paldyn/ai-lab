@@ -132,3 +132,5 @@ vllm serve <아주-큰-모델> \
 읽어주셔서 감사합니다. 😊
 
 **지난 글:** [텐서 병렬 — 한 층을 카드 여러 장이 나눠 계산하기](/articles/serving-tensor-parallel)
+
+**다음 글:** [어댑터 열 개를 서버 한 대에 태우기](/articles/serving-multi-lora)

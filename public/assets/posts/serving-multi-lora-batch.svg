@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="448" viewBox="0 0 880 448" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <defs>
+    <marker id="mlarr" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#888"/>
+    </marker>
+  </defs>
+  <rect x="0" y="0" width="880" height="448" rx="12" fill="#0a0a0a"/>
+  <text x="60" y="46" font-size="22" font-weight="700" fill="#e8e8e8">한 배치에 어댑터가 섞여도 베이스 곱은 한 번이다</text>
+  <text x="60" y="72" font-size="13" fill="#888">걸음 하나에 들어온 요청 여섯 개가 서로 다른 어댑터를 부른 상황.</text>
+
+  <rect x="60" y="112" width="184" height="216" rx="8" fill="#141414" stroke="#444" stroke-width="1"/>
+  <text x="76" y="136" font-size="13" font-weight="600" fill="#e8e8e8">이번 걸음의 요청</text>
+
+  <rect x="76" y="148" width="152" height="24" rx="4" fill="#22401f" stroke="#55c555" stroke-width="1.5"/>
+  <text x="90" y="164" font-size="12" fill="#e8e8e8">요청 1 · 어댑터 A</text>
+  <rect x="76" y="176" width="152" height="24" rx="4" fill="#22401f" stroke="#55c555" stroke-width="1.5"/>
+  <text x="90" y="192" font-size="12" fill="#e8e8e8">요청 2 · 어댑터 A</text>
+  <rect x="76" y="204" width="152" height="24" rx="4" fill="#16303d" stroke="#7ec8e3" stroke-width="1.5"/>
+  <text x="90" y="220" font-size="12" fill="#e8e8e8">요청 3 · 어댑터 B</text>
+  <rect x="76" y="232" width="152" height="24" rx="4" fill="#241f3d" stroke="#7777cc" stroke-width="1.5"/>
+  <text x="90" y="248" font-size="12" fill="#e8e8e8">요청 4 · 어댑터 C</text>
+  <rect x="76" y="260" width="152" height="24" rx="4" fill="#241f3d" stroke="#7777cc" stroke-width="1.5"/>
+  <text x="90" y="276" font-size="12" fill="#e8e8e8">요청 5 · 어댑터 C</text>
+  <rect x="76" y="288" width="152" height="24" rx="4" fill="#16303d" stroke="#7ec8e3" stroke-width="1.5"/>
+  <text x="90" y="304" font-size="12" fill="#e8e8e8">요청 6 · 어댑터 B</text>
+
+  <line x1="244" y1="172" x2="316" y2="172" stroke="#888" stroke-width="2" marker-end="url(#mlarr)"/>
+  <line x1="244" y1="272" x2="316" y2="272" stroke="#888" stroke-width="2" marker-end="url(#mlarr)"/>
+
+  <rect x="318" y="132" width="256" height="80" rx="8" fill="#141414" stroke="#e05555" stroke-width="1.5"/>
+  <text x="334" y="156" font-size="13" font-weight="600" fill="#e05555">베이스 가중치 W</text>
+  <text x="334" y="176" font-size="12" fill="#888">여섯 개를 묶어 큰 행렬곱 한 번</text>
+  <text x="334" y="196" font-size="12" fill="#888">어느 어댑터를 부르든 같은 W</text>
+
+  <rect x="318" y="232" width="256" height="104" rx="8" fill="#141414" stroke="#7ec8e3" stroke-width="1.5"/>
+  <text x="334" y="256" font-size="13" font-weight="600" fill="#7ec8e3">어댑터 곱</text>
+  <text x="334" y="276" font-size="12" fill="#888">같은 어댑터끼리 묶어 세 번</text>
+  <text x="334" y="296" font-size="12" fill="#888">A는 2행, B는 2행, C는 2행</text>
+  <text x="334" y="316" font-size="12" fill="#888">작고 폭이 좁은 곱이라 금방 끝난다</text>
+
+  <line x1="574" y1="172" x2="644" y2="212" stroke="#888" stroke-width="2" marker-end="url(#mlarr)"/>
+  <line x1="574" y1="284" x2="644" y2="244" stroke="#888" stroke-width="2" marker-end="url(#mlarr)"/>
+
+  <rect x="646" y="188" width="174" height="80" rx="8" fill="#141414" stroke="#55c555" stroke-width="1.5"/>
+  <text x="662" y="212" font-size="13" font-weight="600" fill="#55c555">두 결과를 더한다</text>
+  <text x="662" y="232" font-size="12" fill="#888">행마다 자기 어댑터의</text>
+  <text x="662" y="252" font-size="12" fill="#888">보정만 얹혀 나간다</text>
+
+  <text x="60" y="372" font-size="13" fill="#e8e8e8">무거운 쪽(베이스)은 한 번, 가벼운 쪽(어댑터)만 갈래를 탄다.</text>
+  <text x="60" y="396" font-size="12" fill="#888">어댑터를 미리 베이스에 합쳐 버리면 이 구조가 깨진다 — 합친 가중치는 그 어댑터 전용이 되어 한 배치에 하나만 담긴다.</text>
+</svg>

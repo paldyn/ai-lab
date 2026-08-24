@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="468" viewBox="0 0 880 468" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <rect x="0" y="0" width="880" height="468" rx="12" fill="#0a0a0a"/>
+  <text x="60" y="46" font-size="22" font-weight="700" fill="#e8e8e8">카드 한 장을 둘이 쓰는 세 가지 방식</text>
+  <text x="60" y="72" font-size="13" fill="#888">프로세스 A와 B가 같은 GPU에 올라와 있다. 가로는 시간이다.</text>
+
+  <text x="60" y="112" font-size="16" font-weight="600" fill="#c58a55">① 시분할 — 번갈아 쓴다</text>
+  <rect x="130" y="126" width="160" height="36" rx="4" fill="#22401f" stroke="#55c555" stroke-width="1.5"/>
+  <text x="210" y="149" font-size="13" fill="#e8e8e8" text-anchor="middle">A</text>
+  <rect x="290" y="126" width="18" height="36" rx="2" fill="#2a2a2a" stroke="#555" stroke-width="1"/>
+  <rect x="308" y="126" width="160" height="36" rx="4" fill="#16303d" stroke="#7ec8e3" stroke-width="1.5"/>
+  <text x="388" y="149" font-size="13" fill="#e8e8e8" text-anchor="middle">B</text>
+  <rect x="468" y="126" width="18" height="36" rx="2" fill="#2a2a2a" stroke="#555" stroke-width="1"/>
+  <rect x="486" y="126" width="160" height="36" rx="4" fill="#22401f" stroke="#55c555" stroke-width="1.5"/>
+  <text x="566" y="149" font-size="13" fill="#e8e8e8" text-anchor="middle">A</text>
+  <rect x="646" y="126" width="18" height="36" rx="2" fill="#2a2a2a" stroke="#555" stroke-width="1"/>
+  <rect x="664" y="126" width="156" height="36" rx="4" fill="#16303d" stroke="#7ec8e3" stroke-width="1.5"/>
+  <text x="742" y="149" font-size="13" fill="#e8e8e8" text-anchor="middle">B</text>
+  <text x="60" y="188" font-size="12" fill="#888">어느 순간에도 하나만 돈다. 회색은 문맥을 갈아 끼우는 시간이고, 기다리는 쪽의 지연으로 그대로 쌓인다.</text>
+
+  <text x="60" y="226" font-size="16" font-weight="600" fill="#7ec8e3">② MPS — 커널을 같이 올린다</text>
+  <rect x="130" y="240" width="690" height="24" rx="4" fill="#22401f" stroke="#55c555" stroke-width="1.5"/>
+  <text x="144" y="256" font-size="12" fill="#e8e8e8">A</text>
+  <rect x="130" y="264" width="690" height="24" rx="4" fill="#16303d" stroke="#7ec8e3" stroke-width="1.5"/>
+  <text x="144" y="280" font-size="12" fill="#e8e8e8">B</text>
+  <text x="60" y="314" font-size="12" fill="#888">두 프로세스의 커널이 한 스케줄러 아래 함께 올라 빈 SM을 서로 메운다. 대신 메모리 칸막이도 오류 격벽도 없다.</text>
+
+  <text x="60" y="352" font-size="16" font-weight="600" fill="#55c555">③ MIG — 카드를 하드웨어로 자른다</text>
+  <rect x="130" y="366" width="340" height="48" rx="4" fill="#22401f" stroke="#55c555" stroke-width="1.5"/>
+  <text x="146" y="386" font-size="13" font-weight="600" fill="#e8e8e8">A · 3g.40gb</text>
+  <text x="146" y="403" font-size="11" fill="#888">SM 42개 · 메모리 40GB · 전용 L2와 대역폭</text>
+  <rect x="480" y="366" width="340" height="48" rx="4" fill="#16303d" stroke="#7ec8e3" stroke-width="1.5"/>
+  <text x="496" y="386" font-size="13" font-weight="600" fill="#e8e8e8">B · 3g.40gb</text>
+  <text x="496" y="403" font-size="11" fill="#888">SM 42개 · 메모리 40GB · 전용 L2와 대역폭</text>
+  <text x="60" y="440" font-size="12" fill="#888">칸을 나눠 각자 가진다. 옆칸이 무엇을 하든 내 성능은 그대로지만, 내 칸이 남아도 옆에 빌려주지 못한다.</text>
+</svg>
