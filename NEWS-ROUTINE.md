@@ -162,9 +162,17 @@ for path in ("/tmp/news/openai.xml", "/tmp/news/deepmind.xml", "/tmp/news/google
         dt = parsedate_to_datetime(it.findtext("pubDate"))
         if dt >= cutoff:
             link = it.findtext("link").rstrip("/")
-            iid = link.split("/")[-1]
+            parts = link.split("/")
+            # 고객 사례는 /index/<회사>/<제품> 꼴이라 마지막 조각이 회사마다 같다.
+            # 마지막 조각만 쓰면 서로 덮이고, 이미 실린 항목을 "NEW"로 잘못 읽는다.
+            iid = parts[-1] if parts[-2] == "index" else f"{parts[-2]}-{parts[-1]}"
             print(dt.date(), "있음" if iid in existing else "NEW", link)
 ```
+
+**`id`는 위 코드가 정한 값을 그대로 쓴다.** `/index/nvidia/chatgpt-work`와
+`/index/virgin-atlantic/chatgpt-work`가 실재한다. 2026-08-24에 이 루틴이
+`nvidia-chatgpt-work`(이미 실려 있음)를 `chatgpt-work`로 계산해 「원문을 못 읽어
+빠뜨림」 목록에 올린 적이 있다 — 없는 구멍을 나흘 동안 보고했다.
 
 창이 넓어져도 낭비가 아니다. 이미 실린 것은 위의 id 대조에서 걸러진다.
 
@@ -379,7 +387,7 @@ points를 채우지 마라 — 그건 지어내는 것이다.
 
 ```ts
 {
-  id: 'claude-opus-5',            // URL 마지막 조각. 영문 소문자와 하이픈
+  id: 'claude-opus-5',            // STEP 1의 iid 그대로. 영문 소문자와 하이픈
   source: 'Anthropic',            // 'OpenAI' | 'Anthropic' | 'Google DeepMind'
   kind: 'model',                  // 'model' | 'company' 둘뿐이다
   title: 'Anthropic, Claude Opus 5 공개',   // 한글로 옮긴 제목
