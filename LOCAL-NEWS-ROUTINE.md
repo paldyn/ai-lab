@@ -46,9 +46,9 @@ from datetime import datetime, timedelta, timezone
 src = open('src/data/news.ts', encoding='utf-8').read()
 have = set(re.findall(r"^    id: '([^']+)'", src, re.M))
 # 체크포인트를 바닥으로 쓰지 않는다. 이 루틴이 채울 것은 정의상 체크포인트보다 **뒤에**
-# 있다 — 클라우드가 못 읽고 지나가면서 그 값을 앞으로 밀어 놓기 때문이다. RSS가 들고
-# 있는 만큼(14일)을 통째로 훑고, 이미 실린 것은 아래 id 대조가 거른다.
-floor = datetime.now(timezone.utc) - timedelta(days=14)
+# 있다 — 클라우드가 못 읽고 지나가면서 그 값을 앞으로 밀어 놓기 때문이다.
+# 30일은 RSS의 한계가 아니라 한 번에 짊어질 양을 정한 값이다(아래 설명).
+floor = datetime.now(timezone.utc) - timedelta(days=30)
 
 for it in ET.parse('/tmp/localnews/openai.xml').getroot().findall('.//item'):
     dt = parsedate_to_datetime(it.findtext('pubDate'))
@@ -63,6 +63,16 @@ EOF
 ```
 
 아무것도 안 나오면 **"보충할 것 없음"만 출력하고 즉시 종료한다** (커밋·푸시 없음).
+
+**바닥 30일은 RSS의 한계가 아니다.** `openai.com/news/rss.xml`은 2015년까지 1,143건을
+통째로 싣는 전체 아카이브다 — 14일 창이라고 적어 두었던 것은 사실이 아니었고,
+2026-08-24에 세어 보고 고쳤다. 그래서 바닥을 넓히면 넓히는 만큼 계속 나온다:
+같은 날 기준 14일 5건, 21일 12건, **30일 23건**, 60일 46건, 90일 85건.
+
+우리 아카이브는 2026년 1월부터 손으로 채운 것이라 그 이전은 애초에 담을 대상이
+아니고, 한 번에 스무남은 건이 이 루틴이 하룻밤에 소화할 수 있는 양이다. 밀린 것이
+많은 날은 `NEWS-ROUTINE.md`의 「하루씩 끊어 커밋한다」를 따라 오래된 날부터 끊어
+커밋한다. 이 숫자를 올리면 그만큼 옛 발표가 쏟아지므로 **바닥은 함부로 늘리지 않는다.**
 
 `id`는 위 코드가 정한 값을 그대로 쓴다. `/index/nvidia/chatgpt-work`와
 `/index/virgin-atlantic/chatgpt-work`가 실재하므로 마지막 조각만 쓰면 서로 덮인다.
