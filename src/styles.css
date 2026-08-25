@@ -128,8 +128,12 @@
     sticky 헤더에 가리지 않을 만큼 띄웁니다. **ArticlePage의 목차 강조가 이 값을
     읽어 판정선으로 씁니다** — 둘이 갈리면 방금 누른 절이 아니라 그 앞 절이
     짚힙니다(실제로 8px 차이로 그랬습니다).
+
+    2026-08-25에 96에서 128로 올렸습니다. 글에서는 헤더(70px) 아래에 제목 띠(44px)가
+    한 겹 더 붙어 96px 자리에 세우면 헤딩이 그 띠에 가립니다. 목차로 뛰어드는 것은
+    스크롤을 내린 뒤의 일이라 그때는 띠가 늘 서 있습니다.
   */
-  --heading-anchor-offset: 96px;
+  --heading-anchor-offset: 128px;
 }
 
 * {
@@ -340,6 +344,92 @@ input:focus-visible {
   border-bottom: 1px solid var(--border);
   background: var(--header-bg);
   backdrop-filter: blur(16px);
+}
+
+/*
+  ---- 글 제목 띠 ----
+
+  큰 제목이 화면에서 나가면 헤더 아래에 붙는 줄입니다. 읽다가 제목을 다시 보려고
+  맨 위로 되돌아가지 않게 하려고 둡니다. 사연은 ArticleTitleBar.tsx에 적었습니다.
+
+  `fixed`인 이유: `sticky`면 흐름 안에 남아 글 맨 위에서도 44px을 먹는데, 정작
+  그 자리에는 진짜 제목이 바로 아래 있어 띠가 필요 없습니다.
+
+  숨길 때 `visibility`까지 끄는 이유: 투명하기만 하면 화면 낭독기와 탭 이동이
+  안 보이는 단추를 계속 짚습니다. 전환이 끝난 뒤에 끄려고 지연을 붙였습니다.
+*/
+.article-titlebar {
+  position: fixed;
+  top: 70px;
+  right: 0;
+  left: 0;
+  z-index: 40;
+  border-bottom: 1px solid var(--border);
+  background: var(--header-bg);
+  backdrop-filter: blur(16px);
+  opacity: 0;
+  transform: translateY(-6px);
+  visibility: hidden;
+  pointer-events: none;
+  transition:
+    opacity 0.18s ease,
+    transform 0.18s ease,
+    visibility 0s linear 0.18s;
+}
+
+.article-titlebar.is-shown {
+  opacity: 1;
+  transform: none;
+  visibility: visible;
+  pointer-events: auto;
+  transition-delay: 0s;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .article-titlebar {
+    transform: none;
+    transition:
+      opacity 0.18s ease,
+      visibility 0s linear 0.18s;
+  }
+}
+
+/* 눌러서 맨 위로. 한 줄을 넘기지 않고 넘치면 말줄임으로 자릅니다. */
+.article-titlebar-title {
+  overflow: hidden;
+  flex: 1;
+  min-width: 0;
+  color: var(--text-strong);
+  font-size: 14px;
+  font-weight: 450;
+  text-align: left;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.article-titlebar-section {
+  overflow: hidden;
+  max-width: 34%;
+  flex-shrink: 0;
+  color: var(--text-muted);
+  font-size: 12px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/*
+  읽은 만큼 차는 선. `scaleX`로 늘리므로 폭을 다시 계산하지 않습니다 —
+  transform은 레이아웃을 건드리지 않아 스크롤마다 리플로가 안 생깁니다.
+*/
+.article-titlebar-progress {
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: var(--brand);
+  transform-origin: left center;
 }
 
 /*

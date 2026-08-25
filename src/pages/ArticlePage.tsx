@@ -2,6 +2,7 @@ import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { ArrowLeft, ArrowRight, ArrowUpRight } from 'lucide-react';
 import { Link, Navigate, useParams } from 'react-router';
 import { ArticleCard } from '../components/ArticleCard';
+import { ArticleTitleBar } from '../components/ArticleTitleBar';
 import { ArticleVisual } from '../components/ArticleVisual';
 import { ImageLightbox } from '../components/ImageLightbox';
 import { Seo } from '../components/Seo';
@@ -376,6 +377,8 @@ function ArticleView({ article }: { article: Article }) {
 
   // 선택 영역은 줄마다 직접 그립니다 — 이유는 lib/selectionRibbon.ts에 있습니다.
   const proseRef = useRef<HTMLDivElement>(null);
+  // 이 제목이 화면에서 나가면 머리에 제목 띠가 선다.
+  const titleRef = useRef<HTMLHeadingElement>(null);
   useEffect(() => {
     if (!proseRef.current) return undefined;
     return watchSelectionRibbon(proseRef.current);
@@ -402,6 +405,15 @@ function ArticleView({ article }: { article: Article }) {
         publishedAt={article.publishedAt}
       />
 
+      <ArticleTitleBar
+        watch={titleRef}
+        progressOf={proseRef}
+        label={`${category.shortName} / ${articleOrdinal(article)}`}
+        accent={category.accentText}
+        title={article.title}
+        section={body?.headings.find((heading) => heading.id === activeHeading)?.text}
+      />
+
       <header className="site-wrap article-header">
         <Link to={collectionPath} className="back-link">
           <ArrowLeft size={14} aria-hidden="true" /> {collectionLabel}
@@ -416,7 +428,10 @@ function ArticleView({ article }: { article: Article }) {
             <p className="font-mono text-[10px] tracking-[0.13em]" style={{ color: category.accentText }}>
               {category.shortName} / {articleOrdinal(article)}
             </p>
-            <h1 className="mt-5 max-w-4xl text-[2rem] font-medium leading-[1.35] text-[var(--text-strong)] sm:text-[2.8rem]">
+            <h1
+              ref={titleRef}
+              className="mt-5 max-w-4xl text-[2rem] font-medium leading-[1.35] text-[var(--text-strong)] sm:text-[2.8rem]"
+            >
               {article.title}
             </h1>
             <p className="mt-6 max-w-2xl text-[16px] font-light leading-8 text-[var(--text-dim)]">{article.summary}</p>
@@ -435,7 +450,7 @@ function ArticleView({ article }: { article: Article }) {
       <div className="site-divider" />
 
       <div className="site-wrap grid gap-12 py-14 lg:grid-cols-[220px_minmax(0,760px)] lg:justify-center">
-        <aside className="article-toc lg:sticky lg:top-24 lg:self-start">
+        <aside className="article-toc lg:sticky lg:top-[128px] lg:self-start">
           <p className="font-mono text-[10px] tracking-[0.12em] text-[var(--text-muted)]">IN THIS NOTE</p>
           {body && body.headings.length > 0 && (
             <ol className="mt-4 space-y-3 border-l border-[var(--border)] pl-4 text-xs leading-5 text-[var(--text-dim)]">
