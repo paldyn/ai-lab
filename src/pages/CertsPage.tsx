@@ -58,7 +58,7 @@ function CertRow({ cert }: { cert: Cert }) {
 export function CertsPage() {
   const domestic = certsIn('국내');
   const overseas = certsIn('해외');
-  // 머리말 숫자는 대비 글을 셉니다 — 학습 경로의 본체가 그쪽이고 매핑은 곁다리입니다.
+  // 머리말 숫자는 시험 노트를 셉니다 — 학습 경로의 본체가 그쪽이고 매핑은 곁다리입니다.
   const prepCount = certPrepNotes.length;
 
   return (
@@ -75,7 +75,7 @@ export function CertsPage() {
         statsLabel="공식 페이지에서 확인한 것만 싣습니다"
         stats={[
           { label: '자격증', value: `${certs.length}개` },
-          { label: '대비 글', value: `${prepCount}편` },
+          { label: '시험 노트', value: `${prepCount}편` },
         ]}
       />
 

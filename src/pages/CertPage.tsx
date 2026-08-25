@@ -62,7 +62,7 @@ function CertView({ cert }: { cert: Cert }) {
         { id: 'what', title: '무엇을 재는 시험인가' },
         { id: 'subjects', title: '과목' },
         { id: 'exam', title: '시험 정보' },
-        { id: 'prep', title: '대비 글' },
+        { id: 'prep', title: '시험 노트' },
         cert.studyPath.length > 0 ? { id: 'study', title: '관련 있는 우리 글' } : null,
         cert.notes ? { id: 'notes', title: '알아 둘 것' } : null,
       ].filter((section) => section !== null),
@@ -214,13 +214,13 @@ function CertView({ cert }: { cert: Cert }) {
         </section>
 
         {/*
-          **대비 글이 학습 경로의 본체입니다.** 아래 「관련 있는 우리 글」은 이미
+          **시험 노트가 학습 경로의 본체입니다.** 아래 「관련 있는 우리 글」은 이미
           있던 글을 과목에 매핑한 것인데, 그 글들은 시험을 보라고 쓴 것이 아니라
           개념을 설명하려고 쓴 것이라 「무엇을 외워야 붙는가」가 빠져 있습니다.
           시험 하나를 놓고 처음부터 쓴 글은 이쪽입니다.
         */}
         <section className="cert-section">
-          <h2 id="prep">대비 글</h2>
+          <h2 id="prep">시험 노트</h2>
           {prep.length > 0 ? (
             <ol className="cert-prep-list">
               {prep.map((note) => (
@@ -239,7 +239,7 @@ function CertView({ cert }: { cert: Cert }) {
             </ol>
           ) : (
             <p className="cert-prose">
-              이 시험의 대비 글은 아직 없습니다. 과목별 정리와 모의고사를 순서대로 채워 나갑니다.
+              이 시험의 노트는 아직 없습니다. 과목별 정리와 모의고사를 순서대로 채워 나갑니다.
             </p>
           )}
         </section>

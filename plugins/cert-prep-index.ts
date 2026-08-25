@@ -11,12 +11,12 @@ const RESOLVED_ID = `\0${VIRTUAL_ID}`;
 export const CERT_PREP_DIR = 'src/content/certs';
 
 /**
- * 자격증 대비 글 하나.
+ * 자격증 시험 노트 하나.
  *
  * **글(`src/content/articles`)과 다른 곳에 삽니다.** 학습 글은 여덟 분야 중 하나에
- * 속하고 슬러그 접두사가 그 분야를 정하는데, 대비 글은 「어느 시험을 위한 것인가」로
+ * 속하고 슬러그 접두사가 그 분야를 정하는데, 시험 노트는 「어느 시험을 위한 것인가」로
  * 묶입니다. 같은 서랍에 넣으면 분야 표를 열넷만큼 늘려야 하고 434편짜리 학습 목록에
- * 시험 대비 글이 섞입니다. 폴더 이름이 곧 자격증 id입니다.
+ * 시험 노트가 섞여 듭니다. 폴더 이름이 곧 자격증 id입니다.
  */
 export interface CertPrepEntry {
   /** 폴더 이름. `certs.ts`의 id와 같아야 합니다. */
@@ -48,7 +48,7 @@ async function readEntry(file: string, root: string): Promise<CertPrepEntry | nu
 
   const matched = FILE_NAME.exec(name);
   if (!matched) {
-    throw new Error(`${relative}: 대비 글 파일 이름은 NN-슬러그.md 꼴이어야 합니다`);
+    throw new Error(`${relative}: 시험 노트 파일 이름은 NN-슬러그.md 꼴이어야 합니다`);
   }
 
   const raw = await readFile(file, 'utf8');

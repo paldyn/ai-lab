@@ -1,6 +1,6 @@
-# 자격증 대비 글 작성 루틴 지시서
+# 자격증 시험 노트 작성 루틴 지시서
 
-「PALDYN AI Lab — 자격증 대비 글 작성 (2편/일)」 Routine이 **실행할 때마다 읽는
+「PALDYN AI Lab — 자격증 시험 노트 작성 (2편/일)」 Routine이 **실행할 때마다 읽는
 지시서**다. Routine에 걸린 프롬프트는 이 파일을 읽으라는 쪽지뿐이니 **여기만 고치면 된다.**
 
 시험 정보를 갱신하는 `CERT-ROUTINE.md`와 다른 루틴이다. 저쪽은 데이터를 고치고
@@ -12,10 +12,10 @@
 
 ---
 
-이 저장소는 **paldyn/ai-lab** (ailab.paldyn.com)이다. 자격증 대비 글 **2편**을 쓴다.
+이 저장소는 **paldyn/ai-lab** (ailab.paldyn.com)이다. 자격증 시험 노트 **2편**을 쓴다.
 시작할 때 `CLAUDE.md`와 이 파일을 처음부터 끝까지 읽는다.
 
-대비 글은 `src/content/certs/<자격증 id>/NN-슬러그.md`에 있고 주소는
+시험 노트는 `src/content/certs/<자격증 id>/NN-슬러그.md`에 있고 주소는
 `/learn/certs/<자격증 id>/NN-슬러그`다. 학습 글(`src/content/articles`)과 **다른
 서랍**이다 — 카테고리도 사슬도 없고, 폴더가 시험을 정하고 파일 이름 앞 숫자가 차례다.
 
@@ -156,7 +156,9 @@ npm run build
 
 ```bash
 ls dist/learn/certs/<자격증 id>/
-grep -c '답 모두 보기' dist/learn/certs/<자격증 id>/<슬러그>.html   # 문제 글이면 1 이상
+# 문제 글이면 답 토글 수가 문항 수와 같아야 한다.
+# 「답 모두 보기」 글자는 CSS가 그리는 것이라 HTML에는 없다 — 이걸 세면 늘 0이다.
+grep -c 'details class="answer"' dist/learn/certs/<자격증 id>/<슬러그>.html
 ```
 
 ## STEP 5 — 커밋과 보고

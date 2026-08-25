@@ -6,9 +6,9 @@ import { certs } from '../data/certs';
 import { articles } from '../data/articles';
 
 /**
- * 자격증 대비 글이 지켜야 하는 것.
+ * 자격증 시험 노트가 지켜야 하는 것.
  *
- * 대비 글은 글(`src/content/articles`)과 다른 서랍에 살고 다른 규칙을 씁니다 —
+ * 시험 노트는 글(`src/content/articles`)과 다른 서랍에 살고 다른 규칙을 씁니다 —
  * 카테고리도 사슬도 없고, **폴더 이름이 자격증 id이며 파일 이름 앞 숫자가 차례**입니다.
  * 그 둘이 어긋나면 글이 아무 목록에도 안 나오거나 순서가 뒤엉키는데, 화면에는
  * 아무 표시도 안 납니다. 여기서 잡습니다.
@@ -53,7 +53,7 @@ function readNotes(): Note[] {
 const notes = readNotes();
 const certIds = new Set(certs.map((cert) => cert.id));
 
-describe('자격증 대비 글', () => {
+describe('자격증 시험 노트', () => {
   it('폴더 이름이 실제 자격증 id다', () => {
     const orphans = notes.filter((note) => !certIds.has(note.certId));
     expect(orphans.map((note) => `${note.certId}/${note.file}`)).toEqual([]);

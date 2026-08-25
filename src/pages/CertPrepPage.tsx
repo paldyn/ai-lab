@@ -13,7 +13,7 @@ import { watchSelectionRibbon } from '../lib/selectionRibbon';
 import type { ArticleBody } from '../types/article';
 
 /**
- * 자격증 대비 글 한 편.
+ * 자격증 시험 노트 한 편.
  *
  * 글 화면(`ArticlePage`)과 본문 처리는 같습니다 — 같은 마크다운 파이프라인을 지나
  * 같은 `.article-prose` 아래에 그려지므로 수식·코드·답 토글·그림 확대가 그대로
@@ -60,7 +60,7 @@ function CertPrepView({ cert, note }: { cert: Cert; note: CertPrepNote }) {
   return (
     <article>
       <Seo
-        title={`${note.title} — ${cert.nameKo} 대비`}
+        title={`${note.title} — ${cert.nameKo} 시험 노트`}
         description={note.summary}
         path={note.path}
       />
@@ -71,7 +71,7 @@ function CertPrepView({ cert, note }: { cert: Cert; note: CertPrepNote }) {
         </Link>
         <div className="mt-10">
           <p className="cert-prep-kicker">
-            <span>{cert.nameKo} 대비</span>
+            <span>{cert.nameKo} 시험 노트</span>
             <span aria-hidden="true">/</span>
             <span>{note.kind}</span>
             <span aria-hidden="true">/</span>
@@ -138,7 +138,7 @@ function CertPrepView({ cert, note }: { cert: Cert; note: CertPrepNote }) {
           <ImageLightbox image={zoomed} onClose={() => setZoomed(null)} />
 
           {/*
-            앞뒤는 사슬이 아니라 파일 번호가 정합니다. 대비 글은 순서대로 읽는
+            앞뒤는 사슬이 아니라 파일 번호가 정합니다. 시험 노트는 순서대로 읽는
             것이라 원고에 「지난 글」을 적을 필요가 없습니다.
           */}
           <nav className="cert-prep-nav" aria-label="같은 시험의 앞뒤 글">
@@ -161,7 +161,7 @@ function CertPrepView({ cert, note }: { cert: Cert; note: CertPrepNote }) {
           </nav>
 
           <Link to={`/learn/certs/${cert.id}`} className="cert-prep-back">
-            {cert.nameKo} 대비 글 전체 보기 <ArrowRight size={13} aria-hidden="true" />
+            {cert.nameKo} 시험 노트 전체 보기 <ArrowRight size={13} aria-hidden="true" />
           </Link>
         </div>
       </div>

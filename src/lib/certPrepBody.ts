@@ -6,7 +6,7 @@ const modules = import.meta.glob<{ html: string; headings: ArticleBody['headings
 
 /*
   글 본문과 같은 구조입니다(`articleBody.ts`). 다른 점은 키가 둘이라는 것뿐 —
-  대비 글은 자격증 폴더 안에 있어 슬러그만으로는 어느 시험의 글인지 알 수 없습니다.
+  시험 노트는 자격증 폴더 안에 있어 슬러그만으로는 어느 시험의 글인지 알 수 없습니다.
 */
 const cache = new Map<string, ArticleBody>();
 

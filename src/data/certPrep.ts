@@ -2,11 +2,11 @@ import { certPrepIndex } from 'virtual:cert-prep-index';
 import { certById } from './certs';
 
 /**
- * 자격증 대비 글.
+ * 자격증 시험 노트.
  *
  * **학습 경로를 여기서 만듭니다.** 예전에는 이미 있는 글 139편을 과목에 매핑해
  * 학습 경로라고 불렀는데, 그 글들은 시험을 보라고 쓴 것이 아니라 개념을 설명하려고
- * 쓴 것이라 「무엇을 외워야 붙는가」가 빠져 있었습니다. 대비 글은 시험 하나를 놓고
+ * 쓴 것이라 「무엇을 외워야 붙는가」가 빠져 있었습니다. 시험 노트는 시험 하나를 놓고
  * 처음부터 쓰고 모의고사까지 같은 폴더에 둡니다.
  *
  * 원고는 `src/content/certs/<자격증 id>/NN-슬러그.md`에 있고 주소는
@@ -55,7 +55,7 @@ export function prepNote(certId: string, slug: string): CertPrepNote | undefined
 }
 
 /**
- * 같은 자격증 안의 앞뒤 글. 대비 글은 순서대로 읽는 것이라 글 사슬처럼
+ * 같은 자격증 안의 앞뒤 글. 시험 노트는 순서대로 읽는 것이라 글 사슬처럼
  * 본문에 링크를 적지 않고 파일 번호로 정합니다.
  */
 export function prepNeighbors(certId: string, slug: string): {
