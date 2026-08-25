@@ -5,37 +5,7 @@ import { CertStars } from '../components/CertStars';
 import { LearnRail } from '../components/LearnRail';
 import { PageHeader } from '../components/PageHeader';
 import { Seo } from '../components/Seo';
-import { certs, certsIn, studyCount, type Cert, type CertRating } from '../data/certs';
-
-/**
- * 별 몇 개가 무엇인지. `certs.ts`의 `CertRating` 주석과 같은 눈금입니다.
- *
- * 두 축의 방향이 다릅니다 — 난이도는 많을수록 어렵고 취업은 많을수록 좋습니다.
- * 그래서 축 이름을 별 왼쪽에 붙여 둡니다. 이름 없이 별만 두면 「별 다섯이면
- * 좋은 자격증」으로 읽힙니다.
- */
-const AXES: { name: string; steps: { stars: CertRating; text: string }[] }[] = [
-  {
-    name: '난이도',
-    steps: [
-      { stars: 1, text: '며칠이면 붙음' },
-      { stars: 2, text: '입문서 한 권' },
-      { stars: 3, text: '실무 경험 전제' },
-      { stars: 4, text: '실기·코딩 있음' },
-      { stars: 5, text: '응시자격이 걸림' },
-    ],
-  },
-  {
-    name: '취업',
-    steps: [
-      { stars: 1, text: '채용에서 안 쓰임' },
-      { stars: 2, text: '벤더 자격·입문 등급' },
-      { stars: 3, text: '국내에 흔한 스택' },
-      { stars: 4, text: '국가공인 민간자격' },
-      { stars: 5, text: '국가기술자격' },
-    ],
-  },
-];
+import { certs, certsIn, studyCount, type Cert } from '../data/certs';
 
 /**
  * 자격증 목록. 국내·해외로 나눠 세웁니다.
@@ -46,7 +16,8 @@ const AXES: { name: string; steps: { stars: CertRating; text: string }[] }[] = [
  *
  * 별 두 줄은 **고를 때 실제로 다투는 두 값**입니다 — 얼마나 어려운가와 따서
  * 쓸 데가 있는가. 이 둘이 같이 보여야 「쉬운데 안 쳐주는 것」과 「어려운데
- * 제도로 인정되는 것」이 갈립니다.
+ * 제도로 인정되는 것」이 갈립니다. 취업 별의 근거인 자격의 종류를 그 위에
+ * 함께 답니다.
  */
 function CertCard({ cert }: { cert: Cert }) {
   return (
@@ -58,6 +29,14 @@ function CertCard({ cert }: { cert: Cert }) {
             {cert.nameKo}
           </Link>
         </h3>
+        {/*
+          자격의 종류. 국가기술자격인지 국가공인 민간자격인지가 취업 별을 정한
+          1차 근거라, 별만 보이고 이 값이 안 보이면 별이 어디서 왔는지 알 수
+          없습니다. 국가기술자격만 색을 넣어 나머지와 갈라 둡니다.
+        */}
+        <p className={`cert-status cert-status-${cert.status === '국가기술자격' ? 'national' : 'other'}`}>
+          {cert.status}
+        </p>
         <dl className="cert-card-ratings">
           <div>
             <dt>난이도</dt>
@@ -117,28 +96,6 @@ export function CertsPage() {
             <Star className="cert-legend-star" size={13} strokeWidth={1.5} aria-hidden="true" /> 난이도는
             응시자격·시험 형식·권장 경력을, 취업은 자격의 법적 지위와 제도상 우대를 보고 매긴 값입니다.
           </p>
-
-          {/*
-            눈금은 글이 아니라 별로 보여 줍니다. 「별 하나는 며칠이면 붙는 시험」이라고
-            적으면 읽고 나서 카드의 별을 다시 세어야 하는데, 별을 그대로 세워 두면
-            카드에서 본 모양을 여기서 찾으면 됩니다. 빈 별은 그리지 않습니다 —
-            열 줄이 50개가 되어 눈금이 아니라 격자로 보입니다.
-          */}
-          <dl className="cert-scale">
-            {AXES.map((axis) => (
-              <div key={axis.name}>
-                <dt>{axis.name}</dt>
-                <dd>
-                  {axis.steps.map((step) => (
-                    <span key={step.stars}>
-                      <CertStars value={step.stars} total={step.stars} size={11} />
-                      {step.text}
-                    </span>
-                  ))}
-                </dd>
-              </div>
-            ))}
-          </dl>
 
           {[
             { title: '국내', items: domestic },

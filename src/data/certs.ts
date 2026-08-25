@@ -27,6 +27,20 @@
  */
 
 export type CertRegion = '국내' | '해외';
+
+/**
+ * 자격의 종류. **확인할 수 있는 사실이고, 취업 눈금의 1차 근거입니다.**
+ *
+ * 국내 자격은 큐넷(국가기술자격)과 민간자격정보서비스 pqi.or.kr(공인 여부)에서
+ * 확인합니다. 해외 벤더 자격은 국내 공인 제도의 대상이 아닙니다 — 자격기본법의
+ * 공인 대상이 국내 법인·단체·개인이 운영하는 민간자격이라, 「AWS 자격은 공인이
+ * 아니다」가 아니라 애초에 그 제도에 들어갈 수 없는 것입니다.
+ *
+ * 학점은행제 학점 인정도 국가기술자격·개별법 국가자격·국가공인 민간자격 셋만
+ * 대상입니다. 화면에 이 값을 그대로 내보내는 이유가 그것입니다 — 별 다섯 개가
+ * 어디서 왔는지 독자가 직접 확인할 수 있어야 합니다.
+ */
+export type CertStatus = '국가기술자격' | '국가공인 민간자격' | '등록 민간자격' | '해외 벤더 자격';
 export type CertLevel = '입문' | '중급' | '고급';
 
 /**
@@ -139,6 +153,13 @@ export interface Cert {
   nameEn: string;
   issuer: string;
   region: CertRegion;
+  /** 자격의 종류. 큐넷·pqi.or.kr에서 확인한 값입니다. */
+  status: CertStatus;
+  /**
+   * 시행처가 말하는 등급. **화면에는 안 나갑니다** — 난이도 별이 반 칸까지
+   * 더 잘게 말해 주고, 머리 줄의 그 자리는 `status`가 가져갔습니다.
+   * `certs.test.ts`가 난이도 별과 이 값이 뒤집히지 않았는지 검사할 때 씁니다.
+   */
   level: CertLevel;
   /** 시험이 얼마나 어려운가. 우리 판단입니다. */
   difficulty: CertRating;
@@ -175,6 +196,7 @@ export const certs: Cert[] = [
     nameEn: '빅데이터분석기사',
     issuer: '한국데이터산업진흥원',
     region: '국내',
+    status: '국가기술자격',
     level: '중급',
     difficulty: 4,
     difficultyBasis: '응시자격이 있고 필기를 붙어도 파이썬·R 작업형 실기가 남습니다.',
@@ -323,6 +345,7 @@ export const certs: Cert[] = [
     nameEn: 'ADsP',
     issuer: '한국데이터산업진흥원',
     region: '국내',
+    status: '국가공인 민간자격',
     level: '입문',
     difficulty: 2,
     difficultyBasis: '응시자격이 없고 객관식 50문항으로 개념만 봅니다.',
@@ -424,6 +447,7 @@ export const certs: Cert[] = [
     nameEn: 'Advanced Data Analytics Professional (ADP)',
     issuer: '한국데이터산업진흥원',
     region: '국내',
+    status: '국가공인 민간자격',
     level: '고급',
     difficulty: 5,
     difficultyBasis: '학위·경력 응시자격에 서술형 필기와 실기까지 붙습니다.',
@@ -578,6 +602,7 @@ export const certs: Cert[] = [
     nameEn: 'SQL Developer (SQLD)',
     issuer: '한국데이터산업진흥원',
     region: '국내',
+    status: '국가공인 민간자격',
     level: '입문',
     difficulty: 2,
     difficultyBasis: '응시자격이 없고 객관식 50문항을 90분에 봅니다.',
@@ -673,6 +698,7 @@ export const certs: Cert[] = [
     nameEn: 'AI Certificate for Everyone (AICE)',
     issuer: '(주)케이티·(주)한국경제신문',
     region: '국내',
+    status: '국가공인 민간자격',
     level: '중급',
     difficulty: 3,
     difficultyBasis: '응시자격은 없지만 전 등급이 100% 실기 평가입니다.',
@@ -902,6 +928,7 @@ export const certs: Cert[] = [
     nameEn: 'AWS Certified AI Practitioner',
     issuer: 'Amazon Web Services',
     region: '해외',
+    status: '해외 벤더 자격',
     level: '입문',
     difficulty: 1,
     difficultyBasis: '선행 요건 없는 파운데이셔널 등급, 객관식 65문항을 90분에 봅니다.',
@@ -1073,6 +1100,7 @@ export const certs: Cert[] = [
     nameEn: 'AWS Certified Machine Learning Engineer – Associate',
     issuer: 'Amazon Web Services',
     region: '해외',
+    status: '해외 벤더 자격',
     level: '중급',
     difficulty: 3,
     difficultyBasis: '응시 요건은 없지만 ML 파이프라인 실무를 전제한 130분 시험입니다.',
@@ -1201,6 +1229,7 @@ export const certs: Cert[] = [
     nameEn: 'Google Cloud Professional Machine Learning Engineer',
     issuer: 'Google Cloud',
     region: '해외',
+    status: '해외 벤더 자격',
     level: '고급',
     difficulty: 4,
     difficultyBasis: '객관식뿐이지만 경력 3년을 권장하고 범위가 Vertex AI 전반입니다.',
@@ -1364,6 +1393,7 @@ export const certs: Cert[] = [
     nameEn: 'NVIDIA-Certified Associate: Generative AI LLMs (NCA-GENL)',
     issuer: 'NVIDIA',
     region: '해외',
+    status: '해외 벤더 자격',
     level: '중급',
     difficulty: 2,
     difficultyBasis: '선행 자격 없는 어소시에이트 등급, 객관식을 1시간에 봅니다.',
@@ -1467,6 +1497,7 @@ export const certs: Cert[] = [
     nameEn: 'Databricks Certified Machine Learning Associate',
     issuer: 'Databricks',
     region: '해외',
+    status: '해외 벤더 자격',
     level: '중급',
     difficulty: 3,
     difficultyBasis: '응시자격은 없지만 실무 6개월과 파이썬 경험을 권장합니다.',
@@ -1597,6 +1628,7 @@ export const certs: Cert[] = [
     nameEn: 'Databricks Certified Generative AI Engineer Associate',
     issuer: 'Databricks',
     region: '해외',
+    status: '해외 벤더 자격',
     level: '중급',
     difficulty: 3,
     difficultyBasis: '응시자격은 없지만 생성형 AI 실무 6개월을 권장합니다.',
@@ -1757,6 +1789,7 @@ export const certs: Cert[] = [
     nameEn: 'SQL Professional (SQLP)',
     issuer: '한국데이터산업진흥원',
     region: '국내',
+    status: '국가공인 민간자격',
     level: '고급',
     difficulty: 5,
     difficultyBasis: 'SQLD 취득 같은 응시자격이 걸리고 필기 안에 실기 문항이 있습니다.',
@@ -1902,6 +1935,7 @@ export const certs: Cert[] = [
     nameEn: 'Exam AI-901: Microsoft Azure AI Fundamentals (Microsoft Certified: Azure AI Fundamentals)',
     issuer: 'Microsoft',
     region: '해외',
+    status: '해외 벤더 자격',
     level: '입문',
     difficulty: 1.5,
     difficultyBasis: '입문 등급이지만 배점의 55~60%가 Foundry 구현입니다.',
@@ -2019,6 +2053,7 @@ export const certs: Cert[] = [
     nameEn: 'Microsoft Certified: Azure AI Apps and Agents Developer Associate — Exam AI-103: Developing AI Apps and Agents on Azure',
     issuer: 'Microsoft',
     region: '해외',
+    status: '해외 벤더 자격',
     level: '중급',
     difficulty: 3.5,
     difficultyBasis: '응시 요건은 없지만 파이썬 앱 개발 경험을 전제합니다.',

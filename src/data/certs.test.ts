@@ -100,6 +100,24 @@ describe('자격증 데이터', () => {
     expect(bad.map((cert) => cert.id)).toEqual([]);
   });
 
+  /*
+    자격의 종류가 취업 눈금의 1차 근거이므로 둘이 어긋나면 눈금이 무너집니다.
+    국가기술자격 5, 국가공인 민간자격 4~4.5, 해외 벤더 자격 3 이하입니다.
+  */
+  it('자격의 종류와 취업 별이 맞는다', () => {
+    const band: Record<string, [number, number]> = {
+      국가기술자격: [5, 5],
+      '국가공인 민간자격': [4, 4.5],
+      '등록 민간자격': [2, 3.5],
+      '해외 벤더 자격': [1, 3],
+    };
+    const off = certs.filter((cert) => {
+      const [min, max] = band[cert.status];
+      return cert.employment < min || cert.employment > max;
+    });
+    expect(off.map((cert) => `${cert.id}: ${cert.status} / ${cert.employment}`)).toEqual([]);
+  });
+
   it('취업 활용도가 1~5 사이의 반 칸 단위다', () => {
     const odd = certs.filter(
       (cert) => !Number.isInteger(cert.employment * 2) || cert.employment < 1 || cert.employment > 5,

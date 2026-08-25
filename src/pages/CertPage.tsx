@@ -62,8 +62,13 @@ function CertView({ cert }: { cert: Cert }) {
         <div className="mt-10">
           <div className="cert-head-meta">
             <CertMark issuer={cert.issuer} />
+            {/*
+              등급(입문·중급·고급) 대신 자격의 종류를 답니다. 난이도는 바로
+              아래 별이 더 잘게 말해 주고, 여기서 필요한 것은 취업 별의 근거인
+              「국가기술자격인가 국가공인인가」입니다.
+            */}
             <p className="font-mono text-[10px] tracking-[0.13em] text-[var(--text-muted)]">
-              {cert.region} / {cert.level} / {cert.issuer}
+              {cert.region} / {cert.status} / {cert.issuer}
             </p>
           </div>
           <h1 className="mt-5 max-w-4xl text-[2rem] font-medium leading-[1.35] text-[var(--text-strong)] sm:text-[2.6rem]">
