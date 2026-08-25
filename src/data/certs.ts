@@ -38,21 +38,31 @@ export type CertLevel = '입문' | '중급' | '고급';
  *
  * 1 사전 지식 없이 며칠~2주 · 2 입문서 한 권 · 3 실무 개념과 도구 경험
  * 4 실기·코딩이 있거나 범위가 넓음 · 5 응시자격이 걸려 있거나 서술형 실기
+ *
+ * **반 칸을 씁니다.** 눈금이 다섯뿐이면 「입문이지만 구현 비중이 있는」 자리가
+ * 갈 곳이 없어 위나 아래로 밀려납니다. AI-900이 그 자리라 1.5입니다.
  */
-export type CertDifficulty = 1 | 2 | 3 | 4 | 5;
+export type CertDifficulty = 1 | 1.5 | 2 | 2.5 | 3 | 3.5 | 4 | 4.5 | 5;
 
 /**
  * 시행처 마크. 목록 카드 왼쪽에 섭니다.
  *
- * 공개된 벡터 로고가 있는 곳은 파일을 쓰고, 없는 곳(한국데이터산업진흥원·AICE)은
- * 글자 마크로 세웁니다. 없는 로고를 비슷하게 그려 넣지 않습니다 — 상표를 흉내 낸
- * 그림은 원본과 다르다는 것이 티가 나고, 그 자리는 어차피 20px입니다.
+ * 시행처가 내건 로고를 그대로 씁니다. 비슷하게 그린 상표를 넣지 않습니다 — 원본과
+ * 다르다는 것이 티가 납니다. 표에 없는 시행처가 들어오면 글자 마크로 떨어지는데,
+ * 그건 잠깐 버티는 자리이지 두고 쓰는 자리가 아니라 테스트가 잡습니다.
  */
 export interface CertMark {
   /** public/assets 아래 경로. `assetUrl()`을 거쳐 씁니다. */
   logo?: string;
   /** 로고 파일이 없는 시행처의 글자 마크. */
   text?: string;
+  /**
+   * 어두운 로고라 다크 테마에서 흰 판을 깔아야 하는가.
+   *
+   * Kdata는 회색 워드마크, AICE는 남색이라 검은 바탕에서 뭉갭니다. 반전을 걸면
+   * 남색+빨강이 노랑+청록이 되어 다른 로고가 되므로 판을 깔아 원본을 지킵니다.
+   */
+  plate?: boolean;
   /** 마크가 가리키는 이름. 대체 텍스트로 씁니다. */
   label: string;
 }
@@ -66,8 +76,8 @@ export interface CertMark {
   Azure 서비스를 재는 시험이라 목록에서 그쪽이 더 빨리 읽힙니다.
 */
 const marks: Record<string, CertMark> = {
-  한국데이터산업진흥원: { text: 'Kdata', label: '한국데이터산업진흥원' },
-  '(주)케이티·(주)한국경제신문': { text: 'AICE', label: 'KT·한국경제신문' },
+  한국데이터산업진흥원: { logo: 'assets/kdata.png', plate: true, label: '한국데이터산업진흥원' },
+  '(주)케이티·(주)한국경제신문': { logo: 'assets/aice.svg', plate: true, label: 'AICE' },
   'Amazon Web Services': { logo: 'assets/aws.svg', label: 'Amazon Web Services' },
   'Google Cloud': { logo: 'assets/google-cloud.svg', label: 'Google Cloud' },
   NVIDIA: { logo: 'assets/nvidia.svg', label: 'NVIDIA' },
@@ -1845,7 +1855,7 @@ export const certs: Cert[] = [
     issuer: 'Microsoft',
     region: '해외',
     level: '입문',
-    difficulty: 2,
+    difficulty: 1.5,
     difficultyBasis: '입문 등급이지만 배점의 55~60%가 Foundry 구현입니다.',
     whatItMeasures:
       'AI 솔루션 개발 경력 초입을 대상으로 한 입문 인증이다. 공식 설명은 "Azure AI 솔루션에 대한 개념 지식과 그것을 다루는 기초 기술 역량"을 본다고 ' +
@@ -1960,7 +1970,7 @@ export const certs: Cert[] = [
     issuer: 'Microsoft',
     region: '해외',
     level: '중급',
-    difficulty: 3,
+    difficulty: 3.5,
     difficultyBasis: '응시 요건은 없지만 파이썬 앱 개발 경험을 전제합니다.',
     whatItMeasures:
       'Microsoft Foundry를 활용해 에이전트와 AI 솔루션을 설계·개발·배포하는 Azure AI 엔지니어 역량을 검증한다. 공식 설명은 ' +

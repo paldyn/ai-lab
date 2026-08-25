@@ -66,8 +66,10 @@ describe('자격증 데이터', () => {
     거꾸로 가지는 않는지, 다섯 눈금을 실제로 쓰는지는 여기서 봅니다 — 전부 3에
     몰리면 별 다섯 개를 그리는 의미가 없습니다.
   */
-  it('난이도가 1~5의 정수다', () => {
-    const odd = certs.filter((cert) => !Number.isInteger(cert.difficulty) || cert.difficulty < 1 || cert.difficulty > 5);
+  it('난이도가 1~5 사이의 반 칸 단위다', () => {
+    const odd = certs.filter(
+      (cert) => !Number.isInteger(cert.difficulty * 2) || cert.difficulty < 1 || cert.difficulty > 5,
+    );
     expect(odd.map((cert) => `${cert.id}: ${cert.difficulty}`)).toEqual([]);
   });
 
@@ -87,8 +89,9 @@ describe('자격증 데이터', () => {
     expect(off.map((cert) => `${cert.id}: ${cert.level} / ${cert.difficulty}`)).toEqual([]);
   });
 
+  /* 반 칸은 아래쪽 별에 붙여 셉니다 — 1.5는 별 하나가 온전히 찬 자리입니다. */
   it('다섯 눈금을 모두 쓴다', () => {
-    const used = [...new Set(certs.map((cert) => cert.difficulty))].sort();
+    const used = [...new Set(certs.map((cert) => Math.floor(cert.difficulty)))].sort((a, b) => a - b);
     expect(used).toEqual([1, 2, 3, 4, 5]);
   });
 
