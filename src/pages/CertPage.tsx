@@ -1,5 +1,7 @@
 import { ArrowLeft, ArrowUpRight } from 'lucide-react';
 import { Link, Navigate, useParams } from 'react-router';
+import { CertMark } from '../components/CertMark';
+import { CertStars } from '../components/CertStars';
 import { Seo } from '../components/Seo';
 import { certById, type Cert, type CertStudyItem } from '../data/certs';
 import { getArticleBySlug } from '../data/articles';
@@ -58,15 +60,27 @@ function CertView({ cert }: { cert: Cert }) {
           <ArrowLeft size={14} aria-hidden="true" /> 자격증
         </Link>
         <div className="mt-10">
-          <p className="font-mono text-[10px] tracking-[0.13em] text-[var(--text-muted)]">
-            {cert.region} / {cert.level} / {cert.issuer}
-          </p>
+          <div className="cert-head-meta">
+            <CertMark issuer={cert.issuer} />
+            <p className="font-mono text-[10px] tracking-[0.13em] text-[var(--text-muted)]">
+              {cert.region} / {cert.level} / {cert.issuer}
+            </p>
+          </div>
           <h1 className="mt-5 max-w-4xl text-[2rem] font-medium leading-[1.35] text-[var(--text-strong)] sm:text-[2.6rem]">
             {cert.nameKo}
           </h1>
           {cert.nameEn !== cert.nameKo && (
             <p className="mt-3 font-mono text-[12px] text-[var(--text-muted)]">{cert.nameEn}</p>
           )}
+          {/*
+            목록에서는 별만 세우고 근거는 여기서 답니다. 시행처가 매긴 값이 아니라
+            우리가 매긴 값이라, 숫자만 두고 왜 그런지 안 적으면 그냥 우기는 것이 됩니다.
+          */}
+          <p className="cert-difficulty">
+            <CertStars value={cert.difficulty} size={14} />
+            <span className="cert-difficulty-basis">{cert.difficultyBasis}</span>
+            <span className="cert-difficulty-note">팔딘 기준</span>
+          </p>
           <a className="cert-official" href={cert.officialUrl} target="_blank" rel="noreferrer">
             공식 페이지에서 일정·접수 확인 <ArrowUpRight size={13} aria-hidden="true" />
           </a>

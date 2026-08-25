@@ -1,4 +1,6 @@
 import { Link } from 'react-router';
+import { CertMark } from '../components/CertMark';
+import { CertStars } from '../components/CertStars';
 import { LearnRail } from '../components/LearnRail';
 import { PageHeader } from '../components/PageHeader';
 import { Seo } from '../components/Seo';
@@ -7,40 +9,24 @@ import { certs, certsIn, studyCount, type Cert } from '../data/certs';
 /**
  * 자격증 목록. 국내·해외로 나눠 세웁니다.
  *
- * 카드에 **시행 주기와 확인한 날짜**를 함께 적습니다. 목록에서 회차 날짜를
- * 찾으러 온 사람에게 「여기에는 날짜가 없다」를 먼저 알려 주는 편이,
- * 상세로 들어갔다가 되돌아 나오는 것보다 낫습니다.
+ * **카드에는 셋만 둡니다** — 시행처 마크, 이름, 난이도. 예전에는 시행처·등급·주기
+ * 첫 문장·학습 경로 편수·확인 날짜까지 다섯 줄이 들어갔는데, 열넷을 훑는 화면에서
+ * 그것들은 고르는 데 쓰이지 않고 줄만 늘렸습니다. 나머지는 전부 상세에 있습니다.
  */
 function CertCard({ cert }: { cert: Cert }) {
-  const count = studyCount(cert);
-
   return (
     <article className="cert-card">
-      <p className="cert-card-meta">
-        <span>{cert.issuer}</span>
-        <span aria-hidden="true">/</span>
-        <span>{cert.level}</span>
-      </p>
-      <h3 className="cert-card-title">
-        <Link to={`/certs/${cert.id}`} className="card-trigger">
-          {cert.nameKo}
-        </Link>
-      </h3>
-      {cert.nameEn !== cert.nameKo && <p className="cert-card-en">{cert.nameEn}</p>}
-      <p className="cert-card-cadence">{firstSentence(cert.cadence)}</p>
-      <p className="cert-card-foot">
-        {count > 0 ? `학습 경로 ${count}편` : '학습 경로 준비 중'}
-        <span aria-hidden="true"> · </span>
-        <span className="cert-card-verified">{cert.verifiedAt} 확인</span>
-      </p>
+      <CertMark issuer={cert.issuer} />
+      <div className="cert-card-body">
+        <h3 className="cert-card-title">
+          <Link to={`/learn/certs/${cert.id}`} className="card-trigger">
+            {cert.nameKo}
+          </Link>
+        </h3>
+        <CertStars value={cert.difficulty} size={12} />
+      </div>
     </article>
   );
-}
-
-/** 카드에는 주기의 첫 문장만 씁니다. 나머지는 상세에서 읽습니다. */
-function firstSentence(text: string): string {
-  const cut = text.replace(/\*\*/g, '').split(/(?<=[.。])\s/)[0];
-  return cut.length > 74 ? `${cut.slice(0, 72)}…` : cut;
 }
 
 export function CertsPage() {
@@ -71,11 +57,6 @@ export function CertsPage() {
         <LearnRail active="certs" />
 
         <section className="learn-list">
-          <p className="cert-notice">
-            <strong>회차 날짜는 싣지 않습니다.</strong> 접수 기간과 시험일은 해마다 바뀌고, 틀린 날짜는 없는 것보다
-            나쁩니다. 여기에는 시행처가 규칙으로 못 박은 주기만 두고 정확한 일정은 공식 페이지로 보냅니다.
-          </p>
-
           {[
             { title: '국내', items: domestic },
             { title: '해외', items: overseas },
