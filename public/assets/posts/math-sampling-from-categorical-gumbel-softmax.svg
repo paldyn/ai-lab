@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="420" viewBox="0 0 880 420">
+<rect width="880" height="420" rx="12" fill="#0a0a0a"/>
+<text x="60" y="46" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="22" font-weight="700" fill="#e8e8e8">Gumbel-softmax — argmax 를 부드럽게</text>
+<text x="60" y="72" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">같은 z+G 를 τ 로 나눠 softmax 에 넣는다. τ 가 0으로 갈수록 원-핫에 가까워진다.</text>
+<rect x="79.0" y="256.8" width="44" height="63.2" rx="3" fill="#55c555" fill-opacity="0.85"/>
+<text x="101.0" y="246.77999999999997" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e8e8e8" text-anchor="middle">0.436</text>
+<text x="101.0" y="340" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888" text-anchor="middle">t₁</text>
+<rect x="143.0" y="268.2" width="44" height="51.8" rx="3" fill="#55c555" fill-opacity="0.85"/>
+<text x="165.0" y="258.235" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e8e8e8" text-anchor="middle">0.357</text>
+<text x="165.0" y="340" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888" text-anchor="middle">t₂</text>
+<rect x="207.0" y="290.1" width="44" height="29.9" rx="3" fill="#55c555" fill-opacity="0.85"/>
+<text x="229.0" y="280.13" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e8e8e8" text-anchor="middle">0.206</text>
+<text x="229.0" y="340" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888" text-anchor="middle">t₃</text>
+<line x1="69.0" y1="320" x2="261.0" y2="320" stroke="#888" stroke-width="1.5"/>
+<text x="165" y="130" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" fill="#55c555" font-weight="600" text-anchor="middle">τ = 2.0</text>
+<rect x="289.0" y="223.3" width="44" height="96.7" rx="3" fill="#7ec8e3" fill-opacity="0.85"/>
+<text x="311.0" y="213.285" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e8e8e8" text-anchor="middle">0.667</text>
+<text x="311.0" y="340" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888" text-anchor="middle">t₁</text>
+<rect x="353.0" y="276.5" width="44" height="43.5" rx="3" fill="#7ec8e3" fill-opacity="0.85"/>
+<text x="375.0" y="266.5" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e8e8e8" text-anchor="middle">0.300</text>
+<text x="375.0" y="340" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888" text-anchor="middle">t₂</text>
+<rect x="417.0" y="315.2" width="44" height="4.8" rx="3" fill="#7ec8e3" fill-opacity="0.85"/>
+<text x="439.0" y="305.215" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e8e8e8" text-anchor="middle">0.033</text>
+<text x="439.0" y="340" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888" text-anchor="middle">t₃</text>
+<line x1="279.0" y1="320" x2="471.0" y2="320" stroke="#888" stroke-width="1.5"/>
+<text x="375" y="130" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" fill="#7ec8e3" font-weight="600" text-anchor="middle">τ = 0.5</text>
+<rect x="499.0" y="177.6" width="44" height="142.4" rx="3" fill="#e05555" fill-opacity="0.85"/>
+<text x="521.0" y="167.61" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e8e8e8" text-anchor="middle">0.982</text>
+<text x="521.0" y="340" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888" text-anchor="middle">t₁</text>
+<rect x="563.0" y="317.4" width="44" height="2.6" rx="3" fill="#e05555" fill-opacity="0.85"/>
+<text x="585.0" y="307.39" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e8e8e8" text-anchor="middle">0.018</text>
+<text x="585.0" y="340" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888" text-anchor="middle">t₂</text>
+<rect x="627.0" y="318.0" width="44" height="2.0" rx="3" fill="#e05555" fill-opacity="0.85"/>
+<text x="649.0" y="308.0" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e8e8e8" text-anchor="middle">0.000</text>
+<text x="649.0" y="340" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888" text-anchor="middle">t₃</text>
+<line x1="489.0" y1="320" x2="681.0" y2="320" stroke="#888" stroke-width="1.5"/>
+<text x="585" y="130" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" fill="#e05555" font-weight="600" text-anchor="middle">τ = 0.1</text>
+<line x1="695" y1="120" x2="695" y2="350" stroke="#2a2a2a" stroke-width="1"/>
+<rect x="734.0" y="160.0" width="20" height="160.0" rx="2" fill="#e8e8e8" fill-opacity="0.9"/>
+<text x="744.0" y="340" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888" text-anchor="middle">t₁</text>
+<rect x="760.0" y="318.0" width="20" height="2.0" rx="2" fill="#e8e8e8" fill-opacity="0.9"/>
+<text x="770.0" y="340" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888" text-anchor="middle">t₂</text>
+<rect x="786.0" y="318.0" width="20" height="2.0" rx="2" fill="#e8e8e8" fill-opacity="0.9"/>
+<text x="796.0" y="340" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888" text-anchor="middle">t₃</text>
+<line x1="724" y1="320" x2="816" y2="320" stroke="#888" stroke-width="1.5"/>
+<text x="770" y="130" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" fill="#e8e8e8" font-weight="600" text-anchor="middle">argmax</text>
+<text x="770" y="152" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888" text-anchor="middle">τ → 0 의 극한</text>
+<text x="60" y="396" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">τ 가 크면 기울기는 잘 흐르지만 뽑은 값이 원-핫과 멀고, 작으면 그 반대다. 학습 중에 τ 를 줄여 가는 이유다.</text>
+</svg>

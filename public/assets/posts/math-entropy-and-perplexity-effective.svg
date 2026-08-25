@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="440" viewBox="0 0 880 440">
+<rect width="880" height="440" rx="12" fill="#0a0a0a"/>
+<text x="60" y="46" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="22" font-weight="700" fill="#e8e8e8">perplexity 는 «실질 후보 수»다</text>
+<text x="60" y="72" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">확률 0.5 0.25 0.125 0.125 은 후보가 넷이지만, 고르는 어려움은 균등한 3.36 개와 같다.</text>
+<defs><marker id="e4" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto"><path d="M 0 0 L 13 7 L 0 14 z" fill="#7ec8e3"/></marker></defs>
+<rect x="95.0" y="210.0" width="46" height="120.0" rx="3" fill="#7ec8e3" fill-opacity="0.85"/>
+<text x="118.0" y="200.0" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e8e8e8" text-anchor="middle">0.5</text>
+<text x="118.0" y="350" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888" text-anchor="middle">A</text>
+<rect x="163.0" y="270.0" width="46" height="60.0" rx="3" fill="#7ec8e3" fill-opacity="0.85"/>
+<text x="186.0" y="260.0" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e8e8e8" text-anchor="middle">0.25</text>
+<text x="186.0" y="350" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888" text-anchor="middle">B</text>
+<rect x="231.0" y="300.0" width="46" height="30.0" rx="3" fill="#7ec8e3" fill-opacity="0.85"/>
+<text x="254.0" y="290.0" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e8e8e8" text-anchor="middle">0.125</text>
+<text x="254.0" y="350" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888" text-anchor="middle">C</text>
+<rect x="299.0" y="300.0" width="46" height="30.0" rx="3" fill="#7ec8e3" fill-opacity="0.85"/>
+<text x="322.0" y="290.0" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e8e8e8" text-anchor="middle">0.125</text>
+<text x="322.0" y="350" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888" text-anchor="middle">D</text>
+<line x1="85.0" y1="330" x2="355.0" y2="330" stroke="#888" stroke-width="1.5"/>
+<text x="220" y="122" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" fill="#7ec8e3" font-weight="600" text-anchor="middle">치우친 분포 — 후보 4개</text>
+<text x="220" y="384" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e8e8e8" font-weight="600" text-anchor="middle">H = 1.75 비트</text>
+<rect x="535.0" y="258.6" width="46" height="71.4" rx="3" fill="#55c555" fill-opacity="0.85"/>
+<rect x="603.0" y="258.6" width="46" height="71.4" rx="3" fill="#55c555" fill-opacity="0.85"/>
+<rect x="671.0" y="258.6" width="46" height="71.4" rx="3" fill="#55c555" fill-opacity="0.85"/>
+<rect x="739.0" y="304.3" width="46" height="25.7" rx="3" fill="#2f6b2f" fill-opacity="0.85"/>
+<line x1="525.0" y1="330" x2="795.0" y2="330" stroke="#888" stroke-width="1.5"/>
+<text x="660" y="122" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" fill="#55c555" font-weight="600" text-anchor="middle">균등 3.36 개와 같은 어려움</text>
+<text x="660" y="350" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888" text-anchor="middle">1/3.36 씩</text>
+<text x="660" y="384" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e8e8e8" font-weight="600" text-anchor="middle">H = log₂ 3.36 = 1.75 비트</text>
+<line x1="390" y1="250" x2="470" y2="250" stroke="#7ec8e3" stroke-width="2.5" marker-end="url(#e4)"/>
+<text x="430" y="232" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#7ec8e3" font-weight="600" text-anchor="middle">2^H</text>
+<text x="60" y="416" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">엔트로피를 지수로 되돌린 값이 perplexity 다. 「몇 개 중에 고민하고 있는가」로 읽힌다.</text>
+</svg>

@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="470" viewBox="0 0 880 470">
+<rect width="880" height="470" rx="12" fill="#0a0a0a"/>
+<text x="60" y="46" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="22" font-weight="700" fill="#e8e8e8">Gumbel-max 트릭</text>
+<text x="60" y="72" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">로짓마다 Gumbel 잡음을 하나씩 더하고 가장 큰 것을 고르면, 그것이 정확히 softmax 표집이다.</text>
+<defs><marker id="g3" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto"><path d="M 0 0 L 13 7 L 0 14 z" fill="#7ec8e3"/></marker></defs>
+<line x1="82.0" y1="380" x2="354.0" y2="380" stroke="#888" stroke-width="1.5"/>
+<line x1="210" y1="394" x2="210" y2="215" stroke="#888" stroke-width="1.5"/>
+<text x="366.0" y="385" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">g</text>
+<polyline points="90.0,380.0 92.0,380.0 94.0,380.0 96.0,380.0 98.0,380.0 100.0,380.0 102.0,380.0 104.0,380.0 106.0,380.0 108.0,380.0 110.0,380.0 112.0,380.0 114.0,379.9 116.0,379.9 118.0,379.9 120.0,379.8 122.0,379.7 124.0,379.5 126.0,379.3 128.0,379.0 130.0,378.6 132.0,378.1 134.0,377.5 136.0,376.7 138.0,375.7 140.0,374.5 142.0,373.1 144.0,371.4 146.0,369.5 148.0,367.3 150.0,364.8 152.0,362.0 154.0,358.9 156.0,355.6 158.0,351.9 160.0,348.1 162.0,344.0 164.0,339.7 166.0,335.3 168.0,330.8 170.0,326.2 172.0,321.6 174.0,316.9 176.0,312.4 178.0,307.9 180.0,303.5 182.0,299.4 184.0,295.4 186.0,291.6 188.0,288.1 190.0,284.9 192.0,282.0 194.0,279.3 196.0,277.0 198.0,275.0 200.0,273.3 202.0,272.0 204.0,270.9 206.0,270.2 208.0,269.8 210.0,269.6 212.0,269.8 214.0,270.2 216.0,270.8 218.0,271.7 220.0,272.8 222.0,274.1 224.0,275.5 226.0,277.1 228.0,278.9 230.0,280.8 232.0,282.8 234.0,284.9 236.0,287.1 238.0,289.3 240.0,291.6 242.0,294.0 244.0,296.4 246.0,298.8 248.0,301.2 250.0,303.6 252.0,306.0 254.0,308.4 256.0,310.8 258.0,313.1 260.0,315.5 262.0,317.7 264.0,320.0 266.0,322.2 268.0,324.3 270.0,326.4 272.0,328.5 274.0,330.5 276.0,332.5 278.0,334.3 280.0,336.2 282.0,338.0 284.0,339.7 286.0,341.4 288.0,343.0 290.0,344.5 292.0,346.0 294.0,347.5 296.0,348.9 298.0,350.2 300.0,351.5 302.0,352.8 304.0,354.0 306.0,355.1 308.0,356.3 310.0,357.3 312.0,358.3 314.0,359.3 316.0,360.3 318.0,361.1 320.0,362.0 322.0,362.8 324.0,363.6 326.0,364.4 328.0,365.1 330.0,365.8 332.0,366.4 334.0,367.1 336.0,367.7 338.0,368.3 340.0,368.8 342.0,369.3 344.0,369.8 346.0,370.3 348.0,370.8 350.0,371.2" fill="none" stroke="#7ec8e3" stroke-width="2.5"/>
+<line x1="130" y1="376" x2="130" y2="384" stroke="#888" stroke-width="1.5"/>
+<text x="130" y="402" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888" text-anchor="middle">-2</text>
+<line x1="210" y1="376" x2="210" y2="384" stroke="#888" stroke-width="1.5"/>
+<text x="210" y="402" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888" text-anchor="middle">0</text>
+<line x1="290" y1="376" x2="290" y2="384" stroke="#888" stroke-width="1.5"/>
+<text x="290" y="402" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888" text-anchor="middle">2</text>
+<text x="210" y="122" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" fill="#7ec8e3" font-weight="600" text-anchor="middle">Gumbel(0,1) 의 밀도</text>
+<text x="210" y="144" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888" text-anchor="middle">왼쪽은 가파르고 오른쪽 꼬리가 길다</text>
+<text x="210" y="424" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888" text-anchor="middle">G = −log(−log U),  U ~ Uniform(0,1)</text>
+<rect x="470" y="130" width="350" height="62" rx="8" fill="#141414" stroke="#2a2a2a" stroke-width="1"/>
+<text x="490" y="156" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#7ec8e3" font-weight="600">① 로짓</text>
+<text x="490" y="178" xml:space="preserve" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#ffffff">z  = [2.0, 1.0, -1.0]</text>
+<line x1="645" y1="192" x2="645" y2="206" stroke="#888" stroke-width="2"/>
+<rect x="470" y="206" width="350" height="62" rx="8" fill="#141414" stroke="#2a2a2a" stroke-width="1"/>
+<text x="490" y="232" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#7777cc" font-weight="600">② Gumbel 잡음</text>
+<text x="490" y="254" xml:space="preserve" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#ffffff">G  = [0.3, 1.6,  0.4]</text>
+<line x1="645" y1="268" x2="645" y2="282" stroke="#888" stroke-width="2"/>
+<rect x="470" y="282" width="350" height="62" rx="8" fill="#141414" stroke="#2a2a2a" stroke-width="1"/>
+<text x="490" y="308" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#55c555" font-weight="600">③ 더한다</text>
+<text x="490" y="330" xml:space="preserve" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#ffffff">z+G= [2.3, 2.6, -0.6]</text>
+<line x1="645" y1="344" x2="645" y2="358" stroke="#888" stroke-width="2"/>
+<rect x="470" y="358" width="350" height="62" rx="8" fill="#141414" stroke="#2a2a2a" stroke-width="1"/>
+<text x="490" y="384" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e05555" font-weight="600">④ argmax</text>
+<text x="490" y="406" xml:space="preserve" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#ffffff">→ t₂ 를 뽑았다</text>
+<text x="60" y="450" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">1등이 아닌 t₂ 가 뽑힌 것이 정상이다 — 잡음이 매번 순위를 흔든다.</text>
+</svg>

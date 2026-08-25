@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="440" viewBox="0 0 880 440">
+<rect width="880" height="440" rx="12" fill="#0a0a0a"/>
+<text x="60" y="46" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="22" font-weight="700" fill="#e8e8e8">가정이 손실을 정한다</text>
+<text x="60" y="72" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">무엇을 가정했는지가 정해지면 손실함수는 유도의 결과로 따라 나온다.</text>
+<defs><marker id="m4" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto"><path d="M 0 0 L 13 7 L 0 14 z" fill="#55c555"/></marker><marker id="m4b" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto"><path d="M 0 0 L 13 7 L 0 14 z" fill="#7ec8e3"/></marker></defs>
+<text x="60" y="126" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888" font-weight="600">① 무엇을 가정하나</text>
+<text x="330" y="126" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888" font-weight="600">② 한 표본의 가능도</text>
+<text x="620" y="126" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888" font-weight="600">③ −log 를 씌우면</text>
+<rect x="60" y="160" width="250" height="86" rx="8" fill="#141414" stroke="#55c555" stroke-width="1.5"/>
+<text x="80" y="190" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#55c555" font-weight="600">회귀 — 오차가 정규분포</text>
+<text x="80" y="218" xml:space="preserve" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#ffffff">y ~ N(f(x), σ²)</text>
+<rect x="330" y="160" width="250" height="86" rx="8" fill="#141414" stroke="#2a2a2a" stroke-width="1"/>
+<text x="350" y="210" xml:space="preserve" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#ffffff">exp(−(y − f(x))² / 2σ²)</text>
+<rect x="620" y="160" width="200" height="86" rx="8" fill="#141414" stroke="#55c555" stroke-width="1.5"/>
+<text x="640" y="200" xml:space="preserve" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#ffffff">(y − f(x))²</text>
+<text x="640" y="226" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#55c555" font-weight="600">제곱오차 (MSE)</text>
+<line x1="312" y1="203" x2="326" y2="203" stroke="#55c555" stroke-width="2.5" marker-end="url(#m4)"/>
+<line x1="582" y1="203" x2="616" y2="203" stroke="#55c555" stroke-width="2.5" marker-end="url(#m4)"/>
+<rect x="60" y="290" width="250" height="86" rx="8" fill="#141414" stroke="#7ec8e3" stroke-width="1.5"/>
+<text x="80" y="320" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#7ec8e3" font-weight="600">분류 — 정답이 범주분포</text>
+<text x="80" y="348" xml:space="preserve" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#ffffff">y ~ Categorical(q)</text>
+<rect x="330" y="290" width="250" height="86" rx="8" fill="#141414" stroke="#2a2a2a" stroke-width="1"/>
+<text x="350" y="340" xml:space="preserve" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#ffffff">q_target</text>
+<rect x="620" y="290" width="200" height="86" rx="8" fill="#141414" stroke="#7ec8e3" stroke-width="1.5"/>
+<text x="640" y="330" xml:space="preserve" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#ffffff">−log q_target</text>
+<text x="640" y="356" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#7ec8e3" font-weight="600">교차엔트로피</text>
+<line x1="312" y1="333" x2="326" y2="333" stroke="#7ec8e3" stroke-width="2.5" marker-end="url(#m4b)"/>
+<line x1="582" y1="333" x2="616" y2="333" stroke="#7ec8e3" stroke-width="2.5" marker-end="url(#m4b)"/>
+<text x="60" y="412" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">가운데 칸에서 상수 −log(σ√2π) 와 1/2σ² 은 최소화할 자리를 바꾸지 않으므로 떨어져 나간다.</text>
+</svg>

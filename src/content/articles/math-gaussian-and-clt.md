@@ -173,3 +173,5 @@ $$\Phi$$ 를 고른 것도 우연이 아닙니다. 잘 초기화되고 정규화
 읽어주셔서 감사합니다. 😊
 
 **지난 글:** [분산과 표준오차: 미니배치는 추정량이다](/articles/math-variance-and-sampling-error)
+
+**다음 글:** [공분산 행렬과 다변량 정규분포: 상관 있는 표본 만들기](/articles/math-covariance-and-multivariate-gaussian)

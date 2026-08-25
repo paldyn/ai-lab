@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="470" viewBox="0 0 880 470">
+<rect width="880" height="470" rx="12" fill="#0a0a0a"/>
+<text x="60" y="46" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="22" font-weight="700" fill="#e8e8e8">다섯 점으로 공분산 행렬 한 개 만들기</text>
+<text x="60" y="72" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">자료 (5,3) (5,11) (10,10) (15,9) (15,17). 평균은 둘 다 10이다.</text>
+<line x1="110.0" y1="405.0" x2="110.0" y2="115.0" stroke="#444" stroke-width="1"/>
+<line x1="110.0" y1="405.0" x2="400.0" y2="405.0" stroke="#444" stroke-width="1"/>
+<line x1="182.5" y1="405.0" x2="182.5" y2="115.0" stroke="#444" stroke-width="1"/>
+<line x1="110.0" y1="332.5" x2="400.0" y2="332.5" stroke="#444" stroke-width="1"/>
+<line x1="255.0" y1="405.0" x2="255.0" y2="115.0" stroke="#444" stroke-width="1"/>
+<line x1="110.0" y1="260.0" x2="400.0" y2="260.0" stroke="#444" stroke-width="1"/>
+<line x1="327.5" y1="405.0" x2="327.5" y2="115.0" stroke="#444" stroke-width="1"/>
+<line x1="110.0" y1="187.5" x2="400.0" y2="187.5" stroke="#444" stroke-width="1"/>
+<line x1="400.0" y1="405.0" x2="400.0" y2="115.0" stroke="#444" stroke-width="1"/>
+<line x1="110.0" y1="115.0" x2="400.0" y2="115.0" stroke="#444" stroke-width="1"/>
+<line x1="110.0" y1="405.0" x2="411.6" y2="405.0" stroke="#888" stroke-width="1.5"/>
+<line x1="110.0" y1="405.0" x2="110.0" y2="103.39999999999998" stroke="#888" stroke-width="1.5"/>
+<text x="421.6" y="410.0" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">x</text>
+<text x="105.0" y="93.39999999999998" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888" text-anchor="middle">y</text>
+<text x="182.5" y="425.0" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888" text-anchor="middle">5</text>
+<text x="98.0" y="337.5" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888" text-anchor="end">5</text>
+<text x="255.0" y="425.0" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888" text-anchor="middle">10</text>
+<text x="98.0" y="265.0" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888" text-anchor="end">10</text>
+<text x="327.5" y="425.0" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888" text-anchor="middle">15</text>
+<text x="98.0" y="192.5" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888" text-anchor="end">15</text>
+<text x="400.0" y="425.0" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888" text-anchor="middle">20</text>
+<text x="98.0" y="120.0" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888" text-anchor="end">20</text>
+<line x1="255.0" y1="405.0" x2="255.0" y2="115.0" stroke="#7777cc" stroke-width="2" stroke-dasharray="5,3"/>
+<line x1="110.0" y1="260.0" x2="400.0" y2="260.0" stroke="#7777cc" stroke-width="2" stroke-dasharray="5,3"/>
+<text x="263.0" y="119.0" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#7777cc">x̄ = 10</text>
+<text x="408.0" y="265.0" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#7777cc">ȳ = 10</text>
+<circle cx="182.5" cy="361.5" r="5" fill="#55c555"/>
+<text x="196.5" y="385.5" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e8e8e8">(5,3)</text>
+<circle cx="182.5" cy="245.5" r="5" fill="#e05555"/>
+<text x="196.5" y="233.5" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e8e8e8">(5,11)</text>
+<circle cx="255.0" cy="260.0" r="5" fill="#888"/>
+<text x="269.0" y="246.0" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e8e8e8">(10,10)</text>
+<circle cx="327.5" cy="274.5" r="5" fill="#e05555"/>
+<text x="341.5" y="298.5" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e8e8e8">(15,9)</text>
+<circle cx="327.5" cy="158.5" r="5" fill="#55c555"/>
+<text x="341.5" y="146.5" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e8e8e8">(15,17)</text>
+<rect x="560" y="120" width="260" height="250" rx="8" fill="#141414" stroke="#2a2a2a" stroke-width="1"/>
+<text x="580" y="148" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" fill="#e8e8e8" font-weight="600">편차의 곱</text>
+<text x="580" y="178" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">(−5)(−7)</text>
+<text x="710" y="178" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#55c555">= +35</text>
+<text x="580" y="204" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">(−5)(+1)</text>
+<text x="710" y="204" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e05555">= −5</text>
+<text x="580" y="230" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">( 0)( 0)</text>
+<text x="710" y="230" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">=  0</text>
+<text x="580" y="256" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">(+5)(−1)</text>
+<text x="710" y="256" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e05555">= −5</text>
+<text x="580" y="282" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">(+5)(+7)</text>
+<text x="710" y="282" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#55c555">= +35</text>
+<line x1="580" y1="300" x2="800" y2="300" stroke="#2a2a2a" stroke-width="1"/>
+<text x="580" y="324" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e8e8e8">합 = 60</text>
+<text x="580" y="348" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#7ec8e3" font-weight="600">60 ÷ 4 = 15 → 공분산</text>
+<text x="60" y="445" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">초록 점은 곱이 양수, 빨간 점은 음수. 양수 쪽이 크게 이겨서 공분산이 +15로 남았다.</text>
+</svg>

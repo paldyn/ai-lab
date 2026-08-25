@@ -1,0 +1,93 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="580" viewBox="0 0 880 580">
+<rect width="880" height="580" rx="12" fill="#0a0a0a"/>
+<text x="60" y="46" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="22" font-weight="700" fill="#e8e8e8">top-k 와 top-p 가 자르는 자리</text>
+<text x="60" y="72" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">위는 뾰족한 분포, 아래는 평평한 분포. 같은 설정이라도 top-p 는 남기는 개수를 스스로 바꾼다.</text>
+<text x="190" y="112" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" fill="#7ec8e3" font-weight="600" text-anchor="middle">원래 분포</text>
+<text x="440" y="112" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" fill="#55c555" font-weight="600" text-anchor="middle">top-k, k = 3</text>
+<text x="690" y="112" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" fill="#e05555" font-weight="600" text-anchor="middle">top-p, p = 0.9</text>
+<rect x="98.0" y="198.4" width="24" height="73.6" rx="2" fill="#7ec8e3" fill-opacity="0.9"/>
+<text x="110.0" y="290" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e8e8e8" text-anchor="middle">t₁</text>
+<rect x="130.0" y="226.0" width="24" height="46.0" rx="2" fill="#7ec8e3" fill-opacity="0.9"/>
+<text x="142.0" y="290" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e8e8e8" text-anchor="middle">t₂</text>
+<rect x="162.0" y="244.4" width="24" height="27.6" rx="2" fill="#7ec8e3" fill-opacity="0.9"/>
+<text x="174.0" y="290" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e8e8e8" text-anchor="middle">t₃</text>
+<rect x="194.0" y="253.6" width="24" height="18.4" rx="2" fill="#7ec8e3" fill-opacity="0.9"/>
+<text x="206.0" y="290" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e8e8e8" text-anchor="middle">t₄</text>
+<rect x="226.0" y="261.0" width="24" height="11.0" rx="2" fill="#7ec8e3" fill-opacity="0.9"/>
+<text x="238.0" y="290" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e8e8e8" text-anchor="middle">t₅</text>
+<rect x="258.0" y="264.6" width="24" height="7.4" rx="2" fill="#7ec8e3" fill-opacity="0.9"/>
+<text x="270.0" y="290" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e8e8e8" text-anchor="middle">t₆</text>
+<line x1="90.0" y1="272" x2="290.0" y2="272" stroke="#888" stroke-width="1.5"/>
+<text x="190" y="314" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888" text-anchor="middle">뾰족한 분포 — 0.40 0.25 0.15 0.10 0.06 0.04</text>
+<rect x="348.0" y="180.0" width="24" height="92.0" rx="2" fill="#55c555" fill-opacity="0.9"/>
+<text x="360.0" y="290" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e8e8e8" text-anchor="middle">t₁</text>
+<rect x="380.0" y="214.5" width="24" height="57.5" rx="2" fill="#55c555" fill-opacity="0.9"/>
+<text x="392.0" y="290" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e8e8e8" text-anchor="middle">t₂</text>
+<rect x="412.0" y="237.5" width="24" height="34.5" rx="2" fill="#55c555" fill-opacity="0.9"/>
+<text x="424.0" y="290" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e8e8e8" text-anchor="middle">t₃</text>
+<rect x="444.0" y="270.5" width="24" height="1.5" rx="2" fill="#3a3a3a" fill-opacity="0.6"/>
+<text x="456.0" y="290" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#555" text-anchor="middle">t₄</text>
+<rect x="476.0" y="270.5" width="24" height="1.5" rx="2" fill="#3a3a3a" fill-opacity="0.6"/>
+<text x="488.0" y="290" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#555" text-anchor="middle">t₅</text>
+<rect x="508.0" y="270.5" width="24" height="1.5" rx="2" fill="#3a3a3a" fill-opacity="0.6"/>
+<text x="520.0" y="290" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#555" text-anchor="middle">t₆</text>
+<line x1="340.0" y1="272" x2="540.0" y2="272" stroke="#888" stroke-width="1.5"/>
+<text x="440" y="314" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888" text-anchor="middle">셋을 남기고 0.8 로 나눈다</text>
+<rect x="598.0" y="190.2" width="24" height="81.8" rx="2" fill="#e05555" fill-opacity="0.9"/>
+<text x="610.0" y="290" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e8e8e8" text-anchor="middle">t₁</text>
+<rect x="630.0" y="220.9" width="24" height="51.1" rx="2" fill="#e05555" fill-opacity="0.9"/>
+<text x="642.0" y="290" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e8e8e8" text-anchor="middle">t₂</text>
+<rect x="662.0" y="241.3" width="24" height="30.7" rx="2" fill="#e05555" fill-opacity="0.9"/>
+<text x="674.0" y="290" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e8e8e8" text-anchor="middle">t₃</text>
+<rect x="694.0" y="251.6" width="24" height="20.4" rx="2" fill="#e05555" fill-opacity="0.9"/>
+<text x="706.0" y="290" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e8e8e8" text-anchor="middle">t₄</text>
+<rect x="726.0" y="270.5" width="24" height="1.5" rx="2" fill="#3a3a3a" fill-opacity="0.6"/>
+<text x="738.0" y="290" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#555" text-anchor="middle">t₅</text>
+<rect x="758.0" y="270.5" width="24" height="1.5" rx="2" fill="#3a3a3a" fill-opacity="0.6"/>
+<text x="770.0" y="290" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#555" text-anchor="middle">t₆</text>
+<line x1="590.0" y1="272" x2="790.0" y2="272" stroke="#888" stroke-width="1.5"/>
+<text x="690" y="314" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888" text-anchor="middle">누적 0.90 까지 넷</text>
+<line x1="60" y1="358" x2="820" y2="358" stroke="#242424" stroke-width="1"/>
+<rect x="98.0" y="451.5" width="24" height="40.5" rx="2" fill="#7ec8e3" fill-opacity="0.9"/>
+<text x="110.0" y="510" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e8e8e8" text-anchor="middle">t₁</text>
+<rect x="130.0" y="455.2" width="24" height="36.8" rx="2" fill="#7ec8e3" fill-opacity="0.9"/>
+<text x="142.0" y="510" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e8e8e8" text-anchor="middle">t₂</text>
+<rect x="162.0" y="457.0" width="24" height="35.0" rx="2" fill="#7ec8e3" fill-opacity="0.9"/>
+<text x="174.0" y="510" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e8e8e8" text-anchor="middle">t₃</text>
+<rect x="194.0" y="466.2" width="24" height="25.8" rx="2" fill="#7ec8e3" fill-opacity="0.9"/>
+<text x="206.0" y="510" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e8e8e8" text-anchor="middle">t₄</text>
+<rect x="226.0" y="468.1" width="24" height="23.9" rx="2" fill="#7ec8e3" fill-opacity="0.9"/>
+<text x="238.0" y="510" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e8e8e8" text-anchor="middle">t₅</text>
+<rect x="258.0" y="469.9" width="24" height="22.1" rx="2" fill="#7ec8e3" fill-opacity="0.9"/>
+<text x="270.0" y="510" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e8e8e8" text-anchor="middle">t₆</text>
+<line x1="90.0" y1="492" x2="290.0" y2="492" stroke="#888" stroke-width="1.5"/>
+<text x="190" y="534" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888" text-anchor="middle">평평한 분포 — 0.22 0.20 0.19 0.14 0.13 0.12</text>
+<rect x="348.0" y="425.6" width="24" height="66.4" rx="2" fill="#55c555" fill-opacity="0.9"/>
+<text x="360.0" y="510" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e8e8e8" text-anchor="middle">t₁</text>
+<rect x="380.0" y="431.7" width="24" height="60.3" rx="2" fill="#55c555" fill-opacity="0.9"/>
+<text x="392.0" y="510" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e8e8e8" text-anchor="middle">t₂</text>
+<rect x="412.0" y="434.7" width="24" height="57.3" rx="2" fill="#55c555" fill-opacity="0.9"/>
+<text x="424.0" y="510" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e8e8e8" text-anchor="middle">t₃</text>
+<rect x="444.0" y="490.5" width="24" height="1.5" rx="2" fill="#3a3a3a" fill-opacity="0.6"/>
+<text x="456.0" y="510" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#555" text-anchor="middle">t₄</text>
+<rect x="476.0" y="490.5" width="24" height="1.5" rx="2" fill="#3a3a3a" fill-opacity="0.6"/>
+<text x="488.0" y="510" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#555" text-anchor="middle">t₅</text>
+<rect x="508.0" y="490.5" width="24" height="1.5" rx="2" fill="#3a3a3a" fill-opacity="0.6"/>
+<text x="520.0" y="510" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#555" text-anchor="middle">t₆</text>
+<line x1="340.0" y1="492" x2="540.0" y2="492" stroke="#888" stroke-width="1.5"/>
+<text x="440" y="534" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888" text-anchor="middle">여전히 셋 — 나머지를 잘라 버린다</text>
+<rect x="598.0" y="451.5" width="24" height="40.5" rx="2" fill="#e05555" fill-opacity="0.9"/>
+<text x="610.0" y="510" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e8e8e8" text-anchor="middle">t₁</text>
+<rect x="630.0" y="455.2" width="24" height="36.8" rx="2" fill="#e05555" fill-opacity="0.9"/>
+<text x="642.0" y="510" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e8e8e8" text-anchor="middle">t₂</text>
+<rect x="662.0" y="457.0" width="24" height="35.0" rx="2" fill="#e05555" fill-opacity="0.9"/>
+<text x="674.0" y="510" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e8e8e8" text-anchor="middle">t₃</text>
+<rect x="694.0" y="466.2" width="24" height="25.8" rx="2" fill="#e05555" fill-opacity="0.9"/>
+<text x="706.0" y="510" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e8e8e8" text-anchor="middle">t₄</text>
+<rect x="726.0" y="468.1" width="24" height="23.9" rx="2" fill="#e05555" fill-opacity="0.9"/>
+<text x="738.0" y="510" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e8e8e8" text-anchor="middle">t₅</text>
+<rect x="758.0" y="469.9" width="24" height="22.1" rx="2" fill="#e05555" fill-opacity="0.9"/>
+<text x="770.0" y="510" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e8e8e8" text-anchor="middle">t₆</text>
+<line x1="590.0" y1="492" x2="790.0" y2="492" stroke="#888" stroke-width="1.5"/>
+<text x="690" y="534" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888" text-anchor="middle">0.88 로는 모자라 여섯 전부</text>
+</svg>
