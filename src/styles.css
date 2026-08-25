@@ -4660,17 +4660,40 @@ input:focus-visible {
 }
 
 /*
-  기준별 눈금표. 별 개수와 그 개수가 뜻하는 것을 나란히 둡니다.
-  한 줄로 눕히고 넘치면 접히게 두어, 넓은 화면에서는 한 줄로 섭니다.
+  축별 눈금표. 별 개수와 그 개수가 뜻하는 것을 나란히 둡니다. 축 이름을 왼쪽
+  칸에 세우고 다섯 단계를 오른쪽에 눕혀, 넘치면 접히게 둡니다.
+
+  별 자리를 다섯 개 폭으로 맞춰 봤더니 별과 설명이 멀어져, 앞 단계의 설명과
+  뒤 단계의 별이 더 가까워졌습니다. 짝이 붙어 보이는 것이 줄 맞춤보다 중요해
+  별은 설명에 붙이고(7px) 단계 사이만 벌립니다(22px).
 */
 .cert-scale {
-  display: flex;
+  display: grid;
   margin-bottom: 30px;
-  flex-wrap: wrap;
-  gap: 7px 24px;
+  gap: 8px;
 }
 
-.cert-scale li {
+.cert-scale > div {
+  display: grid;
+  grid-template-columns: 40px minmax(0, 1fr);
+  gap: 10px;
+  align-items: baseline;
+}
+
+.cert-scale dt {
+  color: var(--text-dim);
+  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  font-size: 10px;
+  letter-spacing: -0.02em;
+}
+
+.cert-scale dd {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px 22px;
+}
+
+.cert-scale dd span {
   display: flex;
   align-items: center;
   gap: 7px;
@@ -4679,10 +4702,33 @@ input:focus-visible {
 }
 
 /*
-  별 자리를 다섯 개 폭으로 맞춰 봤더니 별과 설명이 멀어져, 앞 항목의 설명과
-  뒤 항목의 별이 더 가까워졌습니다. 짝이 붙어 보이는 것이 줄 맞춤보다 중요해
-  별은 설명에 붙이고(7px) 항목 사이만 벌립니다(24px).
+  좁은 화면에서는 양 끝만 세웁니다. 다섯 단계를 두 축 다 펼치면 375px에서
+  일곱 줄, 164px이 목록 앞에 깔려 카드가 한 장도 안 보입니다. 눈금은 방향을
+  알려 주면 되는 것이라 첫 칸과 마지막 칸이면 충분합니다 — 가운데 셋은
+  화면에서만 감추고 마크업에는 남겨 두어 낭독기에서는 그대로 읽힙니다.
 */
+@media (max-width: 640px) {
+  .cert-scale dd span:nth-child(2),
+  .cert-scale dd span:nth-child(3),
+  .cert-scale dd span:nth-child(4) {
+    display: none;
+  }
+
+  /*
+    가운데를 접었다는 표시. ::after는 마크업의 끝이라 그냥 두면 맨 뒤에 붙습니다.
+    마지막 칸만 order로 뒤로 밀어 「첫 칸 … 마지막 칸」 순서를 만듭니다.
+  */
+  .cert-scale dd::after {
+    align-self: center;
+    color: var(--text-muted);
+    content: '…';
+    font-size: 11.5px;
+  }
+
+  .cert-scale dd span:nth-child(5) {
+    order: 1;
+  }
+}
 
 /* 문장 안에 놓인 별. 목록의 채운 별과 같은 금색·같은 크기입니다. */
 .cert-legend-star {
@@ -4766,6 +4812,29 @@ input:focus-visible {
   font-size: 15px;
   font-weight: 500;
   line-height: 1.45;
+}
+
+/*
+  별 두 줄. 축 이름을 왼쪽에 붙여 둡니다 — 난이도는 별이 많을수록 어렵고
+  취업은 많을수록 좋아서, 이름 없이 두면 둘을 더해 읽게 됩니다.
+*/
+.cert-card-ratings {
+  display: grid;
+  gap: 3px;
+}
+
+.cert-card-ratings > div {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+}
+
+.cert-card-ratings dt {
+  width: 34px;
+  color: var(--text-muted);
+  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  font-size: 10px;
+  letter-spacing: -0.02em;
 }
 
 /*
@@ -4858,22 +4927,44 @@ input:focus-visible {
   gap: 12px;
 }
 
-.cert-difficulty {
+/* 상세의 두 축. 목록과 같은 순서(난이도 → 취업)로 세웁니다. */
+.cert-ratings {
+  display: grid;
+  margin-top: 18px;
+  gap: 7px;
+}
+
+.cert-ratings > div {
+  display: grid;
+  grid-template-columns: 44px minmax(0, 1fr);
+  gap: 12px;
+  align-items: baseline;
+}
+
+.cert-ratings dt {
+  color: var(--text-muted);
+  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  font-size: 10px;
+  letter-spacing: -0.02em;
+}
+
+.cert-ratings dd {
   display: flex;
-  margin-top: 16px;
   flex-wrap: wrap;
   align-items: center;
   gap: 10px;
 }
 
-.cert-difficulty-basis {
+.cert-ratings dd span {
   color: var(--text-dim);
   font-size: 13px;
   line-height: 1.7;
 }
 
 /* 우리가 매긴 값이라는 표시. 시행처가 준 등급과 헷갈리면 안 됩니다. */
-.cert-difficulty-note {
+.cert-ratings-note {
+  justify-self: start;
+  margin-top: 3px;
   border: 1px solid var(--border);
   padding: 2px 7px;
   color: var(--text-muted);

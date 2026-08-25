@@ -1,5 +1,5 @@
 import { Star } from 'lucide-react';
-import type { CertDifficulty } from '../data/certs';
+import type { CertRating } from '../data/certs';
 
 
 
@@ -25,7 +25,7 @@ export function CertStars({
   size = 13,
   total = 5,
 }: {
-  value: CertDifficulty;
+  value: CertRating;
   size?: number;
   total?: number;
 }) {

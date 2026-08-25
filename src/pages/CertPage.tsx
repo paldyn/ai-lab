@@ -76,11 +76,23 @@ function CertView({ cert }: { cert: Cert }) {
             목록에서는 별만 세우고 근거는 여기서 답니다. 시행처가 매긴 값이 아니라
             우리가 매긴 값이라, 숫자만 두고 왜 그런지 안 적으면 그냥 우기는 것이 됩니다.
           */}
-          <p className="cert-difficulty">
-            <CertStars value={cert.difficulty} size={14} />
-            <span className="cert-difficulty-basis">{cert.difficultyBasis}</span>
-            <span className="cert-difficulty-note">매긴 값</span>
-          </p>
+          <dl className="cert-ratings">
+            <div>
+              <dt>난이도</dt>
+              <dd>
+                <CertStars value={cert.difficulty} size={14} />
+                <span>{cert.difficultyBasis}</span>
+              </dd>
+            </div>
+            <div>
+              <dt>취업</dt>
+              <dd>
+                <CertStars value={cert.employment} size={14} />
+                <span>{cert.employmentBasis}</span>
+              </dd>
+            </div>
+            <p className="cert-ratings-note">매긴 값</p>
+          </dl>
           <a className="cert-official" href={cert.officialUrl} target="_blank" rel="noreferrer">
             공식 페이지에서 일정·접수 확인 <ArrowUpRight size={13} aria-hidden="true" />
           </a>

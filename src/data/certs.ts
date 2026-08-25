@@ -30,19 +30,39 @@ export type CertRegion = '국내' | '해외';
 export type CertLevel = '입문' | '중급' | '고급';
 
 /**
- * 별 다섯 개로 그리는 난이도. **우리 판단이지 시행처가 매긴 값이 아닙니다.**
+ * 별 다섯 개로 그리는 눈금. 난이도와 취업 활용도가 함께 씁니다.
+ * **우리 판단이지 시행처가 매긴 값이 아닙니다.**
  *
- * `level` 셋만으로는 같은 「중급」 안에서 실기 코딩이 있는 시험과 객관식만
- * 보는 시험이 한 칸에 묶여 목록에서 갈리지 않습니다. 무엇을 보고 매겼는지는
- * `difficultyBasis`에 한 줄로 적고 상세 화면에 그대로 내보냅니다.
+ * **반 칸을 씁니다.** 눈금이 다섯뿐이면 「입문이지만 구현 비중이 있는」 자리가
+ * 갈 곳이 없어 위나 아래로 밀려납니다. AI-900이 그 자리라 난이도가 1.5입니다.
+ *
+ * ## 난이도 — 응시자격·시험 형식·권장 경력
  *
  * 1 사전 지식 없이 며칠~2주 · 2 입문서 한 권 · 3 실무 개념과 도구 경험
  * 4 실기·코딩이 있거나 범위가 넓음 · 5 응시자격이 걸려 있거나 서술형 실기
  *
- * **반 칸을 씁니다.** 눈금이 다섯뿐이면 「입문이지만 구현 비중이 있는」 자리가
- * 갈 곳이 없어 위나 아래로 밀려납니다. AI-900이 그 자리라 1.5입니다.
+ * `level` 셋만으로는 같은 「중급」 안에서 실기 코딩이 있는 시험과 객관식만
+ * 보는 시험이 한 칸에 묶여 목록에서 갈리지 않습니다.
+ *
+ * ## 취업 활용도 — 국내 채용·인사 제도에서 실제로 쓰이는가
+ *
+ * **법적 지위를 먼저 보고 그다음에 등급을 봅니다.** 느낌으로 매기면 「AWS가
+ * 요즘 인기니까」 같은 것이 들어오는데, 지위는 확인할 수 있는 사실입니다.
+ *
+ * 5 국가기술자격 — 공공기관 가산점·학점은행 학점이 제도로 명문화
+ * 4 국가공인 민간자격 — 공인 번호가 있고 국내 공고에 상시 등장
+ * 3 벤더 공식 자격 + 국내 채용에 흔한 스택, 어소시에이트 이상
+ * 2 벤더 자격이지만 국내 언급이 드물거나 파운데이셔널 등급
+ * 1 채용에서 사실상 쓰이지 않음
+ *
+ * 반 칸은 **같은 지위 안의 등급 차이**에 씁니다. 국가공인 민간자격 넷 가운데
+ * 전문가 등급(ADP·SQLP)이 4.5이고 준전문가·개발자 등급이 4입니다. 벤더 쪽에서는
+ * 어소시에이트인데 국내 공고 언급을 확인하지 못한 셋이 2.5입니다.
+ *
+ * 근거는 `employmentBasis`에 한 줄로 적습니다. 채용 공고 건수처럼 검색 시점에
+ * 따라 변하는 수치는 쓰지 않습니다 — 확인한 날 하루만 맞는 값입니다.
  */
-export type CertDifficulty = 1 | 1.5 | 2 | 2.5 | 3 | 3.5 | 4 | 4.5 | 5;
+export type CertRating = 1 | 1.5 | 2 | 2.5 | 3 | 3.5 | 4 | 4.5 | 5;
 
 /**
  * 시행처 마크. 목록 카드 왼쪽에 섭니다.
@@ -120,10 +140,14 @@ export interface Cert {
   issuer: string;
   region: CertRegion;
   level: CertLevel;
-  /** 별 다섯 개 눈금. 우리 판단입니다. */
-  difficulty: CertDifficulty;
+  /** 시험이 얼마나 어려운가. 우리 판단입니다. */
+  difficulty: CertRating;
   /** 그 숫자를 매긴 근거 한 줄. 상세 화면에 그대로 나갑니다. */
   difficultyBasis: string;
+  /** 국내 채용·인사 제도에서 얼마나 쓰이는가. 우리 판단입니다. */
+  employment: CertRating;
+  /** 그 숫자를 매긴 근거 한 줄. 법적 지위가 1차 근거입니다. */
+  employmentBasis: string;
   /** 무엇을 재는 시험인가. 시행처의 정의를 근거로 씁니다. */
   whatItMeasures: string;
   audience?: string;
@@ -154,6 +178,8 @@ export const certs: Cert[] = [
     level: '중급',
     difficulty: 4,
     difficultyBasis: '응시자격이 있고 필기를 붙어도 파이썬·R 작업형 실기가 남습니다.',
+    employment: 5,
+    employmentBasis: '국가기술자격 기사 등급이라 제도상 우대가 명문화돼 있습니다.',
     whatItMeasures:
       '공식 자격소개는 빅데이터분석기사를 "빅데이터 이해를 기반으로 빅데이터 분석 기획, 빅데이터 수집·저장·처리, 빅데이터 분석 및 시각화를 수행하는 실무자"로 ' +
       '정의한다. 직무는 대용량의 데이터 집합으로부터 유용한 정보를 찾고 결과를 예측하기 위해 정형/비정형 대용량 데이터를 구축·탐색·분석하고 시각화를 수행하는 ' +
@@ -300,6 +326,8 @@ export const certs: Cert[] = [
     level: '입문',
     difficulty: 2,
     difficultyBasis: '응시자격이 없고 객관식 50문항으로 개념만 봅니다.',
+    employment: 4,
+    employmentBasis: '자격기본법 근거의 국가공인 민간자격이고 준전문가 등급입니다.',
     whatItMeasures:
       '공식 정의는 "데이터 이해에 대한 기본지식을 바탕으로 데이터분석 기획 및 데이터분석 등의 직무를 수행하는 실무자"다. 재는 직무는 둘로 적혀 있다 — 분석 ' +
       '기회를 발굴해 분석과제를 정의하고 분석로드맵과 성과 관리를 세우는 \'데이터 기획\', 그리고 분석 요건을 도출하고 설계·모델링·검증 및 테스트·적용까지 가는 ' +
@@ -399,6 +427,8 @@ export const certs: Cert[] = [
     level: '고급',
     difficulty: 5,
     difficultyBasis: '학위·경력 응시자격에 서술형 필기와 실기까지 붙습니다.',
+    employment: 4.5,
+    employmentBasis: '같은 국가공인 자격의 전문가 등급이고 학점은행 30학점입니다.',
     whatItMeasures:
       '공식 정의는 "데이터 이해 및 처리 기술에 대한 기본지식을 바탕으로 데이터분석 기획, 데이터분석, 데이터 시각화 업무를 수행하고 이를 통해 프로세스 혁신 및 ' +
       '마케팅 전략 결정 등의 과학적 의사결정을 지원하는 직무를 수행하는 전문가"다. 직무는 데이터 기획, 데이터분석, 데이터 시각화 셋으로 나뉜다. 필기로 이론을 ' +
@@ -551,6 +581,8 @@ export const certs: Cert[] = [
     level: '입문',
     difficulty: 2,
     difficultyBasis: '응시자격이 없고 객관식 50문항을 90분에 봅니다.',
+    employment: 4,
+    employmentBasis: '국가공인 SQL 자격의 개발자 등급이고 학점은행 6학점입니다.',
     whatItMeasures:
       '공식 정의로는 "데이터베이스와 데이터 모델링에 대한 지식을 바탕으로 응용 소프트웨어를 개발하면서 데이터를 조작하고 추출하는데 있어서 정확하고 최적의 성능을 ' +
       '발휘하는 SQL을 작성할 수 있는 개발자"를 가려내는 시험이다. 재는 것은 두 갈래다 — 엔터티·속성·관계·식별자·정규화 같은 데이터 모델을 읽고 분석하는 ' +
@@ -644,6 +676,8 @@ export const certs: Cert[] = [
     level: '중급',
     difficulty: 3,
     difficultyBasis: '응시자격은 없지만 전 등급이 100% 실기 평가입니다.',
+    employment: 4,
+    employmentBasis: '국가공인 민간자격이지만 공인된 등급은 Associate 하나입니다.',
     whatItMeasures:
       'AI 기술에 대한 이해뿐 아니라 그것을 실제로 활용할 수 있는 능력을 평가한다 — 공식 설명은 "단순한 지식이 아닌 실행할 수 있는 역량"을 증명한다고 ' +
       '적는다. 평가의 축은 셋이다. 기업·공공 데이터와 Tabular/Image/Text 데이터를 해석하고 다룰 수 있는가, 데이터 탐색에서 데이터 분석·AI ' +
@@ -871,6 +905,8 @@ export const certs: Cert[] = [
     level: '입문',
     difficulty: 1,
     difficultyBasis: '선행 요건 없는 파운데이셔널 등급, 객관식 65문항을 90분에 봅니다.',
+    employment: 2,
+    employmentBasis: 'AWS 파운데이셔널 등급이고 비기술 직군을 대상으로 합니다.',
     whatItMeasures:
       'AI·머신러닝·생성형 AI의 개념과 방법, 전략을 일반론과 AWS 양쪽에서 이해하고 있는지를 재는 파운데이셔널(입문) 등급 자격증이다. 특정 직무에 매이지 ' +
       '않는 시험이며, AI/ML 솔루션을 직접 만들지는 않더라도 사용하는 사람을 대상으로 한다. 검증 항목은 넷이다 — 개념·방법·전략의 이해, 업무 문제에 ' +
@@ -1040,6 +1076,8 @@ export const certs: Cert[] = [
     level: '중급',
     difficulty: 3,
     difficultyBasis: '응시 요건은 없지만 ML 파이프라인 실무를 전제한 130분 시험입니다.',
+    employment: 3,
+    employmentBasis: 'AWS 어소시에이트 등급이고 AWS 스택은 국내 채용에 흔합니다.',
     whatItMeasures:
       'AWS 클라우드에서 머신러닝 솔루션과 파이프라인을 만들고, 운영에 올리고, 배포하고, 유지하는 능력을 검증한다. 데이터 준비부터 모델 개발, 배포와 ' +
       '오케스트레이션, 모니터링·유지보수·보안까지 ML 워크플로 전 단계를 다룬다. 반대로 공식 가이드가 범위 밖으로 못 박은 것은 종단간 ML 솔루션의 ' +
@@ -1166,6 +1204,8 @@ export const certs: Cert[] = [
     level: '고급',
     difficulty: 4,
     difficultyBasis: '객관식뿐이지만 경력 3년을 권장하고 범위가 Vertex AI 전반입니다.',
+    employment: 3,
+    employmentBasis: '구글 클라우드 프로페셔널 등급이고 공고에 AWS와 함께 오릅니다.',
     whatItMeasures:
       'Google Cloud 기능과 전통적인 ML 기법을 함께 써서 AI 솔루션을 만들고, 평가하고, 프로덕션에 올리고, 최적화하는 능력을 잰다. 크고 복잡한 ' +
       '데이터를 다루며 재사용 가능한 코드를 쓰고, 파운데이션 모델 기반 솔루션을 설계·운영하는 것까지 포함한다. 모델 아키텍처, 데이터·ML 파이프라인 구성, ' +
@@ -1327,6 +1367,8 @@ export const certs: Cert[] = [
     level: '중급',
     difficulty: 2,
     difficultyBasis: '선행 자격 없는 어소시에이트 등급, 객관식을 1시간에 봅니다.',
+    employment: 2.5,
+    employmentBasis: '어소시에이트지만 입문 시험이고 국내 공고 언급을 못 찾았습니다.',
     whatItMeasures:
       '생성형 AI와 대규모 언어 모델(LLM)을 NVIDIA 솔루션 위에서 다루는 AI 애플리케이션을 개발·통합·유지하는 데 필요한 기초 개념을 검증한다. ' +
       'NVIDIA 자격증 체계의 입문(entry-level) 등급 자격증이다. 특정 제품 조작 능력보다 머신러닝·AI 핵심 지식부터 신뢰할 수 있는 AI까지 넓게 ' +
@@ -1428,6 +1470,8 @@ export const certs: Cert[] = [
     level: '중급',
     difficulty: 3,
     difficultyBasis: '응시자격은 없지만 실무 6개월과 파이썬 경험을 권장합니다.',
+    employment: 3,
+    employmentBasis: '어소시에이트 등급이고 국내 고객사가 늘어 데이터 직군에서 통합니다.',
     whatItMeasures:
       'Databricks에서 기본적인 머신러닝 작업을 수행할 수 있는지를 재는 시험이다. 공식 설명에 따르면 AutoML·Unity Catalog·MLflow 일부 ' +
       '기능 같은 Databricks의 머신러닝 기능을 이해하고 쓸 수 있는지, 데이터를 탐색하고 피처 엔지니어링을 할 수 있는지를 본다. 여기에 더해 ' +
@@ -1556,6 +1600,8 @@ export const certs: Cert[] = [
     level: '중급',
     difficulty: 3,
     difficultyBasis: '응시자격은 없지만 생성형 AI 실무 6개월을 권장합니다.',
+    employment: 2.5,
+    employmentBasis: '같은 등급이지만 신설이라 국내 공고 언급을 못 찾았습니다.',
     whatItMeasures:
       'Databricks를 써서 LLM 기반 솔루션을 설계하고 구현하는 능력을 잰다. 복잡한 요구사항을 다룰 수 있는 작업으로 쪼개는 문제 분해와, 지금의 생성형 ' +
       'AI 지형에서 알맞은 모델·도구·접근법을 고르는 판단을 함께 본다. 시험 가이드는 Vector Search, Model Serving, MLflow, ' +
@@ -1714,6 +1760,8 @@ export const certs: Cert[] = [
     level: '고급',
     difficulty: 5,
     difficultyBasis: 'SQLD 취득 같은 응시자격이 걸리고 필기 안에 실기 문항이 있습니다.',
+    employment: 4.5,
+    employmentBasis: '같은 SQL 자격의 전문가 등급이고 학점은행 12학점입니다.',
     whatItMeasures:
       '시행처 정의로는 데이터베이스와 데이터모델링 지식을 바탕으로 정확하고 최적의 성능을 내는 SQL을 작성하고, SQL을 내포하는 데이터베이스 프로그램이나 응용 ' +
       '소프트웨어의 성능을 최적화하거나 이를 지원할 수 있는 데이터베이스 개체(뷰, 인덱스 등)의 설계와 구현 직무를 수행하는 전문가를 가린다. 공식 직무는 셋 — ' +
@@ -1857,6 +1905,8 @@ export const certs: Cert[] = [
     level: '입문',
     difficulty: 1.5,
     difficultyBasis: '입문 등급이지만 배점의 55~60%가 Foundry 구현입니다.',
+    employment: 2,
+    employmentBasis: 'Microsoft가 Fundamentals로 분류한 입문 등급입니다.',
     whatItMeasures:
       'AI 솔루션 개발 경력 초입을 대상으로 한 입문 인증이다. 공식 설명은 "Azure AI 솔루션에 대한 개념 지식과 그것을 다루는 기초 기술 역량"을 본다고 ' +
       '적는다. 두 축이다 — 책임 있는 AI 6원칙, 생성형 AI 모델의 작동 방식과 모델 선택·배포 구성, 생성형·에이전트형 AI를 포함한 워크로드 갈래를 ' +
@@ -1972,6 +2022,8 @@ export const certs: Cert[] = [
     level: '중급',
     difficulty: 3.5,
     difficultyBasis: '응시 요건은 없지만 파이썬 앱 개발 경험을 전제합니다.',
+    employment: 2.5,
+    employmentBasis: '어소시에이트지만 아직 베타라 국내 공고 언급을 못 찾았습니다.',
     whatItMeasures:
       'Microsoft Foundry를 활용해 에이전트와 AI 솔루션을 설계·개발·배포하는 Azure AI 엔지니어 역량을 검증한다. 공식 설명은 ' +
       '"designing, developing, and deploying advanced Azure AI solutions using Python and ' +

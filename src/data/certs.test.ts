@@ -100,6 +100,40 @@ describe('자격증 데이터', () => {
     expect(bad.map((cert) => cert.id)).toEqual([]);
   });
 
+  it('취업 활용도가 1~5 사이의 반 칸 단위다', () => {
+    const odd = certs.filter(
+      (cert) => !Number.isInteger(cert.employment * 2) || cert.employment < 1 || cert.employment > 5,
+    );
+    expect(odd.map((cert) => `${cert.id}: ${cert.employment}`)).toEqual([]);
+  });
+
+  it('취업 활용도 근거가 한 줄로 적혀 있다', () => {
+    const bad = certs.filter(
+      (cert) => cert.employmentBasis.trim().length < 10 || cert.employmentBasis.includes('\n'),
+    );
+    expect(bad.map((cert) => cert.id)).toEqual([]);
+  });
+
+  /*
+    취업 눈금은 법적 지위가 1차 근거이고 국가기술자격이 그 꼭대기입니다.
+    지위가 낮은 자격증이 더 높은 별을 받으면 눈금이 뒤집힌 것입니다.
+  */
+  it('국가기술자격보다 높은 취업 별은 없다', () => {
+    const top = certs.find((cert) => cert.id === 'bigdata-analysis-engineer');
+    expect(top).toBeDefined();
+    const over = certs.filter((cert) => cert.employment > top!.employment);
+    expect(over.map((cert) => `${cert.id}: ${cert.employment}`)).toEqual([]);
+  });
+
+  /*
+    근거에 채용 공고 건수 같은 수치를 적으면 확인한 날 하루만 맞는 값이 됩니다.
+    「1,200건」처럼 세는 표현이 들어왔는지 봅니다.
+  */
+  it('취업 근거에 검색 건수가 없다', () => {
+    const counted = certs.filter((cert) => /[\d,]+\s*(건|개)\b|[\d,]+\s*(건|개)의/.test(cert.employmentBasis));
+    expect(counted.map((cert) => cert.id)).toEqual([]);
+  });
+
   /*
     카드에서 시행처를 알려 주는 것이 마크뿐이라, 표에 없는 시행처가 들어오면
     글자 두 개짜리 대체 마크가 조용히 섭니다. 여기서 잡습니다.
