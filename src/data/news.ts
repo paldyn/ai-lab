@@ -172,6 +172,20 @@ export const globalNewsUpdatedAt = '2026-08-22';
  */
 const entries: NewsItem[] = [
   {
+    id: 'gpt-5-6-in-kiro',
+    source: 'OpenAI',
+    kind: 'model',
+    title: 'GPT-5.6 제품군, 개발 에이전트 Kiro에서 사용 가능',
+    summary:
+      'GPT-5.6 제품군의 Sol·Terra·Luna를 개발 에이전트 Kiro에서 쓸 수 있게 됐다. Terminal-Bench 2.1 테스트에서 GPT-5.6 ' +
+      'Terra가 성공한 작업의 비용이 약 82% 줄었다.',
+    publishedAt: '2026-08-24',
+    collectedAt: '2026-08-25',
+    category: 'Frontier',
+    signal: '플랫폼 배포',
+    url: 'https://openai.com/index/gpt-5-6-in-kiro',
+  },
+  {
     id: 'from-atari-to-eve-online-building-on-15-years-of-ai-research-in-games',
     source: 'Google DeepMind',
     kind: 'company',
@@ -520,6 +534,48 @@ const entries: NewsItem[] = [
     url: 'https://blog.google/products-and-platforms/products/workspace/sheets-canvas-for-google-sheets-spreadsheets/',
   },
   {
+    id: 'builders-guide-to-gpt-5-6',
+    source: 'OpenAI',
+    kind: 'model',
+    title: 'OpenAI, 스타트업 사례로 정리한 GPT-5.6 빌더 가이드',
+    summary:
+      'OpenAI가 프로덕션에서 GPT-5.6을 쓰는 스타트업 사례로 빌더 가이드를 냈다. 낮은 추론 강도로 이전 세대를 앞서는 사례와 Responses API의 새 ' +
+      '기능들을 다룬다.',
+    publishedAt: '2026-08-13',
+    collectedAt: '2026-08-25',
+    category: 'Frontier',
+    signal: '에이전틱 워크플로',
+    url: 'https://openai.com/index/builders-guide-to-gpt-5-6',
+  },
+  {
+    id: 'dali-rajic-chief-revenue-officer',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'OpenAI, 최고매출책임자에 Dali Rajic 선임',
+    summary:
+      'OpenAI가 글로벌 매출 조직을 이끌 최고매출책임자로 Dali Rajic을 선임했다. 직전에 Wiz의 사장 겸 최고운영책임자였고, 기존 책임자 Denise ' +
+      'Dresser는 인수인계를 거쳐 퇴사한다.',
+    publishedAt: '2026-08-13',
+    collectedAt: '2026-08-25',
+    category: 'Corporate',
+    signal: '경영진 선임',
+    url: 'https://openai.com/index/dali-rajic-chief-revenue-officer',
+  },
+  {
+    id: 'previewing-ultrafast',
+    source: 'OpenAI',
+    kind: 'model',
+    title: 'OpenAI, GPT-5.6 Sol을 14배 빠르게 돌리는 Ultrafast 프리뷰',
+    summary:
+      'OpenAI가 GPT-5.6 Sol을 표준 처리보다 최대 14배 빠르게 돌리는 서비스 티어 Ultrafast를 프리뷰로 공개했다. Cerebras가 지원하며 초당 ' +
+      '최대 750개 출력 토큰을 낸다.',
+    publishedAt: '2026-08-13',
+    collectedAt: '2026-08-25',
+    category: 'Frontier',
+    signal: '저지연 추론',
+    url: 'https://openai.com/index/previewing-ultrafast',
+  },
+  {
     id: 'putting-sign-language-ai-into-users-hands',
     source: 'Google DeepMind',
     kind: 'model',
@@ -543,6 +599,34 @@ const entries: NewsItem[] = [
       logo: 'assets/gemini.svg',
       tone: 'gemini',
     },
+  },
+  {
+    id: 'how-enterprises-put-ai-to-work',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'OpenAI, 기업 AI가 보조에서 실행으로 옮겨 갔다는 보고서 둘',
+    summary:
+      'OpenAI가 기업의 AI 사용을 다룬 보고서 두 편을 냈다. 상위 10%인 프런티어 기업은 활성 이용자당 출력 토큰이 일반 기업의 8.3배로 1월의 2.6배에서 ' +
+      '벌어졌다.',
+    publishedAt: '2026-08-12',
+    collectedAt: '2026-08-25',
+    category: 'Research',
+    signal: '경제 연구',
+    url: 'https://openai.com/index/how-enterprises-put-ai-to-work',
+  },
+  {
+    id: 'ringcentral',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'RingCentral, 전사 AI-Native Challenge로 개발 방식 전환',
+    summary:
+      'RingCentral이 전 직원에게 ChatGPT Work와 Codex를 주고 완결된 프로젝트를 만들게 하는 AI-Native Challenge를 열었다. 비기술 ' +
+      '직원과 임원을 포함해 수천 명이 결과물을 냈다.',
+    publishedAt: '2026-08-12',
+    collectedAt: '2026-08-25',
+    category: 'Product',
+    signal: '기업 도입 사례',
+    url: 'https://openai.com/index/ringcentral',
   },
   {
     id: 'daybreak-models-are-now-available-on-aws',
@@ -658,6 +742,62 @@ const entries: NewsItem[] = [
     url: 'https://openai.com/index/premium-seats-chatgpt-business',
   },
   {
+    id: 'building-an-ai-native-finance-function',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'OpenAI CFO가 밝힌 AI 네이티브 재무 조직 다섯 교훈',
+    summary:
+      'OpenAI CFO Sarah Friar가 재무 조직을 AI 중심으로 다시 짜며 얻은 교훈 다섯을 정리했다. 결산 0일과 상시 갱신되는 예측을 목표로 잡았다고 ' +
+      '밝혔다.',
+    publishedAt: '2026-08-10',
+    collectedAt: '2026-08-25',
+    category: 'Product',
+    signal: 'AI 네이티브 재무',
+    url: 'https://openai.com/index/building-an-ai-native-finance-function',
+  },
+  {
+    id: 'model-ml',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'Model ML, GPT-5.6 Sol로 금융 자료 제작 토큰 21% 절감',
+    summary:
+      'Model ML이 편집 가능한 PowerPoint·Excel을 만드는 금융 워크플로에 GPT-5.6 Sol을 썼다. 자체 벤치마크에서 덱당 토큰이 Fable 5보다 ' +
+      '21%, 워크북당 토큰이 Opus 5보다 36% 적었다.',
+    publishedAt: '2026-08-10',
+    collectedAt: '2026-08-25',
+    category: 'Product',
+    signal: '금융 에이전트',
+    url: 'https://openai.com/index/model-ml',
+  },
+  {
+    id: 'virgin-atlantic-chatgpt-work',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'Virgin Atlantic, ChatGPT Work로 고객 여정 조사 단축',
+    summary:
+      'Virgin Atlantic이 5개년 디지털 전략을 짜며 ChatGPT Work로 경쟁사 고객 여정을 조사해, 몇 주 걸리던 조사를 몇 시간으로 줄였다. 인증 ' +
+      '대시보드와 제품 기획 도구도 만들고 있다.',
+    publishedAt: '2026-08-10',
+    collectedAt: '2026-08-25',
+    category: 'Product',
+    signal: '기업 도입 사례',
+    url: 'https://openai.com/index/virgin-atlantic/chatgpt-work',
+  },
+  {
+    id: 'zapier',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'Zapier, ChatGPT Work로 리드 퍼널 점검 자동화',
+    summary:
+      'Zapier 엔터프라이즈 마케팅 팀이 ChatGPT Work로 리드 퍼널 최적화를 자동화했다. 매달 리드 수천 건의 품질 점검을 자동으로 돌려 문제를 찾고 고치며, ' +
+      '그 효과를 매달 일곱 자리 규모의 파이프라인으로 정량화해 영업에 넘긴다.',
+    publishedAt: '2026-08-10',
+    collectedAt: '2026-08-25',
+    category: 'Product',
+    signal: '기업 도입 사례',
+    url: 'https://openai.com/index/zapier',
+  },
+  {
     id: 'improving-fable-5-s-biology-safeguards',
     source: 'Anthropic',
     kind: 'company',
@@ -701,6 +841,20 @@ const entries: NewsItem[] = [
     category: 'Product',
     signal: '관리형 에이전트',
     url: 'https://platform.claude.com/docs/en/release-notes/overview#august-7-2026',
+  },
+  {
+    id: 'hsp-gruppe',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'HSP GRUPPE, ChatGPT Enterprise로 세무 자문 업무 재편',
+    summary:
+      '독일 세무·회계·법률 사무소 네트워크 HSP GRUPPE가 ChatGPT Enterprise를 업무에 넣었다. 직원의 98.6%가 생산성이 올랐다고 답했고 여섯 달 ' +
+      '동안 대화가 50만 건을 넘었다.',
+    publishedAt: '2026-08-07',
+    collectedAt: '2026-08-25',
+    category: 'Product',
+    signal: '기업 도입 사례',
+    url: 'https://openai.com/index/hsp-gruppe',
   },
   {
     id: 'improving-gpt-5-6-sol-in-chatgpt',
@@ -783,6 +937,20 @@ const entries: NewsItem[] = [
     url: 'https://blog.google/products/ads-commerce/google-ads-analytics-ai-updates/',
   },
   {
+    id: 'how-the-world-is-putting-chatgpt-to-work',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'OpenAI, ChatGPT 사용 양상을 국가별로 처음 공개',
+    summary:
+      'OpenAI가 국가별 ChatGPT 사용 데이터를 처음 공개했다. 업무에서는 결과물을 만드는 사용이 업무 밖의 두 배를 넘고, 멀티미디어가 전 세계 메시지의 ' +
+      '7.8%로 가장 빠르게 늘었다.',
+    publishedAt: '2026-08-06',
+    collectedAt: '2026-08-25',
+    category: 'Research',
+    signal: '경제 연구',
+    url: 'https://openai.com/index/how-the-world-is-putting-chatgpt-to-work',
+  },
+  {
     id: 'claude-platform-august-5-2026',
     source: 'Anthropic',
     kind: 'company',
@@ -838,6 +1006,48 @@ const entries: NewsItem[] = [
     category: 'Corporate',
     signal: '경영진 선임',
     url: 'https://www.anthropic.com/news/tino-cuellar',
+  },
+  {
+    id: 'apple-is-getting-this-wrong',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'OpenAI, Apple의 영업비밀 소송에 공개 반박문',
+    summary:
+      'OpenAI가 Apple의 영업비밀 침해 소송을 두고 공개 반박문을 냈다. 2월에 연락했다는 Apple의 주장은 외부 변호인이 엉뚱한 사람에게 메일을 보낸 것이었고 ' +
+      '법무 총괄과 논의했다는 주장도 없었던 일임을 Apple이 인정했다고 밝혔다.',
+    publishedAt: '2026-08-03',
+    collectedAt: '2026-08-25',
+    category: 'Corporate',
+    signal: '영업비밀 소송',
+    url: 'https://openai.com/index/apple-is-getting-this-wrong',
+  },
+  {
+    id: 'circles',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'Circles, OpenAI API로 통신 개인화해 ARPU 22% 증가',
+    summary:
+      '싱가포르 기술기업 Circles가 OpenAI API로 AI Concierge를 만들었다. 싱가포르에서 ARPU가 22% 늘고 이탈률이 9% 줄었으며 다중 에이전트 ' +
+      '구조 CareX의 자율 해결률은 65%다.',
+    publishedAt: '2026-08-03',
+    collectedAt: '2026-08-25',
+    category: 'Product',
+    signal: '기업 도입 사례',
+    url: 'https://openai.com/index/circles',
+  },
+  {
+    id: 'continuous-voice-interaction-with-gpt-live',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'OpenAI, GPT-Live 실시간 음성 시스템을 만든 여섯 달 공개',
+    summary:
+      'OpenAI가 3세대 음성 시스템 GPT-Live의 구조를 공개했다. 오디오 경로에서 턴 감지기를 없애고 듣기와 말하기를 동시에 하는 전이중 모델을 두었으며, 모델 ' +
+      '추론과 컨텍스트 관리, 미디어 전송을 여섯 달에 걸쳐 다시 만들었다.',
+    publishedAt: '2026-08-03',
+    collectedAt: '2026-08-25',
+    category: 'Research',
+    signal: '실시간 음성',
+    url: 'https://openai.com/index/continuous-voice-interaction-with-gpt-live',
   },
   {
     id: 'ten-advances-in-mathematics',
@@ -913,6 +1123,20 @@ const entries: NewsItem[] = [
     url: 'https://openai.com/index/advancing-responsible-ai-across-europe',
   },
   {
+    id: 'unive',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'Univé, ChatGPT Enterprise로 전 직원 AI 역량 구축',
+    summary:
+      '네덜란드 협동조합 보험사 Univé가 ChatGPT Enterprise 도입을 조직 전환으로 다뤘다. 라이선스 활성화율 97%, 주간 활성 이용자 85%이고 직원이 ' +
+      '만든 맞춤 GPT가 약 1,500개다.',
+    publishedAt: '2026-07-31',
+    collectedAt: '2026-08-25',
+    category: 'Product',
+    signal: '기업 도입 사례',
+    url: 'https://openai.com/index/unive',
+  },
+  {
     id: 'investigating-incidents-cybersecurity-evals',
     source: 'Anthropic',
     kind: 'company',
@@ -981,6 +1205,20 @@ const entries: NewsItem[] = [
     },
   },
   {
+    id: 'avatarin',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'avatarin, GPT-Realtime으로 24시간 다국어 쇼핑 상담 구축',
+    summary:
+      'ANA 홀딩스에서 분사한 avatarin이 GPT-Realtime으로 Yamada Denki의 음성 쇼핑 에이전트를 만들었다. 2주 공개 캠페인에 약 3만 명이 썼고 ' +
+      '설문 응답의 92%가 긍정이었다.',
+    publishedAt: '2026-07-30',
+    collectedAt: '2026-08-25',
+    category: 'Product',
+    signal: '음성 에이전트',
+    url: 'https://openai.com/index/avatarin',
+  },
+  {
     id: 'speak-naturally-gemini-app-mac-os',
     source: 'Google DeepMind',
     kind: 'company',
@@ -1038,6 +1276,20 @@ const entries: NewsItem[] = [
     url: 'https://openai.com/index/how-two-settings-tripled-our-arc-agi-3-scores',
   },
   {
+    id: 'chatgpt-for-academic-researchers',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'OpenAI, 연구자 10만 명에게 프런티어 모델 무료 제공',
+    summary:
+      'OpenAI가 선정된 대학의 연구자 10만 명에게 프런티어 모델을 무료로 주는 ChatGPT for Academic Researchers를 시작했다. 올여름 1만 ' +
+      '명으로 출발해 2027년까지 넓힌다.',
+    publishedAt: '2026-07-29',
+    collectedAt: '2026-08-25',
+    category: 'Product',
+    signal: '학술 연구 지원',
+    url: 'https://openai.com/index/chatgpt-for-academic-researchers',
+  },
+  {
     id: 'managed-agents-3-6-flash-hooks',
     source: 'Google DeepMind',
     kind: 'company',
@@ -1077,6 +1329,18 @@ const entries: NewsItem[] = [
     },
   },
   {
+    id: 'scientific-computing-agentic-ai',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'OpenAI, 코딩 에이전트로 과학 소프트웨어를 고친 현장 보고서',
+    summary:'OpenAI가 코딩 에이전트를 쓴 과학 컴퓨팅 프로젝트 여덟 건을 모은 현장 보고서를 냈다. 연구자의 역할이 구현에서 검증과 조율로 옮겨갔다는 것이 공통된 관찰이다.',
+    publishedAt: '2026-07-28',
+    collectedAt: '2026-08-25',
+    category: 'Research',
+    signal: '과학 에이전트',
+    url: 'https://openai.com/index/scientific-computing-agentic-ai',
+  },
+  {
     id: 'position-open-weights-models',
     source: 'Anthropic',
     kind: 'company',
@@ -1103,6 +1367,20 @@ const entries: NewsItem[] = [
     category: 'Infrastructure',
     signal: '클라우드 HPC',
     url: 'https://blog.google/innovation-and-ai/infrastructure-and-cloud/google-cloud/noaa-google-cloud-weather-forecasting/',
+  },
+  {
+    id: 'how-ai-is-expanding-what-people-do-at-work',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'OpenAI, AI가 직무 경계를 넘게 만든다는 노동 보고서',
+    summary:
+      'OpenAI Economic Research가 미국 ChatGPT 이용자 메시지 80만 건 이상을 분석해, 업무 관련 메시지의 16.8%와 직무 특화 메시지의 ' +
+      '43.5%가 다른 직업의 작업이었다고 밝혔다.',
+    publishedAt: '2026-07-27',
+    collectedAt: '2026-08-25',
+    category: 'Research',
+    signal: '경제 연구',
+    url: 'https://openai.com/index/how-ai-is-expanding-what-people-do-at-work',
   },
   {
     id: 'claude-opus-5',
