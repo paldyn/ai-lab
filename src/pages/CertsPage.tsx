@@ -5,7 +5,16 @@ import { CertStars } from '../components/CertStars';
 import { LearnRail } from '../components/LearnRail';
 import { PageHeader } from '../components/PageHeader';
 import { Seo } from '../components/Seo';
-import { certs, certsIn, studyCount, type Cert } from '../data/certs';
+import { certs, certsIn, studyCount, type Cert, type CertDifficulty } from '../data/certs';
+
+/** 별 몇 개가 어떤 시험인지. `certs.ts`의 `CertDifficulty` 주석과 같은 눈금입니다. */
+const SCALE: { stars: CertDifficulty; text: string }[] = [
+  { stars: 1, text: '며칠이면 붙는 시험' },
+  { stars: 2, text: '입문서 한 권 범위' },
+  { stars: 3, text: '실무 경험을 전제' },
+  { stars: 4, text: '실기·코딩이 있음' },
+  { stars: 5, text: '응시자격이 걸림' },
+];
 
 /**
  * 자격증 목록. 국내·해외로 나눠 세웁니다.
@@ -70,6 +79,21 @@ export function CertsPage() {
             <Star className="cert-legend-star" size={13} strokeWidth={1.5} aria-hidden="true" /> 난이도는
             응시자격·시험 형식·권장 경력을 보고 매긴 값입니다.
           </p>
+
+          {/*
+            눈금은 글이 아니라 별로 보여 줍니다. 「별 하나는 며칠이면 붙는 시험」이라고
+            적으면 읽고 나서 카드의 별을 다시 세어야 하는데, 별을 그대로 세워 두면
+            카드에서 본 모양을 여기서 찾으면 됩니다. 빈 별은 그리지 않습니다 —
+            다섯 줄이 25개가 되어 눈금이 아니라 격자로 보입니다.
+          */}
+          <ul className="cert-scale">
+            {SCALE.map((step) => (
+              <li key={step.stars}>
+                <CertStars value={step.stars} total={step.stars} size={11} />
+                <span>{step.text}</span>
+              </li>
+            ))}
+          </ul>
 
           {[
             { title: '국내', items: domestic },

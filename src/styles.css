@@ -4653,11 +4653,36 @@ input:focus-visible {
 */
 .cert-legend {
   max-width: 46em;
-  margin-bottom: 30px;
+  margin-bottom: 12px;
   color: var(--text-muted);
   font-size: 12px;
   line-height: 1.8;
 }
+
+/*
+  기준별 눈금표. 별 개수와 그 개수가 뜻하는 것을 나란히 둡니다.
+  한 줄로 눕히고 넘치면 접히게 두어, 넓은 화면에서는 한 줄로 섭니다.
+*/
+.cert-scale {
+  display: flex;
+  margin-bottom: 30px;
+  flex-wrap: wrap;
+  gap: 7px 24px;
+}
+
+.cert-scale li {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  color: var(--text-muted);
+  font-size: 11.5px;
+}
+
+/*
+  별 자리를 다섯 개 폭으로 맞춰 봤더니 별과 설명이 멀어져, 앞 항목의 설명과
+  뒤 항목의 별이 더 가까워졌습니다. 짝이 붙어 보이는 것이 줄 맞춤보다 중요해
+  별은 설명에 붙이고(7px) 항목 사이만 벌립니다(24px).
+*/
 
 /* 문장 안에 놓인 별. 목록의 채운 별과 같은 금색·같은 크기입니다. */
 .cert-legend-star {

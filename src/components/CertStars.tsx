@@ -1,7 +1,7 @@
 import { Star } from 'lucide-react';
 import type { CertDifficulty } from '../data/certs';
 
-const SLOTS = [1, 2, 3, 4, 5];
+
 
 /**
  * 난이도 별 다섯 개. **반 칸까지 그립니다.**
@@ -15,11 +15,23 @@ const SLOTS = [1, 2, 3, 4, 5];
  *
  * 별 다섯을 그림 하나로 읽히게 `role="img"`를 답니다. 안 그러면 스크린리더가
  * 아이콘 다섯 개를 따로 읽습니다.
+ *
+ * `total`은 눈금 견본을 위해 있습니다. 목록 맨 위의 눈금표는 「별 둘이면
+ * 이런 시험」을 보이는 자리라 빈 별 셋이 따라붙으면 25개가 늘어서기만 합니다.
+ * 채운 만큼만 그리게 두 개짜리 별을 그릴 수 있어야 합니다.
  */
-export function CertStars({ value, size = 13 }: { value: CertDifficulty; size?: number }) {
+export function CertStars({
+  value,
+  size = 13,
+  total = 5,
+}: {
+  value: CertDifficulty;
+  size?: number;
+  total?: number;
+}) {
   return (
     <span className="cert-stars" role="img" aria-label={`난이도 ${value}/5`}>
-      {SLOTS.map((slot) => {
+      {Array.from({ length: total }, (_, index) => index + 1).map((slot) => {
         // 이 칸이 얼마나 차는가 — 1, 0.5, 0 셋 중 하나입니다.
         const fill = Math.max(0, Math.min(1, value - slot + 1));
 
