@@ -1,6 +1,8 @@
+import { useMemo } from 'react';
 import { ArrowLeft, ArrowUpRight } from 'lucide-react';
 import { Link, Navigate, useParams } from 'react-router';
 import { CertMark } from '../components/CertMark';
+import { useActiveHeading } from '../lib/activeHeading';
 import { CertStars } from '../components/CertStars';
 import { Seo } from '../components/Seo';
 import { certById, type Cert, type CertStudyItem } from '../data/certs';
@@ -47,6 +49,23 @@ function Fact({ label, value }: { label: string; value?: string }) {
 }
 
 function CertView({ cert }: { cert: Cert }) {
+  /*
+    목차에 세울 절. 있는 절만 담습니다 — 학습 경로가 아직 없는 자격증도 있고,
+    없는 절을 목차에 두면 눌렀을 때 아무 데도 안 갑니다.
+  */
+  const sections = useMemo(
+    () =>
+      [
+        { id: 'what', title: '무엇을 재는 시험인가' },
+        { id: 'subjects', title: '과목' },
+        { id: 'exam', title: '시험 정보' },
+        cert.studyPath.length > 0 ? { id: 'study', title: '학습 경로' } : null,
+        cert.notes ? { id: 'notes', title: '알아 둘 것' } : null,
+      ].filter((section) => section !== null),
+    [cert],
+  );
+  const { active, goTo } = useActiveHeading(useMemo(() => sections.map((s) => s.id), [sections]));
+
   return (
     <article>
       <Seo
@@ -121,9 +140,40 @@ function CertView({ cert }: { cert: Cert }) {
 
       <div className="site-divider" />
 
-      <div className="site-wrap section-space cert-body">
+      {/*
+        절이 다섯이고 「시험 정보」와 「학습 경로」는 한참 아래에 있습니다. 글과
+        같은 목차를 세워 바로 뛸 수 있게 합니다 — 짚는 동작과 이동은 글에서 쓰던
+        `useActiveHeading`을 그대로 씁니다.
+      */}
+      <div className="site-wrap grid gap-12 py-14 lg:grid-cols-[220px_minmax(0,760px)] lg:justify-center">
+        <aside className="article-toc lg:sticky lg:top-[138px] lg:self-start">
+          <p className="font-mono text-[10px] tracking-[0.12em] text-[var(--text-muted)]">IN THIS EXAM</p>
+          <ol className="mt-4 space-y-3 border-l border-[var(--border)] pl-4 text-xs leading-5 text-[var(--text-dim)]">
+            {sections.map((section, index) => (
+              <li
+                key={section.id}
+                className={`article-toc-item${section.id === active ? ' is-current' : ''}`}
+              >
+                <a
+                  href={`#${section.id}`}
+                  className="hover:text-[var(--text)]"
+                  aria-current={section.id === active ? 'true' : undefined}
+                  onClick={(event) => {
+                    if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+                    event.preventDefault();
+                    goTo(section.id);
+                  }}
+                >
+                  {String(index + 1).padStart(2, '0')} {section.title}
+                </a>
+              </li>
+            ))}
+          </ol>
+        </aside>
+
+        <div className="min-w-0 cert-body">
         <section className="cert-section">
-          <h2>무엇을 재는 시험인가</h2>
+          <h2 id="what">무엇을 재는 시험인가</h2>
           <p className="cert-prose">{cert.whatItMeasures.replace(/\*\*/g, '')}</p>
           {cert.audience && (
             <>
@@ -134,7 +184,7 @@ function CertView({ cert }: { cert: Cert }) {
         </section>
 
         <section className="cert-section">
-          <h2>과목</h2>
+          <h2 id="subjects">과목</h2>
           <ol className="cert-subjects">
             {cert.subjects.map((subject) => (
               <li key={subject.name}>
@@ -149,7 +199,7 @@ function CertView({ cert }: { cert: Cert }) {
         </section>
 
         <section className="cert-section">
-          <h2>시험 정보</h2>
+          <h2 id="exam">시험 정보</h2>
           <dl className="cert-facts">
             <Fact label="시행 주기" value={cert.cadence} />
             <Fact label="형식" value={cert.format} />
@@ -157,25 +207,11 @@ function CertView({ cert }: { cert: Cert }) {
             <Fact label="응시자격" value={cert.prerequisite} />
             <Fact label="유효기간" value={cert.validity} />
           </dl>
-
-          {cert.unknowns.length > 0 && (
-            <div className="cert-unknowns">
-              <p className="cert-unknowns-head">공식 페이지에서 확인하지 못한 것</p>
-              <ul>
-                {cert.unknowns.map((item) => (
-                  <li key={item}>{item}</li>
-                ))}
-              </ul>
-              <p className="cert-unknowns-foot">
-                모르는 칸을 그럴듯한 문장으로 채우지 않습니다. 이 항목들은 공식 페이지에서 직접 확인해 주세요.
-              </p>
-            </div>
-          )}
         </section>
 
         {cert.studyPath.length > 0 && (
           <section className="cert-section">
-            <h2>학습 경로</h2>
+            <h2 id="study">학습 경로</h2>
             {cert.studyPath.map((group) => (
               <div key={group.subject} className="cert-study-group">
                 <h3>{group.subject}</h3>
@@ -191,7 +227,7 @@ function CertView({ cert }: { cert: Cert }) {
 
         {cert.notes && (
           <section className="cert-section">
-            <h2>알아 둘 것</h2>
+            <h2 id="notes">알아 둘 것</h2>
             {/* 데이터가 「- 」로 시작하는 줄 목록이면 목록으로 그립니다. 한 문단으로 뭉치면 안 읽힙니다. */}
             <ul className="cert-notes">
               {cert.notes
@@ -213,6 +249,7 @@ function CertView({ cert }: { cert: Cert }) {
           </a>
           를 한 번 더 보세요.
         </p>
+        </div>
       </div>
     </article>
   );
