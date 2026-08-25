@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="330" viewBox="0 0 880 330" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <defs>
+    <marker id="arrBlue" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#7ec8e3"/>
+    </marker>
+    <marker id="arrPurple" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#7777cc"/>
+    </marker>
+  </defs>
+  <rect width="880" height="330" fill="#0a0a0a" rx="12"/>
+
+  <text x="60" y="46" font-size="22" font-weight="700" fill="#e8e8e8">로그는 곱의 세계를 합의 세계로 옮긴다</text>
+
+  <rect x="60" y="86" width="340" height="182" fill="none" stroke="#e05555" stroke-width="1.5" rx="10"/>
+  <text x="84" y="116" font-size="16" font-weight="600" fill="#e8e8e8">확률의 세계 — 곱</text>
+  <text x="84" y="151" font-size="15" fill="#7ec8e3">p₁ × p₂ × ⋯ × p₅₀₀</text>
+  <text x="84" y="186" font-size="13" fill="#888">0.2를 500번 곱하면</text>
+  <text x="84" y="216" font-size="15" fill="#e8e8e8">≈ 10<tspan font-size="11" dy="-6">−349.5</tspan></text>
+  <text x="84" y="251" font-size="13" fill="#e05555">fp32 표현 범위 밖 — 0.0이 된다</text>
+
+  <rect x="480" y="86" width="340" height="182" fill="none" stroke="#55c555" stroke-width="1.5" rx="10"/>
+  <text x="504" y="116" font-size="16" font-weight="600" fill="#e8e8e8">로그의 세계 — 합</text>
+  <text x="504" y="151" font-size="15" fill="#7ec8e3">log p₁ + log p₂ + ⋯ + log p₅₀₀</text>
+  <text x="504" y="186" font-size="13" fill="#888">−1.609를 500번 더하면</text>
+  <text x="504" y="216" font-size="15" fill="#e8e8e8">= −804.7</text>
+  <text x="504" y="251" font-size="13" fill="#55c555">fp32가 그대로 담는 수</text>
+
+  <line x1="404" y1="165" x2="476" y2="165" stroke="#7ec8e3" stroke-width="2.5" marker-end="url(#arrBlue)"/>
+  <text x="440" y="149" font-size="14" font-weight="600" fill="#7ec8e3" text-anchor="middle">log</text>
+
+  <line x1="476" y1="215" x2="404" y2="215" stroke="#7777cc" stroke-width="2.5" marker-end="url(#arrPurple)"/>
+  <text x="440" y="235" font-size="14" font-weight="600" fill="#7777cc" text-anchor="middle">exp</text>
+
+  <text x="60" y="306" font-size="13" fill="#888">log(ab) = log a + log b — 이 한 줄이 언더플로를 없앤다.</text>
+</svg>

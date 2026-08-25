@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="400" viewBox="0 0 880 400" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <defs>
+    <marker id="arrChain" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#7777cc"/>
+    </marker>
+  </defs>
+  <rect width="880" height="400" fill="#0a0a0a" rx="12"/>
+
+  <text x="60" y="46" font-size="22" font-weight="700" fill="#e8e8e8">문장 하나의 확률은 조건부 확률의 곱이다</text>
+
+  <rect x="60" y="84" width="150" height="52" fill="#7ec8e3" fill-opacity="0.18" stroke="#7ec8e3" stroke-width="1" rx="8"/>
+  <rect x="250" y="84" width="150" height="52" fill="#7ec8e3" fill-opacity="0.18" stroke="#7ec8e3" stroke-width="1" rx="8"/>
+  <rect x="440" y="84" width="150" height="52" fill="#7ec8e3" fill-opacity="0.18" stroke="#7ec8e3" stroke-width="1" rx="8"/>
+  <rect x="630" y="84" width="150" height="52" fill="#7ec8e3" fill-opacity="0.18" stroke="#7ec8e3" stroke-width="1" rx="8"/>
+  <text x="135" y="117" font-size="17" fill="#e8e8e8" text-anchor="middle">the</text>
+  <text x="325" y="117" font-size="17" fill="#e8e8e8" text-anchor="middle">cat</text>
+  <text x="515" y="117" font-size="17" fill="#e8e8e8" text-anchor="middle">sat</text>
+  <text x="705" y="117" font-size="17" fill="#e8e8e8" text-anchor="middle">down</text>
+
+  <text x="135" y="176" font-size="14" fill="#7ec8e3" text-anchor="middle">p(the)</text>
+  <text x="325" y="176" font-size="14" fill="#7ec8e3" text-anchor="middle">p(cat | the)</text>
+  <text x="515" y="176" font-size="14" fill="#7ec8e3" text-anchor="middle">p(sat | the, cat)</text>
+  <text x="705" y="176" font-size="14" fill="#7ec8e3" text-anchor="middle">p(down | the, cat, sat)</text>
+
+  <text x="230" y="117" font-size="18" fill="#888" text-anchor="middle">×</text>
+  <text x="420" y="117" font-size="18" fill="#888" text-anchor="middle">×</text>
+  <text x="610" y="117" font-size="18" fill="#888" text-anchor="middle">×</text>
+
+  <path d="M 135 200 C 165 250 295 250 320 206" stroke="#7777cc" stroke-width="2" stroke-dasharray="4,4" fill="none" marker-end="url(#arrChain)"/>
+  <path d="M 135 200 C 200 290 450 290 512 208" stroke="#7777cc" stroke-width="2" stroke-dasharray="4,4" fill="none" marker-end="url(#arrChain)"/>
+  <path d="M 325 200 C 380 288 640 296 702 208" stroke="#7777cc" stroke-width="2" stroke-dasharray="4,4" fill="none" marker-end="url(#arrChain)"/>
+  <text x="440" y="330" font-size="13" fill="#7777cc" text-anchor="middle">각 항의 조건은 자기보다 앞선 토큰 전부 — 인과 마스크가 지키는 것이 이 방향이다</text>
+
+  <text x="60" y="374" font-size="14" fill="#888">여기에 로그를 씌우면 곱이 합이 되고, 그 합이 곧 문장의 로그가능도다.</text>
+</svg>

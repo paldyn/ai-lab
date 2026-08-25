@@ -251,3 +251,5 @@ $$A\mathbf{v} = \lambda\mathbf{v}$$ 라는 한 줄에서 시작한 다섯 편이
 읽어주셔서 감사합니다. 😊
 
 **지난 글:** [저계수 근사와 에카르트-영: LoRA의 r을 스펙트럼으로 고르기](/articles/math-low-rank-approximation-and-lora)
+
+**다음 글:** [지수와 로그: AI 코드에 log가 도처에 있는 이유](/articles/math-exp-and-log)

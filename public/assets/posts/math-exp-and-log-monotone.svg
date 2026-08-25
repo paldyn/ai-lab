@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="380" viewBox="0 0 880 380" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <rect width="880" height="380" fill="#0a0a0a" rx="12"/>
+
+  <text x="60" y="46" font-size="22" font-weight="700" fill="#e8e8e8">로그를 씌워도 세 후보의 순서는 그대로다</text>
+
+  <text x="240" y="88" font-size="16" font-weight="600" fill="#e8e8e8" text-anchor="middle">확률 p</text>
+  <text x="650" y="88" font-size="16" font-weight="600" fill="#e8e8e8" text-anchor="middle">로그 확률 log p</text>
+
+  <line x1="70" y1="290" x2="410" y2="290" stroke="#888" stroke-width="1.5"/>
+  <rect x="110" y="156" width="64" height="134" fill="#7ec8e3" fill-opacity="0.85"/>
+  <rect x="205" y="178" width="64" height="112" fill="#7ec8e3" fill-opacity="0.85"/>
+  <rect x="300" y="216" width="64" height="74" fill="#7ec8e3" fill-opacity="0.85"/>
+  <text x="142" y="144" font-size="14" fill="#e8e8e8" text-anchor="middle">0.42</text>
+  <text x="237" y="166" font-size="14" fill="#e8e8e8" text-anchor="middle">0.35</text>
+  <text x="332" y="204" font-size="14" fill="#e8e8e8" text-anchor="middle">0.23</text>
+  <text x="142" y="312" font-size="14" fill="#888" text-anchor="middle">있</text>
+  <text x="237" y="312" font-size="14" fill="#888" text-anchor="middle">없</text>
+  <text x="332" y="312" font-size="14" fill="#888" text-anchor="middle">같</text>
+
+  <line x1="490" y1="150" x2="820" y2="150" stroke="#888" stroke-width="1.5"/>
+  <text x="480" y="154" font-size="13" fill="#888" text-anchor="end">0</text>
+  <rect x="530" y="150" width="64" height="70.5" fill="#7777cc" fill-opacity="0.85"/>
+  <rect x="625" y="150" width="64" height="85.3" fill="#7777cc" fill-opacity="0.85"/>
+  <rect x="720" y="150" width="64" height="119.4" fill="#7777cc" fill-opacity="0.85"/>
+  <text x="562" y="238" font-size="14" fill="#e8e8e8" text-anchor="middle">−0.868</text>
+  <text x="657" y="253" font-size="14" fill="#e8e8e8" text-anchor="middle">−1.050</text>
+  <text x="752" y="287" font-size="14" fill="#e8e8e8" text-anchor="middle">−1.470</text>
+  <text x="562" y="140" font-size="14" fill="#888" text-anchor="middle">있</text>
+  <text x="657" y="140" font-size="14" fill="#888" text-anchor="middle">없</text>
+  <text x="752" y="140" font-size="14" fill="#888" text-anchor="middle">같</text>
+
+  <text x="240" y="346" font-size="15" font-weight="600" fill="#55c555" text-anchor="middle">있 &gt; 없 &gt; 같</text>
+  <text x="650" y="346" font-size="15" font-weight="600" fill="#55c555" text-anchor="middle">있 &gt; 없 &gt; 같</text>
+</svg>

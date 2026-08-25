@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="380" viewBox="0 0 880 380" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <defs>
+    <marker id="arrMap" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#7ec8e3"/>
+    </marker>
+  </defs>
+  <rect width="880" height="380" fill="#0a0a0a" rx="12"/>
+
+  <text x="60" y="46" font-size="22" font-weight="700" fill="#e8e8e8">확률변수는 결과에 수를 붙이는 함수다</text>
+
+  <rect x="60" y="96" width="280" height="220" fill="none" stroke="#7777cc" stroke-width="1.5" rx="10"/>
+  <text x="200" y="128" font-size="16" font-weight="600" fill="#e8e8e8" text-anchor="middle">표본공간 Ω</text>
+  <text x="200" y="150" font-size="13" fill="#888" text-anchor="middle">수가 아니어도 된다</text>
+  <text x="140" y="196" font-size="15" fill="#e8e8e8">뉴런이 살아남음</text>
+  <text x="140" y="236" font-size="15" fill="#e8e8e8">뉴런이 꺼짐</text>
+  <circle cx="118" cy="191" r="5" fill="#7777cc"/>
+  <circle cx="118" cy="231" r="5" fill="#7777cc"/>
+  <text x="200" y="288" font-size="13" fill="#888" text-anchor="middle">무작위한 것은 여기서 무엇이 뽑히는가</text>
+
+  <rect x="540" y="96" width="280" height="220" fill="none" stroke="#55c555" stroke-width="1.5" rx="10"/>
+  <text x="680" y="128" font-size="16" font-weight="600" fill="#e8e8e8" text-anchor="middle">실수 ℝ</text>
+  <text x="680" y="150" font-size="13" fill="#888" text-anchor="middle">더하고 평균 낼 수 있다</text>
+  <text x="600" y="196" font-size="15" fill="#e8e8e8">1</text>
+  <text x="600" y="236" font-size="15" fill="#e8e8e8">0</text>
+  <circle cx="578" cy="191" r="5" fill="#55c555"/>
+  <circle cx="578" cy="231" r="5" fill="#55c555"/>
+  <text x="680" y="288" font-size="13" fill="#888" text-anchor="middle">붙는 수는 결과가 정해지면 따라 정해진다</text>
+
+  <line x1="344" y1="191" x2="534" y2="191" stroke="#7ec8e3" stroke-width="2.5" marker-end="url(#arrMap)"/>
+  <line x1="344" y1="231" x2="534" y2="231" stroke="#7ec8e3" stroke-width="2.5" marker-end="url(#arrMap)"/>
+  <text x="440" y="173" font-size="16" font-weight="600" fill="#7ec8e3" text-anchor="middle">X</text>
+
+  <text x="60" y="352" font-size="13" fill="#888">P(X = 1)은 「X가 1이 되는 결과들」이라는 사건의 확률을 줄여 적은 것이다.</text>
+</svg>

@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="400" viewBox="0 0 880 400" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <defs>
+    <marker id="arrEst" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#7ec8e3"/>
+    </marker>
+  </defs>
+  <rect width="880" height="400" fill="#0a0a0a" rx="12"/>
+
+  <text x="60" y="46" font-size="22" font-weight="700" fill="#e8e8e8">loss.mean()은 기댓값이 아니라 기댓값의 추정값이다</text>
+
+  <rect x="60" y="90" width="340" height="120" fill="none" stroke="#7777cc" stroke-width="1.5" rx="10"/>
+  <text x="84" y="124" font-size="16" font-weight="600" fill="#e8e8e8">참값 — 분포 전체</text>
+  <text x="84" y="158" font-size="14" fill="#7777cc">E[ℓ(x)] = 1.8</text>
+  <text x="84" y="188" font-size="13" fill="#888">우리는 이 값을 볼 수 없다</text>
+
+  <rect x="480" y="90" width="340" height="120" fill="none" stroke="#7ec8e3" stroke-width="1.5" rx="10"/>
+  <text x="504" y="124" font-size="16" font-weight="600" fill="#e8e8e8">추정값 — 배치 하나</text>
+  <text x="504" y="158" font-size="14" fill="#7ec8e3">batch.mean(), n = 32</text>
+  <text x="504" y="188" font-size="13" fill="#888">뽑을 때마다 다른 값이 나온다</text>
+
+  <line x1="404" y1="150" x2="476" y2="150" stroke="#7ec8e3" stroke-width="2.5" marker-end="url(#arrEst)"/>
+  <text x="440" y="132" font-size="13" font-weight="600" fill="#7ec8e3" text-anchor="middle">표본 32개</text>
+
+  <line x1="120" y1="300" x2="800" y2="300" stroke="#888" stroke-width="1.5"/>
+  <line x1="120" y1="295" x2="120" y2="305" stroke="#888" stroke-width="1.5"/>
+  <line x1="290" y1="295" x2="290" y2="305" stroke="#888" stroke-width="1.5"/>
+  <line x1="460" y1="295" x2="460" y2="305" stroke="#888" stroke-width="1.5"/>
+  <line x1="630" y1="295" x2="630" y2="305" stroke="#888" stroke-width="1.5"/>
+  <line x1="800" y1="295" x2="800" y2="305" stroke="#888" stroke-width="1.5"/>
+  <text x="120" y="324" font-size="13" fill="#888" text-anchor="middle">1.2</text>
+  <text x="290" y="324" font-size="13" fill="#888" text-anchor="middle">1.6</text>
+  <text x="460" y="324" font-size="13" fill="#888" text-anchor="middle">2.0</text>
+  <text x="630" y="324" font-size="13" fill="#888" text-anchor="middle">2.4</text>
+  <text x="800" y="324" font-size="13" fill="#888" text-anchor="middle">2.8</text>
+
+  <line x1="375" y1="250" x2="375" y2="310" stroke="#7777cc" stroke-width="2.5"/>
+  <text x="375" y="240" font-size="14" font-weight="600" fill="#7777cc" text-anchor="middle">참값 1.8</text>
+
+  <circle cx="494" cy="300" r="5" fill="#e8e8e8"/>
+  <circle cx="304" cy="300" r="5" fill="#e8e8e8"/>
+  <circle cx="726" cy="300" r="5" fill="#e8e8e8"/>
+  <text x="494" y="352" font-size="13" fill="#e8e8e8" text-anchor="middle">2.079</text>
+  <text x="304" y="352" font-size="13" fill="#e8e8e8" text-anchor="middle">1.633</text>
+  <text x="726" y="352" font-size="13" fill="#e8e8e8" text-anchor="middle">2.626</text>
+
+  <text x="60" y="384" font-size="13" fill="#888">세 배치의 평균이 전부 다르고 셋 다 1.8이 아니다. 그런데도 평균적으로는 1.8이 된다 — 기댓값의 선형성 덕분이다.</text>
+</svg>

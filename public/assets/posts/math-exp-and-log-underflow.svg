@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="470" viewBox="0 0 880 470" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <rect width="880" height="470" fill="#0a0a0a" rx="12"/>
+
+  <text x="60" y="46" font-size="22" font-weight="700" fill="#e8e8e8">토큰이 늘수록 확률의 곱은 표현 범위 밖으로 나간다</text>
+
+  <rect x="110" y="190" width="700" height="160" fill="#e05555" fill-opacity="0.10"/>
+
+  <line x1="110" y1="70" x2="110" y2="350" stroke="#888" stroke-width="1.5"/>
+  <line x1="110" y1="350" x2="810" y2="350" stroke="#888" stroke-width="1.5"/>
+
+  <line x1="110" y1="80" x2="810" y2="80" stroke="#444" stroke-width="1"/>
+  <line x1="110" y1="137.8" x2="810" y2="137.8" stroke="#444" stroke-width="1"/>
+  <line x1="110" y1="195.6" x2="810" y2="195.6" stroke="#444" stroke-width="1"/>
+  <line x1="110" y1="253.3" x2="810" y2="253.3" stroke="#444" stroke-width="1"/>
+  <line x1="110" y1="311.1" x2="810" y2="311.1" stroke="#444" stroke-width="1"/>
+
+  <text x="100" y="84" font-size="13" fill="#888" text-anchor="end">0</text>
+  <text x="100" y="142" font-size="13" fill="#888" text-anchor="end">−20</text>
+  <text x="100" y="200" font-size="13" fill="#888" text-anchor="end">−40</text>
+  <text x="100" y="257" font-size="13" fill="#888" text-anchor="end">−60</text>
+  <text x="100" y="315" font-size="13" fill="#888" text-anchor="end">−80</text>
+  <text x="110" y="62" font-size="13" fill="#888">log₁₀ (확률의 곱)</text>
+
+  <line x1="282.5" y1="345" x2="282.5" y2="355" stroke="#888" stroke-width="1.5"/>
+  <line x1="455" y1="345" x2="455" y2="355" stroke="#888" stroke-width="1.5"/>
+  <line x1="627.5" y1="345" x2="627.5" y2="355" stroke="#888" stroke-width="1.5"/>
+  <line x1="800" y1="345" x2="800" y2="355" stroke="#888" stroke-width="1.5"/>
+  <text x="110" y="374" font-size="13" fill="#888" text-anchor="middle">0</text>
+  <text x="282.5" y="374" font-size="13" fill="#888" text-anchor="middle">30</text>
+  <text x="455" y="374" font-size="13" fill="#888" text-anchor="middle">60</text>
+  <text x="627.5" y="374" font-size="13" fill="#888" text-anchor="middle">90</text>
+  <text x="800" y="374" font-size="13" fill="#888" text-anchor="middle">120</text>
+  <text x="460" y="400" font-size="13" fill="#888" text-anchor="middle">n (토큰 수)</text>
+
+  <line x1="110" y1="190" x2="810" y2="190" stroke="#e05555" stroke-width="2" stroke-dasharray="5,3"/>
+  <text x="806" y="176" font-size="13" fill="#e05555" text-anchor="end">fp32 정규수 하한 ≈ 10⁻³⁸</text>
+
+  <line x1="110" y1="80" x2="800" y2="322.3" stroke="#7ec8e3" stroke-width="2.5" fill="none"/>
+  <text x="150" y="110" font-size="13" fill="#7ec8e3">0.2ⁿ</text>
+
+  <circle cx="422" cy="190" r="5" fill="#e8e8e8"/>
+  <text x="410" y="172" font-size="13" fill="#e8e8e8" text-anchor="end">n = 55 · 정규수 밖으로</text>
+
+  <line x1="484" y1="211" x2="484" y2="350" stroke="#e05555" stroke-width="2" stroke-dasharray="5,3"/>
+  <circle cx="484" cy="211" r="5" fill="#e8e8e8"/>
+  <text x="470" y="252" font-size="13" fill="#e05555" text-anchor="end">n = 65부터 진짜 0.0</text>
+
+  <text x="60" y="428" font-size="13" fill="#888">두 표시 사이가 비정규수 구간이다 — 값이 남아 있어도 유효숫자가 깎여 믿을 수 없다.</text>
+  <text x="60" y="450" font-size="13" fill="#888">fp64도 정규수 하한이 10⁻³⁰⁸ 라 441토큰에서 같은 자리로 들어가고 463토큰에서 0이 된다.</text>
+</svg>

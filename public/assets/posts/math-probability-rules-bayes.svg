@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="380" viewBox="0 0 880 380" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <defs>
+    <marker id="arrBayes" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#7ec8e3"/>
+    </marker>
+  </defs>
+  <rect width="880" height="380" fill="#0a0a0a" rx="12"/>
+
+  <text x="60" y="46" font-size="22" font-weight="700" fill="#e8e8e8">베이즈 규칙의 네 자리</text>
+
+  <text x="180" y="140" font-size="24" fill="#e8e8e8" text-anchor="middle">p(the | cat)</text>
+  <text x="270" y="140" font-size="24" fill="#888" text-anchor="middle">=</text>
+
+  <text x="450" y="122" font-size="22" fill="#e8e8e8" text-anchor="middle">p(cat | the) × p(the)</text>
+  <line x1="330" y1="140" x2="570" y2="140" stroke="#888" stroke-width="1.5"/>
+  <text x="450" y="172" font-size="22" fill="#e8e8e8" text-anchor="middle">p(cat)</text>
+
+  <text x="180" y="196" font-size="14" font-weight="600" fill="#55c555" text-anchor="middle">사후 0.714</text>
+  <text x="386" y="196" font-size="14" font-weight="600" fill="#7ec8e3" text-anchor="middle">가능도 0.5</text>
+  <text x="524" y="196" font-size="14" font-weight="600" fill="#7777cc" text-anchor="middle">사전 0.60</text>
+  <text x="450" y="224" font-size="14" font-weight="600" fill="#e05555" text-anchor="middle">증거 0.42</text>
+
+  <rect x="60" y="256" width="340" height="80" fill="none" stroke="#7777cc" stroke-width="1.5" rx="10"/>
+  <text x="84" y="286" font-size="15" font-weight="600" fill="#e8e8e8">보기 전 — 사전</text>
+  <text x="84" y="316" font-size="14" fill="#888">the였을 확률은 0.60</text>
+
+  <rect x="480" y="256" width="340" height="80" fill="none" stroke="#55c555" stroke-width="1.5" rx="10"/>
+  <text x="504" y="286" font-size="15" font-weight="600" fill="#e8e8e8">cat을 본 뒤 — 사후</text>
+  <text x="504" y="316" font-size="14" fill="#888">같은 질문의 답이 0.714</text>
+
+  <line x1="404" y1="296" x2="476" y2="296" stroke="#7ec8e3" stroke-width="2.5" marker-end="url(#arrBayes)"/>
+  <text x="440" y="278" font-size="13" font-weight="600" fill="#7ec8e3" text-anchor="middle">cat 관측</text>
+</svg>

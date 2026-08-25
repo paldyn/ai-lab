@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="420" viewBox="0 0 880 420" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <rect width="880" height="420" fill="#0a0a0a" rx="12"/>
+  <text x="60" y="46" font-size="22" font-weight="700" fill="#e8e8e8">치우침은 1/√n 로만 줄어든다</text>
+  <text x="60" y="76" font-size="14" fill="#888">지수분포(왜도 2)에서 뽑은 표본평균의 왜도</text>
+  <line x1="110" y1="270" x2="810" y2="270" stroke="#444" stroke-width="1"/><text x="100" y="274" font-size="13" fill="#888" text-anchor="end">0.5</text><line x1="110" y1="220" x2="810" y2="220" stroke="#444" stroke-width="1"/><text x="100" y="224" font-size="13" fill="#888" text-anchor="end">1</text><line x1="110" y1="170" x2="810" y2="170" stroke="#444" stroke-width="1"/><text x="100" y="174" font-size="13" fill="#888" text-anchor="end">1.5</text><line x1="110" y1="120" x2="810" y2="120" stroke="#444" stroke-width="1"/><text x="100" y="124" font-size="13" fill="#888" text-anchor="end">2</text>
+  <line x1="110" y1="80" x2="110" y2="320" stroke="#888" stroke-width="1.5"/>
+  <line x1="110" y1="320" x2="810" y2="320" stroke="#888" stroke-width="1.5"/>
+  <text x="110" y="348" font-size="13" fill="#888" text-anchor="middle">1</text><line x1="110" y1="315" x2="110" y2="325" stroke="#888" stroke-width="1.5"/><text x="285" y="348" font-size="13" fill="#888" text-anchor="middle">2</text><line x1="285" y1="315" x2="285" y2="325" stroke="#888" stroke-width="1.5"/><text x="460" y="348" font-size="13" fill="#888" text-anchor="middle">5</text><line x1="460" y1="315" x2="460" y2="325" stroke="#888" stroke-width="1.5"/><text x="635" y="348" font-size="13" fill="#888" text-anchor="middle">30</text><line x1="635" y1="315" x2="635" y2="325" stroke="#888" stroke-width="1.5"/><text x="810" y="348" font-size="13" fill="#888" text-anchor="middle">100</text><line x1="810" y1="315" x2="810" y2="325" stroke="#888" stroke-width="1.5"/>
+  <text x="460" y="372" font-size="13" fill="#888" text-anchor="middle">n</text>
+  <path d="M 110 120.0 L 285 178.6 L 460 230.6 L 635 283.5 L 810 300.0" stroke="#7ec8e3" stroke-width="2.5" fill="none"/>
+  <circle cx="110" cy="120.5" r="5" fill="#e8e8e8"/><circle cx="285" cy="178.3" r="5" fill="#e8e8e8"/><circle cx="460" cy="229.8" r="5" fill="#e8e8e8"/><circle cx="635" cy="283.0" r="5" fill="#e8e8e8"/><circle cx="810" cy="299.8" r="5" fill="#e8e8e8"/><text x="110" y="105" font-size="13" fill="#e8e8e8" text-anchor="middle">1.995</text><text x="285" y="162" font-size="13" fill="#e8e8e8" text-anchor="middle">1.417</text><text x="460" y="214" font-size="13" fill="#e8e8e8" text-anchor="middle">0.902</text><text x="635" y="267" font-size="13" fill="#e8e8e8" text-anchor="middle">0.37</text><text x="810" y="284" font-size="13" fill="#e8e8e8" text-anchor="middle">0.202</text>
+  <text x="560" y="180" font-size="14" font-weight="600" fill="#7ec8e3">곡선 = 2/√n</text>
+  <text x="560" y="204" font-size="14" fill="#e8e8e8">점 = 20만 번 시뮬레이션</text>
+  <text x="60" y="396" font-size="13" fill="#888">n = 30에서도 왜도가 0.37이다 — 「30이면 충분하다」는 원래 분포가 크게 치우치지 않았을 때의 이야기다.</text>
+</svg>

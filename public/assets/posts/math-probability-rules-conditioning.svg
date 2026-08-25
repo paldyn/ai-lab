@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="380" viewBox="0 0 880 380" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <defs>
+    <marker id="arrCond" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#7ec8e3"/>
+    </marker>
+  </defs>
+  <rect width="880" height="380" fill="#0a0a0a" rx="12"/>
+
+  <text x="60" y="46" font-size="22" font-weight="700" fill="#e8e8e8">조건을 건다 = 잘라 낸 뒤 다시 1로 맞춘다</text>
+
+  <text x="230" y="92" font-size="16" font-weight="600" fill="#e8e8e8" text-anchor="middle">the 행만 남기면</text>
+  <text x="650" y="92" font-size="16" font-weight="600" fill="#e8e8e8" text-anchor="middle">0.60으로 나누면</text>
+
+  <line x1="70" y1="270" x2="400" y2="270" stroke="#888" stroke-width="1.5"/>
+  <rect x="100" y="180" width="70" height="90" fill="#7777cc" fill-opacity="0.85"/>
+  <rect x="200" y="210" width="70" height="60" fill="#7777cc" fill-opacity="0.85"/>
+  <rect x="300" y="240" width="70" height="30" fill="#7777cc" fill-opacity="0.85"/>
+  <text x="135" y="168" font-size="14" fill="#e8e8e8" text-anchor="middle">0.30</text>
+  <text x="235" y="198" font-size="14" fill="#e8e8e8" text-anchor="middle">0.20</text>
+  <text x="335" y="228" font-size="14" fill="#e8e8e8" text-anchor="middle">0.10</text>
+  <text x="135" y="292" font-size="13" fill="#888" text-anchor="middle">cat</text>
+  <text x="235" y="292" font-size="13" fill="#888" text-anchor="middle">dog</text>
+  <text x="335" y="292" font-size="13" fill="#888" text-anchor="middle">car</text>
+  <text x="230" y="326" font-size="14" fill="#e05555" text-anchor="middle">합 = 0.60 — 아직 확률이 아니다</text>
+
+  <line x1="416" y1="220" x2="474" y2="220" stroke="#7ec8e3" stroke-width="2.5" marker-end="url(#arrCond)"/>
+  <text x="445" y="202" font-size="14" font-weight="600" fill="#7ec8e3" text-anchor="middle">÷ 0.60</text>
+
+  <line x1="490" y1="270" x2="820" y2="270" stroke="#888" stroke-width="1.5"/>
+  <rect x="520" y="120" width="70" height="150" fill="#7ec8e3" fill-opacity="0.85"/>
+  <rect x="620" y="170" width="70" height="100" fill="#7ec8e3" fill-opacity="0.85"/>
+  <rect x="720" y="220" width="70" height="50" fill="#7ec8e3" fill-opacity="0.85"/>
+  <text x="555" y="108" font-size="14" fill="#e8e8e8" text-anchor="middle">0.500</text>
+  <text x="655" y="158" font-size="14" fill="#e8e8e8" text-anchor="middle">0.333</text>
+  <text x="755" y="208" font-size="14" fill="#e8e8e8" text-anchor="middle">0.167</text>
+  <text x="555" y="292" font-size="13" fill="#888" text-anchor="middle">cat</text>
+  <text x="655" y="292" font-size="13" fill="#888" text-anchor="middle">dog</text>
+  <text x="755" y="292" font-size="13" fill="#888" text-anchor="middle">car</text>
+  <text x="650" y="326" font-size="14" fill="#55c555" text-anchor="middle">합 = 1 — p(다음 | the)</text>
+
+  <text x="60" y="362" font-size="13" fill="#888">막대의 상대 높이는 그대로다. 조건부가 바꾸는 것은 비율이 아니라 기준이 되는 전체다.</text>
+</svg>
