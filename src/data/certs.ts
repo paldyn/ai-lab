@@ -2226,7 +2226,13 @@ export function certsIn(region: CertRegion): Cert[] {
   return certs.filter((cert) => cert.region === region);
 }
 
-/** 자격증 하나에 걸린 글 수. 목록 카드에 「우리 글 N편」으로 나갑니다. */
+/**
+ * 자격증 하나에 걸린 기존 글 수.
+ *
+ * 화면에서는 안 씁니다 — 목록 머리말은 대비 글을 세고 상세는 목록을 그대로
+ * 그립니다. 남겨 두는 이유는 대비 글이 얼마나 찼는지와 견주는 자리(루틴의
+ * 판단, 테스트)에서 쓰기 때문입니다.
+ */
 export function studyCount(cert: Cert): number {
   return cert.studyPath.reduce((sum, group) => sum + group.items.length, 0);
 }

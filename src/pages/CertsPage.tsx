@@ -5,7 +5,8 @@ import { CertStars } from '../components/CertStars';
 import { LearnRail } from '../components/LearnRail';
 import { PageHeader } from '../components/PageHeader';
 import { Seo } from '../components/Seo';
-import { certs, certsIn, studyCount, type Cert } from '../data/certs';
+import { certs, certsIn, type Cert } from '../data/certs';
+import { certPrepNotes } from '../data/certPrep';
 
 /**
  * 자격증 한 줄. **카드 격자가 아니라 행입니다.**
@@ -57,7 +58,8 @@ function CertRow({ cert }: { cert: Cert }) {
 export function CertsPage() {
   const domestic = certsIn('국내');
   const overseas = certsIn('해외');
-  const paths = certs.reduce((sum, cert) => sum + studyCount(cert), 0);
+  // 머리말 숫자는 대비 글을 셉니다 — 학습 경로의 본체가 그쪽이고 매핑은 곁다리입니다.
+  const prepCount = certPrepNotes.length;
 
   return (
     <>
@@ -73,7 +75,7 @@ export function CertsPage() {
         statsLabel="공식 페이지에서 확인한 것만 싣습니다"
         stats={[
           { label: '자격증', value: `${certs.length}개` },
-          { label: '학습 경로', value: `${paths}편` },
+          { label: '대비 글', value: `${prepCount}편` },
         ]}
       />
 
