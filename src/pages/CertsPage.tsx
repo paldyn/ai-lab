@@ -8,23 +8,21 @@ import { Seo } from '../components/Seo';
 import { certs, certsIn, studyCount, type Cert } from '../data/certs';
 
 /**
- * 자격증 목록. 국내·해외로 나눠 세웁니다.
+ * 자격증 한 줄. **카드 격자가 아니라 행입니다.**
  *
- * **카드에는 넷만 둡니다** — 시행처 마크, 이름, 난이도, 취업. 예전에는 시행처·등급·
- * 주기 첫 문장·학습 경로 편수·확인 날짜까지 다섯 줄이 들어갔는데, 열넷을 훑는
- * 화면에서 그것들은 고르는 데 쓰이지 않고 줄만 늘렸습니다. 나머지는 상세에 있습니다.
+ * 격자로 두면 이름과 별이 칸마다 다른 자리에서 시작해 열넷을 세로로 훑을 수가
+ * 없습니다. 행으로 세우면 별이 오른쪽 한 줄에 모여, 「어느 것이 더 센가」가
+ * 눈으로 바로 비교됩니다 — 목록에서 하는 일이 그것뿐입니다.
  *
- * 별 두 줄은 **고를 때 실제로 다투는 두 값**입니다 — 얼마나 어려운가와 따서
- * 쓸 데가 있는가. 이 둘이 같이 보여야 「쉬운데 안 쳐주는 것」과 「어려운데
- * 제도로 인정되는 것」이 갈립니다. 취업 별의 근거인 자격의 종류를 그 위에
- * 함께 답니다.
+ * 한 줄에 넷을 답니다 — 시행처 마크, 이름, 자격의 종류, 별 두 축. 주기·응시료·
+ * 학습 경로 편수는 고르는 데 쓰이지 않아 상세로 보냈습니다.
  */
-function CertCard({ cert }: { cert: Cert }) {
+function CertRow({ cert }: { cert: Cert }) {
   return (
-    <article className="cert-card">
+    <article className="cert-row">
       <CertMark issuer={cert.issuer} />
-      <div className="cert-card-body">
-        <h3 className="cert-card-title">
+      <div className="cert-row-main">
+        <h3 className="cert-row-title">
           <Link to={`/learn/certs/${cert.id}`} className="card-trigger">
             {cert.nameKo}
           </Link>
@@ -37,21 +35,21 @@ function CertCard({ cert }: { cert: Cert }) {
         <p className={`cert-status cert-status-${cert.status === '국가기술자격' ? 'national' : 'other'}`}>
           {cert.status}
         </p>
-        <dl className="cert-card-ratings">
-          <div>
-            <dt>난이도</dt>
-            <dd>
-              <CertStars value={cert.difficulty} size={12} />
-            </dd>
-          </div>
-          <div>
-            <dt>취업</dt>
-            <dd>
-              <CertStars value={cert.employment} size={12} />
-            </dd>
-          </div>
-        </dl>
       </div>
+      <dl className="cert-row-ratings">
+        <div>
+          <dt>난이도</dt>
+          <dd>
+            <CertStars value={cert.difficulty} size={12} />
+          </dd>
+        </div>
+        <div>
+          <dt>취업</dt>
+          <dd>
+            <CertStars value={cert.employment} size={12} />
+          </dd>
+        </div>
+      </dl>
     </article>
   );
 }
@@ -106,9 +104,9 @@ export function CertsPage() {
                 {group.title}
                 <span className="cert-group-count">{group.items.length}</span>
               </h2>
-              <div className="cert-grid">
+              <div className="cert-rows">
                 {group.items.map((cert) => (
-                  <CertCard key={cert.id} cert={cert} />
+                  <CertRow key={cert.id} cert={cert} />
                 ))}
               </div>
             </div>

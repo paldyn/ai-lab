@@ -59,48 +59,63 @@ function CertView({ cert }: { cert: Cert }) {
         <Link to="/learn/certs" className="back-link">
           <ArrowLeft size={14} aria-hidden="true" /> 자격증
         </Link>
-        <div className="mt-10">
-          <div className="cert-head-meta">
-            <CertMark issuer={cert.issuer} />
-            {/*
-              등급(입문·중급·고급) 대신 자격의 종류를 답니다. 난이도는 바로
-              아래 별이 더 잘게 말해 주고, 여기서 필요한 것은 취업 별의 근거인
-              「국가기술자격인가 국가공인인가」입니다.
-            */}
-            <p className="font-mono text-[10px] tracking-[0.13em] text-[var(--text-muted)]">
-              {cert.region} / {cert.status} / {cert.issuer}
-            </p>
+        {/*
+          머리말을 둘로 가릅니다. 왼쪽은 「이게 무슨 자격증인가」(종류·이름·원문
+          이름), 오른쪽은 「그래서 어떤가와 어디서 접수하나」(별 두 축과 공식
+          페이지)입니다. 한 줄로 쌓아 두면 별과 링크가 제목 아래로 밀려 스크롤
+          없이는 안 보였습니다. 좁은 화면에서는 그대로 위아래로 쌓입니다.
+        */}
+        <div className="cert-head">
+          <div className="cert-head-left">
+            <div className="cert-head-meta">
+              <CertMark issuer={cert.issuer} />
+              {/*
+                등급(입문·중급·고급) 대신 자격의 종류를 답니다. 난이도는 별이 더
+                잘게 말해 주고, 여기서 필요한 것은 취업 별의 근거인 「국가기술자격인가
+                국가공인인가」입니다. 그 종류만 색과 굵기를 올려 둡니다.
+              */}
+              <p className="cert-head-line">
+                <span>{cert.region}</span>
+                <span aria-hidden="true">/</span>
+                <b className={cert.status === '국가기술자격' ? 'is-national' : undefined}>{cert.status}</b>
+                <span aria-hidden="true">/</span>
+                <span>{cert.issuer}</span>
+              </p>
+            </div>
+            <h1 className="mt-5 max-w-4xl text-[2rem] font-medium leading-[1.35] text-[var(--text-strong)] sm:text-[2.6rem]">
+              {cert.nameKo}
+            </h1>
+            {cert.nameEn !== cert.nameKo && (
+              <p className="mt-3 font-mono text-[12px] text-[var(--text-muted)]">{cert.nameEn}</p>
+            )}
           </div>
-          <h1 className="mt-5 max-w-4xl text-[2rem] font-medium leading-[1.35] text-[var(--text-strong)] sm:text-[2.6rem]">
-            {cert.nameKo}
-          </h1>
-          {cert.nameEn !== cert.nameKo && (
-            <p className="mt-3 font-mono text-[12px] text-[var(--text-muted)]">{cert.nameEn}</p>
-          )}
-          {/*
-            목록에서는 별만 세우고 근거는 여기서 답니다. 시행처가 매긴 값이 아니라
-            우리가 매긴 값이라, 숫자만 두고 왜 그런지 안 적으면 그냥 우기는 것이 됩니다.
-          */}
-          <dl className="cert-ratings">
-            <div>
-              <dt>난이도</dt>
-              <dd>
-                <CertStars value={cert.difficulty} size={14} />
-                <span>{cert.difficultyBasis}</span>
-              </dd>
-            </div>
-            <div>
-              <dt>취업</dt>
-              <dd>
-                <CertStars value={cert.employment} size={14} />
-                <span>{cert.employmentBasis}</span>
-              </dd>
-            </div>
-            <p className="cert-ratings-note">매긴 값</p>
-          </dl>
-          <a className="cert-official" href={cert.officialUrl} target="_blank" rel="noreferrer">
-            공식 페이지에서 일정·접수 확인 <ArrowUpRight size={13} aria-hidden="true" />
-          </a>
+
+          <div className="cert-head-right">
+            {/*
+              목록에서는 별만 세우고 근거는 여기서 답니다. 시행처가 매긴 값이 아니라
+              우리가 매긴 값이라, 숫자만 두고 왜 그런지 안 적으면 그냥 우기는 것이 됩니다.
+              그 사실은 맨 아래 확인 문단이 한 번 더 밝힙니다.
+            */}
+            <dl className="cert-ratings">
+              <div>
+                <dt>난이도</dt>
+                <dd>
+                  <CertStars value={cert.difficulty} size={14} />
+                  <span>{cert.difficultyBasis}</span>
+                </dd>
+              </div>
+              <div>
+                <dt>취업</dt>
+                <dd>
+                  <CertStars value={cert.employment} size={14} />
+                  <span>{cert.employmentBasis}</span>
+                </dd>
+              </div>
+            </dl>
+            <a className="cert-official" href={cert.officialUrl} target="_blank" rel="noreferrer">
+              공식 페이지에서 일정·접수 확인 <ArrowUpRight size={13} aria-hidden="true" />
+            </a>
+          </div>
         </div>
       </header>
 
@@ -191,7 +206,8 @@ function CertView({ cert }: { cert: Cert }) {
         )}
 
         <p className="cert-verified">
-          공식 페이지를 <strong>{cert.verifiedAt}</strong>에 확인했습니다. 시험 제도는 개편이 잦으니 접수 전에{' '}
+          난이도와 취업 별은 시행처가 준 값이 아니라 위에 적은 근거로 매긴 값입니다. 공식 페이지는{' '}
+          <strong>{cert.verifiedAt}</strong>에 확인했습니다. 시험 제도는 개편이 잦으니 접수 전에{' '}
           <a href={cert.officialUrl} target="_blank" rel="noreferrer">
             시행처 안내
           </a>
