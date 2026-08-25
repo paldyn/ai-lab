@@ -1,5 +1,7 @@
+import { existsSync } from 'node:fs';
+import path from 'node:path';
 import { describe, expect, it } from 'vitest';
-import { certs } from './certs';
+import { certMark, certs } from './certs';
 import { articles } from './articles';
 
 /**
@@ -57,6 +59,59 @@ describe('자격증 데이터', () => {
     const dateLike = /\d{4}년\s*\d{1,2}월|\d{1,2}월\s*\d{1,2}일|\d{4}-\d{2}-\d{2}/;
     const leaked = certs.filter((cert) => dateLike.test(cert.cadence));
     expect(leaked.map((cert) => cert.id)).toEqual([]);
+  });
+
+  /*
+    난이도는 우리가 매긴 값이라 시행처가 검사해 주지 않습니다. 최소한 `level`과
+    거꾸로 가지는 않는지, 다섯 눈금을 실제로 쓰는지는 여기서 봅니다 — 전부 3에
+    몰리면 별 다섯 개를 그리는 의미가 없습니다.
+  */
+  it('난이도가 1~5의 정수다', () => {
+    const odd = certs.filter((cert) => !Number.isInteger(cert.difficulty) || cert.difficulty < 1 || cert.difficulty > 5);
+    expect(odd.map((cert) => `${cert.id}: ${cert.difficulty}`)).toEqual([]);
+  });
+
+  /*
+    칸이 겹칩니다. 중급이 2까지 내려오는 자리가 실제로 있어서입니다 —
+    NVIDIA NCA-GENL은 어소시에이트 등급이지만 선행 자격이 없고 객관식 1시간이라,
+    실무 6개월을 권하는 같은 등급의 Databricks 시험과 무게가 다릅니다. 등급과
+    난이도가 다른 것을 재기 때문에 생기는 차이고, 별을 두는 이유이기도 합니다.
+    여기서 막으려는 것은 입문이 고급보다 세지는 뒤집힘입니다.
+  */
+  it('난이도가 등급과 어긋나지 않는다', () => {
+    const band: Record<string, [number, number]> = { 입문: [1, 2], 중급: [2, 4], 고급: [4, 5] };
+    const off = certs.filter((cert) => {
+      const [min, max] = band[cert.level];
+      return cert.difficulty < min || cert.difficulty > max;
+    });
+    expect(off.map((cert) => `${cert.id}: ${cert.level} / ${cert.difficulty}`)).toEqual([]);
+  });
+
+  it('다섯 눈금을 모두 쓴다', () => {
+    const used = [...new Set(certs.map((cert) => cert.difficulty))].sort();
+    expect(used).toEqual([1, 2, 3, 4, 5]);
+  });
+
+  it('난이도 근거가 한 줄로 적혀 있다', () => {
+    const bad = certs.filter((cert) => cert.difficultyBasis.trim().length < 10 || cert.difficultyBasis.includes('\n'));
+    expect(bad.map((cert) => cert.id)).toEqual([]);
+  });
+
+  /*
+    카드에서 시행처를 알려 주는 것이 마크뿐이라, 표에 없는 시행처가 들어오면
+    글자 두 개짜리 대체 마크가 조용히 섭니다. 여기서 잡습니다.
+  */
+  it('시행처마다 마크가 있고 로고 파일이 실제로 있다', () => {
+    const missing: string[] = [];
+    for (const cert of certs) {
+      const mark = certMark(cert.issuer);
+      if (!mark.logo && !mark.text) missing.push(`${cert.id}: 마크 없음`);
+      if (mark.logo && !existsSync(path.join(process.cwd(), 'public', mark.logo))) {
+        missing.push(`${cert.id}: ${mark.logo} 파일 없음`);
+      }
+      if (mark.label !== cert.issuer && !mark.logo) continue;
+    }
+    expect(missing).toEqual([]);
   });
 
   it('과목이 비어 있지 않다', () => {
