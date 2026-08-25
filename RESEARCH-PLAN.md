@@ -135,6 +135,8 @@
 
 **8번의 "BM25가 이기는 질의"는 "BM25가 대체로 이긴다"였다.** 형태소(kiwi) BM25가 R@1 0.8914, 문자 2-gram이 0.8961로 dense 0.7785를 11%p 이상 앞선다. 공백 토큰화만 0.7503으로 dense에 진다 — 통념의 근거가 토큰화였다. 승패를 가르는 축은 숫자·연도·고유명사가 아니라 질의와 정답 문단의 형태소 겹침이고 경계가 0.6이다(그 아래 6.2%에서만 dense가 이긴다). KorQuAD 질문이 문단을 읽고 만들어져 겹침 평균이 0.770이라는 점이 이 결론의 최대 한계이며 본문에 명시했다. 9·20·23번이 재사용할 BM25 순위는 `bm25_{whitespace,kiwi-morph,char-2gram}.npy`로 남는다.
 
+**arXiv HTML에서 표를 긁을 때의 함정 하나.** LaTeXML은 캡션을 표 **앞**에 놓는다. 그래서 「Table 2: Alternative Prompt」 같은 캡션 문자열을 찾아 그 앞의 `<table>`을 잡으면 한 칸 밀린 표가 잡힌다. 29번을 쓰면서 실제로 표 두 장을 서로 바꿔 읽을 뻔했다 — 두 표는 행 이름이 같고 숫자만 달라서 **바뀌어도 눈으로는 안 걸린다.** 기준점은 캡션 문자열이 아니라 LaTeXML이 붙인 id를 쓴다(`id="A4.T1.4"` 꼴, `A4`는 부록 D). 그리고 캡션에는 `<span>`이 섞여 들어가 원문에 리터럴 문자열로 존재하지 않는 경우가 있어 `raw.index("Table 2: Alternative Prompt")` 자체가 `ValueError`로 죽는다.
+
 **bm25s의 함정 하나.** `BM25.index()`는 넘겨받은 vocab 딕셔너리에 빈 문자열 항목을 제자리에서 추가한다. 색인 뒤에 `len(vocab)`을 세면 실제 어휘보다 1이 크고, 그 id를 질의에 넣으면 `maximum token ID in the query is higher than the number of tokens in the index`로 죽는다. 어휘 수는 색인 전에 센다.
 
 ## 이 계획을 실행하기 전에 고쳐야 할 것
