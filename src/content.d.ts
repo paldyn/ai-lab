@@ -19,6 +19,21 @@ declare module 'virtual:article-index' {
   export const articleIndex: ArticleIndexEntry[];
 }
 
+declare module 'virtual:cert-prep-index' {
+  export interface CertPrepEntry {
+    certId: string;
+    slug: string;
+    title: string;
+    summary: string;
+    kind: string;
+    order: number;
+    readTime: number;
+    updatedAt: string;
+  }
+
+  export const certPrepIndex: CertPrepEntry[];
+}
+
 declare module '*.md' {
   export interface MarkdownHeading {
     depth: number;

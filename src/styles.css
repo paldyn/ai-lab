@@ -5134,6 +5134,140 @@ input:focus-visible {
   white-space: nowrap;
 }
 
+/* ---- 대비 글 ---- */
+
+/*
+  자격증마다의 대비 글 목록. 번호가 곧 차례이고 그 차례가 파일 이름에 박혀 있어
+  목록과 폴더가 같은 순서로 보입니다.
+*/
+.cert-prep-list {
+  display: grid;
+  gap: 2px;
+}
+
+.cert-prep-item {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  border-bottom: 1px solid var(--border);
+  padding: 12px 0 6px;
+  color: var(--text-strong);
+  font-size: 15px;
+}
+
+.cert-prep-item:hover {
+  color: var(--brand-text);
+}
+
+.cert-prep-order {
+  flex-shrink: 0;
+  color: var(--text-muted);
+  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  font-size: 11px;
+}
+
+.cert-prep-name {
+  min-width: 0;
+}
+
+/* 개념인지 문제인지. 문제는 색을 넣어 목록에서 바로 찾게 합니다. */
+.cert-prep-kind {
+  flex-shrink: 0;
+  border: 1px solid var(--border);
+  padding: 1px 6px;
+  color: var(--text-muted);
+  font-size: 10px;
+}
+
+.cert-prep-kind.is-quiz {
+  border-color: var(--star);
+  color: var(--star);
+}
+
+.cert-prep-time {
+  margin-left: auto;
+  flex-shrink: 0;
+  color: var(--text-muted);
+  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  font-size: 10px;
+}
+
+.cert-prep-summary {
+  margin-bottom: 14px;
+  color: var(--text-dim);
+  font-size: 13px;
+  line-height: 1.75;
+}
+
+.cert-study-intro {
+  margin-bottom: 18px;
+}
+
+/* ---- 대비 글 화면 ---- */
+
+.cert-prep-kicker {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  color: var(--text-muted);
+  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  font-size: 10px;
+  letter-spacing: 0.1em;
+}
+
+.cert-prep-nav {
+  display: grid;
+  margin-top: 64px;
+  gap: 10px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  border-top: 1px solid var(--border);
+  padding-top: 22px;
+}
+
+.cert-prep-nav-item {
+  display: grid;
+  gap: 5px;
+  border: 1px solid var(--border);
+  padding: 14px 16px;
+  color: var(--text);
+  transition: border-color 0.15s ease;
+}
+
+.cert-prep-nav-item.is-next {
+  text-align: right;
+}
+
+.cert-prep-nav-item:hover {
+  border-color: var(--text-nav-icon);
+}
+
+.cert-prep-nav-item span {
+  color: var(--text-muted);
+  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  font-size: 10px;
+  letter-spacing: 0.08em;
+}
+
+.cert-prep-nav-item b {
+  color: var(--text-strong);
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.5;
+}
+
+.cert-prep-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 26px;
+  color: var(--text-dim);
+  font-size: 13px;
+}
+
+.cert-prep-back:hover {
+  color: var(--brand-text);
+}
+
 .cert-verified {
   margin-top: 56px;
   border-top: 1px solid var(--border);

@@ -6,6 +6,7 @@ import { useActiveHeading } from '../lib/activeHeading';
 import { CertStars } from '../components/CertStars';
 import { Seo } from '../components/Seo';
 import { certById, type Cert, type CertStudyItem } from '../data/certs';
+import { prepFor } from '../data/certPrep';
 import { getArticleBySlug } from '../data/articles';
 
 const TECHBLOG = 'https://techblog.paldyn.com/posts';
@@ -49,6 +50,8 @@ function Fact({ label, value }: { label: string; value?: string }) {
 }
 
 function CertView({ cert }: { cert: Cert }) {
+  const prep = prepFor(cert.id);
+
   /*
     목차에 세울 절. 있는 절만 담습니다 — 학습 경로가 아직 없는 자격증도 있고,
     없는 절을 목차에 두면 눌렀을 때 아무 데도 안 갑니다.
@@ -59,12 +62,13 @@ function CertView({ cert }: { cert: Cert }) {
         { id: 'what', title: '무엇을 재는 시험인가' },
         { id: 'subjects', title: '과목' },
         { id: 'exam', title: '시험 정보' },
-        cert.studyPath.length > 0 ? { id: 'study', title: '학습 경로' } : null,
+        { id: 'prep', title: '대비 글' },
+        cert.studyPath.length > 0 ? { id: 'study', title: '관련 있는 우리 글' } : null,
         cert.notes ? { id: 'notes', title: '알아 둘 것' } : null,
       ].filter((section) => section !== null),
     [cert],
   );
-  const { active, goTo } = useActiveHeading(useMemo(() => sections.map((s) => s.id), [sections]));
+  const { active, goTo } = useActiveHeading(useMemo(() => sections.map((item) => item.id), [sections]));
 
   return (
     <article>
@@ -209,9 +213,43 @@ function CertView({ cert }: { cert: Cert }) {
           </dl>
         </section>
 
+        {/*
+          **대비 글이 학습 경로의 본체입니다.** 아래 「관련 있는 우리 글」은 이미
+          있던 글을 과목에 매핑한 것인데, 그 글들은 시험을 보라고 쓴 것이 아니라
+          개념을 설명하려고 쓴 것이라 「무엇을 외워야 붙는가」가 빠져 있습니다.
+          시험 하나를 놓고 처음부터 쓴 글은 이쪽입니다.
+        */}
+        <section className="cert-section">
+          <h2 id="prep">대비 글</h2>
+          {prep.length > 0 ? (
+            <ol className="cert-prep-list">
+              {prep.map((note) => (
+                <li key={note.slug}>
+                  <Link to={note.path} className="cert-prep-item">
+                    <span className="cert-prep-order">{String(note.order).padStart(2, '0')}</span>
+                    <span className="cert-prep-name">{note.title}</span>
+                    <span className={`cert-prep-kind${note.kind === '문제' ? ' is-quiz' : ''}`}>
+                      {note.kind}
+                    </span>
+                    <span className="cert-prep-time">{note.readTime} MIN</span>
+                  </Link>
+                  <p className="cert-prep-summary">{note.summary}</p>
+                </li>
+              ))}
+            </ol>
+          ) : (
+            <p className="cert-prose">
+              이 시험의 대비 글은 아직 없습니다. 과목별 정리와 모의고사를 순서대로 채워 나갑니다.
+            </p>
+          )}
+        </section>
+
         {cert.studyPath.length > 0 && (
           <section className="cert-section">
-            <h2 id="study">학습 경로</h2>
+            <h2 id="study">관련 있는 우리 글</h2>
+            <p className="cert-prose cert-study-intro">
+              시험을 겨냥해 쓴 글은 아니지만 같은 개념을 다룹니다. 과목이 막힐 때 곁에 두고 읽습니다.
+            </p>
             {cert.studyPath.map((group) => (
               <div key={group.subject} className="cert-study-group">
                 <h3>{group.subject}</h3>

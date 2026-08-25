@@ -1,5 +1,6 @@
 import { articles } from './data/articles';
 import { certs } from './data/certs';
+import { certPrepNotes } from './data/certPrep';
 import { categoryIdsIn } from './data/categories';
 import { newsViewIds } from './data/news';
 
@@ -26,10 +27,13 @@ export const staticRoutes: string[] = [
 export const prerenderRoutes: string[] = [
   ...staticRoutes,
   ...articles.map((article) => `/articles/${article.slug}`),
+  // 자격증 대비 글. 시험 이름으로 검색해 들어오는 자리라 HTML이 먼저 있어야 합니다.
+  ...certPrepNotes.map((note) => note.path),
 ];
 
 /** sitemap.xml에 넣을 경로. 404는 색인 대상이 아니므로 제외합니다. */
 export const sitemapRoutes: Array<{ path: string; lastModified?: string }> = [
   ...staticRoutes.map((path) => ({ path })),
   ...articles.map((article) => ({ path: `/articles/${article.slug}`, lastModified: article.publishedAt })),
+  ...certPrepNotes.map((note) => ({ path: note.path, lastModified: note.updatedAt })),
 ];

@@ -4,6 +4,7 @@ import { StaticRouter } from 'react-router';
 import App from './App';
 import { consumeHead, renderHeadTags } from './lib/head';
 import { loadArticleBody } from './lib/articleBody';
+import { loadCertPrepBody } from './lib/certPrepBody';
 import { newsItems } from './data/news';
 
 export { prerenderRoutes, sitemapRoutes, staticRoutes } from './routes';
@@ -39,6 +40,10 @@ export interface RenderResult {
 export async function render(route: string): Promise<RenderResult> {
   const slug = /^\/articles\/(.+)$/.exec(route)?.[1];
   if (slug) await loadArticleBody(slug);
+
+  // 자격증 대비 글도 렌더 전에 본문을 캐시에 넣습니다 — renderToString은 동기입니다.
+  const prep = /^\/learn\/certs\/([a-z0-9-]+)\/([a-z0-9-]+)$/.exec(route);
+  if (prep) await loadCertPrepBody(prep[1], prep[2]);
 
   const html = renderToString(
     <StrictMode>

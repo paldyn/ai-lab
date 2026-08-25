@@ -2,6 +2,7 @@ import { Navigate, Route, Routes, useParams } from 'react-router';
 import { Layout } from './components/Layout';
 import { ArticlePage } from './pages/ArticlePage';
 import { CertPage } from './pages/CertPage';
+import { CertPrepPage } from './pages/CertPrepPage';
 import { CertsPage } from './pages/CertsPage';
 import { LearnPage } from './pages/LearnPage';
 import { HomePage } from './pages/HomePage';
@@ -39,6 +40,7 @@ export default function App() {
         */}
         <Route path="/learn/certs" element={<CertsPage />} />
         <Route path="/learn/certs/:certId" element={<CertPage />} />
+        <Route path="/learn/certs/:certId/:slug" element={<CertPrepPage />} />
         <Route path="/articles/:slug" element={<ArticlePage />} />
         <Route path="/privacy" element={<PrivacyPage />} />
         {/* 지난 주소들. /concepts는 2026-08-04에 /learn으로 바꿨습니다. */}
