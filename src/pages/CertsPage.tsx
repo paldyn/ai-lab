@@ -25,7 +25,7 @@ function CertCard({ cert }: { cert: Cert }) {
           {cert.nameKo}
         </Link>
       </h3>
-      <p className="cert-card-en">{cert.nameEn}</p>
+      {cert.nameEn !== cert.nameKo && <p className="cert-card-en">{cert.nameEn}</p>}
       <p className="cert-card-cadence">{firstSentence(cert.cadence)}</p>
       <p className="cert-card-foot">
         {count > 0 ? `학습 경로 ${count}편` : '학습 경로 준비 중'}

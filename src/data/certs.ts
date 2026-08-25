@@ -84,8 +84,8 @@ export const certs: Cert[] = [
   {
     id: 'bigdata-analysis-engineer',
     nameKo: '빅데이터분석기사',
-    nameEn: '',
-    issuer: '한국데이터산업진흥원(K-DATA, KOREA Data Agency)',
+    nameEn: '빅데이터분석기사',
+    issuer: '한국데이터산업진흥원',
     region: '국내',
     level: '중급',
     whatItMeasures:
@@ -171,14 +171,15 @@ export const certs: Cert[] = [
     officialUrl: 'https://www.dataq.or.kr/www/sub/a_07.do',
     verifiedAt: '2026-08-25',
     notes:
-      '국가기술자격법에 근거한 국가기술자격이라 한국데이터산업진흥원의 다른 자격(ADP·ADsP·SQLP·SQLD·DAP·DAsP)과 성격이 다르다 — 응시료도 필기 ' +
-      '17,800원·실기 40,800원으로 다른 종목(5만~10만원)보다 훨씬 낮고, 그 자격들에 걸리는 보수교육 의무(DAP·SQLP·SQLD)의 대상도 아니다. ' +
-      '학점인정 등에 관한 법률에 따라 자격 취득 및 취득에 필요한 교육과정 이수가 학점은행제 20학점으로 인정된다. 실기는 CBT 방식이고 공식 홈페이지가 \'실기 ' +
-      '체험환경\'을 별도로 제공한다. 2026년 기준으로 제12회·제13회가 시행되므로 제도가 유지·운영 중이며 폐지나 대체 계획은 공식 페이지에서 확인되지 않는다. ' +
-      '확인에 쓴 페이지는 자격소개(https://www.dataq.or.kr/www/sub/a_07.do), ' +
-      '응시안내(https://www.dataq.or.kr/www/accept/guide.do), ' +
-      '시험일정(https://www.dataq.or.kr/www/accept/schedule.do), 보수교육 ' +
-      '안내(https://www.dataq.or.kr/www/sub/a_iocon.do) 넷이다.',
+      '- 국가기술자격법 제23조 및 동법 시행령 제29조(권한의 위임·위탁)에 따라 시행하는 국가기술자격이다. 시행기관 약칭은 K-DATA(KOREA Data ' +
+      'Agency)다.\n' +
+      '- 국가기술자격이라 한국데이터산업진흥원의 다른 자격(ADP·ADsP·SQLP·SQLD·DAP·DAsP)과 성격이 다르다 — 응시료가 다른 ' +
+      '종목(5만~10만원)보다 훨씬 낮고, DAP·SQLP·SQLD에 걸리는 보수교육 의무의 대상도 아니다.\n' +
+      '- 학점인정 등에 관한 법률에 따라 자격 취득 및 취득에 필요한 교육과정 이수가 학점은행제 20학점으로 인정된다.\n' +
+      '- 실기는 CBT 방식이고 공식 홈페이지가 \'실기 체험환경\'을 별도로 제공한다.\n' +
+      '- 2026년 기준으로 제12회·제13회가 시행되므로 제도가 유지·운영 중이며 폐지나 대체 계획은 공식 페이지에서 확인되지 않는다.\n' +
+      '- 확인에 쓴 페이지는 자격소개·응시안내·시험일정·보수교육 안내 넷이다.\n' +
+      '- 공식 영문 명칭은 확인한 페이지에 없어 nameEn에 한국어 정식 명칭을 그대로 두었다.',
     unknowns: [
       '자격 자체의 유효기간 (공식 자격소개·응시안내에 언급 자체가 없음 — \'없다\'고 적힌 것이 아니라 미확인)',
       '실기시험 문항 수 (검정방법·배점·시간만 명시되고 문항 수는 없음)',
@@ -187,21 +188,58 @@ export const certs: Cert[] = [
       '회차별 응시자·합격자 수 및 합격률',
       '회차별 원서접수 기간의 길이, 접수 마감~시험일 간격, 시험일~합격발표 간격 (회차마다 다르고 시행처가 규칙으로 적어 둔 곳이 없음)',
     ],
-    studyPath: [],
+    studyPath: [
+      {
+        subject: '빅데이터 분석 기획 (필기)',
+        items: [
+          { site: 'ailab', slug: 'guardrails-pii-redaction' },
+          { site: 'ailab', slug: 'ai-privacy' },
+        ],
+      },
+      {
+        subject: '빅데이터 탐색 (필기)',
+        items: [
+          { site: 'ailab', slug: 'math-basics-descriptive-statistics' },
+          { site: 'ailab', slug: 'math-variance-and-sampling-error' },
+          { site: 'ailab', slug: 'ml-dbscan' },
+          { site: 'ailab', slug: 'ml-pca' },
+        ],
+      },
+      {
+        subject: '빅데이터 모델링 (필기)',
+        items: [
+          { site: 'ailab', slug: 'ml-linear-regression' },
+          { site: 'ailab', slug: 'ml-logistic-regression' },
+          { site: 'ailab', slug: 'ml-decision-tree' },
+          { site: 'ailab', slug: 'neural-network-basics' },
+        ],
+      },
+      {
+        subject: '빅데이터 결과 해석 (필기)',
+        items: [
+          { site: 'ailab', slug: 'math-basics-hypothesis-testing-logic' },
+          { site: 'ailab', slug: 'ml-classification-metrics' },
+          { site: 'ailab', slug: 'ml-roc-auc' },
+          { site: 'ailab', slug: 'ai-regularization' },
+        ],
+      },
+    ],
   },
   {
     id: 'adsp',
     nameKo: '데이터분석 준전문가 (ADsP)',
-    nameEn: '',
-    issuer: '한국데이터산업진흥원(K-DATA) 데이터자격검정센터',
+    nameEn: 'ADsP',
+    issuer: '한국데이터산업진흥원',
     region: '국내',
     level: '입문',
     whatItMeasures:
       '공식 정의는 "데이터 이해에 대한 기본지식을 바탕으로 데이터분석 기획 및 데이터분석 등의 직무를 수행하는 실무자"다. 재는 직무는 둘로 적혀 있다 — 분석 ' +
       '기회를 발굴해 분석과제를 정의하고 분석로드맵과 성과 관리를 세우는 \'데이터 기획\', 그리고 분석 요건을 도출하고 설계·모델링·검증 및 테스트·적용까지 가는 ' +
-      '\'데이터분석\'이다. 상위 자격인 데이터분석 전문가(ADP)와 달리 실기가 없고 필기 한 번으로 끝나며, 필기 합격자가 그대로 최종 합격자가 된다.',
+      '\'데이터분석\'이다. 분석 도구는 공식 세부항목 기준으로 R이고 Python은 출제 범위에 없다. 딥러닝·LLM·생성형 AI도 범위 밖이고, ' +
+      '기술통계·다변량·시계열과 분류·군집·연관분석 같은 고전 기법이 축이다.',
     audience:
-      '데이터 분석 실무를 시작하는 비전공자·주니어와 학점은행제 학점 또는 ADP 응시자격이 필요한 사람이 보는, 응시자격 제한 없는 입문 단계 국가공인 자격시험이다.',
+      '데이터 분석 실무를 시작하는 비전공자·주니어, 그리고 학점은행제 학점이나 ADP 응시자격이 필요한 사람이 보는 입문 단계 자격시험이다. 응시자격에 제한이 ' +
+      '없다.',
     format:
       '필기 단일 시험. 객관식 50문항(데이터 이해 10 · 데이터분석 기획 10 · 데이터분석 30), 배점은 표에 "100 (각 2점)"으로 적혀 100점 ' +
       '만점이고 검정시험시간은 "90분 (1시간30분)"이다. 합격기준은 총점 60점 이상, 과락기준은 과목별 40% 미만 취득이다. "필기시험의 합격자는 ' +
@@ -252,17 +290,16 @@ export const certs: Cert[] = [
     officialUrl: 'https://www.dataq.or.kr/www/sub/a_06.do',
     verifiedAt: '2026-08-25',
     notes:
-      '- 시행·발급 주체는 한국데이터산업진흥원(K-DATA)이다. a_06.do가 "이에 한국데이터산업진흥원은 … 데이터분석 준전문가 자격검정을 실시하고자 한다"로 ' +
-      '적고, 푸터도 한국데이터산업진흥원(사업자등록번호 102-82-08963)뿐이다. \'데이터자격검정센터\'라는 이름은 접수 안내 페이지(guide.do)의 장애인 ' +
-      '편의 제공 문장에 한 번 나오지만, 그 자리가 발급·시행 주체를 밝히는 자리는 아니라 기관명에서 뺐다. - 국가공인 민간자격이다 — 페이지 머리에 "(공인자격 ' +
-      '제2022-05호)", 관련 근거는 "자격기본법 제17조(민간자격의 신설 및 등록 등)"로 적혀 있다. - 특전사항: 학점인정 등에 관한 법률에 따라 자격취득 ' +
-      '및 자격취득에 필요한 교육과정 이수에 대하여 학점은행제 14학점으로 인정된다(같은 법 제7조제2항제4호 및 시행령 제9조제2항·제11조). - 접수 운영 규칙 ' +
-      '둘이 공식 안내에 있다 — "고사장은 선착순으로 접수되며, 해당 시험을 위해 마련된 고사장 좌석이 모두 소진되면 접수 기간 중 이라도 조기 마감될 수 ' +
-      '있습니다", "시험 연기제도는 운영하고 있지 않습니다"(접수된 시험은 다음 회차로 연기할 수 없다). 고사장 변경은 접수 기간 중에만 가능하다. - 상위 ' +
-      '자격인 ADP의 자격보유 기준 응시자격이 "데이터분석 준전문가 자격을 취득한 자"다. 즉 ADsP는 ADP로 가는 학력·경력 요건을 대체하는 경로가 된다. - ' +
-      '3과목 중 \'데이터분석\'이 30문항으로 60%를 차지한다. 과락이 과목별 40%(=과목 배점의 40%)이므로 데이터분석 과목의 비중이 사실상 당락을 가른다. ' +
-      '- 분석 도구는 공식 세부항목 기준으로 R이다("R기초와 데이터 마트", "R기초"). Python은 출제 범위에 없다. - 딥러닝·LLM·생성형 AI는 출제 ' +
-      '범위에 없다. \'정형 데이터 마이닝\'까지가 끝이고 분류·군집·연관분석 같은 고전 기법과 기술통계·다변량·시계열이 축이다.',
+      '- 시행·발급 주체는 한국데이터산업진흥원(K-DATA)이다. \'데이터자격검정센터\'라는 이름은 접수 안내 페이지의 장애인 편의 제공 문장에 한 번 나올 뿐, ' +
+      '발급·시행 주체를 밝히는 자리가 아니다.\n' +
+      '- 국가공인 민간자격이다 — 페이지 머리에 "(공인자격 제2022-05호)", 근거는 "자격기본법 제17조(민간자격의 신설 및 등록 등)"로 적혀 있다.\n' +
+      '- 특전사항: 자격취득 및 그에 필요한 교육과정 이수가 학점은행제 14학점으로 인정된다(학점인정 등에 관한 법률 제7조제2항제4호 및 시행령 ' +
+      '제9조제2항·제11조).\n' +
+      '- 상위 자격인 ADP의 자격보유 기준 응시자격이 "데이터분석 준전문가 자격을 취득한 자"라, ADsP는 ADP로 가는 학력·경력 요건을 대체하는 경로가 ' +
+      '된다. ADP와 달리 실기가 없고 필기 합격자가 그대로 최종 합격자가 된다.\n' +
+      '- 3과목 중 \'데이터분석\'이 30문항으로 60%를 차지한다. 과락이 과목별 40%이므로 이 과목이 사실상 당락을 가른다.\n' +
+      '- 접수 규칙 둘이 공식 안내에 있다 — 고사장은 선착순이라 좌석이 소진되면 접수 기간 중에도 조기 마감될 수 있고, 시험 연기제도는 운영하지 않는다. 고사장 ' +
+      '변경은 접수 기간 중에만 가능하다.',
     unknowns: [
       '시험 시행 방식(CBT/PBT) — 고사장을 골라 접수하는 오프라인 필기시험인 것은 확인되나 방식 명칭이 ADsP 페이지에 없음(ADP 페이지는 실기를 ' +
       'CBT로 명시한다)',
@@ -273,20 +310,29 @@ export const certs: Cert[] = [
       '접수 기간의 길이, 접수 개시 시점, 시험일부터 합격자 발표까지의 간격 — 회차별 일정표만 공개되고 \'시험 O주 전\', \'발표 O주 뒤\' 같은 상시 규칙은 ' +
       '공표되지 않음(수험표 발행만 예외로 규칙이 있다)',
     ],
-    studyPath: [],
+    studyPath: [
+      {
+        subject: '데이터분석',
+        items: [
+          { site: 'ailab', slug: 'ml-logistic-regression' },
+          { site: 'ailab', slug: 'ml-clustering-hierarchical' },
+          { site: 'ailab', slug: 'ml-dbscan' },
+          { site: 'ailab', slug: 'ml-clustering-metrics' },
+        ],
+      },
+    ],
   },
   {
     id: 'adp',
-    nameKo: '데이터분석 전문가',
-    nameEn: '',
-    issuer: '한국데이터산업진흥원(K-DATA) 데이터자격검정',
+    nameKo: '데이터분석 전문가(ADP)',
+    nameEn: 'Advanced Data Analytics Professional (ADP)',
+    issuer: '한국데이터산업진흥원',
     region: '국내',
     level: '고급',
     whatItMeasures:
       '공식 정의는 "데이터 이해 및 처리 기술에 대한 기본지식을 바탕으로 데이터분석 기획, 데이터분석, 데이터 시각화 업무를 수행하고 이를 통해 프로세스 혁신 및 ' +
-      '마케팅 전략 결정 등의 과학적 의사결정을 지원하는 직무를 수행하는 전문가"다. 직무는 셋으로 나뉜다 — 데이터 기획(분석과제 정의, 분석로드맵 수립, 성과 ' +
-      '관리), 데이터분석(요건정의·모델링·검증 및 테스트·적용), 데이터 시각화(시각화 기획·모델링·디자인·구축·배포 및 유지보수). 필기로 이론을 재고, 실기에서 ' +
-      'CBT로 실제 분석 수행 능력을 따로 재는 2단계 구조다.',
+      '마케팅 전략 결정 등의 과학적 의사결정을 지원하는 직무를 수행하는 전문가"다. 직무는 데이터 기획, 데이터분석, 데이터 시각화 셋으로 나뉜다. 필기로 이론을 ' +
+      '재고, 실기에서 CBT로 실제 분석 수행 능력을 따로 재는 2단계 구조다.',
     audience:
       '데이터 분석 기획·모델링·시각화를 실무로 수행하는 경력자, 그리고 ADsP를 이미 딴 사람이 다음 단계로 보는 시험이다.',
     format:
@@ -372,15 +418,19 @@ export const certs: Cert[] = [
     officialUrl: 'https://www.dataq.or.kr/www/sub/a_05.do',
     verifiedAt: '2026-08-25',
     notes:
-      '국가공인 민간자격이다 — 시행처 페이지(a_05.do)가 "데이터분석전문가(ADP : Advanced Data Analytics Professional)" ' +
-      '제목 바로 옆에 "(공인자격 제2022-05호)"를 적고, 관련 근거로 "자격기본법 제17조(민간자격의 신설 및 등록 등)"를 든다. 같은 번호가 ADsP ' +
-      '페이지(a_06.do)에도 그대로 붙어 있어 이 공인번호는 「데이터분석」 종목 단위로 매겨진 것으로 보인다. 공인일자는 확인하지 못했다. 학점은행제로 ' +
-      '30학점이 인정된다(같은 계열 ADsP는 14학점). 실기가 CBT로 치러지고 기계학습 영역과 통계 영역으로 출제되는 점이 지금 구조의 특징이다. 자격증은 ' +
-      '상장형(국가공인자격 데이터분석·SQL·데이터아키텍처)이라 홈페이지 마이페이지 > 자격증 관리에서 즉시 발급·출력하며, 발급 신청자에 한해 교부된다(카드형은 ' +
-      '빅데이터분석기사뿐이고 그쪽만 6,200원이 적혀 있다). 필기 합격자는 \'필기합격확인서\'를 따로 출력할 수 있다. 폐지·대체 정황은 없다 — 공식 일정 ' +
-      '페이지에 올해 두 회차의 필기·실기가 모두 잡혀 있다. 다만 dataq.or.kr의 공지·접수 목록 페이지는 로그인해야 열려서 최근 출제기준 개편 공지가 ' +
-      '있었는지는 확인하지 못했다. 같은 시행처의 하위 자격인 ADsP(응시자격 제한 없음, 객관식 50문항 100점, 90분, 60점 합격, 과목별 40% 미만 ' +
-      '과락, 연 4회 정기 시행, 50,000원)와 국가기술자격인 빅데이터분석기사가 인접 자격이다.',
+      '- 국가공인 민간자격이다 — 시행처 페이지가 제목 옆에 「(공인자격 제2022-05호)」를, 근거로 「자격기본법 제17조(민간자격의 신설 및 등록 등)」를 ' +
+      '적는다. 같은 번호가 ADsP 페이지에도 붙어 있어 「데이터분석」 종목 단위 번호로 보이며, 공인일자는 확인하지 못했다.\n' +
+      '- 시행 주체의 원문 표기는 「한국데이터산업진흥원(K-DATA) 데이터자격검정」이다.\n' +
+      '- 학점은행제로 30학점이 인정된다(같은 계열 ADsP는 14학점).\n' +
+      '- 직무는 셋으로 나뉜다 — 데이터 기획(분석과제 정의·분석로드맵 수립·성과 관리), 데이터분석(요건정의·모델링·검증 및 테스트·적용), 데이터 시각화(시각화 ' +
+      '기획·모델링·디자인·구축·배포 및 유지보수).\n' +
+      '- 실기가 CBT로 치러지고 기계학습 영역과 통계 영역으로 출제되는 점이 지금 구조의 특징이다.\n' +
+      '- 자격증은 상장형이라 마이페이지 > 자격증 관리에서 즉시 발급·출력하며 발급 신청자에 한해 교부된다(카드형은 빅데이터분석기사뿐이고 그쪽만 6,200원이 적혀 ' +
+      '있다). 필기 합격자는 \'필기합격확인서\'를 따로 출력할 수 있다.\n' +
+      '- 폐지·대체 정황은 없다 — 공식 일정 페이지에 올해 두 회차의 필기·실기가 모두 잡혀 있다. 다만 공지·접수 목록 페이지가 로그인을 요구해 최근 출제기준 ' +
+      '개편 여부는 확인하지 못했다.\n' +
+      '- 인접 자격은 같은 시행처의 하위 자격 ADsP(응시자격 제한 없음, 객관식 50문항 100점, 90분, 60점 합격, 과목별 40% 미만 과락, 연 4회 ' +
+      '정기 시행, 50,000원)와 국가기술자격인 빅데이터분석기사다.',
     unknowns: [
       '자격증 자체의 유효기간·갱신 여부 (보수교육 대상 목록이 DAP·SQLP·SQLD 셋만 적고 ADP가 빠져 있다는 정황만 있고 명시 문장 없음)',
       '국가공인 공인일자 (공인번호 제2022-05호는 a_05.do에서 확인됨)',
@@ -389,20 +439,50 @@ export const certs: Cert[] = [
       '최근 출제기준 개편·변경 공지 여부 (공지사항 게시판이 로그인 필요)',
       '상장형 자격증의 발급 수수료 — 발급안내 페이지가 카드형 6,200원만 적고 상장형 금액은 적지 않는다',
     ],
-    studyPath: [],
+    studyPath: [
+      {
+        subject: '데이터 처리 기술 이해 (필기)',
+        items: [
+          { site: 'ailab', slug: 'nlp-text-preprocessing' },
+        ],
+      },
+      {
+        subject: '데이터분석 (필기)',
+        items: [
+          { site: 'ailab', slug: 'nlp-text-preprocessing' },
+          { site: 'ailab', slug: 'nlp-text-classification' },
+          { site: 'ailab', slug: 'ml-dbscan' },
+        ],
+      },
+      {
+        subject: '데이터 시각화 (필기)',
+        items: [
+          { site: 'ailab', slug: 'ml-tsne-umap' },
+        ],
+      },
+      {
+        subject: '데이터분석 실무 (실기)',
+        items: [
+          { site: 'ailab', slug: 'math-basics-descriptive-statistics' },
+          { site: 'ailab', slug: 'math-basics-hypothesis-testing-logic' },
+          { site: 'ailab', slug: 'ml-linear-regression' },
+          { site: 'ailab', slug: 'ml-clustering-kmeans' },
+          { site: 'ailab', slug: 'ml-bias-variance' },
+        ],
+      },
+    ],
   },
   {
     id: 'sqld',
     nameKo: 'SQL 개발자(SQLD)',
-    nameEn: '',
-    issuer: '한국데이터산업진흥원(K-DATA)',
+    nameEn: 'SQL Developer (SQLD)',
+    issuer: '한국데이터산업진흥원',
     region: '국내',
     level: '입문',
     whatItMeasures:
       '공식 정의로는 "데이터베이스와 데이터 모델링에 대한 지식을 바탕으로 응용 소프트웨어를 개발하면서 데이터를 조작하고 추출하는데 있어서 정확하고 최적의 성능을 ' +
       '발휘하는 SQL을 작성할 수 있는 개발자"를 가려내는 시험이다. 재는 것은 두 갈래다 — 엔터티·속성·관계·식별자·정규화 같은 데이터 모델을 읽고 분석하는 ' +
-      '능력과, DDL·DML·TCL·DCL 문법부터 조인·서브쿼리·윈도우 함수까지 SQL을 실제로 작성하는 능력. 튜닝·옵티마이저 같은 고급 최적화는 상위 자격인 ' +
-      'SQL 전문가(SQLP)의 「SQL 고급활용 및 튜닝」 과목이 담당하고 SQLD의 두 과목에는 없다.',
+      '능력과, DDL·DML·TCL·DCL 문법부터 조인·서브쿼리·윈도우 함수까지 SQL을 실제로 작성하는 능력이다.',
     audience:
       '데이터베이스를 다루는 응용 소프트웨어 개발자, 그리고 SQL로 데이터를 조회·가공해야 하는 데이터 직군 입문자가 보는 시험이다.',
     format:
@@ -450,40 +530,54 @@ export const certs: Cert[] = [
     officialUrl: 'https://www.dataq.or.kr/www/sub/a_04.do',
     verifiedAt: '2026-08-25',
     notes:
-      '국가공인 민간자격이다 — 시행처 소개 페이지가 「관련 근거」 칸에 「공인자격 제2022-04호」와 「자격기본법 제17조(민간자격의 신설 및 등록 등)」를 ' +
-      '나란히 적어 두었다. 학점인정 등에 관한 법률에 따라 자격취득 및 자격취득에 필요한 교육과정 이수가 학점은행제 6학점으로 인정된다. 상위 자격은 SQL ' +
-      '전문가(SQLP)로 응시료 100,000원, 연 2회 정기 시행, 객관식 70문항(70점) + 실기 2문항(30점) 총 72문항, 검정시험시간 ' +
-      '180분(3시간)이다. SQLP에는 SQLD의 두 과목 위에 「SQL 고급활용 및 튜닝」이 한 과목 더 붙고, 그 세부 항목은 SQL 수행 구조(데이터베이스 ' +
-      '아키텍처·SQL 처리 과정·데이터베이스 I/O 메커니즘), SQL 분석 도구, 인덱스 튜닝, 조인 튜닝, SQL 옵티마이저, 고급 SQL 튜닝, Lock과 ' +
-      '트랜잭션 동시성 제어다 — 이것들은 SQLD 출제 범위에 없다. 자격증은 상장형이라 홈페이지를 통해 즉시 발급된다(카드형 6,200원 = 발급 수수료 ' +
-      '3,200원 + 우체국 등기배송료 3,000원은 국가기술자격인 빅데이터분석기사에 해당하며, 상장형 발급 수수료는 시행처가 따로 밝히지 않았다). 시행처가 ' +
-      'SQLD 공식 지정 교재를 안내한 문장은 확인하지 못했다 — 소개 페이지에 교재를 언급한 곳이 없고 ' +
-      '자료실(www.dataq.or.kr/www/board/files/list.do)은 「서비스 접속이 차단 되었습니다」로 열리지 않는다. 접수·마이페이지 페이지는 ' +
-      '로그인이 필요하고 사이트에 접속 차단 장치가 걸려 있어, 응시료·환불 규정과 시각 규칙은 로그인 없이 열리는 접수안내 페이지와 시험일정 페이지 각주에서 ' +
-      '확인했다.',
+      '- 국가공인 민간자격이다 — 시행처 소개 페이지가 「관련 근거」 칸에 「공인자격 제2022-04호」와 「자격기본법 제17조(민간자격의 신설 및 등록 등)」를 ' +
+      '나란히 적어 두었다.\n' +
+      '- 학점인정 등에 관한 법률에 따라 자격취득 및 그 교육과정 이수가 학점은행제 6학점으로 인정된다.\n' +
+      '- 시행처 약칭은 K-DATA다.\n' +
+      '- 상위 자격은 SQL 전문가(SQLP)로 응시료 100,000원, 연 2회 정기 시행, 객관식 70문항(70점) + 실기 2문항(30점) 총 72문항, ' +
+      '검정시험시간 180분이다.\n' +
+      '- SQLP에는 SQLD의 두 과목 위에 「SQL 고급활용 및 튜닝」이 한 과목 더 붙는다 — SQL 수행 구조, SQL 분석 도구, 인덱스 튜닝, 조인 ' +
+      '튜닝, SQL 옵티마이저, 고급 SQL 튜닝, Lock과 트랜잭션 동시성 제어. 이것들은 SQLD 출제 범위에 없다.\n' +
+      '- 자격증은 상장형이라 홈페이지를 통해 즉시 발급되며, 상장형 발급 수수료는 시행처가 따로 밝히지 않았다.\n' +
+      '- 시행처가 SQLD 공식 지정 교재를 안내한 문장은 확인하지 못했다 — 소개 페이지에 교재를 언급한 곳이 없고 자료실은 접속이 차단돼 열리지 않는다.',
     unknowns: [
       'SQLD 공식 지정 교재 — 시행처 소개 페이지에 교재를 지정한 문장이 없고 자료실은 접속 차단이라 미확인',
       '상장형 자격증 발급 수수료 — 시행처가 금액을 아예 언급하지 않아 미확인(카드형 6,200원만 명시)',
     ],
-    studyPath: [],
+    studyPath: [
+      {
+        subject: '데이터 모델링의 이해',
+        items: [
+          { site: 'techblog', slug: 'sql-relational-model', label: '관계형 모델 이론 — 관계·튜플·속성' },
+          { site: 'techblog', slug: 'sql-normalization-1nf-2nf-3nf-bcnf', label: '정규화: 1NF ~ BCNF' },
+          { site: 'techblog', slug: 'sql-denormalization-decisions', label: '비정규화: 언제, 어떻게 결정하는가' },
+        ],
+      },
+      {
+        subject: 'SQL 기본 및 활용',
+        items: [
+          { site: 'techblog', slug: 'sql-language-categories', label: 'SQL 언어 분류 — DDL · DML · DCL · TCL' },
+          { site: 'techblog', slug: 'sql-having-vs-where', label: 'HAVING vs WHERE — 필터 위치가 중요한 이유' },
+          { site: 'techblog', slug: 'sql-pivot-unpivot-pattern', label: 'PIVOT · UNPIVOT 패턴' },
+        ],
+      },
+    ],
   },
   {
     id: 'aice',
-    nameKo: 'AICE (에이스) — AI Certificate for Everyone',
-    nameEn: '',
-    issuer: '(주)케이티(KT)와 (주)한국경제신문 공동 자격관리·운영(발급) 기관. Associate 등급은 공인민간자격 제2022-004642호(국가공인), Junior·Basic·Professional은 등록민간자격 제2022-004642호, AICE Future는 등록민간자격 제2023-003043호, AICE Generative는 등록민간자격 제2025-006371호다.',
+    nameKo: 'AICE (에이스)',
+    nameEn: 'AI Certificate for Everyone (AICE)',
+    issuer: '(주)케이티·(주)한국경제신문',
     region: '국내',
     level: '중급',
     whatItMeasures:
-      'AI 기술에 대한 이해뿐 아니라 그것을 실제로 활용할 수 있는 능력을 평가하는 자격으로, 공식 설명은 "단순한 지식이 아닌 실행할 수 있는 역량"을 증명한다고 ' +
-      '적고 있다. 평가의 축은 셋이다 — 기업·공공 데이터와 Tabular/Image/Text 데이터를 해석하고 다룰 수 있는가, 데이터 탐색에서 데이터 분석·AI ' +
-      '모델링·모델 평가로 이어지는 흐름을 상황에 맞게 수행할 수 있는가, 그리고 내비게이션 목적지 도착시간 예측이나 선박 수주 여부 예측 같은 실제 사례의 문제를 ' +
-      'AI로 풀 수 있는가다. 전 등급이 100% 실기 평가다. 다만 문항 형식(객관식 유무)은 공식 페이지가 밝히지 않으며, 지식 영역이 아예 없는 것도 아니다 ' +
-      '— Future 1~3급 출제범위에 \'AI의 이해(AI의 개념, 역사, 윤리, 보안 등) 1문항 10점\'이, Generative 2급에 \'Responsible ' +
-      'AI(AI 윤리와 책임 있는 활용)\'가 들어 있다.',
+      'AI 기술에 대한 이해뿐 아니라 그것을 실제로 활용할 수 있는 능력을 평가한다 — 공식 설명은 "단순한 지식이 아닌 실행할 수 있는 역량"을 증명한다고 ' +
+      '적는다. 평가의 축은 셋이다. 기업·공공 데이터와 Tabular/Image/Text 데이터를 해석하고 다룰 수 있는가, 데이터 탐색에서 데이터 분석·AI ' +
+      '모델링·모델 평가로 이어지는 흐름을 상황에 맞게 수행할 수 있는가, 내비게이션 도착시간 예측이나 선박 수주 여부 예측 같은 실제 사례의 문제를 AI로 풀 수 ' +
+      '있는가다. 전 등급이 100% 실기 평가다.',
     audience:
       '초등학생·초등교사(Future)부터 중·고등학생과 중·고등교사(Junior), 비전공 AI 입문자(Basic), 비전공 AI 활용자(Generative), ' +
-      '파이썬을 쓰는 준·전공자 AI 활용자(Associate), 전공자·AI 숙련자(Professional)까지 생애주기 전 구간을 등급으로 나눠 담는 시험이다.',
+      '파이썬을 쓰는 준·전공자(Associate), 전공자·AI 숙련자(Professional)까지 생애주기 전 구간을 등급으로 나눠 담는 시험이다.',
     format:
       '전 등급이 100% 실기 평가이고 100점 만점이다. 등급별로 문항수·시간·합격선·응시 방식이 다르다. Future 3급 8문항/50분, Future ' +
       '2급·1급 각 8문항/60분 — 셋 다 60점 이상 합격, 블록코딩(\'AI 코디니\'), 온라인/오프라인 선택. Junior 13문항/60분, Basic ' +
@@ -616,33 +710,19 @@ export const certs: Cert[] = [
     officialUrl: 'https://aice.study/info/aice',
     verifiedAt: '2026-08-25',
     notes:
-      '등급 체계가 9개다 — Future 3급/2급/1급(컴퓨팅 사고력, 블록코딩), Junior(AI 문해력, 노코딩), Basic(AI 문해력, 노코딩), ' +
-      'Generative 2급/1급(AI 응용력, 생성형 AI), Associate(AI 모델링, 파이썬), Professional(AI 최적화, 파이썬). ' +
-      '/info/aice의 등급 카드가 9장이고 수험자 가이드 \'등급별 시험정보\' 표도 등급 열이 9개다. 흔히 알려진 ' +
-      '\'Lite/Basic/Associate/Professional 3~4등급\' 구성은 옛 정보다.  **국가공인은 Associate 하나뿐이다.** 공식 소비자 ' +
-      '알림사항이 이 점을 못박고 있다 — Associate 등급만 국가공인 민간자격이고, Junior·Basic·Professional과 AICE ' +
-      'Future·AICE Generative 종목은 국가로부터 인정받은 공인자격이 아닌 등록민간자격이다. Professional 상세 페이지 머리에도 같은 문구가 ' +
-      '따로 붙어 있다. Professional이 Associate보다 상위 난이도인데 공인은 아니라는 점이 오해하기 쉬운 자리다.  AICE Generative는 ' +
-      '등록번호가 제2025-006371호로 가장 최근에 생긴 종목이고, 시험 일정 페이지에 \'B2B 전용\'으로만 표기돼 개인 정기시험 회차가 없다. 출제범위 표의 ' +
-      '문항수·배점도 공식 페이지에 \'미정\'으로 남아 있고(총 문항수·시간은 표기돼 있다), 등급 카드에는 다른 등급에 다 있는 응시 방식 줄이 아예 없다. ' +
-      '2026년 Professional 정기시험은 하반기 일정이 축소됐다. 2026-05-21자 공지 \'2026년 AICE 정기시험(Professional) 일정 ' +
-      '변경 및 필독 안내\'가 8월 28일(금)~29일(토)와 12월 18일(금)~19일(토) 시험은 시행되지 않으며 하반기 일정은 10월 ' +
-      '30일(금)~31일(토)라고 적는다. 특정 연도 사안이라 cadence에는 넣지 않았지만, 정기 편성이 흔들린 적이 있는 등급이므로 응시 계획 전 일정 페이지 ' +
-      '확인이 필요하다.  **공식 페이지 안에 응시료 표기 불일치가 있다.** /info/aice 하단 \'자격정보\' 블록은 ' +
-      'Junior·Basic·Professional을 묶어 셋 다 80,000원으로 적는데, 같은 페이지의 등급별 카드와 각 등급 상세 페이지, 그리고 수험자 ' +
-      '가이드 \'등급별 시험정보\' 표는 Junior 50,000원·Basic 50,000원·Professional 120,000원으로 적는다. 세 곳이 일치하므로 ' +
-      '그쪽을 실었다. 환불 규정도 /info/aice 블록(접수 기간 중 100% / 시험일 5일 전까지 50% / 4일 전부터 불가)과 FAQ(8일 전까지 ' +
-      '100% / 7~5일 전 50% / 4일 전 이후 불가)가 서로 다르며, 더 구체적인 FAQ 쪽을 실었다.  Associate 정기시험 옆에 ' +
-      '\'Associate 완화검정\'이라는 별도 회차가 있는데, 2026년 일정표에는 3회(06.13)와 4회(12.12) 둘만 올라와 있다. 다른 등급은 지난 ' +
-      '1회부터 전부 표시되는데 이것만 3회에서 시작하므로 연간 몇 회 편성인지는 표만으로 알 수 없고, 그것이 무엇인지(대상·합격 기준 차이)에 대한 설명도 일정표 ' +
-      '밖 어디에서도 찾지 못했다.  Associate·Professional 실습 환경으로 ANACONDA(로컬 설치)와 Colab(웹브라우저)을 공식 안내한다. ' +
-      '접수 후에는 \'사전 환경점검\'으로 감독 환경과 시험 환경을 미리 체험할 수 있고(필수이며 접수 직후~시험 1일 전까지 가능), 접수 전에는 샘플 ' +
-      '문항(https://aice.study/certi/practice)으로 문제 유형을 볼 수 있다. 다만 샘플 문항은 형식만 유사할 뿐 난이도는 다를 수 있다고 ' +
-      'FAQ가 적는다. 틀린 문항의 정답은 시험 규정상 공개하지 않는다.  합격 시 자격증과 함께 블록체인 기반 디지털 배지가 발급된다.  매핑용 ' +
-      '키워드(topicsForMapping)에서 \'pandas\'와 \'scikit-learn\'은 빼야 한다 — 공식 출제범위 어디에도 라이브러리 이름이 없고 ' +
-      'Associate 항목은 \'필요 라이브러리 설치\'까지만 적는다.  참고로 aice.study는 클라이언트 렌더링 SPA라 WebFetch로는 본문이 안 ' +
-      '읽힌다("AICE" 한 단어만 나온다). 이 확인도 브라우저로 실제 렌더링해서 읽었다. FAQ는 4페이지 페이지네이션이라 페이지를 눌러 가며 읽어야 하고, ' +
-      '수험자 가이드의 상세 내용은 전부 이미지(restapi.ktaidu.kt.co.kr 호스팅)라 이미지를 직접 열어 봐야 한다.',
+      '- 등급이 9개다 — Future 3·2·1급(블록코딩), Junior·Basic(노코딩 AIDU), Generative 2·1급(생성형 AI), ' +
+      'Associate·Professional(파이썬). 흔히 알려진 3~4등급 구성은 옛 정보다.\n' +
+      '- 국가공인은 Associate 하나뿐이고 나머지는 전부 등록민간자격이다. 상위 난이도인 Professional도 공인이 아니다. 등록번호는 ' +
+      'Associate·Junior·Basic·Professional 제2022-004642호, Future 제2023-003043호, Generative ' +
+      '제2025-006371호.\n' +
+      '- 100% 실기지만 문항 형식은 공식 페이지가 밝히지 않고 지식 영역이 아예 없지도 않다 — Future에 \'AI의 이해\' 1문항 10점, ' +
+      'Generative 2급에 \'Responsible AI\'가 있다.\n' +
+      '- Generative는 일정표에 \'B2B 전용\'으로만 표기돼 개인 정기시험 회차가 없고, 출제범위의 문항수·배점도 \'미정\'으로 남아 있다.\n' +
+      '- 응시료 표기가 공식 페이지끼리 어긋난다. /info/aice \'자격정보\' 블록만 Junior·Basic·Professional을 셋 다 80,000원으로 ' +
+      '적고, 등급 카드·상세 페이지·수험자 가이드 표 셋은 50,000·50,000·120,000원으로 일치해 그쪽을 실었다. 환불 규정도 두 곳이 달라 구체적인 ' +
+      'FAQ 쪽을 실었다.\n' +
+      '- \'Associate 완화검정\' 회차가 정규 시험과 무엇이 다른지는 설명을 찾지 못했다.\n' +
+      '- 합격 시 블록체인 기반 디지털 배지가 발급되고, 접수 전 샘플 문항으로 유형을 볼 수 있다.',
     unknowns: [
       '시행처가 문장으로 밝힌 연간 정기시험 시행 횟수 — 일정 페이지가 해당 연도의 회차 표만 싣고 \'연 N회\' 문구가 어디에도 없다',
       '접수 기간 규정 문구 — 시험일 며칠 전에 접수가 열리고 언제 마감되는지를 정해 둔 문장이 공식 페이지에 없다(해당 연도 표의 날짜만 있다)',
@@ -655,24 +735,73 @@ export const certs: Cert[] = [
       'Future 외 등급의 명시적 응시자격 문구 (등급 간 선수 조건이 없다는 FAQ 답변만 확인됨. \'응시자격 제한 없음\' 문구는 Future 카드에만 있음)',
       '등급별 합격률·응시자 수 통계',
     ],
-    studyPath: [],
+    studyPath: [
+      {
+        subject: '[Associate] AI 모델링',
+        items: [
+          { site: 'ailab', slug: 'ml-supervised-vs-unsupervised' },
+          { site: 'ailab', slug: 'nn-perceptron' },
+        ],
+      },
+      {
+        subject: '[Professional] AI 모델링 및 모델 최적화',
+        items: [
+          { site: 'ailab', slug: 'nn-perceptron' },
+          { site: 'ailab', slug: 'cv-image-classification-deep' },
+        ],
+      },
+      {
+        subject: '[Basic] AI 모델링 및 모델 성능평가',
+        items: [
+          { site: 'ailab', slug: 'ml-supervised-vs-unsupervised' },
+          { site: 'ailab', slug: 'ml-knn' },
+          { site: 'ailab', slug: 'ml-decision-tree' },
+        ],
+      },
+      {
+        subject: '[Junior] 데이터 분석 / 데이터 전처리 / AI 모델링 및 모델 성능평가',
+        items: [
+          { site: 'ailab', slug: 'ml-supervised-vs-unsupervised' },
+          { site: 'ailab', slug: 'nn-perceptron' },
+        ],
+      },
+      {
+        subject: '[Generative 2급] Responsible AI / 프롬프트 엔지니어링 / 생성형 AI 기반 콘텐츠 제작',
+        items: [
+          { site: 'ailab', slug: 'llm-essence' },
+          { site: 'ailab', slug: 'finetuning-vs-prompt-vs-rag' },
+          { site: 'ailab', slug: 'project-prompt-iterating' },
+        ],
+      },
+      {
+        subject: '[Generative 1급] 정보 검색 및 수집 / 데이터 분석 및 시각화 / 업무 자동화',
+        items: [
+          { site: 'ailab', slug: 'app-data-analysis' },
+        ],
+      },
+      {
+        subject: '[Future 3급~1급] AI의 이해 / 알고리즘과 프로그래밍 / AI 프로젝트',
+        items: [
+          { site: 'ailab', slug: 'nlp-text-preprocessing' },
+          { site: 'ailab', slug: 'nlp-text-classification' },
+        ],
+      },
+    ],
   },
   {
     id: 'aws-ai-practitioner',
-    nameKo: 'AWS Certified AI Practitioner',
-    nameEn: '',
-    issuer: 'Amazon Web Services (AWS)',
+    nameKo: 'AWS AI Practitioner',
+    nameEn: 'AWS Certified AI Practitioner',
+    issuer: 'Amazon Web Services',
     region: '해외',
     level: '입문',
     whatItMeasures:
-      'AI·머신러닝·생성형 AI의 개념과 방법, 전략을 일반론과 AWS 양쪽에서 이해하고 있는지를 재는 파운데이셔널(입문) 등급 자격증이다. 공식 설명에 따르면 ' +
-      '특정 직무에 매이지 않는 시험이며, AI/ML 솔루션을 직접 만들지는 않더라도 사용하는 사람을 대상으로 한다. 검증 항목은 넷이다 — 개념·방법·전략의 이해, ' +
-      '업무 문제에 AI/ML과 생성형 AI를 적용할 자리의 판단, 사용 사례에 맞는 기술 종류의 선택, 그리고 책임 있는 사용이다. 공식 가이드가 출제 범위 밖으로 ' +
-      '못 박은 직무는 일곱이다 — 모델이나 알고리즘을 직접 코딩하는 것, 데이터·특성 공학, 하이퍼파라미터 튜닝과 모델 최적화, AI/ML 파이프라인·인프라 구축과 ' +
-      '배포, 모델의 수학·통계 분석, AI/ML 시스템의 보안·컴플라이언스 프로토콜 구현, AI/ML 솔루션의 거버넌스 프레임워크·정책 수립이다. 뒤의 둘이 도메인 ' +
-      '5(보안·컴플라이언스·거버넌스, 14%)의 성격을 정한다 — 개념은 묻되 구현은 묻지 않는다.',
+      'AI·머신러닝·생성형 AI의 개념과 방법, 전략을 일반론과 AWS 양쪽에서 이해하고 있는지를 재는 파운데이셔널(입문) 등급 자격증이다. 특정 직무에 매이지 ' +
+      '않는 시험이며, AI/ML 솔루션을 직접 만들지는 않더라도 사용하는 사람을 대상으로 한다. 검증 항목은 넷이다 — 개념·방법·전략의 이해, 업무 문제에 ' +
+      'AI/ML과 생성형 AI를 적용할 자리의 판단, 사용 사례에 맞는 기술 종류의 선택, 책임 있는 사용이다. 모델·알고리즘 코딩과 파이프라인 구축 같은 구현 ' +
+      '작업은 출제 범위 밖이다.',
     audience:
-      'AI/ML 솔루션을 직접 만들지는 않지만 업무에서 쓰거나 판단해야 하는 사람 — 공식 페이지는 비즈니스 분석가, IT 지원, 마케터, 제품·프로젝트 관리자, ' +
+      'AI/ML 솔루션을 직접 만들지는 않지만 업무에서 쓰거나 판단해야 하는 사람이다. 공식 페이지는 비즈니스 분석가, IT 지원, 마케터, 제품·프로젝트 관리자, ' +
       '현업·IT 관리자, 영업 직군을 예로 든다.',
     format:
       '총 65문항 / 90분. 이 중 채점되는 것은 50문항이고 나머지 15문항은 향후 출제 검증용 비채점 문항으로, 시험 중에는 어느 것이 비채점인지 표시되지 ' +
@@ -757,25 +886,23 @@ export const certs: Cert[] = [
     officialUrl: 'https://aws.amazon.com/certification/certified-ai-practitioner/',
     verifiedAt: '2026-08-25',
     notes:
-      '2026년 8월 기준 AIF-C01이 현행 버전이고, AWS 공식 시험 가이드 목록의 파운데이셔널 칸에 CLF-C02와 나란히 올라 있다. 폐지·대체된 ' +
-      '자격증이 아니며 후속 코드(AIF-C02 등)도 아직 없다. 참고한 공식 시험 가이드 PDF는 Version 1.4다.  한국어 응시가 가능하다. 공식 ' +
-      '페이지가 밝힌 응시 언어는 아랍어, 영어, 프랑스어(프랑스), 독일어, 이탈리아어, 일본어, 한국어, 포르투갈어(브라질), 스페인어(중남미), ' +
-      '스페인어(스페인), 중국어 간체, 중국어 번체 열둘이다. 영어가 모국어가 아닌 응시자는 \'ESL +30\' 신청으로 시험 시간 30분을 더 받을 수 있는데, ' +
-      '공식 문구가 "when taking an exam in English"라 영어로 응시할 때만 적용된다 — 한국어로 보는 경우에는 해당되지 않는다. 한 번 ' +
-      '신청하면 이후 모든 시험 예약에 자동으로 적용된다.  AWS의 AI 계열 자격증은 세 등급으로 나뉜다 — 이 시험(파운데이셔널), AWS Certified ' +
-      'Machine Learning Engineer - Associate(MLA-C01, 어소시에이트), AWS Certified Generative AI ' +
-      'Developer - Professional(AIP-C01, 프로페셔널). 세 코드 모두 공식 시험 가이드 목록에서 확인된다. 뒤의 둘은 이 자격증의 갱신 ' +
-      '경로이기도 하다. 직접 모델을 만들고 배포하는 쪽 내용을 원한다면 이 시험이 아니라 MLA-C01이나 AIP-C01 쪽이다 — 공식 가이드가 코딩·데이터 ' +
-      '엔지니어링·하이퍼파라미터 튜닝·파이프라인 구축을 이 시험의 범위 밖으로 못 박아 두었다.  공식 출처 두 곳이 서로 어긋나는 자리가 둘 있다. 문항 ' +
-      '유형(PDF는 다섯, 온라인 가이드는 넷)과 권장 지식의 서비스 목록(PDF는 SageMaker, 온라인 가이드는 Bedrock + SageMaker ' +
-      'AI)이다. 둘 다 온라인 가이드가 더 최신으로 보이지만 PDF도 여전히 Version 1.4로 배포 중이라, 어느 한쪽만 근거로 삼지 않는 편이 안전하다. ' +
-      '우리 글과 이을 때 유의할 점: 이 시험은 \'개념을 아는가\'를 재지 \'만들 수 있는가\'를 재지 않는다. 그래서 매핑 대상은 구현 가이드보다 개념 설명 글 쪽이 ' +
-      '맞는다. 도메인 3(28%)이 가장 무겁고 RAG·프롬프트 엔지니어링·파인튜닝·모델 평가가 여기 몰려 있어, agents-rag와 llm-core 카테고리가 ' +
-      '가장 많이 걸릴 자리다.',
+      '- 2026년 8월 기준 현행 버전은 AIF-C01이다. 폐지·대체된 자격증이 아니며 후속 코드도 아직 없다. 참고한 공식 시험 가이드 PDF는 Version ' +
+      '1.4다.\n' +
+      '- 한국어 응시가 가능하다. 응시 언어는 한국어·영어·일본어 등 열둘이다. \'ESL +30\'(비영어권 응시자의 시험 시간 30분 추가)은 영어로 응시할 때만 ' +
+      '적용되어 한국어 응시자에게는 해당되지 않는다.\n' +
+      '- AWS의 AI 계열 자격증은 세 등급이다 — 이 시험(파운데이셔널), MLA-C01(어소시에이트), AIP-C01(프로페셔널). 직접 모델을 만들고 ' +
+      '배포하는 쪽 내용을 원한다면 뒤의 둘이다.\n' +
+      '- 출제 범위 밖으로 못 박은 직무는 일곱이다 — 모델·알고리즘 코딩, 데이터·특성 공학, 하이퍼파라미터 튜닝과 모델 최적화, 파이프라인·인프라 구축과 배포, ' +
+      '수학·통계 분석, 보안·컴플라이언스 프로토콜 구현, 거버넌스 프레임워크·정책 수립. 뒤의 둘 때문에 도메인 5는 개념만 묻고 구현은 묻지 않는다.\n' +
+      '- 공식 출처 두 곳이 어긋나는 자리가 둘 있다 — 문항 유형(PDF는 다섯, 온라인 가이드는 넷)과 권장 지식의 서비스 목록(PDF는 SageMaker, ' +
+      '온라인 가이드는 Bedrock + SageMaker AI). 온라인 쪽이 더 최신으로 보이나 PDF도 배포 중이다.\n' +
+      '- 우리 글과 이을 때: 이 시험은 \'개념을 아는가\'를 재지 \'만들 수 있는가\'를 재지 않아 매핑 대상은 개념 설명 글 쪽이 맞는다. 도메인 3(28%)이 ' +
+      '가장 무겁고 RAG·프롬프트 엔지니어링·파인튜닝·평가가 몰려 있어 agents-rag와 llm-core가 가장 많이 걸린다.',
     unknowns: [
       '한국에서 결제할 때 실제로 붙는 세액·부가세율 — 공식 요금표는 131,525 KRW라는 금액과 "Applicable taxes may apply"만 적고 ' +
       '세율이나 최종 결제액은 밝히지 않는다',
-      '예약 마감 시한 — 시험 며칠 전까지 예약해야 하는지 공식 페이지(certification 페이지·before-testing 정책·FAQ 셋 다)에 명시가 없다',
+      '예약 마감 시한 — 시험 며칠 전까지 예약해야 하는지 공식 페이지(certification 페이지·before-testing 정책·FAQ 셋 다)에 명시가 ' +
+      '없다',
       '한국어 온라인 감독(online proctored) 시험 지원 여부 — 시험 자체는 한국어로 제공되나 온라인 감독의 언어별 운영 시간은 일부 언어만 안내되어 ' +
       '한국어 해당 여부를 확인하지 못했다',
       '한국 내 Pearson VUE 테스트센터 위치·운영 일정 (예약 단계에서만 확인 가능)',
@@ -783,22 +910,63 @@ export const certs: Cert[] = [
       '합격률·응시자 통계 (AWS 비공개)',
       '시험 가이드 Version 1.4의 개정 발효일 — PDF 본문 어디에도 연도·날짜 표기가 없다',
     ],
-    studyPath: [],
+    studyPath: [
+      {
+        subject: 'Fundamentals of AI and ML (AI와 ML의 기초)',
+        items: [
+          { site: 'ailab', slug: 'ml-supervised-vs-unsupervised' },
+          { site: 'ailab', slug: 'ml-linear-regression' },
+          { site: 'ailab', slug: 'ml-logistic-regression' },
+          { site: 'ailab', slug: 'neural-network-basics' },
+          { site: 'ailab', slug: 'rl-basics' },
+        ],
+      },
+      {
+        subject: 'Fundamentals of Generative AI (생성형 AI의 기초)',
+        items: [
+          { site: 'ailab', slug: 'tokenizer-and-tokens' },
+          { site: 'ailab', slug: 'embedding-basics' },
+          { site: 'ailab', slug: 'llm-pretraining' },
+          { site: 'ailab', slug: 'rag-chunking-strategies' },
+        ],
+      },
+      {
+        subject: 'Applications of Foundation Models (파운데이션 모델의 활용)',
+        items: [
+          { site: 'ailab', slug: 'embedding-sentence' },
+          { site: 'ailab', slug: 'reasoning-when-to-use' },
+        ],
+      },
+      {
+        subject: 'Guidelines for Responsible AI (책임 있는 AI 지침)',
+        items: [
+          { site: 'ailab', slug: 'llm-limits-and-hallucination' },
+          { site: 'ailab', slug: 'ai-bias-fairness' },
+          { site: 'ailab', slug: 'guardrails-overview' },
+          { site: 'ailab', slug: 'guardrails-testing' },
+        ],
+      },
+      {
+        subject: 'Security, Compliance, and Governance for AI Solutions (AI 솔루션의 보안·컴플라이언스·거버넌스)',
+        items: [
+          { site: 'ailab', slug: 'ai-safety-overview' },
+          { site: 'ailab', slug: 'prompt-injection-defense' },
+        ],
+      },
+    ],
   },
   {
     id: 'aws-ml-engineer-associate',
-    nameKo: 'AWS Certified Machine Learning Engineer – Associate (AWS 공인 머신러닝 엔지니어 – 어소시에이트)',
-    nameEn: '',
-    issuer: 'Amazon Web Services (AWS)',
+    nameKo: 'AWS ML Engineer – Associate',
+    nameEn: 'AWS Certified Machine Learning Engineer – Associate',
+    issuer: 'Amazon Web Services',
     region: '해외',
     level: '중급',
     whatItMeasures:
-      'AWS 클라우드에서 머신러닝 솔루션과 파이프라인을 만들고, 운영에 올리고, 배포하고, 유지하는 능력을 검증한다. 공식 가이드가 드는 과제는 데이터 ' +
-      '수집·변환·검증·준비, 모델링 접근법 선택과 학습·하이퍼파라미터 튜닝·성능 분석·버전 관리, 배포 인프라와 엔드포인트 선택 및 컴퓨팅 자원 프로비저닝과 ' +
-      '오토스케일링 구성, ML 워크플로 오케스트레이션을 자동화하는 CI/CD 파이프라인 구축, 모델·데이터·인프라 모니터링을 통한 문제 탐지, 접근 제어와 규정 ' +
-      '준수 기능·모범 사례를 통한 ML 시스템 보안이다. 반대로 가이드가 범위 밖으로 못 박은 것은 종단간 ML 솔루션의 설계·아키텍팅, 모범 사례 수립과 ML ' +
-      '전략 안내, 광범위한 서비스나 새로운 도구·기술과의 통합 처리, NLP·컴퓨터 비전 같은 두 개 이상의 ML 도메인을 깊게 다루는 일, 모델 양자화와 정확도 ' +
-      '영향 분석이다.',
+      'AWS 클라우드에서 머신러닝 솔루션과 파이프라인을 만들고, 운영에 올리고, 배포하고, 유지하는 능력을 검증한다. 데이터 준비부터 모델 개발, 배포와 ' +
+      '오케스트레이션, 모니터링·유지보수·보안까지 ML 워크플로 전 단계를 다룬다. 반대로 공식 가이드가 범위 밖으로 못 박은 것은 종단간 ML 솔루션의 ' +
+      '설계·아키텍팅, 모범 사례 수립과 ML 전략 안내, 광범위한 서비스나 새로운 도구·기술과의 통합 처리, NLP·컴퓨터 비전 같은 두 개 이상의 ML 도메인을 ' +
+      '깊게 다루는 일, 모델 양자화와 정확도 영향 분석이다.',
     audience:
       'Amazon SageMaker 등 ML 엔지니어링용 AWS 서비스를 1년 이상 써 본 사람, 그리고 백엔드 소프트웨어 개발자·DevOps 개발자·데이터 ' +
       '엔지니어·데이터 사이언티스트처럼 관련 직무 경험이 1년 이상인 사람을 대상으로 한다.',
@@ -865,24 +1033,18 @@ export const certs: Cert[] = [
     officialUrl: 'https://aws.amazon.com/certification/certified-machine-learning-engineer-associate/',
     verifiedAt: '2026-08-25',
     notes:
-      '**MLA-C02로 개편이 진행 중이고, 지금 열리는 것은 베타다.** 현재 유효한 버전은 MLA-C01이며 공식 페이지에 배너가 붙어 있다 — ' +
-      '2026-09-01에 MLA-C02 등록이 열리고, 영어 MLA-C01의 마지막 응시일은 2026-09-28이다. 그런데 이때 열리는 것은 베타 시험이고 공식 ' +
-      '페이지가 「The beta exam (ME1-C02) will be available in English only」라고 적어 영어 전용임을 못 박았다. ' +
-      '한국어·일본어·중국어 간체 MLA-C01은 「The current exam in other languages (Korean, Japanese, and ' +
-      'Simplified Chinese) will remain available until general availability of MLA-C02」에 따라 ' +
-      'MLA-C02 정식 출시까지 계속 응시할 수 있고, 그 정식 출시는 공식 블로그가 「2027년 초」로만 적었다.  베타 시험 사양은 **85문항 / 170분, ' +
-      '응시료 75 USD, 영어 전용**이다. 이 넷은 블로그가 「Beta exam details」로 묶어 적은 값이라 베타의 사양이며, 정식판의 문항 수·시험 ' +
-      '시간·가격은 아직 공개되지 않았다. MLA-C01(65문항/130분/150 USD)과 다르므로 지금 준비하는 사람은 어느 버전을 칠지 먼저 정해야 한다. ' +
-      '개편 내용은 도메인 구조를 그대로 두고(새 도메인 추가 없음) 안에 담기는 주제를 넓히는 쪽이다. 생성형 AI 솔루션 구축과 RAG 아키텍처, 에이전틱 AI ' +
-      '워크플로 오케스트레이션, 파운데이션 모델과 LLM 선택·운영화, Amazon Bedrock 커버리지 확대, 책임 있는 AI 지침이 들어간다. **RAG와 ' +
-      '파운데이션 모델 파인튜닝은 MLA-C02에서 들어오는 주제이므로 현행 MLA-C01을 준비하는 사람의 학습 주제로 매핑하면 안 된다** — C01 ' +
-      'in-scope 목록에 Amazon Bedrock은 있지만 시험 가이드의 과제 서술에는 RAG도 파인튜닝도 없다.  시험 범위에 드는 AWS 서비스 목록이 ' +
-      '공식 가이드 부록에 있다. ML 쪽은 SageMaker, Bedrock, Comprehend, Comprehend Medical, Rekognition, ' +
-      'Textract, Transcribe, Translate, Personalize, Kendra, Lex, Polly, Fraud Detector, A2I, Q ' +
-      '등이고, 데이터 쪽은 S3, Glue(DataBrew·Data Quality 포함), Athena, EMR, Kinesis, Data Firehose, ' +
-      'Redshift, OpenSearch Service, Lake Formation 등, 운영 쪽은 Step Functions, MWAA, EventBridge, ' +
-      'CodePipeline, CodeBuild, CodeDeploy, CloudFormation, CDK, CloudWatch, ECR/ECS/EKS, IAM, ' +
-      'KMS가 포함된다.',
+      '- MLA-C02로 개편이 진행 중이다. 2026-09-01에 등록이 열리고 영어 MLA-C01의 마지막 응시일은 2026-09-28이지만, 이때 열리는 것은 ' +
+      '베타 시험(ME1-C02)이고 영어 전용이다.\n' +
+      '- 한국어·일본어·중국어 간체 MLA-C01은 MLA-C02 정식 출시까지 계속 응시할 수 있고, 그 정식 출시는 공식 블로그가 「2027년 초」로만 적었다.\n' +
+      '- 베타 사양은 85문항 / 170분, 응시료 75 USD다. 정식판의 문항 수·시험 시간·가격은 아직 공개되지 않았다. ' +
+      'MLA-C01(65문항/130분/150 USD)과 다르므로 어느 버전을 칠지 먼저 정해야 한다.\n' +
+      '- 개편은 도메인 구조를 그대로 두고(새 도메인 추가 없음) 담기는 주제를 넓히는 쪽이다 — 생성형 AI 솔루션 구축과 RAG 아키텍처, 에이전틱 AI ' +
+      '워크플로 오케스트레이션, 파운데이션 모델·LLM 선택과 운영화, Amazon Bedrock 커버리지 확대, 책임 있는 AI 지침.\n' +
+      '- RAG와 파운데이션 모델 파인튜닝은 MLA-C02에서 들어오는 주제라 현행 MLA-C01 준비자의 학습 주제로 매핑하면 안 된다 — C01 in-scope ' +
+      '목록에 Bedrock은 있지만 시험 가이드의 과제 서술에는 둘 다 없다.\n' +
+      '- 시험 범위에 드는 AWS 서비스 목록이 공식 가이드 부록에 있다 — ML 쪽은 SageMaker·Bedrock 등, 데이터 쪽은 ' +
+      'S3·Glue·Athena·EMR·Kinesis·Redshift 등, 운영 쪽은 Step ' +
+      'Functions·CodePipeline·CloudFormation·CloudWatch·IAM·KMS 등이다.',
     unknowns: [
       '불합격 후 재응시 대기 기간 — before-testing 정책 페이지에는 규정이 없다',
       'MLA-C02 도메인별 배점',
@@ -893,26 +1055,45 @@ export const certs: Cert[] = [
       '한국 내 원화 응시료와 부가세 포함 여부 — Exam pricing 페이지를 열지 않았다',
       '선수 요건이 「없음」이라고 적힌 공식 문장 — 자격 페이지·시험 가이드·인증 FAQ 어디에서도 못 찾았다',
     ],
-    studyPath: [],
+    studyPath: [
+      {
+        subject: '데이터 준비 (Data Preparation for Machine Learning)',
+        items: [
+          { site: 'ailab', slug: 'data-collection' },
+        ],
+      },
+      {
+        subject: 'ML 모델 개발 (ML Model Development)',
+        items: [
+          { site: 'ailab', slug: 'ml-cross-validation' },
+          { site: 'ailab', slug: 'finetuning-hyperparameters' },
+          { site: 'ailab', slug: 'mlops-experiment-tracking' },
+        ],
+      },
+      {
+        subject: 'ML 워크플로 배포와 오케스트레이션 (Deployment and Orchestration of ML Workflows)',
+        items: [
+          { site: 'ailab', slug: 'mlops-ci-cd' },
+          { site: 'ailab', slug: 'serving-autoscaling' },
+        ],
+      },
+    ],
   },
   {
     id: 'gcp-ml-engineer',
-    nameKo: 'Google Cloud Professional Machine Learning Engineer',
-    nameEn: '',
+    nameKo: 'GCP ML Engineer',
+    nameEn: 'Google Cloud Professional Machine Learning Engineer',
     issuer: 'Google Cloud',
     region: '해외',
     level: '고급',
     whatItMeasures:
       'Google Cloud 기능과 전통적인 ML 기법을 함께 써서 AI 솔루션을 만들고, 평가하고, 프로덕션에 올리고, 최적화하는 능력을 잰다. 크고 복잡한 ' +
-      '데이터를 다루며 재사용 가능한 코드를 쓰고, 파운데이션 모델 기반 솔루션을 설계·운영하는 것까지 포함한다. 공식 설명은 모델 아키텍처, 데이터·ML 파이프라인 ' +
-      '구성, MLOps, 지표 해석 네 영역에 능숙할 것을 전제로 하며 프롬프트·컨텍스트 엔지니어링과 책임 있는 AI 관행도 범위에 든다. 코딩 실력을 직접 ' +
-      '채점하지는 않고, 가이드가 "The exam does not directly assess coding skills. If you have a minimum ' +
-      'proficiency in Python and SQL, you should be able to interpret any questions with code ' +
-      'snippets."라고 못 박는다.',
+      '데이터를 다루며 재사용 가능한 코드를 쓰고, 파운데이션 모델 기반 솔루션을 설계·운영하는 것까지 포함한다. 모델 아키텍처, 데이터·ML 파이프라인 구성, ' +
+      'MLOps, 지표 해석 네 영역에 능숙할 것을 전제로 하며 프롬프트·컨텍스트 엔지니어링과 책임 있는 AI 관행도 범위에 든다. 코딩 실력을 직접 채점하지는 ' +
+      '않는다.',
     audience:
-      '응시 제한은 없다. 시행처가 권장하는 대상은 "3+ years of industry experience including 1 or more years ' +
-      'designing and managing solutions using Google Cloud" — 업계 경력 3년 이상에 그중 Google Cloud로 ' +
-      '솔루션을 설계·관리한 경력 1년 이상이다. 어디까지나 권장이고 요건이 아니다.',
+      '응시 제한은 없다. 시행처는 업계 경력 3년 이상에 그중 Google Cloud로 솔루션을 설계·관리한 경력 1년 이상을 권장하지만, 요건이 아니라 어디까지나 ' +
+      '권장이다.',
     format:
       '50~60문항, 객관식(단일 선택)과 복수 선택 혼합. 시험 시간 2시간. **합격 커트라인은 공개하지 않는다** — 공식 FAQ가 "Google Cloud ' +
       'exams are designed to determine only whether or not an individual meets a minimum ' +
@@ -923,9 +1104,13 @@ export const certs: Cert[] = [
     cadence:
       '**정해진 회차가 없는 상시 시험이다.** 시행처가 「연 몇 회」 같은 일정이나 접수 기간을 두지 않는다 — 공식 안내는 CM Connect 계정에서 ' +
       '「Schedule/Launch an Exam」을 눌러 응시 방식(온라인 감독 / 시험센터 감독)과 언어, 날짜, 시간, 센터 응시면 장소까지 응시자가 직접 ' +
-      '고르라고만 적는다. 고정된 시행일 목록 자체가 없다.  한 사람이 얼마나 자주 볼 수 있는지는 재응시 규정이 정한다. Associate·Professional ' +
-      '등급은 **2년에 최대 4회**이고, 불합격하면 14일 뒤에 다시 볼 수 있으며, 두 번째 불합격이면 60일, 세 번째 불합격이면 365일을 기다려야 한다. ' +
-      '응시 언어와 응시 방식(센터·온라인)이 달라도 모두 같은 횟수에 합산되고, 접수할 때마다 응시료를 낸다.  회차별 실제 날짜는 공식 일정 페이지에서 확인한다.',
+      '고르라고만 적는다. 고정된 시행일 목록 자체가 없다.\n' +
+      '\n' +
+      '한 사람이 얼마나 자주 볼 수 있는지는 재응시 규정이 정한다. Associate·Professional 등급은 **2년에 최대 4회**이고, 불합격하면 14일 ' +
+      '뒤에 다시 볼 수 있으며, 두 번째 불합격이면 60일, 세 번째 불합격이면 365일을 기다려야 한다. 응시 언어와 응시 방식(센터·온라인)이 달라도 모두 같은 ' +
+      '횟수에 합산되고, 접수할 때마다 응시료를 낸다.\n' +
+      '\n' +
+      '회차별 실제 날짜는 공식 일정 페이지에서 확인한다.',
     fee:
       'US$200 (해당 지역 세금 별도). 최초 취득 시 갱신용 50% 할인 코드를 받으며, 공식 문구는 "Upon certification, you will ' +
       'receive a 50% discount code in the Benefits section of your CM Connect account" — 프로필이 ' +
@@ -937,7 +1122,8 @@ export const certs: Cert[] = [
       'Series ID는 되찾는다). 만료 안내는 180일·90일 전에 오고 이후 30일마다 반복되는데, 원문이 "Depending on the ' +
       'certification"을 달아 두어 이 자격증이 180일 쪽인지 90일 쪽인지는 명시되어 있지 않다.',
     prerequisite:
-      '없음. 공식 페이지가 "Prerequisites: None"으로 명시한다. 권장 경력(업계 3년 이상, Google Cloud 1년 이상)은 응시 제한이 아니다.',
+      '없음. 공식 페이지가 "Prerequisites: None"으로 명시한다. 권장 경력(업계 3년 이상, Google Cloud 1년 이상)은 응시 제한이 ' +
+      '아니다.',
     subjects: [
       {
         name: 'Architecting low-code AI solutions (로우코드 AI 솔루션 설계)',
@@ -987,33 +1173,16 @@ export const certs: Cert[] = [
     officialUrl: 'https://cloud.google.com/learn/certification/machine-learning-engineer',
     verifiedAt: '2026-08-25',
     notes:
-      '**2026-06-01자 개정판이 시행 중이고, 그 날짜의 근거는 시험 가이드 PDF 한 곳뿐이다.** ' +
-      '`professional_machine_learning_engineer_exam_guide_english_new.pdf`의 둘째 줄이 ' +
-      '「Certification exam guide as of June 1, 2026」이다. **랜딩 페이지에는 날짜가 없다** — 랜딩 페이지가 적는 것은 ' +
-      '"This exam was updated to reflect the transition from Vertex AI to Gemini Enterprise ' +
-      'Agent Platform, updates to Google Cloud\'s data and analytics stack, and prioritizes ' +
-      'Google Cloud native solutions"와 "This exam was updated to reflect recent branding ' +
-      'changes" 두 문장뿐이다. 그래서 시험 가이드 ' +
-      '링크(`cloud.google.com/learn/certification/guides/machine-learning-engineer/`)를 근거로 들면 안 ' +
-      '된다 — 이 링크는 301로 파일명에 `_new`가 없는 PDF로 넘어가고, 그 PDF의 둘째 줄은 그냥 「Certification exam guide」라 ' +
-      '개정일이 없다. 두 PDF의 섹션 제목과 비중은 서로 같으므로 값은 어느 쪽으로도 맞지만, **개정일을 인용할 때만은 `_new.pdf`를 가리킨다.** ' +
-      '개정 결과 가이드의 제품명이 예전 Vertex AI 계열에서 Agent Platform 계열(Agent Platform ' +
-      'AutoML·Workbench·Feature Store·Model Registry·Pipelines·Inference 등)로 전부 바뀌었다 — 시중 교재나 ' +
-      '예전 학습 경로가 Vertex AI 이름을 쓰고 있으면 제품명 기준으로 어긋난다.  **섹션 비중의 출처도 랜딩 페이지가 아니라 가이드 PDF다.** 랜딩 ' +
-      '페이지는 여섯 영역을 비중 없이 나열만 하고, PDF에는 「Section 1: Architecting low-code AI solutions (~13% of ' +
-      'the exam)」 형태로 여섯 개가 그대로 적혀 있다.  **예약과 변경.** CM Connect 계정에서 「Schedule/Launch an Exam」으로 ' +
-      '잡고 실제 응시는 Pearson이 맡는다. 예약한 시작 시각 24시간 이내에 변경하거나 취소하면 지각 변경·취소 수수료가 붙고("A late ' +
-      'rescheduling or cancellation fee is applied if you reschedule/cancel your exam within 24 ' +
-      'hours of your scheduled start time"), 나타나지 않으면 응시료를 돌려받지 못한다.  **갱신 경로는 정규 시험뿐이다.** 갱신 ' +
-      'FAQ의 표에 이 자격증 이름이 따로 없고 「All Other Google Cloud professional certifications」 행이 적용되는데, 그 ' +
-      '행은 Google Skills의 Continuing Education이 「Not Available - Coming soon」이고 단축형 갱신 시험이 ' +
-      '「NO」다. 단축형은 Cloud Digital Leader·Associate Cloud Engineer·Professional Cloud ' +
-      'Architect·Professional Data Engineer 넷에만 있다. FAQ는 "If a shorter renewal exam is ' +
-      'available and you are eligible, it will automatically appear as a scheduling option"이라고 ' +
-      '적으므로, 자격이 되면 일정 잡기 화면에 저절로 뜬다.  **시험 제공사가 2026년 초에 바뀌었다.** Kryterion에서 Pearson으로 옮겼고 공식 ' +
-      '안내의 날짜는 「February 22, 2026: Last day to schedule and test with Kryterion」, 「9 am PST ' +
-      'February 26, 2026: Access to CM Connect and exam registration resumes」, 첫 응시 가능일 「March ' +
-      '2, 2026」이다.  한국어 응시는 지원하지 않는다(영어·일본어만).',
+      '- 2026-06-01자 개정판이 시행 중이다. 개정일이 적힌 곳은 시험 가이드 PDF의 `_new` 판본 한 곳뿐이고 랜딩 페이지에는 없다.\n' +
+      '- 섹션 여섯 개의 비중도 랜딩 페이지가 아니라 가이드 PDF에 적혀 있다 — 랜딩 페이지는 여섯 영역을 비중 없이 나열만 한다.\n' +
+      '- 개정으로 가이드의 제품명이 Vertex AI 계열에서 Agent Platform 계열(AutoML·Workbench·Feature Store·Model ' +
+      'Registry·Pipelines 등)로 전부 바뀌었다. 예전 학습 경로나 교재가 Vertex AI 이름을 쓰고 있으면 제품명 기준으로 어긋난다.\n' +
+      '- 예약은 CM Connect의 「Schedule/Launch an Exam」에서 하고 실제 응시는 Pearson이 맡는다. 시작 24시간 이내에 ' +
+      '변경·취소하면 수수료가 붙고, 나타나지 않으면 응시료를 돌려받지 못한다.\n' +
+      '- 갱신 경로는 정규 시험뿐이다. 단축형 갱신 시험은 Cloud Digital Leader·Associate Cloud Engineer·Professional ' +
+      'Cloud Architect·Professional Data Engineer 넷에만 있다.\n' +
+      '- 시험 제공사가 2026년 초 Kryterion에서 Pearson으로 바뀌었고, 첫 응시 가능일은 2026년 3월 2일이었다.\n' +
+      '- 응시 언어는 영어와 일본어뿐이고 한국어는 없다.',
     unknowns: [
       '합격 커트라인 점수 (시행처가 비공개 — pass/fail만 통보한다고 명시)',
       '갱신 시 실제로 내는 금액 (갱신은 정규 시험 US$200을 다시 보는 구조이고 50% 코드를 받지만, 갱신 응시료를 숫자로 적은 문장은 없다)',
@@ -1022,24 +1191,64 @@ export const certs: Cert[] = [
       '한국 원화 결제 금액 및 부가세 포함가',
       '문항 유형별 배점 방식과 미응답 문항 처리',
     ],
-    studyPath: [],
+    studyPath: [
+      {
+        subject: 'Architecting low-code AI solutions (로우코드 AI 솔루션 설계)',
+        items: [
+          { site: 'ailab', slug: 'finetuning-data-prep' },
+          { site: 'ailab', slug: 'finetuning-on-cloud' },
+        ],
+      },
+      {
+        subject: 'Collaborating within and across teams to manage data and models (팀 간 협업으로 데이터·모델 관리)',
+        items: [
+          { site: 'ailab', slug: 'pytorch-basics' },
+          { site: 'ailab', slug: 'pytorch-training-loop' },
+        ],
+      },
+      {
+        subject: 'Scaling prototypes into ML models (프로토타입을 모델로 확장)',
+        items: [
+          { site: 'ailab', slug: 'finetuning-lora' },
+          { site: 'ailab', slug: 'finetuning-hyperparameters' },
+          { site: 'ailab', slug: 'finetuning-on-cloud' },
+        ],
+      },
+      {
+        subject: 'Serving and scaling models (모델 서빙과 확장)',
+        items: [
+          { site: 'ailab', slug: 'inference-engines' },
+          { site: 'ailab', slug: 'serving-cost-optimization' },
+          { site: 'ailab', slug: 'reasoning-when-to-use' },
+        ],
+      },
+      {
+        subject: 'Automating and orchestrating ML pipelines (ML 파이프라인 자동화·오케스트레이션)',
+        items: [
+          { site: 'ailab', slug: 'mlops-ci-cd' },
+        ],
+      },
+      {
+        subject: 'Monitoring AI solutions (AI 솔루션 모니터링)',
+        items: [
+          { site: 'ailab', slug: 'ml-classification-metrics' },
+          { site: 'ailab', slug: 'ml-roc-auc' },
+          { site: 'ailab', slug: 'llmops-prompt-management' },
+        ],
+      },
+    ],
   },
   {
     id: 'nvidia-genai-llm',
-    nameKo: 'NVIDIA-Certified Associate: Generative AI LLMs (NCA-GENL)',
-    nameEn: '',
+    nameKo: 'NVIDIA NCA-GENL',
+    nameEn: 'NVIDIA-Certified Associate: Generative AI LLMs (NCA-GENL)',
     issuer: 'NVIDIA',
     region: '해외',
     level: '중급',
     whatItMeasures:
-      '생성형 AI와 대규모 언어 모델(LLM)을 NVIDIA 솔루션 위에서 다루는 AI 애플리케이션을 개발·통합·유지하는 데 필요한 기초 개념을 검증하는 ' +
-      '입문(entry-level) 등급 자격증이다. 공식 페이지가 드는 대상 직군은 14개다 — AI DevOps engineers, AI strategists, ' +
-      'Applied data scientists, Applied data research engineers, Applied deep learning research ' +
-      'scientists, Cloud solution architects, Data scientists, Deep learning performance ' +
-      'engineers, Generative AI specialists, LLM specialists and researchers, Machine learning ' +
-      'engineers, Senior researchers, Software engineers, Solutions architects. 특정 제품 조작 능력보다 ' +
-      '머신러닝·AI 핵심 지식(30%)에서 소프트웨어 개발(24%), 실험(22%), 데이터 분석·시각화(14%), 신뢰할 수 있는 AI(10%)까지 넓게 훑는 ' +
-      '구성이다.',
+      '생성형 AI와 대규모 언어 모델(LLM)을 NVIDIA 솔루션 위에서 다루는 AI 애플리케이션을 개발·통합·유지하는 데 필요한 기초 개념을 검증한다. ' +
+      'NVIDIA 자격증 체계의 입문(entry-level) 등급 자격증이다. 특정 제품 조작 능력보다 머신러닝·AI 핵심 지식부터 신뢰할 수 있는 AI까지 넓게 ' +
+      '훑는 구성이다.',
     audience:
       '데이터 사이언티스트, 머신러닝·소프트웨어 엔지니어, AI DevOps 엔지니어, 클라우드 솔루션 아키텍트, 딥러닝 연구자, LLM 전문가를 포함한 공식 목록 ' +
       '14개 직군. 생성형 AI·LLM 기초를 처음 정리하려는 입문자 대상이다.',
@@ -1090,14 +1299,16 @@ export const certs: Cert[] = [
     officialUrl: 'https://www.nvidia.com/en-us/learn/certification/generative-ai-llm-associate/',
     verifiedAt: '2026-08-25',
     notes:
-      'NVIDIA 자격증 체계의 Associate(입문) 등급이다. 같은 주제로 상위 등급인 NVIDIA-Certified Professional: ' +
-      'Generative AI LLMs(NCP-GENL, $200, 120분, 60~70문항)가 따로 있으나, 그 페이지 어디에도 NCA-GENL을 선행 조건으로 ' +
-      '요구한다는 문구는 없다 — 선행 자격증 대신 "AI/ML 실무 2~3년"을 권장 사항으로 든다. 폐지·대체·명칭 변경 안내는 공식 페이지에서 확인되지 않았고, ' +
-      '현재 Associate 4종(NCA-AIIO, NCA-ADS, NCA-GENL, NCA-GENM) 중 하나로 정상 운영 중이다. 접수는 공식 페이지의 ' +
-      '"Register for Exam" 링크를 통해 Certiverse에서 진행한다(링크 주소가 certiverse.com이다. 인증 인덱스 페이지는 플랫폼 이름 ' +
-      '없이 "certification center"라고만 적는다). 응시 방식·재응시·환불 같은 정책 문구는 상세 페이지가 아니라 인증 인덱스/FAQ ' +
-      '페이지(https://www.nvidia.com/en-us/learn/certification/)에 있다. 정해진 회차가 없는 예약제 시험이므로 응시 일정은 ' +
-      '공식 링크로 안내한다.',
+      '- NVIDIA 자격증 체계의 Associate(입문) 등급이다. 현재 Associate 4종(NCA-AIIO, NCA-ADS, NCA-GENL, ' +
+      'NCA-GENM) 중 하나로 정상 운영 중이며, 폐지·대체·명칭 변경 안내는 공식 페이지에서 확인되지 않았다.\n' +
+      '- 같은 주제의 상위 등급으로 NVIDIA-Certified Professional: Generative AI LLMs(NCP-GENL, $200, 120분, ' +
+      '60~70문항)가 따로 있으나, 그 페이지 어디에도 NCA-GENL을 선행 조건으로 요구한다는 문구는 없다 — 선행 자격증 대신 "AI/ML 실무 2~3년"을 ' +
+      '권장 사항으로 든다.\n' +
+      '- 접수는 공식 페이지의 "Register for Exam" 링크를 통해 Certiverse에서 진행한다(링크 주소가 certiverse.com이다. 인증 ' +
+      '인덱스 페이지는 플랫폼 이름 없이 "certification center"라고만 적는다).\n' +
+      '- 응시 방식·재응시·환불 같은 정책 문구는 상세 페이지가 아니라 인증 인덱스/FAQ ' +
+      '페이지(https://www.nvidia.com/en-us/learn/certification/)에 있다.\n' +
+      '- 정해진 회차가 없는 예약제 시험이므로 응시 일정은 공식 링크로 안내한다.',
     unknowns: [
       '합격 기준 정답률(공식적으로 pass/fail만 통보하며 숫자 기준 미공개)',
       '각 과목 안의 세부 출제 항목(공식 blueprint는 과목명과 퍼센트만 싣고, study guide 본문은 인증 포털 로그인 뒤에 있어 확인 못 함)',
@@ -1108,13 +1319,29 @@ export const certs: Cert[] = [
       '시험 버전 개정 이력 및 개정 주기',
       'NVIDIA Associate 4종이 모두 $125인지 여부(각 상세 페이지를 전부 대조하지 않음)',
     ],
-    studyPath: [],
+    studyPath: [
+      {
+        subject: 'Experimentation (실험)',
+        items: [
+          { site: 'ailab', slug: 'mlops-experiment-tracking' },
+          { site: 'ailab', slug: 'mlops-data-versioning' },
+          { site: 'ailab', slug: 'lab-retrieval-testbed' },
+        ],
+      },
+      {
+        subject: 'Data Analysis and Visualization (데이터 분석·시각화)',
+        items: [
+          { site: 'ailab', slug: 'ml-tsne-umap' },
+          { site: 'ailab', slug: 'app-data-analysis' },
+        ],
+      },
+    ],
   },
   {
     id: 'databricks-ml-associate',
-    nameKo: 'Databricks Certified Machine Learning Associate',
-    nameEn: '',
-    issuer: 'Databricks (시험 시행은 Kryterion Webassessor)',
+    nameKo: 'Databricks ML Associate',
+    nameEn: 'Databricks Certified Machine Learning Associate',
+    issuer: 'Databricks',
     region: '해외',
     level: '중급',
     whatItMeasures:
@@ -1123,9 +1350,8 @@ export const certs: Cert[] = [
       '학습·튜닝·평가와 모델 선택을 통한 모델 구축, 그리고 모델 배포 능력까지 평가한다. 시험의 머신러닝 코드는 전부 Python이며, 머신러닝에 국한되지 않는 ' +
       '워크플로나 데이터 조작 코드는 SQL로 제시될 수 있다.',
     audience:
-      '만 18세 이상 개인. 공식 FAQ는 응시 대상을 "individuals (18 years old and up) learning to use ' +
-      'Databricks"로 적고 잠재 고객·고객·파트너·Databricks 임직원을 함께 든다. 권장 경험은 시험 가이드에 적힌 머신러닝 작업을 6개월 이상 직접 ' +
-      '해 본 것이다.',
+      'Databricks를 배우는 만 18세 이상 개인이 대상이며, 공식 FAQ는 잠재 고객·고객·파트너·Databricks 임직원을 함께 든다. 권장 경험은 시험 ' +
+      '가이드에 적힌 머신러닝 작업을 6개월 이상 직접 해 본 것이다.',
     format:
       '채점 문항 48개, 제한 시간 90분. 참고 자료 반입 불가(Test aides: None allowed). 온라인 프록터 또는 시험센터 중 선택하는 감독형 ' +
       '시험이다(Type: Proctored certification). 문항 유형은 두 문서의 표기가 조금 다르다 — 시험 페이지는 "Question types: ' +
@@ -1199,21 +1425,17 @@ export const certs: Cert[] = [
     officialUrl: 'https://www.databricks.com/learn/certification/machine-learning-associate',
     verifiedAt: '2026-08-25',
     notes:
-      '폐지되지 않았고 현재 운영 중이다. 다만 이름이 두 갈래로 쓰인다 — 시험 자체의 공식 명칭은 \'Databricks Certified Machine ' +
-      'Learning Associate\'인데, 인증 목록 페이지(databricks.com/learn/training/certification)에서는 \'ML ' +
-      'Engineer\' 직무 트랙 아래 Associate 등급으로 묶여 있고 그 카드의 aria-label은 \'Read more about Machine ' +
-      'Learning Engineer Associate Badge\'다. 취득 후 받는 배지 이름은 \'Databricks Certified Machine ' +
-      'Learning Engineer Associate\'이며, 근거는 공식 크리덴셜 사이트 credentials.databricks.com/group/371215의 ' +
-      '페이지 제목과 h1이다(이 주소를 출처 목록에 함께 둔다). 상위 등급으로 Databricks Certified Machine Learning ' +
-      'Professional이 있다.  공식 문서 두 곳이 두 자리에서 어긋난다. 첫째, 시험 페이지의 배점표는 2번 영역을 \'ML Workflows 19%\'로 ' +
-      '적지만 그 페이지가 링크하는 공식 시험 가이드 PDF(2025-03-01 기준판)의 2번 섹션 제목은 \'Data Processing\'이다. 세부 목표 목록은 ' +
-      '가이드 쪽에만 있으므로 내용은 가이드를 따랐다. 둘째, 가이드는 응시 방식을 \'Delivery method: Online Proctored\'로만 적는데 시험 ' +
-      '페이지는 \'Delivery Method: Online or test center\'다. 여기서는 페이지 쪽을 따랐다 — 공식 FAQ의 일정 변경 규칙이 온라인 ' +
-      '24시간·시험센터 72시간으로 갈려 있어 시험센터 응시가 실제로 존재함을 뒷받침한다. 이보다 작은 차이로 문항 유형 표기도 갈린다(페이지 \'Multiple ' +
-      'choice\', 가이드 \'multiple-choice or multiple-selection\').  시험 가이드는 \'Mar 1, 2025 기준 현행판\'이라고 ' +
-      '명시하며, 시험 2주 전에 최신판을 다시 확인하라고 안내한다. 공식 FAQ는 앞으로 시험 버전이 항상 하나만 운영되고 가이드가 출제 범위의 기준 ' +
-      '문서(source of truth)라고 적는다.  공식 연습 시험은 제공하지 않는다. Databricks는 연습 시험이 실제 시험과 같은 수준의 엄밀함으로 ' +
-      '만들어지지 않아 결과가 오해를 부른다는 이유를 든다.',
+      '- 시행은 Kryterion이 맡고 등록은 Webassessor(webassessor.com/databricks)에서 한다.\n' +
+      '- 시험 자체의 공식 명칭은 \'Databricks Certified Machine Learning Associate\'인데, 인증 목록 페이지에서는 \'ML ' +
+      'Engineer\' 직무 트랙의 Associate 등급으로 묶여 있고 취득 후 받는 배지 이름은 \'Databricks Certified Machine ' +
+      'Learning Engineer Associate\'다(근거: credentials.databricks.com/group/371215의 제목과 h1).\n' +
+      '- 상위 등급으로 Databricks Certified Machine Learning Professional이 있다.\n' +
+      '- 공식 문서 두 곳이 어긋난다. 2번 출제 영역 이름은 시험 페이지가 \'ML Workflows\', 가이드 PDF가 \'Data Processing\'이다 — ' +
+      '세부 목표 목록은 가이드에만 있어 내용은 가이드를 따랐다. 응시 방식은 가이드가 \'Online Proctored\', 페이지가 \'Online or test ' +
+      'center\'인데, FAQ의 시험센터 72시간 변경 규칙을 근거로 페이지를 따랐다.\n' +
+      '- 시험 가이드는 2025-03-01 기준 현행판이며 시험 2주 전에 최신판을 다시 확인하라고 안내한다. 공식 FAQ는 앞으로 시험 버전이 항상 하나만 ' +
+      '운영되고 가이드가 출제 범위의 기준 문서라고 적는다.\n' +
+      '- 공식 연습 시험은 제공하지 않는다. 연습 시험이 실제 시험과 같은 수준의 엄밀함으로 만들어지지 않아 결과가 오해를 부른다는 이유다.',
     unknowns: [
       '합격 기준 점수(합격선) — 공식 FAQ가 통계 분석으로 정하며 바뀔 수 있어 공개하지 않는다고 밝히고 있어 숫자를 확인할 수 없음',
       '2번 출제 영역의 확정 명칭 — 시험 페이지는 \'ML Workflows\', 공식 시험 가이드는 \'Data Processing\'',
@@ -1223,20 +1445,36 @@ export const certs: Cert[] = [
       '응시료 200달러에 세금·부가 수수료가 포함되는지 여부(미확인)',
       '한국어 시험의 문항 번역 범위(코드·용어 포함 여부) — 공식 페이지는 제공 언어 목록만 적음(미확인)',
     ],
-    studyPath: [],
+    studyPath: [
+      {
+        subject: 'Databricks Machine Learning',
+        items: [
+          { site: 'ailab', slug: 'mlops-overview' },
+          { site: 'ailab', slug: 'mlops-experiment-tracking' },
+          { site: 'ailab', slug: 'mlops-feature-store' },
+        ],
+      },
+      {
+        subject: 'Model Development',
+        items: [
+          { site: 'ailab', slug: 'ml-cross-validation' },
+          { site: 'ailab', slug: 'ml-bias-variance' },
+        ],
+      },
+    ],
   },
   {
     id: 'databricks-genai-associate',
-    nameKo: 'Databricks Certified Generative AI Engineer Associate',
-    nameEn: '',
+    nameKo: 'Databricks GenAI Associate',
+    nameEn: 'Databricks Certified Generative AI Engineer Associate',
     issuer: 'Databricks',
     region: '해외',
     level: '중급',
     whatItMeasures:
-      'Databricks를 써서 LLM 기반 솔루션을 설계하고 구현하는 능력을 잰다. 복잡한 요구사항을 다룰 수 있는 작업으로 쪼개는 문제 분해, 그리고 지금의 ' +
-      '생성형 AI 지형에서 알맞은 모델·도구·접근법을 고르는 판단을 함께 본다. 시험 가이드는 Vector Search(의미 유사도 검색), Model ' +
-      'Serving(모델·솔루션 배포), MLflow(솔루션 생애주기 관리), Unity Catalog(데이터 거버넌스) 같은 Databricks 고유 도구를 ' +
-      '명시하고, 합격자는 이 도구들을 충분히 활용한 RAG 애플리케이션과 LLM 체인을 만들어 배포할 수 있는 사람으로 본다.',
+      'Databricks를 써서 LLM 기반 솔루션을 설계하고 구현하는 능력을 잰다. 복잡한 요구사항을 다룰 수 있는 작업으로 쪼개는 문제 분해와, 지금의 생성형 ' +
+      'AI 지형에서 알맞은 모델·도구·접근법을 고르는 판단을 함께 본다. 시험 가이드는 Vector Search, Model Serving, MLflow, ' +
+      'Unity Catalog 같은 Databricks 고유 도구를 명시한다. 합격자는 이 도구들을 충분히 활용한 RAG 애플리케이션과 LLM 체인을 만들어 배포할 ' +
+      '수 있는 사람으로 본다.',
     audience:
       'Databricks 위에서 LLM 애플리케이션을 만드는 데이터·ML 엔지니어와 개발자가 보는 시험이다.',
     format:
@@ -1314,19 +1552,18 @@ export const certs: Cert[] = [
     officialUrl: 'https://www.databricks.com/learn/certification/genai-engineer-associate',
     verifiedAt: '2026-08-25',
     notes:
-      '현행 버전은 2026년 3월 18일자 시험 가이드가 다루는 것이다("This version covers the currently live version as ' +
-      'of March 18, 2026."). 같은 문단이 "시험을 보기 2주 전에 최신 버전인지 다시 확인하라"고 적어 둘 만큼 출제 범위가 자주 바뀐다 — 실제로 ' +
-      'Agent Bricks, MCP 서버 연동, 프롬프트 버전 관리, AI Gateway, 커스텀 Scorer 같은 최근 기능이 출제 목표에 들어와 있다. 가이드 ' +
-      'PDF 주소에 개정 시점(`2026-03`, `Mar26`)이 박혀 있고 인증 페이지가 지금 그 주소를 걸고 있으므로, 개정되면 링크가 바뀐다 — 우리 ' +
-      '글에서는 PDF를 직접 걸지 말고 인증 페이지를 건다.  **한국어로 응시할 수 있다** — 인증 페이지가 언어를 "English, 日本語, Português ' +
-      'BR, 한국어"로 안내한다. 해외 자격증이지만 국내 응시자에게 언어 장벽이 낮은 편이다.  이름이 비슷한 무료 과정과 헷갈리지 않게 한다. ' +
-      'Databricks의 무료 accreditation은 Databricks Fundamentals·Generative AI Fundamentals·AI ' +
-      'Agent Fundamentals 셋이고, 유료 감독 시험인 이 자격증과는 다른 것이다. 또 인증 목록에 **Databricks Certified ' +
-      'Context Engineering Associate**(목록의 역할 탭 이름은 "Context Engineer")가 새로 올라와 생성형 AI 계열 ' +
-      'Associate 시험이 둘로 늘었다 — 이 시험을 대체하는 것은 아니고 둘 다 현행이다.  같은 문단을 두 문서가 다르게 적는 자리가 하나 더 있다. 인증 ' +
-      '페이지의 소개 문단은 도구 이름을 "AI Search for semantic similarity searches"로, 시험 가이드는 "Vector Search ' +
-      'for semantic similarity searches"로 적는다. 출제 목표 쪽이 "Mosaic AI Vector Search"이므로 가이드 표기를 ' +
-      '따랐다.',
+      '- 현행 버전은 2026년 3월 18일자 시험 가이드가 다루는 것이다. 같은 문단이 시험 2주 전에 최신 버전인지 다시 확인하라고 적어 둘 만큼 출제 범위가 ' +
+      '자주 바뀐다 — Agent Bricks, MCP 서버 연동, 프롬프트 버전 관리, AI Gateway, 커스텀 Scorer 같은 최근 기능이 출제 목표에 ' +
+      '들어와 있다.\n' +
+      '- 가이드 PDF 주소에 개정 시점(2026-03, Mar26)이 박혀 있어 개정되면 링크가 바뀐다. 우리 글에서는 PDF를 직접 걸지 말고 인증 페이지를 ' +
+      '건다.\n' +
+      '- 한국어로 응시할 수 있다 — 인증 페이지가 언어를 "English, 日本語, Português BR, 한국어"로 안내한다.\n' +
+      '- 이름이 비슷한 무료 accreditation 셋(Databricks Fundamentals·Generative AI Fundamentals·AI Agent ' +
+      'Fundamentals)과 헷갈리지 않게 한다. 이 자격증은 유료 감독 시험이다.\n' +
+      '- 인증 목록에 Databricks Certified Context Engineering Associate가 새로 올라와 생성형 AI 계열 Associate ' +
+      '시험이 둘로 늘었다 — 대체가 아니라 둘 다 현행이다.\n' +
+      '- 인증 페이지는 도구 이름을 "AI Search", 시험 가이드는 같은 자리를 "Vector Search"로 적는다. 출제 목표가 "Mosaic AI ' +
+      'Vector Search"이므로 가이드 표기를 따랐다.',
     unknowns: [
       '합격 기준 점수(passing score) — 인증 페이지와 시험 가이드 전문을 다시 훑었고 \'pass\'/\'score\' 어느 쪽으로 검색해도 기준 수치가 ' +
       '나오지 않는다. 검색에 걸리는 70%·80% 같은 숫자는 전부 커뮤니티 글이나 학원 자료라 출처로 쓰지 않았다.',
@@ -1337,37 +1574,67 @@ export const certs: Cert[] = [
       '정기 시행 회차 유무를 명시한 공식 문구 — 예약제로 보이지만 \'연중 상시\'나 \'연 N회\'를 못 박은 공식 서술은 세 문서 어디에도 없다.',
       '재응시 요금 액수 — 약관은 \'응시할 때마다 결제한다\'까지만 말하고 금액이 첫 응시와 같은지는 적지 않는다.',
     ],
-    studyPath: [],
+    studyPath: [
+      {
+        subject: 'Design Applications (애플리케이션 설계)',
+        items: [
+          { site: 'ailab', slug: 'finetuning-vs-prompt-vs-rag' },
+          { site: 'ailab', slug: 'reasoning-when-to-use' },
+        ],
+      },
+      {
+        subject: 'Data Preparation (데이터 준비)',
+        items: [
+          { site: 'ailab', slug: 'rag-architecture' },
+          { site: 'ailab', slug: 'rag-chunking-strategies' },
+          { site: 'ailab', slug: 'rag-reranking' },
+        ],
+      },
+      {
+        subject: 'Application Development (애플리케이션 개발)',
+        items: [
+          { site: 'ailab', slug: 'agent-langchain' },
+          { site: 'ailab', slug: 'project-prompt-iterating' },
+          { site: 'ailab', slug: 'guardrails-overview' },
+        ],
+      },
+      {
+        subject: 'Assembling and Deploying Applications (조립과 배포)',
+        items: [
+          { site: 'ailab', slug: 'llmops-prompt-management' },
+          { site: 'ailab', slug: 'agent-mcp-protocol' },
+        ],
+      },
+      {
+        subject: 'Governance (거버넌스)',
+        items: [
+          { site: 'ailab', slug: 'guardrails-testing' },
+        ],
+      },
+      {
+        subject: 'Evaluation and Monitoring (평가와 모니터링)',
+        items: [
+          { site: 'ailab', slug: 'serving-cost-optimization' },
+        ],
+      },
+    ],
   },
   {
     id: 'sqlp',
-    nameKo: 'SQL 전문가',
+    nameKo: 'SQL 전문가(SQLP)',
     nameEn: 'SQL Professional (SQLP)',
-    issuer: '한국데이터산업진흥원(K-DATA) 데이터자격검정센터',
+    issuer: '한국데이터산업진흥원',
     region: '국내',
     level: '고급',
     whatItMeasures:
-      '시행처 정의로는 "데이터베이스와 데이터모델링에 대한 지식을 바탕으로 데이터를 조작하고 추출하는 데 있어서 정확하고 최적의 성능을 발휘하는 SQL을 작성할 수 ' +
-      '있고, 이를 토대로 SQL을 내포하는 데이터베이스 프로그램이나 응용 소프트웨어의 성능을 최적화하거나, 이러한 성능 최적화를 지원할 수 있는 데이터베이스 ' +
-      '개체(뷰, 인덱스 등)의 설계와 구현 등의 직무를 수행하는 전문가"를 가린다. 공식 직무는 셋 — 데이터모델의 이해 및 분석, SQL 이해 및 활용, SQL ' +
-      '튜닝. 즉 "SQL을 쓸 줄 아는가"가 아니라 "SQL이 어떻게 수행되는지 알고 느린 것을 빠르게 만들 수 있는가"를 본다.  같은 시행처의 SQL ' +
-      '개발자(SQLD)와 공식 페이지에서 확인되는 차이는 셋이다.  1. 응시자격 — SQLD는 "제한 없음"이라 누구나 접수한다. SQLP는 학력·경력 ' +
-      '기준(학사학위 이상 / 전문학사 취득 후 실무 2년 / 고졸 후 실무 4년) 또는 자격보유 기준(해외 DBMS 기업 인증 자격, SQLD 취득자, ' +
-      'DAP·DAsP 취득자) 중 하나를 시험일 이전에 충족해야 하고, 시험에 붙어도 증빙서류 심의를 통과해야 최종합격이다. SQLD 취득이 SQLP 응시자격의 한 ' +
-      '경로로 명시돼 있어 상위 등급 관계가 데이터로 드러난다.  2. 과목 — SQLD는 2과목(데이터 모델링의 이해, SQL 기본 및 활용)이고 SQLP는 여기에 ' +
-      '3과목째 "SQL 고급활용 및 튜닝"이 붙는다. 앞 두 과목의 주요항목·세부항목은 두 시험이 사실상 같고(엔터티·속성·관계·식별자·정규화 / ' +
-      'SELECT·함수·조인·서브쿼리·윈도우 함수·DML·TCL·DDL·DCL), 세 번째 과목만 SQLP 전용이다 — SQL 수행 구조, SQL 분석 도구(예상 ' +
-      '실행계획·SQL 트레이스·응답 시간 분석), 인덱스 튜닝, 조인 튜닝(NL·소트 머지·해시·스칼라 서브쿼리), SQL 옵티마이저와 쿼리 변환, 고급 SQL ' +
-      '튜닝(소트·DML·DB Call 최소화·파티셔닝·배치), Lock과 트랜잭션 동시성 제어.  3. 난도 — 문항 구성과 합격선이 다르다. SQLD는 객관식 ' +
-      '50문항 100점 90분에 총점 60점 이상이면 합격이다. SQLP는 객관식 70문항 70점 + 실기 2문항 30점, 총 72문항 100점 180분이고 ' +
-      '합격선이 총점 75점 이상이다(과락은 둘 다 과목별 40% 미만). 배점 무게중심도 옮겨 간다 — SQLD는 SQL 기본·활용이 80점인데 SQLP는 고급활용 ' +
-      '및 튜닝 한 과목이 40점으로 필기 최대 비중이고, 여기에 서술형 실기 30점이 더해진다. 실기는 지문의 데이터 모델·오브젝트 정보·실행계획을 분석해 힌트를 ' +
-      '포함한 SQL을 직접 작성하거나 성능 개선 방안을 서술하는 형태라 객관식만으로는 대비되지 않는다. 시행 횟수도 SQLD 연 4회, SQLP 연 2회다.',
+      '시행처 정의로는 데이터베이스와 데이터모델링 지식을 바탕으로 정확하고 최적의 성능을 내는 SQL을 작성하고, SQL을 내포하는 데이터베이스 프로그램이나 응용 ' +
+      '소프트웨어의 성능을 최적화하거나 이를 지원할 수 있는 데이터베이스 개체(뷰, 인덱스 등)의 설계와 구현 직무를 수행하는 전문가를 가린다. 공식 직무는 셋 — ' +
+      '데이터모델의 이해 및 분석, SQL 이해 및 활용, SQL 튜닝이다. 즉 "SQL을 쓸 줄 아는가"가 아니라 "SQL이 어떻게 수행되는지 알고 느린 것을 ' +
+      '빠르게 만들 수 있는가"를 본다. 서술형 실기는 지문의 데이터 모델·오브젝트 정보·실행계획을 분석해 힌트를 포함한 SQL을 직접 작성하거나 성능 개선 방안을 ' +
+      '서술하는 형태다.',
     audience:
       'SQL을 이미 실무에서 쓰고 있으면서 성능 쪽으로 넘어가려는 사람 — 백엔드·애플리케이션 개발자, DBA, 데이터 엔지니어, DW/배치 담당자. 응시자격 ' +
-      '자체가 학사 이상 또는 실무경력 2~4년(혹은 SQLD·DAP·해외 DBMS 벤더 자격 보유)을 요구하므로 입문자용 시험이 아니다. 실기가 실행계획을 읽고 ' +
-      '힌트를 붙여 SQL을 다시 쓰는 형태라, 관계형 DB 위에서 느린 쿼리를 직접 잡아 본 경험이 있는 쪽에 맞는다. 학점은행제 12학점이 인정돼 학점 취득 ' +
-      '목적의 응시자도 있다.',
+      '자체가 학력·경력 또는 관련 자격 보유를 요구해 입문자용 시험이 아니고, 관계형 DB 위에서 느린 쿼리를 직접 잡아 본 경험이 있는 쪽에 맞는다.',
     format:
       '오프라인 고사장에서 치르는 지필시험 한 번. 시행처 표현으로는 "필기시험으로 구성되어 있으며 필기시험 내에 실기문항이 포함되어 있다" — 즉 필기와 실기가 ' +
       '따로 있는 2단계 시험이 아니라 한 세션 안에 객관식과 서술형이 섞여 있다. 총 72문항(객관식 70문항 + 실기 2문항), 총점 100점, 검정시험시간 ' +
@@ -1390,13 +1657,22 @@ export const certs: Cert[] = [
     validity:
       '자격 취득 후 유효기간은 합격일로부터 2년이며, 보수교육을 이수하면 영구로 전환된다. (SQLD도 동일한 규칙이다.)',
     prerequisite:
-      '있다. SQLD와 갈리는 가장 큰 지점이다. 응시자격은 시험일 기준 시험일 이전에 충족되어야 하며, 아래 둘 중 한 가지만 만족하면 응시자격이 부여된다. ' +
-      '[학력 및 경력 기준] (셋 중 하나) - 학사학위 이상 취득한 자 - 전문학사학위 취득 후 실무경력 2년 이상인 자 - 고등학교 졸업한 후 실무경력 4년 ' +
-      '이상인 자  [자격보유 기준] (셋 중 하나) - 국내외 데이터베이스 관련 자격을 취득한 자 — IBM, Microsoft, Oracle, Sybase 등 ' +
-      '해외 DBMS 기업들이 인증하는 데이터베이스 관련 자격 - SQL 개발자(SQLD) 자격을 취득한 자 - 데이터아키텍처 전문가(DAP) 및 준전문가(DAsP) ' +
-      '자격을 취득한 자  시험에 합격해도 그것만으로 끝나지 않는다. 합격자는 응시자격 증빙서류(경력 또는 재직증명서 1부, 최종학력증명서 1부, 자격증 사본 1부 ' +
-      '— 각 해당자에 한함)를 제출해 심의를 통과해야 "최종합격"이다. 제출 시기는 회차별 별도 공지, 제출처는 홈페이지 내 시험결과 페이지 온라인 제출. 참고로 ' +
-      'SQLD의 응시자격은 "제한 없음"이다.',
+      '있다. SQLD와 갈리는 가장 큰 지점이다. 응시자격은 시험일 기준 시험일 이전에 충족되어야 하며, 아래 둘 중 한 가지만 만족하면 응시자격이 부여된다.\n' +
+      '\n' +
+      '[학력 및 경력 기준] (셋 중 하나)\n' +
+      '- 학사학위 이상 취득한 자\n' +
+      '- 전문학사학위 취득 후 실무경력 2년 이상인 자\n' +
+      '- 고등학교 졸업한 후 실무경력 4년 이상인 자\n' +
+      '\n' +
+      '[자격보유 기준] (셋 중 하나)\n' +
+      '- 국내외 데이터베이스 관련 자격을 취득한 자 — IBM, Microsoft, Oracle, Sybase 등 해외 DBMS 기업들이 인증하는 데이터베이스 관련 ' +
+      '자격\n' +
+      '- SQL 개발자(SQLD) 자격을 취득한 자\n' +
+      '- 데이터아키텍처 전문가(DAP) 및 준전문가(DAsP) 자격을 취득한 자\n' +
+      '\n' +
+      '시험에 합격해도 그것만으로 끝나지 않는다. 합격자는 응시자격 증빙서류(경력 또는 재직증명서 1부, 최종학력증명서 1부, 자격증 사본 1부 — 각 해당자에 ' +
+      '한함)를 제출해 심의를 통과해야 "최종합격"이다. 제출 시기는 회차별 별도 공지, 제출처는 홈페이지 내 시험결과 페이지 온라인 제출. 참고로 SQLD의 ' +
+      '응시자격은 "제한 없음"이다.',
     subjects: [
       {
         name: '데이터 모델링의 이해',
@@ -1439,12 +1715,17 @@ export const certs: Cert[] = [
     officialUrl: 'https://www.dataq.or.kr/www/sub/a_03.do',
     verifiedAt: '2026-08-25',
     notes:
-      '- 국가공인 민간자격(공인자격 제2022-04호), 근거는 자격기본법 제17조. 시행처는 한국데이터산업진흥원(서울시 중구 세종대로9길 42 부영빌딩 8층, ' +
-      'Tel 1877-9817). - 학점인정 등에 관한 법률에 따라 학점은행제 12학점 인정(SQLD는 6학점). - 합격기준을 정리하면: 시험합격은 총점 ' +
-      '100점 기준 75점 이상 취득, 과락기준은 과목별 40% 미만 취득, 최종합격은 응시자격심의 서류 통과자. SQLD는 총점 60점 이상 / 과목별 40% ' +
-      '미만 과락. 구성은 과목1 데이터 모델링의 이해(데이터 모델링의 이해 / 데이터 모델과 성능), 과목2 SQL 기본 및 활용(SQL 기본 / SQL 활용 / ' +
-      'SQL 최적화 기본원리), 과목3 SQL 고급 활용 및 튜닝(아키텍처 기반 튜닝 원리 / Lock과 트랜잭션 동시성 제어 / 옵티마이저 원리 / 인덱스와 조인 ' +
-      '/ 고급 SQL 튜닝). SQLD도 같은 교재를 쓰되 과목3은 SQLP 범위다. - 응시자격을 미리 확인하는 "응시자격 자가진단" 메뉴가 사이트에 따로 있다. ' +
+      '- 국가공인 민간자격(공인자격 제2022-04호), 근거는 자격기본법 제17조. 시행처 주소는 서울시 중구 세종대로9길 42 부영빌딩 8층, Tel ' +
+      '1877-9817.\n' +
+      '- SQLD와 공식 페이지에서 확인되는 차이는 셋이다 — 응시자격(SQLD는 "제한 없음"), 과목(SQLP에 "SQL 고급활용 및 튜닝"이 3과목째로 ' +
+      '붙는다), 합격선(SQLP 총점 75점 이상 / SQLD 60점 이상, 과락은 둘 다 과목별 40% 미만).\n' +
+      '- SQLD 취득이 SQLP 응시자격의 한 경로로 명시돼 있어 상위 등급 관계가 데이터로 드러난다.\n' +
+      '- 시행 횟수는 SQLP 연 2회, SQLD 연 4회다.\n' +
+      '- 배점 무게중심도 옮겨 간다 — SQLD는 SQL 기본·활용이 80점인데 SQLP는 고급활용 및 튜닝 한 과목이 40점으로 필기 최대 비중이고, 여기에 ' +
+      '서술형 실기 30점이 더해진다.\n' +
+      '- 필기에 합격해도 응시자격 증빙서류 심의를 통과해야 최종합격이다.\n' +
+      '- 학점인정 등에 관한 법률에 따라 학점은행제 12학점 인정(SQLD는 6학점).\n' +
+      '- 응시자격을 미리 확인하는 "응시자격 자가진단" 메뉴가 사이트에 따로 있다.\n' +
       '- 우리 글과 이을 때 유의할 점: 이 시험의 무게중심은 SQL 문법이 아니라 옵티마이저·실행계획·인덱스·조인 알고리즘이다. SQLD 대비 글을 쓸 때 ' +
       '"SQLP는 튜닝이 추가된 것" 한 줄로 넘기면 배점(필기 40/70이 튜닝)과 서술형 실기 30점의 무게를 놓치게 된다.',
     unknowns: [
@@ -1458,26 +1739,42 @@ export const certs: Cert[] = [
       '시험 문제 공개 여부 및 기출문제 제공 정책',
       'SQLD 취득 없이 학력·경력 기준만으로 응시할 때 실무경력의 인정 범위 정의',
     ],
-    studyPath: [],
+    studyPath: [
+      {
+        subject: 'SQL 기본 및 활용',
+        items: [
+          { site: 'techblog', slug: 'sql-language-categories', label: 'SQL 언어 분류 — DDL · DML · DCL · TCL' },
+          { site: 'techblog', slug: 'sql-having-vs-where', label: 'HAVING vs WHERE — 필터 위치가 중요한 이유' },
+          { site: 'techblog', slug: 'sql-window-functions-intro', label: '윈도우 함수 입문 — OVER 절과 파티션' },
+          { site: 'techblog', slug: 'sql-pivot-unpivot-pattern', label: 'PIVOT · UNPIVOT 패턴' },
+          { site: 'techblog', slug: 'mysql-autocommit-transaction', label: 'MySQL autocommit과 트랜잭션 제어 — START TRANSACTION, SAVEPOINT' },
+        ],
+      },
+      {
+        subject: 'SQL 고급활용 및 튜닝',
+        items: [
+          { site: 'techblog', slug: 'mysql-partitioning', label: 'MySQL 파티셔닝 — 대용량 테이블 분할 전략과 파티션 프루닝' },
+          { site: 'techblog', slug: 'oracle-interval-partitioning', label: 'Oracle Interval 파티셔닝' },
+          { site: 'techblog', slug: 'mssql-partitioning-sliding-window', label: 'SQL Server 파티셔닝 — Sliding Window 패턴' },
+        ],
+      },
+    ],
   },
   {
     id: 'ai-901',
-    nameKo: 'Microsoft Certified: Azure AI Fundamentals (시험 AI-901)',
-    nameEn: 'Exam AI-901: Microsoft Azure AI Fundamentals',
-    issuer: 'Microsoft (Microsoft Learn Credentials). 시험 전달은 Pearson VUE, 학생·교육기관 및 MOS 경로는 Certiport.',
+    nameKo: 'Azure AI Fundamentals',
+    nameEn: 'Exam AI-901: Microsoft Azure AI Fundamentals (Microsoft Certified: Azure AI Fundamentals)',
+    issuer: 'Microsoft',
     region: '해외',
     level: '입문',
     whatItMeasures:
-      'AI 솔루션 개발 경력 초입(공식 job role 표기는 AI Engineer, 난이도 beginner)을 대상으로 한 입문 인증이다. 공식 설명은 ' +
-      '"Azure AI 솔루션에 대한 개념 지식과 그것을 다루는 기초 기술 역량"을 본다고 적는다. 두 축이다 — (1) AI 개념과 기능을 식별하는 것: 책임 ' +
-      '있는 AI 6원칙, 생성형 AI 모델의 작동 방식과 모델 선택·배포 구성, 생성형·에이전트형 AI를 포함한 AI 워크로드 갈래. (2) Microsoft ' +
-      'Foundry로 실제 솔루션을 구현하는 것: Foundry 포털에서 모델을 배포하고 대화하기, Foundry SDK로 경량 클라이언트 만들기, 단일 에이전트 ' +
-      '만들고 테스트하기, 텍스트·음성·비전·정보 추출 애플리케이션 만들기. 개념 문항만이 아니라 구현 쪽이 더 큰 비중(55~60%)이라는 점이 이 시험의 성격을 ' +
-      '정한다. 공식 안내는 대부분 GA 기능을 다루되 널리 쓰이는 Preview 기능도 나올 수 있고 REST API·SDK·CLI에 익숙해야 한다고 못 박는다.',
+      'AI 솔루션 개발 경력 초입을 대상으로 한 입문 인증이다. 공식 설명은 "Azure AI 솔루션에 대한 개념 지식과 그것을 다루는 기초 기술 역량"을 본다고 ' +
+      '적는다. 두 축이다 — 책임 있는 AI 6원칙, 생성형 AI 모델의 작동 방식과 모델 선택·배포 구성, 생성형·에이전트형 AI를 포함한 워크로드 갈래를 ' +
+      '식별하는 것, 그리고 Microsoft Foundry로 모델을 배포하고 단일 에이전트와 텍스트·음성·비전·정보 추출 애플리케이션을 실제로 구현하는 것. 개념 ' +
+      '문항만이 아니라 구현 쪽 비중이 더 크다는 점이 이 시험의 성격을 정한다.',
     audience:
-      'AI 솔루션 개발 경력 초입에 있는 기술 직군. 공식 카탈로그의 난이도는 beginner, 역할은 ai-engineer·developer·student, ' +
-      '제품은 azure다. AI-900 시절의 "기술·비기술 배경 모두" 문구가 빠지고 Python·Azure 리소스·REST API/SDK/CLI 친숙함이 전제로 ' +
-      '들어갔으므로, 비개발 직군이 AI 개념만 훑으려는 목적에는 예전만큼 맞지 않는다.',
+      'AI 솔루션 개발 경력 초입에 있는 기술 직군. 공식 카탈로그의 난이도는 beginner, 역할은 ai-engineer·developer·student이며, ' +
+      'Python·Azure 리소스·REST API/SDK/CLI 친숙함이 전제라 비개발 직군이 AI 개념만 훑으려는 목적에는 예전만큼 맞지 않는다.',
     format:
       'Fundamentals 등급 시험이다. 공식 표에 따르면 시험 시간 45분, 좌석 시간(지시문 확인·응시자 동의서·설문까지 포함해 잡아 둬야 하는 시간) ' +
       '65분이다. 합격 점수는 700점. 문항 수는 공개하지 않으며 공식 안내는 "대부분의 Microsoft 인증 시험은 보통 40~60문항이지만 시험마다 다를 수 ' +
@@ -1489,9 +1786,9 @@ export const certs: Cert[] = [
     cadence:
       '고정 회차가 없는 상시 시험이다. Microsoft는 특정 시행일이나 연 몇 회 같은 주기를 두지 않고, 응시자가 Microsoft Learn 프로필에서 시험 ' +
       '전달 사업자(대개 Pearson VUE, 학생·교육기관 경로는 Certiport)로 넘어가 직접 예약한다. 예약에 걸린 상시 규칙만 공식 문서에 있다 — ' +
-      'Pearson VUE를 통해 동시에 예약해 둘 수 있는 Microsoft 인증 시험은 최대 2개이고(같은 날이든 다른 날이든), ' +
-      '그중 하나를 치르거나 취소하면 다시 예약할 수 있다. 그리고 시험은 90일 이내 앞으로만 예약할 수 있다. 응시 방식은 시험 센터와 온라인 감독(OnVUE) ' +
-      '중에서 고른다. AI-901 페이지의 사용 중지(retirement) 날짜는 "없음"이다.',
+      'Pearson VUE를 통해 동시에 예약해 둘 수 있는 Microsoft 인증 시험은 최대 2개이고(같은 날이든 다른 날이든), 그중 하나를 치르거나 취소하면 ' +
+      '다시 예약할 수 있다. 그리고 시험은 90일 이내 앞으로만 예약할 수 있다. 응시 방식은 시험 센터와 온라인 감독(OnVUE) 중에서 고른다. AI-901 ' +
+      '페이지의 사용 중지(retirement) 날짜는 "없음"이다.',
     fee:
       '공식 페이지가 금액을 싣지 않는다. "시험이 감독되는 국가 또는 지역에 따라 가격이 결정된다"고만 적고, 각주로 "판촉 제품이나 Microsoft ' +
       'Certified Trainer·Microsoft 파트너 네트워크 회원 할인가는 반영되지 않으며, 가격은 통지 없이 변경될 수 있고 세금은 포함되지 않는다. ' +
@@ -1533,38 +1830,18 @@ export const certs: Cert[] = [
     officialUrl: 'https://learn.microsoft.com/en-us/credentials/certifications/exams/ai-901/',
     verifiedAt: '2026-08-25',
     notes:
-      '**AI-900과 무엇이 달라졌나 (두 시험의 공식 페이지를 나란히 놓고 비교한 것)** 1) 출제 영역이 다섯에서 둘로 재편됐다. AI-900은 「AI ' +
-      '워크로드와 고려사항 15–20% / Azure 머신러닝 기본 원리 15–20% / 컴퓨터 비전 워크로드 15–20% / NLP 워크로드 15–20% / 생성형 ' +
-      'AI 워크로드 20–25%」였다. AI-901은 「AI 개념·기능 식별 40–45% / Microsoft Foundry로 AI 솔루션 구현 55–60%」 ' +
-      '둘뿐이다. 2) **"설명한다(describe)"에서 "구현한다(implement)"로 바뀌었다.** AI-900의 다섯 영역은 제목이 전부 ' +
-      '"Describe…"였다. AI-901은 배점의 절반 이상(55–60%)이 Foundry 포털·SDK로 모델을 배포하고 에이전트를 만들고 경량 애플리케이션을 ' +
-      '짜는 구현 과제다. 입문 인증이지만 손으로 만드는 비중이 과반이 됐다. 3) **응시자 상(像)이 바뀌었다.** AI-900 페이지는 "기술·비기술 배경 ' +
-      '모두를 위한 시험이며 데이터 과학과 소프트웨어 엔지니어링 경험은 필요하지 않다"고 적었다. AI-901은 "AI 솔루션 개발 분야에서 경력을 쌓기 시작한" ' +
-      '사람을 대상으로 하고, **Python 코딩 구문과 프로그래밍 기법 지식**, Azure 리소스 친숙함, REST API·SDK·CLI 친숙함을 명시적으로 ' +
-      '요구한다. 카탈로그상 job role도 AI Engineer로 붙어 있다. 비기술 직군용 입문 시험이라는 성격이 사라졌다. 4) **Microsoft ' +
-      'Foundry가 시험의 축이 됐다.** AI-901 구현 영역의 네 하위 절이 모두 "by using Foundry"다 — Foundry 포털, Foundry ' +
-      'SDK, Foundry Tools의 Azure Speech, Foundry Tools의 Azure Content Understanding. AI-900에는 ' +
-      'Foundry가 없었다. 5) **에이전트가 새로 들어왔다.** "Foundry 포털에서 단일 에이전트 솔루션을 만들고 테스트한다", "에이전트용 경량 ' +
-      '클라이언트를 만든다"가 새 채점 항목이고, 워크로드 식별에도 "generative and agentic AI"가 명시됐다. 6) **정보 ' +
-      '추출(information extraction)이 독립 영역으로 승격됐다.** Azure Content Understanding으로 ' +
-      '문서·양식·이미지·오디오·비디오에서 정보를 뽑는 절이 통째로 새로 생겼다. 7) **전통적 머신러닝 영역이 빠졌다.** AI-900의 "Azure 머신러닝의 ' +
-      '기본 원리"(회귀·분류·군집, Azure Machine Learning 스튜디오 등) 영역이 AI-901 출제 범위에 대응 항목 없이 사라졌다. 비전·NLP도 ' +
-      '별도 영역이 아니라 개념 식별 절의 하위 항목과 Foundry 구현 절로 흡수됐다. 8) 책임 있는 AI 6원칙(공정성·신뢰성과 안전·개인정보와 ' +
-      '보안·포용성·투명성·책임성)은 그대로 남았고, AI-901에서는 개념 영역의 첫 하위 절로 올라왔다. 9) 시험 형식은 그대로다 — 둘 다 ' +
-      'Fundamentals 등급이라 45분/좌석 65분, 합격 700점, 13개 언어(한국어 포함). 인증 이름(Microsoft Certified: Azure ' +
-      'AI Fundamentals)과 배지도 그대로다. AI-900 페이지에 있던 ACE 대학 학점 인정 안내는 AI-901 페이지에서 확인되지 않는다. ' +
-      '**언제부터 시행되나** - AI-901 출제 범위(Skills measured)의 공식 기준일은 **2026년 4월 15일**이다. 두 페이지 모두 "이 ' +
-      '시험의 영어 버전은 2026년 4월 15일에 업데이트되었습니다"라고 적고, 스터디 가이드도 "Skills measured as of April 15, ' +
-      '2026"으로 표기한다. - **AI-900은 2026년 6월 30일에 사용 중지되었고 AI-901로 대체되었다.** AI-900 시험 페이지에 경고 상자로 ' +
-      '"인증 요건이 변경되었습니다. AI-900 시험은 2026년 6월 30일에 사용 중지되었으며 AI-901로 대체되었습니다. 이 인증을 취득하려면 이제 ' +
-      'AI-901을 통과해야 합니다"라고 붙어 있고, 해당 페이지는 검색 색인에서 제외(noindex)된 상태다. - 따라서 2026년 7월 1일 이후 ' +
-      'Microsoft Certified: Azure AI Fundamentals를 취득하는 유일한 경로는 AI-901이다. 인증 페이지의 "Required ' +
-      'exams" 값도 AI-901 하나다. - 이미 AI-900으로 인증을 보유한 사람은 별도 조치가 필요 없다(Fundamentals 인증은 만료되지 않는다). ' +
-      'AI-901 응시는 선택이다. - 현지화 버전(한국어 포함)은 공식 안내상 영어판 갱신일로부터 **약 8주 뒤**에 갱신된다. 다만 Microsoft는 "이 ' +
-      '일정에 따라 갱신되지 않는 경우가 있을 수 있다"고 단서를 단다. 응시 언어가 준비되지 않은 경우 추가 30분을 요청할 수 있다는 안내도 함께 있다. ' +
-      'microsoft.com의 시험·인증·스터디 가이드 어느 페이지에도 적혀 있지 않다. 현재 시험 페이지에는 베타 표기가 없다. **연계 학습 자원**: 강사 ' +
-      '진행 과정 AI-901T00-A "Introduction to AI in Azure", 학습 경로 `learn.ai-technical-concepts`와 ' +
-      '`learn.wwl.get-started-ai-apps-agents`, 연습 평가는 AI Skills Navigator(로그인 필요).',
+      '- 시험 전달은 Pearson VUE가 맡고, 학생·교육기관 및 MOS 경로는 Certiport다.\n' +
+      '- AI-900은 2026년 6월 30일에 사용 중지되고 AI-901로 대체됐다. 2026년 7월 1일 이후 Microsoft Certified: Azure ' +
+      'AI Fundamentals를 취득하는 유일한 경로이며, 이미 AI-900으로 취득한 사람은 별도 조치가 필요 없다.\n' +
+      '- 출제 범위의 공식 기준일은 2026년 4월 15일이다. 현지화 버전(한국어 포함)은 영어판 갱신일로부터 약 8주 뒤에 갱신되나 Microsoft는 그 ' +
+      '일정대로 되지 않을 수 있다는 단서를 단다.\n' +
+      '- AI-900의 다섯 영역이 둘로 재편되고 "설명한다(describe)"에서 "구현한다(implement)"로 바뀌었다. Microsoft Foundry가 ' +
+      '시험의 축이 됐고 에이전트와 정보 추출이 새로 들어왔으며, 전통적 머신러닝(회귀·분류·군집, Azure Machine Learning 스튜디오) 영역은 대응 ' +
+      '항목 없이 사라졌다.\n' +
+      '- AI-900의 "기술·비기술 배경 모두" 문구가 빠지고 Python 코딩 구문 지식이 명시적 요구로 들어가, 비기술 직군용 입문 시험이라는 성격이 ' +
+      '사라졌다.\n' +
+      '- 연계 강사 진행 과정은 AI-901T00-A "Introduction to AI in Azure", 연습 평가는 AI Skills Navigator(로그인 ' +
+      '필요)에서 제공한다.',
     unknowns: [
       '응시료 실제 금액 (USD 및 KRW) — 공식 페이지가 \'국가·지역에 따라 결정된다\'고만 적고 숫자를 싣지 않으며, learn.microsoft.com ' +
       '카탈로그 API에도 price 필드가 없다. Pearson VUE 등록 화면에서만 확인 가능',
@@ -1575,26 +1852,42 @@ export const certs: Cert[] = [
       'ACE 대학 학점 인정 대상 여부 — AI-900 페이지에는 안내가 있었으나 AI-901 페이지에서는 확인되지 않음',
       '한국 내 시험 센터 위치·응시 가능 여부 등 국내 시행 관련 세부 사항 — Microsoft 페이지가 아닌 Pearson VUE 소관',
     ],
-    studyPath: [],
+    studyPath: [
+      {
+        subject: 'AI 개념과 기능 식별 (Identify AI concepts and capabilities)',
+        items: [
+          { site: 'ailab', slug: 'ai-safety-overview' },
+          { site: 'ailab', slug: 'ai-bias-fairness' },
+          { site: 'ailab', slug: 'ai-regulation' },
+          { site: 'ailab', slug: 'llm-claude-family' },
+        ],
+      },
+      {
+        subject: 'Microsoft Foundry를 사용한 AI 솔루션 구현 (Implement AI solutions by using Microsoft Foundry)',
+        items: [
+          { site: 'ailab', slug: 'prompt-engineering' },
+          { site: 'ailab', slug: 'finetuning-vs-prompt-vs-rag' },
+          { site: 'ailab', slug: 'anthropic-sdk' },
+          { site: 'ailab', slug: 'app-document-qa' },
+        ],
+      },
+    ],
   },
   {
     id: 'ai-103',
-    nameKo: 'Microsoft Certified: Azure AI Apps and Agents Developer Associate (시험 AI-103)',
+    nameKo: 'Microsoft AI-103',
     nameEn: 'Microsoft Certified: Azure AI Apps and Agents Developer Associate — Exam AI-103: Developing AI Apps and Agents on Azure',
-    issuer: 'Microsoft (Microsoft Learn / Credentials). 시험 예약·감독은 Pearson VUE.',
+    issuer: 'Microsoft',
     region: '해외',
     level: '중급',
     whatItMeasures:
       'Microsoft Foundry를 활용해 에이전트와 AI 솔루션을 설계·개발·배포하는 Azure AI 엔지니어 역량을 검증한다. 공식 설명은 ' +
       '"designing, developing, and deploying advanced Azure AI solutions using Python and ' +
-      'Microsoft Foundry"다. 담당 업무로 Azure AI 솔루션 계획·관리, 생성형 AI 및 에이전트 솔루션 구현, 컴퓨터 비전 솔루션 구현, 텍스트 ' +
-      '분석 솔루션 구현, 정보 추출 솔루션 구현 다섯을 든다. 레벨은 Intermediate, 역할은 AI Engineer / Developer, 제품은 ' +
-      'Azure와 Microsoft Foundry다. 이전 세대인 AI-102와 견주면 에이전트 개발이 중심으로 올라오고, 멀티모달 생성(이미지·비디오·음성)과 ' +
-      'LLM 기반 텍스트 분석, RAG용 정보 추출 파이프라인 비중이 커졌다.',
+      'Microsoft Foundry"다. 다루는 업무는 Azure AI 솔루션 계획·관리, 생성형 AI·에이전트 솔루션 구현, 컴퓨터 비전, 텍스트 분석, 정보 ' +
+      '추출 다섯이다. 레벨은 Intermediate, 역할은 AI Engineer / Developer, 제품은 Azure와 Microsoft Foundry다.',
     audience:
       'Microsoft Foundry 기반으로 생성형 AI 앱과 에이전트를 만드는 Azure AI 엔지니어·개발자. Python 앱 개발 경험자, ' +
-      'RAG·에이전트·멀티모달 파이프라인을 Azure에서 구현하거나 운영하는 실무자, 기존 AI-102(Azure AI Engineer Associate) 보유자 ' +
-      '중 후속 자격증으로 넘어가려는 사람. 레벨은 Intermediate.',
+      'RAG·에이전트·멀티모달 파이프라인을 Azure에서 구현하거나 운영하는 실무자, 기존 AI-102 보유자 중 후속 자격증으로 넘어가려는 사람이 대상이다.',
     format:
       '감독(proctored) 시험이며 상호작용형(interactive) 구성 요소가 포함될 수 있다. 문항 수는 시험별로 공개하지 않고, 대부분의 ' +
       'Microsoft 인증 시험이 40~60문항이라고만 안내한다. 합격선은 700점 이상이다. 역할 기반 시험이라 시험 중 learn.microsoft.com ' +
@@ -1680,37 +1973,19 @@ export const certs: Cert[] = [
     officialUrl: 'https://learn.microsoft.com/en-us/credentials/certifications/azure-ai-apps-and-agents-developer-associate/',
     verifiedAt: '2026-08-25',
     notes:
-      '**AI-102 후속 시험은 실재한다.** 이전 자격증인 Microsoft Certified: Azure AI Engineer Associate(시험 ' +
-      'AI-102: Designing and Implementing a Microsoft Azure AI Solution)는 공식 페이지에 "This ' +
-      'certification and the renewal assessment are retired" 경고가 붙었고, 학습 가이드는 "This exam was ' +
-      'retired on June 30, 2026, at 11:59 PM Central Standard Time"이라고 적는다. 공식 은퇴 목록(Exam and ' +
-      'assessment lab retirement)의 \'Recently retired exams\' 표에도 AI-102 / Microsoft Certified: ' +
-      'Azure AI Engineer Associate / June 30, 2026으로 올라 있다. 같은 날 AI-900(Azure AI Fundamentals)도 ' +
-      '은퇴했다. 같은 AI Engineer 역할·Azure 제품군에 Microsoft가 새로 세운 자격증이 Microsoft Certified: Azure AI ' +
-      'Apps and Agents Developer Associate(시험 AI-103: Developing AI Apps and Agents on ' +
-      'Azure)이고, 현재 정상 게시되어 Pearson VUE 예약이 열려 있다. 다만 **"AI-103이 AI-102의 대체 시험"이라고 못 박는 문장은 ' +
-      'learn.microsoft.com 본문에서 확인하지 못했다** — AI-102 페이지의 은퇴 경고가 거는 \'Learn more\' 링크가 Microsoft ' +
-      'Community Hub 블로그 글(techcommunity.microsoft.com)로 나가는데 그 본문을 받아오지 못했다. 이 조사에서 확인한 것은 (1) ' +
-      'AI-102 은퇴 사실과 날짜, (2) AI-103 자격증·시험·학습 가이드가 실재하며 활성 상태라는 것, (3) 두 자격증이 같은 역할(AI ' +
-      'Engineer)·같은 주제(Artificial intelligence)·같은 레벨(Intermediate)이고 스킬 개요가 겹친다는 것, (4) 강사 주도 ' +
-      '과정 AI-103T00-A "Develop AI apps and agents on Azure"의 \'Related certifications\'가 Azure AI ' +
-      'Apps and Agents Developer Associate 하나라는 것이다. 승계 관계 자체는 이 정황으로 판단한 것이고 시행처의 명시 문장은 아니다. ' +
-      '**스킬 개편 폭이 크다.** AI-102는 여섯 영역(Plan and manage 20–25%, Implement generative AI 15–20%, ' +
-      'Implement an agentic solution 5–10%, Computer vision 10–15%, NLP 15–20%, Knowledge ' +
-      'mining and information extraction 15–20%)이었고, AI-103은 다섯 영역으로 재편되며 에이전트가 생성형 AI와 합쳐져 ' +
-      '30–35%로 최대 영역이 됐다(AI-102에서는 에이전트가 5–10%로 가장 작았다). NLP는 \'text analysis\'로 이름이 바뀌며 15–20%에서 ' +
-      '10–15%로 줄고, LUIS·custom question answering·custom translation 같은 커스텀 언어 모델 항목이 빠지고 LLM ' +
-      '기반 추출·번역으로 옮겨갔다. 컴퓨터 비전도 custom vision 모델 학습 대신 이미지·비디오 생성과 편집, 멀티모달 이해, 시각 콘텐츠 안전이 ' +
-      '들어왔다. AI-102에 있던 C# 언급이 사라지고 AI-103은 Python만 명시한다. **제품 이름이 Microsoft Foundry로 통일됐다.** 두 ' +
-      '시험 모두 \'Azure AI Foundry\'가 아니라 \'Microsoft Foundry\', \'Azure Vision in Foundry Tools\' 같은 ' +
-      '표기를 쓴다. AI-102 학습 가이드의 change log가 2025-12-23 개정에서 \'Azure AI Foundry\' → \'Microsoft ' +
-      'Foundry\'로 바뀐 것을 기록한다. 우리 글에서 Azure AI Foundry로 적어 둔 것이 있으면 표기가 갈린다. **연습 평가 위치가 바뀌었다.** ' +
-      'AI-102는 Microsoft Learn 안에서 연습 평가를 제공했는데, AI-103은 별도 사이트인 AI Skills ' +
-      'Navigator(aiskillsnavigator.microsoft.com)로 옮겼고 로그인해야 실행된다. 공식 페이지에 "The Practice ' +
-      'Assessment is available on AI Skills Navigator, with a new upgraded experience"라고 적혀 있다. ' +
-      '**AI-103 학습 가이드의 스킬 기준일은 2026년 4월 16일이다**(문서 자체 갱신일 2026-07-07, 자격증 페이지 갱신일 2026-08-11). ' +
-      '아직 change log 표가 없다 — 첫 판이기 때문이다. 개정이 잦은 영역이므로 글을 쓸 때 기준일을 함께 적어 두는 편이 안전하다. 다만 정식 전환일을 ' +
-      '명시한 시행처 문장은 찾지 못했다.',
+      '- 시험 예약·감독은 Pearson VUE가 맡는다.\n' +
+      '- 이전 자격증 AI-102(Azure AI Engineer Associate)는 2026년 6월 30일 은퇴했고 같은 날 AI-900도 은퇴했다. ' +
+      'AI-103이 그 자리를 잇는 것으로 보이지만 "대체 시험"이라고 못 박은 시행처 문장은 확인하지 못했다 — 같은 역할·주제·레벨, 겹치는 스킬 개요, 강사 ' +
+      '주도 과정 AI-103T00-A의 연결 자격증이 이것 하나라는 정황으로 판단한 것이다.\n' +
+      '- 스킬 개편 폭이 크다. AI-102의 여섯 영역이 다섯으로 재편되며 에이전트가 생성형 AI와 합쳐져 30–35%로 최대 영역이 됐다(AI-102에서는 ' +
+      '5–10%로 가장 작았다). NLP는 \'text analysis\'로 이름이 바뀌며 줄었고 LUIS·custom question answering·custom ' +
+      'translation이 빠졌다. C# 언급이 사라지고 Python만 명시한다.\n' +
+      '- 제품 표기가 \'Azure AI Foundry\'에서 \'Microsoft Foundry\'로 통일됐다(AI-102 학습 가이드의 2025-12-23 개정 ' +
+      '기록).\n' +
+      '- 연습 평가가 Microsoft Learn이 아니라 별도 사이트 AI Skills ' +
+      'Navigator(aiskillsnavigator.microsoft.com)로 옮겼고 로그인해야 실행된다.\n' +
+      '- 학습 가이드의 스킬 기준일은 2026년 4월 16일이다(문서 갱신 2026-07-07, 자격증 페이지 갱신 2026-08-11). change log 표가 ' +
+      '아직 없는 첫 판이라 글에 기준일을 함께 적는 편이 안전하다.',
     unknowns: [
       '응시료 실제 금액 (USD·KRW) — 공식 페이지가 \'응시 국가·지역에 따라 정해진다\'고만 적고 숫자를 두지 않는다',
       'AI-103의 실제 문항 수 — Microsoft가 시험별 문항 수를 공개하지 않는다',
@@ -1722,7 +1997,43 @@ export const certs: Cert[] = [
       '2회차 이후 재응시 대기 기간 (공식 retake policy 문서 별도 확인 필요)',
       'AI-103 자격증 취득에 필요한 시험이 AI-103 하나뿐인지 명시된 확인 — 자격증 페이지가 시험 목록을 따로 나열하지 않는다',
     ],
-    studyPath: [],
+    studyPath: [
+      {
+        subject: 'Plan and manage an Azure AI solution (Azure AI 솔루션 계획·관리)',
+        items: [
+          { site: 'ailab', slug: 'ai-safety-overview' },
+          { site: 'ailab', slug: 'ai-bias-fairness' },
+          { site: 'ailab', slug: 'rag-embedding-models' },
+          { site: 'ailab', slug: 'mlops-ci-cd' },
+        ],
+      },
+      {
+        subject: 'Implement generative AI and agentic solutions (생성형 AI·에이전트 솔루션 구현)',
+        items: [
+          { site: 'ailab', slug: 'prompt-engineering' },
+          { site: 'ailab', slug: 'finetuning-vs-prompt-vs-rag' },
+          { site: 'ailab', slug: 'rag-architecture' },
+          { site: 'ailab', slug: 'rag-agentic-rag' },
+          { site: 'ailab', slug: 'llmops-prompt-management' },
+        ],
+      },
+      {
+        subject: 'Implement text analysis solutions (텍스트 분석 솔루션 구현)',
+        items: [
+          { site: 'ailab', slug: 'audio-asr' },
+          { site: 'ailab', slug: 'audio-tts' },
+        ],
+      },
+      {
+        subject: 'Implement information extraction solutions (정보 추출 솔루션 구현)',
+        items: [
+          { site: 'ailab', slug: 'vector-search-basics' },
+          { site: 'ailab', slug: 'rag-architecture' },
+          { site: 'ailab', slug: 'rag-ocr-pipeline' },
+          { site: 'ailab', slug: 'vector-db-pgvector' },
+        ],
+      },
+    ],
   },
 ];
 

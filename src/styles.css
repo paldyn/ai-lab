@@ -4794,8 +4794,25 @@ input:focus-visible {
   white-space: pre-line;
 }
 
+/* 「알아 둘 것」은 줄 목록입니다. 한 문단으로 뭉치면 무엇이 몇 가지인지 안 보입니다. */
 .cert-notes {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  color: var(--text-dim);
   font-size: 14px;
+  line-height: 1.85;
+}
+
+.cert-notes li {
+  padding-left: 14px;
+  text-indent: -14px;
+}
+
+.cert-notes li::before {
+  margin-right: 8px;
+  color: var(--text-muted);
+  content: '·';
 }
 
 .cert-subjects {

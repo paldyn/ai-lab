@@ -64,7 +64,9 @@ function CertView({ cert }: { cert: Cert }) {
           <h1 className="mt-5 max-w-4xl text-[2rem] font-medium leading-[1.35] text-[var(--text-strong)] sm:text-[2.6rem]">
             {cert.nameKo}
           </h1>
-          <p className="mt-3 font-mono text-[12px] text-[var(--text-muted)]">{cert.nameEn}</p>
+          {cert.nameEn !== cert.nameKo && (
+            <p className="mt-3 font-mono text-[12px] text-[var(--text-muted)]">{cert.nameEn}</p>
+          )}
           <a className="cert-official" href={cert.officialUrl} target="_blank" rel="noreferrer">
             공식 페이지에서 일정·접수 확인 <ArrowUpRight size={13} aria-hidden="true" />
           </a>
@@ -144,7 +146,16 @@ function CertView({ cert }: { cert: Cert }) {
         {cert.notes && (
           <section className="cert-section">
             <h2>알아 둘 것</h2>
-            <p className="cert-prose cert-notes">{cert.notes.replace(/\*\*/g, '')}</p>
+            {/* 데이터가 「- 」로 시작하는 줄 목록이면 목록으로 그립니다. 한 문단으로 뭉치면 안 읽힙니다. */}
+            <ul className="cert-notes">
+              {cert.notes
+                .split('\n')
+                .map((line) => line.replace(/^-\s*/, '').replace(/\*\*/g, '').trim())
+                .filter(Boolean)
+                .map((line) => (
+                  <li key={line}>{line}</li>
+                ))}
+            </ul>
           </section>
         )}
 
