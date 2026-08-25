@@ -308,3 +308,5 @@ print("  같은 계산을 원논문 A3 의 a = 0.4565 로 하면"
 읽어주셔서 감사합니다. 😊
 
 **지난 글:** [Chinchilla 정독: 20토큰/파라미터는 Table 3에서 나왔다](/articles/paper-chinchilla-compute-optimal)
+
+**다음 글:** [GSM1k 재계산: 계열 판정은 그대로 재현되고 모델 하나짜리 판정은 무너진다](/articles/paper-gsm1k-contamination)
