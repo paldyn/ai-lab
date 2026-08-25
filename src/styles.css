@@ -365,8 +365,14 @@ input:focus-visible {
   left: 0;
   z-index: 40;
   border-bottom: 1px solid var(--border);
-  background: var(--header-bg);
-  backdrop-filter: blur(16px);
+  /*
+    헤더처럼 반투명(0.88)에 흐림을 얹었더니 **뒤 본문 글자가 그대로 비쳐** 제목과
+    겹쳐 읽혔습니다. 헤더는 같은 값으로 멀쩡한데 이 띠에서만 흐림이 안 먹었습니다 —
+    숨김(visibility) 상태에서 나타나는 요소라 크롬이 배경 스냅숏을 갱신하지 않는 것으로
+    보이고, 실제로 body 직속으로 옮기면 증상이 사라졌습니다. 그 조건에 기대는 대신
+    불투명한 바탕을 씁니다. 읽히는 것이 먼저입니다.
+  */
+  background: var(--bg);
   opacity: 0;
   transform: translateY(-6px);
   visibility: hidden;
