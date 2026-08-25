@@ -81,14 +81,21 @@ export function ArticleTitleBar({ watch, progressOf, label, accent, title, secti
 
   return (
     <div className={`article-titlebar${shown ? ' is-shown' : ''}`} aria-hidden={!shown}>
-      <div className="site-wrap flex h-[48px] items-center gap-3">
-        <span className="hidden shrink-0 font-mono text-[10px] tracking-[0.13em] sm:inline" style={{ color: accent }}>
+      <div className="site-wrap article-titlebar-row">
+        <span className="article-titlebar-label" style={{ color: accent }}>
           {label}
         </span>
-        <button type="button" className="article-titlebar-title" onClick={() => window.scrollTo({ top: 0 })}>
-          {title}
-        </button>
-        {section && <span className="article-titlebar-section hidden lg:block">{section}</span>}
+        {/*
+          좁은 화면에서는 제목과 절을 위아래로 쌓습니다. 한 줄에 나란히 두면 둘 다
+          잘려 어느 쪽도 못 읽습니다 — 430pt에서 제목만으로도 이미 꽉 찹니다.
+          넓은 화면에서는 자리가 남으므로 한 줄로 펴고 절을 오른쪽 끝에 붙입니다.
+        */}
+        <span className="article-titlebar-stack">
+          <button type="button" className="article-titlebar-title" onClick={() => window.scrollTo({ top: 0 })}>
+            {title}
+          </button>
+          {section && <span className="article-titlebar-section">{section}</span>}
+        </span>
       </div>
       <div className="article-titlebar-progress" style={{ transform: `scaleX(${progress})` }} />
     </div>

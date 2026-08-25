@@ -129,12 +129,15 @@
     읽어 판정선으로 씁니다** — 둘이 갈리면 방금 누른 절이 아니라 그 앞 절이
     짚힙니다(실제로 8px 차이로 그랬습니다).
 
-    2026-08-25에 96에서 132로 올렸습니다. 글에서는 헤더(70px) 아래에 제목 띠(48px)가
-    한 겹 더 붙어 96px 자리에 세우면 헤딩이 그 띠에 가립니다. 목차로 뛰어드는 것은
-    스크롤을 내린 뒤의 일이라 그때는 띠가 늘 서 있습니다. 띠 높이를 바꾸면 이 값과
-    `ArticlePage`의 목차 sticky 자리를 함께 옮깁니다 — 셋이 같은 층을 재고 있습니다.
+    2026-08-25에 96에서 138로 올렸습니다. 글에서는 헤더(70px) 아래에 제목 띠가 한 겹
+    더 붙어 96px 자리에 세우면 헤딩이 그 띠에 가립니다. 목차로 뛰어드는 것은 스크롤을
+    내린 뒤의 일이라 그때는 띠가 늘 서 있습니다.
+
+    띠가 좁은 화면에서 54px(두 줄), 넓은 화면에서 48px(한 줄)이라 **큰 쪽에 맞춥니다** —
+    넓은 화면에서는 6px 더 내려가지만 눈에 안 띄고, 값을 화면 폭마다 가르면 이 값을
+    읽어 판정선으로 쓰는 `useActiveHeading`까지 함께 갈라야 합니다.
   */
-  --heading-anchor-offset: 132px;
+  --heading-anchor-offset: 138px;
 }
 
 * {
@@ -401,11 +404,40 @@ input:focus-visible {
   }
 }
 
+/*
+  좁은 화면은 두 줄(제목 위, 절 아래), 넓은 화면은 한 줄입니다. 430pt에서 제목
+  하나가 이미 폭을 다 쓰기 때문에 한 줄에 둘을 나란히 두면 양쪽 다 잘립니다.
+  두 줄로 쌓아도 높이는 54px이라 한 줄짜리 48px과 6px 차이뿐입니다 — 지금 한 줄
+  배치가 위아래 여백을 넉넉히 쓰고 있어서 그렇습니다.
+*/
+.article-titlebar-row {
+  display: flex;
+  height: 54px;
+  align-items: center;
+  gap: 12px;
+}
+
+/* 카테고리·번호는 좁은 화면에서 자리를 양보합니다. 제목과 절이 먼저입니다. */
+.article-titlebar-label {
+  display: none;
+  flex-shrink: 0;
+  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  font-size: 10px;
+  letter-spacing: 0.13em;
+}
+
+.article-titlebar-stack {
+  display: flex;
+  min-width: 0;
+  flex: 1;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1px;
+}
+
 /* 눌러서 맨 위로. 한 줄을 넘기지 않고 넘치면 말줄임으로 자릅니다. */
 .article-titlebar-title {
   overflow: hidden;
-  flex: 1;
-  min-width: 0;
   color: var(--text-strong);
   font-size: 14px;
   font-weight: 450;
@@ -417,12 +449,36 @@ input:focus-visible {
 
 .article-titlebar-section {
   overflow: hidden;
-  max-width: 34%;
-  flex-shrink: 0;
   color: var(--text-muted);
-  font-size: 12px;
+  font-size: 11px;
   text-overflow: ellipsis;
   white-space: nowrap;
+}
+
+@media (min-width: 1024px) {
+  .article-titlebar-row {
+    height: 48px;
+  }
+
+  .article-titlebar-label {
+    display: inline;
+  }
+
+  .article-titlebar-stack {
+    flex-direction: row;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .article-titlebar-title {
+    flex: 1;
+  }
+
+  .article-titlebar-section {
+    max-width: 34%;
+    flex-shrink: 0;
+    font-size: 12px;
+  }
 }
 
 /*
