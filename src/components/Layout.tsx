@@ -152,15 +152,69 @@ export function Layout({ children }: { children: ReactNode }) {
   }, []);
 
   useEffect(() => {
-    if (location.hash) {
-      window.requestAnimationFrame(() => {
-        document.getElementById(location.hash.slice(1))?.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      });
-      return;
+    if (!location.hash) {
+      // html에 scroll-behavior: smooth가 걸려 있어(styles.css) 'auto'는 '즉시'가 아니라
+      // '부드럽게'로 읽힙니다. 페이지를 옮길 때는 미끄러지지 않고 위에서 시작해야 합니다.
+      window.scrollTo({ top: 0, behavior: 'instant' });
+      return undefined;
     }
-    // html에 scroll-behavior: smooth가 걸려 있어(styles.css) 'auto'는 '즉시'가 아니라
-    // '부드럽게'로 읽힙니다. 페이지를 옮길 때는 미끄러지지 않고 위에서 시작해야 합니다.
-    window.scrollTo({ top: 0, behavior: 'instant' });
+
+    /*
+      해시로 들어온 자리에 **잠깐 더 따라붙습니다.**
+
+      한 번만 재고 끝내면 도착 지점이 어긋납니다 — 그 순간의 화면 높이가 아직
+      최종이 아니기 때문입니다. 웹폰트가 늦게 적용되면 긴 한국어 문단이 줄어들어
+      목표 지점이 위로 밀리는데, 스크롤은 이미 옛 좌표에 서 있습니다. 실제로
+      시험 노트에서 자격증의 「시험 노트」 절로 돌아올 때 243px 아래에 섰습니다.
+
+      그래서 700ms 동안, 그리고 폰트가 준비된 직후에 다시 맞춥니다.
+      `scrollIntoView` 대신 직접 계산하는 이유는 헤딩에 걸어 둔
+      `scroll-margin-top`(고정 머리띠 높이)을 그대로 쓰기 위해서입니다.
+
+      **읽는 사람이 손을 대면 즉시 놓습니다.** 안 그러면 도착하자마자 스크롤한
+      사람을 700ms 동안 자꾸 제자리로 끌어당깁니다.
+    */
+    const id = decodeURIComponent(location.hash.slice(1));
+    let frame = 0;
+    let released = false;
+    const deadline = Date.now() + 700;
+
+    const release = () => {
+      released = true;
+      if (frame) window.cancelAnimationFrame(frame);
+      frame = 0;
+    };
+
+    const land = () => {
+      frame = 0;
+      if (released) return;
+
+      const node = document.getElementById(id);
+      if (node) {
+        const offset = Number.parseFloat(getComputedStyle(node).scrollMarginTop) || 0;
+        const top = node.getBoundingClientRect().top + window.scrollY - offset;
+        if (Math.abs(top - window.scrollY) > 1) window.scrollTo({ top, behavior: 'instant' });
+      }
+
+      if (Date.now() < deadline) frame = window.requestAnimationFrame(land);
+    };
+
+    frame = window.requestAnimationFrame(land);
+    // 폰트가 늦게 오면 700ms 창을 놓칠 수 있어 준비된 직후에 한 번 더 맞춥니다.
+    document.fonts?.ready.then(() => {
+      if (!released) land();
+    });
+
+    window.addEventListener('wheel', release, { passive: true, once: true });
+    window.addEventListener('touchstart', release, { passive: true, once: true });
+    window.addEventListener('keydown', release, { once: true });
+
+    return () => {
+      if (frame) window.cancelAnimationFrame(frame);
+      window.removeEventListener('wheel', release);
+      window.removeEventListener('touchstart', release);
+      window.removeEventListener('keydown', release);
+    };
   }, [location.hash, view]);
 
   // 한 화면 넘게 내려가야 '맨 위로'를 내놓습니다. 고정 픽셀을 기준으로 삼으면

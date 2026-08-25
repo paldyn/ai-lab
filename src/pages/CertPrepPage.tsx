@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { ArrowLeft, ArrowRight } from 'lucide-react';
 import { Link, Navigate, useParams } from 'react-router';
+import { ArticleTitleBar } from '../components/ArticleTitleBar';
 import { ImageLightbox } from '../components/ImageLightbox';
 import { Seo } from '../components/Seo';
 import { certById, type Cert } from '../data/certs';
@@ -26,6 +27,7 @@ function CertPrepView({ cert, note }: { cert: Cert; note: CertPrepNote }) {
   );
   const [zoomed, setZoomed] = useState<ZoomedImage | null>(null);
   const proseRef = useRef<HTMLDivElement>(null);
+  const titleRef = useRef<HTMLHeadingElement>(null);
 
   useEffect(() => {
     let cancelled = false;
@@ -59,6 +61,20 @@ function CertPrepView({ cert, note }: { cert: Cert; note: CertPrepNote }) {
 
   return (
     <article>
+      {/*
+        글과 같은 제목 띠. 문제를 풀다 「이게 몇 번 노트였더라」 싶을 때 맨 위로
+        올라가지 않아도 되고, 목차가 접히는 좁은 화면에서는 지금 절을 알려 주는
+        유일한 자리이기도 합니다. 진행 막대는 본문 높이를 기준으로 찹니다.
+      */}
+      <ArticleTitleBar
+        watch={titleRef}
+        progressOf={proseRef}
+        label={`${cert.nameKo} / ${note.kind}`}
+        accent="var(--brand-text)"
+        title={note.title}
+        section={body?.headings.find((heading) => heading.id === active)?.text}
+      />
+
       <Seo
         title={`${note.title} — ${cert.nameKo} 시험 노트`}
         description={note.summary}
@@ -77,7 +93,10 @@ function CertPrepView({ cert, note }: { cert: Cert; note: CertPrepNote }) {
             <span aria-hidden="true">/</span>
             <span>{note.readTime} MIN</span>
           </p>
-          <h1 className="mt-5 max-w-4xl text-[2rem] font-medium leading-[1.35] text-[var(--text-strong)] sm:text-[2.4rem]">
+          <h1
+            ref={titleRef}
+            className="mt-5 max-w-4xl text-[2rem] font-medium leading-[1.35] text-[var(--text-strong)] sm:text-[2.4rem]"
+          >
             {note.title}
           </h1>
           <p className="mt-4 max-w-2xl text-[15px] leading-8 text-[var(--text-dim)]">{note.summary}</p>
@@ -160,7 +179,12 @@ function CertPrepView({ cert, note }: { cert: Cert; note: CertPrepNote }) {
             )}
           </nav>
 
-          <Link to={`/learn/certs/${cert.id}`} className="cert-prep-back">
+          {/*
+            목록이 아니라 **그 자격증의 「시험 노트」 절**로 되돌립니다. 페이지 맨
+            위로 보내면 시험 소개부터 다시 내려와야 하는데, 여기서 누르는 사람이
+            찾는 것은 방금 읽던 노트의 옆 칸입니다.
+          */}
+          <Link to={`/learn/certs/${cert.id}#prep`} className="cert-prep-back">
             {cert.nameKo} 시험 노트 전체 보기 <ArrowRight size={13} aria-hidden="true" />
           </Link>
         </div>
