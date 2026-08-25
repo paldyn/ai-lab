@@ -1,4 +1,5 @@
 import { articles } from './data/articles';
+import { certs } from './data/certs';
 import { categoryIdsIn } from './data/categories';
 import { newsViewIds } from './data/news';
 
@@ -16,6 +17,8 @@ export const staticRoutes: string[] = [
   '/learn',
   ...categoryIdsIn('learn').map((id) => `/learn/${id}`),
   '/research',
+  '/certs',
+  ...certs.map((cert) => `/certs/${cert.id}`),
   '/privacy',
 ];
 

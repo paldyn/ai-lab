@@ -225,6 +225,7 @@ export function Layout({ children }: { children: ReactNode }) {
             <NavLink to="/news" className={navClass('news')} onClick={startAtTop}>뉴스</NavLink>
             <NavLink to="/learn" className={navClass('learn')} onClick={startAtTop}>학습</NavLink>
             <NavLink to="/research" className={navClass('research')}>리서치</NavLink>
+            <NavLink to="/certs">자격증</NavLink>
           </nav>
 
           {/* 12px은 techblog.paldyn.com의 .nav-right와 같은 값입니다. */}
@@ -269,6 +270,7 @@ export function Layout({ children }: { children: ReactNode }) {
               <NavLink to="/news" className={navClass('news', 'mobile-nav-link')} onClick={startAtTop}>뉴스</NavLink>
               <NavLink to="/learn" className={navClass('learn', 'mobile-nav-link')} onClick={startAtTop}>학습</NavLink>
               <NavLink to="/research" className={navClass('research', 'mobile-nav-link')}>리서치</NavLink>
+              <NavLink to="/certs" className="mobile-nav-link">자격증</NavLink>
             </div>
           </nav>
         )}
