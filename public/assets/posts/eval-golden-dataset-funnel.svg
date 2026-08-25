@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="446" viewBox="0 0 880 446" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <defs>
+    <marker id="gdArr" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#888"/>
+    </marker>
+  </defs>
+  <rect x="0" y="0" width="880" height="446" rx="12" fill="#0a0a0a"/>
+  <text x="60" y="46" font-size="22" font-weight="700" fill="#e8e8e8">로그 더미에서 골든 데이터셋까지</text>
+  <text x="60" y="72" font-size="13" fill="#888">줄어드는 것이 손해가 아니다. 매 단계에서 값이 붙는다.</text>
+
+  <text x="140" y="108" font-size="12" font-weight="600" fill="#7ec8e3" text-anchor="middle">① 모은다</text>
+  <text x="340" y="108" font-size="12" font-weight="600" fill="#7ec8e3" text-anchor="middle">② 거른다</text>
+  <text x="540" y="108" font-size="12" font-weight="600" fill="#7ec8e3" text-anchor="middle">③ 나눠 뽑는다</text>
+  <text x="740" y="108" font-size="12" font-weight="600" fill="#7ec8e3" text-anchor="middle">④ 답을 단다</text>
+
+  <rect x="60" y="120" width="160" height="120" rx="6" fill="#141414" stroke="#555" stroke-width="1.5"/>
+  <text x="140" y="156" font-size="15" font-weight="600" fill="#e8e8e8" text-anchor="middle">운영 로그</text>
+  <text x="140" y="182" font-size="20" font-weight="700" fill="#888" text-anchor="middle">40만 건</text>
+  <text x="140" y="208" font-size="12" fill="#888" text-anchor="middle">실제 사용자 질문</text>
+
+  <line x1="220" y1="180" x2="258" y2="180" stroke="#888" stroke-width="2" marker-end="url(#gdArr)"/>
+
+  <rect x="260" y="120" width="160" height="120" rx="6" fill="#141414" stroke="#555" stroke-width="1.5"/>
+  <text x="340" y="156" font-size="15" font-weight="600" fill="#e8e8e8" text-anchor="middle">쓸 수 있는 것</text>
+  <text x="340" y="182" font-size="20" font-weight="700" fill="#888" text-anchor="middle">6만 건</text>
+  <text x="340" y="208" font-size="12" fill="#888" text-anchor="middle">지우고 중복 뺀 뒤</text>
+
+  <line x1="420" y1="180" x2="458" y2="180" stroke="#888" stroke-width="2" marker-end="url(#gdArr)"/>
+
+  <rect x="460" y="120" width="160" height="120" rx="6" fill="#16303d" stroke="#7ec8e3" stroke-width="1.5"/>
+  <text x="540" y="156" font-size="15" font-weight="600" fill="#e8e8e8" text-anchor="middle">표집 결과</text>
+  <text x="540" y="182" font-size="20" font-weight="700" fill="#7ec8e3" text-anchor="middle">300건</text>
+  <text x="540" y="208" font-size="12" fill="#888" text-anchor="middle">갈래마다 정한 수만큼</text>
+
+  <line x1="620" y1="180" x2="658" y2="180" stroke="#888" stroke-width="2" marker-end="url(#gdArr)"/>
+
+  <rect x="660" y="120" width="160" height="120" rx="6" fill="#17331a" stroke="#55c555" stroke-width="1.5"/>
+  <text x="740" y="156" font-size="15" font-weight="600" fill="#e8e8e8" text-anchor="middle">골든 데이터셋</text>
+  <text x="740" y="182" font-size="20" font-weight="700" fill="#55c555" text-anchor="middle">300건</text>
+  <text x="740" y="208" font-size="12" fill="#888" text-anchor="middle">정답과 채점 기준까지</text>
+
+  <line x1="60" y1="278" x2="820" y2="278" stroke="#333" stroke-width="1"/>
+
+  <text x="140" y="308" font-size="13" font-weight="600" fill="#e05555" text-anchor="middle">여기서 버리면</text>
+  <text x="140" y="330" font-size="12" fill="#888" text-anchor="middle">되돌릴 수 없다</text>
+  <text x="140" y="350" font-size="12" fill="#888" text-anchor="middle">원본은 남겨 둔다</text>
+
+  <text x="340" y="308" font-size="13" font-weight="600" fill="#c58a55" text-anchor="middle">중복이 가장 많다</text>
+  <text x="340" y="330" font-size="12" fill="#888" text-anchor="middle">같은 질문 수천 벌이</text>
+  <text x="340" y="350" font-size="12" fill="#888" text-anchor="middle">한 갈래를 통째로 먹는다</text>
+
+  <text x="540" y="308" font-size="13" font-weight="600" fill="#7ec8e3" text-anchor="middle">비율을 베끼지 않는다</text>
+  <text x="540" y="330" font-size="12" fill="#888" text-anchor="middle">드문 갈래에도 자리를</text>
+  <text x="540" y="350" font-size="12" fill="#888" text-anchor="middle">따로 떼어 준다</text>
+
+  <text x="740" y="308" font-size="13" font-weight="600" fill="#55c555" text-anchor="middle">여기가 가장 비싸다</text>
+  <text x="740" y="330" font-size="12" fill="#888" text-anchor="middle">사람이 읽고 붙이는</text>
+  <text x="740" y="350" font-size="12" fill="#888" text-anchor="middle">유일한 단계다</text>
+
+  <text x="60" y="410" font-size="13" fill="#e8e8e8">40만에서 300으로 줄이는 동안 값이 붙는 곳은 마지막 화살표 하나뿐이다. 앞의 셋은 준비고, 사람 시간은 전부 거기에 들어간다.</text>
+</svg>

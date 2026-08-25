@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="420" viewBox="0 0 880 420" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <rect x="0" y="0" width="880" height="420" rx="12" fill="#0a0a0a"/>
+  <text x="60" y="46" font-size="22" font-weight="700" fill="#e8e8e8">2%p 차이를 말하려면 문제가 몇 개 필요한가</text>
+  <text x="60" y="72" font-size="13" fill="#888">72%와 74%를 견줄 때 차이의 95% 신뢰구간. 가로축 단위는 %p다.</text>
+
+  <line x1="489" y1="112" x2="489" y2="332" stroke="#c58a55" stroke-width="2" stroke-dasharray="4,4"/>
+  <text x="489" y="104" font-size="12" fill="#c58a55" text-anchor="middle">차이 0</text>
+
+  <text x="190" y="150" font-size="13" font-weight="600" fill="#e8e8e8" text-anchor="end">100문제</text>
+  <line x1="277" y1="145" x2="785" y2="145" stroke="#e05555" stroke-width="3"/>
+  <line x1="277" y1="136" x2="277" y2="154" stroke="#e05555" stroke-width="3"/>
+  <line x1="785" y1="136" x2="785" y2="154" stroke="#e05555" stroke-width="3"/>
+  <circle cx="530" cy="145" r="5" fill="#e8e8e8"/>
+  <text x="200" y="173" font-size="12" fill="#e05555">0을 넉넉히 품는다 — 아무 말도 못 한다</text>
+
+  <text x="190" y="220" font-size="13" font-weight="600" fill="#e8e8e8" text-anchor="end">1,000문제</text>
+  <line x1="450" y1="215" x2="611" y2="215" stroke="#e05555" stroke-width="3"/>
+  <line x1="450" y1="206" x2="450" y2="224" stroke="#e05555" stroke-width="3"/>
+  <line x1="611" y1="206" x2="611" y2="224" stroke="#e05555" stroke-width="3"/>
+  <circle cx="530" cy="215" r="5" fill="#e8e8e8"/>
+  <text x="200" y="243" font-size="12" fill="#e05555">아직 0을 품는다</text>
+
+  <text x="190" y="290" font-size="13" font-weight="600" fill="#e8e8e8" text-anchor="end">4,000문제</text>
+  <line x1="490" y1="285" x2="571" y2="285" stroke="#55c555" stroke-width="3"/>
+  <line x1="490" y1="276" x2="490" y2="294" stroke="#55c555" stroke-width="3"/>
+  <line x1="571" y1="276" x2="571" y2="294" stroke="#55c555" stroke-width="3"/>
+  <circle cx="530" cy="285" r="5" fill="#e8e8e8"/>
+  <text x="200" y="313" font-size="12" fill="#55c555">겨우 0을 벗어난다</text>
+
+  <line x1="200" y1="340" x2="820" y2="340" stroke="#555" stroke-width="1.5"/>
+  <text x="283" y="360" font-size="12" fill="#888" text-anchor="middle">-10</text>
+  <text x="386" y="360" font-size="12" fill="#888" text-anchor="middle">-5</text>
+  <text x="489" y="360" font-size="12" fill="#888" text-anchor="middle">0</text>
+  <text x="592" y="360" font-size="12" fill="#888" text-anchor="middle">+5</text>
+  <text x="696" y="360" font-size="12" fill="#888" text-anchor="middle">+10</text>
+  <text x="799" y="360" font-size="12" fill="#888" text-anchor="middle">+15</text>
+
+  <text x="60" y="396" font-size="13" fill="#e8e8e8">구간이 0을 품으면 「B가 낫다」고 말할 수 없다. 두 세트를 따로 뽑아 쟀을 때의 이야기이고, 같은 문제로 짝지어 재면 훨씬 적은 수로 갈린다.</text>
+</svg>

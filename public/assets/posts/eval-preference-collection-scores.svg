@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="400" viewBox="0 0 880 400" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <defs>
+    <marker id="pfArr" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#c58a55"/>
+    </marker>
+  </defs>
+  <rect x="0" y="0" width="880" height="400" rx="12" fill="#0a0a0a"/>
+  <text x="60" y="46" font-size="22" font-weight="700" fill="#e8e8e8">고른 기록이 한 축 위의 점수가 된다</text>
+  <text x="60" y="72" font-size="13" fill="#888">후보 셋을 짝지어 각 짝마다 20회씩, 모두 60회 비교한 결과다. 숫자는 예시다.</text>
+
+  <line x1="455" y1="92" x2="455" y2="322" stroke="#333" stroke-width="1"/>
+
+  <text x="60" y="112" font-size="15" font-weight="600" fill="#e8e8e8">이긴 횟수 — 승·패</text>
+
+  <text x="185" y="134" font-size="13" font-weight="600" fill="#888" text-anchor="middle">A 상대</text>
+  <text x="275" y="134" font-size="13" font-weight="600" fill="#888" text-anchor="middle">B 상대</text>
+  <text x="365" y="134" font-size="13" font-weight="600" fill="#888" text-anchor="middle">C 상대</text>
+
+  <text x="130" y="184" font-size="13" font-weight="600" fill="#e8e8e8" text-anchor="end">후보 A</text>
+  <text x="130" y="244" font-size="13" font-weight="600" fill="#e8e8e8" text-anchor="end">후보 B</text>
+  <text x="130" y="304" font-size="13" font-weight="600" fill="#e8e8e8" text-anchor="end">후보 C</text>
+
+  <rect x="140" y="150" width="90" height="60" rx="4" fill="#111" stroke="#282828" stroke-width="1"/>
+  <text x="185" y="184" font-size="14" fill="#555" text-anchor="middle">—</text>
+  <rect x="230" y="150" width="90" height="60" rx="4" fill="#17331a" stroke="#55c555" stroke-width="1.5"/>
+  <text x="275" y="184" font-size="14" font-weight="600" fill="#55c555" text-anchor="middle">12 · 8</text>
+  <rect x="320" y="150" width="90" height="60" rx="4" fill="#17331a" stroke="#55c555" stroke-width="1.5"/>
+  <text x="365" y="184" font-size="14" font-weight="600" fill="#55c555" text-anchor="middle">15 · 5</text>
+
+  <rect x="140" y="210" width="90" height="60" rx="4" fill="#3a1f1f" stroke="#e05555" stroke-width="1.5"/>
+  <text x="185" y="244" font-size="14" font-weight="600" fill="#e05555" text-anchor="middle">8 · 12</text>
+  <rect x="230" y="210" width="90" height="60" rx="4" fill="#111" stroke="#282828" stroke-width="1"/>
+  <text x="275" y="244" font-size="14" fill="#555" text-anchor="middle">—</text>
+  <rect x="320" y="210" width="90" height="60" rx="4" fill="#17331a" stroke="#55c555" stroke-width="1.5"/>
+  <text x="365" y="244" font-size="14" font-weight="600" fill="#55c555" text-anchor="middle">13 · 7</text>
+
+  <rect x="140" y="270" width="90" height="60" rx="4" fill="#3a1f1f" stroke="#e05555" stroke-width="1.5"/>
+  <text x="185" y="304" font-size="14" font-weight="600" fill="#e05555" text-anchor="middle">5 · 15</text>
+  <rect x="230" y="270" width="90" height="60" rx="4" fill="#3a1f1f" stroke="#e05555" stroke-width="1.5"/>
+  <text x="275" y="304" font-size="14" font-weight="600" fill="#e05555" text-anchor="middle">7 · 13</text>
+  <rect x="320" y="270" width="90" height="60" rx="4" fill="#111" stroke="#282828" stroke-width="1"/>
+  <text x="365" y="304" font-size="14" fill="#555" text-anchor="middle">—</text>
+
+  <text x="500" y="112" font-size="15" font-weight="600" fill="#e8e8e8">승률을 로그 오즈로 바꾼 점수</text>
+
+  <line x1="520" y1="250" x2="800" y2="250" stroke="#555" stroke-width="1.5"/>
+  <line x1="520" y1="244" x2="520" y2="256" stroke="#555" stroke-width="1.5"/>
+  <line x1="660" y1="244" x2="660" y2="256" stroke="#555" stroke-width="1.5"/>
+  <line x1="800" y1="244" x2="800" y2="256" stroke="#555" stroke-width="1.5"/>
+  <text x="520" y="276" font-size="12" fill="#888" text-anchor="middle">-1.0</text>
+  <text x="660" y="276" font-size="12" fill="#888" text-anchor="middle">0</text>
+  <text x="800" y="276" font-size="12" fill="#888" text-anchor="middle">+1.0</text>
+
+  <circle cx="541" cy="250" r="7" fill="#e05555"/>
+  <text x="541" y="232" font-size="13" font-weight="600" fill="#e05555" text-anchor="middle">C</text>
+  <text x="541" y="300" font-size="12" fill="#888" text-anchor="middle">-0.85</text>
+
+  <circle cx="674" cy="250" r="7" fill="#7ec8e3"/>
+  <text x="674" y="232" font-size="13" font-weight="600" fill="#7ec8e3" text-anchor="middle">B</text>
+  <text x="674" y="300" font-size="12" fill="#888" text-anchor="middle">+0.10</text>
+
+  <circle cx="762" cy="250" r="7" fill="#55c555"/>
+  <text x="762" y="232" font-size="13" font-weight="600" fill="#55c555" text-anchor="middle">A</text>
+  <text x="762" y="300" font-size="12" fill="#888" text-anchor="middle">+0.73</text>
+
+  <path d="M 674 214 L 674 190 L 762 190 L 762 214" fill="none" stroke="#c58a55" stroke-width="2" stroke-dasharray="4,4" marker-end="url(#pfArr)"/>
+  <text x="718" y="176" font-size="12" fill="#c58a55" text-anchor="middle">차이 0.63 — A가 이길 확률 65%</text>
+
+  <text x="60" y="366" font-size="13" fill="#e8e8e8">점수 차이가 곧 이길 확률이다. 0.63 차이면 약 65%, 1.4 차이면 약 80%다. 축을 통째로 옮겨도 차이는 그대로라 기준점은 아무 데나 두면 된다.</text>
+</svg>

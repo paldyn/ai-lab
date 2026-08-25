@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="470" viewBox="0 0 880 470" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <defs>
+    <marker id="rtArr" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#888"/>
+    </marker>
+  </defs>
+  <rect x="0" y="0" width="880" height="470" rx="12" fill="#0a0a0a"/>
+  <text x="60" y="46" font-size="22" font-weight="700" fill="#e8e8e8">떨어진 문제를 세 갈래로 가르는 순서</text>
+  <text x="60" y="72" font-size="13" fill="#888">한 번 실패했다고 곧바로 회귀로 세지 않는다. 다시 돌려 보고 나서 판정한다.</text>
+
+  <rect x="310" y="100" width="260" height="56" rx="6" fill="#141414" stroke="#555" stroke-width="1.5"/>
+  <text x="440" y="134" font-size="14" font-weight="600" fill="#e8e8e8" text-anchor="middle">새 실행에서 떨어진 문제 하나</text>
+
+  <line x1="440" y1="156" x2="440" y2="194" stroke="#888" stroke-width="2" marker-end="url(#rtArr)"/>
+
+  <rect x="290" y="196" width="300" height="56" rx="6" fill="#16303d" stroke="#7ec8e3" stroke-width="1.5"/>
+  <text x="440" y="230" font-size="14" font-weight="600" fill="#e8e8e8" text-anchor="middle">같은 입력으로 세 번 더 돌린다</text>
+
+  <line x1="440" y1="252" x2="440" y2="282" stroke="#888" stroke-width="2"/>
+  <line x1="170" y1="282" x2="710" y2="282" stroke="#888" stroke-width="2"/>
+  <line x1="170" y1="282" x2="170" y2="308" stroke="#888" stroke-width="2" marker-end="url(#rtArr)"/>
+  <line x1="440" y1="282" x2="440" y2="308" stroke="#888" stroke-width="2" marker-end="url(#rtArr)"/>
+  <line x1="710" y1="282" x2="710" y2="308" stroke="#888" stroke-width="2" marker-end="url(#rtArr)"/>
+
+  <rect x="70" y="310" width="200" height="76" rx="6" fill="#3a1f1f" stroke="#e05555" stroke-width="1.5"/>
+  <text x="170" y="340" font-size="14" font-weight="600" fill="#e05555" text-anchor="middle">세 번 모두 실패</text>
+  <text x="170" y="362" font-size="12" fill="#888" text-anchor="middle">진짜 회귀다</text>
+
+  <rect x="340" y="310" width="200" height="76" rx="6" fill="#33260f" stroke="#c58a55" stroke-width="1.5"/>
+  <text x="440" y="340" font-size="14" font-weight="600" fill="#c58a55" text-anchor="middle">성공과 실패가 섞임</text>
+  <text x="440" y="362" font-size="12" fill="#888" text-anchor="middle">흔들리는 문제다</text>
+
+  <rect x="610" y="310" width="200" height="76" rx="6" fill="#16303d" stroke="#7ec8e3" stroke-width="1.5"/>
+  <text x="710" y="340" font-size="14" font-weight="600" fill="#7ec8e3" text-anchor="middle">세 번 모두 성공</text>
+  <text x="710" y="362" font-size="12" fill="#888" text-anchor="middle">첫 실행이 튄 것</text>
+
+  <text x="170" y="414" font-size="12" fill="#e8e8e8" text-anchor="middle">배포를 세우고 원인을 찾는다</text>
+  <text x="170" y="434" font-size="12" fill="#888" text-anchor="middle">기준선은 아직 갱신하지 않는다</text>
+
+  <text x="440" y="414" font-size="12" fill="#e8e8e8" text-anchor="middle">격리 목록으로 옮긴다</text>
+  <text x="440" y="434" font-size="12" fill="#888" text-anchor="middle">회귀 수에서 빼고 따로 센다</text>
+
+  <text x="710" y="414" font-size="12" fill="#e8e8e8" text-anchor="middle">통과로 두고 넘어간다</text>
+  <text x="710" y="434" font-size="12" fill="#888" text-anchor="middle">잦으면 채점기를 의심한다</text>
+</svg>

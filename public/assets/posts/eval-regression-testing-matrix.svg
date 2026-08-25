@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="450" viewBox="0 0 880 450" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <rect x="0" y="0" width="880" height="450" rx="12" fill="#0a0a0a"/>
+  <text x="60" y="46" font-size="22" font-weight="700" fill="#e8e8e8">평균은 그대로인데 안에서 열 문제가 뒤집혔다</text>
+  <text x="60" y="72" font-size="13" fill="#888">문제 100개를 이전 실행과 새 실행에 각각 돌려 짝지어 센 표. 숫자는 예시다.</text>
+
+  <text x="350" y="125" font-size="13" font-weight="600" fill="#e8e8e8" text-anchor="middle">새 실행 성공</text>
+  <text x="550" y="125" font-size="13" font-weight="600" fill="#e8e8e8" text-anchor="middle">새 실행 실패</text>
+  <text x="715" y="125" font-size="13" font-weight="600" fill="#888" text-anchor="middle">이전 합계</text>
+
+  <text x="235" y="196" font-size="13" font-weight="600" fill="#e8e8e8" text-anchor="end">이전 실행 성공</text>
+  <text x="235" y="306" font-size="13" font-weight="600" fill="#e8e8e8" text-anchor="end">이전 실행 실패</text>
+
+  <rect x="250" y="140" width="200" height="110" rx="4" fill="#141414" stroke="#333" stroke-width="1.5"/>
+  <text x="350" y="190" font-size="26" font-weight="700" fill="#e8e8e8" text-anchor="middle">67</text>
+  <text x="350" y="218" font-size="13" fill="#888" text-anchor="middle">그대로 성공</text>
+
+  <rect x="450" y="140" width="200" height="110" rx="4" fill="#3a1f1f" stroke="#e05555" stroke-width="1.5"/>
+  <text x="550" y="190" font-size="26" font-weight="700" fill="#e05555" text-anchor="middle">5</text>
+  <text x="550" y="218" font-size="13" fill="#e05555" text-anchor="middle">되던 것이 깨졌다</text>
+
+  <rect x="250" y="250" width="200" height="110" rx="4" fill="#17331a" stroke="#55c555" stroke-width="1.5"/>
+  <text x="350" y="300" font-size="26" font-weight="700" fill="#55c555" text-anchor="middle">5</text>
+  <text x="350" y="328" font-size="13" fill="#55c555" text-anchor="middle">안 되던 것이 됐다</text>
+
+  <rect x="450" y="250" width="200" height="110" rx="4" fill="#141414" stroke="#333" stroke-width="1.5"/>
+  <text x="550" y="300" font-size="26" font-weight="700" fill="#888" text-anchor="middle">23</text>
+  <text x="550" y="328" font-size="13" fill="#888" text-anchor="middle">그대로 실패</text>
+
+  <text x="715" y="200" font-size="20" font-weight="700" fill="#7ec8e3" text-anchor="middle">72</text>
+  <text x="715" y="310" font-size="20" font-weight="700" fill="#888" text-anchor="middle">28</text>
+
+  <text x="235" y="392" font-size="13" font-weight="600" fill="#888" text-anchor="end">새 실행 합계</text>
+  <text x="350" y="392" font-size="20" font-weight="700" fill="#7ec8e3" text-anchor="middle">72</text>
+  <text x="550" y="392" font-size="20" font-weight="700" fill="#888" text-anchor="middle">28</text>
+
+  <text x="60" y="428" font-size="13" fill="#e8e8e8">두 실행의 점수는 똑같이 72점이다. 평균만 보면 아무 일도 없었고, 짝지어 세면 열 문제의 결과가 뒤집혀 있다.</text>
+</svg>

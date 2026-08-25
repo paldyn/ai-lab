@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="420" viewBox="0 0 880 420" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <rect x="0" y="0" width="880" height="420" rx="12" fill="#0a0a0a"/>
+  <text x="60" y="46" font-size="22" font-weight="700" fill="#e8e8e8">오차 폭은 문제 수의 제곱근에 반비례한다</text>
+  <text x="60" y="72" font-size="13" fill="#888">점수 하나의 95% 오차 폭. 가장 넓게 잡히는 50% 근처를 기준으로 그렸다.</text>
+
+  <line x1="140" y1="320" x2="820" y2="320" stroke="#333" stroke-width="1"/>
+  <line x1="140" y1="250" x2="820" y2="250" stroke="#222" stroke-width="1"/>
+  <line x1="140" y1="180" x2="820" y2="180" stroke="#222" stroke-width="1"/>
+  <line x1="140" y1="110" x2="820" y2="110" stroke="#222" stroke-width="1"/>
+
+  <text x="128" y="325" font-size="12" fill="#888" text-anchor="end">0</text>
+  <text x="128" y="255" font-size="12" fill="#888" text-anchor="end">±5%p</text>
+  <text x="128" y="185" font-size="12" fill="#888" text-anchor="end">±10%p</text>
+  <text x="128" y="115" font-size="12" fill="#888" text-anchor="end">±15%p</text>
+
+  <polyline points="140,125 268,183 396,223 565,259 692,277 820,289" fill="none" stroke="#7ec8e3" stroke-width="2.5"/>
+
+  <circle cx="140" cy="125" r="5" fill="#7ec8e3"/>
+  <circle cx="268" cy="183" r="5" fill="#7ec8e3"/>
+  <circle cx="396" cy="223" r="5" fill="#7ec8e3"/>
+  <circle cx="565" cy="259" r="5" fill="#7ec8e3"/>
+  <circle cx="692" cy="277" r="5" fill="#7ec8e3"/>
+  <circle cx="820" cy="289" r="5" fill="#7ec8e3"/>
+
+  <text x="152" y="118" font-size="12" font-weight="600" fill="#e8e8e8">±13.9</text>
+  <text x="268" y="170" font-size="12" font-weight="600" fill="#e8e8e8" text-anchor="middle">±9.8</text>
+  <text x="396" y="210" font-size="12" font-weight="600" fill="#e8e8e8" text-anchor="middle">±6.9</text>
+  <text x="565" y="246" font-size="12" font-weight="600" fill="#e8e8e8" text-anchor="middle">±4.4</text>
+  <text x="692" y="264" font-size="12" font-weight="600" fill="#e8e8e8" text-anchor="middle">±3.1</text>
+  <text x="808" y="276" font-size="12" font-weight="600" fill="#e8e8e8" text-anchor="end">±2.2</text>
+
+  <text x="140" y="344" font-size="12" fill="#888" text-anchor="middle">50</text>
+  <text x="268" y="344" font-size="12" fill="#888" text-anchor="middle">100</text>
+  <text x="396" y="344" font-size="12" fill="#888" text-anchor="middle">200</text>
+  <text x="565" y="344" font-size="12" fill="#888" text-anchor="middle">500</text>
+  <text x="692" y="344" font-size="12" fill="#888" text-anchor="middle">1,000</text>
+  <text x="820" y="344" font-size="12" fill="#888" text-anchor="middle">2,000</text>
+  <text x="480" y="368" font-size="12" fill="#888" text-anchor="middle">문제 수 (로그 눈금)</text>
+
+  <text x="60" y="398" font-size="13" fill="#e8e8e8">문제를 네 배로 늘려야 오차 폭이 절반이 된다. 100개에서 ±10%p인 자를 ±2.5%p로 만들려면 1,600개가 필요하다.</text>
+</svg>

@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="500" viewBox="0 0 880 500" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <rect x="0" y="0" width="880" height="500" rx="12" fill="#0a0a0a"/>
+  <text x="60" y="46" font-size="22" font-weight="700" fill="#e8e8e8">「좋음」을 적지 말고 무엇이 보이는지를 적는다</text>
+  <text x="60" y="72" font-size="13" fill="#888">사실 정확성 한 축을 5점 척도로 쓴 두 가지 방식.</text>
+
+  <text x="230" y="118" font-size="15" font-weight="600" fill="#e05555" text-anchor="middle">앵커가 없는 척도</text>
+  <text x="650" y="118" font-size="15" font-weight="600" fill="#55c555" text-anchor="middle">행동으로 적은 척도</text>
+
+  <rect x="50" y="136" width="360" height="52" rx="6" fill="#141414" stroke="#333" stroke-width="1"/>
+  <text x="230" y="166" font-size="13" fill="#888" text-anchor="middle">5점 — 매우 좋음</text>
+  <rect x="50" y="196" width="360" height="52" rx="6" fill="#141414" stroke="#333" stroke-width="1"/>
+  <text x="230" y="226" font-size="13" fill="#888" text-anchor="middle">4점 — 좋음</text>
+  <rect x="50" y="256" width="360" height="52" rx="6" fill="#141414" stroke="#333" stroke-width="1"/>
+  <text x="230" y="286" font-size="13" fill="#888" text-anchor="middle">3점 — 보통</text>
+  <rect x="50" y="316" width="360" height="52" rx="6" fill="#141414" stroke="#333" stroke-width="1"/>
+  <text x="230" y="346" font-size="13" fill="#888" text-anchor="middle">2점 — 나쁨</text>
+  <rect x="50" y="376" width="360" height="52" rx="6" fill="#141414" stroke="#333" stroke-width="1"/>
+  <text x="230" y="406" font-size="13" fill="#888" text-anchor="middle">1점 — 매우 나쁨</text>
+
+  <rect x="470" y="136" width="350" height="52" rx="6" fill="#16303d" stroke="#7ec8e3" stroke-width="1"/>
+  <text x="486" y="168" font-size="13" font-weight="600" fill="#7ec8e3">5점</text>
+  <text x="530" y="157" font-size="12" fill="#ffffff">사실 오류가 없고</text>
+  <text x="530" y="175" font-size="12" fill="#ffffff">물어본 것에 전부 답한다</text>
+
+  <rect x="470" y="196" width="350" height="52" rx="6" fill="#16303d" stroke="#7ec8e3" stroke-width="1"/>
+  <text x="486" y="228" font-size="13" font-weight="600" fill="#7ec8e3">4점</text>
+  <text x="530" y="217" font-size="12" fill="#ffffff">사실 오류는 없으나</text>
+  <text x="530" y="235" font-size="12" fill="#ffffff">물어본 것 일부를 빠뜨렸다</text>
+
+  <rect x="470" y="256" width="350" height="52" rx="6" fill="#16303d" stroke="#7ec8e3" stroke-width="1"/>
+  <text x="486" y="288" font-size="13" font-weight="600" fill="#7ec8e3">3점</text>
+  <text x="530" y="277" font-size="12" fill="#ffffff">사소한 사실 오류가 하나 있고</text>
+  <text x="530" y="295" font-size="12" fill="#ffffff">결론은 맞다</text>
+
+  <rect x="470" y="316" width="350" height="52" rx="6" fill="#16303d" stroke="#7ec8e3" stroke-width="1"/>
+  <text x="486" y="348" font-size="13" font-weight="600" fill="#7ec8e3">2점</text>
+  <text x="530" y="337" font-size="12" fill="#ffffff">핵심 사실에 오류가 있어</text>
+  <text x="530" y="355" font-size="12" fill="#ffffff">결론이 틀렸다</text>
+
+  <rect x="470" y="376" width="350" height="52" rx="6" fill="#16303d" stroke="#7ec8e3" stroke-width="1"/>
+  <text x="486" y="408" font-size="13" font-weight="600" fill="#7ec8e3">1점</text>
+  <text x="530" y="397" font-size="12" fill="#ffffff">내용 대부분이 사실과 달라</text>
+  <text x="530" y="415" font-size="12" fill="#ffffff">그대로 쓸 수 없다</text>
+
+  <text x="60" y="458" font-size="13" fill="#e8e8e8">왼쪽은 「좋음」이 무슨 뜻인지를 평가자가 알아서 정한다. 그래서 후한 사람과 짠 사람의 4점이 서로 다른 답을 가리킨다.</text>
+  <text x="60" y="480" font-size="13" fill="#888">오른쪽은 답을 보고 확인할 수 있는 조건만 적었다. 평가자가 바뀌어도, 반년 뒤에 다시 채점해도 같은 점수가 나온다.</text>
+</svg>

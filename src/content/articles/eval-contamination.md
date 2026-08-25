@@ -93,3 +93,5 @@ draft: false
 읽어주셔서 감사합니다. 😊
 
 **지난 글:** [서빙 벤치마크 — 숫자 하나로 말하면 반드시 틀린다](/articles/serving-benchmarking)
+
+**다음 글:** [평가 회귀 테스트 — 좋아졌다는 말과 안 깨졌다는 말은 다르다](/articles/eval-regression-testing)
