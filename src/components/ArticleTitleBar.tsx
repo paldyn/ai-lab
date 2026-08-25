@@ -11,7 +11,7 @@ import { useEffect, useRef, useState, type RefObject } from 'react';
  * 화면에서 나갈 때 나타났다가 되돌아오면 사라집니다.
  *
  * **자리를 차지하지 않도록 `fixed`로 둡니다.** `sticky`로 두면 흐름 안에 남아
- * 글 맨 위에서도 44px을 먹습니다 — 정작 그때는 진짜 제목이 바로 아래 있어 띠가
+ * 글 맨 위에서도 48px을 먹습니다 — 정작 그때는 진짜 제목이 바로 아래 있어 띠가
  * 필요 없는 자리입니다.
  */
 interface Props {
@@ -81,7 +81,7 @@ export function ArticleTitleBar({ watch, progressOf, label, accent, title, secti
 
   return (
     <div className={`article-titlebar${shown ? ' is-shown' : ''}`} aria-hidden={!shown}>
-      <div className="site-wrap flex h-[44px] items-center gap-3">
+      <div className="site-wrap flex h-[48px] items-center gap-3">
         <span className="hidden shrink-0 font-mono text-[10px] tracking-[0.13em] sm:inline" style={{ color: accent }}>
           {label}
         </span>

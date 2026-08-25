@@ -450,7 +450,7 @@ function ArticleView({ article }: { article: Article }) {
       <div className="site-divider" />
 
       <div className="site-wrap grid gap-12 py-14 lg:grid-cols-[220px_minmax(0,760px)] lg:justify-center">
-        <aside className="article-toc lg:sticky lg:top-[128px] lg:self-start">
+        <aside className="article-toc lg:sticky lg:top-[132px] lg:self-start">
           <p className="font-mono text-[10px] tracking-[0.12em] text-[var(--text-muted)]">IN THIS NOTE</p>
           {body && body.headings.length > 0 && (
             <ol className="mt-4 space-y-3 border-l border-[var(--border)] pl-4 text-xs leading-5 text-[var(--text-dim)]">
