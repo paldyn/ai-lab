@@ -11,6 +11,12 @@ import { PrivacyPage } from './pages/PrivacyPage';
 import { ResearchPage } from './pages/ResearchPage';
 
 /** /concepts/<category> 를 같은 카테고리의 /learn/<category> 로 넘깁니다. */
+/** 자격증을 학습 아래로 옮기기 전 주소. 붙여 둔 링크가 있을 수 있어 살려 둡니다. */
+function RedirectCert() {
+  const { certId } = useParams<{ certId: string }>();
+  return <Navigate to={`/learn/certs/${certId}`} replace />;
+}
+
 function RedirectConceptCategory() {
   const { categoryId } = useParams<{ categoryId: string }>();
   return <Navigate to={`/learn/${categoryId ?? ''}`} replace />;
@@ -27,11 +33,17 @@ export default function App() {
         <Route path="/learn" element={<LearnPage />} />
         <Route path="/learn/:categoryId" element={<LearnPage />} />
         <Route path="/research" element={<ResearchPage />} />
-        <Route path="/certs" element={<CertsPage />} />
-        <Route path="/certs/:certId" element={<CertPage />} />
+        {/*
+          자격증은 학습의 한 칸입니다. 따로 세우면 메뉴가 다섯이 되고, 정작 그
+          페이지가 하는 일은 「우리 글 어디부터 읽으면 되는가」라 학습과 같습니다.
+        */}
+        <Route path="/learn/certs" element={<CertsPage />} />
+        <Route path="/learn/certs/:certId" element={<CertPage />} />
         <Route path="/articles/:slug" element={<ArticlePage />} />
         <Route path="/privacy" element={<PrivacyPage />} />
         {/* 지난 주소들. /concepts는 2026-08-04에 /learn으로 바꿨습니다. */}
+        <Route path="/certs" element={<Navigate to="/learn/certs" replace />} />
+        <Route path="/certs/:certId" element={<RedirectCert />} />
         <Route path="/concepts" element={<Navigate to="/learn" replace />} />
         <Route path="/concepts/:categoryId" element={<RedirectConceptCategory />} />
         <Route path="/knowledge" element={<Navigate to="/learn" replace />} />

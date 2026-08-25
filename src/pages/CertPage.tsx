@@ -50,11 +50,11 @@ function CertView({ cert }: { cert: Cert }) {
       <Seo
         title={`${cert.nameKo} — 무엇을 재는 시험인가`}
         description={cert.whatItMeasures.slice(0, 180)}
-        path={`/certs/${cert.id}`}
+        path={`/learn/certs/${cert.id}`}
       />
 
       <header className="site-wrap article-header">
-        <Link to="/certs" className="back-link">
+        <Link to="/learn/certs" className="back-link">
           <ArrowLeft size={14} aria-hidden="true" /> 자격증
         </Link>
         <div className="mt-10">
@@ -175,7 +175,7 @@ export function CertPage() {
   const { certId } = useParams<{ certId: string }>();
   const cert = certId ? certById(certId) : undefined;
 
-  if (!cert) return <Navigate to="/certs" replace />;
+  if (!cert) return <Navigate to="/learn/certs" replace />;
 
   return <CertView cert={cert} />;
 }

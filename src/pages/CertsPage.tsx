@@ -1,4 +1,5 @@
 import { Link } from 'react-router';
+import { LearnRail } from '../components/LearnRail';
 import { PageHeader } from '../components/PageHeader';
 import { Seo } from '../components/Seo';
 import { certs, certsIn, studyCount, type Cert } from '../data/certs';
@@ -45,48 +46,54 @@ function firstSentence(text: string): string {
 export function CertsPage() {
   const domestic = certsIn('국내');
   const overseas = certsIn('해외');
+  const paths = certs.reduce((sum, cert) => sum + studyCount(cert), 0);
 
   return (
     <>
       <Seo
         title="AI 자격증"
-        description="AI·데이터 자격증이 무엇을 재는 시험인지, 어떻게 준비하는지 정리합니다. 시험 일정은 공식 페이지로 보냅니다."
-        path="/certs"
+        description="AI·데이터 자격증이 무엇을 재는 시험인지, 어떤 글부터 읽으면 되는지 정리합니다. 시험 일정은 공식 페이지로 보냅니다."
+        path="/learn/certs"
       />
       <PageHeader
-        kicker="PALDYN CERTS"
-        title="AI 자격증"
+        kicker="PALDYN LEARN"
+        title="자격증"
         description="무엇을 재는 시험인지, 과목이 어떻게 나뉘는지, 그리고 우리 글 어디부터 읽으면 되는지 정리합니다."
         statsLabel="공식 페이지에서 확인한 것만 싣습니다"
         stats={[
           { label: '자격증', value: `${certs.length}개` },
-          { label: '국내 / 해외', value: `${domestic.length} / ${overseas.length}` },
+          { label: '학습 경로', value: `${paths}편` },
         ]}
       />
 
-      <section className="site-wrap section-space">
-        <p className="cert-notice">
-          <strong>회차 날짜는 싣지 않습니다.</strong> 접수 기간과 시험일은 해마다 바뀌고, 틀린 날짜는 없는 것보다
-          나쁩니다. 여기에는 시행처가 규칙으로 못 박은 주기만 두고 정확한 일정은 공식 페이지로 보냅니다.
-        </p>
+      {/* 글 목록과 같은 레이아웃을 씁니다 — 자격증은 학습의 한 칸이지 다른 페이지가 아닙니다. */}
+      <div className="site-wrap learn-layout">
+        <LearnRail active="certs" />
 
-        {[
-          { title: '국내', items: domestic },
-          { title: '해외', items: overseas },
-        ].map((group) => (
-          <div key={group.title} className="cert-group">
-            <h2 className="cert-group-title">
-              {group.title}
-              <span className="cert-group-count">{group.items.length}</span>
-            </h2>
-            <div className="cert-grid">
-              {group.items.map((cert) => (
-                <CertCard key={cert.id} cert={cert} />
-              ))}
+        <section className="learn-list">
+          <p className="cert-notice">
+            <strong>회차 날짜는 싣지 않습니다.</strong> 접수 기간과 시험일은 해마다 바뀌고, 틀린 날짜는 없는 것보다
+            나쁩니다. 여기에는 시행처가 규칙으로 못 박은 주기만 두고 정확한 일정은 공식 페이지로 보냅니다.
+          </p>
+
+          {[
+            { title: '국내', items: domestic },
+            { title: '해외', items: overseas },
+          ].map((group) => (
+            <div key={group.title} className="cert-group">
+              <h2 className="cert-group-title">
+                {group.title}
+                <span className="cert-group-count">{group.items.length}</span>
+              </h2>
+              <div className="cert-grid">
+                {group.items.map((cert) => (
+                  <CertCard key={cert.id} cert={cert} />
+                ))}
+              </div>
             </div>
-          </div>
-        ))}
-      </section>
+          ))}
+        </section>
+      </div>
     </>
   );
 }

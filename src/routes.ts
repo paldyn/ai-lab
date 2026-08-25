@@ -16,9 +16,9 @@ export const staticRoutes: string[] = [
   ...newsViewIds.map((id) => `/news/${id}`),
   '/learn',
   ...categoryIdsIn('learn').map((id) => `/learn/${id}`),
+  '/learn/certs',
+  ...certs.map((cert) => `/learn/certs/${cert.id}`),
   '/research',
-  '/certs',
-  ...certs.map((cert) => `/certs/${cert.id}`),
   '/privacy',
 ];
 

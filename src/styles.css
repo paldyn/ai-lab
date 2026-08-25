@@ -4974,3 +4974,13 @@ input:focus-visible {
 .cert-verified a {
   color: var(--brand-text);
 }
+
+/*
+  자격증 칸만 위에 선을 얹어 글 분야와 가릅니다. 안 가르면 아홉 번째 분야로
+  읽히는데, 나머지는 글 목록이고 이것만 성격이 다릅니다.
+*/
+.learn-rail-certs {
+  margin-top: 10px;
+  border-top: 1px solid var(--border);
+  padding-top: 14px;
+}

@@ -1,6 +1,7 @@
-import { useEffect, useRef, type CSSProperties } from 'react';
-import { Link, Navigate, useParams } from 'react-router';
+import { useEffect, useRef } from 'react';
+import { Navigate, useParams } from 'react-router';
 import { ArticleExplorer } from '../components/ArticleExplorer';
+import { LearnRail } from '../components/LearnRail';
 import { PageHeader } from '../components/PageHeader';
 import { Seo } from '../components/Seo';
 import { countByCategory } from '../data/articles';
@@ -80,30 +81,10 @@ function LearnView({ active }: { active?: Category }) {
       {/*
         분야를 목록 위가 아니라 옆에 둡니다. 위에 쌓으면 분야가 늘어날수록
         글 목록이 아래로 밀립니다. 옆 레일은 몇 개가 되든 목록의 시작 위치를
-        건드리지 않고, 스크롤해도 따라옵니다.
+        건드리지 않고, 스크롤해도 따라옵니다. 레일은 자격증 페이지와 함께 씁니다.
       */}
       <div className="site-wrap learn-layout" ref={layoutRef}>
-        <nav className="learn-rail" aria-label="학습 분야">
-          <p className="learn-rail-label">분야</p>
-
-          <Link to="/learn" className={`learn-rail-item ${active ? '' : 'is-active'}`} aria-current={active ? undefined : 'page'}>
-            <span>전체</span>
-            <b>{total}</b>
-          </Link>
-
-          {learnCategories.map((category) => (
-            <Link
-              key={category.id}
-              to={`/learn/${category.id}`}
-              className={`learn-rail-item ${active?.id === category.id ? 'is-active' : ''}`}
-              style={{ '--learn-accent': category.accent } as CSSProperties}
-              aria-current={active?.id === category.id ? 'page' : undefined}
-            >
-              <span>{category.name}</span>
-              <b>{counts[category.id] ?? 0}</b>
-            </Link>
-          ))}
-        </nav>
+        <LearnRail active={active?.id} />
 
         {/*
           key를 목록 구역에 둡니다. 탐색기에 달면 같은 일을 하면서 페이드를 걸
