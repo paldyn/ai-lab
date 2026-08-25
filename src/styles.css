@@ -53,6 +53,14 @@
   --brand-text: #bd4c00;
   --header-bg: rgba(255, 255, 255, 0.9);
 
+  /*
+    난이도 별. 브랜드 주황 대신 사람들이 별점에서 기대하는 금색을 씁니다 —
+    주황으로 두면 사이트의 강조색과 같아 「고른 것」처럼 읽혔습니다.
+    빈 별은 테두리색(#e5e5e5)으로는 거의 안 보여서 한 단계 진하게 잡습니다.
+  */
+  --star: #f2a516;
+  --star-empty: #c4c4c4;
+
   --source-anthropic: #d97757;
   --source-anthropic-text: #b8471f;
   --source-openai: #111111;
@@ -94,6 +102,9 @@
   --brand: #ff6400;
   --brand-text: #ff6400;
   --header-bg: rgba(0, 0, 0, 0.88);
+
+  --star: #ffc53d;
+  --star-empty: #5a5a5a;
 
   --source-anthropic: #d97757;
   --source-anthropic-text: #e08a6a;
@@ -4633,6 +4644,29 @@ input:focus-visible {
   주기와 확인 날짜, 학습 경로 편수는 고르는 데 쓰이지 않고 카드 높이만 키웠습니다.
   확인 못 한 항목(`unknowns`)과 확인한 날짜는 상세에 그대로 섭니다.
 */
+/* 별이 무슨 눈금인지 알려 주는 한 줄. 카드 위에 한 번만 섭니다. */
+.cert-legend {
+  display: flex;
+  margin-bottom: 34px;
+  align-items: flex-start;
+  gap: 10px;
+  border-left: 2px solid var(--star);
+  padding-left: 14px;
+  color: var(--text-muted);
+  font-size: 12px;
+  line-height: 1.75;
+}
+
+.cert-legend b {
+  color: var(--text-dim);
+  font-weight: 500;
+}
+
+.cert-legend-sample {
+  flex-shrink: 0;
+  padding-top: 3px;
+}
+
 .cert-group + .cert-group {
   margin-top: 56px;
 }
@@ -4680,7 +4714,7 @@ input:focus-visible {
   position: relative;
   display: grid;
   min-width: 0;
-  grid-template-columns: 36px minmax(0, 1fr);
+  grid-template-columns: 56px minmax(0, 1fr);
   gap: 15px;
   align-items: center;
   border: 1px solid var(--border);
@@ -4709,21 +4743,36 @@ input:focus-visible {
 }
 
 /*
-  시행처 마크. 로고 파일이 있는 곳은 그림을, 없는 곳은 글자 마크를 세웁니다.
-  36px 정사각 한 칸으로 통일해 두어야 가로로 긴 워드마크(aws)와 정사각 마크가
-  같은 줄에서 흔들리지 않습니다.
+  시행처 마크. 상자는 56×36 한 칸으로 고정합니다 — 정사각 마크(Azure·NVIDIA)와
+  가로로 긴 워드마크(aws·Kdata·AICE)가 섞여 있어서, 정사각에 맞추면 워드마크가
+  글자를 못 읽을 만큼 작아지고 워드마크에 맞추면 정사각이 카드를 밀어냅니다.
 */
 .cert-mark {
   display: grid;
-  width: 36px;
+  width: 56px;
   height: 36px;
   place-items: center;
 }
 
 .cert-mark img {
-  width: 100%;
-  height: 100%;
+  max-width: 100%;
+  max-height: 100%;
   object-fit: contain;
+}
+
+/*
+  어두운 로고는 다크에서만 흰 판 위에 올립니다. Kdata는 회색 워드마크,
+  AICE는 남색이라 검은 바탕에서 뭉갭니다. 반전은 답이 아닙니다 — 남색+빨강이
+  노랑+청록이 되어 다른 로고가 됩니다.
+*/
+[data-theme='dark'] .cert-mark.is-plated img {
+  /*
+    판은 상자가 아니라 그림에 붙입니다. 상자(56×36)에 붙이면 가로로 긴
+    워드마크 위아래로 흰 여백이 크게 남아, 로고가 아니라 흰 카드가 먼저 보입니다.
+  */
+  border-radius: 3px;
+  background: #ffffff;
+  padding: 4px 5px;
 }
 
 .cert-mark-text {
@@ -4738,10 +4787,7 @@ input:focus-visible {
   letter-spacing: 0.01em;
 }
 
-/*
-  난이도. 채운 별은 브랜드색, 빈 별은 테두리색입니다. 글자가 아니라 표시라
-  --brand를 그대로 씁니다(대비 검사는 -text 토큰만 봅니다).
-*/
+/* 난이도 별. 색은 --star / --star-empty 두 토큰이 정합니다. */
 .cert-stars {
   display: inline-flex;
   flex-shrink: 0;
@@ -4750,13 +4796,32 @@ input:focus-visible {
   gap: 2px;
 }
 
-.cert-stars svg {
-  color: var(--border);
+.cert-star {
+  position: relative;
+  display: block;
+  flex-shrink: 0;
 }
 
-.cert-stars svg.is-on {
-  color: var(--brand);
-  fill: var(--brand);
+.cert-star svg {
+  display: block;
+  color: var(--star-empty);
+}
+
+/*
+  채운 쪽은 빈 별 위에 겹쳐 두고 왼쪽에서부터 잘라 냅니다. 반 칸이면 50%입니다.
+  안쪽 별은 잘려도 크기가 그대로여야 하므로 상자에 맞춰 줄어들지 않게 둡니다.
+*/
+.cert-star-fill {
+  position: absolute;
+  overflow: hidden;
+  top: 0;
+  left: 0;
+  bottom: 0;
+}
+
+.cert-star-fill svg {
+  color: var(--star);
+  fill: var(--star);
 }
 
 /* ---- 상세: 난이도 줄 ---- */
@@ -5022,11 +5087,77 @@ input:focus-visible {
 }
 
 /*
-  자격증 칸만 위에 선을 얹어 글 분야와 가릅니다. 안 가르면 아홉 번째 분야로
-  읽히는데, 나머지는 글 목록이고 이것만 성격이 다릅니다.
+  자격증은 분야 칸이 아니라 단추입니다. 나머지 여덟은 이 목록을 거르는 칸인데
+  이것만 다른 화면으로 가는 길이라, 같은 모양이면 아홉 번째 분야로 읽힙니다.
+
+  **선 위아래 여백을 같게 둡니다.** 위쪽은 앞 칸의 아래 여백 9px에 레일의
+  gap 1px와 이 상자의 margin 11px가 더해 21px, 아래쪽은 padding 11px에
+  단추의 테두리 1px와 안쪽 여백 9px가 더해 21px입니다. 레일 맨 위에서 「분야」
+  글자와 첫 칸 사이가 21px(margin 12 + gap 1 + padding 9 − 글자 아랫여백)이라
+  같은 간격이 세 번 반복됩니다.
 */
-.learn-rail-certs {
-  margin-top: 10px;
+.learn-rail-extra {
+  margin-top: 11px;
   border-top: 1px solid var(--border);
-  padding-top: 14px;
+  padding-top: 11px;
+}
+
+.learn-rail-cert {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  border: 1px solid var(--border);
+  background: var(--bg-subtle);
+  padding: 9px 12px;
+  color: var(--text);
+  font-size: 13.5px;
+  transition: border-color 160ms ease, color 160ms ease;
+}
+
+.learn-rail-cert svg {
+  flex-shrink: 0;
+  color: var(--brand);
+}
+
+.learn-rail-cert b {
+  margin-left: auto;
+  color: var(--text-muted);
+  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  font-size: 11px;
+  font-weight: 400;
+}
+
+.learn-rail-cert:hover {
+  border-color: var(--brand);
+  color: var(--text-strong);
+}
+
+.learn-rail-cert.is-active {
+  border-color: var(--brand);
+  color: var(--text-strong);
+  font-weight: 500;
+}
+
+.learn-rail-cert.is-active b {
+  color: var(--text-dim);
+}
+
+/*
+  레일이 가로로 눕는 폭에서는 선과 여백을 걷고 단추만 알약으로 남깁니다.
+  이 블록이 위쪽 레일 규칙(@media)이 아니라 여기 있는 이유는, 바로 위의 기본
+  규칙이 파일에서 더 뒤에 있어 같은 특이도면 나중 것이 이기기 때문입니다.
+*/
+@media (max-width: 1023px) {
+  .learn-rail-extra {
+    flex-shrink: 0;
+    margin-top: 0;
+    border-top: 0;
+    padding-top: 0;
+  }
+
+  .learn-rail-cert {
+    border-radius: 999px;
+    padding: 6px 14px;
+    white-space: nowrap;
+  }
 }

@@ -57,6 +57,21 @@ export function CertsPage() {
         <LearnRail active="certs" />
 
         <section className="learn-list">
+          {/*
+            별이 무엇을 재는 눈금인지 여기서 한 번 밝힙니다. 카드에는 별만 서고
+            자격증마다의 근거는 상세에 있습니다 — 목록에서 열넷을 훑을 때 필요한
+            것은 「어느 쪽이 더 센가」와 「그 별이 무슨 뜻인가」 둘뿐입니다.
+          */}
+          <p className="cert-legend">
+            <span className="cert-legend-sample" aria-hidden="true">
+              <CertStars value={3} size={12} />
+            </span>
+            <span>
+              난이도는 응시자격·시험 형식·권장 경력을 보고 <b>팔딘이 매긴 값</b>입니다. 별 하나는 며칠이면
+              붙는 시험, 셋은 실무 경험을 전제한 시험, 다섯은 응시자격이 걸리고 서술형 실기가 있는 시험입니다.
+            </span>
+          </p>
+
           {[
             { title: '국내', items: domestic },
             { title: '해외', items: overseas },

@@ -8,21 +8,18 @@ import { certMark } from '../data/certs';
  * 중급」 줄을 걷어냈으므로 `alt`에 시행처 이름을 그대로 넣습니다 — 화면을 못 보는
  * 사람에게는 이 자리가 유일한 출처 표시입니다.
  *
- * 로고 파일이 없는 시행처는 글자 마크로 섭니다. 비슷하게 그린 상표를 넣지 않습니다.
+ * 어두운 로고(Kdata·AICE)는 다크 테마에서만 흰 판을 깔아 세웁니다. 반전을 걸면
+ * 색이 통째로 뒤집혀 다른 로고가 되기 때문입니다.
  */
 export function CertMark({ issuer }: { issuer: string }) {
   const mark = certMark(issuer);
 
   return (
-    <span className="cert-mark" title={mark.label}>
+    <span className={`cert-mark${mark.plate ? ' is-plated' : ''}`} title={mark.label}>
       {mark.logo ? (
         <img src={assetUrl(mark.logo)} alt={mark.label} />
       ) : (
-        <span className="cert-mark-text" aria-hidden="true">
-          {mark.text}
-          {/* 글자 마크는 보이는 그대로 읽히지만 줄임말이라 전체 이름을 함께 답니다. */}
-          <span className="sr-only">{mark.label}</span>
-        </span>
+        <span className="cert-mark-text">{mark.text}</span>
       )}
     </span>
   );
