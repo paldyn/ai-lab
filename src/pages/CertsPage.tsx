@@ -1,4 +1,5 @@
 import { Link } from 'react-router';
+import { Star } from 'lucide-react';
 import { CertMark } from '../components/CertMark';
 import { CertStars } from '../components/CertStars';
 import { LearnRail } from '../components/LearnRail';
@@ -58,18 +59,16 @@ export function CertsPage() {
 
         <section className="learn-list">
           {/*
-            별이 무엇을 재는 눈금인지 여기서 한 번 밝힙니다. 카드에는 별만 서고
-            자격증마다의 근거는 상세에 있습니다 — 목록에서 열넷을 훑을 때 필요한
-            것은 「어느 쪽이 더 센가」와 「그 별이 무슨 뜻인가」 둘뿐입니다.
+            별이 무엇을 보고 매긴 눈금인지만 밝힙니다. 하나·셋·다섯이 각각 어떤
+            시험인지까지 적어 봤는데, 기준을 알면 나머지는 별을 보면 되는 것이라
+            줄만 길었습니다. 자격증마다의 근거는 상세에 있습니다.
+
+            별은 목록의 별과 같은 금색 하나를 문장 안에 둡니다 — 옆에 견본을
+            따로 세우면 그 자리가 「난이도 3」짜리 카드처럼 읽혔습니다.
           */}
           <p className="cert-legend">
-            <span className="cert-legend-sample" aria-hidden="true">
-              <CertStars value={3} size={12} />
-            </span>
-            <span>
-              난이도는 응시자격·시험 형식·권장 경력을 보고 <b>팔딘이 매긴 값</b>입니다. 별 하나는 며칠이면
-              붙는 시험, 셋은 실무 경험을 전제한 시험, 다섯은 응시자격이 걸리고 서술형 실기가 있는 시험입니다.
-            </span>
+            <Star className="cert-legend-star" size={13} strokeWidth={1.5} aria-hidden="true" /> 난이도는
+            응시자격·시험 형식·권장 경력을 보고 매긴 값입니다.
           </p>
 
           {[

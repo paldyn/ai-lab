@@ -79,7 +79,7 @@ function CertView({ cert }: { cert: Cert }) {
           <p className="cert-difficulty">
             <CertStars value={cert.difficulty} size={14} />
             <span className="cert-difficulty-basis">{cert.difficultyBasis}</span>
-            <span className="cert-difficulty-note">팔딘 기준</span>
+            <span className="cert-difficulty-note">매긴 값</span>
           </p>
           <a className="cert-official" href={cert.officialUrl} target="_blank" rel="noreferrer">
             공식 페이지에서 일정·접수 확인 <ArrowUpRight size={13} aria-hidden="true" />
