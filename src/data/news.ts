@@ -160,7 +160,7 @@ export interface NewsDetail {
   commentary: string;
 }
 
-export const globalNewsUpdatedAt = '2026-08-22';
+export const globalNewsUpdatedAt = '2026-08-24';
 
 /**
  * 공식 발표 한 건 = 항목 한 개. 2026년 1월부터 쌓는 아카이브이며 오래된 항목을
@@ -171,6 +171,34 @@ export const globalNewsUpdatedAt = '2026-08-22';
  * 목록에서 파생됩니다. 갱신 시 globalNewsUpdatedAt도 함께 올립니다.
  */
 const entries: NewsItem[] = [
+  {
+    id: 'wellbeing-research-grants',
+    source: 'Anthropic',
+    kind: 'company',
+    title: 'Anthropic, AI 웰빙 평가 연구에 500만 달러 지원',
+    summary:
+      'Anthropic이 AI가 사용자 웰빙에 미치는 영향을 연구하는 독립 연구자에게 500만 달러를 지원한다. 자금과 모델 접근권, ' +
+      '기술 지원을 함께 주고 결과물은 오픈소스 평가로 공개된다. 신청 마감은 9월 21일이다.',
+    publishedAt: '2026-08-25',
+    collectedAt: '2026-08-26',
+    category: 'Corporate',
+    signal: '웰빙 연구 기금',
+    url: 'https://www.anthropic.com/news/wellbeing-research-grants',
+  },
+  {
+    id: 'search-home-decor-tips',
+    source: 'Google DeepMind',
+    kind: 'company',
+    title: 'Google 검색의 AI 모드·Lens로 집 꾸미기 활용법 다섯 가지',
+    summary:
+      'Google이 검색 도구로 집을 꾸미는 다섯 가지 방법을 소개했다. AI 모드에 방 사진을 올려 가구를 배치해 보고, Lens와 ' +
+      'Circle to Search로 소품을 찾고, Search Live로 DIY 설치를 안내받고, 가격 이력을 비교해 구매 시점을 정한다.',
+    publishedAt: '2026-08-25',
+    collectedAt: '2026-08-26',
+    category: 'Product',
+    signal: '검색 활용법',
+    url: 'https://blog.google/products-and-platforms/products/search/home-decor-tips/',
+  },
   {
     id: 'gpt-5-6-in-kiro',
     source: 'OpenAI',
