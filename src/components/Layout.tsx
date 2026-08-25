@@ -1,11 +1,10 @@
 import { useEffect, useMemo, useRef, useState, type ReactNode } from 'react';
 import { Link, NavLink, useLocation } from 'react-router';
-import { ArrowUp, GraduationCap, Menu, Moon, Search, Sun, X } from 'lucide-react';
+import { ArrowUp, Menu, Moon, Search, Sun, X } from 'lucide-react';
 import { getArticleBySlug } from '../data/articles';
 import { categoryById } from '../data/categories';
 import { assetUrl } from '../data/sources';
 import type { SectionId } from '../types/article';
-import { CertPicker } from './CertPicker';
 import { SearchOverlay } from './SearchOverlay';
 import { SiteUpdateGuard } from './SiteUpdateGuard';
 
@@ -98,7 +97,6 @@ function viewKey(pathname: string): string {
 export function Layout({ children }: { children: ReactNode }) {
   const [menuOpen, setMenuOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
-  const [certOpen, setCertOpen] = useState(false);
   const [atTop, setAtTop] = useState(true);
   const mainRef = useRef<HTMLElement>(null);
   const location = useLocation();
@@ -232,20 +230,6 @@ export function Layout({ children }: { children: ReactNode }) {
           {/* 12px은 techblog.paldyn.com의 .nav-right와 같은 값입니다. */}
           <div className="flex items-center gap-3">
             {/*
-              자격증은 메뉴 한 칸이 아니라 단추입니다. 가는 곳이 아니라 고르는
-              일이라 팝업을 열고, 고른 뒤에는 원래 보던 화면으로 돌아옵니다.
-            */}
-            <button
-              type="button"
-              className="nav-cert-trigger hidden lg:inline-flex"
-              onClick={() => setCertOpen(true)}
-              aria-label="자격증 고르기 열기"
-              title="자격증"
-            >
-              <GraduationCap size={15} strokeWidth={1.7} aria-hidden="true" />
-              <span>자격증</span>
-            </button>
-            {/*
               모양은 techblog.paldyn.com의 검색 입력창과 같지만 실제로는 버튼입니다 —
               누르면 오버레이가 열립니다. `<input>`으로 두면 여기에 글자를 칠 수 있는
               것처럼 보이는데 실제로는 첫 글자가 오버레이로 넘어가야 해서, 두 곳에
@@ -285,18 +269,6 @@ export function Layout({ children }: { children: ReactNode }) {
               <NavLink to="/news" className={navClass('news', 'mobile-nav-link')} onClick={startAtTop}>뉴스</NavLink>
               <NavLink to="/learn" className={navClass('learn', 'mobile-nav-link')} onClick={startAtTop}>학습</NavLink>
               <NavLink to="/research" className={navClass('research', 'mobile-nav-link')}>리서치</NavLink>
-              {/* 가는 곳이 아니라 여는 것이라 두 칸을 다 쓰고 아이콘을 붙여 나머지 넷과 가릅니다. */}
-              <button
-                type="button"
-                className="mobile-nav-link mobile-nav-cert"
-                onClick={() => {
-                  setMenuOpen(false);
-                  setCertOpen(true);
-                }}
-              >
-                자격증
-                <GraduationCap size={14} strokeWidth={1.7} aria-hidden="true" />
-              </button>
             </div>
           </nav>
         )}
@@ -347,8 +319,6 @@ export function Layout({ children }: { children: ReactNode }) {
       <SiteUpdateGuard />
 
       <SearchOverlay open={searchOpen} onClose={() => setSearchOpen(false)} />
-
-      <CertPicker open={certOpen} onClose={() => setCertOpen(false)} />
     </div>
   );
 }
