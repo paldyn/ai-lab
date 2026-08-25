@@ -88,6 +88,13 @@ function sectionOf(pathname: string): SectionId | undefined {
  * 돌아가며, 진입 애니메이션이 다시 돕니다. 주소와 프리렌더는 그대로입니다.
  */
 function viewKey(pathname: string): string {
+  /*
+    자격증 상세는 목록을 거르는 화면이 아니라 **다른 페이지**입니다. `/learn/`으로
+    시작한다는 이유로 목록과 한 칸에 묶으면 위 스크롤 effect가 돌지 않아, 목록을
+    한참 내려가 누른 사람은 상세 페이지의 중간부터 보게 됩니다.
+  */
+  if (pathname.startsWith('/learn/certs/')) return pathname;
+
   for (const section of ['/learn', '/news']) {
     if (pathname === section || pathname.startsWith(`${section}/`)) return section;
   }
