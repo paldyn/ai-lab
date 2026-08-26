@@ -117,10 +117,10 @@ eval-agent-trajectories
 eval-rag-metrics-deep
 eval-online-ab
 eval-cost-quality-tradeoff
-alignment-dpo-practice
-alignment-grpo
-alignment-rlvr
-alignment-reward-modeling
+finetuning-dpo-practice
+finetuning-grpo
+finetuning-rlvr
+finetuning-reward-modeling
 finetune-data-synthesis
 finetune-lora-merging
 finetune-serving-adapters
