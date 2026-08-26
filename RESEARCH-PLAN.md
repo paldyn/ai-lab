@@ -137,6 +137,48 @@
 
 **arXiv HTML에서 표를 긁을 때의 함정 하나.** LaTeXML은 캡션을 표 **앞**에 놓는다. 그래서 「Table 2: Alternative Prompt」 같은 캡션 문자열을 찾아 그 앞의 `<table>`을 잡으면 한 칸 밀린 표가 잡힌다. 29번을 쓰면서 실제로 표 두 장을 서로 바꿔 읽을 뻔했다 — 두 표는 행 이름이 같고 숫자만 달라서 **바뀌어도 눈으로는 안 걸린다.** 기준점은 캡션 문자열이 아니라 LaTeXML이 붙인 id를 쓴다(`id="A4.T1.4"` 꼴, `A4`는 부록 D). 그리고 캡션에는 `<span>`이 섞여 들어가 원문에 리터럴 문자열로 존재하지 않는 경우가 있어 `raw.index("Table 2: Alternative Prompt")` 자체가 `ValueError`로 죽는다.
 
+**가격 문서 다섯 경로 중 셋이 이그레스 정책에 막힌다.** 2026-08-27에 31·32번을 쓰면서
+전부 직접 받아 보고 확인했다. 남은 `cost-`·`spec-` 네 편(34·35·36·37)이 같은 문서에
+기대고 있으므로 다시 조사하지 말고 아래 표를 쓴다.
+
+| 경로 | 결과 |
+| --- | --- |
+| `platform.claude.com/docs/en/about-claude/pricing` | **정상.** WebFetch가 단가·캐시 배수·배치·툴 토큰 표를 전부 반환한다 |
+| `cloud.google.com/vertex-ai/generative-ai/pricing` | `301` → `cloud.google.com/gemini-enterprise-agent-platform/generative-ai/pricing`. **정상이지만 2.8MB라 WebFetch는 잘린다** — `curl`로 받아 정규식으로 뽑아야 한다 |
+| `ai.google.dev/gemini-api/docs/pricing` | 이그레스 차단 (`EGRESS_BLOCKED`) |
+| `developers.openai.com/api/docs/pricing` | 이그레스 차단 (`CONNECT tunnel failed, response 403`) |
+| `platform.openai.com/docs/pricing` | 이그레스 차단 (같은 오류) |
+| `openai.com/api/pricing/` | 호스트는 닿으나 사이트가 `403` |
+| `www.anthropic.com/pricing` | `301` → `claude.com/pricing`, 그리고 `claude.com`은 이그레스 차단 |
+
+**그래서 OpenAI 단가는 이 환경에서 못 받는다.** 32번은 두 벤더로 냈고 남은 네 편도
+같다 — 추정치로 채우지 말고 실패 메시지와 함께 빈칸으로 둔다. 환율 출처
+(`api.frankfurter.app`, `open.er-api.com`)도 전부 차단이라 **원화 환산은 못 낸다.**
+스크립트에 `--krw` 인자만 남기고 표에서 뺐다.
+
+**32번의 기대는 성립하지 않았다.** 계획은 "단가가 더 싼 모델이 한국어에서 더 비싸지는
+자리를 지목한다"였는데, **Anthropic도 Google도 자기 토크나이저를 공개하지 않는다.**
+`countTokens` 계열은 키가 필요하다. 그래서 벤더 사이의 순위 역전은 확인할 방법이
+없고, 대신 벤더 문서 자신의 숫자로 닫히는 둘을 결론으로 세웠다 — (가) 두 문서가 함께
+적어 둔 "4자 ≈ 1토큰" 환산이 한국어 실측 1.12~2.27자와 어긋나 청구서가 1.76~3.58배가
+되는 것, (나) Anthropic 문서의 "4.7 이후 모델은 같은 텍스트에 약 30% 더 많은 토큰"
+문구 때문에 Opus 4.6 → Opus 5가 **단가표가 그대로인데 청구액 +30%**, Sonnet 4.6 →
+Sonnet 5가 단가 −33%인데 청구액 −13%가 되는 것. 제목도 「MTok 단가로는 못 고른다 —
+벤더가 적어 둔 '4자 = 1토큰'이 한국어에서는 1.12자였다」로 다시 세웠다.
+
+**37번의 전제 하나가 이미 바뀌었다.** 위 표의 Sonnet 5 도입가 항목 — 계획에는
+"2026-08-31까지 $2/$10이고 09-01부터 $3/$15로 오른다"고 적혀 있는데, 2026-08-27
+현재 문서는 **인상이 취소되고 $2/$10이 표준가가 됐다**고 적는다. 37번을 쓸 때
+날짜가 박힌 항목은 전부 문서에서 다시 확인한다.
+
+**tiktoken 인코딩 호스트도 막힌다.** `openaipublic.blob.core.windows.net`이 CONNECT
+403이라 `tiktoken.get_encoding`이 죽는다. 31번이 우회를 만들어 두었다 — HF 미러
+(`Xenova/gpt-4`, `Xenova/gpt-4o`)에서 **어휘만** 가져오고 정규식·특수 토큰·BPE 병합은
+tiktoken 패키지 안의 것을 쓴다(`tt_from_hf.py`, 글에 전문 있음). **미러를
+`transformers`로 그대로 쓰면 안 된다** — `ignore_merges` 유무 때문에 cl100k가 3.71%,
+o200k가 5.26% 더 많이 세고, 어긋남이 코드·수식에 몰려 한국어 산문만 보고 검산하면
+못 잡는다. 정규식 차이는 실측 0.00%로 무관했다.
+
 **bm25s의 함정 하나.** `BM25.index()`는 넘겨받은 vocab 딕셔너리에 빈 문자열 항목을 제자리에서 추가한다. 색인 뒤에 `len(vocab)`을 세면 실제 어휘보다 1이 크고, 그 id를 질의에 넣으면 `maximum token ID in the query is higher than the number of tokens in the index`로 죽는다. 어휘 수는 색인 전에 센다.
 
 ## 이 계획을 실행하기 전에 고쳐야 할 것
