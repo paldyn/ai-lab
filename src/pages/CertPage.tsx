@@ -381,7 +381,7 @@ function CertView({ cert }: { cert: Cert }) {
                       <tr>
                         <th scope="col">회차</th>
                         {columns.map((column) => (
-                          <th key={column.key} scope="col">
+                          <th key={column.key} scope="col" className={`is-${column.key}`}>
                             {column.label}
                           </th>
                         ))}

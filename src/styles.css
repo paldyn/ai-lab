@@ -5194,9 +5194,13 @@ input:focus-visible {
   text-align: center;
 }
 
-/* 회차와 비고는 글이라 왼쪽에 붙입니다. 나머지는 날짜라 가운데가 읽기 좋습니다. */
+/*
+  회차와 비고는 글이라 왼쪽에 붙이고 나머지는 날짜라 가운데로 세웁니다.
+  「마지막 칸」으로 잡았더니 비고가 없는 자격증에서는 날짜 열(서류제출)이
+  왼쪽으로 붙었습니다 — 자리가 아니라 **칸 이름**으로 정합니다.
+*/
 .cert-schedule thead th:first-child,
-.cert-schedule thead th:last-child {
+.cert-schedule thead th.is-note {
   text-align: left;
 }
 
@@ -5242,19 +5246,14 @@ input:focus-visible {
   흐린 화면에서 안 보이고, 꼬리표만으로는 줄 전체가 안 짚힙니다.
 */
 /*
-  가장 가까운 회차. 바탕은 무채색 한 단계만 올리고 왼쪽에 주황 띠를 세웁니다 —
-  주황을 넓게 깔았더니 표가 아니라 경고문처럼 보였고 상태 꼬리표의 색과도
-  다퉜습니다. 「어느 줄인가」는 띠가, 「그 줄이 어떤 상태인가」는 꼬리표가 맡습니다.
+  가장 가까운 회차. **바탕색 하나로만 짚습니다.** 왼쪽에 주황 띠도 세워 봤는데
+  표에서 그 한 줄만 들여쓴 것처럼 보였고, 상태 꼬리표의 색과도 다퉜습니다.
+  무채색을 한 단계 더 올려 두면 색을 더 쓰지 않고도 줄이 또렷합니다.
 */
 .cert-schedule tr.is-next th,
 .cert-schedule tr.is-next td {
-  background: color-mix(in srgb, var(--text) 7%, var(--bg));
+  background: color-mix(in srgb, var(--text) 14%, var(--bg));
   color: var(--text-strong);
-}
-
-.cert-schedule tr.is-next th[scope='row'] {
-  box-shadow: inset 2px 0 0 var(--brand);
-  padding-left: 9px;
 }
 
 /*
