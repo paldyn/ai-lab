@@ -169,6 +169,75 @@ describe('자격증 데이터', () => {
     expect(missing).toEqual([]);
   });
 
+  /*
+    ── 시험 일정 ─────────────────────────────────────────────────
+    `cadence`에는 여전히 날짜를 못 쓰게 막고(위 검사), 실제 회차는 여기 구조로
+    담습니다. 구조로 두었으니 꼴과 앞뒤를 기계가 봅니다 — 손으로 옮겨 적는
+    값이라 「2026-13-05」나 접수가 시험보다 늦는 줄이 조용히 들어옵니다.
+  */
+  it('회차 날짜가 YYYY-MM-DD 꼴이다', () => {
+    const bad: string[] = [];
+    for (const cert of certs) {
+      for (const session of cert.schedule ?? []) {
+        for (const [field, value] of Object.entries({
+          examDate: session.examDate,
+          applyFrom: session.applyFrom,
+          applyTo: session.applyTo,
+          resultDate: session.resultDate,
+        })) {
+          if (value === undefined) continue;
+          const iso = /^\d{4}-\d{2}-\d{2}$/.test(value) && !Number.isNaN(Date.parse(value));
+          if (!iso) bad.push(`${cert.id} ${session.round} ${field}=${value}`);
+        }
+      }
+    }
+    expect(bad).toEqual([]);
+  });
+
+  it('접수·시험·발표 순서가 뒤집히지 않는다', () => {
+    const bad: string[] = [];
+    for (const cert of certs) {
+      for (const session of cert.schedule ?? []) {
+        const { applyFrom, applyTo, examDate, resultDate } = session;
+        if (applyFrom && applyTo && applyFrom > applyTo) bad.push(`${cert.id} ${session.round}: 접수 시작 > 마감`);
+        if (applyTo && applyTo > examDate) bad.push(`${cert.id} ${session.round}: 접수 마감 > 시험일`);
+        if (resultDate && resultDate < examDate) bad.push(`${cert.id} ${session.round}: 발표 < 시험일`);
+      }
+    }
+    expect(bad).toEqual([]);
+  });
+
+  it('같은 회차가 두 번 들어가 있지 않다', () => {
+    const dup: string[] = [];
+    for (const cert of certs) {
+      const seen = new Set<string>();
+      for (const session of cert.schedule ?? []) {
+        const key = `${session.round}/${session.examDate}`;
+        if (seen.has(key)) dup.push(`${cert.id} ${key}`);
+        seen.add(key);
+      }
+    }
+    expect(dup).toEqual([]);
+  });
+
+  /*
+    일정 페이지는 자격 소개 페이지와 다른 주소인 경우가 많아 따로 받습니다.
+    다만 도메인은 여전히 시행처여야 합니다.
+  */
+  it('일정 링크도 시행처 도메인이다', () => {
+    const outside = certs.filter((cert) => {
+      if (!cert.scheduleUrl) return false;
+      if (!cert.scheduleUrl.startsWith('https://')) return true;
+      return !OFFICIAL_HOSTS.includes(new URL(cert.scheduleUrl).host);
+    });
+    expect(outside.map((cert) => `${cert.id} → ${cert.scheduleUrl}`)).toEqual([]);
+  });
+
+  it('회차를 담은 자격증은 일정 링크를 함께 둔다', () => {
+    const missing = certs.filter((cert) => (cert.schedule?.length ?? 0) > 0 && !cert.scheduleUrl);
+    expect(missing.map((cert) => cert.id)).toEqual([]);
+  });
+
   it('과목이 비어 있지 않다', () => {
     expect(certs.filter((cert) => cert.subjects.length === 0).map((cert) => cert.id)).toEqual([]);
   });

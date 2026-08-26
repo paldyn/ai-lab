@@ -5134,7 +5134,114 @@ input:focus-visible {
   white-space: nowrap;
 }
 
-/* ---- 대비 글 ---- */
+/* ---- 시험 일정 ---- */
+
+/*
+  좁은 화면에서는 표만 가로로 굴립니다. 표를 줄이거나 칸을 접으면 회차·접수·
+  시험일·발표 중 무엇을 지울지 골라야 하는데, 접수하려는 사람에게는 넷 다
+  필요한 값입니다.
+*/
+.cert-schedule-scroll {
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+}
+
+.cert-schedule {
+  width: 100%;
+  min-width: 460px;
+  border-collapse: collapse;
+  font-size: 13.5px;
+}
+
+.cert-schedule th,
+.cert-schedule td {
+  border-bottom: 1px solid var(--border);
+  padding: 11px 14px 11px 0;
+  text-align: left;
+  white-space: nowrap;
+}
+
+.cert-schedule thead th {
+  border-bottom-color: var(--text-nav-icon);
+  color: var(--text-muted);
+  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  font-size: 10px;
+  font-weight: 400;
+  letter-spacing: 0.06em;
+}
+
+.cert-schedule tbody th {
+  color: var(--text-strong);
+  font-weight: 500;
+}
+
+.cert-schedule tbody td {
+  color: var(--text-dim);
+}
+
+/* 가장 가까운 회차. 표를 훑을 때 첫 줄이 어디인지가 곧 답입니다. */
+.cert-schedule tr.is-next th,
+.cert-schedule tr.is-next td {
+  background: color-mix(in srgb, var(--brand) 7%, var(--bg));
+  color: var(--text-strong);
+}
+
+/* 회차 이름과 그 아래 한 줄. 표 칸 안에서 위아래로 쌓습니다. */
+.cert-schedule tbody th {
+  white-space: normal;
+}
+
+.cert-schedule-round {
+  display: flex;
+  align-items: center;
+  white-space: nowrap;
+}
+
+.cert-schedule-note {
+  display: block;
+  max-width: 30ch;
+  margin-top: 3px;
+  color: var(--text-muted);
+  font-size: 11px;
+  font-weight: 400;
+  line-height: 1.6;
+  white-space: normal;
+}
+
+/* 시험일은 남았는데 접수가 끝난 회차. */
+.cert-schedule-closed {
+  margin-left: 7px;
+  border: 1px solid var(--border);
+  padding: 1px 5px;
+  color: var(--text-muted);
+  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  font-size: 9px;
+  letter-spacing: 0.04em;
+}
+
+.cert-schedule-next {
+  margin-left: 7px;
+  border: 1px solid var(--brand);
+  padding: 1px 5px;
+  color: var(--brand-text);
+  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  font-size: 9px;
+  font-weight: 400;
+  letter-spacing: 0.04em;
+}
+
+.cert-schedule-foot {
+  margin-top: 14px;
+  color: var(--text-muted);
+  font-size: 12px;
+  line-height: 1.8;
+}
+
+.cert-schedule-foot a {
+  color: var(--brand-text);
+}
+
+/* ---- 시험 노트 ---- */
 
 /*
   자격증마다의 대비 글 목록. 번호가 곧 차례이고 그 차례가 파일 이름에 박혀 있어
@@ -5203,7 +5310,7 @@ input:focus-visible {
   margin-bottom: 18px;
 }
 
-/* ---- 대비 글 화면 ---- */
+/* ---- 시험 노트 화면 ---- */
 
 .cert-prep-kicker {
   display: flex;

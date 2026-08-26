@@ -123,6 +123,31 @@ export function certMark(issuer: string): CertMark {
   return marks[issuer] ?? { text: issuer.slice(0, 2), label: issuer };
 }
 
+/**
+ * 공고된 회차 하나.
+ *
+ * **`cadence`와 다른 칸입니다.** 거기에는 시행처가 규칙으로 못 박은 주기만 적고
+ * (「연 4회 정기 시행」) 특정 날짜는 쓰지 않습니다 — 문장 속의 날짜는 해가 바뀌면
+ * 조용히 거짓이 되고 아무도 못 알아챕니다. 회차는 여기에 **구조로** 담습니다.
+ * 구조로 두면 지난 회차를 화면이 스스로 접고, 갱신 루틴이 무엇을 고쳐야 하는지
+ * 알며, 테스트가 날짜 꼴과 앞뒤 순서를 검사할 수 있습니다.
+ *
+ * 확정 공고만 담습니다. 「예정」·「미정」은 넣지 않습니다.
+ */
+export interface CertExamSession {
+  /** 시행처 표기 그대로. 「제34회」, 「2026년 제2회 필기」. */
+  round: string;
+  /** 접수 시작일 `YYYY-MM-DD`. */
+  applyFrom?: string;
+  /** 접수 마감일. */
+  applyTo?: string;
+  /** 시험일. 이 값이 지나면 화면에서 접힙니다. */
+  examDate: string;
+  /** 합격자 발표일. */
+  resultDate?: string;
+  note?: string;
+}
+
 export interface CertSubject {
   name: string;
   /** 문항 수·배점·비중. 시행처가 적어 둔 표현을 그대로 옮깁니다. */
@@ -174,8 +199,15 @@ export interface Cert {
   audience?: string;
   /** 문항 수·시간·합격 기준. */
   format?: string;
-  /** 주기와 접수 흐름. **특정 회차 날짜는 넣지 않습니다.** */
+  /** 주기와 접수 흐름. **특정 회차 날짜는 넣지 않습니다.** 그건 `schedule`이 듭니다. */
   cadence: string;
+  /**
+   * 공고된 회차 목록. 상시 시행이라 회차가 없는 자격증은 비워 둡니다.
+   * 지난 회차는 갱신 루틴이 지우고, 남아 있어도 화면이 접습니다.
+   */
+  schedule?: CertExamSession[];
+  /** 일정이 실린 시행처 페이지. 표 아래에 그대로 링크합니다. */
+  scheduleUrl?: string;
   fee?: string;
   validity?: string;
   prerequisite?: string;
@@ -223,6 +255,23 @@ export const certs: Cert[] = [
       '전(휴일인 경우 전일) 금요일 16:00 부터」, 시험 시작시간은 「10:00」이다. 필기 합격자의 응시자격 증빙서류 제출시기는 「자격검정 회차별로 별도 ' +
       '공지」한다. 접수 기간의 길이, 접수 마감과 시험일 사이의 간격, 시험일과 합격 발표 사이의 간격은 시행처가 규칙으로 적어 둔 곳이 없다. 회차별 실제 날짜는 ' +
       '공식 시험일정 페이지(https://www.dataq.or.kr/www/accept/schedule.do)에서 확인한다.',
+    schedule: [
+      {
+        round: '제13회 필기',
+        applyFrom: '2026-08-03',
+        applyTo: '2026-08-07',
+        examDate: '2026-09-05',
+        resultDate: '2026-09-23',
+      },
+      {
+        round: '제13회 실기',
+        applyFrom: '2026-10-26',
+        applyTo: '2026-10-30',
+        examDate: '2026-11-28',
+        resultDate: '2026-12-18',
+      },
+    ],
+    scheduleUrl: 'https://www.dataq.or.kr/www/accept/schedule.do',
     fee:
       '필기 17,800원, 실기 40,800원. 원서 제출 후 2시간 이내에 수수료를 결제하지 않으면 접수가 자동 취소된다. 환불은 접수 기간 마감일 ' +
       '17:59:59까지 전액, 접수 마감 이후~검정 시행 5일 전 17:59:59까지 50%, 검정 시행 5일 전 18:00:00 이후로는 불가하다.',
@@ -370,6 +419,16 @@ export const certs: Cert[] = [
       '변동 가능"이라는 단서가 붙는다). 여기에 "천재지변, 응시인원 증가, 감염증 확산 등 부득이한 사유 발생 시에는 시행일정을 별도로 지정할 수 있습니다"가 더 ' +
       '붙는다. 접수 기간의 길이, 접수가 시험 며칠 전에 열리는지, 시험일과 합격자 발표 사이의 간격은 시행처가 규칙으로 공표한 적이 없다. 회차별 실제 날짜는 ' +
       '공식 일정 페이지(https://www.dataq.or.kr/www/accept/schedule.do)에서 확인한다.',
+    schedule: [
+      {
+        round: '제51회',
+        applyFrom: '2026-09-28',
+        applyTo: '2026-10-02',
+        examDate: '2026-10-31',
+        resultDate: '2026-11-20',
+      },
+    ],
+    scheduleUrl: 'https://www.dataq.or.kr/www/accept/schedule.do',
     fee:
       '50,000원. 공식 검정수수료 표의 "데이터 분석 준전문가(ADsP)" 행이다(같은 표에서 ADP는 필기 80,000원 · 실기 70,000원). 납부방법은 ' +
       '"신용카드, 계좌이체"이고 원서를 제출하고 2시간 이내에 수수료를 납부하지 않으면 접수가 자동 취소된다(접수 마감일에는 17:59:59까지 결제가 완료되어야 ' +
@@ -470,6 +529,16 @@ export const certs: Cert[] = [
       '경우 전일) 금요일 16:00부터」, 시험 시작시간은 10:00, 사전점수 공개일은 결과발표일 전주 금요일이다. 접수 창이 며칠간 열리는지, 필기와 실기 ' +
       '사이가 몇 주인지는 시행처가 어디에도 문장으로 적지 않고 회차마다 달라지므로 적지 않는다. 회차별 실제 날짜는 공식 일정 ' +
       '페이지(https://www.dataq.or.kr/www/accept/schedule.do)에서 확인한다.',
+    schedule: [
+      {
+        round: '제37회 실기',
+        applyFrom: '2026-09-14',
+        applyTo: '2026-09-18',
+        examDate: '2026-10-17',
+        resultDate: '2026-11-13',
+      },
+    ],
+    scheduleUrl: 'https://www.dataq.or.kr/www/accept/schedule.do',
     fee:
       '필기 80,000원, 실기 70,000원(각각 따로 접수·납부). 납부는 신용카드·계좌이체이며 원서 제출 후 2시간 안에 납부하지 않으면 접수가 자동 취소된다 ' +
       '— 단, 접수 마감일에는 17:59:59까지 결제가 완료되어야 한다. 환불은 접수 기간 마감일 17:59:59까지 전액, 접수 마감 이후부터 검정 시행 5일 ' +
@@ -628,6 +697,16 @@ export const certs: Cert[] = [
       '「공개시작일 16:00 ~ 공개최종일 17:59:59」이며, 접수된 재검토 신청은 검토기간을 거쳐 결과발표일에 통보된다. 결과발표 시간은 10:00(사정에 ' +
       '따라 변동 가능). 시험 연기제도는 운영하고 있지 않으며, 천재지변·응시인원 증가·감염증 확산 등 부득이한 사유가 발생하면 시행일정을 별도로 지정할 수 있다. ' +
       '회차별 실제 날짜는 공식 일정 페이지(https://www.dataq.or.kr/www/accept/schedule.do)에서 확인한다.',
+    schedule: [
+      {
+        round: '제63회',
+        applyFrom: '2026-10-12',
+        applyTo: '2026-10-16',
+        examDate: '2026-11-14',
+        resultDate: '2026-12-04',
+      },
+    ],
+    scheduleUrl: 'https://www.dataq.or.kr/www/accept/schedule.do',
     fee:
       '50,000원. 납부방법은 신용카드·계좌이체. 환불은 접수기간 마감일 17:59:59까지 전액, 접수기간 종료부터 시행 5일전 17:59:59까지 50%, ' +
       '검정 시행 5일전 18:00:00 이후에는 불가다(시험일이 토요일인 경우 해당 주의 5일전 월요일 18:00:00 이후, 일요일인 경우 화요일 18:00:00 ' +
@@ -736,6 +815,57 @@ export const certs: Cert[] = [
       '결과발표 안내가 함께 발송된다. 일정표에는 Associate 정기시험과 별도로 \'Associate 완화검정\' 행이 서고, Generative는 회차 없이 ' +
       '\'B2B 전용\'으로만 표기돼 개인이 접수하는 정기시험 회차가 없다. 회차별 실제 날짜는 공식 일정 ' +
       '페이지(https://aice.study/certi/examSchedule)에서 확인한다.',
+    schedule: [
+      {
+        round: 'Basic 4회',
+        applyFrom: '2026-08-03',
+        applyTo: '2026-08-21',
+        examDate: '2026-08-28',
+        resultDate: '2026-09-12',
+        note: '온라인. 28일·29일 이틀에 걸쳐 10시·14시 두 차례.',
+      },
+      {
+        round: 'Associate 4회',
+        applyFrom: '2026-08-03',
+        applyTo: '2026-08-21',
+        examDate: '2026-08-28',
+        resultDate: '2026-09-12',
+        note: '온라인·오프라인. 오프라인 접수는 8월 14일에 먼저 닫혔다.',
+      },
+      {
+        round: 'Future 5회',
+        applyFrom: '2026-08-17',
+        applyTo: '2026-09-12',
+        examDate: '2026-09-19',
+        resultDate: '2026-10-03',
+        note: '3급·2급·1급이 한 회차로 함께 선다.',
+      },
+      {
+        round: 'Junior 5회',
+        applyFrom: '2026-08-17',
+        applyTo: '2026-09-12',
+        examDate: '2026-09-19',
+        resultDate: '2026-10-03',
+        note: '온라인, 10시 한 차례.',
+      },
+      {
+        round: 'Professional 4회',
+        applyFrom: '2026-10-05',
+        applyTo: '2026-10-23',
+        examDate: '2026-10-30',
+        resultDate: '2026-11-14',
+        note: '온라인. 30일·31일 이틀, 14시.',
+      },
+      {
+        round: 'Associate 5회',
+        applyFrom: '2026-10-05',
+        applyTo: '2026-10-23',
+        examDate: '2026-10-30',
+        resultDate: '2026-11-14',
+        note: '온라인·오프라인. 오프라인 접수는 10월 16일에 먼저 닫힌다.',
+      },
+    ],
+    scheduleUrl: 'https://aice.study/certi/examSchedule',
     fee:
       '전부 VAT 포함 금액이다. AICE Future 3급 30,000원 / 2급 40,000원 / 1급 50,000원, Junior 50,000원, Basic ' +
       '50,000원, AICE Generative 2급 40,000원 / 1급 60,000원, Associate 80,000원, Professional ' +
@@ -2233,6 +2363,18 @@ export function certsIn(region: CertRegion): Cert[] {
  * 그립니다. 남겨 두는 이유는 대비 글이 얼마나 찼는지와 견주는 자리(루틴의
  * 판단, 테스트)에서 쓰기 때문입니다.
  */
+/**
+ * 오늘 이후의 회차만, 가까운 순서로.
+ *
+ * 지난 회차를 화면에서 접는 일을 **여기 한 곳에서** 합니다. 목록·상세가 각자
+ * 거르면 한쪽만 고쳐지고, 지난 일정이 남아 있는 화면은 없는 것보다 나쁩니다.
+ */
+export function upcomingSessions(cert: Cert, today = new Date().toISOString().slice(0, 10)): CertExamSession[] {
+  return (cert.schedule ?? [])
+    .filter((session) => session.examDate >= today)
+    .sort((a, b) => a.examDate.localeCompare(b.examDate));
+}
+
 export function studyCount(cert: Cert): number {
   return cert.studyPath.reduce((sum, group) => sum + group.items.length, 0);
 }
