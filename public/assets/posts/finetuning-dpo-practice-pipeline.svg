@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="406" viewBox="0 0 880 406" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <rect x="0" y="0" width="880" height="406" rx="12" fill="#0a0a0a"/>
+  <defs>
+    <marker id="dp-blue" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#7ec8e3"/>
+    </marker>
+    <marker id="dp-green" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#55c555"/>
+    </marker>
+  </defs>
+
+  <text x="62" y="46" font-size="22" font-weight="700" fill="#e8e8e8">DPO는 중간 단계 하나를 지운다</text>
+  <text x="62" y="72" font-size="13" fill="#888">같은 선호 데이터를 쓰지만, 보상 모델을 따로 만들지 않고 손실 함수에 바로 넣는다.</text>
+
+  <text x="62" y="158" font-size="16" font-weight="600" fill="#c58a55">RLHF</text>
+
+  <rect x="170" y="120" width="180" height="64" rx="6" fill="#33260f" stroke="#c58a55" stroke-width="1.5"/>
+  <text x="260" y="146" font-size="13" font-weight="600" fill="#e8e8e8" text-anchor="middle">SFT</text>
+  <text x="260" y="166" font-size="11" fill="#aaaaaa" text-anchor="middle">시범 데이터로 지도학습</text>
+  <line x1="350" y1="152" x2="400" y2="152" stroke="#7ec8e3" stroke-width="2" marker-end="url(#dp-blue)"/>
+
+  <rect x="400" y="120" width="180" height="64" rx="6" fill="#33260f" stroke="#c58a55" stroke-width="1.5"/>
+  <text x="490" y="146" font-size="13" font-weight="600" fill="#e8e8e8" text-anchor="middle">보상 모델</text>
+  <text x="490" y="166" font-size="11" fill="#aaaaaa" text-anchor="middle">선호 쌍으로 점수 학습</text>
+  <line x1="580" y1="152" x2="630" y2="152" stroke="#7ec8e3" stroke-width="2" marker-end="url(#dp-blue)"/>
+
+  <rect x="630" y="120" width="180" height="64" rx="6" fill="#33260f" stroke="#c58a55" stroke-width="1.5"/>
+  <text x="720" y="146" font-size="13" font-weight="600" fill="#e8e8e8" text-anchor="middle">PPO</text>
+  <text x="720" y="166" font-size="11" fill="#aaaaaa" text-anchor="middle">보상 최대화로 정책 갱신</text>
+
+  <text x="170" y="212" font-size="12" fill="#888">학습 중 정책 · 참조 · 보상 · 가치 네 모델을 함께 띄운다.</text>
+
+  <text x="62" y="288" font-size="16" font-weight="600" fill="#55c555">DPO</text>
+
+  <rect x="170" y="250" width="180" height="64" rx="6" fill="#12261a" stroke="#55c555" stroke-width="1.5"/>
+  <text x="260" y="276" font-size="13" font-weight="600" fill="#e8e8e8" text-anchor="middle">SFT</text>
+  <text x="260" y="296" font-size="11" fill="#aaaaaa" text-anchor="middle">시범 데이터로 지도학습</text>
+  <line x1="350" y1="282" x2="400" y2="282" stroke="#55c555" stroke-width="2" marker-end="url(#dp-green)"/>
+
+  <rect x="400" y="250" width="180" height="64" rx="6" fill="#12261a" stroke="#55c555" stroke-width="1.5"/>
+  <text x="490" y="276" font-size="13" font-weight="600" fill="#e8e8e8" text-anchor="middle">DPO</text>
+  <text x="490" y="296" font-size="11" fill="#aaaaaa" text-anchor="middle">선호 쌍으로 정책 갱신</text>
+
+  <text x="170" y="342" font-size="12" fill="#888">정책과 참조 둘이면 된다. 참조는 갱신하지 않으므로 기울기를 저장할 필요가 없다.</text>
+
+  <text x="62" y="384" font-size="13" fill="#e8e8e8">지운 것은 보상 모델이지 선호 데이터가 아니다. 데이터 품질이 나쁘면 두 방식 모두 똑같이 망가진다.</text>
+</svg>

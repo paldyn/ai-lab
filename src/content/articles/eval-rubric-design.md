@@ -105,3 +105,5 @@ draft: false
 읽어주셔서 감사합니다. 😊
 
 **지난 글:** [평가 점수의 통계적 유의성 — 2점 차이는 차이가 아닐 수 있다](/articles/eval-statistical-significance)
+
+**다음 글:** [에이전트 궤적 평가 — 답이 맞아도 과정이 틀릴 수 있다](/articles/eval-agent-trajectories)

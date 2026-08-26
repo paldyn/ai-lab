@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="436" viewBox="0 0 880 436" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <rect x="0" y="0" width="880" height="436" rx="12" fill="#0a0a0a"/>
+  <defs>
+    <marker id="cc-blue" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#7ec8e3"/>
+    </marker>
+    <marker id="cc-red" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#e05555"/>
+    </marker>
+  </defs>
+
+  <text x="62" y="46" font-size="22" font-weight="700" fill="#e8e8e8">쉬운 것부터 싸게 처리한다</text>
+  <text x="62" y="72" font-size="13" fill="#888">작은 모델이 먼저 답하고, 검증을 통과하지 못한 것만 큰 모델로 올린다.</text>
+
+  <rect x="62" y="110" width="150" height="56" rx="6" fill="#1a1a1a" stroke="#555" stroke-width="1.5"/>
+  <text x="137" y="141" font-size="13" fill="#e8e8e8" text-anchor="middle">요청 100건</text>
+  <line x1="212" y1="138" x2="254" y2="138" stroke="#7ec8e3" stroke-width="2" marker-end="url(#cc-blue)"/>
+
+  <rect x="254" y="110" width="150" height="56" rx="6" fill="#16303d" stroke="#7ec8e3" stroke-width="1.5"/>
+  <text x="329" y="141" font-size="13" fill="#e8e8e8" text-anchor="middle">소형 모델 · 1.0</text>
+  <line x1="404" y1="138" x2="446" y2="138" stroke="#7ec8e3" stroke-width="2" marker-end="url(#cc-blue)"/>
+
+  <rect x="446" y="110" width="150" height="56" rx="6" fill="#1a1a1a" stroke="#7777cc" stroke-width="1.5"/>
+  <text x="521" y="141" font-size="13" fill="#e8e8e8" text-anchor="middle">자동 검증</text>
+  <line x1="596" y1="138" x2="638" y2="138" stroke="#7ec8e3" stroke-width="2" marker-end="url(#cc-blue)"/>
+
+  <rect x="638" y="110" width="150" height="56" rx="6" fill="#12261a" stroke="#55c555" stroke-width="1.5"/>
+  <text x="713" y="141" font-size="13" fill="#e8e8e8" text-anchor="middle">채택 · 72건</text>
+
+  <line x1="521" y1="166" x2="521" y2="222" stroke="#e05555" stroke-width="2" marker-end="url(#cc-red)"/>
+  <text x="537" y="199" font-size="12" fill="#e05555">검증 실패 28건</text>
+
+  <rect x="446" y="222" width="150" height="56" rx="6" fill="#33260f" stroke="#c58a55" stroke-width="1.5"/>
+  <text x="521" y="253" font-size="13" fill="#e8e8e8" text-anchor="middle">대형 모델 · 6.0</text>
+  <line x1="596" y1="250" x2="638" y2="250" stroke="#7ec8e3" stroke-width="2" marker-end="url(#cc-blue)"/>
+
+  <rect x="638" y="222" width="150" height="56" rx="6" fill="#12261a" stroke="#55c555" stroke-width="1.5"/>
+  <text x="713" y="253" font-size="13" fill="#e8e8e8" text-anchor="middle">채택 · 28건</text>
+
+  <line x1="62" y1="300" x2="818" y2="300" stroke="#333" stroke-width="1"/>
+
+  <text x="62" y="332" font-size="12" font-weight="600" fill="#888">전부 대형</text>
+  <rect x="200" y="316" width="600" height="26" rx="4" fill="#2a1414" stroke="#e05555" stroke-width="1.5"/>
+  <text x="784" y="334" font-size="12" fill="#e8e8e8" text-anchor="end">100 × 6.0 = 600</text>
+
+  <text x="62" y="372" font-size="12" font-weight="600" fill="#888">계단식</text>
+  <rect x="200" y="356" width="268" height="26" rx="4" fill="#12261a" stroke="#55c555" stroke-width="1.5"/>
+  <text x="484" y="374" font-size="12" fill="#e8e8e8">100 × 1.0 + 28 × 6.0 = 268</text>
+
+  <text x="62" y="414" font-size="13" fill="#e8e8e8">통과율이 72%에서 55%로 떨어지면 합계가 370이 되어 절감폭은 55%에서 38%로 준다. 검증 정확도가 이 그림의 전부다.</text>
+</svg>

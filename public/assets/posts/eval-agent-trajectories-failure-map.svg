@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="380" viewBox="0 0 880 380" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <rect x="0" y="0" width="880" height="380" rx="12" fill="#0a0a0a"/>
+  <defs>
+    <marker id="fm-arr" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#e05555"/>
+    </marker>
+  </defs>
+
+  <text x="62" y="46" font-size="22" font-weight="700" fill="#e8e8e8">한 걸음이 깨지는 다섯 자리</text>
+  <text x="62" y="72" font-size="13" fill="#888">에이전트의 한 걸음은 이 순서로 진행되고, 실패는 그중 한 자리에서 생긴다.</text>
+
+  <rect x="62" y="104" width="136" height="46" rx="6" fill="#16303d" stroke="#7ec8e3" stroke-width="1.5"/>
+  <text x="130" y="131" font-size="13" fill="#e8e8e8" text-anchor="middle">계획</text>
+  <rect x="217" y="104" width="136" height="46" rx="6" fill="#16303d" stroke="#7ec8e3" stroke-width="1.5"/>
+  <text x="285" y="131" font-size="13" fill="#e8e8e8" text-anchor="middle">도구 선택</text>
+  <rect x="372" y="104" width="136" height="46" rx="6" fill="#16303d" stroke="#7ec8e3" stroke-width="1.5"/>
+  <text x="440" y="131" font-size="13" fill="#e8e8e8" text-anchor="middle">인자 작성</text>
+  <rect x="527" y="104" width="136" height="46" rx="6" fill="#16303d" stroke="#7ec8e3" stroke-width="1.5"/>
+  <text x="595" y="131" font-size="13" fill="#e8e8e8" text-anchor="middle">관찰 해석</text>
+  <rect x="682" y="104" width="136" height="46" rx="6" fill="#16303d" stroke="#7ec8e3" stroke-width="1.5"/>
+  <text x="750" y="131" font-size="13" fill="#e8e8e8" text-anchor="middle">종료 판단</text>
+
+  <line x1="130" y1="150" x2="130" y2="192" stroke="#e05555" stroke-width="2" marker-end="url(#fm-arr)"/>
+  <line x1="285" y1="150" x2="285" y2="192" stroke="#e05555" stroke-width="2" marker-end="url(#fm-arr)"/>
+  <line x1="440" y1="150" x2="440" y2="192" stroke="#e05555" stroke-width="2" marker-end="url(#fm-arr)"/>
+  <line x1="595" y1="150" x2="595" y2="192" stroke="#e05555" stroke-width="2" marker-end="url(#fm-arr)"/>
+  <line x1="750" y1="150" x2="750" y2="192" stroke="#e05555" stroke-width="2" marker-end="url(#fm-arr)"/>
+
+  <rect x="62" y="192" width="136" height="96" rx="6" fill="#2a1414" stroke="#e05555" stroke-width="1.5"/>
+  <text x="130" y="214" font-size="13" font-weight="600" fill="#e05555" text-anchor="middle">계획 오류</text>
+  <text x="130" y="234" font-size="11" fill="#e8e8e8" text-anchor="middle">질문을 잘못 읽고</text>
+  <text x="130" y="252" font-size="11" fill="#e8e8e8" text-anchor="middle">다른 일을</text>
+  <text x="130" y="270" font-size="11" fill="#e8e8e8" text-anchor="middle">하기 시작한다</text>
+
+  <rect x="217" y="192" width="136" height="96" rx="6" fill="#2a1414" stroke="#e05555" stroke-width="1.5"/>
+  <text x="285" y="214" font-size="13" font-weight="600" fill="#e05555" text-anchor="middle">도구 오선택</text>
+  <text x="285" y="234" font-size="11" fill="#e8e8e8" text-anchor="middle">검색이면 될 일에</text>
+  <text x="285" y="252" font-size="11" fill="#e8e8e8" text-anchor="middle">계산기를 부른다</text>
+  <text x="285" y="270" font-size="11" fill="#e8e8e8" text-anchor="middle">또는 그 반대</text>
+
+  <rect x="372" y="192" width="136" height="96" rx="6" fill="#2a1414" stroke="#e05555" stroke-width="1.5"/>
+  <text x="440" y="214" font-size="13" font-weight="600" fill="#e05555" text-anchor="middle">인자 오류</text>
+  <text x="440" y="234" font-size="11" fill="#e8e8e8" text-anchor="middle">도구는 맞는데</text>
+  <text x="440" y="252" font-size="11" fill="#e8e8e8" text-anchor="middle">날짜·단위·필드가</text>
+  <text x="440" y="270" font-size="11" fill="#e8e8e8" text-anchor="middle">틀렸다</text>
+
+  <rect x="527" y="192" width="136" height="96" rx="6" fill="#2a1414" stroke="#e05555" stroke-width="1.5"/>
+  <text x="595" y="214" font-size="13" font-weight="600" fill="#e05555" text-anchor="middle">결과 오독</text>
+  <text x="595" y="234" font-size="11" fill="#e8e8e8" text-anchor="middle">빈 결과를 성공으로</text>
+  <text x="595" y="252" font-size="11" fill="#e8e8e8" text-anchor="middle">읽고 그 위에</text>
+  <text x="595" y="270" font-size="11" fill="#e8e8e8" text-anchor="middle">답을 쌓는다</text>
+
+  <rect x="682" y="192" width="136" height="96" rx="6" fill="#2a1414" stroke="#e05555" stroke-width="1.5"/>
+  <text x="750" y="214" font-size="13" font-weight="600" fill="#e05555" text-anchor="middle">멈춤 실패</text>
+  <text x="750" y="234" font-size="11" fill="#e8e8e8" text-anchor="middle">다 됐는데 계속 돈다</text>
+  <text x="750" y="252" font-size="11" fill="#e8e8e8" text-anchor="middle">덜 됐는데 끝낸다</text>
+  <text x="750" y="270" font-size="11" fill="#e8e8e8" text-anchor="middle">같은 호출 반복</text>
+
+  <line x1="62" y1="316" x2="818" y2="316" stroke="#333" stroke-width="1"/>
+  <text x="62" y="344" font-size="13" fill="#e8e8e8">「실패 30%」는 고칠 데를 알려 주지 않지만, 「인자 오류 18%」는 도구 설명서부터 보라고 알려 준다.</text>
+</svg>

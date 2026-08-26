@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="400" viewBox="0 0 880 400" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <rect x="0" y="0" width="880" height="400" rx="12" fill="#0a0a0a"/>
+  <defs>
+    <marker id="tp-blue" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#7ec8e3"/>
+    </marker>
+    <marker id="tp-gray" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#888888"/>
+    </marker>
+  </defs>
+
+  <text x="60" y="46" font-size="22" font-weight="700" fill="#e8e8e8">같은 답, 다른 궤적</text>
+  <text x="60" y="72" font-size="13" fill="#888">최종 답만 채점하면 아래 두 실행은 똑같이 정답 1점을 받는다.</text>
+
+  <text x="60" y="131" font-size="14" font-weight="600" fill="#7ec8e3">궤적 A</text>
+  <rect x="170" y="104" width="108" height="46" rx="6" fill="#16303d" stroke="#7ec8e3" stroke-width="1.5"/>
+  <text x="224" y="131" font-size="13" fill="#e8e8e8" text-anchor="middle">질문</text>
+  <line x1="278" y1="127" x2="304" y2="127" stroke="#7ec8e3" stroke-width="2" marker-end="url(#tp-blue)"/>
+  <rect x="304" y="104" width="108" height="46" rx="6" fill="#16303d" stroke="#7ec8e3" stroke-width="1.5"/>
+  <text x="358" y="131" font-size="13" fill="#e8e8e8" text-anchor="middle">문서 검색</text>
+  <line x1="412" y1="127" x2="438" y2="127" stroke="#7ec8e3" stroke-width="2" marker-end="url(#tp-blue)"/>
+  <rect x="438" y="104" width="108" height="46" rx="6" fill="#12261a" stroke="#55c555" stroke-width="1.5"/>
+  <text x="492" y="131" font-size="13" fill="#e8e8e8" text-anchor="middle">답변</text>
+
+  <text x="60" y="184" font-size="13" fill="#888">정답 · 3단계 · 도구 1회 · 4,200토큰</text>
+
+  <text x="60" y="259" font-size="14" font-weight="600" fill="#c58a55">궤적 B</text>
+  <rect x="170" y="232" width="108" height="46" rx="6" fill="#33260f" stroke="#c58a55" stroke-width="1.5"/>
+  <text x="224" y="259" font-size="13" fill="#e8e8e8" text-anchor="middle">질문</text>
+  <line x1="278" y1="255" x2="304" y2="255" stroke="#888888" stroke-width="2" marker-end="url(#tp-gray)"/>
+  <rect x="304" y="232" width="108" height="46" rx="6" fill="#2a1414" stroke="#e05555" stroke-width="1.5"/>
+  <text x="358" y="259" font-size="13" fill="#e8e8e8" text-anchor="middle">계산기</text>
+  <line x1="412" y1="255" x2="438" y2="255" stroke="#888888" stroke-width="2" marker-end="url(#tp-gray)"/>
+  <rect x="438" y="232" width="108" height="46" rx="6" fill="#2a1414" stroke="#e05555" stroke-width="1.5"/>
+  <text x="492" y="259" font-size="13" fill="#e8e8e8" text-anchor="middle">오류</text>
+  <line x1="546" y1="255" x2="572" y2="255" stroke="#888888" stroke-width="2" marker-end="url(#tp-gray)"/>
+  <rect x="572" y="232" width="108" height="46" rx="6" fill="#33260f" stroke="#c58a55" stroke-width="1.5"/>
+  <text x="626" y="259" font-size="13" fill="#e8e8e8" text-anchor="middle">문서 검색</text>
+  <line x1="680" y1="255" x2="706" y2="255" stroke="#888888" stroke-width="2" marker-end="url(#tp-gray)"/>
+  <rect x="706" y="232" width="108" height="46" rx="6" fill="#12261a" stroke="#55c555" stroke-width="1.5"/>
+  <text x="760" y="259" font-size="13" fill="#e8e8e8" text-anchor="middle">답변</text>
+
+  <text x="60" y="312" font-size="13" fill="#888">정답 · 5단계 · 도구 3회 · 11,600토큰 · 둘째 걸음에서 도구를 잘못 골랐다</text>
+
+  <line x1="60" y1="340" x2="820" y2="340" stroke="#333" stroke-width="1"/>
+  <text x="60" y="368" font-size="13" fill="#e8e8e8">궤적을 안 보면 B가 왜 2.8배 비싼지, 다음에 또 그럴지 알 방법이 없다.</text>
+</svg>

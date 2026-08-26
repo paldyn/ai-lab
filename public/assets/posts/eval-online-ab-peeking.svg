@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="424" viewBox="0 0 880 424" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <rect x="0" y="0" width="880" height="424" rx="12" fill="#0a0a0a"/>
+
+  <text x="62" y="46" font-size="22" font-weight="700" fill="#e8e8e8">실험 도중에 들여다보면 생기는 일</text>
+  <text x="62" y="72" font-size="13" fill="#888">A와 B에 아무 차이가 없는 실험을 14일 돌리며 매일 p값을 기록한 모습이다.</text>
+
+  <text x="62" y="125" font-size="12" font-weight="600" fill="#888">노출 비율</text>
+  <rect x="140" y="110" width="97" height="24" rx="4" fill="#101820" stroke="#7ec8e3" stroke-width="1"/>
+  <text x="188" y="125" font-size="11" fill="#7ec8e3" text-anchor="middle">1%</text>
+  <rect x="237" y="110" width="97" height="24" rx="4" fill="#132430" stroke="#7ec8e3" stroke-width="1"/>
+  <text x="285" y="125" font-size="11" fill="#7ec8e3" text-anchor="middle">5%</text>
+  <rect x="334" y="110" width="146" height="24" rx="4" fill="#16303d" stroke="#7ec8e3" stroke-width="1"/>
+  <text x="407" y="125" font-size="11" fill="#7ec8e3" text-anchor="middle">25%</text>
+  <rect x="480" y="110" width="340" height="24" rx="4" fill="#1a3c4d" stroke="#7ec8e3" stroke-width="1"/>
+  <text x="650" y="125" font-size="11" fill="#7ec8e3" text-anchor="middle">50%</text>
+
+  <text x="130" y="174" font-size="11" fill="#888" text-anchor="end">0.40</text>
+  <text x="130" y="288" font-size="11" fill="#888" text-anchor="end">0.05</text>
+  <text x="130" y="304" font-size="11" fill="#888" text-anchor="end">0</text>
+  <text x="62" y="230" font-size="12" font-weight="600" fill="#888">p값</text>
+
+  <line x1="140" y1="300" x2="820" y2="300" stroke="#555" stroke-width="1.5"/>
+  <line x1="140" y1="284" x2="820" y2="284" stroke="#e05555" stroke-width="2" stroke-dasharray="4,4"/>
+  <text x="820" y="274" font-size="11" fill="#e05555" text-anchor="end">유의수준 0.05</text>
+
+  <polyline points="140,170 189,229 237,271 286,294 334,281 383,255 431,209 480,199 529,222 577,238 626,216 674,229 723,242 771,235 820,232"
+            fill="none" stroke="#7ec8e3" stroke-width="2.5"/>
+
+  <line x1="286" y1="168" x2="286" y2="282" stroke="#e05555" stroke-width="2" stroke-dasharray="4,4"/>
+  <circle cx="286" cy="294" r="6" fill="#e05555" stroke="#0a0a0a" stroke-width="1.5"/>
+  <text x="286" y="158" font-size="13" font-weight="600" fill="#e05555" text-anchor="middle">3일차 · p = 0.02</text>
+
+  <text x="140" y="320" font-size="11" fill="#888" text-anchor="middle">0일</text>
+  <text x="237" y="320" font-size="11" fill="#888" text-anchor="middle">2</text>
+  <text x="334" y="320" font-size="11" fill="#888" text-anchor="middle">4</text>
+  <text x="431" y="320" font-size="11" fill="#888" text-anchor="middle">6</text>
+  <text x="529" y="320" font-size="11" fill="#888" text-anchor="middle">8</text>
+  <text x="626" y="320" font-size="11" fill="#888" text-anchor="middle">10</text>
+  <text x="723" y="320" font-size="11" fill="#888" text-anchor="middle">12</text>
+  <text x="820" y="320" font-size="11" fill="#888" text-anchor="middle">14</text>
+
+  <rect x="62" y="338" width="756" height="64" rx="8" fill="#2a1414" stroke="#e05555" stroke-width="1.5"/>
+  <text x="86" y="362" font-size="13" font-weight="600" fill="#e05555">매일 보다가 유의해지면 멈추는 방식</text>
+  <text x="86" y="384" font-size="12" fill="#e8e8e8">차이가 없어도 어느 하루는 선 아래로 내려간다. 그날 멈추면 그것이 결론으로 남는다. 멈출 날을 미리 정해 둔다.</text>
+</svg>

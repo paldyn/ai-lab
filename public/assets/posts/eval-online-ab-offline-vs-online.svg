@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="452" viewBox="0 0 880 452" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <rect x="0" y="0" width="880" height="452" rx="12" fill="#0a0a0a"/>
+  <defs>
+    <marker id="ab-ok" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#55c555"/>
+    </marker>
+    <marker id="ab-bad" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#e05555"/>
+    </marker>
+  </defs>
+
+  <text x="62" y="46" font-size="22" font-weight="700" fill="#e8e8e8">오프라인 점수는 대리 지표다</text>
+  <text x="62" y="72" font-size="13" fill="#888">우리가 재는 것과 우리가 원하는 것 사이에는 늘 간격이 있다.</text>
+
+  <text x="212" y="106" font-size="14" font-weight="600" fill="#7ec8e3" text-anchor="middle">오프라인에서 재는 것</text>
+  <text x="668" y="106" font-size="14" font-weight="600" fill="#c58a55" text-anchor="middle">실제로 원하는 것</text>
+
+  <rect x="62" y="122" width="300" height="56" rx="6" fill="#16303d" stroke="#7ec8e3" stroke-width="1.5"/>
+  <text x="212" y="153" font-size="13" fill="#e8e8e8" text-anchor="middle">루브릭 평균 점수</text>
+  <text x="440" y="139" font-size="12" fill="#55c555" text-anchor="middle">대체로 같이 움직인다</text>
+  <line x1="362" y1="153" x2="518" y2="153" stroke="#55c555" stroke-width="2" marker-end="url(#ab-ok)"/>
+  <rect x="518" y="122" width="300" height="56" rx="6" fill="#33260f" stroke="#c58a55" stroke-width="1.5"/>
+  <text x="668" y="153" font-size="13" fill="#e8e8e8" text-anchor="middle">사용자가 답을 채택한 비율</text>
+
+  <rect x="62" y="194" width="300" height="56" rx="6" fill="#16303d" stroke="#7ec8e3" stroke-width="1.5"/>
+  <text x="212" y="225" font-size="13" fill="#e8e8e8" text-anchor="middle">고정 세트 정답률</text>
+  <text x="440" y="211" font-size="12" fill="#55c555" text-anchor="middle">대체로 같이 움직인다</text>
+  <line x1="362" y1="225" x2="518" y2="225" stroke="#55c555" stroke-width="2" marker-end="url(#ab-ok)"/>
+  <rect x="518" y="194" width="300" height="56" rx="6" fill="#33260f" stroke="#c58a55" stroke-width="1.5"/>
+  <text x="668" y="225" font-size="13" fill="#e8e8e8" text-anchor="middle">과제 완료율</text>
+
+  <rect x="62" y="266" width="300" height="56" rx="6" fill="#16303d" stroke="#7ec8e3" stroke-width="1.5"/>
+  <text x="212" y="297" font-size="13" fill="#e8e8e8" text-anchor="middle">답변 길이 · 상세함</text>
+  <text x="440" y="283" font-size="12" fill="#e05555" text-anchor="middle">자주 어긋난다</text>
+  <line x1="362" y1="297" x2="518" y2="297" stroke="#e05555" stroke-width="2" stroke-dasharray="4,4" marker-end="url(#ab-bad)"/>
+  <rect x="518" y="266" width="300" height="56" rx="6" fill="#33260f" stroke="#c58a55" stroke-width="1.5"/>
+  <text x="668" y="297" font-size="13" fill="#e8e8e8" text-anchor="middle">재질문 없이 끝난 비율</text>
+
+  <rect x="62" y="338" width="300" height="56" rx="6" fill="#1a1a1a" stroke="#666666" stroke-width="2" stroke-dasharray="4,4"/>
+  <text x="212" y="369" font-size="13" fill="#888" text-anchor="middle">대응하는 지표가 없다</text>
+  <text x="440" y="355" font-size="12" fill="#888" text-anchor="middle">온라인에만 있다</text>
+  <line x1="362" y1="369" x2="518" y2="369" stroke="#666666" stroke-width="2" stroke-dasharray="4,4" marker-end="url(#ab-bad)"/>
+  <rect x="518" y="338" width="300" height="56" rx="6" fill="#33260f" stroke="#c58a55" stroke-width="1.5"/>
+  <text x="668" y="369" font-size="13" fill="#e8e8e8" text-anchor="middle">이탈률 · 세션당 비용</text>
+
+  <text x="62" y="428" font-size="13" fill="#e8e8e8">셋째 줄이 A/B 테스트를 하는 이유다. 길고 친절한 답이 오프라인 점수는 올리고 재질문은 늘리는 일이 실제로 일어난다.</text>
+</svg>

@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="410" viewBox="0 0 880 410" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <rect x="0" y="0" width="880" height="410" rx="12" fill="#0a0a0a"/>
+  <defs>
+    <marker id="rp-arr" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#7ec8e3"/>
+    </marker>
+  </defs>
+
+  <text x="62" y="46" font-size="22" font-weight="700" fill="#e8e8e8">RAG는 구간이 둘이고 지표도 둘이다</text>
+  <text x="62" y="72" font-size="13" fill="#888">한 점수로 합치면 검색이 못 가져온 것인지 생성이 안 쓴 것인지 알 수 없다.</text>
+
+  <rect x="80" y="120" width="90" height="52" rx="6" fill="#1a1a1a" stroke="#555" stroke-width="1.5"/>
+  <text x="125" y="150" font-size="13" fill="#e8e8e8" text-anchor="middle">질문</text>
+  <line x1="170" y1="146" x2="210" y2="146" stroke="#7ec8e3" stroke-width="2" marker-end="url(#rp-arr)"/>
+
+  <rect x="210" y="120" width="120" height="52" rx="6" fill="#16303d" stroke="#7ec8e3" stroke-width="1.5"/>
+  <text x="270" y="150" font-size="13" fill="#e8e8e8" text-anchor="middle">검색</text>
+  <line x1="330" y1="146" x2="370" y2="146" stroke="#7ec8e3" stroke-width="2" marker-end="url(#rp-arr)"/>
+
+  <rect x="370" y="120" width="140" height="52" rx="6" fill="#1a1a1a" stroke="#7777cc" stroke-width="1.5"/>
+  <text x="440" y="150" font-size="13" fill="#e8e8e8" text-anchor="middle">상위 k개 문서</text>
+  <line x1="510" y1="146" x2="550" y2="146" stroke="#7ec8e3" stroke-width="2" marker-end="url(#rp-arr)"/>
+
+  <rect x="550" y="120" width="120" height="52" rx="6" fill="#33260f" stroke="#c58a55" stroke-width="1.5"/>
+  <text x="610" y="150" font-size="13" fill="#e8e8e8" text-anchor="middle">생성</text>
+  <line x1="670" y1="146" x2="710" y2="146" stroke="#7ec8e3" stroke-width="2" marker-end="url(#rp-arr)"/>
+
+  <rect x="710" y="120" width="90" height="52" rx="6" fill="#1a1a1a" stroke="#555" stroke-width="1.5"/>
+  <text x="755" y="150" font-size="13" fill="#e8e8e8" text-anchor="middle">답</text>
+
+  <line x1="270" y1="172" x2="270" y2="210" stroke="#7ec8e3" stroke-width="2" stroke-dasharray="4,4"/>
+  <line x1="610" y1="172" x2="610" y2="210" stroke="#c58a55" stroke-width="2" stroke-dasharray="4,4"/>
+
+  <rect x="80" y="210" width="340" height="140" rx="8" fill="#101820" stroke="#7ec8e3" stroke-width="1.5"/>
+  <text x="96" y="236" font-size="16" font-weight="600" fill="#7ec8e3">검색 구간 지표</text>
+  <text x="96" y="264" font-size="12" font-weight="600" fill="#e8e8e8">Recall@k</text>
+  <text x="230" y="264" font-size="12" fill="#888">정답이 k개 안에 있나</text>
+  <text x="96" y="286" font-size="12" font-weight="600" fill="#e8e8e8">Precision@k</text>
+  <text x="230" y="286" font-size="12" fill="#888">가져온 것 중 쓸모 비율</text>
+  <text x="96" y="308" font-size="12" font-weight="600" fill="#e8e8e8">MRR</text>
+  <text x="230" y="308" font-size="12" fill="#888">첫 정답의 순위</text>
+  <text x="96" y="330" font-size="12" font-weight="600" fill="#e8e8e8">nDCG@k</text>
+  <text x="230" y="330" font-size="12" fill="#888">순위를 가중한 점수</text>
+
+  <rect x="460" y="210" width="340" height="140" rx="8" fill="#1a1408" stroke="#c58a55" stroke-width="1.5"/>
+  <text x="476" y="236" font-size="16" font-weight="600" fill="#c58a55">생성 구간 지표</text>
+  <text x="476" y="264" font-size="12" font-weight="600" fill="#e8e8e8">Faithfulness</text>
+  <text x="610" y="264" font-size="12" fill="#888">근거에 없는 말을 했나</text>
+  <text x="476" y="286" font-size="12" font-weight="600" fill="#e8e8e8">Answer relevance</text>
+  <text x="610" y="286" font-size="12" fill="#888">질문에 답을 했나</text>
+  <text x="476" y="308" font-size="12" font-weight="600" fill="#e8e8e8">Context precision</text>
+  <text x="610" y="308" font-size="12" fill="#888">쓸 문서가 앞에 왔나</text>
+  <text x="476" y="330" font-size="12" font-weight="600" fill="#e8e8e8">Context recall</text>
+  <text x="610" y="330" font-size="12" fill="#888">필요한 근거가 다 왔나</text>
+
+  <text x="62" y="384" font-size="13" fill="#e8e8e8">앞 넷은 정답 문서 라벨이 있어야 재고, 뒤 넷은 답과 근거만 있으면 잰다.</text>
+</svg>
