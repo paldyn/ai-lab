@@ -5,7 +5,7 @@ import { CertMark } from '../components/CertMark';
 import { useActiveHeading } from '../lib/activeHeading';
 import { CertStars } from '../components/CertStars';
 import { Seo } from '../components/Seo';
-import { certById, upcomingSessions, type Cert, type CertStudyItem } from '../data/certs';
+import { certById, nextSession, sessionsByYear, type Cert, type CertStudyItem } from '../data/certs';
 import { prepFor } from '../data/certPrep';
 import { getArticleBySlug } from '../data/articles';
 
@@ -39,23 +39,26 @@ function StudyLink({ item }: { item: CertStudyItem }) {
 }
 
 /**
- * 날짜를 「8. 30.(토)」로 줄여 적습니다. 표에 연도를 네 번 반복하면 정작 읽어야
- * 하는 월·일이 묻힙니다. 해가 바뀌는 회차만 연도를 붙입니다.
+ * 날짜를 「8. 30.(토)」로 줄여 적습니다. 연도는 표 위의 제목이 들고 있으므로
+ * 칸마다 되풀이하지 않습니다 — 네 칸에 네 번 적으면 정작 읽어야 하는 월·일이 묻힙니다.
+ *
+ * 다만 접수가 앞 해에 시작하는 회차가 있을 수 있어, 표의 연도와 다른 값이면
+ * 그때만 연도를 붙입니다.
  */
 const WEEKDAY = ['일', '월', '화', '수', '목', '금', '토'];
 
-function dayOf(iso: string): string {
+function dayOf(iso: string, shownYear?: string): string {
   const [year, month, day] = iso.split('-').map(Number);
   // UTC로 만들어 시간대에 따라 하루가 밀리지 않게 합니다.
   const at = new Date(Date.UTC(year, month - 1, day));
   const label = `${month}. ${day}.(${WEEKDAY[at.getUTCDay()]})`;
-  return year === new Date().getFullYear() ? label : `${year}. ${label}`;
+  return shownYear && iso.slice(0, 4) !== shownYear ? `${year}. ${label}` : label;
 }
 
-function period(from?: string, to?: string): string {
+function period(from?: string, to?: string, shownYear?: string): string {
   if (!from && !to) return '—';
-  if (from && to) return `${dayOf(from)} ~ ${dayOf(to)}`;
-  return dayOf((from ?? to) as string);
+  if (from && to) return `${dayOf(from, shownYear)} ~ ${dayOf(to, shownYear)}`;
+  return dayOf((from ?? to) as string, shownYear);
 }
 
 /** 값이 있을 때만 줄을 세웁니다. 빈 칸을 「-」로 채우면 확인한 것처럼 보입니다. */
@@ -77,7 +80,8 @@ function CertView({ cert }: { cert: Cert }) {
     안 났거나 상시 시행」입니다. 그 구분은 「시험 정보」의 주기 문장이 합니다.
   */
   const today = new Date().toISOString().slice(0, 10);
-  const sessions = upcomingSessions(cert, today);
+  const years = sessionsByYear(cert);
+  const next = nextSession(cert, today);
 
   /*
     목차에 세울 절. 있는 절만 담습니다 — 학습 경로가 아직 없는 자격증도 있고,
@@ -89,12 +93,12 @@ function CertView({ cert }: { cert: Cert }) {
         { id: 'what', title: '무엇을 재는 시험인가' },
         { id: 'subjects', title: '과목' },
         { id: 'exam', title: '시험 정보' },
-        sessions.length > 0 ? { id: 'schedule', title: '시험 일정' } : null,
+        years.length > 0 ? { id: 'schedule', title: '시험 일정' } : null,
         { id: 'prep', title: '시험 노트' },
         cert.studyPath.length > 0 ? { id: 'study', title: '관련 있는 우리 글' } : null,
         cert.notes ? { id: 'notes', title: '알아 둘 것' } : null,
       ].filter((section) => section !== null),
-    [cert, sessions.length],
+    [cert, years.length],
   );
   const { active, goTo } = useActiveHeading(useMemo(() => sections.map((item) => item.id), [sections]));
 
@@ -241,60 +245,81 @@ function CertView({ cert }: { cert: Cert }) {
           </dl>
         </section>
 
-        {sessions.length > 0 && (
+        {years.length > 0 && (
           <section className="cert-section">
             <h2 id="schedule">시험 일정</h2>
             {/*
-              **지난 회차는 그리지 않습니다.** 표에 남아 있으면 「이 시험은 3월에
-              봤구나」로 읽히는데, 지금 이 페이지를 여는 사람이 알고 싶은 것은
-              다음 회차 하나입니다. 거르는 일은 `upcomingSessions`가 맡습니다.
+              **연도 전체를 보여 줍니다.** 지난 회차를 접어 두면 「올해 몇 번
+              있었는가」가 안 보이는데, 회차가 정해진 시험은 그 리듬이 곧 계획의
+              근거입니다. 지난 줄은 흐리게 두고 다음 회차 한 줄만 짚습니다.
             */}
-            <div className="cert-schedule-scroll">
-              <table className="cert-schedule">
-                <thead>
-                  <tr>
-                    <th scope="col">회차</th>
-                    <th scope="col">접수</th>
-                    <th scope="col">시험일</th>
-                    <th scope="col">발표</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {sessions.map((session, index) => (
-                    <tr key={`${session.round}-${session.examDate}`} className={index === 0 ? 'is-next' : undefined}>
-                      <th scope="row">
-                        <span className="cert-schedule-round">
-                          {session.round}
-                          {index === 0 && <span className="cert-schedule-next">다음</span>}
-                        </span>
-                        {session.note && <span className="cert-schedule-note">{session.note}</span>}
-                      </th>
-                      {/*
-                        시험일은 남았는데 접수가 이미 끝난 회차가 있습니다 —
-                        빅데이터분석기사 필기가 그렇습니다. 그 줄을 그냥 두면
-                        「아직 신청할 수 있다」로 읽혀서 접수 칸에 표시를 답니다.
-                      */}
-                      <td>
-                        {period(session.applyFrom, session.applyTo)}
-                        {session.applyTo && session.applyTo < today && (
-                          <span className="cert-schedule-closed">마감</span>
-                        )}
-                      </td>
-                      <td>{dayOf(session.examDate)}</td>
-                      <td>{session.resultDate ? dayOf(session.resultDate) : '—'}</td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
+            {years.map((group) => (
+              <div key={group.year} className="cert-schedule-year">
+                <h3>{group.year}</h3>
+                <div className="cert-schedule-scroll">
+                  <table className="cert-schedule">
+                    <thead>
+                      <tr>
+                        <th scope="col">회차</th>
+                        <th scope="col">접수</th>
+                        <th scope="col">시험일</th>
+                        <th scope="col">발표</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {group.sessions.map((session) => {
+                        const isNext = session === next;
+                        const done = session.examDate < today;
+
+                        return (
+                          <tr
+                            key={`${session.round}-${session.examDate}`}
+                            className={[isNext ? 'is-next' : '', done ? 'is-done' : ''].filter(Boolean).join(' ')}
+                          >
+                            <th scope="row">
+                              <span className="cert-schedule-round">
+                                {session.round}
+                                {isNext && <span className="cert-schedule-next">다음</span>}
+                              </span>
+                              {session.note && <span className="cert-schedule-note">{session.note}</span>}
+                            </th>
+                            {/*
+                              시험일은 남았는데 접수가 이미 끝난 회차가 있습니다 —
+                              빅데이터분석기사 필기가 그렇습니다. 그 줄을 그냥 두면
+                              「아직 신청할 수 있다」로 읽혀서 표시를 답니다. 이미
+                              치른 회차에는 붙이지 않습니다 — 당연한 말이 됩니다.
+                            */}
+                            <td>
+                              {period(session.applyFrom, session.applyTo, group.year)}
+                              {!done && session.applyTo && session.applyTo < today && (
+                                <span className="cert-schedule-closed">마감</span>
+                              )}
+                            </td>
+                            <td>{dayOf(session.examDate, group.year)}</td>
+                            <td>{session.resultDate ? dayOf(session.resultDate, group.year) : '—'}</td>
+                          </tr>
+                        );
+                      })}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            ))}
+            {/*
+              두 줄로 나눕니다. 앞은 이 표가 언제 것인지, 뒤는 그래도 원문을 보라는
+              말이라 하는 일이 다릅니다 — 한 문단에 붙여 두었더니 확인 날짜가
+              뒷문장에 묻혀 안 읽혔습니다.
+            */}
+            <div className="cert-schedule-foot">
+              <p>{cert.verifiedAt} 확인. 접수 시각과 환불 규정은 「시험 정보」의 주기 항목에 있습니다.</p>
+              <p>
+                회차는 시행처 공고를 그대로 옮긴 것이고, 바뀔 수 있으니 접수 전에{' '}
+                <a href={cert.scheduleUrl ?? cert.officialUrl} target="_blank" rel="noreferrer">
+                  시행처 일정
+                </a>
+                을 한 번 더 보세요.
+              </p>
             </div>
-            <p className="cert-schedule-foot">
-              {cert.verifiedAt} 확인. 접수 시각과 환불 규정은 「시험 정보」의 주기 항목에 있습니다. 회차는 시행처
-              공고를 그대로 옮긴 것이고, 바뀔 수 있으니 접수 전에{' '}
-              <a href={cert.scheduleUrl ?? cert.officialUrl} target="_blank" rel="noreferrer">
-                시행처 일정
-              </a>
-              을 한 번 더 보세요.
-            </p>
           </section>
         )}
 

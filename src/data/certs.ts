@@ -203,7 +203,11 @@ export interface Cert {
   cadence: string;
   /**
    * 공고된 회차 목록. 상시 시행이라 회차가 없는 자격증은 비워 둡니다.
-   * 지난 회차는 갱신 루틴이 지우고, 남아 있어도 화면이 접습니다.
+   *
+   * **지난 회차도 남깁니다.** 화면이 연도별로 전부 보여 주기 때문입니다 —
+   * 「올해 몇 번 있었고 다음이 언제인가」를 한눈에 보는 것이 회차가 정해진
+   * 시험을 고를 때 필요한 정보입니다. 지난 것은 흐리게 그리고 다음 회차만
+   * 짚어 줍니다.
    */
   schedule?: CertExamSession[];
   /** 일정이 실린 시행처 페이지. 표 아래에 그대로 링크합니다. */
@@ -257,11 +261,28 @@ export const certs: Cert[] = [
       '공식 시험일정 페이지(https://www.dataq.or.kr/www/accept/schedule.do)에서 확인한다.',
     schedule: [
       {
+        round: '제12회 필기',
+        applyFrom: '2026-03-03',
+        applyTo: '2026-03-09',
+        examDate: '2026-04-04',
+        resultDate: '2026-04-24',
+        note: '수험표발급 3.20, 응시자격 서류제출 4.24~5.6',
+      },
+      {
+        round: '제12회 실기',
+        applyFrom: '2026-05-18',
+        applyTo: '2026-05-22',
+        examDate: '2026-06-20',
+        resultDate: '2026-07-10',
+        note: '수험표발급 6.5, 사전점수공개 7.3~7',
+      },
+      {
         round: '제13회 필기',
         applyFrom: '2026-08-03',
         applyTo: '2026-08-07',
         examDate: '2026-09-05',
         resultDate: '2026-09-23',
+        note: '수험표발급 8.21, 응시자격 서류제출 9.28~10.13',
       },
       {
         round: '제13회 실기',
@@ -269,6 +290,7 @@ export const certs: Cert[] = [
         applyTo: '2026-10-30',
         examDate: '2026-11-28',
         resultDate: '2026-12-18',
+        note: '수험표발급 11.13, 사전점수공개 12.11~15',
       },
     ],
     scheduleUrl: 'https://www.dataq.or.kr/www/accept/schedule.do',
@@ -421,6 +443,27 @@ export const certs: Cert[] = [
       '공식 일정 페이지(https://www.dataq.or.kr/www/accept/schedule.do)에서 확인한다.',
     schedule: [
       {
+        round: '제48회',
+        applyFrom: '2026-01-05',
+        applyTo: '2026-01-09',
+        examDate: '2026-02-07',
+        resultDate: '2026-03-06',
+      },
+      {
+        round: '제49회',
+        applyFrom: '2026-04-13',
+        applyTo: '2026-04-17',
+        examDate: '2026-05-17',
+        resultDate: '2026-06-05',
+      },
+      {
+        round: '제50회',
+        applyFrom: '2026-07-06',
+        applyTo: '2026-07-10',
+        examDate: '2026-08-08',
+        resultDate: '2026-08-28',
+      },
+      {
         round: '제51회',
         applyFrom: '2026-09-28',
         applyTo: '2026-10-02',
@@ -531,11 +574,34 @@ export const certs: Cert[] = [
       '페이지(https://www.dataq.or.kr/www/accept/schedule.do)에서 확인한다.',
     schedule: [
       {
+        round: '제36회 필기',
+        applyFrom: '2026-01-05',
+        applyTo: '2026-01-09',
+        examDate: '2026-02-07',
+        resultDate: '2026-03-06',
+      },
+      {
+        round: '제36회 실기',
+        applyFrom: '2026-03-30',
+        applyTo: '2026-04-03',
+        examDate: '2026-05-02',
+        resultDate: '2026-05-29',
+        note: '응시자격 서류제출 5.29~6.8',
+      },
+      {
+        round: '제37회 필기',
+        applyFrom: '2026-07-06',
+        applyTo: '2026-07-10',
+        examDate: '2026-08-08',
+        resultDate: '2026-09-04',
+      },
+      {
         round: '제37회 실기',
         applyFrom: '2026-09-14',
         applyTo: '2026-09-18',
         examDate: '2026-10-17',
         resultDate: '2026-11-13',
+        note: '응시자격 서류제출 11.13~20',
       },
     ],
     scheduleUrl: 'https://www.dataq.or.kr/www/accept/schedule.do',
@@ -699,6 +765,27 @@ export const certs: Cert[] = [
       '회차별 실제 날짜는 공식 일정 페이지(https://www.dataq.or.kr/www/accept/schedule.do)에서 확인한다.',
     schedule: [
       {
+        round: '제60회',
+        applyFrom: '2026-02-02',
+        applyTo: '2026-02-06',
+        examDate: '2026-03-07',
+        resultDate: '2026-03-27',
+      },
+      {
+        round: '제61회',
+        applyFrom: '2026-04-27',
+        applyTo: '2026-05-01',
+        examDate: '2026-05-31',
+        resultDate: '2026-06-19',
+      },
+      {
+        round: '제62회',
+        applyFrom: '2026-07-20',
+        applyTo: '2026-07-24',
+        examDate: '2026-08-22',
+        resultDate: '2026-09-11',
+      },
+      {
         round: '제63회',
         applyFrom: '2026-10-12',
         applyTo: '2026-10-16',
@@ -817,12 +904,148 @@ export const certs: Cert[] = [
       '페이지(https://aice.study/certi/examSchedule)에서 확인한다.',
     schedule: [
       {
-        round: 'Basic 4회',
-        applyFrom: '2026-08-03',
-        applyTo: '2026-08-21',
-        examDate: '2026-08-28',
-        resultDate: '2026-09-12',
-        note: '온라인. 28일·29일 이틀에 걸쳐 10시·14시 두 차례.',
+        round: 'Future 1회',
+        applyFrom: '2025-12-29',
+        applyTo: '2026-01-24',
+        examDate: '2026-01-31',
+        resultDate: '2026-02-14',
+        note: '온라인/오프라인, 3급·2급·1급',
+      },
+      {
+        round: 'Junior 1회',
+        applyFrom: '2025-12-29',
+        applyTo: '2026-01-24',
+        examDate: '2026-01-31',
+        resultDate: '2026-02-14',
+        note: '온라인',
+      },
+      {
+        round: 'Associate 1회',
+        applyFrom: '2026-02-02',
+        applyTo: '2026-02-20',
+        examDate: '2026-02-27',
+        resultDate: '2026-03-14',
+        note: '온라인. 2월 27일·28일 이틀',
+      },
+      {
+        round: 'Basic 1회',
+        applyFrom: '2026-02-02',
+        applyTo: '2026-02-20',
+        examDate: '2026-02-27',
+        resultDate: '2026-03-14',
+        note: '온라인. 2월 27일·28일 이틀',
+      },
+      {
+        round: 'Professional 1회',
+        applyFrom: '2026-02-02',
+        applyTo: '2026-02-20',
+        examDate: '2026-02-27',
+        resultDate: '2026-03-14',
+        note: '온라인. 2월 27일·28일 이틀',
+      },
+      {
+        round: 'Associate 2회',
+        applyFrom: '2026-03-30',
+        applyTo: '2026-04-17',
+        examDate: '2026-04-24',
+        resultDate: '2026-05-09',
+        note: '온라인. 4월 24일·25일 이틀',
+      },
+      {
+        round: 'Basic 2회',
+        applyFrom: '2026-03-30',
+        applyTo: '2026-04-17',
+        examDate: '2026-04-24',
+        resultDate: '2026-05-09',
+        note: '온라인. 4월 24일·25일 이틀',
+      },
+      {
+        round: 'Professional 2회',
+        applyFrom: '2026-03-30',
+        applyTo: '2026-04-17',
+        examDate: '2026-04-24',
+        resultDate: '2026-05-09',
+        note: '온라인. 4월 24일·25일 이틀',
+      },
+      {
+        round: 'Future 2회',
+        applyFrom: '2026-03-30',
+        applyTo: '2026-04-17',
+        examDate: '2026-04-25',
+        resultDate: '2026-05-09',
+        note: '온라인/오프라인, 3급·2급·1급',
+      },
+      {
+        round: 'Junior 2회',
+        applyFrom: '2026-03-30',
+        applyTo: '2026-04-17',
+        examDate: '2026-04-25',
+        resultDate: '2026-05-09',
+        note: '온라인',
+      },
+      {
+        round: 'Future 3회',
+        applyFrom: '2026-04-27',
+        applyTo: '2026-05-23',
+        examDate: '2026-05-30',
+        resultDate: '2026-06-13',
+        note: '온라인/오프라인, 3급·2급·1급',
+      },
+      {
+        round: 'Junior 3회',
+        applyFrom: '2026-04-27',
+        applyTo: '2026-05-23',
+        examDate: '2026-05-30',
+        resultDate: '2026-06-13',
+        note: '온라인',
+      },
+      {
+        round: 'Associate 완화검정 3회',
+        applyFrom: '2026-05-18',
+        applyTo: '2026-06-05',
+        examDate: '2026-06-13',
+        resultDate: '2026-06-27',
+        note: '온라인',
+      },
+      {
+        round: 'Associate 3회',
+        applyFrom: '2026-06-01',
+        applyTo: '2026-06-19',
+        examDate: '2026-06-26',
+        resultDate: '2026-07-11',
+        note: '온라인/오프라인, 오프라인 접수 6.12까지. 6월 26일·27일 이틀',
+      },
+      {
+        round: 'Basic 3회',
+        applyFrom: '2026-06-01',
+        applyTo: '2026-06-19',
+        examDate: '2026-06-26',
+        resultDate: '2026-07-11',
+        note: '온라인. 6월 26일·27일 이틀',
+      },
+      {
+        round: 'Professional 3회',
+        applyFrom: '2026-06-01',
+        applyTo: '2026-06-19',
+        examDate: '2026-06-26',
+        resultDate: '2026-07-11',
+        note: '온라인. 6월 26일·27일 이틀',
+      },
+      {
+        round: 'Future 4회',
+        applyFrom: '2026-06-22',
+        applyTo: '2026-07-18',
+        examDate: '2026-07-25',
+        resultDate: '2026-08-08',
+        note: '온라인/오프라인, 3급·2급·1급',
+      },
+      {
+        round: 'Junior 4회',
+        applyFrom: '2026-06-22',
+        applyTo: '2026-07-18',
+        examDate: '2026-07-25',
+        resultDate: '2026-08-08',
+        note: '온라인',
       },
       {
         round: 'Associate 4회',
@@ -830,7 +1053,15 @@ export const certs: Cert[] = [
         applyTo: '2026-08-21',
         examDate: '2026-08-28',
         resultDate: '2026-09-12',
-        note: '온라인·오프라인. 오프라인 접수는 8월 14일에 먼저 닫혔다.',
+        note: '온라인/오프라인, 오프라인 접수 8.14까지. 8월 28일·29일 이틀',
+      },
+      {
+        round: 'Basic 4회',
+        applyFrom: '2026-08-03',
+        applyTo: '2026-08-21',
+        examDate: '2026-08-28',
+        resultDate: '2026-09-12',
+        note: '온라인. 8월 28일·29일 이틀',
       },
       {
         round: 'Future 5회',
@@ -838,7 +1069,7 @@ export const certs: Cert[] = [
         applyTo: '2026-09-12',
         examDate: '2026-09-19',
         resultDate: '2026-10-03',
-        note: '3급·2급·1급이 한 회차로 함께 선다.',
+        note: '온라인/오프라인, 3급·2급·1급',
       },
       {
         round: 'Junior 5회',
@@ -846,15 +1077,7 @@ export const certs: Cert[] = [
         applyTo: '2026-09-12',
         examDate: '2026-09-19',
         resultDate: '2026-10-03',
-        note: '온라인, 10시 한 차례.',
-      },
-      {
-        round: 'Professional 4회',
-        applyFrom: '2026-10-05',
-        applyTo: '2026-10-23',
-        examDate: '2026-10-30',
-        resultDate: '2026-11-14',
-        note: '온라인. 30일·31일 이틀, 14시.',
+        note: '온라인',
       },
       {
         round: 'Associate 5회',
@@ -862,7 +1085,63 @@ export const certs: Cert[] = [
         applyTo: '2026-10-23',
         examDate: '2026-10-30',
         resultDate: '2026-11-14',
-        note: '온라인·오프라인. 오프라인 접수는 10월 16일에 먼저 닫힌다.',
+        note: '온라인/오프라인, 오프라인 접수 10.16까지. 10월 30일·31일 이틀',
+      },
+      {
+        round: 'Basic 5회',
+        applyFrom: '2026-10-05',
+        applyTo: '2026-10-23',
+        examDate: '2026-10-30',
+        resultDate: '2026-11-14',
+        note: '온라인. 10월 30일·31일 이틀',
+      },
+      {
+        round: 'Professional 4회',
+        applyFrom: '2026-10-05',
+        applyTo: '2026-10-23',
+        examDate: '2026-10-30',
+        resultDate: '2026-11-14',
+        note: '온라인. 10월 30일·31일 이틀',
+      },
+      {
+        round: 'Future 6회',
+        applyFrom: '2026-10-26',
+        applyTo: '2026-11-21',
+        examDate: '2026-11-28',
+        resultDate: '2026-12-12',
+        note: '온라인/오프라인, 3급·2급·1급',
+      },
+      {
+        round: 'Junior 6회',
+        applyFrom: '2026-10-26',
+        applyTo: '2026-11-21',
+        examDate: '2026-11-28',
+        resultDate: '2026-12-12',
+        note: '온라인',
+      },
+      {
+        round: 'Associate 완화검정 4회',
+        applyFrom: '2026-11-16',
+        applyTo: '2026-12-04',
+        examDate: '2026-12-12',
+        resultDate: '2026-12-26',
+        note: '온라인',
+      },
+      {
+        round: 'Associate 6회',
+        applyFrom: '2026-11-23',
+        applyTo: '2026-12-11',
+        examDate: '2026-12-18',
+        resultDate: '2027-01-02',
+        note: '온라인. 12월 18일·19일 이틀',
+      },
+      {
+        round: 'Basic 6회',
+        applyFrom: '2026-11-23',
+        applyTo: '2026-12-11',
+        examDate: '2026-12-18',
+        resultDate: '2027-01-02',
+        note: '온라인. 12월 18일·19일 이틀',
       },
     ],
     scheduleUrl: 'https://aice.study/certi/examSchedule',
@@ -1947,6 +2226,23 @@ export const certs: Cert[] = [
       '기간 중에만 가능하며 시험 연기제도는 운영하지 않는다. 시험 시작시간 10:00, 결과발표 시간 10:00(사정에 따라 변동 가능). 취득 절차는 8단계다 — ' +
       '응시자격 자가진단 → 수험원서 제출·수수료 납부 → 수험표 발급 → 응시 → 결과 확인 → (SQLP는 여기서 끝나지 않는다) 응시자격 심사를 위한 증빙서류 ' +
       '제출 → 응시자격 심사 → 심사 결과 발표. 증빙서류 제출 시기는 자격검정 회차별로 별도 공지되며 홈페이지 시험결과 페이지에서 온라인 제출한다.',
+    schedule: [
+      {
+        round: '제54회',
+        applyFrom: '2026-02-02',
+        applyTo: '2026-02-06',
+        examDate: '2026-03-07',
+        resultDate: '2026-04-03',
+      },
+      {
+        round: '제55회',
+        applyFrom: '2026-07-20',
+        applyTo: '2026-07-24',
+        examDate: '2026-08-22',
+        resultDate: '2026-09-18',
+      },
+    ],
+    scheduleUrl: 'https://www.dataq.or.kr/www/accept/schedule.do',
     fee:
       '검정수수료 100,000원 (SQLD는 50,000원, DAP 100,000원과 동일 수준). 납부방법은 신용카드·계좌이체. 환불 기준은 접수 기간 마감일 ' +
       '17:59:59까지 전액(100%) 환불, 접수 마감 이후부터 검정 시행 5일 전 17:59:59까지 50% 환불, 검정 시행 5일 전 18:00:00 이후 ' +
@@ -2364,15 +2660,34 @@ export function certsIn(region: CertRegion): Cert[] {
  * 판단, 테스트)에서 쓰기 때문입니다.
  */
 /**
- * 오늘 이후의 회차만, 가까운 순서로.
+ * 회차를 연도별로 묶어, 연도는 최근이 위로·회차는 이른 것이 위로.
  *
- * 지난 회차를 화면에서 접는 일을 **여기 한 곳에서** 합니다. 목록·상세가 각자
- * 거르면 한쪽만 고쳐지고, 지난 일정이 남아 있는 화면은 없는 것보다 나쁩니다.
+ * 묶는 일을 **여기 한 곳에서** 합니다. 화면이 직접 나누면 목록·상세가 따로
+ * 놀고, 정렬이 어긋난 일정표는 없는 것보다 나쁩니다.
  */
-export function upcomingSessions(cert: Cert, today = new Date().toISOString().slice(0, 10)): CertExamSession[] {
+export function sessionsByYear(cert: Cert): { year: string; sessions: CertExamSession[] }[] {
+  const years = new Map<string, CertExamSession[]>();
+  for (const session of cert.schedule ?? []) {
+    const year = session.examDate.slice(0, 4);
+    years.set(year, [...(years.get(year) ?? []), session]);
+  }
+
+  return [...years.entries()]
+    .sort((a, b) => b[0].localeCompare(a[0]))
+    .map(([year, sessions]) => ({
+      year,
+      sessions: [...sessions].sort((a, b) => a.examDate.localeCompare(b.examDate)),
+    }));
+}
+
+/** 가장 가까운 다음 회차. 표에서 「다음」을 붙일 한 줄을 고르는 데 씁니다. */
+export function nextSession(
+  cert: Cert,
+  today = new Date().toISOString().slice(0, 10),
+): CertExamSession | undefined {
   return (cert.schedule ?? [])
     .filter((session) => session.examDate >= today)
-    .sort((a, b) => a.examDate.localeCompare(b.examDate));
+    .sort((a, b) => a.examDate.localeCompare(b.examDate))[0];
 }
 
 export function studyCount(cert: Cert): number {
