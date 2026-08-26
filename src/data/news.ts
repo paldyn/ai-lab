@@ -172,6 +172,30 @@ export const globalNewsUpdatedAt = '2026-08-25';
  */
 const entries: NewsItem[] = [
   {
+    id: 'intelligent-transcription-with-gemini-3-5-transcribe',
+    source: 'Google DeepMind',
+    kind: 'model',
+    title: 'Google, 음성 전사 모델 Gemini 3.5 Transcribe 공개',
+    summary:
+      '구글이 음성을 정돈된 텍스트로 바로 옮기는 Gemini 3.5 Transcribe를 공개 프리뷰로 내놨다. 85개가 넘는 언어를 자동 감지하고, ' +
+      '단어 오류율은 스트리밍 4.0%·비스트리밍 2.6%이며 최종 전사까지 걸리는 시간이 Chirp 3보다 70% 짧다.',
+    publishedAt: '2026-08-26',
+    collectedAt: '2026-08-27',
+    category: 'Multimodal',
+    signal: '음성 전사',
+    url: 'https://deepmind.google/blog/intelligent-transcription-with-gemini-3-5-transcribe',
+    model: {
+      family: 'Gemini',
+      name: 'Gemini 3.5 Transcribe',
+      kind: '신규 모델',
+      status: '제한 공개',
+      useCase: '음성 전사와 실시간 음성 인터페이스',
+      headline: '85개 언어를 자동 감지하는 스트리밍·녹음 겸용 전사 모델',
+      logo: 'assets/gemini.svg',
+      tone: 'gemini',
+    },
+  },
+  {
     id: 'the-full-stack-behind-abundant-intelligence',
     source: 'OpenAI',
     kind: 'company',

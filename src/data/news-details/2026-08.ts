@@ -2,6 +2,22 @@ import type { NewsDetail } from '../news';
 
 /** 2026-08 발표의 모달 본문. 목록은 news.ts에 있습니다. */
 export const details: Record<string, NewsDetail> = {
+  'intelligent-transcription-with-gemini-3-5-transcribe': {
+    points: [
+      '원본 오디오를 서식이 갖춰진 텍스트로 바로 옮기고 군말과 자기 수정을 걷어낸다',
+      '85개가 넘는 언어를 자동으로 감지하며 스트리밍 도중 언어가 바뀌어도 이어서 처리한다',
+      '단어 오류율은 스트리밍 4.0%, 비스트리밍 2.6%다',
+      '다국어 FLEURS 벤치마크에서는 스트리밍 5.50%, 비스트리밍 5.04%를 기록했다',
+      '최종 전사까지 걸리는 시간이 Chirp 3보다 70% 짧다',
+      '녹음 파일에서 화자 세 명까지 타임스탬프와 함께 구분하고 넷 이상은 실험 기능이다',
+      '실시간은 Live API의 gemini-3.5-transcribe-live로, 녹음 파일은 Interactions API로 나뉜다',
+      'AI Studio·Antigravity에 공개 프리뷰로 올랐고 macOS Gemini 앱과 Gboard에도 들어갔다. 가격은 밝히지 않았다',
+    ],
+    commentary:
+      '전사는 오래 Chirp 계열이 맡던 자리인데 이번에는 Gemini 본체의 이름을 달고 나왔다. 군말 제거와 서식 정리를 모델이 직접 하면 ' +
+      '뒤에 붙이던 후처리가 통째로 줄고, 함수 호출까지 되니 전사가 음성 에이전트의 입구 노릇을 하게 된다. 가격을 밝히지 않아 ' +
+      '실제 채택은 단가에서 갈릴 것이다.',
+  },
   'the-full-stack-behind-abundant-intelligence': {
     points: [
       '데이터센터와 칩, 프런티어 모델, 개발자 플랫폼, 소비자·기업 제품, AI 네이티브 기기를 한 통합 시스템으로 본다고 밝혔다',
