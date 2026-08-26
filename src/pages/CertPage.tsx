@@ -63,6 +63,33 @@ function dayOf(iso: string, shownYear?: string): string {
 }
 
 /**
+ * 회차의 지금 상태.
+ *
+ * 표를 여는 사람이 줄마다 묻는 것은 하나입니다 — **지금 신청할 수 있는가.**
+ * 날짜만 늘어놓으면 그 답을 머릿속에서 계산해야 하고, 접수가 이미 끝났는데
+ * 시험일이 남은 회차에서 특히 헷갈립니다.
+ *
+ * 값은 오늘 날짜에 달려 있습니다. 프리렌더된 HTML은 빌드한 날의 상태를 담고
+ * 있다가 화면에서 다시 계산됩니다 — 루틴이 매일 빌드하므로 어긋나야 하루입니다.
+ */
+type SessionState = 'done' | 'open' | 'before' | 'closed';
+
+const STATE_LABEL: Record<Exclude<SessionState, 'done'>, string> = {
+  before: '접수 전',
+  open: '접수 중',
+  closed: '접수 마감',
+};
+
+function stateOf(session: CertExamSession, today: string): SessionState | undefined {
+  if (session.examDate < today) return 'done';
+  // 접수 날짜를 모르면 상태도 모릅니다. 「접수 중」으로 단정하지 않습니다.
+  if (!session.applyFrom && !session.applyTo) return undefined;
+  if (session.applyFrom && today < session.applyFrom) return 'before';
+  if (session.applyTo && today > session.applyTo) return 'closed';
+  return 'open';
+}
+
+/**
  * 일정 표의 칸.
  *
  * 시행처 표를 그대로 옮기면 자격증마다 칸이 다릅니다 — 빅데이터분석기사에는
@@ -74,7 +101,7 @@ interface ScheduleColumn {
   key: string;
   label: string;
   has: (session: CertExamSession) => boolean;
-  cell: (session: CertExamSession, year: string, today: string, done: boolean) => ReactNode;
+  cell: (session: CertExamSession, year: string, today: string) => ReactNode;
 }
 
 const SCHEDULE_COLUMNS: ScheduleColumn[] = [
@@ -83,18 +110,21 @@ const SCHEDULE_COLUMNS: ScheduleColumn[] = [
     label: '접수',
     has: (session) => Boolean(session.applyFrom ?? session.applyTo),
     /*
-      시험일은 남았는데 접수가 이미 끝난 회차가 있습니다 — 빅데이터분석기사
-      필기가 그렇습니다. 그 줄을 그냥 두면 「아직 신청할 수 있다」로 읽혀서
-      표시를 답니다. 이미 치른 회차에는 붙이지 않습니다 — 당연한 말이 됩니다.
+      접수 기간 옆에 지금 상태를 답니다. 이미 치른 회차에는 붙이지 않습니다 —
+      당연한 말이 됩니다.
     */
-    cell: (session, year, today, done) => (
-      <>
-        {period(session.applyFrom, session.applyTo, year)}
-        {!done && session.applyTo && session.applyTo < today && (
-          <span className="cert-schedule-closed">마감</span>
-        )}
-      </>
-    ),
+    cell: (session, year, today) => {
+      const state = stateOf(session, today);
+
+      return (
+        <>
+          {period(session.applyFrom, session.applyTo, year)}
+          {state && state !== 'done' && (
+            <span className={`cert-schedule-state is-${state}`}>{STATE_LABEL[state]}</span>
+          )}
+        </>
+      );
+    },
   },
   {
     key: 'ticket',
@@ -367,13 +397,10 @@ function CertView({ cert }: { cert: Cert }) {
                             key={`${session.round}-${session.examDate}`}
                             className={[isNext ? 'is-next' : '', done ? 'is-done' : ''].filter(Boolean).join(' ')}
                           >
-                            <th scope="row">
-                              {session.round}
-                              {isNext && <span className="cert-schedule-next">다음</span>}
-                            </th>
+                            <th scope="row">{session.round}</th>
                             {columns.map((column) => (
                               <td key={column.key} className={`is-${column.key}`}>
-                                {column.cell(session, group.year, today, done)}
+                                {column.cell(session, group.year, today)}
                               </td>
                             ))}
                           </tr>

@@ -61,6 +61,13 @@
   --star: #f2a516;
   --star-empty: #c4c4c4;
 
+  /*
+    일정 표의 상태 색. 신호등과 같은 뜻으로 읽히도록 초록·회색·붉은색 셋만 씁니다.
+    브랜드 주황은 「지금 볼 자리」를 짚는 데 이미 쓰고 있어 상태에는 안 씁니다.
+  */
+  --state-open: #1d7a4d;
+  --state-closed: #b0453a;
+
   --source-anthropic: #d97757;
   --source-anthropic-text: #b8471f;
   --source-openai: #111111;
@@ -105,6 +112,9 @@
 
   --star: #ffc53d;
   --star-empty: #5a5a5a;
+
+  --state-open: #4bd489;
+  --state-closed: #ff8a7a;
 
   --source-anthropic: #d97757;
   --source-anthropic-text: #e08a6a;
@@ -5170,13 +5180,28 @@ input:focus-visible {
   padding-right: 0;
 }
 
+/*
+  머리글은 가운데로 세우고 본문보다 밝게 둡니다. 잔글씨 회색으로 두었더니 칸이
+  일곱까지 늘었을 때 어느 열이 무엇인지 훑기가 어려웠습니다.
+*/
 .cert-schedule thead th {
   border-bottom-color: var(--text-nav-icon);
-  color: var(--text-muted);
+  color: var(--text-strong);
   font-family: 'JetBrains Mono', ui-monospace, monospace;
   font-size: 10px;
-  font-weight: 400;
+  font-weight: 500;
   letter-spacing: 0.06em;
+  text-align: center;
+}
+
+/* 회차와 비고는 글이라 왼쪽에 붙입니다. 나머지는 날짜라 가운데가 읽기 좋습니다. */
+.cert-schedule thead th:first-child,
+.cert-schedule thead th:last-child {
+  text-align: left;
+}
+
+.cert-schedule tbody td:not(.is-note) {
+  text-align: center;
 }
 
 .cert-schedule tbody th {
@@ -5216,9 +5241,14 @@ input:focus-visible {
   겹칩니다 — 바탕색, 왼쪽 띠, 그리고 채운 꼬리표. 색만으로는 지난 줄과의 차이가
   흐린 화면에서 안 보이고, 꼬리표만으로는 줄 전체가 안 짚힙니다.
 */
+/*
+  가장 가까운 회차. 바탕은 무채색 한 단계만 올리고 왼쪽에 주황 띠를 세웁니다 —
+  주황을 넓게 깔았더니 표가 아니라 경고문처럼 보였고 상태 꼬리표의 색과도
+  다퉜습니다. 「어느 줄인가」는 띠가, 「그 줄이 어떤 상태인가」는 꼬리표가 맡습니다.
+*/
 .cert-schedule tr.is-next th,
 .cert-schedule tr.is-next td {
-  background: color-mix(in srgb, var(--brand) 12%, var(--bg));
+  background: color-mix(in srgb, var(--text) 7%, var(--bg));
   color: var(--text-strong);
 }
 
@@ -5227,28 +5257,34 @@ input:focus-visible {
   padding-left: 9px;
 }
 
-/* 시험일은 남았는데 접수가 끝난 회차. */
-.cert-schedule-closed {
+/*
+  지금 신청할 수 있는가. 표를 여는 사람이 줄마다 묻는 것이 그것이라 접수 기간
+  옆에 붙입니다. 색은 셋뿐입니다 — 열려 있으면 초록, 아직이면 회색, 닫혔으면 붉은색.
+*/
+.cert-schedule-state {
+  display: inline-block;
   margin-left: 7px;
-  border: 1px solid var(--border);
+  border: 1px solid currentcolor;
+  border-radius: 2px;
   padding: 1px 5px;
-  color: var(--text-muted);
   font-family: 'JetBrains Mono', ui-monospace, monospace;
   font-size: 9px;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.02em;
+  vertical-align: 1px;
 }
 
-.cert-schedule-next {
-  margin-left: 8px;
-  border-radius: 2px;
-  background: var(--brand);
-  padding: 2px 6px;
-  color: #ffffff;
-  font-family: 'JetBrains Mono', ui-monospace, monospace;
-  font-size: 9px;
-  font-weight: 500;
-  letter-spacing: 0.04em;
-  vertical-align: 1px;
+.cert-schedule-state.is-open {
+  background: color-mix(in srgb, var(--state-open) 12%, transparent);
+  color: var(--state-open);
+}
+
+.cert-schedule-state.is-before {
+  border-color: var(--border);
+  color: var(--text-muted);
+}
+
+.cert-schedule-state.is-closed {
+  color: var(--state-closed);
 }
 
 /* 비고는 문장이라 다른 칸처럼 한 줄로 붙들지 않습니다. */
