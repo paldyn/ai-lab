@@ -418,8 +418,10 @@ AI·데이터 자격증 열넷을 `/learn/certs`에 세운다. **글이 아니�
 정확한 날짜는 `officialUrl`로 보낸다.
 
 **회차는 `schedule`에 구조로 담는다.** 상세 화면의 「시험 일정」 표가 그것이다 —
-`round`·`applyFrom`·`applyTo`·`examDate`·`resultDate`를 `YYYY-MM-DD`로 적고, 일정이
-실린 시행처 페이지를 `scheduleUrl`에 둔다. 확정 공고만 담고 「예정」·「미정」은 넣지
+`round`·`applyFrom`·`applyTo`·`ticketDate`·`examDate`·`previewFrom`·`previewTo`·
+`resultDate`·`documentFrom`·`documentTo`를 `YYYY-MM-DD`로 적고, 일정이 실린 시행처
+페이지를 `scheduleUrl`에 둔다. 화면은 **그 자격증이 값을 가진 칸만** 열로 세운다 —
+없는 칸을 「—」로 채우면 표가 빈칸으로 뒤덮인다. `note`에는 날짜를 적지 않는다. 확정 공고만 담고 「예정」·「미정」은 넣지
 않는다. **지난 회차도 남긴다** — 화면이 연도별로 전부 보여 주고 이미 치른 줄은 흐리게
 그린다(`sessionsByYear()`가 묶고 `nextSession()`이 「다음」을 짚는다). 두 해보다
 오래된 것만 갱신 루틴이 지운다. 상시 시행이라 회차가 없는 자격증은 `schedule`을 아예 두지 않는다 — 빈

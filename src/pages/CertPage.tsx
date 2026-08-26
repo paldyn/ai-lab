@@ -1,11 +1,18 @@
-import { useMemo } from 'react';
+import { useMemo, type ReactNode } from 'react';
 import { ArrowLeft, ArrowUpRight } from 'lucide-react';
 import { Link, Navigate, useParams } from 'react-router';
 import { CertMark } from '../components/CertMark';
 import { useActiveHeading } from '../lib/activeHeading';
 import { CertStars } from '../components/CertStars';
 import { Seo } from '../components/Seo';
-import { certById, nextSession, sessionsByYear, type Cert, type CertStudyItem } from '../data/certs';
+import {
+  certById,
+  nextSession,
+  sessionsByYear,
+  type Cert,
+  type CertExamSession,
+  type CertStudyItem,
+} from '../data/certs';
 import { prepFor } from '../data/certPrep';
 import { getArticleBySlug } from '../data/articles';
 
@@ -55,6 +62,82 @@ function dayOf(iso: string, shownYear?: string): string {
   return shownYear && iso.slice(0, 4) !== shownYear ? `${year}. ${label}` : label;
 }
 
+/**
+ * 일정 표의 칸.
+ *
+ * 시행처 표를 그대로 옮기면 자격증마다 칸이 다릅니다 — 빅데이터분석기사에는
+ * 수험표 발급일과 서류 제출 기간이 있고 ADsP에는 없습니다. 그래서 칸을 미리
+ * 박아 두지 않고 **그 자격증이 실제로 가진 값만** 세웁니다. 순서는 시행처 표와
+ * 같은 시간 순입니다 — 접수 → 수험표 → 시험 → 사전점수공개 → 발표 → 서류제출.
+ */
+interface ScheduleColumn {
+  key: string;
+  label: string;
+  has: (session: CertExamSession) => boolean;
+  cell: (session: CertExamSession, year: string, today: string, done: boolean) => ReactNode;
+}
+
+const SCHEDULE_COLUMNS: ScheduleColumn[] = [
+  {
+    key: 'apply',
+    label: '접수',
+    has: (session) => Boolean(session.applyFrom ?? session.applyTo),
+    /*
+      시험일은 남았는데 접수가 이미 끝난 회차가 있습니다 — 빅데이터분석기사
+      필기가 그렇습니다. 그 줄을 그냥 두면 「아직 신청할 수 있다」로 읽혀서
+      표시를 답니다. 이미 치른 회차에는 붙이지 않습니다 — 당연한 말이 됩니다.
+    */
+    cell: (session, year, today, done) => (
+      <>
+        {period(session.applyFrom, session.applyTo, year)}
+        {!done && session.applyTo && session.applyTo < today && (
+          <span className="cert-schedule-closed">마감</span>
+        )}
+      </>
+    ),
+  },
+  {
+    key: 'ticket',
+    label: '수험표',
+    has: (session) => Boolean(session.ticketDate),
+    cell: (session, year) => (session.ticketDate ? dayOf(session.ticketDate, year) : '—'),
+  },
+  {
+    key: 'exam',
+    label: '시험일',
+    has: () => true,
+    cell: (session, year) => dayOf(session.examDate, year),
+  },
+  {
+    key: 'preview',
+    label: '사전점수공개',
+    has: (session) => Boolean(session.previewFrom ?? session.previewTo),
+    cell: (session, year) => period(session.previewFrom, session.previewTo, year),
+  },
+  {
+    key: 'result',
+    label: '발표',
+    has: (session) => Boolean(session.resultDate),
+    cell: (session, year) => (session.resultDate ? dayOf(session.resultDate, year) : '—'),
+  },
+  {
+    key: 'document',
+    label: '서류제출',
+    has: (session) => Boolean(session.documentFrom ?? session.documentTo),
+    cell: (session, year) => period(session.documentFrom, session.documentTo, year),
+  },
+  {
+    key: 'note',
+    label: '비고',
+    has: (session) => Boolean(session.note),
+    cell: (session) => session.note ?? '—',
+  },
+];
+
+function scheduleColumns(schedule: CertExamSession[]): ScheduleColumn[] {
+  return SCHEDULE_COLUMNS.filter((column) => schedule.some((session) => column.has(session)));
+}
+
 function period(from?: string, to?: string, shownYear?: string): string {
   if (!from && !to) return '—';
   if (from && to) return `${dayOf(from, shownYear)} ~ ${dayOf(to, shownYear)}`;
@@ -82,6 +165,7 @@ function CertView({ cert }: { cert: Cert }) {
   const today = new Date().toISOString().slice(0, 10);
   const years = sessionsByYear(cert);
   const next = nextSession(cert, today);
+  const columns = useMemo(() => scheduleColumns(cert.schedule ?? []), [cert]);
 
   /*
     목차에 세울 절. 있는 절만 담습니다 — 학습 경로가 아직 없는 자격증도 있고,
@@ -252,6 +336,11 @@ function CertView({ cert }: { cert: Cert }) {
               **연도 전체를 보여 줍니다.** 지난 회차를 접어 두면 「올해 몇 번
               있었는가」가 안 보이는데, 회차가 정해진 시험은 그 리듬이 곧 계획의
               근거입니다. 지난 줄은 흐리게 두고 다음 회차 한 줄만 짚습니다.
+
+              **칸은 자격증마다 다릅니다.** 시행처 표에 수험표 발급일이 있는
+              자격증이 있고 없는 자격증이 있는데, 없는 칸을 「—」로 채우면 표가
+              빈칸으로 뒤덮입니다. 그 자격증의 회차 중 하나라도 값을 가진 칸만
+              세웁니다.
             */}
             {years.map((group) => (
               <div key={group.year} className="cert-schedule-year">
@@ -261,9 +350,11 @@ function CertView({ cert }: { cert: Cert }) {
                     <thead>
                       <tr>
                         <th scope="col">회차</th>
-                        <th scope="col">접수</th>
-                        <th scope="col">시험일</th>
-                        <th scope="col">발표</th>
+                        {columns.map((column) => (
+                          <th key={column.key} scope="col">
+                            {column.label}
+                          </th>
+                        ))}
                       </tr>
                     </thead>
                     <tbody>
@@ -277,26 +368,14 @@ function CertView({ cert }: { cert: Cert }) {
                             className={[isNext ? 'is-next' : '', done ? 'is-done' : ''].filter(Boolean).join(' ')}
                           >
                             <th scope="row">
-                              <span className="cert-schedule-round">
-                                {session.round}
-                                {isNext && <span className="cert-schedule-next">다음</span>}
-                              </span>
-                              {session.note && <span className="cert-schedule-note">{session.note}</span>}
+                              {session.round}
+                              {isNext && <span className="cert-schedule-next">다음</span>}
                             </th>
-                            {/*
-                              시험일은 남았는데 접수가 이미 끝난 회차가 있습니다 —
-                              빅데이터분석기사 필기가 그렇습니다. 그 줄을 그냥 두면
-                              「아직 신청할 수 있다」로 읽혀서 표시를 답니다. 이미
-                              치른 회차에는 붙이지 않습니다 — 당연한 말이 됩니다.
-                            */}
-                            <td>
-                              {period(session.applyFrom, session.applyTo, group.year)}
-                              {!done && session.applyTo && session.applyTo < today && (
-                                <span className="cert-schedule-closed">마감</span>
-                              )}
-                            </td>
-                            <td>{dayOf(session.examDate, group.year)}</td>
-                            <td>{session.resultDate ? dayOf(session.resultDate, group.year) : '—'}</td>
+                            {columns.map((column) => (
+                              <td key={column.key} className={`is-${column.key}`}>
+                                {column.cell(session, group.year, today, done)}
+                              </td>
+                            ))}
                           </tr>
                         );
                       })}

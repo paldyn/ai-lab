@@ -5150,15 +5150,24 @@ input:focus-visible {
   width: 100%;
   min-width: 460px;
   border-collapse: collapse;
-  font-size: 13.5px;
+  font-size: 13px;
 }
 
+/*
+  칸이 일곱까지 늘어납니다(빅데이터분석기사). 760px 본문 폭에 들어가도록 여백을
+  줄여 두었고, 그래도 넘치는 폭에서는 표만 가로로 구릅니다.
+*/
 .cert-schedule th,
 .cert-schedule td {
   border-bottom: 1px solid var(--border);
-  padding: 11px 14px 11px 0;
+  padding: 10px 11px 10px 0;
   text-align: left;
   white-space: nowrap;
+}
+
+.cert-schedule th:last-child,
+.cert-schedule td:last-child {
+  padding-right: 0;
 }
 
 .cert-schedule thead th {
@@ -5202,37 +5211,20 @@ input:focus-visible {
   color: var(--text-muted);
 }
 
-.cert-schedule tr.is-done .cert-schedule-note {
-  display: none;
-}
-
-/* 가장 가까운 회차. 표를 훑을 때 첫 줄이 어디인지가 곧 답입니다. */
+/*
+  가장 가까운 회차. 표를 훑을 때 「지금 어느 줄인가」가 곧 답이라 세 가지를
+  겹칩니다 — 바탕색, 왼쪽 띠, 그리고 채운 꼬리표. 색만으로는 지난 줄과의 차이가
+  흐린 화면에서 안 보이고, 꼬리표만으로는 줄 전체가 안 짚힙니다.
+*/
 .cert-schedule tr.is-next th,
 .cert-schedule tr.is-next td {
-  background: color-mix(in srgb, var(--brand) 7%, var(--bg));
+  background: color-mix(in srgb, var(--brand) 12%, var(--bg));
   color: var(--text-strong);
 }
 
-/* 회차 이름과 그 아래 한 줄. 표 칸 안에서 위아래로 쌓습니다. */
-.cert-schedule tbody th {
-  white-space: normal;
-}
-
-.cert-schedule-round {
-  display: flex;
-  align-items: center;
-  white-space: nowrap;
-}
-
-.cert-schedule-note {
-  display: block;
-  max-width: 30ch;
-  margin-top: 3px;
-  color: var(--text-muted);
-  font-size: 11px;
-  font-weight: 400;
-  line-height: 1.6;
-  white-space: normal;
+.cert-schedule tr.is-next th[scope='row'] {
+  box-shadow: inset 2px 0 0 var(--brand);
+  padding-left: 9px;
 }
 
 /* 시험일은 남았는데 접수가 끝난 회차. */
@@ -5247,14 +5239,24 @@ input:focus-visible {
 }
 
 .cert-schedule-next {
-  margin-left: 7px;
-  border: 1px solid var(--brand);
-  padding: 1px 5px;
-  color: var(--brand-text);
+  margin-left: 8px;
+  border-radius: 2px;
+  background: var(--brand);
+  padding: 2px 6px;
+  color: #ffffff;
   font-family: 'JetBrains Mono', ui-monospace, monospace;
   font-size: 9px;
-  font-weight: 400;
+  font-weight: 500;
   letter-spacing: 0.04em;
+  vertical-align: 1px;
+}
+
+/* 비고는 문장이라 다른 칸처럼 한 줄로 붙들지 않습니다. */
+.cert-schedule td.is-note {
+  max-width: 22ch;
+  color: var(--text-muted);
+  font-size: 12px;
+  white-space: normal;
 }
 
 .cert-schedule-foot {

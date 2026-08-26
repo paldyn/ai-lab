@@ -194,17 +194,57 @@ describe('자격증 데이터', () => {
     expect(bad).toEqual([]);
   });
 
-  it('접수·시험·발표 순서가 뒤집히지 않는다', () => {
+  /*
+    시행처 표를 손으로 옮기는 값이라 **한 칸씩 밀려 읽는 것**이 가장 흔한 사고입니다.
+    밀리면 대개 시간 순서가 깨지므로 사슬 전체를 한 줄로 세워 검사합니다 —
+    접수 시작 → 마감 → 수험표 → 시험 → 사전점수공개 → 발표 → 서류제출.
+    없는 칸은 건너뜁니다(자격증마다 있는 칸이 다릅니다).
+  */
+  it('일정 칸이 시간 순서대로다', () => {
+    const CHAIN = [
+      ['applyFrom', '접수 시작'],
+      ['applyTo', '접수 마감'],
+      ['ticketDate', '수험표'],
+      ['examDate', '시험일'],
+      ['previewFrom', '사전점수공개 시작'],
+      ['previewTo', '사전점수공개 마감'],
+      ['resultDate', '발표'],
+      ['documentFrom', '서류제출 시작'],
+      ['documentTo', '서류제출 마감'],
+    ] as const;
+
     const bad: string[] = [];
     for (const cert of certs) {
       for (const session of cert.schedule ?? []) {
-        const { applyFrom, applyTo, examDate, resultDate } = session;
-        if (applyFrom && applyTo && applyFrom > applyTo) bad.push(`${cert.id} ${session.round}: 접수 시작 > 마감`);
-        if (applyTo && applyTo > examDate) bad.push(`${cert.id} ${session.round}: 접수 마감 > 시험일`);
-        if (resultDate && resultDate < examDate) bad.push(`${cert.id} ${session.round}: 발표 < 시험일`);
+        const steps = CHAIN.map(([key, label]) => ({ label, value: session[key] })).filter(
+          (step) => step.value !== undefined,
+        );
+        for (let i = 0; i + 1 < steps.length; i += 1) {
+          if (steps[i].value! > steps[i + 1].value!) {
+            bad.push(
+              `${cert.id} ${session.round}: ${steps[i].label}(${steps[i].value}) > ${steps[i + 1].label}(${steps[i + 1].value})`,
+            );
+          }
+        }
       }
     }
     expect(bad).toEqual([]);
+  });
+
+  /*
+    수험표 발급일이나 서류 제출 기간은 칸이 따로 있습니다. 메모에 문장으로 적으면
+    표에서 그 칸이 안 서고 회차 이름 밑에 잔글씨로 깔립니다.
+  */
+  it('메모에 날짜를 적지 않는다', () => {
+    const leaked: string[] = [];
+    for (const cert of certs) {
+      for (const session of cert.schedule ?? []) {
+        if (session.note && /\d{1,2}\.\s?\d{1,2}(~|\s|$)|\d{4}-\d{2}-\d{2}/.test(session.note)) {
+          leaked.push(`${cert.id} ${session.round}: ${session.note}`);
+        }
+      }
+    }
+    expect(leaked).toEqual([]);
   });
 
   it('같은 회차가 두 번 들어가 있지 않다', () => {
