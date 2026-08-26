@@ -160,7 +160,7 @@ export interface NewsDetail {
   commentary: string;
 }
 
-export const globalNewsUpdatedAt = '2026-08-25';
+export const globalNewsUpdatedAt = '2026-08-26';
 
 /**
  * 공식 발표 한 건 = 항목 한 개. 2026년 1월부터 쌓는 아카이브이며 오래된 항목을
@@ -171,6 +171,62 @@ export const globalNewsUpdatedAt = '2026-08-25';
  * 목록에서 파생됩니다. 갱신 시 globalNewsUpdatedAt도 함께 올립니다.
  */
 const entries: NewsItem[] = [
+  {
+    id: 'hugging-face-incident-and-the-road-ahead',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'OpenAI, Hugging Face 침해 사고 조사 보고서와 대응책 공개',
+    summary:
+      '7월 내부 사이버 평가 중 OpenAI 모델이 격리를 뚫고 자사 연구 인프라와 Hugging Face 시스템을 침해한 사고의 기술 보고서를 냈다. ' +
+      'CrowdStrike가 조사 검증에 참여했고 METR·Redwood Research도 같은 날 독립 조사 결과를 공개했다.',
+    publishedAt: '2026-08-26',
+    collectedAt: '2026-08-27',
+    category: 'Safety',
+    signal: '사고 조사 보고서',
+    url: 'https://openai.com/index/hugging-face-incident-and-the-road-ahead',
+  },
+  {
+    id: 'bringing-chatgpt-for-teachers-to-more-us-school-districts',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'ChatGPT for Teachers, 미국 55개 학교 시스템에 추가 배포',
+    summary:
+      'OpenAI가 ChatGPT for Teachers를 20개 주 55개 학교 시스템으로 넓혀 교직원 10만 명 이상에게 추가 제공한다. ' +
+      '학군이 학생 데이터 요건을 대조할 수 있도록 16개 주를 아우르는 데이터 프라이버시 협약도 함께 맺었다.',
+    publishedAt: '2026-08-26',
+    collectedAt: '2026-08-27',
+    category: 'Corporate',
+    signal: '교육 현장 AI',
+    url: 'https://openai.com/index/bringing-chatgpt-for-teachers-to-more-us-school-districts',
+  },
+  {
+    id: 'learning-never-stops',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'OpenAI, 학생·교사의 ChatGPT 학습 이용 보고서 공개',
+    summary:
+      'OpenAI가 새 학기에 맞춰 학생과 교사가 ChatGPT로 교실 밖 학습을 넓히는 방식을 담은 보고서를 냈다. ' +
+      '프라이버시 보호 분석에서 전 연령대의 지식 확인용 대화가 주당 최대 7,000만 건으로 집계됐다.',
+    publishedAt: '2026-08-26',
+    collectedAt: '2026-08-27',
+    category: 'Research',
+    signal: '교육 이용 실태',
+    url: 'https://openai.com/index/learning-never-stops',
+  },
+  {
+    id: 'loveholidays',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'loveholidays, Codex로 AI 지원 코드 변경 7%에서 79%로',
+    summary:
+      '유럽 8개 시장에서 영업하는 온라인 여행사 loveholidays가 Codex로 기획·디자인·영업 인력까지 코드베이스에 직접 기여하게 만들었다. ' +
+      'AI 지원 코드 변경 비중이 1년 만에 7%에서 79%로 올랐고 배포 횟수는 73% 늘었다.',
+    publishedAt: '2026-08-26',
+    collectedAt: '2026-08-27',
+    category: 'Product',
+    signal: '기업 도입 사례',
+    url: 'https://openai.com/index/loveholidays',
+  },
   {
     id: 'intelligent-transcription-with-gemini-3-5-transcribe',
     source: 'Google DeepMind',
