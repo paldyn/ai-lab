@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="370" viewBox="0 0 880 370" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <rect x="0" y="0" width="880" height="370" rx="12" fill="#0a0a0a"/>
+  <defs>
+    <marker id="dgArr" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#7ec8e3"/>
+    </marker>
+  </defs>
+  <text x="60" y="44" font-size="22" font-weight="700" fill="#e8e8e8">편도함수들을 벡터 하나로 묶는다</text>
+  <text x="60" y="76" font-size="13" fill="#888">f(x, y) = x² + 3xy 를 점 (1, 2)에서</text>
+
+  <rect x="60" y="120" width="200" height="70" rx="6" fill="#000000" stroke="#3a4a6e" stroke-width="1"/>
+  <text x="160" y="148" font-size="14" font-weight="600" fill="#ffffff" text-anchor="middle">x 방향 민감도</text>
+  <text x="160" y="170" font-size="13" fill="#9aa4b8" text-anchor="middle">∂f/∂x = 2x + 3y = 8</text>
+
+  <rect x="60" y="210" width="200" height="70" rx="6" fill="#000000" stroke="#3a4a6e" stroke-width="1"/>
+  <text x="160" y="238" font-size="14" font-weight="600" fill="#ffffff" text-anchor="middle">y 방향 민감도</text>
+  <text x="160" y="260" font-size="13" fill="#9aa4b8" text-anchor="middle">∂f/∂y = 3x = 3</text>
+
+  <line x1="260" y1="155" x2="350" y2="190" stroke="#7ec8e3" stroke-width="2" marker-end="url(#dgArr)"/>
+  <line x1="260" y1="245" x2="350" y2="210" stroke="#7ec8e3" stroke-width="2" marker-end="url(#dgArr)"/>
+
+  <rect x="350" y="165" width="200" height="70" rx="6" fill="#000000" stroke="#7ec8e3" stroke-width="2"/>
+  <text x="450" y="193" font-size="14" font-weight="600" fill="#ffffff" text-anchor="middle">그래디언트</text>
+  <text x="450" y="215" font-size="14" font-weight="600" fill="#7ec8e3" text-anchor="middle">∇f(1, 2) = (8, 3)</text>
+
+  <line x1="550" y1="200" x2="620" y2="200" stroke="#7ec8e3" stroke-width="2" marker-end="url(#dgArr)"/>
+
+  <rect x="620" y="140" width="200" height="120" rx="6" fill="#000000" stroke="#3a4a6e" stroke-width="1"/>
+  <text x="720" y="170" font-size="14" font-weight="600" fill="#ffffff" text-anchor="middle">선형근사 = 내적 하나</text>
+  <text x="720" y="194" font-size="14" font-weight="600" fill="#7ec8e3" text-anchor="middle">Δf ≈ ∇f · h</text>
+  <text x="720" y="218" font-size="13" fill="#9aa4b8" text-anchor="middle">h = (0.1, −0.05)</text>
+  <text x="720" y="242" font-size="13" fill="#9aa4b8" text-anchor="middle">≈ 0.8 − 0.15 = 0.65</text>
+
+  <text x="60" y="326" font-size="13" fill="#888">실제 변화는 0.645이고 오차는 0.005다 — 걸음을 반으로 줄이면 오차는 4분의 1이 된다</text>
+</svg>

@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="520" viewBox="0 0 880 520" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <rect x="0" y="0" width="880" height="520" rx="12" fill="#0a0a0a"/>
+  <text x="60" y="44" font-size="22" font-weight="700" fill="#e8e8e8">같은 p에 모델 셋을 대면 교차엔트로피가 갈린다</text>
+
+  <!-- row 0 : 참 분포 p -->
+  <text x="60" y="135" font-size="16" font-weight="600" fill="#55c555">참 분포 p</text>
+  <text x="60" y="157" font-size="13" fill="#888">실제로 나오는 빈도</text>
+  <line x1="240" y1="168" x2="564" y2="168" stroke="#444" stroke-width="1.5"/>
+  <rect x="250" y="118" width="55" height="50" fill="#55c555"/>
+  <rect x="333" y="143" width="55" height="25" fill="#55c555"/>
+  <rect x="416" y="155" width="55" height="13" fill="#55c555"/>
+  <rect x="499" y="155" width="55" height="13" fill="#55c555"/>
+  <text x="277" y="110" font-size="13" fill="#888" text-anchor="middle">0.5</text>
+  <text x="360" y="135" font-size="13" fill="#888" text-anchor="middle">0.25</text>
+  <text x="443" y="147" font-size="13" fill="#888" text-anchor="middle">0.125</text>
+  <text x="526" y="147" font-size="13" fill="#888" text-anchor="middle">0.125</text>
+  <text x="610" y="135" font-size="16" font-weight="600" fill="#e8e8e8">H(p) = 1.75 비트</text>
+  <text x="610" y="157" font-size="13" fill="#888">엔트로피 — 놀람의 평균</text>
+
+  <!-- row 1 : q = p -->
+  <text x="60" y="235" font-size="16" font-weight="600" fill="#e8e8e8">모델 q = p</text>
+  <text x="60" y="257" font-size="13" fill="#888">정확히 맞힌 모델</text>
+  <line x1="240" y1="268" x2="564" y2="268" stroke="#444" stroke-width="1.5"/>
+  <rect x="250" y="218" width="55" height="50" fill="#7ec8e3"/>
+  <rect x="333" y="243" width="55" height="25" fill="#7ec8e3"/>
+  <rect x="416" y="255" width="55" height="13" fill="#7ec8e3"/>
+  <rect x="499" y="255" width="55" height="13" fill="#7ec8e3"/>
+  <text x="610" y="235" font-size="16" font-weight="600" fill="#55c555">H(p, q) = 1.75</text>
+  <text x="610" y="257" font-size="13" fill="#888">q = p 일 때만 최솟값</text>
+
+  <!-- row 2 : uniform -->
+  <text x="60" y="335" font-size="16" font-weight="600" fill="#e8e8e8">모델 q 균등</text>
+  <text x="60" y="357" font-size="13" fill="#888">아무것도 모르는 모델</text>
+  <line x1="240" y1="368" x2="564" y2="368" stroke="#444" stroke-width="1.5"/>
+  <rect x="250" y="343" width="55" height="25" fill="#7ec8e3"/>
+  <rect x="333" y="343" width="55" height="25" fill="#7ec8e3"/>
+  <rect x="416" y="343" width="55" height="25" fill="#7ec8e3"/>
+  <rect x="499" y="343" width="55" height="25" fill="#7ec8e3"/>
+  <text x="610" y="335" font-size="16" font-weight="600" fill="#e8e8e8">H(p, q) = 2.0</text>
+  <text x="610" y="357" font-size="13" fill="#888">1.75보다 0.25 더 든다</text>
+
+  <!-- row 3 : reversed -->
+  <text x="60" y="435" font-size="16" font-weight="600" fill="#e8e8e8">모델 q 거꾸로</text>
+  <text x="60" y="457" font-size="13" fill="#888">순서를 뒤집어 아는 모델</text>
+  <line x1="240" y1="468" x2="564" y2="468" stroke="#444" stroke-width="1.5"/>
+  <rect x="250" y="455" width="55" height="13" fill="#7ec8e3"/>
+  <rect x="333" y="455" width="55" height="13" fill="#7ec8e3"/>
+  <rect x="416" y="443" width="55" height="25" fill="#7ec8e3"/>
+  <rect x="499" y="418" width="55" height="50" fill="#7ec8e3"/>
+  <text x="610" y="435" font-size="16" font-weight="600" fill="#e05555">H(p, q) = 2.625</text>
+  <text x="610" y="457" font-size="13" fill="#888">틀릴수록 값이 커진다</text>
+
+  <text x="277" y="490" font-size="13" fill="#888" text-anchor="middle">A</text>
+  <text x="360" y="490" font-size="13" fill="#888" text-anchor="middle">B</text>
+  <text x="443" y="490" font-size="13" fill="#888" text-anchor="middle">C</text>
+  <text x="526" y="490" font-size="13" fill="#888" text-anchor="middle">D</text>
+</svg>

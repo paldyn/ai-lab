@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="460" viewBox="0 0 880 460" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <rect x="0" y="0" width="880" height="460" rx="12" fill="#0a0a0a"/>
+  <defs>
+    <marker id="miArr" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#e05555"/>
+    </marker>
+  </defs>
+  <text x="60" y="44" font-size="22" font-weight="700" fill="#e8e8e8">행마다 대각선을 정답으로 두는 N개짜리 분류</text>
+  <text x="60" y="76" font-size="13" fill="#888">진짜 짝 하나가 분자, 가짜 짝 N−1개를 더한 것이 분모다</text>
+
+  <text x="280" y="128" font-size="13" fill="#888" text-anchor="middle">글 1</text>
+  <text x="340" y="128" font-size="13" fill="#888" text-anchor="middle">글 2</text>
+  <text x="400" y="128" font-size="13" fill="#888" text-anchor="middle">글 3</text>
+  <text x="460" y="128" font-size="13" fill="#888" text-anchor="middle">글 4</text>
+  <text x="520" y="128" font-size="13" fill="#888" text-anchor="middle">글 5</text>
+
+  <text x="240" y="169" font-size="13" fill="#888" text-anchor="end">이미지 1</text>
+  <text x="240" y="217" font-size="13" fill="#888" text-anchor="end">이미지 2</text>
+  <text x="240" y="265" font-size="13" fill="#888" text-anchor="end">이미지 3</text>
+  <text x="240" y="313" font-size="13" fill="#888" text-anchor="end">이미지 4</text>
+  <text x="240" y="361" font-size="13" fill="#888" text-anchor="end">이미지 5</text>
+
+  <rect x="250" y="140" width="60" height="48" fill="#55c555" fill-opacity="0.35" stroke="#444" stroke-width="1"/>
+  <rect x="310" y="140" width="60" height="48" fill="#7ec8e3" fill-opacity="0.08" stroke="#444" stroke-width="1"/>
+  <rect x="370" y="140" width="60" height="48" fill="#7ec8e3" fill-opacity="0.08" stroke="#444" stroke-width="1"/>
+  <rect x="430" y="140" width="60" height="48" fill="#7ec8e3" fill-opacity="0.08" stroke="#444" stroke-width="1"/>
+  <rect x="490" y="140" width="60" height="48" fill="#7ec8e3" fill-opacity="0.08" stroke="#444" stroke-width="1"/>
+
+  <rect x="250" y="188" width="60" height="48" fill="#7ec8e3" fill-opacity="0.08" stroke="#444" stroke-width="1"/>
+  <rect x="310" y="188" width="60" height="48" fill="#55c555" fill-opacity="0.35" stroke="#444" stroke-width="1"/>
+  <rect x="370" y="188" width="60" height="48" fill="#7ec8e3" fill-opacity="0.08" stroke="#444" stroke-width="1"/>
+  <rect x="430" y="188" width="60" height="48" fill="#7ec8e3" fill-opacity="0.08" stroke="#444" stroke-width="1"/>
+  <rect x="490" y="188" width="60" height="48" fill="#7ec8e3" fill-opacity="0.08" stroke="#444" stroke-width="1"/>
+
+  <rect x="250" y="236" width="60" height="48" fill="#7ec8e3" fill-opacity="0.08" stroke="#444" stroke-width="1"/>
+  <rect x="310" y="236" width="60" height="48" fill="#7ec8e3" fill-opacity="0.08" stroke="#444" stroke-width="1"/>
+  <rect x="370" y="236" width="60" height="48" fill="#55c555" fill-opacity="0.35" stroke="#444" stroke-width="1"/>
+  <rect x="430" y="236" width="60" height="48" fill="#7ec8e3" fill-opacity="0.08" stroke="#444" stroke-width="1"/>
+  <rect x="490" y="236" width="60" height="48" fill="#7ec8e3" fill-opacity="0.08" stroke="#444" stroke-width="1"/>
+
+  <rect x="250" y="284" width="60" height="48" fill="#7ec8e3" fill-opacity="0.08" stroke="#444" stroke-width="1"/>
+  <rect x="310" y="284" width="60" height="48" fill="#7ec8e3" fill-opacity="0.08" stroke="#444" stroke-width="1"/>
+  <rect x="370" y="284" width="60" height="48" fill="#7ec8e3" fill-opacity="0.08" stroke="#444" stroke-width="1"/>
+  <rect x="430" y="284" width="60" height="48" fill="#55c555" fill-opacity="0.35" stroke="#444" stroke-width="1"/>
+  <rect x="490" y="284" width="60" height="48" fill="#7ec8e3" fill-opacity="0.08" stroke="#444" stroke-width="1"/>
+
+  <rect x="250" y="332" width="60" height="48" fill="#7ec8e3" fill-opacity="0.08" stroke="#444" stroke-width="1"/>
+  <rect x="310" y="332" width="60" height="48" fill="#7ec8e3" fill-opacity="0.08" stroke="#444" stroke-width="1"/>
+  <rect x="370" y="332" width="60" height="48" fill="#7ec8e3" fill-opacity="0.08" stroke="#444" stroke-width="1"/>
+  <rect x="430" y="332" width="60" height="48" fill="#7ec8e3" fill-opacity="0.08" stroke="#444" stroke-width="1"/>
+  <rect x="490" y="332" width="60" height="48" fill="#55c555" fill-opacity="0.35" stroke="#444" stroke-width="1"/>
+
+  <rect x="250" y="236" width="300" height="48" fill="none" stroke="#e05555" stroke-width="2.5"/>
+  <line x1="554" y1="260" x2="614" y2="260" stroke="#e05555" stroke-width="2.5" marker-end="url(#miArr)"/>
+
+  <rect x="620" y="215" width="200" height="90" rx="6" fill="#000000" stroke="#3a4a6e" stroke-width="1"/>
+  <text x="720" y="243" font-size="14" font-weight="600" fill="#ffffff" text-anchor="middle">행에 softmax</text>
+  <text x="720" y="265" font-size="13" fill="#9aa4b8" text-anchor="middle">정답은 대각선 하나</text>
+  <text x="720" y="287" font-size="13" fill="#9aa4b8" text-anchor="middle">손실 = −log q(정답)</text>
+
+  <rect x="60" y="388" width="14" height="14" fill="#55c555" fill-opacity="0.35" stroke="#444" stroke-width="1"/>
+  <text x="82" y="400" font-size="13" fill="#888">진짜 짝 (정답)</text>
+  <text x="60" y="432" font-size="13" fill="#888">배치가 커지면 각 행의 선택지가 늘어난다 — 문제가 어려워지는 만큼 하한의 천장도 올라간다</text>
+</svg>

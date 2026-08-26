@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="420" viewBox="0 0 880 420" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <rect x="0" y="0" width="880" height="420" rx="12" fill="#0a0a0a"/>
+  <defs>
+    <marker id="dgG" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#55c555"/>
+    </marker>
+    <marker id="dgR" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#e05555"/>
+    </marker>
+  </defs>
+  <text x="60" y="44" font-size="22" font-weight="700" fill="#e8e8e8">그래디언트는 등고선에 수직이다</text>
+  <text x="60" y="76" font-size="13" fill="#888">f(x, y) = x² + 2y² 의 등고선</text>
+
+  <ellipse cx="440" cy="240" rx="190.5" ry="134.7" fill="none" stroke="#7777cc" stroke-width="2"/>
+  <ellipse cx="440" cy="240" rx="134.7" ry="95.3" fill="none" stroke="#7777cc" stroke-width="2"/>
+  <ellipse cx="440" cy="240" rx="77.8" ry="55" fill="none" stroke="#7777cc" stroke-width="2"/>
+
+  <line x1="200" y1="240" x2="690" y2="240" stroke="#888" stroke-width="1.5"/>
+  <line x1="440" y1="100" x2="440" y2="390" stroke="#888" stroke-width="1.5"/>
+  <text x="698" y="245" font-size="13" fill="#888">x</text>
+  <text x="430" y="94" font-size="13" fill="#888" text-anchor="end">y</text>
+  <line x1="495" y1="240" x2="495" y2="247" stroke="#444" stroke-width="1.5"/>
+  <line x1="550" y1="240" x2="550" y2="247" stroke="#444" stroke-width="1.5"/>
+  <line x1="605" y1="240" x2="605" y2="247" stroke="#444" stroke-width="1.5"/>
+  <text x="605" y="262" font-size="13" fill="#888" text-anchor="middle">3</text>
+  <line x1="433" y1="185" x2="440" y2="185" stroke="#444" stroke-width="1.5"/>
+
+  <line x1="507.6" y1="142.6" x2="592.4" y2="227.4" stroke="#888" stroke-width="2" stroke-dasharray="5,3"/>
+  <polyline fill="none" stroke="#888" stroke-width="1.5" points="558.5,176.5 567,185 558.5,193.5"/>
+
+  <line x1="550" y1="185" x2="613.6" y2="121.4" stroke="#55c555" stroke-width="2.5" marker-end="url(#dgG)"/>
+  <line x1="550" y1="185" x2="486.4" y2="248.6" stroke="#e05555" stroke-width="2.5" marker-end="url(#dgR)"/>
+  <circle cx="550" cy="185" r="5" fill="#e8e8e8"/>
+
+  <text x="622" y="116" font-size="14" font-weight="600" fill="#55c555">∇f = (4, 4)</text>
+  <text x="478" y="262" font-size="14" font-weight="600" fill="#e05555" text-anchor="end">−∇f</text>
+  <text x="528" y="182" font-size="13" fill="#888" text-anchor="end">(2, 1)</text>
+
+  <line x1="650" y1="279" x2="598" y2="233" stroke="#888" stroke-width="1"/>
+  <text x="654" y="285" font-size="13" fill="#888">변화율 0</text>
+
+  <line x1="250" y1="136" x2="288" y2="158" stroke="#7777cc" stroke-width="1"/>
+  <text x="200" y="132" font-size="13" fill="#7777cc" text-anchor="middle">등고선</text>
+  <text x="140" y="300" font-size="13" fill="#888">안쪽일수록 작다</text>
+
+  <text x="60" y="400" font-size="13" fill="#888">등고선 위를 걸으면 f 가 변하지 않으므로 그 방향의 방향도함수가 0이다 — ∇f · u = 0, 즉 수직이다</text>
+</svg>

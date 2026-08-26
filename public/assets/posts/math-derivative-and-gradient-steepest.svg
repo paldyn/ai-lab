@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="430" viewBox="0 0 880 430" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <rect x="0" y="0" width="880" height="430" rx="12" fill="#0a0a0a"/>
+  <defs>
+    <marker id="dgUp" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#55c555"/>
+    </marker>
+    <marker id="dgDn" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#e05555"/>
+    </marker>
+    <marker id="dgZero" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#888888"/>
+    </marker>
+  </defs>
+  <text x="60" y="44" font-size="22" font-weight="700" fill="#e8e8e8">가장 가파른 내리막은 −∇f 방향이다</text>
+
+  <!-- left : compass -->
+  <text x="220" y="110" font-size="16" font-weight="600" fill="#e8e8e8" text-anchor="middle">방향에 따른 변화율</text>
+  <circle cx="220" cy="250" r="85" fill="none" stroke="#444" stroke-width="1.5" stroke-dasharray="4,4"/>
+  <line x1="220" y1="250" x2="323" y2="211.4" stroke="#55c555" stroke-width="2.5" marker-end="url(#dgUp)"/>
+  <line x1="220" y1="250" x2="117" y2="288.6" stroke="#e05555" stroke-width="2.5" marker-end="url(#dgDn)"/>
+  <line x1="220" y1="250" x2="190.2" y2="170.4" stroke="#888888" stroke-width="2" marker-end="url(#dgZero)"/>
+  <line x1="220" y1="250" x2="249.8" y2="329.6" stroke="#888888" stroke-width="2" marker-end="url(#dgZero)"/>
+  <circle cx="220" cy="250" r="5" fill="#e8e8e8"/>
+  <text x="331" y="206" font-size="13" font-weight="600" fill="#55c555">최대 +8.54</text>
+  <text x="109" y="302" font-size="13" font-weight="600" fill="#e05555" text-anchor="end">최소 −8.54</text>
+  <text x="198" y="158" font-size="13" fill="#888">0</text>
+  <text x="258" y="346" font-size="13" fill="#888">0</text>
+  <text x="220" y="372" font-size="13" fill="#888" text-anchor="middle">단위벡터 u 를 한 바퀴 돌린다</text>
+
+  <!-- right : cosine curve -->
+  <text x="670" y="110" font-size="16" font-weight="600" fill="#7ec8e3" text-anchor="middle">D_u f = ‖∇f‖ cos θ</text>
+  <line x1="510" y1="160" x2="510" y2="340" stroke="#888" stroke-width="1.5"/>
+  <line x1="510" y1="250" x2="830" y2="250" stroke="#888" stroke-width="1.5"/>
+  <polyline fill="none" stroke="#7ec8e3" stroke-width="2.5" points="520,173.1 538.75,178.95 557.5,195.62 576.25,220.57 595,250 613.75,279.43 632.5,304.38 651.25,321.05 670,326.9 688.75,321.05 707.5,304.38 726.25,279.43 745,250 763.75,220.57 782.5,195.62 801.25,178.95 820,173.1"/>
+  <circle cx="520" cy="173.1" r="5" fill="#55c555"/>
+  <circle cx="670" cy="326.9" r="5" fill="#e05555"/>
+  <text x="505" y="177" font-size="13" fill="#888" text-anchor="end">+8.54</text>
+  <text x="505" y="255" font-size="13" fill="#888" text-anchor="end">0</text>
+  <text x="505" y="331" font-size="13" fill="#888" text-anchor="end">−8.54</text>
+  <line x1="595" y1="250" x2="595" y2="258" stroke="#444" stroke-width="1.5"/>
+  <line x1="745" y1="250" x2="745" y2="258" stroke="#444" stroke-width="1.5"/>
+  <text x="520" y="272" font-size="13" fill="#888" text-anchor="middle">θ = 0</text>
+  <text x="670" y="272" font-size="13" fill="#888" text-anchor="middle">π</text>
+  <text x="820" y="272" font-size="13" fill="#888" text-anchor="middle">2π</text>
+  <text x="670" y="372" font-size="13" fill="#888" text-anchor="middle">θ = 0 에서 최대, θ = π 에서 최소</text>
+
+  <text x="60" y="408" font-size="13" fill="#888">코시-슈바르츠가 |∇f · u| ≤ ‖∇f‖ 를 보장하므로 최대와 최소가 정확히 ∇f 와 −∇f 방향에 있다</text>
+</svg>

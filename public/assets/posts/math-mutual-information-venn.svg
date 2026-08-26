@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="410" viewBox="0 0 880 410" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <rect x="0" y="0" width="880" height="410" rx="12" fill="#0a0a0a"/>
+  <defs>
+    <clipPath id="miLeft"><circle cx="280" cy="230" r="110"/></clipPath>
+  </defs>
+  <text x="60" y="44" font-size="22" font-weight="700" fill="#e8e8e8">겹치는 넓이가 두 변수가 공유하는 정보다</text>
+
+  <circle cx="280" cy="230" r="110" fill="#7ec8e3" fill-opacity="0.15" stroke="#7ec8e3" stroke-width="2"/>
+  <circle cx="400" cy="230" r="110" fill="#7777cc" fill-opacity="0.15" stroke="#7777cc" stroke-width="2"/>
+  <circle cx="400" cy="230" r="110" fill="#55c555" fill-opacity="0.3" clip-path="url(#miLeft)"/>
+
+  <text x="200" y="104" font-size="16" font-weight="600" fill="#7ec8e3">H(X)</text>
+  <text x="480" y="104" font-size="16" font-weight="600" fill="#7777cc">H(Y)</text>
+  <text x="230" y="235" font-size="14" font-weight="600" fill="#e8e8e8" text-anchor="middle">H(X | Y)</text>
+  <text x="340" y="235" font-size="14" font-weight="600" fill="#55c555" text-anchor="middle">I(X; Y)</text>
+  <text x="450" y="235" font-size="14" font-weight="600" fill="#e8e8e8" text-anchor="middle">H(Y | X)</text>
+  <text x="340" y="368" font-size="13" fill="#888" text-anchor="middle">두 원의 합집합 = H(X, Y)</text>
+
+  <text x="570" y="150" font-size="13" fill="#e8e8e8">I(X;Y) = H(X) − H(X|Y)</text>
+  <text x="570" y="180" font-size="13" fill="#e8e8e8">I(X;Y) = H(Y) − H(Y|X)</text>
+  <text x="570" y="210" font-size="13" fill="#e8e8e8">I(X;Y) = H(X) + H(Y) − H(X,Y)</text>
+  <text x="570" y="252" font-size="13" fill="#888">세 표현이 같은 넓이를 가리킨다.</text>
+  <text x="570" y="274" font-size="13" fill="#888">겹침이 없으면 두 변수는 독립이다.</text>
+
+  <text x="60" y="392" font-size="13" fill="#888">Y를 알고 나면 X에 남는 놀람이 H(X)에서 H(X | Y)로 줄고, 줄어든 그만큼이 겹친 넓이다</text>
+</svg>

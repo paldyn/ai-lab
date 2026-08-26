@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="420" viewBox="0 0 880 420" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <rect x="0" y="0" width="880" height="420" rx="12" fill="#0a0a0a"/>
+  <text x="60" y="44" font-size="22" font-weight="700" fill="#e8e8e8">로그는 오목하다 — 현이 그래프 아래에 있다</text>
+  <text x="60" y="72" font-size="13" fill="#888">X가 1과 100을 반반의 확률로 갖는 경우</text>
+
+  <line x1="100" y1="90" x2="100" y2="340" stroke="#888" stroke-width="1.5"/>
+  <line x1="100" y1="340" x2="800" y2="340" stroke="#888" stroke-width="1.5"/>
+  <text x="808" y="345" font-size="13" fill="#888">x</text>
+  <text x="92" y="84" font-size="13" fill="#888">y</text>
+
+  <line x1="94" y1="292" x2="100" y2="292" stroke="#444" stroke-width="1.5"/>
+  <line x1="94" y1="244" x2="100" y2="244" stroke="#444" stroke-width="1.5"/>
+  <line x1="94" y1="196" x2="100" y2="196" stroke="#444" stroke-width="1.5"/>
+  <line x1="94" y1="148" x2="100" y2="148" stroke="#444" stroke-width="1.5"/>
+  <text x="88" y="345" font-size="13" fill="#888" text-anchor="end">0</text>
+  <text x="88" y="297" font-size="13" fill="#888" text-anchor="end">1</text>
+  <text x="88" y="249" font-size="13" fill="#888" text-anchor="end">2</text>
+  <text x="88" y="201" font-size="13" fill="#888" text-anchor="end">3</text>
+  <text x="88" y="153" font-size="13" fill="#888" text-anchor="end">4</text>
+
+  <polyline fill="none" stroke="#7ec8e3" stroke-width="2.5" points="126.2,340.0 129.3,320.6 132.4,306.7 138.5,287.2 150.9,262.7 163.3,246.6 181.8,229.5 212.7,210.0 243.6,196.2 286.9,181.8 336.3,169.4 379.6,160.6 429.0,152.2 472.3,145.9 521.7,139.6 565.0,134.7 614.4,129.7 676.2,124.0 738.0,119.0"/>
+  <line x1="126.2" y1="340" x2="738" y2="119" stroke="#7777cc" stroke-width="2.5"/>
+
+  <line x1="432.1" y1="151.7" x2="432.1" y2="229.5" stroke="#e05555" stroke-width="2" stroke-dasharray="4,4"/>
+  <line x1="432.1" y1="229.5" x2="432.1" y2="340" stroke="#444" stroke-width="1" stroke-dasharray="4,4"/>
+
+  <circle cx="126.2" cy="340" r="5" fill="#e8e8e8"/>
+  <circle cx="738" cy="119" r="5" fill="#e8e8e8"/>
+  <circle cx="432.1" cy="151.7" r="5" fill="#7ec8e3"/>
+  <circle cx="432.1" cy="229.5" r="5" fill="#7777cc"/>
+
+  <text x="416" y="146" font-size="14" font-weight="600" fill="#7ec8e3" text-anchor="end">log E[X] = 3.922</text>
+  <text x="448" y="234" font-size="14" font-weight="600" fill="#7777cc">E[log X] = 2.303</text>
+  <text x="448" y="192" font-size="13" fill="#e05555">차이 1.619</text>
+
+  <text x="126" y="362" font-size="13" fill="#888" text-anchor="middle">1</text>
+  <text x="432" y="362" font-size="13" fill="#888" text-anchor="middle">50.5 = E[X]</text>
+  <text x="738" y="362" font-size="13" fill="#888" text-anchor="middle">100</text>
+
+  <text x="60" y="396" font-size="13" fill="#888">오목함수에서는 부등호가 반대로 선다. X가 넓게 퍼져 있을수록 두 값의 차이가 벌어진다.</text>
+</svg>

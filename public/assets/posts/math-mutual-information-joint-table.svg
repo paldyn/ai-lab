@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="400" viewBox="0 0 880 400" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <rect x="0" y="0" width="880" height="400" rx="12" fill="#0a0a0a"/>
+  <defs>
+    <marker id="miL" viewBox="0 0 14 14" refX="2" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 14 0 L 1 7 L 14 14 z" fill="#e05555"/>
+    </marker>
+    <marker id="miR" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#e05555"/>
+    </marker>
+  </defs>
+  <text x="60" y="44" font-size="22" font-weight="700" fill="#e8e8e8">실제 표와 「독립이었다면」 표의 차이</text>
+
+  <!-- left table -->
+  <text x="220" y="110" font-size="16" font-weight="600" fill="#7ec8e3" text-anchor="middle">실제 결합분포 p(x, y)</text>
+  <text x="200" y="154" font-size="13" fill="#888" text-anchor="middle">Y = 1</text>
+  <text x="300" y="154" font-size="13" fill="#888" text-anchor="middle">Y = 2</text>
+  <text x="140" y="202" font-size="13" fill="#888" text-anchor="end">X = A</text>
+  <text x="140" y="262" font-size="13" fill="#888" text-anchor="end">X = B</text>
+  <rect x="150" y="166" width="100" height="60" fill="#7ec8e3" fill-opacity="0.5" stroke="#444" stroke-width="1"/>
+  <rect x="250" y="166" width="100" height="60" fill="#7ec8e3" fill-opacity="0.14" stroke="#444" stroke-width="1"/>
+  <rect x="150" y="226" width="100" height="60" fill="#7ec8e3" fill-opacity="0.14" stroke="#444" stroke-width="1"/>
+  <rect x="250" y="226" width="100" height="60" fill="#7ec8e3" fill-opacity="0.5" stroke="#444" stroke-width="1"/>
+  <text x="200" y="203" font-size="15" font-weight="600" fill="#e8e8e8" text-anchor="middle">0.4</text>
+  <text x="300" y="203" font-size="15" font-weight="600" fill="#e8e8e8" text-anchor="middle">0.1</text>
+  <text x="200" y="263" font-size="15" font-weight="600" fill="#e8e8e8" text-anchor="middle">0.1</text>
+  <text x="300" y="263" font-size="15" font-weight="600" fill="#e8e8e8" text-anchor="middle">0.4</text>
+
+  <!-- right table -->
+  <text x="660" y="110" font-size="16" font-weight="600" fill="#7777cc" text-anchor="middle">독립이었다면 p(x)·p(y)</text>
+  <text x="640" y="154" font-size="13" fill="#888" text-anchor="middle">Y = 1</text>
+  <text x="740" y="154" font-size="13" fill="#888" text-anchor="middle">Y = 2</text>
+  <text x="580" y="202" font-size="13" fill="#888" text-anchor="end">X = A</text>
+  <text x="580" y="262" font-size="13" fill="#888" text-anchor="end">X = B</text>
+  <rect x="590" y="166" width="100" height="60" fill="#7777cc" fill-opacity="0.3" stroke="#444" stroke-width="1"/>
+  <rect x="690" y="166" width="100" height="60" fill="#7777cc" fill-opacity="0.3" stroke="#444" stroke-width="1"/>
+  <rect x="590" y="226" width="100" height="60" fill="#7777cc" fill-opacity="0.3" stroke="#444" stroke-width="1"/>
+  <rect x="690" y="226" width="100" height="60" fill="#7777cc" fill-opacity="0.3" stroke="#444" stroke-width="1"/>
+  <text x="640" y="203" font-size="15" font-weight="600" fill="#e8e8e8" text-anchor="middle">0.25</text>
+  <text x="740" y="203" font-size="15" font-weight="600" fill="#e8e8e8" text-anchor="middle">0.25</text>
+  <text x="640" y="263" font-size="15" font-weight="600" fill="#e8e8e8" text-anchor="middle">0.25</text>
+  <text x="740" y="263" font-size="15" font-weight="600" fill="#e8e8e8" text-anchor="middle">0.25</text>
+
+  <line x1="370" y1="226" x2="510" y2="226" stroke="#e05555" stroke-width="2.5" marker-start="url(#miL)" marker-end="url(#miR)"/>
+  <text x="440" y="208" font-size="13" fill="#e05555" text-anchor="middle">차이를 잰다</text>
+
+  <rect x="60" y="310" width="760" height="70" rx="6" fill="#000000" stroke="#7ec8e3" stroke-width="1.5"/>
+  <text x="440" y="338" font-size="16" font-weight="600" fill="#e8e8e8" text-anchor="middle">I(X; Y) = D_KL( 왼쪽 표 ‖ 오른쪽 표 ) = 0.2781 비트</text>
+  <text x="440" y="360" font-size="13" fill="#888" text-anchor="middle">네 칸이 0.25에서 얼마나 벗어났는지를 로그로 잰 값이다</text>
+</svg>

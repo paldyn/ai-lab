@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="470" viewBox="0 0 880 470" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <rect x="0" y="0" width="880" height="470" rx="12" fill="#0a0a0a"/>
+  <text x="60" y="44" font-size="22" font-weight="700" fill="#e8e8e8">접선 하나가 젠센 부등식의 증명이다</text>
+  <text x="60" y="80" font-size="13" fill="#888">볼록함수는 어느 점에서 그은 접선보다 아래로 내려가지 않는다.</text>
+  <text x="60" y="112" font-size="16" font-weight="600" fill="#e8e8e8">f(x) ≥ f(μ) + f′(μ)(x − μ)</text>
+
+  <line x1="100" y1="140" x2="100" y2="400" stroke="#888" stroke-width="1.5"/>
+  <line x1="100" y1="400" x2="800" y2="400" stroke="#888" stroke-width="1.5"/>
+  <text x="808" y="405" font-size="13" fill="#888">x</text>
+  <text x="92" y="134" font-size="13" fill="#888">y</text>
+
+  <path d="M 154 164.8 Q 440 435.2 726 164.8" fill="none" stroke="#7ec8e3" stroke-width="2.5"/>
+  <line x1="280" y1="378.3" x2="740" y2="210.8" stroke="#7777cc" stroke-width="2.5"/>
+
+  <line x1="280" y1="257.7" x2="280" y2="378.3" stroke="#e05555" stroke-width="2" stroke-dasharray="4,4"/>
+  <line x1="550" y1="280" x2="550" y2="400" stroke="#444" stroke-width="1" stroke-dasharray="4,4"/>
+  <line x1="280" y1="378.3" x2="280" y2="400" stroke="#444" stroke-width="1" stroke-dasharray="4,4"/>
+
+  <circle cx="550" cy="280" r="5" fill="#e8e8e8"/>
+  <circle cx="280" cy="257.7" r="5" fill="#7ec8e3"/>
+
+  <line x1="505" y1="252" x2="543" y2="274" stroke="#888" stroke-width="1"/>
+  <text x="500" y="246" font-size="13" fill="#888" text-anchor="end">여기서 그은 접선</text>
+
+  <text x="292" y="320" font-size="13" fill="#e05555">차이 ≥ 0</text>
+  <text x="738" y="156" font-size="14" font-weight="600" fill="#7ec8e3">f</text>
+  <text x="748" y="206" font-size="14" font-weight="600" fill="#7777cc">접선</text>
+
+  <text x="280" y="422" font-size="13" fill="#888" text-anchor="middle">x</text>
+  <text x="550" y="422" font-size="13" fill="#888" text-anchor="middle">μ = E[X]</text>
+
+  <text x="60" y="450" font-size="13" fill="#888">양변에 기댓값을 씌우면 오른쪽의 일차항이 0으로 사라져 E[f(X)] ≥ f(E[X]) 가 남는다</text>
+</svg>

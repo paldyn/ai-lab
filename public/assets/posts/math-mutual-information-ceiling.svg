@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="400" viewBox="0 0 880 400" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <rect x="0" y="0" width="880" height="400" rx="12" fill="#0a0a0a"/>
+  <text x="60" y="44" font-size="22" font-weight="700" fill="#e8e8e8">천장은 log N이라 수익이 체감한다</text>
+  <text x="60" y="76" font-size="13" fill="#888">배치를 두 배로 늘려야 천장이 정확히 1비트 오른다</text>
+
+  <path d="M 140.6 310 L 141.25 295 L 142.5 280 L 145 265 L 150 250 L 160 235 L 180 220 L 220 205 L 300 190 L 460 175 L 620 166.2 L 780 160 L 780 340 L 140.6 340 Z" fill="#7ec8e3" fill-opacity="0.18"/>
+  <polyline fill="none" stroke="#7ec8e3" stroke-width="2.5" points="140.6,310 141.25,295 142.5,280 145,265 150,250 160,235 180,220 220,205 300,190 460,175 620,166.2 780,160"/>
+
+  <text x="500" y="130" font-size="14" font-weight="600" fill="#e05555" text-anchor="middle">이 위는 목적식이 증언할 수 없다</text>
+  <text x="450" y="290" font-size="13" fill="#7ec8e3" text-anchor="middle">하한이 움직일 수 있는 범위</text>
+
+  <line x1="120" y1="120" x2="120" y2="340" stroke="#888" stroke-width="1.5"/>
+  <line x1="120" y1="340" x2="800" y2="340" stroke="#888" stroke-width="1.5"/>
+  <line x1="114" y1="280" x2="120" y2="280" stroke="#444" stroke-width="1.5"/>
+  <line x1="114" y1="220" x2="120" y2="220" stroke="#444" stroke-width="1.5"/>
+  <line x1="114" y1="160" x2="120" y2="160" stroke="#444" stroke-width="1.5"/>
+  <text x="108" y="345" font-size="13" fill="#888" text-anchor="end">0</text>
+  <text x="108" y="285" font-size="13" fill="#888" text-anchor="end">4</text>
+  <text x="108" y="225" font-size="13" fill="#888" text-anchor="end">8</text>
+  <text x="108" y="165" font-size="13" fill="#888" text-anchor="end">12</text>
+  <text x="110" y="112" font-size="13" fill="#888">천장 (비트)</text>
+  <text x="812" y="345" font-size="13" fill="#888">N</text>
+
+  <line x1="180" y1="220" x2="180" y2="340" stroke="#444" stroke-width="1" stroke-dasharray="4,4"/>
+  <line x1="300" y1="190" x2="300" y2="340" stroke="#444" stroke-width="1" stroke-dasharray="4,4"/>
+  <line x1="780" y1="160" x2="780" y2="340" stroke="#444" stroke-width="1" stroke-dasharray="4,4"/>
+  <circle cx="180" cy="220" r="5" fill="#e8e8e8"/>
+  <circle cx="300" cy="190" r="5" fill="#e8e8e8"/>
+  <circle cx="780" cy="160" r="5" fill="#e8e8e8"/>
+  <text x="180" y="362" font-size="13" fill="#888" text-anchor="middle">256</text>
+  <text x="300" y="362" font-size="13" fill="#888" text-anchor="middle">1024</text>
+  <text x="780" y="362" font-size="13" fill="#888" text-anchor="middle">4096</text>
+
+  <text x="450" y="388" font-size="13" fill="#888" text-anchor="middle">배치 크기 N</text>
+</svg>

@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="440" viewBox="0 0 880 440" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <rect x="0" y="0" width="880" height="440" rx="12" fill="#0a0a0a"/>
+  <defs>
+    <marker id="jUp" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#e05555"/>
+    </marker>
+    <marker id="jRight" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#55c555"/>
+    </marker>
+  </defs>
+
+  <text x="60" y="44" font-size="22" font-weight="700" fill="#e8e8e8">하한을 밀어 올리면 그 위의 참값도 따라 올라간다</text>
+
+  <line x1="150" y1="110" x2="150" y2="310" stroke="#888" stroke-width="1.5"/>
+  <line x1="150" y1="310" x2="720" y2="310" stroke="#888" stroke-width="1.5"/>
+  <text x="140" y="105" font-size="13" fill="#888" text-anchor="end">값</text>
+
+  <line x1="150" y1="130" x2="720" y2="130" stroke="#55c555" stroke-width="2" stroke-dasharray="5,3"/>
+  <text x="170" y="120" font-size="14" font-weight="600" fill="#55c555">log p(x) — 참 목표, 적분이라 구할 수 없다</text>
+
+  <rect x="230" y="250" width="110" height="60" fill="#7ec8e3"/>
+  <rect x="510" y="165" width="110" height="145" fill="#7ec8e3"/>
+
+  <line x1="290" y1="250" x2="290" y2="142" stroke="#e05555" stroke-width="2" marker-end="url(#jUp)"/>
+  <text x="302" y="200" font-size="13" fill="#e05555">간격</text>
+
+  <line x1="570" y1="165" x2="570" y2="142" stroke="#e05555" stroke-width="2" marker-end="url(#jUp)"/>
+
+  <line x1="360" y1="278" x2="496" y2="278" stroke="#55c555" stroke-width="2.5" marker-end="url(#jRight)"/>
+  <text x="428" y="264" font-size="14" font-weight="600" fill="#55c555" text-anchor="middle">ELBO 최대화</text>
+
+  <text x="285" y="334" font-size="13" fill="#888" text-anchor="middle">학습 전</text>
+  <text x="565" y="334" font-size="13" fill="#888" text-anchor="middle">학습 후</text>
+
+  <rect x="60" y="350" width="760" height="64" rx="6" fill="#000000" stroke="#3a4a6e" stroke-width="1"/>
+  <text x="80" y="376" font-size="13" fill="#ffffff">ELBO = E_q[ log p(x, z) − log q(z) ] ≤ log p(x)  —  젠센 부등식이 만든 하한이다</text>
+  <text x="80" y="396" font-size="13" fill="#9aa4b8">하한은 참값을 아래에서 떠받친다. 남는 간격의 정체는 다음 글에서 이름을 얻는다.</text>
+</svg>

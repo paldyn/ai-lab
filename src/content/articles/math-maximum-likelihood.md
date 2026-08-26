@@ -195,3 +195,5 @@ print((-(np.eye(3)[y] * np.log(q)).sum(1)).mean().round(4))   # 0.4987
 읽어주셔서 감사합니다. 😊
 
 **지난 글:** [엔트로피와 정보량: perplexity가 재고 있는 것](/articles/math-entropy-and-perplexity)
+
+**다음 글:** [교차엔트로피 = 음의 로그가능도: 사전학습 손실 한 줄의 유도](/articles/math-cross-entropy-and-nll)

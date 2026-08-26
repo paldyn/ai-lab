@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="530" viewBox="0 0 880 530" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <rect x="0" y="0" width="880" height="530" rx="12" fill="#0a0a0a"/>
+  <text x="60" y="44" font-size="22" font-weight="700" fill="#e8e8e8">방향이 바뀌면 이기는 후보가 뒤집힌다</text>
+
+  <!-- true distribution -->
+  <line x1="340" y1="200" x2="560" y2="200" stroke="#888" stroke-width="1.5"/>
+  <rect x="350" y="126" width="60" height="74" fill="#55c555"/>
+  <rect x="420" y="197" width="60" height="3" fill="#55c555"/>
+  <rect x="490" y="126" width="60" height="74" fill="#55c555"/>
+  <text x="380" y="118" font-size="13" fill="#888" text-anchor="middle">0.495</text>
+  <text x="450" y="189" font-size="13" fill="#888" text-anchor="middle">0.01</text>
+  <text x="520" y="118" font-size="13" fill="#888" text-anchor="middle">0.495</text>
+  <text x="450" y="224" font-size="14" font-weight="600" fill="#55c555" text-anchor="middle">참 분포 p = (0.495, 0.01, 0.495)</text>
+  <text x="60" y="150" font-size="13" fill="#888">두 봉우리 사이에</text>
+  <text x="60" y="172" font-size="13" fill="#888">얕은 골이 있다</text>
+
+  <!-- candidate A -->
+  <line x1="130" y1="400" x2="350" y2="400" stroke="#888" stroke-width="1.5"/>
+  <rect x="140" y="252" width="60" height="148" fill="#7ec8e3"/>
+  <rect x="210" y="397" width="60" height="3" fill="#7ec8e3"/>
+  <rect x="280" y="398" width="60" height="2" fill="#444444"/>
+  <text x="170" y="244" font-size="13" fill="#888" text-anchor="middle">0.99</text>
+  <text x="240" y="389" font-size="13" fill="#888" text-anchor="middle">0.01</text>
+  <text x="310" y="390" font-size="13" fill="#888" text-anchor="middle">0</text>
+  <text x="240" y="424" font-size="14" font-weight="600" fill="#e8e8e8" text-anchor="middle">q_A — 한 봉우리에 몰림</text>
+  <text x="240" y="450" font-size="13" fill="#e05555" text-anchor="middle">정방향 KL(p ‖ q) = ∞</text>
+  <text x="240" y="472" font-size="13" fill="#55c555" text-anchor="middle">역방향 KL(q ‖ p) = 0.990</text>
+
+  <!-- candidate B -->
+  <line x1="530" y1="400" x2="750" y2="400" stroke="#888" stroke-width="1.5"/>
+  <rect x="540" y="350" width="60" height="50" fill="#7ec8e3"/>
+  <rect x="610" y="350" width="60" height="50" fill="#7ec8e3"/>
+  <rect x="680" y="350" width="60" height="50" fill="#7ec8e3"/>
+  <text x="570" y="342" font-size="13" fill="#888" text-anchor="middle">0.33</text>
+  <text x="640" y="342" font-size="13" fill="#888" text-anchor="middle">0.33</text>
+  <text x="710" y="342" font-size="13" fill="#888" text-anchor="middle">0.33</text>
+  <text x="640" y="424" font-size="14" font-weight="600" fill="#e8e8e8" text-anchor="middle">q_B — 셋에 고르게</text>
+  <text x="640" y="450" font-size="13" fill="#55c555" text-anchor="middle">정방향 KL(p ‖ q) = 0.514</text>
+  <text x="640" y="472" font-size="13" fill="#e05555" text-anchor="middle">역방향 KL(q ‖ p) = 1.306</text>
+
+  <text x="60" y="506" font-size="13" fill="#888">초록이 그 방향이 고르는 후보다. 정방향은 넓게 덮게 하고(모드 커버링), 역방향은 한 봉우리에 몰리게 한다(모드 시킹).</text>
+</svg>
