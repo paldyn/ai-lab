@@ -160,7 +160,7 @@ export interface NewsDetail {
   commentary: string;
 }
 
-export const globalNewsUpdatedAt = '2026-08-24';
+export const globalNewsUpdatedAt = '2026-08-25';
 
 /**
  * 공식 발표 한 건 = 항목 한 개. 2026년 1월부터 쌓는 아카이브이며 오래된 항목을
@@ -171,6 +171,62 @@ export const globalNewsUpdatedAt = '2026-08-24';
  * 목록에서 파생됩니다. 갱신 시 globalNewsUpdatedAt도 함께 올립니다.
  */
 const entries: NewsItem[] = [
+  {
+    id: 'the-full-stack-behind-abundant-intelligence',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'OpenAI, 칩·데이터센터·모델을 한 시스템으로 묶는 컴퓨트 전략 공개',
+    summary:
+      'OpenAI가 데이터센터와 칩, 프런티어 모델, 개발자 플랫폼, 제품을 한 시스템으로 함께 개선한다는 컴퓨트 전략을 밝혔다. ' +
+      '같은 날 공개한 자체 추론 칩 Jalapeño의 첫 측정 결과를 인용하고, Microsoft·NVIDIA 외에 여덟 곳을 더한 공급 포트폴리오를 들었다.',
+    publishedAt: '2026-08-25',
+    collectedAt: '2026-08-26',
+    category: 'Infrastructure',
+    signal: '컴퓨트 전략',
+    url: 'https://openai.com/index/the-full-stack-behind-abundant-intelligence',
+  },
+  {
+    id: 'jalapeno-first-results',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'OpenAI 자체 추론 칩 Jalapeño, 첫 성능 측정 결과 공개',
+    summary:
+      'OpenAI가 자체 추론 칩 Jalapeño의 첫 측정 결과를 공개했다. 공개 벤치마크 InferenceX에서 공개 모델 셋을 재어 ' +
+      '최대 처리량 기준 와트당 작업량이 비교 시스템보다 1.5~1.9배 높고 종단 지연은 1.7~3.6배 낮았다. 연말부터 배치를 시작한다.',
+    publishedAt: '2026-08-25',
+    collectedAt: '2026-08-26',
+    category: 'Infrastructure',
+    signal: '자체 칩',
+    url: 'https://openai.com/index/jalapeno-first-results',
+  },
+  {
+    id: 'disrupting-malicious-uses-of-ai-influence-campaign-russia',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'OpenAI, 가짜 싱크탱크를 앞세운 러시아발 영향력 공작 차단',
+    summary:
+      'OpenAI가 러시아에서 비롯한 ChatGPT 계정 무리를 차단했다. 이스라엘 소재를 표방한 「전문가 커뮤니티」 IBI를 홍보하는 ' +
+      '소셜 게시물을 만들던 계정들로, 사이트의 전문가 글 표본 36편 중 34편이 다른 곳에서 베낀 것이었다.',
+    publishedAt: '2026-08-25',
+    collectedAt: '2026-08-26',
+    category: 'Safety',
+    signal: '비밀 영향력 공작',
+    url: 'https://openai.com/index/disrupting-malicious-uses-of-ai-influence-campaign-russia',
+  },
+  {
+    id: 'introducing-admin-plugin',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'OpenAI, ChatGPT Work·Codex에 워크스페이스 관리 플러그인 추가',
+    summary:
+      'OpenAI가 ChatGPT Work와 Codex에서 쓰는 Admin 플러그인을 공개했다. 사용량 확인, 구성원·그룹 관리, 권한 점검, ' +
+      '사용 한도와 지출 요청 처리를 대화 하나에서 하고, 관리자가 이미 가진 역할과 권한 안에서만 동작한다.',
+    publishedAt: '2026-08-25',
+    collectedAt: '2026-08-26',
+    category: 'Product',
+    signal: '기업 관리 기능',
+    url: 'https://openai.com/index/introducing-admin-plugin',
+  },
   {
     id: 'wellbeing-research-grants',
     source: 'Anthropic',
