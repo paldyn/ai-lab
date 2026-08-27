@@ -2529,8 +2529,15 @@ input:focus-visible {
   손가락 모양도 칩에만 줍니다. 눌리는 자리가 칩뿐이기 때문입니다
   (src/lib/answerToggle.ts). 줄 위에서는 글자를 짚는 커서 그대로 둡니다.
 */
+/*
+  칩은 문제 줄의 **오른쪽 끝**에 세웁니다. 흐름대로 두면 보기 뒤에 붙어 마지막
+  보기가 답인 것처럼 읽혔습니다 — 「④ 음성 녹음 [답]」이 한 줄로 보였습니다.
+  자리를 비워 두는 것은 padding이고, 칩은 그 위에 절대 위치로 앉습니다.
+*/
 .article-prose details.answer > summary {
+  position: relative;
   list-style: none;
+  padding-right: 52px;
 }
 
 /* 기본 삼각형을 지우고 직접 그립니다. Safari는 이 의사 요소로 그립니다. */
@@ -2550,10 +2557,16 @@ input:focus-visible {
   겹클릭이 근처 낱말을 잡는 것은 src/lib/answerToggle.ts가 따로 막습니다.
 */
 .article-prose .answer-chip {
+  /*
+    위쪽 값은 첫 줄 한가운데에 맞춘 것입니다 — 줄 상자(29.6px)와 칩(25.3px)의 차이
+    절반이 2.1px, 곧 0.13em입니다. 문제가 몇 줄이든 칩은 첫 줄 옆에 머뭅니다.
+  */
+  position: absolute;
+  top: 0.13em;
+  right: 0;
   display: inline-block;
   cursor: pointer;
   user-select: none;
-  margin-left: 8px;
   border: 1px solid var(--border);
   border-radius: 3px;
   padding: 1px 7px;
