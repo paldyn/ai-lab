@@ -1,6 +1,6 @@
 # 자격증 시험 노트 작성 루틴 지시서
 
-「PALDYN AI Lab — 자격증 시험 노트 작성 (2편/일)」 Routine이 **실행할 때마다 읽는
+「PALDYN AI Lab — 자격증 시험 노트 작성 (4편/일)」 Routine이 **실행할 때마다 읽는
 지시서**다. Routine에 걸린 프롬프트는 이 파일을 읽으라는 쪽지뿐이니 **여기만 고치면 된다.**
 
 시험 정보를 갱신하는 `CERT-ROUTINE.md`와 다른 루틴이다. 저쪽은 데이터를 고치고
@@ -8,12 +8,12 @@
 
 `---` 아래가 지시다. 위 머리말은 사람이 읽는 자리라 루틴은 건너뛴다.
 
-마지막 갱신: 2026-08-27 (무엇을 쓸지는 `src/data/certPrepPlan.ts`가 정한다)
-이전 갱신: 2026-08-26 (보기를 한 줄에 하나씩, 되풀이 소제목 금지)
+마지막 갱신: 2026-08-27 (하루 4편으로 올림)
+이전 갱신: 2026-08-27 (무엇을 쓸지는 `src/data/certPrepPlan.ts`가 정한다)
 
 ---
 
-이 저장소는 **paldyn/ai-lab** (ailab.paldyn.com)이다. 자격증 시험 노트 **2편**을 쓴다.
+이 저장소는 **paldyn/ai-lab** (ailab.paldyn.com)이다. 자격증 시험 노트 **4편**을 쓴다.
 시작할 때 `CLAUDE.md`와 이 파일을 처음부터 끝까지 읽는다.
 
 시험 노트는 `src/content/certs/<자격증 id>/NN-슬러그.md`에 있고 주소는
@@ -36,7 +36,7 @@
 5편에서 「다 찼다」가 됐고, 노트 한 편이 50문항 범위를 통째로 덮었다. 목표를 계획이
 정하도록 바꾼 이유다.
 
-아래를 그대로 돌린다. 대상 자격증과 이번에 쓸 두 편의 제목·점검표까지 출력이 정해 준다.
+아래를 그대로 돌린다. 대상 자격증과 이번에 쓸 네 편의 제목·점검표까지 출력이 정해 준다.
 
 ```bash
 set -e
@@ -86,7 +86,7 @@ print('있는 파일:', ', '.join(files[n] for n in sorted(files)) or '없음')
 
 picks = []
 for i, (title, subject, kw) in enumerate(topics):
-    if len(picks) == 2:
+    if len(picks) == 4:
         break
     have = files.get(i + 1)
     if have and title_of(os.path.join(d, have)) == title:
@@ -94,12 +94,12 @@ for i, (title, subject, kw) in enumerate(topics):
     picks.append((i + 1, title, subject, kw, have))
 
 n = 90
-while len(picks) < 2:
+while len(picks) < 4:
     if n not in files:
         picks.append((n, f'모의고사 {n - 89}회', '문제', [], None))
     n += 1
 
-print('\n이번에 쓸 두 편:')
+print('\n이번에 쓸 네 편:')
 for n, title, subject, kw, have in picks:
     print(f'  {n:02d}  {title}   [{subject}]')
     if kw:
@@ -110,12 +110,13 @@ PLAN
 ```
 
 **대상은 진도율이 가장 낮은 자격증이다.** 같으면 id 사전순으로 앞선 것을 고른다.
-열넷을 돌아가며 채우므로 한 자격증에 몰아 쓰지 않는다.
+열넷을 돌아가며 채우므로 한 자격증에 몰아 쓰지 않는다. 네 편은 **한 자격증에 이어서**
+쓴다 — 앞 편을 읽고 이어지는 편을 쓸 수 있고, 같은 시험의 용어를 한 번에 맞출 수 있다.
 
 **쓸 자리는 제목으로 정해진다.** 그 번호의 파일이 없거나, 있어도 제목이 계획과
 다르면 그 자리가 다음 차례다. 계획대로 이미 쓴 자리는 건너뛴다.
 
-## STEP 2 — 계획의 두 주제를 그대로 쓴다
+## STEP 2 — 계획의 네 주제를 그대로 쓴다
 
 출력이 준 것을 그대로 쓴다. **제목을 지어내지 않는다** — 계획의 `title`이 노트
 제목이고, `keywords`가 그 노트가 반드시 다뤄야 하는 것의 점검표다. 하나라도 안 다뤘으면
@@ -245,7 +246,7 @@ grep -c 'details class="answer"' dist/learn/certs/<자격증 id>/<슬러그>.htm
 
 ## STEP 5 — 커밋과 보고
 
-글 2편을 각각 따로 커밋한다. 제목은 한국어로 쓰고 어느 시험의 몇 번 글인지 적는다.
+글 4편을 각각 따로 커밋한다. 제목은 한국어로 쓰고 어느 시험의 몇 번 글인지 적는다.
 
 ```bash
 git push "https://x-access-token:${GITHUB_TOKEN}@github.com/paldyn/ai-lab.git" HEAD:main
@@ -255,7 +256,7 @@ git push "https://x-access-token:${GITHUB_TOKEN}@github.com/paldyn/ai-lab.git" H
 
 1. **시작할 때 읽은 파일의 목록**
 2. 고른 자격증과 진도 (「adp 0/41」처럼), 그리고 계획에서 집은 주제 번호
-3. 쓴 글 두 편의 경로·제목·글자 수·문제 수
+3. 쓴 글 네 편의 경로·제목·글자 수·문제 수
 4. 갈아 끼우며 지운 파일 (없으면 「없음」)
 5. 검산에서 고친 것 (없으면 「없음」)
 6. 계획이 시행처 출제범위와 어긋나 보이는 곳 (없으면 「없음」)
