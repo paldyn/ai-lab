@@ -160,7 +160,7 @@ export interface NewsDetail {
   commentary: string;
 }
 
-export const globalNewsUpdatedAt = '2026-08-26';
+export const globalNewsUpdatedAt = '2026-08-27';
 
 /**
  * 공식 발표 한 건 = 항목 한 개. 2026년 1월부터 쌓는 아카이브이며 오래된 항목을
@@ -171,6 +171,34 @@ export const globalNewsUpdatedAt = '2026-08-26';
  * 목록에서 파생됩니다. 갱신 시 globalNewsUpdatedAt도 함께 올립니다.
  */
 const entries: NewsItem[] = [
+  {
+    id: 'expanding-our-presence-in-brazil',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'OpenAI, 브라질 상업 운영 시작하고 상파울루 팀 신설',
+    summary:
+      'OpenAI가 브라질에서 상업 운영을 시작하고 상파울루에 현지 팀을 뒀다. 브라질은 ChatGPT 주간 사용자 기준 3대 시장이며 ' +
+      '하루 약 2억 1,500만 건의 메시지가 오간다. 상파울루시 Prodam과 공공 서비스 MOU도 맺었다.',
+    publishedAt: '2026-08-27',
+    collectedAt: '2026-08-28',
+    category: 'Corporate',
+    signal: '브라질 진출',
+    url: 'https://openai.com/index/expanding-our-presence-in-brazil',
+  },
+  {
+    id: 'what-students-gain-from-chatgpt-critical-thinking-training',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'OpenAI, 학생 1,000명에게 ChatGPT와 사고 훈련 나눠 준 실험 공개',
+    summary:
+      'OpenAI Economic Research와 보코니대가 학부생 1,000여 명을 네 집단으로 갈라 실험했다. ChatGPT를 쓴 쪽은 5점 척도에서 ' +
+      '거의 1점을 더 받았고, 인과추론 훈련을 받은 쪽은 점수는 그대로였지만 더 다양한 아이디어를 냈다.',
+    publishedAt: '2026-08-27',
+    collectedAt: '2026-08-28',
+    category: 'Research',
+    signal: '교육 효과 연구',
+    url: 'https://openai.com/index/what-students-gain-from-chatgpt-critical-thinking-training',
+  },
   {
     id: 'model-hardware-standard-research-preview',
     source: 'Anthropic',
