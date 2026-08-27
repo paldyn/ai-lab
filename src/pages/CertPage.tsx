@@ -451,9 +451,7 @@ function CertView({ cert }: { cert: Cert }) {
                 <span className="cert-prep-progress-total"> / {progress.planned}편</span>
                 <span className="cert-prep-progress-split">
                   {`개념 ${progress.concepts}/${progress.plannedConcepts} · 모의고사 ${progress.mocks}/${progress.plannedMocks}`}
-                  {groups && groups.extras.length > 0
-                    ? ` · 계획 밖 총정리 ${groups.extras.length}`
-                    : ''}
+                  {groups && groups.extras.length > 0 ? ` · 총정리 ${groups.extras.length}` : ''}
                 </span>
               </p>
               <div className="cert-prep-bar">
@@ -489,7 +487,7 @@ function CertView({ cert }: { cert: Cert }) {
                   title="과목 총정리"
                   count={`${groups.extras.length}편`}
                   rows={groups.extras.map((note) => ({ title: note.title, note }))}
-                  note="계획에 없는 보충 노트입니다. 과목 하나를 통째로 훑으므로 상세 노트가 채워지면 복습 자리가 됩니다."
+                  note="과목 하나를 통째로 훑는 복습 노트입니다. 위 개념 노트들이 채워질수록 시험 직전에 되짚는 자리가 됩니다."
                 />
               )}
             </>
