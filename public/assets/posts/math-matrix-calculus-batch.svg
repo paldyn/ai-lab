@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="380" viewBox="0 0 880 380" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <rect x="0" y="0" width="880" height="380" rx="12" fill="#0a0a0a"/>
+  <text x="60" y="44" font-size="22" font-weight="700" fill="#e8e8e8">배치 차원은 곱의 가운데에서 합쳐진다</text>
+  <text x="60" y="76" font-size="13" fill="#888">Y = XWᵀ + b 에서 X : (B, n), W : (m, n), Δ = ∂L/∂Y : (B, m)</text>
+
+  <rect x="90" y="132" width="180" height="76" rx="6" fill="#000000" stroke="#7777cc" stroke-width="1.5"/>
+  <text x="180" y="162" font-size="15" font-weight="600" fill="#ffffff" text-anchor="middle">Δᵀ</text>
+  <text x="152" y="190" font-size="15" font-weight="700" fill="#7ec8e3" text-anchor="middle">m</text>
+  <text x="180" y="190" font-size="14" fill="#9aa4b8" text-anchor="middle">×</text>
+  <text x="208" y="190" font-size="15" font-weight="700" fill="#e05555" text-anchor="middle">B</text>
+
+  <text x="300" y="176" font-size="18" font-weight="700" fill="#9aa4b8" text-anchor="middle">×</text>
+
+  <rect x="330" y="132" width="180" height="76" rx="6" fill="#000000" stroke="#7777cc" stroke-width="1.5"/>
+  <text x="420" y="162" font-size="15" font-weight="600" fill="#ffffff" text-anchor="middle">X</text>
+  <text x="392" y="190" font-size="15" font-weight="700" fill="#e05555" text-anchor="middle">B</text>
+  <text x="420" y="190" font-size="14" fill="#9aa4b8" text-anchor="middle">×</text>
+  <text x="448" y="190" font-size="15" font-weight="700" fill="#7ec8e3" text-anchor="middle">n</text>
+
+  <text x="540" y="176" font-size="18" font-weight="700" fill="#9aa4b8" text-anchor="middle">=</text>
+
+  <rect x="570" y="132" width="200" height="76" rx="6" fill="#000000" stroke="#7ec8e3" stroke-width="2.5"/>
+  <text x="670" y="162" font-size="15" font-weight="600" fill="#ffffff" text-anchor="middle">∂L/∂W</text>
+  <text x="670" y="190" font-size="15" font-weight="700" fill="#7ec8e3" text-anchor="middle">m × n</text>
+
+  <path d="M 208 214 C 240 268, 360 268, 392 214" fill="none" stroke="#e05555" stroke-width="2.5" stroke-dasharray="5,3"/>
+  <text x="300" y="292" font-size="14" font-weight="700" fill="#e05555" text-anchor="middle">B 가 사라진다</text>
+
+  <rect x="60" y="316" width="760" height="48" rx="6" fill="#000000" stroke="#3a4a6e" stroke-width="1"/>
+  <text x="440" y="346" font-size="15" font-weight="600" fill="#ffffff" text-anchor="middle">그 자리에서 합이 일어나므로 결과는 표본마다의 외적을 전부 더한 값이다 — Σ δᵣ xᵣᵀ</text>
+</svg>

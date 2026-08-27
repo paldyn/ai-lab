@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="400" viewBox="0 0 880 400" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <rect x="0" y="0" width="880" height="400" rx="12" fill="#0a0a0a"/>
+  <text x="60" y="44" font-size="22" font-weight="700" fill="#e8e8e8">대각행렬에서 외적을 뺀 것</text>
+  <text x="60" y="76" font-size="13" fill="#888">z = (2, 1, 0.1) 이므로 p = (0.659, 0.242, 0.099) — 소수점 셋째 자리까지 적었다</text>
+
+  <text x="163" y="146" font-size="15" font-weight="600" fill="#7ec8e3" text-anchor="middle">diag(p)</text>
+  <rect x="70" y="160" width="186" height="120" rx="6" fill="#000000" stroke="#7ec8e3" stroke-width="1.5"/>
+  <line x1="132" y1="160" x2="132" y2="280" stroke="#3a4a6e" stroke-width="1"/>
+  <line x1="194" y1="160" x2="194" y2="280" stroke="#3a4a6e" stroke-width="1"/>
+  <line x1="70" y1="200" x2="256" y2="200" stroke="#3a4a6e" stroke-width="1"/>
+  <line x1="70" y1="240" x2="256" y2="240" stroke="#3a4a6e" stroke-width="1"/>
+  <text x="101" y="185" font-size="12" fill="#ffffff" text-anchor="middle">0.659</text>
+  <text x="163" y="185" font-size="12" fill="#9aa4b8" text-anchor="middle">0</text>
+  <text x="225" y="185" font-size="12" fill="#9aa4b8" text-anchor="middle">0</text>
+  <text x="101" y="225" font-size="12" fill="#9aa4b8" text-anchor="middle">0</text>
+  <text x="163" y="225" font-size="12" fill="#ffffff" text-anchor="middle">0.242</text>
+  <text x="225" y="225" font-size="12" fill="#9aa4b8" text-anchor="middle">0</text>
+  <text x="101" y="265" font-size="12" fill="#9aa4b8" text-anchor="middle">0</text>
+  <text x="163" y="265" font-size="12" fill="#9aa4b8" text-anchor="middle">0</text>
+  <text x="225" y="265" font-size="12" fill="#ffffff" text-anchor="middle">0.099</text>
+
+  <text x="281" y="228" font-size="20" font-weight="700" fill="#9aa4b8" text-anchor="middle">−</text>
+
+  <text x="399" y="146" font-size="15" font-weight="600" fill="#7777cc" text-anchor="middle">p pᵀ</text>
+  <rect x="306" y="160" width="186" height="120" rx="6" fill="#000000" stroke="#7777cc" stroke-width="1.5"/>
+  <line x1="368" y1="160" x2="368" y2="280" stroke="#3a4a6e" stroke-width="1"/>
+  <line x1="430" y1="160" x2="430" y2="280" stroke="#3a4a6e" stroke-width="1"/>
+  <line x1="306" y1="200" x2="492" y2="200" stroke="#3a4a6e" stroke-width="1"/>
+  <line x1="306" y1="240" x2="492" y2="240" stroke="#3a4a6e" stroke-width="1"/>
+  <text x="337" y="185" font-size="12" fill="#ffffff" text-anchor="middle">0.434</text>
+  <text x="399" y="185" font-size="12" fill="#ffffff" text-anchor="middle">0.160</text>
+  <text x="461" y="185" font-size="12" fill="#ffffff" text-anchor="middle">0.065</text>
+  <text x="337" y="225" font-size="12" fill="#ffffff" text-anchor="middle">0.160</text>
+  <text x="399" y="225" font-size="12" fill="#ffffff" text-anchor="middle">0.059</text>
+  <text x="461" y="225" font-size="12" fill="#ffffff" text-anchor="middle">0.024</text>
+  <text x="337" y="265" font-size="12" fill="#ffffff" text-anchor="middle">0.065</text>
+  <text x="399" y="265" font-size="12" fill="#ffffff" text-anchor="middle">0.024</text>
+  <text x="461" y="265" font-size="12" fill="#ffffff" text-anchor="middle">0.010</text>
+
+  <text x="517" y="228" font-size="20" font-weight="700" fill="#9aa4b8" text-anchor="middle">=</text>
+
+  <text x="635" y="146" font-size="15" font-weight="600" fill="#e8e8e8" text-anchor="middle">J</text>
+  <rect x="542" y="160" width="186" height="120" rx="6" fill="#000000" stroke="#e8e8e8" stroke-width="2"/>
+  <line x1="604" y1="160" x2="604" y2="280" stroke="#3a4a6e" stroke-width="1"/>
+  <line x1="666" y1="160" x2="666" y2="280" stroke="#3a4a6e" stroke-width="1"/>
+  <line x1="542" y1="200" x2="728" y2="200" stroke="#3a4a6e" stroke-width="1"/>
+  <line x1="542" y1="240" x2="728" y2="240" stroke="#3a4a6e" stroke-width="1"/>
+  <text x="573" y="185" font-size="12" fill="#55c555" text-anchor="middle">0.225</text>
+  <text x="635" y="185" font-size="12" fill="#e05555" text-anchor="middle">−0.160</text>
+  <text x="697" y="185" font-size="12" fill="#e05555" text-anchor="middle">−0.065</text>
+  <text x="573" y="225" font-size="12" fill="#e05555" text-anchor="middle">−0.160</text>
+  <text x="635" y="225" font-size="12" fill="#55c555" text-anchor="middle">0.184</text>
+  <text x="697" y="225" font-size="12" fill="#e05555" text-anchor="middle">−0.024</text>
+  <text x="573" y="265" font-size="12" fill="#e05555" text-anchor="middle">−0.065</text>
+  <text x="635" y="265" font-size="12" fill="#e05555" text-anchor="middle">−0.024</text>
+  <text x="697" y="265" font-size="12" fill="#55c555" text-anchor="middle">0.089</text>
+
+  <rect x="70" y="316" width="750" height="52" rx="6" fill="#000000" stroke="#3a4a6e" stroke-width="1"/>
+  <text x="445" y="348" font-size="14" font-weight="600" fill="#ffffff" text-anchor="middle">J 는 대칭이고 각 열의 합이 0이다 — 로짓 하나를 흔들어도 확률의 총합은 1로 남기 때문이다</text>
+</svg>

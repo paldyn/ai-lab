@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="400" viewBox="0 0 880 400" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <rect x="0" y="0" width="880" height="400" rx="12" fill="#0a0a0a"/>
+  <text x="60" y="44" font-size="22" font-weight="700" fill="#e8e8e8">층의 야코비안이 곱해지면 가운데 차원이 사라진다</text>
+  <text x="60" y="76" font-size="13" fill="#888">784 → 512 → 128 → 10 짜리 3층 신경망</text>
+
+  <text x="60" y="126" font-size="14" font-weight="600" fill="#7ec8e3">J₃ J₂ J₁ — 역방향이 아니라 «합성한 순서의 역순»으로 적는 것이 규칙이다</text>
+
+  <rect x="70" y="160" width="160" height="80" rx="6" fill="#000000" stroke="#3a4a6e" stroke-width="1"/>
+  <text x="150" y="190" font-size="15" font-weight="600" fill="#ffffff" text-anchor="middle">J₃ (3층)</text>
+  <text x="118" y="218" font-size="14" font-weight="600" fill="#7ec8e3" text-anchor="middle">10</text>
+  <text x="150" y="218" font-size="14" fill="#9aa4b8" text-anchor="middle">×</text>
+  <text x="186" y="218" font-size="14" font-weight="600" fill="#7777cc" text-anchor="middle">128</text>
+
+  <text x="245" y="208" font-size="18" font-weight="700" fill="#9aa4b8" text-anchor="middle">·</text>
+
+  <rect x="260" y="160" width="160" height="80" rx="6" fill="#000000" stroke="#3a4a6e" stroke-width="1"/>
+  <text x="340" y="190" font-size="15" font-weight="600" fill="#ffffff" text-anchor="middle">J₂ (2층)</text>
+  <text x="304" y="218" font-size="14" font-weight="600" fill="#7777cc" text-anchor="middle">128</text>
+  <text x="340" y="218" font-size="14" fill="#9aa4b8" text-anchor="middle">×</text>
+  <text x="378" y="218" font-size="14" font-weight="600" fill="#7777cc" text-anchor="middle">512</text>
+
+  <text x="435" y="208" font-size="18" font-weight="700" fill="#9aa4b8" text-anchor="middle">·</text>
+
+  <rect x="450" y="160" width="160" height="80" rx="6" fill="#000000" stroke="#3a4a6e" stroke-width="1"/>
+  <text x="530" y="190" font-size="15" font-weight="600" fill="#ffffff" text-anchor="middle">J₁ (1층)</text>
+  <text x="494" y="218" font-size="14" font-weight="600" fill="#7777cc" text-anchor="middle">512</text>
+  <text x="530" y="218" font-size="14" fill="#9aa4b8" text-anchor="middle">×</text>
+  <text x="568" y="218" font-size="14" font-weight="600" fill="#7ec8e3" text-anchor="middle">784</text>
+
+  <text x="640" y="208" font-size="18" font-weight="700" fill="#9aa4b8" text-anchor="middle">=</text>
+
+  <rect x="670" y="160" width="150" height="80" rx="6" fill="#000000" stroke="#7ec8e3" stroke-width="2"/>
+  <text x="745" y="190" font-size="15" font-weight="600" fill="#ffffff" text-anchor="middle">J 전체</text>
+  <text x="745" y="218" font-size="15" font-weight="700" fill="#7ec8e3" text-anchor="middle">10 × 784</text>
+
+  <path d="M 186 246 C 200 300, 290 300, 304 246" fill="none" stroke="#7777cc" stroke-width="2.5" stroke-dasharray="5,3"/>
+  <path d="M 378 246 C 396 300, 476 300, 494 246" fill="none" stroke="#7777cc" stroke-width="2.5" stroke-dasharray="5,3"/>
+
+  <text x="245" y="326" font-size="13" font-weight="600" fill="#7777cc" text-anchor="middle">128 이 사라진다</text>
+  <text x="436" y="326" font-size="13" font-weight="600" fill="#7777cc" text-anchor="middle">512 가 사라진다</text>
+
+  <text x="60" y="370" font-size="13" fill="#888">남는 것은 처음의 입력 수와 마지막의 출력 수뿐이다 — 중간층을 아무리 넓게 잡아도 결과의 모양은 바뀌지 않는다</text>
+</svg>

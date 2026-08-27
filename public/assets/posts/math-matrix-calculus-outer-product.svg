@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="390" viewBox="0 0 880 390" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <rect x="0" y="0" width="880" height="390" rx="12" fill="#0a0a0a"/>
+  <text x="60" y="44" font-size="22" font-weight="700" fill="#e8e8e8">외적 δxᵀ 는 저절로 W 와 같은 모양이 된다</text>
+  <text x="60" y="76" font-size="13" fill="#888">W 는 2 × 3, δ = (0.5, −1), x = (1, 0, −1)</text>
+
+  <text x="330" y="132" font-size="13" font-weight="600" fill="#7ec8e3" text-anchor="middle">xᵀ · 1 × 3</text>
+  <rect x="240" y="144" width="270" height="46" rx="6" fill="#000000" stroke="#7ec8e3" stroke-width="1.5"/>
+  <line x1="330" y1="144" x2="330" y2="190" stroke="#3a4a6e" stroke-width="1"/>
+  <line x1="420" y1="144" x2="420" y2="190" stroke="#3a4a6e" stroke-width="1"/>
+  <text x="285" y="174" font-size="14" font-weight="600" fill="#ffffff" text-anchor="middle">1</text>
+  <text x="375" y="174" font-size="14" font-weight="600" fill="#ffffff" text-anchor="middle">0</text>
+  <text x="465" y="174" font-size="14" font-weight="600" fill="#ffffff" text-anchor="middle">−1</text>
+
+  <text x="150" y="222" font-size="13" font-weight="600" fill="#7777cc" text-anchor="middle">δ · 2 × 1</text>
+  <rect x="105" y="234" width="90" height="96" rx="6" fill="#000000" stroke="#7777cc" stroke-width="1.5"/>
+  <line x1="105" y1="282" x2="195" y2="282" stroke="#3a4a6e" stroke-width="1"/>
+  <text x="150" y="264" font-size="14" font-weight="600" fill="#ffffff" text-anchor="middle">0.5</text>
+  <text x="150" y="312" font-size="14" font-weight="600" fill="#ffffff" text-anchor="middle">−1</text>
+
+  <rect x="240" y="234" width="270" height="96" rx="6" fill="#000000" stroke="#e8e8e8" stroke-width="2"/>
+  <line x1="330" y1="234" x2="330" y2="330" stroke="#3a4a6e" stroke-width="1"/>
+  <line x1="420" y1="234" x2="420" y2="330" stroke="#3a4a6e" stroke-width="1"/>
+  <line x1="240" y1="282" x2="510" y2="282" stroke="#3a4a6e" stroke-width="1"/>
+  <text x="285" y="264" font-size="14" font-weight="600" fill="#ffffff" text-anchor="middle">0.5</text>
+  <text x="375" y="264" font-size="14" font-weight="600" fill="#9aa4b8" text-anchor="middle">0</text>
+  <text x="465" y="264" font-size="14" font-weight="600" fill="#ffffff" text-anchor="middle">−0.5</text>
+  <text x="285" y="312" font-size="14" font-weight="600" fill="#ffffff" text-anchor="middle">−1</text>
+  <text x="375" y="312" font-size="14" font-weight="600" fill="#9aa4b8" text-anchor="middle">0</text>
+  <text x="465" y="312" font-size="14" font-weight="600" fill="#ffffff" text-anchor="middle">1</text>
+
+  <rect x="330" y="234" width="90" height="96" fill="none" stroke="#e05555" stroke-width="2.5" stroke-dasharray="5,3"/>
+
+  <text x="560" y="256" font-size="14" font-weight="600" fill="#e8e8e8">(2 × 1) × (1 × 3) = 2 × 3</text>
+  <text x="560" y="282" font-size="13" fill="#888">칸마다 δᵢ xⱼ 하나가 들어간다</text>
+  <text x="560" y="316" font-size="13" font-weight="600" fill="#e05555">x₂ = 0 이라 가운데 열이 통째로 0 —</text>
+  <text x="560" y="338" font-size="13" font-weight="600" fill="#e05555">그 입력에 붙은 가중치는 갱신을 못 받는다</text>
+</svg>

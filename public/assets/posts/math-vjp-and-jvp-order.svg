@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="410" viewBox="0 0 880 410" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <rect x="0" y="0" width="880" height="410" rx="12" fill="#0a0a0a"/>
+  <defs>
+    <marker id="voR" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#e05555"/>
+    </marker>
+    <marker id="voB" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#7ec8e3"/>
+    </marker>
+  </defs>
+  <text x="60" y="44" font-size="22" font-weight="700" fill="#e8e8e8">같은 답, 4096배 다른 비용</text>
+  <text x="60" y="76" font-size="13" fill="#888">폭 4096 짜리 층 100개 — 곱 J₁₀₀ ⋯ J₁ 을 어느 쪽부터 접느냐</text>
+
+  <text x="60" y="126" font-size="16" font-weight="600" fill="#e05555">오른쪽부터 — 행렬 × 행렬</text>
+
+  <rect x="180" y="140" width="140" height="56" rx="6" fill="#000000" stroke="#e05555" stroke-width="1.5"/>
+  <text x="250" y="174" font-size="14" font-weight="600" fill="#ffffff" text-anchor="middle">4096 × 4096</text>
+  <text x="337" y="174" font-size="16" font-weight="700" fill="#9aa4b8" text-anchor="middle">×</text>
+  <rect x="354" y="140" width="140" height="56" rx="6" fill="#000000" stroke="#e05555" stroke-width="1.5"/>
+  <text x="424" y="174" font-size="14" font-weight="600" fill="#ffffff" text-anchor="middle">4096 × 4096</text>
+  <line x1="504" y1="168" x2="554" y2="168" stroke="#e05555" stroke-width="2.5" marker-end="url(#voR)"/>
+  <rect x="564" y="140" width="140" height="56" rx="6" fill="#000000" stroke="#e05555" stroke-width="1.5"/>
+  <text x="634" y="174" font-size="14" font-weight="600" fill="#ffffff" text-anchor="middle">4096 × 4096</text>
+
+  <text x="180" y="222" font-size="14" font-weight="600" fill="#e05555">한 번에 4096³ 번 · 99번 반복하면 곱셈 6.8 × 10¹² 번, 중간 결과도 매번 67MB</text>
+
+  <text x="60" y="278" font-size="16" font-weight="600" fill="#7ec8e3">왼쪽부터 — 행 × 행렬 (손실이 스칼라라 맨 왼쪽이 행 하나다)</text>
+
+  <rect x="180" y="292" width="140" height="56" rx="6" fill="#000000" stroke="#7ec8e3" stroke-width="1.5"/>
+  <text x="250" y="326" font-size="14" font-weight="600" fill="#ffffff" text-anchor="middle">1 × 4096</text>
+  <text x="337" y="326" font-size="16" font-weight="700" fill="#9aa4b8" text-anchor="middle">×</text>
+  <rect x="354" y="292" width="140" height="56" rx="6" fill="#000000" stroke="#7ec8e3" stroke-width="1.5"/>
+  <text x="424" y="326" font-size="14" font-weight="600" fill="#ffffff" text-anchor="middle">4096 × 4096</text>
+  <line x1="504" y1="320" x2="554" y2="320" stroke="#7ec8e3" stroke-width="2.5" marker-end="url(#voB)"/>
+  <rect x="564" y="292" width="140" height="56" rx="6" fill="#000000" stroke="#7ec8e3" stroke-width="1.5"/>
+  <text x="634" y="326" font-size="14" font-weight="600" fill="#ffffff" text-anchor="middle">1 × 4096</text>
+
+  <text x="180" y="374" font-size="14" font-weight="600" fill="#7ec8e3">한 번에 4096² 번 · 99번 반복해도 곱셈 1.7 × 10⁹ 번, 중간 결과는 벡터 하나</text>
+</svg>

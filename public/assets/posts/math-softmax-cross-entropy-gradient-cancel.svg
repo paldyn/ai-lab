@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="450" viewBox="0 0 880 450" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <rect x="0" y="0" width="880" height="450" rx="12" fill="#0a0a0a"/>
+  <defs>
+    <marker id="ccArr" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#7ec8e3"/>
+    </marker>
+  </defs>
+  <text x="60" y="44" font-size="22" font-weight="700" fill="#e8e8e8">약분 한 번에 행렬이 통째로 사라진다</text>
+  <text x="60" y="76" font-size="13" fill="#888">교차엔트로피가 내놓은 1/pᵢ 와 야코비안이 들고 있던 pᵢ 가 만난다</text>
+
+  <rect x="70" y="110" width="560" height="56" rx="6" fill="#000000" stroke="#3a4a6e" stroke-width="1"/>
+  <text x="350" y="145" font-size="15" font-weight="600" fill="#ffffff" text-anchor="middle">∂L/∂zⱼ = Σᵢ ( −yᵢ / pᵢ ) · pᵢ ( δᵢⱼ − pⱼ )</text>
+  <line x1="393" y1="141" x2="418" y2="141" stroke="#e05555" stroke-width="2.5"/>
+  <line x1="437" y1="141" x2="456" y2="141" stroke="#e05555" stroke-width="2.5"/>
+  <text x="660" y="134" font-size="13" fill="#e8e8e8">VJP 한 줄 —</text>
+  <text x="660" y="156" font-size="13" fill="#e8e8e8">∂L/∂p 를 J 에 통과시킨 것</text>
+
+  <line x1="350" y1="166" x2="350" y2="190" stroke="#7ec8e3" stroke-width="2.5" marker-end="url(#ccArr)"/>
+
+  <rect x="70" y="196" width="560" height="56" rx="6" fill="#000000" stroke="#3a4a6e" stroke-width="1"/>
+  <text x="350" y="231" font-size="15" font-weight="600" fill="#ffffff" text-anchor="middle">= −Σᵢ yᵢ ( δᵢⱼ − pⱼ )</text>
+  <text x="660" y="228" font-size="13" font-weight="600" fill="#e05555">pᵢ 가 약분됐다</text>
+
+  <line x1="350" y1="252" x2="350" y2="276" stroke="#7ec8e3" stroke-width="2.5" marker-end="url(#ccArr)"/>
+
+  <rect x="70" y="282" width="560" height="56" rx="6" fill="#000000" stroke="#3a4a6e" stroke-width="1"/>
+  <text x="350" y="317" font-size="15" font-weight="600" fill="#ffffff" text-anchor="middle">= −yⱼ + pⱼ · Σᵢ yᵢ</text>
+  <text x="660" y="314" font-size="13" font-weight="600" fill="#7777cc">Σᵢ yᵢ = 1 을 쓴다</text>
+
+  <line x1="350" y1="338" x2="350" y2="362" stroke="#7ec8e3" stroke-width="2.5" marker-end="url(#ccArr)"/>
+
+  <rect x="70" y="368" width="560" height="56" rx="6" fill="#000000" stroke="#55c555" stroke-width="2.5"/>
+  <text x="350" y="403" font-size="17" font-weight="700" fill="#55c555" text-anchor="middle">∂L/∂z = p − y</text>
+  <text x="660" y="400" font-size="13" font-weight="600" fill="#55c555">C × C 행렬이 남지 않았다</text>
+</svg>

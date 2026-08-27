@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="410" viewBox="0 0 880 410" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <rect x="0" y="0" width="880" height="410" rx="12" fill="#0a0a0a"/>
+  <text x="60" y="44" font-size="22" font-weight="700" fill="#e8e8e8">행은 출력, 열은 입력</text>
+  <text x="60" y="76" font-size="13" fill="#888">입력 4개, 출력 3개인 함수의 야코비안 — 모양은 3 × 4 다</text>
+
+  <text x="460" y="118" font-size="14" font-weight="600" fill="#e8e8e8" text-anchor="middle">입력 (n = 4)</text>
+  <text x="280" y="140" font-size="13" fill="#888" text-anchor="middle">x₁</text>
+  <text x="400" y="140" font-size="13" fill="#888" text-anchor="middle">x₂</text>
+  <text x="520" y="140" font-size="13" fill="#888" text-anchor="middle">x₃</text>
+  <text x="640" y="140" font-size="13" fill="#888" text-anchor="middle">x₄</text>
+
+  <text x="130" y="226" font-size="14" font-weight="600" fill="#e8e8e8" text-anchor="middle">출력</text>
+  <text x="130" y="248" font-size="14" font-weight="600" fill="#e8e8e8" text-anchor="middle">(m = 3)</text>
+  <text x="208" y="190" font-size="13" fill="#888" text-anchor="end">f₁</text>
+  <text x="208" y="244" font-size="13" fill="#888" text-anchor="end">f₂</text>
+  <text x="208" y="298" font-size="13" fill="#888" text-anchor="end">f₃</text>
+
+  <rect x="220" y="152" width="480" height="162" rx="6" fill="#000000" stroke="#3a4a6e" stroke-width="1"/>
+  <line x1="340" y1="152" x2="340" y2="314" stroke="#3a4a6e" stroke-width="1"/>
+  <line x1="460" y1="152" x2="460" y2="314" stroke="#3a4a6e" stroke-width="1"/>
+  <line x1="580" y1="152" x2="580" y2="314" stroke="#3a4a6e" stroke-width="1"/>
+  <line x1="220" y1="206" x2="700" y2="206" stroke="#3a4a6e" stroke-width="1"/>
+  <line x1="220" y1="260" x2="700" y2="260" stroke="#3a4a6e" stroke-width="1"/>
+
+  <text x="280" y="190" font-size="13" fill="#ffffff" text-anchor="middle">∂f₁/∂x₁</text>
+  <text x="400" y="190" font-size="13" fill="#ffffff" text-anchor="middle">∂f₁/∂x₂</text>
+  <text x="520" y="190" font-size="13" fill="#ffffff" text-anchor="middle">∂f₁/∂x₃</text>
+  <text x="640" y="190" font-size="13" fill="#ffffff" text-anchor="middle">∂f₁/∂x₄</text>
+  <text x="280" y="244" font-size="13" fill="#ffffff" text-anchor="middle">∂f₂/∂x₁</text>
+  <text x="400" y="244" font-size="13" fill="#ffffff" text-anchor="middle">∂f₂/∂x₂</text>
+  <text x="520" y="244" font-size="13" fill="#ffffff" text-anchor="middle">∂f₂/∂x₃</text>
+  <text x="640" y="244" font-size="13" fill="#ffffff" text-anchor="middle">∂f₂/∂x₄</text>
+  <text x="280" y="298" font-size="13" fill="#ffffff" text-anchor="middle">∂f₃/∂x₁</text>
+  <text x="400" y="298" font-size="13" fill="#ffffff" text-anchor="middle">∂f₃/∂x₂</text>
+  <text x="520" y="298" font-size="13" fill="#ffffff" text-anchor="middle">∂f₃/∂x₃</text>
+  <text x="640" y="298" font-size="13" fill="#ffffff" text-anchor="middle">∂f₃/∂x₄</text>
+
+  <rect x="220" y="152" width="480" height="54" rx="0" fill="none" stroke="#7ec8e3" stroke-width="2.5"/>
+  <rect x="340" y="152" width="120" height="162" rx="0" fill="none" stroke="#7777cc" stroke-width="2.5" stroke-dasharray="5,3"/>
+
+  <rect x="60" y="336" width="14" height="14" fill="none" stroke="#7ec8e3" stroke-width="2.5"/>
+  <text x="86" y="348" font-size="13" fill="#e8e8e8">행 하나 = 출력 f₁ 의 그래디언트를 눕혀 놓은 것</text>
+
+  <rect x="60" y="366" width="14" height="14" fill="none" stroke="#7777cc" stroke-width="2.5" stroke-dasharray="5,3"/>
+  <text x="86" y="378" font-size="13" fill="#e8e8e8">열 하나 = 입력 x₂ 를 흔들었을 때 출력 전체가 움직이는 방향</text>
+</svg>

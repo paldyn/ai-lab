@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="410" viewBox="0 0 880 410" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <rect x="0" y="0" width="880" height="410" rx="12" fill="#0a0a0a"/>
+  <text x="60" y="44" font-size="22" font-weight="700" fill="#e8e8e8">벡터를 곱할 자리가 양쪽으로 둘이다</text>
+  <text x="60" y="76" font-size="13" fill="#888">야코비안 J 는 m × n — 오른쪽에 곱하면 JVP, 왼쪽에 곱하면 VJP다</text>
+
+  <text x="60" y="126" font-size="16" font-weight="600" fill="#7ec8e3">JVP — 앞을 본다</text>
+
+  <rect x="90" y="140" width="140" height="70" rx="6" fill="#000000" stroke="#7ec8e3" stroke-width="1.5"/>
+  <text x="160" y="168" font-size="14" font-weight="600" fill="#ffffff" text-anchor="middle">J</text>
+  <text x="160" y="190" font-size="13" fill="#9aa4b8" text-anchor="middle">m × n</text>
+  <text x="248" y="182" font-size="16" font-weight="700" fill="#9aa4b8" text-anchor="middle">×</text>
+  <rect x="266" y="140" width="140" height="70" rx="6" fill="#000000" stroke="#7ec8e3" stroke-width="1.5"/>
+  <text x="336" y="168" font-size="14" font-weight="600" fill="#ffffff" text-anchor="middle">v</text>
+  <text x="336" y="190" font-size="13" fill="#9aa4b8" text-anchor="middle">n × 1</text>
+  <text x="424" y="182" font-size="16" font-weight="700" fill="#9aa4b8" text-anchor="middle">=</text>
+  <rect x="442" y="140" width="150" height="70" rx="6" fill="#000000" stroke="#7ec8e3" stroke-width="2.5"/>
+  <text x="517" y="168" font-size="14" font-weight="600" fill="#7ec8e3" text-anchor="middle">Jv</text>
+  <text x="517" y="190" font-size="13" fill="#9aa4b8" text-anchor="middle">m × 1</text>
+
+  <text x="620" y="164" font-size="13" fill="#e8e8e8">입력을 v 방향으로 흔들면</text>
+  <text x="620" y="186" font-size="13" fill="#e8e8e8">출력 전체가 어떻게 움직이나</text>
+  <text x="620" y="208" font-size="13" fill="#888">J 의 «열» 쪽 정보다</text>
+
+  <text x="60" y="278" font-size="16" font-weight="600" fill="#7777cc">VJP — 뒤를 본다</text>
+
+  <rect x="90" y="292" width="140" height="70" rx="6" fill="#000000" stroke="#7777cc" stroke-width="1.5"/>
+  <text x="160" y="320" font-size="14" font-weight="600" fill="#ffffff" text-anchor="middle">uᵀ</text>
+  <text x="160" y="342" font-size="13" fill="#9aa4b8" text-anchor="middle">1 × m</text>
+  <text x="248" y="334" font-size="16" font-weight="700" fill="#9aa4b8" text-anchor="middle">×</text>
+  <rect x="266" y="292" width="140" height="70" rx="6" fill="#000000" stroke="#7777cc" stroke-width="1.5"/>
+  <text x="336" y="320" font-size="14" font-weight="600" fill="#ffffff" text-anchor="middle">J</text>
+  <text x="336" y="342" font-size="13" fill="#9aa4b8" text-anchor="middle">m × n</text>
+  <text x="424" y="334" font-size="16" font-weight="700" fill="#9aa4b8" text-anchor="middle">=</text>
+  <rect x="442" y="292" width="150" height="70" rx="6" fill="#000000" stroke="#7777cc" stroke-width="2.5"/>
+  <text x="517" y="320" font-size="14" font-weight="600" fill="#7777cc" text-anchor="middle">uᵀJ</text>
+  <text x="517" y="342" font-size="13" fill="#9aa4b8" text-anchor="middle">1 × n</text>
+
+  <text x="620" y="316" font-size="13" fill="#e8e8e8">출력을 u 로 저울질한 값이</text>
+  <text x="620" y="338" font-size="13" fill="#e8e8e8">각 입력에 얼마나 민감한가</text>
+  <text x="620" y="360" font-size="13" fill="#888">J 의 «행» 쪽 정보다</text>
+</svg>

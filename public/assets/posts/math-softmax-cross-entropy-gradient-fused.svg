@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="420" viewBox="0 0 880 420" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <rect x="0" y="0" width="880" height="420" rx="12" fill="#0a0a0a"/>
+  <defs>
+    <marker id="cfR" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#e05555"/>
+    </marker>
+    <marker id="cfG" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#55c555"/>
+    </marker>
+  </defs>
+  <text x="60" y="44" font-size="22" font-weight="700" fill="#e8e8e8">나눠 구현하면 만들어야 하는 것</text>
+  <text x="60" y="76" font-size="13" fill="#888">어휘 C = 128,000 인 언어모델에서 토큰 하나를 역전파할 때</text>
+
+  <text x="60" y="122" font-size="16" font-weight="600" fill="#e05555">softmax 와 교차엔트로피를 따로</text>
+
+  <rect x="60" y="138" width="120" height="50" rx="6" fill="#000000" stroke="#e05555" stroke-width="1.5"/>
+  <text x="120" y="168" font-size="14" font-weight="600" fill="#ffffff" text-anchor="middle">z</text>
+  <line x1="180" y1="163" x2="220" y2="163" stroke="#e05555" stroke-width="2.5" marker-end="url(#cfR)"/>
+  <rect x="230" y="138" width="120" height="50" rx="6" fill="#000000" stroke="#e05555" stroke-width="1.5"/>
+  <text x="290" y="168" font-size="14" font-weight="600" fill="#ffffff" text-anchor="middle">p = softmax(z)</text>
+  <line x1="350" y1="163" x2="390" y2="163" stroke="#e05555" stroke-width="2.5" marker-end="url(#cfR)"/>
+  <rect x="400" y="138" width="120" height="50" rx="6" fill="#000000" stroke="#e05555" stroke-width="1.5"/>
+  <text x="460" y="168" font-size="14" font-weight="600" fill="#ffffff" text-anchor="middle">L = −Σ y log p</text>
+
+  <rect x="60" y="204" width="760" height="112" rx="6" fill="#000000" stroke="#e05555" stroke-width="1.5"/>
+  <text x="84" y="232" font-size="13" fill="#ffffff">① softmax 의 backward 가 C × C 야코비안을 만든다 — 1.64 × 10¹⁰ 칸, float32 로 65.5 GB</text>
+  <text x="84" y="262" font-size="13" fill="#ffffff">② p 가 아주 작으면 실수 표현에서 0 이 되고 log 0 이 −무한대가 된다</text>
+  <text x="84" y="292" font-size="13" fill="#ffffff">③ pᵢ 로 나눴다 다시 곱하는 왕복이 실제로 일어나 반올림오차가 쌓인다</text>
+
+  <text x="60" y="352" font-size="16" font-weight="600" fill="#55c555">붙여서 한 연산으로</text>
+
+  <rect x="60" y="366" width="120" height="40" rx="6" fill="#000000" stroke="#55c555" stroke-width="1.5"/>
+  <text x="120" y="391" font-size="14" font-weight="600" fill="#ffffff" text-anchor="middle">z</text>
+  <line x1="180" y1="386" x2="220" y2="386" stroke="#55c555" stroke-width="2.5" marker-end="url(#cfG)"/>
+  <rect x="230" y="366" width="230" height="40" rx="6" fill="#000000" stroke="#55c555" stroke-width="1.5"/>
+  <text x="345" y="391" font-size="14" font-weight="600" fill="#ffffff" text-anchor="middle">L = −Σ y (z − logsumexp z)</text>
+  <line x1="460" y1="386" x2="500" y2="386" stroke="#55c555" stroke-width="2.5" marker-end="url(#cfG)"/>
+  <rect x="510" y="366" width="310" height="40" rx="6" fill="#000000" stroke="#55c555" stroke-width="2.5"/>
+  <text x="665" y="391" font-size="14" font-weight="700" fill="#55c555" text-anchor="middle">backward 는 p − y 뺄셈 한 번</text>
+</svg>

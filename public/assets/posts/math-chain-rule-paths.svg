@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="400" viewBox="0 0 880 400" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <rect x="0" y="0" width="880" height="400" rx="12" fill="#0a0a0a"/>
+  <defs>
+    <marker id="cpArr" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#7ec8e3"/>
+    </marker>
+    <marker id="cpArrB" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#7777cc"/>
+    </marker>
+  </defs>
+  <text x="60" y="44" font-size="22" font-weight="700" fill="#e8e8e8">경로마다 곱하고, 경로끼리 더한다</text>
+  <text x="60" y="76" font-size="13" fill="#888">u = t², v = 3t, z = uv 를 t = 2 에서</text>
+
+  <rect x="70" y="180" width="140" height="70" rx="6" fill="#000000" stroke="#3a4a6e" stroke-width="1"/>
+  <text x="140" y="208" font-size="14" font-weight="600" fill="#ffffff" text-anchor="middle">t</text>
+  <text x="140" y="230" font-size="13" fill="#9aa4b8" text-anchor="middle">t = 2</text>
+
+  <rect x="370" y="110" width="140" height="70" rx="6" fill="#000000" stroke="#3a4a6e" stroke-width="1"/>
+  <text x="440" y="138" font-size="14" font-weight="600" fill="#ffffff" text-anchor="middle">u = t²</text>
+  <text x="440" y="160" font-size="13" fill="#9aa4b8" text-anchor="middle">u = 4</text>
+
+  <rect x="370" y="250" width="140" height="70" rx="6" fill="#000000" stroke="#3a4a6e" stroke-width="1"/>
+  <text x="440" y="278" font-size="14" font-weight="600" fill="#ffffff" text-anchor="middle">v = 3t</text>
+  <text x="440" y="300" font-size="13" fill="#9aa4b8" text-anchor="middle">v = 6</text>
+
+  <rect x="670" y="180" width="140" height="70" rx="6" fill="#000000" stroke="#7ec8e3" stroke-width="2"/>
+  <text x="740" y="208" font-size="14" font-weight="600" fill="#ffffff" text-anchor="middle">z = uv</text>
+  <text x="740" y="230" font-size="13" fill="#9aa4b8" text-anchor="middle">z = 24</text>
+
+  <line x1="210" y1="200" x2="370" y2="150" stroke="#7ec8e3" stroke-width="2.5" marker-end="url(#cpArr)"/>
+  <text x="290" y="153" font-size="13" font-weight="600" fill="#7ec8e3" text-anchor="middle">du/dt = 4</text>
+
+  <line x1="210" y1="230" x2="370" y2="280" stroke="#7ec8e3" stroke-width="2.5" marker-end="url(#cpArr)"/>
+  <text x="290" y="288" font-size="13" font-weight="600" fill="#7ec8e3" text-anchor="middle">dv/dt = 3</text>
+
+  <line x1="510" y1="150" x2="670" y2="200" stroke="#7ec8e3" stroke-width="2.5" marker-end="url(#cpArr)"/>
+  <text x="590" y="153" font-size="13" font-weight="600" fill="#7ec8e3" text-anchor="middle">∂z/∂u = 6</text>
+
+  <line x1="510" y1="280" x2="670" y2="230" stroke="#7ec8e3" stroke-width="2.5" marker-end="url(#cpArr)"/>
+  <text x="590" y="288" font-size="13" font-weight="600" fill="#7ec8e3" text-anchor="middle">∂z/∂v = 4</text>
+
+  <rect x="70" y="330" width="270" height="46" rx="6" fill="#000000" stroke="#3a4a6e" stroke-width="1"/>
+  <text x="205" y="359" font-size="14" font-weight="600" fill="#ffffff" text-anchor="middle">위 경로 6 × 4 = 24</text>
+
+  <rect x="370" y="330" width="270" height="46" rx="6" fill="#000000" stroke="#3a4a6e" stroke-width="1"/>
+  <text x="505" y="359" font-size="14" font-weight="600" fill="#ffffff" text-anchor="middle">아래 경로 4 × 3 = 12</text>
+
+  <line x1="640" y1="353" x2="690" y2="353" stroke="#7777cc" stroke-width="2.5" marker-end="url(#cpArrB)"/>
+
+  <rect x="690" y="330" width="120" height="46" rx="6" fill="#000000" stroke="#7777cc" stroke-width="2"/>
+  <text x="750" y="359" font-size="15" font-weight="700" fill="#7777cc" text-anchor="middle">dz/dt = 36</text>
+</svg>

@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="420" viewBox="0 0 880 420" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <rect x="0" y="0" width="880" height="420" rx="12" fill="#0a0a0a"/>
+  <defs>
+    <marker id="scArr" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#7ec8e3"/>
+    </marker>
+  </defs>
+  <text x="60" y="44" font-size="22" font-weight="700" fill="#e8e8e8">공식을 외우는 대신 모양으로 복원한다</text>
+  <text x="60" y="76" font-size="13" fill="#888">∂L/∂W 가 기억나지 않을 때 — 세 줄을 적으면 후보가 하나로 좁혀진다</text>
+
+  <rect x="60" y="110" width="230" height="86" rx="6" fill="#000000" stroke="#3a4a6e" stroke-width="1"/>
+  <text x="175" y="140" font-size="14" font-weight="600" fill="#ffffff" text-anchor="middle">① 재료의 모양</text>
+  <text x="175" y="164" font-size="14" font-weight="600" fill="#7ec8e3" text-anchor="middle">δ : (m,)</text>
+  <text x="175" y="186" font-size="14" font-weight="600" fill="#7ec8e3" text-anchor="middle">x : (n,)</text>
+
+  <line x1="290" y1="153" x2="325" y2="153" stroke="#7ec8e3" stroke-width="2.5" marker-end="url(#scArr)"/>
+
+  <rect x="335" y="110" width="230" height="86" rx="6" fill="#000000" stroke="#3a4a6e" stroke-width="1"/>
+  <text x="450" y="140" font-size="14" font-weight="600" fill="#ffffff" text-anchor="middle">② 답의 모양</text>
+  <text x="450" y="164" font-size="14" font-weight="600" fill="#7ec8e3" text-anchor="middle">미분 대상과 같다</text>
+  <text x="450" y="186" font-size="14" font-weight="600" fill="#7ec8e3" text-anchor="middle">∂L/∂W : (m, n)</text>
+
+  <line x1="565" y1="153" x2="600" y2="153" stroke="#7ec8e3" stroke-width="2.5" marker-end="url(#scArr)"/>
+
+  <rect x="610" y="110" width="210" height="86" rx="6" fill="#000000" stroke="#3a4a6e" stroke-width="1"/>
+  <text x="715" y="140" font-size="14" font-weight="600" fill="#ffffff" text-anchor="middle">③ 맞는 조합 찾기</text>
+  <text x="715" y="164" font-size="14" font-weight="600" fill="#7ec8e3" text-anchor="middle">곱해서 (m, n) 이</text>
+  <text x="715" y="186" font-size="14" font-weight="600" fill="#7ec8e3" text-anchor="middle">되는 것은 무엇인가</text>
+
+  <rect x="60" y="228" width="370" height="76" rx="6" fill="#000000" stroke="#55c555" stroke-width="2"/>
+  <text x="245" y="258" font-size="16" font-weight="700" fill="#55c555" text-anchor="middle">δxᵀ → (m, 1)(1, n) = (m, n)</text>
+  <text x="245" y="288" font-size="13" fill="#9aa4b8" text-anchor="middle">모양이 맞는다 — 이것이 답이다</text>
+
+  <rect x="450" y="228" width="370" height="76" rx="6" fill="#000000" stroke="#e05555" stroke-width="2"/>
+  <text x="635" y="258" font-size="16" font-weight="700" fill="#e05555" text-anchor="middle">xδᵀ → (n, 1)(1, m) = (n, m)</text>
+  <text x="635" y="288" font-size="13" fill="#9aa4b8" text-anchor="middle">W 와 모양이 다르다 — 탈락</text>
+
+  <rect x="60" y="330" width="760" height="70" rx="6" fill="#000000" stroke="#e05555" stroke-width="2" stroke-dasharray="5,3"/>
+  <text x="440" y="358" font-size="14" font-weight="700" fill="#e05555" text-anchor="middle">다만 모양은 증명이 아니다</text>
+  <text x="440" y="382" font-size="13" fill="#ffffff" text-anchor="middle">A 와 Aᵀ 는 둘 다 (n, n) 이라 갈리지 않는다 — 후보가 여럿 남으면 성분으로 돌아간다</text>
+</svg>

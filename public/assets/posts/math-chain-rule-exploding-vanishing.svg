@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="430" viewBox="0 0 880 430" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <rect x="0" y="0" width="880" height="430" rx="12" fill="#0a0a0a"/>
+  <text x="60" y="44" font-size="22" font-weight="700" fill="#e8e8e8">층이 늘면 비율의 곱은 지수적으로 벌어진다</text>
+  <text x="60" y="76" font-size="13" fill="#888">세로축은 로그 눈금 — 곱 r^L 의 크기, 가로축은 층 수 L</text>
+
+  <line x1="100" y1="110" x2="740" y2="110" stroke="#444" stroke-width="1"/>
+  <line x1="100" y1="154" x2="740" y2="154" stroke="#444" stroke-width="1"/>
+  <line x1="100" y1="243" x2="740" y2="243" stroke="#444" stroke-width="1"/>
+  <line x1="100" y1="287" x2="740" y2="287" stroke="#444" stroke-width="1"/>
+  <line x1="100" y1="331" x2="740" y2="331" stroke="#444" stroke-width="1"/>
+
+  <text x="90" y="115" font-size="12" fill="#888" text-anchor="end">10¹⁰</text>
+  <text x="90" y="159" font-size="12" fill="#888" text-anchor="end">10⁵</text>
+  <text x="90" y="203" font-size="12" fill="#888" text-anchor="end">1</text>
+  <text x="90" y="248" font-size="12" fill="#888" text-anchor="end">10⁻⁵</text>
+  <text x="90" y="292" font-size="12" fill="#888" text-anchor="end">10⁻¹⁰</text>
+  <text x="90" y="336" font-size="12" fill="#888" text-anchor="end">10⁻¹⁵</text>
+
+  <line x1="100" y1="110" x2="100" y2="345" stroke="#888" stroke-width="1.5"/>
+  <line x1="100" y1="345" x2="740" y2="345" stroke="#888" stroke-width="1.5"/>
+
+  <line x1="228" y1="345" x2="228" y2="351" stroke="#888" stroke-width="1.5"/>
+  <line x1="356" y1="345" x2="356" y2="351" stroke="#888" stroke-width="1.5"/>
+  <line x1="484" y1="345" x2="484" y2="351" stroke="#888" stroke-width="1.5"/>
+  <line x1="612" y1="345" x2="612" y2="351" stroke="#888" stroke-width="1.5"/>
+  <line x1="740" y1="345" x2="740" y2="351" stroke="#888" stroke-width="1.5"/>
+  <text x="100" y="370" font-size="12" fill="#888" text-anchor="middle">0</text>
+  <text x="228" y="370" font-size="12" fill="#888" text-anchor="middle">10</text>
+  <text x="356" y="370" font-size="12" fill="#888" text-anchor="middle">20</text>
+  <text x="484" y="370" font-size="12" fill="#888" text-anchor="middle">30</text>
+  <text x="612" y="370" font-size="12" fill="#888" text-anchor="middle">40</text>
+  <text x="740" y="370" font-size="12" fill="#888" text-anchor="middle">50</text>
+  <text x="755" y="370" font-size="13" fill="#888">L</text>
+
+  <line x1="100" y1="199" x2="740" y2="121" stroke="#e05555" stroke-width="2.5"/>
+  <line x1="100" y1="199" x2="740" y2="180" stroke="#e05555" stroke-width="2.5" stroke-dasharray="5,3"/>
+  <line x1="100" y1="199" x2="740" y2="199" stroke="#e8e8e8" stroke-width="2" stroke-dasharray="5,3"/>
+  <line x1="100" y1="199" x2="740" y2="219" stroke="#7ec8e3" stroke-width="2.5" stroke-dasharray="5,3"/>
+  <line x1="100" y1="199" x2="740" y2="332" stroke="#7ec8e3" stroke-width="2.5"/>
+
+  <text x="752" y="121" font-size="13" font-weight="600" fill="#e05555">r = 1.5</text>
+  <text x="752" y="177" font-size="13" font-weight="600" fill="#e05555">r = 1.1</text>
+  <text x="752" y="203" font-size="13" font-weight="600" fill="#e8e8e8">r = 1.0</text>
+  <text x="752" y="227" font-size="13" font-weight="600" fill="#7ec8e3">r = 0.9</text>
+  <text x="752" y="336" font-size="13" font-weight="600" fill="#7ec8e3">r = 0.5</text>
+
+  <text x="60" y="400" font-size="13" fill="#888">로그 눈금에서 직선이라는 것이 곧 지수라는 뜻이다 — r = 1 하나에서만 곱이 안정하고, 그 언저리를 벗어나면 중간 지대가 없다</text>
+</svg>

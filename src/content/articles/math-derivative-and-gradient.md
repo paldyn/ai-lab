@@ -193,3 +193,5 @@ print(float(gc @ np.array([1.0, -1.0])))             # 0.0
 읽어주셔서 감사합니다. 😊
 
 **지난 글:** [상호정보량: 두 변수가 공유하는 정보와 InfoNCE 하한](/articles/math-mutual-information)
+
+**다음 글:** [연쇄법칙: 층을 통과하며 곱해지는 비율](/articles/math-chain-rule)

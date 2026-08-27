@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="410" viewBox="0 0 880 410" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <rect x="0" y="0" width="880" height="410" rx="12" fill="#0a0a0a"/>
+  <defs>
+    <marker id="jdArr" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#7777cc"/>
+    </marker>
+  </defs>
+  <text x="60" y="44" font-size="22" font-weight="700" fill="#e8e8e8">넓힌 만큼 묽어진다</text>
+  <text x="60" y="76" font-size="13" fill="#888">X ~ Uniform(0, 1) 을 Y = 2X 로 옮기면 — 두 색칠 넓이는 같다</text>
+
+  <text x="100" y="126" font-size="16" font-weight="600" fill="#e8e8e8">옮기기 전</text>
+  <text x="460" y="126" font-size="16" font-weight="600" fill="#e8e8e8">옮긴 뒤</text>
+
+  <rect x="100" y="160" width="140" height="120" fill="#7ec8e3" fill-opacity="0.18" stroke="#7ec8e3" stroke-width="2.5"/>
+  <text x="170" y="150" font-size="14" font-weight="600" fill="#7ec8e3" text-anchor="middle">밀도 1</text>
+
+  <line x1="90" y1="280" x2="290" y2="280" stroke="#888" stroke-width="1.5"/>
+  <line x1="100" y1="280" x2="100" y2="288" stroke="#888" stroke-width="1.5"/>
+  <line x1="240" y1="280" x2="240" y2="288" stroke="#888" stroke-width="1.5"/>
+  <text x="100" y="306" font-size="12" fill="#888" text-anchor="middle">0</text>
+  <text x="240" y="306" font-size="12" fill="#888" text-anchor="middle">1</text>
+  <text x="300" y="286" font-size="13" fill="#888">x</text>
+
+  <rect x="460" y="220" width="280" height="60" fill="#7777cc" fill-opacity="0.18" stroke="#7777cc" stroke-width="2.5"/>
+  <text x="600" y="210" font-size="14" font-weight="600" fill="#7777cc" text-anchor="middle">밀도 1/2</text>
+
+  <line x1="450" y1="280" x2="790" y2="280" stroke="#888" stroke-width="1.5"/>
+  <line x1="460" y1="280" x2="460" y2="288" stroke="#888" stroke-width="1.5"/>
+  <line x1="600" y1="280" x2="600" y2="288" stroke="#888" stroke-width="1.5"/>
+  <line x1="740" y1="280" x2="740" y2="288" stroke="#888" stroke-width="1.5"/>
+  <text x="460" y="306" font-size="12" fill="#888" text-anchor="middle">0</text>
+  <text x="600" y="306" font-size="12" fill="#888" text-anchor="middle">1</text>
+  <text x="740" y="306" font-size="12" fill="#888" text-anchor="middle">2</text>
+  <text x="800" y="286" font-size="13" fill="#888">y</text>
+
+  <line x1="320" y1="190" x2="420" y2="190" stroke="#7777cc" stroke-width="2.5" marker-end="url(#jdArr)"/>
+  <text x="370" y="176" font-size="14" font-weight="700" fill="#7777cc" text-anchor="middle">Y = 2X</text>
+  <text x="370" y="212" font-size="13" fill="#888" text-anchor="middle">|det J| = 2</text>
+
+  <rect x="60" y="330" width="760" height="56" rx="6" fill="#000000" stroke="#3a4a6e" stroke-width="1"/>
+  <text x="440" y="365" font-size="15" font-weight="600" fill="#ffffff" text-anchor="middle">확률의 총량이 보존되므로   p_Y(y) = p_X(x) / |det J_f(x)|</text>
+</svg>

@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="380" viewBox="0 0 880 380" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <rect x="0" y="0" width="880" height="380" rx="12" fill="#0a0a0a"/>
+  <defs>
+    <marker id="vsArr" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#7777cc"/>
+    </marker>
+  </defs>
+  <text x="60" y="44" font-size="22" font-weight="700" fill="#e8e8e8">학습의 모양이 방향을 정한다</text>
+  <text x="60" y="76" font-size="13" fill="#888">L : ℝⁿ → ℝ 에서 n = 70억, m = 1 — 야코비안은 행이 하나뿐인 표다</text>
+
+  <path d="M 90 120 L 330 205 L 330 235 L 90 320 Z" fill="#7777cc" fill-opacity="0.18" stroke="#7777cc" stroke-width="2"/>
+  <text x="150" y="150" font-size="15" font-weight="600" fill="#e8e8e8">파라미터</text>
+  <text x="150" y="172" font-size="15" font-weight="700" fill="#7777cc">n = 7 × 10⁹</text>
+  <text x="150" y="300" font-size="13" fill="#888">= 야코비안의 열 개수</text>
+
+  <rect x="340" y="200" width="90" height="40" rx="6" fill="#000000" stroke="#7777cc" stroke-width="2"/>
+  <text x="385" y="226" font-size="15" font-weight="700" fill="#7777cc" text-anchor="middle">손실 m = 1</text>
+
+  <line x1="440" y1="220" x2="490" y2="220" stroke="#7777cc" stroke-width="2.5" marker-end="url(#vsArr)"/>
+
+  <rect x="500" y="120" width="320" height="90" rx="6" fill="#000000" stroke="#7ec8e3" stroke-width="2"/>
+  <text x="660" y="150" font-size="15" font-weight="600" fill="#ffffff" text-anchor="middle">역방향 모드 — m = 1 번</text>
+  <text x="660" y="176" font-size="15" font-weight="700" fill="#7ec8e3" text-anchor="middle">0.1 초</text>
+  <text x="660" y="198" font-size="13" fill="#9aa4b8" text-anchor="middle">행 하나면 그래디언트가 전부 채워진다</text>
+
+  <rect x="500" y="230" width="320" height="90" rx="6" fill="#000000" stroke="#e05555" stroke-width="2"/>
+  <text x="660" y="260" font-size="15" font-weight="600" fill="#ffffff" text-anchor="middle">전방 모드 — n = 7 × 10⁹ 번</text>
+  <text x="660" y="286" font-size="15" font-weight="700" fill="#e05555" text-anchor="middle">22 년</text>
+  <text x="660" y="308" font-size="13" fill="#9aa4b8" text-anchor="middle">열을 하나씩 70억 번 채워야 한다</text>
+
+  <text x="60" y="360" font-size="13" fill="#888">순전파 한 번을 0.1초로 잡았을 때 — 역전파가 좋은 알고리즘이라서가 아니라, 문제의 모양이 m ≪ n 이라서다</text>
+</svg>

@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="400" viewBox="0 0 880 400" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <rect x="0" y="0" width="880" height="400" rx="12" fill="#0a0a0a"/>
+  <text x="60" y="44" font-size="22" font-weight="700" fill="#e8e8e8">정답 로짓은 올리고 나머지는 내린다</text>
+  <text x="60" y="76" font-size="13" fill="#888">p = (0.659, 0.242, 0.099), y = (1, 0, 0) 일 때의 ∂L/∂z = p − y</text>
+
+  <line x1="120" y1="230" x2="800" y2="230" stroke="#888" stroke-width="1.5"/>
+  <text x="110" y="235" font-size="12" fill="#888" text-anchor="end">0</text>
+
+  <rect x="180" y="230" width="90" height="68" fill="#55c555" fill-opacity="0.30" stroke="#55c555" stroke-width="2.5"/>
+  <text x="225" y="322" font-size="15" font-weight="700" fill="#55c555" text-anchor="middle">−0.341</text>
+  <text x="225" y="212" font-size="14" font-weight="600" fill="#e8e8e8" text-anchor="middle">클래스 0 (정답)</text>
+
+  <rect x="400" y="182" width="90" height="48" fill="#e05555" fill-opacity="0.30" stroke="#e05555" stroke-width="2.5"/>
+  <text x="445" y="170" font-size="15" font-weight="700" fill="#e05555" text-anchor="middle">+0.242</text>
+  <text x="445" y="256" font-size="14" font-weight="600" fill="#e8e8e8" text-anchor="middle">클래스 1</text>
+
+  <rect x="620" y="210" width="90" height="20" fill="#e05555" fill-opacity="0.30" stroke="#e05555" stroke-width="2.5"/>
+  <text x="665" y="198" font-size="15" font-weight="700" fill="#e05555" text-anchor="middle">+0.099</text>
+  <text x="665" y="256" font-size="14" font-weight="600" fill="#e8e8e8" text-anchor="middle">클래스 2</text>
+
+  <text x="60" y="128" font-size="13" font-weight="600" fill="#e05555">양수 — 경사하강이 그 로짓을 내린다</text>
+  <text x="60" y="356" font-size="13" font-weight="600" fill="#55c555">음수 — 경사하강이 그 로짓을 올린다</text>
+
+  <rect x="460" y="330" width="360" height="46" rx="6" fill="#000000" stroke="#3a4a6e" stroke-width="1"/>
+  <text x="640" y="359" font-size="14" font-weight="600" fill="#ffffff" text-anchor="middle">세 값의 합은 언제나 0이다</text>
+</svg>
