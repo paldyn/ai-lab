@@ -44,7 +44,7 @@ export const certPrepPlans: CertPrepPlan[] = [
     certId: 'adsp',
     mockExams: 5,
     sourceUrl: 'https://www.dataq.or.kr/www/sub/a_06.do',
-    basis: 'dataq.or.kr 자격소개(a_06.do)의 필기 출제범위표를 그대로 쪼갰다 — 3과목·주요항목 8·세부항목 28을 노트 28편에 대응시켰다. 30문항인 데이터분석에 17편, 10문항짜리 두 과목에 11편을 주고 통계분석은 여덟 편, 정형 데이터 마이닝은 여섯 편으로 갈랐다.',
+    basis: 'dataq.or.kr 자격소개(a_06.do)의 필기 출제범위표(3과목·주요항목 8·세부항목 28)를 쪼개 노트 29편으로 만들었다. 세부항목과 1:1이 아니라 문항 수에 맞춰 접고 갈랐다 — 10문항인 데이터 이해는 세부항목 열하나를 다섯 편으로 묶었고, 같은 10문항인 데이터분석 기획은 여섯을 여섯 편에 담았다(분석 방법론만 둘로 갈리고 과제 발굴과 프로젝트 관리가 한 편에 붙어 수가 같아졌다). 30문항인 데이터분석은 세부항목 열하나를 열여덟 편으로 갈랐다 — 통계분석 넷이 여덟 편, 정형 데이터 마이닝 넷이 여섯 편, R기초와 데이터 마트 셋이 네 편이다(「R기초」만 문법을 쓰는 편과 출력을 읽는 편 둘로 나눴다).',
     topics: [
       {
         title: '데이터와 정보, DIKW 피라미드',
@@ -104,7 +104,12 @@ export const certPrepPlans: CertPrepPlan[] = [
       {
         title: 'R 자료 구조와 기본 문법',
         subject: '데이터분석',
-        keywords: ['벡터·행렬·배열·리스트·데이터프레임', '자료형과 형 변환', '인덱싱과 슬라이싱', '제어문과 사용자 정의 함수', 'apply·lapply·sapply', '파일 입출력과 패키지 설치'],
+        keywords: ['벡터·행렬·배열·리스트·데이터프레임', '자료형과 형 변환', '대괄호·이중대괄호·$ 인덱싱 문법', '제어문과 사용자 정의 함수 작성', 'apply 계열 함수의 호출 문법', '파일 입출력과 패키지 설치'],
+      },
+      {
+        title: 'R 코드와 출력 결과 읽기',
+        subject: '데이터분석',
+        keywords: ['str·summary·head 출력 모양 읽기', '인덱싱 결과의 자료형과 차원(drop)', 'apply·lapply·sapply의 반환형 구분', 'factor가 문자·숫자와 다르게 찍히는 자리', 'NA가 낀 산술 결과와 na.rm 옵션', 'table로 만든 빈도표 읽기'],
       },
       {
         title: '데이터 마트와 요약변수·파생변수',
@@ -192,7 +197,7 @@ export const certPrepPlans: CertPrepPlan[] = [
     certId: 'adp',
     mockExams: 6,
     sourceUrl: 'https://www.dataq.or.kr/www/sub/a_05.do',
-    basis: '「통계학 개론」을 표본추출·확률분포·추정과 검정 셋으로 쪼개고 실기 4편을 「답안을 어떻게 쓰는가」 7편으로 늘렸다(27→32). 나머지 셋은 ADsP가 갈라 둔 것을 ADP가 도로 뭉친 자리다 — 데이터 마트 / 결측·이상값, 상관·단순회귀 / 다중회귀·잔차 진단, 그리고 2과목을 시행처 세부항목대로 연계 통합 / 분산 저장·컴퓨팅 / 클라우드 셋으로 폈다. 합쳐 35편.',
+    basis: '「통계학 개론」을 표본추출·확률분포·추정과 검정 셋으로 쪼개고 실기 4편을 「답안을 어떻게 쓰는가」 7편으로 늘렸다(27→32). 나머지 셋은 ADsP가 갈라 둔 것을 ADP가 도로 뭉친 자리다 — 데이터 마트 / 결측·이상값, 상관·단순회귀 / 다중회귀·잔차 진단, 그리고 2과목을 시행처 세부항목대로 연계 통합 / 분산 저장·컴퓨팅 / 클라우드 셋으로 폈다(35). 여기에 다섯을 더해 40편이다. 1과목 세부항목 열하나(데이터의 이해 3 + 데이터의 가치와 미래 5 + 가치 창조를 위한 데이터 사이언스와 전략 인사이트 3)를 두 편이 지면서 「미래의 빅데이터」와 「빅데이터 그리고 데이터 사이언스의 미래」가 통째로 빠져 있어 한 편, 5과목 세부항목 열하나(인사이트 프로세스 4 + 시각화 디자인 4 + 시각화 구현 3)를 두 편이 지던 자리에서 「라이브러리 기반의 시각화 구현: D3.js」를 떼어 한 편, 배점 20점짜리 서술형을 결과 해석 편까지 두 편으로 늘려 한 편이다. 나머지 둘은 실기다 — 일곱 편이 전부 「답안 쓰기」라 240분 동안 돌려 볼 코드가 없어서, 기계학습 영역 유형1~4를 실제로 실행해 보는 코드 실습 두 편을 세웠다. 통계 영역 [통계적 추론 및 통계 모형 구축] 유형3 다변량 분석은 필기 「주성분분석과 다차원척도법」·「군집분석: 거리 측도와 k-평균」과 실기 「실기 분류·군집 답안 쓰기」가 이미 지고 있어 따로 세우지 않았다. 모의고사는 여섯 벌 그대로다 — 서술형 한 문항이 들어가는 것은 한 벌의 구성 문제이지 벌 수를 늘릴 이유가 아니다.',
     topics: [
       {
         title: '데이터와 정보, 데이터베이스 활용',
@@ -203,6 +208,11 @@ export const certPrepPlans: CertPrepPlan[] = [
         title: '빅데이터의 가치와 데이터 사이언스',
         subject: '데이터 이해 (필기)',
         keywords: ['3V와 빅데이터 출현 배경', '가치 산정이 어려운 이유', '사전처리에서 사후처리로', '빅데이터 비즈니스 모델', '위기 요인 셋과 통제 방안', '데이터 사이언티스트의 역량', '전략 인사이트 도출'],
+      },
+      {
+        title: '미래의 빅데이터와 가치 패러다임',
+        subject: '데이터 이해 (필기)',
+        keywords: ['미래를 데이터·기술·인재 셋으로 나눠 보기', '모든 것의 데이터화(datafication)', '지능화되고 진화하는 알고리즘', '알고리즈미스트가 하는 일', '가치 패러다임의 변화 — 디지털화·연결·에이전시', '데이터 사이언스의 한계와 인문학적 사고'],
       },
       {
         title: 'ETL·CDC·EAI와 데이터 연계 통합',
@@ -325,19 +335,34 @@ export const certPrepPlans: CertPrepPlan[] = [
         keywords: ['탐색·분석·활용 3단계', '시간 시각화', '분포 시각화', '관계 시각화', '비교 시각화', '공간 시각화', '인포그래픽'],
       },
       {
-        title: '시각화 디자인과 D3.js 기반 구현',
+        title: '시각화 디자인과 분석 도구 구현',
         subject: '데이터 시각화 (필기)',
-        keywords: ['정보 구조화·시각화·시각표현', '게슈탈트 원리', '색상과 타이포그래피', '분석 도구를 이용한 구현', 'D3.js의 SVG와 데이터 바인딩', '스케일과 축', '인터랙션 설계'],
+        keywords: ['시각화의 정의', '시각화 프로세스(정보 구조화·시각화·시각표현)', '빅데이터와 시각화 디자인', '게슈탈트 원리', '색상과 타이포그래피', '시각화 구현 개요', '분석 도구를 이용한 시각화 구현'],
+      },
+      {
+        title: 'D3.js로 그리는 인터랙션',
+        subject: '데이터 시각화 (필기)',
+        keywords: ['라이브러리 기반의 시각화 구현 — D3.js', 'SVG 요소와 selection', '데이터 바인딩과 enter·update·exit', '스케일과 축 만들기', '전이(transition)와 이벤트 처리', '툴팁·줌·브러시로 만드는 상호작용', '차트 하나를 처음부터 그리는 순서'],
       },
       {
         title: '서술형 문항 답안 구성법',
         subject: '서술형 (필기)',
-        keywords: ['20점 배점의 채점 구조', '방법론 비교형 문항', '절차 서술형 문항', '결과 해석형 문항', '답안 개요 잡기', '근거를 붙여 쓰는 법', '표와 수식으로 쓰기', '분량과 시간 배분'],
+        keywords: ['20점 배점의 채점 구조', '방법론 비교형 문항', '절차 서술형 문항', '답안 개요 잡기', '주장에 근거를 붙이는 문장 형식', '표와 수식으로 쓰기', '분량과 시간 배분'],
+      },
+      {
+        title: '서술형 결과 해석 답안',
+        subject: '서술형 (필기)',
+        keywords: ['결과 해석형 문항이 요구하는 것', '지문에 주어진 분석 결과표를 문장으로 옮기는 순서', '모형 성능 지표를 업무 언어로 바꾸기', '그림에서 읽어야 할 지점을 짚어 주기', '수치만 옮겨 적으면 점수가 안 붙는 자리', '지문에 없는 값을 지어내지 않기'],
       },
       {
         title: '실기 전처리와 EDA 답안 쓰기',
         subject: '데이터분석 실무 (실기)',
-        keywords: ['데이터를 여는 순서', '결측 처리 방법과 근거를 함께 적기', '이상값 판단 기준 명시', '스케일링·인코딩 선택 이유', '불균형 처리 여부 밝히기', 'EDA 그림 고르기', '코드와 해석을 나란히 두는 배치'],
+        keywords: ['처리한 것을 답안에 남기는 순서', '결측 처리 방법을 고른 근거 문장', '이상값 판단 기준 명시', '스케일링·인코딩 선택 이유', '불균형 처리 여부 밝히기', '고른 그림이 무엇을 보여 주는지 한 줄로', '코드와 해석을 나란히 두는 배치', '전처리 전후를 견주는 표'],
+      },
+      {
+        title: '실기 전처리·EDA 코드 실습',
+        subject: '데이터분석 실무 (실기)',
+        keywords: ['결측값 처리와 이상값 탐지 및 수정', '데이터 정규화와 파생 변수 생성', '데이터 샘플링, 데이터 병합 및 분할', '요약 통계량 계산', '히스토그램·산점도·상자그림 그리기', '주요 변수 간의 관계 분석', '데이터의 분포와 군집 구조 파악', '한 줄씩 돌려 결과를 확인하며 고쳐 나가기'],
       },
       {
         title: '실기 통계 검정 답안 쓰기',
@@ -347,12 +372,17 @@ export const certPrepPlans: CertPrepPlan[] = [
       {
         title: '실기 회귀 모형 답안 쓰기',
         subject: '데이터분석 실무 (실기)',
-        keywords: ['모형 설정과 변수 선택 근거', '회귀계수 해석 문장', '결정계수와 F검정 보고', '잔차 진단 결과 서술', '다중공선성 처리 기록', '예측값과 구간 제시', '모형 개선 과정 남기기'],
+        keywords: ['모형 설정과 변수 선택 근거', '회귀계수 해석 문장', '결정계수와 F검정 보고', '잔차 진단 결과 서술', '다중공선성 처리 기록', '비선형 회귀 모델을 쓸 때의 보고 형식', '예측값과 구간 제시', '모형 개선 과정 남기기'],
       },
       {
         title: '실기 분류·군집 답안 쓰기',
         subject: '데이터분석 실무 (실기)',
-        keywords: ['알고리즘 선택 근거', '학습·검증 분할과 교차검증 명시', '하이퍼파라미터 탐색 기록', '평가지표를 고른 이유', '혼동행렬과 ROC 제시', '군집 수 결정 근거', '군집 프로파일 해석', '최종 모형 선택 논리'],
+        keywords: ['알고리즘 선택 근거 문장', '검증 설계를 답안에 밝히는 법', '탐색한 값과 최종 설정 적기', '평가지표를 고른 이유 쓰기', '혼동행렬과 ROC를 답안에 배치하기', '군집 수 결정 근거 서술', '군집 프로파일 해석 문장', '최종 모형 선택 논리 적기'],
+      },
+      {
+        title: '실기 모델링·평가 코드 실습',
+        subject: '데이터분석 실무 (실기)',
+        keywords: ['회귀·분류·군집화 기법 적용', '초매개변수 조율을 통한 모델 성능 최적화', '학습·검증 분할과 교차검증 실행', '다양한 지표로 모델 성능 평가', '결과 해석과 최적 모델 선정', '모델을 갈아 끼우며 견주는 코드 골격', '난수를 고정해 같은 결과를 다시 얻기'],
       },
       {
         title: '실기 시계열 예측 답안 쓰기',
@@ -375,7 +405,7 @@ export const certPrepPlans: CertPrepPlan[] = [
     certId: 'sqld',
     mockExams: 5,
     sourceUrl: 'https://www.dataq.or.kr/www/sub/a_04.do',
-    basis: '시행처 출제범위 표(1과목 10문항·세부항목 10개, 2과목 40문항·세부항목 20개)를 그대로 따르고, 4,300자를 못 채우는 세부항목만 이웃과 묶었다(Null 속성→속성, 본질·인조식별자→식별자, PIVOT+정규 표현식). 노트를 5:23으로 나눠 10:40 문항 비중에 맞췄고, 시행처 순서와 다른 곳은 함수보다 WHERE 절을 앞에 둔 한 자리뿐이다.',
+    basis: '시행처 출제범위 표(https://www.dataq.or.kr/www/sub/a_04.do — 1과목 10문항·세부항목 10개, 2과목 40문항·세부항목 20개)를 쪼개 28편으로 만들었다. 1과목은 열을 다섯 편으로 묶었고(엔터티+속성+Null 속성의 이해, 관계+관계와 조인의 이해+모델이 표현하는 트랜잭션의 이해, 식별자+본질식별자 vs 인조식별자), 2과목은 스물을 스물세 편으로 갈랐다(함수·서브쿼리·윈도우 함수·DDL을 각각 둘로 나누고 PIVOT 절과 정규 표현식만 한 편으로 묶었다). 편수 비 5:23은 문항 비 10:40과 다르다 — 나누는 기준은 문항 수가 아니라 세부항목과 노트 한 편에 담기는 분량(4,300자)이고, 1과목 쪽에 4,300자를 못 채우는 세부항목이 몰려 있어서다. 시행처 순서와 다른 곳은 함수보다 WHERE 절을 앞에 둔 한 자리뿐이다.',
     topics: [
       {
         title: '데이터 모델링과 3층 스키마',
@@ -523,17 +553,27 @@ export const certPrepPlans: CertPrepPlan[] = [
     certId: 'sqlp',
     mockExams: 5,
     sourceUrl: 'https://www.dataq.or.kr/www/sub/a_03.do',
-    basis: '지적대로 「예상 실행계획 읽는 법」을 예상 계획 읽기·예상치와 실제치 대조·힌트로 계획 바꾸기 셋으로 갈랐고, 서술형 두 편에 실행계획 해석 답안과 부분점수 서술 형식을 더해 넷으로 늘렸다(29→33, 네 편은 지문 읽기→튜닝 답안→트러블슈팅 답안→형식 점검 순으로 놓고 겹치던 키워드를 나눠 담았다). 나머지 한 편은 시행처 세부항목 중 유일하게 빠져 있던 「고급 SQL 활용」이라 배치 튜닝 뒤·Lock 앞에 끼워 34편을 맞췄다.',
+    basis: '지적대로 「예상 실행계획 읽는 법」을 예상 계획 읽기·예상치와 실제치 대조·힌트로 계획 바꾸기 셋으로 갈랐고, 서술형 두 편에 실행계획 해석 답안과 부분점수 서술 형식을 더해 넷으로 늘렸다(29→33). 나머지 한 편은 시행처 세부항목 중 유일하게 빠져 있던 「고급 SQL 활용」이라 배치 튜닝 뒤·Lock 앞에 끼워 34편을 맞췄다. 여기에 여덟을 더해 42편이다. 다섯은 밀도다 — 시행처가 「데이터 모델링의 이해」를 세부항목 다섯(데이터모델의 이해·엔터티·속성·관계·식별자)으로, 「데이터 모델과 SQL」을 다섯(정규화·관계와 조인의 이해·모델이 표현하는 트랜잭션의 이해·Null 속성의 이해·본질식별자 vs 인조식별자)으로 갈라 두었는데 두 편이 그 열 칸을 지고 있어 네 편으로 폈고, 「SQL 활용」의 그룹 함수·윈도우 함수·계층형 질의와 셀프 조인·PIVOT 절과 UNPIVOT 절 넷을 한 편이 지던 자리를 네 편으로 갈랐다. 나머지 셋은 실기다 — 객관식 70문항을 다 맞혀도 70점이라 합격선 75점(총점 100점 기준)에 못 미치고 실기 2문항 30점이 필수인데, 지문부터 최종 답안까지 끝내 보이는 완결 예제가 한 편도 없었다. 시행처가 적어 둔 SQL 튜닝 유형1~3과 성능 트러블슈팅 유형1~2를 완결 풀이 세 편으로 세웠다. 모의고사는 다섯 벌 그대로다 — 실기 두 문항이 한 벌에 들어가는 것은 한 벌의 구성 문제이지 벌 수를 늘릴 이유가 아니다.',
     topics: [
       {
-        title: '데이터 모델의 구성요소와 식별자',
+        title: '데이터 모델의 이해와 식별자',
         subject: '데이터 모델링의 이해',
-        keywords: ['개념·논리·물리 데이터 모델과 3층 스키마', '엔터티의 분류(유형·발생시점·물리형태)', '속성의 분류(기본·설계·파생, 단일값·다중값)', '관계의 카디널리티와 선택성(필수·선택)', '주식별자와 외부식별자', '식별 관계와 비식별 관계', 'ERD 표기법 읽기'],
+        keywords: ['개념·논리·물리 데이터 모델과 3층 스키마', '데이터 모델링의 세 가지 관점', '데이터 모델링의 유의점(중복·비유연성·비일관성)', '주식별자 도출 기준과 외부식별자', '식별자의 분류(대표성·생성 여부·속성 수)', '식별 관계와 비식별 관계', 'ERD 표기법과 읽는 순서'],
+      },
+      {
+        title: '엔터티와 속성, 관계 읽기',
+        subject: '데이터 모델링의 이해',
+        keywords: ['엔터티의 개념과 특징', '엔터티의 분류(유형·발생시점·물리형태)', '속성의 분류(기본·설계·파생)', '단일값 속성과 다중값 속성', '도메인과 속성의 명명', '관계의 정의와 페어링, 관계 차수', '관계의 카디널리티와 선택성(필수·선택)'],
       },
       {
         title: '정규화와 반정규화, Null과 인조식별자',
         subject: '데이터 모델링의 이해',
-        keywords: ['함수적 종속과 1·2·3차 정규화', '반정규화의 판단 기준과 부작용', '관계와 조인의 대응(PK-FK가 조인 조건이 되는 자리)', '모델이 표현하는 트랜잭션 범위와 필수·선택 관계', 'Null의 3값 논리와 집계 함수·조인에서의 동작', '본질식별자 vs 인조식별자의 득실', '모델 오류가 SQL 성능으로 번지는 경로'],
+        keywords: ['함수적 종속과 제1·2·3정규형', 'BCNF와 이상현상(anomaly)', '반정규화의 판단 기준과 부작용', 'Null의 3값 논리', 'Null이 집계 함수·조인·조건절에서 하는 일', '본질식별자와 인조식별자의 득실', '인조식별자를 넣었을 때 늘어나는 인덱스와 중복'],
+      },
+      {
+        title: '관계와 조인의 대응, 트랜잭션 범위',
+        subject: '데이터 모델링의 이해',
+        keywords: ['관계와 조인의 대응 — PK-FK가 조인 조건이 되는 자리', '정규화 수준이 조인 개수로 나타나는 방식', '식별자 구성이 조인 칼럼 수와 인덱스로 이어지는 경로', '모델이 표현하는 트랜잭션의 범위 읽기', '필수·선택 관계와 아우터 조인의 대응', '모델 오류가 SQL 성능으로 번지는 경로', '모델만 보고 조인 순서를 짐작해 보기'],
       },
       {
         title: 'SELECT 문의 논리적 실행 순서와 조건절',
@@ -548,7 +588,7 @@ export const certPrepPlans: CertPrepPlan[] = [
       {
         title: '조인 종류와 표준 조인 문법',
         subject: 'SQL 기본 및 활용',
-        keywords: ['EQUI 조인과 NON-EQUI 조인', 'INNER JOIN, ON 절과 USING 절', 'NATURAL JOIN과 CROSS JOIN', 'LEFT·RIGHT·FULL OUTER JOIN', '셀프 조인', '3개 이상 테이블 조인과 조인 조건 누락', '선택(optional) 관계에 이너 조인을 쓸 때 사라지는 행'],
+        keywords: ['EQUI 조인과 NON-EQUI 조인', 'INNER JOIN, ON 절과 USING 절', 'NATURAL JOIN과 CROSS JOIN', 'LEFT·RIGHT·FULL OUTER JOIN', '조인 조건과 필터 조건을 ON과 WHERE에 나눠 쓰기', '3개 이상 테이블 조인과 조인 조건 누락', '1:M 조인이 결과 건수를 늘리는 자리'],
       },
       {
         title: '서브쿼리·집합 연산자·뷰',
@@ -556,9 +596,24 @@ export const certPrepPlans: CertPrepPlan[] = [
         keywords: ['단일행·다중행 서브쿼리와 비교 연산자', '연관(상관) 서브쿼리와 EXISTS·NOT EXISTS', '인라인 뷰와 스칼라 서브쿼리', 'IN·ANY·ALL과 NULL이 섞였을 때의 결과', 'UNION·UNION ALL·INTERSECT·MINUS', '집합 연산자의 정렬·중복 제거 비용', '뷰와 WITH 절'],
       },
       {
-        title: '윈도우 함수·Top N·계층형 질의',
+        title: '그룹 함수와 ROLLUP·CUBE',
         subject: 'SQL 기본 및 활용',
-        keywords: ['ROLLUP·CUBE·GROUPING SETS와 GROUPING 함수', 'RANK·DENSE_RANK·ROW_NUMBER의 차이', 'LAG·LEAD·FIRST_VALUE·LAST_VALUE', 'PARTITION BY·ORDER BY와 윈도우 절(ROWS·RANGE)', 'ROWNUM과 FETCH FIRST로 푸는 Top N 쿼리', 'CONNECT BY·START WITH·LEVEL·SYS_CONNECT_BY_PATH', 'PIVOT 절과 UNPIVOT 절'],
+        keywords: ['ROLLUP과 CUBE가 만드는 소계·합계 행', 'GROUPING SETS로 원하는 조합만 뽑기', 'GROUPING·GROUPING_ID로 소계 행 가려내기', 'ROLLUP 인자를 괄호로 묶었을 때의 결과', 'CUBE의 결과 행 수 세기', '소계 행의 NULL과 값의 NULL 구분', 'ORDER BY와 함께 쓸 때 소계 행이 서는 자리'],
+      },
+      {
+        title: '순위 함수와 Top N 쿼리',
+        subject: 'SQL 기본 및 활용',
+        keywords: ['RANK·DENSE_RANK·ROW_NUMBER의 차이', '동순위가 생겼을 때 다음 번호가 정해지는 방식', 'ROWNUM의 동작과 조건절에서의 함정', 'FETCH FIRST·OFFSET으로 푸는 Top N 쿼리', '인라인 뷰와 ROWNUM을 겹친 페이징', 'Top N 쿼리에서 정렬과 필터의 앞뒤', 'NTILE·RATIO_TO_REPORT로 상위 구간 나누기'],
+      },
+      {
+        title: '윈도우 함수와 WINDOWING 절',
+        subject: 'SQL 기본 및 활용',
+        keywords: ['윈도우 함수의 구문(OVER 절)과 처리 시점', 'PARTITION BY와 ORDER BY가 하는 일', 'WINDOWING 절의 ROWS와 RANGE 차이', 'UNBOUNDED PRECEDING·CURRENT ROW·FOLLOWING', 'LAG·LEAD로 앞뒤 행 값 가져오기', 'FIRST_VALUE·LAST_VALUE와 윈도우 범위의 관계', '누적 합계와 이동 평균 구하기', '윈도우 함수를 WHERE 절에 쓸 수 없는 이유'],
+      },
+      {
+        title: 'CONNECT BY 전개와 PIVOT 절',
+        subject: 'SQL 기본 및 활용',
+        keywords: ['START WITH와 CONNECT BY PRIOR로 전개 방향 정하기', 'LEVEL·CONNECT_BY_ISLEAF·CONNECT_BY_ROOT', 'SYS_CONNECT_BY_PATH로 경로 만들기', 'ORDER SIBLINGS BY와 형제 노드 정렬', '순환(loop) 발생과 NOCYCLE', '셀프 조인으로 같은 결과를 낼 때의 차이', 'PIVOT 절로 행을 열로 돌리기', 'UNPIVOT 절과 되돌릴 때 사라지는 것'],
       },
       {
         title: 'DDL·DML·TCL·DCL 관리 구문',
@@ -683,12 +738,27 @@ export const certPrepPlans: CertPrepPlan[] = [
       {
         title: '서술형 SQL 튜닝 답안 작성',
         subject: '실기 (필기시험 안에 포함)',
-        keywords: ['SQL 튜닝 문항의 세 유형과 유형별 요구 산출물', '최적 실행계획을 SQL 문장으로 옮기는 순서', '힌트를 포함한 SQL 작성과 힌트 배치 자리', '인덱스 설계까지 요구될 때의 답안 형식', '제약사항(병렬 미고려 등)을 답안에 반영하기', '선택 관계에 이너 조인을 쓰지 않기', 'DATE 칼럼 조건에 문자 리터럴을 쓰지 않기'],
+        keywords: ['SQL 튜닝 문항의 세 유형과 유형별 요구 산출물', '답안에 힌트를 배치하는 자리', '인덱스 설계까지 요구될 때의 답안 형식', '제약사항(병렬 미고려 등)을 답안에 반영하기', '「데이터 모델에 대한 이해를 바탕으로」라는 요구를 답안에서 보이는 법', 'DATE 칼럼 조건에 문자 리터럴을 쓰지 않기', '오브젝트 정보를 고려했다는 흔적 남기기'],
+      },
+      {
+        title: 'SQL 튜닝 실기 유형1 완결 풀이',
+        subject: '실기 (필기시험 안에 포함)',
+        keywords: ['유형1 지문 한 벌 — 성능 저하 SQL과 실행 계획', '성능을 저하시키는 표현식과 잘못된 힌트 찾아내기', '고쳐 쓴 SQL 전문(全文)', '고치기 전후 실행 계획 대조', '「가급적 완전한 형태의 SQL」이라는 시행처 요구를 지킨 답안', '얕게 푼 답안과 견줘 점수가 갈리는 자리', '고친 SQL이 요구 사항과 제약 사항을 그대로 만족하는지 되짚기'],
+      },
+      {
+        title: 'SQL 튜닝 실기 유형2·3 완결 풀이',
+        subject: '실기 (필기시험 안에 포함)',
+        keywords: ['유형2 지문 — 요구 사항과 최적 실행 계획 한 벌', '최적 실행 계획을 SQL 문장으로 옮기는 순서', '조인 순서와 조인 방식을 힌트로 못 박은 답안 전문', '유형3 지문 — 요구 사항과 데이터 모델 한 벌', '모델에서 액세스 경로와 인덱스를 먼저 정하는 과정', '두 유형의 최종 답안과 채점 포인트 표시'],
       },
       {
         title: '성능 트러블슈팅 서술형 답안',
         subject: '실기 (필기시험 안에 포함)',
-        keywords: ['성능 트러블슈팅 문항의 두 유형', '애플리케이션 성능 저하 지문 분석 절차', '루프 쿼리·Call 과다·부적절한 페이징 찾아내기', '트레이스·대기 이벤트에서 원인 좁히기', '원인과 개선 방안을 나눠 쓰는 답안 구조', '오브젝트 변경안과 SQL 변경안 중 무엇을 먼저 쓸지', '개선안의 근거를 수치와 실행계획으로 대는 법'],
+        keywords: ['두 유형이 요구하는 산출물의 차이', '애플리케이션 성능 저하 지문에서 볼 곳을 좁히는 순서', '루프 쿼리·Call 과다·부적절한 페이징 찾아내기', '트레이스·대기 이벤트에서 원인 좁히기', '원인과 개선 방안을 나눠 쓰는 답안 구조', '오브젝트 변경안과 SQL 변경안 중 무엇을 먼저 쓸지', '개선안의 근거를 수치와 실행계획으로 대는 법'],
+      },
+      {
+        title: '성능 트러블슈팅 실기 완결 풀이',
+        subject: '실기 (필기시험 안에 포함)',
+        keywords: ['유형1 한 벌 — 지문의 애플리케이션 코드와 오브젝트 정보', '고쳐 쓴 애플리케이션 코드 전문', '유형2 한 벌 — 지문의 성능 이슈와 근거 자료', '지문의 코드 한 덩이가 답안에서 어떻게 바뀌는가', '원인 세 가지를 근거와 함께 적은 답안 전문', '다 푼 뒤 스스로 채점해 보는 절차'],
       },
       {
         title: '부분점수를 받는 서술 형식',
@@ -699,14 +769,19 @@ export const certPrepPlans: CertPrepPlan[] = [
   },
   {
     certId: 'bigdata-analysis-engineer',
-    mockExams: 5,
+    mockExams: 7,
     sourceUrl: 'https://www.dataq.or.kr/www/sub/a_07.do',
-    basis: '필기 네 과목이 20문항·25점으로 같아 1과목을 5→8편(플랫폼·법제도·방법론을 각각 둘로), 3과목을 9→8편으로 눌러 8·7·8·5로 맞췄다 — 지적의 「1과목 4편」은 1과목인 데이터 수집·저장 계획을 뺀 수라 실제 5편에 +3을 적용했고, 4과목 5편은 세부항목 다섯과 1:1이라 그대로 뒀다. 3과목은 「딥러닝과 비정형 데이터 분석」을 딥러닝 구조와 텍스트·이미지로 나누고 인공신경망을 딥러닝 편에 붙여 로지스틱+SVM·의사결정나무+앙상블로 다시 묶었으며, 범주형·비모수 편은 4과목 적합도 검정 편과 2과목 가설검정 편이 받았다. 실기는 출제기준 세부항목 일곱(수집·정제·변환·선택·구축·평가·활용)에 맞춰 3→6편, 합계 34편이다.',
+    basis: 'dataq.or.kr 출제기준(a_07.do)을 세세항목까지 대조해 쪼갰다. 필기는 객관식 80문항·120분이고 네 과목이 각 20문항·25점으로 같지만, 배점이 같다고 편수를 같게 맞추지는 않는다 — 과목마다 세부항목이 안고 있는 세세항목의 폭이 다르다. 1과목은 「빅데이터의 이해」(개요 및 활용 넷·기술 및 제도 넷)와 「데이터분석 계획」(분석방안수립·분석 작업 계획·데이터 수집 및 전환 다섯·데이터 적재 및 저장)을 함께 져 가장 두껍고, 2과목은 세부항목 여섯(정제·분석 변수 처리·탐색 기초·고급 탐색·기술통계·추론통계)이 고르게 갈려 일곱 편에 담긴다. 1과목 10·2과목 7·3과목 8·4과목 6·실기 7, 합계 38편이다. 1과목이 열 편인 것은 세세항목을 하나씩 대조해 비어 있던 「빅데이터의 가치」와 「데이터 확보」를 채우고 플랫폼·법제도·방법론을 각각 두 편으로 갈랐기 때문이다. 4과목은 세부항목 「분석결과 활용」의 세세항목 넷(모형 전개·활용 시나리오·모니터링·리모델링)이 시각화 편에 얹혀 있어 떼어 여섯 편이 됐다. 3과목은 「딥러닝과 비정형 데이터 분석」을 딥러닝 구조와 텍스트·이미지로 나누고, 고급 분석기법의 「범주형 자료 분석」·「비모수 통계」는 4과목 적합도 검정 편과 2과목 가설검정 편이 받아 여덟 편이다. 실기는 세부항목 일곱(수집·정제·변환·모형 선택·구축·평가·활용)에 맞춘 여섯 편에, 시행처 체험환경이 답안 제출을 제1·2·3유형으로 가르므로 제1유형 편을 더해 일곱 편이다 — 검정방법 표기는 「통합형(필답형, 작업형)」이고 유형은 제출 단위다. 실기 노트는 파이썬 흐름으로 쓰고 R은 「실기 시험 환경과 데이터 적재」·「분류·회귀 모형 선택과 학습」 두 편에 대응 함수를 나란히 적는다 — 언어로 편을 가르면 R로 응시하는 사람에게 문법 한 편만 남고 전처리·모델링·검정이 통째로 빈다. 모의고사는 필기 5편에 실기 2편을 더해 7편이다.',
     topics: [
       {
         title: '빅데이터의 특징과 데이터 산업 구조',
         subject: '1과목 빅데이터 분석 기획 (필기)',
         keywords: ['3V와 5V 특징', 'DIKW 피라미드', '정형·반정형·비정형 데이터', '빅데이터가 만든 네 가지 변화', '데이터 사이언티스트 역량', '분석 조직 구조(집중·기능·분산)', '분석 준비도와 성숙도'],
+      },
+      {
+        title: '빅데이터 가치 산정과 위기 요인',
+        subject: '1과목 빅데이터 분석 기획 (필기)',
+        keywords: ['빅데이터 가치 산정이 어려운 이유 셋(활용 방식의 다양화·새로운 가치 창출·분석 기술의 발전)', '빅데이터의 가치 창출 방식(투명성·시뮬레이션·고객 세분화·의사결정 지원·신규 비즈니스)', '빅데이터 위기 요인 셋(사생활 침해·책임 원칙 훼손·데이터 오용)', '위기 요인 통제 방안(동의제에서 책임제로·결과 기반 책임 원칙·알고리즘 접근권)', '알고리즈미스트의 역할', '빅데이터 활용을 위한 3요소(데이터·기술·인력)'],
       },
       {
         title: '빅데이터 플랫폼과 하둡 분산 처리',
@@ -737,6 +812,11 @@ export const certPrepPlans: CertPrepPlan[] = [
         title: '분석 과제 우선순위와 로드맵 수립',
         subject: '1과목 빅데이터 분석 기획 (필기)',
         keywords: ['분석 과제 정의 5요소', '시급성·난이도 우선순위 매트릭스', 'ROI 관점의 4V', '분석 로드맵 단계별 이행', '마스터플랜 수립 기준', 'WBS 분석 작업 계획'],
+      },
+      {
+        title: '데이터 확보 계획 수립',
+        subject: '1과목 빅데이터 분석 기획 (필기)',
+        keywords: ['데이터 확보 계획 수립 절차(목표 정의·요구사항 도출·예산안 수립·계획 수립)', '분석에 필요한 데이터 정의와 보유 현황 점검', '내부 데이터와 외부 데이터의 확보 경로', '데이터 수집 가능성·비용·기간 산정', '확보가 어려운 데이터의 대안 마련'],
       },
       {
         title: '데이터 수집·변환과 적재·저장',
@@ -774,7 +854,7 @@ export const certPrepPlans: CertPrepPlan[] = [
         keywords: ['조건부확률과 베이즈 정리', '확률변수의 기댓값과 분산', '이항·포아송·기하 분포', '정규·t·카이제곱·F 분포', '표본추출 네 가지 방법', '중심극한정리', '표준오차'],
       },
       {
-        title: '추정과 가설검정',
+        title: '모수 추정과 가설검정의 절차',
         subject: '2과목 빅데이터 탐색 (필기)',
         keywords: ['점추정량의 성질 네 가지', '신뢰구간 계산', '귀무가설과 대립가설', '유의수준과 p-값', '제1종·제2종 오류와 검정력', '양측검정과 단측검정', 'Z검정·t검정·F검정 선택', '비모수 검정(부호·윌콕슨·크루스칼-왈리스)'],
       },
@@ -826,7 +906,7 @@ export const certPrepPlans: CertPrepPlan[] = [
       {
         title: '교차 검증과 유의성·적합도 검정',
         subject: '4과목 빅데이터 결과 해석 (필기)',
-        keywords: ['홀드아웃과 K-폴드 교차 검증', '계층별 k-겹과 LOOCV', '부트스트랩 재표본', '회귀계수 유의성 검정', '모평균·모분산 검정', '분할표와 카이제곱 검정(적합도·독립성·동질성)', '정규성 검정(샤피로-윌크·콜모고로프-스미르노프)', 'Q-Q 플롯'],
+        keywords: ['홀드아웃과 K-폴드 교차 검증', '계층별 k-겹·LOOCV와 부트스트랩 재표본', '회귀계수 유의성 검정', '모평균·모분산 검정', '분할표와 카이제곱 검정(적합도·독립성·동질성)', '로그선형모형과 피셔의 정확검정', '정규성 검정(샤피로-윌크·콜모고로프-스미르노프)', 'Q-Q 플롯'],
       },
       {
         title: '과대적합 방지와 초매개변수 최적화',
@@ -839,9 +919,14 @@ export const certPrepPlans: CertPrepPlan[] = [
         keywords: ['변수 중요도와 부분의존도', '설명 가능한 인공지능', '투자 대비 효과(ROI)', '순현재가치와 내부수익률', '총소유비용(TCO)', '분석 결과 보고서 구성'],
       },
       {
-        title: '분석 결과 시각화와 모형 전개·모니터링',
+        title: '시공간·관계·비교 시각화와 인포그래픽',
         subject: '4과목 빅데이터 결과 해석 (필기)',
-        keywords: ['시간 시각화', '공간 시각화(코로플레스·카토그램)', '관계 시각화와 비교 시각화', '인포그래픽', '분석모형 전개와 운영 적용', '활용 시나리오 개발', '성능 모니터링과 리모델링'],
+        keywords: ['시간 시각화(막대·누적 막대·점 그래프)', '공간 시각화(코로플레스맵·카토그램·버블 플롯맵)', '관계 시각화(산점도·산점도 행렬·버블 차트)', '비교 시각화(히트맵·스타 차트·평행 좌표계)', '인포그래픽'],
+      },
+      {
+        title: '분석결과 활용과 모형 모니터링',
+        subject: '4과목 빅데이터 결과 해석 (필기)',
+        keywords: ['분석모형 전개와 운영 환경 적용', '분석결과 활용 시나리오 개발', '분석모형 모니터링 항목과 주기', '성능 저하 판단과 재학습 시점', '분석모형 리모델링 절차'],
       },
       {
         title: '실기 시험 환경과 데이터 적재',
@@ -851,12 +936,17 @@ export const certPrepPlans: CertPrepPlan[] = [
       {
         title: '결측값·이상값 처리와 정제 코드',
         subject: '실기 빅데이터 분석 실무',
-        keywords: ['결측값 확인과 삭제·대체 코드', '평균·중앙값·최빈값 대체', 'IQR·표준편차로 이상값 판정', '이상값 대체와 절단', '중복 제거와 자료형 변환', '조건 필터·정렬·그룹 집계', '소수점 처리와 단일 값 출력'],
+        keywords: ['결측값 확인과 삭제·대체 코드', '평균·중앙값·최빈값 대체', 'IQR·표준편차로 이상값 판정', '이상값 대체와 절단', '중복 제거와 자료형 변환', '조건 필터·정렬·그룹 집계'],
       },
       {
         title: '스케일링·인코딩과 파생변수 생성',
         subject: '실기 빅데이터 분석 실무',
         keywords: ['최소-최대 정규화와 표준화', '로그·제곱근 변환', '원-핫 인코딩과 라벨 인코딩', '구간화(비닝)', '파생변수와 날짜 변수 처리', '훈련·평가 데이터에 같은 변환 적용'],
+      },
+      {
+        title: '제1유형 수행순서와 답안 형식',
+        subject: '실기 빅데이터 분석 실무',
+        keywords: ['문제의 수행순서를 그대로 따라 계산하기', '전처리 결과를 값 하나로 좁히기', '【제출 형식】의 버림·반올림 지시 지키기', '정수(integer)·소수 자릿수 지정 맞추기', 'print로 확인한 값을 답안 제출 페이지에 입력', '제출 형식이 어긋나면 뜨는 입력 형식 오류'],
       },
       {
         title: '분류·회귀 모형 선택과 학습',
@@ -869,9 +959,9 @@ export const certPrepPlans: CertPrepPlan[] = [
         keywords: ['ROC-AUC와 F1 점수 계산', '정확도·정밀도·재현율', 'RMSE·MAE·결정계수', '교차 검증 점수 비교', '예측 확률과 라벨 선택', '제출 파일 컬럼 이름과 저장 형식', '제출 전 점검 항목'],
       },
       {
-        title: '필답형 통계 검정과 결과 해석',
+        title: '제3유형 통계 검정과 결과 해석',
         subject: '실기 빅데이터 분석 실무',
-        keywords: ['단일·대응·독립표본 t검정', '카이제곱 독립성 검정', '분산분석과 사후검정', '상관계수와 유의성', '회귀계수와 p-값 해석', '검정통계량 출력과 반올림', '필답형 단답 서술 요령'],
+        keywords: ['단일·대응·독립표본 t검정', '등분산 F검정과 합동 분산 추정량', '카이제곱 독립성·적합도 검정', '분산분석과 사후검정', '회귀계수와 p-값·상관계수 유의성', '검정통계량과 p-값을 소수 셋째 자리까지 반올림'],
       },
     ],
   },
@@ -879,7 +969,7 @@ export const certPrepPlans: CertPrepPlan[] = [
     certId: 'aice',
     mockExams: 6,
     sourceUrl: 'https://aice.study/info/aice',
-    basis: 'Associate 22편은 글자 그대로 두고 Professional 8편(공통 2·Tabular 1·Text 3·Image 2)을 뒤에 붙여 30편으로 잡았다 — 3문항 180분에 Tabular 30점·Text 35점·Image 35점·80점 합격이라 문항 단위가 Associate와 다르고, 텍스트 벡터화와 이미지 전처리·증강은 Associate 범위에 아예 없다. Basic·Junior·Future·Generative는 노코딩(AIDU)·블록코딩·생성형 실기라 파이썬 노트로 대비할 수 없어 대상에서 뺀다. 모의고사는 Associate 4편에 Professional 2편(3문항 한 세트)을 더해 6편이다.',
+    basis: 'Associate 22편은 글자 그대로 두고 Professional 11편(공통 3·Tabular 2·Text 3·Image 3)을 뒤에 붙여 33편으로 잡았다. aice.study 등급 안내가 그리는 Professional은 「3문항 / 180분」·「80점 이상 합격(100점 만점)」·「100% 실기 평가(파이썬, 제한적 오픈북)」이고 출제 분야가 셋(데이터 분석 / 데이터 전처리 / AI 모델링 및 모델 최적화), 문항수·배점이 「Tabular/Text/Image 데이터별 각 1문항」·「Tabular 30점, Text/Image 각 35점」이라 「14문항 / 90분」인 Associate와 문항 단위가 다르다. 전처리 상세의 「비정형 데이터 변환/증강」은 Associate 범위(활용 데이터 유형 Tabular Data)에 아예 없다. 「AI 모델링 및 모델 최적화」의 상세 셋이 「데이터 유형별 모델구조 설계 / 머신러닝·딥러닝 모델 학습 / 성능 개선방안 도출 및 모델 최적화」라 마지막 항목에 전용 편을 세웠고, 「데이터 유형별 모델구조 설계」가 세 유형에 다 걸리므로 이미지 편을 CNN 설계와 전이학습으로, Tabular 편을 회귀와 분류·불균형으로 갈랐다. Basic·Junior는 노코딩 AI, Future는 블록코딩, Generative는 생성형 AI 실기라 파이썬 노트로 대비할 수 없어 대상에서 뺀다. 모의고사는 Associate 4편에 Professional 2편(3문항 한 세트)을 더해 6편이다.',
     topics: [
       {
         title: '주피터 환경과 라이브러리 준비',
@@ -964,7 +1054,7 @@ export const certPrepPlans: CertPrepPlan[] = [
       {
         title: '혼동행렬과 정밀도·재현율·F1',
         subject: 'AI 모델링',
-        keywords: ['confusion_matrix', 'TP·FP·FN·TN', 'accuracy_score', 'precision_score·recall_score', 'f1_score', 'classification_report', '클래스 불균형'],
+        keywords: ['confusion_matrix', 'TP·FP·FN·TN', 'accuracy_score', 'precision_score·recall_score', 'f1_score', 'classification_report', 'average=\'macro\'와 \'weighted\'의 차이'],
       },
       {
         title: '케라스 Sequential로 층 쌓기',
@@ -1002,6 +1092,11 @@ export const certPrepPlans: CertPrepPlan[] = [
         keywords: ['결측치·이상치·인코딩 한 번에', '스케일링과 데이터 분할', 'RandomForestRegressor', 'XGBRegressor', 'GridSearchCV 파라미터 탐색', '지정 지표 RMSE·MAE 확인', '예측 결과 CSV 저장', 'joblib으로 모델 저장'],
       },
       {
+        title: 'Tabular 분류와 불균형 처리',
+        subject: 'Professional Tabular',
+        keywords: ['roc_auc_score에 넣는 값은 라벨이 아니라 확률', 'SMOTE로 소수 클래스 오버샘플링', 'class_weight=\'balanced\'', 'XGBClassifier의 scale_pos_weight', 'imblearn 파이프라인에서 학습 데이터에만 리샘플링'],
+      },
+      {
         title: '한국어 텍스트 정제와 토큰화',
         subject: 'Professional Text',
         keywords: ['정규표현식으로 특수문자 제거', 'konlpy Okt 형태소 분석', '불용어 사전', 'Tokenizer fit_on_texts', 'texts_to_sequences', 'pad_sequences maxlen', 'num_words로 어휘 사전 자르기'],
@@ -1024,25 +1119,35 @@ export const certPrepPlans: CertPrepPlan[] = [
       {
         title: '케라스로 CNN 설계하고 학습하기',
         subject: 'Professional Image',
-        keywords: ['Conv2D·MaxPooling2D·Flatten', '필터 수와 커널 크기', 'Dropout·BatchNormalization', '출력층 softmax와 손실함수', 'compile·fit·EarlyStopping', '전이학습 VGG16·ResNet', 'model.save'],
+        keywords: ['Conv2D·MaxPooling2D·Flatten', '필터 수와 커널 크기', 'padding·strides와 출력 크기', 'Dropout·BatchNormalization', '출력층 softmax와 손실함수', 'compile·fit·EarlyStopping', 'model.save'],
+      },
+      {
+        title: '전이학습으로 이미지 문항 풀기',
+        subject: 'Professional Image',
+        keywords: ['keras.applications의 VGG16·ResNet50·EfficientNet 불러오기', 'include_top=False와 weights=\'imagenet\'', 'base_model.trainable=False로 동결', 'GlobalAveragePooling2D와 분류 헤드 붙이기', '모델별 preprocess_input 적용', '동결 해제 후 낮은 학습률로 미세조정'],
       },
       {
         title: '문항당 60분 배분과 산출물 제출',
         subject: 'Professional 공통',
         keywords: ['3문항 180분 배분', 'Image 문항에 시간을 더 두는 이유', '기본 모델로 점수 먼저 확보', '80점 합격선 역산', '제한적 오픈북 범위', 'CSV와 모델 파일 저장', '주피터 노트북 제출'],
       },
+      {
+        title: '성능 개선방안과 모델 최적화',
+        subject: 'Professional 공통',
+        keywords: ['데이터 유형별 모델구조 설계', '학습률 스케줄링과 ReduceLROnPlateau', 'kernel_regularizer로 L1·L2 규제 걸기', 'RandomizedSearchCV로 넓게 탐색', '여러 모델 예측 평균과 스태킹', '개선 시도를 기록하고 되돌리기'],
+      },
     ],
   },
   {
     certId: 'aws-ai-practitioner',
     mockExams: 4,
-    sourceUrl: 'https://d1.awsstatic.com/training-and-certification/docs-ai-practitioner/AWS-Certified-AI-Practitioner_Exam-Guide.pdf',
-    basis: '채점 50문항·90분짜리 파운데이셔널 등급에 맞춰 총량을 22편에서 18편으로 줄이고, 도메인 비중(20/24/28/14/14%)은 3·4·6·2·3으로 그대로 지켰다. 합친 자리는 넷이다 — 학습 방식 셋을 Task 1.1 개념 편으로 올려 활용 사례와 관리형 서비스를 한 편에, 생성형 AI 활용 사례를 모델 갈래 편에(수명주기는 장단점 편에), 에이전트를 RAG 편에·커스터마이즈 네 방식을 학습 데이터 편에, 책임 있는 AI 여섯 요소와 편향 도구를 한 편에 묶었다. 모의고사는 5→4.',
+    sourceUrl: 'https://docs.aws.amazon.com/aws-certification/latest/ai-practitioner-01/ai-practitioner-01.html',
+    basis: '채점 50문항짜리 파운데이셔널 등급이다(채점되지 않는 15문항이 더 붙는다). 도메인 비중 20/24/28/14/14%와 태스크 목표 개수 17/14/19/11/8(합 69개)을 함께 보고 4·6·8·3·4편으로 갈라 개념 25편이다 — 편수로는 16.0/24.0/32.0/12.0/16.0%다. 도메인 1은 목표가 용어 나열이라 한 편이 여러 목표를 겸하고, 도메인 3은 목표 열아홉이 서비스와 절차로 갈려 편을 더 썼다. 도메인 4는 2편에서 3편으로 늘렸다 — 목표가 열하나로 도메인 5(여덟)보다 많은데 편수가 절반이었다. 2026-04-30 v1.1이 새로 더한 목표 일곱 중 여섯을 편으로 받았다 — 전통 ML 대 파운데이션 모델(1.2.6), 컨텍스트 엔지니어링(2.1.5), 에이전틱 AI 개념(2.1.6), Bedrock Prompt Management(3.2.5), 비즈니스 목표 정렬 지표(3.4.5), 환각 탐지·그라운딩(5.1.5). 나머지 하나인 토큰 기반 과금(2.1.4)은 토큰 편이 이미 진다. 합친 자리 넷은 그대로 둔다 — 학습 방식 셋을 Task 1.1 개념 편으로 올려 활용 사례와 관리형 서비스를 한 편에, 생성형 AI 활용 사례를 모델 갈래 편에, AI 에이전트를 RAG 편에, 커스터마이즈 다섯 방식을 학습 데이터 편에 묶었다. **출제범위는 d1.awsstatic.com PDF가 아니라 docs.aws.amazon.com의 시험 가이드 웹 문서를 본다** — 그 PDF는 머리글이 「Version 1.4」인데 본문이 구판이라 PartyRock·Amazon QuickSight·「responsiveness, simplicity」가 그대로 살아 있고 agentic·context engineering·MCP·AgentCore는 한 번도 안 나온다(직접 내려받아 세었다). 모의고사는 4편.',
     topics: [
       {
         title: 'AI·ML·딥러닝 용어와 학습·추론 방식',
         subject: 'Fundamentals of AI and ML (AI와 ML의 기초)',
-        keywords: ['AI·ML·딥러닝의 포함 관계', '모델과 알고리즘의 구분', '학습(training)과 추론(inferencing)', '배치 추론과 실시간 추론', '지도학습·비지도학습·강화학습', '레이블 있는 데이터와 없는 데이터', '정형·비정형과 표 형식·시계열·이미지·텍스트 데이터', 'LLM과 신경망'],
+        keywords: ['AI·ML·딥러닝·GenAI·에이전틱 AI의 포함 관계와 차이', '모델과 알고리즘, 편향·공정성·적합(fit) 같은 기본 용어', '학습(training)과 추론(inferencing)', '배치·실시간·비동기·서버리스 추론', '지도학습·비지도학습·강화학습', '레이블 있는 데이터와 없는 데이터', '정형·비정형과 표 형식·시계열·이미지·텍스트 데이터', 'LLM과 신경망, 컴퓨터 비전과 NLP'],
       },
       {
         title: 'AI가 가치를 내는 자리와 AWS 관리형 서비스',
@@ -1050,9 +1155,14 @@ export const certPrepPlans: CertPrepPlan[] = [
         keywords: ['AI가 가치를 내는 자리(자동화·확장성·의사결정 보조)', 'AI가 맞지 않는 자리와 비용편익 분석', '예측이 아니라 확정된 결과가 필요한 경우', '회귀·분류·클러스터링 중 고르기', '컴퓨터 비전·음성인식·추천·이상거래 탐지·수요예측', 'Amazon Comprehend·Translate와 Transcribe·Polly의 방향 차이', 'Amazon Lex와 Amazon Rekognition·Textract 구별', 'Amazon Kendra·Personalize·Fraud Detector와 SageMaker가 놓이는 자리'],
       },
       {
+        title: '전통 ML과 파운데이션 모델 고르기',
+        subject: 'Fundamentals of AI and ML (AI와 ML의 기초)',
+        keywords: ['전통 ML 모델과 파운데이션 모델(FM)을 가르는 판단 기준', '규제 우려(regulatory concerns)로 전통 ML이 유리해지는 자리', '설명가능성 요구(explainability requirements)와 모델 갈래 선택', '운영 제약(operational constraints) — 지연·비용·인프라', '같은 유스케이스를 전통 ML과 FM으로 각각 풀어 비교하기'],
+      },
+      {
         title: 'ML 수명주기와 MLOps, 모델 평가 지표',
         subject: 'Fundamentals of AI and ML (AI와 ML의 기초)',
-        keywords: ['ML 파이프라인 단계(수집·EDA·전처리·특성 공학·학습·튜닝·평가·배포·모니터링)', '오픈소스 사전학습 모델과 직접 학습', '관리형 API와 자체 호스팅 배포', 'SageMaker Data Wrangler·Feature Store·Model Monitor', 'MLOps(반복 가능한 절차·재학습·기술 부채·운영 준비)', '정확도·AUC·F1 점수', '비즈니스 지표(사용자당 비용·개발 비용·ROI)'],
+        keywords: ['AI/ML 파이프라인 구성 요소를 나누고 서로 구별하기', 'FM 모델의 출처 — 오픈소스 사전학습 모델과 직접 학습', '관리형 API 서비스와 자체 호스팅 API', '파이프라인 단계마다 맞는 AWS 서비스(Amazon Bedrock·Amazon Quick·Kiro·SageMaker AI)', 'MLOps — 실험·반복 가능한 절차·확장 가능한 시스템·기술 부채·운영 준비·모델 모니터링·재학습', '모델 성능 지표 — 정확도·정밀도·재현율·F1 점수', '비즈니스 지표 — 사용자당 비용·개발 비용·고객 피드백·ROI'],
       },
       {
         title: '토큰·청킹·임베딩·벡터의 관계',
@@ -1060,29 +1170,39 @@ export const certPrepPlans: CertPrepPlan[] = [
         keywords: ['토큰과 토큰화', '청킹(chunking)', '임베딩', '벡터와 유사도', '임베딩 차원', '토큰 단위 과금과의 연결'],
       },
       {
+        title: '컨텍스트 엔지니어링이 하는 일',
+        subject: 'Fundamentals of Generative AI (생성형 AI의 기초)',
+        keywords: ['컨텍스트 엔지니어링의 정의와 FM 애플리케이션에서의 역할', '프롬프트 엔지니어링과 컨텍스트 엔지니어링의 경계', '컨텍스트 윈도우 예산 — 무엇을 넣고 무엇을 덜어낼까', '검색 결과·도구 정의·대화 이력이 컨텍스트에서 차지하는 몫', '컨텍스트가 길어질 때 정확도가 떨어지는 현상', '컨텍스트를 줄이는 방법 — 요약·선별·순서 조정'],
+      },
+      {
         title: '트랜스포머·디퓨전 모델과 생성형 AI 활용 사례',
         subject: 'Fundamentals of Generative AI (생성형 AI의 기초)',
         keywords: ['트랜스포머 구조와 어텐션', '트랜스포머 기반 LLM', '파운데이션 모델의 정의', '멀티모달 모델', '디퓨전 모델', '모델 갈래별로 맞는 작업', '이미지·영상·음성 생성과 코드 생성', '요약·번역·챗봇과 검색·추천 엔진'],
       },
       {
+        title: '멀티 에이전트 패턴과 MCP',
+        subject: 'Fundamentals of Generative AI (생성형 AI의 기초)',
+        keywords: ['복잡한 AI 애플리케이션의 멀티 에이전트 시스템 패턴', 'Model Context Protocol(MCP)이 에이전트를 외부 시스템에 잇는 방식', '멀티 에이전트 통신 패턴', '메모리 관리(memory management)', '도구 사용(tool usage)', '워크플로 오케스트레이션(workflow orchestration)'],
+      },
+      {
         title: '생성형 AI의 장점·한계와 모델 선택 기준',
         subject: 'Fundamentals of Generative AI (생성형 AI의 기초)',
-        keywords: ['파운데이션 모델 수명주기(데이터 선택·모델 선택·사전학습·파인튜닝·평가·배포·피드백)', '적응성·응답성·대화 능력·콘텐츠 생성 능력', '환각(hallucination)', '해석 가능성 부족', '부정확성과 비결정성', '모델 선택 요소(모델 종류·성능 요구·제약·컴플라이언스·비용·지연시간·모델 복잡도)', '비즈니스 가치 지표(전환율·사용자당 평균 매출·고객 생애 가치)'],
+        keywords: ['파운데이션 모델 수명주기(데이터 선택·모델 선택·사전학습·파인튜닝·평가·배포·피드백)', '생성형 AI의 장점 — 적응성·응답성·대화 능력·콘텐츠 생성 능력', '한계로서의 환각(hallucination)', '해석 가능성 부족', '부정확성과 비결정성', '모델 선택 요소 — 모델 종류·성능 요구·역량(capabilities)·제약·컴플라이언스', '비즈니스 가치 지표 — 교차 도메인 성능·ROI·효율·전환율·사용자당 평균 매출·정확도·고객 생애 가치'],
       },
       {
         title: 'AWS 생성형 AI 서비스와 비용 구조',
         subject: 'Fundamentals of Generative AI (생성형 AI의 기초)',
-        keywords: ['Amazon Bedrock', 'Amazon SageMaker JumpStart', 'Amazon Bedrock AgentCore', 'Amazon Q', 'AWS 생성형 AI 서비스의 이점(진입 장벽·출시 속도·비용 효율)', '토큰 기반 과금', '프로비저닝된 처리량(provisioned throughput)', '커스텀 모델과 리전 커버리지의 비용 트레이드오프'],
+        keywords: ['Amazon Bedrock', 'Amazon SageMaker AI와 SageMaker JumpStart', 'Amazon Bedrock AgentCore', 'Amazon Quick', 'Kiro와 Strands Agents', 'AWS Transform과 Amazon Nova', 'AWS 생성형 AI 서비스의 이점 — 접근성·낮은 진입 장벽·효율·비용 효율·출시 속도', '비용 트레이드오프 — 토큰 기반 과금·프로비저닝된 처리량·커스텀 모델·리전 커버리지'],
       },
       {
         title: '사전학습 모델 선택 기준과 추론 파라미터',
         subject: 'Applications of Foundation Models (파운데이션 모델의 활용)',
-        keywords: ['선택 기준(비용·모달리티·지연시간·다국어)', '모델 크기와 복잡도', '커스터마이즈 가능 여부와 입출력 길이', 'temperature', 'top-p와 top-k', '최대 토큰 수', '파라미터가 응답의 다양성에 미치는 영향'],
+        keywords: ['선택 기준 — 비용·모달리티·지연시간·다국어', '모델 크기와 모델 복잡도', '커스터마이즈 가능 여부와 입출력 길이', '프롬프트 캐싱(prompt caching)이 비용과 지연에 미치는 영향', 'temperature가 응답 다양성에 미치는 영향', 'top-p와 top-k', '최대 토큰 수'],
       },
       {
-        title: 'RAG·벡터 데이터베이스와 Bedrock 에이전트',
+        title: 'RAG·벡터 데이터베이스와 AI 에이전트',
         subject: 'Applications of Foundation Models (파운데이션 모델의 활용)',
-        keywords: ['RAG의 정의와 동작 순서', 'Amazon Bedrock 지식 기반(knowledge base)', 'Amazon OpenSearch Service', 'Amazon Aurora와 Amazon RDS for PostgreSQL', 'Amazon Neptune과 Amazon DocumentDB', 'RAG가 환각을 줄이는 방식과 업무 적용처', '다단계 작업에서 에이전트의 역할', 'Agents for Amazon Bedrock'],
+        keywords: ['RAG의 정의와 동작 순서', 'Amazon Bedrock Knowledge Bases', 'Amazon OpenSearch Service', 'Amazon Aurora와 Amazon RDS for PostgreSQL', 'Amazon Neptune과 Amazon DocumentDB', 'RAG의 업무 적용처(사내 문서 질의응답·고객 지원)', 'AI 에이전트의 역할과 업무 적용 사례(business applications)'],
       },
       {
         title: '프롬프트 엔지니어링의 구성 요소와 기법',
@@ -1095,29 +1215,49 @@ export const certPrepPlans: CertPrepPlan[] = [
         keywords: ['프롬프트 인젝션', '프롬프트 노출(exposure)', '포이즈닝(poisoning)', '하이재킹(hijacking)', '탈옥(jailbreaking)', '넷을 가르는 기준', '가드레일로 막는 법'],
       },
       {
-        title: '커스터마이즈 네 방식과 학습 데이터 준비',
+        title: 'Bedrock 프롬프트 관리와 버전 전략',
         subject: 'Applications of Foundation Models (파운데이션 모델의 활용)',
-        keywords: ['사전학습과 파인튜닝의 차이', '지속적 사전학습(continuous pre-training)', '인컨텍스트 러닝(in-context learning)', '네 방식(사전학습·파인튜닝·인컨텍스트 러닝·RAG)의 비용·데이터량·소요 시간 비교', '인스트럭션 튜닝', '도메인 적응과 전이학습', 'RLHF', '데이터 큐레이션·거버넌스와 규모·레이블링·대표성'],
+        keywords: ['Amazon Bedrock Prompt Management가 하는 일', '프롬프트 버전 관리(prompt versioning)의 뜻', '프롬프트 저장·재사용·공유 전략', '운영 중 프롬프트를 바꿀 때의 배포와 되돌리기', '버전을 남기지 않았을 때 생기는 문제'],
+      },
+      {
+        title: '커스터마이즈 방식 비교와 학습 데이터 준비',
+        subject: 'Applications of Foundation Models (파운데이션 모델의 활용)',
+        keywords: ['사전학습과 파인튜닝의 차이', '지속적 사전학습(continuous pre-training)', '인컨텍스트 러닝(in-context learning)', '모델 증류(model distillation)', '다섯 방식(사전학습·파인튜닝·인컨텍스트 러닝·RAG·모델 증류)의 비용 트레이드오프', '인스트럭션 튜닝과 도메인 적응·전이학습', 'RLHF', '데이터 큐레이션·거버넌스와 규모·레이블링·대표성'],
       },
       {
         title: 'ROUGE·BLEU·BERTScore와 모델 평가',
         subject: 'Applications of Foundation Models (파운데이션 모델의 활용)',
-        keywords: ['사람 평가(human evaluation)', '벤치마크 데이터셋', 'ROUGE', 'BLEU', 'BERTScore', '요약·번역·의미 유사도로 갈리는 지표 선택', '비즈니스 목표 달성 판단(생산성·사용자 참여)'],
+        keywords: ['사람 개입 평가(human-in-the-loop evaluation)', '벤치마크 데이터셋', 'Amazon Bedrock Model Evaluation', 'ROUGE', 'BLEU', 'BERTScore', '요약·번역·의미 유사도로 갈리는 지표 선택', 'FM이 비즈니스 목표를 달성했는지 판단(생산성·사용자 참여)'],
       },
       {
-        title: '책임 있는 AI의 여섯 요소와 편향 다루기',
+        title: 'LLM-as-a-judge와 앱 평가',
+        subject: 'Applications of Foundation Models (파운데이션 모델의 활용)',
+        keywords: ['LLM-as-a-judge — 모델이 모델의 출력을 채점하는 방식', '모델 자체 평가와 FM으로 만든 앱 평가의 차이', 'RAG·에이전트·워크플로로 만든 앱의 성능을 평가하는 접근', '작업 완료율(task completion rate)', '사용자 만족도(user satisfaction)와 상호작용당 비용(cost per interaction)'],
+      },
+      {
+        title: '책임 있는 AI의 여섯 요소와 Guardrails',
         subject: 'Guidelines for Responsible AI (책임 있는 AI 지침)',
-        keywords: ['편향(bias)·공정성(fairness)·포용성(inclusivity)', '견고성(robustness)·안전성(safety)·진실성(veracity)', 'Guardrails for Amazon Bedrock과 모델 선택의 환경·지속가능성 고려', '편향과 분산의 관계, 과적합과 과소적합', '편향이 인구 집단에 미치는 영향', '데이터셋의 포용성·다양성·균형과 선별된 데이터 출처', 'Amazon SageMaker Clarify', 'SageMaker Model Monitor·Amazon A2I와 레이블 품질 검토·하위 집단 분석'],
+        keywords: ['편향(bias)과 공정성(fairness)', '포용성(inclusivity)과 견고성(robustness)', '안전성(safety)과 진실성(veracity)', 'Amazon Bedrock Guardrails로 책임 있는 AI 특성 식별하기', '모델을 고를 때의 책임 있는 실천 — 환경·지속가능성 고려'],
+      },
+      {
+        title: '데이터셋 특성과 편향 탐지 도구',
+        subject: 'Guidelines for Responsible AI (책임 있는 AI 지침)',
+        keywords: ['데이터셋의 포용성·다양성·균형과 선별된 데이터 출처', '편향과 분산이 인구 집단에 미치는 영향', '부정확성·과적합·과소적합', '레이블 품질 검토(analyzing label quality)', '사람 감사(human audits)', '하위 집단 분석(subgroup analysis)'],
       },
       {
         title: '생성형 AI의 법적 위험과 설명가능성',
         subject: 'Guidelines for Responsible AI (책임 있는 AI 지침)',
-        keywords: ['지식재산권 침해 주장', '편향된 출력과 고객 신뢰 상실', '최종 사용자 위험', '환각이 만드는 법적 위험', '투명한 모델과 설명 가능한 모델의 차이', 'SageMaker Model Cards와 오픈소스 모델·라이선스', '안전성과 투명성의 트레이드오프', '설명 가능한 AI의 인간 중심 설계'],
+        keywords: ['지식재산권 침해 주장', '편향된 출력과 고객 신뢰 상실', '최종 사용자 위험과 환각이 만드는 법적 위험', '투명한 모델과 설명 가능한 모델의 차이', 'Amazon SageMaker Model Cards와 Amazon Bedrock Model Evaluations', '오픈소스 모델·데이터·라이선스로 투명성 확인하기', '안전성과 투명성의 트레이드오프 — 해석 가능성과 성능 재기', '설명 가능한 AI의 인간 중심 설계(사용자 피드백 장치·의사결정 투명성)'],
       },
       {
         title: 'AI 시스템 보안과 공동 책임 모델',
         subject: 'Security, Compliance, and Governance for AI Solutions (AI 솔루션의 보안·컴플라이언스·거버넌스)',
-        keywords: ['IAM 역할·정책·권한', '전송 중·저장 시 암호화와 AWS KMS', 'Amazon Macie', 'AWS PrivateLink', 'AWS 공동 책임 모델', '애플리케이션 보안·위협 탐지·취약점 관리', '인프라 보호와 프롬프트 인젝션 대응'],
+        keywords: ['IAM 역할·정책·권한', '전송 중·저장 시 암호화와 AWS KMS', 'Amazon Macie', 'AWS PrivateLink', 'AWS 공동 책임 모델', 'Amazon Bedrock AgentCore Identity와 AgentCore의 정책(Policy)', '애플리케이션 보안·위협 탐지·취약점 관리·인프라 보호', '프롬프트 인젝션·데이터 유출 방지·출력 필터링·독성(toxicity)과 AI 상호작용 감사 로깅'],
+      },
+      {
+        title: '환각 탐지와 그라운딩·출력 검증',
+        subject: 'Security, Compliance, and Governance for AI Solutions (AI 솔루션의 보안·컴플라이언스·거버넌스)',
+        keywords: ['환각 탐지(hallucination detection) 방법', '그라운딩(grounding)으로 출력 정확도를 높이는 기법', 'RAG 그라운딩(RAG grounding)', '출력 검증(output validation)', '신뢰도 점수(confidence scoring)'],
       },
       {
         title: '데이터 출처 기록과 안전한 데이터 처리',
@@ -1190,7 +1330,7 @@ export const certPrepPlans: CertPrepPlan[] = [
       {
         title: 'AWS AI 서비스와 Bedrock·JumpStart',
         subject: 'ML 모델 개발 (ML Model Development)',
-        keywords: ['Rekognition·Transcribe·Translate·Polly', 'Comprehend·Textract·Lex', 'Personalize·Fraud Detector·Kendra', 'Amazon Bedrock 파운데이션 모델', 'SageMaker JumpStart 솔루션 템플릿', 'AI 서비스와 직접 학습의 갈림길'],
+        keywords: ['Rekognition·Transcribe·Translate·Polly', 'Comprehend·Comprehend Medical·Textract·Lex', 'Personalize·Fraud Detector·Kendra', 'Lookout for Equipment·Lookout for Metrics·Lookout for Vision', 'Amazon Bedrock 파운데이션 모델', 'SageMaker JumpStart 솔루션 템플릿', 'AI 서비스와 직접 학습의 갈림길'],
       },
       {
         title: '학습 잡 구성과 분산 학습',
@@ -1245,7 +1385,7 @@ export const certPrepPlans: CertPrepPlan[] = [
       {
         title: 'CloudWatch·X-Ray 문제 추적',
         subject: 'ML 솔루션 모니터링·유지보수·보안 (ML Solution Monitoring, Maintenance, and Security)',
-        keywords: ['사용률·처리량·가용성·내결함성 지표', 'CloudWatch 지표·알람·대시보드', 'CloudWatch Logs Insights와 Lambda Insights', 'AWS X-Ray 추적', 'CloudTrail 추적 생성과 감사', 'EventBridge 이벤트로 인프라 감시', 'Amazon Quick Sight 대시보드'],
+        keywords: ['사용률·처리량·가용성·내결함성 지표', 'CloudWatch 지표·알람·대시보드', 'CloudWatch Logs Insights와 Lambda Insights', 'AWS X-Ray 추적', 'CloudTrail 추적 생성과 감사', 'EventBridge 이벤트로 인프라 감시', 'Amazon Quick 대시보드'],
       },
       {
         title: '인스턴스 유형 선택과 비용 최적화',
@@ -1268,7 +1408,7 @@ export const certPrepPlans: CertPrepPlan[] = [
     certId: 'gcp-ml-engineer',
     mockExams: 5,
     sourceUrl: 'https://services.google.com/fh/files/misc/professional_machine_learning_engineer_exam_guide_english_new.pdf',
-    basis: '제품 지도 한 편을 데이터 계열과 학습·서빙·운영 계열 둘로 가르고, 3·4·5과목에서 눌려 있던 노트를 하나씩 쪼개 25편을 29편으로 올렸다 — 과목별 3/4/6/6/5/3(+공통 2)이라 비중 13/16/21/20/18/13%와 나란히 간다. 쪼갠 셋은 모두 공식 가이드가 따로 세운 불릿이라 새 주제를 지어내지 않았다: 3.2의 하이퍼파라미터 튜닝과 파운데이션 모델 파인튜닝, 4.2의 엔드포인트 망 설계와 서빙 하드웨어, 5.2의 재학습 정책과 CI/CD/CT.',
+    basis: '공식 시험 가이드(2026-06-01판)의 여섯 섹션 비중 13/16/21/20/18/13%에 맞춰 과목별 3/5/6/6/5/3편을 두고, 여섯 섹션이 공통으로 전제하는 시험 개요·제품 지도 2편을 앞에 세워 30편으로 짰다 — 공통 2편을 뺀 28편으로 재면 10.7/17.9/21.4/21.4/17.9/10.7%라 비중과 나란히 간다. 쪼갠 자리는 모두 가이드가 따로 세운 불릿이라 새 주제를 지어내지 않았다: 2.2의 Model Garden 모델로 노트북 프로토타입 만들기, 3.2의 하이퍼파라미터 튜닝과 파운데이션 모델 파인튜닝, 4.2의 공개·비공개 엔드포인트와 서빙 하드웨어, 5.2의 재학습 정책과 CI/CD/CT다.',
     topics: [
       {
         title: '시험 구조와 데이터 제품 지도',
@@ -1309,6 +1449,11 @@ export const certPrepPlans: CertPrepPlan[] = [
         title: '노트북 프로토타이핑과 실험 추적',
         subject: 'Collaborating within and across teams to manage data and models (팀 간 협업으로 데이터·모델 관리)',
         keywords: ['Agent Platform Workbench', 'Colab Enterprise', '노트북 협업·보안 설정과 IAM', 'PyTorch·sklearn·JAX 프로토타입', 'Experiments로 실행 비교', 'ML Metadata 계보와 아티팩트 버전'],
+      },
+      {
+        title: 'Model Garden 오픈 모델 프로토타입',
+        subject: 'Collaborating within and across teams to manage data and models (팀 간 협업으로 데이터·모델 관리)',
+        keywords: ['Model Garden 튜토리얼 노트북으로 프로토타입 시작하기', '파인튜닝 가능 모델을 커스텀 노트북에서 손보기', 'Gemma·Llama 오픈 모델을 노트북에서 불러오기', 'Hugging Face Hub 모델과 Model Garden 보안 스캔', '모델 카드에서 모델 세부 정보 보기'],
       },
       {
         title: '예측 모델 지표와 LLM-as-a-judge',
@@ -1421,7 +1566,7 @@ export const certPrepPlans: CertPrepPlan[] = [
     certId: 'nvidia-genai-llm',
     mockExams: 4,
     sourceUrl: 'https://www.nvidia.com/en-us/learn/certification/generative-ai-llm-associate/',
-    basis: '공식 페이지는 도메인 5개와 비중(%), 주제 10줄까지만 싣고 세부 출제항목은 인증 포털 로그인 뒤 study guide PDF에 있어 확인하지 못했다. 그래서 공식 비중을 그대로 노트 수로 옮겼다 — Core ML 30% 6편, Software Development 24% 5편, Experimentation 22% 5편, Data Analysis 14% 3편, Trustworthy AI 10% 2편.',
+    basis: '공식 인증 페이지의 Exam Study Guide 링크로 로그인 없이 받는 PDF(2025년 1월판)가 도메인마다 번호 매긴 출제목표를 싣는다 — Core ML 1.1~1.10, Data Analysis 2.1~2.5, Experimentation 3.1~3.5, Software Development 4.1~4.7, Trustworthy AI 5.1~5.4로 모두 31개다. 다만 2.1~2.5와 3.1~3.5가 문장까지 똑같고 4.1·4.2·4.3·4.6이 1.1·1.3·1.6·1.10과 겹쳐 목표 수로는 편을 가를 수 없다. 그래서 편 수는 같은 페이지 Exam Blueprint의 비중을 그대로 옮겼다 — Core ML 30% 6편, Software Development 24% 5편, Experimentation 22% 5편, Data Analysis 14% 3편, Trustworthy AI 10% 2편. 60분짜리 associate 시험이고 study guide 본문에 NIM은 한 번도 안 나오며 Triton은 추천 코스 한 줄, TensorRT는 추천 읽을거리 두 줄뿐이라, NVIDIA 서빙 제품은 따로 편을 세우지 않고 「LLM 추론 최적화와 서빙」 안에서 이름과 쓰임만 짚는다.',
     topics: [
       {
         title: '머신러닝 세 갈래와 과적합',
@@ -1534,7 +1679,7 @@ export const certPrepPlans: CertPrepPlan[] = [
     certId: 'databricks-ml-associate',
     mockExams: 5,
     sourceUrl: 'https://www.databricks.com/sites/default/files/2025-02/databricks-certified-machine-learning-associate-exam-guide-1-mar-2025.pdf',
-    basis: '공식 시험 가이드(2025-03-01판) PDF의 Exam Outline 4개 섹션 48개 세부목표와 시험 페이지 배점표(38/19/31/12%, 채점 48문항)를 근거로 24편을 뽑고 편 수를 배점에 맞췄다(9/4/8/3편 = 37.5/16.7/33.3/12.5%). 순서는 가이드를 따르되 피처 스토어·MLflow·AutoML을 그 전제인 전처리·모델 개발 뒤로 옮겼다.',
+    basis: '공식 시험 가이드(2025-03-01판) PDF의 Exam Outline 4개 섹션 48개 세부목표(18+9+15+6, About the Exam의 「48 scored」와 같은 수)와 시험 페이지 배점표(38/19/31/12%)를 근거로 25편을 뽑고 편 수를 배점에 맞췄다(10/4/8/3편 = 40/16/32/12%). 순서는 가이드를 따르되 피처 스토어·MLflow·AutoML을 그 전제인 전처리·모델 개발 뒤로 옮겼다. 레지스트리는 등록·태그와 챔피언 승격 두 편으로 갈랐다 — 별칭 승격과 「코드를 올릴까 모델을 올릴까」는 등록 절차와 묻는 것이 다르다.',
     topics: [
       {
         title: 'ML 런타임과 워크스페이스 구조',
@@ -1637,9 +1782,14 @@ export const certPrepPlans: CertPrepPlan[] = [
         keywords: ['AutoML 실행 설정 — 데이터셋·타깃·문제 유형', '글래스박스 방식과 생성되는 노트북', '데이터 탐색 노트북이 알려 주는 것', '최적 실행 노트북 열어 고치기', 'AutoML이 피처·모델 선택을 돕는 방식', '베이스라인으로 쓸 때의 이점과 한계'],
       },
       {
-        title: '모델 레지스트리 등록과 별칭 승격',
+        title: '모델 레지스트리 등록과 태그',
         subject: 'Databricks Machine Learning (38%)',
-        keywords: ['mlflow.register_model과 MlflowClient 등록', 'catalog.schema.model 세 부분 모델 이름', 'Unity Catalog 레지스트리가 워크스페이스 레지스트리보다 나은 점', '모델 태그 설정과 삭제', '별칭으로 challenger를 champion으로 승격', '코드 승격과 모델 승격 중 무엇을 고를까'],
+        keywords: ['mlflow.set_registry_uri("databricks-uc")로 UC 레지스트리 쓰기', 'mlflow.register_model과 log_model(registered_model_name=...)', 'catalog.schema.model 세 부분 모델 이름', 'Unity Catalog 레지스트리가 워크스페이스 레지스트리보다 나은 점', 'set_registered_model_tag·delete_registered_model_tag로 태그 붙이고 떼기', '등록할 때마다 모델 버전이 하나씩 생기는 방식'],
+      },
+      {
+        title: '챔피언 별칭 승격과 코드·모델 승격',
+        subject: 'Databricks Machine Learning (38%)',
+        keywords: ['client.set_registered_model_alias로 Champion 붙이기', 'challenger 버전에서 champion으로 별칭 옮기기', 'models:/catalog.schema.model@Champion 으로 불러오기', 'get_model_version_by_alias로 별칭이 가리키는 버전 확인', 'delete_registered_model_alias로 별칭 떼기', '별칭은 바뀌는 이름표, 버전 번호는 고정', '코드를 올릴 때와 모델을 올릴 때를 가르는 기준'],
       },
       {
         title: '배치·스트리밍·실시간 서빙 비교',
@@ -1662,7 +1812,7 @@ export const certPrepPlans: CertPrepPlan[] = [
     certId: 'databricks-genai-associate',
     mockExams: 5,
     sourceUrl: 'https://www.databricks.com/sites/default/files/2026-03/Databricks-Certified-Generative-AI-Engineer-Associate-Exam-Guide-Mar26.pdf',
-    basis: '근거는 공식 시험 가이드(2026-03-18판) Exam outline의 6개 섹션 56개 출제목표이고, 섹션별 비중은 인증 페이지의 백분율이다. 비중대로 30%인 3섹션에 7편·22%인 4섹션에 6편을 주고 8%인 거버넌스는 1편으로 묶었으며, 여섯 섹션이 공통으로 전제하는 Databricks 도구 지도를 맨 앞에 1편 두었다.',
+    basis: '근거는 공식 시험 가이드(2026-03-18판) Exam outline의 6개 섹션 56개 출제목표(6+8+13+15+4+10, About the Exam은 채점 문항 45개)이고, 섹션별 비중은 인증 페이지의 백분율 14/14/30/22/8/12%다. 30%인 3섹션에 7편, 22%인 4섹션에 7편, 12%인 6섹션에 4편을 주고 8%인 거버넌스는 1편으로 묶었으며, 여섯 섹션이 공통으로 전제하는 Databricks 도구 지도를 맨 앞에 1편 두어 26편이다. 4·6섹션이 비중보다 두꺼운 것은 2026-03 개정이 4섹션에 MCP 서버·영속 메모리·사용자 인터페이스를, 6섹션에 AI Gateway를 넣었기 때문이다 — 공통 1편을 뺀 25편으로 재면 12/12/28/28/4/16%이고, 3섹션에서 한 편 덜어 오는 조정은 다음 개정 확인 때 함께 본다.',
     topics: [
       {
         title: 'Mosaic AI 스택과 Unity Catalog',
@@ -1755,9 +1905,14 @@ export const certPrepPlans: CertPrepPlan[] = [
         keywords: ['Foundation Model API pay-per-token', 'provisioned throughput', 'external model 엔드포인트', 'ai_query()로 SQL 배치 추론', '배치와 실시간을 가르는 기준', '엔드포인트에서 리소스 접근 제어'],
       },
       {
-        title: 'MCP 서버 연동과 에이전트 인터페이스',
+        title: 'MCP 서버 세 갈래 연동',
         subject: 'Assembling and Deploying Applications (조립과 배포) · 22%',
-        keywords: ['managed·external·custom MCP 서버', '요구사항으로 셋 중 고르기', '중간 메모리용 영속 저장소', '구조화된 상태 저장', 'Databricks Apps', 'Slack·Teams 연동'],
+        keywords: ['관리형 MCP — Genie·AI Search·Databricks SQL·Unity Catalog 함수', '외부 MCP로 Slack·GitHub 같은 SaaS 도구 붙이기', '커스텀 MCP 서버를 Databricks App으로 호스팅', '설정에 서버 유형과 서버 식별자 적기', '외부 서버의 API 키를 Databricks Secrets에 두고 참조', '관리형 OAuth와 Unity Catalog 커넥션 프록시', '유지보수 부담이 가장 적은 갈래 고르기'],
+      },
+      {
+        title: '에이전트 인터페이스와 영속 메모리',
+        subject: 'Assembling and Deploying Applications (조립과 배포) · 22%',
+        keywords: ['앱 백엔드가 앱 자격 증명으로 에이전트 엔드포인트 호출', '브라우저에 PAT 같은 오래 사는 토큰을 두지 않기', '앱의 인증된 컨텍스트로 사용자별 권한 지키기', 'Slack·Teams 같은 대화 채널에 에이전트 붙이기', '관리형 에이전트 메모리와 Lakebase 자기 관리 메모리', '에피소딕 메모리와 시맨틱 메모리', '중간 상태를 어디에 남길지 고르는 기준'],
       },
       {
         title: '프롬프트 버전 관리와 CI/CD',
@@ -1780,9 +1935,14 @@ export const certPrepPlans: CertPrepPlan[] = [
         keywords: ['MLflow scoring과 evaluate', 'Tracing으로 단계별 들여다보기', '에이전트 성능 진단', '커스텀 Scorer 만들기', 'SME 피드백 반영', 'Review App으로 라벨 모으기'],
       },
       {
-        title: '추론 로깅·AI Gateway와 비용 통제',
+        title: '추론 로깅과 엔드포인트 모니터링',
         subject: 'Evaluation and Monitoring (평가와 모니터링) · 12%',
-        keywords: ['배포 시나리오별 모니터링 지표', 'inference table로 요청·응답 남기기', 'Agent Monitoring', 'AI Gateway Inference Tables·Usage Tables', 'rate limiting', '토큰 비용 줄이는 방법'],
+        keywords: ['배포 시나리오별로 볼 지표 고르기', 'inference table로 요청·응답 남기기', 'Agent Monitoring으로 라이브 엔드포인트 추적', '추론 로그로 RAG 응답 품질 되짚기', '로그에서 드러나는 실패 신호 — 검색 실패와 지연 급증'],
+      },
+      {
+        title: 'AI Gateway와 LLM 비용 통제',
+        subject: 'Evaluation and Monitoring (평가와 모니터링) · 12%',
+        keywords: ['AI Gateway가 내주는 셋 — Inference Tables·Usage Tables·rate limiting', 'Usage Tables로 요청 수·토큰 사용량·지연 추적', 'rate limiting으로 소비량과 비용 상한 걸기', 'Agent Framework로 배포한 LLM·에이전트에 게이트웨이 걸기', '예산 관리 — 사용자별 임계값과 하드 캡', '서비스 태그·요청 태그로 팀·프로젝트별 비용 귀속', 'Databricks 문서가 Unity AI Gateway로 이름을 바꾼 것'],
       },
     ],
   },
@@ -1790,7 +1950,7 @@ export const certPrepPlans: CertPrepPlan[] = [
     certId: 'ai-901',
     mockExams: 4,
     sourceUrl: 'https://learn.microsoft.com/en-us/credentials/certifications/resources/study-guides/ai-901',
-    basis: '45분 Fundamentals라 22편을 15편으로 줄이고 배점대로 6:9로 기울였다 — 도메인 1은 워크로드 갈래를 생성형 AI 작동 방식에 합치고 모델 선택+배포 설정, 텍스트 분석+음성, 비전+이미지 생성을 각각 한 편으로 묶었다. 도메인 2는 텍스트·음성·비전·이미지 생성 네 앱 편을 인접한 둘씩 묶어 두 편으로, Content Understanding 문서/멀티모달 두 편을 한 편으로 합쳤고 나머지 여섯 편은 그대로 뒀다(13·16은 학습 순서상 에이전트 편들을 사이에 두고 떨어져 있어 묶지 않았다).',
+    basis: '45분 Fundamentals라 22편을 16편으로 줄였다 — 도메인 1이 6편, 도메인 2가 10편이다(study guide의 배점은 40~45% 대 55~60%이고, 편수 비 6:10은 그보다 도메인 2로 더 기울어 있다 — 구현 절차는 한 편에 담기는 양이 적어서다). 도메인 1은 워크로드 갈래를 생성형 AI 작동 방식에 합치고 모델 선택+배포 설정, 텍스트 분석+음성, 비전+이미지 생성을 각각 한 편으로 묶었다. 도메인 2는 텍스트·음성·비전·이미지 생성 네 앱 편을 인접한 둘씩 묶어 두 편으로 줄이고, 정보 추출 네 불릿은 문서·이미지 한 편과 오디오·비디오 한 편으로 갈랐다 — 뒤 둘은 분석 요청을 넣고 Operation-Location을 폴링해 결과를 받는 절차라 앞 둘과 다르다. SDK 챗 클라이언트 편과 에이전트 클라이언트 편은 study guide가 각각 측정 불릿으로 두고 있어 합치지 않았다.',
     topics: [
       {
         title: '생성형 AI의 작동 방식과 워크로드 여섯 갈래',
@@ -1820,7 +1980,7 @@ export const certPrepPlans: CertPrepPlan[] = [
       {
         title: '텍스트·이미지·오디오·비디오 정보 추출',
         subject: 'AI 개념과 기능 식별 (Identify AI concepts and capabilities)',
-        keywords: ['문서·양식에서 필드 추출', '이미지에서 정보 추출', '오디오 전사 후 필드 추출', '비디오 구간 요약', '스키마 정의와 분석기(analyzer)', '텍스트 분석과 정보 추출의 경계'],
+        keywords: ['문서·양식에서 뽑는 정보의 갈래', '이미지에서 뽑는 정보의 갈래', '오디오에서 뽑는 정보의 갈래', '비디오에서 뽑는 정보의 갈래', '텍스트 분석과 정보 추출의 경계', '결과가 구조화된 필드로 나온다는 것', '시나리오를 보고 추출 기법 고르기'],
       },
       {
         title: '시스템 프롬프트와 사용자 프롬프트 쓰기',
@@ -1830,7 +1990,7 @@ export const certPrepPlans: CertPrepPlan[] = [
       {
         title: 'Foundry 포털에서 모델 배포하고 대화하기',
         subject: 'Microsoft Foundry를 사용한 AI 솔루션 구현 (Implement AI solutions by using Microsoft Foundry)',
-        keywords: ['Foundry 프로젝트와 리소스 만들기', '모델 카탈로그에서 배포하기', '배포 이름과 할당량 지정', '채팅 플레이그라운드에서 테스트', '시스템 메시지 설정', '콘텐츠 필터 적용', '엔드포인트·키·Entra ID 인증'],
+        keywords: ['Foundry 프로젝트와 리소스 만들기', '모델 카탈로그에서 배포하기', '배포 이름과 할당량 지정', '채팅 플레이그라운드에서 테스트', '시스템 메시지 설정', '콘텐츠 필터 적용', '엔드포인트·키·Entra ID 인증', '같은 배포를 포털·REST·SDK·CLI로 하는 대응표'],
       },
       {
         title: 'Foundry SDK로 챗 클라이언트 만들기',
@@ -1865,7 +2025,12 @@ export const certPrepPlans: CertPrepPlan[] = [
       {
         title: 'Content Understanding 정보 추출',
         subject: 'Microsoft Foundry를 사용한 AI 솔루션 구현 (Implement AI solutions by using Microsoft Foundry)',
-        keywords: ['Foundry Tools 안의 Content Understanding', '분석기(analyzer) 만들기와 필드 스키마 정의', '문서·양식 분석 호출', '이미지 분석기와 필드 추출', '오디오 전사와 화자 분리', '비디오 구간 설명과 키 프레임', '결과에서 필드와 신뢰도 읽기', '비동기 폴링과 경량 앱으로 감싸기'],
+        keywords: ['Foundry Tools 안의 Content Understanding', '분석기(analyzer) 만들기와 필드 스키마 정의', 'extract·generate·classify 필드 생성 방식', 'extract는 문서 분석기에서만 지원된다', '문서·양식 분석 호출', '이미지 분석기와 필드 추출', '결과에서 필드와 신뢰도 읽기(신뢰도도 문서 분석기만 지원)'],
+      },
+      {
+        title: '오디오·비디오 분석기 호출과 폴링',
+        subject: 'Microsoft Foundry를 사용한 AI 솔루션 구현 (Implement AI solutions by using Microsoft Foundry)',
+        keywords: ['prebuilt-audioSearch·prebuilt-videoSearch 분석기', 'WebVTT 전사와 화자 라벨(Speaker 1)', 'startTimeMs·endTimeMs로 읽는 구간', 'keyFrameTimesMs·cameraShotTimesMs로 읽는 비디오 구조', '202 응답의 Operation-Location을 1~2초마다 폴링', '요약·설명 필드를 generate 방식으로 정의하기', '전사와 구간 결과를 경량 앱으로 감싸기'],
       },
     ],
   },
@@ -1873,7 +2038,7 @@ export const certPrepPlans: CertPrepPlan[] = [
     certId: 'ai-103',
     mockExams: 5,
     sourceUrl: 'https://learn.microsoft.com/en-us/credentials/certifications/resources/study-guides/ai-103',
-    basis: '지적한 세 자리를 그대로 합쳐 30→27편이다 — 배포 구성·CI/CD를 인프라 편에(계획 7), 프롬프트 튜닝·자기 비평을 오케스트레이션 편에(생성형 9), 멀티모달 이해 두 편을 하나로(비전 3). 26편이 아닌 것은 그 셋을 빼면 산술이 27이고, 한 편 더 줄이면 10~15% 영역 하나가 15.4%로 밴드를 벗어나기 때문이다(27편은 25.9/33.3/11.1/14.8/14.8%로 전부 밴드 안, sqlp·bigdata 29 아래).',
+    basis: '컴퓨터 비전 22번을 둘로 쪼개 27→28편이다. study guide의 「Design and implement multimodal understanding workflows」 절만 불릿이 여덟인데 한 편이 다 지고 있었다 — 다른 열세 절은 셋에서 여섯이다. 캡션·시각 근거 QA·대체 텍스트·시각 맥락 분석 넷과 Content Understanding·비디오 구간·프로 모드·객체 식별 넷으로 갈라 편당 넷으로 내렸다. 앞서 합친 둘은 그대로 둔다 — 배포 구성·CI/CD를 인프라 편에(계획 7), 프롬프트 튜닝·자기 비평을 오케스트레이션 편에(생성형 9). 셋째로 합쳤던 멀티모달 이해 두 편은 이번에 다시 갈랐다. 28편은 study guide의 도메인 순서대로 7·9·4·4·4이고 25.0/32.1/14.3/14.3/14.3%라 밴드(25–30 / 30–35 / 10–15 / 10–15 / 10–15%) 안에 전부 든다.',
     topics: [
       {
         title: '과제별 Foundry 서비스와 모델 고르기',
@@ -1981,9 +2146,14 @@ export const certPrepPlans: CertPrepPlan[] = [
         keywords: ['텍스트 프롬프트 기반 이미지 생성', '참조 미디어를 쓰는 생성', '인페인팅과 마스크 기반 편집', '프롬프트 기반 이미지 수정', '텍스트 기반 비디오 생성', '생성 비디오 편집', '플랫폼이 제공하는 생성·편집 제어 옵션'],
       },
       {
-        title: '멀티모달 이해와 시각 분석 파이프라인',
+        title: '멀티모달 캡션과 시각 근거 QA',
         subject: 'Implement computer vision solutions (컴퓨터 비전 솔루션 구현)',
-        keywords: ['멀티모달 모델의 시각 맥락 분석', '단일·다중 이미지 캡션과 상세 캡션 구분', '시각 근거 기반 질의응답', '접근성 지침에 맞춘 대체 텍스트와 확장 설명', '이미지·비디오 내 객체·구성 요소·영역 식별', 'Content Understanding으로 시각 특성 추출', '비디오 구간 처리와 해석', '단일 작업·프로 모드 분석기 파이프라인'],
+        keywords: ['멀티모달 모델로 시각 맥락 분석하기', '단일 이미지와 다중 이미지 캡션', '간결한 캡션과 상세 캡션의 구분', '시각 근거에 기반한 질의응답', '접근성 지침에 맞춘 대체 텍스트와 확장 이미지 설명'],
+      },
+      {
+        title: '비디오 구간 분석과 프로 모드',
+        subject: 'Implement computer vision solutions (컴퓨터 비전 솔루션 구현)',
+        keywords: ['Foundry Tools의 Azure Content Understanding으로 시각 특성 추출', '비디오 구간(video segment)을 처리·해석하는 분석 워크플로', '단일 작업(single-task) 파이프라인과 프로 모드(pro mode) 파이프라인 구분', '이미지 안의 객체·구성 요소·영역 식별', '비디오 안의 객체·구성 요소·영역 식별과 이미지와의 차이'],
       },
       {
         title: '시각 콘텐츠 안전 필터와 프롬프트 인젝션',
