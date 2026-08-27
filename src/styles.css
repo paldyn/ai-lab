@@ -5204,11 +5204,19 @@ input:focus-visible {
 }
 
 /*
-  머리글은 **예외 없이 가운데**입니다. 회차와 비고만 왼쪽에 두어 봤는데, 표를
-  가로로 훑을 때 그 둘만 어긋나 보였습니다. 값은 회차·비고가 글이라 왼쪽에
-  붙이고 날짜만 가운데로 둡니다 — 머리글과 값의 기준이 달라도 됩니다.
-  머리글은 열을 세는 자리이고 값은 읽는 자리입니다.
+  **머리글과 값의 정렬을 칸마다 맞춥니다.** 머리글만 가운데로 두었더니 회차
+  열에서 제목과 값이 서로 어긋나 한 열로 안 읽혔습니다.
+
+  회차와 날짜는 둘 다 가운데, 비고만 둘 다 왼쪽입니다 — 비고는 접히는 문장이라
+  가운데로 두면 줄마다 시작점이 달라집니다.
 */
+.cert-schedule tbody th {
+  text-align: center;
+}
+
+.cert-schedule thead th.is-note {
+  text-align: left;
+}
 
 .cert-schedule tbody td:not(.is-note) {
   text-align: center;
