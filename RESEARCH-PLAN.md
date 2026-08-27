@@ -103,10 +103,10 @@
 | 31 | `cost-korean-token-tax` | 한국어 토큰세: 같은 문장이 토크나이저마다 몇 배로 갈리는가 | 게이트 없이 받을 수 있는 토크나이저만 모아 한국어 문서 세 종류(설명문·한국어 주석 코드·수식 섞인 글)로 자/토큰 표를 만든다. 어휘가 클수록 한국어에 유리하다는 통념이 어디서 깨지는지 보고, 이 비율을 이후 cost- 글 세 편이 그대로 재사용한다. /articles/tokenizer-bpe·/articles/tokenizer-tiktoken이 알고리즘을 맡으므로 이 글은 측정과 비용 함의만 맡는다. | 토크나이저 접근 실측 완료. 성공(1.5~4.6초): cl100k_base 한국어 1.05자/토큰, o200k_base 1.72, Qwen/Qwen2.5-7B-Instruct 1.34, mistralai/Mistral-7B-Instruct-v0.3 0.90, deepseek-ai/DeepSeek-V3 1.39, skt/A.X-4.0-Light 2.46, klue/roberta-base 1.79, bert-base-multilingual-cased 1.59, intfloat/multilingual-e5-small 1.69. 실패: meta-llama/Llama-3.1-8B-Instruct와 google/gemma-2-9b-it는 gated repo 오류 — 실패 메시지를 그대로 싣는다. naver-hyperclovax/HyperCLOVAX-SEED-Text-Base-1.5B는 존재하지 않는 ID(`is not a valid model identifier`)이므로 쓰지 않는다. 어휘 32,000의 klue/roberta가 어휘 151,000급보다 한국어에서 나은 것이 통념이 깨지는 자리다. |
 | 32 | `cost-price-per-work-not-per-token` | MTok 단가로는 못 고른다: 단가 × 토큰 팽창률로 다시 계산한 실비 | 세 벤더 가격 문서에서 단가표를 받아 앞 글의 한국어 팽창률을 곱해 '한국어 문서 1만 건 처리' 실비를 원화까지 낸다. 단가가 더 싼 모델이 한국어에서 더 비싸지는 자리를 지목한다. /articles/project-cost-optimization·/articles/serving-cost-optimization이 절감 기법을 맡으므로 이 글은 청구서 계산만 맡는다. | 가격 문서 세 곳 전부 완전한 수치 표를 반환하는 것을 확인했다. platform.claude.com/docs/en/about-claude/pricing(모델별 입출력 단가 전체), ai.google.dev/gemini-api/docs/pricing(200k 토큰 경계로 갈리는 티어 가격, 임베딩 $0.15~0.20/MTok), developers.openai.com/api/docs/pricing(표준·배치 표). 함정 둘도 본문에 적는다 — claude.com/pricing은 JS 렌더라 API 단가가 안 나오고, www.anthropic.com/pricing과 platform.openai.com/docs/pricing은 301로 호스트가 바뀐다. Anthropic 문서의 '4.7 이후 모델은 같은 텍스트에 약 30% 더 많은 토큰을 만드는 새 토크나이저를 쓴다'는 문장을 인용해 단가와 팽창률을 분리한다. 표 머리에 취득일 필수. |
 | 33 | `spec-sdk-defaults` | SDK 기본값 실측: 타임아웃·재시도는 무엇으로 잡혀 있는가 | openai·anthropic·google-genai 파이썬 SDK를 설치해 클라이언트 기본 타임아웃, 최대 재시도 횟수, 재시도 대상 상태 코드, 백오프 방식, 스트리밍 기본값을 소스와 시그니처에서 직접 뽑아 표로 만든다. /articles/openai-sdk·/articles/anthropic-sdk·/articles/gemini-sdk가 사용법을 맡으므로 이 글은 기본값 대조만 맡는다. 문서에 적힌 값과 코드의 값이 어긋나면 양쪽을 나란히 싣고 어긋남 자체를 결론에 넣는다. | API 키 없이 성립하는 것을 확인했다. openai 2.53.0, anthropic 0.120.2, google-genai 2.16.0 설치 후 introspection으로 확인 — 앞 두 SDK 모두 DEFAULT_TIMEOUT = Timeout(connect=5.0, read=600, write=600, pool=600), DEFAULT_MAX_RETRIES = 2로 동일하게 잡혀 있다. 네트워크도 키도 필요 없어 계획 전체에서 실행 위험이 가장 낮은 항목이다. 재현 스크립트는 inspect.signature와 모듈 상수를 출력하는 20줄이면 된다. |
-| 34 | `cost-prompt-cache-breakeven` | 프롬프트 캐시는 몇 번째 호출부터 이득인가: 3사 규칙으로 푼 손익분기 | 캐시 쓰기 배수·읽기 배수·TTL·최소 토큰 조건을 세 벤더 문서에서 뽑아 같은 표에 놓고, 손익분기 읽기 횟수를 닫힌 식으로 유도한다. 실제 시스템 프롬프트를 토크나이저로 재서 대입해 월 절감액까지 낸다. /articles/llmops-cache가 캐시 계층 설계를 맡으므로 이 글은 벤더 과금 규칙의 산수만 맡는다. | Anthropic 문서에서 5분 쓰기 1.25x, 1시간 쓰기 2x, 읽기 0.1x를 확인했다. 부등식 (w + 0.1k) < (k + 1)을 풀면 5분 캐시는 읽기 1회, 1시간 캐시는 읽기 2회부터 이득 — 유도 과정을 싣고 문서 서술과 대조한다. 도구별 시스템 프롬프트 토큰 수 표도 같은 문서에 있다. OpenAI·Gemini의 캐시 조건(자동/명시, 최소 토큰 수, TTL)을 조항 인용으로 채우고, 근거를 못 대는 칸은 '문서에 없음'으로 비운다. 우리 RAG 시스템 프롬프트의 실제 토큰 수는 tiktoken으로 직접 잰다. |
-| 35 | `spec-context-window-conditions` | 컨텍스트 창 숫자에 붙어 있는 조건들 | 1M 같은 숫자가 어떤 조건에서 유효한지 — 베타 헤더, 티어 제한, 장문 구간 할증, 출력 토큰 상한, 캐시·배치와의 상호작용 — 를 조항 인용으로 대조한다. 출력 상한이 입력 상한보다 훨씬 작다는 점을 실제 숫자로 대조하는 것이 결론이다. /articles/llm-context-window가 개념을 맡으므로 이 글은 계약 조건만 맡는다. | Anthropic 문서에서 '4.6 이후 모델은 1M 창을 표준 가격으로 포함하며 900k 요청도 9k와 같은 단가'를 확인했다. 반면 Gemini는 2.5/3.1 Pro 입력 단가가 200k 토큰 경계에서 갈린다(3.1 Pro $2/$4). 세 벤더의 입력 상한·출력 상한·경계 할증·필요 헤더를 표로 만들고 각 칸에 URL과 확인일을 단다. 1번 글의 한국어 팽창률을 곱해 '이 창이 한국어로 몇 자인가'를 함께 낸다. |
-| 36 | `cost-batch-and-tier-discounts` | 배치 50% 할인을 못 받는 자리 찾기: 티어·모드별 조건 대조 | 배치 API, 저지연 모드, 데이터 레지던시 할증을 세 벤더에서 대조한다. 할인율만이 아니라 '언제 못 쓰는가'(다른 기능과 배타, 완료 지연 상한, 스트리밍 불가)를 조항으로 같이 표에 넣어 할인이 실제로 적용되는 워크로드를 가른다. 앞 글의 캐시 배수와 곱셈 순서가 어떻게 되는지 검산까지 한다. | Anthropic 문서에서 확인 — 배치 입출력 모두 50% 할인, Fast mode는 배치와 병용 불가, inference_geo="us"는 모든 토큰 항목에 1.1x, 관리형 에이전트 세션에는 배치·Fast·레지던시 배수가 전부 적용되지 않고 세션 런타임이 $0.08/시간. OpenAI·Gemini의 대응 조항(배치 50%, 무료 티어 한도)을 같은 표에 조항 인용으로 채운다. 산출: (모드, 할인율, 배타 조건, 지연 상한, 적용 가능 워크로드) 표. |
-| 37 | `spec-model-deprecation-calendar` | 지금 쓰는 모델은 언제 사라지는가: 은퇴 일정과 이전 비용 | 세 벤더의 모델 폐기·은퇴 문서를 대조해 달력을 만들고, 후속 모델로 옮길 때 단가와 토크나이저 변화로 생기는 비용 차이를 계산한다. 선택 기준에 '이 모델이 얼마나 오래 살아 있는가'를 수치로 넣는다. 확인일 없는 표는 몇 달 뒤 거짓말이 되므로 표 머리에 확인일을 크게 박는다. | Anthropic 문서에서 상태 표시를 확인했다 — Opus 4.1 deprecated, Opus 4·Sonnet 4·Haiku 3.5는 일부 클라우드 외 retired, Sonnet 5는 2026-08-31까지 도입가 $2/$10이고 09-01부터 $3/$15로 오른다. 이런 날짜와 상태를 세 벤더에서 모아 달력 표로 만들고, 각 이전 경로마다 앞선 cost- 글의 팽창률과 단가를 곱해 '같은 워크로드의 월 비용이 얼마나 변하는가'를 낸다. |
+| 34 | `cost-prompt-cache-breakeven` | 프롬프트 캐시는 몇 번째 호출부터 이득인가: 손익분기를 닫힌 식으로 푼다 | 캐시 쓰기 배수·읽기 배수·TTL·최소 토큰 조건을 모아 같은 표에 놓고, 손익분기 읽기 횟수를 닫힌 식으로 유도한다. 실제 시스템 프롬프트를 토크나이저로 재서 대입해 월 절감액까지 낸다. /articles/llmops-cache가 캐시 계층 설계를 맡으므로 이 글은 과금 규칙의 산수만 맡는다. | **출처는 아래 「가격 숫자를 어떻게 받는가」 절을 그대로 따른다.** Anthropic 문서(직접 접근)에서 5분 쓰기 1.25x, 1시간 쓰기 2x, 읽기 0.1x를 이미 확인했다. 부등식 (w + 0.1k) < (k + 1)을 풀면 5분 캐시는 읽기 1회, 1시간 캐시는 읽기 2회부터 이득 — 유도 과정을 싣고 문서 서술과 대조한다. OpenAI·Gemini 값은 litellm 번들 JSON의 `cache_creation_input_token_cost`·`cache_read_input_token_cost`·`cache_creation_input_token_cost_above_1hr`·`prompt_cache_min_tokens`에서 뽑는다(캐시 읽기 단가 보유 745개, 최소 토큰 조건 126개). **Anthropic 값은 문서와 JSON 양쪽에서 뽑아 대조하고, 어긋나면 어긋남 자체를 표에 싣는다** — 그것이 2차 출처를 쓰는 대가를 재는 자리다. 우리 RAG 시스템 프롬프트의 실제 토큰 수는 31번의 `tt_from_hf.py`로 직접 잰다. |
+| 35 | `spec-context-window-conditions` | 컨텍스트 창 숫자에 붙어 있는 조건들 | 1M 같은 숫자가 어떤 조건에서 유효한지 — 티어 제한, 장문 구간 할증, 출력 토큰 상한, 캐시·배치와의 상호작용 — 를 대조한다. 출력 상한이 입력 상한보다 훨씬 작다는 점을 실제 숫자로 대조하는 것이 결론이다. /articles/llm-context-window가 개념을 맡으므로 이 글은 계약 조건만 맡는다. | Anthropic 문서(직접 접근)에서 '4.6 이후 모델은 1M 창을 표준 가격으로 포함하며 900k 요청도 9k와 같은 단가'를 확인했다. 경계 할증은 litellm JSON의 `input_cost_per_token_above_200k_tokens`(58개)·`_above_272k_tokens`(45개)·`tiered_pricing`(21개)이 벤더별로 담고 있고, 상한은 `max_input_tokens`·`max_output_tokens`(2,444개)다 — 예로 gpt-5.6은 입력 1,050,000 / 출력 128,000으로 **8.2배 차이**이고 272k 경계에서 입력 단가가 2배가 된다. 세 벤더의 입력 상한·출력 상한·경계 할증을 표로 만들고 각 칸에 출처(문서 URL 또는 JSON 필드명)와 확인일을 단다. 31번의 한국어 자/토큰을 곱해 '이 창이 한국어로 몇 자인가'를 함께 낸다. |
+| 36 | `cost-batch-and-tier-discounts` | 배치 50% 할인을 못 받는 자리 찾기: 티어·모드별 조건 대조 | 배치 API, 저지연/우선 모드, 데이터 레지던시 할증을 대조한다. 할인율만이 아니라 '언제 못 쓰는가'(다른 기능과 배타, 완료 지연 상한, 스트리밍 불가)를 조항으로 같이 표에 넣어 할인이 실제로 적용되는 워크로드를 가른다. 앞 글의 캐시 배수와 곱셈 순서가 어떻게 되는지 검산까지 한다. | Anthropic 문서(직접 접근)에서 확인 — 배치 입출력 모두 50% 할인, Fast mode는 배치와 병용 불가, inference_geo="us"는 모든 토큰 항목에 1.1x, 관리형 에이전트 세션에는 배치·Fast·레지던시 배수가 전부 적용되지 않고 세션 런타임이 $0.08/시간. 세 벤더 대조는 litellm JSON의 `input_cost_per_token_batches`·`output_cost_per_token_batches`(112개), `*_flex`·`*_priority`, `regional_processing_uplift_multiplier_eu`·`_us`로 채우고 **할인율은 적힌 값을 믿지 말고 계산해서 검증한다**(배치 단가 ÷ 표준 단가가 정말 0.5인가). **배타 조건은 JSON에 없다** — 그건 문서에만 있으므로 Anthropic·Vertex 문서에서 조항으로 뽑고, OpenAI 칸은 '문서 접근 불가'로 비운 채 실패 메시지를 각주에 단다. 산출: (모드, 할인율, 배타 조건, 지연 상한, 적용 가능 워크로드) 표. |
+| 37 | `spec-model-deprecation-calendar` | 지금 쓰는 모델은 언제 사라지는가: 은퇴 일정과 이전 비용 | 세 벤더의 모델 폐기·은퇴 날짜를 모아 달력을 만들고, 후속 모델로 옮길 때 단가와 토크나이저 변화로 생기는 비용 차이를 계산한다. 선택 기준에 '이 모델이 얼마나 오래 살아 있는가'를 수치로 넣는다. 확인일 없는 표는 몇 달 뒤 거짓말이 되므로 표 머리에 확인일을 크게 박는다. | **달력의 뼈대는 litellm JSON의 `deprecation_date`다 — 335개 모델이 값을 갖고 있어 벤더 셋을 한 번에 덮는다.** 벤더별로 묶어 정렬하면 그대로 달력이 되고, 남은 수명(확인일 기준 일수) 분포도 낸다. Anthropic 쪽은 문서(직접 접근)의 상태 표시와 대조해 JSON을 검증한다. **계획에 적혀 있던 'Sonnet 5는 2026-08-31까지 도입가 $2/$10이고 09-01부터 $3/$15로 오른다'는 이미 틀렸다** — 2026-08-27 현재 문서는 인상이 취소되고 $2/$10이 표준가라고 적는다. 날짜가 박힌 항목은 예외 없이 쓰는 날 다시 확인하고, 계획의 서술과 어긋나면 문서 쪽을 따른다. 각 이전 경로마다 31번의 팽창률과 단가를 곱해 '같은 워크로드의 월 비용이 얼마나 변하는가'를 낸다. |
 | 38 | `spec-open-model-licenses` | 오픈 가중치 모델 라이선스 대조: 어디까지 상업적으로 쓸 수 있는가 | 토큰 없이 원문을 받을 수 있는 모델의 라이선스만 골라 상업 이용 범위, 사용자 수 임계, 파생 모델 명명 의무, 출력물로 다른 모델을 학습시키는 것의 허용 여부, 재배포 조건을 조항 단위로 대조한다. 접근 자체가 막힌 모델은 그 사실을 표의 한 열로 만든다. 법률 자문이 아님을 명시한다. | 접근성을 실측했다. 토큰 없이 열림: Qwen/*, deepseek-ai/*, mistralai/Mistral-7B-Instruct-v0.3, skt/A.X-4.0-Light, openai/gpt-oss-*. 토큰 없이 실패: meta-llama/*, google/gemma-* (gated repo 오류). 존재하지 않는 ID로 확인된 것: naver-hyperclovax/HyperCLOVAX-SEED-Text-Base-1.5B — 표에 넣지 않는다. LGAI-EXAONE는 trust_remote_code가 필요하고 최신 transformers에서 config 로딩이 깨진다. 라이선스 원문은 통째 번역하지 않고 조항 번호와 함께 요지만 인용한다. |
 | 39 | `bench-korean-embedding-models` | 한국어 임베딩 모델 CPU 실측: 크기·처리량·STS 상관 | CPU에서 돌릴 수 있는 한국어 지원 임베딩 모델만 골라 차원·파일 크기·문장당 인코딩 시간·한국어 STS 상관을 한 표에 놓고, 지연 예산별로 무엇을 고를지 숫자 임계값으로 규칙을 만든다. /articles/rag-embedding-models가 모델 소개를 맡으므로 이 글은 측정치와 선택 규칙만 맡는다. 후보에서 뺀 것과 뺀 이유(게이트, 크기 초과)를 실패 메시지와 함께 적는다. | 평가 데이터 접근을 확인했다 — klue/klue의 sts 설정이 8.5초에 로드(train 11,668 / validation 519), mteb/sts17-crosslingual-sts의 ko-ko가 6.1초에 로드(test 2,846). 인코딩 기준선도 확보: multilingual-e5-small이 CPU에서 960문단을 4.8초에 인코딩(384차원), all-MiniLM-L6-v2가 scifact 5,183문서를 9.8초(530문장/초). 여기에 multilingual-e5-base, paraphrase-multilingual-MiniLM, bge-m3, ko-sroberta 계열을 더한다. 축은 한국어 STS 스피어만 / 검색 품질 / 문장초 / 디스크 MB / 최대 시퀀스 5개. 모델 최초 다운로드 시간도 표에 기록한다. |
 | 40 | `bench-chunkers` | 청크 분할기 실측: 길이 분포·문장 절단률·한국어 경계 오류 | LangChain RecursiveCharacterTextSplitter, LlamaIndex SentenceSplitter, 토큰 기반 분할, 규칙 기반 분할을 같은 한국어 문서에 걸어 청크 길이 분포, 문장 중간에서 잘린 비율, 표·코드 블록 파손율, 속도를 잰다. chunk_size를 문자로 지정했을 때 실제 토큰 수가 얼마나 튀는지가 이 글의 핵심 수치다. /articles/rag-chunking-strategies가 전략 분류를 맡고 이 글은 구현체 실측만 맡는다. | 청크 길이 히스토그램을 문자 축과 토큰 축 둘 다로 낸다 — 한국어 팽창률(cl100k 1.05자/토큰, o200k 1.72) 때문에 두 축이 크게 어긋나고, 그것이 chunk_size를 문자로 지정하는 관행의 실제 위험이다. 문장 절단률 %, 처리 속도, 그리고 같은 청크로 만든 인덱스의 Recall 차이(기준 0.7867)를 함께 낸다. 라이브러리 버전을 표에 고정하고, 설치가 실패하는 항목은 실패 메시지와 함께 표에 남긴다. |
@@ -137,9 +137,12 @@
 
 **arXiv HTML에서 표를 긁을 때의 함정 하나.** LaTeXML은 캡션을 표 **앞**에 놓는다. 그래서 「Table 2: Alternative Prompt」 같은 캡션 문자열을 찾아 그 앞의 `<table>`을 잡으면 한 칸 밀린 표가 잡힌다. 29번을 쓰면서 실제로 표 두 장을 서로 바꿔 읽을 뻔했다 — 두 표는 행 이름이 같고 숫자만 달라서 **바뀌어도 눈으로는 안 걸린다.** 기준점은 캡션 문자열이 아니라 LaTeXML이 붙인 id를 쓴다(`id="A4.T1.4"` 꼴, `A4`는 부록 D). 그리고 캡션에는 `<span>`이 섞여 들어가 원문에 리터럴 문자열로 존재하지 않는 경우가 있어 `raw.index("Table 2: Alternative Prompt")` 자체가 `ValueError`로 죽는다.
 
-**가격 문서 다섯 경로 중 셋이 이그레스 정책에 막힌다.** 2026-08-27에 31·32번을 쓰면서
-전부 직접 받아 보고 확인했다. 남은 `cost-`·`spec-` 네 편(34·35·36·37)이 같은 문서에
-기대고 있으므로 다시 조사하지 말고 아래 표를 쓴다.
+## 가격 숫자를 어떻게 받는가
+
+**남은 `cost-`·`spec-` 네 편(34·35·36·37)은 전부 이 절을 따른다.** 경로를 다시
+조사하지 마라 — 2026-08-27에 전부 직접 받아 보고 확인한 결과가 여기 있다.
+
+**가격 문서 다섯 경로 중 셋이 이그레스 정책에 막힌다.**
 
 | 경로 | 결과 |
 | --- | --- |
@@ -151,10 +154,45 @@
 | `openai.com/api/pricing/` | 호스트는 닿으나 사이트가 `403` |
 | `www.anthropic.com/pricing` | `301` → `claude.com/pricing`, 그리고 `claude.com`은 이그레스 차단 |
 
-**그래서 OpenAI 단가는 이 환경에서 못 받는다.** 32번은 두 벤더로 냈고 남은 네 편도
-같다 — 추정치로 채우지 말고 실패 메시지와 함께 빈칸으로 둔다. 환율 출처
-(`api.frankfurter.app`, `open.er-api.com`)도 전부 차단이라 **원화 환산은 못 낸다.**
-스크립트에 `--krw` 인자만 남기고 표에서 뺐다.
+**그래서 OpenAI 단가는 웹으로는 못 받는다.** 32번은 그래서 두 벤더로 냈다.
+환율 출처(`api.frankfurter.app`, `open.er-api.com`)도 전부 차단이라 **원화 환산은
+못 낸다** — 스크립트에 `--krw` 인자만 남기고 표에서 뺐다.
+
+**대신 PyPI로 받는다 — `pip install litellm`이 벤더 셋의 단가표를 통째로 들고 온다.**
+2026-08-27에 실제로 설치해 확인했다. 패키지 안의
+`litellm/model_prices_and_context_window_backup.json`이 1.7MB · 모델 3,040개이고,
+막힌 네 편이 필요로 하는 필드가 전부 들어 있다.
+
+| 필드 | 보유 모델 수 | 쓰는 글 |
+| --- | ---: | --- |
+| `input_cost_per_token` · `output_cost_per_token` | 대부분 | 32·35·37 |
+| `cache_read_input_token_cost` | 745 | 34 |
+| `cache_creation_input_token_cost` | 245 | 34 |
+| `cache_creation_input_token_cost_above_1hr` | 126 | 34 |
+| `prompt_cache_min_tokens` | 126 | 34 |
+| `max_input_tokens` · `max_output_tokens` | 2,444 | 35 |
+| `input_cost_per_token_above_200k_tokens` | 58 | 35 |
+| `input_cost_per_token_above_272k_tokens` | 45 | 35 |
+| `tiered_pricing` | 21 | 35 |
+| `input_cost_per_token_batches` · `output_cost_per_token_batches` | 112 | 36 |
+| `*_flex` · `*_priority` · `regional_processing_uplift_multiplier_eu`·`_us` | 4~108 | 36 |
+| `deprecation_date` | 335 | 37 |
+
+**그러나 이것은 2차 출처다.** 벤더가 쓴 문서가 아니라 커뮤니티가 옮겨 적은 값이라
+그대로 실으면 「직접 돌려서 확인했다」가 성립하지 않는다. 세 가지를 지킨다.
+
+1. **닿는 벤더는 문서가 정본이다.** Anthropic(`platform.claude.com`)과 Vertex는 위
+   표대로 직접 받을 수 있다. 그쪽 값은 문서에서 뽑는다.
+2. **겹치는 칸으로 JSON을 검증하고, 그 검증 결과를 글에 싣는다.** Anthropic 값을
+   문서와 JSON 양쪽에서 뽑아 대조해 일치율과 어긋난 칸을 표로 낸다. 2차 출처가
+   얼마나 믿을 만한지를 재는 것 자체가 이 글들의 측정 항목이다.
+3. **JSON에서 온 칸은 출처를 필드명으로 밝히고 패키지 버전과 설치일을 박는다.**
+   `litellm==<버전>` · 확인일을 표 머리에 적는다. 추정치는 여전히 금지다 — 필드가
+   없으면 빈칸으로 두고 왜 없는지 적는다.
+
+**JSON에 없는 것이 있다.** 배타 조건(배치와 Fast mode 병용 불가 같은 것), 필요한
+베타 헤더, 티어별 접근 제한은 산문이라 JSON에 안 담긴다. 그건 닿는 문서 둘에서만
+뽑고 OpenAI 칸은 실패 메시지와 함께 비운다.
 
 **32번의 기대는 성립하지 않았다.** 계획은 "단가가 더 싼 모델이 한국어에서 더 비싸지는
 자리를 지목한다"였는데, **Anthropic도 Google도 자기 토크나이저를 공개하지 않는다.**
