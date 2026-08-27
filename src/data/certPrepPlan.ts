@@ -37,6 +37,13 @@ export interface CertPrepPlan {
   sourceUrl: string;
   /** 무엇을 근거로 이렇게 나눴는가. */
   basis: string;
+  /**
+   * 계획을 멈춰 둔 이유. 있으면 루틴이 이 자격증을 건너뛴다.
+   *
+   * 시험이 개편 중이라 지금 쓰면 버려질 때 씁니다 — 화면에도 그대로 나가므로
+   * 「왜 안 쓰고 있는가」가 독자에게도 보입니다.
+   */
+  hold?: string;
 }
 
 export const certPrepPlans: CertPrepPlan[] = [
@@ -1273,6 +1280,7 @@ export const certPrepPlans: CertPrepPlan[] = [
   },
   {
     certId: 'aws-ml-engineer-associate',
+    hold: '영어 MLA-C01이 2026-09-28에 끝나고 MLA-C02 정식판은 2027년 초다. C02 시험 가이드가 나오면 계획을 다시 짠다 — 지금 C01을 겨냥해 쓰면 그 노트가 개편과 함께 버려진다.',
     mockExams: 5,
     sourceUrl: 'https://docs.aws.amazon.com/aws-certification/latest/machine-learning-engineer-associate-01/machine-learning-engineer-associate-01.html',
     basis: '공식 시험 가이드의 도메인 넷(28/26/22/24%)과 그 아래 태스크 11개의 Knowledge·Skills 목록으로 쪼갰다 — 비중대로 7·6·5·6편에, 네 도메인이 모두 전제하는 SageMaker 구성 요소 1편을 앞에 붙여 개념 25편이다. 65문항에 서비스 범위가 넓어 모의고사는 5편으로 잡았다.',

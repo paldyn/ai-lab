@@ -13,7 +13,7 @@ import {
   type CertExamSession,
   type CertStudyItem,
 } from '../data/certs';
-import { prepFor, prepProgress, prepUpcoming } from '../data/certPrep';
+import { prepFor, prepHold, prepProgress, prepUpcoming } from '../data/certPrep';
 import { getArticleBySlug } from '../data/articles';
 
 const TECHBLOG = 'https://techblog.paldyn.com/posts';
@@ -189,6 +189,7 @@ function CertView({ cert }: { cert: Cert }) {
   const prep = prepFor(cert.id);
   const progress = prepProgress(cert.id);
   const upcoming = prepUpcoming(cert.id);
+  const hold = prepHold(cert.id);
   const mocksLeft = progress ? Math.max(0, progress.plannedMocks - progress.mocks) : 0;
   /*
     지난 회차는 여기서 이미 걸러집니다. 남은 것이 없으면 절 자체를 세우지
@@ -492,7 +493,8 @@ function CertView({ cert }: { cert: Cert }) {
               ))}
             </ol>
           )}
-          {mocksLeft > 0 && (
+          {hold && <p className="cert-prose cert-prep-hold">{hold}</p>}
+          {!hold && mocksLeft > 0 && (
             <p className="cert-prose cert-prep-foot">
               개념을 다 쓰면 모의고사 {mocksLeft}편이 뒤에 붙습니다.
             </p>

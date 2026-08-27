@@ -122,6 +122,12 @@ describe('시험 노트 계획', () => {
     expect(empty.map((plan) => plan.certId)).toEqual([]);
   });
 
+  /* 멈춰 둔 이유는 화면에 그대로 나갑니다. 「보류」 한 낱말로는 아무것도 안 알려 줍니다. */
+  it('멈춰 둔 계획은 이유를 적는다', () => {
+    const thin = certPrepPlans.filter((plan) => plan.hold !== undefined && plan.hold.length < 20);
+    expect(thin.map((plan) => plan.certId)).toEqual([]);
+  });
+
   it('전체 편수가 계획의 합이다', () => {
     const sum = certPrepPlans.reduce((acc, plan) => acc + plan.topics.length + plan.mockExams, 0);
     expect(plannedPrepTotal).toBe(sum);

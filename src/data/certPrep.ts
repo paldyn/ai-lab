@@ -100,12 +100,18 @@ export interface CertPrepPlanned {
 
 export function prepUpcoming(certId: string): CertPrepPlanned[] {
   const plan = planFor(certId);
-  if (!plan) return [];
+  // 멈춰 둔 계획은 「예정」이 아니다 — 언제 쓸지 모르는 것을 예정이라 부르지 않는다.
+  if (!plan || plan.hold) return [];
 
   const filled = new Set(prepFor(certId).map((note) => note.order));
   return plan.topics
     .map((topic, index) => ({ order: index + 1, title: topic.title, subject: topic.subject }))
     .filter((topic) => !filled.has(topic.order));
+}
+
+/** 계획을 멈춰 둔 이유. 없으면 undefined. */
+export function prepHold(certId: string): string | undefined {
+  return planFor(certId)?.hold;
 }
 
 export function prepNote(certId: string, slug: string): CertPrepNote | undefined {

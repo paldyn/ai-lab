@@ -54,15 +54,20 @@ plans = []
 for block in plan_src.split("    certId: '")[1:]:
     cid = block.split("'")[0]
     mocks = int(re.search(r'mockExams: (\d+),', block).group(1))
+    hold = re.search(r"    hold: '((?:[^'\\]|\\.)*)',", block)
     topics = [(m[0], m[1], re.findall(r"'((?:[^'\\]|\\.)*)'", m[2])) for m in TOPIC.findall(block)]
-    plans.append((cid, topics, mocks))
+    plans.append((cid, topics, mocks, hold.group(1) if hold else None))
 
 def title_of(path):
     m = re.search(r'^title:\s*"(.*)"', open(path, encoding='utf-8').read(), re.M)
     return m.group(1) if m else ''
 
 rows = []
-for cid, topics, mocks in plans:
+held = []
+for cid, topics, mocks, hold in plans:
+    if hold:
+        held.append((cid, hold))
+        continue
     d = os.path.join('src/content/certs', cid)
     files = {}
     if os.path.isdir(d):
@@ -74,6 +79,11 @@ for cid, topics, mocks in plans:
     rows.append((written / planned, cid, d, files, topics, mocks, planned))
 
 rows.sort(key=lambda r: (r[0], r[1]))
+if held:
+    print('보류 (쓰지 않는다):')
+    for cid, why in held:
+        print(f'  {cid:30s} {why}')
+    print()
 print('진도 (낮은 순):')
 for pct, cid, d, files, topics, mocks, planned in rows:
     concepts = sum(1 for n in files if n <= len(topics))
@@ -86,7 +96,7 @@ print('있는 파일:', ', '.join(files[n] for n in sorted(files)) or '없음')
 
 picks = []
 for i, (title, subject, kw) in enumerate(topics):
-    if len(picks) == 4:
+    if len(picks) == 2:
         break
     have = files.get(i + 1)
     if have and title_of(os.path.join(d, have)) == title:
@@ -94,12 +104,12 @@ for i, (title, subject, kw) in enumerate(topics):
     picks.append((i + 1, title, subject, kw, have))
 
 n = 90
-while len(picks) < 4:
+while len(picks) < 2:
     if n not in files:
         picks.append((n, f'모의고사 {n - 89}회', '문제', [], None))
     n += 1
 
-print('\n이번에 쓸 네 편:')
+print('\n이번에 쓸 두 편:')
 for n, title, subject, kw, have in picks:
     print(f'  {n:02d}  {title}   [{subject}]')
     if kw:
@@ -112,6 +122,10 @@ PLAN
 **대상은 진도율이 가장 낮은 자격증이다.** 같으면 id 사전순으로 앞선 것을 고른다.
 열넷을 돌아가며 채우므로 한 자격증에 몰아 쓰지 않는다. 네 편은 **한 자격증에 이어서**
 쓴다 — 앞 편을 읽고 이어지는 편을 쓸 수 있고, 같은 시험의 용어를 한 번에 맞출 수 있다.
+
+**「보류」로 뜬 자격증은 쓰지 않는다.** 시험이 개편 중이라 지금 쓰면 그 노트가 개편과
+함께 버려지는 자리다. 이유는 `certPrepPlan.ts`의 `hold`에 적혀 있고 화면에도 그대로 나간다.
+푸는 것은 사람과 주간 데이터 루틴이 한다.
 
 **쓸 자리는 제목으로 정해진다.** 그 번호의 파일이 없거나, 있어도 제목이 계획과
 다르면 그 자리가 다음 차례다. 계획대로 이미 쓴 자리는 건너뛴다.

@@ -5399,6 +5399,15 @@ input:focus-visible {
   font-size: 11px;
 }
 
+/* 계획을 멈춰 둔 이유. 예정 목록 자리를 대신한다. */
+.cert-prep-hold {
+  margin-top: 6px;
+  border-left: 2px solid var(--star);
+  padding-left: 12px;
+  color: var(--text-dim);
+  font-size: 13px;
+}
+
 .cert-prep-foot {
   margin-top: 14px;
   color: var(--text-muted);
