@@ -1,5 +1,5 @@
 ---
-title: "AICE Associate AI 모델링 핵심 정리"
+title: "AICE Associate AI 모델링 총정리"
 description: "머신러닝·딥러닝 모델을 학습시키고 평가하고 개선하는 AICE Associate 마지막 영역을 코드와 함께 정리합니다. 출력층·손실함수 고르는 표를 붙이고 직접 만든 연습 문제 8개로 확인합니다."
 kind: "개념"
 pubDate: "2026-08-27"

@@ -1,5 +1,5 @@
 ---
-title: "AICE Associate 데이터 전처리 핵심 정리"
+title: "AICE Associate 데이터 전처리 총정리"
 description: "결측치·이상치 처리부터 스케일링·인코딩·데이터 분할까지, AICE Associate 전처리 영역에서 쓰는 코드와 고르는 기준을 표로 갈라 정리하고 직접 만든 연습 문제 7개로 확인합니다."
 kind: "개념"
 pubDate: "2026-08-26"

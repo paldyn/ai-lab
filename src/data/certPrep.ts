@@ -47,6 +47,15 @@ export const certPrepNotes: CertPrepNote[] = certPrepIndex.map((entry) => {
   return { ...entry, kind: entry.kind, path: `/learn/certs/${entry.certId}/${entry.slug}` };
 });
 
+/**
+ * 모의고사가 시작하는 번호. `01`~`79`는 계획의 주제, `80`~`89`는 계획 밖 보충(과목
+ * 총정리처럼 계획에 없는 노트), `90`부터가 모의고사입니다.
+ *
+ * 보충을 진도에 세지 않는 이유는, 계획에 없는 것을 세면 「쓴 것 + 예정 = 계획」이
+ * 깨지기 때문입니다. 목록에는 그대로 섭니다.
+ */
+export const MOCK_FROM = 90;
+
 export function prepFor(certId: string): CertPrepNote[] {
   return certPrepNotes.filter((note) => note.certId === certId);
 }
@@ -72,7 +81,7 @@ export function prepProgress(certId: string): CertPrepProgress | undefined {
 
   const notes = prepFor(certId);
   const concepts = notes.filter((note) => note.order <= plan.topics.length).length;
-  const mocks = notes.filter((note) => note.order > plan.topics.length).length;
+  const mocks = notes.filter((note) => note.order >= MOCK_FROM).length;
   return {
     written: concepts + mocks,
     planned: plan.topics.length + plan.mockExams,

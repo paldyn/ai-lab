@@ -1,5 +1,5 @@
 ---
-title: "AICE Professional 데이터 분석 핵심 정리"
+title: "AICE Professional 데이터 분석 총정리"
 description: "Tabular·Text·Image 세 유형을 각각 한 문항으로 받는 AICE Professional에서, 데이터를 처음 열었을 때 무엇을 확인해야 하는지를 유형별로 갈라 정리하고 직접 만든 연습 문제 8개로 확인합니다."
 kind: "개념"
 pubDate: "2026-08-27"

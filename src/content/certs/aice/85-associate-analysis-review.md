@@ -1,5 +1,5 @@
 ---
-title: "AICE Associate 데이터 분석 핵심 정리"
+title: "AICE Associate 데이터 분석 총정리"
 description: "AICE Associate 첫 영역인 데이터 분석을 pandas 코드로 정리합니다. 데이터를 읽고 구성과 특성을 파악하고 품질을 점검하는 순서를 표로 갈라 두고, 직접 만든 연습 문제 7개로 확인합니다."
 kind: "개념"
 pubDate: "2026-08-26"
