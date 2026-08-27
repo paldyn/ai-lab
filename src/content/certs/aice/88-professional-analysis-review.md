@@ -1,195 +1,250 @@
 ---
-title: "AICE Professional 데이터 분석 총정리"
-description: "Tabular·Text·Image를 각각 한 문항으로 받는 AICE Professional에서, 데이터를 처음 열었을 때 찍을 판다스·시각화 코드를 유형별로 모아 되짚습니다. 직접 만든 연습 문제 8개로 확인합니다."
+title: "AICE Professional 세 문항 총정리"
+description: "Tabular·Text·Image를 한 문항씩 받는 AICE Professional을 시험 직전에 한자리에서 되짚습니다. 문항별 풀이 흐름과 코드 틀, 시간 배분과 개선 순서를 표로 갈라 두고 연습 문제 5개로 확인합니다."
 kind: "개념"
 pubDate: "2026-08-27"
 ---
 
-**시험 직전에 세 문항의 첫 걸음을 데이터 유형별로 되짚는 글**입니다. Professional은 Associate와 생김새가 다릅니다 — 문항이 3개뿐이고 시간이 180분입니다. 문항 하나가 데이터 유형 하나를 통째로 맡아 **Tabular 30점·Text 35점·Image 35점**으로 나뉘고, 그 한 문항 안에서 분석과 전처리와 모델링을 모두 요구합니다.
+**Professional 세 문항을 되짚는 글**입니다. 문항이 3개, 시간이 **180분**이고, 문항 하나가 데이터 유형 하나를 맡아 파악부터 제출까지 그 안에서 요구합니다.
 
-그래서 「데이터 분석」이 독립된 문항으로 서지 않고 세 문항 각각의 **첫 걸음**으로 세 번 나옵니다. 데이터를 열고 무엇이 들어 있는지 파악해 두지 않으면 그 뒤의 전처리와 모델 설계가 통째로 어긋나므로, 문항당 60분 중 앞머리 몇 분이 나머지 전부를 좌우합니다. 아래에 유형마다 **먼저 찍을 줄**을 코드로 모아 둡니다.
+## 세 문항이 시험 전부다
 
-## 세 유형이 「구성 파악」에서 보는 것이 다르다
+| 문항 | 배점 | 받는 데이터 | 문항 안에서 하는 일 |
+| --- | --- | --- | --- |
+| Tabular | 30점 | CSV 표 | 파악 → 전처리 → 회귀·분류 |
+| Text | 35점 | 문서와 라벨 | 정제·토큰화 → 벡터화 → 분류 |
+| Image | 35점 | 클래스별 폴더 | 전처리·증강 → CNN·전이학습 |
 
-같은 말이지만 유형마다 봐야 하는 대상이 다릅니다.
+합격선은 **80점**이고 산출물은 셋이 같습니다 — **예측 결과 CSV, 저장한 모델 파일, 끝까지 실행된 주피터 노트북**입니다. 채점 지표는 **요구사항에 지정되어** 있으니 열자마자 그 줄을 적어 둡니다. 첫 셀은 어느 유형이든 같습니다.
 
-| | 크기는 무엇인가 | 품질 점검에서 보는 것 | 타깃 확인 |
+```python
+import os, glob
+import pandas as pd
+
+print(os.listdir('data'), len(glob.glob('data/images/*/*.jpg')))
+df = pd.read_csv('data/train.csv')
+print(df.shape, df.dtypes)
+```
+
+### 유형마다 파악의 대상이 다르다
+
+| | 크기는 무엇인가 | 품질에서 보는 것 | 타깃 확인 |
 | --- | --- | --- | --- |
 | Tabular | 행 수 × 열 수 | 결측치, 중복 행, 이상치, 자료형 | 열 하나의 값 분포 |
-| Text | 문서 수, 문서당 길이 | 빈 문서, 중복 문서, 특수문자·HTML 잔재 | 라벨별 문서 수 |
-| Image | 이미지 수, 가로×세로×채널 | 크기가 제각각인지, 손상 파일, 픽셀 값 범위 | 클래스별 이미지 수 |
+| Text | 문서 수, 문서당 토큰 수 | 빈 문서, 중복, 특수문자 잔재 | 라벨별 문서 수 |
+| Image | 장수, 가로×세로×채널 | 크기 제각각, 픽셀 값 범위 | 클래스별 장수 |
 
-셋에 공통인 것은 하나입니다 — **크기를 세고, 빠지거나 깨진 것을 찾고, 타깃이 한쪽으로 쏠렸는지 본다**입니다. 도구만 갈아 끼우면 됩니다. 어느 유형이든 첫 셀은 같습니다.
+공통인 것은 하나입니다 — **크기를 세고, 깨진 것을 찾고, 타깃이 쏠렸는지 본다**. Image는 몇 장을 `imshow`로 봅니다 — 어긋난 라벨은 숫자로 안 잡힙니다.
 
-```python
-import pandas as pd
-import numpy as np
-import matplotlib.pyplot as plt
-import seaborn as sns
-```
+## Tabular 회귀 — 한 줄기로 흐른다
 
-## Tabular — 같은 도구, 다른 말투
-
-쓰는 코드는 앞의 Associate 영역과 같습니다. 달라지는 것은 지시의 잘기입니다. Associate가 「결측치 개수를 출력하시오」처럼 한 줄씩 시킨다면, Professional은 「데이터를 파악하고 필요한 전처리를 수행한 뒤 모델을 학습시키시오」처럼 묶어서 시킵니다. 그래서 순서를 스스로 세워야 합니다 — 읽기 → 크기·자료형 → 결측·중복 → 타깃 분포 → 상관 순입니다.
+읽기 → 전처리 → 분할 → 학습·탐색 → 지표 → 저장 순서입니다.
 
 ```python
-df = pd.read_csv('train.csv')
+import numpy as np, joblib
+from sklearn.model_selection import train_test_split, GridSearchCV
+from sklearn.preprocessing import StandardScaler
+from sklearn.ensemble import RandomForestRegressor
+from sklearn.metrics import mean_squared_error, mean_absolute_error
 
-print(df.shape)                                   # 행 수 × 열 수
-df.info()                                         # 자료형과 결측 아닌 값의 개수
-print(df.isnull().sum())                          # 열별 결측치
-print(df.duplicated().sum())                      # 중복 행
-print(df['target'].value_counts(normalize=True))  # 타깃 쏠림
+df = df.drop_duplicates()
+df['age'] = df['age'].fillna(df['age'].median())
+df['area'] = df['area'].clip(*df['area'].quantile([0.01, 0.99]))
+df = pd.get_dummies(df, columns=['city'])          # 결측·이상치·인코딩
+
+X, y = df.drop(columns=['price']), df['price']
+X_tr, X_te, y_tr, y_te = train_test_split(X, y, test_size=0.2, random_state=42)
+sc = StandardScaler().fit(X_tr)                    # fit은 학습 데이터에만
+X_tr, X_te = sc.transform(X_tr), sc.transform(X_te)
+
+grid = GridSearchCV(RandomForestRegressor(), {'n_estimators': [100, 300]}, cv=3)
+grid.fit(X_tr, y_tr)
+pred = grid.best_estimator_.predict(X_te)
+print(np.sqrt(mean_squared_error(y_te, pred)), mean_absolute_error(y_te, pred))
+pd.Series(pred).to_csv('result.csv', index=False)
+joblib.dump(grid.best_estimator_, 'model.pkl')
 ```
 
-`info()`는 돌려주는 값 없이 화면에 바로 찍으므로 `print()`로 감싸면 뒤에 `None`이 한 줄 더 붙습니다. `value_counts`에 `normalize=True`를 주면 개수 대신 비율이 나와 쏠림을 바로 읽습니다.
+`XGBRegressor(learning_rate=0.05)`도 같은 자리에 갈아 끼웁니다. **RMSE는 오차를 제곱해 평균한 뒤 제곱근을 씌운 값**이라 큰 오차에 민감하고 MAE는 그대로 평균하므로, 지정 지표가 이상치 처리의 세기를 정합니다.
 
-열이 많으면 눈으로 세기보다 그리는 편이 빠릅니다.
+## Tabular 분류 — 쏠린 라벨을 다루는 세 자리
+
+| 손보는 곳 | 코드 | 주의 |
+| --- | --- | --- |
+| 데이터 | `SMOTE().fit_resample(X_tr, y_tr)` | **학습 데이터에만** 건다 |
+| 모델(사이킷런) | `class_weight='balanced'` | 로지스틱·결정트리·랜덤포레스트 |
+| 모델(XGBoost) | `scale_pos_weight` = 음성 수 ÷ 양성 수 | 값을 직접 세어 넣는다 |
+
+**SMOTE**는 소수 클래스 사이를 이어 가짜 표본을 만드는 오버샘플링입니다. 사이킷런 `Pipeline`은 중간 단계에 `transform`을 요구해 SMOTE를 못 받습니다 — `imblearn` 쪽은 `fit`에서만 리샘플링을 걸고 예측·평가에서는 건너뜁니다.
 
 ```python
-fig, ax = plt.subplots(1, 2, figsize=(12, 4))
-sns.countplot(data=df, x='target', ax=ax[0])
-sns.heatmap(df.corr(numeric_only=True), annot=True, fmt='.2f', ax=ax[1])
-plt.tight_layout()
-plt.show()
+from imblearn.over_sampling import SMOTE
+from imblearn.pipeline import Pipeline
+from sklearn.linear_model import LogisticRegression
+from sklearn.metrics import roc_auc_score
+
+pipe = Pipeline([('smote', SMOTE(random_state=42)),
+                 ('clf', LogisticRegression(max_iter=1000))])
+pipe.fit(X_tr, y_tr)
+proba = pipe.predict_proba(X_te)[:, 1]
+print(roc_auc_score(y_te, proba))            # 라벨이 아니라 확률
+print(classification_report(y_te, pipe.predict(X_te)))
 ```
 
-`corr`에 `numeric_only=True`를 주지 않으면 문자열 열에서 멈춥니다. 상관계수를 히트맵으로 깔면 타깃과 세게 붙은 열과 서로 거의 같은 뜻인 열 짝이 한눈에 드러납니다.
+**`roc_auc_score`에 넣는 값은 라벨이 아니라 확률입니다** — 라벨을 넣어도 오류가 안 나고 넓이만 조용히 낮아집니다.
 
-## Text — 길이 분포부터 본다
+## Text 정제와 토큰화
 
 ```python
-df = pd.read_csv('reviews.csv')
+from tensorflow.keras.preprocessing.text import Tokenizer
+from tensorflow.keras.preprocessing.sequence import pad_sequences
 
-print(df.shape)                       # 문서 수
-print(df['text'].isnull().sum())      # 빈 문서
-print(df['text'].duplicated().sum())  # 중복 문서
-print(df['label'].value_counts())     # 라벨별 문서 수
+df['clean'] = df['text'].str.replace(r'[^가-힣a-zA-Z0-9 ]', ' ', regex=True)
+okt, stop = Okt(), ['의', '가', '이', '은', '는', '도', '를', '에', '하다']
+df['tok'] = df['clean'].apply(
+    lambda s: [w for w in okt.morphs(s, stem=True) if w not in stop])
 
-df['length'] = df['text'].str.len()        # 글자 수
-df['tokens'] = df['text'].str.split().str.len()   # 공백 기준 토큰 수
-print(df['length'].describe())
+tr, te = train_test_split(df, test_size=0.2, random_state=42)
+tok = Tokenizer(num_words=20000, oov_token='<OOV>')
+tok.fit_on_texts(tr['tok'])                # 사전은 학습 데이터로만 만든다
+X = pad_sequences(tok.texts_to_sequences(df['tok']), maxlen=100)
 ```
 
-**토큰**은 텍스트를 모델에 넣기 위해 자른 조각으로, 여기서는 공백으로 끊은 단어를 셉니다. 길이 분포를 먼저 보는 이유가 있습니다 — 뒤에서 모든 문서를 같은 길이로 맞춰야 하는데(**패딩**, 짧은 문서 뒤를 0으로 채워 길이를 통일하는 것), 그 기준 길이를 여기서 정하기 때문입니다. 평균만 보고 정하면 긴 문서가 잘려 나가고, 최댓값에 맞추면 대부분이 0으로 채워져 낭비가 됩니다.
+정규표현식이 한글·영문·숫자·공백만 남깁니다. **형태소**는 뜻을 가진 가장 작은 단위이고 `Okt().morphs(stem=True)`는 「좋았어요」를 「좋다」로 되돌립니다. **불용어**는 뜻을 거의 안 나르는 조사·어미를 사전으로 걸러 내는 것이고, `num_words=20000`은 자주 나온 2만 개만 남깁니다.
 
-어휘의 크기도 세어 둡니다.
+`maxlen`은 토큰 수 분포의 상위 백분위수로 잡고, 기본값이 `padding='pre'`, `truncating='pre'`라 짧은 문서는 **앞에 0이 붙고** 긴 문서는 **앞이 잘립니다**.
+
+## Text 벡터화 세 갈래
+
+| 갈래 | 만드는 것 | 짝이 되는 모델 | 주요 인자 |
+| --- | --- | --- | --- |
+| `CountVectorizer` | 문서-단어 행렬(빈도) | 사이킷런 분류기 | `max_features`, `ngram_range` |
+| `TfidfVectorizer` | 흔한 단어를 깎은 가중치 행렬 | 사이킷런 분류기 | 위와 같음 |
+| `Embedding` 층 | 정수 시퀀스를 밀집 벡터로 | 케라스 LSTM·CNN | `input_dim`, `output_dim` |
+
+앞의 둘은 **희소 표현**이라 어휘 수만큼 열이 서고 없는 단어 자리는 0입니다. `Embedding`은 **밀집 표현**을 만듭니다 — `input_dim`은 어휘 사전 크기(패딩이 0번을 쓰므로 `num_words + 1`), `output_dim`은 벡터 차원입니다.
+
+`max_features`가 열 개수를 자르고 `ngram_range=(1, 2)`는 붙어 나온 두 단어까지 셉니다. **학습과 평가에는 같은 벡터라이저를 씁니다** — 학습에서 `fit_transform`, 평가에서는 `transform`만 부릅니다.
+
+## Text 분류 모델과 평가
+
+| 길 | 모델 | 언제 |
+| --- | --- | --- |
+| 벡터라이저 + 사이킷런 | `LogisticRegression`, `MultinomialNB`, `LinearSVC` | 점수를 빨리 확보할 때 |
+| 정수 시퀀스 + 케라스 | `Embedding` → `LSTM` → `Dense` | 순서가 뜻을 바꾸는 문장 |
+
+`MultinomialNB`는 빈도를 전제해 음수 행렬에 못 쓰고 `LinearSVC`는 `predict_proba`가 없어 AUC 문항에서 곤란합니다.
+
+아래 모델 펜스 셋은 `tensorflow.keras`의 `models.Sequential`과 `layers`의 층들,
+전이학습의 `applications.ResNet50`을 공유합니다. `Tokenizer`·`ImageDataGenerator`는
+tf.keras 2 계열이라 케라스 3에서는 `TextVectorization`·`image_dataset_from_directory`로
+바뀌었으니 `keras.__version__`을 먼저 봅니다.
 
 ```python
-from collections import Counter
-
-tokens = df['text'].str.split().explode()
-counter = Counter(tokens)
-print(len(counter))            # 서로 다른 토큰의 가짓수
-print(counter.most_common(20)) # 많이 나온 순
+model = Sequential([
+    Embedding(input_dim=20001, output_dim=64),
+    LSTM(64), Dropout(0.3),
+    Dense(3, activation='softmax'),
+])
+model.compile('adam', 'sparse_categorical_crossentropy', metrics=['accuracy'])
 ```
 
-서로 다른 토큰의 가짓수가 임베딩 층의 입력 크기를 정합니다. 상위 20개를 찍어 보면 조사나 불용어가 대부분을 차지하는지, HTML 태그 같은 것이 섞여 있는지가 바로 드러납니다.
+출력층은 클래스 수만큼의 `Dense`에 `softmax`이고 손실은 라벨이 정수면 `sparse_categorical_crossentropy`, 원핫이면 `categorical_crossentropy`입니다. 지표가 F1이면 `classification_report`를 보고, 마무리는 예측 CSV와 `model.save('text_model.keras')`입니다.
+
+## Image 전처리와 증강
+
+폴더 이름이 곧 라벨입니다. `flow_from_directory`가 하위 폴더를 정렬해 번호를 매기므로 `train.class_indices`로 대응을 확인해 둡니다.
 
 ```python
-fig, ax = plt.subplots(1, 2, figsize=(12, 4))
-sns.histplot(df['tokens'], bins=30, ax=ax[0])
-sns.countplot(data=df, x='label', ax=ax[1])
-plt.tight_layout()
-plt.show()
+from tensorflow.keras.preprocessing.image import ImageDataGenerator
+
+opt = dict(target_size=(224, 224), batch_size=32, class_mode='categorical', seed=42)
+aug = ImageDataGenerator(rescale=1./255, rotation_range=20, width_shift_range=0.1,
+                         horizontal_flip=True, validation_split=0.2)
+plain = ImageDataGenerator(rescale=1./255, validation_split=0.2)
+
+train = aug.flow_from_directory('data/images', subset='training', **opt)
+valid = plain.flow_from_directory('data/images', subset='validation', **opt)
 ```
 
-히스토그램은 `describe()`가 못 보여 주는 것을 보여 줍니다 — 꼬리가 얼마나 긴지, 봉우리가 하나인지 둘인지입니다. 패딩 길이는 이 그림을 보고 정합니다.
+`rescale=1./255`가 0~255를 0~1로 옮깁니다. **증강은 학습 쪽에만 겁니다** — 회전·이동·반전으로 없던 변형을 만드는 장치라 검증에 걸면 채점 그림이 매번 달라집니다.
 
-## Image — 크기와 채널과 픽셀 범위
+`target_size`는 모든 그림을 그 크기로 리사이즈하므로 비율이 제각각이면 찌그러집니다. 비율을 지켜야 하면 짧은 변을 채우는 **패딩**이나 가운데를 잘라 내는 **크롭**을 먼저 겁니다.
+
+## 케라스 CNN 설계
 
 ```python
-from PIL import Image
-import glob
-
-paths = glob.glob('images/*/*.jpg')
-print(len(paths))
-
-img = Image.open(paths[0])
-arr = np.array(img)
-print(arr.shape)   # (세로, 가로, 채널)
-print(arr.min(), arr.max())
+model = Sequential([
+    Input(shape=(224, 224, 3)),
+    Conv2D(32, (3, 3), padding='same', activation='relu'),
+    BatchNormalization(), MaxPooling2D(2),
+    Conv2D(64, (3, 3), activation='relu'), MaxPooling2D(2),
+    Flatten(), Dropout(0.5),
+    Dense(5, activation='softmax'),      # 클래스 수
+])
+model.compile('adam', 'categorical_crossentropy', metrics=['accuracy'])
+model.fit(train, validation_data=valid, epochs=30,
+          callbacks=[EarlyStopping(patience=3, restore_best_weights=True)])
+model.save('image_model.keras')
 ```
 
-배열의 모양이 그대로 정보입니다. `(224, 224, 3)`이면 세로 224, 가로 224에 채널이 3개인 컬러 이미지이고, `(28, 28)`처럼 축이 둘뿐이면 **그레이스케일**, 곧 밝기 하나만 있는 흑백 이미지입니다. 합성곱 층은 채널 축을 요구하므로 이런 배열은 `(28, 28, 1)`로 늘려 줘야 합니다.
+한 변의 출력 크기는 입력 $$n$$, 패딩 $$p$$, 커널 $$f$$, 보폭 $$s$$에 대해 $$\lfloor (n + 2p - f) / s \rfloor + 1$$입니다. `valid`는 $$p=0$$이라 가장자리가 깎이고 `same`은 크기를 남깁니다. **필터 수는 뒤로 갈수록 늘리고**(32 → 64 → 128) 크기는 풀링이 줄입니다.
 
-크기가 제각각인지도 확인합니다. 서로 다르면 모델에 넣기 전에 한 크기로 맞춰야 합니다.
+`BatchNormalization`은 값의 분포를 고르게 해 학습을 안정시킵니다. `restore_best_weights=True`가 없으면 나빠진 가중치가 남습니다.
+
+## 전이학습으로 이미지 문항 풀기
 
 ```python
-sizes = [Image.open(p).size for p in paths[:200]]
-print(set(sizes))
+base = ResNet50(include_top=False, weights='imagenet', input_shape=(224, 224, 3))
+base.trainable = False                       # 빌려 온 가중치를 얼린다
+model = Sequential([base, GlobalAveragePooling2D(), Dropout(0.3),
+                    Dense(5, activation='softmax')])
 ```
 
-**`size`와 `shape`는 축 순서가 서로 반대입니다** — PIL의 `size`는 `(가로, 세로)`인데 넘파이 배열의 `shape`는 `(세로, 가로, 채널)`입니다. 두 값을 섞어 `resize`에 넘기면 가로와 세로가 뒤집힌 채로 학습이 돌아갑니다.
+`keras.applications`의 VGG16·ResNet50·EfficientNet은 이름만 바꿔 끼웁니다. `include_top=False`는 1,000개 분류 머리를 떼고, `weights='imagenet'`은 학습된 가중치를 받으며, `GlobalAveragePooling2D`는 채널마다 평균 한 값으로 누릅니다.
 
-픽셀 값의 범위는 대개 0부터 255까지의 정수입니다. 신경망에 넣기 전에 255로 나누어 0과 1 사이로 옮기는 것이 관례이고, 여기서 범위를 확인해 두지 않으면 이미 정규화된 데이터를 한 번 더 나누는 실수를 합니다.
+**모델마다 `preprocess_input`이 다릅니다** — `rescale=1./255`와 겹치면 범위가 두 번 바뀌므로 `rescale` 대신 `preprocessing_function`에 넘깁니다. 미세조정은 헤드를 먼저 학습시킨 뒤 `base.trainable = True`로 풀고 **학습률을 열 배쯤 낮춰** 다시 `compile`합니다. 처음부터 풀면 무작위 헤드의 큰 기울기가 빌려 온 가중치를 망칩니다.
 
-클래스별 개수는 폴더 이름으로 셉니다.
+## 60분씩 셋으로 자른다
 
-```python
-import os
+문항당 60분이지만 Image는 학습이 오래 걸리므로 앞의 둘을 55분에 끊어 10분을 넘겨 둡니다. 세 문항에서 고르게 80%씩이면 $$24 + 28 + 28 = 80$$으로 딱 합격선이고, **Text나 Image를 비우면 65점, Tabular를 비워도 70점**이라 나머지가 만점이어도 80점에 못 닿습니다.
 
-labels = [os.path.basename(os.path.dirname(p)) for p in paths]
-print(Counter(labels))
+그래서 문항마다 **기본 모델로 점수를 먼저 확보하고** 남는 시간에 개선합니다. **제한적 오픈북**이라 인터넷 검색으로 코드를 참고하는 것까지는 되지만 생성형 AI 모델·교재·직접 정리한 노트·메모장은 쓸 수 없습니다.
 
-fig, ax = plt.subplots(1, 5, figsize=(12, 3))
-for i in range(5):
-    ax[i].imshow(Image.open(paths[i]))
-    ax[i].set_title(labels[i])
-    ax[i].axis('off')
-plt.show()
-```
+## 개선에도 순서가 있다
 
-몇 장은 반드시 눈으로 봅니다. 라벨과 그림이 어긋난 폴더, 회전된 사진, 죄다 흰 배경인 한 클래스는 숫자로는 안 잡히고 `imshow` 한 줄에 잡힙니다.
+| 손보는 것 | 도구 | 언제 |
+| --- | --- | --- |
+| 모델 구조 | 유형에 맞는 뼈대 — 표는 트리, 문장은 LSTM, 이미지는 CNN·전이학습 | 가장 먼저 |
+| 학습률 | `ReduceLROnPlateau(patience=2, factor=0.5)` | 검증 곡선이 평평해질 때 |
+| 규제 | `kernel_regularizer=l2(0.001)`, L1, Dropout | 두 곡선이 벌어질 때 |
+| 하이퍼파라미터 | `RandomizedSearchCV(n_iter=20)` | 후보가 넓고 시간이 없을 때 |
+| 앙상블 | 여러 모델 예측의 평균, 스태킹 | 마지막 소수점 |
 
-## 시간이 곧 채점 대상이다
+`ReduceLROnPlateau`는 좋아지지 않는 에포크가 이어지면 학습률을 줄이는 콜백, `kernel_regularizer`는 커지는 가중치에 매기는 벌점(L2는 제곱, L1은 절댓값)입니다. `RandomizedSearchCV`는 `GridSearchCV`와 달리 정해진 횟수만 뽑습니다.
 
-180분에 3문항이면 한 문항당 60분입니다. 파악 단계에서 오래 붙들면 뒤의 모델 학습을 돌릴 시간이 남지 않습니다. 유형마다 **먼저 찍을 줄을 미리 정해 두는 것**이 실제로 시간을 벌어 줍니다 — Tabular는 `info`와 `isnull().sum()`, Text는 길이 분포와 라벨 분포, Image는 배열의 모양과 클래스별 개수입니다.
-
-Image 문항의 배치 크기와 에폭은 시험 환경이 주는 자원에 맞춰 잡되, **기본 모델로 점수를 먼저 확보하고 남는 시간에 개선하는 순서**를 지킵니다 — 개선하다 시간이 끊기면 제출할 결과가 아예 없습니다.
-
-참고할 수 있는 자료의 범위는 등급마다 다르고 규정이 바뀌기도 하니 시행처 안내의 부정행위 기준을 응시 전에 반드시 확인하세요. 어느 쪽이든 찾아보는 데 기대면 60분이 금세 사라지므로, 위의 줄들만큼은 찾지 않고 칠 수 있어야 합니다.
+**개선 시도는 기록하고 되돌릴 수 있게 합니다** — 셀을 덮어쓰지 말고 점수를 주석으로 남기고, 제출 직전에 가장 좋았던 설정으로 돌립니다.
 
 ## 연습 문제
 
-1. 문서 5개의 글자 수가 $$[40, 55, 60, 85, 210]$$이다. 평균과 중앙값을 구하고, 패딩 기준 길이를 무엇으로 정하면 좋을지 답하시오.
+1. Tabular에서 25점, Text에서 30점을 받았다. 합격하려면 Image 문항에서 최소 몇 점이 필요하며 그것은 그 문항 배점의 몇 %인가?
 
-   답. 평균은 90, 중앙값은 60입니다. 합이 $$40+55+60+85+210 = 450$$이므로 $$450 \div 5 = 90$$이고, 크기순으로 늘어놓았을 때 세 번째가 60입니다. 210 하나가 평균을 다섯 값 중 넷보다 크게 만들었으므로 분포의 생김새는 중앙값 쪽이 잘 나타냅니다. 다만 패딩 길이는 중앙값으로 잡으면 절반이 잘리므로, 대개 상위 백분위수 근처로 정해 소수의 긴 문서만 잘리게 합니다.
+   답. 25점이 필요하고 약 71%입니다. $$25 + 30 = 55$$점이라 $$80 - 55 = 25$$점이 더 필요하고, 배점이 35점이므로 $$25 \div 35 \approx 0.714$$입니다.
 
-2. 이미지 데이터를 배열로 만들었더니 `shape`가 `(1200, 64, 64, 3)`이었다. 각 축이 무엇을 뜻하며 배열에 든 숫자는 모두 몇 개인가?
+2. 입력이 $$100 \times 100 \times 3$$인 이미지가 `Conv2D(64, (3, 3))` → `MaxPooling2D(2)` → `Conv2D(64, (3, 3))` → `MaxPooling2D(2)` → `Flatten()`을 지난다. 패딩은 모두 기본값이다. 각 단계의 한 변 크기와 `Flatten` 뒤 벡터 길이를 구하시오.
 
-   답. 차례로 이미지 수 1,200장, 세로 64, 가로 64, 채널 3입니다. 숫자의 개수는 $$1200 \times 64 \times 64 \times 3 = 14{,}745{,}600$$개입니다. $$64 \times 64 \times 3 = 12{,}288$$이 이미지 한 장의 값 개수이고 여기에 1,200을 곱합니다.
+   답. 98 → 49 → 47 → 23이고 벡터 길이는 33,856입니다. 기본 패딩이 `valid`라 $$100 - 3 + 1 = 98$$, 풀링은 절반이라 49, 다시 47, 풀링에서 남는 한 줄은 버려져 23입니다. 필터가 64개이므로 $$23 \times 23 \times 64 = 33{,}856$$입니다.
 
-3. 어떤 코퍼스의 전체 토큰이 12,000개이고 서로 다른 토큰이 3,000가지다. 두 수의 비는 얼마이며, 이 값이 작을수록 무엇을 뜻하는가?
+3. 학습 데이터 8,000행 중 양성이 640행이다. `scale_pos_weight`에 넣을 값과 양성 비율을 구하시오.
 
-   답. $$3000 \div 12000 = 0.25$$입니다. 이 비가 작을수록 같은 단어가 여러 번 되풀이된다는 뜻이라 어휘가 좁고, 크면 서로 다른 단어가 한 번씩만 나와 학습이 어렵습니다. 0.25는 토큰 하나가 평균 4번씩 나온다는 말과 같습니다.
+   답. 11.5와 8%입니다. 음성이 $$8000 - 640 = 7360$$행이라 $$7360 \div 640 = 11.5$$이고, 양성 비율은 $$640 \div 8000 = 0.08$$입니다.
 
-4. 이미지 분류 데이터의 클래스별 장수가 A 3,000, B 1,200, C 600, D 200이었다. 가장 많은 클래스와 가장 적은 클래스의 비는 얼마이며, D의 비중은 몇 %인가?
+4. 양성 확률이 $$[0.2,\ 0.4,\ 0.6,\ 0.9]$$, 실제 라벨이 $$[0,\ 1,\ 0,\ 1]$$이다. `roc_auc_score`에 확률을 넣을 때와 임계값 0.5로 만든 라벨을 넣을 때의 값을 각각 구하시오.
 
-   답. 15배이고 D는 4%입니다. $$3000 \div 200 = 15$$이고, 전체가 $$3000+1200+600+200 = 5000$$이므로 $$200 \div 5000 = 0.04$$입니다. 이 정도로 치우치면 정확도만으로 평가할 수 없고, 클래스 가중치를 주거나 증강으로 적은 쪽을 늘리는 조치가 필요합니다.
+   답. 0.75와 0.5입니다. AUC는 양성·음성 짝에서 양성 쪽 점수가 큰 비율입니다. 확률로는 네 짝 중 $$0.6 > 0.4$$ 하나만 뒤집혀 $$3 \div 4$$, 라벨로는 점수가 같은 짝 둘이 0.5로 세어져 $$2 \div 4$$입니다.
 
-5. 픽셀 값이 0부터 255까지인 이미지를 255로 나누어 정규화했다. 값 51은 얼마가 되며, 이 처리를 하기 전에 무엇을 확인해야 하는가?
+5. 사전학습 모델의 출력이 $$(7, 7, 2048)$$이다. `GlobalAveragePooling2D`를 붙일 때와 `Flatten`을 붙일 때 벡터 길이는 각각 얼마이며, 이어지는 `Dense(5)`의 파라미터 수는 몇 개씩인가?
 
-   답. 0.2입니다. $$51 \div 255 = 0.2$$입니다. 나누기 전에 `arr.min()`과 `arr.max()`로 실제 범위를 확인해야 합니다. 이미 0과 1 사이로 옮겨진 데이터를 다시 255로 나누면 값이 0.004 이하로 뭉개져 학습이 되지 않습니다.
+   답. 2048과 100,352입니다. 평균 풀링은 채널마다 값 하나로 누르고 `Flatten`은 셋을 곱해 폅니다. 파라미터는 각각 $$(2048 + 1) \times 5 = 10{,}245$$개와 $$(100352 + 1) \times 5 = 501{,}765$$개입니다.
 
-6. 흑백 이미지 배열의 `shape`가 `(28, 28)`로 나왔다. 합성곱 층에 넣으려면 무엇을 해야 하며 그 이유는?
-
-   답. `(28, 28, 1)`로 채널 축을 하나 붙여야 합니다. 코드로는 `arr.reshape(28, 28, 1)`이나 `np.expand_dims(arr, axis=-1)`입니다. 합성곱 층은 「세로·가로·채널」 세 축을 가정하고 커널을 채널 방향까지 훑으므로, 축이 둘뿐인 배열은 모양이 맞지 않아 오류가 납니다.
-
-7. 텍스트 데이터에서 `df['text'].duplicated().sum()`이 340으로 나왔다. 그대로 두고 학습하면 무엇이 문제인가?
-
-   답. 같은 문서가 학습용과 평가용 양쪽에 나뉘어 들어갈 수 있습니다. 그러면 모델이 이미 외운 문서를 평가에서 다시 만나 점수가 실제보다 높게 나옵니다. 나누기 전에 `drop_duplicates(subset=['text'])`로 걷어 내는 것이 안전합니다. 다만 짧은 정형 문구가 반복되는 데이터라면 중복이 자연스러울 수 있으므로 값을 직접 찍어 보고 정합니다.
-
-8. 텍스트 열 `df['text']`의 토큰 수를 세고, 문서의 상위 5%만 잘리도록 패딩 기준 길이를 정해 출력하는 코드를 작성하시오.
-
-   답. 다음과 같습니다.
-
-   ```python
-   df['tokens'] = df['text'].str.split().str.len()
-   max_len = int(df['tokens'].quantile(0.95))
-   print(max_len)
-   ```
-
-   `quantile(0.95)`는 아래에서부터 95%가 되는 지점의 값이라 이 길이로 자르면 문서의 5%만 뒷부분을 잃습니다. `int`로 감싸는 이유는 백분위수가 소수로 나오는데 패딩 길이는 정수여야 하기 때문입니다.
-
-세 유형을 한 시험에서 받는다는 것은 도구를 세 벌 들고 들어간다는 뜻입니다. 텍스트를 다루기 전에 무엇을 손봐야 하는지는 [텍스트 전처리](/articles/nlp-text-preprocessing), 이미지 쪽 모델이 배열을 어떻게 받는지는 [딥러닝 이미지 분류](/articles/cv-image-classification-deep) 쪽 글이 함께 다룹니다.
+텍스트 쪽 손질은 [텍스트 전처리](/articles/nlp-text-preprocessing), 이미지 쪽 분류는 [딥러닝 이미지 분류](/articles/cv-image-classification-deep)가 함께 다룹니다.
