@@ -74,6 +74,23 @@ describe('bandOf', () => {
   });
 });
 
+describe('bandOf 좌우', () => {
+  it('좌우를 픽셀에 맞춰 넓힌다', () => {
+    // 실제로 나온 값이다. 486.1875에서 끝나면 마지막 픽셀 줄이 19%만 칠해져
+    // 띠 끝이 옅어지고, 끌다가 만 것처럼 보인다.
+    const band = bandOf([span(171.296875, 100, 314.890625, 20)], 30);
+
+    expect(band.left).toBe(171);
+    expect(band.right).toBe(487);
+  });
+
+  it('이미 정수면 그대로 둔다', () => {
+    const band = bandOf([span(20, 100, 60, 20)], 30);
+
+    expect([band.left, band.right]).toEqual([20, 80]);
+  });
+});
+
 describe('sameEdges', () => {
   const node = { nodeName: '#text' } as unknown as Node;
   const other = { nodeName: '#text' } as unknown as Node;

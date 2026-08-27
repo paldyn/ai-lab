@@ -114,8 +114,18 @@ export function bandOf(rects: readonly Span[], lineHeight: number): Span {
     */
     top: Math.floor(Math.min(top, ...rects.map((r) => r.top))),
     bottom: Math.ceil(Math.max(top + height, ...rects.map((r) => r.bottom))),
-    left: Math.min(...rects.map((r) => r.left)),
-    right: Math.max(...rects.map((r) => r.right)),
+    /*
+      좌우도 같은 이유로 픽셀에 맞춥니다.
+
+      글자 폭은 대개 소수점입니다 — 이 표의 한 칸이 486.1875px에서 끝났습니다.
+      그러면 마지막 픽셀 줄을 띠가 19%만 덮고, 배경은 알파로 합성되므로 그 한 줄이
+      옅게 칠해집니다. 띠 끝이 흐려지니 **끌다가 만 것처럼** 보입니다. 시작 쪽도
+      같지만 대개 낱말 앞이라 눈에 덜 띕니다.
+
+      바깥쪽으로 한 픽셀 안에서 넓히는 것이라 옆 글자를 침범하지 않습니다.
+    */
+    left: Math.floor(Math.min(...rects.map((r) => r.left))),
+    right: Math.ceil(Math.max(...rects.map((r) => r.right))),
   };
 }
 
