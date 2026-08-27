@@ -121,24 +121,65 @@ finetuning-dpo-practice
 finetuning-grpo
 finetuning-rlvr
 finetuning-reward-modeling
-finetune-data-synthesis
-finetune-lora-merging
-finetune-serving-adapters
-finetune-catastrophic-forgetting
-vlm-document-understanding
-vlm-chart-table
+finetuning-data-synthesis
+finetuning-lora-merging
+finetuning-serving-adapters
+finetuning-catastrophic-forgetting
+finetuning-eval-during-training
+finetuning-continual-learning
+serving-disaggregated-prefill
+speculative-draft-models
+inference-cpu-only
+model-fallback-chains
+ondevice-webgpu
+edge-npu-runtime
+mlops-drift-detection
+llmops-tracing
+data-versioning
+pruning-structured
+distillation-task-specific
+quantization-calibration
+quantization-kv-cache
 multimodal-audio-agents
-video-understanding
-image-generation-controls
-speech-realtime-api
-ocr-modern
 multimodal-rag
-governance-eu-ai-act
-governance-model-cards
-governance-data-provenance
-governance-risk-assessment
-governance-audit-trail
-governance-internal-policy
+multimodal-document-understanding
+multimodal-chart-table
+multimodal-video-understanding
+cv-image-generation-controls
+cv-ocr-modern
+audio-speech-realtime-api
+multimodal-any-to-any
+multimodal-spatial-grounding
+cv-promptable-segmentation
+cv-pose-estimation
+cv-depth-estimation
+audio-diarization
+audio-speech-to-speech
+nlp-information-extraction
+nlp-multilingual-transfer
+rl-offline-rl
+rl-reward-shaping
+recsys-cold-start
+recsys-sequential
+tool-error-handling
+tool-permission-scoping
+function-calling-streaming
+vector-index-maintenance
+context-tool-result-management
+prompt-optimization-automatic
+agent-deterministic-replay
+tokenizer-vocabulary-design
+structured-output-streaming
+slm-domain-adaptation
+reasoning-tool-integrated
+transformer-state-space
+ai-governance-eu-ai-act
+ai-governance-model-cards
+ai-governance-data-provenance
+ai-governance-risk-assessment
+ai-governance-audit-trail
+ai-governance-internal-policy
+guardrails-red-teaming
 PLANNED_EOF
 
 # GitHub main의 src/content/articles/ 목록을 Trees API로 조회 (Contents API는 1000개에서 잘려 덮어쓰기 사고를 낸다)
@@ -247,6 +288,15 @@ draft: false
   **표에 없는 접두사는 만들지 않는다.** 예정 목록의 슬러그가 표에 안 걸리면
   `CLAUDE.md`의 그 표와 `src/data/categories.test.ts`의 `prefixRules`를 함께 고친다 —
   그 테스트가 글 전부를 표에 대조하므로 한쪽만 고치면 `npm test`가 선다.
+
+  **다만 표를 늘리기 전에 기존 접두사로 갈 자리가 없는지 먼저 본다.** 2026-08-27에
+  남은 예정 슬러그 21개를 훑어 보니 16개가 표에 안 걸렸는데(`finetune-` `vlm-`
+  `video-` `image-` `speech-` `ocr-` `governance-`), 16개 전부 이미 있는 접두사에
+  갈 자리가 있었다 — `finetune-`→`finetuning-`, `vlm-`·`video-`→`multimodal-`,
+  `image-`·`ocr-`→`cv-`, `speech-`→`audio-`, `governance-`→`ai-governance-`
+  (잔여 `ai-` 가 `ai-guide`이고 그 칸이 곧 안전·윤리·정책이다). 표도 테스트도
+  안 건드리고 목록만 고쳤다. **예정 목록은 이미 전부 표에 대조해 두었으므로
+  이제 여기서 걸릴 일이 없다** — 걸리면 그건 목록에 손댄 것이니 표 대조부터 한다.
 - **level**: 입문 / 중급 / 심화 중 하나
 - **pubDate**: `TZ='Asia/Seoul' date +%Y-%m-%d`
 - 한국어 8~10분 분량. 첫 단락은 헤딩 없는 prose로 시작
