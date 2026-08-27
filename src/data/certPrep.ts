@@ -1,5 +1,6 @@
 import { certPrepIndex } from 'virtual:cert-prep-index';
 import { certById } from './certs';
+import { planFor } from './certPrepPlan';
 
 /**
  * 자격증 시험 노트.
@@ -48,6 +49,63 @@ export const certPrepNotes: CertPrepNote[] = certPrepIndex.map((entry) => {
 
 export function prepFor(certId: string): CertPrepNote[] {
   return certPrepNotes.filter((note) => note.certId === certId);
+}
+
+/**
+ * 계획 대비 진도.
+ *
+ * 「몇 편 썼는가」만 보여 주면 다 찬 것처럼 읽힙니다 — ADsP가 5편일 때가 그랬습니다.
+ * 계획(`certPrepPlan.ts`)이 33편이라는 것을 함께 보여야 남은 길이 보입니다.
+ */
+export interface CertPrepProgress {
+  written: number;
+  planned: number;
+  concepts: number;
+  plannedConcepts: number;
+  mocks: number;
+  plannedMocks: number;
+}
+
+export function prepProgress(certId: string): CertPrepProgress | undefined {
+  const plan = planFor(certId);
+  if (!plan) return undefined;
+
+  const notes = prepFor(certId);
+  const concepts = notes.filter((note) => note.order <= plan.topics.length).length;
+  const mocks = notes.filter((note) => note.order > plan.topics.length).length;
+  return {
+    written: concepts + mocks,
+    planned: plan.topics.length + plan.mockExams,
+    concepts,
+    plannedConcepts: plan.topics.length,
+    mocks,
+    plannedMocks: plan.mockExams,
+  };
+}
+
+/**
+ * 아직 안 쓴 개념 주제. 화면에 「예정」으로 서고, 루틴이 위에서부터 하나씩 씁니다.
+ *
+ * **파일 번호가 곧 계획의 몇 번째 주제인가입니다.** 제목을 대조하지 않는 이유는,
+ * 계획을 넣기 전에 쓴 과목 통째 노트(ADsP 01~03, AICE 01~04)가 계획의 어느 제목과도
+ * 안 맞아 그 자리가 「쓴 것이자 예정」으로 두 번 세어지기 때문입니다. 자리로 세면
+ * 「쓴 것 + 예정 = 계획」이 늘 맞습니다. 루틴은 그 자리에 든 제목이 계획과 다르면
+ * 계획대로 갈아 끼웁니다.
+ */
+export interface CertPrepPlanned {
+  order: number;
+  title: string;
+  subject: string;
+}
+
+export function prepUpcoming(certId: string): CertPrepPlanned[] {
+  const plan = planFor(certId);
+  if (!plan) return [];
+
+  const filled = new Set(prepFor(certId).map((note) => note.order));
+  return plan.topics
+    .map((topic, index) => ({ order: index + 1, title: topic.title, subject: topic.subject }))
+    .filter((topic) => !filled.has(topic.order));
 }
 
 export function prepNote(certId: string, slug: string): CertPrepNote | undefined {

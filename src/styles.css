@@ -5334,6 +5334,77 @@ input:focus-visible {
   gap: 2px;
 }
 
+/*
+  계획 대비 진도. 쓴 편수만 세면 다 찬 것처럼 읽혀 계획 편수를 옆에 답니다.
+*/
+.cert-prep-progress {
+  margin-bottom: 18px;
+}
+
+.cert-prep-progress-line {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  margin-bottom: 8px;
+  color: var(--text-strong);
+  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  font-size: 13px;
+}
+
+.cert-prep-progress-line strong {
+  color: var(--brand-text);
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.cert-prep-progress-total {
+  color: var(--text-dim);
+}
+
+.cert-prep-progress-split {
+  margin-left: auto;
+  color: var(--text-muted);
+  font-size: 11px;
+}
+
+.cert-prep-bar {
+  height: 3px;
+  border-radius: 2px;
+  background: color-mix(in srgb, var(--border) 70%, transparent);
+}
+
+.cert-prep-bar > span {
+  display: block;
+  height: 100%;
+  border-radius: 2px;
+  background: var(--brand);
+}
+
+/* 아직 안 쓴 계획. 링크가 아니라 순서표라 흐리게 둡니다. */
+.cert-prep-planned {
+  margin-top: 6px;
+}
+
+.cert-prep-planned .cert-prep-item {
+  color: var(--text-muted);
+  cursor: default;
+}
+
+.cert-prep-planned .cert-prep-kind {
+  border-style: dashed;
+}
+
+.cert-prep-planned .cert-prep-time {
+  font-family: inherit;
+  font-size: 11px;
+}
+
+.cert-prep-foot {
+  margin-top: 14px;
+  color: var(--text-muted);
+  font-size: 13px;
+}
+
 .cert-prep-item {
   display: flex;
   align-items: baseline;

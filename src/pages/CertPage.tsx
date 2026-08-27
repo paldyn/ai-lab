@@ -13,7 +13,7 @@ import {
   type CertExamSession,
   type CertStudyItem,
 } from '../data/certs';
-import { prepFor } from '../data/certPrep';
+import { prepFor, prepProgress, prepUpcoming } from '../data/certPrep';
 import { getArticleBySlug } from '../data/articles';
 
 const TECHBLOG = 'https://techblog.paldyn.com/posts';
@@ -187,6 +187,9 @@ function Fact({ label, value }: { label: string; value?: string }) {
 
 function CertView({ cert }: { cert: Cert }) {
   const prep = prepFor(cert.id);
+  const progress = prepProgress(cert.id);
+  const upcoming = prepUpcoming(cert.id);
+  const mocksLeft = progress ? Math.max(0, progress.plannedMocks - progress.mocks) : 0;
   /*
     지난 회차는 여기서 이미 걸러집니다. 남은 것이 없으면 절 자체를 세우지
     않습니다 — 빈 표는 「일정이 없는 시험」으로 읽히는데 실제로는 「아직 공고가
@@ -437,6 +440,27 @@ function CertView({ cert }: { cert: Cert }) {
         */}
         <section className="cert-section">
           <h2 id="prep">시험 노트</h2>
+          {/*
+            **계획 대비 진도를 함께 보여 줍니다.** 쓴 편수만 세면 ADsP 5편이 다 찬
+            것처럼 읽혔습니다. 아래 「예정」 줄은 시행처 출제범위를 쪼갠 계획이고
+            루틴이 위에서부터 순서대로 채웁니다.
+          */}
+          {progress && (
+            <div className="cert-prep-progress">
+              <p className="cert-prep-progress-line">
+                <strong>{progress.written}</strong>
+                <span className="cert-prep-progress-total"> / {progress.planned}편</span>
+                <span className="cert-prep-progress-split">
+                  {`개념 ${progress.concepts}/${progress.plannedConcepts} · 모의고사 ${progress.mocks}/${progress.plannedMocks}`}
+                </span>
+              </p>
+              <div className="cert-prep-bar">
+                <span
+                  style={{ width: `${Math.min(100, (progress.written / progress.planned) * 100)}%` }}
+                />
+              </div>
+            </div>
+          )}
           {prep.length > 0 ? (
             <ol className="cert-prep-list">
               {prep.map((note) => (
@@ -453,9 +477,24 @@ function CertView({ cert }: { cert: Cert }) {
                 </li>
               ))}
             </ol>
-          ) : (
-            <p className="cert-prose">
-              이 시험의 노트는 아직 없습니다. 과목별 정리와 모의고사를 순서대로 채워 나갑니다.
+          ) : null}
+          {upcoming.length > 0 && (
+            <ol className="cert-prep-list cert-prep-planned">
+              {upcoming.map((topic) => (
+                <li key={topic.order}>
+                  <span className="cert-prep-item">
+                    <span className="cert-prep-order">{String(topic.order).padStart(2, '0')}</span>
+                    <span className="cert-prep-name">{topic.title}</span>
+                    <span className="cert-prep-kind">예정</span>
+                    <span className="cert-prep-time">{topic.subject}</span>
+                  </span>
+                </li>
+              ))}
+            </ol>
+          )}
+          {mocksLeft > 0 && (
+            <p className="cert-prose cert-prep-foot">
+              개념을 다 쓰면 모의고사 {mocksLeft}편이 뒤에 붙습니다.
             </p>
           )}
         </section>

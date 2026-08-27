@@ -7,6 +7,7 @@ import { PageHeader } from '../components/PageHeader';
 import { Seo } from '../components/Seo';
 import { certs, certsIn, type Cert } from '../data/certs';
 import { certPrepNotes } from '../data/certPrep';
+import { plannedPrepTotal } from '../data/certPrepPlan';
 
 /**
  * 자격증 한 줄. **카드 격자가 아니라 행입니다.**
@@ -58,7 +59,10 @@ function CertRow({ cert }: { cert: Cert }) {
 export function CertsPage() {
   const domestic = certsIn('국내');
   const overseas = certsIn('해외');
-  // 머리말 숫자는 시험 노트를 셉니다 — 학습 경로의 본체가 그쪽이고 매핑은 곁다리입니다.
+  /*
+    머리말 숫자는 시험 노트를 셉니다 — 학습 경로의 본체가 그쪽이고 매핑은 곁다리입니다.
+    쓴 편수만 세면 다 찬 것처럼 읽히므로 계획 편수를 함께 답니다.
+  */
   const prepCount = certPrepNotes.length;
 
   return (
@@ -75,7 +79,7 @@ export function CertsPage() {
         statsLabel="공식 페이지에서 확인한 것만 싣습니다"
         stats={[
           { label: '자격증', value: `${certs.length}개` },
-          { label: '시험 노트', value: `${prepCount}편` },
+          { label: '시험 노트', value: `${prepCount} / ${plannedPrepTotal}편` },
         ]}
       />
 
