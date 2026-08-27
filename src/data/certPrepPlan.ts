@@ -1067,12 +1067,12 @@ export const certPrepPlans: CertPrepPlan[] = [
       {
         title: '생성형 AI의 장점·한계와 모델 선택 기준',
         subject: 'Fundamentals of Generative AI (생성형 AI의 기초)',
-        keywords: ['파운데이션 모델 수명주기(데이터 선택·모델 선택·사전학습·파인튜닝·평가·배포·피드백)', '적응성·응답성·단순성', '환각(hallucination)', '해석 가능성 부족', '부정확성과 비결정성', '모델 선택 요소(모델 종류·성능 요구·제약·컴플라이언스)', '비즈니스 가치 지표(전환율·사용자당 평균 매출·고객 생애 가치)'],
+        keywords: ['파운데이션 모델 수명주기(데이터 선택·모델 선택·사전학습·파인튜닝·평가·배포·피드백)', '적응성·응답성·대화 능력·콘텐츠 생성 능력', '환각(hallucination)', '해석 가능성 부족', '부정확성과 비결정성', '모델 선택 요소(모델 종류·성능 요구·제약·컴플라이언스·비용·지연시간·모델 복잡도)', '비즈니스 가치 지표(전환율·사용자당 평균 매출·고객 생애 가치)'],
       },
       {
         title: 'AWS 생성형 AI 서비스와 비용 구조',
         subject: 'Fundamentals of Generative AI (생성형 AI의 기초)',
-        keywords: ['Amazon Bedrock', 'Amazon SageMaker JumpStart', 'PartyRock', 'Amazon Q', 'AWS 생성형 AI 서비스의 이점(진입 장벽·출시 속도·비용 효율)', '토큰 기반 과금', '프로비저닝된 처리량(provisioned throughput)', '커스텀 모델과 리전 커버리지의 비용 트레이드오프'],
+        keywords: ['Amazon Bedrock', 'Amazon SageMaker JumpStart', 'Amazon Bedrock AgentCore', 'Amazon Q', 'AWS 생성형 AI 서비스의 이점(진입 장벽·출시 속도·비용 효율)', '토큰 기반 과금', '프로비저닝된 처리량(provisioned throughput)', '커스텀 모델과 리전 커버리지의 비용 트레이드오프'],
       },
       {
         title: '사전학습 모델 선택 기준과 추론 파라미터',
@@ -1190,7 +1190,7 @@ export const certPrepPlans: CertPrepPlan[] = [
       {
         title: 'AWS AI 서비스와 Bedrock·JumpStart',
         subject: 'ML 모델 개발 (ML Model Development)',
-        keywords: ['Rekognition·Transcribe·Translate·Polly', 'Comprehend·Textract·Lex', 'Personalize·Forecast·Fraud Detector', 'Amazon Bedrock 파운데이션 모델', 'SageMaker JumpStart 솔루션 템플릿', 'AI 서비스와 직접 학습의 갈림길'],
+        keywords: ['Rekognition·Transcribe·Translate·Polly', 'Comprehend·Textract·Lex', 'Personalize·Fraud Detector·Kendra', 'Amazon Bedrock 파운데이션 모델', 'SageMaker JumpStart 솔루션 템플릿', 'AI 서비스와 직접 학습의 갈림길'],
       },
       {
         title: '학습 잡 구성과 분산 학습',
@@ -1245,7 +1245,7 @@ export const certPrepPlans: CertPrepPlan[] = [
       {
         title: 'CloudWatch·X-Ray 문제 추적',
         subject: 'ML 솔루션 모니터링·유지보수·보안 (ML Solution Monitoring, Maintenance, and Security)',
-        keywords: ['사용률·처리량·가용성·내결함성 지표', 'CloudWatch 지표·알람·대시보드', 'CloudWatch Logs Insights와 Lambda Insights', 'AWS X-Ray 추적', 'CloudTrail 추적 생성과 감사', 'EventBridge 이벤트로 인프라 감시', 'QuickSight 대시보드'],
+        keywords: ['사용률·처리량·가용성·내결함성 지표', 'CloudWatch 지표·알람·대시보드', 'CloudWatch Logs Insights와 Lambda Insights', 'AWS X-Ray 추적', 'CloudTrail 추적 생성과 감사', 'EventBridge 이벤트로 인프라 감시', 'Amazon Quick Sight 대시보드'],
       },
       {
         title: '인스턴스 유형 선택과 비용 최적화',
@@ -1534,7 +1534,7 @@ export const certPrepPlans: CertPrepPlan[] = [
     certId: 'databricks-ml-associate',
     mockExams: 5,
     sourceUrl: 'https://www.databricks.com/sites/default/files/2025-02/databricks-certified-machine-learning-associate-exam-guide-1-mar-2025.pdf',
-    basis: '공식 시험 가이드(2025-03-01판) PDF의 Exam Outline 4개 섹션 49개 세부목표와 시험 페이지 배점표(38/19/31/12%, 채점 48문항)를 근거로 24편을 뽑고 편 수를 배점에 맞췄다(9/4/8/3편 = 37.5/16.7/33.3/12.5%). 순서는 가이드를 따르되 피처 스토어·MLflow·AutoML을 그 전제인 전처리·모델 개발 뒤로 옮겼다.',
+    basis: '공식 시험 가이드(2025-03-01판) PDF의 Exam Outline 4개 섹션 48개 세부목표와 시험 페이지 배점표(38/19/31/12%, 채점 48문항)를 근거로 24편을 뽑고 편 수를 배점에 맞췄다(9/4/8/3편 = 37.5/16.7/33.3/12.5%). 순서는 가이드를 따르되 피처 스토어·MLflow·AutoML을 그 전제인 전처리·모델 개발 뒤로 옮겼다.',
     topics: [
       {
         title: 'ML 런타임과 워크스페이스 구조',
@@ -1662,7 +1662,7 @@ export const certPrepPlans: CertPrepPlan[] = [
     certId: 'databricks-genai-associate',
     mockExams: 5,
     sourceUrl: 'https://www.databricks.com/sites/default/files/2026-03/Databricks-Certified-Generative-AI-Engineer-Associate-Exam-Guide-Mar26.pdf',
-    basis: '근거는 공식 시험 가이드(2026-03-18판) Exam outline의 6개 섹션 65개 출제목표이고, 섹션별 비중은 인증 페이지의 백분율이다. 비중대로 30%인 3섹션에 7편·22%인 4섹션에 6편을 주고 8%인 거버넌스는 1편으로 묶었으며, 여섯 섹션이 공통으로 전제하는 Databricks 도구 지도를 맨 앞에 1편 두었다.',
+    basis: '근거는 공식 시험 가이드(2026-03-18판) Exam outline의 6개 섹션 56개 출제목표이고, 섹션별 비중은 인증 페이지의 백분율이다. 비중대로 30%인 3섹션에 7편·22%인 4섹션에 6편을 주고 8%인 거버넌스는 1편으로 묶었으며, 여섯 섹션이 공통으로 전제하는 Databricks 도구 지도를 맨 앞에 1편 두었다.',
     topics: [
       {
         title: 'Mosaic AI 스택과 Unity Catalog',
@@ -1873,7 +1873,7 @@ export const certPrepPlans: CertPrepPlan[] = [
     certId: 'ai-103',
     mockExams: 5,
     sourceUrl: 'https://learn.microsoft.com/en-us/credentials/certifications/resources/study-guides/ai-103',
-    basis: '지적한 세 자리를 그대로 합쳐 30→27편이다 — 배포 구성·CI/CD를 인프라 편에(계획 7), 프롬프트 튜닝·자기 비평을 오케스트레이션 편에(생성형 9), 멀티모달 이해 두 편을 하나로(비전 3). 26편이 아닌 것은 그 셋을 빼면 산술이 27이고, 한 편 더 줄이면 10~15% 영역 하나가 15.4%로 밴드를 벗어나기 때문이다(27편은 25.9/33.3/14.8/11.1/14.8%로 전부 밴드 안, sqlp·bigdata 29 아래).',
+    basis: '지적한 세 자리를 그대로 합쳐 30→27편이다 — 배포 구성·CI/CD를 인프라 편에(계획 7), 프롬프트 튜닝·자기 비평을 오케스트레이션 편에(생성형 9), 멀티모달 이해 두 편을 하나로(비전 3). 26편이 아닌 것은 그 셋을 빼면 산술이 27이고, 한 편 더 줄이면 10~15% 영역 하나가 15.4%로 밴드를 벗어나기 때문이다(27편은 25.9/33.3/11.1/14.8/14.8%로 전부 밴드 안, sqlp·bigdata 29 아래).',
     topics: [
       {
         title: '과제별 Foundry 서비스와 모델 고르기',

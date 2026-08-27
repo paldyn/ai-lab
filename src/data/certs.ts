@@ -1658,8 +1658,9 @@ export const certs: Cert[] = [
       'MLA-C01(65문항/130분/150 USD)과 다르므로 어느 버전을 칠지 먼저 정해야 한다.\n' +
       '- 개편은 도메인 구조를 그대로 두고(새 도메인 추가 없음) 담기는 주제를 넓히는 쪽이다 — 생성형 AI 솔루션 구축과 RAG 아키텍처, 에이전틱 AI ' +
       '워크플로 오케스트레이션, 파운데이션 모델·LLM 선택과 운영화, Amazon Bedrock 커버리지 확대, 책임 있는 AI 지침.\n' +
-      '- RAG와 파운데이션 모델 파인튜닝은 MLA-C02에서 들어오는 주제라 현행 MLA-C01 준비자의 학습 주제로 매핑하면 안 된다 — C01 in-scope ' +
-      '목록에 Bedrock은 있지만 시험 가이드의 과제 서술에는 둘 다 없다.\n' +
+      '- RAG는 MLA-C02에서 들어오는 주제라 현행 MLA-C01 준비자의 학습 주제로 매핑하면 안 된다 — C01 시험 가이드 전문에 ' +
+      'RAG도 Retrieval도 나오지 않는다. 반대로 파운데이션 모델 파인튜닝은 C01 Task 2.2 Skills에 그대로 있다 ' +
+      '("Using custom datasets to fine-tune pre-trained models (for example, Amazon Bedrock, SageMaker JumpStart)").\n' +
       '- 시험 범위에 드는 AWS 서비스 목록이 공식 가이드 부록에 있다 — ML 쪽은 SageMaker·Bedrock 등, 데이터 쪽은 ' +
       'S3·Glue·Athena·EMR·Kinesis·Redshift 등, 운영 쪽은 Step ' +
       'Functions·CodePipeline·CloudFormation·CloudWatch·IAM·KMS 등이다.',
@@ -2559,7 +2560,7 @@ export const certs: Cert[] = [
     difficulty: 3.5,
     difficultyBasis: '응시 요건은 없지만 파이썬 앱 개발 경험을 전제합니다.',
     employment: 2.5,
-    employmentBasis: '어소시에이트지만 아직 베타라 국내 공고 언급을 못 찾았습니다.',
+    employmentBasis: '해외 벤더 어소시에이트 자격이라 국내 제도상 우대가 없고, 2026년에 생긴 자격이라 국내 인지도가 아직 얕습니다.',
     whatItMeasures:
       'Microsoft Foundry를 활용해 에이전트와 AI 솔루션을 설계·개발·배포하는 Azure AI 엔지니어 역량을 검증한다. 공식 설명은 ' +
       '"designing, developing, and deploying advanced Azure AI solutions using Python and ' +
