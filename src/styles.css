@@ -5393,21 +5393,58 @@ input:focus-visible {
   background: var(--brand);
 }
 
-/* 아직 안 쓴 계획. 링크가 아니라 순서표라 흐리게 둡니다. */
-.cert-prep-planned {
-  margin-top: 6px;
+/*
+  묶음 머리. 개념·모의고사·총정리를 갈라 두는 줄입니다 — 셋을 한 목록에 이어 놓으면
+  아직 안 쓴 개념 01 위에 총정리와 모의고사가 서서 읽는 차례가 뒤집힙니다.
+*/
+.cert-prep-group + .cert-prep-group {
+  margin-top: 30px;
 }
 
-.cert-prep-planned .cert-prep-item {
+.cert-prep-group-head {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 6px;
+  color: var(--text-strong);
+  font-size: 13px;
+}
+
+.cert-prep-group-name {
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+.cert-prep-group-count {
+  margin-left: auto;
+  color: var(--text-muted);
+  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  font-size: 11px;
+}
+
+.cert-prep-group-note {
+  margin: 8px 0 0;
+  color: var(--text-muted);
+  font-size: 12px;
+  line-height: 1.7;
+}
+
+.cert-prep-group .cert-prep-list {
+  margin-top: 8px;
+}
+
+/* 아직 안 쓴 계획. 링크가 아니라 순서표라 흐리게 둡니다. */
+.cert-prep-item.is-planned {
   color: var(--text-muted);
   cursor: default;
 }
 
-.cert-prep-planned .cert-prep-kind {
+.cert-prep-item.is-planned .cert-prep-kind {
   border-style: dashed;
 }
 
-.cert-prep-planned .cert-prep-time {
+.cert-prep-item.is-planned .cert-prep-time {
   font-family: inherit;
   font-size: 11px;
 }

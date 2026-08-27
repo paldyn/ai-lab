@@ -93,29 +93,66 @@ export function prepProgress(certId: string): CertPrepProgress | undefined {
 }
 
 /**
- * 아직 안 쓴 개념 주제. 화면에 「예정」으로 서고, 루틴이 위에서부터 하나씩 씁니다.
+ * 화면에 세우는 한 줄. 쓴 노트이거나 아직 안 쓴 계획입니다.
  *
- * **파일 번호가 곧 계획의 몇 번째 주제인가입니다.** 제목을 대조하지 않는 이유는,
- * 계획을 넣기 전에 쓴 과목 통째 노트(ADsP 01~03, AICE 01~04)가 계획의 어느 제목과도
- * 안 맞아 그 자리가 「쓴 것이자 예정」으로 두 번 세어지기 때문입니다. 자리로 세면
- * 「쓴 것 + 예정 = 계획」이 늘 맞습니다. 루틴은 그 자리에 든 제목이 계획과 다르면
- * 계획대로 갈아 끼웁니다.
+ * **번호는 파일 이름이 아니라 그 묶음 안의 차례입니다.** 파일 번호를 그대로 보이면
+ * 총정리가 85·86·87로 서서 「여든다섯 번째 노트」처럼 읽혔습니다 — 계획이 서른넷인데
+ * 말이 안 됩니다. 모의고사도 90·91이었습니다. 번호는 묶음이 정합니다.
  */
-export interface CertPrepPlanned {
-  order: number;
+export interface CertPrepRow {
+  /** 묶음 안의 차례. 총정리처럼 계획 밖이면 없습니다. */
+  order?: number;
   title: string;
-  subject: string;
+  /** 쓴 것이면 그 노트, 아직이면 undefined. */
+  note?: CertPrepNote;
+  /** 아직 안 쓴 개념 줄에 붙는 과목 이름. */
+  subject?: string;
 }
 
-export function prepUpcoming(certId: string): CertPrepPlanned[] {
-  const plan = planFor(certId);
-  // 멈춰 둔 계획은 「예정」이 아니다 — 언제 쓸지 모르는 것을 예정이라 부르지 않는다.
-  if (!plan || plan.hold) return [];
+/**
+ * 시험 노트 화면의 세 묶음.
+ *
+ * **하나로 이어 놓으면 순서가 뒤엉킵니다.** 파일 번호대로 늘어놓았더니 총정리(80번대)와
+ * 모의고사(90번대)가 아직 안 쓴 개념 01·02 위에 서서, 복습용 노트와 모의고사를 먼저
+ * 읽으라는 목록처럼 보였습니다. 공부하는 차례는 개념 → 모의고사이고, 총정리는 계획 밖의
+ * 보충이라 따로 둡니다.
+ */
+export interface CertPrepGroups {
+  /** 계획의 개념 주제. 쓴 것과 안 쓴 것이 계획 차례대로 섞여 있습니다. */
+  concepts: CertPrepRow[];
+  /** 모의고사. 회차 차례대로입니다. */
+  mocks: CertPrepRow[];
+  /** 계획 밖 보충(과목 총정리). 진도에 세지 않습니다. */
+  extras: CertPrepNote[];
+}
 
-  const filled = new Set(prepFor(certId).map((note) => note.order));
-  return plan.topics
-    .map((topic, index) => ({ order: index + 1, title: topic.title, subject: topic.subject }))
-    .filter((topic) => !filled.has(topic.order));
+export function prepGroups(certId: string): CertPrepGroups | undefined {
+  const plan = planFor(certId);
+  if (!plan) return undefined;
+
+  const notes = prepFor(certId);
+  const byOrder = new Map(notes.map((note) => [note.order, note]));
+
+  const concepts = plan.topics.map((topic, index) => {
+    const note = byOrder.get(index + 1);
+    return {
+      order: index + 1,
+      title: note?.title ?? topic.title,
+      note,
+      subject: note ? undefined : topic.subject,
+    };
+  });
+
+  const mocks = Array.from({ length: plan.mockExams }, (_, index) => {
+    const note = byOrder.get(MOCK_FROM + index);
+    return { order: index + 1, title: note?.title ?? `모의고사 ${index + 1}회`, note };
+  });
+
+  const extras = notes.filter(
+    (note) => note.order > plan.topics.length && note.order < MOCK_FROM,
+  );
+
+  return { concepts, mocks, extras };
 }
 
 /** 계획을 멈춰 둔 이유. 없으면 undefined. */

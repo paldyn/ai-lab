@@ -13,7 +13,7 @@ import {
   type CertExamSession,
   type CertStudyItem,
 } from '../data/certs';
-import { prepFor, prepHold, prepProgress, prepUpcoming } from '../data/certPrep';
+import { prepGroups, prepHold, prepProgress, type CertPrepRow } from '../data/certPrep';
 import { getArticleBySlug } from '../data/articles';
 
 const TECHBLOG = 'https://techblog.paldyn.com/posts';
@@ -186,11 +186,9 @@ function Fact({ label, value }: { label: string; value?: string }) {
 }
 
 function CertView({ cert }: { cert: Cert }) {
-  const prep = prepFor(cert.id);
+  const groups = prepGroups(cert.id);
   const progress = prepProgress(cert.id);
-  const upcoming = prepUpcoming(cert.id);
   const hold = prepHold(cert.id);
-  const mocksLeft = progress ? Math.max(0, progress.plannedMocks - progress.mocks) : 0;
   /*
     지난 회차는 여기서 이미 걸러집니다. 남은 것이 없으면 절 자체를 세우지
     않습니다 — 빈 표는 「일정이 없는 시험」으로 읽히는데 실제로는 「아직 공고가
@@ -453,6 +451,9 @@ function CertView({ cert }: { cert: Cert }) {
                 <span className="cert-prep-progress-total"> / {progress.planned}편</span>
                 <span className="cert-prep-progress-split">
                   {`개념 ${progress.concepts}/${progress.plannedConcepts} · 모의고사 ${progress.mocks}/${progress.plannedMocks}`}
+                  {groups && groups.extras.length > 0
+                    ? ` · 계획 밖 총정리 ${groups.extras.length}`
+                    : ''}
                 </span>
               </p>
               <div className="cert-prep-bar">
@@ -462,42 +463,36 @@ function CertView({ cert }: { cert: Cert }) {
               </div>
             </div>
           )}
-          {prep.length > 0 ? (
-            <ol className="cert-prep-list">
-              {prep.map((note) => (
-                <li key={note.slug}>
-                  <Link to={note.path} className="cert-prep-item">
-                    <span className="cert-prep-order">{String(note.order).padStart(2, '0')}</span>
-                    <span className="cert-prep-name">{note.title}</span>
-                    <span className={`cert-prep-kind${note.kind === '문제' ? ' is-quiz' : ''}`}>
-                      {note.kind}
-                    </span>
-                    <span className="cert-prep-time">{note.readTime} MIN</span>
-                  </Link>
-                  <p className="cert-prep-summary">{note.summary}</p>
-                </li>
-              ))}
-            </ol>
-          ) : null}
-          {upcoming.length > 0 && (
-            <ol className="cert-prep-list cert-prep-planned">
-              {upcoming.map((topic) => (
-                <li key={topic.order}>
-                  <span className="cert-prep-item">
-                    <span className="cert-prep-order">{String(topic.order).padStart(2, '0')}</span>
-                    <span className="cert-prep-name">{topic.title}</span>
-                    <span className="cert-prep-kind">예정</span>
-                    <span className="cert-prep-time">{topic.subject}</span>
-                  </span>
-                </li>
-              ))}
-            </ol>
-          )}
           {hold && <p className="cert-prose cert-prep-hold">{hold}</p>}
-          {!hold && mocksLeft > 0 && (
-            <p className="cert-prose cert-prep-foot">
-              개념을 다 쓰면 모의고사 {mocksLeft}편이 뒤에 붙습니다.
-            </p>
+          {groups && (
+            <>
+              {/*
+                **묶음마다 번호를 새로 셉니다.** 파일 번호를 그대로 보이면 총정리가
+                85·86·87로, 모의고사가 90·91로 서서 계획이 서른넷인 시험에 여든다섯
+                번째 노트가 있는 것처럼 읽혔습니다. 그리고 파일 번호대로 한 줄에
+                늘어놓으면 아직 안 쓴 개념 01 위에 총정리와 모의고사가 서서 읽는
+                차례가 뒤집힙니다.
+              */}
+              <PrepGroup
+                title="개념 정리"
+                count={`${progress?.concepts ?? 0} / ${groups.concepts.length}`}
+                rows={hold ? groups.concepts.filter((row) => row.note) : groups.concepts}
+              />
+              <PrepGroup
+                title="모의고사"
+                count={`${progress?.mocks ?? 0} / ${groups.mocks.length}`}
+                rows={hold ? groups.mocks.filter((row) => row.note) : groups.mocks}
+                note={hold ? undefined : '개념을 다 쓴 뒤에 차례로 붙습니다.'}
+              />
+              {groups.extras.length > 0 && (
+                <PrepGroup
+                  title="과목 총정리"
+                  count={`${groups.extras.length}편`}
+                  rows={groups.extras.map((note) => ({ title: note.title, note }))}
+                  note="계획에 없는 보충 노트입니다. 과목 하나를 통째로 훑으므로 상세 노트가 채워지면 복습 자리가 됩니다."
+                />
+              )}
+            </>
           )}
         </section>
 
@@ -547,6 +542,73 @@ function CertView({ cert }: { cert: Cert }) {
         </div>
       </div>
     </article>
+  );
+}
+
+/**
+ * 시험 노트 한 묶음. 쓴 줄은 링크, 안 쓴 줄은 「예정」으로 섭니다.
+ *
+ * 번호는 묶음 안의 차례입니다 — 파일 번호가 아닙니다. 총정리처럼 계획 밖이라
+ * 차례가 없는 묶음은 번호 칸을 비워 둡니다.
+ */
+function PrepGroup({
+  title,
+  count,
+  rows,
+  note,
+}: {
+  title: string;
+  count: string;
+  rows: CertPrepRow[];
+  note?: string;
+}) {
+  if (rows.length === 0) return null;
+
+  return (
+    <div className="cert-prep-group">
+      <p className="cert-prep-group-head">
+        <span className="cert-prep-group-name">{title}</span>
+        <span className="cert-prep-group-count">{count}</span>
+      </p>
+      {note && <p className="cert-prep-group-note">{note}</p>}
+      <ol className="cert-prep-list">
+        {rows.map((row, index) => {
+          const number = row.order === undefined ? '' : String(row.order).padStart(2, '0');
+          const body = (
+            <>
+              <span className="cert-prep-order">{number}</span>
+              <span className="cert-prep-name">{row.title}</span>
+              {row.note ? (
+                <>
+                  <span className={`cert-prep-kind${row.note.kind === '문제' ? ' is-quiz' : ''}`}>
+                    {row.note.kind}
+                  </span>
+                  <span className="cert-prep-time">{row.note.readTime} MIN</span>
+                </>
+              ) : (
+                <>
+                  <span className="cert-prep-kind">예정</span>
+                  <span className="cert-prep-time">{row.subject ?? ''}</span>
+                </>
+              )}
+            </>
+          );
+
+          return (
+            <li key={row.note?.slug ?? `${title}-${row.order ?? index}`}>
+              {row.note ? (
+                <Link to={row.note.path} className="cert-prep-item">
+                  {body}
+                </Link>
+              ) : (
+                <span className="cert-prep-item is-planned">{body}</span>
+              )}
+              {row.note && <p className="cert-prep-summary">{row.note.summary}</p>}
+            </li>
+          );
+        })}
+      </ol>
+    </div>
   );
 }
 
