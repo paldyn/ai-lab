@@ -186,6 +186,25 @@ python3 -c "import re,sys;print(len(re.sub(r'\s','',open(sys.argv[1]).read().spl
 **모의고사**는 문제 20개 안팎으로 하되 과목별 문항 비중을 시험과 맞춘다. 계산이
 필요한 문제를 넷 이상 넣고, 답에는 계산 과정을 함께 적는다.
 
+**그리고 그 시험이 실제로 내는 문항 유형을 낸다.** 열넷 전부 4지선다 20문항 한 벌로
+쓰고 있었는데, 그러면 정작 실점이 큰 자리를 한 번도 연습시키지 못한다.
+
+| 자격증 | 반드시 섞는 유형 |
+| --- | --- |
+| `aws-ai-practitioner` `aws-ml-engineer-associate` | 복수응답(둘 이상 고르기)·순서 배열·짝 맞추기. **부분점수가 없어 실점이 가장 큰 자리다** |
+| `databricks-ml-associate` `databricks-genai-associate` | 복수 선택(「다음 중 둘을 고르시오」)과 API·클래스 이름을 그대로 묻는 문항 |
+| `adp` `sqlp` | 서술형. 한 벌에 ADP는 1문항(20점), SQLP는 2문항(30점). 채점 기준을 답에 함께 적는다 |
+| `bigdata-analysis-engineer` `aice` | 코딩 세트. 데이터와 요구사항을 주고 코드를 쓰게 한다 — 객관식만으로는 실기를 못 잰다 |
+| `adsp` `sqld` `ai-901` `ai-103` `gcp-ml-engineer` `nvidia-genai-llm` | 4지선다 중심이되 계산·코드 읽기 문항을 넷 이상 |
+
+객관식이 아닌 유형도 답 토글은 같다 — 물음 아래 빈 줄을 두고 `답.`으로 시작한다.
+
+**코드로 가르는 시험은 개념 노트에도 코드를 넣는다.** Databricks는
+`FeatureEngineeringClient.create_table`과 `FeatureStoreClient.register_table`을 가르는
+시험인데 산문과 표로만 쓰면 클래스 이름이 안 남는다. AWS·GCP·Azure·Databricks·AICE·
+빅데이터분석기사의 노트에는 **실제로 돌아가는 조각**을 넣고 펜스에 언어명을 붙인다.
+콘솔 클릭 경로는 순서 목록으로 적는다.
+
 ### 문제와 답의 형식
 
 문제 항목 안에 빈 줄 하나를 두고 `답.`으로 시작하는 문단을 두면 그 문제 줄이
