@@ -8,8 +8,8 @@
 
 `---` 아래가 지시다. 위 머리말은 사람이 읽는 자리라 루틴은 건너뛴다.
 
-마지막 갱신: 2026-08-26 (보기를 한 줄에 하나씩, 되풀이 소제목 금지)
-이전 갱신: 2026-08-25 (신설)
+마지막 갱신: 2026-08-27 (무엇을 쓸지는 `src/data/certPrepPlan.ts`가 정한다)
+이전 갱신: 2026-08-26 (보기를 한 줄에 하나씩, 되풀이 소제목 금지)
 
 ---
 
@@ -26,64 +26,120 @@
 「N회 기출」 같은 표기를 잡는다. 출제 범위와 유형을 보고 **직접 만든 문제**만 싣는다.
 문제의 값과 답은 반드시 직접 계산해 맞춘다.
 
-## STEP 1 — 이번에 쓸 자격증 고르기 (반드시 쉘로)
+## STEP 1 — 무엇을 쓸지 정하기 (반드시 쉘로)
+
+**주제를 스스로 정하지 않는다.** `src/data/certPrepPlan.ts`가 자격증마다 쓸 노트를
+순서대로 들고 있다. 시행처 출제범위(과목 › 주요항목 › 세부항목)를 노트 한 편 분량씩
+쪼갠 목록이고, 개념 주제 372편과 모의고사 69편으로 **모두 441편**이다.
+
+계획을 두기 전에는 목표가 「과목 수 + 모의고사 2」였다. 그래서 3과목짜리 ADsP가
+5편에서 「다 찼다」가 됐고, 노트 한 편이 50문항 범위를 통째로 덮었다. 목표를 계획이
+정하도록 바꾼 이유다.
+
+아래를 그대로 돌린다. 대상 자격증과 이번에 쓸 두 편의 제목·점검표까지 출력이 정해 준다.
 
 ```bash
 set -e
 cd "$(git rev-parse --show-toplevel)"
 
-python3 - <<'PY'
+python3 - <<'PLAN'
 import os, re
 
-src = open('src/data/certs.ts', encoding='utf-8').read()
-certs = []
-for block in src.split('\n  {\n')[1:]:
-    def get(f):
-        m = re.search(r"^    %s: '((?:[^'\\]|\\.)*)'," % f, block, re.M)
-        return m.group(1) if m else ''
-    cid = get('id')
-    if not cid:
-        continue
-    subjects = len(re.findall(r"^      \{\n        name: '", block, re.M)) or len(re.findall(r"name: '", block))
-    certs.append((cid, get('nameKo'), subjects))
+TOPIC = re.compile(
+    r"title: '((?:[^'\\]|\\.)*)',\s*\n\s*subject: '((?:[^'\\]|\\.)*)',\s*\n\s*keywords: \[(.*?)\],",
+    re.S)
+
+plan_src = open('src/data/certPrepPlan.ts', encoding='utf-8').read()
+plans = []
+for block in plan_src.split("    certId: '")[1:]:
+    cid = block.split("'")[0]
+    mocks = int(re.search(r'mockExams: (\d+),', block).group(1))
+    topics = [(m[0], m[1], re.findall(r"'((?:[^'\\]|\\.)*)'", m[2])) for m in TOPIC.findall(block)]
+    plans.append((cid, topics, mocks))
+
+def title_of(path):
+    m = re.search(r'^title:\s*"(.*)"', open(path, encoding='utf-8').read(), re.M)
+    return m.group(1) if m else ''
 
 rows = []
-for cid, name, subjects in certs:
+for cid, topics, mocks in plans:
     d = os.path.join('src/content/certs', cid)
-    have = len([f for f in os.listdir(d) if f.endswith('.md')]) if os.path.isdir(d) else 0
-    # 목표: 과목마다 개념 글 하나 + 모의고사 둘
-    goal = subjects + 2
-    rows.append((have - goal, have, goal, cid, name))
+    files = {}
+    if os.path.isdir(d):
+        for f in sorted(os.listdir(d)):
+            if f.endswith('.md'):
+                files[int(f[:2])] = f
+    planned = len(topics) + mocks
+    written = len(files)
+    rows.append((written / planned, cid, d, files, topics, mocks, planned))
 
-rows.sort()
-print('부족한 순서:')
-for gap, have, goal, cid, name in rows:
-    print(f'  {cid:30s} {have}/{goal}  {name}')
-print()
-print('이번 대상 =', rows[0][3])
-PY
+rows.sort(key=lambda r: (r[0], r[1]))
+print('진도 (낮은 순):')
+for pct, cid, d, files, topics, mocks, planned in rows:
+    concepts = sum(1 for n in files if n <= len(topics))
+    print(f'  {cid:30s} {len(files):3d}/{planned:3d}  ({pct*100:4.1f}%)'
+          f'  개념 {concepts}/{len(topics)} 모의 {len(files) - concepts}/{mocks}')
 
-# 그 자격증에 이미 있는 파일을 본다 — 번호와 주제가 겹치면 안 된다
-ls -1 src/content/certs/$(...)/ 2>/dev/null || true
+pct, cid, d, files, topics, mocks, planned = rows[0]
+print(f'\n이번 대상 = {cid}')
+print('있는 파일:', ', '.join(files[n] for n in sorted(files)) or '없음')
+
+picks = []
+for i, (title, subject, kw) in enumerate(topics):
+    if len(picks) == 2:
+        break
+    have = files.get(i + 1)
+    if have and title_of(os.path.join(d, have)) == title:
+        continue                      # 이미 계획대로 쓴 자리
+    picks.append((i + 1, title, subject, kw, have))
+
+n = 90
+while len(picks) < 2:
+    if n not in files:
+        picks.append((n, f'모의고사 {n - 89}회', '문제', [], None))
+    n += 1
+
+print('\n이번에 쓸 두 편:')
+for n, title, subject, kw, have in picks:
+    print(f'  {n:02d}  {title}   [{subject}]')
+    if kw:
+        print(f'      다뤄야 하는 것: {", ".join(kw)}')
+    if have:
+        print(f'      ! {have}이 그 자리에 있다 — git rm 하고 계획의 제목으로 새로 쓴다')
+PLAN
 ```
 
-**대상은 이 출력이 정한다.** 가장 부족한 자격증 하나를 골라 그 자격증에 2편을 쓴다.
-같은 자격증 안에서 이어 쓰는 편이 낫다 — 앞 글을 읽고 이어지는 글을 쓸 수 있다.
+**대상은 진도율이 가장 낮은 자격증이다.** 같으면 id 사전순으로 앞선 것을 고른다.
+열넷을 돌아가며 채우므로 한 자격증에 몰아 쓰지 않는다.
 
-부족분이 같으면 id 사전순으로 앞선 것을 고른다.
+**쓸 자리는 제목으로 정해진다.** 그 번호의 파일이 없거나, 있어도 제목이 계획과
+다르면 그 자리가 다음 차례다. 계획대로 이미 쓴 자리는 건너뛴다.
 
-## STEP 2 — 무엇을 쓸지 정하기
+## STEP 2 — 계획의 두 주제를 그대로 쓴다
 
-그 자격증의 `subjects` 배열이 목차다. **과목마다 개념 글 한 편**을 쓰고, 과목이
-다 차면 **모의고사**를 쓴다.
+출력이 준 것을 그대로 쓴다. **제목을 지어내지 않는다** — 계획의 `title`이 노트
+제목이고, `keywords`가 그 노트가 반드시 다뤄야 하는 것의 점검표다. 하나라도 안 다뤘으면
+그 노트는 아직 안 된 것이다.
 
 | 번호대 | 무엇 | `kind` |
 | --- | --- | --- |
-| `01`~`89` | 과목별 개념 정리. `subjects` 순서를 그대로 따른다 | `개념` |
-| `90`~`99` | 모의고사 | `문제` |
+| `01`~`89` | 계획의 개념 주제. **파일 번호 = 계획의 몇 번째 주제인가** | `개념` |
+| `90`~`99` | 모의고사. 개념을 다 쓴 뒤에 붙인다 | `문제` |
 
-이미 있는 파일의 번호를 피해서 다음 번호를 쓴다. 슬러그는 영문 소문자·숫자·하이픈만
-쓴다(`01-data-understanding`). 한글 파일 이름을 쓰지 않는다 — 주소에 그대로 들어간다.
+파일 이름은 `NN-슬러그.md`이고 슬러그는 제목을 영문 소문자·숫자·하이픈으로 옮긴
+것이다(`01-data-and-database`). 한글 파일 이름을 쓰지 않는다 — 주소에 그대로 들어간다.
+
+**자리가 이미 차 있으면 갈아 끼운다.** 계획을 넣기 전에 쓴 과목 통째 노트가 ADsP에 셋,
+AICE에 넷 있다. 그 번호가 계획의 주제와 안 맞으므로 그 자리를 쓸 차례가 오면 **파일을
+지우고 계획의 제목으로 새로 쓴다.** 옛 원고는 git이 들고 있다. 지운 파일은 보고에 적는다.
+
+```bash
+git rm src/content/certs/<자격증 id>/<옛 파일>.md
+```
+
+**계획이 틀렸다고 생각되면 고치지 말고 보고에 적는다.** 시행처가 출제범위를 개편하면
+계획도 바뀌어야 하는데, 그 판단은 `CERT-ROUTINE.md`(주간 데이터 루틴)와 사람이 한다.
+글 쓰는 루틴이 계획을 고치면 화면의 진도와 목표가 매일 흔들린다.
 
 ## STEP 3 — 원고
 
@@ -109,7 +165,8 @@ pubDate: "YYYY-MM-DD"   # TZ='Asia/Seoul' date +%Y-%m-%d
 4. 낱말은 처음 나오는 자리에서 한 문장으로 정의하고 계속 간다.
 5. 코드 펜스에는 언어명을 붙인다.
 
-**개념 글**은 4,300~6,000자로 쓰고 마지막에 연습 문제를 다섯 이상 단다. 헷갈리는
+**개념 글**은 4,300~6,000자로 쓰고 마지막에 연습 문제를 다섯 이상 단다.
+계획의 `keywords`를 전부 다루되 목록을 늘어놓지 말고 절로 엮는다. 헷갈리는
 짝(정형/비정형, KDD/CRISP-DM 같은 것)은 문단이 아니라 표로 가른다.
 
 **세는 법은 이 한 줄이다** — frontmatter를 뺀 본문에서 **공백을 제외한** 글자 수다.
@@ -197,6 +254,8 @@ git push "https://x-access-token:${GITHUB_TOKEN}@github.com/paldyn/ai-lab.git" H
 완료 보고에 넷을 적는다.
 
 1. **시작할 때 읽은 파일의 목록**
-2. 고른 자격증과 그 이유 (부족분 몇 편이었는지)
+2. 고른 자격증과 진도 (「adp 0/41」처럼), 그리고 계획에서 집은 주제 번호
 3. 쓴 글 두 편의 경로·제목·글자 수·문제 수
-4. 검산에서 고친 것 (없으면 「없음」)
+4. 갈아 끼우며 지운 파일 (없으면 「없음」)
+5. 검산에서 고친 것 (없으면 「없음」)
+6. 계획이 시행처 출제범위와 어긋나 보이는 곳 (없으면 「없음」)
