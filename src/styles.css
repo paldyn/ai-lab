@@ -5175,9 +5175,18 @@ input:focus-visible {
   white-space: nowrap;
 }
 
+/*
+  첫 칸과 마지막 칸에도 여백을 둡니다. 0으로 두었더니 강조된 줄에서 바탕색이
+  글자에 딱 붙어, 회차 이름이 색 띠 가장자리에 끼인 것처럼 보였습니다.
+*/
+.cert-schedule th:first-child,
+.cert-schedule td:first-child {
+  padding-left: 12px;
+}
+
 .cert-schedule th:last-child,
 .cert-schedule td:last-child {
-  padding-right: 0;
+  padding-right: 12px;
 }
 
 /*
@@ -5195,14 +5204,11 @@ input:focus-visible {
 }
 
 /*
-  회차와 비고는 글이라 왼쪽에 붙이고 나머지는 날짜라 가운데로 세웁니다.
-  「마지막 칸」으로 잡았더니 비고가 없는 자격증에서는 날짜 열(서류제출)이
-  왼쪽으로 붙었습니다 — 자리가 아니라 **칸 이름**으로 정합니다.
+  머리글은 **예외 없이 가운데**입니다. 회차와 비고만 왼쪽에 두어 봤는데, 표를
+  가로로 훑을 때 그 둘만 어긋나 보였습니다. 값은 회차·비고가 글이라 왼쪽에
+  붙이고 날짜만 가운데로 둡니다 — 머리글과 값의 기준이 달라도 됩니다.
+  머리글은 열을 세는 자리이고 값은 읽는 자리입니다.
 */
-.cert-schedule thead th:first-child,
-.cert-schedule thead th.is-note {
-  text-align: left;
-}
 
 .cert-schedule tbody td:not(.is-note) {
   text-align: center;
