@@ -62,6 +62,25 @@ describe('시험 노트 계획', () => {
     expect(long).toEqual([]);
   });
 
+  /*
+    **자격증을 넘나드는 중복도 잡습니다.** ADsP·ADP·빅데이터분석기사처럼 범위가 겹치는
+    시험이 여럿이라, 같은 제목이 두 시험에 서면 독자가 목록에서 둘을 구별하지 못하고
+    루틴도 어느 쪽을 쓰는 중인지 헷갈립니다. 겹치면 시험에 맞게 제목을 갈라 씁니다 —
+    「데이터 마트와 요약변수·파생변수」(ADsP)와 「데이터 마트 구축과 변수 요약·파생」(ADP)처럼.
+  */
+  it('자격증을 넘나들어도 주제 제목이 겹치지 않는다', () => {
+    const seen = new Map<string, string>();
+    const clashes: string[] = [];
+    for (const plan of certPrepPlans) {
+      for (const topic of plan.topics) {
+        const owner = seen.get(topic.title);
+        if (owner) clashes.push(`${topic.title}: ${owner} · ${plan.certId}`);
+        else seen.set(topic.title, plan.certId);
+      }
+    }
+    expect(clashes).toEqual([]);
+  });
+
   it('한 자격증 안에서 주제 제목이 겹치지 않는다', () => {
     const clashes: string[] = [];
     for (const plan of certPrepPlans) {

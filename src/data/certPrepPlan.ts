@@ -240,7 +240,7 @@ export const certPrepPlans: CertPrepPlan[] = [
         keywords: ['벡터·행렬·배열·데이터프레임·리스트', '자료형과 형 변환', '조건문과 반복문', '사용자 정의 함수', 'apply 계열 함수', '파일 읽기와 쓰기'],
       },
       {
-        title: '데이터 마트와 요약변수·파생변수',
+        title: '데이터 마트 구축과 변수 요약·파생',
         subject: '데이터분석 (필기)',
         keywords: ['데이터 마트와 데이터웨어하우스의 차이', '요약변수와 파생변수', 'reshape의 melt와 cast', 'plyr과 ddply', 'sqldf', 'data.table', 'merge·rbind·cbind'],
       },
