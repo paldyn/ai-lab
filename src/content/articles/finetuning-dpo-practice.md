@@ -135,3 +135,5 @@ DPO는 강화학습을 지도학습 모양으로 바꿔 놓아 정렬 작업의 
 읽어주셔서 감사합니다. 😊
 
 **지난 글:** [비용과 품질의 저울 — 어디까지 싸게 만들 것인가](/articles/eval-cost-quality-tradeoff)
+
+**다음 글:** [GRPO — 가치 모델을 지우고 무리의 평균을 기준으로 삼기](/articles/finetuning-grpo)

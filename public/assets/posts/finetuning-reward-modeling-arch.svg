@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="392" viewBox="0 0 880 392" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <rect x="0" y="0" width="880" height="392" rx="12" fill="#0a0a0a"/>
+  <defs>
+    <marker id="rm-blue" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#7ec8e3"/>
+    </marker>
+  </defs>
+
+  <text x="62" y="46" font-size="22" font-weight="700" fill="#e8e8e8">같은 모델에 두 번 넣고 차이를 본다</text>
+  <text x="62" y="72" font-size="13" fill="#888">보상 모델은 점수 하나를 내놓는다. 학습은 그 점수의 절댓값이 아니라 차이를 키운다.</text>
+
+  <rect x="62" y="120" width="210" height="64" rx="6" fill="#12261a" stroke="#55c555" stroke-width="1.5"/>
+  <text x="167" y="146" font-size="13" font-weight="600" fill="#e8e8e8" text-anchor="middle">프롬프트 + 고른 답</text>
+  <text x="167" y="166" font-size="11" fill="#aaaaaa" text-anchor="middle">사람이 낫다고 한 쪽</text>
+  <line x1="272" y1="152" x2="332" y2="152" stroke="#7ec8e3" stroke-width="2" marker-end="url(#rm-blue)"/>
+
+  <rect x="62" y="224" width="210" height="64" rx="6" fill="#2a1212" stroke="#e05555" stroke-width="1.5"/>
+  <text x="167" y="250" font-size="13" font-weight="600" fill="#e8e8e8" text-anchor="middle">프롬프트 + 버린 답</text>
+  <text x="167" y="270" font-size="11" fill="#aaaaaa" text-anchor="middle">같은 모델이 낸 다른 답</text>
+  <line x1="272" y1="256" x2="332" y2="256" stroke="#7ec8e3" stroke-width="2" marker-end="url(#rm-blue)"/>
+
+  <rect x="332" y="120" width="186" height="168" rx="6" fill="#101c2c" stroke="#7ec8e3" stroke-width="1.5"/>
+  <text x="425" y="192" font-size="13" font-weight="600" fill="#e8e8e8" text-anchor="middle">보상 모델</text>
+  <text x="425" y="212" font-size="11" fill="#aaaaaa" text-anchor="middle">언어 모델 + 점수 헤드</text>
+  <line x1="518" y1="152" x2="578" y2="152" stroke="#7ec8e3" stroke-width="2" marker-end="url(#rm-blue)"/>
+  <line x1="518" y1="256" x2="578" y2="256" stroke="#7ec8e3" stroke-width="2" marker-end="url(#rm-blue)"/>
+
+  <rect x="578" y="120" width="240" height="64" rx="6" fill="#000000" stroke="#3a4a6e" stroke-width="1"/>
+  <text x="698" y="146" font-size="13" font-weight="600" fill="#e8e8e8" text-anchor="middle">고른 답 점수</text>
+  <text x="698" y="166" font-size="13" fill="#55c555" text-anchor="middle">2.4</text>
+
+  <rect x="578" y="224" width="240" height="64" rx="6" fill="#000000" stroke="#3a4a6e" stroke-width="1"/>
+  <text x="698" y="250" font-size="13" font-weight="600" fill="#e8e8e8" text-anchor="middle">버린 답 점수</text>
+  <text x="698" y="270" font-size="13" fill="#e05555" text-anchor="middle">0.9</text>
+
+  <text x="62" y="332" font-size="13" fill="#e8e8e8">손실은 두 점수의 차이만 키운다. 2.4와 0.9든 12.4와 10.9든 손실에는 같은 값이다.</text>
+  <text x="62" y="360" font-size="13" fill="#888">그래서 보상 모델의 점수는 다른 프롬프트끼리 비교할 수 없다. 절댓값에 의미가 없다.</text>
+</svg>

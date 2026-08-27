@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="396" viewBox="0 0 880 396" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <rect x="0" y="0" width="880" height="396" rx="12" fill="#0a0a0a"/>
+  <defs>
+    <marker id="rn-green" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#55c555"/>
+    </marker>
+  </defs>
+
+  <text x="62" y="46" font-size="22" font-weight="700" fill="#e8e8e8">같은 답을 네 가지로 쓴다</text>
+  <text x="62" y="72" font-size="13" fill="#888">추출과 정규화를 건너뛰면 맞은 답이 0점을 받는다. 모델은 그것을 「틀렸다」로 배운다.</text>
+
+  <text x="62" y="118" font-size="16" font-weight="600" fill="#e8e8e8">모델이 낸 답</text>
+  <text x="478" y="118" font-size="16" font-weight="600" fill="#e8e8e8">정규화한 값</text>
+
+  <rect x="62" y="140" width="340" height="40" rx="6" fill="#000000" stroke="#3a4a6e" stroke-width="1"/>
+  <text x="78" y="164" xml:space="preserve" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#ffffff">정답은 0.5입니다.</text>
+  <line x1="402" y1="160" x2="478" y2="160" stroke="#55c555" stroke-width="2" marker-end="url(#rn-green)"/>
+  <rect x="478" y="140" width="340" height="40" rx="6" fill="#000000" stroke="#3a4a6e" stroke-width="1"/>
+  <text x="494" y="164" xml:space="preserve" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#55c555">0.5</text>
+
+  <rect x="62" y="192" width="340" height="40" rx="6" fill="#000000" stroke="#3a4a6e" stroke-width="1"/>
+  <text x="78" y="216" xml:space="preserve" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#ffffff">\boxed{\frac{1}{2}}</text>
+  <line x1="402" y1="212" x2="478" y2="212" stroke="#55c555" stroke-width="2" marker-end="url(#rn-green)"/>
+  <rect x="478" y="192" width="340" height="40" rx="6" fill="#000000" stroke="#3a4a6e" stroke-width="1"/>
+  <text x="494" y="216" xml:space="preserve" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#55c555">0.5</text>
+
+  <rect x="62" y="244" width="340" height="40" rx="6" fill="#000000" stroke="#3a4a6e" stroke-width="1"/>
+  <text x="78" y="268" xml:space="preserve" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#ffffff">답: 1/2</text>
+  <line x1="402" y1="264" x2="478" y2="264" stroke="#55c555" stroke-width="2" marker-end="url(#rn-green)"/>
+  <rect x="478" y="244" width="340" height="40" rx="6" fill="#000000" stroke="#3a4a6e" stroke-width="1"/>
+  <text x="494" y="268" xml:space="preserve" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#55c555">0.5</text>
+
+  <rect x="62" y="296" width="340" height="40" rx="6" fill="#000000" stroke="#3a4a6e" stroke-width="1"/>
+  <text x="78" y="320" xml:space="preserve" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#ffffff">따라서 x = .5 이다</text>
+  <line x1="402" y1="316" x2="478" y2="316" stroke="#55c555" stroke-width="2" marker-end="url(#rn-green)"/>
+  <rect x="478" y="296" width="340" height="40" rx="6" fill="#000000" stroke="#3a4a6e" stroke-width="1"/>
+  <text x="494" y="320" xml:space="preserve" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#55c555">0.5</text>
+
+  <text x="62" y="372" font-size="13" fill="#e8e8e8">문자열 일치로 채점하면 네 줄 중 셋이 오답이 된다. 검증기의 절반은 이 추출 단계다.</text>
+</svg>

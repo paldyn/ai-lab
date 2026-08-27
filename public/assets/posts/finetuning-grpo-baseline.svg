@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="412" viewBox="0 0 880 412" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <rect x="0" y="0" width="880" height="412" rx="12" fill="#0a0a0a"/>
+  <defs>
+    <marker id="gb-blue" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#7ec8e3"/>
+    </marker>
+    <marker id="gb-green" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#55c555"/>
+    </marker>
+  </defs>
+
+  <text x="62" y="46" font-size="22" font-weight="700" fill="#e8e8e8">기준을 어디서 얻는가</text>
+  <text x="62" y="72" font-size="13" fill="#888">어드밴티지는 이 답이 기준보다 나은지를 재는 값이다. 기준을 만드는 방법이 다르다.</text>
+
+  <text x="62" y="158" font-size="16" font-weight="600" fill="#c58a55">PPO</text>
+
+  <rect x="170" y="120" width="180" height="64" rx="6" fill="#33260f" stroke="#c58a55" stroke-width="1.5"/>
+  <text x="260" y="146" font-size="13" font-weight="600" fill="#e8e8e8" text-anchor="middle">정책 모델</text>
+  <text x="260" y="166" font-size="11" fill="#aaaaaa" text-anchor="middle">프롬프트마다 답 하나</text>
+  <line x1="350" y1="152" x2="400" y2="152" stroke="#7ec8e3" stroke-width="2" marker-end="url(#gb-blue)"/>
+
+  <rect x="400" y="120" width="180" height="64" rx="6" fill="#33260f" stroke="#c58a55" stroke-width="1.5"/>
+  <text x="490" y="146" font-size="13" font-weight="600" fill="#e8e8e8" text-anchor="middle">가치 모델</text>
+  <text x="490" y="166" font-size="11" fill="#aaaaaa" text-anchor="middle">기대 보상을 예측</text>
+  <line x1="580" y1="152" x2="630" y2="152" stroke="#7ec8e3" stroke-width="2" marker-end="url(#gb-blue)"/>
+
+  <rect x="630" y="120" width="180" height="64" rx="6" fill="#33260f" stroke="#c58a55" stroke-width="1.5"/>
+  <text x="720" y="146" font-size="13" font-weight="600" fill="#e8e8e8" text-anchor="middle">어드밴티지</text>
+  <text x="720" y="166" font-size="11" fill="#aaaaaa" text-anchor="middle">보상 − 예측값</text>
+
+  <text x="170" y="212" font-size="12" fill="#888">가치 모델은 정책과 비슷한 크기다. 학습 중 네 모델이 함께 올라간다.</text>
+
+  <text x="62" y="288" font-size="16" font-weight="600" fill="#55c555">GRPO</text>
+
+  <rect x="170" y="250" width="180" height="64" rx="6" fill="#12261a" stroke="#55c555" stroke-width="1.5"/>
+  <text x="260" y="276" font-size="13" font-weight="600" fill="#e8e8e8" text-anchor="middle">정책 모델</text>
+  <text x="260" y="296" font-size="11" fill="#aaaaaa" text-anchor="middle">프롬프트마다 답 G개</text>
+  <line x1="350" y1="282" x2="400" y2="282" stroke="#55c555" stroke-width="2" marker-end="url(#gb-green)"/>
+
+  <rect x="400" y="250" width="180" height="64" rx="6" fill="#12261a" stroke="#55c555" stroke-width="1.5"/>
+  <text x="490" y="276" font-size="13" font-weight="600" fill="#e8e8e8" text-anchor="middle">무리 통계</text>
+  <text x="490" y="296" font-size="11" fill="#aaaaaa" text-anchor="middle">보상의 평균과 표준편차</text>
+  <line x1="580" y1="282" x2="630" y2="282" stroke="#55c555" stroke-width="2" marker-end="url(#gb-green)"/>
+
+  <rect x="630" y="250" width="180" height="64" rx="6" fill="#12261a" stroke="#55c555" stroke-width="1.5"/>
+  <text x="720" y="276" font-size="13" font-weight="600" fill="#e8e8e8" text-anchor="middle">어드밴티지</text>
+  <text x="720" y="296" font-size="11" fill="#aaaaaa" text-anchor="middle">평균에서 떨어진 정도</text>
+
+  <text x="170" y="342" font-size="12" fill="#888">학습되는 모델은 정책 하나다. 기준은 같은 프롬프트에서 나온 형제 답들이 준다.</text>
+
+  <text x="62" y="390" font-size="13" fill="#e8e8e8">지운 것은 가치 모델이다. 보상을 어떻게 매길지는 여전히 우리가 정해야 한다.</text>
+</svg>

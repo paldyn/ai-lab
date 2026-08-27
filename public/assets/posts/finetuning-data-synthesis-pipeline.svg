@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="392" viewBox="0 0 880 392" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <rect x="0" y="0" width="880" height="392" rx="12" fill="#0a0a0a"/>
+  <defs>
+    <marker id="ds-blue" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#7ec8e3"/>
+    </marker>
+    <marker id="ds-red" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#e05555"/>
+    </marker>
+  </defs>
+
+  <text x="62" y="46" font-size="22" font-weight="700" fill="#e8e8e8">만드는 단계보다 거르는 단계가 길다</text>
+  <text x="62" y="72" font-size="13" fill="#888">사람이 쓰는 것은 맨 앞의 씨앗뿐이다. 나머지는 모델이 만들고 규칙이 거른다.</text>
+
+  <rect x="62" y="140" width="150" height="64" rx="6" fill="#12261a" stroke="#55c555" stroke-width="1.5"/>
+  <text x="137" y="166" font-size="13" font-weight="600" fill="#e8e8e8" text-anchor="middle">씨앗 예시</text>
+  <text x="137" y="186" font-size="11" fill="#aaaaaa" text-anchor="middle">사람이 쓴 200개</text>
+  <line x1="212" y1="172" x2="264" y2="172" stroke="#7ec8e3" stroke-width="2" marker-end="url(#ds-blue)"/>
+
+  <rect x="264" y="140" width="150" height="64" rx="6" fill="#101c2c" stroke="#7ec8e3" stroke-width="1.5"/>
+  <text x="339" y="166" font-size="13" font-weight="600" fill="#e8e8e8" text-anchor="middle">프롬프트 확장</text>
+  <text x="339" y="186" font-size="11" fill="#aaaaaa" text-anchor="middle">20,000개로</text>
+  <line x1="414" y1="172" x2="466" y2="172" stroke="#7ec8e3" stroke-width="2" marker-end="url(#ds-blue)"/>
+
+  <rect x="466" y="140" width="150" height="64" rx="6" fill="#101c2c" stroke="#7ec8e3" stroke-width="1.5"/>
+  <text x="541" y="166" font-size="13" font-weight="600" fill="#e8e8e8" text-anchor="middle">답 생성</text>
+  <text x="541" y="186" font-size="11" fill="#aaaaaa" text-anchor="middle">하나에 k개씩</text>
+  <line x1="616" y1="172" x2="668" y2="172" stroke="#7ec8e3" stroke-width="2" marker-end="url(#ds-blue)"/>
+
+  <rect x="668" y="140" width="150" height="64" rx="6" fill="#12261a" stroke="#55c555" stroke-width="1.5"/>
+  <text x="743" y="166" font-size="13" font-weight="600" fill="#e8e8e8" text-anchor="middle">거르기</text>
+  <text x="743" y="186" font-size="11" fill="#aaaaaa" text-anchor="middle">남은 12,000개</text>
+
+  <line x1="743" y1="204" x2="743" y2="250" stroke="#e05555" stroke-width="2" marker-end="url(#ds-red)"/>
+
+  <rect x="560" y="256" width="258" height="64" rx="6" fill="#2a1212" stroke="#e05555" stroke-width="1.5"/>
+  <text x="689" y="282" font-size="13" font-weight="600" fill="#e8e8e8" text-anchor="middle">버린 것</text>
+  <text x="689" y="302" font-size="11" fill="#aaaaaa" text-anchor="middle">중복 · 오답 · 형식 위반 · 너무 쉬운 것</text>
+
+  <text x="62" y="348" font-size="13" fill="#e8e8e8">합성 데이터의 품질은 만드는 쪽이 아니라 거르는 쪽이 정한다.</text>
+  <text x="62" y="372" font-size="13" fill="#888">씨앗이 적으면 20,000개가 서로 비슷해진다. 수가 느는 것과 다양해지는 것은 다르다.</text>
+</svg>

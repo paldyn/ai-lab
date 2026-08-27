@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="414" viewBox="0 0 880 414" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <rect x="0" y="0" width="880" height="414" rx="12" fill="#0a0a0a"/>
+
+  <text x="62" y="46" font-size="22" font-weight="700" fill="#e8e8e8">수가 늘어도 자리가 안 늘 때가 있다</text>
+  <text x="62" y="72" font-size="13" fill="#888">점 하나가 만들어진 예시 하나다. 자리가 가까울수록 서로 비슷한 문제라는 뜻이다.</text>
+
+  <text x="62" y="122" font-size="16" font-weight="600" fill="#e8e8e8">씨앗 20개로 확장</text>
+  <text x="478" y="122" font-size="16" font-weight="600" fill="#e8e8e8">씨앗을 넓히고 거른 뒤</text>
+
+  <rect x="62" y="140" width="340" height="200" rx="6" fill="#111111" stroke="#333333" stroke-width="1"/>
+  <circle cx="132" cy="192" r="5" fill="#7ec8e3"/>
+  <circle cx="146" cy="196" r="5" fill="#7ec8e3"/>
+  <circle cx="138" cy="208" r="5" fill="#7ec8e3"/>
+  <circle cx="152" cy="204" r="5" fill="#7ec8e3"/>
+  <circle cx="128" cy="204" r="5" fill="#7ec8e3"/>
+  <circle cx="144" cy="186" r="5" fill="#7ec8e3"/>
+  <circle cx="262" cy="262" r="5" fill="#7ec8e3"/>
+  <circle cx="276" cy="266" r="5" fill="#7ec8e3"/>
+  <circle cx="268" cy="278" r="5" fill="#7ec8e3"/>
+  <circle cx="282" cy="274" r="5" fill="#7ec8e3"/>
+  <circle cx="258" cy="276" r="5" fill="#7ec8e3"/>
+  <circle cx="274" cy="254" r="5" fill="#7ec8e3"/>
+  <circle cx="182" cy="302" r="5" fill="#7ec8e3"/>
+  <circle cx="196" cy="306" r="5" fill="#7ec8e3"/>
+  <circle cx="188" cy="318" r="5" fill="#7ec8e3"/>
+  <circle cx="202" cy="314" r="5" fill="#7ec8e3"/>
+  <circle cx="178" cy="316" r="5" fill="#7ec8e3"/>
+  <circle cx="194" cy="294" r="5" fill="#7ec8e3"/>
+
+  <rect x="478" y="140" width="340" height="200" rx="6" fill="#111111" stroke="#333333" stroke-width="1"/>
+  <circle cx="510" cy="175" r="5" fill="#55c555"/>
+  <circle cx="560" cy="210" r="5" fill="#55c555"/>
+  <circle cx="600" cy="165" r="5" fill="#55c555"/>
+  <circle cx="650" cy="195" r="5" fill="#55c555"/>
+  <circle cx="700" cy="172" r="5" fill="#55c555"/>
+  <circle cx="760" cy="200" r="5" fill="#55c555"/>
+  <circle cx="495" cy="240" r="5" fill="#55c555"/>
+  <circle cx="545" cy="265" r="5" fill="#55c555"/>
+  <circle cx="590" cy="235" r="5" fill="#55c555"/>
+  <circle cx="645" cy="260" r="5" fill="#55c555"/>
+  <circle cx="695" cy="245" r="5" fill="#55c555"/>
+  <circle cx="755" cy="270" r="5" fill="#55c555"/>
+  <circle cx="520" cy="305" r="5" fill="#55c555"/>
+  <circle cx="570" cy="290" r="5" fill="#55c555"/>
+  <circle cx="615" cy="315" r="5" fill="#55c555"/>
+  <circle cx="665" cy="300" r="5" fill="#55c555"/>
+  <circle cx="715" cy="320" r="5" fill="#55c555"/>
+  <circle cx="770" cy="295" r="5" fill="#55c555"/>
+
+  <text x="62" y="368" font-size="13" fill="#e8e8e8">왼쪽은 20,000개를 만들어도 서로 다른 것이 몇 안 된다. 모델은 그만큼만 배운다.</text>
+  <text x="62" y="392" font-size="13" fill="#888">다양성은 생성 단계가 아니라 씨앗과 거르는 기준이 만든다.</text>
+</svg>

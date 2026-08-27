@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="382" viewBox="0 0 880 382" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <rect x="0" y="0" width="880" height="382" rx="12" fill="#0a0a0a"/>
+  <defs>
+    <marker id="rl-blue" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#7ec8e3"/>
+    </marker>
+    <marker id="rl-purple" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#7777cc"/>
+    </marker>
+  </defs>
+
+  <text x="62" y="46" font-size="22" font-weight="700" fill="#e8e8e8">채점을 사람 대신 프로그램이 한다</text>
+  <text x="62" y="72" font-size="13" fill="#888">보상 모델을 학습하지 않는다. 답을 실행하거나 정답과 맞춰 보고 1과 0을 돌려준다.</text>
+
+  <rect x="62" y="150" width="150" height="64" rx="6" fill="#12261a" stroke="#55c555" stroke-width="1.5"/>
+  <text x="137" y="176" font-size="13" font-weight="600" fill="#e8e8e8" text-anchor="middle">정책 모델</text>
+  <text x="137" y="196" font-size="11" fill="#aaaaaa" text-anchor="middle">답 G개 생성</text>
+  <line x1="212" y1="182" x2="264" y2="182" stroke="#7ec8e3" stroke-width="2" marker-end="url(#rl-blue)"/>
+
+  <rect x="264" y="150" width="150" height="64" rx="6" fill="#101c2c" stroke="#7ec8e3" stroke-width="1.5"/>
+  <text x="339" y="176" font-size="13" font-weight="600" fill="#e8e8e8" text-anchor="middle">검증기</text>
+  <text x="339" y="196" font-size="11" fill="#aaaaaa" text-anchor="middle">실행·비교로 채점</text>
+  <line x1="414" y1="182" x2="466" y2="182" stroke="#7ec8e3" stroke-width="2" marker-end="url(#rl-blue)"/>
+
+  <rect x="466" y="150" width="150" height="64" rx="6" fill="#101c2c" stroke="#7ec8e3" stroke-width="1.5"/>
+  <text x="541" y="176" font-size="13" font-weight="600" fill="#e8e8e8" text-anchor="middle">보상</text>
+  <text x="541" y="196" font-size="11" fill="#aaaaaa" text-anchor="middle">1 또는 0</text>
+  <line x1="616" y1="182" x2="668" y2="182" stroke="#7ec8e3" stroke-width="2" marker-end="url(#rl-blue)"/>
+
+  <rect x="668" y="150" width="150" height="64" rx="6" fill="#12261a" stroke="#55c555" stroke-width="1.5"/>
+  <text x="743" y="176" font-size="13" font-weight="600" fill="#e8e8e8" text-anchor="middle">어드밴티지</text>
+  <text x="743" y="196" font-size="11" fill="#aaaaaa" text-anchor="middle">무리 평균과 비교</text>
+
+  <path d="M 743 214 L 743 268 Q 743 280 731 280 L 149 280 Q 137 280 137 268 L 137 222" fill="none" stroke="#7777cc" stroke-width="2" stroke-dasharray="4,4" marker-end="url(#rl-purple)"/>
+  <text x="440" y="320" font-size="13" fill="#7777cc" text-anchor="middle">어드밴티지를 정책에 반영하고 다시 생성한다</text>
+
+  <text x="62" y="356" font-size="13" fill="#888">검증기는 학습되지 않는다. 파이썬 함수이거나 테스트 러너이고, 우리가 고치는 대상이다.</text>
+</svg>

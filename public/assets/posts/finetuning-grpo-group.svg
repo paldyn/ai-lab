@@ -1,0 +1,81 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="404" viewBox="0 0 880 404" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <rect x="0" y="0" width="880" height="404" rx="12" fill="#0a0a0a"/>
+  <defs>
+    <marker id="gg-up" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#55c555"/>
+    </marker>
+    <marker id="gg-down" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#e05555"/>
+    </marker>
+  </defs>
+
+  <text x="62" y="46" font-size="22" font-weight="700" fill="#e8e8e8">무리 안에서 기준이 생긴다</text>
+  <text x="62" y="72" font-size="13" fill="#888">같은 프롬프트로 답 8개를 낸다. 막대는 각 답이 받은 보상이고, 그 평균이 기준선이다.</text>
+
+  <text x="62" y="142" font-size="12" fill="#888">밀 방향</text>
+
+  <line x1="110" y1="300" x2="760" y2="300" stroke="#444444" stroke-width="1"/>
+
+  <rect x="120" y="300" width="52" height="0" rx="3" fill="#12261a" stroke="#55c555" stroke-width="1.5">
+    <animate attributeName="y" values="300;300;165;165" keyTimes="0;0.04;0.10;1" dur="5s" repeatCount="indefinite"/>
+    <animate attributeName="height" values="0;0;135;135" keyTimes="0;0.04;0.10;1" dur="5s" repeatCount="indefinite"/>
+  </rect>
+  <rect x="200" y="300" width="52" height="0" rx="3" fill="#2a1212" stroke="#e05555" stroke-width="1.5">
+    <animate attributeName="y" values="300;300;270;270" keyTimes="0;0.06;0.12;1" dur="5s" repeatCount="indefinite"/>
+    <animate attributeName="height" values="0;0;30;30" keyTimes="0;0.06;0.12;1" dur="5s" repeatCount="indefinite"/>
+  </rect>
+  <rect x="280" y="300" width="52" height="0" rx="3" fill="#12261a" stroke="#55c555" stroke-width="1.5">
+    <animate attributeName="y" values="300;300;195;195" keyTimes="0;0.08;0.14;1" dur="5s" repeatCount="indefinite"/>
+    <animate attributeName="height" values="0;0;105;105" keyTimes="0;0.08;0.14;1" dur="5s" repeatCount="indefinite"/>
+  </rect>
+  <rect x="360" y="300" width="52" height="0" rx="3" fill="#2a1212" stroke="#e05555" stroke-width="1.5">
+    <animate attributeName="y" values="300;300;240;240" keyTimes="0;0.10;0.16;1" dur="5s" repeatCount="indefinite"/>
+    <animate attributeName="height" values="0;0;60;60" keyTimes="0;0.10;0.16;1" dur="5s" repeatCount="indefinite"/>
+  </rect>
+  <rect x="440" y="300" width="52" height="0" rx="3" fill="#12261a" stroke="#55c555" stroke-width="1.5">
+    <animate attributeName="y" values="300;300;158;158" keyTimes="0;0.12;0.18;1" dur="5s" repeatCount="indefinite"/>
+    <animate attributeName="height" values="0;0;142;142" keyTimes="0;0.12;0.18;1" dur="5s" repeatCount="indefinite"/>
+  </rect>
+  <rect x="520" y="300" width="52" height="0" rx="3" fill="#2a1212" stroke="#e05555" stroke-width="1.5">
+    <animate attributeName="y" values="300;300;285;285" keyTimes="0;0.14;0.20;1" dur="5s" repeatCount="indefinite"/>
+    <animate attributeName="height" values="0;0;15;15" keyTimes="0;0.14;0.20;1" dur="5s" repeatCount="indefinite"/>
+  </rect>
+  <rect x="600" y="300" width="52" height="0" rx="3" fill="#12261a" stroke="#55c555" stroke-width="1.5">
+    <animate attributeName="y" values="300;300;210;210" keyTimes="0;0.16;0.22;1" dur="5s" repeatCount="indefinite"/>
+    <animate attributeName="height" values="0;0;90;90" keyTimes="0;0.16;0.22;1" dur="5s" repeatCount="indefinite"/>
+  </rect>
+  <rect x="680" y="300" width="52" height="0" rx="3" fill="#2a1212" stroke="#e05555" stroke-width="1.5">
+    <animate attributeName="y" values="300;300;248;248" keyTimes="0;0.18;0.24;1" dur="5s" repeatCount="indefinite"/>
+    <animate attributeName="height" values="0;0;52;52" keyTimes="0;0.18;0.24;1" dur="5s" repeatCount="indefinite"/>
+  </rect>
+
+  <g opacity="0">
+    <animate attributeName="opacity" values="0;0;1;1" keyTimes="0;0.30;0.36;1" dur="5s" repeatCount="indefinite"/>
+    <line x1="110" y1="221" x2="760" y2="221" stroke="#7ec8e3" stroke-width="2" stroke-dasharray="4,4"/>
+    <text x="770" y="226" font-size="13" fill="#7ec8e3">평균</text>
+  </g>
+
+  <g opacity="0">
+    <animate attributeName="opacity" values="0;0;1;1" keyTimes="0;0.44;0.50;1" dur="5s" repeatCount="indefinite"/>
+    <line x1="146" y1="148" x2="146" y2="126" stroke="#55c555" stroke-width="2" marker-end="url(#gg-up)"/>
+    <line x1="226" y1="126" x2="226" y2="148" stroke="#e05555" stroke-width="2" marker-end="url(#gg-down)"/>
+    <line x1="306" y1="148" x2="306" y2="126" stroke="#55c555" stroke-width="2" marker-end="url(#gg-up)"/>
+    <line x1="386" y1="126" x2="386" y2="148" stroke="#e05555" stroke-width="2" marker-end="url(#gg-down)"/>
+    <line x1="466" y1="148" x2="466" y2="126" stroke="#55c555" stroke-width="2" marker-end="url(#gg-up)"/>
+    <line x1="546" y1="126" x2="546" y2="148" stroke="#e05555" stroke-width="2" marker-end="url(#gg-down)"/>
+    <line x1="626" y1="148" x2="626" y2="126" stroke="#55c555" stroke-width="2" marker-end="url(#gg-up)"/>
+    <line x1="706" y1="126" x2="706" y2="148" stroke="#e05555" stroke-width="2" marker-end="url(#gg-down)"/>
+  </g>
+
+  <text x="146" y="322" font-size="12" fill="#888" text-anchor="middle">답 1</text>
+  <text x="226" y="322" font-size="12" fill="#888" text-anchor="middle">답 2</text>
+  <text x="306" y="322" font-size="12" fill="#888" text-anchor="middle">답 3</text>
+  <text x="386" y="322" font-size="12" fill="#888" text-anchor="middle">답 4</text>
+  <text x="466" y="322" font-size="12" fill="#888" text-anchor="middle">답 5</text>
+  <text x="546" y="322" font-size="12" fill="#888" text-anchor="middle">답 6</text>
+  <text x="626" y="322" font-size="12" fill="#888" text-anchor="middle">답 7</text>
+  <text x="706" y="322" font-size="12" fill="#888" text-anchor="middle">답 8</text>
+
+  <text x="62" y="356" font-size="13" fill="#e8e8e8">평균 위는 확률을 올리고 평균 아래는 내린다. 기준을 만드는 데 별도 모델이 필요 없다.</text>
+  <text x="62" y="380" font-size="13" fill="#888">여덟이 전부 맞거나 전부 틀리면 평균과의 차이가 0이라 밀 방향이 사라진다.</text>
+</svg>
