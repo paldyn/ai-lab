@@ -410,3 +410,5 @@ curl: (56) CONNECT tunnel failed, response 403
 읽어주셔서 감사합니다. 😊
 
 **지난 글:** [한국어 토큰세: 같은 글이 토크나이저마다 3배로 갈린다 — 그리고 어휘 크기는 그 이유가 아니다](/articles/cost-korean-token-tax)
+
+**다음 글:** [SDK 기본값 실측: timeout=5가 한쪽에서는 5초, 다른 쪽에서는 5밀리초였다](/articles/spec-sdk-defaults)
