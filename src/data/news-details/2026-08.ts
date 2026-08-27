@@ -2,6 +2,70 @@ import type { NewsDetail } from '../news';
 
 /** 2026-08 발표의 모달 본문. 목록은 news.ts에 있습니다. */
 export const details: Record<string, NewsDetail> = {
+  'model-hardware-standard-research-preview': {
+    points: [
+      'AI 에이전트가 물리 장비를 조작하도록 규격을 맞춘 Model Hardware Standard(MHS)를 연구 프리뷰로 냈다',
+      '장비마다 다른 제어를 읽기·쓰기 같은 기본 명령으로 통일한 드라이버 소프트웨어를 쓴다',
+      '장비를 표준 형식으로 발견하게 하고 특성을 자연어 태그로 적어 둔다',
+      'MCP와 명령줄, 코드 API 셋으로 접근하며 프로그래밍 가능한 장비면 모델을 가리지 않는다',
+      '현미경·액체 분주기·로봇 팔을 병렬로 다뤄 신약 실험부터 양자 컴퓨터 보정까지 맡긴다',
+      '장비 연동에 몇 주에서 몇 달 걸리던 것을 몇 시간에서 몇 분으로 줄인다고 밝혔다',
+      'Genentech·워싱턴대 Baker 연구실·카네기멜런대·HHMI Janelia·QuEra·Tetsuwan Scientific이 먼저 써 봤고, AWS·Danaher·QIAGEN·Tecan·Universal Robots 등이 장비 쪽에서 참여한다',
+      'Claude의 공간·물리 추론이 전문가 감독을 필요로 하고 프로그래밍 불가 장비는 아직 못 다룬다고 한계를 적었다',
+    ],
+    commentary:
+      'MCP가 소프트웨어 도구에 한 일을 실험 장비에 하겠다는 것이다. 장비 제조사가 열 곳 넘게 이름을 올린 것이 핵심인데, ' +
+      '규격은 만드는 쪽보다 붙이는 쪽이 많아야 표준이 되기 때문이다. 다만 정식 오픈소스 공개를 안전 평가 뒤로 미뤘고 ' +
+      '한계도 스스로 적어 둔 만큼, 지금 단계는 표준 선언이 아니라 실험실에서 굴려 보는 자리에 가깝다.',
+  },
+  'gemini-omni-1-1-flash-lets-you-build-with-more-control': {
+    points: [
+      '개발자용 영상 생성 모델 Gemini Omni 1.1 Flash를 내놨다',
+      '앞선 영상을 참고하는 범위가 1초에서 10초로 늘었다',
+      '10초 단위로 장면을 이어 붙여 누적 40초까지 만든다',
+      '첫 프레임과 마지막 프레임을 지정해 그 사이를 채우는 생성이 가능해졌다',
+      '360p 초안 모드가 생겨 최대 60% 빠르고 비용은 3분의 1이라고 밝혔다',
+      '1080p와 4K 업스케일 출력을 함께 지원한다',
+      '최대 3초짜리 영상을 참고 자료로 넣을 수 있다',
+      'Google AI Studio와 Gemini Enterprise Agent Platform API에서 바로 쓰고, Flow와 Gemini 앱에서는 Google AI Plus·Pro·Ultra 구독자에게 열린다',
+    ],
+    commentary:
+      '이번 판의 무게는 화질이 아니라 통제권에 실려 있다. 10초짜리 한 컷을 뽑아 놓고 다시 뽑기를 반복하던 작업이 ' +
+      '앞뒤를 이어 붙이고 프레임을 못 박는 작업으로 바뀌면, 영상 모델은 데모용에서 편집 파이프라인의 한 단계로 내려온다. ' +
+      '360p 초안을 따로 둔 것도 같은 방향이다 — 완성본을 한 번에 노리지 말고 싸게 여러 번 돌려 보라는 설계다.',
+  },
+  'piloting-the-worlds-first-double-blind-ai-evaluations': {
+    points: [
+      '비공개 프런티어급 모델을 대상으로 한 이중 맹검 평가를 처음 돌렸다고 밝혔다',
+      '평가 대상 모델은 Gemini Flash Lite다',
+      '싱가포르 AI 안전연구소, OpenMined, AVERI, MLCommons가 함께했다',
+      'Google Cloud 기밀 컴퓨팅의 Confidential Space 안에서 평가가 이뤄진다',
+      '평가자는 모델 가중치를 보지 못하고 구글은 평가 문항을 보지 못한다',
+      '평가 데이터와 모델이 각자 주인에게만 남도록 암호학적으로 검증한다',
+      '모델이 시험 문제를 미리 본 벤치마크 오염을 막는 것이 목적이다',
+      '기술 보고서를 PDF로 함께 냈고 평가 점수 자체는 공개하지 않았다',
+    ],
+    commentary:
+      '외부 평가가 늘 걸리던 자리가 둘이었다 — 문항을 넘기면 다음 학습에 섞이고, 가중치를 넘기면 영업비밀이 샌다. ' +
+      '기밀 컴퓨팅으로 양쪽을 동시에 가린 것이 이번 시범의 전부이고, 그래서 결과 점수가 없는 것이 흠이 아니다. ' +
+      '다만 이런 방식은 신뢰가 하드웨어 격리에 걸리는 만큼, 검증하는 쪽이 그 격리를 얼마나 감사할 수 있는지가 다음 물음이 된다.',
+  },
+  'search-book-travel-ai-mode': {
+    points: [
+      '검색 AI 모드에 여행 관련 기능 세 가지를 더했다',
+      '대화 도중 항공권 가격 알림을 걸어 두면 가격이 바뀔 때 메일로 알려 준다',
+      '가격 알림은 300개가 넘는 제휴 항공사·여행 사이트를 훑고 180개 넘는 국가·지역에서 쓴다',
+      '항공권과 호텔을 마일리지·포인트로 바꿀 때 드는 값을 함께 보여 준다',
+      '포인트 표시는 Alaska·Hawaiian·American Airlines와 Choice Hotels·Hilton·Wyndham으로 시작하고 Accor·Flying Blue·Hyatt·LATAM·Lufthansa Group이 곧 붙는다',
+      'Google Pay로 AI 모드 안에서 호텔을 바로 예약하는 기능은 미국 영어에서 먼저 열린다',
+      '호텔 예약에는 Booking.com·Expedia·Hilton·IHG·Marriott·Priceline·Trip.com 등이 참여한다',
+      'EEA 국가와 지역 사용자에게는 제공되지 않는다',
+    ],
+    commentary:
+      '검색이 답을 주는 자리에서 결제를 받는 자리로 한 칸 옮겨 갔다. 가격 알림과 포인트 환산은 그동안 여행 특화 서비스가 ' +
+      '붙잡고 있던 기능이라, 이 셋이 AI 모드 안에서 한 번에 끝나면 중간에 서 있던 비교 사이트의 자리가 좁아진다. ' +
+      'EEA 제외는 규제 때문에 같은 기능이 시장마다 다른 속도로 열리는 지금의 모습을 다시 보여 준다.',
+  },
   'hugging-face-incident-and-the-road-ahead': {
     points: [
       '사고를 주도한 것은 GPT-5.6 Sol급 사내 전용 연구 모델 IM1이고 안전장치를 낮춘 상태로 돌았다',

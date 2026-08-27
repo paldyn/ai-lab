@@ -172,6 +172,72 @@ export const globalNewsUpdatedAt = '2026-08-26';
  */
 const entries: NewsItem[] = [
   {
+    id: 'model-hardware-standard-research-preview',
+    source: 'Anthropic',
+    kind: 'company',
+    title: 'Anthropic, AI가 실험 장비를 다루는 규격 MHS 연구 프리뷰',
+    summary:
+      'Anthropic이 AI 에이전트가 물리 장비를 조작하도록 규격을 맞춘 Model Hardware Standard(MHS)를 연구 프리뷰로 내놨다. ' +
+      '현미경·액체 분주기·로봇 팔 같은 장비를 읽기·쓰기 명령으로 다루고 MCP와 CLI, 코드 API로 접근한다.',
+    publishedAt: '2026-08-27',
+    collectedAt: '2026-08-28',
+    category: 'Product',
+    signal: '하드웨어 제어 표준',
+    url: 'https://www.anthropic.com/news/model-hardware-standard-research-preview',
+  },
+  {
+    id: 'gemini-omni-1-1-flash-lets-you-build-with-more-control',
+    source: 'Google DeepMind',
+    kind: 'model',
+    title: 'Google, 장면 확장·키프레임 붙인 Gemini Omni 1.1 Flash 공개',
+    summary:
+      '구글이 영상 생성 모델 Gemini Omni 1.1 Flash를 개발자용으로 내놨다. 앞선 영상을 1초가 아니라 10초까지 참고해 ' +
+      '10초 단위로 최대 40초까지 장면을 잇고, 첫 프레임과 마지막 프레임을 지정하거나 3초짜리 영상을 참고 자료로 넣을 수 있다.',
+    publishedAt: '2026-08-27',
+    collectedAt: '2026-08-28',
+    category: 'Multimodal',
+    signal: '생성형 영상',
+    url: 'https://deepmind.google/blog/gemini-omni-1-1-flash-lets-you-build-with-more-control',
+    model: {
+      family: 'Gemini',
+      name: 'Gemini Omni 1.1 Flash',
+      kind: '신규 모델',
+      status: '공개',
+      useCase: '장면을 이어 붙이는 영상 생성',
+      headline: '10초 단위로 40초까지 잇고 360p로 초안을 뽑는 영상 생성 모델',
+      logo: 'assets/gemini.svg',
+      tone: 'gemini',
+    },
+  },
+  {
+    id: 'piloting-the-worlds-first-double-blind-ai-evaluations',
+    source: 'Google DeepMind',
+    kind: 'company',
+    title: 'Google DeepMind, 가중치도 문항도 가린 이중 맹검 평가 시범',
+    summary:
+      'Google DeepMind가 Gemini Flash Lite를 대상으로 비공개 모델을 외부 기관이 평가하는 이중 맹검 시범을 돌렸다. ' +
+      'Google Cloud의 Confidential Space 안에서 평가자는 모델 가중치를, 구글은 평가 문항을 서로 보지 못한 채 채점이 끝난다.',
+    publishedAt: '2026-08-27',
+    collectedAt: '2026-08-28',
+    category: 'Research',
+    signal: '이중 맹검 평가',
+    url: 'https://deepmind.google/blog/piloting-the-worlds-first-double-blind-ai-evaluations',
+  },
+  {
+    id: 'search-book-travel-ai-mode',
+    source: 'Google DeepMind',
+    kind: 'company',
+    title: 'Google 검색 AI 모드에 항공권 가격 알림·호텔 예약 추가',
+    summary:
+      'Google이 검색 AI 모드에 여행 기능 세 가지를 더했다. 대화 중에 항공권 가격 알림을 걸고, 마일리지로 바꿀 때 드는 ' +
+      '포인트를 함께 보여 주며, Google Pay로 호텔을 그 자리에서 예약한다.',
+    publishedAt: '2026-08-27',
+    collectedAt: '2026-08-28',
+    category: 'Product',
+    signal: '검색 여행 예약',
+    url: 'https://blog.google/products-and-platforms/products/search/book-travel-ai-mode',
+  },
+  {
     id: 'hugging-face-incident-and-the-road-ahead',
     source: 'OpenAI',
     kind: 'company',
