@@ -96,7 +96,7 @@ print('있는 파일:', ', '.join(files[n] for n in sorted(files)) or '없음')
 
 picks = []
 for i, (title, subject, kw) in enumerate(topics):
-    if len(picks) == 2:
+    if len(picks) == 4:
         break
     have = files.get(i + 1)
     if have and title_of(os.path.join(d, have)) == title:
@@ -104,12 +104,12 @@ for i, (title, subject, kw) in enumerate(topics):
     picks.append((i + 1, title, subject, kw, have))
 
 n = 90
-while len(picks) < 2:
+while len(picks) < 4:
     if n not in files:
         picks.append((n, f'모의고사 {n - 89}회', '문제', [], None))
     n += 1
 
-print('\n이번에 쓸 두 편:')
+print('\n이번에 쓸 네 편:')
 for n, title, subject, kw, have in picks:
     print(f'  {n:02d}  {title}   [{subject}]')
     if kw:
@@ -168,6 +168,15 @@ description: ""      # 목록에 그대로 나가는 한 줄. 30~160자
 kind: "개념"          # "개념" 또는 "문제"
 pubDate: "YYYY-MM-DD"   # TZ='Asia/Seoul' date +%Y-%m-%d
 ---
+```
+
+**`pubDate`는 짐작하지 말고 쉘로 받는다.** 첫 원고를 쓰기 전에 한 번 돌려 그 값을
+네 편에 그대로 쓴다. 이 루틴은 21:00 UTC에 도는데 그때 KST는 이미 다음 날 06:00이라,
+UTC 날짜를 적으면 네 편 모두 하루 이른 날짜로 나간다 — 2026-08-28에 쓴 ADP 01~04가
+`2026-08-27`로 나갔던 자리다.
+
+```bash
+TZ='Asia/Seoul' date +%Y-%m-%d
 ```
 
 본문 규칙은 `CLAUDE.md`의 「글 쓰기」와 같다. 특히 이 다섯을 지킨다.
