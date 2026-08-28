@@ -3046,6 +3046,15 @@ input:focus-visible {
   덧그어 자리를 짚습니다 — 글자만 밝게 하면 긴 목록에서 눈이 못 찾습니다.
   li의 padding-left(16px)와 선 두께를 감안해 왼쪽으로 17px 밀어 세로선에 겹칩니다.
 */
+/*
+  목차의 하위 항목. 「시험 노트」 아래의 세 묶음이 여기 섭니다 — 번호 없이 한 칸
+  들여 부모와 갈라 둡니다.
+*/
+.article-toc-item.is-sub {
+  margin-left: 12px;
+  font-size: 11px;
+}
+
 .article-toc-item {
   position: relative;
 }
@@ -5401,14 +5410,18 @@ input:focus-visible {
   margin-top: 30px;
 }
 
-.cert-prep-group-head {
+/* 진짜 h3입니다 — 목차가 여기로 뜁니다. 절 제목보다는 작게 둡니다. */
+.cert-section .cert-prep-group-head {
   display: flex;
   align-items: baseline;
   gap: 10px;
+  margin-top: 0;
+  margin-bottom: 0;
   border-bottom: 1px solid var(--border);
   padding-bottom: 6px;
   color: var(--text-strong);
   font-size: 13px;
+  font-weight: 500;
 }
 
 .cert-prep-group-name {

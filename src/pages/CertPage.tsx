@@ -1,10 +1,10 @@
-import { useMemo, type ReactNode } from 'react';
-import { ArrowLeft, ArrowUpRight } from 'lucide-react';
-import { Link, Navigate, useParams } from 'react-router';
-import { CertMark } from '../components/CertMark';
-import { useActiveHeading } from '../lib/activeHeading';
-import { CertStars } from '../components/CertStars';
-import { Seo } from '../components/Seo';
+import { useMemo, type ReactNode } from "react";
+import { ArrowLeft, ArrowUpRight } from "lucide-react";
+import { Link, Navigate, useParams } from "react-router";
+import { CertMark } from "../components/CertMark";
+import { useActiveHeading } from "../lib/activeHeading";
+import { CertStars } from "../components/CertStars";
+import { Seo } from "../components/Seo";
 import {
   certById,
   nextSession,
@@ -12,11 +12,16 @@ import {
   type Cert,
   type CertExamSession,
   type CertStudyItem,
-} from '../data/certs';
-import { prepGroups, prepHold, prepProgress, type CertPrepRow } from '../data/certPrep';
-import { getArticleBySlug } from '../data/articles';
+} from "../data/certs";
+import {
+  prepGroups,
+  prepHold,
+  prepProgress,
+  type CertPrepRow,
+} from "../data/certPrep";
+import { getArticleBySlug } from "../data/articles";
 
-const TECHBLOG = 'https://techblog.paldyn.com/posts';
+const TECHBLOG = "https://techblog.paldyn.com/posts";
 
 /**
  * 학습 경로의 글 한 줄. **두 사이트에 걸칩니다.**
@@ -26,9 +31,14 @@ const TECHBLOG = 'https://techblog.paldyn.com/posts';
  * 누르기 전에 알려 주기 위해서입니다.
  */
 function StudyLink({ item }: { item: CertStudyItem }) {
-  if (item.site === 'techblog') {
+  if (item.site === "techblog") {
     return (
-      <a className="cert-study-item" href={`${TECHBLOG}/${item.slug}/`} target="_blank" rel="noreferrer">
+      <a
+        className="cert-study-item"
+        href={`${TECHBLOG}/${item.slug}/`}
+        target="_blank"
+        rel="noreferrer"
+      >
         <span className="cert-study-badge cert-study-badge-tech">TECH</span>
         <span className="cert-study-title">{item.label ?? item.slug}</span>
         <ArrowUpRight size={13} aria-hidden="true" />
@@ -40,7 +50,9 @@ function StudyLink({ item }: { item: CertStudyItem }) {
   return (
     <Link className="cert-study-item" to={`/articles/${item.slug}`}>
       <span className="cert-study-badge">AI LAB</span>
-      <span className="cert-study-title">{item.label ?? article?.title ?? item.slug}</span>
+      <span className="cert-study-title">
+        {item.label ?? article?.title ?? item.slug}
+      </span>
     </Link>
   );
 }
@@ -52,14 +64,16 @@ function StudyLink({ item }: { item: CertStudyItem }) {
  * 다만 접수가 앞 해에 시작하는 회차가 있을 수 있어, 표의 연도와 다른 값이면
  * 그때만 연도를 붙입니다.
  */
-const WEEKDAY = ['일', '월', '화', '수', '목', '금', '토'];
+const WEEKDAY = ["일", "월", "화", "수", "목", "금", "토"];
 
 function dayOf(iso: string, shownYear?: string): string {
-  const [year, month, day] = iso.split('-').map(Number);
+  const [year, month, day] = iso.split("-").map(Number);
   // UTC로 만들어 시간대에 따라 하루가 밀리지 않게 합니다.
   const at = new Date(Date.UTC(year, month - 1, day));
   const label = `${month}. ${day}.(${WEEKDAY[at.getUTCDay()]})`;
-  return shownYear && iso.slice(0, 4) !== shownYear ? `${year}. ${label}` : label;
+  return shownYear && iso.slice(0, 4) !== shownYear
+    ? `${year}. ${label}`
+    : label;
 }
 
 /**
@@ -72,21 +86,24 @@ function dayOf(iso: string, shownYear?: string): string {
  * 값은 오늘 날짜에 달려 있습니다. 프리렌더된 HTML은 빌드한 날의 상태를 담고
  * 있다가 화면에서 다시 계산됩니다 — 루틴이 매일 빌드하므로 어긋나야 하루입니다.
  */
-type SessionState = 'done' | 'open' | 'before' | 'closed';
+type SessionState = "done" | "open" | "before" | "closed";
 
-const STATE_LABEL: Record<Exclude<SessionState, 'done'>, string> = {
-  before: '접수 전',
-  open: '접수 중',
-  closed: '접수 마감',
+const STATE_LABEL: Record<Exclude<SessionState, "done">, string> = {
+  before: "접수 전",
+  open: "접수 중",
+  closed: "접수 마감",
 };
 
-function stateOf(session: CertExamSession, today: string): SessionState | undefined {
-  if (session.examDate < today) return 'done';
+function stateOf(
+  session: CertExamSession,
+  today: string,
+): SessionState | undefined {
+  if (session.examDate < today) return "done";
   // 접수 날짜를 모르면 상태도 모릅니다. 「접수 중」으로 단정하지 않습니다.
   if (!session.applyFrom && !session.applyTo) return undefined;
-  if (session.applyFrom && today < session.applyFrom) return 'before';
-  if (session.applyTo && today > session.applyTo) return 'closed';
-  return 'open';
+  if (session.applyFrom && today < session.applyFrom) return "before";
+  if (session.applyTo && today > session.applyTo) return "closed";
+  return "open";
 }
 
 /**
@@ -106,8 +123,8 @@ interface ScheduleColumn {
 
 const SCHEDULE_COLUMNS: ScheduleColumn[] = [
   {
-    key: 'apply',
-    label: '접수',
+    key: "apply",
+    label: "접수",
     has: (session) => Boolean(session.applyFrom ?? session.applyTo),
     /*
       접수 기간 옆에 지금 상태를 답니다. 이미 치른 회차에는 붙이지 않습니다 —
@@ -119,57 +136,65 @@ const SCHEDULE_COLUMNS: ScheduleColumn[] = [
       return (
         <>
           {period(session.applyFrom, session.applyTo, year)}
-          {state && state !== 'done' && (
-            <span className={`cert-schedule-state is-${state}`}>{STATE_LABEL[state]}</span>
+          {state && state !== "done" && (
+            <span className={`cert-schedule-state is-${state}`}>
+              {STATE_LABEL[state]}
+            </span>
           )}
         </>
       );
     },
   },
   {
-    key: 'ticket',
-    label: '수험표',
+    key: "ticket",
+    label: "수험표",
     has: (session) => Boolean(session.ticketDate),
-    cell: (session, year) => (session.ticketDate ? dayOf(session.ticketDate, year) : '—'),
+    cell: (session, year) =>
+      session.ticketDate ? dayOf(session.ticketDate, year) : "—",
   },
   {
-    key: 'exam',
-    label: '시험일',
+    key: "exam",
+    label: "시험일",
     has: () => true,
     cell: (session, year) => dayOf(session.examDate, year),
   },
   {
-    key: 'preview',
-    label: '사전점수공개',
+    key: "preview",
+    label: "사전점수공개",
     has: (session) => Boolean(session.previewFrom ?? session.previewTo),
-    cell: (session, year) => period(session.previewFrom, session.previewTo, year),
+    cell: (session, year) =>
+      period(session.previewFrom, session.previewTo, year),
   },
   {
-    key: 'result',
-    label: '발표',
+    key: "result",
+    label: "발표",
     has: (session) => Boolean(session.resultDate),
-    cell: (session, year) => (session.resultDate ? dayOf(session.resultDate, year) : '—'),
+    cell: (session, year) =>
+      session.resultDate ? dayOf(session.resultDate, year) : "—",
   },
   {
-    key: 'document',
-    label: '서류제출',
+    key: "document",
+    label: "서류제출",
     has: (session) => Boolean(session.documentFrom ?? session.documentTo),
-    cell: (session, year) => period(session.documentFrom, session.documentTo, year),
+    cell: (session, year) =>
+      period(session.documentFrom, session.documentTo, year),
   },
   {
-    key: 'note',
-    label: '비고',
+    key: "note",
+    label: "비고",
     has: (session) => Boolean(session.note),
-    cell: (session) => session.note ?? '—',
+    cell: (session) => session.note ?? "—",
   },
 ];
 
 function scheduleColumns(schedule: CertExamSession[]): ScheduleColumn[] {
-  return SCHEDULE_COLUMNS.filter((column) => schedule.some((session) => column.has(session)));
+  return SCHEDULE_COLUMNS.filter((column) =>
+    schedule.some((session) => column.has(session)),
+  );
 }
 
 function period(from?: string, to?: string, shownYear?: string): string {
-  if (!from && !to) return '—';
+  if (!from && !to) return "—";
   if (from && to) return `${dayOf(from, shownYear)} ~ ${dayOf(to, shownYear)}`;
   return dayOf((from ?? to) as string, shownYear);
 }
@@ -180,7 +205,7 @@ function Fact({ label, value }: { label: string; value?: string }) {
   return (
     <div className="cert-fact">
       <dt>{label}</dt>
-      <dd>{value.replace(/\*\*/g, '')}</dd>
+      <dd>{value.replace(/\*\*/g, "")}</dd>
     </div>
   );
 }
@@ -198,25 +223,45 @@ function CertView({ cert }: { cert: Cert }) {
   const years = sessionsByYear(cert);
   const next = nextSession(cert, today);
   const columns = useMemo(() => scheduleColumns(cert.schedule ?? []), [cert]);
+  const extras = groups?.extras.length ?? 0;
 
   /*
     목차에 세울 절. 있는 절만 담습니다 — 학습 경로가 아직 없는 자격증도 있고,
     없는 절을 목차에 두면 눌렀을 때 아무 데도 안 갑니다.
   */
-  const sections = useMemo(
-    () =>
-      [
-        { id: 'what', title: '무엇을 재는 시험인가' },
-        { id: 'subjects', title: '과목' },
-        { id: 'exam', title: '시험 정보' },
-        years.length > 0 ? { id: 'schedule', title: '시험 일정' } : null,
-        { id: 'prep', title: '시험 노트' },
-        cert.studyPath.length > 0 ? { id: 'study', title: '관련 있는 우리 글' } : null,
-        cert.notes ? { id: 'notes', title: '알아 둘 것' } : null,
-      ].filter((section) => section !== null),
-    [cert, years.length],
+  const sections = [
+    { id: "what", title: "무엇을 재는 시험인가" },
+    { id: "subjects", title: "과목" },
+    { id: "exam", title: "시험 정보" },
+    years.length > 0 ? { id: "schedule", title: "시험 일정" } : null,
+    { id: "prep", title: "시험 노트" },
+    /*
+      시험 노트 아래 세 묶음도 목차에 세웁니다. 계획이 서른 편을 넘으면 그 절이 화면
+      몇 개를 차지해서, 「모의고사가 어디 있나」를 목차에서 못 찾으면 스크롤로 헤매야
+      합니다. 멈춰 둔 계획은 「예정」을 안 세우므로 묶음도 빕니다.
+    */
+    ...(hold
+      ? []
+      : [
+          { id: "prep-concepts", title: "개념 정리", sub: true },
+          { id: "prep-mocks", title: "모의고사", sub: true },
+          ...(extras > 0
+            ? [{ id: "prep-reviews", title: "과목 총정리", sub: true }]
+            : []),
+        ]),
+    cert.studyPath.length > 0
+      ? { id: "study", title: "관련 있는 우리 글" }
+      : null,
+    cert.notes ? { id: "notes", title: "알아 둘 것" } : null,
+  ].filter((section) => section !== null);
+  /*
+    훑는 대상은 id 목록뿐이라 문자열 하나로 묶어 넘깁니다 — 배열을 그대로 넘기면
+    렌더마다 새 배열이라 훑기가 매번 다시 걸립니다.
+  */
+  const ids = sections.map((item) => item.id).join(",");
+  const { active, goTo } = useActiveHeading(
+    useMemo(() => ids.split(","), [ids]),
   );
-  const { active, goTo } = useActiveHeading(useMemo(() => sections.map((item) => item.id), [sections]));
 
   return (
     <article>
@@ -248,7 +293,13 @@ function CertView({ cert }: { cert: Cert }) {
               <p className="cert-head-line">
                 <span>{cert.region}</span>
                 <span aria-hidden="true">/</span>
-                <b className={cert.status === '국가기술자격' ? 'is-national' : undefined}>{cert.status}</b>
+                <b
+                  className={
+                    cert.status === "국가기술자격" ? "is-national" : undefined
+                  }
+                >
+                  {cert.status}
+                </b>
                 <span aria-hidden="true">/</span>
                 <span>{cert.issuer}</span>
               </p>
@@ -257,7 +308,9 @@ function CertView({ cert }: { cert: Cert }) {
               {cert.nameKo}
             </h1>
             {cert.nameEn !== cert.nameKo && (
-              <p className="mt-3 font-mono text-[12px] text-[var(--text-muted)]">{cert.nameEn}</p>
+              <p className="mt-3 font-mono text-[12px] text-[var(--text-muted)]">
+                {cert.nameEn}
+              </p>
             )}
           </div>
 
@@ -283,8 +336,14 @@ function CertView({ cert }: { cert: Cert }) {
                 </dd>
               </div>
             </dl>
-            <a className="cert-official" href={cert.officialUrl} target="_blank" rel="noreferrer">
-              공식 페이지에서 일정·접수 확인 <ArrowUpRight size={13} aria-hidden="true" />
+            <a
+              className="cert-official"
+              href={cert.officialUrl}
+              target="_blank"
+              rel="noreferrer"
+            >
+              공식 페이지에서 일정·접수 확인{" "}
+              <ArrowUpRight size={13} aria-hidden="true" />
             </a>
           </div>
         </div>
@@ -299,24 +358,36 @@ function CertView({ cert }: { cert: Cert }) {
       */}
       <div className="site-wrap grid gap-12 py-14 lg:grid-cols-[220px_minmax(0,760px)] lg:justify-center">
         <aside className="article-toc lg:sticky lg:top-[138px] lg:self-start">
-          <p className="font-mono text-[10px] tracking-[0.12em] text-[var(--text-muted)]">IN THIS EXAM</p>
+          <p className="font-mono text-[10px] tracking-[0.12em] text-[var(--text-muted)]">
+            IN THIS EXAM
+          </p>
           <ol className="mt-4 space-y-3 border-l border-[var(--border)] pl-4 text-xs leading-5 text-[var(--text-dim)]">
             {sections.map((section, index) => (
               <li
                 key={section.id}
-                className={`article-toc-item${section.id === active ? ' is-current' : ''}`}
+                className={`article-toc-item${section.id === active ? " is-current" : ""}${
+                  "sub" in section && section.sub ? " is-sub" : ""
+                }`}
               >
                 <a
                   href={`#${section.id}`}
                   className="hover:text-[var(--text)]"
-                  aria-current={section.id === active ? 'true' : undefined}
+                  aria-current={section.id === active ? "true" : undefined}
                   onClick={(event) => {
-                    if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+                    if (
+                      event.metaKey ||
+                      event.ctrlKey ||
+                      event.shiftKey ||
+                      event.altKey
+                    )
+                      return;
                     event.preventDefault();
                     goTo(section.id);
                   }}
                 >
-                  {String(index + 1).padStart(2, '0')} {section.title}
+                  {"sub" in section && section.sub
+                    ? section.title
+                    : `${String(sections.slice(0, index).filter((item) => !("sub" in item && item.sub)).length + 1).padStart(2, "0")} ${section.title}`}
                 </a>
               </li>
             ))}
@@ -324,47 +395,57 @@ function CertView({ cert }: { cert: Cert }) {
         </aside>
 
         <div className="min-w-0 cert-body">
-        <section className="cert-section">
-          <h2 id="what">무엇을 재는 시험인가</h2>
-          <p className="cert-prose">{cert.whatItMeasures.replace(/\*\*/g, '')}</p>
-          {cert.audience && (
-            <>
-              <h3>누가 보는가</h3>
-              <p className="cert-prose">{cert.audience.replace(/\*\*/g, '')}</p>
-            </>
-          )}
-        </section>
-
-        <section className="cert-section">
-          <h2 id="subjects">과목</h2>
-          <ol className="cert-subjects">
-            {cert.subjects.map((subject) => (
-              <li key={subject.name}>
-                <p className="cert-subject-head">
-                  <span>{subject.name}</span>
-                  {subject.weight && <span className="cert-subject-weight">{subject.weight}</span>}
-                </p>
-                {subject.note && <p className="cert-subject-note">{subject.note}</p>}
-              </li>
-            ))}
-          </ol>
-        </section>
-
-        <section className="cert-section">
-          <h2 id="exam">시험 정보</h2>
-          <dl className="cert-facts">
-            <Fact label="시행 주기" value={cert.cadence} />
-            <Fact label="형식" value={cert.format} />
-            <Fact label="응시료" value={cert.fee} />
-            <Fact label="응시자격" value={cert.prerequisite} />
-            <Fact label="유효기간" value={cert.validity} />
-          </dl>
-        </section>
-
-        {years.length > 0 && (
           <section className="cert-section">
-            <h2 id="schedule">시험 일정</h2>
-            {/*
+            <h2 id="what">무엇을 재는 시험인가</h2>
+            <p className="cert-prose">
+              {cert.whatItMeasures.replace(/\*\*/g, "")}
+            </p>
+            {cert.audience && (
+              <>
+                <h3>누가 보는가</h3>
+                <p className="cert-prose">
+                  {cert.audience.replace(/\*\*/g, "")}
+                </p>
+              </>
+            )}
+          </section>
+
+          <section className="cert-section">
+            <h2 id="subjects">과목</h2>
+            <ol className="cert-subjects">
+              {cert.subjects.map((subject) => (
+                <li key={subject.name}>
+                  <p className="cert-subject-head">
+                    <span>{subject.name}</span>
+                    {subject.weight && (
+                      <span className="cert-subject-weight">
+                        {subject.weight}
+                      </span>
+                    )}
+                  </p>
+                  {subject.note && (
+                    <p className="cert-subject-note">{subject.note}</p>
+                  )}
+                </li>
+              ))}
+            </ol>
+          </section>
+
+          <section className="cert-section">
+            <h2 id="exam">시험 정보</h2>
+            <dl className="cert-facts">
+              <Fact label="시행 주기" value={cert.cadence} />
+              <Fact label="형식" value={cert.format} />
+              <Fact label="응시료" value={cert.fee} />
+              <Fact label="응시자격" value={cert.prerequisite} />
+              <Fact label="유효기간" value={cert.validity} />
+            </dl>
+          </section>
+
+          {years.length > 0 && (
+            <section className="cert-section">
+              <h2 id="schedule">시험 일정</h2>
+              {/*
               **연도 전체를 보여 줍니다.** 지난 회차를 접어 두면 「올해 몇 번
               있었는가」가 안 보이는데, 회차가 정해진 시험은 그 리듬이 곧 계획의
               근거입니다. 지난 줄은 흐리게 두고 다음 회차 한 줄만 짚습니다.
@@ -374,169 +455,215 @@ function CertView({ cert }: { cert: Cert }) {
               빈칸으로 뒤덮입니다. 그 자격증의 회차 중 하나라도 값을 가진 칸만
               세웁니다.
             */}
-            {years.map((group) => (
-              <div key={group.year} className="cert-schedule-year">
-                <h3>{group.year}</h3>
-                <div className="cert-schedule-scroll">
-                  <table className="cert-schedule">
-                    <thead>
-                      <tr>
-                        <th scope="col">회차</th>
-                        {columns.map((column) => (
-                          <th key={column.key} scope="col" className={`is-${column.key}`}>
-                            {column.label}
-                          </th>
-                        ))}
-                      </tr>
-                    </thead>
-                    <tbody>
-                      {group.sessions.map((session) => {
-                        const isNext = session === next;
-                        const done = session.examDate < today;
+              {years.map((group) => (
+                <div key={group.year} className="cert-schedule-year">
+                  <h3>{group.year}</h3>
+                  <div className="cert-schedule-scroll">
+                    <table className="cert-schedule">
+                      <thead>
+                        <tr>
+                          <th scope="col">회차</th>
+                          {columns.map((column) => (
+                            <th
+                              key={column.key}
+                              scope="col"
+                              className={`is-${column.key}`}
+                            >
+                              {column.label}
+                            </th>
+                          ))}
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {group.sessions.map((session) => {
+                          const isNext = session === next;
+                          const done = session.examDate < today;
 
-                        return (
-                          <tr
-                            key={`${session.round}-${session.examDate}`}
-                            className={[isNext ? 'is-next' : '', done ? 'is-done' : ''].filter(Boolean).join(' ')}
-                          >
-                            <th scope="row">{session.round}</th>
-                            {columns.map((column) => (
-                              <td key={column.key} className={`is-${column.key}`}>
-                                {column.cell(session, group.year, today)}
-                              </td>
-                            ))}
-                          </tr>
-                        );
-                      })}
-                    </tbody>
-                  </table>
+                          return (
+                            <tr
+                              key={`${session.round}-${session.examDate}`}
+                              className={[
+                                isNext ? "is-next" : "",
+                                done ? "is-done" : "",
+                              ]
+                                .filter(Boolean)
+                                .join(" ")}
+                            >
+                              <th scope="row">{session.round}</th>
+                              {columns.map((column) => (
+                                <td
+                                  key={column.key}
+                                  className={`is-${column.key}`}
+                                >
+                                  {column.cell(session, group.year, today)}
+                                </td>
+                              ))}
+                            </tr>
+                          );
+                        })}
+                      </tbody>
+                    </table>
+                  </div>
                 </div>
-              </div>
-            ))}
-            {/*
+              ))}
+              {/*
               두 줄로 나눕니다. 앞은 이 표가 언제 것인지, 뒤는 그래도 원문을 보라는
               말이라 하는 일이 다릅니다 — 한 문단에 붙여 두었더니 확인 날짜가
               뒷문장에 묻혀 안 읽혔습니다.
             */}
-            <div className="cert-schedule-foot">
-              <p>{cert.verifiedAt} 확인. 접수 시각과 환불 규정은 「시험 정보」의 주기 항목에 있습니다.</p>
-              <p>
-                회차는 시행처 공고를 그대로 옮긴 것이고, 바뀔 수 있으니 접수 전에{' '}
-                <a href={cert.scheduleUrl ?? cert.officialUrl} target="_blank" rel="noreferrer">
-                  시행처 일정
-                </a>
-                을 한 번 더 보세요.
-              </p>
-            </div>
-          </section>
-        )}
+              <div className="cert-schedule-foot">
+                <p>
+                  {cert.verifiedAt} 확인. 접수 시각과 환불 규정은 「시험
+                  정보」의 주기 항목에 있습니다.
+                </p>
+                <p>
+                  회차는 시행처 공고를 그대로 옮긴 것이고, 바뀔 수 있으니 접수
+                  전에{" "}
+                  <a
+                    href={cert.scheduleUrl ?? cert.officialUrl}
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    시행처 일정
+                  </a>
+                  을 한 번 더 보세요.
+                </p>
+              </div>
+            </section>
+          )}
 
-        {/*
+          {/*
           **시험 노트가 학습 경로의 본체입니다.** 아래 「관련 있는 우리 글」은 이미
           있던 글을 과목에 매핑한 것인데, 그 글들은 시험을 보라고 쓴 것이 아니라
           개념을 설명하려고 쓴 것이라 「무엇을 외워야 붙는가」가 빠져 있습니다.
           시험 하나를 놓고 처음부터 쓴 글은 이쪽입니다.
         */}
-        <section className="cert-section">
-          <h2 id="prep">시험 노트</h2>
-          {/*
+          <section className="cert-section">
+            <h2 id="prep">시험 노트</h2>
+            {/*
             **계획 대비 진도를 함께 보여 줍니다.** 쓴 편수만 세면 ADsP 5편이 다 찬
             것처럼 읽혔습니다. 아래 「예정」 줄은 시행처 출제범위를 쪼갠 계획이고
             루틴이 위에서부터 순서대로 채웁니다.
           */}
-          {progress && (
-            <div className="cert-prep-progress">
-              <p className="cert-prep-progress-line">
-                <strong>{progress.written}</strong>
-                <span className="cert-prep-progress-total"> / {progress.planned}편</span>
-                <span className="cert-prep-progress-split">
-                  {`개념 ${progress.concepts}/${progress.plannedConcepts} · 모의고사 ${progress.mocks}/${progress.plannedMocks}`}
-                  {groups && groups.extras.length > 0 ? ` · 총정리 ${groups.extras.length}` : ''}
-                </span>
-              </p>
-              <div className="cert-prep-bar">
-                <span
-                  style={{ width: `${Math.min(100, (progress.written / progress.planned) * 100)}%` }}
-                />
+            {progress && (
+              <div className="cert-prep-progress">
+                <p className="cert-prep-progress-line">
+                  <strong>{progress.written}</strong>
+                  <span className="cert-prep-progress-total">
+                    {" "}
+                    / {progress.planned}편
+                  </span>
+                  <span className="cert-prep-progress-split">
+                    {`개념 ${progress.concepts}/${progress.plannedConcepts} · 모의고사 ${progress.mocks}/${progress.plannedMocks}`}
+                    {groups && groups.extras.length > 0
+                      ? ` · 총정리 ${groups.extras.length}`
+                      : ""}
+                  </span>
+                </p>
+                <div className="cert-prep-bar">
+                  <span
+                    style={{
+                      width: `${Math.min(100, (progress.written / progress.planned) * 100)}%`,
+                    }}
+                  />
+                </div>
               </div>
-            </div>
-          )}
-          {hold && <p className="cert-prose cert-prep-hold">{hold}</p>}
-          {groups && (
-            <>
-              {/*
+            )}
+            {hold && <p className="cert-prose cert-prep-hold">{hold}</p>}
+            {groups && (
+              <>
+                {/*
                 **묶음마다 번호를 새로 셉니다.** 파일 번호를 그대로 보이면 총정리가
                 85·86·87로, 모의고사가 90·91로 서서 계획이 서른넷인 시험에 여든다섯
                 번째 노트가 있는 것처럼 읽혔습니다. 그리고 파일 번호대로 한 줄에
                 늘어놓으면 아직 안 쓴 개념 01 위에 총정리와 모의고사가 서서 읽는
                 차례가 뒤집힙니다.
               */}
-              <PrepGroup
-                title="개념 정리"
-                count={`${progress?.concepts ?? 0} / ${groups.concepts.length}`}
-                rows={hold ? groups.concepts.filter((row) => row.note) : groups.concepts}
-              />
-              <PrepGroup
-                title="모의고사"
-                count={`${progress?.mocks ?? 0} / ${groups.mocks.length}`}
-                rows={hold ? groups.mocks.filter((row) => row.note) : groups.mocks}
-                note={hold ? undefined : '개념을 다 쓴 뒤에 차례로 붙습니다.'}
-              />
-              {groups.extras.length > 0 && (
                 <PrepGroup
-                  title="과목 총정리"
-                  count={`${groups.extras.length}편`}
-                  rows={groups.extras.map((note) => ({ title: note.title, note }))}
-                  note="과목 하나를 통째로 훑는 복습 노트입니다. 위 개념 노트들이 채워질수록 시험 직전에 되짚는 자리가 됩니다."
+                  id="prep-concepts"
+                  title="개념 정리"
+                  count={`${progress?.concepts ?? 0} / ${groups.concepts.length}`}
+                  rows={
+                    hold
+                      ? groups.concepts.filter((row) => row.note)
+                      : groups.concepts
+                  }
                 />
-              )}
-            </>
-          )}
-        </section>
+                <PrepGroup
+                  id="prep-mocks"
+                  title="모의고사"
+                  count={`${progress?.mocks ?? 0} / ${groups.mocks.length}`}
+                  rows={
+                    hold ? groups.mocks.filter((row) => row.note) : groups.mocks
+                  }
+                  note={hold ? undefined : "개념을 다 쓴 뒤에 차례로 붙습니다."}
+                />
+                {groups.extras.length > 0 && (
+                  <PrepGroup
+                    id="prep-reviews"
+                    title="과목 총정리"
+                    count={`${groups.extras.length}편`}
+                    rows={groups.extras.map((note) => ({
+                      title: note.title,
+                      note,
+                    }))}
+                    note="과목 하나를 통째로 훑는 복습 노트입니다. 위 개념 노트들이 채워질수록 시험 직전에 되짚는 자리가 됩니다."
+                  />
+                )}
+              </>
+            )}
+          </section>
 
-        {cert.studyPath.length > 0 && (
-          <section className="cert-section">
-            <h2 id="study">관련 있는 우리 글</h2>
-            <p className="cert-prose cert-study-intro">
-              시험을 겨냥해 쓴 글은 아니지만 같은 개념을 다룹니다. 과목이 막힐 때 곁에 두고 읽습니다.
-            </p>
-            {cert.studyPath.map((group) => (
-              <div key={group.subject} className="cert-study-group">
-                <h3>{group.subject}</h3>
-                <div className="cert-study-list">
-                  {group.items.map((item) => (
-                    <StudyLink key={`${item.site}:${item.slug}`} item={item} />
-                  ))}
+          {cert.studyPath.length > 0 && (
+            <section className="cert-section">
+              <h2 id="study">관련 있는 우리 글</h2>
+              <p className="cert-prose cert-study-intro">
+                시험을 겨냥해 쓴 글은 아니지만 같은 개념을 다룹니다. 과목이 막힐
+                때 곁에 두고 읽습니다.
+              </p>
+              {cert.studyPath.map((group) => (
+                <div key={group.subject} className="cert-study-group">
+                  <h3>{group.subject}</h3>
+                  <div className="cert-study-list">
+                    {group.items.map((item) => (
+                      <StudyLink
+                        key={`${item.site}:${item.slug}`}
+                        item={item}
+                      />
+                    ))}
+                  </div>
                 </div>
-              </div>
-            ))}
-          </section>
-        )}
+              ))}
+            </section>
+          )}
 
-        {cert.notes && (
-          <section className="cert-section">
-            <h2 id="notes">알아 둘 것</h2>
-            {/* 데이터가 「- 」로 시작하는 줄 목록이면 목록으로 그립니다. 한 문단으로 뭉치면 안 읽힙니다. */}
-            <ul className="cert-notes">
-              {cert.notes
-                .split('\n')
-                .map((line) => line.replace(/^-\s*/, '').replace(/\*\*/g, '').trim())
-                .filter(Boolean)
-                .map((line) => (
-                  <li key={line}>{line}</li>
-                ))}
-            </ul>
-          </section>
-        )}
+          {cert.notes && (
+            <section className="cert-section">
+              <h2 id="notes">알아 둘 것</h2>
+              {/* 데이터가 「- 」로 시작하는 줄 목록이면 목록으로 그립니다. 한 문단으로 뭉치면 안 읽힙니다. */}
+              <ul className="cert-notes">
+                {cert.notes
+                  .split("\n")
+                  .map((line) =>
+                    line.replace(/^-\s*/, "").replace(/\*\*/g, "").trim(),
+                  )
+                  .filter(Boolean)
+                  .map((line) => (
+                    <li key={line}>{line}</li>
+                  ))}
+              </ul>
+            </section>
+          )}
 
-        <p className="cert-verified">
-          난이도와 취업 별은 시행처가 준 값이 아니라 위에 적은 근거로 매긴 값입니다. 공식 페이지는{' '}
-          <strong>{cert.verifiedAt}</strong>에 확인했습니다. 시험 제도는 개편이 잦으니 접수 전에{' '}
-          <a href={cert.officialUrl} target="_blank" rel="noreferrer">
-            시행처 안내
-          </a>
-          를 한 번 더 보세요.
-        </p>
+          <p className="cert-verified">
+            난이도와 취업 별은 시행처가 준 값이 아니라 위에 적은 근거로 매긴
+            값입니다. 공식 페이지는 <strong>{cert.verifiedAt}</strong>에
+            확인했습니다. 시험 제도는 개편이 잦으니 접수 전에{" "}
+            <a href={cert.officialUrl} target="_blank" rel="noreferrer">
+              시행처 안내
+            </a>
+            를 한 번 더 보세요.
+          </p>
         </div>
       </div>
     </article>
@@ -550,11 +677,13 @@ function CertView({ cert }: { cert: Cert }) {
  * 차례가 없는 묶음은 번호 칸을 비워 둡니다.
  */
 function PrepGroup({
+  id,
   title,
   count,
   rows,
   note,
 }: {
+  id: string;
   title: string;
   count: string;
   rows: CertPrepRow[];
@@ -562,31 +691,40 @@ function PrepGroup({
 }) {
   if (rows.length === 0) return null;
 
+  /*
+    묶음 머리는 **진짜 헤딩**입니다. 목차가 「시험 노트」 아래에 이 셋을 그대로
+    세우고 눌러 뛰기 때문입니다 — 문단으로 두면 목차가 걸 자리가 없습니다.
+  */
   return (
     <div className="cert-prep-group">
-      <p className="cert-prep-group-head">
+      <h3 id={id} className="cert-prep-group-head">
         <span className="cert-prep-group-name">{title}</span>
         <span className="cert-prep-group-count">{count}</span>
-      </p>
+      </h3>
       {note && <p className="cert-prep-group-note">{note}</p>}
       <ol className="cert-prep-list">
         {rows.map((row, index) => {
-          const number = row.order === undefined ? '' : String(row.order).padStart(2, '0');
+          const number =
+            row.order === undefined ? "" : String(row.order).padStart(2, "0");
           const body = (
             <>
               <span className="cert-prep-order">{number}</span>
               <span className="cert-prep-name">{row.title}</span>
               {row.note ? (
                 <>
-                  <span className={`cert-prep-kind${row.note.kind === '문제' ? ' is-quiz' : ''}`}>
+                  <span
+                    className={`cert-prep-kind${row.note.kind === "문제" ? " is-quiz" : ""}`}
+                  >
                     {row.note.kind}
                   </span>
-                  <span className="cert-prep-time">{row.note.readTime} MIN</span>
+                  <span className="cert-prep-time">
+                    {row.note.readTime} MIN
+                  </span>
                 </>
               ) : (
                 <>
                   <span className="cert-prep-kind">예정</span>
-                  <span className="cert-prep-time">{row.subject ?? ''}</span>
+                  <span className="cert-prep-time">{row.subject ?? ""}</span>
                 </>
               )}
             </>
@@ -601,7 +739,9 @@ function PrepGroup({
               ) : (
                 <span className="cert-prep-item is-planned">{body}</span>
               )}
-              {row.note && <p className="cert-prep-summary">{row.note.summary}</p>}
+              {row.note && (
+                <p className="cert-prep-summary">{row.note.summary}</p>
+              )}
             </li>
           );
         })}
