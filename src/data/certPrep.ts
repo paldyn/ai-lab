@@ -168,6 +168,29 @@ export function prepNote(certId: string, slug: string): CertPrepNote | undefined
  * 같은 자격증 안의 앞뒤 글. 시험 노트는 순서대로 읽는 것이라 글 사슬처럼
  * 본문에 링크를 적지 않고 파일 번호로 정합니다.
  */
+export type CertPrepBand = 'concepts' | 'mocks' | 'reviews';
+
+/**
+ * 이 노트가 어느 묶음에 있는가. 번호대가 정합니다 —
+ * 계획 주제(01~), 계획 밖 총정리(80~89), 모의고사(90~).
+ */
+export function prepBand(note: CertPrepNote): CertPrepBand {
+  if (note.order >= MOCK_FROM) return 'mocks';
+  const plan = planFor(note.certId);
+  return plan && note.order > plan.topics.length ? 'reviews' : 'concepts';
+}
+
+/** 상세 화면에서 그 묶음이 서는 자리. 「전체 보기」가 여기로 뜁니다. */
+export function prepAnchor(note: CertPrepNote): string {
+  return `prep-${prepBand(note)}`;
+}
+
+/**
+ * 같은 자격증의 앞뒤 노트. **같은 묶음 안에서만** 찾습니다.
+ *
+ * 파일 번호로만 이으면 총정리 마지막 편의 「다음」이 모의고사 1회가 됩니다 —
+ * 되짚는 글을 읽다가 시험지로 넘어가는 셈이라 읽는 결이 끊깁니다.
+ */
 export function prepNeighbors(certId: string, slug: string): {
   prev?: CertPrepNote;
   next?: CertPrepNote;
@@ -175,5 +198,9 @@ export function prepNeighbors(certId: string, slug: string): {
   const list = prepFor(certId);
   const at = list.findIndex((note) => note.slug === slug);
   if (at < 0) return {};
-  return { prev: list[at - 1], next: list[at + 1] };
+
+  const band = prepBand(list[at]);
+  const same = list.filter((note) => prepBand(note) === band);
+  const here = same.findIndex((note) => note.slug === slug);
+  return { prev: same[here - 1], next: same[here + 1] };
 }

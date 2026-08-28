@@ -5,7 +5,7 @@ import { ArticleTitleBar } from '../components/ArticleTitleBar';
 import { ImageLightbox } from '../components/ImageLightbox';
 import { Seo } from '../components/Seo';
 import { certById, type Cert } from '../data/certs';
-import { prepNeighbors, prepNote, type CertPrepNote } from '../data/certPrep';
+import { prepAnchor, prepBand, prepNeighbors, prepNote, type CertPrepNote } from '../data/certPrep';
 import { useActiveHeading } from '../lib/activeHeading';
 import { watchAnswerToggle } from '../lib/answerToggle';
 import { watchImageZoom, type ZoomedImage } from '../lib/imageZoom';
@@ -89,7 +89,8 @@ function CertPrepView({ cert, note }: { cert: Cert; note: CertPrepNote }) {
           <p className="cert-prep-kicker">
             <span>{cert.nameKo} 시험 노트</span>
             <span aria-hidden="true">/</span>
-            <span>{note.kind}</span>
+            {/* 목록의 어느 묶음에서 온 글인지 밝힙니다 — 「개념」만으로는 총정리와 안 갈립니다. */}
+            <span>{BAND_LABEL[prepBand(note)]}</span>
             <span aria-hidden="true">/</span>
             <span>{note.readTime} MIN</span>
           </p>
@@ -184,7 +185,7 @@ function CertPrepView({ cert, note }: { cert: Cert; note: CertPrepNote }) {
             위로 보내면 시험 소개부터 다시 내려와야 하는데, 여기서 누르는 사람이
             찾는 것은 방금 읽던 노트의 옆 칸입니다.
           */}
-          <Link to={`/learn/certs/${cert.id}#prep`} className="cert-prep-back">
+          <Link to={`/learn/certs/${cert.id}#${prepAnchor(note)}`} className="cert-prep-back">
             {cert.nameKo} 시험 노트 전체 보기 <ArrowRight size={13} aria-hidden="true" />
           </Link>
         </div>
@@ -192,6 +193,12 @@ function CertPrepView({ cert, note }: { cert: Cert; note: CertPrepNote }) {
     </article>
   );
 }
+
+const BAND_LABEL = {
+  concepts: '개념 정리',
+  mocks: '모의고사',
+  reviews: '과목 총정리',
+} as const;
 
 export function CertPrepPage() {
   const { certId, slug } = useParams<{ certId: string; slug: string }>();
