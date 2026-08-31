@@ -172,6 +172,21 @@ export const globalNewsUpdatedAt = '2026-08-27';
  */
 const entries: NewsItem[] = [
   {
+    id: 'claude-platform-august-27-2026',
+    source: 'Anthropic',
+    kind: 'company',
+    title: 'Claude Console에 개인 키와 서비스 계정 키가 생겼다',
+    summary:
+      'Claude Console에서 개인 키와 서비스 계정 키를 만들 수 있게 됐다. 키는 연결된 계정의 권한을 ' +
+      '그대로 따르고 그 계정이 조직에서 빠지면 동작을 멈춘다. 기존 워크스페이스 API 키는 레거시 ' +
+      '옵션으로 계속 지원된다.',
+    publishedAt: '2026-08-27',
+    collectedAt: '2026-09-01',
+    category: 'Product',
+    signal: 'API 키 관리',
+    url: 'https://platform.claude.com/docs/en/release-notes/overview#august-27-2026',
+  },
+  {
     id: 'expanding-our-presence-in-brazil',
     source: 'OpenAI',
     kind: 'company',
@@ -264,6 +279,21 @@ const entries: NewsItem[] = [
     category: 'Product',
     signal: '검색 여행 예약',
     url: 'https://blog.google/products-and-platforms/products/search/book-travel-ai-mode',
+  },
+  {
+    id: 'claude-platform-august-26-2026',
+    source: 'Anthropic',
+    kind: 'company',
+    title: 'Claude Compliance API 세션 조회 정식 출시, 대상도 확대',
+    summary:
+      'Cowork와 Claude Code 세션 기록을 가져오는 Compliance API 세션 엔드포인트가 베타를 벗었다. ' +
+      '로컬 세션 엔드포인트는 Claude Science 세션과 Excel·PowerPoint·Word·Outlook의 Claude for ' +
+      'Microsoft 365 세션 기록도 돌려준다.',
+    publishedAt: '2026-08-26',
+    collectedAt: '2026-09-01',
+    category: 'Product',
+    signal: '컴플라이언스 API',
+    url: 'https://platform.claude.com/docs/en/release-notes/overview#august-26-2026',
   },
   {
     id: 'hugging-face-incident-and-the-road-ahead',

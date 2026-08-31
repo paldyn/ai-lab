@@ -2,6 +2,34 @@ import type { NewsDetail } from '../news';
 
 /** 2026-08 발표의 모달 본문. 목록은 news.ts에 있습니다. */
 export const details: Record<string, NewsDetail> = {
+  'claude-platform-august-27-2026': {
+    points: [
+      'Claude Console에서 개인 키와 서비스 계정 키를 만들 수 있게 됐다',
+      '개인 키는 사용자 본인으로, 서비스 계정 키는 서비스 계정으로 동작하며 권한이 같다',
+      '연결된 계정이 조직에서 빠지면 그 키는 동작을 멈춘다',
+      '조직 관리자가 계정별 사용량을 추적하고 키 사용이 정당한지 확인하기 쉬워진다',
+      '키의 범위를 특정 워크스페이스로 좁힐 수 있다',
+      'admin 엔드포인트와 계정이 접근할 수 있는 모든 워크스페이스에서 쓰게 할 수도 있다',
+      '기존 워크스페이스 API 키는 레거시 옵션으로 계속 지원된다',
+    ],
+    commentary:
+      '워크스페이스에 매달린 키는 만든 사람이 회사를 떠나도 그대로 살아 있어 감사 때마다 걸리는 대목이었다. 키를 계정에 묶고 계정이 사라지면 함께 죽게 한 것은 ' +
+      '그 구멍을 메우는 가장 단순한 방법이다. 다만 레거시 키를 남겨 둔 만큼 실제 정리는 조직이 직접 해야 한다.',
+  },
+  'claude-platform-august-26-2026': {
+    points: [
+      'Compliance API의 세션 엔드포인트가 Cowork와 Claude Code 세션에 대해 베타를 벗었다',
+      '사용자 기기에서 도는 로컬 세션 엔드포인트가 Claude Science 세션 기록도 돌려준다',
+      'Claude Science 세션의 product_surface 값은 claude_science다',
+      'Excel·PowerPoint·Word·Outlook의 Claude for Microsoft 365 세션 기록도 받을 수 있다',
+      '이 세션들의 product_surface 값은 office_agents로 시작한다',
+      '넓어진 범위는 Claude Enterprise 조직 대상 베타다',
+      '기존 Compliance Access Key와 read:compliance_user_data 스코프를 그대로 쓴다',
+    ],
+    commentary:
+      '기업이 Claude를 사내 도구로 들일 때 마지막에 걸리는 것이 감사 기록이다. 대화형 앱을 넘어 Office 문서 작업과 과학 연구 세션까지 같은 API로 긁어 올 수 ' +
+      '있게 되면서 도입 심사에서 「어디까지 남는가」에 답할 범위가 넓어졌다. 다만 넓어진 몫은 아직 베타이고 Enterprise 조직에만 열려 있다.',
+  },
   'expanding-our-presence-in-brazil': {
     points: [
       '상파울루를 거점으로 상업 운영을 시작하고 현지 팀이 기업·개발자·연구자·공공기관과 일한다',
