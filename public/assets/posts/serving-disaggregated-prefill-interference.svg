@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="438" viewBox="0 0 880 438" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <rect x="0" y="0" width="880" height="438" rx="12" fill="#0a0a0a"/>
+  <defs>
+    <marker id="dp-red" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#e05555"/>
+    </marker>
+  </defs>
+
+  <text x="62" y="46" font-size="22" font-weight="700" fill="#e8e8e8">프리필이 끼어들면 디코드가 멈춘다</text>
+  <text x="62" y="72" font-size="13" fill="#888">한 GPU가 둘 다 맡으면 서로의 지연을 만든다. 같은 일을 두 무리로 나누면 사라지는 문제다.</text>
+
+  <text x="62" y="112" font-size="16" font-weight="600" fill="#e05555">합쳐 둘 때 — 한 GPU가 번갈아 한다</text>
+
+  <rect x="220" y="130" width="598" height="38" rx="6" fill="#101010" stroke="#2a2a2a" stroke-width="1"/>
+  <text x="62" y="154" font-size="13" fill="#aaaaaa">GPU 한 장</text>
+  <rect x="224" y="134" width="52" height="30" rx="3" fill="#1a2a1a" stroke="#55c555" stroke-width="1"/>
+  <rect x="278" y="134" width="78" height="30" rx="3" fill="#2a1414" stroke="#e05555" stroke-width="1"/>
+  <rect x="358" y="134" width="44" height="30" rx="3" fill="#1a2a1a" stroke="#55c555" stroke-width="1"/>
+  <rect x="404" y="134" width="96" height="30" rx="3" fill="#2a1414" stroke="#e05555" stroke-width="1"/>
+  <rect x="502" y="134" width="38" height="30" rx="3" fill="#1a2a1a" stroke="#55c555" stroke-width="1"/>
+  <rect x="542" y="134" width="70" height="30" rx="3" fill="#2a1414" stroke="#e05555" stroke-width="1"/>
+  <rect x="614" y="134" width="60" height="30" rx="3" fill="#1a2a1a" stroke="#55c555" stroke-width="1"/>
+  <rect x="676" y="134" width="86" height="30" rx="3" fill="#2a1414" stroke="#e05555" stroke-width="1"/>
+  <rect x="764" y="134" width="50" height="30" rx="3" fill="#1a2a1a" stroke="#55c555" stroke-width="1"/>
+
+  <text x="62" y="196" font-size="12" fill="#888">프리필이 한 번 끼어들 때마다, 진행 중이던 요청의 다음 토큰이 그만큼 늦게 나온다.</text>
+
+  <text x="62" y="240" font-size="16" font-weight="600" fill="#55c555">나눠 둘 때 — 프리필 노드와 디코드 노드</text>
+
+  <rect x="220" y="258" width="598" height="34" rx="6" fill="#101010" stroke="#2a2a2a" stroke-width="1"/>
+  <text x="62" y="280" font-size="13" fill="#aaaaaa">프리필 노드</text>
+  <rect x="224" y="262" width="96" height="26" rx="3" fill="#2a1414" stroke="#e05555" stroke-width="1"/>
+  <rect x="326" y="262" width="118" height="26" rx="3" fill="#2a1414" stroke="#e05555" stroke-width="1"/>
+  <rect x="450" y="262" width="88" height="26" rx="3" fill="#2a1414" stroke="#e05555" stroke-width="1"/>
+  <rect x="544" y="262" width="128" height="26" rx="3" fill="#2a1414" stroke="#e05555" stroke-width="1"/>
+  <rect x="678" y="262" width="136" height="26" rx="3" fill="#2a1414" stroke="#e05555" stroke-width="1"/>
+
+  <line x1="568" y1="292" x2="568" y2="322" stroke="#7777cc" stroke-width="2" stroke-dasharray="4,4" marker-end="url(#dp-red)"/>
+  <text x="584" y="311" font-size="11" fill="#7777cc">KV 캐시 전송</text>
+
+  <rect x="220" y="322" width="598" height="34" rx="6" fill="#101010" stroke="#2a2a2a" stroke-width="1"/>
+  <text x="62" y="344" font-size="13" fill="#aaaaaa">디코드 노드</text>
+  <rect x="224" y="326" width="590" height="26" rx="3" fill="#1a2a1a" stroke="#55c555" stroke-width="1"/>
+  <line x1="283" y1="326" x2="283" y2="352" stroke="#0a0a0a" stroke-width="1.5"/>
+  <line x1="342" y1="326" x2="342" y2="352" stroke="#0a0a0a" stroke-width="1.5"/>
+  <line x1="401" y1="326" x2="401" y2="352" stroke="#0a0a0a" stroke-width="1.5"/>
+  <line x1="460" y1="326" x2="460" y2="352" stroke="#0a0a0a" stroke-width="1.5"/>
+  <line x1="519" y1="326" x2="519" y2="352" stroke="#0a0a0a" stroke-width="1.5"/>
+  <line x1="578" y1="326" x2="578" y2="352" stroke="#0a0a0a" stroke-width="1.5"/>
+  <line x1="637" y1="326" x2="637" y2="352" stroke="#0a0a0a" stroke-width="1.5"/>
+  <line x1="696" y1="326" x2="696" y2="352" stroke="#0a0a0a" stroke-width="1.5"/>
+  <line x1="755" y1="326" x2="755" y2="352" stroke="#0a0a0a" stroke-width="1.5"/>
+
+  <text x="62" y="386" font-size="12" fill="#888">디코드 걸음은 끊기지 않고, 프리필은 자기들끼리 몰려 GPU를 꽉 채운다.</text>
+
+  <rect x="62" y="406" width="14" height="14" rx="3" fill="#2a1414" stroke="#e05555" stroke-width="1.5"/>
+  <text x="84" y="418" font-size="12" fill="#aaaaaa">프리필 — 프롬프트 전체를 한 번에</text>
+  <rect x="400" y="406" width="14" height="14" rx="3" fill="#1a2a1a" stroke="#55c555" stroke-width="1.5"/>
+  <text x="422" y="418" font-size="12" fill="#aaaaaa">디코드 — 토큰을 하나씩</text>
+</svg>

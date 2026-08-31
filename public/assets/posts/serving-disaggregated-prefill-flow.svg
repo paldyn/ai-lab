@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="310" viewBox="0 0 880 310" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <rect x="0" y="0" width="880" height="310" rx="12" fill="#0a0a0a"/>
+  <defs>
+    <marker id="df-blue" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#7ec8e3"/>
+    </marker>
+    <marker id="df-purple" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#7777cc"/>
+    </marker>
+  </defs>
+
+  <text x="62" y="46" font-size="22" font-weight="700" fill="#e8e8e8">요청 하나가 두 무리를 지나는 길</text>
+  <text x="62" y="72" font-size="13" fill="#888">프리필 노드가 KV 캐시를 만들고, 그것을 옮긴 뒤에야 디코드 노드에서 토큰이 나온다.</text>
+
+  <rect x="62" y="120" width="180" height="64" rx="6" fill="#101418" stroke="#3a4a6e" stroke-width="1.5"/>
+  <text x="152" y="146" font-size="13" font-weight="600" fill="#e8e8e8" text-anchor="middle">요청 도착</text>
+  <text x="152" y="166" font-size="11" fill="#aaaaaa" text-anchor="middle">프롬프트 4,000 토큰</text>
+
+  <text x="296" y="136" font-size="12" fill="#7ec8e3" text-anchor="middle">프롬프트</text>
+  <line x1="242" y1="152" x2="350" y2="152" stroke="#7ec8e3" stroke-width="2" marker-end="url(#df-blue)"/>
+
+  <rect x="350" y="120" width="180" height="64" rx="6" fill="#2a1414" stroke="#e05555" stroke-width="1.5"/>
+  <text x="440" y="146" font-size="13" font-weight="600" fill="#e8e8e8" text-anchor="middle">프리필 노드</text>
+  <text x="440" y="166" font-size="11" fill="#aaaaaa" text-anchor="middle">KV 캐시를 만든다</text>
+  <rect x="350" y="120" width="180" height="64" rx="6" fill="#ffffff" opacity="0">
+    <animate attributeName="opacity" values="0;0;0.14;0.14;0;0" keyTimes="0;0.28;0.32;0.44;0.48;1" dur="5s" repeatCount="indefinite"/>
+  </rect>
+
+  <text x="584" y="136" font-size="12" fill="#7777cc" text-anchor="middle">KV 캐시 블록</text>
+  <line x1="530" y1="152" x2="638" y2="152" stroke="#7777cc" stroke-width="2" marker-end="url(#df-purple)"/>
+
+  <rect x="638" y="120" width="180" height="64" rx="6" fill="#1a2a1a" stroke="#55c555" stroke-width="1.5"/>
+  <text x="728" y="146" font-size="13" font-weight="600" fill="#e8e8e8" text-anchor="middle">디코드 노드</text>
+  <text x="728" y="166" font-size="11" fill="#aaaaaa" text-anchor="middle">토큰을 하나씩</text>
+  <rect x="638" y="120" width="180" height="64" rx="6" fill="#ffffff" opacity="0">
+    <animate attributeName="opacity" values="0;0;0.14;0.14" keyTimes="0;0.72;0.76;1" dur="5s" repeatCount="indefinite"/>
+  </rect>
+
+  <circle r="7" fill="#7ec8e3" opacity="0">
+    <animate attributeName="opacity" values="0;1;1;0;0" keyTimes="0;0.04;0.26;0.3;1" dur="5s" repeatCount="indefinite"/>
+    <animateMotion dur="5s" repeatCount="indefinite" calcMode="linear" keyPoints="0;1;1" keyTimes="0;0.28;1" path="M 242 152 L 344 152"/>
+  </circle>
+
+  <circle r="7" fill="#7777cc" opacity="0">
+    <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.48;0.52;0.7;0.74;1" dur="5s" repeatCount="indefinite"/>
+    <animateMotion dur="5s" repeatCount="indefinite" calcMode="linear" keyPoints="0;0;1;1" keyTimes="0;0.48;0.72;1" path="M 530 152 L 632 152"/>
+  </circle>
+
+  <text x="62" y="228" font-size="13" font-weight="600" fill="#e05555">프리필 — 프롬프트 전체를 한 번에 계산한다. 계산량이 병목이다.
+    <animate attributeName="opacity" values="1;1;0;0" keyTimes="0;0.44;0.48;1" dur="5s" repeatCount="indefinite"/>
+  </text>
+  <text x="62" y="228" font-size="13" font-weight="600" fill="#7777cc">전송 — 만들어 둔 KV 캐시를 디코드 노드로 옮긴다. 대역폭이 병목이다.
+    <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.44;0.48;0.72;0.76;1" dur="5s" repeatCount="indefinite"/>
+  </text>
+  <text x="62" y="228" font-size="13" font-weight="600" fill="#55c555">디코드 — 토큰을 하나씩 낸다. 메모리 대역폭이 병목이다.
+    <animate attributeName="opacity" values="0;0;1;1" keyTimes="0;0.72;0.76;1" dur="5s" repeatCount="indefinite"/>
+  </text>
+
+  <text x="62" y="270" font-size="13" fill="#888">가운데 전송 구간이 이 구조가 새로 만들어 낸 비용이고, 그 크기가 도입 여부를 정한다.</text>
+</svg>

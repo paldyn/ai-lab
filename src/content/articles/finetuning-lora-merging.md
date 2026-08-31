@@ -115,3 +115,5 @@ model.save_pretrained("./merged")
 읽어주셔서 감사합니다. 😊
 
 **지난 글:** [학습 데이터 합성 — 모델로 만든 데이터로 모델을 가르치기](/articles/finetuning-data-synthesis)
+
+**다음 글:** [학습한 어댑터를 서비스에 올리는 길 — 등록·적재·되돌리기](/articles/finetuning-serving-adapters)

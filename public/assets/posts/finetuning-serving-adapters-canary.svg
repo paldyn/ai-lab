@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="350" viewBox="0 0 880 350" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <rect x="0" y="0" width="880" height="350" rx="12" fill="#0a0a0a"/>
+
+  <text x="62" y="46" font-size="22" font-weight="700" fill="#e8e8e8">카나리 전환 — 어댑터는 통째로 바꾸지 않고 비율로 옮긴다</text>
+  <text x="62" y="72" font-size="13" fill="#888">두 버전이 같은 서버에 함께 올라가 있으므로, 옮기는 것은 라우팅 비율뿐이다.</text>
+
+  <text x="62" y="112" font-size="14" font-weight="600" fill="#7ec8e3">v4로 5% — 오류율만 본다
+    <animate attributeName="opacity" values="1;1;0;0" keyTimes="0;0.28;0.32;1" dur="5s" repeatCount="indefinite"/>
+  </text>
+  <text x="62" y="112" font-size="14" font-weight="600" fill="#7ec8e3">v4로 50% — 지연과 품질을 함께 본다
+    <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.28;0.32;0.6;0.64;1" dur="5s" repeatCount="indefinite"/>
+  </text>
+  <text x="62" y="112" font-size="14" font-weight="600" fill="#7ec8e3">v4로 100% — v3는 내리지 않고 남겨 둔다
+    <animate attributeName="opacity" values="0;0;1;1" keyTimes="0;0.6;0.64;1" dur="5s" repeatCount="indefinite"/>
+  </text>
+
+  <rect x="62" y="132" width="756" height="56" rx="6" fill="#1a2a1a" stroke="#55c555" stroke-width="1.5"/>
+  <rect x="62" y="132" height="56" rx="6" fill="#16303d" stroke="#7ec8e3" stroke-width="1.5" width="38">
+    <animate attributeName="width" values="38;38;378;378;756;756" keyTimes="0;0.28;0.32;0.6;0.64;1" dur="5s" repeatCount="indefinite"/>
+  </rect>
+
+  <line x1="100" y1="192" x2="100" y2="206" stroke="#555" stroke-width="2" stroke-dasharray="4,4"/>
+  <line x1="440" y1="192" x2="440" y2="206" stroke="#555" stroke-width="2" stroke-dasharray="4,4"/>
+  <line x1="818" y1="192" x2="818" y2="206" stroke="#555" stroke-width="2" stroke-dasharray="4,4"/>
+  <text x="100" y="224" font-size="12" fill="#888" text-anchor="middle">5%</text>
+  <text x="440" y="224" font-size="12" fill="#888" text-anchor="middle">50%</text>
+  <text x="818" y="224" font-size="12" fill="#888" text-anchor="end">100%</text>
+
+  <rect x="62" y="248" width="14" height="14" rx="3" fill="#16303d" stroke="#7ec8e3" stroke-width="1.5"/>
+  <text x="84" y="260" font-size="12" fill="#aaaaaa">새 어댑터 v4</text>
+  <rect x="230" y="248" width="14" height="14" rx="3" fill="#1a2a1a" stroke="#55c555" stroke-width="1.5"/>
+  <text x="252" y="260" font-size="12" fill="#aaaaaa">이전 어댑터 v3</text>
+
+  <text x="62" y="298" font-size="13" fill="#888">다음 단계로 넘어가는 조건은 흐른 시간이 아니라 지표다.</text>
+  <text x="62" y="320" font-size="13" fill="#888">그 어댑터로 간 요청만 따로 모아 오류율·지연·거절률을 본다.</text>
+</svg>

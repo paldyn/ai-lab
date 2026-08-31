@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="392" viewBox="0 0 880 392" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <rect x="0" y="0" width="880" height="392" rx="12" fill="#0a0a0a"/>
+
+  <text x="62" y="46" font-size="22" font-weight="700" fill="#e8e8e8">손실이 가장 낮은 체크포인트가 가장 좋은 체크포인트는 아니다</text>
+  <text x="62" y="72" font-size="13" fill="#888">두 곡선의 가장 좋은 자리가 다른 스텝에 있으면, 무엇으로 고를지가 결정이 된다.</text>
+
+  <text x="430" y="94" font-size="12" fill="#55c555" text-anchor="middle">과제 점수가 가장 높은 자리</text>
+  <text x="800" y="94" font-size="12" fill="#7ec8e3" text-anchor="end">검증 손실이 가장 낮은 자리</text>
+
+  <line x1="120" y1="150" x2="800" y2="150" stroke="#222222" stroke-width="1"/>
+  <line x1="120" y1="200" x2="800" y2="200" stroke="#222222" stroke-width="1"/>
+  <line x1="120" y1="250" x2="800" y2="250" stroke="#222222" stroke-width="1"/>
+
+  <line x1="120" y1="100" x2="120" y2="300" stroke="#555555" stroke-width="1.5"/>
+  <line x1="120" y1="300" x2="800" y2="300" stroke="#555555" stroke-width="1.5"/>
+
+  <line x1="430" y1="106" x2="430" y2="300" stroke="#55c555" stroke-width="2" stroke-dasharray="4,4" opacity="0.6"/>
+  <line x1="780" y1="106" x2="780" y2="300" stroke="#7ec8e3" stroke-width="2" stroke-dasharray="4,4" opacity="0.6"/>
+
+  <path d="M 120 270 C 180 225 215 200 250 190 C 300 175 325 163 350 155 C 380 146 410 140 430 140 C 462 141 495 145 520 150 C 560 158 600 167 630 175 C 690 191 755 206 800 215" fill="none" stroke="#55c555" stroke-width="2.5"/>
+  <path d="M 120 140 C 180 163 215 173 250 180 C 290 190 325 199 350 205 C 380 213 412 218 430 222 C 462 229 495 234 520 238 C 560 245 600 251 630 255 C 690 264 755 271 800 275" fill="none" stroke="#7ec8e3" stroke-width="2.5"/>
+
+  <circle cx="430" cy="140" r="5" fill="#55c555"/>
+  <circle cx="780" cy="273" r="5" fill="#7ec8e3"/>
+
+  <text x="120" y="322" font-size="11" fill="#888" text-anchor="middle">0</text>
+  <text x="800" y="322" font-size="11" fill="#888" text-anchor="end">학습 스텝</text>
+
+  <line x1="62" y1="362" x2="92" y2="362" stroke="#55c555" stroke-width="2.5"/>
+  <text x="100" y="366" font-size="12" fill="#aaaaaa">과제 점수 — 높을수록 좋다</text>
+  <line x1="400" y1="362" x2="430" y2="362" stroke="#7ec8e3" stroke-width="2.5"/>
+  <text x="438" y="366" font-size="12" fill="#aaaaaa">검증 손실 — 낮을수록 좋다</text>
+</svg>

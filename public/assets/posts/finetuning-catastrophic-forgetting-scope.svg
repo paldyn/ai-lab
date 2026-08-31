@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="392" viewBox="0 0 880 392" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <rect x="0" y="0" width="880" height="392" rx="12" fill="#0a0a0a"/>
+
+  <text x="62" y="46" font-size="22" font-weight="700" fill="#e8e8e8">건드리는 파라미터가 많을수록 잊을 것도 많아진다</text>
+  <text x="62" y="72" font-size="13" fill="#888">망각을 줄이는 첫 번째 손잡이는 정규화가 아니라 「얼마나 건드릴 것인가」다.</text>
+
+  <rect x="62" y="110" width="340" height="92" rx="6" fill="#101418" stroke="#3a4a6e" stroke-width="1.5"/>
+  <text x="86" y="134" font-size="13" font-weight="600" fill="#e8e8e8">1 · 프롬프트와 검색으로 먼저</text>
+  <text x="86" y="154" font-size="11" fill="#aaaaaa">가중치를 아예 건드리지 않는다</text>
+  <text x="86" y="172" font-size="11" fill="#aaaaaa">망각이 원리상 일어나지 않는다</text>
+  <text x="86" y="190" font-size="11" fill="#aaaaaa">형식·말투 문제의 절반은 여기서 끝난다</text>
+
+  <rect x="458" y="110" width="340" height="92" rx="6" fill="#101820" stroke="#7ec8e3" stroke-width="1.5"/>
+  <text x="482" y="134" font-size="13" font-weight="600" fill="#e8e8e8">2 · LoRA · 낮은 랭크</text>
+  <text x="482" y="154" font-size="11" fill="#aaaaaa">랭크 8~16, 어텐션 사영에만 붙인다</text>
+  <text x="482" y="172" font-size="11" fill="#aaaaaa">베이스 가중치는 그대로 얼려 둔다</text>
+  <text x="482" y="190" font-size="11" fill="#aaaaaa">어댑터를 떼면 원래 모델로 돌아온다</text>
+
+  <rect x="62" y="234" width="340" height="92" rx="6" fill="#1a1a2e" stroke="#7777cc" stroke-width="1.5"/>
+  <text x="86" y="258" font-size="13" font-weight="600" fill="#e8e8e8">3 · LoRA · 높은 랭크, 넓은 적용</text>
+  <text x="86" y="278" font-size="11" fill="#aaaaaa">랭크 64 이상, MLP 층까지 붙인다</text>
+  <text x="86" y="296" font-size="11" fill="#aaaaaa">표현력이 늘고 망각도 같이 늘어난다</text>
+  <text x="86" y="314" font-size="11" fill="#aaaaaa">전체 미세조정 쪽으로 성질이 옮겨 간다</text>
+
+  <rect x="458" y="234" width="340" height="92" rx="6" fill="#2a1414" stroke="#e05555" stroke-width="1.5"/>
+  <text x="482" y="258" font-size="13" font-weight="600" fill="#e8e8e8">4 · 전체 미세조정</text>
+  <text x="482" y="278" font-size="11" fill="#aaaaaa">모든 가중치가 함께 움직인다</text>
+  <text x="482" y="296" font-size="11" fill="#aaaaaa">가장 잘 배우고 가장 많이 잊는다</text>
+  <text x="482" y="314" font-size="11" fill="#aaaaaa">리허설과 낮은 학습률이 필수가 된다</text>
+
+  <text x="62" y="366" font-size="13" fill="#e8e8e8">1번부터 시도하고, 목표 점수가 모자랄 때만 아래로 내려간다.</text>
+</svg>
