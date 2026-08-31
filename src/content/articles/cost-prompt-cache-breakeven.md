@@ -266,3 +266,5 @@ Opus 5가 512토큰, Sonnet 5가 1,024토큰, Opus 4.6과 Haiku 4.5가 4,096토�
 읽어주셔서 감사합니다. 😊
 
 **지난 글:** [SDK 기본값 실측: timeout=5가 한쪽에서는 5초, 다른 쪽에서는 5밀리초였다](/articles/spec-sdk-defaults)
+
+**다음 글:** [컨텍스트 창 1M에 붙어 있는 조건들 — 창이 클수록 출력 상한이 먼저 걸린다](/articles/spec-context-window-conditions)
