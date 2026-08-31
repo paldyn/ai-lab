@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="536" viewBox="0 0 880 536">
+<rect width="880" height="536" rx="12" fill="#0a0a0a"/>
+<text x="440" y="42" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="22" font-weight="700" fill="#e8e8e8" text-anchor="middle">잔차 연결이 만드는 우회로</text>
+<defs><marker id="r4" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto"><path d="M 0 0 L 13 7 L 0 14 z" fill="#e05555"/></marker><marker id="r4g" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto"><path d="M 0 0 L 13 7 L 0 14 z" fill="#55c555"/></marker></defs>
+<rect x="330" y="116" width="220" height="58" rx="8" fill="#000000" stroke="#3a4a6e" stroke-width="1.5"/>
+<text x="440" y="152" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="15" fill="#ffffff" font-weight="600" text-anchor="middle">입력  x</text>
+<path d="M 440 174 L 440 196" stroke="#888" stroke-width="2"/>
+<circle cx="440" cy="202" r="6" fill="#888"/>
+<path d="M 440 202 L 190 202 L 190 417 L 330 417" stroke="#55c555" stroke-width="2.5" fill="none" marker-end="url(#r4g)"/>
+<text x="200" y="300" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="14" fill="#55c555" font-weight="600">항등 경로</text>
+<text x="200" y="324" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="12" fill="#9aa4b8">그대로 지나간다</text>
+<text x="200" y="346" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="12" fill="#55c555">∂L/∂x 에 1 이 더해진다</text>
+<path d="M 440 202 L 690 202 L 690 232" stroke="#e05555" stroke-width="2.5" fill="none" marker-end="url(#r4)"/>
+<rect x="560" y="234" width="260" height="86" rx="8" fill="#000000" stroke="#e05555" stroke-width="1.5"/>
+<text x="690" y="264" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="14" fill="#ffffff" font-weight="600" text-anchor="middle">어텐션</text>
+<text x="690" y="288" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="12" fill="#9aa4b8" text-anchor="middle">야코비안이 곱해진다</text>
+<text x="690" y="308" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="12" fill="#e05555" text-anchor="middle">뾰족하면 0 에 붙는다</text>
+<path d="M 690 320 L 690 417 L 550 417" stroke="#e05555" stroke-width="2.5" fill="none" marker-end="url(#r4)"/>
+<rect x="330" y="388" width="220" height="58" rx="8" fill="#000000" stroke="#3a4a6e" stroke-width="1.5"/>
+<text x="440" y="424" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="15" fill="#ffffff" font-weight="600" text-anchor="middle">출력  x + Attn(x)</text>
+<text x="440" y="482" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e8e8e8" font-weight="600" text-anchor="middle">∂L/∂x = ∂L/∂out · (1 + 어텐션 쪽 기울기)  —  오른쪽 항이 0이 되어도 1이 남는다</text>
+<text x="440" y="508" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="12" fill="#9aa4b8" text-anchor="middle">그래서 어텐션이 한 토큰에 몰려도 아래 층은 계속 학습된다. 다만 Q·K 자체는 여전히 갇혀 있다.</text>
+</svg>

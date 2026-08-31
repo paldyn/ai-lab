@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="432" viewBox="0 0 880 432">
+<rect width="880" height="432" rx="12" fill="#0a0a0a"/>
+<text x="440" y="42" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="22" font-weight="700" fill="#e8e8e8" text-anchor="middle">같은 야코비안, 만들지 않고 쓰는 법</text>
+<defs><marker id="a2" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto"><path d="M 0 0 L 13 7 L 0 14 z" fill="#e05555"/></marker><marker id="a2g" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto"><path d="M 0 0 L 13 7 L 0 14 z" fill="#55c555"/></marker></defs>
+<text x="240" y="110" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="15" fill="#e05555" font-weight="600" text-anchor="middle">행마다 m × m 을 만들면</text>
+<text x="640" y="110" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="15" fill="#55c555" font-weight="600" text-anchor="middle">행별 규칙으로 하면</text>
+<rect x="70" y="130" width="340" height="124" rx="8" fill="#000000" stroke="#e05555" stroke-width="1.5"/>
+<text x="240" y="158" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="14" fill="#ffffff" font-weight="600" text-anchor="middle">J_i = diag(p_i) − p_i p_iᵀ</text>
+<text x="240" y="182" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="12" fill="#9aa4b8" text-anchor="middle">행 하나마다 m × m 짜리 표</text>
+<text x="240" y="212" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="15" fill="#e05555" font-weight="600" text-anchor="middle">n · m² 개의 수</text>
+<text x="240" y="236" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="12" fill="#e05555" text-anchor="middle">n = m = 1024 이면 4.29 GB · 헤드마다</text>
+<rect x="470" y="130" width="340" height="124" rx="8" fill="#000000" stroke="#55c555" stroke-width="1.5"/>
+<text x="640" y="158" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="14" fill="#ffffff" font-weight="600" text-anchor="middle">(∂L/∂S)_ij = P_ij (U_ij − r_i)</text>
+<text x="640" y="182" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="12" fill="#9aa4b8" text-anchor="middle">r_i = Σ_j P_ij U_ij  — 행마다 수 하나</text>
+<text x="640" y="212" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="15" fill="#55c555" font-weight="600" text-anchor="middle">n · m 개의 수</text>
+<text x="640" y="236" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="12" fill="#55c555" text-anchor="middle">같은 조건에서 4.19 MB</text>
+<rect x="70" y="286" width="740" height="86" rx="8" fill="#000000" stroke="#3a4a6e" stroke-width="1.5"/>
+<text x="440" y="316" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="14" fill="#ffffff" font-weight="600" text-anchor="middle">둘은 같은 값이다 — Jᵀu 를 성분으로 풀어 쓰면 두 번째 식이 그대로 나온다</text>
+<text x="440" y="344" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#7ec8e3" text-anchor="middle">(Jᵀu)_j = Σ_i p_i(δ_ij − p_j) u_i = p_j u_j − p_j Σ_i p_i u_i = p_j (u_j − r)</text>
+<text x="440" y="404" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="12" fill="#9aa4b8" text-anchor="middle">그래서 야코비안은 유도할 때만 종이 위에 있고, 코드에는 한 번도 만들어지지 않는다</text>
+</svg>

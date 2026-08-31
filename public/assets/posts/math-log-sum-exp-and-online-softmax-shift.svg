@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="538" viewBox="0 0 880 538">
+<rect width="880" height="538" rx="12" fill="#0a0a0a"/>
+<text x="440" y="42" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="22" font-weight="700" fill="#e8e8e8" text-anchor="middle">최댓값을 빼면 가장 큰 항이 1 이 된다</text>
+<defs><marker id="a2" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto"><path d="M 0 0 L 13 7 L 0 14 z" fill="#7ec8e3"/></marker></defs>
+<text x="120" y="140" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="14" fill="#e8e8e8" font-weight="600" text-anchor="middle">원래 x</text>
+<text x="400" y="140" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="14" fill="#e8e8e8" font-weight="600" text-anchor="middle">x − m      (m = 800)</text>
+<text x="700" y="140" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="14" fill="#e8e8e8" font-weight="600" text-anchor="middle">e^(x−m)</text>
+<rect x="60" y="176" width="120" height="44" rx="8" fill="#000000" stroke="#3a4a6e" stroke-width="1.5"/>
+<text x="120" y="204" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="15" fill="#ffffff" font-weight="600" text-anchor="middle">800</text>
+<line x1="184" y1="198" x2="336" y2="198" stroke="#7ec8e3" stroke-width="2" marker-end="url(#a2)"/>
+<rect x="340" y="176" width="120" height="44" rx="8" fill="#000000" stroke="#3a4a6e" stroke-width="1.5"/>
+<text x="400" y="204" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="15" fill="#ffffff" font-weight="600" text-anchor="middle">0</text>
+<line x1="464" y1="198" x2="616" y2="198" stroke="#7ec8e3" stroke-width="2" marker-end="url(#a2)"/>
+<rect x="620" y="176" width="160" height="44" rx="8" fill="#000000" stroke="#55c555" stroke-width="1.5"/>
+<text x="700" y="204" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="15" fill="#55c555" font-weight="600" text-anchor="middle">1.000000</text>
+<rect x="60" y="238" width="120" height="44" rx="8" fill="#000000" stroke="#3a4a6e" stroke-width="1.5"/>
+<text x="120" y="266" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="15" fill="#ffffff" font-weight="600" text-anchor="middle">799</text>
+<line x1="184" y1="260" x2="336" y2="260" stroke="#7ec8e3" stroke-width="2" marker-end="url(#a2)"/>
+<rect x="340" y="238" width="120" height="44" rx="8" fill="#000000" stroke="#3a4a6e" stroke-width="1.5"/>
+<text x="400" y="266" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="15" fill="#ffffff" font-weight="600" text-anchor="middle">−1</text>
+<line x1="464" y1="260" x2="616" y2="260" stroke="#7ec8e3" stroke-width="2" marker-end="url(#a2)"/>
+<rect x="620" y="238" width="160" height="44" rx="8" fill="#000000" stroke="#55c555" stroke-width="1.5"/>
+<text x="700" y="266" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="15" fill="#55c555" font-weight="600" text-anchor="middle">0.367879</text>
+<rect x="60" y="300" width="120" height="44" rx="8" fill="#000000" stroke="#3a4a6e" stroke-width="1.5"/>
+<text x="120" y="328" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="15" fill="#ffffff" font-weight="600" text-anchor="middle">795</text>
+<line x1="184" y1="322" x2="336" y2="322" stroke="#7ec8e3" stroke-width="2" marker-end="url(#a2)"/>
+<rect x="340" y="300" width="120" height="44" rx="8" fill="#000000" stroke="#3a4a6e" stroke-width="1.5"/>
+<text x="400" y="328" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="15" fill="#ffffff" font-weight="600" text-anchor="middle">−5</text>
+<line x1="464" y1="322" x2="616" y2="322" stroke="#7ec8e3" stroke-width="2" marker-end="url(#a2)"/>
+<rect x="620" y="300" width="160" height="44" rx="8" fill="#000000" stroke="#55c555" stroke-width="1.5"/>
+<text x="700" y="328" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="15" fill="#55c555" font-weight="600" text-anchor="middle">0.006738</text>
+<line x1="620" y1="364" x2="780" y2="364" stroke="#888" stroke-width="1.5"/>
+<text x="700" y="390" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="15" fill="#e8e8e8" font-weight="600" text-anchor="middle">1.374617</text>
+<text x="560" y="390" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888" text-anchor="middle">합</text>
+<rect x="60" y="418" width="760" height="86" rx="8" fill="#000000" stroke="#3a4a6e" stroke-width="1.5"/>
+<text x="440" y="448" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="15" fill="#ffffff" font-weight="600" text-anchor="middle">log Σ e^x  =  m + log Σ e^(x−m)  =  800 + 0.318175  =  800.318175</text>
+<text x="440" y="476" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="12" fill="#9aa4b8" text-anchor="middle">e^m 을 합 밖으로 뽑아 로그를 씌운 것뿐이다 — 근사가 아니라 항등식이다</text>
+</svg>

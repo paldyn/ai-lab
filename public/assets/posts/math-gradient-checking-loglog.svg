@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="500" viewBox="0 0 880 500">
+<rect width="880" height="500" rx="12" fill="#0a0a0a"/>
+<text x="440" y="42" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="22" font-weight="700" fill="#e8e8e8" text-anchor="middle">h를 줄이면 오차는 내려가다가 다시 올라간다</text>
+<text x="440" y="68" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888" text-anchor="middle">GELU를 x = 1.2 에서 잰 실제 측정값이다</text>
+<rect x="96.0" y="124.0" width="690.0" height="280.0" fill="none" stroke="#2a2a2a" stroke-width="1"/>
+<line x1="182.2" y1="124.0" x2="182.2" y2="404.0" stroke="#444" stroke-width="1"/>
+<line x1="268.5" y1="124.0" x2="268.5" y2="404.0" stroke="#444" stroke-width="1"/>
+<line x1="354.8" y1="124.0" x2="354.8" y2="404.0" stroke="#444" stroke-width="1"/>
+<line x1="441.0" y1="124.0" x2="441.0" y2="404.0" stroke="#444" stroke-width="1"/>
+<line x1="527.2" y1="124.0" x2="527.2" y2="404.0" stroke="#444" stroke-width="1"/>
+<line x1="613.5" y1="124.0" x2="613.5" y2="404.0" stroke="#444" stroke-width="1"/>
+<line x1="699.8" y1="124.0" x2="699.8" y2="404.0" stroke="#444" stroke-width="1"/>
+<line x1="786.0" y1="124.0" x2="786.0" y2="404.0" stroke="#444" stroke-width="1"/>
+<line x1="96.0" y1="391.6" x2="786.0" y2="391.6" stroke="#444" stroke-width="1"/>
+<line x1="96.0" y1="329.9" x2="786.0" y2="329.9" stroke="#444" stroke-width="1"/>
+<line x1="96.0" y1="268.1" x2="786.0" y2="268.1" stroke="#444" stroke-width="1"/>
+<line x1="96.0" y1="206.4" x2="786.0" y2="206.4" stroke="#444" stroke-width="1"/>
+<line x1="96.0" y1="144.6" x2="786.0" y2="144.6" stroke="#888" stroke-width="1.5"/>
+<text x="182.2" y="423.0" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="12" fill="#888" text-anchor="middle">-2</text>
+<text x="268.5" y="423.0" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="12" fill="#888" text-anchor="middle">-4</text>
+<text x="354.8" y="423.0" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="12" fill="#888" text-anchor="middle">-6</text>
+<text x="441.0" y="423.0" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="12" fill="#888" text-anchor="middle">-8</text>
+<text x="527.2" y="423.0" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="12" fill="#888" text-anchor="middle">-10</text>
+<text x="613.5" y="423.0" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="12" fill="#888" text-anchor="middle">-12</text>
+<text x="699.8" y="423.0" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="12" fill="#888" text-anchor="middle">-14</text>
+<text x="786.0" y="423.0" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="12" fill="#888" text-anchor="middle">-16</text>
+<text x="87.0" y="395.6" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="12" fill="#888" text-anchor="end">-12</text>
+<text x="87.0" y="333.9" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="12" fill="#888" text-anchor="end">-9</text>
+<text x="87.0" y="272.1" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="12" fill="#888" text-anchor="end">-6</text>
+<text x="87.0" y="210.4" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="12" fill="#888" text-anchor="end">-3</text>
+<path d="M 96.0 185.4 L 139.1 193.0 L 182.2 212.0 L 225.4 232.4 L 268.5 253.0 L 311.6 273.6 L 354.8 294.2 L 397.9 312.1 L 441.0 334.4 L 484.1 286.1 L 527.2 267.9 L 570.4 241.9 L 613.5 234.9 L 656.6 205.8 L 699.8 182.5 L 742.9 158.4 L 786.0 143.6" stroke="#e05555" stroke-width="2.5" fill="none"/>
+<path d="M 96.0 166.0 L 139.1 206.4 L 182.2 247.6 L 225.4 288.8 L 268.5 329.9 L 311.6 376.7 L 354.8 354.9 L 397.9 334.4 L 441.0 308.9 L 484.1 286.1 L 527.2 289.8 L 570.4 249.9 L 613.5 234.9 L 656.6 205.8 L 699.8 195.5 L 742.9 164.9 L 786.0 143.6" stroke="#7777cc" stroke-width="2.5" fill="none"/>
+<circle cx="441.0" cy="334.4" r="5" fill="#e05555"/>
+<circle cx="311.6" cy="376.7" r="5" fill="#7777cc"/>
+<text x="225.375" y="169.2941176470588" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="12" fill="#888" text-anchor="middle">절단오차가 지배</text>
+<text x="678.1875" y="278.4117647058824" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="12" fill="#888" text-anchor="middle">반올림오차가 지배</text>
+<text x="82" y="108" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="12" fill="#888">log₁₀ 상대오차</text>
+<text x="786" y="444" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="12" fill="#888" text-anchor="end">log₁₀ h</text>
+<text x="96" y="448" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e05555" font-weight="600">전진차분</text>
+<text x="190" y="448" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="12" fill="#9aa4b8">기울기 1 — h를 10분의 1로 줄이면 오차도 10분의 1.   바닥은 10⁻⁸ 에서 6.1×10⁻¹⁰</text>
+<text x="96" y="472" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#7777cc" font-weight="600">중심차분</text>
+<text x="190" y="472" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="12" fill="#9aa4b8">기울기 2 — 같은 일에 오차는 100분의 1.   대신 바닥에 먼저 닿는다 — 10⁻⁵ 에서 5.3×10⁻¹²</text>
+</svg>

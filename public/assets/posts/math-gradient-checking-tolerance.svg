@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="400" viewBox="0 0 880 400">
+<rect width="880" height="400" rx="12" fill="#0a0a0a"/>
+<text x="440" y="42" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="22" font-weight="700" fill="#e8e8e8" text-anchor="middle">상대오차를 어디서 끊을 것인가</text>
+<text x="440" y="68" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888" text-anchor="middle">절댓값이 아니라 크기로 나눈 값을 본다</text>
+<rect x="90" y="140" width="180" height="64" rx="0" fill="#55c555" fill-opacity="0.18" stroke="#55c555" stroke-width="1.5"/>
+<text x="180.0" y="168" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="15" fill="#55c555" font-weight="600" text-anchor="middle">통과</text>
+<text x="180.0" y="190" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="12" fill="#e8e8e8" text-anchor="middle">10⁻¹⁰ 미만</text>
+<rect x="270" y="140" width="180" height="64" rx="0" fill="#7ec8e3" fill-opacity="0.18" stroke="#7ec8e3" stroke-width="1.5"/>
+<text x="360.0" y="168" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="15" fill="#7ec8e3" font-weight="600" text-anchor="middle">거의 확실</text>
+<text x="360.0" y="190" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="12" fill="#e8e8e8" text-anchor="middle">10⁻⁷ 미만</text>
+<rect x="450" y="140" width="170" height="64" rx="0" fill="#e0a555" fill-opacity="0.18" stroke="#e0a555" stroke-width="1.5"/>
+<text x="535.0" y="168" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="15" fill="#e0a555" font-weight="600" text-anchor="middle">의심</text>
+<text x="535.0" y="190" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="12" fill="#e8e8e8" text-anchor="middle">10⁻⁵ 근처</text>
+<rect x="620" y="140" width="170" height="64" rx="0" fill="#e05555" fill-opacity="0.18" stroke="#e05555" stroke-width="1.5"/>
+<text x="705.0" y="168" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="15" fill="#e05555" font-weight="600" text-anchor="middle">틀렸다</text>
+<text x="705.0" y="190" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="12" fill="#e8e8e8" text-anchor="middle">10⁻³ 이상</text>
+<text x="90" y="234" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="12" fill="#888">← 작다</text>
+<text x="790" y="234" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="12" fill="#888" text-anchor="end">크다 →</text>
+<rect x="90" y="252" width="700" height="86" rx="8" fill="#000000" stroke="#3a4a6e" stroke-width="1.5"/>
+<text x="440" y="282" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="15" fill="#ffffff" font-weight="600" text-anchor="middle">상대오차 =  |해석값 − 수치값|  ÷  max(10⁻⁸,  |해석값| + |수치값|)</text>
+<text x="440" y="312" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="12" fill="#9aa4b8" text-anchor="middle">그냥 빼면 값이 큰 자리에서만 크게 나온다 — 크기로 나눠야 자리끼리 비교된다</text>
+<text x="440" y="370" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="12" fill="#9aa4b8" text-anchor="middle">이 대역은 float64 · 중심차분 · 매끄러운 함수 기준이다. float32면 통째로 10⁵ 배쯤 오른쪽으로 밀린다.</text>
+</svg>

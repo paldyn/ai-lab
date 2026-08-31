@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="600" viewBox="0 0 880 600">
+<rect width="880" height="600" rx="12" fill="#0a0a0a"/>
+<text x="440" y="42" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="22" font-weight="700" fill="#e8e8e8" text-anchor="middle">어텐션 한 겹의 앞뒤</text>
+<defs><marker id="f1" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto"><path d="M 0 0 L 13 7 L 0 14 z" fill="#7ec8e3"/></marker><marker id="b1" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto"><path d="M 0 0 L 13 7 L 0 14 z" fill="#e05555"/></marker></defs>
+<text x="240" y="104" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="15" fill="#7ec8e3" font-weight="600" text-anchor="middle">순전파</text>
+<text x="640" y="104" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="15" fill="#e05555" font-weight="600" text-anchor="middle">역전파</text>
+<rect x="70" y="124" width="340" height="72" rx="8" fill="#000000" stroke="#3a4a6e" stroke-width="1.5"/>
+<text x="240" y="154" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="14" fill="#ffffff" font-weight="600" text-anchor="middle">S = QKᵀ ⁄ √d_k</text>
+<text x="240" y="176" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="12" fill="#9aa4b8" text-anchor="middle">점수  (n × m)</text>
+<rect x="470" y="124" width="340" height="72" rx="8" fill="#000000" stroke="#3a4a6e" stroke-width="1.5"/>
+<text x="640" y="154" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#ffffff" font-weight="600" text-anchor="middle">∂L/∂Q = (∂L/∂S) K ⁄ √d_k</text>
+<text x="640" y="176" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="12" fill="#9aa4b8" text-anchor="middle">∂L/∂K = (∂L/∂S)ᵀ Q ⁄ √d_k   ·   (n × d_k), (m × d_k)</text>
+<line x1="240" y1="196" x2="240" y2="228" stroke="#7ec8e3" stroke-width="2.5" marker-end="url(#f1)"/>
+<line x1="640" y1="228" x2="640" y2="196" stroke="#e05555" stroke-width="2.5" marker-end="url(#b1)"/>
+<rect x="70" y="228" width="340" height="72" rx="8" fill="#000000" stroke="#3a4a6e" stroke-width="1.5"/>
+<text x="240" y="258" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="14" fill="#ffffff" font-weight="600" text-anchor="middle">P = softmax(S)</text>
+<text x="240" y="280" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="12" fill="#9aa4b8" text-anchor="middle">행마다 합이 1  (n × m)</text>
+<rect x="470" y="228" width="340" height="72" rx="8" fill="#000000" stroke="#3a4a6e" stroke-width="1.5"/>
+<text x="640" y="258" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#ffffff" font-weight="600" text-anchor="middle">∂L/∂S = P ⊙ (U − r 1ᵀ)</text>
+<text x="640" y="280" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="12" fill="#9aa4b8" text-anchor="middle">r_i = Σ_j P_ij U_ij   (n × m)</text>
+<line x1="240" y1="300" x2="240" y2="332" stroke="#7ec8e3" stroke-width="2.5" marker-end="url(#f1)"/>
+<line x1="640" y1="332" x2="640" y2="300" stroke="#e05555" stroke-width="2.5" marker-end="url(#b1)"/>
+<rect x="70" y="332" width="340" height="72" rx="8" fill="#000000" stroke="#3a4a6e" stroke-width="1.5"/>
+<text x="240" y="362" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="14" fill="#ffffff" font-weight="600" text-anchor="middle">O = P V</text>
+<text x="240" y="384" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="12" fill="#9aa4b8" text-anchor="middle">출력  (n × d_v)</text>
+<rect x="470" y="332" width="340" height="72" rx="8" fill="#000000" stroke="#3a4a6e" stroke-width="1.5"/>
+<text x="640" y="362" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#ffffff" font-weight="600" text-anchor="middle">∂L/∂V = Pᵀ G   ·   ∂L/∂P = G Vᵀ</text>
+<text x="640" y="384" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="12" fill="#9aa4b8" text-anchor="middle">(m × d_v)   ·   (n × m)</text>
+<line x1="240" y1="404" x2="240" y2="436" stroke="#7ec8e3" stroke-width="2.5" marker-end="url(#f1)"/>
+<line x1="640" y1="436" x2="640" y2="404" stroke="#e05555" stroke-width="2.5" marker-end="url(#b1)"/>
+<rect x="70" y="436" width="340" height="72" rx="8" fill="#000000" stroke="#3a4a6e" stroke-width="1.5"/>
+<text x="240" y="466" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="14" fill="#ffffff" font-weight="600" text-anchor="middle">L</text>
+<text x="240" y="488" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="12" fill="#9aa4b8" text-anchor="middle">스칼라</text>
+<rect x="470" y="436" width="340" height="72" rx="8" fill="#000000" stroke="#3a4a6e" stroke-width="1.5"/>
+<text x="640" y="466" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#ffffff" font-weight="600" text-anchor="middle">∂L/∂O = G</text>
+<text x="640" y="488" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="12" fill="#9aa4b8" text-anchor="middle">(n × d_v) — 위에서 내려온 것</text>
+<text x="440" y="546" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="12" fill="#9aa4b8" text-anchor="middle">같은 네 칸을 위에서 아래로 한 번, 아래에서 위로 한 번 지난다</text>
+<text x="440" y="570" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="12" fill="#9aa4b8" text-anchor="middle">Q는 n × d_k, K와 V는 m × d_k 와 m × d_v 다</text>
+</svg>

@@ -251,3 +251,5 @@ print(f"{V * V:.3g} 개 · {V * V * 4 / 1e9:.1f} GB")  # 1.64e+10 개 · 65.5 GB
 읽어주셔서 감사합니다. 😊
 
 **지난 글:** [행렬 미분: 규약을 정하고 shape로 검산하기](/articles/math-matrix-calculus)
+
+**다음 글:** [활성함수의 미분: GELU가 x·Φ(x)인 이유](/articles/math-activation-derivatives)

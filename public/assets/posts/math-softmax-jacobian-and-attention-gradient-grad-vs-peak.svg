@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="482" viewBox="0 0 880 482">
+<rect width="880" height="482" rx="12" fill="#0a0a0a"/>
+<text x="440" y="42" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="22" font-weight="700" fill="#e8e8e8" text-anchor="middle">뾰족해지면 Q와 K만 죽는다</text>
+<text x="250" y="118" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="14" fill="#e8e8e8" font-weight="600" text-anchor="middle">log₁₀ 기울기의 크기</text>
+<text x="650" y="118" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="14" fill="#e8e8e8" font-weight="600" text-anchor="middle">가장 큰 어텐션 가중치</text>
+<rect x="90.0" y="132.0" width="320.0" height="258.0" fill="none" stroke="#2a2a2a" stroke-width="1"/>
+<line x1="90.0" y1="380.4" x2="410.0" y2="380.4" stroke="#444" stroke-width="1"/>
+<line x1="90.0" y1="332.7" x2="410.0" y2="332.7" stroke="#444" stroke-width="1"/>
+<line x1="90.0" y1="284.9" x2="410.0" y2="284.9" stroke="#444" stroke-width="1"/>
+<line x1="90.0" y1="237.1" x2="410.0" y2="237.1" stroke="#444" stroke-width="1"/>
+<line x1="90.0" y1="141.6" x2="410.0" y2="141.6" stroke="#444" stroke-width="1"/>
+<line x1="90.0" y1="189.3" x2="410.0" y2="189.3" stroke="#888" stroke-width="1.5"/>
+<line x1="170.0" y1="132.0" x2="170.0" y2="390.0" stroke="#888" stroke-width="1.5"/>
+<text x="81.0" y="384.4" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="12" fill="#888" text-anchor="end">-4</text>
+<text x="81.0" y="336.7" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="12" fill="#888" text-anchor="end">-3</text>
+<text x="81.0" y="288.9" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="12" fill="#888" text-anchor="end">-2</text>
+<text x="81.0" y="241.1" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="12" fill="#888" text-anchor="end">-1</text>
+<text x="81.0" y="145.6" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="12" fill="#888" text-anchor="end">1</text>
+<line x1="90.0" y1="132" x2="90.0" y2="390" stroke="#444" stroke-width="1"/>
+<text x="90.0" y="409" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="12" fill="#888" text-anchor="middle">¼</text>
+<line x1="170.0" y1="132" x2="170.0" y2="390" stroke="#444" stroke-width="1"/>
+<text x="170.0" y="409" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="12" fill="#888" text-anchor="middle">1</text>
+<line x1="250.0" y1="132" x2="250.0" y2="390" stroke="#444" stroke-width="1"/>
+<text x="250.0" y="409" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="12" fill="#888" text-anchor="middle">4</text>
+<line x1="330.0" y1="132" x2="330.0" y2="390" stroke="#444" stroke-width="1"/>
+<text x="330.0" y="409" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="12" fill="#888" text-anchor="middle">16</text>
+<line x1="410.0" y1="132" x2="410.0" y2="390" stroke="#444" stroke-width="1"/>
+<text x="410.0" y="409" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="12" fill="#888" text-anchor="middle">64</text>
+<rect x="490.0" y="132.0" width="320.0" height="258.0" fill="none" stroke="#2a2a2a" stroke-width="1"/>
+<line x1="490.0" y1="328.6" x2="810.0" y2="328.6" stroke="#444" stroke-width="1"/>
+<line x1="490.0" y1="267.1" x2="810.0" y2="267.1" stroke="#444" stroke-width="1"/>
+<line x1="490.0" y1="205.7" x2="810.0" y2="205.7" stroke="#444" stroke-width="1"/>
+<line x1="490.0" y1="144.3" x2="810.0" y2="144.3" stroke="#444" stroke-width="1"/>
+<line x1="490.0" y1="390.0" x2="810.0" y2="390.0" stroke="#888" stroke-width="1.5"/>
+<line x1="570.0" y1="132.0" x2="570.0" y2="390.0" stroke="#888" stroke-width="1.5"/>
+<text x="481.0" y="332.6" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="12" fill="#888" text-anchor="end">0.25</text>
+<text x="481.0" y="271.1" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="12" fill="#888" text-anchor="end">0.50</text>
+<text x="481.0" y="209.7" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="12" fill="#888" text-anchor="end">0.75</text>
+<text x="481.0" y="148.3" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="12" fill="#888" text-anchor="end">1.00</text>
+<line x1="490.0" y1="132" x2="490.0" y2="390" stroke="#444" stroke-width="1"/>
+<text x="490.0" y="409" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="12" fill="#888" text-anchor="middle">¼</text>
+<line x1="570.0" y1="132" x2="570.0" y2="390" stroke="#444" stroke-width="1"/>
+<text x="570.0" y="409" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="12" fill="#888" text-anchor="middle">1</text>
+<line x1="650.0" y1="132" x2="650.0" y2="390" stroke="#444" stroke-width="1"/>
+<text x="650.0" y="409" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="12" fill="#888" text-anchor="middle">4</text>
+<line x1="730.0" y1="132" x2="730.0" y2="390" stroke="#444" stroke-width="1"/>
+<text x="730.0" y="409" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="12" fill="#888" text-anchor="middle">16</text>
+<line x1="810.0" y1="132" x2="810.0" y2="390" stroke="#444" stroke-width="1"/>
+<text x="810.0" y="409" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="12" fill="#888" text-anchor="middle">64</text>
+<path d="M 90.0 174.7 L 93.3 174.6 L 96.7 174.5 L 100.0 174.4 L 103.3 174.3 L 106.7 174.2 L 110.0 174.1 L 113.3 174.0 L 116.7 173.9 L 120.0 173.7 L 123.3 173.6 L 126.7 173.4 L 130.0 173.2 L 133.3 173.0 L 136.7 172.7 L 140.0 172.5 L 143.3 172.2 L 146.7 171.9 L 150.0 171.5 L 153.3 171.2 L 156.7 170.8 L 160.0 170.4 L 163.3 170.0 L 166.7 169.5 L 170.0 169.0 L 173.3 168.5 L 176.7 168.0 L 180.0 167.4 L 183.3 166.8 L 186.7 166.2 L 190.0 165.6 L 193.3 165.0 L 196.7 164.4 L 200.0 163.8 L 203.3 163.1 L 206.7 162.5 L 210.0 161.9 L 213.3 161.3 L 216.7 160.7 L 220.0 160.1 L 223.3 159.6 L 226.7 159.0 L 230.0 158.5 L 233.3 158.0 L 236.7 157.5 L 240.0 157.1 L 243.3 156.6 L 246.7 156.2 L 250.0 155.8 L 253.3 155.4 L 256.7 155.1 L 260.0 154.7 L 263.3 154.4 L 266.7 154.1 L 270.0 153.8 L 273.3 153.5 L 276.7 153.2 L 280.0 153.0 L 283.3 152.7 L 286.7 152.5 L 290.0 152.3 L 293.3 152.1 L 296.7 151.9 L 300.0 151.7 L 303.3 151.5 L 306.7 151.4 L 310.0 151.2 L 313.3 151.1 L 316.7 151.0 L 320.0 150.9 L 323.3 150.8 L 326.7 150.7 L 330.0 150.6 L 333.3 150.6 L 336.7 150.5 L 340.0 150.5 L 343.3 150.4 L 346.7 150.4 L 350.0 150.4 L 353.3 150.4 L 356.7 150.4 L 360.0 150.3 L 363.3 150.3 L 366.7 150.3 L 370.0 150.3 L 373.3 150.3 L 376.7 150.3 L 380.0 150.3 L 383.3 150.3 L 386.7 150.3 L 390.0 150.3 L 393.3 150.3 L 396.7 150.3 L 400.0 150.3 L 403.3 150.3 L 406.7 150.3 L 410.0 150.3" stroke="#55c555" stroke-width="2.5" fill="none"/>
+<path d="M 90.0 206.7 L 93.3 205.5 L 96.7 204.3 L 100.0 203.1 L 103.3 201.9 L 106.7 200.7 L 110.0 199.5 L 113.3 198.3 L 116.7 197.1 L 120.0 195.8 L 123.3 194.6 L 126.7 193.4 L 130.0 192.1 L 133.3 190.9 L 136.7 189.7 L 140.0 188.4 L 143.3 187.2 L 146.7 185.9 L 150.0 184.7 L 153.3 183.4 L 156.7 182.2 L 160.0 181.0 L 163.3 179.8 L 166.7 178.6 L 170.0 177.4 L 173.3 176.3 L 176.7 175.1 L 180.0 174.1 L 183.3 173.0 L 186.7 171.9 L 190.0 170.9 L 193.3 170.0 L 196.7 169.0 L 200.0 168.1 L 203.3 167.2 L 206.7 166.3 L 210.0 165.5 L 213.3 164.6 L 216.7 163.8 L 220.0 162.9 L 223.3 162.1 L 226.7 161.3 L 230.0 160.4 L 233.3 159.6 L 236.7 158.8 L 240.0 158.1 L 243.3 157.3 L 246.7 156.6 L 250.0 155.9 L 253.3 155.3 L 256.7 154.7 L 260.0 154.2 L 263.3 153.8 L 266.7 153.4 L 270.0 153.0 L 273.3 152.8 L 276.7 152.6 L 280.0 152.6 L 283.3 152.6 L 286.7 152.7 L 290.0 152.9 L 293.3 153.3 L 296.7 153.7 L 300.0 154.3 L 303.3 155.1 L 306.7 156.0 L 310.0 157.1 L 313.3 158.3 L 316.7 159.7 L 320.0 161.4 L 323.3 163.2 L 326.7 165.3 L 330.0 167.6 L 333.3 170.1 L 336.7 172.9 L 340.0 176.0 L 343.3 179.3 L 346.7 183.0 L 350.0 187.0 L 353.3 191.2 L 356.7 195.9 L 360.0 200.9 L 363.3 206.3 L 366.7 212.0 L 370.0 218.2 L 373.3 224.9 L 376.7 232.0 L 380.0 239.6 L 383.3 247.8 L 386.7 256.5 L 390.0 265.8 L 393.3 275.7 L 396.7 286.3 L 400.0 297.6 L 403.3 309.6 L 406.7 322.4 L 410.0 336.1" stroke="#e05555" stroke-width="2.5" fill="none"/>
+<path d="M 490.0 346.9 L 493.3 346.0 L 496.7 345.2 L 500.0 344.2 L 503.3 343.2 L 506.7 342.1 L 510.0 340.9 L 513.3 339.7 L 516.7 338.3 L 520.0 336.8 L 523.3 335.3 L 526.7 333.6 L 530.0 331.8 L 533.3 329.8 L 536.7 327.7 L 540.0 325.4 L 543.3 323.0 L 546.7 320.3 L 550.0 317.4 L 553.3 314.4 L 556.7 311.1 L 560.0 307.5 L 563.3 303.7 L 566.7 299.7 L 570.0 295.3 L 573.3 290.7 L 576.7 285.7 L 580.0 280.5 L 583.3 275.0 L 586.7 269.2 L 590.0 263.1 L 593.3 256.8 L 596.7 250.3 L 600.0 243.5 L 603.3 236.7 L 606.7 229.8 L 610.0 222.8 L 613.3 215.9 L 616.7 209.1 L 620.0 202.4 L 623.3 196.0 L 626.7 189.9 L 630.0 184.1 L 633.3 178.7 L 636.7 173.7 L 640.0 169.2 L 643.3 165.1 L 646.7 161.5 L 650.0 158.4 L 653.3 155.6 L 656.7 153.3 L 660.0 151.4 L 663.3 149.8 L 666.7 148.5 L 670.0 147.4 L 673.3 146.6 L 676.7 146.0 L 680.0 145.5 L 683.3 145.1 L 686.7 144.9 L 690.0 144.7 L 693.3 144.5 L 696.7 144.4 L 700.0 144.4 L 703.3 144.3 L 706.7 144.3 L 710.0 144.3 L 713.3 144.3 L 716.7 144.3 L 720.0 144.3 L 723.3 144.3 L 726.7 144.3 L 730.0 144.3 L 733.3 144.3 L 736.7 144.3 L 740.0 144.3 L 743.3 144.3 L 746.7 144.3 L 750.0 144.3 L 753.3 144.3 L 756.7 144.3 L 760.0 144.3 L 763.3 144.3 L 766.7 144.3 L 770.0 144.3 L 773.3 144.3 L 776.7 144.3 L 780.0 144.3 L 783.3 144.3 L 786.7 144.3 L 790.0 144.3 L 793.3 144.3 L 796.7 144.3 L 800.0 144.3 L 803.3 144.3 L 806.7 144.3 L 810.0 144.3" stroke="#7ec8e3" stroke-width="2.5" fill="none"/>
+<text x="342.8771237954945" y="138.68888888888893" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#55c555" font-weight="600">∂L/∂V</text>
+<text x="175.5001409499974" y="261.0" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e05555" font-weight="600">∂L/∂Q</text>
+<text x="662.8771237954945" y="254.85714285714286" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#7ec8e3" font-weight="600">최대 P</text>
+<text x="440" y="434" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="12" fill="#9aa4b8" text-anchor="middle">가로축은 점수에 곱한 배수다. n = 4, m = 8, d_k = 16, d_v = 8. ∂L/∂K 는 ∂L/∂Q 와 거의 겹쳐 그리지 않았다</text>
+<text x="440" y="458" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="12" fill="#9aa4b8" text-anchor="middle">∂L/∂V 만 끝까지 살아 있다 — 그 경로에는 야코비안이 곱해지지 않기 때문이다</text>
+</svg>
