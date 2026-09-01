@@ -160,7 +160,7 @@ export interface NewsDetail {
   commentary: string;
 }
 
-export const globalNewsUpdatedAt = '2026-08-31';
+export const globalNewsUpdatedAt = '2026-09-01';
 
 /**
  * 공식 발표 한 건 = 항목 한 개. 2026년 1월부터 쌓는 아카이브이며 오래된 항목을
@@ -171,6 +171,50 @@ export const globalNewsUpdatedAt = '2026-08-31';
  * 목록에서 파생됩니다. 갱신 시 globalNewsUpdatedAt도 함께 올립니다.
  */
 const entries: NewsItem[] = [
+  {
+    id: 'path-to-astra',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'OpenAI, Astra가 사이버 Critical 기준을 충족했다고 판정',
+    summary:
+      'OpenAI가 준비 중인 모델 Astra를 Preparedness Framework의 Critical 사이버 역량으로 ' +
+      '처음 지정했다. 사람이 단계마다 이끌지 않아도 알려지지 않은 취약점을 찾아 익스플로잇을 ' +
+      '만들 수 있다고 보고, 개발과 배포에 더 강한 안전장치를 걸었다.',
+    publishedAt: '2026-09-01',
+    collectedAt: '2026-09-02',
+    category: 'Safety',
+    signal: '역량 임계 도달',
+    url: 'https://openai.com/index/path-to-astra',
+  },
+  {
+    id: 'chatgpt-connects-health-records-and-healthcare-sources',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'ChatGPT for Healthcare에 Epic 진료기록 연동과 공공데이터 플러그인',
+    summary:
+      'OpenAI가 ChatGPT for Healthcare에 Epic 환경의 승인된 환자 기록을 끌어오는 EHR 연동과 ' +
+      'PubMed·DailyMed·CMS Coverage 등 공식 데이터 아홉 곳을 묶은 Healthcare Public Data ' +
+      '플러그인을 추가했다.',
+    publishedAt: '2026-09-01',
+    collectedAt: '2026-09-02',
+    category: 'Product',
+    signal: '진료기록 연동',
+    url: 'https://openai.com/index/chatgpt-connects-health-records-and-healthcare-sources',
+  },
+  {
+    id: 'ai-native-company-workflows',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'OpenAI, 에이전트를 업무 흐름에 심은 스타트업 세 곳 사례',
+    summary:
+      'OpenAI가 Basis·Clay·Exa Labs가 각각 입사 절차, 영업 계정 관리, 개발자 생태계 확장에 ' +
+      '에이전트를 넣은 방식을 정리했다. Basis는 첫날 온보딩을 두 시간에서 30분으로 줄였다.',
+    publishedAt: '2026-09-01',
+    collectedAt: '2026-09-02',
+    category: 'Product',
+    signal: '기업 도입 사례',
+    url: 'https://openai.com/index/ai-native-company-workflows',
+  },
   {
     id: 'claude-platform-september-1-2026',
     source: 'Anthropic',
@@ -283,6 +327,21 @@ const entries: NewsItem[] = [
     category: 'Product',
     signal: '공공부문 AI',
     url: 'https://openai.com/index/polimill',
+  },
+  {
+    id: 'supporting-california-bill-advance-ai-youth-safety',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'OpenAI, 캘리포니아 청소년 AI 안전 법안 SB 1119 지지',
+    summary:
+      'OpenAI가 캘리포니아 상원 법안 SB 1119를 지지한다고 밝히고 뉴섬 주지사에게 서명을 ' +
+      '요청하는 서한을 보냈다. 연령 확인, 독립 감사, 유해 콘텐츠 차단, 보호자 도구를 ' +
+      '13~17세에게 자동 적용하도록 하는 내용이다.',
+    publishedAt: '2026-08-31',
+    collectedAt: '2026-09-02',
+    category: 'Safety',
+    signal: '청소년 AI 안전',
+    url: 'https://openai.com/index/supporting-california-bill-advance-ai-youth-safety',
   },
   {
     id: 'our-decision-on-cursor-following-its-acquisition-by-spacex',
