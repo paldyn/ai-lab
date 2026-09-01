@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="364" viewBox="0 0 880 364" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <rect x="0" y="0" width="880" height="364" rx="12" fill="#0a0a0a"/>
+
+  <text x="62" y="46" font-size="22" font-weight="700" fill="#e8e8e8">CPU 추론의 천장은 대역폭이 정한다</text>
+  <text x="62" y="72" font-size="13" fill="#888">8B 모델을 4비트로 담으면 약 4.5GB. 토큰 하나마다 이 전부를 메모리에서 읽어야 한다.</text>
+
+  <text x="62" y="112" font-size="16" font-weight="600" fill="#e8e8e8">메모리 대역폭 (GB/s)</text>
+
+  <rect x="62" y="132" width="196" height="30" rx="4" fill="#7ec8e3"/>
+  <text x="270" y="152" font-size="13" fill="#e8e8e8">DDR4 듀얼 채널 · 약 50</text>
+
+  <rect x="62" y="176" width="392" height="30" rx="4" fill="#7ec8e3"/>
+  <text x="466" y="196" font-size="13" fill="#e8e8e8">DDR5 듀얼 채널 · 약 100</text>
+
+  <rect x="62" y="220" width="588" height="30" rx="4" fill="#7777cc"/>
+  <text x="662" y="240" font-size="13" fill="#e8e8e8">서버 8채널 · 약 200</text>
+
+  <rect x="62" y="264" width="756" height="30" rx="4" fill="#55c555"/>
+  <text x="440" y="284" font-size="13" font-weight="600" fill="#0a0a0a" text-anchor="middle">데이터센터 GPU HBM · 2,000 이상 (막대는 잘라 그렸다)</text>
+
+  <line x1="62" y1="308" x2="818" y2="308" stroke="#333333" stroke-width="1"/>
+
+  <text x="62" y="334" font-size="13" fill="#aaaaaa">대역폭을 4.5GB로 나눈 값이 초당 토큰 수의 상한이다 — DDR5 듀얼 채널이면 약 22개.</text>
+  <text x="62" y="354" font-size="13" fill="#888">실측은 이 값의 절반에서 7할쯤 나온다. 계산을 아무리 줄여도 이 선 위로는 못 간다.</text>
+</svg>

@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="392" viewBox="0 0 880 392" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <rect x="0" y="0" width="880" height="392" rx="12" fill="#0a0a0a"/>
+
+  <text x="62" y="46" font-size="22" font-weight="700" fill="#e8e8e8">초안을 길게 뽑는 이득은 수용률이 정한다</text>
+  <text x="62" y="72" font-size="13" fill="#888">한 걸음에 나오는 기대 토큰 수. 수용률이 낮으면 초안 길이를 늘려도 선이 겹친다.</text>
+
+  <line x1="150" y1="100" x2="820" y2="100" stroke="#222222" stroke-width="1"/>
+  <line x1="150" y1="140" x2="820" y2="140" stroke="#222222" stroke-width="1"/>
+  <line x1="150" y1="180" x2="820" y2="180" stroke="#222222" stroke-width="1"/>
+  <line x1="150" y1="220" x2="820" y2="220" stroke="#222222" stroke-width="1"/>
+  <line x1="150" y1="260" x2="820" y2="260" stroke="#222222" stroke-width="1"/>
+  <line x1="150" y1="300" x2="820" y2="300" stroke="#444444" stroke-width="1.5"/>
+
+  <text x="136" y="105" font-size="12" fill="#888" text-anchor="end">6</text>
+  <text x="136" y="145" font-size="12" fill="#888" text-anchor="end">5</text>
+  <text x="136" y="185" font-size="12" fill="#888" text-anchor="end">4</text>
+  <text x="136" y="225" font-size="12" fill="#888" text-anchor="end">3</text>
+  <text x="136" y="265" font-size="12" fill="#888" text-anchor="end">2</text>
+  <text x="136" y="305" font-size="12" fill="#888" text-anchor="end">1</text>
+
+  <line x1="150" y1="100" x2="150" y2="300" stroke="#444444" stroke-width="1.5"/>
+
+  <text x="150" y="326" font-size="12" fill="#888" text-anchor="middle">0.5</text>
+  <text x="317" y="326" font-size="12" fill="#888" text-anchor="middle">0.6</text>
+  <text x="485" y="326" font-size="12" fill="#888" text-anchor="middle">0.7</text>
+  <text x="652" y="326" font-size="12" fill="#888" text-anchor="middle">0.8</text>
+  <text x="820" y="326" font-size="12" fill="#888" text-anchor="middle">0.9</text>
+  <text x="485" y="352" font-size="13" fill="#aaaaaa" text-anchor="middle">토큰 하나가 받아들여질 확률 (수용률)</text>
+
+  <polyline points="150,270 317,254 485,240 652,226 820,208" fill="none" stroke="#7ec8e3" stroke-width="2.5"/>
+  <circle cx="150" cy="270" r="4" fill="#7ec8e3"/>
+  <circle cx="317" cy="254" r="4" fill="#7ec8e3"/>
+  <circle cx="485" cy="240" r="4" fill="#7ec8e3"/>
+  <circle cx="652" cy="226" r="4" fill="#7ec8e3"/>
+  <circle cx="820" cy="208" r="4" fill="#7ec8e3"/>
+
+  <polyline points="150,262 317,248 485,229 652,206 820,176" fill="none" stroke="#7777cc" stroke-width="2.5"/>
+  <circle cx="150" cy="262" r="4" fill="#7777cc"/>
+  <circle cx="317" cy="248" r="4" fill="#7777cc"/>
+  <circle cx="485" cy="229" r="4" fill="#7777cc"/>
+  <circle cx="652" cy="206" r="4" fill="#7777cc"/>
+  <circle cx="820" cy="176" r="4" fill="#7777cc"/>
+
+  <polyline points="150,260 317,242 485,214 652,174 820,112" fill="none" stroke="#55c555" stroke-width="2.5"/>
+  <circle cx="150" cy="260" r="4" fill="#55c555"/>
+  <circle cx="317" cy="242" r="4" fill="#55c555"/>
+  <circle cx="485" cy="214" r="4" fill="#55c555"/>
+  <circle cx="652" cy="174" r="4" fill="#55c555"/>
+  <circle cx="820" cy="112" r="4" fill="#55c555"/>
+
+  <line x1="200" y1="118" x2="240" y2="118" stroke="#55c555" stroke-width="2.5"/>
+  <text x="250" y="123" font-size="12" fill="#55c555">한 걸음에 초안 7개</text>
+
+  <line x1="200" y1="144" x2="240" y2="144" stroke="#7777cc" stroke-width="2.5"/>
+  <text x="250" y="149" font-size="12" fill="#7777cc">한 걸음에 초안 4개</text>
+
+  <line x1="200" y1="170" x2="240" y2="170" stroke="#7ec8e3" stroke-width="2.5"/>
+  <text x="250" y="175" font-size="12" fill="#7ec8e3">한 걸음에 초안 2개</text>
+
+  <text x="62" y="378" font-size="12" fill="#888">수용률 0.5에서는 초안을 둘로 하든 일곱으로 하든 기대 토큰이 1.75와 1.99로, 차이가 0.25에 못 미친다.</text>
+</svg>

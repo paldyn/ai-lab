@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="348" viewBox="0 0 880 348" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <rect x="0" y="0" width="880" height="348" rx="12" fill="#0a0a0a"/>
+
+  <text x="62" y="46" font-size="22" font-weight="700" fill="#e8e8e8">기한은 단계마다가 아니라 요청 하나에 준다</text>
+  <text x="62" y="72" font-size="13" fill="#888">단계마다 같은 기한을 두면 폴백이 깊어질수록 사용자가 기다리는 시간이 곱해진다.</text>
+
+  <text x="62" y="104" font-size="13" font-weight="600" fill="#e05555">단계마다 6초씩 준 경우</text>
+  <text x="418" y="100" font-size="12" fill="#c8a33e" text-anchor="middle">클라이언트 한계 8초</text>
+
+  <line x1="418" y1="108" x2="418" y2="256" stroke="#c8a33e" stroke-width="2" stroke-dasharray="4,4"/>
+
+  <rect x="150" y="116" width="201" height="36" rx="4" fill="#101418" stroke="#3a4a6e" stroke-width="1.5"/>
+  <text x="250" y="139" font-size="12" fill="#e8e8e8" text-anchor="middle">1차 6초</text>
+
+  <rect x="351" y="116" width="201" height="36" rx="4" fill="#2a1414" stroke="#e05555" stroke-width="1.5"/>
+  <text x="451" y="139" font-size="12" fill="#e8e8e8" text-anchor="middle">2차 6초</text>
+
+  <rect x="552" y="116" width="201" height="36" rx="4" fill="#2a1414" stroke="#e05555" stroke-width="1.5"/>
+  <text x="652" y="139" font-size="12" fill="#e8e8e8" text-anchor="middle">3차 6초</text>
+
+  <text x="150" y="176" font-size="12" fill="#e05555">한계를 10초 넘겨 끝난다</text>
+  <text x="430" y="176" font-size="12" fill="#888">사용자는 그전에 창을 닫는다</text>
+
+  <text x="62" y="196" font-size="13" font-weight="600" fill="#55c555">전체 8초에서 깎아 쓰는 경우</text>
+
+  <rect x="150" y="208" width="101" height="36" rx="4" fill="#101418" stroke="#3a4a6e" stroke-width="1.5"/>
+  <text x="200" y="231" font-size="11" fill="#e8e8e8" text-anchor="middle">1차 3초</text>
+
+  <rect x="251" y="208" width="84" height="36" rx="4" fill="#1a2a1a" stroke="#55c555" stroke-width="1.5"/>
+  <text x="293" y="231" font-size="11" fill="#e8e8e8" text-anchor="middle">2차 2.5초</text>
+
+  <rect x="335" y="208" width="67" height="36" rx="4" fill="#1a2a1a" stroke="#55c555" stroke-width="1.5"/>
+  <text x="368" y="231" font-size="11" fill="#e8e8e8" text-anchor="middle">3차 2초</text>
+
+  <text x="430" y="231" font-size="12" fill="#55c555">세 자리를 다 써도 한계 안에서 끝난다</text>
+
+  <line x1="150" y1="272" x2="820" y2="272" stroke="#444444" stroke-width="1.5"/>
+  <line x1="150" y1="272" x2="150" y2="278" stroke="#444444" stroke-width="1.5"/>
+  <line x1="318" y1="272" x2="318" y2="278" stroke="#444444" stroke-width="1.5"/>
+  <line x1="485" y1="272" x2="485" y2="278" stroke="#444444" stroke-width="1.5"/>
+  <line x1="653" y1="272" x2="653" y2="278" stroke="#444444" stroke-width="1.5"/>
+  <line x1="820" y1="272" x2="820" y2="278" stroke="#444444" stroke-width="1.5"/>
+
+  <text x="150" y="296" font-size="12" fill="#888" text-anchor="middle">0초</text>
+  <text x="318" y="296" font-size="12" fill="#888" text-anchor="middle">5초</text>
+  <text x="485" y="296" font-size="12" fill="#888" text-anchor="middle">10초</text>
+  <text x="653" y="296" font-size="12" fill="#888" text-anchor="middle">15초</text>
+  <text x="820" y="296" font-size="12" fill="#888" text-anchor="middle">20초</text>
+
+  <text x="62" y="330" font-size="12" fill="#888">남은 예산이 다음 단계의 기한이 되고, 예산이 바닥나면 폴백을 멈추고 실패를 그대로 돌려준다.</text>
+</svg>

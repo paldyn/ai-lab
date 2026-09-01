@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="336" viewBox="0 0 880 336" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <rect x="0" y="0" width="880" height="336" rx="12" fill="#0a0a0a"/>
+  <defs>
+    <marker id="sd-blue" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#7ec8e3"/>
+    </marker>
+    <marker id="sd-purple" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#7777cc"/>
+    </marker>
+  </defs>
+
+  <text x="62" y="46" font-size="22" font-weight="700" fill="#e8e8e8">초안 다섯 개를 내고, 한 번에 확인한다</text>
+  <text x="62" y="72" font-size="13" fill="#888">초안 모델이 앞질러 낸 토큰 전부를 타깃 모델이 forward 한 번으로 판정한다.</text>
+
+  <rect x="62" y="108" width="170" height="64" rx="6" fill="#101418" stroke="#3a4a6e" stroke-width="1.5"/>
+  <text x="147" y="134" font-size="13" font-weight="600" fill="#e8e8e8" text-anchor="middle">초안 모델</text>
+  <text x="147" y="154" font-size="11" fill="#aaaaaa" text-anchor="middle">작고 빠른 쪽</text>
+  <rect x="62" y="108" width="170" height="64" rx="6" fill="#ffffff" opacity="0">
+    <animate attributeName="opacity" values="0;0.16;0.16;0;0" keyTimes="0;0.04;0.28;0.32;1" dur="5s" repeatCount="indefinite"/>
+  </rect>
+
+  <text x="276" y="126" font-size="12" fill="#7ec8e3" text-anchor="middle">제안</text>
+  <line x1="232" y1="140" x2="320" y2="140" stroke="#7ec8e3" stroke-width="2" marker-end="url(#sd-blue)"/>
+
+  <rect x="320" y="108" width="170" height="64" rx="6" fill="#101418" stroke="#7777cc" stroke-width="1.5"/>
+  <text x="405" y="134" font-size="13" font-weight="600" fill="#e8e8e8" text-anchor="middle">타깃 모델</text>
+  <text x="405" y="154" font-size="11" fill="#aaaaaa" text-anchor="middle">forward 1회</text>
+  <rect x="320" y="108" width="170" height="64" rx="6" fill="#ffffff" opacity="0">
+    <animate attributeName="opacity" values="0;0;0.16;0.16;0;0" keyTimes="0;0.34;0.38;0.58;0.62;1" dur="5s" repeatCount="indefinite"/>
+  </rect>
+
+  <text x="535" y="126" font-size="12" fill="#7777cc" text-anchor="middle">판정</text>
+  <line x1="490" y1="140" x2="580" y2="140" stroke="#7777cc" stroke-width="2" marker-end="url(#sd-purple)"/>
+
+  <rect x="580" y="108" width="238" height="64" rx="6" fill="#101418" stroke="#3a4a6e" stroke-width="1.5"/>
+  <text x="699" y="134" font-size="13" font-weight="600" fill="#e8e8e8" text-anchor="middle">앞에서부터 받아들인다</text>
+  <text x="699" y="154" font-size="11" fill="#aaaaaa" text-anchor="middle">첫 거절에서 잘라 낸다</text>
+  <rect x="580" y="108" width="238" height="64" rx="6" fill="#ffffff" opacity="0">
+    <animate attributeName="opacity" values="0;0;0.16;0.16;0" keyTimes="0;0.64;0.68;0.94;0.98" dur="5s" repeatCount="indefinite"/>
+  </rect>
+
+  <circle r="6" fill="#7ec8e3" opacity="0">
+    <animate attributeName="opacity" values="0;1;1;0;0" keyTimes="0;0.3;0.36;0.4;1" dur="5s" repeatCount="indefinite"/>
+    <animate attributeName="cx" values="238;314" keyTimes="0;1" dur="5s" repeatCount="indefinite"/>
+    <animate attributeName="cy" values="140;140" dur="5s" repeatCount="indefinite"/>
+  </circle>
+
+  <text x="62" y="212" font-size="16" font-weight="600" fill="#e8e8e8">판정이 끝난 뒤 남는 것</text>
+
+  <rect x="62" y="230" width="140" height="56" rx="6" fill="#1a2a1a" stroke="#55c555" stroke-width="1.5"/>
+  <text x="132" y="253" font-size="13" font-weight="600" fill="#e8e8e8" text-anchor="middle">초안 1</text>
+  <text x="132" y="273" font-size="11" fill="#55c555" text-anchor="middle">받아들임</text>
+
+  <rect x="216" y="230" width="140" height="56" rx="6" fill="#1a2a1a" stroke="#55c555" stroke-width="1.5"/>
+  <text x="286" y="253" font-size="13" font-weight="600" fill="#e8e8e8" text-anchor="middle">초안 2</text>
+  <text x="286" y="273" font-size="11" fill="#55c555" text-anchor="middle">받아들임</text>
+
+  <rect x="370" y="230" width="140" height="56" rx="6" fill="#1a2a1a" stroke="#55c555" stroke-width="1.5"/>
+  <text x="440" y="253" font-size="13" font-weight="600" fill="#e8e8e8" text-anchor="middle">초안 3</text>
+  <text x="440" y="273" font-size="11" fill="#55c555" text-anchor="middle">받아들임</text>
+
+  <rect x="524" y="230" width="140" height="56" rx="6" fill="#2a1414" stroke="#e05555" stroke-width="1.5"/>
+  <text x="594" y="253" font-size="13" font-weight="600" fill="#e8e8e8" text-anchor="middle">초안 4</text>
+  <text x="594" y="273" font-size="11" fill="#e05555" text-anchor="middle">거절 · 타깃 것으로</text>
+
+  <rect x="678" y="230" width="140" height="56" rx="6" fill="#141414" stroke="#555555" stroke-width="1.5" stroke-dasharray="4,4"/>
+  <text x="748" y="253" font-size="13" font-weight="600" fill="#888888" text-anchor="middle">초안 5</text>
+  <text x="748" y="273" font-size="11" fill="#888888" text-anchor="middle">보지도 않고 버림</text>
+
+  <text x="62" y="314" font-size="12" fill="#888">이 한 걸음에서 나온 토큰은 4개 — 받아들인 셋에 타깃이 고친 하나를 더한 값이다.</text>
+</svg>

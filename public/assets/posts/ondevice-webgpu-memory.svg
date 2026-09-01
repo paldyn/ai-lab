@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="384" viewBox="0 0 880 384" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <rect x="0" y="0" width="880" height="384" rx="12" fill="#0a0a0a"/>
+
+  <text x="62" y="46" font-size="22" font-weight="700" fill="#e8e8e8">GPU 메모리가 아니라 버퍼 한계가 벽이다</text>
+  <text x="62" y="72" font-size="13" fill="#888">브라우저는 장치 메모리 전부를 내주지 않는다. 4비트 모델 기준으로 무엇이 들어가는지 본다.</text>
+
+  <text x="593" y="88" font-size="12" fill="#c8a33e" text-anchor="middle">이 브라우저의 버퍼 한계 4GB</text>
+
+  <rect x="180" y="94" width="14" height="14" rx="3" fill="#7ec8e3"/>
+  <text x="200" y="106" font-size="12" fill="#888">가중치</text>
+  <rect x="270" y="94" width="14" height="14" rx="3" fill="#7777cc"/>
+  <text x="290" y="106" font-size="12" fill="#888">KV 캐시</text>
+
+  <text x="168" y="150" font-size="13" font-weight="600" fill="#e8e8e8" text-anchor="end">1B · 4비트</text>
+  <text x="168" y="168" font-size="11" fill="#888" text-anchor="end">합계 0.9GB</text>
+  <rect x="180" y="130" width="72" height="44" rx="4" fill="#7ec8e3"/>
+  <rect x="252" y="130" width="21" height="44" rx="4" fill="#7777cc"/>
+  <text x="285" y="157" font-size="13" font-weight="600" fill="#55c555">넉넉하다</text>
+
+  <text x="168" y="210" font-size="13" font-weight="600" fill="#e8e8e8" text-anchor="end">3B · 4비트</text>
+  <text x="168" y="228" font-size="11" fill="#888" text-anchor="end">합계 2.3GB</text>
+  <rect x="180" y="190" width="196" height="44" rx="4" fill="#7ec8e3"/>
+  <rect x="376" y="190" width="41" height="44" rx="4" fill="#7777cc"/>
+  <text x="429" y="217" font-size="13" font-weight="600" fill="#55c555">쓸 만하다</text>
+
+  <text x="168" y="270" font-size="13" font-weight="600" fill="#e8e8e8" text-anchor="end">8B · 4비트</text>
+  <text x="168" y="288" font-size="11" fill="#888" text-anchor="end">합계 5.3GB</text>
+  <rect x="180" y="250" width="465" height="44" rx="4" fill="#7ec8e3"/>
+  <rect x="645" y="250" width="83" height="44" rx="4" fill="#7777cc"/>
+  <text x="740" y="277" font-size="13" font-weight="600" fill="#e05555">한계 초과</text>
+
+  <line x1="593" y1="118" x2="593" y2="306" stroke="#c8a33e" stroke-width="2" stroke-dasharray="4,4"/>
+
+  <line x1="180" y1="316" x2="800" y2="316" stroke="#444444" stroke-width="1.5"/>
+  <line x1="180" y1="316" x2="180" y2="322" stroke="#444444" stroke-width="1.5"/>
+  <line x1="283" y1="316" x2="283" y2="322" stroke="#444444" stroke-width="1.5"/>
+  <line x1="387" y1="316" x2="387" y2="322" stroke="#444444" stroke-width="1.5"/>
+  <line x1="490" y1="316" x2="490" y2="322" stroke="#444444" stroke-width="1.5"/>
+  <line x1="593" y1="316" x2="593" y2="322" stroke="#444444" stroke-width="1.5"/>
+  <line x1="697" y1="316" x2="697" y2="322" stroke="#444444" stroke-width="1.5"/>
+  <line x1="800" y1="316" x2="800" y2="322" stroke="#444444" stroke-width="1.5"/>
+
+  <text x="180" y="340" font-size="12" fill="#888" text-anchor="middle">0</text>
+  <text x="283" y="340" font-size="12" fill="#888" text-anchor="middle">1GB</text>
+  <text x="387" y="340" font-size="12" fill="#888" text-anchor="middle">2GB</text>
+  <text x="490" y="340" font-size="12" fill="#888" text-anchor="middle">3GB</text>
+  <text x="593" y="340" font-size="12" fill="#888" text-anchor="middle">4GB</text>
+  <text x="697" y="340" font-size="12" fill="#888" text-anchor="middle">5GB</text>
+  <text x="800" y="340" font-size="12" fill="#888" text-anchor="middle">6GB</text>
+
+  <text x="62" y="370" font-size="12" fill="#888">KV 캐시는 컨텍스트 길이에 비례해 늘어난다. 위 값은 4,000토큰 기준이라 창을 키우면 함께 커진다.</text>
+</svg>

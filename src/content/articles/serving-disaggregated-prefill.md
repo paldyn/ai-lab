@@ -131,3 +131,5 @@ $$2 \times 8 \times 128 \times 2 = 4{,}096\ \text{바이트}$$
 읽어주셔서 감사합니다. 😊
 
 **지난 글:** [지속 학습 — 모델을 한 번이 아니라 계속 고쳐 나갈 때](/articles/finetuning-continual-learning)
+
+**다음 글:** [투기적 디코딩 — 초안 모델을 무엇으로 세울 것인가](/articles/speculative-draft-models)

@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="384" viewBox="0 0 880 384" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <rect x="0" y="0" width="880" height="384" rx="12" fill="#0a0a0a"/>
+
+  <text x="62" y="46" font-size="22" font-weight="700" fill="#e8e8e8">NPU가 이기는 자리는 첫 1분이 아니다</text>
+  <text x="62" y="72" font-size="13" fill="#888">같은 기기에서 30분 연속으로 돌렸을 때 초당 처리량. 발열이 두 경로를 다르게 깎는다.</text>
+
+  <line x1="150" y1="100" x2="820" y2="100" stroke="#222222" stroke-width="1"/>
+  <line x1="150" y1="140" x2="820" y2="140" stroke="#222222" stroke-width="1"/>
+  <line x1="150" y1="180" x2="820" y2="180" stroke="#222222" stroke-width="1"/>
+  <line x1="150" y1="220" x2="820" y2="220" stroke="#222222" stroke-width="1"/>
+  <line x1="150" y1="260" x2="820" y2="260" stroke="#222222" stroke-width="1"/>
+  <line x1="150" y1="300" x2="820" y2="300" stroke="#444444" stroke-width="1.5"/>
+
+  <text x="136" y="105" font-size="12" fill="#888" text-anchor="end">50</text>
+  <text x="136" y="145" font-size="12" fill="#888" text-anchor="end">40</text>
+  <text x="136" y="185" font-size="12" fill="#888" text-anchor="end">30</text>
+  <text x="136" y="225" font-size="12" fill="#888" text-anchor="end">20</text>
+  <text x="136" y="265" font-size="12" fill="#888" text-anchor="end">10</text>
+  <text x="136" y="305" font-size="12" fill="#888" text-anchor="end">0</text>
+
+  <line x1="150" y1="100" x2="150" y2="300" stroke="#444444" stroke-width="1.5"/>
+
+  <text x="150" y="326" font-size="12" fill="#888" text-anchor="middle">0분</text>
+  <text x="262" y="326" font-size="12" fill="#888" text-anchor="middle">5분</text>
+  <text x="373" y="326" font-size="12" fill="#888" text-anchor="middle">10분</text>
+  <text x="485" y="326" font-size="12" fill="#888" text-anchor="middle">15분</text>
+  <text x="597" y="326" font-size="12" fill="#888" text-anchor="middle">20분</text>
+  <text x="708" y="326" font-size="12" fill="#888" text-anchor="middle">25분</text>
+  <text x="820" y="326" font-size="12" fill="#888" text-anchor="middle">30분</text>
+  <text x="485" y="352" font-size="13" fill="#aaaaaa" text-anchor="middle">연속 부하가 이어진 시간</text>
+
+  <polyline points="150,120 262,148 373,192 485,208 597,212 708,216 820,216" fill="none" stroke="#e05555" stroke-width="2.5"/>
+  <circle cx="150" cy="120" r="4" fill="#e05555"/>
+  <circle cx="262" cy="148" r="4" fill="#e05555"/>
+  <circle cx="373" cy="192" r="4" fill="#e05555"/>
+  <circle cx="485" cy="208" r="4" fill="#e05555"/>
+  <circle cx="597" cy="212" r="4" fill="#e05555"/>
+  <circle cx="708" cy="216" r="4" fill="#e05555"/>
+  <circle cx="820" cy="216" r="4" fill="#e05555"/>
+
+  <polyline points="150,180 262,184 373,188 485,190 597,192 708,192 820,192" fill="none" stroke="#55c555" stroke-width="2.5"/>
+  <circle cx="150" cy="180" r="4" fill="#55c555"/>
+  <circle cx="262" cy="184" r="4" fill="#55c555"/>
+  <circle cx="373" cy="188" r="4" fill="#55c555"/>
+  <circle cx="485" cy="190" r="4" fill="#55c555"/>
+  <circle cx="597" cy="192" r="4" fill="#55c555"/>
+  <circle cx="708" cy="192" r="4" fill="#55c555"/>
+  <circle cx="820" cy="192" r="4" fill="#55c555"/>
+
+  <line x1="560" y1="118" x2="600" y2="118" stroke="#e05555" stroke-width="2.5"/>
+  <text x="610" y="123" font-size="13" font-weight="600" fill="#e05555">모바일 GPU — 빠르게 시작해 크게 깎인다</text>
+
+  <line x1="560" y1="142" x2="600" y2="142" stroke="#55c555" stroke-width="2.5"/>
+  <text x="610" y="147" font-size="13" font-weight="600" fill="#55c555">NPU — 낮게 시작해 거의 안 깎인다</text>
+
+  <text x="62" y="370" font-size="12" fill="#888">짧은 벤치마크만 재면 GPU가 이긴다. 카메라 프리뷰처럼 계속 도는 일이면 10분 뒤의 값이 실제 성능이다.</text>
+</svg>
