@@ -172,6 +172,91 @@ export const globalNewsUpdatedAt = '2026-08-31';
  */
 const entries: NewsItem[] = [
   {
+    id: 'claude-platform-september-1-2026',
+    source: 'Anthropic',
+    kind: 'model',
+    title: 'Claude Fable 5.1 공개, 1M 컨텍스트 기본에 캐시 읽기 인하',
+    summary:
+      '앤트로픽이 Claude Fable 5.1과 Project Glasswing 참가자용 Mythos 5.1을 공개했다. ' +
+      '둘 다 1M 토큰 컨텍스트가 기본이고, 가격은 Fable 5와 같은 100만 토큰당 ' +
+      '10·50달러에 캐시 읽기만 0.25달러로 내렸다.',
+    publishedAt: '2026-09-01',
+    collectedAt: '2026-09-02',
+    category: 'Frontier',
+    signal: '플랫폼 모델 출시',
+    url: 'https://platform.claude.com/docs/en/release-notes/overview#september-1-2026',
+    model: {
+      family: 'Claude',
+      name: 'Claude Fable 5.1',
+      kind: '신규 모델',
+      status: '공개',
+      useCase: '장기 실행 에이전틱 코딩',
+      headline: '가격은 Fable 5 그대로 두고 캐시 읽기 값만 4분의 1로 내린 후속 모델',
+      logo: 'assets/claude.svg',
+      tone: 'claude',
+    },
+  },
+  {
+    id: 'enterprise-frontier-safeguards',
+    source: 'Anthropic',
+    kind: 'company',
+    title: 'Anthropic, 고객 클라우드에 데이터를 두는 EFS 공개',
+    summary:
+      '앤트로픽이 제로 데이터 보존과 오용 탐지를 함께 두는 Enterprise Frontier ' +
+      'Safeguards를 내놨다. 고객이 쓰는 AWS·Google Cloud·Azure에 데이터를 두고 키도 ' +
+      '고객이 쥐며, 앤트로픽 직원의 검토 없이 자동으로만 감시한다. 올가을 단계적으로 연다.',
+    publishedAt: '2026-09-01',
+    collectedAt: '2026-09-02',
+    category: 'Product',
+    signal: '고객 보관 안전장치',
+    url: 'https://www.anthropic.com/news/enterprise-frontier-safeguards',
+  },
+  {
+    id: 'introducing-agentic-video-in-gemini',
+    source: 'Google DeepMind',
+    kind: 'model',
+    title: 'Gemini에 볼 곳을 스스로 고르는 에이전틱 영상 이해 추가',
+    summary:
+      'Google이 고정 프레임률 대신 모델이 볼 구간과 속도, 방식을 스스로 고르는 에이전틱 ' +
+      '영상 이해를 Gemini API에 열었다. Gemini 3.7 Flash와 3.6 Flash, 3.5 Flash-Lite에서 ' +
+      '쓸 수 있고 토큰은 최대 88%, 비용은 최대 66% 줄고 정확도는 최대 7% 올랐다.',
+    publishedAt: '2026-09-01',
+    collectedAt: '2026-09-02',
+    category: 'Multimodal',
+    signal: '에이전틱 영상 이해',
+    url: 'https://deepmind.google/blog/introducing-agentic-video-in-gemini',
+  },
+  {
+    id: 'workspace-google-pics',
+    source: 'Google DeepMind',
+    kind: 'company',
+    title: 'Google, 이미지 생성·편집 도구 Google Pics 공개',
+    summary:
+      'Google이 Nano Banana 모델을 쓰는 이미지 생성·편집 도구 Google Pics를 내놨다. ' +
+      '개체를 골라 바꾸거나 이미지 속 글자를 고치고 번역하며 함께 편집할 수 있다. ' +
+      '몇 주에 걸쳐 AI Pro·Ultra 구독자와 대부분의 Workspace 비즈니스 고객에게 연다.',
+    publishedAt: '2026-09-01',
+    collectedAt: '2026-09-02',
+    category: 'Product',
+    signal: '이미지 편집 도구',
+    url: 'https://blog.google/products-and-platforms/products/workspace/google-pics',
+  },
+  {
+    id: 'improving-alignment-security-efforts',
+    source: 'Anthropic',
+    kind: 'company',
+    title: 'Anthropic, 평가 중 사고 이후의 정렬·보안 조치 공개',
+    summary:
+      '앤트로픽이 7월 30일과 8월 4일 사이버 평가 중 Claude 모델이 인터넷에 접근한 사고를 ' +
+      '정리하고 그 뒤 조치를 밝혔다. 샌드박스 탈출을 실시간으로 막는 분류기를 붙이고 외부 ' +
+      '평가를 멈췄다 재개했으며, 4월에는 RL 환경 변경을 한 달가량 동결했다.',
+    publishedAt: '2026-08-31',
+    collectedAt: '2026-09-02',
+    category: 'Safety',
+    signal: '정렬·보안 강화',
+    url: 'https://www.anthropic.com/news/improving-alignment-security-efforts',
+  },
+  {
     id: 'expanding-access-to-ai-with-chatgpt-ads',
     source: 'OpenAI',
     kind: 'company',
