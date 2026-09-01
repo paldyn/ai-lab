@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" viewBox="0 0 880 372">
+<rect x="0" y="0" width="880" height="372" rx="12" fill="#0a0a0a"/>
+<text x="60" y="44" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="22" font-weight="700" fill="#e8e8e8">토큰을 섞어도 점수는 그대로 — 순서 정보가 어디에도 없다</text>
+<text x="60" y="92" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#e8e8e8">입력 A</text>
+<rect x="60" y="108" width="105" height="38" rx="8" fill="#12151c" stroke="#7ec8e3" stroke-width="1"/>
+<text x="112" y="133" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="14" font-weight="600" fill="#e8e8e8" text-anchor="middle">나는</text>
+<rect x="175" y="108" width="105" height="38" rx="8" fill="#12151c" stroke="#7ec8e3" stroke-width="1"/>
+<text x="227" y="133" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="14" font-weight="600" fill="#e8e8e8" text-anchor="middle">밥을</text>
+<rect x="290" y="108" width="105" height="38" rx="8" fill="#12151c" stroke="#7ec8e3" stroke-width="1"/>
+<text x="342" y="133" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="14" font-weight="600" fill="#e8e8e8" text-anchor="middle">먹었다</text>
+<text x="112" y="178" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="400" fill="#888" text-anchor="end">QKᵀ</text>
+<rect x="122" y="186" width="64" height="34" rx="5" fill="#000000" stroke="#333333" stroke-width="1"/>
+<text x="154" y="209" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="14" font-weight="400" fill="#ffffff" text-anchor="middle">4.0</text>
+<rect x="190" y="186" width="64" height="34" rx="5" fill="#000000" stroke="#333333" stroke-width="1"/>
+<text x="222" y="209" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="14" font-weight="400" fill="#9aa4b8" text-anchor="middle">1.2</text>
+<rect x="258" y="186" width="64" height="34" rx="5" fill="#000000" stroke="#333333" stroke-width="1"/>
+<text x="290" y="209" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="14" font-weight="400" fill="#9aa4b8" text-anchor="middle">0.7</text>
+<rect x="122" y="224" width="64" height="34" rx="5" fill="#000000" stroke="#333333" stroke-width="1"/>
+<text x="154" y="247" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="14" font-weight="400" fill="#9aa4b8" text-anchor="middle">2.3</text>
+<rect x="190" y="224" width="64" height="34" rx="5" fill="#000000" stroke="#333333" stroke-width="1"/>
+<text x="222" y="247" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="14" font-weight="400" fill="#ffffff" text-anchor="middle">3.5</text>
+<rect x="258" y="224" width="64" height="34" rx="5" fill="#000000" stroke="#333333" stroke-width="1"/>
+<text x="290" y="247" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="14" font-weight="400" fill="#9aa4b8" text-anchor="middle">2.1</text>
+<rect x="122" y="262" width="64" height="34" rx="5" fill="#000000" stroke="#333333" stroke-width="1"/>
+<text x="154" y="285" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="14" font-weight="400" fill="#9aa4b8" text-anchor="middle">0.9</text>
+<rect x="190" y="262" width="64" height="34" rx="5" fill="#000000" stroke="#333333" stroke-width="1"/>
+<text x="222" y="285" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="14" font-weight="400" fill="#9aa4b8" text-anchor="middle">1.8</text>
+<rect x="258" y="262" width="64" height="34" rx="5" fill="#000000" stroke="#333333" stroke-width="1"/>
+<text x="290" y="285" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="14" font-weight="400" fill="#ffffff" text-anchor="middle">5.0</text>
+<text x="485" y="92" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#e8e8e8">입력 B (뒤집은 순서)</text>
+<rect x="485" y="108" width="105" height="38" rx="8" fill="#12151c" stroke="#7777cc" stroke-width="1"/>
+<text x="537" y="133" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="14" font-weight="600" fill="#e8e8e8" text-anchor="middle">먹었다</text>
+<rect x="600" y="108" width="105" height="38" rx="8" fill="#12151c" stroke="#7777cc" stroke-width="1"/>
+<text x="652" y="133" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="14" font-weight="600" fill="#e8e8e8" text-anchor="middle">밥을</text>
+<rect x="715" y="108" width="105" height="38" rx="8" fill="#12151c" stroke="#7777cc" stroke-width="1"/>
+<text x="767" y="133" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="14" font-weight="600" fill="#e8e8e8" text-anchor="middle">나는</text>
+<text x="537" y="178" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="400" fill="#888" text-anchor="end">QKᵀ</text>
+<rect x="547" y="186" width="64" height="34" rx="5" fill="#000000" stroke="#333333" stroke-width="1"/>
+<text x="579" y="209" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="14" font-weight="400" fill="#ffffff" text-anchor="middle">5.0</text>
+<rect x="615" y="186" width="64" height="34" rx="5" fill="#000000" stroke="#333333" stroke-width="1"/>
+<text x="647" y="209" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="14" font-weight="400" fill="#9aa4b8" text-anchor="middle">1.8</text>
+<rect x="683" y="186" width="64" height="34" rx="5" fill="#000000" stroke="#333333" stroke-width="1"/>
+<text x="715" y="209" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="14" font-weight="400" fill="#9aa4b8" text-anchor="middle">0.9</text>
+<rect x="547" y="224" width="64" height="34" rx="5" fill="#000000" stroke="#333333" stroke-width="1"/>
+<text x="579" y="247" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="14" font-weight="400" fill="#9aa4b8" text-anchor="middle">2.1</text>
+<rect x="615" y="224" width="64" height="34" rx="5" fill="#000000" stroke="#333333" stroke-width="1"/>
+<text x="647" y="247" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="14" font-weight="400" fill="#ffffff" text-anchor="middle">3.5</text>
+<rect x="683" y="224" width="64" height="34" rx="5" fill="#000000" stroke="#333333" stroke-width="1"/>
+<text x="715" y="247" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="14" font-weight="400" fill="#9aa4b8" text-anchor="middle">2.3</text>
+<rect x="547" y="262" width="64" height="34" rx="5" fill="#000000" stroke="#333333" stroke-width="1"/>
+<text x="579" y="285" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="14" font-weight="400" fill="#9aa4b8" text-anchor="middle">0.7</text>
+<rect x="615" y="262" width="64" height="34" rx="5" fill="#000000" stroke="#333333" stroke-width="1"/>
+<text x="647" y="285" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="14" font-weight="400" fill="#9aa4b8" text-anchor="middle">1.2</text>
+<rect x="683" y="262" width="64" height="34" rx="5" fill="#000000" stroke="#333333" stroke-width="1"/>
+<text x="715" y="285" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="14" font-weight="400" fill="#ffffff" text-anchor="middle">4.0</text>
+<text x="60" y="336" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="400" fill="#888">아홉 개의 값이 하나도 새로 생기거나 사라지지 않았다 — 행과 열이 함께 옮겨 갔을 뿐이다.</text>
+</svg>

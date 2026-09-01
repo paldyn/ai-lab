@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" viewBox="0 0 880 396">
+<rect x="0" y="0" width="880" height="396" rx="12" fill="#0a0a0a"/>
+<text x="60" y="44" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="22" font-weight="700" fill="#e8e8e8">경사하강은 κ 에, 모멘텀은 √κ 에 비례한다</text>
+<text x="60" y="70" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="400" fill="#888">손실을 1000분의 1로 줄이는 데 필요한 스텝 (양축 로그)</text>
+<line x1="116" y1="320" x2="676" y2="320" stroke="#888" stroke-width="1.5"/>
+<line x1="130" y1="334" x2="130" y2="104" stroke="#888" stroke-width="1.5"/>
+<polyline points="130.0,266.3 135.3,264.8 140.6,263.4 145.9,261.9 151.2,260.5 156.5,259.0 161.8,257.5 167.1,256.1 172.4,254.6 177.7,253.1 183.0,251.7 188.3,250.2 193.6,248.8 198.9,247.3 204.2,245.8 209.5,244.4 214.8,242.9 220.1,241.5 225.4,240.0 230.7,238.5 236.0,237.1 241.3,235.6 246.6,234.2 251.9,232.7 257.2,231.2 262.5,229.8 267.8,228.3 273.1,226.9 278.4,225.4 283.7,224.0 289.0,222.5 294.3,221.0 299.6,219.6 304.9,218.1 310.2,216.7 315.5,215.2 320.8,213.8 326.1,212.3 331.4,210.8 336.7,209.4 342.0,207.9 347.3,206.5 352.6,205.0 357.9,203.6 363.2,202.1 368.5,200.6 373.8,199.2 379.1,197.7 384.4,196.3 389.7,194.8 395.0,193.4 400.3,191.9 405.6,190.4 410.9,189.0 416.2,187.5 421.5,186.1 426.8,184.6 432.1,183.2 437.4,181.7 442.7,180.2 448.0,178.8 453.3,177.3 458.6,175.9 463.9,174.4 469.2,173.0 474.5,171.5 479.8,170.0 485.1,168.6 490.4,167.1 495.7,165.7 501.0,164.2 506.3,162.8 511.6,161.3 516.9,159.8 522.2,158.4 527.5,156.9 532.8,155.5 538.1,154.0 543.4,152.6 548.7,151.1 554.0,149.6 559.3,148.2 564.6,146.7 569.9,145.3 575.2,143.8 580.5,142.4 585.8,140.9 591.1,139.4 596.4,138.0 601.7,136.5 607.0,135.1 612.3,133.6 617.6,132.2 622.9,130.7 628.2,129.2 633.5,127.8 638.8,126.3 644.1,124.9 649.4,123.4 654.7,122.0 660.0,120.5" fill="none" stroke="#e05555" stroke-width="2.5"/>
+<polyline points="130.0,303.7 135.3,303.0 140.6,302.2 145.9,301.4 151.2,300.6 156.5,299.9 161.8,299.1 167.1,298.3 172.4,297.6 177.7,296.8 183.0,296.0 188.3,295.3 193.6,294.5 198.9,293.8 204.2,293.0 209.5,292.2 214.8,291.5 220.1,290.7 225.4,290.0 230.7,289.2 236.0,288.5 241.3,287.7 246.6,287.0 251.9,286.3 257.2,285.5 262.5,284.8 267.8,284.0 273.1,283.3 278.4,282.5 283.7,281.8 289.0,281.0 294.3,280.3 299.6,279.6 304.9,278.8 310.2,278.1 315.5,277.3 320.8,276.6 326.1,275.9 331.4,275.1 336.7,274.4 342.0,273.7 347.3,272.9 352.6,272.2 357.9,271.5 363.2,270.7 368.5,270.0 373.8,269.3 379.1,268.5 384.4,267.8 389.7,267.0 395.0,266.3 400.3,265.6 405.6,264.8 410.9,264.1 416.2,263.4 421.5,262.7 426.8,261.9 432.1,261.2 437.4,260.5 442.7,259.7 448.0,259.0 453.3,258.3 458.6,257.5 463.9,256.8 469.2,256.1 474.5,255.3 479.8,254.6 485.1,253.9 490.4,253.1 495.7,252.4 501.0,251.7 506.3,250.9 511.6,250.2 516.9,249.5 522.2,248.8 527.5,248.0 532.8,247.3 538.1,246.6 543.4,245.8 548.7,245.1 554.0,244.4 559.3,243.6 564.6,242.9 569.9,242.2 575.2,241.5 580.5,240.7 585.8,240.0 591.1,239.3 596.4,238.5 601.7,237.8 607.0,237.1 612.3,236.4 617.6,235.6 622.9,234.9 628.2,234.2 633.5,233.4 638.8,232.7 644.1,232.0 649.4,231.2 654.7,230.5 660.0,229.8" fill="none" stroke="#55c555" stroke-width="2.5"/>
+<circle cx="130.0" cy="266.7" r="5" fill="#e05555"/>
+<circle cx="130.0" cy="302.4" r="5" fill="#55c555"/>
+<text x="130.0" y="344" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="400" fill="#888" text-anchor="middle">κ=10</text>
+<circle cx="395.0" cy="193.4" r="5" fill="#e05555"/>
+<circle cx="395.0" cy="266.7" r="5" fill="#55c555"/>
+<text x="395.0" y="344" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="400" fill="#888" text-anchor="middle">κ=100</text>
+<circle cx="660.0" cy="120.5" r="5" fill="#e05555"/>
+<circle cx="660.0" cy="229.8" r="5" fill="#55c555"/>
+<text x="660.0" y="344" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="400" fill="#888" text-anchor="middle">κ=1000</text>
+<line x1="130" y1="305.4" x2="660" y2="305.4" stroke="#333" stroke-width="1"/>
+<text x="120" y="310.42857142857144" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="400" fill="#888" text-anchor="end">10</text>
+<line x1="130" y1="232.6" x2="660" y2="232.6" stroke="#333" stroke-width="1"/>
+<text x="120" y="237.57142857142856" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="400" fill="#888" text-anchor="end">100</text>
+<line x1="130" y1="159.7" x2="660" y2="159.7" stroke="#333" stroke-width="1"/>
+<text x="120" y="164.7142857142857" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="400" fill="#888" text-anchor="end">1000</text>
+<rect x="690" y="116" width="130" height="122" rx="8" fill="#000000" stroke="#3a4a6e" stroke-width="1"/>
+<text x="706" y="146" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="600" fill="#e05555">경사하강</text>
+<text x="706" y="168" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="15" font-weight="600" fill="#e05555">∝ κ</text>
+<text x="706" y="202" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="600" fill="#55c555">모멘텀</text>
+<text x="706" y="224" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="15" font-weight="600" fill="#55c555">∝ √κ</text>
+<text x="690" y="268" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="400" fill="#888">κ=100 에서</text>
+<text x="690" y="290" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="600" fill="#e8e8e8">345 → 34 스텝</text>
+<text x="60" y="368" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="400" fill="#888">조건수가 나쁠수록 두 선의 간격이 벌어진다 — 길쭉한 지형일수록 모멘텀의 이득이 크다.</text>
+</svg>

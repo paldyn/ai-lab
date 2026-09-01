@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" viewBox="0 0 880 446">
+<rect x="0" y="0" width="880" height="446" rx="12" fill="#0a0a0a"/>
+<text x="60" y="44" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="22" font-weight="700" fill="#e8e8e8">f = ½x², L = 1 — η 가 2 를 넘는 순간 발산한다</text>
+<text x="60" y="70" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="400" fill="#888">x₀ = 1 에서 여섯 스텝. 가로축은 스텝 수, 세로축은 xₜ.</text>
+<line x1="106" y1="236" x2="814" y2="236" stroke="#888" stroke-width="1.5"/>
+<line x1="120" y1="118" x2="120" y2="354" stroke="#888" stroke-width="1.5"/>
+<line x1="120" y1="174" x2="800" y2="174" stroke="#444" stroke-width="1" stroke-dasharray="4,4"/>
+<text x="110" y="179" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="400" fill="#888" text-anchor="end">1</text>
+<line x1="120" y1="298" x2="800" y2="298" stroke="#444" stroke-width="1" stroke-dasharray="4,4"/>
+<text x="110" y="303" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="400" fill="#888" text-anchor="end">-1</text>
+<polyline points="120.0,174.0 233.3,205.0 346.7,220.5 460.0,228.2 573.3,232.1 686.7,234.1 800.0,235.0" fill="none" stroke="#55c555" stroke-width="2.5"/>
+<polyline points="120.0,174.0 233.3,236.0 346.7,236.0 460.0,236.0 573.3,236.0 686.7,236.0 800.0,236.0" fill="none" stroke="#7ec8e3" stroke-width="2.5"/>
+<polyline points="120.0,174.0 233.3,267.0 346.7,220.5 460.0,243.8 573.3,232.1 686.7,237.9 800.0,235.0" fill="none" stroke="#7777cc" stroke-width="2.5"/>
+<polyline points="120.0,174.0 233.3,291.8 346.7,185.8 460.0,281.2 573.3,195.3 686.7,272.6 800.0,203.1" fill="none" stroke="#e0a355" stroke-width="2.5"/>
+<polyline points="120.0,174.0 233.3,298.0 346.7,174.0 460.0,298.0 573.3,174.0 686.7,298.0 800.0,174.0" fill="none" stroke="#e8e8e8" stroke-width="2.5"/>
+<polyline points="120.0,174.0 233.3,304.2 346.7,161.0 460.0,318.5 573.3,145.2 686.7,335.9 800.0,126.2" fill="none" stroke="#e05555" stroke-width="2.5"/>
+<text x="120.0" y="377.8" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="400" fill="#888" text-anchor="middle">0</text>
+<text x="233.33333333333331" y="377.8" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="400" fill="#888" text-anchor="middle">1</text>
+<text x="346.66666666666663" y="377.8" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="400" fill="#888" text-anchor="middle">2</text>
+<text x="460.0" y="377.8" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="400" fill="#888" text-anchor="middle">3</text>
+<text x="573.3333333333333" y="377.8" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="400" fill="#888" text-anchor="middle">4</text>
+<text x="686.6666666666666" y="377.8" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="400" fill="#888" text-anchor="middle">5</text>
+<text x="800.0" y="377.8" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="400" fill="#888" text-anchor="middle">6</text>
+<line x1="60" y1="399" x2="86" y2="399" stroke="#55c555" stroke-width="2.5"/>
+<text x="94" y="404" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="600" fill="#55c555">η = 0.5  수렴</text>
+<line x1="322" y1="399" x2="348" y2="399" stroke="#7ec8e3" stroke-width="2.5"/>
+<text x="356" y="404" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="600" fill="#7ec8e3">η = 1.0  한 걸음에 도착</text>
+<line x1="584" y1="399" x2="610" y2="399" stroke="#7777cc" stroke-width="2.5"/>
+<text x="618" y="404" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="600" fill="#7777cc">η = 1.5  진동하며 수렴</text>
+<line x1="60" y1="423" x2="86" y2="423" stroke="#e0a355" stroke-width="2.5"/>
+<text x="94" y="428" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="600" fill="#e0a355">η = 1.9  아주 느린 진동 수렴</text>
+<line x1="322" y1="423" x2="348" y2="423" stroke="#e8e8e8" stroke-width="2.5"/>
+<text x="356" y="428" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="600" fill="#e8e8e8">η = 2.0  경계 — 영원히 진동</text>
+<line x1="584" y1="423" x2="610" y2="423" stroke="#e05555" stroke-width="2.5"/>
+<text x="618" y="428" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="600" fill="#e05555">η = 2.1  발산</text>
+</svg>

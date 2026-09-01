@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" viewBox="0 0 880 384">
+<rect x="0" y="0" width="880" height="384" rx="12" fill="#0a0a0a"/>
+<text x="60" y="44" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="22" font-weight="700" fill="#e8e8e8">볼록집합은 선분을 품고, 볼록함수는 현 아래에 있다</text>
+<rect x="60" y="84" width="213" height="214" rx="10" fill="#0f1116" stroke="#2a2f3a" stroke-width="1"/>
+<rect x="333" y="84" width="213" height="214" rx="10" fill="#0f1116" stroke="#2a2f3a" stroke-width="1"/>
+<rect x="606" y="84" width="213" height="214" rx="10" fill="#0f1116" stroke="#2a2f3a" stroke-width="1"/>
+<ellipse cx="166.5" cy="191" rx="86" ry="70" fill="#7ec8e3" fill-opacity="0.12" stroke="#7ec8e3" stroke-width="2"/>
+<line x1="108.5" y1="153" x2="226.5" y2="225" stroke="#55c555" stroke-width="2.5"/>
+<circle cx="108.5" cy="153" r="5" fill="#e8e8e8"/>
+<circle cx="226.5" cy="225" r="5" fill="#e8e8e8"/>
+<text x="104.5" y="137" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="400" fill="#e8e8e8" text-anchor="middle">x</text>
+<text x="230.5" y="249" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="400" fill="#e8e8e8" text-anchor="middle">y</text>
+<polygon points="361,108 511,108 511,170 429,170 429,276 361,276" fill="#e05555" fill-opacity="0.12" stroke="#e05555" stroke-width="2"/>
+<line x1="493" y1="130" x2="401" y2="260" stroke="#55c555" stroke-width="2.5" stroke-dasharray="5,3"/>
+<circle cx="493" cy="130" r="5" fill="#e8e8e8"/>
+<circle cx="401" cy="260" r="5" fill="#e8e8e8"/>
+<text x="489" y="208" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="600" fill="#e05555">밖</text>
+<line x1="632" y1="282" x2="793" y2="282" stroke="#888" stroke-width="1.5"/>
+<polyline points="632.0,236.5 634.0,238.0 636.0,239.4 638.0,240.8 640.0,242.1 642.1,243.4 644.1,244.7 646.1,245.9 648.1,247.1 650.1,248.3 652.1,249.4 654.1,250.5 656.1,251.5 658.2,252.6 660.2,253.5 662.2,254.5 664.2,255.4 666.2,256.2 668.2,257.1 670.2,257.9 672.2,258.6 674.3,259.3 676.3,260.0 678.3,260.7 680.3,261.3 682.3,261.9 684.3,262.4 686.3,262.9 688.4,263.3 690.4,263.8 692.4,264.2 694.4,264.5 696.4,264.8 698.4,265.1 700.4,265.3 702.4,265.5 704.5,265.7 706.5,265.8 708.5,265.9 710.5,266.0 712.5,266.0 714.5,266.0 716.5,265.9 718.5,265.8 720.5,265.7 722.6,265.5 724.6,265.3 726.6,265.1 728.6,264.8 730.6,264.5 732.6,264.2 734.6,263.8 736.6,263.3 738.7,262.9 740.7,262.4 742.7,261.9 744.7,261.3 746.7,260.7 748.7,260.0 750.7,259.3 752.8,258.6 754.8,257.9 756.8,257.1 758.8,256.2 760.8,255.4 762.8,254.5 764.8,253.5 766.8,252.6 768.9,251.5 770.9,250.5 772.9,249.4 774.9,248.3 776.9,247.1 778.9,245.9 780.9,244.7 782.9,243.4 785.0,242.1 787.0,240.8 789.0,239.4 791.0,238.0 793.0,236.5" fill="none" stroke="#7ec8e3" stroke-width="2.5"/>
+<line x1="652.9" y1="249.8" x2="773.7" y2="249.0" stroke="#55c555" stroke-width="2.5"/>
+<line x1="712.5" y1="249.4" x2="712.5" y2="266.0" stroke="#e0a355" stroke-width="2" stroke-dasharray="4,4"/>
+<circle cx="652.9" cy="249.8" r="5" fill="#e8e8e8"/>
+<circle cx="773.7" cy="249.0" r="5" fill="#e8e8e8"/>
+<text x="722.5" y="262.7046" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="600" fill="#e0a355">차이</text>
+<text x="166.5" y="330" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="400" fill="#888" text-anchor="middle">볼록집합 — 선분을 품는다</text>
+<text x="439.5" y="330" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="400" fill="#888" text-anchor="middle">볼록이 아니다 — 선분이 나간다</text>
+<text x="712.5" y="330" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="400" fill="#888" text-anchor="middle">볼록함수 — 현이 위에 있다</text>
+<text x="60" y="362" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="400" fill="#e8e8e8">f(tx + (1−t)y) ≤ t·f(x) + (1−t)·f(y) — 섞은 다음이 언제나 더 작거나 같다.</text>
+</svg>

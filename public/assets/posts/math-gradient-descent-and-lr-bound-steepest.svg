@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" viewBox="0 0 880 372">
+<rect x="0" y="0" width="880" height="372" rx="12" fill="#0a0a0a"/>
+<text x="60" y="44" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="22" font-weight="700" fill="#e8e8e8">걸음 크기를 정해 놓으면 가장 많이 내려가는 방향은 하나뿐이다</text>
+<defs>
+<marker id="g1" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto"><path d="M 0 0 L 13 7 L 0 14 z" fill="#e05555"/></marker>
+<marker id="g2" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto"><path d="M 0 0 L 13 7 L 0 14 z" fill="#55c555"/></marker>
+<marker id="g3" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto"><path d="M 0 0 L 13 7 L 0 14 z" fill="#7777cc"/></marker>
+</defs>
+<circle cx="300" cy="226" r="104" fill="none" stroke="#444" stroke-width="1.5" stroke-dasharray="5,3"/>
+<circle cx="300" cy="226" r="5" fill="#e8e8e8"/>
+<text x="286" y="252" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="14" font-weight="600" fill="#e8e8e8">x</text>
+<line x1="300" y1="226" x2="382.0" y2="162.0" stroke="#e05555" stroke-width="2.5" marker-end="url(#g1)"/>
+<text x="408.7454839977276" y="146.03871640505918" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="15" font-weight="600" fill="#e05555" text-anchor="middle">∇f</text>
+<line x1="300" y1="226" x2="218.0" y2="290.0" stroke="#55c555" stroke-width="3" marker-end="url(#g2)"/>
+<text x="184.9504299734186" y="320.88657539754615" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="15" font-weight="600" fill="#55c555" text-anchor="middle">−∇f</text>
+<line x1="300" y1="226" x2="198.9" y2="201.6" stroke="#7777cc" stroke-width="2" marker-end="url(#g3)"/>
+<line x1="300" y1="226" x2="283.7" y2="328.7" stroke="#7777cc" stroke-width="2" marker-end="url(#g3)"/>
+<text x="300" y="350" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="400" fill="#888" text-anchor="middle">점선 원 = 크기가 r 인 걸음 전부</text>
+<rect x="500" y="118" width="320" height="172" rx="8" fill="#000000" stroke="#3a4a6e" stroke-width="1"/>
+<text x="524" y="152" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#ffffff">∇f · Δ ≥ − ‖∇f‖ · ‖Δ‖</text>
+<text x="524" y="186" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="400" fill="#9aa4b8">코시–슈바르츠. 등호는 두 벡터가</text>
+<text x="524" y="208" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="400" fill="#9aa4b8">정확히 반대 방향일 때만 성립한다.</text>
+<text x="524" y="246" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#55c555">Δ* = − r · ∇f / ‖∇f‖</text>
+<text x="524" y="272" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="400" fill="#7777cc">보라색 후보들은 등호에 못 미친다.</text>
+</svg>

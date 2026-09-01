@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" viewBox="0 0 880 300">
+<rect x="0" y="0" width="880" height="300" rx="12" fill="#0a0a0a"/>
+<text x="60" y="44" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="22" font-weight="700" fill="#e8e8e8">위치를 더하면 점수가 네 항으로 갈라진다</text>
+<rect x="60" y="92" width="178" height="92" rx="8" fill="#000000" stroke="#7ec8e3" stroke-width="1.5"/>
+<text x="149.0" y="128" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="19" font-weight="600" fill="#ffffff" text-anchor="middle">q · k</text>
+<text x="149.0" y="156" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="600" fill="#7ec8e3" text-anchor="middle">내용만</text>
+<text x="248.0" y="138" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="18" font-weight="400" fill="#888" text-anchor="middle">+</text>
+<rect x="258" y="92" width="178" height="92" rx="8" fill="#000000" stroke="#e05555" stroke-width="1.5"/>
+<text x="347.0" y="128" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="19" font-weight="600" fill="#ffffff" text-anchor="middle">q · pₙ</text>
+<text x="347.0" y="156" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="600" fill="#e05555" text-anchor="middle">절대 위치 n</text>
+<text x="446.0" y="138" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="18" font-weight="400" fill="#888" text-anchor="middle">+</text>
+<rect x="456" y="92" width="178" height="92" rx="8" fill="#000000" stroke="#e05555" stroke-width="1.5"/>
+<text x="545.0" y="128" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="19" font-weight="600" fill="#ffffff" text-anchor="middle">pₘ · k</text>
+<text x="545.0" y="156" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="600" fill="#e05555" text-anchor="middle">절대 위치 m</text>
+<text x="644.0" y="138" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="18" font-weight="400" fill="#888" text-anchor="middle">+</text>
+<rect x="654" y="92" width="178" height="92" rx="8" fill="#000000" stroke="#55c555" stroke-width="1.5"/>
+<text x="743.0" y="128" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="19" font-weight="600" fill="#ffffff" text-anchor="middle">pₘ · pₙ</text>
+<text x="743.0" y="156" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="600" fill="#55c555" text-anchor="middle">차이 n − m</text>
+<text x="60" y="218" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="400" fill="#888">상대 위치만 보는 것은 오른쪽 끝 하나뿐이다. 가운데 둘이 m 과 n 을 각각 끌고 들어온다.</text>
+<text x="60" y="246" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="600" fill="#55c555">RoPE는 더하기를 그만두고 q 와 k 를 돌린다 — 그러면 항이 하나만 남는다.</text>
+</svg>

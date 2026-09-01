@@ -253,3 +253,5 @@ print(round(alt[1], 6), [round(v / alt[1], 6) for v in alt[2]])
 읽어주셔서 감사합니다. 😊
 
 **지난 글:** [어텐션의 그래디언트: softmax 야코비안이 분포에 따라 하는 일](/articles/math-softmax-jacobian-and-attention-gradient)
+
+**다음 글:** [위치를 수로 적기: 사인파 주파수 사다리와 RoPE의 회전 불변성](/articles/math-positional-encoding-math)

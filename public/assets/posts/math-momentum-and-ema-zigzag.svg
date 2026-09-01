@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" viewBox="0 0 880 430">
+<rect x="0" y="0" width="880" height="430" rx="12" fill="#0a0a0a"/>
+<text x="60" y="44" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="22" font-weight="700" fill="#e8e8e8">부호가 뒤집히는 성분은 상쇄되고 일정한 성분은 쌓인다</text>
+<rect x="60" y="80" width="360" height="240" rx="10" fill="#0f1116" stroke="#2a2f3a" stroke-width="1"/>
+<text x="76" y="108" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="14" font-weight="600" fill="#e8e8e8">가파른 방향 — 매 스텝 부호가 뒤집힌다</text>
+<line x1="80" y1="260" x2="406" y2="260" stroke="#888" stroke-width="1.5"/>
+<rect x="90" y="214.0" width="15" height="46.0" rx="2" fill="#7777cc"/>
+<rect x="115" y="260.0" width="15" height="46.0" rx="2" fill="#7777cc"/>
+<rect x="140" y="214.0" width="15" height="46.0" rx="2" fill="#7777cc"/>
+<rect x="165" y="260.0" width="15" height="46.0" rx="2" fill="#7777cc"/>
+<rect x="190" y="214.0" width="15" height="46.0" rx="2" fill="#7777cc"/>
+<rect x="215" y="260.0" width="15" height="46.0" rx="2" fill="#7777cc"/>
+<rect x="240" y="214.0" width="15" height="46.0" rx="2" fill="#7777cc"/>
+<rect x="265" y="260.0" width="15" height="46.0" rx="2" fill="#7777cc"/>
+<rect x="290" y="214.0" width="15" height="46.0" rx="2" fill="#7777cc"/>
+<rect x="315" y="260.0" width="15" height="46.0" rx="2" fill="#7777cc"/>
+<rect x="340" y="214.0" width="15" height="46.0" rx="2" fill="#7777cc"/>
+<rect x="365" y="260.0" width="15" height="46.0" rx="2" fill="#7777cc"/>
+<polyline points="97.5,248.5 122.5,261.1 147.5,249.5 172.5,262.1 197.5,250.4 222.5,262.8 247.5,251.1 272.5,263.4 297.5,251.6 322.5,263.9 347.5,252.0 372.5,264.3" fill="none" stroke="#e05555" stroke-width="2.5"/>
+<circle cx="372.5" cy="264.3" r="5" fill="#e05555"/>
+<text x="76" y="350" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="600" fill="#e05555">v 가 ±0.53 사이를 오갈 뿐 자라지 않는다</text>
+<rect x="460" y="80" width="360" height="240" rx="10" fill="#0f1116" stroke="#2a2f3a" stroke-width="1"/>
+<text x="476" y="108" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="14" font-weight="600" fill="#e8e8e8">완만한 방향 — 부호가 일정하다</text>
+<line x1="480" y1="260" x2="806" y2="260" stroke="#888" stroke-width="1.5"/>
+<rect x="490" y="214.0" width="15" height="46.0" rx="2" fill="#7777cc"/>
+<rect x="515" y="214.0" width="15" height="46.0" rx="2" fill="#7777cc"/>
+<rect x="540" y="214.0" width="15" height="46.0" rx="2" fill="#7777cc"/>
+<rect x="565" y="214.0" width="15" height="46.0" rx="2" fill="#7777cc"/>
+<rect x="590" y="214.0" width="15" height="46.0" rx="2" fill="#7777cc"/>
+<rect x="615" y="214.0" width="15" height="46.0" rx="2" fill="#7777cc"/>
+<rect x="640" y="214.0" width="15" height="46.0" rx="2" fill="#7777cc"/>
+<rect x="665" y="214.0" width="15" height="46.0" rx="2" fill="#7777cc"/>
+<rect x="690" y="214.0" width="15" height="46.0" rx="2" fill="#7777cc"/>
+<rect x="715" y="214.0" width="15" height="46.0" rx="2" fill="#7777cc"/>
+<rect x="740" y="214.0" width="15" height="46.0" rx="2" fill="#7777cc"/>
+<rect x="765" y="214.0" width="15" height="46.0" rx="2" fill="#7777cc"/>
+<polyline points="497.5,248.5 522.5,238.2 547.5,228.8 572.5,220.5 597.5,212.9 622.5,206.1 647.5,200.0 672.5,194.5 697.5,189.6 722.5,185.1 747.5,181.1 772.5,177.5" fill="none" stroke="#55c555" stroke-width="2.5"/>
+<circle cx="772.5" cy="177.5" r="5" fill="#55c555"/>
+<text x="476" y="350" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="600" fill="#55c555">v 가 1/(1−β) = 10 을 향해 쌓인다</text>
+<text x="60" y="386" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="400" fill="#888">보라색 막대는 매 스텝의 그래디언트(양쪽 다 크기 1), 굵은 선은 v ← 0.9v + g 로 누적한 값이다.</text>
+<text x="60" y="410" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="400" fill="#888">선만 세로 배율을 4분의 1 로 줄여 그렸다 — 실제 차이는 이 그림보다 네 배 크다.</text>
+</svg>

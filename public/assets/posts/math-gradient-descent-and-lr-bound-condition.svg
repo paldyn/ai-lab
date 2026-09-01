@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" viewBox="0 0 880 372">
+<rect x="0" y="0" width="880" height="372" rx="12" fill="#0a0a0a"/>
+<text x="60" y="44" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="22" font-weight="700" fill="#e8e8e8">최적 학습률을 써도 반복 수가 조건수에 비례한다</text>
+<line x1="106" y1="300" x2="636" y2="300" stroke="#888" stroke-width="1.5"/>
+<line x1="120" y1="314" x2="120" y2="106" stroke="#888" stroke-width="1.5"/>
+<polyline points="120.0,118.0 128.3,128.1 136.7,138.2 145.0,148.3 153.3,158.4 161.7,168.5 170.0,178.6 178.3,188.7 186.7,198.8 195.0,208.8 203.3,218.9 211.7,229.0 220.0,239.1 228.3,249.2 236.7,259.3 245.0,269.4 253.3,279.5 261.7,289.6 270.0,299.7 278.3,300.0 286.7,300.0 295.0,300.0 303.3,300.0 311.7,300.0 320.0,300.0 328.3,300.0 336.7,300.0 345.0,300.0 353.3,300.0 361.7,300.0 370.0,300.0 378.3,300.0 386.7,300.0 395.0,300.0 403.3,300.0 411.7,300.0 420.0,300.0 428.3,300.0 436.7,300.0 445.0,300.0 453.3,300.0 461.7,300.0 470.0,300.0 478.3,300.0 486.7,300.0 495.0,300.0 503.3,300.0 511.7,300.0 520.0,300.0 528.3,300.0 536.7,300.0 545.0,300.0 553.3,300.0 561.7,300.0 570.0,300.0 578.3,300.0 586.7,300.0 595.0,300.0 603.3,300.0 611.7,300.0 620.0,300.0" fill="none" stroke="#55c555" stroke-width="2.5"/>
+<polyline points="120.0,118.0 128.3,122.0 136.7,125.9 145.0,129.9 153.3,133.9 161.7,137.8 170.0,141.8 178.3,145.8 186.7,149.7 195.0,153.7 203.3,157.7 211.7,161.6 220.0,165.6 228.3,169.5 236.7,173.5 245.0,177.5 253.3,181.4 261.7,185.4 270.0,189.4 278.3,193.3 286.7,197.3 295.0,201.3 303.3,205.2 311.7,209.2 320.0,213.2 328.3,217.1 336.7,221.1 345.0,225.1 353.3,229.0 361.7,233.0 370.0,237.0 378.3,240.9 386.7,244.9 395.0,248.9 403.3,252.8 411.7,256.8 420.0,260.8 428.3,264.7 436.7,268.7 445.0,272.6 453.3,276.6 461.7,280.6 470.0,284.5 478.3,288.5 486.7,292.5 495.0,296.4 503.3,300.0 511.7,300.0 520.0,300.0 528.3,300.0 536.7,300.0 545.0,300.0 553.3,300.0 561.7,300.0 570.0,300.0 578.3,300.0 586.7,300.0 595.0,300.0 603.3,300.0 611.7,300.0 620.0,300.0" fill="none" stroke="#7ec8e3" stroke-width="2.5"/>
+<polyline points="120.0,118.0 128.3,118.4 136.7,118.8 145.0,119.2 153.3,119.6 161.7,120.0 170.0,120.4 178.3,120.8 186.7,121.2 195.0,121.6 203.3,122.0 211.7,122.3 220.0,122.7 228.3,123.1 236.7,123.5 245.0,123.9 253.3,124.3 261.7,124.7 270.0,125.1 278.3,125.5 286.7,125.9 295.0,126.3 303.3,126.7 311.7,127.1 320.0,127.5 328.3,127.9 336.7,128.3 345.0,128.7 353.3,129.1 361.7,129.5 370.0,129.9 378.3,130.3 386.7,130.6 395.0,131.0 403.3,131.4 411.7,131.8 420.0,132.2 428.3,132.6 436.7,133.0 445.0,133.4 453.3,133.8 461.7,134.2 470.0,134.6 478.3,135.0 486.7,135.4 495.0,135.8 503.3,136.2 511.7,136.6 520.0,137.0 528.3,137.4 536.7,137.8 545.0,138.2 553.3,138.6 561.7,138.9 570.0,139.3 578.3,139.7 586.7,140.1 595.0,140.5 603.3,140.9 611.7,141.3 620.0,141.7" fill="none" stroke="#e0a355" stroke-width="2.5"/>
+<polyline points="120.0,118.0 128.3,118.0 136.7,118.1 145.0,118.1 153.3,118.2 161.7,118.2 170.0,118.2 178.3,118.3 186.7,118.3 195.0,118.4 203.3,118.4 211.7,118.4 220.0,118.5 228.3,118.5 236.7,118.6 245.0,118.6 253.3,118.6 261.7,118.7 270.0,118.7 278.3,118.8 286.7,118.8 295.0,118.8 303.3,118.9 311.7,118.9 320.0,118.9 328.3,119.0 336.7,119.0 345.0,119.1 353.3,119.1 361.7,119.1 370.0,119.2 378.3,119.2 386.7,119.3 395.0,119.3 403.3,119.3 411.7,119.4 420.0,119.4 428.3,119.5 436.7,119.5 445.0,119.5 453.3,119.6 461.7,119.6 470.0,119.7 478.3,119.7 486.7,119.7 495.0,119.8 503.3,119.8 511.7,119.9 520.0,119.9 528.3,119.9 536.7,120.0 545.0,120.0 553.3,120.1 561.7,120.1 570.0,120.1 578.3,120.2 586.7,120.2 595.0,120.3 603.3,120.3 611.7,120.3 620.0,120.4" fill="none" stroke="#e05555" stroke-width="2.5"/>
+<line x1="120" y1="118.0" x2="620" y2="118.0" stroke="#333" stroke-width="1"/>
+<text x="110" y="123.0" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="400" fill="#888" text-anchor="end">10⁰</text>
+<line x1="120" y1="163.5" x2="620" y2="163.5" stroke="#333" stroke-width="1"/>
+<text x="110" y="168.5" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="400" fill="#888" text-anchor="end">10⁻¹</text>
+<line x1="120" y1="209.0" x2="620" y2="209.0" stroke="#333" stroke-width="1"/>
+<text x="110" y="214.0" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="400" fill="#888" text-anchor="end">10⁻²</text>
+<line x1="120" y1="254.5" x2="620" y2="254.5" stroke="#333" stroke-width="1"/>
+<text x="110" y="259.5" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="400" fill="#888" text-anchor="end">10⁻³</text>
+<line x1="120" y1="300.0" x2="620" y2="300.0" stroke="#333" stroke-width="1"/>
+<text x="110" y="305.0" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="400" fill="#888" text-anchor="end">10⁻⁴</text>
+<text x="120" y="326" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="400" fill="#888">0 스텝</text>
+<text x="620" y="326" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="400" fill="#888" text-anchor="end">60 스텝</text>
+<rect x="650" y="118" width="170" height="182" rx="8" fill="#000000" stroke="#3a4a6e" stroke-width="1"/>
+<text x="668" y="148" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="14" font-weight="600" fill="#ffffff">ρ = (κ−1)/(κ+1)</text>
+<line x1="668" y1="179" x2="694" y2="179" stroke="#55c555" stroke-width="2.5"/>
+<text x="704" y="184" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="600" fill="#55c555">κ=4  ρ=0.600</text>
+<line x1="668" y1="209" x2="694" y2="209" stroke="#7ec8e3" stroke-width="2.5"/>
+<text x="704" y="214" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="600" fill="#7ec8e3">κ=10  ρ=0.818</text>
+<line x1="668" y1="239" x2="694" y2="239" stroke="#e0a355" stroke-width="2.5"/>
+<text x="704" y="244" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="600" fill="#e0a355">κ=100  ρ=0.980</text>
+<line x1="668" y1="269" x2="694" y2="269" stroke="#e05555" stroke-width="2.5"/>
+<text x="704" y="274" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="600" fill="#e05555">κ=1000  ρ=0.998</text>
+<text x="60" y="344" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="400" fill="#888">조건수가 10배가 되면 같은 정확도에 필요한 스텝도 10배가 된다 — 학습률은 이미 최선이다.</text>
+</svg>

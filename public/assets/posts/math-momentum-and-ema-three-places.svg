@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" viewBox="0 0 880 366">
+<rect x="0" y="0" width="880" height="366" rx="12" fill="#0a0a0a"/>
+<text x="60" y="44" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="22" font-weight="700" fill="#e8e8e8">한 점화식이 세 자리에 있다</text>
+<rect x="60" y="76" width="760" height="62" rx="8" fill="#000000" stroke="#3a4a6e" stroke-width="1"/>
+<text x="440" y="116" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="22" font-weight="600" fill="#ffffff" text-anchor="middle">v  ←  β · v  +  (1 − β) · (새 관측값)</text>
+<rect x="60" y="164" width="240" height="138" rx="10" fill="#0f1116" stroke="#7ec8e3" stroke-width="1"/>
+<text x="78" y="194" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="15" font-weight="600" fill="#e8e8e8">옵티마이저 모멘텀</text>
+<text x="78" y="220" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="600" fill="#7ec8e3">새 관측값 = ∇f</text>
+<text x="78" y="252" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="400" fill="#888">흔들리는 그래디언트를</text>
+<text x="78" y="274" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="400" fill="#888">부드럽게 만든다</text>
+<rect x="320" y="164" width="240" height="138" rx="10" fill="#0f1116" stroke="#e0a355" stroke-width="1"/>
+<text x="338" y="194" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="15" font-weight="600" fill="#e8e8e8">EMA 체크포인트</text>
+<text x="338" y="220" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="600" fill="#e0a355">새 관측값 = 가중치</text>
+<text x="338" y="252" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="400" fill="#888">스텝마다 튀는 파라미터를</text>
+<text x="338" y="274" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="400" fill="#888">평균 낸 사본을 쥔다</text>
+<rect x="580" y="164" width="240" height="138" rx="10" fill="#0f1116" stroke="#55c555" stroke-width="1"/>
+<text x="598" y="194" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="15" font-weight="600" fill="#e8e8e8">BatchNorm 러닝 통계</text>
+<text x="598" y="220" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="600" fill="#55c555">새 관측값 = 배치 평균·분산</text>
+<text x="598" y="252" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="400" fill="#888">추론에서 쓸 통계를</text>
+<text x="598" y="274" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="400" fill="#888">학습 중에 모아 둔다</text>
+<text x="60" y="342" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="400" fill="#888">β 를 고른다는 것은 세 자리 모두에서 「몇 스텝치를 기억할 것인가」를 고르는 일이다.</text>
+</svg>

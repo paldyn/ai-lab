@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" viewBox="0 0 880 452">
+<rect x="0" y="0" width="880" height="452" rx="12" fill="#0a0a0a"/>
+<text x="60" y="44" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="22" font-weight="700" fill="#e8e8e8">절대 위치가 달라도 사잇각이 같으면 내적이 같다</text>
+<defs>
+<marker id="arq" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto"><path d="M 0 0 L 13 7 L 0 14 z" fill="#7ec8e3"/></marker>
+<marker id="ark" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto"><path d="M 0 0 L 13 7 L 0 14 z" fill="#e0a355"/></marker>
+</defs>
+<circle cx="250" cy="250" r="96" fill="none" stroke="#444" stroke-width="1.5"/>
+<line x1="128" y1="250" x2="372" y2="250" stroke="#888" stroke-width="1.5"/>
+<line x1="250" y1="372" x2="250" y2="128" stroke="#888" stroke-width="1.5"/>
+<path d="M 297.0 240.5 A 48 48 0 0 0 227.0 207.9" fill="none" stroke="#55c555" stroke-width="2.5" stroke-dasharray="4,4"/>
+<line x1="250" y1="250" x2="344.1" y2="230.9" stroke="#7ec8e3" stroke-width="2.5" marker-end="url(#arq)"/>
+<line x1="250" y1="250" x2="204.0" y2="165.8" stroke="#e0a355" stroke-width="2.5" marker-end="url(#ark)"/>
+<text x="371.528255652314" y="230.3650029814124" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="600" fill="#7ec8e3" text-anchor="middle">R(0.2)q</text>
+<text x="189.59238213587042" y="144.42459720181301" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="600" fill="#e0a355" text-anchor="middle">R(0.5)k</text>
+<circle cx="630" cy="250" r="96" fill="none" stroke="#444" stroke-width="1.5"/>
+<line x1="508" y1="250" x2="752" y2="250" stroke="#888" stroke-width="1.5"/>
+<line x1="630" y1="372" x2="630" y2="128" stroke="#888" stroke-width="1.5"/>
+<path d="M 672.1 227.0 A 48 48 0 0 0 595.6 216.6" fill="none" stroke="#55c555" stroke-width="2.5" stroke-dasharray="4,4"/>
+<line x1="630" y1="250" x2="714.2" y2="204.0" stroke="#7ec8e3" stroke-width="2.5" marker-end="url(#arq)"/>
+<line x1="630" y1="250" x2="561.1" y2="183.1" stroke="#e0a355" stroke-width="2.5" marker-end="url(#ark)"/>
+<text x="738.8202376744063" y="195.55123321307883" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="600" fill="#7ec8e3" text-anchor="middle">R(0.5)q</text>
+<text x="539.6131325466602" y="167.21495462225715" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="600" fill="#e0a355" text-anchor="middle">R(0.8)k</text>
+<text x="250" y="92" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#e8e8e8" text-anchor="middle">m = 2, n = 5</text>
+<text x="630" y="92" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#e8e8e8" text-anchor="middle">m = 5, n = 8</text>
+<text x="250" y="404" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="600" fill="#55c555" text-anchor="middle">사잇각 π/2 + 0.3 (두 판 모두 같다)</text>
+<text x="630" y="404" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="600" fill="#55c555" text-anchor="middle">사잇각 π/2 + 0.3 (두 판 모두 같다)</text>
+<text x="250" y="434" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="15" font-weight="600" fill="#ffffff" text-anchor="middle">⟨ · , · ⟩ = −0.29552</text>
+<text x="630" y="434" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="15" font-weight="600" fill="#ffffff" text-anchor="middle">⟨ · , · ⟩ = −0.29552</text>
+</svg>
