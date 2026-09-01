@@ -160,7 +160,7 @@ export interface NewsDetail {
   commentary: string;
 }
 
-export const globalNewsUpdatedAt = '2026-08-27';
+export const globalNewsUpdatedAt = '2026-08-31';
 
 /**
  * 공식 발표 한 건 = 항목 한 개. 2026년 1월부터 쌓는 아카이브이며 오래된 항목을
@@ -171,6 +171,62 @@ export const globalNewsUpdatedAt = '2026-08-27';
  * 목록에서 파생됩니다. 갱신 시 globalNewsUpdatedAt도 함께 올립니다.
  */
 const entries: NewsItem[] = [
+  {
+    id: 'expanding-access-to-ai-with-chatgpt-ads',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'ChatGPT 광고 연환산 매출 10억 달러, 셀프서브 지역 확대',
+    summary:
+      'OpenAI가 ChatGPT Ads가 출시 200일이 안 돼 연환산 매출 10억 달러에 이르렀다고 밝혔다. 수만 곳의 광고주가 쓰고 있으며, ' +
+      '오늘 늦게부터 인도·유럽·중동·북아프리카에서 Ads Manager로 직접 광고를 살 수 있다.',
+    publishedAt: '2026-08-31',
+    collectedAt: '2026-09-01',
+    category: 'Product',
+    signal: '광고 매출 10억 달러',
+    url: 'https://openai.com/index/expanding-access-to-ai-with-chatgpt-ads',
+  },
+  {
+    id: 'polimill',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'Polimill, 일본 지자체 1,050곳이 쓰는 행정 AI 구축',
+    summary:
+      'Polimill이 OpenAI 기술로 만든 공공부문 생성 AI 플랫폼 QommonsAI를 2024년 10월 내놨다. 일본 지자체 약 1,050곳과 ' +
+      '공무원 약 55만 명이 쓰고 있으며, Codex 도입으로 개발 속도가 3~5배 빨라졌다.',
+    publishedAt: '2026-08-31',
+    collectedAt: '2026-09-01',
+    category: 'Product',
+    signal: '공공부문 AI',
+    url: 'https://openai.com/index/polimill',
+  },
+  {
+    id: 'our-decision-on-cursor-following-its-acquisition-by-spacex',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'OpenAI, SpaceX가 인수한 Cursor에 모델 공급 중단',
+    summary:
+      'OpenAI가 SpaceX에 Cursor 대상 모델 공급 계약을 종료하겠다고 통보했다. 제안한 차단일은 2026년 11월 12일로 계약이 허용하는 ' +
+      '최대 유예 기간이다. Musk 계열사의 계약 위반 경험 때문에 약관 준수를 확신할 수 없다는 것을 이유로 들었다.',
+    publishedAt: '2026-08-28',
+    collectedAt: '2026-09-01',
+    category: 'Safety',
+    signal: 'Cursor 계약 종료',
+    url: 'https://openai.com/index/our-decision-on-cursor-following-its-acquisition-by-spacex',
+  },
+  {
+    id: 'supporting-next-generation-ai-startups-thailand',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'OpenAI, 태국 과학기술부와 8주 스타트업 액셀러레이터',
+    summary:
+      'OpenAI가 태국 고등교육과학연구혁신부(MHESI)와 함께 8주짜리 액셀러레이터를 연다. 의료·웰니스와 교육 분야 스타트업 10곳이 ' +
+      '참여하며, 각 팀에 API 크레딧 2,000달러와 전담 멘토가 붙는다. 11월 방콕 데모데이로 마무리한다.',
+    publishedAt: '2026-08-28',
+    collectedAt: '2026-09-01',
+    category: 'Corporate',
+    signal: '스타트업 액셀러레이터',
+    url: 'https://openai.com/index/supporting-next-generation-ai-startups-thailand',
+  },
   {
     id: 'claude-platform-august-27-2026',
     source: 'Anthropic',
