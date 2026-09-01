@@ -377,3 +377,5 @@ interactive. There is no batch mode." 세션에는 대신 **런타임 $0.08/시�
 읽어주셔서 감사합니다. 😊
 
 **지난 글:** [컨텍스트 창 1M에 붙어 있는 조건들 — 창이 클수록 출력 상한이 먼저 걸린다](/articles/spec-context-window-conditions)
+
+**다음 글:** [모델 은퇴 달력을 만들어 봤다 — deprecation_date 15개 전부가 폐기일이 아니라 은퇴일이었다](/articles/spec-model-deprecation-calendar)
