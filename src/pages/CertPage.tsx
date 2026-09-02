@@ -200,12 +200,34 @@ function period(from?: string, to?: string, shownYear?: string): string {
 }
 
 /** 값이 있을 때만 줄을 세웁니다. 빈 칸을 「-」로 채우면 확인한 것처럼 보입니다. */
+/**
+ * 시험 정보 한 줄.
+ *
+ * **값의 앞머리만 강조합니다.** 「50,000원. 공식 검정수수료 표의 …」처럼 값 하나
+ * 뒤에 근거 문장이 붙는 꼴이라, 앞머리가 곧 답이고 나머지는 그 답을 어디서
+ * 확인했는지입니다. 짧은 앞머리(마흔 자 이하)만 골라 강조하므로, 첫 문장이
+ * 이미 설명인 항목은 손대지 않습니다 — 문장 전체가 굵어지면 강조가 아닙니다.
+ */
 function Fact({ label, value }: { label: string; value?: string }) {
   if (!value) return null;
+
+  const text = value.replace(/\*\*/g, "");
+  const at = text.search(/\.\s/);
+  const lead = at > 0 ? text.slice(0, at + 1) : "";
+
   return (
     <div className="cert-fact">
       <dt>{label}</dt>
-      <dd>{value.replace(/\*\*/g, "")}</dd>
+      <dd>
+        {lead && lead.length <= 40 ? (
+          <>
+            <strong className="cert-fact-lead">{lead}</strong>{" "}
+            {text.slice(at + 2)}
+          </>
+        ) : (
+          text
+        )}
+      </dd>
     </div>
   );
 }
@@ -231,19 +253,12 @@ function CertView({ cert }: { cert: Cert }) {
   */
   const sections = [
     { id: "what", title: "무엇을 재는 시험인가" },
-    cert.audience ? { id: "what-audience", title: "누가 보는가", sub: true } : null,
     { id: "subjects", title: "과목" },
     { id: "exam", title: "시험 정보" },
+    { id: "exam-format", title: "치르는 방식", sub: true },
+    { id: "exam-entry", title: "응시 조건", sub: true },
+    cert.validity ? { id: "exam-validity", title: "자격 유지", sub: true } : null,
     years.length > 0 ? { id: "schedule", title: "시험 일정" } : null,
-    /*
-      회차 표는 연도마다 한 장이고 지난 해까지 남겨 두므로 절이 길어집니다.
-      연도를 목차에 세워 올해 표로 바로 뛰게 합니다.
-    */
-    ...years.map((group) => ({
-      id: `schedule-${group.year}`,
-      title: `${group.year}년`,
-      sub: true,
-    })),
     { id: "prep", title: "시험 노트" },
     /*
       시험 노트 아래 세 묶음도 목차에 세웁니다. 계획이 서른 편을 넘으면 그 절이 화면
@@ -448,13 +463,31 @@ function CertView({ cert }: { cert: Cert }) {
 
           <section className="cert-section">
             <h2 id="exam">시험 정보</h2>
+            {/*
+              **한 덩어리로 두면 찾는 값이 안 보입니다.** 다섯 줄이지만 값마다
+              근거 문장이 붙어 절이 길고, 「얼마인가」와 「어떻게 치르나」는 다른
+              물음입니다. 셋으로 갈라 목차에서 바로 뛰게 합니다.
+            */}
+            <h3 id="exam-format">치르는 방식</h3>
             <dl className="cert-facts">
               <Fact label="시행 주기" value={cert.cadence} />
               <Fact label="형식" value={cert.format} />
-              <Fact label="응시료" value={cert.fee} />
-              <Fact label="응시자격" value={cert.prerequisite} />
-              <Fact label="유효기간" value={cert.validity} />
             </dl>
+
+            <h3 id="exam-entry">응시 조건</h3>
+            <dl className="cert-facts">
+              <Fact label="응시자격" value={cert.prerequisite} />
+              <Fact label="응시료" value={cert.fee} />
+            </dl>
+
+            {cert.validity && (
+              <>
+                <h3 id="exam-validity">자격 유지</h3>
+                <dl className="cert-facts">
+                  <Fact label="유효기간" value={cert.validity} />
+                </dl>
+              </>
+            )}
           </section>
 
           {years.length > 0 && (

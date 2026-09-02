@@ -5128,6 +5128,24 @@ input:focus-visible {
   line-height: 1.85;
 }
 
+/*
+  값의 앞머리. 「50,000원」·「없음」·「필기 단일 시험」처럼 그 줄이 실제로 답하는
+  말입니다. 뒤에 붙는 근거 문장과 색·굵기로 갈라 둡니다.
+*/
+.cert-fact-lead {
+  color: var(--text-strong);
+  font-weight: 600;
+}
+
+/* 시험 정보의 묶음 머리. 절 제목보다 작고 값 목록과 붙여 둡니다. */
+.cert-section h3 + .cert-facts {
+  margin-top: 12px;
+}
+
+.cert-facts + h3 {
+  margin-top: 30px;
+}
+
 .cert-study-group {
   margin-top: 26px;
 }
