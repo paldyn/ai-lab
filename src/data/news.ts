@@ -212,6 +212,21 @@ const entries: NewsItem[] = [
     url: 'https://deepmind.google/blog/proactive-cyber-defense-for-governments-and-enterprises',
   },
   {
+    id: 'gilbert-tobin',
+    source: 'OpenAI',
+    kind: 'company',
+    title: '호주 로펌 Gilbert + Tobin, Codex로 8시간 걸리던 점검 단축',
+    summary:
+      'Gilbert + Tobin이 운영 조직부터 ChatGPT Enterprise를 도입해 마케팅·채용·재무로 ' +
+      '넓혔고, 2026년 6월 기준 배포 좌석의 87%가 활성 사용자였다고 밝혔다. Codex로는 ' +
+      '최대 8시간 걸리던 이해상충·KYC 점검을 몇 분에 끝냈다.',
+    publishedAt: '2026-09-01',
+    collectedAt: '2026-09-03',
+    category: 'Product',
+    signal: '기업 도입 사례',
+    url: 'https://openai.com/index/gilbert-tobin',
+  },
+  {
     id: 'technology-google-ai-updates-august-2026',
     source: 'Google DeepMind',
     kind: 'company',
