@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" viewBox="0 0 880 440">
+<rect x="0" y="0" width="880" height="440" rx="12" fill="#0a0a0a"/>
+<text x="60" y="44" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="22" font-weight="700" fill="#e8e8e8">초기화가 조금만 어긋나면 50 층에서 40 자릿수가 벌어진다</text>
+<text x="60" y="70" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="400" fill="#888">폭 512 짜리 층을 50 번 통과시키며 잰 활성값의 제곱평균제곱근 (세로축은 로그)</text>
+<line x1="130" y1="340" x2="830" y2="340" stroke="#888" stroke-width="1.5"/>
+<line x1="130" y1="352" x2="130" y2="106" stroke="#888" stroke-width="1.5"/>
+<line x1="130" y1="340.0" x2="830" y2="340.0" stroke="#444" stroke-width="1" stroke-dasharray="3,4"/>
+<text x="118" y="345.0" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="400" fill="#888" text-anchor="end">10⁻⁴²</text>
+<line x1="130" y1="298.1" x2="830" y2="298.1" stroke="#444" stroke-width="1" stroke-dasharray="3,4"/>
+<text x="118" y="303.0952380952381" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="400" fill="#888" text-anchor="end">10⁻³⁴</text>
+<line x1="130" y1="256.2" x2="830" y2="256.2" stroke="#444" stroke-width="1" stroke-dasharray="3,4"/>
+<text x="118" y="261.1904761904762" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="400" fill="#888" text-anchor="end">10⁻²⁶</text>
+<line x1="130" y1="214.3" x2="830" y2="214.3" stroke="#444" stroke-width="1" stroke-dasharray="3,4"/>
+<text x="118" y="219.28571428571428" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="400" fill="#888" text-anchor="end">10⁻¹⁸</text>
+<line x1="130" y1="172.4" x2="830" y2="172.4" stroke="#444" stroke-width="1" stroke-dasharray="3,4"/>
+<text x="118" y="177.38095238095238" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="400" fill="#888" text-anchor="end">10⁻¹⁰</text>
+<line x1="130" y1="130.5" x2="830" y2="130.5" stroke="#444" stroke-width="1" stroke-dasharray="3,4"/>
+<text x="118" y="135.47619047619048" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="400" fill="#888" text-anchor="end">10⁻²</text>
+<text x="130.0" y="364" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="400" fill="#888" text-anchor="middle">0</text>
+<text x="270.0" y="364" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="400" fill="#888" text-anchor="middle">10</text>
+<text x="410.0" y="364" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="400" fill="#888" text-anchor="middle">20</text>
+<text x="550.0" y="364" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="400" fill="#888" text-anchor="middle">30</text>
+<text x="690.0" y="364" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="400" fill="#888" text-anchor="middle">40</text>
+<text x="830.0" y="364" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="400" fill="#888" text-anchor="middle">50</text>
+<text x="830" y="386" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="400" fill="#888" text-anchor="end">층 수</text>
+<polyline points="144.0,124.2 158.0,128.3 172.0,132.5 186.0,136.7 200.0,140.9 214.0,145.0 228.0,149.0 242.0,153.2 256.0,157.5 270.0,161.7 284.0,166.0 298.0,170.2 312.0,174.4 326.0,178.6 340.0,182.7 354.0,186.8 368.0,191.2 382.0,195.3 396.0,199.3 410.0,203.6 424.0,207.7 438.0,211.9 452.0,216.0 466.0,220.2 480.0,224.5 494.0,228.6 508.0,232.8 522.0,237.0 536.0,241.4 550.0,245.5 564.0,249.8 578.0,254.0 592.0,258.2 606.0,262.3 620.0,266.4 634.0,270.7 648.0,274.9 662.0,279.2 676.0,283.4 690.0,287.8 704.0,292.0 718.0,296.2 732.0,300.5 746.0,304.6 760.0,308.5 774.0,312.6 788.0,316.6 802.0,320.8 816.0,325.0 830.0,329.1" fill="none" stroke="#e05555" stroke-width="2.5"/>
+<rect x="600" y="138" width="16" height="14" rx="3" fill="#e05555"/>
+<text x="626" y="150" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="600" fill="#e05555">std 0.01 — 값이 죽는다</text>
+<polyline points="144.0,120.8 158.0,121.5 172.0,122.4 186.0,123.2 200.0,124.0 214.0,124.7 228.0,125.3 242.0,126.1 256.0,127.0 270.0,127.9 284.0,128.9 298.0,129.7 312.0,130.5 326.0,131.3 340.0,132.0 354.0,132.7 368.0,133.7 382.0,134.5 396.0,135.0 410.0,135.9 424.0,136.7 438.0,137.6 452.0,138.2 466.0,139.0 480.0,140.0 494.0,140.7 508.0,141.5 522.0,142.4 536.0,143.3 550.0,144.1 564.0,145.0 578.0,145.8 592.0,146.6 606.0,147.4 620.0,148.1 634.0,149.0 648.0,149.8 662.0,150.7 676.0,151.6 690.0,152.6 704.0,153.4 718.0,154.2 732.0,155.2 746.0,155.8 760.0,156.4 774.0,157.1 788.0,157.7 802.0,158.5 816.0,159.4 830.0,160.1" fill="none" stroke="#e0a355" stroke-width="2.5"/>
+<rect x="600" y="164" width="16" height="14" rx="3" fill="#e0a355"/>
+<text x="626" y="176" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="600" fill="#e0a355">Xavier √(1/n) — ReLU 라 절반씩 준다</text>
+<polyline points="144.0,120.0 158.0,120.0 172.0,120.0 186.0,120.0 200.0,120.0 214.0,120.0 228.0,119.8 242.0,119.8 256.0,119.9 270.0,120.0 284.0,120.2 298.0,120.2 312.0,120.2 326.0,120.3 340.0,120.2 354.0,120.1 368.0,120.3 382.0,120.3 396.0,120.1 410.0,120.2 424.0,120.2 438.0,120.2 452.0,120.1 466.0,120.1 480.0,120.3 494.0,120.2 508.0,120.2 522.0,120.3 536.0,120.5 550.0,120.4 564.0,120.6 578.0,120.6 592.0,120.6 606.0,120.6 620.0,120.5 634.0,120.6 648.0,120.6 662.0,120.8 676.0,120.8 690.0,121.0 704.0,121.0 718.0,121.1 732.0,121.3 746.0,121.1 760.0,120.9 774.0,120.8 788.0,120.7 802.0,120.7 816.0,120.8 830.0,120.7" fill="none" stroke="#55c555" stroke-width="2.5"/>
+<rect x="600" y="190" width="16" height="14" rx="3" fill="#55c555"/>
+<text x="626" y="202" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="600" fill="#55c555">He √(2/n) — 유지된다</text>
+<text x="60" y="396" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="400" fill="#888">한 층의 이득이 g 이면 L 층 뒤의 값은 g^(L/2) 배다. g 가 1 에서 조금만 벗어나도 깊이가 그 오차를 거듭제곱한다.</text>
+<text x="60" y="418" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="400" fill="#888">Xavier 를 ReLU 에 쓰면 g = 1/2 이라 층마다 √2 씩 줄어든다 — 50 층이면 2⁻²⁵ 이다.</text>
+</svg>

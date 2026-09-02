@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" viewBox="0 0 880 400">
+<rect x="0" y="0" width="880" height="400" rx="12" fill="#0a0a0a"/>
+<defs><marker id="hv1" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto"><path d="M 0 0 L 13 7 L 0 14 z" fill="#e05555"/></marker><marker id="hv2" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto"><path d="M 0 0 L 13 7 L 0 14 z" fill="#55c555"/></marker></defs>
+<text x="60" y="44" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="22" font-weight="700" fill="#e8e8e8">H 를 만들지 않고 Hv 만 얻는 길</text>
+<text x="60" y="70" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="400" fill="#888">필요한 것은 행렬이 아니라 그 행렬을 벡터에 곱한 결과뿐이다</text>
+<text x="60" y="112" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#e05555">만들어서 곱하기</text>
+<rect x="60" y="130" width="350" height="60" rx="8" fill="#111827" stroke="#e05555" stroke-width="1.5"/>
+<text x="78" y="154" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="600" fill="#e8e8e8">H 의 n² 개 항목을 전부 계산한다</text>
+<text x="78" y="174" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="11" font-weight="400" fill="#9aa4b8">메모리 O(n²), 시간 O(n²) 이상</text>
+<rect x="60" y="220" width="350" height="60" rx="8" fill="#111827" stroke="#e05555" stroke-width="1.5"/>
+<text x="78" y="244" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="600" fill="#e8e8e8">그 다음 H·v 를 곱한다</text>
+<text x="78" y="264" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="11" font-weight="400" fill="#9aa4b8">n = 7×10⁹ 이면 첫 줄에서 이미 막힌다</text>
+<line x1="235" y1="190" x2="235" y2="218" stroke="#e05555" stroke-width="2" marker-end="url(#hv1)"/>
+<text x="470" y="112" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#55c555">방향미분으로 바로 얻기</text>
+<rect x="470" y="130" width="350" height="60" rx="8" fill="#111827" stroke="#55c555" stroke-width="1.5"/>
+<text x="488" y="154" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="600" fill="#e8e8e8">Hv = ∇( ∇f(x)ᵀ v )</text>
+<text x="488" y="174" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="11" font-weight="400" fill="#9aa4b8">스칼라 하나를 한 번 더 미분하면 된다</text>
+<rect x="470" y="220" width="350" height="60" rx="8" fill="#111827" stroke="#55c555" stroke-width="1.5"/>
+<text x="488" y="244" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="600" fill="#e8e8e8">또는 (∇f(x+εv) − ∇f(x)) / ε</text>
+<text x="488" y="264" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="11" font-weight="400" fill="#9aa4b8">메모리 O(n), 시간은 역전파 두 번</text>
+<line x1="645" y1="190" x2="645" y2="218" stroke="#55c555" stroke-width="2" marker-end="url(#hv2)"/>
+<rect x="60" y="306" width="760" height="60" rx="8" fill="#111827" stroke="#3a4a6e" stroke-width="1.5"/>
+<text x="80" y="330" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="600" fill="#e8e8e8">Hv 만 있으면 켤레기울기법으로 H d = −∇f 를 풀 수 있다 — 이것이 Hessian-free 방법이다.</text>
+<text x="80" y="350" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="11" font-weight="400" fill="#9aa4b8">파워 반복으로 최대 고윳값(곧 학습률 상한 2/λ_max)을 재는 데도 Hv 만 있으면 된다.</text>
+</svg>

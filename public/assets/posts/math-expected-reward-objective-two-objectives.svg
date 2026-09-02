@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" viewBox="0 0 880 430">
+<rect x="0" y="0" width="880" height="430" rx="12" fill="#0a0a0a"/>
+<text x="60" y="44" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="22" font-weight="700" fill="#e8e8e8">무엇에 대해 평균을 내는가가 다르다</text>
+<text x="60" y="70" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="400" fill="#888">왼쪽은 데이터가 정한 분포, 오른쪽은 우리가 학습시키는 모델이 정한 분포</text>
+<text x="60" y="112" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#7ec8e3">지도학습의 손실</text>
+<rect x="60" y="130" width="350" height="60" rx="8" fill="#111827" stroke="#7ec8e3" stroke-width="1.5" opacity="1.0"/>
+<text x="78" y="154" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="600" fill="#e8e8e8">L(θ) = E_{(x,y)~D} [ ℓ(f_θ(x), y) ]</text>
+<text x="78" y="174" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="11" font-weight="400" fill="#9aa4b8">평균을 내는 분포 D 는 데이터셋이다</text>
+<rect x="60" y="208" width="350" height="60" rx="8" fill="#111827" stroke="#7ec8e3" stroke-width="1.5" opacity="1.0"/>
+<text x="78" y="232" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="600" fill="#e8e8e8">D 는 θ 와 무관하다</text>
+<text x="78" y="252" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="11" font-weight="400" fill="#9aa4b8">θ 를 바꿔도 뽑히는 표본은 그대로다</text>
+<rect x="60" y="286" width="350" height="60" rx="8" fill="#111827" stroke="#7ec8e3" stroke-width="1.5" opacity="1.0"/>
+<text x="78" y="310" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="600" fill="#e8e8e8">∇L = E_D [ ∇ℓ ]</text>
+<text x="78" y="330" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="11" font-weight="400" fill="#9aa4b8">미분이 기댓값 안으로 그냥 들어간다</text>
+<text x="60" y="386" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="600" fill="#7ec8e3">표본을 뽑아 ∇ℓ 을 평균 내면 끝이다.</text>
+<text x="470" y="112" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#e0a355">기대 보상 목적식</text>
+<rect x="470" y="130" width="350" height="60" rx="8" fill="#111827" stroke="#e0a355" stroke-width="1.5" opacity="1.0"/>
+<text x="488" y="154" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="600" fill="#e8e8e8">J(θ) = E_{y~π_θ} [ r(y) ]</text>
+<text x="488" y="174" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="11" font-weight="400" fill="#9aa4b8">평균을 내는 분포가 정책 π_θ 다</text>
+<rect x="470" y="208" width="350" height="60" rx="8" fill="#111827" stroke="#e0a355" stroke-width="1.5" opacity="1.0"/>
+<text x="488" y="232" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="600" fill="#e8e8e8">π_θ 는 θ 가 정한다</text>
+<text x="488" y="252" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="11" font-weight="400" fill="#9aa4b8">θ 를 바꾸면 뽑히는 표본 자체가 바뀐다</text>
+<rect x="470" y="286" width="350" height="60" rx="8" fill="#111827" stroke="#e0a355" stroke-width="1.5" opacity="1.0"/>
+<text x="488" y="310" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="600" fill="#e8e8e8">∇J ≠ E_{π_θ} [ ∇r ]</text>
+<text x="488" y="330" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="11" font-weight="400" fill="#9aa4b8">r 은 θ 를 모르므로 저 우변은 0 이다</text>
+<text x="470" y="386" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="600" fill="#e0a355">표본을 뽑아 평균 내는 것으로는 안 된다.</text>
+<text x="60" y="414" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="400" fill="#888">두 식의 차이는 기댓값 아래 첨자 하나뿐인데, 그 하나가 그래디언트를 구하는 방법을 통째로 바꾼다.</text>
+</svg>

@@ -217,3 +217,5 @@ for b in (0.9, 0.99, 0.999):
 읽어주셔서 감사합니다. 😊
 
 **지난 글:** [경사하강법 유도와 학습률 상한이 2/L인 이유](/articles/math-gradient-descent-and-lr-bound)
+
+**다음 글:** [1차·2차 모멘트에서 Adam을 직접 조립하기](/articles/math-adam-from-moments)

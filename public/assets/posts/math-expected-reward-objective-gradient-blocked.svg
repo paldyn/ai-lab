@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" viewBox="0 0 880 420">
+<rect x="0" y="0" width="880" height="420" rx="12" fill="#0a0a0a"/>
+<defs><marker id="gb1" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto"><path d="M 0 0 L 13 7 L 0 14 z" fill="#7ec8e3"/></marker><marker id="gb2" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto"><path d="M 0 0 L 13 7 L 0 14 z" fill="#e05555"/></marker></defs>
+<text x="60" y="44" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="22" font-weight="700" fill="#e8e8e8">미분을 안으로 넣으면 기댓값이 아닌 것이 남는다</text>
+<text x="60" y="70" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="400" fill="#888">답이 셀 수 있을 만큼 적다고 두고 기댓값을 합으로 펼친 다음 미분해 본다</text>
+<rect x="60" y="118" width="760" height="60" rx="8" fill="#111827" stroke="#7ec8e3" stroke-width="1.5" opacity="1.0"/>
+<text x="80" y="142" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="14" font-weight="600" fill="#e8e8e8">J(θ) = Σ_y π_θ(y) · r(y)</text>
+<text x="80" y="162" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="11" font-weight="400" fill="#9aa4b8">기댓값을 합으로 펼쳤다</text>
+<line x1="440" y1="178" x2="440" y2="202" stroke="#7ec8e3" stroke-width="2" marker-end="url(#gb1)"/>
+<rect x="60" y="202" width="760" height="60" rx="8" fill="#111827" stroke="#7ec8e3" stroke-width="1.5" opacity="1.0"/>
+<text x="80" y="226" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="14" font-weight="600" fill="#e8e8e8">∇J = Σ_y r(y) · ∇π_θ(y)</text>
+<text x="80" y="246" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="11" font-weight="400" fill="#9aa4b8">r 은 θ 를 모르므로 π 만 미분된다</text>
+<line x1="440" y1="262" x2="440" y2="286" stroke="#7ec8e3" stroke-width="2" marker-end="url(#gb1)"/>
+<rect x="60" y="286" width="760" height="60" rx="8" fill="#111827" stroke="#e05555" stroke-width="1.5" opacity="1.0"/>
+<text x="80" y="310" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="14" font-weight="600" fill="#e8e8e8">Σ_y r(y) ∇π_θ(y) 는 기댓값이 아니다</text>
+<text x="80" y="330" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="11" font-weight="400" fill="#9aa4b8">가중치가 π 가 아니라 ∇π 다 — 합이 1 이 아니고 음수도 된다</text>
+<rect x="60" y="306" width="760" height="78" rx="8" fill="#1a140a" stroke="#e0a355" stroke-width="1.5" opacity="1.0"/>
+<text x="80" y="330" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="600" fill="#e8e8e8">우리가 할 수 있는 일은 π_θ 에서 y 를 뽑아 그 y 로 계산되는 값의 평균을 내는 것뿐이다.</text>
+<text x="80" y="352" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="600" fill="#e8e8e8">그런데 뽑아 놓은 y 는 θ 의 함수가 아니라 그냥 하나의 토큰 열이다 — 미분할 자리가 없다.</text>
+<text x="80" y="374" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="11" font-weight="400" fill="#9aa4b8">필요한 것은 위 합을 다시 「π_θ 로 가중된 평균」 꼴로 적어 주는 항등식이다.</text>
+</svg>

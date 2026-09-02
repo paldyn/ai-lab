@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" viewBox="0 0 880 440">
+<rect x="0" y="0" width="880" height="440" rx="12" fill="#0a0a0a"/>
+<defs><marker id="apipe" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto"><path d="M 0 0 L 13 7 L 0 14 z" fill="#7ec8e3"/></marker></defs>
+<text x="60" y="44" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="22" font-weight="700" fill="#e8e8e8">Adam 갱신식의 조립 순서</text>
+<text x="60" y="70" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="400" fill="#888">gₜ 는 이번 스텝의 그래디언트. 보정한 값을 각각 Mₜ, Vₜ 로 적었다</text>
+<rect x="60" y="95" width="350" height="60" rx="8" fill="#111827" stroke="#3a4a6e" stroke-width="1.5"/>
+<text x="80" y="119" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="14" font-weight="600" fill="#e8e8e8">mₜ = β₁ mₜ₋₁ + (1 − β₁) gₜ</text>
+<text x="80" y="139" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="11" font-weight="400" fill="#9aa4b8">1차 모멘트 — 어느 쪽으로 가는가</text>
+<rect x="470" y="95" width="350" height="60" rx="8" fill="#111827" stroke="#3a4a6e" stroke-width="1.5"/>
+<text x="490" y="119" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="14" font-weight="600" fill="#e8e8e8">vₜ = β₂ vₜ₋₁ + (1 − β₂) gₜ²</text>
+<text x="490" y="139" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="11" font-weight="400" fill="#9aa4b8">2차 모멘트 — 얼마나 크게 흔들리는가</text>
+<rect x="60" y="195" width="350" height="60" rx="8" fill="#111827" stroke="#3a4a6e" stroke-width="1.5"/>
+<text x="80" y="219" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="14" font-weight="600" fill="#e8e8e8">Mₜ = mₜ ÷ (1 − β₁ᵗ)</text>
+<text x="80" y="239" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="11" font-weight="400" fill="#9aa4b8">편향 보정 — 초반의 0 쪽 쏠림을 되돌린다</text>
+<rect x="470" y="195" width="350" height="60" rx="8" fill="#111827" stroke="#3a4a6e" stroke-width="1.5"/>
+<text x="490" y="219" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="14" font-weight="600" fill="#e8e8e8">Vₜ = vₜ ÷ (1 − β₂ᵗ)</text>
+<text x="490" y="239" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="11" font-weight="400" fill="#9aa4b8">편향 보정 — 같은 이유, 지수만 β₂</text>
+<rect x="60" y="295" width="760" height="70" rx="8" fill="#0f1a0f" stroke="#55c555" stroke-width="1.5"/>
+<text x="80" y="317" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="700" fill="#e8e8e8">θₜ = θₜ₋₁ − η · Mₜ ÷ (√Vₜ + ε)</text>
+<text x="80" y="335" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="11" font-weight="400" fill="#9aa4b8">방향은 Mₜ 가 정하고, 그 방향으로 얼마나 갈지는 √Vₜ 가 정한다.</text>
+<text x="80" y="353" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="11" font-weight="400" fill="#9aa4b8">파라미터마다 따로 나누므로 갱신은 좌표별로 독립이다 — 대각선 프리컨디셔너다.</text>
+<line x1="235" y1="155" x2="235" y2="193" stroke="#7ec8e3" stroke-width="2" marker-end="url(#apipe)"/>
+<line x1="235" y1="255" x2="235" y2="293" stroke="#7ec8e3" stroke-width="2" marker-end="url(#apipe)"/>
+<line x1="645" y1="155" x2="645" y2="193" stroke="#7ec8e3" stroke-width="2" marker-end="url(#apipe)"/>
+<line x1="645" y1="255" x2="645" y2="293" stroke="#7ec8e3" stroke-width="2" marker-end="url(#apipe)"/>
+<text x="60" y="400" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="400" fill="#888">β₁ 은 방향의 기억 길이를, β₂ 는 규모의 기억 길이를 정한다. 둘은 서로 다른 창이어도 된다.</text>
+</svg>

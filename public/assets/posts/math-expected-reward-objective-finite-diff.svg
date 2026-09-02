@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" viewBox="0 0 880 430">
+<rect x="0" y="0" width="880" height="430" rx="12" fill="#0a0a0a"/>
+<text x="60" y="44" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="22" font-weight="700" fill="#e8e8e8">유한차분으로 때우려면 표본이 이만큼 든다</text>
+<text x="60" y="70" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="400" fill="#888">답이 셋뿐인 장난감 문제에서, 샘플로 잰 J 의 차분이 참 그래디언트와 얼마나 어긋나는가</text>
+<line x1="130" y1="330" x2="830" y2="330" stroke="#888" stroke-width="1.5"/>
+<line x1="130" y1="342" x2="130" y2="106" stroke="#888" stroke-width="1.5"/>
+<line x1="130" y1="330.0" x2="830" y2="330.0" stroke="#444" stroke-width="1" stroke-dasharray="3,4"/>
+<text x="118" y="335.0" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="400" fill="#888" text-anchor="end">10%</text>
+<line x1="130" y1="277.5" x2="830" y2="277.5" stroke="#444" stroke-width="1" stroke-dasharray="3,4"/>
+<text x="118" y="282.5" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="400" fill="#888" text-anchor="end">100%</text>
+<line x1="130" y1="225.0" x2="830" y2="225.0" stroke="#444" stroke-width="1" stroke-dasharray="3,4"/>
+<text x="118" y="230.0" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="400" fill="#888" text-anchor="end">1,000%</text>
+<line x1="130" y1="172.5" x2="830" y2="172.5" stroke="#444" stroke-width="1" stroke-dasharray="3,4"/>
+<text x="118" y="177.5" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="400" fill="#888" text-anchor="end">10,000%</text>
+<line x1="130" y1="120.0" x2="830" y2="120.0" stroke="#444" stroke-width="1" stroke-dasharray="3,4"/>
+<text x="118" y="125.0" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="400" fill="#888" text-anchor="end">100,000%</text>
+<text x="130.0" y="354" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="400" fill="#888" text-anchor="middle">100</text>
+<text x="230.0" y="354" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="400" fill="#888" text-anchor="middle">1천</text>
+<text x="330.0" y="354" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="400" fill="#888" text-anchor="middle">1만</text>
+<text x="430.0" y="354" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="400" fill="#888" text-anchor="middle">10만</text>
+<text x="530.0" y="354" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="400" fill="#888" text-anchor="middle">100만</text>
+<text x="630.0" y="354" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="400" fill="#888" text-anchor="middle">1천만</text>
+<text x="730.0" y="354" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="400" fill="#888" text-anchor="middle">1억</text>
+<text x="830.0" y="354" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="400" fill="#888" text-anchor="middle">10억</text>
+<text x="830" y="376" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="400" fill="#888" text-anchor="end">파라미터 하나당 뽑은 답의 수</text>
+<polyline points="130.0,140.6 230.0,168.8 330.0,193.8 430.0,221.3 530.0,246.2 630.0,274.8 730.0,299.6 830.0,327.4" fill="none" stroke="#e0a355" stroke-width="2.5"/>
+<circle cx="130.0" cy="140.6" r="4.5" fill="#e0a355"/>
+<circle cx="230.0" cy="168.8" r="4.5" fill="#e0a355"/>
+<circle cx="330.0" cy="193.8" r="4.5" fill="#e0a355"/>
+<circle cx="430.0" cy="221.3" r="4.5" fill="#e0a355"/>
+<circle cx="530.0" cy="246.2" r="4.5" fill="#e0a355"/>
+<circle cx="630.0" cy="274.8" r="4.5" fill="#e0a355"/>
+<circle cx="730.0" cy="299.6" r="4.5" fill="#e0a355"/>
+<circle cx="830.0" cy="327.4" r="4.5" fill="#e0a355"/>
+<line x1="130" y1="330.0" x2="830" y2="330.0" stroke="#55c555" stroke-width="2.5" stroke-dasharray="5,3"/>
+<text x="250.0" y="316.0" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="600" fill="#55c555">쓸 만하다고 할 만한 선 — 상대오차 10%</text>
+<text x="560.0" y="228.19308771928257" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="600" fill="#e0a355">표본 수의 제곱근에 반비례해 줄어든다</text>
+<text x="60" y="386" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="400" fill="#888">10% 에 닿는 데 파라미터 하나당 10 억 번이다. 그리고 파라미터마다 따로 해야 한다.</text>
+<text x="60" y="408" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="400" fill="#888">파라미터가 70 억 개인 모델에서 이 길은 열려 있지 않다.</text>
+</svg>

@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" viewBox="0 0 880 450">
+<rect x="0" y="0" width="880" height="450" rx="12" fill="#0a0a0a"/>
+<defs><marker id="nj2" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto"><path d="M 0 0 L 13 7 L 0 14 z" fill="#55c555"/></marker><marker id="nj1" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto"><path d="M 0 0 L 13 7 L 0 14 z" fill="#e0a355"/></marker></defs>
+<text x="60" y="44" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="22" font-weight="700" fill="#e8e8e8">이차함수라면 뉴턴법은 한 스텝에 최소점에 닿는다</text>
+<text x="60" y="70" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="400" fill="#888">f(x,y) = ½(10x² + y²) 의 등고선. 곡률이 두 방향에서 10 배 다르다</text>
+<ellipse cx="470" cy="250" rx="29.1" ry="30.0" fill="none" stroke="#444" stroke-width="1.2"/>
+<ellipse cx="470" cy="250" rx="58.2" ry="60.0" fill="none" stroke="#444" stroke-width="1.2"/>
+<ellipse cx="470" cy="250" rx="87.3" ry="90.0" fill="none" stroke="#444" stroke-width="1.2"/>
+<ellipse cx="470" cy="250" rx="116.4" ry="120.0" fill="none" stroke="#444" stroke-width="1.2"/>
+<ellipse cx="470" cy="250" rx="145.5" ry="150.0" fill="none" stroke="#444" stroke-width="1.2"/>
+<line x1="157.2" y1="250" x2="782.8" y2="250" stroke="#888" stroke-width="1.5"/>
+<line x1="470" y1="418.0" x2="470" y2="82.0" stroke="#888" stroke-width="1.5"/>
+<text x="794.8" y="255" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="400" fill="#888">x</text>
+<text x="480" y="74.0" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="400" fill="#888">y</text>
+<polyline points="562.0,100.0 394.7,127.3 531.6,149.6 419.6,167.8 511.2,182.8 436.3,195.0 497.6,205.0 447.4,213.2 488.5,219.9 454.9,225.4" fill="none" stroke="#e0a355" stroke-width="2.5"/>
+<circle cx="562.0" cy="100.0" r="3.5" fill="#e0a355"/>
+<circle cx="394.7" cy="127.3" r="3.5" fill="#e0a355"/>
+<circle cx="531.6" cy="149.6" r="3.5" fill="#e0a355"/>
+<circle cx="419.6" cy="167.8" r="3.5" fill="#e0a355"/>
+<circle cx="511.2" cy="182.8" r="3.5" fill="#e0a355"/>
+<circle cx="436.3" cy="195.0" r="3.5" fill="#e0a355"/>
+<circle cx="497.6" cy="205.0" r="3.5" fill="#e0a355"/>
+<circle cx="447.4" cy="213.2" r="3.5" fill="#e0a355"/>
+<circle cx="488.5" cy="219.9" r="3.5" fill="#e0a355"/>
+<line x1="562.0" y1="100.0" x2="473.7" y2="244.0" stroke="#55c555" stroke-width="2.5" marker-end="url(#nj2)"/>
+<circle cx="562.0" cy="100.0" r="5.5" fill="#e8e8e8"/>
+<text x="576.0" y="90.0" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="600" fill="#e8e8e8">출발점 (1, 5)</text>
+<circle cx="470" cy="250" r="5" fill="#55c555"/>
+<text x="484" y="272" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="600" fill="#55c555">최소점</text>
+<rect x="60" y="112" width="16" height="14" rx="3" fill="#55c555"/>
+<text x="86" y="124" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="600" fill="#55c555">뉴턴 — d = −H⁻¹∇f, 한 스텝</text>
+<rect x="60" y="138" width="16" height="14" rx="3" fill="#e0a355"/>
+<text x="86" y="150" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="600" fill="#e0a355">경사하강 — 최선의 η 로도 9 스텝 뒤 여기</text>
+<text x="60" y="396" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="400" fill="#888">H⁻¹ 이 두 방향의 곡률 차이를 정확히 지운다. 이차함수에서는 근사가 곧 원함수라 한 번에 닿는다.</text>
+<text x="60" y="418" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="400" fill="#888">학습률이라는 손잡이가 없다는 점도 눈여겨볼 것 — 걸음의 길이를 곡률이 정한다.</text>
+</svg>

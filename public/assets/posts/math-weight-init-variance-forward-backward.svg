@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" viewBox="0 0 880 430">
+<rect x="0" y="0" width="880" height="430" rx="12" fill="#0a0a0a"/>
+<defs><marker id="fb1" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto"><path d="M 0 0 L 13 7 L 0 14 z" fill="#7ec8e3"/></marker><marker id="fb2" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto"><path d="M 0 0 L 13 7 L 0 14 z" fill="#e0a355"/></marker></defs>
+<text x="60" y="44" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="22" font-weight="700" fill="#e8e8e8">조건이 둘인데 답이 하나여야 한다</text>
+<text x="60" y="70" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="400" fill="#888">순전파는 팬인을, 역전파는 팬아웃을 본다. 두 조건이 같은 σ_w 를 요구하지 않는다</text>
+<rect x="60" y="120" width="300" height="120" rx="8" fill="#111827" stroke="#7ec8e3" stroke-width="1.5"/>
+<text x="80" y="150" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="14" font-weight="600" fill="#7ec8e3">순전파 — 활성값이 지나간다</text>
+<text x="80" y="178" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="600" fill="#e8e8e8">Var(y) = n_in · σ_w² · Var(x)</text>
+<text x="80" y="202" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="600" fill="#e8e8e8">유지하려면 n_in σ_w² = 1</text>
+<text x="80" y="224" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="11" font-weight="400" fill="#9aa4b8">즉 σ_w² = 1 / n_in</text>
+<rect x="520" y="120" width="300" height="120" rx="8" fill="#111827" stroke="#e0a355" stroke-width="1.5"/>
+<text x="540" y="150" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="14" font-weight="600" fill="#e0a355">역전파 — 그래디언트가 지나간다</text>
+<text x="540" y="178" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="12" font-weight="600" fill="#e8e8e8">Var(∂L/∂x) = n_out · σ_w² · Var(∂L/∂y)</text>
+<text x="540" y="202" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="600" fill="#e8e8e8">유지하려면 n_out σ_w² = 1</text>
+<text x="540" y="224" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="11" font-weight="400" fill="#9aa4b8">즉 σ_w² = 1 / n_out</text>
+<line x1="360" y1="165" x2="516" y2="165" stroke="#7ec8e3" stroke-width="2" marker-end="url(#fb1)"/>
+<line x1="520" y1="205" x2="364" y2="205" stroke="#e0a355" stroke-width="2" marker-end="url(#fb2)"/>
+<rect x="60" y="276" width="760" height="90" rx="8" fill="#0f1a0f" stroke="#55c555" stroke-width="1.5"/>
+<text x="80" y="306" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="600" fill="#e8e8e8">n_in = n_out 이 아니면 둘을 동시에 만족시킬 수 없다. 조화평균으로 절충한 것이 Xavier 다.</text>
+<text x="80" y="334" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="700" fill="#e8e8e8">σ_w² = 2 / (n_in + n_out)</text>
+<text x="80" y="356" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="11" font-weight="400" fill="#9aa4b8">ReLU 라면 순전파 조건이 ½ n_in σ_w² = 1 이 되어 σ_w² = 2/n_in — 이것이 He 다.</text>
+<text x="60" y="404" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="400" fill="#888">PyTorch 의 mode='fan_in' 은 앞의 조건을, mode='fan_out' 은 뒤의 조건을 고르는 손잡이다.</text>
+</svg>
