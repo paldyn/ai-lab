@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="378" viewBox="0 0 880 378" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <defs>
+    <marker id="dvpArr" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#b5cea8"/>
+    </marker>
+  </defs>
+
+  <rect x="0" y="0" width="880" height="378" rx="12" fill="#0a0a0a"/>
+
+  <text x="62" y="42" font-size="22" font-weight="700" fill="#e8e8e8">저장소에는 해시만, 바이트는 밖에</text>
+  <text x="62" y="68" font-size="13" fill="#888">데이터 버저닝 도구가 공통으로 쓰는 구조. 같은 해시가 양쪽을 잇는다.</text>
+
+  <rect x="62" y="100" width="340" height="226" rx="10" fill="#101820" stroke="#3a4a6e" stroke-width="1.5"/>
+  <text x="82" y="130" font-size="15" font-weight="600" fill="#e8e8e8">Git 저장소</text>
+  <text x="382" y="130" font-size="12" fill="#888" text-anchor="end">전체 3 MB</text>
+  <rect x="82" y="146" width="300" height="160" rx="6" fill="#000000" stroke="#3a4a6e" stroke-width="1"/>
+  <text x="98" y="169" xml:space="preserve" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#9aa4b8"># 저장소에는 해시만 들어간다</text>
+  <text x="98" y="189" xml:space="preserve" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#ffffff">train.py</text>
+  <text x="98" y="209" xml:space="preserve" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#ffffff">params.yaml</text>
+  <text x="98" y="229" xml:space="preserve" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#ffffff">data/train.csv.dvc</text>
+  <text x="98" y="249" xml:space="preserve" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#ffffff">  outs:</text>
+  <text x="98" y="269" xml:space="preserve" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13"><tspan fill="#ffffff">  - md5: </tspan><tspan fill="#b5cea8">8f3a1c...d92b</tspan></text>
+  <text x="98" y="289" xml:space="preserve" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#ffffff">    size: 12884901888</text>
+
+  <line x1="402" y1="226" x2="478" y2="226" stroke="#b5cea8" stroke-width="2" marker-end="url(#dvpArr)"/>
+
+  <rect x="478" y="100" width="340" height="226" rx="10" fill="#101820" stroke="#3a4a6e" stroke-width="1.5"/>
+  <text x="498" y="130" font-size="15" font-weight="600" fill="#e8e8e8">오브젝트 스토리지</text>
+  <text x="798" y="130" font-size="12" fill="#888" text-anchor="end">21 GB</text>
+  <rect x="498" y="146" width="300" height="160" rx="6" fill="#000000" stroke="#3a4a6e" stroke-width="1"/>
+  <text x="514" y="169" xml:space="preserve" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#9aa4b8"># 바이트는 여기에만 있다</text>
+  <text x="514" y="189" xml:space="preserve" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#ce9178">s3://ml-data/files/md5/</text>
+  <text x="514" y="209" xml:space="preserve" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#b5cea8">  8f3a1c...d92b</text>
+  <text x="514" y="229" xml:space="preserve" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#ffffff">    12,884,901,888 bytes</text>
+  <text x="514" y="249" xml:space="preserve" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#ffffff">  2b91ef...07ac</text>
+  <text x="514" y="269" xml:space="preserve" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#ffffff">     9,663,676,416 bytes</text>
+  <text x="514" y="289" xml:space="preserve" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#9aa4b8">  ...</text>
+
+  <text x="62" y="356" font-size="12" fill="#888">브랜치를 옮기면 .dvc 파일의 해시가 바뀌고, 받아 오는 실체가 그에 맞춰 바뀐다. 코드 되돌리기와 같은 몸짓이 된다.</text>
+</svg>

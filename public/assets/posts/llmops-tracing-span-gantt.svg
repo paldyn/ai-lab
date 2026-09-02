@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="452" viewBox="0 0 880 452" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <rect x="0" y="0" width="880" height="452" rx="12" fill="#0a0a0a"/>
+
+  <text x="62" y="42" font-size="22" font-weight="700" fill="#e8e8e8">한 번의 응답을 스팬으로 쪼개 놓으면</text>
+  <text x="62" y="68" font-size="13" fill="#888">RAG 에이전트 요청 한 건의 트레이스. 전체 2,840 ms가 어디로 갔는지가 한눈에 나온다.</text>
+
+  <line x1="336" y1="105" x2="336" y2="406" stroke="#1e1e1e" stroke-width="1"/>
+  <line x1="421" y1="105" x2="421" y2="406" stroke="#1e1e1e" stroke-width="1"/>
+  <line x1="506" y1="105" x2="506" y2="406" stroke="#1e1e1e" stroke-width="1"/>
+  <line x1="592" y1="105" x2="592" y2="406" stroke="#1e1e1e" stroke-width="1"/>
+  <line x1="677" y1="105" x2="677" y2="406" stroke="#1e1e1e" stroke-width="1"/>
+  <line x1="762" y1="105" x2="762" y2="406" stroke="#1e1e1e" stroke-width="1"/>
+
+  <text x="336" y="98" font-size="11" fill="#888" text-anchor="middle">0</text>
+  <text x="421" y="98" font-size="11" fill="#888" text-anchor="middle">500</text>
+  <text x="506" y="98" font-size="11" fill="#888" text-anchor="middle">1000</text>
+  <text x="592" y="98" font-size="11" fill="#888" text-anchor="middle">1500</text>
+  <text x="677" y="98" font-size="11" fill="#888" text-anchor="middle">2000</text>
+  <text x="762" y="98" font-size="11" fill="#888" text-anchor="middle">2500 ms</text>
+
+  <text x="62" y="126" font-size="13" fill="#e8e8e8">요청 전체</text>
+  <text x="326" y="126" font-size="12" fill="#888" text-anchor="end">2,840 ms</text>
+  <rect x="336" y="112" width="484" height="20" rx="4" fill="#2a3550" stroke="#4a5a80" stroke-width="1"/>
+
+  <text x="78" y="156" font-size="13" fill="#e8e8e8">입력 가드레일</text>
+  <text x="326" y="156" font-size="12" fill="#888" text-anchor="end">60 ms</text>
+  <rect x="336" y="142" width="10" height="20" rx="3" fill="#7777cc"/>
+
+  <text x="78" y="186" font-size="13" fill="#e8e8e8">검색</text>
+  <text x="326" y="186" font-size="12" fill="#888" text-anchor="end">320 ms</text>
+  <rect x="346" y="172" width="55" height="20" rx="3" fill="#7ec8e3"/>
+
+  <text x="94" y="216" font-size="13" fill="#aaaaaa">임베딩</text>
+  <text x="326" y="216" font-size="12" fill="#888" text-anchor="end">60 ms</text>
+  <rect x="346" y="202" width="10" height="20" rx="3" fill="#4a90a8"/>
+
+  <text x="94" y="246" font-size="13" fill="#aaaaaa">벡터 검색</text>
+  <text x="326" y="246" font-size="12" fill="#888" text-anchor="end">180 ms</text>
+  <rect x="356" y="232" width="31" height="20" rx="3" fill="#4a90a8"/>
+
+  <text x="94" y="276" font-size="13" fill="#aaaaaa">리랭크</text>
+  <text x="326" y="276" font-size="12" fill="#888" text-anchor="end">80 ms</text>
+  <rect x="387" y="262" width="14" height="20" rx="3" fill="#4a90a8"/>
+
+  <text x="78" y="306" font-size="13" fill="#e8e8e8">LLM 호출 1</text>
+  <text x="326" y="306" font-size="12" fill="#888" text-anchor="end">1,900 ms</text>
+  <rect x="401" y="292" width="324" height="20" rx="3" fill="#e05555"/>
+  <text x="563" y="306" font-size="12" font-weight="600" fill="#ffffff" text-anchor="middle">전체의 67%</text>
+
+  <text x="78" y="336" font-size="13" fill="#e8e8e8">툴 실행</text>
+  <text x="326" y="336" font-size="12" fill="#888" text-anchor="end">420 ms</text>
+  <rect x="725" y="322" width="71" height="20" rx="3" fill="#55c555"/>
+
+  <text x="78" y="366" font-size="13" fill="#e8e8e8">LLM 호출 2</text>
+  <text x="326" y="366" font-size="12" fill="#888" text-anchor="end">120 ms</text>
+  <rect x="796" y="352" width="21" height="20" rx="3" fill="#e05555"/>
+
+  <text x="78" y="396" font-size="13" fill="#e8e8e8">출력 검증</text>
+  <text x="326" y="396" font-size="12" fill="#888" text-anchor="end">20 ms</text>
+  <rect x="817" y="382" width="3" height="20" rx="1" fill="#7777cc"/>
+
+  <text x="62" y="432" font-size="12" fill="#888">검색을 아무리 다듬어도 320 ms 안에서만 줄어든다. 손댈 자리는 1,900 ms짜리 첫 LLM 호출이다.</text>
+</svg>

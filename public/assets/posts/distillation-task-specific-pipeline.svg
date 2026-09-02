@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="300" viewBox="0 0 880 300" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <defs>
+    <marker id="dsArr" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#7ec8e3"/>
+    </marker>
+  </defs>
+
+  <rect x="0" y="0" width="880" height="300" rx="12" fill="#0a0a0a"/>
+
+  <text x="62" y="42" font-size="22" font-weight="700" fill="#e8e8e8">과제 특화 증류가 실제로 도는 모양</text>
+  <text x="62" y="68" font-size="13" fill="#888">교사의 가중치는 필요 없다. 필요한 것은 우리 입력에 대한 교사의 출력이다.</text>
+
+  <line x1="221" y1="155" x2="261" y2="155" stroke="#7ec8e3" stroke-width="2" marker-end="url(#dsArr)"/>
+  <line x1="420" y1="155" x2="460" y2="155" stroke="#7ec8e3" stroke-width="2" marker-end="url(#dsArr)"/>
+  <line x1="619" y1="155" x2="659" y2="155" stroke="#7ec8e3" stroke-width="2" marker-end="url(#dsArr)"/>
+
+  <rect x="62" y="120" width="159" height="70" rx="10" fill="#101820" stroke="#3a4a6e" stroke-width="1.5"/>
+  <text x="78" y="142" font-size="15" font-weight="600" fill="#e8e8e8">라벨 없는 입력</text>
+  <text x="78" y="160" font-size="12" fill="#9aa4b8">실제 서비스에서</text>
+  <text x="78" y="178" font-size="12" fill="#9aa4b8">모은 요청들</text>
+
+  <rect x="261" y="120" width="159" height="70" rx="10" fill="#2a1a1a" stroke="#e05555" stroke-width="1.5"/>
+  <text x="277" y="142" font-size="15" font-weight="600" fill="#e05555">교사 모델</text>
+  <text x="277" y="160" font-size="12" fill="#9aa4b8">큰 모델이 답과</text>
+  <text x="277" y="178" font-size="12" fill="#9aa4b8">근거를 만든다</text>
+
+  <rect x="460" y="120" width="159" height="70" rx="10" fill="#12242c" stroke="#7ec8e3" stroke-width="1.5"/>
+  <text x="476" y="142" font-size="15" font-weight="600" fill="#7ec8e3">학습 데이터</text>
+  <text x="476" y="160" font-size="12" fill="#9aa4b8">입력과 교사의 답</text>
+  <text x="476" y="178" font-size="12" fill="#9aa4b8">수만 건 규모</text>
+
+  <rect x="659" y="120" width="159" height="70" rx="10" fill="#14261a" stroke="#55c555" stroke-width="1.5"/>
+  <text x="675" y="142" font-size="15" font-weight="600" fill="#55c555">학생 모델</text>
+  <text x="675" y="160" font-size="12" fill="#9aa4b8">작고, 이 과제만</text>
+  <text x="675" y="178" font-size="12" fill="#9aa4b8">잘한다</text>
+
+  <circle cx="221" cy="155" r="6" fill="#b5cea8" opacity="0">
+    <animate attributeName="cx" values="221;261;420;460;619;659" keyTimes="0;0.091;0.454;0.546;0.909;1" dur="4s" begin="0s" repeatCount="indefinite"/>
+    <animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.05;0.92;1" dur="4s" begin="0s" repeatCount="indefinite"/>
+  </circle>
+  <circle cx="221" cy="155" r="6" fill="#b5cea8" opacity="0">
+    <animate attributeName="cx" values="221;261;420;460;619;659" keyTimes="0;0.091;0.454;0.546;0.909;1" dur="4s" begin="1.35s" repeatCount="indefinite"/>
+    <animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.05;0.92;1" dur="4s" begin="1.35s" repeatCount="indefinite"/>
+  </circle>
+  <circle cx="221" cy="155" r="6" fill="#b5cea8" opacity="0">
+    <animate attributeName="cx" values="221;261;420;460;619;659" keyTimes="0;0.091;0.454;0.546;0.909;1" dur="4s" begin="2.7s" repeatCount="indefinite"/>
+    <animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.05;0.92;1" dur="4s" begin="2.7s" repeatCount="indefinite"/>
+  </circle>
+
+  <text x="62" y="248" font-size="12" fill="#888">두 번째 칸에서 답만 받지 않는 것이 핵심이다. 어떤 근거로 그 답을 냈는지까지 받아 두면 학생이 훨씬 잘 배운다.</text>
+  <text x="62" y="272" font-size="12" fill="#888">그리고 첫 칸의 입력은 실제 서비스 트래픽이어야 한다. 공개 데이터로 만들면 우리 과제와 분포가 어긋난다.</text>
+</svg>

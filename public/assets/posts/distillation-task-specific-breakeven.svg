@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="420" viewBox="0 0 880 420" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <rect x="0" y="0" width="880" height="420" rx="12" fill="#0a0a0a"/>
+
+  <text x="62" y="42" font-size="22" font-weight="700" fill="#e8e8e8">증류가 이득이 되는 지점은 호출량이 정한다</text>
+  <text x="62" y="68" font-size="13" fill="#888">예시 가정 — 교사는 100만 호출당 $3,000, 학생은 $300. 증류 초기 비용은 $4,000.</text>
+
+  <line x1="150" y1="140" x2="820" y2="140" stroke="#222222" stroke-width="1"/>
+  <line x1="150" y1="185" x2="820" y2="185" stroke="#222222" stroke-width="1"/>
+  <line x1="150" y1="230" x2="820" y2="230" stroke="#222222" stroke-width="1"/>
+  <line x1="150" y1="275" x2="820" y2="275" stroke="#222222" stroke-width="1"/>
+  <line x1="150" y1="320" x2="820" y2="320" stroke="#444444" stroke-width="1.5"/>
+  <line x1="150" y1="110" x2="150" y2="320" stroke="#444444" stroke-width="1.5"/>
+
+  <text x="136" y="145" font-size="12" fill="#888" text-anchor="end">12,000</text>
+  <text x="136" y="190" font-size="12" fill="#888" text-anchor="end">9,000</text>
+  <text x="136" y="235" font-size="12" fill="#888" text-anchor="end">6,000</text>
+  <text x="136" y="280" font-size="12" fill="#888" text-anchor="end">3,000</text>
+  <text x="136" y="325" font-size="12" fill="#888" text-anchor="end">0</text>
+
+  <line x1="170" y1="136" x2="206" y2="136" stroke="#e05555" stroke-width="2.5"/>
+  <text x="214" y="141" font-size="13" font-weight="600" fill="#e05555">교사 모델을 그대로 호출</text>
+  <line x1="170" y1="164" x2="206" y2="164" stroke="#55c555" stroke-width="2.5"/>
+  <text x="214" y="169" font-size="13" font-weight="600" fill="#55c555">증류한 학생 모델 (초기 비용 포함)</text>
+
+  <polyline points="150,320 317,275 485,230 652,185 820,140" fill="none" stroke="#e05555" stroke-width="2.5"/>
+  <polyline points="150,260 317,256 485,251 652,247 820,242" fill="none" stroke="#55c555" stroke-width="2.5"/>
+
+  <circle cx="398" cy="253" r="6" fill="none" stroke="#b5cea8" stroke-width="2.5"/>
+  <line x1="398" y1="261" x2="398" y2="286" stroke="#b5cea8" stroke-width="2" stroke-dasharray="4,4"/>
+  <text x="408" y="292" font-size="13" font-weight="600" fill="#b5cea8">손익 분기 — 약 150만 호출</text>
+
+  <text x="150" y="344" font-size="12" fill="#888" text-anchor="middle">0</text>
+  <text x="317" y="344" font-size="12" fill="#888" text-anchor="middle">100만</text>
+  <text x="485" y="344" font-size="12" fill="#888" text-anchor="middle">200만</text>
+  <text x="652" y="344" font-size="12" fill="#888" text-anchor="middle">300만</text>
+  <text x="820" y="344" font-size="12" fill="#888" text-anchor="middle">400만</text>
+  <text x="485" y="368" font-size="13" fill="#aaaaaa" text-anchor="middle">누적 호출 건수</text>
+
+  <text x="62" y="398" font-size="12" fill="#888">세로축은 누적 비용(달러). 호출량이 적으면 증류는 손해다. 자기 서비스의 실제 호출량으로 이 선을 다시 그려 본다.</text>
+</svg>

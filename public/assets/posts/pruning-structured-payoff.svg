@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="396" viewBox="0 0 880 396" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <rect x="0" y="0" width="880" height="396" rx="12" fill="#0a0a0a"/>
+
+  <text x="62" y="42" font-size="22" font-weight="700" fill="#e8e8e8">희소도 50%가 실제로 무엇을 바꾸는가</text>
+  <text x="62" y="68" font-size="13" fill="#888">같은 모델을 두 방식으로 절반 덜어 낸 뒤, 원본을 100으로 두고 잰 값.</text>
+
+  <rect x="62" y="84" width="16" height="12" rx="3" fill="#7ec8e3"/>
+  <text x="86" y="94" font-size="13" fill="#7ec8e3">비구조적 (값 50% 제거)</text>
+  <rect x="280" y="84" width="16" height="12" rx="3" fill="#55c555"/>
+  <text x="304" y="94" font-size="13" fill="#55c555">구조적 (행 50% 제거)</text>
+
+  <line x1="120" y1="110" x2="840" y2="110" stroke="#222222" stroke-width="1"/>
+  <line x1="120" y1="162" x2="840" y2="162" stroke="#222222" stroke-width="1"/>
+  <line x1="120" y1="215" x2="840" y2="215" stroke="#222222" stroke-width="1"/>
+  <line x1="120" y1="267" x2="840" y2="267" stroke="#222222" stroke-width="1"/>
+  <line x1="120" y1="320" x2="840" y2="320" stroke="#444444" stroke-width="1.5"/>
+  <line x1="120" y1="110" x2="120" y2="320" stroke="#444444" stroke-width="1.5"/>
+
+  <text x="106" y="115" font-size="12" fill="#888" text-anchor="end">100</text>
+  <text x="106" y="167" font-size="12" fill="#888" text-anchor="end">75</text>
+  <text x="106" y="220" font-size="12" fill="#888" text-anchor="end">50</text>
+  <text x="106" y="272" font-size="12" fill="#888" text-anchor="end">25</text>
+  <text x="106" y="325" font-size="12" fill="#888" text-anchor="end">0</text>
+
+  <rect x="176" y="110" width="64" height="210" rx="4" fill="#7ec8e3"/>
+  <text x="208" y="102" font-size="12" font-weight="600" fill="#7ec8e3" text-anchor="middle">100</text>
+  <rect x="260" y="211" width="64" height="109" rx="4" fill="#55c555"/>
+  <text x="292" y="203" font-size="12" font-weight="600" fill="#55c555" text-anchor="middle">52</text>
+  <text x="250" y="344" font-size="13" fill="#e8e8e8" text-anchor="middle">디스크에 올라간 크기</text>
+
+  <rect x="406" y="114" width="64" height="206" rx="4" fill="#7ec8e3"/>
+  <text x="438" y="106" font-size="12" font-weight="600" fill="#7ec8e3" text-anchor="middle">98</text>
+  <rect x="490" y="198" width="64" height="122" rx="4" fill="#55c555"/>
+  <text x="522" y="190" font-size="12" font-weight="600" fill="#55c555" text-anchor="middle">58</text>
+  <text x="480" y="344" font-size="13" fill="#e8e8e8" text-anchor="middle">실측 추론 지연</text>
+
+  <rect x="636" y="112" width="64" height="208" rx="4" fill="#7ec8e3"/>
+  <text x="668" y="104" font-size="12" font-weight="600" fill="#7ec8e3" text-anchor="middle">99</text>
+  <rect x="720" y="118" width="64" height="202" rx="4" fill="#55c555"/>
+  <text x="752" y="110" font-size="12" font-weight="600" fill="#55c555" text-anchor="middle">96</text>
+  <text x="710" y="344" font-size="13" fill="#e8e8e8" text-anchor="middle">정확도 유지</text>
+
+  <text x="62" y="372" font-size="12" fill="#888">앞의 두 칸은 낮을수록, 마지막 칸은 높을수록 좋다. 비구조적 쪽은 정확도를 지키는 대신 아무것도 안 줄인다.</text>
+</svg>

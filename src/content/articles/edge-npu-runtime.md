@@ -121,3 +121,5 @@ NPU의 장점은 최고 속도가 아니라 **전력당 성능**이고, 그것�
 읽어주셔서 감사합니다. 😊
 
 **지난 글:** [브라우저에서 WebGPU로 모델을 돌린다](/articles/ondevice-webgpu)
+
+**다음 글:** [드리프트 감지 — 모델이 조용히 틀려 가는 것을 어떻게 아는가](/articles/mlops-drift-detection)

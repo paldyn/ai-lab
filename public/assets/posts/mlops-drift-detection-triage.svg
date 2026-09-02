@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="500" viewBox="0 0 880 500" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <defs>
+    <marker id="dtArr" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#7ec8e3"/>
+    </marker>
+  </defs>
+
+  <rect x="0" y="0" width="880" height="500" rx="12" fill="#0a0a0a"/>
+
+  <text x="62" y="42" font-size="22" font-weight="700" fill="#e8e8e8">떨어진 성능이 드리프트 때문인지 가르는 순서</text>
+  <text x="62" y="68" font-size="13" fill="#888">위에서부터 묻는다. 순서를 바꾸면 파이프라인 장애를 드리프트로 오진한다.</text>
+
+  <rect x="250" y="100" width="260" height="54" rx="10" fill="#141c2e" stroke="#3a4a6e" stroke-width="1.5"/>
+  <text x="380" y="132" font-size="15" font-weight="600" fill="#e8e8e8" text-anchor="middle">성능 지표가 내려갔다</text>
+
+  <line x1="380" y1="154" x2="380" y2="186" stroke="#7ec8e3" stroke-width="2" marker-end="url(#dtArr)"/>
+
+  <rect x="250" y="186" width="260" height="56" rx="10" fill="#101820" stroke="#4a5a80" stroke-width="1.5"/>
+  <text x="380" y="219" font-size="15" font-weight="600" fill="#e8e8e8" text-anchor="middle">입력 분포가 달라졌는가?</text>
+
+  <line x1="510" y1="214" x2="620" y2="214" stroke="#7ec8e3" stroke-width="2" marker-end="url(#dtArr)"/>
+  <text x="555" y="200" font-size="12" font-weight="600" fill="#55c555">예</text>
+
+  <rect x="620" y="186" width="198" height="56" rx="10" fill="#14261a" stroke="#55c555" stroke-width="1.5"/>
+  <text x="640" y="210" font-size="15" font-weight="600" fill="#55c555">입력 드리프트</text>
+  <text x="640" y="229" font-size="12" fill="#9aa4b8">들어오는 데이터가 변했다</text>
+
+  <line x1="380" y1="242" x2="380" y2="282" stroke="#7ec8e3" stroke-width="2" marker-end="url(#dtArr)"/>
+  <text x="394" y="266" font-size="12" fill="#888">아니오</text>
+
+  <rect x="250" y="282" width="260" height="56" rx="10" fill="#101820" stroke="#4a5a80" stroke-width="1.5"/>
+  <text x="380" y="315" font-size="15" font-weight="600" fill="#e8e8e8" text-anchor="middle">같은 입력의 정답이 바뀌었는가?</text>
+
+  <line x1="510" y1="310" x2="620" y2="310" stroke="#7ec8e3" stroke-width="2" marker-end="url(#dtArr)"/>
+  <text x="555" y="296" font-size="12" font-weight="600" fill="#55c555">예</text>
+
+  <rect x="620" y="282" width="198" height="56" rx="10" fill="#2a1a1a" stroke="#e05555" stroke-width="1.5"/>
+  <text x="640" y="306" font-size="15" font-weight="600" fill="#e05555">개념 드리프트</text>
+  <text x="640" y="325" font-size="12" fill="#9aa4b8">정답의 규칙이 변했다</text>
+
+  <line x1="380" y1="338" x2="380" y2="378" stroke="#7ec8e3" stroke-width="2" marker-end="url(#dtArr)"/>
+  <text x="394" y="362" font-size="12" fill="#888">아니오</text>
+
+  <rect x="190" y="378" width="380" height="66" rx="10" fill="#1a1a24" stroke="#7777cc" stroke-width="1.5"/>
+  <text x="210" y="404" font-size="15" font-weight="600" fill="#8f8fdd">드리프트가 아니다</text>
+  <text x="210" y="426" font-size="13" fill="#9aa4b8">피처 누락·집계 버그·상류 스키마 변경을 먼저 본다</text>
+
+  <text x="62" y="474" font-size="12" fill="#888">세 갈래는 대응이 다르다. 입력 드리프트는 데이터를 고치고, 개념 드리프트는 라벨을 새로 모아 다시 학습한다.</text>
+</svg>
