@@ -1996,6 +1996,29 @@ input:focus-visible {
   mask-image: linear-gradient(to right, #000, transparent 72%);
 }
 
+/*
+  상자 안의 글자층. **`height: 100%`를 쓰지 않습니다.**
+
+  예전에는 `flex h-full flex-col justify-between`이었는데, 바깥 상자의 높이를 정하는
+  것이 `aspect-ratio`라 그 100%가 무엇의 100%인지 엔진마다 다르게 풀립니다. iOS
+  사파리에서는 층이 상자보다 길어져 맨 아래 줄(캡션)이 `overflow: hidden` 밖으로
+  밀려났습니다 — 난이도까지만 보이고 그 아래 한 줄이 통째로 사라집니다.
+
+  안쪽 여백에 맞춘 절대 위치로 두면 높이를 물어볼 일이 없어집니다.
+*/
+.visual-body {
+  position: absolute;
+  inset: 18px;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.article-visual-compact .visual-body {
+  inset: 12px;
+}
+
 /* 썸네일 오른쪽 위의 분야. 난이도와 같은 색을 쓰되 굵기로 서열을 둡니다. */
 .visual-category {
   color: var(--visual-accent);

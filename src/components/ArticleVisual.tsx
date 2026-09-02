@@ -43,7 +43,7 @@ export function ArticleVisual({ article, compact = false }: ArticleVisualProps) 
   return (
     <div className={`article-visual ${compact ? 'article-visual-compact' : ''}`} style={style} aria-hidden="true">
       <div className="visual-grid" />
-      <div className="relative z-10 flex h-full flex-col justify-between">
+      <div className="visual-body">
         <div className="flex items-start justify-between font-mono text-[10px] tracking-[0.14em]">
           <span className="text-white/55">{code}</span>
           {/*
