@@ -44,9 +44,14 @@ export function ArticleVisual({ article, compact = false }: ArticleVisualProps) 
     <div className={`article-visual ${compact ? 'article-visual-compact' : ''}`} style={style} aria-hidden="true">
       <div className="visual-grid" />
       <div className="relative z-10 flex h-full flex-col justify-between">
-        <div className="flex items-start justify-between font-mono text-[10px] tracking-[0.14em] text-white/55">
-          <span>{code}</span>
-          <span>{category.shortName}</span>
+        <div className="flex items-start justify-between font-mono text-[10px] tracking-[0.14em]">
+          <span className="text-white/55">{code}</span>
+          {/*
+            분야는 그 카테고리의 색으로 적습니다. 번호와 같은 흐린 흰색으로 두었더니
+            휴대폰에서 난이도만 눈에 들어오고 분야는 배경에 묻혔습니다 — 같은 상자
+            안에서 색이 붙은 글자는 난이도 하나뿐이었습니다.
+          */}
+          <span className="visual-category">{category.shortName}</span>
         </div>
         <div>
           {/* 난이도는 수학에서만 붙습니다 — displayLevel의 주석을 보세요. */}

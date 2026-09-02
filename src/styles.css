@@ -1996,6 +1996,12 @@ input:focus-visible {
   mask-image: linear-gradient(to right, #000, transparent 72%);
 }
 
+/* 썸네일 오른쪽 위의 분야. 난이도와 같은 색을 쓰되 굵기로 서열을 둡니다. */
+.visual-category {
+  color: var(--visual-accent);
+  opacity: 0.85;
+}
+
 .visual-formula {
   max-width: 100%;
   overflow: hidden;
