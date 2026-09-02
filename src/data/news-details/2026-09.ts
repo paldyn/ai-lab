@@ -2,6 +2,63 @@ import type { NewsDetail } from '../news';
 
 /** 2026-09 발표의 모달 본문. 목록은 news.ts에 있습니다. */
 export const details: Record<string, NewsDetail> = {
+  'introducing-gemini-3-8-flash-and-38-flash-cyber': {
+    points: [
+      '3.7 Flash를 낸 지 3주 만에 나온 6주 사이 세 번째 Flash 출시라고 밝혔다',
+      '3.8 Flash와 3.8 Flash Cyber 두 변형이며 같은 기반 지능을 쓴다고 적었다',
+      'HLE-Verified에서 54.9%를 받았고 DeepSWE v1.1에서 더 큰 프런티어 모델 대부분을 앞섰다',
+      '100만 토큰당 입력 0.75달러·출력 3.75달러 도입가는 12월 31일까지이고 2027년 1월 1일부터 1.50·7.50달러가 된다',
+      '어려운 과제에서 추론 단계와 도구 호출을 더 쓰므로 효율이 먼저면 낮은 effort나 3.7 Flash를 쓰라고 적었다',
+      'Cyber는 CyberGym에서 3.5 Flash Cyber를 넘었고 20개 언어 내부 벤치마크 성공률이 70%를 넘었다',
+      'CWE-Bench 패치 pass@1은 47.2%로 선두 프런티어 모델 47.8%에 근접했고 Chrome 보안팀은 정확한 패치가 2.6배 많았다고 밝혔다',
+      '3.8 Flash는 AI Studio·Antigravity·Gemini API·Gemini Enterprise와 AI Pro·Ultra 구독자에게 열리고 Cyber는 Fairwind 참가자에게만 열린다',
+    ],
+    commentary:
+      '6주에 Flash를 세 번 갈아 끼우면서 값을 그대로 둔 것이 이 발표의 핵심이다. ' +
+      '성능 경쟁을 가격이 아니라 출시 주기로 하고 있다는 뜻이라, 모델을 고정해 쓰는 ' +
+      '쪽은 분기마다 재평가를 하게 된다. 다만 「더 열심히 일한다」는 설명은 곧 같은 ' +
+      '과제에 토큰을 더 쓴다는 말이므로 표시가가 같아도 청구서는 오를 수 있다 — 3.7 ' +
+      'Flash를 계속 지원한다고 못 박은 것이 그 인정이다. 공격 능력보다 패치를 먼저 ' +
+      '키우고 Cyber를 방어자에게만 여는 구도는 프런티어 사이버 모델을 다루는 표준 ' +
+      '형태로 굳어지고 있다.',
+  },
+  'proactive-cyber-defense-for-governments-and-enterprises': {
+    points: [
+      '정부와 신뢰 파트너를 대상으로 한 한정 접근 프로그램 Fairwind Program을 열었다고 밝혔다',
+      'Gemini 3.8 Flash Cyber에 CodeMender 하네스를 묶어 취약점을 찾고 검증된 수정까지 만들게 한다',
+      '수 주가 걸리던 수동 수정 대신 조직의 보안 클라우드 안에서 몇 분 만에 배포 가능한 패치를 낸다고 적었다',
+      '정부·국가 사이버 당국, 의료·통신·에너지·금융 등 핵심 인프라 운영사, 핵심 기술 플랫폼 순으로 단계적으로 연다',
+      '참여 조직은 사내 보안·침해대응·모의침투 팀으로 접근을 제한하고 다단계 인증을 걸기로 합의한다',
+      '전 세계 참여 파트너가 650곳을 넘는다고 밝혔다',
+      'Fairwind 밖의 Google Cloud 고객은 Gemini Enterprise Agent Platform의 공개 모델로 CodeMender를 쓸 수 있다',
+      'Google.org의 누적 사이버보안 지원이 1억 달러를 넘었고 사이버 클리닉 35곳에 3,600만 달러를 냈다고 밝혔다',
+    ],
+    commentary:
+      '모델을 파는 대신 모델과 도구를 묶은 프로그램으로 내보낸 것이 눈에 띈다. ' +
+      '사이버 능력을 가진 모델은 방어자와 공격자가 같은 것을 쓰므로 API로 열면 ' +
+      '통제가 사라지는데, 심사와 접근 제한을 조건으로 거는 형태가 그 답으로 자리 ' +
+      '잡는 중이다. OpenAI의 Trusted Access, Anthropic의 Glasswing과 같은 자리에 ' +
+      '선 셈이고, 셋 다 「누구에게 여는가」를 제품의 일부로 삼았다. 파트너 650곳은 ' +
+      '심사형 프로그램치고 작지 않은 규모다.',
+  },
+  'technology-google-ai-updates-august-2026': {
+    points: [
+      '코딩·에이전트용 워크호스 모델 Gemini 3.7 Flash를 3.6 Flash 3주 뒤에 냈다고 정리했다',
+      'Made by Google 2026에서 Tensor G6와 Gemini Nano를 얹은 Pixel 11·11 Pro·11 Pro XL·11 Pro Fold를 공개했다',
+      '자격이 되는 전 세계 대학생에게 Google AI 플랜 1년을 무료로 주고 Gemini에 SAT 대비 도구를 넣었다',
+      '실시간 전사용 음성 인식 모델 Gemini 3.5 Transcribe를 냈다',
+      'Gemini Live에 Personal Intelligence·Daily Brief·Spark와 핸즈프리 받은편지함 관리를 더했다',
+      'Gemini 앱이 월 사용자 10억 명을 넘었고 하루 이미지 생성이 1억 5,000만 장을 넘는다고 밝혔다',
+      '장면 확장·첫끝 프레임 보간·4K 업스케일을 넣은 Gemini Omni 1.1 Flash를 냈다',
+      'Gemma 누적 다운로드가 10억 건을 넘었고 사이클론 예측 모델 WeatherNext 2를 연구 커뮤니티에 공개했다',
+    ],
+    commentary:
+      '한 달을 한 장으로 접어 보면 Google이 어디에 무게를 실었는지가 드러난다 — ' +
+      '새 프런티어 모델이 아니라 Flash·Transcribe·Omni처럼 값싼 실무용 모델과, ' +
+      '그것을 태울 자리(Pixel·Chrome·Workspace·Search)다. 월 사용자 10억이라는 ' +
+      '숫자도 그 배치의 결과다. 이런 정리 글은 새 사실이 적지만 벤더가 무엇을 자기 ' +
+      '성과로 세는지 보여 주는 자료라, 지난달 개별 발표를 놓쳤을 때 되짚는 자리로 쓸 만하다.',
+  },
   'path-to-astra': {
     points: [
       'Astra를 Preparedness Framework의 Critical 사이버 역량으로 지정한 첫 모델로 밝혔다',

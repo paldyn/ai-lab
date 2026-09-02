@@ -172,6 +172,61 @@ export const globalNewsUpdatedAt = '2026-09-01';
  */
 const entries: NewsItem[] = [
   {
+    id: 'introducing-gemini-3-8-flash-and-38-flash-cyber',
+    source: 'Google DeepMind',
+    kind: 'model',
+    title: 'Google, Gemini 3.8 Flash와 3.8 Flash Cyber 공개',
+    summary:
+      'Google이 3.7 Flash를 낸 지 3주 만에 Gemini 3.8 Flash와 보안 특화 3.8 Flash ' +
+      'Cyber를 공개했다. 3.8 Flash는 HLE-Verified 54.9%를 받았고 가격은 3.7 Flash와 ' +
+      '같으며, Cyber는 Fairwind Program의 방어자에게만 열린다.',
+    publishedAt: '2026-09-02',
+    collectedAt: '2026-09-03',
+    category: 'Frontier',
+    signal: '에이전틱 코딩',
+    url: 'https://deepmind.google/blog/introducing-gemini-3-8-flash-and-38-flash-cyber',
+    model: {
+      family: 'Gemini',
+      name: 'Gemini 3.8 Flash',
+      kind: '신규 모델',
+      status: '공개',
+      useCase: '장기 코딩과 자율 에이전트',
+      headline: '6주 사이 세 번째 Flash. 값은 그대로 두고 사이버 훈련으로 추론을 끌어올렸다.',
+      logo: 'assets/gemini.svg',
+      tone: 'gemini',
+    },
+  },
+  {
+    id: 'proactive-cyber-defense-for-governments-and-enterprises',
+    source: 'Google DeepMind',
+    kind: 'company',
+    title: 'Google, 정부·방어자에 여는 사이버 프로그램 Fairwind 시작',
+    summary:
+      'Google이 Gemini 3.8 Flash Cyber와 CodeMender 하네스를 정부기관·핵심 인프라 ' +
+      '운영사·보안 파트너에게 여는 한정 접근 프로그램 Fairwind를 열었다. 참여 파트너는 ' +
+      '전 세계 650곳이 넘고, 접근을 사내 보안 팀으로 제한하는 조건이 붙는다.',
+    publishedAt: '2026-09-02',
+    collectedAt: '2026-09-03',
+    category: 'Product',
+    signal: '사이버 모델 접근권',
+    url: 'https://deepmind.google/blog/proactive-cyber-defense-for-governments-and-enterprises',
+  },
+  {
+    id: 'technology-google-ai-updates-august-2026',
+    source: 'Google DeepMind',
+    kind: 'company',
+    title: 'Google이 정리한 8월 AI 발표 — Gemini 3.7 Flash와 Pixel 11',
+    summary:
+      'Google이 8월에 내놓은 AI 발표를 한데 정리했다. Gemini 3.7 Flash와 3.5 ' +
+      'Transcribe, Tensor G6를 얹은 Pixel 11 시리즈, 대학생 대상 Google AI 플랜 1년 ' +
+      '무료, Gemini Omni 1.1 Flash, Gemma 누적 10억 다운로드가 들어갔다.',
+    publishedAt: '2026-09-01',
+    collectedAt: '2026-09-03',
+    category: 'Product',
+    signal: '월간 발표 정리',
+    url: 'https://blog.google/innovation-and-ai/technology/google-ai-updates-august-2026',
+  },
+  {
     id: 'path-to-astra',
     source: 'OpenAI',
     kind: 'company',
