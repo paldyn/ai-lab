@@ -3055,6 +3055,14 @@ input:focus-visible {
   font-size: 11px;
 }
 
+/* 과목 이름은 「데이터 준비 (Data Preparation for Machine Learning)」처럼 깁니다. */
+.article-toc-item.is-sub a {
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
 .article-toc-item {
   position: relative;
 }

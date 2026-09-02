@@ -231,9 +231,19 @@ function CertView({ cert }: { cert: Cert }) {
   */
   const sections = [
     { id: "what", title: "무엇을 재는 시험인가" },
+    cert.audience ? { id: "what-audience", title: "누가 보는가", sub: true } : null,
     { id: "subjects", title: "과목" },
     { id: "exam", title: "시험 정보" },
     years.length > 0 ? { id: "schedule", title: "시험 일정" } : null,
+    /*
+      회차 표는 연도마다 한 장이고 지난 해까지 남겨 두므로 절이 길어집니다.
+      연도를 목차에 세워 올해 표로 바로 뛰게 합니다.
+    */
+    ...years.map((group) => ({
+      id: `schedule-${group.year}`,
+      title: `${group.year}년`,
+      sub: true,
+    })),
     { id: "prep", title: "시험 노트" },
     /*
       시험 노트 아래 세 묶음도 목차에 세웁니다. 계획이 서른 편을 넘으면 그 절이 화면
@@ -252,6 +262,11 @@ function CertView({ cert }: { cert: Cert }) {
     cert.studyPath.length > 0
       ? { id: "study", title: "관련 있는 우리 글" }
       : null,
+    ...cert.studyPath.map((group, index) => ({
+      id: `study-${index + 1}`,
+      title: group.subject,
+      sub: true,
+    })),
     cert.notes ? { id: "notes", title: "알아 둘 것" } : null,
   ].filter((section) => section !== null);
   /*
@@ -402,7 +417,7 @@ function CertView({ cert }: { cert: Cert }) {
             </p>
             {cert.audience && (
               <>
-                <h3>누가 보는가</h3>
+                <h3 id="what-audience">누가 보는가</h3>
                 <p className="cert-prose">
                   {cert.audience.replace(/\*\*/g, "")}
                 </p>
@@ -457,7 +472,7 @@ function CertView({ cert }: { cert: Cert }) {
             */}
               {years.map((group) => (
                 <div key={group.year} className="cert-schedule-year">
-                  <h3>{group.year}</h3>
+                  <h3 id={`schedule-${group.year}`}>{group.year}</h3>
                   <div className="cert-schedule-scroll">
                     <table className="cert-schedule">
                       <thead>
@@ -621,9 +636,10 @@ function CertView({ cert }: { cert: Cert }) {
                 시험을 겨냥해 쓴 글은 아니지만 같은 개념을 다룹니다. 과목이 막힐
                 때 곁에 두고 읽습니다.
               </p>
-              {cert.studyPath.map((group) => (
+              {cert.studyPath.map((group, index) => (
                 <div key={group.subject} className="cert-study-group">
-                  <h3>{group.subject}</h3>
+                  {/* 목차가 이 자리로 뜁니다. 과목 이름에는 공백·괄호가 섞이므로 차례로 셉니다. */}
+                  <h3 id={`study-${index + 1}`}>{group.subject}</h3>
                   <div className="cert-study-list">
                     {group.items.map((item) => (
                       <StudyLink
