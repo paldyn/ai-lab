@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="470" viewBox="0 0 880 470" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <defs>
+    <marker id="sfarr" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#e05555"/>
+    </marker>
+  </defs>
+  <rect x="0" y="0" width="880" height="470" rx="12" fill="#0a0a0a"/>
+  <text x="60" y="46" font-size="22" font-weight="700" fill="#e8e8e8">지지집합이 θ와 함께 움직이면 항등식이 깨진다</text>
+  <text x="60" y="72" font-size="14" fill="#888">구간 [0, θ] 위의 균등분포. θ를 조금 키우면 오른쪽 끝이 따라 움직인다.</text>
+
+  <line x1="90" y1="330" x2="640" y2="330" stroke="#888" stroke-width="1.5"/>
+  <line x1="90" y1="330" x2="90" y2="120" stroke="#888" stroke-width="1.5"/>
+  <text x="652" y="335" font-size="13" fill="#888">x</text>
+  <text x="76" y="112" font-size="13" fill="#888">p</text>
+
+  <rect x="90" y="225" width="330" height="105" fill="#7ec8e3" fill-opacity="0.18" stroke="#7ec8e3" stroke-width="2.5"/>
+  <text x="200" y="212" font-size="14" fill="#7ec8e3">높이 1/θ</text>
+
+  <path d="M 90 253 L 530 253 L 530 330" fill="none" stroke="#7777cc" stroke-width="2.5" stroke-dasharray="5,3"/>
+  <text x="440" y="240" font-size="14" fill="#7777cc">높이 1/(θ+Δ)</text>
+
+  <line x1="420" y1="330" x2="420" y2="352" stroke="#444" stroke-width="1"/>
+  <line x1="530" y1="330" x2="530" y2="352" stroke="#444" stroke-width="1"/>
+  <text x="414" y="372" font-size="14" fill="#e8e8e8">θ</text>
+  <text x="512" y="372" font-size="14" fill="#e8e8e8">θ+Δ</text>
+  <text x="84" y="352" font-size="13" fill="#888">0</text>
+
+  <line x1="426" y1="392" x2="524" y2="392" stroke="#e05555" stroke-width="2.5" marker-end="url(#sfarr)"/>
+  <text x="300" y="397" font-size="13" fill="#e05555">끝이 움직인다</text>
+
+  <rect x="672" y="120" width="148" height="210" rx="8" fill="#000000" stroke="#3a4a6e" stroke-width="1"/>
+  <text x="696" y="150" font-size="14" font-weight="600" fill="#e8e8e8">f(x) = x 로</text>
+  <text x="696" y="172" font-size="14" font-weight="600" fill="#e8e8e8">양변을 재면</text>
+  <text x="696" y="204" font-size="13" fill="#55c555">왼쪽 (참값)</text>
+  <text x="696" y="226" font-size="14" fill="#e8e8e8">+ 1/2</text>
+  <text x="696" y="258" font-size="13" fill="#e05555">오른쪽 (항등식)</text>
+  <text x="696" y="280" font-size="14" fill="#e8e8e8">− 1/2</text>
+  <text x="696" y="310" font-size="13" fill="#e05555">부호까지 반대</text>
+
+  <rect x="60" y="412" width="760" height="42" rx="8" fill="#12161f" stroke="#3a4a6e" stroke-width="1"/>
+  <text x="86" y="438" font-size="14" fill="#888">소프트맥스 정책은 모든 토큰에 0보다 큰 확률을 주고 지지집합이 어휘 전체로 고정이라 이 문제가 없다.</text>
+</svg>

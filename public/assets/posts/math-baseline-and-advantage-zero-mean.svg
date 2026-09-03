@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="430" viewBox="0 0 880 430" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <defs>
+    <marker id="zmA" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#7777cc"/>
+    </marker>
+    <marker id="zmU" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#55c555"/>
+    </marker>
+    <marker id="zmD" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#e05555"/>
+    </marker>
+  </defs>
+  <rect x="0" y="0" width="880" height="430" rx="12" fill="#0a0a0a"/>
+  <text x="60" y="46" font-size="22" font-weight="700" fill="#e8e8e8">확률의 합이 1이라 점수 함수의 평균은 0이다</text>
+  <text x="60" y="72" font-size="14" fill="#888">θ를 어느 쪽으로 밀어도, 오르는 확률의 합과 내리는 확률의 합이 정확히 맞물린다.</text>
+
+  <line x1="90" y1="300" x2="470" y2="300" stroke="#888" stroke-width="1.5"/>
+  <line x1="90" y1="300" x2="90" y2="120" stroke="#888" stroke-width="1.5"/>
+  <text x="76" y="112" font-size="13" fill="#888">π</text>
+
+  <rect x="130" y="180" width="70" height="120" fill="#7ec8e3" fill-opacity="0.25" stroke="#7ec8e3" stroke-width="2"/>
+  <rect x="250" y="202" width="70" height="98" fill="#7ec8e3" fill-opacity="0.25" stroke="#7ec8e3" stroke-width="2"/>
+  <rect x="370" y="228" width="70" height="72" fill="#7ec8e3" fill-opacity="0.25" stroke="#7ec8e3" stroke-width="2"/>
+  <text x="152" y="326" font-size="14" fill="#e8e8e8">답 A</text>
+  <text x="272" y="326" font-size="14" fill="#e8e8e8">답 B</text>
+  <text x="392" y="326" font-size="14" fill="#e8e8e8">답 C</text>
+
+  <line x1="165" y1="172" x2="165" y2="134" stroke="#55c555" stroke-width="2.5" marker-end="url(#zmU)"/>
+  <text x="140" y="122" font-size="14" fill="#55c555">+0.06</text>
+  <line x1="285" y1="194" x2="285" y2="166" stroke="#55c555" stroke-width="2.5" marker-end="url(#zmU)"/>
+  <text x="260" y="154" font-size="14" fill="#55c555">+0.04</text>
+  <line x1="405" y1="150" x2="405" y2="220" stroke="#e05555" stroke-width="2.5" marker-end="url(#zmD)"/>
+  <text x="380" y="138" font-size="14" fill="#e05555">−0.10</text>
+
+  <rect x="130" y="352" width="310" height="42" rx="8" fill="#12161f" stroke="#3a4a6e" stroke-width="1"/>
+  <text x="154" y="378" font-size="14" fill="#e8e8e8">변화의 합  =  +0.06 +0.04 −0.10  =  0</text>
+
+  <line x1="500" y1="120" x2="500" y2="394" stroke="#444" stroke-width="1"/>
+
+  <text x="540" y="150" font-size="16" font-weight="600" fill="#e8e8e8">식으로 적으면</text>
+  <text x="540" y="192" font-size="15" fill="#e8e8e8">Σ π(y) ∇log π(y)</text>
+  <line x1="546" y1="206" x2="546" y2="230" stroke="#7777cc" stroke-width="2" marker-end="url(#zmA)"/>
+  <text x="570" y="226" font-size="13" fill="#7ec8e3">∇p = p ∇log p</text>
+  <text x="540" y="258" font-size="15" fill="#e8e8e8">= Σ ∇π(y)</text>
+  <line x1="546" y1="272" x2="546" y2="296" stroke="#7777cc" stroke-width="2" marker-end="url(#zmA)"/>
+  <text x="570" y="292" font-size="13" fill="#888">미분과 합의 순서를 바꾼다</text>
+  <text x="540" y="324" font-size="15" fill="#e8e8e8">= ∇ ( Σ π(y) )  =  ∇1</text>
+  <line x1="546" y1="338" x2="546" y2="362" stroke="#7777cc" stroke-width="2" marker-end="url(#zmA)"/>
+  <text x="570" y="358" font-size="13" fill="#888">상수를 미분한다</text>
+  <text x="540" y="390" font-size="16" font-weight="600" fill="#55c555">= 0</text>
+</svg>

@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="450" viewBox="0 0 880 450" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <rect x="0" y="0" width="880" height="450" rx="12" fill="#0a0a0a"/>
+  <text x="60" y="46" font-size="22" font-weight="700" fill="#e8e8e8">뻔한 비교일수록 정보가 적다</text>
+  <text x="60" y="72" font-size="14" fill="#888">점수차 추정값의 표준오차. 비교를 10배 늘리면 3분의 1이 되지만, 차이가 클수록 도로 커진다.</text>
+
+  <line x1="120" y1="350" x2="800" y2="350" stroke="#888" stroke-width="1.5"/>
+  <line x1="120" y1="350" x2="120" y2="110" stroke="#888" stroke-width="1.5"/>
+  <line x1="120" y1="290" x2="800" y2="290" stroke="#444" stroke-width="1"/>
+  <line x1="120" y1="230" x2="800" y2="230" stroke="#444" stroke-width="1"/>
+  <line x1="120" y1="170" x2="800" y2="170" stroke="#444" stroke-width="1"/>
+  <line x1="120" y1="110" x2="800" y2="110" stroke="#444" stroke-width="1"/>
+  <text x="74" y="355" font-size="13" fill="#888">0.0</text>
+  <text x="74" y="295" font-size="13" fill="#888">0.1</text>
+  <text x="74" y="235" font-size="13" fill="#888">0.2</text>
+  <text x="74" y="175" font-size="13" fill="#888">0.3</text>
+  <text x="74" y="115" font-size="13" fill="#888">0.4</text>
+  <text x="52" y="98" font-size="13" fill="#888">표준오차</text>
+
+  <rect x="176" y="265" width="54" height="85" fill="#e05555" fill-opacity="0.3" stroke="#e05555" stroke-width="2"/>
+  <rect x="238" y="323" width="54" height="27" fill="#7ec8e3" fill-opacity="0.3" stroke="#7ec8e3" stroke-width="2"/>
+  <text x="180" y="256" font-size="13" fill="#e05555">0.141</text>
+  <text x="242" y="314" font-size="13" fill="#7ec8e3">0.045</text>
+  <text x="212" y="378" font-size="15" fill="#e8e8e8">Δ = 0</text>
+
+  <rect x="336" y="255" width="54" height="95" fill="#e05555" fill-opacity="0.3" stroke="#e05555" stroke-width="2"/>
+  <rect x="398" y="320" width="54" height="30" fill="#7ec8e3" fill-opacity="0.3" stroke="#7ec8e3" stroke-width="2"/>
+  <text x="340" y="246" font-size="13" fill="#e05555">0.159</text>
+  <text x="402" y="311" font-size="13" fill="#7ec8e3">0.050</text>
+  <text x="372" y="378" font-size="15" fill="#e8e8e8">Δ = 1</text>
+
+  <rect x="496" y="219" width="54" height="131" fill="#e05555" fill-opacity="0.3" stroke="#e05555" stroke-width="2"/>
+  <rect x="558" y="309" width="54" height="41" fill="#7ec8e3" fill-opacity="0.3" stroke="#7ec8e3" stroke-width="2"/>
+  <text x="500" y="210" font-size="13" fill="#e05555">0.218</text>
+  <text x="562" y="300" font-size="13" fill="#7ec8e3">0.069</text>
+  <text x="532" y="378" font-size="15" fill="#e8e8e8">Δ = 2</text>
+
+  <rect x="656" y="150" width="54" height="200" fill="#e05555" fill-opacity="0.3" stroke="#e05555" stroke-width="2"/>
+  <rect x="718" y="287" width="54" height="63" fill="#7ec8e3" fill-opacity="0.3" stroke="#7ec8e3" stroke-width="2"/>
+  <text x="660" y="141" font-size="13" fill="#e05555">0.333</text>
+  <text x="722" y="278" font-size="13" fill="#7ec8e3">0.105</text>
+  <text x="692" y="378" font-size="15" fill="#e8e8e8">Δ = 3</text>
+
+  <rect x="176" y="396" width="26" height="14" fill="#e05555" fill-opacity="0.3" stroke="#e05555" stroke-width="2"/>
+  <text x="212" y="409" font-size="13" fill="#888">비교 200번</text>
+  <rect x="336" y="396" width="26" height="14" fill="#7ec8e3" fill-opacity="0.3" stroke="#7ec8e3" stroke-width="2"/>
+  <text x="372" y="409" font-size="13" fill="#888">비교 2,000번</text>
+</svg>

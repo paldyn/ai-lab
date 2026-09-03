@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="450" viewBox="0 0 880 450" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <defs>
+    <marker id="gpA" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#7777cc"/>
+    </marker>
+  </defs>
+  <rect x="0" y="0" width="880" height="450" rx="12" fill="#0a0a0a"/>
+  <text x="60" y="46" font-size="22" font-weight="700" fill="#e8e8e8">GRPO는 같은 프롬프트의 답들로 기준을 만든다</text>
+  <text x="60" y="72" font-size="14" fill="#888">크리틱 신경망 대신 그 자리에서 뽑은 G개의 점수 평균을 V(x)의 추정값으로 쓴다.</text>
+
+  <rect x="60" y="110" width="180" height="70" rx="8" fill="#12161f" stroke="#3a4a6e" stroke-width="1"/>
+  <text x="84" y="140" font-size="14" font-weight="600" fill="#e8e8e8">프롬프트 x</text>
+  <text x="84" y="164" font-size="13" fill="#888">문제 하나</text>
+
+  <line x1="240" y1="145" x2="300" y2="145" stroke="#7777cc" stroke-width="2" marker-end="url(#gpA)"/>
+  <text x="240" y="126" font-size="13" fill="#888">답을 G개 뽑는다</text>
+
+  <rect x="316" y="106" width="230" height="40" rx="6" fill="#12161f" stroke="#3a4a6e" stroke-width="1"/>
+  <text x="336" y="132" font-size="14" fill="#e8e8e8">답 y₁</text>
+  <text x="470" y="132" font-size="14" fill="#e8e8e8">r = 6</text>
+
+  <rect x="316" y="154" width="230" height="40" rx="6" fill="#12161f" stroke="#3a4a6e" stroke-width="1"/>
+  <text x="336" y="180" font-size="14" fill="#e8e8e8">답 y₂</text>
+  <text x="470" y="180" font-size="14" fill="#e8e8e8">r = 5</text>
+
+  <rect x="316" y="202" width="230" height="40" rx="6" fill="#12161f" stroke="#3a4a6e" stroke-width="1"/>
+  <text x="336" y="228" font-size="14" fill="#e8e8e8">답 y₃</text>
+  <text x="470" y="228" font-size="14" fill="#e8e8e8">r = 4</text>
+
+  <line x1="546" y1="174" x2="606" y2="174" stroke="#7777cc" stroke-width="2" marker-end="url(#gpA)"/>
+
+  <rect x="622" y="140" width="198" height="70" rx="8" fill="#000000" stroke="#55c555" stroke-width="1.5"/>
+  <text x="646" y="170" font-size="14" font-weight="600" fill="#55c555">그룹 평균 b = 5</text>
+  <text x="646" y="194" font-size="13" fill="#888">이것이 베이스라인</text>
+
+  <line x1="720" y1="210" x2="720" y2="266" stroke="#7777cc" stroke-width="2" marker-end="url(#gpA)"/>
+  <text x="600" y="244" font-size="13" fill="#888">답마다 빼 준다</text>
+
+  <rect x="316" y="278" width="504" height="40" rx="6" fill="#12161f" stroke="#7ec8e3" stroke-width="1"/>
+  <text x="336" y="304" font-size="14" fill="#e8e8e8">어드밴티지  A₁ = +1</text>
+  <text x="536" y="304" font-size="14" fill="#e8e8e8">A₂ = 0</text>
+  <text x="676" y="304" font-size="14" fill="#e8e8e8">A₃ = −1</text>
+
+  <rect x="60" y="340" width="760" height="86" rx="8" fill="#000000" stroke="#3a4a6e" stroke-width="1"/>
+  <text x="84" y="370" font-size="14" font-weight="600" fill="#e8e8e8">기준은 프롬프트에만 의존하므로 정리가 그대로 적용된다</text>
+  <text x="84" y="394" font-size="13" fill="#888">다만 평균 안에 자기 점수도 들어 있어 추정량이 (1 − 1/G)·∇J 가 된다 — 방향은 그대로,</text>
+  <text x="84" y="414" font-size="13" fill="#888">크기만 줄어든다. 자기를 뺀 G−1개의 평균을 쓰면 그 어긋남도 사라진다.</text>
+</svg>

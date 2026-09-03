@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="420" viewBox="0 0 880 420" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <defs>
+    <marker id="exA" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#7777cc"/>
+    </marker>
+  </defs>
+  <rect x="0" y="0" width="880" height="420" rx="12" fill="#0a0a0a"/>
+  <text x="60" y="46" font-size="22" font-weight="700" fill="#e8e8e8">단위원 위에서 x + y 를 최대화하는 세 걸음</text>
+
+  <rect x="60" y="76" width="760" height="62" rx="8" fill="#12161f" stroke="#3a4a6e" stroke-width="1"/>
+  <text x="84" y="102" font-size="14" font-weight="600" fill="#7ec8e3">1. 라그랑지안을 적는다</text>
+  <text x="380" y="102" font-size="15" fill="#e8e8e8">L = x + y − λ (x² + y² − 1)</text>
+  <text x="84" y="124" font-size="13" fill="#888">제약을 목적식 안으로 넣는다</text>
+
+  <line x1="440" y1="138" x2="440" y2="158" stroke="#7777cc" stroke-width="2" marker-end="url(#exA)"/>
+
+  <rect x="60" y="158" width="760" height="80" rx="8" fill="#12161f" stroke="#3a4a6e" stroke-width="1"/>
+  <text x="84" y="188" font-size="14" font-weight="600" fill="#7ec8e3">2. 세 변수로 미분해 0으로 놓는다</text>
+  <text x="380" y="188" font-size="15" fill="#e8e8e8">1 − 2λx = 0        1 − 2λy = 0</text>
+  <text x="84" y="214" font-size="13" fill="#888">λ 로 미분한 것이 제약 그 자체다</text>
+  <text x="380" y="214" font-size="15" fill="#e8e8e8">x² + y² = 1</text>
+
+  <line x1="440" y1="238" x2="440" y2="262" stroke="#7777cc" stroke-width="2" marker-end="url(#exA)"/>
+
+  <rect x="60" y="262" width="760" height="80" rx="8" fill="#12161f" stroke="#55c555" stroke-width="1.5"/>
+  <text x="84" y="292" font-size="14" font-weight="600" fill="#55c555">3. 풀어서 되돌린다</text>
+  <text x="380" y="292" font-size="15" fill="#e8e8e8">앞 두 식에서 x = y = 1 / (2λ)</text>
+  <text x="84" y="318" font-size="13" fill="#888">제약에 넣으면 λ 가 정해진다</text>
+  <text x="380" y="318" font-size="15" fill="#e8e8e8">λ = 1/√2 ,  x* = y* = 1/√2 ,  f* = √2</text>
+
+  <rect x="60" y="362" width="760" height="34" rx="8" fill="#000000" stroke="#3a4a6e" stroke-width="1"/>
+  <text x="84" y="384" font-size="13" fill="#888">λ = 0.7071 은 계산 부산물이 아니다 — 제약을 한 단위 풀었을 때 f* 가 오르는 폭이다.</text>
+</svg>

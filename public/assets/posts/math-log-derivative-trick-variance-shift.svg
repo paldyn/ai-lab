@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="450" viewBox="0 0 880 450" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <rect x="0" y="0" width="880" height="450" rx="12" fill="#0a0a0a"/>
+  <text x="60" y="46" font-size="22" font-weight="700" fill="#e8e8e8">점수에 상수를 더하면 그래디언트는 그대로, 분산만 커진다</text>
+  <text x="60" y="72" font-size="14" fill="#888">상대오차 10%에 필요한 표본 수 · 세로는 로그 눈금</text>
+
+  <line x1="120" y1="360" x2="820" y2="360" stroke="#888" stroke-width="1.5"/>
+  <line x1="120" y1="360" x2="120" y2="110" stroke="#888" stroke-width="1.5"/>
+  <line x1="120" y1="327" x2="820" y2="327" stroke="#444" stroke-width="1"/>
+  <line x1="120" y1="294" x2="820" y2="294" stroke="#444" stroke-width="1"/>
+  <line x1="120" y1="261" x2="820" y2="261" stroke="#444" stroke-width="1"/>
+  <line x1="120" y1="228" x2="820" y2="228" stroke="#444" stroke-width="1"/>
+  <line x1="120" y1="195" x2="820" y2="195" stroke="#444" stroke-width="1"/>
+  <line x1="120" y1="162" x2="820" y2="162" stroke="#444" stroke-width="1"/>
+  <text x="82" y="332" font-size="13" fill="#888">10</text>
+  <text x="76" y="299" font-size="13" fill="#888">100</text>
+  <text x="70" y="266" font-size="13" fill="#888">1천</text>
+  <text x="70" y="233" font-size="13" fill="#888">1만</text>
+  <text x="60" y="200" font-size="13" fill="#888">10만</text>
+  <text x="54" y="167" font-size="13" fill="#888">100만</text>
+
+  <rect x="205" y="293" width="110" height="67" fill="#55c555" fill-opacity="0.3" stroke="#55c555" stroke-width="2"/>
+  <text x="228" y="281" font-size="16" font-weight="600" fill="#55c555">106개</text>
+  <text x="238" y="388" font-size="15" fill="#e8e8e8">c = 0</text>
+
+  <rect x="415" y="231" width="110" height="129" fill="#7ec8e3" fill-opacity="0.3" stroke="#7ec8e3" stroke-width="2"/>
+  <text x="428" y="219" font-size="16" font-weight="600" fill="#7ec8e3">8,023개</text>
+  <text x="448" y="388" font-size="15" fill="#e8e8e8">c = 5</text>
+
+  <rect x="625" y="165" width="110" height="195" fill="#e05555" fill-opacity="0.3" stroke="#e05555" stroke-width="2"/>
+  <text x="628" y="153" font-size="16" font-weight="600" fill="#e05555">790,237개</text>
+  <text x="653" y="388" font-size="15" fill="#e8e8e8">c = 50</text>
+
+  <rect x="60" y="404" width="760" height="34" rx="8" fill="#12161f" stroke="#3a4a6e" stroke-width="1"/>
+  <text x="86" y="426" font-size="14" fill="#888">세 경우 모두 참 그래디언트는 [ 0.345, −0.055, −0.291 ] 로 똑같다.</text>
+</svg>

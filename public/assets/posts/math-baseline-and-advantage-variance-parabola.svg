@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="470" viewBox="0 0 880 470" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <rect x="0" y="0" width="880" height="470" rx="12" fill="#0a0a0a"/>
+  <text x="60" y="46" font-size="22" font-weight="700" fill="#e8e8e8">총분산은 베이스라인의 이차식이다</text>
+  <text x="60" y="72" font-size="14" fill="#888">점수가 (6, 5, 4)인 장난감 문제. 바닥이 넓어서 최적값 근처면 충분하다.</text>
+
+  <line x1="110" y1="110" x2="800" y2="110" stroke="#444" stroke-width="1"/>
+  <line x1="110" y1="245" x2="800" y2="245" stroke="#444" stroke-width="1"/>
+  <line x1="110" y1="380" x2="800" y2="380" stroke="#888" stroke-width="1.5"/>
+  <line x1="110" y1="380" x2="110" y2="106" stroke="#888" stroke-width="1.5"/>
+  <text x="812" y="385" font-size="13" fill="#888">b</text>
+  <text x="60" y="98" font-size="13" fill="#888">총분산</text>
+  <text x="72" y="115" font-size="13" fill="#888">18</text>
+  <text x="80" y="250" font-size="13" fill="#888">9</text>
+  <text x="80" y="385" font-size="13" fill="#888">0</text>
+
+  <polyline points="110,131 165,219 220,288 276,337 331,367 386,377 441,367 496,338 552,289 607,220 662,132"
+            fill="none" stroke="#7ec8e3" stroke-width="2.5" stroke-linejoin="round"/>
+
+  <line x1="110" y1="380" x2="110" y2="392" stroke="#444" stroke-width="1"/>
+  <line x1="248" y1="380" x2="248" y2="392" stroke="#444" stroke-width="1"/>
+  <line x1="386" y1="380" x2="386" y2="392" stroke="#444" stroke-width="1"/>
+  <line x1="524" y1="380" x2="524" y2="392" stroke="#444" stroke-width="1"/>
+  <line x1="662" y1="380" x2="662" y2="392" stroke="#444" stroke-width="1"/>
+  <text x="106" y="412" font-size="13" fill="#888">0</text>
+  <text x="238" y="412" font-size="13" fill="#888">2.5</text>
+  <text x="382" y="412" font-size="13" fill="#888">5</text>
+  <text x="514" y="412" font-size="13" fill="#888">7.5</text>
+  <text x="655" y="412" font-size="13" fill="#888">10</text>
+
+  <circle cx="110" cy="131" r="5" fill="#e05555"/>
+  <line x1="116" y1="134" x2="164" y2="158" stroke="#e05555" stroke-width="1.5"/>
+  <text x="172" y="164" font-size="14" fill="#e05555">베이스라인 없음 · 분산 16.59</text>
+
+  <circle cx="386" cy="377" r="5" fill="#55c555"/>
+  <line x1="386" y1="371" x2="386" y2="302" stroke="#55c555" stroke-width="1.5"/>
+  <text x="316" y="290" font-size="14" fill="#55c555">b* = 5.0054</text>
+  <text x="316" y="270" font-size="14" fill="#55c555">분산 0.2200</text>
+
+  <circle cx="395" cy="377" r="4" fill="none" stroke="#7777cc" stroke-width="2"/>
+  <line x1="400" y1="374" x2="470" y2="336" stroke="#7777cc" stroke-width="1.5"/>
+  <text x="478" y="332" font-size="14" fill="#7777cc">E[r] = 5.1622 · 분산 0.2361</text>
+
+  <rect x="672" y="176" width="148" height="102" rx="8" fill="#000000" stroke="#3a4a6e" stroke-width="1"/>
+  <text x="696" y="208" font-size="13" fill="#888">최적값과 점수 평균의</text>
+  <text x="696" y="230" font-size="13" fill="#888">차이로 남는 것은</text>
+  <text x="696" y="254" font-size="15" font-weight="600" fill="#55c555">분산 7%뿐</text>
+
+  <rect x="60" y="428" width="760" height="30" rx="8" fill="#12161f" stroke="#3a4a6e" stroke-width="1"/>
+  <text x="86" y="448" font-size="13" fill="#888">어떤 b를 골라도 추정량의 평균은 같다. 달라지는 것은 이 세로 축뿐이다.</text>
+</svg>

@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="470" viewBox="0 0 880 470" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <defs>
+    <marker id="ldarr" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#7777cc"/>
+    </marker>
+  </defs>
+  <rect x="0" y="0" width="880" height="470" rx="12" fill="#0a0a0a"/>
+  <text x="60" y="46" font-size="22" font-weight="700" fill="#e8e8e8">그래디언트를 기댓값으로 되돌리는 세 걸음</text>
+
+  <rect x="60" y="72" width="500" height="62" rx="8" fill="#12161f" stroke="#3a4a6e" stroke-width="1"/>
+  <text x="86" y="107" font-size="17" fill="#e8e8e8">∇<tspan font-size="12" dy="4">θ</tspan><tspan dy="-4"> E</tspan><tspan font-size="12" dy="4">x~pθ</tspan><tspan dy="-4">[ f(x) ]  =  ∇</tspan><tspan font-size="12" dy="4">θ</tspan><tspan dy="-4"> ∫ pθ(x) f(x) dx</tspan></text>
+
+  <line x1="200" y1="134" x2="200" y2="166" stroke="#7777cc" stroke-width="2" marker-end="url(#ldarr)"/>
+  <text x="228" y="156" font-size="13" fill="#888">미분을 적분 안으로 — 여기에 조건이 붙는다</text>
+
+  <rect x="60" y="166" width="500" height="62" rx="8" fill="#12161f" stroke="#3a4a6e" stroke-width="1"/>
+  <text x="86" y="201" font-size="17" fill="#e8e8e8">=  ∫ ∇<tspan font-size="12" dy="4">θ</tspan><tspan dy="-4"> pθ(x) · f(x) dx</tspan></text>
+
+  <line x1="200" y1="228" x2="200" y2="260" stroke="#7777cc" stroke-width="2" marker-end="url(#ldarr)"/>
+  <text x="228" y="250" font-size="13" fill="#7ec8e3">로그 미분 트릭 — ∇p = p · ∇log p</text>
+
+  <rect x="60" y="260" width="500" height="62" rx="8" fill="#12161f" stroke="#7ec8e3" stroke-width="1.5"/>
+  <text x="86" y="295" font-size="17" fill="#e8e8e8">=  ∫ pθ(x) · f(x) ∇<tspan font-size="12" dy="4">θ</tspan><tspan dy="-4"> log pθ(x) dx</tspan></text>
+
+  <line x1="200" y1="322" x2="200" y2="354" stroke="#7777cc" stroke-width="2" marker-end="url(#ldarr)"/>
+  <text x="228" y="344" font-size="13" fill="#888">pθ 로 가중된 평균이므로 기댓값으로 읽는다</text>
+
+  <rect x="60" y="354" width="500" height="62" rx="8" fill="#12161f" stroke="#55c555" stroke-width="1.5"/>
+  <text x="86" y="389" font-size="17" fill="#e8e8e8">=  E<tspan font-size="12" dy="4">x~pθ</tspan><tspan dy="-4">[ f(x) ∇</tspan><tspan font-size="12" dy="4">θ</tspan><tspan dy="-4"> log pθ(x) ]</tspan></text>
+
+  <rect x="600" y="166" width="220" height="175" rx="8" fill="#000000" stroke="#3a4a6e" stroke-width="1"/>
+  <text x="624" y="196" font-size="14" font-weight="600" fill="#e8e8e8">무엇이 달라졌나</text>
+  <text x="624" y="224" font-size="13" fill="#888">가중치가 ∇pθ 였을 때는</text>
+  <text x="624" y="246" font-size="13" fill="#e05555">음수도 되고 합이 0이라</text>
+  <text x="624" y="268" font-size="13" fill="#888">표본평균이 못 된다.</text>
+  <text x="624" y="296" font-size="13" fill="#55c555">가중치가 pθ 로 바뀌면</text>
+  <text x="624" y="318" font-size="13" fill="#55c555">뽑아서 평균 내면 된다.</text>
+
+  <text x="600" y="389" font-size="13" fill="#55c555">표본으로 계산 가능</text>
+</svg>

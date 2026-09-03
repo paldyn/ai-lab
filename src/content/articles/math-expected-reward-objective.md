@@ -183,3 +183,5 @@ $$\sum_y r(y)\,\nabla_\theta\pi_\theta(y) \;=\; \sum_y \pi_\theta(y)\,h_\theta(y
 읽어주셔서 감사합니다. 😊
 
 **지난 글:** [뉴턴법과 2차 방법: 왜 안 쓰는가, 요즘은 무엇을 근사하는가](/articles/math-newton-and-second-order)
+
+**다음 글:** [로그 미분 트릭: 샘플만으로 그래디언트를 얻기](/articles/math-log-derivative-trick)

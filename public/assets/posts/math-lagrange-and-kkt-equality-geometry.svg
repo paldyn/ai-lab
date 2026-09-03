@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="470" viewBox="0 0 880 470" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <defs>
+    <marker id="lgF" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#55c555"/>
+    </marker>
+    <marker id="lgG" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#e05555"/>
+    </marker>
+  </defs>
+  <rect x="0" y="0" width="880" height="470" rx="12" fill="#0a0a0a"/>
+  <text x="60" y="46" font-size="22" font-weight="700" fill="#e8e8e8">최적점에서는 등고선이 제약 곡선에 접한다</text>
+  <text x="60" y="72" font-size="14" fill="#888">단위원 위에서 x + y 를 최대화한다. 파란 선은 x + y 가 일정한 등고선.</text>
+
+  <line x1="150" y1="250" x2="620" y2="250" stroke="#888" stroke-width="1.5"/>
+  <line x1="300" y1="112" x2="300" y2="400" stroke="#888" stroke-width="1.5"/>
+  <text x="628" y="255" font-size="13" fill="#888">x</text>
+  <text x="286" y="104" font-size="13" fill="#888">y</text>
+
+  <circle cx="300" cy="250" r="110" fill="none" stroke="#7777cc" stroke-width="2.5"/>
+  <text x="150" y="392" font-size="13" fill="#7777cc">제약  x² + y² = 1</text>
+
+  <line x1="234" y1="118" x2="498" y2="382" stroke="#7ec8e3" stroke-width="2" stroke-dasharray="5,3"/>
+  <text x="440" y="406" font-size="13" fill="#7ec8e3">x + y = 0.6 — 원을 가로지른다</text>
+
+  <line x1="346" y1="140" x2="565" y2="360" stroke="#7ec8e3" stroke-width="2.5"/>
+  <text x="574" y="356" font-size="13" fill="#7ec8e3">x + y = √2</text>
+
+  <circle cx="378" cy="172" r="5" fill="#e8e8e8"/>
+  <line x1="371" y1="165" x2="404" y2="132" stroke="#55c555" stroke-width="2.5" marker-end="url(#lgF)"/>
+  <text x="352" y="120" font-size="14" fill="#55c555">∇f</text>
+  <line x1="385" y1="179" x2="440" y2="124" stroke="#e05555" stroke-width="2.5" marker-end="url(#lgG)"/>
+  <text x="450" y="122" font-size="14" fill="#e05555">∇g — 같은 방향</text>
+  <text x="326" y="212" font-size="13" fill="#e8e8e8">접점</text>
+
+  <rect x="656" y="140" width="164" height="222" rx="8" fill="#000000" stroke="#3a4a6e" stroke-width="1"/>
+  <text x="680" y="170" font-size="14" font-weight="600" fill="#e8e8e8">읽는 법</text>
+  <text x="680" y="200" font-size="13" fill="#888">등고선이 원을</text>
+  <text x="680" y="220" font-size="13" fill="#888">가로지르면 곡선을</text>
+  <text x="680" y="240" font-size="13" fill="#888">따라 더 갈 데가 있다.</text>
+  <text x="680" y="272" font-size="13" fill="#55c555">접하는 순간 멈추고,</text>
+  <text x="680" y="292" font-size="13" fill="#55c555">그 자리에서 두</text>
+  <text x="680" y="312" font-size="13" fill="#55c555">그래디언트가 평행</text>
+  <text x="680" y="332" font-size="13" fill="#55c555">하다.</text>
+  <text x="680" y="354" font-size="14" fill="#e8e8e8">∇f = λ ∇g</text>
+
+  <rect x="60" y="424" width="580" height="32" rx="8" fill="#12161f" stroke="#3a4a6e" stroke-width="1"/>
+  <text x="86" y="445" font-size="13" fill="#888">x + y 가 √2 보다 큰 등고선은 원과 아예 만나지 않는다 — 갈 수 없는 값이다.</text>
+</svg>

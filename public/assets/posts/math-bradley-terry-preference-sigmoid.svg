@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="450" viewBox="0 0 880 450" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <rect x="0" y="0" width="880" height="450" rx="12" fill="#0a0a0a"/>
+  <text x="60" y="46" font-size="22" font-weight="700" fill="#e8e8e8">강도의 차이가 선택 확률을 정한다</text>
+  <text x="60" y="72" font-size="14" fill="#888">P(A ≻ B) = σ(r<tspan font-size="11" dy="3">A</tspan><tspan dy="-3"> − r</tspan><tspan font-size="11" dy="3">B</tspan><tspan dy="-3">). 차이가 0이면 반반이고, 1이면 열 번 중 일곱 번쯤 이긴다.</tspan></text>
+
+  <line x1="120" y1="130" x2="780" y2="130" stroke="#444" stroke-width="1"/>
+  <line x1="120" y1="255" x2="780" y2="255" stroke="#444" stroke-width="1"/>
+  <line x1="120" y1="380" x2="780" y2="380" stroke="#888" stroke-width="1.5"/>
+  <line x1="450" y1="380" x2="450" y2="126" stroke="#888" stroke-width="1.5"/>
+  <text x="88" y="135" font-size="13" fill="#888">1.0</text>
+  <text x="88" y="260" font-size="13" fill="#888">0.5</text>
+  <text x="88" y="385" font-size="13" fill="#888">0.0</text>
+  <text x="792" y="385" font-size="13" fill="#888">r<tspan font-size="10" dy="3">A</tspan><tspan dy="-3"> − r</tspan><tspan font-size="10" dy="3">B</tspan></text>
+
+  <polyline points="120,378 136,378 153,377 170,376 186,376 202,374 219,373 236,371 252,368 268,365 285,361 302,356 318,350 334,343 351,334 368,324 384,313 400,300 417,286 434,271 450,255 466,239 483,224 500,210 516,197 532,186 549,176 566,167 582,160 598,154 615,149 632,145 648,142 664,139 681,137 698,136 714,134 730,134 747,133 764,132 780,132"
+            fill="none" stroke="#7ec8e3" stroke-width="2.5"/>
+
+  <line x1="186" y1="380" x2="186" y2="388" stroke="#444" stroke-width="1"/>
+  <line x1="318" y1="380" x2="318" y2="388" stroke="#444" stroke-width="1"/>
+  <line x1="450" y1="380" x2="450" y2="388" stroke="#444" stroke-width="1"/>
+  <line x1="582" y1="380" x2="582" y2="388" stroke="#444" stroke-width="1"/>
+  <line x1="714" y1="380" x2="714" y2="388" stroke="#444" stroke-width="1"/>
+  <text x="180" y="406" font-size="13" fill="#888">−4</text>
+  <text x="312" y="406" font-size="13" fill="#888">−2</text>
+  <text x="446" y="406" font-size="13" fill="#888">0</text>
+  <text x="578" y="406" font-size="13" fill="#888">2</text>
+  <text x="710" y="406" font-size="13" fill="#888">4</text>
+
+  <circle cx="450" cy="255" r="5" fill="#55c555"/>
+  <circle cx="516" cy="197" r="5" fill="#55c555"/>
+  <circle cx="582" cy="160" r="5" fill="#55c555"/>
+  <circle cx="648" cy="142" r="5" fill="#55c555"/>
+
+  <rect x="470" y="272" width="300" height="96" rx="8" fill="#000000" stroke="#3a4a6e" stroke-width="1"/>
+  <text x="494" y="300" font-size="14" fill="#e8e8e8">차이 0 → 0.500</text>
+  <text x="640" y="300" font-size="14" fill="#e8e8e8">차이 1 → 0.731</text>
+  <text x="494" y="324" font-size="14" fill="#e8e8e8">차이 2 → 0.881</text>
+  <text x="640" y="324" font-size="14" fill="#e8e8e8">차이 3 → 0.953</text>
+  <text x="494" y="350" font-size="13" fill="#888">점수차를 승률로 읽는 눈금</text>
+
+</svg>
