@@ -353,3 +353,5 @@ model by Alibaba Cloud, licensed under the Apache License 2.0"이라는 상속 �
 읽어주셔서 감사합니다. 😊
 
 **지난 글:** [모델 은퇴 달력을 만들어 봤다 — deprecation_date 15개 전부가 폐기일이 아니라 은퇴일이었다](/articles/spec-model-deprecation-calendar)
+
+**다음 글:** [한국어 임베딩 모델 6종 CPU 실측 — STS 2위 모델이 문단 검색에서는 4위였다](/articles/bench-korean-embedding-models)
