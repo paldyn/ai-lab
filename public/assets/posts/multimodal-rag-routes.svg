@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="436" viewBox="0 0 880 436" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <rect x="0" y="0" width="880" height="436" rx="12" fill="#0a0a0a"/>
+
+  <text x="62" y="42" font-size="22" font-weight="700" fill="#e8e8e8">그림을 검색 가능하게 만드는 세 가지 길</text>
+  <text x="62" y="68" font-size="13" fill="#888">무엇을 색인에 넣느냐가 갈린다. 셋을 섞어 쓰는 구성도 흔하다.</text>
+
+  <rect x="62" y="96" width="190" height="72" rx="10" fill="#12242c" stroke="#7ec8e3" stroke-width="1.5"/>
+  <text x="157" y="128" text-anchor="middle" font-size="15" font-weight="600" fill="#7ec8e3">텍스트로 옮긴다</text>
+  <text x="157" y="148" text-anchor="middle" font-size="12" fill="#9aa4b8">캡션 · OCR</text>
+  <text x="316" y="122" font-size="13" fill="#c8d0e0">그림에 설명문과 OCR 결과를 붙여 글로 만든 뒤, 쓰던 텍스트</text>
+  <text x="316" y="142" font-size="13" fill="#c8d0e0">검색을 그대로 쓴다.</text>
+  <text x="316" y="164" font-size="12" fill="#55c555">기존 색인 · 필터 · 하이브리드 검색이 전부 그대로 쓰인다</text>
+  <text x="316" y="184" font-size="12" fill="#e05555">설명문에 안 적힌 것은 영영 못 찾는다</text>
+
+  <rect x="62" y="208" width="190" height="72" rx="10" fill="#20203a" stroke="#7777cc" stroke-width="1.5"/>
+  <text x="157" y="240" text-anchor="middle" font-size="15" font-weight="600" fill="#9a9ade">같은 공간에 넣는다</text>
+  <text x="157" y="260" text-anchor="middle" font-size="12" fill="#9aa4b8">공동 임베딩</text>
+  <text x="316" y="234" font-size="13" fill="#c8d0e0">그림과 글을 같은 벡터 공간에 넣어, 글로 그림을 바로 찾는다.</text>
+  <text x="316" y="254" font-size="13" fill="#c8d0e0">중간 설명문을 만들지 않는다.</text>
+  <text x="316" y="276" font-size="12" fill="#55c555">색인이 싸고 빠르다. 설명문 생성 비용이 없다</text>
+  <text x="316" y="296" font-size="12" fill="#e05555">임베딩 모델이 아는 만큼만 찾는다. 글자 많은 그림에 약하다</text>
+
+  <rect x="62" y="320" width="190" height="72" rx="10" fill="#14261a" stroke="#55c555" stroke-width="1.5"/>
+  <text x="157" y="352" text-anchor="middle" font-size="15" font-weight="600" fill="#55c555">페이지를 통째로</text>
+  <text x="157" y="372" text-anchor="middle" font-size="12" fill="#9aa4b8">시각 문서 검색</text>
+  <text x="316" y="346" font-size="13" fill="#c8d0e0">페이지를 이미지 그대로 두고 시각 문서 검색 모델로 색인한다.</text>
+  <text x="316" y="366" font-size="13" fill="#c8d0e0">문서를 뜯어 나누는 단계가 없다.</text>
+  <text x="316" y="388" font-size="12" fill="#55c555">표 · 도표 · 서식이 깨지지 않는다</text>
+  <text x="316" y="408" font-size="12" fill="#e05555">색인이 무겁고 인용할 조각이 페이지만큼 커진다</text>
+</svg>

@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="400" viewBox="0 0 880 400" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <defs>
+    <marker id="mrArr" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#7ec8e3"/>
+    </marker>
+    <marker id="mrArrG" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#55c555"/>
+    </marker>
+  </defs>
+
+  <rect x="0" y="0" width="880" height="400" rx="12" fill="#0a0a0a"/>
+
+  <text x="62" y="42" font-size="22" font-weight="700" fill="#e8e8e8">색인하는 것과 넣어 주는 것을 나눈다</text>
+  <text x="62" y="68" font-size="13" fill="#888">찾기 좋은 형태와 답하기 좋은 형태는 같지 않아도 된다.</text>
+
+  <text x="62" y="102" font-size="16" font-weight="600" fill="#7ec8e3">색인할 때</text>
+
+  <line x1="235" y1="144" x2="265" y2="144" stroke="#7ec8e3" stroke-width="2" marker-end="url(#mrArr)"/>
+  <line x1="425" y1="144" x2="455" y2="144" stroke="#7ec8e3" stroke-width="2" marker-end="url(#mrArr)"/>
+  <line x1="615" y1="144" x2="645" y2="144" stroke="#7ec8e3" stroke-width="2" marker-end="url(#mrArr)"/>
+
+  <rect x="75" y="114" width="160" height="60" rx="10" fill="#101820" stroke="#3a4a6e" stroke-width="1.5"/>
+  <text x="99" y="138" font-size="13" font-weight="600" fill="#e8e8e8">원본 자산</text>
+  <text x="99" y="158" font-size="11" fill="#9aa4b8">그림 · 표 · 페이지</text>
+
+  <rect x="265" y="114" width="160" height="60" rx="10" fill="#12242c" stroke="#7ec8e3" stroke-width="1.5"/>
+  <text x="289" y="138" font-size="13" font-weight="600" fill="#7ec8e3">설명과 글자</text>
+  <text x="289" y="158" font-size="11" fill="#9aa4b8">캡션과 OCR 결과</text>
+
+  <rect x="455" y="114" width="160" height="60" rx="10" fill="#20203a" stroke="#7777cc" stroke-width="1.5"/>
+  <text x="479" y="138" font-size="13" font-weight="600" fill="#9a9ade">임베딩</text>
+  <text x="479" y="158" font-size="11" fill="#9aa4b8">글 또는 공동 공간</text>
+
+  <rect x="645" y="114" width="160" height="60" rx="10" fill="#2a2416" stroke="#c8a55a" stroke-width="1.5"/>
+  <text x="669" y="138" font-size="13" font-weight="600" fill="#c8a55a">벡터 DB</text>
+  <text x="669" y="158" font-size="11" fill="#9aa4b8">원본 경로도 함께</text>
+
+  <text x="62" y="230" font-size="16" font-weight="600" fill="#55c555">답할 때</text>
+
+  <line x1="235" y1="272" x2="265" y2="272" stroke="#55c555" stroke-width="2" marker-end="url(#mrArrG)"/>
+  <line x1="425" y1="272" x2="455" y2="272" stroke="#55c555" stroke-width="2" marker-end="url(#mrArrG)"/>
+  <line x1="615" y1="272" x2="645" y2="272" stroke="#55c555" stroke-width="2" marker-end="url(#mrArrG)"/>
+
+  <rect x="75" y="242" width="160" height="60" rx="10" fill="#101820" stroke="#3a4a6e" stroke-width="1.5"/>
+  <text x="99" y="266" font-size="13" font-weight="600" fill="#e8e8e8">질문</text>
+  <text x="99" y="286" font-size="11" fill="#9aa4b8">글로 들어온다</text>
+
+  <rect x="265" y="242" width="160" height="60" rx="10" fill="#2a2416" stroke="#c8a55a" stroke-width="1.5"/>
+  <text x="289" y="266" font-size="13" font-weight="600" fill="#c8a55a">검색</text>
+  <text x="289" y="286" font-size="11" fill="#9aa4b8">조각 상위 k개</text>
+
+  <rect x="455" y="242" width="160" height="60" rx="10" fill="#101820" stroke="#3a4a6e" stroke-width="1.5"/>
+  <text x="479" y="266" font-size="13" font-weight="600" fill="#e8e8e8">원본 회수</text>
+  <text x="479" y="286" font-size="11" fill="#9aa4b8">경로로 그림을 꺼낸다</text>
+
+  <rect x="645" y="242" width="160" height="60" rx="10" fill="#14261a" stroke="#55c555" stroke-width="1.5"/>
+  <text x="669" y="266" font-size="13" font-weight="600" fill="#55c555">생성</text>
+  <text x="669" y="286" font-size="11" fill="#9aa4b8">그림과 글을 함께</text>
+
+  <text x="62" y="342" font-size="12" fill="#9aa4b8">색인은 설명문으로 하고 생성에는 원본 그림을 넣는 구성이 흔하다. 검색은 글끼리 견주는 편이 안정적이고,</text>
+  <text x="62" y="364" font-size="12" fill="#9aa4b8">답은 원본을 보고 쓰는 편이 정확하기 때문이다.</text>
+  <text x="62" y="386" font-size="12" fill="#c8a55a">조각마다 원본 경로와 페이지 · 좌표를 남겨 두지 않으면 이 분리 자체가 불가능해진다.</text>
+</svg>

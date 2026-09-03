@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="436" viewBox="0 0 880 436" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <defs>
+    <marker id="baArr" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#7ec8e3"/>
+    </marker>
+    <marker id="baCut" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#e05555"/>
+    </marker>
+  </defs>
+
+  <rect x="0" y="0" width="880" height="436" rx="12" fill="#0a0a0a"/>
+
+  <text x="62" y="42" font-size="22" font-weight="700" fill="#e8e8e8">끼어들기는 되돌리기 문제다</text>
+  <text x="62" y="68" font-size="13" fill="#888">말하는 중에 사용자가 입을 열면, 이미 만들어 둔 것을 셋 다 되감아야 한다.</text>
+
+  <line x1="280" y1="138" x2="316" y2="138" stroke="#7ec8e3" stroke-width="2" marker-end="url(#baArr)"/>
+  <line x1="530" y1="138" x2="566" y2="138" stroke="#7ec8e3" stroke-width="2" marker-end="url(#baArr)"/>
+
+  <rect x="80" y="110" width="200" height="56" rx="10" fill="#101820" stroke="#3a4a6e" stroke-width="1.5"/>
+  <text x="104" y="134" font-size="15" font-weight="600" fill="#e8e8e8">듣기</text>
+  <text x="104" y="154" font-size="12" fill="#9aa4b8">마이크 입력을 계속 받는다</text>
+
+  <rect x="330" y="110" width="200" height="56" rx="10" fill="#20203a" stroke="#7777cc" stroke-width="1.5"/>
+  <text x="354" y="134" font-size="15" font-weight="600" fill="#9a9ade">생각하기</text>
+  <text x="354" y="154" font-size="12" fill="#9aa4b8">모델이 답과 도구를 고른다</text>
+
+  <rect x="580" y="110" width="200" height="56" rx="10" fill="#14261a" stroke="#55c555" stroke-width="1.5"/>
+  <text x="604" y="134" font-size="15" font-weight="600" fill="#55c555">말하기</text>
+  <text x="604" y="154" font-size="12" fill="#9aa4b8">오디오를 조각내어 보낸다</text>
+
+  <path d="M 680 166 C 680 240, 180 240, 180 166" fill="none" stroke="#e05555" stroke-width="2" stroke-dasharray="4,4" marker-end="url(#baCut)"/>
+  <text x="430" y="262" text-anchor="middle" font-size="13" font-weight="600" fill="#e05555">말하는 도중에 사용자가 입을 열면 여기로 돌아온다</text>
+
+  <line x1="62" y1="292" x2="818" y2="292" stroke="#2a2f3a" stroke-width="1"/>
+
+  <text x="62" y="322" font-size="16" font-weight="600" fill="#e8e8e8">돌아오면서 되감아야 하는 것 셋</text>
+
+  <circle cx="70" cy="346" r="4" fill="#7ec8e3"/>
+  <text x="88" y="351" font-size="13" fill="#c8d0e0">아직 재생되지 않은 오디오 조각을 버린다 — 남겨 두면 사용자가 말한 뒤에 뒤늦게 흘러나온다</text>
+
+  <circle cx="70" cy="374" r="4" fill="#7ec8e3"/>
+  <text x="88" y="379" font-size="13" fill="#c8d0e0">대화 기록에는 실제로 들린 데까지만 남긴다 — 모델이 만든 문장 전체를 남기면 기억이 어긋난다</text>
+
+  <circle cx="70" cy="402" r="4" fill="#7ec8e3"/>
+  <text x="88" y="407" font-size="13" fill="#c8d0e0">진행 중이던 모델 호출과 도구 실행을 취소한다 — 끝난 뒤에 결과가 도착해 끼어든다</text>
+</svg>

@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="516" viewBox="0 0 880 516" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <defs>
+    <marker id="qcArr" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#7ec8e3"/>
+    </marker>
+  </defs>
+
+  <rect x="0" y="0" width="880" height="516" rx="12" fill="#0a0a0a"/>
+
+  <text x="62" y="42" font-size="22" font-weight="700" fill="#e8e8e8">보정이 실제로 하는 일</text>
+  <text x="62" y="68" font-size="13" fill="#888">학습이 아니다. 순전파만 돌려 활성값이 어디까지 가는지 재는 절차다.</text>
+
+  <line x1="290" y1="160" x2="290" y2="188" stroke="#7ec8e3" stroke-width="2" marker-end="url(#qcArr)"/>
+  <line x1="290" y1="260" x2="290" y2="288" stroke="#7ec8e3" stroke-width="2" marker-end="url(#qcArr)"/>
+  <line x1="290" y1="360" x2="290" y2="388" stroke="#7ec8e3" stroke-width="2" marker-end="url(#qcArr)"/>
+
+  <rect x="62" y="100" width="456" height="60" rx="10" fill="#101820" stroke="#3a4a6e" stroke-width="1.5"/>
+  <text x="86" y="124" font-size="15" font-weight="600" fill="#e8e8e8">1. 보정 데이터를 고른다</text>
+  <text x="86" y="144" font-size="12" fill="#9aa4b8">라벨 없는 입력 128~512개. 실제 트래픽에서 뽑는다</text>
+
+  <rect x="62" y="200" width="456" height="60" rx="10" fill="#12242c" stroke="#7ec8e3" stroke-width="1.5"/>
+  <text x="86" y="224" font-size="15" font-weight="600" fill="#7ec8e3">2. 순전파만 돌린다</text>
+  <text x="86" y="244" font-size="12" fill="#9aa4b8">층마다 활성값의 최댓값과 분포를 기록한다</text>
+
+  <rect x="62" y="300" width="456" height="60" rx="10" fill="#2a2416" stroke="#c8a55a" stroke-width="1.5"/>
+  <text x="86" y="324" font-size="15" font-weight="600" fill="#c8a55a">3. 자를 자리를 정한다</text>
+  <text x="86" y="344" font-size="12" fill="#9aa4b8">absmax · 백분위 · MSE · 엔트로피 가운데 하나</text>
+
+  <rect x="62" y="400" width="456" height="60" rx="10" fill="#14261a" stroke="#55c555" stroke-width="1.5"/>
+  <text x="86" y="424" font-size="15" font-weight="600" fill="#55c555">4. 스케일과 영점을 굳힌다</text>
+  <text x="86" y="444" font-size="12" fill="#9aa4b8">이 숫자가 그대로 배포되어 바뀌지 않는다</text>
+
+  <line x1="580" y1="96" x2="580" y2="470" stroke="#2a2f3a" stroke-width="1"/>
+
+  <text x="604" y="120" font-size="13" font-weight="600" fill="#e8e8e8">가중치는 여기에 없다</text>
+  <text x="604" y="142" font-size="12" fill="#9aa4b8">가중치 값은 파일에 이미 들어</text>
+  <text x="604" y="160" font-size="12" fill="#9aa4b8">있어서 데이터 없이도 범위를</text>
+  <text x="604" y="178" font-size="12" fill="#9aa4b8">잴 수 있다. 보정이 필요한 쪽은</text>
+  <text x="604" y="196" font-size="12" fill="#9aa4b8">입력이 들어와야 생기는 활성값</text>
+  <text x="604" y="214" font-size="12" fill="#9aa4b8">이다.</text>
+
+  <text x="604" y="256" font-size="13" font-weight="600" fill="#e05555">그래서 데이터가 결과다</text>
+  <text x="604" y="278" font-size="12" fill="#9aa4b8">보정 데이터가 한쪽으로 치우쳐</text>
+  <text x="604" y="296" font-size="12" fill="#9aa4b8">있으면 그 치우침이 스케일에</text>
+  <text x="604" y="314" font-size="12" fill="#9aa4b8">그대로 박힌다. 배포한 뒤에는</text>
+  <text x="604" y="332" font-size="12" fill="#9aa4b8">다시 재지 않으므로 잘못된 범위</text>
+  <text x="604" y="350" font-size="12" fill="#9aa4b8">가 계속 남는다.</text>
+
+  <text x="604" y="392" font-size="13" font-weight="600" fill="#55c555">역전파는 없다</text>
+  <text x="604" y="414" font-size="12" fill="#9aa4b8">가중치가 갱신되지 않으므로</text>
+  <text x="604" y="432" font-size="12" fill="#9aa4b8">GPU 한 장에 몇 분이면 끝난다.</text>
+</svg>

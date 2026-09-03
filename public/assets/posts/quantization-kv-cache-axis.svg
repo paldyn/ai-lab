@@ -1,0 +1,111 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="404" viewBox="0 0 880 404" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <rect x="0" y="0" width="880" height="404" rx="12" fill="#0a0a0a"/>
+  <text x="62" y="42" font-size="22" font-weight="700" fill="#e8e8e8">K와 V는 값이 퍼진 모양이 다르다</text>
+  <text x="62" y="68" font-size="13" fill="#888">밝을수록 절댓값이 큰 자리다. 가로가 채널, 세로가 토큰이다.</text>
+  <text x="62" y="112" font-size="16" font-weight="600" fill="#e05555">K 캐시 — 몇몇 채널만 계속 크다</text>
+  <text x="490" y="112" font-size="16" font-weight="600" fill="#55c555">V 캐시 — 고르게 퍼져 있다</text>
+  <rect x="100" y="140" width="30" height="24" rx="3" fill="#202a3d"/>
+  <rect x="134" y="140" width="30" height="24" rx="3" fill="#1b2333"/>
+  <rect x="168" y="140" width="30" height="24" rx="3" fill="#d04a4a"/>
+  <rect x="202" y="140" width="30" height="24" rx="3" fill="#182030"/>
+  <rect x="236" y="140" width="30" height="24" rx="3" fill="#1b2333"/>
+  <rect x="270" y="140" width="30" height="24" rx="3" fill="#e05555"/>
+  <rect x="304" y="140" width="30" height="24" rx="3" fill="#182030"/>
+  <rect x="338" y="140" width="30" height="24" rx="3" fill="#1b2333"/>
+  <rect x="100" y="168" width="30" height="24" rx="3" fill="#202a3d"/>
+  <rect x="134" y="168" width="30" height="24" rx="3" fill="#182030"/>
+  <rect x="168" y="168" width="30" height="24" rx="3" fill="#e05555"/>
+  <rect x="202" y="168" width="30" height="24" rx="3" fill="#182030"/>
+  <rect x="236" y="168" width="30" height="24" rx="3" fill="#1b2333"/>
+  <rect x="270" y="168" width="30" height="24" rx="3" fill="#e05555"/>
+  <rect x="304" y="168" width="30" height="24" rx="3" fill="#1b2333"/>
+  <rect x="338" y="168" width="30" height="24" rx="3" fill="#202a3d"/>
+  <rect x="100" y="196" width="30" height="24" rx="3" fill="#202a3d"/>
+  <rect x="134" y="196" width="30" height="24" rx="3" fill="#1b2333"/>
+  <rect x="168" y="196" width="30" height="24" rx="3" fill="#e05555"/>
+  <rect x="202" y="196" width="30" height="24" rx="3" fill="#1b2333"/>
+  <rect x="236" y="196" width="30" height="24" rx="3" fill="#182030"/>
+  <rect x="270" y="196" width="30" height="24" rx="3" fill="#d04a4a"/>
+  <rect x="304" y="196" width="30" height="24" rx="3" fill="#1b2333"/>
+  <rect x="338" y="196" width="30" height="24" rx="3" fill="#182030"/>
+  <rect x="100" y="224" width="30" height="24" rx="3" fill="#1b2333"/>
+  <rect x="134" y="224" width="30" height="24" rx="3" fill="#1b2333"/>
+  <rect x="168" y="224" width="30" height="24" rx="3" fill="#e86a6a"/>
+  <rect x="202" y="224" width="30" height="24" rx="3" fill="#182030"/>
+  <rect x="236" y="224" width="30" height="24" rx="3" fill="#182030"/>
+  <rect x="270" y="224" width="30" height="24" rx="3" fill="#e05555"/>
+  <rect x="304" y="224" width="30" height="24" rx="3" fill="#182030"/>
+  <rect x="338" y="224" width="30" height="24" rx="3" fill="#182030"/>
+  <rect x="100" y="252" width="30" height="24" rx="3" fill="#202a3d"/>
+  <rect x="134" y="252" width="30" height="24" rx="3" fill="#1b2333"/>
+  <rect x="168" y="252" width="30" height="24" rx="3" fill="#e05555"/>
+  <rect x="202" y="252" width="30" height="24" rx="3" fill="#1b2333"/>
+  <rect x="236" y="252" width="30" height="24" rx="3" fill="#182030"/>
+  <rect x="270" y="252" width="30" height="24" rx="3" fill="#e05555"/>
+  <rect x="304" y="252" width="30" height="24" rx="3" fill="#202a3d"/>
+  <rect x="338" y="252" width="30" height="24" rx="3" fill="#202a3d"/>
+  <rect x="100" y="280" width="30" height="24" rx="3" fill="#1b2333"/>
+  <rect x="134" y="280" width="30" height="24" rx="3" fill="#182030"/>
+  <rect x="168" y="280" width="30" height="24" rx="3" fill="#e05555"/>
+  <rect x="202" y="280" width="30" height="24" rx="3" fill="#182030"/>
+  <rect x="236" y="280" width="30" height="24" rx="3" fill="#202a3d"/>
+  <rect x="270" y="280" width="30" height="24" rx="3" fill="#e86a6a"/>
+  <rect x="304" y="280" width="30" height="24" rx="3" fill="#182030"/>
+  <rect x="338" y="280" width="30" height="24" rx="3" fill="#1b2333"/>
+  <rect x="520" y="140" width="30" height="24" rx="3" fill="#2c4a5c"/>
+  <rect x="554" y="140" width="30" height="24" rx="3" fill="#33566a"/>
+  <rect x="588" y="140" width="30" height="24" rx="3" fill="#274252"/>
+  <rect x="622" y="140" width="30" height="24" rx="3" fill="#2c4a5c"/>
+  <rect x="656" y="140" width="30" height="24" rx="3" fill="#2c4a5c"/>
+  <rect x="690" y="140" width="30" height="24" rx="3" fill="#2c4a5c"/>
+  <rect x="724" y="140" width="30" height="24" rx="3" fill="#33566a"/>
+  <rect x="758" y="140" width="30" height="24" rx="3" fill="#385c72"/>
+  <rect x="520" y="168" width="30" height="24" rx="3" fill="#385c72"/>
+  <rect x="554" y="168" width="30" height="24" rx="3" fill="#274252"/>
+  <rect x="588" y="168" width="30" height="24" rx="3" fill="#385c72"/>
+  <rect x="622" y="168" width="30" height="24" rx="3" fill="#385c72"/>
+  <rect x="656" y="168" width="30" height="24" rx="3" fill="#274252"/>
+  <rect x="690" y="168" width="30" height="24" rx="3" fill="#274252"/>
+  <rect x="724" y="168" width="30" height="24" rx="3" fill="#33566a"/>
+  <rect x="758" y="168" width="30" height="24" rx="3" fill="#33566a"/>
+  <rect x="520" y="196" width="30" height="24" rx="3" fill="#33566a"/>
+  <rect x="554" y="196" width="30" height="24" rx="3" fill="#2c4a5c"/>
+  <rect x="588" y="196" width="30" height="24" rx="3" fill="#274252"/>
+  <rect x="622" y="196" width="30" height="24" rx="3" fill="#385c72"/>
+  <rect x="656" y="196" width="30" height="24" rx="3" fill="#274252"/>
+  <rect x="690" y="196" width="30" height="24" rx="3" fill="#385c72"/>
+  <rect x="724" y="196" width="30" height="24" rx="3" fill="#274252"/>
+  <rect x="758" y="196" width="30" height="24" rx="3" fill="#2c4a5c"/>
+  <rect x="520" y="224" width="30" height="24" rx="3" fill="#2c4a5c"/>
+  <rect x="554" y="224" width="30" height="24" rx="3" fill="#385c72"/>
+  <rect x="588" y="224" width="30" height="24" rx="3" fill="#33566a"/>
+  <rect x="622" y="224" width="30" height="24" rx="3" fill="#274252"/>
+  <rect x="656" y="224" width="30" height="24" rx="3" fill="#33566a"/>
+  <rect x="690" y="224" width="30" height="24" rx="3" fill="#385c72"/>
+  <rect x="724" y="224" width="30" height="24" rx="3" fill="#385c72"/>
+  <rect x="758" y="224" width="30" height="24" rx="3" fill="#2c4a5c"/>
+  <rect x="520" y="252" width="30" height="24" rx="3" fill="#2c4a5c"/>
+  <rect x="554" y="252" width="30" height="24" rx="3" fill="#274252"/>
+  <rect x="588" y="252" width="30" height="24" rx="3" fill="#274252"/>
+  <rect x="622" y="252" width="30" height="24" rx="3" fill="#274252"/>
+  <rect x="656" y="252" width="30" height="24" rx="3" fill="#385c72"/>
+  <rect x="690" y="252" width="30" height="24" rx="3" fill="#385c72"/>
+  <rect x="724" y="252" width="30" height="24" rx="3" fill="#2c4a5c"/>
+  <rect x="758" y="252" width="30" height="24" rx="3" fill="#2c4a5c"/>
+  <rect x="520" y="280" width="30" height="24" rx="3" fill="#274252"/>
+  <rect x="554" y="280" width="30" height="24" rx="3" fill="#385c72"/>
+  <rect x="588" y="280" width="30" height="24" rx="3" fill="#2c4a5c"/>
+  <rect x="622" y="280" width="30" height="24" rx="3" fill="#2c4a5c"/>
+  <rect x="656" y="280" width="30" height="24" rx="3" fill="#274252"/>
+  <rect x="690" y="280" width="30" height="24" rx="3" fill="#385c72"/>
+  <rect x="724" y="280" width="30" height="24" rx="3" fill="#274252"/>
+  <rect x="758" y="280" width="30" height="24" rx="3" fill="#385c72"/>
+  <rect x="166" y="136" width="38" height="172" rx="6" fill="none" stroke="#55c555" stroke-width="2" stroke-dasharray="4,4"/>
+  <rect x="516" y="192" width="276" height="32" rx="6" fill="none" stroke="#55c555" stroke-width="2" stroke-dasharray="4,4"/>
+  <text x="100" y="330" font-size="12" fill="#888">채널 128개 가운데 8개만 그렸다</text>
+  <text x="520" y="330" font-size="12" fill="#888">채널 128개 가운데 8개만 그렸다</text>
+  <text x="100" y="356" font-size="13" font-weight="600" fill="#55c555">채널 축으로 묶어 스케일을 잡는다</text>
+  <text x="520" y="356" font-size="13" font-weight="600" fill="#55c555">토큰 축으로 묶어 스케일을 잡는다</text>
+  <text x="100" y="380" font-size="12" fill="#9aa4b8">토큰 축으로 묶으면 큰 채널이 나머지를 잡아먹는다</text>
+  <text x="520" y="380" font-size="12" fill="#9aa4b8">토큰이 도착할 때 바로 잴 수 있어 구현이 쉽다</text>
+</svg>

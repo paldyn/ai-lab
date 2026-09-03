@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="404" viewBox="0 0 880 404" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <rect x="0" y="0" width="880" height="404" rx="12" fill="#0a0a0a"/>
+
+  <text x="62" y="42" font-size="22" font-weight="700" fill="#e8e8e8">가중치는 고정이고 KV 캐시만 자란다</text>
+  <text x="62" y="68" font-size="13" fill="#888">8B 모델 · KV 헤드 8개 · 문맥 32k · 동시 요청 16건 · GPU 메모리 80 GiB</text>
+
+  <text x="62" y="143" font-size="14" font-weight="600" fill="#e05555">KV FP16</text>
+  <rect x="190" y="110" width="124" height="52" rx="6" fill="#1a2030" stroke="#3a4a6e" stroke-width="1.5"/>
+  <text x="252" y="143" text-anchor="middle" font-size="12" fill="#c8d0e0">가중치 16</text>
+  <rect x="314" y="110" width="496" height="52" rx="6" fill="#2a1a1a" stroke="#e05555" stroke-width="1.5"/>
+  <text x="562" y="143" text-anchor="middle" font-size="13" font-weight="600" fill="#e05555">KV 캐시 64 GiB — 여유 없음</text>
+
+  <text x="62" y="219" font-size="14" font-weight="600" fill="#c8a55a">KV INT8</text>
+  <rect x="190" y="186" width="124" height="52" rx="6" fill="#1a2030" stroke="#3a4a6e" stroke-width="1.5"/>
+  <text x="252" y="219" text-anchor="middle" font-size="12" fill="#c8d0e0">가중치 16</text>
+  <rect x="314" y="186" width="248" height="52" rx="6" fill="#2a2416" stroke="#c8a55a" stroke-width="1.5"/>
+  <text x="438" y="219" text-anchor="middle" font-size="13" font-weight="600" fill="#c8a55a">KV 캐시 32 GiB</text>
+  <rect x="562" y="186" width="248" height="52" rx="6" fill="#0d1410" stroke="#2f4a35" stroke-width="1.5" stroke-dasharray="4,4"/>
+  <text x="686" y="219" text-anchor="middle" font-size="12" fill="#55c555">여유 32 GiB — 요청 32건까지</text>
+
+  <text x="62" y="295" font-size="14" font-weight="600" fill="#55c555">KV INT4</text>
+  <rect x="190" y="262" width="124" height="52" rx="6" fill="#1a2030" stroke="#3a4a6e" stroke-width="1.5"/>
+  <text x="252" y="295" text-anchor="middle" font-size="12" fill="#c8d0e0">가중치 16</text>
+  <rect x="314" y="262" width="124" height="52" rx="6" fill="#14261a" stroke="#55c555" stroke-width="1.5"/>
+  <text x="376" y="295" text-anchor="middle" font-size="12" font-weight="600" fill="#55c555">KV 16</text>
+  <rect x="438" y="262" width="372" height="52" rx="6" fill="#0d1410" stroke="#2f4a35" stroke-width="1.5" stroke-dasharray="4,4"/>
+  <text x="624" y="295" text-anchor="middle" font-size="12" fill="#55c555">여유 48 GiB — 요청 64건까지</text>
+
+  <line x1="190" y1="336" x2="810" y2="336" stroke="#4a5568" stroke-width="1.5"/>
+  <g stroke="#4a5568" stroke-width="1.5">
+    <line x1="190" y1="336" x2="190" y2="344"/>
+    <line x1="345" y1="336" x2="345" y2="344"/>
+    <line x1="500" y1="336" x2="500" y2="344"/>
+    <line x1="655" y1="336" x2="655" y2="344"/>
+    <line x1="810" y1="336" x2="810" y2="344"/>
+  </g>
+  <text x="190" y="362" text-anchor="middle" font-size="11" fill="#888">0</text>
+  <text x="345" y="362" text-anchor="middle" font-size="11" fill="#888">20</text>
+  <text x="500" y="362" text-anchor="middle" font-size="11" fill="#888">40</text>
+  <text x="655" y="362" text-anchor="middle" font-size="11" fill="#888">60</text>
+  <text x="810" y="362" text-anchor="middle" font-size="11" fill="#888">80 GiB</text>
+
+  <text x="62" y="390" font-size="12" fill="#9aa4b8">토큰 하나가 차지하는 KV는 FP16에서 128 KiB다. 32,768토큰 × 16건이면 64 GiB가 된다.</text>
+</svg>

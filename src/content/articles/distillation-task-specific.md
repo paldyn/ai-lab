@@ -119,3 +119,5 @@ draft: false
 읽어주셔서 감사합니다. 😊
 
 **지난 글:** [구조적 가지치기 — 0을 늘리는 것과 모델을 줄이는 것은 다르다](/articles/pruning-structured)
+
+**다음 글:** [양자화 보정 — 데이터 128개가 모델 품질을 정한다](/articles/quantization-calibration)

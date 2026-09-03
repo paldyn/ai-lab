@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="446" viewBox="0 0 880 446" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <rect x="0" y="0" width="880" height="446" rx="12" fill="#0a0a0a"/>
+  <text x="62" y="42" font-size="22" font-weight="700" fill="#e8e8e8">문서 이해의 첫 관문은 읽는 차례다</text>
+  <text x="62" y="68" font-size="13" fill="#888">글자를 다 뽑아내도 순서가 틀리면 뜻이 사라진다.</text>
+  <rect x="62" y="96" width="400" height="310" rx="8" fill="#12151c" stroke="#3a4a6e" stroke-width="1.5"/>
+  <text x="94" y="118" font-size="10" fill="#5a6472">3분기 실적 보고서</text>
+  <line x1="94" y1="126" x2="424" y2="126" stroke="#2a3550" stroke-width="1"/>
+  <rect x="94" y="142" width="150" height="5" rx="2" fill="#2a3550"/>
+  <rect x="94" y="154" width="150" height="5" rx="2" fill="#2a3550"/>
+  <rect x="94" y="166" width="150" height="5" rx="2" fill="#2a3550"/>
+  <rect x="94" y="178" width="150" height="5" rx="2" fill="#2a3550"/>
+  <rect x="274" y="142" width="150" height="5" rx="2" fill="#2a3550"/>
+  <rect x="274" y="154" width="150" height="5" rx="2" fill="#2a3550"/>
+  <rect x="274" y="166" width="150" height="5" rx="2" fill="#2a3550"/>
+  <rect x="274" y="178" width="150" height="5" rx="2" fill="#2a3550"/>
+  <rect x="94" y="288" width="150" height="5" rx="2" fill="#2a3550"/>
+  <rect x="94" y="300" width="150" height="5" rx="2" fill="#2a3550"/>
+  <rect x="94" y="312" width="150" height="5" rx="2" fill="#2a3550"/>
+  <rect x="94" y="324" width="150" height="5" rx="2" fill="#2a3550"/>
+  <rect x="274" y="288" width="150" height="5" rx="2" fill="#2a3550"/>
+  <rect x="274" y="300" width="150" height="5" rx="2" fill="#2a3550"/>
+  <rect x="274" y="312" width="150" height="5" rx="2" fill="#2a3550"/>
+  <rect x="274" y="324" width="150" height="5" rx="2" fill="#2a3550"/>
+  <rect x="94" y="196" width="330" height="64" rx="6" fill="#1a2030" stroke="#3a4a6e" stroke-width="1.2"/>
+  <rect x="116" y="230" width="26" height="20" rx="2" fill="#7ec8e3" opacity="0.75"/>
+  <rect x="164" y="216" width="26" height="34" rx="2" fill="#7ec8e3" opacity="0.75"/>
+  <rect x="212" y="224" width="26" height="26" rx="2" fill="#7ec8e3" opacity="0.75"/>
+  <rect x="260" y="206" width="26" height="44" rx="2" fill="#7ec8e3" opacity="0.75"/>
+  <rect x="308" y="212" width="26" height="38" rx="2" fill="#7ec8e3" opacity="0.75"/>
+  <rect x="356" y="198" width="26" height="52" rx="2" fill="#7ec8e3" opacity="0.75"/>
+  <rect x="94" y="270" width="230" height="5" rx="2" fill="#3a4a6e"/>
+  <line x1="94" y1="346" x2="204" y2="346" stroke="#2a3550" stroke-width="1"/>
+  <rect x="94" y="356" width="150" height="5" rx="2" fill="#232c3d"/>
+  <rect x="94" y="366" width="150" height="5" rx="2" fill="#232c3d"/>
+  <text x="262" y="394" text-anchor="middle" font-size="10" fill="#5a6472">— 12 —</text>
+  <circle cx="80" cy="160" r="9" fill="#7ec8e3"/>
+  <text x="80" y="164" text-anchor="middle" font-size="11" font-weight="700" fill="#0a0a0a">1</text>
+  <circle cx="260" cy="160" r="9" fill="#7ec8e3"/>
+  <text x="260" y="164" text-anchor="middle" font-size="11" font-weight="700" fill="#0a0a0a">2</text>
+  <circle cx="80" cy="228" r="9" fill="#7ec8e3"/>
+  <text x="80" y="232" text-anchor="middle" font-size="11" font-weight="700" fill="#0a0a0a">3</text>
+  <circle cx="80" cy="306" r="9" fill="#7ec8e3"/>
+  <text x="80" y="310" text-anchor="middle" font-size="11" font-weight="700" fill="#0a0a0a">4</text>
+  <circle cx="260" cy="306" r="9" fill="#7ec8e3"/>
+  <text x="260" y="310" text-anchor="middle" font-size="11" font-weight="700" fill="#0a0a0a">5</text>
+  <circle cx="80" cy="361" r="9" fill="#7ec8e3"/>
+  <text x="80" y="365" text-anchor="middle" font-size="11" font-weight="700" fill="#0a0a0a">6</text>
+  <text x="522" y="120" font-size="16" font-weight="600" fill="#55c555">사람이 읽는 차례</text>
+  <text x="522" y="146" font-size="12" fill="#c8d0e0">1 왼쪽 단 위 → 2 오른쪽 단 위 → 3 그림과</text>
+  <text x="522" y="166" font-size="12" fill="#c8d0e0">캡션 → 4 왼쪽 단 아래 → 5 오른쪽 단 아래</text>
+  <text x="522" y="186" font-size="12" fill="#c8d0e0">→ 6 각주. 머리말과 쪽 번호는 본문이 아니다.</text>
+  <text x="522" y="238" font-size="16" font-weight="600" fill="#e05555">위에서 아래로 한 줄씩 훑으면</text>
+  <rect x="522" y="254" width="296" height="112" rx="6" fill="#000000" stroke="#3a4a6e" stroke-width="1"/>
+  <text x="540" y="282" font-size="13"><tspan fill="#7ec8e3">3분기 매출은</tspan><tspan fill="#ffffff"> </tspan><tspan fill="#c8a55a">반면 고정비는</tspan></text>
+  <text x="540" y="308" font-size="13"><tspan fill="#7ec8e3">전년 대비 12%</tspan><tspan fill="#ffffff"> </tspan><tspan fill="#c8a55a">같은 기간 8%</tspan></text>
+  <text x="540" y="334" font-size="13"><tspan fill="#7ec8e3">늘었습니다</tspan><tspan fill="#ffffff"> </tspan><tspan fill="#c8a55a">줄었습니다</tspan></text>
+  <text x="540" y="356" font-size="11" fill="#9aa4b8">두 단이 한 문장처럼 섞인다</text>
+  <text x="522" y="396" font-size="12" fill="#9aa4b8">단 경계 · 그림의 자리 · 머리말과 각주를 먼저</text>
+  <text x="522" y="416" font-size="12" fill="#9aa4b8">가려내야 글자 뽑기가 뜻을 갖는다.</text>
+</svg>
