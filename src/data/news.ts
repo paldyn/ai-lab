@@ -172,6 +172,31 @@ export const globalNewsUpdatedAt = '2026-09-01';
  */
 const entries: NewsItem[] = [
   {
+    id: 'introducing-weathernext-3-our-most-advanced-and-accurate-global-weather-ai-model',
+    source: 'Google DeepMind',
+    kind: 'model',
+    title: 'Google DeepMind, 시간 단위 5km 예보 WeatherNext 3 공개',
+    summary:
+      'Google DeepMind가 지표 변수를 5km 해상도로, 예보를 6시간이 아닌 1시간 간격으로 ' +
+      '내놓는 WeatherNext 3을 공개했다. WeatherNext 2보다 약 다섯 배 촘촘하고, 오늘부터 ' +
+      'Google 검색·Gemini 앱·지도와 Earth Engine에 들어간다.',
+    publishedAt: '2026-09-03',
+    collectedAt: '2026-09-04',
+    category: 'Domain',
+    signal: '기상 예측 모델',
+    url: 'https://deepmind.google/blog/introducing-weathernext-3-our-most-advanced-and-accurate-global-weather-ai-model',
+    model: {
+      family: 'Gemini',
+      name: 'WeatherNext 3',
+      kind: '신규 모델',
+      status: '공개',
+      useCase: '시간 단위 고해상도 기상 예보',
+      headline: '지표를 5km로 끊고 예보 간격을 한 시간으로 좁혔다.',
+      logo: 'assets/gemini.svg',
+      tone: 'gemini',
+    },
+  },
+  {
     id: 'introducing-gemini-3-8-flash-and-38-flash-cyber',
     source: 'Google DeepMind',
     kind: 'model',

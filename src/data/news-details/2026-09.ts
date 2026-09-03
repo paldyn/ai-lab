@@ -2,6 +2,23 @@ import type { NewsDetail } from '../news';
 
 /** 2026-09 발표의 모달 본문. 목록은 news.ts에 있습니다. */
 export const details: Record<string, NewsDetail> = {
+  'introducing-weathernext-3-our-most-advanced-and-accurate-global-weather-ai-model': {
+    points: [
+      '기온·습도 같은 지표 변수를 5km, 나머지 지표 변수를 10km, 바람 같은 대기 변수를 25km 해상도로 낸다',
+      'WeatherNext 2가 6시간 간격이던 것을 1시간 간격 예보로 바꿨고, 이전 모델보다 약 다섯 배 촘촘하다고 적었다',
+      '실시간 관측과 정지궤도 위성 자료, NASA의 IMERG 강수 자료와 지상 관측소 자료를 함께 받는다',
+      '강수 예보의 CRPS가 IMERG 기준 60%, MRMS 기준 30% 개선됐고 짧은 예보 구간의 우량계 대조에서는 10%다',
+      '풍력 터빈용 100m 고도 풍속과 태양광용 고해상도 구름·일사량을 함께 내놓는다',
+      '오늘부터 Google 검색·Gemini 앱·Google 지도·Maps Platform Weather API·Earth Engine에 들어가고, 자료는 BigQuery·Earth Engine·Cloud Storage로 받는다',
+      'Brightband의 독립 실시간 평가에서 가장 정확한 전 지구 기상 모델로 꼽혔다고 밝혔다',
+      '공식 예보와 기상 특보는 각국 기상 기관을 따르라고 적었고 가격과 가중치 공개 여부는 밝히지 않았다',
+    ],
+    commentary:
+      '한 달 전 사이클론 모델 WeatherNext는 가중치를 열었지만 이번에는 그 말이 없고 대신 검색·지도·' +
+      'Earth Engine이라는 유통 경로가 앞에 섰다. 연구 성과를 논문으로 내던 자리에서 이미 깔린 제품에 ' +
+      '바로 태우는 쪽으로 무게가 옮겨 간 셈이다. 100m 풍속과 일사량을 따로 내놓은 것도 재생에너지 ' +
+      '운영이라는 구체적 수요를 겨냥한 자리다.',
+  },
   'gilbert-tobin': {
     points: [
       '운영 조직에 ChatGPT Enterprise를 먼저 넣고 마케팅·사업개발·채용·재무·기술로 넓혔다',
