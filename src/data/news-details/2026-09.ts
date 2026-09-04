@@ -2,6 +2,20 @@ import type { NewsDetail } from '../news';
 
 /** 2026-09 발표의 모달 본문. 목록은 news.ts에 있습니다. */
 export const details: Record<string, NewsDetail> = {
+  'claude-platform-september-3-2026': {
+    points: [
+      'ant CLI 1.30.0에 ant apply 명령이 들어갔다',
+      '에이전트·환경·스킬·메모리 스토어·배포를 이 명령으로 만들고 갱신한다',
+      '리소스마다 저장소 안 파일에 기술해 두면 그 파일을 원본으로 삼는다',
+      'ant apply를 실행하면 무엇을 바꿀지 계획을 출력하고 승인을 받는다',
+      '실행하면 claude-lock.json 잠금 파일을 쓴다',
+      '그 잠금 파일을 커밋해 두면 이후 실행이 새로 만들지 않고 같은 리소스를 갱신한다',
+      '작업자 기기에서 돌리든 CI에서 돌리든 같은 리소스를 가리킨다',
+    ],
+    commentary:
+      '콘솔에서 손으로 만든 에이전트와 스킬은 누가 언제 무엇을 바꿨는지가 남지 않아 조직이 커질수록 되돌리기 어려웠다. 정의를 저장소로 내리고 잠금 파일로 ' +
+      '동일성을 묶은 것은 Terraform이 클라우드 자원에 했던 것과 같은 수순이다. 관건은 콘솔에서 직접 고친 것과 파일이 갈렸을 때 어느 쪽을 진짜로 볼 것인가다.',
+  },
   'safety-overview-gpt-6-astra': {
     points: [
       'OpenAI가 GPT-6 Astra를 공개하며 지금까지 널리 배포한 것 중 가장 뛰어난 모델이라고 밝혔다',

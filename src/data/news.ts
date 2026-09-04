@@ -172,6 +172,20 @@ export const globalNewsUpdatedAt = '2026-09-03';
  */
 const entries: NewsItem[] = [
   {
+    id: 'claude-platform-september-3-2026',
+    source: 'Anthropic',
+    kind: 'company',
+    title: 'ant CLI에 리소스를 파일로 관리하는 ant apply 추가',
+    summary:
+      'Anthropic이 ant CLI 1.30.0에 ant apply를 넣었다. 저장소 안 파일로 기술한 에이전트·환경·' +
+      '스킬·메모리 스토어·배포를 그대로 만들고 갱신하며, 실행하면 변경 계획을 먼저 출력해 승인을 받는다.',
+    publishedAt: '2026-09-03',
+    collectedAt: '2026-09-05',
+    category: 'Product',
+    signal: '리소스 코드 관리',
+    url: 'https://platform.claude.com/docs/en/release-notes/overview#september-3-2026',
+  },
+  {
     id: 'safety-overview-gpt-6-astra',
     source: 'OpenAI',
     kind: 'model',
