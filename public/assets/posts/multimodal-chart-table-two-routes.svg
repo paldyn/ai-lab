@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="500" viewBox="0 0 880 500" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <defs>
+    <marker id="ctA" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#7ec8e3"/>
+    </marker>
+    <marker id="ctB" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#55c555"/>
+    </marker>
+  </defs>
+  <rect x="0" y="0" width="880" height="500" rx="12" fill="#0a0a0a"/>
+  <text x="62" y="42" font-size="22" font-weight="700" fill="#e8e8e8">차트를 읽는 두 갈래</text>
+  <text x="62" y="68" font-size="13" fill="#888">그림에 바로 묻느냐, 값으로 되돌린 뒤 계산하느냐.</text>
+
+  <rect x="62" y="100" width="290" height="250" rx="8" fill="#12151c" stroke="#3a4a6e" stroke-width="1.5"/>
+  <text x="84" y="126" font-size="12" fill="#5a6472">분기별 매출 (억 원)</text>
+  <line x1="100" y1="140" x2="100" y2="310" stroke="#3a4a6e" stroke-width="1.2"/>
+  <line x1="100" y1="310" x2="330" y2="310" stroke="#3a4a6e" stroke-width="1.2"/>
+  <text x="94" y="314" text-anchor="end" font-size="10" fill="#5a6472">0</text>
+  <text x="94" y="258" text-anchor="end" font-size="10" fill="#5a6472">50</text>
+  <text x="94" y="202" text-anchor="end" font-size="10" fill="#5a6472">100</text>
+  <text x="94" y="146" text-anchor="end" font-size="10" fill="#5a6472">150</text>
+  <rect x="118" y="241" width="32" height="69" rx="2" fill="#7ec8e3" opacity="0.7"/>
+  <rect x="168" y="211" width="32" height="99" rx="2" fill="#7ec8e3" opacity="0.7"/>
+  <rect x="218" y="194" width="32" height="116" rx="2" fill="#7ec8e3" opacity="0.7"/>
+  <rect x="268" y="152" width="32" height="158" rx="2" fill="#7ec8e3" opacity="0.7"/>
+  <text x="134" y="328" text-anchor="middle" font-size="10" fill="#5a6472">Q1</text>
+  <text x="184" y="328" text-anchor="middle" font-size="10" fill="#5a6472">Q2</text>
+  <text x="234" y="328" text-anchor="middle" font-size="10" fill="#5a6472">Q3</text>
+  <text x="284" y="328" text-anchor="middle" font-size="10" fill="#5a6472">Q4</text>
+
+  <line x1="352" y1="190" x2="430" y2="152" stroke="#7ec8e3" stroke-width="2" marker-end="url(#ctA)"/>
+  <line x1="352" y1="262" x2="430" y2="330" stroke="#55c555" stroke-width="2" marker-end="url(#ctB)"/>
+
+  <rect x="430" y="104" width="388" height="114" rx="8" fill="#12151c" stroke="#3a4a6e" stroke-width="1.5"/>
+  <text x="454" y="130" font-size="16" font-weight="600" fill="#7ec8e3">① 그림에 바로 묻는다</text>
+  <text x="454" y="156" font-size="12" fill="#c8d0e0">「4분기 매출은?」 → 「약 140억 원입니다」</text>
+  <text x="454" y="178" font-size="12" fill="#9aa4b8">눈금 사이를 어림해야 하는 값에서 오차가 나고,</text>
+  <text x="454" y="200" font-size="12" fill="#9aa4b8">비율·증감 계산이 섞이면 오차가 더 커진다.</text>
+
+  <rect x="430" y="248" width="388" height="182" rx="8" fill="#12151c" stroke="#3a4a6e" stroke-width="1.5"/>
+  <text x="454" y="274" font-size="16" font-weight="600" fill="#55c555">② 값으로 되돌린 뒤 계산한다</text>
+  <rect x="454" y="290" width="340" height="82" rx="6" fill="#000000" stroke="#3a4a6e" stroke-width="1"/>
+  <text x="472" y="314" xml:space="preserve" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13"><tspan fill="#ffffff">{</tspan><tspan fill="#ce9178">"Q1"</tspan><tspan fill="#ffffff">: </tspan><tspan fill="#b5cea8">62</tspan><tspan fill="#ffffff">, </tspan><tspan fill="#ce9178">"Q2"</tspan><tspan fill="#ffffff">: </tspan><tspan fill="#b5cea8">88</tspan><tspan fill="#ffffff">,</tspan></text>
+  <text x="472" y="334" xml:space="preserve" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13"><tspan fill="#ffffff"> </tspan><tspan fill="#ce9178">"Q3"</tspan><tspan fill="#ffffff">: </tspan><tspan fill="#b5cea8">104</tspan><tspan fill="#ffffff">, </tspan><tspan fill="#ce9178">"Q4"</tspan><tspan fill="#ffffff">: </tspan><tspan fill="#b5cea8">141</tspan><tspan fill="#ffffff">}</tspan></text>
+  <text x="472" y="354" xml:space="preserve" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13"><tspan fill="#9aa4b8"># Q4 / Q1 = 2.27</tspan></text>
+  <text x="454" y="392" font-size="12" fill="#9aa4b8">값이 표로 남으면 사람이 검산할 수 있고, 합계와</text>
+  <text x="454" y="412" font-size="12" fill="#9aa4b8">증감률은 코드가 계산하므로 틀리지 않는다.</text>
+
+  <text x="62" y="380" font-size="12" fill="#9aa4b8">축 눈금과 막대 높이를 눈으로 재는 일은</text>
+  <text x="62" y="400" font-size="12" fill="#9aa4b8">모델에게도 똑같이 어렵다. 원본 데이터가</text>
+  <text x="62" y="420" font-size="12" fill="#9aa4b8">있다면 그림을 읽을 이유가 없다.</text>
+</svg>

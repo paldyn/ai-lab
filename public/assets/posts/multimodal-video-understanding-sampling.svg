@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="420" viewBox="0 0 880 420" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <rect x="0" y="0" width="880" height="420" rx="12" fill="#0a0a0a"/>
+  <text x="62" y="42" font-size="22" font-weight="700" fill="#e8e8e8">프레임을 어떻게 고르느냐가 답을 정한다</text>
+  <text x="62" y="68" font-size="13" fill="#888">60초 영상에서 8장만 고를 수 있다면.</text>
+
+  <text x="344" y="112" text-anchor="middle" font-size="11" fill="#e05555">t = 22.4s · 0.5초짜리 사건</text>
+  <line x1="344" y1="120" x2="344" y2="274" stroke="#e05555" stroke-width="2" stroke-dasharray="4,4"/>
+
+  <text x="62" y="108" font-size="16" font-weight="600" fill="#e05555">균등 간격 8장</text>
+  <line x1="62" y1="142" x2="818" y2="142" stroke="#2a3550" stroke-width="3"/>
+  <rect x="99" y="135" width="20" height="14" rx="2" fill="#7ec8e3" opacity="0.8"/>
+  <rect x="194" y="135" width="20" height="14" rx="2" fill="#7ec8e3" opacity="0.8"/>
+  <rect x="288" y="135" width="20" height="14" rx="2" fill="#7ec8e3" opacity="0.8"/>
+  <rect x="383" y="135" width="20" height="14" rx="2" fill="#7ec8e3" opacity="0.8"/>
+  <rect x="477" y="135" width="20" height="14" rx="2" fill="#7ec8e3" opacity="0.8"/>
+  <rect x="572" y="135" width="20" height="14" rx="2" fill="#7ec8e3" opacity="0.8"/>
+  <rect x="666" y="135" width="20" height="14" rx="2" fill="#7ec8e3" opacity="0.8"/>
+  <rect x="761" y="135" width="20" height="14" rx="2" fill="#7ec8e3" opacity="0.8"/>
+  <text x="560" y="176" font-size="12" fill="#e05555">18.8초와 26.3초 사이가 통째로 비어 있다</text>
+
+  <text x="62" y="224" font-size="16" font-weight="600" fill="#55c555">장면 전환 + 균등 혼합 8장</text>
+  <line x1="62" y1="258" x2="818" y2="258" stroke="#2a3550" stroke-width="3"/>
+  <rect x="77" y="251" width="20" height="14" rx="2" fill="#55c555" opacity="0.8"/>
+  <rect x="165" y="251" width="20" height="14" rx="2" fill="#55c555" opacity="0.8"/>
+  <rect x="241" y="251" width="20" height="14" rx="2" fill="#55c555" opacity="0.8"/>
+  <rect x="334" y="251" width="20" height="14" rx="2" fill="#55c555" opacity="0.8"/>
+  <rect x="430" y="251" width="20" height="14" rx="2" fill="#55c555" opacity="0.8"/>
+  <rect x="568" y="251" width="20" height="14" rx="2" fill="#55c555" opacity="0.8"/>
+  <rect x="682" y="251" width="20" height="14" rx="2" fill="#55c555" opacity="0.8"/>
+  <rect x="770" y="251" width="20" height="14" rx="2" fill="#55c555" opacity="0.8"/>
+  <text x="560" y="292" font-size="12" fill="#55c555">전환점마다 한 장 — 그 순간이 들어온다</text>
+
+  <text x="62" y="336" font-size="12" fill="#9aa4b8">토큰 예산이 프레임 수를 정하고, 프레임 수가 시간 해상도를 정한다.</text>
+  <text x="62" y="356" font-size="12" fill="#9aa4b8">1초 안에 끝나는 사건을 봐야 한다면 균등 샘플링만으로는 부족하다.</text>
+  <text x="62" y="376" font-size="12" fill="#9aa4b8">장면이 거의 안 바뀌는 고정 카메라 영상은 반대로 균등 쪽이 낫다.</text>
+</svg>

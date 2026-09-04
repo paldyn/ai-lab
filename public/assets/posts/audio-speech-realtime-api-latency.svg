@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="410" viewBox="0 0 880 410" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <rect x="0" y="0" width="880" height="410" rx="12" fill="#0a0a0a"/>
+  <text x="62" y="42" font-size="22" font-weight="700" fill="#e8e8e8">지연은 단계마다 쌓인다</text>
+  <text x="62" y="68" font-size="13" fill="#888">사용자가 말을 멈추고 첫 소리가 나오기까지.</text>
+
+  <text x="329" y="124" text-anchor="middle" font-size="11" fill="#9aa4b8">침묵 대기 500</text>
+  <text x="489" y="124" text-anchor="middle" font-size="11" fill="#9aa4b8">ASR 120</text>
+  <text x="623" y="124" text-anchor="middle" font-size="11" fill="#9aa4b8">LLM 첫 토큰 400</text>
+  <text x="773" y="124" text-anchor="middle" font-size="11" fill="#9aa4b8">TTS 180</text>
+  <text x="62" y="148" font-size="13" font-weight="600" fill="#e05555">ASR → LLM → TTS</text>
+  <rect x="200" y="130" width="258" height="26" rx="3" fill="#7777cc" opacity="0.85"/>
+  <rect x="458" y="130" width="62" height="26" rx="3" fill="#7ec8e3" opacity="0.85"/>
+  <rect x="520" y="130" width="207" height="26" rx="3" fill="#c8a55a" opacity="0.85"/>
+  <rect x="727" y="130" width="93" height="26" rx="3" fill="#55c555" opacity="0.85"/>
+  <text x="818" y="178" text-anchor="end" font-size="12" fill="#e05555">여기서 첫 소리 · 1200ms
+    <animate attributeName="opacity" values="0;0;1;1" keyTimes="0;0.97;0.99;1" dur="2.4s" repeatCount="indefinite"/>
+  </text>
+
+  <text x="257" y="204" text-anchor="middle" font-size="11" fill="#9aa4b8">턴 감지 220</text>
+  <text x="391" y="204" text-anchor="middle" font-size="11" fill="#9aa4b8">모델 첫 오디오 300</text>
+  <text x="62" y="228" font-size="13" font-weight="600" fill="#55c555">통합 음성 모델</text>
+  <rect x="200" y="210" width="114" height="26" rx="3" fill="#7777cc" opacity="0.85"/>
+  <rect x="314" y="210" width="155" height="26" rx="3" fill="#55c555" opacity="0.85"/>
+  <text x="481" y="256" font-size="12" fill="#55c555">여기서 첫 소리 · 520ms
+    <animate attributeName="opacity" values="0;0;1;1" keyTimes="0;0.41;0.44;1" dur="2.4s" repeatCount="indefinite"/>
+  </text>
+
+  <line x1="344" y1="118" x2="344" y2="262" stroke="#e8e8e8" stroke-width="1.5" opacity="0.55">
+    <animate attributeName="x1" values="200;820" dur="2.4s" repeatCount="indefinite"/>
+    <animate attributeName="x2" values="200;820" dur="2.4s" repeatCount="indefinite"/>
+  </line>
+
+  <line x1="200" y1="276" x2="820" y2="276" stroke="#3a4a6e" stroke-width="1.5"/>
+  <line x1="200" y1="276" x2="200" y2="284" stroke="#3a4a6e" stroke-width="1.5"/>
+  <line x1="355" y1="276" x2="355" y2="284" stroke="#3a4a6e" stroke-width="1.5"/>
+  <line x1="510" y1="276" x2="510" y2="284" stroke="#3a4a6e" stroke-width="1.5"/>
+  <line x1="665" y1="276" x2="665" y2="284" stroke="#3a4a6e" stroke-width="1.5"/>
+  <line x1="820" y1="276" x2="820" y2="284" stroke="#3a4a6e" stroke-width="1.5"/>
+  <text x="200" y="300" text-anchor="middle" font-size="11" fill="#5a6472">0</text>
+  <text x="355" y="300" text-anchor="middle" font-size="11" fill="#5a6472">300</text>
+  <text x="510" y="300" text-anchor="middle" font-size="11" fill="#5a6472">600</text>
+  <text x="665" y="300" text-anchor="middle" font-size="11" fill="#5a6472">900</text>
+  <text x="820" y="300" text-anchor="middle" font-size="11" fill="#5a6472">1200</text>
+  <text x="118" y="280" font-size="11" fill="#5a6472">경과 (ms)</text>
+
+  <text x="62" y="346" font-size="12" fill="#9aa4b8">말이 끝났다고 판정하는 데만 300~700ms가 든다. 침묵을 얼마나 기다리느냐의 문제다.</text>
+  <text x="62" y="366" font-size="12" fill="#9aa4b8">뒤 단계를 아무리 줄여도 이 앞이 그대로면 체감은 안 바뀐다. 통합 모델은 이 판정을 안에서 한다.</text>
+</svg>

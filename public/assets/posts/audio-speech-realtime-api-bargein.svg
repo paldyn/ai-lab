@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="440" viewBox="0 0 880 440" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <defs>
+    <marker id="biA" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#7ec8e3"/>
+    </marker>
+    <marker id="biB" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#e05555"/>
+    </marker>
+  </defs>
+  <rect x="0" y="0" width="880" height="440" rx="12" fill="#0a0a0a"/>
+  <text x="62" y="42" font-size="22" font-weight="700" fill="#e8e8e8">끼어들기는 멈춤이 아니라 되감기다</text>
+  <text x="62" y="68" font-size="13" fill="#888">서버가 보낸 오디오와 사용자가 실제로 들은 오디오는 다르다.</text>
+
+  <rect x="60" y="100" width="180" height="36" rx="8" fill="#1a2030" stroke="#3a4a6e" stroke-width="1.5"/>
+  <text x="150" y="122" text-anchor="middle" font-size="13" font-weight="600" fill="#e8e8e8">사용자</text>
+  <rect x="350" y="100" width="180" height="36" rx="8" fill="#1a2030" stroke="#3a4a6e" stroke-width="1.5"/>
+  <text x="440" y="122" text-anchor="middle" font-size="13" font-weight="600" fill="#e8e8e8">클라이언트 (재생 버퍼)</text>
+  <rect x="640" y="100" width="180" height="36" rx="8" fill="#1a2030" stroke="#3a4a6e" stroke-width="1.5"/>
+  <text x="730" y="122" text-anchor="middle" font-size="13" font-weight="600" fill="#e8e8e8">서버 (모델)</text>
+
+  <line x1="150" y1="136" x2="150" y2="300" stroke="#2a3550" stroke-width="1.5" stroke-dasharray="4,4"/>
+  <line x1="440" y1="136" x2="440" y2="300" stroke="#2a3550" stroke-width="1.5" stroke-dasharray="4,4"/>
+  <line x1="730" y1="136" x2="730" y2="300" stroke="#2a3550" stroke-width="1.5" stroke-dasharray="4,4"/>
+
+  <text x="585" y="156" text-anchor="middle" font-size="12" fill="#9aa4b8">오디오 20청크를 앞질러 보냄</text>
+  <line x1="730" y1="170" x2="440" y2="170" stroke="#7ec8e3" stroke-width="2" marker-end="url(#biA)"/>
+
+  <text x="295" y="200" text-anchor="middle" font-size="12" fill="#e05555">3청크쯤 재생됐을 때 사용자가 끼어든다</text>
+  <line x1="150" y1="214" x2="440" y2="214" stroke="#e05555" stroke-width="2" marker-end="url(#biB)"/>
+
+  <text x="585" y="244" text-anchor="middle" font-size="12" fill="#9aa4b8">취소 + 「3청크까지만 들렸다」</text>
+  <line x1="440" y1="258" x2="730" y2="258" stroke="#e05555" stroke-width="2" marker-end="url(#biB)"/>
+
+  <text x="440" y="288" text-anchor="middle" font-size="11" fill="#55c555">남은 버퍼를 버린다</text>
+  <text x="730" y="288" text-anchor="middle" font-size="11" fill="#55c555">기록을 3청크에서 자른다</text>
+
+  <rect x="62" y="316" width="756" height="61" rx="8" fill="#12151c" stroke="#e05555" stroke-width="1.5"/>
+  <text x="86" y="340" font-size="13" font-weight="600" fill="#e8e8e8">서버는 20청크를 말했다고 기억하고, 사용자는 3청크만 들었다</text>
+  <text x="86" y="360" font-size="11" fill="#9aa4b8">들린 지점을 서버에 알려 대화 기록을 잘라 두지 않으면, 다음 턴부터 서로 다른 대화를 하게 된다</text>
+</svg>

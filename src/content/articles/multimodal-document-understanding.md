@@ -139,3 +139,5 @@ draft: false
 읽어주셔서 감사합니다. 😊
 
 **지난 글:** [멀티모달 RAG — 그림과 표가 섞인 문서에서 답을 찾는다](/articles/multimodal-rag)
+
+**다음 글:** [차트와 표 읽기 — 그림 속 숫자를 값으로 되돌린다](/articles/multimodal-chart-table)
