@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="436" viewBox="0 0 880 436">
+<rect width="880" height="436" rx="12" fill="#0a0a0a"/>
+<text x="60" y="46" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="22" font-weight="700" fill="#e8e8e8">두 분포가 멀어지면 유효 표본 수가 지수적으로 무너진다</text>
+<text x="60" y="72" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">표본 1,000개를 뽑아도 실제로 일하는 것은 아래 개수뿐이다 (단위 분산 정규분포 두 개, 평균 차이 Δ)</text>
+<text x="60" y="110" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">평균 차이</text>
+<text x="176" y="110" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">KL(p‖q)</text>
+<text x="286" y="110" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">Var(w)</text>
+<text x="396" y="110" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">유효 표본</text>
+<rect x="56" y="128" width="768" height="52" rx="8" fill="#111318" stroke="#2a2f3a" stroke-width="1"/>
+<text x="72" y="160" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#e8e8e8">Δ = 0.5</text>
+<text x="188" y="160" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#ffffff">0.125</text>
+<text x="298" y="160" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#ffffff">0.28</text>
+<text x="408" y="160" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" font-weight="600" fill="#55c555">779개</text>
+<rect x="500" y="146" width="516" height="16" rx="4" fill="#1a1d24" opacity="0"/>
+<rect x="500" y="146" width="308" height="16" rx="4" fill="#1a1d24"/>
+<rect x="500" y="146" width="239.9" height="16" rx="4" fill="#55c555"/>
+<rect x="56" y="190" width="768" height="52" rx="8" fill="#111318" stroke="#2a2f3a" stroke-width="1"/>
+<text x="72" y="222" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#e8e8e8">Δ = 1.0</text>
+<text x="188" y="222" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#ffffff">0.500</text>
+<text x="298" y="222" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#ffffff">1.72</text>
+<text x="408" y="222" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" font-weight="600" fill="#55c555">368개</text>
+<rect x="500" y="208" width="516" height="16" rx="4" fill="#1a1d24" opacity="0"/>
+<rect x="500" y="208" width="308" height="16" rx="4" fill="#1a1d24"/>
+<rect x="500" y="208" width="113.3" height="16" rx="4" fill="#55c555"/>
+<rect x="56" y="252" width="768" height="52" rx="8" fill="#111318" stroke="#2a2f3a" stroke-width="1"/>
+<text x="72" y="284" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#e8e8e8">Δ = 2.0</text>
+<text x="188" y="284" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#ffffff">2.000</text>
+<text x="298" y="284" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#ffffff">53.6</text>
+<text x="408" y="284" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" font-weight="600" fill="#e05555">18개</text>
+<rect x="500" y="270" width="516" height="16" rx="4" fill="#1a1d24" opacity="0"/>
+<rect x="500" y="270" width="308" height="16" rx="4" fill="#1a1d24"/>
+<rect x="500" y="270" width="5.6" height="16" rx="4" fill="#e05555"/>
+<rect x="56" y="314" width="768" height="52" rx="8" fill="#111318" stroke="#2a2f3a" stroke-width="1"/>
+<text x="72" y="346" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#e8e8e8">Δ = 3.0</text>
+<text x="188" y="346" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#ffffff">4.500</text>
+<text x="298" y="346" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#ffffff">8102</text>
+<text x="408" y="346" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" font-weight="600" fill="#e05555">0.12개</text>
+<rect x="500" y="332" width="516" height="16" rx="4" fill="#1a1d24" opacity="0"/>
+<rect x="500" y="332" width="308" height="16" rx="4" fill="#1a1d24"/>
+<rect x="500" y="332" width="3.0" height="16" rx="4" fill="#e05555"/>
+<text x="60" y="398" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">Var(w) = e^(Δ²) − 1 이고 유효 표본 비율은 e^(−Δ²)다.</text>
+<text x="60" y="420" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">KL은 Δ²/2 로 천천히 자라는데 대가는 그 제곱의 지수로 자란다.</text>
+</svg>

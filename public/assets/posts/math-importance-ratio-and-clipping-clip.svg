@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="430" viewBox="0 0 880 430">
+<rect width="880" height="430" rx="12" fill="#0a0a0a"/>
+<defs><marker id="ar" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto"><path d="M 0 0 L 13 7 L 0 14 z" fill="#888"/></marker></defs>
+<text x="60" y="46" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="22" font-weight="700" fill="#e8e8e8">clip은 목적함수를 조각별 선형으로 바꾼다 (ε = 0.2)</text>
+<text x="60" y="72" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">평평한 조각에서는 기울기가 0이라 더 가려는 힘이 사라진다.</text>
+<text x="60" y="92" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">어느 쪽이 평평해지는지는 A의 부호가 정한다.</text>
+<text x="90" y="126" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#55c555">A &gt; 0 · 좋았던 행동</text>
+<rect x="276" y="140" width="124" height="200" fill="#e05555" fill-opacity="0.10"/>
+<line x1="90" y1="340" x2="410" y2="340" stroke="#888" stroke-width="1.5"/>
+<line x1="90" y1="340" x2="90" y2="130" stroke="#888" stroke-width="1.5"/>
+<text x="416" y="345" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">r</text>
+<path d="M 90 328 L 276 178 L 400 178" stroke="#7ec8e3" stroke-width="2.5" fill="none"/>
+<line x1="152" y1="340" x2="152" y2="150" stroke="#444" stroke-width="1" stroke-dasharray="4,4"/>
+<line x1="276" y1="340" x2="276" y2="150" stroke="#444" stroke-width="1" stroke-dasharray="4,4"/>
+<text x="152" y="360" text-anchor="middle" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#9aa4b8">0.8</text>
+<text x="276" y="360" text-anchor="middle" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#9aa4b8">1.2</text>
+<text x="338" y="162" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e05555">기울기 0</text>
+<text x="158" y="312" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#7ec8e3">기울기 1</text>
+<text x="90" y="392" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">더 올리려는 힘은 1.2에서 끊긴다.</text>
+<text x="90" y="412" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">아래쪽은 안 끊는다 — 되돌아올 길은 남긴다.</text>
+<text x="500" y="126" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#e05555">A &lt; 0 · 나빴던 행동</text>
+<rect x="500" y="140" width="62" height="200" fill="#e05555" fill-opacity="0.10"/>
+<line x1="500" y1="340" x2="820" y2="340" stroke="#888" stroke-width="1.5"/>
+<line x1="500" y1="340" x2="500" y2="130" stroke="#888" stroke-width="1.5"/>
+<text x="826" y="345" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">r</text>
+<path d="M 500 169 L 562 169 L 810 321" stroke="#7ec8e3" stroke-width="2.5" fill="none"/>
+<line x1="562" y1="340" x2="562" y2="150" stroke="#444" stroke-width="1" stroke-dasharray="4,4"/>
+<line x1="686" y1="340" x2="686" y2="150" stroke="#444" stroke-width="1" stroke-dasharray="4,4"/>
+<text x="562" y="360" text-anchor="middle" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#9aa4b8">0.8</text>
+<text x="686" y="360" text-anchor="middle" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#9aa4b8">1.2</text>
+<text x="531" y="153" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e05555">기울기 0</text>
+<text x="692" y="325" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#7ec8e3">기울기 −1</text>
+<text x="500" y="392" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">더 내리려는 힘이 0.8에서 끊긴다.</text>
+<text x="500" y="412" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">위쪽은 안 끊는다 — 방향이 반대다.</text>
+</svg>

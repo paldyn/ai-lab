@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="380" viewBox="0 0 880 380">
+<rect width="880" height="380" rx="12" fill="#0a0a0a"/>
+<defs><marker id="e1" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto"><path d="M 0 0 L 13 7 L 0 14 z" fill="#888"/></marker></defs>
+<text x="60" y="46" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="22" font-weight="700" fill="#e8e8e8">log p(x) = ELBO + KL(q ‖ 사후분포)</text>
+<text x="60" y="72" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">왼쪽 총량은 q를 어떻게 잡든 변하지 않는다. q를 고치면 두 조각의 경계만 움직인다.</text>
+<text x="210" y="104" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">← ELBO (받치는 하한)</text>
+<text x="730" y="104" text-anchor="end" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">간극 = KL →</text>
+<text x="60" y="152" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="15" font-weight="600" fill="#e8e8e8">q(z=1) = 0.05</text>
+<rect x="210" y="126" width="82.8" height="44" rx="6" fill="#1b3a4a" stroke="#7ec8e3" stroke-width="1.5"/>
+<rect x="292.8" y="126" width="437.2" height="44" rx="6" fill="#3a1b1b" stroke="#e05555" stroke-width="1.5"/>
+<text x="226" y="154" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#ffffff">ELBO −3.0445</text>
+<text x="511" y="154" text-anchor="middle" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#ffffff">KL 0.8407</text>
+<text x="60" y="230" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="15" font-weight="600" fill="#e8e8e8">q(z=1) = 0.50</text>
+<rect x="210" y="204" width="492.8" height="44" rx="6" fill="#1b3a4a" stroke="#7ec8e3" stroke-width="1.5"/>
+<rect x="702.8" y="204" width="27.2" height="44" rx="6" fill="#3a1b1b" stroke="#7ec8e3" stroke-width="1.5"/>
+<text x="226" y="232" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#ffffff">ELBO −2.2561</text>
+<text x="742" y="232" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#7ec8e3">KL 0.0523</text>
+<text x="60" y="308" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="15" font-weight="600" fill="#e8e8e8">q(z=1) = 0.66</text>
+<rect x="210" y="282" width="518.0" height="44" rx="6" fill="#1b3a4a" stroke="#7ec8e3" stroke-width="1.5"/>
+<rect x="728.0" y="282" width="2.0" height="44" rx="6" fill="#3a1b1b" stroke="#55c555" stroke-width="1.5"/>
+<text x="226" y="310" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#ffffff">ELBO −2.2038</text>
+<text x="742" y="310" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#55c555">KL 0.0000</text>
+<line x1="210" y1="106" x2="210" y2="338" stroke="#888" stroke-width="1" stroke-dasharray="3,4"/>
+<line x1="730" y1="106" x2="730" y2="338" stroke="#888" stroke-width="1" stroke-dasharray="3,4"/>
+<text x="60" y="356" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">log p(x) = −2.2038 로 고정. q가 사후분포에 닿으면 간극이 0이 되고 하한이 정확해진다.</text>
+</svg>

@@ -172,3 +172,5 @@ $$\beta$$ 가 두 자리에 나타났습니다. 최적 정책 $$\pi^\star \propt
 읽어주셔서 감사합니다. 😊
 
 **지난 글:** [라그랑주 승수와 KKT: 제약을 목적식 안으로 넣기](/articles/math-lagrange-and-kkt)
+
+**다음 글:** [중요도 비율과 클리핑: 예전 정책의 샘플을 재사용하는 대가](/articles/math-importance-ratio-and-clipping)

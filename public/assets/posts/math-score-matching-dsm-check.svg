@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="490" viewBox="0 0 880 490">
+<rect width="880" height="490" rx="12" fill="#0a0a0a"/>
+<text x="60" y="46" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="22" font-weight="700" fill="#e8e8e8">평균을 내면 개별 잡음이 주변 스코어가 된다</text>
+<text x="60" y="72" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">x0 이 −2 또는 +2인 데이터에 abar = 0.6 만큼 잡음을 섞었다.</text>
+<text x="60" y="94" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">같은 x_t 자리에 모인 표본의 −eps/sqrt(1−abar) 를 평균한 값이다.</text>
+<text x="80" y="138" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">x_t</text>
+<text x="240" y="138" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#55c555">표본 평균</text>
+<text x="470" y="138" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#7ec8e3">해석적 스코어</text>
+<text x="700" y="138" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">차이</text>
+<rect x="56" y="154" width="768" height="44" rx="8" fill="#111318" stroke="#2a2f3a" stroke-width="1"/>
+<text x="80" y="182" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#e8e8e8">−2.0</text>
+<text x="240" y="182" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" font-weight="600" fill="#55c555">1.1266</text>
+<text x="470" y="182" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" font-weight="600" fill="#7ec8e3">1.1270</text>
+<text x="700" y="182" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#9aa4b8">0.0004</text>
+<rect x="56" y="206" width="768" height="44" rx="8" fill="#111318" stroke="#2a2f3a" stroke-width="1"/>
+<text x="80" y="234" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#e8e8e8">−0.5</text>
+<text x="240" y="234" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" font-weight="600" fill="#55c555">−2.4715</text>
+<text x="470" y="234" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" font-weight="600" fill="#7ec8e3">−2.4652</text>
+<text x="700" y="234" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#9aa4b8">0.0063</text>
+<rect x="56" y="258" width="768" height="44" rx="8" fill="#111318" stroke="#2a2f3a" stroke-width="1"/>
+<text x="80" y="286" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#e8e8e8">0.0</text>
+<text x="240" y="286" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" font-weight="600" fill="#55c555">0.0141</text>
+<text x="470" y="286" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" font-weight="600" fill="#7ec8e3">0.0000</text>
+<text x="700" y="286" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#9aa4b8">0.0141</text>
+<rect x="56" y="310" width="768" height="44" rx="8" fill="#111318" stroke="#2a2f3a" stroke-width="1"/>
+<text x="80" y="338" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#e8e8e8">0.8</text>
+<text x="240" y="338" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" font-weight="600" fill="#55c555">1.8595</text>
+<text x="470" y="338" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" font-weight="600" fill="#7ec8e3">1.8572</text>
+<text x="700" y="338" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#9aa4b8">0.0023</text>
+<rect x="56" y="362" width="768" height="44" rx="8" fill="#111318" stroke="#2a2f3a" stroke-width="1"/>
+<text x="80" y="390" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#e8e8e8">2.0</text>
+<text x="240" y="390" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" font-weight="600" fill="#55c555">−1.1269</text>
+<text x="470" y="390" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" font-weight="600" fill="#7ec8e3">−1.1270</text>
+<text x="700" y="390" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#9aa4b8">0.0001</text>
+<text x="60" y="440" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">표본 하나의 −eps 는 스코어와 전혀 다른 값이다.</text>
+<text x="60" y="462" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">같은 x_t 에 모인 것을 평균해야 스코어가 된다 — MSE 최소해가 조건부 평균이라서다.</text>
+</svg>

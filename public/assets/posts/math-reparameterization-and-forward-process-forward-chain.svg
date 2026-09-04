@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="380" viewBox="0 0 880 380">
+<rect width="880" height="380" rx="12" fill="#0a0a0a"/>
+<defs>
+<marker id="b1" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto"><path d="M 0 0 L 13 7 L 0 14 z" fill="#7777cc"/></marker>
+<marker id="g1" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto"><path d="M 0 0 L 13 7 L 0 14 z" fill="#55c555"/></marker>
+</defs>
+<text x="60" y="46" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="22" font-weight="700" fill="#e8e8e8">t번 더한 결과를 한 번에 적을 수 있다</text>
+<text x="60" y="94" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#7777cc">정의대로: 한 스텝씩 t번</text>
+<circle cx="100" cy="140" r="26" fill="#111318" stroke="#7777cc" stroke-width="1.5"/>
+<text x="100" y="146" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="15" font-weight="600" fill="#e8e8e8">x₀</text>
+<circle cx="230" cy="140" r="26" fill="#111318" stroke="#7777cc" stroke-width="1.5"/>
+<text x="230" y="146" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="15" font-weight="600" fill="#e8e8e8">x₁</text>
+<circle cx="360" cy="140" r="26" fill="#111318" stroke="#7777cc" stroke-width="1.5"/>
+<text x="360" y="146" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="15" font-weight="600" fill="#e8e8e8">x₂</text>
+<circle cx="490" cy="140" r="26" fill="#111318" stroke="#7777cc" stroke-width="1.5"/>
+<text x="490" y="146" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="15" font-weight="600" fill="#e8e8e8">x₃</text>
+<circle cx="690" cy="140" r="26" fill="#111318" stroke="#7777cc" stroke-width="1.5"/>
+<text x="690" y="146" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="15" font-weight="600" fill="#e8e8e8">x_t</text>
+<line x1="128" y1="140" x2="202" y2="140" stroke="#7777cc" stroke-width="2" marker-end="url(#b1)"/>
+<line x1="258" y1="140" x2="332" y2="140" stroke="#7777cc" stroke-width="2" marker-end="url(#b1)"/>
+<line x1="388" y1="140" x2="462" y2="140" stroke="#7777cc" stroke-width="2" marker-end="url(#b1)"/>
+<line x1="518" y1="140" x2="662" y2="140" stroke="#7777cc" stroke-width="2" stroke-dasharray="5,3" marker-end="url(#b1)"/>
+<text x="590" y="122" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">…</text>
+<text x="70" y="188" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#ffffff">x_k = sqrt(1 - beta_k) * x_(k-1) + sqrt(beta_k) * z_k</text>
+<text x="70" y="210" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e05555">t = 743이면 743번을 돌려야 학습 표본 하나가 나온다</text>
+<line x1="60" y1="238" x2="820" y2="238" stroke="#2a2f3a" stroke-width="1"/>
+<text x="60" y="272" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#55c555">폐형: 한 번에</text>
+<circle cx="100" cy="316" r="26" fill="#111318" stroke="#55c555" stroke-width="1.5"/>
+<text x="100" y="322" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="15" font-weight="600" fill="#e8e8e8">x₀</text>
+<circle cx="690" cy="316" r="26" fill="#111318" stroke="#55c555" stroke-width="1.5"/>
+<text x="690" y="322" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="15" font-weight="600" fill="#e8e8e8">x_t</text>
+<path d="M 128 316 L 660 316" stroke="#55c555" stroke-width="2.5" marker-end="url(#g1)"/>
+<text x="394" y="304" text-anchor="middle" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#ffffff">x_t = sqrt(abar_t) * x_0 + sqrt(1 - abar_t) * z</text>
+<text x="394" y="352" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">z를 한 번 뽑고 곱셈 두 번. t를 무작위로 골라도 비용이 같다.</text>
+</svg>

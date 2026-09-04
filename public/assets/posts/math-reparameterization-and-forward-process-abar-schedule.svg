@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="420" viewBox="0 0 880 420">
+<rect width="880" height="420" rx="12" fill="#0a0a0a"/>
+<text x="60" y="46" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="22" font-weight="700" fill="#e8e8e8">신호와 잡음의 배분: 두 계수는 제곱합이 1이다</text>
+<text x="60" y="72" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">β를 0.0001에서 0.02까지 선형으로 늘린 1,000스텝 스케줄</text>
+<line x1="90" y1="330" x2="810" y2="330" stroke="#888" stroke-width="1.5"/>
+<line x1="90" y1="330" x2="90" y2="100" stroke="#888" stroke-width="1.5"/>
+<text x="818" y="335" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">t</text>
+<line x1="90" y1="330" x2="810" y2="330" stroke="#444" stroke-width="1" stroke-dasharray="3,4"/>
+<text x="78" y="335" text-anchor="end" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#9aa4b8">0.0</text>
+<line x1="90" y1="220" x2="810" y2="220" stroke="#444" stroke-width="1" stroke-dasharray="3,4"/>
+<text x="78" y="225" text-anchor="end" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#9aa4b8">0.5</text>
+<line x1="90" y1="110" x2="810" y2="110" stroke="#444" stroke-width="1" stroke-dasharray="3,4"/>
+<text x="78" y="115" text-anchor="end" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#9aa4b8">1.0</text>
+<text x="90" y="352" text-anchor="middle" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#9aa4b8">0</text>
+<text x="270" y="352" text-anchor="middle" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#9aa4b8">250</text>
+<text x="450" y="352" text-anchor="middle" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#9aa4b8">500</text>
+<text x="630" y="352" text-anchor="middle" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#9aa4b8">750</text>
+<text x="810" y="352" text-anchor="middle" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#9aa4b8">1000</text>
+<path d="M 90.7 110.0 L 97.9 110.2 L 105.1 110.7 L 112.3 111.4 L 119.5 112.2 L 126.7 113.3 L 133.9 114.6 L 141.1 116.1 L 148.3 117.9 L 155.5 119.8 L 162.7 121.9 L 169.9 124.1 L 177.1 126.6 L 184.3 129.2 L 191.5 132.0 L 198.7 135.0 L 205.9 138.1 L 213.1 141.3 L 220.3 144.7 L 227.5 148.2 L 234.7 151.8 L 241.9 155.5 L 249.1 159.3 L 256.3 163.2 L 263.5 167.1 L 270.7 171.1 L 277.9 175.2 L 285.1 179.3 L 292.3 183.5 L 299.5 187.7 L 306.7 191.9 L 313.9 196.1 L 321.1 200.3 L 328.3 204.6 L 335.5 208.8 L 342.7 212.9 L 349.9 217.1 L 357.1 221.2 L 364.3 225.2 L 371.5 229.3 L 378.7 233.2 L 385.9 237.1 L 393.1 240.9 L 400.3 244.7 L 407.5 248.4 L 414.7 252.0 L 421.9 255.5 L 429.1 258.9 L 436.3 262.2 L 443.5 265.5 L 450.7 268.6 L 457.9 271.7 L 465.1 274.7 L 472.3 277.5 L 479.5 280.3 L 486.7 283.0 L 493.9 285.5 L 501.1 288.0 L 508.3 290.4 L 515.5 292.6 L 522.7 294.8 L 529.9 296.9 L 537.1 298.9 L 544.3 300.8 L 551.5 302.6 L 558.7 304.4 L 565.9 306.0 L 573.1 307.6 L 580.3 309.0 L 587.5 310.4 L 594.7 311.8 L 601.9 313.0 L 609.1 314.2 L 616.3 315.3 L 623.5 316.4 L 630.7 317.4 L 637.9 318.3 L 645.1 319.2 L 652.3 320.0 L 659.5 320.7 L 666.7 321.5 L 673.9 322.1 L 681.1 322.7 L 688.3 323.3 L 695.5 323.9 L 702.7 324.4 L 709.9 324.8 L 717.1 325.3 L 724.3 325.7 L 731.5 326.0 L 738.7 326.4 L 745.9 326.7 L 753.1 327.0 L 760.3 327.3 L 767.5 327.5 L 774.7 327.7 L 781.9 327.9 L 789.1 328.1 L 796.3 328.3 L 803.5 328.5" stroke="#7ec8e3" stroke-width="2.5" fill="none"/>
+<path d="M 90.7 327.8 L 97.9 319.7 L 105.1 312.6 L 112.3 305.6 L 119.5 298.7 L 126.7 291.9 L 133.9 285.1 L 141.1 278.4 L 148.3 271.8 L 155.5 265.2 L 162.7 258.8 L 169.9 252.4 L 177.1 246.2 L 184.3 240.1 L 191.5 234.1 L 198.7 228.2 L 205.9 222.5 L 213.1 216.9 L 220.3 211.4 L 227.5 206.2 L 234.7 201.0 L 241.9 196.1 L 249.1 191.2 L 256.3 186.6 L 263.5 182.1 L 270.7 177.8 L 277.9 173.7 L 285.1 169.7 L 292.3 165.9 L 299.5 162.2 L 306.7 158.7 L 313.9 155.4 L 321.1 152.3 L 328.3 149.3 L 335.5 146.4 L 342.7 143.7 L 349.9 141.2 L 357.1 138.8 L 364.3 136.5 L 371.5 134.4 L 378.7 132.4 L 385.9 130.6 L 393.1 128.8 L 400.3 127.2 L 407.5 125.7 L 414.7 124.3 L 421.9 123.0 L 429.1 121.8 L 436.3 120.7 L 443.5 119.7 L 450.7 118.7 L 457.9 117.9 L 465.1 117.1 L 472.3 116.4 L 479.5 115.7 L 486.7 115.1 L 493.9 114.5 L 501.1 114.0 L 508.3 113.6 L 515.5 113.2 L 522.7 112.8 L 529.9 112.5 L 537.1 112.2 L 544.3 111.9 L 551.5 111.7 L 558.7 111.5 L 565.9 111.3 L 573.1 111.1 L 580.3 111.0 L 587.5 110.9 L 594.7 110.8 L 601.9 110.7 L 609.1 110.6 L 616.3 110.5 L 623.5 110.4 L 630.7 110.4 L 637.9 110.3 L 645.1 110.3 L 652.3 110.2 L 659.5 110.2 L 666.7 110.2 L 673.9 110.1 L 681.1 110.1 L 688.3 110.1 L 695.5 110.1 L 702.7 110.1 L 709.9 110.1 L 717.1 110.1 L 724.3 110.0 L 731.5 110.0 L 738.7 110.0 L 745.9 110.0 L 753.1 110.0 L 760.3 110.0 L 767.5 110.0 L 774.7 110.0 L 781.9 110.0 L 789.1 110.0 L 796.3 110.0 L 803.5 110.0" stroke="#7777cc" stroke-width="2.5" fill="none"/>
+<text x="500" y="231" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="15" font-weight="600" fill="#7ec8e3">sqrt(abar_t) · 남은 신호</text>
+<text x="500" y="141" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="15" font-weight="600" fill="#7777cc">sqrt(1 - abar_t) · 섞인 잡음</text>
+<circle cx="162" cy="122" r="5" fill="#e8e8e8"/>
+<circle cx="162" cy="259" r="5" fill="#e8e8e8"/>
+<line x1="162" y1="106" x2="162" y2="330" stroke="#333" stroke-width="1" stroke-dasharray="2,5"/>
+<circle cx="450" cy="268" r="5" fill="#e8e8e8"/>
+<circle cx="450" cy="119" r="5" fill="#e8e8e8"/>
+<line x1="450" y1="106" x2="450" y2="330" stroke="#333" stroke-width="1" stroke-dasharray="2,5"/>
+<circle cx="738" cy="326" r="5" fill="#e8e8e8"/>
+<circle cx="738" cy="110" r="5" fill="#e8e8e8"/>
+<line x1="738" y1="106" x2="738" y2="330" stroke="#333" stroke-width="1" stroke-dasharray="2,5"/>
+<text x="162" y="106" text-anchor="middle" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#e8e8e8">0.95</text>
+<text x="170" y="279" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#e8e8e8">0.32</text>
+<text x="438" y="290" text-anchor="end" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#e8e8e8">0.28</text>
+<text x="450" y="103" text-anchor="middle" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#e8e8e8">0.96</text>
+<text x="60" y="374" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">t = 100에서 벌써 신호가 0.95, 잡음이 0.32다. t = 500이면 자리가 뒤바뀐다.</text>
+<text x="60" y="396" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">두 계수의 제곱합이 1이라 x_t 의 크기가 t와 무관하게 일정하다.</text>
+</svg>

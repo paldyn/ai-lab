@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="432" viewBox="0 0 880 432">
+<rect width="880" height="432" rx="12" fill="#0a0a0a"/>
+<text x="60" y="46" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="22" font-weight="700" fill="#e8e8e8">신경망 호출 수를 맞춰 비교하면 교차점이 있다</text>
+<text x="60" y="72" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">하이운은 한 스텝에 신경망을 두 번 부른다. 비용을 맞추려면 스텝 수를 절반으로 줘야 한다.</text>
+<text x="80" y="118" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">신경망 호출</text>
+<text x="240" y="118" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e05555">오일러 (같은 스텝)</text>
+<text x="470" y="118" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#55c555">하이운 (절반 스텝)</text>
+<text x="700" y="118" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">누가 낫나</text>
+<rect x="56" y="134" width="768" height="42" rx="8" fill="#111318" stroke="#2a2f3a" stroke-width="1"/>
+<text x="80" y="161" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#e8e8e8">20</text>
+<text x="240" y="161" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#ffffff">1.60e−02</text>
+<text x="470" y="161" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#ffffff">1.89e−02</text>
+<text x="700" y="161" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" font-weight="600" fill="#e05555">오일러 우세</text>
+<rect x="56" y="184" width="768" height="42" rx="8" fill="#111318" stroke="#2a2f3a" stroke-width="1"/>
+<text x="80" y="211" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#e8e8e8">40</text>
+<text x="240" y="211" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#ffffff">9.00e−03</text>
+<text x="470" y="211" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#ffffff">5.28e−03</text>
+<text x="700" y="211" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" font-weight="600" fill="#55c555">1.7배</text>
+<rect x="56" y="234" width="768" height="42" rx="8" fill="#111318" stroke="#2a2f3a" stroke-width="1"/>
+<text x="80" y="261" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#e8e8e8">80</text>
+<text x="240" y="261" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#ffffff">4.75e−03</text>
+<text x="470" y="261" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#ffffff">1.41e−03</text>
+<text x="700" y="261" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" font-weight="600" fill="#55c555">3.4배</text>
+<rect x="56" y="284" width="768" height="42" rx="8" fill="#111318" stroke="#2a2f3a" stroke-width="1"/>
+<text x="80" y="311" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#e8e8e8">160</text>
+<text x="240" y="311" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#ffffff">2.44e−03</text>
+<text x="470" y="311" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#ffffff">3.63e−04</text>
+<text x="700" y="311" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" font-weight="600" fill="#55c555">6.7배</text>
+<rect x="56" y="334" width="768" height="42" rx="8" fill="#111318" stroke="#2a2f3a" stroke-width="1"/>
+<text x="80" y="361" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#e8e8e8">320</text>
+<text x="240" y="361" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#ffffff">1.24e−03</text>
+<text x="470" y="361" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#ffffff">9.21e−05</text>
+<text x="700" y="361" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" font-weight="600" fill="#55c555">13.4배</text>
+<text x="60" y="410" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">호출 20번에서는 오일러가 이긴다. 고차 solver의 이득은 스텝이 충분히 촘촘해진 뒤에야 나온다.</text>
+</svg>

@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="400" viewBox="0 0 880 400">
+<rect width="880" height="400" rx="12" fill="#0a0a0a"/>
+<defs><marker id="ea" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto"><path d="M 0 0 L 13 7 L 0 14 z" fill="#e05555"/></marker></defs>
+<text x="60" y="46" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="22" font-weight="700" fill="#e8e8e8">한 걸음의 오차는 h², 쌓인 오차는 h</text>
+<text x="60" y="72" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">오일러는 곡선을 매번 접선으로 대신한다. 한 걸음의 오차는 테일러의 이차항이고, 그것을 1/h 번 더한다.</text>
+<path d="M 110.0 320.0 L 115.2 319.9 L 120.4 319.8 L 125.6 319.6 L 130.8 319.4 L 136.1 319.1 L 141.3 318.8 L 146.5 318.5 L 151.7 318.1 L 156.9 317.6 L 162.1 317.2 L 167.3 316.7 L 172.5 316.2 L 177.7 315.6 L 182.9 315.0 L 188.2 314.4 L 193.4 313.7 L 198.6 313.0 L 203.8 312.3 L 209.0 311.6 L 214.2 310.8 L 219.4 310.0 L 224.6 309.2 L 229.8 308.4 L 235.0 307.5 L 240.3 306.6 L 245.5 305.7 L 250.7 304.7 L 255.9 303.8 L 261.1 302.8 L 266.3 301.7 L 271.5 300.7 L 276.7 299.6 L 281.9 298.5 L 287.1 297.4 L 292.4 296.3 L 297.6 295.1 L 302.8 293.9 L 308.0 292.7 L 313.2 291.5 L 318.4 290.2 L 323.6 289.0 L 328.8 287.7 L 334.0 286.3 L 339.2 285.0 L 344.5 283.6 L 349.7 282.2 L 354.9 280.8 L 360.1 279.4 L 365.3 278.0 L 370.5 276.5 L 375.7 275.0 L 380.9 273.5 L 386.1 272.0 L 391.3 270.4 L 396.6 268.8 L 401.8 267.2 L 407.0 265.6 L 412.2 264.0 L 417.4 262.4 L 422.6 260.7 L 427.8 259.0 L 433.0 257.3 L 438.2 255.6 L 443.4 253.8 L 448.7 252.0 L 453.9 250.2 L 459.1 248.4 L 464.3 246.6 L 469.5 244.8 L 474.7 242.9 L 479.9 241.0 L 485.1 239.1 L 490.3 237.2 L 495.5 235.3 L 500.8 233.3 L 506.0 231.3 L 511.2 229.4 L 516.4 227.3 L 521.6 225.3 L 526.8 223.3 L 532.0 221.2 L 537.2 219.1 L 542.4 217.0 L 547.6 214.9 L 552.9 212.8 L 558.1 210.6 L 563.3 208.4 L 568.5 206.3 L 573.7 204.0 L 578.9 201.8 L 584.1 199.6 L 589.3 197.3 L 594.5 195.0 L 599.7 192.8 L 605.0 190.4 L 610.2 188.1 L 615.4 185.8 L 620.6 183.4 L 625.8 181.0 L 631.0 178.6 L 636.2 176.2 L 641.4 173.8 L 646.6 171.4 L 651.8 168.9 L 657.1 166.4 L 662.3 163.9 L 667.5 161.4 L 672.7 158.9 L 677.9 156.3 L 683.1 153.8 L 688.3 151.2 L 693.5 148.6 L 698.7 146.0 L 703.9 143.4 L 709.2 140.7 L 714.4 138.1 L 719.6 135.4 L 724.8 132.7 L 730.0 130.0" stroke="#7ec8e3" stroke-width="2.5" fill="none"/>
+<text x="670" y="141" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="15" font-weight="600" fill="#7ec8e3">참 해</text>
+<path d="M 110.0 320.0 L 265.0 320.0 L 420.0 289.4 L 575.0 239.7 L 730.0 173.7" stroke="#e05555" stroke-width="2.5" fill="none"/>
+<circle cx="110.0" cy="320.0" r="5" fill="#e05555"/>
+<circle cx="265.0" cy="320.0" r="5" fill="#e05555"/>
+<circle cx="420.0" cy="289.4" r="5" fill="#e05555"/>
+<circle cx="575.0" cy="239.7" r="5" fill="#e05555"/>
+<circle cx="730.0" cy="173.7" r="5" fill="#e05555"/>
+<text x="470" y="304" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="15" font-weight="600" fill="#e05555">오일러 근사</text>
+<line x1="730.0" y1="173.7" x2="730.0" y2="136.0" stroke="#e05555" stroke-width="2.5" stroke-dasharray="4,4" marker-end="url(#ea)"/>
+<text x="744" y="152" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e05555">전역 오차</text>
+<line x1="265.0" y1="328" x2="265.0" y2="338" stroke="#888" stroke-width="1"/>
+<line x1="420.0" y1="328" x2="420.0" y2="338" stroke="#888" stroke-width="1"/>
+<line x1="575.0" y1="328" x2="575.0" y2="338" stroke="#888" stroke-width="1"/>
+<line x1="110" y1="328" x2="730" y2="328" stroke="#888" stroke-width="1.5"/>
+<text x="420" y="360" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">한 칸이 h. 칸 수는 1/h 개.</text>
+<text x="60" y="390" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#ffffff">한 걸음 오차 ~ h²   ×   걸음 수 1/h   =   전역 오차 ~ h</text>
+</svg>

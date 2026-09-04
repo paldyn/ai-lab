@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="440" viewBox="0 0 880 440">
+<rect width="880" height="440" rx="12" fill="#0a0a0a"/>
+<text x="60" y="46" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="22" font-weight="700" fill="#e8e8e8">로그-로그에서 기울기가 곧 차수다</text>
+<text x="60" y="72" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">가우시안 데이터의 확률 흐름 ODE를 정확한 해와 비교한 오차. 가로는 스텝 수, 세로는 오차(둘 다 로그).</text>
+<line x1="110" y1="340" x2="790" y2="340" stroke="#888" stroke-width="1.5"/>
+<line x1="110" y1="340" x2="110" y2="106" stroke="#888" stroke-width="1.5"/>
+<text x="798" y="345" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">스텝</text>
+<line x1="110" y1="120.0" x2="790" y2="120.0" stroke="#333" stroke-width="1" stroke-dasharray="3,5"/>
+<text x="98" y="125.0" text-anchor="end" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#9aa4b8">1e−1</text>
+<line x1="110" y1="164.0" x2="790" y2="164.0" stroke="#333" stroke-width="1" stroke-dasharray="3,5"/>
+<text x="98" y="169.0" text-anchor="end" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#9aa4b8">1e−2</text>
+<line x1="110" y1="208.0" x2="790" y2="208.0" stroke="#333" stroke-width="1" stroke-dasharray="3,5"/>
+<text x="98" y="213.0" text-anchor="end" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#9aa4b8">1e−3</text>
+<line x1="110" y1="252.0" x2="790" y2="252.0" stroke="#333" stroke-width="1" stroke-dasharray="3,5"/>
+<text x="98" y="257.0" text-anchor="end" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#9aa4b8">1e−4</text>
+<line x1="110" y1="296.0" x2="790" y2="296.0" stroke="#333" stroke-width="1" stroke-dasharray="3,5"/>
+<text x="98" y="301.0" text-anchor="end" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#9aa4b8">1e−5</text>
+<line x1="110" y1="340.0" x2="790" y2="340.0" stroke="#333" stroke-width="1" stroke-dasharray="3,5"/>
+<text x="98" y="345.0" text-anchor="end" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#9aa4b8">1e−6</text>
+<text x="110.0" y="362" text-anchor="middle" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#9aa4b8">10</text>
+<text x="450.0" y="362" text-anchor="middle" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#9aa4b8">100</text>
+<text x="790.0" y="362" text-anchor="middle" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#9aa4b8">1000</text>
+<path d="M 110.0 147.4 L 212.4 155.0 L 314.7 166.0 L 417.1 178.2 L 519.4 191.0 L 621.8 204.0 L 790.0 225.6" stroke="#e05555" stroke-width="2.5" fill="none"/>
+<circle cx="110.0" cy="147.4" r="5" fill="#e05555"/>
+<circle cx="212.4" cy="155.0" r="5" fill="#e05555"/>
+<circle cx="314.7" cy="166.0" r="5" fill="#e05555"/>
+<circle cx="417.1" cy="178.2" r="5" fill="#e05555"/>
+<circle cx="519.4" cy="191.0" r="5" fill="#e05555"/>
+<circle cx="621.8" cy="204.0" r="5" fill="#e05555"/>
+<circle cx="790.0" cy="225.6" r="5" fill="#e05555"/>
+<path d="M 110.0 151.8 L 212.4 176.2 L 314.7 201.5 L 417.1 227.4 L 519.4 253.6 L 621.8 279.9 L 790.0 323.4" stroke="#55c555" stroke-width="2.5" fill="none"/>
+<circle cx="110.0" cy="151.8" r="5" fill="#55c555"/>
+<circle cx="212.4" cy="176.2" r="5" fill="#55c555"/>
+<circle cx="314.7" cy="201.5" r="5" fill="#55c555"/>
+<circle cx="417.1" cy="227.4" r="5" fill="#55c555"/>
+<circle cx="519.4" cy="253.6" r="5" fill="#55c555"/>
+<circle cx="621.8" cy="279.9" r="5" fill="#55c555"/>
+<circle cx="790.0" cy="323.4" r="5" fill="#55c555"/>
+<text x="510" y="158" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="15" font-weight="600" fill="#e05555">오일러 · 기울기 −1</text>
+<text x="239" y="306" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="15" font-weight="600" fill="#55c555">하이운 · 기울기 −2</text>
+<text x="60" y="384" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">스텝을 열 배 늘리면 오일러는 오차가 1/10, 하이운은 1/100이 된다.</text>
+<text x="60" y="406" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">스텝이 아주 적은 왼쪽 끝에서는 두 직선이 붙는다 — 거기서는 차수 이론이 아직 안 통한다.</text>
+</svg>

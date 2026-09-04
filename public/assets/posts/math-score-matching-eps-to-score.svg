@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="380" viewBox="0 0 880 380">
+<rect width="880" height="380" rx="12" fill="#0a0a0a"/>
+<defs>
+<marker id="f1" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto"><path d="M 0 0 L 13 7 L 0 14 z" fill="#7ec8e3"/></marker>
+<marker id="f2" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto"><path d="M 0 0 L 13 7 L 0 14 z" fill="#55c555"/></marker>
+</defs>
+<text x="60" y="46" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="22" font-weight="700" fill="#e8e8e8">노이즈 예측과 스코어는 상수배로 이어져 있다</text>
+<text x="60" y="72" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">학습 목표가 셋처럼 보이지만 t를 고정하면 서로 상수를 곱해 옮겨 갈 수 있는 한 가지다.</text>
+<rect x="60" y="110" width="220" height="72" rx="10" fill="#111318" stroke="#7ec8e3" stroke-width="1.5"/>
+<text x="170" y="140" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#e8e8e8">노이즈 예측 eps</text>
+<text x="170" y="162" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">섞인 잡음을 맞힌다</text>
+<rect x="330" y="110" width="220" height="72" rx="10" fill="#111318" stroke="#55c555" stroke-width="1.5"/>
+<text x="440" y="140" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#e8e8e8">스코어 s</text>
+<text x="440" y="162" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">로그밀도의 기울기</text>
+<rect x="600" y="110" width="220" height="72" rx="10" fill="#111318" stroke="#7777cc" stroke-width="1.5"/>
+<text x="710" y="140" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#e8e8e8">원본 예측 x0</text>
+<text x="710" y="162" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">깨끗한 이미지를 맞힌다</text>
+<line x1="280" y1="146" x2="330" y2="146" stroke="#55c555" stroke-width="2" marker-end="url(#f2)"/>
+<line x1="550" y1="146" x2="600" y2="146" stroke="#7ec8e3" stroke-width="2" marker-end="url(#f1)"/>
+<rect x="56" y="212" width="768" height="76" rx="10" fill="#000000" stroke="#3a4a6e" stroke-width="1"/>
+<text x="76" y="240" xml:space="preserve" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#ffffff">s(x_t) = - eps(x_t) / sqrt(1 - abar_t)</text>
+<text x="76" y="262" xml:space="preserve" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#ffffff">x0(x_t) = (x_t + (1 - abar_t) * s(x_t)) / sqrt(abar_t)</text>
+<text x="60" y="322" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">t가 정해지면 sqrt(1 − abar_t) 는 그냥 숫자다. 그래서 셋 중 무엇을 맞히도록 학습하든 같은 함수를 배운다.</text>
+<text x="60" y="344" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">다른 것은 손실에 t마다 어떤 가중치가 붙느냐뿐이고, 그것이 학습의 안정성을 가른다.</text>
+</svg>

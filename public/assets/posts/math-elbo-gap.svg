@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="420" viewBox="0 0 880 420">
+<rect width="880" height="420" rx="12" fill="#0a0a0a"/>
+<text x="60" y="46" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="22" font-weight="700" fill="#e8e8e8">하한은 q를 고를수록 위로 올라와 천장에 닿는다</text>
+<text x="60" y="72" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">잠재변수가 둘뿐인 장난감 모형. 가로축은 q(z=1), 세로축은 값.</text>
+<line x1="100" y1="330" x2="800" y2="330" stroke="#888" stroke-width="1.5"/>
+<line x1="100" y1="330" x2="100" y2="106" stroke="#888" stroke-width="1.5"/>
+<text x="808" y="335" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">q</text>
+<text x="88" y="318" text-anchor="end" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#9aa4b8">-3.2</text>
+<line x1="100" y1="313" x2="800" y2="313" stroke="#333" stroke-width="1" stroke-dasharray="3,5"/>
+<text x="88" y="251" text-anchor="end" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#9aa4b8">-2.8</text>
+<line x1="100" y1="246" x2="800" y2="246" stroke="#333" stroke-width="1" stroke-dasharray="3,5"/>
+<text x="88" y="184" text-anchor="end" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#9aa4b8">-2.4</text>
+<line x1="100" y1="179" x2="800" y2="179" stroke="#333" stroke-width="1" stroke-dasharray="3,5"/>
+<text x="100" y="352" text-anchor="middle" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#9aa4b8">0.00</text>
+<text x="275" y="352" text-anchor="middle" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#9aa4b8">0.25</text>
+<text x="450" y="352" text-anchor="middle" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#9aa4b8">0.50</text>
+<text x="625" y="352" text-anchor="middle" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#9aa4b8">0.75</text>
+<text x="800" y="352" text-anchor="middle" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#9aa4b8">1.00</text>
+<line x1="100" y1="145.8" x2="800" y2="145.8" stroke="#55c555" stroke-width="2" stroke-dasharray="6,4"/>
+<text x="796" y="134" text-anchor="end" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="14" font-weight="600" fill="#55c555">log p(x) = −2.2038  (q와 무관한 천장)</text>
+<path d="M 114.0 307.2 L 121.0 300.0 L 128.0 293.3 L 135.0 287.1 L 142.0 281.2 L 149.0 275.6 L 156.0 270.3 L 163.0 265.2 L 170.0 260.3 L 177.0 255.6 L 184.0 251.1 L 191.0 246.7 L 198.0 242.5 L 205.0 238.4 L 212.0 234.5 L 219.0 230.7 L 226.0 227.0 L 233.0 223.4 L 240.0 219.9 L 247.0 216.5 L 254.0 213.3 L 261.0 210.1 L 268.0 207.0 L 275.0 204.0 L 282.0 201.1 L 289.0 198.3 L 296.0 195.6 L 303.0 192.9 L 310.0 190.4 L 317.0 187.9 L 324.0 185.5 L 331.0 183.2 L 338.0 180.9 L 345.0 178.8 L 352.0 176.7 L 359.0 174.6 L 366.0 172.7 L 373.0 170.8 L 380.0 169.0 L 387.0 167.2 L 394.0 165.6 L 401.0 164.0 L 408.0 162.4 L 415.0 161.0 L 422.0 159.6 L 429.0 158.2 L 436.0 157.0 L 443.0 155.8 L 450.0 154.6 L 457.0 153.6 L 464.0 152.6 L 471.0 151.6 L 478.0 150.8 L 485.0 150.0 L 492.0 149.3 L 499.0 148.6 L 506.0 148.0 L 513.0 147.5 L 520.0 147.0 L 527.0 146.7 L 534.0 146.4 L 541.0 146.1 L 548.0 146.0 L 555.0 145.9 L 562.0 145.8 L 569.0 145.9 L 576.0 146.0 L 583.0 146.2 L 590.0 146.5 L 597.0 146.9 L 604.0 147.3 L 611.0 147.9 L 618.0 148.5 L 625.0 149.2 L 632.0 150.0 L 639.0 150.9 L 646.0 151.9 L 653.0 152.9 L 660.0 154.1 L 667.0 155.4 L 674.0 156.8 L 681.0 158.3 L 688.0 159.9 L 695.0 161.7 L 702.0 163.6 L 709.0 165.6 L 716.0 167.8 L 723.0 170.1 L 730.0 172.6 L 737.0 175.3 L 744.0 178.2 L 751.0 181.3 L 758.0 184.7 L 765.0 188.4 L 772.0 192.4 L 779.0 196.9 L 786.0 202.0" stroke="#7ec8e3" stroke-width="2.5" fill="none"/>
+<text x="198" y="269" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="15" font-weight="600" fill="#7ec8e3">ELBO(q)</text>
+<line x1="135" y1="287" x2="135" y2="146" stroke="#e05555" stroke-width="2.5"/>
+<text x="145" y="221" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#e05555">간극 0.84</text>
+<line x1="450" y1="155" x2="450" y2="146" stroke="#e05555" stroke-width="2.5"/>
+<text x="460" y="185" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#e05555">간극 0.05</text>
+<circle cx="560" cy="146" r="5" fill="#55c555"/>
+<text x="560" y="172" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#55c555">q = 사후분포 0.658</text>
+<text x="60" y="374" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">곡선이 천장에 닿는 자리는 q가 사후분포와 같아지는 한 점뿐이고, 거기서 간극이 정확히 0이다.</text>
+<text x="60" y="396" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">q를 좁은 족에서만 고르면 곡선의 최고점이 천장 아래에 머문다 — 그 남은 높이가 하한의 헐거움이다.</text>
+</svg>

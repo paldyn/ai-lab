@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="430" viewBox="0 0 880 430">
+<rect width="880" height="430" rx="12" fill="#0a0a0a"/>
+<defs>
+<marker id="gb" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto"><path d="M 0 0 L 13 7 L 0 14 z" fill="#888"/></marker>
+<marker id="gr" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto"><path d="M 0 0 L 13 7 L 0 14 z" fill="#e05555"/></marker>
+<marker id="gg" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto"><path d="M 0 0 L 13 7 L 0 14 z" fill="#55c555"/></marker>
+</defs>
+<text x="60" y="46" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="22" font-weight="700" fill="#e8e8e8">그래디언트가 표집을 어떻게 통과하는가</text>
+<text x="60" y="92" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#e05555">로그 미분 트릭 · 표집은 막힌 채로 두고 돌아간다</text>
+<rect x="60" y="108" width="150" height="60" rx="10" fill="#111318" stroke="#7777cc" stroke-width="1.5"/>
+<text x="135" y="144" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="15" font-weight="600" fill="#e8e8e8">θ</text>
+<rect x="280" y="108" width="150" height="60" rx="10" fill="#111318" stroke="#7777cc" stroke-width="1.5"/>
+<text x="355" y="144" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="15" font-weight="600" fill="#e8e8e8">x ~ p(x;θ)</text>
+<rect x="500" y="108" width="150" height="60" rx="10" fill="#111318" stroke="#7777cc" stroke-width="1.5"/>
+<text x="575" y="144" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="15" font-weight="600" fill="#e8e8e8">f(x)</text>
+<line x1="210" y1="138" x2="280" y2="138" stroke="#888" stroke-width="2" marker-end="url(#gb)"/>
+<line x1="430" y1="138" x2="500" y2="138" stroke="#888" stroke-width="2" marker-end="url(#gb)"/>
+<text x="222" y="128" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="12" fill="#888">뽑는다</text>
+<path d="M 570 108 L 570 76 L 135 76 L 135 106" stroke="#e05555" stroke-width="2.5" fill="none" stroke-dasharray="5,3" marker-end="url(#gr)"/>
+<text x="676" y="132" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e05555">f 는 값만 쓴다</text>
+<text x="676" y="152" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e05555">(미분 안 함)</text>
+<text x="240" y="196" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">그래디언트는 f 를 통과하지 못하고 밀도의 로그를 타고 돌아온다</text>
+<text x="60" y="256" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#55c555">재매개변수화 · 잡음을 밖으로 빼서 길을 뚫는다</text>
+<rect x="60" y="272" width="150" height="60" rx="10" fill="#111318" stroke="#7777cc" stroke-width="1.5"/>
+<text x="135" y="308" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="15" font-weight="600" fill="#e8e8e8">θ = (μ, σ)</text>
+<rect x="280" y="272" width="150" height="60" rx="10" fill="#111318" stroke="#55c555" stroke-width="1.5"/>
+<text x="355" y="308" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="15" font-weight="600" fill="#e8e8e8">x = μ + σz</text>
+<rect x="500" y="272" width="150" height="60" rx="10" fill="#111318" stroke="#7777cc" stroke-width="1.5"/>
+<text x="575" y="308" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="15" font-weight="600" fill="#e8e8e8">f(x)</text>
+<rect x="280" y="364" width="150" height="44" rx="10" fill="#111318" stroke="#7777cc" stroke-width="1.5"/>
+<text x="355" y="392" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="15" font-weight="600" fill="#e8e8e8">z ~ N(0, I)</text>
+<line x1="210" y1="302" x2="280" y2="302" stroke="#888" stroke-width="2" marker-end="url(#gb)"/>
+<line x1="430" y1="302" x2="500" y2="302" stroke="#888" stroke-width="2" marker-end="url(#gb)"/>
+<line x1="355" y1="364" x2="355" y2="336" stroke="#888" stroke-width="2" marker-end="url(#gb)"/>
+<text x="376" y="356" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="12" fill="#888">θ와 무관하게 한 번만 뽑는다</text>
+<path d="M 570 272 L 570 240 L 135 240 L 135 270" stroke="#55c555" stroke-width="2.5" fill="none" marker-end="url(#gg)"/>
+<text x="676" y="296" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#55c555">f′ 를 실제로 쓴다</text>
+<text x="676" y="316" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#55c555">(연쇄법칙 그대로)</text>
+</svg>
