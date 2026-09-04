@@ -160,7 +160,7 @@ export interface NewsDetail {
   commentary: string;
 }
 
-export const globalNewsUpdatedAt = '2026-09-01';
+export const globalNewsUpdatedAt = '2026-09-03';
 
 /**
  * 공식 발표 한 건 = 항목 한 개. 2026년 1월부터 쌓는 아카이브이며 오래된 항목을
@@ -171,6 +171,91 @@ export const globalNewsUpdatedAt = '2026-09-01';
  * 목록에서 파생됩니다. 갱신 시 globalNewsUpdatedAt도 함께 올립니다.
  */
 const entries: NewsItem[] = [
+  {
+    id: 'safety-overview-gpt-6-astra',
+    source: 'OpenAI',
+    kind: 'model',
+    title: 'OpenAI, GPT-6 Astra 공개 — 사이버 Critical에 처음 도달',
+    summary:
+      'OpenAI가 지금까지 널리 배포한 것 중 가장 뛰어난 모델이라며 GPT-6 Astra를 공개했다. ' +
+      'Preparedness Framework의 사이버보안 Critical 등급에 닿은 첫 모델이라 격리·암호화와 ' +
+      '전 궤적 모니터링을 함께 붙였고, 사고 사슬 감시 가능성은 GPT-5.6 Sol보다 떨어진다고 밝혔다.',
+    publishedAt: '2026-09-03',
+    collectedAt: '2026-09-04',
+    category: 'Frontier',
+    signal: '프런티어 모델 안전',
+    url: 'https://openai.com/index/safety-overview-gpt-6-astra',
+    model: {
+      family: 'GPT',
+      name: 'GPT-6 Astra',
+      kind: '신규 모델',
+      status: '공개',
+      useCase: '에이전틱 코딩과 사이버 작업',
+      headline: '널리 배포한 모델 중 처음으로 사이버 Critical 등급에 닿았다.',
+      logo: 'assets/openai.svg',
+      tone: 'gpt',
+    },
+  },
+  {
+    id: 'daybreak-for-frontline-defenders',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'OpenAI, 필수 서비스 방어에 10억 달러 Daybreak 지원',
+    summary:
+      'OpenAI가 상수도·전력망과 주·지방정부, 지역 은행처럼 자원이 부족한 방어자에게 Daybreak ' +
+      '사이버 모델 접근을 보조하는 데 10억 달러를 약정했다. MS-ISAC와 공공부문·수도 시범 사업을 ' +
+      '열고, 파트너들은 Daybreak 모델을 넣은 제품·서비스 35개 이상을 함께 공개했다.',
+    publishedAt: '2026-09-03',
+    collectedAt: '2026-09-04',
+    category: 'Corporate',
+    signal: '사이버 방어 지원',
+    url: 'https://openai.com/index/daybreak-for-frontline-defenders',
+  },
+  {
+    id: 'legora-financial-statement-review-with-astra',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'Legora, GPT-6 Astra로 문서 41건 재무제표 대사를 몇 분에',
+    summary:
+      '법률 업무용 에이전트 플랫폼 Legora가 GPT-6 Astra로 문서 41건에 걸친 재무제표 대사를 한 번에 ' +
+      '끝냈다고 밝혔다. 저녁 한나절에서 며칠까지 걸리던 작업이며, 자체 벤치마크 BAR에서 이 작업 ' +
+      '성능이 이전 모델보다 약 40% 올랐다.',
+    publishedAt: '2026-09-03',
+    collectedAt: '2026-09-04',
+    category: 'Product',
+    signal: '기업 도입 사례',
+    url: 'https://openai.com/index/legora-financial-statement-review-with-astra',
+  },
+  {
+    id: 'playco-game-prototyping-with-astra',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'Playco, GPT-6 Astra로 게임 프로토타입 수작업 50% 감소',
+    summary:
+      'Playco가 게임 개발자용 AI IDE Playbot에 GPT-6 Astra를 넣어 회색 상자 프로토타입 하나에서 ' +
+      '테마가 다른 게임 셋을 한 번에 만들었다고 밝혔다. 이전 모델과 비교해 사람이 손으로 고치는 ' +
+      '횟수가 50% 줄었고 공간 추론과 Unity 반응형 UI에서 개선을 봤다고 적었다.',
+    publishedAt: '2026-09-03',
+    collectedAt: '2026-09-04',
+    category: 'Product',
+    signal: '기업 도입 사례',
+    url: 'https://openai.com/index/playco-game-prototyping-with-astra',
+  },
+  {
+    id: 'atv-big-air-tour',
+    source: 'OpenAI',
+    kind: 'company',
+    title: '두 명짜리 ATV Big Air Tour, ChatGPT Work로 재고 정리 2~3시간',
+    summary:
+      '미국 전역 26개 투어를 두 사람이 꾸리는 ATV Big Air Tour가 ChatGPT Work로 재고 파악과 ' +
+      '재주문에 걸리던 2~3일을 2~3시간으로 줄였다고 밝혔다. 매체 30여 곳의 행사 정보 확인은 ' +
+      '주당 8시간에서 1시간이 됐다.',
+    publishedAt: '2026-09-02',
+    collectedAt: '2026-09-04',
+    category: 'Product',
+    signal: '중소기업 도입',
+    url: 'https://openai.com/index/atv-big-air-tour',
+  },
   {
     id: 'introducing-weathernext-3-our-most-advanced-and-accurate-global-weather-ai-model',
     source: 'Google DeepMind',
