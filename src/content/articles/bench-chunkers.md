@@ -506,3 +506,5 @@ R@1은 기준선과 소수점 넷째 자리까지 같다.
 읽어주셔서 감사합니다. 😊
 
 **지난 글:** [한국어 임베딩 모델 6종 CPU 실측 — STS 2위 모델이 문단 검색에서는 4위였다](/articles/bench-korean-embedding-models)
+
+**다음 글:** [근사 최근접 인덱스 다섯의 recall-지연 지도 — 같은 설정이 난수에서 0.29, 실제 임베딩에서 0.97](/articles/bench-ann-recall-qps-tradeoff)
