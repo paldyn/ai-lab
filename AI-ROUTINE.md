@@ -8,7 +8,8 @@
 
 `---` 아래가 지시다. 위 머리말은 사람이 읽는 자리라 루틴은 건너뛴다.
 
-마지막 갱신: 2026-09-01 (STEP 1 앞에서 원격 main에 맞춤, level 값을 초급 / 중급 / 고급으로 바로잡음)
+마지막 갱신: 2026-09-04 (예정 주제 60편 보충 — 아래 「목록이 바닥나기 전에」 참고)
+이전 갱신: 2026-09-01 (STEP 1 앞에서 원격 main에 맞춤, level 값을 초급 / 중급 / 고급으로 바로잡음)
 이전 갱신: 2026-08-23 (완료 보고에 읽은 파일 목록 추가)
 이전 갱신: 2026-08-19 (지시서를 저장소로 옮김, 사슬은 같은 카테고리 안에서만,
 카테고리는 CLAUDE.md 접두사 표를 따르도록 고침)
@@ -196,6 +197,66 @@ ai-governance-risk-assessment
 ai-governance-audit-trail
 ai-governance-internal-policy
 guardrails-red-teaming
+tool-registry-and-versioning
+tool-idempotency-and-retries
+tool-long-running-jobs
+function-calling-argument-validation
+function-calling-evaluation
+agent-state-persistence
+agent-concurrency-control
+agent-tool-selection-accuracy
+agent-self-verification
+agent-intent-clarification
+rag-citation-accuracy
+rag-no-answer-handling
+rag-multilingual-retrieval
+rag-sql-and-text-hybrid
+rag-user-feedback-loop
+vector-filtering-performance
+vector-quantization-storage
+vector-sharding-replication
+vector-embedding-migration
+rag-embedding-finetuning
+llm-model-merging
+llm-multilingual-capability
+transformer-linear-attention
+transformer-long-context-scaling
+tokenizer-korean-efficiency
+ml-feature-engineering
+ml-imbalanced-data
+ml-probability-calibration
+ml-time-series-forecasting
+ml-anomaly-detection
+nn-optimizers-compared
+nn-learning-rate-schedules
+nn-residual-connections
+nn-gradient-clipping
+nn-mixed-precision-training
+cnn-mobile-efficient-nets
+cv-image-retrieval
+nlp-topic-modeling
+rl-multi-agent
+audio-event-detection
+gpu-profiling-bottlenecks
+gpu-scheduling-and-queues
+serving-canary-rollout
+inference-cold-start-latency
+llmops-incident-response
+data-pii-handling
+data-feedback-loops
+eval-llm-judge-calibration
+eval-multilingual
+eval-long-context
+ai-coding-agent-workflows
+ai-coding-test-generation
+pytorch-dataloader-performance
+huggingface-accelerate
+app-voice-assistant
+guardrails-agent-action-limits
+guardrails-multimodal-safety
+ai-open-vs-closed-weights
+ai-compute-and-energy
+ai-model-transparency-reports
 PLANNED_EOF
 
 # GitHub main의 src/content/articles/ 목록을 Trees API로 조회 (Contents API는 1000개에서 잘려 덮어쓰기 사고를 낸다)
@@ -224,6 +285,36 @@ cat /tmp/next_slugs.txt
 `/tmp/next_slugs.txt`가 **비어 있으면 "예정 주제 소진" 출력 후 즉시 종료**한다 (커밋·푸시 없음).
 
 ⚠ **절대 금지**: `/tmp/next_slugs.txt`에 없는 슬러그 작성, 이미 있는 슬러그 재작성.
+
+### 목록이 바닥나기 전에
+
+**남은 편수를 완료 보고에 매번 적는다.** 위 쉘의 출력에는 이번 5편만 나오므로 커밋
+뒤에 아래 한 줄을 더 돌려 남은 수를 센다. **10편 아래로 내려가면 그 사실을 보고
+맨 앞에 굵게 적는다** — 5편/일이라 이틀이면 멎는다.
+
+```bash
+awk 'NR==FNR{e[$0]=1;next} !e[$0]{c++} END{print "남은 예정 주제 " c "편"}' \
+  /tmp/existing_slugs.txt /tmp/planned_slugs.txt
+```
+
+**목록은 이 루틴이 스스로 늘리지 않는다.** 주제를 자기가 고르기 시작하면 위의 「절대
+금지」가 무의미해지고, 이미 있는 글과 겹치는 것을 매일 새로 지어내게 된다. 사람이
+채운다.
+
+**채우는 사람이 지킬 것 셋.** 2026-09-04에 60편을 보태며 정한 것이다.
+
+1. **접두사가 카테고리를 정하므로 `CLAUDE.md`의 표에 있는 접두사만 쓴다.** 표에 없는
+   접두사를 만들면 그 글이 갈 칸이 없다.
+2. **`embedding-`는 쓰지 않는다.** 그 접두사만 `src/data/categories.test.ts`가
+   `deep-learning`으로 못 박아 두고 검색용인 것을 예외 목록으로 들고 있어서, 새 글을
+   넣으면 예외를 함께 고쳐야 `npm test`가 선다. 검색 쪽이면 `rag-`를 쓴다.
+3. **넣기 전에 기존 글·계획과 대조한다.** 아래 두 줄이 비어 나와야 넣을 수 있다.
+
+```bash
+ls src/content/articles/ | sed 's/\.md$//' | sort > /tmp/exist.txt
+comm -12 <(sort -u /tmp/후보.txt) /tmp/exist.txt          # 이미 쓴 것과 겹침
+comm -12 <(sort -u /tmp/후보.txt) <(sort -u /tmp/planned_slugs.txt)  # 계획과 겹침
+```
 
 ## 글 1편 작성 순서
 
