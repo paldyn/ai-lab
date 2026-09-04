@@ -114,7 +114,7 @@ $$r(x,y) = \beta\log\frac{\pi^\star(y\mid x)}{\pi_{\text{ref}}(y\mid x)} + \beta
 
 ## 분배함수가 사라진다
 
-그런데 [지난 글](/articles/math-bradley-terry-preference)의 Bradley-Terry 모델은 보상 자체가 아니라 **보상의 차이**만 씁니다. 같은 프롬프트에 대한 두 답을 비교하는 자리에 위 식을 넣어 보겠습니다.
+그런데 [선호 쌍에서 보상 모델 손실을 유도한 글](/articles/math-bradley-terry-preference)의 Bradley-Terry 모델은 보상 자체가 아니라 **보상의 차이**만 씁니다. 같은 프롬프트에 대한 두 답을 비교하는 자리에 위 식을 넣어 보겠습니다.
 
 $$
 \begin{aligned}
@@ -135,7 +135,7 @@ $$Z(x)$$ 는 프롬프트에만 의존하고 답에는 의존하지 않습니다
 
 $$P(y_w \succ y_l \mid x) = \sigma\!\left(\beta\log\frac{\pi^\star(y_w\mid x)}{\pi_{\text{ref}}(y_w\mid x)} - \beta\log\frac{\pi^\star(y_l\mid x)}{\pi_{\text{ref}}(y_l\mid x)}\right)$$
 
-지난 글에서 했던 것을 그대로 하면 됩니다 — 이 확률에 최대가능도를 적용합니다. 다만 이번에는 최적화하는 대상이 보상 모델의 파라미터가 아니라 **정책의 파라미터 $$\theta$$** 입니다.
+보상 모델 손실을 유도할 때 했던 것을 그대로 하면 됩니다 — 이 확률에 최대가능도를 적용합니다. 다만 이번에는 최적화하는 대상이 보상 모델의 파라미터가 아니라 **정책의 파라미터 $$\theta$$** 입니다.
 
 $$\mathcal{L}_{\text{DPO}}(\theta) = -\,\mathbb{E}_{(x,y_w,y_l)\sim\mathcal{D}}\left[\log\sigma\!\left(\beta\log\frac{\pi_\theta(y_w\mid x)}{\pi_{\text{ref}}(y_w\mid x)} - \beta\log\frac{\pi_\theta(y_l\mid x)}{\pi_{\text{ref}}(y_l\mid x)}\right)\right]$$
 
@@ -145,7 +145,7 @@ $$\mathcal{L}_{\text{DPO}}(\theta) = -\,\mathbb{E}_{(x,y_w,y_l)\sim\mathcal{D}}\
 
 $$\beta$$ 가 두 자리에 나타났습니다. 최적 정책 $$\pi^\star \propto \pi_{\text{ref}}e^{r/\beta}$$ 에서는 지수의 분모였고, DPO 손실에서는 로짓의 배율입니다. 같은 것을 앞뒤에서 본 것이라 방향도 같습니다.
 
-손실 쪽에서 보면 이렇습니다. 지난 글에서 로그 시그모이드 손실의 기울기 크기가 $$\sigma(-\Delta)$$ 였고, 여기서 $$\Delta$$ 는 $$\beta$$ 곱하기 로그비 차이입니다. $$\beta$$ 를 크게 두면 로그비가 조금만 벌어져도 $$\Delta$$ 가 커져 기울기가 빨리 잦아들고, 정책은 참조 모델에서 조금만 움직입니다. 작게 두면 같은 로그비 차이에도 $$\Delta$$ 가 작아 계속 밀어붙이고, 정책이 멀리 나갑니다.
+손실 쪽에서 보면 이렇습니다. 앞서 본 로그 시그모이드 손실의 기울기 크기가 $$\sigma(-\Delta)$$ 였고, 여기서 $$\Delta$$ 는 $$\beta$$ 곱하기 로그비 차이입니다. $$\beta$$ 를 크게 두면 로그비가 조금만 벌어져도 $$\Delta$$ 가 커져 기울기가 빨리 잦아들고, 정책은 참조 모델에서 조금만 움직입니다. 작게 두면 같은 로그비 차이에도 $$\Delta$$ 가 작아 계속 밀어붙이고, 정책이 멀리 나갑니다.
 
 즉 **$$\beta$$ 는 여기서도 KL 1 단위의 가격**입니다. 위 표에서 $$\beta$$ 를 2에서 0.25로 내렸을 때 KL이 0.06에서 0.64로 늘어난 것과 같은 이야기입니다.
 
