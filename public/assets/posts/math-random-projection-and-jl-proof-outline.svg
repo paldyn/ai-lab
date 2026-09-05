@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="450" viewBox="0 0 880 450" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <defs>
+    <marker id="jl" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#7ec8e3"/>
+    </marker>
+  </defs>
+  <rect x="0" y="0" width="880" height="450" rx="12" fill="#0a0a0a"/>
+  <text x="60" y="46" font-size="22" font-weight="700" fill="#e8e8e8">한 쌍의 확률에서 모든 쌍의 보장까지, 세 걸음</text>
+
+  <rect x="60" y="80" width="760" height="86" rx="8" fill="#111" stroke="#3a4a6e" stroke-width="1"/>
+  <text x="84" y="106" font-size="16" font-weight="600" fill="#e8e8e8">1. 한 벡터의 길이는 카이제곱이다</text>
+  <text x="84" y="130" font-size="13" fill="#888">R 의 열이 서로 독립인 정규분포면 ‖Rᵀx‖² 는 ‖x‖²/k 곱하기 자유도 k 의 카이제곱이다.</text>
+  <text x="84" y="152" font-size="13" fill="#888">평균은 정확히 ‖x‖² 이고, 상대 표준편차는 √(2/k) 다.</text>
+
+  <line x1="440" y1="166" x2="440" y2="194" stroke="#7ec8e3" stroke-width="2.5" marker-end="url(#jl)"/>
+
+  <rect x="60" y="196" width="760" height="86" rx="8" fill="#111" stroke="#3a4a6e" stroke-width="1"/>
+  <text x="84" y="222" font-size="16" font-weight="600" fill="#e8e8e8">2. 벗어날 확률은 지수로 작아진다</text>
+  <text x="84" y="246" font-size="13" fill="#888">카이제곱의 꼬리 한계(체르노프)를 쓰면 한 쌍이 (1 ± ε) 밖으로 나갈 확률은</text>
+  <text x="84" y="268" font-size="13" fill="#888">2 exp( − k (ε² − ε³) / 4 ) 이하다. k 에 지수적으로 작아진다는 것이 핵심이다.</text>
+
+  <line x1="440" y1="282" x2="440" y2="310" stroke="#7ec8e3" stroke-width="2.5" marker-end="url(#jl)"/>
+
+  <rect x="60" y="312" width="760" height="94" rx="8" fill="#000" stroke="#55c555" stroke-width="1.5"/>
+  <text x="84" y="338" font-size="16" font-weight="600" fill="#55c555">3. 쌍이 n²/2 개니 그만큼 곱해 준다</text>
+  <text x="84" y="362" font-size="13" fill="#888">하나라도 벗어날 확률은 쌍의 수를 곱한 것 이하다(합집합 한계). 그 값을 1보다</text>
+  <text x="84" y="384" font-size="13" fill="#e8e8e8">작게 만들면  k &gt; 8 ln n / (ε² − ε³)  —  로그는 여기서 나오고, d 는 어디에도 없다.</text>
+</svg>

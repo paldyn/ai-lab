@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="450" viewBox="0 0 880 450" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+<rect x="0" y="0" width="880" height="450" rx="12" fill="#0a0a0a"/>
+<text x="60" y="46" font-size="22" font-weight="700" fill="#e8e8e8">원래 차원은 아무 상관이 없고, 점 개수는 로그로만 걸린다</text>
+<text x="60" y="94" font-size="16" font-weight="600" fill="#e8e8e8">점 500개 고정, 원래 차원 d 를 바꾸면</text>
+<rect x="70" y="211" width="52" height="129" rx="5" fill="#7ec8e3" fill-opacity="0.45" stroke="#7ec8e3" stroke-width="2"/>
+<text x="96" y="199" font-size="13" fill="#e8e8e8" text-anchor="middle">0.27</text>
+<text x="96" y="364" font-size="13" fill="#888" text-anchor="middle">256</text>
+<rect x="148" y="211" width="52" height="129" rx="5" fill="#7ec8e3" fill-opacity="0.45" stroke="#7ec8e3" stroke-width="2"/>
+<text x="174" y="199" font-size="13" fill="#e8e8e8" text-anchor="middle">0.27</text>
+<text x="174" y="364" font-size="13" fill="#888" text-anchor="middle">1024</text>
+<rect x="226" y="200" width="52" height="140" rx="5" fill="#7ec8e3" fill-opacity="0.45" stroke="#7ec8e3" stroke-width="2"/>
+<text x="252" y="188" font-size="13" fill="#e8e8e8" text-anchor="middle">0.29</text>
+<text x="252" y="364" font-size="13" fill="#888" text-anchor="middle">4096</text>
+<rect x="304" y="207" width="52" height="133" rx="5" fill="#7ec8e3" fill-opacity="0.45" stroke="#7ec8e3" stroke-width="2"/>
+<text x="330" y="195" font-size="13" fill="#e8e8e8" text-anchor="middle">0.28</text>
+<text x="330" y="364" font-size="13" fill="#888" text-anchor="middle">16384</text>
+<line x1="54" y1="340" x2="382" y2="340" stroke="#888" stroke-width="1.5"/>
+<text x="54" y="392" font-size="13" fill="#888">64배를 늘려도 최악 왜곡이 그대로다</text>
+<text x="500" y="94" font-size="16" font-weight="600" fill="#e8e8e8">원래 차원 1024 고정, 점 n 을 바꾸면</text>
+<rect x="510" y="217" width="52" height="123" rx="5" fill="#55c555" fill-opacity="0.45" stroke="#55c555" stroke-width="2"/>
+<text x="536" y="205" font-size="13" fill="#e8e8e8" text-anchor="middle">0.26</text>
+<text x="536" y="364" font-size="13" fill="#888" text-anchor="middle">100</text>
+<rect x="588" y="206" width="52" height="134" rx="5" fill="#55c555" fill-opacity="0.45" stroke="#55c555" stroke-width="2"/>
+<text x="614" y="194" font-size="13" fill="#e8e8e8" text-anchor="middle">0.28</text>
+<text x="614" y="364" font-size="13" fill="#888" text-anchor="middle">500</text>
+<rect x="666" y="188" width="52" height="152" rx="5" fill="#55c555" fill-opacity="0.45" stroke="#55c555" stroke-width="2"/>
+<text x="692" y="176" font-size="13" fill="#e8e8e8" text-anchor="middle">0.32</text>
+<text x="692" y="364" font-size="13" fill="#888" text-anchor="middle">2000</text>
+<rect x="744" y="168" width="52" height="172" rx="5" fill="#55c555" fill-opacity="0.45" stroke="#55c555" stroke-width="2"/>
+<text x="770" y="156" font-size="13" fill="#e8e8e8" text-anchor="middle">0.36</text>
+<text x="770" y="364" font-size="13" fill="#888" text-anchor="middle">8000</text>
+<line x1="494" y1="340" x2="822" y2="340" stroke="#888" stroke-width="1.5"/>
+<text x="494" y="392" font-size="13" fill="#888">80배를 늘려도 0.26에서 0.36까지만 오른다</text>
+<text x="60" y="416" font-size="13" fill="#888">세로축은 모든 쌍 중 가장 크게 어긋난 거리의 왜곡, 두 실험 모두 사영 차원 k = 128</text>
+</svg>

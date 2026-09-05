@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="460" viewBox="0 0 880 460" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+<rect x="0" y="0" width="880" height="450" rx="12" fill="#0a0a0a"/>
+<text x="60" y="46" font-size="22" font-weight="700" fill="#e8e8e8">같은 후보 수라도 (k, L) 을 어떻게 고르느냐로 recall 이 갈린다</text>
+<line x1="150" y1="340" x2="760" y2="340" stroke="#888" stroke-width="1.5"/>
+<line x1="150" y1="340" x2="150" y2="100" stroke="#888" stroke-width="1.5"/>
+<path d="M 186 128 L 328 110" stroke="#55c555" stroke-width="2" stroke-dasharray="5,3" fill="none"/>
+<circle cx="716" cy="131" r="6" fill="#e05555"/>
+<text x="716" y="113" font-size="13" fill="#e8e8e8" text-anchor="middle">k=12, L=20</text>
+<circle cx="411" cy="242" r="6" fill="#e05555"/>
+<text x="411" y="268" font-size="13" fill="#e8e8e8" text-anchor="middle">k=16, L=10</text>
+<circle cx="552" cy="124" r="6" fill="#e05555"/>
+<text x="552" y="106" font-size="13" fill="#e8e8e8" text-anchor="middle">k=16, L=50</text>
+<circle cx="308" cy="171" r="6" fill="#e05555"/>
+<text x="308" y="197" font-size="13" fill="#e8e8e8" text-anchor="middle">k=20, L=50</text>
+<circle cx="430" cy="111" r="6" fill="#e05555"/>
+<text x="430" y="93" font-size="13" fill="#e8e8e8" text-anchor="middle">k=20, L=200</text>
+<circle cx="186" cy="128" r="6" fill="#55c555"/>
+<text x="196" y="156" font-size="13" fill="#e8e8e8">k=24, L=200</text>
+<circle cx="328" cy="110" r="6" fill="#55c555"/>
+<text x="328" y="92" font-size="13" fill="#e8e8e8" text-anchor="middle">k=24, L=1000</text>
+<line x1="170" y1="340" x2="170" y2="346" stroke="#444" stroke-width="1.5"/>
+<text x="170" y="364" font-size="13" fill="#888" text-anchor="middle">10</text>
+<line x1="373" y1="340" x2="373" y2="346" stroke="#444" stroke-width="1.5"/>
+<text x="373" y="364" font-size="13" fill="#888" text-anchor="middle">100</text>
+<line x1="576" y1="340" x2="576" y2="346" stroke="#444" stroke-width="1.5"/>
+<text x="576" y="364" font-size="13" fill="#888" text-anchor="middle">1,000</text>
+<line x1="760" y1="340" x2="760" y2="346" stroke="#444" stroke-width="1.5"/>
+<text x="760" y="364" font-size="13" fill="#888" text-anchor="middle">8,000</text>
+<text x="455" y="390" font-size="13" fill="#888" text-anchor="middle">질의 하나당 훑어야 하는 후보 수 (로그 눈금)</text>
+<line x1="144" y1="248" x2="150" y2="248" stroke="#444" stroke-width="1.5"/>
+<text x="138" y="253" font-size="13" fill="#888" text-anchor="end">0.4</text>
+<line x1="144" y1="202" x2="150" y2="202" stroke="#444" stroke-width="1.5"/>
+<text x="138" y="207" font-size="13" fill="#888" text-anchor="end">0.6</text>
+<line x1="144" y1="156" x2="150" y2="156" stroke="#444" stroke-width="1.5"/>
+<text x="138" y="161" font-size="13" fill="#888" text-anchor="end">0.8</text>
+<line x1="144" y1="110" x2="150" y2="110" stroke="#444" stroke-width="1.5"/>
+<text x="138" y="115" font-size="13" fill="#888" text-anchor="end">1.0</text>
+<text x="94" y="96" font-size="13" fill="#888">30° 이웃의 recall</text>
+<text x="150" y="408" font-size="13" fill="#888">데이터 100만 개 기준. 초록 두 점만이 다른 어떤 조합에도 지지 않는다 — 붉은 점은 후보 수와 recall 둘 다에서 밀린다.</text>
+<text x="150" y="432" font-size="13" fill="#888">k 를 키우면 후보가 줄고 L 을 키우면 recall 이 오르므로, 둘을 함께 올리는 쪽이 앞선다. 대신 메모리는 L 에 비례한다.</text>
+</svg>

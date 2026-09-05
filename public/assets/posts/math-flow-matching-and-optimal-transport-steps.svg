@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="470" viewBox="0 0 880 470" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+<rect x="0" y="0" width="880" height="470" rx="12" fill="#0a0a0a"/>
+<text x="60" y="46" font-size="22" font-weight="700" fill="#e8e8e8">최적수송으로 짝지으면 오일러 한 스텝이 곧 바닥이다</text>
+<line x1="140" y1="350" x2="800" y2="350" stroke="#888" stroke-width="1.5"/>
+<line x1="140" y1="350" x2="140" y2="90" stroke="#888" stroke-width="1.5"/>
+<line x1="140" y1="350" x2="140" y2="356" stroke="#444" stroke-width="1.5"/>
+<text x="140" y="374" font-size="13" fill="#888" text-anchor="middle">1</text>
+<line x1="272" y1="350" x2="272" y2="356" stroke="#444" stroke-width="1.5"/>
+<text x="272" y="374" font-size="13" fill="#888" text-anchor="middle">2</text>
+<line x1="404" y1="350" x2="404" y2="356" stroke="#444" stroke-width="1.5"/>
+<text x="404" y="374" font-size="13" fill="#888" text-anchor="middle">4</text>
+<line x1="536" y1="350" x2="536" y2="356" stroke="#444" stroke-width="1.5"/>
+<text x="536" y="374" font-size="13" fill="#888" text-anchor="middle">8</text>
+<line x1="668" y1="350" x2="668" y2="356" stroke="#444" stroke-width="1.5"/>
+<text x="668" y="374" font-size="13" fill="#888" text-anchor="middle">16</text>
+<line x1="800" y1="350" x2="800" y2="356" stroke="#444" stroke-width="1.5"/>
+<text x="800" y="374" font-size="13" fill="#888" text-anchor="middle">32</text>
+<text x="470" y="400" font-size="13" fill="#888" text-anchor="middle">오일러 스텝 수</text>
+<line x1="134" y1="333" x2="140" y2="333" stroke="#444" stroke-width="1.5"/>
+<text x="128" y="338" font-size="13" fill="#888" text-anchor="end">0.25</text>
+<line x1="134" y1="279" x2="140" y2="279" stroke="#444" stroke-width="1.5"/>
+<text x="128" y="284" font-size="13" fill="#888" text-anchor="end">0.5</text>
+<line x1="134" y1="225" x2="140" y2="225" stroke="#444" stroke-width="1.5"/>
+<text x="128" y="230" font-size="13" fill="#888" text-anchor="end">1</text>
+<line x1="134" y1="171" x2="140" y2="171" stroke="#444" stroke-width="1.5"/>
+<text x="128" y="176" font-size="13" fill="#888" text-anchor="end">2</text>
+<line x1="134" y1="117" x2="140" y2="117" stroke="#444" stroke-width="1.5"/>
+<text x="128" y="122" font-size="13" fill="#888" text-anchor="end">4</text>
+<text x="40" y="120" font-size="13" fill="#888">W₂ 오차</text>
+<line x1="140" y1="332" x2="800" y2="332" stroke="#666" stroke-width="2" stroke-dasharray="5,3"/>
+<path d="M 140 117 L 272 206 L 404 265 L 536 303 L 668 318 L 800 321" stroke="#e05555" stroke-width="2.5" fill="none"/>
+<path d="M 140 332 L 272 332 L 404 332 L 536 332 L 668 332 L 800 332" stroke="#55c555" stroke-width="2.5" fill="none"/>
+<circle cx="140" cy="117" r="5" fill="#e8e8e8"/>
+<circle cx="272" cy="206" r="5" fill="#e8e8e8"/>
+<circle cx="404" cy="265" r="5" fill="#e8e8e8"/>
+<circle cx="536" cy="303" r="5" fill="#e8e8e8"/>
+<circle cx="668" cy="318" r="5" fill="#e8e8e8"/>
+<circle cx="800" cy="321" r="5" fill="#e8e8e8"/>
+<circle cx="140" cy="332" r="5" fill="#e8e8e8"/>
+<circle cx="272" cy="332" r="5" fill="#e8e8e8"/>
+<circle cx="404" cy="332" r="5" fill="#e8e8e8"/>
+<circle cx="536" cy="332" r="5" fill="#e8e8e8"/>
+<circle cx="668" cy="332" r="5" fill="#e8e8e8"/>
+<circle cx="800" cy="332" r="5" fill="#e8e8e8"/>
+<text x="286" y="190" font-size="13" fill="#e05555">무작위 짝짓기</text>
+<text x="307" y="316" font-size="13" fill="#55c555">최적수송 짝짓기</text>
+<text x="140" y="418" font-size="13" fill="#888">p₀ = N(0, 1), p₁ = 0.5 N(−4, 0.5²) + 0.5 N(4, 0.5²), 표본 2만 개</text>
+<text x="140" y="440" font-size="13" fill="#888">초록선이 놓인 0.252 가 표본 오차 바닥이라 그 아래로는 못 내려간다</text>
+</svg>

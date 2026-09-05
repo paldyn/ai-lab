@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="440" viewBox="0 0 880 440" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+<rect x="0" y="0" width="880" height="440" rx="12" fill="#0a0a0a"/>
+<text x="60" y="46" font-size="22" font-weight="700" fill="#e8e8e8">사영한 차원 k 를 늘리면 거리의 비가 1 주위로 좁아진다</text>
+<line x1="110" y1="340" x2="820" y2="340" stroke="#888" stroke-width="1.5"/>
+<path d="M 116 340 L 128 340 L 140 340 L 151 338 L 163 338 L 175 337 L 187 334 L 199 332 L 211 330 L 222 326 L 234 320 L 246 313 L 258 309 L 270 297 L 282 284 L 293 270 L 305 258 L 317 243 L 329 225 L 341 212 L 353 196 L 364 178 L 376 158 L 388 152 L 400 142 L 412 126 L 424 124 L 435 108 L 447 109 L 459 117 L 471 105 L 483 117 L 495 129 L 506 142 L 518 152 L 530 165 L 542 181 L 554 206 L 566 213 L 577 225 L 589 241 L 601 251 L 613 271 L 625 280 L 637 291 L 648 300 L 660 311 L 672 315 L 684 319 L 696 327 L 708 330 L 719 332 L 731 334 L 743 336 L 755 338 L 767 337 L 779 339 L 790 339 L 802 340 L 814 340" stroke="#e05555" stroke-width="2.5" fill="none"/>
+<path d="M 116 340 L 128 340 L 140 340 L 151 340 L 163 340 L 175 340 L 187 340 L 199 340 L 211 340 L 222 340 L 234 340 L 246 340 L 258 340 L 270 340 L 282 339 L 293 339 L 305 338 L 317 335 L 329 329 L 341 324 L 353 311 L 364 288 L 376 269 L 388 243 L 400 210 L 412 174 L 424 139 L 435 122 L 447 110 L 459 105 L 471 107 L 483 130 L 495 157 L 506 191 L 518 216 L 530 250 L 542 272 L 554 291 L 566 309 L 577 319 L 589 327 L 601 331 L 613 336 L 625 338 L 637 339 L 648 340 L 660 340 L 672 340 L 684 340 L 696 340 L 708 340 L 719 340 L 731 340 L 743 340 L 755 340 L 767 340 L 779 340 L 790 340 L 802 340 L 814 340" stroke="#7777cc" stroke-width="2.5" fill="none"/>
+<path d="M 116 340 L 128 340 L 140 340 L 151 340 L 163 340 L 175 340 L 187 340 L 199 340 L 211 340 L 222 340 L 234 340 L 246 340 L 258 340 L 270 340 L 282 340 L 293 340 L 305 340 L 317 340 L 329 340 L 341 340 L 353 340 L 364 340 L 376 339 L 388 337 L 400 331 L 412 308 L 424 271 L 435 212 L 447 147 L 459 105 L 471 105 L 483 155 L 495 216 L 506 271 L 518 308 L 530 327 L 542 335 L 554 339 L 566 340 L 577 340 L 589 340 L 601 340 L 613 340 L 625 340 L 637 340 L 648 340 L 660 340 L 672 340 L 684 340 L 696 340 L 708 340 L 719 340 L 731 340 L 743 340 L 755 340 L 767 340 L 779 340 L 790 340 L 802 340 L 814 340" stroke="#7ec8e3" stroke-width="2.5" fill="none"/>
+<path d="M 116 340 L 128 340 L 140 340 L 151 340 L 163 340 L 175 340 L 187 340 L 199 340 L 211 340 L 222 340 L 234 340 L 246 340 L 258 340 L 270 340 L 282 340 L 293 340 L 305 340 L 317 340 L 329 340 L 341 340 L 353 340 L 364 340 L 376 340 L 388 340 L 400 340 L 412 340 L 424 337 L 435 311 L 447 217 L 459 105 L 471 113 L 483 236 L 495 318 L 506 338 L 518 340 L 530 340 L 542 340 L 554 340 L 566 340 L 577 340 L 589 340 L 601 340 L 613 340 L 625 340 L 637 340 L 648 340 L 660 340 L 672 340 L 684 340 L 696 340 L 708 340 L 719 340 L 731 340 L 743 340 L 755 340 L 767 340 L 779 340 L 790 340 L 802 340 L 814 340" stroke="#55c555" stroke-width="2.5" fill="none"/>
+<line x1="465" y1="340" x2="465" y2="89" stroke="#666" stroke-width="1.5" stroke-dasharray="5,3"/>
+<line x1="169" y1="340" x2="169" y2="346" stroke="#444" stroke-width="1.5"/>
+<text x="169" y="364" font-size="13" fill="#888" text-anchor="middle">0.5</text>
+<line x1="317" y1="340" x2="317" y2="346" stroke="#444" stroke-width="1.5"/>
+<text x="317" y="364" font-size="13" fill="#888" text-anchor="middle">0.75</text>
+<line x1="465" y1="340" x2="465" y2="346" stroke="#444" stroke-width="1.5"/>
+<text x="465" y="364" font-size="13" fill="#888" text-anchor="middle">1.0</text>
+<line x1="613" y1="340" x2="613" y2="346" stroke="#444" stroke-width="1.5"/>
+<text x="613" y="364" font-size="13" fill="#888" text-anchor="middle">1.25</text>
+<line x1="761" y1="340" x2="761" y2="346" stroke="#444" stroke-width="1.5"/>
+<text x="761" y="364" font-size="13" fill="#888" text-anchor="middle">1.5</text>
+<text x="465" y="390" font-size="13" fill="#888" text-anchor="middle">사영 후 거리 ÷ 원래 거리</text>
+<line x1="150" y1="125" x2="182" y2="125" stroke="#e05555" stroke-width="2.5"/>
+<text x="192" y="130" font-size="13" fill="#888">k = 16</text>
+<line x1="150" y1="149" x2="182" y2="149" stroke="#7777cc" stroke-width="2.5"/>
+<text x="192" y="154" font-size="13" fill="#888">k = 64</text>
+<line x1="150" y1="173" x2="182" y2="173" stroke="#7ec8e3" stroke-width="2.5"/>
+<text x="192" y="178" font-size="13" fill="#888">k = 256</text>
+<line x1="150" y1="197" x2="182" y2="197" stroke="#55c555" stroke-width="2.5"/>
+<text x="192" y="202" font-size="13" fill="#888">k = 1024</text>
+<text x="110" y="416" font-size="13" fill="#888">원래 차원 d = 4096, 점 300개(쌍 44,850개). 봉우리의 위치는 k 와 무관하게 1 이고 폭만 좁아진다</text>
+</svg>

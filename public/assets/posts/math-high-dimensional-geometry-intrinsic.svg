@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="450" viewBox="0 0 880 450" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+<rect x="0" y="0" width="880" height="450" rx="12" fill="#0a0a0a"/>
+<text x="60" y="46" font-size="22" font-weight="700" fill="#e8e8e8">같은 1000차원이라도 데이터에 구조가 있으면 대비가 살아난다</text>
+<rect x="140" y="334" width="140" height="6" rx="6" fill="#e05555" fill-opacity="0.5" stroke="#e05555" stroke-width="2"/>
+<text x="210" y="320" font-size="16" font-weight="600" fill="#e8e8e8" text-anchor="middle">0.15</text>
+<text x="210" y="366" font-size="13" fill="#888" text-anchor="middle">등방 가우시안</text>
+<text x="210" y="386" font-size="13" fill="#888" text-anchor="middle">(내재 1000차원)</text>
+<rect x="370" y="180" width="140" height="160" rx="6" fill="#7ec8e3" fill-opacity="0.5" stroke="#7ec8e3" stroke-width="2"/>
+<text x="440" y="166" font-size="16" font-weight="600" fill="#e8e8e8" text-anchor="middle">4.16</text>
+<text x="440" y="366" font-size="13" fill="#888" text-anchor="middle">10차원 잠재변수를</text>
+<text x="440" y="386" font-size="13" fill="#888" text-anchor="middle">선형으로 펼친 것</text>
+<rect x="600" y="119" width="140" height="221" rx="6" fill="#55c555" fill-opacity="0.5" stroke="#55c555" stroke-width="2"/>
+<text x="670" y="105" font-size="16" font-weight="600" fill="#e8e8e8" text-anchor="middle">5.76</text>
+<text x="670" y="366" font-size="13" fill="#888" text-anchor="middle">군집 20개로</text>
+<text x="670" y="386" font-size="13" fill="#888" text-anchor="middle">뭉친 것</text>
+<line x1="120" y1="340" x2="760" y2="340" stroke="#888" stroke-width="1.5"/>
+<text x="110" y="120" font-size="13" fill="#888" text-anchor="end">상대 대비</text>
+<text x="140" y="416" font-size="13" fill="#888">상대 대비 = (가장 먼 거리 − 가장 가까운 거리) / 가장 가까운 거리, 점 2000개 · 주변 차원은 셋 다 1000</text>
+</svg>

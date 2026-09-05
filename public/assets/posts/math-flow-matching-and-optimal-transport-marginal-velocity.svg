@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="450" viewBox="0 0 880 450" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <defs>
+    <marker id="mv1" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#7777cc"/>
+    </marker>
+    <marker id="mv2" viewBox="0 0 16 16" refX="14" refY="8" markerUnits="userSpaceOnUse" markerWidth="16" markerHeight="16" orient="auto">
+      <path d="M 0 0 L 15 8 L 0 16 z" fill="#55c555"/>
+    </marker>
+  </defs>
+  <rect x="0" y="0" width="880" height="450" rx="12" fill="#0a0a0a"/>
+  <text x="60" y="46" font-size="22" font-weight="700" fill="#e8e8e8">한 점을 지나는 조건부 경로가 여럿이면, 속도장은 그 평균이다</text>
+
+  <line x1="120" y1="380" x2="800" y2="380" stroke="#888" stroke-width="1.5"/>
+  <text x="120" y="404" font-size="13" fill="#888" text-anchor="middle">t = 0</text>
+  <text x="800" y="404" font-size="13" fill="#888" text-anchor="middle">t = 1</text>
+  <line x1="440" y1="360" x2="440" y2="110" stroke="#444" stroke-width="1.5" stroke-dasharray="5,3"/>
+  <text x="440" y="404" font-size="13" fill="#888" text-anchor="middle">t</text>
+
+  <line x1="120" y1="330" x2="800" y2="139" stroke="#7777cc" stroke-width="2"/>
+  <line x1="120" y1="150" x2="800" y2="341" stroke="#7777cc" stroke-width="2"/>
+  <line x1="120" y1="250" x2="800" y2="229" stroke="#7777cc" stroke-width="2"/>
+
+  <circle cx="440" cy="240" r="7" fill="#e8e8e8"/>
+  <text x="424" y="272" font-size="13" fill="#e8e8e8" text-anchor="end">x</text>
+
+  <line x1="440" y1="240" x2="560" y2="206" stroke="#7777cc" stroke-width="2.5" marker-end="url(#mv1)"/>
+  <line x1="440" y1="240" x2="560" y2="274" stroke="#7777cc" stroke-width="2.5" marker-end="url(#mv1)"/>
+  <line x1="440" y1="240" x2="560" y2="236" stroke="#7777cc" stroke-width="2.5" marker-end="url(#mv1)"/>
+  <line x1="440" y1="240" x2="596" y2="239" stroke="#55c555" stroke-width="3" marker-end="url(#mv2)"/>
+
+  <text x="612" y="170" font-size="13" fill="#7777cc">조건부 속도 x₁ − x₀ (짝마다 다르다)</text>
+  <text x="612" y="310" font-size="13" fill="#55c555">주변 속도장 u(x, t) = E[ x₁ − x₀ | xₜ = x ]</text>
+
+  <text x="120" y="434" font-size="13" fill="#888">최소제곱의 최적해는 조건부 기댓값이므로, 짝마다 다른 목표로 회귀해도 도착점은 이 평균 하나다</text>
+</svg>

@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="460" viewBox="0 0 880 460" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+<rect x="0" y="0" width="880" height="460" rx="12" fill="#0a0a0a"/>
+<text x="60" y="46" font-size="22" font-weight="700" fill="#e8e8e8">왜곡의 표준편차는 1/√(2k) 를 그대로 따라간다</text>
+<line x1="140" y1="340" x2="800" y2="340" stroke="#888" stroke-width="1.5"/>
+<line x1="140" y1="340" x2="140" y2="100" stroke="#888" stroke-width="1.5"/>
+<path d="M 140 135 L 234 160 L 329 184 L 423 209 L 517 234 L 611 259 L 706 283 L 800 308" stroke="#7777cc" stroke-width="2" stroke-dasharray="5,3" fill="none"/>
+<path d="M 140 136 L 234 161 L 329 185 L 423 209 L 517 233 L 611 260 L 706 282 L 800 310" stroke="#7ec8e3" stroke-width="2.5" fill="none"/>
+<circle cx="140" cy="136" r="5" fill="#e8e8e8"/>
+<circle cx="234" cy="161" r="5" fill="#e8e8e8"/>
+<circle cx="329" cy="185" r="5" fill="#e8e8e8"/>
+<circle cx="423" cy="209" r="5" fill="#e8e8e8"/>
+<circle cx="517" cy="233" r="5" fill="#e8e8e8"/>
+<circle cx="611" cy="260" r="5" fill="#e8e8e8"/>
+<circle cx="706" cy="282" r="5" fill="#e8e8e8"/>
+<circle cx="800" cy="310" r="5" fill="#e8e8e8"/>
+<line x1="140" y1="340" x2="140" y2="346" stroke="#444" stroke-width="1.5"/>
+<text x="140" y="364" font-size="13" fill="#888" text-anchor="middle">16</text>
+<line x1="234" y1="340" x2="234" y2="346" stroke="#444" stroke-width="1.5"/>
+<text x="234" y="364" font-size="13" fill="#888" text-anchor="middle">32</text>
+<line x1="329" y1="340" x2="329" y2="346" stroke="#444" stroke-width="1.5"/>
+<text x="329" y="364" font-size="13" fill="#888" text-anchor="middle">64</text>
+<line x1="423" y1="340" x2="423" y2="346" stroke="#444" stroke-width="1.5"/>
+<text x="423" y="364" font-size="13" fill="#888" text-anchor="middle">128</text>
+<line x1="517" y1="340" x2="517" y2="346" stroke="#444" stroke-width="1.5"/>
+<text x="517" y="364" font-size="13" fill="#888" text-anchor="middle">256</text>
+<line x1="611" y1="340" x2="611" y2="346" stroke="#444" stroke-width="1.5"/>
+<text x="611" y="364" font-size="13" fill="#888" text-anchor="middle">512</text>
+<line x1="706" y1="340" x2="706" y2="346" stroke="#444" stroke-width="1.5"/>
+<text x="706" y="364" font-size="13" fill="#888" text-anchor="middle">1024</text>
+<line x1="800" y1="340" x2="800" y2="346" stroke="#444" stroke-width="1.5"/>
+<text x="800" y="364" font-size="13" fill="#888" text-anchor="middle">2048</text>
+<text x="470" y="390" font-size="13" fill="#888" text-anchor="middle">사영한 차원 k</text>
+<line x1="134" y1="340" x2="140" y2="340" stroke="#444" stroke-width="1.5"/>
+<text x="128" y="345" font-size="13" fill="#888" text-anchor="end">0.01</text>
+<line x1="134" y1="262" x2="140" y2="262" stroke="#444" stroke-width="1.5"/>
+<text x="128" y="267" font-size="13" fill="#888" text-anchor="end">0.03</text>
+<line x1="134" y1="175" x2="140" y2="175" stroke="#444" stroke-width="1.5"/>
+<text x="128" y="180" font-size="13" fill="#888" text-anchor="end">0.10</text>
+<line x1="134" y1="110" x2="140" y2="110" stroke="#444" stroke-width="1.5"/>
+<text x="128" y="115" font-size="13" fill="#888" text-anchor="end">0.25</text>
+<text x="329" y="163" font-size="13" fill="#7ec8e3" text-anchor="middle">실측</text>
+<text x="517" y="282" font-size="13" fill="#7777cc" text-anchor="middle">이론 1/√(2k) — 실측과 겹친다</text>
+<text x="140" y="430" font-size="13" fill="#888">양쪽 축 모두 로그 눈금 — 기울기 −1/2 인 직선이다. k 를 네 배 늘리면 왜곡이 절반이 된다</text>
+</svg>

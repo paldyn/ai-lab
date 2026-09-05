@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="470" viewBox="0 0 880 470" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+<defs>
+<marker id="lh1" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto"><path d="M 0 0 L 13 7 L 0 14 z" fill="#7ec8e3"/></marker>
+<marker id="lh2" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto"><path d="M 0 0 L 13 7 L 0 14 z" fill="#55c555"/></marker>
+</defs>
+<rect x="0" y="0" width="880" height="470" rx="12" fill="#0a0a0a"/>
+<text x="60" y="46" font-size="22" font-weight="700" fill="#e8e8e8">초평면이 두 벡터 사이를 지날 때만 부호가 갈린다</text>
+<circle cx="230.0" cy="265.0" r="140.0" fill="none" stroke="#444" stroke-width="1.5"/>
+<path d="M 230.0 265.0 L 370.0 265.0 A 140.0 140.0 0 0 0 337.2 175.0 Z" fill="#e05555" fill-opacity="0.22"/>
+<path d="M 230.0 265.0 L 90.0 265.0 A 140.0 140.0 0 0 0 122.8 355.0 Z" fill="#e05555" fill-opacity="0.22"/>
+<line x1="230.0" y1="265.0" x2="360.2" y2="265.0" stroke="#7ec8e3" stroke-width="2.5" marker-end="url(#lh1)"/>
+<line x1="230.0" y1="265.0" x2="329.7" y2="181.3" stroke="#55c555" stroke-width="2.5" marker-end="url(#lh2)"/>
+<path d="M 284.0 265.0 A 54 54 0 0 0 271.4 230.3" fill="none" stroke="#888" stroke-width="1.5"/>
+<text x="306" y="252" font-size="13" fill="#888">θ</text>
+<text x="382" y="270" font-size="13" fill="#7ec8e3">u</text>
+<text x="347" y="169" font-size="13" fill="#55c555">v</text>
+<line x1="96.5" y1="336.0" x2="363.5" y2="194.0" stroke="#888" stroke-width="2" stroke-dasharray="5,3"/>
+<text x="374" y="186" font-size="13" fill="#888">무작위 초평면</text>
+<text x="90" y="452" font-size="13" fill="#888">두 벡터가 놓인 평면 위에서 본 모습</text>
+<text x="520" y="122" font-size="16" font-weight="600" fill="#e8e8e8">읽는 법</text>
+<text x="520" y="152" font-size="13" font-weight="400" fill="#888">법선을 정규분포에서 뽑으면 초평면은 이 평면을</text>
+<text x="520" y="174" font-size="13" font-weight="400" fill="#888">원점 지나는 직선 하나로 자르고, 그 직선의 방향은</text>
+<text x="520" y="196" font-size="13" font-weight="400" fill="#888">원 위에서 균등하다.</text>
+<text x="520" y="234" font-size="13" font-weight="400" fill="#e05555">직선이 붉은 부채꼴(u 와 v 사이, 각 θ) 안을 지나면</text>
+<text x="520" y="256" font-size="13" font-weight="400" fill="#e05555">둘이 갈린다 — 위 점선이 그 경우다.</text>
+<text x="520" y="294" font-size="13" font-weight="400" fill="#888">방향은 π 만큼 돌면 같은 직선이므로 전체가 π 이고,</text>
+<text x="520" y="326" font-size="16" font-weight="600" fill="#55c555">같은 쪽에 놓일 확률은 p = 1 − θ/π</text>
+<text x="520" y="364" font-size="13" font-weight="400" fill="#888">원래 차원 d 는 이 계산 어디에도 없다 —</text>
+<text x="520" y="386" font-size="13" font-weight="400" fill="#888">두 벡터가 만드는 평면 하나만 본다.</text>
+</svg>

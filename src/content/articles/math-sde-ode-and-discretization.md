@@ -217,3 +217,5 @@ DDIM     = 0.733056595090
 읽어주셔서 감사합니다. 😊
 
 **지난 글:** [스코어 ∇log p: '노이즈를 예측한다'가 곧 스코어 추정인 이유](/articles/math-score-matching)
+
+**다음 글:** [classifier-free guidance는 스코어 공간의 외삽이다](/articles/math-guidance-as-extrapolation)

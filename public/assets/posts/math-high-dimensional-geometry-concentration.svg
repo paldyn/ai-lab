@@ -1,0 +1,80 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="450" viewBox="0 0 880 450" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+<rect x="0" y="0" width="880" height="450" rx="12" fill="#0a0a0a"/>
+<text x="60" y="46" font-size="22" font-weight="700" fill="#e8e8e8">차원이 오르면 모든 점이 질의점에서 거의 같은 거리에 있다</text>
+<text x="60" y="92" font-size="16" font-weight="600" fill="#e8e8e8">d = 2 · 점 4000개</text>
+<line x1="60" y1="340" x2="360" y2="340" stroke="#888" stroke-width="1.5"/>
+<rect x="60.0" y="334.2" width="5.2" height="5.8" fill="#7ec8e3" fill-opacity="0.5"/>
+<rect x="66.2" y="314.1" width="5.2" height="25.9" fill="#7ec8e3" fill-opacity="0.5"/>
+<rect x="72.5" y="309.3" width="5.2" height="30.7" fill="#7ec8e3" fill-opacity="0.5"/>
+<rect x="78.8" y="299.7" width="5.2" height="40.3" fill="#7ec8e3" fill-opacity="0.5"/>
+<rect x="85.0" y="273.7" width="5.2" height="66.3" fill="#7ec8e3" fill-opacity="0.5"/>
+<rect x="91.2" y="272.8" width="5.2" height="67.2" fill="#7ec8e3" fill-opacity="0.5"/>
+<rect x="97.5" y="264.1" width="5.2" height="75.9" fill="#7ec8e3" fill-opacity="0.5"/>
+<rect x="103.8" y="249.7" width="5.2" height="90.3" fill="#7ec8e3" fill-opacity="0.5"/>
+<rect x="110.0" y="194.9" width="5.2" height="145.1" fill="#7ec8e3" fill-opacity="0.5"/>
+<rect x="116.2" y="199.7" width="5.2" height="140.3" fill="#7ec8e3" fill-opacity="0.5"/>
+<rect x="122.5" y="200.7" width="5.2" height="139.3" fill="#7ec8e3" fill-opacity="0.5"/>
+<rect x="128.8" y="184.4" width="5.2" height="155.6" fill="#7ec8e3" fill-opacity="0.5"/>
+<rect x="135.0" y="152.7" width="5.2" height="187.3" fill="#7ec8e3" fill-opacity="0.5"/>
+<rect x="141.2" y="122.9" width="5.2" height="217.1" fill="#7ec8e3" fill-opacity="0.5"/>
+<rect x="147.5" y="148.8" width="5.2" height="191.2" fill="#7ec8e3" fill-opacity="0.5"/>
+<rect x="153.8" y="159.4" width="5.2" height="180.6" fill="#7ec8e3" fill-opacity="0.5"/>
+<rect x="160.0" y="137.3" width="5.2" height="202.7" fill="#7ec8e3" fill-opacity="0.5"/>
+<rect x="166.2" y="120.0" width="5.2" height="220.0" fill="#7ec8e3" fill-opacity="0.5"/>
+<rect x="172.5" y="147.9" width="5.2" height="192.1" fill="#7ec8e3" fill-opacity="0.5"/>
+<rect x="178.8" y="175.7" width="5.2" height="164.3" fill="#7ec8e3" fill-opacity="0.5"/>
+<rect x="185.0" y="169.0" width="5.2" height="171.0" fill="#7ec8e3" fill-opacity="0.5"/>
+<rect x="191.2" y="163.2" width="5.2" height="176.8" fill="#7ec8e3" fill-opacity="0.5"/>
+<rect x="197.5" y="168.0" width="5.2" height="172.0" fill="#7ec8e3" fill-opacity="0.5"/>
+<rect x="203.8" y="198.8" width="5.2" height="141.2" fill="#7ec8e3" fill-opacity="0.5"/>
+<rect x="210.0" y="212.2" width="5.2" height="127.8" fill="#7ec8e3" fill-opacity="0.5"/>
+<rect x="216.2" y="244.9" width="5.2" height="95.1" fill="#7ec8e3" fill-opacity="0.5"/>
+<rect x="222.5" y="253.5" width="5.2" height="86.5" fill="#7ec8e3" fill-opacity="0.5"/>
+<rect x="228.8" y="263.1" width="5.2" height="76.9" fill="#7ec8e3" fill-opacity="0.5"/>
+<rect x="235.0" y="272.8" width="5.2" height="67.2" fill="#7ec8e3" fill-opacity="0.5"/>
+<rect x="241.2" y="292.0" width="5.2" height="48.0" fill="#7ec8e3" fill-opacity="0.5"/>
+<rect x="247.5" y="307.3" width="5.2" height="32.7" fill="#7ec8e3" fill-opacity="0.5"/>
+<rect x="253.8" y="315.0" width="5.2" height="25.0" fill="#7ec8e3" fill-opacity="0.5"/>
+<rect x="260.0" y="313.1" width="5.2" height="26.9" fill="#7ec8e3" fill-opacity="0.5"/>
+<rect x="266.2" y="320.8" width="5.2" height="19.2" fill="#7ec8e3" fill-opacity="0.5"/>
+<rect x="272.5" y="326.6" width="5.2" height="13.4" fill="#7ec8e3" fill-opacity="0.5"/>
+<rect x="278.8" y="331.4" width="5.2" height="8.6" fill="#7ec8e3" fill-opacity="0.5"/>
+<rect x="285.0" y="336.2" width="5.2" height="3.8" fill="#7ec8e3" fill-opacity="0.5"/>
+<rect x="291.2" y="334.2" width="5.2" height="5.8" fill="#7ec8e3" fill-opacity="0.5"/>
+<rect x="297.5" y="336.2" width="5.2" height="3.8" fill="#7ec8e3" fill-opacity="0.5"/>
+<rect x="303.8" y="339.0" width="5.2" height="1.0" fill="#7ec8e3" fill-opacity="0.5"/>
+<rect x="310.0" y="339.0" width="5.2" height="1.0" fill="#7ec8e3" fill-opacity="0.5"/>
+<rect x="316.2" y="339.0" width="5.2" height="1.0" fill="#7ec8e3" fill-opacity="0.5"/>
+<line x1="64" y1="340" x2="64" y2="148" stroke="#55c555" stroke-width="2"/>
+<line x1="322" y1="340" x2="322" y2="148" stroke="#e05555" stroke-width="2"/>
+<text x="72" y="142" font-size="13" fill="#55c555">가까운 쪽</text>
+<text x="330" y="168" font-size="13" fill="#e05555">먼 쪽</text>
+<line x1="60" y1="340" x2="60" y2="346" stroke="#444" stroke-width="1.5"/>
+<text x="60" y="364" font-size="13" fill="#888" text-anchor="middle">0</text>
+<line x1="160" y1="340" x2="160" y2="346" stroke="#444" stroke-width="1.5"/>
+<text x="160" y="364" font-size="13" fill="#888" text-anchor="middle">1</text>
+<line x1="260" y1="340" x2="260" y2="346" stroke="#444" stroke-width="1.5"/>
+<text x="260" y="364" font-size="13" fill="#888" text-anchor="middle">2</text>
+<line x1="360" y1="340" x2="360" y2="346" stroke="#444" stroke-width="1.5"/>
+<text x="360" y="364" font-size="13" fill="#888" text-anchor="middle">3</text>
+<text x="60" y="392" font-size="13" fill="#888">먼 쪽 / 가까운 쪽 = 61.05</text>
+<text x="510" y="92" font-size="16" font-weight="600" fill="#e8e8e8">d = 1000 · 점 4000개</text>
+<line x1="510" y1="340" x2="810" y2="340" stroke="#888" stroke-width="1.5"/>
+<rect x="597.5" y="334.4" width="5.2" height="5.6" fill="#7ec8e3" fill-opacity="0.5"/>
+<rect x="603.8" y="120.0" width="5.2" height="220.0" fill="#7ec8e3" fill-opacity="0.5"/>
+<rect x="610.0" y="312.0" width="5.2" height="28.0" fill="#7ec8e3" fill-opacity="0.5"/>
+<line x1="601" y1="340" x2="601" y2="148" stroke="#55c555" stroke-width="2"/>
+<line x1="614" y1="340" x2="614" y2="148" stroke="#e05555" stroke-width="2"/>
+<text x="593" y="142" font-size="13" fill="#55c555" text-anchor="end">가까운 쪽</text>
+<text x="622" y="168" font-size="13" fill="#e05555">먼 쪽</text>
+<line x1="510" y1="340" x2="510" y2="346" stroke="#444" stroke-width="1.5"/>
+<text x="510" y="364" font-size="13" fill="#888" text-anchor="middle">0</text>
+<line x1="610" y1="340" x2="610" y2="346" stroke="#444" stroke-width="1.5"/>
+<text x="610" y="364" font-size="13" fill="#888" text-anchor="middle">1</text>
+<line x1="710" y1="340" x2="710" y2="346" stroke="#444" stroke-width="1.5"/>
+<text x="710" y="364" font-size="13" fill="#888" text-anchor="middle">2</text>
+<line x1="810" y1="340" x2="810" y2="346" stroke="#444" stroke-width="1.5"/>
+<text x="810" y="364" font-size="13" fill="#888" text-anchor="middle">3</text>
+<text x="510" y="392" font-size="13" fill="#888">먼 쪽 / 가까운 쪽 = 1.14</text>
+<text x="60" y="424" font-size="13" fill="#888">가로축은 √(2d) 로 나눠 두 그림의 눈금을 맞췄다 — 차원이 커지면 봉우리가 1 근처로 모인다</text>
+</svg>
