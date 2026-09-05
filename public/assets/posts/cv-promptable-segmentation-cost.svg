@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="300" viewBox="0 0 880 300" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <rect x="0" y="0" width="880" height="300" rx="12" fill="#0a0a0a"/>
+
+  <text x="62" y="42" font-size="22" font-weight="700" fill="#e8e8e8">무거운 일은 한 번, 가벼운 일은 몇 번이든</text>
+  <text x="62" y="68" font-size="13" fill="#888">이미지 임베딩을 한 번 만들어 두면 프롬프트마다 드는 비용은 거의 없다.</text>
+
+  <text x="120" y="112" font-size="13" font-weight="600" fill="#7777cc">① 이미지가 들어올 때 딱 한 번</text>
+  <text x="470" y="112" font-size="13" font-weight="600" fill="#55c555">② 그다음은 프롬프트마다</text>
+
+  <rect x="120" y="126" width="190" height="44" rx="6" fill="#7777cc" opacity="0.15">
+    <animate attributeName="opacity" values="0.15;0.15;0.85;0.85" keyTimes="0;0.05;0.09;1" dur="4s" repeatCount="indefinite"/>
+  </rect>
+  <text x="136" y="154" font-size="13" font-weight="600" fill="#e8e8e8">이미지 인코더</text>
+
+  <rect x="330" y="126" width="20" height="44" rx="4" fill="#55c555" opacity="0.15">
+    <animate attributeName="opacity" values="0.15;0.15;0.9;0.9" keyTimes="0;0.35;0.38;1" dur="4s" repeatCount="indefinite"/>
+  </rect>
+  <rect x="372" y="126" width="20" height="44" rx="4" fill="#55c555" opacity="0.15">
+    <animate attributeName="opacity" values="0.15;0.15;0.9;0.9" keyTimes="0;0.41;0.44;1" dur="4s" repeatCount="indefinite"/>
+  </rect>
+  <rect x="414" y="126" width="20" height="44" rx="4" fill="#55c555" opacity="0.15">
+    <animate attributeName="opacity" values="0.15;0.15;0.9;0.9" keyTimes="0;0.47;0.50;1" dur="4s" repeatCount="indefinite"/>
+  </rect>
+  <rect x="456" y="126" width="20" height="44" rx="4" fill="#55c555" opacity="0.15">
+    <animate attributeName="opacity" values="0.15;0.15;0.9;0.9" keyTimes="0;0.53;0.56;1" dur="4s" repeatCount="indefinite"/>
+  </rect>
+  <rect x="498" y="126" width="20" height="44" rx="4" fill="#55c555" opacity="0.15">
+    <animate attributeName="opacity" values="0.15;0.15;0.9;0.9" keyTimes="0;0.59;0.62;1" dur="4s" repeatCount="indefinite"/>
+  </rect>
+  <rect x="540" y="126" width="20" height="44" rx="4" fill="#55c555" opacity="0.15">
+    <animate attributeName="opacity" values="0.15;0.15;0.9;0.9" keyTimes="0;0.65;0.68;1" dur="4s" repeatCount="indefinite"/>
+  </rect>
+  <rect x="582" y="126" width="20" height="44" rx="4" fill="#55c555" opacity="0.15">
+    <animate attributeName="opacity" values="0.15;0.15;0.9;0.9" keyTimes="0;0.71;0.74;1" dur="4s" repeatCount="indefinite"/>
+  </rect>
+  <rect x="624" y="126" width="20" height="44" rx="4" fill="#55c555" opacity="0.15">
+    <animate attributeName="opacity" values="0.15;0.15;0.9;0.9" keyTimes="0;0.77;0.80;1" dur="4s" repeatCount="indefinite"/>
+  </rect>
+  <rect x="666" y="126" width="20" height="44" rx="4" fill="#55c555" opacity="0.15">
+    <animate attributeName="opacity" values="0.15;0.15;0.9;0.9" keyTimes="0;0.83;0.86;1" dur="4s" repeatCount="indefinite"/>
+  </rect>
+  <rect x="708" y="126" width="20" height="44" rx="4" fill="#55c555" opacity="0.15">
+    <animate attributeName="opacity" values="0.15;0.15;0.9;0.9" keyTimes="0;0.89;0.92;1" dur="4s" repeatCount="indefinite"/>
+  </rect>
+
+  <line x1="120" y1="186" x2="768" y2="186" stroke="#3a4a6e" stroke-width="1.5"/>
+  <text x="778" y="190" font-size="12" fill="#888">시간</text>
+
+  <text x="120" y="214" font-size="12" fill="#9aa4b8">큰 비전 인코더 — 한 장에 수백 밀리초</text>
+  <text x="470" y="214" font-size="12" fill="#9aa4b8">마스크 디코더 — 프롬프트당 수 밀리초</text>
+
+  <text x="62" y="252" font-size="12" fill="#9aa4b8">그래서 같은 그림에 여러 번 물어보는 화면은 손끝을 따라오는 속도로 만들 수 있다.</text>
+  <text x="62" y="274" font-size="12" fill="#e05555">반대로 매 요청마다 인코딩을 다시 하면 이 구조의 이점이 통째로 사라진다 — 임베딩을 캐시한다.</text>
+</svg>

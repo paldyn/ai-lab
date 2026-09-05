@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="410" viewBox="0 0 880 410" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <defs>
+    <marker id="poTop" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#7ec8e3"/>
+    </marker>
+    <marker id="poBot" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#55c555"/>
+    </marker>
+  </defs>
+  <rect x="0" y="0" width="880" height="410" rx="12" fill="#0a0a0a"/>
+
+  <text x="62" y="42" font-size="22" font-weight="700" fill="#e8e8e8">사람을 먼저 찾을까, 관절을 먼저 찾을까</text>
+  <text x="62" y="68" font-size="13" fill="#888">같은 결과에 이르는 두 경로다. 비용이 어디에 붙는지가 다르다.</text>
+
+  <text x="62" y="104" font-size="13" font-weight="600" fill="#7ec8e3">위에서 아래로 — 사람부터</text>
+
+  <rect x="62" y="112" width="170" height="64" rx="8" fill="#12151c" stroke="#3a4a6e" stroke-width="1.5"/>
+  <text x="78" y="136" font-size="13" font-weight="600" fill="#e8e8e8">① 사람 검출</text>
+  <text x="78" y="156" font-size="11" fill="#9aa4b8">상자를 먼저 찾는다</text>
+  <line x1="232" y1="144" x2="258" y2="144" stroke="#7ec8e3" stroke-width="2" marker-end="url(#poTop)"/>
+
+  <rect x="258" y="112" width="170" height="64" rx="8" fill="#12151c" stroke="#3a4a6e" stroke-width="1.5"/>
+  <text x="274" y="136" font-size="13" font-weight="600" fill="#e8e8e8">② 잘라서 키우기</text>
+  <text x="274" y="156" font-size="11" fill="#9aa4b8">한 사람이 화면 가득</text>
+  <line x1="428" y1="144" x2="454" y2="144" stroke="#7ec8e3" stroke-width="2" marker-end="url(#poTop)"/>
+
+  <rect x="454" y="112" width="170" height="64" rx="8" fill="#12151c" stroke="#3a4a6e" stroke-width="1.5"/>
+  <text x="470" y="136" font-size="13" font-weight="600" fill="#e8e8e8">③ 사람마다 추정</text>
+  <text x="470" y="156" font-size="11" fill="#9aa4b8">사람 수만큼 반복</text>
+  <line x1="624" y1="144" x2="650" y2="144" stroke="#7ec8e3" stroke-width="2" marker-end="url(#poTop)"/>
+
+  <rect x="650" y="112" width="168" height="64" rx="8" fill="#12151c" stroke="#7ec8e3" stroke-width="1.5"/>
+  <text x="666" y="136" font-size="13" font-weight="600" fill="#e8e8e8">결과</text>
+  <text x="666" y="156" font-size="11" fill="#9aa4b8">작은 사람도 잘 잡힌다</text>
+
+  <text x="62" y="208" font-size="12" fill="#9aa4b8">사람 수에 비례해 느려진다. 대신 잘라서 키우므로 멀리 있는 사람도 정확하다.</text>
+
+  <text x="62" y="248" font-size="13" font-weight="600" fill="#55c555">아래에서 위로 — 관절부터</text>
+
+  <rect x="62" y="256" width="170" height="64" rx="8" fill="#12151c" stroke="#3a4a6e" stroke-width="1.5"/>
+  <text x="78" y="280" font-size="13" font-weight="600" fill="#e8e8e8">① 관절 전부 검출</text>
+  <text x="78" y="300" font-size="11" fill="#9aa4b8">누구 것인지 모른 채</text>
+  <line x1="232" y1="288" x2="258" y2="288" stroke="#55c555" stroke-width="2" marker-end="url(#poBot)"/>
+
+  <rect x="258" y="256" width="170" height="64" rx="8" fill="#12151c" stroke="#3a4a6e" stroke-width="1.5"/>
+  <text x="274" y="280" font-size="13" font-weight="600" fill="#e8e8e8">② 이어붙일 단서</text>
+  <text x="274" y="300" font-size="11" fill="#9aa4b8">관절 사이 연결 정보</text>
+  <line x1="428" y1="288" x2="454" y2="288" stroke="#55c555" stroke-width="2" marker-end="url(#poBot)"/>
+
+  <rect x="454" y="256" width="170" height="64" rx="8" fill="#12151c" stroke="#3a4a6e" stroke-width="1.5"/>
+  <text x="470" y="280" font-size="13" font-weight="600" fill="#e8e8e8">③ 사람별로 묶기</text>
+  <text x="470" y="300" font-size="11" fill="#9aa4b8">몇 명이든 한 번에</text>
+  <line x1="624" y1="288" x2="650" y2="288" stroke="#55c555" stroke-width="2" marker-end="url(#poBot)"/>
+
+  <rect x="650" y="256" width="168" height="64" rx="8" fill="#12151c" stroke="#55c555" stroke-width="1.5"/>
+  <text x="666" y="280" font-size="13" font-weight="600" fill="#e8e8e8">결과</text>
+  <text x="666" y="300" font-size="11" fill="#9aa4b8">사람이 많아도 일정</text>
+
+  <text x="62" y="352" font-size="12" fill="#9aa4b8">사람 수와 거의 무관하게 일정하다. 대신 겹쳐 선 사람들을 묶는 자리에서 틀린다.</text>
+  <text x="62" y="380" font-size="12" fill="#7ec8e3">붐비는 장면에서 실시간이 필요하면 아래쪽, 사람이 몇 안 되고 정확도가 필요하면 위쪽이다.</text>
+</svg>

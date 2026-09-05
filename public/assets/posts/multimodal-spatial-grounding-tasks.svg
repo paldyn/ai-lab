@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="405" viewBox="0 0 880 405" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <rect x="0" y="0" width="880" height="405" rx="12" fill="#0a0a0a"/>
+
+  <text x="62" y="42" font-size="22" font-weight="700" fill="#e8e8e8">가리키는 방향이 셋이다</text>
+  <text x="62" y="68" font-size="13" fill="#888">말에서 자리로, 여러 말에서 여러 자리로, 자리에서 말로.</text>
+
+  <rect x="62" y="100" width="220" height="126" rx="8" fill="#12151c" stroke="#3a4a6e" stroke-width="1.5"/>
+  <text x="80" y="124" font-size="13" font-weight="600" fill="#7ec8e3">① 지시 표현 → 상자</text>
+  <text x="80" y="148" font-size="11" fill="#9aa4b8">넣는 것: 그림 + 문구</text>
+  <text x="80" y="170" font-size="11" fill="#9aa4b8">「왼쪽 두 번째 빨간 우산」</text>
+  <text x="80" y="192" font-size="11" fill="#9aa4b8">받는 것: 상자 하나</text>
+  <text x="80" y="214" font-size="11" fill="#9aa4b8">고르는 문제라 답이 하나</text>
+
+  <rect x="330" y="100" width="220" height="126" rx="8" fill="#12151c" stroke="#3a4a6e" stroke-width="1.5"/>
+  <text x="348" y="124" font-size="13" font-weight="600" fill="#7777cc">② 구절들 → 상자들</text>
+  <text x="348" y="148" font-size="11" fill="#9aa4b8">넣는 것: 그림 + 문장</text>
+  <text x="348" y="170" font-size="11" fill="#9aa4b8">문장 속 명사구를 모두</text>
+  <text x="348" y="192" font-size="11" fill="#9aa4b8">받는 것: 구절마다 상자</text>
+  <text x="348" y="214" font-size="11" fill="#9aa4b8">빠뜨림과 중복이 생긴다</text>
+
+  <rect x="598" y="100" width="220" height="126" rx="8" fill="#12151c" stroke="#3a4a6e" stroke-width="1.5"/>
+  <text x="616" y="124" font-size="13" font-weight="600" fill="#55c555">③ 상자 → 설명</text>
+  <text x="616" y="148" font-size="11" fill="#9aa4b8">넣는 것: 그림 + 상자</text>
+  <text x="616" y="170" font-size="11" fill="#9aa4b8">받는 것: 그 자리의 설명</text>
+  <text x="616" y="192" font-size="11" fill="#9aa4b8">자리를 먼저 좁혀 묻는다</text>
+  <text x="616" y="214" font-size="11" fill="#9aa4b8">되짚어 확인할 때 쓴다</text>
+
+  <text x="62" y="256" font-size="13" font-weight="600" fill="#e8e8e8">①의 응답은 대개 이런 모양이다</text>
+
+  <rect x="62" y="268" width="756" height="60" rx="6" fill="#000000" stroke="#3a4a6e" stroke-width="1"/>
+  <text x="80" y="292" xml:space="preserve" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13"><tspan fill="#ffffff">빨간 우산은 </tspan><tspan fill="#7ec8e3" font-weight="600">&lt;box&gt;</tspan><tspan fill="#b5cea8">412 208 566 430</tspan><tspan fill="#7ec8e3" font-weight="600">&lt;/box&gt;</tspan><tspan fill="#ffffff"> 에 있습니다.</tspan></text>
+  <text x="80" y="312" xml:space="preserve" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13"><tspan fill="#9aa4b8">없을 때 → </tspan><tspan fill="#ce9178">"해당하는 대상을 찾지 못했습니다."</tspan></text>
+
+  <text x="62" y="360" font-size="12" fill="#9aa4b8">숫자 넷의 뜻과 기준을 지시에 못 박지 않으면 모델마다 다르게 낸다 — 좌상·우하인지, 좌상과 폭·높이인지.</text>
+  <text x="62" y="382" font-size="12" fill="#e05555">「없으면 없다고 하라」를 빼먹으면 모델은 대개 아무 자리나 하나 골라 답한다.</text>
+</svg>

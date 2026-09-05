@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="460" viewBox="0 0 880 460" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <defs>
+    <marker id="dpArr" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#888888"/>
+    </marker>
+  </defs>
+  <rect x="0" y="0" width="880" height="460" rx="12" fill="#0a0a0a"/>
+
+  <text x="62" y="42" font-size="22" font-weight="700" fill="#e8e8e8">같은 그림이 두 세상에서 나온다</text>
+  <text x="62" y="68" font-size="13" fill="#888">카메라 한 대의 그림만으로는 크기와 거리가 함께 정해지지 않는다.</text>
+
+  <text x="62" y="104" font-size="13" font-weight="600" fill="#7ec8e3">해석 A — 작은 것이 가까이</text>
+  <rect x="62" y="110" width="340" height="170" rx="8" fill="#12151c" stroke="#3a4a6e" stroke-width="1.5"/>
+  <path d="M 92 195 L 388 155" stroke="#3a4a6e" stroke-width="1.5" stroke-dasharray="4,4"/>
+  <path d="M 92 195 L 388 235" stroke="#3a4a6e" stroke-width="1.5" stroke-dasharray="4,4"/>
+  <path d="M 82 185 L 100 195 L 82 205 z" fill="#7ec8e3"/>
+  <rect x="152" y="186" width="16" height="18" rx="2" fill="#55c555"/>
+  <text x="140" y="232" font-size="11" fill="#9aa4b8">가깝고 작다</text>
+
+  <text x="478" y="104" font-size="13" font-weight="600" fill="#7ec8e3">해석 B — 큰 것이 멀리</text>
+  <rect x="478" y="110" width="340" height="170" rx="8" fill="#12151c" stroke="#3a4a6e" stroke-width="1.5"/>
+  <path d="M 508 195 L 804 155" stroke="#3a4a6e" stroke-width="1.5" stroke-dasharray="4,4"/>
+  <path d="M 508 195 L 804 235" stroke="#3a4a6e" stroke-width="1.5" stroke-dasharray="4,4"/>
+  <path d="M 498 185 L 516 195 L 498 205 z" fill="#7ec8e3"/>
+  <rect x="680" y="169" width="40" height="52" rx="3" fill="#55c555"/>
+  <text x="666" y="248" font-size="11" fill="#9aa4b8">멀고 크다</text>
+
+  <line x1="232" y1="280" x2="392" y2="316" stroke="#888888" stroke-width="2" marker-end="url(#dpArr)"/>
+  <line x1="648" y1="280" x2="488" y2="316" stroke="#888888" stroke-width="2" marker-end="url(#dpArr)"/>
+
+  <rect x="350" y="316" width="180" height="60" rx="8" fill="#12151c" stroke="#e05555" stroke-width="1.5"/>
+  <text x="366" y="340" font-size="13" font-weight="600" fill="#e8e8e8">찍힌 그림은 하나</text>
+  <text x="366" y="360" font-size="11" fill="#9aa4b8">둘을 가릴 단서가 없다</text>
+
+  <text x="62" y="410" font-size="12" fill="#9aa4b8">그래서 단안 모델이 내는 값은 대개 실제 거리가 아니라, 곱할 수와 더할 수가 정해지지 않은 값이다.</text>
+  <text x="62" y="432" font-size="12" fill="#9aa4b8">미터가 필요하면 크기를 아는 무언가를 그림 안에 두거나 카메라 정보를 함께 넣어야 한다.</text>
+</svg>

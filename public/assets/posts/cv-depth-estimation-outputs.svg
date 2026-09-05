@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="360" viewBox="0 0 880 360" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <rect x="0" y="0" width="880" height="360" rx="12" fill="#0a0a0a"/>
+
+  <text x="62" y="42" font-size="22" font-weight="700" fill="#e8e8e8">깊이라고 다 같은 깊이가 아니다</text>
+  <text x="62" y="68" font-size="13" fill="#888">무엇에 쓸 수 있는지가 종류마다 다르다.</text>
+
+  <rect x="62" y="100" width="220" height="150" rx="8" fill="#12151c" stroke="#3a4a6e" stroke-width="1.5"/>
+  <text x="80" y="126" font-size="13" font-weight="600" fill="#7ec8e3">① 순서만</text>
+  <text x="80" y="154" font-size="11" fill="#9aa4b8">A가 B보다 앞이다</text>
+  <text x="80" y="174" font-size="11" fill="#9aa4b8">그 이상은 말하지 않는다</text>
+  <text x="80" y="194" font-size="11" fill="#9aa4b8">쓸 곳: 앞뒤 가리기</text>
+  <text x="80" y="214" font-size="11" fill="#9aa4b8">합성할 때 무엇을</text>
+  <text x="80" y="234" font-size="11" fill="#9aa4b8">가릴지 정하는 데 쓴다</text>
+
+  <rect x="330" y="100" width="220" height="150" rx="8" fill="#12151c" stroke="#3a4a6e" stroke-width="1.5"/>
+  <text x="348" y="126" font-size="13" font-weight="600" fill="#7777cc">② 배율·치우침 미상</text>
+  <text x="348" y="154" font-size="11" fill="#9aa4b8">값의 모양은 맞는데</text>
+  <text x="348" y="174" font-size="11" fill="#9aa4b8">곱할 수와 더할 수를</text>
+  <text x="348" y="194" font-size="11" fill="#9aa4b8">모른다. 범용 모델의</text>
+  <text x="348" y="214" font-size="11" fill="#9aa4b8">기본 출력이 이것이다</text>
+  <text x="348" y="234" font-size="11" fill="#9aa4b8">쓸 곳: 흐림·상대 비교</text>
+
+  <rect x="598" y="100" width="220" height="150" rx="8" fill="#12151c" stroke="#3a4a6e" stroke-width="1.5"/>
+  <text x="616" y="126" font-size="13" font-weight="600" fill="#55c555">③ 미터 단위</text>
+  <text x="616" y="154" font-size="11" fill="#9aa4b8">실제 거리로 나온다</text>
+  <text x="616" y="174" font-size="11" fill="#9aa4b8">카메라 정보나 크기를</text>
+  <text x="616" y="194" font-size="11" fill="#9aa4b8">아는 물체가 있어야 한다</text>
+  <text x="616" y="214" font-size="11" fill="#9aa4b8">쓸 곳: 로봇·측정</text>
+  <text x="616" y="234" font-size="11" fill="#9aa4b8">틀리면 부딪힌다</text>
+
+  <text x="62" y="292" font-size="12" fill="#9aa4b8">①은 ②에서 그냥 얻어진다 — 크기를 견주기만 하면 되니까. 반대 방향은 공짜가 아니다.</text>
+  <text x="62" y="316" font-size="12" fill="#9aa4b8">②를 ③으로 올리려면 실제 거리를 아는 점이 적어도 둘 있어야 한다 — 미지수가 둘이기 때문이다.</text>
+</svg>

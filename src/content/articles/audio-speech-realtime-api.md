@@ -136,3 +136,5 @@ WebRTC를 쓰는 이유는 브라우저에서 마이크와 스피커를 다루�
 읽어주셔서 감사합니다. 😊
 
 **지난 글:** [현대 OCR — 찾는 모델과 읽는 모델, 그리고 그 경계가 사라진 자리](/articles/cv-ocr-modern)
+
+**다음 글:** [any-to-any 모델 — 소리도 그림도 같은 줄에 놓는다](/articles/multimodal-any-to-any)

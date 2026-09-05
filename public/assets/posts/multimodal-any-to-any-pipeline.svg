@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="500" viewBox="0 0 880 500" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <defs>
+    <marker id="aaBlue" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#7ec8e3"/>
+    </marker>
+    <marker id="aaGreen" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#55c555"/>
+    </marker>
+  </defs>
+  <rect x="0" y="0" width="880" height="500" rx="12" fill="#0a0a0a"/>
+
+  <text x="62" y="42" font-size="22" font-weight="700" fill="#e8e8e8">이어 붙인 것과 한 몸인 것</text>
+  <text x="62" y="68" font-size="13" fill="#888">같은 일을 하지만, 경계에서 무엇이 남는지가 다르다.</text>
+
+  <text x="62" y="104" font-size="13" font-weight="600" fill="#7ec8e3">조립형 — 모델 셋을 이어 붙인다</text>
+
+  <rect x="62" y="118" width="128" height="60" rx="8" fill="#12151c" stroke="#3a4a6e" stroke-width="1.5"/>
+  <text x="78" y="142" font-size="13" font-weight="600" fill="#e8e8e8">오디오 입력</text>
+  <text x="78" y="162" font-size="11" fill="#9aa4b8">말소리 그대로</text>
+  <line x1="190" y1="148" x2="216" y2="148" stroke="#7ec8e3" stroke-width="2" marker-end="url(#aaBlue)"/>
+
+  <rect x="216" y="118" width="128" height="60" rx="8" fill="#12151c" stroke="#3a4a6e" stroke-width="1.5"/>
+  <text x="232" y="142" font-size="13" font-weight="600" fill="#e8e8e8">ASR</text>
+  <text x="232" y="162" font-size="11" fill="#9aa4b8">소리를 글자로</text>
+  <line x1="344" y1="148" x2="370" y2="148" stroke="#7ec8e3" stroke-width="2" marker-end="url(#aaBlue)"/>
+
+  <rect x="370" y="118" width="128" height="60" rx="8" fill="#12151c" stroke="#3a4a6e" stroke-width="1.5"/>
+  <text x="386" y="142" font-size="13" font-weight="600" fill="#e8e8e8">LLM</text>
+  <text x="386" y="162" font-size="11" fill="#9aa4b8">글자를 글자로</text>
+  <line x1="498" y1="148" x2="524" y2="148" stroke="#7ec8e3" stroke-width="2" marker-end="url(#aaBlue)"/>
+
+  <rect x="524" y="118" width="128" height="60" rx="8" fill="#12151c" stroke="#3a4a6e" stroke-width="1.5"/>
+  <text x="540" y="142" font-size="13" font-weight="600" fill="#e8e8e8">TTS</text>
+  <text x="540" y="162" font-size="11" fill="#9aa4b8">글자를 소리로</text>
+  <line x1="652" y1="148" x2="678" y2="148" stroke="#7ec8e3" stroke-width="2" marker-end="url(#aaBlue)"/>
+
+  <rect x="678" y="118" width="128" height="60" rx="8" fill="#12151c" stroke="#3a4a6e" stroke-width="1.5"/>
+  <text x="694" y="142" font-size="13" font-weight="600" fill="#e8e8e8">오디오 출력</text>
+  <text x="694" y="162" font-size="11" fill="#9aa4b8">합성된 말소리</text>
+
+  <text x="62" y="204" font-size="13" fill="#e05555">경계마다 글자로 떨어진다 — 억양·웃음·말 겹침·배경 소리가 여기서 사라진다</text>
+  <text x="62" y="226" font-size="12" fill="#9aa4b8">그리고 단계는 겹치지 않는다. 앞이 끝나야 뒤가 시작하므로 지연이 그대로 더해진다.</text>
+
+  <text x="62" y="264" font-size="13" font-weight="600" fill="#55c555">통합형 — 하나의 토큰 줄</text>
+
+  <rect x="62" y="276" width="150" height="40" rx="8" fill="#12151c" stroke="#3a4a6e" stroke-width="1.5"/>
+  <text x="80" y="301" font-size="13" fill="#e8e8e8">오디오</text>
+  <rect x="62" y="322" width="150" height="40" rx="8" fill="#12151c" stroke="#3a4a6e" stroke-width="1.5"/>
+  <text x="80" y="347" font-size="13" fill="#e8e8e8">이미지</text>
+  <rect x="62" y="368" width="150" height="40" rx="8" fill="#12151c" stroke="#3a4a6e" stroke-width="1.5"/>
+  <text x="80" y="393" font-size="13" fill="#e8e8e8">텍스트</text>
+
+  <line x1="212" y1="296" x2="300" y2="296" stroke="#55c555" stroke-width="2" marker-end="url(#aaGreen)"/>
+  <line x1="212" y1="342" x2="300" y2="342" stroke="#55c555" stroke-width="2" marker-end="url(#aaGreen)"/>
+  <line x1="212" y1="388" x2="300" y2="388" stroke="#55c555" stroke-width="2" marker-end="url(#aaGreen)"/>
+
+  <rect x="300" y="276" width="250" height="132" rx="8" fill="#12151c" stroke="#55c555" stroke-width="1.5"/>
+  <text x="316" y="306" font-size="13" font-weight="600" fill="#e8e8e8">하나의 모델</text>
+  <text x="316" y="328" font-size="11" fill="#9aa4b8">소리도 그림도 글자도</text>
+  <text x="316" y="348" font-size="11" fill="#9aa4b8">같은 토큰 줄에 놓는다</text>
+  <text x="316" y="368" font-size="11" fill="#9aa4b8">출력도 그 줄에서</text>
+  <text x="316" y="388" font-size="11" fill="#9aa4b8">이어서 나온다</text>
+
+  <line x1="550" y1="296" x2="650" y2="296" stroke="#55c555" stroke-width="2" marker-end="url(#aaGreen)"/>
+  <line x1="550" y1="342" x2="650" y2="342" stroke="#55c555" stroke-width="2" marker-end="url(#aaGreen)"/>
+  <line x1="550" y1="388" x2="650" y2="388" stroke="#55c555" stroke-width="2" marker-end="url(#aaGreen)"/>
+
+  <rect x="650" y="276" width="150" height="40" rx="8" fill="#12151c" stroke="#3a4a6e" stroke-width="1.5"/>
+  <text x="668" y="301" font-size="13" fill="#e8e8e8">텍스트</text>
+  <rect x="650" y="322" width="150" height="40" rx="8" fill="#12151c" stroke="#3a4a6e" stroke-width="1.5"/>
+  <text x="668" y="347" font-size="13" fill="#e8e8e8">이미지</text>
+  <rect x="650" y="368" width="150" height="40" rx="8" fill="#12151c" stroke="#3a4a6e" stroke-width="1.5"/>
+  <text x="668" y="393" font-size="13" fill="#e8e8e8">오디오</text>
+
+  <text x="62" y="440" font-size="12" fill="#9aa4b8">중간에 글자로 떨어지는 자리가 없다 — 말의 억양과 그림 속 자리가 그대로 다음으로 간다.</text>
+  <text x="62" y="462" font-size="12" fill="#9aa4b8">대신 무엇이 잘못됐는지 들여다볼 중간 산출물도 함께 없어진다.</text>
+</svg>

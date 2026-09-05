@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="420" viewBox="0 0 880 420" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <rect x="0" y="0" width="880" height="420" rx="12" fill="#0a0a0a"/>
+
+  <text x="62" y="42" font-size="22" font-weight="700" fill="#e8e8e8">사람 하나가 점 열일곱 개가 된다</text>
+  <text x="62" y="68" font-size="13" fill="#888">동작은 겉모양이 아니라 관절이 놓인 자리로 표현된다.</text>
+
+  <text x="62" y="104" font-size="13" font-weight="600" fill="#7ec8e3">① 열일곱 점과 그 사이의 뼈대</text>
+
+  <line x1="240" y1="140" x2="248" y2="133" stroke="#7ec8e3" stroke-width="2"/>
+  <line x1="240" y1="140" x2="232" y2="133" stroke="#7ec8e3" stroke-width="2"/>
+  <line x1="248" y1="133" x2="258" y2="137" stroke="#7ec8e3" stroke-width="2"/>
+  <line x1="232" y1="133" x2="222" y2="137" stroke="#7ec8e3" stroke-width="2"/>
+  <line x1="240" y1="140" x2="240" y2="175" stroke="#7ec8e3" stroke-width="2"/>
+
+  <line x1="208" y1="175" x2="272" y2="175" stroke="#55c555" stroke-width="2"/>
+  <line x1="272" y1="175" x2="292" y2="220" stroke="#55c555" stroke-width="2"/>
+  <line x1="292" y1="220" x2="300" y2="265" stroke="#55c555" stroke-width="2"/>
+  <line x1="208" y1="175" x2="188" y2="220" stroke="#55c555" stroke-width="2"/>
+  <line x1="188" y1="220" x2="180" y2="265" stroke="#55c555" stroke-width="2"/>
+
+  <line x1="272" y1="175" x2="264" y2="250" stroke="#7777cc" stroke-width="2"/>
+  <line x1="208" y1="175" x2="216" y2="250" stroke="#7777cc" stroke-width="2"/>
+  <line x1="216" y1="250" x2="264" y2="250" stroke="#7777cc" stroke-width="2"/>
+  <line x1="264" y1="250" x2="270" y2="300" stroke="#7777cc" stroke-width="2"/>
+  <line x1="270" y1="300" x2="274" y2="345" stroke="#7777cc" stroke-width="2"/>
+  <line x1="216" y1="250" x2="210" y2="300" stroke="#7777cc" stroke-width="2"/>
+  <line x1="210" y1="300" x2="206" y2="345" stroke="#7777cc" stroke-width="2"/>
+
+  <circle cx="240" cy="140" r="5" fill="#7ec8e3"/>
+  <circle cx="248" cy="133" r="4" fill="#7ec8e3"/>
+  <circle cx="232" cy="133" r="4" fill="#7ec8e3"/>
+  <circle cx="258" cy="137" r="4" fill="#7ec8e3"/>
+  <circle cx="222" cy="137" r="4" fill="#7ec8e3"/>
+
+  <circle cx="272" cy="175" r="5" fill="#55c555"/>
+  <circle cx="208" cy="175" r="5" fill="#55c555"/>
+  <circle cx="292" cy="220" r="5" fill="#55c555"/>
+  <circle cx="188" cy="220" r="5" fill="#55c555"/>
+  <circle cx="300" cy="265" r="5" fill="#55c555"/>
+  <circle cx="180" cy="265" r="5" fill="#55c555"/>
+
+  <circle cx="264" cy="250" r="5" fill="#7777cc"/>
+  <circle cx="216" cy="250" r="5" fill="#7777cc"/>
+  <circle cx="270" cy="300" r="5" fill="#7777cc"/>
+  <circle cx="210" cy="300" r="5" fill="#7777cc"/>
+  <circle cx="274" cy="345" r="5" fill="#7777cc"/>
+  <circle cx="206" cy="345" r="5" fill="#7777cc"/>
+
+  <text x="420" y="104" font-size="13" font-weight="600" fill="#55c555">② 점의 갈래</text>
+
+  <circle cx="426" cy="146" r="5" fill="#7ec8e3"/>
+  <text x="444" y="150" font-size="12" fill="#9aa4b8">얼굴 5점 — 코, 눈 둘, 귀 둘</text>
+  <circle cx="426" cy="176" r="5" fill="#55c555"/>
+  <text x="444" y="180" font-size="12" fill="#9aa4b8">팔 6점 — 어깨·팔꿈치·손목 좌우</text>
+  <circle cx="426" cy="206" r="5" fill="#7777cc"/>
+  <text x="444" y="210" font-size="12" fill="#9aa4b8">다리 6점 — 엉덩이·무릎·발목 좌우</text>
+
+  <text x="420" y="262" font-size="12" fill="#9aa4b8">점 하나가 들고 있는 값은 셋이다 —</text>
+  <text x="420" y="284" font-size="12" fill="#9aa4b8">가로 자리, 세로 자리, 그리고</text>
+  <text x="420" y="306" font-size="12" fill="#9aa4b8">이 점을 믿어도 되는가.</text>
+
+  <text x="62" y="388" font-size="12" fill="#e05555">가려진 관절에도 점은 나온다 — 신뢰도를 함께 보지 않으면 팔이 엉뚱한 데로 뻗는다.</text>
+</svg>
