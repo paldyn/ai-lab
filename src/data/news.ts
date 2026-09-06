@@ -172,6 +172,36 @@ export const globalNewsUpdatedAt = '2026-09-03';
  */
 const entries: NewsItem[] = [
   {
+    id: 'an-alien-mind',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'OpenAI Jakub Pachocki, 자발적 감속과 국제 조율을 촉구',
+    summary:
+      'Jakub Pachocki가 내부 결과를 근거로 지금 속도가 재귀적 자기개선까지 이어질 수 있다고 적었다. ' +
+      'OpenAI가 기대 온 사고 사슬 감시의 신뢰도가 떨어지고 있다며, 어떤 연구소도 최대 속도로 계속 ' +
+      '확장할 만큼 정렬과 감시를 풀지 못했다고 밝혔다.',
+    publishedAt: '2026-09-06',
+    collectedAt: '2026-09-07',
+    category: 'Safety',
+    signal: '정렬 한계 경고',
+    url: 'https://openai.com/index/an-alien-mind',
+  },
+  {
+    id: 'research-acceleration-view-inside-openai',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'OpenAI, 사내 연구에서 코딩 에이전트가 사람 노동의 3.1배',
+    summary:
+      'OpenAI가 사내 연구 조직의 코딩 에이전트 사용 데이터를 공개했다. 지난해 가을 예고한 자동 연구 ' +
+      '인턴 목표를 올해 9월에 달성했다고 밝혔고, 8월 중순 기준 사람 하루치 노동마다 에이전트 3.1일치 ' +
+      '작업량을 쓴다고 적었다.',
+    publishedAt: '2026-09-06',
+    collectedAt: '2026-09-07',
+    category: 'Research',
+    signal: '연구 자동화 진척',
+    url: 'https://openai.com/index/research-acceleration-view-inside-openai',
+  },
+  {
     id: 'claude-platform-september-3-2026',
     source: 'Anthropic',
     kind: 'company',
@@ -184,6 +214,21 @@ const entries: NewsItem[] = [
     category: 'Product',
     signal: '리소스 코드 관리',
     url: 'https://platform.claude.com/docs/en/release-notes/overview#september-3-2026',
+  },
+  {
+    id: 'gpt-6-astra',
+    source: 'OpenAI',
+    kind: 'model',
+    title: 'OpenAI, GPT-6 Astra 출시 — 전 요금제와 API에 순차 개방',
+    summary:
+      'OpenAI가 GPT-6 Astra를 당일 일부 조직에 먼저 열고 며칠에 걸쳐 ChatGPT Plus·Pro·Business·' +
+      'Enterprise와 API, Azure, AWS Bedrock으로 넓힌다고 밝혔다. API 표준 가격은 100만 토큰당 ' +
+      '입력 10달러, 출력 50달러다.',
+    publishedAt: '2026-09-03',
+    collectedAt: '2026-09-07',
+    category: 'Frontier',
+    signal: '프런티어 모델',
+    url: 'https://openai.com/index/gpt-6-astra',
   },
   {
     id: 'safety-overview-gpt-6-astra',
