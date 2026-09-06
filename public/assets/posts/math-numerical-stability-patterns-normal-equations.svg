@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="440" viewBox="0 0 880 440">
+<rect width="880" height="440" rx="12" fill="#0a0a0a"/>
+<defs><marker id="m1" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto"><path d="M 0 0 L 13 7 L 0 14 z" fill="#7777cc"/></marker></defs>
+<text x="440" y="42" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="22" font-weight="700" fill="#e8e8e8">XᵀX를 만드는 순간 조건수가 제곱된다</text>
+<text x="440" y="68" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">거의 같은 열 두 개가 있는 50 × 8 설계행렬로 같은 최소제곱을 두 길로 풀었다</text>
+<text x="240" y="112" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#e05555">정규방정식</text>
+<rect x="70" y="136" width="340" height="46" rx="8" fill="#111820" stroke="#3a4a6e" stroke-width="1.5"/>
+<text x="240" y="164" text-anchor="middle" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" xml:space="preserve" fill="#ffffff">X (조건수 1.78e7)</text>
+<line x1="240" y1="184" x2="240" y2="196" stroke="#7777cc" stroke-width="2" marker-end="url(#m1)"/>
+<rect x="70" y="198" width="340" height="46" rx="8" fill="#111820" stroke="#3a4a6e" stroke-width="1.5"/>
+<text x="240" y="226" text-anchor="middle" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" xml:space="preserve" fill="#ffffff">XᵀX 를 만든다</text>
+<line x1="240" y1="246" x2="240" y2="258" stroke="#7777cc" stroke-width="2" marker-end="url(#m1)"/>
+<rect x="70" y="260" width="340" height="46" rx="8" fill="#111820" stroke="#3a4a6e" stroke-width="1.5"/>
+<text x="240" y="288" text-anchor="middle" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" xml:space="preserve" fill="#ffffff">solve(XᵀX, Xᵀy)</text>
+<rect x="70" y="322" width="340" height="60" rx="8" fill="#e05555" fill-opacity="0.14" stroke="#e05555" stroke-width="1.5"/>
+<text x="240" y="346" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e8e8e8">푸는 행렬의 조건수 3.31e14</text>
+<text x="240" y="366" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#e05555">계수 오차 4.5e-03</text>
+<text x="640" y="112" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#55c555">QR 분해 (lstsq)</text>
+<rect x="470" y="136" width="340" height="46" rx="8" fill="#111820" stroke="#3a4a6e" stroke-width="1.5"/>
+<text x="640" y="164" text-anchor="middle" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" xml:space="preserve" fill="#ffffff">X (조건수 1.78e7)</text>
+<line x1="640" y1="184" x2="640" y2="196" stroke="#7777cc" stroke-width="2" marker-end="url(#m1)"/>
+<rect x="470" y="198" width="340" height="46" rx="8" fill="#111820" stroke="#3a4a6e" stroke-width="1.5"/>
+<text x="640" y="226" text-anchor="middle" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" xml:space="preserve" fill="#ffffff">X 를 그대로 분해한다</text>
+<line x1="640" y1="246" x2="640" y2="258" stroke="#7777cc" stroke-width="2" marker-end="url(#m1)"/>
+<rect x="470" y="260" width="340" height="46" rx="8" fill="#111820" stroke="#3a4a6e" stroke-width="1.5"/>
+<text x="640" y="288" text-anchor="middle" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" xml:space="preserve" fill="#ffffff">lstsq(X, y)</text>
+<rect x="470" y="322" width="340" height="60" rx="8" fill="#55c555" fill-opacity="0.14" stroke="#55c555" stroke-width="1.5"/>
+<text x="640" y="346" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e8e8e8">푸는 행렬의 조건수 1.78e7</text>
+<text x="640" y="366" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#55c555">계수 오차 6.9e-10</text>
+<text x="440" y="414" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#e8e8e8">조건수가 제곱되면 잃는 자릿수도 두 배가 된다 — 7자리에서 14자리로</text>
+</svg>

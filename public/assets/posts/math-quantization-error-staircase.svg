@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="520" viewBox="0 0 880 520">
+<rect width="880" height="520" rx="12" fill="#0a0a0a"/>
+<text x="440" y="42" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="22" font-weight="700" fill="#e8e8e8">양자화는 계단이고, 오차는 톱니다</text>
+<text x="440" y="68" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">3비트(8칸)로 −1 ~ 1 을 담을 때 · 격자 간격 Δ = 2/7</text>
+<line x1="100" y1="205.0" x2="800" y2="205.0" stroke="#888" stroke-width="1.5"/>
+<line x1="450.0" y1="110" x2="450.0" y2="300" stroke="#888" stroke-width="1.5"/>
+<text x="814" y="210.0" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">x</text>
+<text x="438.0" y="104" text-anchor="end" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">Q(x)</text>
+<line x1="100.0" y1="300.0" x2="800.0" y2="110.0" stroke="#7777cc" stroke-width="1.5" stroke-dasharray="5,4"/>
+<path d="M 100.0 300.0 L 150.0 300.0 M 150.0 272.9 L 250.0 272.9 M 250.0 245.7 L 350.0 245.7 M 350.0 218.6 L 450.0 218.6 M 450.0 191.4 L 550.0 191.4 M 550.0 164.3 L 650.0 164.3 M 650.0 137.1 L 750.0 137.1 M 750.0 110.0 L 800.0 110.0" fill="none" stroke="#7ec8e3" stroke-width="3"/>
+<line x1="100.0" y1="200.0" x2="100.0" y2="210.0" stroke="#444" stroke-width="1.5"/>
+<line x1="200.0" y1="200.0" x2="200.0" y2="210.0" stroke="#444" stroke-width="1.5"/>
+<line x1="300.0" y1="200.0" x2="300.0" y2="210.0" stroke="#444" stroke-width="1.5"/>
+<line x1="400.0" y1="200.0" x2="400.0" y2="210.0" stroke="#444" stroke-width="1.5"/>
+<line x1="500.0" y1="200.0" x2="500.0" y2="210.0" stroke="#444" stroke-width="1.5"/>
+<line x1="600.0" y1="200.0" x2="600.0" y2="210.0" stroke="#444" stroke-width="1.5"/>
+<line x1="700.0" y1="200.0" x2="700.0" y2="210.0" stroke="#444" stroke-width="1.5"/>
+<line x1="800.0" y1="200.0" x2="800.0" y2="210.0" stroke="#444" stroke-width="1.5"/>
+<line x1="400.0" y1="302" x2="500.0" y2="302" stroke="#55c555" stroke-width="2"/>
+<line x1="400.0" y1="296" x2="400.0" y2="308" stroke="#55c555" stroke-width="2"/>
+<line x1="500.0" y1="296" x2="500.0" y2="308" stroke="#55c555" stroke-width="2"/>
+<text x="450.0" y="326" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#55c555">Δ</text>
+<text x="100" y="336" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#e8e8e8">오차 e = x − Q(x)</text>
+<line x1="100" y1="398.0" x2="800" y2="398.0" stroke="#888" stroke-width="1.5"/>
+<path d="M 100.0 398.0 L 150.0 350.0 M 150.0 446.0 L 250.0 350.0 M 250.0 446.0 L 350.0 350.0 M 350.0 446.0 L 450.0 350.0 M 450.0 446.0 L 550.0 350.0 M 550.0 446.0 L 650.0 350.0 M 650.0 446.0 L 750.0 350.0 M 750.0 446.0 L 800.0 398.0" fill="none" stroke="#e05555" stroke-width="2.5"/>
+<line x1="100" y1="350" x2="800" y2="350" stroke="#444" stroke-width="1" stroke-dasharray="3,4"/>
+<line x1="100" y1="446" x2="800" y2="446" stroke="#444" stroke-width="1" stroke-dasharray="3,4"/>
+<text x="88" y="355" text-anchor="end" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">+Δ/2</text>
+<text x="88" y="451" text-anchor="end" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">−Δ/2</text>
+<text x="440" y="482" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#e8e8e8">오차는 −Δ/2 와 +Δ/2 사이를 톱니로 오간다 — 그래서 균등분포로 볼 수 있다</text>
+</svg>

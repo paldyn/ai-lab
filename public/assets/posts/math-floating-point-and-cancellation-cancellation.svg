@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="470" viewBox="0 0 880 470">
+<rect width="880" height="470" rx="12" fill="#0a0a0a"/>
+<text x="440" y="42" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="22" font-weight="700" fill="#e8e8e8">비슷한 수를 빼면 믿을 자리가 몇 개 안 남는다</text>
+<text x="440" y="68" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">fp32가 담는 유효 십진자리는 일곱 남짓이다</text>
+<text x="72" y="134" text-anchor="end" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#e8e8e8">a</text>
+<rect x="92" y="104" width="46" height="46" rx="5" fill="#7ec8e3" fill-opacity="0.22" stroke="#7ec8e3" stroke-width="1.5"/>
+<text x="115.0" y="134" text-anchor="middle" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="20" fill="#7ec8e3">1</text>
+<text x="167.0" y="134" text-anchor="middle" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="20" fill="#888">.</text>
+<rect x="196" y="104" width="46" height="46" rx="5" fill="#7ec8e3" fill-opacity="0.22" stroke="#7ec8e3" stroke-width="1.5"/>
+<text x="219.0" y="134" text-anchor="middle" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="20" fill="#7ec8e3">2</text>
+<rect x="248" y="104" width="46" height="46" rx="5" fill="#7ec8e3" fill-opacity="0.22" stroke="#7ec8e3" stroke-width="1.5"/>
+<text x="271.0" y="134" text-anchor="middle" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="20" fill="#7ec8e3">3</text>
+<rect x="300" y="104" width="46" height="46" rx="5" fill="#7ec8e3" fill-opacity="0.22" stroke="#7ec8e3" stroke-width="1.5"/>
+<text x="323.0" y="134" text-anchor="middle" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="20" fill="#7ec8e3">4</text>
+<rect x="352" y="104" width="46" height="46" rx="5" fill="#7ec8e3" fill-opacity="0.22" stroke="#7ec8e3" stroke-width="1.5"/>
+<text x="375.0" y="134" text-anchor="middle" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="20" fill="#7ec8e3">5</text>
+<rect x="404" y="104" width="46" height="46" rx="5" fill="#7ec8e3" fill-opacity="0.22" stroke="#7ec8e3" stroke-width="1.5"/>
+<text x="427.0" y="134" text-anchor="middle" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="20" fill="#7ec8e3">6</text>
+<rect x="456" y="104" width="46" height="46" rx="5" fill="#55c555" fill-opacity="0.3" stroke="#55c555" stroke-width="1.5"/>
+<text x="479.0" y="134" text-anchor="middle" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="20" fill="#e8e8e8">7</text>
+<rect x="508" y="104" width="46" height="46" rx="5" fill="#55c555" fill-opacity="0.3" stroke="#55c555" stroke-width="1.5"/>
+<text x="531.0" y="134" text-anchor="middle" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="20" fill="#e8e8e8">8</text>
+<text x="574" y="134" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">믿을 수 있는 자리 7개</text>
+<text x="72" y="200" text-anchor="end" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#e8e8e8">b</text>
+<rect x="92" y="170" width="46" height="46" rx="5" fill="#7ec8e3" fill-opacity="0.22" stroke="#7ec8e3" stroke-width="1.5"/>
+<text x="115.0" y="200" text-anchor="middle" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="20" fill="#7ec8e3">1</text>
+<text x="167.0" y="200" text-anchor="middle" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="20" fill="#888">.</text>
+<rect x="196" y="170" width="46" height="46" rx="5" fill="#7ec8e3" fill-opacity="0.22" stroke="#7ec8e3" stroke-width="1.5"/>
+<text x="219.0" y="200" text-anchor="middle" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="20" fill="#7ec8e3">2</text>
+<rect x="248" y="170" width="46" height="46" rx="5" fill="#7ec8e3" fill-opacity="0.22" stroke="#7ec8e3" stroke-width="1.5"/>
+<text x="271.0" y="200" text-anchor="middle" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="20" fill="#7ec8e3">3</text>
+<rect x="300" y="170" width="46" height="46" rx="5" fill="#7ec8e3" fill-opacity="0.22" stroke="#7ec8e3" stroke-width="1.5"/>
+<text x="323.0" y="200" text-anchor="middle" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="20" fill="#7ec8e3">4</text>
+<rect x="352" y="170" width="46" height="46" rx="5" fill="#7ec8e3" fill-opacity="0.22" stroke="#7ec8e3" stroke-width="1.5"/>
+<text x="375.0" y="200" text-anchor="middle" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="20" fill="#7ec8e3">5</text>
+<rect x="404" y="170" width="46" height="46" rx="5" fill="#7ec8e3" fill-opacity="0.22" stroke="#7ec8e3" stroke-width="1.5"/>
+<text x="427.0" y="200" text-anchor="middle" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="20" fill="#7ec8e3">6</text>
+<rect x="456" y="170" width="46" height="46" rx="5" fill="#55c555" fill-opacity="0.3" stroke="#55c555" stroke-width="1.5"/>
+<text x="479.0" y="200" text-anchor="middle" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="20" fill="#e8e8e8">7</text>
+<rect x="508" y="170" width="46" height="46" rx="5" fill="#55c555" fill-opacity="0.3" stroke="#55c555" stroke-width="1.5"/>
+<text x="531.0" y="200" text-anchor="middle" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="20" fill="#e8e8e8">0</text>
+<text x="574" y="200" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">믿을 수 있는 자리 7개</text>
+<line x1="80" y1="234" x2="640" y2="234" stroke="#888" stroke-width="1.5"/>
+<text x="72" y="278" text-anchor="end" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#e8e8e8">a − b</text>
+<rect x="92" y="248" width="46" height="46" rx="5" fill="#7ec8e3" fill-opacity="0.22" stroke="#7ec8e3" stroke-width="1.5"/>
+<text x="115.0" y="278" text-anchor="middle" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="20" fill="#7ec8e3">0</text>
+<text x="167.0" y="278" text-anchor="middle" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="20" fill="#888">.</text>
+<rect x="196" y="248" width="46" height="46" rx="5" fill="#7ec8e3" fill-opacity="0.22" stroke="#7ec8e3" stroke-width="1.5"/>
+<text x="219.0" y="278" text-anchor="middle" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="20" fill="#7ec8e3">0</text>
+<rect x="248" y="248" width="46" height="46" rx="5" fill="#7ec8e3" fill-opacity="0.22" stroke="#7ec8e3" stroke-width="1.5"/>
+<text x="271.0" y="278" text-anchor="middle" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="20" fill="#7ec8e3">0</text>
+<rect x="300" y="248" width="46" height="46" rx="5" fill="#7ec8e3" fill-opacity="0.22" stroke="#7ec8e3" stroke-width="1.5"/>
+<text x="323.0" y="278" text-anchor="middle" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="20" fill="#7ec8e3">0</text>
+<rect x="352" y="248" width="46" height="46" rx="5" fill="#7ec8e3" fill-opacity="0.22" stroke="#7ec8e3" stroke-width="1.5"/>
+<text x="375.0" y="278" text-anchor="middle" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="20" fill="#7ec8e3">0</text>
+<rect x="404" y="248" width="46" height="46" rx="5" fill="#7ec8e3" fill-opacity="0.22" stroke="#7ec8e3" stroke-width="1.5"/>
+<text x="427.0" y="278" text-anchor="middle" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="20" fill="#7ec8e3">0</text>
+<rect x="456" y="248" width="46" height="46" rx="5" fill="#7ec8e3" fill-opacity="0.22" stroke="#7ec8e3" stroke-width="1.5"/>
+<text x="479.0" y="278" text-anchor="middle" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="20" fill="#7ec8e3">0</text>
+<rect x="508" y="248" width="46" height="46" rx="5" fill="#e05555" fill-opacity="0.3" stroke="#e05555" stroke-width="1.5"/>
+<text x="531.0" y="278" text-anchor="middle" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="20" fill="#e05555">8</text>
+<text x="574" y="278" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">믿을 수 있는 자리 1개</text>
+<text x="440" y="342" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#e8e8e8">겹치던 여섯 자리가 0으로 사라지고, 남는 것은 끝의 한 자리다</text>
+<text x="440" y="370" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">그 한 자리 뒤에 있던 반올림 오차가 결과에서는 맨 앞자리가 된다</text>
+<rect x="150" y="392" width="580" height="60" rx="8" fill="#000000" stroke="#3a4a6e" stroke-width="1.5"/>
+<text x="440" y="416" text-anchor="middle" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#ffffff" xml:space="preserve">fp32:  1.2345678 - 1.2345670  =  7.152557e-07</text>
+<text x="440" y="436" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#9aa4b8">참값은 8.0e−07이다. 첫 자리부터 틀렸고 상대오차는 11%다.</text>
+</svg>

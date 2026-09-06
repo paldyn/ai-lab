@@ -1,0 +1,203 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="430" viewBox="0 0 880 430">
+<rect width="880" height="430" rx="12" fill="#0a0a0a"/>
+<text x="440" y="42" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="22" font-weight="700" fill="#e8e8e8">같은 점 구름, 원점이 어디냐에 따라 각이 달라진다</text>
+<text x="240" y="82" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#e8e8e8">원본 — 원점에서 보면 모두 한쪽</text>
+<line x1="75" y1="250" x2="405" y2="250" stroke="#888" stroke-width="1.5"/>
+<line x1="240" y1="360" x2="240" y2="140" stroke="#888" stroke-width="1.5"/>
+<circle cx="356.1" cy="264.7" r="3.2" fill="#7ec8e3" fill-opacity="0.55"/>
+<circle cx="380.2" cy="279.6" r="3.2" fill="#7ec8e3" fill-opacity="0.55"/>
+<circle cx="348.2" cy="254.2" r="3.2" fill="#7ec8e3" fill-opacity="0.55"/>
+<circle cx="334.0" cy="243.8" r="3.2" fill="#7ec8e3" fill-opacity="0.55"/>
+<circle cx="322.0" cy="235.2" r="3.2" fill="#7ec8e3" fill-opacity="0.55"/>
+<circle cx="354.1" cy="248.0" r="3.2" fill="#7ec8e3" fill-opacity="0.55"/>
+<circle cx="350.9" cy="259.7" r="3.2" fill="#7ec8e3" fill-opacity="0.55"/>
+<circle cx="362.1" cy="265.1" r="3.2" fill="#7ec8e3" fill-opacity="0.55"/>
+<circle cx="348.5" cy="237.2" r="3.2" fill="#7ec8e3" fill-opacity="0.55"/>
+<circle cx="345.4" cy="222.3" r="3.2" fill="#7ec8e3" fill-opacity="0.55"/>
+<circle cx="344.3" cy="245.5" r="3.2" fill="#7ec8e3" fill-opacity="0.55"/>
+<circle cx="346.2" cy="270.8" r="3.2" fill="#7ec8e3" fill-opacity="0.55"/>
+<circle cx="359.7" cy="268.1" r="3.2" fill="#7ec8e3" fill-opacity="0.55"/>
+<circle cx="347.3" cy="222.4" r="3.2" fill="#7ec8e3" fill-opacity="0.55"/>
+<circle cx="359.8" cy="246.2" r="3.2" fill="#7ec8e3" fill-opacity="0.55"/>
+<circle cx="388.2" cy="291.4" r="3.2" fill="#7ec8e3" fill-opacity="0.55"/>
+<circle cx="367.0" cy="251.7" r="3.2" fill="#7ec8e3" fill-opacity="0.55"/>
+<circle cx="326.8" cy="266.0" r="3.2" fill="#7ec8e3" fill-opacity="0.55"/>
+<circle cx="390.0" cy="264.9" r="3.2" fill="#7ec8e3" fill-opacity="0.55"/>
+<circle cx="364.2" cy="259.5" r="3.2" fill="#7ec8e3" fill-opacity="0.55"/>
+<circle cx="339.6" cy="261.2" r="3.2" fill="#7ec8e3" fill-opacity="0.55"/>
+<circle cx="374.6" cy="238.3" r="3.2" fill="#7ec8e3" fill-opacity="0.55"/>
+<circle cx="358.3" cy="251.2" r="3.2" fill="#7ec8e3" fill-opacity="0.55"/>
+<circle cx="345.9" cy="259.8" r="3.2" fill="#7ec8e3" fill-opacity="0.55"/>
+<circle cx="345.8" cy="243.2" r="3.2" fill="#7ec8e3" fill-opacity="0.55"/>
+<circle cx="338.4" cy="237.1" r="3.2" fill="#7ec8e3" fill-opacity="0.55"/>
+<circle cx="355.0" cy="280.3" r="3.2" fill="#7ec8e3" fill-opacity="0.55"/>
+<circle cx="378.1" cy="255.6" r="3.2" fill="#7ec8e3" fill-opacity="0.55"/>
+<circle cx="350.5" cy="267.2" r="3.2" fill="#7ec8e3" fill-opacity="0.55"/>
+<circle cx="365.9" cy="253.4" r="3.2" fill="#7ec8e3" fill-opacity="0.55"/>
+<circle cx="390.3" cy="280.9" r="3.2" fill="#7ec8e3" fill-opacity="0.55"/>
+<circle cx="335.1" cy="249.7" r="3.2" fill="#7ec8e3" fill-opacity="0.55"/>
+<circle cx="362.9" cy="250.7" r="3.2" fill="#7ec8e3" fill-opacity="0.55"/>
+<circle cx="352.1" cy="255.4" r="3.2" fill="#7ec8e3" fill-opacity="0.55"/>
+<circle cx="336.7" cy="266.1" r="3.2" fill="#7ec8e3" fill-opacity="0.55"/>
+<circle cx="338.4" cy="256.1" r="3.2" fill="#7ec8e3" fill-opacity="0.55"/>
+<circle cx="356.0" cy="270.1" r="3.2" fill="#7ec8e3" fill-opacity="0.55"/>
+<circle cx="363.3" cy="276.7" r="3.2" fill="#7ec8e3" fill-opacity="0.55"/>
+<circle cx="347.9" cy="246.2" r="3.2" fill="#7ec8e3" fill-opacity="0.55"/>
+<circle cx="357.2" cy="270.6" r="3.2" fill="#7ec8e3" fill-opacity="0.55"/>
+<circle cx="369.4" cy="225.9" r="3.2" fill="#7ec8e3" fill-opacity="0.55"/>
+<circle cx="362.8" cy="236.1" r="3.2" fill="#7ec8e3" fill-opacity="0.55"/>
+<circle cx="367.8" cy="291.5" r="3.2" fill="#7ec8e3" fill-opacity="0.55"/>
+<circle cx="366.6" cy="244.6" r="3.2" fill="#7ec8e3" fill-opacity="0.55"/>
+<circle cx="365.3" cy="271.9" r="3.2" fill="#7ec8e3" fill-opacity="0.55"/>
+<circle cx="392.5" cy="249.2" r="3.2" fill="#7ec8e3" fill-opacity="0.55"/>
+<circle cx="369.8" cy="249.1" r="3.2" fill="#7ec8e3" fill-opacity="0.55"/>
+<circle cx="354.6" cy="287.0" r="3.2" fill="#7ec8e3" fill-opacity="0.55"/>
+<circle cx="371.3" cy="254.8" r="3.2" fill="#7ec8e3" fill-opacity="0.55"/>
+<circle cx="340.6" cy="254.0" r="3.2" fill="#7ec8e3" fill-opacity="0.55"/>
+<circle cx="350.4" cy="233.2" r="3.2" fill="#7ec8e3" fill-opacity="0.55"/>
+<circle cx="370.7" cy="274.5" r="3.2" fill="#7ec8e3" fill-opacity="0.55"/>
+<circle cx="369.0" cy="235.0" r="3.2" fill="#7ec8e3" fill-opacity="0.55"/>
+<circle cx="385.0" cy="275.3" r="3.2" fill="#7ec8e3" fill-opacity="0.55"/>
+<circle cx="358.0" cy="256.1" r="3.2" fill="#7ec8e3" fill-opacity="0.55"/>
+<circle cx="329.6" cy="261.9" r="3.2" fill="#7ec8e3" fill-opacity="0.55"/>
+<circle cx="390.8" cy="215.1" r="3.2" fill="#7ec8e3" fill-opacity="0.55"/>
+<circle cx="378.1" cy="237.6" r="3.2" fill="#7ec8e3" fill-opacity="0.55"/>
+<circle cx="330.9" cy="213.5" r="3.2" fill="#7ec8e3" fill-opacity="0.55"/>
+<circle cx="383.2" cy="235.5" r="3.2" fill="#7ec8e3" fill-opacity="0.55"/>
+<circle cx="357.6" cy="234.3" r="3.2" fill="#7ec8e3" fill-opacity="0.55"/>
+<circle cx="323.0" cy="239.0" r="3.2" fill="#7ec8e3" fill-opacity="0.55"/>
+<circle cx="349.6" cy="260.5" r="3.2" fill="#7ec8e3" fill-opacity="0.55"/>
+<circle cx="348.4" cy="251.2" r="3.2" fill="#7ec8e3" fill-opacity="0.55"/>
+<circle cx="384.7" cy="218.8" r="3.2" fill="#7ec8e3" fill-opacity="0.55"/>
+<circle cx="342.8" cy="256.4" r="3.2" fill="#7ec8e3" fill-opacity="0.55"/>
+<circle cx="353.2" cy="246.6" r="3.2" fill="#7ec8e3" fill-opacity="0.55"/>
+<circle cx="352.8" cy="250.4" r="3.2" fill="#7ec8e3" fill-opacity="0.55"/>
+<circle cx="350.3" cy="239.4" r="3.2" fill="#7ec8e3" fill-opacity="0.55"/>
+<circle cx="340.6" cy="255.8" r="3.2" fill="#7ec8e3" fill-opacity="0.55"/>
+<circle cx="362.1" cy="252.9" r="3.2" fill="#7ec8e3" fill-opacity="0.55"/>
+<circle cx="378.2" cy="244.7" r="3.2" fill="#7ec8e3" fill-opacity="0.55"/>
+<circle cx="369.8" cy="247.9" r="3.2" fill="#7ec8e3" fill-opacity="0.55"/>
+<circle cx="339.6" cy="263.6" r="3.2" fill="#7ec8e3" fill-opacity="0.55"/>
+<circle cx="335.3" cy="236.5" r="3.2" fill="#7ec8e3" fill-opacity="0.55"/>
+<circle cx="357.8" cy="274.4" r="3.2" fill="#7ec8e3" fill-opacity="0.55"/>
+<circle cx="342.8" cy="269.6" r="3.2" fill="#7ec8e3" fill-opacity="0.55"/>
+<circle cx="344.0" cy="271.2" r="3.2" fill="#7ec8e3" fill-opacity="0.55"/>
+<circle cx="325.3" cy="236.9" r="3.2" fill="#7ec8e3" fill-opacity="0.55"/>
+<circle cx="394.6" cy="258.8" r="3.2" fill="#7ec8e3" fill-opacity="0.55"/>
+<circle cx="373.7" cy="270.6" r="3.2" fill="#7ec8e3" fill-opacity="0.55"/>
+<circle cx="338.0" cy="267.7" r="3.2" fill="#7ec8e3" fill-opacity="0.55"/>
+<circle cx="374.9" cy="241.1" r="3.2" fill="#7ec8e3" fill-opacity="0.55"/>
+<circle cx="381.4" cy="273.6" r="3.2" fill="#7ec8e3" fill-opacity="0.55"/>
+<circle cx="311.4" cy="264.5" r="3.2" fill="#7ec8e3" fill-opacity="0.55"/>
+<circle cx="347.1" cy="239.6" r="3.2" fill="#7ec8e3" fill-opacity="0.55"/>
+<circle cx="348.7" cy="270.7" r="3.2" fill="#7ec8e3" fill-opacity="0.55"/>
+<circle cx="370.1" cy="256.6" r="3.2" fill="#7ec8e3" fill-opacity="0.55"/>
+<circle cx="355.7" cy="250.1" r="3.2" fill="#7ec8e3" fill-opacity="0.55"/>
+<circle cx="353.4" cy="257.9" r="3.2" fill="#7ec8e3" fill-opacity="0.55"/>
+<line x1="240" y1="250" x2="334.0" y2="243.8" stroke="#e05555" stroke-width="2"/>
+<circle cx="334.0" cy="243.8" r="5" fill="#e8e8e8"/>
+<line x1="240" y1="250" x2="326.8" y2="266.0" stroke="#55c555" stroke-width="2"/>
+<circle cx="326.8" cy="266.0" r="5" fill="#e8e8e8"/>
+<text x="240" y="400" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#e8e8e8">두 점 사이 각 14°  ·  cos 0.97</text>
+<line x1="240" y1="250" x2="356.7" y2="254.1" stroke="#7777cc" stroke-width="3" stroke-dasharray="5,3"/>
+<text x="296" y="292" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#7777cc">평균 벡터</text>
+<text x="640" y="82" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#e8e8e8">평균을 뺀 뒤 — 원점이 구름 한가운데</text>
+<line x1="475" y1="250" x2="805" y2="250" stroke="#888" stroke-width="1.5"/>
+<line x1="640" y1="360" x2="640" y2="140" stroke="#888" stroke-width="1.5"/>
+<circle cx="639.4" cy="260.6" r="3.2" fill="#7ec8e3" fill-opacity="0.55"/>
+<circle cx="663.5" cy="275.5" r="3.2" fill="#7ec8e3" fill-opacity="0.55"/>
+<circle cx="631.5" cy="250.1" r="3.2" fill="#7ec8e3" fill-opacity="0.55"/>
+<circle cx="617.3" cy="239.7" r="3.2" fill="#7ec8e3" fill-opacity="0.55"/>
+<circle cx="605.3" cy="231.1" r="3.2" fill="#7ec8e3" fill-opacity="0.55"/>
+<circle cx="637.4" cy="243.9" r="3.2" fill="#7ec8e3" fill-opacity="0.55"/>
+<circle cx="634.3" cy="255.5" r="3.2" fill="#7ec8e3" fill-opacity="0.55"/>
+<circle cx="645.4" cy="261.0" r="3.2" fill="#7ec8e3" fill-opacity="0.55"/>
+<circle cx="631.8" cy="233.1" r="3.2" fill="#7ec8e3" fill-opacity="0.55"/>
+<circle cx="628.7" cy="218.2" r="3.2" fill="#7ec8e3" fill-opacity="0.55"/>
+<circle cx="627.6" cy="241.4" r="3.2" fill="#7ec8e3" fill-opacity="0.55"/>
+<circle cx="629.5" cy="266.7" r="3.2" fill="#7ec8e3" fill-opacity="0.55"/>
+<circle cx="643.0" cy="264.0" r="3.2" fill="#7ec8e3" fill-opacity="0.55"/>
+<circle cx="630.7" cy="218.3" r="3.2" fill="#7ec8e3" fill-opacity="0.55"/>
+<circle cx="643.2" cy="242.1" r="3.2" fill="#7ec8e3" fill-opacity="0.55"/>
+<circle cx="671.6" cy="287.3" r="3.2" fill="#7ec8e3" fill-opacity="0.55"/>
+<circle cx="650.4" cy="247.6" r="3.2" fill="#7ec8e3" fill-opacity="0.55"/>
+<circle cx="610.1" cy="261.9" r="3.2" fill="#7ec8e3" fill-opacity="0.55"/>
+<circle cx="673.3" cy="260.8" r="3.2" fill="#7ec8e3" fill-opacity="0.55"/>
+<circle cx="647.5" cy="255.4" r="3.2" fill="#7ec8e3" fill-opacity="0.55"/>
+<circle cx="622.9" cy="257.1" r="3.2" fill="#7ec8e3" fill-opacity="0.55"/>
+<circle cx="657.9" cy="234.2" r="3.2" fill="#7ec8e3" fill-opacity="0.55"/>
+<circle cx="641.7" cy="247.1" r="3.2" fill="#7ec8e3" fill-opacity="0.55"/>
+<circle cx="629.3" cy="255.7" r="3.2" fill="#7ec8e3" fill-opacity="0.55"/>
+<circle cx="629.2" cy="239.1" r="3.2" fill="#7ec8e3" fill-opacity="0.55"/>
+<circle cx="621.7" cy="233.0" r="3.2" fill="#7ec8e3" fill-opacity="0.55"/>
+<circle cx="638.3" cy="276.2" r="3.2" fill="#7ec8e3" fill-opacity="0.55"/>
+<circle cx="661.4" cy="251.5" r="3.2" fill="#7ec8e3" fill-opacity="0.55"/>
+<circle cx="633.9" cy="263.1" r="3.2" fill="#7ec8e3" fill-opacity="0.55"/>
+<circle cx="649.2" cy="249.3" r="3.2" fill="#7ec8e3" fill-opacity="0.55"/>
+<circle cx="673.6" cy="276.8" r="3.2" fill="#7ec8e3" fill-opacity="0.55"/>
+<circle cx="618.4" cy="245.6" r="3.2" fill="#7ec8e3" fill-opacity="0.55"/>
+<circle cx="646.2" cy="246.6" r="3.2" fill="#7ec8e3" fill-opacity="0.55"/>
+<circle cx="635.4" cy="251.3" r="3.2" fill="#7ec8e3" fill-opacity="0.55"/>
+<circle cx="620.0" cy="262.0" r="3.2" fill="#7ec8e3" fill-opacity="0.55"/>
+<circle cx="621.8" cy="252.0" r="3.2" fill="#7ec8e3" fill-opacity="0.55"/>
+<circle cx="639.3" cy="266.0" r="3.2" fill="#7ec8e3" fill-opacity="0.55"/>
+<circle cx="646.7" cy="272.6" r="3.2" fill="#7ec8e3" fill-opacity="0.55"/>
+<circle cx="631.2" cy="242.1" r="3.2" fill="#7ec8e3" fill-opacity="0.55"/>
+<circle cx="640.6" cy="266.5" r="3.2" fill="#7ec8e3" fill-opacity="0.55"/>
+<circle cx="652.7" cy="221.8" r="3.2" fill="#7ec8e3" fill-opacity="0.55"/>
+<circle cx="646.1" cy="232.0" r="3.2" fill="#7ec8e3" fill-opacity="0.55"/>
+<circle cx="651.2" cy="287.4" r="3.2" fill="#7ec8e3" fill-opacity="0.55"/>
+<circle cx="649.9" cy="240.5" r="3.2" fill="#7ec8e3" fill-opacity="0.55"/>
+<circle cx="648.6" cy="267.8" r="3.2" fill="#7ec8e3" fill-opacity="0.55"/>
+<circle cx="675.8" cy="245.1" r="3.2" fill="#7ec8e3" fill-opacity="0.55"/>
+<circle cx="653.1" cy="245.0" r="3.2" fill="#7ec8e3" fill-opacity="0.55"/>
+<circle cx="637.9" cy="282.9" r="3.2" fill="#7ec8e3" fill-opacity="0.55"/>
+<circle cx="654.6" cy="250.7" r="3.2" fill="#7ec8e3" fill-opacity="0.55"/>
+<circle cx="623.9" cy="249.9" r="3.2" fill="#7ec8e3" fill-opacity="0.55"/>
+<circle cx="633.7" cy="229.1" r="3.2" fill="#7ec8e3" fill-opacity="0.55"/>
+<circle cx="654.0" cy="270.4" r="3.2" fill="#7ec8e3" fill-opacity="0.55"/>
+<circle cx="652.4" cy="230.9" r="3.2" fill="#7ec8e3" fill-opacity="0.55"/>
+<circle cx="668.4" cy="271.2" r="3.2" fill="#7ec8e3" fill-opacity="0.55"/>
+<circle cx="641.4" cy="252.0" r="3.2" fill="#7ec8e3" fill-opacity="0.55"/>
+<circle cx="612.9" cy="257.8" r="3.2" fill="#7ec8e3" fill-opacity="0.55"/>
+<circle cx="674.1" cy="211.0" r="3.2" fill="#7ec8e3" fill-opacity="0.55"/>
+<circle cx="661.4" cy="233.5" r="3.2" fill="#7ec8e3" fill-opacity="0.55"/>
+<circle cx="614.3" cy="209.4" r="3.2" fill="#7ec8e3" fill-opacity="0.55"/>
+<circle cx="666.6" cy="231.4" r="3.2" fill="#7ec8e3" fill-opacity="0.55"/>
+<circle cx="640.9" cy="230.2" r="3.2" fill="#7ec8e3" fill-opacity="0.55"/>
+<circle cx="606.4" cy="234.9" r="3.2" fill="#7ec8e3" fill-opacity="0.55"/>
+<circle cx="632.9" cy="256.4" r="3.2" fill="#7ec8e3" fill-opacity="0.55"/>
+<circle cx="631.7" cy="247.1" r="3.2" fill="#7ec8e3" fill-opacity="0.55"/>
+<circle cx="668.0" cy="214.7" r="3.2" fill="#7ec8e3" fill-opacity="0.55"/>
+<circle cx="626.2" cy="252.3" r="3.2" fill="#7ec8e3" fill-opacity="0.55"/>
+<circle cx="636.5" cy="242.5" r="3.2" fill="#7ec8e3" fill-opacity="0.55"/>
+<circle cx="636.1" cy="246.3" r="3.2" fill="#7ec8e3" fill-opacity="0.55"/>
+<circle cx="633.7" cy="235.3" r="3.2" fill="#7ec8e3" fill-opacity="0.55"/>
+<circle cx="623.9" cy="251.7" r="3.2" fill="#7ec8e3" fill-opacity="0.55"/>
+<circle cx="645.4" cy="248.8" r="3.2" fill="#7ec8e3" fill-opacity="0.55"/>
+<circle cx="661.6" cy="240.6" r="3.2" fill="#7ec8e3" fill-opacity="0.55"/>
+<circle cx="653.1" cy="243.8" r="3.2" fill="#7ec8e3" fill-opacity="0.55"/>
+<circle cx="622.9" cy="259.5" r="3.2" fill="#7ec8e3" fill-opacity="0.55"/>
+<circle cx="618.7" cy="232.4" r="3.2" fill="#7ec8e3" fill-opacity="0.55"/>
+<circle cx="641.1" cy="270.3" r="3.2" fill="#7ec8e3" fill-opacity="0.55"/>
+<circle cx="626.1" cy="265.5" r="3.2" fill="#7ec8e3" fill-opacity="0.55"/>
+<circle cx="627.3" cy="267.1" r="3.2" fill="#7ec8e3" fill-opacity="0.55"/>
+<circle cx="608.6" cy="232.8" r="3.2" fill="#7ec8e3" fill-opacity="0.55"/>
+<circle cx="677.9" cy="254.7" r="3.2" fill="#7ec8e3" fill-opacity="0.55"/>
+<circle cx="657.1" cy="266.5" r="3.2" fill="#7ec8e3" fill-opacity="0.55"/>
+<circle cx="621.4" cy="263.6" r="3.2" fill="#7ec8e3" fill-opacity="0.55"/>
+<circle cx="658.2" cy="237.0" r="3.2" fill="#7ec8e3" fill-opacity="0.55"/>
+<circle cx="664.7" cy="269.5" r="3.2" fill="#7ec8e3" fill-opacity="0.55"/>
+<circle cx="594.8" cy="260.4" r="3.2" fill="#7ec8e3" fill-opacity="0.55"/>
+<circle cx="630.5" cy="235.5" r="3.2" fill="#7ec8e3" fill-opacity="0.55"/>
+<circle cx="632.1" cy="266.6" r="3.2" fill="#7ec8e3" fill-opacity="0.55"/>
+<circle cx="653.4" cy="252.5" r="3.2" fill="#7ec8e3" fill-opacity="0.55"/>
+<circle cx="639.0" cy="246.0" r="3.2" fill="#7ec8e3" fill-opacity="0.55"/>
+<circle cx="636.7" cy="253.8" r="3.2" fill="#7ec8e3" fill-opacity="0.55"/>
+<line x1="640" y1="250" x2="617.3" y2="239.7" stroke="#e05555" stroke-width="2"/>
+<circle cx="617.3" cy="239.7" r="5" fill="#e8e8e8"/>
+<line x1="640" y1="250" x2="610.1" y2="261.9" stroke="#55c555" stroke-width="2"/>
+<circle cx="610.1" cy="261.9" r="5" fill="#e8e8e8"/>
+<text x="640" y="400" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#e8e8e8">두 점 사이 각 46°  ·  cos 0.69</text>
+<text x="440" y="418" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">구름의 모양은 그대로다. 달라진 것은 원점의 위치뿐이고, 코사인은 원점에서 재는 각이다.</text>
+</svg>

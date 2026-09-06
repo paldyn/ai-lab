@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="460" viewBox="0 0 880 460">
+<rect width="880" height="460" rx="12" fill="#0a0a0a"/>
+<defs><marker id="a1" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto"><path d="M 0 0 L 13 7 L 0 14 z" fill="#7777cc"/></marker></defs>
+<text x="440" y="42" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="22" font-weight="700" fill="#e8e8e8">softmax는 로짓을 통째로 밀어도 값이 같다</text>
+<text x="440" y="68" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">분자와 분모에 같은 상수가 곱해져 약분되기 때문이다</text>
+<text x="220" y="112" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#e05555">그대로 계산</text>
+<rect x="70" y="140" width="300" height="66" rx="8" fill="#111820" stroke="#3a4a6e" stroke-width="1.5"/>
+<text x="220" y="164" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">로짓 z</text>
+<text x="220" y="188" text-anchor="middle" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" xml:space="preserve" fill="#ffffff">1000  1001  1002</text>
+<line x1="220" y1="210" x2="220" y2="228" stroke="#7777cc" stroke-width="2" marker-end="url(#a1)"/>
+<rect x="70" y="234" width="300" height="66" rx="8" fill="#111820" stroke="#3a4a6e" stroke-width="1.5"/>
+<text x="220" y="258" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">exp(z)</text>
+<text x="220" y="282" text-anchor="middle" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" xml:space="preserve" fill="#ffffff">inf   inf   inf</text>
+<line x1="220" y1="304" x2="220" y2="322" stroke="#7777cc" stroke-width="2" marker-end="url(#a1)"/>
+<rect x="70" y="328" width="300" height="66" rx="8" fill="#111820" stroke="#e05555" stroke-width="1.5"/>
+<text x="220" y="352" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">softmax</text>
+<text x="220" y="376" text-anchor="middle" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" xml:space="preserve" fill="#e05555">nan  nan  nan</text>
+<text x="660" y="112" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#55c555">최댓값을 빼고 계산</text>
+<rect x="510" y="140" width="300" height="66" rx="8" fill="#111820" stroke="#3a4a6e" stroke-width="1.5"/>
+<text x="660" y="164" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">로짓 z</text>
+<text x="660" y="188" text-anchor="middle" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" xml:space="preserve" fill="#ffffff">-2    -1     0</text>
+<line x1="660" y1="210" x2="660" y2="228" stroke="#7777cc" stroke-width="2" marker-end="url(#a1)"/>
+<rect x="510" y="234" width="300" height="66" rx="8" fill="#111820" stroke="#3a4a6e" stroke-width="1.5"/>
+<text x="660" y="258" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">exp(z)</text>
+<text x="660" y="282" text-anchor="middle" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" xml:space="preserve" fill="#ffffff">0.135 0.368 1.000</text>
+<line x1="660" y1="304" x2="660" y2="322" stroke="#7777cc" stroke-width="2" marker-end="url(#a1)"/>
+<rect x="510" y="328" width="300" height="66" rx="8" fill="#111820" stroke="#55c555" stroke-width="1.5"/>
+<text x="660" y="352" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">softmax</text>
+<text x="660" y="376" text-anchor="middle" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" xml:space="preserve" fill="#55c555">0.090 0.245 0.665</text>
+<text x="440" y="434" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">아래로도 같다 — 로짓이 −1000 근처면 그대로는 전부 0이 되어 0/0이 되고, 빼면 멀쩡하다</text>
+</svg>

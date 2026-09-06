@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="440" viewBox="0 0 880 440">
+<rect width="880" height="440" rx="12" fill="#0a0a0a"/>
+<defs><marker id="a2" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto"><path d="M 0 0 L 13 7 L 0 14 z" fill="#7777cc"/></marker></defs>
+<text x="440" y="42" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="22" font-weight="700" fill="#e8e8e8">조건수는 단위원이 얼마나 납작해지는가다</text>
+<text x="210" y="104" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#e8e8e8">입력 — 모든 방향으로 같은 크기</text>
+<line x1="100" y1="220" x2="320" y2="220" stroke="#444" stroke-width="1.5"/>
+<line x1="210" y1="330" x2="210" y2="110" stroke="#444" stroke-width="1.5"/>
+<circle cx="210" cy="220" r="78" fill="#7ec8e3" fill-opacity="0.14" stroke="#7ec8e3" stroke-width="2.5"/>
+<text x="210" y="362" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">길이 1인 흔들림 전부</text>
+<text x="640" y="104" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#e8e8e8">A를 곱한 뒤 — 방향마다 다르다</text>
+<line x1="500" y1="220" x2="780" y2="220" stroke="#444" stroke-width="1.5"/>
+<line x1="640" y1="330" x2="640" y2="110" stroke="#444" stroke-width="1.5"/>
+<ellipse cx="640" cy="220" rx="118" ry="20" fill="#7ec8e3" fill-opacity="0.14" stroke="#7ec8e3" stroke-width="2.5" transform="rotate(-22 640 220)"/>
+<line x1="640" y1="220" x2="749.4" y2="175.8" stroke="#55c555" stroke-width="2.5"/>
+<text x="757.4" y="161.8" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#55c555">σ 최대</text>
+<line x1="640" y1="220" x2="647.5" y2="238.5" stroke="#e05555" stroke-width="2.5"/>
+<text x="594.0" y="308.0" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e05555">σ 최소</text>
+<text x="640" y="362" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">가장 늘어난 방향 ÷ 가장 눌린 방향 = 조건수</text>
+<line x1="330" y1="220" x2="488" y2="220" stroke="#7777cc" stroke-width="2" marker-end="url(#a2)"/>
+<text x="409.0" y="204" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#7777cc">× A</text>
+<text x="440" y="394" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#e8e8e8">조건수가 10^k 면 답에서 십진 k자리를 잃는다</text>
+<text x="440" y="418" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">fp64가 가진 16자리에서 빼면 몇 자리가 남는지 나온다 — 10^17 이면 아무것도 안 남는다</text>
+</svg>

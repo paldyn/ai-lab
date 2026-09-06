@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="470" viewBox="0 0 880 470">
+<rect width="880" height="470" rx="12" fill="#0a0a0a"/>
+<defs><marker id="m1" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto"><path d="M 0 0 L 13 7 L 0 14 z" fill="#7777cc"/></marker></defs>
+<text x="440" y="42" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="22" font-weight="700" fill="#e8e8e8">정밀도는 저장하는 곳이 아니라 쌓이는 곳에 둔다</text>
+<text x="440" y="68" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">한 스텝 안에서 무엇을 어디에 두는가</text>
+<rect x="60" y="102" width="760" height="56" rx="8" fill="#111820" stroke="#7ec8e3" stroke-width="1.5" stroke-opacity="0.6"/>
+<rect x="60" y="102" width="6" height="56" rx="3" fill="#7ec8e3"/>
+<text x="86" y="126" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#e8e8e8">입력 · 활성값 · 가중치 사본</text>
+<text x="86" y="146" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">한 번 읽고 곱하는 값. 대역폭과 메모리를 절반으로.</text>
+<rect x="710" y="116" width="86" height="28" rx="6" fill="#7ec8e3" fill-opacity="0.22" stroke="#7ec8e3" stroke-width="1.5"/>
+<text x="753" y="135" text-anchor="middle" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" font-weight="600" fill="#7ec8e3">bf16</text>
+<rect x="60" y="168" width="760" height="56" rx="8" fill="#111820" stroke="#55c555" stroke-width="1.5" stroke-opacity="0.6"/>
+<rect x="60" y="168" width="6" height="56" rx="3" fill="#55c555"/>
+<text x="86" y="192" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#e8e8e8">행렬곱의 누산기</text>
+<text x="86" y="212" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">수천 개를 더하는 자리. 여기서 흡수가 일어난다.</text>
+<rect x="710" y="182" width="86" height="28" rx="6" fill="#55c555" fill-opacity="0.22" stroke="#55c555" stroke-width="1.5"/>
+<text x="753" y="201" text-anchor="middle" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" font-weight="600" fill="#55c555">fp32</text>
+<rect x="60" y="234" width="760" height="56" rx="8" fill="#111820" stroke="#55c555" stroke-width="1.5" stroke-opacity="0.6"/>
+<rect x="60" y="234" width="6" height="56" rx="3" fill="#55c555"/>
+<text x="86" y="258" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#e8e8e8">softmax · 정규화 · 손실</text>
+<text x="86" y="278" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">지수와 나눗셈이 있어 범위와 정밀도가 둘 다 필요하다.</text>
+<rect x="710" y="248" width="86" height="28" rx="6" fill="#55c555" fill-opacity="0.22" stroke="#55c555" stroke-width="1.5"/>
+<text x="753" y="267" text-anchor="middle" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" font-weight="600" fill="#55c555">fp32</text>
+<rect x="60" y="300" width="760" height="56" rx="8" fill="#111820" stroke="#7ec8e3" stroke-width="1.5" stroke-opacity="0.6"/>
+<rect x="60" y="300" width="6" height="56" rx="3" fill="#7ec8e3"/>
+<text x="86" y="324" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#e8e8e8">그래디언트 (통신)</text>
+<text x="86" y="344" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">주고받는 양이 커서 줄이는 값이 크다.</text>
+<rect x="710" y="314" width="86" height="28" rx="6" fill="#7ec8e3" fill-opacity="0.22" stroke="#7ec8e3" stroke-width="1.5"/>
+<text x="753" y="333" text-anchor="middle" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" font-weight="600" fill="#7ec8e3">bf16</text>
+<rect x="60" y="366" width="760" height="56" rx="8" fill="#111820" stroke="#55c555" stroke-width="1.5" stroke-opacity="0.6"/>
+<rect x="60" y="366" width="6" height="56" rx="3" fill="#55c555"/>
+<text x="86" y="390" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#e8e8e8">옵티마이저 상태 · 마스터 가중치</text>
+<text x="86" y="410" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">작은 갱신이 큰 값에 쌓이는 자리. bf16이면 안 쌓인다.</text>
+<rect x="710" y="380" width="86" height="28" rx="6" fill="#55c555" fill-opacity="0.22" stroke="#55c555" stroke-width="1.5"/>
+<text x="753" y="399" text-anchor="middle" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" font-weight="600" fill="#55c555">fp32</text>
+<text x="440" y="452" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">bf16 가중치에 학습률 1e−4 짜리 갱신을 천 번 더해도 값이 1.0에서 한 번도 안 움직인다</text>
+</svg>

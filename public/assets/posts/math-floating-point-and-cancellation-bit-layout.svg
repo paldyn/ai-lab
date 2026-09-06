@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="470" viewBox="0 0 880 470">
+<rect width="880" height="470" rx="12" fill="#0a0a0a"/>
+<text x="440" y="42" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="22" font-weight="700" fill="#e8e8e8">같은 16비트를 다르게 나눈다</text>
+<text x="440" y="68" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">지수 비트가 범위를, 가수 비트가 정밀도를 정한다</text>
+<rect x="80.0" y="112" width="21.2" height="42" rx="4" fill="#7777cc" fill-opacity="0.35" stroke="#7777cc" stroke-width="1.5"/>
+<rect x="101.2" y="112" width="170.0" height="42" rx="4" fill="#e05555" fill-opacity="0.35" stroke="#e05555" stroke-width="1.5"/>
+<text x="186.2" y="139" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e8e8e8">지수 8</text>
+<rect x="271.2" y="112" width="488.8" height="42" rx="4" fill="#7ec8e3" fill-opacity="0.35" stroke="#7ec8e3" stroke-width="1.5"/>
+<text x="515.6" y="139" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e8e8e8">가수 23</text>
+<text x="66" y="139" text-anchor="end" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#e8e8e8">fp32</text>
+<text x="776.0" y="130" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">eps 1.19e−07</text>
+<text x="776.0" y="148" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">범위 ±3.4e38</text>
+<text x="80" y="104" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">32비트</text>
+<rect x="80.0" y="204" width="21.2" height="42" rx="4" fill="#7777cc" fill-opacity="0.35" stroke="#7777cc" stroke-width="1.5"/>
+<rect x="101.2" y="204" width="170.0" height="42" rx="4" fill="#e05555" fill-opacity="0.35" stroke="#e05555" stroke-width="1.5"/>
+<text x="186.2" y="231" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e8e8e8">지수 8</text>
+<rect x="271.2" y="204" width="148.8" height="42" rx="4" fill="#7ec8e3" fill-opacity="0.35" stroke="#7ec8e3" stroke-width="1.5"/>
+<text x="345.6" y="231" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e8e8e8">가수 7</text>
+<text x="66" y="231" text-anchor="end" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#e8e8e8">bf16</text>
+<text x="436.0" y="222" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">eps 7.81e−03</text>
+<text x="436.0" y="240" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">범위 ±3.4e38</text>
+<text x="80" y="196" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">16비트</text>
+<rect x="80.0" y="296" width="21.2" height="42" rx="4" fill="#7777cc" fill-opacity="0.35" stroke="#7777cc" stroke-width="1.5"/>
+<rect x="101.2" y="296" width="106.2" height="42" rx="4" fill="#e05555" fill-opacity="0.35" stroke="#e05555" stroke-width="1.5"/>
+<text x="154.4" y="323" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e8e8e8">지수 5</text>
+<rect x="207.5" y="296" width="212.5" height="42" rx="4" fill="#7ec8e3" fill-opacity="0.35" stroke="#7ec8e3" stroke-width="1.5"/>
+<text x="313.8" y="323" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e8e8e8">가수 10</text>
+<text x="66" y="323" text-anchor="end" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#e8e8e8">fp16</text>
+<text x="436.0" y="314" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">eps 9.77e−04</text>
+<text x="436.0" y="332" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">범위 ±6.6e4</text>
+<text x="80" y="288" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">16비트</text>
+<rect x="80" y="388" width="720" height="0" fill="none"/>
+<text x="440" y="396" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#e8e8e8">bf16은 fp32의 지수를 그대로 쓰고 가수만 잘랐다</text>
+<text x="440" y="424" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">그래서 fp16이 넘치는 자리에서 안 넘치고, fp16이 버티는 자리에서 먼저 뭉갠다</text>
+</svg>

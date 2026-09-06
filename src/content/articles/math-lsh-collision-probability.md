@@ -202,3 +202,5 @@ $$N = 10^6$$ 으로 값을 넣어 표를 만들면 두 축이 함께 보입니�
 읽어주셔서 감사합니다. 😊
 
 **지난 글:** [랜덤 사영과 존슨–린덴스트라우스 보조정리](/articles/math-random-projection-and-jl)
+
+**다음 글:** [임베딩 분포의 이방성: 공분산으로 재고 whitening으로 펴기](/articles/math-anisotropy-and-whitening)

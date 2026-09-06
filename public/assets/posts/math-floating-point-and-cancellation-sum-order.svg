@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="450" viewBox="0 0 880 450">
+<rect width="880" height="450" rx="12" fill="#0a0a0a"/>
+<text x="440" y="42" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="22" font-weight="700" fill="#e8e8e8">같은 1,000만 개를 순서만 바꿔 더한 결과</text>
+<text x="440" y="68" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">fp32 누산 · 가로축은 fp64 참값 대비 상대오차 (로그)</text>
+<line x1="330.0" y1="96" x2="330.0" y2="352" stroke="#444" stroke-width="1" stroke-dasharray="3,4"/>
+<text x="330.0" y="374" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">10^-16</text>
+<line x1="422.0" y1="96" x2="422.0" y2="352" stroke="#444" stroke-width="1" stroke-dasharray="3,4"/>
+<text x="422.0" y="374" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">10^-13</text>
+<line x1="514.0" y1="96" x2="514.0" y2="352" stroke="#444" stroke-width="1" stroke-dasharray="3,4"/>
+<text x="514.0" y="374" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">10^-10</text>
+<line x1="606.0" y1="96" x2="606.0" y2="352" stroke="#444" stroke-width="1" stroke-dasharray="3,4"/>
+<text x="606.0" y="374" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">10^-7</text>
+<line x1="698.0" y1="96" x2="698.0" y2="352" stroke="#444" stroke-width="1" stroke-dasharray="3,4"/>
+<text x="698.0" y="374" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">10^-4</text>
+<line x1="790.0" y1="96" x2="790.0" y2="352" stroke="#444" stroke-width="1" stroke-dasharray="3,4"/>
+<text x="790.0" y="374" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">10^-1</text>
+<text x="314" y="128" text-anchor="end" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e8e8e8">작은 것부터 (오름차순)</text>
+<rect x="330" y="112" width="431.2" height="24" rx="3" fill="#e05555" fill-opacity="0.7"/>
+<text x="771.2" y="129" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">1.15e-02</text>
+<text x="314" y="168" text-anchor="end" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e8e8e8">뒤에서부터</text>
+<rect x="330" y="152" width="369.0" height="24" rx="3" fill="#e05555" fill-opacity="0.7"/>
+<text x="709.0" y="169" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">1.08e-04</text>
+<text x="314" y="208" text-anchor="end" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e8e8e8">앞에서부터</text>
+<rect x="330" y="192" width="339.1" height="24" rx="3" fill="#e05555" fill-opacity="0.7"/>
+<text x="679.1" y="209" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">1.14e-05</text>
+<text x="314" y="248" text-anchor="end" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e8e8e8">numpy 기본 (쌍대 합산)</text>
+<rect x="330" y="232" width="257.0" height="24" rx="3" fill="#55c555" fill-opacity="0.7"/>
+<text x="597.0" y="249" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">2.41e-08</text>
+<text x="314" y="288" text-anchor="end" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e8e8e8">카한 합산</text>
+<rect x="330" y="272" width="257.0" height="24" rx="3" fill="#55c555" fill-opacity="0.7"/>
+<text x="597.0" y="289" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">2.41e-08</text>
+<text x="314" y="328" text-anchor="end" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e8e8e8">fp32 입력 → fp64 누산</text>
+<rect x="330" y="312" width="41.4" height="24" rx="3" fill="#55c555" fill-opacity="0.7"/>
+<text x="381.4" y="329" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">2.24e-15</text>
+<line x1="330" y1="96" x2="330" y2="352" stroke="#888" stroke-width="1.5"/>
+<text x="440" y="410" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#e8e8e8">덧셈은 결합법칙을 지키지 않는다 — 오차가 백만 배까지 갈린다</text>
+<text x="440" y="434" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">그리고 「작은 것부터 더하면 낫다」는 통념이 여기서는 가장 나빴다</text>
+</svg>
