@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="410" viewBox="0 0 880 410" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <defs>
+    <marker id="mt-a" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#7ec8e3"/>
+    </marker>
+  </defs>
+  <rect x="0" y="0" width="880" height="410" rx="12" fill="#0a0a0a"/>
+
+  <text x="60" y="42" font-size="22" font-weight="700" fill="#e8e8e8">언어를 건너뛰는 것은 표현 공간이 겹쳐 있기 때문이다</text>
+
+  <rect x="60" y="90" width="340" height="262" rx="8" fill="#111318" stroke="#3a4a6e" stroke-width="1"/>
+
+  <circle cx="80" cy="114" r="5" fill="#7ec8e3"/>
+  <text x="92" y="118" font-size="11" fill="#9aa4b8">영어</text>
+  <rect x="134" y="109" width="9" height="9" fill="#55c555"/>
+  <text x="150" y="118" font-size="11" fill="#9aa4b8">한국어</text>
+  <polygon points="207,108 213,119 201,119" fill="#7777cc"/>
+  <text x="220" y="118" font-size="11" fill="#9aa4b8">일본어</text>
+
+  <ellipse cx="150" cy="190" rx="62" ry="46" fill="none" stroke="#3a4a6e" stroke-width="2" stroke-dasharray="4,4"/>
+  <circle cx="130" cy="175" r="5" fill="#7ec8e3"/>
+  <rect x="141" y="164" width="9" height="9" fill="#55c555"/>
+  <polygon points="165,180 171,191 159,191" fill="#7777cc"/>
+  <circle cx="140" cy="205" r="5" fill="#7ec8e3"/>
+  <rect x="164" y="199" width="9" height="9" fill="#55c555"/>
+  <text x="150" y="252" font-size="11" fill="#888" text-anchor="middle">「이 영화 재미있다」 무리</text>
+
+  <ellipse cx="300" cy="275" rx="62" ry="46" fill="none" stroke="#3a4a6e" stroke-width="2" stroke-dasharray="4,4"/>
+  <circle cx="285" cy="262" r="5" fill="#7ec8e3"/>
+  <rect x="298" y="251" width="9" height="9" fill="#55c555"/>
+  <polygon points="318,267 324,278 312,278" fill="#7777cc"/>
+  <circle cx="295" cy="290" r="5" fill="#7ec8e3"/>
+  <rect x="318" y="284" width="9" height="9" fill="#55c555"/>
+  <text x="300" y="337" font-size="11" fill="#888" text-anchor="middle">「내일 비 온다」 무리</text>
+
+  <rect x="460" y="90" width="360" height="70" rx="8" fill="#111318" stroke="#3a4a6e" stroke-width="1"/>
+  <text x="480" y="112" font-size="13" font-weight="600" fill="#e8e8e8">1. 사전학습 &#8212; 언어를 섞어 넣는다</text>
+  <text x="480" y="130" font-size="11" fill="#9aa4b8">백 개 안팎 언어의 라벨 없는 문장을 한 모델에 넣는다.</text>
+  <text x="480" y="148" font-size="11" fill="#9aa4b8">뜻이 같은 문장이 저절로 가까운 자리에 놓인다.</text>
+
+  <line x1="640" y1="160" x2="640" y2="186" stroke="#7ec8e3" stroke-width="2" marker-end="url(#mt-a)"/>
+
+  <rect x="460" y="186" width="360" height="70" rx="8" fill="#111318" stroke="#3a4a6e" stroke-width="1"/>
+  <text x="480" y="208" font-size="13" font-weight="600" fill="#e8e8e8">2. 미세조정 &#8212; 영어 라벨만 쓴다</text>
+  <text x="480" y="226" font-size="11" fill="#9aa4b8">라벨이 있는 언어 하나로만 분류기를 올린다.</text>
+  <text x="480" y="244" font-size="11" fill="#9aa4b8">한국어 라벨은 한 건도 쓰지 않는다.</text>
+
+  <line x1="640" y1="256" x2="640" y2="282" stroke="#7ec8e3" stroke-width="2" marker-end="url(#mt-a)"/>
+
+  <rect x="460" y="282" width="360" height="70" rx="8" fill="#111318" stroke="#55c555" stroke-width="1"/>
+  <text x="480" y="304" font-size="13" font-weight="600" fill="#e8e8e8">3. 적용 &#8212; 한국어를 그냥 넣는다</text>
+  <text x="480" y="322" font-size="11" fill="#9aa4b8">같은 자리에 놓이므로 같은 분류기가 받아 낸다.</text>
+  <text x="480" y="340" font-size="11" fill="#9aa4b8">이것이 라벨 없이 언어를 건너뛰는 방식이다.</text>
+
+  <text x="60" y="386" font-size="13" fill="#e05555">무너지는 자리가 있다 &#8212; 문자 체계가 다르고 사전학습에 적게 들어간 언어는 애초에 무리가 겹쳐 있지 않다.</text>
+</svg>

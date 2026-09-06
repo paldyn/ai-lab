@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="348" viewBox="0 0 880 348" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <defs>
+    <marker id="ie-a" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#7ec8e3"/>
+    </marker>
+  </defs>
+  <rect x="0" y="0" width="880" height="348" rx="12" fill="#0a0a0a"/>
+
+  <text x="60" y="42" font-size="22" font-weight="700" fill="#e8e8e8">정보 추출은 글 한 덩이를 표 한 줄로 바꾸는 일이다</text>
+
+  <text x="60" y="80" font-size="13" fill="#888">들어온 글</text>
+  <text x="480" y="80" font-size="13" fill="#888">나가는 한 줄</text>
+
+  <rect x="60" y="92" width="360" height="160" rx="8" fill="#111318" stroke="#3a4a6e" stroke-width="1"/>
+  <text x="80" y="130" font-size="13" fill="#e8e8e8"><tspan fill="#7ec8e3" font-weight="600">2026년 3월 14일</tspan>, <tspan fill="#7ec8e3" font-weight="600">팔딘㈜</tspan>은 서울에</text>
+  <text x="80" y="160" font-size="13" fill="#e8e8e8">있는 <tspan fill="#7ec8e3" font-weight="600">㈜누리테크</tspan>와 클라우드</text>
+  <text x="80" y="190" font-size="13" fill="#e8e8e8">유지보수 계약을 맺었다. 금액은</text>
+  <text x="80" y="220" font-size="13" fill="#e8e8e8"><tspan fill="#7ec8e3" font-weight="600">4,800만 원</tspan>, 기간은 <tspan fill="#7ec8e3" font-weight="600">12개월</tspan>이다.</text>
+
+  <rect x="480" y="92" width="340" height="156" rx="8" fill="#111318" stroke="#3a4a6e" stroke-width="1"/>
+  <line x1="480" y1="118" x2="820" y2="118" stroke="#3a4a6e" stroke-width="1"/>
+  <line x1="586" y1="92" x2="586" y2="248" stroke="#3a4a6e" stroke-width="1"/>
+  <line x1="726" y1="92" x2="726" y2="248" stroke="#3a4a6e" stroke-width="1"/>
+
+  <text x="496" y="110" font-size="11" font-weight="600" fill="#888">필드</text>
+  <text x="600" y="110" font-size="11" font-weight="600" fill="#888">값</text>
+  <text x="740" y="110" font-size="11" font-weight="600" fill="#888">근거 위치</text>
+
+  <text x="496" y="136" font-size="12" fill="#9aa4b8">계약일</text>
+  <text x="600" y="136" font-size="12" fill="#ffffff">2026-03-14</text>
+  <text x="740" y="136" font-size="12" fill="#7ec8e3">0&#8211;13</text>
+
+  <text x="496" y="162" font-size="12" fill="#9aa4b8">발주사</text>
+  <text x="600" y="162" font-size="12" fill="#ffffff">팔딘㈜</text>
+  <text x="740" y="162" font-size="12" fill="#7ec8e3">15&#8211;19</text>
+
+  <text x="496" y="188" font-size="12" fill="#9aa4b8">수주사</text>
+  <text x="600" y="188" font-size="12" fill="#ffffff">㈜누리테크</text>
+  <text x="740" y="188" font-size="12" fill="#7ec8e3">30&#8211;36</text>
+
+  <text x="496" y="214" font-size="12" fill="#9aa4b8">금액(원)</text>
+  <text x="600" y="214" font-size="12" fill="#ffffff">48000000</text>
+  <text x="740" y="214" font-size="12" fill="#7ec8e3">62&#8211;69</text>
+
+  <text x="496" y="240" font-size="12" fill="#9aa4b8">기간(월)</text>
+  <text x="600" y="240" font-size="12" fill="#ffffff">12</text>
+  <text x="740" y="240" font-size="12" fill="#7ec8e3">75&#8211;79</text>
+
+  <line x1="420" y1="170" x2="480" y2="170" stroke="#7ec8e3" stroke-width="2" marker-end="url(#ie-a)"/>
+
+  <text x="60" y="294" font-size="13" fill="#e8e8e8">「4,800만 원」이 <tspan fill="#ffffff" font-weight="600">48000000</tspan>이 되는 자리가 이 일의 절반이다 &#8212; 글의 표현과 표의 자료형이 다르다.</text>
+  <text x="60" y="322" font-size="13" fill="#9aa4b8">그리고 값만 내면 사람이 확인할 방법이 없다. 어느 글자에서 나왔는지를 칸마다 함께 남긴다.</text>
+</svg>

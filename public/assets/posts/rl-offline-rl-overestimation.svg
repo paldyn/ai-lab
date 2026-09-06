@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="432" viewBox="0 0 880 432" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <defs>
+    <marker id="oe-up" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#e05555"/>
+    </marker>
+  </defs>
+  <rect x="0" y="0" width="880" height="432" rx="12" fill="#0a0a0a"/>
+
+  <text x="60" y="42" font-size="22" font-weight="700" fill="#e8e8e8">데이터가 없는 행동에서 Q값이 혼자 부풀어 오른다</text>
+
+  <rect x="220" y="100" width="250" height="200" fill="#7ec8e3" fill-opacity="0.07"/>
+  <line x1="220" y1="100" x2="220" y2="300" stroke="#3a4a6e" stroke-width="2" stroke-dasharray="4,4"/>
+  <line x1="470" y1="100" x2="470" y2="300" stroke="#3a4a6e" stroke-width="2" stroke-dasharray="4,4"/>
+
+  <line x1="120" y1="300" x2="810" y2="300" stroke="#666" stroke-width="1.5"/>
+  <line x1="120" y1="100" x2="120" y2="300" stroke="#666" stroke-width="1.5"/>
+  <text x="112" y="106" font-size="12" fill="#888" text-anchor="end">값</text>
+
+  <path d="M 120 272 C 200 252, 262 176, 345 168 C 428 160, 520 240, 620 266 C 700 284, 755 288, 800 290" fill="none" stroke="#55c555" stroke-width="2.5"/>
+  <path d="M 120 268 C 200 248, 262 174, 345 165 C 405 159, 445 192, 478 206 C 548 202, 606 166, 666 134 C 706 120, 745 114, 790 110" fill="none" stroke="#e05555" stroke-width="2.5"/>
+
+  <line x1="730" y1="286" x2="730" y2="126" stroke="#e05555" stroke-width="2" marker-end="url(#oe-up)"/>
+  <text x="716" y="200" font-size="13" font-weight="600" fill="#e05555" text-anchor="end">부풀어 오른 만큼</text>
+  <text x="716" y="220" font-size="11" fill="#9aa4b8" text-anchor="end">확인해 줄 자료가 없어서</text>
+  <text x="716" y="236" font-size="11" fill="#9aa4b8" text-anchor="end">아무도 끌어내리지 않는다</text>
+
+  <text x="345" y="326" font-size="12" fill="#7ec8e3" text-anchor="middle">로그에 있는 행동</text>
+  <text x="640" y="326" font-size="12" fill="#e05555" text-anchor="middle">로그에 없는 행동</text>
+  <text x="810" y="326" font-size="12" fill="#888" text-anchor="end">행동 &#8594;</text>
+
+  <line x1="60" y1="364" x2="90" y2="364" stroke="#55c555" stroke-width="2.5"/>
+  <text x="100" y="368" font-size="13" fill="#9aa4b8">실제로 얻게 될 값</text>
+  <line x1="280" y1="364" x2="310" y2="364" stroke="#e05555" stroke-width="2.5"/>
+  <text x="320" y="368" font-size="13" fill="#9aa4b8">학습된 Q가 믿는 값</text>
+
+  <text x="60" y="404" font-size="13" fill="#e8e8e8">정책은 Q가 가장 큰 행동을 고른다. 그래서 <tspan fill="#ffffff" font-weight="600">한 번도 해 본 적 없는 오른쪽 봉우리</tspan>로 곧장 끌려간다.</text>
+</svg>

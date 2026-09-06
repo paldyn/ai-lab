@@ -119,3 +119,5 @@ def to_metric(pred, s, t, eps=1e-6):
 읽어주셔서 감사합니다. 😊
 
 **지난 글:** [자세 추정 — 사람을 점 열일곱 개로 줄여 다루기](/articles/cv-pose-estimation)
+
+**다음 글:** [화자 분리 — 누가 언제 말했는가를 시간축에 적는 일](/articles/audio-diarization)

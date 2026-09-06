@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="360" viewBox="0 0 880 360" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <defs>
+    <marker id="orl-b" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#7ec8e3"/>
+    </marker>
+    <marker id="orl-r" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#e05555"/>
+    </marker>
+  </defs>
+  <rect x="0" y="0" width="880" height="360" rx="12" fill="#0a0a0a"/>
+
+  <text x="60" y="42" font-size="22" font-weight="700" fill="#e8e8e8">고리가 끊긴 자리에서 배우는 것이 오프라인 강화학습이다</text>
+
+  <text x="60" y="86" font-size="16" font-weight="600" fill="#e8e8e8">온라인 &#8212; 고리가 돈다</text>
+
+  <rect x="120" y="110" width="180" height="60" rx="8" fill="#111318" stroke="#3a4a6e" stroke-width="1"/>
+  <text x="210" y="146" font-size="13" font-weight="600" fill="#e8e8e8" text-anchor="middle">지금의 정책</text>
+
+  <rect x="120" y="230" width="180" height="60" rx="8" fill="#111318" stroke="#3a4a6e" stroke-width="1"/>
+  <text x="210" y="266" font-size="13" font-weight="600" fill="#e8e8e8" text-anchor="middle">환경</text>
+
+  <line x1="170" y1="170" x2="170" y2="230" stroke="#7ec8e3" stroke-width="2" marker-end="url(#orl-b)"/>
+  <text x="160" y="204" font-size="12" fill="#9aa4b8" text-anchor="end">행동</text>
+  <line x1="250" y1="230" x2="250" y2="170" stroke="#7ec8e3" stroke-width="2" marker-end="url(#orl-b)"/>
+  <text x="262" y="204" font-size="12" fill="#9aa4b8">보상 · 다음 상태</text>
+
+  <text x="60" y="326" font-size="13" fill="#9aa4b8">궁금한 행동을 한 번 해 보면 답이 온다.</text>
+
+  <text x="460" y="86" font-size="16" font-weight="600" fill="#e8e8e8">오프라인 &#8212; 고리가 끊겨 있다</text>
+
+  <rect x="460" y="110" width="160" height="60" rx="8" fill="#111318" stroke="#3a4a6e" stroke-width="1"/>
+  <text x="540" y="134" font-size="13" font-weight="600" fill="#e8e8e8" text-anchor="middle">쌓여 있는 로그</text>
+  <text x="540" y="154" font-size="11" fill="#9aa4b8" text-anchor="middle">이미 끝난 기록</text>
+
+  <line x1="620" y1="140" x2="660" y2="140" stroke="#7ec8e3" stroke-width="2" marker-end="url(#orl-b)"/>
+
+  <rect x="660" y="110" width="160" height="60" rx="8" fill="#111318" stroke="#3a4a6e" stroke-width="1"/>
+  <text x="740" y="134" font-size="13" font-weight="600" fill="#e8e8e8" text-anchor="middle">학습</text>
+  <text x="740" y="154" font-size="11" fill="#9aa4b8" text-anchor="middle">물어볼 환경이 없다</text>
+
+  <line x1="740" y1="170" x2="740" y2="230" stroke="#7ec8e3" stroke-width="2" marker-end="url(#orl-b)"/>
+
+  <rect x="660" y="230" width="160" height="60" rx="8" fill="#111318" stroke="#3a4a6e" stroke-width="1"/>
+  <text x="740" y="266" font-size="13" font-weight="600" fill="#e8e8e8" text-anchor="middle">나온 정책</text>
+
+  <rect x="460" y="230" width="160" height="60" rx="8" fill="#111318" stroke="#e05555" stroke-width="1"/>
+  <text x="540" y="254" font-size="13" font-weight="600" fill="#e8e8e8" text-anchor="middle">환경</text>
+  <text x="540" y="274" font-size="11" fill="#e05555" text-anchor="middle">배포하고 나서 처음</text>
+
+  <line x1="660" y1="260" x2="620" y2="260" stroke="#e05555" stroke-width="2" stroke-dasharray="4,4" marker-end="url(#orl-r)"/>
+
+  <text x="460" y="326" font-size="13" fill="#9aa4b8">궁금한 행동이 로그에 없으면 끝까지 모른 채로 간다.</text>
+</svg>

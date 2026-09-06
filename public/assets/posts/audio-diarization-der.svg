@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="390" viewBox="0 0 880 390" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <rect x="0" y="0" width="880" height="390" rx="12" fill="#0a0a0a"/>
+
+  <text x="60" y="46" font-size="22" font-weight="700" fill="#e8e8e8">DER는 틀린 시간을 세 갈래로 나눠 더한다</text>
+
+  <text x="60" y="118" font-size="13" fill="#888">정답</text>
+  <rect x="140" y="100" width="190" height="28" rx="4" fill="#7ec8e3" fill-opacity="0.8"/>
+  <text x="235" y="119" font-size="12" fill="#0a0a0a" text-anchor="middle" font-weight="600">화자 1</text>
+  <rect x="350" y="100" width="190" height="28" rx="4" fill="#7777cc" fill-opacity="0.9"/>
+  <text x="445" y="119" font-size="12" fill="#ffffff" text-anchor="middle" font-weight="600">화자 2</text>
+  <rect x="560" y="100" width="140" height="28" rx="4" fill="#7ec8e3" fill-opacity="0.8"/>
+  <text x="630" y="119" font-size="12" fill="#0a0a0a" text-anchor="middle" font-weight="600">화자 1</text>
+
+  <text x="60" y="186" font-size="13" fill="#888">시스템</text>
+  <rect x="140" y="168" width="190" height="28" rx="4" fill="#7ec8e3" fill-opacity="0.8"/>
+  <text x="235" y="187" font-size="12" fill="#0a0a0a" text-anchor="middle" font-weight="600">화자 1</text>
+  <rect x="350" y="168" width="120" height="28" rx="4" fill="#7ec8e3" fill-opacity="0.8"/>
+  <text x="410" y="187" font-size="12" fill="#0a0a0a" text-anchor="middle" font-weight="600">화자 1</text>
+  <rect x="470" y="168" width="70" height="28" rx="4" fill="#7777cc" fill-opacity="0.9"/>
+  <rect x="640" y="168" width="60" height="28" rx="4" fill="#7ec8e3" fill-opacity="0.8"/>
+  <rect x="740" y="168" width="80" height="28" rx="4" fill="#7777cc" fill-opacity="0.9"/>
+
+  <rect x="350" y="94" width="120" height="108" rx="6" fill="none" stroke="#e05555" stroke-width="2" stroke-dasharray="4,4"/>
+  <rect x="560" y="94" width="80" height="108" rx="6" fill="none" stroke="#e05555" stroke-width="2" stroke-dasharray="4,4"/>
+  <rect x="740" y="94" width="80" height="108" rx="6" fill="none" stroke="#e05555" stroke-width="2" stroke-dasharray="4,4"/>
+
+  <line x1="410" y1="202" x2="410" y2="230" stroke="#e05555" stroke-width="2"/>
+  <line x1="600" y1="202" x2="600" y2="230" stroke="#e05555" stroke-width="2"/>
+  <line x1="780" y1="202" x2="780" y2="230" stroke="#e05555" stroke-width="2"/>
+
+  <text x="410" y="250" font-size="13" font-weight="600" fill="#e05555" text-anchor="middle">화자 혼동</text>
+  <text x="410" y="268" font-size="11" fill="#9aa4b8" text-anchor="middle">말한 사람은 맞게 찾고</text>
+  <text x="410" y="284" font-size="11" fill="#9aa4b8" text-anchor="middle">이름표를 바꿔 붙였다</text>
+
+  <text x="600" y="250" font-size="13" font-weight="600" fill="#e05555" text-anchor="middle">누락</text>
+  <text x="600" y="268" font-size="11" fill="#9aa4b8" text-anchor="middle">말했는데</text>
+  <text x="600" y="284" font-size="11" fill="#9aa4b8" text-anchor="middle">아무도 안 붙였다</text>
+
+  <text x="780" y="250" font-size="13" font-weight="600" fill="#e05555" text-anchor="middle">오검출</text>
+  <text x="780" y="268" font-size="11" fill="#9aa4b8" text-anchor="middle">아무도 말하지 않은</text>
+  <text x="780" y="284" font-size="11" fill="#9aa4b8" text-anchor="middle">자리에 이름을 붙였다</text>
+
+  <line x1="60" y1="312" x2="820" y2="312" stroke="#3a4a6e" stroke-width="1"/>
+  <text x="60" y="344" font-size="14" fill="#e8e8e8">DER = ( 누락 + 오검출 + 화자 혼동 ) 시간 &#247; 정답에 있는 전체 발화 시간</text>
+  <text x="60" y="368" font-size="12" fill="#9aa4b8">셋을 합쳐 하나로 내므로, 같은 20%라도 안에 무엇이 들었는지는 나눠 봐야 안다.</text>
+</svg>

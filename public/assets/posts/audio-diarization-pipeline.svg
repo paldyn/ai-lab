@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="430" viewBox="0 0 880 430" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <defs>
+    <marker id="dz-arr" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#7ec8e3"/>
+    </marker>
+  </defs>
+  <rect x="0" y="0" width="880" height="430" rx="12" fill="#0a0a0a"/>
+
+  <text x="60" y="46" font-size="22" font-weight="700" fill="#e8e8e8">화자 분리는 네 걸음이다</text>
+
+  <rect x="60" y="76" width="160" height="70" rx="8" fill="#111318" stroke="#3a4a6e" stroke-width="1"/>
+  <text x="76" y="98" font-size="13" font-weight="600" fill="#e8e8e8">1. 말 찾기</text>
+  <text x="76" y="116" font-size="11" fill="#9aa4b8">소리가 있는 구간만</text>
+  <text x="76" y="134" font-size="11" fill="#9aa4b8">남기고 침묵은 버린다</text>
+
+  <rect x="260" y="76" width="160" height="70" rx="8" fill="#111318" stroke="#3a4a6e" stroke-width="1"/>
+  <text x="276" y="98" font-size="13" font-weight="600" fill="#e8e8e8">2. 잘게 자르기</text>
+  <text x="276" y="116" font-size="11" fill="#9aa4b8">1~2초 조각으로</text>
+  <text x="276" y="134" font-size="11" fill="#9aa4b8">겹쳐 가며 나눈다</text>
+
+  <rect x="460" y="76" width="160" height="70" rx="8" fill="#111318" stroke="#3a4a6e" stroke-width="1"/>
+  <text x="476" y="98" font-size="13" font-weight="600" fill="#e8e8e8">3. 목소리 벡터</text>
+  <text x="476" y="116" font-size="11" fill="#9aa4b8">조각마다 누구 목소리</text>
+  <text x="476" y="134" font-size="11" fill="#9aa4b8">인지를 숫자로 뽑는다</text>
+
+  <rect x="660" y="76" width="160" height="70" rx="8" fill="#111318" stroke="#3a4a6e" stroke-width="1"/>
+  <text x="676" y="98" font-size="13" font-weight="600" fill="#e8e8e8">4. 묶기</text>
+  <text x="676" y="116" font-size="11" fill="#9aa4b8">비슷한 벡터끼리 모아</text>
+  <text x="676" y="134" font-size="11" fill="#9aa4b8">화자 1·2·3을 만든다</text>
+
+  <line x1="220" y1="111" x2="260" y2="111" stroke="#7ec8e3" stroke-width="2" marker-end="url(#dz-arr)"/>
+  <line x1="420" y1="111" x2="460" y2="111" stroke="#7ec8e3" stroke-width="2" marker-end="url(#dz-arr)"/>
+  <line x1="620" y1="111" x2="660" y2="111" stroke="#7ec8e3" stroke-width="2" marker-end="url(#dz-arr)"/>
+
+  <text x="60" y="200" font-size="16" font-weight="600" fill="#e8e8e8">나오는 것은 시간축에 이름을 붙인 표다</text>
+
+  <text x="60" y="248" font-size="13" fill="#7ec8e3">화자 1</text>
+  <rect x="130" y="232" width="160" height="24" rx="4" fill="#7ec8e3" fill-opacity="0.8"/>
+  <rect x="400" y="232" width="140" height="24" rx="4" fill="#7ec8e3" fill-opacity="0.8"/>
+  <rect x="700" y="232" width="120" height="24" rx="4" fill="#7ec8e3" fill-opacity="0.8"/>
+
+  <text x="60" y="290" font-size="13" fill="#7777cc">화자 2</text>
+  <rect x="300" y="274" width="90" height="24" rx="4" fill="#7777cc" fill-opacity="0.9"/>
+  <rect x="480" y="274" width="140" height="24" rx="4" fill="#7777cc" fill-opacity="0.9"/>
+  <rect x="640" y="274" width="50" height="24" rx="4" fill="#7777cc" fill-opacity="0.9"/>
+
+  <rect x="480" y="226" width="60" height="78" rx="6" fill="none" stroke="#e05555" stroke-width="2" stroke-dasharray="4,4"/>
+  <line x1="510" y1="304" x2="510" y2="336" stroke="#e05555" stroke-width="2"/>
+  <text x="510" y="356" font-size="13" fill="#e05555" text-anchor="middle">둘이 겹쳐 말한 구간</text>
+
+  <line x1="130" y1="316" x2="820" y2="316" stroke="#3a4a6e" stroke-width="1"/>
+  <text x="820" y="336" font-size="11" fill="#888" text-anchor="end">시간 →</text>
+
+  <text x="60" y="396" font-size="13" fill="#9aa4b8">묶기 단계는 &quot;누구인지&quot;가 아니라 &quot;같은 사람인지&quot;만 안다. 화자 1·2는 그 파일 안에서만 통하는 번호다.</text>
+</svg>
