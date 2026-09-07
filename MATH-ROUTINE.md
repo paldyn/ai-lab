@@ -1,6 +1,6 @@
 # 수학 글 작성 루틴 지시서
 
-「PALDYN AI Lab — 수학 글 자동 작성 (5편/일)」 Routine(`trig_01EX4cwYv2xhrQFpiBbqEj6m`)이
+「PALDYN AI Lab — 수학 글 자동 작성 (신규 3 + 보강 2)」 Routine(`trig_01EX4cwYv2xhrQFpiBbqEj6m`)이
 **실행할 때마다 읽는 지시서**다. Routine에 걸린 프롬프트는 이 파일을 읽으라는 쪽지뿐이니
 **여기만 고치면 된다.**
 
@@ -8,7 +8,8 @@
 
 `---` 아래가 지시다. 위 머리말은 사람이 읽는 자리라 루틴은 건너뛴다.
 
-마지막 갱신: 2026-09-01 (STEP 1 앞에서 원격 main에 맞춤)
+마지막 갱신: 2026-09-07 (하루 5편 신규에서 신규 3 + 보강 2로 바꿈 — STEP 3 참고)
+이전 갱신: 2026-09-01 (STEP 1 앞에서 원격 main에 맞춤)
 이전 갱신: 2026-08-23 (중급 분량을 실측에 맞추고 세는 법을 못박음.
 MATH-PLAN.md는 Read 상한을 넘어 grep으로 뽑는다고 적음. 완료 보고에 읽은 파일 목록 추가)
 이전 갱신: 2026-08-20 (지시서를 저장소로 옮김. 사슬이 왜 저절로 같은 칸에 머무는지 적음)
@@ -18,7 +19,11 @@ MATH-PLAN.md는 Read 상한을 넘어 grep으로 뽑는다고 적음. 완료 보
 글은 `src/content/articles/*.md` 한 곳에만 둔다. 작업 규칙은 저장소 루트의
 `CLAUDE.md`에 있으니 시작할 때 한 번 읽는다.
 
-수학 주제로 글 5편을 작성한다.
+수학 주제로 **새 글 3편**을 쓰고(STEP 1·2), **이미 있는 수학 글 2편을 보강한다**(STEP 3).
+
+2026-09-07까지는 하루 5편을 새로 썼다. 수학 120편은 다른 칸보다 사정이 낫지만
+(산문 중앙값 3,724자, 소절을 쓰는 글 58%) 절만 늘어놓고 소절이 없는 글이 아직
+42%다. 새로 쓰는 몫을 셋으로 줄이고 남은 몫으로 있는 글을 채운다.
 
 ## 트랙이 셋이고 쓰는 방식이 서로 다르다
 
@@ -120,7 +125,7 @@ if [ "$EXISTING" -lt 100 ]; then
   exit 1
 fi
 
-awk -v batch=5 '
+awk -v batch=3 '
   NR==FNR { e[$0]=1; next }
   !e[$0] { print; c++; if (c>=batch) exit }
 ' /tmp/existing_slugs.txt /tmp/planned_slugs.txt > /tmp/next_slugs.txt
@@ -135,12 +140,12 @@ cat /tmp/next_slugs.txt
 
 ## STEP 2 — 무엇을 쓸지 확인한다
 
-**`MATH-PLAN.md`에서 이번 5편의 항목만 뽑아 읽는다.** 각 슬러그마다 제목과
+**`MATH-PLAN.md`에서 이번 3편의 항목만 뽑아 읽는다.** 각 슬러그마다 제목과
 "무엇을 쓰는가"와 "전제"가 표로 적혀 있다. **그 brief가 이 글의 범위를 정한다.**
 
 ⚠ **이 파일은 Read로 통째로 못 연다.** 262KB라 Read의 상한(256KB)을 넘어
 2026-08-21 실행이 여기서 에러를 받았다(그 실행은 `grep`으로 우회해 결과에는
-영향이 없었다). 한 번에 다섯 편만 쓰므로 필요한 것은 brief 다섯 줄뿐이다 —
+영향이 없었다). 한 번에 세 편만 쓰므로 필요한 것은 brief 세 줄뿐이다 —
 아래처럼 뽑아 쓰고, 표가 여러 줄로 이어지면 `-A`로 늘린다.
 
 ```bash
@@ -154,7 +159,41 @@ brief에는 다른 글과 겹치는 자리가 명시돼 있다 — "…는 N번�
 
 기존 글을 확인하고 싶으면 `ls src/content/articles/ | grep <키워드>`로 찾아 읽는다.
 
-## 글 1편 작성 순서
+## STEP 3 — 보강 2편 고르기
+
+새 글 셋과 별개로 **이미 있는 수학 글 두 편을 손본다.** 무엇을 손볼지는
+`ARTICLE-DEPTH-PLAN.md`가 들고 있다 — 학습 글 534편을 전부 세어 만든 작업 큐다.
+
+```bash
+sed -n '/^### math-for-ai$/,/^### /p' ARTICLE-DEPTH-PLAN.md
+```
+
+위에서부터 두 편을 집는다. 목록이 바닥나면 그때는 짧은 편부터다.
+
+```bash
+for f in src/content/articles/math*.md; do
+  n=$(python3 -c "import re,sys;print(len(re.sub(r'\s','',open(sys.argv[1]).read().split('---',2)[2])))" "$f")
+  echo "$n $f"
+done | sort -n | head -20
+```
+
+**수학은 합치지 않는다.** 글 안의 번호 참조가 479곳·89편에 박혀 있어 한 짝만 합쳐도
+그 트랙의 뒤 번호가 전부 한 칸씩 당겨져 어긋나고, 그것은 `npm test`가 못 잡는다.
+자세한 이유는 `ARTICLE-DEPTH-PLAN.md`의 「수학은 합치지 않는다」에 있다.
+수학의 보강은 채우기뿐이다.
+
+보강할 때 보는 것은 셋이다.
+
+1. **뼈대** — 절 4~7, 절마다 소절 2~4.
+2. **제목** — 차례처럼 읽히는 명사구다(「왜 여기서 근호가 사라지는가」가 아니라
+   「근호가 사라지는 자리」). 규칙은 `CLAUDE.md`의 「글의 뼈대」에 있다.
+3. **그림** — 수학 글은 서넛이다. 절이 늘었는데 그림이 그대로면 비는 것이다.
+
+마친 항목의 줄은 `ARTICLE-DEPTH-PLAN.md`에서 지운다. 지우는 것까지가 한 편이고
+같은 커밋에 넣는다. **열어 보고 채울 거리가 없으면 억지로 늘리지 않는다** —
+그 줄을 지운 뒤 보고에 「채울 거리 없음」으로 적는다.
+
+## 신규 1편 작성 순서
 
 ### A. 수식 표기
 
@@ -366,6 +405,8 @@ draft: false
   **글 맨 앞에 정의를 모아 두지 마라.** 2026-08-14에 「한 줄 정의」 상자를 30편
   머리에 붙였다가 같은 날 걷어냈다. 읽는 흐름과 따로 노는 목록이고, 정작 그 낱말을
   만나는 자리에서는 다시 위로 올라가야 한다.
+- **뼈대부터 짜고 쓴다** — 절(`##`) 4~7, 절마다 소절(`###`) 2~4. 절 제목은
+  차례처럼 읽히는 **명사구**다. 규칙은 `CLAUDE.md`의 「글의 뼈대」에 있다
 - 첫 단락은 헤딩 없는 prose로 시작
 - **중급·고급 구성**: AI의 장면 → 직관 → 정의·수식 → 예제 → 코드 → 그 장면으로 돌아와 닫기
 - **초급 구성**: 이 글이 답하려는 수학 문제 → 정의 → 그림으로 납득 →
@@ -403,14 +444,14 @@ npm run build
 ```
 둘 다 통과해야 한다. `npm run build`에서 KaTeX 수식 오류가 잡힌다.
 
-## 5편 완료 후 — 커밋 & main 반영 (필수)
+## 다섯 편을 마친 뒤 — 커밋 & main 반영 (필수)
 ```bash
 set -e
 TODAY=$(TZ='Asia/Seoul' date +%Y-%m-%d)
 git config user.email "bot@paldyn.com"
 git config user.name "PALDYN Bot"
-git add src/content/articles/ public/assets/posts/
-git commit -m "post: 수학 글 자동 작성 ($TODAY)"
+git add -A src/content/articles/ public/assets/posts/ ARTICLE-DEPTH-PLAN.md
+git commit -m "post: 수학 글 신규 3편과 보강 2편 ($TODAY)"
 
 REMOTE="https://x-access-token:${GITHUB_TOKEN}@github.com/paldyn/ai-lab.git"
 HEAD_SHA=$(git rev-parse HEAD)

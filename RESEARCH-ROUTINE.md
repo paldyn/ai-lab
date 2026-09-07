@@ -1,6 +1,6 @@
 # 리서치 글 작성 루틴 지시서
 
-「PALDYN AI Lab — 리서치 글 자동 작성 (2편/일)」 Routine(`trig_01CNduMiXKy1f4Rg7a2Deo9m`)이
+「PALDYN AI Lab — 리서치 글 자동 작성 (신규 1 + 보강 1)」 Routine(`trig_01CNduMiXKy1f4Rg7a2Deo9m`)이
 **실행할 때마다 읽는 지시서**다. Routine에 걸린 프롬프트는 이 파일을 읽으라는 쪽지뿐이니
 **여기만 고치면 된다.**
 
@@ -9,7 +9,8 @@
 
 `---` 아래가 지시다. 위 머리말은 사람이 읽는 자리라 루틴은 건너뛴다.
 
-마지막 갱신: 2026-09-01 (STEP 1 앞에서 원격 main에 맞춤)
+마지막 갱신: 2026-09-07 (하루 2편 신규에서 신규 1 + 보강 1로 바꿈 — STEP 5 참고)
+이전 갱신: 2026-09-01 (STEP 1 앞에서 원격 main에 맞춤)
 이전 갱신: 2026-08-23 (완료 보고에 읽은 파일 목록 추가)
 이전 갱신: 2026-08-21 ('지난 글'은 그 칸의 사슬 꼬리라고 못박고 확인 절차를 넣음)
 이전 갱신: 2026-08-19 (지시서를 저장소로 옮김, 사슬은 같은 카테고리 안에서만 잇도록 못박음)
@@ -20,7 +21,11 @@
 글은 `src/content/articles/*.md` 한 곳에만 둔다. 시작할 때 `CLAUDE.md`와
 `RESEARCH-PLAN.md`를 읽는다.
 
-리서치 글 **2편**을 쓴다.
+리서치 글 **1편**을 쓰고, **이미 있는 리서치 글 1편의 뼈대를 손본다**(STEP 5).
+
+2026-09-07까지는 하루 2편을 새로 썼다. 리서치 44편은 분량이 문제가 아니다 —
+산문 중앙값이 5,320~5,651자로 학습 글의 두 배다. 문제는 **절이 아홉**이라는 것이다
+(기준은 4~7). 새로 쓰는 몫을 하나로 줄이고 남은 몫으로 있는 글의 층을 세운다.
 
 ## 이 루틴이 지켜야 하는 한 줄
 
@@ -78,7 +83,7 @@ if [ "$EXISTING" -lt 100 ]; then
   exit 1
 fi
 
-awk -v batch=2 'NR==FNR{e[$0]=1;next} !e[$0]{print;c++;if(c>=batch)exit}' \
+awk -v batch=1 'NR==FNR{e[$0]=1;next} !e[$0]{print;c++;if(c>=batch)exit}' \
   /tmp/existing.txt /tmp/planned.txt > /tmp/next.txt
 
 echo "이번 작성 $(wc -l < /tmp/next.txt)편 / 계획 ${PLANNED}편 / main에 ${EXISTING}편"
@@ -87,7 +92,7 @@ cat /tmp/next.txt
 
 `/tmp/next.txt`가 비어 있으면 "예정 주제 소진" 출력 후 즉시 종료한다 (커밋·푸시 없음).
 
-그다음 **`RESEARCH-PLAN.md`에서 이번 2편의 행을 찾아 읽는다.** 각 행에
+그다음 **`RESEARCH-PLAN.md`에서 이번 1편의 행을 찾아 읽는다.** 각 행에
 제목, 카테고리, "무엇을 다루는가", 그리고 **"무엇을 직접 확인하는가"**가 적혀 있다.
 마지막 칸이 이 글이 내놓아야 할 증거다.
 
@@ -246,7 +251,30 @@ python3 -m venv /tmp/verify && . /tmp/verify/bin/activate
 - placeholder나 상수, 하드코딩된 값이 측정 결과처럼 출력된다
 - 본문의 모델 ID나 데이터셋 ID, 패키지 경로 중 실재하지 않는 것이 있다
 
-## STEP 5 — 검증
+## STEP 5 — 보강 1편
+
+새 글 하나를 마쳤으면 **이미 있는 리서치 글 한 편의 뼈대를 손본다.** 절이 많은
+쪽부터다.
+
+```bash
+for f in src/content/articles/{lab,paper,bench,cost,spec}-*.md; do
+  echo "$(grep -c '^## ' "$f") $(grep -c '^### ' "$f") $f"
+done | sort -rn | head -20
+```
+
+앞 숫자가 절, 뒤 숫자가 소절이다. **절이 여덟 이상인데 소절이 0인 글**이 먼저다.
+
+하는 일은 **묶기**다. 가까운 절 둘셋을 한 절 아래 소절로 내려 절을 4~7로 줄이고,
+절 제목을 차례처럼 읽히는 명사구로 단다(「왜 캐시가 안 먹히는가」가 아니라
+「캐시가 빗나가는 자리」). 기준은 `CLAUDE.md`의 「글의 뼈대」에 있다.
+
+**실험 결과와 터미널 출력은 건드리지 않는다.** 리서치 글의 값은 거기 있다.
+숫자를 다시 쓰거나 옮겨 적지 말고, 층만 세운다. 문장을 더 쓸 자리가 보이면
+그 절의 재료 안에서만 쓴다 — 돌려 보지 않은 것을 새로 적지 않는다.
+
+자세한 것은 `ARTICLE-DEPTH-PLAN.md`의 「리서치 글은 문제가 반대다」에 있다.
+
+## STEP 6 — 검증
 
 ```bash
 deactivate 2>/dev/null || true
@@ -259,7 +287,7 @@ npm run build
 그리고 **마무리 블록의 지난 글·다음 글이 사슬과 맞는지**를 보고, `npm run build`가
 타입과 KaTeX 수식을 본다. 둘 다 통과해야 커밋한다.
 
-## STEP 6 — 커밋과 main 반영
+## STEP 7 — 커밋과 main 반영
 
 커밋 메시지는 **한국어로** 쓴다.
 
@@ -268,8 +296,8 @@ set -e
 TODAY=$(TZ='Asia/Seoul' date +%Y-%m-%d)
 git config user.email "bot@paldyn.com"
 git config user.name "PALDYN Bot"
-git add src/content/articles/ public/assets/posts/
-git commit -m "post: 리서치 글 자동 작성 ($TODAY)"
+git add -A src/content/articles/ public/assets/posts/
+git commit -m "post: 리서치 글 신규 1편과 보강 1편 ($TODAY)"
 
 REMOTE="https://x-access-token:${GITHUB_TOKEN}@github.com/paldyn/ai-lab.git"
 HEAD_SHA=$(git rev-parse HEAD)
@@ -293,6 +321,7 @@ git update-ref refs/remotes/origin/main FETCH_HEAD
   보고에 적힌 것만이 확실하다. 접두사 표·사슬 규칙처럼 `CLAUDE.md`에만 있는
   것을 기억으로 쓰면 조용히 어긋나므로, 읽은 것을 스스로 세어 적는다.
 - 쓴 글 제목과 카테고리
+- **보강한 글**: 절을 몇 개에서 몇 개로 줄였고 어떤 절을 어느 절 아래로 내렸는지
 - **글마다 실제로 돌린 것과 그 출력의 핵심 수치**
 - **결과가 꺾이는 지점으로 무엇을 적었는지**
 - 계획(RESEARCH-PLAN.md)의 예상과 다른 결과가 나왔다면 무엇이 어떻게 다른지
