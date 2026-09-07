@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="505" viewBox="0 0 880 505" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <defs>
+    <marker id="dl-arr" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#7777cc"/>
+    </marker>
+  </defs>
+
+  <rect x="0" y="0" width="880" height="505" rx="12" fill="#0a0a0a"/>
+
+  <text x="90" y="52" font-size="22" font-weight="700" fill="#e8e8e8">스키마 링킹 — 테이블 200개에서 프롬프트로</text>
+
+  <rect x="90" y="92" width="700" height="66" rx="10" fill="#12141a" stroke="#2a2f3a" stroke-width="1"/>
+  <text x="112" y="119" font-size="15" font-weight="600" fill="#e8e8e8">원본 스키마</text>
+  <text x="112" y="141" font-size="13" fill="#888">데이터베이스 전체. 통째로 넣으면 수만 토큰이고 이름이 비슷한 테이블이 섞인다</text>
+  <rect x="650" y="110" width="110" height="30" rx="6" fill="#1a1d24" stroke="#3a4a6e" stroke-width="1"/>
+  <text x="705" y="130" font-size="13" font-weight="600" fill="#7ec8e3" text-anchor="middle">200개</text>
+
+  <line x1="440" y1="161" x2="440" y2="188" stroke="#7777cc" stroke-width="2" marker-end="url(#dl-arr)"/>
+
+  <rect x="90" y="188" width="700" height="66" rx="10" fill="#12141a" stroke="#2a2f3a" stroke-width="1"/>
+  <text x="112" y="215" font-size="15" font-weight="600" fill="#e8e8e8">1단계 — 이름·설명 벡터 검색</text>
+  <text x="112" y="237" font-size="13" fill="#888">질문과 가까운 테이블만 남긴다. 이 단계는 재현율만 본다</text>
+  <rect x="650" y="206" width="110" height="30" rx="6" fill="#1a1d24" stroke="#3a4a6e" stroke-width="1"/>
+  <text x="705" y="226" font-size="13" font-weight="600" fill="#7ec8e3" text-anchor="middle">30개</text>
+
+  <line x1="440" y1="257" x2="440" y2="284" stroke="#7777cc" stroke-width="2" marker-end="url(#dl-arr)"/>
+
+  <rect x="90" y="284" width="700" height="66" rx="10" fill="#12141a" stroke="#2a2f3a" stroke-width="1"/>
+  <text x="112" y="311" font-size="15" font-weight="600" fill="#e8e8e8">2단계 — 외래키 그래프 보충</text>
+  <text x="112" y="333" font-size="13" fill="#888">후보를 잇는 최단 경로의 중간 테이블을 더한다</text>
+  <rect x="650" y="302" width="110" height="30" rx="6" fill="#1a1d24" stroke="#3a4a6e" stroke-width="1"/>
+  <text x="705" y="322" font-size="13" font-weight="600" fill="#7ec8e3" text-anchor="middle">12개</text>
+
+  <line x1="440" y1="353" x2="440" y2="380" stroke="#7777cc" stroke-width="2" marker-end="url(#dl-arr)"/>
+
+  <rect x="90" y="380" width="700" height="66" rx="10" fill="#12141a" stroke="#55c555" stroke-width="1.5"/>
+  <text x="112" y="407" font-size="15" font-weight="600" fill="#e8e8e8">3단계 — 컬럼 선별과 값 샘플</text>
+  <text x="112" y="429" font-size="13" fill="#888">질문에 걸리는 컬럼 + 키 + 날짜만. 범주형에는 값 샘플 3개씩</text>
+  <rect x="650" y="398" width="110" height="30" rx="6" fill="#1a1d24" stroke="#55c555" stroke-width="1"/>
+  <text x="705" y="418" font-size="13" font-weight="600" fill="#55c555" text-anchor="middle">컬럼 40개</text>
+
+  <text x="90" y="478" font-size="13" fill="#7777cc">프롬프트에 들어가는 것은 마지막 칸뿐이다</text>
+</svg>

@@ -1,6 +1,6 @@
 ---
 title: "AI 회의 요약 시스템: 음성 인식부터 인사이트 추출까지"
-description: "회의 녹음을 텍스트로 변환하고, 화자를 분리하며, 요약·결정사항·액션아이템을 자동으로 추출해 Slack·Notion·Jira에 배포하는 AI 회의 요약 시스템을 구현합니다."
+description: "STT를 고르는 기준, 화자 분리가 틀리는 자리와 겹침 비율 매핑, 긴 회의를 요약하는 두 방식, 액션아이템 추출의 실패 유형, 그리고 결정사항 재현율로 품질을 재는 법을 다룹니다."
 author: "PALDYN Team"
 pubDate: "2026-05-27"
 category: "build-with-ai"
@@ -9,28 +9,49 @@ tags: ["회의요약", "STT", "Whisper", "화자분리", "액션아이템", "Sla
 featured: false
 draft: false
 ---
-[지난 글](/articles/app-translation)에서 도메인 용어집과 스타일 가이드로 번역 품질을 붙잡는 시스템을 만들었다. 그쪽이 문서로 남은 말을 다뤘다면, 이번 글에서는 **AI 회의 요약 시스템**을 다룬다. 60분짜리 회의에서 핵심 결정사항과 각자 해야 할 일을 뽑아내는 데 20~30분을 또 쓰는 것은 낭비다. AI가 회의 녹음을 받아 자동으로 요약, 결정사항, 액션아이템을 추출하고 Slack과 Notion에 배포까지 해준다면 회의 후 생산성이 크게 올라간다.
+[지난 글](/articles/app-translation)에서 도메인 용어집과 스타일 가이드로 번역 품질을 붙잡는 시스템을 만들었다. 그쪽이 문서로 남은 말을 다뤘다면, 이번 글은 **회의에서 오간 말**을 다룬다. 60분 회의에서 결정사항과 각자 할 일을 뽑아내는 데 다시 20분을 쓰는 것은 낭비이므로, 녹음을 받아 요약·결정사항·액션아이템을 뽑고 Slack과 Notion으로 보내는 시스템을 만든다.
 
-## 파이프라인 개요
-
-회의 요약 파이프라인은 4단계로 구성된다.
-
-1. **음성 → 텍스트 변환(STT)**: Whisper 또는 클라우드 STT API
-2. **화자 분리(Speaker Diarization)**: 누가 말했는지 구분
-3. **회의록 구조화**: 타임스탬프 + 화자 + 발언 내용
-4. **AI 분석 및 요약**: 요약, 결정사항, 액션아이템, 키워드 추출
+파이프라인 자체는 네 단계로 단순하다 — 음성을 텍스트로 바꾸고(STT), 누가 말했는지 나누고, 회의록을 구조화하고, 모델에 넘겨 분석한다. 어려운 곳은 단계 사이의 이음매다. **화자 분리 결과와 전사 결과를 어떻게 붙일 것인가, 60분치 회의록을 어떻게 넣을 것인가, 뽑아낸 액션아이템이 진짜 과제인지 어떻게 아는가**가 이 글의 내용이다.
 
 ![AI 회의 요약 파이프라인](/assets/posts/app-meeting-summary-pipeline.svg)
 
-## STT: 음성을 텍스트로 변환
+## STT를 고르는 자리
 
-OpenAI Whisper로 오디오 파일을 텍스트로 변환한다.
+### 로컬 모델과 API의 갈림
+
+첫 결정은 음성 인식을 어디서 돌릴 것인가다. OpenAI Whisper는 열린 가중치로 공개되어 있어 직접 돌릴 수 있고, 같은 계열의 전사 API도 있다. 둘의 차이는 정확도보다 **운영의 모양**에 있다.
+
+API는 붙이기 쉽다. 파일을 올리면 타임스탬프가 붙은 텍스트가 돌아온다. GPU를 준비할 필요도, 모델 파일을 관리할 필요도 없다. 대신 회의 녹음이 외부로 나간다. 인사 평가 회의나 법무 회의 녹음이 사내를 벗어나도 되는지는 조직마다 답이 다르고, 이 질문에 「안 된다」가 나오면 다른 항목을 비교할 필요도 없다.
+
+로컬은 반대다. 오디오가 사내에 남고 회의 시간당 추가 비용이 없다. 대신 GPU가 놀지 않게 하는 일과 모델 갱신이 운영 과제로 남는다. 회의가 하루 두세 건이면 GPU가 대부분의 시간을 놀고, 그 놀리는 비용이 API 요금보다 클 수 있다.
+
+### 60분 회의로 계산해 보기
+
+고르는 기준은 **회의량**이다. 표로 두면 갈림이 분명해진다.
+
+| 보는 것 | 전사 API | 로컬 large-v3 |
+| --- | --- | --- |
+| 60분 회의 1건 비용 | 오디오 길이에 비례한 종량 요금 | 추가 요금 없음(GPU 상각) |
+| 60분 회의 처리 시간 | 업로드 + 서버 처리, 대개 수 분 | GPU 등급에 따라 수 분~십수 분 |
+| 오디오가 나가는가 | 나간다 | 안 나간다 |
+| 운영 부담 | 거의 없음 | GPU·모델·큐 관리 |
+| 월 20건 | 유리 | GPU가 논다 |
+| 월 400건 | 요금이 선형으로 는다 | 유리 |
+
+숫자를 그대로 믿지 말고 **자기 오디오로 한 번 재 본다.** 처리 시간은 GPU 등급과 배치 구현에 따라 몇 배씩 차이 나고, 요금은 바뀐다. 회의 열 건을 두 방식으로 돌려 처리 시간과 오탈자 수를 세어 보면 한나절이면 끝난다. 그리고 대개 **오디오 반출 여부에서 답이 먼저 정해지고**, 비용 비교는 그다음이다.
+
+### 한국어에서 걸리는 것
+
+한국어 회의에서 실제로 문제가 되는 것은 일반 문장이 아니라 셋이다. **회사 내부 용어**(제품 코드명, 팀 약칭), **영어 섞인 발화**(「이번 스프린트 리텐션이 드랍했어요」), **숫자와 날짜**(「이십사일까지」가 24일인지 20~4일인지)다.
+
+앞의 둘은 프롬프트로 상당히 줄일 수 있다. 전사 요청에 회사 용어 목록을 힌트로 넘기면 그쪽 표기로 붙는다. 숫자와 날짜는 전사 단계에서 고치려 하지 말고 **뒤의 분석 단계에서 회의 날짜와 함께 해석**하게 두는 편이 낫다.
 
 ```python
 import openai
-from pathlib import Path
 
 client_oai = openai.OpenAI()
+
+VOCAB_HINT = "팔딘, 아틀라스(사내 검색 프로젝트), 리텐션, 스프린트, QBR, 온콜"
 
 def transcribe_audio(audio_path: str, language: str = "ko") -> dict:
     with open(audio_path, "rb") as f:
@@ -38,72 +59,126 @@ def transcribe_audio(audio_path: str, language: str = "ko") -> dict:
             model="whisper-1",
             file=f,
             language=language,
-            response_format="verbose_json",  # 타임스탬프 포함
+            prompt=VOCAB_HINT,          # 사내 용어 표기를 고정
+            response_format="verbose_json",
             timestamp_granularities=["segment"],
         )
 
     segments = [
-        {
-            "start": seg.start,
-            "end": seg.end,
-            "text": seg.text.strip(),
-        }
+        {"start": seg.start, "end": seg.end, "text": seg.text.strip()}
         for seg in transcript.segments
     ]
-
     return {
         "full_text": transcript.text,
         "segments": segments,
         "duration": transcript.duration,
-        "language": transcript.language,
     }
 ```
 
-`verbose_json` 형식으로 받으면 세그먼트별 타임스탬프를 얻을 수 있어 화자 분리와 결합하기 좋다.
+`verbose_json`으로 받으면 세그먼트마다 시작·끝 시각이 붙는다. 이 시각이 다음 단계의 전부다 — 화자 분리 결과와 붙일 수 있는 유일한 열쇠이기 때문이다. 파일 크기 상한이 있으므로 긴 회의는 잘라서 올리되, **자른 조각의 시작 시각을 더해 원래 타임라인으로 되돌려 놓는다.** 이걸 빠뜨리면 두 번째 조각부터 모든 발화가 0초에서 다시 시작한다.
 
-## 화자 분리
+## 화자 분리가 틀리는 자리
 
-화자 분리는 "누가 말했는지"를 타임스탬프 기반으로 매핑하는 작업이다. pyannote.audio가 가장 많이 쓰인다.
+### 겹쳐 말하기와 짧은 맞장구
+
+**화자 분리**(speaker diarization)는 「몇 초부터 몇 초까지는 누가 말했다」를 오디오만 보고 나누는 작업이다. 회의 녹음에서 이 작업이 어려운 이유는 회의가 낭독이 아니기 때문이다.
+
+**겹쳐 말하기**가 가장 흔하다. 한 사람이 말을 끝내기 전에 다른 사람이 끼어드는 구간에서, 분리기는 둘 중 하나만 고르거나 새로운 화자를 만들어 낸다. **짧은 맞장구**도 문제다. 「네」·「맞아요」 같은 0.3초짜리 발화는 앞뒤 화자에 흡수되거나 무시된다. 회의록에서는 사소해 보이지만, 「그럼 이대로 갑니다」 다음의 「네」가 누구 것인지가 결정사항의 동의 여부를 가른다.
+
+**화자 수 미지정**이 세 번째다. 화자 수를 안 알려 주면 분리기가 스스로 추정하는데, 조용히 듣기만 한 참석자를 빼거나 잡음을 한 명으로 세는 일이 생긴다. 참석자 명단을 알고 있다면 화자 수를 고정해 주는 것이 정확도를 가장 싸게 올리는 방법이다.
+
+### 중간점 매핑이 만드는 오류
+
+두 결과를 붙일 때 가장 흔히 쓰는 방식은 「전사 세그먼트의 중간 시점이 어느 화자 구간에 들어가는가」다. 한 줄로 짜여서 편한데, **전사 세그먼트가 화자 경계를 걸치면 통째로 틀린 사람에게 붙는다.**
+
+전사기는 문장 단위로 자르고 화자 분리기는 음성 활동 단위로 자르므로, 두 경계는 애초에 일치하지 않는다. 「그건 다음 주에 하죠 네 좋습니다」가 한 세그먼트로 묶이면 중간점은 뒤쪽 화자에 떨어지고, 앞 문장의 제안까지 그 사람이 한 말이 된다. 회의록에서 제안자가 바뀌는 것은 작은 오류가 아니다.
+
+![중간점 매핑과 겹침 비율 매핑](/assets/posts/app-meeting-summary-diarization.svg)
+
+### 겹침 비율로 붙이기
+
+대신 **겹치는 시간이 가장 긴 화자**에게 붙인다. 그리고 겹침이 지배적이지 않으면 — 1등과 2등의 차이가 작으면 — 세그먼트를 경계에서 쪼갠다.
 
 ```python
-def diarize_audio(audio_path: str) -> list[dict]:
-    from pyannote.audio import Pipeline
+def overlap(a_start, a_end, b_start, b_end) -> float:
+    return max(0.0, min(a_end, b_end) - max(a_start, b_start))
 
-    pipeline = Pipeline.from_pretrained(
-        "pyannote/speaker-diarization-3.1",
-        use_auth_token=HUGGINGFACE_TOKEN,
-    )
-    diarization = pipeline(audio_path)
-
-    segments = []
-    for turn, _, speaker in diarization.itertracks(yield_label=True):
-        segments.append({
-            "start": turn.start,
-            "end": turn.end,
-            "speaker": speaker,  # SPEAKER_00, SPEAKER_01 ...
-        })
-    return segments
-
-def merge_transcript_with_speakers(
+def assign_speakers(
     transcript_segments: list[dict],
     speaker_segments: list[dict],
+    split_ratio: float = 0.65,
 ) -> list[dict]:
     result = []
-    for t_seg in transcript_segments:
-        t_mid = (t_seg["start"] + t_seg["end"]) / 2
-        # 발화 중간 시점에 해당하는 화자 찾기
-        speaker = "Unknown"
-        for s_seg in speaker_segments:
-            if s_seg["start"] <= t_mid <= s_seg["end"]:
-                speaker = s_seg["speaker"]
-                break
-        result.append({**t_seg, "speaker": speaker})
+    for t in transcript_segments:
+        scores = [
+            (overlap(t["start"], t["end"], s["start"], s["end"]), s["speaker"])
+            for s in speaker_segments
+        ]
+        scores = sorted((sc for sc in scores if sc[0] > 0), reverse=True)
+
+        if not scores:
+            result.append({**t, "speaker": "Unknown", "confidence": 0.0})
+            continue
+
+        total = sum(sc for sc, _ in scores)
+        top_ratio = scores[0][0] / total
+        result.append({
+            **t,
+            "speaker": scores[0][1],
+            "confidence": round(top_ratio, 2),
+            "ambiguous": top_ratio < split_ratio,   # 경계를 걸친 발화
+        })
     return result
 ```
 
-## AI 요약 및 정보 추출
+`ambiguous` 표시가 붙은 발화는 회의록에서 화자를 단정하지 않고 「(화자 불확실)」로 남긴다. **모르는 것을 모른다고 적는 것이 틀린 이름을 적는 것보다 낫다.** 이 표시는 나중에 품질을 잴 때 「어디를 개선해야 하는가」의 지도도 된다 — 불확실 표시가 특정 참석자에게 몰려 있으면 그 사람의 마이크 환경이 원인인 경우가 많다.
 
-화자 구분이 된 전체 회의록을 LLM에게 넘겨 구조화된 요약을 생성한다.
+임계값 0.65는 시작점이지 정답이 아니다. 회의 열 건의 결과를 열어 보고, 불확실로 표시된 발화가 실제로 애매했는지 세어 본 다음 조정한다. 너무 낮게 잡으면 틀린 이름이 그대로 나가고, 너무 높게 잡으면 회의록의 절반이 「화자 불확실」이 되어 읽을 수 없어진다.
+
+## 긴 회의를 요약하는 두 방식
+
+### 통째로 넣기가 잃는 것
+
+60분 회의의 회의록은 대략 1만 자 안팎이다. 요즘 모델의 컨텍스트에는 충분히 들어간다. 그래서 첫 구현은 대개 전체를 한 번에 넣는다.
+
+이 방식의 장점은 분명하다. 회의 전체를 보고 요약하므로 앞에서 나온 이야기가 뒤에서 뒤집힌 것을 안다. 「아까 A로 하기로 했는데 마지막에 B로 바꿨다」를 제대로 잡는다.
+
+잃는 것은 **중간의 밀도**다. 긴 입력에서 모델은 앞뒤를 잘 기억하고 가운데를 성기게 다룬다. 결정이 회의 초반이나 마무리에 몰리는 회의라면 문제가 없는데, 30분쯤에 지나가듯 확정된 사항은 요약에서 자주 빠진다.
+
+### 구간 요약 후 재요약
+
+다른 방식은 회의를 20분 단위로 잘라 각각 요약하고, 그 요약들을 다시 요약하는 것이다. 각 구간이 짧으니 중간이 성겨지지 않고, 구간별 요약을 그대로 「회의 흐름」으로 보여 줄 수도 있다.
+
+대신 **번복을 놓친다.** 1구간에서 A로 정하고 3구간에서 B로 뒤집었으면, 1구간 요약에는 「A로 결정」이 남고 3구간 요약에는 「B로 변경」이 남는다. 재요약 단계에서 둘 다 결정사항 목록에 올라가면 회의록이 스스로 모순된다. 재요약 프롬프트에 「같은 안건에 대한 결정이 여럿이면 마지막 것만 남기고 이전 것은 '변경 이력'으로 옮겨라」를 넣어야 잡힌다.
+
+### 무엇을 언제 고르는가
+
+| 회의 성격 | 방식 | 이유 |
+| --- | --- | --- |
+| 60분 이하, 안건 3개 이하 | 통째로 넣기 | 번복 추적이 중요하고 중간 밀도 손실이 작다 |
+| 90분 이상 워크숍 | 구간 요약 + 재요약 | 안건이 많아 중간이 통째로 새는 쪽이 더 아프다 |
+| 정기 스탠드업 | 통째로 넣기 | 짧고 구조가 고정되어 있다 |
+| 여러 안건 릴레이 회의 | 안건 단위로 잘라 요약 | 시간이 아니라 안건 경계로 자르는 편이 낫다 |
+
+마지막 줄이 실은 가장 좋은 방식이다. **20분이라는 경계는 임의의 값이고, 회의에는 자연스러운 경계가 있다.** 안건 전환을 발화 내용으로 찾아 그 자리에서 자르면 구간 요약의 단점 대부분이 사라진다.
+
+## 액션아이템 추출의 실패 유형
+
+### 담당자 없는 과제
+
+회의에서 「그거 누가 좀 봐 주세요」로 끝나는 일이 많다. 모델은 여기에 담당자를 채워 넣으려 한다. 직전에 말한 사람이나 관련 있어 보이는 사람이 배정되고, 그 이름이 Jira 이슈로 올라간다. **잘못 배정된 과제는 배정되지 않은 과제보다 나쁘다** — 받은 사람은 「내 일이 아닌데」로 넘기고, 실제로 해야 할 사람은 자기 일인 줄 모른다.
+
+그래서 담당자는 회의록에 명시적으로 지정된 경우만 채우고, 아니면 비운다. 비어 있는 과제는 Jira로 보내지 않고 「담당자 미정」 목록으로 따로 묶어 Slack에 올린다. 사람이 한 줄 보고 배정하면 된다.
+
+### 농담과 가정형
+
+두 번째는 **하지 않기로 한 말이 과제가 되는 것**이다. 「그럼 우리가 직접 만들까요? 하하」나 「만약 예산이 두 배면 GPU를 사면 되는데」가 액션아이템으로 올라온다. 문장의 형태만 보면 제안이라 걸러지지 않는다.
+
+프롬프트에서 거르는 조건을 명시적으로 준다 — 가정형(「~라면」), 의문형으로 끝나고 답이 없는 발화, 그리고 이어지는 발화에서 부정되거나 웃음으로 넘어간 제안은 액션아이템이 아니다. 조건을 문장으로 적어 주는 것만으로 상당수가 걸러진다.
+
+### 이미 끝난 일
+
+세 번째는 **과거형을 미래로 읽는 것**이다. 「지난주에 로그 정리했어요」가 「로그 정리」 과제가 된다. 진행 보고가 많은 정기 회의에서 특히 자주 나오고, 이 유형이 섞이면 액션아이템 목록의 절반이 이미 끝난 일이 되어 아무도 목록을 안 본다.
 
 ```python
 import anthropic
@@ -111,15 +186,28 @@ import json
 
 client = anthropic.Anthropic()
 
-def analyze_meeting(transcript: list[dict], participant_names: dict | None = None) -> dict:
-    # 화자 코드를 이름으로 치환 (알고 있는 경우)
+EXTRACT_RULES = """
+액션아이템으로 뽑지 않을 것:
+1. 과거형으로 보고된 완료 사항 ("~했어요", "~끝냈습니다")
+2. 가정형 제안 ("~라면 ~할 텐데")
+3. 질문으로 끝나고 답이 없는 발화
+4. 이어지는 발화에서 부정되거나 보류된 제안
+
+담당자(owner):
+- 회의록에 이름이 명시된 경우만 채운다. 추측하지 말고 null로 둔다.
+기한(due_date):
+- 상대 표현("다음 주")은 회의 날짜를 기준으로 절대 날짜로 바꾼다.
+"""
+
+def analyze_meeting(transcript: list[dict], meeting_date: str,
+                    participant_names: dict | None = None) -> dict:
     if participant_names:
         for seg in transcript:
             seg["speaker"] = participant_names.get(seg["speaker"], seg["speaker"])
 
     formatted = "\n".join(
-        f"[{seg['speaker']} {int(seg['start']//60):02d}:{int(seg['start']%60):02d}] "
-        f"{seg['text']}"
+        f"[{seg['speaker']} {int(seg['start']//60):02d}:{int(seg['start']%60):02d}"
+        f"{' ?' if seg.get('ambiguous') else ''}] {seg['text']}"
         for seg in transcript
     )
 
@@ -127,152 +215,160 @@ def analyze_meeting(transcript: list[dict], participant_names: dict | None = Non
         model="claude-opus-4-7",
         max_tokens=2048,
         system=(
-            "회의 내용을 분석해 다음 JSON 형식으로 반환하세요:\n"
-            "{\n"
-            '  "summary": "3~5문장 요약",\n'
-            '  "key_topics": ["주요 주제1", "주제2"],\n'
-            '  "decisions": ["결정사항1", "결정사항2"],\n'
-            '  "action_items": [{"task": "...", "owner": "...", "due_date": "...", "priority": "high|medium|low"}],\n'
-            '  "participants": ["참석자1"],\n'
-            '  "next_meeting": "다음 회의 일정 또는 null"\n'
-            "}\n\n"
-            "액션아이템의 owner는 회의록에서 명시적으로 담당자가 지정된 경우만 입력하고, "
-            "불명확하면 null로 남기세요."
+            f"회의 날짜: {meeting_date}\n"
+            "회의 내용을 분석해 JSON으로 반환하세요:\n"
+            '{"summary": "3~5문장", "key_topics": [...], "decisions": [...],\n'
+            ' "action_items": [{"task":"...","owner":null,"due_date":"...",'
+            '"priority":"high|medium|low","evidence":"근거가 된 발화"}],\n'
+            ' "changed_decisions": [{"topic":"...","from":"...","to":"..."}]}\n\n'
+            f"{EXTRACT_RULES}\n"
+            "화자 뒤에 ?가 붙은 발화는 화자가 불확실하니 담당자 판단에 쓰지 마세요."
         ),
         messages=[{"role": "user", "content": f"회의록:\n{formatted}"}],
     )
-
     return json.loads(response.content[0].text)
 ```
 
+`evidence` 칸이 검수 비용을 크게 줄인다. 과제마다 근거가 된 발화 한 줄이 붙어 있으면, 검수자가 회의록을 뒤지지 않고 그 줄만 보고 「맞다/아니다」를 정할 수 있다.
+
 ![회의 요약 출력 구조](/assets/posts/app-meeting-summary-output.svg)
 
-## 후속 플랫폼 자동 배포
+## 요약 품질을 재는 법
 
-요약 결과를 Slack, Notion, Jira에 자동으로 전송한다.
+### 결정사항 재현율
+
+「요약이 잘 나오는가」를 눈으로 보고 판단하면 프롬프트를 고칠 때마다 나아졌는지 알 수 없다. 회의 요약에서 재기 좋은 값은 **결정사항 재현율**이다 — 사람이 쓴 회의록에 있는 결정 중 몇 개가 자동 요약에도 있는가.
+
+문장이 달라도 같은 결정이면 맞은 것으로 센다. 그래서 채점은 문자열 비교가 아니라 사람이 짝짓거나, 결정 하나씩을 모델에 넣어 「이 요약에 이 결정이 담겨 있는가」를 묻는 방식으로 한다. 후자를 쓸 때는 채점 모델을 생성 모델과 다르게 두는 편이 낫다.
+
+같이 보는 값이 **오탐율**이다. 요약에 있는데 사람 회의록에는 없는 결정이 몇 개인가. 재현율만 보면 프롬프트가 「의심스러우면 다 담아라」 쪽으로 흘러 요약이 길어지고, 길어진 요약은 아무도 안 읽는다.
+
+### 회의 20건으로 도는 절차
+
+평가 세트는 크지 않아도 된다. 이미 사람이 회의록을 쓴 회의 20건이면 시작할 수 있다.
+
+1. 회의 20건의 녹음과 사람이 쓴 회의록을 짝지어 둔다.
+2. 사람 회의록에서 결정사항을 손으로 뽑아 정답 목록으로 만든다(회의당 3~8개).
+3. 파이프라인을 돌려 자동 요약을 만든다.
+4. 정답 목록의 각 항목이 자동 요약에 담겼는지 표시한다.
+5. 재현율과 오탐 수를 회의 유형별로 나눠 적는다.
+
+프롬프트를 고칠 때마다 3~5번만 다시 돌리면 된다. 그리고 **놓친 결정을 모아 두는 것**이 숫자보다 값지다. 무엇을 놓치는지에는 대개 모양이 있다.
+
+### 자주 놓치는 결정의 모양
+
+세 가지가 반복해서 빠진다. **소극적 결정**이 첫째다 — 「그건 이번 분기엔 안 하는 걸로」처럼 하지 않기로 한 것은 결정으로 안 잡힌다. **암묵적 합의**가 둘째다. 「그럼 그렇게 하시죠」 「네」로 끝나는 자리는 무엇을 그렇게 하는지가 앞 발화에 있어 연결이 필요하다. **조건부 결정**이 셋째다 — 「예산 승인되면 3월에 시작」은 조건을 떼면 틀린 결정이 된다.
+
+셋 다 프롬프트에 예시로 넣으면 상당히 잡힌다. 「하지 않기로 한 것도 결정이다」 한 줄과 실제 발화 예시 하나면 소극적 결정은 대부분 잡히고, 암묵적 합의는 「동의 표현 앞의 제안을 결정으로 묶어라」로 잡힌다. 평가를 돌리는 진짜 이유가 이것이다 — 점수를 알려고가 아니라 **무엇을 프롬프트에 적어야 하는지를 알려고** 돌린다. 그래서 평가 결과에서 가장 오래 들여다볼 것은 재현율 숫자가 아니라 놓친 결정의 목록이다.
+
+## 배포와 연동에서 걸리는 것
+
+### Slack과 Notion으로 보내기
+
+요약이 나오면 사람들이 이미 보고 있는 곳으로 보낸다. 회의록 전용 화면을 만들면 아무도 안 들어간다.
 
 ```python
 import requests
 
 def post_to_slack(summary: dict, channel: str, slack_token: str):
-    action_items_text = "\n".join(
-        f"• [{item.get('priority', 'medium').upper()}] {item['task']}"
-        f" — {item.get('owner', 'TBD')}"
-        f" (기한: {item.get('due_date', '미정')})"
-        for item in summary.get("action_items", [])
-    )
+    unassigned = [i for i in summary.get("action_items", []) if not i.get("owner")]
+    assigned = [i for i in summary.get("action_items", []) if i.get("owner")]
+
+    lines = [f"• [{i.get('priority','medium').upper()}] {i['task']} — {i['owner']}"
+             f" (기한: {i.get('due_date','미정')})" for i in assigned]
+    if unassigned:
+        lines.append("")
+        lines.append("*담당자 미정 — 아래 항목은 배정이 필요합니다*")
+        lines += [f"• {i['task']}" for i in unassigned]
 
     blocks = [
         {"type": "header", "text": {"type": "plain_text", "text": "📋 AI 회의 요약"}},
-        {"type": "section", "text": {"type": "mrkdwn", "text": f"*요약*\n{summary['summary']}"}},
+        {"type": "section",
+         "text": {"type": "mrkdwn", "text": f"*요약*\n{summary['summary']}"}},
         {"type": "divider"},
-        {
-            "type": "section",
-            "text": {"type": "mrkdwn", "text": f"*✅ 결정사항*\n" + "\n".join(f"• {d}" for d in summary.get("decisions", []))},
-        },
-        {
-            "type": "section",
-            "text": {"type": "mrkdwn", "text": f"*🎯 액션아이템*\n{action_items_text}"},
-        },
+        {"type": "section",
+         "text": {"type": "mrkdwn",
+                  "text": "*✅ 결정사항*\n"
+                          + "\n".join(f"• {d}" for d in summary.get("decisions", []))}},
+        {"type": "section",
+         "text": {"type": "mrkdwn", "text": "*🎯 액션아이템*\n" + "\n".join(lines)}},
     ]
-
     requests.post(
         "https://slack.com/api/chat.postMessage",
         headers={"Authorization": f"Bearer {slack_token}"},
         json={"channel": channel, "blocks": blocks},
     )
-
-def create_notion_page(summary: dict, database_id: str, notion_token: str):
-    content_blocks = [
-        {"object": "block", "type": "heading_2",
-         "heading_2": {"rich_text": [{"type": "text", "text": {"content": "요약"}}]}},
-        {"object": "block", "type": "paragraph",
-         "paragraph": {"rich_text": [{"type": "text", "text": {"content": summary["summary"]}}]}},
-    ]
-    for item in summary.get("action_items", []):
-        content_blocks.append({
-            "object": "block", "type": "to_do",
-            "to_do": {
-                "rich_text": [{"type": "text", "text": {"content": f"{item['task']} ({item.get('owner', 'TBD')})"}}],
-                "checked": False,
-            },
-        })
-
-    requests.post(
-        "https://api.notion.com/v1/pages",
-        headers={"Authorization": f"Bearer {notion_token}", "Notion-Version": "2022-06-28"},
-        json={
-            "parent": {"database_id": database_id},
-            "properties": {"Name": {"title": [{"text": {"content": "회의 요약"}}]}},
-            "children": content_blocks,
-        },
-    )
 ```
 
-## Jira 이슈 자동 생성
+담당자 미정 항목을 따로 묶어 보내는 것이 핵심이다. 배정이 필요하다는 사실이 메시지에서 바로 보이면 그 자리에서 스레드로 정해진다.
 
-액션아이템을 Jira 태스크로 자동 등록한다.
+### Jira로 넘길 것과 넘기지 않을 것
+
+액션아이템 전부를 이슈로 만들면 백로그가 오염된다. 담당자와 기한이 있고 우선순위가 높은 것만 넘기고, 나머지는 Slack 메시지에 남겨 둔다.
 
 ```python
-def create_jira_issues(action_items: list[dict], project_key: str, jira_config: dict):
+PRIORITY_MAP = {"high": "High", "medium": "Medium", "low": "Low"}
+
+def create_jira_issues(action_items: list[dict], project_key: str, cfg: dict):
     created = []
     for item in action_items:
-        if item.get("priority") in ("high",) or item.get("owner"):
-            payload = {
-                "fields": {
-                    "project": {"key": project_key},
-                    "summary": item["task"],
-                    "issuetype": {"name": "Task"},
-                    "priority": {"name": {"high": "High", "medium": "Medium", "low": "Low"}.get(item.get("priority", "medium"), "Medium")},
-                    "assignee": {"name": item.get("owner")} if item.get("owner") else None,
-                    "duedate": item.get("due_date"),
-                }
-            }
-            resp = requests.post(
-                f"{jira_config['base_url']}/rest/api/3/issue",
-                auth=(jira_config["email"], jira_config["api_token"]),
-                json=payload,
-            )
-            if resp.ok:
-                created.append({"task": item["task"], "jira_key": resp.json()["key"]})
-
+        if not item.get("owner"):          # 담당자 없는 것은 넘기지 않는다
+            continue
+        if item.get("priority") == "low":
+            continue
+        fields = {
+            "project": {"key": project_key},
+            "summary": item["task"],
+            "issuetype": {"name": "Task"},
+            "priority": {"name": PRIORITY_MAP.get(item.get("priority"), "Medium")},
+            "duedate": item.get("due_date"),
+            "description": f"회의에서 자동 생성. 근거 발화: {item.get('evidence','')}",
+        }
+        resp = requests.post(
+            f"{cfg['base_url']}/rest/api/3/issue",
+            auth=(cfg["email"], cfg["api_token"]),
+            json={"fields": fields},
+        )
+        if resp.ok:
+            created.append({"task": item["task"], "jira_key": resp.json()["key"]})
     return created
 ```
 
-## 전체 파이프라인 통합
+### webhook에서 실제로 걸리는 것
 
-```python
-def process_meeting_recording(
-    audio_path: str,
-    participant_names: dict | None = None,
-    post_to: list[str] | None = None,
-) -> dict:
-    # 1. STT
-    transcript_data = transcribe_audio(audio_path)
+Zoom이나 Teams의 녹화 완료 webhook에 붙이면 회의가 끝나는 즉시 요약이 날아간다. 여기서 실제로 걸리는 것이 셋이다.
 
-    # 2. 화자 분리 (선택)
-    try:
-        speaker_segs = diarize_audio(audio_path)
-        merged = merge_transcript_with_speakers(transcript_data["segments"], speaker_segs)
-    except Exception:
-        merged = transcript_data["segments"]
+**파일 도착 지연**이 첫째다. 「녹화 완료」 이벤트가 왔는데 파일이 아직 준비되지 않아 다운로드가 404를 낸다. 이벤트를 받으면 즉시 처리하지 말고 작업 큐에 넣고, 실패하면 지수적으로 간격을 늘려 몇 번 더 시도한다.
 
-    # 3. AI 분석
-    summary = analyze_meeting(merged, participant_names)
+**재시도 폭주**가 둘째다. 이쪽이 200을 늦게 돌려주면 플랫폼이 같은 이벤트를 다시 보낸다. webhook 핸들러는 검증하고 큐에 넣은 다음 **즉시 200을 반환**하고, 무거운 일은 워커가 한다.
 
-    # 4. 배포
-    post_to = post_to or []
-    if "slack" in post_to:
-        post_to_slack(summary, SLACK_CHANNEL, SLACK_TOKEN)
-    if "notion" in post_to:
-        create_notion_page(summary, NOTION_DB_ID, NOTION_TOKEN)
-    if "jira" in post_to:
-        create_jira_issues(summary.get("action_items", []), JIRA_PROJECT, JIRA_CONFIG)
+**중복 처리**가 셋째다. 재시도와 이벤트 중복이 겹치면 같은 회의가 두 번 요약되어 Slack에 두 번 올라간다. 회의 ID와 녹화 파일 ID를 합친 값을 처리 키로 두고, 이미 처리한 키면 조용히 무시한다. 이 키 하나가 대부분의 중복 사고를 막는다.
 
-    return {"summary": summary, "deployed_to": post_to}
-```
+## 녹음 동의와 보관
 
-회의 직후 자동으로 실행되도록 Zoom이나 Teams의 webhook과 연동하면 회의가 끝나는 즉시 요약이 Slack으로 날아간다. 지금까지 10개의 AI 애플리케이션 패턴을 살펴봤다. 챗봇부터 회의 요약까지 각각 독립적인 서비스이지만, 함께 구성하면 AI 기반 업무 자동화의 탄탄한 기반이 된다.
+### 동의를 받는 자리
+
+회의 녹음은 참석자 모두의 말이 담긴 기록이다. **자동 요약을 붙이는 것은 녹음 자체보다 한 걸음 더 나간 일이다** — 검색 가능한 텍스트가 되고, 누가 무슨 말을 했는지가 이름과 함께 남고, 다른 시스템으로 흘러간다.
+
+그래서 동의는 회의를 시작할 때 받는다. 회의 초대에 「이 회의는 녹음되며 자동 요약이 생성됩니다」를 적고, 시작 시점에 한 번 더 말한다. 외부 참석자가 있는 회의는 특히 그렇다 — 사내 정책으로 갈음할 수 없는 자리다.
+
+### 실명 매핑을 어디에 둘지
+
+화자 분리기가 내놓는 것은 `SPEAKER_00` 같은 익명 라벨이고, 이것을 실명으로 바꾸는 표가 어딘가에 있어야 사람이 읽을 수 있다. 이 매핑은 **회의록 본문과 분리해 두고 접근 권한을 따로 건다.** 회의록 텍스트는 검색 색인에 올리더라도 매핑 표는 올리지 않는다.
+
+이렇게 나눠 두면 나중에 「이 회의록에서 이름을 지워 달라」는 요청이 왔을 때 매핑만 지우면 된다. 본문에 실명이 박혀 있으면 전체 텍스트를 뒤져야 하고 대개 다 못 지운다.
+
+### 보존 기간과 지우는 순서
+
+원본 오디오, 전사 텍스트, 요약은 값과 위험이 다르므로 보존 기간도 다르게 잡는다. 오디오가 가장 위험하고 가장 짧게 두면 되는 것이다 — 요약이 만들어지고 검수가 끝나면 원본 오디오를 오래 들고 있을 이유가 별로 없다.
+
+| 데이터 | 보존 | 이유 |
+| --- | --- | --- |
+| 원본 오디오 | 짧게(예: 30일) | 재처리 목적. 가장 민감하다 |
+| 전사 텍스트 | 중간 | 요약을 다시 만들거나 검증할 때 필요 |
+| 요약·액션아이템 | 길게 | 업무 기록. 실명 매핑과 분리해 둔다 |
+
+기간을 정했으면 **지우는 일을 사람 손에 맡기지 않는다.** 만료 정책을 스토리지에 걸어 두고, 지워졌는지 한 달에 한 번 확인한다. 「30일 보관」이라고 적어 두고 3년치가 쌓여 있는 시스템이 드물지 않다.
 
 ---
 

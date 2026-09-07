@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="430" viewBox="0 0 880 430" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <rect x="0" y="0" width="880" height="430" rx="12" fill="#0a0a0a"/>
+
+  <text x="100" y="48" font-size="22" font-weight="700" fill="#e8e8e8">전사 경계와 화자 경계는 일치하지 않는다</text>
+
+  <text x="100" y="90" font-size="13" fill="#888">화자 분리 결과 — 음성 활동 단위로 잘린다</text>
+  <rect x="100" y="102" width="350" height="44" rx="8" fill="#12141a" stroke="#7ec8e3" stroke-width="1"/>
+  <text x="275" y="129" font-size="14" font-weight="600" fill="#7ec8e3" text-anchor="middle">SPEAKER_00  (0~5초)</text>
+  <rect x="450" y="102" width="350" height="44" rx="8" fill="#12141a" stroke="#7777cc" stroke-width="1"/>
+  <text x="625" y="129" font-size="14" font-weight="600" fill="#7777cc" text-anchor="middle">SPEAKER_01  (5~10초)</text>
+
+  <text x="100" y="182" font-size="13" fill="#888">전사 세그먼트 — 문장 단위로 잘린다</text>
+  <rect x="310" y="194" width="350" height="44" rx="8" fill="#12141a" stroke="#3a4a6e" stroke-width="1"/>
+  <text x="485" y="221" font-size="14" fill="#ffffff" text-anchor="middle">"그건 다음 주에 하죠 네 좋습니다"  (3~8초)</text>
+
+  <line x1="450" y1="102" x2="450" y2="258" stroke="#555" stroke-width="2" stroke-dasharray="4,4"/>
+  <line x1="485" y1="194" x2="485" y2="258" stroke="#e05555" stroke-width="2" stroke-dasharray="4,4"/>
+  <text x="497" y="252" font-size="13" fill="#e05555">중간점 5.5초</text>
+
+  <line x1="100" y1="266" x2="800" y2="266" stroke="#3a3f4a" stroke-width="1"/>
+  <text x="100" y="286" font-size="13" fill="#888">0초</text>
+  <text x="240" y="286" font-size="13" fill="#888">2</text>
+  <text x="380" y="286" font-size="13" fill="#888">4</text>
+  <text x="520" y="286" font-size="13" fill="#888">6</text>
+  <text x="660" y="286" font-size="13" fill="#888">8</text>
+  <text x="790" y="286" font-size="13" fill="#888">10</text>
+
+  <rect x="100" y="310" width="340" height="66" rx="10" fill="#12141a" stroke="#e05555" stroke-width="1.5"/>
+  <text x="118" y="337" font-size="15" font-weight="600" fill="#e05555">중간점 매핑 → SPEAKER_01</text>
+  <text x="118" y="359" font-size="13" fill="#888">앞 문장의 제안까지 뒷사람 말이 된다</text>
+
+  <rect x="460" y="310" width="340" height="66" rx="10" fill="#12141a" stroke="#55c555" stroke-width="1.5"/>
+  <text x="478" y="337" font-size="15" font-weight="600" fill="#55c555">겹침 비율 2초 : 3초 → 0.60</text>
+  <text x="478" y="359" font-size="13" fill="#888">지배적이지 않다 → 화자 불확실로 표시</text>
+
+  <text x="100" y="404" font-size="13" fill="#7777cc">임계값 0.65 아래면 이름을 단정하지 않는다</text>
+</svg>

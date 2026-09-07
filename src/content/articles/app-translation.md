@@ -1,87 +1,111 @@
 ---
 title: "AI 번역 시스템 구축: 도메인 특화 고품질 번역"
-description: "법률, 의료, 기술 문서 등 도메인 특화 용어집과 스타일 가이드를 활용해 일관성 있는 고품질 AI 번역 시스템을 구축하는 방법을 다룹니다."
+description: "용어집을 기존 번역 자산에서 뽑는 법, 번역 메모리가 남아야 하는 이유, 청크 경계에서 깨지는 것, 자리 표시로 지키는 고유명사, 그리고 MQM으로 품질을 재는 법을 다룹니다."
 author: "PALDYN Team"
 pubDate: "2026-05-27"
 category: "build-with-ai"
 level: "중급"
-tags: ["AI번역", "NMT", "용어집", "도메인번역", "번역품질", "BLEU", "현지화"]
+tags: ["AI번역", "용어집", "번역메모리", "도메인번역", "번역품질", "MQM", "현지화"]
 featured: false
 draft: false
 ---
-[지난 글](/articles/app-extraction)에서 비정형 문서에서 정보를 추출하는 파이프라인을 만들었다. 이번에는 **AI 번역 시스템**을 구축한다. 단순히 DeepL이나 Google Translate API를 래핑하는 것이 아니라, 도메인 전문 용어집, 스타일 가이드, 품질 검증을 갖춘 프로덕션 번역 시스템을 만든다. 법률 계약서의 "warranty"를 "보증"으로 통일하거나, 의료 문서의 "adverse event"를 "이상반응"으로 일관되게 처리하는 수준의 시스템이다.
+[지난 글](/articles/app-extraction)에서 비정형 문서에서 정보를 추출하는 파이프라인을 만들었다. 이번에는 **AI 번역 시스템**을 구축한다. 번역 API를 감싸는 것이 아니라, 도메인 용어집과 품질 검증을 갖춘 시스템이다. 법률 계약서의 "warranty"를 늘 「보증」으로, 의료 문서의 "adverse event"를 늘 「이상반응」으로 내보내는 수준을 목표로 한다.
 
-## 왜 범용 번역 API로는 부족한가
+이 목표에서 어려운 낱말은 「고품질」이 아니라 **「늘」** 이다. 한 문장을 잘 옮기는 것은 모델이 이미 한다. 3만 자짜리 문서 40건에서 같은 낱말이 같은 낱말로 나오게 하는 것, 그리고 그것이 지켜졌는지 사람이 다시 읽지 않고 확인하는 것이 시스템의 몫이다.
 
-범용 번역 서비스의 한계는 세 가지다.
+## 범용 번역 API로는 안 되는 것
 
-**전문 용어 불일치**: "cache"가 어떤 문서에선 "캐시", 다른 문서에선 "캐쉬"로 번역된다. 용어 일관성 없이는 법적·기술적 문서에서 심각한 문제가 된다.
+### 표기가 흔들리는 자리
 
-**브랜드 고유 어휘 무시**: 제품명, 서비스명, 내부 코드명은 번역하면 안 된다. 범용 서비스는 이를 알 수 없다.
+범용 번역 서비스의 첫 번째 한계는 **일관성이 문서 단위로만 유지된다**는 것이다. 오늘 번역한 매뉴얼에서는 "cache"가 「캐시」인데 다음 달 릴리스 노트에서는 「캐쉬」가 된다. 문장만 놓고 보면 둘 다 맞고, 그래서 검수자도 잘 못 잡는다. 사용자 매뉴얼 전체를 검색해 보고 나서야 두 표기가 섞여 있다는 것을 안다.
 
-**도메인 스타일 부재**: 의료 문서는 격식체, IT 튜토리얼은 친근체가 적합하다. 도메인에 맞는 문체를 자동으로 선택하지 못한다.
+법률·의료 문서에서는 이것이 취향 문제가 아니다. 계약서의 같은 낱말이 조항마다 다른 말로 번역되어 있으면 해석이 갈린다.
+
+### 번역하면 안 되는 것
+
+두 번째 한계는 **번역하지 말아야 할 것을 번역한다**는 것이다. 제품명, 내부 코드명, UI 버튼 문구, 그리고 문자열 안의 플레이스홀더가 그렇다. "Click **Save Draft** to continue"에서 `Save Draft`가 실제 화면의 버튼 이름이라면 번역하면 안 되고, `Hello, {user_name}!`의 `{user_name}`은 건드리면 코드가 깨진다.
+
+범용 서비스는 무엇이 고유명사이고 무엇이 화면 문구인지 알 방법이 없다. 안다고 해도 알려 줄 통로가 없다.
+
+### 도메인마다 다른 문체
+
+세 번째는 문체다. 의료 문서는 격식체가 맞고 개발자 튜토리얼은 「~해 보세요」가 맞다. 같은 영어 원문 "You can configure it later"가 문서 종류에 따라 「추후 구성할 수 있습니다」와 「나중에 설정해도 됩니다」로 갈린다. 도메인을 모르는 서비스는 이 선택을 매번 다르게 한다.
 
 ![도메인 특화 AI 번역 시스템](/assets/posts/app-translation-architecture.svg)
 
-## 용어집 기반 번역 구현
+## 용어집을 어디서 얻는가
 
-용어집을 시스템 프롬프트에 주입해 LLM이 정해진 번역어를 사용하도록 강제한다.
+### 기존 번역 자산에서 쌍 뽑기
+
+용어집을 처음부터 손으로 만들려고 하면 시작을 못 한다. 다행히 대부분의 조직에는 이미 번역된 문서가 쌓여 있다. **원문과 번역문이 짝지어진 문서에서 용어 쌍을 뽑아내는 것**이 가장 빠른 출발점이다.
+
+절차는 셋이다. 먼저 문서를 문장 단위로 정렬한다. 그다음 원문 쪽에서 후보 용어를 뽑는다 — 대문자로 시작하는 명사구, 반복 빈도가 높은 두세 낱말짜리 표현, 이미 알고 있는 도메인 낱말이다. 마지막으로 그 용어가 들어간 문장 쌍을 모아 「이 원문 용어가 번역문에서 무엇으로 옮겨졌는가」를 모델에 물어 후보 번역어를 뽑는다.
+
+결과는 그대로 쓰는 것이 아니라 **사람이 확인할 목록**이다. 200~300개쯤 뽑히는데, 이 중 실제로 고정해야 할 것은 대개 100개 안쪽이다. 나머지는 문맥에 따라 달리 옮기는 편이 자연스러운 일반 낱말이고, 이런 것까지 고정하면 번역문이 뻣뻣해진다.
+
+고를 기준은 **틀렸을 때의 대가**다. 계약 조항의 뜻이 갈리는 낱말, 화면과 문서가 어긋나면 사용자가 길을 잃는 낱말, 규제 문서에서 표기가 정해진 낱말이 먼저다. 「사용하다」를 「이용하다」로 통일하는 것은 나중 일이고, 대개는 하지 않아도 된다.
+
+### 표기가 충돌할 때
+
+뽑아 보면 같은 원문 용어가 두세 가지로 번역되어 있는 것이 반드시 나온다. 이때 무엇을 고를지는 취향이 아니라 순서가 있다.
+
+| 순위 | 기준 | 예 |
+| --- | --- | --- |
+| 1 | 법령·표준에 정해진 표기 | 의약품 문서의 「이상반응」 |
+| 2 | 이미 화면·제품에 나가 있는 표기 | UI에 「배포」로 쓰고 있으면 「디플로이」로 바꾸지 않는다 |
+| 3 | 사내 문서에서 더 많이 쓰인 표기 | 빈도로 정한다 |
+| 4 | 외래어 표기법 | 위 셋으로 안 갈릴 때만 |
+
+1번과 2번이 충돌하면 1번이 이긴다. 그리고 **버린 표기를 지우지 말고 「금지 표기」로 함께 적어 둔다.** 검증 단계에서 「캐쉬가 나왔다」를 잡으려면 무엇이 틀린 표기인지도 데이터로 있어야 한다.
+
+### 용어집을 프롬프트에 넣기
+
+용어집이 커지면 전부 넣을 수 없고, 넣어도 뒤쪽 항목이 덜 지켜진다. **이번 청크에 실제로 등장하는 용어만 골라 넣는다.**
 
 ```python
 import anthropic
-from typing import Optional
+import re
 
 client = anthropic.Anthropic()
 
-# 도메인별 용어집
 GLOSSARIES = {
     "legal": {
-        "warranty": "보증",
-        "indemnification": "면책",
-        "force majeure": "불가항력",
-        "governing law": "준거법",
-        "arbitration": "중재",
-        "intellectual property": "지식재산권",
-    },
-    "medical": {
-        "adverse event": "이상반응",
-        "clinical trial": "임상시험",
-        "efficacy": "유효성",
-        "contraindication": "금기사항",
-        "placebo": "위약",
+        "warranty": {"ko": "보증", "avoid": ["워런티", "담보"]},
+        "indemnification": {"ko": "면책", "avoid": []},
+        "force majeure": {"ko": "불가항력", "avoid": ["포스마쥬르"]},
     },
     "it": {
-        "cache": "캐시",
-        "endpoint": "엔드포인트",
-        "latency": "지연 시간",
-        "throughput": "처리량",
-        "deployment": "배포",
+        "cache": {"ko": "캐시", "avoid": ["캐쉬"]},
+        "deployment": {"ko": "배포", "avoid": ["디플로이", "전개"]},
+        "latency": {"ko": "지연 시간", "avoid": ["레이턴시"]},
     },
 }
 
-def translate_with_glossary(
-    text: str,
-    target_lang: str = "ko",
-    domain: str = "general",
-    style: str = "formal",
-) -> str:
+def relevant_terms(text: str, domain: str) -> dict:
     glossary = GLOSSARIES.get(domain, {})
-    glossary_lines = "\n".join(f"  {src} → {tgt}" for src, tgt in glossary.items())
+    return {
+        src: spec for src, spec in glossary.items()
+        if re.search(rf"\b{re.escape(src)}\b", text, re.IGNORECASE)
+    }
 
-    system_prompt = f"""당신은 전문 번역가입니다.
-목표 언어: {target_lang}
-도메인: {domain}
-스타일: {style}
-
-반드시 준수할 전문 용어집:
-{glossary_lines if glossary_lines else "  (해당 없음)"}
-
-번역 원칙:
-1. 용어집의 번역어를 반드시 사용하세요
-2. 고유명사, 제품명, 코드명은 번역하지 마세요
-3. 원문의 문단 구조와 서식을 보존하세요
-4. 번역문만 출력하고 설명은 하지 마세요"""
-
+def translate_chunk(text: str, domain: str = "general",
+                    style: str = "formal", target_lang: str = "ko") -> str:
+    terms = relevant_terms(text, domain)
+    lines = "\n".join(
+        f"  {src} → {spec['ko']}"
+        + (f" (쓰지 말 것: {', '.join(spec['avoid'])})" if spec["avoid"] else "")
+        for src, spec in terms.items()
+    )
+    system_prompt = (
+        f"당신은 {domain} 도메인 전문 번역가입니다.\n"
+        f"목표 언어: {target_lang} / 스타일: {style}\n\n"
+        f"이 단락에 등장하는 용어의 지정 번역어:\n{lines or '  (해당 없음)'}\n\n"
+        "원칙:\n"
+        "1. 지정 번역어를 반드시 사용하세요\n"
+        "2. ⟦…⟧로 감싼 부분은 그대로 두세요\n"
+        "3. 원문의 문단 구조와 서식을 보존하세요\n"
+        "4. 번역문만 출력하세요"
+    )
     response = client.messages.create(
         model="claude-opus-4-7",
         max_tokens=4096,
@@ -91,114 +115,211 @@ def translate_with_glossary(
     return response.content[0].text
 ```
 
-## 긴 문서의 청크 번역
+## 번역 메모리가 남아야 하는 이유
 
-긴 문서를 컨텍스트 윈도우 내에서 처리하려면 청크로 나눠 번역하되, 청크 간 일관성을 유지해야 한다.
+### TM과 용어집의 차이
+
+**번역 메모리**(TM, translation memory)는 예전에 번역한 **문장 단위 쌍**을 통째로 쌓아 둔 저장소다. 용어집이 낱말을 고정한다면 TM은 문장을 재사용한다. 새 문서에 예전과 똑같은 문장이 있으면 예전 번역을 그대로 꺼내 쓴다.
+
+LLM이 잘 번역하니 TM은 이제 필요 없다고 생각하기 쉬운데, 그렇지 않다. TM이 여전히 이기는 자리가 있다.
+
+### 완전 일치가 여전히 이기는 자리
+
+첫째, **검수를 이미 마친 문장이라는 것**이 보장된다. 사람이 확인한 번역이 다시 나가는 것은 새로 생성한 번역과 값이 다르다. 재검수 대상에서 빼도 된다.
+
+둘째, **비용과 지연이 0에 가깝다.** 릴리스 노트나 약관처럼 문장 상당수가 이전 판과 같은 문서에서는 이것만으로 처리량이 크게 준다.
+
+셋째, **결과가 결정적이다.** 같은 입력에 같은 출력이 나온다. 「지난달 파일과 이번 달 파일의 같은 문장이 다르게 번역되어 있다」는 민원이 사라지고, 문서 판을 올릴 때 실제로 바뀐 문장만 차이로 남아 검수 범위가 좁아진다.
+
+### TM을 앞에 두는 구조
+
+그래서 순서는 TM이 먼저다. 문장 단위로 TM을 조회해서 **완전 일치는 그대로 쓰고**, 일치하지 않는 문장만 모델에 보낸다. 그리고 모델이 낸 번역 중 사람이 검수를 마친 것은 TM에 다시 넣는다.
+
+부분 일치(원문이 조금 다른 문장)는 그대로 쓰면 안 된다. 숫자 하나가 다른 문장을 그대로 재사용해 틀린 값이 나가는 것이 번역 업계의 오래된 사고 유형이다. 「보관 기간은 30일입니다」와 「보관 기간은 90일입니다」는 글자 두 개만 다르고, 재사용하면 문서가 거짓말을 한다.
+
+부분 일치는 **「참고 번역」으로 프롬프트에 넣어 주는 데까지만** 쓴다. 「비슷한 문장을 예전에 이렇게 옮겼다」를 보여 주면 문체와 용어가 이전 문서와 맞춰지고, 숫자는 이번 원문에서 다시 읽힌다. 재사용의 이득 중 일관성만 가져오고 위험은 두고 오는 방식이다.
+
+## 청크 경계에서 깨지는 것
+
+### 대명사와 지시어
+
+긴 문서는 잘라서 번역할 수밖에 없다. 그런데 **문단 길이만 보고 자르면 문맥이 끊긴다.**
+
+가장 흔한 것이 대명사다. 앞 청크의 마지막 문단이 「the API gateway」를 소개했고 다음 청크가 "It handles authentication"으로 시작하면, 두 번째 청크만 본 모델은 `It`이 무엇인지 모른다. 「그것은 인증을 처리합니다」로 나가고, 한국어에서는 이 문장이 특히 어색해진다.
+
+처방은 앞 청크의 마지막 한두 문단을 **번역하지 않을 참고 문맥으로** 함께 넣는 것이다. 번역 대상과 참고 문맥을 프롬프트에서 확실히 갈라 놓아야 참고 부분까지 번역해서 돌려주는 일이 없다. 「아래 [참고] 부분은 문맥 이해용이며 번역하지 마세요. [번역 대상] 부분만 옮기세요」처럼 구획을 표시하고, 돌아온 결과의 길이가 대상보다 크게 길면 참고 부분이 섞여 들어온 것으로 보고 다시 요청한다.
+
+참고 문맥은 원문으로 넣을 수도 있고 앞 청크의 번역문으로 넣을 수도 있다. **번역문 쪽이 낫다** — 앞에서 이 대명사의 대상을 무엇으로 옮겼는지가 보이므로 표기가 이어지기 때문이다. 다만 그러면 앞 청크가 끝나야 다음을 시작할 수 있어 병렬 처리가 막힌다. 문서 전체를 빨리 끝내야 하는 상황이면 원문을 문맥으로 넣고 병렬로 돌린 뒤, 뒤에서 용어 검사로 어긋난 자리만 잡는 편이 낫다.
+
+### 표·목록·각주 번호
+
+두 번째로 깨지는 것은 구조다. 표 한가운데에서 잘리면 헤더 없이 데이터 행만 받은 모델이 그것을 문단으로 읽는다. 「99.9 / 24시간 / 무료」가 문장으로 풀려 나오면 표가 아예 없어진다. 번호 목록이 잘리면 다음 청크가 1번부터 다시 시작해 「3단계 다음에 1단계」가 되고, 각주는 본문과 각주 목록이 다른 청크로 갈리면서 번호가 어긋난다.
+
+셋 다 번역문만 읽어서는 잘 안 보인다는 공통점이 있다. 문장 하나하나는 멀쩡하고, 원문과 나란히 놓고 구조를 대조해야 드러난다. **그래서 이 유형은 검수로 잡는 것이 아니라 자르는 단계에서 예방한다.**
+
+### 구조로 자르기
+
+그래서 자르는 기준을 글자 수가 아니라 **구조 요소**로 둔다. 표·코드 블록·목록은 통째로 한 청크에 넣고, 그것만으로 상한을 넘으면 상한을 넘긴 채로 보낸다. 구조를 쪼개는 것보다 그쪽이 낫다. 상한은 컨텍스트 한계가 아니라 「한 번에 얼마나 넣으면 품질이 유지되는가」로 정한 값이라, 표 하나가 조금 넘긴다고 문제가 생기지 않는다.
+
+문서 형식마다 구조를 알아보는 방법이 다르다. 마크다운은 정규식으로 충분하고, HTML·DOCX는 파서로 요소 트리를 얻어 요소 경계에서 자르는 편이 정확하다. **어느 쪽이든 원칙은 같다 — 자르는 자리를 사람이 문서에서 눈으로 찾을 수 있는 경계에 둔다.**
 
 ```python
-def translate_long_document(
-    text: str,
-    max_chunk_chars: int = 2000,
-    domain: str = "general",
-) -> str:
-    # 문단 경계에서 청크 분할
-    paragraphs = text.split("\n\n")
-    chunks, current, current_len = [], [], 0
+BLOCK_RE = re.compile(r"(\n\|.*?\n(?:\|.*?\n)+|\n```.*?```\n|\n(?:\d+\.|[-*]) .*?(?=\n\n))",
+                      re.DOTALL)
 
-    for para in paragraphs:
-        if current_len + len(para) > max_chunk_chars and current:
-            chunks.append("\n\n".join(current))
-            current, current_len = [], 0
-        current.append(para)
-        current_len += len(para)
+def split_structural(text: str, max_chars: int = 2000) -> list[dict]:
+    """표·코드·목록은 쪼개지 않고 한 덩어리로 유지한다."""
+    blocks, pos = [], 0
+    for m in BLOCK_RE.finditer(text):
+        if m.start() > pos:
+            blocks.append({"kind": "prose", "text": text[pos:m.start()]})
+        blocks.append({"kind": "atomic", "text": m.group(0)})
+        pos = m.end()
+    if pos < len(text):
+        blocks.append({"kind": "prose", "text": text[pos:]})
 
-    if current:
-        chunks.append("\n\n".join(current))
+    chunks, cur = [], ""
+    for b in blocks:
+        if b["kind"] == "atomic" or len(cur) + len(b["text"]) > max_chars:
+            if cur:
+                chunks.append(cur)
+                cur = ""
+            if b["kind"] == "atomic":
+                chunks.append(b["text"])       # 상한을 넘겨도 통째로
+                continue
+        cur += b["text"]
+    if cur:
+        chunks.append(cur)
 
-    translated_parts = []
-    prev_context = ""  # 이전 청크 번역 일부를 맥락으로 제공
-
-    for i, chunk in enumerate(chunks):
-        context_note = ""
-        if prev_context:
-            context_note = f"\n[이전 부분 마지막 2문장: {prev_context}]\n"
-
-        translated = translate_with_glossary(
-            context_note + chunk, domain=domain
-        )
-        translated_parts.append(translated)
-
-        # 다음 청크를 위한 맥락 저장 (마지막 2문장)
-        sentences = translated.split("。")
-        prev_context = "。".join(sentences[-2:]) if len(sentences) >= 2 else translated[-200:]
-
-    return "\n\n".join(translated_parts)
+    return [{"text": c, "context": chunks[i - 1][-400:] if i else ""}
+            for i, c in enumerate(chunks)]
 ```
 
-이전 청크의 마지막 문장을 다음 청크의 맥락으로 제공하면 청크 경계에서 문체와 번역어가 자연스럽게 이어진다.
+## 자리 표시로 지키는 것
 
-## 용어 일관성 검증
+### 무엇을 빼 두는가
 
-번역 후 용어집의 소스 단어가 올바르게 번역됐는지 검증한다.
+번역하면 안 되는 것은 프롬프트로 부탁하지 말고 **아예 텍스트에서 빼 둔다.** 부탁은 대체로 지켜지지만 대체로는 충분하지 않다 — 문자열 100개 중 두 개가 깨져도 빌드가 선다.
+
+빼 둘 것은 넷이다. **플레이스홀더**(`{user_name}`, `%s`, `$1`)가 가장 위험하고, **코드·명령어**, **제품명과 내부 코드명**, 그리고 **화면 문구**가 뒤를 잇는다.
+
+플레이스홀더가 가장 위험한 이유는 깨졌을 때의 결과가 번역 오류가 아니라 장애이기 때문이다. `{user_name}`이 「{사용자_이름}」으로 옮겨지면 치환이 안 되어 사용자 화면에 중괄호가 그대로 뜨거나, 포맷 함수가 예외를 던진다. 그리고 이런 문자열은 대개 수백 개 중 두어 개만 깨져서, 번역문을 눈으로 훑는 검수로는 잘 안 걸린다.
+
+마지막 항목은 조금 다르다. UI 문구는 번역해야 하지만, 화면에 실제로 나가는 번역과 **같은 문자열**이어야 한다. 문서에서 「저장 초안」이라고 옮겨 놓았는데 화면 버튼이 「임시 저장」이면 독자가 그 버튼을 못 찾는다. 그래서 UI 문자열은 번역 대상에서 빼고 UI 번역 목록에서 가져와 끼운다 — 문서 번역이 화면 번역을 참조하는 방향이고, 그 반대가 아니다.
+
+### 빼 두고 되돌리는 절차
 
 ```python
-import re
+PATTERNS = [
+    re.compile(r"\{[a-zA-Z_][a-zA-Z0-9_]*\}"),   # {user_name}
+    re.compile(r"%[sd]"),                         # %s %d
+    re.compile(r"`[^`]+`"),                       # `npm run build`
+]
 
-def verify_glossary_compliance(
-    original: str,
-    translated: str,
-    glossary: dict[str, str],
-) -> dict:
-    violations = []
+def mask(text: str, keep_terms: list[str]) -> tuple[str, dict]:
+    store, idx = {}, 0
+    def put(m):
+        nonlocal idx
+        key = f"⟦{idx}⟧"
+        store[key] = m.group(0)
+        idx += 1
+        return key
+    for pat in PATTERNS:
+        text = pat.sub(put, text)
+    for term in sorted(keep_terms, key=len, reverse=True):   # 긴 것부터
+        text = re.sub(rf"\b{re.escape(term)}\b", put, text)
+    return text, store
 
-    for src_term, expected_tgt in glossary.items():
-        # 원문에 해당 용어가 있는지 확인
-        if re.search(rf"\b{re.escape(src_term)}\b", original, re.IGNORECASE):
-            # 번역문에 올바른 번역어가 있는지 확인
-            if expected_tgt not in translated:
-                # 혹시 다른 번역어가 쓰였는지 LLM에게 확인
-                violations.append({
-                    "source_term": src_term,
-                    "expected": expected_tgt,
-                    "note": "기대하는 번역어 미발견",
-                })
+def unmask(text: str, store: dict) -> str:
+    for key, original in store.items():
+        text = text.replace(key, original)
+    return text
+```
 
+`sorted(..., key=len, reverse=True)`가 중요하다. 제품명이 「Atlas」와 「Atlas Search」 둘 다 있으면 짧은 것을 먼저 치환할 때 「⟦3⟧ Search」가 되어 뒷말이 번역된다.
+
+![자리 표시로 빼 두고 되돌리기](/assets/posts/app-translation-placeholder.svg)
+
+### 되돌리기 실패를 잡는 검사
+
+되돌리기는 조용히 실패한다. 모델이 `⟦3⟧`을 `[3]`이나 `〔3〕`으로 바꿔 놓거나, 아예 지워 버리는 일이 있다. 그래서 번역문을 내보내기 전에 두 가지를 센다 — **자리 표시가 들어간 개수와 되돌린 개수가 같은가**, 그리고 **번역문에 `⟦`나 `⟧`가 남아 있지 않은가**. 하나라도 어긋나면 그 청크는 자동 통과시키지 않는다. 이 검사 두 줄이 플레이스홀더 사고의 대부분을 막는다.
+
+## 품질을 재는 자
+
+### BLEU와 chrF가 못 보는 것
+
+**BLEU**는 기계 번역과 정답 번역 사이에 겹치는 n-gram 비율로 점수를 매기는 오래된 지표다. **chrF**는 같은 일을 낱말이 아니라 글자 단위로 한다. 둘 다 계산이 싸고 재현되므로 지금도 쓰이지만, 한계가 분명하다.
+
+같은 뜻을 다른 낱말로 옮기면 점수가 떨어진다. 정답이 「지연 시간」인데 「레이턴시」로 옮기면 감점인데, 반대로 **용어집을 어긴 번역과 그냥 다르게 표현한 번역을 구별하지 못한다.** 그리고 문장 하나가 통째로 빠져도 점수는 조금만 떨어진다. 사람에게는 치명적인 오류가 지표에서는 작은 감점이다.
+
+### COMET과 MQM
+
+**COMET**은 사전학습 언어 모델을 써서 원문·번역문·정답의 의미를 함께 보고 점수를 내는 신경망 지표다. n-gram이 아니라 의미를 보므로 표현이 달라도 뜻이 같으면 점수가 유지된다. 개발 중에 방향을 잡는 데는 이쪽이 낫다.
+
+그래도 「무엇이 왜 틀렸는가」는 안 나온다. 그래서 사람이 매기는 자리에는 **MQM**(Multidimensional Quality Metrics)을 쓴다. 오류를 유형으로 나누고 심각도를 붙이는 방식이다.
+
+| 유형 | 무엇을 잡는가 | 예 |
+| --- | --- | --- |
+| 정확성 | 원문에 없는 말, 빠진 말, 뜻이 뒤집힘 | 부정문이 긍정으로 |
+| 유창성 | 문법·어색한 어순·오탈자 | 조사 오류 |
+| 용어 | 용어집 위반, 표기 불일치 | 「캐쉬」 |
+| 형식 | 서식·플레이스홀더·숫자 | `{name}`이 사라짐 |
+
+이렇게 나눠 세면 고칠 곳이 바로 보인다. 용어 오류가 많으면 용어집을 손보고, 형식 오류가 많으면 자리 표시 검사를 조인다. **전체 점수 하나로는 무엇을 고쳐야 할지 알 수 없다.**
+
+### 용어 준수율은 기계가 센다
+
+MQM 네 유형 중 용어와 형식은 사람 없이 셀 수 있다. 용어집이 데이터로 있으니 검사도 데이터로 돈다.
+
+```python
+def check_terms(original: str, translated: str, glossary: dict) -> dict:
+    hits, violations = 0, []
+    for src, spec in glossary.items():
+        if not re.search(rf"\b{re.escape(src)}\b", original, re.IGNORECASE):
+            continue
+        hits += 1
+        if spec["ko"] in translated:
+            continue
+        used = [bad for bad in spec["avoid"] if bad in translated]
+        violations.append({
+            "term": src,
+            "expected": spec["ko"],
+            "found": used[0] if used else None,   # 금지 표기가 쓰였는가
+        })
     return {
-        "compliant": len(violations) == 0,
+        "checked": hits,
         "violations": violations,
-        "compliance_rate": 1 - len(violations) / max(len(glossary), 1),
+        "compliance": 1 - len(violations) / hits if hits else 1.0,
     }
 ```
 
-## 번역 품질 자동 평가
-
-BLEU 점수만으로는 품질을 정확히 측정하기 어렵다. AI 자체 평가를 추가한다.
-
-```python
-def ai_quality_check(original: str, translated: str, target_lang: str) -> dict:
-    response = client.messages.create(
-        model="claude-haiku-4-5-20251001",
-        max_tokens=256,
-        system="번역 품질을 평가하고 JSON으로 응답하세요.",
-        messages=[
-            {
-                "role": "user",
-                "content": (
-                    f"원문: {original[:500]}\n"
-                    f"번역({target_lang}): {translated[:500]}\n\n"
-                    '{"fluency": 1-5, "accuracy": 1-5, "style": 1-5, "issues": ["..."]}'
-                ),
-            }
-        ],
-    )
-    return json.loads(response.content[0].text)
-```
+`found`에 금지 표기가 잡히면 그건 확실한 위반이고, `None`이면 「지정 번역어가 안 보인다」까지만 알 수 있다. 원문 용어가 다른 뜻으로 쓰인 경우도 있으니 둘을 갈라 두어야 검수자가 헛걸음하지 않는다.
 
 ![번역 품질 결정 요소](/assets/posts/app-translation-pipeline.svg)
 
-## 캐싱으로 비용 최적화
+## 사후편집과 캐싱
 
-동일하거나 매우 유사한 텍스트를 반복 번역하는 경우가 많다. 번역 결과를 캐싱하면 비용을 크게 줄일 수 있다.
+### 세 갈래로 가르기
+
+**사후편집**(post-editing)은 기계 번역 결과를 사람이 손보는 작업이다. 모든 문장을 사람이 보게 하면 자동화한 의미가 없고, 아무도 안 보게 하면 사고가 난다. 그래서 앞에서 만든 신호로 세 갈래를 가른다.
+
+| 갈래 | 조건 | 사람이 하는 일 |
+| --- | --- | --- |
+| 자동 통과 | TM 완전 일치, 또는 용어·형식 검사 통과 + 짧은 문장 | 없음 |
+| 경편집 | 검사는 통과했으나 새로 생성된 긴 문단 | 훑어 읽고 어색한 곳만 |
+| 전면 재번역 | 용어 위반, 자리 표시 개수 불일치, 부분 일치 재사용 | 문장 단위로 확인 |
+
+비율이 중요하다. 전면 재번역이 30%를 넘으면 사람이 그냥 처음부터 번역하는 편이 빠르다고 느끼고, 그러면 시스템이 안 쓰인다. **자동 통과 비율을 올리는 가장 확실한 방법은 TM을 키우는 것이고**, 그래서 검수를 마친 번역을 TM에 되먹이는 고리가 있어야 한다.
+
+### 시맨틱 캐싱의 함정
+
+같은 문장을 다시 번역하는 일이 잦으니 캐시를 붙인다. 완전 일치 캐시는 사실상 TM이므로 안전하다. 문제는 의미가 비슷한 문장까지 재사용하는 시맨틱 캐싱이다.
+
+"Save the file"이 파일 저장 버튼일 때와 문서 작성 안내문일 때 번역이 다르다. 「저장」과 「파일을 저장하세요」가 갈리는데, 임베딩 거리로는 두 문장이 사실상 같다. 캐시가 첫 번째 번역을 두 번째 자리에 돌려주면 버튼에 문장이 들어간다.
+
+### 캐시 키에 무엇을 넣는가
+
+그래서 캐시 키를 문장만으로 만들지 않는다. **문장 + 도메인 + 문서 유형 + 목표 언어**가 최소 단위다. 문서 유형은 UI 문자열·본문·표 헤더 정도로만 갈라도 위 사고는 막힌다.
 
 ```python
 import hashlib
@@ -206,52 +327,21 @@ from redis import Redis
 
 cache = Redis()
 
-def cached_translate(text: str, domain: str, lang: str) -> str:
-    cache_key = hashlib.sha256(f"{text}|{domain}|{lang}".encode()).hexdigest()
-    cached = cache.get(f"translate:{cache_key}")
+def cache_key(text: str, domain: str, doc_type: str, lang: str) -> str:
+    raw = f"{text}|{domain}|{doc_type}|{lang}"
+    return "tr:" + hashlib.sha256(raw.encode()).hexdigest()
 
-    if cached:
-        return cached.decode("utf-8")
-
-    result = translate_with_glossary(text, target_lang=lang, domain=domain)
-    cache.setex(f"translate:{cache_key}", 86400 * 7, result)  # 7일 캐싱
+def cached_translate(text: str, domain: str, doc_type: str, lang: str) -> str:
+    key = cache_key(text, domain, doc_type, lang)
+    hit = cache.get(key)
+    if hit:
+        return hit.decode("utf-8")
+    result = translate_chunk(text, domain=domain, target_lang=lang)
+    cache.setex(key, 86400 * 7, result)
     return result
 ```
 
-완전 일치 캐싱 외에도 의미론적으로 유사한 문장을 찾아 재사용하는 시맨틱 캐싱을 추가하면 캐시 히트율이 더 높아진다.
-
-## 다국어 확장
-
-같은 파이프라인으로 여러 언어를 지원한다.
-
-```python
-SUPPORTED_LANGUAGES = {
-    "ko": "Korean",
-    "en": "English",
-    "ja": "Japanese",
-    "zh-cn": "Simplified Chinese",
-    "de": "German",
-    "fr": "French",
-}
-
-def translate_to_multiple(text: str, target_langs: list[str], domain: str = "general") -> dict:
-    import asyncio
-    import anthropic
-
-    async_client = anthropic.AsyncAnthropic()
-
-    async def translate_one(lang: str) -> tuple[str, str]:
-        # 비동기 번역
-        result = await asyncio.to_thread(translate_with_glossary, text, lang, domain)
-        return lang, result
-
-    async def translate_all():
-        tasks = [translate_one(lang) for lang in target_langs]
-        results = await asyncio.gather(*tasks)
-        return dict(results)
-
-    return asyncio.run(translate_all())
-```
+그리고 **용어집을 고치면 캐시를 버린다.** 「캐쉬」를 「캐시」로 바꿨는데 캐시에 옛 번역이 일주일 남아 있으면, 고쳤다고 생각한 표기가 계속 나간다. 용어집 파일의 해시를 키에 섞어 두면 용어집이 바뀌는 순간 키가 전부 달라져 저절로 비워진다.
 
 ---
 
