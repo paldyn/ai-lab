@@ -9,7 +9,7 @@ tags: ["Anthropic", "Claude", "SDK", "messages.create", "streaming", "tool_use",
 featured: false
 draft: false
 ---
-[지난 글](/articles/huggingface-hub)에서 HuggingFace Hub로 모델을 공유하고 배포하는 방법을 살펴봤다. 이번에는 방향을 바꿔 **Anthropic Claude API**를 Python에서 직접 호출하는 방법을 정리한다. Claude는 지시 따르기, 긴 맥락 처리, 코드 작성에 특히 강점이 있어, 프로덕션 AI 애플리케이션의 핵심 컴포넌트로 많이 사용된다.
+[지난 글](/articles/huggingface-datasets)에서 `load_dataset()`으로 데이터를 내려받아 손질하고 `push_to_hub()`로 데이터셋과 모델을 도로 올리는 HuggingFace 허브의 왕복을 살펴봤다. 거기까지가 가중치를 내 손에 두고 쓰는 길이었다. 이번에는 방향을 바꿔 **Anthropic Claude API**를 Python에서 직접 호출하는 방법을 정리한다. Claude는 지시 따르기, 긴 맥락 처리, 코드 작성에 특히 강점이 있어, 프로덕션 AI 애플리케이션의 핵심 컴포넌트로 많이 사용된다.
 
 ## 설치와 클라이언트 초기화
 
@@ -377,6 +377,6 @@ print(f"배치 ID: {batch.id}")
 
 읽어주셔서 감사합니다. 😊
 
-**지난 글:** [HuggingFace Hub: 모델 공유와 배포](/articles/huggingface-hub)
+**지난 글:** [HuggingFace 허브 운용: 데이터셋 로딩부터 모델 공개까지](/articles/huggingface-datasets)
 
 **다음 글:** [OpenAI SDK 완전 정복](/articles/openai-sdk)

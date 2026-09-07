@@ -261,4 +261,4 @@ def detect_anomalies(metric_name: str, values: list[float]) -> dict:
 
 **지난 글:** [AI 콘텐츠 생성 자동화 파이프라인](/articles/app-content-generation)
 
-**다음 글:** [AI 정보 추출 파이프라인: 비정형 데이터에서 구조화 데이터로](/articles/app-extraction)
+**다음 글:** [비정형 문서에서 구조화 데이터 뽑기: 스키마·신뢰도·사람 검토](/articles/app-extraction)

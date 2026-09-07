@@ -289,4 +289,4 @@ Narrow AI, AGI, ASI는 AI의 능력 범위에 따른 분류입니다.
 
 **지난 글:** [AI 역사 — 1956년 다트머스에서 LLM 시대까지](/articles/ai-history)
 
-**다음 글:** [기호주의 AI vs 통계적 AI: 두 패러다임의 70년 대결](/articles/ai-symbolic-vs-statistical)
+**다음 글:** [기호주의에서 데이터 중심으로: AI가 지식을 얻는 방식이 바뀐 70년](/articles/ai-symbolic-vs-statistical)

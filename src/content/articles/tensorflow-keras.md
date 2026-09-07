@@ -9,7 +9,7 @@ tags: ["TensorFlow", "Keras", "딥러닝", "Sequential", "FunctionalAPI", "model
 featured: false
 draft: false
 ---
-[지난 글](/articles/pytorch-training-loop)에서 PyTorch의 저수준 학습 루프를 완성했다. 이번에는 고수준 API로 훨씬 간결하게 모델을 구축하는 **TensorFlow/Keras**를 살펴본다. Google이 주도하는 TensorFlow는 프로덕션 배포 생태계가 특히 강점이다.
+[지난 글](/articles/pytorch-basics)에서 텐서와 자동미분, `nn.Module`부터 `Dataset`·`DataLoader`와 다섯 줄짜리 학습 루프, 검증과 체크포인트까지 PyTorch 학습 파이프라인을 한 줄씩 손으로 적었다. 이번에는 그 루프를 `fit` 한 번에 맡기는 고수준 API로 훨씬 간결하게 모델을 구축하는 **TensorFlow/Keras**를 살펴본다. Google이 주도하는 TensorFlow는 프로덕션 배포 생태계가 특히 강점이다.
 
 ## TensorFlow와 Keras의 관계
 
@@ -162,6 +162,6 @@ PyTorch가 연구 유연성에서 강점이라면, TensorFlow/Keras는 모바일
 
 읽어주셔서 감사합니다. 😊
 
-**지난 글:** [PyTorch 학습 루프 완전 정복](/articles/pytorch-training-loop)
+**지난 글:** [PyTorch 입문: 텐서·자동미분·학습 루프](/articles/pytorch-basics)
 
 **다음 글:** [HuggingFace Transformers 실전 가이드](/articles/huggingface-transformers)

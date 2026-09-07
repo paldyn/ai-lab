@@ -160,4 +160,4 @@ CUDA GPU를 쓴다면 `pip install torch --index-url https://download.pytorch.or
 
 **지난 글:** [AI 회의 요약 시스템: 음성 인식부터 인사이트 추출까지](/articles/app-meeting-summary)
 
-**다음 글:** [PyTorch 기초: 텐서와 자동미분](/articles/pytorch-basics)
+**다음 글:** [PyTorch 입문: 텐서·자동미분·학습 루프](/articles/pytorch-basics)

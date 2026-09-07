@@ -9,7 +9,7 @@ tags: ["ClaudeCode", "Anthropic", "AI코딩", "CLI에이전트", "CLAUDE.md", "M
 featured: false
 draft: false
 ---
-[지난 글](/articles/ai-coding-cursor)에서 Cursor IDE를 살펴봤다. 이번엔 Anthropic이 직접 만든 CLI 기반 AI 에이전트, **Claude Code**를 해부한다. Claude Code는 단순한 자동완성 도구가 아니다. 터미널에서 코드를 읽고, 쓰고, 실행하며, 복잡한 소프트웨어 엔지니어링 태스크를 자율적으로 수행하는 에이전트다. 이 글을 작성하는 데도 Claude Code가 사용됐다.
+[지난 글](/articles/ai-coding-copilot)에서는 IDE 안에 들어온 AI 둘, GitHub Copilot과 Cursor를 완성·채팅·멀티파일 편집·컨텍스트·규칙 파일의 자리마다 나란히 놓고 봤다. 이번엔 그 편집기 밖으로 걸어 나온 도구, Anthropic이 직접 만든 CLI 기반 AI 에이전트 **Claude Code**를 해부한다. Claude Code는 단순한 자동완성 도구가 아니다. 터미널에서 코드를 읽고, 쓰고, 실행하며, 복잡한 소프트웨어 엔지니어링 태스크를 자율적으로 수행하는 에이전트다. 이 글을 작성하는 데도 Claude Code가 사용됐다.
 
 ## Claude Code란
 
@@ -247,6 +247,6 @@ jobs:
 
 읽어주셔서 감사합니다. 😊
 
-**지난 글:** [Cursor: AI 네이티브 IDE의 새로운 기준](/articles/ai-coding-cursor)
+**지난 글:** [IDE 안의 AI: GitHub Copilot과 Cursor](/articles/ai-coding-copilot)
 
 **다음 글:** [OpenAI Codex와 ChatGPT: AI 코딩의 시작점](/articles/ai-coding-codex)

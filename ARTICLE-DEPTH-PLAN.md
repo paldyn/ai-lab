@@ -130,9 +130,9 @@ done | sort -rn | head -20
 
 합치기 계획을 따로 검증해서 나온 것들이다. 해당 항목을 집을 때 함께 본다.
 
-- **`src/data/certs.ts`의 `studyPath`가 사라질 슬러그를 10자리에서 부른다**
+- **`src/data/certs.ts`의 `studyPath`가 사라질 슬러그를 9자리에서 부른다**
   (`rag-architecture` 3, `serving-cost-optimization` 2, `project-prompt-iterating` 2,
-  `pytorch-training-loop`, `cv-image-classification-deep`, `agent-mcp-protocol` 각 1).
+  `cv-image-classification-deep`, `agent-mcp-protocol` 각 1).
   `src/data/certs.test.ts`가 없는 슬러그를 잡으므로 안 고치면 `npm test`가 선다.
   **남길 슬러그가 같은 `studyPath` 묶음에 이미 있으면 갈아 끼우지 말고 줄을 지운다** —
   같은 글이 두 번 걸린다.
@@ -151,6 +151,11 @@ done | sort -rn | head -20
   잇는 자리다.** 고칠 곳이 넷이다 — `nlp-korean-processing`의 예고 문단과 「다음 글」,
   `cv-vision-transformer`의 도입부와 「지난 글」. `cv-vision-transformer` 도입은
   「CNN 백본을 이미 본 독자」를 전제하지 않게 다시 쓴다.
+- **합쳐 쓴 뒤에는 사실부터 다시 본다.** 2026-09-07~08에 합친 열일곱 편에서 가장 많이 나온 결함이
+  「그때는 맞았던 사실」이었다 — `huggingface-cli`가 `hf`로 바뀐 것, `HfApi.list_models`의 인자가
+  없어진 것, Git LFS 자리를 Xet이 넘겨받은 것, 로딩 스크립트가 사라져 `oscar`가 안 열리는 것,
+  GitHub Copilot 요금제와 단축키, PyTorch 공개 연도(2016년 9월이다). 제품 이름·요금·CLI·API
+  시그니처·버전·연도는 **공식 문서로 확인하고 쓰거나, 확인이 안 되면 단정을 걷어낸다.**
 - **`agents-rag`에서 ReAct를 누가 맡을지 먼저 정한다.** `agent-architecture`와
   `ai-agents-and-mcp`가 둘 다 ReAct 절을 갖게 되는 자리다. 한쪽에서 걷어낸다.
 - 사슬만 놓고 시뮬레이션했을 때 **분기(한 글을 둘이 가리킴)와 날짜 역전은 없다.**
@@ -262,30 +267,8 @@ sed -n "/^### deep-learning$/,/^### /p" ARTICLE-DEPTH-PLAN.md
 
 ### build-with-ai
 
-**합치기**
+**합치기 — 짝이 남지 않았다(2026-09-08).** 28편 → 22편.
 
-| 남길 글 | 흡수할 글 | 합친 뒤 제목(제안) |
-| --- | --- | --- |
-| `app-document-qa` | `app-internal-search` | 문서 검색과 질의응답 시스템: 인덱싱·하이브리드 검색·권한 필터 |
-| `app-extraction` | `app-form-automation` | 비정형 문서에서 구조화 데이터 뽑기: 스키마·신뢰도·사람 검토 |
-| `pytorch-basics` | `pytorch-training-loop` | PyTorch 입문: 텐서·자동미분·학습 루프 |
-| `huggingface-datasets` | `huggingface-hub` | HuggingFace 허브 운용: 데이터셋 로딩부터 모델 공개까지 |
-| `ai-coding-copilot` | `ai-coding-cursor` | IDE 안의 AI: GitHub Copilot과 Cursor |
-| `ai-coding-best-practices` | `ai-coding-review` | AI 코딩 운용 원칙과 리뷰 자동화 |
-
-- **`app-document-qa` ← app-internal-search** — 둘을 나란히 열어 보면 같은 파이프라인을 두 번 쓴다. document-qa는 로딩→청킹→임베딩→검색→답변을 세우고 마지막 「검색 품질 개선 기법」 절에서 재순위화·쿼리 재작성·하이브리드 검색을 한 문단씩 소개하는데, internal-search가 바로 그 하이브리드 검색(BM25+벡터)과 RRF를 절 두 개로 다시 편다. internal-search가 새로 가진 것은 소스 커넥터·권한 필터링·증분 인덱싱 셋뿐이고, 그 셋은 「문서 Q&A를 사내로 확장할 때 붙는 것」이라 같은 글의 뒷절로 자연스럽다. 각자 1,445자·1,493자로 둘 다 절마다 코드 한 덩이에 설명 한 문단뿐이라, 합쳐도 2,938자다 — 한 편으로 채워야 6,000자에 닿는다. 사슬은 앞뒤로 붙어 있어(chatbot-design → document-qa → internal-search → customer-support) app-customer-support의 도입부와 마무리 블록의 「지난 글」만 app-document-qa로 바꾸면 된다.
-  - `app-internal-search`: 도입부를 다시 쓸 글 — `app-customer-support` 도입부
-- **`app-extraction` ← app-form-automation** — 이 둘은 카테고리 안에서 겹침이 가장 심한 짝이다. extraction은 Pydantic 스키마 → LLM 추출 → Vision LLM으로 이미지 직접 처리 → 재시도/부분 실패 → 배치 파이프라인 → 정확도 평가이고, form-automation은 Vision LLM으로 이미지 문서 처리 → 신뢰도 라우팅 → 필드 수준 신뢰도 → 사람 검토 → ERP 입력 → 배치와 모니터링이다. 「Vision LLM으로 스캔·기울어진 글자·도장·표를 OCR보다 잘 읽는다」는 문단은 두 글에 사실상 같은 문장으로 두 번 있고, 배치 처리도 두 번 있다. 실제로 다른 것은 form-automation의 신뢰도 기반 라우팅·사람 검토 UI·ERP 매핑 셋뿐인데, 그건 extraction의 「재시도와 부분 실패 처리」가 하다 만 이야기다. 다만 사슬에서 붙어 있지 않다 — extraction → translation → form-automation이라 app-translation의 「다음 글」과 app-meeting-summary의 도입부·「지난 글」을 서로 잇도록 고쳐야 한다(translation → meeting-summary). 남는 것은 이 카테고리에서 유일한 비인접 합치기다.
-  - `app-form-automation`: 도입부를 다시 쓸 글 — `app-meeting-summary` 도입부
-- **`pytorch-basics` ← pytorch-training-loop** — 두 글은 원래 한 편이었던 것을 반으로 자른 모양이다. pytorch-basics의 마지막 문단이 「다음 포스트에서는 이 요소들을 조합한 전체 학습 루프를 다룬다. DataLoader 구성, 에폭 반복, 검증 단계, 체크포인트 저장까지」이고, pytorch-training-loop의 첫 문단이 「이번에는 이 요소들을 엮어서 완전한 학습 파이프라인을 완성한다」다. 앞 글은 손실 함수와 옵티마이저까지 만들어 두고 쓰지 않은 채 끝나고, 뒤 글은 그것을 받아 다섯 줄 루프를 돌린다 — 앞 글 혼자로는 결말이 없고 뒤 글 혼자로는 시작이 없다. 산문도 1,378자·1,053자로 둘 다 코드 사이 두세 문장이 전부라, 합친 2,431자가 한 편의 절반에도 못 미친다. 사슬은 python-for-ai → pytorch-basics → pytorch-training-loop → tensorflow-keras로 붙어 있어 tensorflow-keras의 도입부와 「지난 글」만 pytorch-basics로 돌리면 된다.
-  - `pytorch-training-loop`: 도입부를 다시 쓸 글 — `tensorflow-keras` 도입부
-  - `pytorch-training-loop`: `src/data/certs.ts`의 studyPath 1자리
-- **`huggingface-datasets` ← huggingface-hub** — 두 글의 주제가 같은 대상(허브에 올라간 자산)의 앞뒤다. datasets는 load_dataset·map·스트리밍·캐싱을 다룬 뒤 마지막 절이 「push_to_hub(): 데이터셋 허브에 업로드」이고, hub는 「인증: 토큰 설정」으로 시작해 「모델 업로드: push_to_hub()」로 이어진다 — 같은 함수 이름이 두 글의 이음매에 각각 한 번씩 나오고, 토큰 인증은 앞 글에서 이미 필요했는데 뒤 글에 가서야 설명된다. 둘 다 마지막 절 제목이 「정리」인 것도 각자 짧아서 요약으로 채운 흔적이다. 산문 2,043자·2,164자로 이 카테고리에선 중간이지만 목표의 3분의 1이고, 합치면 4,207자라 한 편으로 채우기 좋은 출발점이다. 사슬이 인접해(transformers → datasets → hub → anthropic-sdk) anthropic-sdk의 도입부와 「지난 글」만 huggingface-datasets로 바꾸면 된다.
-  - `huggingface-hub`: 도입부를 다시 쓸 글 — `anthropic-sdk` 도입부
-- **`ai-coding-copilot` ← ai-coding-cursor** — cursor 글이 스스로 이 둘을 한 편으로 다루고 있다. 도입부가 「Copilot이 기존 IDE에 AI를 '추가'하는 방식이라면 Cursor는 IDE 자체를 AI 중심으로 설계한 접근」이고, 본문 중간에 여섯 줄짜리 「Cursor vs Copilot 실용 비교」 표가 통째로 들어 있다 — 비교 대상 없이는 성립하지 않는 글이다. 구성도 나란하다: Copilot의 Inline Completion·Chat·Edits·Agent 넷과 Cursor의 Tab·Chat·Composer·@컨텍스트 넷이 같은 자리를 채우고, 저장소 규칙 파일도 .github/copilot-instructions.md와 .cursorrules로 각각 한 절씩이며, 코드 유출 걱정과 Privacy Mode 이야기도 두 글에 나뉘어 있다. 합친 3,492자를 「완성 방식 → 채팅 → 멀티파일 편집 → 컨텍스트 시스템 → 규칙 파일 → 보안·라이선스 → 고르는 기준」으로 다시 세우면 대조가 절마다 살아난다. copilot이 사슬의 머리라 ai-coding-claude-code의 도입부와 「지난 글」만 ai-coding-copilot으로 바꾸면 된다.
-  - `ai-coding-cursor`: 도입부를 다시 쓸 글 — `ai-coding-claude-code` 도입부
-- **`ai-coding-best-practices` ← ai-coding-review** — best-practices의 원칙 2가 「코드 검증(절대 생략 불가)」이고 「효과적인 프롬프트 패턴」 아래 소절 하나가 통째로 「코드 리뷰 요청 패턴」이다. review 글은 그 소절을 GitHub Actions로 자동화한 것이고, 실제로 review의 뒤 절반(「리뷰봇 프롬프트 튜닝」, 「리뷰봇 운영 경험」의 false positive 관리·diff 크기 제한·도메인 지식 주입·비용)은 시스템 설명이 아니라 앞 글이 말한 운용 원칙의 연장이다. 두 글 모두 AI 코딩 도구 다섯 편을 훑고 난 뒤의 마무리 자리에 있고, 산문 1,112자·1,065자로 이 카테고리에서 가장 얇은 축이다. 합치면 「원칙 다섯 → 프롬프트 패턴 → 검증을 사람이 하는 법 → 검증을 자동화하는 법(리뷰봇·CI) → 팀 도입과 측정」 한 줄기가 된다. 사슬이 인접해(aider → best-practices → review → app-chatbot-design) app-chatbot-design의 도입부와 「지난 글」만 ai-coding-best-practices로 바꾸면 된다.
-  - `ai-coding-review`: 도입부를 다시 쓸 글 — `app-chatbot-design` 도입부
 
 **채우기**
 
@@ -948,21 +931,8 @@ sed -n "/^### deep-learning$/,/^### /p" ARTICLE-DEPTH-PLAN.md
 
 ### ai-guide
 
-**합치기**
+**합치기 — 짝이 남지 않았다(2026-09-08).** 22편 → 19편.
 
-| 남길 글 | 흡수할 글 | 합친 뒤 제목(제안) |
-| --- | --- | --- |
-| `ai-symbolic-vs-statistical` | `ai-data-driven-paradigm` | 기호주의에서 데이터 중심으로: AI가 지식을 얻는 방식이 바뀐 70년 |
-| `ai-safety-overview` | `ai-alignment` | AI 안전성과 정렬: 무엇이 어긋나고 무엇으로 맞추는가 |
-| `ai-bias-fairness` | `ai-explainability-xai` | 편향과 설명: 모델의 결정을 열어 보고 고르게 만들기 |
-
-- **`ai-symbolic-vs-statistical` ← ai-data-driven-paradigm** — 뒷글의 첫 문단이 "통계적 AI가 승리한 핵심 이유는 단순하다. 데이터가 폭발적으로 증가했고…"로 시작해 앞글의 마지막 결론을 그대로 이어받는다. 앞글(1,915자)은 두 패러다임을 소개하고 '데이터가 많아져서 통계가 이겼다'로 끝나고, 뒷글(1,999자)은 그 한 문장을 플라이휠·스케일링 법칙·데이터 품질로 푼다. 둘 다 2,000자 미만이고 pubDate가 같은 2026-04-28이며 사슬에서 앞뒤다. 합치면 「사람이 규칙을 쓰던 시대 → 데이터가 규칙을 만드는 시대 → 그래서 경쟁이 데이터에서 벌어진다」가 끊기지 않는 한 편이 된다. 앞글의 스팸 필터 대비와 뒷글의 GIGO 코드가 같은 예를 두 번 드는 자리라 합치면 중복도 준다.
-  - `ai-data-driven-paradigm`: 도입부를 다시 쓸 글 — `ai-current-landscape` 도입부
-- **`ai-safety-overview` ← ai-alignment** — ai-safety-overview를 열어 보면 절 전부가 다른 글의 요약이다. 2번 편향 절은 ai-bias-fairness가, 3번 프롬프트 인젝션과 L3 출력 필터·L4 레드팀은 가드레일 여덟 편이, L1 Constitutional AI·L2 RLHF와 4번 정렬 절은 바로 다음 글인 ai-alignment가, 마지막 규제 절은 ai-regulation이 더 깊게 다룬다. 자기 것만 남기면 환각 한 절과 문제 분류 표가 전부다(1,690자). 이어받는 ai-alignment도 RLHF·CAI·DPO를 코드 세 덩이와 비교표 하나로 끝내 1,668자다. 겹치는 요약을 걷어내고 「무엇이 어긋나는가(환각·보상 해킹·명세 게임·분포 이동)」 + 「무엇으로 맞추는가(RLHF·CAI·DPO)」 + 「남은 문제(확장 가능한 감독·가치 다원성)」로 세우면, 뒤따르는 가드레일 여덟 편이 「학습으로 못 맞춘 것을 모델 밖에서 막는다」로 자연스럽게 이어진다.
-  - `ai-alignment`: 도입부를 다시 쓸 글 — `ai-bias-fairness` 도입부
-- **`ai-bias-fairness` ← ai-explainability-xai** — 뒷글의 첫 문단이 "편향을 발견하고 수정하려면 AI가 왜 그 결정을 내렸는지 이해해야 한다. 이것이 XAI가 필요한 이유다"이다 — 설명이 목적이 아니라 편향을 다루는 수단으로 도입되고, 앞글의 마지막 절(인과 공정성·프록시 변수)이 정확히 설명 기법이 필요한 지점에서 끝난다. 두 글 다 1,300자 안팎이고 산문의 대부분이 도구 이름과 코드 캡션이다(SHAP·LIME·Grad-CAM·어텐션 넷, Fairlearn·Aequitas·AIF360 셋). XAI 단독으로는 ai-guide의 몫(개론·안전·윤리·정책)보다 도구 사용법 쪽으로 기울지만, 「편향을 찾고 GDPR 설명 요구권에 답한다」는 목적 아래 두면 이 칸에 맞는 글이 된다. 사슬에서도 앞뒤다.
-  - `ai-explainability-xai`: 도입부를 다시 쓸 글 — `ai-privacy` 도입부, `lab-superposition-replication` 도입부
-  - `ai-explainability-xai`: 본문 링크 — `src/content/articles/lab-attention-sink-probe.md`:380, `src/content/articles/lab-superposition-replication.md`:294
 
 **채우기**
 

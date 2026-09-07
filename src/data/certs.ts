@@ -1938,7 +1938,6 @@ export const certs: Cert[] = [
         subject: 'Collaborating within and across teams to manage data and models (팀 간 협업으로 데이터·모델 관리)',
         items: [
           { site: 'ailab', slug: 'pytorch-basics' },
-          { site: 'ailab', slug: 'pytorch-training-loop' },
         ],
       },
       {

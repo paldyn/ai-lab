@@ -9,7 +9,7 @@ tags: ["회의요약", "STT", "Whisper", "화자분리", "액션아이템", "Sla
 featured: false
 draft: false
 ---
-[지난 글](/articles/app-form-automation)에서 폼과 서류 자동화를 구현했다. 이번 글에서는 **AI 회의 요약 시스템**을 다룬다. 60분짜리 회의에서 핵심 결정사항과 각자 해야 할 일을 뽑아내는 데 20~30분을 또 쓰는 것은 낭비다. AI가 회의 녹음을 받아 자동으로 요약, 결정사항, 액션아이템을 추출하고 Slack과 Notion에 배포까지 해준다면 회의 후 생산성이 크게 올라간다.
+[지난 글](/articles/app-translation)에서 도메인 용어집과 스타일 가이드로 번역 품질을 붙잡는 시스템을 만들었다. 그쪽이 문서로 남은 말을 다뤘다면, 이번 글에서는 **AI 회의 요약 시스템**을 다룬다. 60분짜리 회의에서 핵심 결정사항과 각자 해야 할 일을 뽑아내는 데 20~30분을 또 쓰는 것은 낭비다. AI가 회의 녹음을 받아 자동으로 요약, 결정사항, 액션아이템을 추출하고 Slack과 Notion에 배포까지 해준다면 회의 후 생산성이 크게 올라간다.
 
 ## 파이프라인 개요
 
@@ -278,6 +278,6 @@ def process_meeting_recording(
 
 읽어주셔서 감사합니다. 😊
 
-**지난 글:** [AI 폼·서류 자동화: OCR부터 자동 입력까지](/articles/app-form-automation)
+**지난 글:** [AI 번역 시스템 구축: 도메인 특화 고품질 번역](/articles/app-translation)
 
 **다음 글:** [AI 개발을 위한 Python 핵심 라이브러리](/articles/python-for-ai)
