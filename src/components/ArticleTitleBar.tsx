@@ -1,4 +1,6 @@
+import { ArrowLeft } from 'lucide-react';
 import { useEffect, useRef, useState, type RefObject } from 'react';
+import { Link } from 'react-router';
 
 /**
  * 제목이 화면 위로 사라진 뒤 머리에 붙는 띠.
@@ -24,9 +26,16 @@ interface Props {
   title: string;
   /** 지금 읽고 있는 절. 목차가 접히는 좁은 화면에서는 이것이 유일한 표시다. */
   section?: string;
+  /**
+   * 돌아갈 곳. 제목 위에 있던 그 링크다.
+   *
+   * 머리말과 함께 화면 밖으로 나가 버려서, 목록으로 돌아가려면 맨 위까지 되감아야
+   * 했다. 띠는 어차피 그 자리에 떠 있으므로 여기에 한 번 더 둔다.
+   */
+  back?: { to: string; label: string };
 }
 
-export function ArticleTitleBar({ watch, progressOf, label, accent, title, section }: Props) {
+export function ArticleTitleBar({ watch, progressOf, label, accent, title, section, back }: Props) {
   const [shown, setShown] = useState(false);
   const [progress, setProgress] = useState(0);
   const frame = useRef(0);
@@ -82,6 +91,16 @@ export function ArticleTitleBar({ watch, progressOf, label, accent, title, secti
   return (
     <div className={`article-titlebar${shown ? ' is-shown' : ''}`} aria-hidden={!shown}>
       <div className="site-wrap article-titlebar-row">
+        {/*
+          띠가 숨을 때는 `visibility: hidden`이라 이 링크도 탭 순서에서 함께 빠집니다 —
+          `aria-hidden`인 자리에 초점이 들어가는 일이 없습니다.
+        */}
+        {back && (
+          <Link to={back.to} className="article-titlebar-back">
+            <ArrowLeft size={13} aria-hidden="true" />
+            <span>{back.label}</span>
+          </Link>
+        )}
         <span className="article-titlebar-label" style={{ color: accent }}>
           {label}
         </span>

@@ -6,6 +6,7 @@ import { ArticleTitleBar } from '../components/ArticleTitleBar';
 import { ArticleVisual } from '../components/ArticleVisual';
 import { ImageLightbox } from '../components/ImageLightbox';
 import { useActiveHeading } from '../lib/activeHeading';
+import { tocNumbers } from '../lib/tocNumbers';
 import { Seo } from '../components/Seo';
 import { articleOrdinal, articles, chainNeighbors, getArticleBySlug } from '../data/articles';
 import { categoryById } from '../data/categories';
@@ -184,6 +185,8 @@ function ArticleView({ article }: { article: Article }) {
   // 본문이 늦게 오는 경로가 있어 목록이 바뀔 때만 관찰을 다시 겁니다.
   const headingIds = useMemo(() => (body?.headings ?? []).map((heading) => heading.id), [body]);
   const { active: activeHeading, goTo: goToHeading } = useActiveHeading(headingIds);
+  /* 목차 번호. 하위 항목이 절 번호를 건너뛰게 하지 않으려고 자리를 따로 셉니다. */
+  const tocLabel = tocNumbers((body?.headings ?? []).map((heading) => heading.depth === 3));
 
   useEffect(() => {
     if (body) return undefined;
@@ -243,6 +246,7 @@ function ArticleView({ article }: { article: Article }) {
         accent={category.accentText}
         title={article.title}
         section={body?.headings.find((heading) => heading.id === activeHeading)?.text}
+        back={{ to: collectionPath, label: collectionLabel }}
       />
 
       <header className="site-wrap article-header">
@@ -303,7 +307,7 @@ function ArticleView({ article }: { article: Article }) {
                       goToHeading(heading.id);
                     }}
                   >
-                    {heading.depth === 2 ? `${String(index + 1).padStart(2, '0')} ` : ''}
+                    <span className="article-toc-number">{tocLabel[index]}</span>{' '}
                     {heading.text}
                   </a>
                 </li>

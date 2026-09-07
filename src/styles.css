@@ -438,6 +438,30 @@ input:focus-visible {
   gap: 12px;
 }
 
+/*
+  띠 안의 되돌아가기. 제목 위에 있던 링크가 머리말과 함께 밀려 나가므로 여기에
+  한 번 더 둡니다. 좁은 화면에서는 화살표만 남기고 글자를 접습니다 — 430pt에서는
+  제목 한 줄이 이미 폭을 다 씁니다.
+*/
+.article-titlebar-back {
+  display: inline-flex;
+  flex-shrink: 0;
+  align-items: center;
+  gap: 5px;
+  color: var(--text-muted);
+  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  font-size: 11px;
+  transition: color 0.15s;
+}
+
+.article-titlebar-back:hover {
+  color: var(--text-strong);
+}
+
+.article-titlebar-back span {
+  display: none;
+}
+
 /* 카테고리·번호는 좁은 화면에서 자리를 양보합니다. 제목과 절이 먼저입니다. */
 .article-titlebar-label {
   display: none;
@@ -482,6 +506,10 @@ input:focus-visible {
   }
 
   .article-titlebar-label {
+    display: inline;
+  }
+
+  .article-titlebar-back span {
     display: inline;
   }
 
@@ -3079,6 +3107,17 @@ input:focus-visible {
   목차의 하위 항목. 「시험 노트」 아래의 세 묶음이 여기 섭니다 — 번호 없이 한 칸
   들여 부모와 갈라 둡니다.
 */
+/* 목차 번호. 제목과 눈으로 갈리게 고정폭으로 두고 한 칸 흐리게 둡니다. */
+.article-toc-number {
+  color: var(--text-muted);
+  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  font-size: 10px;
+}
+
+.article-toc-item.is-current .article-toc-number {
+  color: inherit;
+}
+
 .article-toc-item.is-sub {
   margin-left: 12px;
   font-size: 11px;

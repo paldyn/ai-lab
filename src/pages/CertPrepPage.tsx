@@ -7,6 +7,7 @@ import { Seo } from '../components/Seo';
 import { certById, type Cert } from '../data/certs';
 import { prepAnchor, prepBand, prepNeighbors, prepNote, type CertPrepNote } from '../data/certPrep';
 import { useActiveHeading } from '../lib/activeHeading';
+import { tocNumbers } from '../lib/tocNumbers';
 import { watchAnswerToggle } from '../lib/answerToggle';
 import { watchImageZoom, type ZoomedImage } from '../lib/imageZoom';
 import { initialCertPrepBody, loadCertPrepBody } from '../lib/certPrepBody';
@@ -57,6 +58,7 @@ function CertPrepView({ cert, note }: { cert: Cert; note: CertPrepNote }) {
 
   const headingIds = useMemo(() => (body?.headings ?? []).map((heading) => heading.id), [body]);
   const { active, goTo } = useActiveHeading(headingIds);
+  const tocLabel = tocNumbers((body?.headings ?? []).map((heading) => heading.depth === 3));
   const { prev, next } = prepNeighbors(note.certId, note.slug);
 
   return (
@@ -73,6 +75,7 @@ function CertPrepView({ cert, note }: { cert: Cert; note: CertPrepNote }) {
         accent="var(--brand-text)"
         title={note.title}
         section={body?.headings.find((heading) => heading.id === active)?.text}
+        back={{ to: `/learn/certs/${cert.id}#${prepAnchor(note)}`, label: cert.nameKo }}
       />
 
       <Seo
@@ -128,7 +131,7 @@ function CertPrepView({ cert, note }: { cert: Cert; note: CertPrepNote }) {
                       goTo(heading.id);
                     }}
                   >
-                    {heading.depth === 2 ? `${String(index + 1).padStart(2, '0')} ` : ''}
+                    <span className="article-toc-number">{tocLabel[index]}</span>{' '}
                     {heading.text}
                   </a>
                 </li>
