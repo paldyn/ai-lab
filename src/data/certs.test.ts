@@ -332,8 +332,10 @@ describe('자격증 데이터', () => {
     되풀이라 문장으로 적으면 한 문단에 시점 셋과 비율 셋이 뒤엉킵니다. `fee`에
     「환불」이 남아 있으면 옮기다 만 것입니다.
   */
-  it('응시료 문장에 환불 이야기를 남기지 않는다', () => {
-    const left = certs.filter((cert) => cert.fee?.includes('환불'));
+  it('응시료·주기 문장에 환불 이야기를 남기지 않는다', () => {
+    const left = certs.filter(
+      (cert) => cert.fee?.includes('환불') || cert.cadence.includes('환불'),
+    );
     expect(left.map((cert) => cert.id)).toEqual([]);
   });
 
@@ -356,8 +358,12 @@ describe('자격증 데이터', () => {
     expect(thin).toEqual([]);
   });
 
-  it('환불 표가 있어야 환불 덧말도 있다', () => {
-    const orphan = certs.filter((cert) => cert.refundNote && !cert.refund);
-    expect(orphan.map((cert) => cert.id)).toEqual([]);
+  /*
+    표가 없는 채로 덧말만 있는 자격증이 있습니다 — 시행처가 「기한 안에 취소하면 얼마」를
+    아예 안 적는 경우입니다. 그때는 덧말이 「왜 표가 없는가」를 말해야 하므로 길이를 봅니다.
+  */
+  it('환불 덧말은 한 문장 이상이다', () => {
+    const thin = certs.filter((cert) => cert.refundNote && cert.refundNote.length < 20);
+    expect(thin.map((cert) => cert.id)).toEqual([]);
   });
 });

@@ -1485,8 +1485,8 @@ export const certs: Cert[] = [
     cadence:
       '상시 시행이다. 정해진 회차나 접수 기간이 없고, AWS Certification 계정(aws.training/Certification)에서 \'Schedule ' +
       'New Exam\' → \'Schedule with Pearson VUE\'로 넘어가 응시 장소·날짜·시간을 본인이 직접 고른다. 응시 방식은 Pearson VUE ' +
-      '테스트센터와 온라인 감독(online proctored) 둘이다. 시행처가 문장으로 못 박은 기한은 넷이다 — 예약 변경은 시험 24시간 전까지 가능하며 한 ' +
-      '예약당 두 번까지만 바꿀 수 있다. 환불받으려면 최소 24시간 전에 취소해야 한다. 불합격하면 14일(달력 기준)을 기다려야 재응시할 수 있고 응시 횟수 ' +
+      '테스트센터와 온라인 감독(online proctored) 둘이다. 시행처가 문장으로 못 박은 기한은 셋이다 — 예약 변경은 시험 24시간 전까지 가능하며 한 ' +
+      '예약당 두 번까지만 바꿀 수 있다. 불합격하면 14일(달력 기준)을 기다려야 재응시할 수 있고 응시 횟수 ' +
       '제한은 없다. 합격한 뒤에는 같은 시험을 2년간 다시 볼 수 없다(시험 가이드와 시험 코드가 새 버전으로 바뀌면 새 버전은 응시 가능). 예약을 며칠 전까지 ' +
       '마쳐야 하는지는 공식 페이지에 명시가 없다. 회차별 실제 날짜는 공식 일정 페이지에서 확인한다 — 이 시험은 회차 자체가 없으므로 응시 가능한 날짜와 시간은 ' +
       '예약 단계의 Pearson VUE 대시보드에서 확인한다.',
@@ -1496,6 +1496,21 @@ export const certs: Cert[] = [
       'EUR / 150 AUD / 15,000 JPY / 131,525 KRW / 704 CNY / 8,553 INR. 원화 가격이 공개되어 있으므로 예약 단계까지 ' +
       '가야 알 수 있는 값이 아니다. 표시 금액에 세금은 포함되지 않으며 원문은 "Applicable taxes may apply"라고만 적는다. 환율 반영은 최소 ' +
       '연 1회 5월이고, 그보다 자주 바뀔 때는 최소 30일 전에 공지한다. 재응시는 할인 없이 매번 전액을 낸다.',
+    refund: [
+      {
+        when: '예약 시각보다 24시간 넘게 앞서 취소',
+        rate: '전액',
+        note: '구매 시점에 결제한 응시료를 그대로 돌려받는다',
+      },
+      {
+        when: '예약 시각 24시간 이내 취소, 또는 예약 시각에 나타나지 않음',
+        rate: '불가',
+        note: '24시간 안쪽에서는 취소도 일정 변경도 막히고 이미 낸 응시료를 그대로 잃는다',
+      },
+    ],
+    refundNote:
+      '취소는 Pearson VUE에 연락하거나 AWS Certification 계정에서 하고, 이 정책은 AWS 인증 전 시험에 공통이다. 질병이나 예기치 못한 비상 상황은 ' +
+      '증빙을 내면 수수료 없이 다시 예약해 준다.',
     validity:
       '3년. 갱신 경로는 셋이고 모두 3년 연장이다 — 최신 버전의 AWS Certified AI Practitioner 시험 합격, AWS Certified ' +
       'Machine Learning Engineer - Associate(MLA-C01) 합격, AWS Certified Generative AI Developer ' +
@@ -1570,6 +1585,7 @@ export const certs: Cert[] = [
       '- 우리 글과 이을 때: 이 시험은 \'개념을 아는가\'를 재지 \'만들 수 있는가\'를 재지 않아 매핑 대상은 개념 설명 글 쪽이 맞는다. 도메인 3(28%)이 ' +
       '가장 무겁고 RAG·프롬프트 엔지니어링·파인튜닝·평가가 몰려 있어 agents-rag와 llm-core가 가장 많이 걸린다.',
     unknowns: [
+      '바우처·할인 코드로 결제한 시험을 기한 안에 취소했을 때 그 바우처가 되살아나는지 — 공식 페이지에 문장이 없다',
       '한국에서 결제할 때 실제로 붙는 세액·부가세율 — 공식 요금표는 131,525 KRW라는 금액과 "Applicable taxes may apply"만 적고 ' +
       '세율이나 최종 결제액은 밝히지 않는다',
       '예약 마감 시한 — 시험 며칠 전까지 예약해야 하는지 공식 페이지(certification 페이지·before-testing 정책·FAQ 셋 다)에 명시가 ' +
@@ -1655,14 +1671,29 @@ export const certs: Cert[] = [
       '회차가 없는 상시 시험이다. AWS Certification Account(AWS Builder ID로 생성)에서 \'Schedule New Exam\'을 고르고 ' +
       '이어 \'Schedule with Pearson VUE\'를 누르면 Pearson VUE 대시보드로 넘어가며, 거기서 장소·날짜·시간을 직접 정한다. 응시 방식은 ' +
       'Pearson VUE 시험센터와 온라인 감독(online proctored) 두 가지다. 접수 마감일이 따로 없는 대신 정책이 못 박은 것은 24시간 선이다 ' +
-      '— 예약 변경은 시험 24시간 전까지 한 예약당 최대 2회이고, 세 번째부터는 취소한 뒤 새로 예약해야 한다. 취소도 24시간 전까지 해야 한다. 그보다 앞서 ' +
-      '취소하면 결제한 응시료를 환불받고, 24시간 이내 취소나 무단 불참은 응시료를 잃는다. 다만 질병이나 예기치 못한 비상 상황은 증빙을 내면 수수료 없이 ' +
+      '— 예약 변경은 시험 24시간 전까지 한 예약당 최대 2회이고, 세 번째부터는 취소한 뒤 새로 예약해야 한다. ' +
+      '다만 질병이나 예기치 못한 비상 상황은 증빙을 내면 수수료 없이 ' +
       '재예약해 준다. 시험 언어는 영어·일본어·한국어·중국어 간체다. 실제로 예약할 수 있는 날짜·시간은 예약 단계의 Pearson VUE 화면에서 확인한다.',
     fee:
       '150 USD. 공식 페이지는 가격 옆에 「Visit Exam pricing for additional cost information, including ' +
       'foreign exchange rates」라고 별도 가격 페이지 안내를 붙여 두었을 뿐, 지역에 따라 추가 비용이 붙는다고 적지는 않았다. 세금과 환율 적용은 ' +
       '그 가격 페이지에서 확인해야 하며 이 레코드는 열어 보지 않았다. 갱신 응시에는 AWS Certification Account에 들어 있는 50% 할인 ' +
       '바우처를 쓴다.',
+    refund: [
+      {
+        when: '예약 시각보다 24시간 넘게 앞서 취소',
+        rate: '전액',
+        note: '구매 시점에 결제한 응시료를 그대로 돌려받는다',
+      },
+      {
+        when: '예약 시각 24시간 이내 취소, 또는 예약 시각에 나타나지 않음',
+        rate: '불가',
+        note: '24시간 안쪽에서는 취소도 일정 변경도 막히고 이미 낸 응시료를 그대로 잃는다',
+      },
+    ],
+    refundNote:
+      '취소는 Pearson VUE에 연락하거나 AWS Certification 계정에서 하고, 이 정책은 AWS 인증 전 시험에 공통이다. 질병이나 예기치 못한 비상 상황은 ' +
+      '증빙을 내면 수수료 없이 다시 예약해 준다.',
     validity:
       '3년(공식 페이지 문구는 「This certification is valid for 3 years」). 갱신 페이지가 이 자격에 적어 둔 경로는 둘뿐이다 — ' +
       'Option 1은 이 시험의 최신 버전에 다시 합격하는 것, Option 2는 AWS Certified Generative AI Developer – ' +
@@ -1723,6 +1754,7 @@ export const certs: Cert[] = [
       'S3·Glue·Athena·EMR·Kinesis·Redshift 등, 운영 쪽은 Step ' +
       'Functions·CodePipeline·CloudFormation·CloudWatch·IAM·KMS 등이다.',
     unknowns: [
+      '바우처·할인 코드로 결제한 시험을 기한 안에 취소했을 때 그 바우처가 되살아나는지 — 공식 페이지에 문장이 없다',
       '불합격 후 재응시 대기 기간 — before-testing 정책 페이지에는 규정이 없다',
       'MLA-C02 도메인별 배점',
       'MLA-C02 정식판의 응시료·문항 수·시험 시간 — 공개된 85문항/170분/75 USD는 베타(ME1-C02) 값이다',
@@ -1797,6 +1829,29 @@ export const certs: Cert[] = [
       'US$200 (해당 지역 세금 별도). 최초 취득 시 갱신용 50% 할인 코드를 받으며, 공식 문구는 "Upon certification, you will ' +
       'receive a 50% discount code in the Benefits section of your CM Connect account" — 프로필이 ' +
       '아니라 **CM Connect 계정의 Benefits 섹션**에서 확인한다.',
+    refund: [
+      {
+        when: '시험 시작 24시간 전까지 취소',
+        rate: '전액',
+        note: '「전액 환불」이라 못 박은 문장은 응시 방식을 센터↔온라인으로 바꾸는 안내에 실려 있다. 센터와 온라인 모두 기준은 24시간이다',
+      },
+      {
+        when: '예약해 두고 응시하지 않은 경우',
+        rate: '불가',
+      },
+      {
+        when: '온라인 감독 시험에서 예약 시각 10분 전부터 20분 뒤까지 시험을 시작하지 않은 경우',
+        rate: '불가',
+        note: '세션이 자동 취소되고 다시 접수해 응시료를 낸다',
+      },
+      {
+        when: '온라인 감독 중 환경 위반으로 시험이 무효 처리된 경우',
+        rate: '불가',
+      },
+    ],
+    refundNote:
+      '24시간 안쪽에 취소하거나 일정을 바꾸면 지각 수수료가 붙는데 금액은 접수할 때 안내된다. 시험 파트너가 바뀌어 2026-02-22에 Kryterion 접수가 끝나고 ' +
+      '2026-03-02부터 Pearson으로 응시하며, 취소·일정 변경 정책도 Pearson 것을 따른다.',
     validity:
       '**2년.** 공식 문구가 "Professional-level Google Cloud certifications are valid for two years ' +
       'from the date certified"로, 취득한 날부터 2년이다(Foundational·Associate는 3년). 갱신 창은 만료일 60일 전에 ' +
@@ -1949,12 +2004,36 @@ export const certs: Cert[] = [
     cadence:
       '공식 페이지에는 정기 회차나 시행 주기를 못 박은 문장이 없다 — 정해진 회차 없이 응시자가 시험 세션을 직접 예약한다. 시행처가 문장으로 적은 것은 ' +
       '다음이다. 예약은 최대 60일 뒤까지 잡을 수 있다("You can schedule certification exams up to 60 days in ' +
-      'advance"). 여러 시험을 한 번에 구매·예약할 수 있으나 한 자리에서는 한 과목만 본다. 취소는 시험 24시간 전까지 가능하고 그 안쪽은 취소·환불이 ' +
-      '안 되며, 응시하지 않은 시험도 환불되지 않는다. 일정 변경도 24시간 전까지이고 옮긴 날짜는 응시료를 낸 날로부터 두 달 안이어야 한다. 불합격 시 14일이 ' +
+      'advance"). 여러 시험을 한 번에 구매·예약할 수 있으나 한 자리에서는 한 과목만 본다. ' +
+      ' 일정 변경도 24시간 전까지이고 옮긴 날짜는 응시료를 낸 날로부터 두 달 안이어야 한다. 불합격 시 14일이 ' +
       '지나야 재응시할 수 있고, 같은 시험은 12개월에 5회까지이며 이 12개월은 첫 시험을 구매한 날부터 센다. 회차별 실제 날짜는 공식 일정 페이지에서 ' +
       '확인한다.',
     fee:
       'USD $125 (공식 상세 페이지에 명시). 정책 페이지는 "Exam prices vary and are subject to change."라고만 적는다.',
+    refund: [
+      {
+        when: '시험 시작 24시간 전까지 취소',
+        rate: '전액',
+        note: '환불 처리에 영업일로 7~10일 걸리고, 만료 전 바우처로 결제했다면 그 바우처가 다시 살아난다',
+      },
+      {
+        when: '시험 시작 24시간 이내',
+        rate: '불가',
+        note: '이 구간에는 스스로 일정을 바꿀 수 없고 취소는 접수처에 연락해야 하지만 응시료는 돌아오지 않는다',
+      },
+      {
+        when: '예약해 두고 응시하지 않은 경우',
+        rate: '불가',
+        note: '예약 시각으로부터 45분 안에 입장하지 않으면 예약이 만료된다',
+      },
+      {
+        when: '응시해 합격 또는 불합격한 경우',
+        rate: '불가',
+      },
+    ],
+    refundNote:
+      '일정 변경은 24시간 전까지 수수료 없이 되고, 옮길 수 있는 날짜의 상한을 두 곳이 다르게 적는다 — NVIDIA는 응시료를 낸 날로부터 두 달, 접수를 맡는 ' +
+      'Certiverse는 예약일로부터 60일이다.',
     validity:
       '발급일로부터 2년. "NVIDIA certifications are valid for two years, after which you must retake ' +
       'the exam to be recertified." — 별도 갱신 과정 없이 시험을 다시 봐서 갱신한다.',
@@ -2065,6 +2144,10 @@ export const certs: Cert[] = [
       '미화 200달러. 공식 FAQ가 "All Databricks Certification exams cost 200 USD"라고 적어 모든 Databricks ' +
       '인증 시험이 같은 금액이며, 재응시도 매번 같은 금액을 낸다. 무료 재응시는 어떤 시험에도 없고 재응시 바우처도 발급하지 않는다. 바우처 코드가 있으면 결제 ' +
       '화면(exam checkout page)에서 입력한 뒤 Submit, Check Out 순으로 진행한다.',
+    refundNote:
+      '환불 비율을 못 박은 공식 문장이 없다. 시행사 Kryterion은 온라인 24시간 전·시험센터 72시간 전까지 취소하면 「Kryterion 수수료가 붙지 않는다」고만 하고 ' +
+      '취소 규정은 시험 주관사 페이지를 보라고 넘기며, 주관사 Databricks 약관은 온라인·시험센터를 가리지 않고 72시간 미만 통보로는 변경도 취소도 할 수 없다고만 ' +
+      '적는다.',
     validity:
       '2년. 자격은 취득일로부터 2년간 유효하고("valid for two years from the date it is awarded"), 디지털 배지도 발급 ' +
       '2년 뒤 만료된다. 만료 전에 미리 안내를 받는다. 갱신하려면 그 시점에 운영 중인 현행 시험 전체를 다시 치러야 한다("take the full ' +
@@ -2129,6 +2212,7 @@ export const certs: Cert[] = [
       '운영되고 가이드가 출제 범위의 기준 문서라고 적는다.\n' +
       '- 공식 연습 시험은 제공하지 않는다. 연습 시험이 실제 시험과 같은 수준의 엄밀함으로 만들어지지 않아 결과가 오해를 부른다는 이유다.',
     unknowns: [
+      '기한 안에 취소했을 때의 환불 비율 — 시행사 Kryterion과 주관사 Databricks 어느 공식 페이지에도 금액이나 비율이 없다',
       '합격 기준 점수(합격선) — 공식 FAQ가 통계 분석으로 정하며 바뀔 수 있어 공개하지 않는다고 밝히고 있어 숫자를 확인할 수 없음',
       '2번 출제 영역의 확정 명칭 — 시험 페이지는 \'ML Workflows\', 공식 시험 가이드는 \'Data Processing\'',
       '회차·접수 기간·상시 시행 여부를 못 박은 문장 — 공식 페이지와 FAQ에 예약 링크(webassessor.com/databricks)만 있고 시행 주기를 ' +
@@ -2191,6 +2275,10 @@ export const certs: Cert[] = [
     fee:
       'US$200 (인증 페이지 "Registration fee: $200", 응시 1회 기준). 공식 약관은 "Payment is required each ' +
       'time you take an exam"까지만 적는다 — 응시할 때마다 결제한다.',
+    refundNote:
+      '환불 비율을 못 박은 공식 문장이 없다. 시행사 Kryterion은 온라인 24시간 전·시험센터 72시간 전까지 취소하면 「Kryterion 수수료가 붙지 않는다」고만 하고 ' +
+      '취소 규정은 시험 주관사 페이지를 보라고 넘기며, 주관사 Databricks 약관은 온라인·시험센터를 가리지 않고 72시간 미만 통보로는 변경도 취소도 할 수 없다고만 ' +
+      '적는다.',
     validity:
       '2년. 자격을 유지하려면 2년마다 재인증해야 하며, 재인증은 그 시점에 시행 중인 시험 전체를 다시 치르는 방식이다(시험 가이드 "you must take ' +
       'the full exam that is currently live", 인증 페이지 "you must take the current version of the ' +
@@ -2262,6 +2350,7 @@ export const certs: Cert[] = [
       '- 인증 페이지는 도구 이름을 "AI Search", 시험 가이드는 같은 자리를 "Vector Search"로 적는다. 출제 목표가 "Mosaic AI ' +
       'Vector Search"이므로 가이드 표기를 따랐다.',
     unknowns: [
+      '기한 안에 취소했을 때의 환불 비율 — 시행사 Kryterion과 주관사 Databricks 어느 공식 페이지에도 금액이나 비율이 없다',
       '합격 기준 점수(passing score) — 인증 페이지와 시험 가이드 전문을 다시 훑었고 \'pass\'/\'score\' 어느 쪽으로 검색해도 기준 수치가 ' +
       '나오지 않는다. 검색에 걸리는 70%·80% 같은 숫자는 전부 커뮤니티 글이나 학원 자료라 출처로 쓰지 않았다.',
       '시험장(test center) 응시 가능 여부 — 인증 페이지는 \'Delivery Method: Online or test center\'라고 적었는데 ' +
@@ -2543,6 +2632,22 @@ export const certs: Cert[] = [
       'Certified Trainer·Microsoft 파트너 네트워크 회원 할인가는 반영되지 않으며, 가격은 통지 없이 변경될 수 있고 세금은 포함되지 않는다. ' +
       '등록에 앞서 시험 공급 기업에 정확한 가격을 확인하라"고 안내한다. 실제 금액은 Pearson VUE 등록 단계에서 확인해야 한다. 재응시 비용을 덜어 주는 ' +
       'Exam Replay 상품이 별도로 안내되어 있다.',
+    refund: [
+      {
+        when: '시험 시작 24시간 이내 취소·일정 변경, 또는 예약해 두고 미응시',
+        rate: '불가',
+        note: '회사가 구매한 바우처로 접수했다면 바우처도 함께 소멸한다. 미응시 때는 회사에 미응시 수수료가 청구될 수 있다',
+      },
+      {
+        when: '응시한 뒤 불합격',
+        rate: '불가',
+        note: '재응시는 다시 결제한다',
+      },
+    ],
+    refundNote:
+      '시행처는 몰수 쪽만 못 박는다 — 「시험 시작 24시간 전까지 취소하거나 일정을 변경하지 않으면 응시료를 잃는다」이고, 기한 안에 취소했을 때 얼마를 돌려주는지는 공식 ' +
+      '페이지에 적혀 있지 않다. 학생 인증을 받기 전에 정가로 결제한 경우는 소급 환불하지 않고, 부정행위로 응시가 금지되거나 결과가 무효가 되면 응시료를 환불할 의무가 없다고 ' +
+      '프로그램 약관 6조가 적는다.',
     validity:
       '만료되지 않는다. Microsoft 공식 갱신 페이지가 "Fundamentals certifications do not expire"라고 적는다 — 연 1회 ' +
       '무료 온라인 평가로 갱신해야 하는 대상은 associate·expert·specialty 등급이고 Fundamentals는 거기 해당하지 않는다. 따라서 ' +
@@ -2596,6 +2701,7 @@ export const certs: Cert[] = [
       '볼 수 있고, 다섯 번 모두 떨어지면 첫 응시일로부터 12개월이 지나야 다시 응시할 수 있다. 대기 면제는 인터넷 연결 문제나 장비 고장으로 ' +
       'Pearson VUE 케이스가 열린 경우에만 신청할 수 있다.',
     unknowns: [
+      '시험 24시간 전 이전에 취소했을 때의 환불 비율 — 공식 페이지가 몰수만 적고 환급은 적지 않는다',
       '응시료 실제 금액 (USD 및 KRW) — 공식 페이지가 \'국가·지역에 따라 결정된다\'고만 적고 숫자를 싣지 않으며, learn.microsoft.com ' +
       '카탈로그 API에도 price 필드가 없다. Pearson VUE 등록 화면에서만 확인 가능',
       'AI-901의 정확한 문항 수 — Fundamentals 공통 안내(\'대부분 40~60문항\')만 있고 이 시험 개별 값은 비공개',
@@ -2666,6 +2772,22 @@ export const certs: Cert[] = [
       'proctored."(응시 국가·지역에 따라 가격이 정해진다)라고만 밝히고, 실제 금액은 Pearson VUE 예약 단계에서 확인된다. 갱신 평가는 무료다 — ' +
       '"Renewals are free … There\'s no cost to renew your certification". 별도로 재응시 바우처 상품(Exam ' +
       'Replay)을 안내한다.',
+    refund: [
+      {
+        when: '시험 시작 24시간 이내 취소·일정 변경, 또는 예약해 두고 미응시',
+        rate: '불가',
+        note: '회사가 구매한 바우처로 접수했다면 바우처도 함께 소멸한다. 미응시 때는 회사에 미응시 수수료가 청구될 수 있다',
+      },
+      {
+        when: '응시한 뒤 불합격',
+        rate: '불가',
+        note: '재응시는 다시 결제한다',
+      },
+    ],
+    refundNote:
+      '시행처는 몰수 쪽만 못 박는다 — 「시험 시작 24시간 전까지 취소하거나 일정을 변경하지 않으면 응시료를 잃는다」이고, 기한 안에 취소했을 때 얼마를 돌려주는지는 공식 ' +
+      '페이지에 적혀 있지 않다. 학생 인증을 받기 전에 정가로 결제한 경우는 소급 환불하지 않고, 부정행위로 응시가 금지되거나 결과가 무효가 되면 응시료를 환불할 의무가 없다고 ' +
+      '프로그램 약관 6조가 적는다.',
     validity:
       '1년. Microsoft 어소시에이트·엑스퍼트·스페셜티 자격증은 매년 만료된다("Microsoft associate, expert, and specialty ' +
       'certifications expire annually"). 만료 전에 Microsoft Learn에서 무료 온라인 갱신 평가에 합격하면 만료일로부터 1년 ' +
@@ -2752,6 +2874,7 @@ export const certs: Cert[] = [
       '- 학습 가이드의 스킬 기준일은 2026년 4월 16일이다(문서 갱신 2026-07-07, 자격증 페이지 갱신 2026-08-11). change log 표가 ' +
       '아직 없는 첫 판이라 글에 기준일을 함께 적는 편이 안전하다.',
     unknowns: [
+      '시험 24시간 전 이전에 취소했을 때의 환불 비율 — 공식 페이지가 몰수만 적고 환급은 적지 않는다',
       '응시료 실제 금액 (USD·KRW) — 공식 페이지가 \'응시 국가·지역에 따라 정해진다\'고만 적고 숫자를 두지 않는다',
       'AI-103의 실제 문항 수 — Microsoft가 시험별 문항 수를 공개하지 않는다',
       'AI-102 보유자에 대한 AI-103 이관·면제·할인 경로 유무',
