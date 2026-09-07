@@ -2,6 +2,22 @@ import type { NewsDetail } from '../news';
 
 /** 2026-09 발표의 모달 본문. 목록은 news.ts에 있습니다. */
 export const details: Record<string, NewsDetail> = {
+  'supporting-independent-journalism-in-ukraine': {
+    points: [
+      'OpenAI·WAN-IFRA·우크라이나 독립지역언론발행인협회(AIRPPU)가 2026년 9월 7일 공동 보도자료로 발표했다',
+      '프로그램은 뉴스룸 AI 프로젝트를 다루는 Newsroom AI와 상업·운영 전환을 다루는 Business Transformation 두 갈래다',
+      'Newsroom AI Masterclass Series는 편집 워크플로·독자 참여·제품 개발·수익화·조직 변화·책임 있는 AI 도입을 다룬다',
+      'Newsroom AI Catalyst는 AIRPPU가 고른 우크라이나 언론사 열 곳에 사용 사례 발굴부터 파일럿까지 밀착 지원한다',
+      '참여 언론사 전원에게 자체 뉴스룸 솔루션을 만들라고 OpenAI API 크레딧을 제공한다',
+      'Masterclass Series는 2026년 8월 5일에 시작했고 Catalyst는 2026년 9월 17일에 시작한다',
+      'WAN-IFRA는 2022년 전면 침공 이후 우크라이나 언론 지원을 이어 왔고 OpenAI와의 협력은 2024년부터라고 밝혔다',
+    ],
+    commentary:
+      '모델도 제품도 아닌 도입 역량을 대는 형태의 지원이다. 크레딧만 주고 끝내지 않고 마스터클래스로 ' +
+      '범위를 넓힌 뒤 열 곳만 골라 파일럿까지 끌고 가는 두 단계 구조라, 무엇이 실제로 굴러가는지는 ' +
+      '9월 17일에 시작하는 뒤쪽에서 갈린다. 언론사와의 관계를 라이선스 계약이 아닌 쪽에서도 ' +
+      '쌓아 두려는 움직임으로 읽힌다.',
+  },
   'an-alien-mind': {
     points: [
       'Jakub Pachocki가 2023년 중반 RLSlow 프로젝트에서 추론 모델 확장의 첫 결과를 봤다고 적었다',

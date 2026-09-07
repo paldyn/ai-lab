@@ -172,6 +172,21 @@ export const globalNewsUpdatedAt = '2026-09-03';
  */
 const entries: NewsItem[] = [
   {
+    id: 'supporting-independent-journalism-in-ukraine',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'OpenAI, 우크라이나 독립 언론에 AI 도입 프로그램 지원',
+    summary:
+      'OpenAI가 WAN-IFRA, 우크라이나 독립지역언론발행인협회(AIRPPU)와 함께 우크라이나 언론사의 AI 도입을 '
+      + '돕는 프로그램을 공동 발표했다. 마스터클래스 시리즈와 언론사 열 곳 밀착 지원으로 나뉘며 참여 '
+      + '언론사에는 OpenAI API 크레딧을 제공한다.',
+    publishedAt: '2026-09-07',
+    collectedAt: '2026-09-08',
+    category: 'Corporate',
+    signal: '언론사 AI 지원',
+    url: 'https://openai.com/index/supporting-independent-journalism-in-ukraine',
+  },
+  {
     id: 'an-alien-mind',
     source: 'OpenAI',
     kind: 'company',
@@ -970,6 +985,21 @@ const entries: NewsItem[] = [
     category: 'Product',
     signal: 'Python SDK 개편',
     url: 'https://platform.claude.com/docs/en/release-notes/overview#august-20-2026',
+  },
+  {
+    id: 'introducing-intelligence-age',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'OpenAI, 권력 집중 위험을 다루는 Intelligence Age 개설',
+    summary:
+      'OpenAI가 신설한 Strategic Futures 팀이 블로그 Intelligence Age를 시작했다. 전환적 AI를 받아들이면서 '
+      + '개인의 권리와 주체성을 지키려면 자유 사회를 어떻게 다시 짜야 하는지를 묻고, 권력 집중 위험을 '
+      + '장기적으로 가장 큰 위험으로 본다고 밝혔다.',
+    publishedAt: '2026-08-20',
+    collectedAt: '2026-09-08',
+    category: 'Safety',
+    signal: 'AI 거버넌스',
+    url: 'https://openai.com/index/introducing-intelligence-age',
   },
   {
     id: 'claude-platform-august-19-2026',
