@@ -307,6 +307,16 @@ function splitTopLevel(text: string): string[] {
   return parts.filter(Boolean);
 }
 
+/**
+ * 환불 비율의 색. 전액은 되찾는 자리, 불가는 못 찾는 자리라 일정 표의 상태 색을
+ * 그대로 씁니다 — 같은 화면에서 초록은 열려 있음, 붉은색은 닫혔음입니다.
+ */
+function rateClass(rate: string): string {
+  if (rate.startsWith("전액")) return "is-full";
+  if (rate.startsWith("불가")) return "is-none";
+  return "is-partial";
+}
+
 /** 시험 정보 한 묶음. 값이 하나도 없으면 표 자체를 세우지 않습니다. */
 function FactTable({ children }: { children: ReactNode }) {
   return (
@@ -612,6 +622,41 @@ function CertView({ cert }: { cert: Cert }) {
               <Fact label="응시자격" value={cert.prerequisite} />
               <Fact label="응시료" value={cert.fee} />
             </FactTable>
+            {/*
+              **환불은 「언제까지면 얼마」의 되풀이라 표가 맞습니다.** 문장으로 적으면
+              한 문단에 시점 셋과 비율 셋이 뒤엉키는데, 정작 묻는 것은 「지금 취소하면
+              얼마 돌려받나」 하나입니다.
+            */}
+            {cert.refund && cert.refund.length > 0 && (
+              <table className="cert-table cert-refund-table">
+                <caption>환불 규정</caption>
+                <thead>
+                  <tr>
+                    <th scope="col">시점</th>
+                    <th scope="col" className="is-rate">
+                      환불
+                    </th>
+                    {cert.refund.some((row) => row.note) && (
+                      <th scope="col">단서</th>
+                    )}
+                  </tr>
+                </thead>
+                <tbody>
+                  {cert.refund.map((row) => (
+                    <tr key={row.when}>
+                      <th scope="row">{row.when}</th>
+                      <td className={`is-rate ${rateClass(row.rate)}`}>{row.rate}</td>
+                      {cert.refund?.some((item) => item.note) && (
+                        <td>{row.note}</td>
+                      )}
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            )}
+            {cert.refundNote && (
+              <p className="cert-prose cert-refund-note">{cert.refundNote}</p>
+            )}
 
             {cert.validity && (
               <>

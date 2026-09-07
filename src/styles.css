@@ -5289,6 +5289,98 @@ input:focus-visible {
   margin-top: 4px;
 }
 
+/*
+  환불 규정 표. 시점이 길고 비율은 한 낱말이라 비율 칸을 좁게 못 박습니다.
+  색은 일정 표의 상태 색을 그대로 씁니다 — 같은 화면에서 초록은 열려 있음,
+  붉은색은 닫혔음입니다.
+*/
+.cert-refund-table {
+  margin-top: 22px;
+}
+
+.cert-refund-table caption {
+  padding-bottom: 8px;
+  color: var(--text-muted);
+  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-align: left;
+}
+
+.cert-refund-table .is-rate {
+  width: 84px;
+}
+
+.cert-refund-table td.is-rate {
+  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  font-size: 13px;
+}
+
+.cert-refund-table td.is-rate.is-full {
+  color: var(--state-open);
+}
+
+.cert-refund-table td.is-rate.is-none {
+  color: var(--state-closed);
+}
+
+/* 단서가 없는 줄. 표에서는 빈 칸이 실수로 보이므로 줄표를 세웁니다. */
+.cert-refund-table td:empty::after {
+  color: var(--text-muted);
+  content: '—';
+}
+
+.cert-refund-note {
+  margin-top: 12px;
+  font-size: 13px;
+}
+
+/*
+  좁은 화면에서는 환불 표도 줄로 푼다. 시점이 「접수 마감 이후 ~ 검정 시행 5일 전
+  17:59:59」처럼 길어서 335px에 세 칸을 세우면 시점 칸이 네 줄로 접힌다.
+*/
+@media (max-width: 640px) {
+  .cert-refund-table thead {
+    position: absolute;
+    overflow: hidden;
+    width: 1px;
+    height: 1px;
+    clip-path: inset(50%);
+  }
+
+  .cert-refund-table tr {
+    display: block;
+    border-bottom: 1px solid var(--border);
+    padding: 12px 0;
+  }
+
+  .cert-refund-table tr:last-child {
+    border-bottom: 0;
+  }
+
+  .cert-refund-table tbody th,
+  .cert-refund-table td {
+    display: block;
+    width: auto;
+    border-bottom: 0;
+    padding: 0;
+  }
+
+  .cert-refund-table td.is-rate {
+    margin-top: 2px;
+  }
+
+  .cert-refund-table td:not(.is-rate) {
+    margin-top: 4px;
+    font-size: 13px;
+  }
+
+  /* 줄로 풀린 자리에서는 빈 칸이 그냥 빈 줄이라 줄표를 지웁니다. */
+  .cert-refund-table td:empty {
+    display: none;
+  }
+}
+
 /* 과목이 다루는 것. 주요항목마다 한 줄이고 이름만 굵게 둡니다. */
 .cert-subject-topics {
   display: grid;

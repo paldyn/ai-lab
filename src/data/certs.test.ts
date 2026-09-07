@@ -326,4 +326,38 @@ describe('자격증 데이터', () => {
     }
     expect(mismatched).toEqual([]);
   });
+
+  /*
+    **환불 규정은 문장이 아니라 표로 담는다.** 시행처 안내가 「언제까지면 얼마」의
+    되풀이라 문장으로 적으면 한 문단에 시점 셋과 비율 셋이 뒤엉킵니다. `fee`에
+    「환불」이 남아 있으면 옮기다 만 것입니다.
+  */
+  it('응시료 문장에 환불 이야기를 남기지 않는다', () => {
+    const left = certs.filter((cert) => cert.fee?.includes('환불'));
+    expect(left.map((cert) => cert.id)).toEqual([]);
+  });
+
+  it('환불 비율은 전액·N%·불가 셋 중 하나다', () => {
+    const odd = certs.flatMap((cert) =>
+      (cert.refund ?? [])
+        .filter((row) => !/^(전액|불가|\d{1,3}%)$/.test(row.rate))
+        .map((row) => `${cert.id}: ${row.rate}`),
+    );
+    expect(odd).toEqual([]);
+  });
+
+  /* 시점은 시행처 문장을 그대로 옮긴 것이라 한 낱말로 끝나지 않습니다. */
+  it('환불 시점이 비어 있지 않다', () => {
+    const thin = certs.flatMap((cert) =>
+      (cert.refund ?? [])
+        .filter((row) => row.when.trim().length < 4)
+        .map((row) => `${cert.id}: ${row.when}`),
+    );
+    expect(thin).toEqual([]);
+  });
+
+  it('환불 표가 있어야 환불 덧말도 있다', () => {
+    const orphan = certs.filter((cert) => cert.refundNote && !cert.refund);
+    expect(orphan.map((cert) => cert.id)).toEqual([]);
+  });
 });
