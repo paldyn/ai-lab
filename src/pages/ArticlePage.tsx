@@ -6,6 +6,7 @@ import { ArticleTitleBar } from '../components/ArticleTitleBar';
 import { ArticleVisual } from '../components/ArticleVisual';
 import { ImageLightbox } from '../components/ImageLightbox';
 import { useActiveHeading } from '../lib/activeHeading';
+import { tocLabels } from '../lib/tocLabels';
 import { Seo } from '../components/Seo';
 import { articleOrdinal, articles, chainNeighbors, getArticleBySlug } from '../data/articles';
 import { categoryById } from '../data/categories';
@@ -184,6 +185,13 @@ function ArticleView({ article }: { article: Article }) {
   // 본문이 늦게 오는 경로가 있어 목록이 바뀔 때만 관찰을 다시 겁니다.
   const headingIds = useMemo(() => (body?.headings ?? []).map((heading) => heading.id), [body]);
   const { active: activeHeading, goTo: goToHeading } = useActiveHeading(headingIds);
+  /*
+    목차 번호와 띠에 적을 말. 하위 절을 읽는 중이면 그 이름만으로는 어디쯤인지 알 수
+    없어 띠에는 위 절과 함께 적습니다.
+  */
+  const headings = body?.headings ?? [];
+  const labels = tocLabels(headings.map((heading) => ({ title: heading.text, sub: heading.depth === 3 })));
+  const activeCaption = labels[headings.findIndex((heading) => heading.id === activeHeading)]?.caption;
 
   useEffect(() => {
     if (body) return undefined;
@@ -242,7 +250,7 @@ function ArticleView({ article }: { article: Article }) {
         label={`${category.shortName} / ${articleOrdinal(article)}`}
         accent={category.accentText}
         title={article.title}
-        section={body?.headings.find((heading) => heading.id === activeHeading)?.text}
+        section={activeCaption}
         back={{ to: collectionPath, label: collectionLabel }}
       />
 
@@ -286,7 +294,7 @@ function ArticleView({ article }: { article: Article }) {
           <p className="font-mono text-[10px] tracking-[0.12em] text-[var(--text-muted)]">IN THIS NOTE</p>
           {body && body.headings.length > 0 && (
             <ol className="mt-4 space-y-3 border-l border-[var(--border)] pl-4 text-xs leading-5 text-[var(--text-dim)]">
-              {body.headings.map((heading) => (
+              {body.headings.map((heading, index) => (
                 <li
                   key={heading.id}
                   className={`article-toc-item${heading.depth === 3 ? ' pl-3' : ''}${
@@ -304,6 +312,7 @@ function ArticleView({ article }: { article: Article }) {
                       goToHeading(heading.id);
                     }}
                   >
+                    <span className="article-toc-mark">{labels[index].mark}</span>{' '}
                     {heading.text}
                   </a>
                 </li>

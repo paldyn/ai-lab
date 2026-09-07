@@ -7,6 +7,7 @@ import { Seo } from '../components/Seo';
 import { certById, type Cert } from '../data/certs';
 import { prepAnchor, prepBand, prepNeighbors, prepNote, type CertPrepNote } from '../data/certPrep';
 import { useActiveHeading } from '../lib/activeHeading';
+import { tocLabels } from '../lib/tocLabels';
 import { watchAnswerToggle } from '../lib/answerToggle';
 import { watchImageZoom, type ZoomedImage } from '../lib/imageZoom';
 import { initialCertPrepBody, loadCertPrepBody } from '../lib/certPrepBody';
@@ -57,6 +58,9 @@ function CertPrepView({ cert, note }: { cert: Cert; note: CertPrepNote }) {
 
   const headingIds = useMemo(() => (body?.headings ?? []).map((heading) => heading.id), [body]);
   const { active, goTo } = useActiveHeading(headingIds);
+  const headings = body?.headings ?? [];
+  const labels = tocLabels(headings.map((heading) => ({ title: heading.text, sub: heading.depth === 3 })));
+  const activeCaption = labels[headings.findIndex((heading) => heading.id === active)]?.caption;
   const { prev, next } = prepNeighbors(note.certId, note.slug);
 
   return (
@@ -72,7 +76,7 @@ function CertPrepView({ cert, note }: { cert: Cert; note: CertPrepNote }) {
         label={`${cert.nameKo} / ${note.kind}`}
         accent="var(--brand-text)"
         title={note.title}
-        section={body?.headings.find((heading) => heading.id === active)?.text}
+        section={activeCaption}
         back={{ to: `/learn/certs/${cert.id}#${prepAnchor(note)}`, label: cert.nameKo }}
       />
 
@@ -112,7 +116,7 @@ function CertPrepView({ cert, note }: { cert: Cert; note: CertPrepNote }) {
           <p className="font-mono text-[10px] tracking-[0.12em] text-[var(--text-muted)]">IN THIS NOTE</p>
           {body && body.headings.length > 0 && (
             <ol className="mt-4 space-y-3 border-l border-[var(--border)] pl-4 text-xs leading-5 text-[var(--text-dim)]">
-              {body.headings.map((heading) => (
+              {body.headings.map((heading, index) => (
                 <li
                   key={heading.id}
                   className={`article-toc-item${heading.depth === 3 ? ' pl-3' : ''}${
@@ -129,6 +133,7 @@ function CertPrepView({ cert, note }: { cert: Cert; note: CertPrepNote }) {
                       goTo(heading.id);
                     }}
                   >
+                    <span className="article-toc-mark">{labels[index].mark}</span>{' '}
                     {heading.text}
                   </a>
                 </li>

@@ -3107,9 +3107,25 @@ input:focus-visible {
   목차의 하위 항목. 「시험 노트」 아래의 세 묶음이 여기 섭니다 — 번호 없이 한 칸
   들여 부모와 갈라 둡니다.
 */
+/*
+  들여쓰기는 **안쪽 여백으로** 줍니다. `margin`으로 밀면 상자 자체가 옮겨져 왼쪽에
+  붙는 지금 위치 표시(`::before`, left: -17px)도 같이 밀립니다 — 글에서는 안 그런데
+  자격증 상세에서만 주황 막대가 들쭉날쭉했습니다.
+*/
 .article-toc-item.is-sub {
-  margin-left: 12px;
+  padding-left: 12px;
   font-size: 11px;
+}
+
+/* 목차 번호. 제목과 눈으로 갈리게 흐리게 두고, 지금 자리에서는 함께 밝아집니다. */
+.article-toc-mark {
+  color: var(--text-muted);
+  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  font-size: 10px;
+}
+
+.article-toc-item.is-current .article-toc-mark {
+  color: inherit;
 }
 
 /* 과목 이름은 「데이터 준비 (Data Preparation for Machine Learning)」처럼 깁니다. */
