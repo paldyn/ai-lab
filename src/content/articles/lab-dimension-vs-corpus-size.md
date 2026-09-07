@@ -305,3 +305,5 @@ paragraphs=960 queries=100 정답 문단=95
 읽어주셔서 감사합니다. 😊
 
 **지난 글:** [온도와 top-p가 실제로 자르는 것: 유효 어휘는 1.2에서 세 자리가 되고, 같은 온도에서도 위치마다 1개와 894개로 갈린다](/articles/lab-temperature-entropy)
+
+**다음 글:** [질의를 앞에서부터 자르면 검색은 몇 토큰에서 무너지는가: 공짜 구간은 없었다](/articles/lab-query-length-recall)
