@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="380" viewBox="0 0 880 380" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <rect x="0" y="0" width="880" height="380" rx="12" fill="#0a0a0a"/>
+  <text x="60" y="48" font-size="22" font-weight="700" fill="#e8e8e8">det는 넓이 배율이다 — 단위정사각형이 어디로 가는가</text>
+  <text x="60" y="74" font-size="13" fill="#888">점선이 원래의 단위정사각형, 칠한 것이 그 상입니다</text>
+
+  <!-- Panel A: rotation -->
+  <text x="70" y="112" font-size="16" font-weight="600" fill="#e8e8e8">회전 R(30°)</text>
+  <line x1="90" y1="290" x2="280" y2="290" stroke="#888" stroke-width="1.5"/>
+  <line x1="140" y1="300" x2="140" y2="140" stroke="#888" stroke-width="1.5"/>
+  <text x="284" y="295" font-size="13" fill="#888">x</text>
+  <text x="133" y="136" font-size="13" fill="#888">y</text>
+  <polygon points="140,290 185,290 185,245 140,245" fill="none" stroke="#666" stroke-width="1.5" stroke-dasharray="4,4"/>
+  <polygon points="140,290 179,267.5 156.5,228.5 117.5,251" fill="#7ec8e3" fill-opacity="0.18" stroke="#7ec8e3" stroke-width="2.5"/>
+  <text x="70" y="330" font-size="13" fill="#e8e8e8">det = 1</text>
+  <text x="70" y="350" font-size="13" fill="#888">넓이 그대로, 모양도 그대로</text>
+
+  <!-- Panel B: scale -->
+  <text x="330" y="112" font-size="16" font-weight="600" fill="#e8e8e8">스케일 S (1.5, 0.5)</text>
+  <line x1="350" y1="290" x2="540" y2="290" stroke="#888" stroke-width="1.5"/>
+  <line x1="400" y1="300" x2="400" y2="140" stroke="#888" stroke-width="1.5"/>
+  <text x="544" y="295" font-size="13" fill="#888">x</text>
+  <text x="393" y="136" font-size="13" fill="#888">y</text>
+  <polygon points="400,290 445,290 445,245 400,245" fill="none" stroke="#666" stroke-width="1.5" stroke-dasharray="4,4"/>
+  <polygon points="400,290 467.5,290 467.5,267.5 400,267.5" fill="#7ec8e3" fill-opacity="0.18" stroke="#7ec8e3" stroke-width="2.5"/>
+  <text x="330" y="330" font-size="13" fill="#e8e8e8">det = 0.75</text>
+  <text x="330" y="350" font-size="13" fill="#888">가로로 늘고 세로로 줄어 0.75배</text>
+
+  <!-- Panel C: shear -->
+  <text x="590" y="112" font-size="16" font-weight="600" fill="#e8e8e8">전단 H (k = 1)</text>
+  <line x1="610" y1="290" x2="800" y2="290" stroke="#888" stroke-width="1.5"/>
+  <line x1="660" y1="300" x2="660" y2="140" stroke="#888" stroke-width="1.5"/>
+  <text x="804" y="295" font-size="13" fill="#888">x</text>
+  <text x="653" y="136" font-size="13" fill="#888">y</text>
+  <polygon points="660,290 705,290 705,245 660,245" fill="none" stroke="#666" stroke-width="1.5" stroke-dasharray="4,4"/>
+  <polygon points="660,290 705,290 750,245 705,245" fill="#7777cc" fill-opacity="0.18" stroke="#7777cc" stroke-width="2.5"/>
+  <text x="590" y="330" font-size="13" fill="#e8e8e8">det = 1</text>
+  <text x="590" y="350" font-size="13" fill="#888">밑변과 높이가 그대로라 넓이도 그대로</text>
+</svg>

@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="400" viewBox="0 0 880 400" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <rect x="0" y="0" width="880" height="400" rx="12" fill="#0a0a0a"/>
+  <defs>
+    <marker id="arrG" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#e05555"/>
+    </marker>
+    <marker id="arrB" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#55c555"/>
+    </marker>
+  </defs>
+
+  <text x="60" y="48" font-size="22" font-weight="700" fill="#e8e8e8">잡음 항이 하는 일</text>
+  <text x="60" y="74" font-size="13" fill="#888">같은 스코어 화살표장 위에서 갱신식만 다르게 두고 표본이 어디에 모이는지 봅니다</text>
+
+  <!-- Panel A -->
+  <text x="60" y="120" font-size="16" font-weight="600" fill="#e8e8e8">잡음 없이: x ← x + ε·s(x)</text>
+  <path d="M 70 300 C 110 300 120 190 155 190 C 190 190 205 265 240 265 C 275 265 290 190 325 190 C 360 190 370 300 410 300" fill="none" stroke="#7ec8e3" stroke-width="2.5"/>
+  <line x1="60" y1="300" x2="420" y2="300" stroke="#888" stroke-width="1.5"/>
+  <line x1="205" y1="330" x2="310" y2="330" stroke="#e05555" stroke-width="2" marker-end="url(#arrG)"/>
+  <line x1="262" y1="352" x2="312" y2="352" stroke="#e05555" stroke-width="2" marker-end="url(#arrG)"/>
+  <circle cx="325" cy="330" r="5" fill="#e8e8e8"/>
+  <circle cx="325" cy="352" r="5" fill="#e8e8e8"/>
+  <circle cx="330" cy="341" r="5" fill="#e8e8e8"/>
+  <text x="60" y="382" font-size="13" fill="#888">가까운 봉우리로 올라가 멈춘다 — 봉우리 하나만 나온다</text>
+
+  <!-- Panel B -->
+  <text x="460" y="120" font-size="16" font-weight="600" fill="#e8e8e8">랑주뱅: x ← x + ε·s(x) + √(2ε)·z</text>
+  <path d="M 470 300 C 510 300 520 190 555 190 C 590 190 605 265 640 265 C 675 265 690 190 725 190 C 760 190 770 300 810 300" fill="none" stroke="#7ec8e3" stroke-width="2.5"/>
+  <line x1="460" y1="300" x2="820" y2="300" stroke="#888" stroke-width="1.5"/>
+  <line x1="605" y1="330" x2="540" y2="330" stroke="#55c555" stroke-width="2" marker-end="url(#arrB)"/>
+  <line x1="662" y1="352" x2="712" y2="352" stroke="#55c555" stroke-width="2" marker-end="url(#arrB)"/>
+  <circle cx="530" cy="330" r="5" fill="#e8e8e8"/>
+  <circle cx="548" cy="341" r="5" fill="#e8e8e8"/>
+  <circle cx="565" cy="352" r="5" fill="#e8e8e8"/>
+  <circle cx="716" cy="330" r="5" fill="#e8e8e8"/>
+  <circle cx="733" cy="341" r="5" fill="#e8e8e8"/>
+  <circle cx="750" cy="352" r="5" fill="#e8e8e8"/>
+  <text x="460" y="382" font-size="13" fill="#888">봉우리에서도 흔들려 빠져나온다 — 높이 비율대로 나뉜다</text>
+</svg>

@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="400" viewBox="0 0 880 400" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <rect x="0" y="0" width="880" height="400" rx="12" fill="#0a0a0a"/>
+  <text x="60" y="48" font-size="22" font-weight="700" fill="#e8e8e8">선형 스케줄과 코사인 스케줄의 남은 신호</text>
+  <text x="60" y="74" font-size="13" fill="#888">세로축은 ᾱ_t — 원본이 얼마나 남아 있는지입니다</text>
+
+  <!-- axes -->
+  <line x1="100" y1="300" x2="820" y2="300" stroke="#888" stroke-width="1.5"/>
+  <line x1="100" y1="310" x2="100" y2="95" stroke="#888" stroke-width="1.5"/>
+  <line x1="100" y1="200" x2="800" y2="200" stroke="#444" stroke-width="1"/>
+  <line x1="100" y1="100" x2="800" y2="100" stroke="#444" stroke-width="1"/>
+  <line x1="450" y1="300" x2="450" y2="95" stroke="#444" stroke-width="1"/>
+  <text x="824" y="305" font-size="13" fill="#888">t</text>
+  <text x="86" y="91" font-size="13" fill="#888">ᾱ</text>
+  <text x="70" y="105" font-size="13" fill="#888">1.0</text>
+  <text x="70" y="205" font-size="13" fill="#888">0.5</text>
+  <text x="78" y="305" font-size="13" fill="#888">0</text>
+  <text x="92" y="325" font-size="13" fill="#888">0</text>
+  <text x="434" y="325" font-size="13" fill="#888">500</text>
+  <text x="782" y="325" font-size="13" fill="#888">1000</text>
+
+  <!-- linear -->
+  <polyline points="100,100 170,120.6 240,168.2 310,220.8 380,261 450,284.2 520,294.8 590,298.6 660,299.7 730,299.9 800,300" fill="none" stroke="#e05555" stroke-width="2.5"/>
+  <!-- cosine -->
+  <polyline points="100,100 170,105.6 240,120.2 310,142.6 380,170.5 450,201.2 520,231.8 590,259.4 660,281.2 730,295.2 800,300" fill="none" stroke="#7ec8e3" stroke-width="2.5"/>
+
+  <text x="330" y="248" font-size="14" font-weight="600" fill="#e05555">선형 스케줄</text>
+  <text x="560" y="238" font-size="14" font-weight="600" fill="#7ec8e3">코사인 스케줄</text>
+
+  <text x="100" y="358" font-size="13" fill="#888">선형은 t = 500 언저리에서 이미 ᾱ가 0.08까지 떨어져, 뒤쪽 절반이 거의 잡음뿐인 구간이 됩니다.</text>
+  <text x="100" y="378" font-size="13" fill="#888">코사인은 중반을 완만하게 지나 그 절반을 학습에 쓸 수 있는 구간으로 돌려 놓습니다.</text>
+</svg>
