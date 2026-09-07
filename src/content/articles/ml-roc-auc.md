@@ -9,7 +9,7 @@ tags: ["ROC곡선", "AUC", "분류평가", "임계값", "모델평가"]
 featured: false
 draft: false
 ---
-[지난 글](/articles/ml-confusion-matrix)에서 혼동 행렬로 분류 오류를 해부하는 방법을 배웠다. 혼동 행렬과 그에서 유도된 지표들은 특정 임계값(보통 0.5)에서의 성능을 보여준다. 그런데 모델의 "진짜" 분리 능력은 임계값에 상관없이 얼마나 양성과 음성을 잘 구분하는가에 있다. **ROC 곡선과 AUC**는 모든 임계값에서의 성능을 하나의 숫자로 압축한다.
+[지난 글](/articles/ml-classification-metrics)에서 혼동 행렬 네 칸에서 정밀도·재현율·F1까지 지표를 유도하고 읽는 법을 봤다. 그 지표들은 특정 임계값(보통 0.5)에서의 성능을 보여준다. 그런데 모델의 "진짜" 분리 능력은 임계값에 상관없이 얼마나 양성과 음성을 잘 구분하는가에 있다. **ROC 곡선과 AUC**는 모든 임계값에서의 성능을 하나의 숫자로 압축한다.
 
 ## ROC 곡선의 두 축
 
@@ -163,6 +163,6 @@ print(f"Weighted AUC: {auc_weighted:.4f}")
 
 읽어주셔서 감사합니다. 😊
 
-**지난 글:** [혼동 행렬로 분류 오류 해부하기](/articles/ml-confusion-matrix)
+**지난 글:** [분류 성능 읽기: 혼동 행렬에서 F1·MCC까지](/articles/ml-classification-metrics)
 
 **다음 글:** [회귀 모델 평가 지표: MAE·MSE·RMSE·R² 완전 이해](/articles/ml-regression-metrics)

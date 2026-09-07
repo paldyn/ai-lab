@@ -9,7 +9,7 @@ tags: ["Seq2Seq", "인코더디코더", "기계번역", "TeacherForcing", "BeamS
 featured: false
 draft: false
 ---
-[지난 글](/articles/rnn-bidirectional)에서 양방향 RNN이 각 토큰의 문맥을 풍부하게 만드는 방법을 살펴봤다. 이제 입력과 출력의 **길이가 다를 수 있는** 더 어려운 문제를 다뤄보자. 기계 번역("안녕하세요" → "Hello"), 문서 요약, 대화 응답 생성이 모두 그러한 문제다. 2014년 Sutskever et al.이 제안한 **Seq2Seq(Sequence-to-Sequence)** 아키텍처는 두 RNN을 직렬로 연결해 이 문제를 풀었다.
+[지난 글](/articles/rnn-lstm)에서 게이트로 셀 안을 고치고 읽는 방향을 늘려 RNN의 기억을 붙잡는 세 방법을 살펴봤다. 이제 입력과 출력의 **길이가 다를 수 있는** 더 어려운 문제를 다뤄보자. 기계 번역("안녕하세요" → "Hello"), 문서 요약, 대화 응답 생성이 모두 그러한 문제다. 2014년 Sutskever et al.이 제안한 **Seq2Seq(Sequence-to-Sequence)** 아키텍처는 두 RNN을 직렬로 연결해 이 문제를 풀었다.
 
 ## 인코더-디코더 구조
 
@@ -107,6 +107,6 @@ Context Vector가 고정 크기이므로 **긴 시퀀스의 정보를 모두 담
 
 읽어주셔서 감사합니다. 😊
 
-**지난 글:** [양방향 RNN: 과거와 미래를 동시에 보기](/articles/rnn-bidirectional)
+**지난 글:** [LSTM·GRU·양방향 RNN: 게이트와 방향으로 RNN 고치기](/articles/rnn-lstm)
 
-**다음 글:** [Attention 메커니즘: Seq2Seq 병목을 극복하다](/articles/rnn-attention)
+**다음 글:** [Attention: Seq2Seq 병목에서 Transformer로](/articles/rnn-attention)

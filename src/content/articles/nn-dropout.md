@@ -9,7 +9,7 @@ tags: ["드롭아웃", "Dropout", "과적합방지", "정규화", "딥러닝기�
 featured: false
 draft: false
 ---
-[지난 글](/articles/nn-layer-normalization)에서 레이어 정규화가 학습 안정화에 기여한다는 것을 배웠다. 신경망의 또 다른 중요한 정규화 기법인 **드롭아웃**(Dropout)을 이번 글에서 다룬다. 2014년 Srivastava et al.이 발표한 드롭아웃은 매우 단순한 아이디어임에도 과적합 방지에 매우 효과적이다. 훈련 시 무작위로 뉴런을 끄는 것만으로 실질적인 앙상블 효과를 낸다.
+[지난 글](/articles/nn-batch-normalization)에서 배치 정규화와 레이어 정규화가 활성값의 분포를 고르게 만들어 학습을 안정시킨다는 것을 봤다. 신경망의 또 다른 중요한 정규화 기법인 **드롭아웃**(Dropout)을 이번 글에서 다룬다. 2014년 Srivastava et al.이 발표한 드롭아웃은 매우 단순한 아이디어임에도 과적합 방지에 매우 효과적이다. 훈련 시 무작위로 뉴런을 끄는 것만으로 실질적인 앙상블 효과를 낸다.
 
 ## 드롭아웃의 아이디어
 
@@ -175,6 +175,6 @@ def drop_path(x, drop_prob, training):
 
 읽어주셔서 감사합니다. 😊
 
-**지난 글:** [레이어 정규화: 트랜스포머가 선택한 정규화](/articles/nn-layer-normalization)
+**지난 글:** [정규화 레이어: 배치 정규화에서 RMSNorm까지](/articles/nn-batch-normalization)
 
 **다음 글:** [기울기 소실과 폭발: 깊은 네트워크의 고질적 문제](/articles/nn-vanishing-gradient)

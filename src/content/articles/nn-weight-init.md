@@ -174,4 +174,4 @@ print(vars_xavier)  # [1.0, ~1.0, ~1.0, ~1.0] — 안정!
 
 **지난 글:** [MLP: 다층 퍼셉트론으로 임의의 함수를 근사하다](/articles/nn-mlp)
 
-**다음 글:** [배치 정규화: 내부 공변량 이동을 잡아라](/articles/nn-batch-normalization)
+**다음 글:** [정규화 레이어: 배치 정규화에서 RMSNorm까지](/articles/nn-batch-normalization)

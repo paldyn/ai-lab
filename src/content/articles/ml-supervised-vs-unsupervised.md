@@ -156,4 +156,4 @@ def simclr_loss(z1, z2, temperature=0.5):
 
 **지난 글:** [손실 함수와 정규화: 무엇을 최소화하고 무엇을 억제하는가](/articles/ai-loss-functions)
 
-**다음 글:** [선형 회귀: 예측 모델의 출발점](/articles/ml-linear-regression)
+**다음 글:** [선형 모델: 선형 회귀와 로지스틱 회귀](/articles/ml-linear-regression)

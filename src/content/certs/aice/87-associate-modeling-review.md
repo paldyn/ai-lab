@@ -223,4 +223,4 @@ pd.DataFrame({'pred': binary}).to_csv('result.csv', index=False)
 
    답. 60번입니다. 조합이 $$3 \times 4 = 12$$가지이고 조합마다 다섯 번 학습하므로 $$12 \times 5 = 60$$번이며, 여기에 가장 좋은 설정으로 전체를 다시 학습하는 한 번이 더 붙습니다.
 
-세 영역을 관통하는 순서는 하나입니다 — 읽고, 손보고, 학습시키고, 재고, 고칩니다. 분류 지표는 [분류 모델 평가지표](/articles/ml-classification-metrics), 회귀 지표는 [회귀 모델 평가지표](/articles/ml-regression-metrics), 과적합은 [과적합과 과소적합](/articles/ml-overfitting) 쪽 글이 더 자세히 다룹니다.
+세 영역을 관통하는 순서는 하나입니다 — 읽고, 손보고, 학습시키고, 재고, 고칩니다. 분류 지표는 [분류 모델 평가지표](/articles/ml-classification-metrics), 회귀 지표는 [회귀 모델 평가지표](/articles/ml-regression-metrics), 과적합은 [편향과 분산](/articles/ml-bias-variance) 쪽 글이 더 자세히 다룹니다.

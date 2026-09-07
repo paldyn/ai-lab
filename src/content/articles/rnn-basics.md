@@ -110,4 +110,4 @@ for i in range(0, seq_len, chunk_size):
 
 **지난 글:** [기울기 소실과 폭발: 깊은 네트워크의 고질적 문제](/articles/nn-vanishing-gradient)
 
-**다음 글:** [LSTM: 장단기 메모리 게이트 완전 해부](/articles/rnn-lstm)
+**다음 글:** [LSTM·GRU·양방향 RNN: 게이트와 방향으로 RNN 고치기](/articles/rnn-lstm)

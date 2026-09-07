@@ -447,7 +447,6 @@ export const certs: Cert[] = [
         subject: '빅데이터 모델링 (필기)',
         items: [
           { site: 'ailab', slug: 'ml-linear-regression' },
-          { site: 'ailab', slug: 'ml-logistic-regression' },
           { site: 'ailab', slug: 'ml-decision-tree' },
           { site: 'ailab', slug: 'neural-network-basics' },
         ],
@@ -611,7 +610,7 @@ export const certs: Cert[] = [
       {
         subject: '데이터분석',
         items: [
-          { site: 'ailab', slug: 'ml-logistic-regression' },
+          { site: 'ailab', slug: 'ml-linear-regression' },
           { site: 'ailab', slug: 'ml-clustering-hierarchical' },
           { site: 'ailab', slug: 'ml-dbscan' },
           { site: 'ailab', slug: 'ml-clustering-metrics' },
@@ -1603,7 +1602,6 @@ export const certs: Cert[] = [
         items: [
           { site: 'ailab', slug: 'ml-supervised-vs-unsupervised' },
           { site: 'ailab', slug: 'ml-linear-regression' },
-          { site: 'ailab', slug: 'ml-logistic-regression' },
           { site: 'ailab', slug: 'neural-network-basics' },
           { site: 'ailab', slug: 'rl-basics' },
         ],
@@ -1774,7 +1772,7 @@ export const certs: Cert[] = [
       {
         subject: 'ML 모델 개발 (ML Model Development)',
         items: [
-          { site: 'ailab', slug: 'ml-cross-validation' },
+          { site: 'ailab', slug: 'ml-train-val-test' },
           { site: 'ailab', slug: 'finetuning-hyperparameters' },
           { site: 'ailab', slug: 'mlops-experiment-tracking' },
         ],
@@ -2233,7 +2231,7 @@ export const certs: Cert[] = [
       {
         subject: 'Model Development',
         items: [
-          { site: 'ailab', slug: 'ml-cross-validation' },
+          { site: 'ailab', slug: 'ml-train-val-test' },
           { site: 'ailab', slug: 'ml-bias-variance' },
         ],
       },

@@ -130,9 +130,8 @@ done | sort -rn | head -20
 
 합치기 계획을 따로 검증해서 나온 것들이다. 해당 항목을 집을 때 함께 본다.
 
-- **`src/data/certs.ts`의 `studyPath`가 사라질 슬러그를 15자리에서 부른다**
-  (`ml-logistic-regression` 3, `rag-architecture` 3, `ml-cross-validation` 2,
-  `serving-cost-optimization` 2, `project-prompt-iterating` 2,
+- **`src/data/certs.ts`의 `studyPath`가 사라질 슬러그를 10자리에서 부른다**
+  (`rag-architecture` 3, `serving-cost-optimization` 2, `project-prompt-iterating` 2,
   `pytorch-training-loop`, `cv-image-classification-deep`, `agent-mcp-protocol` 각 1).
   `src/data/certs.test.ts`가 없는 슬러그를 잡으므로 안 고치면 `npm test`가 선다.
   **남길 슬러그가 같은 `studyPath` 묶음에 이미 있으면 갈아 끼우지 말고 줄을 지운다** —
@@ -169,36 +168,8 @@ sed -n "/^### deep-learning$/,/^### /p" ARTICLE-DEPTH-PLAN.md
 
 ### deep-learning
 
-**합치기**
+**합치기 — 여덟 짝 모두 끝났다(2026-09-07).** 48편 → 39편.
 
-| 남길 글 | 흡수할 글 | 합친 뒤 제목(제안) |
-| --- | --- | --- |
-| `ml-linear-regression` | `ml-logistic-regression` | 선형 모델: 선형 회귀와 로지스틱 회귀 |
-| `ml-train-val-test` | `ml-cross-validation` | 데이터 분할과 교차 검증: 성능을 정직하게 재는 법 |
-| `ml-bias-variance` | `ml-overfitting` | 편향과 분산: 과소적합·과대적합의 진단과 처방 |
-| `ml-classification-metrics` | `ml-confusion-matrix` | 분류 성능 읽기: 혼동 행렬에서 F1·MCC까지 |
-| `nn-batch-normalization` | `nn-layer-normalization` | 정규화 레이어: 배치 정규화에서 RMSNorm까지 |
-| `rnn-lstm` | `rnn-gru` · `rnn-bidirectional` | LSTM·GRU·양방향 RNN: 게이트와 방향으로 RNN 고치기 |
-| `rnn-attention` | `rnn-limitations` | Attention: Seq2Seq 병목에서 Transformer로 |
-
-- **`ml-linear-regression` ← ml-logistic-regression** — 998자·1,028자로 카테고리에서 가장 얇은 축이고 뼈대가 똑같다 — 선형 결합 wx+b, 손실(MSE/BCE), sklearn 구현, PyTorch 처음부터 구현, 정규화(Ridge·Lasso / C 파라미터), 그리고 '신경망의 선형 레이어(출력 레이어)가 곧 이것'이라는 마지막 결론까지 겹친다. 로지스틱 글은 아예 첫 절이 '왜 선형 회귀로 분류하면 안 될까'라 앞 글을 다시 설명하며 시작한다. 한 편이면 '같은 선형 결합에 무엇을 씌우느냐가 회귀와 분류를 가른다'를 한 번에 보인다.
-  - `ml-logistic-regression`: 도입부를 다시 쓸 글 — `ml-knn` 도입부
-  - `ml-logistic-regression`: `src/data/certs.ts`의 studyPath 3자리
-- **`ml-train-val-test` ← ml-cross-validation** — 두 글이 같은 API를 각각 한 절씩 두 번 소개한다 — 시계열 분할은 앞 글에서 '시간적 누수'로, 뒷 글에서 'TimeSeriesSplit'으로; 그룹 분할은 앞 글에서 '그룹 누수'로, 뒷 글에서 'GroupKFold'로. stratify와 StratifiedKFold도 같은 이야기를 나눠 들고 있다. 교차 검증은 홀드아웃 분할의 대안이지 별개 주제가 아니라서 '왜 나누는가 → 어떻게 나누는가 → 한 번 나누는 것으로 부족할 때'가 한 글의 흐름이다. 합쳐도 3,798자라 6,000까지 채울 여지가 남는다.
-  - `ml-cross-validation`: 도입부를 다시 쓸 글 — `ml-bias-variance` 도입부
-  - `ml-cross-validation`: `src/data/certs.ts`의 studyPath 2자리
-- **`ml-bias-variance` ← ml-overfitting** — `ml-overfitting`은 앞 글이 이미 한 이야기를 실무 어투로 다시 한다. '탐지: 학습 곡선과 검증 손실' 절은 `ml-bias-variance`의 '학습 곡선으로 진단하기'와, 'L1·L2 정규화'와 '데이터 증강' 절은 '분산을 줄이는 전략' 절과 같다. 마지막 8줄 체크리스트도 앞 글의 전략 목록과 항목이 거의 그대로 겹친다. 두 글에만 있는 고유한 것은 조기 종료 절 하나뿐이고, 진단(편향-분산)과 처방(과적합 대응)은 원래 한 글이다.
-  - `ml-overfitting`: 도입부를 다시 쓸 글 — `ml-classification-metrics` 도입부
-  - `ml-overfitting`: 시험 노트 링크 — src/content/certs/aice/87-associate-modeling-review.md:226
-- **`ml-classification-metrics` ← ml-confusion-matrix** — `ml-confusion-matrix`는 이 카테고리에서 가장 짧은 728자다. 첫 절 '혼동 행렬의 구조'는 앞 글의 '혼동 행렬의 네 칸'과 같은 내용이고, 나머지는 sklearn 코드 다섯 덩어리(정규화 옵션·다중 클래스·오류 샘플 뽑기·불균형)에 코드마다 한두 문장이 붙은 형태다. 지표를 유도하는 표와 그 표를 읽는 법을 두 글로 떼어 놓을 이유가 없다.
-  - `ml-confusion-matrix`: 도입부를 다시 쓸 글 — `ml-roc-auc` 도입부
-- **`nn-batch-normalization` ← nn-layer-normalization** — `nn-layer-normalization`은 첫 절 제목이 '배치 정규화의 한계와 레이어 정규화'이고, 정규화 수식 네 줄(평균·분산·정규화·어파인)이 앞 글과 사실상 같다 — 본문도 '배치 정규화와 동일한 수식이지만 통계 계산 방향이 다르다'고 스스로 적어 두었다. 두 글의 마지막 비교표도 거의 같은 표다. 축 하나가 바뀌는 이야기라 그림 한 장에 나란히 놓아야 이해가 빠른데, 지금은 그 비교 그림이 뒷 글에만 있다.
-  - `nn-layer-normalization`: 도입부를 다시 쓸 글 — `nn-dropout` 도입부
-- **`rnn-lstm` ← rnn-gru · rnn-bidirectional** — 833·821·841자로 셋 다 800자대이고, 각자 '앞 글의 구조에서 무엇을 하나 바꿨는가'만 말한다. `rnn-gru`는 절 다섯 중 셋이 LSTM과의 비교(수식 대응·파라미터 수 25% 비교·선택 기준)이고, `rnn-bidirectional`은 `bidirectional=True` 한 줄로 켜는 옵션이라 절 다섯 중 둘이 PyTorch 인자와 h_n 인덱싱 설명이다. 셋을 붙이면 '셀 안을 어떻게 만들고 어느 방향으로 읽는가'라는 한 축이 서고, 지금 세 글에 흩어진 비교표가 하나로 모인다.
-  - `rnn-gru`: 도입부를 다시 쓸 글 — `rnn-bidirectional` 도입부
-  - `rnn-bidirectional`: 도입부를 다시 쓸 글 — `rnn-seq2seq` 도입부
-- **`rnn-attention` ← rnn-limitations** — `rnn-limitations`의 '한계 1: 기울기 소실' 절은 `rnn-basics`의 BPTT 전개식을 그대로 다시 쓰고, '한계 3: 장거리 의존성' 절은 'Self-Attention이 O(1)로 직접 잇는다'로 끝나 앞 글 `rnn-attention`의 마지막 절과 같은 자리를 짚는다. 두 글 다 결론이 Transformer로 넘어가는 다리인데 앞 글이 이미 Scaled Dot-Product 코드까지 적어 두었다. 하나로 두면 '병목 → Attention → RNN을 아예 빼기'가 한 흐름으로 끊기지 않는다.
-  - `rnn-limitations`: 도입부를 다시 쓸 글 — `embedding-basics` 도입부
 
 **채우기**
 
