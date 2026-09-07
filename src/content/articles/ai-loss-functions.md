@@ -1,21 +1,67 @@
 ---
-title: "손실 함수 완전 정복: 무엇을 최소화하는가"
-description: "MSE·MAE·Huber·CrossEntropy·Focal Loss·KL Divergence까지 주요 손실 함수의 원리와 용도를 수식과 PyTorch 코드로 완전 정리한다."
+title: "손실 함수와 정규화: 무엇을 최소화하고 무엇을 억제하는가"
+description: "MSE·CrossEntropy·Focal·KL·InfoNCE가 각각 무엇을 벌하는지, 그리고 가중치 감쇠·조기 종료·데이터 증강이 그 손실 위에 무엇을 더하는지 한 편에서 정리한다."
 author: "PALDYN Team"
 pubDate: "2026-04-28"
 category: "deep-learning"
 level: "중급"
-tags: ["손실함수", "MSE", "CrossEntropy", "FocalLoss", "딥러닝기초"]
+tags: ["손실함수", "정규화", "CrossEntropy", "가중치감쇠", "딥러닝기초"]
 featured: false
 draft: false
 ---
-옵티마이저가 최소화하려는 목표값이 바로 **손실 함수**(Loss Function)다. "무엇을 최소화하느냐"가 모델이 학습하는 것을 결정한다. 잘못된 손실 함수를 선택하면 아무리 좋은 옵티마이저를 쓰더라도 원하는 결과를 얻을 수 없다.
+옵티마이저가 최소화하려는 목표값이 **손실 함수**(Loss Function)다. 무엇을 최소화하느냐가 모델이 배우는 것을 정하므로, 손실을 잘못 고르면 아무리 좋은 옵티마이저를 써도 원하는 결과가 나오지 않는다. 그리고 손실 옆에는 늘 하나가 더 붙는다. **정규화**(Regularization) — 훈련 데이터에만 맞아 들어가는 것을 막는 장치다.
 
-## 회귀 손실: 연속값 예측
+둘을 한 편에서 다루는 이유가 있다. 정규화의 절반은 별도의 기법이 아니라 **손실에 항을 하나 더하는 일**이기 때문이다. 가중치 감쇠는 $$L + \lambda \sum w_i^2$$ 이고, RLHF의 KL 제약은 보상에서 KL을 빼는 것이며, 레이블 스무딩은 정답 분포 자체를 무디게 만든다. 최소화할 것을 적는 자리와 억제할 것을 적는 자리가 같은 식이다.
 
-회귀 문제는 연속적인 수치를 예측한다. 집값 예측, 기온 예측, 주식 가격 예측 등이 해당한다.
+## 학습이 최소화하는 것
 
-**MSE (Mean Squared Error)**: 가장 널리 쓰이는 회귀 손실이다.
+### 손실과 지표의 분리
+
+손실은 **미분 가능해야 한다.** 우리가 정말 올리고 싶은 값 — 정확도, F1, 매출 — 은 대개 계단 함수라 기울기가 0이거나 없다. 정확도는 예측이 임계값을 넘느냐 마느냐로 갈리므로, 가중치를 조금 흔들어도 값이 그대로이거나 한 번에 뛴다. 그런 값으로는 경사하강을 돌릴 수 없다.
+
+그래서 **모델이 줄이는 값과 우리가 보는 값이 다르다.** Cross-Entropy를 줄이면서 F1을 보는 식이다. 이 어긋남은 이론적 결함이 아니라 매일 겪는 현상이다. 검증 손실이 꾸준히 내려가는데 정확도가 며칠째 제자리인 상황은, 모델이 이미 맞히던 샘플의 확신을 0.8에서 0.95로 올리는 중이라는 뜻이다. 손실은 그 변화를 보상하지만 임계값 0.5를 기준으로 세는 정확도는 아무 일도 없다.
+
+반대 방향도 있다. 손실이 조금 올랐는데 지표가 좋아지기도 한다. 소수 클래스 몇 개를 새로 맞히면서 다수 클래스의 확신이 살짝 내려간 경우다. **그러므로 조기 종료나 모델 선택의 기준은 손실이 아니라 지표여야 할 때가 있다.** 무엇으로 최적 체크포인트를 고를지는 손실을 고르는 것과 별개의 결정이다.
+
+### 손실이 정하는 학습 방향
+
+손실을 고르는 것은 **오차를 어떻게 벌할지 고르는 일**이다. 기울기를 보면 분명해진다. 제곱 오차의 기울기는 오차에 비례하고($$2(\hat y - y)$$), 절댓값 오차의 기울기는 부호뿐이다($$\pm 1$$). 그래서 배치 안에 크게 틀린 샘플 하나가 있으면, 제곱 오차에서는 그 하나가 갱신 방향을 거의 혼자 정한다.
+
+더 근본적인 차이는 **최적해 자체가 달라진다**는 것이다. 아무 특성도 안 쓰고 상수 하나만 예측하도록 두면, 제곱 오차를 최소화하는 값은 데이터의 **평균**이고 절댓값 오차를 최소화하는 값은 **중앙값**이다. 같은 데이터를 두고 손실만 바꿨는데 정답이 바뀐다. 배달 시간을 예측하는 모델에서 제곱 오차는 사고로 세 시간 걸린 몇 건에 끌려 전체 예측을 위로 밀고, 절댓값 오차는 그 몇 건을 무시하고 보통의 배달에 맞춘다. 어느 쪽이 옳은지는 손실이 아니라 서비스가 정한다.
+
+### 손실을 고르는 세 물음
+
+고를 때는 위에서부터 세 가지를 묻는다.
+
+| 물음 | 답 | 손실 |
+| --- | --- | --- |
+| 무엇을 예측하는가 | 연속값 | MSE · MAE · Huber |
+| | 클래스 | BCE · Cross-Entropy |
+| | 분포 자체 | KL 발산 |
+| | 임베딩의 배치 | InfoNCE · Triplet |
+| 출력이 어떤 형태인가 | 실수 | 회귀 손실 |
+| | 로짓 하나 | `BCEWithLogitsLoss` |
+| | 로짓 벡터 | `CrossEntropyLoss` |
+| 데이터가 어떻게 생겼는가 | 이상치가 많다 | MAE · Huber |
+| | 클래스가 기울었다 | 가중치 · Focal |
+
+## 회귀 손실: 오차를 재는 세 자
+
+### 제곱 오차와 평균
+
+MSE는 $$\frac{1}{n}\sum(\hat y_i - y_i)^2$$ 이다. 제곱이 하는 일은 둘이다. 부호를 없애고, **큰 오차를 불균형하게 강조한다.** 오차 10인 샘플 하나가 오차 1인 샘플 100개와 같은 무게를 가진다. 이상치가 섞인 데이터에서 MSE로 학습하면 모델이 그 이상치 쪽으로 끌려가는 이유가 이것이다.
+
+단위도 문제가 된다. 집값을 원 단위로 예측하면 MSE의 단위는 원의 제곱이라 크기를 가늠할 수 없다. 그래서 보고할 때는 제곱근을 씌운 RMSE를 쓴다 — 학습은 MSE로 하고 사람에게는 RMSE로 말하는 조합이 흔하다.
+
+### 절댓값 오차와 중앙값
+
+MAE는 $$\frac{1}{n}\sum|\hat y_i - y_i|$$ 다. 이상치에 끌리지 않는 대신 두 가지를 감수한다. 하나는 **0에서 미분이 정의되지 않는다**는 것이고(구현은 그 자리에서 0을 쓴다), 다른 하나는 **기울기의 크기가 늘 같다**는 것이다. 정답에 아주 가까워져도 걸음 폭이 줄지 않으므로, 수렴 후반에는 학습률을 낮춰 주지 않으면 최적점 주위를 진동한다.
+
+### Huber의 경계
+
+Huber는 오차가 $$\delta$$ 보다 작으면 제곱으로, 크면 선형으로 잰다. 두 손실의 좋은 쪽을 이어 붙인 것이라 흔히 절충으로 소개되지만, 실제로 정해야 하는 값은 **$$\delta$$ 하나**이고 그 값의 의미는 분명하다 — 「이 크기부터는 이상치로 보겠다」는 선언이다.
+
+그래서 $$\delta$$ 는 데이터의 스케일에 매여 있다. 예측 대상이 0~1이면 $$\delta = 1.0$$ 은 사실상 MSE와 같고, 대상이 수백만 원이면 같은 값이 사실상 MAE가 된다. 실무에서는 먼저 MSE로 한 번 돌려 잔차의 분포를 보고, 상위 5~10% 잔차가 시작되는 지점을 $$\delta$$ 로 잡는다.
 
 ```python
 import torch
@@ -25,152 +71,228 @@ import torch.nn.functional as F
 pred = torch.tensor([2.5, 0.0, 2.0, 8.0])
 true = torch.tensor([3.0, -0.5, 2.0, 5.0])
 
-# MSE: L = (1/n) Σ (ŷ - y)²
-mse = nn.MSELoss()(pred, true)
-print(f"MSE: {mse:.4f}")  # 큰 오차(8→5)가 제곱으로 강조됨
-
-# MAE: L = (1/n) Σ |ŷ - y|
-mae = nn.L1Loss()(pred, true)
-print(f"MAE: {mae:.4f}")  # 이상치(8→5)에 덜 민감
-
-# Huber Loss: 작으면 MSE, 크면 MAE
+mse = nn.MSELoss()(pred, true)          # 큰 오차(8→5)가 제곱으로 강조된다
+mae = nn.L1Loss()(pred, true)           # 같은 오차를 선형으로 센다
 huber = nn.HuberLoss(delta=1.0)(pred, true)
-print(f"Huber: {huber:.4f}")  # MSE와 MAE의 장점 결합
+print(f"MSE {mse:.4f} / MAE {mae:.4f} / Huber {huber:.4f}")
 ```
 
-| 손실함수 | 공식 | 이상치 민감도 | 미분 |
-|---------|------|-------------|------|
-| MSE | Σ(ŷ-y)²/n | 높음 (제곱) | 매끄러움 |
-| MAE | Σ\|ŷ-y\|/n | 낮음 | 0에서 불연속 |
-| Huber | 조건부 MSE/MAE | 중간 | 매끄러움 |
+| 손실 | 기울기 | 최적 상수 | 이상치 |
+| --- | --- | --- | --- |
+| MSE | 오차에 비례 | 평균 | 크게 끌린다 |
+| MAE | 부호만 | 중앙값 | 거의 안 끌린다 |
+| Huber | $$\delta$$ 까지 비례, 그 위는 상수 | 그 사이 | 경계 밖은 선형 |
 
-실전 선택: 이상치가 없으면 MSE, 이상치가 많으면 MAE, 둘 다 걱정되면 Huber.
+## 분류 손실: 확률을 재는 자
 
-## 이진 분류: BCE
+### 로그 손실이 벌하는 방식
 
-이진 분류(0/1 출력)에는 **Binary Cross-Entropy**(BCE)를 쓴다.
+분류 손실의 뼈대는 $$-\log p$$ 하나다. 정답 클래스에 준 확률이 $$p$$ 일 때 그 로그에 음수를 붙인 값이 손실이다. 숫자를 넣어 보면 성격이 보인다 — $$p = 0.9$$ 면 0.105, $$p = 0.5$$ 면 0.693, $$p = 0.1$$ 이면 2.303, $$p = 0.01$$ 이면 4.605다.
+
+**확신에 찬 오답의 비용이 발산한다.** 정답에 0.01을 준 샘플 하나가 0.9를 준 샘플 마흔넷과 맞먹는다. 이것이 Cross-Entropy가 가진 성질이고, 라벨이 잘못 붙은 데이터가 학습을 흔드는 이유이기도 하다. 모델이 맞게 예측했는데 라벨이 틀렸다면 그 샘플은 「확신에 찬 오답」으로 계산되어 가장 큰 벌을 받는다.
+
+### 로짓으로 계산하는 이유
+
+확률을 먼저 만들고 로그를 씌우면 수치가 무너진다. 시그모이드 출력이 0에 아주 가까울 때 `log(0)`은 음의 무한대가 되고, 큰 로짓에서 `exp`는 넘친다. 그래서 프레임워크는 시그모이드·소프트맥스와 로그를 **한 연산 안에서** 처리하는 손실을 따로 둔다. `BCEWithLogitsLoss`와 `CrossEntropyLoss`가 그것이다.
+
+여기서 나오는 가장 흔한 실수가 **소프트맥스를 두 번 먹이는 것**이다. 모델의 마지막 층에 `nn.Softmax`를 붙여 두고 `CrossEntropyLoss`를 쓰면, 손실이 이미 확률인 값에 소프트맥스를 한 번 더 씌운다. 학습이 완전히 멈추지는 않고 **느려지기만 해서** 알아채기 어렵다. 손실 함수 이름에 `WithLogits`나 `CrossEntropy`가 들어가면 모델은 로짓을 그대로 내보내야 한다.
 
 ```python
-# BCEWithLogitsLoss = sigmoid + BCE (수치적으로 더 안정)
-# logits: sigmoid 이전 값 (제한 없음)
-logits  = torch.tensor([2.0, -1.5, 0.5, -0.3])
-labels  = torch.tensor([1.0,  0.0, 1.0,  0.0])
+logits = torch.tensor([2.0, -1.5, 0.5, -0.3])
+labels = torch.tensor([1.0,  0.0, 1.0,  0.0])
 
 bce = nn.BCEWithLogitsLoss()(logits, labels)
-print(f"BCE: {bce:.4f}")
 
-# 클래스 불균형 대응: pos_weight
-# 양성:음성 = 1:10 → pos_weight=10으로 균형 보정
-pos_weight = torch.tensor([10.0])
-bce_balanced = nn.BCEWithLogitsLoss(pos_weight=pos_weight)(logits, labels)
+# 양성:음성 = 1:10 이면 pos_weight로 균형을 잡는다
+bce_balanced = nn.BCEWithLogitsLoss(pos_weight=torch.tensor([10.0]))(logits, labels)
 
-# 공식: L = -[y·log(σ(x)) + (1-y)·log(1-σ(x))]
-```
-
-## 다중 분류: Cross-Entropy
-
-3개 이상 클래스를 분류할 때 **Cross-Entropy Loss**를 쓴다. PyTorch의 `CrossEntropyLoss`는 Softmax + Log + NLL을 한 번에 처리한다.
-
-```python
-# CrossEntropyLoss: logits → softmax → log → NLL
-# 배치 4, 클래스 10
-logits  = torch.randn(4, 10)
+logits_mc = torch.randn(4, 10)             # 배치 4, 클래스 10
 targets = torch.randint(0, 10, (4,))
+ce = nn.CrossEntropyLoss()(logits_mc, targets)
 
-ce_loss = nn.CrossEntropyLoss()(logits, targets)
-print(f"CE: {ce_loss:.4f}")
-
-# 클래스 가중치: 불균형 클래스에 가중치 부여
 weights = torch.ones(10)
-weights[3] = 5.0  # 3번 클래스가 희귀 → 5배 가중치
-ce_weighted = nn.CrossEntropyLoss(weight=weights)(logits, targets)
-
-# 레이블 스무딩 (LLM 학습에서 중요)
-# 완전한 one-hot 대신 (1-ε)를 정답에, ε/(K-1)을 나머지에 분배
-ce_smooth = nn.CrossEntropyLoss(label_smoothing=0.1)(logits, targets)
+weights[3] = 5.0                           # 3번 클래스가 희귀하다
+ce_weighted = nn.CrossEntropyLoss(weight=weights)(logits_mc, targets)
+ce_smooth = nn.CrossEntropyLoss(label_smoothing=0.1)(logits_mc, targets)
 ```
 
-LLM의 언어 모델링은 다음 토큰을 맞추는 거대한 다중 분류 문제다. 어휘 크기 50257(GPT-2)이나 128000(LLaMA-3)개 클래스 중 다음 토큰을 예측한다.
+### 불균형을 다루는 손잡이 셋
 
-![손실 함수 전체 지도](/assets/posts/ai-loss-functions-overview.svg)
+손잡이가 셋인데 하는 일이 서로 다르다.
 
-## Focal Loss: 클래스 불균형의 해결사
+| 손잡이 | 무엇을 바꾸나 | 언제 |
+| --- | --- | --- |
+| `pos_weight` | 양성 샘플의 손실 배수 | 이진 분류에서 양성이 드물 때 |
+| `weight` | 클래스별 손실 배수 | 다중 분류에서 클래스가 기울었을 때 |
+| `label_smoothing` | 정답 분포를 무디게 | 과확신을 억제하고 싶을 때 |
 
-객체 탐지에서 배경 영역이 객체보다 수십 배 많다. 쉬운 음성 샘플이 학습을 지배해 모델이 모든 것을 배경으로 예측하려는 경향이 생긴다.
+앞의 둘은 불균형 대응이고 **`label_smoothing`은 정규화**다. 정답에 1.0 대신 $$1-\epsilon$$ 을 주고 나머지 $$\epsilon$$ 을 다른 클래스에 나눠 주면, 모델이 정답 로짓을 무한히 키우려는 유인이 사라진다. 언어 모델 학습에서 기본으로 쓰는 이유가 이것이다 — 다음 토큰이 하나로 정해지지 않는 자리가 대부분인데 one-hot 라벨은 그렇지 않다고 가르친다.
+
+### Focal Loss와 쉬운 샘플
+
+객체 탐지에서는 배경 영역이 객체보다 수십 배 많다. 배경 하나하나의 손실은 작지만 개수가 압도적이라 합이 학습을 지배하고, 모델은 전부 배경이라고 답하는 쪽으로 기운다. **Focal Loss**는 Cross-Entropy에 $$(1-p_t)^\gamma$$ 를 곱해 이미 잘 맞히는 샘플의 기여를 낮춘다.
+
+$$\gamma = 2$$ 일 때 정답 확률 0.9인 샘플의 가중치는 $$(1-0.9)^2 = 0.01$$ 로 100분의 1이 되고, 0.5인 샘플은 0.25로 4분의 1이 된다. 쉬운 것을 지우는 것이 아니라 **어려운 것의 상대적 목소리를 키우는** 장치다. $$\gamma = 0$$ 이면 원래의 Cross-Entropy로 돌아온다.
 
 ```python
 def focal_loss(logits, targets, gamma=2.0, alpha=0.25):
-    """Focal Loss: 쉬운 샘플 가중치 감소, 어려운 샘플 가중치 증가"""
     ce = F.cross_entropy(logits, targets, reduction='none')
-    pt = torch.exp(-ce)  # 예측 확률 (잘 맞힌 샘플은 높음)
-    
-    # (1-pt)^gamma: 잘 맞히는 샘플의 기여도 감소
-    focal_weight = (1 - pt) ** gamma
-    return (alpha * focal_weight * ce).mean()
-
-# gamma=0: 일반 Cross-Entropy
-# gamma=2: 잘 분류된 샘플은 거의 영향 없음, 어려운 샘플에 집중
-logits  = torch.randn(8, 5)
-targets = torch.randint(0, 5, (8,))
-print(f"Focal Loss: {focal_loss(logits, targets):.4f}")
+    pt = torch.exp(-ce)                    # 정답 클래스에 준 확률
+    return (alpha * (1 - pt) ** gamma * ce).mean()
 ```
 
-## KL 발산: 생성 모델의 손실
+![손실 함수 전체 지도](/assets/posts/ai-loss-functions-overview.svg)
 
-VAE(Variational Autoencoder)에서 잠재 공간 분포를 정규분포에 가깝게 만드는 데 KL 발산을 사용한다.
+## 분포를 맞추는 손실
+
+### KL 발산과 VAE
+
+앞의 손실들이 값 하나를 재는 자였다면, **KL 발산**(Kullback-Leibler Divergence)은 분포와 분포 사이의 거리를 잰다. 정확히는 거리가 아니라 방향에 따라 값이 달라지는 비대칭 양이고, 뜻은 「$$q$$ 로 근사했을 때 치르는 추가 비용」이다.
+
+VAE는 이 값을 손실의 절반으로 쓴다. 재구성 손실은 「입력을 얼마나 되살렸는가」를, KL 항은 「잠재 분포가 정규분포에서 얼마나 벗어났는가」를 잰다. 앞만 쓰면 잠재 공간이 훈련 샘플마다 뿔뿔이 흩어져 새 샘플을 뽑을 수 없고, 뒤만 쓰면 입력을 무시한 채 정규분포만 흉내 낸다. 두 항의 저울이 곧 생성 모델의 성격이 되고, 그 저울에 계수를 달아 조절하는 것이 $$\beta$$-VAE다.
 
 ```python
-# VAE 손실: 재구성 손실 + KL 발산
 def vae_loss(recon_x, x, mu, log_var):
-    """VAE 손실 함수"""
-    # 재구성 손실 (BCE)
-    recon_loss = F.binary_cross_entropy(recon_x, x, reduction='sum')
-    
-    # KL 발산: q(z|x)~N(μ,σ²) vs p(z)~N(0,1)
-    # KL = -0.5 * Σ(1 + log(σ²) - μ² - σ²)
-    kl_loss = -0.5 * torch.sum(1 + log_var - mu.pow(2) - log_var.exp())
-    
-    return recon_loss + kl_loss
-
-# RLHF에서도 KL: 현재 정책과 참조 정책의 차이를 제약으로 사용
-# reward_loss = reward - β·KL(π_θ ‖ π_ref)
+    recon = F.binary_cross_entropy(recon_x, x, reduction='sum')
+    # KL(q(z|x) ‖ N(0,1)) = -0.5 · Σ(1 + log σ² - μ² - σ²)
+    kl = -0.5 * torch.sum(1 + log_var - mu.pow(2) - log_var.exp())
+    return recon + kl
 ```
 
-## 대조 손실: 임베딩 학습의 핵심
+### RLHF의 KL 제약
 
-CLIP, SimCLR 같은 모델은 비슷한 데이터는 임베딩 공간에서 가깝게, 다른 데이터는 멀게 만드는 **대조 손실**(Contrastive Loss)을 사용한다.
+같은 KL이 정렬 학습에서는 **제약**으로 쓰인다. 보상 모델의 점수만 최대화하면 정책이 보상 모델의 허점을 찾아가는 쪽으로 흘러가고(보상 해킹), 문장이 사람이 읽을 수 없는 형태로 무너진다. 그래서 목적을 $$r - \beta \cdot \mathrm{KL}(\pi_\theta \Vert \pi_{\text{ref}})$$ 로 두어 **원래 모델에서 멀어지는 것 자체에 값을 매긴다.**
+
+이 자리에서 KL은 손실이 아니라 정규화 항이다. 아래 「손실에 항을 더하는 정규화」와 정확히 같은 꼴이며, 다만 억제하는 대상이 가중치의 크기가 아니라 정책의 이동 거리일 뿐이다.
+
+### 대조 손실과 온도
+
+CLIP과 SimCLR은 정답 라벨 없이 **무엇과 무엇이 짝인지**만으로 학습한다. InfoNCE는 배치 안의 짝지은 쌍을 정답으로, 나머지 조합을 오답으로 두고 Cross-Entropy를 매긴다. 그래서 **배치 크기가 곧 음성 샘플의 개수**이고, 대조 학습이 큰 배치를 요구하는 이유가 여기 있다.
+
+온도 $$\tau$$ 는 유사도를 나누는 값이다. 작을수록 소프트맥스가 뾰족해져 가장 비슷한 오답 하나에 벌이 집중되고, 클수록 여러 오답에 고르게 퍼진다. CLIP이 0.07 부근을 쓰는 것은 「가장 헷갈리는 것부터 떼어 놓겠다」는 선택이다.
 
 ```python
 def infonce_loss(image_emb, text_emb, temperature=0.07):
-    """InfoNCE Loss (CLIP 스타일)"""
-    # 정규화
     image_emb = F.normalize(image_emb, dim=-1)
-    text_emb  = F.normalize(text_emb,  dim=-1)
-    
-    # 유사도 행렬 (배치 내 모든 이미지-텍스트 쌍)
-    logits = image_emb @ text_emb.T / temperature  # [B, B]
-    
-    # 대각선이 정답 쌍 (같은 인덱스끼리 매칭)
-    labels = torch.arange(logits.size(0))
-    loss_i = F.cross_entropy(logits, labels)       # 이미지→텍스트
-    loss_t = F.cross_entropy(logits.T, labels)     # 텍스트→이미지
-    return (loss_i + loss_t) / 2
+    text_emb = F.normalize(text_emb, dim=-1)
+    logits = image_emb @ text_emb.T / temperature      # [B, B]
+    labels = torch.arange(logits.size(0))              # 대각선이 정답 쌍
+    return (F.cross_entropy(logits, labels) + F.cross_entropy(logits.T, labels)) / 2
 ```
 
-![주요 손실 함수 PyTorch 구현](/assets/posts/ai-loss-functions-code.svg)
+## 손실에 항을 더하는 정규화
 
-## 손실 함수 선택 가이드
+### 가중치 감쇠가 더하는 항
 
-손실 함수를 고를 때 순서가 있다.
+여기서부터가 정규화다. 가장 단순한 것은 손실에 파라미터의 제곱 합을 더하는 것이다.
 
-1. **예측 목표**: 연속값이면 회귀 손실, 클래스이면 분류 손실
-2. **출력 형태**: sigmoid → BCE, softmax → CE, 원점 대칭 → MSE/Huber
-3. **데이터 특성**: 이상치 많으면 MAE/Huber, 클래스 불균형이면 Focal/가중치
+$$
+L_{\text{total}} = L + \lambda \sum_i w_i^2
+$$
 
-LLM과 생성 모델은 대부분 Cross-Entropy 또는 그 변형을 쓰지만, 생성 다양성(다음 단계에서 배울 온도), 인간 선호(RLHF reward), 안전성(KL 제약) 등을 다루기 위해 손실을 조합한다.
+미분하면 각 가중치의 기울기에 $$2\lambda w_i$$ 가 더해진다. 부호가 가중치와 같으므로 **매 스텝 가중치를 원점 쪽으로 조금씩 당긴다** — 그래서 이름이 감쇠(decay)다. 데이터가 그 가중치를 계속 밀어 올리지 않는 한 값은 0으로 흘러간다.
+
+$$\lambda$$ 는 저울이다. 데이터가 말하는 것과 「가중치는 작아야 한다」는 우리 쪽 믿음 사이의 비율이고, 보통 $$10^{-4}$$ 에서 $$10^{-2}$$ 사이를 쓴다. 가중치가 작으면 입력이 조금 달라져도 출력이 크게 흔들리지 않으므로, 훈련 데이터의 잡음까지 따라 그리는 일이 줄어든다.
+
+### L1과 희소성
+
+제곱 대신 절댓값을 더하면 성격이 달라진다. $$|w|$$ 의 기울기는 부호뿐이라 **가중치가 0에 가까워져도 당기는 힘이 그대로다.** 그래서 쓸모없는 가중치를 정확히 0으로 보낸다. 반면 L2의 당기는 힘은 $$2\lambda w$$ 라 가중치가 작아질수록 함께 작아지고, 0에는 닿지 않는다.
+
+**희소성이 필요하면 L1, 안정적인 축소가 필요하면 L2다.** 특성이 수천 개인데 실제로 쓰이는 것이 몇십 개일 것 같은 표 데이터에서는 L1이 특성 선택을 겸한다. 딥러닝의 기본값이 L2인 것은 신경망의 가중치가 원래 협력해서 하나의 표현을 만들기 때문에, 개별 가중치를 0으로 끄는 것이 이득인 경우가 드물어서다.
+
+### 감쇠에서 빼는 파라미터
+
+**모든 파라미터를 감쇠시키면 안 된다.** 편향(bias)과 정규화 층의 스케일 파라미터는 빼는 것이 관례다. 정규화 층의 $$\gamma$$ 는 정규화된 값을 다시 키우는 손잡이인데 이것을 0으로 당기면 그 층의 출력이 통째로 죽는다. 편향은 개수가 적어 과적합에 거의 기여하지 않으면서 출력의 기준점을 옮기는 역할이라 억제할 이유가 없다.
+
+```python
+import torch.optim as optim
+
+no_decay = ['bias', 'LayerNorm.weight', 'layernorm.weight']
+groups = [
+    {'params': [p for n, p in model.named_parameters()
+                if not any(k in n for k in no_decay)], 'weight_decay': 1e-2},
+    {'params': [p for n, p in model.named_parameters()
+                if any(k in n for k in no_decay)], 'weight_decay': 0.0},
+]
+optimizer = optim.AdamW(groups, lr=3e-4)
+```
+
+### Adam과 AdamW가 갈리는 자리
+
+L2 항을 손실에 넣는 것과 옵티마이저가 가중치를 직접 줄이는 것은 SGD에서는 같은 일이지만 **Adam에서는 다르다.** 손실에 넣으면 그 항이 기울기에 섞여 $$\sqrt{\hat v}$$ 로 함께 나뉘고, 그러면 기울기가 큰 파라미터는 감쇠를 거의 안 받고 작은 파라미터만 짓눌린다. 같은 $$\lambda$$ 를 걸어도 파라미터마다 실제 감쇠량이 달라진다는 뜻이다.
+
+AdamW는 감쇠를 기울기에서 떼어 내 갱신 마지막에 따로 적용한다. 두 줄 차이지만 $$\lambda$$ 라는 손잡이가 뜻대로 동작하느냐가 갈린다. 수치로 확인한 것은 [Adam을 모멘트에서 세우기](/articles/math-adam-from-moments)에 있다.
+
+![L1·L2 정규화와 드롭아웃 구현](/assets/posts/ai-regularization-l1l2.svg)
+
+## 손실 밖에서 억제하는 것들
+
+### 학습을 멈추는 조기 종료
+
+훈련을 오래 돌리면 어느 시점부터 훈련 손실은 계속 내려가는데 검증 손실이 올라간다. 그 지점이 모델이 데이터의 규칙 대신 잡음을 외우기 시작한 자리다. **조기 종료**는 검증 손실이 몇 에폭 연속 나아지지 않으면 멈추고 가장 좋았던 가중치로 되돌린다.
+
+「몇 에폭 동안 참을 것인가」(patience)가 유일한 손잡이다. 너무 짧으면 학습률이 잠시 흔들린 구간을 과적합으로 오해하고, 너무 길면 되돌릴 체크포인트를 오래 들고 있어야 한다. 그리고 **가장 좋았던 가중치를 저장해 두지 않으면 조기 종료는 반쪽이다** — 멈추기만 하면 이미 나빠진 상태로 끝난다.
+
+```python
+best, patience, no_improve = float('inf'), 5, 0
+
+for epoch in range(1000):
+    train_epoch(model, train_loader, optimizer, criterion)
+    val_loss = evaluate(model, val_loader, criterion)
+
+    if val_loss < best:
+        best, no_improve = val_loss, 0
+        torch.save(model.state_dict(), 'best.pt')
+    else:
+        no_improve += 1
+        if no_improve >= patience:
+            model.load_state_dict(torch.load('best.pt'))   # 최적으로 되돌린다
+            break
+```
+
+### 데이터를 늘리는 증강
+
+**데이터 증강**은 기존 데이터를 변환해 학습 데이터를 늘린다. 하지만 실제로 하는 일은 개수를 늘리는 것이 아니라 **불변성을 주입하는 것**이다. 좌우를 뒤집어도 같은 라벨이라고 가르치면 「좌우가 바뀌어도 고양이는 고양이」라는 지식이 모델에 들어간다. 정규화로 분류되는 이유가 이것이다 — 모델이 가질 수 있는 함수의 범위를 우리가 아는 만큼 좁힌다.
+
+그래서 **허용되는 변환은 도메인이 정한다.** 손글씨 숫자를 180도 돌리면 6이 9가 되므로 회전 증강을 함부로 쓸 수 없고, 의료 영상에서 좌우 뒤집기는 장기의 위치를 바꾼다. 텍스트에서는 동의어 교체와 역번역이, LLM 미세조정에서는 합성 데이터 생성이 같은 자리에 선다.
+
+```python
+from torchvision import transforms
+
+train_transform = transforms.Compose([
+    transforms.RandomHorizontalFlip(p=0.5),
+    transforms.RandomRotation(degrees=15),
+    transforms.ColorJitter(brightness=0.2, contrast=0.2),
+    transforms.RandomCrop(224, padding=28),
+    transforms.ToTensor(),
+    transforms.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225]),
+])
+```
+
+### 구조가 맡는 몫
+
+나머지 정규화는 손실을 건드리지 않고 **순전파 자체를 바꾼다.** 드롭아웃은 학습 중 뉴런 일부를 꺼서 매 스텝 다른 서브네트워크를 훈련하고, 배치 정규화와 레이어 정규화는 활성값의 분포를 고르게 만들어 학습을 안정시킨다. 셋 다 부수 효과로 과적합을 억제하지만 원래 목적과 동작하는 층위가 달라, 각각 [드롭아웃](/articles/nn-dropout)과 [배치 정규화](/articles/nn-batch-normalization)에서 따로 다룬다.
+
+여기서 기억할 것은 **자리다.** 손실에 항을 더하는 것(가중치 감쇠·레이블 스무딩·KL 제약), 학습 절차를 바꾸는 것(조기 종료), 데이터를 바꾸는 것(증강), 구조를 바꾸는 것(드롭아웃·정규화 층) — 네 층위가 있고 서로 대체재가 아니다.
+
+![과적합 vs 과소적합 vs 적절한 적합](/assets/posts/ai-regularization-overfitting.svg)
+
+## 고르는 순서와 조합
+
+### 손실 고르기
+
+앞의 세 물음을 순서대로 답하면 대개 하나가 남는다. 예측 대상이 연속값이고 이상치가 있으면 Huber, 클래스이고 로짓을 내보내면 `CrossEntropyLoss`, 클래스가 크게 기울었으면 가중치를 먼저 걸고 그래도 배경이 지배하면 Focal이다. LLM과 생성 모델도 뼈대는 Cross-Entropy이고, 거기에 다양성·선호·안전을 다루는 항이 붙는다.
+
+### 정규화 쌓는 순서
+
+정규화는 한꺼번에 켜지 않는다. **하나씩 켜고 검증 곡선이 어떻게 움직이는지 본다.** 순서는 대개 데이터 증강 → 가중치 감쇠 → 조기 종료 → 드롭아웃이다. 앞의 둘이 값이 싸고 부작용이 적으며, 드롭아웃은 학습을 느리게 만들고 정규화 층과 함께 쓰면 서로 간섭하는 경우가 있어 마지막에 놓는다.
+
+과소적합인데 정규화를 더 거는 것이 가장 흔한 실수다. **훈련 손실 자체가 안 내려가면 그건 정규화로 풀 문제가 아니다** — 모델을 키우거나 특성을 늘려야 한다. 훈련 손실은 잘 내려가는데 검증 손실만 벌어질 때가 정규화의 자리다.
+
+다음 글에서는 한 걸음 뒤로 물러나, 지금까지 당연하게 「정답 라벨이 있다」고 두었던 전제를 들여다본다. 라벨이 있느냐 없느냐가 알고리즘 선택과 데이터 수집 방식을 어떻게 가르는지가 주제다.
 
 ---
 
 읽어주셔서 감사합니다. 😊
 
-**다음 글:** [정규화: 과적합을 막는 AI의 방패](/articles/ai-regularization)
+**다음 글:** [지도학습 vs 비지도학습: 머신러닝의 두 패러다임](/articles/ml-supervised-vs-unsupervised)

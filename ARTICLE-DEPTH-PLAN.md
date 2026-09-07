@@ -124,15 +124,13 @@ done | sort -rn | head -20
 
 합치기 계획을 따로 검증해서 나온 것들이다. 해당 항목을 집을 때 함께 본다.
 
-- **`src/data/certs.ts`의 `studyPath`가 사라질 슬러그를 16자리에서 부른다**
+- **`src/data/certs.ts`의 `studyPath`가 사라질 슬러그를 15자리에서 부른다**
   (`ml-logistic-regression` 3, `rag-architecture` 3, `ml-cross-validation` 2,
-  `serving-cost-optimization` 2, `project-prompt-iterating` 2, `ai-regularization`,
+  `serving-cost-optimization` 2, `project-prompt-iterating` 2,
   `pytorch-training-loop`, `cv-image-classification-deep`, `agent-mcp-protocol` 각 1).
   `src/data/certs.test.ts`가 없는 슬러그를 잡으므로 안 고치면 `npm test`가 선다.
   **남길 슬러그가 같은 `studyPath` 묶음에 이미 있으면 갈아 끼우지 말고 줄을 지운다** —
   같은 글이 두 번 걸린다.
-- **`src/data/categories.test.ts`의 예외 목록**에 `ai-regularization` 줄이 있다.
-  그 글을 흡수하면 예외도 뺀다.
 - **사이에 다른 글이 낀 합치기가 15자리다**(ml-ops 7, agents-rag 4, llm-core 2,
   build-with-ai 1, domain-models 1). 「지난 글 / 다음 글」 한 줄 교체로 안 끝나고,
   낀 글의 도입부까지 세 자리를 고쳐야 한다.
@@ -169,7 +167,6 @@ sed -n "/^### deep-learning$/,/^### /p" ARTICLE-DEPTH-PLAN.md
 
 | 남길 글 | 흡수할 글 | 합친 뒤 제목(제안) |
 | --- | --- | --- |
-| `ai-loss-functions` | `ai-regularization` | 손실 함수와 정규화: 무엇을 최소화하고 무엇을 억제하는가 |
 | `ml-linear-regression` | `ml-logistic-regression` | 선형 모델: 선형 회귀와 로지스틱 회귀 |
 | `ml-train-val-test` | `ml-cross-validation` | 데이터 분할과 교차 검증: 성능을 정직하게 재는 법 |
 | `ml-bias-variance` | `ml-overfitting` | 편향과 분산: 과소적합·과대적합의 진단과 처방 |
@@ -178,10 +175,6 @@ sed -n "/^### deep-learning$/,/^### /p" ARTICLE-DEPTH-PLAN.md
 | `rnn-lstm` | `rnn-gru` · `rnn-bidirectional` | LSTM·GRU·양방향 RNN: 게이트와 방향으로 RNN 고치기 |
 | `rnn-attention` | `rnn-limitations` | Attention: Seq2Seq 병목에서 Transformer로 |
 
-- **`ai-loss-functions` ← ai-regularization** — `ai-regularization` 1,570자 중 다섯 절(드롭아웃·배치 정규화·레이어 정규화·조기 종료·데이터 증강)이 뒤에 오는 `nn-dropout`·`nn-batch-normalization`·`nn-layer-normalization`·`ml-overfitting`을 한 문단씩으로 줄여 되풀이한다. BatchNorm·LayerNorm·GroupNorm·RMSNorm 비교표는 `nn-layer-normalization`의 표와 행까지 겹치고, 첫 절 '편향-분산 트레이드오프'는 `ml-bias-variance`가 다시 한다. 남는 고유한 것은 '손실에 패널티 항을 더한다'는 발상 하나뿐이라 손실 함수 글의 뒷절이 제자리다. 사슬 #1→#2로 붙어 있고 둘 다 2026-04-28이라 이어 붙이기도 안전하다.
-  - `ai-regularization`: 도입부를 다시 쓸 글 — `ml-supervised-vs-unsupervised` 도입부
-  - `ai-regularization`: 본문 링크 — `src/content/articles/math-adam-from-moments.md`:186
-  - `ai-regularization`: `src/data/certs.ts`의 studyPath 1자리
 - **`ml-linear-regression` ← ml-logistic-regression** — 998자·1,028자로 카테고리에서 가장 얇은 축이고 뼈대가 똑같다 — 선형 결합 wx+b, 손실(MSE/BCE), sklearn 구현, PyTorch 처음부터 구현, 정규화(Ridge·Lasso / C 파라미터), 그리고 '신경망의 선형 레이어(출력 레이어)가 곧 이것'이라는 마지막 결론까지 겹친다. 로지스틱 글은 아예 첫 절이 '왜 선형 회귀로 분류하면 안 될까'라 앞 글을 다시 설명하며 시작한다. 한 편이면 '같은 선형 결합에 무엇을 씌우느냐가 회귀와 분류를 가른다'를 한 번에 보인다.
   - `ml-logistic-regression`: 도입부를 다시 쓸 글 — `ml-knn` 도입부
   - `ml-logistic-regression`: `src/data/certs.ts`의 studyPath 3자리

@@ -458,7 +458,7 @@ export const certs: Cert[] = [
           { site: 'ailab', slug: 'math-basics-hypothesis-testing-logic' },
           { site: 'ailab', slug: 'ml-classification-metrics' },
           { site: 'ailab', slug: 'ml-roc-auc' },
-          { site: 'ailab', slug: 'ai-regularization' },
+          { site: 'ailab', slug: 'ai-loss-functions' },
         ],
       },
     ],

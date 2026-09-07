@@ -91,7 +91,6 @@ const prefixRules: [prefix: string, categoryId: CategoryId][] = [
 const exceptions: Record<string, CategoryId> = {
   // `ai-`로 시작해도 신경망 학습 기본기입니다.
   'ai-loss-functions': 'deep-learning',
-  'ai-regularization': 'deep-learning',
   // 검색에 쓰는 벡터를 다룹니다.
   'embedding-sentence': 'agents-rag',
   'embedding-multimodal': 'agents-rag',

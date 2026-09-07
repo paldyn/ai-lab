@@ -58,8 +58,7 @@ draft: false             # true면 목록·프리렌더에서 빠진다
   `ai-guide`를 14편으로 줄이고 나머지를 넷으로 나눴다.
   표만으로 안 갈리는 자리가 셋 있고, 어긋나는 글 여섯 편은
   `src/data/categories.test.ts`가 예외 목록으로 들고 있다:
-  - `ai-`로 시작해도 신경망 학습 기본기면 `deep-learning`이다 —
-    `ai-loss-functions`·`ai-regularization` 둘.
+  - `ai-`로 시작해도 신경망 학습 기본기면 `deep-learning`이다 — `ai-loss-functions`.
   - `embedding-`은 다루는 것이 **단어·문장을 벡터로 만드는 학습**이면 `deep-learning`
     (word2vec·GloVe·FastText·ELMo), **검색에 쓰는 벡터**면 `agents-rag`
     (SBERT·멀티모달 검색). 본문에 검색·벡터 DB가 안 나오면 앞쪽이다.
