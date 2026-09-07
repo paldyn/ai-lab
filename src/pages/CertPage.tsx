@@ -215,23 +215,96 @@ function Fact({ label, value }: { label: string; value?: string }) {
 
   const text = value.replace(/\*\*/g, "");
   const at = text.search(/\.\s/);
-  const lead = at > 0 ? text.slice(0, at + 1) : "";
+  const lead = at > 0 && at + 1 <= 40 ? text.slice(0, at + 1) : "";
+  /*
+    **한 칸에 다섯 문장이 들어가는 자리라 줄로 폅니다.** 응시료 한 줄에 금액과 납부
+    방법과 환불 기준이 이어 붙어 있어, 찾는 것이 어디 있는지 문단을 통째로 읽어야
+    했습니다. 문장마다 줄을 나누면 표의 칸이 목록처럼 읽힙니다.
+  */
+  const rest = sentences(lead ? text.slice(at + 2) : text);
 
   return (
     <tr>
       <th scope="row">{label}</th>
       <td>
-        {lead && lead.length <= 40 ? (
-          <>
-            <strong className="cert-fact-lead">{lead}</strong>{" "}
-            {text.slice(at + 2)}
-          </>
-        ) : (
-          text
-        )}
+        {lead && <strong className="cert-fact-lead">{lead}</strong>}
+        {rest.map((line) => (
+          <span key={line} className="cert-fact-line">
+            {line}
+          </span>
+        ))}
       </td>
     </tr>
   );
+}
+
+/**
+ * 문장 단위로 끊습니다. 마침표 뒤에 공백이 오는 자리만 자르므로 `schedule.do)에서`
+ * 같은 주소 한가운데는 안 끊깁니다.
+ */
+function sentences(text: string): string[] {
+  return text
+    .split(/(?<=[.?!])\s+/)
+    .map((line) => line.trim())
+    .filter(Boolean);
+}
+
+/**
+ * 과목이 다루는 것.
+ *
+ * 시행처 출제범위는 「세부항목: 주요항목(세부, 세부), 주요항목(세부)」 꼴이라 한 칸에
+ * 그대로 넣으면 서너 줄짜리 문단이 됩니다. 주요항목마다 줄을 나누면 그 과목이 몇
+ * 덩어리인지가 먼저 보입니다.
+ *
+ * **꼴이 다르면 손대지 않습니다.** 괄호 짝이 안 맞거나 「세부항목:」이 없는 자격증도
+ * 있어서, 갈라지지 않으면 원문을 그대로 씁니다 — 반쯤 자른 문장을 내보내는 것보다 낫습니다.
+ */
+function SubjectTopics({ note }: { note?: string }) {
+  if (!note) return null;
+
+  const labeled = note.startsWith("세부항목:");
+  const parts = splitTopLevel(note.replace(/^세부항목:\s*/, ""));
+  if (parts.length < 2) return <>{note}</>;
+
+  return (
+    <ul className="cert-subject-topics">
+      {parts.map((part) => {
+        const matched = labeled ? /^([^(]+)(?:\(([^)]*)\))?$/.exec(part) : null;
+        return (
+          <li key={part}>
+            {matched ? (
+              <>
+                <b>{matched[1].trim()}</b>
+                {matched[2] && <span> {matched[2].trim()}</span>}
+              </>
+            ) : (
+              part
+            )}
+          </li>
+        );
+      })}
+    </ul>
+  );
+}
+
+/** 괄호 밖의 쉼표에서만 자릅니다 — 괄호 안의 세부항목 목록은 한 덩어리로 둡니다. */
+function splitTopLevel(text: string): string[] {
+  const parts: string[] = [];
+  let depth = 0;
+  let start = 0;
+
+  for (let at = 0; at < text.length; at += 1) {
+    const letter = text[at];
+    if (letter === "(") depth += 1;
+    else if (letter === ")") depth -= 1;
+    else if (letter === "," && depth === 0) {
+      parts.push(text.slice(start, at).trim());
+      start = at + 1;
+    }
+  }
+  parts.push(text.slice(start).trim());
+
+  return parts.filter(Boolean);
 }
 
 /** 시험 정보 한 묶음. 값이 하나도 없으면 표 자체를 세우지 않습니다. */
@@ -468,13 +541,9 @@ function CertView({ cert }: { cert: Cert }) {
             <p className="cert-prose">
               {cert.whatItMeasures.replace(/\*\*/g, "")}
             </p>
+            {/* 소제목 없이 이어 붙입니다 — 두 문단짜리 절에 제목을 달면 그 자체가 눈길을 끊습니다. */}
             {cert.audience && (
-              <>
-                <h3 id="what-audience">누가 보는가</h3>
-                <p className="cert-prose">
-                  {cert.audience.replace(/\*\*/g, "")}
-                </p>
-              </>
+              <p className="cert-prose">{cert.audience.replace(/\*\*/g, "")}</p>
             )}
           </section>
 
@@ -515,7 +584,9 @@ function CertView({ cert }: { cert: Cert }) {
                       <td className="is-weight">{subject.weight ?? "—"}</td>
                     )}
                     {cert.subjects.some((item) => item.note) && (
-                      <td>{subject.note}</td>
+                      <td>
+                        <SubjectTopics note={subject.note} />
+                      </td>
                     )}
                   </tr>
                 ))}

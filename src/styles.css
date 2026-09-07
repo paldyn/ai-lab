@@ -5274,8 +5274,34 @@ input:focus-visible {
   말입니다. 뒤에 붙는 근거 문장과 색·굵기로 갈라 둡니다.
 */
 .cert-fact-lead {
+  display: block;
+  margin-bottom: 4px;
   color: var(--text-strong);
   font-weight: 600;
+}
+
+/* 근거 문장은 한 줄에 하나씩. 한 칸에 다섯 문장이 이어 붙으면 찾는 것이 안 보입니다. */
+.cert-fact-line {
+  display: block;
+}
+
+.cert-fact-line + .cert-fact-line {
+  margin-top: 4px;
+}
+
+/* 과목이 다루는 것. 주요항목마다 한 줄이고 이름만 굵게 둡니다. */
+.cert-subject-topics {
+  display: grid;
+  gap: 5px;
+}
+
+.cert-subject-topics b {
+  color: var(--text-strong);
+  font-weight: 500;
+}
+
+.cert-subject-topics span {
+  color: var(--text-muted);
 }
 
 /* 시험 정보의 묶음 머리. 절 제목보다 작고 표와 붙여 둡니다. */
