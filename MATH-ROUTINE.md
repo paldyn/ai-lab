@@ -1,6 +1,6 @@
 # 수학 글 작성 루틴 지시서
 
-「PALDYN AI Lab — 수학 글 자동 작성 (신규 3 + 보강 2)」 Routine(`trig_01EX4cwYv2xhrQFpiBbqEj6m`)이
+「PALDYN AI Lab — 수학 글 보강 (하루 4편)」 Routine(`trig_01EX4cwYv2xhrQFpiBbqEj6m`)이
 **실행할 때마다 읽는 지시서**다. Routine에 걸린 프롬프트는 이 파일을 읽으라는 쪽지뿐이니
 **여기만 고치면 된다.**
 
@@ -8,7 +8,8 @@
 
 `---` 아래가 지시다. 위 머리말은 사람이 읽는 자리라 루틴은 건너뛴다.
 
-마지막 갱신: 2026-09-07 (하루 5편 신규에서 신규 3 + 보강 2로 바꿈 — STEP 3 참고)
+마지막 갱신: 2026-09-07 (신규를 멈추고 보강 4편으로 돌림 — 아래 「지금은 새 글을 쓰지 않는다」)
+이전 갱신: 2026-09-07 (하루 5편 신규에서 신규 3 + 보강 2로 바꿈)
 이전 갱신: 2026-09-01 (STEP 1 앞에서 원격 main에 맞춤)
 이전 갱신: 2026-08-23 (중급 분량을 실측에 맞추고 세는 법을 못박음.
 MATH-PLAN.md는 Read 상한을 넘어 grep으로 뽑는다고 적음. 완료 보고에 읽은 파일 목록 추가)
@@ -19,11 +20,20 @@ MATH-PLAN.md는 Read 상한을 넘어 grep으로 뽑는다고 적음. 완료 보
 글은 `src/content/articles/*.md` 한 곳에만 둔다. 작업 규칙은 저장소 루트의
 `CLAUDE.md`에 있으니 시작할 때 한 번 읽는다.
 
-수학 주제로 **새 글 3편**을 쓰고(STEP 1·2), **이미 있는 수학 글 2편을 보강한다**(STEP 3).
+## 지금은 새 글을 쓰지 않는다
 
-2026-09-07까지는 하루 5편을 새로 썼다. 수학 120편은 다른 칸보다 사정이 낫지만
-(산문 중앙값 3,724자, 소절을 쓰는 글 58%) 절만 늘어놓고 소절이 없는 글이 아직
-42%다. 새로 쓰는 몫을 셋으로 줄이고 남은 몫으로 있는 글을 채운다.
+**2026-09-07부터 이 루틴은 하루 4편을 「보강」한다. 새 글은 한 편도 쓰지 않는다.**
+
+수학 120편은 다른 칸보다 사정이 낫지만(산문 중앙값 3,724자, 소절을 쓰는 글 58%)
+절만 늘어놓고 소절이 없는 글이 아직 42%다. 커리큘럼을 더 진도 빼기 전에 이미 쓴 편을
+기준까지 끌어올린다.
+
+그래서 **STEP 1·2(신규 주제 결정과 brief 읽기)와 「신규 1편 작성 순서」는 지금
+건너뛴다.** 지우지 않고 남겨 두는 것은 보강이 끝나면 그날 다시 켤 자리이기 때문이다.
+커리큘럼(`curriculum.ts`)도 `MATH-PLAN.md`도 손대지 않는다 — 새 글은 없어진 것이
+아니라 미뤄진 것이다.
+
+곧바로 **STEP 3으로 간다.**
 
 ## 트랙이 셋이고 쓰는 방식이 서로 다르다
 
@@ -159,16 +169,16 @@ brief에는 다른 글과 겹치는 자리가 명시돼 있다 — "…는 N번�
 
 기존 글을 확인하고 싶으면 `ls src/content/articles/ | grep <키워드>`로 찾아 읽는다.
 
-## STEP 3 — 보강 2편 고르기
+## STEP 3 — 보강 4편 고르기 (여기서 시작한다)
 
-새 글 셋과 별개로 **이미 있는 수학 글 두 편을 손본다.** 무엇을 손볼지는
-`ARTICLE-DEPTH-PLAN.md`가 들고 있다 — 학습 글 534편을 전부 세어 만든 작업 큐다.
+**이미 있는 수학 글 네 편을 손본다.** 무엇을 손볼지는 `ARTICLE-DEPTH-PLAN.md`가
+들고 있다 — 학습 글 534편을 전부 세어 만든 작업 큐다.
 
 ```bash
 sed -n '/^### math-for-ai$/,/^### /p' ARTICLE-DEPTH-PLAN.md
 ```
 
-위에서부터 두 편을 집는다. 목록이 바닥나면 그때는 짧은 편부터다.
+위에서부터 네 편을 집는다. 목록이 바닥나면 그때는 짧은 편부터다.
 
 ```bash
 for f in src/content/articles/math*.md; do
@@ -193,7 +203,7 @@ done | sort -n | head -20
 같은 커밋에 넣는다. **열어 보고 채울 거리가 없으면 억지로 늘리지 않는다** —
 그 줄을 지운 뒤 보고에 「채울 거리 없음」으로 적는다.
 
-## 신규 1편 작성 순서
+## 신규 1편 작성 순서 (지금은 돌지 않는다)
 
 ### A. 수식 표기
 
@@ -444,14 +454,14 @@ npm run build
 ```
 둘 다 통과해야 한다. `npm run build`에서 KaTeX 수식 오류가 잡힌다.
 
-## 다섯 편을 마친 뒤 — 커밋 & main 반영 (필수)
+## 네 편을 마친 뒤 — 커밋 & main 반영 (필수)
 ```bash
 set -e
 TODAY=$(TZ='Asia/Seoul' date +%Y-%m-%d)
 git config user.email "bot@paldyn.com"
 git config user.name "PALDYN Bot"
 git add -A src/content/articles/ public/assets/posts/ ARTICLE-DEPTH-PLAN.md
-git commit -m "post: 수학 글 신규 3편과 보강 2편 ($TODAY)"
+git commit -m "post: 수학 글 보강 4편 ($TODAY)"
 
 REMOTE="https://x-access-token:${GITHUB_TOKEN}@github.com/paldyn/ai-lab.git"
 HEAD_SHA=$(git rev-parse HEAD)
