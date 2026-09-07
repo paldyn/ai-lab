@@ -3094,19 +3094,25 @@ input:focus-visible {
 }
 
 /* 목차 */
-.article-toc ol li.is-sub {
-  padding-left: 12px;
-}
 
 /*
-  지금 보고 있는 절. 목록이 왼쪽 세로선에 붙어 있으므로 그 선 위에 짧은 막대를
-  덧그어 자리를 짚습니다 — 글자만 밝게 하면 긴 목록에서 눈이 못 찾습니다.
-  li의 padding-left(16px)와 선 두께를 감안해 왼쪽으로 17px 밀어 세로선에 겹칩니다.
+  소절 목록. 지금 읽는 절 아래에만 펼쳐지고(components/ArticleToc.tsx), 절과 같은
+  세로선에 매달린 채 글자만 한 칸 들여 부모와 갈라 둡니다 — 들여쓴 것은 글자뿐이라
+  왼쪽의 짚는 막대는 절과 같은 자리에 섭니다.
 */
-/*
-  목차의 하위 항목. 「시험 노트」 아래의 세 묶음이 여기 섭니다 — 번호 없이 한 칸
-  들여 부모와 갈라 둡니다.
-*/
+.article-toc-subs {
+  margin-top: 8px;
+}
+
+.article-toc-subs > li + li {
+  margin-top: 6px;
+}
+
+/* 소절이 펼쳐진 절. 막대는 읽고 있는 소절에 서고 절 이름은 색으로만 남깁니다. */
+.article-toc-item.is-open > a {
+  color: var(--text-strong);
+}
+
 /*
   들여쓰기는 **안쪽 여백으로** 줍니다. `margin`으로 밀면 상자 자체가 옮겨져 왼쪽에
   붙는 지금 위치 표시(`::before`, left: -17px)도 같이 밀립니다 — 글에서는 안 그런데
@@ -3123,25 +3129,21 @@ input:focus-visible {
   제목은 `title`이 들고 있습니다.
 */
 .article-toc-item > a {
+  position: relative;
   display: -webkit-box;
   overflow: hidden;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 2;
 }
 
-/* 과목 이름은 「데이터 준비 (Data Preparation for Machine Learning)」처럼 깁니다. */
-.article-toc-item.is-sub a {
-  display: block;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-
-.article-toc-item {
-  position: relative;
-}
-
-.article-toc-item.is-current::before {
+/*
+  지금 보고 있는 절. 목록이 왼쪽 세로선에 붙어 있으므로 그 선 위에 짧은 막대를
+  덧그어 자리를 짚습니다 — 글자만 밝게 하면 긴 목록에서 눈이 못 찾습니다.
+  막대는 li가 아니라 링크에 답니다. li에 달면 소절이 펼쳐진 절에서 막대가 펼쳐진
+  목록까지 통째로 덮습니다. 링크의 왼쪽 여백 16px과 선 두께를 감안해 17px 밀어
+  세로선에 겹치고, 소절은 글자를 12px 더 들였으므로 그만큼 더 민다.
+*/
+.article-toc-item.is-current > a::before {
   position: absolute;
   top: 2px;
   bottom: 2px;
@@ -3150,6 +3152,10 @@ input:focus-visible {
   border-radius: 1px;
   background: var(--brand);
   content: '';
+}
+
+.article-toc-item.is-sub.is-current > a::before {
+  left: -29px;
 }
 
 /*

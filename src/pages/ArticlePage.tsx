@@ -3,6 +3,7 @@ import { ArrowLeft, ArrowRight, ArrowUpRight } from 'lucide-react';
 import { Link, Navigate, useParams } from 'react-router';
 import { ArticleCard } from '../components/ArticleCard';
 import { ArticleTitleBar } from '../components/ArticleTitleBar';
+import { ArticleToc } from '../components/ArticleToc';
 import { ArticleVisual } from '../components/ArticleVisual';
 import { ImageLightbox } from '../components/ImageLightbox';
 import { useActiveHeading } from '../lib/activeHeading';
@@ -185,16 +186,10 @@ function ArticleView({ article }: { article: Article }) {
   const headingIds = useMemo(() => (body?.headings ?? []).map((heading) => heading.id), [body]);
   const { active: activeHeading, goTo: goToHeading } = useActiveHeading(headingIds);
   /*
-    목차 번호와 띠에 적을 말. 하위 절을 읽는 중이면 그 이름만으로는 어디쯤인지 알 수
-    없어 띠에는 위 절과 함께 적습니다.
+    띠에 적을 말은 지금 짚힌 제목 그대로입니다 — 소절을 읽는 중이면 소절 이름입니다.
+    목차는 절을 늘 세우고 소절은 읽는 절의 것만 펼칩니다(components/ArticleToc.tsx).
   */
-  /*
-    **목차에는 절(`##`)만 세웁니다.** 소절까지 담았더니 글마다 길이가 널을 뛰었습니다 —
-    소절을 쓰는 글이 카테고리에 따라 16%에서 80%까지 갈리고, 스물일곱 줄짜리 목차가
-    나오는 글도 있었습니다. 소절은 본문에서 읽으면 되는 자리입니다.
-  */
-  const headings = (body?.headings ?? []).filter((heading) => heading.depth === 2);
-  const activeCaption = headings.find((heading) => heading.id === activeHeading)?.text;
+  const activeCaption = body?.headings.find((heading) => heading.id === activeHeading)?.text;
 
   useEffect(() => {
     if (body) return undefined;
@@ -293,33 +288,12 @@ function ArticleView({ article }: { article: Article }) {
       <div className="site-divider" />
 
       <div className="site-wrap grid gap-12 py-14 lg:grid-cols-[220px_minmax(0,760px)] lg:justify-center">
-        <aside className="article-toc lg:sticky lg:top-[138px] lg:self-start">
-          <p className="font-mono text-[10px] tracking-[0.12em] text-[var(--text-muted)]">IN THIS NOTE</p>
-          {headings.length > 0 && (
-            <ol className="mt-4 space-y-3 border-l border-[var(--border)] pl-4 text-xs leading-5 text-[var(--text-dim)]">
-              {headings.map((heading) => (
-                <li
-                  key={heading.id}
-                  className={`article-toc-item${heading.id === activeHeading ? ' is-current' : ''}`}
-                >
-                  <a
-                    href={`#${heading.id}`}
-                    title={heading.text}
-                    className="hover:text-[var(--text)]"
-                    aria-current={heading.id === activeHeading ? 'true' : undefined}
-                    onClick={(event) => {
-                      // 새 탭·다운로드 같은 보조 클릭은 브라우저에 맡깁니다.
-                      if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
-                      event.preventDefault();
-                      goToHeading(heading.id);
-                    }}
-                  >
-                    {heading.text}
-                  </a>
-                </li>
-              ))}
-            </ol>
-          )}
+        <ArticleToc
+          label="IN THIS NOTE"
+          headings={body?.headings ?? []}
+          active={activeHeading}
+          goTo={goToHeading}
+        >
           <CurriculumLinks article={article} />
 
           <div className="mt-8 flex flex-wrap gap-2">
@@ -327,7 +301,7 @@ function ArticleView({ article }: { article: Article }) {
               <span key={tag} className="tag-static">#{tag}</span>
             ))}
           </div>
-        </aside>
+        </ArticleToc>
 
         <div className="min-w-0">
           {/*

@@ -2,6 +2,7 @@ import { type ReactNode, useMemo, useRef } from "react";
 import { ArrowLeft, ArrowUpRight } from "lucide-react";
 import { Link, Navigate, useParams } from "react-router";
 import { CertMark } from "../components/CertMark";
+import { ArticleToc } from "../components/ArticleToc";
 import { useActiveHeading } from "../lib/activeHeading";
 import { ArticleTitleBar } from "../components/ArticleTitleBar";
 import { CertStars } from "../components/CertStars";
@@ -482,39 +483,12 @@ function CertView({ cert }: { cert: Cert }) {
         `useActiveHeading`을 그대로 씁니다.
       */}
       <div className="site-wrap grid gap-12 py-14 lg:grid-cols-[220px_minmax(0,760px)] lg:justify-center">
-        <aside className="article-toc lg:sticky lg:top-[138px] lg:self-start">
-          <p className="font-mono text-[10px] tracking-[0.12em] text-[var(--text-muted)]">
-            IN THIS EXAM
-          </p>
-          <ol className="mt-4 space-y-3 border-l border-[var(--border)] pl-4 text-xs leading-5 text-[var(--text-dim)]">
-            {sections.map((section) => (
-              <li
-                key={section.id}
-                className={`article-toc-item${section.id === active ? " is-current" : ""}`}
-              >
-                <a
-                  href={`#${section.id}`}
-                  title={section.title}
-                  className="hover:text-[var(--text)]"
-                  aria-current={section.id === active ? "true" : undefined}
-                  onClick={(event) => {
-                    if (
-                      event.metaKey ||
-                      event.ctrlKey ||
-                      event.shiftKey ||
-                      event.altKey
-                    )
-                      return;
-                    event.preventDefault();
-                    goTo(section.id);
-                  }}
-                >
-                  {section.title}
-                </a>
-              </li>
-            ))}
-          </ol>
-        </aside>
+        <ArticleToc
+          label="IN THIS EXAM"
+          headings={sections.map((section) => ({ id: section.id, text: section.title, depth: 2 }))}
+          active={active}
+          goTo={goTo}
+        />
 
         <div ref={bodyRef} className="min-w-0 cert-body">
           <section className="cert-section">

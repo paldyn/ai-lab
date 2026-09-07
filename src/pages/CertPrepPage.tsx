@@ -6,6 +6,7 @@ import { ImageLightbox } from '../components/ImageLightbox';
 import { Seo } from '../components/Seo';
 import { certById, type Cert } from '../data/certs';
 import { prepAnchor, prepBand, prepNeighbors, prepNote, type CertPrepNote } from '../data/certPrep';
+import { ArticleToc } from '../components/ArticleToc';
 import { useActiveHeading } from '../lib/activeHeading';
 import { watchAnswerToggle } from '../lib/answerToggle';
 import { watchImageZoom, type ZoomedImage } from '../lib/imageZoom';
@@ -57,13 +58,8 @@ function CertPrepView({ cert, note }: { cert: Cert; note: CertPrepNote }) {
 
   const headingIds = useMemo(() => (body?.headings ?? []).map((heading) => heading.id), [body]);
   const { active, goTo } = useActiveHeading(headingIds);
-  /*
-    **목차에는 절(`##`)만 세웁니다.** 소절까지 담았더니 글마다 길이가 널을 뛰었습니다 —
-    소절을 쓰는 글이 카테고리에 따라 16%에서 80%까지 갈리고, 스물일곱 줄짜리 목차가
-    나오는 글도 있었습니다. 소절은 본문에서 읽으면 되는 자리입니다.
-  */
-  const headings = (body?.headings ?? []).filter((heading) => heading.depth === 2);
-  const activeCaption = headings.find((heading) => heading.id === active)?.text;
+  // 띠에 적을 말은 지금 짚힌 제목 그대로입니다 — 소절을 읽는 중이면 소절 이름입니다.
+  const activeCaption = body?.headings.find((heading) => heading.id === active)?.text;
   const { prev, next } = prepNeighbors(note.certId, note.slug);
 
   return (
@@ -115,33 +111,7 @@ function CertPrepView({ cert, note }: { cert: Cert; note: CertPrepNote }) {
       <div className="site-divider" />
 
       <div className="site-wrap grid gap-12 py-14 lg:grid-cols-[220px_minmax(0,760px)] lg:justify-center">
-        <aside className="article-toc lg:sticky lg:top-[138px] lg:self-start">
-          <p className="font-mono text-[10px] tracking-[0.12em] text-[var(--text-muted)]">IN THIS NOTE</p>
-          {headings.length > 0 && (
-            <ol className="mt-4 space-y-3 border-l border-[var(--border)] pl-4 text-xs leading-5 text-[var(--text-dim)]">
-              {headings.map((heading) => (
-                <li
-                  key={heading.id}
-                  className={`article-toc-item${heading.id === active ? ' is-current' : ''}`}
-                >
-                  <a
-                    href={`#${heading.id}`}
-                    title={heading.text}
-                    className="hover:text-[var(--text)]"
-                    aria-current={heading.id === active ? 'true' : undefined}
-                    onClick={(event) => {
-                      if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
-                      event.preventDefault();
-                      goTo(heading.id);
-                    }}
-                  >
-                    {heading.text}
-                  </a>
-                </li>
-              ))}
-            </ol>
-          )}
-        </aside>
+        <ArticleToc label="IN THIS NOTE" headings={body?.headings ?? []} active={active} goTo={goTo} />
 
         <div className="min-w-0">
           {body ? (
