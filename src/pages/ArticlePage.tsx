@@ -6,7 +6,6 @@ import { ArticleTitleBar } from '../components/ArticleTitleBar';
 import { ArticleVisual } from '../components/ArticleVisual';
 import { ImageLightbox } from '../components/ImageLightbox';
 import { useActiveHeading } from '../lib/activeHeading';
-import { tocLabels } from '../lib/tocLabels';
 import { Seo } from '../components/Seo';
 import { articleOrdinal, articles, chainNeighbors, getArticleBySlug } from '../data/articles';
 import { categoryById } from '../data/categories';
@@ -195,8 +194,7 @@ function ArticleView({ article }: { article: Article }) {
     나오는 글도 있었습니다. 소절은 본문에서 읽으면 되는 자리입니다.
   */
   const headings = (body?.headings ?? []).filter((heading) => heading.depth === 2);
-  const labels = tocLabels(headings.map((heading) => ({ title: heading.text })));
-  const activeCaption = labels[headings.findIndex((heading) => heading.id === activeHeading)]?.caption;
+  const activeCaption = headings.find((heading) => heading.id === activeHeading)?.text;
 
   useEffect(() => {
     if (body) return undefined;
@@ -299,7 +297,7 @@ function ArticleView({ article }: { article: Article }) {
           <p className="font-mono text-[10px] tracking-[0.12em] text-[var(--text-muted)]">IN THIS NOTE</p>
           {headings.length > 0 && (
             <ol className="mt-4 space-y-3 border-l border-[var(--border)] pl-4 text-xs leading-5 text-[var(--text-dim)]">
-              {headings.map((heading, index) => (
+              {headings.map((heading) => (
                 <li
                   key={heading.id}
                   className={`article-toc-item${heading.id === activeHeading ? ' is-current' : ''}`}
@@ -316,7 +314,6 @@ function ArticleView({ article }: { article: Article }) {
                       goToHeading(heading.id);
                     }}
                   >
-                    <span className="article-toc-mark">{labels[index].mark}</span>{' '}
                     {heading.text}
                   </a>
                 </li>

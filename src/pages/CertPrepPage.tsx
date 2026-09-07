@@ -7,7 +7,6 @@ import { Seo } from '../components/Seo';
 import { certById, type Cert } from '../data/certs';
 import { prepAnchor, prepBand, prepNeighbors, prepNote, type CertPrepNote } from '../data/certPrep';
 import { useActiveHeading } from '../lib/activeHeading';
-import { tocLabels } from '../lib/tocLabels';
 import { watchAnswerToggle } from '../lib/answerToggle';
 import { watchImageZoom, type ZoomedImage } from '../lib/imageZoom';
 import { initialCertPrepBody, loadCertPrepBody } from '../lib/certPrepBody';
@@ -64,8 +63,7 @@ function CertPrepView({ cert, note }: { cert: Cert; note: CertPrepNote }) {
     나오는 글도 있었습니다. 소절은 본문에서 읽으면 되는 자리입니다.
   */
   const headings = (body?.headings ?? []).filter((heading) => heading.depth === 2);
-  const labels = tocLabels(headings.map((heading) => ({ title: heading.text })));
-  const activeCaption = labels[headings.findIndex((heading) => heading.id === active)]?.caption;
+  const activeCaption = headings.find((heading) => heading.id === active)?.text;
   const { prev, next } = prepNeighbors(note.certId, note.slug);
 
   return (
@@ -121,7 +119,7 @@ function CertPrepView({ cert, note }: { cert: Cert; note: CertPrepNote }) {
           <p className="font-mono text-[10px] tracking-[0.12em] text-[var(--text-muted)]">IN THIS NOTE</p>
           {headings.length > 0 && (
             <ol className="mt-4 space-y-3 border-l border-[var(--border)] pl-4 text-xs leading-5 text-[var(--text-dim)]">
-              {headings.map((heading, index) => (
+              {headings.map((heading) => (
                 <li
                   key={heading.id}
                   className={`article-toc-item${heading.id === active ? ' is-current' : ''}`}
@@ -137,7 +135,6 @@ function CertPrepView({ cert, note }: { cert: Cert; note: CertPrepNote }) {
                       goTo(heading.id);
                     }}
                   >
-                    <span className="article-toc-mark">{labels[index].mark}</span>{' '}
                     {heading.text}
                   </a>
                 </li>

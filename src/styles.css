@@ -3129,17 +3129,6 @@ input:focus-visible {
   -webkit-line-clamp: 2;
 }
 
-/* 목차 번호. 제목과 눈으로 갈리게 흐리게 두고, 지금 자리에서는 함께 밝아집니다. */
-.article-toc-mark {
-  color: var(--text-muted);
-  font-family: 'JetBrains Mono', ui-monospace, monospace;
-  font-size: 10px;
-}
-
-.article-toc-item.is-current .article-toc-mark {
-  color: inherit;
-}
-
 /* 과목 이름은 「데이터 준비 (Data Preparation for Machine Learning)」처럼 깁니다. */
 .article-toc-item.is-sub a {
   display: block;
