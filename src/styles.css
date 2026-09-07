@@ -5139,61 +5139,129 @@ input:focus-visible {
   content: '·';
 }
 
-.cert-subjects {
-  display: flex;
-  flex-direction: column;
-  gap: 1px;
-  background: var(--border);
+/*
+  ---- 자격증 상세의 표 ----
+
+  과목 비중과 시험 정보는 견줘 보는 값이라 표로 세웁니다. 목록으로 두면 「3과목이
+  60%」 같은 사실이 문장 끝에 흩어져 한눈에 안 잡혔습니다.
+
+  좁은 화면에서는 줄로 풉니다 — 열 셋을 335px에 밀어 넣으면 마지막 칸이 열 글자마다
+  줄바꿈되어 읽을 수 없고, 가로 스크롤은 글을 읽는 표에 쓸 것이 못 됩니다.
+*/
+.cert-table {
+  width: 100%;
+  /*
+    **칸 너비를 내용이 정하게 두면 안 됩니다.** 값에 시행처 URL이 통째로 들어 있는
+    자격증이 있어서, 자동 배치가 그 한 줄을 안 끊고 표를 화면 밖까지 늘렸습니다
+    (335px 자리에 393px). 너비를 우리가 정하고 긴 낱말은 아래에서 끊습니다.
+  */
+  table-layout: fixed;
+  border-collapse: collapse;
+  font-size: 14px;
 }
 
-.cert-subjects li {
-  background: var(--bg);
-  padding: 16px 0;
+.cert-table th,
+.cert-table td {
+  border-bottom: 1px solid var(--border);
+  padding: 12px 14px 12px 0;
+  text-align: left;
+  vertical-align: top;
 }
 
-.cert-subject-head {
-  display: flex;
-  align-items: baseline;
-  justify-content: space-between;
-  gap: 12px;
-  color: var(--text-strong);
-  font-size: 15px;
-  font-weight: 500;
-}
-
-.cert-subject-weight {
-  flex-shrink: 0;
-  color: var(--text-muted);
-  font-family: 'JetBrains Mono', ui-monospace, monospace;
-  font-size: 11px;
-  font-weight: 400;
-}
-
-.cert-subject-note {
-  margin-top: 8px;
-  color: var(--text-dim);
-  font-size: 13px;
-  line-height: 1.8;
-}
-
-.cert-facts {
-  display: flex;
-  flex-direction: column;
-  gap: 18px;
-}
-
-.cert-fact dt {
-  margin-bottom: 6px;
+.cert-table thead th {
+  border-bottom-color: var(--text-muted);
   color: var(--text-muted);
   font-family: 'JetBrains Mono', ui-monospace, monospace;
   font-size: 10px;
+  font-weight: 400;
   letter-spacing: 0.1em;
 }
 
-.cert-fact dd {
+.cert-table td {
   color: var(--text-dim);
-  font-size: 14px;
   line-height: 1.85;
+  overflow-wrap: anywhere;
+}
+
+.cert-table tbody th {
+  color: var(--text-strong);
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.cert-table tr:last-child th,
+.cert-table tr:last-child td {
+  border-bottom: 0;
+}
+
+/* 폭은 머리 줄에 답니다 — 고정 배치는 첫 줄만 보고 칸 너비를 정합니다. */
+.cert-subject-table .is-name {
+  width: 24%;
+}
+
+.cert-subject-table .is-weight {
+  width: 160px;
+}
+
+.cert-subject-table td.is-weight {
+  color: var(--text-muted);
+  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  font-size: 12px;
+}
+
+/* 시험 정보는 라벨이 짧고 값이 깁니다. 라벨 칸을 좁게 못 박아 값이 자리를 다 씁니다. */
+.cert-fact-table tbody th {
+  width: 92px;
+  color: var(--text-muted);
+  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  font-size: 10px;
+  font-weight: 400;
+  letter-spacing: 0.1em;
+  padding-top: 17px;
+  white-space: nowrap;
+}
+
+@media (max-width: 640px) {
+  .cert-subject-table thead {
+    position: absolute;
+    overflow: hidden;
+    width: 1px;
+    height: 1px;
+    clip-path: inset(50%);
+  }
+
+  .cert-subject-table tr {
+    display: block;
+    border-bottom: 1px solid var(--border);
+    padding: 14px 0;
+  }
+
+  .cert-subject-table tr:last-child {
+    border-bottom: 0;
+  }
+
+  .cert-subject-table tbody th,
+  .cert-subject-table td {
+    display: block;
+    width: auto;
+    border-bottom: 0;
+    padding: 0;
+  }
+
+  .cert-subject-table .is-weight {
+    width: auto;
+    margin-top: 2px;
+  }
+
+  .cert-subject-table td:not(.is-weight) {
+    margin-top: 6px;
+    font-size: 13px;
+  }
+
+  .cert-fact-table tbody th {
+    width: 76px;
+    padding-right: 10px;
+  }
 }
 
 /*
@@ -5205,12 +5273,12 @@ input:focus-visible {
   font-weight: 600;
 }
 
-/* 시험 정보의 묶음 머리. 절 제목보다 작고 값 목록과 붙여 둡니다. */
-.cert-section h3 + .cert-facts {
+/* 시험 정보의 묶음 머리. 절 제목보다 작고 표와 붙여 둡니다. */
+.cert-section h3 + .cert-table {
   margin-top: 12px;
 }
 
-.cert-facts + h3 {
+.cert-table + h3 {
   margin-top: 30px;
 }
 

@@ -1,8 +1,10 @@
-import { useMemo, type ReactNode } from "react";
+import { type ReactNode, useMemo, useRef } from "react";
 import { ArrowLeft, ArrowUpRight } from "lucide-react";
 import { Link, Navigate, useParams } from "react-router";
 import { CertMark } from "../components/CertMark";
 import { useActiveHeading } from "../lib/activeHeading";
+import { tocNumbers } from "../lib/tocNumbers";
+import { ArticleTitleBar } from "../components/ArticleTitleBar";
 import { CertStars } from "../components/CertStars";
 import { Seo } from "../components/Seo";
 import {
@@ -216,9 +218,9 @@ function Fact({ label, value }: { label: string; value?: string }) {
   const lead = at > 0 ? text.slice(0, at + 1) : "";
 
   return (
-    <div className="cert-fact">
-      <dt>{label}</dt>
-      <dd>
+    <tr>
+      <th scope="row">{label}</th>
+      <td>
         {lead && lead.length <= 40 ? (
           <>
             <strong className="cert-fact-lead">{lead}</strong>{" "}
@@ -227,8 +229,17 @@ function Fact({ label, value }: { label: string; value?: string }) {
         ) : (
           text
         )}
-      </dd>
-    </div>
+      </td>
+    </tr>
+  );
+}
+
+/** 시험 정보 한 묶음. 값이 하나도 없으면 표 자체를 세우지 않습니다. */
+function FactTable({ children }: { children: ReactNode }) {
+  return (
+    <table className="cert-table cert-fact-table">
+      <tbody>{children}</tbody>
+    </table>
   );
 }
 
@@ -246,13 +257,16 @@ function CertView({ cert }: { cert: Cert }) {
   const next = nextSession(cert, today);
   const columns = useMemo(() => scheduleColumns(cert.schedule ?? []), [cert]);
   const extras = groups?.extras.length ?? 0;
+  /* 띠가 언제 서는지(제목)와 진행 막대가 재는 것(본문)입니다. 글에서 쓰던 그대로입니다. */
+  const titleRef = useRef<HTMLHeadingElement>(null);
+  const bodyRef = useRef<HTMLDivElement>(null);
 
   /*
     목차에 세울 절. 있는 절만 담습니다 — 학습 경로가 아직 없는 자격증도 있고,
     없는 절을 목차에 두면 눌렀을 때 아무 데도 안 갑니다.
   */
   const sections = [
-    { id: "what", title: "무엇을 재는 시험인가" },
+    { id: "what", title: "개요" },
     { id: "subjects", title: "과목" },
     { id: "exam", title: "시험 정보" },
     { id: "exam-format", title: "치르는 방식", sub: true },
@@ -288,6 +302,9 @@ function CertView({ cert }: { cert: Cert }) {
     훑는 대상은 id 목록뿐이라 문자열 하나로 묶어 넘깁니다 — 배열을 그대로 넘기면
     렌더마다 새 배열이라 훑기가 매번 다시 걸립니다.
   */
+  const tocLabel = tocNumbers(
+    sections.map((item) => "sub" in item && item.sub === true),
+  );
   const ids = sections.map((item) => item.id).join(",");
   const { active, goTo } = useActiveHeading(
     useMemo(() => ids.split(","), [ids]),
@@ -299,6 +316,21 @@ function CertView({ cert }: { cert: Cert }) {
         title={`${cert.nameKo} — 무엇을 재는 시험인가`}
         description={cert.whatItMeasures.slice(0, 180)}
         path={`/learn/certs/${cert.id}`}
+      />
+
+      {/*
+        글과 같은 띠를 세웁니다. 자격증 상세는 절이 일곱이고 시험 일정 표와 노트
+        목록이 화면 몇 개를 차지해서, 내려가다 보면 어느 자격증을 보고 있었는지와
+        얼마나 남았는지가 둘 다 사라집니다.
+      */}
+      <ArticleTitleBar
+        watch={titleRef}
+        progressOf={bodyRef}
+        label={`자격증 / ${cert.status}`}
+        accent="var(--brand-text)"
+        title={cert.nameKo}
+        section={sections.find((item) => item.id === active)?.title}
+        back={{ to: "/learn/certs", label: "자격증" }}
       />
 
       <header className="site-wrap article-header">
@@ -334,7 +366,10 @@ function CertView({ cert }: { cert: Cert }) {
                 <span>{cert.issuer}</span>
               </p>
             </div>
-            <h1 className="mt-5 max-w-4xl text-[2rem] font-medium leading-[1.35] text-[var(--text-strong)] sm:text-[2.6rem]">
+            <h1
+              ref={titleRef}
+              className="mt-5 max-w-4xl text-[2rem] font-medium leading-[1.35] text-[var(--text-strong)] sm:text-[2.6rem]"
+            >
               {cert.nameKo}
             </h1>
             {cert.nameEn !== cert.nameKo && (
@@ -415,18 +450,17 @@ function CertView({ cert }: { cert: Cert }) {
                     goTo(section.id);
                   }}
                 >
-                  {"sub" in section && section.sub
-                    ? section.title
-                    : `${String(sections.slice(0, index).filter((item) => !("sub" in item && item.sub)).length + 1).padStart(2, "0")} ${section.title}`}
+                  <span className="article-toc-number">{tocLabel[index]}</span>{" "}
+                  {section.title}
                 </a>
               </li>
             ))}
           </ol>
         </aside>
 
-        <div className="min-w-0 cert-body">
+        <div ref={bodyRef} className="min-w-0 cert-body">
           <section className="cert-section">
-            <h2 id="what">무엇을 재는 시험인가</h2>
+            <h2 id="what">개요</h2>
             <p className="cert-prose">
               {cert.whatItMeasures.replace(/\*\*/g, "")}
             </p>
@@ -442,23 +476,47 @@ function CertView({ cert }: { cert: Cert }) {
 
           <section className="cert-section">
             <h2 id="subjects">과목</h2>
-            <ol className="cert-subjects">
-              {cert.subjects.map((subject) => (
-                <li key={subject.name}>
-                  <p className="cert-subject-head">
-                    <span>{subject.name}</span>
-                    {subject.weight && (
-                      <span className="cert-subject-weight">
-                        {subject.weight}
-                      </span>
-                    )}
-                  </p>
-                  {subject.note && (
-                    <p className="cert-subject-note">{subject.note}</p>
+            {/*
+              **비중은 견줘 보는 값이라 표가 맞습니다.** 목록으로 두면 「3과목이 60%」
+              같은 사실이 문장 끝에 흩어져, 어느 과목에 시간을 더 쓸지 한눈에 안 잡혔습니다.
+              값이 아예 없는 자격증도 있어 그 열은 있는 자격증에만 세웁니다.
+            */}
+            <table className="cert-table cert-subject-table">
+              <thead>
+                {/*
+                  칸 너비는 **머리 줄이 정합니다** — `table-layout: fixed`가 첫 줄만
+                  보기 때문입니다. 몸통에만 폭을 주었더니 세 칸이 똑같이 3분의 1로 섰습니다.
+                */}
+                <tr>
+                  <th scope="col" className="is-name">
+                    과목
+                  </th>
+                  {cert.subjects.some((subject) => subject.weight) && (
+                    <th scope="col" className="is-weight">
+                      비중
+                    </th>
                   )}
-                </li>
-              ))}
-            </ol>
+                  {cert.subjects.some((subject) => subject.note) && (
+                    <th scope="col">다루는 것</th>
+                  )}
+                </tr>
+              </thead>
+              <tbody>
+                {cert.subjects.map((subject) => (
+                  <tr key={subject.name}>
+                    <th scope="row" className="is-name">
+                      {subject.name}
+                    </th>
+                    {cert.subjects.some((item) => item.weight) && (
+                      <td className="is-weight">{subject.weight ?? "—"}</td>
+                    )}
+                    {cert.subjects.some((item) => item.note) && (
+                      <td>{subject.note}</td>
+                    )}
+                  </tr>
+                ))}
+              </tbody>
+            </table>
           </section>
 
           <section className="cert-section">
@@ -469,23 +527,23 @@ function CertView({ cert }: { cert: Cert }) {
               물음입니다. 셋으로 갈라 목차에서 바로 뛰게 합니다.
             */}
             <h3 id="exam-format">치르는 방식</h3>
-            <dl className="cert-facts">
+            <FactTable>
               <Fact label="시행 주기" value={cert.cadence} />
               <Fact label="형식" value={cert.format} />
-            </dl>
+            </FactTable>
 
             <h3 id="exam-entry">응시 조건</h3>
-            <dl className="cert-facts">
+            <FactTable>
               <Fact label="응시자격" value={cert.prerequisite} />
               <Fact label="응시료" value={cert.fee} />
-            </dl>
+            </FactTable>
 
             {cert.validity && (
               <>
                 <h3 id="exam-validity">자격 유지</h3>
-                <dl className="cert-facts">
+                <FactTable>
                   <Fact label="유효기간" value={cert.validity} />
-                </dl>
+                </FactTable>
               </>
             )}
           </section>
