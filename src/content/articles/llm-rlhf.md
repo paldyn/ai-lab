@@ -91,7 +91,7 @@ RLHF의 가장 큰 위험은 **Reward Hacking**이다. 모델이 보상 모델�
 1. **KL 페널티:** 기준 모델에서 너무 멀어지지 않도록 제한
 2. **보상 모델 앙상블:** 여러 보상 모델의 최솟값 사용
 3. **주기적 보상 모델 업데이트:** 생성된 응답으로 보상 모델 재학습
-4. **Constitutional AI:** 규칙 기반으로 보상 해킹 방지 (다음 글 주제)
+4. **Constitutional AI:** 규칙 기반으로 보상 해킹 방지
 
 ```python
 # reward hacking 감지: KL divergence 모니터링
