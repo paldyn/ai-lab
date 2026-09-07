@@ -29,19 +29,19 @@ describe('tocLabels', () => {
     expect(tocLabels(items)[5].mark).toBe('4.');
   });
 
-  /* 하위 절만 띄우면 어디쯤인지 알 수 없어 위 절과 함께 적습니다. */
-  it('띠에 적는 말은 하위일 때 위 절을 함께 담는다', () => {
+  /* 띠에서는 자리를 번호가 말합니다 — 위 절 이름까지 적으면 한 줄이 넘칩니다. */
+  it('띠에 적는 말은 하위일 때 번호로 자리를 알린다', () => {
     const labels = tocLabels(items);
 
     expect(labels[2].caption).toBe('3. 시험 정보');
-    expect(labels[4].caption).toBe('3-2 시험 정보 › 응시 조건');
-    expect(labels[6].caption).toBe('4-1 시험 일정 › 연도별');
+    expect(labels[4].caption).toBe('3-2. 응시 조건');
+    expect(labels[6].caption).toBe('4-1. 연도별');
   });
 
   it('하위가 먼저 오면 그것을 절로 센다', () => {
     expect(tocLabels([{ title: '머리', sub: true }, { title: '갈래', sub: true }])).toEqual([
       { mark: '1.', caption: '1. 머리' },
-      { mark: '1)', caption: '1-1 머리 › 갈래' },
+      { mark: '1)', caption: '1-1. 갈래' },
     ]);
   });
 

@@ -7,20 +7,20 @@
  * **번호는 자리를 세는 것이지 항목을 세는 것이 아닙니다.** 예전에는 목차가
  * `index + 1`을 그대로 찍어, 하위 항목이 낀 글에서는 절 번호가 그만큼 건너뛰었습니다.
  *
- * 띠(`ArticleTitleBar`)에 적는 말도 여기서 만듭니다. 하위 절을 읽는 중이면 그 이름만
- * 띄워서는 어디쯤인지 알 수 없어 **위 절과 함께** 적습니다 — 「3-2 시험 정보 › 응시 조건」.
+ * 띠(`ArticleTitleBar`)에 적는 말도 여기서 만듭니다. 거기서는 자리를 번호가 말합니다 —
+ * 「3-2. 응시 조건」이면 셋째 절의 둘째 갈래입니다. 위 절 이름을 함께 적어 봤는데
+ * 띠 한 줄에 제목과 나란히 서기에는 길었습니다.
  */
 export interface TocLabel {
   /** 목차에 찍는 번호. 위 단계는 `3.`, 아래 단계는 `2)`. */
   mark: string;
-  /** 띠에 적는 한 줄. 위 절이면 「3. 시험 정보」, 아래 절이면 「3-2 시험 정보 › 응시 조건」. */
+  /** 띠에 적는 한 줄. 위 절이면 「3. 시험 정보」, 아래 절이면 「3-2. 응시 조건」. */
   caption: string;
 }
 
 export function tocLabels(items: readonly { title: string; sub?: boolean }[]): TocLabel[] {
   let top = 0;
   let sub = 0;
-  let parent = '';
 
   return items.map((item) => {
     /*
@@ -30,11 +30,10 @@ export function tocLabels(items: readonly { title: string; sub?: boolean }[]): T
     if (!item.sub || top === 0) {
       top += 1;
       sub = 0;
-      parent = item.title;
       return { mark: `${top}.`, caption: `${top}. ${item.title}` };
     }
 
     sub += 1;
-    return { mark: `${sub})`, caption: `${top}-${sub} ${parent} › ${item.title}` };
+    return { mark: `${sub})`, caption: `${top}-${sub}. ${item.title}` };
   });
 }
