@@ -9,7 +9,7 @@ tags: ["LLM", "디코딩", "BeamSearch", "GreedyDecoding", "자동회귀생성",
 featured: false
 draft: false
 ---
-[지난 글](/articles/llm-sampling-strategies)에서 Greedy, Temperature, Top-p, Contrastive Search 등 다양한 샘플링 전략을 살펴봤다. 이번에는 그 중에서도 특히 **탐색 기반 디코딩**의 핵심인 Beam Search와 그 발전형들을 깊이 파고든다. 샘플링 전략이 "어떻게 무작위성을 도입할 것인가"에 집중했다면, 이번 디코딩 방법들은 "어떻게 더 좋은 시퀀스를 탐색할 것인가"에 집중한다.
+[지난 글](/articles/llm-temperature-top-k-top-p)에서 Temperature로 분포를 데우고 Top-k·Top-p·min-p로 꼬리를 자르는 법, 그리고 Typical Sampling과 Contrastive Search처럼 확률 아닌 잣대를 하나 더 들이는 방법까지 봤다. 그 방법들의 공통점은 **결정이 한 스텝 안에서 끝난다**는 것이다. 현재 분포를 데우거나 자른 뒤 토큰 하나를 뽑고, 한 번 뽑은 것은 되돌리지 않는다. 이번에는 그 한계에서 갈라져 나오는 **탐색 기반 디코딩**, 곧 Beam Search와 그 발전형들을 깊이 파고든다. 샘플링 전략이 "어떻게 무작위성을 도입할 것인가"에 집중했다면, 이번 디코딩 방법들은 "어떻게 더 좋은 시퀀스를 탐색할 것인가"에 집중한다.
 
 ## 자동회귀 생성의 근본 문제
 
@@ -121,6 +121,6 @@ Beam Search에서 중요한 문제 중 하나는 **짧은 시퀀스 편향**이�
 
 읽어주셔서 감사합니다. 😊
 
-**지난 글:** [샘플링 전략: LLM 출력 제어의 과학](/articles/llm-sampling-strategies)
+**지난 글:** [샘플링 전략: Temperature, Top-k, Top-p와 그 대안](/articles/llm-temperature-top-k-top-p)
 
 **다음 글:** [LLM의 한계와 환각: AI가 틀리는 이유](/articles/llm-limits-and-hallucination)

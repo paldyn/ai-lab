@@ -19,8 +19,7 @@ draft: false
 환산율을 적어 놓았고, 둘 다 같은 값이다 — 4자에 1토큰. 우리 글 1,689,759자로 재
 보니 1.12~2.27자였다. 같은 작업의 청구서가 문서 환산의 **1.76~3.58배**로 나온다.
 
-절감 기법 자체는 [프로젝트 비용 최적화](/articles/project-cost-optimization)와
-[서빙 비용 최적화](/articles/serving-cost-optimization)가 맡는다. 이 글은 청구서
+절감 기법 자체는 [LLM 비용](/articles/llmops-cost-tracking)이 맡는다. 이 글은 청구서
 산수만 맡는다.
 
 ## 벤더 문서가 스스로 적어 둔 환산율

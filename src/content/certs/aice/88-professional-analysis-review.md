@@ -247,4 +247,4 @@ model = Sequential([base, GlobalAveragePooling2D(), Dropout(0.3),
 
    답. 2048과 100,352입니다. 평균 풀링은 채널마다 값 하나로 누르고 `Flatten`은 셋을 곱해 폅니다. 파라미터는 각각 $$(2048 + 1) \times 5 = 10{,}245$$개와 $$(100352 + 1) \times 5 = 501{,}765$$개입니다.
 
-텍스트 쪽 손질은 [텍스트 전처리](/articles/nlp-text-preprocessing), 이미지 쪽 분류는 [딥러닝 이미지 분류](/articles/cv-image-classification-deep)가 함께 다룹니다.
+텍스트 쪽 손질은 [텍스트 전처리](/articles/nlp-text-preprocessing), 이미지 쪽 분류는 [이미지 분류 파이프라인](/articles/cnn-image-classification)가 함께 다룹니다.

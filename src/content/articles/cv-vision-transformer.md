@@ -9,7 +9,7 @@ tags: ["ViT", "VisionTransformer", "Swin", "DeiT", "MAE", "컴퓨터비전", "�
 featured: false
 draft: false
 ---
-[지난 글](/articles/cv-image-classification-deep)에서 딥러닝 이미지 분류의 전체 파이프라인과 CNN 기반 백본들을 살펴봤다. 이번 글에서는 2020년 등장해 CV 분야의 판도를 바꾼 **Vision Transformer**(ViT)를 완전 해설한다. ViT는 "이미지도 단어 시퀀스처럼 처리할 수 있다"는 단순한 아이디어로 시작해, 오늘날 CLIP·Stable Diffusion·GPT-4V 등 멀티모달 모델의 비전 인코더로 자리잡았다.
+[지난 글](/articles/nlp-korean-processing)에서 한국어를 형태소 단위로 잘라 토큰 시퀀스로 만들고, 그 시퀀스를 KoBERT·KoELECTRA 같은 Transformer 모델에 넣는 과정을 살펴봤다. 입력을 잘게 쪼개 시퀀스로 세운 뒤 나머지를 어텐션에 맡기는 이 방식은 언어에만 쓸 수 있는 것이 아니다. 이번 글에서는 같은 발상을 이미지에 그대로 옮겨 2020년 CV 분야의 판도를 바꾼 **Vision Transformer**(ViT)를 완전 해설한다. ViT는 "이미지도 단어 시퀀스처럼 처리할 수 있다"는 단순한 아이디어로 시작해, 오늘날 CLIP·Stable Diffusion·GPT-4V 등 멀티모달 모델의 비전 인코더로 자리잡았다.
 
 ## ViT 핵심 아이디어: 이미지 → 패치 시퀀스
 
@@ -192,6 +192,6 @@ ViT는 데이터가 충분할 때 CNN을 압도하지만, 소량 데이터에서
 
 읽어주셔서 감사합니다. 😊
 
-**지난 글:** [딥러닝 이미지 분류 완전 정복: 백본·전이학습·실전 코드](/articles/cv-image-classification-deep)
+**지난 글:** [한국어 NLP: 교착어 처리와 한국어 특화 모델](/articles/nlp-korean-processing)
 
 **다음 글:** [CLIP: 이미지와 텍스트를 같은 공간에 정렬하는 대조 학습](/articles/cv-clip)

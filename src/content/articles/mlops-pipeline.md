@@ -151,6 +151,6 @@ wait_for_data >> validate
 
 읽어주셔서 감사합니다. 😊
 
-**지난 글:** [데이터 버전 관리: DVC로 ML 데이터를 코드처럼 추적하기](/articles/mlops-data-versioning)
+**지난 글:** [데이터 버저닝 — 같은 코드가 같은 모델을 만들게 하려면](/articles/mlops-data-versioning)
 
 **다음 글:** [LLMOps 개요: LLM 운영의 새로운 과제](/articles/llmops-overview)

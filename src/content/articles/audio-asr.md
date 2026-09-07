@@ -9,7 +9,7 @@ tags: ["ASR", "Whisper", "음성인식", "멜스펙트로그램", "faster-whispe
 featured: false
 draft: false
 ---
-[지난 글](/articles/cv-3d-generation)에서 NeRF·3DGS 등 3D 생성 AI를 다뤘다. 이번 글부터는 오디오 AI 영역으로 넘어가, **자동 음성 인식**(ASR)의 원리와 실전 구현을 완전 해설한다. Whisper는 2022년 OpenAI가 공개한 이후 오픈소스 ASR의 사실상 표준이 되었으며, 100여 개 언어에서 인간 수준에 가까운 성능을 보인다.
+[지난 글](/articles/cv-video-models)에서 2D 확산 모델에 시간 축을 붙여 비디오를, 공간 축을 붙여 3D를 만드는 두 갈래를 봤다. 이번 글은 축을 하나 더 붙이는 대신 신호 자체를 바꾼다. 처음부터 시간이 전부인 신호, 곧 소리다. 거기서 만나는 물음은 낯익다 — 긴 입력을 어디서 자를 것인가, 조각의 이음매를 어떻게 이을 것인가. 오디오 AI 영역으로 넘어가 **자동 음성 인식**(ASR)의 원리와 실전 구현을 완전 해설한다. Whisper는 2022년 OpenAI가 공개한 이후 오픈소스 ASR의 사실상 표준이 되었으며, 100여 개 언어에서 인간 수준에 가까운 성능을 보인다.
 
 ## ASR 파이프라인 전체 구조
 
@@ -336,6 +336,6 @@ def segments_to_srt(segments, output_path: str):
 
 읽어주셔서 감사합니다. 😊
 
-**지난 글:** [3D 생성 AI: NeRF·3D Gaussian Splatting·Point-E 완전 해설](/articles/cv-3d-generation)
+**지난 글:** [정지 이미지 너머: 비디오와 3D 생성 모델의 지형](/articles/cv-video-models)
 
 **다음 글:** [신경망 음성 합성(TTS): VITS·XTTS·CosyVoice 완전 해설](/articles/audio-tts)

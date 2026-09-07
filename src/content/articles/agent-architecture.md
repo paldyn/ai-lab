@@ -1,299 +1,280 @@
 ---
-title: "에이전트 아키텍처: ReAct·Plan-and-Execute·Reflexion"
-description: "AI 에이전트의 주요 아키텍처 패턴 3가지(ReAct, Plan-and-Execute, Reflexion)를 비교하고, 각 패턴의 특성과 Python 구현 코드를 완전 해설합니다."
+title: "에이전트 아키텍처: ReAct·Plan-and-Execute·Reflexion·LATS"
+description: "에이전트의 제어 루프를 짜는 네 패턴을 한자리에서 비교한다. Thought·Action·Observation의 교대부터 계획 분리, 자기 반성, 트리 탐색까지 보고 반복 상한·권한·예산이라는 경계를 함께 긋는다."
 author: "PALDYN Team"
 pubDate: "2026-05-18"
 category: "agents-rag"
 level: "중급"
-tags: ["에이전트아키텍처", "ReAct", "Plan-and-Execute", "Reflexion", "LangGraph", "AI에이전트"]
+tags: ["에이전트아키텍처", "ReAct", "Plan-and-Execute", "Reflexion", "LATS"]
 featured: false
 draft: false
 ---
-[지난 글](/articles/ai-agents-and-mcp)에서 AI 에이전트의 개념과 MCP 프로토콜을 소개했다. 에이전트를 실제로 구축할 때는 어떤 아키텍처 패턴을 선택하느냐가 품질과 비용을 크게 좌우한다. 이번 글에서는 현재 가장 널리 쓰이는 세 가지 에이전트 아키텍처를 코드와 함께 깊이 살펴본다.
+[지난 글](/articles/ai-agents-and-mcp)에서 LLM에 도구를 쥐여 주는 방법과 그 연결을 표준화하는 MCP를 봤다. 그런데 도구를 붙였다고 에이전트가 되지는 않는다. 도구를 언제 부를지, 돌아온 결과를 보고 무엇을 다시 할지, 어디서 멈출지를 정하는 **제어 루프**가 따로 있어야 한다. 이 글은 그 루프를 짜는 네 가지 패턴을 한자리에 놓는다 — ReAct, Plan-and-Execute, Reflexion, 그리고 LATS다.
 
-## 에이전트 아키텍처를 고려해야 하는 이유
+패턴을 고르는 일은 취향 문제가 아니다. 같은 모델을 쓰고도 루프 설계에 따라 LLM 호출 수가 한 자릿수와 두 자릿수를 오가고, 다단계 태스크의 성공률이 갈린다. 잘못 고르면 같은 행동을 되풀이하다 멈추지 못하거나, 답은 맞았는데 비용이 열 배로 나온다. 그래서 이 글은 패턴 넷을 나열하는 데서 끝내지 않고, 어느 패턴을 쓰든 반드시 그어야 하는 경계 — 반복 상한, 도구별 권한, 비용 예산 — 까지 함께 다룬다.
 
-단순히 LLM에 도구를 연결하는 것만으로는 복잡한 태스크를 처리할 수 없다. 목표가 복잡할수록, 도구 실패가 잦을수록, 품질 요구가 높을수록 구조화된 아키텍처가 필요하다. 잘못된 아키텍처를 선택하면 무한 루프에 빠지거나, LLM 비용이 폭발하거나, 품질이 기대에 미치지 못한다.
+## 에이전트를 이루는 제어 루프
 
-![에이전트 아키텍처 3가지 패턴](/assets/posts/agent-architecture-patterns.svg)
+### 목표·상태·도구·모델
 
-## ① ReAct: 가장 단순하고 범용적인 패턴
+가장 단순한 에이전트도 네 가지를 갖는다. 달성해야 할 **목표**, 지금까지 무엇을 했고 무엇을 알아냈는지를 담은 **상태**, 바깥에 손을 뻗는 **도구**, 그리고 상태를 보고 다음 행동을 고르는 **모델**이다. 모델이 행동을 하나 고르면 도구가 실행되고, 결과가 상태에 쌓이고, 다시 모델이 그 상태를 본다. 목표가 끝날 때까지 이 원이 돈다.
 
-ReAct(Reasoning + Acting)는 에이전트 아키텍처의 기본이다. LLM이 Thought → Action → Observation을 반복하며 목표를 달성한다. 구현이 단순하고 대부분의 단순 태스크에 충분하다.
+여기서 흔히 오해하는 낱말이 **자율성**이다. 자율성은 에이전트가 아무 행동이나 할 수 있다는 뜻이 아니다. 허용된 도구와 정해진 예산, 그리고 종료 규칙 안에서 **다음 한 걸음을 스스로 고르는 능력**에 가깝다. 무엇을 할 수 있는지는 우리가 정하고, 그중 무엇을 지금 할지를 모델이 정한다. 이 구분을 놓치면 뒤에서 볼 경계 이야기가 자율성을 깎는 타협처럼 보이는데, 사실은 자율성이 성립하기 위한 조건이다.
+
+네 패턴이 갈리는 자리는 이 원의 어디를 손보느냐다. 상태에 무엇을 담을지, 행동을 하나씩 고를지 미리 여러 개를 정해 둘지, 실패했을 때 원을 다시 돌지 말지 — 바꾸는 곳이 서로 다르다.
+
+### 도구가 메우는 두 구멍
+
+애초에 왜 루프를 도는가. 모델을 한 번 부르고 답을 받으면 안 되는 이유가 둘 있다.
+
+첫째는 **지식 단절**(knowledge cutoff)이다. 모델은 학습 데이터가 끊긴 시점 이후를 모른다. 오늘 날씨, 방금 나온 뉴스, 지금 이 순간의 재고 수량은 검색이나 조회 도구 없이는 알 방법이 없다. 둘째는 **계산 오류**다. LLM은 자릿수가 많은 곱셈이나 긴 누적 계산에서 자주 틀린다. `2,847 × 193`을 머릿속으로 답하면 틀릴 수 있지만, 파이썬 실행기로 넘기면 정확하다.
+
+이 둘은 추론을 더 잘하게 만든다고 메워지지 않는다. 사고 사슬(Chain-of-Thought)을 아무리 길게 늘여도 모르는 사실이 생기지는 않는다. 도구를 붙이는 순간 LLM의 역할이 바뀐다 — 「모든 것을 아는 답변자」에서 「도구를 언제 어떻게 부를지 정하는 조율자」가 된다. 네 패턴은 전부 이 조율을 어떤 모양으로 할지에 대한 답이다.
+
+### 네 패턴을 가르는 두 축
+
+![에이전트 플래닝 전략 비교](/assets/posts/agent-planning-strategies.svg)
+
+넷을 외우기 전에 두 축으로 놓으면 자리가 한눈에 잡힌다. 첫 번째 축은 **계획을 언제 세우는가**다. 한 걸음씩 그때그때 정하는 쪽이 ReAct고, 전체 순서를 먼저 짜 놓고 실행하는 쪽이 Plan-and-Execute다. 두 번째 축은 **한 번에 끝내는가**다. 한 경로를 끝까지 밀고 가는 쪽이 앞의 둘이고, 결과를 평가해 다시 시도하는 쪽이 Reflexion, 여러 갈래를 동시에 펼쳐 놓고 고르는 쪽이 LATS다.
+
+두 축이 독립이라 조합도 성립한다. Plan-and-Execute의 각 단계를 ReAct로 실행하는 구성이 흔하고, Reflexion의 한 번의 시도 안에 ReAct 루프가 통째로 들어가기도 한다. 넷을 배타적인 선택지로 보면 헷갈리지만, 「계획을 언제 정할까」와 「몇 번 시도할까」 두 결정으로 보면 고를 것은 두 번뿐이다.
+
+## ReAct: 추론과 행동의 교대
+
+### 세 가지 토큰 타입
+
+**ReAct**(Reasoning + Acting)는 2022년 Princeton과 Google의 Yao 등이 제안한 프롬프팅 패러다임이고, 오늘날 거의 모든 에이전트 구현의 바닥에 깔려 있다. 핵심은 모델이 세 가지 종류의 토큰을 번갈아 만들어 낸다는 것이다.
+
+**Thought**는 모델이 스스로에게 하는 말이다. 지금 무엇을 아는지, 무엇이 더 필요한지, 그래서 다음에 무엇을 할지를 적는다. **Action**은 실행할 도구와 인자를 지목하는 텍스트다. **Observation**은 모델이 만들지 않는다 — 도구를 실제로 실행한 결과를 우리 코드가 받아 컨텍스트에 되돌려 넣는 자리다. 이 셋이 반복되면서 모델이 가진 정보가 한 바퀴마다 늘고, 충분해지면 최종 답을 낸다.
+
+![ReAct 루프: Thought → Action → Observation](/assets/posts/prompt-react-loop.svg)
+
+Thought를 따로 두는 것이 왜 이득인지는 빼 보면 알 수 있다. Thought 없이 Action만 뽑게 하면 모델은 「검색해야겠다」는 판단을 텍스트로 옮기지 않은 채 도구 이름부터 고르게 된다. 근거를 적고 나서 고르는 편이 낫고, 부수적으로 기록이 남아 나중에 어디서 틀어졌는지 추적할 수 있다.
+
+### 형식 파싱과 Tool Use API
+
+구현 방식은 두 갈래다. 하나는 정해진 형식으로 텍스트를 뱉게 하고 우리가 정규식으로 파싱하는 방식이다.
+
+```markdown
+Thought: 서울의 현재 기온을 검색해야 한다.
+Action: web_search["서울 현재 기온"]
+Observation: 서울 현재 기온: 23°C (맑음, 습도 55%)
+Thought: 화씨로 바꾸려면 23 × 9/5 + 32을 계산해야 한다.
+Action: calculator["23 * 9/5 + 32"]
+Observation: 73.4
+Final Answer: 서울은 23°C, 화씨로는 73.4°F입니다.
+```
+
+![ReAct 트레이스 예시](/assets/posts/prompt-react-tools.svg)
+
+이 방식은 도구 호출 기능이 없는 모델에도 쓸 수 있다는 장점이 있지만, 형식이 조금만 어긋나도 파싱이 깨진다. 대괄호를 안 닫거나 `Action`을 두 줄에 걸쳐 쓰면 그 스텝이 통째로 날아간다. 텍스트 파싱으로 에이전트를 돌리던 초기 프레임워크들이 파싱 실패만 따로 붙잡는 장치를 뒀던 것도 이 때문이다.
+
+다른 하나는 모델이 제공하는 **도구 호출 API**를 쓰는 방식이다. 도구 이름과 입력 스키마를 JSON으로 넘기면 모델이 텍스트가 아니라 구조화된 `tool_use` 블록으로 답한다. 파싱이 사라지고, 인자 타입이 스키마로 검증되며, 여러 도구를 한 턴에 병렬로 부를 수도 있다. 형식이 깨질 자리가 없으니 새로 짤 때는 이쪽이 기본이다.
 
 ```python
 from anthropic import Anthropic
-from typing import Any
 
 client = Anthropic()
 
-class ReActAgent:
-    def __init__(self, tools: list[dict], tool_funcs: dict):
-        self.tools = tools
-        self.tool_funcs = tool_funcs
-        self.max_steps = 10
+def react(goal: str, tools: list[dict], funcs: dict, max_steps: int = 10) -> str:
+    messages = [{"role": "user", "content": goal}]
 
-    def run(self, goal: str) -> str:
-        messages = [{"role": "user", "content": goal}]
-        
-        for step in range(self.max_steps):
-            response = client.messages.create(
-                model="claude-sonnet-4-6",
-                max_tokens=4096,
-                tools=self.tools,
-                messages=messages,
-            )
-            
-            if response.stop_reason == "end_turn":
-                text_parts = [b.text for b in response.content if hasattr(b, 'text')]
-                return "\n".join(text_parts)
-            
-            # 도구 호출 처리
-            messages.append({"role": "assistant", "content": response.content})
-            tool_results = []
-            
-            for block in response.content:
-                if block.type == "tool_use":
-                    func = self.tool_funcs.get(block.name)
-                    if func:
-                        try:
-                            result = func(**block.input)
-                        except Exception as e:
-                            result = f"오류: {e}"
-                        
-                        tool_results.append({
-                            "type": "tool_result",
-                            "tool_use_id": block.id,
-                            "content": str(result),
-                        })
-            
-            messages.append({"role": "user", "content": tool_results})
-        
-        return "최대 단계 초과"
+    for _ in range(max_steps):
+        resp = client.messages.create(
+            model="claude-opus-5", max_tokens=4096,
+            tools=tools, messages=messages,
+        )
+        if resp.stop_reason == "end_turn":
+            return "\n".join(b.text for b in resp.content if b.type == "text")
 
-# 사용 예
-import requests
+        messages.append({"role": "assistant", "content": resp.content})
+        results = []
+        for block in resp.content:
+            if block.type != "tool_use":
+                continue
+            try:
+                out = funcs[block.name](**block.input)
+            except Exception as e:
+                out = f"오류: {e}"       # 실패도 관찰로 돌려준다
+            results.append({"type": "tool_result",
+                            "tool_use_id": block.id, "content": str(out)})
+        messages.append({"role": "user", "content": results})
 
-def web_search(query: str) -> str:
-    return f"검색 결과: {query}에 대한 최신 정보..."
-
-def calculate(expression: str) -> float:
-    return eval(expression)  # 실제로는 안전한 수식 파서 사용
-
-agent = ReActAgent(
-    tools=[
-        {"name": "web_search", "description": "웹 검색",
-         "input_schema": {"type": "object", "properties": {"query": {"type": "string"}},
-                          "required": ["query"]}},
-        {"name": "calculate", "description": "수식 계산",
-         "input_schema": {"type": "object", "properties": {"expression": {"type": "string"}},
-                          "required": ["expression"]}},
-    ],
-    tool_funcs={"web_search": web_search, "calculate": calculate},
-)
-print(agent.run("2024년 한국 GDP와 그것의 제곱근을 계산해줘"))
+    return "최대 단계 초과"
 ```
 
-## ② Plan-and-Execute: 복잡한 목표를 위한 구조화
+짧은 코드지만 두 줄이 특히 중요하다. 하나는 `max_steps`로 감싼 `for` 문이다 — 이 상한이 없으면 답을 못 찾은 에이전트가 같은 검색을 영원히 되풀이한다. 다른 하나는 예외를 잡아 문자열로 되돌려 주는 자리다. 도구가 실패했을 때 프로그램을 죽이는 대신 「오류: …」를 관찰로 넣어 주면, 모델이 그 실패를 읽고 다른 인자로 다시 시도할 수 있다. 실패를 감추지 않고 상태에 남기는 것이 복구의 전제다.
 
-복잡한 다단계 목표에는 ReAct 단독으로 부족하다. Plan-and-Execute는 **Planner**가 전체 계획을 먼저 수립하고, **Executor**가 각 단계를 실행하며, 실패 시 **Replanner**가 계획을 수정한다.
+응답을 읽는 자리도 눈여겨본다. 최종 답을 꺼낼 때 `resp.content[0]`을 집지 않고 `type == "text"`인 블록만 골라 잇는다. 요즘 모델의 응답에는 텍스트 앞에 추론 블록이 먼저 오기도 하고 도구 호출 블록이 섞이기도 해서, 첫 블록이 텍스트라는 보장이 없다.
 
-![Plan-and-Execute 구현](/assets/posts/agent-architecture-components.svg)
+### ReAct가 흔들리는 네 자리
+
+ReAct의 장점은 분명하다. 실시간 정보에 닿을 수 있고, 계산처럼 모델이 약한 부분을 도구로 덮고, 추론 과정이 그대로 기록에 남으며, 필요한 만큼만 돌고 멈춘다. 대신 흔들리는 자리가 넷 있다.
+
+첫째는 **비용**이다. 스텝마다 LLM 호출이 한 번씩 들어가고, 매 호출에 지금까지의 대화 전체가 다시 실린다. 시스템 프롬프트와 도구 정의가 1,000 토큰이고 관찰 하나가 평균 500 토큰이라 하면, $$k$$ 번째 호출의 입력은 대략 $$1000 + 500(k-1)$$ 이다. 10스텝까지 더하면 $$10{,}000 + 500 \times (0 + 1 + \cdots + 9) = 32{,}500$$ 토큰이고, 20스텝이면 $$20{,}000 + 500 \times 190 = 115{,}000$$ 토큰이다. **스텝이 두 배인데 입력 토큰은 3.5배로 뛴다** — 누적 컨텍스트 때문에 비용이 스텝 수의 제곱에 가깝게 자란다.
+
+둘째는 **오류 전파**다. 초반 Action이 엉뚱한 검색어를 던지면 그 관찰이 컨텍스트에 그대로 남고, 이후 Thought가 전부 그 위에서 만들어진다. 셋째는 **무한 루프**다. 답을 못 찾으면 모델은 멈추는 대신 비슷한 행동을 계속 시도하는 쪽으로 기운다. 앞 코드의 `max_steps`가 이걸 막는 최소한의 장치다. 넷째는 **환각 Action**이다. 존재하지 않는 도구 이름을 부르거나 스키마에 없는 인자를 넣는다. 도구 호출 API가 인자 쪽은 상당히 막아 주지만, 도구를 골라야 할 상황에서 안 부르고 지어내는 답까지 막지는 못한다.
+
+## 계획을 먼저 세우는 구조
+
+### Planner·Executor·Replanner
+
+ReAct는 즉흥적이다. 한 걸음 앞만 보고 정하므로 「먼저 A와 B를 조사하고, 그 결과를 표로 정리한 뒤, 표를 근거로 요약을 쓴다」처럼 여러 단계가 얽힌 목표에서는 중간에 길을 잃는다. **Plan-and-Execute**는 역할을 셋으로 나눠 이 문제를 푼다.
+
+**Planner**는 목표를 받아 실행 가능한 단계 목록으로 쪼갠다. 각 단계는 구체적이고 그 자체로 하나의 행동이어야 한다. **Executor**는 그 목록을 하나씩 꺼내 실행한다 — 이 안쪽은 대개 ReAct 루프다. **Replanner**는 어떤 단계가 실패했을 때 남은 계획을 다시 짠다.
 
 ```python
 import json
-from anthropic import Anthropic
-
-client = Anthropic()
 
 def plan(goal: str) -> list[str]:
-    """Planner: 목표를 단계로 분해"""
     resp = client.messages.create(
-        model="claude-sonnet-4-6",
-        max_tokens=1024,
-        system="""사용자 목표를 JSON 배열 형식의 실행 가능한 단계로 분해하세요.
-각 단계는 구체적이고 독립적이어야 합니다.
-출력 형식: ["단계1", "단계2", ...]""",
+        model="claude-opus-5", max_tokens=1024,
+        system='목표를 실행 가능한 단계로 쪼개 JSON 배열로만 답하세요. 형식: ["단계1", "단계2"]',
         messages=[{"role": "user", "content": f"목표: {goal}"}],
     )
-    return json.loads(resp.content[0].text)
+    return json.loads("".join(b.text for b in resp.content if b.type == "text"))
 
-def execute_step(step: str, context: str, tools: list, tool_funcs: dict) -> str:
-    """Executor: 단일 단계 실행"""
-    messages = [{"role": "user", "content": f"다음 단계를 실행하세요:\n{step}\n\n이전 결과:\n{context}"}]
-    
-    while True:
-        response = client.messages.create(
-            model="claude-sonnet-4-6",
-            max_tokens=2048,
-            tools=tools,
-            messages=messages,
-        )
-        
-        if response.stop_reason == "end_turn":
-            return " ".join(b.text for b in response.content if hasattr(b, 'text'))
-        
-        messages.append({"role": "assistant", "content": response.content})
-        tool_results = []
-        
-        for block in response.content:
-            if block.type == "tool_use":
-                func = tool_funcs.get(block.name, lambda **k: "도구 없음")
-                result = func(**block.input)
-                tool_results.append({
-                    "type": "tool_result",
-                    "tool_use_id": block.id,
-                    "content": str(result),
-                })
-        
-        messages.append({"role": "user", "content": tool_results})
-
-def replan(goal: str, steps: list[str], completed: list[str], failed_step: str) -> list[str]:
-    """Replanner: 실패 시 남은 계획 재수립"""
-    resp = client.messages.create(
-        model="claude-sonnet-4-6",
-        max_tokens=1024,
-        messages=[{"role": "user", "content": f"""
-목표: {goal}
-완료된 단계: {completed}
-실패한 단계: {failed_step}
-남은 단계: {steps}
-
-실패를 고려해 남은 계획을 JSON 배열로 재수립하세요.
-"""}],
-    )
-    return json.loads(resp.content[0].text)
-
-def plan_and_execute(goal: str, tools: list, tool_funcs: dict) -> str:
-    """Plan-and-Execute 전체 파이프라인"""
-    steps = plan(goal)
-    print(f"계획: {steps}")
-    
-    completed = []
-    context = ""
-    
+def plan_and_execute(goal: str, tools, funcs) -> str:
+    steps, done, context = plan(goal), [], ""
     while steps:
-        current_step = steps.pop(0)
+        step = steps.pop(0)
         try:
-            result = execute_step(current_step, context, tools, tool_funcs)
-            completed.append(current_step)
-            context += f"\n{current_step}: {result}"
-            print(f"✓ {current_step}")
-        except Exception as e:
-            print(f"✗ {current_step}: {e}")
-            # 재계획
-            steps = replan(goal, steps, completed, current_step)
-    
-    # 최종 결합
-    return client.messages.create(
-        model="claude-sonnet-4-6",
-        max_tokens=2048,
-        messages=[{"role": "user", "content": f"다음 실행 결과를 통합해 최종 답변을 작성하세요:\n{context}"}],
-    ).content[0].text
-```
-
-## ③ Reflexion: 자기 반성으로 품질 향상
-
-Reflexion은 에이전트가 자신의 실패를 분석하고 개선하는 패턴이다. 동일 태스크를 여러 번 시도하면서 이전 시도의 실패 이유를 다음 시도에 반영한다. 코딩, 수학 문제 등 정답이 명확한 태스크에 특히 효과적이다.
-
-```python
-def reflexion_agent(task: str, max_trials: int = 3) -> str:
-    """Reflexion: 자기 반성 루프"""
-    reflections = []
-
-    for trial in range(max_trials):
-        # 이전 실패 반성을 컨텍스트에 포함
-        reflection_context = ""
-        if reflections:
-            reflection_context = f"\n이전 시도 실패 분석:\n" + "\n".join(
-                f"시도 {i+1}: {r}" for i, r in enumerate(reflections)
-            )
-
-        # Actor: 태스크 수행
-        resp = client.messages.create(
-            model="claude-opus-4-7",
-            max_tokens=2048,
-            messages=[{"role": "user", "content": f"""
-태스크: {task}
-{reflection_context}
-위 반성을 참고해 더 나은 답변을 작성하세요.
-"""}],
-        )
-        output = resp.content[0].text
-
-        # Evaluator: 품질 평가
-        eval_resp = client.messages.create(
-            model="claude-sonnet-4-6",
-            max_tokens=512,
-            messages=[{"role": "user", "content": f"""
-태스크: {task}
-출력: {output}
-
-이 출력이 태스크를 완벽히 수행했는지 평가하세요.
-완벽하면 "SUCCESS", 아니면 구체적인 개선점을 JSON으로:
-{{"status": "FAIL", "reason": "이유", "improvement": "개선 방법"}}
-"""}],
-        )
-        eval_text = eval_resp.content[0].text
-
-        if "SUCCESS" in eval_text:
-            print(f"시도 {trial + 1}에 성공")
-            return output
-
-        # Reflector: 실패 원인 기록
-        import re
-        try:
-            eval_data = json.loads(re.search(r'\{.*\}', eval_text, re.DOTALL).group())
-            reflections.append(eval_data.get("improvement", "알 수 없는 실패"))
+            result = react(f"{step}\n\n이전 결과:\n{context}", tools, funcs)
+            done.append(step)
+            context += f"\n{step}: {result}"
         except Exception:
-            reflections.append("형식 오류")
-
-        print(f"시도 {trial + 1} 실패, 반성: {reflections[-1]}")
-
-    return output  # 최대 시도 후 마지막 결과 반환
+            steps = replan(goal, steps, done, failed=step)   # 남은 계획만 다시 짠다
+    return summarize(goal, context)
 ```
 
-## 아키텍처별 비교
+`replan`이 **남은 단계만** 다시 짠다는 점을 눈여겨본다. 이미 끝난 단계까지 되돌리면 앞서 쓴 비용이 통째로 날아가고, 운이 나쁘면 같은 실패를 반복한다. 실패한 단계와 완료된 단계를 함께 넘겨 「여기까지는 됐고 여기서 막혔다」를 알려 주는 것이 재계획의 요령이다.
 
-| 패턴 | 복잡도 | 비용 | 적합한 태스크 |
-|---|---|---|---|
-| ReAct | 낮음 | 낮음 | 단순 QA, FAQ, 정보 조회 |
-| Plan-and-Execute | 중간 | 중간 | 리서치, 다단계 작업 |
-| Reflexion | 높음 | 높음 | 코딩, 수학, 고품질 필수 작업 |
+### 계획 분리가 아끼는 것
 
-## 실전 선택 기준
+호출 수만 보면 Plan-and-Execute가 더 비싸 보인다. 5단계 계획을 세우고 각 단계가 평균 두 번의 호출로 끝난다면 Planner 1 + 실행 10 + 통합 1로 열두 번이다. 같은 일을 ReAct 하나로 밀어도 열두 스텝쯤 걸릴 테니 호출 수는 비슷하다.
+
+**다른 것은 호출 수가 아니라 한 번의 호출이 들고 있는 컨텍스트다.** ReAct의 열두 번째 호출에는 앞의 열한 개 관찰이 전부 실린다. 반면 Executor는 자기가 맡은 단계 하나와, 앞 단계들의 요약된 결과만 본다. 앞 절에서 계산한 제곱 꼴의 증가가 여기서 끊긴다. 검색 결과 원문을 열 번 받아도 다음 단계로 넘어가는 것은 그중 정리된 몇 줄뿐이다.
+
+둘째 이득은 **계획이 사람이 읽을 수 있는 물건이 된다**는 것이다. 실행 전에 단계 목록을 화면에 띄우면, 에이전트가 엉뚱한 방향으로 한참을 헤매기 전에 사람이 잡아낼 수 있다. 셋째는 **병렬화**다. 서로 의존하지 않는 단계는 동시에 돌릴 수 있는데, ReAct처럼 다음 행동이 앞 관찰에 매여 있으면 이런 판단 자체가 불가능하다.
+
+### 계획이 굳는 자리
+
+대신 새로 생기는 위험이 있다. 처음 세운 계획이 틀리면 그 오류가 실행 전체에 퍼진다. ReAct는 매 스텝 방향을 바꿀 수 있지만, Plan-and-Execute는 계획을 한 번 세운 뒤 그 목록을 따라간다. Planner가 「최신 자료를 검색한다」를 첫 단계로 놓고 실제로는 사내 DB를 봐야 하는 상황이었다면, 뒤의 네 단계가 전부 잘못된 자료 위에서 돌아간다.
+
+그래서 재계획을 언제 부를지가 이 패턴의 핵심 설계 결정이 된다. 단계가 예외를 던졌을 때만 부르면 놓치는 것이 많다 — 도구가 「결과 없음」을 정상적으로 돌려주는 경우가 훨씬 흔하기 때문이다. 실무에서는 각 단계 뒤에 「이 결과가 이 단계의 목적을 채웠는가」를 한 번 묻고, 아니면 재계획으로 보내는 구성이 안전하다. 물론 그 확인 자체가 호출 한 번이라, 단계마다 붙일지 중요한 단계에만 붙일지는 다시 예산 문제다.
+
+## 다시 시도하는 두 방법
+
+### Actor·Evaluator·Reflector
+
+앞의 두 패턴은 한 경로를 끝까지 밀고 간다. **Reflexion**은 축을 하나 더 얹는다 — 결과를 평가하고, 실패했으면 **왜 실패했는지를 글로 적어** 다음 시도의 프롬프트에 넣는다. 역할이 셋이다. **Actor**가 태스크를 수행하고, **Evaluator**가 그 결과를 채점하고, **Reflector**가 실패 원인과 개선 방향을 문장으로 뽑아낸다.
 
 ```python
-def choose_architecture(task_description: str) -> str:
-    """태스크 특성에 따른 아키텍처 추천"""
-    task_lower = task_description.lower()
-    
-    # 복잡도 지표
-    has_multiple_steps = any(k in task_lower for k in ["계획", "단계", "분석 후", "조사 후"])
-    requires_quality = any(k in task_lower for k in ["완벽", "정확", "검증", "코드 작성"])
-    
-    if requires_quality:
-        return "Reflexion (품질 우선)"
-    elif has_multiple_steps:
-        return "Plan-and-Execute (복잡한 목표)"
-    else:
-        return "ReAct (단순 도구 호출)"
+# ask(프롬프트, model)는 client.messages.create를 감싸 텍스트 블록만 이어 돌려주는 헬퍼다.
+def reflexion(task: str, max_trials: int = 3) -> str:
+    reflections = []
+    for _ in range(max_trials):
+        hint = "\n이전 시도의 반성:\n" + "\n".join(reflections) if reflections else ""
+        output = ask(f"태스크: {task}{hint}", model="claude-opus-5")
+
+        verdict = ask(f"태스크: {task}\n출력: {output}\n\n"
+                      '완벽하면 "SUCCESS", 아니면 {"reason": ..., "improvement": ...}',
+                      model="claude-haiku-4-5")
+        if "SUCCESS" in verdict:
+            return output
+        reflections.append(parse_improvement(verdict))
+    return output       # 상한까지 갔으면 마지막 결과를 그대로 낸다
 ```
 
-## 정리
+Actor와 Evaluator에 서로 다른 모델을 둔 것이 우연이 아니다. 「이 코드가 요구사항을 만족하는가」를 판정하는 일은 코드를 처음부터 짜는 일보다 대체로 쉽다. 평가에 더 가벼운 모델을 쓰면 시도 횟수를 늘리고도 총비용이 덜 오른다.
 
-에이전트 아키텍처는 태스크 복잡도와 품질 요구에 맞게 선택해야 한다:
+정답이 명확한 태스크일수록 이 패턴이 잘 듣는다. 코드는 테스트를 돌려 보면 되고 수학 문제는 검산할 수 있다. 반대로 「좋은 글인가」처럼 판정 자체가 주관적이면 Evaluator가 흔들리고, 흔들리는 평가에 맞춰 Actor가 답을 고치면 시도할수록 나빠질 수도 있다. **평가가 못 미더우면 반복은 개선이 아니라 표류다.**
 
-- **ReAct**: 시작점, 대부분의 단순 태스크에 충분
-- **Plan-and-Execute**: 다단계 목표, 병렬 실행 가능성 있는 태스크
-- **Reflexion**: 코딩·수학 등 정답이 명확하고 품질이 중요한 태스크
+### 반성이 쌓이는 자리
 
-세 아키텍처를 혼합하는 **하이브리드** 방식도 효과적이다. 예를 들어 Planner는 Plan-and-Execute로, 각 단계 실행은 ReAct로, 최종 검증은 Reflexion으로 구성할 수 있다.
+Reflexion에서 상태에 쌓이는 것은 시도 결과가 아니라 **반성 문장**이다. 세 번째 시도의 프롬프트에는 첫 번째와 두 번째의 실패 분석이 함께 들어간다. 「경계 조건을 빠뜨렸다」, 「입력이 빈 리스트일 때를 처리하지 않았다」 같은 문장이 누적되면서 탐색 범위가 좁혀진다. 모델 가중치를 건드리지 않고 컨텍스트만으로 학습 비슷한 것을 흉내 내는 셈이다.
+
+값을 치른다. 시도 한 번에 Actor와 Evaluator 호출이 하나씩, 실패할 때마다 Reflector가 하나 더 붙는다. 세 번 시도하다 마지막에 성공하면 $$3 \times 2 + 2 = 8$$ 회다. 그냥 한 번 물어보는 것의 여덟 배이고, 지연도 그만큼 늘어난다. 사용자가 화면 앞에서 기다리는 경로에 이 패턴을 그대로 넣으면 안 되는 이유다.
+
+반성을 시도 사이에서 버리지 않고 파일이나 DB에 남기면 다음 요청에서도 재사용할 수 있다. 같은 종류의 태스크를 반복하는 에이전트라면 이렇게 모인 반성 목록이 사실상 태스크별 체크리스트가 된다.
+
+### LATS: 경로 대신 트리
+
+Reflexion이 시간 축으로 다시 시도한다면, **LATS**(Language Agent Tree Search)는 공간 축으로 넓힌다. 한 스텝에서 후보 행동을 여러 개 만들어 트리로 펼치고, 각 갈래를 조금씩 진행시켜 보고, 유망한 쪽을 더 깊이 파고, 막히면 위로 되돌아간다(백트래킹). 바둑이나 체스 엔진에서 쓰던 **몬테카를로 트리 탐색**(MCTS, 무작위 시뮬레이션으로 각 수의 가치를 어림해 탐색 방향을 정하는 방법)을 언어 에이전트의 행동 선택에 옮긴 것이다.
+
+되돌아갈 수 있다는 것이 앞의 셋과 갈리는 지점이다. ReAct도 Plan-and-Execute도 이미 한 행동을 무를 수 없어 실패를 안고 앞으로 갈 뿐이지만, LATS는 갈림길로 돌아가 다른 가지를 탄다. 대신 비용이 급하게 자란다. 스텝마다 후보를 셋씩 놓고 깊이 3까지 펼치면 잎이 $$3^3 = 27$$ 개이고, 각 잎을 평가하는 호출만 27번이다. 탐색 공간이 넓고 한 번의 답이 아주 비싼 문제 — 게임 전략, 최적 경로 찾기 — 가 아니면 값을 치를 이유가 없다. 실무 에이전트의 기본 후보로 놓기보다, 앞의 셋으로 안 되는 문제를 만났을 때 꺼내는 카드로 두는 편이 맞다.
+
+## 루프에 긋는 경계
+
+### 반복 상한과 종료 조건
+
+네 패턴 중 무엇을 고르든 경계는 따로 그어야 한다. 반복 횟수, 비용, 시간, 도구별 권한을 명시하지 않으면 에이전트는 같은 행동을 되풀이하거나 목표를 넘어서는 일까지 한다.
+
+가장 기본은 **반복 상한**이다. 앞의 ReAct 코드에서 `max_steps`가 그 자리였다. 다만 상한에 걸렸을 때 무엇을 할지를 함께 정해야 한다. 「최대 단계 초과」를 던지고 끝내면 그때까지 모은 정보가 통째로 버려진다. 지금까지의 관찰을 요약해 부분 답과 함께 돌려주는 편이, 사용자에게도 다음 실행에도 낫다.
+
+그리고 성공 조건만큼 **중단 조건**이 중요하다. 언제 성공인지는 대개 적어 두지만, 언제 포기할지와 언제 사람에게 넘길지는 자주 빠진다. 같은 도구를 같은 인자로 세 번 불렀다면 그건 진전이 아니라 제자리걸음이고, 상한까지 갈 것 없이 거기서 끊는 편이 낫다.
+
+### 도구별 권한과 승인 지점
+
+도구를 하나의 목록으로 두지 않고 **읽기와 쓰기를 갈라 두는 것**이 다음 경계다. 검색·조회처럼 상태를 바꾸지 않는 도구는 마음껏 부르게 해도 되지만, 파일 삭제·메일 발송·결제처럼 되돌릴 수 없는 도구는 다르다. 에이전트가 헛돌 때 읽기 도구를 열 번 더 부르는 것은 비용 문제로 끝나지만, 쓰기 도구를 열 번 더 부르면 사고다.
+
+그래서 되돌릴 수 없는 행동에는 **사람의 확인이 들어가는 지점**을 둔다. 실행 직전에 무엇을 어떤 인자로 부를지 보여 주고 승인을 받는 방식이다. Plan-and-Execute에서는 이 자리를 잡기가 특히 쉽다 — 계획이 먼저 나오므로, 실행을 시작하기 전에 목록 전체를 한 번 보여 줄 수 있다.
+
+```python
+from dataclasses import dataclass, field
+
+@dataclass
+class Limits:
+    max_steps: int = 10                              # 반복 상한
+    max_tokens_total: int = 200_000                  # 누적 토큰 예산
+    max_seconds: float = 120.0                       # 벽시계 시간
+    write_tools: set[str] = field(default_factory=lambda: {"send_email", "delete_file"})
+
+    def needs_approval(self, tool_name: str) -> bool:
+        return tool_name in self.write_tools         # 쓰기 도구는 승인을 받는다
+```
+
+### 비용과 시간 예산
+
+세 번째 경계는 숫자로 세는 것들이다. 누적 입력·출력 토큰과 벽시계 시간을 루프 안에서 함께 재고, 넘으면 스텝 상한과 무관하게 멈춘다. 스텝 수만으로는 안 되는 이유가 앞에서 계산한 그 성질이다 — 스텝이 두 배일 때 입력 토큰은 3.5배였다. **스텝 상한은 비용 상한이 아니다.** 관찰 하나가 유난히 큰 실행에서는 다섯 스텝 만에 예산을 다 쓸 수도 있다.
+
+예산을 재는 방법도 패턴마다 다르다. ReAct는 스텝마다 한 번 재면 되지만, Reflexion은 시도 하나가 Actor·Evaluator·Reflector 셋으로 이뤄져 있어 시도 단위와 호출 단위 중 어디에서 셀지 정해야 한다. 시도 중간에 예산이 떨어지면 그 시도를 버리고 이전 시도의 결과를 내보내는 쪽이 안전하다. 반쯤 진행된 시도의 출력은 대개 앞 시도보다 나쁘다.
+
+## 고르는 기준
+
+### 네 패턴의 비교
+
+지금까지 본 넷을 한 줄씩 놓으면 이렇다. 첫 두 칸이 앞에서 말한 두 축이고, 나머지 둘은 그 선택이 무엇으로 돌아오는지다.
+
+| 패턴 | 계획 시점 | 재시도 | LLM 호출 | 맞는 태스크 |
+| --- | --- | --- | --- | --- |
+| ReAct | 매 스텝 | 없음 | 스텝당 1 | 정보 검색, Q&A, 1~3단계 |
+| Plan-and-Execute | 처음 한 번 | 재계획 | 계획 1 + 단계별 | 리서치 보고서, 코드베이스 분석, 5단계 이상 |
+| Reflexion | 시도마다 | 있음 | 시도당 2~3 | 코드 생성·디버깅, 수학 증명 |
+| LATS | 갈래마다 | 백트래킹 | 갈래 수에 비례 | 게임 전략, 최적 경로 탐색 |
+
+표에서 오른쪽으로 갈수록 비싸지고, 그 값으로 사는 것은 「한 번에 못 맞혔을 때 회복하는 능력」이다. 회복이 필요 없는 태스크에 오른쪽을 쓰면 비용만 낸다.
+
+### 태스크가 정하는 것
+
+고르는 순서는 단순하다. **ReAct에서 시작한다.** 대부분의 태스크가 여기서 끝나고, 여기서 끝나지 않는 것이 무엇인지도 돌려 보면 드러난다. 그다음은 무엇이 모자랐는지를 보고 옮긴다 — 중간에 방향을 잃었으면 Plan-and-Execute로, 답은 냈는데 품질이 모자랐으면 Reflexion으로 간다.
+
+키워드로 판단하려 들면 자주 틀린다. 「단계별로」라는 말이 들어갔다고 Plan-and-Execute가 맞는 것도, 「정확하게」가 들어갔다고 Reflexion이 필요한 것도 아니다. 실제로 갈라야 할 질문은 셋이다. **행동 순서를 미리 정할 수 있는가**(있으면 계획 분리), **결과가 맞았는지 기계가 판정할 수 있는가**(가능하면 반복 개선), **틀린 행동을 무를 수 있어야 하는가**(그래야 하면 트리 탐색).
+
+그리고 넷을 **섞는 것**이 실무에서 가장 흔한 답이다. 계획은 Plan-and-Execute로 세우고, 각 단계 실행은 ReAct로 돌리고, 최종 산출물만 Reflexion으로 한 번 검증하는 식이다. 비싼 패턴을 전체에 걸지 않고 필요한 자리에만 얹는 것이 요령이다.
+
+### 경로까지 보는 평가
+
+마지막으로, 에이전트를 평가할 때 최종 답만 보면 부족하다. 정답에 도달했더라도 같은 검색을 다섯 번 반복했다면 좋은 실행이 아니다. 다음에 조건이 조금만 달라지면 그 낭비가 실패로 바뀐다.
+
+함께 볼 것이 셋이다. **경로의 효율성** — 몇 스텝, 몇 토큰을 썼는가. **도구 선택의 적절성** — 계산기로 될 일에 검색을 쓰지 않았는가. **복구 능력** — 도구가 오류를 돌려줬을 때 다른 인자로 다시 시도했는가, 아니면 같은 호출을 되풀이했는가. 이 셋을 재려면 앞에서 「실패도 관찰로 돌려준다」고 했던 그 기록이 남아 있어야 한다. 관찰과 Thought를 전부 로그로 남기는 습관이 여기서 값을 한다.
+
+지금까지 본 루프는 전부 손으로 짠 것이다. `while` 문과 메시지 목록, 예외 처리를 직접 썼다. 다음 글에서는 이 뼈대를 프레임워크가 어디까지 대신해 주는지 본다. 도구 호출과 프롬프트를 파이프로 잇는 선형 체인에서 출발해, 조건 분기와 되돌아가기가 필요해지는 순간 체인이 왜 상태 그래프로 바뀌어야 하는지까지 — 이 글의 Reflexion 루프가 그 그래프의 교과서적인 예제로 다시 나온다.
 
 ---
 
 읽어주셔서 감사합니다. 😊
 
-**지난 글:** [AI 에이전트와 MCP: 자율적으로 행동하는 AI 시스템](/articles/ai-agents-and-mcp)
+**지난 글:** [에이전트가 바깥과 연결되는 법: 도구 호출에서 MCP까지](/articles/ai-agents-and-mcp)
 
-**다음 글:** [에이전트 도구 사용: Tool Use 완전 가이드](/articles/agent-tool-use)
+**다음 글:** [LangChain과 LangGraph: 선형 체인에서 상태 그래프까지](/articles/agent-langchain)

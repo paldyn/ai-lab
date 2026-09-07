@@ -1,597 +1,415 @@
 ---
-title: "모델 모니터링: 프로덕션 ML 감시"
-description: "데이터 드리프트·컨셉 드리프트·모델 성능 저하를 감지하고 대응하는 모니터링 전략과 Evidently, PSI, KS 검정 실전을 다룹니다."
+title: "모델 모니터링 — 조용히 틀려 가는 것을 잡는 법"
+description: "배포된 모델은 예외를 던지지 않고 조금씩 더 자주 틀린다. 정답이 늦게 오는 현실에서 무엇을 대신 재는지, PSI·KS·카이제곱으로 분포 차이를 숫자로 만드는 법, 경보와 재학습 트리거를 어디에 거는지를 한 편에서 정리한다."
 author: "PALDYN Team"
 pubDate: "2026-05-23"
 category: "ml-ops"
 level: "중급"
-tags: ["모델모니터링", "데이터드리프트", "컨셉드리프트", "Evidently", "PSI", "KS검정", "MLOps"]
+tags: ["모니터링", "드리프트", "PSI", "재학습", "MLOps"]
 featured: false
 draft: false
 ---
-[지난 글](/articles/mlops-ci-cd)에서 ML CI/CD 파이프라인으로 모델을 자동으로 배포하는 방법을 다뤘다. 배포가 끝이 아니다. 프로덕션에 나간 모델은 시간이 지남에 따라 성능이 저하된다. 이를 감지하고 대응하는 것이 **모델 모니터링**이다.
+[지난 글](/articles/mlops-ci-cd)에서 ML CI/CD 파이프라인으로 모델을 자동으로 배포하는 방법을 다뤘다. 배포 버튼이 눌리는 순간이 끝이 아니라 시작이다. 학습할 때 본 세상과 배포된 뒤에 마주치는 세상은 계속 벌어지고, 모델은 그 사실을 스스로 알려 주지 않는다. 예외를 던지지도 않고 응답 시간이 늘지도 않는다. 그냥 조금씩 더 자주 틀린다.
 
-추천 시스템을 구축해 99% 정확도로 배포했다고 가정해보자. 6개월 후 정확도는 87%로 떨어져 있다. 무슨 일이 일어난 걸까? 코드는 변하지 않았다. 모델 파라미터도 그대로다. 변한 것은 **세상**이다. 사용자의 구매 패턴이 변했고, 새 상품 카테고리가 생겼으며, 계절적 트렌드가 바뀌었다. 모델이 학습한 세계와 실제 세계의 간극이 커진 것이다.
-
-이를 **모델 스톨링(Model Staleness)** 이라 부르며, 모든 프로덕션 ML 시스템이 필연적으로 직면하는 문제다.
+서버 모니터링은 CPU와 지연 시간을 보면 된다. 무언가 잘못되면 그래프가 튀고 알림이 온다. 모델은 그렇지 않다. 아무 데도 빨간불이 안 들어온 상태에서 성능만 새어 나간다. 그래서 서버 감시와는 별도의 장치가 필요하고, 그 장치를 세우는 일이 이 글의 주제다.
 
 ---
 
-## 왜 모델 성능은 저하되는가
+## 조용히 새는 성능
 
-### 데이터 드리프트 (Data Drift)
+### 코드가 그대로인 성능 저하
 
-모델이 학습한 입력 데이터의 분포와, 실제 서빙 시 들어오는 데이터의 분포가 달라지는 현상이다.
+추천 시스템을 만들어 정확도 99%로 배포했다고 하자. 6개월 뒤 정확도는 87%다. 무슨 일이 일어난 걸까. 코드는 한 줄도 안 바뀌었다. 모델 파라미터도 배포한 그대로다. 변한 것은 **세상**이다. 사용자의 구매 패턴이 달라졌고, 새 상품 카테고리가 생겼으며, 계절 트렌드가 바뀌었다. 모델이 배운 세계와 실제 세계 사이의 간극이 벌어진 것이다.
 
-예시: 가격 예측 모델을 2024년 데이터로 학습했는데, 2025년에 인플레이션으로 인해 물가가 전반적으로 상승했다. 학습 데이터의 평균 구매 금액은 18만원이었는데, 현재 서빙 데이터의 평균은 24만원이다. 모델은 이 새로운 분포에 최적화되지 않았으므로 예측 정확도가 떨어진다.
+이 현상을 **모델 스톨링**(model staleness)이라고 부른다. 배포된 모델이 시간이 지나며 낡아 가는 것을 가리키는 말이고, 모든 프로덕션 ML 시스템이 피할 수 없이 겪는 일이다. 그 밑에 깔린 원인이 **드리프트**(drift)다. 학습 시점의 데이터 분포와 지금 들어오는 데이터의 분포가 벌어지는 현상을 말한다.
 
-### 컨셉 드리프트 (Concept Drift)
+소프트웨어 버그와 결정적으로 다른 점이 있다. 버그는 고치면 없어지지만 드리프트는 없앨 수 없다. 세상이 계속 움직이는 한 모델은 계속 낡는다. 그러니 목표는 「드리프트가 없는 시스템」이 아니라 「드리프트를 빨리 알아채고 대응하는 시스템」이다. 이 차이가 모니터링을 설계하는 태도를 바꾼다 — 사고를 막는 장치가 아니라 사고를 일찍 보여 주는 장치를 만드는 것이다.
 
-입력-출력 관계 자체가 변하는 현상이다. 데이터 드리프트보다 더 근본적인 문제다.
+### 정답이 늦게 오는 현실
 
-예시: 스팸 필터 모델. 스팸 발송자들은 시간이 지남에 따라 새로운 우회 기법을 개발한다. "무료 상품" 같은 키워드가 더 이상 스팸의 신호가 되지 않고, 전혀 다른 패턴으로 스팸이 온다. 동일한 입력 특성에 대해 "스팸인지 아닌지"의 정의 자체가 변한 것이다.
+가장 먼저 떠오르는 답은 「정확도를 계속 재면 되지 않나」다. 맞는 말이지만, 정확도를 재려면 정답이 있어야 한다. 그리고 실무에서 정답은 대개 한참 뒤에 온다.
 
-### 업스트림 변경 (Upstream Changes)
+대출 심사 모델의 정답은 연체가 발생하거나 만기가 지나야 확정된다. 이탈 예측 모델의 정답은 정의한 관찰 기간이 다 지나야 나온다. 콘텐츠 추천의 클릭은 빨리 오지만 「그 추천이 좋았는가」의 정답은 나중에야 붙는다. 이 시차를 **라벨 지연**(label lag)이라고 한다.
 
-데이터 파이프라인 상류에서의 변경으로 인해 피처 값이 바뀌는 현상이다.
+![라벨 지연 때문에 정확도와 입력 지표가 서로 다른 시점에 반응한다](/assets/posts/mlops-drift-detection-label-lag.svg)
 
-- 데이터베이스 스키마 변경: `user_age` 컬럼이 정수에서 `NULL` 허용으로 변경
-- ETL 버그 수정: 결측치 처리 로직이 바뀌어 특정 피처의 분포가 달라짐
-- 외부 API 변경: 날씨 API가 온도 단위를 섭씨에서 화씨로 변경
+그림의 아래 칸을 보면 실선이 6주차에서 끊긴다. 그 뒤는 실제로 일어난 일이지만 아직 우리 손에 없는 값이다. 위 칸의 입력 지표는 라벨이 필요 없으므로 매일 잰다. 5주차에 입력이 흔들린 것을 위 칸은 6주차에 알려 주고, 아래 칸은 12주차에 알려 준다. 여섯 주 동안 잘못된 예측이 그대로 나간 뒤에야 정확도 그래프가 반응하는 것이다.
 
-이런 변경은 코드 리뷰에서 포착하기 어렵고, 모델 성능이 떨어지기 시작하고 나서야 발견되는 경우가 많다.
+대출 승인 모델처럼 정답이 3개월 뒤에 오는 경우라면 격차는 더 벌어진다. 오늘 정확도가 떨어진 것을 확인했다면 그것은 3개월 전 모델의 성적표이고, 지금 서빙 중인 모델이 어떤지는 여전히 모른다.
 
----
+### 1차 방어선이 되는 입력
 
-## 드리프트의 종류
+그래서 감시의 1차 방어선은 정확도가 아니라 입력이다. 정확도는 뒤늦게 오는 확인용 지표로 두고, 매일 보는 화면에는 라벨이 없어도 잴 수 있는 것을 올린다. 들어오는 피처의 분포, 모델이 내놓는 예측값의 분포, 결측치 비율, 요청량 — 이 넷은 정답이 하나도 없어도 오늘 당장 잴 수 있다.
 
-### Covariate Shift (공변량 이동)
-
-입력 변수 X의 분포는 변하지만, X가 주어졌을 때 Y의 조건부 분포 P(Y|X)는 변하지 않는 경우다.
-
-```
-학습 시: P_train(X) ≠ P_serve(X)
-하지만:  P_train(Y|X) = P_serve(Y|X)
-```
-
-이 경우 중요도 가중치 재조정(Importance Weighting)으로 재학습 없이 어느 정도 보정 가능하다.
-
-### Label Shift (레이블 이동)
-
-출력 분포 P(Y)가 변하는 경우다. 의료 진단 모델에서 질병 유병률이 계절에 따라 변하는 것이 전형적인 예다.
-
-```
-학습 시: P_train(Y) ≠ P_serve(Y)
-```
-
-### Concept Drift (컨셉 드리프트)
-
-P(Y|X) 자체가 변하는 경우로, 가장 심각한 형태다. 재학습이 유일한 해결책이다.
-
-```
-학습 시: P_train(Y|X) ≠ P_serve(Y|X)
-```
+이 방식에는 대가가 있다. 입력 지표는 **성능을 재는 것이 아니라 성능이 흔들릴 가능성을 재는 것**이다. 입력이 변했다고 해서 반드시 모델이 못하게 되는 것은 아니다. 그래서 입력 지표는 확인해 보라는 신호로 다루고, 정확도가 뒤늦게 도착하면 그 신호가 맞았는지를 되짚어 임계값을 조정한다. 두 지표는 경쟁하는 것이 아니라 시차를 두고 이어진다.
 
 ---
 
-## 드리프트 감지 통계 방법
+## 변한 것을 가르는 세 갈래
+
+### 입력·예측·개념
+
+「드리프트가 났다」는 말은 너무 뭉뚱그린 표현이다. 대응이 완전히 다른 세 가지가 그 안에 섞여 있다.
+
+**입력 드리프트**는 들어오는 데이터의 분포가 변한 것이다. 신규 유입 채널이 열려 연령대가 달라졌거나, 앱 개편으로 특정 화면의 유입이 늘었거나, 계절이 바뀐 경우다. 가격 예측 모델을 재작년 데이터로 학습했는데 인플레이션으로 물가가 전반적으로 올라 평균 구매 금액이 18만원에서 24만원이 된 것도 여기 속한다. 입력과 정답의 관계 자체는 그대로다.
+
+**예측 드리프트**는 모델이 내놓는 값의 분포가 변한 것이다. 승인률이 갑자기 올라갔다거나, 특정 클래스로 쏠린다거나 하는 식이다. 입력 드리프트의 결과일 수도 있고, 피처 계산이 망가져서일 수도 있다. 입력 피처가 수백 개일 때 하나하나 다 보기 어렵다면 예측 분포 하나만 봐도 상당수의 사고가 걸린다 — 어떤 피처가 망가지든 결국 예측값으로 흘러 나오기 때문이다.
+
+**개념 드리프트**는 입력과 정답 사이의 관계 자체가 변한 것이다. 같은 특징을 가진 사용자가 예전에는 우량 고객이었는데 지금은 아닌 경우다. 스팸 필터가 전형적인 예다. 스팸 발송자는 시간이 지나며 새 우회 기법을 만들어 내고, 「무료 상품」 같은 키워드는 더 이상 스팸의 신호가 아니게 된다. 같은 입력에 대해 「스팸인가」의 정의 자체가 움직인 것이다. 이것이 가장 아프다 — 입력 분포는 멀쩡한데 모델만 틀리기 때문에 입력 지표로는 안 잡힌다.
+
+### 분포 기호로 적은 세 갈래
+
+같은 구분을 확률 분포로 적으면 대응이 왜 달라지는지가 더 분명해진다. 입력을 $$X$$, 정답을 $$Y$$ 로 쓰고 학습 시점 분포에 $$\mathrm{train}$$, 서빙 시점 분포에 $$\mathrm{serve}$$ 를 붙인다.
+
+**공변량 이동**(covariate shift)은 $$X$$ 의 분포는 변했지만 $$X$$ 가 주어졌을 때 $$Y$$ 의 조건부 분포는 그대로인 경우다.
+
+$$
+P_{\mathrm{train}}(X) \neq P_{\mathrm{serve}}(X), \quad P_{\mathrm{train}}(Y \mid X) = P_{\mathrm{serve}}(Y \mid X)
+$$
+
+모델이 배운 규칙은 여전히 옳고 규칙을 적용받는 사람들의 구성만 바뀌었다는 뜻이다. 그래서 재학습 없이도 어느 정도 보정할 수 있다 — 학습 데이터의 각 샘플에 「서빙 분포에서 얼마나 자주 나타나는가」의 비율을 가중치로 걸어 다시 계산하는 **중요도 가중치**(importance weighting)가 그 방법이다. 20대 비율이 학습 때 10%였는데 지금 30%라면 20대 샘플에 3배의 가중치를 준다.
+
+**레이블 이동**(label shift)은 출력 분포 $$P(Y)$$ 가 변한 경우다. 의료 진단 모델에서 질병 유병률이 계절에 따라 오르내리는 것이 전형적인 예다.
+
+$$
+P_{\mathrm{train}}(Y) \neq P_{\mathrm{serve}}(Y)
+$$
+
+**개념 드리프트**는 조건부 분포 자체가 변한 것이다.
+
+$$
+P_{\mathrm{train}}(Y \mid X) \neq P_{\mathrm{serve}}(Y \mid X)
+$$
+
+가장 심각한 형태이고, 가중치를 조정해서 넘어갈 방법이 없다. 모델이 배운 규칙이 틀린 것이므로 새 라벨을 모아 다시 배우는 것 말고는 길이 없다.
+
+### 드리프트가 아닌 파이프라인 사고
+
+세 갈래에 들어가지 않는 네 번째 원인이 있고, 실무에서는 이것이 가장 흔하다. 데이터 파이프라인 상류가 바뀌어 피처 값 자체가 달라지는 경우다.
+
+- 데이터베이스 스키마 변경: `user_age` 컬럼이 정수에서 `NULL` 허용으로 바뀌어 결측이 섞이기 시작한다
+- ETL 로직 수정: 결측치를 채우는 방식이 평균에서 0으로 바뀌어 특정 피처의 분포가 통째로 옮겨 간다
+- 외부 API 변경: 날씨 API가 온도 단위를 섭씨에서 화씨로 바꾼다. 20도이던 값이 68이 되므로 분포 전체가 이동한다
+- 상류 테이블의 컬럼 이름 변경: 조인이 조용히 실패해 피처가 전부 결측이 된다
+- 집계 배치 지연: 하루 밀려서 어제 값이 오늘 값 자리에 들어간다
+
+![성능 저하의 원인을 가르는 순서도](/assets/posts/mlops-drift-detection-triage.svg)
+
+순서도의 마지막 칸이 실무에서 가장 자주 나오는 답이다. 성능이 떨어졌을 때 절반쯤은 드리프트가 아니라 **파이프라인 사고**다. 이 구분이 중요한 이유는 대응이 정반대이기 때문이다. 드리프트의 답은 재학습이고 파이프라인 사고의 답은 코드 수정이다. 오진하면 멀쩡한 모델을 오염된 데이터로 다시 학습시키게 된다. 결측이 90%가 된 피처를 그대로 담아 재학습하면 모델은 「그 피처를 무시하라」고 배우고, 파이프라인이 고쳐진 뒤에도 그 피처를 안 본다.
+
+파이프라인 사고는 코드 리뷰에서 잡히지 않는다. 상류 팀이 자기 시스템을 정상적으로 고친 결과이고, 그 변경이 하류의 모델에 어떤 영향을 주는지는 상류 팀도 모른다. 그래서 「이 피처가 어느 테이블의 어느 컬럼에서 오는가」를 기록해 두는 것이 사후 조사 시간을 크게 줄인다.
+
+---
+
+## 벌어진 정도를 재는 자
+
+### PSI와 구간 경계
+
+두 분포가 얼마나 다른지를 숫자 하나로 만드는 방법 중 가장 널리 쓰이는 것이 **PSI**(Population Stability Index)다. 값의 범위를 여러 구간으로 쪼갠 뒤, 각 구간에 들어간 비율이 기준 시점과 얼마나 달라졌는지를 더한다. 신용 평가와 보험 쪽에서 굳어진 지표이고 ML 모니터링으로 그대로 넘어왔다.
+
+$$
+\mathrm{PSI} = \sum_{i=1}^{k} (p_i - q_i) \ln \frac{p_i}{q_i}
+$$
+
+여기서 $$p_i$$ 는 현재 데이터에서 $$i$$ 번째 구간의 비율, $$q_i$$ 는 기준 데이터에서의 비율이다. 두 분포가 같으면 각 항이 0이 되어 합도 0이다. 어느 한쪽으로 쏠릴수록 커진다.
 
 ![데이터 드리프트 감지 원리](/assets/posts/mlops-monitoring-drift.svg)
 
-### PSI (Population Stability Index)
+그림이 앞의 인플레이션 예다. 학습 때 평균 18만원이던 구매 금액이 서빙에서는 24만원으로 옮겨 갔고, 같은 이동을 자 셋으로 재면 PSI 0.26, KL 발산 0.34, KS 통계량 0.41이 나온다. **자마다 눈금이 다르므로 값끼리 비교하지 말고 각자의 임계값과 견준다** — 셋이 나란히 「크다」고 말하고 있을 뿐, 0.41이 0.26보다 심각하다는 뜻이 아니다.
 
-보험업계에서 개발된 분포 비교 지표로, ML 모니터링에서 가장 널리 쓰인다.
+같은 이동을 손으로 따라가 보자. 구매 금액을 세 구간으로 나눴더니 기준 데이터에서는 12만원 미만이 20%, 12만~24만원이 60%, 24만원 초과가 20%였다. 지금은 각각 10%, 50%, 40%다.
 
-```
-PSI = Σ (actual% - expected%) × ln(actual% / expected%)
-```
+$$
+\begin{aligned}
+\mathrm{PSI} &= (0.10 - 0.20)\ln\frac{0.10}{0.20} + (0.50 - 0.60)\ln\frac{0.50}{0.60} + (0.40 - 0.20)\ln\frac{0.40}{0.20} \\
+&= 0.0693 + 0.0182 + 0.1386 = 0.226
+\end{aligned}
+$$
 
-해석 기준:
-- PSI < 0.1: 변화 없음, 정상
-- 0.1 ≤ PSI < 0.2: 소폭 변화, 모니터링 강화
-- PSI ≥ 0.2: 심각한 드리프트, 즉시 대응 필요
+세 항의 크기를 보면 재미있는 것이 보인다. 마지막 구간 하나가 0.1386으로 전체 0.226의 61%를 만든다. 나머지 두 구간이 합쳐서 기여한 것보다 크다. **PSI는 여러 구간에 고르게 퍼진 변화보다 한 구간이 크게 벌어진 변화에 훨씬 민감하다.** 그래서 경보가 울렸을 때 어느 구간이 값을 만들었는지를 함께 보면 원인이 거의 바로 보인다.
+
+그림에 적힌 0.26과 손으로 낸 0.226이 어긋나는 것도 짚고 넘어갈 자리다. 같은 이동인데 값이 다른 이유는 구간을 셋으로만 나눴기 때문이다. **PSI는 구간을 잘게 쪼갤수록 커지는 경향이 있다** — 넓은 구간 안에서 일어난 이동은 구간 비율을 바꾸지 못해 값에 안 잡히고, 구간을 쪼개면 그 이동이 드러난다. 그러니 임계값을 정할 때 쓴 구간 개수를 함께 고정해 두지 않으면 어제 값과 오늘 값을 견줄 수 없다.
+
+구현에서 실수하기 쉬운 자리가 둘 있다.
 
 ```python
 import numpy as np
 
-def psi(expected: np.ndarray, actual: np.ndarray,
-        buckets: int = 10) -> float:
-    """PSI > 0.2이면 심각한 드리프트"""
-    expected_pct = np.histogram(expected, buckets)[0] / len(expected)
-    actual_pct   = np.histogram(actual,   buckets)[0] / len(actual)
-    # 0 방지
-    expected_pct = np.where(expected_pct == 0, 1e-6, expected_pct)
-    actual_pct   = np.where(actual_pct   == 0, 1e-6, actual_pct)
-    return float(np.sum(
-        (actual_pct - expected_pct) * np.log(actual_pct / expected_pct)
-    ))
+def psi(reference, current, bins=10, eps=1e-6):
+    # 구간 경계는 기준 데이터로 한 번만 정하고 계속 재사용한다
+    edges = np.quantile(reference, np.linspace(0, 1, bins + 1))
+    edges[0], edges[-1] = -np.inf, np.inf
+
+    q = np.histogram(reference, bins=edges)[0] / len(reference)
+    p = np.histogram(current, bins=edges)[0] / len(current)
+    q, p = np.maximum(q, eps), np.maximum(p, eps)
+
+    return float(np.sum((p - q) * np.log(p / q)))
 ```
 
-### KL Divergence (쿨백-라이블러 발산)
+첫째, 구간 경계를 기준 데이터로 한 번 정하고 고정해야 한다. 매번 현재 데이터로 다시 나누면 분포가 아무리 이동해도 각 구간의 비율이 비슷하게 유지되어 PSI가 0 근처에 머문다. 재려는 대상이 사라지는 것이다. 양 끝을 무한대로 열어 두는 것도 같은 이유다 — 기준 데이터의 최댓값을 넘는 값이 들어오면 어느 구간에도 안 들어가 버린다.
 
-두 분포의 차이를 정보 이론적으로 측정한다. PSI와 달리 비대칭 지표라는 점에 주의해야 한다.
+둘째, `eps`가 없으면 어떤 구간의 비율이 0이 될 때 로그가 발산해 PSI가 무한대로 튄다. 새 값이 나타난 구간에서 실제로 자주 일어나는 일이다. 다만 `eps`는 무한대를 막을 뿐 값을 얌전하게 만들지는 않는다. 기준에서 5%였던 구간이 통째로 비면 $$(0.05 - 10^{-6}) \times \ln(0.05 / 10^{-6}) \approx 0.54$$ 로 그 항 하나가 임계값의 두 배를 넘긴다. 앞의 화씨 사고처럼 분포가 통째로 옮겨 가면 거의 모든 구간이 이 꼴이 되어 PSI가 수십까지 올라간다. 값이 비정상적으로 크면 드리프트가 아니라 사고를 의심할 자리다.
 
-```
-KL(P || Q) = Σ P(x) × log(P(x) / Q(x))
-```
+### 자를 고르는 기준
 
-KL(P||Q)와 KL(Q||P)는 다른 값을 가진다. 이 때문에 실무에서는 KL을 대칭화한 **JS Divergence**를 사용하기도 한다.
+PSI가 전부는 아니다. 데이터 종류에 따라 쓰는 자가 다르다.
 
-```python
-from scipy.stats import entropy
+| 방법 | 쓰는 데이터 | 성격 |
+| --- | --- | --- |
+| PSI | 수치형, 순서 있는 범주 | 해석 기준이 널리 공유돼 있어 팀 간 합의가 쉽다 |
+| KS 통계량 | 수치형 | 두 누적분포의 최대 간격. 구간을 안 나눠도 된다 |
+| 카이제곱 검정 | 범주형 | 카테고리 비율 변화에 민감하다 |
+| KL·JS 발산 | 수치형, 확률 분포 | 정보 이론 기반. 분포 전체의 차이를 본다 |
+| 바서슈타인 거리 | 수치형 | 값이 얼마나 멀리 옮겨 갔는지까지 반영한다 |
+| 임베딩 거리 | 텍스트·이미지 | 원본을 벡터로 바꾼 뒤 그 분포를 비교한다 |
 
-def kl_divergence(p: np.ndarray, q: np.ndarray, bins: int = 20) -> float:
-    """학습 분포 p, 서빙 분포 q 간 KL Divergence"""
-    p_hist, edges = np.histogram(p, bins=bins, density=True)
-    q_hist, _     = np.histogram(q, bins=edges, density=True)
+**KS 검정**(Kolmogorov-Smirnov test)은 두 표본이 같은 분포에서 왔는지를 판정하는 비모수 검정이다. 구간을 나눌 필요가 없어 PSI의 첫 번째 함정이 아예 없다는 것이 장점이고, 통계량 자체가 두 누적분포의 최대 간격이라 뜻이 직관적이다. p-값이 0.05보다 작으면 분포 차이가 우연으로 보기 어렵다고 읽고, 심각도는 통계량 크기로 나눈다. 통계량이 0과 1 사이의 값이라 구간을 긋기 편한데, **그 경계는 PSI의 0.2와 마찬가지로 정해진 상수가 아니라 평상시 값을 모아 자기 서비스에서 정할 몫이다.**
 
-    # 0 방지
-    p_hist = p_hist + 1e-8
-    q_hist = q_hist + 1e-8
+주의할 것은 KS의 p-값이 표본 수에 강하게 끌린다는 점이다. 표본이 수십만 건이면 실무적으로 무시해도 좋은 차이에도 p-값이 0이 나온다. **그래서 p-값으로 걸러 내고 통계량 크기로 심각도를 정하는 두 단계로 쓴다.** p-값만 보고 경보를 걸면 트래픽이 많은 날마다 알림이 온다.
 
-    return float(entropy(p_hist, q_hist))
+**카이제곱 검정**은 범주형 피처를 위한 자다. 위의 방법들은 값의 순서가 의미를 갖는 수치형에 맞춰져 있어서, 「서울·부산·대구」처럼 순서가 없는 값에는 그대로 쓸 수 없다. 기준 기간과 현재 기간의 카테고리별 관측 도수를 2행짜리 표로 만들어 넣으면 비율이 유의미하게 달라졌는지를 판정한다. 여기서도 표본이 커지면 사소한 차이가 유의해지므로 같은 두 단계 사용법이 필요하다.
 
-def js_divergence(p: np.ndarray, q: np.ndarray, bins: int = 20) -> float:
-    """대칭화된 JS Divergence (0~log2 범위)"""
-    p_hist, edges = np.histogram(p, bins=bins, density=True)
-    q_hist, _     = np.histogram(q, bins=edges, density=True)
-    p_hist = p_hist + 1e-8
-    q_hist = q_hist + 1e-8
-    m = (p_hist + q_hist) / 2
-    return float((entropy(p_hist, m) + entropy(q_hist, m)) / 2)
-```
+**KL 발산**(Kullback-Leibler divergence)은 두 분포의 차이를 정보 이론적으로 재는 값이다.
 
-### KS 검정 (Kolmogorov-Smirnov Test)
+$$
+D_{\mathrm{KL}}(P \parallel Q) = \sum_x P(x) \log \frac{P(x)}{Q(x)}
+$$
 
-비모수적 통계 검정으로, 두 분포가 동일한 분포에서 왔는지를 검정한다. p-value < 0.05이면 분포 변화가 통계적으로 유의미하다.
+여기서 놓치기 쉬운 성질이 **비대칭**이라는 점이다. $$D_{\mathrm{KL}}(P \parallel Q)$$ 와 $$D_{\mathrm{KL}}(Q \parallel P)$$ 가 다른 값을 준다. 그래서 「학습 대비 현재」로 쟀는지 「현재 대비 학습」으로 쟀는지에 따라 숫자가 달라지고, 팀 안에서 방향을 통일해 두지 않으면 비교가 안 된다. 이 불편을 없애려고 두 방향의 중간 분포 $$M = (P+Q)/2$$ 를 놓고 양쪽에서 재는 **JS 발산**(Jensen-Shannon divergence)을 쓰기도 한다.
 
-```python
-from scipy.stats import ks_2samp
+$$
+D_{\mathrm{JS}}(P \parallel Q) = \tfrac{1}{2} D_{\mathrm{KL}}(P \parallel M) + \tfrac{1}{2} D_{\mathrm{KL}}(Q \parallel M)
+$$
 
-def ks_drift_test(reference: np.ndarray,
-                  current: np.ndarray) -> dict:
-    """KS 검정으로 드리프트 유의성 판단"""
-    statistic, p_value = ks_2samp(reference, current)
+대칭이고 값의 범위도 유한해서 여러 피처의 값을 나란히 놓고 비교하기 좋다.
 
-    return {
-        "ks_statistic": statistic,
-        "p_value": p_value,
-        "drift_detected": p_value < 0.05,
-        "severity": (
-            "심각" if statistic > 0.3 else
-            "중간" if statistic > 0.15 else
-            "경미"
-        )
-    }
-```
+수치 하나에 매달리지 않는 편이 좋다. 실무에서는 **주요 피처 열 개 남짓에 PSI를 걸어 두고, 그중 몇 개가 동시에 움직이는지를 본다.** 하나가 튀는 것은 흔하지만 셋이 같이 움직이면 진짜다. 그리고 PSI와 KS를 함께 두면 서로 다른 정보를 준다 — PSI는 어느 구간에서 벌어졌는지를 알려 주고, KS는 그 벌어짐이 우연일 확률을 알려 준다.
 
-### 범주형 변수: 카이제곱 검정
+### 임계값이라는 관례
 
-위 방법들은 수치형 변수에 적합하다. 범주형 변수에는 카이제곱 검정을 사용한다.
+PSI 값의 통상적인 읽기는 이렇다.
 
-```python
-from scipy.stats import chi2_contingency
+| 값 | 읽는 법 | 할 일 |
+| --- | --- | --- |
+| 0.1 미만 | 변화 없음 | 그대로 둔다 |
+| 0.1 이상 0.2 미만 | 소폭 변화 | 관찰 주기를 좁히고 기록한다 |
+| 0.2 이상 | 심각한 드리프트 | 원인을 조사하고 재학습을 검토한다 |
 
-def chi2_drift_test(reference_counts: dict,
-                    current_counts: dict) -> dict:
-    """범주형 피처의 분포 변화 검정"""
-    all_categories = set(reference_counts) | set(current_counts)
-    ref_arr = [reference_counts.get(c, 0) for c in all_categories]
-    cur_arr = [current_counts.get(c, 0) for c in all_categories]
+다만 이 숫자는 신용 평가 쪽에서 굳어진 관례이지 보편 상수가 아니다. 어떤 정리에서 유도된 값도 아니고, 데이터의 성격이나 구간 개수와도 무관하게 쓰이고 있다. **자기 서비스의 평상시 값을 몇 주 모아 보고 기준을 다시 잡는 편이 낫다.** 트래픽이 원래 요일마다 크게 출렁이는 서비스라면 0.2가 매일 넘을 수도 있고, 반대로 아주 안정적인 배치 데이터라면 0.05만 넘어도 이상 신호일 수 있다.
 
-    # 2xN 관측도수 행렬
-    observed = [ref_arr, cur_arr]
-    chi2, p_value, dof, expected = chi2_contingency(observed)
-
-    return {
-        "chi2_statistic": chi2,
-        "p_value": p_value,
-        "drift_detected": p_value < 0.05
-    }
-```
+기준을 다시 잡는 방법은 단순하다. 사고가 없었던 4~6주치 데이터로 매일의 PSI를 계산해 분포를 그린다. 그 분포의 상위 1%쯤에 해당하는 값이 「평상시에는 거의 안 나오는 값」이고, 그것을 임계값의 출발점으로 삼는다. 이렇게 정하면 임계값의 뜻이 「관례상 심각한 수준」이 아니라 「우리 서비스에서 백 일에 하루 나올 값」이 되어, 알림이 얼마나 자주 올지를 미리 알 수 있다.
 
 ---
 
-## Evidently로 자동 모니터링 구축
+## 참조 윈도우의 설계
 
-Evidently는 Python 기반 오픈소스 ML 모니터링 라이브러리로, 드리프트 감지부터 HTML 리포트 생성까지 원스톱으로 처리한다.
+드리프트는 항상 「무엇에 견주어」라는 기준이 있어야 정의된다. 이 기준 데이터를 **참조 윈도우**(reference window)라고 부르고, 어떻게 잡느냐가 경보 품질을 크게 좌우한다. 같은 데이터에 같은 PSI를 걸어도 기준이 다르면 값이 전혀 다르게 나온다.
+
+### 학습 데이터라는 고정 기준
+
+가장 단순한 방식은 모델이 학습한 데이터를 그대로 기준으로 두는 것이다. 「지금 들어오는 데이터가 모델이 배운 세상에서 얼마나 멀어졌는가」를 재게 되므로 뜻이 분명하고, 모델을 새로 배포하기 전까지 기준이 안 움직여서 값의 추세를 그대로 읽을 수 있다.
+
+문제는 시간이 지날수록 정상적인 변화까지 전부 드리프트로 잡힌다는 점이다. 여름에 학습한 모델을 겨울에 돌리면 계절 효과가 통째로 값에 들어온다. 모델이 반년째 서빙 중이라면 경보가 상시 켜져 있게 되고, 그러면 아무도 안 본다.
+
+### 최근 구간을 굴리는 기준
+
+반대쪽은 최근 N주를 기준으로 삼고 창을 계속 앞으로 미는 방식이다. 서서히 일어나는 변화를 정상으로 흡수하므로 계절 효과에 흔들리지 않고, 갑작스러운 사고는 잘 잡는다. 어제까지와 오늘이 다르면 바로 튄다.
+
+대신 결정적인 구멍이 있다. **천천히 진행되는 드리프트는 기준선이 함께 따라가 버려서 영영 안 잡힌다.** 매주 조금씩 옮겨 가는 분포는 4주 창 안에서 늘 「최근과 비슷한」 상태이므로 값이 계속 낮게 나온다. 반년 뒤 학습 데이터와 견주면 완전히 다른 분포인데도 굴리는 기준으로는 한 번도 경보가 안 울린다. 개구리를 천천히 데우는 셈이다.
+
+### 두 기준의 병행과 요일 효과
+
+그래서 실제 운영에서는 둘을 함께 둔다. 두 값은 서로 다른 질문에 답한다.
+
+| 기준 | 답하는 질문 | 성격 |
+| --- | --- | --- |
+| 학습 데이터 고정 | 지금 모델이 배운 것에서 얼마나 멀어졌나 | 누적 지표, 재학습 시점 판단 |
+| 최근 N주 굴림 | 어제와 오늘 사이에 무슨 일이 있었나 | 급변 감지기, 사고 알림 |
+
+두 값을 나란히 놓으면 상황이 훨씬 잘 읽힌다. 고정 기준 값만 높고 굴리는 기준 값은 낮으면 오래 쌓인 변화이므로 계획된 재학습으로 처리한다. 둘 다 갑자기 튀면 방금 무슨 일이 생긴 것이므로 파이프라인부터 본다.
+
+비교 구간을 자를 때 흔한 실수가 하나 더 있다. **주말과 평일을 섞어서 재면 요일 효과가 그대로 드리프트로 나온다.** 월요일 데이터를 기준으로 두고 토요일 데이터를 견주면 트래픽 구성이 달라 PSI가 당연히 튄다. 하루 단위로 재고 있다면 최소한 같은 요일끼리 비교하거나, 7일 단위로 창을 잡아 요일 구성이 같아지게 한다. 후자가 더 안전하다 — 요일 하나를 고정하면 표본 수가 7분의 1로 줄어 값이 불안정해지기 때문이다.
+
+---
+
+## 감시를 돌리는 도구
+
+### Evidently 리포트
+
+지표를 하나씩 손으로 계산하는 대신 **Evidently** 같은 도구를 쓰면 피처 전체에 대해 자동으로 검정을 골라 돌리고 HTML 리포트까지 만들어 준다. 수치형에는 KS나 바서슈타인, 범주형에는 카이제곱을 알아서 붙이는 식이다.
 
 ```python
-from evidently.report import Report
-from evidently.metric_preset import DataDriftPreset, ModelPerformancePreset
+from evidently import Report
+from evidently.presets import DataDriftPreset, ClassificationPreset
 
-# 드리프트 리포트 생성
-report = Report(metrics=[
-    DataDriftPreset(),
-    ModelPerformancePreset(),
+report = Report([
+    DataDriftPreset(method="psi"),   # 수치형 피처에 쓸 검정을 지정한다
+    ClassificationPreset(),
 ])
-
-report.run(
-    reference_data=train_df,   # 학습 데이터
+my_eval = report.run(
     current_data=prod_df,      # 서빙 데이터 (최근 7일)
+    reference_data=train_df,   # 참조 윈도우
 )
-report.save_html("drift_report.html")
-
-# 드리프트 감지 결과 추출
-result = report.as_dict()
-drift_score = result["metrics"][0]["result"]["dataset_drift"]
-if drift_score:
-    trigger_retraining()  # 재학습 트리거
+my_eval.save_html("drift_report.html")
 ```
 
-### 세부 피처별 드리프트 모니터링
+`run()`이 돌려주는 결과 객체가 손잡이다. HTML로 저장하는 것도, 파이썬 딕셔너리로 꺼내 재학습 트리거에 넘기는 것도 리포트가 아니라 이 값에서 한다. `method`를 준 것은 앞에서 정한 임계값과 자를 맞추려고 PSI를 못 박은 것이고, 이 인자를 빼면 방금 말한 대로 도구가 알아서 고른다. 프리셋 전체가 아니라 피처마다 다른 검정을 걸고 싶으면 컬럼 단위 지표를 쓴다 — 구매 금액에는 PSI, 나이에는 KS, 카테고리에는 카이제곱을 지정하는 식으로 앞 절의 표를 그대로 코드에 옮길 수 있다.
 
-```python
-from evidently.metrics import ColumnDriftMetric, DatasetDriftMetric
+버전을 반드시 확인하고 시작한다. **Evidently는 0.7에서 임포트 경로와 결과를 꺼내는 방법이 통째로 바뀌었다** — 예전 글에서 자주 보이는 `evidently.report`·`evidently.metric_preset` 경로와 `as_dict()`는 그 이전 버전의 것이라 지금 설치하면 임포트에서 바로 걸린다. 복사해 온 코드가 안 돌면 대개 이 자리다.
 
-# 핵심 피처만 개별 모니터링
-report = Report(metrics=[
-    DatasetDriftMetric(),
-    ColumnDriftMetric(column_name="purchase_amount", stattest="psi"),
-    ColumnDriftMetric(column_name="user_age",        stattest="ks"),
-    ColumnDriftMetric(column_name="category",        stattest="chi2"),
-])
+도구가 편한 만큼 조심할 것도 있다. 자동으로 검정을 고르면 임계값도 기본값이 붙는데, 앞 절에서 본 대로 그 기본값이 우리 서비스에 맞을 이유가 없다. **리포트의 「드리프트 감지됨」 표시를 그대로 믿지 말고 평상시 값을 모아 기준을 다시 잡는다.** 도구는 계산을 대신해 줄 뿐 판단을 대신해 주지 않는다.
 
-report.run(reference_data=train_df, current_data=prod_df)
+### MLflow에 남기는 드리프트
 
-# 각 피처별 결과 파싱
-result = report.as_dict()
-for metric in result["metrics"]:
-    if metric["metric"] == "ColumnDriftMetric":
-        col = metric["result"]["column_name"]
-        drift = metric["result"]["drift_detected"]
-        score = metric["result"]["stattest_threshold"]
-        print(f"{col}: drift={drift}, score={score:.4f}")
-```
-
-### Evidently + MLflow 통합
+리포트를 HTML로만 저장하면 그때그때 열어 보는 용도로 끝난다. 값의 추세를 보려면 시계열로 쌓아야 하고, 실험 추적 도구에 넣어 두면 모델 버전과 함께 묶여 남는다.
 
 ```python
 import mlflow
-from evidently.report import Report
-from evidently.metric_preset import DataDriftPreset
 
-def log_drift_to_mlflow(train_df, prod_df, run_id: str):
-    report = Report(metrics=[DataDriftPreset()])
-    report.run(reference_data=train_df, current_data=prod_df)
-    result = report.as_dict()
+def log_drift_to_mlflow(train_df, prod_df, features, run_id: str):
+    report = Report([DataDriftPreset(method="psi")])
+    my_eval = report.run(current_data=prod_df, reference_data=train_df)
+
+    scores = {f: psi(train_df[f].dropna().values, prod_df[f].dropna().values)
+              for f in features}
+    drifted = [f for f, v in scores.items() if v >= 0.2]
 
     with mlflow.start_run(run_id=run_id):
-        drift_metrics = result["metrics"][0]["result"]
-        mlflow.log_metric("dataset_drift", int(drift_metrics["dataset_drift"]))
-        mlflow.log_metric("n_drifted_columns", drift_metrics["n_drifted_columns"])
-        mlflow.log_metric("drift_share", drift_metrics["share_drifted_columns"])
-
-        # HTML 리포트를 아티팩트로 저장
-        report.save_html("/tmp/drift_report.html")
+        for f, v in scores.items():
+            mlflow.log_metric(f"psi_{f}", v)
+        mlflow.log_metric("n_drifted_columns", len(drifted))
+        mlflow.log_metric("drift_share", len(drifted) / len(scores))
+        my_eval.save_html("/tmp/drift_report.html")
         mlflow.log_artifact("/tmp/drift_report.html", "monitoring")
 ```
 
----
+여부가 아니라 값을 남기는 것이 요령이다. 「드리프트 걸림」 하나만 남기면 참과 거짓의 두 값뿐이라 추세가 안 보인다. 피처별 PSI를 지표 이름에 피처를 붙여 남기면 어느 피처가 언제부터 올라갔는지가 그래프 하나에 겹쳐 보이고, 잡힌 컬럼 수와 그 비율까지 있으면 「지난주에는 두 개였는데 이번 주는 일곱 개」 같은 문장이 바로 읽힌다. 그리고 HTML 리포트를 아티팩트로 함께 붙여 두면 나중에 조사할 때 그 시점의 분포 그림을 다시 열어 볼 수 있다.
 
-## 재학습 트리거 전략
+앞에서 만든 `psi()`를 그대로 불러 쓴 것도 이유가 있다. 도구가 계산한 값과 우리가 계산한 값이 섞이면 임계값을 어느 쪽 기준으로 잡았는지가 흐려진다. 경보와 트리거가 보는 숫자는 한 함수에서만 나오게 두고, 도구의 리포트는 사람이 읽을 그림으로만 쓴다.
+
+### 시계열 지표와 대시보드
+
+규모가 커지면 지표 수집을 전용 시스템에 맡긴다. Prometheus로 값을 모으고 Grafana로 그리는 조합이 흔하다. 정의해 둘 지표는 네 종류다.
+
+```python
+from prometheus_client import Gauge, Counter, Histogram
+
+model_accuracy     = Gauge("ml_model_accuracy", "현재 모델 정확도", ["model_name"])
+prediction_count   = Counter("ml_predictions_total", "예측 요청 수", ["model_name", "status"])
+prediction_latency = Histogram("ml_prediction_latency_seconds", "예측 지연시간",
+                               ["model_name"], buckets=[.01, .025, .05, .075, .1, .25])
+drift_score        = Gauge("ml_drift_psi", "PSI 드리프트 점수", ["feature"])
+```
+
+`buckets`에 넣는 값을 아무렇게나 정하면 안 된다. 히스토그램은 각 경계 이하의 누적 개수를 세므로, **SLA로 약속한 값이 경계에 정확히 놓여 있어야 위반 비율을 바로 읽을 수 있다.** 지연 시간 SLA가 100ms라면 `0.1`이 경계에 있어야 「100ms 이하로 응답한 비율」이 나눗셈 한 번으로 나온다. 경계가 0.075와 0.25뿐이면 그 사이 어딘가라는 것밖에 모른다.
 
 ![프로덕션 ML 모니터링 대시보드](/assets/posts/mlops-monitoring-dashboard.svg)
 
-### 1. 스케줄 기반 (Schedule-based)
+그림이 그렇게 세운 대시보드다. 패널은 네 종류로 나누고 각 칸에 이런 것을 올린다.
 
-가장 단순한 방법이다. 매주 또는 매월 정기적으로 재학습한다.
+- **모델 성능** — 정확도·F1·AUC의 시계열, 챔피언 모델 기준선, 경보 임계값 선
+- **데이터 품질** — 피처별 PSI 막대, 결측치 비율 시계열, 이상값 감지 빈도
+- **시스템 성능** — 지연 시간 P50·P95·P99, 초당 요청 수, 에러율
+- **알림 히스토리** — 최근 알림 목록과 자동 조치 이력
+
+그림의 값을 읽어 보면 이 배치가 왜 유용한지 보인다. 정확도는 기준선 89%에 못 미치는 87.3%이고, 데이터 품질 칸에서는 구매 금액이 0.38, 카테고리가 0.26으로 임계값 0.2를 넘겼는데 연령대는 0.12, 방문 빈도는 0.07로 얌전하다. 두 패널을 함께 보면 「성능이 내려간 것은 맞고, 흔들린 피처는 둘이며, 나머지는 멀쩡하다」까지 한 화면에서 나온다. 그 아래 시스템 성능 칸의 P99가 48ms로 SLA 100ms 안쪽이므로 인프라 문제도 아니다. **알림 히스토리를 같은 화면에 두는 이유는 지금 보고 있는 이상이 이미 조치된 것인지를 즉시 알기 위해서다** — 새벽 2시 33분에 자동 재학습이 끝났다는 줄이 있으면 대응이 이미 진행 중이라는 뜻이다.
+
+---
+
+## 쓸 만한 경보의 조건
+
+### 알림 피로를 줄이는 손잡이
+
+드리프트 모니터링이 실패하는 방식은 대부분 「안 잡혀서」가 아니라 **너무 자주 잡혀서 아무도 안 보게 돼서**다. 피처 백 개에 각각 임계값을 걸면 매일 몇 개는 넘는다. 이것을 **알림 피로**(alert fatigue)라고 하고, 여기에 빠지면 모니터링이 있으나 없으나 같아진다. 오히려 나쁘다 — 있다고 믿고 안 보기 때문이다.
+
+네 가지 손잡이가 도움이 된다.
+
+- **연속성을 요구한다.** 한 번 넘은 것으로 울리지 않고 사흘 연속 넘었을 때 울린다. 표본이 적은 날의 우연한 요동이 걸러진다
+- **피처에 등급을 매긴다.** 모델이 실제로 크게 의존하는 피처 몇 개만 즉시 알림 대상으로 두고, 나머지는 주간 리포트로 내린다. 중요도가 낮은 피처가 흔들리는 것은 대개 무해하다
+- **표본 수를 함께 본다.** 데이터가 200건뿐인 날의 PSI 0.3은 소음이다. 최소 표본 수를 정해 두고 그 아래면 판정을 미룬다
+- **심각도를 나눈다.** 정보·경고·심각 세 단계를 두고 채널을 다르게 한다. 심각만 즉시 호출로 보내고 경고는 팀 채널에, 정보는 로그에만 남긴다
+
+세 번째가 특히 자주 새는 자리다. 야간 트래픽이 적은 서비스에서 새벽 시간대만 잘라 재면 표본이 몇백 건으로 줄고, 그 구간의 PSI는 실제 변화가 없어도 흔들린다. 최소 표본 수를 정해 두면 이 소음이 통째로 사라진다.
+
+### 진단이 붙은 알림
+
+네 손잡이로 알림 개수를 줄였다면, 남은 알림은 하나하나가 쓸모 있어야 한다. 여기서 체감 차이가 가장 큰 것이 **경보에 진단을 붙이는 것**이다.
+
+「PSI 0.27」만 오면 사람이 처음부터 다시 조사해야 한다. 어느 구간의 비율이 얼마에서 얼마로 갔는지를 함께 보내면 대개 알림을 보는 즉시 원인이 짐작된다. 「연령 피처 PSI 0.31 — 20대 비율 18%에서 34%로」라고 오면 마케팅 캠페인이 있었다는 것을 담당자가 그 자리에서 떠올린다. 앞에서 PSI 값의 61%를 한 구간이 만들더라는 것을 봤는데, 그 구간이 바로 알림에 실어야 할 정보다.
+
+Slack 같은 채널로 보낼 때는 심각도별로 색과 아이콘을 다르게 해서 목록에서 한눈에 갈리게 하고, 지표 값들을 본문이 아니라 필드로 붙여 두 줄로 접히게 한다. 알림 본문이 길어지면 채널에서 스크롤이 필요해지고, 그 순간부터 사람들은 제목만 읽는다.
+
+### 재학습 트리거 넷
+
+경보의 상당수는 사람을 부르지 않고 파이프라인을 부른다. 재학습을 언제 돌릴지 정하는 방식은 네 가지다.
+
+**스케줄 기반**은 가장 단순하다. 매주 월요일 새벽처럼 정해진 시각에 최신 데이터로 다시 학습하고, 기존 챔피언 모델보다 나으면 등록한다.
 
 ```yaml
-# .github/workflows/scheduled-retrain.yml
 on:
   schedule:
-    - cron: '0 2 * * 1'  # 매주 월요일 새벽 2시
-
-jobs:
-  retrain:
-    runs-on: ubuntu-latest
-    steps:
-      - name: 최신 데이터로 재학습
-        run: python train.py --data-since "7 days ago"
-      - name: 챔피언 비교 및 등록
-        run: python register_if_better.py
+    - cron: '0 2 * * 1'   # 매주 월요일 새벽 2시
 ```
 
-장점: 예측 가능, 운영 단순
-단점: 드리프트가 발생해도 다음 스케줄까지 대응 불가
+예측 가능하고 운영이 단순한 대신, 드리프트가 화요일에 나면 다음 주 월요일까지 그대로 간다.
 
-### 2. 드리프트 기반 (Drift-based)
+**드리프트 기반**은 PSI 같은 지표가 임계값을 넘으면 즉시 트리거한다. 6시간마다 최근 24시간치 예측 데이터를 모아 감시 대상 피처의 PSI를 계산하고, 최댓값이 0.2를 넘으면 재학습 파이프라인을 호출하면서 어떤 피처가 얼마였는지를 함께 넘긴다. 0.4를 넘으면 심각으로 올려 알림 채널을 바꾼다. 반응이 빠른 대신 앞에서 본 오진 위험이 그대로 따라온다.
 
-PSI, KL Divergence 등이 임계값을 초과하면 즉시 재학습을 트리거한다.
+**성능 기반**은 실제 라벨이 도착한 뒤에 판단한다. 라벨 지연이 긴 도메인에서 쓰는 방식이다. 90일 전 예측을 꺼내 이제 도착한 실제 결과와 사용자 단위로 붙인 뒤 정확도를 계산하고, 프로덕션 기준선의 97% 아래로 떨어졌으면 트리거한다. 여기서 상대 임계값의 성질을 알아 둘 필요가 있다 — 기준선이 89%라면 발동 지점은 $$0.89 \times 0.97 = 0.8633$$ 이다. 앞 대시보드의 87.3%는 기준선에 1.7%p 못 미쳐 화면에 경고가 떠 있지만 이 트리거는 안 걸린다. **상대 임계값은 기준선이 높은 모델일수록 절대 낙폭을 더 크게 허용한다** — 같은 3%라도 기준선 89%짜리는 2.7%p를 잃어야 걸리고 60%짜리는 1.8%p에서 걸린다. 잘하는 모델일수록 느슨해지는 셈이니, 「몇 %p 아래로는 안 된다」는 절대 바닥을 함께 두는 편이 낫다.
 
-```python
-# monitoring/drift_triggered_retrain.py
-import schedule
-import time
+**하이브리드**가 실무의 답이다. 셋을 함께 걸고 우선순위를 다르게 준다.
 
-def check_and_retrain():
-    """매 6시간마다 드리프트 체크"""
-    prod_data = fetch_recent_predictions(hours=24)
-    train_data = load_training_reference()
+| 트리거 | 주기·조건 | 우선순위 |
+| --- | --- | --- |
+| 스케줄 | 매주 월요일 02:00 | 낮음 |
+| 드리프트 | PSI 0.2 초과, 6시간마다 확인 | 높음 |
+| 성능 | 정확도 3% 이상 저하 | 심각 |
 
-    psi_scores = {
-        col: psi(train_data[col].values, prod_data[col].values)
-        for col in MONITORED_FEATURES
-    }
-
-    max_psi = max(psi_scores.values())
-    print(f"최대 PSI: {max_psi:.4f}")
-
-    if max_psi > 0.2:  # 심각한 드리프트
-        print(f"드리프트 감지! 재학습 트리거...")
-        trigger_retraining_pipeline(
-            reason="drift",
-            metrics=psi_scores,
-            severity="critical" if max_psi > 0.4 else "warning"
-        )
-        send_alert(f"데이터 드리프트 감지: PSI={max_psi:.4f}")
-
-schedule.every(6).hours.do(check_and_retrain)
-
-while True:
-    schedule.run_pending()
-    time.sleep(60)
-```
-
-### 3. 성능 기반 (Performance-based)
-
-실제 레이블이 지연되어 들어오는 경우 적합하다. 예: 대출 승인 모델은 3개월 후에야 상환 결과를 알 수 있다.
-
-```python
-def check_delayed_labels_and_retrain():
-    """지연 레이블 수집 후 성능 평가"""
-    # 3개월 전 예측 + 이제 들어온 실제 레이블
-    old_predictions = fetch_predictions(days_ago=90)
-    actual_labels = fetch_actual_outcomes(period="recent")
-
-    # 매칭
-    joined = old_predictions.merge(actual_labels, on="user_id")
-
-    # 성능 계산
-    current_accuracy = (joined["prediction"] == joined["actual"]).mean()
-    baseline_accuracy = get_production_baseline_accuracy()
-
-    if current_accuracy < baseline_accuracy * 0.97:  # 3% 이상 성능 저하
-        trigger_retraining_pipeline(reason="performance_degradation")
-```
-
-### 4. 하이브리드 전략 (권장)
-
-실무에서는 세 가지를 조합하는 것이 가장 효과적이다.
-
-```python
-RETRAINING_TRIGGERS = [
-    {
-        "type": "schedule",
-        "cron": "0 2 * * 1",      # 매주 월요일 정기 재학습
-        "priority": "low"
-    },
-    {
-        "type": "drift",
-        "metric": "psi",
-        "threshold": 0.2,
-        "check_interval_hours": 6,
-        "priority": "high"
-    },
-    {
-        "type": "performance",
-        "metric": "accuracy",
-        "degradation_threshold": 0.03,
-        "priority": "critical"
-    }
-]
-```
+스케줄은 아무 일이 없어도 모델을 주기적으로 갱신하는 바닥이고, 드리프트는 빠른 반응이며, 성능은 확실하지만 느린 최종 확인이다. 셋이 서로 다른 시차를 메운다.
 
 ---
 
-## 알림과 대시보드 설계
+## 잡은 다음에 남는 일
 
-### Slack 알림 통합
+### 원인마다 다른 대응
 
-```python
-import requests
+감지는 수단이고 목적은 대응이다. 그런데 **모든 드리프트가 재학습 대상은 아니다.** 원인에 따라 답이 갈린다.
 
-ALERT_LEVELS = {
-    "info":     {"color": "#7ec8e3", "emoji": "ℹ️"},
-    "warning":  {"color": "#e09030", "emoji": "⚠️"},
-    "critical": {"color": "#e05555", "emoji": "🚨"},
-}
+| 상황 | 대응 |
+| --- | --- |
+| 피처 계산이 망가져 분포가 튐 | 파이프라인을 고친다. 재학습하면 오염된 데이터를 배운다 |
+| 새 사용자군이 들어와 입력이 변함 | 그 구간의 성능을 따로 재 본다. 멀쩡하면 놔둔다 |
+| 입력이 변했고 성능도 떨어짐 | 최근 데이터를 포함해 재학습한다 |
+| 입력은 그대로인데 성능만 떨어짐 | 개념 드리프트. 라벨을 새로 모으는 것이 먼저다 |
+| 일시적 이벤트로 며칠만 튐 | 기록만 남기고 지나간다 |
 
-def send_slack_alert(
-    message: str,
-    level: str = "warning",
-    metrics: dict = None,
-    webhook_url: str = None
-):
-    level_config = ALERT_LEVELS.get(level, ALERT_LEVELS["warning"])
-    blocks = [
-        {
-            "type": "section",
-            "text": {
-                "type": "mrkdwn",
-                "text": f"{level_config['emoji']} *ML 모니터링 알림*\n{message}"
-            }
-        }
-    ]
+두 번째 줄을 놓치기 쉽다. 입력 분포가 변했다는 것과 모델이 그 입력에서 못한다는 것은 다른 이야기다. 새로 들어온 사용자군에서도 모델이 잘 맞으면 재학습할 이유가 없다. 앞에서 본 공변량 이동이 정확히 이 자리이고, 재학습 대신 중요도 가중치로 넘어갈 수 있는지를 먼저 본다. **드리프트 지표는 「확인해 보라」는 신호이지 「다시 학습하라」는 명령이 아니다.**
 
-    if metrics:
-        fields = [
-            {"type": "mrkdwn", "text": f"*{k}*\n{v:.4f}"}
-            for k, v in metrics.items()
-        ]
-        blocks.append({"type": "section", "fields": fields})
+마지막 줄도 실무에서 자주 나온다. 대형 할인 행사나 연휴처럼 예정된 이벤트는 분포를 크게 흔들지만 며칠 뒤 제자리로 돌아온다. 이런 날을 달력에 표시해 두고 경보를 일시적으로 낮추면 알림 피로가 눈에 띄게 줄어든다.
 
-    requests.post(webhook_url, json={"blocks": blocks})
-```
+### 되돌릴 길의 확보
 
-### Prometheus + Grafana 연동
+재학습을 자동으로 걸어 둘 때는 반드시 되돌릴 길을 함께 만든다. 오염된 데이터로 자동 재학습된 모델이 검증 없이 배포되는 것이, 드리프트를 방치하는 것보다 훨씬 빠르게 사고를 만든다. 드리프트는 몇 주에 걸쳐 성능을 갉아먹지만 잘못 학습된 모델은 배포 즉시 전량에 영향을 준다.
 
-대규모 시스템에서는 Prometheus로 메트릭을 수집하고 Grafana로 시각화한다.
+원칙은 하나다. **자동 재학습의 산출물은 자동 배포가 아니라 후보 모델이다.** 기존 모델과 같은 검증셋에서 비교한 뒤, 사람이나 명시적인 규칙이 승인하게 둔다. 검증셋은 드리프트가 난 최근 데이터가 아니라 안정적으로 유지되는 고정 셋이어야 한다 — 오염된 데이터로 학습한 모델을 오염된 데이터로 평가하면 둘이 서로를 통과시킨다.
 
-```python
-from prometheus_client import Gauge, Counter, Histogram, start_http_server
+감지 자체를 자동화하는 쪽은 얼마든지 세게 밀어도 된다. 피처마다 PSI와 KS를 함께 계산하고, PSI가 0.1을 넘으면 경고, 0.2를 넘으면 심각으로 등급을 매기고, 심각이 하나라도 있으면 재학습 파이프라인을 호출하는 루프는 그대로 돌려 둔다. 사람이 서야 하는 자리는 감지가 아니라 배포다.
 
-# 메트릭 정의
-model_accuracy    = Gauge("ml_model_accuracy",    "현재 모델 정확도", ["model_name"])
-prediction_count  = Counter("ml_predictions_total","예측 요청 수",    ["model_name", "status"])
-prediction_latency= Histogram("ml_prediction_latency_seconds",
-                               "예측 지연시간", ["model_name"],
-                               buckets=[.01, .025, .05, .075, .1, .25])
-drift_score       = Gauge("ml_drift_psi",         "PSI 드리프트 점수", ["feature"])
+### 배포 첫날부터 남길 넷
 
-def predict_with_monitoring(request: dict, model_name: str = "recommendation"):
-    import time
-    start = time.time()
+드리프트를 조사하려면 과거 값이 있어야 하는데, 사고가 난 뒤에 모으기 시작하면 이미 늦다. 배포 첫날부터 남겨 둘 것이 정해져 있다.
 
-    try:
-        result = model.predict(request)
-        prediction_count.labels(model_name=model_name, status="success").inc()
-        return result
+1. **예측할 때 실제로 쓴 피처 값** — 나중에 재계산한 값이 아니라 그 순간의 값이다. 상류 로직이 바뀌면 재계산은 다른 답을 준다
+2. **모델이 내놓은 값과 모델 버전** — 어느 버전이 언제부터 얼마나 서빙됐는지가 없으면 비교 구간을 못 자른다
+3. **정답이 붙은 시각** — 라벨이 언제 도착했는지를 기록해야 라벨 지연을 실제 값으로 알 수 있다
+4. **요청의 맥락** — 유입 채널, 클라이언트 종류, 지역. 드리프트가 났을 때 어느 조각에서 났는지를 좁히는 데 이것만큼 쓸모 있는 것이 없다
 
-    except Exception as e:
-        prediction_count.labels(model_name=model_name, status="error").inc()
-        raise
+4번이 있고 없고가 조사 시간을 하루와 한 주로 가른다. 전체 분포가 흔들린 것과 특정 채널 하나가 통째로 새로 들어온 것은 화면에서 똑같이 보이는데, 대응은 완전히 다르다. 앞의 것은 재학습이고 뒤의 것은 그 채널만 따로 보는 일이다.
 
-    finally:
-        latency = time.time() - start
-        prediction_latency.labels(model_name=model_name).observe(latency)
+1번을 「나중에 계산하면 되지」로 미루는 것이 가장 흔한 후회다. 조인 규칙이나 결측치 처리가 한 번이라도 바뀌면 과거 데이터로 재계산한 피처는 그때 실제로 모델에 들어간 값과 달라진다. 그 상태에서 아무리 정교하게 조사해도 답이 안 나온다. 재현할 수 없는 과거를 붙들고 있는 것이기 때문이다.
 
-# 메트릭 서버 시작 (Prometheus가 스크랩)
-start_http_server(8000)
-```
-
-### 모니터링 대시보드 체크리스트
-
-효과적인 ML 모니터링 대시보드에는 다음 패널이 포함되어야 한다.
-
-**모델 성능 패널**
-- 정확도/F1/AUC 시계열 트렌드
-- 챔피언 모델 기준선 표시
-- 성능 저하 알림 임계값 표시
-
-**데이터 품질 패널**
-- 입력 피처별 PSI/KL 점수
-- 결측치 비율 시계열
-- 이상값 감지 빈도
-
-**시스템 성능 패널**
-- 예측 지연시간 P50/P95/P99
-- 초당 요청 수 (TPS)
-- 에러율
-
-**알림 히스토리 패널**
-- 최근 알림 목록
-- 자동 조치 이력 (재학습 트리거 등)
-
----
-
-## 실전 모니터링 파이프라인 전체 코드
-
-```python
-# monitoring/pipeline.py
-import logging
-from dataclasses import dataclass
-from typing import Optional
-import numpy as np
-import pandas as pd
-
-logger = logging.getLogger(__name__)
-
-@dataclass
-class DriftReport:
-    feature: str
-    psi: float
-    ks_statistic: float
-    ks_p_value: float
-    drift_detected: bool
-    severity: str  # "none" | "warning" | "critical"
-
-class MLMonitoringPipeline:
-    def __init__(
-        self,
-        reference_data: pd.DataFrame,
-        model_name: str,
-        psi_threshold_warning: float = 0.1,
-        psi_threshold_critical: float = 0.2,
-    ):
-        self.reference = reference_data
-        self.model_name = model_name
-        self.psi_warn = psi_threshold_warning
-        self.psi_crit = psi_threshold_critical
-
-    def run(self, current_data: pd.DataFrame) -> list[DriftReport]:
-        """전체 모니터링 파이프라인 실행"""
-        reports = []
-
-        for col in self.reference.select_dtypes(include=[np.number]).columns:
-            if col not in current_data.columns:
-                continue
-
-            psi_score = psi(
-                self.reference[col].dropna().values,
-                current_data[col].dropna().values,
-            )
-            ks_result = ks_drift_test(
-                self.reference[col].dropna().values,
-                current_data[col].dropna().values,
-            )
-
-            severity = (
-                "critical" if psi_score >= self.psi_crit else
-                "warning"  if psi_score >= self.psi_warn else
-                "none"
-            )
-
-            report = DriftReport(
-                feature=col,
-                psi=psi_score,
-                ks_statistic=ks_result["ks_statistic"],
-                ks_p_value=ks_result["p_value"],
-                drift_detected=ks_result["drift_detected"] or psi_score >= self.psi_warn,
-                severity=severity,
-            )
-            reports.append(report)
-
-            if severity != "none":
-                logger.warning(
-                    f"[{self.model_name}] 드리프트 감지 — {col}: "
-                    f"PSI={psi_score:.4f}, KS={ks_result['ks_statistic']:.4f}, "
-                    f"severity={severity}"
-                )
-
-        # 심각한 드리프트가 있으면 재학습 트리거
-        critical_features = [r for r in reports if r.severity == "critical"]
-        if critical_features:
-            self._trigger_retraining(critical_features)
-
-        return reports
-
-    def _trigger_retraining(self, critical_reports: list[DriftReport]):
-        """재학습 파이프라인 트리거"""
-        logger.critical(
-            f"[{self.model_name}] {len(critical_reports)}개 피처에서 "
-            f"심각한 드리프트 감지. 재학습 트리거."
-        )
-        # 실제로는 Kubeflow, Airflow, GitHub Actions 등 호출
-        # trigger_kubeflow_pipeline(model_name=self.model_name)
-```
-
----
-
-## 정리
-
-모델 모니터링은 MLOps 사이클의 마지막이자 첫 번째 단계다. 모니터링에서 수집된 신호가 재학습 트리거가 되고, 재학습된 모델이 CI/CD 파이프라인을 통해 다시 배포되는 선순환 구조가 완성된다.
-
-핵심 원칙을 정리하면 다음과 같다.
-
-1. **모든 입력 피처를 모니터링하라.** 어떤 피처가 드리프트의 원인이 될지 사전에 알 수 없다.
-2. **PSI와 KS 검정을 함께 사용하라.** 서로 보완하는 정보를 제공한다.
-3. **재학습 트리거는 하이브리드로.** 스케줄 + 드리프트 + 성능을 조합하라.
-4. **알림 피로(Alert Fatigue)를 방지하라.** 너무 민감한 임계값은 오히려 중요한 알림을 묻히게 한다.
-5. **자동화할 수 있는 것은 자동화하라.** 드리프트 감지 → 재학습 → 배포의 전체 사이클이 자동화되어야 진정한 MLOps다.
-
-데이터가 변하는 한 모델 모니터링은 끝이 없다. 하지만 탄탄한 모니터링 인프라가 있다면 변화에 빠르게 대응할 수 있다.
+그래서 모니터링의 마지막 조각은 **데이터 자체를 되감을 수 있게 만드는 일**이다. 어느 시점의 어떤 데이터로 학습한 모델인지가 기록으로 남아 있고 그 데이터를 그대로 다시 꺼낼 수 있어야, 「3주 전 상태로 돌아가자」는 결정이 실행 가능한 문장이 된다. 다음 글에서는 코드를 Git으로 다루듯 데이터셋에도 버전을 붙여, 같은 커밋이 언제나 같은 모델을 만들어 내게 하는 방법을 본다.
 
 ---
 
@@ -599,4 +417,4 @@ class MLMonitoringPipeline:
 
 **지난 글:** [ML CI/CD: 자동화된 모델 배포 파이프라인](/articles/mlops-ci-cd)
 
-**다음 글:** [데이터 버전 관리: DVC로 ML 데이터를 코드처럼 추적하기](/articles/mlops-data-versioning)
+**다음 글:** [데이터 버저닝 — 같은 코드가 같은 모델을 만들게 하려면](/articles/mlops-data-versioning)

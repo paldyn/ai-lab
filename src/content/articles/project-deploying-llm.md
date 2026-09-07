@@ -9,7 +9,7 @@ tags: ["LLM배포", "FastAPI", "스트리밍", "Docker", "모니터링", "프로
 featured: false
 draft: false
 ---
-[지난 글](/articles/project-prompt-iterating)에서 프롬프트 이터레이션 전략을 통해 LLM의 품질을 끌어올리는 방법을 살펴봤다. 이번에는 그 모델을 실제 서비스로 내보내는 단계, 즉 **프로덕션 배포**를 다룬다. 로컬에서 잘 돌아가는 LLM 코드를 배포하는 것과 수천 명의 사용자가 동시에 쓰는 서비스를 운영하는 것은 전혀 다른 문제다. FastAPI 서버 구성부터 스트리밍 응답, 레이트 리미팅, 모니터링, Docker 컨테이너화까지 프로덕션에서 빠짐없이 필요한 요소를 하나씩 짚는다.
+[지난 글](/articles/project-finetune-pipeline)에서 데이터 준비부터 배포까지 파인튜닝 파이프라인을 세우는 방법을 살펴봤다. 이번에는 그 모델을 실제 서비스로 내보내는 단계, 즉 **프로덕션 배포**를 다룬다. 로컬에서 잘 돌아가는 LLM 코드를 배포하는 것과 수천 명의 사용자가 동시에 쓰는 서비스를 운영하는 것은 전혀 다른 문제다. FastAPI 서버 구성부터 스트리밍 응답, 레이트 리미팅, 모니터링, Docker 컨테이너화까지 프로덕션에서 빠짐없이 필요한 요소를 하나씩 짚는다.
 
 ## 전체 아키텍처
 
@@ -554,6 +554,6 @@ nvidia-smi --query-gpu=memory.used,memory.free --format=csv
 
 읽어주셔서 감사합니다. 😊
 
-**지난 글:** [프롬프트 반복 개발: 체계적인 이터레이션 워크플로우](/articles/project-prompt-iterating)
+**지난 글:** [파인튜닝 파이프라인 구축: 데이터부터 배포까지](/articles/project-finetune-pipeline)
 
-**다음 글:** [LLM 비용 최적화: 더 저렴하게, 더 빠르게](/articles/project-cost-optimization)
+**다음 글:** [기기에서 모델을 돌린다는 것](/articles/ondevice-inference-basics)

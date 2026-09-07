@@ -1,301 +1,396 @@
 ---
-title: "LLM Fallback 전략: 장애에도 살아남는 서비스 설계"
-description: "Circuit Breaker 패턴, 다중 LLM 제공자 Fallback, Exponential Backoff 재시도, 그레이스풀 디그레이데이션으로 LLM 서비스의 가용성을 높이는 실전 방법을 다룹니다."
+title: "폴백 — 앞이 실패했을 때 무엇으로 넘길 것인가"
+description: "모델 호출이 실패했을 때 다음 자리로 넘기는 구조를 설계한다. 넘겨도 되는 실패를 가르는 법, 함께 죽지 않는 자리를 고르는 법, 시간 예산과 서킷 브레이커, 그리고 폴백이 조용히 품질을 떨어뜨리는 것을 잡는 계기판까지 다룬다."
 author: "PALDYN Team"
 pubDate: "2026-05-24"
 category: "ml-ops"
 level: "중급"
-tags: ["LLMOps", "Fallback", "CircuitBreaker", "고가용성", "LiteLLM", "재시도전략", "그레이스풀디그레이데이션"]
+tags: ["폴백", "서킷 브레이커", "고가용성", "타임아웃", "LLMOps"]
 featured: false
 draft: false
 ---
-[지난 글](/articles/llmops-cache)에서 시맨틱 캐시로 비용을 줄이는 방법을 다뤘다. 이번 글은 가용성이다. LLM API는 외부 서비스다. 언제든 느려지거나, 다운되거나, 할당량을 초과할 수 있다. 이때 서비스가 통째로 멈추면 안 된다. **Fallback 전략**은 장애를 우아하게 처리하는 방법이다.
+[지난 글](/articles/llmops-cache)에서 시맨틱 캐시로 같은 질문에 두 번 돈을 쓰지 않는 법을 다뤘다. 캐시는 이미 성공한 응답을 다시 쓰는 장치다. 이 글은 정반대 자리를 본다 — **응답이 아예 오지 않을 때** 무엇을 돌려줄 것인가.
 
-2023년 ChatGPT 출시 이후 OpenAI API는 수차례 서비스 중단을 경험했다. Claude API도 예외는 아니다. 단일 LLM 제공자에 의존하는 시스템은 그 제공자의 장애가 곧 자신의 장애가 된다. 결제 시스템이나 재고 조회처럼 대체 수단이 없는 시스템과 달리, LLM은 여러 제공자로 Fallback할 수 있다는 강점이 있다.
+모델 API를 부르는 코드를 처음 짤 때는 성공하는 경로만 생각한다. 그러다 429가 몰려 오는 오후를 한 번 겪고, 제공자 쪽 장애로 30분을 통째로 날리고 나면 방어를 하나씩 붙이게 된다. 문제는 그렇게 붙인 방어가 구조가 아니라 반사라는 점이다. 어느새 `try` 안에 `try`가 세 겹으로 쌓여 있고, 정작 장애가 났을 때 요청이 어디까지 갔다가 어디서 멈췄는지 아무도 모른다. 이 글은 그 반사들을 하나의 순서로 정리한다.
 
-## Circuit Breaker + Fallback 체인
+## 폴백이 필요한 자리
 
-![Circuit Breaker + Fallback 체인](/assets/posts/llmops-fallback-circuit-breaker.svg)
+### 대체 수단이 있는 의존성
 
-Circuit Breaker 패턴은 전기 차단기에서 이름을 따온 개념이다. 오류가 임계값을 초과하면 회로를 "열어" 더 이상 시도하지 않는다. 서비스가 회복되면 "반열림" 상태로 전환해 조금씩 트래픽을 흘려본다.
+모델 호출은 우리 프로세스 밖에서 일어난다. 네트워크가 있고, 남의 서버가 있고, 남의 용량 계획이 있다. 그 사이 어디가 무너져도 우리 코드는 예외 하나를 받을 뿐이다.
+
+외부 의존성이라는 점만 보면 결제 게이트웨이나 재고 데이터베이스와 다를 것이 없어 보인다. 그런데 그 둘은 **대체 수단이 없다.** 카드 승인을 다른 회사에 대신 물어볼 수 없고, 재고 수량을 그럴듯한 값으로 채워 넣을 수도 없다. 그래서 그런 의존성의 장애 대응은 「기다린다」와 「거절한다」 둘뿐이다.
+
+모델 호출은 다르다. 같은 프롬프트를 다른 제공자의 비슷한 급 모델에 던지면 문장의 결도 형식도 조금 달라지지만 **쓸 만한 답이 나온다.** 요약을 시켰으면 요약이 나오고, 분류를 시켰으면 라벨이 나온다. 이 대체 가능성이 폴백이라는 선택지를 만든다. 결제 시스템이 부러워할 만한 성질이고, 실제로 이것을 안 쓰면 단일 제공자의 가용성이 그대로 우리 서비스의 가용성 상한이 된다.
+
+### try가 세 겹으로 쌓이는 과정
+
+방어가 붙는 순서에는 늘 비슷한 흐름이 있다. 처음에는 재시도다. 429를 보고 나면 잠깐 쉬었다 다시 부르는 코드를 넣는다. 다음은 다른 모델이다. 제공자 장애를 겪고 나면 두 번째 후보를 부르는 분기를 넣는다. 마지막은 기한이다. 클라이언트가 먼저 연결을 끊는 것을 보고 나서야 타임아웃을 건다.
+
+셋을 따로 붙이면 서로를 모른다. 재시도는 자기가 예산을 쓰고 있다는 것을 모르고, 폴백은 앞 단계가 재시도로 이미 12초를 썼다는 것을 모르며, 타임아웃은 단계마다 따로 걸려 있어서 전체 시간이 얼마가 될지 아무도 계산해 본 적이 없다. 장애가 나면 이 셋이 서로를 밟는다.
+
+### 체인이라는 이름의 순서
+
+**폴백 체인**(fallback chain)은 이 즉흥적인 방어를 한 줄의 순서로 정리한 구조다. 앞 자리가 실패하면 정해진 다음 자리로 넘기고, 어느 자리까지 갔는지를 기록으로 남긴다. 「자리」라고 부르는 것은 그것이 꼭 다른 모델이 아닐 수도 있기 때문이다 — 캐시일 수도 있고, 규칙 기반 처리일 수도 있고, 정직한 실패 메시지일 수도 있다.
+
+체인을 설계한다는 것은 결국 세 가지를 정하는 일이다. **무엇을 실패로 볼 것인가**, **다음 자리는 어디인가**, **언제 그만둘 것인가**. 아래 네 절이 차례로 이 셋을 다루고, 그다음에 코드와 운영 계기판이 나온다. 순서가 이런 데는 이유가 있다 — 이 셋을 정하지 않고 코드부터 짜면 나오는 것이 앞에서 말한 세 겹의 `try`다.
+
+## 넘길 실패와 넘기지 않을 실패
+
+### 전부 잡아 넘기는 코드의 대가
+
+폴백을 처음 붙일 때 가장 흔한 실수는 `except Exception`으로 전부 잡아 다음 모델로 넘기는 것이다. 한 줄이면 되고, 테스트에서는 잘 도는 것처럼 보인다. 이러면 두 가지가 망가진다.
+
+첫째, **고칠 수 있는 버그가 감춰진다.** 프롬프트 템플릿에 오타가 나서 400이 떨어지는데 폴백이 그것을 삼키고 두 번째 모델을 부르면, 두 번째도 같은 이유로 실패한다. 세 번을 부르고 세 번 다 실패한 뒤에야 예외가 위로 올라오므로 응답 시간이 세 배가 되고, 사용자가 보는 에러 메시지는 마지막 제공자의 것이라 진짜 원인에서 한참 멀어진다. 실패가 400이 아니라 길이 초과처럼 모델이 실제로 돌다가 끊긴 것이면 그 세 번이 그대로 세 번의 요금이 된다.
+
+둘째, **의도된 거절이 우회된다.** 안전 정책에 걸려 모델이 거절한 것을 실패로 보고 다음 모델로 넘기면, 그 체인은 「거절하지 않는 모델을 찾을 때까지 도는 장치」가 된다. 이건 버그가 아니라 운영상 사고다. 게다가 대개 조용하다 — 어딘가에서 답이 나왔으니 오류율은 0이고, 무엇이 잘못됐는지는 사용자가 신고할 때까지 아무도 모른다.
+
+### 실패의 여섯 갈래
+
+그래서 첫 단계는 예외를 잡는 것이 아니라 **갈래로 나누는 것**이다. 상태 코드와 응답 본문을 보고 여섯 갈래 중 어디인지 정하고, 그 갈래가 다음 행동을 정한다.
+
+![실패 종류에 따라 다음 자리를 가르는 흐름](/assets/posts/model-fallback-chains-decision.svg)
+
+| 갈래 | 무엇으로 알아보는가 | 어떻게 할 것인가 |
+| --- | --- | --- |
+| 한도 초과 | 429, `rate_limit` 계열 본문 | 다음 자리로 넘긴다. 같은 제공자 안이면 잠깐 기다렸다 재시도해도 된다 |
+| 제공자 장애 | 500·502·503, 연결 실패 | 다음 자리로 넘긴다. 같은 제공자 재시도는 대개 소용없다 |
+| 시간 초과 | 기한 안에 응답이 안 온다 | 남은 시간 예산이 있을 때만 넘긴다 |
+| 입력 오류 | 400, 컨텍스트 길이 초과, 스키마 위반 | 넘기지 않는다. 코드 문제이므로 그대로 올린다 |
+| 인증·권한 | 401·403 | 넘기지 않는다. 설정 문제이므로 그대로 올린다 |
+| 안전 거절 | 정상 응답인데 거절 내용 | 넘기지 않는다. 그대로 사용자에게 전한다 |
+
+표에서 위 셋과 아래 셋을 가르는 기준은 하나다. **다시 부르면 결과가 달라질 수 있는가.** 한도 초과와 제공자 장애는 시각이나 상대가 바뀌면 결과가 달라지므로 넘길 값이 있고, 입력 오류와 인증 실패는 몇 번을 어디에 부르든 같은 답이 나오므로 넘길 값이 없다. 안전 거절은 결과가 달라질 수는 있지만 달라지면 안 되는 쪽이다.
+
+구현에서는 이 갈래를 예외 계층으로 못 박아 두는 편이 낫다. 제공자별 SDK 예외를 어댑터에서 `RetryableError`와 `FatalError` 둘 중 하나로 번역해 두면, 체인 본체는 `except RetryableError` 하나만 쓰면 된다. 어느 예외가 어느 갈래인지를 한 자리에 모아 두는 것이 요점이고, 제공자를 하나 더 붙일 때 고칠 곳도 그 어댑터 하나로 끝난다.
+
+### 컨텍스트 초과라는 예외
+
+여섯 갈래 중 하나는 경계에 걸쳐 있다. 컨텍스트 길이 초과는 분명히 입력 오류인데, **컨텍스트 창이 더 큰 모델로 넘기면 실제로 풀린다.** 다시 불러 보면 결과가 달라지는 입력 오류인 셈이다.
+
+그래도 이것을 폴백으로 처리하는 것은 권하지 않는다. 길이는 부르기 전에 세면 알 수 있는 값이고, 실패한 호출은 프롬프트를 통째로 전송하는 비용을 이미 치른 뒤다. 토큰을 미리 세어 어느 모델로 보낼지 고르는 쪽이 싸고 빠르다. 이건 폴백이 아니라 라우팅의 일이고, 그 결정은 [모델 라우팅과 캐스케이드](/articles/model-routing-cascade)에서 따로 다뤘다.
+
+## 함께 죽지 않는 자리
+
+### 1차와 2차의 상관 장애
+
+체인을 만들어 두고도 정작 장애 때 아무 소용이 없는 경우가 있다. 1차와 2차가 **같은 것에 의존하고 있어서** 함께 쓰러지는 경우다. 이것을 **상관 장애**(correlated failure)라고 부른다 — 두 자리의 실패가 독립이 아니라 한쪽이 죽으면 다른 쪽도 죽는 관계다.
+
+체인의 가용성을 계산할 때 이 구분이 그대로 드러난다. 각 자리의 실패 확률이 1%이고 둘이 독립이면 둘 다 실패할 확률은 $$0.01 \times 0.01 = 0.0001$$, 곧 만 번에 한 번이다. 그런데 둘이 완전히 상관되어 있으면 둘 다 실패할 확률은 여전히 1%다. **자리를 하나 더 붙였는데 숫자가 하나도 안 좋아진다.** 폴백 체인의 값어치는 자리의 개수가 아니라 자리들 사이의 독립성에서 나온다.
+
+그래서 자리를 고를 때 물어야 하는 질문은 하나다. **1차가 죽는 이유가 2차도 죽이는가.** 무엇을 공유하고 있느냐를 보면 답이 나온다.
+
+| 1차와 2차가 공유하는 것 | 함께 쓰러지는 상황 |
+| --- | --- |
+| 같은 제공자 | 제공자 전체 장애, 계정 단위 한도 초과 |
+| 같은 리전 | 리전 장애, 그 리전으로 가는 네트워크 경로 문제 |
+| 같은 API 키·결제 수단 | 키 만료, 결제 실패, 조직 단위 차단 |
+| 같은 게이트웨이·프록시 | 프록시 프로세스 다운, 커넥션 풀 고갈 |
+
+가장 흔한 함정이 첫 줄이다. 같은 제공자의 큰 모델과 작은 모델을 1·2차로 두는 구성은 짜기 쉽고 코드도 예쁘지만, 제공자 전체 장애에서도 계정 단위 한도 초과에서도 둘 다 실패한다. 정작 폴백이 가장 필요한 두 상황을 못 넘기는 셈이다.
+
+### 네 칸의 배치
+
+실무에서 자주 쓰는 조합은 이렇다. 각 칸이 앞 칸과 무엇을 공유하지 않는지를 함께 적어 둔다.
+
+- **1차:** 품질이 가장 좋은 주력 모델. 평소에는 이 자리가 거의 전부를 처리한다
+- **2차:** 다른 제공자의 비슷한 급 모델. 제공자 장애와 계정 한도를 함께 피한다
+- **3차:** 자체 호스팅 소형 모델. 외부 네트워크가 통째로 안 될 때의 자리다. 품질은 떨어지지만 우리 손 안에 있다
+- **4차:** 모델을 안 쓰는 응답. 캐시된 답, 규칙 기반 처리, 또는 「지금은 안 됩니다」라는 정직한 실패
+
+3차의 자체 호스팅 모델은 [CPU만으로 LLM을 돌린다는 것](/articles/inference-cpu-only)에서 다룬 구성이 그대로 들어가기 좋은 자리다. 상시 트래픽을 받을 만큼 빠르지는 않아도, 외부가 전부 막힌 30분 동안 요청을 흘려보내는 데는 충분한 경우가 많다.
+
+### 마지막 칸의 정직한 실패
+
+네 번째 칸이 목록을 채우려고 넣은 것이 아니다. 폴백은 무한히 이어지지 않고, **어딘가에서는 실패를 인정해야 한다.** 그 자리를 명시적으로 두지 않으면 마지막 예외가 스택 트레이스로 사용자 화면에 그대로 나간다.
+
+정직한 실패는 생각보다 손이 간다. 무엇을 돌려줄지, 어떤 상태 코드로 돌려줄지, 클라이언트가 재시도해도 되는지를 알려 줄지를 정해야 한다. 「현재 응답이 지연되고 있습니다. 잠시 후 다시 시도해 주세요」 같은 문구를 상수로 박아 두고 503과 함께 내보내는 것이 가장 단순한 형태다. 중요한 것은 이 응답이 **실패로 집계된다**는 점이다. 뒤에서 볼 자리별 비율 지표에서 이 칸의 비율이 곧 진짜 오류율이 된다.
+
+## 요청 하나에 주는 시간 예산
+
+### 단계별 기한이 만드는 18초
+
+두 번째로 흔한 실수는 기한을 단계마다 주는 것이다. 각 호출에 6초 타임아웃을 걸어 두면 3단 체인의 최악 시간은 18초가 된다. 그런데 클라이언트가 8초에 끊는다면 어떻게 될까.
+
+2차가 응답을 만들고 있는 12초 언저리에 이미 연결은 끊어져 있다. 그 뒤로 2차가 돌려준 응답도, 3차를 부른 결과도 아무 데도 가지 않는다. **요금은 그대로 나가고 사용자는 이미 창을 닫았다.** 게다가 서버 쪽에서는 이 요청이 성공으로 집계되기도 한다 — 어딘가에서 답이 나오긴 했으니까.
+
+![단계별 기한과 전체 예산의 차이](/assets/posts/model-fallback-chains-budget.svg)
+
+올바른 형태는 **요청 하나에 전체 예산을 주고, 각 단계가 남은 예산을 자기 기한으로 쓰는 것**이다. 예산이 8초라면 1차가 3초를 쓰고 실패했을 때 2차의 기한은 5초, 2차가 2.5초를 더 쓰면 3차의 기한은 2.5초다. 세 자리를 다 밟아도 클라이언트 한계 안에서 끝난다.
+
+### 남은 예산을 넘기는 호출
+
+코드로 옮기면 짧다. 반복문 하나에 남은 예산 계산과 갈래 판단이 들어간다.
 
 ```python
 import time
-from enum import Enum
-from threading import Lock
 
-class State(Enum):
-    CLOSED = "closed"      # 정상: 모든 요청 통과
-    OPEN = "open"          # 차단: 모든 요청 즉시 실패
-    HALF_OPEN = "half_open"  # 회복 시도: 일부 요청만 통과
+def call_with_fallback(chain, payload, total_budget=8.0):
+    started = time.monotonic()
+    errors = []
 
-class CircuitBreaker:
-    def __init__(
-        self,
-        failure_threshold: int = 5,
-        recovery_timeout: float = 60.0,
-        success_threshold: int = 2,
-    ):
-        self.failure_threshold = failure_threshold
-        self.recovery_timeout = recovery_timeout
-        self.success_threshold = success_threshold
-        
-        self.state = State.CLOSED
-        self.failure_count = 0
-        self.success_count = 0
-        self.last_failure_time = 0.0
-        self.lock = Lock()
-
-    def call(self, func, *args, **kwargs):
-        with self.lock:
-            if self.state == State.OPEN:
-                if time.time() - self.last_failure_time > self.recovery_timeout:
-                    self.state = State.HALF_OPEN
-                    self.success_count = 0
-                else:
-                    raise Exception("Circuit OPEN: 서비스 일시 차단 중")
+    for step in chain:
+        remaining = total_budget - (time.monotonic() - started)
+        if remaining < step.min_time:      # 이 모델이 최소한 필요한 시간
+            errors.append((step.name, "budget_exhausted"))
+            break
 
         try:
-            result = func(*args, **kwargs)
-            with self.lock:
-                if self.state == State.HALF_OPEN:
-                    self.success_count += 1
-                    if self.success_count >= self.success_threshold:
-                        self.state = State.CLOSED
-                        self.failure_count = 0
-                elif self.state == State.CLOSED:
-                    self.failure_count = 0
-            return result
+            return step.call(payload, timeout=remaining), step.name, errors
+        except RetryableError as e:        # 429·5xx·타임아웃만 여기로 온다
+            errors.append((step.name, e.kind))
+            continue
+        # FatalError는 잡지 않는다 — 400·401·스키마 위반은 그대로 올라간다
 
-        except Exception as e:
-            with self.lock:
-                self.failure_count += 1
-                self.last_failure_time = time.time()
-                if self.failure_count >= self.failure_threshold:
-                    self.state = State.OPEN
-            raise
+    raise AllModelsFailed(errors)
 ```
 
-## 다중 제공자 Fallback
+`min_time`이 있는 이유가 있다. 남은 예산이 0.3초인데 다음 모델을 부르면 거의 확실히 타임아웃 나고, 그 호출은 요금만 만들고 끝난다. 그 모델이 보통 얼마나 걸리는지를 알고 있으면 **부르지 않는 편이 나은 상황**을 판단할 수 있다. 값은 지어내지 말고 그 자리의 응답 시간 분포에서 가져온다 — 중앙값보다는 상위 백분위 쪽이 안전하다.
+
+`errors` 목록도 장식이 아니다. 최종 실패를 던질 때 어느 자리가 무슨 이유로 넘어갔는지가 다 들어 있어야 로그 한 줄로 사고를 재구성할 수 있다. 자리 이름만 남기고 이유를 버리면 「셋 다 실패했다」는 사실만 알게 되는데, 그건 이미 알고 있던 것이다.
+
+### 지수 백오프와 지터
+
+넘기기 전에 같은 자리를 한 번 더 불러 볼 수 있는 갈래가 하나 있다. 한도 초과다. 429는 잠깐 기다리면 풀리는 경우가 많으므로, 다음 제공자로 가기 전에 짧게 쉬었다 다시 부르는 편이 나을 때가 있다.
+
+이때 쓰는 것이 **지수 백오프**(exponential backoff)다. 재시도 간격을 1초, 2초, 4초, 8초처럼 두 배씩 늘려 상대에게 회복할 시간을 준다. 여기에 **지터**(jitter)를 섞는다 — 계산한 간격에 무작위를 곱해 재시도 시각을 흩뜨리는 것이다. 지터가 없으면 같은 순간에 실패한 클라이언트 수백 개가 정확히 같은 순간에 다시 몰려와 회복 중인 서버를 한 번 더 쓰러뜨린다. 이렇게 재시도 시각이 한 점에 모여 상대를 다시 무너뜨리는 것을 **재시도 폭주**(thundering herd)라고 부른다.
 
 ```python
-import anthropic
-import openai
-from typing import Callable
-
-class LLMFallbackChain:
-    """여러 LLM 제공자를 순서대로 시도하는 Fallback 체인"""
-
-    def __init__(self, timeout: float = 10.0):
-        self.timeout = timeout
-        self.claude = anthropic.Anthropic()
-        self.openai = openai.OpenAI()
-        
-        self.breakers = {
-            "claude": CircuitBreaker(failure_threshold=3, recovery_timeout=120),
-            "openai": CircuitBreaker(failure_threshold=5, recovery_timeout=60),
-        }
-
-    def _call_claude(self, prompt: str) -> str:
-        response = self.claude.messages.create(
-            model="claude-sonnet-4-6",
-            max_tokens=1024,
-            timeout=self.timeout,
-            messages=[{"role": "user", "content": prompt}],
-        )
-        return response.content[0].text
-
-    def _call_openai(self, prompt: str) -> str:
-        response = self.openai.chat.completions.create(
-            model="gpt-4o",
-            max_tokens=1024,
-            timeout=self.timeout,
-            messages=[{"role": "user", "content": prompt}],
-        )
-        return response.choices[0].message.content
-
-    def _call_ollama(self, prompt: str) -> str:
-        import requests
-        r = requests.post(
-            "http://localhost:11434/api/generate",
-            json={"model": "llama3.2", "prompt": prompt, "stream": False},
-            timeout=30,
-        )
-        return r.json()["response"]
-
-    def chat(self, prompt: str) -> dict:
-        providers = [
-            ("claude", self._call_claude),
-            ("openai", self._call_openai),
-            ("ollama", self._call_ollama),
-        ]
-
-        last_error = None
-        for name, func in providers:
-            breaker = self.breakers.get(name, CircuitBreaker())
-            try:
-                result = breaker.call(func, prompt)
-                return {"response": result, "provider": name}
-            except Exception as e:
-                last_error = e
-                print(f"[Fallback] {name} 실패: {e}, 다음 제공자 시도...")
-                continue
-
-        # 모든 제공자 실패 시 정적 메시지 반환
-        return {
-            "response": "현재 서비스 응답이 지연되고 있습니다. 잠시 후 다시 시도해주세요.",
-            "provider": "static_fallback",
-            "error": str(last_error),
-        }
-```
-
-## 재시도 전략: Exponential Backoff with Jitter
-
-![재시도 전략: Exponential Backoff with Jitter](/assets/posts/llmops-fallback-retry.svg)
-
-```python
-import random
-import time
+import random, time
 from functools import wraps
 
-def retry_with_backoff(
-    max_retries: int = 3,
-    base_delay: float = 1.0,
-    max_delay: float = 32.0,
-    retryable_exceptions: tuple = (Exception,),
-):
-    """재시도 데코레이터: Exponential Backoff + Full Jitter"""
+def retry_with_backoff(max_retries=3, base_delay=1.0, max_delay=32.0,
+                       retryable=(Exception,)):
     def decorator(func):
         @wraps(func)
         def wrapper(*args, **kwargs):
             for attempt in range(max_retries + 1):
                 try:
                     return func(*args, **kwargs)
-                except retryable_exceptions as e:
+                except retryable:
                     if attempt == max_retries:
                         raise
                     delay = min(max_delay, base_delay * (2 ** attempt))
-                    jittered = delay * (0.5 + random.random() * 0.5)
-                    print(f"[Retry] {attempt+1}/{max_retries} 실패: {e}. {jittered:.1f}초 후 재시도")
-                    time.sleep(jittered)
+                    time.sleep(delay * (0.5 + random.random() * 0.5))
         return wrapper
     return decorator
-
-@retry_with_backoff(
-    max_retries=3,
-    base_delay=1.0,
-    retryable_exceptions=(anthropic.RateLimitError, anthropic.APIStatusError),
-)
-def call_claude(prompt: str) -> str:
-    response = client.messages.create(
-        model="claude-sonnet-4-6",
-        max_tokens=1024,
-        messages=[{"role": "user", "content": prompt}],
-    )
-    return response.content[0].text
 ```
 
-## LiteLLM으로 다중 제공자 통합
+마지막 줄의 식은 계산한 간격의 50%에서 100% 사이를 고른다. 간격을 아예 0부터 뽑는 방식도 있는데, 그쪽이 더 넓게 흩뜨리는 대신 운 나쁘면 거의 안 쉬고 다시 부르게 된다. 어느 쪽이든 **고정 간격보다는 낫다**는 것이 요점이다.
 
-직접 구현하는 대신 **LiteLLM**을 사용하면 한 인터페이스로 100개 이상의 LLM을 통합 관리할 수 있다.
+한 가지 주의할 것이 있다. 재시도로 쉬는 시간도 전체 예산에서 깎인다. 8초 예산에서 1차가 4초 걸려 실패하고 백오프로 2초를 더 쉬면 남는 것은 2초뿐이고, 2차와 3차가 그 안에서 끝나야 한다. **재시도와 폴백은 같은 시간을 나눠 쓰는 경쟁 관계**이므로 둘 중 어느 쪽에 예산을 줄지가 설계 결정이 된다. 대체로 429는 재시도가 값이 있고 5xx는 그냥 넘기는 편이 낫다.
+
+### 스트리밍의 첫 토큰 경계
+
+응답을 스트리밍으로 내보내면 예산 관리가 한 군데에서 달라진다. **첫 토큰이 나가기 시작한 뒤에는 폴백이 사실상 불가능하다.** 이미 사용자 화면에 글자가 찍히고 있는데 지금까지 쓴 것을 지우고 다른 모델의 답을 처음부터 다시 흘릴 수는 없기 때문이다.
+
+그래서 스트리밍에서는 **첫 토큰까지의 시간만 폴백 판단 구간**으로 둔다. 첫 토큰이 기한 안에 안 오면 아직 아무것도 안 보냈으니 다음 자리로 넘어가면 되고, 첫 토큰이 나간 뒤에 스트림이 끊기면 그때부터는 폴백이 아니라 에러 처리다. 클라이언트 쪽에서 「응답이 중간에 끊겼습니다」를 어떻게 보여 줄지가 그 자리의 설계다.
+
+이 경계 때문에 스트리밍 서비스의 예산은 대개 두 개다. 첫 토큰까지의 예산은 짧게 잡아 빨리 넘기고, 전체 생성 시간의 상한은 훨씬 길게 잡는다. 하나로 묶으면 긴 답변을 만드는 중에 폴백이 발동해 멀쩡한 응답을 버리게 된다.
+
+## 서킷 브레이커와 단계적 축소
+
+### 죽은 엔드포인트에 던지는 트래픽
+
+제공자가 완전히 죽었다고 하자. 지금까지 만든 체인은 요청마다 1차를 부르고, 타임아웃까지 기다리고, 실패하고, 2차로 간다. 요청이 초당 50건이면 죽은 엔드포인트로 초당 50건을 계속 던지는 셈이다.
+
+숫자를 하나 따라가 보면 규모가 보인다. 1차 타임아웃이 3초이고 초당 50건이 들어오면, 어느 순간에도 150개의 요청이 죽은 엔드포인트의 응답을 기다리며 커넥션과 스레드를 물고 있다. 모든 사용자의 체감 지연에는 3초가 그대로 얹히고, 상대가 회복 중이라면 우리 트래픽이 그 회복을 방해한다.
+
+### 세 상태와 임계값 셋
+
+**서킷 브레이커**(circuit breaker)는 최근 실패율이 임계값을 넘으면 그 자리를 일정 시간 아예 건너뛰는 장치다. 이름은 전기 차단기에서 왔다 — 과전류가 흐르면 회로를 끊어 뒤쪽을 보호하고, 사람이 복구하면 다시 잇는다.
+
+상태가 셋이다. `CLOSED`는 회로가 이어져 있어 요청이 정상으로 통과하는 평시다. 실패가 임계값을 넘으면 `OPEN`으로 바뀌어 그 자리를 아예 부르지 않고 즉시 실패시킨다. 일정 시간이 지나면 `HALF_OPEN`으로 넘어가 요청을 조금만 흘려보고, 그것들이 성공하면 다시 `CLOSED`로 돌아간다.
 
 ```python
-from litellm import completion, Router
+import time
+from enum import Enum
 
-# 가중치 기반 라우팅 + Fallback 설정
-router = Router(
-    model_list=[
-        {
-            "model_name": "my-claude",
-            "litellm_params": {"model": "claude-sonnet-4-6"},
-            "rpm": 50,  # 분당 요청 한도
-        },
-        {
-            "model_name": "my-gpt4o",
-            "litellm_params": {"model": "gpt-4o"},
-            "rpm": 60,
-        },
-        {
-            "model_name": "my-claude-haiku",
-            "litellm_params": {"model": "claude-haiku-4-5-20251001"},
-            "rpm": 200,
-        },
-    ],
-    fallbacks=[
-        {"my-claude": ["my-gpt4o", "my-claude-haiku"]},  # claude 실패 시 순서대로
-    ],
-    retry_policy={
-        "AuthenticationErrorRetries": 0,
-        "TimeoutErrorRetries": 2,
-        "RateLimitErrorRetries": 3,
-    },
-    allowed_fails=2,  # circuit breaker threshold
-)
+class State(Enum):
+    CLOSED = "closed"        # 정상: 모든 요청 통과
+    OPEN = "open"            # 차단: 부르지 않고 즉시 실패
+    HALF_OPEN = "half_open"  # 회복 시도: 일부만 통과
 
-def chat(prompt: str) -> str:
-    response = router.completion(
-        model="my-claude",
-        messages=[{"role": "user", "content": prompt}],
-        timeout=10,
-    )
-    return response.choices[0].message.content
+class CircuitBreaker:
+    def __init__(self, failure_threshold=5, recovery_timeout=60.0,
+                 success_threshold=2):
+        self.ft, self.rt, self.st = failure_threshold, recovery_timeout, success_threshold
+        self.state, self.failures, self.successes = State.CLOSED, 0, 0
+        self.opened_at = 0.0
+
+    def before(self):
+        if self.state is State.OPEN:
+            if time.monotonic() - self.opened_at > self.rt:
+                self.state, self.successes = State.HALF_OPEN, 0
+            else:
+                raise CircuitOpen("차단 중")
+
+    def on_success(self):
+        if self.state is State.HALF_OPEN:
+            self.successes += 1
+            if self.successes >= self.st:
+                self.state, self.failures = State.CLOSED, 0
+        else:
+            self.failures = 0
+
+    def on_failure(self):
+        self.failures += 1
+        self.opened_at = time.monotonic()
+        if self.failures >= self.ft:
+            self.state = State.OPEN
 ```
 
-## 그레이스풀 디그레이데이션
+임계값 셋이 각각 다른 것을 정한다. `failure_threshold`는 **얼마나 참을 것인가**이고, 너무 작으면 일시적인 흔들림에도 회로가 열려 멀쩡한 1차를 버린다. `recovery_timeout`은 **얼마나 기다렸다 다시 볼 것인가**이고, 너무 길면 상대가 회복한 뒤에도 계속 2차로 흐른다. `success_threshold`는 **몇 번 성공해야 믿을 것인가**이고, 1로 두면 우연히 성공한 한 건에 회로를 열어 다시 무너진다.
 
-모든 LLM이 실패해도 서비스가 완전히 멈추지 않도록 **단계적 기능 축소**를 설계한다.
+이 장치가 붙으면 폴백의 성격이 달라진다. 브레이커 없이는 폴백이 「매 요청마다 치르는 타임아웃 비용」이고, 브레이커가 있으면 「장애를 감지한 뒤로는 공짜」가 된다. 앞의 예에서 회로가 열린 뒤부터는 1차에 대한 3초가 통째로 사라지고 모든 요청이 곧장 2차로 간다.
+
+### 프로세스마다 따로인 상태
+
+여기에 함정이 하나 있다. **브레이커의 상태는 프로세스마다 따로 있다.** 위 코드의 카운터는 그냥 인스턴스 변수이므로, 서버가 열 대면 브레이커도 열 개이고 각자 따로 실패를 세어 각자 따로 열린다.
+
+트래픽이 많으면 별 문제가 안 된다. 초당 50건이 열 대에 흩어지면 대당 초당 5건이므로 실패 5건 임계값에는 1초 만에 닿는다. 그런데 초당 2건이면 대당 0.2건이라 임계값에 닿는 데 25초가 걸리고, 그 사이 모든 요청이 타임아웃을 그대로 맞는다. 트래픽이 더 적으면 어느 프로세스도 임계값에 못 닿아 브레이커가 영영 안 열리기도 한다.
+
+두 가지 대응이 있다. 상태를 공유 저장소에 두어 모든 프로세스가 같은 카운터를 보게 하거나, 임계값을 건수가 아니라 **비율**로 잡고 최소 표본 수를 낮추는 것이다. 「최근 10건 중 절반 이상 실패」 같은 조건은 저 트래픽에서도 성립한다. 공유 저장소 쪽은 정확한 대신 그 저장소가 새로운 단일 실패 지점이 되므로, 상태 조회가 실패하면 브레이커 없이 그냥 진행하도록 열어 두는 편이 낫다.
+
+### 네 단계의 서비스 모드
+
+브레이커의 상태를 여러 자리에서 모아 보면 서비스 전체의 건강을 한 값으로 표현할 수 있다. 이것이 **그레이스풀 디그레이데이션**(graceful degradation), 곧 단계적 축소다 — 기능을 통째로 끄는 대신 품질이나 범위를 한 단계씩 줄여 서비스를 살려 두는 설계다.
 
 ```python
 from enum import Enum
 
 class ServiceMode(Enum):
     FULL = "full"          # 모든 기능 정상
-    DEGRADED = "degraded"  # 핵심 기능만 (소형 모델)
+    DEGRADED = "degraded"  # 대체 제공자로 처리
     MINIMAL = "minimal"    # 캐시된 응답만
     OFFLINE = "offline"    # 정적 안내 메시지
 
-def get_service_mode() -> ServiceMode:
-    if claude_breaker.state == State.CLOSED:
+def service_mode() -> ServiceMode:
+    if primary.state is State.CLOSED:
         return ServiceMode.FULL
-    elif openai_breaker.state != State.OPEN:
+    if secondary.state is not State.OPEN:
         return ServiceMode.DEGRADED
-    elif cache.has_recent_responses():
+    if cache.has_recent_responses():
         return ServiceMode.MINIMAL
     return ServiceMode.OFFLINE
-
-def handle_request(query: str) -> str:
-    mode = get_service_mode()
-    match mode:
-        case ServiceMode.FULL:
-            return call_claude(query)
-        case ServiceMode.DEGRADED:
-            return call_openai(query)  # 비용은 높지만 가용성 확보
-        case ServiceMode.MINIMAL:
-            return cache.get_best_match(query) or "유사한 이전 답변입니다."
-        case ServiceMode.OFFLINE:
-            return "서비스 점검 중입니다. support@company.com으로 문의 바랍니다."
 ```
 
-## Fallback 모니터링
+모드를 하나의 값으로 뽑아 두면 쓸 곳이 많아진다. 응답에 실어 클라이언트가 「간이 모드로 답했습니다」를 붙이게 할 수 있고, `MINIMAL` 이하에서는 무거운 부가 기능을 아예 끄는 판단도 이 값 하나로 한다. 대시보드에 이 모드의 시간 비율을 그려 두면 「지난주에 우리 서비스가 온전한 상태였던 시간이 몇 퍼센트인가」라는 질문에 답할 수 있다.
+
+## 체인을 세우는 코드
+
+### 제공자 셋을 잇는 어댑터
+
+지금까지의 판단을 코드로 옮기면 자리마다 같은 모양의 어댑터가 필요하다. 어댑터가 하는 일은 셋이다 — 제공자별 SDK를 부르고, 응답에서 텍스트를 꺼내고, **예외를 우리 갈래로 번역한다.** 세 번째가 핵심이다. 이 번역을 어댑터에 모아 두지 않으면 앞에서 만든 갈래 표가 체인 본체 여기저기로 흩어진다.
+
+```python
+class Step:
+    def __init__(self, name, fn, min_time, breaker):
+        self.name, self.fn, self.min_time, self.breaker = name, fn, min_time, breaker
+
+    def call(self, payload, timeout):
+        self.breaker.before()                 # OPEN이면 CircuitOpen을 던진다
+        try:
+            out = self.fn(payload, timeout=timeout)
+        except Exception as e:
+            err = translate(e)                # RetryableError 또는 FatalError
+            if isinstance(err, RetryableError):
+                self.breaker.on_failure()     # 400·401은 상대 탓이 아니다
+            raise err
+        self.breaker.on_success()
+        return out
+
+chain = [
+    Step("primary",   call_primary,   min_time=1.5, breaker=CircuitBreaker(3, 120)),
+    Step("secondary", call_secondary, min_time=1.5, breaker=CircuitBreaker(5, 60)),
+    Step("local",     call_local,     min_time=0.5, breaker=CircuitBreaker(5, 30)),
+]
+```
+
+실패를 세는 자리에서도 갈래를 한 번 더 본다. 우리 프롬프트가 만든 400을 브레이커의 실패로 세면 템플릿 오타 하나가 멀쩡한 1차의 회로를 열어 버린다. 브레이커가 재는 것은 상대의 건강이므로 우리 쪽 잘못은 세지 않는다.
+
+`CircuitOpen`도 `RetryableError`의 한 갈래로 두면 앞 절의 `call_with_fallback`이 그대로 동작한다 — 회로가 열린 자리는 그냥 실패한 자리로 취급되어 다음으로 넘어간다. 자리마다 브레이커 설정이 다른 것에도 이유가 있다. 주력 모델은 조금이라도 이상하면 빨리 비켜 주는 편이 낫고(임계값 3), 대체 자리는 쉽게 열리면 갈 데가 없어지므로 더 참는다(임계값 5).
+
+### LiteLLM 라우터의 설정
+
+직접 만들지 않는 선택지도 있다. **LiteLLM**은 여러 제공자의 호출 형식을 한 인터페이스 뒤로 감춘 라이브러리이고, 라우터에 폴백·재시도·차단을 설정으로 붙일 수 있다.
+
+```python
+from litellm import Router
+from litellm.router import RetryPolicy
+
+router = Router(
+    model_list=[
+        {"model_name": "primary",   "litellm_params": {"model": "..."}, "rpm": 50},
+        {"model_name": "secondary", "litellm_params": {"model": "..."}, "rpm": 60},
+        {"model_name": "small",     "litellm_params": {"model": "..."}, "rpm": 200},
+    ],
+    fallbacks=[{"primary": ["secondary", "small"]}],
+    retry_policy=RetryPolicy(
+        AuthenticationErrorRetries=0,      # 설정 문제는 재시도하지 않는다
+        TimeoutErrorRetries=2,
+        RateLimitErrorRetries=3,
+    ),
+    allowed_fails=2,                       # 이 횟수를 넘으면 그 자리를 잠시 뺀다
+)
+```
+
+`retry_policy`가 이 글의 갈래 표를 그대로 옮겨 놓은 자리다. 인증 오류는 0회, 타임아웃과 한도 초과는 몇 번. 설정으로 짧게 끝나는 대신 우리가 통제하기 어려워지는 것도 있다 — 전체 시간 예산을 단계 사이에 넘기는 동작은 라이브러리가 어떻게 다루는지에 달려 있으므로, 최악 시간이 클라이언트 기한 안인지는 직접 재 봐야 한다. 옵션 이름과 기본값은 판마다 달라지므로 쓰는 판의 문서를 확인하고 붙인다.
+
+### 자리마다 같은 출력 검증
+
+체인의 자리들은 능력이 다르다. 그래서 폴백이 성공했는데 그 뒤에서 터지는 일이 생긴다. 가장 흔한 것이 구조화 출력이다. 1차 모델은 JSON 스키마를 잘 지키는데 3차 소형 모델은 앞뒤에 설명을 붙이거나 필드를 빠뜨리면, 파싱하는 쪽에서 예외가 나고 그 예외는 폴백 로직 밖이라 아무도 못 잡는다.
+
+대응은 단순하다. **검증을 체인 안에 넣는다.** 각 자리의 응답을 같은 파서로 통과시키고, 통과하지 못하면 그것도 그 자리의 실패로 세어 다음 자리로 넘긴다. 이렇게 두면 「3차 모델이 스키마를 못 지킨다」는 사실이 자리별 실패 지표에 그대로 드러나고, 그 자리를 계속 쓸지 말지를 숫자를 보고 정할 수 있다.
+
+## 조용한 품질 저하와 계기판
+
+### 응답 메타에 남기는 자리
+
+여기가 폴백 체인에서 가장 자주 놓치는 자리다. 폴백이 잘 동작하면 **아무도 장애를 눈치채지 못한다.** 오류율은 0이고 응답도 나가니 대시보드는 초록색이다. 그런데 3차 소형 모델이 두 시간 동안 모든 요청을 처리하고 있었다면, 그 두 시간의 응답 품질은 평소와 다르다. 폴백은 장애를 오류가 아니라 **품질 저하로 바꾸는 장치**이고, 품질 저하는 오류처럼 알아서 울리지 않는다.
+
+그래서 첫 번째로 할 일은 어느 자리가 응답했는지를 **응답 메타에 담는 것**이다. 로그가 아니라 응답 객체에 넣어야 다운스트림이 판단할 수 있다. 이 요약을 캐시에 넣을지 말지, 사용자에게 「간이 모드로 답했습니다」를 붙일지, 이 결과를 평가 데이터로 모을지 같은 결정이 전부 이 한 필드에서 갈린다. 로그에만 있으면 그 결정들을 못 한다.
+
+### 자리별 처리 비율 지표
+
+두 번째는 지표다. 자리별 처리 건수를 세어 비율로 내보내고, 1차 비율이 기준 아래로 내려가면 알림을 건다. 오류율이 아니라 **이 지표가 폴백 체인의 진짜 건강 지표**다.
 
 ```python
 from prometheus_client import Counter
 
-fallback_counter = Counter(
-    "llm_fallback_total",
-    "Number of times fallback was triggered",
-    ["from_provider", "to_provider", "reason"],
+fallback_total = Counter(
+    "llm_fallback_total", "폴백이 발동한 횟수",
+    ["from_step", "to_step", "reason"],
 )
 
-# Fallback 발생 시 기록
-fallback_counter.labels(
-    from_provider="claude",
-    to_provider="openai",
-    reason="rate_limit",
-).inc()
+fallback_total.labels(from_step="primary", to_step="secondary",
+                      reason="rate_limit").inc()
 ```
 
-Fallback 발생 빈도가 높아지면 Primary 제공자에 문제가 생겼다는 신호다. 이를 대시보드에서 추세로 모니터링하고, 임계값을 초과하면 온콜 알림을 보낸다.
+`reason` 라벨이 붙어 있는 것이 중요하다. 1차 비율이 90%로 떨어졌다는 사실만으로는 할 일이 안 정해지지만, 그 10%가 전부 `rate_limit`이면 한도를 올리거나 트래픽을 나누는 일이고 전부 `timeout`이면 기한이나 모델 크기를 다시 볼 일이다. 원인별로 갈라 두면 알림 하나가 곧 조치 하나로 이어진다.
+
+이 지표를 비용과 나란히 두면 하나가 더 보인다. 3단 체인을 다 밟은 요청은 1차에서 성공한 요청의 두세 배를 쓴다. 폴백 비율이 올라가는 구간은 비용 곡선이 함께 꺾이는 구간이므로, [비용 추적](/articles/llmops-cost-tracking)의 그래프에서 원인 모를 봉우리를 만나면 이 지표를 겹쳐 보는 것이 빠르다.
+
+### 자리별로 나눠 보는 품질
+
+세 번째는 평가다. 품질 지표를 전체 평균으로만 보면 3차가 10%를 처리하는 동안 값이 조금 내려간 것으로 보인다. 자리별로 나누면 다른 것이 보인다 — 3차의 품질이 실제로 쓸 만한지가 그 자리에서 드러난다.
+
+이 구분이 실제 결정으로 이어진다. 3차의 품질이 1차의 8할쯤 된다면 그 자리는 잘 하고 있는 것이고, 절반도 안 된다면 **그 자리는 폴백이 아니라 「정직한 실패」로 바꾸는 편이 낫다.** 나쁜 답을 자신 있게 내보내는 것보다 「지금은 안 됩니다」가 나은 상황이 실제로 있고, 어느 쪽인지는 자리별 품질 숫자가 없으면 논쟁으로만 남는다.
+
+### 체인을 세울 때의 점검 목록
+
+지금까지의 판단을 한자리에 모으면 여섯 개의 질문이 된다.
+
+- **1차가 죽는 이유가 2차도 죽이는가?** 같은 제공자·같은 리전·같은 인증이면 그렇다
+- **각 자리의 응답이 같은 형식인가?** 구조화 출력을 요구하는데 뒷자리가 스키마를 못 지키면 폴백이 다운스트림에서 다시 터진다
+- **최악의 경우 총 시간이 클라이언트 기한 안인가?** 단계마다 기한을 준 체인은 거의 항상 넘긴다
+- **마지막 자리가 정직한 실패인가?** 무한히 넘기다 스택 트레이스를 내보내는 체인이 되지 않게 한다
+- **폴백이 켜졌다는 것을 무엇으로 아는가?** 자리별 비율 지표가 없으면 조용한 품질 저하를 못 잡는다
+- **비용이 최악의 경우 몇 배인가?** 브레이커가 이 값을 눌러 준다
+
+여섯 질문에 전부 답이 있으면 체인은 구조가 된 것이다. 하나라도 비어 있으면 그 자리가 장애 때 밟히는 자리다.
+
+체인의 마지막 칸에 두는 자체 호스팅 소형 모델은 사 오는 것이 아니라 우리가 우리 데이터로 다듬어 세우는 경우가 많다. 그러려면 학습에 쓸 데이터가 먼저 있어야 하고, 그 데이터를 어디서 어떻게 모으는지 — 수집 경로와 그때 지켜야 하는 것들이 다음 글의 주제다.
 
 ---
 

@@ -192,4 +192,4 @@ SigLIP(Google)은 Softmax 대신 Sigmoid 손실을 사용해 배치 크기에 �
 
 **지난 글:** [Vision Transformer(ViT): 이미지를 문장처럼 처리하는 Transformer](/articles/cv-vision-transformer)
 
-**다음 글:** [확산 모델(Diffusion Model) 기초: 노이즈에서 이미지로](/articles/cv-diffusion-basics)
+**다음 글:** [확산 모델과 Stable Diffusion: 노이즈에서 이미지까지](/articles/cv-diffusion-basics)

@@ -211,4 +211,4 @@ for user_ids, item_ids, labels in dataloader:
 
 **지난 글:** [행렬 분해(MF): SVD·ALS·FunkSVD 추천 알고리즘 완전 해설](/articles/recsys-matrix-factorization)
 
-**다음 글:** [투타워 모델: 대규모 추천 시스템 구조 완전 해설](/articles/recsys-two-tower)
+**다음 글:** [대규모 추천 서빙: 투타워 후보 생성과 LLM 재랭킹](/articles/recsys-two-tower)

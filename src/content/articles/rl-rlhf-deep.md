@@ -9,7 +9,7 @@ tags: ["RLHF", "인간피드백", "보상모델", "PPO", "KL발산", "보상해�
 featured: false
 draft: false
 ---
-[지난 글](/articles/rl-actor-critic)에서 Actor-Critic 방법론이 정책과 가치 함수를 어떻게 협력시키는지 살펴보았다. 이번 글에서는 강화학습이 실제 언어 모델 훈련에 어떻게 적용되는지, ChatGPT와 Claude를 만든 핵심 기술인 **RLHF(Reinforcement Learning from Human Feedback)** 를 완전히 해부한다. RLHF는 단순히 언어 모델을 더 좋게 만드는 것이 아니라, "인간이 원하는 방식으로 동작하도록 정렬(align)"하는 기술이다.
+[지난 글](/articles/rl-ppo)에서 어드밴티지로 정책 경사의 분산을 잡고, 액터-크리틱 위에 클리핑을 얹어 업데이트 폭까지 묶는 PPO를 조립했다. 이번 글에서는 그 PPO가 게임 환경을 떠나 실제 언어 모델 훈련에 어떻게 얹히는지, ChatGPT와 Claude를 만든 핵심 기술인 **RLHF(Reinforcement Learning from Human Feedback)** 를 완전히 해부한다. 보상이 점수판에서 오지 않고 사람의 선호 비교에서 온다는 점 하나가 파이프라인 전체를 바꾼다. RLHF는 단순히 언어 모델을 더 좋게 만드는 것이 아니라, "인간이 원하는 방식으로 동작하도록 정렬(align)"하는 기술이다.
 
 ## 왜 RLHF가 필요한가
 
@@ -193,6 +193,6 @@ RLHF는 사전학습 언어 모델이 인간의 가치와 선호에 맞게 동�
 
 읽어주셔서 감사합니다. 😊
 
-**지난 글:** [액터-크리틱: 정책과 가치 함수의 시너지](/articles/rl-actor-critic)
+**지난 글:** [액터-크리틱과 PPO: 어드밴티지로 안정화한 정책 최적화](/articles/rl-ppo)
 
 **다음 글:** [음성 에이전트 — 텍스트 에이전트와 다른 것은 시간이다](/articles/multimodal-audio-agents)

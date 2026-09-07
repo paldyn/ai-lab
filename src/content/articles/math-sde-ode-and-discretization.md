@@ -21,7 +21,7 @@ scheduler = DPMSolverMultistepScheduler.from_config(pipe.scheduler.config)
 
 이 세 관찰은 전부 하나의 수치해석 사실에서 나옵니다. **샘플링은 미분방정식을 푸는 일이고, 스텝 수는 그 방정식을 얼마나 잘게 쪼개 푸는가입니다.** 스텝을 줄이면 빨라지는 대신 오차가 생기고, 그 오차가 얼마나 빨리 줄어드는지는 푸는 방법마다 정해진 숫자가 있습니다.
 
-[지난 글](/articles/math-score-matching)에서 모델이 배우는 것이 스코어 $$\nabla_x \log p_t(x)$$ 라는 것을 확인했습니다. 이 글은 그 스코어를 손에 쥔 뒤 **그것으로 무엇을 어떻게 푸는지**를 봅니다. 실제 파이프라인 사용법은 [Stable Diffusion](/articles/cv-stable-diffusion)이 다루고, 여기서는 방정식만 봅니다.
+[지난 글](/articles/math-score-matching)에서 모델이 배우는 것이 스코어 $$\nabla_x \log p_t(x)$$ 라는 것을 확인했습니다. 이 글은 그 스코어를 손에 쥔 뒤 **그것으로 무엇을 어떻게 푸는지**를 봅니다. 실제 파이프라인 사용법은 [확산 모델과 Stable Diffusion](/articles/cv-diffusion-basics)이 다루고, 여기서는 방정식만 봅니다.
 
 ## 스텝을 무한히 잘게 쪼개면
 

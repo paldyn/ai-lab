@@ -9,7 +9,7 @@ tags: ["에이전트리플렉션", "Critic", "Generator", "Self-Debug", "LangGra
 featured: false
 draft: false
 ---
-[지난 글](/articles/agent-planning)에서 ReAct, Plan-and-Execute 등 에이전트 플래닝 전략을 살펴봤다. 이번 글에서는 에이전트가 **자신의 출력물을 평가하고 반복적으로 개선**하는 리플렉션 패턴을 다룬다. 리플렉션은 단순한 계획 실행을 넘어 에이전트가 품질을 스스로 보장하게 한다.
+[지난 글](/articles/agent-memory)에서 In-Context·External·Episodic·Semantic 네 갈래로 에이전트가 무엇을 어디에 얼마나 기억할지를 설계했다. 다만 메모리는 쌓인 것을 그대로 꺼내 올 뿐, 그 안에 담긴 결과물이 쓸 만했는지는 묻지 않는다. 이번 글에서는 에이전트가 **자신의 출력물을 평가하고 반복적으로 개선**하는 리플렉션 패턴을 다룬다. 리플렉션은 단순한 계획 실행을 넘어 에이전트가 품질을 스스로 보장하게 한다.
 
 ## 리플렉션이란
 
@@ -360,6 +360,6 @@ if result["success"]:
 
 읽어주셔서 감사합니다. 😊
 
-**지난 글:** [에이전트 플래닝: ReAct, Plan-and-Execute, Reflexion 전략](/articles/agent-planning)
+**지난 글:** [에이전트 메모리: 단기·장기·시맨틱 메모리 아키텍처](/articles/agent-memory)
 
 **다음 글:** [에이전트 평가: 성능 측정과 벤치마킹 방법론](/articles/agent-evaluation)

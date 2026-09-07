@@ -6,28 +6,32 @@
 이 파일은 사람이 읽으라고 쓴 설명이 아니라 **루틴이 매일 한 항목씩 집어 가는
 작업 큐**다. 마친 항목은 그 줄을 지운다 — 무엇을 언제 마쳤는지는 git log가 안다.
 
-마지막 갱신: 2026-09-07 (전수 측정 후 첫 판)
+마지막 갱신: 2026-09-08 (합치기 57짝을 모두 마침 — 578 → 501편)
+이전 갱신: 2026-09-07 (전수 측정 후 첫 판)
 
 ---
 
 ## 왜 이 목록이 있나
 
-2026-09-07에 학습 글 534편의 산문(코드·수식 제외)을 전부 세었다.
+2026-09-07에 학습 글 534편의 산문(코드·수식 제외)을 전부 셌다. 아래는 합치기를 마친 뒤의 값이다.
 
-| 카테고리 | 편수 | 산문 중앙값 | 소절(`###`)을 쓰는 글 | 합쳐서 없앨 편 | 채우기 1차 |
-| --- | ---: | ---: | ---: | ---: | ---: |
-| `deep-learning` | 48 | 1,450자 | 17% | 9 | 12 |
-| `build-with-ai` | 28 | 1,411자 | 50% | 6 | 12 |
-| `domain-models` | 67 | 2,145자 | 36% | 12 | 12 |
-| `agents-rag` | 83 | 2,156자 | 30% | 15 | 12 |
-| `llm-core` | 62 | 2,430자 | 26% | 11 | 12 |
-| `ml-ops` | 104 | 2,761자 | 33% | 12 | 12 |
-| `ai-guide` | 22 | 2,239자 | 27% | 3 | 12 |
-| `math-for-ai` | 120 | 3,724자 | 58% | 0 | 12 |
-| **합계** | **534** | **2,662자** | — | **68** | **96** |
+| 카테고리 | 편수 | 산문 중앙값 | 소절(`###`)을 쓰는 글 | 채우기 1차 |
+| --- | ---: | ---: | ---: | ---: |
+| `deep-learning` | 39 | 1,767자 | 41% | 12 |
+| `build-with-ai` | 22 | 1,740자 | 64% | 12 |
+| `domain-models` | 55 | 3,408자 | 53% | 12 |
+| `agents-rag` | 68 | 2,640자 | 35% | 12 |
+| `llm-core` | 51 | 2,688자 | 45% | 12 |
+| `ml-ops` | 92 | 3,083자 | 39% | 12 |
+| `ai-guide` | 19 | 3,198자 | 32% | 12 |
+| `math-for-ai` | 120 | 3,562자 | 58% | 12 |
+| **합계** | **466** | **3,151자** | — | **96** |
 
-6,000자를 넘는 학습 글은 534편 중 **두 편**이다. 리서치 글의 중앙값이 5,562자이니
-기준 자체가 무리한 값은 아니다 — 학습 글만 안 쓴 것이다.
+**2026-09-08에 합치기 57짝을 마치고 다시 잰 값이다.** 시작할 때는 534편에 중앙값 2,662자였고
+6,000자를 넘는 글이 둘이었다. 지금은 466편에 3,151자이고 6,000자를 넘는 글이 57편이다 —
+늘어난 57편이 합쳐 다시 쓴 그 글들이다.
+
+리서치 글의 중앙값이 5,562자이니 기준 자체가 무리한 값은 아니다 — 학습 글만 안 쓴 것이다.
 
 **얇은 이유는 주제가 작아서가 아니라 코드 갤러리로 썼기 때문이다.** 여덟 카테고리를
 전부 열어 본 결론이 같았다. 절이 「한 문단 + 코드 한 덩이」로 되어 있고, 코드를 빼면
@@ -37,18 +41,16 @@
 
 ## 두 가지 일
 
-**합치기 57짝(68편이 사라진다. 578 → 510편).** 열어 보니 같은 말을 두 번 하는 자리다.
-얇다고 합치는 것이 아니다 — 한 편을 둘로 자른 자리, 뒤 글이 앞 글을 요약으로 미리 다
-해 버린 자리를 골랐다.
+**합치기 57짝은 2026-09-08에 전부 끝났다.** 578 → 501편이 됐고, 아래 「합치기는 끝났다」에
+그때 밟은 자리를 남겼다.
 
 **채우기 96편(1차).** 카테고리마다 열둘씩, 얇은 쪽부터다. 이 96편을 비우면 다음은
-그 카테고리에서 산문이 가장 짧은 글이다 — 6,000자 미만이 532편이라 큐는 한동안
+그 카테고리에서 산문이 가장 짧은 글이다 — 지금 6,000자 미만이 409편이라 큐는 한동안
 바닥나지 않는다.
 
-**합치기가 6,000자를 만들어 주지는 않는다.** 57짝의 산문을 실제로 더해 보면 6,000자를
-넘는 것은 `mlops-monitoring` ← `mlops-drift-detection`(6,934자) 한 짝뿐이고, 41짝은
-합쳐도 4,000자 미만이다. 합치기는 **채울 거리가 남은 상태를 만드는 일**이므로,
-합쳤으면 그 자리에서 채우기까지 한 편으로 친다.
+**합치기는 6,000자를 만들어 주지 않았다 — 채우기가 만들었다.** 57짝의 원본 산문을 더하면
+6,000자를 넘는 것이 한 짝뿐이었는데, 합친 뒤 그 자리에서 채워 전부 6,800~15,000자가 됐다.
+합치기는 채울 거리가 남은 상태를 만드는 일이고, 채우는 것은 그다음이다.
 
 ## 루틴이 고르는 법
 
@@ -126,40 +128,33 @@ done | sort -rn | head -20
 
 앞 숫자가 절, 뒤 숫자가 소절이다. **절이 여덟 이상인데 소절이 0인 글**이 먼저다.
 
-## 놓치기 쉬운 자리
+## 합치기는 끝났다 — 57짝 전부(2026-09-07~08)
 
-합치기 계획을 따로 검증해서 나온 것들이다. 해당 항목을 집을 때 함께 본다.
+**578편이 501편이 됐다.** 남은 일은 채우기뿐이다. 아래는 그 57짝을 하면서 실제로 밟은
+자리들이라, 앞으로 글을 합치거나 옮길 때 그대로 다시 쓴다.
 
-- **`src/data/certs.ts`의 `studyPath`가 사라질 슬러그를 9자리에서 부른다**
-  (`rag-architecture` 3, `serving-cost-optimization` 2, `project-prompt-iterating` 2,
-  `cv-image-classification-deep`, `agent-mcp-protocol` 각 1).
-  `src/data/certs.test.ts`가 없는 슬러그를 잡으므로 안 고치면 `npm test`가 선다.
-  **남길 슬러그가 같은 `studyPath` 묶음에 이미 있으면 갈아 끼우지 말고 줄을 지운다** —
-  같은 글이 두 번 걸린다.
-- **사이에 다른 글이 낀 합치기가 15자리다**(ml-ops 7, agents-rag 4, llm-core 2,
-  build-with-ai 1, domain-models 1). 「지난 글 / 다음 글」 한 줄 교체로 안 끝나고,
-  낀 글의 도입부까지 세 자리를 고쳐야 한다.
-- **`ml-ops`의 세 짝은 9월 사슬에서 연속한 세 칸이다** — `mlops-drift-detection`,
-  `llmops-tracing`, `data-versioning`. 따로 처리하면 사슬이 두 번 끊긴다. 한 번에
-  집어서 `edge-npu-runtime` ↔ `pruning-structured`로 잇고, `pruning-structured`의
-  도입 첫 문단이 데이터 버저닝을 「지난 글」로 부르지 않게 다시 쓴다.
-- **`llm-core`에서 `transformer-attention-from-first-principles`를 지우면 추론 11편
-  사슬의 머리가 사라진다.** `reasoning-models-overview`의 「지난 글」을
-  `llm-comparison-benchmarks`로 옮겨 두 사슬을 잇고, 그 글에는 「다음 글」 줄을
-  새로 달고 마지막 문단의 예고도 다시 쓴다.
-- **`cnn-image-classification` ← `cv-image-classification-deep`은 서로 먼 두 묶음을
-  잇는 자리다.** 고칠 곳이 넷이다 — `nlp-korean-processing`의 예고 문단과 「다음 글」,
-  `cv-vision-transformer`의 도입부와 「지난 글」. `cv-vision-transformer` 도입은
-  「CNN 백본을 이미 본 독자」를 전제하지 않게 다시 쓴다.
-- **합쳐 쓴 뒤에는 사실부터 다시 본다.** 2026-09-07~08에 합친 열일곱 편에서 가장 많이 나온 결함이
-  「그때는 맞았던 사실」이었다 — `huggingface-cli`가 `hf`로 바뀐 것, `HfApi.list_models`의 인자가
-  없어진 것, Git LFS 자리를 Xet이 넘겨받은 것, 로딩 스크립트가 사라져 `oscar`가 안 열리는 것,
-  GitHub Copilot 요금제와 단축키, PyTorch 공개 연도(2016년 9월이다). 제품 이름·요금·CLI·API
-  시그니처·버전·연도는 **공식 문서로 확인하고 쓰거나, 확인이 안 되면 단정을 걷어낸다.**
-- **`agents-rag`에서 ReAct를 누가 맡을지 먼저 정한다.** `agent-architecture`와
-  `ai-agents-and-mcp`가 둘 다 ReAct 절을 갖게 되는 자리다. 한쪽에서 걷어낸다.
-- 사슬만 놓고 시뮬레이션했을 때 **분기(한 글을 둘이 가리킴)와 날짜 역전은 없다.**
-  57짝 모두 남길 글과 흡수할 글의 `category`가 같고 슬러그도 전부 실재한다.
+- **합쳐 쓴 뒤에는 사실부터 다시 본다.** 이번에 가장 많이 나온 결함이 「그때는 맞았던 사실」이었다 —
+  `huggingface-cli`가 `hf`로 바뀐 것, `HfApi.list_models`의 인자가 없어진 것, Git LFS 자리를
+  Xet이 넘겨받은 것, LangChain v1이 `AgentExecutor`를 `langchain-classic`으로 옮긴 것,
+  MCP 파이썬 SDK가 데코레이터 등록을 없앤 것, Ollama가 더는 llama.cpp를 엔진으로 쓰지 않는 것,
+  GitHub Copilot 요금제와 단축키, PyTorch 공개 연도(2016년 9월), ResNet의 3.57%가 단일 모델이
+  아니라 앙상블 기록인 것. **제품 이름·요금·CLI·API 시그니처·버전·연도·논문 수치는 공식 문서로
+  확인하고 쓰거나, 확인이 안 되면 단정을 걷어낸다.**
+- **지운 슬러그는 저장소 전체에서 지운다.** 원고 밖에 세 종류가 있었다 — `src/data/certs.ts`의
+  `studyPath`(같은 묶음에 남을 슬러그가 이미 있으면 갈아 끼우지 말고 줄을 지운다),
+  `MATH-PLAN.md`·`RESEARCH-PLAN.md`의 계획 메모, 그리고 시험 노트 본문.
+  `grep -rn "/articles/<슬러그>" src/ *.md` 가 0이 될 때까지 본다.
+- **사슬은 합치기 전 상태에서 다시 세운다.** 합쳐 쓴 글이 이미 새 이웃을 가리키므로 현재
+  파일만 보면 사슬이 끊겨 보인다. `git show HEAD:` 로 원본 차례를 읽어 흡수된 슬러그만 빼고
+  다시 잇는 편이 안전하다. 한 카테고리에 사슬이 여럿일 수 있다(agents-rag는 넷이었다).
+- **사이에 다른 글이 낀 합치기가 많다.** 「지난 글 / 다음 글」 한 줄 교체로 안 끝나고 낀 글의
+  **도입 첫 문단**까지 고쳐야 한다. 그리고 **흡수한 글의 바로 뒤 글이 그 글을 부르는 것이 아닐 수도
+  있다** — 연속으로 세 편이 사라진 자리(ml-ops의 `mlops-drift-detection`·`llmops-tracing`·
+  `data-versioning`)에서는 살아남은 첫 뒤 글이 셋 중 마지막을 부르고 있었다.
+- **흡수된 글이 사슬의 머리면 그다음 글이 머리가 된다.** 그 글의 도입부에서 「지난 글」을 아예
+  걷어낸다(`llm-core`의 추론 11편이 그랬다). 링크만 갈아 끼우면 본문 첫 줄이 없는 글을 부른다.
+- **닫는 강조 앞의 문장부호를 다시 본다.** 합쳐 쓰면서 `**DPM-Solver++**는`, `**「어디서 멈출까」**다`
+  같은 자리가 새로 생겼다. `npm test`의 `emphasis.test.ts`가 잡지만, 원인이 멀어 보이므로 알아 둔다.
 
 ---
 
@@ -371,48 +366,8 @@ sed -n "/^### deep-learning$/,/^### /p" ARTICLE-DEPTH-PLAN.md
 
 ### domain-models
 
-**합치기**
+**합치기 — 짝이 남지 않았다(2026-09-08).** 67편 → 55편.
 
-| 남길 글 | 흡수할 글 | 합친 뒤 제목(제안) |
-| --- | --- | --- |
-| `cnn-image-classification` | `cv-image-classification-deep` | 이미지 분류 파이프라인: 백본 선택·전이학습·학습 레시피 |
-| `cnn-architectures-history` | `cnn-resnet` · `cnn-modern` | CNN 아키텍처 계보: LeNet에서 ConvNeXt까지 |
-| `cnn-convolution-basics` | `cnn-pooling` · `cnn-feature-maps` | 합성곱·풀링·특징 맵: CNN이 이미지를 읽는 세 단계 |
-| `rl-ppo` | `rl-actor-critic` | 액터-크리틱과 PPO: 어드밴티지로 안정화한 정책 최적화 |
-| `rl-q-learning` | `rl-dqn` | Q-러닝에서 DQN까지: 테이블에서 신경망으로 |
-| `cnn-semantic-segmentation` | `cnn-instance-segmentation` | 세그멘테이션: 픽셀 분류에서 개별 인스턴스까지 |
-| `cv-diffusion-basics` | `cv-stable-diffusion` | 확산 모델과 Stable Diffusion: 노이즈에서 이미지까지 |
-| `recsys-two-tower` | `recsys-llm-based` | 대규모 추천 서빙: 투타워 후보 생성과 LLM 재랭킹 |
-| `cv-controlnet` | `cv-image-editing` | 확산 모델 제어와 편집: ControlNet·인페인팅·DDIM Inversion |
-| `cv-video-models` | `cv-3d-generation` | 정지 이미지 너머: 비디오와 3D 생성 모델의 지형 |
-
-- **`cnn-image-classification` ← cv-image-classification-deep** — 같은 글이 두 번 있다. 2026-05-02의 cnn- 연재와 2026-05-20의 cv- 연재가 같은 주제를 각자 썼다. cnn-image-classification(585자)은 이 카테고리에서 가장 얇은 글인데 절 여섯이 전부 코드 덩어리이고 산문은 절마다 한 줄이다. cv-image-classification-deep(1,715자)은 같은 파이프라인을 설명은 하되 코드가 얕다. 둘 다 「전이학습 전략」과 「데이터 증강」 절을 각자 갖고 있고, 차등 학습률 이야기는 두 글에 똑같이 나온다. 합치면 cv- 쪽의 백본 비교(ResNet·EfficientNet·ViT·ConvNeXt)·Feature Extraction 대 Fine-Tuning 산문에 cnn- 쪽의 Mixup/CutMix·AMP·EMA·클래스 불균형 코드가 붙어 비로소 한 편이 된다. 여기에 cnn-feature-maps에서 빠져나오는 「전이학습 전략」 절도 이 글로 온다.
-  - `cv-image-classification-deep`: 도입부를 다시 쓸 글 — `cv-vision-transformer` 도입부
-  - `cv-image-classification-deep`: 시험 노트 링크 — src/content/certs/aice/88-professional-analysis-review.md:250
-  - `cv-image-classification-deep`: `src/data/certs.ts`의 studyPath 1자리
-- **`cnn-architectures-history` ← cnn-resnet · cnn-modern** — 세 편을 나란히 열어 보니 같은 절이 두 번씩 있다. cnn-architectures-history의 「ResNet (2015): 잔차 연결의 혁명」 절이 이미 H(x)=F(x)+x를 유도하고 오류율 3.57%까지 적는데, cnn-resnet이 「잔차 연결의 수학」에서 같은 유도를 처음부터 다시 한다. 「EfficientNet (2019): 복합 스케일링」도 cnn-modern의 「EfficientNet: 복합 스케일링」과 첫 문장("이전 연구들은 깊이, 너비, 해상도 중 하나만 늘렸다")까지 같다. cnn-modern은 절이 다섯뿐이고 그중 둘이 MobileNet V1·V2다. 셋을 1998→2022 한 줄기 연표로 두고 모델마다 소절을 주면 중복 둘이 사라지고 「무엇이 왜 그때 나왔는가」가 끊기지 않는다. 합쳐도 4,561자라 채우기가 여전히 필요하다.
-  - `cnn-resnet`: 도입부를 다시 쓸 글 — `cnn-modern` 도입부
-  - `cnn-modern`: 도입부를 다시 쓸 글 — `cnn-image-classification` 도입부
-- **`cnn-convolution-basics` ← cnn-pooling · cnn-feature-maps** — 수용야가 두 글에서 두 번 계산된다 — cnn-pooling의 「수용야와 풀링의 관계」와 cnn-feature-maps의 「수용야 계산」이 같은 산술이다. cnn-pooling은 최대·평균·글로벌 평균 세 연산이 내용의 전부이고, 남은 두 절 「스트라이드 합성곱으로 풀링 대체」·「풀링 없는 CNN: ViT와의 비교」는 풀링을 안 쓰는 이야기다 — 한 편을 지탱할 주제가 아니다. cnn-feature-maps는 「전이학습 전략」 절을 M1의 이미지 분류 글로 넘기고 나면 시각화·계층적 추상화·CAM만 남는다. 셋 다 「합성곱 한 번 → 압축 → 그래서 무엇이 보이는가」 한 흐름이고 셋을 합쳐도 4,653자다.
-  - `cnn-pooling`: 도입부를 다시 쓸 글 — `cnn-feature-maps` 도입부
-  - `cnn-feature-maps`: 도입부를 다시 쓸 글 — `cnn-architectures-history` 도입부
-- **`rl-ppo` ← rl-actor-critic** — 사슬 순서가 거꾸로 놓인 자리다. rl-policy-gradient → rl-ppo → rl-actor-critic인데, rl-ppo의 네 번째 절 제목이 이미 「Actor-Critic 아키텍처」이고 rl-actor-critic의 첫 문장은 「PPO 코드를 보면 Actor와 Critic 두 구성 요소가 공존한다」로 시작한다. 뒤 글이 앞 글을 설명하는 구조라 읽는 사람은 PPO를 먼저 배우고 그 부품을 나중에 배운다. 겹치는 것도 셋이다 — 어드밴티지 정의 Â=Q−V, 편향·분산 비교 표(REINFORCE/TD(0)/n-step/GAE), RLHF의 KL 페널티 문단이 두 편에 각각 있다. 합치면 순서 문제가 사라지고 어드밴티지를 한 번만 정의한 뒤 A2C·PPO·SAC로 뻗을 수 있다. 주의: math-baseline-and-advantage.md 25행이 본문에서 rl-actor-critic을 가리키므로 rl-ppo로 돌려야 한다.
-  - `rl-actor-critic`: 도입부를 다시 쓸 글 — `rl-rlhf-deep` 도입부
-  - `rl-actor-critic`: 본문 링크 — `src/content/articles/math-baseline-and-advantage.md`:25
-- **`rl-q-learning` ← rl-dqn** — rl-q-learning의 마지막 절 제목이 「Q-러닝의 한계와 DQN으로의 전환」이고, rl-dqn의 첫 문단은 그 한계(Q-테이블은 Atari 픽셀 앞에서 무용지물)를 다시 적으며 시작한다. rl-dqn은 절이 여섯인데 「마무리」를 빼면 다섯이고 산문 1,549자다. 경험 재생과 타겟 네트워크는 새 알고리즘이 아니라 같은 Bellman 업데이트를 신경망에서 굴리기 위한 장치이므로, 「Q를 어떻게 추정하는가」 한 편으로 두는 편이 맞다. Bellman·TD 에러·ε-greedy·오프폴리시가 앞쪽에 있고 그 뒤에 근사·안정화가 붙는 자연스러운 순서가 된다.
-  - `rl-dqn`: 도입부를 다시 쓸 글 — `rl-policy-gradient` 도입부
-- **`cnn-semantic-segmentation` ← cnn-instance-segmentation** — cnn-instance-segmentation의 첫 절이 「태스크 비교」로 시맨틱과 무엇이 다른지 설명하는 데서 시작하고, 마지막에서 두 번째 절 「Panoptic Segmentation: 통합 분할」은 그 둘을 다시 합친다 — 앞 글 없이는 성립하지 않고, 끝에서 앞 글과 하나가 되는 구조다. 각각 914자·1,184자로 카테고리에서 세 번째·아홉 번째로 얇다. FCN → U-Net → DeepLab → Mask R-CNN(RoI Align) → Panoptic → SOLOv2가 「출력 해상도를 어떻게 되찾고 개체를 어떻게 가르는가」 한 줄기라, 한 편에서 이어 읽는 편이 낫다.
-  - `cnn-instance-segmentation`: 도입부를 다시 쓸 글 — `nlp-text-preprocessing` 도입부
-- **`cv-diffusion-basics` ← cv-stable-diffusion** — cv-stable-diffusion은 835자로 카테고리에서 두 번째로 얇은데 절이 여덟이다 — 절마다 100자 남짓 소개문 뒤에 diffusers 호출 코드가 붙어 있고, 설명다운 설명은 「LDM의 핵심 혁신」(512×512를 64×64×4로 8배 압축) 한 절뿐이다. cv-diffusion-basics는 반대로 순방향·역방향 수식과 CFG는 있는데 그 수식이 실물의 어디에 앉는지가 없다. 원리와 그 원리의 구현체라 붙여 놓으면 VAE 압축이 왜 필요한지가 순방향 과정 바로 뒤에서 답이 되고, 스케줄러 비교와 num_inference_steps가 한자리에 온다. 주의: math-sde-ode-and-discretization.md 24행과 cv-image-generation-controls.md 14행이 cv-stable-diffusion을 본문에서 가리키므로 cv-diffusion-basics로 돌려야 한다.
-  - `cv-stable-diffusion`: 도입부를 다시 쓸 글 — `cv-controlnet` 도입부, `cv-image-generation-controls` 도입부
-  - `cv-stable-diffusion`: 본문 링크 — `src/content/articles/math-sde-ode-and-discretization.md`:24
-- **`recsys-two-tower` ← recsys-llm-based** — 두 글이 한 파이프라인의 앞뒤를 각각 쓰고 있다. recsys-llm-based의 「LLM 추천의 실전 아키텍처」가 곧 「투타워로 Top-100을 추리고 LLM으로 Top-10을 선별」이고, recsys-two-tower의 마지막 절 제목이 「넥스트 스텝: 랭킹 모델」이다. recsys-llm-based는 절이 아홉인데 산문이 1,858자라 절당 200자꼴이고 소절이 하나도 없다 — 「접근법 1~4」를 나열만 한 모양으로, 이 카테고리에서 절 대비 산문이 가장 얇다. 후보 생성(투타워+ANN)과 재랭킹(LLM)을 한 편에 두면 지연·비용 예산을 한 표에서 이야기할 수 있고, 지금 두 글에 나뉘어 있는 콜드 스타트 대응도 한 자리에 모인다.
-  - `recsys-llm-based`: 도입부를 다시 쓸 글 — `rl-basics` 도입부
-- **`cv-controlnet` ← cv-image-editing** — 둘 다 「이미 있는 이미지를 원하는 대로 바꾸는 법」이고, cv-image-editing의 마지막 표(편집 기법 선택 가이드)에는 ControlNet 계열인 IP-Adapter가 이미 한 줄로 들어가 있다. cv-image-editing은 절 일곱 중 다섯이 「1. 인페인팅」~「5. DreamBooth+LoRA」로 번호만 붙인 기법 나열이고 산문 1,045자, cv-controlnet도 1,122자다. 제어 신호를 넣는 것(포즈·깊이·엣지)과 영역을 지정해 다시 그리는 것(마스크·DDIM Inversion)은 「무엇을 지킬 것인가」라는 같은 질문의 두 답이라, 한 편에서 나란히 비교하는 편이 고르기 쉽다. 실제로 cv-image-generation-controls가 82행에서 그 둘을 한 문장 안에서 함께 부른다.
-  - `cv-image-editing`: 도입부를 다시 쓸 글 — `cv-video-models` 도입부
-  - `cv-image-editing`: 본문 링크 — `src/content/articles/cv-image-generation-controls.md`:82
-- **`cv-video-models` ← cv-3d-generation** — 둘 다 모델 카탈로그다. cv-video-models는 AnimateDiff·MotionCtrl·SVD·CogVideoX를, cv-3d-generation은 NeRF·3DGS·DreamFusion·Zero123++·Instant-NGP를 각각 200자 남짓씩 소개하고 코드를 붙인다. 기제를 설명하는 산문은 앞쪽의 시간 어텐션 한 문단, 뒤쪽의 3D 표현 세 문단이 전부다. 각각을 6,000자로 채우려면 빠르게 바뀌는 모델 목록을 두 배로 늘리게 되고, 그 목록은 반년이면 낡는다. 2D 사전 지식을 시간 축과 공간 축으로 확장한다는 한 줄기로 묶고 모델 나열 대신 시공간 어텐션·SDS 증류·평가 지표·계산 예산을 설명하면 오래 간다. 열 짝 중 근거가 가장 약한 짝이라 맨 뒤에 둔다 — 먼저 아홉을 하고 이건 다시 보아도 좋다.
-  - `cv-3d-generation`: 도입부를 다시 쓸 글 — `audio-asr` 도입부
 
 **채우기**
 
@@ -517,47 +472,8 @@ sed -n "/^### deep-learning$/,/^### /p" ARTICLE-DEPTH-PLAN.md
 
 ### agents-rag
 
-**합치기**
+**합치기 — 짝이 남지 않았다(2026-09-08).** 83편 → 68편.
 
-| 남길 글 | 흡수할 글 | 합친 뒤 제목(제안) |
-| --- | --- | --- |
-| `agent-architecture` | `agent-planning` · `prompt-react` · `ai-agent-loop-and-boundaries` | 에이전트 아키텍처: ReAct·Plan-and-Execute·Reflexion·LATS |
-| `ai-agents-and-mcp` | `agent-tool-use` · `agent-mcp-protocol` | 에이전트가 바깥과 연결되는 법: 도구 호출에서 MCP까지 |
-| `agent-crewai` | `agent-autogen` · `agent-swarm` | 멀티 에이전트 프레임워크 셋: CrewAI·AutoGen·Swarm |
-| `agent-langchain` | `agent-langgraph` | LangChain과 LangGraph: 선형 체인에서 상태 그래프까지 |
-| `prompt-tree-of-thought` | `prompt-self-consistency` | 생각을 여러 갈래로 펼치기: Tree-of-Thought와 Self-Consistency |
-| `prompt-versioning` | `prompt-evaluation` | 프롬프트를 코드처럼 다루기: 버전 관리와 평가 |
-| `prompt-system-message` | `prompt-templates` | 프롬프트의 골격 설계: 시스템 메시지와 템플릿 |
-| `context-engineering-overview` | `prompt-context-management` | 컨텍스트를 예산으로 다루기 |
-| `rag-basics` | `rag-architecture` · `rag-retrieval-to-grounded-answer` | RAG의 구조: Naive에서 Modular까지 |
-| `rag-query-rewriting` | `rag-multi-hop` | 질문을 바꿔 다시 검색하기: 재작성·분해·멀티홉 |
-
-- **`agent-architecture` ← agent-planning · prompt-react · ai-agent-loop-and-boundaries** — 네 편을 열어 보니 같은 것을 네 번 쓰고 있다. agent-architecture의 절은 ①ReAct ②Plan-and-Execute ③Reflexion + 비교표 + 선택 기준이고, agent-planning의 절은 ReAct → Plan-and-Execute → Reflexion → 선택 가이드다. 부제까지 「ReAct·Plan-and-Execute·Reflexion」으로 똑같다. 다른 것은 agent-planning에만 LATS(MCTS) 한 문단이 더 있다는 것뿐이다. prompt-react는 ReAct 하나를 프롬프팅 기법으로 다시 설명하는데 뒷부분이 「Claude의 Tool Use API와 ReAct」라서 결국 같은 루프다. ai-agent-loop-and-boundaries는 483자짜리 「핵심 요약」 세 줄 + 세 절이고 사슬에 매달려 있지도 않은 고아다 — 담은 것이 계획·도구·관찰·수정 루프와 반복 상한·권한·예산이라 앞의 셋에 이미 다 있다. 넷을 합치면 산문 4,020자로, ReAct를 한 번만 설명하고 Plan-and-Execute·Reflexion·LATS를 나란히 세운 뒤 경계(반복 상한·권한·예산)와 선택 기준을 붙이면 6,000자가 된다.
-  - `agent-planning`: 도입부를 다시 쓸 글 — `agent-reflection` 도입부
-  - `prompt-react`: 도입부를 다시 쓸 글 — `prompt-self-consistency` 도입부
-  - `ai-agent-loop-and-boundaries`: 본문 링크 — `src/content/articles/agent-sandboxing.md`:79
-- **`ai-agents-and-mcp` ← agent-tool-use · agent-mcp-protocol** — ai-agents-and-mcp는 「AI 에이전트란 무엇인가 → ReAct → MCP의 세 구성요소 → Resources → Claude Desktop 연결」로 가고, agent-mcp-protocol은 「MCP가 탄생한 배경(M×N) → 세 기능 타입 → 전송 방식 → 서버 구현 → 클라이언트 구현 → 보안」으로 간다. MCP의 Tools·Resources·Prompts 설명이 두 글에 그대로 두 번 있다. 가운데 낀 agent-tool-use는 산문이 874자뿐인데, 그 네 절이 2026-08에 따로 쓴 세 편(function-calling-reliability 2,109 · function-calling-parallel 2,130 · tool-schema-design 2,485)과 하나씩 짝이 맞는다 — 「병렬 도구 호출」·「오류 처리와 재시도」·「도구 설계 best practice」가 각각 그것이다. 남는 것은 「Tool Use의 작동 원리」 한 절뿐이고, 그건 MCP를 설명하기 전에 있어야 할 도입이다. 셋을 합치면 3,281자이고 「모델이 도구를 고른다 → 호스트가 실행한다 → 도구가 많아지면 M×N이 된다 → MCP가 M+N으로 줄인다」라는 한 줄기가 된다.
-  - `agent-tool-use`: 도입부를 다시 쓸 글 — `agent-computer-use` 도입부, `agent-mcp-protocol` 도입부, `function-calling-reliability` 도입부
-  - `agent-mcp-protocol`: 도입부를 다시 쓸 글 — `agent-langchain` 도입부
-  - `agent-mcp-protocol`: `src/data/certs.ts`의 studyPath 1자리
-- **`agent-crewai` ← agent-autogen · agent-swarm** — 셋 다 「여럿으로 나눈 에이전트를 무엇이 조율하는가」 한 질문에 답하는 글이고, 각자 자기 글 끝에서 나머지 둘과 비교하는 표를 이미 들고 있다. agent-crewai의 마지막 절이 「CrewAI vs LangGraph vs AutoGen」 표이고, agent-swarm의 마지막 절이 「Swarm을 선택해야 할 때」로 AutoGen·CrewAI·LangGraph와의 코드 규모 비교다. agent-swarm은 산문 848자에 OpenAI가 교육용으로 낸 300줄짜리 프레임워크라 한 편을 지탱하지 못하고, 실제로 담고 있는 것은 핸드오프 하나다 — CrewAI의 Hierarchical Process와 AutoGen의 대화 기반 협업과 같은 자리에 놓고 비교해야 뜻이 산다. 사슬에서 39·40·41로 나란히 붙어 있어 이어 붙이기도 안전하다. 합치면 5,947자로 목표에 거의 닿는다.
-  - `agent-autogen`: 도입부를 다시 쓸 글 — `agent-swarm` 도입부
-  - `agent-swarm`: 도입부를 다시 쓸 글 — `agent-memory` 도입부
-- **`agent-langchain` ← agent-langgraph** — 두 글이 서로를 설명하지 않으면 성립하지 않는다. agent-langchain은 LCEL을 「파이프 연산자로 체인을 구성하는 핵심 패러다임」이라 소개하고 끝나고, agent-langgraph는 첫 문단에서 「LCEL이 선형 파이프라인에 강점이 있다면 LangGraph는 루프·분기」라고 받은 뒤 마지막 절을 통째로 「LangGraph vs LangChain LCEL」 비교표로 쓴다. 같은 팀이 만든 같은 스택인데 산문은 1,049자와 1,318자로 둘 다 코드 사이의 한 줄 설명뿐이다. 한 편으로 두면 「선형이면 LCEL, 순환·상태·체크포인트가 필요하면 StateGraph」라는 갈림길을 한자리에서 보일 수 있다.
-  - `agent-langgraph`: 도입부를 다시 쓸 글 — `agent-llamaindex` 도입부
-- **`prompt-tree-of-thought` ← prompt-self-consistency** — 둘 다 「Chain-of-Thought 하나로는 부족할 때 무엇을 더 하는가」에 답하는 글이고, 답이 「여러 경로를 만들어 고른다」로 같다. prompt-tree-of-thought는 생각 생성 → 상태 평가 → 탐색으로 갈래를 넓히고, prompt-self-consistency는 같은 갈래를 여러 번 샘플링해 다수결로 고른다 — ToT의 「상태 평가」 자리에 다수결을 놓은 것이 Self-Consistency다. 두 글 모두 마지막 절이 비용 이야기(「실전 비용 절감 전략」, 「몇 개나 샘플링해야 할까」)라 그 자리도 겹친다. 각각 1,617자·1,224자로 얇고, 합쳐야 「갈래를 넓힐 것인가 같은 길을 여러 번 갈 것인가」를 비교할 수 있다. 사슬에서 6번과 8번이라 사이의 7번(prompt-react)만 빼면 바로 붙는다.
-  - `prompt-self-consistency`: 도입부를 다시 쓸 글 — `prompt-system-message` 도입부
-- **`prompt-versioning` ← prompt-evaluation** — prompt-evaluation의 첫 문단이 「지난 글에서 프롬프트를 코드처럼 버전 관리하는 방법을 다뤘다. 버전이 바뀌면 반드시 따라오는 질문이 있다 — 이 프롬프트가 이전 것보다 정말 나은가」다. 두 글이 한 문장으로 이어져 있고, prompt-versioning의 「A/B 테스트와 점진적 롤아웃」 절은 평가 없이는 성립하지 않는다. 반대로 prompt-evaluation의 마무리는 「평가 파이프라인을 CI/CD에 연결한다」로 다시 버전 관리로 돌아온다. 각각 1,091자·1,025자이고 절이 두 편에 흩어져 있어 「버전을 올렸는데 무엇으로 확인하나」가 두 글을 오가야 읽힌다. 사슬에서 13·14로 붙어 있다.
-  - `prompt-evaluation`: 도입부를 다시 쓸 글 — `vector-search-basics` 도입부
-- **`prompt-system-message` ← prompt-templates** — prompt-templates의 첫 문단이 「지난 글에서 시스템 메시지로 역할과 경계를 정의했다. 이번 글은 골격은 고정하고 가변 부분만 주입한다」이고, 그 글의 핵심 개념도 「정적 골격과 동적 변수의 분리」다. 즉 시스템 메시지가 고정 골격이고 템플릿이 그 골격에 구멍을 뚫는 이야기라 한 주제다. prompt-templates는 산문 872자로 이 카테고리에서 네 번째로 얇고, 내용 대부분이 추출·변환·생성·평가 네 패턴의 코드 예시다. prompt-system-message의 「6가지 구성 요소」와 「실전 설계 패턴 3」이 그 골격을 이미 세워 두었으니 템플릿 패턴은 그 아래 소절로 들어가는 것이 맞다. 사슬에서 9·10으로 붙어 있다.
-  - `prompt-templates`: 도입부를 다시 쓸 글 — `prompt-injection-defense` 도입부
-- **`context-engineering-overview` ← prompt-context-management** — prompt-context-management를 열어 보면 절이 「컨텍스트 윈도우란 → 4가지 전략(슬라이딩 윈도우·요약 압축·외부 메모리·계층적 요약) → Prompt Caching → Lost-in-the-Middle」인데, 이 넷이 2026-08에 따로 쓴 글들과 하나씩 그대로 겹친다 — context-window-budgeting(2,411) · context-compression(2,285) · context-summarization-memory(2,478) · context-prompt-caching(2,558) · context-chunk-ordering(2,394)이다. 게다가 모델별 컨텍스트 크기 표가 GPT-4o·Claude 3.5·Gemini 1.5로 낡아 있고, 같은 자리를 context-long-context-reality가 「창이 크다는 말과 잘 읽는다는 말」로 다시 쓴다. 이 글에만 있는 것은 네 전략을 한 화면에 늘어놓은 지도 한 장뿐이고, 그 지도가 있어야 할 곳은 그 사슬의 머리인 context-engineering-overview다. 카테고리는 같고 사슬만 다르므로 prompt-injection-defense의 「다음 글」을 prompt-versioning으로 잇는 한 자리만 고치면 된다.
-  - `prompt-context-management`: 도입부를 다시 쓸 글 — `prompt-versioning` 도입부
-- **`rag-basics` ← rag-architecture · rag-retrieval-to-grounded-answer** — rag-architecture의 절은 「세 세대: 1세대 Naive RAG → 2세대 Advanced RAG → 3세대 Modular RAG」이고 그 앞의 rag-basics는 「RAG 완전 정복: 검색 증강 생성의 핵심 원리」다. 즉 rag-basics가 Naive RAG를 설명하고 rag-architecture가 다시 Naive RAG부터 시작한다. rag-architecture는 산문 1,909자인데 그중 「문서 파싱 전략」·「메타데이터 설계」 두 절은 2026-08의 rag-document-parsing(2,819)과 rag-metadata-filtering(2,692)이 따로 다 쓴 자리다. rag-retrieval-to-grounded-answer는 581자짜리 고아 글로, 사슬에 걸려 있지 않고 마무리 블록조차 없으며 담은 것이 「RAG를 파이프라인으로 보기 / 검색 품질을 결정하는 세 가지 / 답변보다 먼저 근거를 평가하기」 — 정확히 rag-basics + rag-architecture의 요약이다. 셋을 합치면 5,543자이고, 세대별로 무엇이 더 붙었는지 한 줄기로 읽힌다.
-  - `rag-architecture`: 도입부를 다시 쓸 글 — `rag-chunking-strategies` 도입부
-  - `rag-architecture`: `src/data/certs.ts`의 studyPath 3자리
-- **`rag-query-rewriting` ← rag-multi-hop** — rag-query-rewriting의 네 번째 절이 「Query Decomposition: 복잡한 질문 분해」이고, rag-multi-hop의 절은 「왜 단일 검색으로는 부족한가 → Iterative Retrieval → IRCoT → LangGraph 구현」이다. 질문을 쪼개 여러 번 검색한다는 같은 이야기를 한 글은 기법으로, 다른 글은 루프로 나눠 썼을 뿐이라 독자는 분해가 어느 글에 있는지 헷갈린다. 두 글 다 마지막 절이 비용·선택 기준(「기법별 비교와 선택 기준」, 「성능과 비용 최적화」)이라 그 자리도 중복이다. rag-multi-hop은 산문 1,111자에 절이 넷뿐이다. 합치면 2,536자이고 「한 번 다시 쓴다 → 여러 개로 늘린다 → 쪼갠다 → 결과를 보고 또 검색한다」로 강도 순으로 세울 수 있다. 사슬에서 26·27로 붙어 있다.
-  - `rag-multi-hop`: 도입부를 다시 쓸 글 — `rag-agentic-rag` 도입부
 
 **채우기**
 
@@ -661,46 +577,8 @@ sed -n "/^### deep-learning$/,/^### /p" ARTICLE-DEPTH-PLAN.md
 
 ### llm-core
 
-**합치기**
+**합치기 — 짝이 남지 않았다(2026-09-08).** 62편 → 51편.
 
-| 남길 글 | 흡수할 글 | 합친 뒤 제목(제안) |
-| --- | --- | --- |
-| `transformer-self-attention` | `transformer-attention-from-first-principles` | Self-Attention: Q·K·V로 문맥을 만드는 계산 |
-| `transformer-decoder` | `transformer-encoder-decoder` · `transformer-masking` | Decoder 블록: 마스킹, Cross-Attention, Encoder-Decoder |
-| `transformer-positional-encoding` | `transformer-rotary` | 위치 인코딩: 사인·코사인에서 RoPE까지 |
-| `transformer-efficient` | `transformer-flash-attention` | 어텐션 비용 줄이기: 희소 어텐션에서 FlashAttention과 SSM까지 |
-| `transformer-t5` | `transformer-bart` | Encoder-Decoder 사전학습: T5와 BART |
-| `tokenizer-bpe` | `tokenizer-wordpiece` | 서브워드 토크나이저: BPE와 WordPiece |
-| `tokenizer-sentencepiece` | `tokenizer-tiktoken` | 실전 토크나이저: SentencePiece와 tiktoken |
-| `llm-temperature-top-k-top-p` | `llm-sampling-strategies` | 샘플링 전략: Temperature, Top-k, Top-p와 그 대안 |
-| `llm-rlhf` | `llm-dpo` | 선호 정렬: RLHF와 DPO |
-| `llm-mistral-family` | `llm-qwen-deepseek` | 오픈 웨이트 도전자들: Mistral, Qwen, DeepSeek |
-
-- **`transformer-self-attention` ← transformer-attention-from-first-principles** — 828자짜리 attention-from-first-principles는 절이 셋인데(Attention이 필요했던 이유, Q/K/V, Multi-Head) 셋 다 self-attention·multi-head 글에 더 깊이 들어 있다. 열어 읽어 보면 새 사실이 하나도 없는 축약본이고 코드도 그림도 없다. 게다가 사슬에서는 추론 11편의 머리로 서서 「어텐션 입문 → 추론 모델」이라는 잇지 않아도 될 간선을 만들고 있다. 흡수하면 중복과 그 간선이 함께 사라진다.
-  - `transformer-attention-from-first-principles`: 도입부를 다시 쓸 글 — `math-attention-formula-anatomy` 도입부, `reasoning-models-overview` 도입부
-- **`transformer-decoder` ← transformer-encoder-decoder · transformer-masking** — encoder-decoder 글(1,563자)은 여섯 절 중 넷(전체 구조·Cross-Attention·Teacher Forcing·정리)이 decoder 글의 재요약이고 고유한 것은 Seq2Seq 정의와 아키텍처 비교표 둘뿐이다. masking 글(1,422자)도 Causal Mask는 decoder에, Padding Mask는 encoder에 이미 설명된 뒤 코드로 다시 적은 것이다. 셋 다 「무엇을 가리고 무엇을 참조하는가」 한 줄기라 한 편이면 충분하다.
-  - `transformer-encoder-decoder`: 도입부를 다시 쓸 글 — `transformer-masking` 도입부
-  - `transformer-masking`: 도입부를 다시 쓸 글 — `transformer-bert` 도입부
-- **`transformer-positional-encoding` ← transformer-rotary** — PE 글이 「RoPE 같은 상대적 위치 인코딩은 이후 편에서 다룬다」로 끝나고, rotary 글은 「절대 위치 임베딩의 두 약점」으로 시작한다 — 한 편의 앞뒤를 잘라 놓은 모양이다. 각각 1,553·1,985자로 둘 다 얇고, 합쳐야 절대 → 상대 바이어스 → 회전 → 외삽 확장(PI·YaRN)이 한 흐름으로 읽힌다. 사슬에서 열 칸 떨어져 있지만 그 사이(encoder~efficient)는 위치 인코딩과 무관해 앞쪽 자리로 당겨도 읽는 데 지장이 없다.
-  - `transformer-rotary`: 도입부를 다시 쓸 글 — `transformer-flash-attention` 도입부
-  - `transformer-rotary`: 본문 링크 — `src/content/articles/math-positional-encoding-math.md`:21
-- **`transformer-efficient` ← transformer-flash-attention** — efficient 글의 「접근 방법 2: Flash Attention」 절이 flash-attention 글 한 편의 요약이다 — 타일링, HBM/SRAM, 2~4배라는 같은 사실을 두 번 적었다. efficient는 네 갈래를 각각 한 문단씩만 소개하고 끝나고(1,896자), flash-attention은 한 갈래만 판다(1,982자). 합치면 「근사해서 줄이는 길(희소·슬라이딩 윈도·SSM)」과 「정확한 채로 빠르게 하는 길(FlashAttention)」이 한 편에서 대비된다. rotary를 빼내면 둘은 사슬에서 바로 이웃이 된다.
-  - `transformer-flash-attention`: 도입부를 다시 쓸 글 — `transformer-mqa-gqa` 도입부
-  - `transformer-flash-attention`: 본문 링크 — `src/content/articles/math-log-sum-exp-and-online-softmax.md`:136, `src/content/articles/math-log-sum-exp-and-online-softmax.md`:21
-- **`transformer-t5` ← transformer-bart** — 2019년 같은 해, 같은 Enc-Dec 구조에 사전학습 목표만 다른 두 모델이다. 두 글이 이미 서로를 비교표에 넣어 두었다 — t5에 「T5 vs BERT vs GPT」, bart에 「BART vs T5 vs PEGASUS」. 각각 1,509·1,438자인데 표와 코드가 절반이라 산문은 각 800자 남짓이다. Span Corruption과 노이즈 복원을 나란히 놓아야 「사전학습 목표를 어떻게 고르는가」가 보인다.
-  - `transformer-bart`: 도입부를 다시 쓸 글 — `transformer-efficient` 도입부
-- **`tokenizer-bpe` ← tokenizer-wordpiece** — WordPiece 글은 처음부터 끝까지 BPE와의 차이로만 설명된다. 첫 절 제목부터 「BPE와 WordPiece의 핵심 차이」이고, 병합 기준(빈도 vs PMI), 경계 표기(</w> vs ##), 인코딩 방식(규칙 순서 vs 최장 일치), OOV 처리가 전부 대조다. 따로 두면 독자가 두 글을 오가며 표를 맞춰 봐야 한다. 합치면 1,377 + 1,729로 채울 바탕도 생긴다.
-  - `tokenizer-wordpiece`: 도입부를 다시 쓸 글 — `tokenizer-sentencepiece` 도입부
-- **`tokenizer-sentencepiece` ← tokenizer-tiktoken** — 알고리즘 두 편 다음에 오는 것은 「실제로 쓰는 구현체」다. SentencePiece는 어휘를 직접 학습하는 쪽, tiktoken은 이미 학습된 어휘로 토큰을 세는 쪽이라 실무에서 한 자리에서 만난다. tiktoken은 1,342자 중 절반이 설치·API 호출 코드고 고유한 판단은 「인코딩이 다르면 ID가 다르다」와 cl100k/o200k 한국어 효율 둘뿐이다. 토크나이저 다섯 편을 셋으로 줄이는 것이 이 소블록의 적정 크기다.
-  - `tokenizer-tiktoken`: 도입부를 다시 쓸 글 — `llm-essence` 도입부
-  - `tokenizer-tiktoken`: 본문 링크 — `src/content/articles/cost-korean-token-tax.md`:23
-- **`llm-temperature-top-k-top-p` ← llm-sampling-strategies** — 두 글이 Greedy와 Temperature를 각각 처음부터 다시 설명한다. sampling-strategies의 아홉 절 중 넷(Greedy·Random·Temperature Sampling·전략 선택 가이드)이 앞 글과 겹치고 새로운 것은 Typical Sampling과 Contrastive Search 둘뿐이다. 합치면 「분포를 어떻게 자르고 어떻게 뽑는가」가 한 편이 되고, 탐색 기반(Beam·Diverse Beam·Speculative)은 다음 글 llm-decoding-methods가 그대로 맡아 경계가 오히려 선명해진다.
-  - `llm-sampling-strategies`: 도입부를 다시 쓸 글 — `lab-temperature-entropy` 도입부, `llm-decoding-methods` 도입부
-- **`llm-rlhf` ← llm-dpo** — RLHF 글은 PPO의 복잡성과 Reward Hacking으로 끝나고, DPO 글의 첫 절은 「보상 모델 없이 같은 최적해에 도달한다」로 시작한다 — DPO가 그 문제의 답이라 따로 읽으면 앞 글을 요약해서 다시 깔아야 한다. 실제로 앞 글 llm-instruction-tuning도 둘을 한 문단에 나란히 적어 두었다. 2,736 + 2,225로 열 짝 중 목표 6,000자에 가장 가까운 짝이다.
-  - `llm-dpo`: 도입부를 다시 쓸 글 — `llm-constitutional-ai` 도입부
-  - `llm-dpo`: 본문 링크 — `src/content/articles/math-kl-constrained-optimum-and-dpo.md`:26
-- **`llm-mistral-family` ← llm-qwen-deepseek** — 세 팀 모두 「가중치를 열어 프런티어를 추격한다」는 같은 이야기이고 사실도 맞물린다 — Mixtral과 DeepSeek-V3의 MoE, Mistral 7B와 Qwen의 효율. 각각 2,519·2,586자인데 상당 부분이 창업 연혁과 버전 목록이라 따로 두면 같은 성격의 표를 두 번 만들게 된다. 가문 일곱 편 중 오픈 웨이트 셋을 한 편으로 모으면 GPT·Claude·Gemini·LLaMA와의 대비가 선명해진다.
-  - `llm-qwen-deepseek`: 도입부를 다시 쓸 글 — `llm-korean-models` 도입부
 
 **채우기**
 
@@ -796,50 +674,8 @@ sed -n "/^### deep-learning$/,/^### /p" ARTICLE-DEPTH-PLAN.md
 
 ### ml-ops
 
-**합치기**
+**합치기 — 짝이 남지 않았다(2026-09-08).** 104편 → 92편.
 
-| 남길 글 | 흡수할 글 | 합친 뒤 제목(제안) |
-| --- | --- | --- |
-| `inference-kv-cache` | `inference-batching` | KV 캐시 — 추론 메모리가 처리량을 정하는 자리 |
-| `llmops-cost-tracking` | `serving-cost-optimization` · `project-cost-optimization` | LLM 비용 — 청구서를 만드는 것과 줄이는 순서 |
-| `mlops-monitoring` | `mlops-drift-detection` | 모델 모니터링 — 조용히 틀려 가는 것을 잡는 법 |
-| `inference-llama-cpp` | `inference-ollama` | 로컬에서 LLM 돌리기 — llama.cpp와 그 위의 Ollama |
-| `llmops-eval-pipelines` | `project-evaluation-harness` | 평가 하네스 — 러너·집계·게이트를 짜는 법 |
-| `llmops-prompt-management` | `project-prompt-iterating` | 프롬프트 레지스트리 — 버전·A/B·회귀 스위트 |
-| `mlops-data-versioning` | `data-versioning` | 데이터 버저닝 — 같은 코드가 같은 모델을 만들게 하려면 |
-| `llmops-observability` | `llmops-tracing` | LLM 관측성 — 트레이스로 요청 하나를 되짚기 |
-| `serving-api-design` | `serving-streaming` · `serving-rate-limiting` | LLM 서빙 API — OpenAI 호환 인터페이스·스트리밍·속도 제한 |
-| `llmops-fallback-strategies` | `model-fallback-chains` | 폴백 — 앞이 실패했을 때 무엇으로 넘길 것인가 |
-
-- **`inference-kv-cache` ← inference-batching** — 두 글을 나란히 열면 같은 예(Llama-3.1-8B, 배치 32, 시퀀스 8192 → KV 캐시 34 GB, 가중치 16 GB)와 같은 네 절(PagedAttention·Prefix Caching·GQA·FP8)이 그대로 되풀이된다. inference-batching의 고유분인 Continuous Batching은 2026-08-24의 serving-continuous-batching이, PagedAttention은 serving-paged-attention이 훨씬 깊게 다시 썼으므로 남길 것이 KV 캐시밖에 없다. 사슬에서는 batching(99)이 앞이지만 kv-cache는 lab-kv-cache-formula-check·lab-attention-sink-probe를 포함해 열 곳에서 링크되고 batching은 넷이라, 링크 수술이 적고 제목이 주제를 그대로 부르는 쪽을 남긴다.
-  - `inference-batching`: 도입부를 다시 쓸 글 — `inference-kv-cache` 도입부, `serving-continuous-batching` 도입부, `serving-vllm` 도입부
-- **`llmops-cost-tracking` ← serving-cost-optimization · project-cost-optimization** — 세 글이 같은 다섯~여섯 전략(프롬프트 캐싱·시맨틱 캐시·모델 라우팅·배치 API·토큰 압축·소형 모델)을 같은 차례로 늘어놓고, 마지막의 「전략별 절감률」 표까지 겹친다. 셋을 다 읽어도 새로 아는 것이 없다. 라우팅의 산수는 model-routing-cascade가, 품질과의 저울은 eval-cost-quality-tradeoff가 이미 들고 있으므로 합친 글은 비용 구조·측정·적용 순서만 맡는다.
-  - `serving-cost-optimization`: 본문 링크 — `src/content/articles/cost-batch-and-tier-discounts.md`:23, `src/content/articles/cost-price-per-work-not-per-token.md`:23
-  - `serving-cost-optimization`: `src/data/certs.ts`의 studyPath 2자리
-  - `project-cost-optimization`: 도입부를 다시 쓸 글 — `ondevice-inference-basics` 도입부
-  - `project-cost-optimization`: 본문 링크 — `src/content/articles/cost-batch-and-tier-discounts.md`:22, `src/content/articles/cost-price-per-work-not-per-token.md`:22, `src/content/articles/spec-model-deprecation-calendar.md`:24
-- **`mlops-monitoring` ← mlops-drift-detection** — mlops-monitoring의 여덟 절 중 여섯이 드리프트다(드리프트 종류, PSI·KL·KS·카이제곱, Evidently, 재학습 트리거). mlops-drift-detection이 같은 여섯 박자를 「정확도를 기다리면 늦는다 → 무엇이 변했는지 가른다 → 벌어진 정도를 잰다 → 무엇과 비교하나 → 경보를 쓸 만하게 → 잡은 다음」으로 다시 썼다. 합치면 산문 6,900자로 목표를 그대로 넘고, 5월 글의 코드는 9월 글의 판단 아래 붙는다.
-  - `mlops-drift-detection`: 도입부를 다시 쓸 글 — `llmops-tracing` 도입부
-- **`inference-llama-cpp` ← inference-ollama** — Ollama는 llama.cpp를 감싼 도구이고, 두 글 모두 설치 → 모델 받기 → OpenAI 호환 서버 → Python 바인딩 → 멀티모달을 같은 차례로 나열한 명령어 목록이다(922자·945자, 소절 0). 각자 5,000자를 더 채우려면 CLI 플래그를 늘어놓는 수밖에 없다 — 억지로 채울 것이 없는 전형이다. 한 편으로 모으면 「직접 빌드해 쥘 것인가, 감싼 것을 쓸 것인가」라는 고를 거리가 생긴다.
-  - `inference-ollama`: 도입부를 다시 쓸 글 — `inference-tgi` 도입부
-  - `inference-ollama`: 본문 링크 — `src/content/articles/serving-vllm.md`:103
-- **`llmops-eval-pipelines` ← project-evaluation-harness** — 둘 다 골든셋 구축 → LLM-as-Judge → 메트릭 선택 → 회귀 감지 → CI 게이트를 같은 순서로 다룬다. 게다가 8월에 골든셋 고르기는 eval-golden-dataset, 채점 기준은 eval-rubric-design, 회귀 판정은 eval-regression-testing으로 따로 났으므로 두 글의 절반은 지금 세 번째 사본이다. 합친 글은 러너·비동기 배치·결과 집계·통과 기준이라는 하네스 골격만 맡고 나머지는 eval-* 로 넘긴다.
-  - `project-evaluation-harness`: 도입부를 다시 쓸 글 — `project-prompt-iterating` 도입부
-- **`llmops-prompt-management` ← project-prompt-iterating** — 둘 다 프롬프트 외부화(YAML/레지스트리), 버전 번호 부여, A/B 테스트, 골든 케이스 회귀 스위트, PR에서 eval을 돌리는 CI를 다루고 맺음말까지 같다(「괜찮은 것 같다」가 아니라 숫자로 말한다). 964자 쪽은 원칙만, 1,839자 쪽은 같은 원칙에 코드만 붙인 것이라 앞뒤로 이으면 한 편이 된다.
-  - `project-prompt-iterating`: 도입부를 다시 쓸 글 — `project-deploying-llm` 도입부
-  - `project-prompt-iterating`: `src/data/certs.ts`의 studyPath 2자리
-- **`mlops-data-versioning` ← data-versioning** — 같은 주제를 넉 달 간격으로 두 번 썼다. 도입부까지 겹친다 — 둘 다 「Git은 대용량 바이너리에 안 맞는다」로 열고 5월 글은 data_final_v3_진짜최종.csv, 9월 글은 같은 이름으로 덮어쓴 파일을 든다. 5월 글은 DVC 명령 나열이고 9월 글은 해시·포인터 구조와 테이블 시점 조회(Iceberg·Delta)라, 개념 틀 아래 도구 절차가 한 절로 들어가면 하나의 완결된 글이 된다.
-  - `data-versioning`: 도입부를 다시 쓸 글 — `pruning-structured` 도입부
-- **`llmops-observability` ← llmops-tracing** — llmops-observability(1,003자)의 뼈대는 트레이스·메트릭·비용 세 층인데, 비용 층은 llmops-cost-tracking이 통째로 들고 있고 트레이스 층은 llmops-tracing(3,565자)이 스팬 설계·본문 보관 여부·표본 추출까지 훨씬 깊게 다룬다. 남는 고유분은 Langfuse 대시보드 지표 표 하나뿐이라 독립된 글로 둘 이유가 없다.
-  - `llmops-tracing`: 도입부를 다시 쓸 글 — `data-versioning` 도입부
-- **`serving-api-design` ← serving-streaming · serving-rate-limiting** — 셋 다 추론 엔진 앞의 HTTP 층 하나를 세 조각으로 쪼갠 것이고 각각 815·1,177·1,120자다. serving-api-design은 이미 「스트리밍 제너레이터 구현」 절과 「인증 미들웨어」 절을 갖고 있어 뒤 두 편과 앞부분이 겹친다. 게다가 project-deploying-llm이 FastAPI 서버·SSE 스트리밍·레이트 리미팅을 한 글에 이미 담고 있다 — 참조로 쓸 한 편으로 모으는 편이 낫다.
-  - `serving-streaming`: 도입부를 다시 쓸 글 — `serving-rate-limiting` 도입부
-  - `serving-streaming`: 본문 링크 — `src/content/articles/rag-cost-latency-tuning.md`:47, `src/content/articles/serving-continuous-batching.md`:54
-  - `serving-rate-limiting`: 도입부를 다시 쓸 글 — `serving-cost-optimization` 도입부
-  - `serving-rate-limiting`: 본문 링크 — `src/content/articles/rag-multi-tenant.md`:68
-- **`llmops-fallback-strategies` ← model-fallback-chains** — 5월 글(835자)은 Circuit Breaker·다중 제공자 폴백·지수 백오프·그레이스풀 디그레이데이션을 코드로만 나열하고, 9월 글(3,450자)은 정확히 같은 것을 「모든 실패를 넘기면 안 된다 / 두 번째 자리가 첫 번째와 같이 죽지 않아야 한다 / 서킷 브레이커가 없으면 폴백이 장애를 늘린다 / 폴백은 조용히 품질을 떨어뜨린다」로 다시 판단한다. 판단이 앞, 구현이 뒤로 붙으면 한 편으로 완결된다.
-  - `model-fallback-chains`: 도입부를 다시 쓸 글 — `ondevice-webgpu` 도입부
-  - `model-fallback-chains`: 본문 링크 — `src/content/articles/ondevice-webgpu.md`:122
 
 **채우기**
 

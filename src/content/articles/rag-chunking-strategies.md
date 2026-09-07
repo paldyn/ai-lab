@@ -9,7 +9,7 @@ tags: ["청킹", "RAG", "텍스트분할", "LangChain", "임베딩", "벡터DB"]
 featured: false
 draft: false
 ---
-[지난 글](/articles/rag-architecture)에서 Naive RAG부터 Modular RAG까지 아키텍처의 발전 단계를 살펴봤다. RAG 시스템을 실제로 구축할 때 가장 먼저, 그리고 가장 많이 고민하게 되는 문제가 있다. **"문서를 어떻게 나눠야 하는가?"** 즉, 청킹(Chunking) 전략이다. 경험 많은 RAG 엔지니어들이 공통적으로 하는 말이 있다. "RAG 품질의 절반은 청킹에서 결정된다." 그만큼 청킹은 임베딩 모델이나 LLM 선택만큼이나 중요하다.
+[지난 글](/articles/rag-basics)에서 RAG의 구조를 Naive·Advanced·Modular 세 세대로 훑고, 인덱싱과 쿼리 두 파이프라인이 검색 품질을 어디서 나눠 갖는지까지 봤다. 그 글은 마지막에 숙제를 하나 남겼다. 40만 자짜리 문서에서 프롬프트에 들어가는 2,000자를 골라내는 것이 RAG의 일이라면, **고를 대상인 조각 자체는 어떻게 만드는가**다. 재작성도 하이브리드 검색도 재순위도 이미 만들어진 조각 중에서 고르는 방법일 뿐이라, 조각이 잘못 만들어져 있으면 그 위에서 아무리 잘 골라도 소용이 없다. RAG 시스템을 실제로 구축할 때 가장 먼저, 그리고 가장 많이 고민하게 되는 문제가 바로 이것이다. **"문서를 어떻게 나눠야 하는가?"** 즉, 청킹(Chunking) 전략이다. 경험 많은 RAG 엔지니어들이 공통적으로 하는 말이 있다. "RAG 품질의 절반은 청킹에서 결정된다." 그만큼 청킹은 임베딩 모델이나 LLM 선택만큼이나 중요하다.
 
 ## 왜 청킹이 중요한가
 
@@ -278,6 +278,6 @@ stats = evaluate_chunks(chunks)
 
 읽어주셔서 감사합니다. 😊
 
-**지난 글:** [RAG 아키텍처 심화: Naive RAG에서 Modular RAG까지](/articles/rag-architecture)
+**지난 글:** [RAG의 구조: Naive에서 Modular까지](/articles/rag-basics)
 
 **다음 글:** [RAG 임베딩 모델 선택 가이드: 성능·비용·언어 지원 완전 비교](/articles/rag-embedding-models)

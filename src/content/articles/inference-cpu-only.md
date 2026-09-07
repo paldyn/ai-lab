@@ -127,4 +127,4 @@ CPU가 이기는 자리는 **가동률이 낮을 때**다. GPU 인스턴스는 �
 
 **지난 글:** [투기적 디코딩 — 초안 모델을 무엇으로 세울 것인가](/articles/speculative-draft-models)
 
-**다음 글:** [모델 폴백 체인 — 앞 모델이 실패했을 때 무엇으로 넘길 것인가](/articles/model-fallback-chains)
+**다음 글:** [브라우저에서 WebGPU로 모델을 돌린다](/articles/ondevice-webgpu)

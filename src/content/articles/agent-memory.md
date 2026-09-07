@@ -9,7 +9,7 @@ tags: ["에이전트메모리", "mem0", "LangChain", "벡터DB", "컨텍스트�
 featured: false
 draft: false
 ---
-[지난 글](/articles/agent-swarm)에서 Swarm의 핸드오프 패턴으로 에이전트를 연결하는 방법을 살펴봤다. 이번 글에서는 에이전트가 **"기억"하는 방법**, 즉 메모리 아키텍처를 다룬다. 사람처럼 과거를 기억하고 개인화된 응답을 제공하려면 단순한 대화 히스토리를 넘어선 정교한 메모리 설계가 필요하다.
+[지난 글](/articles/agent-crewai)에서 CrewAI·AutoGen·Swarm 셋을 나란히 놓고 다음 차례를 정하는 권한을 태스크 목록에 둘지, 매니저 LLM에 둘지, 에이전트 자신에게 넘길지를 봤다. 그러면서 셋에 공통으로 비어 있는 자리가 하나 드러났다 — `kickoff()`가 끝나고 대화가 종료 문구를 만나면 그 안에서 쌓인 것도 거기서 끝난다는 것이다. 이번 글에서는 에이전트가 **"기억"하는 방법**, 즉 메모리 아키텍처를 다룬다. 사람처럼 과거를 기억하고 개인화된 응답을 제공하려면 단순한 대화 히스토리를 넘어선 정교한 메모리 설계가 필요하다.
 
 ## 에이전트 메모리의 4가지 유형
 
@@ -291,6 +291,6 @@ memory_agent = graph.compile()
 
 읽어주셔서 감사합니다. 😊
 
-**지난 글:** [OpenAI Swarm: 경량 멀티 에이전트 핸드오프 패턴](/articles/agent-swarm)
+**지난 글:** [멀티 에이전트 프레임워크 셋: CrewAI·AutoGen·Swarm](/articles/agent-crewai)
 
-**다음 글:** [에이전트 플래닝: ReAct, Plan-and-Execute, Reflexion 전략](/articles/agent-planning)
+**다음 글:** [에이전트 리플렉션: 자기 평가와 반복 개선 패턴](/articles/agent-reflection)

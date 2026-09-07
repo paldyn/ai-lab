@@ -177,6 +177,6 @@ def minhash_dedup(texts: list[str], threshold=0.8, num_perm=128):
 
 읽어주셔서 감사합니다. 😊
 
-**지난 글:** [LLM Fallback 전략: 장애에도 살아남는 서비스 설계](/articles/llmops-fallback-strategies)
+**지난 글:** [폴백 — 앞이 실패했을 때 무엇으로 넘길 것인가](/articles/llmops-fallback-strategies)
 
 **다음 글:** [데이터 레이블링: AI가 학습할 정답을 만드는 과정](/articles/data-labeling)

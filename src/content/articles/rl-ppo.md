@@ -1,73 +1,69 @@
 ---
-title: "PPO: 안정적인 정책 최적화의 표준"
-description: "PPO(Proximal Policy Optimization)의 클리핑 목적 함수, GAE 어드밴티지 추정, 엔트로피 보너스, Actor-Critic 아키텍처를 PyTorch로 완전 구현합니다."
+title: "액터-크리틱과 PPO: 어드밴티지로 안정화한 정책 최적화"
+description: "정책 경사의 분산을 잡는 어드밴티지 함수 하나에서 A2C·A3C·SAC·PPO가 갈라져 나온다. GAE의 람다가 실제로 무엇을 정하는지, PPO의 클리핑이 왜 최솟값이어야 하는지를 숫자로 따라간다."
 author: "PALDYN Team"
 pubDate: "2026-05-22"
 category: "domain-models"
 level: "중급"
-tags: ["PPO", "강화학습", "ProximalPolicyOptimization", "클리핑", "GAE", "RLHF", "연속행동", "PyTorch"]
+tags: ["PPO", "액터크리틱", "GAE", "강화학습", "RLHF"]
 featured: false
 draft: false
 ---
-[지난 글](/articles/rl-policy-gradient)에서 정책 경사법의 원리와 REINFORCE 알고리즘을 살펴보았다. REINFORCE는 구현이 단순하지만 그래디언트 추정의 분산이 너무 높고, 업데이트 크기를 제어하기 어려워 학습이 불안정하다. **PPO(Proximal Policy Optimization)** 는 2017년 OpenAI가 발표한 알고리즘으로, 이 문제를 단순한 클리핑(Clipping) 트릭으로 해결하면서도 탁월한 성능을 보여준다. ChatGPT의 RLHF 훈련, MuJoCo 로봇 제어, 게임 AI에서 모두 PPO가 사용될 만큼 현대 강화학습의 실질적인 표준이 되었다.
+[지난 글](/articles/rl-policy-gradient)에서 정책을 신경망으로 직접 파라미터화하고 기대 보상을 따라 올라가는 방법을 봤다. 원리는 깔끔했지만 REINFORCE를 그대로 돌리면 학습이 잘 안 붙는다. 그래디언트 추정의 분산이 너무 크고, 한 번의 업데이트로 정책이 얼마나 움직일지 아무도 제어하지 않기 때문이다.
 
-## PPO가 해결하는 문제
+이 글은 그 두 고장을 차례로 고친다. 앞의 것을 고치는 부품이 **어드밴티지 함수**이고, 그것을 학습하는 구조가 **액터-크리틱**이다. 뒤의 것을 고치는 장치가 **PPO**(Proximal Policy Optimization)의 클리핑이다. 둘을 한 편에 묶는 이유는 PPO가 액터-크리틱 위에 클리핑을 얹은 알고리즘이기 때문이다 — 부품을 먼저 만들고 그 위에 조립하는 순서로 읽는 편이 훨씬 짧다. A2C·A3C·SAC도 같은 부품에서 갈라져 나온 형제들이라 같은 자리에서 함께 본다.
 
-정책 경사법의 근본 문제는 **업데이트 크기 제어**다. 그래디언트를 따라 정책을 업데이트할 때, 학습률이 너무 크면 정책이 크게 바뀌어 이전보다 나빠지고, 너무 작으면 학습이 느리다. 정책 공간에서 "적당한 거리"만 이동하도록 보장하는 것이 핵심이다.
+## 어드밴티지라는 학습 신호
 
-TRPO(Trust Region Policy Optimization)는 이를 KL 발산 제약으로 해결했지만 이차 미분이 필요해 구현이 복잡하고 연산 비용이 크다. PPO는 동일한 목적을 **클리핑**이라는 단순한 방법으로 달성한다.
+### 리턴이 흔들리는 자리
 
-## 확률 비율과 클리핑
+REINFORCE의 그래디언트에는 그 시점 이후의 누적 보상 $$G_t$$ 가 그대로 들어간다. 문제는 이 값이 같은 상태에서 같은 행동을 해도 매번 달라진다는 것이다. 이후에 어떤 상태를 만나고 어떤 행동을 뽑았느냐에 따라 한 에피소드는 30스텝 만에 끝나고 다른 에피소드는 200스텝을 버틴다. 그러면 똑같은 첫 행동에 30과 200이라는 서로 다른 점수가 매겨진다. 그 차이는 그 행동이 좋고 나쁨과 아무 상관이 없고 순전히 뒤에 낀 확률적 전개 때문인데, 학습은 그것까지 신호로 받아들인다.
 
-PPO의 핵심은 **확률 비율(Probability Ratio)** rₜ(θ)다.
+절대적인 크기도 문제다. CartPole처럼 살아 있는 매 스텝에 $$+1$$ 을 주는 환경에서는 리턴이 언제나 양수다. 그러면 어떤 행동을 뽑든 로그 확률을 올리는 방향으로 밀리고, 실제 구별은 「많이 올릴까 조금 올릴까」의 차이로만 남는다. 나쁜 행동을 명시적으로 끌어내리는 힘이 없으니 같은 정확도에 필요한 표본 수가 크게 늘어난다.
 
-rₜ(θ) = π_θ(aₜ|sₜ) / π_θ_old(aₜ|sₜ)
+해법은 리턴에서 **기준선**(baseline)을 빼는 것이다. 상태마다 정해지는 값을 빼면 평균적인 학습 방향은 그대로 두고 잡음만 줄일 수 있다. 왜 빼도 편향이 생기지 않는지, 어떤 기준선이 분산을 가장 많이 줄이는지는 [베이스라인과 어드밴티지](/articles/math-baseline-and-advantage)에서 증명과 함께 다뤘다. 여기서는 그 결과를 알고리즘으로 조립하는 쪽을 본다.
 
-이전 정책(θ_old)과 현재 정책(θ)이 같으면 r=1, 현재 정책이 더 해당 행동을 선호하면 r>1, 덜 선호하면 r<1이다.
+### 평균과의 차이
 
-**클리핑 목적 함수**:
+가장 자연스러운 기준선은 그 상태의 평균 성적이다. 두 함수를 나란히 놓으면 뜻이 분명해진다. $$Q(s, a)$$ 는 상태 $$s$$ 에서 행동 $$a$$ 를 고르고 그 뒤로 현재 정책을 따를 때의 기대 리턴이고, $$V(s)$$ 는 상태 $$s$$ 에서 행동을 정책대로 뽑았을 때의 기대 리턴, 곧 **그 상태에서 가능한 행동들의 평균 성적**이다. 둘의 차이가 어드밴티지다.
 
-L_CLIP(θ) = E[ min( rₜ(θ)·Âₜ, clip(rₜ(θ), 1-ε, 1+ε)·Âₜ ) ]
+$$
+\hat{A}(s, a) = Q(s, a) - V(s)
+$$
 
-![PPO: 클리핑 목적 함수의 동작 원리](/assets/posts/rl-ppo-concept.svg)
+읽는 법은 한 줄이다 — **평균보다 얼마나 좋은 행동인가**. $$\hat{A} > 0$$ 이면 그 상태에서 평균보다 나은 선택이었으니 확률을 올리고, $$\hat{A} < 0$$ 이면 내린다. 리턴의 절대 크기가 아니라 같은 상태 안에서의 상대적 우열만 남으므로 앞 절의 두 문제가 함께 사라진다.
 
-`min`을 취하는 것이 핵심이다. 좋은 행동(Â>0)이라도 r이 1+ε을 넘으면 추가 보상이 없고, 나쁜 행동(Â<0)이라도 r이 1-ε 미만이면 추가 패널티가 없다. 이로써 정책 업데이트가 이전 정책에서 너무 멀어지지 않도록 자동으로 제한된다.
+그런데 $$Q$$ 를 따로 학습하면 네트워크가 하나 더 필요하다. 그래서 실제로는 한 스텝의 경험으로 $$Q$$ 를 대신한다.
 
-## GAE: 어드밴티지 추정
+$$
+\hat{A}(s_t, a_t) \approx r_t + \gamma V(s_{t+1}) - V(s_t)
+$$
 
-PPO는 단순한 리턴 G_t 대신 **GAE(Generalized Advantage Estimation)** 로 어드밴티지를 추정해 분산과 편향을 균형 있게 제어한다.
+$$r_t + \gamma V(s_{t+1})$$ 이 $$Q(s_t, a_t)$$ 의 한 표본짜리 추정이기 때문이다. 이 값을 **TD 오류**(temporal difference error)라 부르고 보통 $$\delta_t$$ 로 적는다. 숫자를 넣어 보면 감이 온다. $$\gamma = 0.99$$, 어떤 상태의 가치 추정이 $$V(s_t) = 40$$ 인데 한 스텝 뒤 보상 1을 받고 도착한 상태의 가치가 $$V(s_{t+1}) = 41$$ 이면 $$\delta_t = 1 + 0.99 \times 41 - 40 = 1.59$$ 로 양수다. 예상보다 좋은 자리로 갔다는 뜻이다. 반대로 도착 상태의 가치가 $$35$$ 였다면 $$1 + 34.65 - 40 = -4.35$$ 로, 기대에 못 미친 선택이 된다.
 
-```python
-def compute_gae(rewards: list, values: list, dones: list,
-                gamma: float = 0.99, lam: float = 0.95) -> torch.Tensor:
-    """
-    GAE-λ: λ=0이면 TD(0) 어드밴티지, λ=1이면 Monte Carlo
-    보통 λ=0.95로 편향-분산 균형점 설정
-    """
-    advantages = []
-    gae = 0.0
+### 액터와 크리틱의 분업
 
-    # 역방향으로 계산
-    for t in reversed(range(len(rewards))):
-        if t == len(rewards) - 1:
-            next_value = 0.0  # 마지막 스텝
-        else:
-            next_value = values[t + 1]
+이제 두 개의 역할이 자연스럽게 갈린다. 행동을 뽑는 정책 $$\pi_\theta(a|s)$$ 가 **액터**(Actor)이고, 상태 가치 $$V(s)$$ 를 추정해 그 행동을 채점하는 네트워크가 **크리틱**(Critic)이다. 이름 그대로 배우는 연기하고 비평가는 점수만 매긴다 — 크리틱은 행동을 고르는 데 직접 관여하지 않는다.
 
-        # TD 잔차 δ
-        delta = rewards[t] + gamma * next_value * (1 - dones[t]) - values[t]
-        # GAE: 지수 가중 평균
-        gae = delta + gamma * lam * (1 - dones[t]) * gae
-        advantages.insert(0, gae)
+![액터-크리틱 아키텍처](/assets/posts/rl-actor-critic-architecture.svg)
 
-    return torch.tensor(advantages, dtype=torch.float32)
-```
+학습 신호도 둘로 갈린다. 액터는 $$-\log \pi_\theta(a_t|s_t) \cdot \hat{A}_t$$ 를 줄이는 방향으로, 크리틱은 자기가 추정한 $$V(s_t)$$ 와 실제 리턴 사이의 제곱 오차를 줄이는 방향으로 움직인다. 하나는 정책 경사, 다른 하나는 평범한 회귀다.
 
-λ=0.95를 쓰면 단기 TD 추정(낮은 분산)과 장기 Monte Carlo 리턴(낮은 편향) 사이를 균형 있게 내삽한다.
+여기에 순환이 하나 숨어 있다. 학습 초기의 크리틱은 아무것도 모르므로 $$V(s)$$ 가 엉터리이고, 그러면 어드밴티지도 엉터리다. 액터는 그 엉터리 신호로 움직이고, 움직인 정책이 만든 데이터로 크리틱이 다시 학습한다. 둘 다 상대의 출력에 기대어 자기를 고치는 셈인데, 그래도 학습이 돌아가는 이유는 크리틱의 목표가 정책과 무관한 실제 보상에 매여 있기 때문이다. 실제 보상이라는 닻이 있으니 잡음이 섞여도 방향은 서서히 맞아 들어간다. 다만 이 순환 때문에 **초반 수백 번의 업데이트는 크리틱이 자리를 잡는 데 쓰인다**고 보는 편이 맞고, 그 구간의 정책 성능만 보고 알고리즘을 판단하면 안 된다.
 
-## Actor-Critic 아키텍처
+## 한 몸통에 얹은 두 머리
 
-PPO는 정책 네트워크(Actor)와 가치 네트워크(Critic)를 함께 훈련한다.
+### 백본 공유의 이득과 대가
+
+액터와 크리틱은 서로 다른 것을 출력하지만 보는 것은 같은 상태다. 그래서 실제 구현은 앞쪽 특성 추출기를 공유하고 마지막 층만 둘로 나눈다. 몸통 하나에 머리 둘을 얹는 구조다.
+
+이득이 셋이다. 순전파를 한 번만 하므로 연산이 절반 가까이 줄고, 파라미터도 줄며, 무엇보다 **몸통이 두 개의 학습 신호를 함께 받는다**. 정책에 유용한 특성과 가치 추정에 유용한 특성이 크게 다르지 않다면 두 신호가 서로의 표현 학습을 돕는다. 입력이 픽셀인 아타리류 환경에서는 이 효과가 특히 크다 — 화면에서 쓸 만한 특성을 뽑는 일 자체가 비싸기 때문이다.
+
+대가는 두 손실이 하나의 몸통을 두고 경쟁한다는 점이다. 정책 손실은 보통 1 안팎에서 놀지만 가치 손실은 리턴의 제곱 스케일이라 환경에 따라 수백까지 간다. 그대로 더하면 몸통이 사실상 크리틱만 학습하고 액터의 신호는 묻힌다. 뒤에서 볼 `value_loss_coef` 같은 계수가 존재하는 이유가 이것이고, 리턴을 정규화하거나 관측값을 스케일링하는 관행도 같은 자리에서 나온다. 두 손실의 균형을 맞추기 어려우면 백본을 아예 분리하는 선택도 있다 — 튜닝은 쉬워지고 연산과 메모리는 늘어난다.
+
+### 초기화 게인의 차이
+
+두 헤드는 초기화도 다르게 한다. 코드를 먼저 보자.
 
 ```python
 import torch
@@ -75,134 +71,303 @@ import torch.nn as nn
 import torch.nn.functional as F
 from torch.distributions import Categorical
 
-class PPOActorCritic(nn.Module):
-    """공유 백본 + 정책 헤드 + 가치 헤드"""
-    def __init__(self, obs_dim: int, act_dim: int):
+class ActorCriticNet(nn.Module):
+    """공유 백본 + Actor 헤드 + Critic 헤드"""
+    def __init__(self, obs_dim: int, act_dim: int, hidden: int = 64):
         super().__init__()
-        self.shared = nn.Sequential(
-            nn.Linear(obs_dim, 64), nn.Tanh(),
-            nn.Linear(64, 64),      nn.Tanh(),
+        self.backbone = nn.Sequential(
+            nn.Linear(obs_dim, hidden), nn.Tanh(),
+            nn.Linear(hidden, hidden),  nn.Tanh(),
         )
-        self.policy_head = nn.Linear(64, act_dim)   # Actor
-        self.value_head  = nn.Linear(64, 1)          # Critic
+        self.policy_head = nn.Linear(hidden, act_dim)   # Actor
+        self.value_head  = nn.Linear(hidden, 1)         # Critic
 
-    def get_action_and_value(self, x: torch.Tensor):
-        features = self.shared(x)
-        logits = self.policy_head(features)
-        dist = Categorical(logits=logits)
+        nn.init.orthogonal_(self.policy_head.weight, gain=0.01)
+        nn.init.orthogonal_(self.value_head.weight,  gain=1.0)
+
+    def act(self, state: torch.Tensor):
+        features = self.backbone(state)
+        dist = Categorical(logits=self.policy_head(features))
         action = dist.sample()
-        return action, dist.log_prob(action), dist.entropy(), self.value_head(features).squeeze(-1)
+        value = self.value_head(features).squeeze(-1)
+        return action, dist.log_prob(action), dist.entropy(), value
 
-    def get_value(self, x: torch.Tensor) -> torch.Tensor:
-        return self.value_head(self.shared(x)).squeeze(-1)
+    def evaluate(self, states: torch.Tensor, actions: torch.Tensor):
+        """이미 뽑아 둔 행동을 지금 정책으로 다시 채점한다"""
+        features = self.backbone(states)
+        dist = Categorical(logits=self.policy_head(features))
+        value = self.value_head(features).squeeze(-1)
+        return dist.log_prob(actions), dist.entropy(), value
 ```
+
+정책 헤드의 게인 $$0.01$$ 은 오타가 아니다. 가중치를 아주 작게 두면 초기 로짓이 전부 0 근처가 되고, 소프트맥스를 지난 행동 분포가 균등에 가까워진다. 행동이 둘이면 각각 0.5씩이고 엔트로피는 최댓값인 $$\ln 2 \approx 0.693$$ 이다. 학습을 시작하는 시점에 정책이 아무 근거 없이 한 행동으로 쏠려 있으면 그 행동만 계속 뽑히고, 뽑히지 않은 행동은 평가받을 기회조차 없다. 초기 정책을 평평하게 눕히는 것은 탐험의 출발선을 확보하는 일이다.
+
+가치 헤드는 반대로 게인 $$1.0$$ 을 쓴다. 여기는 확률이 아니라 스칼라 회귀라서 출력 범위를 일부러 죽일 이유가 없다. 같은 은닉 특성을 받는 두 층인데 초기값 스케일이 100배 갈리는 것은 두 헤드가 하는 일이 그만큼 다르기 때문이다.
+
+### 크리틱을 끊어 내는 detach
+
+손실을 계산할 때 조용히 틀리기 가장 쉬운 자리가 어드밴티지를 만드는 한 줄이다.
+
+```python
+advantages = returns - values.detach()      # detach를 빼면 조용히 망가진다
+advantages = (advantages - advantages.mean()) / (advantages.std() + 1e-8)
+
+actor_loss  = -(log_probs * advantages).mean()
+critic_loss = F.mse_loss(values, returns)
+loss = actor_loss + 0.5 * critic_loss - 0.01 * entropy
+```
+
+`detach()`가 없으면 액터 손실의 그래디언트가 어드밴티지를 타고 크리틱으로 흘러든다. 액터 손실은 $$\hat{A}$$ 를 키우는 방향을 좋아하는데, 크리틱이 그 경로에 연결되어 있으면 네트워크는 정책을 고치는 대신 **$$V(s)$$ 를 낮춰서 어드밴티지를 키우는 지름길**을 발견한다. 채점자가 기준을 내려 점수를 올리는 셈이다. 오류는 나지 않고 모양도 맞으므로 학습은 그냥 돌아가는데, 가치 추정이 실제 리턴에서 서서히 떨어지고 정책도 함께 무너진다.
+
+어드밴티지 정규화도 같은 블록에 있다. 미니배치 안에서 평균 0, 표준편차 1로 맞추면 보상 스케일이 환경마다 달라도 정책 손실의 크기가 비슷한 범위에 머문다. 그래야 학습률 하나를 여러 환경에 재활용할 수 있다. 분모의 $$10^{-8}$$ 은 배치 안 어드밴티지가 모두 같아 표준편차가 0이 되는 경우를 막는 값이다.
+
+## 편향과 분산의 눈금
+
+### 네 가지 추정량
+
+어드밴티지를 어떻게 추정하느냐는 하나로 정해져 있지 않다. 실제 보상을 몇 스텝까지 쓰고 그 뒤를 크리틱에게 맡길지에 따라 저울이 움직인다.
+
+| 방법 | 어드밴티지 추정 | 분산 | 편향 |
+| --- | --- | --- | --- |
+| REINFORCE | $$G_t$$ | 높음 | 없음 |
+| TD(0) | $$r_t + \gamma V(s_{t+1}) - V(s_t)$$ | 낮음 | 있음 |
+| $$n$$-스텝 | $$\sum_{k=0}^{n-1} \gamma^k r_{t+k} + \gamma^n V(s_{t+n}) - V(s_t)$$ | 중간 | 중간 |
+| GAE | $$\sum_k (\gamma\lambda)^k \delta_{t+k}$$ | 조절 | 조절 |
+
+위로 갈수록 실제로 받은 보상을 많이 쓰므로 편향이 없는 대신 앞 절에서 본 우연의 누적을 그대로 뒤집어쓴다. 아래로 갈수록 크리틱의 추정에 기대므로 흔들림이 줄지만, 크리틱이 틀린 만큼 신호도 함께 틀어진다. **편향은 크리틱에서 오고 분산은 환경의 확률성에서 온다**는 것이 이 표를 읽는 한 줄 요약이다.
+
+### 지수 가중 평균으로 잇기
+
+**GAE**(Generalized Advantage Estimation)는 이 눈금 위의 한 점을 고르는 대신 전부를 하나의 수식으로 잇는다. $$n$$-스텝 추정을 $$n = 1, 2, 3, \dots$$ 마다 만들어 놓고 $$\lambda$$ 로 지수 가중 평균을 내면, 놀랍게도 TD 오류의 가중합이라는 간단한 꼴로 정리된다.
+
+$$
+\hat{A}_t^{\mathrm{GAE}} = \sum_{k \ge 0} (\gamma\lambda)^k \delta_{t+k}
+$$
+
+$$\lambda = 0$$ 을 넣으면 첫 항만 남아 TD(0)이 되고, $$\lambda = 1$$ 이면 TD 오류가 망원경처럼 접혀 몬테카를로 리턴에서 $$V(s_t)$$ 를 뺀 것과 같아진다. 표의 두 극단을 하나의 손잡이로 이은 셈이다. 구현은 뒤에서 앞으로 한 번 훑으면 끝난다.
+
+```python
+def compute_gae(rewards, values, dones, gamma=0.99, lam=0.95):
+    """뒤에서 앞으로 한 번 훑으며 GAE를 누적한다."""
+    advantages, gae = [], 0.0
+    for t in reversed(range(len(rewards))):
+        next_value = values[t + 1] if t + 1 < len(rewards) else 0.0
+        delta = rewards[t] + gamma * next_value * (1 - dones[t]) - values[t]
+        gae = delta + gamma * lam * (1 - dones[t]) * gae
+        advantages.insert(0, gae)
+    return torch.tensor(advantages, dtype=torch.float32)
+```
+
+`(1 - dones[t])`가 두 번 나오는 것이 중요하다. 에피소드가 끝난 자리에서는 다음 상태의 가치도, 그 뒤로 누적된 GAE도 넘어오면 안 된다. 이 곱을 빼먹으면 서로 다른 에피소드가 한 줄로 이어져 버리고, 죽는 순간의 큰 음수 신호가 다음 에피소드의 첫 행동에 엉뚱하게 배분된다.
+
+### 람다가 정하는 유효 지평
+
+$$\lambda$$ 를 「분산-편향 조절 손잡이」라고만 하면 손에 안 잡힌다. 실제로 정해지는 것은 **실제 보상을 몇 스텝까지 믿을 것인가**이고, 감쇠율 $$\gamma\lambda$$ 의 유효 지평 $$1/(1 - \gamma\lambda)$$ 로 스텝 수를 셀 수 있다.
+
+| $$\lambda$$ | $$\gamma\lambda$$ ($$\gamma = 0.99$$) | 유효 지평 |
+| --- | --- | --- |
+| $$0$$ | $$0$$ | 1스텝 |
+| $$0.9$$ | $$0.891$$ | 약 9스텝 |
+| $$0.95$$ | $$0.9405$$ | 약 17스텝 |
+| $$0.97$$ | $$0.9603$$ | 약 25스텝 |
+| $$1$$ | $$0.99$$ | 100스텝 |
+
+기본값으로 굳어진 $$\lambda = 0.95$$ 는 대략 17스텝짜리 창을 뜻한다. 가중치가 절반으로 줄어드는 지점을 계산하면 $$0.9405^k = 0.5$$ 에서 $$k \approx 11.3$$ 이니, 열한 스텝쯤 뒤의 TD 오류부터는 영향력이 절반 아래로 떨어진다. 보상이 훨씬 뒤에 몰려 있는 환경이라면 이 창이 너무 좁고, 그때는 $$\lambda$$ 를 올리거나 $$\gamma$$ 를 함께 손봐야 한다. 반대로 크리틱이 잘 맞는 환경에서는 창을 좁혀 분산을 더 줄이는 쪽이 낫다.
+
+## 액터-크리틱 계열의 갈래
+
+### A2C의 동기식 수집
+
+**A2C**(Advantage Actor-Critic)는 지금까지의 부품을 가장 단순하게 조립한 알고리즘이다. 특징은 병렬 환경을 동기적으로 굴린다는 것 하나다. 환경 8개를 동시에 세우고 각각 5스텝씩 진행한 뒤 40개의 전이를 한 배치로 묶어 한 번 업데이트한다.
+
+![A2C 핵심 구현: Actor-Critic 손실](/assets/posts/rl-actor-critic-code.svg)
+
+병렬 환경을 쓰는 이유는 속도만이 아니다. 한 환경에서 연속으로 뽑은 5스텝은 서로 몹시 닮아 있어 배치 하나가 사실상 표본 하나에 가깝다. 서로 다른 8개 환경에서 같은 시점을 모으면 배치 안의 상관이 크게 줄어 그래디언트 추정이 안정된다.
+
+```python
+# T스텝 롤아웃 뒤, 마지막 상태의 가치로 부트스트랩해 리턴을 만든다
+with torch.no_grad():
+    *_, last_value = net.act(torch.FloatTensor(states))
+
+returns, G = [], last_value.numpy()
+for t in reversed(range(T)):
+    G = batch_rewards[t] + 0.99 * G * (1 - batch_dones[t])
+    returns.insert(0, G)
+```
+
+여기서 마지막 줄의 **부트스트랩**이 A2C를 가능하게 하는 장치다. 5스텝만 굴리고 끊으면 그 뒤의 보상을 알 수 없는데, 잘린 자리에 크리틱의 가치 추정 $$V(s_T)$$ 를 대신 넣어 리턴을 완성한다. 에피소드가 끝날 때까지 기다릴 필요가 없으니 500스텝짜리 에피소드에서도 5스텝마다 업데이트할 수 있다.
+
+A2C는 **온-정책**(on-policy)이다. 지금 정책으로 모은 데이터로만 그 정책을 고칠 수 있으므로, 한 번 업데이트하면 방금 쓴 40개의 전이는 버려진다. 뒤에서 볼 PPO가 손대는 자리가 정확히 여기다.
+
+### A3C의 비동기 워커
+
+**A3C**(Asynchronous Advantage Actor-Critic)는 2016년에 나온 A2C의 형이다. 이름의 첫 글자가 말하듯 워커들이 서로를 기다리지 않는다. 글로벌 네트워크를 하나 두고, 워커마다 자기 환경과 로컬 복사본을 들고 각자 롤아웃을 굴린 뒤 계산한 그래디언트를 글로벌에 바로 적용한다.
+
+```python
+import threading
+import gymnasium as gym
+from torch.optim import Adam
+
+global_net = ActorCriticNet(obs_dim, act_dim)
+global_optimizer = Adam(global_net.parameters(), lr=1e-4)
+lock = threading.Lock()
+
+def worker(worker_id):
+    local_net = ActorCriticNet(obs_dim, act_dim)
+    env = gym.make("CartPole-v1")
+    for episode in range(1000):
+        local_net.load_state_dict(global_net.state_dict())   # 시작할 때만 동기화
+        loss = compute_a3c_loss(local_net, *run_local_episode(local_net, env))
+        loss.backward()
+        with lock:                                           # 로컬 그래디언트를 글로벌에 얹는다
+            for gp, lp in zip(global_net.parameters(), local_net.parameters()):
+                gp.grad = lp.grad
+            global_optimizer.step()
+            global_optimizer.zero_grad()
+```
+
+워커마다 글로벌 파라미터를 복사해 간 시점이 조금씩 다르므로 서로 다른 정책이 동시에 환경을 탐험하는 효과가 난다. 리플레이 버퍼 없이도 데이터의 상관을 깨뜨릴 수 있다는 것이 당시의 핵심 주장이었고, GPU 없이 CPU 코어만으로 학습이 돌아간다는 점이 크게 매력적이었다.
+
+지금은 잘 쓰지 않는다. 이유가 셋이다. 워커가 그래디언트를 올리는 사이 글로벌 파라미터가 이미 바뀌어 있으므로 **낡은 그래디언트**(stale gradient)가 섞이고, 작은 배치를 여러 갈래로 흘려보내는 구조라 GPU를 채우지 못하며, 스레드와 락이 얽혀 구현과 디버깅이 어렵다. A2C가 같은 아이디어를 동기식으로 되돌린 뒤 성능이 밀리지 않는다는 것이 확인되면서, 「비동기」라는 A3C의 첫 글자만 떨어져 나간 셈이 되었다.
+
+### SAC의 엔트로피 보상
+
+연속 행동 공간에서는 결이 다른 형제가 하나 더 있다. **SAC**(Soft Actor-Critic)는 2018년에 나온 오프-정책 액터-크리틱이고, 보상 자체를 바꾼다는 점이 독특하다. 환경 보상에 정책의 엔트로피를 더해 $$r + \alpha \mathcal{H}(\pi(\cdot|s))$$ 를 최대화한다. 뒤에서 볼 PPO의 엔트로피 보너스가 손실에 얹는 부가항인 데 반해, SAC는 엔트로피를 목적 함수 안쪽으로 끌어들여 **다양하게 행동하는 것 자체가 보상받도록** 만든다. 탐험과 활용의 균형이 손으로 스케줄링할 대상이 아니라 최적화의 일부가 된다.
+
+나머지 설계도 그 선택을 따라간다. 오프-정책이라 경험 재생 버퍼를 쓸 수 있어 표본을 여러 번 재사용하고, Q 함수를 두 개 두고 둘 중 작은 값을 쓰는 **더블 Q 트릭**으로 가치 과대추정을 막으며, 온도 $$\alpha$$ 는 목표 엔트로피를 정해 두고 자동으로 조절한다. 그래서 손으로 맞출 하이퍼파라미터가 적고 표본 효율도 높다.
+
+같은 연속 행동 갈래에는 **DDPG**와 그 개선판 **TD3**도 있다. 둘은 확률 분포 대신 결정적 행동 하나를 내놓고 탐험은 그 행동에 잡음을 얹어 만든다. 탐험을 목적 함수 안으로 들여놓은 SAC와 정확히 대비되는 설계이고, 액터-크리틱이라는 골격은 그대로 공유한다. 이 계열 전체가 앞 절에서 만든 부품 위에 서 있다는 뜻이다.
+
+고르는 기준은 표본이 얼마나 비싼가다. 시뮬레이터가 싸고 병렬로 수만 스텝을 뽑을 수 있으면 온-정책인 PPO가 단순하고 안정적이다. 실제 로봇처럼 한 스텝이 비싼 자리에서는 같은 데이터를 몇 번이고 다시 쓰는 SAC 쪽이 유리하다.
+
+## PPO의 클리핑
+
+### 신뢰 영역과 TRPO의 비용
+
+이제 남은 고장 하나로 간다. 어드밴티지가 신호의 분산을 잡아 줘도, **한 번의 업데이트로 정책이 얼마나 움직일지는 여전히 아무도 제어하지 않는다**. 학습률을 줄이면 되지 않느냐는 답은 반만 맞다. 학습률이 정하는 것은 파라미터 공간에서의 이동 거리이고, 우리가 통제하고 싶은 것은 정책 공간에서의 이동 거리다. 둘은 비례하지 않는다 — 같은 크기의 그래디언트 스텝이 어떤 상태에서는 행동 확률을 0.02 바꾸고 다른 상태에서는 0.7을 바꾼다. 소프트맥스가 포화된 자리일수록 이 차이가 커진다.
+
+지도 학습이라면 한 번 크게 잘못 가도 다음 배치에서 되돌아오면 된다. 강화학습은 그렇지 않다. 온-정책이므로 **다음 데이터를 지금의 정책이 모은다**. 정책이 무너지면 무너진 정책이 나쁜 데이터를 모으고, 그 데이터로 학습하면 더 무너진다. 되돌아올 길 자체가 사라지는 것이 이 문제가 지도 학습보다 심각한 이유다.
+
+**TRPO**(Trust Region Policy Optimization)의 답은 정직했다. 새 정책과 옛 정책의 KL 발산이 일정 값을 넘지 않는다는 제약을 걸고 그 안에서 최대화한다. 이론은 깔끔한데 비용이 크다. 제약 최적화를 풀려면 KL의 이차 근사가 필요하고, 그러면 피셔 정보 행렬과 켤레 기울기법이 등장한다. 파라미터가 수백만 개인 네트워크에서 이 계산은 무겁고, 무엇보다 구현이 길어 실수하기 쉽다. PPO는 같은 목적을 **손실 함수 한 줄**로 달성한다.
+
+### 확률 비율과 최솟값
+
+PPO의 출발점은 옛 정책과 새 정책이 같은 행동에 매기는 확률의 비다.
+
+$$
+r_t(\theta) = \frac{\pi_\theta(a_t|s_t)}{\pi_{\theta_{\mathrm{old}}}(a_t|s_t)}
+$$
+
+두 정책이 같으면 $$r_t = 1$$ 이고, 새 정책이 그 행동을 더 좋아하게 되었으면 1보다 크다. 이 값이 곧 정책이 얼마나 움직였는지의 눈금이다. 그 위에 얹는 목적 함수는 이렇다.
+
+$$
+L^{\mathrm{CLIP}}(\theta) = \mathbb{E}\left[ \min\left( r_t(\theta) \hat{A}_t,\ \mathrm{clip}(r_t(\theta), 1-\epsilon, 1+\epsilon) \hat{A}_t \right) \right]
+$$
+
+![PPO: 클리핑 목적 함수의 동작 원리](/assets/posts/rl-ppo-concept.svg)
+
+클리핑만으로 충분해 보이는데 왜 `min`이 필요한가가 이 수식에서 가장 자주 넘어가는 자리다. 숫자를 넣어 보면 두 항이 하는 일이 갈린다. $$\epsilon = 0.2$$ 로 두고 좋은 행동 $$\hat{A} = +2$$ 를 생각하자. 업데이트가 진행되어 $$r = 1.35$$ 가 되면 클리핑 안 한 항은 $$2.7$$, 클리핑한 항은 $$1.2 \times 2 = 2.4$$ 다. `min`이 $$2.4$$ 를 고르는데 이 값은 $$\theta$$ 에 의존하지 않는 상수라 기울기가 0이다. 확률을 더 올려도 얻을 것이 없으니 업데이트가 그 자리에서 멈춘다.
+
+이제 부호를 뒤집어 나쁜 행동 $$\hat{A} = -2$$ 인데 실수로 $$r = 1.35$$ 까지 올라간 경우를 보자. 클리핑 안 한 항은 $$-2.7$$, 클리핑한 항은 $$-2.4$$ 이고 `min`은 더 작은 $$-2.7$$ 을 고른다. 이번에는 클리핑되지 않은 항이 선택되었으므로 **기울기가 살아 있다**. 나쁜 행동의 확률을 크게 올려 버린 상태에서는 되돌리는 힘이 그대로 작동한다는 뜻이다.
+
+정리하면 `min`은 두 항 중 **비관적인 쪽**을 고르는 연산이고, 그래서 목적 함수가 원래 목적의 하한이 된다. 클리핑이 막는 것은 「이미 충분히 멀리 간 방향으로 더 가는 것」뿐이고, 「잘못 간 것을 되돌리는 것」은 막지 않는다. `min` 없이 클리핑만 걸면 이 비대칭이 사라져 한 번 잘못 밀려난 행동 확률이 그대로 굳는다.
+
+### 중요도 샘플링과 데이터 재사용
+
+비율 $$r_t$$ 에는 두 번째 쓸모가 있다. 앞에서 A2C는 온-정책이라 한 번 쓴 데이터를 버려야 했다. 그런데 롤아웃을 모을 때의 정책을 $$\pi_{\theta_{\mathrm{old}}}$$ 로 고정해 두고 비율로 보정하면, 같은 데이터로 여러 번 업데이트할 수 있다. 이것이 **중요도 샘플링**(importance sampling)이고 $$r_t$$ 가 바로 그 보정 계수다.
+
+문제는 업데이트를 거듭할수록 현재 정책이 데이터를 모은 정책에서 멀어져 비율이 커지고, 그러면 보정 계수의 분산이 폭발한다는 점이다. 클리핑은 이 재사용을 안전한 범위 안에 묶어 두는 장치다. **PPO의 클리핑과 데이터 재사용은 한 몸이다** — 수집 직후의 첫 그래디언트 스텝에서는 두 정책이 아직 같아서 $$r_t \equiv 1$$ 이고, 클리핑이 걸릴 자리 자체가 없다. 롤아웃 전체를 미니배치 하나로 두고 한 번만 업데이트하면 PPO는 그대로 A2C다. 비율이 1에서 벌어지기 시작하는 것은 같은 데이터를 두 번째로 쓰는 순간부터이고, 클리핑도 그때부터 일한다.
 
 ![PPO 클리핑 손실 구현 (PyTorch)](/assets/posts/rl-ppo-code.svg)
 
-## 전체 PPO 훈련 루프
+효율의 차이는 숫자로 보면 뚜렷하다. 롤아웃 2,048스텝을 모아 배치 크기 64로 자르면 미니배치가 32개, 이것을 10에폭 반복하면 한 번 수집한 데이터로 320번의 그래디언트 스텝을 밟는다. 같은 데이터로 A2C가 밟는 스텝은 한 번이다. 환경과 상호작용하는 비용이 학습의 병목인 경우가 대부분이라 이 차이가 곧 학습 속도의 차이가 된다.
+
+## 훈련 루프와 하이퍼파라미터
+
+### 수집과 갱신의 반복
+
+전체 구조는 두 단계의 반복이다. 정책을 고정한 채 정해진 스텝만큼 경험을 모으고, 그 데이터로 여러 에폭을 돌며 업데이트하고, 다시 수집으로 돌아간다.
 
 ```python
-import gymnasium as gym
-import numpy as np
+N_STEPS, N_EPOCHS, BATCH_SIZE = 2048, 10, 64
+CLIP_EPS, GAMMA, LAM, LR = 0.2, 0.99, 0.95, 3e-4
 
-# 하이퍼파라미터
-N_STEPS = 2048        # 롤아웃 길이
-N_EPOCHS = 10         # 미니배치 반복 횟수
-BATCH_SIZE = 64
-CLIP_EPS = 0.2
-GAMMA, LAM = 0.99, 0.95
-LR = 3e-4
-
-env = gym.make("CartPole-v1")
-agent = PPOActorCritic(env.observation_space.shape[0], env.action_space.n)
+agent = ActorCriticNet(obs_dim, act_dim)
 optimizer = torch.optim.Adam(agent.parameters(), lr=LR)
 
-def collect_rollout():
-    """N_STEPS 동안 경험 수집"""
-    states, actions, log_probs, rewards, dones, values = [], [], [], [], [], []
-    state, _ = env.reset()
-
-    for _ in range(N_STEPS):
-        s = torch.FloatTensor(state).unsqueeze(0)
-        with torch.no_grad():
-            action, log_prob, _, value = agent.get_action_and_value(s)
-
-        next_state, reward, done, truncated, _ = env.step(action.item())
-
-        states.append(state)
-        actions.append(action.item())
-        log_probs.append(log_prob.item())
-        rewards.append(reward)
-        dones.append(float(done or truncated))
-        values.append(value.item())
-
-        state = next_state if not (done or truncated) else env.reset()[0]
-
-    return states, actions, log_probs, rewards, dones, values
-
 def ppo_update(states, actions, old_log_probs, advantages, returns):
-    """PPO 미니배치 업데이트"""
-    s = torch.FloatTensor(np.array(states))
-    a = torch.LongTensor(actions)
-    olp = torch.FloatTensor(old_log_probs)
-    adv = torch.FloatTensor(advantages)
-    ret = torch.FloatTensor(returns)
-    adv = (adv - adv.mean()) / (adv.std() + 1e-8)
-
+    adv = (advantages - advantages.mean()) / (advantages.std() + 1e-8)
     for _ in range(N_EPOCHS):
-        idx = np.random.permutation(len(s))
-        for start in range(0, len(s), BATCH_SIZE):
+        idx = np.random.permutation(len(states))
+        for start in range(0, len(states), BATCH_SIZE):
             b = idx[start:start + BATCH_SIZE]
-            _, new_lp, entropy, values = agent.get_action_and_value(s[b])
-            new_lp = new_lp  # 실제로는 a[b]에 대한 log_prob
-            ratio = torch.exp(new_lp - olp[b])
+            new_lp, entropy, values = agent.evaluate(states[b], actions[b])
+            ratio = torch.exp(new_lp - old_log_probs[b])
             surr1 = ratio * adv[b]
             surr2 = torch.clamp(ratio, 1 - CLIP_EPS, 1 + CLIP_EPS) * adv[b]
-            policy_loss = -torch.min(surr1, surr2).mean()
-            value_loss  = F.mse_loss(values, ret[b])
-            loss = policy_loss + 0.5 * value_loss - 0.01 * entropy.mean()
-            optimizer.zero_grad(); loss.backward(); optimizer.step()
+            loss = (-torch.min(surr1, surr2).mean()
+                    + 0.5 * F.mse_loss(values, returns[b])
+                    - 0.01 * entropy.mean())
+            optimizer.zero_grad()
+            loss.backward()
+            nn.utils.clip_grad_norm_(agent.parameters(), 0.5)
+            optimizer.step()
 
-# 메인 루프
 for iteration in range(100):
-    rollout = collect_rollout()
-    states, actions, log_probs, rewards, dones, vals = rollout
-    advantages = compute_gae(rewards, vals, dones, GAMMA, LAM)
-    returns = [a + v for a, v in zip(advantages.tolist(), vals)]
-    ppo_update(states, actions, log_probs, advantages.tolist(), returns)
-    print(f"이터레이션 {iteration+1}: 평균 보상={np.mean(rewards):.2f}")
+    batch = collect_rollout(N_STEPS)          # 정책 고정, 경험 수집
+    advantages = compute_gae(batch.rewards, batch.values, batch.dones, GAMMA, LAM)
+    returns = advantages + torch.tensor(batch.values)
+    ppo_update(batch.states, batch.actions, batch.log_probs, advantages, returns)
 ```
 
-## PPO 하이퍼파라미터 가이드
+읽을 때 놓치기 쉬운 줄이 셋이다. 첫째, `old_log_probs`는 수집 시점에 저장해 둔 값이라 에폭이 돌아도 바뀌지 않는다. 이 값이 바뀌면 비율의 기준점이 흔들려 클리핑이 무의미해진다. `evaluate`가 행동을 새로 뽑지 않고 저장해 둔 `actions[b]`를 채점하는 것도 같은 이유다 — 비율은 같은 행동에 매긴 두 확률의 비여야 한다. 둘째, 리턴을 따로 계산하지 않고 `advantages + values`로 만든다 — 어드밴티지의 정의가 $$Q - V$$ 이므로 되돌리면 그 자리에서 크리틱의 회귀 목표가 나온다. 셋째, 어드밴티지 정규화는 에폭 루프 **바깥**에서 한 번만 한다. 안쪽에서 미니배치마다 다시 정규화하는 구현도 있는데, 배치가 작으면 통계가 불안정해진다.
 
-| 파라미터 | 권장값 | 설명 |
-|---------|--------|------|
-| clip_eps | 0.1~0.3 | 크면 불안정, 작으면 느림 |
-| gae_lambda | 0.9~0.97 | λ가 클수록 분산 증가 |
-| n_epochs | 4~20 | 미니배치 재사용 횟수 |
-| entropy_coef | 0.01~0.05 | 탐험 장려 |
-| value_loss_coef | 0.5~1.0 | Critic 학습 강도 |
-| max_grad_norm | 0.5 | 그래디언트 클리핑 |
+### 여섯 개의 손잡이
 
-## PPO와 RLHF
+| 파라미터 | 권장 범위 | 무엇이 달라지는가 |
+| --- | --- | --- |
+| `clip_eps` | 0.1~0.3 | 크면 한 이터레이션의 보폭이 커져 불안정, 작으면 느림 |
+| `gae_lambda` | 0.9~0.97 | 클수록 실제 보상을 멀리 보고 분산이 커짐 |
+| `n_epochs` | 4~20 | 표본 재사용 횟수, 크면 옛 정책에서 멀어짐 |
+| `entropy_coef` | 0.01~0.05 | 탐험 유지, 크면 정책이 수렴하지 않음 |
+| `value_loss_coef` | 0.5~1.0 | 공유 백본에서 크리틱이 차지하는 몫 |
+| `max_grad_norm` | 0.5 | 이상치 배치 하나가 정책을 날리는 것을 막음 |
 
-ChatGPT를 훈련시킨 RLHF(Reinforcement Learning from Human Feedback)의 RL 단계에서 PPO가 사용된다. LLM을 Actor로, 보상 모델의 출력을 환경 보상으로 취급하며, KL 페널티를 추가해 기본 언어 모델에서 너무 멀어지지 않도록 제한한다.
+엔트로피 계수의 크기 감각을 잡아 두면 좋다. 행동이 둘인 환경에서 엔트로피의 최댓값이 $$\ln 2 \approx 0.693$$ 이므로, 계수 $$0.01$$ 을 곱하면 손실에 더해지는 몫은 최대 $$0.0069$$ 다. 정책 손실이 보통 그보다 두 자릿수 크니 이 항은 방향을 정하는 힘이 아니라 **정책이 한 행동으로 완전히 굳는 것만 막는 미는 힘**이다. 값을 0.1처럼 크게 올리면 목적이 뒤집혀 정책이 일부러 무작위에 머문다.
+
+`max_grad_norm`도 이 목록에서 성격이 다르다. 나머지가 학습의 성질을 정하는 값이라면 이것은 사고를 막는 안전장치다. 어드밴티지가 유난히 큰 배치 하나가 들어왔을 때 그래디언트 노름을 0.5로 잘라 두면 정책이 한 번에 날아가는 일이 생기지 않는다.
+
+### 학습 실패의 진단 순서
+
+PPO가 안 돌아갈 때 볼 자리는 대체로 정해져 있고, 순서가 있다.
+
+먼저 **클리핑 비율**을 찍어 본다. 미니배치에서 $$r_t$$ 가 $$[1-\epsilon, 1+\epsilon]$$ 밖으로 나가는 비율이 절반을 넘는다면 한 이터레이션 안에서 정책이 너무 멀리 가고 있다는 뜻이다. 학습률을 낮추거나 `n_epochs`를 줄인다. 반대로 이 비율이 0에 가깝게 붙어 있으면 업데이트가 너무 소심한 것이라 반대로 올린다.
+
+다음은 **가치 손실**이다. 이 값이 줄지 않으면 크리틱이 리턴을 못 따라가고 있고, 그러면 GAE가 만들어 내는 어드밴티지가 전부 잡음이다. 액터를 아무리 손봐도 신호 자체가 없으므로 크리틱 쪽 학습률이나 `value_loss_coef`를 먼저 본다. 보상 스케일이 수천 단위인 환경에서는 리턴 정규화를 함께 검토한다.
+
+세 번째는 **엔트로피의 궤적**이다. 학습 초기에 엔트로피가 급격히 0으로 떨어지면 정책이 한 행동으로 굳은 것이고, 그 뒤로는 다른 행동을 시도하지 않으니 어드밴티지도 전부 같은 방향만 가리킨다. 이 붕괴는 되돌리기 어려워서 사후에 계수를 올려도 잘 회복되지 않는다 — 초기 몇 만 스텝의 엔트로피 곡선을 처음부터 지켜보는 편이 낫다. 앞서 정책 헤드를 게인 0.01로 초기화한 것도 이 붕괴를 늦추는 장치였다.
+
+## 언어 모델 위의 PPO
+
+### 보상 모델이라는 환경
+
+PPO가 게임과 로봇 제어를 넘어 널리 알려진 계기는 언어 모델 정렬이다. 대응은 생각보다 곧이곧대로다. 지금까지 생성한 토큰들이 **상태**, 다음 토큰을 고르는 일이 **행동**, 언어 모델 자체가 **액터**다. 크리틱은 같은 모델에 가치 헤드를 하나 얹거나 별도 모델로 둔다.
+
+다른 것은 환경이다. 게임에는 규칙이 있어 보상을 계산해 주지만 「이 답이 좋은 답인가」에는 그런 규칙이 없다. 그 자리를 사람의 선호를 학습한 **보상 모델**이 대신한다. 그리고 이 보상은 토큰마다 나오지 않고 응답이 끝난 뒤 한 번 주어지므로, 수백 토큰에 걸친 희소 보상을 각 토큰에 배분하는 일을 크리틱과 GAE가 맡는다. 앞에서 본 부품이 그대로 쓰이는 자리다.
+
+### KL 페널티와 클리핑
+
+보상 모델은 사람의 선호를 근사한 것이지 선호 그 자체가 아니다. 그래서 그것만 최대화하면 모델이 보상 모델의 허점을 찾아내 점수는 높지만 사람이 보기에는 이상한 문장을 만들어 낸다. 이를 막으려고 학습 시작점인 참조 모델에서 멀어지는 만큼 보상을 깎는다.
 
 ```python
-# RLHF PPO 손실 (단순화)
-kl_penalty = torch.distributions.kl_divergence(
-    new_policy_dist, ref_policy_dist
-).sum(-1).mean()
-
-total_reward = reward_model_score - kl_coef * kl_penalty
-# 이후 표준 PPO 업데이트 적용
+kl = torch.distributions.kl_divergence(new_policy_dist, ref_policy_dist).sum(-1)
+total_reward = reward_model_score - kl_coef * kl.mean()
+# 이 보상으로 GAE를 계산하고 표준 PPO 업데이트를 적용한다
 ```
 
-이 KL 페널티가 PPO 클리핑과 같은 역할을 한다. 언어 모델이 사람처럼 말하는 성질을 잃지 않으면서도 인간 선호에 맞게 개선되도록 유도한다.
+이제 제약이 둘이 되었는데, 둘은 서로 다른 것을 막는다. **클리핑은 직전 이터레이션의 정책에서 멀어지지 않게 하고, KL 페널티는 학습 시작점인 참조 모델에서 멀어지지 않게 한다**. 앞의 것은 매 이터레이션 기준점이 갱신되는 상대적 제약이라 최적화의 안정을 담당하고, 뒤의 것은 학습 내내 고정된 절대적 제약이라 언어 능력 자체가 무너지는 것을 막는다. 클리핑만 있으면 한 걸음씩 조심스럽게 걸어서 아주 먼 곳까지 갈 수 있다 — 그 먼 곳이 문법이 무너진 지대일 수 있다는 것이 KL 페널티가 필요한 이유다.
 
-## 마무리
-
-PPO는 클리핑이라는 단순한 트릭으로 정책 업데이트를 보수적으로 제한하면서도 탁월한 성능을 달성한다. GAE로 어드밴티지 추정의 분산-편향을 균형 있게 조절하고, Actor-Critic 아키텍처로 가치 함수도 함께 학습한다. 다음 글에서는 PPO의 기반이 되는 Actor-Critic 방법론을 더 깊이 탐구한다.
+여기까지가 액터-크리틱이라는 부품에서 시작해 PPO까지 조립하는 길이다. 남은 이야기는 이 파이프라인의 앞쪽에 있다. 사람의 선호 비교 데이터로 보상 모델을 어떻게 학습시키는지, 그렇게 만든 보상이 왜 최적화 대상이 되는 순간 신뢰를 잃는지, 그리고 강화학습 단계를 아예 생략하고 선호 데이터에서 곧바로 정책을 뽑는 방법은 무엇인지다. 다음 글에서 그 세 갈래를 이어서 본다.
 
 ---
 
@@ -210,4 +375,4 @@ PPO는 클리핑이라는 단순한 트릭으로 정책 업데이트를 보수�
 
 **지난 글:** [정책 경사법: 정책을 직접 최적화하기](/articles/rl-policy-gradient)
 
-**다음 글:** [액터-크리틱: 정책과 가치 함수의 시너지](/articles/rl-actor-critic)
+**다음 글:** [RLHF 심화: 인간 피드백으로 LLM 정렬하기](/articles/rl-rlhf-deep)

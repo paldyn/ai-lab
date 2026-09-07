@@ -1,215 +1,429 @@
 ---
-title: "LLM 프롬프트 관리: 버전, 테스트, 배포까지"
-description: "프롬프트를 코드처럼 버전 관리하고, A/B 테스트로 개선을 측정하며, CI/CD에 통합하는 프롬프트 엔지니어링 운영 체계를 Langfuse 실전 예제와 함께 다룹니다."
+title: "프롬프트 레지스트리 — 버전·A/B·회귀 스위트"
+description: "프롬프트를 코드에서 떼어 파일과 레지스트리로 옮기고, 버전마다 점수를 붙이고, A/B 테스트와 골든 케이스 회귀 스위트로 배포를 막거나 여는 체계를 만든다. 감으로 고치던 자리를 숫자가 대신하게 하는 과정이다."
 author: "PALDYN Team"
 pubDate: "2026-05-24"
 category: "ml-ops"
 level: "중급"
-tags: ["프롬프트관리", "LLMOps", "Langfuse", "A/B테스트", "버전관리", "프롬프트엔지니어링"]
+tags: ["프롬프트관리", "LLMOps", "A/B테스트", "버전관리", "회귀테스트"]
 featured: false
 draft: false
 ---
-[지난 글](/articles/llmops-overview)에서 LLMOps의 전체 그림을 살펴봤다. 이번 글에서는 그 중에서도 가장 독특한 영역인 **프롬프트 관리**를 집중적으로 다룬다. 프롬프트는 코드이고, 코드는 관리되어야 한다.
+[지난 글](/articles/llmops-overview)에서 LLM 운영이 기존 MLOps와 어디서 갈리는지 훑었다. 그중 가장 낯선 자리가 프롬프트다. 모델 가중치도 아니고 애플리케이션 코드도 아닌데, 사용자가 받는 출력의 품질을 가장 크게 흔드는 것이 이 문자열이다. 그런데 이 문자열만 유독 관리 체계 밖에 놓여 있는 팀이 많다.
 
-많은 팀이 프롬프트를 하드코딩된 문자열로 관리한다. 코드 파일 안에 `system_prompt = "..."` 형태로 박혀 있다. 이렇게 하면 프롬프트를 수정할 때마다 코드 배포가 필요하고, 어떤 버전이 어떤 성능을 냈는지 추적할 수 없으며, A/B 테스트는 꿈도 꾸기 어렵다. **프롬프트 레지스트리**는 이 문제를 해결한다.
+**프롬프트 레지스트리**(prompt registry)는 프롬프트를 이름과 버전으로 조회하는 저장소다. 파일 몇 개로 시작할 수도 있고 외부 서비스를 붙일 수도 있는데, 어느 쪽이든 하는 일은 하나다 — 애플리케이션이 프롬프트 원문을 직접 들고 있지 않게 만드는 것. 이 하나가 바뀌면 버전 비교도, A/B 테스트도, 즉시 롤백도 따라온다. 이 글은 그 저장소를 만드는 것에서 시작해 바꾼 프롬프트가 정말 좋아졌는지 숫자로 판정하고, 나빠졌으면 배포를 막는 자동 장치까지 이어 붙인다.
 
-## 프롬프트 관리의 세 원칙
+## 하드코딩된 프롬프트의 대가
 
-**1. 외부화**: 프롬프트를 코드 파일에서 분리해 별도 저장소에 보관한다. 애플리케이션은 런타임에 레지스트리에서 최신 프롬프트를 조회한다.
+### 코드에 박힌 문자열
 
-**2. 버전 관리**: 모든 프롬프트 변경에 버전 번호를 부여하고, 변경 이유와 성능 변화를 기록한다. Git 커밋 히스토리처럼 언제든 이전 버전으로 돌아갈 수 있어야 한다.
+많은 팀이 프롬프트를 소스 파일 안의 문자열로 관리한다. `system_prompt = "당신은 전문 요약 작가입니다..."` 한 줄이 서비스 코드 한가운데 박혀 있는 모습이다. 처음에는 이것이 가장 빠르다. 고칠 것이 눈앞에 있고, 에디터에서 바로 수정하면 되고, 새로 세울 인프라도 없다.
 
-**3. 측정**: 프롬프트 변경의 영향을 데이터로 증명한다. "이 버전이 더 좋은 것 같아"가 아니라 "이 버전이 LLM 평가 점수 기준 0.04점 높다"로 말할 수 있어야 한다.
+비용은 나중에 온다. 첫째, 프롬프트 한 문장을 고치는 데 코드 배포가 필요하다. 조사 하나를 바꾸려고 빌드·테스트·배포 파이프라인 전체를 지나야 한다. 둘째, 프롬프트 변경과 코드 변경이 한 커밋에 섞여 diff를 봐도 무엇이 무엇인지 가려내기 어렵다. 셋째, 두 버전을 동시에 굴릴 방법이 없다. 코드에 문자열이 하나뿐이므로 비교 실험을 하려면 분기문을 심어야 하고, 그 분기문은 실험이 끝난 뒤에도 대개 그대로 남는다.
 
-## 프롬프트 관리 워크플로우
+### 남지 않는 이력
+
+더 큰 문제는 고치는 방식 자체다. 대부분의 팀이 프롬프트를 개선하는 절차는 이렇다. 출력이 마음에 들지 않으면 시스템 프롬프트를 열어 문장을 고치고, 예시 몇 개를 다시 돌려 보고, "괜찮은 것 같다"고 판단하면 배포한다. 이 절차에는 네 가지가 통째로 빠져 있다.
+
+| 빠진 것 | 나중에 겪는 일 |
+| --- | --- |
+| 이력 | 3개월 뒤 "이 문장이 왜 여기 있지?"에 아무도 답하지 못한다 |
+| 회귀 감지 | 한 케이스를 고치면서 다른 케이스를 망가뜨려도 모른다 |
+| 재현 가능한 비교 | "이전보다 나아졌나요?"에 정량적으로 답할 수 없다 |
+| 협업 | 문자열이 코드에 박혀 있어 여러 명이 동시에 손대기 어렵고 리뷰도 안 된다 |
+
+**회귀**(regression)는 새 버전이 예전 버전보다 나빠지는 것을 말한다. 프롬프트에서 회귀가 특히 잘 일어나는 이유가 있다. 프롬프트 수정은 대개 눈앞의 실패 사례 하나를 겨냥한다 — "요약이 너무 길다"는 불만을 받고 "반드시 3문장으로 작성할 것"을 규칙에 추가하는 식이다. 그 규칙은 문제의 케이스를 확실히 고치지만, 원래 다섯 문장이 필요했던 긴 문서에서는 정보를 잘라 먹는다. 예시 몇 개만 돌려 보고 배포하면 이 손해가 안 보인다.
+
+### 레지스트리의 세 원칙
+
+이 구멍을 메우는 원칙은 셋뿐이다. **외부화** — 프롬프트를 코드 파일에서 분리해 별도 저장소에 둔다. 애플리케이션은 실행 중에 저장소에서 조회한다. **버전 관리** — 모든 변경에 버전 번호를 붙이고 변경 이유와 성능 변화를 함께 기록한다. Git 히스토리처럼 언제든 이전 버전으로 돌아갈 수 있어야 한다. **측정** — 변경의 영향을 데이터로 증명한다. "이 버전이 더 좋은 것 같아"가 아니라 "이 버전이 판정 점수 기준 0.04점 높다"로 말할 수 있어야 한다.
+
+셋의 순서에는 의존 관계가 있다. 외부화하지 않으면 버전을 나눌 자리가 없고, 버전이 없으면 무엇과 무엇을 비교할지 정할 수 없다. 그래서 측정부터 붙이려는 시도는 대개 실패한다 — 점수는 나오는데 그 점수가 어느 프롬프트의 것인지 특정할 수 없기 때문이다.
 
 ![프롬프트 관리 워크플로우](/assets/posts/llmops-prompt-management-flow.svg)
 
-## Langfuse 설정과 기본 사용법
+전체 그림은 이렇게 생겼다. 프롬프트를 작성해 로컬에서 돌려 보고, PR을 열면 CI가 점수를 계산하고, 통과하면 스테이징 레이블로 올라가 소수 트래픽에서 A/B 테스트를 거치고, 이기면 프로덕션으로 100% 롤아웃된다. 아래에서 이 흐름을 왼쪽부터 하나씩 만들어 나간다.
 
-```bash
-pip install langfuse
-export LANGFUSE_PUBLIC_KEY="pk-lf-..."
-export LANGFUSE_SECRET_KEY="sk-lf-..."
-export LANGFUSE_HOST="https://cloud.langfuse.com"
+## 프롬프트 파일의 뼈대
+
+### YAML을 고르는 이유
+
+외부화의 가장 가벼운 형태는 프롬프트를 파일 하나로 떼어 내는 것이다. 형식으로는 YAML이 맞다. 이유는 두 가지인데, 하나는 파이프 기호(`|`)를 쓴 여러 줄 문자열이 이스케이프 없이 그대로 들어간다는 점이다. 프롬프트에는 따옴표·줄바꿈·중괄호가 잔뜩 섞이므로 JSON에 넣으면 `\n`으로 도배된 한 줄이 되고, 그 순간 diff가 읽히지 않는다. 다른 하나는 프롬프트 본문 옆에 메타데이터를 같은 파일에 둘 수 있다는 점이다. 버전, 작성자, 만든 이유, 파라미터, 평가 결과가 프롬프트와 한 몸으로 움직인다.
+
+```yaml
+# prompts/summarizer/v2.0.yaml
+version: "2.0"
+name: "article-summarizer"
+description: "기사 요약 — CoT 절차 적용, 3문장 제한"
+created_at: "2026-05-20"
+author: "dev-team"
+
+system: |
+  당신은 전문 에디터입니다. 주어진 기사를 다음 절차로 요약하세요.
+
+  1. 기사의 핵심 주제를 한 문장으로 파악한다.
+  2. 주요 논거나 사실을 최대 3개 추려낸다.
+  3. 위 분석을 바탕으로 정확히 3문장의 한국어 요약을 작성한다.
+
+  규칙:
+  - 반드시 3문장으로만 작성할 것
+  - 원문에 없는 추측이나 의견을 추가하지 말 것
+
+user_template: |
+  다음 기사를 요약하라:
+
+  {article}
+
+parameters:
+  model: claude-sonnet-4-6
+  temperature: 0.2
+  max_tokens: 512
+
+eval:                      # 평가 러너가 채우는 칸
+  baseline_version: "1.0"
+  score_delta: null
+  test_dataset: datasets/summarizer-eval.jsonl
 ```
+
+`parameters` 블록이 프롬프트와 같은 파일에 있는 것이 중요하다. 온도 0.2와 온도 0.9는 같은 프롬프트라도 전혀 다른 결과를 내므로, 실은 프롬프트의 일부다. 이것을 애플리케이션 설정에 두면 프롬프트만 롤백했을 때 파라미터는 새 값 그대로 남아 어느 쪽도 재현되지 않는다.
+
+### 변수를 검사하는 로더
+
+파일을 읽어 메시지로 만드는 로더가 다음이다. 여기서 한 가지를 반드시 넣어야 하는데, **템플릿이 요구하는 변수가 다 왔는지 부르는 자리에서 먼저 검사하는 것**이다. 그냥 `str.format`에 맡겨도 빠진 변수는 걸린다. 다만 걸리는 모양이 `KeyError: 'article'` 한 줄이라 어느 프롬프트의 어느 버전에서 난 것인지가 안 적히고, 프롬프트가 열 개인 저장소에서는 그 한 줄로 자리를 찾지 못한다.
+
+```python
+# prompt_loader.py
+import yaml
+from pathlib import Path
+from string import Formatter
+
+class PromptTemplate:
+    def __init__(self, path: str):
+        self.data = yaml.safe_load(Path(path).read_text())
+        self.version = self.data["version"]
+        self.system = self.data["system"]
+        self.user_template = self.data["user_template"]
+        self.parameters = self.data.get("parameters", {})
+
+    def render(self, **kwargs) -> dict:
+        required = {v for _, v, _, _ in Formatter().parse(self.user_template) if v}
+        missing = required - set(kwargs)
+        if missing:
+            raise ValueError(f"누락된 템플릿 변수: {missing}")
+        return {
+            "system": self.system,
+            "user": self.user_template.format(**kwargs),
+            "parameters": self.parameters,
+        }
+```
+
+`Formatter().parse()`가 템플릿 문자열을 훑어 중괄호 안의 이름을 뽑아 주므로, 필요한 변수 집합에서 넘어온 키를 빼면 빠진 것이 남는다. 다섯 줄짜리 검사가 여기까지 한다.
+
+**반대 방향이 더 위험한데 이 검사에는 안 걸린다.** `str.format`은 템플릿에 없는 인자를 넘겨도 조용히 무시한다. 그래서 프롬프트를 손보며 `{article}` 자리를 지웠는데 호출부가 그대로 `article=`을 넘기면, 아무 오류 없이 기사가 빠진 프롬프트가 모델로 간다. 빠진 변수는 오류를 내며 배포 전에 멈추지만 이쪽은 품질 하락으로만 나타나 원인을 찾는 데 며칠이 걸린다. `set(kwargs) - required`가 비어 있는지도 같은 자리에서 함께 본다.
+
+### 이름과 버전으로 조회
+
+레지스트리는 그 위에 얇게 얹는다. 하는 일은 「이름과 버전을 받아 파일 경로를 고르는 것」뿐이고, 여기서 정해야 할 것은 `latest`의 뜻 하나다.
+
+```python
+class PromptRegistry:
+    def __init__(self, prompts_dir: str = "prompts"):
+        self.root = Path(prompts_dir)
+
+    def get(self, name: str, version: str = "latest") -> PromptTemplate:
+        ns = self.root / name
+        if version == "latest":
+            files = sorted(ns.glob("v*.yaml"))
+            if not files:
+                raise FileNotFoundError(f"프롬프트 '{name}'을 찾을 수 없습니다.")
+            return PromptTemplate(str(files[-1]))
+        return PromptTemplate(str(ns / f"v{version}.yaml"))
+
+    def list_versions(self, name: str) -> list[str]:
+        return [f.stem for f in sorted((self.root / name).glob("v*.yaml"))]
+```
+
+파일 이름 정렬로 최신을 고르는 이 구현에는 함정이 하나 있다. 문자열 정렬이라 `v10.0`이 `v2.0`보다 앞에 온다 — 버전이 열 개를 넘기는 순간 `latest`가 엉뚱한 파일을 가리킨다. 버전 번호를 두 자리로 채우거나(`v02.0`) 숫자로 파싱해 정렬하면 된다. 그리고 프로덕션 코드에서는 `latest`를 아예 쓰지 않는 편이 낫다. 새 파일을 하나 커밋하는 것만으로 배포가 일어나는 셈이라, 무엇이 언제 바뀌었는지가 다시 흐려진다. 실행 중인 서비스는 버전을 못 박아 조회하고, 무엇을 프로덕션으로 볼지는 다음 절의 레이블이 정한다.
+
+## 레지스트리 서비스와 레이블
+
+### 파일 대신 서비스
+
+파일 기반 레지스트리는 Git이 이미 주는 것을 그대로 쓴다는 점에서 강하지만, 한계도 분명하다. 프롬프트를 바꾸려면 여전히 배포가 필요하고, 비개발자는 손댈 수 없으며, 어느 버전이 실제로 얼마나 호출됐는지는 별도로 세야 한다. Langfuse나 PromptLayer 같은 프롬프트 관리 서비스는 이 셋을 한꺼번에 가져간다. 프롬프트를 API로 등록하고 이름·레이블로 조회하며, 조회한 버전을 그 호출의 기록에 이어 붙여 버전별로 세어 볼 수 있다.
 
 ```python
 from langfuse import Langfuse
-import anthropic
 
 lf = Langfuse()
-claude = anthropic.Anthropic()
 
-# 프롬프트 등록 (최초 1회 또는 업데이트 시)
 lf.create_prompt(
     name="document-summarizer",
     type="chat",
     prompt=[
-        {
-            "role": "system",
-            "content": "당신은 전문 요약 작가입니다. 핵심만 담은 간결한 요약을 작성하세요."
-        },
-        {
-            "role": "user",
-            "content": "다음 문서를 {{length}}줄 이내로 요약해주세요:\n\n{{document}}"
-        }
+        {"role": "system", "content": "당신은 전문 요약 작가입니다. 핵심만 담은 간결한 요약을 작성하세요."},
+        {"role": "user", "content": "다음 문서를 {{length}}줄 이내로 요약해주세요:\n\n{{document}}"},
     ],
-    config={
-        "model": "claude-sonnet-4-6",
-        "max_tokens": 1024,
-        "temperature": 0.3,
-    },
+    config={"model": "claude-sonnet-4-6", "max_tokens": 1024, "temperature": 0.3},
     labels=["production"],
 )
 
-# 런타임에서 프롬프트 조회 및 사용
-def summarize(document: str, length: int = 3) -> str:
-    prompt = lf.get_prompt("document-summarizer", label="production")
-    messages = prompt.compile(document=document, length=length)
-
-    with lf.trace(name="summarize") as trace:
-        response = claude.messages.create(
-            model=prompt.config["model"],
-            max_tokens=prompt.config["max_tokens"],
-            messages=messages,
-        )
-        text = response.content[0].text
-        trace.generation(
-            name="claude-response",
-            model=prompt.config["model"],
-            input=messages,
-            output=text,
-            usage={
-                "input": response.usage.input_tokens,
-                "output": response.usage.output_tokens,
-            },
-        )
-    return text
+def build_messages(document: str, length: int = 3):
+    prompt = lf.get_prompt("document-summarizer", type="chat", label="production")
+    return prompt.compile(document=document, length=length), prompt
 ```
 
-## A/B 테스트 설계
+앞서 만든 파일 로더와 구조가 같다는 점을 눈여겨볼 만하다. 등록하고, 조회하고, 변수를 채워 메시지를 만든다. `config`가 앞의 `parameters`에 해당하고, `compile()`이 `render()`에 해당한다. 그래서 둘 사이를 옮기는 비용이 크지 않다 — 인터페이스를 이 모양으로 맞춰 두면 팀이 커질 때 파일에서 서비스로 갈아타기가 쉽다.
 
-![프롬프트 A/B 테스트 구조](/assets/posts/llmops-prompt-management-ab.svg)
+### 레이블이 정하는 배포
+
+서비스 쪽에서 새로 얻는 개념이 **레이블**(label)이다. 버전 번호가 「몇 번째로 만든 것인가」라면 레이블은 「지금 어느 역할을 맡고 있는가」다. `production`, `staging`, `dev` 같은 이름을 버전에 붙였다 뗐다 할 수 있고, 애플리케이션은 번호 대신 레이블로 조회한다.
+
+이 한 칸이 배포와 롤백을 통째로 바꾼다. 프롬프트를 바꾸는 일이 `production` 레이블을 v1에서 v2로 옮기는 일이 되고, 되돌리는 일은 다시 v1로 옮기는 일이 된다. 코드 배포도, 재시작도, 롤백 브랜치도 없다. 앞의 그림에서 버전 이력 칸에 v1이 `current prod`, v2가 `staging`, v3이 `draft`로 나란히 서 있는 것이 이 상태다 — 세 버전이 동시에 존재하고 레이블만 다르다.
+
+주의할 점은 이 편리함이 곧 위험이라는 것이다. 레이블 이동에는 빌드도 리뷰도 없으므로, 클릭 한 번으로 검증되지 않은 프롬프트가 전체 트래픽을 받을 수 있다. 그래서 레이블을 옮기는 권한과 절차를 따로 정해 두어야 한다. 뒤에서 만들 CI 게이트가 이 자리를 지킨다.
+
+### 호출마다 남는 기록
+
+측정의 출발점은 「이 응답이 어느 프롬프트 버전에서 나왔는가」를 남기는 것이다. 조회한 프롬프트 객체는 자기 버전 번호를 들고 있으므로, 모델 호출을 기록할 때 그 값을 메타데이터로 같이 넣는다. 입력·출력·토큰 사용량·지연 시간에 프롬프트 버전이 한 칸 붙는 것뿐인데, 이 한 칸이 있고 없고에 따라 나중에 할 수 있는 질문이 갈린다. "지난주 대비 품질이 떨어졌다"는 보고를 받았을 때 버전별로 잘라 볼 수 있는지가 여기서 정해진다.
+
+기록 API의 정확한 모양은 SDK 버전마다 다르고 바뀌기도 하므로 여기서는 signature를 못 박지 않는다. 중요한 것은 남기는 값이다. 최소한 프롬프트 이름과 버전, 입력과 출력, 토큰 수, 그리고 뒤에서 쓸 실험 변수 이름을 넣는다. 토큰 수를 빠뜨리면 「점수는 0.04점 올랐는데 비용은 얼마나 늘었는가」를 물을 수 없다 — 프롬프트에 절차 세 줄을 추가하면 입력 토큰이 늘고, 그 증가분은 모든 호출에 곱해진다. 비용 쪽 계산은 [LLM 비용 추적](/articles/llmops-cost-tracking)에서 따로 다뤘다.
+
+## A/B 테스트의 두 자리
+
+### 오프라인 짝 비교
+
+두 버전 중 어느 쪽이 나은지 판정하는 자리는 둘이다. 하나는 실제 사용자에게 내보내기 전에 데이터셋으로 재는 **오프라인 비교**이고, 다른 하나는 트래픽을 갈라 재는 **온라인 A/B 테스트**다. 순서가 있다 — 오프라인에서 이긴 것만 온라인으로 보낸다.
+
+오프라인 비교의 뼈대는 단순하다. 평가 케이스 200개가 있으면 버전 A와 버전 B로 각각 200번 호출하고, 나온 400개의 출력을 채점해 평균을 비교한다. 채점에는 보통 **LLM-as-Judge**를 쓴다 — 다른 모델에게 채점 기준을 주고 출력에 1~5점을 매기게 하는 방식이다. 두 버전을 같은 케이스에 돌리는 것이 핵심인데, 케이스마다 난이도가 크게 다르기 때문이다. 서로 다른 케이스로 두 버전을 재면 점수 차이가 프롬프트에서 온 것인지 케이스가 쉬웠던 것인지 구분되지 않는다.
+
+```python
+results_a, results_b = await asyncio.gather(
+    runner.run(dataset.cases, tmpl_a.system),
+    runner.run(dataset.cases, tmpl_b.system),
+)
+
+scores_a, scores_b = [], []
+for case, r_a, r_b in zip(dataset.cases, results_a, results_b):
+    criteria = case.reference_criteria or "전반적인 품질을 1~5점으로 평가"
+    scores_a.append(judge.score(case.input, r_a.actual_output, criteria)["score"])
+    scores_b.append(judge.score(case.input, r_b.actual_output, criteria)["score"])
+```
+
+두 버전을 `asyncio.gather`로 동시에 돌리는 데는 이유가 있다. 시간을 아끼려는 것도 있지만, 순차로 돌리면 두 실행 사이에 모델 쪽 상태가 달라질 수 있다 — 같은 시간대에 겹쳐 돌리면 그런 차이가 양쪽에 고르게 섞인다.
+
+### 유의성을 재는 검정
+
+평균만 비교하면 안 되는 이유는 케이스 수가 적을 때 우연히 이길 수 있기 때문이다. 50개 케이스에서 평균이 4.1과 4.2로 나왔다면 이 0.1이 진짜 차이인지, 아니면 케이스를 다시 뽑으면 뒤집힐 차이인지 알 수 없다. **p-값**(p-value)은 「두 버전이 실제로는 같은데 우연히 이만큼 차이가 벌어질 확률」이고, 이 값이 기준선 $$\alpha$$ 보다 작을 때만 차이를 인정한다. 관례적으로 $$\alpha = 0.05$$ 를 쓴다.
+
+검정으로는 **윌콕슨 부호 순위 검정**(Wilcoxon signed-rank test)이 맞다. 같은 케이스에 두 버전을 돌렸으므로 점수가 짝을 이루고, 이 검정은 짝마다의 차이를 순위로 바꿔 다룬다. 1~5점 척도의 판정 점수는 이산값이고 대개 4점 근처에 몰려 정규분포와 거리가 멀어서, 평균에 기대는 검정보다 순위에 기대는 검정이 안전하다. 통계 쪽 배경은 [평가의 통계적 유의성](/articles/eval-statistical-significance)에서 더 깊이 다뤘다.
+
+```python
+from scipy.stats import wilcoxon
+
+delta = b_avg - a_avg
+_, p_value = wilcoxon(scores_b, scores_a)  # 모든 짝이 같으면 p가 NaN
+
+if not (p_value < alpha):                  # NaN도 여기로 떨어진다
+    winner, confidence = "tie", "low"
+else:
+    winner = "B" if delta > 0 else "A"
+    confidence = "high" if p_value < 0.01 else "medium"
+```
+
+조건을 `p_value >= alpha`가 아니라 `not (p_value < alpha)`로 적은 데는 이유가 있다. 두 버전의 점수가 케이스마다 똑같으면 검정이 계산할 차이가 없어 p를 `NaN`으로 돌려주는데, `NaN`은 어떤 비교에도 거짓이라 앞의 꼴로 쓰면 tie 갈래를 그냥 지나쳐 `delta`의 부호로 승자를 고른다. 차이가 0인데 A가 이겼다고 적히는 셈이다.
+
+판정을 세 갈래로 두는 것이 중요하다. 「A 승」과 「B 승」만 두면 유의하지 않은 차이도 어느 한쪽으로 밀어 넣게 되고, 그 결정이 쌓이면 랜덤 워크로 프롬프트를 고치는 셈이 된다. `tie`가 나오면 답은 「케이스를 늘려 다시 재거나, 그 변경을 버린다」이지 「그래도 조금 나으니 배포한다」가 아니다. 신뢰도를 `p < 0.01`에서 한 칸 더 나누는 것은 배포 결정에 쓰기 위해서다 — `medium`이면 소수 트래픽부터, `high`면 바로 전체로 갈 수 있다.
+
+### 트래픽을 가르는 해시
+
+오프라인에서 이기면 실제 트래픽으로 넘어간다. 여기서 정해야 할 것은 「어떤 사용자를 어느 쪽에 넣을 것인가」이고, 답은 **사용자 ID를 해싱해 버킷으로 나누는 것**이다.
 
 ```python
 import hashlib
 
-def get_prompt_variant(user_id: str, experiment: str) -> str:
-    """사용자 ID를 기반으로 일관된 variant 할당 (같은 사용자는 항상 같은 variant)"""
-    hash_val = int(hashlib.md5(f"{user_id}:{experiment}".encode()).hexdigest(), 16)
-    bucket = hash_val % 100  # 0~99
-    return "treatment" if bucket < 30 else "control"  # 30% treatment
-
-def summarize_with_experiment(document: str, user_id: str) -> str:
-    variant = get_prompt_variant(user_id, "cot-summarizer-v2")
-    label = "staging" if variant == "treatment" else "production"
-
-    prompt = lf.get_prompt("document-summarizer", label=label)
-    messages = prompt.compile(document=document, length=3)
-
-    with lf.trace(name="summarize", tags=[f"variant:{variant}"]) as trace:
-        response = claude.messages.create(
-            model=prompt.config["model"],
-            max_tokens=prompt.config["max_tokens"],
-            messages=messages,
-        )
-        text = response.content[0].text
-        # Langfuse에 variant 정보와 함께 로깅 → 대시보드에서 비교 가능
-        trace.update(metadata={"variant": variant, "prompt_version": prompt.version})
-
-    return text
+def get_variant(user_id: str, experiment: str, treatment_pct: int = 30) -> str:
+    h = int(hashlib.md5(f"{user_id}:{experiment}".encode()).hexdigest(), 16)
+    return "treatment" if h % 100 < treatment_pct else "control"
 ```
 
-## CI에서 프롬프트 자동 평가
+무작위 난수를 쓰지 않는 이유가 있다. 호출할 때마다 동전을 던지면 같은 사용자가 어제는 A, 오늘은 B를 받는다. 그러면 사용자 경험이 요청마다 흔들리고, 무엇보다 그 사용자의 만족도가 어느 버전의 것인지 귀속되지 않는다. 해시는 결정적이므로 같은 사용자는 실험이 끝날 때까지 늘 같은 쪽에 남는다. 실험 이름을 해시 입력에 함께 넣는 것도 같은 이유다 — 이것이 없으면 모든 실험에서 같은 사용자가 늘 treatment에 배정되어, 그 사람의 특성이 모든 실험 결과에 그대로 실린다.
 
-프롬프트를 PR로 변경할 때 CI가 자동으로 평가 점수를 계산하고, 임계값 미달 시 merge를 막는다.
+![프롬프트 A/B 테스트 구조](/assets/posts/llmops-prompt-management-ab.svg)
+
+배분 비율 30%는 관례적인 출발점이다. 새 버전이 망가졌을 때 피해를 30%로 묶으면서, 통계적으로 판정할 만큼의 표본은 모을 수 있는 지점이다. 그림의 예에서 control(v1)이 평균 4.1점, treatment(v2)가 4.5점을 냈고 차이가 유의하게 나왔으므로, 다음 동작은 v2에 `production` 레이블을 옮기는 것이다. 반대로 treatment가 지면 레이블은 그대로 두고 버전만 남긴다 — 실패한 버전도 지우지 않는 편이 낫다. 두 달 뒤 비슷한 아이디어가 다시 나왔을 때 「그건 이미 재 봤고 4.5 대 3.9였다」고 답할 수 있는 근거가 그 파일이다.
+
+## 회귀를 막는 골든 케이스
+
+### 골든 케이스의 자격
+
+A/B 테스트가 새 버전이 **평균적으로** 나은지 보는 도구라면, 회귀 스위트는 **절대로 나빠지면 안 되는 케이스**를 지키는 안전망이다. 둘은 다른 질문에 답한다. 평균이 4.1에서 4.5로 올랐어도 그 안에서 특정 케이스가 4점에서 1점으로 떨어졌을 수 있고, 그 케이스가 결제 안내 문구였다면 평균 상승은 아무 위로가 되지 않는다.
+
+**골든 케이스**(golden case)는 「이것만은 반드시 통과해야 한다」고 지정한 평가 케이스다. 자격은 둘 중 하나다. 하나는 **과거에 실패해서 고친 케이스** — 한 번 무너진 자리는 다시 무너지기 쉽고, 고쳤다는 사실 자체가 그 자리가 취약하다는 증거다. 다른 하나는 **핵심 비즈니스 기능에 해당하는 케이스** — 서비스의 대표 시나리오, 법적 문구가 들어가는 응답, 가장 많이 들어오는 질문 유형이 여기 든다. 골든 케이스를 고르는 기준과 데이터셋을 만드는 방법은 [골든 데이터셋 구축](/articles/eval-golden-dataset)에서 자세히 다뤘다.
+
+케이스 파일에 `is_golden` 플래그 한 칸을 두고 전체 평가 데이터셋 안에서 표시만 해 두면 된다. 별도 파일로 떼어 놓으면 두 데이터셋을 따로 관리하게 되고, 그러다 골든 쪽만 갱신이 밀린다.
+
+### 통과율과 두 임계값
+
+회귀 판정에는 임계값이 두 개 들어간다. 헷갈리기 쉬운 자리라 처음부터 갈라 두는 편이 낫다.
 
 ```python
-# tests/test_prompts.py (pytest)
-import pytest
-from src.summarizer import summarize
-from src.evaluator import llm_judge
+def check_regression_suite(scores_by_case_id: dict[str, float],
+                           threshold: float = 0.8) -> dict:
+    golden = [c for c in load_cases() if c.get("is_golden")]
+    passed, failed = 0, []
+    for case in golden:
+        score = scores_by_case_id.get(case["case_id"], 0.0)
+        normalized = score / 5.0 if score > 1 else score   # 5점 척도 정규화
+        if normalized >= 0.6:                              # 케이스 단위 통과선
+            passed += 1
+        else:
+            failed.append({"case_id": case["case_id"], "score": normalized})
 
-TEST_CASES = [
-    {
-        "document": "..." ,  # 긴 문서
-        "expected_topics": ["핵심 주제", "결론"],
-        "max_sentences": 5,
-    },
-]
-
-@pytest.mark.parametrize("case", TEST_CASES)
-def test_summarizer_quality(case):
-    summary = summarize(case["document"])
-    
-    # LLM-as-Judge로 품질 평가
-    score = llm_judge(
-        prompt=f"요약 품질을 1~5점으로 평가하세요. 문서: {case['document'][:500]}... 요약: {summary}",
-        criteria=["간결성", "정확성", "완성도"],
-    )
-    
-    assert score >= 3.5, f"요약 품질 임계값 미달: {score:.2f}"
-    assert len(summary.split("\n")) <= case["max_sentences"]
+    pass_rate = passed / len(golden) if golden else 1.0
+    return {
+        "pass_rate": round(pass_rate, 4),
+        "failed_cases": failed,
+        "is_regression": pass_rate < threshold,           # 스위트 단위 통과선
+    }
 ```
+
+첫 번째 임계값 0.6은 **케이스 하나가 통과인지**를 정한다. 5점 척도를 0~1로 정규화하므로 3점이 곧 0.6이고, 판정 모델이 3점 미만을 준 케이스는 실패로 센다. 두 번째 임계값 0.8은 **스위트 전체가 통과인지**를 정한다. 골든 케이스가 40개라면 32개까지는 통과지만 31개면 통과율이 0.775로 떨어져 회귀로 판정된다.
+
+두 번째 값을 1.0이 아니라 0.8로 두는 것은 타협이다. LLM 판정에는 흔들림이 있어서 같은 출력을 두 번 채점해도 점수가 조금 다르게 나오고, 1.0을 요구하면 프롬프트가 멀쩡한데도 CI가 붉어지는 날이 잦아진다. 그런 실패가 몇 번 반복되면 팀은 결과를 안 보게 된다 — 게이트를 너무 조이면 게이트가 사라진다. 대신 실패 케이스 ID는 반드시 출력한다. 통과율만 보고하면 어느 자리가 무너졌는지 사람이 다시 찾아야 한다.
+
+### 점수가 올라도 막는 자리
+
+두 신호를 어떻게 조합하는지가 이 절의 결론이다. 규칙은 하나다 — **평균 점수가 올랐더라도 골든 케이스를 하나라도 잃었으면 배포하지 않는다.** 두 신호는 대등하지 않다. A/B 점수는 「전체적으로 얼마나 좋아졌나」이고 골든 케이스는 「무너지면 안 되는 자리가 버텼나」인데, 후자가 거부권을 갖는다.
+
+이 규칙이 실제로 하는 일은 프롬프트 수정의 방향을 바꾸는 것이다. 골든 케이스가 없으면 개선은 늘 「눈앞의 불만을 없애는 문장 추가」로 흐르고, 그 문장들이 쌓이면서 프롬프트가 규칙 목록으로 부풀어 오른다. 골든 케이스가 있으면 규칙 하나를 추가할 때마다 그 규칙이 다른 자리를 깨는지가 바로 나온다. 앞에서 든 "반드시 3문장" 규칙이 긴 문서를 망가뜨리는 사례는, 긴 문서 케이스가 골든에 들어 있으면 배포 전에 잡힌다.
+
+회귀 테스트를 평가 파이프라인에 어떻게 앉히는지는 [평가 회귀 테스트](/articles/eval-regression-testing)에 더 자세히 적어 두었다.
+
+## PR에서 도는 평가
+
+### 프롬프트 파일만 여는 트리거
+
+지금까지 만든 것을 사람이 손으로 돌리면 결국 안 돌린다. 마지막 조각은 이 전부를 PR에 매다는 것이다. GitHub Actions로 짜면 트리거에서부터 신경 쓸 것이 하나 나온다 — `paths` 필터로 프롬프트 파일이 바뀐 PR에서만 돌게 한다.
 
 ```yaml
 # .github/workflows/prompt-eval.yml
-name: Prompt Evaluation
-on: [pull_request]
+name: Prompt Eval
+on:
+  pull_request:
+    paths:
+      - 'prompts/**/*.yaml'          # 프롬프트가 바뀐 PR에서만
 jobs:
-  evaluate:
+  eval:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v7
+        with:
+          python-version: '3.12'
       - run: pip install -r requirements.txt
-      - run: pytest tests/test_prompts.py -v --tb=short
+      - name: 변경된 프롬프트 감지
+        run: git diff --name-only origin/main...HEAD | grep 'prompts/' > changed.txt
+      - name: 베이스라인 대비 평가
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
-          LANGFUSE_SECRET_KEY: ${{ secrets.LANGFUSE_SECRET_KEY }}
+        run: |
+          python scripts/run_eval.py --changed-files changed.txt \
+            --baseline-branch main --output eval_report.json
+      - name: 회귀 검사
+        run: python scripts/regression_check.py --report eval_report.json --threshold 0.8
 ```
 
-## 프롬프트 파일 구조 (Git 기반 관리)
+필터가 없으면 모든 PR이 모델 호출 수백 건을 발생시킨다. 프롬프트를 건드리지 않은 리팩터링 PR에서도 평가가 돌아 시간과 비용을 쓰고, 그러면 팀이 워크플로우를 꺼 버린다. 변경된 파일 목록을 파일로 뽑아 다음 단계에 넘기는 것도 같은 이유다 — 프롬프트가 열 개인 저장소에서 하나만 바뀌었으면 하나만 평가한다.
 
-Langfuse 같은 SaaS가 없을 때는 Git에 YAML로 프롬프트를 관리하는 방법도 실용적이다.
+`--baseline-branch main`이 비교 대상을 정한다. 후보는 PR 브랜치의 프롬프트이고 베이스라인은 `main`의 같은 프롬프트다. 이렇게 두면 어떤 PR이든 자기 자신의 이전 버전과 비교되므로, 어느 시점에 브랜치를 땄든 판정 기준이 일정하다.
 
-```yaml
-# prompts/document-summarizer/v2.yaml
-name: document-summarizer
-version: 2
-description: "Chain-of-Thought 추가 버전"
-created_at: "2026-05-01"
-author: "alice@company.com"
+### 베이스라인과 후보의 표
 
-system: |
-  당신은 전문 요약 작가입니다.
-  먼저 문서의 핵심 주제를 파악하고,
-  그 다음 {{length}}줄 이내로 요약을 작성하세요.
+CI가 내는 산출물은 두 가지다. 하나는 종료 코드 — 회귀면 실패로 끝나 merge 버튼을 막는다. 다른 하나는 PR 코멘트로 붙는 표다. 베이스라인과 후보의 평균 점수, 통과율, 최종 판정을 나란히 놓는다. 사람이 PR을 열자마자 볼 자리에 숫자를 두는 것이 요점이다. 대시보드에 있으면 아무도 안 본다.
 
-user: |
-  문서:
-  {{document}}
+게이트 자체는 pytest로 짜도 된다. 평가 케이스를 `parametrize`로 펼치고, 각 케이스에서 요약을 만들어 판정 모델로 채점한 뒤 `assert score >= 3.5`로 막는 식이다. 여기에 형식 검사를 한 줄 더 붙이면 좋다 — 출력의 줄 수나 문장 수가 프롬프트가 지시한 한도를 넘지 않는지 보는 것이다. 판정 모델은 대체로 관대해서 4문장짜리 요약에도 4점을 주는데, 「3문장」이 사양이라면 그건 통과가 아니다. 기계로 셀 수 있는 조건은 판정 모델에 맡기지 말고 직접 센다.
 
-config:
-  model: claude-sonnet-4-6
-  temperature: 0.3
-  max_tokens: 1024
+민감한 값은 전부 시크릿으로 넘긴다. 위 워크플로우의 `ANTHROPIC_API_KEY`가 그 자리이고, 레지스트리 서비스를 쓴다면 그쪽 키도 같이 들어간다. 포크에서 온 PR에는 시크릿이 주입되지 않으므로 평가가 그냥 실패한다는 점은 미리 알고 있어야 한다.
 
-eval:
-  baseline_version: 1
-  score_delta: +0.04
-  test_dataset: datasets/summarizer-eval-v2.json
+### 리뷰어가 보는 다섯 칸
+
+자동 평가가 통과해도 사람 리뷰가 남는다. 코드 리뷰에 체크리스트가 있듯 프롬프트 리뷰에도 볼 자리가 정해져 있다.
+
+| 항목 | 확인하는 것 |
+| --- | --- |
+| 의도 명확성 | 원하는 동작을 정확히 명세하는가, 모호한 형용사로 때우지 않았는가 |
+| 경계 케이스 | 빈 입력, 아주 긴 입력, 특수 문자에서 동작이 안정적인가 |
+| 보안 | 사용자 입력이 지시로 읽힐 틈이 없는가 |
+| 비용 영향 | 길이 변화로 입력 토큰이 얼마나 늘어나는가 |
+| 평가 결과 | 자동 평가 점수가 기존 버전 대비 개선됐는가 |
+
+보안 칸이 프롬프트 리뷰에만 있는 항목이다. 프롬프트에 사용자 입력을 끼워 넣는 자리가 있으면 그 입력이 지시로 읽힐 수 있고, 새 규칙을 추가하면서 그 경계가 흐려지기도 한다. 방어 기법은 [프롬프트 인젝션 방어](/articles/prompt-injection-defense)에서 따로 다뤘다.
+
+비용 칸도 자동 평가가 대신해 주지 못하는 자리다. 점수가 0.04점 오르는 대가로 시스템 프롬프트가 300토큰 길어졌다면, 그 300토큰은 하루 호출 수만큼 곱해진다. 캐싱으로 상당 부분을 덜어 낼 수 있는 종류의 증가인지, 요청마다 새로 들어가는 부분인지까지 봐야 판단이 선다.
+
+## 버전 트리와 이터레이션
+
+### 커밋 메시지에 남기는 근거
+
+프롬프트 YAML을 Git에 두면 이력이 저절로 생긴다. 무엇이 바뀌었는지는 diff에, 왜 바꿨는지는 커밋 메시지에 남는다. 그런데 「왜」는 저절로 남지 않는다. 규칙을 하나 정해 두는 편이 낫다 — **프롬프트 커밋 메시지에는 평가 결과를 함께 적는다.**
+
+```bash
+git checkout -b prompt/summarizer-v2.1
+
+git add prompts/summarizer/v2.1.yaml
+git commit -m "feat(prompt): summarizer v2.1 — 능동태 강조 규칙 추가
+
+- 시스템 프롬프트에 '수동태보다 능동태를 선호할 것' 규칙 추가
+- A/B 결과: +8% (p=0.02), 골든 케이스 100% pass
+- 이슈: #234 (번역투 문체 개선 요청)"
 ```
 
-## 프롬프트 변경 리뷰 체크리스트
+이 세 줄이 있으면 6개월 뒤 `git log`만으로 답이 나온다. 무엇을 바꿨고, 얼마나 좋아졌으며, 어떤 요청에서 출발했는지가 한자리에 있다. 반대로 "프롬프트 개선"이라고만 적힌 커밋은 diff를 열어 봐야 하고, 열어 봐도 그 변경이 좋았는지는 알 수 없다.
 
-코드 리뷰처럼 프롬프트 변경에도 리뷰어가 확인할 항목이 있다.
+리뷰를 돕는 도구도 하나 만들어 두면 좋다. 두 버전의 시스템 프롬프트를 `difflib.unified_diff`로 줄 단위 비교해 출력하는 스무 줄짜리 스크립트인데, YAML 파일 전체 diff보다 읽기 편하다. 메타데이터 변경이 섞이지 않고 프롬프트 본문만 남기 때문이다.
 
-- **의도 명확성**: 프롬프트가 원하는 동작을 정확히 명세하는가
-- **경계 케이스**: 빈 입력, 매우 긴 입력, 특수 문자 입력에서 동작이 안정적인가
-- **보안**: 프롬프트 인젝션 취약점이 없는가
-- **비용 영향**: 프롬프트 길이 변화로 토큰 비용이 얼마나 증가하는가
-- **평가 결과**: 자동화 평가 점수가 기존 버전 대비 개선됐는가
+```diff
+--- v2.0/system
++++ v2.1/system
+   규칙:
+   - 반드시 3문장으로만 작성할 것
+   - 원문에 없는 추측이나 의견을 추가하지 말 것
++  - 수동태보다 능동태를 선호할 것
+```
+
+### 점수 이력과 회귀 표시
+
+버전이 쌓이면 다음 질문은 「어떤 변경이 실제로 개선을 가져왔는가」다. 평가 결과를 DB에 남겨 두었다면 버전별 점수를 시간순으로 뽑고, 앞 버전과의 차이를 함께 찍는 짧은 스크립트로 답할 수 있다. 차이가 일정 폭 아래로 떨어지면 회귀 표시를 붙인다.
+
+![프롬프트 버전 트리](/assets/posts/project-prompt-iterating-versioning.svg)
+
+트리로 그려 놓으면 패턴이 보인다.
+
+| 버전 | 점수 | 앞 버전 대비 | 상태 |
+| --- | --- | --- | --- |
+| v1.0 | 61% | — | 최초 |
+| v1.1 | 74% | +13 | CoT 도입 |
+| v1.1-exp | 79% | +5 | 실험 브랜치, 미병합 |
+| v2.0 | 86% | +12 | 프로덕션 |
+| v2.1 | 71% | -15 | 회귀 — 롤백 |
+
+읽어 낼 것이 셋 있다. 첫째, 큰 상승은 큰 변경에서 나왔다. v1.0에서 v2.0까지 25포인트가 올랐는데 그 대부분이 절차를 명시하는 구조 변경 두 번에서 왔고, 세부 문구 조정은 대개 몇 포인트에 그친다. 둘째, 세부 조정이 회귀를 부르기도 한다. v2.1은 v2.0에서 문구를 손봤을 뿐인데 15포인트를 잃었다. 셋째, 실험 브랜치 v1.1-exp는 79%로 당시 프로덕션보다 좋았는데 병합되지 않았다 — 이런 자리가 그대로 남아 있으면 나중에 다시 꺼내 볼 수 있다.
+
+점수 하락에 자동 알림을 걸어 두는 기준으로는 10포인트쯤이 무난하다. 이보다 촘촘하면 판정 모델의 흔들림에도 알림이 울리고, 이보다 느슨하면 v2.1 같은 사고를 놓친다.
+
+### Propose에서 Merge까지
+
+도구가 다 갖춰지면 실제 작업 흐름은 네 걸음이다.
+
+![프롬프트 이터레이션 워크플로우](/assets/posts/project-prompt-iterating-workflow.svg)
+
+그림은 같은 흐름을 채점과 모니터링까지 펼쳐 일곱 칸으로 그린 것이다 — Propose가 Write, Compare가 Score와 Accept/Reject 판정에 해당하고, 병합 뒤의 Monitor에서 다시 Write로 돌아온다.
+
+**Propose** — 개선하고 싶은 내용을 YAML에 적어 새 버전 파일로 저장한다. 이때 무엇을 노렸는지 한 줄로 적어 둔다. **Test** — A/B 테스트를 돌린다. 개발 중에는 빠른 서브셋 50케이스를 쓰고, PR 단계에서 전체 500케이스를 돌린다. 50케이스로는 작은 차이가 유의하게 나오지 않으므로 이 단계의 목적은 「크게 망가지지 않았나」를 보는 것이다. **Compare** — A/B 결과와 회귀 스위트 결과를 함께 본다. 점수가 올랐더라도 골든 케이스를 하나 잃었으면 배포하지 않는다. **Merge** — CI가 통과하면 병합하고, `prompts/` 변경이 배포를 트리거한다.
+
+두 단계의 케이스 수를 다르게 두는 것이 실용의 핵심이다. 500케이스를 두 버전으로 돌리면 모델 호출이 1,000번이고 채점까지 하면 2,000번이다. 이 비용을 사람이 문장 하나 고칠 때마다 치르면 이터레이션이 느려지고, 느려지면 안 하게 된다. 빠른 루프는 50케이스로 돌리고 비싼 판정은 PR에 한 번만 두는 배치가 그래서 나온다.
+
+이 흐름이 습관이 되면 프롬프트 작업이 감이 아니라 공학이 된다. 6개월 뒤 "왜 이 프롬프트가 이렇게 됐지?"라는 질문에 Git 로그와 평가 리포트가 완전한 답을 준다. 다만 지금까지의 이야기는 모두 하나를 전제로 하고 있었다 — **점수를 내주는 평가 시스템이 이미 있다는 것**이다. A/B 판정도, 골든 케이스 통과율도, CI 게이트도 그 숫자 위에 서 있다. 다음 글은 그 아래층을 짓는다. 케이스를 병렬로 돌리는 러너, 결과를 지표로 묶는 집계, 그리고 어떤 값에서 파이프라인을 세울지 정하는 게이트를 차례로 만든다.
 
 ---
 
@@ -217,4 +431,4 @@ eval:
 
 **지난 글:** [LLMOps 개요: LLM 운영의 새로운 과제](/articles/llmops-overview)
 
-**다음 글:** [LLM 평가 파이프라인: 자동화된 품질 보장](/articles/llmops-eval-pipelines)
+**다음 글:** [평가 하네스 — 러너·집계·게이트를 짜는 법](/articles/llmops-eval-pipelines)

@@ -1,109 +1,339 @@
 ---
-title: "Transformer Decoder: 문장을 생성하는 블록"
-description: "Masked Self-Attention, Cross-Attention, FFN으로 구성된 디코더 블록의 원리와 Teacher Forcing 학습 방식, 자기 회귀 추론 흐름을 PyTorch 코드와 함께 설명한다."
+title: "Decoder 블록: 마스킹, Cross-Attention, Encoder-Decoder"
+description: "디코더의 세 서브레이어와 Padding·Causal 두 마스크, 그리고 Cross-Attention이 인코더와 디코더를 잇는 방식을 한 편에 모았다. Teacher Forcing 학습과 자기 회귀 추론이 어디서 갈리는지 숫자로 따라간다."
 author: "PALDYN Team"
 pubDate: "2026-05-06"
 category: "llm-core"
 level: "중급"
-tags: ["트랜스포머", "Decoder", "Cross-Attention", "자기회귀", "NLP"]
+tags: ["트랜스포머", "Decoder", "마스킹", "Cross-Attention", "Seq2Seq"]
 featured: false
 draft: false
 ---
-[지난 글](/articles/transformer-encoder)에서 인코더가 입력 시퀀스 전체를 읽어 문맥 표현을 만드는 과정을 살펴봤다. **Decoder**는 그 문맥 표현을 참고하면서 출력 시퀀스를 한 토큰씩 생성하는 역할을 한다. 기계 번역에서는 소스 언어 문장 전체를 인코더가 처리하고, 디코더가 타깃 언어 문장을 생성한다.
+[지난 글](/articles/transformer-encoder)에서 인코더가 입력 시퀀스 전체를 한 번에 읽어 토큰마다 문맥 표현을 만드는 과정을 봤다. 인코더는 편하다. 모든 토큰이 모든 토큰을 볼 수 있고, 볼 수 없어야 하는 자리가 없다. **Decoder**는 그 편함을 잃는 대신 문장을 만들어 낼 수 있게 된 블록이다.
 
-## 세 개의 서브레이어
+이 글은 디코더를 하나의 물음으로 관통해 본다. **무엇을 가리고 무엇을 참조하는가.** 디코더가 인코더와 갈리는 지점은 정확히 이 둘이다 — 아직 만들지 않은 미래 토큰을 가려야 하고, 인코더가 만들어 둔 소스 표현을 참조해야 한다. 앞쪽을 맡는 것이 마스킹이고 뒤쪽을 맡는 것이 Cross-Attention이다. 학습 방식(Teacher Forcing)도, 추론 최적화(KV 캐시)도, 인코더와 디코더를 한 시스템으로 묶는 Encoder-Decoder 구조도 결국 이 두 장치의 결과물이다.
 
-디코더 블록은 인코더보다 서브레이어가 하나 더 많다.
+## 디코더 블록의 세 서브레이어
 
-1. **Masked Multi-Head Self-Attention** — 이미 생성된 토큰끼리 관계를 파악. 미래 토큰은 마스킹.  
-2. **Cross-Attention (Encoder-Decoder Attention)** — 소스 문맥(인코더 출력)을 참조.  
-3. **Feed-Forward Network** — 위치별 비선형 변환.
+### 인코더에 하나 더한 구조
 
-각 서브레이어 뒤에 Add & Norm이 따른다.
+인코더 블록은 서브레이어가 둘이었다. Multi-Head Self-Attention과 Feed-Forward Network, 그리고 각각 뒤에 붙는 Add & Norm이 전부다. 디코더 블록은 그 사이에 하나를 더 끼운다.
+
+1. **Masked Multi-Head Self-Attention** — 이미 생성된 타깃 토큰끼리의 관계를 본다. 미래 토큰은 마스킹한다.
+2. **Cross-Attention** — 인코더가 만든 소스 문맥을 참조한다. Encoder-Decoder Attention이라고도 부른다.
+3. **Feed-Forward Network** — 위치별로 독립적인 비선형 변환을 건다.
+
+세 서브레이어 뒤에 각각 잔차 연결과 Layer Normalization이 따르므로 정규화 층도 인코더의 둘에서 셋으로 늘어난다. 2017년 원논문은 정규화를 서브레이어 **뒤에** 두는 post-norm 방식을 썼고, 요즘 구현은 학습 안정성 때문에 앞으로 옮긴 pre-norm을 많이 쓴다. 어느 쪽이든 서브레이어가 셋이라는 골격은 같다.
 
 ![Transformer Decoder 블록 구조](/assets/posts/transformer-decoder-block.svg)
 
-## Masked Self-Attention: 미래를 보지 않는다
+### 세 층의 분업
 
-디코더의 Self-Attention에 **Causal Mask**(인과 마스크)를 적용하는 이유는 두 가지다.
+세 층이 하는 일을 한 문장씩으로 갈라 두면 나머지가 다 따라온다. Masked Self-Attention은 **지금까지 내가 무엇을 썼는가**를 정리하고, Cross-Attention은 **소스의 어디를 봐야 하는가**를 정하며, FFN은 그렇게 모인 정보를 한 번 더 비튼다.
 
-- **추론 일관성**: 토큰 `i`를 생성할 때 `i+1` 이후는 아직 생성되지 않았다.  
-- **학습 병렬화**: Teacher Forcing으로 정답 시퀀스를 한 번에 입력하면, 마스크가 없으면 미래 정답이 현재 예측에 "새어" 들어간다.
+주목할 것은 첫 두 층이 보는 대상이 완전히 다르다는 점이다. Masked Self-Attention은 타깃 시퀀스 안에서만 돌고, Cross-Attention은 타깃에서 소스로 건너간다. 그래서 시퀀스 길이도 다르다 — 타깃이 12토큰이고 소스가 30토큰이면, 첫 층의 어텐션 행렬은 $$12 \times 12$$ 이고 둘째 층은 $$12 \times 30$$ 이다. 정사각이 아니어도 아무 문제가 없다. 어텐션은 Query 개수와 Key 개수가 달라도 성립하는 연산이기 때문이다.
 
-하삼각 행렬 형태의 마스크를 어텐션 점수에 더해 상삼각 영역 위치의 Softmax 값을 0으로 만든다.
+이 비대칭이 뒤에서 마스크를 고를 때 그대로 나타난다. 정사각 행렬인 첫 층에만 「대각선 위를 가린다」는 개념이 성립하고, 직사각인 둘째 층에는 그런 개념 자체가 없다.
+
+### Seq2Seq라는 문제 설정
+
+디코더가 왜 이렇게 생겼는지는 풀려는 문제를 먼저 봐야 보인다. **시퀀스-투-시퀀스**(Seq2Seq)는 가변 길이의 입력을 가변 길이의 출력으로 옮기는 문제다. 기계 번역, 문서 요약, 코드 생성, 대화 응답이 모두 여기 속한다. 입력이 5토큰인데 출력이 40토큰일 수 있고, 그 길이를 미리 알 수도 없다.
+
+이 문제가 까다로운 이유는 입력과 출력의 위치를 하나씩 맞댈 수 없다는 데 있다. 분류나 개체명 인식이라면 토큰마다 라벨 하나를 붙이면 끝이지만, 번역은 「안녕하세요」 하나가 「Hello」 하나가 되기도 하고 두 단어가 되기도 한다. 그래서 출력 길이를 모델이 스스로 정하게 두고, 끝났다는 신호(`<EOS>`)를 만들어 낼 때까지 한 토큰씩 뽑는다.
+
+과거에는 RNN 기반 Seq2Seq가 표준이었다. 앞의 RNN이 입력을 다 읽어 벡터 하나로 압축하고, 뒤의 RNN이 그 벡터에서 출력을 하나씩 만들었다. 트랜스포머는 이 구조의 두 병목을 동시에 걷어냈다 — 순차 처리 때문에 학습을 병렬화하지 못하던 문제와, 긴 입력이 벡터 하나에 우겨넣어지면서 앞쪽 정보가 뭉개지던 문제다. 앞쪽은 어텐션이 위치를 한 번에 잇는 것으로 풀렸고, 뒤쪽은 지금부터 볼 Cross-Attention이 인코더 출력 **전체**를 매 스텝 참조하는 것으로 풀렸다.
+
+## 어텐션을 막는 두 마스크
+
+### 음의 무한대와 소프트맥스
+
+어텐션에서 「보지 못하게 한다」는 것은 구현 층위에서 아주 단순하다. 어텐션 점수를 계산한 뒤 소프트맥스를 걸기 **전에**, 막고 싶은 자리에 $$-\infty$$ 를 더한다. $$\exp(-\infty) = 0$$ 이므로 그 자리의 가중치가 0이 되고, 남은 자리들끼리 다시 정규화되어 합이 1이 된다.
+
+```python
+import torch.nn.functional as F
+
+def scaled_dot_product_attention(Q, K, V, mask=None):
+    d_k = Q.size(-1)
+    scores = (Q @ K.transpose(-2, -1)) / (d_k ** 0.5)
+    if mask is not None:
+        scores = scores + mask      # 막을 자리에 -inf를 더한다
+    attn = F.softmax(scores, dim=-1)
+    return attn @ V, attn
+```
+
+가중치를 0으로 만드는 것이지 값을 0으로 만드는 것이 아니라는 점이 중요하다. 점수를 계산한 뒤 소프트맥스 직전에 끼어들기 때문에, 막힌 자리의 Value 벡터는 결과에 한 방울도 섞이지 않는다. 그리고 **남은 자리들의 가중치가 자동으로 커진다.** 세 자리 중 하나를 막으면 남은 둘이 합쳐 1을 나눠 가지므로, 막기 전보다 각자의 몫이 늘어난다.
+
+여기에 함정이 하나 있다. **한 행이 통째로 막히면 소프트맥스가 NaN을 낸다.** 모든 원소가 $$-\infty$$ 인 행은 지수를 취해도 전부 0이고, 그 합인 0으로 나누는 순간 값이 정의되지 않는다. 배치 안에 길이 0짜리 시퀀스가 섞였거나, 패딩 마스크와 인과 마스크를 합쳤는데 어느 행에 살아남은 칸이 하나도 없을 때 이 일이 벌어진다. 손실이 갑자기 `nan`으로 튀는데 학습률을 아무리 낮춰도 안 낫는다면 여기를 먼저 본다.
+
+### 패딩 마스크
+
+배치로 묶으려면 길이가 다른 문장들을 같은 길이로 맞춰야 하고, 짧은 쪽을 `<PAD>` 토큰으로 채운다. **Padding Mask**는 그 자리를 어텐션에서 빼는 장치다.
+
+왜 빼야 하는지를 숫자로 보면 분명하다. 세 자리에 대한 어텐션 점수가 $$[2.0,\ 1.0,\ 0.5]$$ 이고 세 번째가 패딩이라고 하자. 그냥 소프트맥스를 걸면 가중치는 $$[0.629,\ 0.231,\ 0.140]$$ 이다. 아무 뜻도 없는 자리가 어텐션의 **14**%를 가져간다. 패딩을 막고 다시 계산하면 $$[0.731,\ 0.269]$$ 로, 진짜 토큰 둘이 몫을 온전히 나눠 갖는다.
+
+더 나쁜 것은 이 오염의 크기가 **배치 구성에 따라 달라진다**는 점이다. 같은 문장이라도 긴 문장과 함께 묶이면 패딩이 많이 붙어 더 오염되고, 비슷한 길이끼리 묶이면 덜 오염된다. 마스크를 빠뜨리면 같은 입력이 배치마다 다른 출력을 내는 모델이 된다 — 재현이 안 되고, 학습 때와 배포 때의 결과가 어긋난다.
+
+```python
+def make_pad_mask(seq, pad_idx: int = 0):
+    # seq: (batch, seq_len) → 반환: (batch, seq_len), True이면 PAD
+    return seq == pad_idx
+```
+
+PyTorch의 `nn.MultiheadAttention`에는 `key_padding_mask` 인자로 넘긴다. 이름이 말하듯 이 마스크는 **Key 쪽**에 걸린다 — 「저 자리를 참조하지 마라」는 지시이지 「저 자리에서 계산하지 마라」가 아니다. 패딩 위치의 Query도 여전히 출력을 내지만, 그 출력은 손실 계산에서 빼기 때문에 학습에 영향을 주지 않는다.
+
+### 인과 마스크
+
+**Causal Mask**(인과 마스크, Look-Ahead Mask라고도 부른다)는 위치 $$i$$ 가 $$i+1$$ 이후를 볼 수 없게 막는 마스크다. 어텐션 행렬의 대각선 위쪽, 곧 상삼각 영역을 전부 막는다.
+
+이것을 왜 거는지는 두 갈래다.
+
+- **추론 일관성** — 토큰 $$i$$ 를 만드는 시점에 $$i+1$$ 이후는 아직 존재하지 않는다. 학습 때 볼 수 있었던 것을 추론 때 못 보면 모델이 학습한 것과 다른 조건에서 돌게 된다.
+- **학습 병렬화** — 뒤에서 볼 Teacher Forcing은 정답 시퀀스 전체를 한 번에 넣는다. 마스크가 없으면 위치 $$i$$ 가 위치 $$i+1$$ 의 표현을 그대로 들여다볼 수 있는데, 위치 $$i$$ 의 정답이 바로 그 $$i+1$$ 번째 토큰이다. **정답이 입력에 들어 있는 셈이다.**
+
+두 번째가 조용해서 위험하다. 마스크를 빠뜨리면 모델이 다음 토큰을 예측하는 대신 옆칸을 베끼는 법을 배우고, 학습 손실은 거의 0까지 떨어진다. 지표만 보면 대성공인데 막상 생성을 시키면 문장이 아닌 것이 나온다. 손실이 비정상적으로 빨리 떨어지면 학습이 잘되는 것이 아니라 어디선가 정답이 새고 있는 것 아닌지 의심해 봐야 한다.
 
 ```python
 import torch
 
-def causal_mask(size: int) -> torch.Tensor:
-    # True인 위치의 어텐션을 차단
-    mask = torch.triu(torch.ones(size, size, dtype=torch.bool), diagonal=1)
-    return mask   # shape: (size, size)
-
-# nn.MultiheadAttention에서는 attn_mask 파라미터로 전달
-# True이면 -inf로 처리됨
+def make_causal_mask(sz: int) -> torch.Tensor:
+    return torch.triu(torch.full((sz, sz), float('-inf')), diagonal=1)
+    # sz=4:
+    # [[  0, -inf, -inf, -inf],
+    #  [  0,    0, -inf, -inf],
+    #  [  0,    0,    0, -inf],
+    #  [  0,    0,    0,    0]]
 ```
 
-## Cross-Attention: 인코더와의 연결
+첫 행에 살아 있는 칸이 하나, 마지막 행에 넷이다. 첫 토큰은 자기 자신만 보고 마지막 토큰은 전부를 본다. `nn.MultiheadAttention`과 `nn.Transformer`에는 `attn_mask`(디코더 쪽은 `tgt_mask`) 인자로 넘기고, 같은 행렬을 `nn.Transformer.generate_square_subsequent_mask(sz)`로도 얻을 수 있다. 불리언 텐서를 넘겨도 되는데 이때는 `True`가 「막는다」는 뜻이다 — 위 코드의 $$-\infty$$ 자리가 `True`가 된다. 두 규약이 정반대의 모양을 하고 있으니 섞어 쓰지 않는다.
 
-Cross-Attention에서 세 행렬의 출처가 다르다.
+![마스킹 유형 비교: Padding vs Causal](/assets/posts/transformer-masking-types.svg)
 
-- **Q (Query)** ← 디코더 현재 상태 (Masked MHA 출력)  
-- **K, V (Key, Value)** ← 인코더 최종 출력 (디코딩 내내 고정)
+### 자리마다 쓰는 마스크
 
-디코더가 "지금 이 단어를 생성하려면 소스 문장의 어느 위치를 봐야 할까?"를 학습하는 메커니즘이다. 번역 품질이 높을수록 K, V와 Q 사이의 어텐션 패턴이 언어 간 의미적 정렬을 보인다.
+두 마스크는 모양부터 다르다. 패딩 마스크는 `(batch, seq_len)`이다 — 어느 샘플의 어느 자리가 패딩인지는 문장마다 다르므로 배치 축이 필요하다. 인과 마스크는 `(seq_len, seq_len)`이다 — 「대각선 위를 가린다」는 규칙은 모든 샘플과 모든 헤드에 똑같이 적용되므로 한 장을 만들어 브로드캐스트한다. 이 차이 때문에 인과 마스크는 배치마다 새로 만들 필요가 없고, 최대 길이로 한 번 만들어 잘라 쓰면 된다.
 
-![자기 회귀 생성 흐름 — 번역 예시](/assets/posts/transformer-decoder-generation.svg)
+어느 어텐션에 어느 마스크가 붙는지는 표 한 장으로 정리된다.
 
-## Teacher Forcing과 자기 회귀 생성
+| 위치 | Padding Mask | Causal Mask |
+| --- | :---: | :---: |
+| Encoder Self-Attention | ✓ | ✗ |
+| Decoder Masked Self-Attention | ✓ | ✓ |
+| Decoder Cross-Attention | ✓ (소스 PAD) | ✗ |
+| Decoder-only (GPT류) 생성 | ✓ | ✓ |
 
-| 구분 | 학습 | 추론 |
-|------|------|------|
-| 입력 | 정답 시퀀스 (시프트) | 이전 출력 토큰 |
-| 병렬성 | 전체 시퀀스 동시 처리 | 한 번에 한 토큰 |
-| 마스크 | Causal mask 필수 | 자연스럽게 불필요 |
+세 번째 줄이 자주 틀리는 자리다. Cross-Attention에 인과 마스크를 걸면 안 된다. 번역할 때 소스 문장은 **처음부터 전부 주어져 있고**, 타깃의 세 번째 단어를 만들면서 소스의 마지막 단어를 봐도 아무것도 새지 않는다. 애초에 이 어텐션의 행렬은 $$\text{tgt} \times \text{src}$$ 라 정사각이 아니고, 대각선이라는 것이 뜻을 갖지 않는다. 반면 패딩 마스크는 필요하다 — 소스 쪽 패딩을 막아야 하므로 `memory_key_padding_mask`를 넘긴다.
 
-**Teacher Forcing**: 학습 때 정답 시퀀스 `[<BOS>, w1, w2, ..., wN]`을 디코더에 그대로 입력하고, 예측 결과와 `[w1, w2, ..., wN, <EOS>]`를 비교해 Cross-Entropy 손실을 계산한다. Causal Mask 덕분에 위치 `i`의 예측이 `i+1` 이후 정답을 보지 않고 이루어진다.
+둘을 동시에 걸어야 하는 자리는 디코더의 Masked Self-Attention 하나뿐이다. 직접 합칠 수도 있지만 그냥 더해서는 안 된다 — 위 `make_pad_mask`가 내놓는 것은 불리언이고 `make_causal_mask`가 내놓는 것은 $$-\infty$$ 가 든 실수다. 더하기 전에 불리언을 $$-\infty$$ 로 바꾸고, 앞의 `scaled_dot_product_attention`이 만드는 점수 텐서가 `(batch, tgt_len, src_len)`이므로 모양도 `(batch, 1, seq_len)`으로 늘려 줘야 브로드캐스트가 맞는다. PyTorch의 `nn.Transformer`를 쓴다면 그럴 일이 없다 — `tgt_mask`와 `tgt_key_padding_mask`에 각각 넘기면 안에서 합쳐 준다.
 
-## PyTorch 구현
+![마스크 생성 코드와 적용 위치](/assets/posts/transformer-masking-code.svg)
+
+## Cross-Attention의 연결
+
+### Q와 K·V의 서로 다른 출처
+
+Self-Attention에서는 Query·Key·Value가 모두 같은 시퀀스에서 나온다. Cross-Attention은 그 출처를 갈라 놓는다.
+
+- **Q (Query)** ← 디코더의 현재 상태, 곧 바로 앞 Masked Self-Attention의 출력
+- **K, V (Key, Value)** ← 인코더의 최종 출력
+
+한 문장으로 옮기면 「지금 이 자리에서 단어를 만들려는데, 소스 문장의 어느 위치를 봐야 하는가」를 묻는 장치다. 질문은 디코더가 던지고 답할 재료는 인코더가 들고 있다.
+
+여기서 실무적으로 중요한 성질이 하나 나온다. **K와 V는 디코딩이 끝날 때까지 변하지 않는다.** 인코더는 소스 문장을 한 번 처리하고 나면 할 일이 없고, 그 출력은 타깃을 40토큰 만들든 400토큰 만들든 같은 값이다. 그러니 K·V 투영을 스텝마다 다시 할 이유가 없다. 뒤에서 볼 KV 캐시가 가장 먼저 적용되는 자리가 여기이고, 이 부분만은 캐시가 아니라 **한 번 계산해 두는 상수**에 가깝다.
+
+인코더 출력을 여러 디코더 층이 공유한다는 점도 같이 알아 둔다. 디코더가 6층이면 6개 층의 Cross-Attention이 **같은** 인코더 최종 출력을 K·V의 재료로 쓴다. 층마다 투영 가중치는 다르므로 실제 K·V 값은 층마다 다르지만, 재료는 하나다.
+
+### 정렬로 드러나는 어텐션
+
+Cross-Attention의 가중치 행렬은 크기가 $$\text{tgt\_len} \times \text{src\_len}$$ 이라 그대로 그림이 된다. 각 행이 「타깃의 이 토큰을 만들 때 소스의 어느 토큰들을 얼마나 봤는가」이기 때문이다.
+
+학습이 잘된 번역 모델의 이 행렬은 **정렬**(alignment)에 가까운 모양을 띤다. 어순이 비슷한 언어 쌍이면 대각선 근처가 진해지고, 어순이 다른 언어 쌍이면 그 대각선이 꺾이거나 뒤집힌다. 한국어와 영어처럼 동사 위치가 다른 쌍에서는 타깃 문장 끝의 동사가 소스 문장 가운데를 보는 식으로 선이 교차한다.
+
+과거의 통계 기반 번역에서는 이 정렬을 별도 모델로 따로 학습시켜야 했다. 트랜스포머에서는 정렬 라벨을 한 번도 주지 않는데도 번역 손실만 내려가면 어텐션이 알아서 정렬 비슷한 것을 만들어 낸다. 다만 **어텐션 가중치가 곧 정렬은 아니다**는 점은 조심할 필요가 있다. 헤드가 여러 개이고 층도 여러 개라 어느 헤드는 정렬처럼 보이고 어느 헤드는 전혀 다른 패턴을 만든다. 해석용으로 그림을 그릴 때 헤드 하나만 골라 놓고 「모델이 이렇게 정렬했다」고 결론 내리면 안 된다.
+
+### 코드로 옮긴 디코더 블록
+
+세 서브레이어와 두 마스크가 한 자리에 모이면 디코더 블록이 된다.
 
 ```python
 import torch.nn as nn
 
 class DecoderLayer(nn.Module):
-    def __init__(self, d_model: int, n_heads: int, d_ff: int, dropout: float = 0.1):
+    def __init__(self, d_model, n_heads, d_ff, dropout=0.1):
         super().__init__()
-        self.masked_attn = nn.MultiheadAttention(d_model, n_heads, dropout=dropout, batch_first=True)
-        self.cross_attn  = nn.MultiheadAttention(d_model, n_heads, dropout=dropout, batch_first=True)
-        self.ff   = FFN(d_model, d_ff, dropout)
-        self.norm1 = nn.LayerNorm(d_model)
-        self.norm2 = nn.LayerNorm(d_model)
-        self.norm3 = nn.LayerNorm(d_model)
-        self.drop  = nn.Dropout(dropout)
+        self.masked_attn = nn.MultiheadAttention(d_model, n_heads, batch_first=True)
+        self.cross_attn  = nn.MultiheadAttention(d_model, n_heads, batch_first=True)
+        self.ff = FFN(d_model, d_ff, dropout)
+        self.norm1, self.norm2, self.norm3 = (nn.LayerNorm(d_model) for _ in range(3))
+        self.drop = nn.Dropout(dropout)
 
     def forward(self, tgt, memory, tgt_mask=None, memory_key_padding_mask=None):
-        # ① Masked Self-Attention
-        x, _ = self.masked_attn(tgt, tgt, tgt, attn_mask=tgt_mask)
+        x, _ = self.masked_attn(tgt, tgt, tgt, attn_mask=tgt_mask)   # ① 자기 참조
         tgt = self.norm1(tgt + self.drop(x))
-        # ② Cross-Attention (Q=tgt, K=V=memory)
-        x, _ = self.cross_attn(tgt, memory, memory,
-                                key_padding_mask=memory_key_padding_mask)
+        x, _ = self.cross_attn(tgt, memory, memory,                  # ② Q=tgt, K=V=memory
+                               key_padding_mask=memory_key_padding_mask)
         tgt = self.norm2(tgt + self.drop(x))
-        # ③ FFN
-        tgt = self.norm3(tgt + self.drop(self.ff(tgt)))
-        return tgt
+        return self.norm3(tgt + self.drop(self.ff(tgt)))             # ③ 위치별 변환
 ```
 
-## KV Cache: 추론 속도 최적화
+`FFN`은 새로 만들지 않았다. 인코더 블록에서 쓴 것과 같은 클래스이고, 디코더에서 달라지는 것은 그 앞에 붙는 어텐션 둘뿐이다.
 
-자기 회귀 생성에서 매 스텝마다 전체 시퀀스를 다시 처리하면 시간 낭비가 크다. **KV Cache**는 이미 계산한 K, V 행렬을 저장해 두고, 새 토큰에 해당하는 부분만 추가 계산한다. 추론 속도가 선형 복잡도에서 상수 추가 비용으로 줄어든다.
+읽을 때 볼 곳은 두 줄이다. ①에서는 `tgt`가 세 번 들어가고 ②에서는 `tgt`가 한 번, `memory`가 두 번 들어간다. Self냐 Cross냐의 차이가 코드에서는 이 인자 배치 하나로 끝난다. 그리고 마스크가 갈라 붙는 것도 보인다 — ①에는 `attn_mask`로 인과 마스크가, ②에는 `key_padding_mask`로 소스의 패딩 마스크가 간다. 앞 절의 표가 그대로 코드가 된 모양이다.
 
-## 정리
+## Teacher Forcing 학습
 
-- 디코더 = Masked Self-Attention + Cross-Attention + FFN, 세 겹 Add & Norm  
-- Causal Mask가 미래 토큰 누설을 막아 학습(Teacher Forcing)과 추론 모두 올바르게 동작  
-- Cross-Attention이 인코더 출력을 K, V로 사용해 소스 문장과 연결  
-- 추론은 자기 회귀 방식, KV Cache로 속도를 높임
+### 한 칸 밀린 정답 시퀀스
+
+**Teacher Forcing**은 학습할 때 모델의 예측 대신 정답을 다음 스텝의 입력으로 넣는 방식이다. 이름 그대로 「선생이 정답을 쥐여 준다」는 뜻이다.
+
+디코더 입력과 정답 라벨은 같은 문장을 한 칸씩 어긋나게 자른 것이다. 문장이 `Hello world`라면 이렇게 된다.
+
+| 위치 | 디코더 입력 | 정답 |
+| --- | --- | --- |
+| 0 | `<BOS>` | `Hello` |
+| 1 | `Hello` | `world` |
+| 2 | `world` | `<EOS>` |
+
+입력은 `[<BOS>, w1, ..., wN]`이고 라벨은 `[w1, ..., wN, <EOS>]`다. 코드에서 `tgt[:, :-1]`과 `tgt[:, 1:]`로 자르는 그 한 칸이 이것이다. 앞을 끊고 뒤를 끊는 방향이 헷갈리기 쉬운데, **입력에는 문장 시작 신호가 필요하고 라벨에는 문장 끝 신호가 필요하다**로 외우면 뒤집히지 않는다.
+
+이 방식의 값어치는 병렬성이다. 모델의 예측을 다음 입력으로 쓰려면 스텝을 순서대로 밟아야 하지만, 정답은 처음부터 다 알고 있으므로 시퀀스 전체를 한 번에 넣을 수 있다. 40토큰짜리 문장을 40번 순회하는 대신 행렬 연산 한 번으로 40개 위치의 예측을 동시에 얻는다. 트랜스포머가 RNN보다 학습이 빠른 이유의 절반이 여기에 있다.
+
+### 마스크가 지키는 조건
+
+그런데 시퀀스 전체를 한 번에 넣는다는 것은 위치 $$i$$ 의 입력 옆에 $$i+1$$, $$i+2$$ 의 정답이 나란히 놓여 있다는 뜻이다. 앞 절에서 본 누출이 정확히 이 상황이다. **Teacher Forcing이 성립하는 유일한 조건이 인과 마스크다.**
+
+두 장치를 따로 배우면 별개로 보이지만 실은 한 쌍이다. 인과 마스크가 없으면 Teacher Forcing은 정답 베끼기 훈련이 되고, Teacher Forcing이 없으면 인과 마스크는 걸 자리가 없다(추론에서는 미래 토큰이 애초에 존재하지 않으니 가릴 것도 없다). 마스크는 **한 번에 넣은 시퀀스를 한 스텝씩 넣은 것처럼 보이게 만드는 장치**이고, 그 위장 덕분에 학습과 추론의 조건이 일치한다.
+
+| 구분 | 학습 | 추론 |
+| --- | --- | --- |
+| 디코더 입력 | 정답 시퀀스(한 칸 시프트) | 직전까지 자기가 만든 토큰 |
+| 처리 단위 | 시퀀스 전체 동시 | 한 번에 한 토큰 |
+| 인과 마스크 | 필수 | 불필요(가릴 미래가 없다) |
+
+### 손실에서 빠지는 패딩
+
+학습 루프에서 마스크 셋이 한꺼번에 등장한다. 소스 패딩, 타깃 패딩, 그리고 인과 마스크다.
+
+```python
+causal       = make_causal_mask(tgt[:, :-1].size(1)).to(device)   # (tgt_len, tgt_len)
+src_pad_mask = make_pad_mask(src).to(device)                      # (batch, src_len)
+tgt_pad_mask = make_pad_mask(tgt[:, :-1]).to(device)              # (batch, tgt_len)
+
+logits = model(src, tgt[:, :-1], tgt_mask=causal,
+               src_key_padding_mask=src_pad_mask,
+               tgt_key_padding_mask=tgt_pad_mask)
+
+loss = F.cross_entropy(logits.reshape(-1, vocab_size),
+                       tgt[:, 1:].reshape(-1),
+                       ignore_index=PAD_IDX)
+```
+
+마지막 줄의 `ignore_index`가 마스킹의 네 번째 자리다. 앞의 셋이 **어텐션에서** 패딩을 뺐다면 이것은 **손실에서** 뺀다. 둘은 별개의 일이라 하나로 대신할 수 없다. 어텐션 마스크는 「패딩을 참조하지 마라」이고 `ignore_index`는 「패딩 자리의 예측은 채점하지 마라」다.
+
+빠뜨리면 어떻게 되는지가 이 인자의 값어치를 말해 준다. 배치 안 문장들의 평균 길이가 20인데 최대 길이가 60이면 라벨의 3분의 2가 `<PAD>`다. `ignore_index`가 없으면 손실의 3분의 2가 「패딩 다음에는 패딩이 온다」를 맞히는 데서 나오고, 이 과제는 너무 쉬워서 손실이 금세 0에 가까워진다. 화면의 숫자는 예쁘게 떨어지는데 정작 배우라고 시킨 것은 손실의 3분의 1만 차지한다. 앞서 본 「손실이 너무 빨리 떨어지면 의심하라」의 두 번째 사례다.
+
+## 자기 회귀 추론
+
+### 학습과 추론의 어긋남
+
+추론에서는 정답이 없다. `<BOS>` 하나로 시작해 모델이 토큰 하나를 뽑고, 그 토큰을 입력 끝에 붙여 다시 넣고, `<EOS>`가 나올 때까지 되풀이한다. 자기가 만든 것을 자기가 다시 먹는다고 해서 **자기 회귀**(autoregressive) 생성이라고 부른다.
+
+![자기 회귀 생성 흐름 — 번역 예시](/assets/posts/transformer-decoder-generation.svg)
+
+여기서 학습과 추론이 갈린다. 학습 때 모델은 언제나 **올바른** 앞 문맥을 받았다. 추론에서는 자기 출력을 받으므로, 다섯 번째 토큰을 잘못 뽑으면 여섯 번째부터는 학습 중에 한 번도 본 적 없는 문맥 위에서 예측하게 된다. 틀린 위에 틀린 것이 쌓여 문장이 통째로 무너지는 일이 이렇게 생기고, 이 어긋남을 **노출 편향**(exposure bias)이라고 부른다. 학습 중에 정답과 자기 예측을 확률적으로 섞어 넣어 완화하는 방법들이 제안되어 있지만, 순수 Teacher Forcing이 여전히 기본이다. 병렬성이라는 이득이 워낙 크기 때문이다.
+
+토큰을 어떻게 고르는가도 여기에 붙는 결정이다. 확률이 가장 높은 것을 매번 집을 수도 있고 분포에서 뽑을 수도 있는데, 이 선택이 생성물의 성격을 크게 바꾼다. 그쪽은 [디코딩 방법](/articles/llm-decoding-methods)에서 따로 다뤘다.
+
+### 스텝마다 늘어나는 재계산
+
+순진하게 구현하면 매 스텝 지금까지의 시퀀스 전체를 디코더에 통째로 넣는다. 그런데 인과 마스크 때문에 **앞쪽 토큰들의 표현은 뒤에 무엇이 붙어도 변하지 않는다.** 위치 3의 계산에 위치 4 이후가 들어가지 않으니, 5번째 스텝에서 다시 계산한 위치 3의 K와 V는 4번째 스텝에서 계산한 것과 완전히 같은 값이다.
+
+낭비의 크기를 세어 보면 이렇다. $$n$$ 토큰을 만들 때 스텝 $$t$$ 에서 $$t$$ 개 토큰의 K·V를 계산하므로 합이 $$n(n+1)/2$$ 다. $$n = 512$$ 면 131,328번이고, 새로 생긴 토큰만 계산했다면 512번으로 끝났을 일이다. 대략 **256배**를 헛돌린 셈이다.
+
+### KV 캐시가 지우는 비용
+
+**KV 캐시**는 이미 계산한 K와 V를 층마다 들고 있다가 새 토큰 몫만 이어 붙이는 방법이다. 매 스텝 디코더에 들어가는 것은 시퀀스 전체가 아니라 **마지막 토큰 하나**이고, 그 토큰의 Query가 캐시에 쌓인 K·V 전부를 상대로 어텐션을 건다.
+
+무엇이 줄고 무엇이 안 줄어드는지를 갈라 두는 편이 정확하다. 사라지는 것은 과거 토큰에 대한 K·V 투영과 FFN 계산이다. 남는 것은 어텐션 점수 자체다 — 스텝 $$t$$ 의 Query는 여전히 $$t$$ 개의 Key와 내적해야 하므로, 이 부분의 총량은 캐시가 있어도 $$n^2$$ 에 비례한다. 그래서 KV 캐시는 생성을 **상수 시간으로 만들어 주는 것이 아니라**, 스텝마다 되풀이하던 과거 토큰 계산을 걷어내 그 몫만 스텝당 상수로 낮추는 장치다.
+
+대신 메모리를 쓴다. 토큰 하나, 층 하나가 K와 V를 각각 $$d_{model}$$ 차원씩 들고 있어야 하므로, 원논문 설정인 $$d_{model} = 512$$ 에 6층이고 16비트로 저장하면 토큰당 $$2 \times 512 \times 2 \times 6 = 12{,}288$$ 바이트, 약 12KB다. 512토큰이면 6MB 남짓이라 부담이 없다. 그런데 이 값은 층 수·차원·시퀀스 길이·배치 크기에 모두 비례하므로, 층이 수십이고 컨텍스트가 수만 토큰인 요즘 모델에서는 캐시가 가중치보다 커지는 일이 예사다. 캐시 자체를 줄이려고 여러 Query 헤드가 K·V를 공유하게 만든 것이 [MQA와 GQA](/articles/transformer-mqa-gqa)다.
+
+Cross-Attention 쪽은 사정이 더 낫다. 앞서 본 대로 인코더 출력이 고정이므로 K·V를 첫 스텝에 한 번 만들어 두고 끝까지 그대로 쓴다. 길이가 늘어나지도 않아서, Encoder-Decoder 모델에서 스텝마다 자라는 캐시는 Masked Self-Attention 쪽뿐이다.
+
+## Encoder-Decoder 구조
+
+### 소스에서 타깃까지의 흐름
+
+지금까지의 부품을 하나로 잇는다.
+
+![Encoder-Decoder 전체 구조](/assets/posts/transformer-encoder-decoder-arch.svg)
+
+1. **Encoder** — 소스 시퀀스를 받아 $$\text{src\_len} \times d_{model}$$ 크기의 문맥 표현을 만든다. 소스 전체를 양방향으로 보므로 여기에는 인과 마스크가 없다.
+2. **Cross-Attention** — 그 표현을 K·V로 각 디코더 층에 공급한다.
+3. **Decoder** — 이미 만든 타깃 토큰을 조건으로 다음 토큰의 표현을 낸다.
+4. **Linear + Softmax** — 디코더 출력을 어휘 크기의 확률 분포로 바꾼다.
+
+마지막 층이 하는 일을 한 번 짚고 간다. 디코더가 내놓는 것은 위치마다 $$d_{model}$$ 차원 벡터일 뿐이고, 어떤 단어인지는 아직 정해지지 않았다. 어휘가 32,000개라면 $$d_{model} \times 32000$$ 짜리 선형 층을 통과시켜 단어마다 점수 하나를 얻고, 소프트맥스로 확률로 바꾼다. 이 층의 가중치를 임베딩 층과 묶어 쓰는 구현이 많은데, 파라미터가 통째로 절약되기 때문이다.
+
+PyTorch는 인코더와 디코더 전체를 `nn.Transformer` 한 클래스로 제공한다.
+
+```python
+class Seq2SeqTransformer(nn.Module):
+    def __init__(self, src_vocab, tgt_vocab, d_model=512, n_heads=8,
+                 n_enc=6, n_dec=6, d_ff=2048):
+        super().__init__()
+        self.src_emb = nn.Embedding(src_vocab, d_model)
+        self.tgt_emb = nn.Embedding(tgt_vocab, d_model)
+        self.transformer = nn.Transformer(
+            d_model=d_model, nhead=n_heads,
+            num_encoder_layers=n_enc, num_decoder_layers=n_dec,
+            dim_feedforward=d_ff, batch_first=True)
+        self.out_proj = nn.Linear(d_model, tgt_vocab)
+
+    def forward(self, src, tgt, tgt_mask, src_key_padding_mask, tgt_key_padding_mask):
+        out = self.transformer(
+            self.src_emb(src), self.tgt_emb(tgt),   # 위치 인코딩은 별도로 더한다
+            tgt_mask=tgt_mask,
+            src_key_padding_mask=src_key_padding_mask,
+            tgt_key_padding_mask=tgt_key_padding_mask)
+        return self.out_proj(out)                   # (batch, tgt_len, vocab)
+```
+
+`forward`의 인자 다섯 중 셋이 마스크라는 점이 이 글의 요약이나 마찬가지다. 소스 어휘와 타깃 어휘를 따로 둔 것도 눈여겨볼 만하다 — 번역이라면 언어가 둘이니 자연스럽지만, 요약처럼 입력과 출력이 같은 언어인 태스크는 하나를 공유해 파라미터를 줄인다.
+
+### 세 아키텍처의 갈림
+
+트랜스포머 원논문은 인코더와 디코더를 함께 세웠지만, 이후 모델들은 필요한 쪽만 떼어 쓰는 길로 갈라졌다.
+
+| 아키텍처 | 대표 모델 | 적합 태스크 |
+| --- | --- | --- |
+| Encoder-only | BERT | 분류, 개체명 인식, 감성 분석 |
+| Decoder-only | GPT | 텍스트 생성, 챗봇 |
+| Encoder-Decoder | T5, BART | 번역, 요약, 조건부 생성 |
+
+무엇이 셋을 가르는지 보면 이 표가 외울 것이 아니라 따라 나오는 것임을 알 수 있다. **입력을 양방향으로 봐도 되는가**와 **출력이 시퀀스인가**, 두 물음이다. 분류는 입력 전체가 주어져 있고 출력은 라벨 하나이므로 인코더만 있으면 된다. 생성은 미래를 가려야 하니 디코더가 필요하고, 조건이 될 별도의 입력이 없다면 인코더는 없어도 된다. 번역처럼 「양방향으로 읽을 소스」와 「한 방향으로 만들 타깃」이 모두 있으면 둘 다 필요하다.
+
+![Encoder-Decoder 적용 태스크](/assets/posts/transformer-encoder-decoder-tasks.svg)
+
+### Seq2Seq 대표 모델
+
+Encoder-Decoder를 밀고 나간 모델들은 사전학습 과제를 어떻게 설계하느냐로 갈렸다.
+
+| 모델 | 논문 공개 | 특징 |
+| --- | --- | --- |
+| **T5** | 2019, Google | 모든 NLP 태스크를 텍스트 → 텍스트로 통일 |
+| **BART** | 2019, Meta | 입력에 노이즈를 넣고 원문을 복원하게 학습 |
+| **PEGASUS** | 2019, Google | 중요한 문장을 통째로 지우고 복원, 요약 특화 |
+| **mBART** | 2020, Meta | BART를 다국어로 확장 |
+
+공통점이 하나 있다. 넷 다 **입력을 망가뜨리고 원본을 복원하게** 만드는 방식으로 사전학습한다. 망가뜨린 입력이 인코더로 가고 복원한 원본이 디코더에서 나오므로, 구조가 요구하는 「소스 하나, 타깃 하나」 형태가 라벨 없는 텍스트만으로 저절로 만들어진다. 다른 것은 무엇을 어떻게 망가뜨리느냐뿐이다. PEGASUS가 문장 단위로 지우는 것은 그 복원 과제가 요약과 닮았기 때문이고, 실제로 요약에서 강했다. [T5](/articles/transformer-t5)는 태스크마다 다른 출력 형식을 쓰는 대신 분류의 답까지 텍스트로 내놓게 만들어 하나의 모델로 전부 처리했다.
+
+### Decoder-only 이후의 자리
+
+[GPT](/articles/transformer-gpt) 계열이 커지면서 판이 한 번 흔들렸다. Decoder-only 모델이 프롬프트에 「다음 문장을 한국어로 옮겨라」라고 적어 주는 것만으로 번역과 요약을 해내기 시작했기 때문이다. 소스를 인코더에 넣는 대신 그냥 프롬프트 앞쪽에 붙여 버리면, 디코더 하나로 조건부 생성이 된다.
+
+그렇다고 Encoder-Decoder가 사라진 것은 아니다. 소스와 타깃을 구조적으로 갈라 두는 데서 오는 이점이 남아 있다. 인코더는 소스를 양방향으로 읽으므로 뒤쪽 문맥까지 반영한 표현을 만들 수 있고, Decoder-only에서 소스는 인과 마스크 아래 한 방향으로만 읽힌다. 소스를 한 번만 인코딩해 두고 여러 출력에 재사용하는 것도 구조적으로 자연스럽다. 그래서 번역이나 요약처럼 입력과 출력의 역할이 뚜렷하게 갈리는 태스크에서는 같은 파라미터 예산으로 여전히 경쟁력이 있고, 음성 인식처럼 소스가 텍스트가 아닌 자리에서는 오히려 표준에 가깝다.
+
+여기까지 오면 남은 조합 하나가 눈에 띈다. 디코더를 떼고 인코더만 남기는 쪽이다. 만들 것이 없으니 미래를 가릴 이유도 없어지고, 이 글에서 본 인과 마스크가 통째로 빠진다. 그런데 마스크를 다 걷어내면 학습 과제가 사라진다는 문제가 생긴다 — 모든 토큰이 모든 토큰을 볼 수 있는데 「다음 토큰 맞히기」를 시키면 답이 입력에 있다. 다음 글은 그 빈자리를 **입력의 일부를 무작위로 가리고 그 자리를 맞히게 하는** 다른 종류의 마스크로 채운 모델을 본다. 가리는 대상이 미래에서 무작위 위치로 바뀌는 것 하나로, 양쪽 문맥을 함께 보는 표현 학습이 열린다.
 
 ---
 
@@ -111,4 +341,4 @@ class DecoderLayer(nn.Module):
 
 **지난 글:** [Transformer Encoder: 문맥을 이해하는 핵심 블록](/articles/transformer-encoder)
 
-**다음 글:** [Encoder-Decoder 구조: 번역에서 요약까지](/articles/transformer-encoder-decoder)
+**다음 글:** [BERT: 양방향 사전학습 언어 모델의 등장](/articles/transformer-bert)

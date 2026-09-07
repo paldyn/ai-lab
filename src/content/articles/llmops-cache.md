@@ -248,6 +248,6 @@ cache_misses = Counter("llm_cache_misses_total", "Cache misses")
 
 읽어주셔서 감사합니다. 😊
 
-**지난 글:** [LLM 비용 추적: 토큰 낭비 없이 운영하기](/articles/llmops-cost-tracking)
+**지난 글:** [LLM 비용 — 청구서를 만드는 것과 줄이는 순서](/articles/llmops-cost-tracking)
 
-**다음 글:** [LLM Fallback 전략: 장애에도 살아남는 서비스 설계](/articles/llmops-fallback-strategies)
+**다음 글:** [폴백 — 앞이 실패했을 때 무엇으로 넘길 것인가](/articles/llmops-fallback-strategies)

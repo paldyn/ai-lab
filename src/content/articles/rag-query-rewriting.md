@@ -1,54 +1,134 @@
 ---
-title: "RAG 쿼리 재작성: 검색 품질을 높이는 쿼리 변환 기법"
-description: "RAG에서 사용자 쿼리를 변환해 검색 품질을 높이는 Multi-Query, HyDE, Step-Back, Query Decomposition 기법의 원리와 LangChain 구현을 완전 해설한다."
+title: "질문을 바꿔 다시 검색하기: 재작성·분해·멀티홉"
+description: "쿼리 하나를 다른 하나로 바꾸는 Step-Back·HyDE부터 여러 개로 늘리는 Multi-Query, 서로 다른 질문으로 쪼개는 Decomposition, 앞선 결과가 다음 쿼리를 정하는 멀티홉까지 개입 강도 순으로 정리한다. 홉마다 붙는 비용과 그것을 라우터로 거두는 법도 함께 본다."
 author: "PALDYN Team"
 pubDate: "2026-05-15"
 category: "agents-rag"
 level: "중급"
-tags: ["RAG", "쿼리재작성", "HyDE", "MultiQuery", "StepBack", "LangChain"]
+tags: ["RAG", "쿼리재작성", "HyDE", "멀티홉", "IRCoT"]
 featured: false
 draft: false
 ---
-[지난 글](/articles/rag-reranking)에서 1차 검색 결과를 Cross-Encoder로 정렬하는 리랭킹을 다뤘다. 이번에는 그보다 한 단계 앞, 즉 **검색 자체가 시작되기 전**에 개입하는 최적화, 바로 **쿼리 재작성**(Query Rewriting)을 살펴본다. 사용자가 입력하는 쿼리는 종종 짧고, 모호하고, 검색 인덱스에 실제로 존재하는 문서 표현과 거리가 있다. 이 불일치를 해소하는 것이 쿼리 재작성의 핵심이다.
+[지난 글](/articles/rag-reranking)에서 1차 검색이 끌어온 문서를 Cross-Encoder로 다시 줄 세우는 리랭킹을 다뤘다. 리랭킹은 강력하지만 할 수 있는 일의 범위가 정해져 있다. **이미 회수된 목록 안에서만 순서를 고친다.** 정답 문서가 애초에 그 목록에 들어오지 않았다면 아무리 정교하게 정렬해도 없는 것은 나오지 않는다. 이 글은 그보다 한 걸음 앞, 검색이 시작되기 전에 쿼리 자체를 손보는 자리를 다룬다.
 
-## 쿼리-문서 불일치 문제
+손보는 방식은 여럿이지만 전부 하나의 축 위에 놓인다. 원본 쿼리에 **얼마나 깊이 개입하는가**다. 쿼리 하나를 다른 하나로 바꾸는 것이 가장 얕고, 같은 질문을 여러 표현으로 늘리는 것이 그다음이며, 서로 다른 하위 질문으로 쪼개는 것이 그다음이고, 앞선 검색 결과를 읽고 다음 쿼리를 새로 만드는 것이 가장 깊다. 마지막 단계에서 검색은 더 이상 한 번의 전처리가 아니라 **루프**가 된다. 이 글은 그 순서대로 간다.
 
-"LLM이 뭐예요?"라는 쿼리를 생각해보자. 이 쿼리는 단 세 단어지만, 실제로 사용자가 원하는 답변은 훨씬 풍부한 내용을 담고 있다. 벡터 인덱스에는 "대규모 언어 모델의 트랜스포머 기반 아키텍처", "GPT 계열 모델의 사전 학습 방법론", "Claude와 GPT의 차이" 같은 문서들이 저장돼 있을 것이다. 짧은 쿼리가 이 다양한 문서를 모두 포착하기 어렵다는 것은 직관적으로 이해할 수 있다.
+## 쿼리와 문서 사이의 틈
 
-쿼리 재작성은 LLM을 사용해 원본 쿼리를 여러 가지 방법으로 변환하고, 변환된 쿼리(들)로 검색을 수행함으로써 더 많은, 더 관련성 높은 문서를 회수한다.
+### 두 어절짜리 질문
+
+"LLM이 뭐예요?"라는 쿼리를 생각해 보자. 단 두 어절이다. 그런데 이 질문을 던진 사람이 실제로 받고 싶은 답은 훨씬 넓다. 인덱스 쪽을 들여다보면 "대규모 언어 모델의 트랜스포머 기반 아키텍처", "GPT 계열 모델의 사전 학습 방법론", "Claude와 GPT의 차이" 같은 문서가 각각 따로 저장돼 있을 것이다. 이 짧은 문장에서 뽑은 벡터 하나가 이 셋 모두와 고르게 가까울 이유는 없다.
+
+숫자로 놓으면 상황이 더 분명해진다. 500자 안팎의 청크 5만 개를 인덱스에 넣어 두고 상위 10건을 뽑는다고 하자. 벡터 검색은 쿼리 임베딩과 가장 가까운 이웃 열 개를 고르는 일이고, 그 열 자리는 **쿼리 벡터가 어디에 찍혔는지 하나로 결정된다.** 쿼리를 손대지 않으면 우리가 볼 수 있는 후보는 영원히 그 열 개뿐이다. 리랭킹도, 답변 생성도 전부 그 열 개 위에서 벌어진다.
+
+쿼리 재작성(Query Rewriting)은 그 한 점을 옮기거나 여러 점으로 늘리는 일이다. LLM으로 원본 쿼리를 변환하고, 변환된 쿼리로 검색해 후보 집합 자체를 바꾼다. 리랭킹이 「가진 것 중에 고르기」라면 재작성은 「가질 것을 늘리기」다.
+
+### 임베딩 공간의 비대칭
+
+왜 짧은 쿼리가 불리한지에는 구조적인 이유가 하나 더 있다. **쿼리-문서 비대칭**(Query-Document Asymmetry)이라고 부르는 현상이다. 임베딩 벡터에는 문장의 뜻만 담기지 않는다. 길이, 문체, 형식 같은 표면적인 성질도 함께 실린다. 그래서 의문형의 짧은 한 문장과 서술형의 긴 단락은 내용이 같더라도 임베딩 공간에서 다른 영역에 자리 잡는 경향이 있다.
+
+검색이 재는 것은 뜻의 거리만이 아니라 이 모든 것이 섞인 거리다. 질문끼리는 서로 가깝고 문서끼리도 서로 가까운데, 정작 짝지어야 할 질문과 문서 사이가 그만큼 가깝지 않은 상황이 생긴다. 문장 임베딩 모델을 질문-문서 쌍으로 학습시키면 이 틈이 크게 줄지만([문장 임베딩](/articles/embedding-sentence) 참고), 도메인이 다른 인덱스에 그대로 갖다 쓰면 틈이 다시 벌어진다.
+
+여기서 뒤에 나올 HyDE의 발상이 나온다. **질문을 문서처럼 만들어서 넣으면 비대칭이 사라진다.** 문제를 임베딩 모델 쪽에서 고치는 대신 입력 쪽에서 우회하는 방법이다.
+
+### 개입 강도의 네 단계
+
+네 가지 기법을 하나씩 배우면 서로 무관한 도구 넷처럼 보이지만, 개입의 깊이로 줄을 세우면 한 줄이 된다.
+
+| 단계 | 하는 일 | 검색 횟수 | 검색 순서 |
+| --- | --- | --- | --- |
+| 다시 쓰기 | 쿼리 하나를 다른 하나로 | 1~2회 | 무관 |
+| 늘리기 | 같은 질문을 여러 표현으로 | $$n$$ 회 | 병렬 가능 |
+| 쪼개기 | 서로 다른 하위 질문으로 | $$n$$ 회 | 병렬 가능 |
+| 다시 검색 | 앞선 결과가 다음 쿼리를 정함 | $$n$$ 회 | **순차 필수** |
+
+가장 중요한 칸은 맨 오른쪽이다. 위의 셋은 쿼리를 미리 다 만들어 놓고 한꺼번에 검색할 수 있어서 지연이 거의 늘지 않는다. 마지막 줄만 다르다. 두 번째 쿼리를 만들려면 첫 번째 검색 결과가 이미 나와 있어야 하므로 병렬화가 원천적으로 불가능하고, 홉 수만큼 지연이 그대로 쌓인다. 뒤에서 볼 비용 이야기가 전부 이 한 칸에서 나온다.
 
 ![쿼리 재작성 기법 분류](/assets/posts/rag-query-rewriting-types.svg)
 
-## 1. Multi-Query: 다각도 검색
+## 쿼리 하나를 바꾸는 변환
 
-가장 직관적인 방법이다. LLM이 원본 쿼리를 3~5개의 다른 표현으로 변환하고, 각각으로 검색한 뒤 결과를 통합한다.
+### 상위 개념으로 올리는 Step-Back
+
+가장 얕은 개입은 쿼리 하나를 더 나은 쿼리 하나로 바꾸는 것이다. Google DeepMind가 2023년에 제안한 **Step-Back Prompting**은 그 방향을 위로 잡는다. 구체적인 질문을 한 단계 추상화해 배경 질문으로 만들고, 그것으로도 함께 검색한다.
+
+"2023년 GPT-4의 컨텍스트 길이는?"이라는 질문을 생각해 보자. 이 문장이 그대로 적힌 문서가 인덱스에 있으면 다행이지만, 없으면 검색은 연도와 모델명만 스치는 엉뚱한 청크를 물어 온다. 여기서 "LLM의 컨텍스트 윈도우란 무엇이고 어떻게 발전해왔는가"로 한 단계 올라가면 사정이 달라진다. 이런 개괄 문서는 인덱스에 있을 확률이 훨씬 높고, 그 안에 모델별 수치 표가 딸려 있는 경우도 많다.
+
+핵심은 **원본을 버리지 않는다**는 것이다. 스텝백 쿼리만 쓰면 답이 두루뭉술한 배경 지식으로만 채워진다. 원본 쿼리와 스텝백 쿼리로 각각 검색해 결과를 합치고, 겹치는 문서는 걷어낸다. 그러면 구체적인 사실을 담은 청크와 그 사실을 해석할 배경 청크가 함께 컨텍스트에 들어간다. 구현은 LLM 호출 한 번과 검색 한 번이 추가되는 것이 전부다.
+
+### 가상 답변을 넣는 HyDE
+
+**HyDE**(Hypothetical Document Embeddings)는 2022년 논문에서 제안된 방법으로, 방향이 정반대다. 쿼리를 추상화하는 대신 **구체적인 가상의 답변 문서를 만들어 그것을 임베딩한다.** 앞 절의 비대칭 이야기를 그대로 실행에 옮긴 셈이다.
+
+![HyDE 가상 문서 임베딩 검색](/assets/posts/rag-query-rewriting-hyde.svg)
+
+"양자컴퓨터 원리?"라는 일곱 글자짜리 쿼리 대신, LLM에게 "양자컴퓨터는 큐비트를 이용해 중첩과 얽힘으로 계산하는 장치입니다..." 같은 한 단락을 쓰게 하고 **그 단락의 임베딩으로** 검색한다. 이 가상 문서는 실제 인덱스에 든 문서와 길이도 문체도 비슷하므로, 임베딩 공간에서도 문서들이 모여 있는 영역에 찍힌다.
+
+여기서 자주 오해하는 지점이 있다. 검색에 쓰이는 것은 가상 문서의 **벡터**뿐이고, 그 문장 자체는 답변 생성에 들어가지 않는다. 컨텍스트에 실리는 것은 어디까지나 검색으로 회수한 진짜 문서다. 가상 문서는 인덱스 안을 가리키는 손가락 역할만 하고 버려진다.
 
 ```python
-from langchain.retrievers import MultiQueryRetriever
-from langchain_anthropic import ChatAnthropic
+from langchain_classic.chains import HypotheticalDocumentEmbedder
+from langchain_core.prompts import PromptTemplate
 
-llm = ChatAnthropic(model="claude-sonnet-4-6")
-base_retriever = vectorstore.as_retriever(search_kwargs={"k": 10})
-
-retriever = MultiQueryRetriever.from_llm(
-    retriever=base_retriever,
-    llm=llm
+hyde_prompt = PromptTemplate.from_template(
+    "다음 질문에 대해 전문가처럼 한 단락으로 답하라.\n질문: {question}\n답변:"
 )
-
-# 내부적으로 일어나는 일:
-# "LLM이 뭔가요?" →
-#   "LLM의 정의와 개념은?"
-#   "대규모 언어 모델이란 무엇인가?"
-#   "GPT, Claude 같은 AI 모델의 원리?"
-# → 각각 검색 → 결과 중복 제거 후 통합
-
-docs = retriever.invoke("LLM이 뭔가요?")
+hyde_embeddings = HypotheticalDocumentEmbedder.from_llm(
+    llm=llm,
+    base_embeddings=embeddings,
+    custom_prompt=hyde_prompt,
+)
+retriever = FAISS.from_documents(docs, hyde_embeddings).as_retriever()
 ```
 
-프롬프트를 커스터마이징하면 더 세밀한 제어가 가능하다.
+가상 문서를 쓰게 하는 지시는 `custom_prompt`에 프롬프트 템플릿으로 넘긴다. 이 인자도 `prompt_key`도 주지 않으면 생성자가 오류를 낸다 — 둘 중 하나는 반드시 있어야 한다.
+
+### 가상 답변이 틀릴 위험
+
+HyDE의 대가는 명확하다. LLM이 사실과 다른 가상 답변을 만들면(**할루시네이션**, 모델이 근거 없는 내용을 사실처럼 지어내는 현상) 손가락이 엉뚱한 곳을 가리킨다. 아는 것이 없는 사내 문서나 최신 제품 사양을 물었을 때 특히 그렇다 — 모델은 모른다고 하지 않고 그럴듯한 단락을 지어내며, 그 단락이 인덱스의 어느 구석과 잘 맞아떨어지면 검색은 자신 있게 무관한 문서를 물어 온다.
+
+그런데 조금 더 들여다보면 HyDE에 필요한 것이 사실 정확성이 아니라는 점이 보인다. 필요한 것은 **그 주제를 다루는 문서가 대체로 어떤 어휘와 문형으로 쓰여 있는가**다. 세부 수치가 틀려도 용어와 문체가 맞으면 이웃은 제대로 잡힌다. 문제가 되는 것은 주제 자체를 헛짚는 경우다.
+
+그래서 흔히 쓰는 완화책도 이 성질을 이용한다. 가상 문서를 하나가 아니라 여러 개 만들어 임베딩을 평균 내고, 거기에 원본 쿼리 임베딩을 함께 섞는 것이다. 한 번 지어낸 이상한 문장의 영향력이 평균에 묻히고, 원본 쿼리가 닻 역할을 해 주제에서 크게 벗어나지 못하게 잡는다. 그래도 규정이나 의료처럼 사실에 민감한 도메인에서는 HyDE를 기본값으로 두지 않는 편이 안전하다.
+
+## 여러 개로 늘리는 Multi-Query
+
+### 세 표현이 닿는 다른 이웃
+
+**Multi-Query**는 개입의 다음 단계다. 쿼리 하나를 다른 하나로 바꾸는 대신, LLM으로 3~5개의 다른 표현을 만들어 **각각으로 검색하고 결과를 합친다.** "LLM이 뭔가요?"가 "LLM의 정의와 개념은?", "대규모 언어 모델이란 무엇인가?", "GPT, Claude 같은 AI 모델의 원리?" 셋으로 늘어나는 식이다.
+
+표현만 바꿨는데 결과가 달라지는 이유는 벡터의 위치가 어휘에 따라 실제로 움직이기 때문이다. "정의"라는 단어가 든 쿼리는 개념 설명 청크 쪽으로, "원리"가 든 쿼리는 구조 설명 청크 쪽으로 조금씩 끌린다. 하이브리드 검색을 쓴다면 차이가 더 커진다 — 키워드 쪽 점수는 어휘가 겹치는지를 직접 보기 때문이다([하이브리드 검색 튜닝](/articles/rag-hybrid-search-tuning) 참고).
+
+숫자로 보면 후보 집합이 얼마나 넓어지는지 짐작할 수 있다. 쿼리 셋에 각각 상위 10건이면 30건이고, 겹치는 것을 걷어내면 보통 20건 남짓이 남는다. 원래 열 자리에 못 들어왔을 문서 열 개가 새로 들어온 셈이다. **재현율을 올리는 기법**이지 정밀도를 올리는 기법이 아니라는 점이 중요하다. 늘어난 후보를 다시 좁히는 일은 리랭커의 몫이다.
 
 ```python
-from langchain.prompts import PromptTemplate
+from langchain_classic.retrievers import MultiQueryRetriever
+
+retriever = MultiQueryRetriever.from_llm(
+    retriever=vectorstore.as_retriever(search_kwargs={"k": 10}),
+    llm=llm,
+)
+docs = retriever.invoke("LLM이 뭔가요?")   # 재작성 → 각각 검색 → 중복 제거
+```
+
+### 결과를 합치는 규칙
+
+여러 검색 결과를 하나로 만드는 방법은 두 가지다. 가장 단순한 것은 문서 본문의 해시로 중복을 걷어내고 나머지를 그대로 이어 붙이는 것이다. 라이브러리의 기본 동작이 대개 이쪽이고, 뒤에 리랭커가 붙는다면 이것으로 충분하다. 어차피 순서는 리랭커가 다시 매긴다.
+
+리랭커 없이 합친 목록을 바로 쓸 거라면 순서를 정할 규칙이 필요하다. 검색에서 오래 쓰인 방법이 **RRF**(Reciprocal Rank Fusion)다. 각 목록에서의 등수만 보고 점수를 매긴다.
+
+$$
+\text{score}(d) = \sum_{i} \frac{1}{k + \text{rank}_i(d)}
+$$
+
+$$k$$ 는 보통 60 같은 상수를 쓴다. 유사도 점수를 직접 더하지 않고 **등수만 쓴다**는 것이 이 방법의 요령이다. 쿼리마다 점수 분포가 달라서 raw 점수를 더하면 값이 큰 쪽이 결과를 지배하는데, 등수는 그런 차이가 없다. 세 쿼리 모두에서 5등 안에 든 문서가 한 쿼리에서만 1등인 문서보다 위로 올라오는 효과도 있다.
+
+### 프롬프트로 거는 제어
+
+기본 프롬프트로도 돌아가지만, 쿼리를 몇 개 만들지와 어떤 관점으로 갈릴지를 지정하면 결과가 눈에 띄게 안정된다.
+
+```python
+from langchain_core.prompts import PromptTemplate
 
 custom_prompt = PromptTemplate(
     input_variables=["question"],
@@ -56,81 +136,25 @@ custom_prompt = PromptTemplate(
 각 줄에 하나씩, 번호 없이 출력하라.
 
 원본 질문: {question}
-검색 쿼리:"""
-)
-
-retriever = MultiQueryRetriever.from_llm(
-    retriever=base_retriever,
-    llm=llm,
-    prompt=custom_prompt
+검색 쿼리:""",
 )
 ```
 
-## 2. HyDE: 가상 문서 임베딩
+이 템플릿은 `from_llm`의 `prompt` 인자로 넘긴다. 채워 넣는 변수 이름은 기본 프롬프트와 같은 `question` 하나다.
 
-HyDE(Hypothetical Document Embeddings)는 2022년 논문에서 제안된 독창적인 방법이다. 짧은 쿼리가 아니라 LLM이 생성한 **가상의 답변 문서**를 임베딩해 검색에 사용한다.
+「번호 없이, 한 줄에 하나」 같은 형식 지시가 사소해 보이지만 실제로는 여기가 가장 자주 깨진다. 대부분의 구현이 응답을 줄 단위로 잘라 쓰기 때문에, 모델이 앞에 "다음은 세 가지 쿼리입니다:" 한 줄을 붙이면 그 문장이 검색 쿼리 하나로 들어간다. 오류는 나지 않고 검색 결과만 조용히 나빠진다.
 
-![HyDE 가상 문서 임베딩 검색](/assets/posts/rag-query-rewriting-hyde.svg)
+개수도 함께 정한다. 다섯 개로 늘리면 회수는 늘지만 서로 비슷한 표현이 섞이기 시작하고, LLM 호출 토큰과 검색 횟수는 그대로 늘어난다. 셋에서 시작해 재현율이 모자랄 때만 올리는 순서가 무난하다.
 
-HyDE가 효과적인 이유는 임베딩 공간의 분포 불일치(Query-Document Asymmetry) 때문이다. 짧은 질문과 긴 답변 문서는 임베딩 공간에서 다른 영역에 위치하는 경향이 있다. 가상 답변은 실제 문서와 유사한 길이와 형태를 가지므로 더 정확하게 관련 문서를 찾는다.
+## 질문을 쪼개는 Decomposition
 
-```python
-from langchain.chains import HypotheticalDocumentEmbedder
-from langchain_openai import OpenAIEmbeddings
+### 독립인 하위 질문
 
-# HyDE 임베딩 모델 생성
-embeddings = OpenAIEmbeddings()
-hyde_embeddings = HypotheticalDocumentEmbedder.from_llm(
-    llm=llm,
-    base_embeddings=embeddings,
-    custom_instructions="다음 질문에 대해 전문가처럼 한 단락으로 답하라:"
-)
+Multi-Query가 **같은 질문의 다른 표현**을 만든다면, **Query Decomposition**은 **서로 다른 질문**을 만든다. 표현을 늘리는 것과 질문을 쪼개는 것은 겉보기에 비슷하지만 하는 일이 다르다.
 
-# HyDE 임베딩을 사용해 벡터 스토어 구성
-vectorstore = FAISS.from_documents(docs, hyde_embeddings)
-retriever = vectorstore.as_retriever()
-```
+"RAG와 파인튜닝의 차이점과 각각의 적합한 사용 케이스는?" 같은 복합 질문이 대표적이다. 이 문장 하나로 검색하면 RAG 설명과 파인튜닝 설명 사이 어딘가에 벡터가 찍히고, 어느 쪽도 제대로 못 잡는 결과가 나오기 쉽다. 대신 "RAG의 동작 방식은?", "파인튜닝의 동작 방식은?", "RAG가 적합한 상황은?", "파인튜닝이 적합한 상황은?" 넷으로 쪼개면 각각은 단일 주제 질문이라 검색이 잘 듣는다.
 
-단, HyDE는 LLM이 잘못된 가상 답변을 생성하면(할루시네이션) 오히려 검색 품질이 저하될 수 있다. 특히 사실에 민감한 도메인에서는 주의가 필요하다.
-
-## 3. Step-Back Prompting: 상위 개념 검색
-
-Google DeepMind가 2023년 제안한 기법이다. 구체적인 질문 전에 더 일반적인 상위 개념 질문을 먼저 검색한다.
-
-```python
-# Step-Back 쿼리 생성
-stepback_prompt = """
-다음의 구체적인 질문을 한 단계 추상화해 더 일반적인 배경 질문으로 변환하라.
-
-예시:
-- 원본: "2023년 GPT-4의 컨텍스트 길이는?"
-- 스텝백: "LLM의 컨텍스트 윈도우란 무엇이고 어떻게 발전해왔는가?"
-
-원본 질문: {question}
-스텝백 질문:"""
-
-def step_back_retrieve(question, llm, retriever):
-    # 상위 개념 쿼리 생성
-    stepback_q = llm.invoke(
-        stepback_prompt.format(question=question)
-    ).content
-
-    # 원본 + 스텝백 쿼리 모두 검색
-    original_docs = retriever.invoke(question)
-    stepback_docs = retriever.invoke(stepback_q)
-
-    # 중복 제거 후 합산
-    seen, combined = set(), []
-    for doc in original_docs + stepback_docs:
-        if doc.page_content not in seen:
-            seen.add(doc.page_content)
-            combined.append(doc)
-    return combined
-```
-
-## 4. Query Decomposition: 복잡한 질문 분해
-
-"RAG와 파인튜닝의 차이점과 각각의 적합한 사용 케이스는?"처럼 복합 질문은 단순 검색으로 처리하기 어렵다. 이를 하위 질문들로 분해해 각각 검색한 뒤 종합한다.
+합치는 방식도 다르다. Multi-Query의 결과는 **합집합**이고 어느 쿼리에서 온 문서인지 알 필요가 없다. 분해의 결과는 **조립**이다. 어느 하위 질문의 답이 어느 문서에서 나왔는지 유지한 채 최종 답을 짜야 하므로, 종합 단계에 하위 질문과 그 답을 짝지어 넘긴다. 이 짝을 잃어버리고 문서만 뭉쳐 넘기면 모델이 RAG 쪽 설명을 파인튜닝 쪽에 섞어 쓰는 일이 생긴다.
 
 ```python
 decompose_prompt = """다음 질문을 독립적으로 답변 가능한 2~4개의 하위 질문으로 분해하라.
@@ -139,39 +163,208 @@ decompose_prompt = """다음 질문을 독립적으로 답변 가능한 2~4개�
 질문: {question}
 하위 질문:"""
 
+def decompose_question(question, llm):
+    lines = llm.invoke(decompose_prompt.format(question=question)).content.split("\n")
+    return [s.strip() for s in lines if s.strip()]
+
 def decompose_and_retrieve(question, llm, retriever):
-    # 하위 질문 생성
-    sub_questions = llm.invoke(
-        decompose_prompt.format(question=question)
-    ).content.strip().split("\n")
-
-    # 각 하위 질문 검색
-    all_docs = []
-    for sq in sub_questions:
-        docs = retriever.invoke(sq.strip())
-        all_docs.extend(docs)
-
-    # 중복 제거
-    seen = set()
-    unique_docs = []
-    for doc in all_docs:
-        h = hash(doc.page_content[:200])
-        if h not in seen:
-            seen.add(h)
-            unique_docs.append(doc)
-    return unique_docs
+    # 하위 질문과 그 문서를 짝지어 둔다
+    return [(sq, retriever.invoke(sq)) for sq in decompose_question(question, llm)]
 ```
 
-## 기법별 비교와 선택 기준
+### 병렬 검색과 종합
 
-| 기법 | 적합한 상황 | 단점 |
-|-----|-----------|-----|
-| Multi-Query | 짧고 모호한 쿼리 | LLM 호출 비용 증가 |
+프롬프트의 "독립적으로 답변 가능한"이라는 조건이 지연시간을 정한다. 하위 질문 넷이 서로를 참조하지 않으면 네 검색을 **동시에** 던질 수 있고, 그러면 전체 지연은 넷을 더한 값이 아니라 가장 느린 하나가 된다. 검색이 네트워크 왕복이 대부분인 작업이라 이 차이가 크다.
+
+```python
+import asyncio
+
+async def parallel_retrieve(sub_questions, retriever):
+    results = await asyncio.gather(*(retriever.ainvoke(sq) for sq in sub_questions))
+    return list(zip(sub_questions, results))
+```
+
+늘어나는 것은 지연이 아니라 토큰이다. 하위 질문 넷에 각각 상위 5건, 청크 하나가 500자라면 최종 종합 단계의 입력은 1만 자 안팎이 된다. 여기서 한 번 걸러 주는 것이 좋다 — 하위 질문마다 중간 답변을 짧게 만들어 두고, 최종 종합에는 원문 전체가 아니라 그 중간 답변과 출처만 넘기는 방식이다. 컨텍스트가 짧아지는 것도 이득이지만 답이 하위 질문 단위로 정리돼 들어가는 쪽이 더 크다.
+
+### 분해가 어긋나는 자리
+
+분해가 늘 되는 것은 아니다. 두 가지 방식으로 어긋난다.
+
+첫째는 **과잉 분해**다. 이미 단일 주제인 질문을 억지로 쪼개면 조각들이 원래 질문보다 일반적이 된다. "판교의 인구는?"을 "판교란 무엇인가", "인구 통계란 무엇인가"로 쪼개는 식이다. 각 조각은 잘 검색되지만 정작 필요한 숫자에서 멀어진다. 그래서 분해는 항상 쓰는 것이 아니라 복합 질문에만 켜는 것이고, 뒤에 나올 라우터가 그 판단을 맡는다.
+
+둘째가 더 중요하다. **쪼갠 조각이 서로 독립이 아닌 경우**다. "AlphaFold를 개발한 회사의 CEO는?"을 분해하면 "AlphaFold를 개발한 회사는?"과 "그 회사의 CEO는?"이 나온다. 첫 번째는 멀쩡한 검색 쿼리지만 두 번째는 그렇지 않다. **"그 회사"가 무엇인지 인덱스는 모른다.** 이 쿼리를 그대로 검색하면 아무 회사의 CEO 문서나 물어 오고, 병렬로 던졌다면 첫 번째 답이 나오기도 전에 그 일이 벌어진다.
+
+여기가 개입 강도의 네 번째 단계로 넘어가는 자리다. 하위 질문 중 일부가 **앞선 답을 채워 넣어야 비로소 검색 가능한 쿼리가 되는 경우**, 검색은 병렬 팬아웃이 아니라 순차 루프여야 한다.
+
+## 의존 사슬이 필요한 멀티홉
+
+### 두 홉짜리 질문
+
+**홉**(hop)은 검색 한 번과 그 결과로 얻는 사실 하나를 세는 단위다. 두 홉 이상이 필요한 질문을 다루는 것이 **멀티홉 RAG**(Multi-Hop RAG)다. 일반적인 파이프라인은 쿼리 하나로 한 번 검색하고 끝내며, "판교의 인구는?" 같은 단순 사실 질문에는 그것으로 충분하다. 다음 질문들은 다르다.
+
+- "OpenAI CEO의 출신 대학교는?" → OpenAI CEO 확인 → 그 사람의 출신 대학 검색
+- "한국의 AI 규제법과 EU AI Act의 공통점은?" → 한국 법률 검색 → EU 법률 검색 → 비교
+- "LLaMA를 개발한 회사의 주가는 오늘 얼마인가?" → LLaMA 개발사 확인 → 실시간 주가 검색
+
+가운데 예시는 사실 병렬로도 된다. 두 법률 검색이 서로를 참조하지 않기 때문이다. 나머지 둘이 진짜 멀티홉이다 — **이전 검색 결과가 다음 검색 쿼리의 일부가 된다.**
+
+![멀티홉 RAG 추론 체인](/assets/posts/rag-multi-hop-reasoning.svg)
+
+이런 질문이 단일 검색으로 안 되는 이유를 인덱스 쪽에서 보면 더 분명하다. "AlphaFold 개발사의 CEO"를 한 문장에 담은 청크가 인덱스에 있다면 한 번에 찾힌다. 없다면 그 사실은 **두 문서에 나뉘어** 존재한다. 하나는 AlphaFold와 DeepMind를 잇고, 다른 하나는 DeepMind와 Demis Hassabis를 잇는다. 둘을 잇는 다리는 인덱스가 아니라 검색하는 쪽이 놓아야 한다. 문서 사이의 관계를 미리 그래프로 만들어 두는 [GraphRAG](/articles/rag-graph-rag)가 같은 문제를 인덱스 쪽에서 푸는 접근이다.
+
+### Iterative Retrieval의 고정 홉
+
+가장 직관적인 구현은 분해를 순차로 돌리는 것이다. 하위 질문 목록을 먼저 만들고, 하나씩 차례로 검색하되 **앞선 홉의 답을 다음 쿼리에 끼워 넣는다.** 앞 절에서 깨졌던 "그 회사의 CEO는?"이 "그 회사의 CEO는? (이전 정보: DeepMind가 개발)"이 되어 비로소 검색 가능한 문장이 된다.
+
+```python
+def iterative_retrieval(question, llm, retriever, max_hops=3):
+    answers, collected = [], []
+    for sub_q in decompose_question(question, llm)[:max_hops]:
+        # 이전 홉의 답을 붙여야 검색 가능한 쿼리가 된다
+        q = f"{sub_q} (이전 정보: {'; '.join(answers)})" if answers else sub_q
+        docs = retriever.invoke(q)
+        collected.extend(docs)
+        answers.append(llm.invoke(f"질문: {sub_q}\n컨텍스트: {format_docs(docs)}\n간단히 답하라:").content)
+    return llm.invoke(f"원본 질문: {question}\n수집된 정보: {format_docs(collected)}\n최종 답변:").content
+```
+
+`max_hops`가 이 방식의 성격을 결정한다. 홉 수를 미리 정해 두므로 비용의 상한이 보이고 무한 루프가 원천적으로 없다. 대신 정확히 그만큼 돈다. 두 홉이면 끝날 질문에 세 홉을 돌면 마지막 홉은 이미 답을 아는 채로 검색을 한 번 더 하는 낭비이고, 반대로 네 홉이 필요한 질문은 정보가 모자란 채로 종합 단계에 들어간다. **예측 가능하지만 질문에 맞춰 주지는 못한다.**
+
+![멀티홉 RAG 구현 패턴 비교](/assets/posts/rag-multi-hop-patterns.svg)
+
+### 추론과 검색을 엇갈리는 IRCoT
+
+**IRCoT**(Interleaving Retrieval with Chain-of-Thought)는 홉 수를 미리 정하지 않는다. **사고 사슬**(Chain-of-Thought, 모델이 답을 바로 내지 않고 중간 추론 단계를 한 줄씩 적어 나가는 방식)의 각 단계와 검색을 번갈아 실행한다. 추론 한 줄을 쓰고, 그 줄이 필요로 하는 정보를 검색하고, 검색한 것을 넣어 다음 줄을 쓴다.
+
+앞의 Iterative Retrieval과 무엇이 다른지가 중요하다. Iterative는 **질문을 다 쪼갠 다음에** 검색을 시작한다. 즉 어떤 하위 질문이 필요한지를 아무것도 모르는 상태에서 미리 정한다. IRCoT는 그 결정을 뒤로 미룬다 — 첫 홉의 결과를 읽고 나서 두 번째로 무엇을 찾을지 정하므로, 처음에는 보이지 않던 갈래를 따라갈 수 있다. 종료도 스스로 정한다.
+
+```python
+def ircot(question, llm, retriever, max_steps=5):
+    chain, docs = "", []
+    for step in range(max_steps):
+        thought = llm.invoke(f"""질문: {question}
+이미 찾은 정보: {format_docs(docs)}
+지금까지 추론: {chain}
+
+다음 추론 단계 하나를 작성하라. 답을 알면 'FINISH: [답변]'으로 끝내라.""").content
+        if "FINISH:" in thought:
+            return thought.split("FINISH:")[-1].strip()
+        chain += f"\n{step + 1}. {thought}"
+        docs.extend(retriever.invoke(extract_search_query(thought, llm)))
+    return llm.invoke(f"질문: {question}\n정보: {format_docs(docs)}\n최종 답변:").content
+```
+
+`max_steps`가 남아 있는 것에 주의한다. 모델이 스스로 끝내는 구조에서는 **끝내지 못하는 경우**가 반드시 생긴다. 인덱스에 답이 아예 없으면 모델은 비슷한 추론을 계속 되풀이하고, 그때마다 LLM 호출과 검색이 붙는다. 상한 없이 배포하면 질문 하나가 비용을 얼마나 쓸지 아무도 모르는 상태가 된다. 자기 종료를 허용하되 상한은 코드가 쥐고 있어야 한다.
+
+### 불확실할 때만 검색하는 FLARE
+
+세 번째 패턴은 검색을 켜는 조건 자체를 바꾼다. **FLARE**는 능동적 검색이라고 부르는 방식으로, 답변을 생성하는 도중에 **토큰 확률을 지켜보다가** 확신이 떨어지는 자리에서만 검색을 건다. 낮은 확률로 나온 부분을 검색으로 채운 뒤 그 대목을 다시 생성한다.
+
+발상이 실용적이다. 멀티홉이 필요한 자리는 보통 답변 전체가 아니라 그 안의 특정 대목이다. 모델이 이미 잘 아는 배경 설명 문장까지 검색으로 뒷받침할 이유는 없다. 필요한 곳에서만 검색하므로 **검색 횟수가 가장 적게** 든다.
+
+제약은 하나이고 결정적이다. 토큰 확률에 접근할 수 있어야 한다. 모델 API가 로그 확률을 내주지 않으면 트리거를 만들 방법이 없고, 그러면 FLARE는 후보에서 빠진다. 쓰는 모델이 정해져 있다면 여기부터 확인하고 패턴을 고르는 편이 빠르다.
+
+## 그래프로 옮긴 루프
+
+### 상태로 옮긴 홉
+
+위 두 구현은 `for` 루프 안에 검색·추론·종료 조건이 함께 들어 있다. 프로토타입에는 충분하지만 홉이 길어지고 조건이 붙기 시작하면 한 함수가 감당하기 어려워진다. LangGraph 같은 그래프 워크플로로 옮기면 루프 안의 지역 변수들이 **상태**(state)라는 하나의 자료구조로 밖에 나온다.
+
+```python
+from typing import TypedDict, List
+
+class MultiHopState(TypedDict):
+    question: str
+    sub_questions: List[str]
+    current_hop: int
+    collected_docs: List[str]
+    intermediate_answers: List[str]
+    final_answer: str
+```
+
+이 선언이 곧 「이 루프가 무엇을 들고 도는가」의 목록이다. 홉 번호, 지금까지 모은 문서, 홉마다의 중간 답변이 전부 이름을 갖는다. 노드는 상태를 받아 상태를 돌려주는 함수이고, 각자 자기가 바꾸는 칸만 건드린다 — 분해 노드는 `sub_questions`를, 검색 노드는 `collected_docs`를, 추론 노드는 `intermediate_answers`와 `current_hop`을 채운다.
+
+### 조건부 간선이 정하는 끝
+
+루프를 도로 만드는 것은 조건부 간선이다. 추론 노드가 끝나면 상태를 보고 다음에 어디로 갈지 고른다.
+
+```python
+from langgraph.graph import StateGraph, END
+
+def should_continue(state: MultiHopState) -> str:
+    if state["current_hop"] >= len(state["sub_questions"]):
+        return "synthesize"
+    return "retrieve"
+
+graph = StateGraph(MultiHopState)
+graph.add_node("decompose", decompose_node)
+graph.add_node("retrieve", retrieve_node)
+graph.add_node("reason", reason_node)
+graph.set_entry_point("decompose")
+graph.add_edge("decompose", "retrieve")
+graph.add_edge("retrieve", "reason")
+graph.add_conditional_edges("reason", should_continue,
+                            {"retrieve": "retrieve", "synthesize": END})
+app = graph.compile()
+```
+
+`reason`에서 `retrieve`로 돌아가는 간선 하나가 앞서 `for` 문이 하던 일 전부다. 종료 조건이 `should_continue`라는 이름 붙은 함수 하나에 모여 있다는 점이 중요하다. 「홉을 다 돌았으면 끝」을 「충분한 답을 찾았으면 끝」이나 「비용 상한에 닿으면 끝」으로 바꾸는 일이 그 함수 한 곳을 고치는 일이 된다.
+
+### while 루프 대신 그래프인 이유
+
+그래프로 옮겨서 얻는 것은 코드 모양이 아니다. 상태가 밖에 나와 있으면 매 홉의 상태를 그대로 저장할 수 있고, 저장할 수 있으면 세 가지가 따라온다. 실패한 지점부터 **재개**할 수 있고, 어느 홉에서 엉뚱한 문서를 물어 왔는지 **관측**할 수 있으며, 특정 홉 앞에서 멈춰 사람의 확인을 받는 **중단점**을 끼울 수 있다. 세 번째 홉에서 외부 API를 호출해 돈을 쓰는 파이프라인이라면 이것이 필수가 된다.
+
+반대로, 홉이 둘로 고정된 단순한 파이프라인에 그래프를 세울 이유는 없다. 상태 클래스와 노드 함수를 정의하는 비용이 `for` 루프보다 크고, 얻는 것은 아직 쓰지 않는 기능이다. 종료 조건이 여럿이 되거나 중간에 사람이 끼어들 자리가 생길 때 옮기는 것으로 충분하다.
+
+## 비용을 거두는 라우터
+
+### 홉마다 붙는 지연과 토큰
+
+멀티홉의 대가는 **지연시간과 비용**이고, 크기를 어림하기 쉽다. 앞의 `iterative_retrieval`을 세 홉으로 돌리면 LLM 호출은 분해 한 번, 홉마다 중간 답변 세 번, 최종 종합 한 번으로 다섯 번이고 검색은 세 번이다. 기본 RAG가 LLM 한 번에 검색 한 번이니 **호출 수가 다섯 배**다.
+
+토큰은 더 빨리 는다. 홉마다 문서 5건을 800토큰씩 모으면 홉당 4,000토큰이 쌓이고, 세 홉을 지나면 최종 종합의 입력만 12,000토큰이다. IRCoT는 여기에 지금까지의 추론 사슬이 매 스텝 프롬프트에 다시 들어가므로 스텝이 늘수록 입력이 계단식으로 자란다.
+
+그리고 이 지연은 줄일 수 없는 종류다. 앞 절의 표 맨 오른쪽 칸이 그 이유였다 — 두 번째 쿼리가 첫 번째 결과에 의존하므로 홉은 순차일 수밖에 없다. 멀티홉이 단순 RAG보다 복합 질문을 잘 푸는 것은 이 대가를 치르고 얻는 결과다. 정확도가 얼마나 오르는지는 인덱스와 질문 분포에 따라 갈리지만, 지연이 홉 수만큼 곱해 붙는다는 것은 어느 경우에나 같다. 서비스의 응답 시간 목표를 먼저 정하고 적용 범위를 거기에 맞추는 순서가 맞다([RAG 비용·지연 튜닝](/articles/rag-cost-latency-tuning) 참고).
+
+### 캐싱·병렬·조기 종료
+
+순차라는 성질을 못 바꾸므로, 최적화는 홉의 개수와 홉 하나의 무게를 줄이는 쪽으로 간다.
+
+| 방법 | 줄이는 것 | 쓸 수 있는 조건 |
+| --- | --- | --- |
+| 캐싱 | 중복 검색 | 중간 쿼리가 반복된다 |
+| 병렬 검색 | 지연 | 하위 질문이 서로 독립이다 |
+| 조기 종료 | 남은 홉 | 충분한지 판정할 수 있다 |
+| 라우터 | 멀티홉 자체 | 질문 유형을 미리 가를 수 있다 |
+
+캐싱이 생각보다 잘 듣는다. 멀티홉의 중간 쿼리는 원본 질문보다 훨씬 짧고 일반적이라("DeepMind CEO") 서로 다른 사용자 질문이 같은 중간 쿼리로 수렴하는 일이 잦다. 원본 질문 단위로 캐시하면 적중률이 바닥이지만 **중간 쿼리 단위로 캐시하면 다르다.**
+
+병렬은 앞서 본 대로 독립인 하위 질문에만 걸린다. 실전에서는 질문 하나 안에서도 갈린다 — 하위 질문 넷 중 셋은 독립이고 하나만 앞의 답을 필요로 하는 경우가 흔하다. 독립인 것부터 동시에 던지고 의존하는 것만 뒤에 붙이면 홉 수는 그대로여도 벽시계 시간은 줄어든다.
+
+조기 종료는 「지금 모은 것으로 답할 수 있는가」를 홉마다 판정하는 방식이다. 이 판정 자체가 LLM 호출이라는 점을 계산에 넣어야 한다. 홉 하나가 검색과 중간 답변으로 이미 무겁다면 판정 한 번이 아깝지 않지만, 가벼운 홉이라면 판정 비용이 절약분을 넘어설 수 있다.
+
+### 질문 유형을 가르는 라우터
+
+가장 크게 아끼는 방법은 애초에 멀티홉을 켜지 않는 것이다. 실제 트래픽의 대부분은 단일 검색으로 충분한 질문이고, 그런 질문에 세 홉을 돌리면 비용은 다섯 배인데 답은 나아지지 않는다. 프로덕션에서 기법 하나를 고르는 대신 **라우터**를 두는 패턴이 흔한 이유다. 라우터는 질문을 보고 어느 전략으로 보낼지 정하는 분류기다.
+
+| 기법 | 적합한 질문 | 대가 |
+| --- | --- | --- |
+| 기본 검색 | 단순 사실 질문 | — |
+| Step-Back | 배경 지식이 필요한 질문 | 검색·호출 한 번씩 추가 |
 | HyDE | 전문 도메인, 긴 문서 | 할루시네이션 위험 |
-| Step-Back | 배경 지식이 필요한 질문 | 오버헤드 있음 |
-| Decomposition | 복합 질문, 멀티홉 | 복잡한 구현 |
+| Multi-Query | 짧고 모호한 쿼리 | LLM 호출과 검색 $$n$$ 배 |
+| Decomposition | 독립 하위 질문으로 갈리는 복합 질문 | 종합 단계가 무거워진다 |
+| Multi-Hop | 앞 답이 다음 쿼리를 정하는 질문 | 지연이 홉 수만큼 쌓인다 |
 
-실제 프로덕션에서는 한 가지를 선택하기보다 **라우터**를 둬 질문 유형에 따라 적절한 전략을 선택하는 패턴이 많다. 단순한 사실 질문에는 기본 검색, 복합 질문에는 Decomposition, 전문 도메인에는 HyDE를 적용하는 식이다.
+라우터 자체는 간단하게 시작해도 된다. 질문 길이와 접속사 유무 같은 규칙 몇 줄로도 단순 질문과 복합 질문은 꽤 갈리고, 그것으로 부족하면 LLM에 질문 유형만 물어 한 단어로 답하게 하는 분류 호출을 둔다. 이때 라우팅 호출은 **가장 작고 빠른 모델**로 돌린다 — 모든 질문이 이 호출을 지나므로 여기가 무거우면 단순 질문의 지연까지 함께 는다.
+
+라우터를 두면 평가도 갈라서 해야 한다. 전체 정확도만 보면 라우터가 복합 질문을 단순 검색으로 잘못 보내는 실패가 다른 지표에 묻힌다. 질문 유형별로 나눠 재고, 특히 **잘못 라우팅된 경우의 답이 얼마나 나쁜지**를 따로 본다([RAG 평가](/articles/rag-evaluation) 참고).
+
+### 규칙이 닿지 못하는 곳
+
+라우터는 결국 우리가 미리 적어 둔 규칙이다. 어떤 질문에 어떤 전략을 쓸지 사람이 표로 정해 두는 것이고, 표 밖의 질문에는 손이 닿지 않는다. 세 홉을 돌다가 인덱스에 답이 없다는 것이 드러났을 때 웹 검색으로 갈아탈지, 두 번째 홉의 답이 미심쩍을 때 다른 쿼리로 그 홉만 다시 돌지는 표에 적을 수 없는 판단이다. 지금까지 본 기법들은 전부 **경로가 미리 정해진 파이프라인**이고, 정해 두지 않은 상황을 만나면 그대로 지나간다.
+
+다음 글에서는 그 판단을 사람이 아니라 모델에게 넘긴다. 검색을 여러 도구 중 하나로 쥐여 주고, 지금 무엇을 검색할지·모은 것으로 충분한지·다른 도구로 갈아탈지를 매 턴 모델이 스스로 정하게 하는 구조다. 이 글의 루프는 그 구조의 가장 단순한 형태이고, 종료 조건을 `should_continue` 함수에서 모델의 판단으로 옮기는 순간 파이프라인은 에이전트가 된다.
 
 ---
 
@@ -179,4 +372,4 @@ def decompose_and_retrieve(question, llm, retriever):
 
 **지난 글:** [RAG 리랭킹: 검색 품질을 한 단계 끌어올리는 기술](/articles/rag-reranking)
 
-**다음 글:** [RAG 멀티홉 추론: 복잡한 질문을 단계적으로 해결하기](/articles/rag-multi-hop)
+**다음 글:** [Agentic RAG: 에이전트가 스스로 검색하고 추론하는 시스템](/articles/rag-agentic-rag)

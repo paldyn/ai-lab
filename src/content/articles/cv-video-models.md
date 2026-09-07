@@ -1,203 +1,353 @@
 ---
-title: "비디오 생성 모델: Sora·AnimateDiff·Stable Video Diffusion 완전 해설"
-description: "비디오 확산 모델의 시간 어텐션 구조, AnimateDiff·SVD·CogVideoX 비교, diffusers 비디오 생성 코드, Sora·Veo·Kling 등 SOTA 모델 분석을 완전 해설합니다."
+title: "정지 이미지 너머: 비디오와 3D 생성 모델의 지형"
+description: "2D 확산 모델에 시간 축을 붙이면 비디오가, 공간 축을 붙이면 3D가 된다. 시공간 어텐션과 볼륨 렌더링, SDS 증류, 일관성 지표, 계산 예산을 한 편에서 정리한다."
 author: "PALDYN Team"
 pubDate: "2026-05-20"
 category: "domain-models"
 level: "중급"
-tags: ["비디오생성", "AnimateDiff", "SVD", "Sora", "CogVideoX", "시간어텐션", "diffusers", "텍스트비디오"]
+tags: ["비디오생성", "NeRF", "3DGaussianSplatting", "SDS", "시공간어텐션"]
 featured: false
 draft: false
 ---
-[지난 글](/articles/cv-image-editing)에서 AI 이미지 편집 기법들을 살펴봤다. 이번 글에서는 정지 이미지를 넘어 **움직이는 영상을 생성**하는 비디오 생성 모델의 구조와 실전 사용법을 다룬다. 2024년 Sora의 등장으로 AI 비디오 생성은 연구 수준에서 실용 수준으로 도약했다.
+[지난 글](/articles/cv-controlnet)에서 확산 모델에 포즈·깊이·엣지 같은 공간 조건을 붙여 한 장의 이미지를 정밀하게 통제하는 법을 봤다. 이 글은 그 한 장에서 축을 하나 더 늘린다. 같은 장면을 시간 순서로 늘어놓으면 **비디오 생성**이 되고, 같은 물체를 여러 시점으로 늘어놓으면 **3D 생성**이 된다.
 
-## 이미지 vs 비디오 확산 모델 구조 차이
+둘을 한자리에 묶는 이유가 있다. 밑천이 같기 때문이다. 비디오 모델도 3D 모델도 바닥에는 수십억 장의 2D 이미지로 학습한 확산 모델이 깔려 있고, 새로 배우는 것은 그 위에 **축 하나를 어떻게 붙이는가**뿐이다. 붙이는 방식이 둘로 갈린다 — 시간 축은 모델 안에 어텐션을 한 겹 더 넣어 붙이고, 공간 축은 모델은 그대로 둔 채 밖에 3D 표현을 세우고 2D 모델을 심판으로 쓴다. 이 차이가 뒤에 나오는 거의 모든 것을 설명한다.
+
+모델 이름을 외우는 방식으로는 이 지형이 잡히지 않는다. 목록은 반년이면 낡지만 시공간 어텐션이 왜 갈라지는지, 3D 표현이 왜 셋인지, 지도 없이 최적화하는 손실이 어떻게 생겼는지, 메모리가 어디서 터지는지는 그대로 남는다.
+
+## 축 하나를 더 붙이는 일
+
+### 2D에서 물려받는 것
+
+**확산 모델**(diffusion model)은 노이즈에서 시작해 조금씩 걷어 내며 이미지를 만드는 모델이다. 실무에서 쓰는 것은 대부분 픽셀이 아니라 **잠재 공간**(latent space)에서 도는 쪽이다 — 512×512 이미지를 VAE로 64×64×4 텐서로 줄여 놓고 그 안에서 노이즈를 걷어 낸 뒤 마지막에 한 번 디코딩한다. 한 변이 8분의 1로 줄었으니 다뤄야 할 원소가 64분의 1이다.
+
+이 사전 지식이 왜 그렇게 값진지는 데이터 쪽을 보면 안다. 인터넷에는 이미지가 수십억 장 있지만 정렬된 다시점 사진 묶음이나 캡션 달린 영상 클립은 그보다 몇 자릿수 적다. 「고양이가 어떻게 생겼는가」를 비디오 데이터로 처음부터 배우려면 데이터가 모자란다. 그래서 두 분야 모두 같은 전략을 택했다 — **고양이의 생김새는 2D 모델에서 가져오고, 새로 배우는 것은 축 하나에 대한 것으로 줄인다.**
+
+### 시간 축과 공간 축
+
+두 축이 붙는 자리가 다르다.
+
+시간 축은 **모델 안**에 붙는다. 잠재 텐서에 프레임 차원을 하나 더 달고, U-Net 블록마다 프레임 사이를 잇는 어텐션을 한 겹 끼워 넣는다. 2D 가중치는 대부분 얼려 두고 새로 끼운 겹만 학습한다. 학습이 끝나면 한 번의 순전파가 클립 하나를 통째로 뱉는다.
+
+공간 축은 **모델 밖**에 붙는다. 3D 표현을 따로 하나 세워 놓고 — 신경망이든 가우시안 무더기든 — 그것을 여러 시점에서 렌더링한 뒤, 렌더된 그림이 얼마나 그럴듯한지를 판정하는 자리에만 2D 모델을 쓴다. 3D 표현 자체는 장면마다 처음부터 최적화한다. 그래서 비디오 모델은 「학습된 모델에 프롬프트를 넣는 일」이고 3D 재구성은 「장면 하나마다 몇 분에서 몇 시간을 돌리는 일」이다.
+
+### 축 하나가 부르는 비용
+
+축이 하나 늘면 비용은 곱으로 는다. 잠재 해상도 64×64에 16프레임이면 토큰이 $$16 \times 64 \times 64 = 65{,}536$$ 개다. 어텐션은 토큰 수의 제곱이므로 모든 토큰이 서로를 보게 하면 $$65{,}536^2 \approx 4.3 \times 10^9$$ 쌍이다. 같은 잠재 해상도의 이미지 한 장은 4,096 토큰, 1,678만 쌍이었다. 프레임을 16장으로 늘렸을 뿐인데 어텐션 비용은 256배가 됐다.
+
+3D도 사정이 같다. 800×800 이미지 한 장은 레이 64만 개이고, NeRF가 쓰는 계층 샘플링대로 거친 단계 64개와 촘촘한 단계 128개를 뽑으면 레이 하나에 192번, 이미지 한 장을 그리는 데 MLP 순전파가 1억 2,000만 번이다. 학습은 이 이미지를 수만 번 그리는 일이다.
+
+**그래서 이 분야의 기법은 대부분 품질 이야기가 아니라 이 곱셈을 쪼개는 이야기다.** 뒤에 나오는 분리 어텐션, 잠재 압축, 해시 그리드, 래스터라이저는 모두 여기서 나온다.
+
+## 프레임을 잇는 시간 어텐션
+
+### 시공간 텐서의 모양
 
 ![이미지 vs 비디오 확산 모델 구조](/assets/posts/cv-video-models-spacetime.svg)
 
-이미지 확산 모델이 `(B, C, H, W)` 형태의 공간 텐서를 처리한다면, 비디오 확산 모델은 `(B, C, F, H, W)` 형태의 **시공간 텐서**를 다룬다. F는 프레임 수다. 핵심 추가 요소는 **시간 어텐션**(Temporal Attention)으로, 각 공간 위치에서 모든 프레임에 걸쳐 어텐션을 계산해 프레임 간 일관성을 학습한다.
+이미지 확산 모델이 `(B, C, H, W)` 모양의 텐서를 다룬다면 비디오 확산 모델은 `(B, C, F, H, W)` 모양의 **시공간 텐서**를 다룬다. `F`가 프레임 수다. 차원 하나가 늘었을 뿐이지만 U-Net 안의 모든 블록이 이 차원을 어떻게 대할지 정해야 한다.
 
-## 비디오 생성 모델 비교
+가장 소박한 답은 「무시한다」다. 프레임을 배치 축에 접어 넣고 이미지 모델을 그대로 돌리는 것이다. 결과는 예상대로다 — 프레임마다 그럴듯한 그림이 나오지만 인물의 얼굴이 매 프레임 바뀌고 배경이 깜빡인다. 시드를 고정해도 소용이 없다. 프레임 사이에 정보가 오가는 통로가 아예 없기 때문이다.
+
+**시간 어텐션**(temporal attention)이 그 통로다. 각 공간 위치에서, 그 위치의 모든 프레임 특징을 서로 보게 한다. 왼쪽 위 픽셀이 1번 프레임의 왼쪽 위와 16번 프레임의 왼쪽 위를 함께 보고 「이 자리는 서서히 어두워지는 중」이라는 것을 알게 된다.
+
+### 공간과 시간의 분리
+
+앞 절에서 센 43억 쌍은 실제로 쓰지 않는다. 대신 어텐션을 두 번에 나눠 건다.
+
+```python
+# x: (B, C, F, H, W) — 배치·채널·프레임·높이·너비
+b, c, f, h, w = x.shape
+
+# 공간 어텐션: 프레임을 배치로 접어 프레임마다 따로 본다
+x_s = x.permute(0, 2, 3, 4, 1).reshape(b * f, h * w, c)
+
+# 시간 어텐션: 픽셀 위치를 배치로 접어 위치마다 프레임을 본다
+x_t = x.permute(0, 3, 4, 2, 1).reshape(b * h * w, f, c)
+```
+
+계산해 보면 차이가 분명하다. 공간 어텐션은 프레임마다 $$4096^2$$ 쌍씩 16번이라 2억 6,800만 쌍, 시간 어텐션은 위치마다 $$16^2$$ 쌍씩 4,096번이라 105만 쌍이다. 합쳐 2억 6,900만 쌍으로, 모두 잇는 방식의 **16분의 1**이다. 그리고 이 비율은 프레임 수에 비례해 벌어진다 — 49프레임이면 48배, 1분짜리 480프레임이면 400배가 넘는 차이다.
+
+잃는 것도 있다. 분리 어텐션에서는 왼쪽 위 픽셀이 다른 프레임의 오른쪽 아래를 직접 볼 수 없다. 물체가 화면을 가로질러 크게 움직이면 두 자리를 잇는 경로가 블록 여러 겹을 거쳐야 나온다. 그래서 큰 움직임에서 형태가 뭉개지는 일이 잦고, Sora 계열의 대형 모델들이 U-Net 대신 **DiT**(Diffusion Transformer)로 옮겨 가며 시공간을 함께 자른 3D 패치를 토큰으로 쓰는 이유가 여기 있다. 비용을 더 내고 통로를 되사는 셈이다.
+
+AnimateDiff는 이 구조를 가장 알뜰하게 쓴 예다. 사전학습된 Stable Diffusion 가중치는 손대지 않고 시간 어텐션이 든 **Motion Module**만 끼워 학습한다.
+
+```python
+import torch
+from diffusers import AnimateDiffPipeline, MotionAdapter
+
+adapter = MotionAdapter.from_pretrained(
+    "guoyww/animatediff-motion-adapter-v1-5-2", torch_dtype=torch.float16
+)
+pipe = AnimateDiffPipeline.from_pretrained(
+    "SG161222/Realistic_Vision_V5.1_noVAE",   # 기존 SD 체크포인트 그대로
+    motion_adapter=adapter,
+    torch_dtype=torch.float16,
+).to("cuda")
+```
+
+2D 가중치를 건드리지 않았다는 점이 그대로 이득이 된다. 기존 SD 생태계의 LoRA와 ControlNet이 그대로 붙으므로, 앞 글에서 만든 캐릭터 LoRA에 모션 모듈만 얹으면 그 캐릭터가 움직이는 클립이 나온다. 16~32프레임, 512×512 정도가 이 방식의 상식적인 한계다.
+
+### 잠재 공간의 시간 압축
+
+프레임을 늘리면 잠재 텐서도 그만큼 커진다. 여기서 한 번 더 줄이는 길이 있다 — VAE 자체를 3D로 만들어 **시간 축도 압축**하는 것이다. 이미지 VAE가 공간을 8분의 1로 줄였듯, 3D VAE는 인접한 네 프레임을 하나의 잠재 프레임으로 접는다. 인접 프레임은 대부분 같은 그림이라 압축이 잘 먹힌다.
+
+CogVideoX의 3D VAE가 정확히 그 비율이다 — 공간은 가로세로 8분의 1, 시간은 4분의 1. 이 모델이 내보내는 한 클립은 49프레임이고 8fps로 재생해 6초 남짓인데, 이 정도 길이를 소비자용 GPU에서 굴릴 수 있는 것은 시간 축 압축 덕이 크다.
+
+그러면 더 세게 접으면 되지 않느냐는 물음에는 저자들이 직접 답을 내놨다. 압축을 $$16 \times 16 \times 8$$ 까지 밀어 보니 채널 수를 그만큼 늘려 줘도 학습이 좀처럼 수렴하지 않았다는 것이다. 접는 비율은 공짜로 올릴 수 있는 값이 아니고, 지금 쓰이는 조합은 그 한계 앞에서 멈춘 자리다.
+
+### 움직임을 정하는 조건
 
 ![비디오 생성 모델 비교](/assets/posts/cv-video-models-architecture.svg)
 
-## AnimateDiff로 이미지 애니메이션
+무엇을 그릴지는 프롬프트가 정하지만 **어떻게 움직일지**는 따로 손잡이가 필요하다. 세 가지가 실무에서 쓰인다.
 
-AnimateDiff는 기존 Stable Diffusion 파이프라인에 Motion Module만 삽입해 비디오를 생성한다. 기존 SD LoRA와 완벽히 호환된다.
-
-```python
-import torch
-from diffusers import AnimateDiffPipeline, MotionAdapter, DDIMScheduler
-from diffusers.utils import export_to_gif
-
-# Motion Adapter 로드
-adapter = MotionAdapter.from_pretrained(
-    "guoyww/animatediff-motion-adapter-v1-5-2",
-    torch_dtype=torch.float16,
-)
-
-pipe = AnimateDiffPipeline.from_pretrained(
-    "SG161222/Realistic_Vision_V5.1_noVAE",
-    motion_adapter=adapter,
-    torch_dtype=torch.float16,
-)
-pipe.scheduler = DDIMScheduler.from_config(
-    pipe.scheduler.config,
-    clip_sample=False,
-    timestep_spacing="linspace",
-    beta_schedule="linear",
-    steps_offset=1,
-)
-pipe.to("cuda")
-pipe.enable_vae_slicing()
-pipe.enable_model_cpu_offload()
-
-output = pipe(
-    prompt=(
-        "a beautiful woman walking along a beach at sunset, "
-        "cinematic, 4k, smooth camera motion"
-    ),
-    negative_prompt=(
-        "low quality, blurry, distorted, ugly"
-    ),
-    num_frames=16,           # 생성할 프레임 수
-    num_inference_steps=25,
-    guidance_scale=7.5,
-    generator=torch.Generator(device="cuda").manual_seed(42),
-)
-
-# GIF로 저장
-frames = output.frames[0]
-export_to_gif(frames, "animation.gif")
-
-# MP4로 저장
-from diffusers.utils import export_to_video
-export_to_video(frames, "animation.mp4", fps=8)
-```
-
-## MotionCtrl — 카메라 모션 제어
-
-AnimateDiff에 MotionCtrl을 결합하면 카메라 방향·이동을 정밀하게 제어할 수 있다.
-
-```python
-# 카메라 궤적 정의
-def create_camera_trajectory(
-    trajectory_type: str = "pan_right",
-    num_frames: int = 16,
-) -> list:
-    """카메라 이동 행렬 생성"""
-    if trajectory_type == "pan_right":
-        # x축 방향으로 점진적 이동
-        return [
-            [[1, 0, 0, i * 0.05],
-             [0, 1, 0, 0],
-             [0, 0, 1, 0],
-             [0, 0, 0, 1]]
-            for i in range(num_frames)
-        ]
-    elif trajectory_type == "zoom_in":
-        return [
-            [[1, 0, 0, 0],
-             [0, 1, 0, 0],
-             [0, 0, 1, -i * 0.1],
-             [0, 0, 0, 1]]
-            for i in range(num_frames)
-        ]
-```
-
-## Stable Video Diffusion — 이미지 애니메이션
-
-SVD는 정지 이미지를 입력으로 받아 자연스러운 움직임을 생성하는 데 특화되어 있다.
+첫째는 첫 프레임이다. Stable Video Diffusion은 텍스트 대신 이미지 한 장을 조건으로 받아 그다음을 이어 그린다. 무엇이 그려질지가 이미 정해져 있으므로 모델은 움직임에만 집중한다.
 
 ```python
 from diffusers import StableVideoDiffusionPipeline
-from diffusers.utils import load_image, export_to_video
-import torch
+from diffusers.utils import export_to_video
 
 pipe_svd = StableVideoDiffusionPipeline.from_pretrained(
-    "stabilityai/stable-video-diffusion-img2vid-xt",
-    torch_dtype=torch.float16,
-    variant="fp16",
-)
-pipe_svd.enable_model_cpu_offload()
-pipe_svd.unet.enable_forward_chunking()
-
-# 입력 이미지 (1024×576 권장)
-image = load_image("input.jpg")
-image = image.resize((1024, 576))
+    "stabilityai/stable-video-diffusion-img2vid-xt", torch_dtype=torch.float16
+).to("cuda")
 
 frames = pipe_svd(
-    image,
-    num_frames=25,            # SVD-XT: 25 프레임
+    image,                     # 1024×576 권장
+    num_frames=25,             # SVD-XT 기준
     num_inference_steps=25,
-    decode_chunk_size=8,      # VRAM 절약
-    motion_bucket_id=127,     # 0=정지, 255=빠른 움직임
-    noise_aug_strength=0.02,  # 약간의 노이즈로 다양성 추가
-    generator=torch.Generator("cuda").manual_seed(42),
+    decode_chunk_size=8,       # 디코딩을 8프레임씩 끊는다
+    motion_bucket_id=127,      # 0=정지, 255=빠른 움직임
+    noise_aug_strength=0.02,   # 입력에 약간의 노이즈를 섞어 다양성 확보
 ).frames[0]
-
 export_to_video(frames, "animated.mp4", fps=7)
 ```
 
-`motion_bucket_id`는 움직임 강도를 제어한다. 낮은 값(0~50)은 미세한 움직임(나뭇잎 흔들림), 높은 값(200~255)은 큰 움직임을 생성한다.
+둘째는 `motion_bucket_id` 같은 **움직임 강도** 스칼라다. 학습할 때 클립마다 광학 흐름의 크기를 재서 구간으로 나눠 두고 그 번호를 조건으로 넣은 것이라, 추론에서 번호를 바꾸면 움직임의 총량이 바뀐다. 0~50은 나뭇잎이 흔들리는 정도, 200~255는 카메라가 크게 도는 정도다. 텍스트로는 이 양을 정확히 지정하기 어렵기 때문에 숫자 하나로 빼 둔 것이다.
 
-## CogVideoX — 오픈소스 고품질 Text-to-Video
+셋째는 카메라 궤적이다. MotionCtrl은 프레임마다 카메라 자세를 $$3 \times 3$$ 회전 행렬과 $$3 \times 1$$ 이동 벡터로 적어 값 열두 개씩 늘어놓고, 길이 $$L$$ 짜리 그 수열을 조건으로 삼는다. 오른쪽으로 패닝하려면 프레임 번호에 비례해 이동 성분의 $$x$$ 값을 조금씩 키우고, 줌인하려면 $$z$$ 값을 조금씩 줄인다. 내용과 카메라를 분리해 두면 「같은 장면을 다른 카메라 워크로」가 가능해진다.
 
-```python
-from diffusers import CogVideoXPipeline
-from diffusers.utils import export_to_video
-import torch
+## 3D 장면의 세 가지 표현
 
-pipe_cog = CogVideoXPipeline.from_pretrained(
-    "THUDM/CogVideoX-5b",
-    torch_dtype=torch.bfloat16,
-)
-pipe_cog.enable_model_cpu_offload()
-pipe_cog.enable_sequential_cpu_offload()
-pipe_cog.vae.enable_slicing()
-pipe_cog.vae.enable_tiling()
+### 암묵·명시·혼합
 
-video = pipe_cog(
-    prompt=(
-        "A majestic eagle soaring over snow-capped mountains, "
-        "4K cinematic footage, smooth flight, dramatic lighting"
-    ),
-    num_videos_per_prompt=1,
-    num_inference_steps=50,
-    num_frames=49,      # 약 6초 (8fps)
-    guidance_scale=6,
-    generator=torch.Generator("cuda").manual_seed(42),
-).frames[0]
+![3D 생성 AI 핵심 기술 비교](/assets/posts/cv-3d-generation-methods.svg)
 
-export_to_video(video, "eagle.mp4", fps=8)
-```
+공간 축으로 넘어가면 먼저 정할 것이 있다. **3D를 무엇으로 들고 있을 것인가**다. 세 갈래가 있고 렌더링 속도와 편집 용이성이 갈린다.
 
-## 비디오 생성의 주요 과제
+**명시적 표현**은 메시나 포인트 클라우드처럼 3D 좌표를 그대로 저장한다. 게임 엔진이 수십 년 다뤄 온 형식이라 렌더링이 압도적으로 빠르고 툴 생태계가 두껍다. 대신 반투명한 연기나 머리카락처럼 표면이 뚜렷하지 않은 것을 담기 어렵고, 최적화 과정에서 삼각형을 늘리고 줄이는 일이 미분과 잘 맞지 않는다.
 
-**시간 일관성**: 등장인물의 얼굴이나 물체가 프레임마다 달라지는 문제. 시간 어텐션이 핵심 해결책이다.
+**암묵적 표현**은 좌표를 입력받아 그 자리의 색과 밀도를 내놓는 함수 하나로 장면을 들고 있다. NeRF가 그렇다. 해상도라는 개념이 없어 어디든 연속적이고 파라미터도 작지만, 한 점의 값을 알려면 매번 신경망을 돌려야 해서 렌더링이 느리다.
 
-**물리 법칙 준수**: 물이 흐르고 불이 타는 방식을 물리적으로 올바르게 생성하는 것. Sora는 이 영역에서 큰 진전을 보였다.
+**혼합 표현**은 둘 사이에 있다. 3D Gaussian Splatting은 데이터는 명시적으로 — 좌표를 가진 가우시안 알갱이 수백만 개로 — 들고 있으면서, 그 알갱이가 흐릿한 덩어리라 미분이 매끄럽게 흐른다. 명시적 표현의 속도와 암묵적 표현의 최적화 편의를 함께 가져간 자리다.
 
-**긴 클립 생성**: 현재 오픈소스 모델은 대부분 2~6초 수준이다. 오토리그레시브 방식으로 이어 붙이면 끊김이 발생한다.
+### 볼륨 렌더링의 적분
 
-**계산 비용**: 16 프레임, 512×512 기준 24GB VRAM이 필요하다. 1080p 1분 클립은 현재 소비자 GPU로 불가능하다.
+![NeRF 볼륨 렌더링 원리](/assets/posts/cv-3d-generation-nerf.svg)
+
+**NeRF**(Neural Radiance Field)는 2020년에 나온 방법으로, 3D 공간의 위치 $$(x,y,z)$$ 와 보는 방향 $$(\theta,\phi)$$ 를 MLP에 넣으면 그 자리의 색 RGB와 밀도 $$\sigma$$ 가 나오게 학습한다. 방향을 함께 받는 이유는 금속의 하이라이트처럼 **보는 각도에 따라 달라지는 색**을 담기 위해서다. 밀도는 방향과 무관하므로 위치만으로 예측하고, 색만 방향까지 받는다.
+
+좌표를 그대로 넣으면 흐릿한 덩어리밖에 못 만든다. MLP가 저주파를 선호하기 때문이다. 그래서 **위치 인코딩**(positional encoding)으로 좌표를 주파수를 2배씩 키운 사인·코사인 값들로 펼쳐 넣는다. 차수 10이면 축마다 사인·코사인이 10쌍씩이라 원래 좌표까지 $$3 + 3 \times 2 \times 10 = 63$$ 차원이 된다. 방향은 변화가 완만하니 차수 4로 27차원이면 충분하다.
+
+픽셀 하나의 색은 그 픽셀을 지나는 레이 위 샘플들을 앞에서부터 합성해 만든다. 이것이 **볼륨 렌더링**이다.
+
+$$
+C(\mathbf{r}) = \sum_{i} T_i \left(1 - e^{-\sigma_i \delta_i}\right) \mathbf{c}_i,
+\qquad
+T_i = \exp\left(-\sum_{j<i} \sigma_j \delta_j\right)
+$$
+
+$$\delta_i$$ 는 샘플 사이의 간격이다. $$1 - e^{-\sigma_i \delta_i}$$ 는 그 구간이 빛을 가리는 비율이고, $$T_i$$ 는 **누적 투과도** — 카메라에서 여기까지 오는 동안 살아남은 빛의 비율이다. 앞에 불투명한 것이 있으면 $$T$$ 가 0에 가까워져 뒤쪽 샘플의 기여가 저절로 사라진다. 코드로는 세 줄이다.
 
 ```python
-# VRAM 최적화 설정
-pipe.enable_vae_slicing()          # VAE를 프레임 단위로 슬라이싱
-pipe.enable_vae_tiling()           # VAE를 타일 단위로 처리
-pipe.enable_model_cpu_offload()    # GPU ↔ CPU 자동 오프로드
-pipe.unet.enable_forward_chunking(
-    chunk_size=1, dim=1            # 배치 청킹으로 피크 메모리 감소
-)
+def volume_render(rgb, sigma, t_vals):
+    deltas = t_vals[..., 1:] - t_vals[..., :-1]
+    deltas = torch.cat([deltas, torch.full_like(deltas[..., :1], 1e10)], dim=-1)
+
+    alpha = 1 - torch.exp(-sigma[..., 0] * deltas)     # 구간이 가리는 정도
+    T = torch.cumprod(
+        torch.cat([torch.ones_like(alpha[..., :1]), 1 - alpha + 1e-10], dim=-1),
+        dim=-1,
+    )[..., :-1]                                        # 누적 투과도
+
+    weights = T * alpha
+    return (weights[..., None] * rgb).sum(dim=-2)
 ```
 
-다음 글에서는 비디오에서 한 걸음 더 나아가 **3D 오브젝트와 3D 장면**을 생성하는 3D 생성 모델(NeRF·3D Gaussian Splatting·Point-E)을 다룬다.
+이 식 전체가 미분 가능하다는 점이 핵심이다. 3D 지오메트리를 직접 감독하지 않고 **여러 시점에서 찍은 사진과 렌더 결과의 차이**만 줄여도 밀도장이 알아서 물체 표면 자리에 몰린다. 3D 라벨이 없어도 되는 이유다.
+
+느린 것이 문제였다. 앞에서 센 대로 이미지 한 장에 MLP 호출이 1억 번대라 원래 NeRF는 장면 하나에 수 시간이 걸렸다. **Instant-NGP**가 여기를 갈아 냈다 — 좌표를 큰 MLP에 통째로 맡기는 대신 여러 해상도의 격자를 해시 테이블로 두고 격자 값을 학습한 뒤, MLP는 그 값을 섞는 작은 것만 남긴다. 학습 시간이 분 단위로 내려왔다.
+
+### 가우시안과 래스터라이저
+
+**3D Gaussian Splatting**(3DGS)은 2023년에 나와 판을 바꿨다. 장면을 3D 가우시안 알갱이 수백만 개로 들고 있는데, 알갱이마다 위치·회전(쿼터니언)·스케일·불투명도, 그리고 방향에 따른 색을 담는 **구면 조화함수**(spherical harmonics) 계수를 가진다. 회전과 스케일에서 공분산 행렬이 나온다.
+
+$$
+\Sigma = R S S^\top R^\top
+$$
+
+회전 $$R$$ 과 스케일 $$S$$ 를 따로 두는 이유는 최적화 중에도 $$\Sigma$$ 가 항상 유효한 공분산 행렬로 남아야 하기 때문이다. 행렬 아홉 칸을 자유롭게 학습시키면 금세 그 조건을 벗어난다.
+
+크기를 세어 보면 이 표현이 얼마나 가벼운지 안다. 위치 3, 회전 4, 스케일 3, 불투명도 1, 색의 상수항 3 — 알갱이 하나에 float 14개, 56바이트다. 100만 개면 56MB로 웬만한 이미지 몇 장 수준이다. 실제 구현은 색을 3차 구면 조화함수까지 두므로 계수가 채널당 16개로 늘어 몇 배가 되지만, 여전히 신경망 없이 통째로 GPU에 올릴 만한 크기다.
+
+렌더링은 적분이 아니라 **래스터라이저**가 한다 — 알갱이를 화면에 투영해 타원으로 만들고, 깊이 순으로 정렬한 뒤 타일 단위로 앞에서부터 겹쳐 칠한다. 레이마다 신경망을 돌리는 일이 없으니 실시간 프레임률이 나온다. 다만 정렬과 타일 처리가 CUDA 커스텀 커널이라, 파이썬만으로 전체 파이프라인을 재현하기는 어렵다. 시간 축을 하나 더 붙여 알갱이가 움직이게 한 4DGS 계열이 동적 장면을 다루는 확장이고, 여기서 이 글의 두 축이 다시 만난다.
+
+## 2D 사전 지식의 증류
+
+### 점수 함수로서의 확산 모델
+
+지금까지의 3D는 모두 **사진이 있는** 경우였다. 다시점 사진이 있으니 렌더 결과를 그 사진에 맞추면 됐다. 그런데 「파란 모자를 쓴 토끼 인형」이라는 문장 하나뿐이라면 맞출 대상이 없다.
+
+DreamFusion의 답은 **2D 확산 모델을 심판으로 쓰는 것**이다. 확산 모델은 노이즈 낀 이미지를 받아 「거기 섞인 노이즈가 무엇인지」를 예측하도록 학습됐다. 뒤집어 보면 이 모델은 어떤 이미지가 자연스러운지에 대한 판단을 갖고 있고, 예측한 노이즈와 실제로 넣은 노이즈의 차이가 곧 「**이 그림을 더 그럴듯하게 만들려면 어느 방향으로 밀어야 하는가**」를 가리킨다.
+
+그러니 절차는 이렇게 된다. NeRF를 랜덤한 시점에서 렌더링해 이미지를 하나 뽑고, 거기에 노이즈를 섞어 확산 모델에 물어보고, 돌아온 방향으로 NeRF 파라미터를 민다. 시점을 매번 바꿔 가며 이것을 수천 번 반복하면 **어느 각도에서 봐도 프롬프트에 맞는** 3D가 남는다. 3D 데이터는 한 장도 쓰지 않았다.
+
+### SDS 손실의 한 걸음
+
+이 손실이 **Score Distillation Sampling**(SDS)이다. 한 걸음을 코드로 보면 짧다.
+
+```python
+noise = torch.randn_like(x)                   # x: 렌더한 이미지, [-1,1]
+t = torch.randint(50, 950, (x.shape[0],))     # 양 끝 타임스텝은 뺀다
+x_t = scheduler.add_noise(x, noise, t)
+
+with torch.no_grad():
+    e_uncond = unet(x_t, t, encoder_hidden_states=null_emb).sample
+    e_cond = unet(x_t, t, encoder_hidden_states=text_emb).sample
+    e_hat = e_uncond + 100.0 * (e_cond - e_uncond)   # CFG
+
+grad = (e_hat - noise).detach()
+loss = (grad * x).sum()      # 미분하면 grad가 그대로 나오는 대리 손실
+```
+
+세 군데가 눈여겨볼 자리다.
+
+첫째, 확산 모델의 U-Net에는 기울기가 흐르지 않는다(`no_grad`). 이 모델은 고정된 심판이고 배우는 것은 3D 표현뿐이다.
+
+둘째, 마지막 줄의 손실은 실제 손실이 아니라 **대리 손실**이다. 우리가 원하는 것은 파라미터 $$\theta$$ 에 대한 기울기가 예측 노이즈와 실제 노이즈의 차이가 되는 것이다.
+
+$$
+\nabla_\theta \mathcal{L}_{\text{SDS}} = \mathbb{E}_{t,\epsilon}\left[ w(t)\,(\hat{\epsilon} - \epsilon)\, \frac{\partial x}{\partial \theta} \right]
+$$
+
+`grad`를 상수로 떼어 놓고 렌더 결과 $$x$$ 와 내적한 값을 미분하면 정확히 이 식이 나온다. U-Net을 거꾸로 미분하지 않아도 되므로 메모리가 크게 준다. $$w(t)$$ 는 타임스텝마다 기여를 조절하는 가중치인데, 위 코드는 이것을 1로 두고 생략한 형태다.
+
+셋째, CFG 배율이 100이다. **CFG**(Classifier-Free Guidance)는 조건을 준 예측과 안 준 예측의 차이를 증폭해 프롬프트를 더 세게 따르게 하는 기법인데, 보통의 이미지 생성에서는 7.5 언저리를 쓴다. SDS가 그 열 배 넘는 값을 쓰는 것은 랜덤 시점마다 오는 신호가 서로 상쇄돼 평균하면 방향이 흐려지기 때문이다. 대가도 분명하다 — SDS로 만든 결과물이 지나치게 채도가 높고 매끈해 보이는 것, 디테일이 뭉개지는 것이 전부 이 과증폭의 흔적이다.
+
+### 야누스 문제와 멀티뷰
+
+SDS에는 구조적인 구멍이 하나 있다. 심판으로 쓰는 2D 모델은 **자기가 지금 어느 각도를 보고 있는지 모른다.** 「토끼」라는 프롬프트를 받으면 학습 데이터에 흔한 정면 얼굴을 그럴듯하다고 판정하고, 뒤통수를 렌더링해서 물어봐도 마찬가지로 정면 얼굴 쪽으로 민다. 그 결과 앞에서 봐도 얼굴, 뒤에서 봐도 얼굴인 물체가 나온다 — 앞뒤로 얼굴이 달린 로마 신의 이름을 따 **야누스 문제**(Janus problem)라 부른다.
+
+프롬프트에 「back view of」를 방향에 따라 덧붙이는 임시방편이 있지만, 근본 해법은 심판 쪽에 시점 개념을 넣는 것이다. Zero123++ 계열이 그 길이다. 이미지 한 장을 받아 **정해진 각도의 여섯 뷰를 한 장의 격자 이미지로 한 번에** 생성하도록 학습된 모델이라, 뷰 사이의 일관성이 모델 안에서 이미 맞춰진다. 30°부터 60° 간격으로 여섯 방향을 뽑고, 그 여섯 장을 다시점 사진처럼 써서 NeRF나 3DGS로 재구성하면 3D가 나온다. 지도가 없던 문제를 「지도를 먼저 만들어 내는 문제」로 바꾼 셈이다.
+
+## 일관성을 재는 지표
+
+### 프레임 사이의 흔들림
+
+생성 결과를 눈으로만 고르면 프로젝트가 앞으로 못 간다. 무엇을 재는지 먼저 정해야 한다.
+
+비디오에서 가장 널리 쓰이는 자동 지표는 **FVD**(Fréchet Video Distance)다. 이미지 생성의 FID를 그대로 영상으로 옮긴 것으로, 영상 인식 네트워크에 진짜 클립 묶음과 생성 클립 묶음을 통과시켜 나온 특징 분포 사이의 거리를 잰다. 낮을수록 좋고, 개별 클립이 아니라 분포를 재는 값이라 클립 하나의 점수로는 의미가 없다.
+
+프롬프트를 얼마나 따랐는지는 별도로 잰다. 프레임마다 CLIP 임베딩을 뽑아 텍스트 임베딩과의 유사도를 평균하는 방식이 흔하다. 여기에 **이웃 프레임 사이의 CLIP 유사도**를 함께 재면 시간 일관성의 대략적인 대리 지표가 된다 — 인물이 프레임마다 바뀌면 이 값이 떨어진다.
+
+더 직접적인 방법은 광학 흐름을 쓰는 것이다. 앞 프레임을 흐름대로 밀어 다음 프레임 자리에 놓고 실제 다음 프레임과 비교하면, 움직임으로 설명되지 않는 차이가 남는다. 그 잔차가 깜빡임의 양이다.
+
+### 시점 사이의 어긋남
+
+3D 쪽은 재는 방식이 두 갈래로 갈린다.
+
+**재구성**은 정답이 있다. 다시점 사진 중 몇 장을 학습에서 빼 두고 그 시점을 렌더링해 원본과 비교하면 된다. PSNR·SSIM·LPIPS 셋을 함께 적는 것이 관례다. 앞의 둘은 픽셀 차이를 재고, **LPIPS**는 신경망 특징 공간에서 재기 때문에 사람 눈에 비슷해 보이는 정도에 더 가깝다. 세 값이 엇갈리는 일이 흔한데, 흐릿하게 뭉갠 결과가 PSNR은 높고 LPIPS는 나쁜 것이 대표적인 경우다.
+
+**생성**은 정답이 없다. 텍스트에서 만든 3D에는 비교할 원본이 없으므로, 여러 각도에서 렌더링해 CLIP 유사도를 재는 방식과 야누스 현상이 있는지를 사람이 확인하는 방식이 함께 쓰인다. 메시를 다루면 정답 메시와의 표면 거리를 재기도 하지만, 이는 재구성 문제에 가깝다.
+
+### 지표가 못 보는 것
+
+자동 지표가 놓치는 것이 두 가지 있고, 둘 다 실사용에서 치명적이다.
+
+하나는 **물리적 개연성**이다. 물이 위로 흐르거나 컵이 놓인 뒤에도 손이 그 자리에 남아 있는 영상은 FVD를 크게 나쁘게 만들지 않는다. 특징 분포가 비슷하면 되기 때문이다. 사람은 이런 것을 즉시 알아채고, 대형 모델들이 「물리 법칙을 이해한다」고 강조하는 지점도 여기다.
+
+다른 하나는 **긴 시간의 정체성 유지**다. 지표는 대개 짧은 클립 단위로 재는데, 등장인물의 얼굴이 30초 동안 서서히 다른 사람이 되는 문제는 2초 클립을 아무리 봐도 안 잡힌다. 결국 이 둘은 사람이 봐야 한다. **자동 지표는 후보를 좁히는 데 쓰고 마지막 판단은 눈으로 한다**는 것이 현재의 현실적인 절차다.
+
+## 계산 예산의 배분
+
+### 메모리가 터지는 자리
+
+16프레임짜리 512×512 클립 하나를 뽑는 데 소비자용 GPU의 VRAM이 통째로 들어간다. 정확한 숫자를 외우는 것은 소용이 없다 — 모델과 정밀도, 켜 둔 최적화에 따라 몇 배씩 갈리기 때문이다. 대신 **어느 단계에서 쓰이는지**를 알면 어디를 줄일지 정할 수 있다.
+
+가장 큰 덩어리는 U-Net 순전파 중의 활성값이다. 프레임 수에 대체로 비례하고, 어텐션 행렬이 끼면 거기서 한 번 더 뛴다. 그다음은 **VAE 디코딩**이다. 잠재 텐서를 마지막에 한 번 펴는 단계인데, 여기서 해상도가 8배로 돌아오므로 순간 메모리가 가장 높이 튀는 곳이 대체로 이 자리다. 프레임 16장을 한꺼번에 디코딩하려 들면 정작 생성은 끝났는데 마지막 줄에서 죽는다.
+
+3D 쪽은 성격이 다르다. NeRF는 파라미터가 작아 모델 자체는 가볍고, 문제는 한 번에 처리하는 레이 수다. 3DGS는 반대로 알갱이가 늘어날수록 메모리를 먹는데, 학습 중에 알갱이를 쪼개고 늘리는 단계가 있어 중반에 갑자기 늘어나는 것이 특징이다.
+
+### 절약 손잡이 넷
+
+diffusers 파이프라인은 네 개의 손잡이를 준다. 어느 것을 켤지는 무엇을 내주느냐로 정한다.
+
+```python
+pipe.vae.enable_slicing()        # VAE 디코딩을 프레임 단위로 자른다
+pipe.vae.enable_tiling()         # 프레임 하나도 타일로 잘라 디코딩
+pipe.enable_model_cpu_offload()  # 안 쓰는 서브모듈은 CPU에 내려 둔다
+pipe.unet.enable_forward_chunking(chunk_size=1, dim=1)
+```
+
+| 손잡이 | 줄이는 곳 | 내주는 것 |
+| --- | --- | --- |
+| VAE 슬라이싱 | 디코딩 피크 | 거의 없음 |
+| VAE 타일링 | 고해상도 디코딩 피크 | 타일 경계의 미세한 이음매 |
+| CPU 오프로드 | 상주 메모리 | 전송 시간 |
+| 포워드 청킹 | 어텐션 활성값 | 순전파 속도 |
+
+앞의 둘은 사실상 공짜에 가까우니 먼저 켠다. 파이프라인 쪽에도 `pipe.enable_vae_slicing()`이라는 짝이 있지만 VAE로 넘겨 주기만 하는 껍데기이고 지금은 폐기 예정이라, VAE에 직접 거는 쪽을 쓴다. 앞서 본 SVD의 `decode_chunk_size`도 같은 계열의 손잡이다. CPU 오프로드는 GPU와 CPU 사이를 오가는 시간이 붙으므로 메모리가 정말 모자랄 때 켠다. 순차 오프로드까지 켜면 8GB급 GPU에서도 돌아가지만 생성 시간이 몇 배가 된다.
+
+그래도 안 되면 줄일 것은 프레임 수나 해상도다. **긴 클립을 짧은 클립 여러 개로 이어 붙이는 방식은 메모리를 아끼지만 이음매에서 끊김이 생긴다** — 앞 클립의 마지막 프레임을 다음 클립의 조건으로 주는 식으로 완화하지만 완전히 없어지지는 않는다. 오픈 모델의 실용 길이가 대체로 몇 초에 머무는 이유다.
+
+### 입력이 정하는 갈래
+
+무엇을 쓸지는 대개 **가진 것**이 정한다.
+
+| 가진 것 | 원하는 것 | 길 |
+| --- | --- | --- |
+| 이미지 한 장 | 짧은 영상 | SVD 계열의 이미지 조건 모델 |
+| 텍스트 | 짧은 영상 | CogVideoX 등 오픈 모델, 또는 상용 API |
+| 기존 SD 캐릭터·LoRA | 그 캐릭터의 영상 | AnimateDiff |
+| 텍스트 | 3D 오브젝트 | SDS 계열, 또는 상용 메시 생성 서비스 |
+| 이미지 한 장 | 3D 오브젝트 | Zero123++로 멀티뷰를 만든 뒤 재구성 |
+| 사진 30~50장 | 3D 장면 | COLMAP으로 포즈 추정 후 Instant-NGP 또는 3DGS |
+| 3D 장면 | 브라우저 실시간 뷰어 | 3DGS |
+
+마지막 두 줄이 실무에서 가장 자주 걸린다. 폰으로 물체 둘레를 돌며 30~50장을 찍고, **COLMAP**으로 각 사진이 어디서 찍혔는지를 역산한 다음, 그 포즈를 학습에 넣는 절차다. Instant-NGP는 이 두 단계 사이에 변환을 하나 끼운다 — COLMAP이 뱉은 결과를 학습기가 읽는 `transforms.json`으로 옮기는 일이고, `colmap2nerf.py`가 COLMAP 실행까지 겸한다.
+
+```bash
+python scripts/colmap2nerf.py --images images/ \
+    --run_colmap --colmap_matcher exhaustive --aabb_scale 32
+
+python scripts/run.py --scene . \
+    --n_steps 5000 --save_snapshot model.ingp
+```
+
+`--scene`이 받는 것은 사진 폴더가 아니라 `transforms.json`이 놓인 폴더다. 여기를 헷갈려 사진 폴더를 그대로 넣으면 학습이 시작조차 안 된다.
+
+여기서 실패하는 자리는 거의 항상 촬영이다. COLMAP은 사진 사이의 특징점을 맞춰 포즈를 푸는데, 무늬 없는 흰 벽이나 유리·금속처럼 각도에 따라 모습이 바뀌는 표면에서는 맞출 점을 못 찾는다. 조명이 바뀌어도, 사진 사이 간격이 너무 벌어져도 마찬가지다. **재구성 품질은 학습 단계보다 촬영 단계에서 결정된다** — 이웃한 사진끼리 화면이 충분히 겹치게, 노출을 고정하고, 물체와의 거리를 일정하게 유지하며 찍는 것이 가장 확실한 개선이다.
+
+## 두 축이 남긴 것
+
+### 아직 안 풀린 자리
+
+시간 축에서 남은 것은 **길이**와 **물리**다. 분리 어텐션과 잠재 압축으로 몇 초를 벌었지만 곱셈 자체가 사라진 것은 아니라, 길이를 늘리면 어딘가에서 다시 터진다. 물리는 더 근본적이다 — 지금의 모델은 물이 흐르는 **모습**을 데이터에서 배웠지 물이 왜 그렇게 흐르는지를 배운 것이 아니라서, 학습 데이터에서 멀어진 상황일수록 그럴듯한 거짓말을 한다.
+
+공간 축에서 남은 것은 **생성과 재구성 사이의 간극**이다. 사진이 충분하면 재구성은 이미 실용 수준이지만, 사진 없이 만들어 낸 3D는 여전히 SDS의 과증폭 흔적을 지고 있다. 게임이나 영상 제작에서 곧바로 쓰려면 결국 메시로 뽑아 리토폴로지와 UV 작업을 해야 하는데, 여기서 사람 손이 다시 들어간다.
+
+그리고 두 축이 만나는 자리 — 움직이는 3D 장면 — 는 이제 막 열린 곳이다. 4DGS 같은 시도가 나오고 있지만 데이터도 지표도 아직 얇다.
+
+### 다음 걸음
+
+이 글까지 컴퓨터 비전을 길게 다뤘다. 정지 이미지를 만들고, 조건으로 통제하고, 시간과 공간으로 축을 늘렸다.
+
+다음 글에서는 다루는 신호 자체를 바꾼다. 축을 늘린 것이 아니라 처음부터 시간이 전부인 신호, 곧 소리다. 소리를 글자로 옮기는 일은 여기서 본 문제들을 다시 만나게 한다 — 긴 입력을 어떻게 자를 것인가, 조각의 이음매를 어떻게 처리할 것인가, 결과가 끝나기 전에 내보내야 할 때 무엇을 포기할 것인가. 이번에는 그 물음을 음성 인식 모델의 구조와 실시간 처리 위에서 따라간다.
 
 ---
 
 읽어주셔서 감사합니다. 😊
 
-**지난 글:** [AI 이미지 편집: 인페인팅·아웃페인팅·스타일 전이·DDIM Inversion](/articles/cv-image-editing)
+**지난 글:** [확산 모델 제어와 편집: ControlNet·인페인팅·DDIM Inversion](/articles/cv-controlnet)
 
-**다음 글:** [3D 생성 AI: NeRF·3D Gaussian Splatting·Point-E 완전 해설](/articles/cv-3d-generation)
+**다음 글:** [자동 음성 인식(ASR): Whisper와 스트리밍 음성 처리 완전 해설](/articles/audio-asr)

@@ -9,7 +9,7 @@ tags: ["LlamaIndex", "RAG", "VectorStoreIndex", "QueryEngine", "Workflow", "SubQ
 featured: false
 draft: false
 ---
-[지난 글](/articles/agent-langgraph)에서 LangGraph로 상태 기반 에이전트 워크플로우를 구성하는 방법을 살펴봤다. 이번 글에서는 **데이터 중심 LLM 프레임워크**인 LlamaIndex를 다룬다. LlamaIndex는 150종 이상의 데이터 커넥터와 강력한 인덱싱·쿼리 파이프라인으로 RAG 시스템 구축에 특화되어 있다.
+[지난 글](/articles/agent-langchain)에서 LangChain의 LCEL과 LangGraph의 StateGraph로 **흐름을 어떻게 조립하는가**를 봤다. 한 방향으로 흐르면 파이프로 잇고, 되돌아오는 화살표가 생기면 상태를 꺼내 그래프로 옮기는 갈림길이었다. 그런데 거기서 RAG 체인은 문서를 1,000자로 자르고 상위 네 조각을 끌어오는 몇 줄로 끝났다 — 그 숫자를 무엇으로 정할지도, 꺼내 온 조각이 정말 질문에 맞는지도 프레임워크가 대신 봐 주지 않았다. 이번 글에서는 바로 그 자리를 정면으로 다루는 **데이터 중심 LLM 프레임워크**인 LlamaIndex를 다룬다. LlamaIndex는 150종 이상의 데이터 커넥터와 강력한 인덱싱·쿼리 파이프라인으로 RAG 시스템 구축에 특화되어 있다.
 
 ## LlamaIndex란
 
@@ -326,6 +326,6 @@ RAG 시스템 구축에는 LlamaIndex, 에이전트·도구 조합에는 LangCha
 
 읽어주셔서 감사합니다. 😊
 
-**지난 글:** [LangGraph 완전 가이드: 상태 기반 에이전트 워크플로우](/articles/agent-langgraph)
+**지난 글:** [LangChain과 LangGraph: 선형 체인에서 상태 그래프까지](/articles/agent-langchain)
 
-**다음 글:** [CrewAI 완전 가이드: 역할 기반 멀티 에이전트 협업](/articles/agent-crewai)
+**다음 글:** [멀티 에이전트 프레임워크 셋: CrewAI·AutoGen·Swarm](/articles/agent-crewai)

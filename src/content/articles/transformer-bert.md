@@ -9,7 +9,7 @@ tags: ["BERT", "트랜스포머", "사전학습", "MLM", "파인튜닝", "NLP"]
 featured: false
 draft: false
 ---
-[지난 글](/articles/transformer-masking)에서 Causal Mask가 디코더의 미래 참조를 어떻게 차단하는지 살펴봤다. GPT처럼 왼쪽→오른쪽(단방향) 언어 모델은 이 마스크 덕분에 자기 회귀 생성을 할 수 있다. 하지만 "나는 __을 좋아한다"에서 빈칸을 채울 때, 단어 앞뒤 맥락을 모두 볼 수 있다면 더 정확하지 않을까? 이 아이디어에서 출발한 것이 **BERT**(Bidirectional Encoder Representations from Transformers)다.
+[지난 글](/articles/transformer-decoder)에서 디코더를 두 장치로 관통해 봤다. 인과 마스크가 아직 만들지 않은 미래 토큰을 가렸고, Cross-Attention이 인코더가 만들어 둔 소스 표현을 끌어왔다. GPT처럼 왼쪽→오른쪽(단방향)으로 읽는 언어 모델은 앞쪽 장치 덕분에 자기 회귀 생성을 할 수 있다. 하지만 "나는 __을 좋아한다"에서 빈칸을 채울 때, 단어 앞뒤 맥락을 모두 볼 수 있다면 더 정확하지 않을까? 이 아이디어에서 출발한 것이 **BERT**(Bidirectional Encoder Representations from Transformers)다.
 
 ## BERT의 핵심 아이디어
 
@@ -126,6 +126,6 @@ for batch in dataloader:
 
 읽어주셔서 감사합니다. 😊
 
-**지난 글:** [Masking: 트랜스포머의 정보 차단 전략](/articles/transformer-masking)
+**지난 글:** [Decoder 블록: 마스킹, Cross-Attention, Encoder-Decoder](/articles/transformer-decoder)
 
 **다음 글:** [GPT: 자기회귀적 언어 모델의 진화](/articles/transformer-gpt)

@@ -15,7 +15,7 @@ draft: false
 확률 분포를 어떻게 바꾸는지 직접 잰 기록이다.
 
 온도·top-k·top-p를 어떻게 골라 쓰는지는 [/articles/llm-temperature-top-k-top-p](/articles/llm-temperature-top-k-top-p)가
-맡고, 샘플링 방법의 갈래는 [/articles/llm-sampling-strategies](/articles/llm-sampling-strategies)가
+맡고, 샘플링 방법의 갈래는 [샘플링 전략](/articles/llm-temperature-top-k-top-p)이
 맡는다. 이 글은 분포 자체의 측정값만 다룬다.
 
 재는 값은 셋이다. **엔트로피**는 분포가 얼마나 퍼져 있는지를 나타내는 값으로,

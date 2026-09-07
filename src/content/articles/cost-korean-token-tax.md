@@ -20,7 +20,7 @@ API 청구서는 글자가 아니라 토큰으로 매겨진다. 그래서 같은
 0.078로 사실상 0이다.
 
 BPE가 무엇이고 어떻게 병합을 학습하는지는 [BPE 토크나이저](/articles/tokenizer-bpe)와
-[tiktoken](/articles/tokenizer-tiktoken)이 맡는다. 이 글은 측정치와 그것이 청구서에서
+[실전 토크나이저](/articles/tokenizer-sentencepiece)가 맡는다. 이 글은 측정치와 그것이 청구서에서
 뜻하는 바만 맡는다.
 
 ## 무엇을 어떻게 쟀는가

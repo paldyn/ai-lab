@@ -1412,7 +1412,7 @@ export const certs: Cert[] = [
         subject: '[Professional] AI 모델링 및 모델 최적화',
         items: [
           { site: 'ailab', slug: 'nn-perceptron' },
-          { site: 'ailab', slug: 'cv-image-classification-deep' },
+          { site: 'ailab', slug: 'cnn-image-classification' },
         ],
       },
       {
@@ -1435,7 +1435,7 @@ export const certs: Cert[] = [
         items: [
           { site: 'ailab', slug: 'llm-essence' },
           { site: 'ailab', slug: 'finetuning-vs-prompt-vs-rag' },
-          { site: 'ailab', slug: 'project-prompt-iterating' },
+          { site: 'ailab', slug: 'llmops-prompt-management' },
         ],
       },
       {
@@ -1952,7 +1952,7 @@ export const certs: Cert[] = [
         subject: 'Serving and scaling models (모델 서빙과 확장)',
         items: [
           { site: 'ailab', slug: 'inference-engines' },
-          { site: 'ailab', slug: 'serving-cost-optimization' },
+          { site: 'ailab', slug: 'llmops-cost-tracking' },
           { site: 'ailab', slug: 'reasoning-when-to-use' },
         ],
       },
@@ -2368,7 +2368,7 @@ export const certs: Cert[] = [
       {
         subject: 'Data Preparation (데이터 준비)',
         items: [
-          { site: 'ailab', slug: 'rag-architecture' },
+          { site: 'ailab', slug: 'rag-basics' },
           { site: 'ailab', slug: 'rag-chunking-strategies' },
           { site: 'ailab', slug: 'rag-reranking' },
         ],
@@ -2377,7 +2377,7 @@ export const certs: Cert[] = [
         subject: 'Application Development (애플리케이션 개발)',
         items: [
           { site: 'ailab', slug: 'agent-langchain' },
-          { site: 'ailab', slug: 'project-prompt-iterating' },
+          { site: 'ailab', slug: 'llmops-prompt-management' },
           { site: 'ailab', slug: 'guardrails-overview' },
         ],
       },
@@ -2385,7 +2385,7 @@ export const certs: Cert[] = [
         subject: 'Assembling and Deploying Applications (조립과 배포)',
         items: [
           { site: 'ailab', slug: 'llmops-prompt-management' },
-          { site: 'ailab', slug: 'agent-mcp-protocol' },
+          { site: 'ailab', slug: 'ai-agents-and-mcp' },
         ],
       },
       {
@@ -2397,7 +2397,7 @@ export const certs: Cert[] = [
       {
         subject: 'Evaluation and Monitoring (평가와 모니터링)',
         items: [
-          { site: 'ailab', slug: 'serving-cost-optimization' },
+          { site: 'ailab', slug: 'llmops-cost-tracking' },
         ],
       },
     ],
@@ -2892,7 +2892,7 @@ export const certs: Cert[] = [
         items: [
           { site: 'ailab', slug: 'prompt-engineering' },
           { site: 'ailab', slug: 'finetuning-vs-prompt-vs-rag' },
-          { site: 'ailab', slug: 'rag-architecture' },
+          { site: 'ailab', slug: 'rag-basics' },
           { site: 'ailab', slug: 'rag-agentic-rag' },
           { site: 'ailab', slug: 'llmops-prompt-management' },
         ],
@@ -2908,7 +2908,7 @@ export const certs: Cert[] = [
         subject: 'Implement information extraction solutions (정보 추출 솔루션 구현)',
         items: [
           { site: 'ailab', slug: 'vector-search-basics' },
-          { site: 'ailab', slug: 'rag-architecture' },
+          { site: 'ailab', slug: 'rag-basics' },
           { site: 'ailab', slug: 'rag-ocr-pipeline' },
           { site: 'ailab', slug: 'vector-db-pgvector' },
         ],

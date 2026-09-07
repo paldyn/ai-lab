@@ -381,4 +381,4 @@ pgvector는 "완벽한" 벡터 DB가 아니다. 하지만 PostgreSQL의 강력�
 
 **지난 글:** [벡터 데이터베이스 비교: Pinecone·Weaviate·Milvus·Qdrant·Chroma](/articles/vector-db-comparison)
 
-**다음 글:** [RAG 완전 정복: 검색 증강 생성의 핵심 원리](/articles/rag-basics)
+**다음 글:** [RAG의 구조: Naive에서 Modular까지](/articles/rag-basics)

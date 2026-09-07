@@ -21,7 +21,7 @@ draft: false
 
 어느 모델로 보낼지 정하는 기준 자체는
 [모델 선택 전략](/articles/model-selection-strategy)이 맡고, 절감 기법은
-[프로젝트 비용 최적화](/articles/project-cost-optimization)가 맡는다. 이 글은
+[LLM 비용](/articles/llmops-cost-tracking)이 맡는다. 이 글은
 **날짜와 그 날짜가 만드는 청구서**만 다룬다.
 
 결론부터 적으면 달력은 만들어졌는데 **그 달력이 적어 놓은 것이 내가 찾던 날짜가

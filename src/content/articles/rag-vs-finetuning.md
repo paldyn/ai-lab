@@ -118,4 +118,4 @@ Microsoft Research의 연구(2023)에 따르면 GPT-4 기반 RAG는 GPT-3.5 파�
 
 **지난 글:** [RAG 평가: RAGAS로 검색 품질과 답변 품질 측정하기](/articles/rag-evaluation)
 
-**다음 글:** [AI 에이전트와 MCP: 자율적으로 행동하는 AI 시스템](/articles/ai-agents-and-mcp)
+**다음 글:** [에이전트가 바깥과 연결되는 법: 도구 호출에서 MCP까지](/articles/ai-agents-and-mcp)

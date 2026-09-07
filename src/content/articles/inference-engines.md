@@ -170,4 +170,4 @@ text = resp.json()["response"]
 
 **지난 글:** [투기적 디코딩: LLM 추론 속도를 2~4배 높이는 기술](/articles/speculative-decoding)
 
-**다음 글:** [llama.cpp 완전 가이드: CPU에서 LLM 추론하기](/articles/inference-llama-cpp)
+**다음 글:** [로컬에서 LLM 돌리기 — llama.cpp와 그 위의 Ollama](/articles/inference-llama-cpp)

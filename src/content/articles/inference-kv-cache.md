@@ -1,234 +1,266 @@
 ---
-title: "KV 캐시 완전 해설: LLM 추론 메모리의 핵심"
-description: "Transformer의 Key-Value 캐시 구조, 메모리 계산, FP8 양자화·GQA·Prefix Caching·PagedAttention 등 4대 최적화 전략을 코드와 함께 완전 해설합니다."
+title: "KV 캐시 — 추론 메모리가 처리량을 정하는 자리"
+description: "LLM 추론에서 GPU 메모리를 가장 많이 먹는 것은 가중치가 아니라 KV 캐시다. 캐시가 왜 생기는지, 크기를 어떻게 세는지, GQA·FP8·PagedAttention·프리픽스 재사용이 그 숫자를 어디까지 끌어내리는지를 숫자로 따라간다."
 author: "PALDYN Team"
 pubDate: "2026-05-18"
 category: "ml-ops"
 level: "중급"
-tags: ["KV캐시", "PagedAttention", "GQA", "Prefix Caching", "LLM추론", "vLLM", "GPU메모리"]
+tags: ["KV 캐시", "PagedAttention", "GQA", "vLLM", "LLM 추론"]
 featured: false
 draft: false
 ---
-[지난 글](/articles/inference-batching)에서 Continuous Batching과 KV 캐시 기초를 다뤘다. 이번 글은 KV 캐시 자체를 훨씬 깊이 파고든다. LLM 추론에서 GPU 메모리의 절반 이상을 차지하는 이 구조를 제대로 이해해야 비용 효율적인 서빙이 가능하다.
+[지난 글](/articles/inference-tgi)에서 TGI의 아키텍처와 배포를 살펴보며 Continuous Batching이나 Flash Attention 같은 옵션을 켜고 껐다. 이 글은 그 옵션들이 전부 한 자원을 놓고 다투고 있었다는 사실에서 시작한다. 바로 **KV 캐시**다.
 
-## KV 캐시란 무엇인가
+LLM 서빙에서 GPU 메모리를 가장 많이 잡아먹는 것은 모델 가중치가 아니다. Llama-3.1-8B를 BF16으로 올리면 가중치는 16 GB지만, 같은 모델을 배치 32·시퀀스 8192로 돌리면 KV 캐시만 34 GB다. 가중치의 두 배가 넘는다. 그리고 이 숫자는 고정값이 아니라 **동시에 받는 요청 수와 문맥 길이에 정비례해서 자란다.** 그래서 「이 GPU 한 장으로 몇 명을 동시에 받을 수 있는가」라는 질문의 답은 거의 전부 KV 캐시가 정한다. 추론 엔진의 튜닝 옵션이 하나같이 메모리 이야기인 것도 그 때문이다.
 
-Transformer의 Self-Attention은 입력 시퀀스의 모든 토큰에 대해 Query(Q), Key(K), Value(V) 행렬을 계산한다. Decode 단계에서 새 토큰을 하나씩 생성할 때마다 이전 모든 토큰의 K·V가 필요한데, 이를 매번 재계산하면 시퀀스가 길어질수록 연산량이 제곱으로 증가한다. KV 캐시는 이 문제를 해결하기 위해 Prefill 단계에서 계산한 K·V를 GPU 메모리에 보관하고 재사용한다.
+## 추론이 캐시를 만드는 자리
 
-![KV 캐시 구조와 메모리](/assets/posts/inference-kv-cache-structure.svg)
+### 프리필과 디코드
 
-## KV 캐시 메모리 크기 계산
+LLM 추론은 성질이 전혀 다른 두 단계로 나뉜다. 이 구분이 뒤에 나오는 모든 이야기의 출발점이다.
 
-KV 캐시가 얼마나 큰지 직접 계산해보면 그 중요성이 실감된다.
+**프리필**(prefill)은 입력 프롬프트 전체를 한 번의 Forward Pass로 처리하는 단계다. Transformer는 시퀀스를 병렬로 처리할 수 있으므로 1,000 토큰짜리 프롬프트도 한 번에 밀어 넣고, 그 과정에서 각 레이어의 Key와 Value를 계산한다. 토큰이 많을수록 곱셈이 많아지므로 **연산량 바운드** 구간이다. GPU의 연산 유닛이 놀지 않고 돌아간다.
+
+**디코드**(decode)는 토큰을 하나씩 만들어 내는 단계다. 한 스텝에서 새로 계산할 것은 토큰 하나 분량의 Q·K·V뿐이라 연산량이 아주 적다. 대신 그 토큰이 앞의 모든 토큰을 참조해야 하므로 저장해 둔 K·V 전부를 메모리에서 읽어야 한다. 계산은 적고 읽을 것은 많으니 **메모리 대역폭 바운드** 구간이다.
+
+같은 모델의 같은 요청 안에서 병목이 두 번 바뀐다는 뜻이다. 프리필은 연산 유닛이, 디코드는 메모리 대역폭이 한계를 정한다. 두 단계를 아예 다른 기계로 갈라 놓는 [프리필·디코드 분리](/articles/serving-disaggregated-prefill) 같은 구성이 나오는 이유도 여기에 있다.
+
+![KV 캐시 구조: Attention과 메모리 관리](/assets/posts/inference-kv-cache-structure.svg)
+
+### 캐시가 지우는 재계산
+
+Self-Attention은 각 토큰에 대해 Query·Key·Value 세 벡터를 만들고 $$\mathrm{softmax}(QK^\top / \sqrt{d})\,V$$ 로 문맥을 섞는다. 여기서 중요한 성질이 하나 있다. **어떤 토큰의 K와 V는 그 토큰이 정해진 순간 확정되고, 뒤에 무엇이 오든 다시는 바뀌지 않는다.** 자기회귀 모델은 앞을 보지 못하므로 5번 토큰의 Key는 6번 토큰이 무엇이 되든 그대로다.
+
+바뀌지 않는 값을 매 스텝 다시 계산하는 것은 낭비다. **KV 캐시**는 한 번 계산한 K·V를 GPU 메모리에 남겨 두고 다음 스텝에서 그대로 읽어 쓰는 장치다. 캐시가 없으면 새 토큰 하나를 만들 때마다 프롬프트 전체를 다시 밀어 넣어야 한다.
+
+낭비의 크기를 세어 보면 이렇다. 512 토큰을 생성하는데 캐시가 없다면 $$t$$ 번째 스텝에서 $$t$$ 개 토큰의 K·V를 계산하므로 전체는 $$1 + 2 + \cdots + 512 \approx 131{,}000$$ 회다. 캐시가 있으면 각 토큰의 K·V를 정확히 한 번씩만 계산하므로 512회다. **256배** 차이다. 시퀀스가 길어지면 이 배수도 함께 커진다.
 
 ```python
-def kv_cache_memory_gb(
-    n_layers: int,
-    n_kv_heads: int,
-    head_dim: int,
-    seq_len: int,
-    batch_size: int,
-    dtype_bytes: int = 2  # FP16 = 2 bytes
-) -> float:
-    """KV 캐시 메모리 계산 (GB)"""
-    # 2 = K + V 두 행렬
-    total_bytes = (
-        2 * n_layers * n_kv_heads
-        * head_dim * seq_len
-        * batch_size * dtype_bytes
-    )
-    return total_bytes / (1024**3)
+from transformers import AutoModelForCausalLM, AutoTokenizer
+import torch
 
-# Llama-3.1-8B (GQA: n_kv_heads=8)
-mem = kv_cache_memory_gb(
-    n_layers=32, n_kv_heads=8,
-    head_dim=128, seq_len=8192,
-    batch_size=32, dtype_bytes=2  # FP16
-)
-print(f"KV 캐시: {mem:.1f} GB")  # ≈ 34 GB
+model = AutoModelForCausalLM.from_pretrained("meta-llama/Llama-3.2-1B")
+tok = AutoTokenizer.from_pretrained("meta-llama/Llama-3.2-1B")
 
-# FP8 적용 시 (dtype_bytes=1)
-mem_fp8 = kv_cache_memory_gb(
-    n_layers=32, n_kv_heads=8,
-    head_dim=128, seq_len=8192,
-    batch_size=32, dtype_bytes=1
-)
-print(f"FP8 KV 캐시: {mem_fp8:.1f} GB")  # ≈ 17 GB
+inputs = tok("한국의 수도는", return_tensors="pt")
+with torch.no_grad():
+    out = model(**inputs, use_cache=True)   # 프리필 — 여기서 캐시가 만들어진다
+    past = out.past_key_values
+
+    for _ in range(50):                     # 디코드 — 토큰 하나씩, 캐시는 계속 자란다
+        nxt = out.logits[:, -1, :].argmax(dim=-1, keepdim=True)
+        out = model(nxt, past_key_values=past, use_cache=True)
+        past = out.past_key_values
 ```
 
-Llama-3.1-8B를 배치 32, 시퀀스 8192로 서빙하면 KV 캐시만 34 GB다. 모델 가중치(BF16 기준 16 GB)의 두 배가 넘는다. 이것이 LLM 서빙에서 GPU 메모리 관리가 핵심인 이유다.
+디코드 루프에서 모델에 넘기는 입력이 토큰 하나뿐이라는 점을 보면 된다. 나머지 문맥은 전부 `past_key_values` 안에 들어 있고, 스텝마다 한 토큰 분량씩 뒤에 붙는다.
 
-## 4대 최적화 전략
+### 병목이 옮겨 앉는 곳
 
-KV 캐시 메모리를 줄이는 전략은 크게 네 가지다.
+캐시는 연산을 지웠지만 그 대가로 메모리를 먹는다. 그리고 이 교환이 서빙 성능의 성격을 통째로 바꿔 놓는다.
+
+디코드 한 스텝에서 GPU가 메모리에서 읽어야 하는 것은 두 덩이다. 모델 가중치 16 GB, 그리고 배치에 들어 있는 모든 요청의 KV 캐시다. HBM 대역폭이 초당 2 TB 남짓인 GPU를 가정하고 계산해 보자. 배치가 1이고 문맥이 8192 토큰이면 읽을 것은 가중치 16 GB에 캐시 약 1 GB를 더한 17 GB이고, 한 스텝에 8.5 ms가 걸린다. 초당 117 토큰이 상한이다.
+
+배치를 32로 올리면 가중치는 여전히 한 번만 읽지만 캐시는 32벌이라 34 GB가 된다. 합이 50 GB, 한 스텝에 25 ms다. 스텝 하나에 토큰 32개가 나오니 초당 1,280 토큰이다. **배치를 32배로 키웠는데 처리량은 11배만 늘었다.** 나머지는 캐시를 읽는 데 쓰였다.
+
+연산 시간을 무시한 대략의 상한이지만, 이 계산이 말하는 방향은 실제와 같다. 배치를 키울 때 처리량이 선형으로 따라오지 않는 지점이 있고 그 지점을 정하는 것이 캐시 크기라는 것이다. 그래서 **캐시를 줄이는 일은 메모리를 아끼는 일인 동시에 처리량을 올리는 일이다.** 뒤에 나오는 최적화들이 전부 「메모리 절감」과 「배치 확대」를 같은 문장에서 말하는 이유가 이것이다.
+
+## 캐시 크기를 세는 공식
+
+### 곱해지는 여섯 값
+
+캐시 크기는 추정할 필요가 없다. 정확히 곱셈 하나로 나온다.
+
+$$
+\text{KV bytes} = 2 \times L \times H_{kv} \times d_{head} \times S \times B \times b
+$$
+
+앞의 2는 K와 V 두 벌이라는 뜻이고, $$L$$ 은 레이어 수, $$H_{kv}$$ 는 KV 헤드 수, $$d_{head}$$ 는 헤드 하나의 차원, $$S$$ 는 시퀀스 길이, $$B$$ 는 배치 크기, $$b$$ 는 원소 하나의 바이트 수다. 주목할 것은 여기 없는 값이다. **파라미터 수도, Query 헤드 수도, 은닉 차원도 직접 들어오지 않는다.** 그래서 「7B 모델이니까 캐시도 그만큼」이라는 감이 잘 안 맞는다.
+
+```python
+def kv_bytes_per_token(n_layers, n_kv_heads, head_dim, dtype_bytes=2):
+    return 2 * n_layers * n_kv_heads * head_dim * dtype_bytes
+
+# Llama-3.1-8B: 32 레이어, KV 헤드 8, 헤드 차원 128, FP16
+per_token = kv_bytes_per_token(32, 8, 128, 2)
+print(per_token / 1024, "KiB/token")            # 128.0 KiB
+print(per_token * 8192 / 1024**3, "GiB/seq")    # 1.0 GiB
+print(per_token * 8192 * 32 / 1024**3, "GiB")   # 32.0 GiB
+```
+
+### 토큰당 128 KiB라는 기준값
+
+Llama-3.1-8B의 값을 넣으면 $$2 \times 32 \times 8 \times 128 \times 2 = 131{,}072$$ 바이트, 곧 **토큰 하나에 128 KiB**다. 이 숫자 하나만 외워 두면 나머지는 암산으로 나온다. 8,192 토큰짜리 요청 하나가 정확히 1 GiB이고, 그런 요청 32개면 32 GiB다. 서두에 적은 34 GB가 이 값이다 — 1024로 나누면 32 GiB, 1000으로 나누면 34 GB이고 둘은 같은 양이다. 벤더 문서와 모니터링 도구가 이 두 단위를 섞어 쓰므로, 6% 어긋난 숫자를 만나면 대개 여기다.
+
+토큰당 크기가 배치와 무관하다는 점이 실무에서 편하다. 서비스가 감당할 문맥의 총량을 토큰 수로 잡아 두면 필요한 메모리가 바로 나온다. 「평균 2,000 토큰 대화를 200개 동시에」라면 $$2{,}000 \times 200 \times 128\ \text{KiB} = 48.8\ \text{GiB}$$ 다. 이 계산에는 요청이 언제 끝나는지도, 응답이 얼마나 긴지도 필요 없다.
+
+![KV 캐시 크기와 최적화](/assets/posts/inference-batching-kv-cache.svg)
+
+### 가중치와 나눠 쓰는 예산
+
+GPU 한 장의 메모리는 세 곳으로 갈린다. 80 GB 카드에 8B 모델을 올린 경우를 표로 적으면 이렇다.
+
+| 자리 | 크기 | 성질 |
+| --- | --- | --- |
+| 모델 가중치 (BF16) | 16 GB | 고정 |
+| 활성화 텐서·프레임워크 여유 | 4 GB 안팎 | 배치·시퀀스에 따라 조금 |
+| KV 캐시 | 남는 전부 | 요청이 채운다 |
+
+vLLM의 `gpu_memory_utilization`을 0.92로 두면 73.6 GB를 쓰겠다는 뜻이고, 위의 20 GB를 빼면 **KV 캐시에 54 GB쯤이 남는다.** 이 값이 곧 동시 처리 능력이다. 128 KiB/token으로 나누면 약 41만 토큰이니, 8,192 토큰짜리 긴 요청이라면 50개, 1,000 토큰짜리 짧은 대화라면 410개를 동시에 물 수 있다.
+
+이 숫자를 손에 쥐고 있으면 용량 산정이 감이 아니라 나눗셈이 된다. 남은 절들이 그 나눗셈의 분자와 분모를 각각 어떻게 건드리는지에 대한 이야기다.
+
+## 토큰당 크기를 줄이는 두 손잡이
+
+캐시를 줄이는 길은 크게 둘이다. **토큰 하나가 차지하는 바이트를 줄이거나, 이미 잡아 둔 자리를 덜 낭비하거나.** 이 절은 앞쪽이고, 공식에서 곱해지는 값을 직접 내리는 방법이다.
 
 ![KV 캐시 4대 최적화 전략](/assets/posts/inference-kv-cache-optimization.svg)
 
-### ① FP8 양자화: 50% 메모리 절감
+### KV 헤드를 공유하는 GQA
 
-KV 캐시를 FP16에서 FP8로 양자화하면 메모리가 절반으로 줄어든다. 품질 손실은 대부분의 태스크에서 무시할 수 있는 수준이다.
+공식의 $$H_{kv}$$ 를 건드리는 것이 **GQA**(Grouped Query Attention)다. 전통적인 MHA(Multi-Head Attention)는 Query 헤드 하나마다 자기 K·V 헤드를 하나씩 갖는다. Llama-3.1-8B의 Query 헤드가 32개이니 MHA였다면 KV 헤드도 32개다. GQA는 여러 Query 헤드가 K·V 헤드 하나를 함께 쓰게 만든다. 8B는 32개 Query를 4개씩 묶어 KV 헤드 8개에 붙였고, 그만큼 캐시가 4분의 1이 됐다.
 
-```python
-from vllm import LLM, SamplingParams
+극단까지 밀면 KV 헤드가 하나만 남는 **MQA**(Multi-Query Attention)가 된다. 캐시는 가장 작지만 표현력 손실이 커서, 요즘 모델은 대개 그 사이 어딘가를 고른다. 셋의 차이는 결국 한 값에 있다.
 
-llm = LLM(
-    model="meta-llama/Llama-3.1-8B-Instruct",
-    kv_cache_dtype="fp8",           # FP16 → FP8 (50% 절감)
-    gpu_memory_utilization=0.92,
-)
+| 방식 | KV 헤드 수 | 8B 기준 토큰당 캐시 |
+| --- | --- | --- |
+| MHA | 32 (Query와 같음) | 512 KiB |
+| GQA | 8 (4개가 하나를 공유) | 128 KiB |
+| MQA | 1 | 16 KiB |
 
-# 추론 실행
-params = SamplingParams(temperature=0.7, max_tokens=512)
-outputs = llm.generate(["한국어 문법을 설명해줘"], params)
-print(outputs[0].outputs[0].text)
-```
+여기에는 손잡이가 없다는 점을 분명히 해 둬야 한다. **GQA는 사전학습 때 정해지는 구조라 서빙 설정으로 켜고 끌 수 없다.** 모델을 고르는 순간 함께 정해지고, 우리가 할 수 있는 일은 쓰려는 모델의 `num_key_value_heads`를 확인해 용량 계산에 넣는 것뿐이다. 같은 파라미터 규모라도 이 값이 다르면 한 GPU에 태울 수 있는 동시 요청 수가 네 배씩 갈린다.
 
-### ② GQA(Grouped Query Attention): 4× 절감
+### FP8이 덜어내는 절반
 
-MHA(Multi-Head Attention)는 32개 Query 헤드마다 32개 KV 헤드를 가진다. GQA는 여러 Query가 하나의 KV 헤드를 공유한다. Llama-3 계열은 32 Query 헤드에 8 KV 헤드를 사용해 KV 캐시를 4분의 1로 줄였다.
+공식의 $$b$$ 를 건드리는 것이 KV 캐시 양자화다. K·V를 FP16 대신 FP8로 저장하면 원소 하나가 2바이트에서 1바이트가 되고 캐시가 정확히 절반이 된다. 128 KiB/token이 64 KiB/token이 되고, 앞의 54 GB 예산으로 물 수 있는 8,192 토큰 요청이 50개에서 100개로 늘어난다.
 
-```python
-# Transformers로 GQA 확인
-from transformers import AutoConfig
+vLLM에서는 `kv_cache_dtype="fp8"` 한 줄이다. 가중치 양자화와 달리 별도의 캘리브레이션 과정 없이 켤 수 있고, 대부분의 태스크에서 품질 저하가 눈에 띄지 않는다는 것이 통상의 보고다. 다만 「대부분」이라는 말에 기대지 말고 자기 데이터로 한 번은 확인하는 편이 낫다. 긴 문맥에서 앞쪽 토큰을 정확히 짚어 와야 하는 작업이 특히 민감하다. K와 V 중 어느 쪽이 양자화에 더 약한지, 어디까지 줄여도 되는지는 [KV 캐시 양자화](/articles/quantization-kv-cache)에서 따로 다뤘다.
 
-config = AutoConfig.from_pretrained("meta-llama/Llama-3.1-8B")
-print(f"Query 헤드: {config.num_attention_heads}")    # 32
-print(f"KV 헤드:    {config.num_key_value_heads}")    # 8
-print(f"KV 절감:    {config.num_attention_heads // config.num_key_value_heads}×")  # 4×
+### 두 절감이 곱해지는 자리
 
-# MQA(Multi-Query): 극단적 GQA, n_kv_heads=1
-# GQA(Grouped): 중간 균형, n_kv_heads=n_heads//4 ~ n_heads//8
-# MHA(Multi-Head): 전통, n_kv_heads=n_heads
-```
+두 손잡이가 공식의 서로 다른 자리를 잡고 있으므로 효과는 더해지지 않고 **곱해진다.** MHA·FP16을 기준으로 놓으면 GQA가 4분의 1로, FP8이 다시 절반으로 줄이니 합쳐서 8분의 1이다. 토큰당 512 KiB가 64 KiB가 되고, 배치 32·시퀀스 8192 기준 캐시는 137 GB에서 17 GB로 내려간다.
 
-### ③ Prefix Caching: 반복 프롬프트 재사용
+이것이 「같은 GPU에서 동시 요청 수를 여덟 배」라는 말의 산수다. 그리고 두 손잡이의 성격이 정반대라는 점을 기억해 두는 편이 좋다. GQA는 모델을 고를 때 이미 끝난 결정이고, FP8은 배포할 때 언제든 켜고 끌 수 있는 설정이다. 용량이 모자랄 때 오늘 당장 돌릴 수 있는 손잡이는 뒤쪽 하나뿐이다.
 
-RAG나 에이전트처럼 긴 시스템 프롬프트가 반복되는 경우, 한 번 계산한 KV를 해시 키로 저장하고 같은 프리픽스가 들어오면 재계산 없이 재사용한다. 첫 토큰 지연(TTFT)을 최대 80% 줄일 수 있다.
+## 같은 캐시를 다시 쓰는 법
 
-```python
-from vllm import LLM, SamplingParams
-import time
+두 번째 길은 토큰당 크기는 그대로 두고 **잡아 둔 자리를 덜 버리는** 쪽이다. 앞 절이 분자를 줄였다면 이 절은 낭비를 줄인다.
 
-llm = LLM(
-    model="meta-llama/Llama-3.1-8B-Instruct",
-    enable_prefix_caching=True,      # Prefix Caching 활성화
-)
+### 블록으로 쪼개는 캐시
 
-# 긴 시스템 프롬프트 (공통 프리픽스)
-system = "당신은 한국어 법률 전문가입니다. " * 200  # 약 600 토큰
+전통적인 구현은 요청 하나가 들어올 때 최대 시퀀스 길이만큼 연속된 메모리를 미리 잡았다. `max_model_len=8192`면 요청마다 1 GiB를 선점한다. 문제는 대부분의 요청이 그 길이까지 가지 않는다는 것이다. 실제로 500 토큰만 쓰고 끝나는 요청이 잡아 둔 1 GiB 중 실제로 쓰는 것은 62 MiB이고, 나머지 962 MiB는 요청이 끝날 때까지 아무도 못 쓴다.
 
-questions = ["계약서 해제 조건은?", "위약금 계산 방법은?", "소멸시효는?"]
+**PagedAttention**은 운영체제의 가상 메모리 페이징을 KV 캐시에 그대로 옮긴 방식이다. 캐시를 고정 크기 **블록**(vLLM 기본은 16 토큰)으로 쪼개고, 요청마다 논리 슬롯이 어떤 물리 블록을 가리키는지 적은 테이블을 둔다. 요청은 자기가 실제로 쓴 만큼만 블록을 받고, 토큰이 늘면 블록을 하나 더 받는다. 연속된 자리일 필요가 없으니 단편화도 사라진다.
 
-for i, q in enumerate(questions):
-    prompt = f"{system}\n\n{q}"
-    start = time.time()
-    out = llm.generate([prompt], SamplingParams(max_tokens=200))
-    elapsed = time.time() - start
-    status = "MISS" if i == 0 else "HIT"
-    print(f"[{status}] {elapsed:.2f}s: {out[0].outputs[0].text[:50]}...")
-# [MISS] 2.34s: ...  (Prefill 비용 발생)
-# [HIT]  0.31s: ...  (캐시 재사용, ~7× 빠름)
-# [HIT]  0.29s: ...
-```
+낭비의 크기가 어떻게 바뀌는지 보면 차이가 분명하다. 블록 방식에서 한 요청이 버리는 것은 마지막 블록의 빈칸, 최대 15 토큰뿐이다. 앞의 962 MiB가 1.9 MiB가 된다. 54 GB 예산에 평균 500 토큰짜리 요청을 담으면 선점 방식은 50개에서 멈추지만 블록 방식은 800개를 넘긴다. 실측에서 흔히 인용되는 배치 2~4배 증가는 요청 길이가 최대 길이에 가까울 때의 보수적인 수치이고, 짧은 요청이 섞일수록 격차가 벌어진다. 블록 테이블의 구조와 튜닝 지점은 [PagedAttention](/articles/serving-paged-attention)에서 더 파고들었다.
 
-### ④ PagedAttention: 메모리 단편화 제거
+### 프리픽스 재사용
 
-전통적 KV 캐시는 최대 시퀀스 길이만큼 연속 메모리를 선점한다. 대부분의 요청이 훨씬 짧게 끝나도 메모리를 반납하지 않아 단편화가 심하다. PagedAttention은 고정 크기 **블록**(block)으로 KV를 나눠 필요한 만큼만 동적 할당한다.
+블록으로 쪼개 놓으면 공짜로 따라오는 것이 하나 있다. **여러 요청이 같은 물리 블록을 가리켜도 된다는 것이다.**
 
-```python
-# vLLM PagedAttention 설정 (내부 동작 이해용)
-from vllm import LLM
+RAG나 에이전트는 수천 토큰짜리 시스템 프롬프트를 모든 요청 앞에 똑같이 붙인다. 이 앞부분의 K·V는 요청마다 같은 값인데도, 캐시를 요청별로 따로 두면 매번 다시 계산하고 따로 저장한다. **Prefix Caching**은 블록 단위로 내용의 해시를 떠 두고, 같은 해시가 들어오면 이미 있는 블록을 그대로 가리키게 한다. 저장은 한 벌이고 계산은 한 번이다.
 
-llm = LLM(
-    model="meta-llama/Llama-3.1-8B-Instruct",
-    block_size=16,                   # KV 블록 크기 (16 토큰)
-    max_num_seqs=256,                # 최대 동시 시퀀스
-    gpu_memory_utilization=0.92,
-    enable_prefix_caching=True,
-    kv_cache_dtype="fp8",
-)
+효과가 두 군데에 나타난다. 메모리 쪽에서는 요청 수만큼 곱해지던 프리픽스 캐시가 한 벌로 줄고, 지연 쪽에서는 프리필 자체가 사라진다. 3,000 토큰 프리픽스에 200 토큰 질문이 붙는 형태라면 프리필 할 일의 94%가 없어지므로 첫 토큰 지연이 크게 떨어진다 — 흔히 인용되는 TTFT 80% 감소는 이렇게 프리픽스가 프롬프트의 대부분을 차지하는 부하에서 나온 값이다. 반대로 프롬프트가 매번 완전히 다른 서비스에서는 해시가 맞을 일이 없어 이득이 0이다. **켜기 전에 자기 트래픽의 프리픽스 공유율을 먼저 봐야 한다.**
 
-# 메모리 사용량 확인
-import torch
-before = torch.cuda.memory_allocated() / 1e9
-_ = llm.generate(["테스트"], SamplingParams(max_tokens=10))
-after = torch.cuda.memory_allocated() / 1e9
-print(f"KV 캐시 할당: {after - before:.1f} GB")
-```
+vLLM은 이것을 블록 해시 테이블로 구현하고, SGLang은 접두 트리를 써서 부분적으로 겹치는 프리픽스까지 잡아낸다. 트리 방식이 무엇을 더 건지는지는 [SGLang](/articles/serving-sglang) 쪽에서 다뤘다.
 
-블록 단위 할당의 또 다른 장점은 **Prefix Sharing**이다. 같은 시스템 프롬프트를 가진 여러 요청이 동일한 물리 블록을 공유(Copy-on-Write)하므로 메모리 효율이 더욱 높아진다.
+### 캐시 히트를 만드는 순서
 
-## 멀티 GPU 환경: Tensor Parallelism과 KV 캐시
+프리픽스 재사용은 옵션 하나로 끝나지 않는다. **프롬프트를 어떻게 조립하느냐가 히트율을 정한다.** 해시는 앞에서부터 순서대로 뜨므로 앞부분이 한 글자라도 다르면 그 뒤는 전부 miss다.
 
-여러 GPU로 모델을 분산할 때 KV 캐시도 같이 분산된다. Tensor Parallelism에서는 각 GPU가 전체 KV 헤드의 1/N을 담당한다.
+가장 흔한 사고가 프롬프트 맨 앞에 변하는 값을 넣는 것이다. 현재 시각, 사용자 이름, 요청 ID 같은 것을 시스템 프롬프트 첫 줄에 넣어 두면 매 요청 해시가 달라져 뒤에 오는 3,000 토큰이 통째로 재계산된다. 옵션은 켜져 있는데 히트율이 0인 상태다. 고치는 법은 간단하다 — **고정된 것을 앞으로, 요청마다 달라지는 것을 뒤로 몰면 된다.**
+
+블록 경계도 알아 둘 값이다. 재사용은 블록 단위이므로 공유 프리픽스가 3,000 토큰이어도 블록 크기가 16이면 $$3{,}000 = 16 \times 187 + 8$$ 에서 앞의 2,992 토큰까지만 블록으로 맞아떨어지고 남는 8 토큰은 다음 요청의 내용과 섞인 블록이 되어 재사용에서 빠진다. 프리픽스가 길면 무시할 만한 자투리지만, 짧은 프리픽스를 여러 개 두는 설계라면 자투리 비율이 커진다.
+
+## 캐시를 처리량으로 바꾸는 배치
+
+캐시를 아무리 줄여도 그 자리를 쓸 요청이 없으면 처리량은 늘지 않는다. 절약한 메모리를 실제 동시 처리로 바꾸는 것이 배치 전략이다.
+
+### 정적 배치가 남기는 빈자리
+
+전통적인 배치는 요청 여러 개를 한 묶음으로 모아 동시에 시작하고 동시에 끝낸다. 여기서 두 가지가 새어 나간다.
+
+첫째는 **패딩**(padding)이다. 길이가 다른 요청을 한 텐서에 담으려면 짧은 쪽을 빈 토큰으로 채워야 하고, 그 자리에도 캐시가 잡힌다. 둘째가 더 아프다. 배치 안의 한 요청이 20 토큰 만에 끝나고 다른 요청이 500 토큰까지 가면, 먼저 끝난 요청의 슬롯은 480 스텝 동안 비어 있는 채로 함께 돈다. **GPU는 그 슬롯 몫의 계산을 계속하고 캐시도 계속 붙들고 있는데 나오는 것은 아무것도 없다.** 대기 큐에 요청이 쌓여 있어도 배치 전체가 끝날 때까지 넣을 수 없다.
+
+LLM 응답 길이는 요청마다 제각각이고 미리 알 수도 없으므로, 이 낭비는 예외가 아니라 기본값이다.
+
+![정적 배치 vs Continuous Batching](/assets/posts/inference-batching-static-vs-continuous.svg)
+
+### 걸음마다 다시 짜는 배치
+
+**Continuous Batching**(Yu et al., 2022)은 배치를 요청 묶음이 아니라 **한 번의 Forward Pass 단위로** 다시 짠다. 한 스텝이 끝날 때마다 EOS를 냈거나 `max_tokens`에 닿은 요청을 배치에서 빼고, 빈 슬롯에 대기 큐의 새 요청을 넣고, 다음 스텝을 돈다. 슬롯이 비는 시간이 최대 한 스텝이다.
+
+KV 캐시 쪽에서 보면 이것이 왜 자연스러운지 보인다. 요청이 끝나는 즉시 그 요청의 블록이 반납되고 새 요청이 그 블록을 받는다. 블록 단위 할당과 스텝 단위 스케줄링은 사실상 한 몸이다 — 미리 잡아 두는 방식으로는 스텝 하나 만에 슬롯을 갈아 끼울 수가 없다. 그래서 `max_num_seqs`를 올려도 캐시가 모자라면 엔진이 요청을 대기시키거나 이미 실행 중인 요청을 밀어낸다. **동시 요청 수의 진짜 상한은 이 설정값이 아니라 캐시 예산이다.** 스케줄러가 프리필과 디코드를 한 배치에 섞을 때 벌어지는 일은 [연속 배칭](/articles/serving-continuous-batching)에서 자세히 다뤘다.
+
+### 처리량과 지연의 맞바꿈
+
+배치를 키우면 처리량은 오르고 개별 요청의 지연은 나빠진다. 한 스텝에 읽어야 할 캐시가 늘어 스텝 자체가 길어지기 때문이다. 앞에서 배치 1의 스텝이 8.5 ms, 배치 32의 스텝이 25 ms였던 그 차이다. 손잡이마다 어느 쪽으로 기우는지 정리하면 이렇다.
+
+| 설정 | 처리량 | 지연(P99) | 맞는 자리 |
+| --- | --- | --- | --- |
+| 배치 크기 ↑ | 오름 | 나빠짐 | 오프라인 일괄 처리 |
+| 배치 크기 ↓ | 내림 | 좋아짐 | 실시간 챗봇 |
+| 응답 길이 상한 ↑ | 오름 | 나빠짐 | 긴 문서 생성 |
+| Prefix Caching | 오름 | 좋아짐 (히트 시) | RAG·에이전트 |
+| KV FP8 | 오름 | 거의 그대로 | 대부분의 경우 |
+
+아래 두 줄이 다른 줄과 성격이 다르다는 점을 눈여겨볼 만하다. 배치 크기는 둘 중 하나를 골라야 하는 맞바꿈이지만, 캐시를 줄이거나 재사용하는 최적화는 **양쪽을 동시에 좋게 만든다.** 튜닝을 시작할 때 배치 크기부터 만지는 것보다 캐시 쪽을 먼저 손보는 편이 나은 이유다. 실제로 어느 쪽이 얼마나 움직였는지는 부하를 걸어 재야 하고, 그 측정을 어떻게 해야 재현되는 숫자가 나오는지는 [서빙 벤치마크](/articles/serving-benchmarking)에서 다뤘다.
+
+## 여러 장에 나눠 싣는 구성
+
+### 텐서 병렬에서 갈리는 헤드
+
+GPU 한 장에 안 들어가는 모델은 여러 장에 쪼갠다. Tensor Parallelism은 레이어 안의 행렬을 헤드 단위로 갈라 각 GPU에 나눠 주는 방식이고, **KV 캐시도 함께 갈린다.** KV 헤드가 8개인 모델을 2장에 나누면 장당 4개를 맡으니 장당 캐시가 절반이다.
 
 ```python
 from vllm import LLM
 
-# 2-GPU Tensor Parallelism
 llm = LLM(
     model="meta-llama/Llama-3.1-70B-Instruct",
-    tensor_parallel_size=2,          # 2 GPU로 분산
+    tensor_parallel_size=4,          # KV 헤드 8개를 장당 2개씩
     gpu_memory_utilization=0.90,
     kv_cache_dtype="fp8",
     enable_prefix_caching=True,
 )
-# GPU 0: Layer 0~31의 KV 헤드 0~3
-# GPU 1: Layer 0~31의 KV 헤드 4~7
-# → 각 GPU의 KV 캐시 크기 절반
 ```
 
-## KV 캐시 크기 vs 배치 처리량 트레이드오프
+여기서 걸리는 자리가 둘이다. 하나는 **KV 헤드 수보다 GPU가 많아지면 더 나눌 것이 없다는 것이다.** 헤드 8개를 16장에 나눌 수는 없으므로 엔진은 헤드를 복제하고, 그때부터는 GPU를 늘려도 장당 캐시가 줄지 않는다. GQA로 헤드를 줄인 모델일수록 이 벽에 일찍 닿는다.
 
-```
-GPU 메모리 80 GB (A100 예시)
-├── 모델 가중치:  약 16 GB (8B, BF16)
-├── 활성화 텐서:  약 4  GB (배치·시퀀스 의존)
-└── KV 캐시:     약 60 GB (나머지)
+다른 하나는 가중치가 먼저 자리를 차지한다는 점이다. 70B를 BF16으로 올리면 가중치만 140 GB이므로 80 GB 카드 2장에 나누면 장당 70 GB, 남는 자리가 사실상 없다. 위 코드가 2가 아니라 4를 쓴 이유가 그것이다 — 4장이면 장당 가중치가 35 GB로 내려가 캐시에 35 GB 안팎이 남는다. **GPU 수를 정할 때는 가중치가 들어가는지가 아니라 캐시가 얼마나 남는지를 봐야 한다.** 참고로 70B는 레이어가 80장이고 KV 헤드는 8B와 같은 8개라, 토큰당 캐시가 8B의 2.5배다.
 
-gpu_memory_utilization=0.92 → KV 캐시로 약 55 GB 사용
-FP8 적용 시 → 동일 메모리에서 배치 2×, 처리량 2×
-GQA(32→8) → KV 크기 4× 감소, 배치 4× 확대 가능
-```
+### 프리필을 잘라 넣기
 
-## 실전 최적화 체크리스트
+여러 장에 나눠도 프리필과 디코드가 서로를 방해하는 문제는 남는다. 8,000 토큰짜리 프롬프트가 하나 들어오면 그 프리필 한 번이 스텝 하나를 통째로 길게 잡아먹고, 그동안 디코드 중이던 요청 수십 개는 다음 토큰을 못 받는다. 사용자 입장에서는 잘 나오던 글자가 갑자기 멎는다.
+
+**Chunked Prefill**은 긴 프리필을 여러 스텝에 나눠 넣어 이 멈춤을 없앤다. 한 스텝에 처리할 토큰 총량을 `max_num_batched_tokens`로 정해 두면 그 예산 안에서 프리필 조각과 디코드 요청이 함께 실린다. 프리필 하나의 완료는 조금 늦어지지만 전체 지연 분포는 훨씬 평평해진다. vLLM V1 엔진은 가능한 경우 이것을 기본으로 켜므로, 요즘은 켜고 끄는 것보다 예산을 얼마로 둘지가 실제 손잡이다. 예산을 키우면 프리필이 한 스텝에 더 많이 들어가 첫 토큰이 빨라지고, 줄이면 디코드를 밀어내는 프리필 조각이 작아져 토큰 사이 간격이 고르게 된다.
+
+### 켜는 순서
+
+지금까지의 손잡이를 프로덕션 설정 한 벌로 모으면 이렇게 된다.
 
 ```python
-# 프로덕션 서빙 권장 설정
-from vllm import LLM, SamplingParams
+from vllm import LLM
 
 llm = LLM(
     model="meta-llama/Llama-3.1-8B-Instruct",
-    # KV 캐시 최적화
-    kv_cache_dtype="fp8",            # ① 메모리 50% 절감
-    enable_prefix_caching=True,      # ③ Prefix 재사용
-    # 메모리 관리
-    gpu_memory_utilization=0.92,     # GPU 메모리 92% 활용
-    max_num_seqs=512,                # 최대 동시 시퀀스
-    max_model_len=8192,              # 최대 컨텍스트
-    # 배치 전략
-    enable_chunked_prefill=True,     # 긴 Prefill 청크 분리
-    max_num_batched_tokens=32768,    # 배치당 최대 토큰
+    kv_cache_dtype="fp8",            # 토큰당 캐시 절반
+    enable_prefix_caching=True,      # 공통 프리픽스 재사용 — V1 기본값
+    gpu_memory_utilization=0.92,     # 캐시로 갈 예산
+    max_model_len=8192,              # 문맥 상한 — 캐시 상한이기도 하다
+    max_num_seqs=512,                # 동시 시퀀스 상한
+    enable_chunked_prefill=True,     # 긴 프리필을 여러 스텝으로 — V1 기본값
+    max_num_batched_tokens=32768,    # 한 스텝의 토큰 예산
 )
 ```
 
-GQA 지원 여부는 모델 아키텍처에 따라 결정되므로 별도 설정 없이 자동 적용된다. FP8 KV 캐시, Prefix Caching, PagedAttention(vLLM 기본)은 직접 활성화해야 한다.
+순서를 정리해 두면 이렇다. GQA는 모델을 고르는 순간 끝났고, PagedAttention과 Prefix Caching은 vLLM V1에서 이미 기본으로 켜져 있다 — 캐시 설정의 `enable_prefix_caching` 기본값이 `True`다. 위 코드가 그 둘을 적은 것은 무엇이 켜져 있는지 설정 파일만 보고도 알게 하려는 것이지 새로 켜는 것이 아니다. 그러니 실제로 켜는 손잡이는 FP8 하나이고, Prefix Caching 쪽에 남는 일은 켜는 것이 아니라 앞 절처럼 히트가 나도록 프롬프트를 짜는 것이다. 그다음이 `gpu_memory_utilization`을 올려 캐시 예산을 늘리는 것인데, 너무 올리면 활성화 텐서가 자리를 못 찾아 OOM이 난다. 0.90~0.95 사이에서 실제 부하로 확인하며 정한다. **`max_model_len`을 실제 필요보다 크게 잡지 않는 것도 잊기 쉬운 손잡이다** — 이 값이 요청 하나가 최대로 잡을 수 있는 캐시를 정한다.
 
-## 정리
-
-KV 캐시는 LLM 추론의 메모리 병목이자 최적화의 핵심이다. 네 가지 전략을 조합하면:
-
-- **FP8 양자화** → 메모리 50% 절감, 거의 무손실
-- **GQA** → KV 캐시 크기 4× 감소 (모델 설계 단계)
-- **Prefix Caching** → 반복 프롬프트 TTFT 80% 절감
-- **PagedAttention** → 단편화 제거로 배치 2~4× 증가
-
-이 네 가지를 모두 적용하면 동일한 GPU에서 처리할 수 있는 동시 요청 수가 10배 이상 늘어난다.
+여기까지가 GPU 안쪽 이야기다. 캐시를 줄이고 배치를 채워 한 장에서 뽑을 수 있는 처리량을 끌어올렸다면, 그다음은 그 성능을 바깥으로 내보내는 문제가 남는다. 클라이언트가 붙을 인터페이스를 무엇으로 할지, 토큰을 생성되는 대로 흘려보내려면 응답을 어떻게 열어 둬야 할지, 그리고 애써 확보한 캐시 예산을 한 사용자가 다 먹지 않게 어떻게 막을지다. 다음 글에서 그 세 가지를 다룬다.
 
 ---
 
 읽어주셔서 감사합니다. 😊
 
-**지난 글:** [LLM 추론 배치 전략: Continuous Batching과 KV 캐시 완전 해설](/articles/inference-batching)
+**지난 글:** [TGI 완전 가이드: Hugging Face의 프로덕션급 LLM 서빙](/articles/inference-tgi)
 
-**다음 글:** [LLM 서빙 API 설계: OpenAI 호환 인터페이스 구축](/articles/serving-api-design)
+**다음 글:** [LLM 서빙 API — OpenAI 호환 인터페이스·스트리밍·속도 제한](/articles/serving-api-design)

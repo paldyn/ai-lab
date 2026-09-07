@@ -121,6 +121,6 @@ class Encoder(nn.Module):
 
 읽어주셔서 감사합니다. 😊
 
-**지난 글:** [Positional Encoding: 트랜스포머에 순서를 알려주는 방법](/articles/transformer-positional-encoding)
+**지난 글:** [위치 인코딩: 사인·코사인에서 RoPE까지](/articles/transformer-positional-encoding)
 
-**다음 글:** [Transformer Decoder: 문장을 생성하는 블록](/articles/transformer-decoder)
+**다음 글:** [Decoder 블록: 마스킹, Cross-Attention, Encoder-Decoder](/articles/transformer-decoder)

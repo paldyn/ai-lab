@@ -549,4 +549,4 @@ model = get_peft_model(model, lora_config)
 
 **지난 글:** [GPU 메모리 최적화: OOM 없이 더 크게 훈련하는 법](/articles/gpu-memory-tuning)
 
-**다음 글:** [평가 하네스 구축: LLM 성능을 체계적으로 측정하라](/articles/project-evaluation-harness)
+**다음 글:** [LLM 서비스 배포: API 서버부터 모니터링까지](/articles/project-deploying-llm)

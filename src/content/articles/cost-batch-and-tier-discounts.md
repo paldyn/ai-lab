@@ -19,8 +19,7 @@ draft: false
 하나만 놓고 산수를 풀었으니, 이 글은 **여러 배수가 겹칠 때 무엇이 곱해지고
 무엇이 애초에 같이 못 서는지**를 본다.
 
-절감 기법 자체는 [프로젝트 비용 최적화](/articles/project-cost-optimization)와
-[서빙 비용 최적화](/articles/serving-cost-optimization)가 맡는다. 여기서는
+절감 기법 자체는 [LLM 비용](/articles/llmops-cost-tracking)이 맡는다. 여기서는
 **조항과 산수만** 다룬다.
 
 결론부터 적으면, **할인율은 흔들리지 않았다. 흔들린 것은 그 위에 겹친

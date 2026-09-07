@@ -145,4 +145,4 @@ out = transformer(src, tgt)       # (32, 8, 512)
 
 읽어주셔서 감사합니다. 😊
 
-**다음 글:** [Self-Attention: 모든 토큰이 모든 토큰과 대화한다](/articles/transformer-self-attention)
+**다음 글:** [Self-Attention: Q·K·V로 문맥을 만드는 계산](/articles/transformer-self-attention)

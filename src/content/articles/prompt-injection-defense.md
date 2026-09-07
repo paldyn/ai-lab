@@ -9,7 +9,7 @@ tags: ["프롬프트인젝션", "LLM보안", "AI보안", "OWASP", "방어", "에
 featured: false
 draft: false
 ---
-[지난 글](/articles/prompt-templates)에서 재사용 가능한 프롬프트 템플릿 설계를 다뤘고, 입력 검증의 중요성을 간략히 언급했다. 이번 글에서는 그 주제를 깊이 파고든다. **프롬프트 인젝션**(Prompt Injection)은 OWASP LLM Top 10 2025에서 1위를 차지한 LLM 애플리케이션의 최대 보안 위협이다. 단순한 챗봇부터 파일을 읽고 API를 호출하는 에이전트까지, LLM을 사용하는 모든 시스템이 이 공격에 노출될 수 있다.
+[지난 글](/articles/prompt-system-message)에서 시스템 메시지라는 고정 골격과, 그 골격에 뚫린 구멍으로 바깥 값이 들어오는 프롬프트 템플릿을 봤다. 그 글 끝에서 구멍에 들어오는 값을 키워드 목록으로 걸러 보고는 「이 필터는 약하다, 진짜 방어는 다층으로 따로 설계해야 한다」로 미뤄 두었다. 이번 글이 그 자리다. **프롬프트 인젝션**(Prompt Injection)은 OWASP LLM Top 10 2025에서 1위를 차지한 LLM 애플리케이션의 최대 보안 위협이다. 단순한 챗봇부터 파일을 읽고 API를 호출하는 에이전트까지, LLM을 사용하는 모든 시스템이 이 공격에 노출될 수 있다.
 
 ## 프롬프트 인젝션이란
 
@@ -228,6 +228,6 @@ summary_result = safe_agent_execute(
 
 읽어주셔서 감사합니다. 😊
 
-**지난 글:** [프롬프트 템플릿: 재사용 가능한 프롬프트 설계](/articles/prompt-templates)
+**지난 글:** [프롬프트의 골격 설계: 시스템 메시지와 템플릿](/articles/prompt-system-message)
 
-**다음 글:** [컨텍스트 관리: 긴 대화에서 LLM이 기억을 유지하는 방법](/articles/prompt-context-management)
+**다음 글:** [프롬프트를 코드처럼 다루기: 버전 관리와 평가](/articles/prompt-versioning)

@@ -9,7 +9,7 @@ tags: ["TGI", "Text Generation Inference", "Hugging Face", "LLM서빙", "Continu
 featured: false
 draft: false
 ---
-[지난 글](/articles/inference-ollama)에서 개발 환경에 특화된 Ollama를 살펴봤다. 이번에는 Hugging Face가 만든 프로덕션 서빙 솔루션 **TGI**(Text Generation Inference)를 다룬다. HF Hub의 수천 개 모델을 Docker 한 줄로 서빙할 수 있고, Flash Attention·Continuous Batching·Tensor Parallelism이 기본 내장되어 있다. HF Inference Endpoints 서비스의 엔진이기도 하다.
+[지난 글](/articles/inference-llama-cpp)에서는 노트북 한 대에서 GGUF 파일 하나를 돌리는 llama.cpp와 Ollama를 같은 자리마다 짝지어 보고, 엔진을 어디까지 직접 쥘 것인가로 둘을 갈랐다. 목표가 처리량이 아니라 「일단 내 기계에서 돈다」였기에 나올 수 있는 기준이다. 이번에는 요청 수십 개가 한꺼번에 들어오는 GPU 서버 쪽으로 자리를 옮겨, Hugging Face가 만든 프로덕션 서빙 솔루션 **TGI**(Text Generation Inference)를 다룬다. HF Hub의 수천 개 모델을 Docker 한 줄로 서빙할 수 있고, Flash Attention·Continuous Batching·Tensor Parallelism이 기본 내장되어 있다. HF Inference Endpoints 서비스의 엔진이기도 하다.
 
 ## TGI 아키텍처
 
@@ -224,6 +224,6 @@ print(f"총 시간: {elapsed:.1f}s, 처리량: {total_tokens/elapsed:.0f} tok/s"
 
 읽어주셔서 감사합니다. 😊
 
-**지난 글:** [Ollama 완전 가이드: 로컬 LLM을 가장 쉽게 실행하기](/articles/inference-ollama)
+**지난 글:** [로컬에서 LLM 돌리기 — llama.cpp와 그 위의 Ollama](/articles/inference-llama-cpp)
 
-**다음 글:** [LLM 추론 배치 전략: Continuous Batching과 KV 캐시 완전 해설](/articles/inference-batching)
+**다음 글:** [KV 캐시 — 추론 메모리가 처리량을 정하는 자리](/articles/inference-kv-cache)

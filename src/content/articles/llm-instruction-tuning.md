@@ -300,4 +300,4 @@ def evaluate_response(instruction: str, response_a: str, response_b: str) -> str
 
 **지난 글:** [LLM 사전학습: 수조 개 토큰으로 무엇을 배우나](/articles/llm-pretraining)
 
-**다음 글:** [RLHF: 인간 피드백으로 LLM 정렬하기](/articles/llm-rlhf)
+**다음 글:** [선호 정렬: RLHF와 DPO](/articles/llm-rlhf)

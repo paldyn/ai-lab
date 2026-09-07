@@ -9,7 +9,7 @@ tags: ["MQA", "GQA", "KV Cache", "트랜스포머", "LLM 추론", "LLaMA"]
 featured: false
 draft: false
 ---
-[지난 글](/articles/transformer-flash-attention)에서 FlashAttention이 IO 최적화로 어텐션 연산 속도를 끌어올리는 방법을 살펴봤다. 이번에는 LLM 추론의 또 다른 핵심 병목인 **KV Cache 메모리**를 줄이는 두 가지 기법, MQA(Multi-Query Attention)와 GQA(Grouped-Query Attention)를 다룬다. LLaMA 3, Mistral, Qwen2 등 2023년 이후 등장한 거의 모든 오픈 LLM이 GQA를 채택했다.
+[지난 글](/articles/transformer-efficient)에서 어텐션의 $$O(N^2)$$ 비용을 줄이는 두 갈래를 봤다. 참조를 잘라 내는 희소 어텐션·슬라이딩 윈도·SSM과, 결과를 그대로 둔 채 GPU 메모리 이동만 줄이는 FlashAttention이다. 둘 다 어텐션을 **계산하는** 비용에 손대고, 계산이 끝난 뒤 다음 토큰을 위해 남겨 두는 값에는 손대지 않는다. 이번에는 LLM 추론의 또 다른 핵심 병목인 **KV Cache 메모리**를 줄이는 두 가지 기법, MQA(Multi-Query Attention)와 GQA(Grouped-Query Attention)를 다룬다. LLaMA 3, Mistral, Qwen2 등 2023년 이후 등장한 거의 모든 오픈 LLM이 GQA를 채택했다.
 
 ## KV Cache가 왜 문제인가
 
@@ -132,6 +132,6 @@ GQA는 KV Cache 절감뿐 아니라 **디코딩 속도**도 향상시킨다. KV 
 
 읽어주셔서 감사합니다. 😊
 
-**지난 글:** [FlashAttention: IO-Aware 어텐션 연산](/articles/transformer-flash-attention)
+**지난 글:** [어텐션 비용 줄이기: 희소 어텐션에서 FlashAttention과 SSM까지](/articles/transformer-efficient)
 
 **다음 글:** [Mixture of Experts: 희소 활성화로 거대 모델 만들기](/articles/transformer-moe)

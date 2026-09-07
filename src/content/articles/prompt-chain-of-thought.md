@@ -214,4 +214,4 @@ def cot_solve(
 
 **지난 글:** [Zero-shot과 Few-shot Learning: 예시의 힘](/articles/prompt-zero-few-shot)
 
-**다음 글:** [Tree-of-Thought: 여러 추론 경로를 탐색하다](/articles/prompt-tree-of-thought)
+**다음 글:** [생각을 여러 갈래로 펼치기: Tree-of-Thought와 Self-Consistency](/articles/prompt-tree-of-thought)

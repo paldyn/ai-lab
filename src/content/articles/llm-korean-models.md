@@ -9,7 +9,7 @@ tags: ["한국LLM", "HyperCLOVAX", "EXAONE", "SOLAR", "LG", "NAVER", "Upstage", 
 featured: false
 draft: false
 ---
-[지난 글](/articles/llm-qwen-deepseek)에서 중국발 LLM 혁신, Qwen과 DeepSeek을 살펴봤다. 이번 글은 한국어 AI 개발자라면 반드시 알아야 할 주제다. "GPT-4로도 한국어가 잘 되는데 굳이 한국 LLM이 필요한가?" 이 질문에 명확하게 답하는 것에서 시작한다.
+[지난 글](/articles/llm-mistral-family)에서 Mistral과 Qwen, DeepSeek이 가중치를 열고 아키텍처 효율로 프런티어를 쫓는 것을 봤다. 셋 다 여러 언어를 한꺼번에 덮는 쪽을 골랐지, 언어 하나에 모든 것을 걸지는 않았다. 그 반대편에 한국어를 사전학습의 중심에 놓고 만든 모델들이 있다. 이번 글은 한국어 AI 개발자라면 반드시 알아야 할 주제다. "GPT-4로도 한국어가 잘 되는데 굳이 한국 LLM이 필요한가?" 이 질문에 명확하게 답하는 것에서 시작한다.
 
 ## 왜 한국어 특화 LLM이 필요한가
 
@@ -144,6 +144,6 @@ Upstage는 SOLAR 이후 상업 서비스 **Solar Pro**를 출시했다. Document
 
 읽어주셔서 감사합니다. 😊
 
-**지난 글:** [Qwen과 DeepSeek: 중국 오픈소스 LLM의 도전](/articles/llm-qwen-deepseek)
+**지난 글:** [오픈 웨이트 도전자들: Mistral, Qwen, DeepSeek](/articles/llm-mistral-family)
 
 **다음 글:** [LLM 벤치마크 완전 해부: MMLU, HumanEval, LMSYS Chatbot Arena](/articles/llm-comparison-benchmarks)
