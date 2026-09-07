@@ -323,10 +323,11 @@ function CertView({ cert }: { cert: Cert }) {
         목록이 화면 몇 개를 차지해서, 내려가다 보면 어느 자격증을 보고 있었는지와
         얼마나 남았는지가 둘 다 사라집니다.
       */}
+      {/* 라벨은 자격의 종류만 적습니다 — 되돌아가기가 이미 「자격증」이라 나란히 두면 같은 말이 두 번입니다. */}
       <ArticleTitleBar
         watch={titleRef}
         progressOf={bodyRef}
-        label={`자격증 / ${cert.status}`}
+        label={cert.status}
         accent="var(--brand-text)"
         title={cert.nameKo}
         section={sections.find((item) => item.id === active)?.title}
