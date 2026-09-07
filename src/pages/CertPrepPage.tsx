@@ -58,8 +58,13 @@ function CertPrepView({ cert, note }: { cert: Cert; note: CertPrepNote }) {
 
   const headingIds = useMemo(() => (body?.headings ?? []).map((heading) => heading.id), [body]);
   const { active, goTo } = useActiveHeading(headingIds);
-  const headings = body?.headings ?? [];
-  const labels = tocLabels(headings.map((heading) => ({ title: heading.text, sub: heading.depth === 3 })));
+  /*
+    **목차에는 절(`##`)만 세웁니다.** 소절까지 담았더니 글마다 길이가 널을 뛰었습니다 —
+    소절을 쓰는 글이 카테고리에 따라 16%에서 80%까지 갈리고, 스물일곱 줄짜리 목차가
+    나오는 글도 있었습니다. 소절은 본문에서 읽으면 되는 자리입니다.
+  */
+  const headings = (body?.headings ?? []).filter((heading) => heading.depth === 2);
+  const labels = tocLabels(headings.map((heading) => ({ title: heading.text })));
   const activeCaption = labels[headings.findIndex((heading) => heading.id === active)]?.caption;
   const { prev, next } = prepNeighbors(note.certId, note.slug);
 
@@ -114,17 +119,16 @@ function CertPrepView({ cert, note }: { cert: Cert; note: CertPrepNote }) {
       <div className="site-wrap grid gap-12 py-14 lg:grid-cols-[220px_minmax(0,760px)] lg:justify-center">
         <aside className="article-toc lg:sticky lg:top-[138px] lg:self-start">
           <p className="font-mono text-[10px] tracking-[0.12em] text-[var(--text-muted)]">IN THIS NOTE</p>
-          {body && body.headings.length > 0 && (
+          {headings.length > 0 && (
             <ol className="mt-4 space-y-3 border-l border-[var(--border)] pl-4 text-xs leading-5 text-[var(--text-dim)]">
-              {body.headings.map((heading, index) => (
+              {headings.map((heading, index) => (
                 <li
                   key={heading.id}
-                  className={`article-toc-item${heading.depth === 3 ? ' pl-3' : ''}${
-                    heading.id === active ? ' is-current' : ''
-                  }`}
+                  className={`article-toc-item${heading.id === active ? ' is-current' : ''}`}
                 >
                   <a
                     href={`#${heading.id}`}
+                    title={heading.text}
                     className="hover:text-[var(--text)]"
                     aria-current={heading.id === active ? 'true' : undefined}
                     onClick={(event) => {

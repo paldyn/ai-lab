@@ -339,7 +339,6 @@ function CertView({ cert }: { cert: Cert }) {
   const years = sessionsByYear(cert);
   const next = nextSession(cert, today);
   const columns = useMemo(() => scheduleColumns(cert.schedule ?? []), [cert]);
-  const extras = groups?.extras.length ?? 0;
   /* 띠가 언제 서는지(제목)와 진행 막대가 재는 것(본문)입니다. 글에서 쓰던 그대로입니다. */
   const titleRef = useRef<HTMLHeadingElement>(null);
   const bodyRef = useRef<HTMLDivElement>(null);
@@ -347,50 +346,26 @@ function CertView({ cert }: { cert: Cert }) {
   /*
     목차에 세울 절. 있는 절만 담습니다 — 학습 경로가 아직 없는 자격증도 있고,
     없는 절을 목차에 두면 눌렀을 때 아무 데도 안 갑니다.
+
+    **소절은 담지 않습니다.** 글 쪽 목차가 절만 세우는데 여기만 두 층이면 같은 화면에서
+    규칙이 둘이 됩니다. 소절(치르는 방식·모의고사 같은 것)은 절 안에서 바로 보입니다.
   */
   const sections = [
     { id: "what", title: "개요" },
     { id: "subjects", title: "과목" },
     { id: "exam", title: "시험 정보" },
-    { id: "exam-format", title: "치르는 방식", sub: true },
-    { id: "exam-entry", title: "응시 조건", sub: true },
-    cert.validity ? { id: "exam-validity", title: "자격 유지", sub: true } : null,
     years.length > 0 ? { id: "schedule", title: "시험 일정" } : null,
     { id: "prep", title: "시험 노트" },
-    /*
-      시험 노트 아래 세 묶음도 목차에 세웁니다. 계획이 서른 편을 넘으면 그 절이 화면
-      몇 개를 차지해서, 「모의고사가 어디 있나」를 목차에서 못 찾으면 스크롤로 헤매야
-      합니다. 멈춰 둔 계획은 「예정」을 안 세우므로 묶음도 빕니다.
-    */
-    ...(hold
-      ? []
-      : [
-          { id: "prep-concepts", title: "개념 정리", sub: true },
-          { id: "prep-mocks", title: "모의고사", sub: true },
-          ...(extras > 0
-            ? [{ id: "prep-reviews", title: "과목 총정리", sub: true }]
-            : []),
-        ]),
     cert.studyPath.length > 0
       ? { id: "study", title: "관련 있는 우리 글" }
       : null,
-    ...cert.studyPath.map((group, index) => ({
-      id: `study-${index + 1}`,
-      title: group.subject,
-      sub: true,
-    })),
     cert.notes ? { id: "notes", title: "알아 둘 것" } : null,
   ].filter((section) => section !== null);
   /*
     훑는 대상은 id 목록뿐이라 문자열 하나로 묶어 넘깁니다 — 배열을 그대로 넘기면
     렌더마다 새 배열이라 훑기가 매번 다시 걸립니다.
   */
-  const labels = tocLabels(
-    sections.map((item) => ({
-      title: item.title,
-      sub: "sub" in item && item.sub === true,
-    })),
-  );
+  const labels = tocLabels(sections.map((item) => ({ title: item.title })));
   const ids = sections.map((item) => item.id).join(",");
   const { active, goTo } = useActiveHeading(
     useMemo(() => ids.split(","), [ids]),
@@ -517,12 +492,11 @@ function CertView({ cert }: { cert: Cert }) {
             {sections.map((section, index) => (
               <li
                 key={section.id}
-                className={`article-toc-item${section.id === active ? " is-current" : ""}${
-                  "sub" in section && section.sub ? " is-sub" : ""
-                }`}
+                className={`article-toc-item${section.id === active ? " is-current" : ""}`}
               >
                 <a
                   href={`#${section.id}`}
+                  title={section.title}
                   className="hover:text-[var(--text)]"
                   aria-current={section.id === active ? "true" : undefined}
                   onClick={(event) => {

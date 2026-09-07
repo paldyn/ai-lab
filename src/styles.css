@@ -3117,6 +3117,18 @@ input:focus-visible {
   font-size: 11px;
 }
 
+/*
+  목차 한 줄은 두 줄까지만 씁니다. 「딥러닝이 2012년에야 실용화된 이유」처럼 서른 자가
+  넘는 절 제목이 있어 세 줄로 늘어나면 목차가 본문만큼 길어집니다. 잘린 줄의 전체
+  제목은 `title`이 들고 있습니다.
+*/
+.article-toc-item > a {
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+
 /* 목차 번호. 제목과 눈으로 갈리게 흐리게 두고, 지금 자리에서는 함께 밝아집니다. */
 .article-toc-mark {
   color: var(--text-muted);
