@@ -3,7 +3,6 @@ import { ArrowLeft, ArrowUpRight } from "lucide-react";
 import { Link, Navigate, useParams } from "react-router";
 import { CertMark } from "../components/CertMark";
 import { useActiveHeading } from "../lib/activeHeading";
-import { tocNumbers } from "../lib/tocNumbers";
 import { ArticleTitleBar } from "../components/ArticleTitleBar";
 import { CertStars } from "../components/CertStars";
 import { Seo } from "../components/Seo";
@@ -302,9 +301,6 @@ function CertView({ cert }: { cert: Cert }) {
     훑는 대상은 id 목록뿐이라 문자열 하나로 묶어 넘깁니다 — 배열을 그대로 넘기면
     렌더마다 새 배열이라 훑기가 매번 다시 걸립니다.
   */
-  const tocLabel = tocNumbers(
-    sections.map((item) => "sub" in item && item.sub === true),
-  );
   const ids = sections.map((item) => item.id).join(",");
   const { active, goTo } = useActiveHeading(
     useMemo(() => ids.split(","), [ids]),
@@ -428,7 +424,7 @@ function CertView({ cert }: { cert: Cert }) {
             IN THIS EXAM
           </p>
           <ol className="mt-4 space-y-3 border-l border-[var(--border)] pl-4 text-xs leading-5 text-[var(--text-dim)]">
-            {sections.map((section, index) => (
+            {sections.map((section) => (
               <li
                 key={section.id}
                 className={`article-toc-item${section.id === active ? " is-current" : ""}${
@@ -451,7 +447,6 @@ function CertView({ cert }: { cert: Cert }) {
                     goTo(section.id);
                   }}
                 >
-                  <span className="article-toc-number">{tocLabel[index]}</span>{" "}
                   {section.title}
                 </a>
               </li>

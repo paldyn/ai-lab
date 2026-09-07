@@ -3107,17 +3107,6 @@ input:focus-visible {
   목차의 하위 항목. 「시험 노트」 아래의 세 묶음이 여기 섭니다 — 번호 없이 한 칸
   들여 부모와 갈라 둡니다.
 */
-/* 목차 번호. 제목과 눈으로 갈리게 고정폭으로 두고 한 칸 흐리게 둡니다. */
-.article-toc-number {
-  color: var(--text-muted);
-  font-family: 'JetBrains Mono', ui-monospace, monospace;
-  font-size: 10px;
-}
-
-.article-toc-item.is-current .article-toc-number {
-  color: inherit;
-}
-
 .article-toc-item.is-sub {
   margin-left: 12px;
   font-size: 11px;
