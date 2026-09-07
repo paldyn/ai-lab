@@ -299,9 +299,9 @@ print(choose_ann_algorithm(
 # → "HNSW (동적 삽입 지원, 고성능)"
 ```
 
-## 양자화(Quantization)로 메모리 절감
+## 양자화로 메모리 절감
 
-대규모 벡터 저장에서 메모리 비용을 줄이는 핵심 기술이 **양자화(Quantization)** 다.
+대규모 벡터 저장에서 메모리 비용을 줄이는 핵심 기술이 **양자화**(Quantization)다.
 
 - **PQ(Product Quantization)**: 벡터를 서브벡터로 분해하여 각각 코드북으로 압축. 32~64배 메모리 절감, recall 약간 저하
 - **SQ(Scalar Quantization)**: float32를 int8로 변환. 4배 메모리 절감, recall 거의 유지

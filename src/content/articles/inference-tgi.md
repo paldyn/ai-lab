@@ -118,9 +118,9 @@ response = client.text_generation(
 print(response)
 ```
 
-## 구조화 출력 (Grammar Constraints)
+## 구조화 출력
 
-TGI는 JSON Schema나 Regex로 출력 형식을 강제할 수 있다.
+TGI는 **Grammar Constraints**로 JSON Schema나 Regex를 걸어 출력 형식을 강제할 수 있다.
 
 ```python
 import json

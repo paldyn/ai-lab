@@ -63,7 +63,7 @@ class ChatRequest(BaseModel):
 
 `lifespan` 컨텍스트 매니저를 쓰는 이유는 `@app.on_event("startup")`보다 명확하게 자원 수명을 관리할 수 있어서다. httpx 클라이언트와 Redis 연결을 앱 전체에서 재사용하면 매 요청마다 연결을 새로 여는 오버헤드를 피할 수 있다.
 
-## 스트리밍 응답 구현 (SSE)
+## 스트리밍 응답 구현
 
 LLM의 특성상 전체 응답이 생성될 때까지 기다리면 사용자 경험이 나빠진다. 응답 시간이 10초인 모델도 첫 토큰을 0.3초 만에 내보낼 수 있다. Server-Sent Events(SSE)로 토큰을 즉시 스트리밍하면 체감 응답 속도가 크게 향상된다.
 
@@ -259,7 +259,7 @@ async def readiness_check():
 
 `/health`(liveness probe)와 `/ready`(readiness probe)를 분리하는 것이 중요하다. 큐가 넘쳐도 프로세스는 살아있어야 하지만 새 트래픽은 받으면 안 된다. Kubernetes는 이 두 가지를 별도로 처리한다.
 
-## 구조화 로깅 (JSON Logs)
+## 구조화 로깅
 
 프로덕션에서 로그는 텍스트가 아닌 JSON으로 출력해야 한다. ELK 스택, Datadog, CloudWatch 같은 로그 수집 시스템이 파싱하기 쉽고, 필드별 필터링도 가능하다.
 

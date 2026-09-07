@@ -125,9 +125,9 @@ final_message = stream.get_final_message()
 print(f"\n총 토큰: {final_message.usage.input_tokens + final_message.usage.output_tokens}")
 ```
 
-## Tool Use (도구 호출)
+## Tool Use
 
-Claude가 외부 함수를 호출해 결과를 받아 답변하는 **함수 호출** 패턴이다.
+**Tool Use**(도구 호출)는 Claude가 외부 함수를 호출해 결과를 받아 답변하는 **함수 호출** 패턴이다.
 
 ```python
 tools = [
@@ -332,9 +332,9 @@ def call_with_retry(messages, max_retries=3):
 | `AuthenticationError` | 401 | API 키 오류 |
 | `BadRequestError` | 400 | 잘못된 요청 파라미터 |
 
-## 배치 처리 (Message Batches)
+## 배치 처리
 
-대량의 독립적인 요청을 처리할 때는 Batches API가 비용 효율적이다.
+대량의 독립적인 요청을 처리할 때는 **Message Batches** API가 비용 효율적이다.
 
 ```python
 import anthropic

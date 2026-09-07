@@ -241,9 +241,9 @@ assistant_with_tools = AssistantAgent(
 )
 ```
 
-## v0.4 비동기 API (AgentChat)
+## v0.4 비동기 API
 
-AutoGen v0.4는 완전한 비동기 인터페이스를 제공한다.
+AutoGen v0.4의 상위 API인 **AgentChat**은 완전한 비동기 인터페이스를 제공한다.
 
 ```python
 import asyncio

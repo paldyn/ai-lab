@@ -17,9 +17,9 @@ LLM은 토큰을 하나씩 순차적으로 생성한다. 500토큰(약 375단어
 
 ![SSE 스트리밍 동작 흐름](/assets/posts/serving-streaming-sse-flow.svg)
 
-## SSE(Server-Sent Events) 프로토콜
+## SSE 프로토콜
 
-SSE는 서버에서 클라이언트로 단방향 실시간 메시지를 보내는 HTTP 표준 프로토콜이다. OpenAI가 LLM 스트리밍에 SSE를 채택했고, 이후 모든 LLM API의 표준이 됐다.
+**SSE**(Server-Sent Events)는 서버에서 클라이언트로 단방향 실시간 메시지를 보내는 HTTP 표준 프로토콜이다. OpenAI가 LLM 스트리밍에 SSE를 채택했고, 이후 모든 LLM API의 표준이 됐다.
 
 ```
 # SSE 데이터 형식 (HTTP 응답 본문)

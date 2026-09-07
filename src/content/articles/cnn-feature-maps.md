@@ -108,9 +108,9 @@ plt.tight_layout()
 
 이 계층 구조는 생물학적 시각 피질(V1→V2→V4→IT)의 처리 방식과 놀랍도록 유사하다.
 
-## 수용야 (Receptive Field) 계산
+## 수용야 계산
 
-특징 맵의 각 뉴런이 원본 이미지의 얼마나 넓은 영역에 의존하는지가 수용야다.
+특징 맵의 각 뉴런이 원본 이미지의 얼마나 넓은 영역에 의존하는지가 **수용야**(Receptive Field)다.
 
 ```python
 def compute_receptive_field(layers):

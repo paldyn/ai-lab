@@ -15,9 +15,9 @@ draft: false
 
 ![AI 이미지 편집 기법 분류](/assets/posts/cv-image-editing-methods.svg)
 
-## 1. 인페인팅(Inpainting)
+## 1. 인페인팅
 
-마스크 영역을 다시 생성하는 가장 기본적인 편집 방식이다. 프롬프트로 원하는 내용을 지정하면 주변 맥락에 자연스럽게 녹아든다.
+**인페인팅**(Inpainting)은 마스크 영역을 다시 생성하는 가장 기본적인 편집 방식이다. 프롬프트로 원하는 내용을 지정하면 주변 맥락에 자연스럽게 녹아든다.
 
 ```python
 from diffusers import StableDiffusionInpaintPipeline
@@ -95,9 +95,9 @@ result = pipe(
 ).images[0]
 ```
 
-## 2. 아웃페인팅(Outpainting)
+## 2. 아웃페인팅
 
-이미지의 경계를 확장해 보이지 않는 영역을 생성한다. 가로로 긴 이미지를 정사각형으로 만들거나, 특정 방향으로 장면을 이어나갈 때 사용한다.
+**아웃페인팅**(Outpainting)은 이미지의 경계를 확장해 보이지 않는 영역을 생성한다. 가로로 긴 이미지를 정사각형으로 만들거나, 특정 방향으로 장면을 이어나갈 때 사용한다.
 
 ```python
 def outpaint(

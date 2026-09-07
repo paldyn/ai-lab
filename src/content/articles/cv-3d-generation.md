@@ -162,7 +162,7 @@ class GaussianModel(nn.Module):
 
 ![3D 생성 AI 핵심 기술 비교](/assets/posts/cv-3d-generation-methods.svg)
 
-## DreamFusion: 텍스트 → 3D (SDS Loss)
+## DreamFusion: 텍스트 → 3D
 
 DreamFusion은 사전학습된 2D 확산 모델을 "점수 함수"로 활용해 NeRF를 텍스트로 최적화한다. 핵심은 **Score Distillation Sampling(SDS)** 손실이다.
 

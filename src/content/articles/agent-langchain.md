@@ -225,9 +225,9 @@ response = agent_with_memory.invoke({"input": "내 이름이 뭐라고 했지?"}
 print(response["output"])  # "김철수라고 하셨습니다."
 ```
 
-## RAG (Retrieval-Augmented Generation) 체인
+## RAG 체인
 
-LangChain의 가장 대표적인 사용 사례다.
+**RAG**(Retrieval-Augmented Generation)는 문서를 검색해 그 내용을 근거로 답을 만드는 방식이고, LangChain의 가장 대표적인 사용 사례다.
 
 ```python
 from langchain_community.document_loaders import PyPDFLoader, WebBaseLoader

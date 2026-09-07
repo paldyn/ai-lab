@@ -29,11 +29,11 @@ item_emb = nn.Embedding(num_embeddings=5_000_000, embedding_dim=64)
 
 임베딩 공간에서 내적(dot product)이 크면 선호도가 높다. 이 직관은 행렬 분해와 동일하지만, 딥러닝에서는 임베딩 위에 **비선형 변환 레이어를 쌓아** 훨씬 복잡한 패턴을 잡아낸다. 임베딩 벡터는 학습 가능한 파라미터이므로 훈련 과정에서 최적의 표현을 자동으로 학습한다.
 
-## Neural Collaborative Filtering (NCF)
+## NCF
 
 ![딥러닝 추천 아키텍처 비교](/assets/posts/recsys-deep-learning-architecture.svg)
 
-NCF는 2017년 He et al.이 발표한 논문으로, 행렬 분해를 신경망으로 일반화한 프레임워크다. 핵심 아이디어는 사용자와 아이템 임베딩을 내적 대신 **MLP**(다층 퍼셉트론)로 결합하는 것이다.
+**NCF**(Neural Collaborative Filtering)는 2017년 He et al.이 발표한 논문으로, 행렬 분해를 신경망으로 일반화한 프레임워크다. 핵심 아이디어는 사용자와 아이템 임베딩을 내적 대신 **MLP**(다층 퍼셉트론)로 결합하는 것이다.
 
 ### GMF: 일반화된 행렬 분해
 
@@ -93,9 +93,9 @@ Wide 파트에는 교차 특성(cross-product features)이 입력된다. 예를 
 
 Google Play에 실제 배포되어 앱 다운로드 전환율을 크게 높인 검증된 아키텍처로, 이후 DeepFM, DCN 등 수많은 변형 모델의 출발점이 되었다.
 
-## Deep Interest Network (DIN)
+## DIN
 
-DIN은 2018년 Alibaba가 광고 추천 시스템을 위해 발표한 모델이다. 기존 추천 모델의 약점을 정확히 짚어냈다. 사용자의 모든 과거 행동을 **동등하게** 처리해서는 안 된다는 것이다.
+**DIN**(Deep Interest Network)은 2018년 Alibaba가 광고 추천 시스템을 위해 발표한 모델이다. 기존 추천 모델의 약점을 정확히 짚어냈다. 사용자의 모든 과거 행동을 **동등하게** 처리해서는 안 된다는 것이다.
 
 예를 들어 사용자가 지금 보는 광고가 "스포츠 운동화"라면, 그 사용자의 과거 클릭 이력 중 "농구화 구매", "달리기화 조회"는 높은 관련성이 있지만 "요리책 구매"는 거의 무관하다. DIN은 **Attention 메커니즘**으로 이 차이를 모델링한다.
 

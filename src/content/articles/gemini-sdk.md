@@ -91,7 +91,7 @@ for chunk in model.generate_content(
 
 스트리밍 중에는 `response.text` 대신 `chunk.text`로 각 청크의 텍스트를 접근한다.
 
-## 채팅 세션 (start_chat)
+## 채팅 세션
 
 멀티턴 대화는 `start_chat()`으로 세션을 생성하고 `send_message()`로 메시지를 주고받는다. 대화 히스토리가 세션 객체 내부에 자동으로 유지된다.
 

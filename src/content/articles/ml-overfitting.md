@@ -122,9 +122,9 @@ gbm = GradientBoostingClassifier(
 )
 ```
 
-## 조기 종료(Early Stopping)
+## 조기 종료
 
-반복 학습하는 모델(신경망, 경사 하강법 기반 모델)에서는 검증 손실이 더 이상 개선되지 않을 때 학습을 멈추는 것이 효과적이다.
+반복 학습하는 모델(신경망, 경사 하강법 기반 모델)에서는 검증 손실이 더 이상 개선되지 않을 때 학습을 멈추는 **조기 종료**(Early Stopping)가 효과적이다.
 
 ![과대적합 방지 기법 코드](/assets/posts/ml-overfitting-remedies.svg)
 

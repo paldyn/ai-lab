@@ -43,7 +43,7 @@ $$G_t = r_t + \gamma r_{t+1} + \gamma^2 r_{t+2} + \cdots = \sum_{k=0}^{\infty} \
 
 할인율이 필요한 이유는 두 가지다. 첫째, 무한 에피소드에서 수렴을 보장한다. 둘째, "지금 받는 100원이 1년 후 받는 100원보다 낫다"는 시간 선호를 반영한다.
 
-## Markov 결정 프로세스 (MDP)
+## MDP
 
 강화학습 문제는 보통 **MDP(Markov Decision Process)** 로 형식화된다.
 
@@ -125,9 +125,9 @@ print(f"평균 보상: {np.mean(episode_rewards):.1f}")  # 약 20~25 (랜덤이�
 | PPO | 정책 기반, 온-정책 | 안정적, 연속 행동 |
 | SAC | 액터-크리틱, 오프-정책 | 최고 샘플 효율 |
 
-## 탐험과 활용의 균형 (Exploration-Exploitation Tradeoff)
+## 탐험과 활용의 균형
 
-강화학습의 근본적인 딜레마다. **활용(Exploitation)** 만 하면 이미 아는 것 중 최선을 선택하지만, 더 좋은 것을 발견하지 못한다. **탐험(Exploration)** 만 하면 새로운 것을 시도하지만 효율이 낮다.
+**탐험과 활용의 균형**(Exploration-Exploitation Tradeoff)은 강화학습의 근본적인 딜레마다. **활용(Exploitation)** 만 하면 이미 아는 것 중 최선을 선택하지만, 더 좋은 것을 발견하지 못한다. **탐험(Exploration)** 만 하면 새로운 것을 시도하지만 효율이 낮다.
 
 ```python
 # ε-greedy 전략: 가장 단순한 탐험-활용 균형

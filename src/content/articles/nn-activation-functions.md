@@ -49,11 +49,11 @@ $$\tanh(z) = \frac{e^z - e^{-z}}{e^z + e^{-z}}$$
 
 Sigmoid의 스케일 조정 버전으로, 출력이 (-1, 1) 범위로 **제로 중심**(zero-centered)이다. Sigmoid보다 낫지만 기울기 소실 문제는 여전히 존재한다. RNN에서 주로 사용된다.
 
-## ReLU (Rectified Linear Unit)
+## ReLU
 
 $$\text{ReLU}(z) = \max(0, z)$$
 
-2010년대 딥러닝 혁명을 이끈 활성화 함수. 단순하지만 매우 효과적이다.
+**ReLU**(Rectified Linear Unit)는 2010년대 딥러닝 혁명을 이끈 활성화 함수다. 단순하지만 매우 효과적이다.
 
 ```python
 # ReLU 구현
@@ -74,11 +74,11 @@ leaky_relu = F.leaky_relu(x, negative_slope=0.01)
 
 **Dying ReLU 문제**: 학습 중 일부 뉴런의 입력이 항상 음수가 되면, 해당 뉴런은 영구적으로 출력 0을 내보내고 기울기도 0이 되어 더 이상 학습하지 않는다. 해결책: Leaky ReLU, ELU, 낮은 학습률, 배치 정규화.
 
-## GELU (Gaussian Error Linear Unit)
+## GELU
 
 $$\text{GELU}(z) = z \cdot \Phi(z)$$
 
-여기서 Φ는 표준 정규 분포의 CDF다. 실용적 근사:
+**GELU**(Gaussian Error Linear Unit)의 식에서 Φ는 표준 정규 분포의 CDF다. 실용적 근사:
 
 $$\text{GELU}(z) \approx 0.5z\left(1 + \tanh\left[\sqrt{\frac{2}{\pi}}(z + 0.044715z^3)\right]\right)$$
 

@@ -158,9 +158,9 @@ def adaptive_self_consistency(
             "samples_used": total_calls, "early_stop": False}
 ```
 
-## Universal Self-Consistency (USC)
+## Universal Self-Consistency
 
-Chen et al. 2023은 **Universal Self-Consistency**를 제안했다. 다수결 집계를 숫자 카운팅 대신 **LLM 자체에 맡기는** 방식이다. 자유형식 텍스트 출력(요약, 번역 등)에서도 적용 가능하다.
+Chen et al. 2023은 **Universal Self-Consistency**(USC)를 제안했다. 다수결 집계를 숫자 카운팅 대신 **LLM 자체에 맡기는** 방식이다. 자유형식 텍스트 출력(요약, 번역 등)에서도 적용 가능하다.
 
 ```python
 def universal_self_consistency(question: str, n_samples: int = 5) -> str:

@@ -15,9 +15,9 @@ draft: false
 
 ![에이전트 10대 안티패턴](/assets/posts/agent-anti-patterns-list.svg)
 
-## 안티패턴 ①: 무한 루프 (Infinite Loop)
+## 안티패턴 ①: 무한 루프
 
-가장 흔하고 치명적인 문제다. 에이전트가 종료 조건 없이 같은 도구를 반복 호출하거나, 답을 찾지 못해 루프에 빠진다.
+가장 흔하고 치명적인 문제다. **무한 루프**(Infinite Loop)는 에이전트가 종료 조건 없이 같은 도구를 반복 호출하거나, 답을 찾지 못해 같은 자리를 맴도는 상태다.
 
 ```python
 from langchain.agents import AgentExecutor

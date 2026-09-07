@@ -190,7 +190,7 @@ print(f"CatBoost 정확도: {model_cat.score(X_test, y_test):.4f}")
 
 ![XGBoost · LightGBM · CatBoost 비교](/assets/posts/ml-gradient-boosting-libraries.svg)
 
-## 조기 종료(Early Stopping)
+## 조기 종료
 
 학습률을 낮추고 n_estimators를 크게 잡으면 몇 번째 트리에서 멈춰야 할지 알 수 없다. 이를 위해 **조기 종료**(Early Stopping)를 사용한다. 검증 손실이 `early_stopping_rounds` 동안 개선되지 않으면 학습을 자동으로 중단한다.
 

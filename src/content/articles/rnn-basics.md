@@ -51,9 +51,9 @@ x = torch.randn(32, 20, 128)        # batch=32, T=20, d=128
 out, h_n = rnn(x)                   # out: (32, 20, 256)
 ```
 
-## 시간 전개(Unrolling)와 BPTT
+## 시간 전개와 BPTT
 
-RNN 그래프를 각 타임스텝으로 펼치면 매우 깊은 순전파 경로가 나타난다. 역전파도 이 경로를 따라 **시간을 거슬러 올라가야** 한다—이를 **BPTT**(Backpropagation Through Time)라 한다.
+RNN 그래프를 각 타임스텝으로 펼치는 것을 **시간 전개**(Unrolling)라 한다. 이렇게 펼치면 매우 깊은 순전파 경로가 나타난다. 역전파도 이 경로를 따라 **시간을 거슬러 올라가야** 한다—이를 **BPTT**(Backpropagation Through Time)라 한다.
 
 ![BPTT: 시간을 통한 역전파](/assets/posts/rnn-basics-bptt.svg)
 

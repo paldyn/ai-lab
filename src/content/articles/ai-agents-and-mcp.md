@@ -108,7 +108,7 @@ result = run_agent("오늘 서울 날씨와 우산이 필요한지 알려줘")
 print(result)
 ```
 
-## Model Context Protocol (MCP)
+## MCP
 
 MCP는 Anthropic이 2024년 발표한 **에이전트-도구 연결 표준 프로토콜**이다. USB-C가 다양한 기기를 표준 커넥터로 연결하듯, MCP는 에이전트와 외부 도구를 표준 인터페이스로 연결한다.
 

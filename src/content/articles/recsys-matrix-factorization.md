@@ -89,9 +89,9 @@ def predict(mu, b_u, b_i, p_u, q_i):
     return mu + b_u + b_i + np.dot(p_u, q_i)
 ```
 
-## ALS (Alternating Least Squares)
+## ALS
 
-SGD가 한 번에 하나의 샘플을 업데이트하는 것과 달리, ALS는 P와 Q를 **번갈아 가며 최소 제곱법**으로 한꺼번에 최적화한다.
+SGD가 한 번에 하나의 샘플을 업데이트하는 것과 달리, **ALS**(Alternating Least Squares)는 P와 Q를 **번갈아 가며 최소 제곱법**으로 한꺼번에 최적화한다.
 
 아이디어: Q를 고정하면 각 사용자의 P_u를 독립적으로 최적화할 수 있다. 반대로 P를 고정하면 각 아이템의 Q_i를 독립적으로 최적화할 수 있다.
 
@@ -130,9 +130,9 @@ def confidence(count, alpha=40):
 # count=5: confidence=201 (5번 구매, 강한 긍정)
 ```
 
-## BPR (Bayesian Personalized Ranking)
+## BPR
 
-명시적 평점이 없고 클릭·구매 이진 데이터만 있는 상황에서, BPR은 다른 접근을 취한다. **"절대 점수"를 예측하는 대신 "쌍별 선호(pairwise preference)"를 학습**한다.
+명시적 평점이 없고 클릭·구매 이진 데이터만 있는 상황에서, **BPR**(Bayesian Personalized Ranking)은 다른 접근을 취한다. **"절대 점수"를 예측하는 대신 "쌍별 선호(pairwise preference)"를 학습**한다.
 
 "사용자 u가 아이템 i를 구매했고, j는 구매하지 않았다면, u는 i를 j보다 선호할 가능성이 높다"
 

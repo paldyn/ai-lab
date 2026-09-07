@@ -162,7 +162,7 @@ train_ds = split["train"]
 eval_ds  = split["test"]
 ```
 
-## 스트리밍 모드 (IterableDataset)
+## 스트리밍 모드
 
 수백 GB 이상의 대용량 데이터셋은 로컬에 다운로드하지 않고 스트리밍으로 처리할 수 있다. `streaming=True`를 전달하면 `IterableDataset`이 반환된다.
 

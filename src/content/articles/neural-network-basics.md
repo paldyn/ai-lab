@@ -72,9 +72,9 @@ for name, param in model.named_parameters():
     print(f"{name:15s}: {param.shape} = {param.numel():,}")
 ```
 
-## 순전파(Forward Pass) 상세
+## 순전파 상세
 
-순전파는 입력 데이터가 층을 통과하며 예측값을 생성하는 과정이다.
+**순전파**(Forward Pass)는 입력 데이터가 층을 통과하며 예측값을 생성하는 과정이다.
 
 ```python
 import torch

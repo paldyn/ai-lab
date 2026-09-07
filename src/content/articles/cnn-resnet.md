@@ -160,9 +160,9 @@ def resnet152():
     return ResNet(Bottleneck, [3, 8, 36, 3])
 ```
 
-## Pre-activation ResNet (ResNetV2)
+## Pre-activation ResNet
 
-He et al.은 2016년 후속 논문에서 BN과 ReLU의 순서를 바꾼 Pre-activation ResNet을 제안했다.
+He et al.은 2016년 후속 논문에서 BN과 ReLU의 순서를 바꾼 **Pre-activation ResNet**(ResNetV2)을 제안했다.
 
 ```python
 class PreActBlock(nn.Module):

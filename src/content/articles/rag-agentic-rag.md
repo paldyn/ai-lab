@@ -117,9 +117,9 @@ app = workflow.compile()
 
 ![Agentic RAG 패턴 비교](/assets/posts/rag-agentic-rag-patterns.svg)
 
-## 자기 반성(Self-RAG)과 교정(Corrective RAG)
+## Self-RAG와 Corrective RAG
 
-Agentic RAG의 고급 변형으로, 에이전트가 검색 결과를 스스로 평가하고 품질이 낮으면 재검색하는 패턴이다.
+Agentic RAG의 고급 변형이다. 에이전트가 검색 결과를 스스로 평가하는 것이 **Self-RAG**(자기 반성), 품질이 낮으면 재검색하는 것이 **Corrective RAG**(교정)다.
 
 ```python
 def corrective_rag_node(state):

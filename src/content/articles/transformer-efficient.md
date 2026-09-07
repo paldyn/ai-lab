@@ -28,9 +28,9 @@ def naive_attention(Q, K, V):
 
 ![Self-Attention의 이차 복잡도 문제](/assets/posts/transformer-efficient-complexity.svg)
 
-## 접근 방법 1: 희소 어텐션 (Sparse Attention)
+## 접근 방법 1: 희소 어텐션
 
-"모든 토큰이 모든 토큰을 볼 필요는 없다"는 가정에서 출발한다.
+**희소 어텐션**(Sparse Attention)은 "모든 토큰이 모든 토큰을 볼 필요는 없다"는 가정에서 출발한다.
 
 ### Longformer (2020, Allen AI)
 

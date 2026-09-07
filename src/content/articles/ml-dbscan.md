@@ -169,9 +169,9 @@ for name, X, y_true in datasets:
 
 조정 랜드 지수(ARI)는 1.0에 가까울수록 정답 레이블과 일치한다. 비구형 데이터에서 DBSCAN이 K-평균을 압도하는 것을 확인할 수 있다.
 
-## 이상치 탐지(Anomaly Detection) 활용
+## 이상치 탐지 활용
 
-DBSCAN의 강력한 부산물은 잡음 포인트를 이상치로 활용할 수 있다는 점이다.
+DBSCAN의 강력한 부산물은 잡음 포인트를 그대로 **이상치 탐지**(Anomaly Detection)에 활용할 수 있다는 점이다.
 
 ```python
 import numpy as np

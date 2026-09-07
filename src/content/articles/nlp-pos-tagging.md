@@ -26,7 +26,7 @@ draft: false
 
 ![POS 태깅 시각화 및 아키텍처 비교](/assets/posts/nlp-pos-tagging-tree.svg)
 
-## 품사 체계 (Tagset)
+## 품사 체계
 
 품사 태깅의 결과는 어떤 **태그셋**(Tagset)을 사용하느냐에 따라 달라진다.
 

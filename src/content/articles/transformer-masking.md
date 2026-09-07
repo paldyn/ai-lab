@@ -46,9 +46,9 @@ def make_pad_mask(seq: torch.Tensor, pad_idx: int = 0) -> torch.Tensor:
 
 PyTorch의 `nn.MultiheadAttention`에서는 `key_padding_mask` 파라미터로 전달한다. `True`인 위치를 −∞로 처리한다.
 
-## Causal Mask (Look-Ahead Mask)
+## Causal Mask
 
-디코더의 Masked Self-Attention에서 위치 `i`가 `i+1` 이후를 볼 수 없게 막는 상삼각 행렬이다.
+**Causal Mask**(Look-Ahead Mask라고도 부른다)는 디코더의 Masked Self-Attention에서 위치 `i`가 `i+1` 이후를 볼 수 없게 막는 상삼각 행렬이다.
 
 ```python
 def make_causal_mask(sz: int) -> torch.Tensor:

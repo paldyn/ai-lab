@@ -104,9 +104,9 @@ grads_relu = check_gradient_flow(relu_model, x)
 # → Leaky ReLU, ELU, He 초기화로 완화
 ```
 
-## 해결책 2: 잔차 연결 (Residual Connection)
+## 해결책 2: 잔차 연결
 
-2015년 He et al.이 제안한 ResNet의 핵심 아이디어. 서브레이어의 출력에 입력을 더한다.
+2015년 He et al.이 제안한 ResNet의 핵심 아이디어. **잔차 연결**(Residual Connection)은 서브레이어의 출력에 입력을 더하는 것이다.
 
 ```python
 class ResidualBlock(nn.Module):

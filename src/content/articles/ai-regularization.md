@@ -43,9 +43,9 @@ def train_epoch(model, loader, optimizer, criterion, train=True):
 # 해결: 아래 정규화 기법 적용
 ```
 
-## L2 정규화 (Weight Decay)
+## L2 정규화
 
-가장 기본적인 정규화. 손실 함수에 파라미터의 제곱 합을 패널티로 추가한다.
+가장 기본적인 정규화. **L2 정규화**(Weight Decay)는 손실 함수에 파라미터의 제곱 합을 패널티로 추가한다.
 
 ```text
 L_total = L + λ·Σ wᵢ²
@@ -76,9 +76,9 @@ params_wd = [
 optimizer = optim.AdamW(params_wd, lr=3e-4)
 ```
 
-## 드롭아웃 (Dropout)
+## 드롭아웃
 
-2014년 Srivastava 등이 제안. 학습 중 무작위로 뉴런을 비활성화해 특정 뉴런에 과의존하는 것을 방지한다.
+2014년 Srivastava 등이 제안. **드롭아웃**(Dropout)은 학습 중 무작위로 뉴런을 비활성화해 특정 뉴런에 과의존하는 것을 방지한다.
 
 ```python
 import torch.nn as nn
@@ -117,9 +117,9 @@ with torch.no_grad():
 - 트랜스포머/CNN: `p=0.1` (더 낮은 값)
 - 출력층 직전에는 드롭아웃 사용 금지
 
-## 배치 정규화 (Batch Normalization)
+## 배치 정규화
 
-2015년 Ioffe와 Szegedy가 제안. 각 미니배치에서 활성화 값을 정규화해 **Internal Covariate Shift**를 줄인다.
+2015년 Ioffe와 Szegedy가 제안. **배치 정규화**(Batch Normalization)는 각 미니배치에서 활성화 값을 정규화해 **Internal Covariate Shift**를 줄인다.
 
 ```python
 # BatchNorm: 미니배치 평균·분산으로 정규화 후 학습 가능한 γ, β로 스케일
@@ -148,9 +148,9 @@ conv_model = nn.Sequential(
 
 ![과적합 vs 과소적합 vs 적절한 적합](/assets/posts/ai-regularization-overfitting.svg)
 
-## 레이어 정규화 (Layer Normalization)
+## 레이어 정규화
 
-트랜스포머와 LLM의 표준. BatchNorm이 배치 차원에서 정규화하는 것과 달리, **각 샘플 내 특성 차원에서** 정규화한다.
+트랜스포머와 LLM의 표준. **레이어 정규화**(Layer Normalization)는 BatchNorm이 배치 차원에서 정규화하는 것과 달리, **각 샘플 내 특성 차원에서** 정규화한다.
 
 ```python
 # LayerNorm: 각 토큰/샘플의 특성 차원에서 정규화
@@ -183,9 +183,9 @@ class TransformerBlock(nn.Module):
 | GroupNorm | 채널 그룹 | 소배치 CNN |
 | RMSNorm | 특성 차원 (평균 없음) | LLaMA, Mistral |
 
-## 조기 종료 (Early Stopping)
+## 조기 종료
 
-가장 간단한 정규화 기법. 검증 손실이 개선되지 않으면 학습을 멈춘다.
+가장 간단한 정규화 기법. **조기 종료**(Early Stopping)는 검증 손실이 개선되지 않으면 학습을 멈춘다.
 
 ```python
 best_val_loss = float('inf')
@@ -211,9 +211,9 @@ for epoch in range(1000):
 
 ![L1·L2 정규화와 드롭아웃 구현](/assets/posts/ai-regularization-l1l2.svg)
 
-## 데이터 증강 (Data Augmentation)
+## 데이터 증강
 
-가장 효과적인 정규화 방법 중 하나. 기존 데이터를 변환해 학습 데이터를 늘린다.
+가장 효과적인 정규화 방법 중 하나. **데이터 증강**(Data Augmentation)은 기존 데이터를 변환해 학습 데이터를 늘린다.
 
 ```python
 from torchvision import transforms

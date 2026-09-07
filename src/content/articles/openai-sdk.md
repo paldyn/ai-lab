@@ -87,9 +87,9 @@ with client.chat.completions.create(
             print(delta, end="", flush=True)
 ```
 
-## Function Calling (Tool Use)
+## Function Calling
 
-Function Calling은 모델이 외부 함수를 호출하도록 지시하는 메커니즘이다. 모델이 직접 함수를 실행하지는 않는다. 대신 "이 함수를 이 인자로 호출해"라는 JSON 지시를 반환하면, 개발자 코드에서 실제 함수를 실행하고 결과를 다시 모델에 전달한다.
+**Function Calling**(Tool Use)은 모델이 외부 함수를 호출하도록 지시하는 메커니즘이다. 모델이 직접 함수를 실행하지는 않는다. 대신 "이 함수를 이 인자로 호출해"라는 JSON 지시를 반환하면, 개발자 코드에서 실제 함수를 실행하고 결과를 다시 모델에 전달한다.
 
 ![OpenAI Function Calling 흐름](/assets/posts/openai-sdk-tools.svg)
 
@@ -164,9 +164,9 @@ print(f"벡터 차원: {len(vectors[0])}")  # 1536
 
 `dimensions` 파라미터로 벡터 차원을 줄여 저장 공간과 검색 비용을 절감할 수 있다.
 
-## 이미지 입력 (Vision)
+## 이미지 입력
 
-gpt-4o는 이미지를 메시지에 포함시켜 분석할 수 있다. URL 방식과 Base64 인코딩 방식 모두 지원한다.
+gpt-4o는 이미지를 메시지에 포함시켜 분석할 수 있다. 이렇게 이미지를 함께 넣어 묻는 것을 **비전**(Vision)이라 부르고, URL 방식과 Base64 인코딩 방식 모두 지원한다.
 
 ```python
 import base64

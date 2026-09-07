@@ -272,9 +272,9 @@ GitHub Actions 러너는 GPU가 없다. 실제 모델 학습은 별도 클라우
 
 ---
 
-## 성능 게이트 (Performance Gate) 구현
+## 성능 게이트 구현
 
-성능 게이트는 ML CI/CD에서 가장 핵심적인 컴포넌트다. 새 모델이 기존 챔피언 모델보다 성능이 좋을 때만 배포를 진행한다.
+**성능 게이트**(Performance Gate)는 ML CI/CD에서 가장 핵심적인 컴포넌트다. 새 모델이 기존 챔피언 모델보다 성능이 좋을 때만 배포를 진행한다.
 
 ```python
 import mlflow

@@ -147,7 +147,7 @@ files = api.list_repo_files("klue/bert-base")
 print(list(files))
 ```
 
-## 모델 카드 (README.md)
+## 모델 카드
 
 Hub 리포에 `README.md`를 올리면 자동으로 **모델 카드**로 표시된다. 프론트매터에 메타데이터를 작성하면 태스크·언어·라이선스 등이 검색 필터에 반영된다.
 

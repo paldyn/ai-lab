@@ -40,9 +40,9 @@ print(out_eval)
 # tensor([[1., 1., 1., 1., 1., 1., 1., 1., 1., 1.], ...])
 ```
 
-## Inverted Dropout (역 드롭아웃)
+## Inverted Dropout
 
-나이브한 드롭아웃은 훈련 시 뉴런을 끄면 추론 시 기대값이 달라지는 문제가 있다. 이를 해결하기 위해 **Inverted Dropout**을 사용한다: 훈련 시 남겨진 뉴런의 출력을 1/(1-p)로 스케일업하여 기대값을 유지한다.
+나이브한 드롭아웃은 훈련 시 뉴런을 끄면 추론 시 기대값이 달라지는 문제가 있다. 이를 해결하기 위해 **Inverted Dropout**(역 드롭아웃)을 사용한다: 훈련 시 남겨진 뉴런의 출력을 1/(1-p)로 스케일업하여 기대값을 유지한다.
 
 ```python
 def inverted_dropout(x, p, training=True):

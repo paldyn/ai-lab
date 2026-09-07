@@ -25,9 +25,9 @@ draft: false
 
 ![NLP 텍스트 전처리 파이프라인](/assets/posts/nlp-text-preprocessing-pipeline.svg)
 
-## 1단계: 텍스트 정제 (Cleaning)
+## 1단계: 텍스트 정제
 
-정제는 의미 없는 노이즈를 제거하는 첫 번째 단계다.
+**정제**(Cleaning)는 의미 없는 노이즈를 제거하는 첫 번째 단계다.
 
 ### HTML/마크업 제거
 
@@ -65,9 +65,9 @@ def normalize_whitespace(text):
     return re.sub(r'\s+', ' ', text).strip()
 ```
 
-## 2단계: 토큰화 (Tokenization)
+## 2단계: 토큰화
 
-토큰화는 텍스트를 분석 단위(토큰)로 분리하는 과정이다. 언어마다 토큰화 방식이 다르다.
+**토큰화**(Tokenization)는 텍스트를 분석 단위(토큰)로 분리하는 과정이다. 언어마다 토큰화 방식이 다르다.
 
 ### 영어 토큰화
 
@@ -97,9 +97,9 @@ NLTK의 `word_tokenize`나 spaCy의 토크나이저는 "don't" → ["do", "n't"]
 
 이 때문에 한국어 NLP에는 **형태소 분석기**(Morphological Analyzer)가 필수다.
 
-## 3단계: 정규화 (Normalization)
+## 3단계: 정규화
 
-정규화는 동일한 의미를 가진 다양한 표현을 통일된 형태로 변환하는 과정이다.
+**정규화**(Normalization)는 동일한 의미를 가진 다양한 표현을 통일된 형태로 변환하는 과정이다.
 
 ### 대소문자 통일
 
@@ -141,7 +141,7 @@ def normalize_repeated_chars(text, max_repeat=2):
 print(normalize_repeated_chars("최고오오오오오"))  # "최고오오"
 ```
 
-## 4단계: 불용어 제거 (Stopword Removal)
+## 4단계: 불용어 제거
 
 불용어(Stopword)는 문장에서 문법적 기능만 하고 의미 정보가 적은 단어들이다. 영어의 경우 "the", "is", "a", "and" 등이 해당한다.
 

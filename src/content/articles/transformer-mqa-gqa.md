@@ -24,7 +24,7 @@ KV Cache = 2 × 64(KV heads) × 128(head_dim)
 
 A100 80GB GPU 두 장을 KV Cache만으로 꽉 채운다. 모델 파라미터(70B × 2bytes ≈ 140GB)보다 크다. 이 상태에서는 배치 크기 1도 간신히 처리할 수 있다.
 
-## Multi-Query Attention (MQA)
+## MQA
 
 2019년 Shazeer가 제안한 MQA는 간단한 아이디어다. **K와 V 투영을 헤드별로 분리하지 않고 모든 Q 헤드가 동일한 K, V를 공유**하게 한다.
 
@@ -54,7 +54,7 @@ class MultiQueryAttention(nn.Module):
 
 KV Cache 크기가 **H배 절감**(H = num_heads)된다. 그러나 K, V 표현력 감소로 긴 문서나 복잡한 추론에서 품질 저하가 관찰된다. PaLM, Falcon, StarCoder가 채택했다.
 
-## Grouped-Query Attention (GQA)
+## GQA
 
 ![MHA, MQA, GQA 구조 비교](/assets/posts/transformer-mqa-gqa-diagram.svg)
 

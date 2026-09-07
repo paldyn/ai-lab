@@ -32,9 +32,9 @@ def membership_inference(model, target_sample, shadow_samples):
 
 ![AI 시스템의 프라이버시 위협](/assets/posts/ai-privacy-threats.svg)
 
-## 차분 프라이버시(Differential Privacy)
+## 차분 프라이버시
 
-**차분 프라이버시**(DP)는 통계 쿼리 결과가 특정 개인의 데이터 포함 여부와 무관하게 거의 동일하도록 노이즈를 추가한다.
+**차분 프라이버시**(Differential Privacy, DP)는 통계 쿼리 결과가 특정 개인의 데이터 포함 여부와 무관하게 거의 동일하도록 노이즈를 추가한다.
 
 수학적 정의: 어떤 데이터셋 D와 D에서 한 레코드를 바꾼 D'에 대해, 모든 출력 집합 S에 대해 `P(M(D) ∈ S) ≤ e^ε × P(M(D') ∈ S)`를 만족하면 ε-차분 프라이버시를 보장한다.
 
@@ -66,9 +66,9 @@ print(f"ε = {epsilon:.2f}, δ = 1e-5")
 
 ε이 작을수록 보호 강도가 높지만, 노이즈가 많아져 모델 정확도가 떨어진다. 실무에서는 ε=1~10 범위가 일반적이다.
 
-## 연합학습(Federated Learning)
+## 연합학습
 
-원시 데이터를 서버로 보내는 대신, 각 기기에서 로컬 학습 후 모델 업데이트(그래디언트)만 서버로 전송한다.
+**연합학습**(Federated Learning)은 원시 데이터를 서버로 보내는 대신, 각 기기에서 로컬 학습 후 모델 업데이트(그래디언트)만 서버로 전송한다.
 
 ```python
 # FedAvg 알고리즘 간략 구현
@@ -101,9 +101,9 @@ def federated_train(global_model, clients, rounds=10):
 
 ![프라이버시 보호 기술](/assets/posts/ai-privacy-techniques.svg)
 
-## 동형암호(Homomorphic Encryption)
+## 동형암호
 
-데이터를 암호화한 상태에서 연산을 수행하고, 복호화된 결과가 평문으로 연산한 결과와 동일하다. 서버가 데이터를 전혀 볼 수 없다.
+**동형암호**(Homomorphic Encryption)에서는 데이터를 암호화한 상태에서 연산을 수행하고, 복호화된 결과가 평문으로 연산한 결과와 동일하다. 서버가 데이터를 전혀 볼 수 없다.
 
 ```python
 # CKKS 동형암호로 암호화된 데이터에 대한 신경망 추론 (개념적)

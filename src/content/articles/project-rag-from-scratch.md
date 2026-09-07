@@ -218,7 +218,7 @@ class FAISSStore:
         return store
 ```
 
-## 5단계: 검색 (Retrieval)
+## 5단계: 검색
 
 ```python
 # src/retriever.py
@@ -322,7 +322,7 @@ if __name__ == "__main__":
     print("답변:", answer)
 ```
 
-## 8단계: 평가 (Faithfulness & Relevance)
+## 8단계: 평가
 
 RAG 시스템의 품질을 측정하는 두 가지 핵심 지표다.
 
