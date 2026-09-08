@@ -1,4 +1,4 @@
-import { Navigate, useParams } from 'react-router';
+import { Link, Navigate, useParams } from 'react-router';
 import { LearnRail } from '../components/LearnRail';
 import { LearnTabs } from '../components/LearnTabs';
 import { MirrorCard } from '../components/MirrorCard';
@@ -76,7 +76,13 @@ export function PythonTrackPage() {
               {/* 한 묶음만 볼 때는 머리말이 위에 이미 있으므로 제목을 다시 세우지 않습니다. */}
               {!section && (
                 <>
-                  <h2 className="mirror-section-title">{item.title}</h2>
+                  {/*
+                    제목이 그 묶음만 보는 페이지로 갑니다. 레일은 언어별(파이썬·R)을
+                    맡으므로 묶음으로 들어가는 길은 여기 하나입니다.
+                  */}
+                  <h2 className="mirror-section-title">
+                    <Link to={`/learn/python/${item.id}`}>{item.title}</Link>
+                  </h2>
                   <p className="mirror-section-note">{item.note}</p>
                 </>
               )}

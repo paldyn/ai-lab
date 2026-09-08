@@ -3214,6 +3214,14 @@ input:focus-visible {
   font-weight: 500;
 }
 
+.mirror-section-title a {
+  transition: color 140ms ease;
+}
+
+.mirror-section-title a:hover {
+  color: var(--brand-text);
+}
+
 .mirror-section-note {
   margin-top: 8px;
   max-width: 44rem;
@@ -3609,8 +3617,10 @@ input:focus-visible {
   색 띠(--learn-accent)는 주지 않습니다 — 묶음은 카테고리 색이 여럿이라 대표 색이 없습니다.
 */
 .learn-rail-group {
-  margin-top: 4px;
-  padding-bottom: 5px;
+  margin-top: 6px;
+  margin-bottom: 5px;
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 7px;
   color: var(--text-muted);
   font-family: 'JetBrains Mono', ui-monospace, monospace;
   font-size: 10px;
@@ -3642,24 +3652,24 @@ input:focus-visible {
 }
 
 /*
-  묶음에 달린 카테고리들. 왼쪽에 실선을 하나 세워 「이 줄들은 위 라벨에 매달려 있다」를
-  보입니다 — 들여쓰기만으로는 안 읽혔습니다.
+  묶음에 달린 카테고리들.
+
+  왼쪽에 세로 실선을 세워 봤다가 걷어냈습니다 — 카테고리마다 이미 제 색 띠가 왼쪽에
+  서 있어 선이 둘로 겹쳤습니다. 지금은 **위 라벨 아래의 가로 실선**이 「여기서부터가
+  그 묶음」을 말하고, 카테고리는 제 색 띠만 답니다.
 */
 .learn-rail-nested {
   display: flex;
   flex-direction: column;
   gap: 1px;
-  margin-left: 5px;
-  border-left: 1px solid var(--border);
-  padding-left: 4px;
 }
 
 .learn-rail-item.is-nested {
-  padding-left: 12px;
+  padding-left: 22px;
 }
 
 .learn-rail-item.is-nested::before {
-  left: 0;
+  left: 8px;
 }
 
 .learn-rail-label {
@@ -3714,6 +3724,21 @@ input:focus-visible {
   opacity: 1;
 }
 
+/* 아직 글이 없는 칸. 자리는 있고 갈 곳이 없다는 것을 색과 커서로 말합니다. */
+.learn-rail-item.is-waiting {
+  color: var(--text-muted);
+  cursor: default;
+}
+
+.learn-rail-item.is-waiting::before {
+  opacity: 0.14;
+}
+
+.learn-rail-item.is-waiting b {
+  font-size: 9.5px;
+  letter-spacing: 0.06em;
+}
+
 .learn-rail-item b {
   color: var(--text-muted);
   font-family: 'JetBrains Mono', ui-monospace, monospace;
@@ -3761,11 +3786,16 @@ input:focus-visible {
     padding-left: 0;
   }
 
-  /* 가로로 누우면 묶음 라벨도 알약 사이에 서므로 세로 여백을 지웁니다. */
+  /* 가로로 누우면 묶음 라벨도 알약 사이에 서므로 여백과 밑줄을 지웁니다. */
   .learn-rail-group {
     margin-top: 0;
+    margin-bottom: 0;
     padding-bottom: 0;
     border: 0;
+  }
+
+  .learn-rail-item.is-nested {
+    padding-left: 14px;
   }
 
   .learn-rail-group-block + .learn-rail-group-block {

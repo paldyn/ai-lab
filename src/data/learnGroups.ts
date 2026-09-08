@@ -54,7 +54,15 @@ export const learnGroups: LearnGroup[] = [
     description:
       'AI 코드를 읽고 고치는 데 필요한 프로그래밍 언어입니다. 파이썬은 PALDYN Tech Blog가 265편으로 다루고 있어 그중 필요한 것만 골라 순서를 매겨 싣습니다.',
     categoryIds: [],
-    tracks: [{ id: 'python', name: '파이썬', to: '/learn/python', count: pythonNoteCount }],
+    /*
+      **R은 아직 한 편도 없습니다.** 그래도 칸을 세워 둡니다 — 이 갈래가 파이썬만
+      다루는 곳이 아니라는 것을 자리로 말하고, 글이 생기면 숫자만 올라갑니다.
+      화면에서는 편수가 0이면 눌리지 않고 「준비 중」으로 섭니다.
+    */
+    tracks: [
+      { id: 'python', name: '파이썬', to: '/learn/python', count: pythonNoteCount },
+      { id: 'r', name: 'R', to: '/learn/r', count: 0 },
+    ],
   },
   {
     id: 'ai-principles',
@@ -158,8 +166,6 @@ export const learnTabs: LearnTab[] = [
     categoryIds: categoryIdsIn('learn'),
     groupIds: ['math', 'lang', 'ai-principles', 'ai-engineering'],
   },
-  { id: 'math', name: '수학', to: '/learn/math-for-ai', categoryIds: ['math-for-ai'], groupIds: [] },
-  { id: 'lang', name: '언어', to: '/learn/python', categoryIds: [], groupIds: ['lang'] },
   {
     id: 'ai',
     name: 'AI',
@@ -169,6 +175,8 @@ export const learnTabs: LearnTab[] = [
     categoryIds: AI_CATEGORIES,
     groupIds: ['ai-principles', 'ai-engineering'],
   },
+  { id: 'lang', name: '언어', to: '/learn/python', categoryIds: [], groupIds: ['lang'] },
+  { id: 'math', name: '수학', to: '/learn/math-for-ai', categoryIds: ['math-for-ai'], groupIds: [] },
 ];
 
 export const learnTabById = Object.fromEntries(

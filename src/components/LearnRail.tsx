@@ -10,7 +10,6 @@ import {
   type LearnTabId,
 } from '../data/learnGroups';
 import { mathTracks } from '../data/curriculum';
-import { pythonSections } from '../data/mirror';
 
 /**
  * 학습의 두 번째 층. 갈래 안에서 더 좁힐 칸을 세웁니다.
@@ -50,7 +49,7 @@ export function LearnRail({
   return (
     <nav className="learn-rail" aria-label="학습 분야" ref={railRef}>
       <p className="learn-rail-label">
-        {tab === 'math' ? '난이도' : tab === 'lang' ? '묶음' : '분야'}
+        {tab === 'math' ? '난이도' : tab === 'lang' ? '언어' : '분야'}
       </p>
 
       {/*
@@ -79,36 +78,30 @@ export function LearnRail({
           );
         })}
 
-      {tab === 'lang' && (
-        <>
-          <Link
-            to="/learn/python"
-            className={`learn-rail-item ${active === "python" ? "is-active" : ""}`}
-            style={{ "--learn-accent": 'var(--brand)' } as CSSProperties}
-            aria-current={active === "python" ? 'page' : undefined}
-          >
-            <span>파이썬 전체</span>
-            <b>
-              {pythonSections.reduce(
-                (sum, section) => sum + section.notes.length,
-                0,
-              )}
-            </b>
-          </Link>
-          {pythonSections.map((section) => (
+      {/*
+        언어는 언어별이 두 번째 층입니다. R은 아직 0편이라 눌리지 않는 「준비 중」 줄로
+        섭니다 — 자리를 비워 두면 이 갈래가 파이썬만 다루는 곳처럼 읽힙니다.
+      */}
+      {tab === 'lang' &&
+        (learnGroupById.lang.tracks ?? []).map((track) =>
+          track.count > 0 ? (
             <Link
-              key={section.id}
-              to={`/learn/python/${section.id}`}
-              className={`learn-rail-item ${active === section.id ? "is-active" : ""}`}
-              style={{ "--learn-accent": 'var(--brand)' } as CSSProperties}
-              aria-current={active === section.id ? 'page' : undefined}
+              key={track.id}
+              to={track.to}
+              className={`learn-rail-item ${active === track.id || (track.id === 'python' && active !== 'r') ? 'is-active' : ''}`}
+              style={{ '--learn-accent': 'var(--brand)' } as CSSProperties}
+              aria-current={active === track.id ? 'page' : undefined}
             >
-              <span>{section.title}</span>
-              <b>{section.notes.length}</b>
+              <span>{track.name}</span>
+              <b>{track.count}</b>
             </Link>
-          ))}
-        </>
-      )}
+          ) : (
+            <span key={track.id} className="learn-rail-item is-waiting">
+              <span>{track.name}</span>
+              <b>준비 중</b>
+            </span>
+          ),
+        )}
 
       {current.groupIds.map((groupId) => {
         const group = learnGroupById[groupId];
@@ -197,7 +190,7 @@ export function learnRailShown(tab: LearnTabId): boolean {
     칩을 누릅니다. 카테고리로 바로 가는 길은 AI 칩 한 번 뒤에 그대로 있습니다.
   */
   if (tab === 'all') return false;
-  if (tab === 'lang') return pythonSections.length >= 2;
+  if (tab === 'lang') return (learnGroupById.lang.tracks ?? []).length >= 2;
   if (tab === 'math')
     return (
       mathTracks.filter((track) => track.slugs.some(hasArticle)).length >= 2
