@@ -173,18 +173,6 @@ function LearnView({ picked }: { picked?: Picked }) {
         */}
         <section key={picked?.id ?? 'all'} className="learn-list learn-swap">
           {/*
-            날짜가 아니라 커리큘럼 순서로 세우는 분야에만 답니다. 정렬 방향이
-            배우는 순서의 역순(나중에 쓴 글이 위)이므로 '순서대로 정렬했다'고만
-            적으면 위에서부터 읽으라는 안내가 됩니다. 어느 쪽 끝이 시작인지를
-            문장이 직접 말해야 합니다.
-          */}
-          {(active?.curriculum || track) && (
-            <p className="curriculum-note">
-              나중에 쓴 글이 위에 옵니다. 앞 글이 뒤 글의 전제가 되므로, 맨 아래에서부터
-              거슬러 올라가는 것이 배우는 순서입니다.
-            </p>
-          )}
-          {/*
             옆 레일이 분야 선택을 맡으므로 칩은 띄우지 않습니다.
             categoryIds는 매 렌더마다 새 배열이지만 메모하지 않습니다 — 이 배열이
             달라지는 때가 곧 분야가 바뀌는 때고, 그때는 바로 위 key가 탐색기를

@@ -37,7 +37,7 @@ type SortId = 'latest' | 'oldest' | 'curriculum';
 
 const BASE_SORTS: SortOption<SortId>[] = [
   { id: 'latest', label: '최신순' },
-  { id: 'oldest', label: '오래된 순' },
+  { id: 'oldest', label: '오래된순' },
 ];
 
 const CURRICULUM_SORTS: SortOption<SortId>[] = [

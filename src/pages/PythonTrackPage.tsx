@@ -17,11 +17,11 @@ import { pythonNoteCount, pythonNotes } from '../data/mirror';
  *
  * **화면은 다른 갈래와 같습니다** — 왼쪽에 레일, 오른쪽에 글 줄입니다.
  */
-type PythonSort = 'latest' | 'first';
+type PythonSort = 'latest' | 'oldest';
 
 const SORTS: SortOption<PythonSort>[] = [
   { id: 'latest', label: '최신순' },
-  { id: 'first', label: '1편부터' },
+  { id: 'oldest', label: '오래된순' },
 ];
 
 export function PythonTrackPage() {
@@ -38,7 +38,7 @@ export function PythonTrackPage() {
     카드에 찍는 번호는 뒤집어도 그대로입니다 — 번호는 자리가 아니라 그 글이 몇 번째로
     쓰인 글인가입니다.
   */
-  const shown = sort === 'first' ? pythonNotes : [...pythonNotes].reverse();
+  const shown = sort === 'oldest' ? pythonNotes : [...pythonNotes].reverse();
 
   return (
     <>
@@ -64,16 +64,6 @@ export function PythonTrackPage() {
         <LearnRail tab="lang" active={isLangRoot ? 'lang' : 'python'} />
 
         <section className="learn-list">
-          {/*
-            출처를 목록 맨 위에서 한 번 밝힙니다. 글마다도 머리에 한 줄이 붙지만,
-            들어오기 전에 「이건 옆 사이트 글이다」를 알고 눌러야 합니다.
-          */}
-          <p className="mirror-source-note">
-            파이썬은 <a href="https://techblog.paldyn.com">PALDYN Tech Blog</a>가 다룹니다. 같은
-            글을 두 곳에서 관리하지 않으려고 원본은 그대로 두고, 빌드할 때마다 그쪽 글을 받아
-            이 화면으로 그립니다 — 고치는 자리도 그쪽입니다.
-          </p>
-
           <div className="explorer-bar">
             <p className="explorer-count">RESULT / {shown.length}</p>
             <SortSelect options={SORTS} value={sort} onChange={setSort} />
