@@ -31,6 +31,7 @@ export const staticRoutes: string[] = [
     .filter((track) => track.slugs.some((slug) => articles.some((a) => a.slug === slug)))
     .map((track) => `/learn/math-for-ai/${track.id}`),
   ...categoryIdsIn('learn').map((id) => `/learn/${id}`),
+  '/learn/lang',
   '/learn/python',
   '/learn/certs',
   ...certs.map((cert) => `/learn/certs/${cert.id}`),

@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useLocation } from 'react-router';
 import { LearnRail } from '../components/LearnRail';
 import { LearnTabs } from '../components/LearnTabs';
 import { MirrorCard } from '../components/MirrorCard';
@@ -25,6 +26,12 @@ const SORTS: SortOption<PythonSort>[] = [
 
 export function PythonTrackPage() {
   const [sort, setSort] = useState<PythonSort>('latest');
+  /*
+    같은 목록이 주소 둘에 섭니다 — `/learn/lang`은 갈래 전체이고 `/learn/python`은 그
+    안의 한 언어입니다. 지금은 언어가 하나뿐이라 목록이 같지만, 레일에서 켜지는 줄이
+    다르고 R이 생기면 앞쪽만 늘어납니다.
+  */
+  const isLangRoot = useLocation().pathname === '/learn/lang';
 
   /*
     데이터는 발행 순(처음 쓴 것부터)으로 들어옵니다. 최신순은 그것을 뒤집은 것이고,
@@ -38,7 +45,7 @@ export function PythonTrackPage() {
       <Seo
         title="파이썬"
         description="PALDYN Tech Blog의 파이썬 글을 이 화면에서 그대로 읽습니다. 문법부터 데이터 도구, 패키징과 비동기까지 265편입니다."
-        path="/learn/python"
+        path={isLangRoot ? '/learn/lang' : '/learn/python'}
       />
 
       <PageHeader
@@ -54,7 +61,7 @@ export function PythonTrackPage() {
       <LearnTabs active="lang" />
 
       <div className="site-wrap learn-layout">
-        <LearnRail tab="lang" active="python" />
+        <LearnRail tab="lang" active={isLangRoot ? 'lang' : 'python'} />
 
         <section className="learn-list">
           {/*

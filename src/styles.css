@@ -3732,13 +3732,18 @@ input:focus-visible {
   transition: color 160ms ease, background-color 160ms ease;
 }
 
-/* 분야 색 띠. 고르지 않았을 때는 옅게. */
+/*
+  분야 색 띠. 고르지 않았을 때는 옅게.
+
+  **왼쪽 끝은 8px로 모두 같습니다** — 묶음 라벨 아래의 줄도 여기서 시작합니다. 「전체」만
+  0에서 시작했더니 그 줄의 띠가 나머지보다 8px 왼쪽으로 튀어나와 보였습니다.
+*/
 .learn-rail-item::before {
   content: '';
   position: absolute;
   top: 6px;
   bottom: 6px;
-  left: 0;
+  left: 8px;
   width: 2px;
   background: var(--learn-accent, var(--text-muted));
   opacity: 0.28;

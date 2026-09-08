@@ -44,6 +44,12 @@ export function LearnRail({
       ?.scrollIntoView({ inline: 'center', block: 'nearest' });
   }, [active, tab]);
 
+  /*
+    갈래의 첫 화면에 있는가. 주소의 마지막 조각이 그 갈래가 가는 곳과 같으면 그렇습니다 —
+    수학은 `math-for-ai`, AI는 `ai`, 언어는 `lang`입니다. 이 값이 「전체」 줄을 켭니다.
+  */
+  const atTabRoot = active === undefined || active === tab || active === current.to.split('/').pop();
+
   if (!learnRailShown(tab)) return null;
 
   return (
@@ -59,8 +65,8 @@ export function LearnRail({
       */}
       <Link
         to={current.to}
-        className={`learn-rail-item ${active === undefined || active === tab || active === 'python' ? 'is-active' : ''}`}
-        aria-current={active === undefined || active === tab ? 'page' : undefined}
+        className={`learn-rail-item ${atTabRoot ? 'is-active' : ''}`}
+        aria-current={atTabRoot ? 'page' : undefined}
       >
         <span>전체</span>
         <b>{tabTotal(tab)}</b>
@@ -120,10 +126,11 @@ export function LearnRail({
       {current.groupIds.map((groupId) => {
         const group = learnGroupById[groupId];
         /*
-          갈래 안에 갈 곳이 하나뿐이면 위의 「전체」 줄이 곧 그 줄입니다 — 언어 탭에서
-          「언어 전체 46」과 「언어 46」이 나란히 서던 자리입니다.
+          이미 위에 선 묶음은 다시 세우지 않습니다. 언어는 트랙을 레일이 직접 그리므로
+          여기서 또 그리면 「파이썬·R」이 두 벌 섭니다. 그리고 묶음이 가는 곳이 갈래의
+          첫 화면과 같으면 그 줄은 위의 「전체」와 같은 줄입니다.
         */
-        if (learnGroupPath(group) === current.to) return null;
+        if (tab === 'lang' || learnGroupPath(group) === current.to) return null;
         const inGroup = group.categoryIds.map((id) => categoryById[id]);
         const tracks = group.tracks ?? [];
         const size = inGroup.length + tracks.length;

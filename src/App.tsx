@@ -42,6 +42,8 @@ export default function App() {
           자격증은 학습의 한 칸입니다. 따로 세우면 메뉴가 다섯이 되고, 정작 그
           페이지가 하는 일은 「우리 글 어디부터 읽으면 되는가」라 학습과 같습니다.
         */}
+        {/* 언어 갈래의 첫 화면. 지금은 파이썬뿐이라 목록이 같고, 레일에서 켜지는 줄만 다릅니다. */}
+        <Route path="/learn/lang" element={<PythonTrackPage />} />
         <Route path="/learn/python" element={<PythonTrackPage />} />
         <Route path="/learn/python/:slug" element={<PythonNotePage />} />
         <Route path="/learn/certs" element={<CertsPage />} />

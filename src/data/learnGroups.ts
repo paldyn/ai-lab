@@ -175,7 +175,7 @@ export const learnTabs: LearnTab[] = [
     categoryIds: AI_CATEGORIES,
     groupIds: ['ai-principles', 'ai-engineering'],
   },
-  { id: 'lang', name: '언어', to: '/learn/python', categoryIds: [], groupIds: ['lang'] },
+  { id: 'lang', name: '언어', to: '/learn/lang', categoryIds: [], groupIds: ['lang'] },
   { id: 'math', name: '수학', to: '/learn/math-for-ai', categoryIds: ['math-for-ai'], groupIds: [] },
 ];
 
@@ -192,7 +192,7 @@ export const learnTabById = Object.fromEntries(
 export function learnTabOf(routeId?: string): LearnTabId {
   if (!routeId) return 'all';
   if (routeId === 'math-for-ai') return 'math';
-  if (routeId === 'python') return 'lang';
+  if (routeId === 'python' || routeId === 'lang') return 'lang';
   if (routeId === 'ai' || routeId === 'ai-principles' || routeId === 'ai-engineering') return 'ai';
   return AI_CATEGORIES.includes(routeId as CategoryId) ? 'ai' : 'all';
 }
