@@ -4,9 +4,11 @@ import {
   learnGroupIds,
   learnGroups,
   learnGroupsWithPage,
+  learnTabs,
   ungroupedLearnCategories,
 } from './learnGroups';
 import { certs } from './certs';
+import { staticRoutes } from '../routes';
 
 describe('학습 묶음', () => {
   it('학습 카테고리가 빠짐없이 한 묶음에 담긴다', () => {
@@ -63,5 +65,43 @@ describe('학습 묶음', () => {
     expect(learnGroupsWithPage.filter((group) => names.has(group.name)).map((g) => g.name)).toEqual(
       [],
     );
+  });
+});
+
+/*
+  탭은 갈래를 가르는 가장 바깥 층이라 늘리기 전에 값을 치러야 합니다. 지금까지는
+  묶음 id만 검사하고 탭은 아무것도 안 봤습니다 — 탭을 하나 더 세울 때 무엇이
+  깨지는지가 코드 어디에도 안 적혀 있었습니다.
+*/
+describe('학습 갈래', () => {
+  it('탭 id가 주소를 가진 칸과 겹치지 않는다', () => {
+    /*
+      `/learn/:id` 한 칸을 카테고리·페이지를 갖는 묶음·자격증이 나눠 씁니다. 탭 id는
+      그 자리에 직접 안 서지만 `learnTabOf()`가 같은 조각을 받아 갈래를 고르므로,
+      겹치면 그 주소가 엉뚱한 탭으로 빨려 갑니다.
+
+      **묶음 id 전부와 견주지는 않습니다.** 수학·언어는 탭과 묶음이 같은 개념이라
+      이름이 같은 것이 맞고, 그 둘은 카테고리가 하나뿐이라 주소를 안 가집니다 —
+      겹쳐서 다투는 자리가 없습니다. 카테고리가 둘 이상이 되어 페이지가 생기는
+      순간부터 이 검사가 걸립니다.
+    */
+    const taken = new Set<string>([
+      ...categories.map((category) => category.id),
+      ...learnGroupsWithPage.map((group) => group.id),
+      'certs',
+      ...certs.map((cert) => cert.id),
+    ]);
+    expect(learnTabs.map((tab) => tab.id).filter((id) => id !== 'all' && taken.has(id))).toEqual([]);
+  });
+
+  it('탭이 가는 곳이 모두 실제로 있는 주소다', () => {
+    // 여기서 걸리면 프리렌더도 sitemap도 없는 곳으로 칩이 보내는 중입니다.
+    const routes = new Set(staticRoutes);
+    expect(learnTabs.filter((tab) => !routes.has(tab.to)).map((tab) => tab.to)).toEqual([]);
+  });
+
+  it('탭 이름이 겹치지 않는다', () => {
+    const names = learnTabs.map((tab) => tab.name);
+    expect(names.length).toBe(new Set(names).size);
   });
 });
