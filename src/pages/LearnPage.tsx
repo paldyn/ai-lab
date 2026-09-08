@@ -117,32 +117,23 @@ function LearnView({ picked }: { picked?: Picked }) {
       />
 
       {/*
-        분야를 골라도 지표는 두 칸 그대로입니다. 한 칸으로 줄면 오른쪽 열의 폭과
-        구성이 통째로 달라져 '다른 페이지'라는 신호가 됩니다. 되돌아가기 링크가
-        싣고 있던 '학습 전체 N편'도 여기서 링크 없이 이어받습니다 — 되돌아가는
-        길은 옆 레일의 '전체'가 맡습니다.
+        **머리말은 무엇을 골라도 그대로입니다.** 뉴스(`/news/model`)와 리서치가 이미
+        그렇습니다 — 탭도 분야도 같은 서랍을 거르는 장치이지 다른 페이지가 아니라서,
+        머리말이 따라 바뀌면 누를 때마다 화면이 통째로 갈리는 것처럼 보입니다.
+        지금 무엇을 보고 있는지는 칩과 레일이 켜져서 말하고, 그 범위의 편수는
+        레일의 「전체」 줄과 목록 위 `RESULT / N`에 적힙니다.
+
+        검색 결과에 나가는 제목·설명은 이것과 별개입니다 — 바로 위 `Seo`가
+        화면마다 따로 들고 있습니다.
       */}
       <PageHeader
         kicker="PALDYN LEARN"
-        title={shownName ?? 'AI 학습'}
-        description={
-          track
-            ? `${track.name} 트랙입니다. 앞 글이 뒤 글의 전제가 되므로 맨 아래에서부터 거슬러 올라가는 것이 배우는 순서입니다.`
-            : (active?.description ??
-              tabPage?.description ??
-              'AI가 어떻게 작동하는지 배웁니다. 모델의 원리부터 그 아래를 떠받치는 수학, 실제로 굴리는 방법까지.')
-        }
-        stats={
-          picked
-            ? [
-                { label: shownName ?? '학습', value: `${shownCount}편` },
-                { label: '학습 전체', value: `${total}편` },
-              ]
-            : [
-                { label: '전체', value: `${total}편` },
-                { label: '분야', value: String(learnCategories.length).padStart(2, '0') },
-              ]
-        }
+        title="AI 학습"
+        description="AI가 어떻게 작동하는지 배웁니다. 모델의 원리부터 그 아래를 떠받치는 수학, 실제로 굴리는 방법까지."
+        stats={[
+          { label: '전체', value: `${total}편` },
+          { label: '분야', value: String(learnCategories.length).padStart(2, '0') },
+        ]}
       />
 
       {/*
