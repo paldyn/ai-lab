@@ -339,15 +339,20 @@ comm -12 <(sort -u /tmp/후보.txt) <(sort -u /tmp/planned_slugs.txt)  # 계획�
 학습 글의 산문을 전부 세어 만든 작업 큐다. 합치기 57짝은 끝났고 채우기 404편이
 카테고리별로 적혀 있다.
 
-**칸은 요일이 정한다.** 한 칸에 몰리지 않게 여덟 칸 중 일곱을 요일로 돌린다.
+**칸은 요일이 정한다.** 한 칸에 몰리지 않게 여섯 칸을 요일로 돌린다.
 
 ```bash
-CAT=$(TZ='Asia/Seoul' date +%u | awk '{split("deep-learning build-with-ai domain-models agents-rag llm-core ml-ops ai-guide",a," "); print a[($1-1)%7+1]}')
+CAT=$(TZ='Asia/Seoul' date +%u | awk '{split("deep-learning build-with-ai domain-models agents-rag llm-core ml-ops",a," "); print a[($1-1)%6+1]}')
 echo "오늘 보강할 칸: $CAT"
 sed -n "/^### $CAT\$/,/^### /p" ARTICLE-DEPTH-PLAN.md
 ```
 
-`math-for-ai`는 수학 루틴이 맡으므로 이 목록에 없다.
+**칸이 여섯이고 요일이 일곱이라 주마다 시작 칸이 한 칸씩 밀린다.** 일부러 그렇게 뒀다 —
+요일과 칸이 딱 맞아떨어지면 특정 칸이 늘 같은 요일에 걸려, 그 요일에 루틴이 한 번
+걸릴 때마다 같은 칸만 밀린다.
+
+`math-for-ai`는 수학 루틴이 맡으므로 이 목록에 없다. **`ai-guide`도 없다** —
+2026-09-09에 16편을 한 번에 다 채웠다.
 
 출력된 섹션에서 **위에서부터 네 항목**을 집는다 — 목록이 얇은 쪽부터 서 있으므로
 위가 곧 가장 급한 것이다. 항목 머리의 `절 M`은 지금 원고의 `##` 개수다(정리·연습 포함). **합치기가 남아 있으면 합치기가
