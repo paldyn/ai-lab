@@ -86,7 +86,7 @@ def pearson_correlation(u, v):
 
 $$\hat{r}_{u,i} = \bar{r}_u + \frac{\sum_{v \in N(u)} \text{sim}(u,v) \cdot (r_{v,i} - \bar{r}_v)}{\sum_{v \in N(u)} |\text{sim}(u,v)|}$$
 
-여기서 $N(u)$는 사용자 u의 K명의 유사 이웃, $\bar{r}_u$는 사용자 u의 평균 평점입니다.
+여기서 $$N(u)$$는 사용자 u의 K명의 유사 이웃, $$\bar{r}_u$$는 사용자 u의 평균 평점입니다.
 
 ## 아이템 기반 협업 필터링
 

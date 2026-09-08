@@ -19,7 +19,7 @@ LLM의 텍스트 생성은 자동회귀(Autoregressive) 방식으로 작동한�
 
 ## Greedy Decoding의 한계
 
-Greedy Decoding은 매 스텝마다 $\hat{t} = \arg\max_v P(v \mid t_1, \ldots, t_{k-1})$을 선택한다. 단순하고 빠르지만, **지역 최적**(local optimum)에 갇히는 문제가 있다.
+Greedy Decoding은 매 스텝마다 $$\hat{t} = \arg\max_v P(v \mid t_1, \ldots, t_{k-1})$$을 선택한다. 단순하고 빠르지만, **지역 최적**(local optimum)에 갇히는 문제가 있다.
 
 예를 들어, "I want to go to the [store/bank/library]"라는 문장이 있을 때, "store"의 확률이 0.45로 가장 높더라도, "bank"(0.35)로 시작하는 시퀀스가 전체적으로 더 자연스럽고 맥락에 맞는 문장을 만들어낼 수 있다. Greedy는 첫 스텝의 지역 최적을 선택해 전역 최적 시퀀스를 놓친다.
 
@@ -93,7 +93,7 @@ diverse_out = model.generate(
 
 ## 길이 보정: Length Penalty
 
-Beam Search에서 중요한 문제 중 하나는 **짧은 시퀀스 편향**이다. 누적 확률을 그대로 쓰면 $\log P(t_1 \ldots t_m) = \sum \log P(t_i)$이고, 각 $\log P < 0$이므로 시퀀스가 길수록 점수가 낮아진다. 즉 모델이 자연스럽게 짧은 출력을 선호하게 된다.
+Beam Search에서 중요한 문제 중 하나는 **짧은 시퀀스 편향**이다. 누적 확률을 그대로 쓰면 $$\log P(t_1 \ldots t_m) = \sum \log P(t_i)$$이고, 각 $$\log P < 0$$이므로 시퀀스가 길수록 점수가 낮아진다. 즉 모델이 자연스럽게 짧은 출력을 선호하게 된다.
 
 이를 보정하는 **Length Penalty** 파라미터가 있다. length_penalty=1.0이면 정규화 없음, length_penalty<1.0은 짧은 시퀀스 선호, length_penalty>1.0은 긴 시퀀스 선호다. 번역 태스크에서는 보통 length_penalty=0.9~1.2를 사용한다.
 

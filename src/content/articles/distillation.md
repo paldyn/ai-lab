@@ -51,10 +51,10 @@ print("T=4:", soft_softmax(logits, 4.0))
 
 $$L_{distill} = (1 - \alpha) \cdot L_{CE}(hard) + \alpha \cdot T^2 \cdot L_{KL}(soft)$$
 
-- **$L_{CE}(hard)$**: Student 출력과 정답 레이블의 교차 엔트로피. 정확한 분류를 학습.
-- **$L_{KL}(soft)$**: Student Soft 분포와 Teacher Soft 분포의 KL Divergence. Teacher 지식 흡수.
-- **$T^2$ 스케일**: 온도를 나누면 그래디언트가 $T^2$만큼 작아지기 때문에 곱해서 보정.
-- **$\alpha$**: 두 손실의 균형. 보통 0.3~0.7.
+- **$$L_{CE}(hard)$$**: Student 출력과 정답 레이블의 교차 엔트로피. 정확한 분류를 학습.
+- **$$L_{KL}(soft)$$**: Student Soft 분포와 Teacher Soft 분포의 KL Divergence. Teacher 지식 흡수.
+- **$$T^2$$ 스케일**: 온도를 나누면 그래디언트가 $$T^2$$만큼 작아지기 때문에 곱해서 보정.
+- **$$\alpha$$**: 두 손실의 균형. 보통 0.3~0.7.
 
 ```python
 def distillation_loss(student_logits, teacher_logits, labels,

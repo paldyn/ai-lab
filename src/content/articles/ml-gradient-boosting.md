@@ -38,11 +38,11 @@ print(f"AdaBoost 정확도: {ada.score(X_test, y_test):.4f}")
 
 그래디언트 부스팅을 이해하는 가장 직관적인 방법은 **잔차**(residual)에서 출발하는 것이다.
 
-회귀 문제를 예로 들자. 실제 값이 $y$이고 첫 번째 트리의 예측이 $\hat{y}_1$이라면 잔차는 $r_1 = y - \hat{y}_1$이다. 두 번째 트리는 $X$를 입력받아 $r_1$을 예측하도록 학습된다. 이 두 트리를 합친 앙상블의 예측은 다음과 같다.
+회귀 문제를 예로 들자. 실제 값이 $$y$$이고 첫 번째 트리의 예측이 $$\hat{y}_1$$이라면 잔차는 $$r_1 = y - \hat{y}_1$$이다. 두 번째 트리는 $$X$$를 입력받아 $$r_1$$을 예측하도록 학습된다. 이 두 트리를 합친 앙상블의 예측은 다음과 같다.
 
 $$\hat{y}_2 = \hat{y}_1 + \text{lr} \cdot h_2(X)$$
 
-여기서 $\text{lr}$은 학습률이고, $h_2$는 두 번째 트리다. 이 과정을 M번 반복하면:
+여기서 $$\text{lr}$$은 학습률이고, $$h_2$$는 두 번째 트리다. 이 과정을 M번 반복하면:
 
 $$\hat{y}_M = \sum_{m=1}^{M} \text{lr} \cdot h_m(X)$$
 
@@ -102,7 +102,7 @@ print(f"GBM 정확도: {accuracy_score(y_test, gbm.predict(X_test)):.4f}")
 
 **XGBoost**(eXtreme Gradient Boosting, 2014)는 Chen과 Guestrin이 개발해 2016년 캐글을 석권한 라이브러리다. 기존 GBM에 세 가지 핵심 개선을 더했다.
 
-**1. 내장 정규화**: 손실 함수에 $L_1$ (alpha)과 $L_2$ (lambda) 정규화 항을 추가해 과적합을 줄인다.
+**1. 내장 정규화**: 손실 함수에 $$L_1$$ (alpha)과 $$L_2$$ (lambda) 정규화 항을 추가해 과적합을 줄인다.
 
 $$\tilde{L} = L + \alpha \sum|w_j| + \frac{\lambda}{2} \sum w_j^2$$
 
