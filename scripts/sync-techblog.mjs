@@ -91,8 +91,23 @@ async function postsDir() {
 
   const file = path.join(temp, 'tech-blog.tar.gz');
   await writeFile(file, Buffer.from(await response.arrayBuffer()));
-  // 글 폴더만 풉니다 — 저장소 전체를 풀면 쓰지도 않을 파일 수천 개가 따라옵니다.
-  await run('tar', ['-xzf', file, '-C', temp, '--strip-components=3', '*/src/content/posts']);
+
+  /*
+    글 폴더만 풉니다 — 저장소 전체를 풀면 쓰지도 않을 파일 수천 개가 따라옵니다.
+
+    **경로에 별표를 쓰지 않습니다.** GNU tar(리눅스)는 `--wildcards` 없이는 별표를
+    파일 이름으로 읽어 「아카이브에 없다」로 죽고, BSD tar(맥)는 그냥 맞춰 줍니다 —
+    맥에서 되던 것이 CI에서만 섰습니다. 묶음의 첫 칸 이름은 브랜치로 정해져 있으므로
+    (`tech-blog-main`) 그대로 적으면 두 tar에서 다 돕니다.
+  */
+  await run('tar', [
+    '-xzf',
+    file,
+    '-C',
+    temp,
+    '--strip-components=3',
+    'tech-blog-main/src/content/posts',
+  ]);
   return path.join(temp, 'posts');
 }
 
