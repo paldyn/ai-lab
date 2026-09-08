@@ -42,6 +42,7 @@ declare module 'virtual:mirror-index' {
     summary: string;
     sourceUrl: string;
     publishedAt: string;
+    archiveOrder: number;
     syncedAt: string;
     readTime: number;
   }

@@ -27,6 +27,8 @@ export interface MirrorEntry {
   /** 원문 주소. `rel=canonical`과 글 머리의 출처 줄이 함께 씁니다. */
   sourceUrl: string;
   publishedAt: string;
+  /** 같은 날 여러 편이 나가므로 하루 안의 차례가 따로 있습니다. 원본의 값입니다. */
+  archiveOrder: number;
   syncedAt: string;
   readTime: number;
 }
@@ -47,6 +49,7 @@ async function readEntry(file: string, root: string): Promise<MirrorEntry | null
     summary: String(data.description),
     sourceUrl: String(data.sourceUrl),
     publishedAt: String(data.pubDate),
+    archiveOrder: Number(data.archiveOrder ?? 0),
     syncedAt: String(data.syncedAt ?? data.pubDate),
     readTime: Math.max(1, Math.round(readingTime(content).minutes)),
   };
@@ -62,7 +65,10 @@ export function mirrorIndexPlugin(): Plugin {
       (entry): entry is MirrorEntry => entry !== null,
     );
 
-    entries.sort((a, b) => a.slug.localeCompare(b.slug));
+    // 발행 순(오래된 쪽부터). 화면에서 뒤집기만 하면 최신순이 됩니다.
+    entries.sort(
+      (a, b) => a.publishedAt.localeCompare(b.publishedAt) || a.archiveOrder - b.archiveOrder,
+    );
 
     return `export const mirrorIndex = ${JSON.stringify(entries)};\n`;
   };

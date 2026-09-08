@@ -3,6 +3,7 @@ import { articles } from '../data/articles';
 import { categories } from '../data/categories';
 import type { CategoryId } from '../types/article';
 import { ArticleCard } from './ArticleCard';
+import { SortSelect, type SortOption } from './SortSelect';
 import { TagFilter, type TagCount } from './TagFilter';
 
 interface ArticleExplorerProps {
@@ -26,6 +27,24 @@ interface ArticleExplorerProps {
 /** 한 번에 그리는 글 수. 수백 편이 한꺼번에 붙으면 프리렌더 HTML도 스크롤도 무거워집니다. */
 const PAGE_SIZE = 24;
 
+/**
+ * 목록을 어떻게 세울지.
+ *
+ * **커리큘럼 칸에는 한 값이 더 있습니다.** 수학은 앞 글이 뒤 글의 전제라 날짜가 아니라
+ * 커리큘럼이 순서를 정하고, 그 순서가 기본입니다. 나머지 칸은 최신순이 기본입니다.
+ */
+type SortId = 'latest' | 'oldest' | 'curriculum';
+
+const BASE_SORTS: SortOption<SortId>[] = [
+  { id: 'latest', label: '최신순' },
+  { id: 'oldest', label: '오래된 순' },
+];
+
+const CURRICULUM_SORTS: SortOption<SortId>[] = [
+  { id: 'curriculum', label: '커리큘럼 순' },
+  ...BASE_SORTS,
+];
+
 export function ArticleExplorer({
   fixedCategoryId,
   categoryIds,
@@ -36,6 +55,8 @@ export function ArticleExplorer({
   const [categoryId, setCategoryId] = useState<CategoryId | 'all'>(fixedCategoryId ?? 'all');
   const [tag, setTag] = useState<string>('all');
   const [visible, setVisible] = useState(PAGE_SIZE);
+  const sortOptions = curriculum ? CURRICULUM_SORTS : BASE_SORTS;
+  const [sort, setSort] = useState<SortId>(curriculum ? 'curriculum' : 'latest');
 
   const allowed = useMemo(() => (slugs ? new Set(slugs) : null), [slugs]);
   const scopedArticles = useMemo(
@@ -90,7 +111,12 @@ export function ArticleExplorer({
       return matchesCategory && matchesTag;
     });
 
-    if (!curriculum) return matched;
+    if (sort === 'oldest') {
+      // 목록은 최신순으로 들어옵니다. 뒤집기만 하면 오래된 쪽이 위로 옵니다.
+      return matched.slice().reverse();
+    }
+
+    if (sort !== 'curriculum') return matched;
 
     /*
       order가 없는 글은 뒤로 보냅니다 — 커리큘럼에 안 적힌 글이라 자리를 알 수 없고,
@@ -106,11 +132,11 @@ export function ArticleExplorer({
       const bo = b.order ?? Number.MAX_SAFE_INTEGER;
       return ao - bo || b.publishedAt.localeCompare(a.publishedAt);
     });
-  }, [categoryId, curriculum, fixedCategoryId, scopedArticles, tag]);
+  }, [categoryId, fixedCategoryId, scopedArticles, sort, tag]);
 
   // 조건이 바뀌면 다시 처음부터 보여 줍니다. effect에서 setState하면 렌더가 한 번 더
   // 돌기 때문에 React가 권하는 '렌더 도중 상태 조정'을 씁니다.
-  const filterKey = `${categoryId} ${tag}`;
+  const filterKey = `${categoryId} ${tag} ${sort}`;
   const [renderedFilterKey, setRenderedFilterKey] = useState(filterKey);
   if (renderedFilterKey !== filterKey) {
     setRenderedFilterKey(filterKey);
@@ -152,7 +178,10 @@ export function ArticleExplorer({
           '더 보기'의 `24 / 162`도 패딩 없이 찍고 있어 표기가 어긋나기도 했습니다.
         */}
         <p className="explorer-count">RESULT / {filteredArticles.length}</p>
-        {tagCounts.length > 0 && <TagFilter tags={tagCounts} value={tag} onChange={setTag} />}
+        <div className="explorer-tools">
+          <SortSelect options={sortOptions} value={sort} onChange={setSort} />
+          {tagCounts.length > 0 && <TagFilter tags={tagCounts} value={tag} onChange={setTag} />}
+        </div>
       </div>
 
       {filteredArticles.length > 0 ? (

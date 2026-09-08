@@ -5,7 +5,6 @@ import { CertPage } from './pages/CertPage';
 import { CertPrepPage } from './pages/CertPrepPage';
 import { CertsPage } from './pages/CertsPage';
 import { PythonNotePage } from './pages/PythonNotePage';
-import { pythonSectionById } from './data/mirror';
 import { PythonTrackPage } from './pages/PythonTrackPage';
 import { LearnPage } from './pages/LearnPage';
 import { HomePage } from './pages/HomePage';
@@ -16,12 +15,6 @@ import { ResearchPage } from './pages/ResearchPage';
 
 /** /concepts/<category> 를 같은 카테고리의 /learn/<category> 로 넘깁니다. */
 /** 자격증을 학습 아래로 옮기기 전 주소. 붙여 둔 링크가 있을 수 있어 살려 둡니다. */
-/** 묶음이면 목록, 아니면 글. 주소 한 칸이 둘을 받습니다. */
-function PythonRoute() {
-  const { section } = useParams<{ section: string }>();
-  return pythonSectionById(section ?? '') ? <PythonTrackPage /> : <PythonNotePage />;
-}
-
 function RedirectCert() {
   const { certId } = useParams<{ certId: string }>();
   return <Navigate to={`/learn/certs/${certId}`} replace />;
@@ -50,11 +43,7 @@ export default function App() {
           페이지가 하는 일은 「우리 글 어디부터 읽으면 되는가」라 학습과 같습니다.
         */}
         <Route path="/learn/python" element={<PythonTrackPage />} />
-        {/*
-          같은 자리가 묶음(basics·data…)과 글 슬러그를 함께 받습니다. 묶음이 먼저이고,
-          겹치지 않는지는 `mirror.test.ts`가 지킵니다.
-        */}
-        <Route path="/learn/python/:section" element={<PythonRoute />} />
+        <Route path="/learn/python/:slug" element={<PythonNotePage />} />
         <Route path="/learn/certs" element={<CertsPage />} />
         <Route path="/learn/certs/:certId" element={<CertPage />} />
         <Route path="/learn/certs/:certId/:slug" element={<CertPrepPage />} />

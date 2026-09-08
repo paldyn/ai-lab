@@ -5,7 +5,7 @@ import { ArticleTitleBar } from '../components/ArticleTitleBar';
 import { ArticleToc } from '../components/ArticleToc';
 import { ImageLightbox } from '../components/ImageLightbox';
 import { Seo } from '../components/Seo';
-import { pythonNeighbors, pythonNoteBySlug, pythonSectionOf, type MirrorNote } from '../data/mirror';
+import { pythonNeighbors, pythonNoteBySlug, pythonNoteNumber, type MirrorNote } from '../data/mirror';
 import { useActiveHeading } from '../lib/activeHeading';
 import { watchImageZoom, type ZoomedImage } from '../lib/imageZoom';
 import { initialMirrorBody, loadMirrorBody } from '../lib/mirrorBody';
@@ -26,7 +26,7 @@ function PythonNoteView({ note }: { note: MirrorNote }) {
   const [zoomed, setZoomed] = useState<ZoomedImage | null>(null);
   const proseRef = useRef<HTMLDivElement>(null);
   const titleRef = useRef<HTMLHeadingElement>(null);
-  const section = pythonSectionOf(note.slug);
+  const number = pythonNoteNumber(note.slug);
   const { prev, next } = pythonNeighbors(note.slug);
 
   useEffect(() => {
@@ -63,7 +63,7 @@ function PythonNoteView({ note }: { note: MirrorNote }) {
       <ArticleTitleBar
         watch={titleRef}
         progressOf={proseRef}
-        label={`파이썬 / ${section?.title ?? '읽는 순서'}`}
+        label={`파이썬 / ${number}번`}
         accent="var(--brand-text)"
         title={note.title}
         section={activeCaption}
@@ -85,7 +85,7 @@ function PythonNoteView({ note }: { note: MirrorNote }) {
           <p className="cert-prep-kicker">
             <span>파이썬</span>
             <span aria-hidden="true">/</span>
-            <span>{section?.title ?? '읽는 순서'}</span>
+            <span>{number}번</span>
             <span aria-hidden="true">/</span>
             <span>{note.readTime} MIN</span>
           </p>
@@ -143,7 +143,7 @@ function PythonNoteView({ note }: { note: MirrorNote }) {
           <ImageLightbox image={zoomed} onClose={() => setZoomed(null)} />
 
           {/* 앞뒤는 읽는 순서가 정합니다 — 원고의 사슬이 아니라 `pythonTrack.ts`의 차례입니다. */}
-          <nav className="cert-prep-nav" aria-label="파이썬 읽는 순서의 앞뒤 글">
+          <nav className="cert-prep-nav" aria-label="파이썬의 앞뒤 글">
             {prev ? (
               <Link to={prev.path} className="cert-prep-nav-item">
                 <span>지난 글</span>
@@ -163,7 +163,7 @@ function PythonNoteView({ note }: { note: MirrorNote }) {
           </nav>
 
           <Link to="/learn/python" className="cert-prep-back">
-            파이썬 읽는 순서 전체 보기 <ArrowRight size={13} aria-hidden="true" />
+파이썬 글 전체 보기 <ArrowRight size={13} aria-hidden="true" />
           </Link>
         </div>
       </div>
@@ -172,7 +172,7 @@ function PythonNoteView({ note }: { note: MirrorNote }) {
 }
 
 export function PythonNotePage() {
-  const { section: slug } = useParams<{ section: string }>();
+  const { slug } = useParams<{ slug: string }>();
   const note = slug ? pythonNoteBySlug(slug) : undefined;
 
   if (!note) return <Navigate to="/learn/python" replace />;

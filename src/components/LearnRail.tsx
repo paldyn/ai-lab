@@ -53,6 +53,20 @@ export function LearnRail({
       </p>
 
       {/*
+        갈래 안의 「전체」. 위의 칩과 같은 곳을 가리키지만 레일에도 둡니다 — 칸을 하나
+        골라 놓고 되돌아올 자리가 레일 안에 있어야 하고, 아무것도 안 고른 상태가
+        레일에서도 보여야 합니다. 기본으로 켜져 있는 줄이 이것입니다.
+      */}
+      <Link
+        to={current.to}
+        className={`learn-rail-item ${active === undefined || active === tab || active === 'python' ? 'is-active' : ''}`}
+        aria-current={active === undefined || active === tab ? 'page' : undefined}
+      >
+        <span>전체</span>
+        <b>{tabTotal(tab)}</b>
+      </Link>
+
+      {/*
         수학은 난이도, 언어는 묶음이 두 번째 층입니다. 둘 다 위에 묶음 머리가 없으므로
         들여쓰지 않습니다 — 들여쓰기는 「위에 무엇이 있다」는 표시라 혼자 서면 어긋납니다.
       */}
@@ -88,7 +102,7 @@ export function LearnRail({
             <Link
               key={track.id}
               to={track.to}
-              className={`learn-rail-item ${active === track.id || (track.id === 'python' && active !== 'r') ? 'is-active' : ''}`}
+              className={`learn-rail-item ${active === track.id ? 'is-active' : ''}`}
               style={{ '--learn-accent': 'var(--brand)' } as CSSProperties}
               aria-current={active === track.id ? 'page' : undefined}
             >
@@ -172,6 +186,17 @@ export function LearnRail({
       })}
     </nav>
   );
+}
+
+/** 갈래 하나가 담는 편수. 언어는 옮겨 온 글이라 카테고리 집계에 없습니다. */
+function tabTotal(tab: LearnTabId): number {
+  const current = learnTabById[tab];
+  const counts = countByCategory();
+  const fromCategories = current.categoryIds.reduce((sum, id) => sum + (counts[id] ?? 0), 0);
+  const fromTracks = current.groupIds
+    .flatMap((id) => learnGroupById[id].tracks ?? [])
+    .reduce((sum, track) => sum + track.count, 0);
+  return fromCategories + fromTracks;
 }
 
 const written = new Set(articles.map((article) => article.slug));

@@ -1,63 +1,60 @@
-import { Link, Navigate, useParams } from 'react-router';
+import { useState } from 'react';
 import { LearnRail } from '../components/LearnRail';
 import { LearnTabs } from '../components/LearnTabs';
 import { MirrorCard } from '../components/MirrorCard';
 import { PageHeader } from '../components/PageHeader';
 import { Seo } from '../components/Seo';
-import { pythonNoteCount, pythonSectionById, pythonSections } from '../data/mirror';
+import { SortSelect, type SortOption } from '../components/SortSelect';
+import { pythonNoteCount, pythonNotes } from '../data/mirror';
 
 /**
- * 파이썬 읽는 순서.
+ * 파이썬 목록.
  *
- * **여기 실린 글은 우리가 쓴 것이 아닙니다.** 원본은 `paldyn/tech-blog`이고 파이썬만
- * 265편이 있습니다. 같은 것을 다시 쓰는 대신 AI에 필요한 것만 골라 순서를 매기고,
- * 본문은 빌드 직전에 원본 마크다운을 받아 우리 화면으로 그립니다. 무엇을 어떤 순서로
- * 실을지는 `src/data/pythonTrack.ts`가 정합니다.
+ * **여기 실린 글은 우리가 쓴 것이 아닙니다.** 원본은 `paldyn/tech-blog`이고, 그쪽의
+ * 파이썬 글 265편을 빌드 직전에 받아 우리 화면으로 그립니다. 골라 싣지 않습니다 —
+ * 무엇을 먼저 읽을지는 정렬이 맡습니다.
  *
- * **화면은 다른 갈래와 같습니다** — 왼쪽에 묶음 레일, 오른쪽에 글 줄입니다. 옮겨 온
- * 글이라고 다른 모양으로 세우면 목록이 두 벌이 되고, 읽는 사람에게는 어차피 같은
- * 「읽을 것」입니다.
+ * **화면은 다른 갈래와 같습니다** — 왼쪽에 레일, 오른쪽에 글 줄입니다.
  */
+type PythonSort = 'latest' | 'first';
+
+const SORTS: SortOption<PythonSort>[] = [
+  { id: 'latest', label: '최신순' },
+  { id: 'first', label: '1편부터' },
+];
+
 export function PythonTrackPage() {
-  const { section: sectionId } = useParams<{ section?: string }>();
-  const section = sectionId ? pythonSectionById(sectionId) : undefined;
+  const [sort, setSort] = useState<PythonSort>('latest');
 
-  if (sectionId && !section) return <Navigate to="/learn/python" replace />;
-
-  const shown = section ? [section] : pythonSections;
-  const count = shown.reduce((sum, item) => sum + item.notes.length, 0);
-  const title = section ? `파이썬 · ${section.title}` : '파이썬';
+  /*
+    데이터는 발행 순(처음 쓴 것부터)으로 들어옵니다. 최신순은 그것을 뒤집은 것이고,
+    카드에 찍는 번호는 뒤집어도 그대로입니다 — 번호는 자리가 아니라 그 글이 몇 번째로
+    쓰인 글인가입니다.
+  */
+  const shown = sort === 'first' ? pythonNotes : [...pythonNotes].reverse();
 
   return (
     <>
       <Seo
-        title={title}
-        description={
-          section
-            ? `${section.note} PALDYN Tech Blog의 글 ${count}편입니다.`
-            : 'AI를 하려면 파이썬의 어디까지 알아야 하는지, 그 순서를 정리했습니다. 본문은 PALDYN Tech Blog의 글입니다.'
-        }
-        path={section ? `/learn/python/${section.id}` : '/learn/python'}
+        title="파이썬"
+        description="PALDYN Tech Blog의 파이썬 글을 이 화면에서 그대로 읽습니다. 문법부터 데이터 도구, 패키징과 비동기까지 265편입니다."
+        path="/learn/python"
       />
 
       <PageHeader
         kicker="PALDYN LEARN"
-        title={title}
-        description={
-          section
-            ? section.note
-            : 'AI 코드를 읽고 고치는 데 필요한 만큼만 골라 순서를 매겼습니다. 본문은 PALDYN Tech Blog의 글을 그대로 싣습니다.'
-        }
+        title="파이썬"
+        description="AI 코드를 읽고 고치는 데 필요한 언어입니다. 본문은 PALDYN Tech Blog의 글을 그대로 싣습니다."
         stats={[
-          { label: section ? section.title : '읽는 순서', value: `${count}편` },
-          { label: '파이썬 전체', value: `${pythonNoteCount}편` },
+          { label: '파이썬', value: `${pythonNoteCount}편` },
+          { label: '원본', value: 'Tech Blog' },
         ]}
       />
 
       <LearnTabs active="lang" />
 
       <div className="site-wrap learn-layout">
-        <LearnRail tab="lang" active={section?.id ?? 'python'} />
+        <LearnRail tab="lang" active="python" />
 
         <section className="learn-list">
           {/*
@@ -65,35 +62,21 @@ export function PythonTrackPage() {
             들어오기 전에 「이건 옆 사이트 글이다」를 알고 눌러야 합니다.
           */}
           <p className="mirror-source-note">
-            파이썬은 <a href="https://techblog.paldyn.com">PALDYN Tech Blog</a>가 265편으로
-            다룹니다. 같은 글을 두 곳에서 관리하지 않으려고, 원본은 그대로 두고 그중 AI에
-            필요한 것만 골라 여기 순서대로 싣습니다 — 본문은 빌드할 때마다 원문에서 받아
-            오므로 고치는 자리도 그쪽입니다.
+            파이썬은 <a href="https://techblog.paldyn.com">PALDYN Tech Blog</a>가 다룹니다. 같은
+            글을 두 곳에서 관리하지 않으려고 원본은 그대로 두고, 빌드할 때마다 그쪽 글을 받아
+            이 화면으로 그립니다 — 고치는 자리도 그쪽입니다.
           </p>
 
-          {shown.map((item) => (
-            <section key={item.id} className="mirror-section">
-              {/* 한 묶음만 볼 때는 머리말이 위에 이미 있으므로 제목을 다시 세우지 않습니다. */}
-              {!section && (
-                <>
-                  {/*
-                    제목이 그 묶음만 보는 페이지로 갑니다. 레일은 언어별(파이썬·R)을
-                    맡으므로 묶음으로 들어가는 길은 여기 하나입니다.
-                  */}
-                  <h2 className="mirror-section-title">
-                    <Link to={`/learn/python/${item.id}`}>{item.title}</Link>
-                  </h2>
-                  <p className="mirror-section-note">{item.note}</p>
-                </>
-              )}
+          <div className="explorer-bar">
+            <p className="explorer-count">RESULT / {shown.length}</p>
+            <SortSelect options={SORTS} value={sort} onChange={setSort} />
+          </div>
 
-              <div className="mt-5">
-                {item.notes.map((note, index) => (
-                  <MirrorCard key={note.slug} note={note} index={index + 1} section={item.title} />
-                ))}
-              </div>
-            </section>
-          ))}
+          <div>
+            {shown.map((note) => (
+              <MirrorCard key={note.slug} note={note} />
+            ))}
+          </div>
         </section>
       </div>
     </>

@@ -52,7 +52,7 @@ export const learnGroups: LearnGroup[] = [
     id: 'lang',
     name: '언어',
     description:
-      'AI 코드를 읽고 고치는 데 필요한 프로그래밍 언어입니다. 파이썬은 PALDYN Tech Blog가 265편으로 다루고 있어 그중 필요한 것만 골라 순서를 매겨 싣습니다.',
+      'AI 코드를 읽고 고치는 데 필요한 프로그래밍 언어입니다. 파이썬은 PALDYN Tech Blog가 다루고 있어 그 글을 그대로 싣습니다.',
     categoryIds: [],
     /*
       **R은 아직 한 편도 없습니다.** 그래도 칸을 세워 둡니다 — 이 갈래가 파이썬만

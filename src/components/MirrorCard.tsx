@@ -1,7 +1,7 @@
 import type { CSSProperties } from 'react';
 import { ArrowUpRight } from 'lucide-react';
 import { Link } from 'react-router';
-import type { MirrorNote } from '../data/mirror';
+import { pythonNoteNumber, type MirrorNote } from '../data/mirror';
 import { prefetchMirrorBody } from '../lib/mirrorBody';
 import { useReadCheck } from '../lib/readLog';
 
@@ -17,16 +17,10 @@ import { useReadCheck } from '../lib/readLog';
  * 때문입니다. 옮겨 온 글은 우리 카테고리에 속하지 않습니다 — 속하게 만들면 접두사
  * 표와 사슬 검사가 이 글들까지 따라옵니다.
  */
-export function MirrorCard({
-  note,
-  index,
-  section,
-}: {
-  note: MirrorNote;
-  index: number;
-  section: string;
-}) {
+export function MirrorCard({ note }: { note: MirrorNote }) {
   const read = useReadCheck()('mirror', note.slug);
+  // 번호는 자리가 아니라 몇 번째로 쓰인 글인가입니다 — 정렬을 뒤집어도 그대로입니다.
+  const index = pythonNoteNumber(note.slug);
   const style = { '--visual-accent': 'var(--brand)' } as CSSProperties;
 
   return (
@@ -36,11 +30,11 @@ export function MirrorCard({
           <div className="visual-grid" />
           <div className="visual-body">
             <div className="flex items-start justify-between font-mono text-[10px] tracking-[0.14em]">
-              <span className="text-white/55">{String(index).padStart(2, '0')}</span>
+              <span className="text-white/55">{String(index).padStart(3, '0')}</span>
               <span className="visual-category">PY</span>
             </div>
             <div>
-              <p className="visual-formula">{section}</p>
+              <p className="visual-formula">Tech Blog</p>
             </div>
           </div>
         </div>
