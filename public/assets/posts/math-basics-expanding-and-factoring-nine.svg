@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="440" viewBox="0 0 880 440" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <rect x="0" y="0" width="880" height="440" rx="12" fill="#0a0a0a"/>
+  <text x="60" y="44" font-size="22" font-weight="700" fill="#e8e8e8">한 변이 a+b+c인 정사각형 — 조각 아홉</text>
+
+  <text x="310" y="102" font-size="13" fill="#888" text-anchor="middle">a</text>
+  <text x="415" y="102" font-size="13" fill="#888" text-anchor="middle">b</text>
+  <text x="490" y="102" font-size="13" fill="#888" text-anchor="middle">c</text>
+  <text x="238" y="175" font-size="13" fill="#888" text-anchor="end">a</text>
+  <text x="238" y="285" font-size="13" fill="#888" text-anchor="end">b</text>
+  <text x="238" y="355" font-size="13" fill="#888" text-anchor="end">c</text>
+
+  <rect x="250" y="110" width="120" height="120" fill="#16283a" stroke="#3a4a6e" stroke-width="1"/>
+  <rect x="370" y="110" width="90" height="120" fill="#101820" stroke="#3a4a6e" stroke-width="1"/>
+  <rect x="460" y="110" width="60" height="120" fill="#101820" stroke="#3a4a6e" stroke-width="1"/>
+  <rect x="250" y="230" width="120" height="90" fill="#101820" stroke="#3a4a6e" stroke-width="1"/>
+  <rect x="370" y="230" width="90" height="90" fill="#16283a" stroke="#3a4a6e" stroke-width="1"/>
+  <rect x="460" y="230" width="60" height="90" fill="#101820" stroke="#3a4a6e" stroke-width="1"/>
+  <rect x="250" y="320" width="120" height="60" fill="#101820" stroke="#3a4a6e" stroke-width="1"/>
+  <rect x="370" y="320" width="90" height="60" fill="#101820" stroke="#3a4a6e" stroke-width="1"/>
+  <rect x="460" y="320" width="60" height="60" fill="#16283a" stroke="#3a4a6e" stroke-width="1"/>
+
+  <text x="310" y="176" font-size="16" fill="#7ec8e3" text-anchor="middle">a²</text>
+  <text x="415" y="176" font-size="16" fill="#e8e8e8" text-anchor="middle">ab</text>
+  <text x="490" y="176" font-size="16" fill="#e8e8e8" text-anchor="middle">ca</text>
+  <text x="310" y="281" font-size="16" fill="#e8e8e8" text-anchor="middle">ab</text>
+  <text x="415" y="281" font-size="16" fill="#7ec8e3" text-anchor="middle">b²</text>
+  <text x="490" y="281" font-size="16" fill="#e8e8e8" text-anchor="middle">bc</text>
+  <text x="310" y="356" font-size="16" fill="#e8e8e8" text-anchor="middle">ca</text>
+  <text x="415" y="356" font-size="16" fill="#e8e8e8" text-anchor="middle">bc</text>
+  <text x="490" y="356" font-size="16" fill="#7ec8e3" text-anchor="middle">c²</text>
+
+  <text x="580" y="176" font-size="13" fill="#7ec8e3">대각선 셋 — a² · b² · c²</text>
+  <text x="580" y="206" font-size="13" fill="#888">짝을 이루는 여섯 — ab 둘, bc 둘, ca 둘</text>
+  <text x="580" y="236" font-size="13" fill="#888">그래서 서로 다른 항은 3 + 3 = 6</text>
+
+  <text x="60" y="414" font-size="16" font-weight="600" fill="#e8e8e8">(a+b+c)² = a² + b² + c² + 2ab + 2bc + 2ca</text>
+</svg>

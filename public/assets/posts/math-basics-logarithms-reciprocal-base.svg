@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="440" viewBox="0 0 880 440" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <rect x="0" y="0" width="880" height="440" rx="12" fill="#0a0a0a"/>
+  <text x="60" y="44" font-size="22" font-weight="700" fill="#e8e8e8">밑을 뒤집으면 x축을 거울로 뒤집힌다</text>
+
+  <line x1="130" y1="230" x2="810" y2="230" stroke="#888" stroke-width="1.5"/>
+  <line x1="140" y1="80" x2="140" y2="380" stroke="#888" stroke-width="1.5"/>
+  <text x="818" y="235" font-size="13" fill="#888">x</text>
+  <text x="132" y="76" font-size="13" fill="#888" text-anchor="end">y</text>
+
+  <line x1="210" y1="226" x2="210" y2="234" stroke="#444" stroke-width="1.5"/>
+  <line x1="280" y1="226" x2="280" y2="234" stroke="#444" stroke-width="1.5"/>
+  <line x1="420" y1="226" x2="420" y2="234" stroke="#444" stroke-width="1.5"/>
+  <line x1="700" y1="226" x2="700" y2="234" stroke="#444" stroke-width="1.5"/>
+  <text x="210" y="252" font-size="13" fill="#888" text-anchor="middle">1</text>
+  <text x="280" y="252" font-size="13" fill="#888" text-anchor="middle">2</text>
+  <text x="420" y="252" font-size="13" fill="#888" text-anchor="middle">4</text>
+  <text x="700" y="252" font-size="13" fill="#888" text-anchor="middle">8</text>
+
+  <line x1="136" y1="110" x2="144" y2="110" stroke="#444" stroke-width="1.5"/>
+  <line x1="136" y1="150" x2="144" y2="150" stroke="#444" stroke-width="1.5"/>
+  <line x1="136" y1="190" x2="144" y2="190" stroke="#444" stroke-width="1.5"/>
+  <line x1="136" y1="270" x2="144" y2="270" stroke="#444" stroke-width="1.5"/>
+  <line x1="136" y1="310" x2="144" y2="310" stroke="#444" stroke-width="1.5"/>
+  <line x1="136" y1="350" x2="144" y2="350" stroke="#444" stroke-width="1.5"/>
+  <text x="128" y="115" font-size="13" fill="#888" text-anchor="end">3</text>
+  <text x="128" y="155" font-size="13" fill="#888" text-anchor="end">2</text>
+  <text x="128" y="195" font-size="13" fill="#888" text-anchor="end">1</text>
+  <text x="128" y="275" font-size="13" fill="#888" text-anchor="end">-1</text>
+  <text x="128" y="315" font-size="13" fill="#888" text-anchor="end">-2</text>
+  <text x="128" y="355" font-size="13" fill="#888" text-anchor="end">-3</text>
+
+  <line x1="700" y1="110" x2="700" y2="350" stroke="#555" stroke-width="2" stroke-dasharray="4,4"/>
+
+  <path d="M 147 363 L 150 340 L 158 310 L 175 270 L 210 230 L 245 207 L 280 190 L 350 167 L 420 150 L 560 127 L 700 110 L 770 103"
+        stroke="#7ec8e3" stroke-width="2.5" fill="none"/>
+  <path d="M 147 97 L 150 120 L 158 150 L 175 190 L 210 230 L 245 253 L 280 270 L 350 293 L 420 310 L 560 333 L 700 350 L 770 357"
+        stroke="#7777cc" stroke-width="2.5" fill="none"/>
+
+  <circle cx="210" cy="230" r="5" fill="#e8e8e8"/>
+  <text x="200" y="212" font-size="13" fill="#888" text-anchor="end">(1, 0)</text>
+
+  <text x="545" y="92" font-size="16" font-weight="600" fill="#7ec8e3">y = log₂ x</text>
+  <text x="545" y="382" font-size="16" font-weight="600" fill="#7777cc">y = log₁ᐟ₂ x</text>
+
+  <text x="60" y="418" font-size="13" fill="#888">같은 x에서 두 값은 크기가 같고 부호만 반대입니다. 두 곡선이 만나는 곳은 (1, 0) 한 점뿐입니다.</text>
+</svg>

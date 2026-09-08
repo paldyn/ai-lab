@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="380" viewBox="0 0 880 380" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <rect x="0" y="0" width="880" height="380" rx="12" fill="#0a0a0a"/>
+  <text x="60" y="44" font-size="22" font-weight="700" fill="#e8e8e8">자리별 곱과 항별 곱은 같은 절차</text>
+
+  <text x="110" y="100" font-size="16" font-weight="600" fill="#e8e8e8">23 × 45 = (20+3)(40+5)</text>
+  <text x="185" y="132" font-size="13" fill="#888" text-anchor="middle">20</text>
+  <text x="295" y="132" font-size="13" fill="#888" text-anchor="middle">3</text>
+  <text x="98" y="195" font-size="13" fill="#888" text-anchor="end">40</text>
+  <text x="98" y="270" font-size="13" fill="#888" text-anchor="end">5</text>
+  <rect x="110" y="140" width="150" height="100" fill="#101820" stroke="#3a4a6e" stroke-width="1"/>
+  <rect x="260" y="140" width="70" height="100" fill="#101820" stroke="#3a4a6e" stroke-width="1"/>
+  <rect x="110" y="240" width="150" height="50" fill="#101820" stroke="#3a4a6e" stroke-width="1"/>
+  <rect x="260" y="240" width="70" height="50" fill="#101820" stroke="#3a4a6e" stroke-width="1"/>
+  <text x="185" y="196" font-size="16" fill="#e8e8e8" text-anchor="middle">800</text>
+  <text x="295" y="196" font-size="16" fill="#e8e8e8" text-anchor="middle">120</text>
+  <text x="185" y="271" font-size="16" fill="#e8e8e8" text-anchor="middle">100</text>
+  <text x="295" y="271" font-size="16" fill="#e8e8e8" text-anchor="middle">15</text>
+  <text x="110" y="320" font-size="13" fill="#7ec8e3">800 + 120 + 100 + 15 = 1035</text>
+
+  <text x="520" y="100" font-size="16" font-weight="600" fill="#e8e8e8">(x + 2)(x + 5)</text>
+  <text x="595" y="132" font-size="13" fill="#888" text-anchor="middle">x</text>
+  <text x="705" y="132" font-size="13" fill="#888" text-anchor="middle">2</text>
+  <text x="508" y="195" font-size="13" fill="#888" text-anchor="end">x</text>
+  <text x="508" y="270" font-size="13" fill="#888" text-anchor="end">5</text>
+  <rect x="520" y="140" width="150" height="100" fill="#101820" stroke="#3a4a6e" stroke-width="1"/>
+  <rect x="670" y="140" width="70" height="100" fill="#101820" stroke="#3a4a6e" stroke-width="1"/>
+  <rect x="520" y="240" width="150" height="50" fill="#101820" stroke="#3a4a6e" stroke-width="1"/>
+  <rect x="670" y="240" width="70" height="50" fill="#101820" stroke="#3a4a6e" stroke-width="1"/>
+  <text x="595" y="196" font-size="16" fill="#e8e8e8" text-anchor="middle">x²</text>
+  <text x="705" y="196" font-size="16" fill="#e8e8e8" text-anchor="middle">2x</text>
+  <text x="595" y="271" font-size="16" fill="#e8e8e8" text-anchor="middle">5x</text>
+  <text x="705" y="271" font-size="16" fill="#e8e8e8" text-anchor="middle">10</text>
+  <text x="520" y="320" font-size="13" fill="#7ec8e3">x² + 2x + 5x + 10 = x² + 7x + 10</text>
+
+  <text x="60" y="356" font-size="13" fill="#888">곱은 양쪽 다 넷입니다. 수는 100과 120이 바로 더해지고, 문자는 동류항인 2x와 5x만 합쳐집니다.</text>
+</svg>

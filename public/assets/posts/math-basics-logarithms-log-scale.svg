@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="400" viewBox="0 0 880 400" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <rect x="0" y="0" width="880" height="400" rx="12" fill="#0a0a0a"/>
+  <defs>
+    <marker id="lsarr" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#7ec8e3"/>
+    </marker>
+  </defs>
+
+  <text x="60" y="44" font-size="22" font-weight="700" fill="#e8e8e8">같은 값 넷을 두 자에 앉히면</text>
+
+  <text x="60" y="88" font-size="16" font-weight="600" fill="#e8e8e8">보통 눈금 — 같은 간격이 같은 차이</text>
+  <line x1="120" y1="130" x2="800" y2="130" stroke="#888" stroke-width="1.5"/>
+  <circle cx="121" cy="130" r="5" fill="#e8e8e8"/>
+  <circle cx="127" cy="130" r="5" fill="#e8e8e8"/>
+  <circle cx="188" cy="130" r="5" fill="#e8e8e8"/>
+  <circle cx="800" cy="130" r="5" fill="#e8e8e8"/>
+  <text x="800" y="112" font-size="13" fill="#888" text-anchor="middle">1000</text>
+  <path d="M 155 152 L 155 166" stroke="#555" stroke-width="2"/>
+  <text x="175" y="172" font-size="13" fill="#888">1 · 10 · 100 — 세 점이 눈금 한 칸도 못 떨어져 붙습니다</text>
+
+  <text x="60" y="228" font-size="16" font-weight="600" fill="#e8e8e8">로그 눈금 — 같은 간격이 같은 배수</text>
+  <line x1="120" y1="270" x2="800" y2="270" stroke="#888" stroke-width="1.5"/>
+  <circle cx="120" cy="270" r="5" fill="#e8e8e8"/>
+  <circle cx="347" cy="270" r="5" fill="#e8e8e8"/>
+  <circle cx="573" cy="270" r="5" fill="#e8e8e8"/>
+  <circle cx="800" cy="270" r="5" fill="#e8e8e8"/>
+  <text x="120" y="252" font-size="13" fill="#888" text-anchor="middle">1</text>
+  <text x="347" y="252" font-size="13" fill="#888" text-anchor="middle">10</text>
+  <text x="573" y="252" font-size="13" fill="#888" text-anchor="middle">100</text>
+  <text x="800" y="252" font-size="13" fill="#888" text-anchor="middle">1000</text>
+
+  <path d="M 124 284 Q 233 316 341 288" stroke="#7ec8e3" stroke-width="2" fill="none" marker-end="url(#lsarr)"/>
+  <path d="M 351 284 Q 460 316 567 288" stroke="#7ec8e3" stroke-width="2" fill="none" marker-end="url(#lsarr)"/>
+  <path d="M 577 284 Q 686 316 794 288" stroke="#7ec8e3" stroke-width="2" fill="none" marker-end="url(#lsarr)"/>
+  <text x="233" y="352" font-size="13" fill="#7ec8e3" text-anchor="middle">×10</text>
+  <text x="460" y="352" font-size="13" fill="#7ec8e3" text-anchor="middle">×10</text>
+  <text x="686" y="352" font-size="13" fill="#7ec8e3" text-anchor="middle">×10</text>
+
+  <text x="60" y="382" font-size="13" fill="#888">10을 곱할 때마다 늘 같은 한 칸을 갑니다 — 곱하기가 자리 옮기기가 됩니다.</text>
+</svg>
