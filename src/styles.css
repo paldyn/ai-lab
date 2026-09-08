@@ -3581,17 +3581,6 @@ input:focus-visible {
   display: none;
 }
 
-.learn-rail-item.learn-rail-group:hover {
-  background: none;
-  color: var(--text);
-}
-
-.learn-rail-item.learn-rail-group.is-active {
-  background: none;
-  color: var(--brand-text);
-  font-weight: 400;
-}
-
 /* 지금 보는 카테고리가 든 묶음. 글자만 켜서 「이 갈래 안에 있다」만 말합니다. */
 .learn-rail-item.learn-rail-group.is-within {
   color: var(--brand-text);
@@ -3667,12 +3656,18 @@ input:focus-visible {
   transition: opacity 160ms ease;
 }
 
-.learn-rail-item:hover {
+/*
+  **hover는 누를 수 있는 줄에만 겁니다.** 레일에는 링크가 아닌 줄이 둘 있습니다 —
+  묶음 머리글(`<p>`)과 아직 글이 없는 「준비 중」(`<span>`)입니다. 좁히지 않으면 그
+  둘도 배경과 글자색이 바뀌어 눌러 보게 됩니다. `:where()`는 특이도를 안 더하므로
+  뒤에 오는 `.is-active`와의 우열이 그대로 남습니다.
+*/
+.learn-rail-item:hover:where(a) {
   background: var(--bg-subtle);
   color: var(--text);
 }
 
-.learn-rail-item:hover::before {
+.learn-rail-item:hover:where(a)::before {
   opacity: 0.7;
 }
 
@@ -3743,9 +3738,6 @@ input:focus-visible {
     display: flex;
     flex-direction: row;
     gap: 6px;
-    margin-left: 0;
-    border-left: 0;
-    padding-left: 0;
   }
 
   /* 가로로 누우면 묶음 라벨도 알약 사이에 서므로 여백과 밑줄을 지웁니다. */
