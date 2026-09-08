@@ -447,11 +447,21 @@ const TRACKS = [
  *
  * 트랙은 슬러그 접두사가 정합니다(`math-basics-` 초급 · `math-` 중급 · `math-adv-` 고급).
  * 화면에서 쓰는 id는 주소에 들어가므로 영문으로 둡니다.
+ *
+ * **트랙마다 색이 다릅니다.** 레일에서 셋이 나란히 서는데 카테고리 색 하나를 같이
+ * 쓰면 띠가 세 줄 다 같은 색이라 어느 줄에 있는지 색으로는 알 수 없었습니다. 다른
+ * 갈래처럼 칸마다 제 색을 답니다 — 다만 아무 색이나 주지 않고 수학의 청록에서
+ * 시작해 초급 → 고급으로 파랑 쪽으로 옮겨 갑니다. 셋은 갈래가 아니라 **순서**라,
+ * 무관한 색을 주면 난이도가 아니라 다른 주제로 읽힙니다. 카테고리 색과 달리 이
+ * 값은 레일의 띠에만 쓰여 글자로는 안 나갑니다(대비 검사 대상이 아닙니다).
+ *
+ * **셋을 넉넉히 벌려 둡니다.** 띠는 2px에 불투명도 0.28이라 스무 도쯤 떨어뜨려서는
+ * 두 색이 같아 보입니다 — 초록·청록·보라로 한 바퀴의 3분의 1씩 띄웠습니다.
  */
 export const mathTracks = [
-  { id: 'basics', level: '초급', name: '초급', slugs: mathFoundation },
-  { id: 'core', level: '중급', name: '중급', slugs: mathCurriculum },
-  { id: 'advanced', level: '고급', name: '고급', slugs: mathAdvanced },
+  { id: 'basics', level: '초급', name: '초급', accent: '#5fd68f', slugs: mathFoundation },
+  { id: 'core', level: '중급', name: '중급', accent: '#63c7e6', slugs: mathCurriculum },
+  { id: 'advanced', level: '고급', name: '고급', accent: '#9a8cff', slugs: mathAdvanced },
 ] as const;
 
 export type MathTrackId = (typeof mathTracks)[number]['id'];

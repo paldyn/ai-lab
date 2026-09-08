@@ -89,11 +89,7 @@ export function LearnRail({
               key={track.id}
               to={`/learn/math-for-ai/${track.id}`}
               className={`learn-rail-item ${active === track.id ? "is-active" : ""}`}
-              style={
-                {
-                  '--learn-accent': categoryById['math-for-ai'].accent,
-                } as CSSProperties
-              }
+              style={{ '--learn-accent': track.accent } as CSSProperties}
               aria-current={active === track.id ? 'page' : undefined}
             >
               <span>{track.name}</span>
