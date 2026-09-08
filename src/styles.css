@@ -3546,8 +3546,14 @@ input:focus-visible {
   글씨체만으로 층이 갈립니다.
 
   색 띠(--learn-accent)는 주지 않습니다 — 묶음은 카테고리 색이 여럿이라 대표 색이 없습니다.
+
+  **선택자에 `.learn-rail-item`을 함께 적습니다.** 묶음 줄은 그 클래스도 달고 있는데
+  `.learn-rail-item` 규칙이 이 블록보다 **아래**에 있고 특이도가 같아, 클래스 하나로만
+  적으면 여기 쓴 크기·색·활성 모양이 전부 뒤에 덮입니다 — 그래서 「작은 모노 라벨」로
+  적어 둔 묶음이 실제로는 카테고리와 똑같은 13.5px으로 서 있었습니다. 위계가 안
+  보인다는 말이 그것이었고, 고친 것은 갈래 수가 아니라 이 한 줄입니다.
 */
-.learn-rail-group {
+.learn-rail-item.learn-rail-group {
   margin-top: 6px;
   margin-bottom: 5px;
   padding-bottom: 7px;
@@ -3562,7 +3568,7 @@ input:focus-visible {
   끝이 어긋나면 줄이 라벨이 아니라 레일 전체에 걸린 것처럼 보입니다. border가 아니라
   ::after로 그리는 이유가 그것입니다(테두리는 상자 폭을 그대로 따릅니다).
 */
-.learn-rail-group::after {
+.learn-rail-item.learn-rail-group::after {
   content: '';
   position: absolute;
   right: 0;
@@ -3572,27 +3578,32 @@ input:focus-visible {
   background: var(--border);
 }
 
-.learn-rail-group::before {
+.learn-rail-item.learn-rail-group::before {
   display: none;
 }
 
-.learn-rail-group:hover {
+.learn-rail-item.learn-rail-group:hover {
   background: none;
   color: var(--text);
 }
 
-.learn-rail-group.is-active {
+.learn-rail-item.learn-rail-group.is-active {
   background: none;
   color: var(--brand-text);
   font-weight: 400;
 }
 
 /* 지금 보는 카테고리가 든 묶음. 글자만 켜서 「이 갈래 안에 있다」만 말합니다. */
-.learn-rail-group.is-within {
+.learn-rail-item.learn-rail-group.is-within {
   color: var(--brand-text);
 }
 
-.learn-rail-group b {
+/* 구획선도 함께 켭니다 — 새 선을 긋지 않고 이미 있는 줄의 색만 바꿉니다. */
+.learn-rail-item.learn-rail-group.is-within::after {
+  background: var(--brand);
+}
+
+.learn-rail-item.learn-rail-group b {
   font-size: 10px;
 }
 
@@ -3737,14 +3748,14 @@ input:focus-visible {
   }
 
   /* 가로로 누우면 묶음 라벨도 알약 사이에 서므로 여백과 밑줄을 지웁니다. */
-  .learn-rail-group {
+  .learn-rail-item.learn-rail-group {
     margin-top: 0;
     margin-bottom: 0;
     padding-bottom: 0;
     border: 0;
   }
 
-  .learn-rail-group::after {
+  .learn-rail-item.learn-rail-group::after {
     display: none;
   }
 
