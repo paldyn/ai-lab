@@ -2760,7 +2760,6 @@ input:focus-visible {
   color: var(--text-dim);
 }
 
-
 .article-prose blockquote p:last-child {
   margin-bottom: 0;
 }
@@ -3483,7 +3482,7 @@ input:focus-visible {
   padding-bottom: 78px;
 }
 
-/* 레일이 없는 갈래(전체·언어·자격증). 목록이 폭을 다 씁니다. */
+/* 레일이 없는 갈래(전체·자격증). 목록이 폭을 다 씁니다. */
 .learn-layout.is-wide {
   grid-template-columns: minmax(0, 1fr);
 }
@@ -4604,7 +4603,6 @@ input:focus-visible {
 
 
 
-
 .model-family-gemini {
   color: #4285f4;
 }
@@ -4860,7 +4858,6 @@ input:focus-visible {
   .model-radar-item:nth-child(2n) {
     padding-right: 0;
   }
-
 
   .news-desk-grid {
     grid-template-columns: 1fr;
@@ -6254,92 +6251,3 @@ input:focus-visible {
   color: var(--brand-text);
 }
 
-/*
-  자격증은 분야 칸이 아니라 단추입니다. 나머지 여덟은 이 목록을 거르는 칸인데
-  이것만 다른 화면으로 가는 길이라, 같은 모양이면 아홉 번째 분야로 읽힙니다.
-
-  **선 위아래 여백을 같게 둡니다.** 위쪽은 앞 칸의 아래 여백 9px에 레일의
-  gap 1px와 이 상자의 margin 11px가 더해 21px, 아래쪽은 padding 11px에
-  단추의 테두리 1px와 안쪽 여백 9px가 더해 21px입니다. 레일 맨 위에서 「분야」
-  글자와 첫 칸 사이가 21px(margin 12 + gap 1 + padding 9 − 글자 아랫여백)이라
-  같은 간격이 세 번 반복됩니다.
-*/
-.learn-rail-extra {
-  margin-top: 11px;
-  border-top: 1px solid var(--border);
-  padding-top: 11px;
-}
-
-/*
-  상태를 **배경색**이 가릅니다. 테두리 한 줄로 가르면 눌린 것과 아닌 것의
-  차이가 1px뿐이라 옆 칸들과 섞여 안 보였습니다.
-
-  테두리와 바탕이 함께 움직입니다. 테두리는 브랜드색을 옅게 섞어 두었다가
-  누르면 원색이 되고, 바탕은 무채색이었다가 누르면 브랜드색이 아주 옅게
-  깔립니다(10%). 예전에 26%를 깔았더니 라이트는 살구색, 다크는 갈색 덩어리가
-  되어 레일에서 혼자 떴습니다 — 색은 테두리가 내고 바탕은 거들기만 합니다.
-
-  바탕을 --bg에 섞는 것도 그래서입니다. --surface(#f3f3f3 / #121212)에 섞으면
-  회색이 남아 탁해지는데, 배경색에 섞으면 두 테마 모두 맑은 색이 됩니다.
-*/
-.learn-rail-cert {
-  display: flex;
-  align-items: center;
-  gap: 9px;
-  border: 1px solid color-mix(in srgb, var(--brand) 32%, var(--border));
-  background: var(--surface);
-  padding: 9px 12px;
-  color: var(--text);
-  font-size: 13.5px;
-  transition: border-color 160ms ease, background-color 160ms ease, color 160ms ease;
-}
-
-.learn-rail-cert svg {
-  flex-shrink: 0;
-  color: var(--brand);
-}
-
-.learn-rail-cert b {
-  margin-left: auto;
-  color: var(--text-muted);
-  font-family: 'JetBrains Mono', ui-monospace, monospace;
-  font-size: 11px;
-  font-weight: 400;
-}
-
-.learn-rail-cert:hover {
-  border-color: color-mix(in srgb, var(--brand) 62%, var(--border));
-  background: color-mix(in srgb, var(--text) 6%, var(--surface));
-  color: var(--text-strong);
-}
-
-.learn-rail-cert.is-active {
-  border-color: var(--brand);
-  background: color-mix(in srgb, var(--brand) 10%, var(--bg));
-  color: var(--text-strong);
-  font-weight: 500;
-}
-
-.learn-rail-cert.is-active b {
-  color: var(--text-dim);
-}
-
-/*
-  레일이 가로로 눕는 폭에서는 선과 여백을 걷고 단추만 알약으로 남깁니다.
-  이 블록이 위쪽 레일 규칙(@media)이 아니라 여기 있는 이유는, 바로 위의 기본
-  규칙이 파일에서 더 뒤에 있어 같은 특이도면 나중 것이 이기기 때문입니다.
-*/
-@media (max-width: 1023px) {
-  .learn-rail-extra {
-    flex-shrink: 0;
-    margin-top: 0;
-    border-top: 0;
-    padding-top: 0;
-  }
-
-  .learn-rail-cert {
-    border-radius: 999px;
-    padding: 6px 14px;
-    white-space: nowrap;
-  }
-}
