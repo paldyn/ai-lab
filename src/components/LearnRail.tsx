@@ -168,7 +168,7 @@ export function LearnRail({
                   <Link
                     key={track.id}
                     to={track.to}
-                    className={`learn-rail-item is-nested ${active === track.id ? "is-active" : ""}`}
+                    className={`learn-rail-item ${active === track.id ? "is-active" : ""}`}
                     aria-current={active === track.id ? 'page' : undefined}
                   >
                     <span>{track.name}</span>
@@ -179,7 +179,7 @@ export function LearnRail({
                   <Link
                     key={category.id}
                     to={`/learn/${category.id}`}
-                    className={`learn-rail-item is-nested ${active === category.id ? "is-active" : ""}`}
+                    className={`learn-rail-item ${active === category.id ? "is-active" : ""}`}
                     style={
                       { '--learn-accent': category.accent } as CSSProperties
                     }

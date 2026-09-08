@@ -3606,6 +3606,11 @@ input:focus-visible {
   font-size: 10px;
 }
 
+/* 머리글만 8px 내어 씁니다 — 띠가 없으므로 글자가 아래 칸들의 띠 자리에서 시작합니다. */
+.learn-rail-item.learn-rail-group {
+  padding-left: 14px;
+}
+
 /*
   묶음에 달린 카테고리들.
 
@@ -3617,14 +3622,6 @@ input:focus-visible {
   display: flex;
   flex-direction: column;
   gap: 1px;
-}
-
-.learn-rail-item.is-nested {
-  padding-left: 22px;
-}
-
-.learn-rail-item.is-nested::before {
-  left: 8px;
 }
 
 .learn-rail-label {
@@ -3641,7 +3638,12 @@ input:focus-visible {
   align-items: baseline;
   justify-content: space-between;
   gap: 10px;
-  padding: 9px 12px 9px 14px;
+  /*
+    **왼쪽 여백은 모든 줄에서 같습니다.** 색 띠는 8px에 서므로 띠와 글자 사이가
+    12px로 하나뿐입니다 — 예전에는 묶음에 달린 카테고리만 22px이고 「전체」와
+    난이도·언어 줄은 14px이라, 같은 레일 안에서 띠와 글자 사이가 두 가지였습니다.
+  */
+  padding: 9px 12px 9px 22px;
   color: var(--text-dim);
   font-size: 13.5px;
   transition: color 160ms ease, background-color 160ms ease;
@@ -3758,10 +3760,6 @@ input:focus-visible {
     display: none;
   }
 
-  .learn-rail-item.is-nested {
-    padding-left: 14px;
-  }
-
   .learn-rail-group-block + .learn-rail-group-block {
     margin-top: 0;
     margin-left: 6px;
@@ -3773,15 +3771,6 @@ input:focus-visible {
     border-radius: 999px;
     padding: 7px 14px;
     white-space: nowrap;
-  }
-
-  /* 가로로 누우면 들여쓰기가 뜻을 잃습니다 — 묶음 알약과 카테고리 알약이 나란히 섭니다. */
-  .learn-rail-item.is-nested {
-    padding-left: 14px;
-  }
-
-  .learn-rail-item.is-nested.is-active::before {
-    left: 14px;
   }
 
   .learn-rail-item::before {
