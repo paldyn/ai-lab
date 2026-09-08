@@ -2,7 +2,7 @@ import { Link } from 'react-router';
 import { Star } from 'lucide-react';
 import { CertMark } from '../components/CertMark';
 import { CertStars } from '../components/CertStars';
-import { LearnRail } from '../components/LearnRail';
+import { LearnTabs } from '../components/LearnTabs';
 import { PageHeader } from '../components/PageHeader';
 import { Seo } from '../components/Seo';
 import { certs, certsIn, type Cert } from '../data/certs';
@@ -83,9 +83,10 @@ export function CertsPage() {
         ]}
       />
 
+      <LearnTabs active="certs" />
+
       {/* 글 목록과 같은 레이아웃을 씁니다 — 자격증은 학습의 한 칸이지 다른 페이지가 아닙니다. */}
-      <div className="site-wrap learn-layout">
-        <LearnRail tab="all" active="certs" />
+      <div className="site-wrap learn-layout is-wide">
 
         <section className="learn-list">
           {/*

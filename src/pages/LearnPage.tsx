@@ -1,7 +1,7 @@
 import { useEffect, useRef } from 'react';
 import { Navigate, useParams } from 'react-router';
 import { ArticleExplorer } from '../components/ArticleExplorer';
-import { LearnRail } from '../components/LearnRail';
+import { LearnRail, learnRailShown } from '../components/LearnRail';
 import { PageHeader } from '../components/PageHeader';
 import { Seo } from '../components/Seo';
 import { articles, countByCategory } from '../data/articles';
@@ -160,7 +160,10 @@ function LearnView({ picked }: { picked?: Picked }) {
       */}
       <LearnTabs active={tab} />
 
-      <div className="site-wrap learn-layout" ref={layoutRef}>
+      <div
+        className={`site-wrap learn-layout${learnRailShown(tab) ? '' : ' is-wide'}`}
+        ref={layoutRef}
+      >
         <LearnRail tab={tab} active={picked?.id} />
 
         {/*

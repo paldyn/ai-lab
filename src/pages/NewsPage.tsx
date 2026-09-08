@@ -103,24 +103,30 @@ export function NewsPage() {
         이번엔 머리말 안에 든 것처럼 보였습니다. 칩은 본문 흐름에 놓여
         어느 쪽으로도 읽히지 않고, 세 섹션의 거르는 방식이 하나로 맞습니다.
       */}
-      <div className="site-wrap news-view-tabs" role="tablist" aria-label="AI 뉴스 분류">
-        {newsViews.map((item, index) => (
-          <button
-            key={item.id}
-            ref={(node) => { tabRefs.current[index] = node; }}
-            type="button"
-            role="tab"
-            id={`news-tab-${item.id}`}
-            aria-selected={index === activeIndex}
-            aria-controls="news-tabpanel"
-            tabIndex={index === activeIndex ? 0 : -1}
-            className={`filter-chip ${index === activeIndex ? 'active' : ''}`}
-            onClick={() => pickView(index)}
-            onKeyDown={(event) => handleTabKeyDown(event, index)}
-          >
-            {item.label}
-          </button>
-        ))}
+      <div className="section-tabs">
+        <div
+          className="site-wrap section-tabs-row news-view-tabs"
+          role="tablist"
+          aria-label="AI 뉴스 분류"
+        >
+          {newsViews.map((item, index) => (
+            <button
+              key={item.id}
+              ref={(node) => { tabRefs.current[index] = node; }}
+              type="button"
+              role="tab"
+              id={`news-tab-${item.id}`}
+              aria-selected={index === activeIndex}
+              aria-controls="news-tabpanel"
+              tabIndex={index === activeIndex ? 0 : -1}
+              className={`filter-chip ${index === activeIndex ? 'active' : ''}`}
+              onClick={() => pickView(index)}
+              onKeyDown={(event) => handleTabKeyDown(event, index)}
+            >
+              {item.label}
+            </button>
+          ))}
+        </div>
       </div>
 
       {/*

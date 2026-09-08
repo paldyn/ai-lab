@@ -2222,12 +2222,25 @@ input:focus-visible {
   }
 }
 
-/* 목록 위 카테고리 칩 (리서치 페이지처럼 분야 카드가 없는 화면용) */
+/*
+  목록 위 카테고리 칩 (리서치 페이지처럼 분야 카드가 없는 화면용).
+
+  뉴스·학습의 갈래 띠와 같이 **머리 아래에 붙어 따라옵니다.** 여기서는 칩이
+  `site-wrap` 안에 있어 띠를 따로 못 두므로, 좌우 여백만큼 배경을 늘려 스크롤한
+  내용이 옆으로 비쳐 지나가지 않게 합니다(값은 `.site-wrap`의 padding과 같습니다).
+*/
 .explorer-categories {
+  position: sticky;
+  top: 71px;
+  z-index: 30;
   display: flex;
   flex-wrap: wrap;
   gap: 7px;
+  margin-inline: calc(-1 * clamp(20px, 5vw, 48px));
   margin-bottom: 26px;
+  padding: 13px clamp(20px, 5vw, 48px);
+  background: var(--header-bg);
+  backdrop-filter: blur(16px);
 }
 
 /* 결과 수와 태그 필터가 한 줄에 놓입니다. */
@@ -3094,14 +3107,78 @@ input:focus-visible {
 }
 
 /*
-  학습의 첫 갈래. 뉴스의 분류 칩(`.news-view-tabs`)과 같은 자리·같은 모양입니다 —
-  모양은 `.filter-chip`이 정하고 여기서는 놓이는 자리만 잡습니다.
+  ---- 갈래 띠 ----
+
+  뉴스·학습·리서치의 첫 갈래 칩이 앉는 자리입니다. **머리 아래에 붙어 따라옵니다** —
+  목록이 수백 편이라 아래로 내려가면 칩이 화면 밖으로 나가고, 다른 갈래로 가려면 맨
+  위까지 되감아야 했습니다.
+
+  띠는 폭을 다 쓰고 칩만 `site-wrap` 안에 듭니다. 띠에 좌우 여백을 주면 스크롤한
+  내용이 그 옆으로 비쳐 지나갑니다.
+
+  머리(`.site-header`)가 71px이므로 그 아래에 붙입니다. z-index는 머리(50)보다
+  낮고 본문보다 높게 둡니다.
 */
-.learn-tabs {
+.section-tabs {
+  position: sticky;
+  top: 71px;
+  z-index: 30;
+  background: var(--header-bg);
+  backdrop-filter: blur(16px);
+}
+
+.section-tabs-row {
   display: flex;
   flex-wrap: wrap;
+  align-items: center;
   gap: 7px;
-  padding-top: 34px;
+  padding-top: 13px;
+  padding-bottom: 13px;
+}
+
+/*
+  자격증은 갈래가 아니라 다른 곳으로 가는 길이라 줄의 오른쪽 끝에 따로 섭니다.
+  `margin-left: auto`로 밀어 두면 칩이 몇 개가 되든 끝에 붙습니다.
+*/
+.section-tabs-aside {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-left: auto;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 7px 12px;
+  color: var(--text-dim);
+  font-size: 11px;
+  line-height: 1;
+  white-space: nowrap;
+  transition: border-color 140ms ease, color 140ms ease;
+}
+
+.section-tabs-aside:hover,
+.section-tabs-aside.is-active {
+  border-color: var(--brand);
+  color: var(--brand-text);
+}
+
+.section-tabs-aside b {
+  color: var(--text-muted);
+  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  font-size: 10px;
+  font-weight: 400;
+}
+
+@media (max-width: 640px) {
+  /* 좁은 화면에서는 줄바꿈 대신 옆으로 굴립니다 — 칩이 두 줄이 되면 띠가 두 배가 됩니다. */
+  .section-tabs-row {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+
+  .section-tabs-row::-webkit-scrollbar {
+    display: none;
+  }
 }
 
 /*
@@ -3461,10 +3538,19 @@ input:focus-visible {
   padding-bottom: 78px;
 }
 
+/* 레일이 없는 갈래(전체·언어·자격증). 목록이 폭을 다 씁니다. */
+.learn-layout.is-wide {
+  grid-template-columns: minmax(0, 1fr);
+}
+
 @media (min-width: 1024px) {
   .learn-layout {
     grid-template-columns: 190px minmax(0, 1fr);
     gap: 56px;
+  }
+
+  .learn-layout.is-wide {
+    grid-template-columns: minmax(0, 1fr);
   }
 }
 
@@ -3477,7 +3563,8 @@ input:focus-visible {
 @media (min-width: 1024px) {
   .learn-rail {
     position: sticky;
-    top: 96px;
+    /* 머리 71 + 갈래 띠 55 + 여백 26. 띠가 따라오므로 그 아래에 붙어야 겹치지 않습니다. */
+    top: 152px;
     align-self: start;
     /*
       묶음 셋이 얹히며 레일이 444px에서 590px 안팎으로 자랐습니다. 1366×768 노트북의
@@ -4702,7 +4789,6 @@ input:focus-visible {
   display: flex;
   flex-wrap: wrap;
   gap: 7px;
-  padding-top: 34px;
 }
 
 @media (max-width: 1023px) {

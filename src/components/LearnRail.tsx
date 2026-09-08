@@ -1,22 +1,20 @@
 import { useEffect, useRef } from 'react';
 import { Link } from 'react-router';
-import { GraduationCap } from 'lucide-react';
 import type { CSSProperties } from 'react';
 import { articles, countByCategory } from '../data/articles';
 import { categoryById } from '../data/categories';
 import { learnGroupById, learnGroupPath, learnTabById, type LearnTabId } from '../data/learnGroups';
 import { mathTracks } from '../data/curriculum';
-import { certs } from '../data/certs';
 
 /**
- * 학습의 두 번째 층. 탭이 고른 갈래 안에서 어디로 갈지 세웁니다.
+ * 학습의 두 번째 층. 갈래 안에서 더 좁힐 칸을 세웁니다.
  *
- * **탭마다 세우는 것이 다릅니다** — 전체는 지도 전체, 수학은 난이도 트랙, 언어는
- * 언어별, AI는 묶음 둘 아래 카테고리 일곱입니다. 그래서 이 컴포넌트는 카테고리
- * 목록을 그리는 것이 아니라 **탭이 정한 구성을 그립니다.**
+ * **갈래는 위의 칩이 맡습니다.** 그래서 여기에는 「전체」도 갈래 이름도 안 적습니다 —
+ * 적으면 바로 위 칩과 같은 말이 두 번 섭니다. 자격증도 칩 줄의 오른쪽 끝으로 옮겼습니다.
  *
- * **구분선은 자격증에만 남깁니다.** 묶음마다 선을 그으면 자격증을 가르던 선이 넷 중
- * 하나가 되어 「여기서부터는 다른 곳으로 가는 길」이라는 뜻을 잃습니다.
+ * **갈래마다 세우는 것이 다릅니다** — 수학은 난이도 트랙, AI는 묶음 둘 아래 카테고리
+ * 일곱입니다. 전체와 언어처럼 **더 좁힐 칸이 없으면 레일을 아예 그리지 않고**
+ * 목록이 화면 폭을 다 씁니다(`learnRailShown`).
  */
 export function LearnRail({ tab, active }: { tab: LearnTabId; active?: string }) {
   const counts = countByCategory();
@@ -33,24 +31,11 @@ export function LearnRail({ tab, active }: { tab: LearnTabId; active?: string })
     rail.querySelector('[aria-current]')?.scrollIntoView({ inline: 'center', block: 'nearest' });
   }, [active, tab]);
 
-  const tabTotal = current.categoryIds.reduce((sum, id) => sum + (counts[id] ?? 0), 0);
+  if (!learnRailShown(tab)) return null;
 
   return (
     <nav className="learn-rail" aria-label="학습 분야" ref={railRef}>
-      <p className="learn-rail-label">{tab === 'all' ? '분야' : current.name}</p>
-
-      {/*
-        갈래 안의 「전체」. 전체 탭에서는 학습 466편이고, AI 탭에서는 AI 346편입니다.
-        수학·언어는 목록이 하나뿐이라 이 줄이 곧 그 목록입니다.
-      */}
-      <Link
-        to={current.to}
-        className={`learn-rail-item ${active === undefined || active === tab || active === current.to.split('/').pop() ? 'is-active' : ''}`}
-        aria-current={active === undefined || active === tab ? 'page' : undefined}
-      >
-        <span>{tab === 'all' ? '전체' : `${current.name} 전체`}</span>
-        <b>{tab === 'lang' ? langTotal() : tabTotal}</b>
-      </Link>
+      <p className="learn-rail-label">{tab === 'math' ? '난이도' : '분야'}</p>
 
       {/* 수학은 난이도가 두 번째 층입니다 — 초급이 목록 맨 아래에 있어 찾기 어려웠습니다. */}
       {tab === 'math' &&
@@ -134,21 +119,6 @@ export function LearnRail({ tab, active }: { tab: LearnTabId; active?: string })
         );
       })}
 
-      {/*
-        자격증은 탭 밖입니다. 어느 갈래를 보고 있든 가는 길이 같아야 해서 레일 맨
-        아래에 선 하나로 떨어져 섭니다 — 분야 칸이 아니라 다른 곳으로 가는 길입니다.
-      */}
-      <div className="learn-rail-extra">
-        <Link
-          to="/learn/certs"
-          className={`learn-rail-cert ${active === 'certs' ? 'is-active' : ''}`}
-          aria-current={active === 'certs' ? 'page' : undefined}
-        >
-          <GraduationCap size={15} strokeWidth={1.7} aria-hidden="true" />
-          <span>자격증</span>
-          <b>{certs.length}</b>
-        </Link>
-      </div>
     </nav>
   );
 }
@@ -156,8 +126,23 @@ export function LearnRail({ tab, active }: { tab: LearnTabId; active?: string })
 const written = new Set(articles.map((article) => article.slug));
 const hasArticle = (slug: string) => written.has(slug);
 
-/** 언어 탭의 편수는 옮겨 온 글이라 카테고리 집계에 없습니다. */
-function langTotal(): number {
-  const group = learnGroupById.lang;
-  return (group.tracks ?? []).reduce((sum, track) => sum + track.count, 0);
+/**
+ * 이 갈래에 레일을 세우는가.
+ *
+ * 더 좁힐 칸이 없으면 안 세웁니다 — 전체는 갈래가 곧 칩이고, 언어는 지금 파이썬
+ * 하나뿐입니다. 빈 레일을 두면 목록만 좁아집니다. R이 생기면 언어도 저절로 섭니다.
+ */
+export function learnRailShown(tab: LearnTabId): boolean {
+  /*
+    「전체」에는 레일을 두지 않습니다. 세울 줄이 전부 위의 칩과 같은 곳을 가리켜
+    같은 말이 두 번 서기 때문입니다 — 전체는 갈래 없이 다 보는 자리이고, 좁히려면
+    칩을 누릅니다. 카테고리로 바로 가는 길은 AI 칩 한 번 뒤에 그대로 있습니다.
+  */
+  if (tab === 'all') return false;
+  if (tab === 'math') return mathTracks.filter((track) => track.slugs.some(hasArticle)).length >= 2;
+  const current = learnTabById[tab];
+  const rows = current.groupIds
+    .map((id) => learnGroupById[id])
+    .filter((group) => learnGroupPath(group) !== current.to).length;
+  return rows >= 2;
 }
