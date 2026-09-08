@@ -6,24 +6,48 @@ import { PageHeader } from '../components/PageHeader';
 import { Seo } from '../components/Seo';
 import { countByCategory } from '../data/articles';
 import { categoriesIn, categoryIdsIn } from '../data/categories';
+import { learnGroupsWithPage } from '../data/learnGroups';
 import type { Category } from '../types/article';
+import type { LearnGroup } from '../data/learnGroups';
 
 const learnCategories = categoriesIn('learn');
 const learnCategoryIds = categoryIdsIn('learn');
 
+/**
+ * 지금 고른 것. 카테고리이거나 묶음이거나 아무것도 아닙니다(= 전체).
+ *
+ * 주소 한 칸(`/learn/:categoryId`)이 둘을 함께 받습니다 — 묶음 id와 카테고리 id는
+ * 겹치지 않고(`learnGroups.test.ts`가 검사합니다), 나누면 라우트가 하나 더 늘 뿐
+ * 얻는 것이 없습니다.
+ */
+type Picked =
+  | { kind: 'category'; id: string; category: Category }
+  | { kind: 'group'; id: string; group: LearnGroup };
+
 export function LearnPage() {
   const { categoryId } = useParams<{ categoryId?: string }>();
-  const active = categoryId ? learnCategories.find((item) => item.id === categoryId) : undefined;
+  const category = categoryId ? learnCategories.find((item) => item.id === categoryId) : undefined;
+  const group = categoryId ? learnGroupsWithPage.find((item) => item.id === categoryId) : undefined;
 
-  // 없는 카테고리를 주소로 치고 들어온 경우.
-  if (categoryId && !active) return <Navigate to="/learn" replace />;
+  const picked: Picked | undefined = category
+    ? { kind: 'category', id: category.id, category }
+    : group
+      ? { kind: 'group', id: group.id, group }
+      : undefined;
 
-  return <LearnView active={active} />;
+  // 없는 카테고리·묶음을 주소로 치고 들어온 경우.
+  if (categoryId && !picked) return <Navigate to="/learn" replace />;
+
+  return <LearnView picked={picked} />;
 }
 
-function LearnView({ active }: { active?: Category }) {
+function LearnView({ picked }: { picked?: Picked }) {
+  const active = picked?.kind === 'category' ? picked.category : undefined;
+  const group = picked?.kind === 'group' ? picked.group : undefined;
   const counts = countByCategory();
   const total = learnCategoryIds.reduce((sum, id) => sum + (counts[id] ?? 0), 0);
+  const shownCategoryIds = group ? group.categoryIds : active ? [active.id] : learnCategoryIds;
+  const shownCount = shownCategoryIds.reduce((sum, id) => sum + (counts[id] ?? 0), 0);
   const layoutRef = useRef<HTMLDivElement>(null);
 
   /*
@@ -37,18 +61,19 @@ function LearnView({ active }: { active?: Category }) {
     const top = layoutRef.current?.getBoundingClientRect().top;
     if (top === undefined || top >= 96) return;
     window.scrollTo({ top: window.scrollY + top - 96, behavior: 'instant' });
-  }, [active?.id]);
+  }, [picked?.id]);
 
   return (
     <>
       <Seo
-        title={active ? active.name : 'AI 학습'}
+        title={picked ? (active?.name ?? group?.name ?? 'AI 학습') : 'AI 학습'}
         description={
           active
             ? `${active.description} Paldyn AI Lab이 정리한 ${active.name} 글 모음입니다.`
-            : 'AI가 어떻게 작동하는지 개념부터 수학, 에이전트와 모델 운영까지 순서대로 정리합니다.'
+            : (group?.description ??
+              'AI가 어떻게 작동하는지 개념부터 수학, 에이전트와 모델 운영까지 순서대로 정리합니다.')
         }
-        path={active ? `/learn/${active.id}` : '/learn'}
+        path={picked ? `/learn/${picked.id}` : '/learn'}
       />
 
       {/*
@@ -59,16 +84,16 @@ function LearnView({ active }: { active?: Category }) {
       */}
       <PageHeader
         kicker="PALDYN LEARN"
-        title={active ? active.name : 'AI 학습'}
+        title={active?.name ?? group?.name ?? 'AI 학습'}
         description={
-          active
-            ? active.description
-            : 'AI가 어떻게 작동하는지 배웁니다. 모델의 원리부터 그 아래를 떠받치는 수학, 실제로 굴리는 방법까지.'
+          active?.description ??
+          group?.description ??
+          'AI가 어떻게 작동하는지 배웁니다. 모델의 원리부터 그 아래를 떠받치는 수학, 실제로 굴리는 방법까지.'
         }
         stats={
-          active
+          picked
             ? [
-                { label: active.name, value: `${counts[active.id] ?? 0}편` },
+                { label: picked.kind === 'group' ? picked.group.name : active!.name, value: `${shownCount}편` },
                 { label: '학습 전체', value: `${total}편` },
               ]
             : [
@@ -84,14 +109,14 @@ function LearnView({ active }: { active?: Category }) {
         건드리지 않고, 스크롤해도 따라옵니다. 레일은 자격증 페이지와 함께 씁니다.
       */}
       <div className="site-wrap learn-layout" ref={layoutRef}>
-        <LearnRail active={active?.id} />
+        <LearnRail active={picked?.id} />
 
         {/*
           key를 목록 구역에 둡니다. 탐색기에 달면 같은 일을 하면서 페이드를 걸
           자리가 없고, main에 달면 옆 레일과 머리말까지 다시 그려집니다. 여기에
           두면 태그 필터와 '더 보기'만 처음으로 돌아갑니다.
         */}
-        <section key={active?.id ?? 'all'} className="learn-list learn-swap">
+        <section key={picked?.id ?? 'all'} className="learn-list learn-swap">
           {/*
             날짜가 아니라 커리큘럼 순서로 세우는 분야에만 답니다. 정렬 방향이
             배우는 순서의 역순(나중에 쓴 글이 위)이므로 '순서대로 정렬했다'고만
@@ -112,7 +137,7 @@ function LearnView({ active }: { active?: Category }) {
             그려질 때는 이 컴포넌트가 아예 돌지 않아 배열도 그대로입니다.
           */}
           <ArticleExplorer
-            categoryIds={active ? [active.id] : learnCategoryIds}
+            categoryIds={shownCategoryIds}
             hideCategoryFilter
             curriculum={active?.curriculum}
           />

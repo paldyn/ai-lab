@@ -2,6 +2,7 @@ import { articles } from './data/articles';
 import { certs } from './data/certs';
 import { certPrepNotes } from './data/certPrep';
 import { categoryIdsIn } from './data/categories';
+import { learnGroupsWithPage } from './data/learnGroups';
 import { newsViewIds } from './data/news';
 
 /** 정적으로 존재하는 페이지. 리다이렉트 전용 경로는 포함하지 않습니다. */
@@ -16,6 +17,11 @@ export const staticRoutes: string[] = [
   */
   ...newsViewIds.map((id) => `/news/${id}`),
   '/learn',
+  /*
+    묶음 페이지. 카테고리가 하나뿐인 묶음(수학)은 여기 없습니다 — 그 목록은
+    /learn/math-for-ai와 같아서 주소 둘로 색인될 뿐입니다.
+  */
+  ...learnGroupsWithPage.map((group) => `/learn/${group.id}`),
   ...categoryIdsIn('learn').map((id) => `/learn/${id}`),
   '/learn/certs',
   ...certs.map((cert) => `/learn/certs/${cert.id}`),

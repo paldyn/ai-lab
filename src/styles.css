@@ -3335,7 +3335,52 @@ input:focus-visible {
     position: sticky;
     top: 96px;
     align-self: start;
+    /*
+      묶음 셋이 얹히며 레일이 444px에서 590px 안팎으로 자랐습니다. 1366×768 노트북의
+      실제 뷰포트 높이는 660px 남짓이라 sticky 자리(96px)를 빼면 564px밖에 안 남아
+      자격증 단추가 잘립니다. 넘칠 때만 레일 안에서 굴러가게 둡니다.
+    */
+    max-height: calc(100vh - 120px);
+    overflow-y: auto;
+    scrollbar-width: none;
   }
+
+  .learn-rail::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+/* 묶음 하나와 그 아래 카테고리들. 묶음 사이를 선이 아니라 여백으로 가릅니다. */
+.learn-rail-group-block {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+
+.learn-rail-group-block + .learn-rail-group-block {
+  margin-top: 10px;
+}
+
+/*
+  묶음 줄. 카테고리 줄과 같은 자리에 서되 글자만 굵습니다. 색 띠(--learn-accent)는
+  주지 않습니다 — 묶음은 카테고리 색이 여럿이라 대표 색이 없습니다.
+*/
+.learn-rail-group {
+  font-weight: 500;
+}
+
+/* 지금 보는 카테고리가 든 묶음. 배경 없이 글자만 켜서 「이 갈래 안에 있다」만 말합니다. */
+.learn-rail-group.is-within {
+  color: var(--text-strong);
+}
+
+/* 묶음 아래 카테고리. 들여쓰기는 안쪽 여백으로 줍니다 — margin이면 왼쪽 표시가 함께 밀립니다. */
+.learn-rail-item.is-nested {
+  padding-left: 26px;
+}
+
+.learn-rail-item.is-nested.is-active::before {
+  left: -17px;
 }
 
 .learn-rail-label {
@@ -3422,12 +3467,32 @@ input:focus-visible {
     display: none;
   }
 
+  .learn-rail-group-block {
+    flex-direction: row;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .learn-rail-group-block + .learn-rail-group-block {
+    margin-top: 0;
+    margin-left: 6px;
+  }
+
   .learn-rail-item {
     flex-shrink: 0;
     border: 1px solid var(--border);
     border-radius: 999px;
     padding: 7px 14px;
     white-space: nowrap;
+  }
+
+  /* 가로로 누우면 들여쓰기가 뜻을 잃습니다 — 묶음 알약과 카테고리 알약이 나란히 섭니다. */
+  .learn-rail-item.is-nested {
+    padding-left: 14px;
+  }
+
+  .learn-rail-item.is-nested.is-active::before {
+    left: 14px;
   }
 
   .learn-rail-item::before {
