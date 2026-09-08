@@ -160,7 +160,7 @@ export interface NewsDetail {
   commentary: string;
 }
 
-export const globalNewsUpdatedAt = '2026-09-07';
+export const globalNewsUpdatedAt = '2026-09-08';
 
 /**
  * 공식 발표 한 건 = 항목 한 개. 2026년 1월부터 쌓는 아카이브이며 오래된 항목을
@@ -171,6 +171,81 @@ export const globalNewsUpdatedAt = '2026-09-07';
  * 목록에서 파생됩니다. 갱신 시 globalNewsUpdatedAt도 함께 올립니다.
  */
 const entries: NewsItem[] = [
+  {
+    id: 'codex-quantum-computing-experiments',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'MIT 연구실, Codex로 초전도 큐비트 보정 측정을 자동화',
+    summary:
+      'OpenAI가 MIT EQuS 그룹의 대학원생이 GPT-5.6 Sol을 Codex에 물려 초전도 큐비트 보정 측정을 ' +
+      '돌린 사례를 공개했다. 보정하지 않은 6큐비트 칩에서 전이 주파수 탐색과 펄스 보정, 결맞음 시간 ' +
+      '측정을 사람 개입 없이 끝냈고, 신호가 약하거나 잡음이 섞이면 연구자 안내가 필요했다고 적었다.',
+    publishedAt: '2026-09-08',
+    collectedAt: '2026-09-09',
+    category: 'Product',
+    signal: '연구실 도입 사례',
+    url: 'https://openai.com/index/codex-quantum-computing-experiments',
+  },
+  {
+    id: 'the-work-now-within-reach',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'OpenAI CFO, 모델·컴퓨트·수요가 맞물리는 성장 구조 제시',
+    summary:
+      'OpenAI CFO Sarah Friar가 소비자·기업 양쪽 도달과 풀스택 컴퓨트 전략이 서로를 밀어 올리는 ' +
+      '구조를 정리했다. 주간 활성 사용자 10억 명 이상과 기업 250만 곳을 들었고, 개인 요금제 이용자의 ' +
+      '하루 메시지가 가입 6개월 뒤 첫 달보다 약 50% 많았다는 자체 조사를 함께 실었다.',
+    publishedAt: '2026-09-08',
+    collectedAt: '2026-09-09',
+    category: 'Corporate',
+    signal: '성장 구조',
+    url: 'https://openai.com/index/the-work-now-within-reach',
+  },
+  {
+    id: 'teen-development-research-grants',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'OpenAI, 13~17세 AI 영향 연구에 500만 달러 지원금',
+    summary:
+      'OpenAI가 생성 AI가 13~17세의 삶과 발달에 미치는 영향을 다루는 독립 연구에 500만 달러를 ' +
+      '약정했다. 과제당 최대 100만 달러이고 청소년의 사회·정서 발달에 초점을 둔다. 신청은 2026년 ' +
+      '10월 6일까지 받고 선정 결과는 11월 13일까지 알린다.',
+    publishedAt: '2026-09-08',
+    collectedAt: '2026-09-09',
+    category: 'Corporate',
+    signal: '청소년 연구 지원',
+    url: 'https://openai.com/index/teen-development-research-grants',
+  },
+  {
+    id: 'supporting-journalism-from-classrooms-to-newsrooms',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'OpenAI, 저널리즘 스쿨 두 곳에 ChatGPT Edu 400여 개 제공',
+    summary:
+      'OpenAI가 CUNY Newmark J-School의 Tow-Knight Center와 노스웨스턴 Medill의 Knight Lab과 ' +
+      '2026~2027학년도 협력을 시작하고 대학원생·교원에게 ChatGPT Edu 구독 400개 이상을 제공한다. ' +
+      'American Journalism Project·Lenfest·WAN-IFRA·INMA와 이어 온 언론 지원의 연장이라고 밝혔다.',
+    publishedAt: '2026-09-08',
+    collectedAt: '2026-09-09',
+    category: 'Corporate',
+    signal: '저널리즘 교육 지원',
+    url: 'https://openai.com/index/supporting-journalism-from-classrooms-to-newsrooms',
+  },
+  {
+    id: '1password',
+    source: 'OpenAI',
+    kind: 'company',
+    title: '1Password, Codex 도입으로 엔지니어링 생산성 20.9% 향상',
+    summary:
+      '1Password가 기획부터 배포까지 소프트웨어 전 주기에 Codex를 넣어 핵심 사용자 집단의 ' +
+      '엔지니어링 생산성이 20.9% 오르고 풀 리퀘스트 중앙값 주기가 10.9% 줄었다고 밝혔다. ' +
+      '저장소에는 자격증명 대신 시크릿 참조만 두어 평문 값이 모델 컨텍스트에 들어가지 않게 했다.',
+    publishedAt: '2026-09-08',
+    collectedAt: '2026-09-09',
+    category: 'Product',
+    signal: '기업 도입 사례',
+    url: 'https://openai.com/index/1password',
+  },
   {
     id: 'navier-stokes-solution',
     source: 'OpenAI',
