@@ -3,7 +3,9 @@ import { categories, categoryIdsIn } from './categories';
 import {
   learnGroupIds,
   learnGroups,
-  learnGroupsWithPage,
+  learnGroupById,
+  learnGroupsWithHead,
+  learnTabById,
   learnTabs,
   ungroupedLearnCategories,
 } from './learnGroups';
@@ -27,9 +29,9 @@ describe('학습 묶음', () => {
   });
 
   /*
-    주소 한 칸(/learn/:categoryId)이 묶음과 카테고리를 함께 받습니다. 겹치면 조용히
-    카테고리가 이기고 묶음 페이지가 사라지므로 여기서 막습니다. 자격증도 같은 자리를
-    씁니다(/learn/certs).
+    묶음은 주소를 안 갖지만 옛 주소로 들어온 조각을 `learnTabPathOfGroup`이 받습니다.
+    묶음 id가 카테고리·자격증 주소와 겹치면 그 주소가 먼저 잡혀 넘기는 자리가 묻히고,
+    id가 주소 조각과 뒤섞입니다. 자격증도 같은 자리를 씁니다(/learn/certs).
   */
   it('묶음 id가 카테고리·자격증 주소와 겹치지 않는다', () => {
     const taken = new Set<string>([
@@ -41,28 +43,47 @@ describe('학습 묶음', () => {
   });
 
   /*
-    카테고리가 하나뿐인 묶음은 페이지를 갖지 않습니다 — 목록이 그 카테고리 페이지와
-    글자 하나까지 같아 같은 내용이 주소 둘로 색인됩니다.
+    **묶음은 갈 곳이 아니라 레일의 머리글입니다.** 예전에는 카테고리가 둘 이상인
+    묶음마다 `/learn/ai-principles` 같은 페이지를 세웠는데, 그러면 AI 갈래만 레일에
+    층이 하나 더 생겨 수학·언어와 모양이 달라졌습니다. 주소를 되살리면 그 비대칭이
+    같이 돌아오므로 여기서 막습니다.
   */
-  it('페이지를 갖는 묶음은 카테고리가 둘 이상이다', () => {
-    expect(learnGroupsWithPage.every((group) => group.categoryIds.length >= 2)).toBe(true);
+  it('머리글로 서는 묶음 id로 가는 주소가 없다', () => {
+    /*
+      수학·언어는 탭과 묶음이 같은 개념이라 id가 같고 `/learn/lang`은 실제로 있지만,
+      그것은 **갈래의 주소**이지 묶음 페이지가 아닙니다. 그 둘은 머리글이 안 서므로
+      이 목록에 없습니다.
+    */
+    const paths = new Set(staticRoutes);
+    expect(
+      learnGroupsWithHead.filter((group) => paths.has(`/learn/${group.id}`)).map((g) => g.id),
+    ).toEqual([]);
   });
 
-  it('묶음 이름과 설명이 비어 있지 않다', () => {
+  it('묶음 이름이 비어 있지 않다', () => {
     for (const group of learnGroups) {
       expect(group.name.length).toBeGreaterThan(0);
-      expect(group.description.length).toBeGreaterThanOrEqual(20);
     }
   });
 
   /*
-    페이지를 갖는 묶음의 이름은 카테고리 이름과 갈려야 합니다 — 레일 밖(검색 결과·
-    공유 링크)에서는 둘이 나란히 안 서서 어느 쪽인지 알 수 없습니다. 카테고리가
-    하나뿐인 묶음(수학)은 그 카테고리 자신이라 같은 이름이 맞습니다.
+    AI 갈래의 카테고리는 묶음에서 파생됩니다. 손으로 적은 사본으로 되돌리면 묶음에
+    카테고리를 더했을 때 목록의 범위와 레일이 어긋나고, 그 카테고리 페이지에서 레일이
+    통째로 사라지는데 오류는 안 납니다.
   */
-  it('페이지를 갖는 묶음 이름이 카테고리 이름과 겹치지 않는다', () => {
+  it('AI 갈래가 담는 카테고리가 그 갈래의 묶음이 든 것과 같다', () => {
+    const fromGroups = learnTabById.ai.groupIds.flatMap((id) => learnGroupById[id].categoryIds);
+    expect([...learnTabById.ai.categoryIds].sort()).toEqual([...fromGroups].sort());
+  });
+
+  /*
+    머리글로 서는 묶음의 이름은 그 아래 줄들과 갈려야 합니다 — 바로 밑에 나란히
+    서므로 같으면 같은 말이 두 번 선 것으로 읽힙니다. 칸이 하나뿐인 묶음(수학·언어)은
+    머리글을 안 달아 이 검사에 안 걸립니다.
+  */
+  it('머리글로 서는 묶음 이름이 카테고리 이름과 겹치지 않는다', () => {
     const names = new Set(categories.map((category) => category.name));
-    expect(learnGroupsWithPage.filter((group) => names.has(group.name)).map((g) => g.name)).toEqual(
+    expect(learnGroupsWithHead.filter((group) => names.has(group.name)).map((g) => g.name)).toEqual(
       [],
     );
   });
@@ -76,18 +97,15 @@ describe('학습 묶음', () => {
 describe('학습 갈래', () => {
   it('탭 id가 주소를 가진 칸과 겹치지 않는다', () => {
     /*
-      `/learn/:id` 한 칸을 카테고리·페이지를 갖는 묶음·자격증이 나눠 씁니다. 탭 id는
-      그 자리에 직접 안 서지만 `learnTabOf()`가 같은 조각을 받아 갈래를 고르므로,
-      겹치면 그 주소가 엉뚱한 탭으로 빨려 갑니다.
+      `/learn/:id` 한 칸을 카테고리와 자격증이 나눠 씁니다. 탭 id는 그 자리에 직접
+      안 서지만 `learnTabOf()`가 같은 조각을 받아 갈래를 고르므로, 겹치면 그 주소가
+      엉뚱한 탭으로 빨려 갑니다.
 
-      **묶음 id 전부와 견주지는 않습니다.** 수학·언어는 탭과 묶음이 같은 개념이라
-      이름이 같은 것이 맞고, 그 둘은 카테고리가 하나뿐이라 주소를 안 가집니다 —
-      겹쳐서 다투는 자리가 없습니다. 카테고리가 둘 이상이 되어 페이지가 생기는
-      순간부터 이 검사가 걸립니다.
+      **묶음 id와는 견주지 않습니다.** 묶음은 이제 주소를 안 가지고, 수학·언어는
+      탭과 묶음이 같은 개념이라 이름이 같은 것이 맞습니다.
     */
     const taken = new Set<string>([
       ...categories.map((category) => category.id),
-      ...learnGroupsWithPage.map((group) => group.id),
       'certs',
       ...certs.map((cert) => cert.id),
     ]);

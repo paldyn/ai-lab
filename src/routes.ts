@@ -2,7 +2,6 @@ import { articles } from './data/articles';
 import { certs } from './data/certs';
 import { certPrepNotes } from './data/certPrep';
 import { categoryIdsIn } from './data/categories';
-import { learnGroupsWithPage } from './data/learnGroups';
 import { mathTracks } from './data/curriculum';
 import { pythonNotes } from './data/mirror';
 import { newsViewIds } from './data/news';
@@ -19,11 +18,6 @@ export const staticRoutes: string[] = [
   */
   ...newsViewIds.map((id) => `/news/${id}`),
   '/learn',
-  /*
-    묶음 페이지. 카테고리가 하나뿐인 묶음(수학)은 여기 없습니다 — 그 목록은
-    /learn/math-for-ai와 같아서 주소 둘로 색인될 뿐입니다.
-  */
-  ...learnGroupsWithPage.map((group) => `/learn/${group.id}`),
   // AI 탭. 원리와 엔지니어링을 한 목록으로 봅니다.
   '/learn/ai',
   // 수학의 난이도 트랙. 아직 한 편도 안 쓴 트랙(고급)은 빼고 냅니다.

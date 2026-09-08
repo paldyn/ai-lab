@@ -1,5 +1,5 @@
 import type { CategoryId } from '../types/article';
-import { categoryById, categoryIdsIn } from './categories';
+import { categoryIdsIn } from './categories';
 import { pythonNoteCount } from './mirror';
 
 /**
@@ -34,8 +34,6 @@ export interface LearnTrack {
 export interface LearnGroup {
   id: LearnGroupId;
   name: string;
-  /** 묶음 페이지의 머리말이자 검색 결과 설명. 카테고리 설명과 겹치지 않게 씁니다. */
-  description: string;
   categoryIds: CategoryId[];
   tracks?: LearnTrack[];
 }
@@ -44,15 +42,11 @@ export const learnGroups: LearnGroup[] = [
   {
     id: 'math',
     name: '수학',
-    description:
-      '어텐션 한 줄에서 시작해 벡터·행렬·확률·미분을 필요한 자리에서 꺼내 씁니다. 초급부터 순서가 있는 하나의 과정입니다.',
     categoryIds: ['math-for-ai'],
   },
   {
     id: 'lang',
     name: '언어',
-    description:
-      'AI 코드를 읽고 고치는 데 필요한 프로그래밍 언어입니다. 파이썬은 PALDYN Tech Blog가 다루고 있어 그 글을 그대로 싣습니다.',
     categoryIds: [],
     /*
       **R은 아직 한 편도 없습니다.** 그래도 칸을 세워 둡니다 — 이 갈래가 파이썬만
@@ -67,15 +61,11 @@ export const learnGroups: LearnGroup[] = [
   {
     id: 'ai-principles',
     name: 'AI · 원리',
-    description:
-      'AI가 무엇이고 어떻게 작동하는지를 봅니다. 개론과 안전에서 시작해 신경망의 학습, 트랜스포머 내부, 그리고 이미지·음성·언어별 모델까지 이어집니다.',
     categoryIds: ['ai-guide', 'deep-learning', 'llm-core', 'domain-models'],
   },
   {
     id: 'ai-engineering',
     name: 'AI · 엔지니어링',
-    description:
-      '모델로 무엇을 만들고 어떻게 굴리는지를 봅니다. 에이전트와 RAG를 짜고, SDK·프레임워크로 붙이고, 파인튜닝부터 서빙·평가·비용까지 운영합니다.',
     categoryIds: ['agents-rag', 'build-with-ai', 'ml-ops'],
   },
 ];
@@ -84,37 +74,39 @@ export const learnGroupById = Object.fromEntries(
   learnGroups.map((group) => [group.id, group]),
 ) as Record<LearnGroupId, LearnGroup>;
 
-export function learnGroupOf(categoryId: CategoryId): LearnGroup | undefined {
-  return learnGroups.find((group) => group.categoryIds.includes(categoryId));
-}
-
-/**
- * 제 페이지를 갖는 묶음.
- *
- * **카테고리가 하나뿐인 묶음은 페이지를 만들지 않습니다.** 수학 묶음의 목록은
- * `/learn/math-for-ai`와 글자 하나까지 같아, 페이지를 세우면 같은 목록이 주소 둘로
- * 색인됩니다. 레일에서는 묶음 줄이 그 카테고리 주소로 바로 갑니다.
- */
-export const learnGroupsWithPage = learnGroups.filter((group) => group.categoryIds.length >= 2);
-
-/** 묶음 줄을 눌렀을 때 갈 곳. 칸이 하나뿐이면 그 칸으로 바로 보냅니다. */
-export function learnGroupPath(group: LearnGroup): string {
-  if (group.categoryIds.length >= 2) return `/learn/${group.id}`;
-  if (group.categoryIds.length === 1) return `/learn/${group.categoryIds[0]}`;
-  return group.tracks?.[0]?.to ?? '/learn';
-}
-
 /** 묶음이 들고 있는 칸의 수. 카테고리와 트랙을 함께 셉니다. */
 export function learnGroupSize(group: LearnGroup): number {
   return group.categoryIds.length + (group.tracks?.length ?? 0);
 }
 
+/**
+ * 레일에 머리글이 서는가.
+ *
+ * **묶음은 갈 곳이 아니라 머리글입니다.** 한때 카테고리가 둘 이상인 묶음마다
+ * `/learn/ai-principles` 같은 페이지를 세웠는데, 그러면 AI 갈래만 레일에 층이 하나
+ * 더 생겨 수학(전체·초급·중급)·언어(전체·파이썬·R)와 모양이 달라졌습니다. 지금은
+ * 누를 수 있는 줄이 어느 갈래에서나 「전체 + 칸들」 한 층이고, 묶음은 그 칸들 위에
+ * 이름만 얹습니다.
+ *
+ * **카테고리를 둘 이상 든 묶음에만 섭니다.** 하나면 머리글과 그 아래 한 줄이 같은
+ * 말이고, 언어처럼 트랙만 든 묶음은 갈래의 레일이 트랙을 직접 그립니다.
+ */
+export const learnGroupHasHead = (group: LearnGroup) => group.categoryIds.length >= 2;
+
+export const learnGroupsWithHead = learnGroups.filter(learnGroupHasHead);
+
+/**
+ * 묶음이 든 갈래가 가는 곳.
+ *
+ * 묶음 페이지를 없애면서 옛 주소(`/learn/ai-principles`)를 받는 자리입니다 —
+ * 그냥 `/learn`으로 보내면 AI 안에 있었다는 것이 사라집니다.
+ */
+export function learnTabPathOfGroup(id: string): string {
+  return learnTabs.find((tab) => tab.id !== 'all' && tab.groupIds.includes(id as LearnGroupId))?.to ?? '/learn';
+}
+
 /** 묶음 이름은 카테고리 이름과 갈려야 합니다 — 레일 밖(검색 결과·공유 링크)에서는 나란히 안 섭니다. */
 export const learnGroupIds = learnGroups.map((group) => group.id);
-
-export function categoriesInGroup(group: LearnGroup) {
-  return group.categoryIds.map((id) => categoryById[id]);
-}
 
 /** 학습 카테고리가 빠짐없이 한 묶음에 담겼는지. 테스트와 개발 중 확인에 씁니다. */
 export function ungroupedLearnCategories(): CategoryId[] {
@@ -148,15 +140,13 @@ export interface LearnTab {
   groupIds: LearnGroupId[];
 }
 
-const AI_CATEGORIES: CategoryId[] = [
-  'ai-guide',
-  'deep-learning',
-  'llm-core',
-  'domain-models',
-  'agents-rag',
-  'build-with-ai',
-  'ml-ops',
-];
+/*
+  AI 갈래가 담는 카테고리. **묶음에서 파생시킵니다** — 손으로 적은 사본을 두면
+  묶음에 카테고리를 더했을 때 목록의 범위와 레일이 어긋나고, 그 카테고리 페이지에서
+  레일이 통째로 사라지는데 오류는 안 납니다.
+*/
+const AI_GROUPS: LearnGroupId[] = ['ai-principles', 'ai-engineering'];
+const AI_CATEGORIES: CategoryId[] = AI_GROUPS.flatMap((id) => learnGroupById[id].categoryIds);
 
 export const learnTabs: LearnTab[] = [
   {
@@ -169,11 +159,9 @@ export const learnTabs: LearnTab[] = [
   {
     id: 'ai',
     name: 'AI',
-    description:
-      '모델의 원리부터 그것으로 무엇을 만들고 어떻게 굴리는지까지. 수학과 언어를 뺀 학습 글 전부입니다.',
     to: '/learn/ai',
     categoryIds: AI_CATEGORIES,
-    groupIds: ['ai-principles', 'ai-engineering'],
+    groupIds: AI_GROUPS,
   },
   { id: 'lang', name: '언어', to: '/learn/lang', categoryIds: [], groupIds: ['lang'] },
   { id: 'math', name: '수학', to: '/learn/math-for-ai', categoryIds: ['math-for-ai'], groupIds: [] },
@@ -186,13 +174,14 @@ export const learnTabById = Object.fromEntries(
 /**
  * 지금 보고 있는 주소가 어느 탭인가.
  *
- * 인자는 `/learn/` 뒤의 첫 조각입니다 — 카테고리 id일 수도, 묶음 id일 수도,
- * 옮겨 온 트랙(`python`)일 수도 있습니다.
+ * 인자는 `/learn/` 뒤의 첫 조각입니다 — 카테고리 id이거나 갈래 자신의 조각
+ * (`ai`·`lang`·`python`)입니다. **묶음 id는 여기 안 옵니다** — 묶음은 주소를 갖지
+ * 않고, 옛 주소는 `LearnPage`가 `learnTabPathOfGroup`으로 한 자리에서 넘깁니다.
  */
 export function learnTabOf(routeId?: string): LearnTabId {
   if (!routeId) return 'all';
   if (routeId === 'math-for-ai') return 'math';
   if (routeId === 'python' || routeId === 'lang') return 'lang';
-  if (routeId === 'ai' || routeId === 'ai-principles' || routeId === 'ai-engineering') return 'ai';
+  if (routeId === 'ai') return 'ai';
   return AI_CATEGORIES.includes(routeId as CategoryId) ? 'ai' : 'all';
 }

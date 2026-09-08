@@ -5,7 +5,8 @@ import { articles, countByCategory } from '../data/articles';
 import { categoryById } from '../data/categories';
 import {
   learnGroupById,
-  learnGroupPath,
+  learnGroupHasHead,
+  learnGroupSize,
   learnTabById,
   type LearnTabId,
 } from '../data/learnGroups';
@@ -128,42 +129,38 @@ export function LearnRail({
 
       {current.groupIds.map((groupId) => {
         const group = learnGroupById[groupId];
-        /*
-          이미 위에 선 묶음은 다시 세우지 않습니다. 언어는 트랙을 레일이 직접 그리므로
-          여기서 또 그리면 「파이썬·R」이 두 벌 섭니다. 그리고 묶음이 가는 곳이 갈래의
-          첫 화면과 같으면 그 줄은 위의 「전체」와 같은 줄입니다.
-        */
-        if (tab === 'lang' || learnGroupPath(group) === current.to) return null;
+        // 언어는 트랙을 레일이 직접 그리므로 여기서 또 그리면 두 벌 섭니다.
+        if (tab === 'lang') return null;
         const inGroup = group.categoryIds.map((id) => categoryById[id]);
         const tracks = group.tracks ?? [];
-        const size = inGroup.length + tracks.length;
+        if (learnGroupSize(group) === 0) return null;
         const groupTotal =
           group.categoryIds.reduce((sum, id) => sum + (counts[id] ?? 0), 0) +
           tracks.reduce((sum, track) => sum + track.count, 0);
-        const isActive =
-          active === group.id ||
-          (size === 1 &&
-            (active === inGroup[0]?.id || active === tracks[0]?.id));
-        // 카테고리를 보고 있으면 그 카테고리가 든 묶음도 글자만 켭니다.
+        // 지금 보는 칸이 이 묶음 안이면 머리글도 함께 켭니다.
         const within =
-          !isActive &&
-          (inGroup.some((category) => category.id === active) ||
-            tracks.some((track) => track.id === active));
+          inGroup.some((category) => category.id === active) ||
+          tracks.some((track) => track.id === active);
 
         return (
           <div key={group.id} className="learn-rail-group-block">
-            <Link
-              to={learnGroupPath(group)}
-              className={`learn-rail-item learn-rail-group ${isActive ? "is-active" : ""}${within ? " is-within" : ""}`}
-              aria-current={isActive ? 'page' : undefined}
-            >
-              <span>{group.name}</span>
-              <b>{groupTotal}</b>
-            </Link>
+            {/*
+              **머리글은 누르는 자리가 아닙니다.** 예전에는 묶음마다 페이지가 있어
+              이 줄이 링크였는데, 그러면 AI 갈래만 레일에 층이 하나 더 생겨 수학·언어와
+              모양이 달라졌습니다. 지금은 어느 갈래에서나 누르는 줄이 「전체 + 칸들」
+              한 층이고, 묶음은 그 칸들 위에 이름만 얹습니다.
 
-            {/* 칸이 하나면 묶음 줄이 곧 그 칸이라 아래를 다시 세우지 않습니다. */}
-            {size >= 2 && (
-              <div className="learn-rail-nested">
+              칸이 하나뿐인 묶음에는 머리글을 안 답니다 — 머리글과 그 아래 한 줄이
+              같은 말입니다. 그 한 줄은 머리글 없이 그대로 섭니다.
+            */}
+            {learnGroupHasHead(group) && (
+              <p className={`learn-rail-item learn-rail-group ${within ? 'is-within' : ''}`}>
+                <span>{group.name}</span>
+                <b>{groupTotal}</b>
+              </p>
+            )}
+
+            <div className="learn-rail-nested">
                 {tracks.map((track) => (
                   <Link
                     key={track.id}
@@ -189,8 +186,7 @@ export function LearnRail({
                     <b>{counts[category.id] ?? 0}</b>
                   </Link>
                 ))}
-              </div>
-            )}
+            </div>
           </div>
         );
       })}
@@ -230,9 +226,10 @@ export function learnRailShown(tab: LearnTabId): boolean {
     return (
       mathTracks.filter((track) => track.slugs.some(hasArticle)).length >= 2
     );
-  const current = learnTabById[tab];
-  const rows = current.groupIds
-    .map((id) => learnGroupById[id])
-    .filter((group) => learnGroupPath(group) !== current.to).length;
-  return rows >= 2;
+  // 누를 수 있는 줄이 둘은 되어야 좁히는 뜻이 있습니다. 머리글은 세지 않습니다.
+  return (
+    learnTabById[tab].groupIds
+      .map((id) => learnGroupById[id])
+      .reduce((sum, group) => sum + learnGroupSize(group), 0) >= 2
+  );
 }

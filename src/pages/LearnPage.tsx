@@ -6,11 +6,10 @@ import { PageHeader } from '../components/PageHeader';
 import { Seo } from '../components/Seo';
 import { articles, countByCategory } from '../data/articles';
 import { categoriesIn, categoryIdsIn } from '../data/categories';
-import { learnGroupsWithPage, learnTabById, learnTabOf } from '../data/learnGroups';
+import { learnTabById, learnTabOf, learnTabPathOfGroup } from '../data/learnGroups';
 import { LearnTabs } from '../components/LearnTabs';
 import { mathTrackById } from '../data/curriculum';
 import type { Category } from '../types/article';
-import type { LearnGroup } from '../data/learnGroups';
 
 const learnCategories = categoriesIn('learn');
 const learnCategoryIds = categoryIdsIn('learn');
@@ -18,22 +17,19 @@ const learnCategoryIds = categoryIdsIn('learn');
 const writtenSlugs = new Set(articles.map((article) => article.slug));
 
 /**
- * 지금 고른 것. 카테고리이거나 묶음이거나 아무것도 아닙니다(= 전체).
+ * 지금 고른 것. 카테고리이거나 갈래이거나 아무것도 아닙니다(= 전체).
  *
- * 주소 한 칸(`/learn/:categoryId`)이 둘을 함께 받습니다 — 묶음 id와 카테고리 id는
- * 겹치지 않고(`learnGroups.test.ts`가 검사합니다), 나누면 라우트가 하나 더 늘 뿐
- * 얻는 것이 없습니다.
+ * **묶음은 여기 없습니다.** 레일에서 머리글이 되면서 갈 곳이 아니게 됐습니다 —
+ * 옛 주소(`/learn/ai-principles`)는 아래에서 그 묶음이 든 갈래로 넘깁니다.
  */
 type Picked =
   | { kind: 'category'; id: string; category: Category }
-  | { kind: 'group'; id: string; group: LearnGroup }
   | { kind: 'tab'; id: string }
   | { kind: 'track'; id: string; category: Category; slugs: string[]; name: string };
 
 export function LearnPage() {
   const { categoryId, track } = useParams<{ categoryId?: string; track?: string }>();
   const category = categoryId ? learnCategories.find((item) => item.id === categoryId) : undefined;
-  const group = categoryId ? learnGroupsWithPage.find((item) => item.id === categoryId) : undefined;
   const mathTrack = track ? mathTrackById(track) : undefined;
 
   /*
@@ -52,21 +48,21 @@ export function LearnPage() {
       : undefined
     : category
       ? { kind: 'category', id: category.id, category }
-      : group
-        ? { kind: 'group', id: group.id, group }
-        : categoryId === 'ai'
-          ? { kind: 'tab', id: 'ai' }
-          : undefined;
+      : categoryId === 'ai'
+        ? { kind: 'tab', id: 'ai' }
+        : undefined;
 
-  // 없는 카테고리·묶음·트랙을 주소로 치고 들어온 경우.
-  if (categoryId && !picked) return <Navigate to="/learn" replace />;
+  /*
+    없는 카테고리·트랙을 주소로 치고 들어온 경우. 옛 묶음 주소면 그 묶음이 든 갈래로
+    보냅니다 — 그냥 `/learn`으로 보내면 AI 안에 있었다는 것이 사라집니다.
+  */
+  if (categoryId && !picked) return <Navigate to={learnTabPathOfGroup(categoryId)} replace />;
 
   return <LearnView picked={picked} />;
 }
 
 function LearnView({ picked }: { picked?: Picked }) {
   const active = picked?.kind === 'category' ? picked.category : undefined;
-  const group = picked?.kind === 'group' ? picked.group : undefined;
   const track = picked?.kind === 'track' ? picked : undefined;
   const tabPage = picked?.kind === 'tab' ? learnTabById.ai : undefined;
   const tab = learnTabOf(
@@ -76,17 +72,15 @@ function LearnView({ picked }: { picked?: Picked }) {
   const total = learnCategoryIds.reduce((sum, id) => sum + (counts[id] ?? 0), 0);
   const shownCategoryIds = track
     ? [track.category.id]
-    : group
-      ? group.categoryIds
-      : tabPage
-        ? tabPage.categoryIds
-        : active
-          ? [active.id]
-          : learnCategoryIds;
+    : tabPage
+      ? tabPage.categoryIds
+      : active
+        ? [active.id]
+        : learnCategoryIds;
   const shownCount = track
     ? track.slugs.filter((slug) => writtenSlugs.has(slug)).length
     : shownCategoryIds.reduce((sum, id) => sum + (counts[id] ?? 0), 0);
-  const shownName = track?.name ?? active?.name ?? group?.name ?? tabPage?.name;
+  const shownName = track?.name ?? active?.name ?? tabPage?.name;
   const seoPath = track
     ? `/learn/${track.category.id}/${track.id}`
     : picked
@@ -116,8 +110,7 @@ function LearnView({ picked }: { picked?: Picked }) {
             ? `${track.category.name} ${track.name} 트랙 ${shownCount}편을 순서대로 모았습니다.`
             : active
               ? `${active.description} Paldyn AI Lab이 정리한 ${active.name} 글 모음입니다.`
-              : (group?.description ??
-                tabPage?.description ??
+              : (tabPage?.description ??
                 'AI가 어떻게 작동하는지 개념부터 수학, 에이전트와 모델 운영까지 순서대로 정리합니다.')
         }
         path={seoPath}
@@ -136,7 +129,6 @@ function LearnView({ picked }: { picked?: Picked }) {
           track
             ? `${track.name} 트랙입니다. 앞 글이 뒤 글의 전제가 되므로 맨 아래에서부터 거슬러 올라가는 것이 배우는 순서입니다.`
             : (active?.description ??
-              group?.description ??
               tabPage?.description ??
               'AI가 어떻게 작동하는지 배웁니다. 모델의 원리부터 그 아래를 떠받치는 수학, 실제로 굴리는 방법까지.')
         }
