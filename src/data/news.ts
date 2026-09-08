@@ -160,7 +160,7 @@ export interface NewsDetail {
   commentary: string;
 }
 
-export const globalNewsUpdatedAt = '2026-09-03';
+export const globalNewsUpdatedAt = '2026-09-07';
 
 /**
  * 공식 발표 한 건 = 항목 한 개. 2026년 1월부터 쌓는 아카이브이며 오래된 항목을
@@ -171,6 +171,61 @@ export const globalNewsUpdatedAt = '2026-09-03';
  * 목록에서 파생됩니다. 갱신 시 globalNewsUpdatedAt도 함께 올립니다.
  */
 const entries: NewsItem[] = [
+  {
+    id: 'navier-stokes-solution',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'OpenAI 사내 모델, 밀레니엄 문제 Navier–Stokes를 해결',
+    summary:
+      'OpenAI가 사내 시스템이 만든 Navier–Stokes 존재·매끄러움 문제의 해답을 공개했다. 매끄럽게 ' +
+      '시작한 3차원 유체가 유한 시간 안에 특이점을 만들 수 있음을 보였고, 증명 원고와 Lean 형식화를 ' +
+      '함께 내놓았다. 밀레니엄 상금은 청구하지 않는다고 밝혔다.',
+    publishedAt: '2026-09-08',
+    collectedAt: '2026-09-09',
+    category: 'Research',
+    signal: 'AI 수학 발견',
+    url: 'https://openai.com/index/navier-stokes-solution',
+  },
+  {
+    id: 'introducing-chatgpt-images-2-5',
+    source: 'OpenAI',
+    kind: 'model',
+    title: 'OpenAI, 이미지 모델 ChatGPT Images 2.5 공개',
+    summary:
+      'OpenAI가 세부 묘사와 편집 정확도를 높이고 생성 지연을 Images 2.0 대비 최대 50% 줄인 ' +
+      'ChatGPT Images 2.5를 공개했다. ChatGPT·ChatGPT Work·Codex 전 요금제에 오늘부터 배포되고, ' +
+      'API에는 GPT-Image-2.5 Flare와 GPT-Image-2.5 Sunburst 두 모델이 함께 올라간다.',
+    publishedAt: '2026-09-08',
+    collectedAt: '2026-09-09',
+    category: 'Multimodal',
+    signal: '이미지 모델',
+    url: 'https://openai.com/index/introducing-chatgpt-images-2-5',
+    model: {
+      family: 'GPT',
+      name: 'ChatGPT Images 2.5',
+      kind: '신규 모델',
+      status: '공개',
+      useCase: '참조 사진 기반 이미지 생성과 다회차 편집',
+      headline: '편집한 곳만 바꾸고 나머지는 붙잡아 둔다. 생성은 최대 절반 빨라졌다.',
+      logo: 'assets/openai.svg',
+      tone: 'gpt',
+    },
+  },
+  {
+    id: 'alphagenome-atlas-a-predictive-map-of-every-possible-dna-letter-change-in-the-human-genome',
+    source: 'Google DeepMind',
+    kind: 'company',
+    title: 'Google DeepMind, 인간 유전체 변이 90억 개 예측 지도 공개',
+    summary:
+      'Google DeepMind가 인간 유전체의 단일 염기 변이 90억 개에 대한 AlphaGenome 예측을 미리 ' +
+      '계산해 담은 AlphaGenome Atlas를 내놓았다. 변이마다 영향도를 한 숫자로 요약한 AVI 점수를 ' +
+      '함께 공개했고, 학술 연구용 웹 포털과 AlphaGenome API로 오늘부터 쓸 수 있다.',
+    publishedAt: '2026-09-08',
+    collectedAt: '2026-09-09',
+    category: 'Research',
+    signal: '유전체 변이 지도',
+    url: 'https://deepmind.google/blog/alphagenome-atlas-a-predictive-map-of-every-possible-dna-letter-change-in-the-human-genome',
+  },
   {
     id: 'supporting-independent-journalism-in-ukraine',
     source: 'OpenAI',
