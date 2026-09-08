@@ -35,6 +35,8 @@ export default function App() {
         <Route path="/news/:view" element={<NewsPage />} />
         <Route path="/learn" element={<LearnPage />} />
         <Route path="/learn/:categoryId" element={<LearnPage />} />
+        {/* 수학의 난이도 트랙. 카테고리 아래 한 층이라 주소도 그 아래에 답니다. */}
+        <Route path="/learn/:categoryId/:track" element={<LearnPage />} />
         <Route path="/research" element={<ResearchPage />} />
         {/*
           자격증은 학습의 한 칸입니다. 따로 세우면 메뉴가 다섯이 되고, 정작 그

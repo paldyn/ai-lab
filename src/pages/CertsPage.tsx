@@ -85,7 +85,7 @@ export function CertsPage() {
 
       {/* 글 목록과 같은 레이아웃을 씁니다 — 자격증은 학습의 한 칸이지 다른 페이지가 아닙니다. */}
       <div className="site-wrap learn-layout">
-        <LearnRail active="certs" />
+        <LearnRail tab="all" active="certs" />
 
         <section className="learn-list">
           {/*

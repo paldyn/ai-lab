@@ -1,6 +1,7 @@
 import { ArrowUpRight } from 'lucide-react';
 import { Link } from 'react-router';
 import { LearnRail } from '../components/LearnRail';
+import { LearnTabs } from '../components/LearnTabs';
 import { PageHeader } from '../components/PageHeader';
 import { Seo } from '../components/Seo';
 import { pythonNoteCount, pythonSections } from '../data/mirror';
@@ -33,8 +34,10 @@ export function PythonTrackPage() {
         ]}
       />
 
+      <LearnTabs active="lang" />
+
       <div className="site-wrap learn-layout">
-        <LearnRail active="python" />
+        <LearnRail tab="lang" active="python" />
 
         <section className="learn-list">
           {/*

@@ -113,3 +113,78 @@ export function ungroupedLearnCategories(): CategoryId[] {
   const grouped = new Set(learnGroups.flatMap((group) => group.categoryIds));
   return categoryIdsIn('learn').filter((id) => !grouped.has(id));
 }
+
+/**
+ * 학습의 첫 갈래. 화면 맨 위 탭이 이것입니다.
+ *
+ * **갈래마다 두 번째 층이 다릅니다.** 그래서 레일 하나에 다 담지 않고 탭으로 가릅니다 —
+ * 수학은 난이도 트랙(초급·중급·고급)으로, 언어는 언어별로, AI는 원리·엔지니어링 아래
+ * 카테고리 일곱으로 갈립니다. 한 레일에 욱여넣으면 이 셋이 전부 「카테고리」 한 층으로
+ * 납작해집니다.
+ *
+ * **「전체」는 첫 탭으로 남깁니다.** 탭으로 가르면 다른 갈래의 칸이 안 보이므로, 지도
+ * 전체를 한눈에 보는 자리가 하나는 있어야 합니다.
+ */
+export type LearnTabId = 'all' | 'math' | 'lang' | 'ai';
+
+export interface LearnTab {
+  id: LearnTabId;
+  name: string;
+  /** 그 갈래를 통째로 보는 페이지의 머리말. 「전체」와 「AI」만 제 페이지를 갖습니다. */
+  description?: string;
+  /** 탭을 눌렀을 때 갈 곳. */
+  to: string;
+  /** 이 탭이 담는 카테고리. 「전체」와 「AI」는 목록의 범위이기도 합니다. */
+  categoryIds: CategoryId[];
+  /** 이 탭 안에서 레일이 세우는 묶음. */
+  groupIds: LearnGroupId[];
+}
+
+const AI_CATEGORIES: CategoryId[] = [
+  'ai-guide',
+  'deep-learning',
+  'llm-core',
+  'domain-models',
+  'agents-rag',
+  'build-with-ai',
+  'ml-ops',
+];
+
+export const learnTabs: LearnTab[] = [
+  {
+    id: 'all',
+    name: '전체',
+    to: '/learn',
+    categoryIds: categoryIdsIn('learn'),
+    groupIds: ['math', 'lang', 'ai-principles', 'ai-engineering'],
+  },
+  { id: 'math', name: '수학', to: '/learn/math-for-ai', categoryIds: ['math-for-ai'], groupIds: [] },
+  { id: 'lang', name: '언어', to: '/learn/python', categoryIds: [], groupIds: ['lang'] },
+  {
+    id: 'ai',
+    name: 'AI',
+    description:
+      '모델의 원리부터 그것으로 무엇을 만들고 어떻게 굴리는지까지. 수학과 언어를 뺀 학습 글 전부입니다.',
+    to: '/learn/ai',
+    categoryIds: AI_CATEGORIES,
+    groupIds: ['ai-principles', 'ai-engineering'],
+  },
+];
+
+export const learnTabById = Object.fromEntries(
+  learnTabs.map((tab) => [tab.id, tab]),
+) as Record<LearnTabId, LearnTab>;
+
+/**
+ * 지금 보고 있는 주소가 어느 탭인가.
+ *
+ * 인자는 `/learn/` 뒤의 첫 조각입니다 — 카테고리 id일 수도, 묶음 id일 수도,
+ * 옮겨 온 트랙(`python`)일 수도 있습니다.
+ */
+export function learnTabOf(routeId?: string): LearnTabId {
+  if (!routeId) return 'all';
+  if (routeId === 'math-for-ai') return 'math';
+  if (routeId === 'python') return 'lang';
+  if (routeId === 'ai' || routeId === 'ai-principles' || routeId === 'ai-engineering') return 'ai';
+  return AI_CATEGORIES.includes(routeId as CategoryId) ? 'ai' : 'all';
+}

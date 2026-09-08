@@ -442,6 +442,24 @@ const TRACKS = [
   { level: '고급', tier: 3, slugs: mathAdvanced },
 ] as const;
 
+/**
+ * 수학의 세 트랙. 학습 화면의 수학 탭이 두 번째 층으로 세웁니다.
+ *
+ * 트랙은 슬러그 접두사가 정합니다(`math-basics-` 초급 · `math-` 중급 · `math-adv-` 고급).
+ * 화면에서 쓰는 id는 주소에 들어가므로 영문으로 둡니다.
+ */
+export const mathTracks = [
+  { id: 'basics', level: '초급', name: '초급', slugs: mathFoundation },
+  { id: 'core', level: '중급', name: '중급', slugs: mathCurriculum },
+  { id: 'advanced', level: '고급', name: '고급', slugs: mathAdvanced },
+] as const;
+
+export type MathTrackId = (typeof mathTracks)[number]['id'];
+
+export function mathTrackById(id: string) {
+  return mathTracks.find((track) => track.id === id);
+}
+
 export interface TrackPlace {
   level: (typeof TRACKS)[number]['level'];
   /**

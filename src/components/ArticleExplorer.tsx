@@ -16,6 +16,11 @@ interface ArticleExplorerProps {
    * 순서는 아닙니다** — 방향은 `curriculumOrder()`가 정하고 지금은 그 역순입니다.
    */
   curriculum?: boolean;
+  /**
+   * 목록을 이 슬러그로만 좁힙니다. 카테고리 안을 다시 가르는 화면이 씁니다 —
+   * 수학 탭의 초급·중급·고급이 그것입니다.
+   */
+  slugs?: string[];
 }
 
 /** 한 번에 그리는 글 수. 수백 편이 한꺼번에 붙으면 프리렌더 HTML도 스크롤도 무거워집니다. */
@@ -26,14 +31,21 @@ export function ArticleExplorer({
   categoryIds,
   hideCategoryFilter = false,
   curriculum = false,
+  slugs,
 }: ArticleExplorerProps) {
   const [categoryId, setCategoryId] = useState<CategoryId | 'all'>(fixedCategoryId ?? 'all');
   const [tag, setTag] = useState<string>('all');
   const [visible, setVisible] = useState(PAGE_SIZE);
 
+  const allowed = useMemo(() => (slugs ? new Set(slugs) : null), [slugs]);
   const scopedArticles = useMemo(
-    () => articles.filter((article) => !categoryIds || categoryIds.includes(article.categoryId)),
-    [categoryIds],
+    () =>
+      articles.filter(
+        (article) =>
+          (!categoryIds || categoryIds.includes(article.categoryId)) &&
+          (!allowed || allowed.has(article.slug)),
+      ),
+    [categoryIds, allowed],
   );
   /*
     글이 한 편도 없는 칸은 칩을 세우지 않습니다. 눌러도 빈 목록만 나오는 버튼이라
