@@ -320,9 +320,11 @@ draft: false             # true면 목록·프리렌더에서 빠진다
 고쳐야 한다. 대신 **원본은 techblog 하나로 두고 마크다운을 옮겨 와 우리 화면으로 그린다.**
 
 - 옮길 것과 그 순서는 `src/data/pythonTrack.ts`가 정한다(지금 46편, 다섯 묶음).
-- **`src/content/mirror/`는 원고가 아니라 빌드 캐시다.** `npm run build`가 돌기 전에
-  `prebuild`가 `scripts/sync-techblog.mjs`를 돌려 받아 온다 — 옆에 `../tech-blog` 클론이
-  있으면 그쪽에서 읽고(`TECHBLOG_DIR`로 바꾼다), 없으면 GitHub raw에서 받는다.
+- **`src/content/mirror/`는 원고가 아니라 빌드 캐시다.** `npm run build`와 `npm test` 앞에서
+  `prebuild`·`pretest`가 `scripts/sync-techblog.mjs`를 돌려 받아 온다 — 옆에 `../tech-blog`
+  클론이 있으면 그쪽에서 읽고(`TECHBLOG_DIR`로 바꾼다), 없으면 GitHub raw에서 받는다.
+  **`pretest`가 없으면 배포가 선다** — CI는 새로 클론해서 폴더가 비어 있는데 `npm test`가
+  `npm run build`보다 먼저 돌기 때문이다(2026-09-08에 한 번 밟았다).
 - **받아 온 파일은 커밋하지 않는다**(`.gitignore`). 같은 글을 두 저장소에서 관리하지 않으려는
   것이 이 구조의 전부다. **여기 있는 파일을 고치지 마라** — 다음 빌드에 덮인다. 고치는 자리는
   언제나 techblog다.

@@ -21,7 +21,8 @@ describe('옮겨 온 글', () => {
   /*
     본문은 빌드 직전에 techblog에서 받아 옵니다(`scripts/sync-techblog.mjs`). 받아 온
     것이 없으면 목록이 통째로 빕니다 — 그 상태로 배포되지 않게 여기서 셉니다.
-    로컬에서 `npm run sync:techblog`를 한 번도 안 돌렸으면 이 검사가 섭니다.
+    `pretest`가 이 검사 앞에서 받아 오므로 보통은 그냥 통과합니다 — 그 훅을 지우면
+    CI에서 배포가 여기서 섭니다(테스트가 빌드보다 먼저 돌고, CI는 새로 클론한다).
   */
   it('목록에 적힌 글이 모두 받아져 있다', () => {
     const planned = pythonTrack.flatMap((section) => section.slugs);
