@@ -16,7 +16,7 @@ import { useSyncExternalStore } from 'react';
 const KEY = 'paldyn:read:v1';
 
 /** 글과 뉴스를 한 저장소에 두되 열쇠 앞에 갈래를 붙여 섞이지 않게 합니다. */
-export type ReadKind = 'article' | 'news';
+export type ReadKind = 'article' | 'news' | 'mirror';
 
 const keyOf = (kind: ReadKind, id: string) => `${kind}:${id}`;
 

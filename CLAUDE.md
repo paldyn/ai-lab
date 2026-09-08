@@ -320,11 +320,18 @@ draft: false             # true면 목록·프리렌더에서 빠진다
 고쳐야 한다. 대신 **원본은 techblog 하나로 두고 마크다운을 옮겨 와 우리 화면으로 그린다.**
 
 - 옮길 것과 그 순서는 `src/data/pythonTrack.ts`가 정한다(지금 46편, 다섯 묶음).
-- `npm run sync:techblog`가 `../tech-blog`에서 읽어 `src/content/mirror/<원본 슬러그>.md`에
-  쓴다. 원본 저장소 위치는 `TECHBLOG_DIR`로 바꾼다.
-- **옮긴 파일을 커밋한다.** 빌드 때 다른 저장소를 읽게 하면 CI에 그 저장소가 없을 때 조용히
-  빈 목록이 나간다. 파일로 두면 무엇이 실렸는지 diff로 보이고 빌드가 어디서든 같다.
+- **`src/content/mirror/`는 원고가 아니라 빌드 캐시다.** `npm run build`가 돌기 전에
+  `prebuild`가 `scripts/sync-techblog.mjs`를 돌려 받아 온다 — 옆에 `../tech-blog` 클론이
+  있으면 그쪽에서 읽고(`TECHBLOG_DIR`로 바꾼다), 없으면 GitHub raw에서 받는다.
+- **받아 온 파일은 커밋하지 않는다**(`.gitignore`). 같은 글을 두 저장소에서 관리하지 않으려는
+  것이 이 구조의 전부다. **여기 있는 파일을 고치지 마라** — 다음 빌드에 덮인다. 고치는 자리는
+  언제나 techblog다.
+- `src/data/mirror.test.ts`가 목록에 적힌 글이 다 받아졌는지 검사한다. 한 번도 안 받았으면
+  그 검사가 서므로, 클론을 새로 받았으면 `npm run sync:techblog`를 한 번 돌린다.
 - 주소는 `/learn/python/<슬러그>`이고 슬러그는 원본에서 `python-` 접두사를 뗀 것이다.
+  같은 자리가 묶음(`basics`·`data`…)도 받는다 — 겹치지 않는지는 `mirror.test.ts`가 지킨다.
+- **화면은 다른 갈래와 같다** — 왼쪽에 묶음 레일, 오른쪽에 글 줄(`MirrorCard`가 `.article-row`를
+  그대로 쓴다). 옮겨 온 글이라고 다른 모양으로 세우면 목록이 두 벌이 된다.
 - **`rel=canonical`은 원문을 가리키고 글 머리에 출처가 한 줄 붙는다.** 같은 글이 두 도메인에
   서는 것을 숨기지 않고 원본이 어느 쪽인지 밝히는 방식이다. 이 둘 없이 옮기지 않는다.
 - 본문 속 `/posts/…`·`/assets/…`는 옮길 때 techblog 절대 주소로 바뀐다 — 그 글의 집은 그쪽이다.

@@ -3,8 +3,14 @@ import { Link } from 'react-router';
 import type { CSSProperties } from 'react';
 import { articles, countByCategory } from '../data/articles';
 import { categoryById } from '../data/categories';
-import { learnGroupById, learnGroupPath, learnTabById, type LearnTabId } from '../data/learnGroups';
+import {
+  learnGroupById,
+  learnGroupPath,
+  learnTabById,
+  type LearnTabId,
+} from '../data/learnGroups';
 import { mathTracks } from '../data/curriculum';
+import { pythonSections } from '../data/mirror';
 
 /**
  * 학습의 두 번째 층. 갈래 안에서 더 좁힐 칸을 세웁니다.
@@ -16,7 +22,13 @@ import { mathTracks } from '../data/curriculum';
  * 일곱입니다. 전체와 언어처럼 **더 좁힐 칸이 없으면 레일을 아예 그리지 않고**
  * 목록이 화면 폭을 다 씁니다(`learnRailShown`).
  */
-export function LearnRail({ tab, active }: { tab: LearnTabId; active?: string }) {
+export function LearnRail({
+  tab,
+  active,
+}: {
+  tab: LearnTabId;
+  active?: string;
+}) {
   const counts = countByCategory();
   const railRef = useRef<HTMLElement>(null);
   const current = learnTabById[tab];
@@ -28,16 +40,23 @@ export function LearnRail({ tab, active }: { tab: LearnTabId; active?: string })
   useEffect(() => {
     const rail = railRef.current;
     if (!rail || rail.scrollWidth <= rail.clientWidth) return;
-    rail.querySelector('[aria-current]')?.scrollIntoView({ inline: 'center', block: 'nearest' });
+    rail
+      .querySelector("[aria-current]")
+      ?.scrollIntoView({ inline: 'center', block: 'nearest' });
   }, [active, tab]);
 
   if (!learnRailShown(tab)) return null;
 
   return (
     <nav className="learn-rail" aria-label="학습 분야" ref={railRef}>
-      <p className="learn-rail-label">{tab === 'math' ? '난이도' : '분야'}</p>
+      <p className="learn-rail-label">
+        {tab === 'math' ? '난이도' : tab === 'lang' ? '묶음' : '분야'}
+      </p>
 
-      {/* 수학은 난이도가 두 번째 층입니다 — 초급이 목록 맨 아래에 있어 찾기 어려웠습니다. */}
+      {/*
+        수학은 난이도, 언어는 묶음이 두 번째 층입니다. 둘 다 위에 묶음 머리가 없으므로
+        들여쓰지 않습니다 — 들여쓰기는 「위에 무엇이 있다」는 표시라 혼자 서면 어긋납니다.
+      */}
       {tab === 'math' &&
         mathTracks.map((track) => {
           const written = track.slugs.filter((slug) => hasArticle(slug)).length;
@@ -46,8 +65,12 @@ export function LearnRail({ tab, active }: { tab: LearnTabId; active?: string })
             <Link
               key={track.id}
               to={`/learn/math-for-ai/${track.id}`}
-              className={`learn-rail-item is-nested ${active === track.id ? 'is-active' : ''}`}
-              style={{ '--learn-accent': categoryById['math-for-ai'].accent } as CSSProperties}
+              className={`learn-rail-item ${active === track.id ? "is-active" : ""}`}
+              style={
+                {
+                  '--learn-accent': categoryById['math-for-ai'].accent,
+                } as CSSProperties
+              }
               aria-current={active === track.id ? 'page' : undefined}
             >
               <span>{track.name}</span>
@@ -55,6 +78,37 @@ export function LearnRail({ tab, active }: { tab: LearnTabId; active?: string })
             </Link>
           );
         })}
+
+      {tab === 'lang' && (
+        <>
+          <Link
+            to="/learn/python"
+            className={`learn-rail-item ${active === "python" ? "is-active" : ""}`}
+            style={{ "--learn-accent": 'var(--brand)' } as CSSProperties}
+            aria-current={active === "python" ? 'page' : undefined}
+          >
+            <span>파이썬 전체</span>
+            <b>
+              {pythonSections.reduce(
+                (sum, section) => sum + section.notes.length,
+                0,
+              )}
+            </b>
+          </Link>
+          {pythonSections.map((section) => (
+            <Link
+              key={section.id}
+              to={`/learn/python/${section.id}`}
+              className={`learn-rail-item ${active === section.id ? "is-active" : ""}`}
+              style={{ "--learn-accent": 'var(--brand)' } as CSSProperties}
+              aria-current={active === section.id ? 'page' : undefined}
+            >
+              <span>{section.title}</span>
+              <b>{section.notes.length}</b>
+            </Link>
+          ))}
+        </>
+      )}
 
       {current.groupIds.map((groupId) => {
         const group = learnGroupById[groupId];
@@ -71,7 +125,8 @@ export function LearnRail({ tab, active }: { tab: LearnTabId; active?: string })
           tracks.reduce((sum, track) => sum + track.count, 0);
         const isActive =
           active === group.id ||
-          (size === 1 && (active === inGroup[0]?.id || active === tracks[0]?.id));
+          (size === 1 &&
+            (active === inGroup[0]?.id || active === tracks[0]?.id));
         // 카테고리를 보고 있으면 그 카테고리가 든 묶음도 글자만 켭니다.
         const within =
           !isActive &&
@@ -82,7 +137,7 @@ export function LearnRail({ tab, active }: { tab: LearnTabId; active?: string })
           <div key={group.id} className="learn-rail-group-block">
             <Link
               to={learnGroupPath(group)}
-              className={`learn-rail-item learn-rail-group ${isActive ? 'is-active' : ''}${within ? ' is-within' : ''}`}
+              className={`learn-rail-item learn-rail-group ${isActive ? "is-active" : ""}${within ? " is-within" : ""}`}
               aria-current={isActive ? 'page' : undefined}
             >
               <span>{group.name}</span>
@@ -90,35 +145,38 @@ export function LearnRail({ tab, active }: { tab: LearnTabId; active?: string })
             </Link>
 
             {/* 칸이 하나면 묶음 줄이 곧 그 칸이라 아래를 다시 세우지 않습니다. */}
-            {size >= 2 &&
-              tracks.map((track) => (
-                <Link
-                  key={track.id}
-                  to={track.to}
-                  className={`learn-rail-item is-nested ${active === track.id ? 'is-active' : ''}`}
-                  aria-current={active === track.id ? 'page' : undefined}
-                >
-                  <span>{track.name}</span>
-                  <b>{track.count}</b>
-                </Link>
-              ))}
-            {size >= 2 &&
-              inGroup.map((category) => (
-                <Link
-                  key={category.id}
-                  to={`/learn/${category.id}`}
-                  className={`learn-rail-item is-nested ${active === category.id ? 'is-active' : ''}`}
-                  style={{ '--learn-accent': category.accent } as CSSProperties}
-                  aria-current={active === category.id ? 'page' : undefined}
-                >
-                  <span>{category.name}</span>
-                  <b>{counts[category.id] ?? 0}</b>
-                </Link>
-              ))}
+            {size >= 2 && (
+              <div className="learn-rail-nested">
+                {tracks.map((track) => (
+                  <Link
+                    key={track.id}
+                    to={track.to}
+                    className={`learn-rail-item is-nested ${active === track.id ? "is-active" : ""}`}
+                    aria-current={active === track.id ? 'page' : undefined}
+                  >
+                    <span>{track.name}</span>
+                    <b>{track.count}</b>
+                  </Link>
+                ))}
+                {inGroup.map((category) => (
+                  <Link
+                    key={category.id}
+                    to={`/learn/${category.id}`}
+                    className={`learn-rail-item is-nested ${active === category.id ? "is-active" : ""}`}
+                    style={
+                      { '--learn-accent': category.accent } as CSSProperties
+                    }
+                    aria-current={active === category.id ? 'page' : undefined}
+                  >
+                    <span>{category.name}</span>
+                    <b>{counts[category.id] ?? 0}</b>
+                  </Link>
+                ))}
+              </div>
+            )}
           </div>
         );
       })}
-
     </nav>
   );
 }
@@ -139,7 +197,11 @@ export function learnRailShown(tab: LearnTabId): boolean {
     칩을 누릅니다. 카테고리로 바로 가는 길은 AI 칩 한 번 뒤에 그대로 있습니다.
   */
   if (tab === 'all') return false;
-  if (tab === 'math') return mathTracks.filter((track) => track.slugs.some(hasArticle)).length >= 2;
+  if (tab === 'lang') return pythonSections.length >= 2;
+  if (tab === 'math')
+    return (
+      mathTracks.filter((track) => track.slugs.some(hasArticle)).length >= 2
+    );
   const current = learnTabById[tab];
   const rows = current.groupIds
     .map((id) => learnGroupById[id])

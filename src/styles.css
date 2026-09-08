@@ -3140,29 +3140,35 @@ input:focus-visible {
   자격증은 갈래가 아니라 다른 곳으로 가는 길이라 줄의 오른쪽 끝에 따로 섭니다.
   `margin-left: auto`로 밀어 두면 칩이 몇 개가 되든 끝에 붙습니다.
 */
+/*
+  **가만히 있어도 색이 붙습니다.** 흐린 테두리로 두었더니 갈래 칩 넷 옆에서 여섯
+  번째 회색 알약으로 묻혔습니다 — 이 자리는 「글 목록 말고 다른 것」으로 가는
+  유일한 길이라 눈에 걸려야 합니다.
+*/
 .section-tabs-aside {
   display: inline-flex;
   align-items: center;
   gap: 6px;
   margin-left: auto;
-  border: 1px solid var(--border);
+  border: 1px solid color-mix(in srgb, var(--brand) 42%, transparent);
   border-radius: 999px;
   padding: 7px 12px;
-  color: var(--text-dim);
+  background: color-mix(in srgb, var(--brand) 9%, transparent);
+  color: var(--brand-text);
   font-size: 11px;
   line-height: 1;
   white-space: nowrap;
-  transition: border-color 140ms ease, color 140ms ease;
+  transition: border-color 140ms ease, background-color 140ms ease;
 }
 
 .section-tabs-aside:hover,
 .section-tabs-aside.is-active {
   border-color: var(--brand);
-  color: var(--brand-text);
+  background: color-mix(in srgb, var(--brand) 18%, transparent);
 }
 
 .section-tabs-aside b {
-  color: var(--text-muted);
+  color: color-mix(in srgb, var(--brand-text) 75%, transparent);
   font-family: 'JetBrains Mono', ui-monospace, monospace;
   font-size: 10px;
   font-weight: 400;
@@ -3593,25 +3599,67 @@ input:focus-visible {
 }
 
 /*
-  묶음 줄. 카테고리 줄과 같은 자리에 서되 글자만 굵습니다. 색 띠(--learn-accent)는
-  주지 않습니다 — 묶음은 카테고리 색이 여럿이라 대표 색이 없습니다.
+  묶음 줄. **카테고리 줄과 다른 글씨로 세웁니다.**
+
+  처음에는 들여쓰기만으로 위아래를 갈랐는데 눈에 안 들어왔습니다 — 같은 크기·같은
+  색의 줄이 열한 개 늘어서고 그중 둘만 12px 왼쪽에 있는 꼴이라, 위계가 아니라 정렬이
+  어긋난 것처럼 보였습니다. 지금은 묶음이 작은 모노 라벨이고 카테고리가 본문 글씨라
+  글씨체만으로 층이 갈립니다.
+
+  색 띠(--learn-accent)는 주지 않습니다 — 묶음은 카테고리 색이 여럿이라 대표 색이 없습니다.
 */
 .learn-rail-group {
-  font-weight: 500;
+  margin-top: 4px;
+  padding-bottom: 5px;
+  color: var(--text-muted);
+  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  font-size: 10px;
+  letter-spacing: 0.12em;
 }
 
-/* 지금 보는 카테고리가 든 묶음. 배경 없이 글자만 켜서 「이 갈래 안에 있다」만 말합니다. */
+.learn-rail-group::before {
+  display: none;
+}
+
+.learn-rail-group:hover {
+  background: none;
+  color: var(--text);
+}
+
+.learn-rail-group.is-active {
+  background: none;
+  color: var(--brand-text);
+  font-weight: 400;
+}
+
+/* 지금 보는 카테고리가 든 묶음. 글자만 켜서 「이 갈래 안에 있다」만 말합니다. */
 .learn-rail-group.is-within {
-  color: var(--text-strong);
+  color: var(--brand-text);
 }
 
-/* 묶음 아래 카테고리. 들여쓰기는 안쪽 여백으로 줍니다 — margin이면 왼쪽 표시가 함께 밀립니다. */
+.learn-rail-group b {
+  font-size: 10px;
+}
+
+/*
+  묶음에 달린 카테고리들. 왼쪽에 실선을 하나 세워 「이 줄들은 위 라벨에 매달려 있다」를
+  보입니다 — 들여쓰기만으로는 안 읽혔습니다.
+*/
+.learn-rail-nested {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  margin-left: 5px;
+  border-left: 1px solid var(--border);
+  padding-left: 4px;
+}
+
 .learn-rail-item.is-nested {
-  padding-left: 26px;
+  padding-left: 12px;
 }
 
-.learn-rail-item.is-nested.is-active::before {
-  left: -17px;
+.learn-rail-item.is-nested::before {
+  left: 0;
 }
 
 .learn-rail-label {
@@ -3702,6 +3750,22 @@ input:focus-visible {
     flex-direction: row;
     align-items: center;
     gap: 6px;
+  }
+
+  .learn-rail-nested {
+    display: flex;
+    flex-direction: row;
+    gap: 6px;
+    margin-left: 0;
+    border-left: 0;
+    padding-left: 0;
+  }
+
+  /* 가로로 누우면 묶음 라벨도 알약 사이에 서므로 세로 여백을 지웁니다. */
+  .learn-rail-group {
+    margin-top: 0;
+    padding-bottom: 0;
+    border: 0;
   }
 
   .learn-rail-group-block + .learn-rail-group-block {

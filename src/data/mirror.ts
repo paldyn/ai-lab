@@ -47,6 +47,10 @@ export const pythonNotes: MirrorNote[] = pythonSections.flatMap((section) => sec
 
 export const pythonNoteCount = pythonNotes.length;
 
+export function pythonSectionById(id: string): MirrorSection | undefined {
+  return pythonSections.find((section) => section.id === id);
+}
+
 export function pythonNoteBySlug(slug: string): MirrorNote | undefined {
   return pythonNotes.find((note) => note.slug === slug);
 }

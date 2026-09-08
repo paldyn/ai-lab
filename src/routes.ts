@@ -4,7 +4,7 @@ import { certPrepNotes } from './data/certPrep';
 import { categoryIdsIn } from './data/categories';
 import { learnGroupsWithPage } from './data/learnGroups';
 import { mathTracks } from './data/curriculum';
-import { pythonNotes } from './data/mirror';
+import { pythonNotes, pythonSections } from './data/mirror';
 import { newsViewIds } from './data/news';
 
 /** 정적으로 존재하는 페이지. 리다이렉트 전용 경로는 포함하지 않습니다. */
@@ -32,6 +32,7 @@ export const staticRoutes: string[] = [
     .map((track) => `/learn/math-for-ai/${track.id}`),
   ...categoryIdsIn('learn').map((id) => `/learn/${id}`),
   '/learn/python',
+  ...pythonSections.map((section) => `/learn/python/${section.id}`),
   '/learn/certs',
   ...certs.map((cert) => `/learn/certs/${cert.id}`),
   '/research',

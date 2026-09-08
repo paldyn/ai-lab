@@ -8,3 +8,7 @@ dist-ssr
 .env.*
 !.env.example
 .claude
+
+# techblog에서 빌드 직전에 받아 오는 캐시입니다. 원고가 아니라 산출물이라 커밋하지 않습니다 —
+# 고치는 자리는 언제나 techblog 쪽이고, 여기 파일은 다음 빌드에 덮입니다.
+src/content/mirror/

@@ -9,6 +9,7 @@ import { pythonNeighbors, pythonNoteBySlug, pythonSectionOf, type MirrorNote } f
 import { useActiveHeading } from '../lib/activeHeading';
 import { watchImageZoom, type ZoomedImage } from '../lib/imageZoom';
 import { initialMirrorBody, loadMirrorBody } from '../lib/mirrorBody';
+import { markRead } from '../lib/readLog';
 import { watchSelectionRibbon } from '../lib/selectionRibbon';
 import type { ArticleBody } from '../types/article';
 
@@ -37,6 +38,11 @@ function PythonNoteView({ note }: { note: MirrorNote }) {
       cancelled = true;
     };
   }, [note.sourceSlug]);
+
+  /* 연 순간 읽은 것으로 칩니다 — 글 화면과 같은 규칙입니다(ArticlePage). */
+  useEffect(() => {
+    markRead('mirror', note.slug);
+  }, [note.slug]);
 
   useEffect(() => {
     if (!proseRef.current) return undefined;
@@ -166,7 +172,7 @@ function PythonNoteView({ note }: { note: MirrorNote }) {
 }
 
 export function PythonNotePage() {
-  const { slug } = useParams<{ slug: string }>();
+  const { section: slug } = useParams<{ section: string }>();
   const note = slug ? pythonNoteBySlug(slug) : undefined;
 
   if (!note) return <Navigate to="/learn/python" replace />;
