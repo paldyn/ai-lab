@@ -733,10 +733,15 @@ AI·데이터 자격증 열넷을 `/learn/certs`에 세운다. **글이 아니�
 ```bash
 npm test          # frontmatter, 내부 링크, 에셋 존재, 색 대비
 npm run lint
+npm run typecheck # tsc -b
 npm run build     # 타입 검사 + 번들 + 프리렌더까지
 ```
 
 `npm test`가 통과하면 링크 깨짐과 없는 이미지 참조는 없다고 봐도 된다.
+
+**타입 검사는 `npm run typecheck`(`tsc -b`)로 한다 — `npx tsc --noEmit`은 아무것도
+검사하지 않는다.** 루트 `tsconfig.json`이 `"files": []`에 프로젝트 참조만 들고 있어
+그 명령은 조용히 통과한다. 2026-09-09에 없는 변수를 쓴 파일이 `--noEmit`을 통과했다.
 
 ## 색
 
