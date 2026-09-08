@@ -10,7 +10,8 @@
     "typecheck": "tsc -b",
     "lint": "eslint .",
     "test": "vitest run",
-    "og-image": "node scripts/og-image.mjs"
+    "og-image": "node scripts/og-image.mjs",
+    "sync:techblog": "node scripts/sync-techblog.mjs"
   },
   "dependencies": {
     "fast-glob": "^3.3.3",

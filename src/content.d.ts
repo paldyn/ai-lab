@@ -34,6 +34,21 @@ declare module 'virtual:cert-prep-index' {
   export const certPrepIndex: CertPrepEntry[];
 }
 
+declare module 'virtual:mirror-index' {
+  export interface MirrorEntry {
+    slug: string;
+    sourceSlug: string;
+    title: string;
+    summary: string;
+    sourceUrl: string;
+    publishedAt: string;
+    syncedAt: string;
+    readTime: number;
+  }
+
+  export const mirrorIndex: MirrorEntry[];
+}
+
 declare module '*.md' {
   export interface MarkdownHeading {
     depth: number;

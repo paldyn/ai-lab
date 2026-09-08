@@ -4,7 +4,7 @@ import { GraduationCap } from 'lucide-react';
 import type { CSSProperties } from 'react';
 import { countByCategory } from '../data/articles';
 import { categoryIdsIn } from '../data/categories';
-import { categoriesInGroup, learnGroupPath, learnGroups } from '../data/learnGroups';
+import { categoriesInGroup, learnGroupPath, learnGroups, learnGroupSize } from '../data/learnGroups';
 import { certs } from '../data/certs';
 
 const learnCategoryIds = categoryIdsIn('learn');
@@ -55,11 +55,20 @@ export function LearnRail({ active }: { active?: string }) {
 
       {learnGroups.map((group) => {
         const inGroup = categoriesInGroup(group);
-        const groupTotal = group.categoryIds.reduce((sum, id) => sum + (counts[id] ?? 0), 0);
-        const isActive = active === group.id || (inGroup.length === 1 && active === inGroup[0].id);
+        const tracks = group.tracks ?? [];
+        const size = learnGroupSize(group);
+        const groupTotal =
+          group.categoryIds.reduce((sum, id) => sum + (counts[id] ?? 0), 0) +
+          tracks.reduce((sum, track) => sum + track.count, 0);
+        const isActive =
+          active === group.id ||
+          (size === 1 && (active === inGroup[0]?.id || active === tracks[0]?.id));
         // 카테고리를 보고 있으면 그 카테고리가 든 묶음도 글자만 켭니다 — 지금 어느 갈래
         // 안에 있는지가 남습니다.
-        const within = !isActive && inGroup.some((category) => category.id === active);
+        const within =
+          !isActive &&
+          (inGroup.some((category) => category.id === active) ||
+            tracks.some((track) => track.id === active));
 
         return (
           <div key={group.id} className="learn-rail-group-block">
@@ -72,8 +81,20 @@ export function LearnRail({ active }: { active?: string }) {
               <b>{groupTotal}</b>
             </Link>
 
-            {/* 카테고리가 하나면 묶음 줄이 곧 그 카테고리라 아래를 다시 세우지 않습니다. */}
-            {inGroup.length >= 2 &&
+            {/* 칸이 하나면 묶음 줄이 곧 그 칸이라 아래를 다시 세우지 않습니다. */}
+            {size >= 2 &&
+              tracks.map((track) => (
+                <Link
+                  key={track.id}
+                  to={track.to}
+                  className={`learn-rail-item is-nested ${active === track.id ? 'is-active' : ''}`}
+                  aria-current={active === track.id ? 'page' : undefined}
+                >
+                  <span>{track.name}</span>
+                  <b>{track.count}</b>
+                </Link>
+              ))}
+            {size >= 2 &&
               inGroup.map((category) => (
                 <Link
                   key={category.id}

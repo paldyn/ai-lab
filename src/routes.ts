@@ -3,6 +3,7 @@ import { certs } from './data/certs';
 import { certPrepNotes } from './data/certPrep';
 import { categoryIdsIn } from './data/categories';
 import { learnGroupsWithPage } from './data/learnGroups';
+import { pythonNotes } from './data/mirror';
 import { newsViewIds } from './data/news';
 
 /** 정적으로 존재하는 페이지. 리다이렉트 전용 경로는 포함하지 않습니다. */
@@ -23,6 +24,7 @@ export const staticRoutes: string[] = [
   */
   ...learnGroupsWithPage.map((group) => `/learn/${group.id}`),
   ...categoryIdsIn('learn').map((id) => `/learn/${id}`),
+  '/learn/python',
   '/learn/certs',
   ...certs.map((cert) => `/learn/certs/${cert.id}`),
   '/research',
@@ -35,6 +37,8 @@ export const prerenderRoutes: string[] = [
   ...articles.map((article) => `/articles/${article.slug}`),
   // 자격증 대비 글. 시험 이름으로 검색해 들어오는 자리라 HTML이 먼저 있어야 합니다.
   ...certPrepNotes.map((note) => note.path),
+  // 옮겨 온 글. 원문이 techblog에 있어도 이 주소로 들어오는 사람이 있으므로 HTML을 미리 냅니다.
+  ...pythonNotes.map((note) => note.path),
 ];
 
 /** sitemap.xml에 넣을 경로. 404는 색인 대상이 아니므로 제외합니다. */
@@ -42,4 +46,9 @@ export const sitemapRoutes: Array<{ path: string; lastModified?: string }> = [
   ...staticRoutes.map((path) => ({ path })),
   ...articles.map((article) => ({ path: `/articles/${article.slug}`, lastModified: article.publishedAt })),
   ...certPrepNotes.map((note) => ({ path: note.path, lastModified: note.updatedAt })),
+  /*
+    옮겨 온 글도 사이트맵에 담습니다. canonical이 원문을 가리키므로 색인은 techblog
+    쪽으로 모이고, 우리 주소는 「여기에도 있다」는 것만 알립니다.
+  */
+  ...pythonNotes.map((note) => ({ path: note.path, lastModified: note.syncedAt })),
 ];

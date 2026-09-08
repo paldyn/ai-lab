@@ -1,5 +1,6 @@
 import type { CategoryId } from '../types/article';
 import { categoryById, categoryIdsIn } from './categories';
+import { pythonNoteCount } from './mirror';
 
 /**
  * 학습 카테고리 위에 얹는 묶음.
@@ -15,7 +16,20 @@ import { categoryById, categoryIdsIn } from './categories';
  *
  * 배열 순서가 곧 레일 순서이고, `categoryIds` 안의 순서가 묶음 안의 순서입니다.
  */
-export type LearnGroupId = 'math' | 'ai-principles' | 'ai-engineering';
+export type LearnGroupId = 'math' | 'lang' | 'ai-principles' | 'ai-engineering';
+
+/**
+ * 카테고리가 아닌 칸.
+ *
+ * 옮겨 온 글(`src/content/mirror`)이 여기 섭니다 — 우리가 쓴 글이 아니라서 카테고리를
+ * 주지 않습니다. 편수도 학습 전체(466편)에 안 더합니다.
+ */
+export interface LearnTrack {
+  id: string;
+  name: string;
+  to: string;
+  count: number;
+}
 
 export interface LearnGroup {
   id: LearnGroupId;
@@ -23,6 +37,7 @@ export interface LearnGroup {
   /** 묶음 페이지의 머리말이자 검색 결과 설명. 카테고리 설명과 겹치지 않게 씁니다. */
   description: string;
   categoryIds: CategoryId[];
+  tracks?: LearnTrack[];
 }
 
 export const learnGroups: LearnGroup[] = [
@@ -32,6 +47,14 @@ export const learnGroups: LearnGroup[] = [
     description:
       '어텐션 한 줄에서 시작해 벡터·행렬·확률·미분을 필요한 자리에서 꺼내 씁니다. 초급부터 순서가 있는 하나의 과정입니다.',
     categoryIds: ['math-for-ai'],
+  },
+  {
+    id: 'lang',
+    name: '언어',
+    description:
+      'AI 코드를 읽고 고치는 데 필요한 프로그래밍 언어입니다. 파이썬은 PALDYN Tech Blog가 265편으로 다루고 있어 그중 필요한 것만 골라 순서를 매겨 싣습니다.',
+    categoryIds: [],
+    tracks: [{ id: 'python', name: '파이썬', to: '/learn/python', count: pythonNoteCount }],
   },
   {
     id: 'ai-principles',
@@ -66,9 +89,16 @@ export function learnGroupOf(categoryId: CategoryId): LearnGroup | undefined {
  */
 export const learnGroupsWithPage = learnGroups.filter((group) => group.categoryIds.length >= 2);
 
-/** 묶음 줄을 눌렀을 때 갈 곳. 카테고리가 하나면 그 카테고리로 바로 보냅니다. */
+/** 묶음 줄을 눌렀을 때 갈 곳. 칸이 하나뿐이면 그 칸으로 바로 보냅니다. */
 export function learnGroupPath(group: LearnGroup): string {
-  return group.categoryIds.length >= 2 ? `/learn/${group.id}` : `/learn/${group.categoryIds[0]}`;
+  if (group.categoryIds.length >= 2) return `/learn/${group.id}`;
+  if (group.categoryIds.length === 1) return `/learn/${group.categoryIds[0]}`;
+  return group.tracks?.[0]?.to ?? '/learn';
+}
+
+/** 묶음이 들고 있는 칸의 수. 카테고리와 트랙을 함께 셉니다. */
+export function learnGroupSize(group: LearnGroup): number {
+  return group.categoryIds.length + (group.tracks?.length ?? 0);
 }
 
 /** 묶음 이름은 카테고리 이름과 갈려야 합니다 — 레일 밖(검색 결과·공유 링크)에서는 나란히 안 섭니다. */

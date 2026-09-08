@@ -4,6 +4,8 @@ import { ArticlePage } from './pages/ArticlePage';
 import { CertPage } from './pages/CertPage';
 import { CertPrepPage } from './pages/CertPrepPage';
 import { CertsPage } from './pages/CertsPage';
+import { PythonNotePage } from './pages/PythonNotePage';
+import { PythonTrackPage } from './pages/PythonTrackPage';
 import { LearnPage } from './pages/LearnPage';
 import { HomePage } from './pages/HomePage';
 import { NewsPage } from './pages/NewsPage';
@@ -38,6 +40,8 @@ export default function App() {
           자격증은 학습의 한 칸입니다. 따로 세우면 메뉴가 다섯이 되고, 정작 그
           페이지가 하는 일은 「우리 글 어디부터 읽으면 되는가」라 학습과 같습니다.
         */}
+        <Route path="/learn/python" element={<PythonTrackPage />} />
+        <Route path="/learn/python/:slug" element={<PythonNotePage />} />
         <Route path="/learn/certs" element={<CertsPage />} />
         <Route path="/learn/certs/:certId" element={<CertPage />} />
         <Route path="/learn/certs/:certId/:slug" element={<CertPrepPage />} />
