@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="392" viewBox="0 0 880 392">
+  <rect x="0" y="0" width="880" height="392" rx="12" fill="#0a0a0a"/>
+
+  <text x="440" y="46" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="22" font-weight="700" fill="#e8e8e8">중심까지의 거리가 만나는 횟수를 정한다</text>
+  <text x="440" y="74" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">d 는 중심에서 직선까지의 거리, r 은 반지름</text>
+
+  <!-- 왼쪽: d < r -->
+  <circle cx="180" cy="200" r="70" fill="none" stroke="#7ec8e3" stroke-width="2.5"/>
+  <line x1="90" y1="240" x2="270" y2="240" stroke="#e8e8e8" stroke-width="2"/>
+  <line x1="180" y1="200" x2="250" y2="200" stroke="#7777cc" stroke-width="2"/>
+  <line x1="180" y1="200" x2="180" y2="240" stroke="#55c555" stroke-width="2" stroke-dasharray="4,4"/>
+  <circle cx="180" cy="200" r="5" fill="#e8e8e8"/>
+  <circle cx="122.6" cy="240" r="5" fill="#55c555"/>
+  <circle cx="237.4" cy="240" r="5" fill="#55c555"/>
+  <text x="163" y="226" text-anchor="end" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="15" font-weight="600" fill="#55c555">d</text>
+  <text x="215" y="190" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="15" font-weight="600" fill="#7777cc">r</text>
+  <text x="180" y="336" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="17" font-weight="700" fill="#e8e8e8">d &lt; r</text>
+  <text x="180" y="362" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="14" fill="#888">두 점에서 만난다</text>
+
+  <!-- 가운데: d = r -->
+  <circle cx="440" cy="200" r="70" fill="none" stroke="#7ec8e3" stroke-width="2.5"/>
+  <line x1="350" y1="270" x2="530" y2="270" stroke="#e8e8e8" stroke-width="2"/>
+  <line x1="440" y1="200" x2="510" y2="200" stroke="#7777cc" stroke-width="2"/>
+  <line x1="440" y1="200" x2="440" y2="270" stroke="#55c555" stroke-width="2" stroke-dasharray="4,4"/>
+  <circle cx="440" cy="200" r="5" fill="#e8e8e8"/>
+  <circle cx="440" cy="270" r="5" fill="#55c555"/>
+  <text x="423" y="241" text-anchor="end" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="15" font-weight="600" fill="#55c555">d</text>
+  <text x="475" y="190" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="15" font-weight="600" fill="#7777cc">r</text>
+  <text x="440" y="336" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="17" font-weight="700" fill="#e8e8e8">d = r</text>
+  <text x="440" y="362" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="14" fill="#888">한 점에서 접한다</text>
+
+  <!-- 오른쪽: d > r -->
+  <circle cx="700" cy="200" r="70" fill="none" stroke="#7ec8e3" stroke-width="2.5"/>
+  <line x1="610" y1="300" x2="790" y2="300" stroke="#e8e8e8" stroke-width="2"/>
+  <line x1="700" y1="200" x2="770" y2="200" stroke="#7777cc" stroke-width="2"/>
+  <line x1="700" y1="200" x2="700" y2="300" stroke="#55c555" stroke-width="2" stroke-dasharray="4,4"/>
+  <circle cx="700" cy="200" r="5" fill="#e8e8e8"/>
+  <text x="683" y="256" text-anchor="end" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="15" font-weight="600" fill="#55c555">d</text>
+  <text x="735" y="190" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="15" font-weight="600" fill="#7777cc">r</text>
+  <text x="700" y="336" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="17" font-weight="700" fill="#e8e8e8">d &gt; r</text>
+  <text x="700" y="362" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="14" fill="#888">만나지 않는다</text>
+</svg>

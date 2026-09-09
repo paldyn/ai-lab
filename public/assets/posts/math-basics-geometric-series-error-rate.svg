@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="434" viewBox="0 0 880 434">
+  <rect x="0" y="0" width="880" height="434" rx="12" fill="#0a0a0a"/>
+
+  <text x="440" y="46" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="22" font-weight="700" fill="#e8e8e8">여덟 항과 예순여섯 항</text>
+  <text x="440" y="74" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">세로 눈금은 한 칸에 열 배씩 벌어진다</text>
+
+  <!-- 축 -->
+  <line x1="130" y1="118" x2="130" y2="382" stroke="#888" stroke-width="1.5"/>
+  <line x1="122" y1="370" x2="800" y2="370" stroke="#888" stroke-width="1.5"/>
+  <text x="440" y="422" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">n — 더한 항의 수</text>
+  <text x="130" y="110" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">오차</text>
+
+  <!-- 세로 눈금 -->
+  <line x1="124" y1="130" x2="136" y2="130" stroke="#444" stroke-width="1.5"/>
+  <line x1="124" y1="190" x2="136" y2="190" stroke="#444" stroke-width="1.5"/>
+  <line x1="124" y1="250" x2="136" y2="250" stroke="#444" stroke-width="1.5"/>
+  <line x1="124" y1="310" x2="136" y2="310" stroke="#444" stroke-width="1.5"/>
+  <text x="116" y="135" text-anchor="end" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">10</text>
+  <text x="116" y="195" text-anchor="end" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">1</text>
+  <text x="116" y="255" text-anchor="end" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">0.1</text>
+  <text x="116" y="315" text-anchor="end" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">0.01</text>
+  <text x="116" y="375" text-anchor="end" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">0.001</text>
+
+  <!-- 가로 눈금 -->
+  <line x1="228.6" y1="364" x2="228.6" y2="376" stroke="#444" stroke-width="1.5"/>
+  <line x1="317.1" y1="364" x2="317.1" y2="376" stroke="#444" stroke-width="1.5"/>
+  <line x1="405.7" y1="364" x2="405.7" y2="376" stroke="#444" stroke-width="1.5"/>
+  <line x1="494.3" y1="364" x2="494.3" y2="376" stroke="#444" stroke-width="1.5"/>
+  <line x1="582.9" y1="364" x2="582.9" y2="376" stroke="#444" stroke-width="1.5"/>
+  <line x1="671.4" y1="364" x2="671.4" y2="376" stroke="#444" stroke-width="1.5"/>
+  <line x1="760" y1="364" x2="760" y2="376" stroke="#444" stroke-width="1.5"/>
+  <text x="140" y="394" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">0</text>
+  <text x="228.6" y="394" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">10</text>
+  <text x="317.1" y="394" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">20</text>
+  <text x="405.7" y="394" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">30</text>
+  <text x="494.3" y="394" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">40</text>
+  <text x="582.9" y="394" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">50</text>
+  <text x="671.4" y="394" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">60</text>
+  <text x="760" y="394" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">70</text>
+
+  <!-- 오차 0.01 기준선 -->
+  <line x1="130" y1="310" x2="790" y2="310" stroke="#888" stroke-width="1.5" stroke-dasharray="5,3"/>
+  <text x="430" y="302" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">오차 0.01</text>
+
+  <!-- 공비 0.9 -->
+  <line x1="140" y1="130" x2="760" y2="322.4" stroke="#e05555" stroke-width="2.5"/>
+  <circle cx="724.5" cy="310" r="5" fill="#e05555"/>
+  <text x="724.5" y="336" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="14" font-weight="600" fill="#e05555">66항</text>
+
+  <!-- 공비 1/2 -->
+  <line x1="140" y1="171.9" x2="237.2" y2="370" stroke="#7ec8e3" stroke-width="2.5"/>
+  <circle cx="207.7" cy="310" r="5" fill="#7ec8e3"/>
+  <text x="196" y="338" text-anchor="end" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="14" font-weight="600" fill="#7ec8e3">8항</text>
+
+  <!-- 범례 -->
+  <line x1="556" y1="146" x2="586" y2="146" stroke="#7ec8e3" stroke-width="2.5"/>
+  <text x="596" y="151" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="14" fill="#e8e8e8">공비 1/2</text>
+  <line x1="556" y1="176" x2="586" y2="176" stroke="#e05555" stroke-width="2.5"/>
+  <text x="596" y="181" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="14" fill="#e8e8e8">공비 0.9</text>
+</svg>
