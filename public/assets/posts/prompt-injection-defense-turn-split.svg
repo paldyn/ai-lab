@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 420" width="880" height="420">
+  <defs>
+    <marker id="pidBad" viewBox="0 0 14 14" refX="12" refY="7"
+            markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#e05555"/>
+    </marker>
+    <marker id="pidGood" viewBox="0 0 14 14" refX="12" refY="7"
+            markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#55c555"/>
+    </marker>
+  </defs>
+
+  <rect width="880" height="420" fill="#0a0a0a" rx="12"/>
+
+  <text x="440" y="44" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="22" font-weight="700" fill="#e8e8e8">읽기 도구와 전송 도구를 같은 턴에 두지 않기</text>
+  <text x="440" y="68" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#888">인젝션이 실행으로 이어지는 자리는 이 두 도구가 만나는 턴이다</text>
+
+  <!-- Bad: single turn -->
+  <rect x="60" y="94" width="760" height="120" rx="8" fill="#1a0a0a" stroke="#e05555" stroke-width="2"/>
+  <text x="84" y="120" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="600" fill="#e05555">한 턴에 fetch_url + send_email</text>
+
+  <rect x="90" y="134" width="180" height="60" rx="6" fill="#111111" stroke="#e05555" stroke-width="1"/>
+  <text x="106" y="158" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="600" fill="#e8e8e8">① 웹페이지 읽기</text>
+  <text x="106" y="178" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="12" fill="#888">숨은 지시가 함께 온다</text>
+
+  <line x1="270" y1="164" x2="350" y2="164" stroke="#e05555" stroke-width="2" marker-end="url(#pidBad)"/>
+
+  <rect x="350" y="134" width="180" height="60" rx="6" fill="#111111" stroke="#e05555" stroke-width="1"/>
+  <text x="366" y="158" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="600" fill="#e8e8e8">② 지시로 읽힌다</text>
+  <text x="366" y="178" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="12" fill="#888">「여기로 보내라」</text>
+
+  <line x1="530" y1="164" x2="610" y2="164" stroke="#e05555" stroke-width="2" marker-end="url(#pidBad)"/>
+
+  <rect x="610" y="134" width="180" height="60" rx="6" fill="#111111" stroke="#e05555" stroke-width="1"/>
+  <text x="626" y="158" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="600" fill="#e8e8e8">③ 전송 실행</text>
+  <text x="626" y="178" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="12" fill="#888">끼어들 자리가 없다</text>
+
+  <!-- Good: split turns -->
+  <rect x="60" y="244" width="760" height="120" rx="8" fill="#0a1a0a" stroke="#55c555" stroke-width="2"/>
+  <text x="84" y="270" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="600" fill="#55c555">턴을 나누고 사이에 판단을 둔다</text>
+
+  <rect x="90" y="284" width="200" height="60" rx="6" fill="#111111" stroke="#55c555" stroke-width="1"/>
+  <text x="106" y="308" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="600" fill="#e8e8e8">읽기 턴</text>
+  <text x="106" y="328" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="12" fill="#888">읽기 도구만 등록</text>
+
+  <line x1="290" y1="314" x2="350" y2="314" stroke="#55c555" stroke-width="2" marker-end="url(#pidGood)"/>
+
+  <rect x="350" y="284" width="180" height="60" rx="6" fill="#111111" stroke="#55c555" stroke-width="1"/>
+  <text x="366" y="308" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="600" fill="#e8e8e8">애플리케이션 판단</text>
+  <text x="366" y="328" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="12" fill="#888">다음 동작은 코드가</text>
+
+  <line x1="530" y1="314" x2="590" y2="314" stroke="#55c555" stroke-width="2" marker-end="url(#pidGood)"/>
+
+  <rect x="590" y="284" width="200" height="60" rx="6" fill="#111111" stroke="#55c555" stroke-width="1"/>
+  <text x="606" y="308" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="600" fill="#e8e8e8">전송 턴</text>
+  <text x="606" y="328" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="12" fill="#888">인자를 보이고 확인</text>
+
+  <text x="440" y="396" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="12" fill="#888">인젝션을 0으로 만들 수는 없지만, 성공했을 때 거쳐야 하는 단계는 코드로 늘릴 수 있다</text>
+</svg>

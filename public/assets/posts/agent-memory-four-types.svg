@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 470" width="880" height="470">
+  <defs>
+    <marker id="amtArr" viewBox="0 0 14 14" refX="12" refY="7"
+            markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#7777cc"/>
+    </marker>
+  </defs>
+
+  <rect width="880" height="470" fill="#0a0a0a" rx="12"/>
+
+  <text x="440" y="44" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="22" font-weight="700" fill="#e8e8e8">기억 네 유형과 사는 자리</text>
+  <text x="440" y="68" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#888">나란한 네 가지가 아니라, 창 안에 하나 밖에 셋이다</text>
+
+  <!-- Inside the window -->
+  <rect x="60" y="92" width="760" height="94" rx="8" fill="#0a1a1a" stroke="#7ec8e3" stroke-width="2"/>
+  <text x="84" y="118" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="600" fill="#7ec8e3">컨텍스트 창 안 — 세션이 끝나면 사라진다</text>
+  <rect x="84" y="130" width="712" height="42" rx="6" fill="#111111" stroke="#7ec8e3" stroke-width="1"/>
+  <text x="104" y="148" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="600" fill="#e8e8e8">① 작업 기억</text>
+  <text x="104" y="165" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="11" fill="#888">지금 프롬프트에 실려 있는 것 — 꺼내 오는 절차가 없고, 창이 차면 밀려난다</text>
+
+  <!-- Outside the window -->
+  <rect x="60" y="204" width="760" height="196" rx="8" fill="#0a0a1a" stroke="#7777cc" stroke-width="2"/>
+  <text x="84" y="230" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="600" fill="#7777cc">컨텍스트 창 밖 — 저장해 두고 필요할 때 작업 기억으로 실어 온다</text>
+
+  <rect x="84" y="242" width="340" height="66" rx="6" fill="#111111" stroke="#7777cc" stroke-width="1"/>
+  <text x="104" y="264" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="600" fill="#e8e8e8">② 일화 기억</text>
+  <text x="104" y="282" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="11" fill="#888">언제 무슨 일이 있었나 — 시각과 맥락이 붙어</text>
+  <text x="104" y="299" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="11" fill="#888">있어 그 상황을 다시 재구성할 수 있다</text>
+
+  <line x1="424" y1="275" x2="484" y2="275" stroke="#7777cc" stroke-width="2" marker-end="url(#amtArr)"/>
+  <text x="454" y="257" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="11" fill="#7777cc">요약</text>
+
+  <rect x="484" y="242" width="312" height="66" rx="6" fill="#111111" stroke="#7777cc" stroke-width="1"/>
+  <text x="504" y="264" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="600" fill="#e8e8e8">③ 의미 기억</text>
+  <text x="504" y="282" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="11" fill="#888">맥락을 걷어내고 남긴 사실 — 언제</text>
+  <text x="504" y="299" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="11" fill="#888">알게 됐는지는 지워져 있다</text>
+
+  <rect x="84" y="322" width="712" height="60" rx="6" fill="#111111" stroke="#7777cc" stroke-width="1"/>
+  <text x="104" y="346" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="600" fill="#e8e8e8">④ 절차 기억</text>
+  <text x="104" y="366" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="11" fill="#888">이 일을 어떻게 하는가 — 개수가 적으면 시스템 프롬프트에 두고, 사용자마다 쌓이면 저장소로 내린다</text>
+
+  <text x="440" y="428" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="12" fill="#888">의미 기억은 일화 기억을 여러 개 겪은 뒤에 만든다 — 일화 없이 의미만 저장하면 출처를 못 댄다</text>
+  <text x="440" y="450" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="12" fill="#888">창 안에서 줄이는 일(요약·트리밍)은 이 그림의 위 칸에서만 벌어진다</text>
+</svg>

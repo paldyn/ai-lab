@@ -1,6 +1,6 @@
 ---
 title: "에이전트 안티패턴: 흔한 실수와 피해야 할 설계"
-description: "AI 에이전트 개발에서 자주 발생하는 10가지 안티패턴(무한 루프, 도구 과용, 컨텍스트 오염, 프롬프트 인젝션 등)과 방어 코드 패턴을 완전 해설합니다."
+description: "무한 루프, 도구 과용, 컨텍스트 오염, 빈 결과 처리, God Agent까지 — 에이전트를 짜기 전에 피할 수 있는 설계 실수와 그것을 막는 상한·반환 규격을 정리한다."
 author: "PALDYN Team"
 pubDate: "2026-05-19"
 category: "agents-rag"
@@ -9,20 +9,56 @@ tags: ["에이전트안티패턴", "무한루프", "프롬프트인젝션", "에
 featured: false
 draft: false
 ---
-[지난 글](/articles/agent-evaluation)에서 에이전트 성능을 측정하는 평가 방법론을 살펴봤다. 이번 글에서는 실제 프로덕션 에이전트 개발에서 반복적으로 마주치는 **10가지 안티패턴**과 방어 코드를 다룬다. 이 실수들은 모두 예방 가능하며, 설계 단계에서 잡는 것이 가장 저렴하다.
+[지난 글](/articles/agent-evaluation)에서 에이전트 성능을 측정하는 평가 방법론을 살펴봤다. 평가는 돌려 본 뒤에 하는 일이고, 이번 글은 그 앞자리다. 프로덕션에 나간 에이전트에서 반복해서 나오는 설계 실수 — **안티패턴**은 한 번 잘못 짜면 매번 같은 모양으로 틀리는 구조를 말한다 — 을 모아, 짜기 전에 피할 수 있는 것과 그것을 막는 코드 한 줄씩을 정리한다.
 
-## 에이전트 10대 안티패턴 개요
+여기서 **에이전트**는 LLM이 스스로 다음에 무엇을 할지 정하면서 여러 번 도구를 부르는 프로그램이다. **도구**는 그 LLM이 부를 수 있게 등록해 둔 함수이고, **컨텍스트**는 매 호출마다 모델에 함께 실어 보내는 지금까지의 대화와 도구 결과 전부다. 이 셋의 사이가 아래 모든 안티패턴의 무대다 — 에이전트가 도구를 부를 때마다 그 결과가 컨텍스트에 쌓이고, 불어난 컨텍스트가 다음 판단을 흐리게 만든다.
 
 ![에이전트 10대 안티패턴](/assets/posts/agent-anti-patterns-list.svg)
 
-## 안티패턴 ①: 무한 루프
+## 안티패턴과 버그
 
-가장 흔하고 치명적인 문제다. **무한 루프**(Infinite Loop)는 에이전트가 종료 조건 없이 같은 도구를 반복 호출하거나, 답을 찾지 못해 같은 자리를 맴도는 상태다.
+### 재현성
+
+버그와 안티패턴을 가르는 것은 심각도가 아니라 **다시 나오는가**다. 검색 도구가 상대 API의 일시적인 500 응답에 걸려 실패한 것은 버그다. 한 번 나고 재시도하면 지나가며, 같은 입력을 다시 넣으면 대개 성공한다. 그런데 그 실패를 에이전트가 「검색 결과 없음」으로 읽고 자기가 아는 것으로 답을 지어냈다면, 그것은 버그가 아니라 설계다. 도구가 실패했을 때 무엇을 돌려줄지 정해 두지 않은 구조이므로, 상대 API가 다음에 또 흔들리면 같은 자리에서 같은 모양으로 틀린다.
+
+로그에서 둘을 가르는 방법은 단순하다. **서로 다른 입력에서 같은 궤적이 나오면 설계 쪽이다.** 사용자 질문 열 건이 전부 「도구 호출 → 빈 결과 → 근거 없는 답변」으로 끝났다면 열 건의 입력을 하나씩 들여다볼 일이 아니라 도구의 반환 규격을 볼 일이다. 반대로 백 건 중 한 건만 다른 모양으로 죽었다면 그건 그 한 건을 고칠 일이다.
+
+### 수정 비용
+
+안티패턴을 설계 단계에서 잡는 것이 싼 이유는 고칠 자리의 크기가 다르기 때문이다. 루프 상한은 `AgentExecutor`를 만들 때 `max_iterations=15` 한 줄이다. 같은 것을 사고가 난 뒤에 붙이려면 이미 돌고 있는 세션을 어떻게 끊을지, 끊긴 세션의 중간 상태를 어떻게 되돌릴지, 그 사이에 나간 도구 호출의 부작용 — 보낸 메일, 만든 티켓 — 을 어떻게 취소할지가 함께 따라온다.
+
+숫자로 보면 차이가 더 분명하다. 검색과 요약을 반복하는 에이전트 한 세션이 도구를 한 번 부를 때마다 컨텍스트가 1,500토큰씩 붙는다고 하자. 상한 없이 스무 번을 돌면 마지막 호출의 입력은 3만 토큰을 넘고, 그때까지 누적으로 모델에 들어간 토큰은 30만 토큰대가 된다. 한 번 답하면 될 질문에 그만큼을 쓴 것이고, 그 세션이 사용자 백 명에게서 동시에 벌어지면 상한 한 줄의 값이 하루 비용의 자릿수를 바꾼다.
+
+### 실패 모드와의 경계
+
+[에이전트 실패 모드](/articles/agent-failure-modes) 쪽 글과 이 글은 같은 현상을 반대 방향에서 본다. 그쪽은 이미 돌고 있는 에이전트의 증상 — 답이 엉뚱하다, 도구를 안 부른다 — 에서 거슬러 올라가 원인을 찾는 순서이고, 이 글은 아직 짜지 않은 에이전트에서 그 원인이 생기지 않게 미리 막는 순서다. 그래서 그쪽은 트레이스를 읽는 법이 절반이고, 여기는 기본값과 반환 규격을 정하는 이야기가 절반이다.
+
+## 무한 루프
+
+가장 흔하고 치명적인 문제다. **무한 루프**(Infinite Loop)는 에이전트가 종료 조건을 만나지 못해 같은 자리를 맴도는 상태를 말한다. 한 모양이 아니라 세 모양으로 나오고, 셋을 막는 장치가 서로 다르다.
+
+![무한 루프의 세 모양과 각각을 잡는 상한](/assets/posts/agent-anti-patterns-loop-shapes.svg)
+
+### 동일 호출 반복
+
+가장 알아보기 쉬운 모양이다. 검색 도구를 같은 질의로 계속 부른다. 대개 원인은 도구가 빈 결과를 돌려주면서 그 사실을 명시하지 않은 데 있다. 모델 입장에서는 빈 문자열이 「없다」인지 「아직 안 왔다」인지 알 수 없으므로 한 번 더 시도하는 쪽을 고르고, 다음 턴에도 같은 빈 문자열을 받으므로 판단이 바뀌지 않는다. 도구 이름과 인자를 이어 붙인 문자열을 키로 세어 두면 세 번째 중복에서 잡을 수 있다.
+
+### 인자 흔들림
+
+더 자주 새는 모양은 인자를 조금씩 바꿔 도는 것이다. `{"query": "2026년 매출"}`, `{"query": "2026 년 매출"}`, `{"query": "매출 2026년"}` 셋은 문자열로는 다르지만 검색 결과가 같다. 앞 절의 중복 감지는 인자를 그대로 문자열로 만들어 비교하므로 이 셋을 다른 호출로 세고, 그래서 상한에 안 걸린 채로 열 번, 스무 번을 돈다.
+
+막는 법은 **정규화한 뒤에 해시하는 것**이다. 공백을 하나로 줄이고, 대소문자를 내리고, 키를 정렬한 뒤 해시를 뜬다. 여기서 정규화를 얼마나 세게 할지가 판단인데, 너무 세게 하면 진짜로 다른 두 질의가 같은 것으로 묶여 정상적인 탐색을 끊는다. 실무에서 쓰기 좋은 선은 공백·구두점·대소문자까지만 정규화하고 낱말 순서는 건드리지 않는 정도다.
+
+### 에이전트 핑퐁
+
+멀티 에이전트에서만 나오는 모양이다. 리서치 에이전트가 「이건 데이터 쪽 일이다」라며 넘기고, 데이터 에이전트가 「출처를 먼저 찾아야 한다」며 되넘긴다. 둘 다 자기 판단으로는 합리적이고, 각자의 호출 수 상한에는 걸리지 않는다 — 한 에이전트가 두 번씩만 돌기 때문이다. 그래서 상한은 **에이전트별이 아니라 세션 전체**에 걸어야 하고, 넘김(handoff) 횟수를 따로 세는 카운터가 하나 더 필요하다. [에이전트 핸드오프 규약](/articles/agent-handoff-protocols)에서 다루는 넘김 기록이 그대로 이 카운터의 자리다.
+
+### 상한 세 가지
+
+세 모양을 한 곳에서 막으려면 상한도 셋이어야 한다 — **호출 수**, **벽시계 시간**, **중복 해시**다. 호출 수만 걸면 한 번에 오래 걸리는 도구 앞에서 무력하고(열 번에 3분씩이면 30분이다), 시간만 걸면 빠른 도구를 수백 번 부르는 경우를 못 잡는다. 셋을 서로 다른 파일에 흩어 두지 말고 실행기를 만드는 한 함수에 모아 두면, 새 에이전트를 붙일 때 셋 중 하나를 빠뜨릴 일이 없다.
 
 ```python
 from langchain.agents import AgentExecutor
-from langchain_anthropic import ChatAnthropic
-import time
 
 # ❌ 안티패턴: 종료 조건 없음
 bad_executor = AgentExecutor(
@@ -32,314 +68,186 @@ bad_executor = AgentExecutor(
     # handle_parsing_errors 미설정 → 파싱 오류 시 크래시
 )
 
-# ✅ 올바른 방법: 다중 안전장치
+# ✅ 상한 셋을 한자리에
 safe_executor = AgentExecutor(
     agent=agent,
     tools=tools,
-    max_iterations=15,              # 최대 반복 횟수
-    max_execution_time=120,         # 최대 실행 시간(초)
-    early_stopping_method="force",  # 한도 초과 시 강제 종료
-    handle_parsing_errors=True,     # 파싱 오류 처리
-    return_intermediate_steps=True, # 디버깅용 중간 단계 수집
+    max_iterations=15,              # ① 호출 수
+    max_execution_time=120,         # ② 벽시계 시간(초)
+    early_stopping_method="force",
+    handle_parsing_errors=True,
+    return_intermediate_steps=True,
 )
 
-# 중복 도구 호출 감지 (LangGraph 방식)
-class LoopDetectionCallback:
+# ③ 중복 해시 — 인자를 정규화한 뒤에 센다
+import hashlib, json, re
+
+class LoopGuard:
     def __init__(self, max_duplicate: int = 3):
-        self.call_history: list[str] = []
+        self.seen: dict[str, int] = {}
         self.max_duplicate = max_duplicate
 
-    def on_tool_start(self, tool_name: str, tool_input: dict) -> None:
-        call_key = f"{tool_name}:{str(sorted(tool_input.items()))}"
-        duplicate_count = self.call_history.count(call_key)
-        if duplicate_count >= self.max_duplicate:
-            raise RuntimeError(
-                f"루프 감지: '{tool_name}'이 {duplicate_count}회 중복 호출됨. 강제 종료."
-            )
-        self.call_history.append(call_key)
+    def _key(self, tool_name: str, tool_input: dict) -> str:
+        norm = {
+            k: re.sub(r"\s+", " ", str(v)).strip().lower()
+            for k, v in sorted(tool_input.items())
+        }
+        raw = tool_name + json.dumps(norm, ensure_ascii=False, sort_keys=True)
+        return hashlib.sha1(raw.encode()).hexdigest()
+
+    def check(self, tool_name: str, tool_input: dict) -> None:
+        key = self._key(tool_name, tool_input)
+        self.seen[key] = self.seen.get(key, 0) + 1
+        if self.seen[key] > self.max_duplicate:
+            raise RuntimeError(f"루프 감지: '{tool_name}' 동일 호출 {self.seen[key]}회")
 ```
 
-## 안티패턴 ②: 과도한 도구 호출
+## 도구 과용과 도구 부족
 
-에이전트가 필요 이상으로 많은 도구를 호출해 비용과 레이턴시가 폭증한다.
+에이전트가 도구를 필요 이상으로 많이 부르면 비용과 지연이 함께 오른다. 그런데 반대 방향의 실수가 같은 증상으로 나타나기 때문에, 호출 수만 보고 원인을 정하면 엉뚱한 곳을 고치게 된다.
+
+### 설명문의 빈칸
+
+과용의 원인은 대개 도구 설명문에 있다. `"""검색한다"""` 한 줄짜리 설명은 언제 쓰는지만 알려 주고 **언제 쓰지 않는지**를 안 알려 준다. 모델은 등록된 도구를 쓰라고 준 것으로 읽으므로, 자기가 그냥 답할 수 있는 상식 질문에도 검색을 한 번 넣는다. 설명문에 「사용하지 말아야 할 때」를 한 줄 적는 것만으로 호출 수가 눈에 띄게 준다. 요령은 부정형으로 적지 말고 **대안을 함께 적는 것**이다 — 「일반 상식은 검색하지 말 것」보다 「일반 상식·수학 계산·코드 작성은 도구 없이 직접 답할 것」이 잘 듣는다. [도구 스키마 설계](/articles/tool-schema-design)에서 다루는 인자 설명도 같은 자리에 걸린다.
+
+### 조회 쪼개기
+
+반대쪽 실수는 필요한 도구가 없어서 생긴다. 「지난 분기 상위 5개 지점의 매출과 담당자」를 물었는데 등록된 도구가 지점 하나씩만 조회하는 `get_branch(name)`뿐이면, 에이전트는 도구를 다섯 번 부르는 수밖에 없다. 호출 수는 다섯이지만 이건 과용이 아니라 **도구 부족**이고, 고칠 자리는 프롬프트가 아니라 도구 목록이다. 목록으로 받는 인자를 하나 열어 주거나(`get_branches(names: list[str])`) 상위 N건을 한 번에 주는 도구를 더하면 다섯 번이 한 번이 된다.
+
+둘을 가르는 질문은 하나다. **같은 도구를 부른 호출들이 서로 다른 인자로 다른 결과를 가져왔는가.** 그렇다면 도구 부족이고, 같은 결과를 다시 가져왔다면 과용이다.
+
+### 중복 호출과 캐시
+
+한 턴 안에서 같은 조회가 두 번 나가는 것은 캐시로 막는다. 다만 캐시의 수명을 정하는 일이 남는다. 환율이나 재고처럼 초 단위로 바뀌는 값에 프로세스 수명 캐시를 걸면 에이전트가 옛 숫자로 답하고, 사내 문서 검색처럼 하루에 한 번 바뀌는 값을 매번 다시 부르면 캐시가 있으나 마나다. 기본값으로는 **세션 하나 안에서만 유효한 캐시**가 안전하다 — 한 대화 안에서 같은 것을 두 번 묻는 것을 막아 주면서, 다음 대화에서는 새 값을 가져온다.
 
 ```python
-# ❌ 안티패턴: 도구 설명이 모호해 불필요한 호출 유발
+from langchain_core.tools import tool
+
+# ❌ 언제 쓰지 않는지가 비어 있다
 @tool
 def search(query: str) -> str:
-    """검색한다"""  # 너무 짧은 설명
+    """검색한다"""
     ...
 
-# ✅ 올바른 방법: 언제 사용해야 하는지 명확히 설명
+# ✅ 쓰지 않을 자리와 그때의 대안을 함께 적는다
 @tool
 def web_search(query: str) -> str:
     """실시간 웹 정보를 검색합니다.
     사용해야 할 때: 최신 뉴스, 현재 가격, 실시간 날씨 등 시간에 민감한 정보.
-    사용하지 말아야 할 때: 일반 상식, 수학 계산, 코드 작성 등 LLM이 직접 답할 수 있는 경우.
+    사용하지 말아야 할 때: 일반 상식, 수학 계산, 코드 작성 —
+      이 경우 도구 없이 직접 답하세요.
     """
     ...
-
-# 도구 결과 캐싱 (동일 쿼리 재요청 방지)
-from functools import lru_cache
-
-@lru_cache(maxsize=100)
-def cached_web_search(query: str) -> str:
-    """캐시 적용 웹 검색 — 동일 쿼리는 API 재호출 없이 반환"""
-    return _actual_web_search(query)
-
-# 시스템 프롬프트에 절약 지시 추가
-SYSTEM_PROMPT = """당신은 효율적인 AI 에이전트입니다.
-도구 사용 규칙:
-1. 도구는 꼭 필요할 때만 사용하세요. LLM이 직접 답할 수 있으면 도구 생략.
-2. 이미 얻은 정보는 다시 검색하지 마세요.
-3. 한 번의 도구 호출로 여러 정보를 얻을 수 없는지 확인하세요."""
 ```
 
-## 안티패턴 ③: 컨텍스트 오염
+## 컨텍스트 오염
 
-도구 결과 원문이 컨텍스트를 꽉 채워 LLM이 정작 중요한 정보에 집중하지 못한다.
+**컨텍스트 오염**은 도구가 돌려준 원문이 대화 이력의 대부분을 차지해, 정작 사용자의 지시와 앞선 판단이 묻히는 상태다. 오염은 답이 틀리는 것으로 나타나지 않고 **답이 얕아지는 것**으로 나타나서, 로그를 봐도 어디가 잘못됐는지 짚기 어렵다.
 
-```python
-# ❌ 안티패턴: 도구 결과 원문 그대로 사용
-@tool
-def search_documents(query: str) -> str:
-    """문서 검색"""
-    docs = vector_db.search(query, k=10)
-    return "\n\n".join(doc.page_content for doc in docs)  # 수천 토큰!
+### 도구 결과 원문
 
-# ✅ 올바른 방법: 도구 레벨에서 요약·트리밍
-@tool
-def search_and_summarize(query: str) -> str:
-    """문서를 검색하고 관련 정보를 요약해 반환합니다."""
-    docs = vector_db.search(query, k=5)
+가장 흔한 경로는 벡터 검색 도구가 청크 열 건을 이어 붙여 그대로 돌려주는 것이다. 청크 하나가 800자면 열 건은 8,000자이고, 토큰으로는 5,000 안팎이다. 이 도구를 세 번 부르면 이력의 1만 5천 토큰이 검색 원문이 되고, 그 앞에 있던 사용자 지시는 전체의 1%도 안 되는 자리로 밀린다. 도구를 부른 목적이 근거를 찾는 것이었는데 근거가 지시를 덮은 셈이다.
 
-    # 각 문서 청크 최대 300자로 제한
-    snippets = [doc.page_content[:300] for doc in docs]
-    context = "\n---\n".join(snippets)
+### 길이 상한과 축약
 
-    # 핵심 정보만 추출해 반환 (선택적 LLM 요약)
-    return context[:1500]  # 컨텍스트 전체 상한선
+막는 방법은 두 층이다. 첫째, **도구가 돌려주는 문자열에 상한을 건다.** 상한은 도구를 부르는 쪽이 아니라 도구 안에 두는 것이 낫다 — 부르는 쪽에 두면 도구를 새로 붙일 때마다 같은 코드를 다시 써야 하고 한 곳을 빠뜨린다. 둘째, **오래된 도구 결과를 축약한다.** 최근 두세 번의 결과는 원문으로 두고 그 앞의 것은 한 줄 요약으로 갈아 끼우면, 에이전트가 「아까 검색해서 A를 알아냈다」는 사실은 유지하면서 A의 원문 5,000토큰은 버릴 수 있다. 컨텍스트 안에서 줄이는 이 이야기의 전체 지형은 [컨텍스트 압축](/articles/context-compression)에 있다.
 
-# 컨텍스트 창 관리 (LangChain)
-from langchain_core.messages import trim_messages
-from langchain_anthropic import ChatAnthropic
+### 오염의 증상
 
-llm = ChatAnthropic(model="claude-sonnet-4-6")
+오염된 세션은 세 가지로 알아본다. **첫째, 최근 것만 본다** — 사용자가 세 턴 전에 「표로 정리해 줘」라고 했는데 문단으로 답한다. **둘째, 이미 한 일을 다시 한다** — 앞에서 부른 도구를 같은 인자로 다시 부르는데, 앞의 결과가 축약되지 않은 채로 너무 멀리 밀려 모델이 못 찾는 경우다. **셋째, 근거를 섞는다** — 문서 A의 수치를 문서 B의 제목과 함께 인용한다. 셋 중 어느 것이든 나오면 이력의 토큰 구성부터 세어 본다. 도구 결과가 절반을 넘으면 오염이다.
 
-def trim_agent_context(messages: list, max_tokens: int = 8000) -> list:
-    """에이전트 컨텍스트를 토큰 한도 내로 트리밍"""
-    return trim_messages(
-        messages,
-        strategy="last",
-        token_counter=llm,
-        max_tokens=max_tokens,
-        include_system=True,    # 시스템 프롬프트 유지
-        start_on="human",       # 사용자 메시지부터 시작
-    )
-```
+## 도구 오류 반환
 
-## 안티패턴 ⑧⑨: 오류 처리와 보안
+도구가 실패했을 때 무엇을 돌려주는지는 에이전트 코드에서 가장 자주 비어 있는 자리다. 그리고 여기가 비면 실패가 조용히 오답으로 바뀐다.
+
+### 빈 결과와 스택 트레이스
+
+나쁜 반환이 두 종류 있다. 하나는 **빈 문자열**이다. 앞서 본 대로 모델은 이것을 「없음」으로도 「아직」으로도 읽을 수 있어서 루프의 씨앗이 된다. 다른 하나는 **파이썬 예외 문자열을 그대로 돌려주는 것**이다. `ConnectionError: HTTPSConnectionPool(host='api.internal'...)` 같은 줄이 컨텍스트에 들어가면 두 갈래 중 하나로 끝난다 — 모델이 그것을 답변에 그대로 실어 내부 호스트명을 사용자에게 노출하거나, 「무슨 말인지 모르겠으니 무시하고 답하자」로 판단해 도구를 안 부른 것처럼 지어낸다. 둘 다 실제로 자주 나온다.
+
+### 세 갈래 반환 규격
+
+해법은 도구의 반환을 **정상·빈 결과·오류 셋으로 못 박는 것**이다. 정상이면 결과를, 빈 결과면 「조건에 맞는 항목이 0건입니다」처럼 0건이라는 사실을 문장으로, 오류면 원인의 갈래와 다음에 무엇을 하면 되는지를 한 줄로 돌려준다. 세 갈래를 한 형식으로 통일해 두면 모델이 매번 같은 방식으로 읽고, 프롬프트에 「도구가 오류를 돌려주면 다른 접근을 시도하라」 한 줄을 적어 두는 것으로 행동이 정해진다.
+
+오류 문장에 담을 것과 담지 말 것도 갈린다. **담을 것**은 재시도가 의미 있는지(일시적인가 영구적인가), 인자를 바꾸면 되는지, 이 도구를 포기해야 하는지다. **담지 말 것**은 내부 호스트명·경로·스택 프레임이다. 이 둘은 사람이 볼 로그에 남기고 모델에는 갈래만 준다.
+
+### 재시도 상한
+
+재시도는 도구 안에 두고 상한은 두 번이 실무의 기본값이다. 세 번 넘게 시도하면 벽시계 시간이 지수 백오프와 함께 불어나 에이전트 전체의 시간 상한을 잡아먹는다. 그리고 **재시도할 때 앞선 오류 내용을 실어 보내는 것**이 중요하다. 인자가 잘못되어 400이 난 경우, 같은 인자로 다시 부르면 같은 400이 난다 — 오류 문장을 컨텍스트에 남겨 모델이 인자를 고쳐 부르게 해야 재시도가 값을 한다.
 
 ![무한 루프 방지와 오류 복원 패턴](/assets/posts/agent-anti-patterns-solutions.svg)
 
 ```python
-import re
-from typing import Optional
+from typing import Literal, TypedDict
 
-# 안티패턴 ⑧: 취약한 오류 처리 → 강건한 도구 래퍼
-def make_safe_tool(tool_fn, fallback_message: str = "도구 실행 실패"):
-    """도구를 오류 안전하게 래핑"""
-    def safe_wrapper(*args, **kwargs):
-        for attempt in range(3):  # 최대 3회 재시도
-            try:
-                import signal
+class ToolResult(TypedDict):
+    status: Literal["ok", "empty", "error"]
+    content: str
+    retryable: bool
 
-                def timeout_handler(signum, frame):
-                    raise TimeoutError("도구 실행 시간 초과")
+def search_documents(query: str) -> ToolResult:
+    """문서를 검색합니다. 결과는 status로 갈래가 표시됩니다."""
+    try:
+        docs = vector_db.search(query, k=5)
+    except ConnectionError:
+        # 내부 호스트명·스택은 로그로만 보내고 모델에는 갈래만 준다
+        logger.exception("vector_db search failed")
+        return {
+            "status": "error",
+            "content": "검색 서버에 일시적으로 연결할 수 없습니다. 한 번 더 시도하거나 다른 도구를 쓰세요.",
+            "retryable": True,
+        }
 
-                signal.signal(signal.SIGALRM, timeout_handler)
-                signal.alarm(30)  # 30초 타임아웃
-                result = tool_fn(*args, **kwargs)
-                signal.alarm(0)  # 타임아웃 해제
-                return result
+    if not docs:
+        return {
+            "status": "empty",
+            "content": f"'{query}' 조건에 맞는 문서가 0건입니다. 질의어를 넓혀 보세요.",
+            "retryable": False,
+        }
 
-            except TimeoutError:
-                return f"[타임아웃] {fallback_message}. 다른 접근법을 시도하세요."
-            except ConnectionError as e:
-                if attempt < 2:
-                    import time
-                    time.sleep(2 ** attempt)  # 지수 백오프
-                    continue
-                return f"[연결 오류] {str(e)[:100]}. 잠시 후 다시 시도하세요."
-            except Exception as e:
-                return f"[오류] {str(e)[:200]}"
-        return fallback_message
-
-    safe_wrapper.__name__ = tool_fn.__name__
-    safe_wrapper.__doc__ = tool_fn.__doc__
-    return safe_wrapper
-
-# 안티패턴 ⑨: 프롬프트 인젝션 방어
-class InputSanitizer:
-    # 주입 시도 패턴
-    INJECTION_PATTERNS = [
-        r"ignore\s+(previous|above|all)\s+instructions?",
-        r"forget\s+everything",
-        r"새로운\s+시스템\s+프롬프트",
-        r"(system|assistant):\s*",
-        r"<\|im_start\|>",
-        r"\[INST\]",
-    ]
-
-    @classmethod
-    def sanitize(cls, user_input: str) -> tuple[str, bool]:
-        """입력 정제 및 인젝션 감지. (정제된 입력, 위험 여부) 반환"""
-        cleaned = user_input.strip()
-
-        # 길이 제한
-        if len(cleaned) > 2000:
-            cleaned = cleaned[:2000] + "...[잘림]"
-
-        # 인젝션 패턴 감지
-        is_suspicious = any(
-            re.search(pattern, cleaned, re.IGNORECASE)
-            for pattern in cls.INJECTION_PATTERNS
-        )
-
-        if is_suspicious:
-            return cleaned, True  # 의심스러운 입력 플래그
-
-        return cleaned, False
-
-# 에이전트 엔트리포인트에 검증 추가
-def run_agent_safely(user_input: str, agent_executor) -> str:
-    sanitized, is_suspicious = InputSanitizer.sanitize(user_input)
-
-    if is_suspicious:
-        # 로깅 후 거부 또는 제한된 모드로 실행
-        print(f"⚠️ 의심스러운 입력 감지: {sanitized[:100]}")
-        return "보안 정책상 처리할 수 없는 입력입니다."
-
-    result = agent_executor.invoke({"input": sanitized})
-    return result.get("output", "오류가 발생했습니다.")
+    snippets = [d.page_content[:300] for d in docs]
+    return {"status": "ok", "content": "\n---\n".join(snippets)[:1500], "retryable": False}
 ```
 
-## 안티패턴 ⑤: 에이전트 없어도 되는 곳에 에이전트 사용
+## 에이전트가 필요 없는 자리
 
-에이전트는 유연하지만 비싸고 느리다. 단순한 경우에는 필요 없다.
+에이전트는 유연한 대신 비싸고 느리고 비결정적이다. 그래서 마지막 안티패턴은 코드 안이 아니라 코드 밖에 있다 — 에이전트를 안 써도 되는 일에 에이전트를 쓰는 것이다.
 
-```python
-# 에이전트 필요성 판단 기준
+### 고정 분기 작업
 
-def needs_agent(task: str) -> bool:
-    """에이전트가 필요한지 판단하는 간단한 휴리스틱"""
-    # 에이전트 불필요: 단일 도구 호출, 고정 파이프라인
-    simple_patterns = [
-        "요약해줘",         # → 단순 LLM 호출
-        "번역해줘",         # → 단순 LLM 호출
-        "분류해줘",         # → 단순 프롬프트
-    ]
-    if any(pattern in task for pattern in simple_patterns):
-        return False
+가르는 질문은 **분기가 미리 정해져 있는가**다. 「문서를 요약해 줘」는 검색 → 프롬프트 → 생성 세 단계가 언제나 같은 순서로 돈다. 이걸 에이전트로 짜면 매 단계마다 「다음에 무엇을 할까」를 모델에게 한 번씩 더 묻는 것이고, 그 판단은 대개 같은 답이 나오면서 호출 수만 세 배가 된다. 반대로 「우리 제품과 경쟁사 세 곳을 비교해 줘」는 몇 곳을 검색할지, 자료가 모자라면 어디를 더 볼지가 돌려 보기 전에는 정해지지 않는다. 여기가 에이전트 자리다.
 
-    # 에이전트 필요: 다중 도구 조합, 조건 분기, 반복
-    agent_patterns = [
-        "검색하고 분석해서",   # 검색 + 분석 조합
-        "비교하고 추천해줘",   # 여러 도구 + 추론
-        "자동으로 실행해줘",   # 반복 실행
-    ]
-    return any(pattern in task for pattern in agent_patterns)
+중간에 있는 것들은 **워크플로**로 짠다 — 단계는 코드가 고정하고 각 단계 안에서만 LLM을 부르는 구조다. 분기가 두세 개뿐이라면 그 분기를 `if` 문으로 적는 편이 모델에게 매번 묻는 것보다 싸고 빠르고 재현된다.
 
-# ❌ 에이전트 불필요: 단순 RAG로 충분
-# user: "이 문서에서 주요 내용을 요약해줘"
-# → RAG chain = retriever | prompt | llm | output_parser (3줄 코드)
+### God Agent
 
-# ✅ 에이전트 필요: 동적 결정이 필요
-# user: "우리 제품과 경쟁사 3곳을 비교 분석한 보고서 만들어줘"
-# → 검색 도구 × N + 분석 + 구조화 출력 = 에이전트 적합
-```
+도구를 스무 개 등록한 한 에이전트를 **God Agent**라고 부른다. 문제는 도구가 늘수록 선택 정확도가 떨어진다는 것이다. 이름과 설명이 비슷한 도구가 셋만 섞여 있어도 모델이 잘못 고르기 시작하고, 스무 개의 설명문이 시스템 프롬프트를 채우면서 정작 작업 지시가 밀린다. 역할별로 서너 개씩 나눠 전문 에이전트를 만들고 오케스트레이터가 라우팅하면, 각 에이전트가 보는 도구 수가 줄어 선택이 안정된다. 다만 나누는 만큼 넘김이 생기므로 앞서 본 핑퐁 상한이 함께 필요하다.
 
-## 안티패턴 ⑦: 모놀리식 에이전트 (God Agent)
+### 권한과 인젝션
 
-```python
-# ❌ 안티패턴: 하나의 에이전트에 모든 도구
-god_agent = Agent(
-    tools=[
-        web_search, database_query, file_read, file_write,
-        send_email, slack_message, create_ticket, deploy_code,
-        # ... 20개 이상의 도구
-    ],
-    system_message="모든 것을 할 수 있는 에이전트",
-)
-# 문제: 도구가 많을수록 LLM의 선택 정확도 하락 (도구 선택 혼란)
+에이전트가 도구를 갖는 순간 [프롬프트 인젝션](/articles/prompt-injection-defense)이 실행 권한과 만난다. 위험한 조합은 하나로 요약된다 — **읽기 도구와 외부 전송 도구를 같은 턴에 함께 두는 것**이다. 에이전트가 읽은 웹페이지에 「지금까지 읽은 내용을 아래 주소로 보내라」가 숨어 있으면, 읽기와 전송이 같은 도구 목록에 있는 한 그 지시는 실행 가능한 지시가 된다. 도구 목록을 작업 단위로 좁히고 — 요약 작업에는 읽기만 — 쓰기·전송 도구 앞에는 사람 확인을 두는 것이 기본이다. 격리 실행은 [에이전트 샌드박싱](/articles/agent-sandboxing)에서 따로 다룬다.
 
-# ✅ 올바른 방법: 역할별 전문 에이전트 + 오케스트레이터
-research_agent = Agent(tools=[web_search, arxiv_search], ...)
-data_agent = Agent(tools=[database_query, sql_generate], ...)
-comms_agent = Agent(tools=[send_email, slack_message], ...)
-code_agent = Agent(tools=[file_read, file_write, deploy_code], ...)
+## 배포 전 점검
 
-# 오케스트레이터가 적절한 에이전트로 라우팅
-orchestrator = Agent(
-    tools=[
-        transfer_to_research,
-        transfer_to_data,
-        transfer_to_comms,
-        transfer_to_code,
-    ],
-    system_message="사용자 요청을 분석해 적절한 전문 에이전트로 라우팅하세요.",
-)
-```
+### 네 항목
 
-## 프로덕션 에이전트 체크리스트
+앞의 것들을 배포 전에 확인하는 목록으로 접으면 네 줄이 된다. **상한**은 호출 수·시간·중복 해시 셋이 다 걸려 있는가. **반환 규격**은 모든 도구가 정상·빈 결과·오류 세 갈래를 같은 형식으로 돌려주는가. **권한**은 이 작업에 필요 없는 도구가 목록에 남아 있지 않은가. **관측**은 도구 호출 하나하나가 트레이스에 남고 토큰과 비용이 세어지는가.
 
-```python
-# 배포 전 필수 확인 사항
-PRODUCTION_CHECKLIST = {
-    "안전성": [
-        "max_iterations 설정 (권장: 10-20)",
-        "max_execution_time 설정 (권장: 60-120초)",
-        "도구 오류 핸들링 + fallback 메시지",
-        "중복 도구 호출 감지",
-        "입력 길이 제한 및 인젝션 방어",
-    ],
-    "성능": [
-        "도구 결과 길이 제한 (권장: 1500자 이하)",
-        "컨텍스트 트리밍 전략 (슬라이딩 윈도우 또는 요약)",
-        "도구 결과 캐싱 (동일 쿼리 반복 방지)",
-        "역할별 에이전트 분리 (도구 수 최소화)",
-    ],
-    "관찰성": [
-        "LangSmith 또는 Langfuse 트레이싱 연동",
-        "비용 모니터링 (토큰 수 추적)",
-        "성공률 메트릭 수집",
-        "알림 설정 (비용 초과, 오류율 급증)",
-    ],
-    "평가": [
-        "테스트 데이터셋 구축 (최소 50개 케이스)",
-        "자동 평가 파이프라인 (CI 통합)",
-        "회귀 테스트 (배포 전 성능 비교)",
-    ],
-}
+| 항목 | 확인할 것 | 없으면 나는 일 |
+| --- | --- | --- |
+| 상한 | 호출 수 · 벽시계 · 중복 해시 셋 | 무한 루프, 비용 폭증 |
+| 반환 규격 | `ok` · `empty` · `error` 세 갈래 통일 | 조용한 오답, 내부 정보 노출 |
+| 권한 | 작업에 필요한 도구만 등록 | 인젝션이 실행으로 이어짐 |
+| 관측 | 호출별 트레이스 · 토큰 · 비용 | 사고 뒤에 원인을 못 찾음 |
 
-for category, items in PRODUCTION_CHECKLIST.items():
-    print(f"\n[{category}]")
-    for item in items:
-        print(f"  ☐ {item}")
-```
+관측은 사고를 막지 않지만 나머지 셋의 고장을 알려 주는 유일한 장치다. [에이전트 관측](/articles/agent-observability)과 [비용 통제](/articles/agent-cost-control)가 이 줄의 자세한 자리다.
 
-## 정리
+### 테스트 한 줄
 
-에이전트 안티패턴은 **예방 가능한 설계 실수**다:
+점검 목록은 시간이 지나면 지켜지지 않는다. 그래서 항목마다 **그것을 잡는 테스트를 하나씩** 붙여 두는 편이 낫다. 상한은 도구를 언제나 빈 결과로 만드는 가짜 도구를 물려 놓고 세션이 상한에서 끝나는지 보면 되고, 반환 규격은 등록된 도구를 순회하며 세 갈래를 다 돌려주는지 확인하면 된다. 권한은 작업 유형별 도구 목록을 데이터로 적어 두고 그 목록 밖의 도구가 실행기에 들어가면 실패하게 만든다. 셋 다 몇 줄짜리 테스트이고, 이것이 있으면 도구를 새로 붙이는 사람이 규격을 자동으로 배운다.
 
-- **무한 루프**: `max_iterations` + `timeout` + 중복 호출 감지로 방어
-- **도구 과용**: 명확한 도구 설명 + 캐싱 + 시스템 프롬프트 절약 지시
-- **컨텍스트 오염**: 도구 결과 길이 제한 + 컨텍스트 트리밍
-- **취약한 오류 처리**: try/except + 재시도 + fallback 메시지
-- **프롬프트 인젝션**: 입력 검증 + 패턴 감지 + 권한 최소화
-- **God Agent**: 역할별 에이전트 분리 + 오케스트레이터 패턴
+### 뒤늦게 붙이기
 
-에이전트 개발의 핵심은 **실패에 대한 대비**다. 에이전트는 LLM의 비결정성으로 인해 항상 예상치 못한 동작을 할 수 있으며, 이를 안전하게 제어하는 코드가 프로덕션 품질을 결정한다.
+이미 돌고 있는 에이전트에 이것들을 붙일 때는 순서가 있다. **관측이 먼저다** — 지금 무엇이 몇 번 불리는지 모르는 채로 상한을 걸면 상한값을 짐작으로 정하게 되고, 너무 낮게 잡아 정상 세션을 끊는다. 하루치 트레이스에서 호출 수의 분포를 보고 상위 1%가 어디인지 확인한 뒤 그 위에 상한을 두면 정상 세션은 안 건드리면서 폭주만 잡는다. 그다음이 반환 규격이고, 권한 정리는 마지막이다 — 도구를 빼는 일은 기능을 빼는 일이라 사용자에게 보이기 때문이다.
 
 ---
 

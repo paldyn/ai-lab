@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 420" width="880" height="420">
+  <defs>
+    <marker id="ggUp1" viewBox="0 0 14 14" refX="12" refY="7"
+            markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#7777cc"/>
+    </marker>
+    <marker id="ggUp2" viewBox="0 0 14 14" refX="12" refY="7"
+            markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#55c555"/>
+    </marker>
+  </defs>
+
+  <rect width="880" height="420" fill="#0a0a0a" rx="12"/>
+
+  <text x="440" y="44" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="22" font-weight="700" fill="#e8e8e8">커뮤니티 요약의 계층</text>
+  <text x="440" y="68" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#888">색인 단계에서 아래부터 요약을 만들어 위로 올린다</text>
+
+  <!-- Level 2 -->
+  <text x="170" y="132" text-anchor="end" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="600" fill="#55c555">계층 2</text>
+  <text x="170" y="152" text-anchor="end" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="11" fill="#888">자료 전체</text>
+  <rect x="305" y="100" width="400" height="56" rx="8" fill="#0a1a0a" stroke="#55c555" stroke-width="2"/>
+  <text x="505" y="124" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="600" fill="#e8e8e8">자료 전체 요약</text>
+  <text x="505" y="143" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="11" fill="#888">Global Search가 먼저 읽는 층</text>
+
+  <!-- Level 1 -> Level 2 arrows -->
+  <line x1="280" y1="210" x2="380" y2="156" stroke="#55c555" stroke-width="2" marker-end="url(#ggUp2)"/>
+  <line x1="505" y1="210" x2="505" y2="156" stroke="#55c555" stroke-width="2" marker-end="url(#ggUp2)"/>
+  <line x1="730" y1="210" x2="630" y2="156" stroke="#55c555" stroke-width="2" marker-end="url(#ggUp2)"/>
+
+  <!-- Level 1 -->
+  <text x="170" y="242" text-anchor="end" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="600" fill="#7777cc">계층 1</text>
+  <text x="170" y="262" text-anchor="end" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="11" fill="#888">주제 묶음</text>
+  <rect x="190" y="210" width="180" height="56" rx="8" fill="#0a0a1a" stroke="#7777cc" stroke-width="2"/>
+  <text x="280" y="234" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="600" fill="#e8e8e8">반도체 사업</text>
+  <text x="280" y="253" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="11" fill="#888">아래 요약 2개를 합침</text>
+  <rect x="415" y="210" width="180" height="56" rx="8" fill="#0a0a1a" stroke="#7777cc" stroke-width="2"/>
+  <text x="505" y="234" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="600" fill="#e8e8e8">규제 대응</text>
+  <text x="505" y="253" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="11" fill="#888">아래 요약 2개를 합침</text>
+  <rect x="640" y="210" width="180" height="56" rx="8" fill="#0a0a1a" stroke="#7777cc" stroke-width="2"/>
+  <text x="730" y="234" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="600" fill="#e8e8e8">인력과 조직</text>
+  <text x="730" y="253" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="11" fill="#888">아래 요약 1개</text>
+
+  <!-- Level 0 -> Level 1 arrows -->
+  <line x1="280" y1="320" x2="280" y2="266" stroke="#7777cc" stroke-width="2" marker-end="url(#ggUp1)"/>
+  <line x1="505" y1="320" x2="505" y2="266" stroke="#7777cc" stroke-width="2" marker-end="url(#ggUp1)"/>
+  <line x1="730" y1="320" x2="730" y2="266" stroke="#7777cc" stroke-width="2" marker-end="url(#ggUp1)"/>
+
+  <!-- Level 0 -->
+  <text x="170" y="352" text-anchor="end" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="600" fill="#7ec8e3">계층 0</text>
+  <text x="170" y="372" text-anchor="end" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="11" fill="#888">세부 커뮤니티</text>
+  <rect x="190" y="320" width="110" height="56" rx="8" fill="#0a1a1a" stroke="#7ec8e3" stroke-width="2"/>
+  <text x="245" y="344" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="600" fill="#e8e8e8">공정 기술</text>
+  <text x="245" y="363" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="11" fill="#888">노드 42</text>
+  <rect x="320" y="320" width="110" height="56" rx="8" fill="#0a1a1a" stroke="#7ec8e3" stroke-width="2"/>
+  <text x="375" y="344" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="600" fill="#e8e8e8">고객사</text>
+  <text x="375" y="363" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="11" fill="#888">노드 31</text>
+  <rect x="450" y="320" width="110" height="56" rx="8" fill="#0a1a1a" stroke="#7ec8e3" stroke-width="2"/>
+  <text x="505" y="344" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="600" fill="#e8e8e8">해외 제재</text>
+  <text x="505" y="363" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="11" fill="#888">노드 27</text>
+  <rect x="580" y="320" width="110" height="56" rx="8" fill="#0a1a1a" stroke="#7ec8e3" stroke-width="2"/>
+  <text x="635" y="344" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="600" fill="#e8e8e8">인증 규격</text>
+  <text x="635" y="363" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="11" fill="#888">노드 18</text>
+  <rect x="710" y="320" width="110" height="56" rx="8" fill="#0a1a1a" stroke="#7ec8e3" stroke-width="2"/>
+  <text x="765" y="344" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="600" fill="#e8e8e8">채용</text>
+  <text x="765" y="363" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="11" fill="#888">노드 15</text>
+
+  <text x="440" y="404" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="12" fill="#888">위로 갈수록 원문에서 멀어진다 — 숫자와 고유명은 아래 층에 남는다</text>
+</svg>

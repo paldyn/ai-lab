@@ -1,6 +1,6 @@
 ---
 title: "에이전트 메모리: 단기·장기·시맨틱 메모리 아키텍처"
-description: "AI 에이전트의 4가지 메모리 유형(In-Context, External, Episodic, Semantic)과 mem0, LangChain Memory, 벡터 DB 기반 구현까지 완전 해설합니다."
+description: "작업·일화·의미·절차 네 기억의 관계, 무엇을 저장할지 정하는 쓰기 정책, 옛 기억이 답을 틀리게 만드는 회상 오염, 망각 주기와 사용자별 격리, 그리고 메모리를 재는 법을 정리한다."
 author: "PALDYN Team"
 pubDate: "2026-05-19"
 category: "agents-rag"
@@ -9,283 +9,214 @@ tags: ["에이전트메모리", "mem0", "LangChain", "벡터DB", "컨텍스트�
 featured: false
 draft: false
 ---
-[지난 글](/articles/agent-crewai)에서 CrewAI·AutoGen·Swarm 셋을 나란히 놓고 다음 차례를 정하는 권한을 태스크 목록에 둘지, 매니저 LLM에 둘지, 에이전트 자신에게 넘길지를 봤다. 그러면서 셋에 공통으로 비어 있는 자리가 하나 드러났다 — `kickoff()`가 끝나고 대화가 종료 문구를 만나면 그 안에서 쌓인 것도 거기서 끝난다는 것이다. 이번 글에서는 에이전트가 **"기억"하는 방법**, 즉 메모리 아키텍처를 다룬다. 사람처럼 과거를 기억하고 개인화된 응답을 제공하려면 단순한 대화 히스토리를 넘어선 정교한 메모리 설계가 필요하다.
+[지난 글](/articles/agent-crewai)에서 CrewAI·AutoGen·Swarm 셋을 나란히 놓고 다음 차례를 정하는 권한을 태스크 목록에 둘지, 매니저 LLM에 둘지, 에이전트 자신에게 넘길지를 봤다. 그러면서 셋에 공통으로 비어 있는 자리가 하나 드러났다 — `kickoff()`가 끝나고 대화가 종료 문구를 만나면 그 안에서 쌓인 것도 거기서 끝난다는 것이다.
 
-## 에이전트 메모리의 4가지 유형
+이번 글은 그 자리를 채운다. **에이전트 메모리**는 한 세션이 끝난 뒤에도 남는 정보와, 다음 세션에서 그것을 꺼내 오는 절차 전부를 말한다. 어려운 것은 저장하는 기술이 아니다 — 벡터 DB에 넣는 코드는 열 줄이면 된다. 어려운 것은 **무엇을 저장하고 무엇을 버리고 언제 꺼낼지**를 정하는 정책이고, 이 글의 대부분이 그 이야기다.
 
-인지과학의 메모리 체계를 AI 에이전트에 적용하면 네 가지 유형이 나온다.
+## 기억 네 유형
 
-![에이전트 메모리 유형](/assets/posts/agent-memory-types.svg)
+인지과학에서 빌려 온 분류를 에이전트에 옮기면 네 가지가 나온다. 넷을 나란한 네 가지로 읽으면 안 된다 — **서로 다른 층에 있고 사는 자리가 다르다.**
 
-### ① In-Context Memory (작업 기억)
+![기억 네 유형과 사는 자리](/assets/posts/agent-memory-four-types.svg)
 
-LLM의 컨텍스트 창에 담기는 대화 히스토리다. 가장 빠르고 즉각적이지만, 컨텍스트 창 크기에 제한된다.
+### 작업 기억
 
-```python
-from langchain_anthropic import ChatAnthropic
-from langchain_core.chat_history import InMemoryChatMessageHistory
-from langchain_core.messages import HumanMessage, AIMessage, SystemMessage
-from langchain_core.runnables.history import RunnableWithMessageHistory
+**작업 기억**(working memory)은 지금 돌고 있는 대화의 컨텍스트 창에 들어 있는 것 전부다. 직전 사용자 발화, 지금까지의 도구 결과, 시스템 프롬프트가 여기 있다. 특징은 둘이다 — **가장 빠르고**(꺼내 오는 절차가 없다, 이미 프롬프트에 있다) **가장 짧다**(창이 차면 밀려난다).
 
-llm = ChatAnthropic(model="claude-sonnet-4-6")
+나머지 셋과 갈리는 지점이 여기다. 작업 기억은 저장소가 아니라 **한 번의 모델 호출에 실려 가는 것**이라, 세션이 끝나면 남지 않는다. 아래 셋은 전부 그 바깥에 두고 필요할 때 작업 기억으로 실어 오는 것들이다.
 
-# 세션별 히스토리 저장소
-store: dict[str, InMemoryChatMessageHistory] = {}
+### 일화 기억과 의미 기억
 
-def get_session_history(session_id: str) -> InMemoryChatMessageHistory:
-    if session_id not in store:
-        store[session_id] = InMemoryChatMessageHistory()
-    return store[session_id]
+**일화 기억**(episodic memory)은 「언제 무슨 일이 있었나」를 그대로 담은 것이다. 「3월 12일 대화에서 사용자가 결제 오류를 신고했고 우리가 로그를 확인해 카드 만료로 확인했다」가 한 일화다. 시각과 맥락이 붙어 있어 **다시 그 상황을 재구성할 수 있다**는 것이 성질이다.
 
-from langchain_core.prompts import ChatPromptTemplate, MessagesPlaceholder
+**의미 기억**(semantic memory)은 그 일화들에서 맥락을 걷어내고 남긴 사실이다. 「이 사용자의 결제 수단은 만료가 잦다」가 그것이다. 언제 알게 됐는지는 지워져 있고 사실만 남는다.
 
-prompt = ChatPromptTemplate.from_messages([
-    ("system", "당신은 친절한 AI 어시스턴트입니다."),
-    MessagesPlaceholder(variable_name="history"),
-    ("human", "{input}"),
-])
+둘의 관계가 중요하다. **의미 기억은 일화 기억을 여러 개 겪은 뒤에 요약해서 만든다.** 그래서 일화를 안 남기고 의미만 저장하면 나중에 그 사실이 어디서 나왔는지 못 대고, 사용자가 「그런 말 한 적 없다」고 하면 확인할 방법이 없다. 반대로 일화만 쌓고 요약하지 않으면 검색 결과가 매번 대화 조각이라 프롬프트에 넣기 어렵다. 실무의 구성은 **일화를 원문으로 남기고 그 위에 의미 기억을 만들어 두는 두 층**이다.
 
-chain = prompt | llm
-chain_with_history = RunnableWithMessageHistory(
-    chain,
-    get_session_history,
-    input_messages_key="input",
-    history_messages_key="history",
-)
+### 절차 기억
 
-# 같은 session_id → 이전 대화 기억
-config = {"configurable": {"session_id": "user-001"}}
-response1 = chain_with_history.invoke({"input": "내 이름은 김철수야"}, config=config)
-response2 = chain_with_history.invoke({"input": "내 이름이 뭐야?"}, config=config)
-print(response2.content)  # "김철수라고 하셨습니다."
-```
+**절차 기억**(procedural memory)은 「이 일을 어떻게 하는가」다. 「이 사용자에게 보고서를 줄 때는 표부터 먼저」 같은 형식 규칙, 도구를 부르는 순서, 실패했을 때의 대처가 여기 든다.
 
-### 컨텍스트 압축 전략
+에이전트에서 절차 기억이 특이한 점은 **저장소가 아니라 프롬프트에 사는 경우가 많다는 것**이다. 규칙 하나를 배웠으면 시스템 프롬프트에 한 줄 더하는 것으로 끝나고, 검색해서 꺼내 올 필요가 없다. 매 요청에 실려 가는 대신 개수가 늘면 프롬프트가 길어진다는 값을 치른다. 사용자마다 다른 규칙이 수십 개 쌓이면 그때는 절차 기억도 저장소로 내려야 한다.
 
-```python
-from langchain.memory import ConversationSummaryBufferMemory
-from langchain_core.messages import get_buffer_string
+내리는 시점을 정하는 신호가 하나 있다. **규칙이 서로 충돌하기 시작할 때**다. 「표를 먼저」와 「요약을 먼저」가 프롬프트에 나란히 있으면 모델은 둘 중 하나를 무작위로 고르고, 규칙을 더 적어도 나아지지 않는다. 저장소로 내리면 상황에 맞는 규칙만 골라 실을 수 있어서, 프롬프트에 들어가는 규칙 수가 다시 줄어든다.
 
-# 요약 + 버퍼 하이브리드: 오래된 대화는 요약, 최근 N턴은 원문 유지
-summary_buffer_memory = ConversationSummaryBufferMemory(
-    llm=llm,
-    max_token_limit=2000,       # 버퍼 토큰 한도 초과 시 자동 요약
-    return_messages=True,
-    memory_key="chat_history",
-)
+### 안과 밖의 경계
 
-# 슬라이딩 윈도우: 최근 K턴만 유지
-from langchain.memory import ConversationBufferWindowMemory
-window_memory = ConversationBufferWindowMemory(
-    k=10,                       # 최근 10턴만 컨텍스트에 포함
-    return_messages=True,
-)
+한 가지를 못 박고 가자. **컨텍스트 창 안에서 줄이는 이야기와 창 밖에 저장하는 이야기는 다른 문제다.** 긴 대화가 창을 넘칠 때 앞부분을 요약해 압축하는 것은 [컨텍스트 요약과 메모리](/articles/context-summarization-memory)가 다루는 주제이고, 그 요약도 결국 창 안에 있다가 세션과 함께 사라진다. 이 글이 다루는 것은 **창 밖에 두고 다음 세션에서 꺼내 오는 것**이다.
 
-# 토큰 기준 트리밍 (langchain_core)
-from langchain_core.messages import trim_messages
-trimmed = trim_messages(
-    messages=store.get("user-001", InMemoryChatMessageHistory()).messages,
-    strategy="last",
-    token_counter=llm,
-    max_tokens=4000,
-    include_system=True,
-)
-```
+둘을 섞으면 설계가 흔들린다. 「대화가 길어져서 요약했으니 기억은 해결됐다」로 끝나 버리면 다음 날 같은 사용자가 다시 왔을 때 아무것도 남아 있지 않다.
 
-## ② External Memory: 벡터 DB 기반 장기 기억
+## 쓰기 정책
 
-컨텍스트 창을 넘어서는 영속적 기억은 벡터 DB에 저장한다.
+### 전부 저장의 문제
 
-```python
-from langchain_chroma import Chroma
-from langchain_openai import OpenAIEmbeddings
-from langchain_core.documents import Document
-from datetime import datetime
+가장 단순한 정책은 모든 발화를 그대로 저장하는 것이고, 이것이 실제로 가장 흔한 첫 구현이다. 그리고 두 가지로 무너진다.
 
-# 메모리 벡터 스토어 초기화
-memory_store = Chroma(
-    embedding_function=OpenAIEmbeddings(model="text-embedding-3-small"),
-    collection_name="agent_memory",
-    persist_directory="./memory_db",
-)
+**첫째, 검색이 안 된다.** 「사용자의 관심사는?」으로 유사도 검색을 돌리면 관심사를 말한 발화가 아니라 「관심」이라는 낱말이 들어간 발화가 걸린다. 저장된 것이 사실이 아니라 대화 조각이라 그렇다.
 
-def save_memory(user_id: str, content: str, memory_type: str = "conversation"):
-    """기억을 벡터 DB에 저장"""
-    doc = Document(
-        page_content=content,
-        metadata={
-            "user_id": user_id,
-            "type": memory_type,
-            "timestamp": datetime.now().isoformat(),
-        },
-    )
-    memory_store.add_documents([doc])
+**둘째, 잡음이 쌓인다.** 「안녕하세요」·「감사합니다」·「네 맞아요」가 저장된 것의 절반을 차지하고, 이것들이 유사도 상위에 올라와 정작 쓸모 있는 기억을 밀어낸다. 저장량이 는 만큼 회상 품질이 떨어지는 구조라, 오래 쓸수록 나빠진다.
 
-def retrieve_relevant_memories(user_id: str, query: str, k: int = 5) -> list[str]:
-    """쿼리와 관련된 과거 기억 검색"""
-    results = memory_store.similarity_search(
-        query,
-        k=k,
-        filter={"user_id": user_id},
-    )
-    return [doc.page_content for doc in results]
+### 사실 뽑기
 
-# 사용 예시
-save_memory("user-001", "사용자는 Python을 좋아하고 머신러닝에 관심이 많음")
-save_memory("user-001", "사용자의 회사는 스타트업, 주로 NLP 프로젝트를 진행")
+그래서 실제로 쓰는 정책은 **대화가 끝난 뒤 모델에게 사실만 뽑게 하는 것**이다. mem0 같은 메모리 계층이 하는 일이 정확히 이것이다. 뽑는 기준을 프롬프트에 적어 두는데, 기준으로 쓸 만한 것이 셋이다.
 
-memories = retrieve_relevant_memories("user-001", "사용자의 관심사는?")
-context = "\n".join(memories)
-print(context)
-```
+- **다음에도 유효한가** — 「지금 배고파」는 아니고 「채식주의자야」는 그렇다.
+- **이 사용자에게 고유한가** — 일반 상식은 모델이 이미 알고 있으므로 저장할 이유가 없다.
+- **한 문장으로 적히는가** — 적어 보고 두 문장이 필요하면 사실 두 개다. 쪼개서 저장한다.
 
-## mem0: 계층적 메모리 관리
+셋을 통과한 것만 저장하면 사용자당 기억 수가 수십 건 수준에서 안정된다. 수천 건으로 부는 저장소는 대개 첫 번째 기준을 안 걸고 있다.
 
-mem0는 대화에서 핵심 정보를 LLM으로 자동 추출해 저장하는 메모리 레이어다.
+![mem0: 대화에서 사실을 뽑아 저장하고 user_id로 걸러 꺼내는 계층](/assets/posts/agent-memory-implementation.svg)
 
-![mem0: 계층적 메모리 관리 시스템](/assets/posts/agent-memory-implementation.svg)
+뽑는 일을 언제 할지도 정해야 한다. **매 턴마다 뽑으면** 반응은 빠르지만 아직 확정되지 않은 말이 사실로 굳고(대화 중간에 사용자가 생각을 바꾸는 일은 흔하다) 호출이 턴 수만큼 든다. **세션이 끝난 뒤 한 번에 뽑으면** 대화 전체를 보고 판단하므로 정확하고 싸지만, 같은 세션 안에서는 기억이 안 생긴다. 대부분은 뒤쪽으로 두고 세션 안의 일관성은 작업 기억이 맡게 한다 — 어차피 한 세션 안의 발화는 컨텍스트에 이미 들어 있다.
+
+### 정정 처리
+
+사용자가 앞의 말을 뒤집었을 때가 쓰기 정책에서 가장 까다로운 자리다. 「이제 서울 말고 부산에 살아」가 들어오면 「사용자는 서울에 산다」를 어떻게 해야 하는가.
+
+세 가지 방식이 있고 값이 다르다. **덮어쓰기**는 옛 기억을 지우고 새 것을 넣는다. 깔끔하지만 「예전에 서울에 살았다」는 사실까지 사라진다. **버전 남기기**는 옛 기억에 종료 시각을 붙이고 새 것을 더한다. 이력이 남는 대신 검색에서 옛 것이 같이 걸려 나오므로 회상 쪽에서 걸러야 한다. **모순 표시**는 둘 다 두고 충돌 표시만 붙인 뒤 판단을 답변 시점으로 미룬다.
+
+기본값으로는 **버전 남기기에 유효 기간을 붙이는 방식**이 무난하다. 그리고 어느 방식을 쓰든 한 가지는 필요하다 — 새 사실이 들어올 때 **기존 기억 중 같은 주제의 것을 먼저 검색해 보는 단계**다. 이것 없이 그냥 추가하면 저장소에 「서울에 산다」와 「부산에 산다」가 나란히 남고, 다음 회상에서 어느 쪽이 나올지는 유사도가 정한다.
+
+## 회상의 오염
+
+저장이 잘되어도 꺼내는 데서 틀릴 수 있다. **회상 오염**은 지금 질문과 상관없거나 이미 낡은 기억이 검색에 걸려 답을 틀리게 만드는 것을 말한다.
+
+### 옛 기억이 끌려오는 경로
+
+유사도 검색은 **의미가 가까운 것**을 가져오지 **지금 맞는 것**을 가져오지 않는다. 「지금 쓰는 프레임워크가 뭐지?」라고 물으면 반년 전에 「Django를 쓴다」고 한 발화와 지난주에 「FastAPI로 옮겼다」고 한 발화가 둘 다 비슷하게 가깝다. 둘을 다 프롬프트에 넣으면 모델이 둘 중 하나를 고르는데, 그 선택에는 근거가 없다.
+
+더 나쁜 경우는 **한 번 스쳐 간 말이 사실로 굳는 것**이다. 사용자가 「친구가 R을 쓴대」라고 말한 것이 「사용자는 R을 쓴다」로 저장되면, 그 뒤 모든 대화에서 R 이야기가 따라온다. 앞 절의 사실 뽑기에서 **주어를 잘못 잡는 것**이 이 오염의 가장 흔한 출발점이다.
+
+한번 굳으면 잘 안 풀린다는 것이 이 오염의 성질이다. 저장된 사실은 다음 대화의 프롬프트에 들어가고, 모델은 그것을 전제로 답하며, 사용자가 굳이 부정하지 않으면 그 답변이 다시 「사용자가 R 이야기를 했다」는 일화로 쌓인다. **틀린 기억이 자기를 뒷받침하는 증거를 만들어 내는 고리**가 생기는 것이다. 그래서 사실을 뽑을 때 주어가 사용자인지 제3자인지 한 번 더 확인하게 만드는 것이, 나중에 지우는 절차를 만드는 것보다 훨씬 싸다.
+
+### 시간 가중치
+
+첫 번째 대응은 유사도 점수에 **최근성을 섞는 것**이다. 유사도만으로 순위를 매기지 말고 마지막으로 확인된 시각이 오래된 기억에 감점을 준다. 감점의 세기는 도메인이 정한다 — 사용하는 도구나 진행 중인 일처럼 자주 바뀌는 사실에는 세게, 이름이나 선호처럼 잘 안 바뀌는 사실에는 약하게 건다. 기억을 저장할 때 **이 사실이 얼마나 자주 바뀌는 종류인가**를 함께 적어 두면 이 가중치를 자동으로 정할 수 있다.
+
+### 출처 표시
+
+두 번째 대응은 회상한 기억을 프롬프트에 넣을 때 **언제 어디서 알게 된 것인지 함께 적는 것**이다. 「사용자는 FastAPI를 쓴다(2026-05-02 대화)」처럼 붙여 두면 모델이 두 개의 상충하는 기억을 받았을 때 최근 것을 고를 근거가 생기고, 답변에서 「지난번에 FastAPI로 옮기셨다고 하셨는데」처럼 되짚을 수 있다.
+
+부수 효과가 하나 더 있다. 출처가 붙은 기억은 **틀렸을 때 사용자가 고쳐 줄 수 있다.** 근거 없이 「고객님은 채식주의자시죠」라고 하면 사용자는 어디서 나온 말인지 몰라 당황하지만, 「3월에 그렇게 말씀하셔서」가 붙으면 「그건 다른 사람 이야기였다」로 정정이 돌아온다. 그 정정이 앞 절의 쓰기 정책으로 들어가면서 고리가 닫힌다.
+
+## 망각과 압축
+
+### 언제 압축하는가
+
+기억은 계속 는다. 줄이는 방법이 둘인데 **성격이 다르다** — 압축은 여러 기억을 하나로 합치는 것이고 망각은 버리는 것이다.
+
+압축의 자리는 정해져 있다. **같은 주제의 일화가 여러 건 쌓였을 때**다. 결제 오류 상담이 다섯 번 있었다면 다섯 일화를 그대로 두는 대신 「이 사용자는 결제 오류를 다섯 번 겪었고 원인은 대부분 카드 만료였다」는 의미 기억 하나를 만든다. 앞서 본 두 층 구조가 여기서 실제로 작동한다.
+
+### 반복 압축의 표류
+
+압축에는 값이 있다. **요약한 것을 다시 요약하면 원문에서 멀어진다.** 한 번 요약할 때마다 조금씩 사라지고, 사라진 자리를 모델이 그럴듯한 말로 메운다. 세 번쯤 겹치면 원문에 없던 인과가 생겨 있다 — 「카드 만료였다」가 「사용자가 카드 관리에 소홀하다」로 바뀌는 식이다.
+
+막는 법은 두 가지다. **원문을 지우지 않는다** — 압축본은 검색용으로 두고 원문은 보관해, 확인이 필요할 때 되돌아갈 자리를 남긴다. 그리고 **압축을 압축하지 않는다** — 요약은 언제나 원문 일화들에서 다시 만들고, 이전 요약에서 만들지 않는다. 이 규칙 하나가 표류의 대부분을 막는다.
+
+### 버리기 기준
+
+그래도 버려야 하는 것이 있다. 기준으로 쓸 만한 것이 셋이다.
+
+**한 번도 회상되지 않은 기억** — 저장한 지 오래됐는데 검색에 한 번도 안 걸렸다면 그 기억은 질문과 만날 일이 없는 것이다. 회상 횟수를 세어 두면 자동으로 고를 수 있다.
+
+**대체된 기억** — 정정으로 무효가 된 옛 버전은 일정 기간 뒤 지운다.
+
+**사용자가 지우라고 한 것** — 이건 정책이 아니라 의무다. 그리고 지우는 것이 생각보다 어렵다. 압축된 요약 안에 그 사실이 녹아 있으면 원문만 지워서는 안 지워진 것이다. **삭제 요청은 그 사실이 들어간 요약까지 함께 다시 만드는 절차**여야 한다.
+
+## 사용자별 격리
+
+### 필터가 새는 자리
+
+멀티 사용자 서비스에서 메모리는 한 벡터 컬렉션에 담고 `user_id` 메타데이터로 거르는 것이 보통이다. 그리고 그 필터가 새는 자리가 정해져 있다.
+
+**필터를 안 건 검색 경로** — 회상 함수가 여러 개 생기면 그중 하나에 필터가 빠진다. 대개 나중에 추가된 「비슷한 사례 찾기」 같은 기능이다. **압축이 만든 요약** — 여러 기억을 합쳐 요약을 만들 때 입력에 다른 사용자의 기억이 섞이면 요약 자체가 오염된다. **평가·디버깅 경로** — 관리자 화면에서 전체를 훑는 코드가 그대로 프로덕션 경로에 남는 경우다.
+
+셋 다 코드 리뷰로만 막기는 어렵다. **필터를 함수 인자가 아니라 저장소 접근 계층에 넣어 `user_id` 없이는 아예 조회가 안 되게 만드는 것**이 확실하다. 조회 함수의 시그니처가 `user_id`를 필수로 요구하면 빠뜨릴 자리가 사라진다.
 
 ```python
-from mem0 import Memory
-from anthropic import Anthropic
+from datetime import datetime, timedelta
 
-# mem0 초기화 (기본: in-memory / 프로덕션: vector DB 연동)
-config = {
-    "llm": {
-        "provider": "anthropic",
-        "config": {"model": "claude-sonnet-4-6", "temperature": 0},
-    },
-    "embedder": {
-        "provider": "openai",
-        "config": {"model": "text-embedding-3-small"},
-    },
-    "vector_store": {
-        "provider": "chroma",
-        "config": {"collection_name": "mem0_memories", "path": "./mem0_db"},
-    },
-}
-m = Memory.from_config(config)
+class MemoryStore:
+    """user_id 없이는 조회가 불가능한 접근 계층."""
 
-USER_ID = "user-001"
+    def __init__(self, vector_store):
+        self._vs = vector_store
 
-# 대화 내용에서 자동 추출·저장
-def chat_with_memory(user_message: str, user_id: str) -> str:
-    # 관련 기억 검색
-    memories = m.search(user_message, user_id=user_id, limit=5)
-    memory_context = "\n".join([f"- {mem['memory']}" for mem in memories])
-
-    # 기억을 컨텍스트에 포함해 LLM 호출
-    client = Anthropic()
-    response = client.messages.create(
-        model="claude-sonnet-4-6",
-        max_tokens=1024,
-        system=f"""당신은 사용자의 개인 AI 어시스턴트입니다.
-사용자에 대해 알고 있는 정보:
-{memory_context if memory_context else "아직 정보가 없습니다."}
-
-이 정보를 바탕으로 개인화된 응답을 제공하세요.""",
-        messages=[{"role": "user", "content": user_message}],
-    )
-    answer = response.content[0].text
-
-    # 대화를 메모리에 저장 (LLM이 핵심 정보 자동 추출)
-    m.add(
-        [
-            {"role": "user", "content": user_message},
-            {"role": "assistant", "content": answer},
-        ],
-        user_id=user_id,
-    )
-    return answer
-
-# 다턴 대화 (기억 축적)
-print(chat_with_memory("나는 서울에 살고 Python 개발자야", USER_ID))
-print(chat_with_memory("요즘 FastAPI 공부 중이야", USER_ID))
-# 새 세션에서도 기억 유지
-print(chat_with_memory("내가 어떤 기술을 공부하고 있었지?", USER_ID))
-# → "FastAPI를 공부 중이라고 하셨습니다."
-
-# 저장된 기억 전체 조회
-all_memories = m.get_all(user_id=USER_ID)
-for mem in all_memories:
-    print(f"ID: {mem['id']}, 내용: {mem['memory']}")
-```
-
-## LangGraph + 외부 메모리 통합
-
-```python
-from langgraph.graph import StateGraph, END
-from typing import TypedDict, Annotated
-import operator
-
-class MemoryAgentState(TypedDict):
-    messages: Annotated[list, operator.add]
-    user_id: str
-    relevant_memories: list[str]
-
-def retrieve_memory_node(state: MemoryAgentState) -> dict:
-    """매 턴 시작 시 관련 기억 검색"""
-    last_msg = state["messages"][-1].content if state["messages"] else ""
-    memories = retrieve_relevant_memories(
-        state["user_id"],
-        last_msg,
-        k=3,
-    )
-    return {"relevant_memories": memories}
-
-def agent_node(state: MemoryAgentState) -> dict:
-    """기억을 시스템 프롬프트에 주입해 LLM 호출"""
-    memory_str = "\n".join(f"- {m}" for m in state["relevant_memories"])
-    system = f"관련 기억:\n{memory_str}\n\n이 정보를 참고해 답변하세요."
-
-    from langchain_core.messages import SystemMessage
-    messages = [SystemMessage(content=system)] + state["messages"]
-    response = llm.invoke(messages)
-    return {"messages": [response]}
-
-def save_memory_node(state: MemoryAgentState) -> dict:
-    """대화 결과를 메모리에 저장"""
-    if len(state["messages"]) >= 2:
-        save_memory(
-            state["user_id"],
-            f"Q: {state['messages'][-2].content}\nA: {state['messages'][-1].content}",
+    def write(self, user_id: str, fact: str, volatility: str = "medium") -> None:
+        # volatility: 이 사실이 얼마나 자주 바뀌는 종류인가 → 회상 감점의 세기
+        self._vs.add_texts(
+            [fact],
+            metadatas=[{
+                "user_id": user_id,
+                "volatility": volatility,
+                "confirmed_at": datetime.now().isoformat(),
+            }],
         )
-    return {}
 
-graph = StateGraph(MemoryAgentState)
-graph.add_node("retrieve", retrieve_memory_node)
-graph.add_node("agent", agent_node)
-graph.add_node("save", save_memory_node)
+    def recall(self, user_id: str, query: str, k: int = 5) -> list[str]:
+        hits = self._vs.similarity_search_with_score(
+            query, k=k * 3, filter={"user_id": user_id}   # 필터는 여기서만 건다
+        )
+        decay = {"high": 30, "medium": 180, "low": 3650}   # 반감기(일)
 
-graph.set_entry_point("retrieve")
-graph.add_edge("retrieve", "agent")
-graph.add_edge("agent", "save")
-graph.add_edge("save", END)
+        def rank(doc, score: float) -> float:
+            age = (datetime.now() - datetime.fromisoformat(
+                doc.metadata["confirmed_at"])).days
+            half = decay[doc.metadata["volatility"]]
+            return score * (0.5 ** (age / half))           # 오래될수록 감점
 
-memory_agent = graph.compile()
+        ranked = sorted(hits, key=lambda h: rank(*h), reverse=True)[:k]
+        # 출처를 붙여 돌려준다 — 모델이 상충하는 기억 중 최근 것을 고를 근거가 된다
+        return [f"{d.page_content} ({d.metadata['confirmed_at'][:10]} 확인)"
+                for d, _ in ranked]
 ```
 
-## 메모리 전략 선택 가이드
+### 테넌트와 사용자
 
-| 사용 사례 | 권장 메모리 전략 |
-|-----------|----------------|
-| 단순 챗봇 (단일 세션) | In-Context만 (ConversationBufferWindowMemory) |
-| 개인화 어시스턴트 | In-Context + External (mem0, Chroma) |
-| 멀티 사용자 서비스 | user_id 필터링 + External Memory |
-| 장기 프로젝트 에이전트 | Episodic Memory + Semantic KG |
-| 고비용 컨텍스트 절약 | ConversationSummaryBufferMemory |
+기업 고객을 받는 서비스에서는 층이 하나 더 생긴다. **사용자별로 나뉘어야 하는 기억**과 **회사 안에서 공유되어야 하는 기억**이 다르기 때문이다. 「이 회사의 승인 절차는 2단계다」는 같은 회사의 다른 사람에게도 유효하고, 「나는 표를 먼저 보고 싶다」는 그 사람만의 것이다.
 
-## 정리
+그래서 저장할 때 **범위**(scope)를 함께 적는다 — 개인·팀·조직 셋이면 대개 충분하다. 회상할 때는 세 범위를 다 검색하되 같은 주제에서 충돌하면 좁은 범위가 이긴다. [멀티테넌트 RAG](/articles/rag-multi-tenant)에서 문서에 적용한 격리와 같은 구조이고, 여기서는 대상이 문서가 아니라 기억일 뿐이다.
 
-에이전트 메모리는 **어디에 무엇을 얼마나 기억할지**를 설계하는 문제다:
+## 메모리 평가
 
-- **In-Context**: 가장 빠르고 즉각적, 단 컨텍스트 창 한도 내에서만 유효
-- **슬라이딩 윈도우·요약 압축**: In-Context의 토큰 비용을 줄이는 핵심 전략
-- **External Memory**: 벡터 DB로 영속화, 유사도 검색으로 관련 기억 검색
-- **mem0**: LLM이 대화에서 핵심 정보를 자동 추출해 사용자별로 저장·검색
-- **Episodic/Semantic**: 과거 에피소드와 도메인 지식을 Few-shot 예제로 재활용
+### 테스트 셋
 
-대부분의 실전 에이전트는 In-Context + External 조합으로 충분하다.
+메모리가 잘 도는지는 답변 품질만 봐서는 모른다. 답이 좋아 보여도 기억을 안 쓰고 모델이 일반론으로 답한 것일 수 있다. 재려면 **세션을 건너뛰는 테스트 셋**이 필요하다.
+
+만드는 방법은 단순하다. 세션 A에서 사실을 심는 대화를 하고, 세션 B에서 그 사실을 알아야만 답할 수 있는 질문을 던진다. 「나는 견과류 알레르기가 있어」를 A에 두고, B에서 「점심 메뉴 추천해 줘」를 물어 견과류가 들어간 메뉴가 나오는지 본다. **답을 직접 묻지 않는 질문**이라야 기억이 실제로 쓰였는지가 드러난다.
+
+### 재는 것
+
+셋에서 나오는 숫자가 셋이다.
+
+- **회상률** — 필요한 기억이 실제로 검색되어 프롬프트에 들어갔는가. 검색 단계만 보는 값이라 어디가 문제인지 가른다.
+- **반영률** — 프롬프트에 들어갔는데 답변이 그것을 반영했는가. 회상률은 높은데 반영률이 낮으면 고칠 자리는 검색이 아니라 프롬프트다.
+- **오염률** — 지금 질문과 무관한 기억이 몇 건 섞여 들어갔는가. 이 값이 높으면 답이 산만해지고 토큰만 는다.
+
+셋을 나눠 재는 이유는 [RAG 평가](/articles/rag-evaluation)에서 검색 지표와 생성 지표를 갈라 재는 이유와 같다. 하나로 뭉쳐 놓으면 점수가 나빠졌을 때 어디를 손봐야 할지 안 나온다.
+
+### 회귀
+
+이 셋의 진짜 값은 바꿀 때 나온다. 임베딩 모델을 갈거나 시간 가중치를 조이거나 압축 주기를 늘릴 때마다 같은 셋을 돌리면, 세 숫자가 어떻게 움직이는지가 보인다. 특히 **오염률과 회상률은 대개 반대로 움직여서**, 하나만 보고 조이면 반드시 다른 쪽이 무너진다. 시간 가중치를 세게 걸면 오염은 줄지만 오래된 이름이나 선호도 함께 밀려난다.
+
+셋을 만들 때 한 가지를 같이 넣어 두면 값이 커진다. **기억이 없어야 정답인 질문**이다. 사용자에 대해 아무것도 저장되지 않은 주제를 물었을 때 에이전트가 「그건 아직 모른다」고 답하는지, 아니면 비슷한 기억을 끌어와 지어내는지를 본다. 회상률만 재는 셋은 이 실패를 통째로 못 본다 — 그리고 실사용에서 사용자가 가장 강하게 반응하는 오류가 이쪽이다. 자기가 말한 적 없는 것을 「말씀하셨듯이」로 되돌려 받는 경험은 기억을 못 하는 것보다 나쁘게 읽힌다.
+
+## 조합 고르기
+
+메모리는 층이 많을수록 좋은 것이 아니다. 층마다 저장 비용, 회상 지연, 오염 위험이 붙는다. 그래서 마지막은 **어디까지 만들 것인가**다.
+
+| 만드는 것 | 필요한 층 | 안 만들어도 되는 것 |
+| --- | --- | --- |
+| 단일 세션 챗봇 | 작업 기억만 | 저장소 전부 |
+| 개인화 어시스턴트 | 작업 + 의미 기억 | 일화 원문 보관, 절차 기억 |
+| 상담 이력이 중요한 서비스 | 작업 + 일화 + 의미 | 절차 기억 |
+| 장기 프로젝트 에이전트 | 넷 다 | — |
+
+대부분의 서비스는 두 번째 줄에서 끝난다. **의미 기억 한 층만 제대로 만들어도 「지난번에 말한 것을 기억한다」는 체감의 대부분이 나온다.** 일화 원문 보관은 사실의 출처를 대야 하거나 삭제 요청을 정확히 처리해야 할 때 필요해지고, 절차 기억은 사용자마다 다른 작업 규칙이 실제로 쌓이기 시작할 때 뒤늦게 붙이면 된다.
+
+한 가지만 처음부터 넣어 두자. **사용자별 격리는 나중에 붙이기가 가장 어렵다.** 이미 쌓인 기억에 범위가 안 적혀 있으면 나중에 나눌 방법이 없기 때문이다. 층은 미뤄도 되지만 `user_id`와 범위는 첫 줄부터 적는다.
 
 ---
 
