@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="550" viewBox="0 0 880 550">
+  <defs>
+    <marker id="pc-arr" viewBox="0 0 14 14" refX="12" refY="7"
+            markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#7777cc"/>
+    </marker>
+  </defs>
+  <rect width="880" height="550" fill="#0a0a0a" rx="12"/>
+
+  <text x="440" y="46" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="22" font-weight="700" fill="#e8e8e8" text-anchor="middle">대리 지표의 사슬</text>
+  <text x="440" y="72" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="14" fill="#888" text-anchor="middle">좋은 답 → 사람의 선호 → 보상 모델</text>
+
+  <text x="84" y="108" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="13" fill="#888">무엇을 재는가</text>
+  <text x="524" y="108" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="13" fill="#888">왜 그것을 못 쓰는가</text>
+
+  <!-- Row 1 -->
+  <rect x="60" y="124" width="380" height="64" rx="8" fill="#0d1a0d" stroke="#55c555" stroke-width="1"/>
+  <text x="84" y="150" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="16" font-weight="600" fill="#55c555">① 좋은 답</text>
+  <text x="84" y="172" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="13" fill="#888">우리가 실제로 원하는 것</text>
+
+  <rect x="500" y="124" width="320" height="64" rx="8" fill="#1a1010" stroke="#4a2a2a" stroke-width="1"/>
+  <text x="524" y="150" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="16" font-weight="600" fill="#e05555">직접 잴 수 없다</text>
+  <text x="524" y="172" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="13" fill="#888">수식으로 적히지 않는다</text>
+
+  <line x1="250" y1="188" x2="250" y2="226" stroke="#7777cc" stroke-width="2" marker-end="url(#pc-arr)"/>
+  <text x="272" y="211" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="12" fill="#7777cc">대리</text>
+
+  <!-- Row 2 -->
+  <rect x="60" y="228" width="380" height="64" rx="8" fill="#101820" stroke="#7ec8e3" stroke-width="1"/>
+  <text x="84" y="254" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="16" font-weight="600" fill="#7ec8e3">② 사람의 선호</text>
+  <text x="84" y="276" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="13" fill="#888">두 답 중 나은 쪽을 고른다</text>
+
+  <rect x="500" y="228" width="320" height="64" rx="8" fill="#1a1010" stroke="#4a2a2a" stroke-width="1"/>
+  <text x="524" y="254" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="16" font-weight="600" fill="#e05555">매번 물을 수 없다</text>
+  <text x="524" y="276" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="13" fill="#888">라벨이 비싸고 사람마다 다르다</text>
+
+  <line x1="250" y1="292" x2="250" y2="330" stroke="#7777cc" stroke-width="2" marker-end="url(#pc-arr)"/>
+  <text x="272" y="315" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="12" fill="#7777cc">대리</text>
+
+  <!-- Row 3 -->
+  <rect x="60" y="332" width="380" height="64" rx="8" fill="#14101a" stroke="#7777cc" stroke-width="1"/>
+  <text x="84" y="358" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="16" font-weight="600" fill="#7777cc">③ 보상 모델</text>
+  <text x="84" y="380" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="13" fill="#888">선호를 흉내 내 점수를 매긴다</text>
+
+  <rect x="500" y="332" width="320" height="64" rx="8" fill="#1a1010" stroke="#4a2a2a" stroke-width="1"/>
+  <text x="524" y="358" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="16" font-weight="600" fill="#e05555">빈틈이 있다</text>
+  <text x="524" y="380" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="13" fill="#888">사람은 안 좋아할 답을 높게 친다</text>
+
+  <line x1="250" y1="396" x2="250" y2="434" stroke="#7777cc" stroke-width="2" marker-end="url(#pc-arr)"/>
+  <text x="272" y="419" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="12" fill="#7777cc">정책이 올린다</text>
+
+  <!-- Result -->
+  <rect x="60" y="436" width="760" height="72" rx="8" fill="#1a1010" stroke="#e05555" stroke-width="1.5"/>
+  <text x="440" y="466" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="16" font-weight="600" fill="#e05555" text-anchor="middle">정책이 최적화하는 것은 ③뿐이다</text>
+  <text x="440" y="488" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="13" fill="#888" text-anchor="middle">③의 점수를 올리는 데 능해질수록 ③의 빈틈을 찾아낸다 — 그 빈틈이 보상 해킹이다</text>
+</svg>

@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="548" viewBox="0 0 880 548">
+  <rect width="880" height="548" fill="#0a0a0a" rx="12"/>
+
+  <defs>
+    <marker id="bfc-gray" viewBox="0 0 14 14" refX="12" refY="7"
+            markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#888888"/>
+    </marker>
+    <marker id="bfc-purple" viewBox="0 0 14 14" refX="12" refY="7"
+            markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#7777cc"/>
+    </marker>
+  </defs>
+
+  <!-- Title -->
+  <text x="440" y="46" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="22" font-weight="700" fill="#e8e8e8" text-anchor="middle">COMPAS — 어긋난 두 주장</text>
+  <text x="440" y="72" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="14" fill="#888888" text-anchor="middle">같은 도구를 두고 양쪽이 서로 다른 지표를 들었고, 양쪽 다 숫자로는 맞았다</text>
+
+  <!-- Shared source -->
+  <rect x="140" y="98" width="600" height="44" rx="10" fill="#14141a" stroke="#555555" stroke-width="1.5"/>
+  <text x="440" y="125" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="14" fill="#e8e8e8" text-anchor="middle">COMPAS 재범 위험 점수 — 기저율이 다른 두 집단</text>
+
+  <line x1="300" y1="142" x2="230" y2="186" stroke="#888888" stroke-width="2" marker-end="url(#bfc-gray)"/>
+  <line x1="580" y1="142" x2="650" y2="186" stroke="#888888" stroke-width="2" marker-end="url(#bfc-gray)"/>
+
+  <!-- Claim 1 : ProPublica -->
+  <rect x="50" y="186" width="360" height="166" rx="10" fill="#2a1010" stroke="#e05555" stroke-width="2"/>
+  <text x="74" y="218" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="16" font-weight="700" fill="#e05555">ProPublica의 분석 (2016)</text>
+  <text x="74" y="252" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="13" fill="#e8e8e8">재범하지 않았는데 고위험으로</text>
+  <text x="74" y="276" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="13" fill="#e8e8e8">분류된 비율(FPR)이 흑인 피고 쪽이</text>
+  <text x="74" y="300" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="13" fill="#e8e8e8">백인 피고의 두 배 가까이 나왔다</text>
+  <text x="74" y="334" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="14" font-weight="700" fill="#e05555">→ 균등 기회 위반</text>
+
+  <!-- Claim 2 : vendor -->
+  <rect x="470" y="186" width="360" height="166" rx="10" fill="#0d1720" stroke="#7ec8e3" stroke-width="2"/>
+  <text x="494" y="218" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="16" font-weight="700" fill="#7ec8e3">제작사의 반박</text>
+  <text x="494" y="252" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="13" fill="#e8e8e8">같은 점수를 받은 사람의 재범률이</text>
+  <text x="494" y="276" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="13" fill="#e8e8e8">인종과 무관하게 같다 — 점수의 뜻이</text>
+  <text x="494" y="300" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="13" fill="#e8e8e8">집단과 무관하게 같다</text>
+  <text x="494" y="334" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="14" font-weight="700" fill="#7ec8e3">→ 보정 만족</text>
+
+  <line x1="230" y1="352" x2="350" y2="384" stroke="#7777cc" stroke-width="2" marker-end="url(#bfc-purple)"/>
+  <line x1="650" y1="352" x2="530" y2="384" stroke="#7777cc" stroke-width="2" marker-end="url(#bfc-purple)"/>
+
+  <!-- Identity -->
+  <rect x="50" y="384" width="780" height="104" rx="10" fill="#0f0d1a" stroke="#7777cc" stroke-width="2"/>
+  <text x="74" y="412" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="13" font-weight="600" fill="#7777cc">Chouldechova(2017)의 항등식 — 어느 분류기에서나 성립한다</text>
+  <text x="440" y="446" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="17" fill="#e8e8e8" text-anchor="middle">FPR = p/(1-p) × (1-PPV)/PPV × (1-FNR)</text>
+  <text x="440" y="472" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="13" fill="#888888" text-anchor="middle">기저율 p가 다른데 PPV와 FNR을 맞추면 FPR은 다를 수밖에 없다</text>
+</svg>

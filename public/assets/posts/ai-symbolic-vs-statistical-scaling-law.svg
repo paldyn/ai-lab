@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" viewBox="0 0 880 620"
+     style="font-family:'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+
+  <rect width="880" height="620" fill="#0a0a0a" rx="12"/>
+
+  <!-- Title -->
+  <text x="440" y="50" text-anchor="middle" font-size="22" font-weight="700" fill="#e8e8e8">스케일링 법칙 — 데이터 열 배에 손실 약 20%</text>
+  <text x="440" y="74" text-anchor="middle" font-size="13" fill="#888">지수가 0.1일 때 손실은 데이터에 대해 멱함수로 줄어든다</text>
+
+  <!-- Axes -->
+  <text x="120" y="106" font-size="13" fill="#888">손실 — 낮을수록 좋다</text>
+  <line x1="120" y1="118" x2="120" y2="400" stroke="#444" stroke-width="1.5"/>
+  <line x1="120" y1="400" x2="820" y2="400" stroke="#444" stroke-width="1.5"/>
+
+  <!-- Decade guides -->
+  <line x1="347" y1="236" x2="347" y2="400" stroke="#333" stroke-width="1" stroke-dasharray="4,4"/>
+  <line x1="573" y1="305" x2="573" y2="400" stroke="#333" stroke-width="1" stroke-dasharray="4,4"/>
+  <line x1="800" y1="360" x2="800" y2="400" stroke="#333" stroke-width="1" stroke-dasharray="4,4"/>
+
+  <!-- Area under the curve -->
+  <path d="M 120 150 L 162.5 168 L 205 185 L 247.5 201 L 290 217 L 332.5 232 L 375 246 L 417.5 260 L 460 273 L 502.5 285 L 545 297 L 587.5 309 L 630 320 L 672.5 330 L 715 341 L 757.5 350 L 800 360 L 800 400 L 120 400 Z"
+        fill="#7ec8e3" opacity="0.07"/>
+
+  <!-- Power-law curve -->
+  <path d="M 120 150 L 162.5 168 L 205 185 L 247.5 201 L 290 217 L 332.5 232 L 375 246 L 417.5 260 L 460 273 L 502.5 285 L 545 297 L 587.5 309 L 630 320 L 672.5 330 L 715 341 L 757.5 350 L 800 360"
+        fill="none" stroke="#7ec8e3" stroke-width="2.5"/>
+
+  <!-- Decade points -->
+  <circle cx="120" cy="150" r="6" fill="#7ec8e3"/>
+  <circle cx="347" cy="236" r="6" fill="#7ec8e3"/>
+  <circle cx="573" cy="305" r="6" fill="#7ec8e3"/>
+  <circle cx="800" cy="360" r="6" fill="#7ec8e3"/>
+
+  <!-- Drop labels -->
+  <text x="368" y="224" font-size="13" font-weight="600" fill="#55c555">손실 −20%</text>
+  <text x="594" y="288" font-size="13" font-weight="600" fill="#55c555">또 −20%</text>
+  <text x="795" y="322" text-anchor="end" font-size="13" font-weight="600" fill="#55c555">또 −20%</text>
+
+  <!-- Ticks -->
+  <text x="120" y="424" text-anchor="middle" font-size="13" fill="#888">1배</text>
+  <text x="347" y="424" text-anchor="middle" font-size="13" fill="#888">10배</text>
+  <text x="573" y="424" text-anchor="middle" font-size="13" fill="#888">100배</text>
+  <text x="800" y="424" text-anchor="middle" font-size="13" fill="#888">1000배</text>
+  <text x="460" y="452" text-anchor="middle" font-size="13" fill="#555">학습 데이터 — 로그 눈금</text>
+
+  <!-- Takeaway band -->
+  <rect x="60" y="480" width="760" height="80" rx="8" fill="#141414" stroke="#333" stroke-width="1"/>
+  <text x="440" y="512" text-anchor="middle" font-size="15" font-weight="600" fill="#e8e8e8">열 배가 얼마를 돌려줄지 그래프에서 미리 읽는다</text>
+  <text x="440" y="538" text-anchor="middle" font-size="13" fill="#888">수천억 파라미터에 예산을 쓰는 결정이 도박이 아니라 투자가 됐다</text>
+</svg>

@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="600" viewBox="0 0 880 600">
+  <rect width="880" height="600" fill="#0a0a0a" rx="12"/>
+
+  <defs>
+    <marker id="bfp-gray" viewBox="0 0 14 14" refX="12" refY="7"
+            markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#888888"/>
+    </marker>
+    <marker id="bfp-amber" viewBox="0 0 14 14" refX="12" refY="7"
+            markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#e0a055"/>
+    </marker>
+  </defs>
+
+  <!-- Title -->
+  <text x="440" y="46" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="22" font-weight="700" fill="#e8e8e8" text-anchor="middle">프록시를 찾는 네 걸음</text>
+  <text x="440" y="72" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="14" fill="#888888" text-anchor="middle">지표가 「어디가 다른가」를, 설명이 「무엇이 다르게 만드는가」를 답한다</text>
+
+  <!-- Step 1 -->
+  <rect x="160" y="104" width="560" height="74" rx="10" fill="#0d1720" stroke="#7ec8e3" stroke-width="2"/>
+  <text x="184" y="134" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="14" font-weight="700" fill="#7ec8e3">① 공정성 지표로 잰다</text>
+  <text x="184" y="158" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="13" fill="#e8e8e8">집단마다 합격률·TPR·FPR을 세어 어디가 다른지 본다</text>
+
+  <line x1="440" y1="178" x2="440" y2="212" stroke="#888888" stroke-width="2" marker-end="url(#bfp-gray)"/>
+
+  <!-- Step 2 -->
+  <rect x="160" y="212" width="560" height="74" rx="10" fill="#100d1a" stroke="#7777cc" stroke-width="2"/>
+  <text x="184" y="242" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="14" font-weight="700" fill="#7777cc">② 집단별 SHAP 평균을 낸다</text>
+  <text x="184" y="266" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="13" fill="#e8e8e8">여성 지원자의 점수를 끌어내리는 특성이 골프 동아리라면 프록시다</text>
+
+  <line x1="440" y1="286" x2="440" y2="320" stroke="#888888" stroke-width="2" marker-end="url(#bfp-gray)"/>
+
+  <!-- Step 3 -->
+  <rect x="160" y="320" width="560" height="74" rx="10" fill="#1a1408" stroke="#e0a055" stroke-width="2"/>
+  <text x="184" y="350" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="14" font-weight="700" fill="#e0a055">③ 그 특성을 지우거나 가중을 낮춘다</text>
+  <text x="184" y="374" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="13" fill="#e8e8e8">상관이 있는 특성을 전부 지우면 모델에 남는 특성이 없다</text>
+
+  <line x1="440" y1="394" x2="440" y2="428" stroke="#888888" stroke-width="2" marker-end="url(#bfp-gray)"/>
+
+  <!-- Step 4 -->
+  <rect x="160" y="428" width="560" height="74" rx="10" fill="#0d1a0d" stroke="#55c555" stroke-width="2"/>
+  <text x="184" y="458" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="14" font-weight="700" fill="#55c555">④ 지표를 다시 잰다</text>
+  <text x="184" y="482" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="13" fill="#e8e8e8">새 프록시가 그 자리를 차지하지 않았는지 본다</text>
+
+  <!-- Return loop -->
+  <path d="M 720 465 H 764 Q 776 465 776 453 V 153 Q 776 141 764 141 H 720"
+        fill="none" stroke="#e0a055" stroke-width="2" stroke-dasharray="5,3" marker-end="url(#bfp-amber)"/>
+  <text x="814" y="303" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="13" fill="#e0a055" text-anchor="middle" transform="rotate(-90 814 303)">새 프록시가 자리를 이어받는다</text>
+
+  <text x="440" y="540" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="13" fill="#888888" text-anchor="middle">프록시는 한 번에 하나만 잡히지 않으므로 배포 뒤에도 되풀이한다</text>
+</svg>
