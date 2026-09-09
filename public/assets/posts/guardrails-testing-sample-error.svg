@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="380" viewBox="0 0 880 380" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <rect x="0" y="0" width="880" height="380" rx="12" fill="#0a0a0a"/>
+
+  <text x="60" y="46" font-size="22" font-weight="700" fill="#e8e8e8">세트를 네 배로 키워야 흔들림이 절반이 된다</text>
+  <text x="60" y="72" font-size="13" fill="#888">통과율 95% 근처에서 세트를 키우면 95% 구간이 이렇게 줄어든다.</text>
+
+  <text x="470" y="118" font-size="13" fill="#888" text-anchor="middle">통과율 95%</text>
+
+  <rect x="298" y="134" width="344" height="32" rx="6" fill="#2e1414" stroke="#e05555" stroke-width="1.5"/>
+  <text x="60" y="146" font-size="16" font-weight="600" fill="#e8e8e8">100건</text>
+  <text x="60" y="164" font-size="12" fill="#888">퇴행과 흔들림을 구별 못 한다</text>
+  <text x="680" y="155" font-size="14" font-weight="600" fill="#e05555">±4.3%p</text>
+
+  <rect x="386" y="206" width="168" height="32" rx="6" fill="#16301a" stroke="#55c555" stroke-width="1.5"/>
+  <text x="60" y="218" font-size="16" font-weight="600" fill="#e8e8e8">400건</text>
+  <text x="60" y="236" font-size="12" fill="#888">실무 규모 200~500건</text>
+  <text x="680" y="227" font-size="14" font-weight="600" fill="#55c555">±2.1%p</text>
+
+  <rect x="414" y="278" width="112" height="32" rx="6" fill="#161a2e" stroke="#7777cc" stroke-width="1.5"/>
+  <text x="60" y="290" font-size="16" font-weight="600" fill="#e8e8e8">1,000건</text>
+  <text x="60" y="308" font-size="12" fill="#888">비용은 두 배 반, 구간은 3분의 1만 준다</text>
+  <text x="680" y="299" font-size="14" font-weight="600" fill="#7777cc">±1.4%p</text>
+
+  <line x1="470" y1="128" x2="470" y2="318" stroke="#9aa4b8" stroke-width="1.5" stroke-dasharray="4,4"/>
+
+  <text x="60" y="346" font-size="13" fill="#e8e8e8">제곱근이라 흔들림을 절반으로 줄이려면 세트를 네 배로 키워야 한다.</text>
+  <text x="60" y="370" font-size="13" fill="#888">그보다 작으면 게이트가 소음에 반응하고, 훨씬 크면 비용 때문에 자주 못 돌린다.</text>
+</svg>
