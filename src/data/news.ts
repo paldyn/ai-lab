@@ -172,6 +172,36 @@ export const globalNewsUpdatedAt = '2026-09-08';
  */
 const entries: NewsItem[] = [
   {
+    id: 'search-football-features-google-search',
+    source: 'Google DeepMind',
+    kind: 'company',
+    title: 'Google 검색에 미식축구 실시간 피드와 판타지 계정 연동 추가',
+    summary:
+      'Google이 검색에서 진행 중인 경기를 따라가는 Live Game Feed를 열었다. 리그의 다른 경기 점수를 ' +
+      '훑는 카러셀과 선수·리그 기록을 함께 넣었고, Yahoo Fantasy·Sleeper 계정을 AI 모드에 연결해 ' +
+      '선발 추천을 받는 기능도 미국 영어로 시작했다.',
+    publishedAt: '2026-09-09',
+    collectedAt: '2026-09-10',
+    category: 'Product',
+    signal: '검색 스포츠 기능',
+    url: 'https://blog.google/products-and-platforms/products/search/football-features-google-search',
+  },
+  {
+    id: 'ai-love-rendered-film',
+    source: 'Google DeepMind',
+    kind: 'company',
+    title: 'Google DeepMind, AI로 70년 부부의 기억 되살린 단편 다큐',
+    summary:
+      'Google DeepMind가 Primordial Soup와 함께 만든 단편 다큐 「Love, Rendered」를 소개했다. ' +
+      '결혼 70년 차 부부가 처음 만난 날은 사진도 영상도 남지 않아, 옛 흑백 사진을 복원하고 현재의 ' +
+      '몸짓을 젊은 시절 모습에 옮기는 두 단계로 그 장면을 다시 만들었다고 적었다.',
+    publishedAt: '2026-09-09',
+    collectedAt: '2026-09-10',
+    category: 'Product',
+    signal: 'AI 다큐 제작',
+    url: 'https://blog.google/innovation-and-ai/technology/ai/love-rendered-film',
+  },
+  {
     id: 'codex-quantum-computing-experiments',
     source: 'OpenAI',
     kind: 'company',
