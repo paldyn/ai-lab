@@ -243,6 +243,8 @@ $$a_1a_2 + b_1b_2 = 0$$
 
 $$A(1,2)$$ 와 $$B(5,5)$$ 의 수직이등분선을 세워 봅니다.
 
+![선분 AB의 중점을 지나면서 AB에 수직인 직선을 네 걸음으로 세우는 그림](/assets/posts/math-basics-coordinate-plane-and-lines-bisector.svg)
+
 첫째, 중점을 구합니다. $$M(3, 3.5)$$ 입니다.
 
 둘째, 선분의 기울기를 구합니다. $$\dfrac34$$ 입니다.

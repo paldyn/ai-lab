@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="420" viewBox="0 0 880 420">
+  <rect x="0" y="0" width="880" height="420" rx="12" fill="#0a0a0a"/>
+
+  <text x="440" y="46" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="22" font-weight="700" fill="#e8e8e8">수직이등분선 세우기</text>
+  <text x="440" y="74" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">중점을 지나면서 선분에 수직인 직선</text>
+
+  <!-- 축 -->
+  <line x1="170" y1="110" x2="170" y2="390" stroke="#888" stroke-width="1.5"/>
+  <line x1="150" y1="370" x2="500" y2="370" stroke="#888" stroke-width="1.5"/>
+  <text x="508" y="375" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">x</text>
+  <text x="170" y="102" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">y</text>
+
+  <!-- 눈금 -->
+  <line x1="205" y1="366" x2="205" y2="374" stroke="#444" stroke-width="1.5"/>
+  <line x1="275" y1="366" x2="275" y2="374" stroke="#444" stroke-width="1.5"/>
+  <line x1="345" y1="366" x2="345" y2="374" stroke="#444" stroke-width="1.5"/>
+  <line x1="415" y1="366" x2="415" y2="374" stroke="#444" stroke-width="1.5"/>
+  <line x1="166" y1="335" x2="174" y2="335" stroke="#444" stroke-width="1.5"/>
+  <line x1="166" y1="265" x2="174" y2="265" stroke="#444" stroke-width="1.5"/>
+  <line x1="166" y1="195" x2="174" y2="195" stroke="#444" stroke-width="1.5"/>
+  <line x1="166" y1="125" x2="174" y2="125" stroke="#444" stroke-width="1.5"/>
+  <text x="205" y="390" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="12" fill="#888">1</text>
+  <text x="275" y="390" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="12" fill="#888">3</text>
+  <text x="345" y="390" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="12" fill="#888">5</text>
+  <text x="415" y="390" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="12" fill="#888">7</text>
+  <text x="160" y="339" text-anchor="end" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="12" fill="#888">1</text>
+  <text x="160" y="269" text-anchor="end" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="12" fill="#888">3</text>
+  <text x="160" y="199" text-anchor="end" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="12" fill="#888">5</text>
+  <text x="160" y="129" text-anchor="end" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="12" fill="#888">7</text>
+
+  <!-- 같은 길이 표시 -->
+  <line x1="205" y1="154.2" x2="205" y2="300" stroke="#7777cc" stroke-width="2" stroke-dasharray="4,4"/>
+  <line x1="205" y1="154.2" x2="345" y2="195" stroke="#7777cc" stroke-width="2" stroke-dasharray="4,4"/>
+  <text x="196" y="232" text-anchor="end" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="14" font-weight="600" fill="#7777cc">d</text>
+  <text x="272" y="162" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="14" font-weight="600" fill="#7777cc">d</text>
+
+  <!-- 선분 AB -->
+  <line x1="205" y1="300" x2="345" y2="195" stroke="#7ec8e3" stroke-width="2.5"/>
+
+  <!-- 수직이등분선 -->
+  <line x1="187.5" y1="130.8" x2="366.9" y2="370" stroke="#55c555" stroke-width="2.5"/>
+
+  <!-- 점 -->
+  <circle cx="205" cy="300" r="5" fill="#e8e8e8"/>
+  <circle cx="345" cy="195" r="5" fill="#e8e8e8"/>
+  <circle cx="275" cy="247.5" r="5" fill="#55c555"/>
+  <circle cx="205" cy="154.2" r="5" fill="#7777cc"/>
+  <text x="194" y="320" text-anchor="end" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="14" fill="#e8e8e8">A(1, 2)</text>
+  <text x="358" y="190" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="14" fill="#e8e8e8">B(5, 5)</text>
+  <text x="290" y="268" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="14" font-weight="600" fill="#55c555">M(3, 3.5)</text>
+  <text x="194" y="146" text-anchor="end" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="14" fill="#7777cc">P</text>
+
+  <!-- 네 걸음 -->
+  <circle cx="556" cy="150" r="13" fill="none" stroke="#55c555" stroke-width="1.5"/>
+  <text x="556" y="155" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="700" fill="#55c555">1</text>
+  <text x="582" y="155" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="15" fill="#e8e8e8">중점을 구한다 — M(3, 3.5)</text>
+
+  <circle cx="556" cy="196" r="13" fill="none" stroke="#55c555" stroke-width="1.5"/>
+  <text x="556" y="201" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="700" fill="#55c555">2</text>
+  <text x="582" y="201" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="15" fill="#e8e8e8">선분의 기울기를 잰다 — 3/4</text>
+
+  <circle cx="556" cy="242" r="13" fill="none" stroke="#55c555" stroke-width="1.5"/>
+  <text x="556" y="247" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="700" fill="#55c555">3</text>
+  <text x="582" y="247" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="15" fill="#e8e8e8">뒤집고 부호를 바꾼다 — −4/3</text>
+
+  <circle cx="556" cy="288" r="13" fill="none" stroke="#55c555" stroke-width="1.5"/>
+  <text x="556" y="293" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="700" fill="#55c555">4</text>
+  <text x="582" y="293" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="15" fill="#e8e8e8">점-기울기꼴에 넣는다</text>
+
+  <text x="582" y="336" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="14" fill="#7777cc">이 직선 위의 P는 A와 B에서 같은 거리다</text>
+</svg>
