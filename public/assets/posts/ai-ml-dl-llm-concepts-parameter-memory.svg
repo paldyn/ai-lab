@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="452" viewBox="0 0 880 452">
+  <defs>
+    <style>
+      text { font-family: 'Wanted Sans Variable', 'Wanted Sans', -apple-system, sans-serif; }
+      .h1 { font-size: 22px; font-weight: 700; fill: #e8e8e8; }
+      .sub { font-size: 13px; fill: #8a8a8a; }
+      .zone { font-size: 12px; font-weight: 600; }
+      .zone-note { font-size: 11px; fill: #7a7a7a; }
+      .row { font-size: 13px; fill: #cfcfcf; }
+      .val { font-size: 13px; font-weight: 600; fill: #cfcfcf; }
+      .note { font-size: 11px; fill: #6e6e6e; }
+    </style>
+  </defs>
+
+  <rect width="880" height="452" fill="#0a0a0a" rx="12"/>
+
+  <text x="50" y="48" class="h1">파라미터와 메모리</text>
+  <text x="50" y="74" class="sub">추론을 하려면 파라미터가 전부 메모리에 올라가 있어야 합니다</text>
+
+  <!-- 범위 밖 -->
+  <rect x="40" y="100" width="800" height="186" rx="8" fill="#0e0e0e" stroke="#2a2a2a" stroke-width="1.5"/>
+  <text x="64" y="128" class="zone" fill="#e05555">일반 PC의 범위 밖</text>
+  <text x="816" y="128" class="zone-note" text-anchor="end">GPT-3 · 파라미터 1750억 개</text>
+
+  <rect x="280" y="150" width="540" height="26" rx="4" fill="#141414"/>
+  <rect x="280" y="150" width="540" height="26" rx="4" fill="#2a2222" stroke="#4a3232" stroke-width="1"/>
+  <text x="64" y="168" class="row">1750억 개 × 4바이트</text>
+  <text x="808" y="168" class="val" fill="#e8e8e8" text-anchor="end">약 700GB</text>
+
+  <rect x="280" y="194" width="540" height="26" rx="4" fill="#141414"/>
+  <rect x="280" y="194" width="270" height="26" rx="4" fill="#2a2222" stroke="#4a3232" stroke-width="1"/>
+  <text x="64" y="212" class="row">1750억 개 × 2바이트</text>
+  <text x="562" y="212" class="val">350GB</text>
+
+  <rect x="280" y="238" width="540" height="26" rx="4" fill="#141414"/>
+  <rect x="280" y="238" width="135" height="26" rx="4" fill="#2a2222" stroke="#4a3232" stroke-width="1"/>
+  <text x="64" y="256" class="row">1750억 개 × 1바이트</text>
+  <text x="427" y="256" class="val">175GB</text>
+
+  <!-- 노트북 -->
+  <rect x="40" y="306" width="800" height="94" rx="8" fill="#0e0e0e" stroke="#2a2a2a" stroke-width="1.5"/>
+  <text x="64" y="334" class="zone" fill="#55c555">노트북에서 돌아감</text>
+
+  <rect x="280" y="352" width="540" height="26" rx="4" fill="#141414"/>
+  <rect x="280" y="352" width="11" height="26" rx="3" fill="#1f2a1f" stroke="#33502f" stroke-width="1"/>
+  <text x="64" y="370" class="row">70억 개 × 2바이트</text>
+  <text x="303" y="370" class="val">14GB 안팎</text>
+
+  <text x="50" y="428" class="note">숫자 하나를 몇 바이트로 저장하느냐가 그대로 메모리 크기를 정합니다</text>
+</svg>

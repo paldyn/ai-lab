@@ -1,0 +1,79 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="478" viewBox="0 0 880 478">
+  <defs>
+    <style>
+      text { font-family: 'Wanted Sans Variable', 'Wanted Sans', -apple-system, sans-serif; }
+      .h1 { font-size: 22px; font-weight: 700; fill: #e8e8e8; }
+      .sub { font-size: 13px; fill: #8a8a8a; }
+      .p-name { font-size: 16px; font-weight: 600; fill: #e8e8e8; }
+      .p-en { font-size: 10px; letter-spacing: 0.12em; }
+      .b-t { font-size: 13px; font-weight: 600; fill: #e8e8e8; }
+      .b-m { font-size: 14px; font-weight: 600; fill: #e8e8e8; }
+      .b-s { font-size: 11px; fill: #8a8a8a; }
+      .risk { font-size: 11px; }
+      .note { font-size: 11px; fill: #6e6e6e; }
+    </style>
+    <marker id="ar" markerWidth="14" markerHeight="14" refX="13" refY="4.5" orient="auto" markerUnits="userSpaceOnUse">
+      <path d="M0,0 L0,9 L13,4.5 z" fill="#4a4a4a"/>
+    </marker>
+  </defs>
+
+  <rect width="880" height="478" fill="#0a0a0a" rx="12"/>
+
+  <text x="50" y="48" class="h1">챗봇과 에이전트</text>
+  <text x="50" y="74" class="sub">같은 LLM을 쓴다 — 다른 것은 모델을 감싼 프로그램이다</text>
+
+  <!-- 챗봇 -->
+  <rect x="50" y="100" width="360" height="324" rx="8" fill="#0e0e0e" stroke="#2a2a2a" stroke-width="1.5"/>
+  <text x="74" y="130" class="p-name">챗봇</text>
+  <text x="114" y="130" class="p-en" fill="#7ec8e3">CHATBOT</text>
+
+  <rect x="74" y="148" width="312" height="46" rx="6" fill="#171717" stroke="#333333" stroke-width="1"/>
+  <text x="230" y="175" class="b-t" text-anchor="middle">질문</text>
+
+  <line x1="230" y1="194" x2="230" y2="218" stroke="#3f3f3f" stroke-width="1.5" marker-end="url(#ar)"/>
+
+  <rect x="74" y="218" width="312" height="76" rx="6" fill="#171717" stroke="#3d3d3d" stroke-width="1.5"/>
+  <text x="230" y="250" class="b-m" text-anchor="middle">LLM</text>
+  <text x="230" y="270" class="b-s" text-anchor="middle">한 번 답하고 끝난다</text>
+
+  <line x1="230" y1="294" x2="230" y2="318" stroke="#3f3f3f" stroke-width="1.5" marker-end="url(#ar)"/>
+
+  <rect x="74" y="318" width="312" height="46" rx="6" fill="#171717" stroke="#333333" stroke-width="1"/>
+  <text x="230" y="345" class="b-t" text-anchor="middle">답</text>
+
+  <line x1="74" y1="386" x2="386" y2="386" stroke="#232323" stroke-width="1"/>
+  <text x="74" y="406" class="risk"><tspan fill="#6e6e6e">위험 · </tspan><tspan fill="#cf7b7b">틀린 답이 화면에 뜬다</tspan></text>
+
+  <!-- 에이전트 -->
+  <rect x="470" y="100" width="360" height="324" rx="8" fill="#0e0e0e" stroke="#2a2a2a" stroke-width="1.5"/>
+  <text x="494" y="130" class="p-name">에이전트</text>
+  <text x="568" y="130" class="p-en" fill="#7777cc">AGENT</text>
+
+  <rect x="494" y="148" width="312" height="46" rx="6" fill="#171717" stroke="#333333" stroke-width="1"/>
+  <text x="650" y="175" class="b-t" text-anchor="middle">요청</text>
+
+  <line x1="562" y1="194" x2="562" y2="218" stroke="#3f3f3f" stroke-width="1.5" marker-end="url(#ar)"/>
+
+  <rect x="494" y="218" width="136" height="76" rx="6" fill="#171717" stroke="#3d3d3d" stroke-width="1.5"/>
+  <text x="562" y="240" class="b-m" text-anchor="middle">LLM</text>
+  <text x="562" y="260" class="b-s" text-anchor="middle">결과를 보고</text>
+  <text x="562" y="278" class="b-s" text-anchor="middle">다음을 정한다</text>
+
+  <rect x="670" y="218" width="136" height="76" rx="6" fill="#171717" stroke="#333333" stroke-width="1"/>
+  <text x="738" y="240" class="b-t" text-anchor="middle">도구</text>
+  <text x="738" y="260" class="b-s" text-anchor="middle">검색 · 파일</text>
+  <text x="738" y="278" class="b-s" text-anchor="middle">코드 실행</text>
+
+  <line x1="630" y1="244" x2="670" y2="244" stroke="#3f3f3f" stroke-width="1.5" marker-end="url(#ar)"/>
+  <line x1="670" y1="268" x2="630" y2="268" stroke="#3f3f3f" stroke-width="1.5" marker-end="url(#ar)"/>
+
+  <line x1="562" y1="294" x2="562" y2="318" stroke="#3f3f3f" stroke-width="1.5" marker-end="url(#ar)"/>
+
+  <rect x="494" y="318" width="312" height="46" rx="6" fill="#171717" stroke="#333333" stroke-width="1"/>
+  <text x="650" y="345" class="b-t" text-anchor="middle">답</text>
+
+  <line x1="494" y1="386" x2="806" y2="386" stroke="#232323" stroke-width="1"/>
+  <text x="494" y="406" class="risk"><tspan fill="#6e6e6e">위험 · </tspan><tspan fill="#cf7b7b">틀린 판단으로 파일을 지우거나 메일을 보낸다</tspan></text>
+
+  <text x="50" y="454" class="note">에이전트를 붙였다는 말을 들으면, 무엇을 할 권한까지 줬는지를 먼저 물어야 합니다</text>
+</svg>
