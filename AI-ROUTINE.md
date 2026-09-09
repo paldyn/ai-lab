@@ -396,6 +396,14 @@ STEP 1로 돌아가지 않는다 — 계획을 자기가 늘리는 것이 가장
 
 핵심: 다크 배경 #0a0a0a, width=880, font 'Wanted Sans Variable', 박스 내 텍스트 상하 padding 차 ≤3px, 코드 박스는 `fill="#000000"`+`stroke="#3a4a6e"`·size 13·텍스트 `#ffffff`, 점선은 `stroke-width="2"`+`stroke-dasharray="4,4"`, 화살표는 `<marker>`+`markerUnits="userSpaceOnUse"`+markerWidth/Height ≥ 14, 하단 워터마크 금지.
 
+**다 그리고 `node scripts/check-svg.mjs public/assets/posts/{slug}-*.svg`를 돌린다.**
+XML 유효성·캔버스를 벗어난 상자와 글자·금지된 코드 박스 색·바닥 워터마크·`markerUnits`
+누락을 본다. **한 건도 안 나올 때까지 고친다.**
+
+**그 검사가 못 보는 것이 있다** — 글자가 상자 안에 들어가는지다(글꼴마다 폭이 달라
+어림이 어긋난다). 그러니 그릴 때부터 지켜라: 한글 폭은 글자 크기만큼, 영문은 그 55%,
+상자 padding 24 이상, 안 들어가면 상자 height를 키운다. 자르거나 위로 쏠리게 두지 마라.
+
 ```bash
 xmllint --noout public/assets/posts/{파일명}.svg
 ```
@@ -462,6 +470,13 @@ draft: false
   (「왜 초기화가 중요한가」도 「초기화가 정하는 것」도 아니라 **「가중치 초기화」**).
   보통 두 자에서 열 자 사이이고, 「~라는 것」·「~하는 자리」·「~인 이유」 같은 꼬리를
   붙이지 않는다. 규칙은 `CLAUDE.md`의 「글의 뼈대」에 있다.
+
+  **제목에 병기하지 않는다 — 호칭 하나만 쓴다.** `LLM (대형 언어 모델)`도
+  `NMS (Non-Maximum Suppression)`도 콜론 뒤 설명(`SHAP: 샤플리 값의 분배`)도 안 된다.
+  병기는 본문에서 그 낱말이 처음 나오는 자리에 한 번 한다. 어느 쪽을 쓸지는 우리 글에서
+  실제로 더 흔한 쪽이다 — `AI`·`LLM`·`RAG`·`GPU`·`API`는 약어를, 머신러닝·딥러닝·
+  파인튜닝은 한글을 쓴다. 헷갈리면 세어 본다:
+  `grep -roh '낱말' src/content/articles/ | wc -l`.
 - **산문 6,000자 이상.** 코드와 수식은 이 수에 안 든다 — 코드를 늘려서 채우는 것이
   지금 578편을 얇게 만든 원인이다. 채울 거리가 그만큼 없는 주제면 편수를 채우려고
   늘리지 말고 보고에 적는다.
