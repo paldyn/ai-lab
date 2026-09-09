@@ -3,6 +3,7 @@ import path from 'node:path';
 import matter from 'gray-matter';
 import { describe, expect, it } from 'vitest';
 import { renderMarkdown } from '../../plugins/markdown';
+import { collapsedLines } from './collapsedLines';
 
 /**
  * 강조가 열렸는데 안 닫혀 `**`가 화면에 그대로 남는 것을 잡습니다.
@@ -88,5 +89,27 @@ describe('수식 표기', () => {
     expect(found, `${name}: $${found[0]}$ 는 화면에 글자 그대로 나옵니다 — $$로 감싸세요`).toEqual(
       [],
     );
+  });
+});
+
+/**
+ * 나란히 놓으려고 나눈 줄이 한 문단 안에서 이어 붙는 것을 잡습니다.
+ *
+ * 마크다운은 문단 안의 홑 줄바꿈을 공백 하나로 만듭니다. 원고에서는 두 줄인데
+ * 화면에서는 「기존 AI: … 예측한다 ML: 데이터를 …」 한 줄이 됩니다 — **원고만
+ * 보면 안 보이는 어긋남**이라 강조·수식과 같은 자리에 둡니다.
+ *
+ * 고치는 법은 둘입니다. 나열이면 목록으로 바꾸고, 문단 안에 두어야 하면 앞 줄 끝에
+ * 역슬래시를 붙입니다. 2026-09-09에 466편에서 다섯 자리를 찾았습니다.
+ */
+describe('줄바꿈', () => {
+  it.each(files)('%s — 나란한 줄이 한 줄로 붙지 않는다', (name) => {
+    const { content } = matter(readFileSync(path.join(ARTICLES, name), 'utf8'));
+    const found = collapsedLines(content);
+
+    expect(
+      found.map((hit) => `${hit.line}행 ${hit.text.slice(0, 40)}`),
+      `${name}: 앞 줄과 한 줄로 이어 붙습니다 — 목록으로 바꾸거나 앞 줄 끝에 \\를 붙이세요`,
+    ).toEqual([]);
   });
 });

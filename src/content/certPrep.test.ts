@@ -4,6 +4,7 @@ import matter from 'gray-matter';
 import { describe, expect, it } from 'vitest';
 import { certs } from '../data/certs';
 import { articles } from '../data/articles';
+import { collapsedLines } from './collapsedLines';
 
 /**
  * 자격증 시험 노트가 지켜야 하는 것.
@@ -140,5 +141,16 @@ describe('자격증 시험 노트', () => {
   it('기출 표기를 쓰지 않는다', () => {
     const flagged = notes.filter((note) => /\d+\s*회\s*기출|기출\s*문제\s*(복원|그대로)/.test(note.content));
     expect(flagged.map((note) => `${note.certId}/${note.file}`)).toEqual([]);
+  });
+
+  /*
+    문단 안의 홑 줄바꿈은 공백이 됩니다 — 객관식 보기를 역슬래시 없이 줄만 나눠 적으면
+    네 보기가 한 줄로 이어 붙습니다. 원고에서는 네 줄로 보여 눈으로는 안 잡힙니다.
+  */
+  it('나란한 줄이 한 줄로 붙지 않는다', () => {
+    const flagged = notes.flatMap((note) =>
+      collapsedLines(note.content).map((hit) => `${note.certId}/${note.file}:${hit.line} ${hit.text.slice(0, 40)}`),
+    );
+    expect(flagged).toEqual([]);
   });
 });
