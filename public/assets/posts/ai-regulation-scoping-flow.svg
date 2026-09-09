@@ -1,0 +1,76 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="612" viewBox="0 0 880 612">
+  <defs>
+    <marker id="step" viewBox="0 0 14 14" refX="12" refY="7"
+            markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#7ec8e3"/>
+    </marker>
+    <marker id="back" viewBox="0 0 14 14" refX="12" refY="7"
+            markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#e0a055"/>
+    </marker>
+  </defs>
+  <rect width="880" height="612" fill="#0a0a0a" rx="12"/>
+
+  <!-- Title -->
+  <text x="440" y="46" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="22" font-weight="700" fill="#e8e8e8" text-anchor="middle">적용 범위 판정 순서</text>
+  <text x="440" y="72" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="14" fill="#888" text-anchor="middle">모델이 아니라 용도에서 시작한다 — 한 번 하고 끝내는 일이 아니다</text>
+
+  <!-- Return loop (drawn first so the pill covers it) -->
+  <path d="M 220 531 L 140 531 L 140 148 L 220 148" fill="none"
+        stroke="#e0a055" stroke-width="2" stroke-dasharray="5,3" marker-end="url(#back)"/>
+
+  <!-- Step 1 -->
+  <rect x="220" y="100" width="600" height="97" rx="10" fill="#0a1820" stroke="#7ec8e3" stroke-width="1.5"/>
+  <text x="246" y="130" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="16" font-weight="700" fill="#7ec8e3">① 용도 기술서</text>
+  <text x="246" y="158" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="13" fill="#e8e8e8">무엇을 입력받아 무엇을 산출하고, 그 산출이 누구의 무엇을 바꾸는지</text>
+  <text x="246" y="180" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="12" fill="#888">서너 문장 — 규제 문서 중 가장 짧고 가장 먼저 쓴다</text>
+
+  <line x1="520" y1="197" x2="520" y2="227" stroke="#7ec8e3" stroke-width="2" marker-end="url(#step)"/>
+
+  <!-- Step 2 -->
+  <rect x="220" y="227" width="600" height="97" rx="10" fill="#0a1820" stroke="#7ec8e3" stroke-width="1.5"/>
+  <text x="246" y="257" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="16" font-weight="700" fill="#7ec8e3">② 학습 데이터 출처</text>
+  <text x="246" y="285" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="13" fill="#e8e8e8">어디서 왔고 쓸 권리가 있는가 — 수집하던 그 시점에 기록한다</text>
+  <text x="246" y="307" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="12" fill="#888">나중에 만들 수 없는 유일한 항목</text>
+
+  <line x1="520" y1="324" x2="520" y2="354" stroke="#7ec8e3" stroke-width="2" marker-end="url(#step)"/>
+
+  <!-- Step 3 -->
+  <rect x="220" y="354" width="600" height="97" rx="10" fill="#0a1820" stroke="#7ec8e3" stroke-width="1.5"/>
+  <text x="246" y="384" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="16" font-weight="700" fill="#7ec8e3">③ 배포 지역</text>
+  <text x="246" y="412" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="13" fill="#e8e8e8">EU에서 접속되는가 · 한국 이용자를 대상으로 하는가 · 미국 어느 주인가</text>
+  <text x="246" y="434" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="12" fill="#888">결제 수단이나 언어를 하나 더한 날 조용히 바뀐다</text>
+
+  <line x1="520" y1="451" x2="520" y2="481" stroke="#7ec8e3" stroke-width="2" marker-end="url(#step)"/>
+
+  <!-- Re-entry checklist -->
+  <rect x="220" y="481" width="600" height="101" rx="10" fill="#1a140a" stroke="#e0a055" stroke-width="1.5"/>
+  <text x="246" y="511" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="14" font-weight="600" fill="#e0a055">배포 체크리스트 — 이 세 시점에 다시 읽는다</text>
+  <text x="246" y="539" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="13" fill="#e8e8e8">새 지역인가</text>
+  <text x="460" y="539" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="13" fill="#e8e8e8">새 결정 기능인가</text>
+  <text x="680" y="539" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="13" fill="#e8e8e8">새 모델인가</text>
+  <text x="246" y="563" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="12" fill="#888">셋 다 아니오면 십 초에 끝난다</text>
+
+  <!-- Loop label -->
+  <rect x="84" y="320" width="112" height="53" rx="8" fill="#0a0a0a" stroke="#e0a055" stroke-width="1.5"/>
+  <text x="140" y="342" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="12" fill="#e0a055" text-anchor="middle">하나라도</text>
+  <text x="140" y="360" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="12" fill="#e0a055" text-anchor="middle">「예」면</text>
+</svg>

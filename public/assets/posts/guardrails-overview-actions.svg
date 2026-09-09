@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="440" viewBox="0 0 880 440">
+  <defs>
+    <marker id="actAxis" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#8a8a8a"/>
+    </marker>
+    <marker id="actLife" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#7777cc"/>
+    </marker>
+  </defs>
+
+  <rect x="0" y="0" width="880" height="440" rx="12" fill="#0a0a0a"/>
+
+  <text x="60" y="46" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="22" font-weight="700" fill="#e8e8e8">조치 넷은 되돌릴 수 있는 정도로 줄을 선다</text>
+
+  <rect x="60" y="110" width="152" height="84" rx="8" fill="#101c10" stroke="#55c555" stroke-width="1.5"/>
+  <text x="136" y="136" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#e8e8e8">기록만</text>
+  <text x="136" y="158" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">아무것도</text>
+  <text x="136" y="178" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">바꾸지 않는다</text>
+
+  <rect x="262" y="110" width="152" height="84" rx="8" fill="#101820" stroke="#7ec8e3" stroke-width="1.5"/>
+  <text x="338" y="136" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#e8e8e8">수정</text>
+  <text x="338" y="158" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">문제 부분만</text>
+  <text x="338" y="178" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">고쳐 통과시킨다</text>
+
+  <rect x="464" y="110" width="152" height="84" rx="8" fill="#1c1410" stroke="#e0a055" stroke-width="1.5"/>
+  <text x="540" y="136" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#e8e8e8">되물음</text>
+  <text x="540" y="158" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">사용자에게</text>
+  <text x="540" y="178" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">한 번 확인한다</text>
+
+  <rect x="666" y="110" width="152" height="84" rx="8" fill="#1c1010" stroke="#e05555" stroke-width="1.5"/>
+  <text x="742" y="136" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#e8e8e8">차단</text>
+  <text x="742" y="158" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">요청을 거절하고</text>
+  <text x="742" y="178" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">이유를 알린다</text>
+
+  <text x="60" y="222" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">되돌릴 수 있음</text>
+  <text x="818" y="222" text-anchor="end" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">되돌릴 수 없음</text>
+  <line x1="60" y1="240" x2="818" y2="240" stroke="#8a8a8a" stroke-width="1.5" marker-end="url(#actAxis)"/>
+
+  <text x="60" y="288" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">새 검사의 수명 주기</text>
+  <line x1="60" y1="312" x2="818" y2="312" stroke="#7777cc" stroke-width="2" stroke-dasharray="4,4" marker-end="url(#actLife)"/>
+
+  <text x="136" y="338" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">며칠 기록만</text>
+  <text x="338" y="338" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">오탐률을 보고</text>
+  <text x="338" y="356" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">임계값 조정</text>
+  <text x="540" y="338" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">여기로 승격</text>
+  <text x="742" y="338" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">그래도 새면</text>
+
+  <text x="60" y="404" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">같은 위험을 여러 조치로 다룰 수 있다면 왼쪽부터 고른다. 되돌릴 수 없는 조작만 처음부터 차단이다.</text>
+</svg>

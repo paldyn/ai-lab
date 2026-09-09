@@ -1,0 +1,90 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="562" viewBox="0 0 880 562">
+  <rect width="880" height="562" fill="#0a0a0a" rx="12"/>
+
+  <!-- Title -->
+  <text x="440" y="46" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="22" font-weight="700" fill="#e8e8e8" text-anchor="middle">지우는 공격과 심는 공격</text>
+  <text x="440" y="72" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="14" fill="#888" text-anchor="middle">공격자는 뜻만 지키면 되고 방어자는 표현까지 지켜야 한다</text>
+
+  <!-- Left column: removal -->
+  <rect x="60" y="96" width="350" height="272" rx="10" fill="#150a0a" stroke="#e05555" stroke-width="1"/>
+  <text x="84" y="124" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="16" font-weight="600" fill="#e05555">제거 — 신호를 깎아 낸다</text>
+
+  <rect x="76" y="140" width="318" height="100" rx="8" fill="#0f0808" stroke="#e05555" stroke-width="1" stroke-opacity="0.5"/>
+  <text x="96" y="166" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="13" font-weight="600" fill="#e8e8e8">텍스트 — 의역</text>
+  <text x="96" y="188" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="12" fill="#888">다른 모델에 「같은 뜻으로 다시 써 줘」</text>
+  <text x="96" y="206" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="12" fill="#888">라고 시키면 토큰 선택이 다시 이뤄져</text>
+  <text x="96" y="224" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="12" fill="#888">초록 편향이 사라진다</text>
+
+  <rect x="76" y="252" width="318" height="100" rx="8" fill="#0f0808" stroke="#e05555" stroke-width="1" stroke-opacity="0.5"/>
+  <text x="96" y="278" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="13" font-weight="600" fill="#e8e8e8">이미지 — 재인코딩·크롭</text>
+  <text x="96" y="300" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="12" fill="#888">스크린샷·메신저 압축·편집 앱 크롭은</text>
+  <text x="96" y="318" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="12" fill="#888">공격이 아닌데도 신호를 깎는다</text>
+  <text x="96" y="336" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="12" fill="#888">의도적 공격은 노이즈·회전을 더한다</text>
+
+  <!-- Right column: spoofing -->
+  <rect x="470" y="96" width="350" height="272" rx="10" fill="#14101a" stroke="#7777cc" stroke-width="1"/>
+  <text x="494" y="124" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="16" font-weight="600" fill="#7777cc">위조 — 없던 신호를 심는다</text>
+
+  <rect x="486" y="140" width="318" height="100" rx="8" fill="#100d18" stroke="#7777cc" stroke-width="1" stroke-opacity="0.5"/>
+  <text x="506" y="166" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="13" font-weight="600" fill="#e8e8e8">사람이 쓴 글에 심는다</text>
+  <text x="506" y="188" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="12" fill="#888">워터마크된 출력을 많이 모아 어떤</text>
+  <text x="506" y="206" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="12" fill="#888">낱말이 초록에 자주 걸리는지 통계를</text>
+  <text x="506" y="224" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="12" fill="#888">내면 키를 몰라도 흉내 낼 여지가 생긴다</text>
+
+  <rect x="486" y="252" width="318" height="100" rx="8" fill="#100d18" stroke="#7777cc" stroke-width="1" stroke-opacity="0.5"/>
+  <text x="506" y="278" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="13" font-weight="600" fill="#e8e8e8">쓸모가 뒤집힌다</text>
+  <text x="506" y="300" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="12" fill="#888">남의 글을 AI 생성물로 몰아 신뢰를</text>
+  <text x="506" y="318" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="12" fill="#888">떨어뜨리는 데 쓸 수 있다. 검출이 강한</text>
+  <text x="506" y="336" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="12" fill="#888">증거라는 말은 키가 새지 않아야 성립한다</text>
+
+  <!-- Attacker knowledge -->
+  <text x="60" y="404" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="16" font-weight="600" fill="#e8e8e8">공격자가 아는 것에 따라 난이도가 다르다</text>
+
+  <rect x="60" y="418" width="220" height="84" rx="10" fill="#14101a" stroke="#7777cc" stroke-width="1"/>
+  <text x="84" y="444" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="13" font-weight="600" fill="#e8e8e8">알고리즘만 안다</text>
+  <text x="84" y="466" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="12" fill="#888">어디를 고쳐야 점수가</text>
+  <text x="84" y="486" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="12" fill="#888">내려가는지 모른다</text>
+
+  <rect x="330" y="418" width="220" height="84" rx="10" fill="#1a0d0d" stroke="#e05555" stroke-width="1"/>
+  <text x="354" y="444" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="13" font-weight="600" fill="#e05555">검출기를 두드린다</text>
+  <text x="354" y="466" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="12" fill="#888">점수가 떨어지는 방향을</text>
+  <text x="354" y="486" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="12" fill="#888">더듬어 깎아 낼 수 있다</text>
+
+  <rect x="600" y="418" width="220" height="84" rx="10" fill="#1a0d0d" stroke="#e05555" stroke-width="1"/>
+  <text x="624" y="444" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="13" font-weight="600" fill="#e05555">출력을 대량 확보</text>
+  <text x="624" y="466" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="12" fill="#888">초록에 자주 걸리는</text>
+  <text x="624" y="486" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="12" fill="#888">낱말의 통계를 낸다</text>
+
+  <text x="440" y="536" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="12" fill="#888" text-anchor="middle">검출기를 공개 API로 열면 검증이 쉬워지고, 닫으면 공격이 어려워진다</text>
+</svg>

@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="340" viewBox="0 0 880 340" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <rect x="0" y="0" width="880" height="340" rx="12" fill="#0a0a0a"/>
+
+  <text x="60" y="50" font-size="22" font-weight="700" fill="#e8e8e8">재는 시작점을 옮기면 사흘이 30분이 된다</text>
+  <text x="60" y="76" font-size="13" fill="#888">신고로 알게 된 사건 하나를 두 가지 방식으로 잰 것이다.</text>
+
+  <path d="M 640 180 L 640 156 L 780 156 L 780 180" fill="none" stroke="#e05555" stroke-width="2"/>
+  <text x="710" y="142" font-size="13" fill="#e05555" text-anchor="middle">티켓부터 재면 30분</text>
+
+  <line x1="120" y1="180" x2="628" y2="180" stroke="#5a6a8e" stroke-width="2" stroke-dasharray="4,4"/>
+  <line x1="120" y1="172" x2="120" y2="188" stroke="#5a6a8e" stroke-width="2"/>
+  <line x1="628" y1="172" x2="628" y2="188" stroke="#5a6a8e" stroke-width="2"/>
+  <text x="374" y="166" font-size="13" fill="#888" text-anchor="middle">신고가 들어오기까지 사흘</text>
+
+  <line x1="100" y1="214" x2="800" y2="214" stroke="#3a4a6e" stroke-width="2"/>
+
+  <circle cx="120" cy="214" r="6" fill="#e05555"/>
+  <circle cx="640" cy="214" r="6" fill="#7777cc"/>
+  <circle cx="780" cy="214" r="6" fill="#55c555"/>
+
+  <text x="120" y="240" font-size="13" fill="#e8e8e8" text-anchor="middle">첫 성공 요청</text>
+  <text x="640" y="240" font-size="13" fill="#e8e8e8" text-anchor="middle">티켓 생성</text>
+  <text x="780" y="240" font-size="13" fill="#e8e8e8" text-anchor="middle">사례 확인</text>
+
+  <path d="M 120 252 L 120 276 L 780 276 L 780 252" fill="none" stroke="#55c555" stroke-width="2"/>
+  <text x="450" y="298" font-size="13" fill="#55c555" text-anchor="middle">첫 성공 요청부터 안 시각까지 = 제대로 잰 탐지 시간</text>
+
+  <text x="60" y="328" font-size="13" fill="#888">뒤쪽으로 재면 관측이 가장 느린 팀이 가장 빨라 보인다.</text>
+</svg>

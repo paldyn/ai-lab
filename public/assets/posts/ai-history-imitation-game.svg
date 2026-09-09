@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" viewBox="0 0 880 610"
+     style="font-family:'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+
+  <defs>
+    <marker id="arrHuman" viewBox="0 0 14 14" refX="12" refY="7"
+            markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#7ec8e3"/>
+    </marker>
+    <marker id="arrMachine" viewBox="0 0 14 14" refX="12" refY="7"
+            markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#7777cc"/>
+    </marker>
+  </defs>
+
+  <!-- Background -->
+  <rect width="880" height="610" fill="#0a0a0a" rx="12"/>
+
+  <!-- Title -->
+  <text x="440" y="50" text-anchor="middle" font-size="22" font-weight="700" fill="#e8e8e8">이미테이션 게임 (1950)</text>
+  <text x="440" y="74" text-anchor="middle" font-size="13" fill="#888">심판은 글로만 대화하고 어느 쪽이 기계인지 맞힌다</text>
+
+  <!-- Screen between judge and respondents -->
+  <line x1="470" y1="130" x2="470" y2="396" stroke="#555" stroke-width="2" stroke-dasharray="4,4"/>
+  <text x="470" y="418" text-anchor="middle" font-size="12" fill="#888">가림막 — 상대는 보이지 않는다</text>
+
+  <!-- Judge -->
+  <rect x="60" y="203" width="190" height="120" fill="#141414" rx="8" stroke="#555" stroke-width="1.5"/>
+  <text x="155" y="243" text-anchor="middle" font-size="16" font-weight="600" fill="#e8e8e8">심판</text>
+  <text x="155" y="269" text-anchor="middle" font-size="12" fill="#888">보이지 않는 상대와</text>
+  <text x="155" y="291" text-anchor="middle" font-size="12" fill="#888">글로만 대화한다</text>
+
+  <!-- Channel trunk -->
+  <line x1="250" y1="263" x2="400" y2="263" stroke="#555" stroke-width="2"/>
+  <line x1="400" y1="193" x2="400" y2="333" stroke="#555" stroke-width="2"/>
+  <text x="330" y="241" text-anchor="middle" font-size="12" fill="#888">질문도 답도 글로만</text>
+
+  <!-- Branch to human -->
+  <line x1="400" y1="193" x2="560" y2="193" stroke="#7ec8e3" stroke-width="2" marker-end="url(#arrHuman)"/>
+  <!-- Branch to machine -->
+  <line x1="400" y1="333" x2="560" y2="333" stroke="#7777cc" stroke-width="2" marker-end="url(#arrMachine)"/>
+
+  <!-- Respondent A: human -->
+  <rect x="560" y="150" width="260" height="86" fill="#0f1a1f" rx="8" stroke="#7ec8e3" stroke-width="1.5"/>
+  <text x="690" y="185" text-anchor="middle" font-size="16" font-weight="600" fill="#7ec8e3">상대 A · 사람</text>
+  <text x="690" y="209" text-anchor="middle" font-size="13" fill="#888">글로만 답한다</text>
+
+  <!-- Respondent B: machine -->
+  <rect x="560" y="290" width="260" height="86" fill="#111122" rx="8" stroke="#7777cc" stroke-width="1.5"/>
+  <text x="690" y="325" text-anchor="middle" font-size="16" font-weight="600" fill="#7777cc">상대 B · 기계</text>
+  <text x="690" y="349" text-anchor="middle" font-size="13" fill="#888">사람처럼 답하려 한다</text>
+
+  <!-- Verdict band -->
+  <rect x="60" y="440" width="760" height="110" fill="#141414" rx="8" stroke="#333" stroke-width="1"/>
+  <text x="440" y="470" text-anchor="middle" font-size="15" font-weight="600" fill="#e8e8e8">판정 — 심판을 충분히 자주 속이면 「생각한다」고 부른다</text>
+  <line x1="88" y1="484" x2="792" y2="484" stroke="#222" stroke-width="1"/>
+  <text x="440" y="506" text-anchor="middle" font-size="13" fill="#888">안에서 무슨 일이 일어나는지는 묻지 않고 밖으로 나온 행동만 본다</text>
+  <text x="440" y="528" text-anchor="middle" font-size="13" fill="#555">미뤄 둔 물음 — 행동이 같으면 같은 것인가</text>
+</svg>

@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="484" viewBox="0 0 880 484" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <defs>
+    <marker id="arrGray" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#888888"/>
+    </marker>
+  </defs>
+
+  <rect x="0" y="0" width="880" height="484" rx="12" fill="#0a0a0a"/>
+
+  <text x="60" y="46" font-size="22" font-weight="700" fill="#e8e8e8">제외 기준이 없는 라벨은 임계값으로 못 고친다</text>
+  <text x="60" y="70" font-size="13" fill="#888">포함 예시만 적어 두면 막고 싶지 않던 요청부터 걸린다.</text>
+
+  <rect x="249" y="88" width="380" height="52" rx="10" fill="#101418" stroke="#7777cc" stroke-width="1.5"/>
+  <text x="439" y="120" font-size="16" font-weight="600" fill="#e8e8e8" text-anchor="middle">포함 예시만 있는 「폭력」 라벨</text>
+
+  <line x1="439" y1="140" x2="439" y2="162" stroke="#888888" stroke-width="2" marker-end="url(#arrGray)"/>
+
+  <rect x="189" y="162" width="500" height="52" rx="10" fill="#101418" stroke="#7777cc" stroke-width="1.5"/>
+  <text x="439" y="194" font-size="16" fill="#e8e8e8" text-anchor="middle">폭력 어휘가 든 문장 전부가 높은 점수를 받는다</text>
+
+  <path d="M 439 214 L 439 238" fill="none" stroke="#888888" stroke-width="2"/>
+  <path d="M 173 238 L 705 238" fill="none" stroke="#888888" stroke-width="2"/>
+  <line x1="173" y1="238" x2="173" y2="260" stroke="#888888" stroke-width="2" marker-end="url(#arrGray)"/>
+  <line x1="439" y1="238" x2="439" y2="260" stroke="#888888" stroke-width="2" marker-end="url(#arrGray)"/>
+  <line x1="705" y1="238" x2="705" y2="260" stroke="#888888" stroke-width="2" marker-end="url(#arrGray)"/>
+
+  <rect x="60" y="260" width="226" height="92" rx="10" fill="#101418" stroke="#e05555" stroke-width="1.5"/>
+  <text x="173" y="288" font-size="16" font-weight="600" fill="#e8e8e8" text-anchor="middle">뉴스 요약</text>
+  <text x="173" y="310" font-size="12" fill="#888" text-anchor="middle">사건 기사를 넣은 사용자</text>
+  <text x="173" y="332" font-size="13" font-weight="600" fill="#e05555" text-anchor="middle">막힌다</text>
+
+  <rect x="326" y="260" width="226" height="92" rx="10" fill="#101418" stroke="#e05555" stroke-width="1.5"/>
+  <text x="439" y="288" font-size="16" font-weight="600" fill="#e8e8e8" text-anchor="middle">역사 과제</text>
+  <text x="439" y="310" font-size="12" fill="#888" text-anchor="middle">과제를 하던 학생</text>
+  <text x="439" y="332" font-size="13" font-weight="600" fill="#e05555" text-anchor="middle">막힌다</text>
+
+  <rect x="592" y="260" width="226" height="92" rx="10" fill="#101418" stroke="#e05555" stroke-width="1.5"/>
+  <text x="705" y="288" font-size="16" font-weight="600" fill="#e8e8e8" text-anchor="middle">가정폭력 상담</text>
+  <text x="705" y="310" font-size="12" fill="#888" text-anchor="middle">상담하려던 사용자</text>
+  <text x="705" y="332" font-size="13" font-weight="600" fill="#e05555" text-anchor="middle">막힌다</text>
+
+  <line x1="439" y1="352" x2="439" y2="376" stroke="#888888" stroke-width="2" marker-end="url(#arrGray)"/>
+
+  <rect x="189" y="376" width="500" height="64" rx="10" fill="#101418" stroke="#e05555" stroke-width="1.5"/>
+  <text x="439" y="402" font-size="15" font-weight="600" fill="#e8e8e8" text-anchor="middle">「모델이 과민하다」고 읽고 임계값을 올린다</text>
+  <text x="439" y="424" font-size="13" fill="#e05555" text-anchor="middle">이번에는 실제 위반이 새어 나간다</text>
+
+  <text x="60" y="470" font-size="13" fill="#888">원인은 임계값이 아니라 제외 기준이 없는 라벨이었다.</text>
+</svg>

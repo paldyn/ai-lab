@@ -1,0 +1,79 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" viewBox="0 0 880 580"
+     style="font-family:'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+
+  <defs>
+    <marker id="okArr" viewBox="0 0 14 14" refX="12" refY="7"
+            markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#55c555"/>
+    </marker>
+    <marker id="badArr" viewBox="0 0 14 14" refX="12" refY="7"
+            markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#e05555"/>
+    </marker>
+    <marker id="stepArr" viewBox="0 0 14 14" refX="12" refY="7"
+            markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#7ec8e3"/>
+    </marker>
+  </defs>
+
+  <!-- Background -->
+  <rect width="880" height="580" fill="#0a0a0a" rx="12"/>
+
+  <!-- Title -->
+  <text x="440" y="50" text-anchor="middle" font-size="22" font-weight="700" fill="#e8e8e8">점수가 오르는 두 갈래</text>
+  <text x="440" y="74" text-anchor="middle" font-size="13" fill="#888">같은 곡선을 두 가지로 읽을 수 있습니다</text>
+
+  <!-- Top node -->
+  <rect x="320" y="98" width="240" height="52" fill="#141414" rx="8" stroke="#555" stroke-width="1"/>
+  <text x="440" y="129" text-anchor="middle" font-size="14" font-weight="600" fill="#e8e8e8">벤치마크 점수가 올랐다</text>
+
+  <!-- Split -->
+  <line x1="440" y1="150" x2="440" y2="172" stroke="#555" stroke-width="2"/>
+  <line x1="240" y1="172" x2="640" y2="172" stroke="#555" stroke-width="2"/>
+  <line x1="240" y1="172" x2="240" y2="196" stroke="#55c555" stroke-width="2" marker-end="url(#okArr)"/>
+  <line x1="640" y1="172" x2="640" y2="196" stroke="#e05555" stroke-width="2" marker-end="url(#badArr)"/>
+
+  <!-- Left branch: real capability -->
+  <rect x="80" y="196" width="320" height="176" fill="#0f1f12" rx="8" stroke="#55c555" stroke-width="1.5"/>
+  <text x="240" y="224" text-anchor="middle" font-size="15" font-weight="600" fill="#55c555">능력이 늘어서</text>
+  <line x1="104" y1="236" x2="376" y2="236" stroke="#222" stroke-width="1"/>
+  <text x="104" y="262" font-size="12" fill="#e8e8e8">공개 세트</text>
+  <text x="376" y="262" text-anchor="end" font-size="12" fill="#55c555">오른다 ↑</text>
+  <text x="104" y="292" font-size="12" fill="#e8e8e8">새로 만든 비공개 문제</text>
+  <text x="376" y="292" text-anchor="end" font-size="12" fill="#55c555">오른다 ↑</text>
+  <text x="104" y="326" font-size="11.5" fill="#888">겉모습을 바꿔도 유지된다</text>
+  <text x="104" y="348" font-size="11.5" fill="#888">두 곳에서 함께 오른다</text>
+
+  <!-- Right branch: fitted to the test set -->
+  <rect x="480" y="196" width="320" height="176" fill="#1f0f0f" rx="8" stroke="#e05555" stroke-width="1.5"/>
+  <text x="640" y="224" text-anchor="middle" font-size="15" font-weight="600" fill="#e05555">문제집에 맞춰져서</text>
+  <line x1="504" y1="236" x2="776" y2="236" stroke="#222" stroke-width="1"/>
+  <text x="504" y="262" font-size="12" fill="#e8e8e8">공개 세트</text>
+  <text x="776" y="262" text-anchor="end" font-size="12" fill="#e05555">오른다 ↑</text>
+  <text x="504" y="292" font-size="12" fill="#e8e8e8">새로 만든 비공개 문제</text>
+  <text x="776" y="292" text-anchor="end" font-size="12" fill="#888">그대로 →</text>
+  <text x="504" y="326" font-size="11.5" fill="#888">오염 — 문제가 학습 데이터에 들어감</text>
+  <text x="504" y="348" font-size="11.5" fill="#888">과적합 — 점수가 목표가 되면 잣대가 아니다</text>
+
+  <!-- Bottom: how to tell them apart -->
+  <rect x="80" y="402" width="720" height="134" fill="#0f1a1f" rx="8" stroke="#7ec8e3" stroke-width="1.2"/>
+  <text x="440" y="428" text-anchor="middle" font-size="15" font-weight="600" fill="#7ec8e3">가르는 방법 — 같은 것을 묻되 겉모습을 바꾼다</text>
+
+  <rect x="104" y="442" width="196" height="56" fill="#0d0d0d" rx="6" stroke="#333" stroke-width="1"/>
+  <text x="202" y="463" text-anchor="middle" font-size="11.5" fill="#e8e8e8">이름과 숫자만 바꾼 문제</text>
+  <text x="202" y="482" text-anchor="middle" font-size="11" fill="#888">GSM8K · 구조는 그대로</text>
+
+  <line x1="300" y1="470" x2="340" y2="470" stroke="#7ec8e3" stroke-width="2" marker-end="url(#stepArr)"/>
+
+  <rect x="340" y="442" width="196" height="56" fill="#0d0d0d" rx="6" stroke="#333" stroke-width="1"/>
+  <text x="438" y="463" text-anchor="middle" font-size="11.5" fill="#e8e8e8">점수가 떨어졌다</text>
+  <text x="438" y="482" text-anchor="middle" font-size="11" fill="#888">같은 구조인데도</text>
+
+  <line x1="536" y1="470" x2="576" y2="470" stroke="#7ec8e3" stroke-width="2" marker-end="url(#stepArr)"/>
+
+  <rect x="576" y="442" width="196" height="56" fill="#0d0d0d" rx="6" stroke="#333" stroke-width="1"/>
+  <text x="674" y="463" text-anchor="middle" font-size="11.5" fill="#e8e8e8">무관한 문장을 끼우면</text>
+  <text x="674" y="482" text-anchor="middle" font-size="11" fill="#888">더 크게 떨어졌다</text>
+
+  <text x="440" y="522" text-anchor="middle" font-size="11.5" fill="#888">격차가 벌어질수록 그 잣대는 수명이 다한 것입니다.</text>
+</svg>

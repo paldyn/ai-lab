@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="480" viewBox="0 0 880 480">
+  <defs>
+    <marker id="thDrift" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#e0a055"/>
+    </marker>
+  </defs>
+
+  <rect x="0" y="0" width="880" height="480" rx="12" fill="#0a0a0a"/>
+
+  <text x="60" y="46" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="22" font-weight="700" fill="#e8e8e8">임계값을 옮기면 두 실패가 맞바뀐다</text>
+
+  <text x="100" y="76" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">실패 건수</text>
+  <line x1="100" y1="330" x2="100" y2="88" stroke="#555555" stroke-width="1.5"/>
+  <line x1="100" y1="330" x2="546" y2="330" stroke="#555555" stroke-width="1.5"/>
+
+  <path d="M 112 118 C 200 210, 300 268, 534 300" fill="none" stroke="#e05555" stroke-width="2.5"/>
+  <path d="M 112 300 C 260 288, 330 208, 534 118" fill="none" stroke="#7ec8e3" stroke-width="2.5"/>
+
+  <text x="552" y="304" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="600" fill="#e05555">놓침</text>
+  <text x="552" y="122" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="600" fill="#7ec8e3">과차단</text>
+
+  <text x="104" y="354" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">느슨</text>
+  <text x="320" y="354" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">임계값</text>
+  <text x="546" y="354" text-anchor="end" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">조임</text>
+
+  <rect x="620" y="110" width="200" height="86" rx="8" fill="#101820" stroke="#7ec8e3" stroke-width="1.5"/>
+  <text x="644" y="136" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#e8e8e8">과차단</text>
+  <text x="644" y="158" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">아무 데로도 오지</text>
+  <text x="644" y="178" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">않는다 · 그냥 떠난다</text>
+
+  <rect x="620" y="240" width="200" height="86" rx="8" fill="#1c1010" stroke="#e05555" stroke-width="1.5"/>
+  <text x="644" y="266" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#e8e8e8">놓침</text>
+  <text x="644" y="288" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">사고 보고서가 오고</text>
+  <text x="644" y="308" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">회의가 열린다</text>
+
+  <text x="335" y="392" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">조정은 조이는 쪽으로만 밀린다</text>
+  <line x1="150" y1="412" x2="520" y2="412" stroke="#e0a055" stroke-width="2" stroke-dasharray="5,3" marker-end="url(#thDrift)"/>
+
+  <text x="60" y="452" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">막으면 안 되는 입력까지 골든셋에 넣어야 두 숫자를 함께 보면서 옮길 수 있다.</text>
+</svg>

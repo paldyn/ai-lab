@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="560" viewBox="0 0 880 560">
+  <defs>
+    <style>text:not([font-family]) { font-family: 'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif; }</style>
+    <marker id="press" viewBox="0 0 14 14" refX="12" refY="7"
+            markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#e05555"/>
+    </marker>
+  </defs>
+  <rect width="880" height="560" fill="#0a0a0a" rx="12"/>
+
+  <!-- Title -->
+  <text x="440" y="46" text-anchor="middle" font-size="22" font-weight="700" fill="#e8e8e8">얇은 껍데기와 남는 제품</text>
+  <text x="440" y="72" text-anchor="middle" font-size="13" fill="#888">모델 API 위에 프롬프트 한 겹과 화면 하나만 얹은 제품이 안 남는 이유</text>
+
+  <!-- Left column -->
+  <text x="240" y="110" text-anchor="middle" font-size="16" font-weight="600" fill="#e05555">깎이는 두 힘</text>
+
+  <rect x="60" y="130" width="360" height="48" rx="8" fill="#111" stroke="#e05555" stroke-width="1"/>
+  <text x="240" y="160" text-anchor="middle" font-size="13" fill="#aaa">경쟁자가 같은 것을 한 주 만에 복제한다</text>
+
+  <line x1="240" y1="178" x2="240" y2="218" stroke="#e05555" stroke-width="2.5" marker-end="url(#press)"/>
+
+  <rect x="60" y="218" width="360" height="76" rx="8" fill="#2a1010" stroke="#e05555" stroke-width="1.5"/>
+  <text x="240" y="244" text-anchor="middle" font-size="15" font-weight="600" fill="#e05555">얇은 껍데기</text>
+  <text x="240" y="268" text-anchor="middle" font-size="12" fill="#aaa">모델 API 위에 프롬프트 한 겹</text>
+  <text x="240" y="286" text-anchor="middle" font-size="12" fill="#aaa">그리고 화면 하나</text>
+
+  <line x1="240" y1="334" x2="240" y2="294" stroke="#e05555" stroke-width="2.5" marker-end="url(#press)"/>
+
+  <rect x="60" y="334" width="360" height="48" rx="8" fill="#111" stroke="#e05555" stroke-width="1"/>
+  <text x="240" y="364" text-anchor="middle" font-size="13" fill="#aaa">모델 회사가 다음 버전에서 흡수한다</text>
+
+  <text x="240" y="414" text-anchor="middle" font-size="13" font-weight="600" fill="#e05555">원가는 아래층이 정하고 기능은 아래층이 흡수한다</text>
+  <text x="240" y="436" text-anchor="middle" font-size="12" fill="#888">그래서 남는 자리가 없다</text>
+
+  <!-- Right column -->
+  <text x="650" y="110" text-anchor="middle" font-size="16" font-weight="600" fill="#55c555">남는 제품</text>
+  <text x="650" y="132" text-anchor="middle" font-size="12" fill="#888">셋 중 하나를 갖고 있다</text>
+
+  <rect x="480" y="150" width="340" height="78" rx="8" fill="#0e2010" stroke="#55c555" stroke-width="1"/>
+  <text x="496" y="176" font-size="14" font-weight="600" fill="#55c555">모델이 못 보는 데이터</text>
+  <text x="496" y="200" font-size="12" fill="#aaa">고객사의 지난 3년치 상담 이력</text>
+  <text x="496" y="218" font-size="12" fill="#aaa">모델이 좋아져도 남에게 넘어가지 않는다</text>
+
+  <rect x="480" y="244" width="340" height="78" rx="8" fill="#0e2010" stroke="#55c555" stroke-width="1"/>
+  <text x="496" y="270" font-size="14" font-weight="600" fill="#55c555">업무 흐름 안에 박힘</text>
+  <text x="496" y="294" font-size="12" fill="#aaa">결재와 승인의 순서, 사내 시스템 연결</text>
+  <text x="496" y="312" font-size="12" fill="#aaa">빼내는 비용이 크다</text>
+
+  <rect x="480" y="338" width="340" height="78" rx="8" fill="#0e2010" stroke="#55c555" stroke-width="1"/>
+  <text x="496" y="364" font-size="14" font-weight="600" fill="#55c555">실패를 다루는 장치</text>
+  <text x="496" y="388" font-size="12" fill="#aaa">평가 세트 · 가드레일 · 감사 기록</text>
+  <text x="496" y="406" font-size="12" fill="#aaa">사람이 개입하는 지점</text>
+
+  <!-- Footer box -->
+  <rect x="60" y="462" width="760" height="68" rx="8" fill="#111" stroke="#333" stroke-width="1"/>
+  <text x="76" y="492" font-size="13" font-weight="600" fill="#e8e8e8">실패를 다루는 장치가 특히 과소평가된다</text>
+  <text x="76" y="514" font-size="12" fill="#888">데모에서는 안 보이지만 도입을 결정하는 자리에서는 거의 항상 물어보는 항목이다</text>
+</svg>

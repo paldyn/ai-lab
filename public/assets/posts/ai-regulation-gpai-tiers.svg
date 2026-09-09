@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="470" viewBox="0 0 880 470">
+  <rect width="880" height="470" fill="#0a0a0a" rx="12"/>
+
+  <!-- Title -->
+  <text x="440" y="46" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="22" font-weight="700" fill="#e8e8e8" text-anchor="middle">GPAI 의무의 두 층</text>
+  <text x="440" y="72" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="14" fill="#888" text-anchor="middle">연산량 문턱을 넘으면 기본 의무 위에 한 층이 더 얹힌다</text>
+
+  <!-- Upper tier: systemic risk -->
+  <rect x="140" y="100" width="600" height="115" rx="10" fill="#2a1010" stroke="#e05555" stroke-width="2"/>
+  <text x="170" y="134" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="16" font-weight="700" fill="#e05555">시스템적 위험 모델 — 추가 의무 넷</text>
+  <text x="170" y="166" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="13" fill="#e8e8e8">• 적대적 테스트 수행</text>
+  <text x="450" y="166" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="13" fill="#e8e8e8">• 심각한 사고의 당국 보고</text>
+  <text x="170" y="194" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="13" fill="#e8e8e8">• 사이버보안 조치</text>
+  <text x="450" y="194" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="13" fill="#e8e8e8">• 에너지 사용 공개</text>
+
+  <!-- Threshold divider -->
+  <line x1="140" y1="246" x2="290" y2="246" stroke="#e0a055" stroke-width="2" stroke-dasharray="5,3"/>
+  <line x1="590" y1="246" x2="740" y2="246" stroke="#e0a055" stroke-width="2" stroke-dasharray="5,3"/>
+  <rect x="290" y="228" width="300" height="36" rx="8" fill="#0a0a0a" stroke="#e0a055" stroke-width="1.5"/>
+  <text x="440" y="252" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="13" fill="#e0a055" text-anchor="middle">문턱: 학습 누적 연산량 10<tspan font-size="9" dy="-5">25</tspan><tspan dy="5"> FLOPs</tspan></text>
+
+  <!-- Base tier: all GPAI models -->
+  <rect x="140" y="282" width="600" height="143" rx="10" fill="#100d1a" stroke="#7777cc" stroke-width="2"/>
+  <text x="170" y="316" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="16" font-weight="700" fill="#7777cc">모든 GPAI 모델 — 기본 문서 세 벌</text>
+  <text x="170" y="348" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="13" fill="#e8e8e8">① 기술 문서 — 모델 구조·학습 방법·평가 결과·알려진 한계</text>
+  <text x="170" y="376" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="13" fill="#e8e8e8">② 다운스트림 제공자용 정보 — 가져다 쓰는 쪽이 자기 몫을 할 만큼</text>
+  <text x="170" y="404" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="13" fill="#e8e8e8">③ 저작권 정책과 학습 데이터 요약 — 학습 뒤에는 출처를 못 만든다</text>
+
+  <!-- Footer note -->
+  <text x="440" y="452" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="13" fill="#888" text-anchor="middle">고위험 의무는 용도를 보고 걸리지만, GPAI 의무는 모델 자체에 걸린다</text>
+</svg>

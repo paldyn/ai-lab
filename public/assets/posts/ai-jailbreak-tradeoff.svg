@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="496" viewBox="0 0 880 496">
+  <rect width="880" height="496" fill="#0a0a0a" rx="12"/>
+
+  <!-- Title -->
+  <text x="440" y="46" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="22" font-weight="700" fill="#e8e8e8" text-anchor="middle">공격 성공률과 과잉 거절률</text>
+  <text x="440" y="72" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="14" fill="#888" text-anchor="middle">두 숫자를 나란히 놓기 전에는 어느 쪽이 나은지 판단할 수 없다</text>
+
+  <!-- Given -->
+  <rect x="60" y="96" width="760" height="48" rx="10" fill="#111318" stroke="#555555" stroke-width="1.5"/>
+  <text x="440" y="125" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="14" fill="#e8e8e8" text-anchor="middle">하루 요청 10만 건 · 그중 공격 100건 · 정상 99,900건</text>
+
+  <!-- Setting A -->
+  <rect x="60" y="170" width="350" height="136" rx="10" fill="#0d141a" stroke="#7ec8e3" stroke-width="1.5"/>
+  <text x="84" y="202" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="16" font-weight="600" fill="#7ec8e3">A 설정</text>
+  <text x="84" y="242" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="13" fill="#888">공격 성공률</text>
+  <text x="386" y="242" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="18" font-weight="700" fill="#e8e8e8" text-anchor="end">2%</text>
+  <text x="84" y="280" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="13" fill="#888">정상 통과율</text>
+  <text x="386" y="280" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="18" font-weight="700" fill="#e8e8e8" text-anchor="end">99%</text>
+
+  <!-- Setting B -->
+  <rect x="470" y="170" width="350" height="136" rx="10" fill="#14101a" stroke="#7777cc" stroke-width="1.5"/>
+  <text x="494" y="202" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="16" font-weight="600" fill="#7777cc">B 설정</text>
+  <text x="494" y="242" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="13" fill="#888">공격 성공률</text>
+  <text x="796" y="242" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="18" font-weight="700" fill="#e8e8e8" text-anchor="end">0.5%</text>
+  <text x="494" y="280" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="13" fill="#888">정상 통과율</text>
+  <text x="796" y="280" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="18" font-weight="700" fill="#e8e8e8" text-anchor="end">88%</text>
+
+  <!-- Absolute counts -->
+  <rect x="60" y="336" width="760" height="120" rx="10" fill="#111318" stroke="#555555" stroke-width="1.5"/>
+  <text x="84" y="366" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="14" font-weight="600" fill="#e8e8e8">A에서 B로 바꾸면</text>
+
+  <text x="84" y="402" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="13" fill="#e8e8e8">더 막는 공격</text>
+  <rect x="280" y="392" width="380" height="14" rx="7" fill="#1f1f28"/>
+  <rect x="280" y="392" width="3" height="14" rx="1.5" fill="#55c555"/>
+  <text x="680" y="402" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="13" fill="#55c555">하루 1.5건</text>
+
+  <text x="84" y="434" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="13" fill="#e8e8e8">더 막는 정상 요청</text>
+  <rect x="280" y="424" width="380" height="14" rx="7" fill="#1f1f28"/>
+  <rect x="280" y="424" width="380" height="14" rx="7" fill="#e05555"/>
+  <text x="680" y="434" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="13" fill="#e05555">약 11,000건</text>
+
+  <text x="440" y="476" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="13" fill="#888" text-anchor="middle">두 막대는 같은 축이다 — 위쪽은 실제 비율보다 굵게 그렸다</text>
+</svg>

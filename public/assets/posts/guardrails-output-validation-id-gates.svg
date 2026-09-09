@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="330" viewBox="0 0 880 330">
+  <defs>
+    <marker id="gateArr" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#7ec8e3"/>
+    </marker>
+  </defs>
+
+  <rect x="0" y="0" width="880" height="330" rx="12" fill="#0a0a0a"/>
+
+  <text x="60" y="46" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="22" font-weight="700" fill="#e8e8e8">식별자는 세 관문을 지난다</text>
+  <text x="60" y="76" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">답에 나온 document_id · order_id · 도구 이름 · 사번을 차례로 건다</text>
+
+  <rect x="60" y="104" width="213" height="130" rx="8" fill="#12161c" stroke="#7777cc" stroke-width="1.5"/>
+  <text x="84" y="136" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#e8e8e8">스키마 검사</text>
+  <text x="84" y="160" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">필드 · 열거값 · 범위</text>
+  <text x="84" y="182" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">형태만 본다</text>
+  <line x1="80" y1="194" x2="253" y2="194" stroke="#2e2e2e" stroke-width="1"/>
+  <text x="84" y="212" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e05555">지어낸 번호도 통과</text>
+
+  <rect x="333" y="104" width="213" height="130" rx="8" fill="#101c10" stroke="#55c555" stroke-width="1.5"/>
+  <text x="357" y="136" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#e8e8e8">참조 무결성</text>
+  <text x="357" y="160" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">목록에 한 번 조회</text>
+  <text x="357" y="182" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">값이 실제로 있는가</text>
+  <line x1="353" y1="194" x2="526" y2="194" stroke="#2e2e2e" stroke-width="1"/>
+  <text x="357" y="212" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#55c555">없는 id가 걸린다</text>
+
+  <rect x="606" y="104" width="214" height="130" rx="8" fill="#101c10" stroke="#55c555" stroke-width="1.5"/>
+  <text x="630" y="136" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#e8e8e8">권한 대조</text>
+  <text x="630" y="160" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">요청자 권한으로 재조회</text>
+  <text x="630" y="182" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">이 사람이 봐도 되나</text>
+  <line x1="626" y1="194" x2="800" y2="194" stroke="#2e2e2e" stroke-width="1"/>
+  <text x="630" y="212" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#55c555">남의 문서 인용을 뺀다</text>
+
+  <line x1="273" y1="169" x2="333" y2="169" stroke="#7ec8e3" stroke-width="2" marker-end="url(#gateArr)"/>
+  <line x1="546" y1="169" x2="606" y2="169" stroke="#7ec8e3" stroke-width="2" marker-end="url(#gateArr)"/>
+
+  <text x="60" y="290" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">형태가 완벽할수록 더 위험한 유형인데, 조회 한 번이면 100% 잡힌다.</text>
+</svg>

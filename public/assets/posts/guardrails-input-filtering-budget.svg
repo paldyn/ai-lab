@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="380" viewBox="0 0 880 380">
+  <defs>
+    <marker id="bgtArr" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#e05555"/>
+    </marker>
+  </defs>
+
+  <rect x="0" y="0" width="880" height="380" rx="12" fill="#0a0a0a"/>
+
+  <text x="60" y="46" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="22" font-weight="700" fill="#e8e8e8">요청 100건이 하루 토큰의 20%를 가져간다</text>
+  <text x="60" y="74" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">하루 요청 1만 건 · 문맥 평균 2천 토큰 · 붙여 넣은 문서 5만 토큰</text>
+
+  <text x="820" y="104" text-anchor="end" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e05555">붙여 넣은 문서 100건 · 전체의 1%</text>
+  <line x1="817" y1="110" x2="817" y2="120" stroke="#e05555" stroke-width="1.5"/>
+
+  <text x="60" y="143" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#e8e8e8">요청 수</text>
+  <text x="60" y="163" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">하루 1만 건</text>
+
+  <rect x="210" y="120" width="604" height="54" fill="#12161c" stroke="#555555" stroke-width="1.5"/>
+  <rect x="814" y="120" width="6" height="54" fill="#e05555"/>
+  <text x="512" y="151" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="14" fill="#e8e8e8">나머지 요청</text>
+
+  <line x1="816" y1="176" x2="762" y2="228" stroke="#e05555" stroke-width="1.5" marker-end="url(#bgtArr)"/>
+  <text x="700" y="206" text-anchor="end" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">같은 100건</text>
+
+  <text x="60" y="253" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#e8e8e8">토큰 사용량</text>
+  <text x="60" y="273" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">2천만 + 500만</text>
+
+  <rect x="210" y="230" width="488" height="54" fill="#12161c" stroke="#555555" stroke-width="1.5"/>
+  <text x="454" y="252" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="14" font-weight="600" fill="#e8e8e8">정상 문맥</text>
+  <text x="454" y="271" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">2천만 토큰</text>
+
+  <rect x="698" y="230" width="122" height="54" fill="#1c1010" stroke="#e05555" stroke-width="1.5"/>
+  <text x="759" y="252" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="14" font-weight="600" fill="#e8e8e8">+500만</text>
+  <text x="759" y="271" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e05555">20%</text>
+
+  <text x="60" y="352" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">상한은 감이 아니라 지금 들어오는 요청 길이의 99번째 백분위수를 재서 정한다.</text>
+</svg>

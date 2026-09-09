@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" viewBox="0 0 880 500"
+     style="font-family:'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+
+  <defs>
+    <marker id="gridUp" viewBox="0 0 14 14" refX="12" refY="7"
+            markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#7777cc"/>
+    </marker>
+  </defs>
+
+  <!-- Background -->
+  <rect width="880" height="500" fill="#0a0a0a" rx="12"/>
+
+  <!-- Title -->
+  <text x="440" y="50" text-anchor="middle" font-size="22" font-weight="700" fill="#e8e8e8">성능과 범용성 — 격자로 보는 AGI</text>
+  <text x="440" y="74" text-anchor="middle" font-size="13" fill="#888">AI 전체를 한 점으로 찍지 않아도 된다</text>
+
+  <!-- Plot area -->
+  <text x="150" y="104" text-anchor="end" font-size="13" fill="#888">성능 ↑</text>
+  <rect x="160" y="112" width="600" height="252" fill="#0d0d0d" rx="8" stroke="#333" stroke-width="1"/>
+
+  <!-- Reference lines -->
+  <line x1="160" y1="200" x2="760" y2="200" stroke="#555" stroke-width="1.5" stroke-dasharray="5,3"/>
+  <line x1="460" y1="112" x2="460" y2="364" stroke="#555" stroke-width="1.5" stroke-dasharray="5,3"/>
+
+  <!-- Y ticks -->
+  <text x="150" y="152" text-anchor="end" font-size="12" fill="#888">사람 위</text>
+  <text x="150" y="204" text-anchor="end" font-size="12" fill="#888">사람 수준</text>
+  <text x="150" y="320" text-anchor="end" font-size="12" fill="#888">사람 아래</text>
+
+  <!-- Upper-left: narrow superhuman -->
+  <rect x="192" y="126" width="236" height="56" fill="#111122" rx="8" stroke="#7777cc" stroke-width="1.5"/>
+  <text x="310" y="148" text-anchor="middle" font-size="13" font-weight="600" fill="#7777cc">좁은 축의 초인간</text>
+  <text x="310" y="167" text-anchor="middle" font-size="11.5" fill="#888">체스 · 단백질 구조 예측</text>
+
+  <!-- Upper-right: AGI, still empty -->
+  <rect x="492" y="126" width="236" height="56" fill="#0f1a1f" rx="8" stroke="#7ec8e3" stroke-width="1.5" stroke-dasharray="5,3"/>
+  <text x="610" y="148" text-anchor="middle" font-size="13" font-weight="600" fill="#7ec8e3">AGI</text>
+  <text x="610" y="167" text-anchor="middle" font-size="11.5" fill="#888">아직 채워지지 않은 칸</text>
+
+  <!-- Lower-left: today's LLM -->
+  <rect x="192" y="246" width="236" height="56" fill="#111122" rx="8" stroke="#7777cc" stroke-width="1.5"/>
+  <text x="310" y="268" text-anchor="middle" font-size="13" font-weight="600" fill="#7777cc">오늘의 LLM</text>
+  <text x="310" y="287" text-anchor="middle" font-size="11.5" fill="#888">범용 축에서는 초기 단계</text>
+
+  <!-- Annotation: some narrow tasks already above the human line -->
+  <line x1="250" y1="246" x2="250" y2="202" stroke="#7777cc" stroke-width="2" marker-end="url(#gridUp)"/>
+  <text x="270" y="228" font-size="12" fill="#888">지식 시험은 평균 응시자 위</text>
+
+  <!-- X axis -->
+  <text x="310" y="386" text-anchor="middle" font-size="12" fill="#888">좁음</text>
+  <text x="610" y="386" text-anchor="middle" font-size="12" fill="#888">넓음</text>
+  <text x="760" y="386" text-anchor="end" font-size="13" fill="#888">범용성 →</text>
+
+  <!-- Bottom note -->
+  <rect x="60" y="406" width="760" height="62" fill="#141414" rx="8" stroke="#333" stroke-width="1"/>
+  <text x="440" y="428" text-anchor="middle" font-size="13" font-weight="600" fill="#e8e8e8">같은 AI라도 축마다 다른 칸에 선다</text>
+  <text x="440" y="448" text-anchor="middle" font-size="12" fill="#888">성능만 보면 이미 넘어선 칸이 있고, 범용성 축에서는 초기 단계입니다.</text>
+</svg>

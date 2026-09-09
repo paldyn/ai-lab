@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="420" viewBox="0 0 880 420">
+  <rect x="0" y="0" width="880" height="420" rx="12" fill="#0a0a0a"/>
+
+  <text x="60" y="46" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="22" font-weight="700" fill="#e8e8e8">순서대로 기다리면 360밀리초, 동시에 돌리면 120밀리초</text>
+  <text x="60" y="74" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">각각 120밀리초짜리 분류기 셋 · 빠른 것부터 직렬로, 느린 것은 병렬로</text>
+
+  <text x="413" y="104" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#55c555">분류기 하나 걸리는 시간에 셋이 끝난다</text>
+
+  <text x="60" y="141" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#e8e8e8">직렬</text>
+  <text x="60" y="161" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e05555">합계 360밀리초</text>
+
+  <rect x="210" y="118" width="202" height="56" fill="#1c1410" stroke="#e0a055" stroke-width="1.5"/>
+  <text x="311" y="141" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="14" font-weight="600" fill="#e8e8e8">분류기 A</text>
+  <text x="311" y="160" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">120밀리초</text>
+
+  <rect x="414" y="118" width="202" height="56" fill="#1c1410" stroke="#e0a055" stroke-width="1.5"/>
+  <text x="515" y="141" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="14" font-weight="600" fill="#e8e8e8">분류기 B</text>
+  <text x="515" y="160" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">120밀리초</text>
+
+  <rect x="618" y="118" width="202" height="56" fill="#1c1410" stroke="#e0a055" stroke-width="1.5"/>
+  <text x="719" y="141" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="14" font-weight="600" fill="#e8e8e8">분류기 C</text>
+  <text x="719" y="160" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">120밀리초</text>
+
+  <text x="60" y="278" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#e8e8e8">병렬</text>
+  <text x="60" y="298" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#55c555">합계 120밀리초</text>
+
+  <rect x="210" y="210" width="203" height="44" fill="#101c10" stroke="#55c555" stroke-width="1.5"/>
+  <text x="234" y="236" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="14" fill="#e8e8e8">분류기 A · 120밀리초</text>
+
+  <rect x="210" y="262" width="203" height="44" fill="#101c10" stroke="#55c555" stroke-width="1.5"/>
+  <text x="234" y="288" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="14" fill="#e8e8e8">분류기 B · 120밀리초</text>
+
+  <rect x="210" y="314" width="203" height="44" fill="#101c10" stroke="#55c555" stroke-width="1.5"/>
+  <text x="234" y="340" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="14" fill="#e8e8e8">분류기 C · 120밀리초</text>
+
+  <text x="60" y="392" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">빠른 검사를 앞에 세우면 어차피 막힐 요청에 분류기 비용을 먼저 쓰지 않는다.</text>
+  <line x1="413" y1="112" x2="413" y2="366" stroke="#55c555" stroke-width="2" stroke-dasharray="4,4"/>
+</svg>

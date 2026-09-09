@@ -1,0 +1,83 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="480" viewBox="0 0 880 480">
+  <defs>
+    <marker id="arrv" viewBox="0 0 14 14" refX="12" refY="7"
+            markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#7777cc"/>
+    </marker>
+  </defs>
+  <rect width="880" height="480" fill="#0a0a0a" rx="12"/>
+
+  <!-- Title -->
+  <text x="440" y="46" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="22" font-weight="700" fill="#e8e8e8" text-anchor="middle">요청 하나가 남는 네 자리</text>
+  <text x="440" y="72" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="14" fill="#888" text-anchor="middle">학습은 그중 하나다 — 주체도 기간도 다르다</text>
+
+  <!-- Source: our request -->
+  <rect x="60" y="232" width="190" height="80" rx="10" fill="#1a1a2a" stroke="#7777cc" stroke-width="2"/>
+  <text x="155" y="260" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="15" font-weight="600" fill="#7777cc" text-anchor="middle">우리가 보낸 요청</text>
+  <text x="155" y="282" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="12" fill="#888" text-anchor="middle">문장에 이름이 있으면</text>
+  <text x="155" y="300" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="12" fill="#888" text-anchor="middle">그 문장이 개인정보다</text>
+
+  <!-- Trunk -->
+  <line x1="250" y1="272" x2="300" y2="272" stroke="#7777cc" stroke-width="2"/>
+  <line x1="300" y1="138" x2="300" y2="384" stroke="#7777cc" stroke-width="2"/>
+  <line x1="300" y1="138" x2="350" y2="138" stroke="#7777cc" stroke-width="2" marker-end="url(#arrv)"/>
+  <line x1="300" y1="220" x2="350" y2="220" stroke="#7777cc" stroke-width="2" marker-end="url(#arrv)"/>
+  <line x1="300" y1="302" x2="350" y2="302" stroke="#7777cc" stroke-width="2" marker-end="url(#arrv)"/>
+  <line x1="300" y1="384" x2="350" y2="384" stroke="#7777cc" stroke-width="2" marker-end="url(#arrv)"/>
+
+  <!-- 1. Request body -->
+  <rect x="350" y="104" width="470" height="68" rx="8" fill="#0d1620" stroke="#7ec8e3" stroke-width="1"/>
+  <text x="370" y="126" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="13" font-weight="600" fill="#7ec8e3">요청 본문</text>
+  <text x="370" y="144" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="11" fill="#888">처리하는 동안 메모리에 있고</text>
+  <text x="370" y="162" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="11" fill="#888">보통 응답과 함께 사라진다</text>
+
+  <!-- 2. Logs -->
+  <rect x="350" y="186" width="470" height="68" rx="8" fill="#1a140a" stroke="#e0a055" stroke-width="1"/>
+  <text x="370" y="208" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="13" font-weight="600" fill="#e0a055">로그</text>
+  <text x="370" y="226" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="11" fill="#888">오류 추적 · 남용 감시 · 과금 대조</text>
+  <text x="370" y="244" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="11" fill="#888">기록되고 보관 기간이 붙는다</text>
+
+  <!-- 3. Caches -->
+  <rect x="350" y="268" width="470" height="68" rx="8" fill="#1a140a" stroke="#e0a055" stroke-width="1"/>
+  <text x="370" y="290" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="13" font-weight="600" fill="#e0a055">캐시</text>
+  <text x="370" y="308" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="11" fill="#888">프롬프트 캐시 · 임베딩 저장소 · CDN 응답 캐시</text>
+  <text x="370" y="326" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="11" fill="#888">각각 다른 수명을 갖는다</text>
+
+  <!-- 4. Training -->
+  <rect x="350" y="350" width="470" height="68" rx="8" fill="#1a100a" stroke="#e05555" stroke-width="1"/>
+  <text x="370" y="372" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="13" font-weight="600" fill="#e05555">학습</text>
+  <text x="370" y="390" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="11" fill="#888">설정으로 끄고 켠다 — 껐어도</text>
+  <text x="370" y="408" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="11" fill="#888">로그와 캐시는 그대로 남는다</text>
+
+  <!-- Side note: region -->
+  <rect x="60" y="334" width="190" height="84" rx="8" fill="#12121a" stroke="#7777cc" stroke-width="1" stroke-opacity="0.5"/>
+  <text x="80" y="356" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="12" font-weight="600" fill="#7777cc">리전도 따로 본다</text>
+  <text x="80" y="374" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="11" fill="#888">추론이 도는 리전과</text>
+  <text x="80" y="392" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="11" fill="#888">로그·모니터링이 모이는</text>
+  <text x="80" y="410" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="11" fill="#888">리전은 다를 수 있다</text>
+
+  <!-- Bottom note -->
+  <text x="440" y="452" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="12" fill="#888" text-anchor="middle">물을 것은 「학습에 쓰나요」가 아니라 「요청 본문이 어디에 얼마나 남나요」다</text>
+</svg>

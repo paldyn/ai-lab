@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="370" viewBox="0 0 880 370" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <rect x="0" y="0" width="880" height="370" rx="12" fill="#0a0a0a"/>
+
+  <text x="60" y="50" font-size="22" font-weight="700" fill="#e8e8e8">패치는 교환이다 — 두 값을 함께 잰다</text>
+  <text x="60" y="76" font-size="13" fill="#888">골든 세트는 사람이 「이건 응답해야 한다」고 확인해 둔 정상 요청 몇백 건이다.</text>
+
+  <rect x="60" y="110" width="350" height="199" rx="10" fill="#101418" stroke="#3a4a6e" stroke-width="1.5"/>
+  <text x="84" y="142" font-size="16" font-weight="600" fill="#e8e8e8">막지 못한 탈옥 변형</text>
+
+  <text x="84" y="194" font-size="13" fill="#888">패치 전</text>
+  <rect x="150" y="176" width="200" height="26" rx="4" fill="#e05555"/>
+  <text x="358" y="194" font-size="13" fill="#e8e8e8">6개</text>
+
+  <text x="84" y="244" font-size="13" fill="#888">패치 후</text>
+  <rect x="150" y="226" width="200" height="26" rx="4" fill="none" stroke="#3a4a6e" stroke-width="1" stroke-dasharray="4,4"/>
+  <rect x="150" y="226" width="6" height="26" rx="3" fill="#55c555"/>
+  <text x="170" y="244" font-size="13" fill="#55c555">0개</text>
+
+  <text x="84" y="288" font-size="12" fill="#888">통하던 변형 여섯이 전부 막혔다</text>
+
+  <rect x="470" y="110" width="350" height="199" rx="10" fill="#101418" stroke="#3a4a6e" stroke-width="1.5"/>
+  <text x="494" y="142" font-size="16" font-weight="600" fill="#e8e8e8">골든 세트 거절률</text>
+
+  <text x="494" y="194" font-size="13" fill="#888">패치 전</text>
+  <rect x="560" y="176" width="44" height="26" rx="4" fill="#55c555"/>
+  <text x="614" y="194" font-size="13" fill="#e8e8e8">2%</text>
+
+  <text x="494" y="244" font-size="13" fill="#888">패치 후</text>
+  <rect x="560" y="226" width="200" height="26" rx="4" fill="#e05555"/>
+  <text x="768" y="244" font-size="13" fill="#e05555">9%</text>
+
+  <text x="494" y="288" font-size="12" fill="#888">정상 요청도 같이 막히기 시작한다</text>
+
+  <text x="60" y="346" font-size="13" fill="#888">한쪽만 재면 성공한 패치로 보인다 — 골든 세트를 패치 전후로 함께 돌린다.</text>
+</svg>

@@ -1,0 +1,80 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="542" viewBox="0 0 880 542">
+  <rect width="880" height="542" fill="#0a0a0a" rx="12"/>
+
+  <!-- Title -->
+  <text x="440" y="46" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="22" font-weight="700" fill="#e8e8e8" text-anchor="middle">탐지 · 귀속 · 출처</text>
+  <text x="440" y="72" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="14" fill="#888" text-anchor="middle">무엇을 증명하려는가에 따라 난이도도, 맡는 기술도 다르다</text>
+
+  <!-- Row 1: detection -->
+  <rect x="60" y="96" width="760" height="72" rx="10" fill="#0a1820" stroke="#7ec8e3" stroke-width="1"/>
+  <line x1="250" y1="110" x2="250" y2="154" stroke="#7ec8e3" stroke-opacity="0.3" stroke-width="1"/>
+  <line x1="630" y1="110" x2="630" y2="154" stroke="#7ec8e3" stroke-opacity="0.3" stroke-width="1"/>
+  <text x="88" y="128" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="16" font-weight="600" fill="#7ec8e3">탐지</text>
+  <text x="88" y="150" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="12" fill="#888">detection</text>
+  <text x="274" y="128" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="14" fill="#e8e8e8">「어떤 생성 모델이 만들었다」</text>
+  <text x="274" y="150" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="12" fill="#888">어느 모델인지는 묻지 않는다</text>
+  <rect x="650" y="114" width="150" height="36" rx="6" fill="#0d2530" stroke="#7ec8e3" stroke-width="1" stroke-opacity="0.6"/>
+  <text x="725" y="136" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="12" fill="#7ec8e3" text-anchor="middle">워터마크</text>
+
+  <!-- Row 2: attribution -->
+  <rect x="60" y="180" width="760" height="72" rx="10" fill="#0a1820" stroke="#7ec8e3" stroke-width="1"/>
+  <line x1="250" y1="194" x2="250" y2="238" stroke="#7ec8e3" stroke-opacity="0.3" stroke-width="1"/>
+  <line x1="630" y1="194" x2="630" y2="238" stroke="#7ec8e3" stroke-opacity="0.3" stroke-width="1"/>
+  <text x="88" y="212" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="16" font-weight="600" fill="#7ec8e3">귀속</text>
+  <text x="88" y="234" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="12" fill="#888">attribution</text>
+  <text x="274" y="212" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="14" fill="#e8e8e8">「특정 모델, 특정 사업자의 출력이다」</text>
+  <text x="274" y="234" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="12" fill="#888">다른 모델의 신호와 구별돼야 한다</text>
+  <rect x="650" y="198" width="150" height="36" rx="6" fill="#0d2530" stroke="#7ec8e3" stroke-width="1" stroke-opacity="0.6"/>
+  <text x="725" y="220" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="12" fill="#7ec8e3" text-anchor="middle">워터마크</text>
+
+  <!-- Row 3: provenance -->
+  <rect x="60" y="264" width="760" height="72" rx="10" fill="#14101a" stroke="#7777cc" stroke-width="1"/>
+  <line x1="250" y1="278" x2="250" y2="322" stroke="#7777cc" stroke-opacity="0.3" stroke-width="1"/>
+  <line x1="630" y1="278" x2="630" y2="322" stroke="#7777cc" stroke-opacity="0.3" stroke-width="1"/>
+  <text x="88" y="296" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="16" font-weight="600" fill="#7777cc">출처</text>
+  <text x="88" y="318" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="12" fill="#888">provenance</text>
+  <text x="274" y="296" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="14" fill="#e8e8e8">「언제 어떤 도구에서 만들어졌고 누가 고쳤나」</text>
+  <text x="274" y="318" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="12" fill="#888">신호 하나로는 안 되고 별도 기록이 필요하다</text>
+  <rect x="650" y="282" width="150" height="36" rx="6" fill="#1a1526" stroke="#7777cc" stroke-width="1" stroke-opacity="0.6"/>
+  <text x="725" y="304" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="12" fill="#7777cc" text-anchor="middle">C2PA 메타데이터</text>
+
+  <!-- Evidence asymmetry -->
+  <text x="60" y="384" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="16" font-weight="600" fill="#e8e8e8">증거의 방향은 한쪽으로만 세다</text>
+
+  <rect x="60" y="398" width="350" height="84" rx="10" fill="#0d1a0a" stroke="#55c555" stroke-width="1"/>
+  <text x="84" y="424" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="14" font-weight="600" fill="#55c555">검출됐다 — 꽤 센 증거</text>
+  <text x="84" y="446" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="12" fill="#888">우연히 그 패턴이 나올 확률을</text>
+  <text x="84" y="466" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="12" fill="#888">십만분의 일 수준으로 떨어뜨릴 수 있다</text>
+
+  <rect x="470" y="398" width="350" height="84" rx="10" fill="#1a0d0d" stroke="#e05555" stroke-width="1"/>
+  <text x="494" y="424" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="14" font-weight="600" fill="#e05555">검출 안 됐다 — 거의 무증거</text>
+  <text x="494" y="446" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="12" fill="#888">워터마크를 안 넣는 모델일 수도 있고,</text>
+  <text x="494" y="466" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="12" fill="#888">넣은 뒤 지웠거나 글이 짧을 수도 있다</text>
+
+  <text x="440" y="516" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="12" fill="#888" text-anchor="middle">낼 수 있는 결론은 「이 모델을 거쳤을 가능성이 매우 높다」 하나뿐이다</text>
+</svg>

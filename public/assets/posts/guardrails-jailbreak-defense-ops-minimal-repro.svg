@@ -1,0 +1,109 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="360" viewBox="0 0 880 360" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <defs>
+    <marker id="arrBlue" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#7ec8e3"/>
+    </marker>
+    <marker id="arrRed" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#e05555"/>
+    </marker>
+  </defs>
+
+  <rect x="0" y="0" width="880" height="360" rx="12" fill="#0a0a0a"/>
+
+  <text x="60" y="50" font-size="22" font-weight="700" fill="#e8e8e8">스무 턴을 줄였다가 변형군으로 넓힌다</text>
+  <text x="60" y="76" font-size="13" fill="#888">올라온 통짜 기록을 다음 단계가 기계적으로 소화할 모양으로 바꾸는 자리다.</text>
+
+  <rect x="60" y="110" width="210" height="196" rx="10" fill="#101418" stroke="#3a4a6e" stroke-width="1.5"/>
+  <text x="84" y="142" font-size="16" font-weight="600" fill="#e8e8e8">올라온 기록</text>
+  <text x="84" y="180" font-size="24" font-weight="700" fill="#e8e8e8">20턴</text>
+  <g fill="#5a6a8e">
+    <rect x="84" y="206" width="5" height="34" rx="2"/>
+    <rect x="92" y="206" width="5" height="34" rx="2"/>
+    <rect x="100" y="206" width="5" height="34" rx="2"/>
+    <rect x="108" y="206" width="5" height="34" rx="2"/>
+    <rect x="116" y="206" width="5" height="34" rx="2"/>
+    <rect x="124" y="206" width="5" height="34" rx="2"/>
+    <rect x="132" y="206" width="5" height="34" rx="2"/>
+    <rect x="140" y="206" width="5" height="34" rx="2"/>
+    <rect x="148" y="206" width="5" height="34" rx="2"/>
+    <rect x="156" y="206" width="5" height="34" rx="2"/>
+    <rect x="164" y="206" width="5" height="34" rx="2"/>
+    <rect x="172" y="206" width="5" height="34" rx="2"/>
+    <rect x="180" y="206" width="5" height="34" rx="2"/>
+    <rect x="188" y="206" width="5" height="34" rx="2"/>
+    <rect x="196" y="206" width="5" height="34" rx="2"/>
+    <rect x="204" y="206" width="5" height="34" rx="2"/>
+    <rect x="212" y="206" width="5" height="34" rx="2"/>
+    <rect x="220" y="206" width="5" height="34" rx="2"/>
+    <rect x="228" y="206" width="5" height="34" rx="2"/>
+    <rect x="236" y="206" width="5" height="34" rx="2"/>
+  </g>
+  <text x="84" y="268" font-size="12" fill="#888">신고·표본에서 올라온</text>
+  <text x="84" y="286" font-size="12" fill="#888">대화 통짜 기록</text>
+
+  <line x1="270" y1="215" x2="335" y2="215" stroke="#7ec8e3" stroke-width="2" marker-end="url(#arrBlue)"/>
+  <text x="302" y="199" font-size="12" fill="#888" text-anchor="middle">줄인다</text>
+
+  <rect x="335" y="110" width="210" height="196" rx="10" fill="#101418" stroke="#7777cc" stroke-width="1.5"/>
+  <text x="359" y="142" font-size="16" font-weight="600" fill="#e8e8e8">최소 재현 케이스</text>
+  <text x="359" y="180" font-size="24" font-weight="700" fill="#7777cc">2~3턴</text>
+  <g fill="#242a35">
+    <rect x="359" y="206" width="5" height="34" rx="2"/>
+    <rect x="367" y="206" width="5" height="34" rx="2"/>
+    <rect x="375" y="206" width="5" height="34" rx="2"/>
+    <rect x="383" y="206" width="5" height="34" rx="2"/>
+    <rect x="391" y="206" width="5" height="34" rx="2"/>
+    <rect x="399" y="206" width="5" height="34" rx="2"/>
+    <rect x="407" y="206" width="5" height="34" rx="2"/>
+    <rect x="423" y="206" width="5" height="34" rx="2"/>
+    <rect x="431" y="206" width="5" height="34" rx="2"/>
+    <rect x="439" y="206" width="5" height="34" rx="2"/>
+    <rect x="447" y="206" width="5" height="34" rx="2"/>
+    <rect x="455" y="206" width="5" height="34" rx="2"/>
+    <rect x="463" y="206" width="5" height="34" rx="2"/>
+    <rect x="471" y="206" width="5" height="34" rx="2"/>
+    <rect x="487" y="206" width="5" height="34" rx="2"/>
+    <rect x="495" y="206" width="5" height="34" rx="2"/>
+    <rect x="503" y="206" width="5" height="34" rx="2"/>
+    <rect x="511" y="206" width="5" height="34" rx="2"/>
+  </g>
+  <rect x="415" y="200" width="5" height="46" rx="2" fill="#7777cc"/>
+  <rect x="479" y="200" width="5" height="46" rx="2" fill="#7777cc"/>
+  <text x="359" y="268" font-size="12" fill="#888">절반씩 잘라 네다섯 번에</text>
+  <text x="359" y="286" font-size="12" fill="#888">n번 중 k번으로 판정</text>
+
+  <line x1="545" y1="215" x2="610" y2="215" stroke="#e05555" stroke-width="2" marker-end="url(#arrRed)"/>
+  <text x="577" y="199" font-size="12" fill="#888" text-anchor="middle">넓힌다</text>
+
+  <rect x="610" y="110" width="210" height="196" rx="10" fill="#101418" stroke="#e05555" stroke-width="1.5"/>
+  <text x="634" y="142" font-size="16" font-weight="600" fill="#e8e8e8">변형군</text>
+  <text x="634" y="180" font-size="24" font-weight="700" fill="#e05555">6개 통과</text>
+  <g fill="#101418" stroke="#3a4a6e" stroke-width="1">
+    <rect x="634" y="206" width="14" height="14" rx="3"/>
+    <rect x="666" y="206" width="14" height="14" rx="3"/>
+    <rect x="682" y="206" width="14" height="14" rx="3"/>
+    <rect x="698" y="206" width="14" height="14" rx="3"/>
+    <rect x="730" y="206" width="14" height="14" rx="3"/>
+    <rect x="746" y="206" width="14" height="14" rx="3"/>
+    <rect x="762" y="206" width="14" height="14" rx="3"/>
+    <rect x="634" y="226" width="14" height="14" rx="3"/>
+    <rect x="650" y="226" width="14" height="14" rx="3"/>
+    <rect x="682" y="226" width="14" height="14" rx="3"/>
+    <rect x="698" y="226" width="14" height="14" rx="3"/>
+    <rect x="714" y="226" width="14" height="14" rx="3"/>
+    <rect x="746" y="226" width="14" height="14" rx="3"/>
+    <rect x="762" y="226" width="14" height="14" rx="3"/>
+  </g>
+  <g fill="#e05555">
+    <rect x="650" y="206" width="14" height="14" rx="3"/>
+    <rect x="714" y="206" width="14" height="14" rx="3"/>
+    <rect x="778" y="206" width="14" height="14" rx="3"/>
+    <rect x="666" y="226" width="14" height="14" rx="3"/>
+    <rect x="730" y="226" width="14" height="14" rx="3"/>
+    <rect x="778" y="226" width="14" height="14" rx="3"/>
+  </g>
+  <text x="634" y="268" font-size="12" fill="#888">같은 원리의 표현 20개 중</text>
+  <text x="634" y="286" font-size="12" fill="#888">패치 전에 통한 것</text>
+
+  <text x="60" y="340" font-size="13" fill="#888">원본 하나만 막으면 정확히 그 하나만 막힌다 — 패치의 합격 기준은 변형군이다.</text>
+</svg>

@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="420" viewBox="0 0 880 420">
+  <defs>
+    <marker id="thrArr" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#8a8a8a"/>
+    </marker>
+  </defs>
+
+  <rect x="0" y="0" width="880" height="420" rx="12" fill="#0a0a0a"/>
+
+  <text x="60" y="46" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="22" font-weight="700" fill="#e8e8e8">임계값 둘이 점수를 세 띠로 가른다</text>
+  <text x="60" y="74" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">위쪽 선을 넘으면 막고, 아래쪽 선을 넘으면 되묻고, 사이는 통과시키되 기록한다</text>
+
+  <text x="460" y="108" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#7ec8e3">아래쪽 선 · ASK</text>
+  <text x="660" y="108" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e05555">위쪽 선 · BLOCK</text>
+  <line x1="460" y1="116" x2="460" y2="140" stroke="#7ec8e3" stroke-width="2" stroke-dasharray="4,4"/>
+  <line x1="660" y1="116" x2="660" y2="140" stroke="#e05555" stroke-width="2" stroke-dasharray="4,4"/>
+
+  <rect x="120" y="140" width="340" height="64" fill="#101c10" stroke="#55c555" stroke-width="1.5"/>
+  <text x="290" y="165" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#e8e8e8">통과</text>
+  <text x="290" y="185" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">판정은 기록에 남긴다</text>
+
+  <rect x="460" y="140" width="200" height="64" fill="#1c1410" stroke="#e0a055" stroke-width="1.5"/>
+  <text x="560" y="165" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#e8e8e8">되묻기</text>
+  <text x="560" y="185" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">A인가요, B인가요</text>
+
+  <rect x="660" y="140" width="160" height="64" fill="#1c1010" stroke="#e05555" stroke-width="1.5"/>
+  <text x="740" y="165" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#e8e8e8">차단</text>
+  <text x="740" y="185" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">안내로 넘긴다</text>
+
+  <line x1="120" y1="224" x2="820" y2="224" stroke="#555555" stroke-width="1.5" marker-end="url(#thrArr)"/>
+  <text x="120" y="246" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">낮음</text>
+  <text x="470" y="246" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">위험 점수</text>
+  <text x="820" y="246" text-anchor="end" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">높음</text>
+
+  <text x="120" y="282" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">임계값이 하나뿐이면 어느 쪽으로도 진다</text>
+
+  <rect x="120" y="298" width="320" height="64" rx="8" fill="#1c1010" stroke="#e05555" stroke-width="1.5"/>
+  <text x="280" y="323" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#e8e8e8">선을 올리면</text>
+  <text x="280" y="343" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">위험이 샌다</text>
+
+  <rect x="500" y="298" width="320" height="64" rx="8" fill="#1c1410" stroke="#e0a055" stroke-width="1.5"/>
+  <text x="660" y="323" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#e8e8e8">선을 내리면</text>
+  <text x="660" y="343" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">정상 사용자가 막힌다</text>
+
+  <text x="60" y="392" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">차단이 유일한 결과가 아니다 — 안내로 넘기거나, 도구 없이 답하게 하거나, 사람에게 연결한다.</text>
+</svg>

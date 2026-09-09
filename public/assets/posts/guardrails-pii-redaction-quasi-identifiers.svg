@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="500" viewBox="0 0 880 500">
+  <defs>
+    <marker id="qidArr" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#8a8a8a"/>
+    </marker>
+  </defs>
+
+  <rect x="0" y="0" width="880" height="500" rx="12" fill="#0a0a0a"/>
+
+  <text x="60" y="46" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="22" font-weight="700" fill="#e8e8e8">조합의 가짓수가 인구보다 커지는 순간</text>
+  <text x="60" y="76" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">셋만으로 인구의 약 87%가 유일하게 특정되었다 (미국 1990년 인구조사)</text>
+
+  <rect x="60" y="102" width="200" height="64" rx="8" fill="#101820" stroke="#7ec8e3" stroke-width="1.5"/>
+  <text x="160" y="128" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#e8e8e8">생년월일</text>
+  <text x="160" y="150" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#7ec8e3">3만 6천 가지</text>
+
+  <text x="300" y="141" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="20" fill="#888">×</text>
+
+  <rect x="340" y="102" width="200" height="64" rx="8" fill="#101820" stroke="#7ec8e3" stroke-width="1.5"/>
+  <text x="440" y="128" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#e8e8e8">성별</text>
+  <text x="440" y="150" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#7ec8e3">2가지</text>
+
+  <text x="580" y="141" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="20" fill="#888">×</text>
+
+  <rect x="620" y="102" width="200" height="64" rx="8" fill="#101820" stroke="#7ec8e3" stroke-width="1.5"/>
+  <text x="720" y="128" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#e8e8e8">우편번호</text>
+  <text x="720" y="150" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#7ec8e3">3만 개 이상</text>
+
+  <line x1="440" y1="166" x2="440" y2="206" stroke="#8a8a8a" stroke-width="1.5" marker-end="url(#qidArr)"/>
+
+  <rect x="60" y="206" width="760" height="64" rx="8" fill="#12161c" stroke="#7777cc" stroke-width="1.5"/>
+  <text x="440" y="232" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#e8e8e8">곱하면 20억 가지가 넘는 칸</text>
+  <text x="440" y="254" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">인구는 5천만이니 한 칸에 평균 0.02명이 들어간다</text>
+
+  <text x="60" y="316" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">항목 셋 가운데 하나를 일반화하면 같은 칸이 이렇게 달라진다</text>
+
+  <rect x="60" y="332" width="350" height="108" rx="8" fill="#1c1010" stroke="#e05555" stroke-width="1.5"/>
+  <text x="235" y="360" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#e8e8e8">생년월일 그대로</text>
+  <text x="235" y="384" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e8e8e8">3만 6천 × 2 × 3만</text>
+  <text x="235" y="404" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">한 칸에 평균 0.02명</text>
+  <text x="235" y="424" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e05555">이름 없이도 특정된다</text>
+
+  <rect x="470" y="332" width="350" height="108" rx="8" fill="#101c10" stroke="#55c555" stroke-width="1.5"/>
+  <text x="645" y="360" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#e8e8e8">연령대로 일반화</text>
+  <text x="645" y="384" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e8e8e8">예닐곱 × 2 × 3만</text>
+  <text x="645" y="404" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">한 칸에 수백만 명</text>
+  <text x="645" y="424" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#55c555">특정이 무너진다</text>
+
+  <text x="60" y="474" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">준식별자는 개별로 판단하면 늘 괜찮아 보이고, 묶어서 판단해야 답이 달라진다.</text>
+</svg>

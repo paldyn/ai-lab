@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="560" viewBox="0 0 880 560">
+  <defs>
+    <style>text:not([font-family]) { font-family: 'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif; }</style>
+    <marker id="ax" viewBox="0 0 14 14" refX="12" refY="7"
+            markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#666"/>
+    </marker>
+  </defs>
+  <rect width="880" height="560" fill="#0a0a0a" rx="12"/>
+
+  <!-- Title -->
+  <text x="440" y="46" text-anchor="middle" font-size="22" font-weight="700" fill="#e8e8e8">API 종량제와 온프레미스의 교차점</text>
+  <text x="440" y="72" text-anchor="middle" font-size="13" fill="#888">물량이 늘면 어느 지점에서 싼 쪽이 맞바뀐다</text>
+
+  <!-- Axes -->
+  <text x="100" y="104" text-anchor="middle" font-size="12" fill="#888">월 비용</text>
+  <line x1="100" y1="380" x2="100" y2="116" stroke="#444" stroke-width="1.5" marker-end="url(#ax)"/>
+  <line x1="100" y1="380" x2="464" y2="380" stroke="#444" stroke-width="1.5" marker-end="url(#ax)"/>
+  <text x="108" y="402" font-size="12" fill="#888">월 처리 토큰 물량</text>
+
+  <!-- Cost lines -->
+  <line x1="100" y1="380" x2="440" y2="142" stroke="#7ec8e3" stroke-width="2.5"/>
+  <line x1="100" y1="266" x2="440" y2="198" stroke="#55c555" stroke-width="2.5"/>
+  <text x="432" y="134" text-anchor="end" font-size="13" font-weight="600" fill="#7ec8e3">API 종량제</text>
+  <text x="432" y="246" text-anchor="end" font-size="13" font-weight="600" fill="#55c555">온프레미스</text>
+
+  <!-- Crossover -->
+  <line x1="328" y1="220" x2="328" y2="380" stroke="#777" stroke-width="1.5" stroke-dasharray="4,4"/>
+  <circle cx="328" cy="220" r="5" fill="#0a0a0a" stroke="#e8e8e8" stroke-width="2"/>
+  <text x="328" y="402" text-anchor="middle" font-size="13" font-weight="600" fill="#e8e8e8">교차점</text>
+  <text x="328" y="422" text-anchor="middle" font-size="12" fill="#888">여기서 싼 쪽이 바뀐다</text>
+
+  <!-- Region labels -->
+  <text x="200" y="350" text-anchor="middle" font-size="13" fill="#7ec8e3">API가 싸다</text>
+  <text x="398" y="350" text-anchor="middle" font-size="13" fill="#55c555">온프레미스가 싸다</text>
+
+  <!-- Right column: API -->
+  <rect x="540" y="120" width="280" height="120" rx="8" fill="#0e1a2e" stroke="#7ec8e3" stroke-width="1"/>
+  <text x="556" y="152" font-size="16" font-weight="600" fill="#7ec8e3">API 종량제</text>
+  <text x="556" y="180" font-size="13" fill="#aaa">초기 비용이 없다</text>
+  <text x="556" y="202" font-size="13" fill="#aaa">쓴 만큼 낸다 — 물량에 비례</text>
+  <text x="556" y="224" font-size="13" fill="#aaa">물량이 적으면 이쪽이 싸다</text>
+
+  <!-- Right column: on-prem -->
+  <rect x="540" y="264" width="280" height="142" rx="8" fill="#0e2010" stroke="#55c555" stroke-width="1"/>
+  <text x="556" y="296" font-size="16" font-weight="600" fill="#55c555">온프레미스</text>
+  <text x="556" y="324" font-size="13" fill="#aaa">고정비가 먼저 나간다</text>
+  <text x="556" y="346" font-size="13" fill="#aaa">GPU 상각 · 놀고 있는 시간</text>
+  <text x="556" y="368" font-size="13" fill="#aaa">운영 인력 · 모델 이전 비용</text>
+  <text x="556" y="390" font-size="13" fill="#55c555">데이터는 밖으로 나가지 않는다</text>
+
+  <!-- Footer box -->
+  <rect x="60" y="450" width="760" height="66" rx="8" fill="#111" stroke="#333" stroke-width="1"/>
+  <text x="76" y="480" font-size="13" font-weight="600" fill="#e8e8e8">재는 법 — 한 달에 처리할 토큰 수 × API 단가  vs  그 물량을 감당할 GPU를 한 달 굴리는 값</text>
+  <text x="76" y="502" font-size="12" fill="#888">그 교차점이 어디인지 모르고 결정하면 어느 쪽을 골라도 근거가 없다</text>
+</svg>

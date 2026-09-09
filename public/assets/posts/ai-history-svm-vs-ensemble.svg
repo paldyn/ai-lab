@@ -1,0 +1,93 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" viewBox="0 0 880 630"
+     style="font-family:'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+
+  <defs>
+    <marker id="marginEnd" viewBox="0 0 14 14" refX="12" refY="7"
+            markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#e8e8e8"/>
+    </marker>
+    <marker id="marginStart" viewBox="0 0 14 14" refX="2" refY="7"
+            markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 14 0 L 1 7 L 14 14 z" fill="#e8e8e8"/>
+    </marker>
+    <marker id="voteArr" viewBox="0 0 14 14" refX="12" refY="7"
+            markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#7777cc"/>
+    </marker>
+  </defs>
+
+  <!-- Background -->
+  <rect width="880" height="630" fill="#0a0a0a" rx="12"/>
+
+  <!-- Title -->
+  <text x="440" y="50" text-anchor="middle" font-size="22" font-weight="700" fill="#e8e8e8">SVM과 앙상블 — 딥러닝 이전의 주류</text>
+  <text x="440" y="74" text-anchor="middle" font-size="13" fill="#888">1990년대 중반부터 2010년대 초까지 실무를 지배한 두 갈래</text>
+
+  <!-- Left panel: SVM -->
+  <rect x="60" y="110" width="350" height="320" fill="#0f1a1f" rx="8" stroke="#7ec8e3" stroke-width="1.5"/>
+  <text x="235" y="142" text-anchor="middle" font-size="15" font-weight="600" fill="#7ec8e3">SVM · 1995</text>
+  <text x="235" y="164" text-anchor="middle" font-size="12" fill="#888">여백이 최대인 경계를 고른다</text>
+  <line x1="84" y1="178" x2="386" y2="178" stroke="#222" stroke-width="1"/>
+
+  <!-- margin lines -->
+  <line x1="91" y1="308" x2="341" y2="198" stroke="#888" stroke-width="1.5" stroke-dasharray="4,4"/>
+  <line x1="119" y1="370" x2="369" y2="260" stroke="#888" stroke-width="1.5" stroke-dasharray="4,4"/>
+  <!-- decision boundary -->
+  <line x1="105" y1="339" x2="355" y2="229" stroke="#e8e8e8" stroke-width="2"/>
+
+  <!-- class one -->
+  <circle cx="120" cy="264" r="6" fill="#55c555"/>
+  <circle cx="150" cy="229" r="6" fill="#55c555"/>
+  <circle cx="196" cy="234" r="6" fill="#55c555"/>
+  <circle cx="255" cy="214" r="6" fill="#55c555"/>
+  <circle cx="171" cy="273" r="6" fill="#55c555"/>
+  <circle cx="171" cy="273" r="11" fill="none" stroke="#e8e8e8" stroke-width="1.5"/>
+  <circle cx="261" cy="233" r="6" fill="#55c555"/>
+  <circle cx="261" cy="233" r="11" fill="none" stroke="#e8e8e8" stroke-width="1.5"/>
+
+  <!-- class two -->
+  <circle cx="210" cy="356" r="6" fill="#7777cc"/>
+  <circle cx="265" cy="341" r="6" fill="#7777cc"/>
+  <circle cx="315" cy="316" r="6" fill="#7777cc"/>
+  <circle cx="350" cy="302" r="6" fill="#7777cc"/>
+  <circle cx="209" cy="330" r="6" fill="#7777cc"/>
+  <circle cx="209" cy="330" r="11" fill="none" stroke="#e8e8e8" stroke-width="1.5"/>
+
+  <!-- margin width -->
+  <line x1="216" y1="253" x2="244" y2="315" stroke="#e8e8e8" stroke-width="2"
+        marker-start="url(#marginStart)" marker-end="url(#marginEnd)"/>
+  <text x="272" y="288" text-anchor="middle" font-size="13" font-weight="600" fill="#e8e8e8">여백</text>
+
+  <text x="235" y="406" text-anchor="middle" font-size="12" fill="#555">동그라미 친 점이 경계를 정한다</text>
+
+  <!-- Right panel: ensemble -->
+  <rect x="470" y="110" width="350" height="320" fill="#111122" rx="8" stroke="#7777cc" stroke-width="1.5"/>
+  <text x="645" y="142" text-anchor="middle" font-size="15" font-weight="600" fill="#7777cc">앙상블 · 1997, 2001</text>
+  <text x="645" y="164" text-anchor="middle" font-size="12" fill="#888">약한 모형 여럿의 답을 모은다</text>
+  <line x1="494" y1="178" x2="796" y2="178" stroke="#222" stroke-width="1"/>
+
+  <rect x="496" y="194" width="134" height="52" fill="#0a0a0a" rx="6" stroke="#7777cc" stroke-width="1"/>
+  <text x="563" y="224" text-anchor="middle" font-size="13" fill="#e8e8e8">약한 모형 1</text>
+  <rect x="496" y="254" width="134" height="52" fill="#0a0a0a" rx="6" stroke="#7777cc" stroke-width="1"/>
+  <text x="563" y="284" text-anchor="middle" font-size="13" fill="#e8e8e8">약한 모형 2</text>
+  <rect x="496" y="314" width="134" height="52" fill="#0a0a0a" rx="6" stroke="#7777cc" stroke-width="1"/>
+  <text x="563" y="344" text-anchor="middle" font-size="13" fill="#e8e8e8">약한 모형 3</text>
+
+  <line x1="630" y1="220" x2="690" y2="262" stroke="#7777cc" stroke-width="2" marker-end="url(#voteArr)"/>
+  <line x1="630" y1="280" x2="690" y2="280" stroke="#7777cc" stroke-width="2" marker-end="url(#voteArr)"/>
+  <line x1="630" y1="340" x2="690" y2="298" stroke="#7777cc" stroke-width="2" marker-end="url(#voteArr)"/>
+
+  <rect x="690" y="230" width="105" height="100" fill="#141414" rx="8" stroke="#7777cc" stroke-width="1.5"/>
+  <text x="743" y="272" text-anchor="middle" font-size="15" font-weight="600" fill="#e8e8e8">투표</text>
+  <text x="743" y="296" text-anchor="middle" font-size="12" fill="#888">최종 답</text>
+
+  <text x="645" y="390" text-anchor="middle" font-size="12" fill="#555">AdaBoost — 틀린 예시에 가중치를 더 준다</text>
+  <text x="645" y="410" text-anchor="middle" font-size="12" fill="#555">랜덤 포레스트 — 트리 수백 개의 투표</text>
+
+  <!-- Shared cost band -->
+  <rect x="60" y="460" width="760" height="110" fill="#141414" rx="8" stroke="#333" stroke-width="1"/>
+  <text x="440" y="490" text-anchor="middle" font-size="15" font-weight="600" fill="#e8e8e8">두 방법이 함께 치른 값</text>
+  <line x1="88" y1="504" x2="792" y2="504" stroke="#222" stroke-width="1"/>
+  <text x="440" y="526" text-anchor="middle" font-size="13" fill="#888">예시 수천 개로 쓸 만한 성능이 나왔고 왜 되는지의 보장도 있었다</text>
+  <text x="440" y="548" text-anchor="middle" font-size="13" fill="#555">대신 모서리와 색 분포 같은 특징은 사람이 손으로 설계해야 했다</text>
+</svg>

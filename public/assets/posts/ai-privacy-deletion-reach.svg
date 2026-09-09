@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="480" viewBox="0 0 880 480">
+  <defs>
+    <marker id="arrDown" viewBox="0 0 14 14" refX="12" refY="7"
+            markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#888888"/>
+    </marker>
+  </defs>
+  <rect width="880" height="480" fill="#0a0a0a" rx="12"/>
+
+  <!-- Title -->
+  <text x="440" y="46" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="22" font-weight="700" fill="#e8e8e8" text-anchor="middle">삭제 요청이 닿아야 하는 자리</text>
+  <text x="440" y="72" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="14" fill="#888" text-anchor="middle">아래로 갈수록 비싸진다 — 원본 데이터베이스는 시작일 뿐이다</text>
+
+  <!-- cost axis -->
+  <line x1="78" y1="104" x2="78" y2="416" stroke="#888888" stroke-width="2" marker-end="url(#arrDown)"/>
+
+  <!-- 1. source database -->
+  <rect x="100" y="100" width="680" height="68" rx="8" fill="#0d1a0a" stroke="#55c555" stroke-width="1"/>
+  <text x="124" y="140" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="15" font-weight="600" fill="#55c555">원본 데이터베이스</text>
+  <text x="300" y="128" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="12" fill="#e8e8e8">행 하나를 지우면 사라진다</text>
+  <text x="300" y="150" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="12" fill="#888">AI 시스템에서 쉬운 것은 여기까지다</text>
+  <text x="756" y="140" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="12" fill="#55c555" text-anchor="end">쉽다</text>
+
+  <!-- 2. derived stores -->
+  <rect x="100" y="184" width="680" height="68" rx="8" fill="#0d1620" stroke="#7ec8e3" stroke-width="1"/>
+  <text x="124" y="224" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="15" font-weight="600" fill="#7ec8e3">파생된 자리</text>
+  <text x="300" y="212" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="12" fill="#e8e8e8">임베딩을 넣은 벡터 DB · 파생 데이터셋</text>
+  <text x="300" y="234" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="12" fill="#888">요청 로그 · 프롬프트 캐시</text>
+  <text x="756" y="224" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="12" fill="#7ec8e3" text-anchor="end">경로를 따라간다</text>
+
+  <!-- 3. backups -->
+  <rect x="100" y="268" width="680" height="68" rx="8" fill="#1a140a" stroke="#e0a055" stroke-width="1"/>
+  <text x="124" y="308" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="15" font-weight="600" fill="#e0a055">백업</text>
+  <text x="300" y="296" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="12" fill="#e8e8e8">지난 90일치 스냅샷마다 그 사람이 들어 있다</text>
+  <text x="300" y="318" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="12" fill="#888">통째로 다시 쓰는 것은 대개 불가능하다</text>
+  <text x="756" y="308" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="12" fill="#e0a055" text-anchor="end">복원 시 재적용</text>
+
+  <!-- 4. model parameters -->
+  <rect x="100" y="352" width="680" height="68" rx="8" fill="#1a100a" stroke="#e05555" stroke-width="1"/>
+  <text x="124" y="392" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="15" font-weight="600" fill="#e05555">모델 파라미터</text>
+  <text x="300" y="380" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="12" fill="#e8e8e8">한 사람 몫만 빼내는 연산이 없다</text>
+  <text x="300" y="402" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="12" fill="#888">원칙대로면 처음부터 다시 학습 — 수억 원대·수 주</text>
+  <text x="756" y="392" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="12" fill="#e05555" text-anchor="end">머신 언러닝은 연구 단계</text>
+
+  <!-- Bottom note -->
+  <text x="440" y="452" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="12" fill="#888" text-anchor="middle">지우는 비용이 이만큼이라, 애초에 안 넣는 것이 유일하게 값싼 대책이다</text>
+</svg>

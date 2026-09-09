@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="500" viewBox="0 0 880 500">
+  <defs>
+    <marker id="jcArr" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#8a8a8a"/>
+    </marker>
+  </defs>
+
+  <rect x="0" y="0" width="880" height="500" rx="12" fill="#0a0a0a"/>
+
+  <text x="60" y="46" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="22" font-weight="700" fill="#e8e8e8">판정 모델까지 올라가는 요청을 줄인다</text>
+  <text x="60" y="76" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">답이 300토큰이어도 검사에는 근거 문서 8,000토큰을 다시 넣는다 — 검사가 생성보다 비싸지는 자리다</text>
+
+  <rect x="60" y="100" width="760" height="60" rx="8" fill="#12161c" stroke="#555555" stroke-width="1.5"/>
+  <text x="84" y="124" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#e8e8e8">모든 응답</text>
+  <text x="84" y="144" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">출력 가드에 들어온 것 전부</text>
+
+  <line x1="120" y1="160" x2="120" y2="194" stroke="#8a8a8a" stroke-width="2" marker-end="url(#jcArr)"/>
+
+  <rect x="60" y="194" width="600" height="60" rx="8" fill="#12161c" stroke="#7ec8e3" stroke-width="1.5"/>
+  <text x="84" y="218" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#e8e8e8">위험도로 나눈다</text>
+  <text x="84" y="238" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">도구를 부르거나 밖으로 나가는 답만</text>
+  <line x1="660" y1="224" x2="692" y2="224" stroke="#555555" stroke-width="1"/>
+  <text x="700" y="228" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">나머지는 표본만</text>
+
+  <line x1="120" y1="254" x2="120" y2="288" stroke="#8a8a8a" stroke-width="2" marker-end="url(#jcArr)"/>
+
+  <rect x="60" y="288" width="440" height="60" rx="8" fill="#12161c" stroke="#7ec8e3" stroke-width="1.5"/>
+  <text x="84" y="312" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#e8e8e8">신호로 나눈다</text>
+  <text x="84" y="332" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">값싼 검사가 애매하다고 표시한 것만</text>
+  <line x1="500" y1="318" x2="532" y2="318" stroke="#555555" stroke-width="1"/>
+  <text x="540" y="322" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">나머지 85%는 값싼 검사만</text>
+
+  <line x1="120" y1="348" x2="120" y2="382" stroke="#8a8a8a" stroke-width="2" marker-end="url(#jcArr)"/>
+
+  <rect x="60" y="382" width="280" height="60" rx="8" fill="#101c10" stroke="#55c555" stroke-width="1.5"/>
+  <text x="84" y="406" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#e8e8e8">판정 모델 호출</text>
+  <text x="84" y="426" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">전체 요청의 5~15%</text>
+  <line x1="340" y1="412" x2="372" y2="412" stroke="#555555" stroke-width="1"/>
+  <text x="380" y="416" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">작은 모델이면 이 호출도 싸다</text>
+
+  <text x="60" y="474" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">검사 하나를 붙였는데 비용이 두 배가 아니라 세 배가 되는 자리가 여기다.</text>
+</svg>

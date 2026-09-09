@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="490" viewBox="0 0 880 490">
+  <defs>
+    <marker id="josArr" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#8a8a8a"/>
+    </marker>
+  </defs>
+
+  <rect x="0" y="0" width="880" height="490" rx="12" fill="#0a0a0a"/>
+
+  <text x="60" y="46" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="22" font-weight="700" fill="#e8e8e8">경계를 이름 끝에 두고 조사는 남긴다</text>
+
+  <text x="440" y="80" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">원문</text>
+  <rect x="270" y="90" width="340" height="48" rx="6" fill="#000000" stroke="#3a4a6e" stroke-width="1"/>
+  <text x="286" y="119" xml:space="preserve" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#ffffff">민수에게 연락 부탁드립니다</text>
+
+  <line x1="440" y1="138" x2="440" y2="164" stroke="#8a8a8a" stroke-width="1.5"/>
+  <line x1="235" y1="164" x2="645" y2="164" stroke="#8a8a8a" stroke-width="1.5"/>
+  <line x1="235" y1="164" x2="235" y2="200" stroke="#8a8a8a" stroke-width="1.5" marker-end="url(#josArr)"/>
+  <line x1="645" y1="164" x2="645" y2="200" stroke="#8a8a8a" stroke-width="1.5" marker-end="url(#josArr)"/>
+
+  <rect x="60" y="200" width="350" height="130" rx="8" fill="#0d120d" stroke="#55c555" stroke-width="1.5"/>
+  <text x="235" y="228" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#e8e8e8">조사는 남긴다</text>
+  <rect x="76" y="242" width="318" height="44" rx="6" fill="#000000" stroke="#3a4a6e" stroke-width="1"/>
+  <text x="92" y="269" xml:space="preserve" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#ffffff">&lt;PERSON_1&gt;<tspan fill="#55c555">에게</tspan> 연락 부탁드립니다</text>
+  <text x="235" y="312" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#55c555">격이 유지되어 관계가 그대로 보인다</text>
+
+  <rect x="470" y="200" width="350" height="130" rx="8" fill="#1c1010" stroke="#e05555" stroke-width="1.5"/>
+  <text x="645" y="228" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#e8e8e8">조사까지 삼킨다</text>
+  <rect x="486" y="242" width="318" height="44" rx="6" fill="#000000" stroke="#3a4a6e" stroke-width="1"/>
+  <text x="502" y="269" xml:space="preserve" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#ffffff">&lt;PERSON_1&gt; 연락 부탁드립니다</text>
+  <text x="645" y="312" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e05555">문장이 무너져 관계를 못 읽는다</text>
+
+  <text x="60" y="366" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">자리표 뒤의 조사는 복원한 값의 받침에 맞춰 고친다</text>
+
+  <rect x="80" y="388" width="200" height="48" rx="6" fill="#000000" stroke="#3a4a6e" stroke-width="1"/>
+  <text x="96" y="417" xml:space="preserve" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#ffffff">&lt;PERSON_1&gt;가 연락</text>
+  <text x="180" y="458" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">모델 출력</text>
+
+  <line x1="280" y1="412" x2="340" y2="412" stroke="#8a8a8a" stroke-width="1.5" marker-end="url(#josArr)"/>
+
+  <rect x="340" y="388" width="200" height="48" rx="6" fill="#000000" stroke="#3a4a6e" stroke-width="1"/>
+  <text x="356" y="417" xml:space="preserve" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#ffffff">박민준<tspan fill="#e05555">가</tspan> 연락</text>
+  <text x="440" y="458" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e05555">그대로 복원</text>
+
+  <line x1="540" y1="412" x2="600" y2="412" stroke="#8a8a8a" stroke-width="1.5" marker-end="url(#josArr)"/>
+
+  <rect x="600" y="388" width="200" height="48" rx="6" fill="#000000" stroke="#3a4a6e" stroke-width="1"/>
+  <text x="616" y="417" xml:space="preserve" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#ffffff">박민준<tspan fill="#55c555">이</tspan> 연락</text>
+  <text x="700" y="458" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#55c555">받침을 맞춰 복원</text>
+</svg>

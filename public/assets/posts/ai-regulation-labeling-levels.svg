@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="460" viewBox="0 0 880 460">
+  <rect width="880" height="460" fill="#0a0a0a" rx="12"/>
+
+  <!-- Title -->
+  <text x="440" y="46" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="22" font-weight="700" fill="#e8e8e8" text-anchor="middle">생성형 AI 표시의 두 수준</text>
+  <text x="440" y="72" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="14" fill="#888" text-anchor="middle">한국 AI 기본법의 표시 의무는 요구 수준이 둘로 갈린다</text>
+
+  <!-- Level 1: notify -->
+  <rect x="60" y="100" width="350" height="172" rx="10" fill="#0a1820" stroke="#7ec8e3" stroke-width="1.5"/>
+  <text x="86" y="134" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="17" font-weight="700" fill="#7ec8e3">「알린다」</text>
+  <text x="86" y="164" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="13" fill="#e8e8e8">AI가 만든 산출물이라는 사실을</text>
+  <text x="86" y="186" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="13" fill="#e8e8e8">이용자에게 알린다</text>
+  <line x1="86" y1="206" x2="384" y2="206" stroke="#333" stroke-width="1"/>
+  <text x="86" y="230" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="12" fill="#888">대상 — 생성형 AI 산출물 전반</text>
+  <text x="86" y="252" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="12" fill="#888">서비스 어딘가에 고지가 있으면 된다</text>
+
+  <!-- Level 2: make it plainly recognizable -->
+  <rect x="470" y="100" width="350" height="172" rx="10" fill="#1a140a" stroke="#e0a055" stroke-width="1.5"/>
+  <text x="496" y="134" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="17" font-weight="700" fill="#e0a055">「명확히 인식할 수 있게」</text>
+  <text x="496" y="164" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="13" fill="#e8e8e8">콘텐츠 자체가 보는 사람에게</text>
+  <text x="496" y="186" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="13" fill="#e8e8e8">만들어진 것임을 드러낸다</text>
+  <line x1="496" y1="206" x2="794" y2="206" stroke="#333" stroke-width="1"/>
+  <text x="496" y="230" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="12" fill="#888">대상 — 실제와 구분하기 어려운</text>
+  <text x="496" y="252" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="12" fill="#888">가상의 결과물</text>
+
+  <!-- Where the mark lives -->
+  <rect x="60" y="302" width="760" height="106" rx="10" fill="#100d1a" stroke="#7777cc" stroke-width="1.5"/>
+  <text x="86" y="334" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="15" font-weight="700" fill="#e8e8e8">표시를 두는 자리 — 둘을 함께 둔다</text>
+
+  <rect x="86" y="352" width="330" height="36" rx="6" fill="#2a1010" stroke="#e05555" stroke-width="1.5"/>
+  <text x="110" y="374" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="13" font-weight="600" fill="#e05555">화면에 보이는 표시 — 잘라 내면 사라진다</text>
+
+  <text x="440" y="378" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="20" fill="#888" text-anchor="middle">+</text>
+
+  <rect x="464" y="352" width="330" height="36" rx="6" fill="#0a1a0a" stroke="#55c555" stroke-width="1.5"/>
+  <text x="488" y="374" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="13" font-weight="600" fill="#55c555">콘텐츠 안에 심는 신호 — 남는다</text>
+
+  <!-- Footer note -->
+  <text x="440" y="438" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="13" fill="#888" text-anchor="middle">워터마킹이 정확히 이 자리에 필요한 기술이다</text>
+</svg>

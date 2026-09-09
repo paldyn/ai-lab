@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="514" viewBox="0 0 880 514">
+  <defs>
+    <marker id="arrN" viewBox="0 0 14 14" refX="12" refY="7"
+            markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#888888"/>
+    </marker>
+    <marker id="arrB" viewBox="0 0 14 14" refX="12" refY="7"
+            markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#7ec8e3"/>
+    </marker>
+    <marker id="arrR" viewBox="0 0 14 14" refX="12" refY="7"
+            markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#e05555"/>
+    </marker>
+  </defs>
+  <rect width="880" height="514" fill="#0a0a0a" rx="12"/>
+
+  <!-- Title -->
+  <text x="440" y="46" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="22" font-weight="700" fill="#e8e8e8" text-anchor="middle">간접 주입의 경로</text>
+  <text x="440" y="72" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="14" fill="#888" text-anchor="middle">지시를 넣는 사람과 피해를 입는 사람이 다르다</text>
+
+  <!-- Row 1: two actors -->
+  <rect x="60" y="104" width="360" height="82" rx="10" fill="#1a100d" stroke="#e05555" stroke-width="1.5"/>
+  <text x="84" y="130" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="14" font-weight="600" fill="#e05555">① 공격자 — 대화에 참여하지 않는다</text>
+  <text x="84" y="150" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="12" fill="#888">웹페이지의 흰 글씨, 이메일 본문 하단,</text>
+  <text x="84" y="170" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="12" fill="#888">PDF 메타데이터, 이슈 본문에 지시를 심는다</text>
+
+  <rect x="460" y="104" width="360" height="82" rx="10" fill="#100d1a" stroke="#7ec8e3" stroke-width="1.5"/>
+  <text x="484" y="130" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="14" font-weight="600" fill="#7ec8e3">② 사용자 — 잘못한 것이 없다</text>
+  <text x="484" y="150" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="12" fill="#888">"이 문서 요약해 줘"</text>
+  <text x="484" y="170" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="12" fill="#888">요청은 이 한 줄이 전부다</text>
+
+  <line x1="240" y1="186" x2="240" y2="216" stroke="#e05555" stroke-width="2" marker-end="url(#arrR)"/>
+  <line x1="640" y1="186" x2="640" y2="216" stroke="#7ec8e3" stroke-width="2" marker-end="url(#arrB)"/>
+
+  <!-- Row 2 -->
+  <rect x="60" y="216" width="760" height="72" rx="10" fill="#111318" stroke="#555555" stroke-width="1.5"/>
+  <text x="84" y="244" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="15" font-weight="600" fill="#e8e8e8">③ 검색이 그 문서를 컨텍스트에 담는다</text>
+  <text x="84" y="266" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="12" fill="#888">모델은 읽지만 사람은 잘 보지 않는 자리라 그대로 실려 온다</text>
+
+  <line x1="440" y1="288" x2="440" y2="318" stroke="#888888" stroke-width="2" marker-end="url(#arrN)"/>
+
+  <!-- Row 3 -->
+  <rect x="60" y="318" width="760" height="72" rx="10" fill="#1a100d" stroke="#e05555" stroke-width="1.5"/>
+  <text x="84" y="346" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="15" font-weight="600" fill="#e05555">④ 모델이 그 문장을 지시로 읽는다</text>
+  <text x="84" y="368" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="12" fill="#888">문서의 내용인지 자기에게 온 지시인지 가를 벽이 없다</text>
+
+  <line x1="440" y1="390" x2="440" y2="420" stroke="#e05555" stroke-width="2" marker-end="url(#arrR)"/>
+
+  <!-- Row 4 -->
+  <rect x="60" y="420" width="760" height="72" rx="10" fill="#14101a" stroke="#7777cc" stroke-width="1.5"/>
+  <text x="84" y="448" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="15" font-weight="600" fill="#7777cc">⑤ 출력을 렌더링하는 것이 조용한 송신 채널이 된다</text>
+  <text x="84" y="470" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="12" fill="#888">이미지 주소에 붙은 내용이 공격자 서버 로그에 남는다 · 화면에는 깨진 이미지 하나</text>
+</svg>

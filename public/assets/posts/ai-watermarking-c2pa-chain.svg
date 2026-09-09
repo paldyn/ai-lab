@@ -1,0 +1,102 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="552" viewBox="0 0 880 552">
+  <defs>
+    <marker id="arr-g" viewBox="0 0 14 14" refX="12" refY="7"
+            markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#55c555"/>
+    </marker>
+  </defs>
+  <rect width="880" height="552" fill="#0a0a0a" rx="12"/>
+
+  <!-- Title -->
+  <text x="440" y="46" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="22" font-weight="700" fill="#e8e8e8" text-anchor="middle">C2PA 매니페스트 사슬과 단절</text>
+  <text x="440" y="72" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="14" fill="#888" text-anchor="middle">파일에 얹힌 이력은 콘텐츠와 달리 떼어 내기 쉽다</text>
+
+  <!-- Chain -->
+  <rect x="60" y="100" width="220" height="100" rx="10" fill="#0d1a0a" stroke="#55c555" stroke-width="1"/>
+  <text x="84" y="126" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="13" font-weight="600" fill="#e8e8e8">① 생성</text>
+  <text x="84" y="146" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="12" fill="#888">생성기 Adobe Firefly</text>
+  <text x="84" y="166" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="12" fill="#888">모델·프롬프트·시각</text>
+  <text x="84" y="186" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="12" fill="#55c555">ES256 디지털 서명</text>
+
+  <line x1="280" y1="150" x2="330" y2="150" stroke="#55c555" stroke-width="2" marker-end="url(#arr-g)"/>
+
+  <rect x="330" y="100" width="220" height="100" rx="10" fill="#0d1a0a" stroke="#55c555" stroke-width="1"/>
+  <text x="354" y="126" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="13" font-weight="600" fill="#e8e8e8">② 편집</text>
+  <text x="354" y="146" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="12" fill="#888">Photoshop · Premiere Pro</text>
+  <text x="354" y="166" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="12" fill="#888">앞 매니페스트를 참조하며</text>
+  <text x="354" y="186" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="12" fill="#888">새 매니페스트가 얹힌다</text>
+
+  <line x1="550" y1="150" x2="600" y2="150" stroke="#55c555" stroke-width="2" marker-end="url(#arr-g)"/>
+
+  <rect x="600" y="100" width="220" height="100" rx="10" fill="#0d1a0a" stroke="#55c555" stroke-width="1"/>
+  <text x="624" y="126" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="13" font-weight="600" fill="#e8e8e8">③ 사슬</text>
+  <text x="624" y="146" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="12" fill="#888">원본에서 지금까지의 이력</text>
+  <text x="624" y="166" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="12" fill="#888">한 글자만 바뀌어도</text>
+  <text x="624" y="186" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="12" fill="#888">서명 검증이 깨진다</text>
+
+  <!-- Break -->
+  <line x1="185" y1="229" x2="820" y2="229" stroke="#e05555" stroke-width="2" stroke-dasharray="4,4"/>
+  <text x="60" y="234" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="16" font-weight="600" fill="#e05555">여기서 끊긴다</text>
+
+  <rect x="60" y="252" width="220" height="84" rx="10" fill="#1a0d0d" stroke="#e05555" stroke-width="1"/>
+  <text x="84" y="278" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="13" font-weight="600" fill="#e8e8e8">스크린샷</text>
+  <text x="84" y="300" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="12" fill="#888">화면의 화소만 남고</text>
+  <text x="84" y="320" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="12" fill="#888">매니페스트는 사라진다</text>
+
+  <rect x="330" y="252" width="220" height="84" rx="10" fill="#1a0d0d" stroke="#e05555" stroke-width="1"/>
+  <text x="354" y="278" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="13" font-weight="600" fill="#e8e8e8">업로드 파이프라인</text>
+  <text x="354" y="300" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="12" fill="#888">메타데이터를 벗겨 내면</text>
+  <text x="354" y="320" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="12" fill="#888">그 자리에서 끊긴다</text>
+
+  <rect x="600" y="252" width="220" height="84" rx="10" fill="#1a0d0d" stroke="#e05555" stroke-width="1"/>
+  <text x="624" y="278" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="13" font-weight="600" fill="#e8e8e8">형식 변환</text>
+  <text x="624" y="300" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="12" fill="#888">다른 형식으로 다시</text>
+  <text x="624" y="320" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="12" fill="#888">저장하기만 해도 끊긴다</text>
+
+  <!-- Pairing -->
+  <text x="60" y="384" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="16" font-weight="600" fill="#e8e8e8">그래서 둘은 경쟁이 아니라 짝이다</text>
+
+  <rect x="60" y="398" width="350" height="84" rx="10" fill="#14101a" stroke="#7777cc" stroke-width="1"/>
+  <text x="84" y="424" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="14" font-weight="600" fill="#7777cc">C2PA 매니페스트</text>
+  <text x="84" y="446" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="12" fill="#888">담는 것 — 도구·모델·편집 이력</text>
+  <text x="84" y="466" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="12" fill="#888">약점 — 파일에서 잘 떨어져 나간다</text>
+
+  <rect x="470" y="398" width="350" height="84" rx="10" fill="#0d1a0a" stroke="#55c555" stroke-width="1"/>
+  <text x="494" y="424" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="14" font-weight="600" fill="#55c555">워터마크</text>
+  <text x="494" y="446" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="12" fill="#888">담는 것 — 훨씬 적은 정보</text>
+  <text x="494" y="466" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="12" fill="#888">강점 — 콘텐츠에 붙어 다닌다</text>
+
+  <text x="440" y="518" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="12" fill="#888" text-anchor="middle">매니페스트가 떨어져 나간 파일에서도 워터마크로 어느 계열의 출력인지는 되찾는다</text>
+</svg>

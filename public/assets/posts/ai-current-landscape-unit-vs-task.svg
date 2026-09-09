@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="560" viewBox="0 0 880 560">
+  <defs>
+    <style>text:not([font-family]) { font-family: 'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif; }</style>
+    <marker id="down" viewBox="0 0 14 14" refX="12" refY="7"
+            markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#55c555"/>
+    </marker>
+  </defs>
+  <rect width="880" height="560" fill="#0a0a0a" rx="12"/>
+
+  <!-- Title -->
+  <text x="440" y="46" text-anchor="middle" font-size="22" font-weight="700" fill="#e8e8e8">토큰 단가는 내려가는데 작업 하나의 값은 버틴다</text>
+  <text x="440" y="72" text-anchor="middle" font-size="13" fill="#888">이 둘이 서로 반대 방향으로 움직이는 시기가 지금이다</text>
+
+  <!-- Left column header -->
+  <text x="240" y="106" text-anchor="middle" font-size="16" font-weight="600" fill="#55c555">토큰 단가</text>
+  <text x="240" y="128" text-anchor="middle" font-size="12" fill="#888">100만 토큰당, 달러</text>
+
+  <!-- Left: price steps -->
+  <rect x="60" y="150" width="360" height="56" rx="8" fill="#2a1010" stroke="#e05555" stroke-width="1"/>
+  <text x="76" y="184" font-size="14" font-weight="600" fill="#e8e8e8">2023 · GPT-4</text>
+  <text x="404" y="184" text-anchor="end" font-size="14" font-weight="600" fill="#e05555">입력 30 · 출력 60</text>
+
+  <line x1="240" y1="206" x2="240" y2="226" stroke="#55c555" stroke-width="2.5" marker-end="url(#down)"/>
+
+  <rect x="60" y="226" width="360" height="56" rx="8" fill="#0e1a2e" stroke="#7ec8e3" stroke-width="1"/>
+  <text x="76" y="260" font-size="14" font-weight="600" fill="#e8e8e8">이듬해 · GPT-4o</text>
+  <text x="404" y="260" text-anchor="end" font-size="14" font-weight="600" fill="#7ec8e3">입력 5 · 출력 15</text>
+
+  <line x1="240" y1="282" x2="240" y2="302" stroke="#55c555" stroke-width="2.5" marker-end="url(#down)"/>
+
+  <rect x="60" y="302" width="360" height="56" rx="8" fill="#0e2010" stroke="#55c555" stroke-width="1"/>
+  <text x="76" y="336" font-size="14" font-weight="600" fill="#e8e8e8">같은 해 · 소형 모델</text>
+  <text x="404" y="336" text-anchor="end" font-size="14" font-weight="600" fill="#55c555">입력 0.2 아래</text>
+
+  <text x="240" y="388" text-anchor="middle" font-size="13" font-weight="600" fill="#55c555">두 해 사이에 자릿수가 바뀌었다</text>
+  <text x="240" y="410" text-anchor="middle" font-size="12" fill="#888">값이 100분의 1이 되면 접었던 기획이 성립한다</text>
+
+  <!-- Right column header -->
+  <text x="650" y="106" text-anchor="middle" font-size="16" font-weight="600" fill="#e05555">작업 하나의 값</text>
+  <text x="650" y="128" text-anchor="middle" font-size="12" fill="#888">단가가 내려가도 따라 내려가지 않는 셋</text>
+
+  <rect x="480" y="150" width="340" height="76" rx="8" fill="#111" stroke="#e05555" stroke-width="1"/>
+  <text x="496" y="176" font-size="14" font-weight="600" fill="#e05555">긴 문맥</text>
+  <text x="496" y="198" font-size="12" fill="#aaa">어텐션 계산량은 길이의 제곱으로 는다</text>
+  <text x="496" y="216" font-size="12" fill="#aaa">KV 캐시는 토큰당 2.5MB, 10만 토큰에 250GB</text>
+
+  <rect x="480" y="242" width="340" height="76" rx="8" fill="#111" stroke="#e05555" stroke-width="1"/>
+  <text x="496" y="268" font-size="14" font-weight="600" fill="#e05555">추론 모델</text>
+  <text x="496" y="290" font-size="12" fill="#aaa">답을 내기 전에 생각을 토큰으로 풀어 쓴다</text>
+  <text x="496" y="308" font-size="12" fill="#aaa">단가가 같아도 출력 토큰이 몇 배로 는다</text>
+
+  <rect x="480" y="334" width="340" height="76" rx="8" fill="#111" stroke="#e05555" stroke-width="1"/>
+  <text x="496" y="360" font-size="14" font-weight="600" fill="#e05555">에이전트</text>
+  <text x="496" y="382" font-size="12" fill="#aaa">한 번의 요청이 도구 호출과 재시도를 거친다</text>
+  <text x="496" y="400" font-size="12" fill="#aaa">모델 호출 수십 번으로 늘어난다</text>
+
+  <!-- Footer box -->
+  <rect x="60" y="440" width="760" height="66" rx="8" fill="#111" stroke="#333" stroke-width="1"/>
+  <text x="76" y="470" font-size="14" font-weight="600" fill="#e8e8e8">그래서 원가는 토큰 단가가 아니라 완료된 작업 하나로 센다</text>
+  <text x="76" y="492" font-size="12" fill="#888">「100만 토큰에 얼마」는 계약서의 숫자, 「고객이 만족한 결과 하나에 얼마」가 사업의 숫자다</text>
+</svg>
