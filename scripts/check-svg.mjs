@@ -59,8 +59,20 @@ async function check(file) {
     }
   }
 
+  /*
+    **`<g transform>` 안은 안 봅니다.** 그 안의 좌표는 화면 좌표가 아니라 옮겨진
+    뒤에야 자리가 정해집니다 — `translate(0,-80)` 안의 y=416은 실제로 336에 섭니다.
+    안 보고 넘기면 놓치는 것이 생기지만, 보고 잘못 말하면 멀쩡한 그림을 고치게 된다.
+    실제로 그런 일이 있었다(2026-09-09).
+
+    **`opacity="0"`도 안 봅니다** — 화면에 없는 것이 캔버스를 벗어나도 보이는 것은
+    아무것도 없습니다.
+  */
+  const flat = svg.replace(/<g\b[^>]*transform[^>]*>[\s\S]*?<\/g>/g, '');
+
   // 캔버스를 벗어난 상자. 글자 폭은 글꼴마다 달라 어림이 안 맞으므로 상자만 봅니다.
-  for (const m of svg.matchAll(/<rect\b[^>]*>/g)) {
+  for (const m of flat.matchAll(/<rect\b[^>]*>/g)) {
+    if (/opacity="0"/.test(m[0])) continue;
     const x = Number(attr(m[0], 'x') ?? NaN);
     const y = Number(attr(m[0], 'y') ?? NaN);
     const w = Number(attr(m[0], 'width') ?? 0);
@@ -72,7 +84,7 @@ async function check(file) {
   }
 
   // 캔버스 아래로 내려간 글자. y 하나는 글꼴과 무관하게 믿을 수 있습니다.
-  for (const m of svg.matchAll(/<text\b[^>]*>/g)) {
+  for (const m of flat.matchAll(/<text\b[^>]*>/g)) {
     const y = Number(attr(m[0], 'y') ?? NaN);
     // 위쪽은 안 봅니다 — `<g transform>` 안의 글자는 y가 0이어도 제자리에 섭니다.
     if (!Number.isNaN(y) && y > H - 4) {

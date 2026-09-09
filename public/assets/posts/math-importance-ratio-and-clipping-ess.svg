@@ -11,7 +11,6 @@
 <text x="188" y="160" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#ffffff">0.125</text>
 <text x="298" y="160" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#ffffff">0.28</text>
 <text x="408" y="160" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" font-weight="600" fill="#55c555">779개</text>
-<rect x="500" y="146" width="516" height="16" rx="4" fill="#1a1d24" opacity="0"/>
 <rect x="500" y="146" width="308" height="16" rx="4" fill="#1a1d24"/>
 <rect x="500" y="146" width="239.9" height="16" rx="4" fill="#55c555"/>
 <rect x="56" y="190" width="768" height="52" rx="8" fill="#111318" stroke="#2a2f3a" stroke-width="1"/>
@@ -19,7 +18,6 @@
 <text x="188" y="222" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#ffffff">0.500</text>
 <text x="298" y="222" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#ffffff">1.72</text>
 <text x="408" y="222" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" font-weight="600" fill="#55c555">368개</text>
-<rect x="500" y="208" width="516" height="16" rx="4" fill="#1a1d24" opacity="0"/>
 <rect x="500" y="208" width="308" height="16" rx="4" fill="#1a1d24"/>
 <rect x="500" y="208" width="113.3" height="16" rx="4" fill="#55c555"/>
 <rect x="56" y="252" width="768" height="52" rx="8" fill="#111318" stroke="#2a2f3a" stroke-width="1"/>
@@ -27,7 +25,6 @@
 <text x="188" y="284" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#ffffff">2.000</text>
 <text x="298" y="284" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#ffffff">53.6</text>
 <text x="408" y="284" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" font-weight="600" fill="#e05555">18개</text>
-<rect x="500" y="270" width="516" height="16" rx="4" fill="#1a1d24" opacity="0"/>
 <rect x="500" y="270" width="308" height="16" rx="4" fill="#1a1d24"/>
 <rect x="500" y="270" width="5.6" height="16" rx="4" fill="#e05555"/>
 <rect x="56" y="314" width="768" height="52" rx="8" fill="#111318" stroke="#2a2f3a" stroke-width="1"/>
@@ -35,7 +32,6 @@
 <text x="188" y="346" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#ffffff">4.500</text>
 <text x="298" y="346" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#ffffff">8102</text>
 <text x="408" y="346" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" font-weight="600" fill="#e05555">0.12개</text>
-<rect x="500" y="332" width="516" height="16" rx="4" fill="#1a1d24" opacity="0"/>
 <rect x="500" y="332" width="308" height="16" rx="4" fill="#1a1d24"/>
 <rect x="500" y="332" width="3.0" height="16" rx="4" fill="#e05555"/>
 <text x="60" y="398" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">Var(w) = e^(Δ²) − 1 이고 유효 표본 비율은 e^(−Δ²)다.</text>
