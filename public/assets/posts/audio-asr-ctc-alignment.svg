@@ -1,0 +1,78 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="494" viewBox="0 0 880 494" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <defs>
+    <marker id="asr-arr" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#7777cc"/>
+    </marker>
+  </defs>
+
+  <rect x="0" y="0" width="880" height="494" rx="12" fill="#0a0a0a"/>
+
+  <text x="60" y="48" font-size="22" font-weight="700" fill="#e8e8e8">정렬을 누가 맡는가</text>
+
+  <text x="60" y="88" font-size="16" font-weight="600" fill="#7ec8e3">CTC</text>
+  <text x="60" y="110" font-size="13" fill="#888888">프레임마다 독립 예측 뒤 규칙으로 줄인다</text>
+
+  <rect x="70" y="124" width="52" height="40" rx="6" fill="#12141a" stroke="#7ec8e3" stroke-width="1.5"/>
+  <text x="96" y="149" font-size="15" font-weight="600" fill="#7ec8e3" text-anchor="middle">ㅅ</text>
+  <rect x="126" y="124" width="52" height="40" rx="6" fill="#12141a" stroke="#7ec8e3" stroke-width="1.5"/>
+  <text x="152" y="149" font-size="15" font-weight="600" fill="#7ec8e3" text-anchor="middle">ㅅ</text>
+  <rect x="182" y="124" width="52" height="40" rx="6" fill="#12141a" stroke="#555555" stroke-width="1.5"/>
+  <text x="208" y="149" font-size="12" fill="#888888" text-anchor="middle">blank</text>
+  <rect x="238" y="124" width="52" height="40" rx="6" fill="#12141a" stroke="#7ec8e3" stroke-width="1.5"/>
+  <text x="264" y="149" font-size="15" font-weight="600" fill="#7ec8e3" text-anchor="middle">ㅏ</text>
+  <rect x="294" y="124" width="52" height="40" rx="6" fill="#12141a" stroke="#7ec8e3" stroke-width="1.5"/>
+  <text x="320" y="149" font-size="15" font-weight="600" fill="#7ec8e3" text-anchor="middle">ㅏ</text>
+  <rect x="350" y="124" width="52" height="40" rx="6" fill="#12141a" stroke="#555555" stroke-width="1.5"/>
+  <text x="376" y="149" font-size="12" fill="#888888" text-anchor="middle">blank</text>
+
+  <line x1="236" y1="164" x2="236" y2="190" stroke="#7777cc" stroke-width="2" marker-end="url(#asr-arr)"/>
+  <text x="253" y="182" font-size="12" fill="#888888">연속 중복 합치기</text>
+
+  <rect x="126" y="196" width="52" height="40" rx="6" fill="#12141a" stroke="#7ec8e3" stroke-width="1.5"/>
+  <text x="152" y="221" font-size="15" font-weight="600" fill="#7ec8e3" text-anchor="middle">ㅅ</text>
+  <rect x="182" y="196" width="52" height="40" rx="6" fill="#12141a" stroke="#555555" stroke-width="1.5"/>
+  <text x="208" y="221" font-size="12" fill="#888888" text-anchor="middle">blank</text>
+  <rect x="238" y="196" width="52" height="40" rx="6" fill="#12141a" stroke="#7ec8e3" stroke-width="1.5"/>
+  <text x="264" y="221" font-size="15" font-weight="600" fill="#7ec8e3" text-anchor="middle">ㅏ</text>
+  <rect x="294" y="196" width="52" height="40" rx="6" fill="#12141a" stroke="#555555" stroke-width="1.5"/>
+  <text x="320" y="221" font-size="12" fill="#888888" text-anchor="middle">blank</text>
+
+  <line x1="236" y1="236" x2="236" y2="262" stroke="#7777cc" stroke-width="2" marker-end="url(#asr-arr)"/>
+  <text x="253" y="254" font-size="12" fill="#888888">blank 제거</text>
+
+  <rect x="161" y="268" width="150" height="44" rx="8" fill="#12141a" stroke="#55c555" stroke-width="1.5"/>
+  <text x="236" y="297" font-size="20" font-weight="700" fill="#55c555" text-anchor="middle">사</text>
+
+  <rect x="60" y="336" width="350" height="54" rx="8" fill="#12141a" stroke="#55c555" stroke-width="1.5"/>
+  <text x="84" y="359" font-size="13" font-weight="600" fill="#55c555">이득 — 앞부분을 먼저 확정할 수 있다</text>
+  <text x="84" y="379" font-size="12" fill="#888888">구조가 단순하고 빠르며 스트리밍에 맞다</text>
+
+  <rect x="60" y="400" width="350" height="54" rx="8" fill="#12141a" stroke="#e05555" stroke-width="1.5"/>
+  <text x="84" y="423" font-size="13" font-weight="600" fill="#e05555">대가 — 언어 모델링이 거의 없다</text>
+  <text x="84" y="443" font-size="12" fill="#888888">외부 언어 모델을 붙인 빔 서치와 함께 쓴다</text>
+
+  <text x="470" y="88" font-size="16" font-weight="600" fill="#7777cc">인코더-디코더</text>
+  <text x="470" y="110" font-size="13" fill="#888888">정렬을 크로스 어텐션이 스스로 배운다</text>
+
+  <rect x="505" y="124" width="280" height="40" rx="8" fill="#12141a" stroke="#444444" stroke-width="1.5"/>
+  <text x="645" y="149" font-size="14" fill="#e8e8e8" text-anchor="middle">오디오 30초 통째로</text>
+
+  <line x1="645" y1="164" x2="645" y2="190" stroke="#7777cc" stroke-width="2" marker-end="url(#asr-arr)"/>
+
+  <rect x="505" y="196" width="280" height="40" rx="8" fill="#12141a" stroke="#444444" stroke-width="1.5"/>
+  <text x="645" y="221" font-size="14" fill="#e8e8e8" text-anchor="middle">인코더</text>
+
+  <line x1="645" y1="236" x2="645" y2="262" stroke="#7777cc" stroke-width="2" marker-end="url(#asr-arr)"/>
+  <text x="662" y="254" font-size="12" fill="#888888">크로스 어텐션</text>
+
+  <rect x="505" y="268" width="280" height="44" rx="8" fill="#12141a" stroke="#7777cc" stroke-width="1.5"/>
+  <text x="645" y="295" font-size="14" fill="#7777cc" text-anchor="middle">디코더 — 자기회귀 생성</text>
+
+  <rect x="470" y="336" width="350" height="54" rx="8" fill="#12141a" stroke="#55c555" stroke-width="1.5"/>
+  <text x="494" y="359" font-size="13" font-weight="600" fill="#55c555">이득 — 디코더가 곧 언어 모델이다</text>
+  <text x="494" y="379" font-size="12" fill="#888888">문맥에 맞는 표기와 문장부호가 나온다</text>
+
+  <rect x="470" y="400" width="350" height="54" rx="8" fill="#12141a" stroke="#e05555" stroke-width="1.5"/>
+  <text x="494" y="423" font-size="13" font-weight="600" fill="#e05555">대가 — 오디오를 무시하고 이어 쓴다</text>
+  <text x="494" y="443" font-size="12" fill="#888888">무음에서 환각, 루프에 빠지면 어절 반복</text>
+</svg>

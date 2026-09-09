@@ -1,0 +1,96 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="470" viewBox="0 0 880 470">
+  <defs>
+    <marker id="hfc-arr" viewBox="0 0 14 14" refX="7" refY="12"
+            markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 7 13 L 14 0 z" fill="#7ec8e3"/>
+    </marker>
+  </defs>
+
+  <rect width="880" height="470" fill="#0a0a0a" rx="12"/>
+
+  <text x="440" y="44" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="22" font-weight="700" fill="#e8e8e8" text-anchor="middle">데이터셋 캐시와 핑거프린트</text>
+
+  <!-- ── 왼쪽: 캐시 폴더 ── -->
+  <rect x="60" y="72" width="350" height="228" rx="10" fill="#101418" stroke="#2f3b4d" stroke-width="1.5"/>
+  <text x="80" y="98" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="16" font-weight="600" fill="#e8e8e8">~/.cache/huggingface/</text>
+  <text x="80" y="118" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="13" fill="#888">HF_HOME이 이 폴더 전체를 옮긴다</text>
+
+  <rect x="80" y="132" width="310" height="48" rx="6" fill="#14181e" stroke="#3a4a6e" stroke-width="1"/>
+  <text x="96" y="152" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="13" font-weight="600" fill="#ffffff">token</text>
+  <text x="96" y="170" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="11" fill="#9aa4b8">hf auth login이 남긴다</text>
+
+  <rect x="80" y="188" width="310" height="48" rx="6" fill="#14181e" stroke="#3a4a6e" stroke-width="1"/>
+  <text x="96" y="208" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="13" font-weight="600" fill="#ffffff">hub/</text>
+  <text x="374" y="208" font-family="'JetBrains Mono','Menlo','Consolas',monospace"
+        font-size="11" fill="#7ec8e3" text-anchor="end">HF_HUB_CACHE</text>
+  <text x="96" y="226" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="11" fill="#9aa4b8">모델 캐시 · snapshots/&lt;커밋 해시&gt;/</text>
+
+  <rect x="80" y="244" width="310" height="48" rx="6" fill="#14181e" stroke="#3a4a6e" stroke-width="1"/>
+  <text x="96" y="264" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="13" font-weight="600" fill="#ffffff">datasets/</text>
+  <text x="374" y="264" font-family="'JetBrains Mono','Menlo','Consolas',monospace"
+        font-size="11" fill="#7ec8e3" text-anchor="end">HF_DATASETS_CACHE</text>
+  <text x="96" y="282" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="11" fill="#9aa4b8">load_dataset()·map() 결과 Arrow</text>
+
+  <!-- ── 오른쪽: 핑거프린트 ── -->
+  <rect x="470" y="72" width="350" height="228" rx="10" fill="#101418" stroke="#2f3b4d" stroke-width="1.5"/>
+  <text x="490" y="98" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="16" font-weight="600" fill="#e8e8e8">핑거프린트</text>
+  <text x="490" y="118" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="13" fill="#888">무엇이 같은 전처리인지 정하는 값</text>
+
+  <rect x="490" y="132" width="310" height="48" rx="6" fill="#14181e" stroke="#3a4a6e" stroke-width="1"/>
+  <text x="645" y="152" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="13" font-weight="600" fill="#ffffff" text-anchor="middle">원본 해시 + 함수 직렬화 + 인자</text>
+  <text x="645" y="170" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="11" fill="#9aa4b8" text-anchor="middle">셋을 합쳐 값 하나를 만든다</text>
+
+  <path d="M 645 180 L 645 192" stroke="#7ec8e3" stroke-width="2" fill="none"/>
+  <path d="M 563 192 L 727 192" stroke="#7ec8e3" stroke-width="2" fill="none"/>
+  <path d="M 563 192 L 563 212" stroke="#7ec8e3" stroke-width="2" fill="none" marker-end="url(#hfc-arr)"/>
+  <path d="M 727 192 L 727 212" stroke="#7ec8e3" stroke-width="2" fill="none" marker-end="url(#hfc-arr)"/>
+
+  <rect x="490" y="212" width="146" height="48" rx="6" fill="#0f1a0f" stroke="#3a6e3a" stroke-width="1"/>
+  <text x="563" y="232" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="12" font-weight="600" fill="#55c555" text-anchor="middle">같다 → 캐시 읽기</text>
+  <text x="563" y="250" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="11" fill="#9aa4b8" text-anchor="middle">Arrow에서 즉시</text>
+
+  <rect x="654" y="212" width="146" height="48" rx="6" fill="#1a0f0f" stroke="#6e3a3a" stroke-width="1"/>
+  <text x="727" y="232" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="12" font-weight="600" fill="#e05555" text-anchor="middle">다르다 → 재계산</text>
+  <text x="727" y="250" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="11" fill="#9aa4b8" text-anchor="middle">map()이 다시 돈다</text>
+
+  <text x="490" y="282" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="11" fill="#888">핑거프린트가 같으면 함수를 고쳐도 옛 결과가 온다</text>
+
+  <!-- ── 아래: 두 함정 ── -->
+  <rect x="60" y="322" width="350" height="94" rx="10" fill="#150f0f" stroke="#6e3a3a" stroke-width="1.5"/>
+  <text x="80" y="344" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="13" font-weight="700" fill="#e05555">오래된 캐시</text>
+  <text x="80" y="366" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="11" fill="#e8e8e8">함수가 바깥에서 읽어 오는 것은 해시에 안 들어간다</text>
+  <text x="80" y="384" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="11" fill="#9aa4b8">불용어 파일을 고쳐도 옛 결과가 돌아온다</text>
+  <text x="80" y="402" font-family="'JetBrains Mono','Menlo','Consolas',monospace"
+        font-size="11" fill="#7ec8e3">load_from_cache_file=False</text>
+
+  <rect x="470" y="322" width="350" height="94" rx="10" fill="#12121e" stroke="#5a5a8e" stroke-width="1.5"/>
+  <text x="490" y="344" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="13" font-weight="700" fill="#7777cc">해시 실패</text>
+  <text x="490" y="366" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="11" fill="#e8e8e8">직렬화 안 되는 객체를 물면 해시를 못 뜬다</text>
+  <text x="490" y="384" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="11" fill="#9aa4b8">경고를 내고 매번 다시 계산한다</text>
+  <text x="490" y="402" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="11" fill="#9aa4b8">실행마다 토큰화가 통째로 반복된다</text>
+</svg>

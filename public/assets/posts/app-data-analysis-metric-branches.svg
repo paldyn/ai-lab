@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="510" viewBox="0 0 880 510" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <defs>
+    <marker id="mb-arr" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#7777cc"/>
+    </marker>
+  </defs>
+
+  <rect x="0" y="0" width="880" height="510" rx="12" fill="#0a0a0a"/>
+
+  <text x="60" y="50" font-size="22" font-weight="700" fill="#e8e8e8">지표 정의 — 「매출」이 갈리는 네 갈래</text>
+  <text x="60" y="76" font-size="13" fill="#888">정해 두지 않으면 모델이 조용히 하나를 고르고, 무엇을 골랐는지 안 보인다</text>
+
+  <rect x="60" y="100" width="350" height="350" rx="10" fill="#12141a" stroke="#2a2f3a" stroke-width="1"/>
+  <text x="84" y="128" font-size="15" font-weight="600" fill="#e05555">정의가 없을 때</text>
+
+  <rect x="84" y="146" width="302" height="58" rx="6" fill="#1a1d24" stroke="#2a2f3a" stroke-width="1"/>
+  <text x="100" y="169" font-size="13" font-weight="600" fill="#e8e8e8">취소 주문</text>
+  <text x="100" y="190" font-size="12" fill="#888">뺀다 · 넣는다</text>
+
+  <rect x="84" y="212" width="302" height="58" rx="6" fill="#1a1d24" stroke="#2a2f3a" stroke-width="1"/>
+  <text x="100" y="235" font-size="13" font-weight="600" fill="#e8e8e8">환불액</text>
+  <text x="100" y="256" font-size="12" fill="#888">차감한다 · 그대로 둔다</text>
+
+  <rect x="84" y="278" width="302" height="58" rx="6" fill="#1a1d24" stroke="#2a2f3a" stroke-width="1"/>
+  <text x="100" y="301" font-size="13" font-weight="600" fill="#e8e8e8">부가세</text>
+  <text x="100" y="322" font-size="12" fill="#888">포함한다 · 뺀다</text>
+
+  <rect x="84" y="344" width="302" height="58" rx="6" fill="#1a1d24" stroke="#2a2f3a" stroke-width="1"/>
+  <text x="100" y="367" font-size="13" font-weight="600" fill="#e8e8e8">인식 시점</text>
+  <text x="100" y="388" font-size="12" fill="#888">주문일 · 결제일 · 배송 완료일</text>
+
+  <text x="84" y="430" font-size="13" fill="#e05555">이 넷만 조합해도 열여섯 가지 숫자</text>
+
+  <line x1="414" y1="275" x2="470" y2="275" stroke="#7777cc" stroke-width="2" marker-end="url(#mb-arr)"/>
+
+  <rect x="470" y="100" width="350" height="350" rx="10" fill="#12141a" stroke="#2a2f3a" stroke-width="1"/>
+  <text x="494" y="128" font-size="15" font-weight="600" fill="#55c555">의미 계층에 적어 둘 때</text>
+
+  <rect x="494" y="150" width="302" height="94" rx="8" fill="#1a1d24" stroke="#2a2f3a" stroke-width="1"/>
+  <text x="510" y="180" font-size="14" font-weight="600" fill="#7ec8e3">net_revenue · 순매출</text>
+  <text x="510" y="204" font-size="12" fill="#888">취소 주문 제외 · 환불액 차감</text>
+  <text x="510" y="226" font-size="12" fill="#888">부가세 포함 · 주문일 기준</text>
+
+  <rect x="494" y="260" width="302" height="94" rx="8" fill="#1a1d24" stroke="#2a2f3a" stroke-width="1"/>
+  <text x="510" y="290" font-size="14" font-weight="600" fill="#7ec8e3">gross_revenue · 총매출</text>
+  <text x="510" y="314" font-size="12" fill="#888">취소 주문 제외 · 환불액 그대로</text>
+  <text x="510" y="336" font-size="12" fill="#888">주문일 기준</text>
+
+  <text x="494" y="400" font-size="13" fill="#55c555">고를 수 있는 답이 두 개가 된다</text>
+  <text x="494" y="424" font-size="13" fill="#55c555">무엇을 골랐는지 답에 함께 적는다</text>
+
+  <text x="60" y="482" font-size="13" fill="#7777cc">프롬프트로 부탁한 것은 확률적으로 지켜지고, 데이터로 못 박은 것은 결정적으로 지켜진다</text>
+</svg>

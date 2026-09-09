@@ -1,0 +1,74 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="460" viewBox="0 0 880 460">
+  <defs>
+    <marker id="hv-arr" viewBox="0 0 14 14" refX="12" refY="7"
+            markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#7ec8e3"/>
+    </marker>
+    <marker id="hv-red" viewBox="0 0 14 14" refX="12" refY="7"
+            markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#e05555"/>
+    </marker>
+  </defs>
+
+  <rect width="880" height="460" fill="#0a0a0a" rx="12"/>
+
+  <text x="440" y="46" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="22" font-weight="700" fill="#e8e8e8" text-anchor="middle">로그가 케이스가 되기까지</text>
+
+  <!-- ① 프로덕션 로그 -->
+  <rect x="60" y="88" width="380" height="64" rx="8" fill="#1a1a2a" stroke="#7777cc" stroke-width="1.5"/>
+  <text x="84" y="114" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="13" font-weight="600" fill="#7777cc">① 프로덕션 로그</text>
+  <text x="84" y="134" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="11" fill="#888">질문 · 응답 · 사용자 피드백 · 재질문 기록</text>
+
+  <line x1="250" y1="152" x2="250" y2="174" stroke="#7ec8e3" stroke-width="2" marker-end="url(#hv-arr)"/>
+
+  <!-- ② 케이스 후보 -->
+  <rect x="60" y="176" width="380" height="64" rx="8" fill="#1a2a2a" stroke="#7ec8e3" stroke-width="1.5"/>
+  <text x="84" y="202" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="13" font-weight="600" fill="#7ec8e3">② 케이스 후보</text>
+  <text x="84" y="222" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="11" fill="#888">user_feedback == "bad" 또는 followup_count >= 2</text>
+
+  <line x1="250" y1="240" x2="250" y2="262" stroke="#7ec8e3" stroke-width="2" marker-end="url(#hv-arr)"/>
+
+  <!-- ③ 사람의 교정 -->
+  <rect x="60" y="264" width="380" height="64" rx="8" fill="#1a2a1a" stroke="#55c555" stroke-width="1.5"/>
+  <text x="84" y="290" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="13" font-weight="600" fill="#55c555">③ 사람의 교정</text>
+  <text x="84" y="310" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="11" fill="#888">expert_correction — 기대치를 사람이 확정한다</text>
+
+  <line x1="250" y1="328" x2="250" y2="350" stroke="#7ec8e3" stroke-width="2" marker-end="url(#hv-arr)"/>
+
+  <!-- ④ 골든셋 -->
+  <rect x="60" y="352" width="380" height="64" rx="8" fill="#1a2a1a" stroke="#55c555" stroke-width="1.5"/>
+  <text x="84" y="378" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="13" font-weight="600" fill="#55c555">④ 골든셋</text>
+  <text x="84" y="398" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="11" fill="#888">초기 20~50개 · case_id · tags · difficulty</text>
+
+  <!-- 후보 선별 기준 -->
+  <rect x="480" y="100" width="340" height="110" rx="8" fill="#16161f" stroke="#7777cc" stroke-width="1.5"/>
+  <text x="504" y="126" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="13" font-weight="600" fill="#7777cc">후보 선별 기준</text>
+  <text x="504" y="150" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="11" fill="#888">대표성 — 짧은 질문이 80%면 케이스도 그 비율</text>
+  <text x="504" y="172" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="11" fill="#888">다양성 — 모호한 입력과 적대적 입력을 섞는다</text>
+  <text x="504" y="194" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="11" fill="#888">큐레이션 — 한 번 틀린 자리는 케이스로 남긴다</text>
+
+  <!-- 교정을 건너뛰는 길 -->
+  <path d="M 440 208 C 462 208 462 306 476 306" stroke="#e05555" stroke-width="2" fill="none"
+        stroke-dasharray="4,4" marker-end="url(#hv-red)"/>
+
+  <rect x="480" y="264" width="340" height="84" rx="8" fill="#2a1a1a" stroke="#e05555" stroke-width="1.5"/>
+  <text x="504" y="290" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="13" font-weight="600" fill="#e05555">교정을 건너뛰면</text>
+  <text x="504" y="312" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="11" fill="#888">기대치 = 지금 모델이 내놓는 답</text>
+  <text x="504" y="330" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="11" fill="#888">모델이 자기 자신을 이기지 못하게 된다</text>
+</svg>

@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="470" viewBox="0 0 880 470">
+  <rect width="880" height="470" fill="#0a0a0a" rx="12"/>
+
+  <g font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+
+    <text x="440" y="46" text-anchor="middle" font-size="22" font-weight="700" fill="#e8e8e8">AP를 구하는 절차</text>
+    <text x="440" y="72" text-anchor="middle" font-size="16" font-weight="600" fill="#888">신뢰도 순서가 정하는 곡선 아래 넓이</text>
+
+    <!-- 계산 순서 -->
+    <rect x="60" y="100" width="350" height="290" fill="#0d1520" rx="8" stroke="#7ec8e3" stroke-width="1.5"/>
+    <text x="235" y="126" text-anchor="middle" font-size="14" font-weight="600" fill="#7ec8e3">계산 순서</text>
+
+    <rect x="76" y="142" width="318" height="52" fill="#101828" rx="6" stroke="#3a4560" stroke-width="1"/>
+    <text x="90" y="164" font-size="13" font-weight="600" fill="#e8e8e8">① 신뢰도 내림차순 정렬</text>
+    <text x="90" y="182" font-size="11" fill="#9aa4b8">클래스 하나의 모든 예측 박스</text>
+
+    <rect x="76" y="202" width="318" height="52" fill="#101828" rx="6" stroke="#3a4560" stroke-width="1"/>
+    <text x="90" y="224" font-size="13" font-weight="600" fill="#e8e8e8">② TP · FP 판정</text>
+    <text x="90" y="242" font-size="11" fill="#9aa4b8">매칭 안 된 정답과 IoU 임계값 초과면 TP</text>
+
+    <rect x="76" y="262" width="318" height="52" fill="#101828" rx="6" stroke="#3a4560" stroke-width="1"/>
+    <text x="90" y="284" font-size="13" font-weight="600" fill="#e8e8e8">③ 정밀도 · 재현율 기록</text>
+    <text x="90" y="302" font-size="11" fill="#9aa4b8">위에서부터 한 칸씩 내려가며</text>
+
+    <rect x="76" y="322" width="318" height="52" fill="#101828" rx="6" stroke="#3a4560" stroke-width="1"/>
+    <text x="90" y="344" font-size="13" font-weight="600" fill="#55c555">④ PR 곡선 아래 넓이</text>
+    <text x="90" y="362" font-size="11" fill="#9aa4b8">COCO는 재현율 축을 101등분해 평균</text>
+
+    <!-- PR 곡선 -->
+    <rect x="470" y="100" width="350" height="290" fill="#0d1520" rx="8" stroke="#55c555" stroke-width="1.5"/>
+    <text x="645" y="126" text-anchor="middle" font-size="14" font-weight="600" fill="#55c555">PR 곡선</text>
+
+    <text x="528" y="146" font-size="11" fill="#888">정밀도</text>
+    <text x="802" y="146" text-anchor="end" font-size="11" fill="#e05555">잘라 내면 사라지는 넓이</text>
+
+    <path d="M 528 158 C 600 160, 640 180, 690 214 C 730 242, 762 278, 792 300 L 792 312 L 528 312 Z"
+          fill="#55c555" fill-opacity="0.18"/>
+    <rect x="724" y="152" width="68" height="160" fill="#e05555" fill-opacity="0.14"/>
+    <line x1="724" y1="152" x2="724" y2="312" stroke="#e05555" stroke-width="2" stroke-dasharray="4,4"/>
+    <path d="M 528 158 C 600 160, 640 180, 690 214 C 730 242, 762 278, 792 300"
+          fill="none" stroke="#55c555" stroke-width="2.5"/>
+
+    <line x1="528" y1="152" x2="528" y2="312" stroke="#3a4560" stroke-width="1.5"/>
+    <line x1="528" y1="312" x2="792" y2="312" stroke="#3a4560" stroke-width="1.5"/>
+    <text x="610" y="268" font-size="14" font-weight="700" fill="#55c555">AP</text>
+
+    <text x="528" y="330" text-anchor="middle" font-size="11" fill="#888">0</text>
+    <text x="792" y="330" text-anchor="end" font-size="11" fill="#888">재현율</text>
+
+    <text x="486" y="352" font-size="11" fill="#9aa4b8">COCO는 IoU 0.5~0.95를 열 번 재서 평균한다</text>
+    <text x="486" y="372" font-size="11" fill="#9aa4b8">평가 임계값은 0.001처럼 아주 낮게 둔다</text>
+
+    <!-- 결론 -->
+    <rect x="60" y="406" width="760" height="44" fill="#101828" rx="6" stroke="#3a4560" stroke-width="1"/>
+    <text x="440" y="431" text-anchor="middle" font-size="13" fill="#9aa4b8">모든 신뢰도를 0.1씩 낮춰도 AP는 그대로다 — 절대값이 아니라 순서만 중요하다</text>
+
+  </g>
+</svg>

@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 500" width="880" height="500">
+  <rect width="880" height="500" fill="#0a0a0a" rx="12"/>
+
+  <defs>
+    <marker id="sg-arr" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#666"/>
+    </marker>
+    <marker id="sg-loop" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#7777cc"/>
+    </marker>
+  </defs>
+
+  <text x="440" y="44" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="22" font-weight="700" fill="#e8e8e8">멀티홉 루프를 상태 그래프로</text>
+  <text x="440" y="68" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="15" font-weight="600" fill="#888">루프의 지역 변수가 상태로 나오고, 종료 조건이 간선 하나가 된다</text>
+
+  <!-- state -->
+  <rect x="60" y="96" width="300" height="250" rx="10" fill="#101018" stroke="#3a3a3a" stroke-width="1.5"/>
+  <text x="84" y="126" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="14" font-weight="600" fill="#e8e8e8">MultiHopState</text>
+  <text x="84" y="158" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#ffffff">question</text>
+  <text x="84" y="182" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#ffffff">sub_questions</text>
+  <text x="84" y="206" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#ffffff">current_hop</text>
+  <text x="84" y="230" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#ffffff">collected_docs</text>
+  <text x="84" y="254" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#ffffff">intermediate_answers</text>
+  <text x="84" y="278" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#ffffff">final_answer</text>
+  <text x="84" y="310" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#9aa4b8">루프가 무엇을 들고 도는지가</text>
+  <text x="84" y="332" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#9aa4b8">그대로 이름을 갖는다</text>
+
+  <!-- should_continue note -->
+  <rect x="60" y="378" width="300" height="58" rx="8" fill="#101018" stroke="#3a3a3a" stroke-width="1.5"/>
+  <text x="84" y="402" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" font-weight="600" fill="#55c555">should_continue</text>
+  <text x="84" y="422" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="12" fill="#9aa4b8">간선 하나가 루프를 만든다</text>
+
+  <!-- nodes -->
+  <rect x="480" y="96" width="280" height="58" rx="8" fill="#0d1420" stroke="#7ec8e3" stroke-width="1.5"/>
+  <text x="504" y="120" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" font-weight="600" fill="#7ec8e3">decompose</text>
+  <text x="504" y="140" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="12" fill="#9aa4b8">sub_questions를 채운다</text>
+
+  <rect x="480" y="190" width="280" height="58" rx="8" fill="#14141f" stroke="#7777cc" stroke-width="1.5"/>
+  <text x="504" y="214" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" font-weight="600" fill="#7777cc">retrieve</text>
+  <text x="504" y="234" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="12" fill="#9aa4b8">collected_docs를 채운다</text>
+
+  <rect x="480" y="284" width="280" height="58" rx="8" fill="#14141f" stroke="#7777cc" stroke-width="1.5"/>
+  <text x="504" y="308" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" font-weight="600" fill="#7777cc">reason</text>
+  <text x="504" y="328" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="12" fill="#9aa4b8">intermediate_answers를 채운다</text>
+
+  <rect x="480" y="378" width="280" height="58" rx="8" fill="#0d1a10" stroke="#55c555" stroke-width="1.5"/>
+  <text x="504" y="402" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" font-weight="600" fill="#55c555">synthesize</text>
+  <text x="504" y="422" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="12" fill="#9aa4b8">final_answer를 채운다</text>
+
+  <!-- edges -->
+  <line x1="620" y1="154" x2="620" y2="190" stroke="#666" stroke-width="2" marker-end="url(#sg-arr)"/>
+  <line x1="620" y1="248" x2="620" y2="284" stroke="#666" stroke-width="2" marker-end="url(#sg-arr)"/>
+  <line x1="620" y1="342" x2="620" y2="378" stroke="#666" stroke-width="2" marker-end="url(#sg-arr)"/>
+  <text x="648" y="364" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">다 돌았으면</text>
+
+  <path d="M760 313 C 812 313 812 219 760 219" fill="none" stroke="#7777cc" stroke-width="2.5" stroke-dasharray="4,4" marker-end="url(#sg-loop)"/>
+  <text x="756" y="270" text-anchor="end" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#7777cc">홉이 남으면</text>
+</svg>

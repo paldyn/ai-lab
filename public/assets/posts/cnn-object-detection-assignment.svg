@@ -1,0 +1,96 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="470" viewBox="0 0 880 470">
+  <rect width="880" height="470" fill="#0a0a0a" rx="12"/>
+
+  <defs>
+    <marker id="atss-arr" viewBox="0 0 14 14" refX="12" refY="7"
+            markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#7ec8e3"/>
+    </marker>
+  </defs>
+
+  <g font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+
+    <text x="440" y="46" text-anchor="middle" font-size="22" font-weight="700" fill="#e8e8e8">ATSS의 임계값 계산</text>
+    <text x="440" y="72" text-anchor="middle" font-size="16" font-weight="600" fill="#888">물체마다 후보 IoU 통계로 양성 기준을 정한다</text>
+
+    <!-- 절차 4단계 -->
+    <rect x="60" y="98" width="166" height="70" fill="#101828" rx="6" stroke="#3a4560" stroke-width="1"/>
+    <text x="143" y="120" text-anchor="middle" font-size="13" font-weight="600" fill="#7ec8e3">① 후보 모으기</text>
+    <text x="143" y="138" text-anchor="middle" font-size="11" fill="#9aa4b8">피라미드 레벨마다</text>
+    <text x="143" y="156" text-anchor="middle" font-size="11" fill="#9aa4b8">중심 가까운 후보 k개</text>
+
+    <rect x="258" y="98" width="166" height="70" fill="#101828" rx="6" stroke="#3a4560" stroke-width="1"/>
+    <text x="341" y="120" text-anchor="middle" font-size="13" font-weight="600" fill="#7ec8e3">② IoU 통계</text>
+    <text x="341" y="138" text-anchor="middle" font-size="11" fill="#9aa4b8">후보와 정답의 IoU</text>
+    <text x="341" y="156" text-anchor="middle" font-size="11" fill="#9aa4b8">평균 m · 표준편차 v</text>
+
+    <rect x="456" y="98" width="166" height="70" fill="#101828" rx="6" stroke="#3a4560" stroke-width="1"/>
+    <text x="539" y="120" text-anchor="middle" font-size="13" font-weight="600" fill="#7ec8e3">③ 임계값</text>
+    <text x="539" y="138" text-anchor="middle" font-size="11" fill="#55c555">t = m + v</text>
+    <text x="539" y="156" text-anchor="middle" font-size="11" fill="#9aa4b8">물체마다 다른 값</text>
+
+    <rect x="654" y="98" width="166" height="70" fill="#101828" rx="6" stroke="#3a4560" stroke-width="1"/>
+    <text x="737" y="120" text-anchor="middle" font-size="13" font-weight="600" fill="#7ec8e3">④ 양성 선택</text>
+    <text x="737" y="138" text-anchor="middle" font-size="11" fill="#9aa4b8">IoU &gt; t 인 후보만</text>
+    <text x="737" y="156" text-anchor="middle" font-size="11" fill="#9aa4b8">나머지는 음성</text>
+
+    <line x1="226" y1="133" x2="258" y2="133" stroke="#7ec8e3" stroke-width="2" marker-end="url(#atss-arr)"/>
+    <line x1="424" y1="133" x2="456" y2="133" stroke="#7ec8e3" stroke-width="2" marker-end="url(#atss-arr)"/>
+    <line x1="622" y1="133" x2="654" y2="133" stroke="#7ec8e3" stroke-width="2" marker-end="url(#atss-arr)"/>
+
+    <text x="440" y="200" text-anchor="middle" font-size="16" font-weight="600" fill="#e8e8e8">물체 크기가 바꾸는 임계값</text>
+
+    <!-- 큰 물체 -->
+    <rect x="60" y="216" width="350" height="170" fill="#0d1520" rx="8" stroke="#7ec8e3" stroke-width="1.5"/>
+    <text x="235" y="244" text-anchor="middle" font-size="14" font-weight="600" fill="#7ec8e3">큰 물체</text>
+
+    <text x="235" y="278" text-anchor="middle" font-size="11" fill="#e05555">고정 0.5</text>
+    <text x="300" y="278" text-anchor="middle" font-size="11" fill="#55c555">m + v</text>
+    <line x1="235" y1="288" x2="235" y2="320" stroke="#e05555" stroke-width="2" stroke-dasharray="4,4"/>
+    <line x1="300" y1="288" x2="300" y2="320" stroke="#55c555" stroke-width="2" stroke-dasharray="4,4"/>
+
+    <line x1="100" y1="306" x2="370" y2="306" stroke="#3a4560" stroke-width="1.5"/>
+    <circle cx="219" cy="306" r="4" fill="#1a2535" stroke="#7777cc" stroke-width="1.5"/>
+    <circle cx="240" cy="306" r="4" fill="#1a2535" stroke="#7777cc" stroke-width="1.5"/>
+    <circle cx="254" cy="306" r="4" fill="#1a2535" stroke="#7777cc" stroke-width="1.5"/>
+    <circle cx="270" cy="306" r="4" fill="#1a2535" stroke="#7777cc" stroke-width="1.5"/>
+    <circle cx="284" cy="306" r="4" fill="#1a2535" stroke="#7777cc" stroke-width="1.5"/>
+    <circle cx="300" cy="306" r="4" fill="#55c555"/>
+    <circle cx="319" cy="306" r="4" fill="#55c555"/>
+    <circle cx="338" cy="306" r="4" fill="#55c555"/>
+    <text x="100" y="328" text-anchor="middle" font-size="11" fill="#888">IoU 0</text>
+    <text x="370" y="328" text-anchor="middle" font-size="11" fill="#888">1.0</text>
+
+    <text x="235" y="348" text-anchor="middle" font-size="12" font-weight="600" fill="#e05555">고정 0.5 → 양성 수십 개</text>
+    <text x="235" y="368" text-anchor="middle" font-size="12" font-weight="600" fill="#55c555">m + v → 물체에 맞춰 올라간다</text>
+
+    <!-- 작은 물체 -->
+    <rect x="470" y="216" width="350" height="170" fill="#0d1520" rx="8" stroke="#ce9178" stroke-width="1.5"/>
+    <text x="645" y="244" text-anchor="middle" font-size="14" font-weight="600" fill="#ce9178">작은 물체</text>
+
+    <text x="580" y="278" text-anchor="middle" font-size="11" fill="#55c555">m + v</text>
+    <text x="645" y="278" text-anchor="middle" font-size="11" fill="#e05555">고정 0.5</text>
+    <line x1="580" y1="288" x2="580" y2="320" stroke="#55c555" stroke-width="2" stroke-dasharray="4,4"/>
+    <line x1="645" y1="288" x2="645" y2="320" stroke="#e05555" stroke-width="2" stroke-dasharray="4,4"/>
+
+    <line x1="510" y1="306" x2="780" y2="306" stroke="#3a4560" stroke-width="1.5"/>
+    <circle cx="526" cy="306" r="4" fill="#1a2535" stroke="#7777cc" stroke-width="1.5"/>
+    <circle cx="540" cy="306" r="4" fill="#1a2535" stroke="#7777cc" stroke-width="1.5"/>
+    <circle cx="551" cy="306" r="4" fill="#1a2535" stroke="#7777cc" stroke-width="1.5"/>
+    <circle cx="561" cy="306" r="4" fill="#1a2535" stroke="#7777cc" stroke-width="1.5"/>
+    <circle cx="575" cy="306" r="4" fill="#1a2535" stroke="#7777cc" stroke-width="1.5"/>
+    <circle cx="586" cy="306" r="4" fill="#55c555"/>
+    <circle cx="599" cy="306" r="4" fill="#55c555"/>
+    <circle cx="613" cy="306" r="4" fill="#55c555"/>
+    <text x="510" y="328" text-anchor="middle" font-size="11" fill="#888">IoU 0</text>
+    <text x="780" y="328" text-anchor="middle" font-size="11" fill="#888">1.0</text>
+
+    <text x="645" y="348" text-anchor="middle" font-size="12" font-weight="600" fill="#e05555">고정 0.5 → 양성 0개</text>
+    <text x="645" y="368" text-anchor="middle" font-size="12" font-weight="600" fill="#55c555">m + v → 물체에 맞춰 내려간다</text>
+
+    <!-- 결론 -->
+    <rect x="60" y="402" width="760" height="44" fill="#101828" rx="6" stroke="#3a4560" stroke-width="1"/>
+    <text x="440" y="427" text-anchor="middle" font-size="13" fill="#9aa4b8">후보 분포를 따라 임계값이 함께 움직이므로 물체 크기와 무관하게 비슷한 수의 양성이 뽑힌다</text>
+
+  </g>
+</svg>

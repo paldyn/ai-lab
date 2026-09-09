@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" viewBox="0 0 880 430"
+     font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <rect width="880" height="430" fill="#0a0a0a" rx="12"/>
+
+  <text x="440" y="46" text-anchor="middle" font-size="22" font-weight="700" fill="#e8e8e8">두 도구의 코드베이스 시야</text>
+  <text x="440" y="72" text-anchor="middle" font-size="13" fill="#888">같은 프로젝트에서 무엇이 프롬프트에 드는가</text>
+
+  <!-- Copilot -->
+  <rect x="60" y="100" width="350" height="270" rx="12" fill="#0f0f0f" stroke="#2a2a2a" stroke-width="1"/>
+  <text x="84" y="134" font-size="16" font-weight="600" fill="#7ec8e3">Copilot</text>
+  <text x="84" y="156" font-size="13" fill="#888">완성의 시야 = 현재 파일 + 열린 탭</text>
+
+  <rect x="84" y="168" width="68" height="26" rx="4" fill="#12212e" stroke="#7ec8e3" stroke-width="1.5"/>
+  <rect x="162" y="168" width="68" height="26" rx="4" fill="#151515" stroke="#262626" stroke-width="1"/>
+  <rect x="240" y="168" width="68" height="26" rx="4" fill="#151515" stroke="#262626" stroke-width="1"/>
+  <rect x="318" y="168" width="68" height="26" rx="4" fill="#151515" stroke="#262626" stroke-width="1"/>
+
+  <rect x="84" y="202" width="68" height="26" rx="4" fill="#151515" stroke="#262626" stroke-width="1"/>
+  <rect x="162" y="202" width="68" height="26" rx="4" fill="#151515" stroke="#262626" stroke-width="1"/>
+  <rect x="240" y="202" width="68" height="26" rx="4" fill="#12212e" stroke="#7ec8e3" stroke-width="1.5"/>
+  <rect x="318" y="202" width="68" height="26" rx="4" fill="#151515" stroke="#262626" stroke-width="1"/>
+
+  <rect x="84" y="236" width="68" height="26" rx="4" fill="#151515" stroke="#262626" stroke-width="1"/>
+  <rect x="162" y="236" width="68" height="26" rx="4" fill="#12212e" stroke="#7ec8e3" stroke-width="1.5"/>
+  <rect x="240" y="236" width="68" height="26" rx="4" fill="#151515" stroke="#262626" stroke-width="1"/>
+  <rect x="318" y="236" width="68" height="26" rx="4" fill="#151515" stroke="#262626" stroke-width="1"/>
+
+  <circle cx="88" cy="292" r="3.5" fill="#7ec8e3"/>
+  <text x="100" y="296" font-size="13" fill="#e8e8e8">열린 탭만 프롬프트에 든다</text>
+  <circle cx="88" cy="316" r="3.5" fill="#444444"/>
+  <text x="100" y="320" font-size="13" fill="#888">안 열린 파일은 완성이 모른다</text>
+  <circle cx="88" cy="340" r="3.5" fill="#444444"/>
+  <text x="100" y="344" font-size="13" fill="#888">채팅은 #codebase로 훑는다</text>
+
+  <!-- Cursor -->
+  <rect x="470" y="100" width="350" height="270" rx="12" fill="#0f0f0f" stroke="#2a2a2a" stroke-width="1"/>
+  <text x="494" y="134" font-size="16" font-weight="600" fill="#7777cc">Cursor</text>
+  <text x="494" y="156" font-size="13" fill="#888">에이전트가 코드베이스를 뒤진다</text>
+  <text x="806" y="155" text-anchor="end" font-size="12" fill="#7777cc">검색 범위</text>
+
+  <rect x="484" y="162" width="322" height="110" rx="8" fill="none" stroke="#7777cc" stroke-width="2" stroke-dasharray="4,4"/>
+
+  <rect x="494" y="168" width="68" height="26" rx="4" fill="#151515" stroke="#262626" stroke-width="1"/>
+  <rect x="572" y="168" width="68" height="26" rx="4" fill="#12212e" stroke="#7ec8e3" stroke-width="1.5"/>
+  <rect x="650" y="168" width="68" height="26" rx="4" fill="#151515" stroke="#262626" stroke-width="1"/>
+  <rect x="728" y="168" width="68" height="26" rx="4" fill="#151515" stroke="#262626" stroke-width="1"/>
+
+  <rect x="494" y="202" width="68" height="26" rx="4" fill="#12212e" stroke="#7ec8e3" stroke-width="1.5"/>
+  <rect x="572" y="202" width="68" height="26" rx="4" fill="#151515" stroke="#262626" stroke-width="1"/>
+  <rect x="650" y="202" width="68" height="26" rx="4" fill="#151515" stroke="#262626" stroke-width="1"/>
+  <rect x="728" y="202" width="68" height="26" rx="4" fill="#12212e" stroke="#7ec8e3" stroke-width="1.5"/>
+
+  <rect x="494" y="236" width="68" height="26" rx="4" fill="#151515" stroke="#262626" stroke-width="1"/>
+  <rect x="572" y="236" width="68" height="26" rx="4" fill="#151515" stroke="#262626" stroke-width="1"/>
+  <rect x="650" y="236" width="68" height="26" rx="4" fill="#12212e" stroke="#7ec8e3" stroke-width="1.5"/>
+  <rect x="728" y="236" width="68" height="26" rx="4" fill="#151515" stroke="#262626" stroke-width="1"/>
+
+  <circle cx="498" cy="292" r="3.5" fill="#7ec8e3"/>
+  <text x="510" y="296" font-size="13" fill="#e8e8e8">뒤져서 집어 온 것이 든다</text>
+  <circle cx="498" cy="316" r="3.5" fill="#444444"/>
+  <text x="510" y="320" font-size="13" fill="#888">grep 엔진 · 탐색 서브에이전트</text>
+  <circle cx="498" cy="340" r="3.5" fill="#444444"/>
+  <text x="510" y="344" font-size="13" fill="#888">못 찾은 파일은 없는 것과 같다</text>
+</svg>

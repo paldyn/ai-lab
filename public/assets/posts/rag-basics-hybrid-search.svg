@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 530" width="880" height="530">
+  <rect width="880" height="530" fill="#0a0a0a" rx="12"/>
+
+  <defs>
+    <marker id="hyb-arr" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#666"/>
+    </marker>
+  </defs>
+
+  <text x="440" y="44" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="22" font-weight="700" fill="#e8e8e8">하이브리드 검색 — 두 잣대와 순위 융합</text>
+  <text x="440" y="68" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="15" font-weight="600" fill="#888">의미로 재는 검색과 글자로 재는 검색을 함께 돌리고 순위로 합친다</text>
+
+  <!-- query -->
+  <rect x="330" y="92" width="220" height="60" rx="8" fill="#12161f" stroke="#3a3a3a" stroke-width="1.5"/>
+  <text x="440" y="116" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="600" fill="#e8e8e8">질문</text>
+  <text x="440" y="136" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="12" fill="#888">KX-350 보증 기간</text>
+
+  <!-- split -->
+  <line x1="440" y1="152" x2="440" y2="168" stroke="#666" stroke-width="2"/>
+  <line x1="240" y1="168" x2="640" y2="168" stroke="#666" stroke-width="2"/>
+  <line x1="240" y1="168" x2="240" y2="196" stroke="#666" stroke-width="2" marker-end="url(#hyb-arr)"/>
+  <line x1="640" y1="168" x2="640" y2="196" stroke="#666" stroke-width="2" marker-end="url(#hyb-arr)"/>
+
+  <!-- vector search -->
+  <rect x="70" y="196" width="340" height="112" rx="8" fill="#0d1420" stroke="#7ec8e3" stroke-width="1.5"/>
+  <text x="94" y="224" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#7ec8e3">벡터 검색</text>
+  <text x="94" y="250" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e8e8e8">의미가 비슷한 것을 찾는다</text>
+  <text x="94" y="272" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#9aa4b8">KX-350 · E-4012에는 약하다</text>
+  <text x="94" y="294" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#7ec8e3">가중치 0.6</text>
+
+  <!-- BM25 -->
+  <rect x="470" y="196" width="340" height="112" rx="8" fill="#14141f" stroke="#7777cc" stroke-width="1.5"/>
+  <text x="494" y="224" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#7777cc">BM25</text>
+  <text x="494" y="250" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e8e8e8">글자가 일치하는 것을 찾는다</text>
+  <text x="494" y="272" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#9aa4b8">단어 빈도와 희소성으로 점수</text>
+  <text x="494" y="294" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#7777cc">가중치 0.4</text>
+
+  <!-- merge -->
+  <path d="M240 308 L240 344 L440 344" fill="none" stroke="#666" stroke-width="2"/>
+  <path d="M640 308 L640 344 L440 344" fill="none" stroke="#666" stroke-width="2"/>
+  <line x1="440" y1="344" x2="440" y2="372" stroke="#666" stroke-width="2" marker-end="url(#hyb-arr)"/>
+
+  <!-- RRF -->
+  <rect x="190" y="372" width="500" height="90" rx="8" fill="#0d1a10" stroke="#55c555" stroke-width="1.5"/>
+  <text x="440" y="400" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#55c555">RRF · 상호 순위 융합</text>
+  <text x="440" y="426" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e8e8e8">두 점수의 눈금이 달라 그냥 더하면 한쪽이 지배한다</text>
+  <text x="440" y="448" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#55c555">점수를 버리고 순위만 섞는다</text>
+</svg>

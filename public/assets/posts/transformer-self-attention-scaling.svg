@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="510" viewBox="0 0 880 510">
+  <rect width="880" height="510" fill="#0a0a0a" rx="12"/>
+
+  <text x="440" y="46" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="22" font-weight="700" fill="#e8e8e8" text-anchor="middle">스케일링 전후의 softmax와 기울기</text>
+  <text x="440" y="70" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="14" font-weight="600" fill="#888" text-anchor="middle">d_k = 64 · 점수 8 · 0 · −8 · 막대는 softmax 확률</text>
+
+  <!-- 나누지 않음 -->
+  <rect x="60" y="92" width="340" height="288" fill="#111827" rx="8" stroke="#e05555" stroke-width="1.2"/>
+  <text x="230" y="118" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#e05555" text-anchor="middle">나누지 않음</text>
+  <text x="230" y="140" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="12" fill="#888" text-anchor="middle">점수 8 · 0 · −8</text>
+
+  <rect x="130" y="172" width="40" height="100" fill="#e05555" opacity="0.7" rx="2"/>
+  <rect x="210" y="270" width="40" height="2" fill="#e05555" opacity="0.7"/>
+  <rect x="290" y="271" width="40" height="1" fill="#e05555" opacity="0.7"/>
+  <line x1="110" y1="272" x2="350" y2="272" stroke="#333" stroke-width="1"/>
+
+  <text x="150" y="292" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="11" fill="#e8e8e8" text-anchor="middle">0.9997</text>
+  <text x="230" y="292" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="11" fill="#888" text-anchor="middle">0.0003</text>
+  <text x="310" y="292" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="11" fill="#888" text-anchor="middle">0.0000001</text>
+
+  <rect x="110" y="306" width="240" height="56" fill="#0d1117" rx="6" stroke="#e05555" stroke-width="1"/>
+  <text x="230" y="328" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="12" fill="#888" text-anchor="middle">최댓값 자리의 기울기</text>
+  <text x="230" y="350" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="18" font-weight="700" fill="#e05555" text-anchor="middle">0.0003</text>
+
+  <!-- √d_k 로 나눔 -->
+  <rect x="480" y="92" width="340" height="288" fill="#111827" rx="8" stroke="#55c555" stroke-width="1.2"/>
+  <text x="650" y="118" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#55c555" text-anchor="middle">√d_k = 8 로 나눔</text>
+  <text x="650" y="140" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="12" fill="#888" text-anchor="middle">점수 1 · 0 · −1</text>
+
+  <rect x="550" y="205" width="40" height="67" fill="#55c555" opacity="0.7" rx="2"/>
+  <rect x="630" y="247" width="40" height="25" fill="#55c555" opacity="0.7" rx="2"/>
+  <rect x="710" y="263" width="40" height="9" fill="#55c555" opacity="0.7" rx="2"/>
+  <line x1="530" y1="272" x2="770" y2="272" stroke="#333" stroke-width="1"/>
+
+  <text x="570" y="292" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="11" fill="#e8e8e8" text-anchor="middle">0.665</text>
+  <text x="650" y="292" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="11" fill="#e8e8e8" text-anchor="middle">0.245</text>
+  <text x="730" y="292" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="11" fill="#e8e8e8" text-anchor="middle">0.090</text>
+
+  <rect x="530" y="306" width="240" height="56" fill="#0d1117" rx="6" stroke="#55c555" stroke-width="1"/>
+  <text x="650" y="328" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="12" fill="#888" text-anchor="middle">최댓값 자리의 기울기</text>
+  <text x="650" y="350" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="18" font-weight="700" fill="#55c555" text-anchor="middle">0.223</text>
+
+  <rect x="60" y="402" width="760" height="48" fill="#0d1117" rx="8" stroke="#7777cc" stroke-width="1"/>
+  <text x="440" y="431" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e8e8e8" text-anchor="middle">순위는 하나도 바뀌지 않았다 — 바뀐 것은 차이의 폭이고, 기울기는 700배 넘게 커진다</text>
+</svg>

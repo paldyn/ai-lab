@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="510" viewBox="0 0 880 510" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <defs>
+    <marker id="lg-up" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#55c555"/>
+    </marker>
+    <marker id="lg-down" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#e05555"/>
+    </marker>
+  </defs>
+
+  <rect x="0" y="0" width="880" height="510" rx="12" fill="#0a0a0a"/>
+
+  <text x="60" y="50" font-size="22" font-weight="700" fill="#e8e8e8">손실과 지표는 따로 움직인다</text>
+  <text x="60" y="76" font-size="13" fill="#888">모델이 줄이는 값은 −log p 이고, 우리가 보는 값은 임계값 0.5로 세는 정확도다</text>
+
+  <rect x="60" y="100" width="760" height="166" rx="10" fill="#12141a" stroke="#2a2f3a" stroke-width="1"/>
+  <text x="84" y="130" font-size="15" font-weight="600" fill="#e8e8e8">손실 ↓ · 정확도 그대로</text>
+
+  <line x1="604" y1="156" x2="691" y2="156" stroke="#55c555" stroke-width="2" marker-end="url(#lg-up)"/>
+  <line x1="440" y1="158" x2="440" y2="202" stroke="#e05555" stroke-width="2" stroke-dasharray="4,4"/>
+  <line x1="140" y1="180" x2="740" y2="180" stroke="#3a4a6e" stroke-width="2"/>
+  <circle cx="604" cy="180" r="6" fill="#7777cc"/>
+  <circle cx="691" cy="180" r="6" fill="#55c555"/>
+  <text x="140" y="202" font-size="12" fill="#666" text-anchor="middle">0</text>
+  <text x="740" y="202" font-size="12" fill="#666" text-anchor="middle">1</text>
+  <text x="604" y="202" font-size="13" fill="#7777cc" text-anchor="middle">0.8</text>
+  <text x="691" y="202" font-size="13" fill="#55c555" text-anchor="middle">0.95</text>
+  <text x="440" y="222" font-size="13" fill="#e05555" text-anchor="middle">임계값 0.5</text>
+  <text x="84" y="244" font-size="13" fill="#888">이미 맞히던 샘플의 확신만 오른다. 임계값의 같은 쪽이라 정확도는 그대로다</text>
+
+  <rect x="60" y="290" width="760" height="166" rx="10" fill="#12141a" stroke="#2a2f3a" stroke-width="1"/>
+  <text x="84" y="320" font-size="15" font-weight="600" fill="#e8e8e8">손실 ↑ · 지표 ↑</text>
+
+  <line x1="390" y1="346" x2="470" y2="346" stroke="#55c555" stroke-width="2" marker-end="url(#lg-up)"/>
+  <line x1="700" y1="346" x2="650" y2="346" stroke="#e05555" stroke-width="2" marker-end="url(#lg-down)"/>
+  <line x1="440" y1="348" x2="440" y2="392" stroke="#e05555" stroke-width="2" stroke-dasharray="4,4"/>
+  <line x1="140" y1="370" x2="740" y2="370" stroke="#3a4a6e" stroke-width="2"/>
+  <circle cx="470" cy="370" r="6" fill="#55c555"/>
+  <circle cx="650" cy="370" r="6" fill="#e05555"/>
+  <text x="140" y="392" font-size="13" fill="#55c555">소수 몇 개가 임계값을 넘는다</text>
+  <text x="740" y="392" font-size="13" fill="#e05555" text-anchor="end">다수의 확신은 조금 내려간다</text>
+  <text x="440" y="412" font-size="13" fill="#e05555" text-anchor="middle">임계값 0.5</text>
+  <text x="84" y="434" font-size="13" fill="#888">지표는 좋아지는데 손실은 오른다 — 손실로만 고르면 이 지점을 버린다</text>
+
+  <text x="60" y="486" font-size="13" fill="#7777cc">최적 체크포인트를 고르는 기준은 손실이 아니라 지표여야 할 때가 있다</text>
+</svg>

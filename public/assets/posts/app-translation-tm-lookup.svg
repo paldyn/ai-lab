@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="490" viewBox="0 0 880 490" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <defs>
+    <marker id="tm-arr" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#7777cc"/>
+    </marker>
+    <marker id="tm-back" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#55c555"/>
+    </marker>
+  </defs>
+
+  <rect x="0" y="0" width="880" height="490" rx="12" fill="#0a0a0a"/>
+
+  <text x="60" y="48" font-size="22" font-weight="700" fill="#e8e8e8">TM을 먼저 보고, 남은 것만 모델에 보낸다</text>
+
+  <rect x="60" y="194" width="150" height="56" rx="8" fill="#12141a" stroke="#444444" stroke-width="1.5"/>
+  <text x="135" y="227" font-size="15" fill="#e8e8e8" text-anchor="middle">새 문장</text>
+
+  <line x1="210" y1="222" x2="250" y2="222" stroke="#7777cc" stroke-width="2" marker-end="url(#tm-arr)"/>
+
+  <rect x="250" y="194" width="150" height="56" rx="8" fill="#12141a" stroke="#7777cc" stroke-width="1.5"/>
+  <text x="325" y="227" font-size="15" fill="#e8e8e8" text-anchor="middle">TM 조회</text>
+
+  <line x1="435" y1="116" x2="435" y2="328" stroke="#7777cc" stroke-width="2"/>
+  <line x1="400" y1="222" x2="470" y2="222" stroke="#7777cc" stroke-width="2" marker-end="url(#tm-arr)"/>
+  <line x1="435" y1="116" x2="470" y2="116" stroke="#7777cc" stroke-width="2" marker-end="url(#tm-arr)"/>
+  <line x1="435" y1="328" x2="470" y2="328" stroke="#7777cc" stroke-width="2" marker-end="url(#tm-arr)"/>
+
+  <rect x="470" y="76" width="350" height="80" rx="8" fill="#12141a" stroke="#55c555" stroke-width="1.5"/>
+  <text x="494" y="103" font-size="14" font-weight="600" fill="#55c555">완전 일치 — 그대로 사용</text>
+  <text x="494" y="121" font-size="12" fill="#888888">검수를 마친 문장이라 재검수 대상에서 뺀다</text>
+  <text x="494" y="139" font-size="12" fill="#888888">비용·지연 0, 같은 입력에 같은 출력</text>
+
+  <rect x="470" y="182" width="350" height="80" rx="8" fill="#12141a" stroke="#7ec8e3" stroke-width="1.5"/>
+  <text x="494" y="209" font-size="14" font-weight="600" fill="#7ec8e3">부분 일치 — 참고 번역으로만</text>
+  <text x="494" y="227" font-size="12" fill="#888888">「30일」과 「90일」은 두 글자만 다르다</text>
+  <text x="494" y="245" font-size="12" fill="#888888">그대로 재사용하면 문서가 거짓말을 한다</text>
+
+  <rect x="470" y="288" width="350" height="80" rx="8" fill="#12141a" stroke="#7777cc" stroke-width="1.5"/>
+  <text x="494" y="315" font-size="14" font-weight="600" fill="#7777cc">불일치 — 모델에 번역 요청</text>
+  <text x="494" y="333" font-size="12" fill="#888888">이 청크에 나오는 용어만 골라 프롬프트에</text>
+  <text x="494" y="351" font-size="12" fill="#888888">검수를 마치면 TM에 되먹인다</text>
+
+  <line x1="325" y1="404" x2="325" y2="250" stroke="#55c555" stroke-width="2" stroke-dasharray="4,4" marker-end="url(#tm-back)"/>
+
+  <rect x="60" y="404" width="760" height="52" rx="8" fill="#12141a" stroke="#55c555" stroke-width="1.5"/>
+  <text x="84" y="434" font-size="13" fill="#55c555">검수를 마친 번역은 TM에 다시 넣는다 — 자동 통과 비율을 올리는 가장 확실한 방법</text>
+</svg>

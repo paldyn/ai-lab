@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" viewBox="0 0 880 492"
+     style="border-radius:12px" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <defs>
+    <marker id="whBlue" viewBox="0 0 14 14" refX="12" refY="7"
+            markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#7ec8e3"/>
+    </marker>
+    <marker id="whRed" viewBox="0 0 14 14" refX="12" refY="7"
+            markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#e05555"/>
+    </marker>
+  </defs>
+
+  <rect width="880" height="492" rx="12" fill="#0a0a0a"/>
+
+  <text x="440" y="42" text-anchor="middle" font-size="22" font-weight="700" fill="#e8e8e8">녹화 완료 webhook의 처리</text>
+
+  <text x="225" y="80" text-anchor="middle" font-size="13" fill="#888">처리 흐름</text>
+  <text x="645" y="80" text-anchor="middle" font-size="13" fill="#888">여기서 걸린다</text>
+
+  <rect x="60" y="100" width="330" height="62" rx="8" fill="#0f1a2e" stroke="#7ec8e3" stroke-width="1.5"/>
+  <text x="225" y="125" text-anchor="middle" font-size="14" font-weight="600" fill="#e8e8e8">녹화 완료 이벤트</text>
+  <text x="225" y="145" text-anchor="middle" font-size="12" fill="#888">Zoom · Teams가 보낸다</text>
+
+  <line x1="225" y1="162" x2="225" y2="190" stroke="#7ec8e3" stroke-width="2" marker-end="url(#whBlue)"/>
+
+  <rect x="60" y="190" width="330" height="62" rx="8" fill="#0f1a2e" stroke="#7ec8e3" stroke-width="1.5"/>
+  <text x="225" y="215" text-anchor="middle" font-size="14" font-weight="600" fill="#e8e8e8">webhook 핸들러</text>
+  <text x="225" y="235" text-anchor="middle" font-size="12" fill="#888">검증하고 큐에 넣고 즉시 200</text>
+
+  <line x1="225" y1="252" x2="225" y2="280" stroke="#7ec8e3" stroke-width="2" marker-end="url(#whBlue)"/>
+
+  <rect x="60" y="280" width="330" height="62" rx="8" fill="#0f1a2e" stroke="#7ec8e3" stroke-width="1.5"/>
+  <text x="225" y="305" text-anchor="middle" font-size="14" font-weight="600" fill="#e8e8e8">워커</text>
+  <text x="225" y="325" text-anchor="middle" font-size="12" fill="#888">처리 키로 이미 했는지 본다</text>
+
+  <line x1="225" y1="342" x2="225" y2="370" stroke="#7ec8e3" stroke-width="2" marker-end="url(#whBlue)"/>
+
+  <rect x="60" y="370" width="330" height="62" rx="8" fill="#0f1a2e" stroke="#7ec8e3" stroke-width="1.5"/>
+  <text x="225" y="395" text-anchor="middle" font-size="14" font-weight="600" fill="#e8e8e8">다운로드 → 요약 → Slack</text>
+  <text x="225" y="415" text-anchor="middle" font-size="12" fill="#888">회의가 끝나면 바로 날아간다</text>
+
+  <line x1="390" y1="221" x2="470" y2="221" stroke="#e05555" stroke-width="2" stroke-dasharray="4,4" marker-end="url(#whRed)"/>
+  <line x1="390" y1="311" x2="470" y2="311" stroke="#e05555" stroke-width="2" stroke-dasharray="4,4" marker-end="url(#whRed)"/>
+  <line x1="390" y1="401" x2="470" y2="401" stroke="#e05555" stroke-width="2" stroke-dasharray="4,4" marker-end="url(#whRed)"/>
+
+  <rect x="470" y="190" width="350" height="62" rx="8" fill="#2a0f0f" stroke="#e05555" stroke-width="1.5"/>
+  <text x="645" y="215" text-anchor="middle" font-size="13" font-weight="600" fill="#e05555">재시도 폭주</text>
+  <text x="645" y="235" text-anchor="middle" font-size="12" fill="#888">200이 늦으면 같은 이벤트가 또 온다</text>
+
+  <rect x="470" y="280" width="350" height="62" rx="8" fill="#2a0f0f" stroke="#e05555" stroke-width="1.5"/>
+  <text x="645" y="305" text-anchor="middle" font-size="13" font-weight="600" fill="#e05555">중복 처리</text>
+  <text x="645" y="325" text-anchor="middle" font-size="12" fill="#888">회의 ID와 녹화 파일 ID를 처리 키로</text>
+
+  <rect x="470" y="370" width="350" height="62" rx="8" fill="#2a0f0f" stroke="#e05555" stroke-width="1.5"/>
+  <text x="645" y="395" text-anchor="middle" font-size="13" font-weight="600" fill="#e05555">파일 도착 지연</text>
+  <text x="645" y="415" text-anchor="middle" font-size="12" fill="#888">404이면 지수 백오프로 다시 시도</text>
+</svg>

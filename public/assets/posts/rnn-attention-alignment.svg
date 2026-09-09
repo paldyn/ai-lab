@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="516" viewBox="0 0 880 516" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <rect x="0" y="0" width="880" height="516" rx="12" fill="#0a0a0a"/>
+
+  <text x="60" y="54" font-size="22" font-weight="700" fill="#e8e8e8">정렬 행렬의 두 모양</text>
+  <text x="60" y="80" font-size="13" fill="#888">밝은 칸 = 그 출력 토큰을 만들 때 그 입력 토큰을 봤다</text>
+
+  <rect x="628" y="68" width="14" height="14" rx="3" fill="#7ec8e3"/>
+  <text x="650" y="80" font-size="12" fill="#9aa4b8">α 큼</text>
+  <rect x="700" y="68" width="14" height="14" rx="3" fill="#14161b" stroke="#2f3542" stroke-width="1"/>
+  <text x="722" y="80" font-size="12" fill="#9aa4b8">α 작음</text>
+
+  <!-- 왼쪽: 어순이 비슷한 언어쌍 -->
+  <text x="60" y="120" font-size="16" font-weight="600" fill="#e8e8e8">어순이 비슷한 언어쌍</text>
+  <text x="60" y="146" font-size="12" fill="#888">출력 ↓</text>
+  <text x="154" y="146" font-size="12" fill="#888">입력 →</text>
+
+  <text x="191" y="168" font-size="13" fill="#e8e8e8" text-anchor="middle">x₁</text>
+  <text x="271" y="168" font-size="13" fill="#e8e8e8" text-anchor="middle">x₂</text>
+  <text x="351" y="168" font-size="13" fill="#e8e8e8" text-anchor="middle">x₃</text>
+
+  <text x="146" y="208" font-size="13" fill="#e8e8e8" text-anchor="end">y₁</text>
+  <text x="146" y="260" font-size="13" fill="#e8e8e8" text-anchor="end">y₂</text>
+  <text x="146" y="312" font-size="13" fill="#e8e8e8" text-anchor="end">y₃</text>
+
+  <rect x="154" y="180" width="74" height="46" rx="4" fill="#7ec8e3"/>
+  <rect x="234" y="180" width="74" height="46" rx="4" fill="#14161b" stroke="#2f3542" stroke-width="1"/>
+  <rect x="314" y="180" width="74" height="46" rx="4" fill="#14161b" stroke="#2f3542" stroke-width="1"/>
+
+  <rect x="154" y="232" width="74" height="46" rx="4" fill="#14161b" stroke="#2f3542" stroke-width="1"/>
+  <rect x="234" y="232" width="74" height="46" rx="4" fill="#7ec8e3"/>
+  <rect x="314" y="232" width="74" height="46" rx="4" fill="#14161b" stroke="#2f3542" stroke-width="1"/>
+
+  <rect x="154" y="284" width="74" height="46" rx="4" fill="#14161b" stroke="#2f3542" stroke-width="1"/>
+  <rect x="234" y="284" width="74" height="46" rx="4" fill="#14161b" stroke="#2f3542" stroke-width="1"/>
+  <rect x="314" y="284" width="74" height="46" rx="4" fill="#7ec8e3"/>
+
+  <line x1="191" y1="203" x2="351" y2="307" stroke="#7777cc" stroke-width="2" stroke-dasharray="4,4"/>
+
+  <text x="60" y="358" font-size="13" fill="#888">밝은 칸이 점선 대각선을 따라 흐른다</text>
+
+  <!-- 오른쪽: 어순이 다른 언어쌍 -->
+  <text x="486" y="120" font-size="16" font-weight="600" fill="#e8e8e8">어순이 다른 언어쌍</text>
+  <text x="486" y="146" font-size="12" fill="#888">출력 ↓</text>
+  <text x="580" y="146" font-size="12" fill="#888">입력 →</text>
+
+  <text x="617" y="168" font-size="13" fill="#e8e8e8" text-anchor="middle">le</text>
+  <text x="697" y="168" font-size="13" fill="#e8e8e8" text-anchor="middle">chat</text>
+  <text x="777" y="168" font-size="13" fill="#e8e8e8" text-anchor="middle">noir</text>
+
+  <text x="572" y="208" font-size="13" fill="#e8e8e8" text-anchor="end">the</text>
+  <text x="572" y="260" font-size="13" fill="#e8e8e8" text-anchor="end">black</text>
+  <text x="572" y="312" font-size="13" fill="#e8e8e8" text-anchor="end">cat</text>
+
+  <rect x="580" y="180" width="74" height="46" rx="4" fill="#7ec8e3"/>
+  <rect x="660" y="180" width="74" height="46" rx="4" fill="#14161b" stroke="#2f3542" stroke-width="1"/>
+  <rect x="740" y="180" width="74" height="46" rx="4" fill="#14161b" stroke="#2f3542" stroke-width="1"/>
+
+  <rect x="580" y="232" width="74" height="46" rx="4" fill="#14161b" stroke="#2f3542" stroke-width="1"/>
+  <rect x="660" y="232" width="74" height="46" rx="4" fill="#14161b" stroke="#2f3542" stroke-width="1"/>
+  <rect x="740" y="232" width="74" height="46" rx="4" fill="#7ec8e3"/>
+
+  <rect x="580" y="284" width="74" height="46" rx="4" fill="#14161b" stroke="#2f3542" stroke-width="1"/>
+  <rect x="660" y="284" width="74" height="46" rx="4" fill="#7ec8e3"/>
+  <rect x="740" y="284" width="74" height="46" rx="4" fill="#14161b" stroke="#2f3542" stroke-width="1"/>
+
+  <line x1="617" y1="203" x2="777" y2="307" stroke="#7777cc" stroke-width="2" stroke-dasharray="4,4"/>
+
+  <text x="486" y="358" font-size="13" fill="#888">black↔noir, cat↔chat이 대각선을 벗어난다</text>
+
+  <rect x="60" y="386" width="760" height="64" rx="8" fill="#101216" stroke="#2f3542" stroke-width="1"/>
+  <text x="84" y="410" font-size="13" fill="#e8e8e8">정렬 라벨을 준 적이 없는데도 단어 정렬이 부산물로 떨어진다</text>
+  <text x="84" y="432" font-size="12" fill="#9aa4b8">다만 가중치가 큰 자리가 곧 인과적으로 중요한 자리는 아니다 — 단서이지 근거가 아니다</text>
+</svg>

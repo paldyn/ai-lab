@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="430" viewBox="0 0 880 430">
+  <rect width="880" height="430" fill="#0a0a0a" rx="12"/>
+
+  <text x="440" y="46" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="22" font-weight="700" fill="#e8e8e8" text-anchor="middle">동적 압축이 캐시를 깨뜨릴 때</text>
+  <text x="440" y="74" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="13" fill="#888" text-anchor="middle">요청 하나 = 입력 3,500 · 출력 500 토큰 · Sonnet 5</text>
+
+  <text x="260" y="100" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="12" fill="#888">요청당 비용</text>
+
+  <!-- 1. 손대지 않음 -->
+  <text x="248" y="133" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="13" fill="#e8e8e8" text-anchor="end">손대지 않음</text>
+  <rect x="260" y="112" width="420" height="32" rx="4" fill="#2a2a3a" stroke="#7777cc" stroke-width="1.5"/>
+  <text x="694" y="133" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="13" font-weight="600" fill="#7777cc">$0.0120</text>
+  <rect x="762" y="116" width="58" height="24" rx="4" fill="#1a1a2a" stroke="#7777cc" stroke-width="1"/>
+  <text x="791" y="133" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="12" fill="#7777cc" text-anchor="middle">기준</text>
+
+  <!-- 2. 압축만 -->
+  <text x="248" y="189" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="13" fill="#e8e8e8" text-anchor="end">압축만 (캐시 없음)</text>
+  <rect x="260" y="168" width="378" height="32" rx="4" fill="#1a2a1a" stroke="#55c555" stroke-width="1.5"/>
+  <text x="652" y="189" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="13" font-weight="600" fill="#55c555">$0.0108</text>
+  <rect x="762" y="172" width="58" height="24" rx="4" fill="#1a2a1a" stroke="#55c555" stroke-width="1"/>
+  <text x="791" y="189" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="12" fill="#55c555" text-anchor="middle">-10%</text>
+
+  <!-- 3. 캐시만 -->
+  <text x="248" y="245" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="13" fill="#e8e8e8" text-anchor="end">캐시만</text>
+  <rect x="260" y="224" width="294" height="32" rx="4" fill="#1a2a1a" stroke="#55c555" stroke-width="1.5"/>
+  <text x="568" y="245" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="13" font-weight="600" fill="#55c555">$0.0084</text>
+  <rect x="762" y="228" width="58" height="24" rx="4" fill="#1a2a1a" stroke="#55c555" stroke-width="1"/>
+  <text x="791" y="245" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="12" fill="#55c555" text-anchor="middle">-30%</text>
+
+  <!-- 4. 압축 + 캐시 깨짐 -->
+  <text x="248" y="301" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="13" fill="#e8e8e8" text-anchor="end">압축 + 캐시 깨짐</text>
+  <rect x="260" y="280" width="378" height="32" rx="4" fill="#2a1a1a" stroke="#e05555" stroke-width="1.5"/>
+  <text x="652" y="301" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="13" font-weight="600" fill="#e05555">$0.0108</text>
+  <rect x="762" y="284" width="58" height="24" rx="4" fill="#2a1a1a" stroke="#e05555" stroke-width="1"/>
+  <text x="791" y="301" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="12" fill="#e05555" text-anchor="middle">+29%</text>
+
+  <!-- 캐시만 켰을 때의 자리 -->
+  <line x1="554" y1="256" x2="554" y2="316" stroke="#55c555" stroke-width="1.5" stroke-dasharray="4,4"/>
+
+  <rect x="60" y="340" width="760" height="60" rx="8" fill="#2a1a1a" stroke="#e05555" stroke-width="1.5"/>
+  <text x="84" y="364" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="13" font-weight="600" fill="#e05555">압축이 절감처럼 보이는 자리에서 캐시가 깨져 29% 더 비싸졌다</text>
+  <text x="84" y="384" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="12" fill="#888">압축은 한 번 하고 정적 문자열로 고정한다 — 요청마다 다르게 압축하면 접두사가 매번 달라진다</text>
+</svg>

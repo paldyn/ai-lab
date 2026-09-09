@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" viewBox="0 0 880 480"
+     font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <defs>
+    <marker id="axis-arr" viewBox="0 0 14 14" refX="12" refY="7"
+            markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#555555"/>
+    </marker>
+  </defs>
+
+  <rect width="880" height="480" fill="#0a0a0a" rx="12"/>
+
+  <text x="440" y="46" text-anchor="middle" font-size="22" font-weight="700" fill="#e8e8e8">Cursor Agent 패널의 세 모드</text>
+  <text x="440" y="72" text-anchor="middle" font-size="13" fill="#888">Shift+Tab으로 모드가 차례로 바뀐다</text>
+
+  <!-- Ask -->
+  <rect x="50" y="112" width="220" height="218" rx="10" fill="#101010" stroke="#55c555" stroke-width="1.5"/>
+  <text x="74" y="146" font-size="17" font-weight="700" fill="#55c555">Ask</text>
+  <text x="74" y="174" font-size="14" fill="#e8e8e8">읽기만 한다</text>
+  <text x="74" y="202" font-size="13" fill="#888">코드베이스를 검색하고</text>
+  <text x="74" y="224" font-size="13" fill="#888">파일을 읽어 답하지만</text>
+  <text x="74" y="246" font-size="13" fill="#888">파일에 손대지 않는다</text>
+  <line x1="74" y1="266" x2="246" y2="266" stroke="#2a2a2a" stroke-width="1"/>
+  <text x="74" y="288" font-size="12" fill="#888">이럴 때</text>
+  <text x="74" y="310" font-size="13" fill="#e8e8e8">무엇을 바꿀지 모를 때</text>
+
+  <!-- Plan -->
+  <rect x="330" y="112" width="220" height="218" rx="10" fill="#101010" stroke="#7ec8e3" stroke-width="1.5"/>
+  <text x="354" y="146" font-size="17" font-weight="700" fill="#7ec8e3">Plan</text>
+  <text x="354" y="174" font-size="14" fill="#e8e8e8">계획을 먼저 만든다</text>
+  <text x="354" y="202" font-size="13" fill="#888">코드베이스를 조사하고</text>
+  <text x="354" y="224" font-size="13" fill="#888">모호한 자리를 되묻고</text>
+  <text x="354" y="246" font-size="13" fill="#888">승인을 받으면 시작한다</text>
+  <line x1="354" y1="266" x2="526" y2="266" stroke="#2a2a2a" stroke-width="1"/>
+  <text x="354" y="288" font-size="12" fill="#888">이럴 때</text>
+  <text x="354" y="310" font-size="13" fill="#e8e8e8">확인이 필요한 큰 작업</text>
+
+  <!-- Agent -->
+  <rect x="610" y="112" width="220" height="218" rx="10" fill="#101010" stroke="#e05555" stroke-width="1.5"/>
+  <text x="634" y="146" font-size="17" font-weight="700" fill="#e05555">Agent</text>
+  <text x="634" y="174" font-size="14" fill="#e8e8e8">곧바로 손댄다</text>
+  <text x="634" y="202" font-size="13" fill="#888">파일을 만들고 고치고</text>
+  <text x="634" y="224" font-size="13" fill="#888">터미널 명령을 실행하고</text>
+  <text x="634" y="246" font-size="13" fill="#888">다음 행동을 스스로 정한다</text>
+  <line x1="634" y1="266" x2="806" y2="266" stroke="#2a2a2a" stroke-width="1"/>
+  <text x="634" y="288" font-size="12" fill="#888">이럴 때</text>
+  <text x="634" y="310" font-size="13" fill="#e8e8e8">결과만 검토하면 될 때</text>
+
+  <!-- 언제 코드에 손대는가 -->
+  <text x="50" y="364" font-size="13" fill="#888">코드에 손대는 시점</text>
+  <line x1="50" y1="386" x2="830" y2="386" stroke="#3a3a3a" stroke-width="2" marker-end="url(#axis-arr)"/>
+  <circle cx="160" cy="386" r="6" fill="#0a0a0a" stroke="#55c555" stroke-width="2.5"/>
+  <circle cx="440" cy="386" r="6" fill="#0a0a0a" stroke="#7ec8e3" stroke-width="2.5"/>
+  <circle cx="720" cy="386" r="6" fill="#0a0a0a" stroke="#e05555" stroke-width="2.5"/>
+  <text x="160" y="414" text-anchor="middle" font-size="13" fill="#e8e8e8">안 댄다</text>
+  <text x="440" y="414" text-anchor="middle" font-size="13" fill="#e8e8e8">승인 뒤에 댄다</text>
+  <text x="720" y="414" text-anchor="middle" font-size="13" fill="#e8e8e8">곧바로 댄다</text>
+</svg>

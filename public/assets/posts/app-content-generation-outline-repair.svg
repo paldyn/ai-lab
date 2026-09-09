@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="450" viewBox="0 0 880 450" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <defs>
+    <marker id="cg-arr" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#7777cc"/>
+    </marker>
+  </defs>
+
+  <rect x="0" y="0" width="880" height="450" rx="12" fill="#0a0a0a"/>
+
+  <text x="60" y="50" font-size="22" font-weight="700" fill="#e8e8e8">재생성 범위 — 걸린 절만 다시 요청한다</text>
+  <text x="60" y="76" font-size="13" fill="#888">아웃라인 검사가 3절을 잡았다. 여기서 무엇을 다시 만드느냐가 갈린다</text>
+
+  <rect x="100" y="96" width="120" height="48" rx="8" fill="#1a1d24" stroke="#2a2f3a" stroke-width="1"/>
+  <text x="160" y="126" font-size="14" font-weight="600" fill="#e8e8e8" text-anchor="middle">1절</text>
+  <rect x="240" y="96" width="120" height="48" rx="8" fill="#1a1d24" stroke="#2a2f3a" stroke-width="1"/>
+  <text x="300" y="126" font-size="14" font-weight="600" fill="#e8e8e8" text-anchor="middle">2절</text>
+  <rect x="380" y="96" width="120" height="48" rx="8" fill="#1d1416" stroke="#e05555" stroke-width="1.5"/>
+  <text x="440" y="126" font-size="14" font-weight="600" fill="#e05555" text-anchor="middle">3절</text>
+  <rect x="520" y="96" width="120" height="48" rx="8" fill="#1a1d24" stroke="#2a2f3a" stroke-width="1"/>
+  <text x="580" y="126" font-size="14" font-weight="600" fill="#e8e8e8" text-anchor="middle">4절</text>
+  <rect x="660" y="96" width="120" height="48" rx="8" fill="#1a1d24" stroke="#2a2f3a" stroke-width="1"/>
+  <text x="720" y="126" font-size="14" font-weight="600" fill="#e8e8e8" text-anchor="middle">5절</text>
+
+  <text x="440" y="176" font-size="13" fill="#e05555" text-anchor="middle">검사에 걸림</text>
+
+  <line x1="440" y1="186" x2="440" y2="202" stroke="#7777cc" stroke-width="2"/>
+  <path d="M 440 202 L 235 202 L 235 224" fill="none" stroke="#7777cc" stroke-width="2" marker-end="url(#cg-arr)"/>
+  <path d="M 440 202 L 645 202 L 645 224" fill="none" stroke="#7777cc" stroke-width="2" marker-end="url(#cg-arr)"/>
+
+  <rect x="60" y="224" width="350" height="160" rx="10" fill="#12141a" stroke="#2a2f3a" stroke-width="1"/>
+  <text x="84" y="254" font-size="15" font-weight="600" fill="#e05555">전체 재생성</text>
+  <rect x="84" y="272" width="52" height="40" rx="6" fill="#1d1416" stroke="#e05555" stroke-width="1"/>
+  <text x="110" y="298" font-size="13" fill="#e05555" text-anchor="middle">1절</text>
+  <rect x="146" y="272" width="52" height="40" rx="6" fill="#1d1416" stroke="#e05555" stroke-width="1"/>
+  <text x="172" y="298" font-size="13" fill="#e05555" text-anchor="middle">2절</text>
+  <rect x="208" y="272" width="52" height="40" rx="6" fill="#1d1416" stroke="#e05555" stroke-width="1"/>
+  <text x="234" y="298" font-size="13" fill="#e05555" text-anchor="middle">3절</text>
+  <rect x="270" y="272" width="52" height="40" rx="6" fill="#1d1416" stroke="#e05555" stroke-width="1"/>
+  <text x="296" y="298" font-size="13" fill="#e05555" text-anchor="middle">4절</text>
+  <rect x="332" y="272" width="52" height="40" rx="6" fill="#1d1416" stroke="#e05555" stroke-width="1"/>
+  <text x="358" y="298" font-size="13" fill="#e05555" text-anchor="middle">5절</text>
+  <text x="84" y="340" font-size="13" fill="#888">검사에 걸린 것은 3절 하나인데</text>
+  <text x="84" y="362" font-size="13" fill="#888">다섯 절이 전부 새로 나온다</text>
+
+  <rect x="470" y="224" width="350" height="160" rx="10" fill="#12141a" stroke="#2a2f3a" stroke-width="1"/>
+  <text x="494" y="254" font-size="15" font-weight="600" fill="#55c555">걸린 절만 재요청</text>
+  <rect x="494" y="272" width="52" height="40" rx="6" fill="#1a1d24" stroke="#2a2f3a" stroke-width="1"/>
+  <text x="520" y="298" font-size="13" fill="#888" text-anchor="middle">1절</text>
+  <rect x="556" y="272" width="52" height="40" rx="6" fill="#1a1d24" stroke="#2a2f3a" stroke-width="1"/>
+  <text x="582" y="298" font-size="13" fill="#888" text-anchor="middle">2절</text>
+  <rect x="618" y="272" width="52" height="40" rx="6" fill="#14301c" stroke="#55c555" stroke-width="1.5"/>
+  <text x="644" y="298" font-size="13" fill="#55c555" text-anchor="middle">3절</text>
+  <rect x="680" y="272" width="52" height="40" rx="6" fill="#1a1d24" stroke="#2a2f3a" stroke-width="1"/>
+  <text x="706" y="298" font-size="13" fill="#888" text-anchor="middle">4절</text>
+  <rect x="742" y="272" width="52" height="40" rx="6" fill="#1a1d24" stroke="#2a2f3a" stroke-width="1"/>
+  <text x="768" y="298" font-size="13" fill="#888" text-anchor="middle">5절</text>
+  <text x="494" y="340" font-size="13" fill="#888">1·2·4·5절은 그대로 남는다</text>
+  <text x="494" y="362" font-size="13" fill="#888">다시 만드는 것은 3절뿐이다</text>
+
+  <text x="60" y="416" font-size="13" fill="#7777cc">전체 재생성은 멀쩡했던 절까지 바꿔 놓는다</text>
+</svg>

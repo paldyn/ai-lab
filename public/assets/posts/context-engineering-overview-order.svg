@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="418" viewBox="0 0 880 418">
+  <rect width="880" height="418" fill="#0a0a0a" rx="12"/>
+
+  <text x="440" y="46" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="22" font-weight="700" fill="#e8e8e8" text-anchor="middle">컨텍스트 수선 순서</text>
+  <text x="440" y="72" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="14" fill="#888" text-anchor="middle">공짜인 것부터 다 쓰고 나서 값을 치르는 것으로 넘어간다</text>
+
+  <text x="60" y="112" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="15" font-weight="600" fill="#55c555">먼저 — 잃는 것이 없는 넷</text>
+  <text x="500" y="112" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="15" font-weight="600" fill="#e05555">그다음 — 실패 모드를 들여오는 둘</text>
+
+  <rect x="60" y="126" width="380" height="52" rx="8" fill="#0f1f0f" stroke="#55c555" stroke-width="1.5"/>
+  <text x="80" y="147" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="13" fill="#e8e8e8">① 도구 결과의 필드를 쳐낸다</text>
+  <text x="80" y="166" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="11" fill="#888">쓰이는 필드만 반환하면 축약할 것 자체가 준다</text>
+
+  <rect x="60" y="186" width="380" height="52" rx="8" fill="#0f1f0f" stroke="#55c555" stroke-width="1.5"/>
+  <text x="80" y="207" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="13" fill="#e8e8e8">② 시스템 프롬프트의 중복 지시를 합친다</text>
+  <text x="80" y="226" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="11" fill="#888">부딪히는 지시가 줄어 답이 안정된다</text>
+
+  <rect x="60" y="246" width="380" height="52" rx="8" fill="#0f1f0f" stroke="#55c555" stroke-width="1.5"/>
+  <text x="80" y="267" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="13" fill="#e8e8e8">③ 검색 문서 개수를 스윕으로 정한다</text>
+  <text x="80" y="286" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="11" fill="#888">정확도와 값과 지연이 함께 좋아진다</text>
+
+  <rect x="60" y="306" width="380" height="52" rx="8" fill="#0f1f0f" stroke="#55c555" stroke-width="1.5"/>
+  <text x="80" y="327" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="13" fill="#e8e8e8">④ 고정 항목에 캐시를 건다</text>
+  <text x="80" y="346" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="11" fill="#888">읽힌 토큰 수로 무효화를 확인한다</text>
+
+  <rect x="500" y="126" width="320" height="52" rx="8" fill="#1f0f0f" stroke="#e05555" stroke-width="1.5"/>
+  <text x="520" y="147" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="13" fill="#e8e8e8">⑤ 이력 요약</text>
+  <text x="520" y="166" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="11" fill="#888">요약이 사실을 뭉갤 위험이 생긴다</text>
+
+  <rect x="500" y="186" width="320" height="52" rx="8" fill="#1f0f0f" stroke="#e05555" stroke-width="1.5"/>
+  <text x="520" y="207" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="13" fill="#e8e8e8">⑥ 외부 메모리</text>
+  <text x="520" y="226" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="11" fill="#888">엉뚱한 과거가 창에 들어올 위험이 생긴다</text>
+
+  <rect x="500" y="266" width="320" height="92" rx="8" fill="#12121a" stroke="#444" stroke-width="1"/>
+  <text x="520" y="294" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="13" fill="#e8e8e8">앞의 넷은 되돌릴 것이 없거나</text>
+  <text x="520" y="316" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="13" fill="#e8e8e8">오히려 품질이 좋아지는 수선이다.</text>
+  <text x="520" y="338" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="13" fill="#888">뒤의 둘은 새 부품을 들여온다.</text>
+</svg>

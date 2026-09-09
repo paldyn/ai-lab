@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="480" viewBox="0 0 880 480" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <defs>
+    <marker id="conj-arr-b" viewBox="0 0 14 14" refX="12" refY="7"
+            markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#7ec8e3"/>
+    </marker>
+    <marker id="conj-arr-g" viewBox="0 0 14 14" refX="12" refY="7"
+            markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#55c555"/>
+    </marker>
+  </defs>
+
+  <rect x="0" y="0" width="880" height="480" rx="12" fill="#0a0a0a"/>
+
+  <text x="50" y="44" font-size="22" font-weight="700" fill="#e8e8e8">켤레는 분모에도 분자에도 곱한다</text>
+  <text x="50" y="72" font-size="13" fill="#888">부호만 바꾼 짝을 위아래에 함께 곱하면, 곱한 쪽의 근호가 사라진다</text>
+
+  <text x="230" y="112" font-size="16" font-weight="600" fill="#7ec8e3" text-anchor="middle">분모 유리화</text>
+  <text x="650" y="112" font-size="16" font-weight="600" fill="#55c555" text-anchor="middle">분자 유리화</text>
+
+  <rect x="50" y="128" width="360" height="58" rx="8" fill="#101820" stroke="#555" stroke-width="1"/>
+  <text x="230" y="164" font-size="17" fill="#e8e8e8" text-anchor="middle">1 / (√5 + √3)</text>
+
+  <rect x="470" y="128" width="360" height="58" rx="8" fill="#101820" stroke="#555" stroke-width="1"/>
+  <text x="650" y="164" font-size="17" fill="#e8e8e8" text-anchor="middle">(√(x+1) − 1) / x</text>
+
+  <line x1="230" y1="186" x2="230" y2="210" stroke="#7ec8e3" stroke-width="2" marker-end="url(#conj-arr-b)"/>
+  <line x1="650" y1="186" x2="650" y2="210" stroke="#55c555" stroke-width="2" marker-end="url(#conj-arr-g)"/>
+
+  <rect x="50" y="210" width="360" height="58" rx="8" fill="#101820" stroke="#7ec8e3" stroke-width="1.5"/>
+  <text x="230" y="246" font-size="16" fill="#7ec8e3" text-anchor="middle">× (√5 − √3) / (√5 − √3)</text>
+
+  <rect x="470" y="210" width="360" height="58" rx="8" fill="#101820" stroke="#55c555" stroke-width="1.5"/>
+  <text x="650" y="246" font-size="16" fill="#55c555" text-anchor="middle">× (√(x+1) + 1) / (√(x+1) + 1)</text>
+
+  <line x1="230" y1="268" x2="230" y2="292" stroke="#7ec8e3" stroke-width="2" marker-end="url(#conj-arr-b)"/>
+  <line x1="650" y1="268" x2="650" y2="292" stroke="#55c555" stroke-width="2" marker-end="url(#conj-arr-g)"/>
+
+  <rect x="50" y="292" width="360" height="58" rx="8" fill="#101820" stroke="#e8e8e8" stroke-width="1.5"/>
+  <text x="230" y="328" font-size="17" fill="#e8e8e8" text-anchor="middle">= (√5 − √3) / 2</text>
+
+  <rect x="470" y="292" width="360" height="58" rx="8" fill="#101820" stroke="#e8e8e8" stroke-width="1.5"/>
+  <text x="650" y="328" font-size="17" fill="#e8e8e8" text-anchor="middle">= 1 / (√(x+1) + 1)</text>
+
+  <text x="230" y="378" font-size="13" fill="#888" text-anchor="middle">분모가 5 − 3 = 2 가 되어 근호가 사라진다</text>
+  <text x="650" y="378" font-size="13" fill="#888" text-anchor="middle">분자가 x 가 되어 분모의 x 와 지워진다</text>
+
+  <line x1="50" y1="406" x2="830" y2="406" stroke="#333" stroke-width="1"/>
+
+  <text x="440" y="440" font-size="16" font-weight="600" fill="#7777cc" text-anchor="middle">두 자리 모두 (a + b)(a − b) = a² − b² 하나로 돌아간다</text>
+</svg>

@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="380" viewBox="0 0 880 380">
+  <defs>
+    <marker id="cb-red" viewBox="0 0 14 14" refX="12" refY="7"
+            markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#e05555"/>
+    </marker>
+    <marker id="cb-blue" viewBox="0 0 14 14" refX="12" refY="7"
+            markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#7ec8e3"/>
+    </marker>
+    <marker id="cb-green" viewBox="0 0 14 14" refX="12" refY="7"
+            markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#55c555"/>
+    </marker>
+  </defs>
+
+  <rect width="880" height="380" fill="#0a0a0a" rx="12"/>
+
+  <text x="440" y="46" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="22" font-weight="700" fill="#e8e8e8" text-anchor="middle">서킷 브레이커의 상태 전이</text>
+
+  <!-- CLOSED -->
+  <rect x="60" y="120" width="200" height="90" rx="8" fill="#1a2a1a" stroke="#55c555" stroke-width="1.5"/>
+  <text x="160" y="148" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="16" font-weight="700" fill="#55c555" text-anchor="middle">CLOSED</text>
+  <text x="160" y="170" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="11" fill="#888" text-anchor="middle">회로가 이어져 있다</text>
+  <text x="160" y="192" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="11" fill="#888" text-anchor="middle">요청이 정상으로 통과</text>
+
+  <line x1="260" y1="165" x2="338" y2="165" stroke="#e05555" stroke-width="2" marker-end="url(#cb-red)"/>
+  <text x="300" y="149" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="11" fill="#e05555" text-anchor="middle">실패 5회</text>
+
+  <!-- OPEN -->
+  <rect x="340" y="120" width="200" height="90" rx="8" fill="#2a1a1a" stroke="#e05555" stroke-width="1.5"/>
+  <text x="440" y="148" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="16" font-weight="700" fill="#e05555" text-anchor="middle">OPEN</text>
+  <text x="440" y="170" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="11" fill="#888" text-anchor="middle">부르지 않고 즉시 실패</text>
+  <text x="440" y="192" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="11" fill="#888" text-anchor="middle">1차의 타임아웃이 사라진다</text>
+
+  <line x1="540" y1="165" x2="618" y2="165" stroke="#7ec8e3" stroke-width="2" marker-end="url(#cb-blue)"/>
+  <text x="580" y="149" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="11" fill="#7ec8e3" text-anchor="middle">60초 경과</text>
+
+  <!-- HALF_OPEN -->
+  <rect x="620" y="120" width="200" height="90" rx="8" fill="#1a2a2a" stroke="#7ec8e3" stroke-width="1.5"/>
+  <text x="720" y="148" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="16" font-weight="700" fill="#7ec8e3" text-anchor="middle">HALF_OPEN</text>
+  <text x="720" y="170" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="11" fill="#888" text-anchor="middle">요청을 조금만 흘려본다</text>
+  <text x="720" y="192" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="11" fill="#888" text-anchor="middle">성공하면 되돌아간다</text>
+
+  <!-- 회복 -->
+  <path d="M 720 210 C 720 300 160 300 160 210" stroke="#55c555" stroke-width="2" fill="none"
+        stroke-dasharray="5,3" marker-end="url(#cb-green)"/>
+  <text x="440" y="240" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="11" fill="#55c555" text-anchor="middle">성공 2회</text>
+
+  <text x="440" y="318" font-family="'JetBrains Mono','Menlo','Consolas',monospace"
+        font-size="12" fill="#9aa4b8" text-anchor="middle">failure_threshold 5 · recovery_timeout 60 · success_threshold 2</text>
+  <text x="440" y="344" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="13" fill="#888" text-anchor="middle">참는 횟수가 작으면 멀쩡한 1차를 버리고, 기다리는 시간이 길면 회복한 뒤에도 2차로 흐른다</text>
+</svg>

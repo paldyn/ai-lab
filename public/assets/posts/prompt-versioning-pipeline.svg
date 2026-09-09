@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 570" width="880" height="570">
+  <rect width="880" height="570" fill="#0a0a0a" rx="12"/>
+
+  <defs>
+    <marker id="step" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#7ec8e3"/>
+    </marker>
+    <marker id="detail" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#7777cc"/>
+    </marker>
+  </defs>
+
+  <text x="440" y="44" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="22" font-weight="700" fill="#e8e8e8">평가 파이프라인</text>
+  <text x="440" y="68" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#888">한 줄씩 쌓고, 버전끼리 맞대고, YAML로 되돌린다</text>
+
+  <!-- 1 -->
+  <rect x="60" y="96" width="340" height="60" rx="8" fill="#111827" stroke="#3a4a6e"/>
+  <rect x="76" y="114" width="24" height="24" rx="6" fill="#1a1a2e" stroke="#7777cc"/>
+  <text x="88" y="131" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="12" font-weight="700" fill="#7ec8e3">1</text>
+  <text x="112" y="120" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="600" fill="#e8e8e8">평가 셋</text>
+  <text x="112" y="140" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="11" fill="#9aa4b8">실제 로그에서 뽑은 표본 200건</text>
+
+  <line x1="230" y1="156" x2="230" y2="184" stroke="#7ec8e3" stroke-width="2" marker-end="url(#step)"/>
+
+  <!-- 2 -->
+  <rect x="60" y="184" width="340" height="60" rx="8" fill="#111827" stroke="#3a4a6e"/>
+  <rect x="76" y="202" width="24" height="24" rx="6" fill="#1a1a2e" stroke="#7777cc"/>
+  <text x="88" y="219" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="12" font-weight="700" fill="#7ec8e3">2</text>
+  <text x="112" y="208" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="600" fill="#e8e8e8">모델 호출</text>
+  <text x="112" y="228" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="11" fill="#9aa4b8">prompt_fn — 어느 버전을 렌더할지는 호출부가 정한다</text>
+
+  <line x1="230" y1="244" x2="230" y2="272" stroke="#7ec8e3" stroke-width="2" marker-end="url(#step)"/>
+
+  <!-- 3 -->
+  <rect x="60" y="272" width="340" height="60" rx="8" fill="#111827" stroke="#3a4a6e"/>
+  <rect x="76" y="290" width="24" height="24" rx="6" fill="#1a1a2e" stroke="#7777cc"/>
+  <text x="88" y="307" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="12" font-weight="700" fill="#7ec8e3">3</text>
+  <text x="112" y="296" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="600" fill="#e8e8e8">지표 붙이기</text>
+  <text x="112" y="316" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="11" fill="#9aa4b8">품질과 비기능을 한 줄에 나란히</text>
+
+  <line x1="400" y1="302" x2="460" y2="302" stroke="#7777cc" stroke-width="2" stroke-dasharray="4,4" marker-end="url(#detail)"/>
+
+  <line x1="230" y1="332" x2="230" y2="360" stroke="#7ec8e3" stroke-width="2" marker-end="url(#step)"/>
+
+  <!-- 4 -->
+  <rect x="60" y="360" width="340" height="60" rx="8" fill="#111827" stroke="#3a4a6e"/>
+  <rect x="76" y="378" width="24" height="24" rx="6" fill="#1a1a2e" stroke="#7777cc"/>
+  <text x="88" y="395" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="12" font-weight="700" fill="#7ec8e3">4</text>
+  <text x="112" y="384" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="600" fill="#e8e8e8">버전 간 비교</text>
+  <text x="112" y="404" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="11" fill="#9aa4b8">지표는 평균, 비용만 합계</text>
+
+  <line x1="230" y1="420" x2="230" y2="450" stroke="#7ec8e3" stroke-width="2" marker-end="url(#step)"/>
+
+  <!-- 한 줄의 속 -->
+  <rect x="460" y="96" width="360" height="292" rx="8" fill="#0d1117" stroke="#3a4a6e"/>
+  <text x="484" y="122" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="600" fill="#e8e8e8">EvalResult 한 줄</text>
+
+  <rect x="484" y="136" width="312" height="48" rx="6" fill="#1a1a2e" stroke="#7777cc" stroke-width="2"/>
+  <text x="500" y="155" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="12" fill="#ffffff">prompt_version</text>
+  <text x="500" y="173" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="11" fill="#9aa4b8">이 줄이 어느 버전의 것인지</text>
+
+  <rect x="484" y="196" width="312" height="56" rx="6" fill="#111827" stroke="#55c555"/>
+  <text x="500" y="218" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="12" font-weight="600" fill="#55c555">품질</text>
+  <text x="500" y="236" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="11" fill="#ffffff">rouge_l · judge_score</text>
+
+  <rect x="484" y="264" width="312" height="56" rx="6" fill="#111827" stroke="#7ec8e3"/>
+  <text x="500" y="286" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="12" font-weight="600" fill="#7ec8e3">비기능</text>
+  <text x="500" y="304" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="11" fill="#ffffff">latency_ms · tokens_used · cost_usd</text>
+
+  <text x="484" y="344" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="11" fill="#9aa4b8">둘이 같은 줄에 있어야</text>
+  <text x="484" y="362" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="11" fill="#9aa4b8">축끼리 갉아먹는 것이 한눈에 보인다</text>
+
+  <!-- 되돌아가는 자리 -->
+  <rect x="60" y="450" width="760" height="60" rx="8" fill="#0d1117" stroke="#55c555" stroke-width="2"/>
+  <text x="440" y="474" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="600" fill="#55c555">결과는 프롬프트 YAML의 metrics와 changelog로 돌아간다</text>
+  <text x="440" y="494" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="11" fill="#9aa4b8">git show 한 번으로 그때의 프롬프트와 그때의 숫자를 함께 본다</text>
+</svg>

@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" viewBox="0 0 880 440"
+     style="border-radius:12px" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <defs>
+    <marker id="pfPurple" viewBox="0 0 14 14" refX="12" refY="7"
+            markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#7777cc"/>
+    </marker>
+    <marker id="pfGreen" viewBox="0 0 14 14" refX="12" refY="7"
+            markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#55c555"/>
+    </marker>
+  </defs>
+
+  <rect width="880" height="440" rx="12" fill="#0a0a0a"/>
+
+  <text x="440" y="42" text-anchor="middle" font-size="22" font-weight="700" fill="#e8e8e8">후처리 필터와 DB 수준 필터</text>
+
+  <text x="230" y="80" text-anchor="middle" font-size="16" font-weight="600" fill="#7777cc">후처리 필터</text>
+  <text x="650" y="80" text-anchor="middle" font-size="16" font-weight="600" fill="#55c555">DB 수준 필터</text>
+
+  <!-- 후처리 필터 -->
+  <rect x="70" y="100" width="320" height="60" rx="8" fill="#1a1030" stroke="#7777cc" stroke-width="1.5"/>
+  <text x="230" y="124" text-anchor="middle" font-size="14" font-weight="600" fill="#e8e8e8">하이브리드 검색</text>
+  <text x="230" y="144" text-anchor="middle" font-size="12" fill="#888">권한은 아직 안 본다</text>
+
+  <line x1="230" y1="160" x2="230" y2="190" stroke="#7777cc" stroke-width="2" marker-end="url(#pfPurple)"/>
+
+  <rect x="70" y="190" width="320" height="60" rx="8" fill="#1a1030" stroke="#7777cc" stroke-width="1.5"/>
+  <text x="230" y="214" text-anchor="middle" font-size="14" font-weight="600" fill="#e8e8e8">목록에서 걸러 내기</text>
+  <text x="230" y="234" text-anchor="middle" font-size="12" fill="#888">내 그룹이 없는 조각을 뺀다</text>
+
+  <line x1="230" y1="250" x2="230" y2="280" stroke="#7777cc" stroke-width="2" marker-end="url(#pfPurple)"/>
+
+  <rect x="70" y="280" width="320" height="60" rx="8" fill="#1a1030" stroke="#7777cc" stroke-width="1.5"/>
+  <text x="230" y="304" text-anchor="middle" font-size="14" font-weight="600" fill="#e8e8e8">top_k까지 자르기</text>
+  <text x="230" y="324" text-anchor="middle" font-size="12" fill="#888">남는 것이 모자랄 수 있다</text>
+
+  <!-- DB 수준 필터 -->
+  <rect x="490" y="100" width="320" height="60" rx="8" fill="#0e2012" stroke="#55c555" stroke-width="1.5"/>
+  <text x="650" y="124" text-anchor="middle" font-size="14" font-weight="600" fill="#e8e8e8">검색 질의에 조건</text>
+  <text x="650" y="144" text-anchor="middle" font-size="12" fill="#888">WHERE permissions &amp;&amp; 내 그룹</text>
+
+  <line x1="650" y1="160" x2="650" y2="190" stroke="#55c555" stroke-width="2" marker-end="url(#pfGreen)"/>
+
+  <rect x="490" y="190" width="320" height="60" rx="8" fill="#0e2012" stroke="#55c555" stroke-width="1.5"/>
+  <text x="650" y="214" text-anchor="middle" font-size="14" font-weight="600" fill="#e8e8e8">색인이 걸러 준 결과</text>
+  <text x="650" y="234" text-anchor="middle" font-size="12" fill="#888">권한 없는 조각은 안 나온다</text>
+
+  <line x1="650" y1="250" x2="650" y2="280" stroke="#55c555" stroke-width="2" marker-end="url(#pfGreen)"/>
+
+  <rect x="490" y="280" width="320" height="60" rx="8" fill="#0e2012" stroke="#55c555" stroke-width="1.5"/>
+  <text x="650" y="304" text-anchor="middle" font-size="14" font-weight="600" fill="#e8e8e8">LIMIT top_k</text>
+  <text x="650" y="324" text-anchor="middle" font-size="12" fill="#888">항상 top_k개가 찬다</text>
+
+  <line x1="70" y1="364" x2="810" y2="364" stroke="#222" stroke-width="1"/>
+
+  <text x="230" y="392" text-anchor="middle" font-size="13" fill="#e05555">후보를 몇 배로 뽑을지 알 수 없다</text>
+  <text x="230" y="414" text-anchor="middle" font-size="13" fill="#e05555">권한 없는 문서가 로그에 남는다</text>
+
+  <text x="650" y="392" text-anchor="middle" font-size="13" fill="#55c555">후보 배수를 고민할 일이 없다</text>
+  <text x="650" y="414" text-anchor="middle" font-size="13" fill="#55c555">규모가 커질수록 이쪽이 맞다</text>
+</svg>

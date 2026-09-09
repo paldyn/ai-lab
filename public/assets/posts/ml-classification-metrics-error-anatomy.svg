@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" viewBox="0 0 880 440" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <rect width="880" height="440" rx="12" fill="#0a0a0a"/>
+
+  <text x="440" y="44" text-anchor="middle" fill="#e8e8e8" font-size="22" font-weight="700">확률 점수가 가르는 두 오답</text>
+  <text x="440" y="68" text-anchor="middle" fill="#888" font-size="13">두 오답의 개수 비율이 다음 작업이 무엇이어야 하는지를 정한다</text>
+
+  <!-- score axis -->
+  <text x="138" y="88" text-anchor="end" fill="#888" font-size="12">확률 점수</text>
+  <line x1="150" y1="100" x2="150" y2="400" stroke="#555" stroke-width="1.5"/>
+  <line x1="144" y1="106" x2="150" y2="106" stroke="#555" stroke-width="1.5"/>
+  <line x1="144" y1="246" x2="150" y2="246" stroke="#e8e8e8" stroke-width="1.5"/>
+  <line x1="144" y1="386" x2="150" y2="386" stroke="#555" stroke-width="1.5"/>
+  <text x="138" y="110" text-anchor="end" fill="#888" font-size="13">1.0</text>
+  <text x="138" y="250" text-anchor="end" fill="#e8e8e8" font-size="13" font-weight="600">임계값 0.5</text>
+  <text x="138" y="390" text-anchor="end" fill="#888" font-size="13">0.0</text>
+
+  <!-- threshold -->
+  <line x1="150" y1="246" x2="470" y2="246" stroke="#e8e8e8" stroke-width="2" stroke-dasharray="5,3"/>
+
+  <!-- confident FP -->
+  <rect x="180" y="99" width="290" height="42" rx="8" fill="#141414" stroke="#e05555" stroke-width="1.5"/>
+  <text x="204" y="117" fill="#ffffff" font-size="13" font-weight="600">FP 0.95</text>
+  <text x="204" y="133" fill="#9aa4b8" font-size="12">확신 있게 양성이라 답했다</text>
+
+  <!-- borderline FP -->
+  <rect x="180" y="202" width="290" height="42" rx="8" fill="#141414" stroke="#7ec8e3" stroke-width="1.5"/>
+  <text x="204" y="220" fill="#ffffff" font-size="13" font-weight="600">FP 0.52</text>
+  <text x="204" y="236" fill="#9aa4b8" font-size="12">겨우 넘어왔다</text>
+
+  <!-- borderline FN -->
+  <rect x="180" y="248" width="290" height="42" rx="8" fill="#141414" stroke="#7ec8e3" stroke-width="1.5"/>
+  <text x="204" y="266" fill="#ffffff" font-size="13" font-weight="600">FN 0.48 · 0.45</text>
+  <text x="204" y="282" fill="#9aa4b8" font-size="12">임계값 바로 아래에 몰려 있다</text>
+
+  <!-- confident FN -->
+  <rect x="180" y="355" width="290" height="42" rx="8" fill="#141414" stroke="#e05555" stroke-width="1.5"/>
+  <text x="204" y="373" fill="#ffffff" font-size="13" font-weight="600">FN 0.05 · 0.02</text>
+  <text x="204" y="389" fill="#9aa4b8" font-size="12">바닥에 붙어 있다</text>
+
+  <!-- prescriptions -->
+  <rect x="540" y="180" width="290" height="96" rx="8" fill="#141414" stroke="#7ec8e3" stroke-width="1.5"/>
+  <text x="564" y="208" fill="#7ec8e3" font-size="14" font-weight="600">경계선 오답</text>
+  <text x="564" y="236" fill="#9aa4b8" font-size="12">모델이 이미 그 샘플을 의심했다.</text>
+  <text x="564" y="256" fill="#9aa4b8" font-size="12">임계값 조정으로 값싸게 회수된다.</text>
+
+  <rect x="540" y="296" width="290" height="96" rx="8" fill="#141414" stroke="#e05555" stroke-width="1.5"/>
+  <text x="564" y="324" fill="#e05555" font-size="14" font-weight="600">확신 있는 오답</text>
+  <text x="564" y="352" fill="#9aa4b8" font-size="12">임계값을 아무리 내려도 안 잡힌다.</text>
+  <text x="564" y="372" fill="#9aa4b8" font-size="12">데이터·특성이나 라벨을 의심한다.</text>
+</svg>

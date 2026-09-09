@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" viewBox="0 0 880 430"
+     font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <rect width="880" height="430" fill="#0a0a0a" rx="12"/>
+
+  <text x="440" y="46" text-anchor="middle" font-size="22" font-weight="700" fill="#e8e8e8">리뷰 한 번의 비용</text>
+  <text x="440" y="72" text-anchor="middle" font-size="13" fill="#888">diff 1,000줄 · 입력 100만 토큰 $5 · 출력 100만 토큰 $25</text>
+
+  <!-- 왼쪽: 토큰 수 -->
+  <text x="60" y="116" font-size="16" font-weight="600" fill="#e8e8e8">토큰 수</text>
+
+  <text x="60" y="160" font-size="14" fill="#888">입력</text>
+  <rect x="124" y="136" width="296" height="40" rx="5" fill="#12212e" stroke="#7ec8e3" stroke-width="1.5"/>
+  <text x="406" y="160" text-anchor="end" font-size="14" fill="#e8e8e8">11,000</text>
+
+  <text x="60" y="216" font-size="14" fill="#888">출력</text>
+  <rect x="124" y="192" width="54" height="40" rx="5" fill="#2a1616" stroke="#e05555" stroke-width="1.5"/>
+  <text x="192" y="216" font-size="14" fill="#e8e8e8">2,000</text>
+
+  <text x="124" y="254" font-size="13" fill="#888">출력은 입력의 5분의 1</text>
+
+  <!-- 오른쪽: 리뷰 비용 -->
+  <text x="480" y="116" font-size="16" font-weight="600" fill="#e8e8e8">리뷰 비용</text>
+
+  <text x="480" y="160" font-size="14" fill="#888">입력</text>
+  <rect x="544" y="136" width="276" height="40" rx="5" fill="#12212e" stroke="#7ec8e3" stroke-width="1.5"/>
+  <text x="806" y="160" text-anchor="end" font-size="14" fill="#e8e8e8">$0.055</text>
+
+  <text x="480" y="216" font-size="14" fill="#888">출력</text>
+  <rect x="544" y="192" width="251" height="40" rx="5" fill="#2a1616" stroke="#e05555" stroke-width="1.5"/>
+  <text x="781" y="216" text-anchor="end" font-size="14" fill="#e8e8e8">$0.050</text>
+
+  <text x="544" y="254" font-size="13" fill="#888">비용의 절반이 출력에서 나온다</text>
+
+  <!-- 아래 요약 -->
+  <rect x="60" y="282" width="760" height="88" rx="10" fill="#111111" stroke="#2a2a2a" stroke-width="1"/>
+  <text x="84" y="316" font-size="15" font-weight="600" fill="#e8e8e8">출력 토큰은 입력의 5분의 1인데 단가가 다섯 배다</text>
+  <text x="84" y="344" font-size="13" fill="#888">한 번 ≈ 0.11달러 · 하루 40번 · 월 20영업일 ≈ 약 85달러</text>
+</svg>

@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="544" viewBox="0 0 880 544" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <rect x="0" y="0" width="880" height="544" rx="12" fill="#0a0a0a"/>
+
+  <text x="60" y="48" font-size="22" font-weight="700" fill="#e8e8e8">WER은 어절로, CER은 음절로 센다</text>
+
+  <text x="60" y="84" font-size="13" fill="#888888">편집 거리</text>
+  <rect x="60" y="96" width="760" height="64" rx="8" fill="#12141a" stroke="#3a4a6e" stroke-width="1.5"/>
+  <text x="440" y="123" font-size="18" font-weight="600" fill="#e8e8e8" text-anchor="middle">WER = (S + D + I) / N</text>
+  <text x="440" y="143" font-size="12" fill="#888888" text-anchor="middle">S 치환 · D 삭제 · I 삽입 · N 정답 어절 수 — 삽입은 분모에 없어 1을 넘을 수 있다</text>
+
+  <text x="60" y="196" font-size="13" fill="#888888">「학교에서」와 「학교에」 — 뜻은 거의 같다</text>
+
+  <text x="60" y="232" font-size="14" font-weight="600" fill="#e05555">어절 단위 — WER</text>
+  <text x="470" y="232" font-size="14" font-weight="600" fill="#55c555">음절 단위 — CER</text>
+
+  <rect x="80" y="252" width="160" height="40" rx="6" fill="#12141a" stroke="#444444" stroke-width="1.5"/>
+  <text x="160" y="277" font-size="15" fill="#e8e8e8" text-anchor="middle">학교에서</text>
+  <text x="256" y="277" font-size="13" fill="#888888">정답</text>
+
+  <rect x="80" y="300" width="160" height="40" rx="6" fill="#12141a" stroke="#e05555" stroke-width="1.5"/>
+  <text x="160" y="325" font-size="15" fill="#e05555" text-anchor="middle">학교에</text>
+  <text x="256" y="325" font-size="13" fill="#888888">예측</text>
+
+  <rect x="490" y="252" width="44" height="40" rx="6" fill="#12141a" stroke="#444444" stroke-width="1.5"/>
+  <text x="512" y="277" font-size="15" fill="#e8e8e8" text-anchor="middle">학</text>
+  <rect x="542" y="252" width="44" height="40" rx="6" fill="#12141a" stroke="#444444" stroke-width="1.5"/>
+  <text x="564" y="277" font-size="15" fill="#e8e8e8" text-anchor="middle">교</text>
+  <rect x="594" y="252" width="44" height="40" rx="6" fill="#12141a" stroke="#444444" stroke-width="1.5"/>
+  <text x="616" y="277" font-size="15" fill="#e8e8e8" text-anchor="middle">에</text>
+  <rect x="646" y="252" width="44" height="40" rx="6" fill="#12141a" stroke="#444444" stroke-width="1.5"/>
+  <text x="668" y="277" font-size="15" fill="#e8e8e8" text-anchor="middle">서</text>
+  <text x="706" y="277" font-size="13" fill="#888888">정답</text>
+
+  <rect x="490" y="300" width="44" height="40" rx="6" fill="#12141a" stroke="#55c555" stroke-width="1.5"/>
+  <text x="512" y="325" font-size="15" fill="#55c555" text-anchor="middle">학</text>
+  <rect x="542" y="300" width="44" height="40" rx="6" fill="#12141a" stroke="#55c555" stroke-width="1.5"/>
+  <text x="564" y="325" font-size="15" fill="#55c555" text-anchor="middle">교</text>
+  <rect x="594" y="300" width="44" height="40" rx="6" fill="#12141a" stroke="#55c555" stroke-width="1.5"/>
+  <text x="616" y="325" font-size="15" fill="#55c555" text-anchor="middle">에</text>
+  <rect x="646" y="300" width="44" height="40" rx="6" fill="#12141a" stroke="#e05555" stroke-width="1.5" stroke-dasharray="4,4"/>
+  <text x="668" y="325" font-size="15" fill="#e05555" text-anchor="middle">×</text>
+  <text x="706" y="325" font-size="13" fill="#888888">예측</text>
+
+  <rect x="60" y="356" width="350" height="56" rx="8" fill="#12141a" stroke="#e05555" stroke-width="1.5"/>
+  <text x="84" y="380" font-size="14" font-weight="600" fill="#e05555">어절 하나가 통째로 오답</text>
+  <text x="84" y="400" font-size="12" fill="#888888">조사 하나만 달라도 WER은 1.0</text>
+
+  <rect x="470" y="356" width="350" height="56" rx="8" fill="#12141a" stroke="#55c555" stroke-width="1.5"/>
+  <text x="494" y="380" font-size="14" font-weight="600" fill="#55c555">음절 하나만 오답</text>
+  <text x="494" y="400" font-size="12" fill="#888888">삭제 1, 나머지 셋은 그대로 맞다</text>
+
+  <rect x="60" y="448" width="760" height="56" rx="8" fill="#12141a" stroke="#7ec8e3" stroke-width="1.5"/>
+  <text x="84" y="471" font-size="13" font-weight="600" fill="#7ec8e3">「할 수 있다」를 「할수있다」로 붙이면 세 어절이 하나가 되어 오류가 셋으로 불어난다</text>
+  <text x="84" y="491" font-size="12" fill="#888888">WER은 높은데 CER이 낮으면 띄어쓰기·조사 문제, 둘 다 높으면 음향 인식 문제다</text>
+</svg>

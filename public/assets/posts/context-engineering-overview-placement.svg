@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="470" viewBox="0 0 880 470">
+  <rect width="880" height="470" fill="#0a0a0a" rx="12"/>
+
+  <text x="440" y="46" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="22" font-weight="700" fill="#e8e8e8" text-anchor="middle">검색 문서의 배치</text>
+  <text x="440" y="72" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="14" fill="#888" text-anchor="middle">앞과 뒤는 잘 읽히고 가운데는 흘린다 — 초록 두 줄이 잘 읽히는 자리다</text>
+
+  <!-- 가운데 흐려지는 구간 -->
+  <rect x="60" y="164" width="350" height="136" rx="8" fill="#161010" stroke="#3a2020" stroke-width="1"/>
+  <rect x="470" y="164" width="350" height="136" rx="8" fill="#161010" stroke="#3a2020" stroke-width="1"/>
+
+  <text x="235" y="112" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="15" font-weight="600" fill="#e8e8e8" text-anchor="middle">검색 점수 순 그대로</text>
+  <text x="645" y="112" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="15" font-weight="600" fill="#e8e8e8" text-anchor="middle">앞과 뒤에 두는 배치</text>
+
+  <!-- 왼쪽: 점수 순 -->
+  <rect x="80" y="126" width="310" height="36" rx="6" fill="#0f1f0f" stroke="#55c555" stroke-width="1.5"/>
+  <text x="100" y="149" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="13" fill="#e8e8e8">① 검색 1등</text>
+  <rect x="80" y="170" width="310" height="36" rx="6" fill="#1a1a1a" stroke="#444" stroke-width="1"/>
+  <text x="100" y="193" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="13" fill="#888">② 검색 2등</text>
+  <rect x="80" y="214" width="310" height="36" rx="6" fill="#1a1a1a" stroke="#444" stroke-width="1"/>
+  <text x="100" y="237" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="13" fill="#888">③ 검색 3등</text>
+  <rect x="80" y="258" width="310" height="36" rx="6" fill="#1a1a1a" stroke="#444" stroke-width="1"/>
+  <text x="100" y="281" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="13" fill="#888">④ 검색 4등</text>
+  <rect x="80" y="302" width="310" height="36" rx="6" fill="#1a1a1a" stroke="#444" stroke-width="1"/>
+  <text x="100" y="325" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="13" fill="#888">⑤ 검색 5등</text>
+
+  <!-- 오른쪽: 재배치 -->
+  <rect x="490" y="126" width="310" height="36" rx="6" fill="#0f1f0f" stroke="#55c555" stroke-width="1.5"/>
+  <text x="510" y="149" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="13" fill="#e8e8e8">① 검색 1등</text>
+  <rect x="490" y="170" width="310" height="36" rx="6" fill="#1a1a1a" stroke="#444" stroke-width="1"/>
+  <text x="510" y="193" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="13" fill="#888">② 검색 3등</text>
+  <rect x="490" y="214" width="310" height="36" rx="6" fill="#1a1a1a" stroke="#444" stroke-width="1"/>
+  <text x="510" y="237" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="13" fill="#888">③ 검색 4등</text>
+  <rect x="490" y="258" width="310" height="36" rx="6" fill="#1a1a1a" stroke="#444" stroke-width="1"/>
+  <text x="510" y="281" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="13" fill="#888">④ 검색 5등</text>
+  <rect x="490" y="302" width="310" height="36" rx="6" fill="#0f1f0f" stroke="#55c555" stroke-width="1.5"/>
+  <text x="510" y="325" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="13" fill="#e8e8e8">⑤ 검색 2등</text>
+
+  <rect x="60" y="356" width="760" height="54" rx="8" fill="#12121a" stroke="#444" stroke-width="1"/>
+  <text x="84" y="378" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="13" fill="#e8e8e8">무엇이 1등인지는 검색기가 그대로 정한다 — 우리는 그 1등을 어느 자리에 놓을지만 바꾼다.</text>
+  <text x="84" y="398" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="13" fill="#888">배치는 개수 문제를 대신하지 못한다. 넣을 개수를 먼저 정하고 순서를 손본다.</text>
+</svg>

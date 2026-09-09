@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="516" viewBox="0 0 880 516" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <rect x="0" y="0" width="880" height="516" rx="12" fill="#0a0a0a"/>
+
+  <text x="60" y="48" font-size="22" font-weight="700" fill="#e8e8e8">타임스탬프를 얻는 세 경로</text>
+
+  <rect x="60" y="84" width="760" height="88" rx="10" fill="#12141a" stroke="#e05555" stroke-width="1.5"/>
+  <text x="84" y="114" font-size="15" font-weight="600" fill="#e8e8e8">세그먼트 타임스탬프</text>
+  <text x="84" y="136" font-size="12" fill="#888888">디코더가 특수 토큰으로 예측한 값</text>
+  <text x="84" y="156" font-size="12" fill="#888888">실제 소리와 수백 ms씩 어긋나는 일이 흔하다</text>
+  <rect x="650" y="106" width="146" height="44" rx="8" fill="#0a0a0a" stroke="#e05555" stroke-width="1.5"/>
+  <text x="723" y="134" font-size="13" fill="#e05555" text-anchor="middle">어긋남 큼</text>
+
+  <rect x="60" y="186" width="760" height="88" rx="10" fill="#12141a" stroke="#7ec8e3" stroke-width="1.5"/>
+  <text x="84" y="216" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="15" font-weight="600" fill="#e8e8e8">word_timestamps=True</text>
+  <text x="84" y="238" font-size="12" fill="#888888">크로스 어텐션 가중치가 어느 프레임에 몰려 있는지를 본다</text>
+  <text x="84" y="258" font-size="12" fill="#888888">그 정렬을 동적 시간 워핑으로 다듬어 단어 경계를 잡는다</text>
+  <rect x="650" y="208" width="146" height="44" rx="8" fill="#0a0a0a" stroke="#7ec8e3" stroke-width="1.5"/>
+  <text x="723" y="236" font-size="13" fill="#7ec8e3" text-anchor="middle">단어 경계</text>
+
+  <rect x="60" y="288" width="760" height="88" rx="10" fill="#12141a" stroke="#55c555" stroke-width="1.5"/>
+  <text x="84" y="318" font-size="15" font-weight="600" fill="#e8e8e8">강제 정렬</text>
+  <text x="84" y="340" font-size="12" fill="#888888">전사 텍스트가 확정된 상태에서 배치만 푸는 문제</text>
+  <text x="84" y="360" font-size="12" fill="#888888">CTC 프레임 확률에 비터비 — 더빙·립싱크에 쓴다</text>
+  <rect x="650" y="310" width="146" height="44" rx="8" fill="#0a0a0a" stroke="#55c555" stroke-width="1.5"/>
+  <text x="723" y="338" font-size="13" fill="#55c555" text-anchor="middle">음소 수준</text>
+
+  <rect x="60" y="400" width="760" height="76" rx="10" fill="#12141a" stroke="#e05555" stroke-width="1.5"/>
+  <text x="84" y="425" font-size="13" font-weight="600" fill="#e05555">값을 의심하기 전에 이 둘부터 확인한다</text>
+  <text x="84" y="445" font-size="12" fill="#888888">VAD로 무음을 잘라 낸 뒤 타임스탬프를 원본 기준으로 되돌리지 않으면 뒤로 갈수록 밀린다</text>
+  <text x="84" y="463" font-size="12" fill="#888888">오디오와 비디오의 시작 오프셋이 다른 컨테이너도 있다</text>
+</svg>

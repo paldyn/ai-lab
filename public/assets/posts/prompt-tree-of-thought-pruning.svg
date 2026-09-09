@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 500" width="880" height="500">
+  <rect width="880" height="500" fill="#0a0a0a" rx="12"/>
+
+  <text x="440" y="44" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="22" font-weight="700" fill="#e8e8e8">가지치기가 줄이는 노드 수</text>
+  <text x="440" y="68" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#888">후보 k = 3, 네 단계 — 빔 폭 b = 3을 걸면 120개가 30개가 된다</text>
+
+  <!-- 열 머리 -->
+  <rect x="60" y="92" width="350" height="40" rx="8" fill="#1a1a2e" stroke="#e05555" stroke-width="2"/>
+  <text x="235" y="117" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="14" font-weight="600" fill="#e8e8e8">가지치기 없음</text>
+
+  <rect x="470" y="92" width="350" height="40" rx="8" fill="#1a1a2e" stroke="#55c555" stroke-width="2"/>
+  <text x="645" y="117" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="14" font-weight="600" fill="#e8e8e8">빔 폭 b = 3</text>
+
+  <!-- 1단계 -->
+  <text x="76" y="165" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#9aa4b8">1단계</text>
+  <rect x="140" y="152" width="220" height="16" rx="3" fill="#111827"/>
+  <rect x="140" y="152" width="8" height="16" rx="3" fill="#7777cc"/>
+  <text x="396" y="165" text-anchor="end" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e8e8e8">3</text>
+
+  <text x="486" y="165" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#9aa4b8">1단계</text>
+  <rect x="550" y="152" width="220" height="16" rx="3" fill="#111827"/>
+  <rect x="550" y="152" width="8" height="16" rx="3" fill="#55c555"/>
+  <text x="806" y="165" text-anchor="end" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e8e8e8">3</text>
+
+  <!-- 2단계 -->
+  <text x="76" y="201" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#9aa4b8">2단계</text>
+  <rect x="140" y="188" width="220" height="16" rx="3" fill="#111827"/>
+  <rect x="140" y="188" width="24" height="16" rx="3" fill="#7777cc"/>
+  <text x="396" y="201" text-anchor="end" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e8e8e8">9</text>
+
+  <text x="486" y="201" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#9aa4b8">2단계</text>
+  <rect x="550" y="188" width="220" height="16" rx="3" fill="#111827"/>
+  <rect x="550" y="188" width="24" height="16" rx="3" fill="#55c555"/>
+  <text x="806" y="201" text-anchor="end" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e8e8e8">9</text>
+
+  <!-- 3단계 -->
+  <text x="76" y="237" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#9aa4b8">3단계</text>
+  <rect x="140" y="224" width="220" height="16" rx="3" fill="#111827"/>
+  <rect x="140" y="224" width="73" height="16" rx="3" fill="#7777cc"/>
+  <text x="396" y="237" text-anchor="end" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e8e8e8">27</text>
+
+  <text x="486" y="237" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#9aa4b8">3단계</text>
+  <rect x="550" y="224" width="220" height="16" rx="3" fill="#111827"/>
+  <rect x="550" y="224" width="24" height="16" rx="3" fill="#55c555"/>
+  <text x="806" y="237" text-anchor="end" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e8e8e8">9</text>
+
+  <!-- 4단계 -->
+  <text x="76" y="273" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#9aa4b8">4단계</text>
+  <rect x="140" y="260" width="220" height="16" rx="3" fill="#111827"/>
+  <rect x="140" y="260" width="220" height="16" rx="3" fill="#e05555"/>
+  <text x="396" y="273" text-anchor="end" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e8e8e8">81</text>
+
+  <text x="486" y="273" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#9aa4b8">4단계</text>
+  <rect x="550" y="260" width="220" height="16" rx="3" fill="#111827"/>
+  <rect x="550" y="260" width="24" height="16" rx="3" fill="#55c555"/>
+  <text x="806" y="273" text-anchor="end" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e8e8e8">9</text>
+
+  <!-- 합계 -->
+  <rect x="60" y="296" width="350" height="48" rx="8" fill="#0d1117" stroke="#e05555"/>
+  <text x="76" y="315" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="600" fill="#e05555">만드는 노드 120개</text>
+  <text x="76" y="333" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="11" fill="#9aa4b8">3 + 9 + 27 + 81</text>
+
+  <rect x="470" y="296" width="350" height="48" rx="8" fill="#0d1117" stroke="#55c555"/>
+  <text x="486" y="315" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="600" fill="#55c555">만드는 노드 30개</text>
+  <text x="486" y="333" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="11" fill="#9aa4b8">3 + 9 + 9 + 9</text>
+  <text x="806" y="324" text-anchor="end" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="600" fill="#e8e8e8">네 배 차이</text>
+
+  <!-- 단계가 늘면 -->
+  <rect x="60" y="372" width="760" height="68" rx="8" fill="#0d1117" stroke="#3a4a6e"/>
+  <text x="84" y="394" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="600" fill="#e8e8e8">단계를 하나 늘리면 격차가 지수로 벌어진다</text>
+  <text x="84" y="412" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="11" fill="#9aa4b8">다섯 단계 — 자르지 않은 쪽 363개, 자른 쪽 39개</text>
+  <text x="84" y="430" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="11" fill="#9aa4b8">b = 1이면 매 단계 하나만 남아 사실상 CoT로 돌아간다 · 실전에서는 2에서 5 사이</text>
+</svg>

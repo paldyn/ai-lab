@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" viewBox="0 0 880 450">
+  <defs>
+    <marker id="arr-green" viewBox="0 0 14 14" refX="12" refY="7"
+            markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#55c555"/>
+    </marker>
+  </defs>
+
+  <!-- 배경 -->
+  <rect width="880" height="450" fill="#0a0a0a" rx="12"/>
+
+  <!-- 제목 -->
+  <text x="440" y="40" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="22" font-weight="700" fill="#e8e8e8" text-anchor="middle">Q-테이블이 멈추는 세 벽</text>
+  <text x="440" y="72" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="13" fill="#888" text-anchor="middle">표는 Q를 기억할 뿐 계산하지 않는다</text>
+
+  <!-- 1. 상태 수의 폭발 -->
+  <rect x="60" y="100" width="232" height="172" fill="#12121a" rx="8" stroke="#3a4a6e" stroke-width="1"/>
+  <text x="176" y="126" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="14" font-weight="600" fill="#e8e8e8" text-anchor="middle">1. 상태 수의 폭발</text>
+  <text x="176" y="156" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="12" fill="#888" text-anchor="middle">아타리 화면 84×84×4</text>
+  <text x="176" y="182" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="12" fill="#888" text-anchor="middle">= 픽셀 28,224개, 256단계</text>
+  <text x="176" y="208" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="14" font-weight="600" fill="#e05555" text-anchor="middle">상태 256<tspan dy="-5" font-size="10">28224</tspan><tspan dy="5"> 가지</tspan></text>
+  <text x="176" y="234" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="12" fill="#888" text-anchor="middle">원자 수 10<tspan dy="-4" font-size="9">80</tspan><tspan dy="4">보다 크다</tspan></text>
+  <text x="176" y="260" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="12" fill="#e05555" text-anchor="middle">한 칸도 못 채운다</text>
+
+  <!-- 2. 연속 상태의 이산화 -->
+  <rect x="324" y="100" width="232" height="172" fill="#12121a" rx="8" stroke="#3a4a6e" stroke-width="1"/>
+  <text x="440" y="126" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="14" font-weight="600" fill="#e8e8e8" text-anchor="middle">2. 연속 상태의 이산화</text>
+  <text x="440" y="156" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="12" fill="#888" text-anchor="middle">CartPole 관측 4축</text>
+  <text x="440" y="182" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="14" font-weight="600" fill="#e0a555" text-anchor="middle">10구간 → 20,000칸</text>
+  <text x="440" y="208" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="14" font-weight="600" fill="#e0a555" text-anchor="middle">20구간 → 320,000칸</text>
+  <text x="440" y="234" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="12" fill="#888" text-anchor="middle">축이 스물이면 답이 없다</text>
+  <text x="440" y="260" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="12" fill="#e05555" text-anchor="middle">어디서 자를지도 모른다</text>
+
+  <!-- 3. 일반화의 부재 -->
+  <rect x="588" y="100" width="232" height="172" fill="#12121a" rx="8" stroke="#3a4a6e" stroke-width="1"/>
+  <text x="704" y="126" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="14" font-weight="600" fill="#e8e8e8" text-anchor="middle">3. 일반화의 부재</text>
+  <text x="704" y="156" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="12" fill="#888" text-anchor="middle">상태 7과 8은 이웃한 행일 뿐</text>
+  <text x="704" y="182" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="14" font-weight="600" fill="#7777cc" text-anchor="middle">번호를 섞어도 같다</text>
+  <text x="704" y="208" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="12" fill="#888" text-anchor="middle">한 픽셀 다른 두 장면이</text>
+  <text x="704" y="234" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="12" fill="#888" text-anchor="middle">표에서는 완전히 다른 행</text>
+  <text x="704" y="260" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="12" fill="#e05555" text-anchor="middle">배운 것이 옮겨 가지 않는다</text>
+
+  <!-- 세 벽을 함께 넘는 자리 -->
+  <line x1="440" y1="278" x2="440" y2="316" stroke="#55c555" stroke-width="2" marker-end="url(#arr-green)"/>
+
+  <rect x="60" y="316" width="760" height="68" fill="#0f1a10" rx="8" stroke="#55c555" stroke-width="1.5"/>
+  <text x="440" y="344" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="16" font-weight="600" fill="#55c555" text-anchor="middle">신경망 함수 근사가 세 벽을 함께 넘는다</text>
+  <text x="440" y="370" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="12" fill="#888" text-anchor="middle">CartPole 파라미터 17,410개 &lt; 표 20,000칸 — 이산화 손실이 없고 안 가 본 상태에도 값을 내준다</text>
+</svg>

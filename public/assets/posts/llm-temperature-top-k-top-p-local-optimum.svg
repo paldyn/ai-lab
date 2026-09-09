@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="476" viewBox="0 0 880 476" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <defs>
+    <marker id="loGrey" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#e05555"/>
+    </marker>
+    <marker id="loGreen" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#55c555"/>
+    </marker>
+  </defs>
+  <rect x="0" y="0" width="880" height="476" fill="#0a0a0a" rx="12"/>
+
+  <text x="60" y="52" font-size="22" font-weight="700" fill="#e8e8e8">지역 최적해</text>
+  <text x="60" y="78" font-size="14" fill="#9aa4b8">지금 확률이 가장 높은 토큰이 문장 전체로는 나쁠 수 있다</text>
+
+  <text x="268" y="140" font-size="12" fill="#888" text-anchor="middle">첫 토큰</text>
+  <text x="436" y="140" font-size="12" fill="#888" text-anchor="middle">그다음</text>
+  <text x="604" y="140" font-size="12" fill="#888" text-anchor="middle">그다음</text>
+  <text x="772" y="140" font-size="12" fill="#888" text-anchor="middle">그다음</text>
+
+  <!-- 위 경로: Greedy -->
+  <text x="60" y="190" font-size="14" font-weight="700" fill="#e05555">Greedy</text>
+  <text x="60" y="209" font-size="11" fill="#9aa4b8">한 스텝의 최선</text>
+  <rect x="220" y="170" width="96" height="48" rx="8" fill="#12161d" stroke="#e05555" stroke-width="1.5"/>
+  <text x="268" y="201" font-size="17" font-weight="700" fill="#e8e8e8" text-anchor="middle">0.4</text>
+  <line x1="316" y1="194" x2="388" y2="194" stroke="#e05555" stroke-width="2" marker-end="url(#loGrey)"/>
+  <rect x="388" y="170" width="96" height="48" rx="8" fill="#111318" stroke="#3a2a2f" stroke-width="1"/>
+  <text x="436" y="201" font-size="17" font-weight="700" fill="#b8b8b8" text-anchor="middle">0.3</text>
+  <line x1="484" y1="194" x2="556" y2="194" stroke="#e05555" stroke-width="2" marker-end="url(#loGrey)"/>
+  <rect x="556" y="170" width="96" height="48" rx="8" fill="#111318" stroke="#3a2a2f" stroke-width="1"/>
+  <text x="604" y="201" font-size="17" font-weight="700" fill="#b8b8b8" text-anchor="middle">0.3</text>
+  <line x1="652" y1="194" x2="724" y2="194" stroke="#e05555" stroke-width="2" marker-end="url(#loGrey)"/>
+  <rect x="724" y="170" width="96" height="48" rx="8" fill="#111318" stroke="#3a2a2f" stroke-width="1"/>
+  <text x="772" y="201" font-size="17" font-weight="700" fill="#b8b8b8" text-anchor="middle">0.3</text>
+
+  <text x="220" y="249" font-size="12" fill="#888">첫 자리만 보면 위가 높다 — 그래서 Greedy는 위로 간다</text>
+
+  <!-- 아래 경로 -->
+  <text x="60" y="292" font-size="14" font-weight="700" fill="#55c555">다른 경로</text>
+  <text x="60" y="311" font-size="11" fill="#9aa4b8">문장 전체로는 낫다</text>
+  <rect x="220" y="272" width="96" height="48" rx="8" fill="#12161d" stroke="#55c555" stroke-width="1.5"/>
+  <text x="268" y="303" font-size="17" font-weight="700" fill="#e8e8e8" text-anchor="middle">0.35</text>
+  <line x1="316" y1="296" x2="388" y2="296" stroke="#55c555" stroke-width="2" marker-end="url(#loGreen)"/>
+  <rect x="388" y="272" width="96" height="48" rx="8" fill="#111318" stroke="#2a3a2f" stroke-width="1"/>
+  <text x="436" y="303" font-size="17" font-weight="700" fill="#b8b8b8" text-anchor="middle">0.8</text>
+  <line x1="484" y1="296" x2="556" y2="296" stroke="#55c555" stroke-width="2" marker-end="url(#loGreen)"/>
+  <rect x="556" y="272" width="96" height="48" rx="8" fill="#111318" stroke="#2a3a2f" stroke-width="1"/>
+  <text x="604" y="303" font-size="17" font-weight="700" fill="#b8b8b8" text-anchor="middle">0.8</text>
+  <line x1="652" y1="296" x2="724" y2="296" stroke="#55c555" stroke-width="2" marker-end="url(#loGreen)"/>
+  <rect x="724" y="272" width="96" height="48" rx="8" fill="#111318" stroke="#2a3a2f" stroke-width="1"/>
+  <text x="772" y="303" font-size="17" font-weight="700" fill="#b8b8b8" text-anchor="middle">0.8</text>
+
+  <!-- 요약 -->
+  <rect x="60" y="356" width="760" height="56" rx="8" fill="#0f1218" stroke="#2a2f3a" stroke-width="1"/>
+  <text x="440" y="380" font-size="13" fill="#e8e8e8" text-anchor="middle">한 번 뽑은 토큰을 되돌리는 장치는 어디에도 없다</text>
+  <text x="440" y="400" font-size="11" fill="#9aa4b8" text-anchor="middle">온도를 올리는 것은 그 함정을 우연에 맡기는 해법이다</text>
+</svg>

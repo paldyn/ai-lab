@@ -1,0 +1,79 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" viewBox="0 0 880 510" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <rect width="880" height="510" rx="12" fill="#0a0a0a"/>
+
+  <defs>
+    <marker id="qa-green" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#55c555"/>
+    </marker>
+    <marker id="qa-blue" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#7ec8e3"/>
+    </marker>
+    <marker id="qa-purple" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#7777cc"/>
+    </marker>
+  </defs>
+
+  <text x="440" y="46" text-anchor="middle" fill="#e8e8e8" font-size="22" font-weight="700" xml:space="preserve">QA의 갈래 — 추출형 · 추상형 · 오픈도메인</text>
+  <text x="440" y="70" text-anchor="middle" fill="#888" font-size="13" xml:space="preserve">문맥을 어떻게 마련하는가와 그 문맥에서 답을 어떻게 만드는가가 갈래를 정한다</text>
+
+  <!-- ===== 추출형 ===== -->
+  <rect x="60" y="96" width="240" height="262" rx="8" fill="#0d0d0d" stroke="#55c555" stroke-width="1.5"/>
+  <text x="180" y="124" text-anchor="middle" fill="#55c555" font-size="16" font-weight="600" xml:space="preserve">추출형</text>
+  <text x="180" y="146" text-anchor="middle" fill="#888" font-size="12" xml:space="preserve">문맥에서 스팬을 잘라 낸다</text>
+
+  <rect x="84" y="166" width="192" height="26" rx="4" fill="#101010" stroke="#333"/>
+  <rect x="176" y="166" width="84" height="26" rx="4" fill="#55c555" opacity="0.35"/>
+  <text x="92" y="184" fill="#888" font-size="11" xml:space="preserve">문맥</text>
+  <line x1="180" y1="192" x2="180" y2="222" stroke="#55c555" stroke-width="2" marker-end="url(#qa-green)"/>
+  <rect x="108" y="222" width="144" height="34" rx="6" fill="#000000" stroke="#55c555"/>
+  <text x="180" y="244" text-anchor="middle" fill="#ffffff" font-size="13" xml:space="preserve">2013년 6월 13일</text>
+
+  <line x1="84" y1="282" x2="276" y2="282" stroke="#222"/>
+  <text x="84" y="306" fill="#e8e8e8" font-size="12" xml:space="preserve">BERT 계열 인코더</text>
+  <text x="84" y="326" fill="#888" font-size="12" xml:space="preserve">환각이 구조적으로 불가능</text>
+  <text x="84" y="346" fill="#888" font-size="12" xml:space="preserve">근거 위치를 그대로 표시</text>
+
+  <!-- ===== 추상형 ===== -->
+  <rect x="320" y="96" width="240" height="262" rx="8" fill="#0d0d0d" stroke="#7ec8e3" stroke-width="1.5"/>
+  <text x="440" y="124" text-anchor="middle" fill="#7ec8e3" font-size="16" font-weight="600" xml:space="preserve">추상형</text>
+  <text x="440" y="146" text-anchor="middle" fill="#888" font-size="12" xml:space="preserve">문맥을 종합해 새로 쓴다</text>
+
+  <rect x="344" y="166" width="192" height="26" rx="4" fill="#101010" stroke="#333"/>
+  <text x="352" y="184" fill="#888" font-size="11" xml:space="preserve">문맥</text>
+  <line x1="440" y1="192" x2="440" y2="222" stroke="#7ec8e3" stroke-width="2" marker-end="url(#qa-blue)"/>
+  <rect x="368" y="222" width="144" height="34" rx="6" fill="#000000" stroke="#7ec8e3" stroke-dasharray="5,3"/>
+  <text x="440" y="244" text-anchor="middle" fill="#ffffff" font-size="13" xml:space="preserve">새로 만든 문장</text>
+
+  <line x1="344" y1="282" x2="536" y2="282" stroke="#222"/>
+  <text x="344" y="306" fill="#e8e8e8" font-size="12" xml:space="preserve">T5 · BART · LLM</text>
+  <text x="344" y="326" fill="#888" font-size="12" xml:space="preserve">근거 추적이 어렵다</text>
+  <text x="344" y="346" fill="#888" font-size="12" xml:space="preserve">환각이 가능하다</text>
+
+  <!-- ===== 오픈도메인 ===== -->
+  <rect x="580" y="96" width="240" height="262" rx="8" fill="#0d0d0d" stroke="#7777cc" stroke-width="1.5"/>
+  <text x="700" y="124" text-anchor="middle" fill="#7777cc" font-size="16" font-weight="600" xml:space="preserve">오픈도메인</text>
+  <text x="700" y="146" text-anchor="middle" fill="#888" font-size="12" xml:space="preserve">문맥부터 검색해 만든다</text>
+
+  <rect x="614" y="166" width="52" height="26" rx="4" fill="#101010" stroke="#333"/>
+  <rect x="674" y="166" width="52" height="26" rx="4" fill="#101010" stroke="#7777cc" stroke-width="1.5"/>
+  <rect x="734" y="166" width="52" height="26" rx="4" fill="#101010" stroke="#333"/>
+  <line x1="622" y1="175" x2="658" y2="175" stroke="#333" stroke-width="2"/>
+  <line x1="622" y1="183" x2="646" y2="183" stroke="#333" stroke-width="2"/>
+  <line x1="682" y1="175" x2="718" y2="175" stroke="#7777cc" stroke-width="2" opacity="0.7"/>
+  <line x1="682" y1="183" x2="706" y2="183" stroke="#7777cc" stroke-width="2" opacity="0.7"/>
+  <line x1="742" y1="175" x2="778" y2="175" stroke="#333" stroke-width="2"/>
+  <line x1="742" y1="183" x2="766" y2="183" stroke="#333" stroke-width="2"/>
+  <line x1="700" y1="192" x2="700" y2="222" stroke="#7777cc" stroke-width="2" marker-end="url(#qa-purple)"/>
+  <rect x="628" y="222" width="144" height="34" rx="6" fill="#000000" stroke="#7777cc"/>
+  <text x="700" y="244" text-anchor="middle" fill="#ffffff" font-size="13" xml:space="preserve">읽기 단계로 넘김</text>
+
+  <line x1="604" y1="282" x2="796" y2="282" stroke="#222"/>
+  <text x="604" y="306" fill="#e8e8e8" font-size="12" xml:space="preserve">RAG — 검색 + 읽기</text>
+  <text x="604" y="326" fill="#888" font-size="12" xml:space="preserve">문맥을 만드는 일부터 한다</text>
+  <text x="604" y="346" fill="#888" font-size="12" xml:space="preserve">실무 QA의 대부분</text>
+
+  <!-- ===== 아래 정리 ===== -->
+  <rect x="60" y="388" width="760" height="62" rx="8" fill="#0d0d0d" stroke="#333"/>
+  <text x="84" y="414" fill="#e8e8e8" font-size="13" xml:space="preserve">오픈도메인은 검색 단계 뒤에 추출형이나 추상형 하나를 읽기 단계로 붙이는 구조다</text>
+  <text x="84" y="436" fill="#888" font-size="12" xml:space="preserve">「어느 것을 쓸 것인가」는 두 번 묻는 질문이다 — 문맥을 어떻게 마련하고, 답을 어떻게 만드는가</text>
+</svg>

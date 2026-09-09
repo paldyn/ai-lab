@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" viewBox="0 0 880 530" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <rect width="880" height="530" rx="12" fill="#0a0a0a"/>
+
+  <defs>
+    <marker id="f1-red" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#e05555"/>
+    </marker>
+    <marker id="f1-green" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#55c555"/>
+    </marker>
+  </defs>
+
+  <text x="440" y="46" text-anchor="middle" fill="#e8e8e8" font-size="22" font-weight="700" xml:space="preserve">어절 F1과 음절 F1</text>
+  <text x="440" y="70" text-anchor="middle" fill="#888" font-size="13" xml:space="preserve">예측 「서울에」 · 정답 「서울」 — 어느 단위로 재느냐가 점수를 가른다</text>
+
+  <rect x="250" y="96" width="160" height="52" rx="8" fill="#0d0d0d" stroke="#333"/>
+  <text x="330" y="116" text-anchor="middle" fill="#888" font-size="11" xml:space="preserve">예측</text>
+  <text x="330" y="138" text-anchor="middle" fill="#ffffff" font-size="15" xml:space="preserve">서울에</text>
+
+  <rect x="470" y="96" width="160" height="52" rx="8" fill="#0d0d0d" stroke="#333"/>
+  <text x="550" y="116" text-anchor="middle" fill="#888" font-size="11" xml:space="preserve">정답</text>
+  <text x="550" y="138" text-anchor="middle" fill="#ffffff" font-size="15" xml:space="preserve">서울</text>
+
+  <line x1="330" y1="148" x2="330" y2="166" stroke="#333"/>
+  <line x1="550" y1="148" x2="550" y2="166" stroke="#333"/>
+  <line x1="330" y1="166" x2="550" y2="166" stroke="#333"/>
+  <path d="M 440 166 L 440 178 L 235 178 L 235 190" fill="none" stroke="#e05555" stroke-width="2" marker-end="url(#f1-red)"/>
+  <path d="M 440 166 L 440 178 L 645 178 L 645 190" fill="none" stroke="#55c555" stroke-width="2" marker-end="url(#f1-green)"/>
+
+  <!-- ===== 어절 단위 ===== -->
+  <rect x="60" y="190" width="350" height="188" rx="8" fill="#0d0d0d" stroke="#e05555" stroke-width="1.5"/>
+  <text x="84" y="218" fill="#e05555" font-size="15" font-weight="600" xml:space="preserve">어절 단위</text>
+  <text x="84" y="240" fill="#888" font-size="12" xml:space="preserve">공백으로 나눈 토큰을 견준다</text>
+
+  <text x="84" y="270" fill="#888" font-size="12" xml:space="preserve">예측</text>
+  <rect x="134" y="252" width="84" height="28" rx="4" fill="#1a1010" stroke="#e05555"/>
+  <text x="176" y="271" text-anchor="middle" fill="#ffffff" font-size="13" xml:space="preserve">서울에</text>
+
+  <text x="84" y="304" fill="#888" font-size="12" xml:space="preserve">정답</text>
+  <rect x="134" y="286" width="84" height="28" rx="4" fill="#1a1010" stroke="#e05555"/>
+  <text x="176" y="305" text-anchor="middle" fill="#ffffff" font-size="13" xml:space="preserve">서울</text>
+
+  <text x="84" y="342" fill="#e05555" font-size="13" font-weight="600" xml:space="preserve">겹치는 토큰 0개 → EM 0 · F1 0.00</text>
+  <text x="84" y="364" fill="#888" font-size="12" xml:space="preserve">사람이 보기에 맞는 답인데 완전한 오답과 같다</text>
+
+  <!-- ===== 음절 단위 ===== -->
+  <rect x="470" y="190" width="350" height="188" rx="8" fill="#0d0d0d" stroke="#55c555" stroke-width="1.5"/>
+  <text x="494" y="218" fill="#55c555" font-size="15" font-weight="600" xml:space="preserve">음절 단위</text>
+  <text x="494" y="240" fill="#888" font-size="12" xml:space="preserve">글자 하나씩 나눠 견준다</text>
+
+  <text x="494" y="270" fill="#888" font-size="12" xml:space="preserve">예측</text>
+  <rect x="544" y="252" width="34" height="28" rx="4" fill="#14261a" stroke="#55c555"/>
+  <text x="561" y="271" text-anchor="middle" fill="#ffffff" font-size="13" xml:space="preserve">서</text>
+  <rect x="586" y="252" width="34" height="28" rx="4" fill="#14261a" stroke="#55c555"/>
+  <text x="603" y="271" text-anchor="middle" fill="#ffffff" font-size="13" xml:space="preserve">울</text>
+  <rect x="628" y="252" width="34" height="28" rx="4" fill="#1a1a1a" stroke="#444"/>
+  <text x="645" y="271" text-anchor="middle" fill="#888" font-size="13" xml:space="preserve">에</text>
+
+  <text x="494" y="304" fill="#888" font-size="12" xml:space="preserve">정답</text>
+  <rect x="544" y="286" width="34" height="28" rx="4" fill="#14261a" stroke="#55c555"/>
+  <text x="561" y="305" text-anchor="middle" fill="#ffffff" font-size="13" xml:space="preserve">서</text>
+  <rect x="586" y="286" width="34" height="28" rx="4" fill="#14261a" stroke="#55c555"/>
+  <text x="603" y="305" text-anchor="middle" fill="#ffffff" font-size="13" xml:space="preserve">울</text>
+
+  <text x="494" y="342" fill="#e8e8e8" font-size="13" xml:space="preserve">겹치는 음절 2개 → 정밀도 2/3 · 재현율 1</text>
+  <text x="494" y="364" fill="#55c555" font-size="13" font-weight="600" xml:space="preserve">F1 0.80 — 부분 점수가 붙는다</text>
+
+  <rect x="60" y="410" width="760" height="60" rx="8" fill="#0d0d0d" stroke="#333"/>
+  <text x="84" y="434" fill="#e8e8e8" font-size="13" xml:space="preserve">평가 정규화에 조사를 떼거나 F1을 음절 단위로 재면 이 유형이 사라진다</text>
+  <text x="84" y="456" fill="#888" font-size="12" xml:space="preserve">KorQuAD 공식 평가 스크립트가 음절 단위 F1을 쓰는 이유가 이것이다</text>
+</svg>

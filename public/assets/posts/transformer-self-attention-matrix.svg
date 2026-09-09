@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="480" viewBox="0 0 880 480">
+  <rect width="880" height="480" fill="#0a0a0a" rx="12"/>
+
+  <text x="440" y="46" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="22" font-weight="700" fill="#e8e8e8" text-anchor="middle">어텐션 행렬 α 의 행과 열</text>
+  <text x="440" y="70" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="14" font-weight="600" fill="#888" text-anchor="middle">α[i][j] = 토큰 i 가 토큰 j 를 얼마나 참고했는가</text>
+
+  <text x="182" y="118" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="11" fill="#888" text-anchor="end">참고하는 쪽 (행)</text>
+  <text x="320" y="118" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="11" fill="#888" text-anchor="middle">참고되는 쪽 (열)</text>
+
+  <text x="238" y="142" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="600" fill="#e8e8e8" text-anchor="middle">나는</text>
+  <text x="320" y="142" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="600" fill="#e8e8e8" text-anchor="middle">사과를</text>
+  <text x="402" y="142" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="600" fill="#e8e8e8" text-anchor="middle">먹었다</text>
+
+  <text x="190" y="186" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e8e8e8" text-anchor="end">나는</text>
+  <text x="190" y="248" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e8e8e8" text-anchor="end">사과를</text>
+  <text x="190" y="310" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#7ec8e3" text-anchor="end">먹었다</text>
+
+  <!-- 1행 -->
+  <rect x="200" y="152" width="76" height="56" fill="#1a2a4a" rx="2" stroke="#7777cc" stroke-width="1.5"/>
+  <rect x="282" y="152" width="76" height="56" fill="#1a2a4a" rx="2"/>
+  <rect x="364" y="152" width="76" height="56" fill="#1a2a4a" rx="2"/>
+  <!-- 2행 -->
+  <rect x="200" y="214" width="76" height="56" fill="#1a2a4a" rx="2"/>
+  <rect x="282" y="214" width="76" height="56" fill="#1a2a4a" rx="2" stroke="#7777cc" stroke-width="1.5"/>
+  <rect x="364" y="214" width="76" height="56" fill="#1a2a4a" rx="2"/>
+  <!-- 3행 · 「먹었다」의 가중치 -->
+  <rect x="200" y="276" width="76" height="56" fill="#7ec8e3" opacity="0.28" rx="2"/>
+  <rect x="282" y="276" width="76" height="56" fill="#7ec8e3" opacity="0.7" rx="2"/>
+  <rect x="364" y="276" width="76" height="56" fill="#7ec8e3" opacity="0.42" rx="2" stroke="#7777cc" stroke-width="1.5"/>
+  <text x="238" y="310" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="15" font-weight="600" fill="#ffffff" text-anchor="middle">0.2</text>
+  <text x="320" y="310" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="15" font-weight="600" fill="#ffffff" text-anchor="middle">0.5</text>
+  <text x="402" y="310" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="15" font-weight="600" fill="#ffffff" text-anchor="middle">0.3</text>
+
+  <text x="452" y="186" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="12" fill="#55c555">합 = 1</text>
+  <text x="452" y="248" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="12" fill="#55c555">합 = 1</text>
+  <text x="452" y="310" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="12" fill="#55c555">합 = 1</text>
+
+  <rect x="560" y="140" width="260" height="60" fill="#0d1117" rx="6" stroke="#55c555" stroke-width="1"/>
+  <text x="584" y="164" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="600" fill="#55c555">행 합 = 1</text>
+  <text x="584" y="184" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="11" fill="#9aa4b8">한 토큰이 나눠 준 관심의 총량</text>
+
+  <rect x="560" y="212" width="260" height="60" fill="#0d1117" rx="6" stroke="#ce9178" stroke-width="1"/>
+  <text x="584" y="236" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="600" fill="#ce9178">열 합에는 제한이 없다</text>
+  <text x="584" y="256" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="11" fill="#9aa4b8">여럿이 함께 보면 1을 넘는다</text>
+
+  <rect x="560" y="284" width="260" height="60" fill="#0d1117" rx="6" stroke="#7777cc" stroke-width="1"/>
+  <text x="584" y="308" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="600" fill="#7777cc">α[i][j] ≠ α[j][i]</text>
+  <text x="584" y="328" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="11" fill="#9aa4b8">관계는 방향을 갖는다</text>
+
+  <rect x="60" y="364" width="760" height="48" fill="#0d1117" rx="8" stroke="#333" stroke-width="1"/>
+  <text x="440" y="393" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#9aa4b8" text-anchor="middle">대각선이 밝으면 자기 정보를 지키는 것이고, 한 열이 통째로 밝으면 문장 전체를 모으는 자리다</text>
+</svg>

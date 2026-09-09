@@ -1,0 +1,85 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="500" viewBox="0 0 880 500">
+  <defs>
+    <marker id="axis" viewBox="0 0 14 14" refX="12" refY="7"
+            markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#555"/>
+    </marker>
+  </defs>
+
+  <rect width="880" height="500" rx="12" fill="#0a0a0a"/>
+
+  <text x="440" y="46" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="22" font-weight="700" fill="#e8e8e8" text-anchor="middle">단어 · 문자 · 서브워드</text>
+  <text x="440" y="74" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="15" fill="#888" text-anchor="middle">어휘 크기와 시퀀스 길이는 반대로 움직이고, 서브워드가 그 사이를 고른다</text>
+
+  <!-- 문자 어휘 -->
+  <rect x="60" y="100" width="220" height="320" rx="10" fill="#111" stroke="#222"/>
+  <text x="170" y="128" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="15" font-weight="700" fill="#7ec8e3" text-anchor="middle">문자 어휘</text>
+  <text x="170" y="148" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="11" fill="#888" text-anchor="middle">토큰 하나 = 문자 하나</text>
+
+  <rect x="74" y="162" width="192" height="62" rx="6" fill="#111820" stroke="#3a4a6e"/>
+  <text x="170" y="188" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#ffffff" text-anchor="middle">토 · 크 · 나 · 이 · 저</text>
+  <text x="170" y="210" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="11" fill="#7ec8e3" text-anchor="middle">5토큰</text>
+
+  <rect x="74" y="240" width="192" height="50" rx="5" fill="#0a0a0a" stroke="#1e1e28"/>
+  <text x="88" y="260" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="11" fill="#7777cc">어휘 크기</text>
+  <text x="88" y="280" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="12.5" fill="#e8e8e8">작다 · 한글도 11,172자</text>
+
+  <rect x="74" y="298" width="192" height="50" rx="5" fill="#0a0a0a" stroke="#1e1e28"/>
+  <text x="88" y="318" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="11" fill="#7777cc">OOV</text>
+  <text x="88" y="338" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="12.5" fill="#e8e8e8">원리적으로 없다</text>
+
+  <rect x="74" y="356" width="192" height="50" rx="5" fill="#0a0a0a" stroke="#1e1e28"/>
+  <text x="88" y="376" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="11" fill="#7777cc">시퀀스</text>
+  <text x="88" y="396" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="12.5" fill="#e8e8e8">길다 · 수백 토큰</text>
+
+  <!-- 서브워드 -->
+  <rect x="330" y="100" width="220" height="320" rx="10" fill="#0d140d" stroke="#2b4a26"/>
+  <text x="440" y="128" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="15" font-weight="700" fill="#55c555" text-anchor="middle">서브워드</text>
+  <text x="440" y="148" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="11" fill="#888" text-anchor="middle">자주 쓰면 통째, 드물면 조각</text>
+
+  <rect x="344" y="162" width="192" height="62" rx="6" fill="#111820" stroke="#3a4a6e"/>
+  <text x="440" y="188" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#ffffff" text-anchor="middle">토크 · 나이 · 저</text>
+  <text x="440" y="210" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="11" fill="#55c555" text-anchor="middle">3토큰</text>
+
+  <rect x="344" y="240" width="192" height="50" rx="5" fill="#0a0a0a" stroke="#1e1e28"/>
+  <text x="358" y="260" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="11" fill="#7777cc">어휘 크기</text>
+  <text x="358" y="280" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="12.5" fill="#e8e8e8">우리가 정한다</text>
+
+  <rect x="344" y="298" width="192" height="50" rx="5" fill="#0a0a0a" stroke="#1e1e28"/>
+  <text x="358" y="318" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="11" fill="#7777cc">OOV</text>
+  <text x="358" y="338" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="12.5" fill="#e8e8e8">드문 단어만 조각으로</text>
+
+  <rect x="344" y="356" width="192" height="50" rx="5" fill="#0a0a0a" stroke="#1e1e28"/>
+  <text x="358" y="376" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="11" fill="#7777cc">시퀀스</text>
+  <text x="358" y="396" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="12.5" fill="#e8e8e8">보통</text>
+
+  <!-- 단어 어휘 -->
+  <rect x="600" y="100" width="220" height="320" rx="10" fill="#111" stroke="#222"/>
+  <text x="710" y="128" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="15" font-weight="700" fill="#e05555" text-anchor="middle">단어 어휘</text>
+  <text x="710" y="148" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="11" fill="#888" text-anchor="middle">토큰 하나 = 단어 하나</text>
+
+  <rect x="614" y="162" width="192" height="62" rx="6" fill="#111820" stroke="#3a4a6e"/>
+  <text x="710" y="188" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#ffffff" text-anchor="middle">토크나이저</text>
+  <text x="710" y="210" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="11" fill="#e05555" text-anchor="middle">1토큰</text>
+
+  <rect x="614" y="240" width="192" height="50" rx="5" fill="#0a0a0a" stroke="#1e1e28"/>
+  <text x="628" y="260" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="11" fill="#7777cc">어휘 크기</text>
+  <text x="628" y="280" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="12.5" fill="#e8e8e8">끝없이 늘어 5만에서 자른다</text>
+
+  <rect x="614" y="298" width="192" height="50" rx="5" fill="#0a0a0a" stroke="#1e1e28"/>
+  <text x="628" y="318" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="11" fill="#7777cc">OOV</text>
+  <text x="628" y="338" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="12.5" fill="#e8e8e8">밖은 전부 &lt;UNK&gt;</text>
+
+  <rect x="614" y="356" width="192" height="50" rx="5" fill="#0a0a0a" stroke="#1e1e28"/>
+  <text x="628" y="376" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="11" fill="#7777cc">시퀀스</text>
+  <text x="628" y="396" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="12.5" fill="#e8e8e8">짧다</text>
+
+  <!-- 크기 축 -->
+  <path d="M 440 448 L 130 448" stroke="#555" stroke-width="2" fill="none" marker-end="url(#axis)"/>
+  <path d="M 440 448 L 750 448" stroke="#555" stroke-width="2" fill="none" marker-end="url(#axis)"/>
+  <circle cx="440" cy="448" r="4" fill="#55c555"/>
+
+  <text x="130" y="476" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="12" fill="#888">어휘가 작다 · 시퀀스가 길다</text>
+  <text x="440" y="476" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="12" fill="#55c555" text-anchor="middle">서브워드</text>
+  <text x="750" y="476" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="12" fill="#888" text-anchor="end">어휘가 크다 · 시퀀스가 짧다</text>
+</svg>

@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="584" viewBox="0 0 880 584" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <defs>
+    <marker id="mfcArr" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#6a7180"/>
+    </marker>
+  </defs>
+  <rect x="0" y="0" width="880" height="584" fill="#0a0a0a" rx="12"/>
+
+  <text x="60" y="52" font-size="22" font-weight="700" fill="#e8e8e8">제약이 설계를 정한다</text>
+  <text x="60" y="78" font-size="14" fill="#9aa4b8">세 팀의 출발점과 처음 손댄 부품</text>
+
+  <text x="60" y="118" font-size="12" fill="#888">팀</text>
+  <text x="294" y="118" font-size="12" fill="#888">제약</text>
+  <text x="570" y="118" font-size="12" fill="#888">대응</text>
+
+  <!-- Mistral -->
+  <rect x="60" y="130" width="190" height="74" rx="8" fill="#12161d" stroke="#7ec8e3" stroke-width="1.5"/>
+  <text x="76" y="161" font-size="14" font-weight="700" fill="#7ec8e3">Mistral AI</text>
+  <text x="76" y="184" font-size="11" fill="#9aa4b8">프랑스 · 2023.04 창업</text>
+  <line x1="250" y1="167" x2="294" y2="167" stroke="#6a7180" stroke-width="2" marker-end="url(#mfcArr)"/>
+  <rect x="294" y="130" width="232" height="74" rx="8" fill="#111318" stroke="#2a2f3a" stroke-width="1"/>
+  <text x="310" y="161" font-size="13" fill="#e8e8e8">자금이 적다</text>
+  <text x="310" y="184" font-size="11" fill="#9aa4b8">프런티어 기업보다 적은 자금</text>
+  <line x1="526" y1="167" x2="570" y2="167" stroke="#6a7180" stroke-width="2" marker-end="url(#mfcArr)"/>
+  <rect x="570" y="130" width="250" height="74" rx="8" fill="#111318" stroke="#2a2f3a" stroke-width="1"/>
+  <text x="586" y="161" font-size="13" fill="#e8e8e8">슬라이딩 윈도우 + GQA</text>
+  <text x="586" y="184" font-size="11" fill="#9aa4b8">7B가 LLaMA 2 13B를 앞섰다</text>
+
+  <!-- Qwen -->
+  <rect x="60" y="232" width="190" height="74" rx="8" fill="#12161d" stroke="#55c555" stroke-width="1.5"/>
+  <text x="76" y="263" font-size="14" font-weight="700" fill="#55c555">Qwen</text>
+  <text x="76" y="286" font-size="11" fill="#9aa4b8">알리바바 클라우드 · 2023</text>
+  <line x1="250" y1="269" x2="294" y2="269" stroke="#6a7180" stroke-width="2" marker-end="url(#mfcArr)"/>
+  <rect x="294" y="232" width="232" height="74" rx="8" fill="#111318" stroke="#2a2f3a" stroke-width="1"/>
+  <text x="310" y="263" font-size="13" fill="#e8e8e8">모델이 제품이 아니다</text>
+  <text x="310" y="286" font-size="11" fill="#9aa4b8">클라우드 사용량을 만드는 미끼</text>
+  <line x1="526" y1="269" x2="570" y2="269" stroke="#6a7180" stroke-width="2" marker-end="url(#mfcArr)"/>
+  <rect x="570" y="232" width="250" height="74" rx="8" fill="#111318" stroke="#2a2f3a" stroke-width="1"/>
+  <text x="586" y="263" font-size="13" fill="#e8e8e8">0.5B ~ 110B 크기 사다리</text>
+  <text x="586" y="286" font-size="11" fill="#9aa4b8">중국어를 사전학습부터 넣는다</text>
+
+  <!-- DeepSeek -->
+  <rect x="60" y="334" width="190" height="74" rx="8" fill="#12161d" stroke="#7777cc" stroke-width="1.5"/>
+  <text x="76" y="365" font-size="14" font-weight="700" fill="#7777cc">DeepSeek</text>
+  <text x="76" y="388" font-size="11" fill="#9aa4b8">High-Flyer Quant · 2023</text>
+  <line x1="250" y1="371" x2="294" y2="371" stroke="#6a7180" stroke-width="2" marker-end="url(#mfcArr)"/>
+  <rect x="294" y="334" width="232" height="74" rx="8" fill="#111318" stroke="#2a2f3a" stroke-width="1"/>
+  <text x="310" y="365" font-size="13" fill="#e8e8e8">최상위 칩이 없다</text>
+  <text x="310" y="388" font-size="11" fill="#9aa4b8">수출 규제로 H100·A100 제한</text>
+  <line x1="526" y1="371" x2="570" y2="371" stroke="#6a7180" stroke-width="2" marker-end="url(#mfcArr)"/>
+  <rect x="570" y="334" width="250" height="74" rx="8" fill="#111318" stroke="#2a2f3a" stroke-width="1"/>
+  <text x="586" y="365" font-size="13" fill="#e8e8e8">MLA + MoE</text>
+  <text x="586" y="388" font-size="11" fill="#9aa4b8">KV 캐시 93.3% 감소 · 활성 37B</text>
+
+  <!-- 요약 -->
+  <rect x="60" y="444" width="760" height="76" rx="8" fill="#0f1218" stroke="#2a2f3a" stroke-width="1"/>
+  <text x="440" y="476" font-size="14" font-weight="600" fill="#e8e8e8" text-anchor="middle">출발점이 달랐는데 손댄 부품은 같다</text>
+  <text x="440" y="499" font-size="12" fill="#9aa4b8" text-anchor="middle">어텐션의 메모리 · 파라미터의 활성 비율</text>
+</svg>

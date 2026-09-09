@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" viewBox="0 0 880 570" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <rect width="880" height="570" rx="12" fill="#0a0a0a"/>
+
+  <text x="440" y="46" text-anchor="middle" fill="#e8e8e8" font-size="22" font-weight="700" xml:space="preserve">고정 기준과 굴림 기준</text>
+  <text x="440" y="70" text-anchor="middle" fill="#888" font-size="13" xml:space="preserve">같은 데이터라도 무엇에 견주느냐에 따라 값이 전혀 다르게 나온다</text>
+
+  <!-- ===== 위: 분포 중심의 추이 ===== -->
+  <text x="380" y="104" text-anchor="middle" fill="#888" font-size="11" xml:space="preserve">서서히 이동</text>
+  <text x="645" y="104" text-anchor="middle" fill="#e05555" font-size="11" xml:space="preserve">급변</text>
+  <text x="60" y="174" fill="#888" font-size="11" xml:space="preserve">분포 중심</text>
+
+  <line x1="150" y1="110" x2="150" y2="230" stroke="#333"/>
+  <line x1="150" y1="230" x2="800" y2="230" stroke="#333"/>
+  <line x1="645" y1="110" x2="645" y2="230" stroke="#444" stroke-dasharray="3,3"/>
+  <text x="770" y="246" fill="#888" font-size="11" xml:space="preserve">시간 →</text>
+
+  <line x1="150" y1="206" x2="800" y2="206" stroke="#7ec8e3" stroke-width="2" stroke-dasharray="5,3"/>
+  <polyline points="150,206 230,206 310,202 390,196 470,190 550,182 630,174 660,168 700,140 800,126" fill="none" stroke="#e05555" stroke-width="2" stroke-dasharray="4,4"/>
+  <polyline points="150,206 230,202 310,196 390,190 470,182 550,174 630,166 660,128 700,124 800,122" fill="none" stroke="#e8e8e8" stroke-width="2"/>
+
+  <!-- 범례 -->
+  <line x1="150" y1="248" x2="178" y2="248" stroke="#e8e8e8" stroke-width="2"/>
+  <text x="186" y="252" fill="#888" font-size="11" xml:space="preserve">들어오는 데이터</text>
+  <line x1="300" y1="248" x2="328" y2="248" stroke="#7ec8e3" stroke-width="2" stroke-dasharray="5,3"/>
+  <text x="336" y="252" fill="#888" font-size="11" xml:space="preserve">고정 기준 (학습 데이터)</text>
+  <line x1="500" y1="248" x2="528" y2="248" stroke="#e05555" stroke-width="2" stroke-dasharray="4,4"/>
+  <text x="536" y="252" fill="#888" font-size="11" xml:space="preserve">굴림 기준 (최근 N주)</text>
+
+  <!-- ===== 아래: 두 기준이 만드는 PSI ===== -->
+  <text x="60" y="344" fill="#888" font-size="11" xml:space="preserve">PSI 값</text>
+  <line x1="150" y1="280" x2="150" y2="400" stroke="#333"/>
+  <line x1="150" y1="400" x2="800" y2="400" stroke="#333"/>
+  <line x1="150" y1="372" x2="800" y2="372" stroke="#333" stroke-dasharray="3,3"/>
+  <text x="142" y="376" text-anchor="end" fill="#888" font-size="10" xml:space="preserve">0.1</text>
+  <line x1="150" y1="345" x2="800" y2="345" stroke="#555" stroke-dasharray="3,3"/>
+  <text x="142" y="349" text-anchor="end" fill="#888" font-size="10" xml:space="preserve">0.2</text>
+
+  <polyline points="150,398 230,392 310,384 390,374 470,364 550,352 630,340 660,310 700,306 800,302" fill="none" stroke="#7ec8e3" stroke-width="2"/>
+  <polyline points="150,398 230,397 310,396 390,397 470,396 550,397 630,396 660,318 700,340 800,392" fill="none" stroke="#e05555" stroke-width="2"/>
+
+  <text x="150" y="424" fill="#7ec8e3" font-size="11" xml:space="preserve">고정 기준은 계속 올라가 0.2를 넘는다</text>
+  <text x="430" y="424" fill="#e05555" font-size="11" xml:space="preserve">굴림 기준은 급변에만 튀고 평소엔 0 근처다</text>
+
+  <rect x="60" y="450" width="760" height="58" rx="8" fill="#0d0d0d" stroke="#333"/>
+  <text x="84" y="474" fill="#e8e8e8" font-size="13" xml:space="preserve">고정 기준만 높으면 오래 쌓인 변화이므로 계획된 재학습으로 처리한다</text>
+  <text x="84" y="496" fill="#888" font-size="12" xml:space="preserve">둘 다 갑자기 튀면 방금 무슨 일이 생긴 것이므로 파이프라인부터 본다</text>
+</svg>

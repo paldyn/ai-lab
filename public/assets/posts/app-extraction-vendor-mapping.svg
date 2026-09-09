@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" viewBox="0 0 880 350"
+     style="border-radius:12px" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <defs>
+    <marker id="vmBlue" viewBox="0 0 14 14" refX="12" refY="7"
+            markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#7ec8e3"/>
+    </marker>
+    <marker id="vmGreen" viewBox="0 0 14 14" refX="12" refY="7"
+            markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#55c555"/>
+    </marker>
+    <marker id="vmRed" viewBox="0 0 14 14" refX="12" refY="7"
+            markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#e05555"/>
+    </marker>
+  </defs>
+
+  <rect width="880" height="350" rx="12" fill="#0a0a0a"/>
+
+  <text x="440" y="42" text-anchor="middle" font-size="22" font-weight="700" fill="#e8e8e8">거래처명을 내부 코드로</text>
+
+  <text x="160" y="90" text-anchor="middle" font-size="13" fill="#888">문서에 적힌 이름</text>
+  <text x="720" y="90" text-anchor="middle" font-size="13" fill="#888">가는 곳</text>
+
+  <!-- 문서마다 다르게 적힌 이름 -->
+  <rect x="60" y="110" width="200" height="40" rx="6" fill="#0f1a2e" stroke="#7ec8e3" stroke-width="1.5"/>
+  <text x="160" y="135" text-anchor="middle" font-size="13" fill="#e8e8e8">ABC 코퍼레이션</text>
+  <rect x="60" y="158" width="200" height="40" rx="6" fill="#0f1a2e" stroke="#7ec8e3" stroke-width="1.5"/>
+  <text x="160" y="183" text-anchor="middle" font-size="13" fill="#e8e8e8">(주)ABC</text>
+  <rect x="60" y="206" width="200" height="40" rx="6" fill="#0f1a2e" stroke="#7ec8e3" stroke-width="1.5"/>
+  <text x="160" y="231" text-anchor="middle" font-size="13" fill="#e8e8e8">ABC Corp.</text>
+
+  <line x1="260" y1="130" x2="300" y2="130" stroke="#7ec8e3" stroke-width="2"/>
+  <line x1="260" y1="178" x2="300" y2="178" stroke="#7ec8e3" stroke-width="2"/>
+  <line x1="260" y1="226" x2="300" y2="226" stroke="#7ec8e3" stroke-width="2"/>
+  <line x1="300" y1="130" x2="300" y2="226" stroke="#7ec8e3" stroke-width="2"/>
+  <line x1="300" y1="178" x2="330" y2="178" stroke="#7ec8e3" stroke-width="2" marker-end="url(#vmBlue)"/>
+
+  <!-- 마스터 데이터 -->
+  <rect x="330" y="143" width="220" height="70" rx="8" fill="#0f1a2e" stroke="#7ec8e3" stroke-width="1.5"/>
+  <text x="440" y="165" text-anchor="middle" font-size="14" font-weight="600" fill="#7ec8e3">마스터 데이터 테이블</text>
+  <text x="440" y="183" text-anchor="middle" font-size="12" fill="#888">이름과 코드의 기준 표</text>
+  <text x="440" y="201" text-anchor="middle" font-size="12" fill="#888">퍼지 매칭으로 후보 찾기</text>
+
+  <!-- 갈림 -->
+  <line x1="550" y1="178" x2="585" y2="178" stroke="#7ec8e3" stroke-width="2"/>
+  <path d="M 585 178 V 142 H 620" fill="none" stroke="#55c555" stroke-width="2" marker-end="url(#vmGreen)"/>
+  <path d="M 585 178 V 242 H 620" fill="none" stroke="#e05555" stroke-width="2" marker-end="url(#vmRed)"/>
+
+  <rect x="620" y="112" width="200" height="60" rx="8" fill="#0e2012" stroke="#55c555" stroke-width="1.5"/>
+  <text x="720" y="136" text-anchor="middle" font-size="13" font-weight="600" fill="#55c555">매칭 점수 높음</text>
+  <text x="720" y="156" text-anchor="middle" font-size="12" fill="#888">V-00123으로 ERP 입력</text>
+
+  <rect x="620" y="212" width="200" height="60" rx="8" fill="#2a0f0f" stroke="#e05555" stroke-width="1.5"/>
+  <text x="720" y="236" text-anchor="middle" font-size="13" font-weight="600" fill="#e05555">매칭 점수 낮음</text>
+  <text x="720" y="256" text-anchor="middle" font-size="12" fill="#888">검토 큐로 돌린다</text>
+
+  <line x1="60" y1="290" x2="820" y2="290" stroke="#222" stroke-width="1"/>
+  <text x="440" y="318" text-anchor="middle" font-size="13" fill="#888">잘못된 코드로 청구가 들어가는 것이 빈 채로 멈추는 것보다 비싸다</text>
+</svg>

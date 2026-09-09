@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="480" viewBox="0 0 880 480">
+  <defs>
+    <marker id="ssmRed" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#e05555"/>
+    </marker>
+    <marker id="ssmGreen" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#55c555"/>
+    </marker>
+  </defs>
+
+  <rect width="880" height="480" fill="#0a0a0a" rx="12"/>
+
+  <text x="440" y="46" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="22" font-weight="700" fill="#e8e8e8" text-anchor="middle">상수 파라미터 SSM과 선택적 SSM</text>
+  <text x="440" y="70" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="14" font-weight="600" fill="#888" text-anchor="middle">막대 높이는 그 토큰이 상태에 반영되는 세기다</text>
+
+  <!-- 왼쪽: 상수 파라미터 SSM -->
+  <rect x="60" y="92" width="340" height="252" fill="#111827" rx="8" stroke="#e05555" stroke-width="1.2"/>
+  <text x="230" y="118" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#e05555" text-anchor="middle">상수 파라미터 SSM</text>
+  <text x="230" y="140" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="12" fill="#888" text-anchor="middle">A · B · C 가 학습된 상수</text>
+
+  <rect x="110" y="158" width="240" height="44" fill="#0d1117" rx="6" stroke="#e05555" stroke-width="1"/>
+  <text x="230" y="185" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e8e8e8" text-anchor="middle">상태 h — 고정 크기</text>
+
+  <line x1="150" y1="246" x2="150" y2="202" stroke="#e05555" stroke-width="2" marker-end="url(#ssmRed)"/>
+  <line x1="230" y1="246" x2="230" y2="202" stroke="#e05555" stroke-width="2" marker-end="url(#ssmRed)"/>
+  <line x1="310" y1="246" x2="310" y2="202" stroke="#e05555" stroke-width="2" marker-end="url(#ssmRed)"/>
+
+  <rect x="133" y="246" width="34" height="46" fill="#e05555" opacity="0.55" rx="2"/>
+  <rect x="213" y="246" width="34" height="46" fill="#e05555" opacity="0.55" rx="2"/>
+  <rect x="293" y="246" width="34" height="46" fill="#e05555" opacity="0.55" rx="2"/>
+
+  <text x="150" y="310" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="12" fill="#888" text-anchor="middle">x₁</text>
+  <text x="230" y="310" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="12" fill="#888" text-anchor="middle">x₂</text>
+  <text x="310" y="310" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="12" fill="#888" text-anchor="middle">x₃</text>
+
+  <text x="230" y="332" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="12" fill="#9aa4b8" text-anchor="middle">모든 입력을 같은 세기로 접는다</text>
+
+  <!-- 오른쪽: 선택적 SSM -->
+  <rect x="480" y="92" width="340" height="252" fill="#111827" rx="8" stroke="#55c555" stroke-width="1.2"/>
+  <text x="650" y="118" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#55c555" text-anchor="middle">선택적 SSM (Mamba)</text>
+  <text x="650" y="140" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="12" fill="#888" text-anchor="middle">B · C · 스텝 크기를 x_t 에서 계산</text>
+
+  <rect x="530" y="158" width="240" height="44" fill="#0d1117" rx="6" stroke="#55c555" stroke-width="1"/>
+  <text x="650" y="185" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e8e8e8" text-anchor="middle">상태 h — 고정 크기</text>
+
+  <line x1="570" y1="270" x2="570" y2="202" stroke="#55c555" stroke-width="2" marker-end="url(#ssmGreen)"/>
+  <line x1="650" y1="234" x2="650" y2="202" stroke="#55c555" stroke-width="2" marker-end="url(#ssmGreen)"/>
+  <line x1="730" y1="258" x2="730" y2="202" stroke="#55c555" stroke-width="2" marker-end="url(#ssmGreen)"/>
+
+  <rect x="553" y="270" width="34" height="22" fill="#55c555" opacity="0.7" rx="2"/>
+  <rect x="633" y="234" width="34" height="58" fill="#55c555" opacity="0.7" rx="2"/>
+  <rect x="713" y="258" width="34" height="34" fill="#55c555" opacity="0.7" rx="2"/>
+
+  <text x="570" y="310" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="12" fill="#888" text-anchor="middle">x₁</text>
+  <text x="650" y="310" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="12" fill="#888" text-anchor="middle">x₂</text>
+  <text x="730" y="310" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="12" fill="#888" text-anchor="middle">x₃</text>
+
+  <text x="650" y="332" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="12" fill="#9aa4b8" text-anchor="middle">중요하면 크게, 아니면 흘려보낸다</text>
+
+  <!-- 대가 -->
+  <rect x="60" y="364" width="760" height="56" fill="#0d1117" rx="8" stroke="#7777cc" stroke-width="1"/>
+  <text x="440" y="388" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e8e8e8" text-anchor="middle">대가 — 파라미터가 시간에 따라 변하면 재귀를 합성곱으로 미리 접어 둘 수 없다</text>
+  <text x="440" y="408" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="12" fill="#9aa4b8" text-anchor="middle">Mamba는 GPU 메모리 계층을 겨냥한 병렬 스캔 커널을 따로 짰다</text>
+</svg>

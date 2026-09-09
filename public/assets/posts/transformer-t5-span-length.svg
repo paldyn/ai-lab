@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="456" viewBox="0 0 880 456">
+  <rect width="880" height="456" fill="#0a0a0a" rx="12"/>
+
+  <!-- Title -->
+  <text x="440" y="50" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="22" font-weight="700" fill="#e8e8e8" text-anchor="middle">Span Corruption의 길이 계산</text>
+  <text x="440" y="76" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="14" font-weight="600" fill="#888" text-anchor="middle">입력 512 토큰 · 마스킹 15% · 평균 스팬 길이 3</text>
+
+  <!-- 원본 512 기준선 -->
+  <line x1="730" y1="104" x2="730" y2="312" stroke="#444444" stroke-width="1" stroke-dasharray="4,4"/>
+
+  <!-- Row 1: 원본 문서 -->
+  <text x="60" y="132" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="14" font-weight="600" fill="#e8e8e8">원본 문서</text>
+  <rect x="190" y="110" width="540" height="34" fill="#7777cc"/>
+  <rect x="190" y="110" width="540" height="34" fill="none" stroke="#2a2a2a" stroke-width="1" rx="3"/>
+  <text x="742" y="132" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="14" font-weight="600" fill="#e8e8e8">512 토큰</text>
+  <text x="190" y="164" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="12" fill="#888">512 × 0.15 ≈ 77개가 가려지고, 77 ÷ 3 ≈ 26개 스팬이 된다</text>
+
+  <!-- Row 2: 인코더 입력 -->
+  <text x="60" y="214" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="14" font-weight="600" fill="#e8e8e8">인코더 입력</text>
+  <rect x="190" y="192" width="459" height="34" fill="#7ec8e3"/>
+  <rect x="649" y="192" width="27" height="34" fill="#e05555"/>
+  <rect x="190" y="192" width="486" height="34" fill="none" stroke="#2a2a2a" stroke-width="1" rx="3"/>
+  <text x="419" y="213" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="12" font-weight="600" fill="#0a0a0a" text-anchor="middle">지우고 남은 토큰</text>
+  <text x="742" y="214" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="14" font-weight="600" fill="#e8e8e8">461 토큰</text>
+  <text x="190" y="246" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="12" fill="#888">512 − 77 + 26 = 461 — 지운 만큼 빠지고 sentinel 26개가 들어온다</text>
+
+  <!-- Row 3: 디코더 타깃 -->
+  <text x="60" y="296" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="14" font-weight="600" fill="#e8e8e8">디코더 타깃</text>
+  <rect x="190" y="274" width="27" height="34" fill="#e05555"/>
+  <rect x="217" y="274" width="81" height="34" fill="#55c555"/>
+  <rect x="298" y="274" width="2" height="34" fill="#e05555"/>
+  <rect x="190" y="274" width="110" height="34" fill="none" stroke="#2a2a2a" stroke-width="1" rx="3"/>
+  <text x="257" y="295" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="12" font-weight="600" fill="#0a0a0a" text-anchor="middle">77</text>
+  <text x="742" y="296" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="14" font-weight="600" fill="#e8e8e8">104 토큰</text>
+  <text x="190" y="328" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="12" fill="#888">sentinel 26 + 원래 토큰 77 + 끝 sentinel 1 = 104</text>
+
+  <!-- 아래 두 칸 -->
+  <rect x="60" y="352" width="350" height="64" fill="#111827" rx="8" stroke="#3a4a6e" stroke-width="1"/>
+  <text x="84" y="378" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="600" fill="#55c555">디코더 타깃 104 = 원본의 5분의 1</text>
+  <text x="84" y="400" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="12" fill="#888">같은 GPU 시간에 더 많은 예제를 본다</text>
+
+  <rect x="470" y="352" width="350" height="64" fill="#111827" rx="8" stroke="#3a4a6e" stroke-width="1"/>
+  <text x="494" y="378" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="600" fill="#e05555">sentinel 한도 100개</text>
+  <text x="494" y="400" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="12" fill="#888">평균 길이 1이면 스팬 77개 · 입력 1024면 초과</text>
+</svg>

@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="510" viewBox="0 0 880 510">
+  <defs>
+    <marker id="pathRed" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#e05555"/>
+    </marker>
+    <marker id="pathGreen" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#55c555"/>
+    </marker>
+  </defs>
+
+  <rect width="880" height="510" fill="#0a0a0a" rx="12"/>
+
+  <text x="440" y="46" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="22" font-weight="700" fill="#e8e8e8" text-anchor="middle">순차 전달과 직접 참조</text>
+  <text x="440" y="70" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="14" font-weight="600" fill="#888" text-anchor="middle">「책은」의 정보가 「못 읽었다」에 닿기까지</text>
+
+  <!-- 순환 신경망 -->
+  <rect x="60" y="92" width="760" height="152" fill="#111827" rx="8" stroke="#e05555" stroke-width="1.2"/>
+  <text x="84" y="120" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="14" font-weight="600" fill="#e05555">순환 신경망 — 은닉 상태에 눌러 담아 전달</text>
+
+  <rect x="112" y="152" width="60" height="40" fill="#0d1117" rx="6" stroke="#333" stroke-width="1"/>
+  <text x="142" y="177" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e8e8e8" text-anchor="middle">어제</text>
+  <rect x="202" y="152" width="84" height="40" fill="#0d1117" rx="6" stroke="#333" stroke-width="1"/>
+  <text x="244" y="177" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e8e8e8" text-anchor="middle">서점에서</text>
+  <rect x="316" y="152" width="48" height="40" fill="#0d1117" rx="6" stroke="#333" stroke-width="1"/>
+  <text x="340" y="177" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e8e8e8" text-anchor="middle">산</text>
+  <rect x="394" y="152" width="60" height="40" fill="#0d1117" rx="6" stroke="#7ec8e3" stroke-width="1.5"/>
+  <text x="424" y="177" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#7ec8e3" text-anchor="middle">책은</text>
+  <rect x="484" y="152" width="60" height="40" fill="#0d1117" rx="6" stroke="#333" stroke-width="1"/>
+  <text x="514" y="177" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e8e8e8" text-anchor="middle">아직</text>
+  <rect x="574" y="152" width="60" height="40" fill="#0d1117" rx="6" stroke="#333" stroke-width="1"/>
+  <text x="604" y="177" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e8e8e8" text-anchor="middle">반도</text>
+  <rect x="664" y="152" width="104" height="40" fill="#0d1117" rx="6" stroke="#7ec8e3" stroke-width="1.5"/>
+  <text x="716" y="177" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#7ec8e3" text-anchor="middle">못 읽었다</text>
+
+  <line x1="172" y1="172" x2="202" y2="172" stroke="#e05555" stroke-width="2" marker-end="url(#pathRed)"/>
+  <line x1="286" y1="172" x2="316" y2="172" stroke="#e05555" stroke-width="2" marker-end="url(#pathRed)"/>
+  <line x1="364" y1="172" x2="394" y2="172" stroke="#e05555" stroke-width="2" marker-end="url(#pathRed)"/>
+  <line x1="454" y1="172" x2="484" y2="172" stroke="#e05555" stroke-width="2" marker-end="url(#pathRed)"/>
+  <line x1="544" y1="172" x2="574" y2="172" stroke="#e05555" stroke-width="2" marker-end="url(#pathRed)"/>
+  <line x1="634" y1="172" x2="664" y2="172" stroke="#e05555" stroke-width="2" marker-end="url(#pathRed)"/>
+
+  <text x="440" y="226" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="12" fill="#9aa4b8" text-anchor="middle">사이의 스텝을 모두 지나며 앞쪽 정보가 희석된다 — 거리가 곧 손실이다</text>
+
+  <!-- Self-Attention -->
+  <rect x="60" y="264" width="760" height="186" fill="#111827" rx="8" stroke="#55c555" stroke-width="1.2"/>
+  <text x="84" y="292" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="14" font-weight="600" fill="#55c555">Self-Attention — 필요한 자리에서 직접 꺼내 온다</text>
+
+  <text x="570" y="306" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="12" fill="#9aa4b8" text-anchor="middle">한 걸음 — 사이에 몇 개가 끼어 있든 상관없다</text>
+
+  <path d="M 716 390 C 716 326, 424 326, 424 390" fill="none" stroke="#55c555" stroke-width="2.5" marker-end="url(#pathGreen)"/>
+
+  <rect x="112" y="390" width="60" height="40" fill="#0d1117" rx="6" stroke="#333" stroke-width="1"/>
+  <text x="142" y="415" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e8e8e8" text-anchor="middle">어제</text>
+  <rect x="202" y="390" width="84" height="40" fill="#0d1117" rx="6" stroke="#333" stroke-width="1"/>
+  <text x="244" y="415" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e8e8e8" text-anchor="middle">서점에서</text>
+  <rect x="316" y="390" width="48" height="40" fill="#0d1117" rx="6" stroke="#333" stroke-width="1"/>
+  <text x="340" y="415" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e8e8e8" text-anchor="middle">산</text>
+  <rect x="394" y="390" width="60" height="40" fill="#0d1117" rx="6" stroke="#55c555" stroke-width="1.5"/>
+  <text x="424" y="415" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#55c555" text-anchor="middle">책은</text>
+  <rect x="484" y="390" width="60" height="40" fill="#0d1117" rx="6" stroke="#333" stroke-width="1"/>
+  <text x="514" y="415" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e8e8e8" text-anchor="middle">아직</text>
+  <rect x="574" y="390" width="60" height="40" fill="#0d1117" rx="6" stroke="#333" stroke-width="1"/>
+  <text x="604" y="415" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e8e8e8" text-anchor="middle">반도</text>
+  <rect x="664" y="390" width="104" height="40" fill="#0d1117" rx="6" stroke="#55c555" stroke-width="1.5"/>
+  <text x="716" y="415" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#55c555" text-anchor="middle">못 읽었다</text>
+</svg>

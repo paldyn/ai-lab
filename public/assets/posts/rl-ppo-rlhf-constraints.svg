@@ -1,0 +1,104 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" viewBox="0 0 880 480">
+  <defs>
+    <marker id="arr-purple" viewBox="0 0 14 14" refX="12" refY="7"
+            markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#7777cc"/>
+    </marker>
+    <marker id="arr-green" viewBox="0 0 14 14" refX="12" refY="7"
+            markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#55c555"/>
+    </marker>
+    <marker id="arr-blue" viewBox="0 0 14 14" refX="12" refY="7"
+            markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#7ec8e3"/>
+    </marker>
+  </defs>
+
+  <!-- 배경 -->
+  <rect width="880" height="480" fill="#0a0a0a" rx="12"/>
+
+  <!-- 제목 -->
+  <text x="440" y="40" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="22" font-weight="700" fill="#e8e8e8" text-anchor="middle">언어 모델 위의 PPO: 클리핑과 KL 페널티</text>
+
+  <!-- 액터 -->
+  <rect x="50" y="68" width="200" height="80" fill="#1a1030" rx="8" stroke="#7777cc" stroke-width="1.5"/>
+  <text x="150" y="94" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="14" font-weight="600" fill="#7777cc" text-anchor="middle">정책 LM (액터)</text>
+  <text x="150" y="116" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="12" fill="#888" text-anchor="middle">상태 = 지금까지의 토큰</text>
+  <text x="150" y="134" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="12" fill="#888" text-anchor="middle">행동 = 다음 토큰</text>
+
+  <line x1="250" y1="108" x2="318" y2="108" stroke="#7777cc" stroke-width="2" marker-end="url(#arr-purple)"/>
+  <text x="284" y="94" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="11" fill="#888" text-anchor="middle">응답</text>
+
+  <!-- 보상 모델 -->
+  <rect x="320" y="68" width="200" height="80" fill="#0f1a10" rx="8" stroke="#55c555" stroke-width="1.5"/>
+  <text x="420" y="94" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="14" font-weight="600" fill="#55c555" text-anchor="middle">보상 모델</text>
+  <text x="420" y="116" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="12" fill="#888" text-anchor="middle">사람의 선호를 학습</text>
+  <text x="420" y="134" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="12" fill="#888" text-anchor="middle">응답이 끝난 뒤 한 번</text>
+
+  <line x1="520" y1="108" x2="588" y2="108" stroke="#55c555" stroke-width="2" marker-end="url(#arr-green)"/>
+  <text x="554" y="94" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="11" fill="#888" text-anchor="middle">점수</text>
+
+  <!-- 총 보상 -->
+  <rect x="590" y="68" width="240" height="80" fill="#1f1608" rx="8" stroke="#e0a555" stroke-width="1.5"/>
+  <text x="710" y="94" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="14" font-weight="600" fill="#e0a555" text-anchor="middle">총 보상</text>
+  <text x="710" y="118" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="13" fill="#ffffff" text-anchor="middle">보상 모델 점수 − kl_coef · kl</text>
+  <text x="710" y="136" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="12" fill="#888" text-anchor="middle">이 값으로 GAE를 계산한다</text>
+
+  <!-- 참조 모델 → KL 페널티 -->
+  <line x1="710" y1="196" x2="710" y2="148" stroke="#7ec8e3" stroke-width="2"
+        stroke-dasharray="4,4" marker-end="url(#arr-blue)"/>
+  <text x="694" y="176" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="12" fill="#7ec8e3" text-anchor="end">KL 페널티</text>
+
+  <rect x="590" y="196" width="240" height="62" fill="#0f1a2e" rx="8" stroke="#7ec8e3" stroke-width="1.5"/>
+  <text x="710" y="222" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="14" font-weight="600" fill="#7ec8e3" text-anchor="middle">참조 모델 (고정)</text>
+  <text x="710" y="244" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="12" fill="#888" text-anchor="middle">학습 시작점, 갱신 없음</text>
+
+  <!-- 크리틱 메모 -->
+  <rect x="50" y="196" width="470" height="62" fill="#12121a" rx="8" stroke="#3a4a6e" stroke-width="1"/>
+  <text x="285" y="222" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="14" font-weight="600" fill="#7777cc" text-anchor="middle">크리틱 (가치 헤드)</text>
+  <text x="285" y="244" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="12" fill="#888" text-anchor="middle">끝에 한 번 오는 보상을 GAE와 함께 토큰마다 배분한다</text>
+
+  <!-- 두 제약 -->
+  <text x="440" y="290" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="16" font-weight="600" fill="#e8e8e8" text-anchor="middle">두 제약은 기준점이 다르다</text>
+
+  <rect x="60" y="310" width="350" height="112" fill="#1a1030" rx="8" stroke="#7777cc" stroke-width="1.5"/>
+  <text x="235" y="336" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="14" font-weight="600" fill="#7777cc" text-anchor="middle">클리핑</text>
+  <text x="235" y="362" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="12" fill="#888" text-anchor="middle">기준점 — 직전 이터레이션의 정책</text>
+  <text x="235" y="384" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="12" fill="#888" text-anchor="middle">매 이터레이션 갱신되는 상대적 제약</text>
+  <text x="235" y="406" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="12" fill="#7777cc" text-anchor="middle">최적화의 안정을 담당한다</text>
+
+  <rect x="470" y="310" width="350" height="112" fill="#0f1a2e" rx="8" stroke="#7ec8e3" stroke-width="1.5"/>
+  <text x="645" y="336" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="14" font-weight="600" fill="#7ec8e3" text-anchor="middle">KL 페널티</text>
+  <text x="645" y="362" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="12" fill="#888" text-anchor="middle">기준점 — 학습 시작점의 참조 모델</text>
+  <text x="645" y="384" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="12" fill="#888" text-anchor="middle">학습 내내 고정된 절대적 제약</text>
+  <text x="645" y="406" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="12" fill="#7ec8e3" text-anchor="middle">언어 능력이 무너지는 것을 막는다</text>
+
+  <text x="440" y="452" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="12" fill="#888" text-anchor="middle">클리핑만 있으면 한 걸음씩 조심스럽게 걸어서 아주 먼 곳까지 갈 수 있다</text>
+</svg>

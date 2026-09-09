@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="520" viewBox="0 0 880 520" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <defs>
+    <marker id="rlArr" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#e05555"/>
+    </marker>
+  </defs>
+
+  <rect x="0" y="0" width="880" height="520" rx="12" fill="#0a0a0a"/>
+
+  <text x="62" y="44" font-size="22" font-weight="700" fill="#e8e8e8">Ridge와 Lasso — 계수를 원점으로 당기는 힘</text>
+  <text x="62" y="70" font-size="13" fill="#888">겹친 특성에 +1000과 -998을 주는 해를 막는 장치다. 두 벌점의 차이는 계수가 0에 다가갔을 때 드러난다.</text>
+
+  <!-- 왼쪽: Ridge -->
+  <rect x="62" y="94" width="348" height="60" rx="10" fill="#101820" stroke="#3a4a6e" stroke-width="1.5"/>
+  <text x="86" y="120" font-size="16" font-weight="600" fill="#7ec8e3">Ridge (L2)</text>
+  <text x="86" y="142" font-size="13" fill="#ffffff" font-family="'JetBrains Mono','Menlo','Consolas',monospace">L = MSE + λ · Σ w²</text>
+
+  <rect x="62" y="172" width="348" height="152" rx="10" fill="#0d1117" stroke="#2a3550" stroke-width="1"/>
+  <text x="86" y="196" font-size="12" fill="#888">당기는 힘</text>
+  <line x1="96" y1="202" x2="96" y2="294" stroke="#555555" stroke-width="1.5"/>
+  <line x1="96" y1="294" x2="386" y2="294" stroke="#555555" stroke-width="1.5"/>
+  <line x1="96" y1="294" x2="376" y2="214" stroke="#7ec8e3" stroke-width="2.5"/>
+  <circle cx="136" cy="283" r="4" fill="#7ec8e3"/>
+  <text x="316" y="204" font-size="13" font-weight="600" fill="#7ec8e3">2λw</text>
+  <text x="300" y="314" font-size="12" fill="#888">계수 |w|</text>
+
+  <text x="62" y="352" font-size="13" fill="#b8b8b8">힘이 계수와 함께 작아져 0에는 닿지 않는다</text>
+  <text x="62" y="376" font-size="13" fill="#b8b8b8">겹친 특성에 계수를 고르게 나눠 준다</text>
+  <rect x="62" y="390" width="348" height="46" rx="8" fill="#000000" stroke="#3a4a6e" stroke-width="1"/>
+  <text x="80" y="410" font-size="13" fill="#ffffff" font-family="'JetBrains Mono','Menlo','Consolas',monospace">X^T X + λI</text>
+  <text x="80" y="428" font-size="12" fill="#9aa4b8">대각선에 λ를 더해 역행렬이 늘 존재한다</text>
+
+  <!-- 오른쪽: Lasso -->
+  <rect x="470" y="94" width="348" height="60" rx="10" fill="#101820" stroke="#6e3a3a" stroke-width="1.5"/>
+  <text x="494" y="120" font-size="16" font-weight="600" fill="#e05555">Lasso (L1)</text>
+  <text x="494" y="142" font-size="13" fill="#ffffff" font-family="'JetBrains Mono','Menlo','Consolas',monospace">L = MSE + λ · Σ |w|</text>
+
+  <rect x="470" y="172" width="348" height="152" rx="10" fill="#0d1117" stroke="#2a3550" stroke-width="1"/>
+  <text x="494" y="196" font-size="12" fill="#888">당기는 힘</text>
+  <line x1="504" y1="202" x2="504" y2="294" stroke="#555555" stroke-width="1.5"/>
+  <line x1="504" y1="294" x2="794" y2="294" stroke="#555555" stroke-width="1.5"/>
+  <line x1="504" y1="228" x2="784" y2="228" stroke="#e05555" stroke-width="2.5"/>
+  <circle cx="544" cy="228" r="4" fill="#e05555"/>
+  <path d="M 522 246 L 522 286" fill="none" stroke="#e05555" stroke-width="2" stroke-dasharray="4,4" marker-end="url(#rlArr)"/>
+  <text x="700" y="208" font-size="13" font-weight="600" fill="#e05555">λ (부호뿐)</text>
+  <text x="538" y="274" font-size="11" fill="#e05555">0으로 민다</text>
+  <text x="708" y="314" font-size="12" fill="#888">계수 |w|</text>
+
+  <text x="470" y="352" font-size="13" fill="#b8b8b8">힘이 그대로 남아 계수를 정확히 0으로 보낸다</text>
+  <text x="470" y="376" font-size="13" fill="#b8b8b8">0이 아닌 계수가 곧 고른 특성이다</text>
+  <rect x="470" y="390" width="348" height="46" rx="8" fill="#000000" stroke="#6e3a3a" stroke-width="1"/>
+  <text x="488" y="410" font-size="13" fill="#ffffff" font-family="'JetBrains Mono','Menlo','Consolas',monospace">lasso.coef_ == 0</text>
+  <text x="488" y="428" font-size="12" fill="#9aa4b8">정규화가 특성 선택을 겸한다</text>
+
+  <!-- 손잡이 방향 -->
+  <rect x="62" y="444" width="756" height="56" rx="10" fill="#12242c" stroke="#7ec8e3" stroke-width="1.5"/>
+  <text x="86" y="468" font-size="13" fill="#9aa4b8"><tspan fill="#7ec8e3" font-weight="600">손잡이 방향</tspan>  Ridge·Lasso의 alpha는 클수록 규제가 강하고,</text>
+  <text x="86" y="488" font-size="13" fill="#9aa4b8">LogisticRegression은 C = 1/λ라 C가 작을수록 강하다.</text>
+</svg>

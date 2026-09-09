@@ -1,0 +1,75 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="492" viewBox="0 0 880 492">
+  <defs>
+    <marker id="dn" viewBox="0 0 14 14" refX="12" refY="7"
+            markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#666"/>
+    </marker>
+  </defs>
+  <rect width="880" height="492" fill="#0a0a0a" rx="12"/>
+
+  <text x="440" y="46" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="22" font-weight="700" fill="#e8e8e8" text-anchor="middle">softmax와 시그모이드</text>
+  <text x="440" y="72" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="14" fill="#888" text-anchor="middle">정규화를 어디서 하느냐가 배치 크기 의존을 만든다</text>
+
+  <text x="230" y="112" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="16" font-weight="600" fill="#7ec8e3" text-anchor="middle">CLIP — softmax</text>
+  <text x="650" y="112" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="16" font-weight="600" fill="#55c555" text-anchor="middle">SigLIP — 시그모이드</text>
+
+  <rect x="50" y="126" width="108" height="48" rx="8" fill="#1a1a1a" stroke="#7ec8e3" stroke-width="1"/>
+  <text x="104" y="155" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="13" fill="#e8e8e8" text-anchor="middle">GPU 1</text>
+  <rect x="176" y="126" width="108" height="48" rx="8" fill="#1a1a1a" stroke="#7ec8e3" stroke-width="1"/>
+  <text x="230" y="155" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="13" fill="#e8e8e8" text-anchor="middle">GPU 2</text>
+  <rect x="302" y="126" width="108" height="48" rx="8" fill="#1a1a1a" stroke="#7ec8e3" stroke-width="1"/>
+  <text x="356" y="155" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="13" fill="#e8e8e8" text-anchor="middle">GPU 3</text>
+
+  <rect x="470" y="126" width="108" height="48" rx="8" fill="#1a1a1a" stroke="#55c555" stroke-width="1"/>
+  <text x="524" y="155" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="13" fill="#e8e8e8" text-anchor="middle">GPU 1</text>
+  <rect x="596" y="126" width="108" height="48" rx="8" fill="#1a1a1a" stroke="#55c555" stroke-width="1"/>
+  <text x="650" y="155" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="13" fill="#e8e8e8" text-anchor="middle">GPU 2</text>
+  <rect x="722" y="126" width="108" height="48" rx="8" fill="#1a1a1a" stroke="#55c555" stroke-width="1"/>
+  <text x="776" y="155" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="13" fill="#e8e8e8" text-anchor="middle">GPU 3</text>
+
+  <line x1="230" y1="178" x2="230" y2="206" stroke="#666" stroke-width="2" marker-end="url(#dn)"/>
+  <line x1="650" y1="178" x2="650" y2="206" stroke="#666" stroke-width="2" marker-end="url(#dn)"/>
+
+  <rect x="50" y="206" width="360" height="56" rx="8" fill="#0f1a2e" stroke="#7ec8e3" stroke-width="1.5"/>
+  <text x="74" y="229" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="13" fill="#e8e8e8">모든 GPU의 임베딩을 한자리에 모은다</text>
+  <text x="74" y="248" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="11" fill="#7ec8e3">softmax 분모가 전체 배치에 걸린다</text>
+
+  <rect x="470" y="206" width="360" height="56" rx="8" fill="#0f1f0f" stroke="#55c555" stroke-width="1.5"/>
+  <text x="494" y="229" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="13" fill="#e8e8e8">각 GPU가 자기 몫의 쌍만 계산한다</text>
+  <text x="494" y="248" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="11" fill="#55c555">정규화가 쌍 안에서 끝난다</text>
+
+  <line x1="230" y1="266" x2="230" y2="294" stroke="#666" stroke-width="2" marker-end="url(#dn)"/>
+  <line x1="650" y1="266" x2="650" y2="294" stroke="#666" stroke-width="2" marker-end="url(#dn)"/>
+
+  <rect x="50" y="294" width="360" height="56" rx="8" fill="#1a1a1a" stroke="#444" stroke-width="1"/>
+  <text x="74" y="317" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="13" fill="#e8e8e8">통신은 GPU 수에 비례, 메모리는 N² 행렬만큼</text>
+  <text x="74" y="336" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="11" fill="#888">배치 256이면 한 이미지가 보는 음성이 255개뿐</text>
+
+  <rect x="470" y="294" width="360" height="56" rx="8" fill="#1a1a1a" stroke="#444" stroke-width="1"/>
+  <text x="494" y="317" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="13" fill="#e8e8e8">각자 계산한 손실을 더하면 끝난다</text>
+  <text x="494" y="336" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="11" fill="#888">작은 배치에서도 잘 학습되고 통신 비용이 준다</text>
+
+  <rect x="50" y="372" width="780" height="60" rx="8" fill="#12121a" stroke="#444" stroke-width="1"/>
+  <text x="74" y="396" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="13" fill="#e8e8e8">원 논문의 배치 32,768은 자원이 있어서가 아니라 그것이 성능의 핵심 변수여서다.</text>
+  <text x="74" y="416" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="13" fill="#888">음성이 3만 개는 되어야 「골든 리트리버」와 「래브라도 리트리버」 같은 어려운 쌍이 섞인다.</text>
+</svg>

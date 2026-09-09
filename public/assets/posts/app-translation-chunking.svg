@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="476" viewBox="0 0 880 476" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <rect x="0" y="0" width="880" height="476" rx="12" fill="#0a0a0a"/>
+
+  <text x="60" y="48" font-size="22" font-weight="700" fill="#e8e8e8">자르는 자리를 글자 수가 아니라 구조가 정한다</text>
+
+  <text x="60" y="88" font-size="16" font-weight="600" fill="#e05555">글자 수로 자르기</text>
+  <text x="470" y="88" font-size="16" font-weight="600" fill="#55c555">구조 단위로 자르기</text>
+
+  <rect x="60" y="108" width="350" height="230" rx="10" fill="#101014" stroke="#2a2a30" stroke-width="1"/>
+  <rect x="470" y="108" width="350" height="230" rx="10" fill="#101014" stroke="#2a2a30" stroke-width="1"/>
+
+  <rect x="80" y="132" width="240" height="44" rx="6" fill="#12141a" stroke="#3a3a44" stroke-width="1"/>
+  <text x="96" y="159" font-size="13" fill="#9aa4b8">본문 문단</text>
+  <rect x="80" y="186" width="240" height="64" rx="6" fill="#000000" stroke="#3a4a6e" stroke-width="1"/>
+  <text x="96" y="212" font-size="12" fill="#7ec8e3">가용성 / 응답 / 요금</text>
+  <text x="96" y="232" font-size="12" fill="#ffffff">99.9 / 24시간 / 무료</text>
+  <rect x="80" y="260" width="240" height="44" rx="6" fill="#12141a" stroke="#4a4a66" stroke-width="1"/>
+  <text x="96" y="287" font-size="13" fill="#9aa4b8">1 · 2 · 3 단계 목록</text>
+
+  <line x1="68" y1="222" x2="332" y2="222" stroke="#e05555" stroke-width="2" stroke-dasharray="4,4"/>
+  <text x="340" y="226" font-size="13" fill="#e05555">청크 경계</text>
+
+  <rect x="490" y="132" width="240" height="44" rx="6" fill="#12141a" stroke="#3a3a44" stroke-width="1"/>
+  <text x="506" y="159" font-size="13" fill="#9aa4b8">본문 문단</text>
+  <rect x="490" y="186" width="240" height="64" rx="6" fill="#000000" stroke="#3a4a6e" stroke-width="1"/>
+  <text x="506" y="212" font-size="12" fill="#7ec8e3">가용성 / 응답 / 요금</text>
+  <text x="506" y="232" font-size="12" fill="#ffffff">99.9 / 24시간 / 무료</text>
+  <rect x="490" y="260" width="240" height="44" rx="6" fill="#12141a" stroke="#4a4a66" stroke-width="1"/>
+  <text x="506" y="287" font-size="13" fill="#9aa4b8">1 · 2 · 3 단계 목록</text>
+
+  <line x1="478" y1="181" x2="742" y2="181" stroke="#55c555" stroke-width="2" stroke-dasharray="4,4"/>
+  <text x="750" y="185" font-size="13" fill="#55c555">청크 경계</text>
+  <line x1="478" y1="255" x2="742" y2="255" stroke="#55c555" stroke-width="2" stroke-dasharray="4,4"/>
+  <text x="750" y="259" font-size="13" fill="#55c555">청크 경계</text>
+
+  <rect x="60" y="356" width="350" height="80" rx="8" fill="#12141a" stroke="#e05555" stroke-width="1.5"/>
+  <text x="84" y="383" font-size="14" font-weight="600" fill="#e05555">헤더 없는 데이터 행만 받는다</text>
+  <text x="84" y="403" font-size="12" fill="#888888">「99.9 / 24시간 / 무료」가 문장으로 풀린다</text>
+  <text x="84" y="421" font-size="12" fill="#888888">번호 목록은 다음 청크에서 1번부터 다시 센다</text>
+
+  <rect x="470" y="356" width="350" height="80" rx="8" fill="#12141a" stroke="#55c555" stroke-width="1.5"/>
+  <text x="494" y="383" font-size="14" font-weight="600" fill="#55c555">표·코드·목록은 통째로 한 청크에</text>
+  <text x="494" y="403" font-size="12" fill="#888888">상한을 넘겨도 쪼개지 않는다</text>
+  <text x="494" y="421" font-size="12" fill="#888888">자르는 자리를 사람이 눈으로 찾을 수 있다</text>
+</svg>

@@ -1,0 +1,108 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="480" viewBox="0 0 880 480">
+  <defs>
+    <marker id="arr-b" viewBox="0 0 14 14" refX="12" refY="7"
+            markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#7ec8e3"/>
+    </marker>
+    <marker id="arr-p" viewBox="0 0 14 14" refX="12" refY="7"
+            markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#7777cc"/>
+    </marker>
+    <marker id="arr-g" viewBox="0 0 14 14" refX="12" refY="7"
+            markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#55c555"/>
+    </marker>
+  </defs>
+
+  <rect width="880" height="480" fill="#0a0a0a" rx="12"/>
+
+  <text x="440" y="42" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="22" font-weight="700" fill="#e8e8e8">AgentExecutor가 감춘 루프</text>
+  <text x="440" y="68" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="14" fill="#888">scratchpad에 호출과 결과가 쌓이고 max_iterations가 그것을 자른다</text>
+
+  <text x="200" y="100" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="15" font-weight="600" fill="#7ec8e3">감춰진 반복</text>
+
+  <!-- LLM 호출 -->
+  <rect x="115" y="118" width="170" height="52" rx="7" fill="#0f1a2e" stroke="#7ec8e3" stroke-width="1.5"/>
+  <text x="200" y="142" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="14" font-weight="600" fill="#7ec8e3">LLM 호출</text>
+  <text x="200" y="160" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="11" fill="#9aa4b8">prompt + scratchpad</text>
+
+  <line x1="200" y1="170" x2="200" y2="198" stroke="#7ec8e3" stroke-width="2" marker-end="url(#arr-b)"/>
+
+  <!-- 도구 호출? -->
+  <rect x="115" y="198" width="170" height="52" rx="7" fill="#1a1000" stroke="#e0a855" stroke-width="1.5"/>
+  <text x="200" y="222" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="14" font-weight="600" fill="#e0a855">도구 호출?</text>
+  <text x="200" y="240" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="11" fill="#9aa4b8">max_iterations 확인</text>
+
+  <line x1="200" y1="250" x2="200" y2="278" stroke="#55c555" stroke-width="2" marker-end="url(#arr-g)"/>
+  <text x="214" y="268" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="11" fill="#55c555">있음</text>
+
+  <!-- 도구 실행 -->
+  <rect x="115" y="278" width="170" height="52" rx="7" fill="#0f1f0f" stroke="#55c555" stroke-width="1.5"/>
+  <text x="200" y="302" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="14" font-weight="600" fill="#55c555">도구 실행</text>
+  <text x="200" y="320" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="11" fill="#9aa4b8">결과를 다시 넣는다</text>
+
+  <!-- 없음 → 종료 -->
+  <path d="M 115 234 L 82 234 L 82 371 L 113 371" stroke="#7ec8e3" stroke-width="2"
+        fill="none" marker-end="url(#arr-b)"/>
+  <text x="96" y="264" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="11" fill="#7ec8e3">없음</text>
+
+  <rect x="115" y="350" width="170" height="52" rx="7" fill="#111318" stroke="#3a4a6e" stroke-width="1.5"/>
+  <text x="200" y="374" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="14" font-weight="600" fill="#e8e8e8">종료</text>
+  <text x="200" y="392" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="11" fill="#9aa4b8">output 반환</text>
+
+  <!-- 누적 루프 -->
+  <path d="M 285 303 L 334 303 L 334 143 L 287 143" stroke="#7777cc" stroke-width="2"
+        stroke-dasharray="4,4" fill="none" marker-end="url(#arr-p)"/>
+  <text x="350" y="228" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="11" fill="#7777cc">누적</text>
+
+  <text x="200" y="430" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="12" fill="#9aa4b8">매 반복마다 scratchpad가 길어진다</text>
+
+  <!-- 토큰 증가 -->
+  <text x="650" y="100" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="15" font-weight="600" fill="#e8e8e8">반복마다 늘어나는 입력 토큰</text>
+
+  <line x1="494" y1="340" x2="806" y2="340" stroke="#3a4a6e" stroke-width="1.5"/>
+
+  <rect x="500" y="317" width="20" height="23" rx="2" fill="#7ec8e3" opacity="0.55"/>
+  <rect x="528" y="303" width="20" height="37" rx="2" fill="#7ec8e3" opacity="0.55"/>
+  <rect x="556" y="290" width="20" height="50" rx="2" fill="#7ec8e3" opacity="0.6"/>
+  <rect x="584" y="276" width="20" height="64" rx="2" fill="#7ec8e3" opacity="0.6"/>
+  <rect x="612" y="262" width="20" height="78" rx="2" fill="#7ec8e3" opacity="0.65"/>
+  <rect x="640" y="249" width="20" height="91" rx="2" fill="#7ec8e3" opacity="0.7"/>
+  <rect x="668" y="235" width="20" height="105" rx="2" fill="#7ec8e3" opacity="0.75"/>
+  <rect x="696" y="221" width="20" height="119" rx="2" fill="#7ec8e3" opacity="0.8"/>
+  <rect x="724" y="207" width="20" height="133" rx="2" fill="#7ec8e3" opacity="0.85"/>
+  <rect x="752" y="194" width="20" height="146" rx="2" fill="#7ec8e3" opacity="0.9"/>
+  <rect x="780" y="180" width="20" height="160" rx="2" fill="#e05555"/>
+
+  <text x="510" y="310" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="10" fill="#9aa4b8">500</text>
+  <text x="790" y="173" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="10" fill="#e05555">3,500</text>
+  <text x="510" y="358" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="11" fill="#888">1회</text>
+  <text x="790" y="358" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="11" fill="#888">11회</text>
+
+  <text x="650" y="390" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="13" font-weight="600" fill="#e8e8e8">11회를 합치면 22,000 토큰</text>
+  <text x="650" y="414" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="11" fill="#e05555">첫 호출 하나만 보고 예산을 잡으면 청구액은 44배</text>
+  <text x="650" y="438" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="11" fill="#888">max_iterations 없이는 여기서 멈추지 않는다</text>
+</svg>

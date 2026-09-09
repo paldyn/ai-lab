@@ -1,0 +1,89 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="470" viewBox="0 0 880 470">
+  <defs>
+    <marker id="gguf-arr" viewBox="0 0 14 14" refX="12" refY="7"
+            markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#7ec8e3"/>
+    </marker>
+  </defs>
+
+  <rect width="880" height="470" fill="#0a0a0a" rx="12"/>
+
+  <text x="440" y="44" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="22" font-weight="700" fill="#e8e8e8" text-anchor="middle">파인튜닝 모델을 GGUF로</text>
+  <text x="440" y="68" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="13" fill="#888" text-anchor="middle">이 세 걸음은 llama.cpp만 한다</text>
+
+  <!-- ── 세 걸음 ── -->
+  <rect x="60" y="92" width="220" height="104" rx="10" fill="#101418" stroke="#3a4a6e" stroke-width="1.5"/>
+  <text x="170" y="115" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="13" font-weight="700" fill="#7ec8e3" text-anchor="middle">① 변환</text>
+  <text x="170" y="141" font-family="'JetBrains Mono','Menlo','Consolas',monospace"
+        font-size="12" fill="#ffffff" text-anchor="middle">convert_hf_to_gguf.py</text>
+  <text x="170" y="161" font-family="'JetBrains Mono','Menlo','Consolas',monospace"
+        font-size="11" fill="#b5cea8" text-anchor="middle">--outtype f16</text>
+  <text x="170" y="181" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="11" fill="#9aa4b8" text-anchor="middle">→ my-model-f16.gguf</text>
+
+  <path d="M 280 144 L 330 144" stroke="#7ec8e3" stroke-width="2" fill="none" marker-end="url(#gguf-arr)"/>
+
+  <rect x="330" y="92" width="220" height="104" rx="10" fill="#101418" stroke="#3a4a6e" stroke-width="1.5"/>
+  <text x="440" y="115" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="13" font-weight="700" fill="#7ec8e3" text-anchor="middle">② 양자화</text>
+  <text x="440" y="141" font-family="'JetBrains Mono','Menlo','Consolas',monospace"
+        font-size="12" fill="#ffffff" text-anchor="middle">llama-quantize</text>
+  <text x="440" y="161" font-family="'JetBrains Mono','Menlo','Consolas',monospace"
+        font-size="11" fill="#b5cea8" text-anchor="middle">Q4_K_M</text>
+  <text x="440" y="181" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="11" fill="#9aa4b8" text-anchor="middle">→ my-model-Q4_K_M.gguf</text>
+
+  <path d="M 550 144 L 600 144" stroke="#7ec8e3" stroke-width="2" fill="none" marker-end="url(#gguf-arr)"/>
+
+  <rect x="600" y="92" width="220" height="104" rx="10" fill="#101418" stroke="#3a4a6e" stroke-width="1.5"/>
+  <text x="710" y="115" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="13" font-weight="700" fill="#7ec8e3" text-anchor="middle">③ 측정</text>
+  <text x="710" y="141" font-family="'JetBrains Mono','Menlo','Consolas',monospace"
+        font-size="12" fill="#ffffff" text-anchor="middle">llama-perplexity</text>
+  <text x="710" y="161" font-family="'JetBrains Mono','Menlo','Consolas',monospace"
+        font-size="11" fill="#b5cea8" text-anchor="middle">-f wiki.test.raw</text>
+  <text x="710" y="181" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="11" fill="#9aa4b8" text-anchor="middle">f16과 Q4_K_M을 각각</text>
+
+  <!-- ── 아래 왼쪽: 두 숫자의 갈림 ── -->
+  <rect x="60" y="224" width="350" height="200" rx="10" fill="#101418" stroke="#2f3b4d" stroke-width="1.5"/>
+  <text x="80" y="250" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="16" font-weight="600" fill="#e8e8e8">두 숫자를 견준다</text>
+  <text x="80" y="270" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="13" fill="#888">절대값이 아니라 f16과의 차이를 본다</text>
+
+  <rect x="80" y="286" width="310" height="54" rx="6" fill="#0f1a0f" stroke="#3a6e3a" stroke-width="1"/>
+  <text x="96" y="308" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="13" font-weight="600" fill="#55c555">차이가 미미하다</text>
+  <text x="96" y="328" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="11" fill="#9aa4b8">작은 파일을 그대로 쓴다</text>
+
+  <rect x="80" y="352" width="310" height="54" rx="6" fill="#1a0f0f" stroke="#6e3a3a" stroke-width="1"/>
+  <text x="96" y="374" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="13" font-weight="600" fill="#e05555">눈에 띄게 벌어진다</text>
+  <text x="96" y="394" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="11" fill="#9aa4b8">한 단계 높은 레벨로 다시 양자화</text>
+
+  <!-- ── 아래 오른쪽: 만든 파일을 넣는 곳 ── -->
+  <rect x="470" y="224" width="350" height="200" rx="10" fill="#101418" stroke="#2f3b4d" stroke-width="1.5"/>
+  <text x="490" y="250" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="16" font-weight="600" fill="#e8e8e8">만든 GGUF를 쓰는 곳</text>
+
+  <rect x="490" y="272" width="310" height="50" rx="6" fill="#14181e" stroke="#3a4a6e" stroke-width="1"/>
+  <text x="506" y="292" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="12" font-weight="600" fill="#7ec8e3">llama.cpp</text>
+  <text x="506" y="310" xml:space="preserve" font-family="'JetBrains Mono','Menlo','Consolas',monospace"
+        font-size="11" fill="#ffffff">llama-server -m my-model-Q4_K_M.gguf</text>
+
+  <rect x="490" y="332" width="310" height="50" rx="6" fill="#14181e" stroke="#3a4a6e" stroke-width="1"/>
+  <text x="506" y="352" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="12" font-weight="600" fill="#7ec8e3">Ollama</text>
+  <text x="506" y="370" xml:space="preserve" font-family="'JetBrains Mono','Menlo','Consolas',monospace"
+        font-size="11" fill="#ffffff">FROM ./my-model-Q4_K_M.gguf</text>
+
+  <text x="490" y="404" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="11" font-weight="600" fill="#e05555">Ollama는 GGUF를 만들어 주지 않는다</text>
+</svg>

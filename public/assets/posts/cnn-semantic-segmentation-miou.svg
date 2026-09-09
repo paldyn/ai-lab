@@ -1,0 +1,75 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="492" viewBox="0 0 880 492">
+  <rect width="880" height="492" fill="#0a0a0a" rx="12"/>
+
+  <text x="440" y="46" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="22" font-weight="700" fill="#e8e8e8" text-anchor="middle">픽셀 정확도와 mIoU</text>
+  <text x="440" y="72" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="14" fill="#888" text-anchor="middle">도로 주행 영상 — 같은 예측을 두 지표로 잰다</text>
+
+  <text x="170" y="104" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="14" font-weight="600" fill="#e8e8e8">클래스별 IoU</text>
+  <text x="700" y="104" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="14" font-weight="600" fill="#e8e8e8" text-anchor="middle">같은 결과, 두 지표</text>
+
+  <!-- 도로 -->
+  <text x="155" y="136" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="14" fill="#e8e8e8" text-anchor="end">도로</text>
+  <rect x="170" y="118" width="300" height="26" rx="4" fill="#1a1a1a" stroke="#333" stroke-width="1"/>
+  <rect x="170" y="118" width="294" height="26" rx="4" fill="#55c555" opacity="0.75"/>
+  <text x="484" y="136" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="13" fill="#55c555">0.98</text>
+
+  <!-- 하늘 -->
+  <text x="155" y="178" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="14" fill="#e8e8e8" text-anchor="end">하늘</text>
+  <rect x="170" y="160" width="300" height="26" rx="4" fill="#1a1a1a" stroke="#333" stroke-width="1"/>
+  <rect x="170" y="160" width="285" height="26" rx="4" fill="#55c555" opacity="0.75"/>
+  <text x="484" y="178" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="13" fill="#55c555">0.95</text>
+
+  <!-- 차량 -->
+  <text x="155" y="220" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="14" fill="#e8e8e8" text-anchor="end">차량</text>
+  <rect x="170" y="202" width="300" height="26" rx="4" fill="#1a1a1a" stroke="#333" stroke-width="1"/>
+  <rect x="170" y="202" width="240" height="26" rx="4" fill="#55c555" opacity="0.75"/>
+  <text x="484" y="220" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="13" fill="#55c555">0.80</text>
+
+  <!-- 보행자 -->
+  <text x="155" y="262" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="14" fill="#e8e8e8" text-anchor="end">보행자</text>
+  <rect x="170" y="244" width="300" height="26" rx="4" fill="#1a1a1a" stroke="#333" stroke-width="1"/>
+  <rect x="170" y="244" width="135" height="26" rx="4" fill="#7ec8e3" opacity="0.75"/>
+  <text x="484" y="262" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="13" fill="#7ec8e3">0.45</text>
+
+  <!-- 표지판 -->
+  <text x="155" y="304" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="14" fill="#e8e8e8" text-anchor="end">표지판</text>
+  <rect x="170" y="286" width="300" height="26" rx="4" fill="#1a1a1a" stroke="#333" stroke-width="1"/>
+  <rect x="170" y="286" width="30" height="26" rx="4" fill="#e05555" opacity="0.85"/>
+  <text x="484" y="304" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="13" fill="#e05555">0.10</text>
+
+  <text x="170" y="344" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="13" fill="#888">(0.98 + 0.95 + 0.80 + 0.45 + 0.10) / 5 = 0.656</text>
+
+  <!-- 지표 두 개 -->
+  <rect x="580" y="118" width="240" height="92" rx="10" fill="#1a1a1a" stroke="#e05555" stroke-width="1.5"/>
+  <text x="700" y="146" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="14" font-weight="600" fill="#888" text-anchor="middle">픽셀 정확도</text>
+  <text x="700" y="186" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="30" font-weight="700" fill="#e05555" text-anchor="middle">95%</text>
+
+  <rect x="580" y="220" width="240" height="92" rx="10" fill="#1a1a1a" stroke="#55c555" stroke-width="1.5"/>
+  <text x="700" y="248" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="14" font-weight="600" fill="#888" text-anchor="middle">mIoU</text>
+  <text x="700" y="288" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="30" font-weight="700" fill="#55c555" text-anchor="middle">0.656</text>
+
+  <rect x="60" y="374" width="760" height="58" rx="8" fill="#12121a" stroke="#444" stroke-width="1"/>
+  <text x="84" y="398" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="13" fill="#e8e8e8">표지판을 거의 못 찾는데도 픽셀 정확도는 95%를 넘는다 — 큰 클래스가 점수를 독점한다.</text>
+  <text x="84" y="418" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="13" fill="#888">mIoU는 클래스마다 한 표씩이라 작은 클래스의 실패가 그대로 드러난다.</text>
+</svg>

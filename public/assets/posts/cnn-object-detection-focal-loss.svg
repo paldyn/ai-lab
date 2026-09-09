@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="450" viewBox="0 0 880 450">
+  <rect width="880" height="450" fill="#0a0a0a" rx="12"/>
+
+  <g font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+
+    <text x="440" y="46" text-anchor="middle" font-size="22" font-weight="700" fill="#e8e8e8">Focal Loss의 손실 감쇠</text>
+    <text x="440" y="72" text-anchor="middle" font-size="16" font-weight="600" fill="#888">쉬운 음성의 손실만 만분의 일로 줄인다</text>
+
+    <!-- 후보 구성 -->
+    <text x="60" y="96" font-size="11" fill="#888">후보 수만 개</text>
+    <rect x="60" y="104" width="620" height="34" fill="#1a2535" rx="6" stroke="#3a4560" stroke-width="1"/>
+    <rect x="666" y="104" width="14" height="34" fill="#55c555" rx="2"/>
+    <text x="363" y="124" text-anchor="middle" font-size="12" fill="#9aa4b8">배경 후보 — 쉬운 음성이 대부분</text>
+    <text x="696" y="124" font-size="12" font-weight="600" fill="#55c555">양성 수십 개</text>
+
+    <!-- 수식 -->
+    <rect x="60" y="158" width="500" height="52" fill="#000000" rx="6" stroke="#3a4a6e" stroke-width="1"/>
+    <text x="310" y="188" text-anchor="middle" font-size="16" fill="#ffffff">FL(p<tspan font-size="11" dy="3">t</tspan><tspan dy="-3">) = −α</tspan><tspan font-size="11" dy="3">t</tspan><tspan dy="-3"> (1 − p</tspan><tspan font-size="11" dy="3">t</tspan><tspan dy="-3">)</tspan><tspan font-size="11" dy="-5">γ</tspan><tspan dy="5"> log p</tspan><tspan font-size="11" dy="3">t</tspan></text>
+
+    <rect x="620" y="158" width="200" height="52" fill="#101828" rx="6" stroke="#3a4560" stroke-width="1"/>
+    <text x="720" y="179" text-anchor="middle" font-size="13" fill="#9aa4b8">γ = 2</text>
+    <text x="720" y="197" text-anchor="middle" font-size="13" fill="#9aa4b8">α = 0.25</text>
+
+    <!-- 쉬운 음성 -->
+    <rect x="60" y="232" width="350" height="138" fill="#0d1520" rx="8" stroke="#7ec8e3" stroke-width="1.5"/>
+    <text x="235" y="258" text-anchor="middle" font-size="14" font-weight="600" fill="#7ec8e3">쉬운 음성</text>
+    <text x="235" y="296" text-anchor="middle" font-size="18" font-weight="700" fill="#e8e8e8">p<tspan font-size="12" dy="4">t</tspan><tspan dy="-4"> = 0.99</tspan></text>
+    <text x="235" y="324" text-anchor="middle" font-size="13" fill="#9aa4b8">(1 − p<tspan font-size="9" dy="3">t</tspan><tspan dy="-3">)² = 0.0001</tspan></text>
+    <text x="235" y="352" text-anchor="middle" font-size="12" font-weight="600" fill="#e05555">손실이 만분의 일로 줄어든다</text>
+
+    <!-- 어려운 샘플 -->
+    <rect x="470" y="232" width="350" height="138" fill="#0d1520" rx="8" stroke="#ce9178" stroke-width="1.5"/>
+    <text x="645" y="258" text-anchor="middle" font-size="14" font-weight="600" fill="#ce9178">어려운 샘플</text>
+    <text x="645" y="296" text-anchor="middle" font-size="18" font-weight="700" fill="#e8e8e8">p<tspan font-size="12" dy="4">t</tspan><tspan dy="-4"> = 0.3</tspan></text>
+    <text x="645" y="324" text-anchor="middle" font-size="13" fill="#9aa4b8">(1 − p<tspan font-size="9" dy="3">t</tspan><tspan dy="-3">)² = 0.49</tspan></text>
+    <text x="645" y="352" text-anchor="middle" font-size="12" font-weight="600" fill="#55c555">손실이 거의 그대로 남는다</text>
+
+    <!-- 결론 -->
+    <rect x="60" y="386" width="760" height="44" fill="#101828" rx="6" stroke="#3a4560" stroke-width="1"/>
+    <text x="440" y="411" text-anchor="middle" font-size="13" fill="#9aa4b8">샘플링 없이 모든 후보를 쓰면서도 기울기의 대부분이 애매한 샘플로 간다</text>
+
+  </g>
+</svg>

@@ -1,0 +1,76 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="458" viewBox="0 0 880 458">
+  <defs>
+    <marker id="gapup" viewBox="0 0 14 14" refX="12" refY="7"
+            markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#e05555"/>
+    </marker>
+    <marker id="gapdn" viewBox="0 0 14 14" refX="12" refY="7"
+            markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#e05555"/>
+    </marker>
+  </defs>
+  <rect width="880" height="458" fill="#0a0a0a" rx="12"/>
+
+  <text x="440" y="46" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="22" font-weight="700" fill="#e8e8e8" text-anchor="middle">모달리티 갭</text>
+  <text x="440" y="72" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="14" fill="#888" text-anchor="middle">짝인 이미지와 텍스트의 임베딩이 같은 자리에 오지 않는다</text>
+
+  <circle cx="300" cy="250" r="115" fill="none" stroke="#444" stroke-width="1.5"/>
+  <circle cx="300" cy="250" r="3" fill="#555"/>
+
+  <line x1="300" y1="250" x2="223" y2="165" stroke="#7ec8e3" stroke-width="1" stroke-dasharray="4,4" opacity="0.6"/>
+  <line x1="300" y1="250" x2="193" y2="207" stroke="#7ec8e3" stroke-width="1" stroke-dasharray="4,4" opacity="0.6"/>
+  <line x1="300" y1="250" x2="193" y2="293" stroke="#ce9178" stroke-width="1" stroke-dasharray="4,4" opacity="0.6"/>
+  <line x1="300" y1="250" x2="223" y2="335" stroke="#ce9178" stroke-width="1" stroke-dasharray="4,4" opacity="0.6"/>
+
+  <circle cx="218" cy="176" r="5" fill="#7ec8e3"/>
+  <circle cx="206" cy="192" r="5" fill="#7ec8e3"/>
+  <circle cx="222" cy="190" r="5" fill="#7ec8e3"/>
+  <circle cx="210" cy="203" r="5" fill="#7ec8e3"/>
+  <circle cx="200" cy="203" r="5" fill="#7ec8e3"/>
+
+  <circle cx="218" cy="324" r="5" fill="#ce9178"/>
+  <circle cx="206" cy="308" r="5" fill="#ce9178"/>
+  <circle cx="222" cy="310" r="5" fill="#ce9178"/>
+  <circle cx="210" cy="297" r="5" fill="#ce9178"/>
+  <circle cx="200" cy="297" r="5" fill="#ce9178"/>
+
+  <line x1="210" y1="250" x2="210" y2="215" stroke="#e05555" stroke-width="2" marker-end="url(#gapup)"/>
+  <line x1="210" y1="250" x2="210" y2="285" stroke="#e05555" stroke-width="2" marker-end="url(#gapdn)"/>
+  <text x="226" y="255" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="14" font-weight="700" fill="#e05555">갭</text>
+
+  <text x="50" y="182" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="13" fill="#7ec8e3">이미지 임베딩</text>
+  <line x1="140" y1="178" x2="188" y2="184" stroke="#7ec8e3" stroke-width="1"/>
+  <text x="50" y="322" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="13" fill="#ce9178">텍스트 임베딩</text>
+  <line x1="140" y1="318" x2="188" y2="312" stroke="#ce9178" stroke-width="1"/>
+
+  <text x="300" y="396" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="13" fill="#888" text-anchor="middle">초구 위의 두 원뿔</text>
+
+  <text x="470" y="150" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="15" font-weight="600" fill="#e8e8e8">실제로 재 본 코사인 유사도</text>
+
+  <rect x="470" y="166" width="360" height="56" rx="8" fill="#1a1a1a" stroke="#e05555" stroke-width="1.5"/>
+  <text x="494" y="200" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="13" fill="#e8e8e8">짝인 이미지 ↔ 텍스트</text>
+  <text x="806" y="200" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="20" font-weight="700" fill="#e05555" text-anchor="end">0.3</text>
+
+  <rect x="470" y="234" width="360" height="56" rx="8" fill="#1a1a1a" stroke="#7ec8e3" stroke-width="1.5"/>
+  <text x="494" y="268" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="13" fill="#e8e8e8">짝이 아닌 이미지끼리</text>
+  <text x="806" y="268" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="20" font-weight="700" fill="#7ec8e3" text-anchor="end">0.7</text>
+
+  <rect x="470" y="302" width="360" height="92" rx="8" fill="#12121a" stroke="#444" stroke-width="1"/>
+  <text x="494" y="330" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="13" fill="#e8e8e8">「0.5 이상이면 관련 있음」은</text>
+  <text x="494" y="352" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="13" fill="#e8e8e8">아무것도 통과시키지 못한다.</text>
+  <text x="494" y="374" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="13" fill="#888">순위를 쓰고, 임계값은 분위수로.</text>
+</svg>

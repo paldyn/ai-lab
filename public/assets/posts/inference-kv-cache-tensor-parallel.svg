@@ -1,0 +1,113 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="480" viewBox="0 0 880 480">
+  <defs>
+    <marker id="tp-arr" viewBox="0 0 14 14" refX="7" refY="12"
+            markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 7 13 L 14 0 z" fill="#e05555"/>
+    </marker>
+  </defs>
+
+  <rect width="880" height="480" fill="#0a0a0a" rx="12"/>
+
+  <text x="440" y="44" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="22" font-weight="700" fill="#e8e8e8" text-anchor="middle">텐서 병렬과 KV 헤드</text>
+  <text x="440" y="68" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="13" fill="#888" text-anchor="middle">레이어 안의 헤드를 갈라 GPU에 나눠 준다</text>
+
+  <!-- ── 위: 헤드가 갈리는 방식 ── -->
+  <rect x="60" y="84" width="760" height="170" rx="10" fill="#101418" stroke="#2f3b4d" stroke-width="1.5"/>
+  <text x="80" y="110" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="16" font-weight="600" fill="#e8e8e8">KV 헤드 8개를 나누는 방식</text>
+
+  <!-- TP = 1 -->
+  <text x="193" y="138" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="13" font-weight="600" fill="#e8e8e8" text-anchor="middle">TP = 1</text>
+  <rect x="138" y="152" width="110" height="40" rx="6" fill="#14181e" stroke="#3a4a6e" stroke-width="1"/>
+  <circle cx="151" cy="172" r="4" fill="#7ec8e3"/>
+  <circle cx="163" cy="172" r="4" fill="#7ec8e3"/>
+  <circle cx="175" cy="172" r="4" fill="#7ec8e3"/>
+  <circle cx="187" cy="172" r="4" fill="#7ec8e3"/>
+  <circle cx="199" cy="172" r="4" fill="#7ec8e3"/>
+  <circle cx="211" cy="172" r="4" fill="#7ec8e3"/>
+  <circle cx="223" cy="172" r="4" fill="#7ec8e3"/>
+  <circle cx="235" cy="172" r="4" fill="#7ec8e3"/>
+  <text x="193" y="212" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="11" fill="#e8e8e8" text-anchor="middle">장당 KV 헤드 8개</text>
+  <text x="193" y="232" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="11" font-weight="600" fill="#888" text-anchor="middle">장당 캐시 1</text>
+
+  <!-- TP = 2 -->
+  <text x="440" y="138" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="13" font-weight="600" fill="#e8e8e8" text-anchor="middle">TP = 2</text>
+  <rect x="343" y="152" width="90" height="40" rx="6" fill="#14181e" stroke="#3a4a6e" stroke-width="1"/>
+  <circle cx="364" cy="172" r="4" fill="#7ec8e3"/>
+  <circle cx="380" cy="172" r="4" fill="#7ec8e3"/>
+  <circle cx="396" cy="172" r="4" fill="#7ec8e3"/>
+  <circle cx="412" cy="172" r="4" fill="#7ec8e3"/>
+  <rect x="447" y="152" width="90" height="40" rx="6" fill="#14181e" stroke="#3a4a6e" stroke-width="1"/>
+  <circle cx="468" cy="172" r="4" fill="#7ec8e3"/>
+  <circle cx="484" cy="172" r="4" fill="#7ec8e3"/>
+  <circle cx="500" cy="172" r="4" fill="#7ec8e3"/>
+  <circle cx="516" cy="172" r="4" fill="#7ec8e3"/>
+  <text x="440" y="212" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="11" fill="#e8e8e8" text-anchor="middle">장당 KV 헤드 4개</text>
+  <text x="440" y="232" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="11" font-weight="600" fill="#7ec8e3" text-anchor="middle">장당 캐시 1/2</text>
+
+  <!-- TP = 4 -->
+  <text x="687" y="138" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="13" font-weight="600" fill="#e8e8e8" text-anchor="middle">TP = 4</text>
+  <rect x="584" y="152" width="44" height="40" rx="6" fill="#14181e" stroke="#3a4a6e" stroke-width="1"/>
+  <circle cx="599" cy="172" r="4" fill="#7ec8e3"/>
+  <circle cx="613" cy="172" r="4" fill="#7ec8e3"/>
+  <rect x="638" y="152" width="44" height="40" rx="6" fill="#14181e" stroke="#3a4a6e" stroke-width="1"/>
+  <circle cx="653" cy="172" r="4" fill="#7ec8e3"/>
+  <circle cx="667" cy="172" r="4" fill="#7ec8e3"/>
+  <rect x="692" y="152" width="44" height="40" rx="6" fill="#14181e" stroke="#3a4a6e" stroke-width="1"/>
+  <circle cx="707" cy="172" r="4" fill="#7ec8e3"/>
+  <circle cx="721" cy="172" r="4" fill="#7ec8e3"/>
+  <rect x="746" y="152" width="44" height="40" rx="6" fill="#14181e" stroke="#3a4a6e" stroke-width="1"/>
+  <circle cx="761" cy="172" r="4" fill="#7ec8e3"/>
+  <circle cx="775" cy="172" r="4" fill="#7ec8e3"/>
+  <text x="687" y="212" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="11" fill="#e8e8e8" text-anchor="middle">장당 KV 헤드 2개</text>
+  <text x="687" y="232" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="11" font-weight="600" fill="#55c555" text-anchor="middle">장당 캐시 1/4</text>
+
+  <!-- ── 아래 왼쪽: 70B 예산 ── -->
+  <rect x="60" y="274" width="350" height="168" rx="10" fill="#101418" stroke="#2f3b4d" stroke-width="1.5"/>
+  <text x="80" y="302" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="16" font-weight="600" fill="#e8e8e8">70B · 80 GB 카드</text>
+  <text x="80" y="322" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="13" fill="#888">가중치만 140 GB (BF16)</text>
+
+  <rect x="80" y="336" width="310" height="44" rx="6" fill="#1a0f0f" stroke="#6e3a3a" stroke-width="1"/>
+  <text x="96" y="356" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="12" font-weight="600" fill="#e05555">TP = 2 → 장당 70 GB</text>
+  <text x="96" y="372" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="11" fill="#9aa4b8">캐시에 남는 자리가 없다</text>
+
+  <rect x="80" y="388" width="310" height="44" rx="6" fill="#0f1a0f" stroke="#3a6e3a" stroke-width="1"/>
+  <text x="96" y="408" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="12" font-weight="600" fill="#55c555">TP = 4 → 장당 35 GB</text>
+  <text x="96" y="424" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="11" fill="#9aa4b8">캐시에 35 GB가 남는다</text>
+
+  <!-- ── 아래 오른쪽: 벽 ── -->
+  <rect x="470" y="274" width="350" height="168" rx="10" fill="#101418" stroke="#2f3b4d" stroke-width="1.5"/>
+  <text x="490" y="302" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="16" font-weight="600" fill="#e8e8e8">더 못 나누는 벽</text>
+
+  <rect x="490" y="318" width="310" height="44" rx="6" fill="#14181e" stroke="#3a4a6e" stroke-width="1"/>
+  <text x="506" y="338" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="12" font-weight="600" fill="#ffffff">KV 헤드 8개 &lt; GPU 16장</text>
+  <text x="506" y="354" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="11" fill="#9aa4b8">엔진이 헤드를 복제한다</text>
+
+  <path d="M 645 362 L 645 384" stroke="#e05555" stroke-width="2" fill="none" marker-end="url(#tp-arr)"/>
+
+  <rect x="490" y="384" width="310" height="44" rx="6" fill="#1a0f0f" stroke="#6e3a3a" stroke-width="1"/>
+  <text x="506" y="404" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="12" font-weight="600" fill="#e05555">GPU를 늘려도 장당 캐시는 그대로</text>
+  <text x="506" y="420" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="11" fill="#9aa4b8">GQA로 헤드가 적을수록 일찍 닿는다</text>
+</svg>

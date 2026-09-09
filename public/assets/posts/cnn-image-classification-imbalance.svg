@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="402" viewBox="0 0 880 402">
+  <rect width="880" height="402" fill="#0a0a0a" rx="12"/>
+
+  <g font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+
+    <text x="440" y="46" text-anchor="middle" font-size="22" font-weight="700" fill="#e8e8e8">불균형 데이터의 정확도 95%</text>
+    <text x="440" y="72" text-anchor="middle" font-size="16" font-weight="600" fill="#888">전부 양품이라 답하기만 해도 나오는 숫자</text>
+
+    <!-- 데이터 구성 -->
+    <rect x="60" y="100" width="350" height="222" fill="#0d1520" rx="8" stroke="#7ec8e3" stroke-width="1.5"/>
+    <text x="235" y="126" text-anchor="middle" font-size="14" font-weight="600" fill="#7ec8e3">데이터 구성</text>
+
+    <rect x="76" y="142" width="302" height="36" fill="#3a4560" rx="4"/>
+    <rect x="378" y="142" width="16" height="36" fill="#e05555" rx="2"/>
+    <text x="227" y="163" text-anchor="middle" font-size="12" fill="#e8e8e8">양품 950장</text>
+    <text x="394" y="196" text-anchor="end" font-size="11" fill="#e05555">불량 50장</text>
+
+    <text x="235" y="226" text-anchor="middle" font-size="13" font-weight="600" fill="#e8e8e8">전부 양품이라 답하는 모델</text>
+
+    <rect x="76" y="242" width="150" height="62" fill="#101828" rx="6" stroke="#3a4560" stroke-width="1"/>
+    <text x="151" y="262" text-anchor="middle" font-size="11" fill="#888">정확도</text>
+    <text x="151" y="289" text-anchor="middle" font-size="22" font-weight="700" fill="#e8e8e8">95%</text>
+
+    <rect x="244" y="242" width="150" height="62" fill="#101828" rx="6" stroke="#e05555" stroke-width="1"/>
+    <text x="319" y="262" text-anchor="middle" font-size="11" fill="#888">균형 정확도</text>
+    <text x="319" y="289" text-anchor="middle" font-size="22" font-weight="700" fill="#e05555">50%</text>
+
+    <!-- 두 손잡이 -->
+    <rect x="470" y="100" width="350" height="222" fill="#0d1520" rx="8" stroke="#55c555" stroke-width="1.5"/>
+    <text x="645" y="126" text-anchor="middle" font-size="14" font-weight="600" fill="#55c555">두 손잡이</text>
+
+    <rect x="486" y="142" width="318" height="58" fill="#101828" rx="6" stroke="#3a4560" stroke-width="1"/>
+    <text x="500" y="164" font-size="13" font-weight="600" fill="#7ec8e3">A — 손실에 클래스 가중치</text>
+    <text x="500" y="184" font-size="11" fill="#9aa4b8">소수 클래스의 오답을 비싸게 만든다</text>
+
+    <rect x="486" y="208" width="318" height="58" fill="#101828" rx="6" stroke="#3a4560" stroke-width="1"/>
+    <text x="500" y="230" font-size="13" font-weight="600" fill="#7ec8e3">B — 샘플러로 균형 배치</text>
+    <text x="500" y="250" font-size="11" fill="#9aa4b8">shuffle=True와 함께 줄 수 없다</text>
+
+    <rect x="486" y="276" width="318" height="32" fill="#1a1015" rx="6" stroke="#e05555" stroke-width="1"/>
+    <text x="500" y="296" font-size="11" fill="#e05555">둘을 동시에 쓰지 않는다 — 보정이 두 번 들어간다</text>
+
+    <!-- 결론 -->
+    <rect x="60" y="338" width="760" height="44" fill="#101828" rx="6" stroke="#3a4560" stroke-width="1"/>
+    <text x="440" y="363" text-anchor="middle" font-size="13" fill="#9aa4b8">지표도 함께 바꾼다 — 클래스마다 정확도를 구해 평균 내는 균형 정확도를 본다</text>
+
+  </g>
+</svg>

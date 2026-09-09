@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="550" viewBox="0 0 880 550" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <defs>
+    <marker id="rg-arr" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#7777cc"/>
+    </marker>
+  </defs>
+
+  <rect x="0" y="0" width="880" height="550" rx="12" fill="#0a0a0a"/>
+
+  <text x="60" y="50" font-size="22" font-weight="700" fill="#e8e8e8">발행 앞의 검수 게이트</text>
+  <text x="60" y="76" font-size="13" fill="#888">표시된 자리만 확인하면 3,000자 글의 검수가 5분 일이 된다</text>
+
+  <rect x="60" y="100" width="760" height="96" rx="10" fill="#12141a" stroke="#2a2f3a" stroke-width="1"/>
+  <text x="84" y="130" font-size="15" font-weight="600" fill="#e8e8e8">초안 — 모델이 단정한 자리에 표시를 단다</text>
+  <rect x="84" y="146" width="160" height="34" rx="6" fill="#1d1416" stroke="#e05555" stroke-width="1"/>
+  <text x="164" y="168" font-size="13" fill="#e05555" text-anchor="middle">사실 주장</text>
+  <rect x="268" y="146" width="160" height="34" rx="6" fill="#1d1416" stroke="#e05555" stroke-width="1"/>
+  <text x="348" y="168" font-size="13" fill="#e05555" text-anchor="middle">수치</text>
+  <rect x="452" y="146" width="160" height="34" rx="6" fill="#1d1416" stroke="#e05555" stroke-width="1"/>
+  <text x="532" y="168" font-size="13" fill="#e05555" text-anchor="middle">고유명사</text>
+  <rect x="636" y="146" width="160" height="34" rx="6" fill="#1d1416" stroke="#e05555" stroke-width="1"/>
+  <text x="716" y="168" font-size="13" fill="#e05555" text-anchor="middle">인용</text>
+
+  <line x1="440" y1="196" x2="440" y2="222" stroke="#7777cc" stroke-width="2" marker-end="url(#rg-arr)"/>
+
+  <rect x="60" y="222" width="760" height="72" rx="10" fill="#12141a" stroke="#2a2f3a" stroke-width="1"/>
+  <text x="84" y="252" font-size="15" font-weight="600" fill="#7ec8e3">pending_review</text>
+  <text x="84" y="274" font-size="13" fill="#888">발행 API가 받지 않는 상태로만 저장된다</text>
+
+  <line x1="440" y1="294" x2="440" y2="320" stroke="#7777cc" stroke-width="2" marker-end="url(#rg-arr)"/>
+
+  <rect x="60" y="320" width="760" height="72" rx="10" fill="#12141a" stroke="#2a2f3a" stroke-width="1"/>
+  <text x="84" y="350" font-size="15" font-weight="600" fill="#e8e8e8">사람 검수 — 표시된 자리 열 개만 본다</text>
+  <text x="84" y="372" font-size="13" fill="#888">글 전체를 다시 읽지 않는다. 5분이면 사람들이 실제로 한다</text>
+
+  <line x1="440" y1="392" x2="440" y2="418" stroke="#7777cc" stroke-width="2" marker-end="url(#rg-arr)"/>
+
+  <rect x="60" y="418" width="760" height="72" rx="10" fill="#12141a" stroke="#55c555" stroke-width="1.5"/>
+  <text x="84" y="448" font-size="15" font-weight="600" fill="#55c555">approved — 발행</text>
+  <text x="84" y="470" font-size="13" fill="#888">발행 API는 approved 상태만 받는다</text>
+
+  <text x="60" y="520" font-size="13" fill="#e05555">관리자 계정으로 검수를 건너뛰는 우회 경로는 두지 않는다 — 몇 주 안에 그 경로가 기본 경로가 된다</text>
+</svg>

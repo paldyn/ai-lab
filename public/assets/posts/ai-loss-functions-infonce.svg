@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="520" viewBox="0 0 880 520" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <rect x="0" y="0" width="880" height="520" rx="12" fill="#0a0a0a"/>
+
+  <text x="60" y="50" font-size="22" font-weight="700" fill="#e8e8e8">InfoNCE — 대각선이 정답, 나머지가 오답</text>
+  <text x="60" y="76" font-size="13" fill="#888">짝지은 쌍만 정답으로 두고 배치 안의 나머지 조합을 전부 오답으로 센다</text>
+
+  <rect x="60" y="100" width="350" height="364" rx="10" fill="#12141a" stroke="#2a2f3a" stroke-width="1"/>
+  <text x="84" y="128" font-size="15" font-weight="600" fill="#e8e8e8">이미지(행) × 텍스트(열) 유사도</text>
+
+  <rect x="114" y="152" width="56" height="56" rx="6" fill="#14301c" stroke="#55c555" stroke-width="1.5"/>
+  <text x="142" y="184" font-size="12" fill="#55c555" text-anchor="middle">정답</text>
+  <rect x="176" y="152" width="56" height="56" rx="6" fill="#1a1d24" stroke="#2a2f3a" stroke-width="1"/>
+  <rect x="238" y="152" width="56" height="56" rx="6" fill="#1a1d24" stroke="#2a2f3a" stroke-width="1"/>
+  <rect x="300" y="152" width="56" height="56" rx="6" fill="#1a1d24" stroke="#2a2f3a" stroke-width="1"/>
+
+  <rect x="114" y="214" width="56" height="56" rx="6" fill="#1a1d24" stroke="#2a2f3a" stroke-width="1"/>
+  <rect x="176" y="214" width="56" height="56" rx="6" fill="#14301c" stroke="#55c555" stroke-width="1.5"/>
+  <text x="204" y="246" font-size="12" fill="#55c555" text-anchor="middle">정답</text>
+  <rect x="238" y="214" width="56" height="56" rx="6" fill="#1a1d24" stroke="#2a2f3a" stroke-width="1"/>
+  <rect x="300" y="214" width="56" height="56" rx="6" fill="#1a1d24" stroke="#2a2f3a" stroke-width="1"/>
+
+  <rect x="114" y="276" width="56" height="56" rx="6" fill="#1a1d24" stroke="#2a2f3a" stroke-width="1"/>
+  <rect x="176" y="276" width="56" height="56" rx="6" fill="#1a1d24" stroke="#2a2f3a" stroke-width="1"/>
+  <rect x="238" y="276" width="56" height="56" rx="6" fill="#14301c" stroke="#55c555" stroke-width="1.5"/>
+  <text x="266" y="308" font-size="12" fill="#55c555" text-anchor="middle">정답</text>
+  <rect x="300" y="276" width="56" height="56" rx="6" fill="#1a1d24" stroke="#2a2f3a" stroke-width="1"/>
+
+  <rect x="114" y="338" width="56" height="56" rx="6" fill="#1a1d24" stroke="#2a2f3a" stroke-width="1"/>
+  <rect x="176" y="338" width="56" height="56" rx="6" fill="#1a1d24" stroke="#2a2f3a" stroke-width="1"/>
+  <rect x="238" y="338" width="56" height="56" rx="6" fill="#1a1d24" stroke="#2a2f3a" stroke-width="1"/>
+  <rect x="300" y="338" width="56" height="56" rx="6" fill="#14301c" stroke="#55c555" stroke-width="1.5"/>
+  <text x="328" y="370" font-size="12" fill="#55c555" text-anchor="middle">정답</text>
+
+  <rect x="84" y="408" width="12" height="12" rx="3" fill="#14301c" stroke="#55c555" stroke-width="1"/>
+  <text x="104" y="419" font-size="13" fill="#888">대각선 — 짝지은 쌍</text>
+  <rect x="84" y="430" width="12" height="12" rx="3" fill="#1a1d24" stroke="#2a2f3a" stroke-width="1"/>
+  <text x="104" y="441" font-size="13" fill="#888">나머지 — 배치 안의 오답</text>
+
+  <rect x="470" y="100" width="350" height="364" rx="10" fill="#12141a" stroke="#2a2f3a" stroke-width="1"/>
+  <text x="494" y="128" font-size="15" font-weight="600" fill="#e8e8e8">온도 τ가 벌을 나눈다</text>
+
+  <text x="494" y="158" font-size="13" fill="#7ec8e3">τ 작다 — CLIP은 0.07 부근</text>
+  <rect x="535" y="178" width="40" height="74" rx="4" fill="#7ec8e3"/>
+  <rect x="595" y="238" width="40" height="14" rx="4" fill="#3a4a6e"/>
+  <rect x="655" y="242" width="40" height="10" rx="4" fill="#3a4a6e"/>
+  <rect x="715" y="244" width="40" height="8" rx="4" fill="#3a4a6e"/>
+  <line x1="525" y1="252" x2="765" y2="252" stroke="#2a2f3a" stroke-width="1"/>
+  <text x="494" y="274" font-size="13" fill="#888">가장 헷갈리는 오답 하나에 벌이 몰린다</text>
+
+  <text x="494" y="334" font-size="13" fill="#7ec8e3">τ 크다</text>
+  <rect x="535" y="354" width="40" height="36" rx="4" fill="#7777cc"/>
+  <rect x="595" y="358" width="40" height="32" rx="4" fill="#7777cc"/>
+  <rect x="655" y="360" width="40" height="30" rx="4" fill="#7777cc"/>
+  <rect x="715" y="362" width="40" height="28" rx="4" fill="#7777cc"/>
+  <line x1="525" y1="390" x2="765" y2="390" stroke="#2a2f3a" stroke-width="1"/>
+  <text x="494" y="412" font-size="13" fill="#888">여러 오답에 고르게 퍼진다</text>
+  <text x="494" y="444" font-size="13" fill="#7777cc">온도가 벌을 어떻게 나눌지 정한다</text>
+
+  <text x="60" y="496" font-size="13" fill="#7777cc">배치 크기가 곧 음성 샘플의 개수다 — 대조 학습이 큰 배치를 요구하는 이유다</text>
+</svg>
