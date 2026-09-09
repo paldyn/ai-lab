@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="420" viewBox="0 0 880 420">
+  <defs>
+    <style>
+      text { font-family: 'Wanted Sans Variable', 'Wanted Sans', -apple-system, sans-serif; }
+      .h1 { font-size: 22px; font-weight: 700; fill: #e8e8e8; }
+      .sub { font-size: 13px; fill: #8a8a8a; }
+      .b-t { font-size: 13px; font-weight: 600; fill: #e8e8e8; }
+      .b-b { font-size: 16px; font-weight: 600; fill: #e8e8e8; }
+      .b-s { font-size: 11px; fill: #8a8a8a; }
+      .edge { font-size: 11px; fill: #6e6e6e; }
+      .note { font-size: 11px; fill: #6e6e6e; }
+    </style>
+    <marker id="ar2" markerWidth="14" markerHeight="14" refX="13" refY="4.5" orient="auto" markerUnits="userSpaceOnUse">
+      <path d="M0,0 L0,9 L13,4.5 z" fill="#4a4a4a"/>
+    </marker>
+  </defs>
+
+  <rect width="880" height="420" fill="#0a0a0a" rx="12"/>
+
+  <text x="50" y="48" class="h1">알고리즘과 모델</text>
+  <text x="50" y="74" class="sub">절차의 이름과, 그 절차를 데이터에 돌려 나온 결과의 이름</text>
+
+  <!-- 알고리즘 -->
+  <rect x="50" y="110" width="246" height="86" rx="8" fill="#141414" stroke="#333333" stroke-width="1.5"/>
+  <text x="173" y="137" class="b-t" text-anchor="middle">알고리즘</text>
+  <text x="173" y="157" class="b-s" text-anchor="middle">밟을 절차 — 코드에 적혀 있다</text>
+  <text x="173" y="177" class="b-s" text-anchor="middle">결정 트리 · 랜덤 포레스트</text>
+
+  <!-- 학습 데이터 -->
+  <rect x="50" y="222" width="246" height="86" rx="8" fill="#141414" stroke="#333333" stroke-width="1.5"/>
+  <text x="173" y="249" class="b-t" text-anchor="middle">학습 데이터</text>
+  <text x="173" y="269" class="b-s" text-anchor="middle">스팸 표시된 메일 10만 통</text>
+  <text x="173" y="289" class="b-s" text-anchor="middle">밖에서 넣는 것</text>
+
+  <line x1="296" y1="153" x2="352" y2="190" stroke="#3f3f3f" stroke-width="1.5" marker-end="url(#ar2)"/>
+  <line x1="296" y1="265" x2="352" y2="238" stroke="#3f3f3f" stroke-width="1.5" marker-end="url(#ar2)"/>
+
+  <!-- 학습 -->
+  <rect x="352" y="170" width="180" height="88" rx="8" fill="#0e0e0e" stroke="#7777cc" stroke-width="1.5"/>
+  <text x="442" y="198" class="b-b" text-anchor="middle">학습</text>
+  <text x="442" y="220" class="b-s" text-anchor="middle">오차가 줄어드는 쪽으로</text>
+  <text x="442" y="240" class="b-s" text-anchor="middle">숫자를 조금씩 옮긴다</text>
+
+  <line x1="532" y1="212" x2="594" y2="212" stroke="#3f3f3f" stroke-width="1.5" marker-end="url(#ar2)"/>
+
+  <!-- 모델 -->
+  <rect x="594" y="144" width="236" height="124" rx="8" fill="#0e0e0e" stroke="#55c555" stroke-width="1.5"/>
+  <text x="712" y="176" class="b-b" text-anchor="middle">모델</text>
+  <text x="712" y="200" class="b-s" text-anchor="middle">그 절차를 돌려 나온 결과</text>
+  <rect x="610" y="216" width="204" height="38" rx="6" fill="#171717" stroke="#3a3a3a" stroke-width="1"/>
+  <text x="712" y="240" font-size="12" font-weight="600" fill="#e8e8e8" text-anchor="middle">파라미터 a · b · c</text>
+
+  <line x1="712" y1="268" x2="712" y2="306" stroke="#3f3f3f" stroke-width="1.5" marker-end="url(#ar2)"/>
+  <text x="730" y="291" class="edge">추론</text>
+
+  <!-- 추론 -->
+  <rect x="352" y="306" width="478" height="64" rx="8" fill="#0e0e0e" stroke="#7ec8e3" stroke-width="1.5"/>
+  <text x="591" y="330" class="b-t" text-anchor="middle">새 메일 한 통에 그 숫자를 그대로 댄다</text>
+  <text x="591" y="352" class="b-s" text-anchor="middle">숫자를 읽기만 하고 바꾸지 않는다 · 스팸인가 정상인가</text>
+
+  <text x="50" y="400" class="note">같은 랜덤 포레스트를 절차로 부르면 알고리즘, 데이터에 돌려 나온 물건으로 부르면 모델입니다</text>
+</svg>
