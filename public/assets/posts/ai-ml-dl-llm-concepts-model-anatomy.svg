@@ -1,0 +1,47 @@
+<svg width="880" height="428" viewBox="0 0 880 428" xmlns="http://www.w3.org/2000/svg">
+  <rect x="0" y="0" width="880" height="428" rx="12" fill="#0a0a0a"/>
+
+  <text x="60" y="52" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="22" font-weight="700" fill="#e8e8e8">모델 한 줄을 뜯어보면</text>
+  <text x="60" y="80" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="15" fill="#888888">같은 식을 어느 자리를 가리키느냐에 따라 다른 이름으로 부릅니다</text>
+
+  <text x="60" y="124" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="14" font-weight="700" fill="#55c555">모델</text>
+  <text x="106" y="124" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="14" fill="#888888">무엇을 받아 어떻게 답을 낼지 정해 둔 틀 — 아래 상자 전체입니다</text>
+
+  <rect x="60" y="140" width="412" height="168" rx="8" fill="#000000" stroke="#55c555" stroke-width="1.5"/>
+
+  <text x="88" y="178" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="15" fill="#e8e8e8">점수 =</text>
+  <text x="352" y="160" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="12" fill="#666666">학습이 끝나면</text>
+
+  <text x="170" y="178" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="17" font-weight="700" fill="#7ec8e3">a</text>
+  <text x="192" y="178" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="15" fill="#e8e8e8">× ("무료" 횟수)</text>
+  <text x="322" y="178" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="14" fill="#555555">→</text>
+  <text x="352" y="178" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="15" fill="#e8e8e8">1.8</text>
+
+  <text x="150" y="212" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="15" fill="#666666">+</text>
+  <text x="170" y="212" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="17" font-weight="700" fill="#7ec8e3">b</text>
+  <text x="192" y="212" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="15" fill="#e8e8e8">× (링크 수)</text>
+  <text x="322" y="212" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="14" fill="#555555">→</text>
+  <text x="352" y="212" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="15" fill="#e8e8e8">0.4</text>
+
+  <text x="150" y="246" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="15" fill="#666666">+</text>
+  <text x="170" y="246" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="17" font-weight="700" fill="#7ec8e3">c</text>
+  <text x="192" y="246" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="15" fill="#e8e8e8">× (느낌표 수)</text>
+  <text x="322" y="246" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="14" fill="#555555">→</text>
+  <text x="352" y="246" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="15" fill="#e8e8e8">0.9</text>
+
+  <line x1="88" y1="268" x2="444" y2="268" stroke="#2a2a2a" stroke-width="1"/>
+  <text x="88" y="292" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888888">점수가 0을 넘으면 스팸, 넘지 못하면 정상</text>
+
+  <path d="M 500 166 q 10 0 10 10 l 0 28 q 0 10 10 10 q -10 0 -10 10 l 0 28 q 0 10 -10 10" fill="none" stroke="#7ec8e3" stroke-width="1.5"/>
+
+  <text x="536" y="190" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="14" font-weight="700" fill="#7ec8e3">파라미터</text>
+  <text x="536" y="216" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888888">값을 바꿀 수 있는 이 세 자리입니다.</text>
+  <text x="536" y="238" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888888">비어 있으면 아무것도 못 맞히고,</text>
+  <text x="536" y="260" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888888">학습이 여기에 숫자를 넣습니다.</text>
+
+  <line x1="60" y1="344" x2="820" y2="344" stroke="#2a2a2a" stroke-width="1"/>
+
+  <text x="60" y="376" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="14" font-weight="700" fill="#7ec8e3">가중치</text>
+  <text x="124" y="376" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="14" fill="#888888">입력에 곱해지는 파라미터. 위의 a · b · c 셋은 전부 가중치입니다.</text>
+  <text x="124" y="400" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="14" fill="#888888">식 끝에 「+ d」로 상수를 더하면 d도 파라미터이지만, 어디에도 곱해지지 않으니 가중치는 아닙니다.</text>
+</svg>
