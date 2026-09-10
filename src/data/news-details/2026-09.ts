@@ -2,6 +2,40 @@ import type { NewsDetail } from '../news';
 
 /** 2026-09 발표의 모달 본문. 목록은 news.ts에 있습니다. */
 export const details: Record<string, NewsDetail> = {
+  'gpt-6-astra-next-generation-work': {
+    points: [
+      'GPT-6 Astra는 ChatGPT Work·Codex·API에서 쓸 수 있다고 적었다',
+      'API가 없는 애플리케이션도 컴퓨터 사용으로 다뤄 기존 업무 흐름에 바로 넣을 수 있다고 밝혔다',
+      'Financial Modeling World Cup 과제를 컴퓨터 사용으로 우승한 사람보다 약 4배 빠르게 끝냈다',
+      '사내에서는 Codex 세션의 메모리 할당 병목을 찾아 할당자를 바꿔 턴 지연을 25분의 1로 줄였고 최대 메모리는 약 30% 늘었다',
+      'Terminal-Bench 4.0에서 57.9%로 GPT-5.6 Sol의 37.3%, Claude Fable 5.1의 55.8%를 앞섰다',
+      '같은 과제의 추정 API 비용은 두 모델보다 각각 약 9%·63% 낮다고 밝혔다',
+      '사내 컴퓨터 사용 안전 평가에서 의도치 않은 결과가 GPT-5.6 Sol보다 89%, Claude Fable 5.1보다 74.7% 적었다',
+      '기업 관리자용 접근 제한 기능과 함께 ChatGPT Desktop에 Oracle Analytics·Power BI·Navan·Avalara 플러그인을 열었다',
+    ],
+    commentary:
+      '지난주 공개가 모델 성능 발표였다면 이번은 그 성능을 기업 안에서 어디까지 풀어 줄 것인가에 대한 답이다. ' +
+      '승인한 사이트·앱으로 범위를 묶는 관리 기능과 행동 전 승인 정책이 함께 나온 것은, 컴퓨터 사용이 API 없는 ' +
+      '사내 시스템까지 건드리는 순간 도입을 가로막는 것이 성능이 아니라 권한 통제라는 뜻이다. 벤치마크를 점수가 ' +
+      '아니라 과제당 비용과 나란히 놓은 것도 같은 자리를 겨눈다.',
+  },
+  'paul-christiano-joins-openai-foundation-board': {
+    points: [
+      'OpenAI가 Paul Christiano를 OpenAI Foundation 이사회에 선임했다고 발표했다',
+      'OpenAI Group PBC 이사회에는 의결권 없는 참관인으로 들어간다',
+      'Zico Kolter가 의장을 맡은 재단 이사회의 안전·보안 위원회(SSC)에도 합류한다',
+      'SSC는 OpenAI Group PBC를 포함한 OpenAI 전체의 안전·보안 관행을 감독하는 기구다',
+      '그는 미국 상무부 산하 NIST의 CAISI에서 선임 기술 자문으로 일해 왔다',
+      'CAISI와 그 전신인 미국 AI 안전 연구소에서 프런티어 모델 평가와 위험 완화 방안을 다뤘다',
+      '정렬 연구를 하는 비영리 조직 Alignment Research Center(ARC)를 세웠다',
+      '2017년부터 2021년까지 OpenAI에서 정렬 연구를 이끌었고 RLHF의 기초 연구에 기여했다',
+    ],
+    commentary:
+      '규제 기관에서 프런티어 모델을 평가하던 사람이 그 평가를 받는 회사의 거버넌스 안으로 들어가는 인선이다. ' +
+      'OpenAI가 발표문에서 「업계의 안전장치가 충분한지 독립적으로 문제를 제기해 온 사람」이라고 적은 것은 ' +
+      '이 자리에 기대하는 역할을 스스로 못 박은 셈이다. 다만 재단 이사회에는 정식으로 들어가지만 사업 회사 ' +
+      '이사회에서는 의결권이 없어, 실제 영향은 안전·보안 위원회가 어디까지 개입하느냐에 달린다.',
+  },
   'search-football-features-google-search': {
     points: [
       '진행 중인 경기를 검색하면 붉은 「Live」 표시가 붙고 그 자리에서 Live Game Feed가 열린다',

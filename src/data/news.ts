@@ -160,7 +160,7 @@ export interface NewsDetail {
   commentary: string;
 }
 
-export const globalNewsUpdatedAt = '2026-09-08';
+export const globalNewsUpdatedAt = '2026-09-09';
 
 /**
  * 공식 발표 한 건 = 항목 한 개. 2026년 1월부터 쌓는 아카이브이며 오래된 항목을
@@ -171,6 +171,35 @@ export const globalNewsUpdatedAt = '2026-09-08';
  * 목록에서 파생됩니다. 갱신 시 globalNewsUpdatedAt도 함께 올립니다.
  */
 const entries: NewsItem[] = [
+  {
+    id: 'gpt-6-astra-next-generation-work',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'OpenAI, GPT-6 Astra 업무 성능과 기업 관리 제어·플러그인 공개',
+    summary:
+      'OpenAI가 ChatGPT Work·Codex·API에서 쓰는 GPT-6 Astra의 업무 성능을 공개했다. ' +
+      'Terminal-Bench 4.0에서 57.9%로 GPT-5.6 Sol의 37.3%를 앞섰고, 기업 관리 제어와 ' +
+      'ChatGPT Desktop 기업 플러그인을 함께 열었다.',
+    publishedAt: '2026-09-09',
+    collectedAt: '2026-09-10',
+    category: 'Product',
+    signal: '기업용 에이전트',
+    url: 'https://openai.com/index/gpt-6-astra-next-generation-work',
+  },
+  {
+    id: 'paul-christiano-joins-openai-foundation-board',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'OpenAI Foundation 이사회에 Paul Christiano 합류',
+    summary:
+      'OpenAI가 Paul Christiano를 OpenAI Foundation 이사회에 선임했다. OpenAI Group PBC ' +
+      '이사회에는 의결권 없는 참관인으로 들어가고, 재단 이사회의 안전·보안 위원회에도 합류한다.',
+    publishedAt: '2026-09-09',
+    collectedAt: '2026-09-10',
+    category: 'Corporate',
+    signal: '기업 지배구조',
+    url: 'https://openai.com/index/paul-christiano-joins-openai-foundation-board',
+  },
   {
     id: 'search-football-features-google-search',
     source: 'Google DeepMind',
