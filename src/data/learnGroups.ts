@@ -3,12 +3,11 @@ import { categoryIdsIn } from './categories';
 import { pythonNoteCount } from './mirror';
 
 /**
- * 학습 카테고리 위에 얹는 묶음.
+ * 학습 카테고리의 내부 묶음.
  *
- * **글을 옮기지 않고 레일만 두 층으로 만드는 장치입니다.** 카테고리 여덟이 한 줄로
- * 늘어서 있으면 수학 120편이 AI 일곱 칸 사이에 끼어 「같은 갈래」로 읽힙니다. 수학은
- * 혼자 커리큘럼 정렬이고(`curriculum: true`) 목록 위 안내문도 따로 서는, 성질이
- * 다른 칸입니다.
+ * **글을 옮기지 않고 탭의 범위를 묶는 장치입니다.** AI 탭의 카테고리 목록과 예전
+ * 묶음 주소의 이동 경로를 한곳에서 파생합니다. 화면의 레일에는 묶음 제목을 따로
+ * 표시하지 않고 카테고리만 한 층으로 보여 줍니다.
  *
  * **묶음은 카테고리의 상위 개념이지 글의 속성이 아닙니다.** 글의 frontmatter에는
  * `category`만 있고 묶음은 어디에도 안 적힙니다. 그래서 묶음을 바꿔도 원고·사슬·
@@ -33,6 +32,7 @@ export interface LearnTrack {
 
 export interface LearnGroup {
   id: LearnGroupId;
+  /** 내부 구분과 예전 주소를 설명할 때 쓰는 이름이며 레일 제목으로는 표시하지 않습니다. */
   name: string;
   categoryIds: CategoryId[];
   tracks?: LearnTrack[];
@@ -80,32 +80,16 @@ export function learnGroupSize(group: LearnGroup): number {
 }
 
 /**
- * 레일에 머리글이 서는가.
- *
- * **묶음은 갈 곳이 아니라 머리글입니다.** 한때 카테고리가 둘 이상인 묶음마다
- * `/learn/ai-principles` 같은 페이지를 세웠는데, 그러면 AI 갈래만 레일에 층이 하나
- * 더 생겨 수학(전체·초급·중급)·언어(전체·파이썬·R)와 모양이 달라졌습니다. 지금은
- * 누를 수 있는 줄이 어느 갈래에서나 「전체 + 칸들」 한 층이고, 묶음은 그 칸들 위에
- * 이름만 얹습니다.
- *
- * **카테고리를 둘 이상 든 묶음에만 섭니다.** 하나면 머리글과 그 아래 한 줄이 같은
- * 말이고, 언어처럼 트랙만 든 묶음은 갈래의 레일이 트랙을 직접 그립니다.
- */
-export const learnGroupHasHead = (group: LearnGroup) => group.categoryIds.length >= 2;
-
-export const learnGroupsWithHead = learnGroups.filter(learnGroupHasHead);
-
-/**
  * 묶음이 든 갈래가 가는 곳.
  *
- * 묶음 페이지를 없애면서 옛 주소(`/learn/ai-principles`)를 받는 자리입니다 —
+ * 독립 묶음 페이지를 없애면서 옛 주소(`/learn/ai-principles`)를 받는 자리입니다 —
  * 그냥 `/learn`으로 보내면 AI 안에 있었다는 것이 사라집니다.
  */
 export function learnTabPathOfGroup(id: string): string {
   return learnTabs.find((tab) => tab.id !== 'all' && tab.groupIds.includes(id as LearnGroupId))?.to ?? '/learn';
 }
 
-/** 묶음 이름은 카테고리 이름과 갈려야 합니다 — 레일 밖(검색 결과·공유 링크)에서는 나란히 안 섭니다. */
+/** 내부 묶음 id 목록. 주소 충돌 검사와 예전 주소 이동에 씁니다. */
 export const learnGroupIds = learnGroups.map((group) => group.id);
 
 /** 학습 카테고리가 빠짐없이 한 묶음에 담겼는지. 테스트와 개발 중 확인에 씁니다. */
@@ -118,9 +102,8 @@ export function ungroupedLearnCategories(): CategoryId[] {
  * 학습의 첫 갈래. 화면 맨 위 탭이 이것입니다.
  *
  * **갈래마다 두 번째 층이 다릅니다.** 그래서 레일 하나에 다 담지 않고 탭으로 가릅니다 —
- * 수학은 난이도 트랙(초급·중급·고급)으로, 언어는 언어별로, AI는 원리·엔지니어링 아래
- * 카테고리 일곱으로 갈립니다. 한 레일에 욱여넣으면 이 셋이 전부 「카테고리」 한 층으로
- * 납작해집니다.
+ * 수학은 난이도 트랙(초급·중급·고급)으로, 언어는 언어별로, AI는 카테고리 일곱으로
+ * 갈립니다.
  *
  * **「전체」는 첫 탭으로 남깁니다.** 탭으로 가르면 다른 갈래의 칸이 안 보이므로, 지도
  * 전체를 한눈에 보는 자리가 하나는 있어야 합니다.

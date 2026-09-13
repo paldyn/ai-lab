@@ -4,7 +4,6 @@ import {
   learnGroupIds,
   learnGroups,
   learnGroupById,
-  learnGroupsWithHead,
   learnTabById,
   learnTabs,
   ungroupedLearnCategories,
@@ -43,20 +42,13 @@ describe('학습 묶음', () => {
   });
 
   /*
-    **묶음은 갈 곳이 아니라 레일의 머리글입니다.** 예전에는 카테고리가 둘 이상인
-    묶음마다 `/learn/ai-principles` 같은 페이지를 세웠는데, 그러면 AI 갈래만 레일에
-    층이 하나 더 생겨 수학·언어와 모양이 달라졌습니다. 주소를 되살리면 그 비대칭이
-    같이 돌아오므로 여기서 막습니다.
+    AI 묶음은 탭의 범위와 예전 주소 이동에만 쓰는 내부 데이터입니다. 다시 독립
+    페이지를 만들면 레일에는 없는 층이 URL에만 생기므로 여기서 막습니다.
   */
-  it('머리글로 서는 묶음 id로 가는 주소가 없다', () => {
-    /*
-      수학·언어는 탭과 묶음이 같은 개념이라 id가 같고 `/learn/lang`은 실제로 있지만,
-      그것은 **갈래의 주소**이지 묶음 페이지가 아닙니다. 그 둘은 머리글이 안 서므로
-      이 목록에 없습니다.
-    */
+  it('AI 내부 묶음 id로 가는 독립 주소가 없다', () => {
     const paths = new Set(staticRoutes);
     expect(
-      learnGroupsWithHead.filter((group) => paths.has(`/learn/${group.id}`)).map((g) => g.id),
+      learnTabById.ai.groupIds.filter((id) => paths.has(`/learn/${id}`)),
     ).toEqual([]);
   });
 
@@ -76,17 +68,6 @@ describe('학습 묶음', () => {
     expect([...learnTabById.ai.categoryIds].sort()).toEqual([...fromGroups].sort());
   });
 
-  /*
-    머리글로 서는 묶음의 이름은 그 아래 줄들과 갈려야 합니다 — 바로 밑에 나란히
-    서므로 같으면 같은 말이 두 번 선 것으로 읽힙니다. 칸이 하나뿐인 묶음(수학·언어)은
-    머리글을 안 달아 이 검사에 안 걸립니다.
-  */
-  it('머리글로 서는 묶음 이름이 카테고리 이름과 겹치지 않는다', () => {
-    const names = new Set(categories.map((category) => category.name));
-    expect(learnGroupsWithHead.filter((group) => names.has(group.name)).map((g) => g.name)).toEqual(
-      [],
-    );
-  });
 });
 
 /*

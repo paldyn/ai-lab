@@ -5,7 +5,6 @@ import { articles, countByCategory } from '../data/articles';
 import { categoryById } from '../data/categories';
 import {
   learnGroupById,
-  learnGroupHasHead,
   learnGroupSize,
   learnTabById,
   type LearnTabId,
@@ -18,12 +17,9 @@ import { mathTracks } from '../data/curriculum';
  * **갈래는 위의 칩이 맡고 자격증은 그 줄의 오른쪽 끝으로 갔습니다.** 레일에 남는 것은
  * 갈래 안에서 더 좁힐 칸과, 아무것도 안 고른 상태로 되돌아올 「전체」 한 줄입니다.
  *
- * **갈래마다 세우는 것이 다릅니다** — 수학은 난이도 트랙, 언어는 언어별, AI는 묶음 둘
- * 아래 카테고리 일곱입니다. 「전체」 갈래처럼 **더 좁힐 칸이 없으면 레일을 아예 그리지
+ * **갈래마다 세우는 것이 다릅니다** — 수학은 난이도 트랙, 언어는 언어별, AI는
+ * 카테고리 일곱입니다. 「전체」 갈래처럼 **더 좁힐 칸이 없으면 레일을 아예 그리지
  * 않고** 목록이 화면 폭을 다 씁니다(`learnRailShown`).
- *
- * **묶음 줄과 카테고리 줄은 글씨로 갈립니다** — 묶음은 10px 모노 라벨에 밑줄, 카테고리는
- * 13.5px 본문 글씨에 색 띠입니다. 층을 들여쓰기로만 가르면 눈에 안 들어옵니다.
  */
 export function LearnRail({
   tab,
@@ -130,32 +126,9 @@ export function LearnRail({
         const inGroup = group.categoryIds.map((id) => categoryById[id]);
         const tracks = group.tracks ?? [];
         if (learnGroupSize(group) === 0) return null;
-        const groupTotal =
-          group.categoryIds.reduce((sum, id) => sum + (counts[id] ?? 0), 0) +
-          tracks.reduce((sum, track) => sum + track.count, 0);
-        // 지금 보는 칸이 이 묶음 안이면 머리글도 함께 켭니다.
-        const within =
-          inGroup.some((category) => category.id === active) ||
-          tracks.some((track) => track.id === active);
 
         return (
           <div key={group.id} className="learn-rail-group-block">
-            {/*
-              **머리글은 누르는 자리가 아닙니다.** 예전에는 묶음마다 페이지가 있어
-              이 줄이 링크였는데, 그러면 AI 갈래만 레일에 층이 하나 더 생겨 수학·언어와
-              모양이 달라졌습니다. 지금은 어느 갈래에서나 누르는 줄이 「전체 + 칸들」
-              한 층이고, 묶음은 그 칸들 위에 이름만 얹습니다.
-
-              칸이 하나뿐인 묶음에는 머리글을 안 답니다 — 머리글과 그 아래 한 줄이
-              같은 말입니다. 그 한 줄은 머리글 없이 그대로 섭니다.
-            */}
-            {learnGroupHasHead(group) && (
-              <p className={`learn-rail-item learn-rail-group ${within ? 'is-within' : ''}`}>
-                <span>{group.name}</span>
-                <b>{groupTotal}</b>
-              </p>
-            )}
-
             <div className="learn-rail-nested">
                 {tracks.map((track) => (
                   <Link

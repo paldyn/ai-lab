@@ -4117,75 +4117,8 @@ input:focus-visible {
 }
 
 /*
-  묶음 줄. **카테고리 줄과 다른 글씨로 세웁니다.**
-
-  처음에는 들여쓰기만으로 위아래를 갈랐는데 눈에 안 들어왔습니다 — 같은 크기·같은
-  색의 줄이 열한 개 늘어서고 그중 둘만 12px 왼쪽에 있는 꼴이라, 위계가 아니라 정렬이
-  어긋난 것처럼 보였습니다. 지금은 묶음이 작은 모노 라벨이고 카테고리가 본문 글씨라
-  글씨체만으로 층이 갈립니다.
-
-  색 띠(--learn-accent)는 주지 않습니다 — 묶음은 카테고리 색이 여럿이라 대표 색이 없습니다.
-
-  **선택자에 `.learn-rail-item`을 함께 적습니다.** 묶음 줄은 그 클래스도 달고 있는데
-  `.learn-rail-item` 규칙이 이 블록보다 **아래**에 있고 특이도가 같아, 클래스 하나로만
-  적으면 여기 쓴 크기·색·활성 모양이 전부 뒤에 덮입니다 — 그래서 「작은 모노 라벨」로
-  적어 둔 묶음이 실제로는 카테고리와 똑같은 13.5px으로 서 있었습니다. 위계가 안
-  보인다는 말이 그것이었고, 고친 것은 갈래 수가 아니라 이 한 줄입니다.
-*/
-.learn-rail-item.learn-rail-group {
-  margin-top: 6px;
-  margin-bottom: 5px;
-  padding-bottom: 7px;
-  color: var(--text-muted);
-  font-family: 'JetBrains Mono', ui-monospace, monospace;
-  font-size: 10px;
-  letter-spacing: 0.12em;
-}
-
-/*
-  구역을 가르는 줄. **아래 카테고리의 색 띠와 같은 자리에서 시작합니다**(8px) — 왼쪽
-  끝이 어긋나면 줄이 라벨이 아니라 레일 전체에 걸린 것처럼 보입니다. border가 아니라
-  ::after로 그리는 이유가 그것입니다(테두리는 상자 폭을 그대로 따릅니다).
-*/
-.learn-rail-item.learn-rail-group::after {
-  content: '';
-  position: absolute;
-  right: 0;
-  bottom: 0;
-  left: 8px;
-  height: 1px;
-  background: var(--border);
-}
-
-.learn-rail-item.learn-rail-group::before {
-  display: none;
-}
-
-/* 지금 보는 카테고리가 든 묶음. 글자만 켜서 「이 갈래 안에 있다」만 말합니다. */
-.learn-rail-item.learn-rail-group.is-within {
-  color: var(--brand-text);
-}
-
-/* 구획선도 함께 켭니다 — 새 선을 긋지 않고 이미 있는 줄의 색만 바꿉니다. */
-.learn-rail-item.learn-rail-group.is-within::after {
-  background: var(--brand);
-}
-
-.learn-rail-item.learn-rail-group b {
-  font-size: 10px;
-}
-
-/* 머리글만 8px 내어 씁니다 — 띠가 없으므로 글자가 아래 칸들의 띠 자리에서 시작합니다. */
-.learn-rail-item.learn-rail-group {
-  padding-left: 14px;
-}
-
-/*
-  묶음에 달린 카테고리들.
-
-  왼쪽에 세로 실선을 세워 봤다가 걷어냈습니다 — 카테고리마다 이미 제 색 띠가 왼쪽에
-  서 있어 선이 둘로 겹쳤습니다. 지금은 **위 라벨 아래의 가로 실선**이 「여기서부터가
-  그 묶음」을 말하고, 카테고리는 제 색 띠만 답니다.
+  내부 묶음에 담긴 카테고리들. 묶음 이름은 화면에 표시하지 않고, 카테고리는 모두
+  같은 층에서 제 색 띠만 답니다.
 */
 .learn-rail-nested {
   display: flex;
@@ -4318,18 +4251,6 @@ input:focus-visible {
     display: flex;
     flex-direction: row;
     gap: 6px;
-  }
-
-  /* 가로로 누우면 묶음 라벨도 알약 사이에 서므로 여백과 밑줄을 지웁니다. */
-  .learn-rail-item.learn-rail-group {
-    margin-top: 0;
-    margin-bottom: 0;
-    padding-bottom: 0;
-    border: 0;
-  }
-
-  .learn-rail-item.learn-rail-group::after {
-    display: none;
   }
 
   .learn-rail-group-block + .learn-rail-group-block {
@@ -5442,6 +5363,41 @@ input:focus-visible {
   }
 }
 
+/*
+ * 13~15인치 노트북과 낮은 데스크톱에서는 본문을 가리는 면적부터 줄입니다.
+ * 1600×900 이상에서는 위의 400×620px 기본 크기를 그대로 씁니다.
+ */
+@media (max-width: 1599px), (max-height: 899px) {
+  .article-ai-panel {
+    right: 16px;
+    bottom: 16px;
+    width: min(clamp(336px, 26vw, 380px), calc(100vw - 32px));
+    height: clamp(400px, 62dvh, 560px);
+    min-height: 0;
+    max-height: calc(100dvh - 32px);
+  }
+}
+
+/* 태블릿에서는 폭과 높이를 한 단계 더 줄여 읽던 문단을 더 남깁니다. */
+@media (max-width: 1023px) {
+  .article-ai-panel {
+    width: min(336px, calc(100vw - 32px));
+    height: clamp(360px, 58dvh, 500px);
+  }
+}
+
+/* 낮은 노트북·가로 태블릿에서는 답변 영역의 최소 높이도 함께 줄입니다. */
+@media (min-width: 641px) and (max-height: 720px) {
+  .article-ai-panel {
+    height: clamp(340px, 58dvh, 460px);
+  }
+
+  .article-ai-empty,
+  .article-ai-loading {
+    min-height: 120px;
+  }
+}
+
 @media (max-width: 640px) {
   .site-wrap {
     padding-inline: 20px;
@@ -5484,12 +5440,18 @@ input:focus-visible {
     right: 12px;
     bottom: 12px;
     width: calc(100vw - 24px);
-    height: min(68dvh, 560px);
-    min-height: min(410px, calc(100dvh - 24px));
+    height: clamp(320px, 60dvh, 520px);
+    min-height: 0;
+    max-height: calc(100dvh - 24px);
   }
 
   .article-ai-content {
     padding: 15px;
+  }
+
+  .article-ai-empty,
+  .article-ai-loading {
+    min-height: 140px;
   }
 
   .article-ai-form-foot {
@@ -5679,6 +5641,30 @@ input:focus-visible {
 
   .article-prose h2 {
     font-size: 22px;
+  }
+}
+
+/* 가로 휴대폰처럼 높이가 아주 낮으면 화면 폭과 관계없이 본문 여백을 우선합니다. */
+@media (max-height: 520px) {
+  .article-ai-panel {
+    height: min(72dvh, 360px);
+  }
+
+  .article-ai-content {
+    padding-block: 10px;
+  }
+
+  .article-ai-empty,
+  .article-ai-loading {
+    min-height: 0;
+  }
+
+  .article-ai-empty svg {
+    margin-bottom: 6px;
+  }
+
+  .article-ai-empty > span {
+    display: none;
   }
 }
 
