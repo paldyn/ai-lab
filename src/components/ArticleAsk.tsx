@@ -61,6 +61,7 @@ export function ArticleAsk({ title, fallbackContext, proseRef, ready }: ArticleA
   const [answer, setAnswer] = useState<AnswerState | null>(null);
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
+  const [thinkingSeconds, setThinkingSeconds] = useState(0);
   const [composerHeight, setComposerHeight] = useState(DEFAULT_COMPOSER_HEIGHT);
   const [resizingComposer, setResizingComposer] = useState(false);
 
@@ -123,6 +124,17 @@ export function ArticleAsk({ title, fallbackContext, proseRef, ready }: ArticleA
     window.addEventListener('resize', fitComposer, { passive: true });
     return () => window.removeEventListener('resize', fitComposer);
   }, [composerBounds, open]);
+
+  useEffect(() => {
+    if (!loading) return undefined;
+
+    const startedAt = Date.now();
+    const timer = window.setInterval(() => {
+      setThinkingSeconds(Math.floor((Date.now() - startedAt) / 1_000));
+    }, 1_000);
+
+    return () => window.clearInterval(timer);
+  }, [loading]);
 
   // 패널이 떠 있을 때 전역 '맨 위로' 단추가 그 아래로 비치지 않게 합니다.
   useEffect(() => {
@@ -223,6 +235,8 @@ export function ArticleAsk({ title, fallbackContext, proseRef, ready }: ArticleA
     requestRef.current = controller;
 
     setLoading(true);
+    setThinkingSeconds(0);
+    setQuestion('');
     setError('');
     setAnswer(null);
     if (contentRef.current) contentRef.current.scrollTop = 0;
@@ -388,14 +402,16 @@ export function ArticleAsk({ title, fallbackContext, proseRef, ready }: ArticleA
             {loading && (
               <div className="article-ai-loading" role="status">
                 <span className="article-ai-loading-dots" aria-hidden="true"><i /><i /><i /></span>
-                <p>답변을 정리하고 있습니다…</p>
+                <p>
+                  생각 중
+                  <span className="article-ai-loading-time" aria-hidden="true"> · {thinkingSeconds}초</span>
+                </p>
               </div>
             )}
 
             {error && (
               <div className="article-ai-error" role="alert">
                 <p>{error}</p>
-                <span>질문은 그대로 남아 있습니다.</span>
               </div>
             )}
 

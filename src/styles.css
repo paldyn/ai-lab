@@ -3419,6 +3419,14 @@ input:focus-visible {
 .article-ai-loading-dots i:nth-child(2) { animation-delay: 120ms; }
 .article-ai-loading-dots i:nth-child(3) { animation-delay: 240ms; }
 
+.article-ai-loading-time {
+  color: var(--text-muted);
+  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  font-size: 11px;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
 @keyframes article-ai-dot {
   0%, 70%, 100% { opacity: 0.3; transform: translateY(0); }
   35% { opacity: 1; transform: translateY(-3px); }
@@ -3435,13 +3443,6 @@ input:focus-visible {
   color: var(--text);
   font-size: 13px;
   line-height: 1.65;
-}
-
-.article-ai-error span {
-  display: block;
-  margin-top: 5px;
-  color: var(--text-muted);
-  font-size: 11px;
 }
 
 .article-ai-question {
