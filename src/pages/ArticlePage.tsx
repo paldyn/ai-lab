@@ -257,7 +257,7 @@ function ArticleView({ article }: { article: Article }) {
         <Link to={collectionPath} className="back-link">
           <ArrowLeft size={14} aria-hidden="true" /> {collectionLabel}
         </Link>
-        <div className="mt-10 grid gap-10 lg:grid-cols-[minmax(0,1fr)_420px] lg:items-end">
+        <div className="article-hero-grid mt-10 grid gap-10 lg:grid-cols-[minmax(0,1fr)_420px] lg:items-end">
           <div>
             {/*
               카드 왼쪽 위의 두 자리 숫자를 여기서 한 번 풀어 적습니다 —
@@ -288,7 +288,7 @@ function ArticleView({ article }: { article: Article }) {
 
       <div className="site-divider" />
 
-      <div className="site-wrap grid gap-12 py-14 lg:grid-cols-[220px_minmax(0,760px)] lg:justify-center">
+      <div className="article-reading-grid site-wrap grid gap-12 py-14 lg:grid-cols-[220px_minmax(0,760px)] lg:justify-center">
         <ArticleToc
           label="IN THIS NOTE"
           headings={body?.headings ?? []}
@@ -368,7 +368,7 @@ function ArticleView({ article }: { article: Article }) {
                 <h2>{category.name}의 최신 글</h2>
               </div>
             </div>
-            <div className="grid gap-8 md:grid-cols-3">
+            <div className="article-latest-grid grid gap-8 md:grid-cols-3">
               {latest.map((item) => (
                 <ArticleCard key={item.slug} article={item} />
               ))}

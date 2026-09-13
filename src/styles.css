@@ -4090,11 +4090,7 @@ input:focus-visible {
     /* 머리 71 + 갈래 띠 55 + 여백 26. 띠가 따라오므로 그 아래에 붙어야 겹치지 않습니다. */
     top: 152px;
     align-self: start;
-    /*
-      묶음 셋이 얹히며 레일이 444px에서 590px 안팎으로 자랐습니다. 1366×768 노트북의
-      실제 뷰포트 높이는 660px 남짓이라 sticky 자리(96px)를 빼면 564px밖에 안 남아
-      자격증 단추가 잘립니다. 넘칠 때만 레일 안에서 굴러가게 둡니다.
-    */
+    /* 항목이 늘어나 화면 높이를 넘을 때만 레일 안에서 굴러가게 둡니다. */
     max-height: calc(100vh - 120px);
     overflow-y: auto;
     scrollbar-width: none;
@@ -4105,15 +4101,11 @@ input:focus-visible {
   }
 }
 
-/* 묶음 하나와 그 아래 카테고리들. 묶음 사이를 선이 아니라 여백으로 가릅니다. */
+/* 내부 묶음은 화면 간격을 만들지 않고 카테고리를 같은 층에 이어 붙입니다. */
 .learn-rail-group-block {
   display: flex;
   flex-direction: column;
   gap: 1px;
-}
-
-.learn-rail-group-block + .learn-rail-group-block {
-  margin-top: 10px;
 }
 
 /*
@@ -4154,8 +4146,8 @@ input:focus-visible {
 /*
   분야 색 띠. 고르지 않았을 때는 옅게.
 
-  **왼쪽 끝은 8px로 모두 같습니다** — 묶음 라벨 아래의 줄도 여기서 시작합니다. 「전체」만
-  0에서 시작했더니 그 줄의 띠가 나머지보다 8px 왼쪽으로 튀어나와 보였습니다.
+  **왼쪽 끝은 8px로 모두 같습니다.** 「전체」만 0에서 시작하면 그 줄의 띠가
+  나머지보다 8px 왼쪽으로 튀어나와 보입니다.
 */
 .learn-rail-item::before {
   content: '';
@@ -4170,10 +4162,9 @@ input:focus-visible {
 }
 
 /*
-  **hover는 누를 수 있는 줄에만 겁니다.** 레일에는 링크가 아닌 줄이 둘 있습니다 —
-  묶음 머리글(`<p>`)과 아직 글이 없는 「준비 중」(`<span>`)입니다. 좁히지 않으면 그
-  둘도 배경과 글자색이 바뀌어 눌러 보게 됩니다. `:where()`는 특이도를 안 더하므로
-  뒤에 오는 `.is-active`와의 우열이 그대로 남습니다.
+  **hover는 누를 수 있는 줄에만 겁니다.** 아직 글이 없는 「준비 중」은 링크가 아닌
+  `<span>`이라 배경과 글자색이 바뀌면 눌러 보게 됩니다. `:where()`는 특이도를 안
+  더하므로 뒤에 오는 `.is-active`와의 우열이 그대로 남습니다.
 */
 .learn-rail-item:hover:where(a) {
   background: var(--bg-subtle);
@@ -4251,11 +4242,6 @@ input:focus-visible {
     display: flex;
     flex-direction: row;
     gap: 6px;
-  }
-
-  .learn-rail-group-block + .learn-rail-group-block {
-    margin-top: 0;
-    margin-left: 6px;
   }
 
   .learn-rail-item {
@@ -5398,6 +5384,33 @@ input:focus-visible {
   }
 }
 
+/*
+ * 768px보다 좁은 화면은 좌우로 나누면 양쪽 모두 너무 좁아집니다. 패널을 화면 아래
+ * 시트로 바꾸고 위쪽의 글을 절반 가까이 남깁니다.
+ */
+@media (min-width: 641px) and (max-width: 767px) {
+  .article-ai-panel {
+    right: 16px;
+    left: 16px;
+    bottom: 16px;
+    width: auto;
+    max-width: 640px;
+    height: min(52dvh, 500px);
+    min-height: 0;
+    max-height: calc(100dvh - 32px);
+    margin-inline: auto;
+  }
+
+  .article-ai-content {
+    padding: 15px;
+  }
+
+  .article-ai-empty,
+  .article-ai-loading {
+    min-height: 140px;
+  }
+}
+
 @media (max-width: 640px) {
   .site-wrap {
     padding-inline: 20px;
@@ -5664,6 +5677,59 @@ input:focus-visible {
   }
 
   .article-ai-empty > span {
+    display: none;
+  }
+}
+
+/*
+ * 작은 데스크톱에서는 패널을 글 위에 포개지 않습니다. 패널 폭과 오른쪽 여백,
+ * 둘 사이 24px을 main과 footer의 실제 공간으로 예약합니다. 패널과 예약 공간이
+ * 같은 변수를 써 화면 경계에서 다시 겹칠 수 없습니다.
+ */
+@media (min-width: 768px) and (max-width: 1599px),
+  (min-width: 768px) and (max-width: 1967px) and (max-height: 899px) {
+  #root[data-article-ai-open] {
+    --article-ai-panel-width: clamp(336px, 26vw, 380px);
+    --article-ai-panel-right: 16px;
+    --article-ai-layout-reserve:
+      calc(var(--article-ai-panel-width) + var(--article-ai-panel-right) + 24px);
+  }
+
+  #root[data-article-ai-open] #main-content,
+  #root[data-article-ai-open] .site-footer {
+    padding-right: var(--article-ai-layout-reserve);
+  }
+
+  #root[data-article-ai-open] .article-titlebar {
+    right: var(--article-ai-layout-reserve);
+  }
+
+  #root[data-article-ai-open] .article-ai-panel {
+    right: var(--article-ai-panel-right);
+    width: var(--article-ai-panel-width);
+  }
+}
+
+/* 세로 태블릿에서는 입력에 필요한 폭만 남기고 본문 폭을 우선합니다. */
+@media (min-width: 768px) and (max-width: 1023px) {
+  #root[data-article-ai-open] {
+    --article-ai-panel-width: clamp(292px, 32vw, 320px);
+  }
+}
+
+/* 예약 뒤의 폭이 좁은 구간은 제목·본문·최신 글을 한 열로 다시 흐르게 합니다. */
+@media (min-width: 768px) and (max-width: 1535px) {
+  #root[data-article-ai-open] .article-hero-grid,
+  #root[data-article-ai-open] .article-reading-grid,
+  #root[data-article-ai-open] .article-latest-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  #root[data-article-ai-open] .article-reading-grid {
+    justify-content: stretch;
+  }
+
+  #root[data-article-ai-open] .article-reading-grid > .article-toc {
     display: none;
   }
 }

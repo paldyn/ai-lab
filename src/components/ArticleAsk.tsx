@@ -87,6 +87,7 @@ export function ArticleAsk({ title, fallbackContext, proseRef, ready }: ArticleA
     requestSerialRef.current += 1;
     requestRef.current?.abort();
     requestRef.current = null;
+    document.getElementById('root')?.removeAttribute('data-article-ai-open');
     setLoading(false);
     setOpen(false);
   }, []);
@@ -136,13 +137,11 @@ export function ArticleAsk({ title, fallbackContext, proseRef, ready }: ArticleA
     return () => window.clearInterval(timer);
   }, [loading]);
 
-  // 패널이 떠 있을 때 전역 '맨 위로' 단추가 그 아래로 비치지 않게 합니다.
-  useEffect(() => {
-    if (!open) return undefined;
-    const appRoot = document.getElementById('root');
-    appRoot?.setAttribute('data-article-ai-open', '');
-    return () => appRoot?.removeAttribute('data-article-ai-open');
-  }, [open]);
+  // 경로 이동으로 패널이 사라질 때도 레이아웃 예약 상태가 남지 않게 합니다.
+  useEffect(
+    () => () => document.getElementById('root')?.removeAttribute('data-article-ai-open'),
+    [],
+  );
 
   useEffect(() => {
     const root = proseRef.current;
@@ -203,6 +202,8 @@ export function ArticleAsk({ title, fallbackContext, proseRef, ready }: ArticleA
     setActiveSelection(null);
     setSelectionPrompt(null);
     setError('');
+    // 패널을 그리기 전에 공간부터 예약해 첫 프레임에도 본문과 겹치지 않게 합니다.
+    document.getElementById('root')?.setAttribute('data-article-ai-open', '');
     setOpen(true);
   };
 
@@ -218,6 +219,7 @@ export function ArticleAsk({ title, fallbackContext, proseRef, ready }: ArticleA
     setError('');
     setQuestion('');
     setSelectionPrompt(null);
+    document.getElementById('root')?.setAttribute('data-article-ai-open', '');
     setOpen(true);
   };
 
