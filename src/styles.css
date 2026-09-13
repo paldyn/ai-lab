@@ -3558,14 +3558,6 @@ input:focus-visible {
   font-weight: 600;
 }
 
-.article-ai-model {
-  margin-top: 18px;
-  color: var(--text-muted);
-  font-family: 'JetBrains Mono', ui-monospace, monospace;
-  font-size: 9px;
-  letter-spacing: 0.07em;
-}
-
 .article-ai-form {
   position: relative;
   display: flex;

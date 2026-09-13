@@ -37,7 +37,6 @@ interface ActiveSelection {
 
 interface AnswerState {
   html: string;
-  model: string;
   question: string;
 }
 
@@ -249,7 +248,6 @@ export function ArticleAsk({ title, fallbackContext, proseRef, ready }: ArticleA
       setAnswer({
         // renderAiMarkdown은 raw HTML을 버리고 allowlist sanitize를 통과한 HTML만 돌려줍니다.
         html: renderAiMarkdown(response.answer),
-        model: response.model,
         question: trimmedQuestion,
       });
     } catch (caught) {
@@ -409,7 +407,6 @@ export function ArticleAsk({ title, fallbackContext, proseRef, ready }: ArticleA
                   // AI 출력은 renderAiMarkdown의 HTML allowlist와 URL 검사를 통과했습니다.
                   dangerouslySetInnerHTML={{ __html: answer.html }}
                 />
-                {answer.model && <p className="article-ai-model">{answer.model.replaceAll('-', ' ').toUpperCase()}</p>}
               </div>
             )}
           </div>
