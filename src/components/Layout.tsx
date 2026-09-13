@@ -380,6 +380,9 @@ export function Layout({ children }: { children: ReactNode }) {
       <SiteUpdateGuard />
 
       <SearchOverlay open={searchOpen} onClose={() => setSearchOpen(false)} />
+
+      {/* 글 전용 플로팅 UI가 main의 전환 레이어를 벗어나되, 전역 모달의 inert 안에는 남습니다. */}
+      <div id="article-assistant-root" />
     </div>
   );
 }

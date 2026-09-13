@@ -2,6 +2,7 @@ import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { ArrowLeft, ArrowRight, ArrowUpRight } from 'lucide-react';
 import { Link, Navigate, useParams } from 'react-router';
 import { ArticleCard } from '../components/ArticleCard';
+import { ArticleAsk } from '../components/ArticleAsk';
 import { ArticleTitleBar } from '../components/ArticleTitleBar';
 import { ArticleToc } from '../components/ArticleToc';
 import { ArticleVisual } from '../components/ArticleVisual';
@@ -332,6 +333,13 @@ function ArticleView({ article }: { article: Article }) {
           )}
 
           <ImageLightbox image={zoomed} onClose={closeZoom} />
+
+          <ArticleAsk
+            title={article.title}
+            fallbackContext={article.summary}
+            proseRef={proseRef}
+            ready={Boolean(body)}
+          />
 
           {(prev || next) && (
             <nav className="article-endnav" aria-label="글 사이 이동">
