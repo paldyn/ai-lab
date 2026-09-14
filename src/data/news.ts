@@ -172,6 +172,90 @@ export const globalNewsUpdatedAt = '2026-09-09';
  */
 const entries: NewsItem[] = [
   {
+    id: 'introducing-the-agents-api',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'OpenAI, Codex 하네스를 그대로 여는 Agents API 공개',
+    summary:
+      'OpenAI가 Codex를 움직이는 하네스와 인프라를 그대로 쓰는 Agents API를 퍼블릭 베타로 열었다. ' +
+      '컨텍스트 자동 압축, 필요한 도구만 불러오는 툴 검색, 서브에이전트 병렬 실행을 갖췄고 별도 요금 없이 ' +
+      '토큰과 도구 사용분만 청구한다.',
+    publishedAt: '2026-09-10',
+    collectedAt: '2026-09-15',
+    category: 'Product',
+    signal: '에이전트 인프라',
+    url: 'https://openai.com/index/introducing-the-agents-api',
+  },
+  {
+    id: 'introducing-gpt-live-1-in-the-api',
+    source: 'OpenAI',
+    kind: 'model',
+    title: 'OpenAI, 전이중 음성 모델 GPT-Live-1을 API에 공개',
+    summary:
+      'OpenAI가 ChatGPT에 먼저 넣었던 GPT-Live-1을 API에서 쓸 수 있게 열었다. 분당 0.05달러이고, ' +
+      'Full Duplex Bench에서 GPT-Realtime-2.1보다 30%포인트 높았으며 깊은 추론은 GPT-6 Astra 같은 ' +
+      '백엔드 모델에 넘긴다.',
+    publishedAt: '2026-09-10',
+    collectedAt: '2026-09-15',
+    category: 'Multimodal',
+    signal: '실시간 음성',
+    url: 'https://openai.com/index/introducing-gpt-live-1-in-the-api',
+    model: {
+      family: 'GPT',
+      name: 'GPT-Live-1',
+      kind: '모델 패밀리',
+      status: '공개',
+      useCase: '전화·상담 음성 에이전트',
+      headline: '듣기와 말하기를 한 모델이 함께 처리해 STT·LLM·TTS를 잇던 음성 계층을 하나로 줄인다.',
+      logo: 'assets/openai.svg',
+      tone: 'gpt',
+    },
+  },
+  {
+    id: 'introducing-chatgpt-financial-services',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'OpenAI, 금융권용 ChatGPT for Financial Services 공개',
+    summary:
+      'OpenAI가 GPT-6 Astra와 프리미엄 금융 데이터를 함께 넣은 ChatGPT Work 변형을 냈다. Daloopa· ' +
+      'PitchBook·LSEG News·Crunchbase 데이터를 직접 색인해 제공하고, 수치를 원래 표·문단까지 되짚는 ' +
+      '인용 기능을 넣었다.',
+    publishedAt: '2026-09-10',
+    collectedAt: '2026-09-15',
+    category: 'Product',
+    signal: '금융 AI 도구',
+    url: 'https://openai.com/index/introducing-chatgpt-financial-services',
+  },
+  {
+    id: 'threat-intelligence-report-september-2026',
+    source: 'Anthropic',
+    kind: 'company',
+    title: 'Anthropic, Claude 악용 사례를 담은 9월 위협 보고서 공개',
+    summary:
+      'Anthropic이 2025년 12월부터 2026년 8월까지 차단한 악용 활동을 정리했다. 사이버 공작·영향력 공작· ' +
+      '감시·사기·생물학·재래식 무기·증류 일곱 갈래를 다뤘고, 쓰인 모델은 Claude Haiku·Sonnet·Opus였다고 ' +
+      '밝혔다.',
+    publishedAt: '2026-09-10',
+    collectedAt: '2026-09-15',
+    category: 'Safety',
+    signal: 'AI 위협 인텔리전스',
+    url: 'https://www.anthropic.com/threat-intelligence-report-september-2026',
+  },
+  {
+    id: 'claude-platform-september-10-2026',
+    source: 'Anthropic',
+    kind: 'company',
+    title: 'Claude 관리형 에이전트에 서버가 판정하는 auto 권한 추가',
+    summary:
+      'Anthropic이 Claude Managed Agents 권한 정책에 auto를 넣었다. 서버가 도구 호출마다 실행·거부· ' +
+      '승인 대기를 판정하고, ant CLI에는 터미널을 세션에 붙이는 ant beta:sessions connect가 생겼다.',
+    publishedAt: '2026-09-10',
+    collectedAt: '2026-09-15',
+    category: 'Product',
+    signal: '관리형 에이전트',
+    url: 'https://platform.claude.com/docs/en/release-notes/overview#september-10-2026',
+  },
+  {
     id: 'ai-policy-window',
     source: 'OpenAI',
     kind: 'company',
