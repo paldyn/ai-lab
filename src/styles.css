@@ -792,7 +792,7 @@ input:focus-visible {
   /* 40=태그 필터 패널, 50=헤더, 100·120=팝업. 본문 위, 팝업 아래에 둡니다. */
   z-index: 45;
   right: 24px;
-  bottom: 24px;
+  bottom: 80px;
   width: 44px;
   height: 44px;
   border-color: var(--border);
@@ -3167,7 +3167,7 @@ input:focus-visible {
   position: fixed;
   z-index: 1;
   right: 24px;
-  bottom: 80px;
+  bottom: 24px;
   display: inline-flex;
   min-height: 44px;
   align-items: center;
@@ -3586,6 +3586,11 @@ input:focus-visible {
   flex-direction: column;
   background: var(--preview-raised);
   padding: 15px 12px 12px;
+}
+
+/* 선택 문맥이 있을 때만 대화 영역과 질문 입력 영역 사이에 숨 쉴 공간을 둡니다. */
+.article-ai-panel:has(.article-ai-selection) .article-ai-form {
+  margin-top: 12px;
 }
 
 /* 브라우저 기본 모서리 손잡이 대신, 답변과 입력창 사이의 선을 직접 끌어 높이를 바꿉니다. */
@@ -5458,15 +5463,15 @@ input:focus-visible {
     font-size: 10px;
   }
 
-  /* 좌우 여백이 20px로 좁아지므로 버튼도 같이 안쪽으로 당깁니다. */
+  /* 모바일에서도 AI 단추를 아래, 맨 위로 단추를 그 위에 쌓습니다. */
   .to-top {
     right: 16px;
-    bottom: 16px;
+    bottom: 72px;
   }
 
   .article-ai-trigger {
     right: 16px;
-    bottom: 72px;
+    bottom: 16px;
   }
 
   .article-selection-ask {
