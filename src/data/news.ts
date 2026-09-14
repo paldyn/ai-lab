@@ -172,6 +172,21 @@ export const globalNewsUpdatedAt = '2026-09-09';
  */
 const entries: NewsItem[] = [
   {
+    id: 'ai-policy-window',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'OpenAI, 연방 AI 안전 규제 의무화와 캘리포니아 4개 법안 지지',
+    summary:
+      'OpenAI가 역량 기반 연방 AI 안전 규제를 의무화하자고 의회에 요구했다. 캘리포니아 SB 813·AB 1405·' +
+      'SB 1119·AB 1864 네 법안 지지를 공식 표명했고, 다른 프런티어 연구소들과 오정렬 모니터링 산업 표준을 ' +
+      '만들겠다고 밝혔다.',
+    publishedAt: '2026-09-09',
+    collectedAt: '2026-09-15',
+    category: 'Safety',
+    signal: 'AI 정책',
+    url: 'https://openai.com/index/ai-policy-window',
+  },
+  {
     id: 'gpt-6-astra-next-generation-work',
     source: 'OpenAI',
     kind: 'company',
