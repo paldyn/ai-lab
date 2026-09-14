@@ -45,6 +45,72 @@ export interface ArticleTextSelection {
   };
 }
 
+export type ArticlePanelPlacement = 'right' | 'left' | 'sheet';
+
+export interface ArticlePanelBounds {
+  left: number;
+  right: number;
+  top: number;
+  bottom: number;
+}
+
+export interface ArticlePanelGeometry {
+  placement: ArticlePanelPlacement;
+  left: number;
+  width: number;
+}
+
+const ARTICLE_PANEL_EDGE_INSET = 16;
+const ARTICLE_PANEL_PROSE_GAP = 40;
+const ARTICLE_PANEL_MIN_SIDE_WIDTH = 320;
+const ARTICLE_PANEL_MAX_WIDTH = 480;
+const ARTICLE_PANEL_SHEET_MAX_WIDTH = 640;
+const ARTICLE_PANEL_SIDE_MIN_VIEWPORT = 768;
+
+/** 본문은 움직이지 않고, 보이는 본문과 40px 떨어진 가장 넓은 패널 자리를 고릅니다. */
+export function calculateArticlePanelGeometry(
+  viewportWidth: number,
+  viewportHeight: number,
+  proseBounds: ArticlePanelBounds | null,
+): ArticlePanelGeometry {
+  const sheet = (): ArticlePanelGeometry => ({
+    placement: 'sheet',
+    left: ARTICLE_PANEL_EDGE_INSET,
+    width: Math.min(ARTICLE_PANEL_SHEET_MAX_WIDTH, Math.max(0, viewportWidth - ARTICLE_PANEL_EDGE_INSET * 2)),
+  });
+
+  if (viewportWidth < ARTICLE_PANEL_SIDE_MIN_VIEWPORT || !proseBounds) return sheet();
+
+  const rightLeft = Math.round(proseBounds.right + ARTICLE_PANEL_PROSE_GAP);
+  const rightWidth = Math.floor(viewportWidth - ARTICLE_PANEL_EDGE_INSET - rightLeft);
+  if (rightWidth >= ARTICLE_PANEL_MIN_SIDE_WIDTH) {
+    return {
+      placement: 'right',
+      left: rightLeft,
+      width: Math.min(ARTICLE_PANEL_MAX_WIDTH, rightWidth),
+    };
+  }
+
+  // 왼쪽은 본문이 패널의 위쪽까지 올라온 뒤에만 씁니다. 글 머리에서는 제목을 덮지 않고
+  // 넓은 하단 시트로 물러났다가, 읽는 구간에 들어오면 TOC 자리로 이동합니다.
+  const panelHeight = Math.min(620, Math.max(0, viewportHeight - 112));
+  const panelTop = viewportHeight - ARTICLE_PANEL_EDGE_INSET - panelHeight;
+  const proseVisibleBesidePanel = proseBounds.top <= panelTop && proseBounds.bottom > panelTop;
+  const leftWidth = Math.floor(
+    proseBounds.left - ARTICLE_PANEL_PROSE_GAP - ARTICLE_PANEL_EDGE_INSET,
+  );
+  if (proseVisibleBesidePanel && leftWidth >= ARTICLE_PANEL_MIN_SIDE_WIDTH) {
+    const width = Math.min(ARTICLE_PANEL_MAX_WIDTH, leftWidth);
+    return {
+      placement: 'left',
+      left: Math.round(proseBounds.left - ARTICLE_PANEL_PROSE_GAP - width),
+      width,
+    };
+  }
+
+  return sheet();
+}
+
 export interface ArticleAskPayload {
   title: string;
   context: string;

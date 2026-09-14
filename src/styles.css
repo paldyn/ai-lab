@@ -3236,7 +3236,8 @@ input:focus-visible {
   right: 16px;
   bottom: 16px;
   display: flex;
-  width: min(clamp(288px, 16vw, 320px), calc(100vw - 32px));
+  width: var(--article-ai-panel-width, 320px);
+  max-width: calc(100vw - 32px);
   height: min(620px, calc(100dvh - 112px));
   min-height: min(420px, calc(100dvh - 112px));
   flex-direction: column;
@@ -3248,6 +3249,13 @@ input:focus-visible {
     0 0 0 1px color-mix(in srgb, var(--text) 6%, transparent);
   color: var(--text);
   animation: article-ai-panel-in 180ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+/* 실제 본문 경계에서 40px 떨어진 좌표와 가용 폭을 ArticleAsk가 계산합니다. */
+.article-ai-panel[data-placement='right'],
+.article-ai-panel[data-placement='left'] {
+  right: auto;
+  left: var(--article-ai-panel-left);
 }
 
 .article-ai-panel::before {
@@ -3670,6 +3678,7 @@ input:focus-visible {
 .article-ai-form-notes {
   min-width: 0;
   flex: 1 1 auto;
+  overflow-wrap: anywhere;
 }
 
 .article-ai-shortcut {
@@ -3720,6 +3729,12 @@ input:focus-visible {
   visibility: hidden;
   pointer-events: none;
   opacity: 0;
+}
+
+/* 왼쪽 여백을 쓸 때 TOC 자리만 비웁니다. grid 폭은 유지되어 본문은 움직이지 않습니다. */
+#root[data-article-ai-open][data-article-ai-placement='left'] .article-toc {
+  visibility: hidden;
+  pointer-events: none;
 }
 
 /*
@@ -5357,6 +5372,20 @@ input:focus-visible {
   .section-space {
     padding-top: 60px;
     padding-bottom: 60px;
+  }
+}
+
+/* 양쪽에 320px이 안 남는 태블릿·작은 창은 본문을 움직이지 않고 하단 시트로 엽니다. */
+@media (min-width: 768px) {
+  .article-ai-panel[data-placement='sheet'] {
+    right: 16px;
+    left: 16px;
+    width: auto;
+    max-width: 640px;
+    height: min(52dvh, 500px);
+    min-height: 0;
+    max-height: calc(100dvh - 32px);
+    margin-inline: auto;
   }
 }
 

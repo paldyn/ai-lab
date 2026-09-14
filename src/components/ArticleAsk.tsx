@@ -17,8 +17,10 @@ import {
   articleAskErrorMessage,
   buildArticleQuestionContext,
   buildArticleSelectionContext,
+  calculateArticlePanelGeometry,
   captureArticleTextSelection,
   requestArticleAnswer,
+  type ArticlePanelGeometry,
   type ArticleTextSelection,
 } from '../lib/articleAsk';
 import { captureFocusOrigin, focusQuietly, restoreFocus } from '../lib/restoreFocus';
@@ -64,6 +66,11 @@ export function ArticleAsk({ title, fallbackContext, proseRef, ready }: ArticleA
   const [thinkingSeconds, setThinkingSeconds] = useState(0);
   const [composerHeight, setComposerHeight] = useState(DEFAULT_COMPOSER_HEIGHT);
   const [resizingComposer, setResizingComposer] = useState(false);
+  const [panelGeometry, setPanelGeometry] = useState<ArticlePanelGeometry>({
+    placement: 'sheet',
+    left: 16,
+    width: 640,
+  });
 
   const selectionButtonRef = useRef<HTMLButtonElement>(null);
   const panelRef = useRef<HTMLElement>(null);
@@ -73,6 +80,30 @@ export function ArticleAsk({ title, fallbackContext, proseRef, ready }: ArticleA
   const requestRef = useRef<AbortController | null>(null);
   const requestSerialRef = useRef(0);
   const resizeStartRef = useRef<{ pointerId: number; y: number; height: number } | null>(null);
+
+  const readPanelGeometry = useCallback((): ArticlePanelGeometry => {
+    const prose = ready ? proseRef.current : null;
+    const rect = prose?.getBoundingClientRect();
+    return calculateArticlePanelGeometry(
+      document.documentElement.clientWidth,
+      window.innerHeight,
+      rect
+        ? { left: rect.left, right: rect.right, top: rect.top, bottom: rect.bottom }
+        : null,
+    );
+  }, [proseRef, ready]);
+
+  const syncPanelGeometry = useCallback(() => {
+    const next = readPanelGeometry();
+    document.getElementById('root')?.setAttribute('data-article-ai-placement', next.placement);
+    setPanelGeometry((current) => (
+      current.placement === next.placement &&
+      Math.abs(current.left - next.left) < 1 &&
+      Math.abs(current.width - next.width) < 1
+        ? current
+        : next
+    ));
+  }, [readPanelGeometry]);
 
   const composerBounds = useCallback(() => {
     const panelHeight = panelRef.current?.getBoundingClientRect().height ?? window.innerHeight;
@@ -87,7 +118,9 @@ export function ArticleAsk({ title, fallbackContext, proseRef, ready }: ArticleA
     requestSerialRef.current += 1;
     requestRef.current?.abort();
     requestRef.current = null;
-    document.getElementById('root')?.removeAttribute('data-article-ai-open');
+    const pageRoot = document.getElementById('root');
+    pageRoot?.removeAttribute('data-article-ai-open');
+    pageRoot?.removeAttribute('data-article-ai-placement');
     setLoading(false);
     setOpen(false);
   }, []);
@@ -124,7 +157,34 @@ export function ArticleAsk({ title, fallbackContext, proseRef, ready }: ArticleA
     fitComposer();
     window.addEventListener('resize', fitComposer, { passive: true });
     return () => window.removeEventListener('resize', fitComposer);
-  }, [composerBounds, open]);
+  }, [composerBounds, open, panelGeometry.placement]);
+
+  useEffect(() => {
+    if (!open) return undefined;
+
+    let frame = 0;
+    const update = () => {
+      frame = 0;
+      syncPanelGeometry();
+    };
+    const schedule = () => {
+      if (frame) return;
+      frame = window.requestAnimationFrame(update);
+    };
+
+    schedule();
+    window.addEventListener('resize', schedule, { passive: true });
+    window.addEventListener('scroll', schedule, { passive: true });
+    const observer = typeof ResizeObserver === 'undefined' ? null : new ResizeObserver(schedule);
+    if (proseRef.current) observer?.observe(proseRef.current);
+
+    return () => {
+      if (frame) window.cancelAnimationFrame(frame);
+      window.removeEventListener('resize', schedule);
+      window.removeEventListener('scroll', schedule);
+      observer?.disconnect();
+    };
+  }, [open, proseRef, syncPanelGeometry]);
 
   useEffect(() => {
     if (!loading) return undefined;
@@ -138,10 +198,11 @@ export function ArticleAsk({ title, fallbackContext, proseRef, ready }: ArticleA
   }, [loading]);
 
   // 경로 이동으로 패널이 사라질 때도 전역의 열림 표시가 남지 않게 합니다.
-  useEffect(
-    () => () => document.getElementById('root')?.removeAttribute('data-article-ai-open'),
-    [],
-  );
+  useEffect(() => () => {
+    const pageRoot = document.getElementById('root');
+    pageRoot?.removeAttribute('data-article-ai-open');
+    pageRoot?.removeAttribute('data-article-ai-placement');
+  }, []);
 
   useEffect(() => {
     const root = proseRef.current;
@@ -202,6 +263,7 @@ export function ArticleAsk({ title, fallbackContext, proseRef, ready }: ArticleA
     setActiveSelection(null);
     setSelectionPrompt(null);
     setError('');
+    syncPanelGeometry();
     // 패널과 자리가 겹치는 전역 단추를 패널이 그려지는 프레임부터 숨깁니다.
     document.getElementById('root')?.setAttribute('data-article-ai-open', '');
     setOpen(true);
@@ -219,6 +281,7 @@ export function ArticleAsk({ title, fallbackContext, proseRef, ready }: ArticleA
     setError('');
     setQuestion('');
     setSelectionPrompt(null);
+    syncPanelGeometry();
     document.getElementById('root')?.setAttribute('data-article-ai-open', '');
     setOpen(true);
   };
@@ -335,6 +398,11 @@ export function ArticleAsk({ title, fallbackContext, proseRef, ready }: ArticleA
     } as CSSProperties;
   }, [selectionPrompt]);
 
+  const panelStyle = useMemo(() => ({
+    '--article-ai-panel-left': `${panelGeometry.left}px`,
+    '--article-ai-panel-width': `${panelGeometry.width}px`,
+  }) as CSSProperties, [panelGeometry.left, panelGeometry.width]);
+
   if (!portalHost) return null;
 
   return createPortal(
@@ -371,6 +439,8 @@ export function ArticleAsk({ title, fallbackContext, proseRef, ready }: ArticleA
           ref={panelRef}
           id="article-ai-panel"
           className="article-ai-panel"
+          data-placement={panelGeometry.placement}
+          style={panelStyle}
           role="dialog"
           aria-labelledby="article-ai-title"
           aria-describedby="article-ai-disclosure"

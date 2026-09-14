@@ -3,6 +3,7 @@ import {
   ARTICLE_AI_ENDPOINT,
   ArticleAskHttpError,
   ArticleAskResponseError,
+  calculateArticlePanelGeometry,
   articleQuestionTokens,
   articleAskErrorMessage,
   MAX_ARTICLE_CONTEXT_CHARS,
@@ -27,6 +28,54 @@ const blocks: ArticleContextBlock[] = [
   { text: '리랭커는 검색 후보를 질문과의 관련도 순으로 다시 정렬합니다.', heading: '재순위화', kind: 'body' },
   { text: '평가에서는 recall과 정답 근거 포함률을 함께 봅니다.', heading: '평가', kind: 'body' },
 ];
+
+describe('글 질문 패널 배치', () => {
+  it('넓은 화면에서는 본문 오른쪽 40px 뒤를 가능한 폭만큼 채운다', () => {
+    expect(calculateArticlePanelGeometry(2_048, 980, {
+      left: 770,
+      right: 1_530,
+      top: 100,
+      bottom: 3_000,
+    })).toEqual({ placement: 'right', left: 1_570, width: 462 });
+  });
+
+  it('우측이 좁고 본문을 읽는 중이면 왼쪽 여백을 사용한다', () => {
+    expect(calculateArticlePanelGeometry(1_416, 738, {
+      left: 462,
+      right: 1_222,
+      top: 100,
+      bottom: 3_000,
+    })).toEqual({ placement: 'left', left: 16, width: 406 });
+  });
+
+  it('본문이 아직 패널 옆까지 올라오지 않았으면 넓은 하단 시트를 사용한다', () => {
+    expect(calculateArticlePanelGeometry(1_416, 738, {
+      left: 462,
+      right: 1_222,
+      top: 900,
+      bottom: 4_000,
+    })).toEqual({ placement: 'sheet', left: 16, width: 640 });
+
+  });
+
+  it('1280px급 화면에서도 남는 왼쪽 폭이 320px 이상이면 본문을 가리지 않는다', () => {
+    expect(calculateArticlePanelGeometry(1_280, 720, {
+      left: 386.5,
+      right: 1_146.5,
+      top: -80,
+      bottom: 3_000,
+    })).toEqual({ placement: 'left', left: 17, width: 330 });
+  });
+
+  it('초광폭 화면에서도 패널 폭은 480px을 넘지 않는다', () => {
+    expect(calculateArticlePanelGeometry(2_560, 1_200, {
+      left: 1_034,
+      right: 1_794,
+      top: 100,
+      bottom: 3_000,
+    })).toEqual({ placement: 'right', left: 1_834, width: 480 });
+  });
+});
 
 describe('글 질문 context', () => {
   it('질문 단어가 들어간 문단과 주변 문맥을 우선한다', () => {
