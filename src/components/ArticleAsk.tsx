@@ -24,6 +24,7 @@ import {
   type ArticleTextSelection,
 } from '../lib/articleAsk';
 import { captureFocusOrigin, focusQuietly, restoreFocus } from '../lib/restoreFocus';
+import { lockScroll } from '../lib/scrollLock';
 
 interface ArticleAskProps {
   title: string;
@@ -43,6 +44,7 @@ interface AnswerState {
 }
 
 interface ArticleMobileViewport {
+  compact: boolean;
   height: number;
   left: number;
   top: number;
@@ -132,6 +134,7 @@ export function ArticleAsk({ title, fallbackContext, proseRef, ready }: ArticleA
       Math.max(0, viewportHeight - sheetInset * 2),
     );
     const next = {
+      compact: viewportHeight <= 520,
       height: sheetHeight,
       left: viewportLeft + sheetInset,
       top: viewportTop + viewportHeight - sheetHeight - sheetInset,
@@ -140,6 +143,7 @@ export function ArticleAsk({ title, fallbackContext, proseRef, ready }: ArticleA
 
     setMobileViewport((current) => (
       current &&
+      current.compact === next.compact &&
       Math.abs(current.height - next.height) < 1 &&
       Math.abs(current.left - next.left) < 1 &&
       Math.abs(current.top - next.top) < 1 &&
@@ -204,6 +208,15 @@ export function ArticleAsk({ title, fallbackContext, proseRef, ready }: ArticleA
       window.removeEventListener('orientationchange', syncMobileViewport);
     };
   }, [open, syncMobileViewport]);
+
+  useEffect(() => {
+    if (!open) return undefined;
+
+    const touchScreen = window.innerWidth <= MOBILE_PANEL_BREAKPOINT ||
+      window.matchMedia('(pointer: coarse)').matches;
+    // 모바일 사파리에서는 overflow만으로 손가락 스크롤이 멎지 않아 검증된 공통 잠금을 씁니다.
+    return touchScreen ? lockScroll() : undefined;
+  }, [open]);
 
   useEffect(() => {
     if (!open) return undefined;
@@ -515,6 +528,7 @@ export function ArticleAsk({ title, fallbackContext, proseRef, ready }: ArticleA
           id="article-ai-panel"
           className="article-ai-panel"
           data-placement={panelGeometry.placement}
+          data-mobile-compact={mobileViewport?.compact ? 'true' : undefined}
           style={panelStyle}
           role="dialog"
           aria-labelledby="article-ai-title"
