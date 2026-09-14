@@ -3236,10 +3236,9 @@ input:focus-visible {
   right: 16px;
   bottom: 16px;
   display: flex;
-  width: min(clamp(312px, 18vw, 348px), calc(100vw - 32px));
-  height: clamp(400px, 56dvh, 500px);
-  min-height: 0;
-  max-height: calc(100dvh - 32px);
+  width: min(clamp(288px, 16vw, 320px), calc(100vw - 32px));
+  height: min(620px, calc(100dvh - 112px));
+  min-height: min(420px, calc(100dvh - 112px));
   flex-direction: column;
   overflow: hidden;
   border: 1px solid var(--preview-edge);
@@ -3249,11 +3248,6 @@ input:focus-visible {
     0 0 0 1px color-mix(in srgb, var(--text) 6%, transparent);
   color: var(--text);
   animation: article-ai-panel-in 180ms cubic-bezier(0.16, 1, 0.3, 1) both;
-}
-
-/* 질문 전에는 읽던 글을 더 많이 남기고, 답변이 생길 때만 필요한 만큼 넓힙니다. */
-.article-ai-panel[data-state='idle'] {
-  height: clamp(346px, 48dvh, 420px);
 }
 
 .article-ai-panel::before {
@@ -3379,14 +3373,14 @@ input:focus-visible {
 .article-ai-empty,
 .article-ai-loading {
   display: flex;
-  min-height: 110px;
+  min-height: 210px;
   align-items: center;
   justify-content: center;
   flex-direction: column;
   text-align: center;
 }
 
-/* 선택 인용이 함께 있을 때는 둘이 각각 100%를 차지하지 않게 합니다. */
+/* 선택 인용이 없을 때는 빈 상태가 남는 답변 영역의 가운데에 옵니다. */
 .article-ai-content > :is(.article-ai-empty, .article-ai-loading):only-child {
   height: 100%;
 }
@@ -3467,6 +3461,7 @@ input:focus-visible {
   color: var(--text-dim);
   font-size: 12px;
   line-height: 1.6;
+  overflow-wrap: anywhere;
 }
 
 .article-ai-markdown {
@@ -3690,6 +3685,7 @@ input:focus-visible {
 .article-ai-form-foot button {
   display: inline-flex;
   min-height: 34px;
+  flex: 0 0 auto;
   align-items: center;
   justify-content: center;
   gap: 6px;
@@ -5364,22 +5360,6 @@ input:focus-visible {
   }
 }
 
-/* 낮은 노트북·가로 태블릿에서는 세로 점유율도 함께 낮춥니다. */
-@media (min-width: 641px) and (max-height: 720px) {
-  .article-ai-panel {
-    height: clamp(340px, 56dvh, 420px);
-  }
-
-  .article-ai-panel[data-state='idle'] {
-    height: clamp(320px, 48dvh, 360px);
-  }
-
-  .article-ai-empty,
-  .article-ai-loading {
-    min-height: 90px;
-  }
-}
-
 /*
  * 768px보다 좁은 화면은 좌우로 나누면 양쪽 모두 너무 좁아집니다. 패널을 화면 아래
  * 시트로 바꾸고 위쪽의 글을 절반 가까이 남깁니다.
@@ -5391,14 +5371,10 @@ input:focus-visible {
     bottom: 16px;
     width: auto;
     max-width: 640px;
-    height: clamp(340px, 48dvh, 420px);
+    height: min(52dvh, 500px);
     min-height: 0;
     max-height: calc(100dvh - 32px);
     margin-inline: auto;
-  }
-
-  .article-ai-panel[data-state='idle'] {
-    height: clamp(320px, 42dvh, 380px);
   }
 
   .article-ai-content {
@@ -5407,7 +5383,7 @@ input:focus-visible {
 
   .article-ai-empty,
   .article-ai-loading {
-    min-height: 90px;
+    min-height: 140px;
   }
 }
 
@@ -5453,13 +5429,9 @@ input:focus-visible {
     right: 12px;
     bottom: 12px;
     width: calc(100vw - 24px);
-    height: clamp(320px, 52dvh, 440px);
+    height: clamp(320px, 60dvh, 520px);
     min-height: 0;
     max-height: calc(100dvh - 24px);
-  }
-
-  .article-ai-panel[data-state='idle'] {
-    height: clamp(300px, 46dvh, 380px);
   }
 
   .article-ai-content {
@@ -5468,7 +5440,7 @@ input:focus-visible {
 
   .article-ai-empty,
   .article-ai-loading {
-    min-height: 80px;
+    min-height: 140px;
   }
 
   .article-ai-form-foot {
@@ -5664,11 +5636,8 @@ input:focus-visible {
 /* 가로 휴대폰처럼 높이가 아주 낮으면 화면 폭과 관계없이 본문 여백을 우선합니다. */
 @media (max-height: 520px) {
   .article-ai-panel {
-    height: min(68dvh, 340px);
-  }
-
-  .article-ai-panel[data-state='idle'] {
-    height: min(62dvh, 300px);
+    height: min(72dvh, 360px);
+    min-height: 0;
   }
 
   .article-ai-content {
@@ -5685,78 +5654,6 @@ input:focus-visible {
   }
 
   .article-ai-empty > span {
-    display: none;
-  }
-}
-
-/* 641px 이상에서는 바로 위의 낮은 화면 규칙과 520px 경계를 연속으로 잇습니다. */
-@media (min-width: 641px) and (max-height: 520px) {
-  .article-ai-panel[data-state='idle'] {
-    height: min(62dvh, 320px);
-  }
-}
-
-/*
- * 패널과 글 사이에 필요한 폭을 하나의 식으로 계산합니다. site-wrap의 최대 폭은
- * 1200px입니다. 화면이 좁을 때는 패널 폭+오른쪽 여백+24px을 전부 예약하고,
- * 넓어지면 원래 생기는 오른쪽 바깥 여백만큼 예약을 연속해서 줄입니다. 그래서
- * 특정 해상도에서 미디어 쿼리가 끊기며 다시 본문을 덮는 사각지대가 없습니다.
- */
-#root[data-article-ai-open] {
-  --article-ai-panel-width: clamp(312px, 18vw, 348px);
-  --article-ai-panel-right: 16px;
-  --article-ai-panel-gap: 24px;
-  --article-ai-clearance:
-    calc(var(--article-ai-panel-width) + var(--article-ai-panel-right) + var(--article-ai-panel-gap));
-  --article-ai-layout-reserve: clamp(
-    0px,
-    calc(1200px + var(--article-ai-clearance) + var(--article-ai-clearance) - 100vw),
-    var(--article-ai-clearance)
-  );
-}
-
-@media (min-width: 768px) {
-  #root[data-article-ai-open] #main-content,
-  #root[data-article-ai-open] .site-footer {
-    padding-right: var(--article-ai-layout-reserve);
-  }
-
-  #root[data-article-ai-open] .article-titlebar {
-    right: var(--article-ai-layout-reserve);
-  }
-
-  #root[data-article-ai-open] .article-ai-panel {
-    right: var(--article-ai-panel-right);
-    width: var(--article-ai-panel-width);
-  }
-}
-
-/* 세로 태블릿에서는 입력에 필요한 폭만 남기고 본문 폭을 우선합니다. */
-@media (min-width: 768px) and (max-width: 1023px) {
-  #root[data-article-ai-open] {
-    --article-ai-panel-width: clamp(292px, 32vw, 320px);
-  }
-}
-
-/* 예약 뒤 2열이 맞지 않는 구간은 본문 행 길이를 유지한 채 한 열로 바꿉니다. */
-@media (min-width: 768px) and (max-width: 1479px) {
-  #root[data-article-ai-open] .article-hero-grid,
-  #root[data-article-ai-open] .article-reading-grid,
-  #root[data-article-ai-open] .article-latest-grid {
-    grid-template-columns: minmax(0, 1fr);
-  }
-
-  #root[data-article-ai-open] .article-reading-grid {
-    justify-content: stretch;
-  }
-
-  #root[data-article-ai-open] .article-reading-body {
-    width: 100%;
-    max-width: 760px;
-    margin-inline: auto;
-  }
-
-  #root[data-article-ai-open] .article-reading-grid > .article-toc {
     display: none;
   }
 }

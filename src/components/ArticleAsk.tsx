@@ -41,7 +41,7 @@ interface AnswerState {
 }
 
 const REQUEST_TIMEOUT_MS = 45_000;
-const DEFAULT_COMPOSER_HEIGHT = 150;
+const DEFAULT_COMPOSER_HEIGHT = 170;
 const MIN_COMPOSER_HEIGHT = 142;
 const MAX_COMPOSER_HEIGHT = 320;
 const subscribeHydration = () => () => {};
@@ -64,7 +64,6 @@ export function ArticleAsk({ title, fallbackContext, proseRef, ready }: ArticleA
   const [thinkingSeconds, setThinkingSeconds] = useState(0);
   const [composerHeight, setComposerHeight] = useState(DEFAULT_COMPOSER_HEIGHT);
   const [resizingComposer, setResizingComposer] = useState(false);
-  const panelState = loading || error || answer || activeSelection ? 'active' : 'idle';
 
   const selectionButtonRef = useRef<HTMLButtonElement>(null);
   const panelRef = useRef<HTMLElement>(null);
@@ -125,7 +124,7 @@ export function ArticleAsk({ title, fallbackContext, proseRef, ready }: ArticleA
     fitComposer();
     window.addEventListener('resize', fitComposer, { passive: true });
     return () => window.removeEventListener('resize', fitComposer);
-  }, [composerBounds, open, panelState]);
+  }, [composerBounds, open]);
 
   useEffect(() => {
     if (!loading) return undefined;
@@ -138,7 +137,7 @@ export function ArticleAsk({ title, fallbackContext, proseRef, ready }: ArticleA
     return () => window.clearInterval(timer);
   }, [loading]);
 
-  // 경로 이동으로 패널이 사라질 때도 레이아웃 예약 상태가 남지 않게 합니다.
+  // 경로 이동으로 패널이 사라질 때도 전역의 열림 표시가 남지 않게 합니다.
   useEffect(
     () => () => document.getElementById('root')?.removeAttribute('data-article-ai-open'),
     [],
@@ -203,7 +202,7 @@ export function ArticleAsk({ title, fallbackContext, proseRef, ready }: ArticleA
     setActiveSelection(null);
     setSelectionPrompt(null);
     setError('');
-    // 패널을 그리기 전에 공간부터 예약해 첫 프레임에도 본문과 겹치지 않게 합니다.
+    // 패널과 자리가 겹치는 전역 단추를 패널이 그려지는 프레임부터 숨깁니다.
     document.getElementById('root')?.setAttribute('data-article-ai-open', '');
     setOpen(true);
   };
@@ -372,7 +371,6 @@ export function ArticleAsk({ title, fallbackContext, proseRef, ready }: ArticleA
           ref={panelRef}
           id="article-ai-panel"
           className="article-ai-panel"
-          data-state={panelState}
           role="dialog"
           aria-labelledby="article-ai-title"
           aria-describedby="article-ai-disclosure"

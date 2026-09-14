@@ -339,7 +339,7 @@ export function Layout({ children }: { children: ReactNode }) {
         {children}
       </main>
 
-      <footer className="site-footer border-t border-[var(--border)]">
+      <footer className="border-t border-[var(--border)]">
         <div className="site-wrap grid gap-10 py-12 md:grid-cols-[1fr_auto] md:items-end">
           <div>
             <div className="mb-4 flex items-center gap-3">
