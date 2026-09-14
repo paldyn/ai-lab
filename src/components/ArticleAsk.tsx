@@ -389,6 +389,7 @@ export function ArticleAsk({ title, fallbackContext, proseRef, ready }: ArticleA
     if (!ready || !root) return undefined;
 
     let frame = 0;
+    let pointerSelecting = false;
     const inspect = () => {
       frame = 0;
       const next = captureArticleTextSelection(root, document.getSelection());
@@ -398,28 +399,55 @@ export function ArticleAsk({ title, fallbackContext, proseRef, ready }: ArticleA
       setSelectionPrompt(next);
     };
     const schedule = () => {
+      // 마우스·터치로 선택하는 중에는 CTA를 그리지 않고 포인터를 놓은 뒤 측정합니다.
+      if (pointerSelecting) return;
       if (frame) return;
       frame = window.requestAnimationFrame(inspect);
     };
-    const clearAway = (event: PointerEvent) => {
+    const handleSelectionChange = () => {
+      // 키보드·보조기술로 만든 선택은 selectionchange 경로로 계속 지원합니다.
+      if (!pointerSelecting) schedule();
+    };
+    const handlePointerDown = (event: PointerEvent) => {
+      if (event.pointerType === 'mouse' && event.button !== 0) return;
       const target = event.target;
       if (!(target instanceof Node)) return;
-      if (root.contains(target) || selectionButtonRef.current?.contains(target)) return;
+      if (selectionButtonRef.current?.contains(target)) return;
+      if (root.contains(target)) {
+        pointerSelecting = true;
+        if (frame) window.cancelAnimationFrame(frame);
+        frame = 0;
+        setSelectionPrompt(null);
+        return;
+      }
+      pointerSelecting = false;
       setSelectionPrompt(null);
     };
+    const handlePointerUp = () => {
+      if (!pointerSelecting) return;
+      pointerSelecting = false;
+      schedule();
+    };
+    const handlePointerCancel = () => {
+      if (!pointerSelecting) return;
+      pointerSelecting = false;
+      schedule();
+    };
 
-    document.addEventListener('selectionchange', schedule);
-    document.addEventListener('pointerdown', clearAway, true);
-    root.addEventListener('pointerup', schedule);
+    document.addEventListener('selectionchange', handleSelectionChange);
+    document.addEventListener('pointerdown', handlePointerDown, true);
+    document.addEventListener('pointerup', handlePointerUp, true);
+    document.addEventListener('pointercancel', handlePointerCancel, true);
     root.addEventListener('keyup', schedule);
     window.addEventListener('resize', schedule, { passive: true });
     window.addEventListener('scroll', schedule, { passive: true });
 
     return () => {
       if (frame) window.cancelAnimationFrame(frame);
-      document.removeEventListener('selectionchange', schedule);
-      document.removeEventListener('pointerdown', clearAway, true);
-      root.removeEventListener('pointerup', schedule);
+      document.removeEventListener('selectionchange', handleSelectionChange);
+      document.removeEventListener('pointerdown', handlePointerDown, true);
+      document.removeEventListener('pointerup', handlePointerUp, true);
+      document.removeEventListener('pointercancel', handlePointerCancel, true);
       root.removeEventListener('keyup', schedule);
       window.removeEventListener('resize', schedule);
       window.removeEventListener('scroll', schedule);
