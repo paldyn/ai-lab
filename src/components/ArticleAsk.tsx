@@ -41,7 +41,7 @@ interface AnswerState {
 }
 
 const REQUEST_TIMEOUT_MS = 45_000;
-const DEFAULT_COMPOSER_HEIGHT = 170;
+const DEFAULT_COMPOSER_HEIGHT = 150;
 const MIN_COMPOSER_HEIGHT = 142;
 const MAX_COMPOSER_HEIGHT = 320;
 const subscribeHydration = () => () => {};
@@ -64,6 +64,7 @@ export function ArticleAsk({ title, fallbackContext, proseRef, ready }: ArticleA
   const [thinkingSeconds, setThinkingSeconds] = useState(0);
   const [composerHeight, setComposerHeight] = useState(DEFAULT_COMPOSER_HEIGHT);
   const [resizingComposer, setResizingComposer] = useState(false);
+  const panelState = loading || error || answer || activeSelection ? 'active' : 'idle';
 
   const selectionButtonRef = useRef<HTMLButtonElement>(null);
   const panelRef = useRef<HTMLElement>(null);
@@ -124,7 +125,7 @@ export function ArticleAsk({ title, fallbackContext, proseRef, ready }: ArticleA
     fitComposer();
     window.addEventListener('resize', fitComposer, { passive: true });
     return () => window.removeEventListener('resize', fitComposer);
-  }, [composerBounds, open]);
+  }, [composerBounds, open, panelState]);
 
   useEffect(() => {
     if (!loading) return undefined;
@@ -371,6 +372,7 @@ export function ArticleAsk({ title, fallbackContext, proseRef, ready }: ArticleA
           ref={panelRef}
           id="article-ai-panel"
           className="article-ai-panel"
+          data-state={panelState}
           role="dialog"
           aria-labelledby="article-ai-title"
           aria-describedby="article-ai-disclosure"

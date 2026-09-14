@@ -304,7 +304,7 @@ function ArticleView({ article }: { article: Article }) {
           </div>
         </ArticleToc>
 
-        <div className="min-w-0">
+        <div className="article-reading-body min-w-0">
           {/*
             본문이 아직 없으면 뼈대를 세웁니다. 목록에서 눌러 들어오면 그 글의 청크를
             그때 받는데, 예전에는 그동안 이 자리가 빈 문자열이라 「글이 안 뜬다」로
