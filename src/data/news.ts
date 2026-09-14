@@ -172,6 +172,50 @@ export const globalNewsUpdatedAt = '2026-09-09';
  */
 const entries: NewsItem[] = [
   {
+    id: 'developers-tools-devfest2026',
+    source: 'Google DeepMind',
+    kind: 'company',
+    title: 'Google, 115개국 800여 행사로 DevFest 2026 개막',
+    summary:
+      'Google이 개발자 커뮤니티 행사 DevFest 2026을 알렸다. 10월 1일부터 12월 31일까지 115개국에서 ' +
+      '800개가 넘는 행사가 열리고, Google Developer Groups가 지역마다 일정을 직접 짠다고 밝혔다.',
+    publishedAt: '2026-09-14',
+    collectedAt: '2026-09-15',
+    category: 'Corporate',
+    signal: '개발자 행사',
+    url: 'https://blog.google/innovation-and-ai/technology/developers-tools/devfest2026',
+  },
+  {
+    id: 'perplexity-improving-accuracy-with-astra',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'Perplexity, GPT-6 Astra에 종단 간 시스템을 맡긴다',
+    summary:
+      'Perplexity가 GPT-6 Astra로 커뮤니케이션 작성과 실제 시스템 수정, 프로덕션 소프트웨어 모니터링을 ' +
+      '맡긴다고 밝혔다. 외부 서비스의 응답을 흉내 내는 테스트 프로그램을 모델이 직접 만들게 해 워크플로를 ' +
+      '처음부터 끝까지 검증한다.',
+    publishedAt: '2026-09-14',
+    collectedAt: '2026-09-15',
+    category: 'Product',
+    signal: '기업 도입 사례',
+    url: 'https://openai.com/index/perplexity-improving-accuracy-with-astra',
+  },
+  {
+    id: 'cognition-devin-testing-with-astra',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'Cognition, GPT-6 Astra로 Devin이 제 작업을 검증하게',
+    summary:
+      'Devin을 만드는 Cognition이 클라우드 에이전트와 CLI·데스크톱 제품에 GPT-6 Astra를 적용했다. ' +
+      'iPhone 게임을 시뮬레이터에서 돌린 녹화와 통과·미검증 항목 보고서를 함께 내놓게 해 코드 리뷰 부담을 ' +
+      '줄이려 한다고 밝혔다.',
+    publishedAt: '2026-09-11',
+    collectedAt: '2026-09-15',
+    category: 'Product',
+    signal: '기업 도입 사례',
+    url: 'https://openai.com/index/cognition-devin-testing-with-astra',
+  },
+  {
     id: 'introducing-the-agents-api',
     source: 'OpenAI',
     kind: 'company',
