@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="470" viewBox="0 0 880 470">
+  <rect x="0" y="0" width="880" height="470" rx="12" fill="#0a0a0a"/>
+  <text x="60" y="46" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="22" font-weight="700" fill="#e8e8e8">f의 부호가 A의 증감을 정한다</text>
+  <line x1="346.67" y1="70" x2="346.67" y2="366" stroke="#7777cc" stroke-width="2" stroke-dasharray="4,4"/>
+  <text x="356.67" y="66" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#7777cc">f = 0 인 자리</text>
+  <text x="60" y="96" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#e8e8e8">f(x) = x &#8722; 1</text>
+  <line x1="150" y1="150" x2="740" y2="150" stroke="#888888" stroke-width="1.5"/>
+  <text x="746" y="155" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888888">x</text>
+  <line x1="160" y1="200" x2="160" y2="55" stroke="#888888" stroke-width="1.5"/>
+  <line x1="160.0" y1="190" x2="720.0" y2="70" stroke="#7ec8e3" stroke-width="2.5"/>
+  <text x="230" y="132" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e05555">f &lt; 0</text>
+  <text x="600" y="186" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#55c555">f &gt; 0</text>
+  <text x="342.67" y="176" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888888">1</text>
+  <text x="529.33" y="176" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888888">2</text>
+  <text x="716.0" y="176" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888888">3</text>
+  <text x="60" y="270" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#e8e8e8">A(x) = 0부터 x까지의 넓이</text>
+  <line x1="150" y1="330" x2="740" y2="330" stroke="#888888" stroke-width="1.5"/>
+  <text x="746" y="335" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888888">x</text>
+  <line x1="160" y1="370" x2="160" y2="258" stroke="#888888" stroke-width="1.5"/>
+  <polyline points="160.0,330.0 169.33,331.95 178.67,333.8 188.0,335.55 197.33,337.2 206.67,338.75 216.0,340.2 225.33,341.55 234.67,342.8 244.0,343.95 253.33,345.0 262.67,345.95 272.0,346.8 281.33,347.55 290.67,348.2 300.0,348.75 309.33,349.2 318.67,349.55 328.0,349.8 337.33,349.95 346.67,350.0 356.0,349.95 365.33,349.8 374.67,349.55 384.0,349.2 393.33,348.75 402.67,348.2 412.0,347.55 421.33,346.8 430.67,345.95 440.0,345.0 449.33,343.95 458.67,342.8 468.0,341.55 477.33,340.2 486.67,338.75 496.0,337.2 505.33,335.55 514.67,333.8 524.0,331.95 533.33,330.0 542.67,327.95 552.0,325.8 561.33,323.55 570.67,321.2 580.0,318.75 589.33,316.2 598.67,313.55 608.0,310.8 617.33,307.95 626.67,305.0 636.0,301.95 645.33,298.8 654.67,295.55 664.0,292.2 673.33,288.75 682.67,285.2 692.0,281.55 701.33,277.8 710.67,273.95 720.0,270.0" fill="none" stroke="#7ec8e3" stroke-width="2.5"/>
+  <circle cx="346.67" cy="350.0" r="5" fill="#e8e8e8"/>
+  <text x="360.67" y="368" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e8e8e8">꼭짓점</text>
+  <text x="230" y="300" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e05555">A는 내려간다</text>
+  <text x="600" y="376" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#55c555">A는 올라간다</text>
+  <text x="60" y="424" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="14" fill="#e8e8e8">A를 미분하면 f가 나온다 — 위 그래프의 높이가 아래 그래프의 기울기다.</text>
+</svg>

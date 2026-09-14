@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="440" viewBox="0 0 880 440">
+  <rect x="0" y="0" width="880" height="440" rx="12" fill="#0a0a0a"/>
+
+  <text x="60" y="48" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="22" font-weight="700" fill="#e8e8e8">계산기를 어디서 쓰는가</text>
+
+  <rect x="60" y="84" width="360" height="192" rx="10" fill="#101418" stroke="#55c555" stroke-width="1.5"/>
+  <text x="84" y="118" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#55c555">손으로 — 식을 바꾸는 일</text>
+  <text x="84" y="154" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e8e8e8">괄호 풀기</text>
+  <text x="84" y="186" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e8e8e8">이항</text>
+  <text x="84" y="218" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e8e8e8">약분</text>
+  <text x="84" y="250" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e8e8e8">같은 것끼리 모아 항 정리</text>
+
+  <rect x="460" y="84" width="360" height="192" rx="10" fill="#101418" stroke="#7777cc" stroke-width="1.5"/>
+  <text x="484" y="118" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#7777cc">기계로 — 수를 내는 일</text>
+  <text x="484" y="154" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e8e8e8">자릿수 많은 사칙연산</text>
+  <text x="484" y="186" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e8e8e8">제곱근의 소수 값</text>
+  <text x="484" y="218" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e8e8e8">삼각비의 값</text>
+  <text x="484" y="250" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e8e8e8">같은 식에 수를 여럿 넣어 보기</text>
+
+  <rect x="60" y="310" width="760" height="64" rx="10" fill="#101418" stroke="#3a4a6e" stroke-width="1.5"/>
+  <text x="440" y="347" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#e8e8e8">식을 바꾸는 일은 손으로, 수를 내는 일은 기계로</text>
+</svg>
