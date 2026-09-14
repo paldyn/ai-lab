@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="380" viewBox="0 0 880 380">
+  <rect x="0" y="0" width="880" height="380" rx="12" fill="#0a0a0a"/>
+
+  <text x="60" y="54" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="22" font-weight="700" fill="#e8e8e8">유형별 문의 건수</text>
+  <text x="60" y="82" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="13" fill="#888">월 4,000건을 유형별로 센 예 — 자동화의 상한은 여기서 정해진다</text>
+
+  <rect x="220" y="120" width="301" height="34" rx="4" fill="#7ec8e3"/>
+  <text x="200" y="141" text-anchor="end"
+        font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="14" fill="#e8e8e8">배송 조회</text>
+  <text x="533" y="141" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="14" fill="#888">1,100건 · 27.5%</text>
+
+  <rect x="220" y="174" width="170" height="34" rx="4" fill="#7ec8e3"/>
+  <text x="200" y="195" text-anchor="end"
+        font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="14" fill="#e8e8e8">반품 규정</text>
+  <text x="402" y="195" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="14" fill="#888">620건 · 15.5%</text>
+
+  <rect x="220" y="228" width="104" height="34" rx="4" fill="#7ec8e3"/>
+  <text x="200" y="249" text-anchor="end"
+        font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="14" fill="#e8e8e8">로그인 문제</text>
+  <text x="336" y="249" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="14" fill="#888">380건 · 9.5%</text>
+
+  <rect x="220" y="282" width="520" height="34" rx="4" fill="#3a3a3a"/>
+  <text x="200" y="303" text-anchor="end"
+        font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="14" fill="#888">나머지 꼬리</text>
+  <text x="240" y="303" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="14" fill="#e8e8e8">1,900건이 수십 개 유형으로 흩어진다</text>
+
+  <line x1="220" y1="110" x2="220" y2="326" stroke="#444" stroke-width="1"/>
+
+  <text x="60" y="352" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="13" fill="#55c555">위 셋만 합쳐도 2,100건(52%) — 먼저 손볼 자리가 여기다</text>
+</svg>

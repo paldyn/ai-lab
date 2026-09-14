@@ -1,0 +1,91 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="420" viewBox="0 0 880 420">
+  <defs>
+    <marker id="hfl-arr" viewBox="0 0 14 14" refX="12" refY="7"
+            markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#7777cc"/>
+    </marker>
+    <marker id="hfl-arr2" viewBox="0 0 14 14" refX="12" refY="7"
+            markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#7ec8e3"/>
+    </marker>
+  </defs>
+
+  <rect x="0" y="0" width="880" height="420" rx="12" fill="#0a0a0a"/>
+
+  <text x="60" y="54" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="22" font-weight="700" fill="#e8e8e8">LoRA가 바꾸는 가중치</text>
+  <text x="60" y="82" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="13" fill="#888">원래 가중치는 얼리고, 옆에 붙인 작은 행렬 둘만 학습한다</text>
+
+  <!-- 입력 -->
+  <rect x="60" y="175" width="110" height="60" rx="8" fill="none" stroke="#555" stroke-width="1.5"/>
+  <text x="115" y="212" text-anchor="middle"
+        font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="15" fill="#e8e8e8">입력</text>
+
+  <!-- 입력 → W -->
+  <line x1="170" y1="205" x2="240" y2="205" stroke="#7777cc" stroke-width="2" marker-end="url(#hfl-arr)"/>
+  <circle cx="205" cy="205" r="4" fill="#7ec8e3"/>
+
+  <!-- W (동결) -->
+  <rect x="240" y="150" width="220" height="110" rx="8" fill="none" stroke="#7777cc" stroke-width="2"/>
+  <text x="350" y="198" text-anchor="middle"
+        font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="22" font-weight="700" fill="#e8e8e8">W</text>
+  <text x="350" y="224" text-anchor="middle"
+        font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="12" fill="#888">동결 · 학습 안 함</text>
+
+  <!-- W → 합 -->
+  <line x1="460" y1="205" x2="536" y2="205" stroke="#7777cc" stroke-width="2" marker-end="url(#hfl-arr)"/>
+
+  <!-- 합 -->
+  <circle cx="560" cy="205" r="24" fill="none" stroke="#e8e8e8" stroke-width="2"/>
+  <text x="560" y="213" text-anchor="middle"
+        font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="22" font-weight="700" fill="#e8e8e8">+</text>
+
+  <!-- 합 → 출력 -->
+  <line x1="584" y1="205" x2="650" y2="205" stroke="#7777cc" stroke-width="2" marker-end="url(#hfl-arr)"/>
+
+  <!-- 출력 -->
+  <rect x="650" y="175" width="130" height="60" rx="8" fill="none" stroke="#555" stroke-width="1.5"/>
+  <text x="715" y="212" text-anchor="middle"
+        font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="15" fill="#e8e8e8">출력</text>
+  <text x="650" y="262"
+        font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="13" fill="#7ec8e3">Wx + BAx</text>
+
+  <!-- 우회 경로 -->
+  <path d="M 205 205 L 205 332 L 240 332" fill="none" stroke="#7ec8e3" stroke-width="2"
+        marker-end="url(#hfl-arr2)"/>
+
+  <rect x="240" y="306" width="96" height="52" rx="6" fill="none" stroke="#7ec8e3" stroke-width="2"/>
+  <text x="288" y="326" text-anchor="middle"
+        font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="18" font-weight="700" fill="#e8e8e8">A</text>
+  <text x="288" y="348" text-anchor="middle"
+        font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="12" fill="#888">d × r</text>
+
+  <line x1="336" y1="332" x2="380" y2="332" stroke="#7ec8e3" stroke-width="2" marker-end="url(#hfl-arr2)"/>
+
+  <rect x="380" y="306" width="96" height="52" rx="6" fill="none" stroke="#7ec8e3" stroke-width="2"/>
+  <text x="428" y="326" text-anchor="middle"
+        font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="18" font-weight="700" fill="#e8e8e8">B</text>
+  <text x="428" y="348" text-anchor="middle"
+        font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="12" fill="#888">r × d</text>
+
+  <path d="M 476 332 L 560 332 L 560 233" fill="none" stroke="#7ec8e3" stroke-width="2"
+        marker-end="url(#hfl-arr2)"/>
+
+  <text x="60" y="390"
+        font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="13" fill="#55c555">학습하는 것은 A와 B뿐 — 전체 파라미터의 1% 아래</text>
+  <text x="500" y="390"
+        font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="13" fill="#888">r을 키우면 표현력과 학습량이 함께 는다</text>
+</svg>

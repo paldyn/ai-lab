@@ -1,0 +1,85 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="400" viewBox="0 0 880 400">
+  <defs>
+    <marker id="tfd-ok" viewBox="0 0 14 14" refX="12" refY="7"
+            markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#55c555"/>
+    </marker>
+    <marker id="tfd-bad" viewBox="0 0 14 14" refX="12" refY="7"
+            markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#e05555"/>
+    </marker>
+  </defs>
+
+  <rect x="0" y="0" width="880" height="400" rx="12" fill="#0a0a0a"/>
+
+  <text x="60" y="54" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="22" font-weight="700" fill="#e8e8e8">tf.data — 같은 단계, 다른 순서</text>
+  <text x="60" y="82" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="13" fill="#888">shuffle과 batch의 앞뒤가 바뀌면 섞이는 단위가 달라진다</text>
+
+  <!-- 행 1 -->
+  <text x="60" y="122" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="16" font-weight="600" fill="#e8e8e8">섞은 뒤 묶는다</text>
+
+  <rect x="60" y="136" width="140" height="56" rx="8" fill="none" stroke="#555" stroke-width="1.5"/>
+  <text x="130" y="168" text-anchor="middle"
+        font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="15" fill="#e8e8e8">읽기</text>
+
+  <line x1="200" y1="164" x2="240" y2="164" stroke="#55c555" stroke-width="2" marker-end="url(#tfd-ok)"/>
+
+  <rect x="240" y="136" width="140" height="56" rx="8" fill="none" stroke="#55c555" stroke-width="2"/>
+  <text x="310" y="168" text-anchor="middle"
+        font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="15" fill="#e8e8e8">shuffle</text>
+
+  <line x1="380" y1="164" x2="420" y2="164" stroke="#55c555" stroke-width="2" marker-end="url(#tfd-ok)"/>
+
+  <rect x="420" y="136" width="140" height="56" rx="8" fill="none" stroke="#55c555" stroke-width="2"/>
+  <text x="490" y="168" text-anchor="middle"
+        font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="15" fill="#e8e8e8">batch</text>
+
+  <line x1="560" y1="164" x2="600" y2="164" stroke="#55c555" stroke-width="2" marker-end="url(#tfd-ok)"/>
+
+  <rect x="600" y="136" width="140" height="56" rx="8" fill="none" stroke="#555" stroke-width="1.5"/>
+  <text x="670" y="168" text-anchor="middle"
+        font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="15" fill="#e8e8e8">prefetch</text>
+
+  <text x="60" y="218" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="13" fill="#55c555">매 에폭 배치의 구성 자체가 새로 짜인다</text>
+
+  <!-- 행 2 -->
+  <text x="60" y="264" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="16" font-weight="600" fill="#e8e8e8">묶은 뒤 섞는다</text>
+
+  <rect x="60" y="278" width="140" height="56" rx="8" fill="none" stroke="#555" stroke-width="1.5"/>
+  <text x="130" y="310" text-anchor="middle"
+        font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="15" fill="#e8e8e8">읽기</text>
+
+  <line x1="200" y1="306" x2="240" y2="306" stroke="#e05555" stroke-width="2" marker-end="url(#tfd-bad)"/>
+
+  <rect x="240" y="278" width="140" height="56" rx="8" fill="none" stroke="#e05555" stroke-width="2"/>
+  <text x="310" y="310" text-anchor="middle"
+        font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="15" fill="#e8e8e8">batch</text>
+
+  <line x1="380" y1="306" x2="420" y2="306" stroke="#e05555" stroke-width="2" marker-end="url(#tfd-bad)"/>
+
+  <rect x="420" y="278" width="140" height="56" rx="8" fill="none" stroke="#e05555" stroke-width="2"/>
+  <text x="490" y="310" text-anchor="middle"
+        font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="15" fill="#e8e8e8">shuffle</text>
+
+  <line x1="560" y1="306" x2="600" y2="306" stroke="#e05555" stroke-width="2" marker-end="url(#tfd-bad)"/>
+
+  <rect x="600" y="278" width="140" height="56" rx="8" fill="none" stroke="#555" stroke-width="1.5"/>
+  <text x="670" y="310" text-anchor="middle"
+        font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="15" fill="#e8e8e8">prefetch</text>
+
+  <text x="60" y="360" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="13" fill="#e05555">배치 구성은 고정되고 배치끼리의 순서만 바뀐다</text>
+</svg>
