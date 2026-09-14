@@ -42,10 +42,18 @@ interface AnswerState {
   question: string;
 }
 
+interface ArticleMobileViewport {
+  focusHeight: number;
+  focusTop: number;
+  sheetHeight: number;
+  sheetTop: number;
+}
+
 const REQUEST_TIMEOUT_MS = 45_000;
 const DEFAULT_COMPOSER_HEIGHT = 170;
 const MIN_COMPOSER_HEIGHT = 142;
 const MAX_COMPOSER_HEIGHT = 320;
+const MOBILE_PANEL_BREAKPOINT = 640;
 const subscribeHydration = () => () => {};
 
 function clamp(value: number, min: number, max: number): number {
@@ -66,6 +74,7 @@ export function ArticleAsk({ title, fallbackContext, proseRef, ready }: ArticleA
   const [thinkingSeconds, setThinkingSeconds] = useState(0);
   const [composerHeight, setComposerHeight] = useState(DEFAULT_COMPOSER_HEIGHT);
   const [resizingComposer, setResizingComposer] = useState(false);
+  const [mobileViewport, setMobileViewport] = useState<ArticleMobileViewport | null>(null);
   const [panelGeometry, setPanelGeometry] = useState<ArticlePanelGeometry>({
     placement: 'sheet',
     left: 16,
@@ -105,6 +114,35 @@ export function ArticleAsk({ title, fallbackContext, proseRef, ready }: ArticleA
     ));
   }, [readPanelGeometry]);
 
+  const syncMobileViewport = useCallback(() => {
+    const viewport = window.visualViewport;
+    const viewportTop = Math.max(0, viewport?.offsetTop ?? 0);
+    const viewportHeight = Math.max(0, viewport?.height ?? window.innerHeight);
+    const sheetInset = 12;
+    const focusInset = 8;
+    const sheetHeight = Math.min(
+      520,
+      Math.max(320, viewportHeight * 0.6),
+      Math.max(0, viewportHeight - sheetInset * 2),
+    );
+    const next = {
+      focusHeight: Math.max(0, viewportHeight - focusInset * 2),
+      focusTop: viewportTop + focusInset,
+      sheetHeight,
+      sheetTop: viewportTop + viewportHeight - sheetHeight - sheetInset,
+    };
+
+    setMobileViewport((current) => (
+      current &&
+      Math.abs(current.focusHeight - next.focusHeight) < 1 &&
+      Math.abs(current.focusTop - next.focusTop) < 1 &&
+      Math.abs(current.sheetHeight - next.sheetHeight) < 1 &&
+      Math.abs(current.sheetTop - next.sheetTop) < 1
+        ? current
+        : next
+    ));
+  }, []);
+
   const composerBounds = useCallback(() => {
     const panelHeight = panelRef.current?.getBoundingClientRect().height ?? window.innerHeight;
     return {
@@ -137,14 +175,30 @@ export function ArticleAsk({ title, fallbackContext, proseRef, ready }: ArticleA
     };
 
     document.addEventListener('keydown', handleKeyDown);
+    const mobilePanel = window.matchMedia(`(max-width: ${MOBILE_PANEL_BREAKPOINT}px)`).matches;
     if (origin.keyboard) textareaRef.current?.focus({ preventScroll: true });
-    else focusQuietly(textareaRef.current);
+    else if (!mobilePanel) focusQuietly(textareaRef.current);
 
     return () => {
       document.removeEventListener('keydown', handleKeyDown);
       restoreFocus(origin);
     };
   }, [close, open]);
+
+  useEffect(() => {
+    if (!open) return undefined;
+
+    const viewport = window.visualViewport;
+    viewport?.addEventListener('resize', syncMobileViewport, { passive: true });
+    viewport?.addEventListener('scroll', syncMobileViewport, { passive: true });
+    window.addEventListener('orientationchange', syncMobileViewport, { passive: true });
+
+    return () => {
+      viewport?.removeEventListener('resize', syncMobileViewport);
+      viewport?.removeEventListener('scroll', syncMobileViewport);
+      window.removeEventListener('orientationchange', syncMobileViewport);
+    };
+  }, [open, syncMobileViewport]);
 
   useEffect(() => {
     if (!open) return undefined;
@@ -259,6 +313,8 @@ export function ArticleAsk({ title, fallbackContext, proseRef, ready }: ArticleA
     setSelectionPrompt(null);
     setError('');
     syncPanelGeometry();
+    syncMobileViewport();
+    if (window.innerWidth <= MOBILE_PANEL_BREAKPOINT) setComposerHeight(MIN_COMPOSER_HEIGHT);
     // 패널과 자리가 겹치는 전역 단추를 패널이 그려지는 프레임부터 숨깁니다.
     document.getElementById('root')?.setAttribute('data-article-ai-open', '');
     setOpen(true);
@@ -283,10 +339,14 @@ export function ArticleAsk({ title, fallbackContext, proseRef, ready }: ArticleA
     setQuestion('');
     setSelectionPrompt(null);
     syncPanelGeometry();
+    syncMobileViewport();
+    if (!open && window.innerWidth <= MOBILE_PANEL_BREAKPOINT) setComposerHeight(MIN_COMPOSER_HEIGHT);
     document.getElementById('root')?.setAttribute('data-article-ai-open', '');
     setOpen(true);
     // 이미 패널이 열린 상태에서 새 문장을 고른 경우에도 바로 질문을 이어갈 수 있게 합니다.
-    if (open) window.requestAnimationFrame(() => focusQuietly(textareaRef.current));
+    if (open && window.innerWidth > MOBILE_PANEL_BREAKPOINT) {
+      window.requestAnimationFrame(() => focusQuietly(textareaRef.current));
+    }
   };
 
   const submit = async (event: FormEvent<HTMLFormElement>) => {
@@ -404,7 +464,15 @@ export function ArticleAsk({ title, fallbackContext, proseRef, ready }: ArticleA
   const panelStyle = useMemo(() => ({
     '--article-ai-panel-left': `${panelGeometry.left}px`,
     '--article-ai-panel-width': `${panelGeometry.width}px`,
-  }) as CSSProperties, [panelGeometry.left, panelGeometry.width]);
+    ...(mobileViewport
+      ? {
+          '--article-ai-mobile-focus-height': `${mobileViewport.focusHeight}px`,
+          '--article-ai-mobile-focus-top': `${mobileViewport.focusTop}px`,
+          '--article-ai-mobile-sheet-height': `${mobileViewport.sheetHeight}px`,
+          '--article-ai-mobile-sheet-top': `${mobileViewport.sheetTop}px`,
+        }
+      : {}),
+  }) as CSSProperties, [mobileViewport, panelGeometry.left, panelGeometry.width]);
 
   if (!portalHost) return null;
 
