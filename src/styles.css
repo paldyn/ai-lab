@@ -3399,7 +3399,7 @@ input:focus-visible {
   min-height: 0;
 }
 
-/* iOS 키보드는 미디어 쿼리 높이를 갱신하지 않을 수 있어 실제 visualViewport로 접습니다. */
+/* iOS 키보드는 미디어 쿼리 높이를 갱신하지 않을 수 있어 실제 visualViewport로 여백을 줄입니다. */
 .article-ai-panel[data-mobile-compact] .article-ai-content {
   padding-block: 10px;
 }
@@ -3410,10 +3410,6 @@ input:focus-visible {
 
 .article-ai-panel[data-mobile-compact] .article-ai-empty svg {
   margin-bottom: 6px;
-}
-
-.article-ai-panel[data-mobile-compact] .article-ai-empty > span {
-  display: none;
 }
 
 .article-ai-selection + .article-ai-loading {
@@ -3685,6 +3681,7 @@ input:focus-visible {
   font-size: 14px;
   line-height: 1.55;
   outline: none;
+  overscroll-behavior-y: contain;
 }
 
 .article-ai-form textarea::placeholder {
@@ -5753,10 +5750,6 @@ input:focus-visible {
 
   .article-ai-empty svg {
     margin-bottom: 6px;
-  }
-
-  .article-ai-empty > span {
-    display: none;
   }
 }
 

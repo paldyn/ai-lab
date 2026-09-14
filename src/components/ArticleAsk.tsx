@@ -24,7 +24,6 @@ import {
   type ArticleTextSelection,
 } from '../lib/articleAsk';
 import { captureFocusOrigin, focusQuietly, restoreFocus } from '../lib/restoreFocus';
-import { lockScroll } from '../lib/scrollLock';
 
 interface ArticleAskProps {
   title: string;
@@ -212,10 +211,72 @@ export function ArticleAsk({ title, fallbackContext, proseRef, ready }: ArticleA
   useEffect(() => {
     if (!open) return undefined;
 
-    const touchScreen = window.innerWidth <= MOBILE_PANEL_BREAKPOINT ||
-      window.matchMedia('(pointer: coarse)').matches;
-    // 모바일 사파리에서는 overflow만으로 손가락 스크롤이 멎지 않아 검증된 공통 잠금을 씁니다.
-    return touchScreen ? lockScroll() : undefined;
+    const panel = panelRef.current;
+    if (!panel) return undefined;
+
+    let startPoint: { x: number; y: number } | null = null;
+    let previousY: number | null = null;
+    let scrollArea: HTMLElement | null = null;
+
+    const handleTouchStart = (event: TouchEvent) => {
+      if (event.touches.length !== 1) {
+        startPoint = null;
+        previousY = null;
+        scrollArea = null;
+        return;
+      }
+
+      const touch = event.touches[0];
+      const target = event.target instanceof Element ? event.target : null;
+      const candidate = target?.closest<HTMLElement>('.article-ai-content, textarea') ?? null;
+      startPoint = { x: touch.clientX, y: touch.clientY };
+      previousY = touch.clientY;
+      scrollArea = candidate && panel.contains(candidate) ? candidate : null;
+    };
+    const handleTouchMove = (event: TouchEvent) => {
+      if (!startPoint || previousY === null || event.touches.length !== 1) return;
+
+      const touch = event.touches[0];
+      const currentY = touch.clientY;
+      const scrollDelta = previousY - currentY;
+      previousY = currentY;
+      const totalX = touch.clientX - startPoint.x;
+      const totalY = currentY - startPoint.y;
+      if (Math.abs(scrollDelta) < 0.5 || Math.abs(totalY) <= Math.abs(totalX)) return;
+
+      const maxScrollTop = scrollArea
+        ? Math.max(0, scrollArea.scrollHeight - scrollArea.clientHeight)
+        : 0;
+      const canScroll = scrollArea && panel.contains(scrollArea) && maxScrollTop > 1 &&
+        (scrollDelta < 0 ? scrollArea.scrollTop > 1 : scrollArea.scrollTop < maxScrollTop - 1);
+
+      // 패널 안에서 시작한 제스처가 끝에 닿아도 뒤의 글로 이어지지 않게 합니다.
+      if (!canScroll && event.cancelable) event.preventDefault();
+    };
+    const handleTouchEnd = (event: TouchEvent) => {
+      if (event.touches.length === 1) {
+        const touch = event.touches[0];
+        startPoint = { x: touch.clientX, y: touch.clientY };
+        previousY = touch.clientY;
+        return;
+      }
+
+      startPoint = null;
+      previousY = null;
+      scrollArea = null;
+    };
+
+    panel.addEventListener('touchstart', handleTouchStart, { passive: true });
+    panel.addEventListener('touchmove', handleTouchMove, { passive: false });
+    panel.addEventListener('touchend', handleTouchEnd, { passive: true });
+    panel.addEventListener('touchcancel', handleTouchEnd, { passive: true });
+
+    return () => {
+      panel.removeEventListener('touchstart', handleTouchStart);
+      panel.removeEventListener('touchmove', handleTouchMove);
+      panel.removeEventListener('touchend', handleTouchEnd);
+      panel.removeEventListener('touchcancel', handleTouchEnd);
+    };
   }, [open]);
 
   useEffect(() => {
