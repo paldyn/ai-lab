@@ -5491,21 +5491,20 @@ input:focus-visible {
   }
 
   .article-ai-panel {
-    top: var(--article-ai-mobile-sheet-top, auto);
-    right: 12px;
-    bottom: 12px;
-    width: calc(100vw - 24px);
-    height: var(--article-ai-mobile-sheet-height, clamp(320px, 60dvh, 520px));
+    top: var(--article-ai-mobile-top, auto);
+    right: auto;
+    bottom: auto;
+    left: var(--article-ai-mobile-left, 12px);
+    width: var(--article-ai-mobile-width, calc(100vw - 24px));
+    max-width: none;
+    height: var(--article-ai-mobile-height, clamp(320px, 60dvh, 520px));
     min-height: 0;
     max-height: calc(100dvh - 24px);
   }
 
-  /* 입력할 때는 키보드 위의 실제 가용 화면을 모두 써 답변과 입력창을 함께 남깁니다. */
-  .article-ai-panel:has(textarea:focus) {
-    top: var(--article-ai-mobile-focus-top, 8px);
-    bottom: auto;
-    height: var(--article-ai-mobile-focus-height, calc(100dvh - 16px));
-    max-height: none;
+  /* iOS는 16px보다 작은 입력창에 포커스하면 페이지 전체를 확대합니다. */
+  .article-ai-form textarea {
+    font-size: 16px;
   }
 
   #root[data-article-ai-open][data-article-ai-placement='sheet'] .to-top {
@@ -5716,7 +5715,8 @@ input:focus-visible {
 /* 가로 휴대폰처럼 높이가 아주 낮으면 화면 폭과 관계없이 본문 여백을 우선합니다. */
 @media (max-height: 520px) {
   .article-ai-panel {
-    height: min(72dvh, 360px);
+    /* 모바일은 visualViewport로 계산한 키보드 위 높이를 낮은 화면 규칙보다 우선합니다. */
+    height: var(--article-ai-mobile-height, min(72dvh, 360px));
     min-height: 0;
   }
 

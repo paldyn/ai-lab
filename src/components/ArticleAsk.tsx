@@ -43,10 +43,10 @@ interface AnswerState {
 }
 
 interface ArticleMobileViewport {
-  focusHeight: number;
-  focusTop: number;
-  sheetHeight: number;
-  sheetTop: number;
+  height: number;
+  left: number;
+  top: number;
+  width: number;
 }
 
 const REQUEST_TIMEOUT_MS = 45_000;
@@ -115,29 +115,35 @@ export function ArticleAsk({ title, fallbackContext, proseRef, ready }: ArticleA
   }, [readPanelGeometry]);
 
   const syncMobileViewport = useCallback(() => {
+    if (window.innerWidth > MOBILE_PANEL_BREAKPOINT) {
+      setMobileViewport((current) => (current ? null : current));
+      return;
+    }
+
     const viewport = window.visualViewport;
+    const viewportLeft = Math.max(0, viewport?.offsetLeft ?? 0);
     const viewportTop = Math.max(0, viewport?.offsetTop ?? 0);
+    const viewportWidth = Math.max(0, viewport?.width ?? document.documentElement.clientWidth);
     const viewportHeight = Math.max(0, viewport?.height ?? window.innerHeight);
     const sheetInset = 12;
-    const focusInset = 8;
     const sheetHeight = Math.min(
       520,
       Math.max(320, viewportHeight * 0.6),
       Math.max(0, viewportHeight - sheetInset * 2),
     );
     const next = {
-      focusHeight: Math.max(0, viewportHeight - focusInset * 2),
-      focusTop: viewportTop + focusInset,
-      sheetHeight,
-      sheetTop: viewportTop + viewportHeight - sheetHeight - sheetInset,
+      height: sheetHeight,
+      left: viewportLeft + sheetInset,
+      top: viewportTop + viewportHeight - sheetHeight - sheetInset,
+      width: Math.max(0, viewportWidth - sheetInset * 2),
     };
 
     setMobileViewport((current) => (
       current &&
-      Math.abs(current.focusHeight - next.focusHeight) < 1 &&
-      Math.abs(current.focusTop - next.focusTop) < 1 &&
-      Math.abs(current.sheetHeight - next.sheetHeight) < 1 &&
-      Math.abs(current.sheetTop - next.sheetTop) < 1
+      Math.abs(current.height - next.height) < 1 &&
+      Math.abs(current.left - next.left) < 1 &&
+      Math.abs(current.top - next.top) < 1 &&
+      Math.abs(current.width - next.width) < 1
         ? current
         : next
     ));
@@ -175,9 +181,8 @@ export function ArticleAsk({ title, fallbackContext, proseRef, ready }: ArticleA
     };
 
     document.addEventListener('keydown', handleKeyDown);
-    const mobilePanel = window.matchMedia(`(max-width: ${MOBILE_PANEL_BREAKPOINT}px)`).matches;
     if (origin.keyboard) textareaRef.current?.focus({ preventScroll: true });
-    else if (!mobilePanel) focusQuietly(textareaRef.current);
+    else focusQuietly(textareaRef.current);
 
     return () => {
       document.removeEventListener('keydown', handleKeyDown);
@@ -344,9 +349,8 @@ export function ArticleAsk({ title, fallbackContext, proseRef, ready }: ArticleA
     document.getElementById('root')?.setAttribute('data-article-ai-open', '');
     setOpen(true);
     // 이미 패널이 열린 상태에서 새 문장을 고른 경우에도 바로 질문을 이어갈 수 있게 합니다.
-    if (open && window.innerWidth > MOBILE_PANEL_BREAKPOINT) {
-      window.requestAnimationFrame(() => focusQuietly(textareaRef.current));
-    }
+    // 모바일 키보드도 확실히 열리도록 선택 단추의 사용자 제스처 안에서 바로 잡습니다.
+    if (open) focusQuietly(textareaRef.current);
   };
 
   const submit = async (event: FormEvent<HTMLFormElement>) => {
@@ -466,10 +470,10 @@ export function ArticleAsk({ title, fallbackContext, proseRef, ready }: ArticleA
     '--article-ai-panel-width': `${panelGeometry.width}px`,
     ...(mobileViewport
       ? {
-          '--article-ai-mobile-focus-height': `${mobileViewport.focusHeight}px`,
-          '--article-ai-mobile-focus-top': `${mobileViewport.focusTop}px`,
-          '--article-ai-mobile-sheet-height': `${mobileViewport.sheetHeight}px`,
-          '--article-ai-mobile-sheet-top': `${mobileViewport.sheetTop}px`,
+          '--article-ai-mobile-height': `${mobileViewport.height}px`,
+          '--article-ai-mobile-left': `${mobileViewport.left}px`,
+          '--article-ai-mobile-top': `${mobileViewport.top}px`,
+          '--article-ai-mobile-width': `${mobileViewport.width}px`,
         }
       : {}),
   }) as CSSProperties, [mobileViewport, panelGeometry.left, panelGeometry.width]);
