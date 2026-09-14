@@ -45,6 +45,7 @@ interface AnswerState {
 interface ArticleMobileViewport {
   compact: boolean;
   height: number;
+  keyboardOpen: boolean;
   left: number;
   top: number;
   width: number;
@@ -55,6 +56,10 @@ const DEFAULT_COMPOSER_HEIGHT = 170;
 const MIN_COMPOSER_HEIGHT = 142;
 const MAX_COMPOSER_HEIGHT = 320;
 const MOBILE_PANEL_BREAKPOINT = 640;
+const MOBILE_LANDSCAPE_MAX_WIDTH = 960;
+const MOBILE_LANDSCAPE_MAX_HEIGHT = 520;
+const MOBILE_KEYBOARD_MIN_INSET = 120;
+const MOBILE_KEYBOARD_MIN_COMPOSER_HEIGHT = 108;
 const subscribeHydration = () => () => {};
 
 function clamp(value: number, min: number, max: number): number {
@@ -74,6 +79,7 @@ export function ArticleAsk({ title, fallbackContext, proseRef, ready }: ArticleA
   const [loading, setLoading] = useState(false);
   const [thinkingSeconds, setThinkingSeconds] = useState(0);
   const [composerHeight, setComposerHeight] = useState(DEFAULT_COMPOSER_HEIGHT);
+  const [composerMaxHeight, setComposerMaxHeight] = useState(MAX_COMPOSER_HEIGHT);
   const [resizingComposer, setResizingComposer] = useState(false);
   const [mobileViewport, setMobileViewport] = useState<ArticleMobileViewport | null>(null);
   const [panelGeometry, setPanelGeometry] = useState<ArticlePanelGeometry>({
@@ -90,6 +96,7 @@ export function ArticleAsk({ title, fallbackContext, proseRef, ready }: ArticleA
   const requestRef = useRef<AbortController | null>(null);
   const requestSerialRef = useRef(0);
   const resizeStartRef = useRef<{ pointerId: number; y: number; height: number } | null>(null);
+  const mobileViewportBaselineRef = useRef<{ height: number; width: number } | null>(null);
 
   const readPanelGeometry = useCallback((): ArticlePanelGeometry => {
     const prose = ready ? proseRef.current : null;
@@ -116,33 +123,70 @@ export function ArticleAsk({ title, fallbackContext, proseRef, ready }: ArticleA
   }, [readPanelGeometry]);
 
   const syncMobileViewport = useCallback(() => {
-    if (window.innerWidth > MOBILE_PANEL_BREAKPOINT) {
-      setMobileViewport((current) => (current ? null : current));
-      return;
-    }
-
     const viewport = window.visualViewport;
     const viewportLeft = Math.max(0, viewport?.offsetLeft ?? 0);
     const viewportTop = Math.max(0, viewport?.offsetTop ?? 0);
     const viewportWidth = Math.max(0, viewport?.width ?? document.documentElement.clientWidth);
     const viewportHeight = Math.max(0, viewport?.height ?? window.innerHeight);
-    const sheetInset = 12;
+    const measuredLayoutHeight = Math.max(
+      viewportHeight,
+      window.innerHeight,
+      document.documentElement.clientHeight,
+    );
+    const mobileSheet = window.innerWidth <= MOBILE_PANEL_BREAKPOINT || (
+      viewportWidth <= MOBILE_LANDSCAPE_MAX_WIDTH &&
+      measuredLayoutHeight <= MOBILE_LANDSCAPE_MAX_HEIGHT
+    );
+    if (!mobileSheet) {
+      mobileViewportBaselineRef.current = null;
+      setMobileViewport((current) => (current ? null : current));
+      return;
+    }
+
+    const previousBaseline = mobileViewportBaselineRef.current;
+    const orientationChanged = previousBaseline &&
+      Math.abs(previousBaseline.width - viewportWidth) >= 80;
+    const baselineHeight = !previousBaseline || orientationChanged
+      ? measuredLayoutHeight
+      : Math.max(previousBaseline.height, measuredLayoutHeight);
+    mobileViewportBaselineRef.current = { height: baselineHeight, width: viewportWidth };
+    const keyboardOpen = Boolean(
+      viewport && baselineHeight - viewportHeight >= MOBILE_KEYBOARD_MIN_INSET,
+    );
+    const sheetHorizontalInset = 12;
+    const sheetTopInset = 12;
+    // 키보드 경계와 패널 테두리가 맞닿으면 iOS에서 아래 모서리가 잘려 보입니다.
+    const sheetBottomInset = keyboardOpen ? 20 : 16;
     const sheetHeight = Math.min(
       520,
       Math.max(320, viewportHeight * 0.6),
-      Math.max(0, viewportHeight - sheetInset * 2),
+      Math.max(0, viewportHeight - sheetTopInset - sheetBottomInset),
     );
+    if (keyboardOpen) {
+      // 키보드 위의 짧은 viewport에서는 답변 공간을 우선하고 조절 손잡이를 멈춥니다.
+      resizeStartRef.current = null;
+      setResizingComposer(false);
+      setComposerHeight(clamp(
+        sheetHeight - 49 - 24,
+        MOBILE_KEYBOARD_MIN_COMPOSER_HEIGHT,
+        MIN_COMPOSER_HEIGHT,
+      ));
+    } else {
+      setComposerHeight((height) => Math.max(MIN_COMPOSER_HEIGHT, height));
+    }
     const next = {
       compact: viewportHeight <= 520,
-      height: sheetHeight,
-      left: viewportLeft + sheetInset,
-      top: viewportTop + viewportHeight - sheetHeight - sheetInset,
-      width: Math.max(0, viewportWidth - sheetInset * 2),
+      height: Math.floor(sheetHeight),
+      keyboardOpen,
+      left: Math.ceil(viewportLeft + sheetHorizontalInset),
+      top: Math.floor(viewportTop + viewportHeight - sheetHeight - sheetBottomInset),
+      width: Math.floor(Math.max(0, viewportWidth - sheetHorizontalInset * 2)),
     };
 
     setMobileViewport((current) => (
       current &&
       current.compact === next.compact &&
+      current.keyboardOpen === next.keyboardOpen &&
       Math.abs(current.height - next.height) < 1 &&
       Math.abs(current.left - next.left) < 1 &&
       Math.abs(current.top - next.top) < 1 &&
@@ -168,6 +212,7 @@ export function ArticleAsk({ title, fallbackContext, proseRef, ready }: ArticleA
     const pageRoot = document.getElementById('root');
     pageRoot?.removeAttribute('data-article-ai-open');
     pageRoot?.removeAttribute('data-article-ai-placement');
+    mobileViewportBaselineRef.current = null;
     setLoading(false);
     setOpen(false);
   }, []);
@@ -280,17 +325,19 @@ export function ArticleAsk({ title, fallbackContext, proseRef, ready }: ArticleA
   }, [open]);
 
   useEffect(() => {
-    if (!open) return undefined;
+    // 키보드가 열린 동안의 더 작은 높이는 visualViewport 계산이 소유합니다.
+    if (!open || mobileViewport?.keyboardOpen) return undefined;
 
     const fitComposer = () => {
       const bounds = composerBounds();
+      setComposerMaxHeight(bounds.max);
       setComposerHeight((height) => clamp(height, bounds.min, bounds.max));
     };
 
     fitComposer();
     window.addEventListener('resize', fitComposer, { passive: true });
     return () => window.removeEventListener('resize', fitComposer);
-  }, [composerBounds, open, panelGeometry.placement]);
+  }, [composerBounds, mobileViewport?.height, mobileViewport?.keyboardOpen, open, panelGeometry.placement]);
 
   useEffect(() => {
     if (!open) return undefined;
@@ -489,6 +536,7 @@ export function ArticleAsk({ title, fallbackContext, proseRef, ready }: ArticleA
   };
 
   const startComposerResize = (event: ReactPointerEvent<HTMLDivElement>) => {
+    if (mobileViewport?.keyboardOpen) return;
     if (event.button !== 0) return;
     event.preventDefault();
     resizeStartRef.current = {
@@ -501,6 +549,7 @@ export function ArticleAsk({ title, fallbackContext, proseRef, ready }: ArticleA
   };
 
   const resizeComposer = (event: ReactPointerEvent<HTMLDivElement>) => {
+    if (mobileViewport?.keyboardOpen) return;
     const start = resizeStartRef.current;
     if (!start || start.pointerId !== event.pointerId) return;
     const bounds = composerBounds();
@@ -517,6 +566,7 @@ export function ArticleAsk({ title, fallbackContext, proseRef, ready }: ArticleA
   };
 
   const handleComposerResizeKeyDown = (event: KeyboardEvent<HTMLDivElement>) => {
+    if (mobileViewport?.keyboardOpen) return;
     const bounds = composerBounds();
     let next: number | null = null;
 
@@ -551,6 +601,8 @@ export function ArticleAsk({ title, fallbackContext, proseRef, ready }: ArticleA
         }
       : {}),
   }) as CSSProperties, [mobileViewport, panelGeometry.left, panelGeometry.width]);
+
+  const composerResizeDisabled = mobileViewport?.keyboardOpen ?? false;
 
   if (!portalHost) return null;
 
@@ -589,7 +641,9 @@ export function ArticleAsk({ title, fallbackContext, proseRef, ready }: ArticleA
           id="article-ai-panel"
           className="article-ai-panel"
           data-placement={panelGeometry.placement}
+          data-mobile-viewport={mobileViewport ? 'true' : undefined}
           data-mobile-compact={mobileViewport?.compact ? 'true' : undefined}
+          data-mobile-keyboard={mobileViewport?.keyboardOpen ? 'true' : undefined}
           style={panelStyle}
           role="dialog"
           aria-labelledby="article-ai-title"
@@ -658,13 +712,14 @@ export function ArticleAsk({ title, fallbackContext, proseRef, ready }: ArticleA
           >
             <div
               className="article-ai-resize-handle"
-              role="slider"
-              aria-label="질문 입력 영역 높이 조절"
-              aria-orientation="vertical"
-              aria-valuemin={MIN_COMPOSER_HEIGHT}
-              aria-valuemax={MAX_COMPOSER_HEIGHT}
-              aria-valuenow={Math.round(composerHeight)}
-              tabIndex={0}
+              role={composerResizeDisabled ? undefined : 'slider'}
+              aria-hidden={composerResizeDisabled || undefined}
+              aria-label={composerResizeDisabled ? undefined : '질문 입력 영역 높이 조절'}
+              aria-orientation={composerResizeDisabled ? undefined : 'vertical'}
+              aria-valuemin={composerResizeDisabled ? undefined : MIN_COMPOSER_HEIGHT}
+              aria-valuemax={composerResizeDisabled ? undefined : composerMaxHeight}
+              aria-valuenow={composerResizeDisabled ? undefined : Math.round(composerHeight)}
+              tabIndex={composerResizeDisabled ? -1 : 0}
               onKeyDown={handleComposerResizeKeyDown}
               onPointerDown={startComposerResize}
               onPointerMove={resizeComposer}

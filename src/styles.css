@@ -3263,6 +3263,19 @@ input:focus-visible {
   left: var(--article-ai-panel-left);
 }
 
+/* 세로 모바일과 낮은 가로 모바일 모두 실제 visualViewport 안에 시트를 맞춥니다. */
+.article-ai-layer .article-ai-panel[data-mobile-viewport='true'] {
+  top: var(--article-ai-mobile-top, auto);
+  right: auto;
+  bottom: auto;
+  left: var(--article-ai-mobile-left, 12px);
+  width: var(--article-ai-mobile-width, calc(100vw - 24px));
+  max-width: none;
+  height: var(--article-ai-mobile-height, clamp(320px, 60dvh, 520px));
+  min-height: 0;
+  max-height: none;
+}
+
 .article-ai-panel::before {
   position: absolute;
   z-index: 2;
@@ -3661,6 +3674,37 @@ input:focus-visible {
 
 .article-ai-resize-handle:focus-visible {
   outline: none;
+}
+
+/* 키보드가 열린 모바일에서는 선만 경계로 남기고 높이 조절은 잠급니다. */
+.article-ai-panel[data-mobile-keyboard='true'] .article-ai-resize-handle {
+  cursor: default;
+  pointer-events: none;
+}
+
+.article-ai-panel[data-mobile-keyboard='true'] .article-ai-resize-handle::after {
+  display: none;
+}
+
+.article-ai-panel[data-mobile-keyboard='true'] .article-ai-form {
+  min-height: 0;
+}
+
+/* 가로 휴대폰도 iOS 자동 확대와 데스크톱용 단축키 행을 피합니다. */
+.article-ai-panel[data-mobile-viewport='true'] .article-ai-form textarea {
+  font-size: 16px;
+}
+
+.article-ai-panel[data-mobile-viewport='true'] .article-ai-form-foot {
+  align-items: flex-end;
+}
+
+.article-ai-panel[data-mobile-viewport='true'] .article-ai-form-notes {
+  max-width: 230px;
+}
+
+.article-ai-panel[data-mobile-viewport='true'] .article-ai-shortcut {
+  display: none;
 }
 
 .article-ai-form:focus-within {
