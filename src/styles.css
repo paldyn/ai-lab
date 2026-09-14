@@ -3724,11 +3724,32 @@ input:focus-visible {
   line-height: 1.5;
 }
 
-/* 패널이 열리면 같은 자리를 쓰는 전역 단추를 시각·입력 양쪽에서 뺍니다. */
-#root[data-article-ai-open] .to-top {
-  visibility: hidden;
-  pointer-events: none;
-  opacity: 0;
+/* 오른쪽 패널 위에 맨 위로 단추를 쌓아 서로 가리지 않게 합니다. */
+#root[data-article-ai-open][data-article-ai-placement='right'] .to-top {
+  right: 24px;
+  bottom: calc(min(620px, calc(100dvh - 112px)) + 32px);
+  left: auto;
+}
+
+#root[data-article-ai-open][data-article-ai-placement='left'] .to-top {
+  right: 24px;
+  left: auto;
+}
+
+/* 하단 시트에서는 단추를 패널 위로 올립니다. */
+#root[data-article-ai-open][data-article-ai-placement='sheet'] .to-top {
+  right: 24px;
+  bottom: calc(min(52dvh, 500px) + 32px);
+  left: auto;
+}
+
+/* 낮은 화면은 패널 위에 44px이 남지 않으므로 반대쪽 아래로 옮깁니다. */
+@media (max-height: 760px) {
+  #root[data-article-ai-open][data-article-ai-placement='right'] .to-top {
+    right: auto;
+    bottom: 24px;
+    left: 24px;
+  }
 }
 
 /* 왼쪽 여백을 쓸 때 TOC 자리만 비웁니다. grid 폭은 유지되어 본문은 움직이지 않습니다. */
@@ -5463,6 +5484,11 @@ input:focus-visible {
     max-height: calc(100dvh - 24px);
   }
 
+  #root[data-article-ai-open][data-article-ai-placement='sheet'] .to-top {
+    right: 16px;
+    bottom: calc(clamp(320px, 60dvh, 520px) + 24px);
+  }
+
   .article-ai-content {
     padding: 15px;
   }
@@ -5667,6 +5693,10 @@ input:focus-visible {
   .article-ai-panel {
     height: min(72dvh, 360px);
     min-height: 0;
+  }
+
+  #root[data-article-ai-open][data-article-ai-placement='sheet'] .to-top {
+    bottom: calc(min(72dvh, 360px) + 24px);
   }
 
   .article-ai-content {

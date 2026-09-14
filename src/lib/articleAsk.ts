@@ -63,11 +63,12 @@ export interface ArticlePanelGeometry {
 const ARTICLE_PANEL_EDGE_INSET = 16;
 const ARTICLE_PANEL_PROSE_GAP = 40;
 const ARTICLE_PANEL_MIN_SIDE_WIDTH = 320;
-const ARTICLE_PANEL_MAX_WIDTH = 480;
+const ARTICLE_PANEL_MAX_WIDTH = 384;
 const ARTICLE_PANEL_SHEET_MAX_WIDTH = 640;
 const ARTICLE_PANEL_SIDE_MIN_VIEWPORT = 768;
+const ARTICLE_SELECTION_BUTTON_GAP = 12;
 
-/** 본문은 움직이지 않고, 보이는 본문과 40px 떨어진 가장 넓은 패널 자리를 고릅니다. */
+/** 본문은 움직이지 않고 40px 간격을 지키며, 1920px 화면의 패널 폭까지만 넓힙니다. */
 export function calculateArticlePanelGeometry(
   viewportWidth: number,
   viewportHeight: number,
@@ -84,10 +85,11 @@ export function calculateArticlePanelGeometry(
   const rightLeft = Math.round(proseBounds.right + ARTICLE_PANEL_PROSE_GAP);
   const rightWidth = Math.floor(viewportWidth - ARTICLE_PANEL_EDGE_INSET - rightLeft);
   if (rightWidth >= ARTICLE_PANEL_MIN_SIDE_WIDTH) {
+    const width = Math.min(ARTICLE_PANEL_MAX_WIDTH, rightWidth);
     return {
       placement: 'right',
-      left: rightLeft,
-      width: Math.min(ARTICLE_PANEL_MAX_WIDTH, rightWidth),
+      left: viewportWidth - ARTICLE_PANEL_EDGE_INSET - width,
+      width,
     };
   }
 
@@ -432,7 +434,9 @@ export function captureArticleTextSelection(root: HTMLElement, selection: Select
     placement: {
       above,
       left,
-      top: above ? rect.top - 8 : rect.bottom + 8,
+      top: above
+        ? rect.top - ARTICLE_SELECTION_BUTTON_GAP
+        : rect.bottom + ARTICLE_SELECTION_BUTTON_GAP,
     },
   };
 }

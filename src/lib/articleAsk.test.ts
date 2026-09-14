@@ -30,13 +30,13 @@ const blocks: ArticleContextBlock[] = [
 ];
 
 describe('글 질문 패널 배치', () => {
-  it('넓은 화면에서는 본문 오른쪽 40px 뒤를 가능한 폭만큼 채운다', () => {
+  it('넓은 화면에서는 1920px 화면에서의 비율인 384px을 최대 폭으로 쓴다', () => {
     expect(calculateArticlePanelGeometry(2_048, 980, {
       left: 770,
       right: 1_530,
       top: 100,
       bottom: 3_000,
-    })).toEqual({ placement: 'right', left: 1_570, width: 462 });
+    })).toEqual({ placement: 'right', left: 1_648, width: 384 });
   });
 
   it('우측이 좁고 본문을 읽는 중이면 왼쪽 여백을 사용한다', () => {
@@ -45,7 +45,7 @@ describe('글 질문 패널 배치', () => {
       right: 1_222,
       top: 100,
       bottom: 3_000,
-    })).toEqual({ placement: 'left', left: 16, width: 406 });
+    })).toEqual({ placement: 'left', left: 38, width: 384 });
   });
 
   it('본문이 아직 패널 옆까지 올라오지 않았으면 넓은 하단 시트를 사용한다', () => {
@@ -67,13 +67,13 @@ describe('글 질문 패널 배치', () => {
     })).toEqual({ placement: 'left', left: 17, width: 330 });
   });
 
-  it('초광폭 화면에서도 패널 폭은 480px을 넘지 않는다', () => {
+  it('초광폭 화면에서도 패널 폭은 384px을 넘지 않고 오른쪽에 붙는다', () => {
     expect(calculateArticlePanelGeometry(2_560, 1_200, {
       left: 1_034,
       right: 1_794,
       top: 100,
       bottom: 3_000,
-    })).toEqual({ placement: 'right', left: 1_834, width: 480 });
+    })).toEqual({ placement: 'right', left: 2_160, width: 384 });
   });
 });
 
