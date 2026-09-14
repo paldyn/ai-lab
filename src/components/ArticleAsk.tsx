@@ -211,11 +211,6 @@ export function ArticleAsk({ title, fallbackContext, proseRef, ready }: ArticleA
     let frame = 0;
     const inspect = () => {
       frame = 0;
-      if (open) {
-        setSelectionPrompt(null);
-        return;
-      }
-
       const next = captureArticleTextSelection(root, document.getSelection());
       // 키보드로 선택한 뒤 Tab으로 CTA에 닿을 때 selection이 먼저 접힐 수 있습니다.
       // 이미 CTA가 포커스를 받았다면 저장해 둔 범위를 한 번 더 쓸 수 있게 남깁니다.
@@ -249,7 +244,7 @@ export function ArticleAsk({ title, fallbackContext, proseRef, ready }: ArticleA
       window.removeEventListener('resize', schedule);
       window.removeEventListener('scroll', schedule);
     };
-  }, [open, proseRef, ready]);
+  }, [proseRef, ready]);
 
   useEffect(
     () => () => {
@@ -273,6 +268,12 @@ export function ArticleAsk({ title, fallbackContext, proseRef, ready }: ArticleA
     const root = proseRef.current;
     if (!root || !selectionPrompt) return;
 
+    // 열린 패널에서 문맥을 바꾸면 이전 질문의 늦은 응답이 새 선택 위에 섞이지 않게 합니다.
+    requestSerialRef.current += 1;
+    requestRef.current?.abort();
+    requestRef.current = null;
+    setLoading(false);
+    setThinkingSeconds(0);
     setActiveSelection({
       context: buildArticleSelectionContext(root, selectionPrompt.range, selectionPrompt.selectedText),
       text: selectionPrompt.selectedText,
@@ -284,6 +285,8 @@ export function ArticleAsk({ title, fallbackContext, proseRef, ready }: ArticleA
     syncPanelGeometry();
     document.getElementById('root')?.setAttribute('data-article-ai-open', '');
     setOpen(true);
+    // 이미 패널이 열린 상태에서 새 문장을 고른 경우에도 바로 질문을 이어갈 수 있게 합니다.
+    if (open) window.requestAnimationFrame(() => focusQuietly(textareaRef.current));
   };
 
   const submit = async (event: FormEvent<HTMLFormElement>) => {
@@ -420,7 +423,7 @@ export function ArticleAsk({ title, fallbackContext, proseRef, ready }: ArticleA
         </button>
       )}
 
-      {!open && selectionPrompt && (
+      {selectionPrompt && (
         <button
           ref={selectionButtonRef}
           type="button"
