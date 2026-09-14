@@ -172,6 +172,21 @@ export const globalNewsUpdatedAt = '2026-09-09';
  */
 const entries: NewsItem[] = [
   {
+    id: 'fyxer',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'Fyxer, 특화 모델 30~50개로 AI 이메일 비서를 만든 법',
+    summary:
+      'OpenAI가 AI 이메일 비서를 만드는 Fyxer의 개발 방식을 소개했다. Fyxer는 이메일 업무를 좁게 쪼갠 ' +
+      '특화 모델 30~50개로 나눠 처리하고, 사람이 하던 비서 업무 50만 시간 분량의 데이터로 파인튜닝했다. ' +
+      '생성한 초안의 53%가 그대로 채택된다고 밝혔다.',
+    publishedAt: '2026-09-14',
+    collectedAt: '2026-09-15',
+    category: 'Product',
+    signal: '기업 도입 사례',
+    url: 'https://openai.com/index/fyxer',
+  },
+  {
     id: 'developers-tools-devfest2026',
     source: 'Google DeepMind',
     kind: 'company',
@@ -201,6 +216,21 @@ const entries: NewsItem[] = [
     url: 'https://openai.com/index/perplexity-improving-accuracy-with-astra',
   },
   {
+    id: 'scaling-storage-one-billion-users-part-one',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'OpenAI, 저장 플랫폼 Habitat을 Python에서 Rust로 옮긴 과정',
+    summary:
+      'OpenAI가 온라인 저장 플랫폼 Habitat을 키워 온 과정을 두 편 중 첫 편으로 공개했다. Habitat은 초당 ' +
+      '7천만 건이 넘는 요청과 500페타바이트를 처리한다. 2026년 2분기에 엔지니어 두 명이 Codex와 ' +
+      'GPT-5.5로 전체를 Rust로 다시 썼다고 밝혔다.',
+    publishedAt: '2026-09-11',
+    collectedAt: '2026-09-15',
+    category: 'Research',
+    signal: '스토리지 엔지니어링',
+    url: 'https://openai.com/index/scaling-storage-one-billion-users-part-one',
+  },
+  {
     id: 'cognition-devin-testing-with-astra',
     source: 'OpenAI',
     kind: 'company',
@@ -214,6 +244,51 @@ const entries: NewsItem[] = [
     category: 'Product',
     signal: '기업 도입 사례',
     url: 'https://openai.com/index/cognition-devin-testing-with-astra',
+  },
+  {
+    id: 'expanding-ai-access-us-government',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'OpenAI, 미국 연방·주·지방정부에 ChatGPT 라이선스 무료 제공',
+    summary:
+      'OpenAI와 미국 조달청(GSA)이 다년 협약을 맺었다. 사용자당 월 15달러이던 라이선스 비용이 0달러가 ' +
+      '되고 사용료는 50% 할인되며, 연방정부뿐 아니라 주·지방·부족 정부까지 대상이다. 협약 기간은 ' +
+      '2026년 10월 1일부터 2028년 12월 31일까지 27개월이다.',
+    publishedAt: '2026-09-10',
+    collectedAt: '2026-09-15',
+    category: 'Corporate',
+    signal: '공공부문 AI',
+    url: 'https://openai.com/index/expanding-ai-access-us-government',
+  },
+  {
+    id: 'put-data-to-work',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'OpenAI, ChatGPT Work에 사내 데이터를 분석하는 Data 에이전트 공개',
+    summary:
+      'OpenAI가 ChatGPT Work에 Data 에이전트를 내놓았다. Snowflake·Databricks·BigQuery 같은 사내 ' +
+      '데이터 소스에 연결해 질문을 분석으로 바꾸고 공유할 수 있는 대화형 대시보드를 만든다. 쿼리는 연결된 ' +
+      '계정의 기존 권한을 그대로 따른다고 밝혔다.',
+    publishedAt: '2026-09-10',
+    collectedAt: '2026-09-15',
+    category: 'Product',
+    signal: '기업용 에이전트',
+    url: 'https://openai.com/index/put-data-to-work',
+  },
+  {
+    id: 'using-codex-chatgpt-to-search-for-new-antimicrobials',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'Codex와 ChatGPT로 유전체에서 항균 분자를 찾는 연구실',
+    summary:
+      'OpenAI가 생명공학자 César de la Fuente 연구실의 사용 사례를 소개했다. 이 연구실은 살아 있는 ' +
+      '생물과 멸종한 생물의 유전체를 딥러닝으로 훑어 항균 후보 분자를 찾고, ChatGPT와 Codex로 가설을 ' +
+      '세우고 코드를 쓰고 데이터셋을 처리한다.',
+    publishedAt: '2026-09-10',
+    collectedAt: '2026-09-15',
+    category: 'Product',
+    signal: '연구실 도입 사례',
+    url: 'https://openai.com/index/using-codex-chatgpt-to-search-for-new-antimicrobials',
   },
   {
     id: 'introducing-the-agents-api',
