@@ -619,10 +619,6 @@ export function ArticleAsk({ title, fallbackContext, proseRef, ready }: ArticleA
             : turn,
         ),
       );
-      // 한 번 답이 나왔으면 붙인 문장은 모두 놓아 줍니다. 다음 질문까지 끌고 가면
-      // 엉뚱한 문단에 묶인 채 대화가 이어집니다.
-      setActiveSelections([]);
-      setActiveImages([]);
     } catch (caught) {
       if (requestSerialRef.current !== serial) return;
       const message = articleAskErrorMessage(caught);
@@ -681,7 +677,12 @@ export function ArticleAsk({ title, fallbackContext, proseRef, ready }: ArticleA
         exhausted: false,
       },
     ]);
+    // 보낸 순간 입력 묶음을 비웁니다 — 글자도 칩도. 실패해도 다시 시도는 그때 보낸
+    // payload를 그대로 쓰므로 붙잡아 둘 이유가 없습니다.
     setQuestion('');
+    setActiveSelections([]);
+    setActiveImages([]);
+
     await runTurn(turnId, payload);
   };
 
@@ -850,7 +851,7 @@ export function ArticleAsk({ title, fallbackContext, proseRef, ready }: ArticleA
                 aria-relevant="additions text"
                 role="log"
               >
-                {turns.map((turn) => (
+                {turns.map((turn, index) => (
                   <li key={turn.id} className="article-ai-turn">
                     <div className="article-ai-ask">
                       {turn.shots.length > 0 && (
@@ -874,9 +875,13 @@ export function ArticleAsk({ title, fallbackContext, proseRef, ready }: ArticleA
                       {turn.status === 'error' && (
                         <p className="article-ai-status" role="alert">
                           <span className="article-ai-status-label">{turn.error}</span>
-                          {/* 같은 질문을 그대로 다시 보냅니다 — 대개는 잠시 몰렸다가 풀립니다.
-                              하루치를 다 썼으면 눌러도 막히므로 내놓지 않습니다. */}
-                          {!turn.exhausted && (
+                          {/*
+                            같은 질문을 그대로 다시 보냅니다 — 대개는 잠시 몰렸다가 풀립니다.
+                            마지막 차례에만 둡니다. 줄줄이 실패했을 때 모든 줄에 단추가 서면
+                            어느 것을 누를지부터 고르게 되고, 위쪽 질문을 다시 보내면 순서도 꼬입니다.
+                            하루치를 다 썼을 때도 내놓지 않습니다 — 눌러도 리셋 전까지 막힙니다.
+                          */}
+                          {!turn.exhausted && index === turns.length - 1 && (
                           <button
                             type="button"
                             className="article-ai-retry"
