@@ -3385,14 +3385,22 @@ input:focus-visible {
   flex-direction: column;
 }
 
+/* 문장 칩과 이미지 칩은 한 줄에 나란히 섭니다. 세로로 쌓으면 입력 영역이 그만큼 줄어듭니다. */
+.article-ai-attachments {
+  display: flex;
+  flex: 0 0 auto;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+  border-top: 1px solid var(--border);
+  background: var(--preview-raised);
+  padding: 10px 12px 0;
+}
+
 .article-ai-selection {
   position: relative;
   display: flex;
   min-width: 0;
-  flex: 0 0 auto;
-  border-top: 1px solid var(--border);
-  background: var(--preview-raised);
-  padding: 10px 12px 0;
 }
 
 .article-ai-selection-chip {
@@ -3425,13 +3433,13 @@ input:focus-visible {
 .article-ai-picks {
   position: absolute;
   bottom: 100%;
-  left: 12px;
+  left: 0;
   display: none;
-  max-width: calc(100% - 24px);
+  max-width: min(100%, 420px);
   flex-direction: column;
   align-items: flex-start;
   gap: 6px;
-  padding-bottom: 8px;
+  padding-bottom: 6px;
 }
 
 .article-ai-selection.is-open .article-ai-picks,
@@ -3487,31 +3495,18 @@ input:focus-visible {
 .article-ai-images {
   position: relative;
   display: flex;
-  flex: 0 0 auto;
   min-width: 0;
-  background: var(--preview-raised);
-  padding: 8px 12px 0;
-}
-
-.article-ai-images[hidden] {
-  display: none;
-}
-
-/* 선택 칩이 없을 때는 이미지 줄이 입력 묶음의 첫 줄이 된다 */
-.article-ai-composer > .article-ai-images:first-of-type {
-  border-top: 1px solid var(--border);
-  padding-top: 10px;
 }
 
 .article-ai-shots {
   position: absolute;
   bottom: 100%;
-  left: 12px;
+  left: 0;
   display: none;
-  max-width: calc(100% - 24px);
+  max-width: min(100%, 420px);
   flex-wrap: wrap;
   gap: 6px;
-  padding-bottom: 8px;
+  padding-bottom: 6px;
 }
 
 .article-ai-images.is-open .article-ai-shots,
