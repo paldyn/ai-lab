@@ -160,7 +160,7 @@ export interface NewsDetail {
   commentary: string;
 }
 
-export const globalNewsUpdatedAt = '2026-09-14';
+export const globalNewsUpdatedAt = '2026-09-15';
 
 /**
  * 공식 발표 한 건 = 항목 한 개. 2026년 1월부터 쌓는 아카이브이며 오래된 항목을
@@ -171,6 +171,91 @@ export const globalNewsUpdatedAt = '2026-09-14';
  * 목록에서 파생됩니다. 갱신 시 globalNewsUpdatedAt도 함께 올립니다.
  */
 const entries: NewsItem[] = [
+  {
+    id: 'blog-introducing-gemini-3-8-live-and-3-8-live-extended-thinking',
+    source: 'Google DeepMind',
+    kind: 'model',
+    title: 'Google, 실시간 대화 모델 Gemini 3.8 Live 두 종 공개',
+    summary:
+      'Google이 실시간 대화 모델 Gemini 3.8 Live와 3.8 Live Extended Thinking을 공개했다. ' +
+      'Extended Thinking은 Speech to Speech Quality Index에서 82.6으로 1위에 올랐고, 3.8 Live는 ' +
+      '97개 언어를 대화 도중 자동으로 전환한다. 둘 다 오늘부터 Gemini API와 Google AI Studio에 열린다.',
+    publishedAt: '2026-09-15',
+    collectedAt: '2026-09-16',
+    category: 'Multimodal',
+    signal: '음성 에이전트',
+    url: 'https://deepmind.google/blog/introducing-gemini-3-8-live-and-3-8-live-extended-thinking',
+    model: {
+      family: 'Gemini',
+      name: 'Gemini 3.8 Live',
+      kind: '신규 모델',
+      status: '공개',
+      useCase: '실시간 음성 에이전트',
+      headline: '규모와 비용을 맞춘 쪽과 다단계 추론을 맡는 쪽으로 갈라 냈다.',
+      logo: 'assets/gemini.svg',
+      tone: 'gemini',
+    },
+  },
+  {
+    id: 'ai-ai-applications-science-people',
+    source: 'Google DeepMind',
+    kind: 'company',
+    title: 'Google, AI 과학 성과와 300개 언어 지원을 한자리에 정리',
+    summary:
+      'Google이 건강·재해 대응·학습·경제 네 갈래에서 AI가 낸 성과를 정리해 내놨다. Google 기술이 ' +
+      '지원하는 언어가 70억 명이 쓰는 300개를 넘었다고 밝혔고, AlphaGenome Atlas·WeatherNext 3· ' +
+      'Planetary Prediction Engine 등 최근 몇 주의 발표를 함께 묶었다.',
+    publishedAt: '2026-09-15',
+    collectedAt: '2026-09-16',
+    category: 'Research',
+    signal: '과학 AI',
+    url: 'https://blog.google/innovation-and-ai/technology/ai/ai-applications-science-people',
+  },
+  {
+    id: 'ai-ai-for-every-language',
+    source: 'Google DeepMind',
+    kind: 'company',
+    title: 'Google, 300개 언어 지원과 저자원 언어 음성 데이터 공개',
+    summary:
+      'Google이 제품과 기술이 300개가 넘는 언어를 다루게 됐다고 밝히며 언어 연구를 정리했다. ' +
+      'Gemini 3.5 Live Translate가 70개 언어와 2,000개 넘는 언어쌍의 실시간 통역을 맡고, 아프리카 ' +
+      '27개 언어를 담은 공개 음성 데이터셋 WAXAL과 인도 109개 언어를 모은 Project Vaani를 함께 소개했다.',
+    publishedAt: '2026-09-15',
+    collectedAt: '2026-09-16',
+    category: 'Research',
+    signal: '언어 포용성',
+    url: 'https://blog.google/innovation-and-ai/technology/ai/ai-for-every-language',
+  },
+  {
+    id: 'ai-ai-economy-atlas-september-2026',
+    source: 'Google DeepMind',
+    kind: 'company',
+    title: 'Google, AI & Economy ATLAS를 대화형으로 열고 과학자 조사 공개',
+    summary:
+      'Google이 AI 이용 데이터를 모은 AI & Economy ATLAS를 누구나 탐색하는 대화형 화면으로 열었다. ' +
+      '인도는 예술·디자인·미디어 직군이 업무 AI 이용의 19%로 세계 평균의 1.6배, 미국은 컴퓨터·수학 ' +
+      '직군이 30%로 나머지 지역의 두 배였다. MIT FutureTech와 함께 한 과학자 이용 조사도 같이 냈다.',
+    publishedAt: '2026-09-15',
+    collectedAt: '2026-09-16',
+    category: 'Research',
+    signal: '경제 연구',
+    url: 'https://blog.google/innovation-and-ai/technology/ai/ai-economy-atlas-september-2026',
+  },
+  {
+    id: 'ai-dialogues-christina-koch',
+    source: 'Google DeepMind',
+    kind: 'company',
+    title: 'Google, 우주비행사 Christina Koch와의 기술·사회 대담 공개',
+    summary:
+      'Google이 Dialogues on Technology and Society 시리즈의 새 편으로 NASA 우주비행사 Christina ' +
+      'Koch와 James Manyika의 대담을 공개했다. 국제우주정거장 328일과 첫 전원 여성 우주유영, ' +
+      'Artemis II 임무를 돌아보고 우주비행사와 로보틱스·AI의 협업을 이야기한다.',
+    publishedAt: '2026-09-14',
+    collectedAt: '2026-09-16',
+    category: 'Corporate',
+    signal: '기술·사회 대담',
+    url: 'https://blog.google/innovation-and-ai/technology/ai/dialogues-christina-koch',
+  },
   {
     id: 'fyxer',
     source: 'OpenAI',
