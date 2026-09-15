@@ -13,7 +13,7 @@ import {
   type ClipboardEvent,
 } from 'react';
 import { createPortal } from 'react-dom';
-import { ArrowUp, Image as ImageIcon, MessageSquareText, Sparkles, X } from 'lucide-react';
+import { ArrowUp, Image as ImageIcon, MessageSquareText, RotateCw, Sparkles, X } from 'lucide-react';
 import {
   articleAskErrorMessage,
   buildArticleQuestionContext,
@@ -27,6 +27,7 @@ import {
   buildArticleConversationContext,
   requestArticleAnswer,
   type ArticlePanelGeometry,
+  type ArticleAskPayload,
   type ArticleConversationEntry,
   type ArticleImageAttachment,
   type ArticleTextSelection,
@@ -50,6 +51,8 @@ interface ConversationTurn extends ArticleConversationEntry {
   id: number;
   quoted: string;
   shots: string[];
+  /** 다시 시도할 때 그대로 다시 보냅니다 — 그때 딛고 있던 문맥까지 같이. */
+  payload: ArticleAskPayload;
   html: string;
   status: 'loading' | 'done' | 'error';
   error: string;
@@ -572,59 +575,26 @@ export function ArticleAsk({ title, fallbackContext, proseRef, ready }: ArticleA
     if (prepared.length > 0) setActiveImages((prev) => [...prev, ...prepared].slice(0, MAX_PASTED_IMAGES));
   };
 
-  const submit = async (event: FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    const trimmedQuestion = question.trim();
-    if (!trimmedQuestion || loading) return;
-
-    // 이 질문이 딛고 선 선택들. 답이 오면 놓아 주므로 여기서 붙잡아 둡니다.
-    const picked = activeSelections;
-    const merged = combineArticleSelections(picked);
-    const images = activeImages;
-    const baseContext = merged.context ||
-      buildArticleQuestionContext(proseRef.current, trimmedQuestion, fallbackContext);
-    // 답변을 마친 차례만 문맥으로 보냅니다. 실패한 차례를 넣으면 빈 답을 이어받습니다.
-    const history: ArticleConversationEntry[] = turns
-      .filter((turn) => turn.status === 'done' && turn.answer)
-      .map((turn) => ({ question: turn.question, answer: turn.answer }));
-
+  /** 한 차례를 보냅니다. 첫 질문도, 다시 시도도 이 길을 탑니다. */
+  const runTurn = useCallback(async (turnId: number, payload: ArticleAskPayload) => {
     const controller = new AbortController();
     const serial = requestSerialRef.current + 1;
     requestSerialRef.current = serial;
     requestRef.current?.abort();
     requestRef.current = controller;
 
-    const turnId = serial;
-    setTurns((prev) => [
-      ...prev,
-      {
-        id: turnId,
-        question: trimmedQuestion,
-        quoted: picked.map((piece) => piece.text).join('\n'),
-        shots: images.map((image) => image.preview),
-        answer: '',
-        html: '',
-        status: 'loading',
-        error: '',
-      },
-    ]);
+    setTurns((prev) =>
+      prev.map((turn) =>
+        turn.id === turnId ? { ...turn, status: 'loading', error: '' } : turn,
+      ),
+    );
     setLoading(true);
     setThinkingSeconds(0);
-    setQuestion('');
 
     const timeout = window.setTimeout(() => controller.abort(), REQUEST_TIMEOUT_MS);
 
     try {
-      const response = await requestArticleAnswer(
-        {
-          title,
-          context: buildArticleConversationContext(baseContext, history),
-          selectedText: merged.selectedText,
-          images: images.map((image) => ({ data: image.data, mimeType: image.mimeType })),
-          question: trimmedQuestion,
-        },
-        controller.signal,
-      );
+      const response = await requestArticleAnswer(payload, controller.signal);
 
       if (requestSerialRef.current !== serial) return;
       // Markdown 도구 묶음은 답변을 받은 뒤에만 내려받습니다. 글을 읽기만 하는 방문자의
@@ -641,6 +611,7 @@ export function ArticleAsk({ title, fallbackContext, proseRef, ready }: ArticleA
                 // renderAiMarkdown은 raw HTML을 버리고 allowlist sanitize를 통과한 HTML만 돌려줍니다.
                 html: renderAiMarkdown(response.answer),
                 status: 'done',
+                error: '',
               }
             : turn,
         ),
@@ -662,6 +633,49 @@ export function ArticleAsk({ title, fallbackContext, proseRef, ready }: ArticleA
         setLoading(false);
       }
     }
+  }, []);
+
+  const submit = async (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    const trimmedQuestion = question.trim();
+    if (!trimmedQuestion || loading) return;
+
+    // 이 질문이 딛고 선 선택들. 답이 오면 놓아 주므로 여기서 붙잡아 둡니다.
+    const picked = activeSelections;
+    const merged = combineArticleSelections(picked);
+    const images = activeImages;
+    const baseContext = merged.context ||
+      buildArticleQuestionContext(proseRef.current, trimmedQuestion, fallbackContext);
+    // 답변을 마친 차례만 문맥으로 보냅니다. 실패한 차례를 넣으면 빈 답을 이어받습니다.
+    const history: ArticleConversationEntry[] = turns
+      .filter((turn) => turn.status === 'done' && turn.answer)
+      .map((turn) => ({ question: turn.question, answer: turn.answer }));
+
+    const payload: ArticleAskPayload = {
+      title,
+      context: buildArticleConversationContext(baseContext, history),
+      selectedText: merged.selectedText,
+      images: images.map((image) => ({ data: image.data, mimeType: image.mimeType })),
+      question: trimmedQuestion,
+    };
+
+    const turnId = requestSerialRef.current + 1;
+    setTurns((prev) => [
+      ...prev,
+      {
+        id: turnId,
+        question: trimmedQuestion,
+        quoted: picked.map((piece) => piece.text).join('\n'),
+        shots: images.map((image) => image.preview),
+        payload,
+        answer: '',
+        html: '',
+        status: 'loading',
+        error: '',
+      },
+    ]);
+    setQuestion('');
+    await runTurn(turnId, payload);
   };
 
   /** 대화를 통째로 비웁니다. 선택 본문과 달리 저절로 사라지지 않으므로 버튼으로만 부릅니다. */
@@ -853,6 +867,17 @@ export function ArticleAsk({ title, fallbackContext, proseRef, ready }: ArticleA
                       {turn.status === 'error' && (
                         <p className="article-ai-status" role="alert">
                           <span className="article-ai-status-label">{turn.error}</span>
+                          {/* 같은 질문을 그대로 다시 보냅니다 — 대개는 잠시 몰렸다가 풀립니다. */}
+                          <button
+                            type="button"
+                            className="article-ai-retry"
+                            onClick={() => void runTurn(turn.id, turn.payload)}
+                            disabled={loading}
+                            aria-label="다시 시도"
+                            title="다시 시도"
+                          >
+                            <RotateCw size={12} strokeWidth={1.8} aria-hidden="true" />
+                          </button>
                         </p>
                       )}
                       {turn.status === 'done' && (
