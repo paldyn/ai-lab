@@ -16,6 +16,8 @@ import { createPortal } from 'react-dom';
 import { ArrowUp, Image as ImageIcon, MessageSquareText, RotateCw, Sparkles, X } from 'lucide-react';
 import {
   articleAskErrorMessage,
+  articleAskRetryAfter,
+  articleAskWaitMessage,
   isArticleQuotaExhausted,
   buildArticleQuestionContext,
   buildArticleSelectionContext,
@@ -59,6 +61,8 @@ interface ConversationTurn extends ArticleConversationEntry {
   error: string;
   /** 하루치를 다 쓴 경우. 다시 시도해도 리셋 전까지 막히므로 버튼을 감춥니다. */
   exhausted: boolean;
+  /** 한도가 풀리기를 기다리는 오류인지. 남은 초를 세어 문구에 갈아 끼웁니다. */
+  waiting: boolean;
 }
 
 interface ArticleMobileViewport {
@@ -104,6 +108,10 @@ export function ArticleAsk({ title, fallbackContext, proseRef, ready }: ArticleA
   const [turns, setTurns] = useState<ConversationTurn[]>([]);
   const [loading, setLoading] = useState(false);
   const [thinkingSeconds, setThinkingSeconds] = useState(0);
+  // 한도가 풀리는 시각까지 남은 초. 거절당한 요청도 한도를 먹기 때문에, 막힌 채로
+  // 다시 두드리면 풀리는 시각이 오히려 뒤로 밀립니다 — 0이 되기 전에는 보내지 않습니다.
+  const [cooldownLeft, setCooldownLeft] = useState(0);
+  const cooldownUntilRef = useRef(0);
   const [composerHeight, setComposerHeight] = useState(DEFAULT_COMPOSER_HEIGHT);
   const [composerMaxHeight, setComposerMaxHeight] = useState(MAX_COMPOSER_HEIGHT);
   const [resizingComposer, setResizingComposer] = useState(false);
@@ -410,6 +418,18 @@ export function ArticleAsk({ title, fallbackContext, proseRef, ready }: ArticleA
     return () => window.clearInterval(timer);
   }, [loading]);
 
+  useEffect(() => {
+    if (cooldownLeft <= 0) return undefined;
+
+    const timer = window.setTimeout(() => {
+      const left = Math.max(0, Math.ceil((cooldownUntilRef.current - Date.now()) / 1_000));
+      if (left === 0) cooldownUntilRef.current = 0;
+      setCooldownLeft(left);
+    }, 500);
+
+    return () => window.clearTimeout(timer);
+  }, [cooldownLeft]);
+
   // 경로 이동으로 패널이 사라질 때도 전역의 열림 표시가 남지 않게 합니다.
   useEffect(() => () => {
     const pageRoot = document.getElementById('root');
@@ -580,6 +600,9 @@ export function ArticleAsk({ title, fallbackContext, proseRef, ready }: ArticleA
 
   /** 한 차례를 보냅니다. 첫 질문도, 다시 시도도 이 길을 탑니다. */
   const runTurn = useCallback(async (turnId: number, payload: ArticleAskPayload) => {
+    // 아직 한도가 안 풀렸으면 보내지 않습니다. 보내 봐야 거절당하고, 그 요청까지 한도를 먹습니다.
+    if (cooldownUntilRef.current > Date.now()) return;
+
     const controller = new AbortController();
     const serial = requestSerialRef.current + 1;
     requestSerialRef.current = serial;
@@ -623,11 +646,18 @@ export function ArticleAsk({ title, fallbackContext, proseRef, ready }: ArticleA
       if (requestSerialRef.current !== serial) return;
       const message = articleAskErrorMessage(caught);
       const exhausted = isArticleQuotaExhausted(caught);
+      const wait = articleAskRetryAfter(caught);
       setTurns((prev) =>
         prev.map((turn) =>
-          turn.id === turnId ? { ...turn, status: 'error', error: message, exhausted } : turn,
+          turn.id === turnId
+            ? { ...turn, status: 'error', error: message, exhausted, waiting: wait > 0 }
+            : turn,
         ),
       );
+      if (wait > 0) {
+        cooldownUntilRef.current = Math.max(cooldownUntilRef.current, Date.now() + wait * 1_000);
+        setCooldownLeft(wait);
+      }
     } finally {
       window.clearTimeout(timeout);
       if (requestSerialRef.current === serial) {
@@ -640,7 +670,7 @@ export function ArticleAsk({ title, fallbackContext, proseRef, ready }: ArticleA
   const submit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const trimmedQuestion = question.trim();
-    if (!trimmedQuestion || loading) return;
+    if (!trimmedQuestion || loading || cooldownLeft > 0) return;
 
     // 이 질문이 딛고 선 선택들. 답이 오면 놓아 주므로 여기서 붙잡아 둡니다.
     const picked = activeSelections;
@@ -675,6 +705,7 @@ export function ArticleAsk({ title, fallbackContext, proseRef, ready }: ArticleA
         status: 'loading',
         error: '',
         exhausted: false,
+        waiting: false,
       },
     ]);
     // 보낸 순간 입력 묶음을 비웁니다 — 글자도 칩도. 실패해도 다시 시도는 그때 보낸
@@ -874,7 +905,9 @@ export function ArticleAsk({ title, fallbackContext, proseRef, ready }: ArticleA
                       )}
                       {turn.status === 'error' && (
                         <p className="article-ai-status" role="alert">
-                          <span className="article-ai-status-label">{turn.error}</span>
+                          <span className="article-ai-status-label">
+                            {turn.waiting ? articleAskWaitMessage(cooldownLeft) : turn.error}
+                          </span>
                           {/*
                             같은 질문을 그대로 다시 보냅니다 — 대개는 잠시 몰렸다가 풀립니다.
                             마지막 차례에만 둡니다. 줄줄이 실패했을 때 모든 줄에 단추가 서면
@@ -886,9 +919,9 @@ export function ArticleAsk({ title, fallbackContext, proseRef, ready }: ArticleA
                             type="button"
                             className="article-ai-retry"
                             onClick={() => void runTurn(turn.id, turn.payload)}
-                            disabled={loading}
+                            disabled={loading || cooldownLeft > 0}
                             aria-label="다시 시도"
-                            title="다시 시도"
+                            title={cooldownLeft > 0 ? `한도가 풀리기까지 ${cooldownLeft}초` : '다시 시도'}
                           >
                             <RotateCw size={12} strokeWidth={1.8} aria-hidden="true" />
                           </button>
@@ -1051,8 +1084,12 @@ export function ArticleAsk({ title, fallbackContext, proseRef, ready }: ArticleA
                   개인정보는 입력하지 마세요.
                 </p>
               </div>
-              <button type="submit" disabled={loading || !question.trim()}>
-                <span>전송</span>
+              <button
+                type="submit"
+                disabled={loading || cooldownLeft > 0 || !question.trim()}
+                title={cooldownLeft > 0 ? `한도가 풀리기까지 ${cooldownLeft}초` : undefined}
+              >
+                <span>{cooldownLeft > 0 ? `${cooldownLeft}초` : '전송'}</span>
                 <ArrowUp size={15} strokeWidth={1.8} aria-hidden="true" />
               </button>
             </div>
