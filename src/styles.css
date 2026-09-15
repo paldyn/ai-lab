@@ -3432,6 +3432,9 @@ input:focus-visible {
 /* 고른 문장들. 칩 위로 떠서 답변 영역을 밀지 않습니다. */
 .article-ai-picks {
   position: absolute;
+  /* 높이 조절 손잡이가 칩 위 경계에 걸쳐 있습니다. 펼친 목록이 그보다 뒤에
+     깔리면 손잡이 막대가 썸네일을 가로지릅니다. */
+  z-index: 4;
   bottom: 100%;
   left: 0;
   display: none;
@@ -3500,6 +3503,9 @@ input:focus-visible {
 
 .article-ai-shots {
   position: absolute;
+  /* 높이 조절 손잡이가 칩 위 경계에 걸쳐 있습니다. 펼친 목록이 그보다 뒤에
+     깔리면 손잡이 막대가 썸네일을 가로지릅니다. */
+  z-index: 4;
   bottom: 100%;
   left: 0;
   display: none;
