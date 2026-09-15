@@ -3718,13 +3718,12 @@ input:focus-visible {
   flex: 0 0 auto;
   align-items: center;
   justify-content: center;
-  border: 1px solid var(--border);
-  border-radius: 999px;
-  background: var(--preview-surface);
+  /* 테두리도 바탕도 두지 않습니다 — 오류 문구 옆에 아이콘 하나로만 섭니다. */
+  border: 0;
+  background: none;
   padding: 0;
   color: var(--text-dim);
-  cursor: pointer;
-  transition: border-color 150ms ease, color 150ms ease, background-color 150ms ease;
+  transition: color 150ms ease;
 }
 
 .article-ai-retry[hidden] {
@@ -3732,8 +3731,6 @@ input:focus-visible {
 }
 
 .article-ai-retry:hover {
-  border-color: var(--text-dim);
-  background: var(--preview-raised);
   color: var(--text-strong);
 }
 
