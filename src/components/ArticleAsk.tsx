@@ -16,6 +16,7 @@ import { createPortal } from 'react-dom';
 import { ArrowUp, Image as ImageIcon, MessageSquareText, RotateCw, Sparkles, X } from 'lucide-react';
 import {
   articleAskErrorMessage,
+  isArticleQuotaExhausted,
   buildArticleQuestionContext,
   buildArticleSelectionContext,
   combineArticleSelections,
@@ -56,6 +57,8 @@ interface ConversationTurn extends ArticleConversationEntry {
   html: string;
   status: 'loading' | 'done' | 'error';
   error: string;
+  /** 하루치를 다 쓴 경우. 다시 시도해도 리셋 전까지 막히므로 버튼을 감춥니다. */
+  exhausted: boolean;
 }
 
 interface ArticleMobileViewport {
@@ -623,8 +626,11 @@ export function ArticleAsk({ title, fallbackContext, proseRef, ready }: ArticleA
     } catch (caught) {
       if (requestSerialRef.current !== serial) return;
       const message = articleAskErrorMessage(caught);
+      const exhausted = isArticleQuotaExhausted(caught);
       setTurns((prev) =>
-        prev.map((turn) => (turn.id === turnId ? { ...turn, status: 'error', error: message } : turn)),
+        prev.map((turn) =>
+          turn.id === turnId ? { ...turn, status: 'error', error: message, exhausted } : turn,
+        ),
       );
     } finally {
       window.clearTimeout(timeout);
@@ -672,6 +678,7 @@ export function ArticleAsk({ title, fallbackContext, proseRef, ready }: ArticleA
         html: '',
         status: 'loading',
         error: '',
+        exhausted: false,
       },
     ]);
     setQuestion('');
@@ -867,7 +874,9 @@ export function ArticleAsk({ title, fallbackContext, proseRef, ready }: ArticleA
                       {turn.status === 'error' && (
                         <p className="article-ai-status" role="alert">
                           <span className="article-ai-status-label">{turn.error}</span>
-                          {/* 같은 질문을 그대로 다시 보냅니다 — 대개는 잠시 몰렸다가 풀립니다. */}
+                          {/* 같은 질문을 그대로 다시 보냅니다 — 대개는 잠시 몰렸다가 풀립니다.
+                              하루치를 다 썼으면 눌러도 막히므로 내놓지 않습니다. */}
+                          {!turn.exhausted && (
                           <button
                             type="button"
                             className="article-ai-retry"
@@ -878,6 +887,7 @@ export function ArticleAsk({ title, fallbackContext, proseRef, ready }: ArticleA
                           >
                             <RotateCw size={12} strokeWidth={1.8} aria-hidden="true" />
                           </button>
+                          )}
                         </p>
                       )}
                       {turn.status === 'done' && (
