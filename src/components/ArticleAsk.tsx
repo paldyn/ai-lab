@@ -12,7 +12,7 @@ import {
   type RefObject,
 } from 'react';
 import { createPortal } from 'react-dom';
-import { ArrowUp, Highlighter, Sparkles, X } from 'lucide-react';
+import { ArrowUp, MessageSquareText, Sparkles, X } from 'lucide-react';
 import {
   articleAskErrorMessage,
   buildArticleQuestionContext,
@@ -830,27 +830,40 @@ export function ArticleAsk({ title, fallbackContext, proseRef, ready }: ArticleA
 
             {activeSelections.length > 0 && (
               <aside className="article-ai-selection" aria-label="선택한 본문">
-                {activeSelections.map((piece, index) => {
-                  // 칩은 한 줄이므로 줄바꿈은 공백으로 눕힙니다. 자르는 일은 CSS가 맡습니다.
-                  const label = piece.text.replace(/\s+/g, ' ').trim();
-                  return (
-                    <span className="article-ai-selection-chip" key={piece.text}>
-                      <Highlighter size={13} strokeWidth={1.7} aria-hidden="true" />
-                      <span className="article-ai-selection-text" title={label}>{label}</span>
-                      <button
-                        type="button"
-                        className="article-ai-selection-clear"
-                        onClick={() =>
-                          setActiveSelections((prev) => prev.filter((_, at) => at !== index))
-                        }
-                        aria-label="선택 해제"
-                        title="선택 해제"
-                      >
-                        <X size={11} strokeWidth={1.8} aria-hidden="true" />
-                      </button>
-                    </span>
-                  );
-                })}
+                {/* 마우스를 올리면 무엇을 골랐는지 위로 펼칩니다 */}
+                <div className="article-ai-picks">
+                  {activeSelections.map((piece, index) => {
+                    // 한 줄로 보여 주므로 줄바꿈은 공백으로 눕힙니다. 자르는 일은 CSS가 맡습니다.
+                    const label = piece.text.replace(/\s+/g, ' ').trim();
+                    return (
+                      <span className="article-ai-pick" key={piece.text}>
+                        <span className="article-ai-pick-text" title={label}>{`\u201C${label}\u201D`}</span>
+                        <button
+                          type="button"
+                          className="article-ai-pick-clear"
+                          onClick={() => setActiveSelections((prev) => prev.filter((_, at) => at !== index))}
+                          aria-label="이 문장 빼기"
+                          title="빼기"
+                        >
+                          <X size={11} strokeWidth={1.8} aria-hidden="true" />
+                        </button>
+                      </span>
+                    );
+                  })}
+                </div>
+                <span className="article-ai-selection-chip">
+                  <MessageSquareText size={14} strokeWidth={1.7} aria-hidden="true" />
+                  <span className="article-ai-selection-count">텍스트 {activeSelections.length}개 선택</span>
+                  <button
+                    type="button"
+                    className="article-ai-selection-clear"
+                    onClick={() => setActiveSelections([])}
+                    aria-label="선택 모두 해제"
+                    title="모두 해제"
+                  >
+                    <X size={11} strokeWidth={1.8} aria-hidden="true" />
+                  </button>
+                </span>
               </aside>
             )}
 
