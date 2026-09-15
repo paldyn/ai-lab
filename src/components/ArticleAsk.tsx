@@ -747,16 +747,6 @@ export function ArticleAsk({ title, fallbackContext, proseRef, ready }: ArticleA
           </header>
 
           <div ref={contentRef} className="article-ai-content" aria-busy={loading}>
-            {activeSelection && (
-              <aside className="article-ai-selection" aria-label="선택한 본문">
-                <div>
-                  <span>선택한 본문</span>
-                  <button type="button" onClick={() => setActiveSelection(null)}>선택 해제</button>
-                </div>
-                <blockquote>{activeSelection.text}</blockquote>
-              </aside>
-            )}
-
             {turns.length === 0 && (
               <div className="article-ai-empty">
                 <Sparkles size={18} strokeWidth={1.5} aria-hidden="true" />
@@ -806,13 +796,11 @@ export function ArticleAsk({ title, fallbackContext, proseRef, ready }: ArticleA
             )}
           </div>
 
-          <form
-            ref={formRef}
-            className="article-ai-form"
-            data-resizing={resizingComposer ? '' : undefined}
-            style={{ height: composerHeight }}
-            onSubmit={submit}
-          >
+          {/*
+            선택 본문과 입력창은 한 묶음입니다 — 높이 조절 손잡이가 둘 위에 함께
+            얹혀야 인용구 밑줄처럼 보이지 않습니다.
+          */}
+          <div className="article-ai-composer">
             <div
               className="article-ai-resize-handle"
               role={composerResizeDisabled ? undefined : 'slider'}
@@ -833,6 +821,24 @@ export function ArticleAsk({ title, fallbackContext, proseRef, ready }: ArticleA
                 setResizingComposer(false);
               }}
             />
+
+            {activeSelection && (
+              <aside className="article-ai-selection" aria-label="선택한 본문">
+                <div>
+                  <span>선택한 본문</span>
+                  <button type="button" onClick={() => setActiveSelection(null)}>선택 해제</button>
+                </div>
+                <blockquote>{activeSelection.text}</blockquote>
+              </aside>
+            )}
+
+            <form
+              ref={formRef}
+              className="article-ai-form"
+              data-resizing={resizingComposer ? '' : undefined}
+              style={{ height: composerHeight }}
+              onSubmit={submit}
+            >
             <label htmlFor="article-ai-question" className="sr-only">현재 글에 질문하기</label>
             <textarea
               ref={textareaRef}
@@ -859,7 +865,8 @@ export function ArticleAsk({ title, fallbackContext, proseRef, ready }: ArticleA
                 <ArrowUp size={15} strokeWidth={1.8} aria-hidden="true" />
               </button>
             </div>
-          </form>
+            </form>
+          </div>
         </section>
       )}
     </div>,

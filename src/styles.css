@@ -3296,8 +3296,12 @@ input:focus-visible {
   display: grid;
   min-height: 49px;
   flex: 0 0 auto;
-  /* 제목 · 새 대화 · 닫기. 새 대화는 대화가 있을 때만 자리를 차지합니다. */
-  grid-template-columns: minmax(0, 1fr) auto 36px;
+  /*
+    제목 · 새 대화 · 닫기. 새 대화는 대화가 있을 때만 그려지므로, 칸을 셋으로
+    고정해 두면 그 동안 닫기가 둘째 칸으로 밀려 들어가고 셋째 칸이 오른쪽에
+    빈 채로 남습니다 — 버튼이 모서리에서 56px 안쪽에 섭니다.
+  */
+  grid-template-columns: minmax(0, 1fr) auto auto;
   align-items: center;
   gap: 10px;
   border-bottom: 1px solid var(--border);
@@ -3342,6 +3346,7 @@ input:focus-visible {
 }
 
 .article-ai-bar .article-ai-close {
+  grid-column: 3;
   display: inline-flex;
   width: 34px;
   height: 34px;
@@ -3368,10 +3373,24 @@ input:focus-visible {
   -webkit-user-select: text;
 }
 
+/*
+  선택 본문은 답변 영역이 아니라 입력 영역 바로 위에 붙습니다 — 무엇을 물을지
+  고른 것이므로 답이 아니라 질문 쪽에 속합니다. 폼과 같은 바탕에 위 테두리만
+  둬서 한 덩어리로 읽히고, 폼 밖에 두어 입력창 높이를 빼앗지 않습니다.
+*/
+.article-ai-composer {
+  position: relative;
+  display: flex;
+  flex: 0 0 auto;
+  flex-direction: column;
+}
+
 .article-ai-selection {
+  flex: 0 0 auto;
+  border-top: 1px solid var(--border);
   border-left: 2px solid var(--brand);
   background: var(--preview-raised);
-  padding: 11px 12px;
+  padding: 10px 12px 0;
 }
 
 .article-ai-selection > div {
@@ -3679,7 +3698,7 @@ input:focus-visible {
 
 /* 선택 문맥이 있을 때만 대화 영역과 질문 입력 영역 사이에 숨 쉴 공간을 둡니다. */
 .article-ai-panel:has(.article-ai-selection) .article-ai-form {
-  margin-top: 12px;
+  padding-top: 9px;
 }
 
 /* 브라우저 기본 모서리 손잡이 대신, 답변과 입력창 사이의 선을 직접 끌어 높이를 바꿉니다. */
