@@ -87,6 +87,10 @@ export function ArticleAsk({ title, fallbackContext, proseRef, ready }: ArticleA
   const [question, setQuestion] = useState('');
   const [activeSelections, setActiveSelections] = useState<ActiveSelection[]>([]);
   const [activeImages, setActiveImages] = useState<ArticleImageAttachment[]>([]);
+  const [picksOpen, setPicksOpen] = useState(false);
+  const [shotsOpen, setShotsOpen] = useState(false);
+  const picksTimerRef = useRef(0);
+  const shotsTimerRef = useRef(0);
   const [selectionPrompt, setSelectionPrompt] = useState<ArticleTextSelection | null>(null);
   const [turns, setTurns] = useState<ConversationTurn[]>([]);
   const [loading, setLoading] = useState(false);
@@ -523,6 +527,24 @@ export function ArticleAsk({ title, fallbackContext, proseRef, ready }: ArticleA
     if (open) focusQuietly(textareaRef.current);
   };
 
+  /**
+   * 칩과 펼친 목록 사이를 지날 때 잠깐 밖으로 나가도 닫히지 않게 유예를 둡니다.
+   * 순수 :hover로 두면 그 틈에서 목록이 사라져 안의 ✕를 누를 수가 없습니다.
+   */
+  const hoverHold = (
+    setOpen: (open: boolean) => void,
+    timerRef: { current: number },
+  ) => ({
+    onPointerEnter: () => {
+      window.clearTimeout(timerRef.current);
+      setOpen(true);
+    },
+    onPointerLeave: () => {
+      window.clearTimeout(timerRef.current);
+      timerRef.current = window.setTimeout(() => setOpen(false), 220);
+    },
+  });
+
   /** 캡처를 그대로 붙여넣습니다. 워커가 인라인으로 실어 보내므로 여기서 줄여 둡니다. */
   const handlePaste = async (event: ClipboardEvent<HTMLTextAreaElement>) => {
     const files = pickPastedImages(Array.from(event.clipboardData?.files ?? []));
@@ -864,7 +886,11 @@ export function ArticleAsk({ title, fallbackContext, proseRef, ready }: ArticleA
             />
 
             {activeSelections.length > 0 && (
-              <aside className="article-ai-selection" aria-label="선택한 본문">
+              <aside
+                className={`article-ai-selection${picksOpen ? ' is-open' : ''}`}
+                aria-label="선택한 본문"
+                {...hoverHold(setPicksOpen, picksTimerRef)}
+              >
                 {/* 마우스를 올리면 무엇을 골랐는지 위로 펼칩니다 */}
                 <div className="article-ai-picks">
                   {activeSelections.map((piece, index) => {
@@ -903,7 +929,11 @@ export function ArticleAsk({ title, fallbackContext, proseRef, ready }: ArticleA
             )}
 
             {activeImages.length > 0 && (
-              <aside className="article-ai-images" aria-label="붙여넣은 이미지">
+              <aside
+                className={`article-ai-images${shotsOpen ? ' is-open' : ''}`}
+                aria-label="붙여넣은 이미지"
+                {...hoverHold(setShotsOpen, shotsTimerRef)}
+              >
                 <div className="article-ai-shots">
                   {activeImages.map((image, index) => (
                     <span className="article-ai-shot" key={image.preview.slice(0, 64) + index}>
