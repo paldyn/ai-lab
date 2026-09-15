@@ -64,6 +64,9 @@ interface ArticleMobileViewport {
   width: number;
 }
 
+/** 칩에서 펼친 목록으로 건너가는 동안 열어 두는 시간. */
+const HOVER_HOLD_MS = 220;
+
 const REQUEST_TIMEOUT_MS = 45_000;
 const DEFAULT_COMPOSER_HEIGHT = 170;
 const MIN_COMPOSER_HEIGHT = 142;
@@ -527,23 +530,30 @@ export function ArticleAsk({ title, fallbackContext, proseRef, ready }: ArticleA
     if (open) focusQuietly(textareaRef.current);
   };
 
-  /**
+  /*
    * 칩과 펼친 목록 사이를 지날 때 잠깐 밖으로 나가도 닫히지 않게 유예를 둡니다.
    * 순수 :hover로 두면 그 틈에서 목록이 사라져 안의 ✕를 누를 수가 없습니다.
+   * ref는 렌더 중에 넘기지 않고 각 핸들러 안에서만 읽습니다.
    */
-  const hoverHold = (
-    setOpen: (open: boolean) => void,
-    timerRef: { current: number },
-  ) => ({
-    onPointerEnter: () => {
-      window.clearTimeout(timerRef.current);
-      setOpen(true);
-    },
-    onPointerLeave: () => {
-      window.clearTimeout(timerRef.current);
-      timerRef.current = window.setTimeout(() => setOpen(false), 220);
-    },
-  });
+  const openPicks = useCallback(() => {
+    window.clearTimeout(picksTimerRef.current);
+    setPicksOpen(true);
+  }, []);
+
+  const closePicks = useCallback(() => {
+    window.clearTimeout(picksTimerRef.current);
+    picksTimerRef.current = window.setTimeout(() => setPicksOpen(false), HOVER_HOLD_MS);
+  }, []);
+
+  const openShots = useCallback(() => {
+    window.clearTimeout(shotsTimerRef.current);
+    setShotsOpen(true);
+  }, []);
+
+  const closeShots = useCallback(() => {
+    window.clearTimeout(shotsTimerRef.current);
+    shotsTimerRef.current = window.setTimeout(() => setShotsOpen(false), HOVER_HOLD_MS);
+  }, []);
 
   /** 캡처를 그대로 붙여넣습니다. 워커가 인라인으로 실어 보내므로 여기서 줄여 둡니다. */
   const handlePaste = async (event: ClipboardEvent<HTMLTextAreaElement>) => {
@@ -889,7 +899,8 @@ export function ArticleAsk({ title, fallbackContext, proseRef, ready }: ArticleA
               <aside
                 className={`article-ai-selection${picksOpen ? ' is-open' : ''}`}
                 aria-label="선택한 본문"
-                {...hoverHold(setPicksOpen, picksTimerRef)}
+                onPointerEnter={openPicks}
+                onPointerLeave={closePicks}
               >
                 {/* 마우스를 올리면 무엇을 골랐는지 위로 펼칩니다 */}
                 <div className="article-ai-picks">
@@ -932,7 +943,8 @@ export function ArticleAsk({ title, fallbackContext, proseRef, ready }: ArticleA
               <aside
                 className={`article-ai-images${shotsOpen ? ' is-open' : ''}`}
                 aria-label="붙여넣은 이미지"
-                {...hoverHold(setShotsOpen, shotsTimerRef)}
+                onPointerEnter={openShots}
+                onPointerLeave={closeShots}
               >
                 <div className="article-ai-shots">
                   {activeImages.map((image, index) => (
