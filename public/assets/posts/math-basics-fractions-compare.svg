@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="330" viewBox="0 0 880 330" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <rect width="880" height="330" rx="12" fill="#0a0a0a"/>
+  <text x="60" y="54" font-size="22" font-weight="700" fill="#e8e8e8">1 에서 모자란 만큼으로 견주기</text>
+  <text x="60" y="80" font-size="13" fill="#888">덜 모자란 쪽이 더 큰 수다 — 칠한 구간이 짧은 쪽을 고르면 된다</text>
+  <line x1="160" y1="150" x2="740" y2="150" stroke="#888" stroke-width="1.5"/>
+  <line x1="160" y1="142" x2="160" y2="158" stroke="#888" stroke-width="1.5"/>
+  <line x1="740" y1="142" x2="740" y2="158" stroke="#888" stroke-width="1.5"/>
+  <text x="160" y="178" font-size="14" fill="#888" text-anchor="middle">0</text>
+  <text x="740" y="178" font-size="14" fill="#888" text-anchor="middle">1</text>
+  <rect x="595.0" y="141" width="145.0" height="18" fill="#7ec8e3" fill-opacity="0.28"/>
+  <circle cx="595.0" cy="150" r="5" fill="#e8e8e8"/>
+  <text x="595.0" y="132" font-size="16" font-weight="600" fill="#7ec8e3" text-anchor="middle">3/4</text>
+  <text x="754" y="155" font-size="13" fill="#7ec8e3">1/4 모자람</text>
+  <line x1="160" y1="240" x2="740" y2="240" stroke="#888" stroke-width="1.5"/>
+  <line x1="160" y1="232" x2="160" y2="248" stroke="#888" stroke-width="1.5"/>
+  <line x1="740" y1="232" x2="740" y2="248" stroke="#888" stroke-width="1.5"/>
+  <text x="160" y="268" font-size="14" fill="#888" text-anchor="middle">0</text>
+  <text x="740" y="268" font-size="14" fill="#888" text-anchor="middle">1</text>
+  <rect x="574.3" y="231" width="165.7" height="18" fill="#7777cc" fill-opacity="0.28"/>
+  <circle cx="574.3" cy="240" r="5" fill="#e8e8e8"/>
+  <text x="574.3" y="222" font-size="16" font-weight="600" fill="#7777cc" text-anchor="middle">5/7</text>
+  <text x="754" y="245" font-size="13" fill="#7777cc">2/7 모자람</text>
+  <text x="60" y="305" font-size="14" fill="#7777cc">1/4 은 2/8 이고 2/7 보다 작다 — 3/4 쪽이 1 에 더 가까우므로 3/4 &gt; 5/7 이다</text>
+</svg>

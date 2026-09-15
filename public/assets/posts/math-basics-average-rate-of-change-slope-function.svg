@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="390" viewBox="0 0 880 390" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <rect width="880" height="390" rx="12" fill="#0a0a0a"/>
+  <text x="60" y="54" font-size="22" font-weight="700" fill="#e8e8e8">a 를 남겨 두면 값 하나가 아니라 함수 하나가 나온다</text>
+  <text x="60" y="80" font-size="13" fill="#888">왼쪽은 원래 곡선, 오른쪽은 자리마다 구한 2a 를 모아 그린 것</text>
+  <line x1="113" y1="300" x2="395" y2="300" stroke="#888" stroke-width="1.5"/>
+  <line x1="250" y1="105" x2="250" y2="325" stroke="#888" stroke-width="1.5"/>
+  <text x="401" y="305" font-size="13" fill="#888">x</text>
+  <polyline points="118.0,81.1 124.6,102.5 131.2,122.7 137.8,141.9 144.4,159.9 151.0,176.9 157.6,192.7 164.2,207.5 170.8,221.2 177.4,233.8 184.0,245.3 190.6,255.7 197.2,265.0 203.8,273.2 210.4,280.3 217.0,286.3 223.6,291.2 230.2,295.1 236.8,297.8 243.4,299.5 250.0,300.0 256.6,299.5 263.2,297.8 269.8,295.1 276.4,291.2 283.0,286.3 289.6,280.3 296.2,273.2 302.8,265.0 309.4,255.7 316.0,245.3 322.6,233.8 329.2,221.2 335.8,207.5 342.4,192.7 349.0,176.9 355.6,159.9 362.2,141.9 368.8,122.7 375.4,102.5 382.0,81.1" fill="none" stroke="#7ec8e3" stroke-width="2.5"/>
+  <text x="250" y="126" font-size="16" font-weight="600" fill="#7ec8e3" text-anchor="middle">y = x²</text>
+  <line x1="503" y1="210" x2="785" y2="210" stroke="#888" stroke-width="1.5"/>
+  <line x1="640" y1="105" x2="640" y2="325" stroke="#888" stroke-width="1.5"/>
+  <text x="791" y="215" font-size="13" fill="#888">a</text>
+  <line x1="508.0" y1="315.6" x2="772.0" y2="104.4" stroke="#55c555" stroke-width="2.5"/>
+  <text x="640" y="126" font-size="16" font-weight="600" fill="#55c555" text-anchor="middle">자리마다의 2a</text>
+  <circle cx="167.5" cy="214.5" r="5" fill="#e8e8e8"/>
+  <circle cx="557.5" cy="276.0" r="5" fill="#e8e8e8"/>
+  <text x="569.5" y="281.0" font-size="14" font-weight="600" fill="#e05555">−3</text>
+  <circle cx="250.0" cy="300.0" r="5" fill="#e8e8e8"/>
+  <circle cx="640.0" cy="210.0" r="5" fill="#e8e8e8"/>
+  <text x="652.0" y="215.0" font-size="14" font-weight="600" fill="#888">0</text>
+  <circle cx="332.5" cy="214.5" r="5" fill="#e8e8e8"/>
+  <circle cx="722.5" cy="144.0" r="5" fill="#e8e8e8"/>
+  <text x="734.5" y="149.0" font-size="14" font-weight="600" fill="#55c555">3</text>
+  <text x="157.5" y="200.5" font-size="13" fill="#e05555" text-anchor="end">내려간다</text>
+  <text x="342.5" y="200.5" font-size="13" fill="#55c555">올라간다</text>
+  <text x="250.0" y="322.0" font-size="13" fill="#888" text-anchor="middle">바닥</text>
+  <text x="60" y="368" font-size="14" fill="#7777cc">왼쪽 곡선이 내려가는 자리에서 오른쪽 값이 음수, 바닥에서 0, 올라가는 자리에서 양수다</text>
+</svg>

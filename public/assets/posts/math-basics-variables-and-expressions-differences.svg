@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="350" viewBox="0 0 880 350" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <rect width="880" height="350" rx="12" fill="#0a0a0a"/>
+
+  <text x="60" y="56" font-size="22" font-weight="700" fill="#e8e8e8">차를 한 줄 더 적으면 식의 차수가 보인다</text>
+  <text x="60" y="82" font-size="13" fill="#888">x 를 1씩 늘리며 값을 적고, 이웃 칸의 차와 그 차의 차를 아래에 붙였다</text>
+
+  <line x1="60" y1="104" x2="820" y2="104" stroke="#333" stroke-width="1"/>
+
+  <text x="60" y="137" font-size="13" fill="#888">x</text>
+  <text x="170" y="137" font-size="17" fill="#e8e8e8" text-anchor="middle">−2</text>
+  <text x="280" y="137" font-size="17" fill="#e8e8e8" text-anchor="middle">−1</text>
+  <text x="390" y="137" font-size="17" fill="#e8e8e8" text-anchor="middle">0</text>
+  <text x="500" y="137" font-size="17" fill="#e8e8e8" text-anchor="middle">1</text>
+  <text x="610" y="137" font-size="17" fill="#e8e8e8" text-anchor="middle">2</text>
+  <text x="720" y="137" font-size="17" fill="#e8e8e8" text-anchor="middle">3</text>
+
+  <text x="60" y="184" font-size="13" fill="#888">x² − 2x</text>
+  <text x="170" y="184" font-size="19" font-weight="600" fill="#7ec8e3" text-anchor="middle">8</text>
+  <text x="280" y="184" font-size="19" font-weight="600" fill="#7ec8e3" text-anchor="middle">3</text>
+  <text x="390" y="184" font-size="19" font-weight="600" fill="#7ec8e3" text-anchor="middle">0</text>
+  <text x="500" y="184" font-size="19" font-weight="600" fill="#7ec8e3" text-anchor="middle">−1</text>
+  <text x="610" y="184" font-size="19" font-weight="600" fill="#7ec8e3" text-anchor="middle">0</text>
+  <text x="720" y="184" font-size="19" font-weight="600" fill="#7ec8e3" text-anchor="middle">3</text>
+
+  <path d="M 178 196 L 217 221" stroke="#444" stroke-width="1"/>
+  <path d="M 272 196 L 233 221" stroke="#444" stroke-width="1"/>
+  <path d="M 288 196 L 327 221" stroke="#444" stroke-width="1"/>
+  <path d="M 382 196 L 343 221" stroke="#444" stroke-width="1"/>
+  <path d="M 398 196 L 437 221" stroke="#444" stroke-width="1"/>
+  <path d="M 492 196 L 453 221" stroke="#444" stroke-width="1"/>
+  <path d="M 508 196 L 547 221" stroke="#444" stroke-width="1"/>
+  <path d="M 602 196 L 563 221" stroke="#444" stroke-width="1"/>
+  <path d="M 618 196 L 657 221" stroke="#444" stroke-width="1"/>
+  <path d="M 712 196 L 673 221" stroke="#444" stroke-width="1"/>
+
+  <text x="60" y="243" font-size="13" fill="#888">차</text>
+  <text x="225" y="243" font-size="18" font-weight="600" fill="#7777cc" text-anchor="middle">−5</text>
+  <text x="335" y="243" font-size="18" font-weight="600" fill="#7777cc" text-anchor="middle">−3</text>
+  <text x="445" y="243" font-size="18" font-weight="600" fill="#7777cc" text-anchor="middle">−1</text>
+  <text x="555" y="243" font-size="18" font-weight="600" fill="#7777cc" text-anchor="middle">1</text>
+  <text x="665" y="243" font-size="18" font-weight="600" fill="#7777cc" text-anchor="middle">3</text>
+
+  <path d="M 233 255 L 272 278" stroke="#444" stroke-width="1"/>
+  <path d="M 327 255 L 288 278" stroke="#444" stroke-width="1"/>
+  <path d="M 343 255 L 382 278" stroke="#444" stroke-width="1"/>
+  <path d="M 437 255 L 398 278" stroke="#444" stroke-width="1"/>
+  <path d="M 453 255 L 492 278" stroke="#444" stroke-width="1"/>
+  <path d="M 547 255 L 508 278" stroke="#444" stroke-width="1"/>
+  <path d="M 563 255 L 602 278" stroke="#444" stroke-width="1"/>
+  <path d="M 657 255 L 618 278" stroke="#444" stroke-width="1"/>
+
+  <text x="60" y="300" font-size="13" fill="#888">차의 차</text>
+  <text x="280" y="300" font-size="18" font-weight="600" fill="#55c555" text-anchor="middle">2</text>
+  <text x="390" y="300" font-size="18" font-weight="600" fill="#55c555" text-anchor="middle">2</text>
+  <text x="500" y="300" font-size="18" font-weight="600" fill="#55c555" text-anchor="middle">2</text>
+  <text x="610" y="300" font-size="18" font-weight="600" fill="#55c555" text-anchor="middle">2</text>
+  <text x="700" y="300" font-size="13" fill="#55c555">← 전부 같다</text>
+
+  <text x="60" y="334" font-size="14" fill="#7777cc">차가 일정하면 일차식, 차의 차가 일정하면 이차식 — x 를 일정한 간격으로 넣었을 때만 성립한다</text>
+</svg>
