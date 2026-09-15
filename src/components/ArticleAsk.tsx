@@ -12,11 +12,12 @@ import {
   type RefObject,
 } from 'react';
 import { createPortal } from 'react-dom';
-import { ArrowUp, Sparkles, TextQuote, X } from 'lucide-react';
+import { ArrowUp, Highlighter, Sparkles, X } from 'lucide-react';
 import {
   articleAskErrorMessage,
   buildArticleQuestionContext,
   buildArticleSelectionContext,
+  combineArticleSelections,
   calculateArticlePanelGeometry,
   captureArticleTextSelection,
   buildArticleConversationContext,
@@ -78,7 +79,7 @@ export function ArticleAsk({ title, fallbackContext, proseRef, ready }: ArticleA
   const portalHost = hydrated ? document.getElementById('article-assistant-root') : null;
   const [open, setOpen] = useState(false);
   const [question, setQuestion] = useState('');
-  const [activeSelection, setActiveSelection] = useState<ActiveSelection | null>(null);
+  const [activeSelections, setActiveSelections] = useState<ActiveSelection[]>([]);
   const [selectionPrompt, setSelectionPrompt] = useState<ArticleTextSelection | null>(null);
   const [turns, setTurns] = useState<ConversationTurn[]>([]);
   const [loading, setLoading] = useState(false);
@@ -475,7 +476,7 @@ export function ArticleAsk({ title, fallbackContext, proseRef, ready }: ArticleA
   );
 
   const openGeneral = () => {
-    setActiveSelection(null);
+    setActiveSelections([]);
     setSelectionPrompt(null);
     syncPanelGeometry();
     syncMobileViewport();
@@ -495,10 +496,14 @@ export function ArticleAsk({ title, fallbackContext, proseRef, ready }: ArticleA
     requestRef.current = null;
     setLoading(false);
     setThinkingSeconds(0);
-    setActiveSelection({
+    // 이미 붙인 문장을 다시 고르면 칩만 늘고 문맥은 그대로입니다 — 한 번만 둡니다.
+    const picked: ActiveSelection = {
       context: buildArticleSelectionContext(root, selectionPrompt.range, selectionPrompt.selectedText),
       text: selectionPrompt.selectedText,
-    });
+    };
+    setActiveSelections((prev) =>
+      prev.some((piece) => piece.text === picked.text) ? prev : [...prev, picked],
+    );
     setQuestion('');
     setSelectionPrompt(null);
     syncPanelGeometry();
@@ -511,17 +516,15 @@ export function ArticleAsk({ title, fallbackContext, proseRef, ready }: ArticleA
     if (open) focusQuietly(textareaRef.current);
   };
 
-  // 칩은 한 줄이므로 줄바꿈은 공백으로 눕힙니다. 자르는 일은 CSS가 맡습니다.
-  const selectionLabel = activeSelection ? activeSelection.text.replace(/\s+/g, ' ').trim() : '';
-
   const submit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const trimmedQuestion = question.trim();
     if (!trimmedQuestion || loading) return;
 
-    // 이 질문이 딛고 선 선택 본문. 답이 오면 놓아 주므로 여기서 붙잡아 둡니다.
-    const selection = activeSelection;
-    const baseContext = selection?.context ||
+    // 이 질문이 딛고 선 선택들. 답이 오면 놓아 주므로 여기서 붙잡아 둡니다.
+    const picked = activeSelections;
+    const merged = combineArticleSelections(picked);
+    const baseContext = merged.context ||
       buildArticleQuestionContext(proseRef.current, trimmedQuestion, fallbackContext);
     // 답변을 마친 차례만 문맥으로 보냅니다. 실패한 차례를 넣으면 빈 답을 이어받습니다.
     const history: ArticleConversationEntry[] = turns
@@ -540,7 +543,7 @@ export function ArticleAsk({ title, fallbackContext, proseRef, ready }: ArticleA
       {
         id: turnId,
         question: trimmedQuestion,
-        quoted: selection?.text ?? '',
+        quoted: picked.map((piece) => piece.text).join('\n'),
         answer: '',
         html: '',
         status: 'loading',
@@ -558,7 +561,7 @@ export function ArticleAsk({ title, fallbackContext, proseRef, ready }: ArticleA
         {
           title,
           context: buildArticleConversationContext(baseContext, history),
-          selectedText: selection?.text ?? '',
+          selectedText: merged.selectedText,
           question: trimmedQuestion,
         },
         controller.signal,
@@ -583,9 +586,9 @@ export function ArticleAsk({ title, fallbackContext, proseRef, ready }: ArticleA
             : turn,
         ),
       );
-      // 한 번 답이 나왔으면 선택은 놓아 줍니다. 다음 질문까지 끌고 가면 엉뚱한
-      // 문단에 묶인 채 대화가 이어집니다.
-      if (selection) setActiveSelection((current) => (current === selection ? null : current));
+      // 한 번 답이 나왔으면 붙인 문장은 모두 놓아 줍니다. 다음 질문까지 끌고 가면
+      // 엉뚱한 문단에 묶인 채 대화가 이어집니다.
+      setActiveSelections([]);
     } catch (caught) {
       if (requestSerialRef.current !== serial) return;
       const message = articleAskErrorMessage(caught);
@@ -825,22 +828,29 @@ export function ArticleAsk({ title, fallbackContext, proseRef, ready }: ArticleA
               }}
             />
 
-            {activeSelection && (
+            {activeSelections.length > 0 && (
               <aside className="article-ai-selection" aria-label="선택한 본문">
-                <span className="article-ai-selection-chip">
-                  <TextQuote size={13} strokeWidth={1.7} aria-hidden="true" />
-                  {/* 한 줄로 보여 주고 넘치는 만큼은 말줄임으로 접습니다. 전문은 title로 남깁니다. */}
-                  <span className="article-ai-selection-text" title={selectionLabel}>{selectionLabel}</span>
-                  <button
-                    type="button"
-                    className="article-ai-selection-clear"
-                    onClick={() => setActiveSelection(null)}
-                    aria-label="선택 해제"
-                    title="선택 해제"
-                  >
-                    <X size={11} strokeWidth={1.8} aria-hidden="true" />
-                  </button>
-                </span>
+                {activeSelections.map((piece, index) => {
+                  // 칩은 한 줄이므로 줄바꿈은 공백으로 눕힙니다. 자르는 일은 CSS가 맡습니다.
+                  const label = piece.text.replace(/\s+/g, ' ').trim();
+                  return (
+                    <span className="article-ai-selection-chip" key={piece.text}>
+                      <Highlighter size={13} strokeWidth={1.7} aria-hidden="true" />
+                      <span className="article-ai-selection-text" title={label}>{label}</span>
+                      <button
+                        type="button"
+                        className="article-ai-selection-clear"
+                        onClick={() =>
+                          setActiveSelections((prev) => prev.filter((_, at) => at !== index))
+                        }
+                        aria-label="선택 해제"
+                        title="선택 해제"
+                      >
+                        <X size={11} strokeWidth={1.8} aria-hidden="true" />
+                      </button>
+                    </span>
+                  );
+                })}
               </aside>
             )}
 

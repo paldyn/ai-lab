@@ -3389,9 +3389,15 @@ input:focus-visible {
   display: flex;
   min-width: 0;
   flex: 0 0 auto;
+  flex-wrap: wrap;
+  gap: 6px;
   border-top: 1px solid var(--border);
   background: var(--preview-raised);
   padding: 10px 12px 0;
+  /* 많이 붙이면 이 영역만 스크롤합니다 — 입력창까지 밀어내지 않습니다. */
+  max-height: 96px;
+  overflow-y: auto;
+  overscroll-behavior: contain;
 }
 
 .article-ai-selection-chip {
