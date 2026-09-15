@@ -10,20 +10,25 @@ import {
   type KeyboardEvent,
   type PointerEvent as ReactPointerEvent,
   type RefObject,
+  type ClipboardEvent,
 } from 'react';
 import { createPortal } from 'react-dom';
-import { ArrowUp, MessageSquareText, Sparkles, X } from 'lucide-react';
+import { ArrowUp, Image as ImageIcon, MessageSquareText, Sparkles, X } from 'lucide-react';
 import {
   articleAskErrorMessage,
   buildArticleQuestionContext,
   buildArticleSelectionContext,
   combineArticleSelections,
+  MAX_PASTED_IMAGES,
+  pickPastedImages,
+  prepareArticleImage,
   calculateArticlePanelGeometry,
   captureArticleTextSelection,
   buildArticleConversationContext,
   requestArticleAnswer,
   type ArticlePanelGeometry,
   type ArticleConversationEntry,
+  type ArticleImageAttachment,
   type ArticleTextSelection,
 } from '../lib/articleAsk';
 import { captureFocusOrigin, focusQuietly, restoreFocus } from '../lib/restoreFocus';
@@ -44,6 +49,7 @@ interface ActiveSelection {
 interface ConversationTurn extends ArticleConversationEntry {
   id: number;
   quoted: string;
+  shots: string[];
   html: string;
   status: 'loading' | 'done' | 'error';
   error: string;
@@ -80,6 +86,7 @@ export function ArticleAsk({ title, fallbackContext, proseRef, ready }: ArticleA
   const [open, setOpen] = useState(false);
   const [question, setQuestion] = useState('');
   const [activeSelections, setActiveSelections] = useState<ActiveSelection[]>([]);
+  const [activeImages, setActiveImages] = useState<ArticleImageAttachment[]>([]);
   const [selectionPrompt, setSelectionPrompt] = useState<ArticleTextSelection | null>(null);
   const [turns, setTurns] = useState<ConversationTurn[]>([]);
   const [loading, setLoading] = useState(false);
@@ -516,6 +523,23 @@ export function ArticleAsk({ title, fallbackContext, proseRef, ready }: ArticleA
     if (open) focusQuietly(textareaRef.current);
   };
 
+  /** 캡처를 그대로 붙여넣습니다. 워커가 인라인으로 실어 보내므로 여기서 줄여 둡니다. */
+  const handlePaste = async (event: ClipboardEvent<HTMLTextAreaElement>) => {
+    const files = pickPastedImages(Array.from(event.clipboardData?.files ?? []));
+    if (files.length === 0) return;
+    event.preventDefault();
+
+    const room = MAX_PASTED_IMAGES - activeImages.length;
+    if (room <= 0) return;
+
+    const prepared: ArticleImageAttachment[] = [];
+    for (const file of files.slice(0, room)) {
+      const image = await prepareArticleImage(file);
+      if (image) prepared.push(image);
+    }
+    if (prepared.length > 0) setActiveImages((prev) => [...prev, ...prepared].slice(0, MAX_PASTED_IMAGES));
+  };
+
   const submit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const trimmedQuestion = question.trim();
@@ -524,6 +548,7 @@ export function ArticleAsk({ title, fallbackContext, proseRef, ready }: ArticleA
     // 이 질문이 딛고 선 선택들. 답이 오면 놓아 주므로 여기서 붙잡아 둡니다.
     const picked = activeSelections;
     const merged = combineArticleSelections(picked);
+    const images = activeImages;
     const baseContext = merged.context ||
       buildArticleQuestionContext(proseRef.current, trimmedQuestion, fallbackContext);
     // 답변을 마친 차례만 문맥으로 보냅니다. 실패한 차례를 넣으면 빈 답을 이어받습니다.
@@ -544,6 +569,7 @@ export function ArticleAsk({ title, fallbackContext, proseRef, ready }: ArticleA
         id: turnId,
         question: trimmedQuestion,
         quoted: picked.map((piece) => piece.text).join('\n'),
+        shots: images.map((image) => image.preview),
         answer: '',
         html: '',
         status: 'loading',
@@ -562,6 +588,7 @@ export function ArticleAsk({ title, fallbackContext, proseRef, ready }: ArticleA
           title,
           context: buildArticleConversationContext(baseContext, history),
           selectedText: merged.selectedText,
+          images: images.map((image) => ({ data: image.data, mimeType: image.mimeType })),
           question: trimmedQuestion,
         },
         controller.signal,
@@ -589,6 +616,7 @@ export function ArticleAsk({ title, fallbackContext, proseRef, ready }: ArticleA
       // 한 번 답이 나왔으면 붙인 문장은 모두 놓아 줍니다. 다음 질문까지 끌고 가면
       // 엉뚱한 문단에 묶인 채 대화가 이어집니다.
       setActiveSelections([]);
+      setActiveImages([]);
     } catch (caught) {
       if (requestSerialRef.current !== serial) return;
       const message = articleAskErrorMessage(caught);
@@ -772,6 +800,13 @@ export function ArticleAsk({ title, fallbackContext, proseRef, ready }: ArticleA
                 {turns.map((turn) => (
                   <li key={turn.id} className="article-ai-turn">
                     <div className="article-ai-ask">
+                      {turn.shots.length > 0 && (
+                        <span className="article-ai-ask-shots">
+                          {turn.shots.map((src, at) => (
+                            <img src={src} alt="붙여넣은 이미지" key={src.slice(0, 64) + at} />
+                          ))}
+                        </span>
+                      )}
                       {turn.quoted && <blockquote>{turn.quoted}</blockquote>}
                       <p>{turn.question}</p>
                     </div>
@@ -867,6 +902,40 @@ export function ArticleAsk({ title, fallbackContext, proseRef, ready }: ArticleA
               </aside>
             )}
 
+            {activeImages.length > 0 && (
+              <aside className="article-ai-images" aria-label="붙여넣은 이미지">
+                <div className="article-ai-shots">
+                  {activeImages.map((image, index) => (
+                    <span className="article-ai-shot" key={image.preview.slice(0, 64) + index}>
+                      <img src={image.preview} alt={image.name} />
+                      <button
+                        type="button"
+                        className="article-ai-pick-clear"
+                        onClick={() => setActiveImages((prev) => prev.filter((_, at) => at !== index))}
+                        aria-label="이 이미지 빼기"
+                        title="빼기"
+                      >
+                        <X size={11} strokeWidth={1.8} aria-hidden="true" />
+                      </button>
+                    </span>
+                  ))}
+                </div>
+                <span className="article-ai-selection-chip">
+                  <ImageIcon size={14} strokeWidth={1.7} aria-hidden="true" />
+                  <span className="article-ai-image-count">이미지 {activeImages.length}개</span>
+                  <button
+                    type="button"
+                    className="article-ai-images-clear"
+                    onClick={() => setActiveImages([])}
+                    aria-label="이미지 모두 빼기"
+                    title="모두 빼기"
+                  >
+                    <X size={11} strokeWidth={1.8} aria-hidden="true" />
+                  </button>
+                </span>
+              </aside>
+            )}
+
             <form
               ref={formRef}
               className="article-ai-form"
@@ -881,6 +950,7 @@ export function ArticleAsk({ title, fallbackContext, proseRef, ready }: ArticleA
               value={question}
               onChange={(event) => setQuestion(event.target.value)}
               onKeyDown={handleQuestionKeyDown}
+              onPaste={handlePaste}
               placeholder="이 글에 대해 질문하세요"
               rows={3}
               maxLength={1_000}
