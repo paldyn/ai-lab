@@ -3257,8 +3257,7 @@ input:focus-visible {
 }
 
 /* 실제 본문 경계에서 40px 떨어진 좌표와 가용 폭을 ArticleAsk가 계산합니다. */
-.article-ai-panel[data-placement='right'],
-.article-ai-panel[data-placement='left'] {
+.article-ai-panel[data-placement='right'] {
   right: auto;
   left: var(--article-ai-panel-left);
 }
@@ -4063,11 +4062,6 @@ input:focus-visible {
   left: auto;
 }
 
-#root[data-article-ai-open][data-article-ai-placement='left'] .to-top {
-  right: 24px;
-  left: auto;
-}
-
 /* 하단 시트에서는 단추를 패널 위로 올립니다. */
 #root[data-article-ai-open][data-article-ai-placement='sheet'] .to-top {
   right: 24px;
@@ -4082,12 +4076,6 @@ input:focus-visible {
     bottom: 24px;
     left: 24px;
   }
-}
-
-/* 왼쪽 여백을 쓸 때 TOC 자리만 비웁니다. grid 폭은 유지되어 본문은 움직이지 않습니다. */
-#root[data-article-ai-open][data-article-ai-placement='left'] .article-toc {
-  visibility: hidden;
-  pointer-events: none;
 }
 
 /*

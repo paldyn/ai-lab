@@ -137,10 +137,7 @@ export function ArticleAsk({ title, fallbackContext, proseRef, ready }: ArticleA
     const rect = prose?.getBoundingClientRect();
     return calculateArticlePanelGeometry(
       document.documentElement.clientWidth,
-      window.innerHeight,
-      rect
-        ? { left: rect.left, right: rect.right, top: rect.top, bottom: rect.bottom }
-        : null,
+      rect ? { left: rect.left, right: rect.right } : null,
     );
   }, [proseRef, ready]);
 

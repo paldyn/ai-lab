@@ -55,13 +55,11 @@ export interface ArticleTextSelection {
   };
 }
 
-export type ArticlePanelPlacement = 'right' | 'left' | 'sheet';
+export type ArticlePanelPlacement = 'right' | 'sheet';
 
 export interface ArticlePanelBounds {
   left: number;
   right: number;
-  top: number;
-  bottom: number;
 }
 
 export interface ArticlePanelGeometry {
@@ -81,7 +79,6 @@ const ARTICLE_SELECTION_BUTTON_GAP = 12;
 /** 본문은 움직이지 않고 40px 간격을 지키며, 1920px 화면의 패널 폭까지만 넓힙니다. */
 export function calculateArticlePanelGeometry(
   viewportWidth: number,
-  viewportHeight: number,
   proseBounds: ArticlePanelBounds | null,
 ): ArticlePanelGeometry {
   const sheet = (): ArticlePanelGeometry => ({
@@ -103,23 +100,9 @@ export function calculateArticlePanelGeometry(
     };
   }
 
-  // 왼쪽은 본문이 패널의 위쪽까지 올라온 뒤에만 씁니다. 글 머리에서는 제목을 덮지 않고
-  // 넓은 하단 시트로 물러났다가, 읽는 구간에 들어오면 TOC 자리로 이동합니다.
-  const panelHeight = Math.min(620, Math.max(0, viewportHeight - 112));
-  const panelTop = viewportHeight - ARTICLE_PANEL_EDGE_INSET - panelHeight;
-  const proseVisibleBesidePanel = proseBounds.top <= panelTop && proseBounds.bottom > panelTop;
-  const leftWidth = Math.floor(
-    proseBounds.left - ARTICLE_PANEL_PROSE_GAP - ARTICLE_PANEL_EDGE_INSET,
-  );
-  if (proseVisibleBesidePanel && leftWidth >= ARTICLE_PANEL_MIN_SIDE_WIDTH) {
-    const width = Math.min(ARTICLE_PANEL_MAX_WIDTH, leftWidth);
-    return {
-      placement: 'left',
-      left: Math.round(proseBounds.left - ARTICLE_PANEL_PROSE_GAP - width),
-      width,
-    };
-  }
-
+  // 왼쪽 여백은 쓰지 않습니다. 본문이 패널 옆까지 올라왔는지로 자리를 갈랐더니,
+  // 태블릿에서 글을 내리는 도중 가운데 시트가 왼쪽으로 튀었습니다 — 읽던 자리가
+  // 통째로 옮겨 가는 셈이라, 오른쪽이 안 나오면 가운데 시트로 둡니다.
   return sheet();
 }
 
