@@ -12,7 +12,7 @@ import {
   type RefObject,
 } from 'react';
 import { createPortal } from 'react-dom';
-import { ArrowUp, Sparkles, X } from 'lucide-react';
+import { ArrowUp, Sparkles, TextQuote, X } from 'lucide-react';
 import {
   articleAskErrorMessage,
   buildArticleQuestionContext,
@@ -511,6 +511,9 @@ export function ArticleAsk({ title, fallbackContext, proseRef, ready }: ArticleA
     if (open) focusQuietly(textareaRef.current);
   };
 
+  // 칩은 한 줄이므로 줄바꿈은 공백으로 눕힙니다. 자르는 일은 CSS가 맡습니다.
+  const selectionLabel = activeSelection ? activeSelection.text.replace(/\s+/g, ' ').trim() : '';
+
   const submit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const trimmedQuestion = question.trim();
@@ -824,11 +827,20 @@ export function ArticleAsk({ title, fallbackContext, proseRef, ready }: ArticleA
 
             {activeSelection && (
               <aside className="article-ai-selection" aria-label="선택한 본문">
-                <div>
-                  <span>선택한 본문</span>
-                  <button type="button" onClick={() => setActiveSelection(null)}>선택 해제</button>
-                </div>
-                <blockquote>{activeSelection.text}</blockquote>
+                <span className="article-ai-selection-chip">
+                  <TextQuote size={13} strokeWidth={1.7} aria-hidden="true" />
+                  {/* 한 줄로 보여 주고 넘치는 만큼은 말줄임으로 접습니다. 전문은 title로 남깁니다. */}
+                  <span className="article-ai-selection-text" title={selectionLabel}>{selectionLabel}</span>
+                  <button
+                    type="button"
+                    className="article-ai-selection-clear"
+                    onClick={() => setActiveSelection(null)}
+                    aria-label="선택 해제"
+                    title="선택 해제"
+                  >
+                    <X size={11} strokeWidth={1.8} aria-hidden="true" />
+                  </button>
+                </span>
               </aside>
             )}
 
