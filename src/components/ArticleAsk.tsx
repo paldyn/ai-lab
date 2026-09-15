@@ -19,8 +19,10 @@ import {
   buildArticleSelectionContext,
   calculateArticlePanelGeometry,
   captureArticleTextSelection,
+  buildArticleConversationContext,
   requestArticleAnswer,
   type ArticlePanelGeometry,
+  type ArticleConversationEntry,
   type ArticleTextSelection,
 } from '../lib/articleAsk';
 import { captureFocusOrigin, focusQuietly, restoreFocus } from '../lib/restoreFocus';
@@ -37,9 +39,13 @@ interface ActiveSelection {
   text: string;
 }
 
-interface AnswerState {
+/** 화면에 남는 한 차례. 답변을 마친 차례만 다음 질문의 문맥으로 넘어간다. */
+interface ConversationTurn extends ArticleConversationEntry {
+  id: number;
+  quoted: string;
   html: string;
-  question: string;
+  status: 'loading' | 'done' | 'error';
+  error: string;
 }
 
 interface ArticleMobileViewport {
@@ -74,8 +80,7 @@ export function ArticleAsk({ title, fallbackContext, proseRef, ready }: ArticleA
   const [question, setQuestion] = useState('');
   const [activeSelection, setActiveSelection] = useState<ActiveSelection | null>(null);
   const [selectionPrompt, setSelectionPrompt] = useState<ArticleTextSelection | null>(null);
-  const [answer, setAnswer] = useState<AnswerState | null>(null);
-  const [error, setError] = useState('');
+  const [turns, setTurns] = useState<ConversationTurn[]>([]);
   const [loading, setLoading] = useState(false);
   const [thinkingSeconds, setThinkingSeconds] = useState(0);
   const [composerHeight, setComposerHeight] = useState(DEFAULT_COMPOSER_HEIGHT);
@@ -216,6 +221,13 @@ export function ArticleAsk({ title, fallbackContext, proseRef, ready }: ArticleA
     setLoading(false);
     setOpen(false);
   }, []);
+
+  // 대화는 아래로 자란다. 새 차례가 붙거나 답이 채워지면 그 자리가 보이게 따라간다.
+  useEffect(() => {
+    const content = contentRef.current;
+    if (!content || turns.length === 0) return;
+    content.scrollTop = content.scrollHeight;
+  }, [turns]);
 
   useEffect(() => {
     if (!open) return undefined;
@@ -465,7 +477,6 @@ export function ArticleAsk({ title, fallbackContext, proseRef, ready }: ArticleA
   const openGeneral = () => {
     setActiveSelection(null);
     setSelectionPrompt(null);
-    setError('');
     syncPanelGeometry();
     syncMobileViewport();
     if (window.innerWidth <= MOBILE_PANEL_BREAKPOINT) setComposerHeight(MIN_COMPOSER_HEIGHT);
@@ -488,8 +499,6 @@ export function ArticleAsk({ title, fallbackContext, proseRef, ready }: ArticleA
       context: buildArticleSelectionContext(root, selectionPrompt.range, selectionPrompt.selectedText),
       text: selectionPrompt.selectedText,
     });
-    setAnswer(null);
-    setError('');
     setQuestion('');
     setSelectionPrompt(null);
     syncPanelGeometry();
@@ -507,20 +516,37 @@ export function ArticleAsk({ title, fallbackContext, proseRef, ready }: ArticleA
     const trimmedQuestion = question.trim();
     if (!trimmedQuestion || loading) return;
 
-    const context = activeSelection?.context ||
+    // 이 질문이 딛고 선 선택 본문. 답이 오면 놓아 주므로 여기서 붙잡아 둡니다.
+    const selection = activeSelection;
+    const baseContext = selection?.context ||
       buildArticleQuestionContext(proseRef.current, trimmedQuestion, fallbackContext);
+    // 답변을 마친 차례만 문맥으로 보냅니다. 실패한 차례를 넣으면 빈 답을 이어받습니다.
+    const history: ArticleConversationEntry[] = turns
+      .filter((turn) => turn.status === 'done' && turn.answer)
+      .map((turn) => ({ question: turn.question, answer: turn.answer }));
+
     const controller = new AbortController();
     const serial = requestSerialRef.current + 1;
     requestSerialRef.current = serial;
     requestRef.current?.abort();
     requestRef.current = controller;
 
+    const turnId = serial;
+    setTurns((prev) => [
+      ...prev,
+      {
+        id: turnId,
+        question: trimmedQuestion,
+        quoted: selection?.text ?? '',
+        answer: '',
+        html: '',
+        status: 'loading',
+        error: '',
+      },
+    ]);
     setLoading(true);
     setThinkingSeconds(0);
     setQuestion('');
-    setError('');
-    setAnswer(null);
-    if (contentRef.current) contentRef.current.scrollTop = 0;
 
     const timeout = window.setTimeout(() => controller.abort(), REQUEST_TIMEOUT_MS);
 
@@ -528,8 +554,8 @@ export function ArticleAsk({ title, fallbackContext, proseRef, ready }: ArticleA
       const response = await requestArticleAnswer(
         {
           title,
-          context,
-          selectedText: activeSelection?.text ?? '',
+          context: buildArticleConversationContext(baseContext, history),
+          selectedText: selection?.text ?? '',
           question: trimmedQuestion,
         },
         controller.signal,
@@ -540,14 +566,29 @@ export function ArticleAsk({ title, fallbackContext, proseRef, ready }: ArticleA
       // 첫 번들에 parser와 sanitizer를 싣지 않습니다.
       const { renderAiMarkdown } = await import('../lib/aiMarkdown');
       if (requestSerialRef.current !== serial) return;
-      setAnswer({
-        // renderAiMarkdown은 raw HTML을 버리고 allowlist sanitize를 통과한 HTML만 돌려줍니다.
-        html: renderAiMarkdown(response.answer),
-        question: trimmedQuestion,
-      });
+
+      setTurns((prev) =>
+        prev.map((turn) =>
+          turn.id === turnId
+            ? {
+                ...turn,
+                answer: response.answer,
+                // renderAiMarkdown은 raw HTML을 버리고 allowlist sanitize를 통과한 HTML만 돌려줍니다.
+                html: renderAiMarkdown(response.answer),
+                status: 'done',
+              }
+            : turn,
+        ),
+      );
+      // 한 번 답이 나왔으면 선택은 놓아 줍니다. 다음 질문까지 끌고 가면 엉뚱한
+      // 문단에 묶인 채 대화가 이어집니다.
+      if (selection) setActiveSelection((current) => (current === selection ? null : current));
     } catch (caught) {
       if (requestSerialRef.current !== serial) return;
-      setError(articleAskErrorMessage(caught));
+      const message = articleAskErrorMessage(caught);
+      setTurns((prev) =>
+        prev.map((turn) => (turn.id === turnId ? { ...turn, status: 'error', error: message } : turn)),
+      );
     } finally {
       window.clearTimeout(timeout);
       if (requestSerialRef.current === serial) {
@@ -555,6 +596,17 @@ export function ArticleAsk({ title, fallbackContext, proseRef, ready }: ArticleA
         setLoading(false);
       }
     }
+  };
+
+  /** 대화를 통째로 비웁니다. 선택 본문과 달리 저절로 사라지지 않으므로 버튼으로만 부릅니다. */
+  const clearConversation = () => {
+    requestSerialRef.current += 1;
+    requestRef.current?.abort();
+    requestRef.current = null;
+    setLoading(false);
+    setThinkingSeconds(0);
+    setTurns([]);
+    focusQuietly(textareaRef.current);
   };
 
   const handleQuestionKeyDown = (event: KeyboardEvent<HTMLTextAreaElement>) => {
@@ -679,12 +731,22 @@ export function ArticleAsk({ title, fallbackContext, proseRef, ready }: ArticleA
         >
           <header className="article-ai-bar">
             <p id="article-ai-title"><span aria-hidden="true" /> PALDYN / ARTICLE AI</p>
-            <button type="button" onClick={close} aria-label="AI 질문 패널 닫기" title="닫기">
+            {turns.length > 0 && (
+              <button
+                type="button"
+                className="article-ai-reset"
+                onClick={clearConversation}
+                title="대화를 비우고 새로 시작"
+              >
+                새 대화
+              </button>
+            )}
+            <button type="button" className="article-ai-close" onClick={close} aria-label="AI 질문 패널 닫기" title="닫기">
               <X size={17} strokeWidth={1.7} aria-hidden="true" />
             </button>
           </header>
 
-          <div ref={contentRef} className="article-ai-content" aria-live="polite" aria-busy={loading}>
+          <div ref={contentRef} className="article-ai-content" aria-busy={loading}>
             {activeSelection && (
               <aside className="article-ai-selection" aria-label="선택한 본문">
                 <div>
@@ -695,7 +757,7 @@ export function ArticleAsk({ title, fallbackContext, proseRef, ready }: ArticleA
               </aside>
             )}
 
-            {!loading && !error && !answer && (
+            {turns.length === 0 && (
               <div className="article-ai-empty">
                 <Sparkles size={18} strokeWidth={1.5} aria-hidden="true" />
                 <p>글의 개념, 수식, 코드에 대해 물어보세요.</p>
@@ -703,31 +765,44 @@ export function ArticleAsk({ title, fallbackContext, proseRef, ready }: ArticleA
               </div>
             )}
 
-            {loading && (
-              <div className="article-ai-loading" role="status">
-                <span className="article-ai-loading-dots" aria-hidden="true"><i /><i /><i /></span>
-                <p>
-                  생각 중
-                  <span className="article-ai-loading-time" aria-hidden="true"> · {thinkingSeconds}초</span>
-                </p>
-              </div>
-            )}
-
-            {error && (
-              <div className="article-ai-error" role="alert">
-                <p>{error}</p>
-              </div>
-            )}
-
-            {answer && (
-              <div className="article-ai-answer">
-                <p className="article-ai-question">Q. {answer.question}</p>
-                <div
-                  className="article-ai-markdown"
-                  // AI 출력은 renderAiMarkdown의 HTML allowlist와 URL 검사를 통과했습니다.
-                  dangerouslySetInnerHTML={{ __html: answer.html }}
-                />
-              </div>
+            {turns.length > 0 && (
+              <ol
+                className="article-ai-thread"
+                aria-label="AI 대화"
+                aria-live="polite"
+                aria-relevant="additions text"
+                role="log"
+              >
+                {turns.map((turn) => (
+                  <li key={turn.id} className="article-ai-turn">
+                    <div className="article-ai-ask">
+                      {turn.quoted && <blockquote>{turn.quoted}</blockquote>}
+                      <p>{turn.question}</p>
+                    </div>
+                    <div className="article-ai-reply" data-status={turn.status}>
+                      {turn.status === 'loading' && (
+                        <p className="article-ai-status">
+                          <span className="article-ai-status-dots" aria-hidden="true"><i /><i /><i /></span>
+                          <span className="article-ai-status-label">생각 중</span>
+                          <span className="article-ai-status-time" aria-hidden="true"> · {thinkingSeconds}초</span>
+                        </p>
+                      )}
+                      {turn.status === 'error' && (
+                        <p className="article-ai-status" role="alert">
+                          <span className="article-ai-status-label">{turn.error}</span>
+                        </p>
+                      )}
+                      {turn.status === 'done' && (
+                        <div
+                          className="article-ai-markdown"
+                          // AI 출력은 renderAiMarkdown의 HTML allowlist와 URL 검사를 통과했습니다.
+                          dangerouslySetInnerHTML={{ __html: turn.html }}
+                        />
+                      )}
+                    </div>
+                  </li>
+                ))}
+              </ol>
             )}
           </div>
 
