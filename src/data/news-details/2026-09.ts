@@ -2,6 +2,22 @@ import type { NewsDetail } from '../news';
 
 /** 2026-09 발표의 모달 본문. 목록은 news.ts에 있습니다. */
 export const details: Record<string, NewsDetail> = {
+  'claude-platform-september-14-2026': {
+    points: [
+      'Messages API가 Claude API에서 대화를 원할 때 압축하는 기능을 베타로 열었다',
+      'compact-2026-09-04 베타 헤더를 붙여야 쓸 수 있다',
+      '최상위 compaction 파라미터를 보내면 그때까지 보낸 메시지를 요약한 서명된 compaction 블록이 돌아온다',
+      '다음 요청에서는 그 블록을 원래 메시지 대신 맨 앞에 보낸다',
+      '언제 압축할지는 호출하는 쪽이 정하고, 그 요청은 뒤에서 돌릴 수 있다',
+      '요약 뒤의 최근 turn은 글자 그대로 남겨 둘 수 있다',
+      '사고 과정을 보존하는 모델에서는 남겨 둔 turn의 thinking이 그대로 유효할 수 있다',
+    ],
+    commentary:
+      '컨텍스트 창을 늘리는 대신 대화를 줄이는 쪽을 API 표면으로 끌어올린 변경이다. 지금까지 긴 대화의 ' +
+      '요약은 앱 쪽이 알아서 하던 일이라 요약본이 원본과 이어져 있다는 보장이 없었는데, 서명된 블록을 ' +
+      '돌려준다는 것은 그 이음매를 서버가 책임진다는 뜻이다. 압축 시점을 호출하는 쪽에 남긴 것도 ' +
+      '에이전트가 제 긴 실행을 스스로 관리하라는 배치다.',
+  },
   'blog-introducing-gemini-3-8-live-and-3-8-live-extended-thinking': {
     points: [
       'Gemini 3.8 Live는 규모와 비용 효율을 노린 모델로 대화 지능에 시각 그라운딩을 붙였다',

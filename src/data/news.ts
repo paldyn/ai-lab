@@ -242,6 +242,21 @@ const entries: NewsItem[] = [
     url: 'https://blog.google/innovation-and-ai/technology/ai/ai-economy-atlas-september-2026',
   },
   {
+    id: 'claude-platform-september-14-2026',
+    source: 'Anthropic',
+    kind: 'company',
+    title: 'Claude Messages API에 대화를 직접 압축하는 기능 베타 공개',
+    summary:
+      'Claude API의 Messages API가 대화를 원할 때 압축하는 기능을 베타로 열었다. compaction ' +
+      '파라미터를 보내면 그때까지 보낸 메시지를 요약한 서명된 compaction 블록이 돌아오고, 다음 ' +
+      '요청에서 그 블록을 원래 메시지 대신 앞에 보낸다. compact-2026-09-04 베타 헤더가 필요하다.',
+    publishedAt: '2026-09-14',
+    collectedAt: '2026-09-17',
+    category: 'Product',
+    signal: '대화 압축 API',
+    url: 'https://platform.claude.com/docs/en/release-notes/overview#september-14-2026',
+  },
+  {
     id: 'ai-dialogues-christina-koch',
     source: 'Google DeepMind',
     kind: 'company',
