@@ -1,6 +1,7 @@
 import { readFileSync } from 'node:fs';
 import path from 'node:path';
 import { playbookIndex } from 'virtual:playbook-index';
+import { guideProducts } from './data/guideProducts';
 import { describe, expect, it } from 'vitest';
 import { certPrepNotes } from './data/certPrep';
 import { pythonNotes } from './data/mirror';
@@ -49,6 +50,22 @@ describe('프리렌더 — 본문이 HTML에 들어간다', () => {
     const note = pythonNotes[0];
     const { html } = await render(note.path);
     expect(hasBody(html), note.path).toBe(true);
+  });
+
+  /*
+    **제품 상세는 목록 안에서 펼쳐지지만 주소는 진짜 라우트입니다.** 펼침이 순수
+    클라이언트 상태였으면 프리렌더된 HTML에 상세가 안 들어갑니다 — 파이썬 265편이
+    그 이유로 빈 껍데기였던 그 자리입니다. 여기서 실제로 그려 확인합니다.
+  */
+  it('제품 상세가 펼쳐진 채로 HTML에 들어간다', async () => {
+    const missing: string[] = [];
+    for (const product of guideProducts) {
+      const { html } = await render(`/playbook/${product.vendorId}/${product.id}`);
+      if (!html.includes('playbook-panel') || !html.includes(product.oneLine)) {
+        missing.push(`${product.vendorId}/${product.id}`);
+      }
+    }
+    expect(missing).toEqual([]);
   });
 
   /*

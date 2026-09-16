@@ -2,11 +2,12 @@ import type { CSSProperties } from 'react';
 import { Link, Navigate, NavLink, useParams } from 'react-router';
 import { ClaimRow } from '../components/ClaimRow';
 import { GuideMark } from '../components/GuideMark';
+import { ProductPanel } from '../components/ProductPanel';
 import { PageHeader } from '../components/PageHeader';
 import { Seo } from '../components/Seo';
 import { claimState, playbookNotesOf, playbookProductPath, todayInSeoul } from '../data/playbook';
 import { playbookClaims } from '../data/playbookClaims';
-import { productsOfVendor } from '../data/guideProducts';
+import { guideProductById, productsOfVendor } from '../data/guideProducts';
 import { guideVendorById, guideVendors } from '../data/guideVendors';
 import type { Product, VendorId } from '../types/playbook';
 
@@ -18,12 +19,12 @@ import type { Product, VendorId } from '../types/playbook';
  * 접근성 이름이 카드 안 문장을 통째로 이어 붙이지 않도록, 제목만 링크로 두고
  * `.card-trigger`의 `::after`로 누를 자리를 카드 전체로 넓힙니다(`CLAUDE.md`의 마크업 규칙).
  */
-function ProductCard({ product }: { product: Product }) {
+function ProductCard({ product, open }: { product: Product; open: boolean }) {
   const notes = playbookNotesOf(product.id);
 
   return (
     <article
-      className="playbook-card"
+      className={`playbook-card${open ? ' is-open' : ''}`}
       /* 포인트 색은 제품마다 다릅니다. 갈래 꼬리표가 이 값을 씁니다. */
       style={{ '--guide-accent': product.accent } as CSSProperties}
     >
@@ -41,7 +42,15 @@ function ProductCard({ product }: { product: Product }) {
           className="playbook-card-mark"
         />
         <h3 className="playbook-card-title">
-          <Link to={playbookProductPath(product.vendorId, product.id)} className="card-trigger">
+          {/*
+            눌린 카드는 기업 주소로 돌아갑니다 — 같은 카드를 다시 누르면 접힙니다.
+            `aria-expanded`로 지금 펼쳐져 있는지를 함께 알립니다.
+          */}
+          <Link
+            to={open ? `/playbook/${product.vendorId}` : playbookProductPath(product.vendorId, product.id)}
+            className="card-trigger"
+            aria-expanded={open}
+          >
             {product.name}
           </Link>
         </h3>
@@ -68,10 +77,20 @@ function ProductCard({ product }: { product: Product }) {
  * (Google의 코딩은 둘입니다). 배열 순서가 챗 → 업무 → 코딩이라 왼쪽부터 읽으면
  * 갈래 순서 그대로이고, 빈 갈래는 그냥 건너뜁니다.
  */
-function VendorBlock({ vendorId }: { vendorId: VendorId }) {
+function VendorBlock({
+  vendorId,
+  openId,
+  today,
+}: {
+  vendorId: VendorId;
+  openId?: string;
+  today: string;
+}) {
   const vendor = guideVendorById(vendorId);
   const products = productsOfVendor(vendorId);
   if (!vendor || products.length === 0) return null;
+
+  const open = products.find((p) => p.id === openId);
 
   return (
     <section className="playbook-vendor">
@@ -93,9 +112,17 @@ function VendorBlock({ vendorId }: { vendorId: VendorId }) {
 
       <div className="playbook-grid mt-5">
         {products.map((product) => (
-          <ProductCard key={product.id} product={product} />
+          <ProductCard key={product.id} product={product} open={product.id === open?.id} />
         ))}
       </div>
+
+      {/*
+        **패널은 그 회사의 격자 바로 아래에 섭니다.** 눌린 카드 옆에 끼워 넣으려면
+        열 수를 알아야 하는데, 열 수는 미디어쿼리가 정하므로 JS로 재면 프리렌더와
+        어긋납니다. 1040px 이상에서는 한 회사의 제품이 한 줄에 다 들어가므로 격자
+        아래가 곧 그 줄 아래입니다 — 잴 것도 어긋날 것도 없습니다.
+      */}
+      {open && <ProductPanel product={open} today={today} />}
     </section>
   );
 }
@@ -114,11 +141,16 @@ function VendorBlock({ vendorId }: { vendorId: VendorId }) {
  * 칩 줄은 학습·뉴스가 쓰는 것과 같은 모양입니다(`.section-tabs`).
  */
 export function PlaybookPage() {
-  const { vendorId } = useParams<{ vendorId: string }>();
+  const { vendorId, productId } = useParams<{ vendorId: string; productId: string }>();
   const active = vendorId ? guideVendorById(vendorId) : undefined;
+  const product = productId ? guideProductById(productId) : undefined;
 
   // 없는 기업으로 들어오면 전체로 돌립니다.
   if (vendorId && !active) return <Navigate to="/playbook" replace />;
+  // 기업과 제품이 안 맞는 주소도 돌립니다 — `/playbook/openai/claude` 같은 것.
+  if (productId && (!product || product.vendorId !== active?.id)) {
+    return <Navigate to={active ? `/playbook/${active.id}` : '/playbook'} replace />;
+  }
 
   /*
     그리는 시점에 오늘을 읽습니다. 모듈이 읽힐 때 정하면 프리렌더된 HTML에 빌드일이
@@ -129,10 +161,31 @@ export function PlaybookPage() {
 
   return (
     <>
+      {/*
+        제품이 펼쳐져 있으면 제목·설명·주소가 그 제품의 것입니다. 화면의 h1은
+        「AI 가이드」 그대로지만, 검색 결과에 서는 것은 제품이어야 합니다 —
+        「제품 이름으로 검색해 들어오는 자리」라 프리렌더 목록에 넣어 둔 주소입니다.
+      */}
       <Seo
-        title={active ? `${active.name} · AI 가이드` : 'AI 가이드'}
-        description="코딩 에이전트를 어떤 모델과 강도로 돌리고, 세션을 언제 새로 파고, 언제 압축할지. 공식 지침과 현장 통설과 우리가 직접 잰 것을 갈라 담습니다."
-        path={active ? `/playbook/${active.id}` : '/playbook'}
+        title={
+          product
+            ? `${product.name} · AI 가이드`
+            : active
+              ? `${active.name} · AI 가이드`
+              : 'AI 가이드'
+        }
+        description={
+          product
+            ? `${product.name} — ${product.oneLine}`
+            : '코딩 에이전트를 어떤 모델과 강도로 돌리고, 세션을 언제 새로 파고, 언제 압축할지. 공식 지침과 현장 통설과 우리가 직접 잰 것을 갈라 담습니다.'
+        }
+        path={
+          product
+            ? `/playbook/${product.vendorId}/${product.id}`
+            : active
+              ? `/playbook/${active.id}`
+              : '/playbook'
+        }
       />
       <PageHeader
         kicker="PALDYN GUIDE"
@@ -170,7 +223,7 @@ export function PlaybookPage() {
 
       <div className="site-wrap section-space">
         {shown.map((vendor) => (
-          <VendorBlock key={vendor.id} vendorId={vendor.id} />
+          <VendorBlock key={vendor.id} vendorId={vendor.id} openId={product?.id} today={today} />
         ))}
 
         {/*

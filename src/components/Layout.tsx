@@ -97,15 +97,16 @@ function viewKey(pathname: string): string {
   if (pathname.startsWith('/learn/certs/')) return pathname;
 
   /*
-    가이드의 기업 칩은 같은 목록을 거르는 일이라 한 칸으로 묶습니다. 제품·노트는
-    **다른 페이지**이므로 안 묶습니다 — 묶으면 목록을 한참 내려가 누른 사람이
-    상세의 중간부터 보게 됩니다(자격증 상세를 따로 뺀 것과 같은 이유).
+    가이드의 기업 칩과 **제품 상세**는 같은 화면을 거르고 펼치는 일이라 한 칸으로
+    묶습니다. 묶여 있어야 main이 다시 마운트되지 않고, 그래야 카드를 눌러도
+    **화면이 안 넘어갑니다** — 이 서랍이 페이지 이동을 안 쓰기로 한 자리입니다.
+    노트(`/playbook/<기업>/<제품>/<슬러그>`)는 진짜 다른 페이지라 안 묶습니다.
 
     안 묶어 두면 칩을 누를 때마다 main이 통째로 다시 마운트돼 **방금 누른 칩이
     갈려 나가고 포커스가 body로 튕깁니다** — 좌우 화살표로 칩을 잇달아 옮길 수
     없게 됩니다.
   */
-  if (/^\/playbook(\/[^/]+)?$/.test(pathname)) return '/playbook';
+  if (/^\/playbook(\/[^/]+){0,2}$/.test(pathname)) return '/playbook';
 
   for (const section of ['/learn', '/news']) {
     if (pathname === section || pathname.startsWith(`${section}/`)) return section;
@@ -319,7 +320,16 @@ export function Layout({ children }: { children: ReactNode }) {
               `/playbook/<기업>/<제품>/<슬러그>`라 주소에 이미 적혀 있습니다.
               NavLink가 하위 주소까지 알아서 켭니다.
             */}
-            {guideInNav && <NavLink to="/playbook">AI 가이드</NavLink>}
+            {/*
+              `startAtTop`이 필요합니다. viewKey가 이 서랍을 한 칸으로 묶어 두어
+              깊은 주소에서 이 링크를 눌러도 스크롤 effect가 안 돕니다 — 목록 중간에
+              선 채로 머리말만 화면 밖에 남습니다(학습·뉴스와 같은 이유).
+            */}
+            {guideInNav && (
+              <NavLink to="/playbook" onClick={startAtTop}>
+                AI 가이드
+              </NavLink>
+            )}
           </nav>
 
           {/* 12px은 techblog.paldyn.com의 .nav-right와 같은 값입니다. */}
@@ -364,7 +374,11 @@ export function Layout({ children }: { children: ReactNode }) {
               <NavLink to="/news" className={navClass('news', 'mobile-nav-link')} onClick={startAtTop}>뉴스</NavLink>
               <NavLink to="/learn" className={navClass('learn', 'mobile-nav-link')} onClick={startAtTop}>학습</NavLink>
               <NavLink to="/research" className={navClass('research', 'mobile-nav-link')}>리서치</NavLink>
-              {guideInNav && <NavLink to="/playbook" className="mobile-nav-link">AI 가이드</NavLink>}
+              {guideInNav && (
+                <NavLink to="/playbook" className="mobile-nav-link" onClick={startAtTop}>
+                  AI 가이드
+                </NavLink>
+              )}
             </div>
           </nav>
         )}

@@ -12,7 +12,6 @@ import { NewsPage } from './pages/NewsPage';
 import { NotFoundPage } from './pages/NotFoundPage';
 import { PlaybookNotePage } from './pages/PlaybookNotePage';
 import { PlaybookPage } from './pages/PlaybookPage';
-import { PlaybookProductPage } from './pages/PlaybookProductPage';
 import { PrivacyPage } from './pages/PrivacyPage';
 import { ResearchPage } from './pages/ResearchPage';
 
@@ -59,7 +58,8 @@ export default function App() {
         */}
         <Route path="/playbook" element={<PlaybookPage />} />
         <Route path="/playbook/:vendorId" element={<PlaybookPage />} />
-        <Route path="/playbook/:vendorId/:productId" element={<PlaybookProductPage />} />
+        {/* 제품 상세는 같은 화면에서 펼쳐집니다 — 주소만 깊어집니다. */}
+        <Route path="/playbook/:vendorId/:productId" element={<PlaybookPage />} />
         <Route path="/playbook/:vendorId/:productId/:slug" element={<PlaybookNotePage />} />
         <Route path="/articles/:slug" element={<ArticlePage />} />
         <Route path="/privacy" element={<PrivacyPage />} />
