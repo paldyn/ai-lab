@@ -14,7 +14,8 @@
     "og-image": "node scripts/og-image.mjs",
     "sync:techblog": "node scripts/sync-techblog.mjs",
     "prebuild": "node scripts/sync-techblog.mjs",
-    "predev": "node scripts/sync-techblog.mjs"
+    "predev": "node scripts/sync-techblog.mjs",
+    "check:playbook": "node scripts/check-playbook.mjs"
   },
   "dependencies": {
     "fast-glob": "^3.3.3",

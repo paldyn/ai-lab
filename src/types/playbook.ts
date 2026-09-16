@@ -26,14 +26,12 @@ export interface Tool {
   blurb: string;
   /** 카드에 서는 두세 글자 마크. 로고 파일을 쓰지 않습니다. */
   mark: string;
-  /**
-   * 확인 못 한 칸의 이름.
-   *
-   * 화면에는 안 나갑니다 — **지어내지 않았다는 기록이자 갱신 루틴의 할 일 목록**입니다.
-   * 자격증의 `unknowns`와 같은 자리인데, 거기서는 이것을 보는 검사가 0개라 122항목이
-   * 그대로 묵었습니다. 여기서는 `value: null`과 양방향으로 잠급니다.
-   */
-  open: string[];
+  /*
+    **확인 못 한 칸을 여기 손으로 적지 않습니다.** 자격증의 `unknowns`가 그 모양이었고,
+    화면에도 안 나가고 검사도 안 보는 채로 122항목이 묵었습니다. 여기서는 모르는 값을
+    `value: null`인 주장으로 세워 **화면에 「모름」 줄로 내보내고**, 할 일 목록은 그것에서
+    계산합니다(`toolOpenItems`). 손으로 쓰는 목록이 없으면 어긋날 자리도 없습니다.
+  */
 }
 
 /**
@@ -90,7 +88,7 @@ export interface Claim {
   topic: 'tier' | 'limit' | 'price' | 'context' | 'feature' | 'habit';
   /** 한 줄 주장. */
   statement: string;
-  /** 화면에 나가는 값. `null`은 「모름」이고 그 이름이 도구의 `open`에 있어야 합니다. */
+  /** 화면에 나가는 값. `null`이면 화면에 「모름 · 공식 페이지에서 확인 →」으로 섭니다. */
   value: string | null;
   tier: EvidenceTier;
   volatility: Volatility;

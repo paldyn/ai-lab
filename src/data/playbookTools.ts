@@ -23,7 +23,6 @@ export const playbookTools: Tool[] = [
     docsUrl: 'https://openai.com/chatgpt/pricing/',
     blurb: '가장 많이 쓰는 챗 앱. 절약은 청구서가 아니라 티어와 한도 관리다.',
     mark: 'GPT',
-    open: ['티어별 메시지 한도', '모델별 한도가 따로 걸리는지'],
   },
   {
     id: 'claude',
@@ -34,7 +33,6 @@ export const playbookTools: Tool[] = [
     docsUrl: 'https://claude.com/pricing',
     blurb: '긴 글과 문서를 다룰 때 쓰는 챗 앱. 창 한도와 주간 한도가 따로 돈다.',
     mark: 'CL',
-    open: ['티어별 사용 한도', '한도가 다시 차는 주기'],
   },
   {
     id: 'gemini',
@@ -45,7 +43,6 @@ export const playbookTools: Tool[] = [
     docsUrl: 'https://gemini.google/subscriptions/',
     blurb: '구글 계정과 붙어 있는 챗 앱. 구독이 다른 구글 서비스와 묶인다.',
     mark: 'GM',
-    open: ['구독 티어 이름', '티어별 한도'],
   },
   {
     id: 'claude-code',
@@ -56,7 +53,6 @@ export const playbookTools: Tool[] = [
     docsUrl: 'https://code.claude.com/docs',
     blurb: '터미널에서 도는 코딩 에이전트. 컨텍스트를 무엇이 먹는지가 절약의 전부다.',
     mark: 'CC',
-    open: ['요금제별 사용 한도'],
   },
   {
     id: 'codex',
@@ -67,7 +63,6 @@ export const playbookTools: Tool[] = [
     docsUrl: 'https://developers.openai.com/codex/cli/',
     blurb: 'OpenAI의 코딩 에이전트. 저장소의 옛 글이 가장 심하게 썩은 자리이기도 하다.',
     mark: 'CX',
-    open: ['요금제별 사용 한도', '지금 쓰는 기본 모델'],
   },
   {
     id: 'shared',
@@ -78,7 +73,6 @@ export const playbookTools: Tool[] = [
     docsUrl: null,
     blurb: '도구를 가리지 않고 걸리는 것. 한도를 읽는 법, 컨텍스트를 줄이는 네 가지.',
     mark: '공통',
-    open: [],
   },
 ];
 

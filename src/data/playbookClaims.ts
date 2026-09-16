@@ -45,16 +45,6 @@ export const playbookClaims: Claim[] = [
     volatility: 'price',
     source: { label: 'Anthropic 요금제', url: 'https://claude.com/pricing' },
   },
-  {
-    id: 'claude-team-seat',
-    tool: 'claude',
-    topic: 'tier',
-    statement: '팀 요금제는 좌석 등급이 둘이고 상위 좌석이 5배 사용량이다',
-    value: '표준 좌석 월 $25(연간 $20) · 프리미엄 좌석 월 $125(연간 $100)',
-    tier: 'vendor',
-    volatility: 'price',
-    source: { label: 'Anthropic 요금제', url: 'https://claude.com/pricing' },
-  },
 
   // ─── ChatGPT 앱 ──────────────────────────────────────────────────
   {
@@ -150,6 +140,76 @@ export const playbookClaims: Claim[] = [
     tier: 'vendor',
     volatility: 'limit',
     source: { label: 'Gemini 구독', url: 'https://gemini.google/subscriptions/' },
+  },
+
+  // ─── 아직 모르는 값 ─────────────────────────────────────────────
+  /*
+    확인 못 한 것을 데이터 구석에 적어 두지 않고 **화면에 줄로 세웁니다.** 자격증의
+    `unknowns` 122항목이 화면에도 안 나가고 검사도 안 보는 채로 묵은 것이 그 반대 예입니다.
+    「모름」이 보이면 누군가는 채웁니다.
+
+    값이 없으니 재확인 부담도 없습니다 — 첫 달 `price`·`limit` 여덟 상한은 **값이 있는**
+    주장만 셉니다.
+  */
+  {
+    id: 'chatgpt-tier-message-limits',
+    tool: 'chatgpt',
+    topic: 'limit',
+    statement: 'ChatGPT 티어별 메시지 한도와 다시 차는 주기',
+    value: null,
+    tier: 'vendor',
+    volatility: 'limit',
+    source: { label: 'ChatGPT 요금제', url: 'https://openai.com/chatgpt/pricing/' },
+  },
+  {
+    id: 'claude-tier-usage-limits',
+    tool: 'claude',
+    topic: 'limit',
+    statement: 'Claude 티어별 사용 한도와 다시 차는 주기',
+    value: null,
+    tier: 'vendor',
+    volatility: 'limit',
+    source: { label: 'Anthropic 요금제', url: 'https://claude.com/pricing' },
+  },
+  {
+    id: 'gemini-tier-absolute-limits',
+    tool: 'gemini',
+    topic: 'limit',
+    statement: 'Gemini 티어별 실제 사용 한도(배수가 아니라 횟수)',
+    value: null,
+    tier: 'vendor',
+    volatility: 'limit',
+    source: { label: 'Gemini 구독', url: 'https://gemini.google/subscriptions/' },
+  },
+  {
+    id: 'claude-code-plan-limits',
+    tool: 'claude-code',
+    topic: 'limit',
+    statement: 'Claude Code 요금제별 사용 한도',
+    value: null,
+    tier: 'vendor',
+    volatility: 'limit',
+    source: { label: 'Claude Code 문서', url: 'https://code.claude.com/docs' },
+  },
+  {
+    id: 'codex-plan-limits',
+    tool: 'codex',
+    topic: 'limit',
+    statement: 'Codex 요금제별 사용 한도',
+    value: null,
+    tier: 'vendor',
+    volatility: 'limit',
+    source: { label: 'Codex 문서', url: 'https://developers.openai.com/codex/' },
+  },
+  {
+    id: 'codex-default-model',
+    tool: 'codex',
+    topic: 'feature',
+    statement: 'Codex가 지금 기본으로 쓰는 모델',
+    value: null,
+    tier: 'vendor',
+    volatility: 'model',
+    source: { label: 'Codex 문서', url: 'https://developers.openai.com/codex/' },
   },
 
   // ─── 어느 도구에나 ───────────────────────────────────────────────

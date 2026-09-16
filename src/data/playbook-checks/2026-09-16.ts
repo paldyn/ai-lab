@@ -21,11 +21,6 @@ const entries: CheckEntry[] = [
     excerpt: 'Max Get the most out of Claude From $100 Per month … Choose 5x or 20x more usage than Pro',
   },
   {
-    claimId: 'claude-team-seat',
-    result: '그대로',
-    excerpt: 'Standard seat … $20 Per seat / month if billed annually / $25 if billed monthly · Premium seat 5x more usage than standard seats $100 … / $125 if billed monthly',
-  },
-  {
     claimId: 'chatgpt-personal-tiers',
     result: '그대로',
     excerpt: '개인 / 비즈니스 및 엔터프라이즈 … Free · Go · Plus · Pro',
@@ -76,6 +71,21 @@ const entries: CheckEntry[] = [
     claimId: 'shared-tiers-sell-usage',
     result: '그대로',
     excerpt: '세 페이지가 모두 상위 요금제를 「N배 더 높은 사용량」으로 설명한다',
+  },
+  {
+    claimId: 'chatgpt-tier-message-limits',
+    result: '그대로',
+    excerpt: '요금제 비교표는 「제한적」·「확장」 같은 말로만 적고 횟수와 주기를 안 싣는다(2026-09-16 확인)',
+  },
+  {
+    claimId: 'claude-tier-usage-limits',
+    result: '그대로',
+    excerpt: '「more usage than Pro」·「5x or 20x」로 배수만 적고 절대 한도와 주기를 안 싣는다(2026-09-16 확인)',
+  },
+  {
+    claimId: 'gemini-tier-absolute-limits',
+    result: '그대로',
+    excerpt: '「2배·4배·5배·20배 더 높은 사용량 한도」로 배수만 적고 횟수를 안 싣는다(2026-09-16 확인)',
   },
 ];
 

@@ -120,10 +120,29 @@ export function toolFreshness(toolId: ToolId, today: string): ToolFreshness {
   return {
     total: states.length,
     checkedRecently: states.filter((s) => s.ageDays !== null && s.ageDays < RECENT_DAYS).length,
-    expired: states.filter((s) => s.freshness === 'hard' || s.freshness === 'unknown').length,
+    /*
+      **「모름」은 만료가 아닙니다.** 값을 안 내보내고 있으니 독자를 속이지 않습니다.
+      만료는 「값이 있었는데 이제 못 믿는다」일 때만입니다 — 그래야 만료율로 서랍을
+      nav에서 내리는 장치가 진짜 위험만 셉니다.
+    */
+    expired: states.filter(
+      (s) => s.claim.value !== null && (s.freshness === 'hard' || s.freshness === 'unknown'),
+    ).length,
     unfilled: states.filter((s) => s.claim.value === null).length,
     oldestAgeDays: ages.length > 0 ? Math.max(...ages) : null,
   };
+}
+
+/**
+ * 그 도구에서 아직 못 채운 값의 이름.
+ *
+ * **손으로 적는 목록이 아니라 파생값입니다.** 자격증의 `unknowns`는 손으로 적는
+ * 배열이었고, 화면에도 안 나가고 검사도 안 보는 채로 122항목이 묵었습니다. 여기서는
+ * 모르는 값이 **화면에 「모름」 줄로 서고** 그 줄들에서 목록이 나옵니다 — 손으로 쓰는
+ * 목록이 없으면 어긋날 자리도 없습니다.
+ */
+export function toolOpenItems(toolId: ToolId): string[] {
+  return playbookClaims.filter((c) => c.tool === toolId && c.value === null).map((c) => c.statement);
 }
 
 /** 그 도구의 노트. 파일 번호 순입니다. */
@@ -152,6 +171,7 @@ export function playbookNavVisible(today: string): boolean {
   if (!last || daysBetween(last.date, today) > 21) return false;
 
   const expired = playbookClaims.filter((c) => {
+    if (c.value === null) return false;
     const f = claimState(c, today).freshness;
     return f === 'hard' || f === 'unknown';
   }).length;
