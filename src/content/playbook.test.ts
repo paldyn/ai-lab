@@ -145,6 +145,40 @@ describe('활용 노트', () => {
     expect(found).toEqual([]);
   });
 
+  /*
+    **본문이 부르는 아이디와 frontmatter의 `claims`는 같은 집합이어야 합니다.**
+    지금까지 검사는 frontmatter만 봤는데, 정작 화면에 나가는 것은 본문의
+    `:claim[...]`입니다 — 오타가 나면 값 대신 아이디가 덩그러니 찍히고, 그건
+    `fillClaimRefs`가 일부러 안 지우는 자리라(구멍을 숨기지 않으려고) 여기서 잡아야 합니다.
+
+    반대 방향도 봅니다. frontmatter에만 적고 본문에서 안 부르면, 주장 하나가 만료됐을 때
+    「어느 노트가 흔들리는가」를 되짚는 실이 실제보다 굵어집니다.
+  */
+  it('본문이 부르는 주장이 실재하고 frontmatter와 맞는다', () => {
+    const ids = new Set(playbookClaims.map((c) => c.id));
+    const problems: string[] = [];
+
+    for (const note of notes) {
+      const where = `${note.toolId}/${note.file}`;
+      const inBody = new Set(
+        [...note.content.matchAll(/:claim\[([a-z0-9][a-z0-9-]*)\]/g)].map((m) => m[1]),
+      );
+      const declared = new Set(
+        Array.isArray(note.data.claims) ? note.data.claims.map(String) : [],
+      );
+
+      for (const id of inBody) {
+        if (!ids.has(id)) problems.push(`${where} — 본문의 :claim[${id}]가 없는 주장이다`);
+        else if (!declared.has(id)) problems.push(`${where} — :claim[${id}]를 부르는데 claims에 없다`);
+      }
+      for (const id of declared) {
+        if (!inBody.has(id)) problems.push(`${where} — claims의 ${id}를 본문에서 안 부른다`);
+      }
+    }
+
+    expect(problems).toEqual([]);
+  });
+
   it('내부 링크가 실제로 있는 곳을 가리킨다', () => {
     const paths = new Set(notes.map((n) => `/playbook/${n.toolId}/${n.file.replace(/\.md$/, '')}`));
     const broken = notes.flatMap((note) =>
