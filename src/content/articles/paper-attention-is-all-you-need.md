@@ -14,13 +14,17 @@ draft: false
 
 남은 것이 **Table 3**이다. 이 표는 base 설정에서 하이퍼파라미터를 하나씩만 바꾼 스무 줄을 세우고 각 줄의 perplexity·BLEU·파라미터 수를 적어 둔, 논문에서 가장 정보가 빽빽한 자리다. 이 글은 그 표를 직접 파싱해 복원하고, 표가 무엇을 보여 주는지와 **무엇을 표에 적지 않았는지**를 재계산으로 가른다.
 
-## 표를 손으로 옮기지 않는 이유
+## 표 복원
+
+읽기 전에 옮기는 일부터 기계에 맡긴다. 이 표는 빈칸이 규칙으로 채워져 있어 옮기는 과정에서 값이 밀리고, 밀린 표로는 뒤의 검산이 전부 헛것이 된다.
+
+### 마크다운 변환의 오류
 
 이 표는 "적히지 않은 값은 base와 같다"는 규칙으로 대부분의 칸이 비어 있다. 그래서 사람이 눈으로 옮기면 줄이 밀리고, LLM에 마크다운으로 변환시켜도 마찬가지다. 실제로 이 글을 준비하며 같은 페이지를 마크다운으로 변환해 받아 봤더니 **(A) 그룹의 헤드 수가 1·4·8·16으로 나왔다**(원문은 1·4·16·32이고 8은 base의 값이다). 게다가 (C) 그룹의 params 값 4·16·32가 (A) 그룹 줄로 한 칸씩 밀려 붙어 있었다 — 원문의 (A) 그룹에는 params가 아예 적혀 있지 않다.
 
 그러니 표를 다루는 글은 표를 **기계로 읽어야** 한다. 첫 블록이 그 일만 한다.
 
-## 재현 블록 1 — Table 3을 HTML에서 복원한다
+### 재현 블록 1 — HTML 파싱
 
 2023년 이전 논문은 arXiv에 HTML 전문이 없고 `ar5iv.labs.arxiv.org/html/<id>`가 대신 렌더한다. 표 구조가 `<table>`로 그대로 남아 있으므로 표준 라이브러리만으로 읽힌다.
 
@@ -79,6 +83,8 @@ json.dump([(l, d) for l, d in filled if d], open("table3.json", "w"))
 print("\n행", len(filled), "· params가 적힌 행", sum(1 for _, d in filled if d and d["params"]))
 ```
 
+### 실제 출력
+
 ```text
 base  N= 6 d_model= 512 d_ff=2048 h= 8 d_k= 64 d_v= 64 Pdrop=0.1 eps=0.1 steps=100K PPL=4.92 BLEU=25.8 params=65
 (A)   N= 6 d_model= 512 d_ff=2048 h= 1 d_k=512 d_v=512 Pdrop=0.1 eps=0.1 steps=100K PPL=5.29 BLEU=24.9 params=None
@@ -106,7 +112,11 @@ big   N= 6 d_model=1024 d_ff=4096 h=16 d_k= 64 d_v= 64 Pdrop=0.3 eps=0.1 steps=3
 
 스무 행 중 params가 적힌 것은 열한 행이고, (A)와 (D) 그룹 여덟 행은 비어 있다. **그 빈칸이 실수가 아니라는 것을 다음 블록이 보인다.**
 
-## 재현 블록 2 — params 칸을 shape 산술로 다시 센다
+## params 칸의 어휘
+
+params 칸은 표에서 유일하게 학습 없이 검산되는 값이다. 층 구조와 어휘 크기만 알면 shape 산술로 그대로 다시 셀 수 있고, 그래서 어긋나면 어느 쪽이 어긋났는지도 따져 볼 수 있다.
+
+### 재현 블록 2 — shape 산술
 
 세는 규칙은 논문에 다 적혀 있다. 인코더 층은 셀프 어텐션 하나 + FFN 하나, 디코더 층은 어텐션 둘 + FFN 하나이고, §3.4가 "we share the same weight matrix between the two embedding layers and the pre-softmax linear transformation"이라 했으므로 임베딩 행렬은 한 벌만 센다. 위치 인코딩은 sin/cos 함수라 파라미터가 0이다. 어휘는 §5.1의 "a shared source-target vocabulary of about 37000 tokens"를 쓴다.
 
@@ -169,6 +179,8 @@ for h, dk in [(1, 512), (4, 128), (16, 32), (32, 16)]:
     print(f"  h={h:2d} d_k=d_v={dk:3d} · h*d_k={h * dk:4d} -> {count(6, 512, 2048, h, dk, dk, V_PAPER):,}")
 ```
 
+### 실제 출력
+
 ```text
    행  N     d    ff   h   dk   dv    논문M     재계산M     오차% 모자란 만큼의 어휘           논문값을 내는 어휘
 base  6   512  2048   8   64   64     65    63.08   -2.95      +3745    39,769 ~   41,721
@@ -199,6 +211,8 @@ big까지 넣은 열 행의 교집합: 40,932 ~ 36,272 (없음)
   h=32 d_k=d_v= 16 · h*d_k= 512 -> 63,082,496
 ```
 
+### 어휘 창
+
 세 가지가 나온다.
 
 **하나. (A) 그룹의 빈칸은 실수가 아니다.** 네 행의 파라미터 수가 63,082,496으로 완전히 같다. 논문이 §6.2에서 "we vary the number of attention heads and the attention key and value dimensions, **keeping the amount of computation constant**"라고 한 것이 이 말이고, 성립하는 이유는 네 행 모두 $$h \cdot d_k = 512 = d_{\text{model}}$$ 이라 투영 행렬의 크기가 바뀌지 않기 때문이다. 값이 base와 같으니 "적히지 않은 값은 base와 같다"는 표의 규칙에 따라 비워 둔 것이다.
@@ -207,7 +221,7 @@ big까지 넣은 열 행의 교집합: 40,932 ~ 36,272 (없음)
 
 **셋. 아홉 행이 어휘 하나로 동시에 설명된다.** 반올림 창을 겹치면 big을 뺀 아홉 행의 교집합이 **40,932~41,160**으로 남는다. 폭이 229밖에 안 되는 좁은 창이고, 그 안의 어떤 값을 넣어도 아홉 행의 params 칸이 전부 재현된다. 그런데 big 행은 35,296~36,272를 요구해서 교집합이 사라진다.
 
-## 우리 쪽 원인부터 배제한다
+### 세는 방식 배제
 
 어긋남을 논문 탓으로 돌리기 전에 세는 방식을 의심해야 한다. 세 후보를 눌러 봤다.
 
@@ -221,9 +235,13 @@ big까지 넣은 열 행의 교집합: 40,932 ~ 36,272 (없음)
 
 **그래서 남는 것은 가설이다.** 아홉 행은 41,000 언저리의 한 어휘로 설명되고 big 한 행만 36,000 언저리를 요구한다. 두 값 사이의 5,000은 반올림으로 흡수되지 않는다. 우리 자료로 판정할 수 있는 것은 여기까지이고, 어느 쪽 숫자가 어떻게 만들어졌는지는 논문에 적혀 있지 않다.
 
-## 재현 블록 3 — PPL과 BLEU는 같은 순위를 매기는가
+## PPL과 BLEU
 
-Table 3은 각 행에 PPL과 BLEU를 함께 적어 두었다. 두 지표가 늘 같은 방향이면 하나만 봐도 되고, 갈리는 자리가 있으면 그 자리가 논문의 관찰 지점이다. 열아홉 행에 순위 상관을 걸어 본다.
+Table 3은 각 행에 PPL과 BLEU를 함께 적어 두었다. 두 지표가 늘 같은 방향이면 하나만 봐도 되고, 갈리는 자리가 있으면 그 자리가 논문의 관찰 지점이다.
+
+### 재현 블록 3 — 순위 상관
+
+열아홉 행에 순위 상관을 걸어 본다.
 
 ```python
 import json
@@ -273,6 +291,8 @@ for lab, d in rows:
         print(f"  eps_ls={d['eps_ls']:>3s}  PPL={d['PPL']}  BLEU={d['BLEU']}")
 ```
 
+### 실제 출력
+
 ```text
 행 19개에서 PPL(낮을수록 좋음)과 BLEU(높을수록 좋음)의 스피어만 상관 = -0.7863
 
@@ -289,9 +309,11 @@ PPL 순위와 BLEU 순위가 세 계단 넘게 어긋난 행
 
 상관은 −0.7863이다. 부호가 음수인 것이 정상이고(PPL은 낮을수록, BLEU는 높을수록 좋다) 절댓값이 1이 아니라는 것은 **두 지표가 순위를 다르게 매기는 행이 있다**는 뜻이다.
 
+### 레이블 스무딩
+
 크게 어긋난 세 행 중 둘이 레이블 스무딩 행이다. **레이블 스무딩을 끄면 PPL이 19행 중 3위로 좋아지는데 BLEU는 13.5위로 떨어진다.** 논문이 §5.4에서 "This hurts perplexity, as the model learns to be more unsure, but improves accuracy and BLEU score"라고 적은 문장이 표 안에서 이렇게 보인다. 반대로 스무딩을 0.2로 키우면 PPL은 16위까지 나빠지지만 BLEU는 6위를 지킨다. 세 값을 나란히 놓으면 base의 0.1이 BLEU 기준으로 셋 중 가장 높다.
 
-## 표에 적히지 않은 조건 넷
+## 표 밖의 조건
 
 1. **Table 3의 BLEU는 test가 아니라 dev다.** 캡션이 "All metrics are on the English-to-German translation development set, newstest2013"라고 못 박는다. 초록의 28.4는 Table 2의 big 행이고 그쪽은 newstest2014 test다. Table 3의 big 행에 적힌 26.4는 논문 어디에서도 인용되지 않는다.
 2. **PPL은 per-wordpiece다.** 같은 캡션이 "Listed perplexities are per-wordpiece ... should not be compared to per-word perplexities"라고 적어 두었다. 다른 논문의 단어 단위 perplexity와 나란히 놓을 수 없다.
