@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 420" width="880" height="420">
+  <defs>
+    <marker id="arrStopBlue" viewBox="0 0 14 14" refX="12" refY="7"
+            markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#7ec8e3"/>
+    </marker>
+    <marker id="arrStopGray" viewBox="0 0 14 14" refX="12" refY="7"
+            markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#888888"/>
+    </marker>
+    <marker id="arrStopPurple" viewBox="0 0 14 14" refX="12" refY="7"
+            markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#7777cc"/>
+    </marker>
+  </defs>
+
+  <rect width="880" height="420" fill="#0a0a0a" rx="12"/>
+
+  <text x="440" y="44" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="22" font-weight="700" fill="#e8e8e8">Agentic RAG의 정지 조건</text>
+  <text x="440" y="68" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="15" font-weight="600" fill="#888">루프를 닫는 네 가지 — 하나라도 빠지면 답을 찾고도 계속 돈다</text>
+
+  <text x="190" y="90" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="600" fill="#7ec8e3">루프 한 바퀴</text>
+  <text x="610" y="90" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="600" fill="#e8e8e8">멈추는 조건 넷</text>
+
+  <rect x="80" y="106" width="220" height="60" rx="6" fill="#111" stroke="#7ec8e3" stroke-width="1.5"/>
+  <text x="190" y="130" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="700" fill="#7ec8e3">에이전트</text>
+  <text x="190" y="150" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="11" fill="#888">다음 행동을 고른다</text>
+
+  <rect x="80" y="196" width="220" height="60" rx="6" fill="#111" stroke="#333"/>
+  <text x="190" y="220" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="700" fill="#e8e8e8">도구 호출</text>
+  <text x="190" y="240" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="11" fill="#888">벡터 · 웹 · SQL</text>
+
+  <rect x="80" y="286" width="220" height="60" rx="6" fill="#111" stroke="#333"/>
+  <text x="190" y="310" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="700" fill="#e8e8e8">판정기</text>
+  <text x="190" y="330" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="11" fill="#888">근거가 충분한가</text>
+
+  <line x1="190" y1="166" x2="190" y2="196" stroke="#7ec8e3" stroke-width="2" marker-end="url(#arrStopBlue)"/>
+  <line x1="190" y1="256" x2="190" y2="286" stroke="#7ec8e3" stroke-width="2" marker-end="url(#arrStopBlue)"/>
+
+  <path d="M 190 346 L 190 372 L 62 372 L 62 136 L 80 136" fill="none" stroke="#7777cc" stroke-width="2" stroke-dasharray="4,4" marker-end="url(#arrStopPurple)"/>
+  <text x="140" y="392" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="11" fill="#7777cc">멈출 조건에 안 걸리면 다음 홉</text>
+
+  <line x1="300" y1="316" x2="350" y2="316" stroke="#888888" stroke-width="2"/>
+  <line x1="350" y1="130" x2="350" y2="346" stroke="#888888" stroke-width="2"/>
+
+  <line x1="352" y1="130" x2="398" y2="130" stroke="#888888" stroke-width="2" marker-end="url(#arrStopGray)"/>
+  <line x1="352" y1="202" x2="398" y2="202" stroke="#888888" stroke-width="2" marker-end="url(#arrStopGray)"/>
+  <line x1="352" y1="274" x2="398" y2="274" stroke="#888888" stroke-width="2" marker-end="url(#arrStopGray)"/>
+  <line x1="352" y1="346" x2="398" y2="346" stroke="#888888" stroke-width="2" marker-end="url(#arrStopGray)"/>
+
+  <rect x="400" y="100" width="420" height="60" rx="6" fill="#111" stroke="#7777cc" stroke-width="1.5"/>
+  <text x="424" y="124" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="700" fill="#7777cc">홉 상한</text>
+  <text x="424" y="144" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="11" fill="#888">갈래마다 정한 최대 홉 수에 닿았다</text>
+
+  <rect x="400" y="172" width="420" height="60" rx="6" fill="#0d1a10" stroke="#55c555" stroke-width="2"/>
+  <text x="424" y="196" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="700" fill="#55c555">점수 문턱</text>
+  <text x="424" y="216" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="11" fill="#888">상위 근거가 문턱을 넘어 충분하다</text>
+
+  <rect x="400" y="244" width="420" height="60" rx="6" fill="#111" stroke="#e05555" stroke-width="1.5"/>
+  <text x="424" y="268" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="700" fill="#e05555">반복 감지</text>
+  <text x="424" y="288" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="11" fill="#888">같은 쿼리 또는 같은 문서가 다시 나왔다</text>
+
+  <rect x="400" y="316" width="420" height="60" rx="6" fill="#111" stroke="#e05555" stroke-width="1.5"/>
+  <text x="424" y="340" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="700" fill="#e05555">예산 초과</text>
+  <text x="424" y="360" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="11" fill="#888">확인한 것과 못 한 것을 갈라 부분 답변으로 낸다</text>
+</svg>

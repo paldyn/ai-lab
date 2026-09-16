@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 400" width="880" height="400">
+  <defs>
+    <marker id="arrCostAxis" viewBox="0 0 14 14" refX="12" refY="7"
+            markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#888888"/>
+    </marker>
+  </defs>
+
+  <rect width="880" height="400" fill="#0a0a0a" rx="12"/>
+
+  <text x="440" y="44" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="22" font-weight="700" fill="#e8e8e8">RAG와 파인튜닝의 비용 역전</text>
+  <text x="440" y="68" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="15" font-weight="600" fill="#888">고정비가 큰 쪽과 변동비가 큰 쪽은 어딘가에서 뒤집힌다</text>
+
+  <line x1="120" y1="320" x2="816" y2="320" stroke="#888888" stroke-width="2" marker-end="url(#arrCostAxis)"/>
+  <line x1="120" y1="320" x2="120" y2="94" stroke="#888888" stroke-width="2" marker-end="url(#arrCostAxis)"/>
+
+  <text x="120" y="84" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="12" fill="#888">월 비용</text>
+  <text x="812" y="344" text-anchor="end" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="12" fill="#888">월 요청 수</text>
+
+  <line x1="120" y1="300" x2="800" y2="130" stroke="#7ec8e3" stroke-width="2.5"/>
+  <line x1="120" y1="230" x2="800" y2="175" stroke="#55c555" stroke-width="2.5"/>
+
+  <line x1="150" y1="116" x2="184" y2="116" stroke="#7ec8e3" stroke-width="2.5"/>
+  <text x="196" y="121" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="600" fill="#7ec8e3">RAG</text>
+
+  <line x1="150" y1="144" x2="184" y2="144" stroke="#55c555" stroke-width="2.5"/>
+  <text x="196" y="149" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="600" fill="#55c555">파인튜닝</text>
+
+  <text x="790" y="112" text-anchor="end" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="11" fill="#7ec8e3">요청마다 검색과 긴 프롬프트 — 기울기가 가파르다</text>
+  <text x="790" y="296" text-anchor="end" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="11" fill="#55c555">학습 1회 뒤에는 짧은 프롬프트 — 기울기가 완만하다</text>
+
+  <line x1="534" y1="196" x2="534" y2="320" stroke="#e05555" stroke-width="2" stroke-dasharray="4,4"/>
+  <circle cx="534" cy="196" r="6" fill="#e05555"/>
+  <text x="534" y="342" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="700" fill="#e05555">역전점</text>
+
+  <text x="440" y="380" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="12" fill="#7777cc">역전점 = 파인튜닝 초기 비용 ÷ RAG가 요청마다 더 쓰는 비용</text>
+</svg>

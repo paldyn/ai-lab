@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 400" width="880" height="400">
+  <defs>
+    <marker id="arrLayerDown" viewBox="0 0 14 14" refX="12" refY="7"
+            markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#7ec8e3"/>
+    </marker>
+  </defs>
+
+  <rect width="880" height="400" fill="#0a0a0a" rx="12"/>
+
+  <text x="440" y="44" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="22" font-weight="700" fill="#e8e8e8">LlamaIndex의 세 층위</text>
+  <text x="440" y="68" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="15" font-weight="600" fill="#888">어디를 고칠지는 무엇이 문제인지가 정한다</text>
+
+  <rect x="60" y="96" width="760" height="82" rx="8" fill="#111" stroke="#7777cc" stroke-width="1.5"/>
+  <text x="88" y="124" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#7777cc">Chat Engine</text>
+  <text x="88" y="148" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="12" fill="#888">대화 기록을 얹고, 지금 질문을 독립된 검색어로 고쳐 쓴다</text>
+  <text x="88" y="168" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="11" fill="#e05555">「그럼 그건 언제부터야」가 안 될 때 여기부터 본다</text>
+
+  <rect x="60" y="202" width="760" height="82" rx="8" fill="#111" stroke="#55c555" stroke-width="1.5"/>
+  <text x="88" y="230" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#55c555">Query Engine</text>
+  <text x="88" y="254" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="12" fill="#888">후처리를 걸고 프롬프트를 만들어 답을 합성한다</text>
+  <text x="88" y="274" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="11" fill="#e05555">근거는 맞는데 답이 벗어날 때 여기부터 본다</text>
+
+  <rect x="60" y="308" width="760" height="82" rx="8" fill="#0d1520" stroke="#7ec8e3" stroke-width="2"/>
+  <text x="88" y="336" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#7ec8e3">Retriever</text>
+  <text x="88" y="360" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="12" fill="#888">질문을 받아 Node 목록만 돌려준다 — 생성은 하지 않는다</text>
+  <text x="88" y="380" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="11" fill="#e05555">Recall과 MRR은 이 층의 출력으로 계산한다</text>
+
+  <line x1="640" y1="178" x2="640" y2="202" stroke="#7ec8e3" stroke-width="2" marker-end="url(#arrLayerDown)"/>
+  <line x1="640" y1="284" x2="640" y2="308" stroke="#7ec8e3" stroke-width="2" marker-end="url(#arrLayerDown)"/>
+</svg>
