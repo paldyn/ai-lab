@@ -1,5 +1,5 @@
 import { Navigate, useParams } from 'react-router';
-import { GuideBoard } from '../components/GuideBoard';
+import { GuideRail } from '../components/GuideRail';
 import { GuideLedger } from '../components/GuideLedger';
 import { PageHeader } from '../components/PageHeader';
 import { Seo } from '../components/Seo';
@@ -8,19 +8,18 @@ import { guideProductById } from '../data/guideProducts';
 import { guideVendorById } from '../data/guideVendors';
 
 /**
- * AI 가이드의 첫 화면 — **붙박이 판 하나와 그 아래 원장 하나.**
+ * AI 가이드의 첫 화면 — **왼쪽에서 고르고 오른쪽에서 읽는 2단.**
  *
- * 세 번 갈아엎은 자리입니다. 카드 격자에서 페이지로 넘어가는 것도, 격자 아래에
- * 패널이 펼쳐지는 것도, 기업 → 제품 아코디언 트리도 전부 거절당했습니다.
- * 공통된 원인은 **고르는 자리가 크기나 모양을 바꾼다**는 것이었습니다 — 열리고
- * 닫히며 아래를 밀어내면 눈이 목록을 다시 훑어야 하고, 그게 「찾기 힘들다」입니다.
+ * **네 번 갈아엎고 다섯 번째입니다.** 카드 격자 → 페이지 이동, 격자 아래 펼침,
+ * 기업 → 제품 아코디언 트리, 3×3 붙박이 판이 차례로 거절당했습니다.
  *
- * 판은 **주소 열셋 전부에서 같은 높이·같은 자리**입니다. 고르면 잉크만 바뀌고
- * 원장의 내용만 갈립니다. 여닫히는 것이 하나도 없으므로 다시 훑을 일이 없습니다.
+ * 앞의 셋은 원인이 같았습니다 — **고르는 자리가 크기와 모양을 바꾼다.** 판은 그것을
+ * 고쳤는데도 「UI/UX가 별로」였고, 그 진단은 달랐습니다: **첫 화면을 통째로 고르는
+ * 자리가 먹고 정작 읽을 것은 스크롤 아래에 있다.** 고른 뒤에도 눈이 위아래로 오갑니다.
  *
- * 판이 3×3인 것은 우연이 아닙니다 — **기업마다 제품이 정확히 셋**이라 기업으로
- * 줄을 세우면 빈칸이 없습니다. 갈래로 세우면 Google의 업무가 비고 코딩이 둘이라
- * 어긋납니다.
+ * 레일은 그 축을 좌우로 돌립니다. 고르는 것과 읽는 것이 **한 화면에 나란히** 서고,
+ * 레일이 따라와서 읽다가 눈만 왼쪽으로 옮기면 됩니다. 여닫히는 것은 여전히 하나도
+ * 없습니다 — 열두 줄이 처음부터 다 서 있고 고르면 잉크만 바뀝니다.
  */
 export function PlaybookPage() {
   const { vendorId, productId } = useParams<{ vendorId: string; productId: string }>();
@@ -74,15 +73,17 @@ export function PlaybookPage() {
       />
 
       {/* `guide-page`가 이 서랍의 조판 상수(--gs-*·--guide-col)를 거는 자리입니다. */}
-      <div className="site-wrap section-space guide-page">
-        <GuideBoard selectedId={product?.id} vendorId={vendor?.id} />
-        {/*
-          판을 보면 바로 생기는 질문(왜 아홉뿐인가)의 답입니다. 제품마다 되풀이하던
-          문장을 여기서 한 번만 적습니다.
-        */}
-        <p className="guide-board-note">
-          표면(터미널 · IDE · 데스크톱 · 웹)은 별개 제품이 아니라 같은 엔진을 만나는 자리입니다.
-        </p>
+      <div className="site-wrap section-space guide-page guide-layout">
+        <div className="guide-rail-col">
+          <GuideRail selectedId={product?.id} vendorId={vendor?.id} />
+          {/*
+            레일을 보면 바로 생기는 질문(왜 아홉뿐인가)의 답입니다. 제품마다
+            되풀이하던 문장을 여기서 한 번만 적습니다.
+          */}
+          <p className="guide-rail-note">
+            표면(터미널 · IDE · 데스크톱 · 웹)은 별개 제품이 아니라 같은 엔진을 만나는 자리입니다.
+          </p>
+        </div>
 
         {/*
           **key가 없으면 원장의 페이드가 아홉 칸 중 여덟 번의 이동에서 안 돕니다.**
@@ -90,12 +91,14 @@ export function PlaybookPage() {
           `guide-ledger-in`이 다시 안 걸립니다 — 「눌렀는데 아무 일도 안 일어난다」의
           절반이 스타일이 아니라 이 재조정이었습니다.
         */}
-        <GuideLedger
-          key={product?.id ?? vendor?.id ?? 'root'}
-          product={product}
-          vendor={vendor}
-          today={today}
-        />
+        <div className="guide-pane">
+          <GuideLedger
+            key={product?.id ?? vendor?.id ?? 'root'}
+            product={product}
+            vendor={vendor}
+            today={today}
+          />
+        </div>
       </div>
     </>
   );

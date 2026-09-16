@@ -7290,182 +7290,229 @@ input:focus-visible {
   --guide-col: 104px;
 }
 
-/* ── 판 ─────────────────────────────────────────────────────── */
-
-.guide-board {
-  display: grid;
-  gap: var(--gs-r2);
-}
-
-.guide-board-row {
-  display: grid;
-  gap: var(--gs-r2);
-}
+/* ── 2단 ────────────────────────────────────────────────────── */
 
 /*
-  **중단점을 집의 것으로 되돌린다.** 이 서랍만 860 / 719 / 720 셋을 따로 만들어
-  두어 창을 줄이면 여기만 다른 데서 접혔다 — 집이 쓰는 값은 640 / 768 / 1024다.
-  860 → 1024로 올리면 860~1023px에서 기업 이름이 줄 옆이 아니라 위에 서는데,
-  그 대역에서 칸이 216.7 → 256px로 **39px 넓어진다.**
+  왼쪽에서 고르고 오른쪽에서 읽는다.
+
+  **축을 세로에서 가로로 돌린 것이 이 설계의 전부다.** 붙박이 판은 여닫히는 것을
+  없애는 데는 성공했지만 첫 화면을 통째로 고르는 자리가 먹었고, 정작 읽을 것은
+  스크롤 아래에 있었다 — 고른 뒤에도 눈이 위아래로 오갔다. 좌우로 두면 고르는 것과
+  읽는 것이 한 화면에 나란히 선다.
+
+  가르는 선은 **읽는 쪽이 들고 있다.** 레일이 붙박이(sticky)라 레일에 달면 선이
+  레일 높이에서 끊기는데, 읽는 쪽에 달면 페이지 끝까지 내려간다.
 */
 @media (min-width: 1024px) {
-  .guide-board-row {
-    grid-template-columns: var(--guide-col) minmax(0, 1fr);
-    /* center였다 — 줄 이름이 칸 셋의 한가운데 허공에 떠 있었다. */
+  .guide-layout {
+    display: grid;
+    /* 가장 긴 이름(Google Antigravity)이 한 줄에 드는 선에서 가장 좁은 값이다. */
+    grid-template-columns: 224px minmax(0, 1fr);
     align-items: start;
   }
 
   /*
-    기업 이름을 칸의 첫 줄에 앉힌다. 칸이 테두리 1px + 패딩 12px이라 13px이다.
-    테두리를 없애는 날 이 1px도 같이 뺀다.
+    읽다가 눈만 왼쪽으로 옮기면 되도록 따라온다. 96px은 집이 sticky 머리 보정에
+    쓰는 값과 같다(`scroll-margin-top`·학습 레일의 `top`).
   */
-  .guide-board-vendor {
-    padding-top: calc(var(--gs-r2) + 1px);
+  .guide-rail-col {
+    position: sticky;
+    top: 96px;
+  }
+
+  .guide-pane {
+    min-width: 0;
+    border-left: 1px solid var(--guide-rule);
+    padding-left: var(--gs-r4);
   }
 }
 
-/*
-  기업 홈도 갈 곳이다 — 주소의 두 층이 화면의 두 축으로 그대로 선다.
+/* ── 레일 ───────────────────────────────────────────────────── */
 
-  **줄 이름표는 칸 이름보다 한 급 아래다.** 13px/600 sans였을 때는 칸 이름
-  15px/600과 사실상 같은 계급이라 판이 무엇으로 짜였는지가 안 읽혔다. 값이 전부
-  라틴이라 모노가 그대로 얹히고, 집의 `.learn-rail-label`과 같은 레일 라벨이다.
+.guide-rail-group + .guide-rail-group {
+  margin-top: var(--gs-r3);
+}
+
+.guide-rail-products {
+  margin-top: 3px;
+}
+
+/*
+  **기업 줄은 이름이 아니라 구역 머리글이다.** 처음 그린 레일은 기업과 제품이
+  들여쓰기와 로고 크기만 다르고 글자 크기·색이 같아, 사용자가 원한 「기업 고르고
+  제품 고르고」 두 층이 눈에 안 갈렸다. 모노 대문자에 **오른쪽으로 뻗는 괘선**을
+  달아 계급을 벌린다 — 남는 폭을 괘선이 먹으므로 레일이 244px일 때 수가 오른쪽
+  끝에 붕 뜨던 문제도 같이 사라진다.
+
+  집의 학습 레일과 달리 **눌린다** — 기업도 갈 곳이기 때문이다(`/playbook/<기업>`).
 */
-.guide-board-vendor {
+.guide-rail-vendor {
   display: flex;
+  height: 26px;
   align-items: center;
   gap: var(--gs-r1);
+  padding: 0 var(--gs-r2);
   color: var(--text-muted);
-  font-family: var(--font-mono);
-  font-size: var(--gs-mono);
-  /* JetBrains Mono는 400·500만 받아 온다(index.html). 600을 적으면 합성된다. */
-  font-weight: 500;
-  letter-spacing: 0.08em;
   transition: color 150ms ease;
 }
 
-.guide-board-vendor:hover,
-.guide-board-vendor.is-on {
-  color: var(--text-strong);
-}
-
-.guide-board-vendor-mark {
-  display: inline-flex;
-  width: 15px;
-  height: 15px;
-  flex: 0 0 auto;
-}
-
-.guide-board-tiles {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: var(--gs-r1);
-}
-
-/*
-  칸. 높이를 묶는 것이 제품 수가 아니라 **기업 수**라, Google의 업무가 채워져 그
-  줄이 넷이 되어도 판 높이는 안 변한다.
-
-  반지름 12px은 이 파일 전체에 둘뿐이었고 부트스트랩 카드의 값이다. 집이 실제로
-  쓰는 대역은 1~4px 스물넷(3px만 아홉)이라 **이 판만 다른 시대의 실루엣**을 들고 있었다.
-*/
-.guide-tile {
-  display: flex;
-  min-height: 80px;
-  flex-direction: column;
-  justify-content: space-between;
-  gap: var(--gs-r2);
-  border: 1px solid var(--guide-rule);
-  border-radius: 3px;
-  padding: var(--gs-r2);
-  /* background 단축 속성을 전이에 걸면 이미지·위치까지 딸려 온다. 색만 건다. */
-  transition:
-    border-color 150ms ease,
-    background-color 150ms ease,
-    color 150ms ease;
-}
-
-.guide-tile:hover {
-  border-color: var(--text-dim);
-}
-
-.guide-tile-top {
-  display: flex;
-  align-items: center;
-  gap: var(--gs-r1);
-}
-
-/* 17px이었다 — 16px 이름보다 위쪽 덩어리가 무거웠다. 기업 마크와 한 값이다. */
-.guide-tile-mark {
-  display: inline-flex;
-  width: 15px;
-  height: 15px;
-  flex: 0 0 auto;
-}
-
-/*
-  갈래 꼬리표. 칸이 표처럼 정렬돼 눈이 「열 = 갈래」로 읽으려 하는데 Google 줄만
-  챗·코딩·코딩이라 그 읽기가 깨진다 — 꼬리표가 바로잡는 유일한 신호라 흐리게 두면
-  안 된다. 회사색을 여기에만 쓰므로 판에서 「색 = 회사」가 한눈에 보인다.
-
-  **모노는 이 사이트의 라벨 목소리다.** 걷어내지 않는다 — 걷어내면 이 서랍만
-  집에서 라벨이 다른 화면이 된다. 자간만 `.page-header-stats-label`이 쓰는 값으로 조인다.
-*/
-.guide-tile-role {
-  color: var(--guide-accent, var(--brand-text));
+.guide-rail-vendor-name {
   font-family: var(--font-mono);
   font-size: var(--gs-mono);
-  font-weight: 500;
-  /* 없었다 — 칸 높이가 글꼴 기본 행간에 매여 있었다. */
-  line-height: 1.4;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  white-space: nowrap;
 }
 
-/*
-  **좁아지면 자르지 말고 줄을 바꾼다.** 한 줄로 묶고 말줄임을 걸었더니 375px에서
-  「Claude …」가 둘이 되어 Cowork와 Code를 못 갈랐다 — 이름이 이 칸의 전부인데
-  그걸 자르면 판이 성립하지 않는다. 대신 칸 높이를 자라게 둔다.
-*/
-.guide-tile-name {
+.guide-rail-rule {
+  min-width: 8px;
+  height: 1px;
+  flex: 1 1 auto;
+  background: var(--border);
+  transition: background 150ms ease;
+}
+
+.guide-rail-vendor:hover,
+.guide-rail-vendor.is-on {
   color: var(--text-strong);
-  font-size: var(--gs-lead);
-  font-weight: 600;
-  line-height: 1.25;
-  /* 라틴 제품명에만 실제로 먹고 한글 받침에는 해가 없는 폭이다. */
-  letter-spacing: -0.01em;
+}
+
+.guide-rail-vendor:hover .guide-rail-rule,
+.guide-rail-vendor.is-on .guide-rail-rule {
+  background: var(--guide-rule);
+}
+
+/* 기업 마크는 한 단 흐리게 서서 제품 마크와 또 한 번 갈린다. */
+.guide-rail-vendor .guide-rail-mark {
+  opacity: 0.68;
+  transition: opacity 150ms ease;
+}
+
+.guide-rail-vendor:hover .guide-rail-mark,
+.guide-rail-vendor.is-on .guide-rail-mark {
+  opacity: 1;
+}
+
+/* ── 제품 줄 ────────────────────────────────────────────────── */
+
+.guide-rail-product {
+  position: relative;
+  display: flex;
+  height: 30px;
+  align-items: center;
+  gap: var(--gs-r1);
+  padding: 0 var(--gs-r2) 0 26px;
+  color: var(--text-dim);
+  transition: color 150ms ease, background-color 150ms ease;
+}
+
+.guide-rail-name {
+  font-size: var(--gs-body);
+  line-height: 1;
+  letter-spacing: -0.004em;
+  white-space: nowrap;
+}
+
+.guide-rail-role {
+  color: var(--text-muted);
+  font-size: var(--gs-mono);
+  line-height: 1;
+  white-space: nowrap;
 }
 
 /*
-  고른 칸. **선택은 색이 아니라 반전으로 표시한다** — 색으로 하면 회사색과 겹쳐
-  「색 = 회사」가 흐려진다. 집 안의 `.filter-chip.active`가 이미 쓰는 표기다.
+  **0이면 아예 안 그린다**(`GuideRail.tsx`가 안 그린다). 처음 그린 레일이 열세 줄
+  전부에 「0편」을 달아 왼쪽에 영의 기둥이 섰다 — 원장에서 빈 절을 안 세우기로 한
+  규칙을 레일이 어긴 자리였다. 지금은 차오르는 줄만 저절로 수를 단다.
 */
-.guide-tile.is-on {
-  border-color: var(--text-strong);
-  background-color: var(--text-strong);
-}
-
-.guide-tile.is-on .guide-tile-name,
-.guide-tile.is-on .guide-tile-role {
-  color: var(--bg);
-}
-
-/* 반전된 칸 위에서는 단색 로고도 함께 뒤집는다. 여러 색 로고는 제 색 그대로다. */
-.guide-tile.is-on .guide-tile-mark.is-tinted {
-  background-color: var(--bg);
-}
-
-/* 로고가 칸과 같은 박자로 뒤집힌다. 지연도 파도도 없다 — 한 번에 뒤집힌다. */
-.guide-tile-mark.is-tinted {
-  transition: background-color 150ms ease;
-}
-
-.guide-board-note {
-  margin-top: var(--gs-r3);
-  max-width: var(--gs-measure);
+.guide-rail-count {
+  margin-left: auto;
   color: var(--text-muted);
-  font-size: var(--gs-body);
-  line-height: 1.75;
+  font-family: var(--font-mono);
+  font-size: var(--gs-mono);
+  font-variant-numeric: tabular-nums;
+}
+
+.guide-rail-mark {
+  display: inline-flex;
+  width: 14px;
+  height: 14px;
+  flex: 0 0 auto;
+}
+
+.guide-rail-vendor .guide-rail-mark {
+  width: 15px;
+  height: 15px;
+}
+
+.guide-rail-product:hover {
+  background-color: var(--bg-subtle);
+  color: var(--text);
+}
+
+/*
+  고른 줄. **판에서 쓰던 반전을 여기서는 안 쓴다** — 줄 하나를 통째로 뒤집으면
+  레일에서 그 줄만 칠해진 막대가 되어 목록의 리듬이 끊긴다. 대신 면을 한 단 올리고
+  왼쪽에 브랜드색 띠를 세운다(집의 학습 레일이 켜진 줄에 쓰는 표기와 같다).
+*/
+.guide-rail-product[aria-current='page'] {
+  background-color: var(--surface);
+  color: var(--text-strong);
+}
+
+.guide-rail-product[aria-current='page'] .guide-rail-name {
+  font-weight: 600;
+}
+
+.guide-rail-product[aria-current='page'] .guide-rail-role {
+  color: var(--text-dim);
+}
+
+.guide-rail-product[aria-current='page']::before {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 2px;
+  background: var(--brand);
+  content: '';
+}
+
+.guide-rail-note {
+  margin-top: var(--gs-r3);
+  padding: 0 var(--gs-r2);
+  color: var(--text-muted);
+  font-size: 11.5px;
+  line-height: 1.7;
   text-wrap: pretty;
+}
+
+/*
+  좁으면 레일이 위로 올라가 한 열이 된다.
+
+  **그러면 레일이 다시 첫 화면을 먹는다** — 판을 버린 이유가 그것이었으므로 여기서
+  최대한 조인다. 간격을 반으로 줄이고 줄 높이를 2px 낮춰 468px에서 내려온다.
+  좌우로 나란히 못 세우는 폭에서는 이만큼이 한계이고, 더 줄이려면 누르는 자리가
+  44px 아래로 내려가 손가락에 안 맞는다.
+*/
+@media (max-width: 1023px) {
+  .guide-rail-group + .guide-rail-group {
+    margin-top: var(--gs-r2);
+  }
+
+  .guide-rail-product {
+    height: 28px;
+  }
+
+  .guide-rail-note {
+    margin-top: var(--gs-r2);
+  }
+
+  .guide-pane {
+    margin-top: var(--gs-r3);
+    border-top: 1px solid var(--guide-rule);
+    padding-top: var(--gs-r3);
+  }
 }
 
 /* ── 원장 ───────────────────────────────────────────────────── */
@@ -7482,10 +7529,11 @@ input:focus-visible {
   판과 원장이 「한 페이지의 두 절」로 읽힌다. 34 + 28 = 63px은 절 간격도 블록
   간격도 아닌 중간값이었다.
 */
+/*
+  **가르는 선은 이제 읽는 칸(`.guide-pane`)이 들고 있다.** 판이 위에 있던 시절에는
+  원장이 제 윗선을 그렸는데, 2단이 되면서 그 선이 칸 안쪽에 한 겹 더 그어졌다.
+*/
 .guide-ledger {
-  margin-top: var(--gs-r4);
-  border-top: 1px solid var(--guide-rule);
-  padding-top: var(--gs-r3);
   animation: guide-ledger-in 120ms ease;
 }
 
