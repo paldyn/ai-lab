@@ -49,6 +49,7 @@ export const guideProducts: Product[] = [
     docsUrl: 'https://claude.com/pricing',
     logo: 'assets/claude.svg',
     monochrome: true,
+    accent: 'var(--source-anthropic-text)',
   },
   {
     id: 'claude-cowork',
@@ -61,6 +62,7 @@ export const guideProducts: Product[] = [
     docsUrl: null,
     logo: 'assets/claude.svg',
     monochrome: true,
+    accent: 'var(--source-anthropic-text)',
   },
   {
     id: 'claude-code',
@@ -73,6 +75,7 @@ export const guideProducts: Product[] = [
     docsUrl: 'https://code.claude.com/docs',
     logo: 'assets/claude-code.svg',
     monochrome: true,
+    accent: 'var(--source-anthropic-text)',
   },
 
   // ─── OpenAI ──────────────────────────────────────────────────────
@@ -87,6 +90,7 @@ export const guideProducts: Product[] = [
     docsUrl: 'https://openai.com/chatgpt/pricing/',
     logo: 'assets/openai.svg',
     monochrome: true,
+    accent: 'var(--source-openai-text)',
   },
   {
     id: 'chatgpt-work',
@@ -99,6 +103,7 @@ export const guideProducts: Product[] = [
     docsUrl: null,
     logo: 'assets/openai.svg',
     monochrome: true,
+    accent: 'var(--source-openai-text)',
   },
   {
     id: 'codex',
@@ -111,6 +116,7 @@ export const guideProducts: Product[] = [
     docsUrl: 'https://learn.chatgpt.com/docs/codex/cli',
     logo: 'assets/openai.svg',
     monochrome: true,
+    accent: 'var(--source-openai-text)',
   },
 
   // ─── Google ──────────────────────────────────────────────────────
@@ -130,6 +136,7 @@ export const guideProducts: Product[] = [
     docsUrl: 'https://gemini.google/subscriptions/',
     logo: 'assets/gemini.svg',
     monochrome: true,
+    accent: 'var(--guide-gemini-text)',
   },
   {
     id: 'antigravity',
@@ -142,6 +149,7 @@ export const guideProducts: Product[] = [
     docsUrl: null,
     logo: 'assets/antigravity.png',
     monochrome: false,
+    accent: 'var(--source-google-text)',
   },
   {
     id: 'gemini-cli',
@@ -154,6 +162,7 @@ export const guideProducts: Product[] = [
     docsUrl: null,
     logo: 'assets/gemini.svg',
     monochrome: true,
+    accent: 'var(--guide-gemini-text)',
   },
 ];
 

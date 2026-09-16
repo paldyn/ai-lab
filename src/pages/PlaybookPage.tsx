@@ -1,3 +1,4 @@
+import type { CSSProperties } from 'react';
 import { Link, Navigate, NavLink, useParams } from 'react-router';
 import { ClaimRow } from '../components/ClaimRow';
 import { GuideMark } from '../components/GuideMark';
@@ -21,30 +22,35 @@ function ProductCard({ product }: { product: Product }) {
   const notes = playbookNotesOf(product.id);
 
   return (
-    <article className="playbook-card">
-      <GuideMark logo={product.logo} monochrome={product.monochrome} className="playbook-card-mark" />
-      <div className="playbook-card-main">
-        {/*
-          갈래는 머리글이 아니라 **카드에 붙는 꼬리표**입니다. 머리글로 두면 한 갈래에
-          제품이 하나인 자리마다 카드가 전폭을 먹어 목록이 세로로 늘어졌습니다 —
-          「챗 · 업무 · 코딩」이 한 줄로 읽혀야 회사끼리 견주기가 쉽습니다.
-        */}
-        <p className="playbook-card-role">{product.role}</p>
+    <article
+      className="playbook-card"
+      /* 포인트 색은 제품마다 다릅니다. 갈래 꼬리표가 이 값을 씁니다. */
+      style={{ '--guide-accent': product.accent } as CSSProperties}
+    >
+      {/*
+        **로고·이름·갈래가 한 줄입니다.** 로고를 네모 상자에 가두고 이름을 그 옆
+        칸으로 내리면 이름이 카드 가운데쯤에서 시작해 훑기가 어려웠습니다. 갈래도
+        이름 위에 따로 서 있어서 한 칸을 더 먹었습니다. 셋을 한 줄로 붙이면
+        카드 맨 위 한 줄만 읽어도 「무엇이고 어느 자리인가」가 끝납니다.
+      */}
+      <div className="playbook-card-head">
+        <GuideMark logo={product.logo} monochrome={product.monochrome} className="playbook-card-mark" />
         <h4 className="playbook-card-title">
           <Link to={playbookProductPath(product.vendorId, product.id)} className="card-trigger">
             {product.name}
           </Link>
         </h4>
-        {/*
-          표면은 별개 제품이 아니라 같은 엔진을 만나는 자리들입니다. 카드에 줄 하나로
-          적어 두면 「Codex가 터미널에도 있나」를 목록에서 바로 알 수 있습니다.
-        */}
-        <p className="playbook-card-meta">{product.surfaces.join(' · ')}</p>
-        <p className="playbook-card-blurb">{product.oneLine}</p>
-        <p className="playbook-card-notes">
-          {notes.length > 0 ? `노트 ${notes.length}편` : '노트 준비 중'}
-        </p>
+        <span className="playbook-card-role">{product.role}</span>
       </div>
+      {/*
+        표면은 별개 제품이 아니라 같은 엔진을 만나는 자리들입니다. 카드에 줄 하나로
+        적어 두면 「Codex가 터미널에도 있나」를 목록에서 바로 알 수 있습니다.
+      */}
+      <p className="playbook-card-meta">{product.surfaces.join(' · ')}</p>
+      <p className="playbook-card-blurb">{product.oneLine}</p>
+      <p className="playbook-card-notes">
+        {notes.length > 0 ? `노트 ${notes.length}편` : '노트 준비 중'}
+      </p>
     </article>
   );
 }
