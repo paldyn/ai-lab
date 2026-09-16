@@ -144,8 +144,19 @@ export function claimsForProduct(productId: string): Claim[] {
  * 이어 붙이는 것만으로는 같은 주장이 두 번 세어집니다.
  */
 export function claimsForVendor(vendorId: string): Claim[] {
-  const productIds = guideProducts.filter((p) => p.vendorId === vendorId).map((p) => p.id);
-  const modelIds = guideModels.filter((m) => m.vendorId === vendorId).map((m) => m.id);
+  const products = guideProducts.filter((p) => p.vendorId === vendorId);
+  const productIds = products.map((p) => p.id);
+  /*
+    **그 회사가 만든 모델 + 그 회사 제품이 돌리는 모델**입니다. 둘이 다릅니다 —
+    Google Antigravity의 선택기에 Claude 둘과 GPT-OSS가 서므로, 만든 회사로만
+    모으면 Google 화면이 제 제품에 실제로 서는 값을 빠뜨립니다.
+  */
+  const modelIds = [
+    ...new Set([
+      ...guideModels.filter((m) => m.vendorId === vendorId).map((m) => m.id),
+      ...products.flatMap((p) => p.models),
+    ]),
+  ];
   return playbookClaims.filter(
     (c) =>
       isSubject(c, 'vendor', vendorId) ||

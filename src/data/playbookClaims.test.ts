@@ -83,18 +83,28 @@ describe('AI 가이드 — 주장', () => {
   });
 
   /*
-    **모델은 제품의 자식이 아니라 제품에 걸쳐 있습니다.** 한 회사 안에서 같은 모델을
-    제품 여럿이 돌리는 것이 정상이라, 그 겹침을 막는 검사를 두지 않습니다 — 대신
-    제품이 **자기 회사 모델만** 가리키는지를 봅니다.
+    **회사 경계를 넘는 것을 막지 않습니다.** 처음에 「제품은 자기 회사 모델만
+    가리킨다」로 검사를 썼다가 지웠습니다 — 공식 페이지가 그 반대를 말합니다.
+    Google Antigravity의 모델 선택기에는 Gemini 넷 옆에 **Claude Sonnet 4.6
+    (Thinking) · Claude Opus 4.6 (Thinking) · GPT-OSS 120B**가 함께 섭니다.
+
+    그래서 `ModelInfo.vendorId`는 **누가 만든 모델인가**이지 어느 제품에서 도는가가
+    아닙니다. 둘을 같다고 본 것이 그 검사의 오류였고, 이것이 모델을 제품 아래 층으로
+    안 세운 이유를 한 번 더 받쳐 줍니다 — 모델은 제품의 자식이 아닐 뿐 아니라
+    **회사의 자식도 아닙니다.**
+
+    남는 진짜 불변식은 겹침뿐입니다.
   */
-  it('제품이 다른 회사의 모델을 가리키지 않는다', () => {
-    const vendorOf = new Map(guideModels.map((m) => [m.id, m.vendorId]));
-    const crossed = guideProducts.flatMap((p) =>
-      p.models
-        .filter((m) => vendorOf.has(m) && vendorOf.get(m) !== p.vendorId)
-        .map((m) => `${p.id}(${p.vendorId}) → ${m}(${vendorOf.get(m)})`),
-    );
-    expect(crossed).toEqual([]);
+  it('제품의 모델 목록에 같은 모델이 두 번 안 들어간다', () => {
+    const dupes = guideProducts
+      .filter((p) => new Set(p.models).size !== p.models.length)
+      .map((p) => p.id);
+    expect(dupes).toEqual([]);
+  });
+
+  it('모델 id가 겹치지 않는다', () => {
+    const ids = guideModels.map((m) => m.id);
+    expect(ids.length).toBe(new Set(ids).size);
   });
 
   it('주장 문장이 비어 있지 않고 지나치게 길지 않다', () => {
