@@ -7209,3 +7209,102 @@ input:focus-visible {
 .cert-verified a {
   color: var(--brand-text);
 }
+
+/*
+  활용 가이드의 도구 카드.
+
+  자격증 목록은 열넷을 세로로 훑어 별을 견주는 자리라 행으로 세웠는데, 여기는
+  여섯뿐이고 견줄 것이 등급이 아니라 「무엇에 쓰는 물건인가」라 격자로 둡니다.
+  카드마다 오른쪽에 신선도가 서는데 그 자리가 **편수가 아닙니다** — 이 서랍이
+  파는 것은 글 수가 아니라 「지금 이 값을 믿어도 되는가」입니다.
+*/
+.playbook-grid {
+  display: grid;
+  gap: 1px;
+  background: var(--border);
+  border: 1px solid var(--border);
+}
+
+@media (min-width: 720px) {
+  .playbook-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+.playbook-card {
+  display: grid;
+  grid-template-columns: 48px minmax(0, 1fr);
+  gap: 16px;
+  background: var(--bg);
+  padding: 20px 18px;
+  transition: background 0.15s ease;
+}
+
+.playbook-card:hover {
+  background: var(--bg-subtle);
+}
+
+.playbook-card-mark {
+  display: flex;
+  height: 30px;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  color: var(--text-dim);
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.04em;
+}
+
+.playbook-card-main {
+  min-width: 0;
+}
+
+.playbook-card-title {
+  color: var(--text-strong);
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.playbook-card-meta {
+  margin-top: 3px;
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.08em;
+}
+
+.playbook-card-blurb {
+  margin-top: 9px;
+  color: var(--text-dim);
+  font-size: 13px;
+  line-height: 1.7;
+}
+
+/*
+  신선도 두 칸. 마크 열을 비우고 본문 열에 맞춰 들여 세웁니다 — 카드를 세로로
+  훑을 때 이 줄들이 한 자리에 모여야 도구끼리 견줄 수 있습니다.
+*/
+.playbook-card-freshness {
+  display: flex;
+  grid-column: 2;
+  gap: 22px;
+  margin-top: 14px;
+  border-top: 1px solid var(--border);
+  padding-top: 11px;
+}
+
+.playbook-card-freshness dt {
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: 0.08em;
+}
+
+.playbook-card-freshness dd {
+  margin-top: 3px;
+  color: var(--text);
+  font-family: var(--font-mono);
+  font-size: 13px;
+}

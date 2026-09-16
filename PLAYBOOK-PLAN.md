@@ -5,7 +5,7 @@ AI 도구를 **잘 쓰고 아껴 쓰는 법**을 담는 다섯 번째 서랍. �
 이 파일은 설계 결정의 기록이자 루틴이 집어 가는 작업 큐다. 마친 항목은 줄을 지운다 —
 무엇을 언제 마쳤는지는 git log가 안다.
 
-마지막 갱신: 2026-09-16 (1일 차 골격 배선 끝)
+마지막 갱신: 2026-09-16 (2일 차 도구 6장 끝)
 
 ---
 
@@ -195,6 +195,12 @@ export default [
 - **`npm test`가 막는 것(값에 매인 것만)** — 스키마 필수 칸, `field` 넷 · `ours` 넷,
   벤더 호스트 허용 목록, `value: null` ↔ `open` **양방향**(자격증에 0개인 그 검사),
   본문 숫자 금지, frontmatter, 내부 링크, `claims` id 실재.
+**URL 검사는 403을 죽은 링크로 치지 않는다.** 2026-09-16에 아홉을 직접 열어 보니
+`chatgpt.com` · `claude.ai` · `openai.com/chatgpt/pricing` · `help.openai.com`이 403이다 —
+봇 차단이지 없는 주소가 아니다(`CLAUDE.md`가 `help.openai.com` 403을 이미 기록해 두었다).
+막을 것은 404와 연결 실패다. `platform.claude.com/docs/en/docs/claude-code/overview`가
+실제로 404여서 Claude Code 문서는 `code.claude.com/docs`를 쓴다.
+
 - **`npm run check:playbook`이 보는 것(나이에 매인 것)** — 로그 14일 공백, 만료 25%
   초과, `field` 상한과 18개월. **빌드를 안 세운다.** 루틴만 돌리고, 실패하면 6번이
   서랍을 nav에서 내린다.
@@ -223,7 +229,7 @@ export default [
       `src/content.d.ts` 선언 · `vite.config.ts` 등록 · `src/App.tsx` 라우트 셋 · `src/routes.ts`
       → **빈 폴더 상태로 `npm run build`와 `npm run typecheck`가 초록.**
       (`tsc -b`로 확인한다. `npx tsc --noEmit`은 아무것도 검사하지 않는다.)
-- [ ] **2일 — 타입과 도구 6장.** `playbookTools.ts` · `playbook.ts` · `PlaybookPage.tsx`
+- [x] **2일 — 타입과 도구 6장.** (2026-09-16 끝) `playbookTools.ts` · `playbook.ts` · `PlaybookPage.tsx`
       → 카드 여섯이 서고 **지표가 편수가 아니라 「값 N개 · M개가 14일 안 확인」**으로 찍힌다.
 - [ ] **3일 — 주장 40건과 확인 로그.** `playbookClaims.ts`(vendor 24 · field 10 · ours 6) ·
       `playbook-checks/` 첫 셋 · `ClaimRow` · `EvidenceBadge` · `FreshnessMeter` · CSS
