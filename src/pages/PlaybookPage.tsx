@@ -1,5 +1,6 @@
 import { Link, Navigate, NavLink, useParams } from 'react-router';
 import { ClaimRow } from '../components/ClaimRow';
+import { GuideMark } from '../components/GuideMark';
 import { PageHeader } from '../components/PageHeader';
 import { Seo } from '../components/Seo';
 import { claimState, playbookNotesOf, playbookProductPath, todayInSeoul } from '../data/playbook';
@@ -21,9 +22,7 @@ function ProductCard({ product }: { product: Product }) {
 
   return (
     <article className="playbook-card">
-      <p className="playbook-card-mark" aria-hidden="true">
-        {product.mark}
-      </p>
+      <GuideMark logo={product.logo} monochrome={product.monochrome} className="playbook-card-mark" />
       <div className="playbook-card-main">
         {/*
           갈래는 머리글이 아니라 **카드에 붙는 꼬리표**입니다. 머리글로 두면 한 갈래에
@@ -67,7 +66,12 @@ function VendorBlock({ vendorId, showName }: { vendorId: VendorId; showName: boo
     <section className="playbook-vendor">
       {showName && (
         <h2 className="playbook-vendor-title">
-          <span aria-hidden="true">{vendor.mark}</span> {vendor.name}
+          <GuideMark
+            logo={vendor.logo}
+            monochrome={vendor.monochrome}
+            className="playbook-vendor-mark"
+          />
+          {vendor.name}
         </h2>
       )}
       <p className="playbook-vendor-blurb">{vendor.blurb}</p>
@@ -127,12 +131,22 @@ export function PlaybookPage() {
           <NavLink to="/playbook" end className={({ isActive }) => `filter-chip${isActive ? ' active' : ''}`}>
             전체
           </NavLink>
+          {/*
+            칩에도 심볼을 답니다. 이름만 있는 칩 넷은 서로 구별이 안 되는데, 여기서
+            고르는 것은 「분류」가 아니라 **회사**라 로고가 가장 빠른 단서입니다.
+            「전체」에는 안 답니다 — 회사가 아니기 때문입니다.
+          */}
           {guideVendors.map((vendor) => (
             <NavLink
               key={vendor.id}
               to={`/playbook/${vendor.id}`}
-              className={({ isActive }) => `filter-chip${isActive ? ' active' : ''}`}
+              className={({ isActive }) => `filter-chip is-with-logo${isActive ? ' active' : ''}`}
             >
+              <GuideMark
+                logo={vendor.logo}
+                monochrome={vendor.monochrome}
+                className="filter-chip-mark"
+              />
               {vendor.name}
             </NavLink>
           ))}

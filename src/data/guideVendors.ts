@@ -14,21 +14,25 @@ export const guideVendors: VendorInfo[] = [
   {
     id: 'anthropic',
     name: 'Anthropic',
-    mark: 'AN',
+    logo: 'assets/anthropic.svg',
+    monochrome: true,
     blurb: '챗·업무·코딩을 Claude 한 이름 아래 둔다. 표면이 달라도 엔진은 하나다.',
     officialUrl: 'https://claude.com',
   },
   {
     id: 'openai',
     name: 'OpenAI',
-    mark: 'OA',
+    logo: 'assets/openai.svg',
+    monochrome: true,
     blurb: 'ChatGPT 하나에 챗·업무를 얹고 코딩만 Codex로 따로 뺐다.',
     officialUrl: 'https://openai.com',
   },
   {
     id: 'google',
     name: 'Google',
-    mark: 'GO',
+    logo: 'assets/google.svg',
+    // 네 색이 든 로고라 반전을 걸면 다른 로고가 됩니다.
+    monochrome: false,
     blurb: '챗은 Gemini 한 칸인데 코딩 쪽은 여러 갈래로 벌어져 있다.',
     officialUrl: 'https://gemini.google',
   },

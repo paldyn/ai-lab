@@ -12,8 +12,15 @@ export interface VendorInfo {
   id: VendorId;
   /** 회사의 공식 표기. */
   name: string;
-  /** 칩과 카드에 서는 두세 글자 마크. 로고 파일을 쓰지 않습니다. */
-  mark: string;
+  /** 심볼 로고. `public/assets/` 아래 파일이고 `assetUrl()`로 주소를 만듭니다. */
+  logo: string;
+  /**
+   * 단색 로고인가.
+   *
+   * 단색이면 다크 테마에서 반전시킵니다. **여러 색이 든 로고에는 반전을 걸면 안
+   * 됩니다** — 색이 통째로 뒤집혀 다른 로고가 됩니다(자격증 마크에서 이미 밟은 자리).
+   */
+  monochrome: boolean;
   blurb: string;
   officialUrl: string;
 }
@@ -50,7 +57,16 @@ export interface Product {
   officialUrl: string;
   /** 값을 다시 확인하러 여는 곳. 갱신 루틴이 여는 자리입니다. */
   docsUrl: string | null;
-  mark: string;
+  /**
+   * 심볼 로고.
+   *
+   * **제품마다 따로 있지는 않습니다.** 저장소에 있는 것은 회사·계열 심볼뿐이라
+   * (`claude.svg`·`openai.svg`·`gemini.svg`·`google.svg`) 한 계열의 제품 여럿이 같은
+   * 심볼을 답니다. 없는 마크를 지어 그리지 않습니다 — 층은 기업 머리글의 로고와
+   * 갈래 꼬리표가 가릅니다.
+   */
+  logo: string;
+  monochrome: boolean;
 }
 
 /**

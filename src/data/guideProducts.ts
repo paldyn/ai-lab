@@ -20,6 +20,11 @@ import type { Product, Role, VendorId } from '../types/playbook';
  * 확정하지 못했습니다. 지어내 채우는 대신 그 묶음이 화면에 아예 안 서게 둡니다 —
  * 모른다고 적는 것이 이 서랍의 규칙입니다.
  *
+ * **심볼은 계열 단위입니다.** 저장소에 있는 로고가 회사·계열 심볼뿐이라 한 계열의
+ * 제품 여럿이 같은 심볼을 답니다(Claude 셋은 전부 `claude.svg`). 없는 마크를 지어
+ * 그리지 않습니다 — 제품을 가르는 것은 이름과 갈래 꼬리표입니다.
+ * Antigravity만 계열 심볼이 따로 없어 회사 로고를 씁니다.
+ *
  * 배열 순서가 곧 화면 순서입니다.
  */
 export const guideProducts: Product[] = [
@@ -33,7 +38,8 @@ export const guideProducts: Product[] = [
     oneLine: '파일과 앱에 붙어 도는 챗 앱. 이 회사 제품의 기본 자리다.',
     officialUrl: 'https://claude.com/download',
     docsUrl: 'https://claude.com/pricing',
-    mark: 'CL',
+    logo: 'assets/claude.svg',
+    monochrome: true,
   },
   {
     id: 'claude-cowork',
@@ -44,7 +50,8 @@ export const guideProducts: Product[] = [
     oneLine: '대화가 아니라 일을 통째로 맡기는 자리. 챗 옆에 나란히 선다.',
     officialUrl: 'https://claude.com/product/cowork',
     docsUrl: null,
-    mark: 'CW',
+    logo: 'assets/claude.svg',
+    monochrome: true,
   },
   {
     id: 'claude-code',
@@ -55,7 +62,8 @@ export const guideProducts: Product[] = [
     oneLine: '저장소를 읽고 고치고 명령까지 돌리는 코딩 에이전트.',
     officialUrl: 'https://code.claude.com/docs/en/overview',
     docsUrl: 'https://code.claude.com/docs',
-    mark: 'CC',
+    logo: 'assets/claude.svg',
+    monochrome: true,
   },
 
   // ─── OpenAI ──────────────────────────────────────────────────────
@@ -68,7 +76,8 @@ export const guideProducts: Product[] = [
     oneLine: '가장 많이 쓰는 챗 앱. 챗·업무·코딩을 한 화면에 모아 두었다.',
     officialUrl: 'https://chatgpt.com/overview',
     docsUrl: 'https://openai.com/chatgpt/pricing/',
-    mark: 'GPT',
+    logo: 'assets/openai.svg',
+    monochrome: true,
   },
   {
     id: 'chatgpt-work',
@@ -79,7 +88,8 @@ export const guideProducts: Product[] = [
     oneLine: '목표를 넘기면 계획을 세우고 실행까지 하는 업무 표면.',
     officialUrl: 'https://learn.chatgpt.com/docs/get-started-with-work',
     docsUrl: null,
-    mark: 'WK',
+    logo: 'assets/openai.svg',
+    monochrome: true,
   },
   {
     id: 'codex',
@@ -90,7 +100,8 @@ export const guideProducts: Product[] = [
     oneLine: '같은 코딩 에이전트가 앱·IDE·터미널·클라우드 넷에 함께 선다.',
     officialUrl: 'https://chatgpt.com/codex',
     docsUrl: 'https://learn.chatgpt.com/docs/codex/cli',
-    mark: 'CX',
+    logo: 'assets/openai.svg',
+    monochrome: true,
   },
 
   // ─── Google ──────────────────────────────────────────────────────
@@ -108,7 +119,8 @@ export const guideProducts: Product[] = [
     oneLine: '구글 계정과 붙어 있는 챗 앱. 모델 계열 이름과 제품 이름이 다르다.',
     officialUrl: 'https://gemini.google/about/',
     docsUrl: 'https://gemini.google/subscriptions/',
-    mark: 'GM',
+    logo: 'assets/gemini.svg',
+    monochrome: true,
   },
   {
     id: 'antigravity',
@@ -119,7 +131,8 @@ export const guideProducts: Product[] = [
     oneLine: '여러 에이전트를 한자리에서 굴리는 개발 플랫폼.',
     officialUrl: 'https://antigravity.google/',
     docsUrl: null,
-    mark: 'AG',
+    logo: 'assets/google.svg',
+    monochrome: false,
   },
   {
     id: 'gemini-cli',
@@ -130,7 +143,8 @@ export const guideProducts: Product[] = [
     oneLine: '터미널에서 도는 오픈소스 코딩 에이전트.',
     officialUrl: 'https://github.com/google-gemini/gemini-cli',
     docsUrl: null,
-    mark: 'GC',
+    logo: 'assets/gemini.svg',
+    monochrome: true,
   },
 ];
 

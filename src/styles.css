@@ -7232,18 +7232,70 @@ input:focus-visible {
   font-weight: 700;
 }
 
-.playbook-vendor-title span {
-  color: var(--text-muted);
-  font-family: var(--font-mono);
-  font-size: 11px;
-  letter-spacing: 0.1em;
-}
+
 
 .playbook-vendor-blurb {
   margin-top: 6px;
   color: var(--text-dim);
   font-size: 13.5px;
   line-height: 1.7;
+}
+
+/*
+  심볼 로고. **단색만 다크에서 반전**시킵니다 — 여러 색이 든 로고(Google)에 반전을
+  걸면 색이 통째로 뒤집혀 다른 로고가 됩니다. 뉴스의 출처 로고와 같은 규칙입니다.
+*/
+.playbook-card-mark img,
+.playbook-vendor-mark img,
+.filter-chip-mark img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+[data-theme='dark'] .playbook-card-mark img.is-monochrome,
+[data-theme='dark'] .playbook-vendor-mark img.is-monochrome,
+[data-theme='dark'] .filter-chip-mark img.is-monochrome {
+  filter: invert(1);
+}
+
+.playbook-card-mark {
+  padding: 7px;
+}
+
+.playbook-vendor-mark {
+  display: inline-flex;
+  width: 20px;
+  height: 20px;
+  flex: 0 0 auto;
+  align-self: center;
+}
+
+/*
+  칩 안의 심볼. 칩은 원래 글자만 들어가던 자리라 세로 정렬을 여기서 맞춥니다.
+  활성 칩은 배경이 반전되므로 그 안의 단색 로고도 함께 뒤집어야 보입니다.
+*/
+.filter-chip.is-with-logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.filter-chip-mark {
+  display: inline-flex;
+  width: 13px;
+  height: 13px;
+  flex: 0 0 auto;
+}
+
+.filter-chip.is-with-logo.active .filter-chip-mark img.is-monochrome,
+.filter-chip.is-with-logo:hover .filter-chip-mark img.is-monochrome {
+  filter: invert(1);
+}
+
+[data-theme='dark'] .filter-chip.is-with-logo.active .filter-chip-mark img.is-monochrome,
+[data-theme='dark'] .filter-chip.is-with-logo:hover .filter-chip-mark img.is-monochrome {
+  filter: none;
 }
 
 /* 갈래 꼬리표. 카드 맨 위에 서서 이 제품이 어느 자리인지 먼저 알려 줍니다. */
