@@ -7219,14 +7219,13 @@ input:focus-visible {
 }
 
 /*
-  활용 가이드의 도구 카드.
+  AI 가이드 — 기업 묶음과 제품 카드.
 
   자격증 목록은 열넷을 세로로 훑어 별을 견주는 자리라 행으로 세웠는데, 여기는
-  여섯뿐이고 견줄 것이 등급이 아니라 「무엇에 쓰는 물건인가」라 격자로 둡니다.
-  카드마다 오른쪽에 신선도가 서는데 그 자리가 **편수가 아닙니다** — 이 서랍이
-  파는 것은 글 수가 아니라 「지금 이 값을 믿어도 되는가」입니다.
+  회사마다 챗·업무·코딩이 한 벌이라 **그 한 벌이 한 줄에 놓여야** 회사끼리
+  견주기가 쉽습니다. 그래서 격자가 아니라 흐르는 줄입니다 — 한 갈래에 둘인
+  회사가 있고(Google의 코딩) 아예 빈 회사도 있습니다(Google의 업무).
 */
-/* AI 가이드 — 기업 묶음과 갈래 */
 .playbook-vendor + .playbook-vendor {
   margin-top: 56px;
 }
@@ -7317,6 +7316,8 @@ input:focus-visible {
   width: 13px;
   height: 13px;
   flex: 0 0 auto;
+  /* 칩 배경과 같은 곡선으로 움직입니다 — 마크만 즉시 바뀌면 따로 노는 것으로 보입니다. */
+  transition: background-color 0.15s ease;
 }
 
 /*
@@ -7328,8 +7329,14 @@ input:focus-visible {
   background-color: var(--bg);
 }
 
-.filter-chip.is-with-logo.active .filter-chip-mark img,
-.filter-chip.is-with-logo:hover .filter-chip-mark img {
+/*
+  **`.is-tinted`가 붙어야 합니다.** 이 규칙이 모든 `<img>`에 걸려 있던 동안
+  색이 든 로고(Google)까지 칩 위에서 반전돼 다른 로고가 됐습니다. 그리고 이건
+  마스크가 안 도는 폴백에서만 뜻이 있습니다 — 마스크가 돌면 `<img>`는 숨겨져 있고
+  색은 위 `background-color` 규칙이 정합니다.
+*/
+.filter-chip.is-with-logo.active .filter-chip-mark.is-tinted img,
+.filter-chip.is-with-logo:hover .filter-chip-mark.is-tinted img {
   filter: invert(1);
 }
 
@@ -7346,9 +7353,6 @@ input:focus-visible {
   letter-spacing: 0.12em;
 }
 
-.playbook-card-meta {
-  margin-top: 8px;
-}
 
 /* 노트 수. 0편이면 「노트 준비 중」이 서므로 빈 칸이 안 생깁니다. */
 .playbook-card-notes {
@@ -7416,10 +7420,6 @@ input:focus-visible {
   flex: 0 0 auto;
 }
 
-.playbook-card-main {
-  min-width: 0;
-}
-
 .playbook-card-title {
   color: var(--text-strong);
   font-size: 16px;
@@ -7427,7 +7427,7 @@ input:focus-visible {
 }
 
 .playbook-card-meta {
-  margin-top: 3px;
+  margin-top: 8px;
   color: var(--text-muted);
   font-family: var(--font-mono);
   font-size: 10px;
@@ -7441,13 +7441,9 @@ input:focus-visible {
   line-height: 1.7;
 }
 
-/*
-  신선도 두 칸. 마크 열을 비우고 본문 열에 맞춰 들여 세웁니다 — 카드를 세로로
-  훑을 때 이 줄들이 한 자리에 모여야 도구끼리 견줄 수 있습니다.
-*/
+/* 제품 페이지의 신선도 줄. 값이 하나라도 있을 때만 섭니다. */
 .playbook-card-freshness {
   display: flex;
-  grid-column: 2;
   gap: 22px;
   margin-top: 14px;
   border-top: 1px solid var(--border);
@@ -7595,7 +7591,7 @@ input:focus-visible {
 }
 
 /* 활용 가이드 — 도구 상세와 노트 */
-.playbook-tool-meta {
+.playbook-product-meta {
   margin-bottom: 18px;
   color: var(--text-muted);
   font-family: var(--font-mono);
@@ -7604,7 +7600,7 @@ input:focus-visible {
 }
 
 /* 아이콘이 붙은 링크라 inline-flex로 묶지 않으면 화살표만 다음 줄로 떨어집니다. */
-.playbook-tool-meta a {
+.playbook-product-meta a {
   display: inline-flex;
   align-items: center;
   gap: 3px;

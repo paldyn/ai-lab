@@ -58,7 +58,6 @@ export default function App() {
           도구·노트 라우트는 그 페이지가 생기는 2~3일 차에 답니다(PLAYBOOK-PLAN.md).
         */}
         <Route path="/playbook" element={<PlaybookPage />} />
-        {/* 기업 칩은 같은 화면을 거릅니다 — 학습의 갈래 탭과 같은 방식입니다. */}
         <Route path="/playbook/:vendorId" element={<PlaybookPage />} />
         <Route path="/playbook/:vendorId/:productId" element={<PlaybookProductPage />} />
         <Route path="/playbook/:vendorId/:productId/:slug" element={<PlaybookNotePage />} />

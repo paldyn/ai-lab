@@ -40,11 +40,11 @@ function ProductCard({ product }: { product: Product }) {
           accent={product.accent}
           className="playbook-card-mark"
         />
-        <h4 className="playbook-card-title">
+        <h3 className="playbook-card-title">
           <Link to={playbookProductPath(product.vendorId, product.id)} className="card-trigger">
             {product.name}
           </Link>
-        </h4>
+        </h3>
         <span className="playbook-card-role">{product.role}</span>
       </div>
       {/*
@@ -68,24 +68,27 @@ function ProductCard({ product }: { product: Product }) {
  * (Google의 코딩은 둘입니다). 배열 순서가 챗 → 업무 → 코딩이라 왼쪽부터 읽으면
  * 갈래 순서 그대로이고, 빈 갈래는 그냥 건너뜁니다.
  */
-function VendorBlock({ vendorId, showName }: { vendorId: VendorId; showName: boolean }) {
+function VendorBlock({ vendorId }: { vendorId: VendorId }) {
   const vendor = guideVendorById(vendorId);
   const products = productsOfVendor(vendorId);
   if (!vendor || products.length === 0) return null;
 
   return (
     <section className="playbook-vendor">
-      {showName && (
-        <h2 className="playbook-vendor-title">
-          <GuideMark
-            logo={vendor.logo}
-            monochrome={vendor.monochrome}
-            accent={vendor.accent}
-            className="playbook-vendor-mark"
-          />
-          {vendor.name}
-        </h2>
-      )}
+      {/*
+        **기업을 고른 화면에서도 세웁니다.** 칩이 이미 회사 이름을 말하니 없애 봤는데,
+        그러면 h1 아래가 바로 카드의 h3이라 제목 계층이 한 칸 비고 소개 문장도
+        머리글 없이 떠 있었습니다.
+      */}
+      <h2 className="playbook-vendor-title">
+        <GuideMark
+          logo={vendor.logo}
+          monochrome={vendor.monochrome}
+          accent={vendor.accent}
+          className="playbook-vendor-mark"
+        />
+        {vendor.name}
+      </h2>
       <p className="playbook-vendor-blurb">{vendor.blurb}</p>
 
       <div className="playbook-grid mt-5">
@@ -168,7 +171,7 @@ export function PlaybookPage() {
 
       <div className="site-wrap section-space">
         {shown.map((vendor) => (
-          <VendorBlock key={vendor.id} vendorId={vendor.id} showName={!active} />
+          <VendorBlock key={vendor.id} vendorId={vendor.id} />
         ))}
 
         {/*

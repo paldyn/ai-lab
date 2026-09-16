@@ -96,6 +96,17 @@ function viewKey(pathname: string): string {
   */
   if (pathname.startsWith('/learn/certs/')) return pathname;
 
+  /*
+    가이드의 기업 칩은 같은 목록을 거르는 일이라 한 칸으로 묶습니다. 제품·노트는
+    **다른 페이지**이므로 안 묶습니다 — 묶으면 목록을 한참 내려가 누른 사람이
+    상세의 중간부터 보게 됩니다(자격증 상세를 따로 뺀 것과 같은 이유).
+
+    안 묶어 두면 칩을 누를 때마다 main이 통째로 다시 마운트돼 **방금 누른 칩이
+    갈려 나가고 포커스가 body로 튕깁니다** — 좌우 화살표로 칩을 잇달아 옮길 수
+    없게 됩니다.
+  */
+  if (/^\/playbook(\/[^/]+)?$/.test(pathname)) return '/playbook';
+
   for (const section of ['/learn', '/news']) {
     if (pathname === section || pathname.startsWith(`${section}/`)) return section;
   }
@@ -257,7 +268,7 @@ export function Layout({ children }: { children: ReactNode }) {
   const startAtTop = () => window.scrollTo({ top: 0, behavior: 'instant' });
 
   /*
-    **다섯째 칸은 스스로 선다.** 최소선(도구 여섯 · 주장 마흔 · 노트 여덟)을 넘기고
+    **다섯째 칸은 스스로 선다.** 최소선(기업 셋 · 제품 여섯 · 주장 마흔 · 노트 여덟)을 넘기고
     확인 로그가 21일 안에 있고 만료가 40% 아래일 때만 켜집니다. 조건이 깨지면
     **이 줄을 아무도 안 고쳐도 메뉴에서 내려갑니다** — nav에 안 서는 것이
     거짓말하는 것보다 낫기 때문입니다. 2026-09-16에 처음 켰습니다.
@@ -305,8 +316,8 @@ export function Layout({ children }: { children: ReactNode }) {
             {/*
               `navClass`를 안 씁니다. 그것은 글을 읽는 동안 그 글의 섹션을 켜 두는
               장치인데(`/articles/<slug>`에는 섹션이 안 적혀 있어서), 가이드 노트는
-              `/playbook/<도구>/<슬러그>`라 주소에 이미 적혀 있습니다. NavLink가
-              하위 주소까지 알아서 켭니다.
+              `/playbook/<기업>/<제품>/<슬러그>`라 주소에 이미 적혀 있습니다.
+              NavLink가 하위 주소까지 알아서 켭니다.
             */}
             {guideInNav && <NavLink to="/playbook">AI 가이드</NavLink>}
           </nav>
