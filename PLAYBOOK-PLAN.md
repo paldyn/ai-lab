@@ -5,7 +5,7 @@ AI 도구를 **잘 쓰고 아껴 쓰는 법**을 담는 다섯 번째 서랍. �
 이 파일은 설계 결정의 기록이자 루틴이 집어 가는 작업 큐다. 마친 항목은 줄을 지운다 —
 무엇을 언제 마쳤는지는 git log가 안다.
 
-마지막 갱신: 2026-09-16 (기획 확정)
+마지막 갱신: 2026-09-16 (1일 차 골격 배선 끝)
 
 ---
 
@@ -219,7 +219,7 @@ export default [
 
 ## 첫 한 주
 
-- [ ] **1일 — 골격 배선.** `plugins/playbook-index.ts` · `src/lib/playbookBody.ts` ·
+- [x] **1일 — 골격 배선.** (2026-09-16 끝) `plugins/playbook-index.ts` · `src/lib/playbookBody.ts` ·
       `src/content.d.ts` 선언 · `vite.config.ts` 등록 · `src/App.tsx` 라우트 셋 · `src/routes.ts`
       → **빈 폴더 상태로 `npm run build`와 `npm run typecheck`가 초록.**
       (`tsc -b`로 확인한다. `npx tsc --noEmit`은 아무것도 검사하지 않는다.)

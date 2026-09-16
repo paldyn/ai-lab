@@ -30,6 +30,8 @@ export const staticRoutes: string[] = [
   '/learn/certs',
   ...certs.map((cert) => `/learn/certs/${cert.id}`),
   '/research',
+  // 활용 가이드. 도구·노트 경로는 데이터가 생기는 2~3일 차에 더합니다.
+  '/playbook',
   '/privacy',
 ];
 

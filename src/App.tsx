@@ -10,6 +10,7 @@ import { LearnPage } from './pages/LearnPage';
 import { HomePage } from './pages/HomePage';
 import { NewsPage } from './pages/NewsPage';
 import { NotFoundPage } from './pages/NotFoundPage';
+import { PlaybookPage } from './pages/PlaybookPage';
 import { PrivacyPage } from './pages/PrivacyPage';
 import { ResearchPage } from './pages/ResearchPage';
 
@@ -49,6 +50,12 @@ export default function App() {
         <Route path="/learn/certs" element={<CertsPage />} />
         <Route path="/learn/certs/:certId" element={<CertPage />} />
         <Route path="/learn/certs/:certId/:slug" element={<CertPrepPage />} />
+        {/*
+          활용 가이드. `/learn` 아래가 아니라 제 주소를 씁니다 — 학습은 원리를 담고
+          여기는 지금 그 제품의 상태를 담아, 썩는 속도가 다릅니다.
+          도구·노트 라우트는 그 페이지가 생기는 2~3일 차에 답니다(PLAYBOOK-PLAN.md).
+        */}
+        <Route path="/playbook" element={<PlaybookPage />} />
         <Route path="/articles/:slug" element={<ArticlePage />} />
         <Route path="/privacy" element={<PrivacyPage />} />
         {/* 지난 주소들. /concepts는 2026-08-04에 /learn으로 바꿨습니다. */}
