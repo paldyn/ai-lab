@@ -7308,3 +7308,129 @@ input:focus-visible {
   font-family: var(--font-mono);
   font-size: 13px;
 }
+
+.playbook-card-freshness dd.is-warn {
+  color: var(--cat-ai-news-text, var(--brand-text));
+}
+
+.playbook-section-title {
+  color: var(--text-strong);
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.playbook-section-note {
+  margin-top: 8px;
+  max-width: 62ch;
+  color: var(--text-dim);
+  font-size: 13px;
+  line-height: 1.75;
+}
+
+.claim-list {
+  margin-top: 20px;
+  border-top: 1px solid var(--border);
+}
+
+/*
+  값 한 줄. 왼쪽에 주장, 가운데에 값, 오른쪽에 「어디서 왔나 · 언제 확인했나」입니다.
+  셋을 한 행에 두는 것이 중요합니다 — 값만 보고 믿을 수 없게 하려는 것이 이 표의
+  존재 이유라, 근거와 나이가 값에서 눈을 떼지 않아도 보이는 자리에 있어야 합니다.
+*/
+.claim-row {
+  display: grid;
+  gap: 4px 20px;
+  border-bottom: 1px solid var(--border);
+  padding: 14px 6px;
+}
+
+@media (min-width: 860px) {
+  .claim-row {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) 220px;
+    align-items: baseline;
+  }
+}
+
+.claim-statement {
+  color: var(--text-dim);
+  font-size: 13px;
+  line-height: 1.65;
+}
+
+.claim-value {
+  color: var(--text-strong);
+  font-size: 13.5px;
+  line-height: 1.65;
+}
+
+/* 현장 값은 굵게 쓰지 않습니다 — 배지를 봐도 같아 보이는 것을 한 번 더 막습니다. */
+.claim-value .claim-soft {
+  color: var(--text-dim);
+  font-weight: 400;
+}
+
+.claim-missing {
+  color: var(--text-muted);
+  font-size: 12.5px;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.claim-missing:hover {
+  color: var(--brand-text);
+}
+
+.claim-meta {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.04em;
+}
+
+.claim-meta a {
+  color: inherit;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+/* 유효기간이 지난 줄은 주장만 남고 값이 사라집니다. */
+.claim-row-hard .claim-statement,
+.claim-row-unknown .claim-statement {
+  color: var(--text-muted);
+}
+
+.claim-row-soft .claim-value {
+  color: var(--text-dim);
+}
+
+/*
+  근거 배지. 색이 아니라 모양으로 먼저 가릅니다 — 채움 · 실선 · 점선.
+  흑백으로 봐도, 색을 못 가리는 눈으로 봐도 셋이 갈립니다.
+*/
+.evidence-badge {
+  flex: 0 0 auto;
+  border-radius: 3px;
+  padding: 2px 6px;
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: 0.06em;
+}
+
+.evidence-badge-vendor {
+  border: 1px solid transparent;
+  background: var(--brand-text);
+  color: var(--bg);
+}
+
+.evidence-badge-ours {
+  border: 1px solid var(--cat-lab-notes-text, var(--text-dim));
+  color: var(--cat-lab-notes-text, var(--text-dim));
+}
+
+.evidence-badge-field {
+  border: 1px dashed var(--cat-tools-text, var(--text-muted));
+  color: var(--cat-tools-text, var(--text-muted));
+}
