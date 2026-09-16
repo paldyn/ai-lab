@@ -4,7 +4,7 @@ import matter from 'gray-matter';
 import { describe, expect, it } from 'vitest';
 import { renderMarkdown } from '../../plugins/markdown';
 import { playbookClaims } from '../data/playbookClaims';
-import { guideProductIds } from '../data/guideProducts';
+import { guideProductIds, guideProducts } from '../data/guideProducts';
 import { guideVendorIds } from '../data/guideVendors';
 import { collapsedLines } from './collapsedLines';
 
@@ -56,6 +56,24 @@ describe('가이드 노트', () => {
   */
   it('바깥 폴더가 실제 기업 id다', () => {
     expect(dirsIn(DIR).filter((name) => !guideVendorIds.includes(name as never))).toEqual([]);
+  });
+
+  /*
+    **한 겹만 들어간 원고는 아무 데도 안 잡힙니다.** 인덱스 플러그인의 glob이 세 층을
+    못 박고 있고 위 `readNotes()`도 디렉터리를 두 번 내려가므로, 기업 폴더 바로 아래에
+    놓인 `.md`는 **목록에도 주소에도 사이트맵에도 없이 조용히 사라집니다.** 오류가
+    아니라 침묵이라 더 나쁩니다.
+
+    구조를 갓 두 겹으로 바꾼 직후라 옛 깊이로 놓는 실수가 가장 나기 쉬운데, 하필
+    그 실수만 무증상이었습니다(폴더 **이름**이 틀린 경우는 위아래 두 검사가 잡습니다).
+  */
+  it('기업 폴더 바로 아래에 원고가 없다 — 제품 폴더를 빠뜨린 것', () => {
+    const misplaced = dirsIn(DIR).flatMap((vendorId) =>
+      readdirSync(path.join(DIR, vendorId))
+        .filter((file) => file.endsWith('.md'))
+        .map((file) => `${vendorId}/${file} — 제품 폴더가 빠졌다`),
+    );
+    expect(misplaced).toEqual([]);
   });
 
   it('안쪽 폴더가 실제 제품 id다', () => {
@@ -196,10 +214,20 @@ describe('가이드 노트', () => {
     expect(problems).toEqual([]);
   });
 
+  /*
+    **노트 주소만 넣으면 오탐이 납니다.** `/playbook`·`/playbook/<기업>`·
+    `/playbook/<기업>/<제품>`도 `routes.ts`가 프리렌더하는 멀쩡한 주소이고, 노트에서
+    제품 페이지를 가리키는 것(「값은 제품 페이지에 있습니다」)은 이 서랍에서 가장
+    자연스러운 링크입니다. 그걸 죽은 링크로 세우면 **원고를 검사에 맞춰 비틀게**
+    됩니다 — 위 「본문에 썩는 값을 적지 않는다」 주석이 적어 둔 그 위험입니다.
+  */
   it('내부 링크가 실제로 있는 곳을 가리킨다', () => {
-    const paths = new Set(
-      notes.map((n) => `/playbook/${n.vendorId}/${n.productId}/${n.file.replace(/\.md$/, '')}`),
-    );
+    const paths = new Set([
+      '/playbook',
+      ...guideVendorIds.map((id) => `/playbook/${id}`),
+      ...guideProducts.map((p) => `/playbook/${p.vendorId}/${p.id}`),
+      ...notes.map((n) => `/playbook/${n.vendorId}/${n.productId}/${n.file.replace(/\.md$/, '')}`),
+    ]);
     const broken = notes.flatMap((note) =>
       [...note.content.matchAll(/\]\((\/playbook\/[^)]+)\)/g)]
         .map((m) => m[1])
