@@ -55,7 +55,7 @@ export function PlaybookProductPage() {
           <ArrowLeft size={13} aria-hidden="true" /> {vendor.name}
         </Link>
 
-        <p className="playbook-tool-meta">
+        <p className="playbook-product-meta">
           {product.role} · {product.surfaces.join(' · ')}
           {' · '}
           <a href={product.officialUrl} target="_blank" rel="noreferrer">

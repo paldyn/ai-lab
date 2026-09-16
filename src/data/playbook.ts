@@ -5,7 +5,7 @@ import { guideVendors } from './guideVendors';
 import { playbookClaims } from './playbookClaims';
 
 /**
- * 도구·주장·확인 로그 셋을 합쳐 화면이 쓸 모양으로 만듭니다.
+ * 제품·주장·확인 로그 셋을 합쳐 화면이 쓸 모양으로 만듭니다.
  *
  * **여기에 「확인했다」를 쓰는 자리는 없습니다.** `checkedAt`은 로그 파일들에서
  * 계산하는 파생값입니다 — 값을 신선하게 만드는 유일한 길이 파일 추가라, 안 돈 날이
@@ -99,8 +99,8 @@ export function shownValue(state: ClaimState): string | null {
   return state.claim.value;
 }
 
-export interface ToolFreshness {
-  /** 이 도구가 들고 있는 값의 수. */
+export interface ProductFreshness {
+  /** 이 제품이 들고 있는 값의 수. */
   total: number;
   /** 그중 14일 안에 확인한 것. */
   checkedRecently: number;
@@ -114,7 +114,7 @@ export interface ToolFreshness {
 
 const RECENT_DAYS = 14;
 
-export function productFreshness(productId: string, today: string): ToolFreshness {
+export function productFreshness(productId: string, today: string): ProductFreshness {
   const states = playbookClaims
     .filter((c) => c.product === productId)
     .map((c) => claimState(c, today));
@@ -137,7 +137,7 @@ export function productFreshness(productId: string, today: string): ToolFreshnes
 }
 
 /**
- * 그 도구에서 아직 못 채운 값의 이름.
+ * 그 제품에서 아직 못 채운 값의 이름.
  *
  * **손으로 적는 목록이 아니라 파생값입니다.** 자격증의 `unknowns`는 손으로 적는
  * 배열이었고, 화면에도 안 나가고 검사도 안 보는 채로 122항목이 묵었습니다. 여기서는

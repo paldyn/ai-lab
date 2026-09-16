@@ -1,4 +1,4 @@
-import type { Product, Role, VendorId } from '../types/playbook';
+import type { Product, VendorId } from '../types/playbook';
 
 /**
  * AI 가이드가 다루는 제품.
@@ -174,17 +174,3 @@ export const guideProductById = (id: string): Product | undefined => byId.get(id
 
 export const productsOfVendor = (vendorId: VendorId): Product[] =>
   guideProducts.filter((p) => p.vendorId === vendorId);
-
-/** 화면에서 묶음을 그리는 순서. 빈 묶음은 호출하는 쪽에서 걸러 냅니다. */
-export const GUIDE_ROLES: Role[] = ['챗', '업무', '코딩'];
-
-/**
- * 한 기업의 제품을 갈래로 묶습니다. **빈 갈래는 아예 안 돌려줍니다** —
- * 화면이 「—」로 채운 칸을 그리지 않게 하려는 것입니다.
- */
-export function productsByRole(vendorId: VendorId): Array<{ role: Role; products: Product[] }> {
-  return GUIDE_ROLES.map((role) => ({
-    role,
-    products: guideProducts.filter((p) => p.vendorId === vendorId && p.role === role),
-  })).filter((group) => group.products.length > 0);
-}

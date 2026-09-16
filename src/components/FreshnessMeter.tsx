@@ -1,4 +1,4 @@
-import type { ToolFreshness } from '../data/playbook';
+import type { ProductFreshness } from '../data/playbook';
 
 /**
  * 이 도구가 든 값이 지금 얼마나 믿을 만한가.
@@ -9,7 +9,7 @@ import type { ToolFreshness } from '../data/playbook';
  * 값이 0개여도 같은 문장으로 섭니다. 무엇을 세는 화면인지가 처음부터 드러나야
  * 하고, **편수를 세면 466·400·44 옆에서 지는 싸움만** 합니다.
  */
-export function FreshnessMeter({ fresh }: { fresh: ToolFreshness }) {
+export function FreshnessMeter({ fresh }: { fresh: ProductFreshness }) {
   return (
     <dl className="playbook-card-freshness">
       <div>
