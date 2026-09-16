@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="306" viewBox="0 0 880 306">
+  <rect x="0" y="0" width="880" height="306" rx="12" fill="#0a0a0a"/>
+  <text x="440" y="46" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="22" font-weight="700" fill="#e8e8e8">행 연산이 행렬식을 바꾸는 세 가지 방식</text>
+  <text x="440" y="78" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">원래 행렬은 1행이 1 2, 2행이 3 4 이고 그 행렬식은 −2 이다</text>
+  <text x="155" y="112" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#e8e8e8">R1 ↔ R2</text>
+  <path d="M 117 132 L 109 132 L 109 208 L 117 208" fill="none" stroke="#888" stroke-width="1.5"/>
+  <path d="M 193 132 L 201 132 L 201 208 L 193 208" fill="none" stroke="#888" stroke-width="1.5"/>
+  <text x="136" y="158" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="15" fill="#e8e8e8">3</text>
+  <text x="174" y="158" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="15" fill="#e8e8e8">4</text>
+  <text x="136" y="192" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="15" fill="#e8e8e8">1</text>
+  <text x="174" y="192" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="15" fill="#e8e8e8">2</text>
+  <text x="155" y="238" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">det = 6 − 4 = 2</text>
+  <text x="155" y="266" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="14" font-weight="600" fill="#e05555">부호가 뒤집힌다</text>
+  <text x="428" y="112" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#e8e8e8">R1 → 2R1</text>
+  <path d="M 390 132 L 382 132 L 382 208 L 390 208" fill="none" stroke="#888" stroke-width="1.5"/>
+  <path d="M 466 132 L 474 132 L 474 208 L 466 208" fill="none" stroke="#888" stroke-width="1.5"/>
+  <text x="409" y="158" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="15" fill="#e8e8e8">2</text>
+  <text x="447" y="158" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="15" fill="#e8e8e8">4</text>
+  <text x="409" y="192" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="15" fill="#e8e8e8">3</text>
+  <text x="447" y="192" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="15" fill="#e8e8e8">4</text>
+  <text x="428" y="238" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">det = 8 − 12 = −4</text>
+  <text x="428" y="266" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="14" font-weight="600" fill="#7777cc">2배가 된다</text>
+  <text x="701" y="112" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#e8e8e8">R2 → R2 − 3R1</text>
+  <path d="M 663 132 L 655 132 L 655 208 L 663 208" fill="none" stroke="#888" stroke-width="1.5"/>
+  <path d="M 739 132 L 747 132 L 747 208 L 739 208" fill="none" stroke="#888" stroke-width="1.5"/>
+  <text x="682" y="158" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="15" fill="#e8e8e8">1</text>
+  <text x="720" y="158" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="15" fill="#e8e8e8">2</text>
+  <text x="682" y="192" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="15" fill="#e8e8e8">0</text>
+  <text x="720" y="192" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="15" fill="#e8e8e8">−2</text>
+  <text x="701" y="238" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">det = −2 − 0 = −2</text>
+  <text x="701" y="266" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="14" font-weight="600" fill="#55c555">그대로다</text>
+</svg>
