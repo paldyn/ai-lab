@@ -27,12 +27,16 @@ import type { Product, VendorId } from '../types/playbook';
  * | Claude · Claude Cowork | `claude.svg` | 계열 심볼. Cowork 전용 마크는 없습니다 — 그 제품 페이지의 파비콘도 Claude 것입니다 |
  * | Claude Code | `claude-code.svg` | **전용 심볼이 있습니다.** Simple Icons(CC0) |
  * | ChatGPT · ChatGPT Work · Codex | `openai.svg` | 셋 다 전용 마크가 없습니다. OpenAI가 한 매듭 심볼을 그대로 씁니다 |
- * | Gemini app · Gemini CLI | `gemini.svg` | 계열 심볼 |
+ * | Gemini app · Gemini CLI | `gemini-color.png` | Google이 제 파비콘으로 쓰는 네 색 그라디언트 |
  * | Google Antigravity | `antigravity.png` | **전용 심볼이 있습니다.** 제품 사이트가 아이콘으로 거는 파일 |
  *
  * 없는 마크를 지어 그리지 않습니다 — 같은 심볼이 겹치는 자리는 이름과 갈래
- * 꼬리표가 가릅니다. Antigravity 심볼만 그라디언트라 PNG이고, 색이 든 로고이므로
- * 다크 테마에서 반전시키지 않습니다.
+ * 꼬리표가 가릅니다.
+ *
+ * **그라디언트가 든 것은 PNG입니다**(Gemini·Antigravity). 이 둘은 `monochrome: false`라
+ * 색을 입히지도 반전시키지도 않고 제 색 그대로 섭니다 — 마스크를 씌우면 네 색이
+ * 한 색으로 납작해집니다. `gemini.svg`(단색)는 뉴스 쪽이 모델 마크로 쓰고 있으므로
+ * 그대로 둡니다.
  *
  * 배열 순서가 곧 화면 순서입니다.
  */
@@ -134,8 +138,8 @@ export const guideProducts: Product[] = [
     oneLine: '구글 계정과 붙어 있는 챗 앱. 모델 계열 이름과 제품 이름이 다르다.',
     officialUrl: 'https://gemini.google/about/',
     docsUrl: 'https://gemini.google/subscriptions/',
-    logo: 'assets/gemini.svg',
-    monochrome: true,
+    logo: 'assets/gemini-color.png',
+    monochrome: false,
     accent: 'var(--guide-gemini-text)',
   },
   {
@@ -160,8 +164,8 @@ export const guideProducts: Product[] = [
     oneLine: '터미널에서 도는 오픈소스 코딩 에이전트.',
     officialUrl: 'https://github.com/google-gemini/gemini-cli',
     docsUrl: null,
-    logo: 'assets/gemini.svg',
-    monochrome: true,
+    logo: 'assets/gemini-color.png',
+    monochrome: false,
     accent: 'var(--guide-gemini-text)',
   },
 ];

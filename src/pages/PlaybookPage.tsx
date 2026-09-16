@@ -81,10 +81,10 @@ function VendorBlock({ vendorId }: { vendorId: VendorId }) {
         머리글 없이 떠 있었습니다.
       */}
       <h2 className="playbook-vendor-title">
+        {/* accent를 안 넘깁니다 — 기업 로고는 글자색을 따라갑니다. */}
         <GuideMark
           logo={vendor.logo}
           monochrome={vendor.monochrome}
-          accent={vendor.accent}
           className="playbook-vendor-mark"
         />
         {vendor.name}
@@ -160,7 +160,6 @@ export function PlaybookPage() {
               <GuideMark
                 logo={vendor.logo}
                 monochrome={vendor.monochrome}
-                accent={vendor.accent}
                 className="filter-chip-mark"
               />
               {vendor.name}

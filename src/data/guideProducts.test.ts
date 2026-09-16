@@ -69,11 +69,13 @@ describe('AI 가이드 — 기업과 제품', () => {
     expect(clash).toEqual([]);
   });
 
-  it('포인트 색이 대비를 검사받는 -text 토큰이다', () => {
-    const bad = [...guideVendors, ...guideProducts].filter(
-      (x) => !/^var\(--[a-z-]+-text\)$/.test(x.accent),
-    );
-    expect(bad.map((x) => `${x.id} — ${x.accent}`)).toEqual([]);
+  /*
+    포인트 색은 **제품에만** 있습니다. 기업 로고는 회사를 고르는 자리라 브랜드색을
+    칠하면 칩 넷이 서로 다른 색으로 튀어 「무엇이 켜져 있나」가 오히려 안 보입니다.
+  */
+  it('제품의 포인트 색이 대비를 검사받는 -text 토큰이다', () => {
+    const bad = guideProducts.filter((p) => !/^var\(--[a-z-]+-text\)$/.test(p.accent));
+    expect(bad.map((p) => `${p.id} — ${p.accent}`)).toEqual([]);
   });
 
   it('공식 주소가 https다', () => {

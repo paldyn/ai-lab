@@ -81,6 +81,16 @@
 > | `anthropic` `openai` `google` `claude` `gemini` | 이미 저장소에 있던 것(뉴스가 쓰던 것) | Simple Icons · CC0 |
 > | `claude-code.svg` | 2026-09-16에 받음 | Simple Icons · CC0 |
 > | `antigravity.png` | 2026-09-16에 받음. 제품 사이트가 아이콘으로 거는 파일 | Google 상표 |
+> | `gemini-color.png` | 2026-09-16에 받음. gemini.google.com이 제 아이콘으로 거는 네 색 스파클(160px으로 줄임) | Google 상표 |
+>
+> **기업 로고에는 포인트 색을 안 입힌다.** 처음에는 칩에도 브랜드색을 칠했는데, 거기는
+> 회사를 고르는 자리이지 제품의 성격을 알려 주는 자리가 아니라 칩 넷이 서로 다른 색으로
+> 튀어 「무엇이 켜져 있나」가 오히려 안 보였다. 지금은 글자색보다 한 단 세게(흰색·검은색)
+> 서고, 켜지면 칩 배경이 뒤집히므로 로고도 함께 뒤집힌다.
+>
+> **그라디언트가 든 것은 PNG다**(Gemini·Antigravity). 마스크를 씌우면 네 색이 한 색으로
+> 납작해지므로 색을 입히지도 반전시키지도 않는다. 단색 `gemini.svg`는 뉴스가 모델 마크로
+> 쓰고 있어 그대로 둔다.
 >
 > **전용 마크가 있는 것만 전용으로 쓴다.** Simple Icons 전체를 뒤져 보니 이 서랍에
 > 해당하는 것은 Claude Code 하나뿐이었다(Codex·Antigravity·Cowork·Gemini CLI는 없다).
