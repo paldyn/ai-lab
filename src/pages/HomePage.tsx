@@ -189,9 +189,12 @@ export function HomePage() {
               </Link>
               {/*
                 학습이 아니라 리서치를 둡니다. 학습은 296편으로 양이 많지만
-                다른 곳에서도 볼 수 있는 가이드고, 직접 돌려 확인한 기록은
+                다른 곳에서도 볼 수 있는 개론이고, 직접 돌려 확인한 기록은
                 여기서만 나옵니다. 학습은 상단 네비게이션과 아래 섹션으로
                 갑니다.
+
+                「가이드」라고 쓰지 않습니다 — 2026-09-16부터 그 낱말은 nav
+                다섯째 칸(`/playbook`)의 이름이라 한 뜻만 가져야 합니다.
               */}
               <Link to="/research" className="hero-action">
                 리서치 보기 <ArrowRight size={14} aria-hidden="true" />

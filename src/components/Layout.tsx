@@ -3,6 +3,7 @@ import { Link, NavLink, useLocation } from 'react-router';
 import { ArrowUp, Menu, Moon, Search, Sun, X } from 'lucide-react';
 import { getArticleBySlug } from '../data/articles';
 import { categoryById } from '../data/categories';
+import { playbookNavVisible, todayInSeoul } from '../data/playbook';
 import { assetUrl } from '../data/sources';
 import type { SectionId } from '../types/article';
 import { SearchOverlay } from './SearchOverlay';
@@ -255,6 +256,21 @@ export function Layout({ children }: { children: ReactNode }) {
   */
   const startAtTop = () => window.scrollTo({ top: 0, behavior: 'instant' });
 
+  /*
+    **다섯째 칸은 스스로 선다.** 최소선(도구 여섯 · 주장 마흔 · 노트 여덟)을 넘기고
+    확인 로그가 21일 안에 있고 만료가 40% 아래일 때만 켜집니다. 조건이 깨지면
+    **이 줄을 아무도 안 고쳐도 메뉴에서 내려갑니다** — nav에 안 서는 것이
+    거짓말하는 것보다 낫기 때문입니다. 2026-09-16에 처음 켰습니다.
+
+    **그리는 시점에 오늘을 읽습니다.** 모듈이 읽힐 때 정하면 프리렌더된 HTML에
+    빌드일이 박혀, 배포가 멎은 동안 메뉴가 영영 서 있습니다. 여기서 부르면 hydrate
+    뒤 오늘 날짜로 다시 계산돼 **배포가 멎으면 메뉴가 스스로 사라집니다.**
+
+    데이터는 이미 초기 번들에 있습니다 — 검색이 `data/playbook`을 부르고 있어서
+    이 import로 새로 드는 비용은 없습니다(2026-09-16에 청크를 열어 확인했습니다).
+  */
+  const guideInNav = playbookNavVisible(todayInSeoul());
+
   const goToTop = () => {
     // 여기서는 behavior를 넘기지 않습니다. html의 scroll-behavior를 그대로 따르므로
     // '동작 줄이기'를 켠 환경에서는 스타일시트가 그 값을 auto로 덮어 즉시 이동합니다.
@@ -286,6 +302,13 @@ export function Layout({ children }: { children: ReactNode }) {
             <NavLink to="/news" className={navClass('news')} onClick={startAtTop}>뉴스</NavLink>
             <NavLink to="/learn" className={navClass('learn')} onClick={startAtTop}>학습</NavLink>
             <NavLink to="/research" className={navClass('research')}>리서치</NavLink>
+            {/*
+              `navClass`를 안 씁니다. 그것은 글을 읽는 동안 그 글의 섹션을 켜 두는
+              장치인데(`/articles/<slug>`에는 섹션이 안 적혀 있어서), 가이드 노트는
+              `/playbook/<도구>/<슬러그>`라 주소에 이미 적혀 있습니다. NavLink가
+              하위 주소까지 알아서 켭니다.
+            */}
+            {guideInNav && <NavLink to="/playbook">가이드</NavLink>}
           </nav>
 
           {/* 12px은 techblog.paldyn.com의 .nav-right와 같은 값입니다. */}
@@ -330,6 +353,7 @@ export function Layout({ children }: { children: ReactNode }) {
               <NavLink to="/news" className={navClass('news', 'mobile-nav-link')} onClick={startAtTop}>뉴스</NavLink>
               <NavLink to="/learn" className={navClass('learn', 'mobile-nav-link')} onClick={startAtTop}>학습</NavLink>
               <NavLink to="/research" className={navClass('research', 'mobile-nav-link')}>리서치</NavLink>
+              {guideInNav && <NavLink to="/playbook" className="mobile-nav-link">가이드</NavLink>}
             </div>
           </nav>
         )}
