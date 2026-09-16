@@ -34,7 +34,12 @@ function ProductCard({ product }: { product: Product }) {
         카드 맨 위 한 줄만 읽어도 「무엇이고 어느 자리인가」가 끝납니다.
       */}
       <div className="playbook-card-head">
-        <GuideMark logo={product.logo} monochrome={product.monochrome} className="playbook-card-mark" />
+        <GuideMark
+          logo={product.logo}
+          monochrome={product.monochrome}
+          accent={product.accent}
+          className="playbook-card-mark"
+        />
         <h4 className="playbook-card-title">
           <Link to={playbookProductPath(product.vendorId, product.id)} className="card-trigger">
             {product.name}
@@ -75,6 +80,7 @@ function VendorBlock({ vendorId, showName }: { vendorId: VendorId; showName: boo
           <GuideMark
             logo={vendor.logo}
             monochrome={vendor.monochrome}
+            accent={vendor.accent}
             className="playbook-vendor-mark"
           />
           {vendor.name}
@@ -151,6 +157,7 @@ export function PlaybookPage() {
               <GuideMark
                 logo={vendor.logo}
                 monochrome={vendor.monochrome}
+                accent={vendor.accent}
                 className="filter-chip-mark"
               />
               {vendor.name}

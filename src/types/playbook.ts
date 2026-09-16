@@ -21,6 +21,8 @@ export interface VendorInfo {
    * 됩니다** — 색이 통째로 뒤집혀 다른 로고가 됩니다(자격증 마크에서 이미 밟은 자리).
    */
   monochrome: boolean;
+  /** 단색 로고에 입힐 색. `-text` 토큰만 씁니다. */
+  accent: string;
   blurb: string;
   officialUrl: string;
 }

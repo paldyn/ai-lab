@@ -7250,8 +7250,15 @@ input:focus-visible {
 }
 
 /*
-  심볼 로고. **단색만 다크에서 반전**시킵니다 — 여러 색이 든 로고(Google)에 반전을
-  걸면 색이 통째로 뒤집혀 다른 로고가 됩니다. 뉴스의 출처 로고와 같은 규칙입니다.
+  심볼 로고.
+
+  **단색 로고에는 브랜드 색을 입힙니다.** 처음에는 다크에서 `filter: invert(1)`로
+  뒤집었는데, 그러면 로고가 브랜드 색이 아니라 그냥 흰색이 됩니다 — 포인트 색을
+  카드에 넣어 놓고 정작 가장 눈에 띄는 로고가 무채색이었습니다. `mask-image`로
+  모양만 떠서 그 자리를 포인트 색으로 칠하면 테마마다 규칙을 따로 둘 필요도 없습니다.
+
+  **여러 색이 든 로고(Google·Antigravity)는 손대지 않습니다** — 마스크를 씌우면
+  그라디언트와 네 색이 한 색으로 납작해집니다.
 */
 .playbook-card-mark img,
 .playbook-vendor-mark img,
@@ -7261,10 +7268,30 @@ input:focus-visible {
   object-fit: contain;
 }
 
-[data-theme='dark'] .playbook-card-mark img.is-monochrome,
-[data-theme='dark'] .playbook-vendor-mark img.is-monochrome,
-[data-theme='dark'] .filter-chip-mark img.is-monochrome {
-  filter: invert(1);
+/*
+  마스크를 못 쓰는 환경에서는 아래 블록이 통째로 안 걸리고 `<img>`가 원래 색으로
+  그대로 보입니다. 빈 네모가 남지 않게 이미지를 DOM에 남겨 둔 이유입니다.
+*/
+@supports (mask-image: url('')) or (-webkit-mask-image: url('')) {
+  .playbook-card-mark.is-tinted,
+  .playbook-vendor-mark.is-tinted,
+  .filter-chip-mark.is-tinted {
+    background-color: var(--guide-mark-color, currentColor);
+    -webkit-mask-image: var(--guide-mark);
+    mask-image: var(--guide-mark);
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+    -webkit-mask-position: center;
+    mask-position: center;
+    -webkit-mask-size: contain;
+    mask-size: contain;
+  }
+
+  .playbook-card-mark.is-tinted img,
+  .playbook-vendor-mark.is-tinted img,
+  .filter-chip-mark.is-tinted img {
+    visibility: hidden;
+  }
 }
 
 .playbook-vendor-mark {
@@ -7292,14 +7319,18 @@ input:focus-visible {
   flex: 0 0 auto;
 }
 
-.filter-chip.is-with-logo.active .filter-chip-mark img.is-monochrome,
-.filter-chip.is-with-logo:hover .filter-chip-mark img.is-monochrome {
-  filter: invert(1);
+/*
+  켜진 칩은 배경이 글자색으로 뒤집힙니다. 그 위에서는 브랜드 색이 안 보이는
+  경우가 있어(OpenAI는 거의 검정입니다) 마크도 칩의 글자색을 따라가게 둡니다.
+*/
+.filter-chip.is-with-logo.active .filter-chip-mark.is-tinted,
+.filter-chip.is-with-logo:hover .filter-chip-mark.is-tinted {
+  background-color: var(--bg);
 }
 
-[data-theme='dark'] .filter-chip.is-with-logo.active .filter-chip-mark img.is-monochrome,
-[data-theme='dark'] .filter-chip.is-with-logo:hover .filter-chip-mark img.is-monochrome {
-  filter: none;
+.filter-chip.is-with-logo.active .filter-chip-mark img,
+.filter-chip.is-with-logo:hover .filter-chip-mark img {
+  filter: invert(1);
 }
 
 /*
