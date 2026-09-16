@@ -5,6 +5,8 @@ import { categoryIdsIn } from './data/categories';
 import { mathTracks } from './data/curriculum';
 import { pythonNotes } from './data/mirror';
 import { newsViewIds } from './data/news';
+import { playbookNotePath, playbookNotesOf } from './data/playbook';
+import { playbookToolIds } from './data/playbookTools';
 
 /** 정적으로 존재하는 페이지. 리다이렉트 전용 경로는 포함하지 않습니다. */
 export const staticRoutes: string[] = [
@@ -30,8 +32,9 @@ export const staticRoutes: string[] = [
   '/learn/certs',
   ...certs.map((cert) => `/learn/certs/${cert.id}`),
   '/research',
-  // 활용 가이드. 도구·노트 경로는 데이터가 생기는 2~3일 차에 더합니다.
+  // 활용 가이드. 도구마다 아는 값과 노트 목록이 섭니다.
   '/playbook',
+  ...playbookToolIds.map((id) => `/playbook/${id}`),
   '/privacy',
 ];
 
@@ -43,6 +46,8 @@ export const prerenderRoutes: string[] = [
   ...certPrepNotes.map((note) => note.path),
   // 옮겨 온 글. 원문이 techblog에 있어도 이 주소로 들어오는 사람이 있으므로 HTML을 미리 냅니다.
   ...pythonNotes.map((note) => note.path),
+  // 활용 노트. 도구 이름으로 검색해 들어오는 자리라 HTML이 먼저 있어야 합니다.
+  ...playbookToolIds.flatMap((id) => playbookNotesOf(id).map(playbookNotePath)),
 ];
 
 /** sitemap.xml에 넣을 경로. 404는 색인 대상이 아니므로 제외합니다. */
@@ -55,4 +60,7 @@ export const sitemapRoutes: Array<{ path: string; lastModified?: string }> = [
     쪽으로 모이고, 우리 주소는 「여기에도 있다」는 것만 알립니다.
   */
   ...pythonNotes.map((note) => ({ path: note.path, lastModified: note.syncedAt })),
+  ...playbookToolIds.flatMap((id) =>
+    playbookNotesOf(id).map((note) => ({ path: playbookNotePath(note), lastModified: note.updatedAt })),
+  ),
 ];

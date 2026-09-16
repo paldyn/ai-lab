@@ -1,4 +1,6 @@
 import { describe, expect, it } from 'vitest';
+import { renderMarkdown } from '../../plugins/markdown';
+import { fillClaimRefs } from '../lib/claimRef';
 import {
   FRESHNESS_DAYS,
   claimState,
@@ -86,6 +88,50 @@ describe('활용 가이드 — 신선도 계산', () => {
     for (const v of ['price', 'limit', 'model'] as const) {
       expect(FRESHNESS_DAYS[v]!.soft).toBeLessThan(FRESHNESS_DAYS[v]!.hard);
     }
+  });
+});
+
+describe('활용 가이드 — 본문의 값 참조', () => {
+  /*
+    원고는 `:claim[아이디]`로 부르기만 하고 값은 데이터에만 있습니다. 그 왕복이
+    깨지면 노트가 통째로 거짓이 되는데 **화면에는 아이디만 덩그러니 남아** 눈으로는
+    지나치기 쉽습니다. 그래서 여기서 실제로 그려 봅니다.
+  */
+  it('부른 자리에 값과 배지와 나이가 들어간다', async () => {
+    const { html } = await renderMarkdown('Pro 요금은 :claim[claude-pro-price] 입니다.');
+    expect(html).toContain('data-claim="claude-pro-price"');
+
+    const filled = fillClaimRefs(html, '2026-09-16');
+    expect(filled).toContain('월 결제 $20');
+    expect(filled).toContain('evidence-badge-vendor');
+    expect(filled).toContain('0일 전 확인');
+  });
+
+  it('유효기간이 지나면 값이 사라지고 원문으로 보낸다', async () => {
+    const { html } = await renderMarkdown(':claim[claude-pro-price]');
+    const filled = fillClaimRefs(html, '2027-01-01');
+    expect(filled).not.toContain('월 결제 $20');
+    expect(filled).toContain('유효기간 지남');
+  });
+
+  it('모르는 값은 공식 페이지로 보낸다', async () => {
+    const { html } = await renderMarkdown(':claim[chatgpt-plus-price]');
+    const filled = fillClaimRefs(html, '2026-09-16');
+    expect(filled).toContain('모름 · 공식 페이지에서 확인');
+  });
+
+  /*
+    없는 아이디를 조용히 지우면 원고에 난 구멍을 아무도 못 봅니다.
+    그대로 두어 화면에서 튀게 하고, 원고 검사가 따로 잡습니다.
+  */
+  it('없는 아이디는 지우지 않고 그대로 둔다', async () => {
+    const { html } = await renderMarkdown(':claim[nope-nope]');
+    expect(fillClaimRefs(html, '2026-09-16')).toContain('nope-nope');
+  });
+
+  it('부르는 자리가 없는 본문은 손대지 않는다', () => {
+    const plain = '<p>값을 안 부르는 보통 문단입니다.</p>';
+    expect(fillClaimRefs(plain, '2026-09-16')).toBe(plain);
   });
 });
 

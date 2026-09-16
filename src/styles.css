@@ -7434,3 +7434,124 @@ input:focus-visible {
   border: 1px dashed var(--cat-tools-text, var(--text-muted));
   color: var(--cat-tools-text, var(--text-muted));
 }
+
+/* 활용 가이드 — 도구 상세와 노트 */
+.playbook-tool-meta {
+  margin-bottom: 18px;
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.06em;
+}
+
+/* 아이콘이 붙은 링크라 inline-flex로 묶지 않으면 화살표만 다음 줄로 떨어집니다. */
+.playbook-tool-meta a {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  color: var(--brand-text);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  white-space: nowrap;
+}
+
+.playbook-note-list {
+  margin-top: 16px;
+  border-top: 1px solid var(--border);
+}
+
+.playbook-note-list a {
+  display: grid;
+  grid-template-columns: 44px minmax(0, 1fr) auto;
+  gap: 14px;
+  align-items: baseline;
+  border-bottom: 1px solid var(--border);
+  padding: 13px 6px;
+  color: var(--text);
+}
+
+.playbook-note-list a:hover {
+  background: var(--bg-subtle);
+}
+
+.playbook-note-kind,
+.playbook-note-read {
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+  font-size: 10px;
+}
+
+.playbook-note-title {
+  font-size: 14px;
+}
+
+.playbook-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.06em;
+}
+
+.playbook-back:hover {
+  color: var(--brand-text);
+}
+
+.playbook-note-meta {
+  margin-top: 22px;
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.06em;
+}
+
+.playbook-note-heading {
+  margin-top: 10px;
+  color: var(--text-strong);
+  font-size: 28px;
+  font-weight: 450;
+  line-height: 1.35;
+}
+
+.playbook-note-summary {
+  margin-top: 12px;
+  max-width: 62ch;
+  color: var(--text-dim);
+  font-size: 14px;
+  line-height: 1.75;
+}
+
+/*
+  본문 안에서 값을 부른 자리. 인라인 칩입니다 — 문장 흐름을 끊지 않으면서
+  **값 옆에 근거와 나이가 늘 함께** 있어야 합니다. 값만 떼어 읽을 수 없게 하는 것이
+  이 서랍의 존재 이유이므로, 배지와 나이를 따로 떼어 아래에 두지 않습니다.
+*/
+.claim-ref {
+  display: inline-flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 5px;
+  border-bottom: 1px dotted var(--border-strong);
+  padding-bottom: 1px;
+}
+
+.claim-ref-value {
+  color: var(--text-strong);
+  font-weight: 600;
+}
+
+.claim-ref-missing {
+  color: var(--text-muted);
+  font-size: 12.5px;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.claim-ref-age {
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: 0.04em;
+}

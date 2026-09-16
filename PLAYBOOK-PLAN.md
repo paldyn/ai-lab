@@ -5,7 +5,7 @@ AI 도구를 **잘 쓰고 아껴 쓰는 법**을 담는 다섯 번째 서랍. �
 이 파일은 설계 결정의 기록이자 루틴이 집어 가는 작업 큐다. 마친 항목은 줄을 지운다 —
 무엇을 언제 마쳤는지는 git log가 안다.
 
-마지막 갱신: 2026-09-16 (4일 차 검사 끝)
+마지막 갱신: 2026-09-16 (5일 차 파이프라인·규약 끝)
 
 ---
 
@@ -240,7 +240,7 @@ export default [
       → **`counter`를 비우고, `value: null`인데 `open`에서 빼고, 벤더 url을 엉뚱한 호스트로
       바꿔 넣었을 때 각각 `npm test`가 선다.** 그리고 `check:playbook`을 통과 못 하게 만들어도
       `npm test`는 초록이다 — 갈라 둔 것이 실제로 갈렸는지 보는 자리다.
-- [ ] **5일 — 본문 파이프라인과 규약.** `rehypeEvidence` · `PlaybookToolPage.tsx` ·
+- [x] **5일 — 본문 파이프라인과 규약.** (2026-09-16 끝) `rehypeEvidence` · `PlaybookToolPage.tsx` ·
       `PlaybookNotePage.tsx` · `CLAUDE.md` · `PLAYBOOK-ROUTINE.md`
       → **`npm test` 통째로 초록.** `emphasis.test.ts`가 331편을 실제 렌더하므로 rehype 추가가
       기존 글에 회귀를 냈으면 여기서 잡힌다.
