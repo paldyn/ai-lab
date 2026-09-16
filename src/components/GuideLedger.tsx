@@ -9,6 +9,7 @@ import {
   playbookNotesOf,
 } from '../data/playbook';
 import { playbookClaims } from '../data/playbookClaims';
+import { guideModelById } from '../data/guideModels';
 import { guideProducts } from '../data/guideProducts';
 import { guideVendorById } from '../data/guideVendors';
 import { playbookIndex } from 'virtual:playbook-index';
@@ -114,6 +115,10 @@ function ProductLedger({ product, today }: { product: Product; today: string }) 
   // 제품 자신의 값 + 이 제품이 돌리는 모델의 값. 모델 값은 한 번만 적힙니다.
   const claims = claimsForProduct(product.id);
   const peers = guideProducts.filter((p) => p.role === product.role && p.id !== product.id);
+  /* 확인 못 한 제품은 빈 배열이라 이 절이 아예 안 섭니다. */
+  const models = product.models
+    .map((id) => guideModelById(id))
+    .filter((m): m is NonNullable<typeof m> => Boolean(m));
 
   const links = [{ label: '제품 페이지', url: product.officialUrl }];
   if (product.docsUrl && product.docsUrl !== product.officialUrl) {
@@ -156,6 +161,34 @@ function ProductLedger({ product, today }: { product: Product; today: string }) 
         ))}
       </ul>
       <p className="guide-ledger-note">표면이 달라도 엔진은 하나입니다 — 별개 제품이 아닙니다.</p>
+
+      {/*
+        **모델은 층이 아니라 이 제품의 속성입니다.** 같은 모델이 제품 여럿에서 돌기
+        때문에 트리로 안 세웠고, 여기서는 참조만 그립니다.
+
+        **회사 경계를 넘는 자리에 만든 회사를 붙입니다** — Google Antigravity의
+        선택기에 Claude 둘과 GPT-OSS가 함께 서는 것이 이 서랍에서 가장 안 알려진
+        사실이라, 이름 옆의 작은 회사 표기가 그것을 말합니다.
+
+        확인 못 한 제품은 `models`가 비어 있어 이 절이 아예 안 섭니다.
+      */}
+      {models.length > 0 && (
+        <>
+          <h3 className="guide-ledger-label">고를 수 있는 모델</h3>
+          <ul className="guide-surfaces">
+            {models.map((model) => (
+              <li key={model.id}>
+                {model.name}
+                {model.vendorId !== product.vendorId && (
+                  <span className="guide-peer-vendor">
+                    {guideVendorById(model.vendorId)?.name}
+                  </span>
+                )}
+              </li>
+            ))}
+          </ul>
+        </>
+      )}
 
       <OfficialLinks rows={links} />
 
