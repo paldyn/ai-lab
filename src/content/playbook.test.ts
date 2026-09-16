@@ -4,7 +4,8 @@ import matter from 'gray-matter';
 import { describe, expect, it } from 'vitest';
 import { renderMarkdown } from '../../plugins/markdown';
 import { playbookClaims } from '../data/playbookClaims';
-import { playbookToolIds } from '../data/playbookTools';
+import { guideProductIds } from '../data/guideProducts';
+import { guideVendorIds } from '../data/guideVendors';
 import { collapsedLines } from './collapsedLines';
 
 /**
@@ -20,46 +21,62 @@ const DIR = path.join(process.cwd(), 'src/content/playbook');
 const FILE_NAME = /^(\d{2})-([a-z0-9-]+)\.md$/;
 
 interface Note {
-  toolId: string;
+  vendorId: string;
+  productId: string;
   file: string;
   data: Record<string, unknown>;
   content: string;
 }
 
+const dirsIn = (at: string) =>
+  existsSync(at)
+    ? readdirSync(at, { withFileTypes: true }).filter((e) => e.isDirectory()).map((e) => e.name)
+    : [];
+
 function readNotes(): Note[] {
-  if (!existsSync(DIR)) return [];
-  return readdirSync(DIR, { withFileTypes: true })
-    .filter((entry) => entry.isDirectory())
-    .flatMap((dir) =>
-      readdirSync(path.join(DIR, dir.name))
+  return dirsIn(DIR).flatMap((vendorId) =>
+    dirsIn(path.join(DIR, vendorId)).flatMap((productId) =>
+      readdirSync(path.join(DIR, vendorId, productId))
         .filter((file) => file.endsWith('.md'))
         .map((file) => {
-          const parsed = matter(readFileSync(path.join(DIR, dir.name, file), 'utf8'));
-          return { toolId: dir.name, file, data: parsed.data, content: parsed.content };
+          const parsed = matter(readFileSync(path.join(DIR, vendorId, productId, file), 'utf8'));
+          return { vendorId, productId, file, data: parsed.data, content: parsed.content };
         }),
-    );
+    ),
+  );
 }
 
 const notes = readNotes();
 
 describe('가이드 노트', () => {
-  it('폴더 이름이 실제 도구 id다', () => {
-    const dirs = existsSync(DIR)
-      ? readdirSync(DIR, { withFileTypes: true }).filter((e) => e.isDirectory()).map((e) => e.name)
-      : [];
-    expect(dirs.filter((name) => !playbookToolIds.includes(name as never))).toEqual([]);
+  /*
+    **폴더가 곧 주소입니다** — `<기업>/<제품>/NN-슬러그.md`가 그대로
+    `/playbook/<기업>/<제품>/<슬러그>`가 됩니다. 폴더 이름이 데이터와 어긋나면
+    그 노트는 화면에서 못 찾는 주소에 섭니다.
+  */
+  it('바깥 폴더가 실제 기업 id다', () => {
+    expect(dirsIn(DIR).filter((name) => !guideVendorIds.includes(name as never))).toEqual([]);
+  });
+
+  it('안쪽 폴더가 실제 제품 id다', () => {
+    const bad = dirsIn(DIR).flatMap((vendorId) =>
+      dirsIn(path.join(DIR, vendorId))
+        .filter((name) => !guideProductIds.includes(name))
+        .map((name) => `${vendorId}/${name}`),
+    );
+    expect(bad).toEqual([]);
   });
 
   it('파일 이름이 NN-슬러그.md 꼴이다', () => {
     const bad = notes.filter((note) => !FILE_NAME.test(note.file));
-    expect(bad.map((n) => `${n.toolId}/${n.file}`)).toEqual([]);
+    expect(bad.map((n) => `${n.vendorId}/${n.productId}/${n.file}`)).toEqual([]);
   });
 
   it('frontmatter 다섯 칸이 채워져 있다', () => {
     const bad = notes.filter((note) =>
       ['title', 'description', 'kind', 'pubDate'].some((key) => !note.data[key]),
     );
-    expect(bad.map((n) => `${n.toolId}/${n.file}`)).toEqual([]);
+    expect(bad.map((n) => `${n.vendorId}/${n.productId}/${n.file}`)).toEqual([]);
   });
 
   it('description이 30~160자다', () => {
@@ -67,20 +84,20 @@ describe('가이드 노트', () => {
       const value = String(note.data.description ?? '');
       return value.length < 30 || value.length > 160;
     });
-    expect(bad.map((n) => `${n.toolId}/${n.file}`)).toEqual([]);
+    expect(bad.map((n) => `${n.vendorId}/${n.productId}/${n.file}`)).toEqual([]);
   });
 
   it('kind가 다섯 중 하나다', () => {
     const kinds = ['설정', '기법', '한도', '비교', '대질'];
     const bad = notes.filter((note) => !kinds.includes(String(note.data.kind)));
-    expect(bad.map((n) => `${n.toolId}/${n.file} — ${String(n.data.kind)}`)).toEqual([]);
+    expect(bad.map((n) => `${n.vendorId}/${n.productId}/${n.file} — ${String(n.data.kind)}`)).toEqual([]);
   });
 
   it('claims에 적은 주장이 실재한다', () => {
     const ids = new Set(playbookClaims.map((c) => c.id));
     const orphan = notes.flatMap((note) => {
       const claims = Array.isArray(note.data.claims) ? note.data.claims.map(String) : [];
-      return claims.filter((id) => !ids.has(id)).map((id) => `${note.toolId}/${note.file} → ${id}`);
+      return claims.filter((id) => !ids.has(id)).map((id) => `${note.vendorId}/${note.productId}/${note.file} → ${id}`);
     });
     expect(orphan).toEqual([]);
   });
@@ -112,7 +129,7 @@ describe('가이드 노트', () => {
       for (const m of body.matchAll(/\b(?:gpt|claude|gemini|o\d)-[a-z0-9.-]+\b/gi)) {
         if (!ALLOWED.includes(m[0].toLowerCase())) found.push(m[0]);
       }
-      return found.map((text) => `${note.toolId}/${note.file} — 「${text}」는 데이터에 두고 :claim으로 부른다`);
+      return found.map((text) => `${note.vendorId}/${note.productId}/${note.file} — 「${text}」는 데이터에 두고 :claim으로 부른다`);
     });
     expect(hits).toEqual([]);
   });
@@ -131,7 +148,7 @@ describe('가이드 노트', () => {
         .replace(/<pre[\s\S]*?<\/pre>/g, '')
         .replace(/<code[\s\S]*?<\/code>/g, '');
       const found = prose.match(/.{0,40}\*\*.{0,40}/s);
-      if (found) left.push(`${note.toolId}/${note.file} — ${found[0]}`);
+      if (found) left.push(`${note.vendorId}/${note.productId}/${note.file} — ${found[0]}`);
     }
     expect(left).toEqual([]);
   });
@@ -139,7 +156,7 @@ describe('가이드 노트', () => {
   it('나란히 놓을 줄이 한 줄로 붙지 않는다', () => {
     const found = notes.flatMap((note) =>
       collapsedLines(note.content).map(
-        (line) => `${note.toolId}/${note.file}:${line.line} — ${line.text}`,
+        (line) => `${note.vendorId}/${note.productId}/${note.file}:${line.line} — ${line.text}`,
       ),
     );
     expect(found).toEqual([]);
@@ -159,7 +176,7 @@ describe('가이드 노트', () => {
     const problems: string[] = [];
 
     for (const note of notes) {
-      const where = `${note.toolId}/${note.file}`;
+      const where = `${note.vendorId}/${note.productId}/${note.file}`;
       const inBody = new Set(
         [...note.content.matchAll(/:claim\[([a-z0-9][a-z0-9-]*)\]/g)].map((m) => m[1]),
       );
@@ -180,12 +197,14 @@ describe('가이드 노트', () => {
   });
 
   it('내부 링크가 실제로 있는 곳을 가리킨다', () => {
-    const paths = new Set(notes.map((n) => `/playbook/${n.toolId}/${n.file.replace(/\.md$/, '')}`));
+    const paths = new Set(
+      notes.map((n) => `/playbook/${n.vendorId}/${n.productId}/${n.file.replace(/\.md$/, '')}`),
+    );
     const broken = notes.flatMap((note) =>
       [...note.content.matchAll(/\]\((\/playbook\/[^)]+)\)/g)]
         .map((m) => m[1])
         .filter((target) => !paths.has(target))
-        .map((target) => `${note.toolId}/${note.file} → ${target}`),
+        .map((target) => `${note.vendorId}/${note.productId}/${note.file} → ${target}`),
     );
     expect(broken).toEqual([]);
   });

@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import { playbookClaims } from './playbookClaims';
-import { toolOpenItems } from './playbook';
-import { playbookToolIds, playbookTools } from './playbookTools';
+import { productOpenItems } from './playbook';
+import { guideProductIds, guideProducts } from './guideProducts';
 
 /**
  * 값에 매인 검사만 여기 둡니다.
@@ -58,8 +58,8 @@ describe('AI 가이드 — 주장', () => {
     expect(ids.length).toBe(new Set(ids).size);
   });
 
-  it('도구가 실재한다', () => {
-    const unknown = playbookClaims.filter((c) => !playbookToolIds.includes(c.tool));
+  it('제품이 실재한다', () => {
+    const unknown = playbookClaims.filter((c) => !guideProductIds.includes(c.product));
     expect(unknown.map((c) => c.id)).toEqual([]);
   });
 
@@ -159,10 +159,10 @@ describe('AI 가이드 — 주장', () => {
     expect(vague.map((c) => c.id)).toEqual([]);
   });
 
-  it('도구마다 할 일 목록이 모르는 값에서 나온다', () => {
-    for (const tool of playbookTools) {
-      const open = toolOpenItems(tool.id);
-      const nulls = playbookClaims.filter((c) => c.tool === tool.id && c.value === null);
+  it('제품마다 할 일 목록이 모르는 값에서 나온다', () => {
+    for (const product of guideProducts) {
+      const open = productOpenItems(product.id);
+      const nulls = playbookClaims.filter((c) => c.product === product.id && c.value === null);
       expect(open.length).toBe(nulls.length);
     }
   });

@@ -1,0 +1,158 @@
+import type { Product, Role, VendorId } from '../types/playbook';
+
+/**
+ * AI 가이드가 다루는 제품.
+ *
+ * **이름은 회사가 쓰는 표기 그대로입니다**(2026-09-16에 공식 페이지를 열어 확인하고,
+ * 표기를 다시 열어 대조하는 검증을 한 번 더 지났습니다). 읽기 좋게 다듬지 마세요 —
+ * 「Gemini app」을 「Gemini」로 줄이면 **모델 계열 이름과 제품 이름이 한 낱말이 됩니다.**
+ * Google은 그 둘을 갈라 쓰고 있습니다.
+ *
+ * **표면은 별개 제품이 아닙니다.** Claude Code의 터미널·IDE·데스크톱·웹은 같은 엔진의
+ * 네 표면이고(Anthropic 용어집이 못 박습니다), Codex와 Antigravity도 같은 모양입니다.
+ * 표면을 제품으로 세면 세 회사 합쳐 예순이 넘습니다 — 실제로 스윕이 Anthropic 16 ·
+ * OpenAI 23 · Google 24를 찾아왔고, 표면과 요금제를 걷어내니 아홉이 남았습니다.
+ *
+ * **요금제는 제품이 아닙니다.** Pro·Max·Plus·Team·Enterprise는 전부 요금제입니다.
+ * 「Claude Enterprise」가 제품처럼 읽히지만 요금제 페이지의 칸 이름입니다.
+ *
+ * **빈 자리는 비워 둡니다.** Google에는 챗·코딩에 대응하는 업무 제품을 이번 조사에서
+ * 확정하지 못했습니다. 지어내 채우는 대신 그 묶음이 화면에 아예 안 서게 둡니다 —
+ * 모른다고 적는 것이 이 서랍의 규칙입니다.
+ *
+ * 배열 순서가 곧 화면 순서입니다.
+ */
+export const guideProducts: Product[] = [
+  // ─── Anthropic ───────────────────────────────────────────────────
+  {
+    id: 'claude',
+    vendorId: 'anthropic',
+    name: 'Claude',
+    role: '챗',
+    surfaces: ['웹', '데스크톱', '모바일'],
+    oneLine: '파일과 앱에 붙어 도는 챗 앱. 이 회사 제품의 기본 자리다.',
+    officialUrl: 'https://claude.com/download',
+    docsUrl: 'https://claude.com/pricing',
+    mark: 'CL',
+  },
+  {
+    id: 'claude-cowork',
+    vendorId: 'anthropic',
+    name: 'Claude Cowork',
+    role: '업무',
+    surfaces: ['데스크톱', '웹', '모바일'],
+    oneLine: '대화가 아니라 일을 통째로 맡기는 자리. 챗 옆에 나란히 선다.',
+    officialUrl: 'https://claude.com/product/cowork',
+    docsUrl: null,
+    mark: 'CW',
+  },
+  {
+    id: 'claude-code',
+    vendorId: 'anthropic',
+    name: 'Claude Code',
+    role: '코딩',
+    surfaces: ['터미널', 'IDE', '데스크톱', '웹'],
+    oneLine: '저장소를 읽고 고치고 명령까지 돌리는 코딩 에이전트.',
+    officialUrl: 'https://code.claude.com/docs/en/overview',
+    docsUrl: 'https://code.claude.com/docs',
+    mark: 'CC',
+  },
+
+  // ─── OpenAI ──────────────────────────────────────────────────────
+  {
+    id: 'chatgpt',
+    vendorId: 'openai',
+    name: 'ChatGPT',
+    role: '챗',
+    surfaces: ['웹', '데스크톱', '모바일'],
+    oneLine: '가장 많이 쓰는 챗 앱. 챗·업무·코딩을 한 화면에 모아 두었다.',
+    officialUrl: 'https://chatgpt.com/overview',
+    docsUrl: 'https://openai.com/chatgpt/pricing/',
+    mark: 'GPT',
+  },
+  {
+    id: 'chatgpt-work',
+    vendorId: 'openai',
+    name: 'ChatGPT Work',
+    role: '업무',
+    surfaces: ['웹', '데스크톱'],
+    oneLine: '목표를 넘기면 계획을 세우고 실행까지 하는 업무 표면.',
+    officialUrl: 'https://learn.chatgpt.com/docs/get-started-with-work',
+    docsUrl: null,
+    mark: 'WK',
+  },
+  {
+    id: 'codex',
+    vendorId: 'openai',
+    name: 'Codex',
+    role: '코딩',
+    surfaces: ['앱', 'IDE', '터미널', '클라우드'],
+    oneLine: '같은 코딩 에이전트가 앱·IDE·터미널·클라우드 넷에 함께 선다.',
+    officialUrl: 'https://chatgpt.com/codex',
+    docsUrl: 'https://learn.chatgpt.com/docs/codex/cli',
+    mark: 'CX',
+  },
+
+  // ─── Google ──────────────────────────────────────────────────────
+  /*
+    업무 칸이 비어 있습니다. `Google Workspace Studio`가 후보로 나왔지만 앞의 둘과
+    성격이 같은지 확인하지 못했습니다 — 확인되는 날 한 줄 더합니다.
+    코딩은 **둘입니다.** 격자에 억지로 맞추지 않습니다.
+  */
+  {
+    id: 'gemini-app',
+    vendorId: 'google',
+    name: 'Gemini app',
+    role: '챗',
+    surfaces: ['웹', '모바일', '데스크톱'],
+    oneLine: '구글 계정과 붙어 있는 챗 앱. 모델 계열 이름과 제품 이름이 다르다.',
+    officialUrl: 'https://gemini.google/about/',
+    docsUrl: 'https://gemini.google/subscriptions/',
+    mark: 'GM',
+  },
+  {
+    id: 'antigravity',
+    vendorId: 'google',
+    name: 'Google Antigravity',
+    role: '코딩',
+    surfaces: ['데스크톱', 'CLI', 'IDE 확장', 'SDK'],
+    oneLine: '여러 에이전트를 한자리에서 굴리는 개발 플랫폼.',
+    officialUrl: 'https://antigravity.google/',
+    docsUrl: null,
+    mark: 'AG',
+  },
+  {
+    id: 'gemini-cli',
+    vendorId: 'google',
+    name: 'Gemini CLI',
+    role: '코딩',
+    surfaces: ['터미널'],
+    oneLine: '터미널에서 도는 오픈소스 코딩 에이전트.',
+    officialUrl: 'https://github.com/google-gemini/gemini-cli',
+    docsUrl: null,
+    mark: 'GC',
+  },
+];
+
+export const guideProductIds = guideProducts.map((p) => p.id);
+
+const byId = new Map(guideProducts.map((p) => [p.id, p]));
+
+export const guideProductById = (id: string): Product | undefined => byId.get(id);
+
+export const productsOfVendor = (vendorId: VendorId): Product[] =>
+  guideProducts.filter((p) => p.vendorId === vendorId);
+
+/** 화면에서 묶음을 그리는 순서. 빈 묶음은 호출하는 쪽에서 걸러 냅니다. */
+export const GUIDE_ROLES: Role[] = ['챗', '업무', '코딩'];
+
+/**
+ * 한 기업의 제품을 갈래로 묶습니다. **빈 갈래는 아예 안 돌려줍니다** —
+ * 화면이 「—」로 채운 칸을 그리지 않게 하려는 것입니다.
+ */
+export function productsByRole(vendorId: VendorId): Array<{ role: Role; products: Product[] }> {
+  return GUIDE_ROLES.map((role) => ({
+    role,
+    products: guideProducts.filter((p) => p.vendorId === vendorId && p.role === role),
+  })).filter((group) => group.products.length > 0);
+}

@@ -7218,6 +7218,52 @@ input:focus-visible {
   카드마다 오른쪽에 신선도가 서는데 그 자리가 **편수가 아닙니다** — 이 서랍이
   파는 것은 글 수가 아니라 「지금 이 값을 믿어도 되는가」입니다.
 */
+/* AI 가이드 — 기업 묶음과 갈래 */
+.playbook-vendor + .playbook-vendor {
+  margin-top: 56px;
+}
+
+.playbook-vendor-title {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  color: var(--text-strong);
+  font-size: 22px;
+  font-weight: 700;
+}
+
+.playbook-vendor-title span {
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.1em;
+}
+
+.playbook-vendor-blurb {
+  margin-top: 6px;
+  color: var(--text-dim);
+  font-size: 13.5px;
+  line-height: 1.7;
+}
+
+/* 갈래 꼬리표. 카드 맨 위에 서서 이 제품이 어느 자리인지 먼저 알려 줍니다. */
+.playbook-card-role {
+  margin-bottom: 5px;
+  color: var(--brand-text);
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.12em;
+}
+
+/* 노트 수. 0편이면 「노트 준비 중」이 서므로 빈 칸이 안 생깁니다. */
+.playbook-card-notes {
+  margin-top: 11px;
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.06em;
+}
+
 .playbook-grid {
   display: grid;
   gap: 1px;
@@ -7225,9 +7271,20 @@ input:focus-visible {
   border: 1px solid var(--border);
 }
 
+/*
+  **셋이 한 줄에 섭니다.** 회사마다 챗·업무·코딩이 한 벌이라 그 셋이 한 줄에 놓여야
+  회사끼리 견주기가 쉽습니다. 넷째가 생기면(Google의 코딩이 둘입니다) 그대로 다음
+  줄로 흐릅니다 — 칸을 고정하지 않는 이유입니다.
+*/
 @media (min-width: 720px) {
   .playbook-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1040px) {
+  .playbook-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 }
 

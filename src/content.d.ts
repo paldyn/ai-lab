@@ -36,7 +36,8 @@ declare module 'virtual:cert-prep-index' {
 
 declare module 'virtual:playbook-index' {
   export interface PlaybookEntry {
-    toolId: string;
+    vendorId: string;
+    productId: string;
     slug: string;
     title: string;
     summary: string;

@@ -3,10 +3,10 @@ import { articles } from '../data/articles';
 import { categoryById } from '../data/categories';
 import { fullDate, newsItems, releaseOf } from '../data/news';
 import { playbookNotePath } from '../data/playbook';
-import { playbookToolById } from '../data/playbookTools';
+import { guideProductById } from '../data/guideProducts';
 import { getSource } from '../data/sources';
 import type { SectionId } from '../types/article';
-import type { ToolId, Vendor } from '../types/playbook';
+import type { VendorId } from '../types/playbook';
 
 /**
  * 검색 범위.
@@ -131,12 +131,11 @@ function newsHits(query: string, scope: SearchScope): SearchHit[] {
 /*
   가이드 노트의 꼬리표 색. 뉴스가 회사마다 색을 다르게 쓰는 것과 같은 자리라 같은
   토큰을 그대로 씁니다 — 새 색을 내지 않으므로 `theme.test.ts` 파급이 0입니다.
-  도구에 안 매인 `shared`만 브랜드색입니다.
 */
-const VENDOR_COLOR: Record<Vendor, string> = {
-  OpenAI: 'var(--source-openai-text)',
-  Anthropic: 'var(--source-anthropic-text)',
-  Google: 'var(--source-google-text)',
+const VENDOR_COLOR: Record<VendorId, string> = {
+  openai: 'var(--source-openai-text)',
+  anthropic: 'var(--source-anthropic-text)',
+  google: 'var(--source-google-text)',
 };
 
 /**
@@ -152,24 +151,24 @@ function playbookHits(query: string, scope: SearchScope): SearchHit[] {
   const hits: SearchHit[] = [];
 
   for (const entry of playbookIndex) {
-    const tool = playbookToolById(entry.toolId as ToolId);
+    const product = guideProductById(entry.productId);
 
     /*
-      태그 자리에 도구 이름과 `kind`를 둡니다. 「Codex」처럼 도구만 아는 상태로
+      태그 자리에 제품 이름과 `kind`를 둡니다. 「Codex」처럼 제품만 아는 상태로
       찾는 것과 「한도」처럼 갈래로 훑는 것이 이 서랍에서 가장 잦습니다.
     */
-    const tags = [entry.kind, tool?.name].filter((value): value is string => Boolean(value));
+    const tags = [entry.kind, product?.name].filter((value): value is string => Boolean(value));
 
     const score = scoreOf(query, entry.title, tags, entry.summary);
     if (score === 0) continue;
 
     hits.push({
-      key: `p-${entry.toolId}-${entry.slug}`,
+      key: `p-${entry.vendorId}-${entry.productId}-${entry.slug}`,
       score,
       href: playbookNotePath(entry),
       title: entry.title,
-      label: tool?.name ?? '가이드',
-      labelColor: tool?.vendor ? VENDOR_COLOR[tool.vendor] : 'var(--brand-text)',
+      label: product?.name ?? 'AI 가이드',
+      labelColor: VENDOR_COLOR[entry.vendorId as VendorId] ?? 'var(--brand-text)',
       meta: `${entry.readTime} MIN`,
       date: entry.updatedAt,
     });

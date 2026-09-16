@@ -1,3 +1,4 @@
+import { playbookIndex } from 'virtual:playbook-index';
 import { articles } from './data/articles';
 import { certs } from './data/certs';
 import { certPrepNotes } from './data/certPrep';
@@ -5,8 +6,9 @@ import { categoryIdsIn } from './data/categories';
 import { mathTracks } from './data/curriculum';
 import { pythonNotes } from './data/mirror';
 import { newsViewIds } from './data/news';
-import { playbookNotePath, playbookNotesOf } from './data/playbook';
-import { playbookToolIds } from './data/playbookTools';
+import { playbookNotePath } from './data/playbook';
+import { guideProducts } from './data/guideProducts';
+import { guideVendorIds } from './data/guideVendors';
 
 /** 정적으로 존재하는 페이지. 리다이렉트 전용 경로는 포함하지 않습니다. */
 export const staticRoutes: string[] = [
@@ -32,9 +34,10 @@ export const staticRoutes: string[] = [
   '/learn/certs',
   ...certs.map((cert) => `/learn/certs/${cert.id}`),
   '/research',
-  // AI 가이드. 도구마다 아는 값과 노트 목록이 섭니다.
+  // AI 가이드. 기업 칩으로 한 번 거르고, 제품마다 아는 값과 노트 목록이 섭니다.
   '/playbook',
-  ...playbookToolIds.map((id) => `/playbook/${id}`),
+  ...guideVendorIds.map((id) => `/playbook/${id}`),
+  ...guideProducts.map((p) => `/playbook/${p.vendorId}/${p.id}`),
   '/privacy',
 ];
 
@@ -46,8 +49,8 @@ export const prerenderRoutes: string[] = [
   ...certPrepNotes.map((note) => note.path),
   // 옮겨 온 글. 원문이 techblog에 있어도 이 주소로 들어오는 사람이 있으므로 HTML을 미리 냅니다.
   ...pythonNotes.map((note) => note.path),
-  // 가이드 노트. 도구 이름으로 검색해 들어오는 자리라 HTML이 먼저 있어야 합니다.
-  ...playbookToolIds.flatMap((id) => playbookNotesOf(id).map(playbookNotePath)),
+  // 가이드 노트. 제품 이름으로 검색해 들어오는 자리라 HTML이 먼저 있어야 합니다.
+  ...playbookIndex.map(playbookNotePath),
 ];
 
 /** sitemap.xml에 넣을 경로. 404는 색인 대상이 아니므로 제외합니다. */
@@ -60,7 +63,5 @@ export const sitemapRoutes: Array<{ path: string; lastModified?: string }> = [
     쪽으로 모이고, 우리 주소는 「여기에도 있다」는 것만 알립니다.
   */
   ...pythonNotes.map((note) => ({ path: note.path, lastModified: note.syncedAt })),
-  ...playbookToolIds.flatMap((id) =>
-    playbookNotesOf(id).map((note) => ({ path: playbookNotePath(note), lastModified: note.updatedAt })),
-  ),
+  ...playbookIndex.map((note) => ({ path: playbookNotePath(note), lastModified: note.updatedAt })),
 ];

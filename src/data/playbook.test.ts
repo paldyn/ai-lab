@@ -11,13 +11,14 @@ import {
   shownValue,
 } from './playbook';
 import { playbookClaims } from './playbookClaims';
-import { playbookTools } from './playbookTools';
+import { guideProducts } from './guideProducts';
+import { guideVendors } from './guideVendors';
 import type { Claim } from '../types/playbook';
 
 /** 임계를 시험하려고 짓는 가짜 주장. 실제 목록과 섞이지 않습니다. */
 const fake = (volatility: Claim['volatility']): Claim => ({
   id: 'x-probe',
-  tool: 'shared',
+  product: 'claude-code',
   topic: 'habit',
   statement: '임계를 재려고 만든 주장',
   value: '값',
@@ -152,7 +153,8 @@ describe('AI 가이드 — nav 문턱', () => {
     낮추면 이 검사가 서게 합니다.
   */
   it('최소선 셋이 안 낮아졌다', () => {
-    expect(playbookTools.length).toBeGreaterThanOrEqual(6);
+    expect(guideVendors.length).toBeGreaterThanOrEqual(3);
+    expect(guideProducts.length).toBeGreaterThanOrEqual(6);
     expect(playbookNavVisible.toString()).toContain('40');
     expect(playbookNavVisible.toString()).toContain('6');
     expect(playbookNavVisible.toString()).toContain('8');

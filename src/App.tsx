@@ -12,7 +12,7 @@ import { NewsPage } from './pages/NewsPage';
 import { NotFoundPage } from './pages/NotFoundPage';
 import { PlaybookNotePage } from './pages/PlaybookNotePage';
 import { PlaybookPage } from './pages/PlaybookPage';
-import { PlaybookToolPage } from './pages/PlaybookToolPage';
+import { PlaybookProductPage } from './pages/PlaybookProductPage';
 import { PrivacyPage } from './pages/PrivacyPage';
 import { ResearchPage } from './pages/ResearchPage';
 
@@ -58,8 +58,10 @@ export default function App() {
           도구·노트 라우트는 그 페이지가 생기는 2~3일 차에 답니다(PLAYBOOK-PLAN.md).
         */}
         <Route path="/playbook" element={<PlaybookPage />} />
-        <Route path="/playbook/:toolId" element={<PlaybookToolPage />} />
-        <Route path="/playbook/:toolId/:slug" element={<PlaybookNotePage />} />
+        {/* 기업 칩은 같은 화면을 거릅니다 — 학습의 갈래 탭과 같은 방식입니다. */}
+        <Route path="/playbook/:vendorId" element={<PlaybookPage />} />
+        <Route path="/playbook/:vendorId/:productId" element={<PlaybookProductPage />} />
+        <Route path="/playbook/:vendorId/:productId/:slug" element={<PlaybookNotePage />} />
         <Route path="/articles/:slug" element={<ArticlePage />} />
         <Route path="/privacy" element={<PrivacyPage />} />
         {/* 지난 주소들. /concepts는 2026-08-04에 /learn으로 바꿨습니다. */}

@@ -17,13 +17,15 @@ export const PLAYBOOK_DIR = 'src/content/playbook';
  * 사실이어야 하는데, 여기 담는 것은 「지금 그 제품의 상태」입니다 — 요금제, 사용 한도,
  * 티어 이름, 어느 모델이 무엇에 맞는가. 같은 서랍에 넣으면 썩는 글과 안 썩는 글이
  * 한 목록에 섞이고, 사슬·접두사 표·6,000자 하한이 전부 걸립니다.
- * 폴더 이름이 곧 도구 id입니다(`chatgpt`·`claude`·`gemini`·`claude-code`·`codex`·`shared`).
- *
- * 시험 노트(`cert-prep-index.ts`)와 구조가 같습니다 — 두 층 폴더에 `NN-슬러그.md`입니다.
+ * **폴더가 두 겹입니다** — `<기업 id>/<제품 id>/NN-슬러그.md`. 2026-09-16에 기업 층을
+ * 넣으면서 한 겹 깊어졌습니다. 주소가 폴더 모양을 그대로 따라가므로, 원고를 옮기면
+ * 주소가 함께 옮겨집니다.
  */
 export interface PlaybookEntry {
-  /** 폴더 이름. `playbookTools.ts`의 id와 같아야 합니다. */
-  toolId: string;
+  /** 바깥 폴더 이름. `guideVendors.ts`의 id와 같아야 합니다. */
+  vendorId: string;
+  /** 안쪽 폴더 이름. `guideProducts.ts`의 id와 같아야 합니다. */
+  productId: string;
   /** 파일 이름에서 확장자만 뗀 것. 주소에 그대로 씁니다. */
   slug: string;
   title: string;
@@ -53,8 +55,8 @@ const FILE_NAME = /^(\d{2})-([a-z0-9-]+)\.md$/;
 
 async function readEntry(file: string, root: string): Promise<PlaybookEntry | null> {
   const relative = path.relative(path.join(root, PLAYBOOK_DIR), file);
-  const [toolId, name] = relative.split(path.sep);
-  if (!toolId || !name) return null;
+  const [vendorId, productId, name] = relative.split(path.sep);
+  if (!vendorId || !productId || !name) return null;
 
   const matched = FILE_NAME.exec(name);
   if (!matched) {
@@ -71,7 +73,8 @@ async function readEntry(file: string, root: string): Promise<PlaybookEntry | nu
   if (data.draft === true) return null;
 
   return {
-    toolId,
+    vendorId,
+    productId,
     slug: `${matched[1]}-${matched[2]}`,
     title: String(data.title),
     summary: String(data.description),
@@ -88,13 +91,18 @@ export function playbookIndexPlugin(): Plugin {
 
   const load = async () => {
     const dir = path.join(root, PLAYBOOK_DIR);
-    const files = await fg('*/*.md', { cwd: dir, absolute: true });
+    const files = await fg('*/*/*.md', { cwd: dir, absolute: true });
     const entries = (await Promise.all(files.map((file) => readEntry(file, root)))).filter(
       (entry): entry is PlaybookEntry => entry !== null,
     );
 
-    // 도구 안에서는 파일 번호 순, 도구끼리는 id 순으로 고정합니다.
-    entries.sort((a, b) => a.toolId.localeCompare(b.toolId) || a.order - b.order);
+    // 제품 안에서는 파일 번호 순, 그 위로는 id 순으로 고정합니다.
+    entries.sort(
+      (a, b) =>
+        a.vendorId.localeCompare(b.vendorId) ||
+        a.productId.localeCompare(b.productId) ||
+        a.order - b.order,
+    );
 
     return `export const playbookIndex = ${JSON.stringify(entries)};\n`;
   };

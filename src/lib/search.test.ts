@@ -2,10 +2,9 @@ import { playbookIndex } from 'virtual:playbook-index';
 import { describe, expect, it } from 'vitest';
 import { articles } from '../data/articles';
 import { newsItems, releaseOf } from '../data/news';
-import { playbookToolById } from '../data/playbookTools';
+import { guideProductById } from '../data/guideProducts';
 import { getSource } from '../data/sources';
 import { countByScope, search, splitMatch } from './search';
-import type { ToolId } from '../types/playbook';
 
 /**
  * 이 파일이 지키는 것은 둘입니다.
@@ -47,8 +46,8 @@ const 소식매치 = (query: string) =>
 
 const 가이드매치 = (query: string) =>
   playbookIndex.filter((entry) => {
-    const tool = playbookToolById(entry.toolId as ToolId);
-    const tags = [entry.kind, tool?.name].filter((value): value is string => Boolean(value));
+    const product = guideProductById(entry.productId);
+    const tags = [entry.kind, product?.name].filter((value): value is string => Boolean(value));
     return matches(query, entry.title, tags, entry.summary);
   }).length;
 

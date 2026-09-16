@@ -40,7 +40,7 @@ npm run check:playbook
 ## STEP 1 — 오늘 쓸 두 편을 고른다
 
 ```bash
-ls src/content/playbook/*/
+ls src/content/playbook/*/*/
 ```
 
 `PLAYBOOK-PLAN.md`의 「첫 노트 여덟」부터 위에서 차례로 집는다. 여덟을 다 쓰면
@@ -51,7 +51,7 @@ ls src/content/playbook/*/
 
 ## STEP 2 — 쓴다
 
-원고는 `src/content/playbook/<도구 id>/NN-슬러그.md`. 분량은 4,000~7,000자.
+원고는 `src/content/playbook/<기업 id>/<제품 id>/NN-슬러그.md`. 분량은 4,000~7,000자.
 
 ```
 ---

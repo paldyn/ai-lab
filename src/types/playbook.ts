@@ -6,32 +6,51 @@
  * 것인지**를 함께 들고 다닙니다. 그 둘이 없는 값은 이 서랍에 못 들어옵니다.
  */
 
-export type ToolId = 'chatgpt' | 'claude' | 'gemini' | 'claude-code' | 'codex' | 'shared';
+export type VendorId = 'anthropic' | 'openai' | 'google';
 
-export type Vendor = 'OpenAI' | 'Anthropic' | 'Google';
-
-/** 어디서 쓰는 물건인가. 같은 벤더라도 앱과 CLI는 한도 체계가 다릅니다. */
-export type Surface = '앱' | 'CLI' | '공통';
-
-export interface Tool {
-  id: ToolId;
+export interface VendorInfo {
+  id: VendorId;
+  /** 회사의 공식 표기. */
   name: string;
-  /** 만든 곳. 도구에 안 매이는 `shared`만 비어 있습니다. */
-  vendor: Vendor | null;
-  surface: Surface;
-  /** 제품 자체로 가는 길. `shared`는 없습니다. */
-  officialUrl: string | null;
+  /** 칩과 카드에 서는 두세 글자 마크. 로고 파일을 쓰지 않습니다. */
+  mark: string;
+  blurb: string;
+  officialUrl: string;
+}
+
+/**
+ * 제품이 맡는 자리.
+ *
+ * 회사마다 같은 자리를 채우는 제품이 있고 **빈 자리도 있습니다.** 화면은 빈 자리를
+ * 「—」로 채우지 않고 그 묶음을 아예 안 그립니다 — 자격증 일정 표에서 값 없는 칸을
+ * 열로 안 세우는 것과 같은 규칙입니다. 반대로 한 자리에 **둘 이상**인 회사도 있으므로
+ * (Google의 코딩) 격자로 짜지 않고 묶음 목록으로 그립니다.
+ */
+export type Role = '챗' | '업무' | '코딩';
+
+/**
+ * 제품 하나.
+ *
+ * **표면(surface)은 별개 제품이 아닙니다.** Anthropic 용어집이 못 박습니다 —
+ * 「Surface: Any place you access Claude Code: the CLI, VS Code, JetBrains, Desktop,
+ * or claude.ai. All surfaces share the same engine.」 OpenAI의 Codex도, Google의
+ * Antigravity도 같은 모양입니다. 표면을 제품으로 세면 세 회사 합쳐 예순이 넘고
+ * 목록이 무너집니다. **제품이 한 칸이고 표면은 그 칸의 속성입니다.**
+ */
+export interface Product {
+  /** kebab. 주소에 그대로 들어가고 원고 폴더 이름이 됩니다. */
+  id: string;
+  vendorId: VendorId;
+  /** **공식 표기 그대로.** 대소문자와 띄어쓰기를 바꾸지 않습니다. */
+  name: string;
+  role: Role;
+  /** 이 제품을 만나는 자리들. 별개 제품이 아니라 같은 것의 다른 표면입니다. */
+  surfaces: string[];
+  oneLine: string;
+  officialUrl: string;
   /** 값을 다시 확인하러 여는 곳. 갱신 루틴이 여는 자리입니다. */
   docsUrl: string | null;
-  blurb: string;
-  /** 카드에 서는 두세 글자 마크. 로고 파일을 쓰지 않습니다. */
   mark: string;
-  /*
-    **확인 못 한 칸을 여기 손으로 적지 않습니다.** 자격증의 `unknowns`가 그 모양이었고,
-    화면에도 안 나가고 검사도 안 보는 채로 122항목이 묵었습니다. 여기서는 모르는 값을
-    `value: null`인 주장으로 세워 **화면에 「모름」 줄로 내보내고**, 할 일 목록은 그것에서
-    계산합니다(`toolOpenItems`). 손으로 쓰는 목록이 없으면 어긋날 자리도 없습니다.
-  */
 }
 
 /**
@@ -84,7 +103,8 @@ export interface Measurement {
 export interface Claim {
   /** kebab. 본문의 `:claim[...]`과 확인 로그가 이 id로 이 주장을 부릅니다. */
   id: string;
-  tool: ToolId;
+  /** 어느 제품의 값인가. `guideProducts.ts`의 id입니다. */
+  product: string;
   topic: 'tier' | 'limit' | 'price' | 'context' | 'feature' | 'habit';
   /** 한 줄 주장. */
   statement: string;

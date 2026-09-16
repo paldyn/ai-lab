@@ -1,7 +1,8 @@
 import { playbookIndex, type PlaybookEntry } from 'virtual:playbook-index';
-import type { CheckEntry, Claim, ClaimState, Freshness, ToolId, Volatility } from '../types/playbook';
+import type { CheckEntry, Claim, ClaimState, Freshness, Volatility } from '../types/playbook';
+import { guideProducts } from './guideProducts';
+import { guideVendors } from './guideVendors';
 import { playbookClaims } from './playbookClaims';
-import { playbookTools } from './playbookTools';
 
 /**
  * 도구·주장·확인 로그 셋을 합쳐 화면이 쓸 모양으로 만듭니다.
@@ -113,8 +114,10 @@ export interface ToolFreshness {
 
 const RECENT_DAYS = 14;
 
-export function toolFreshness(toolId: ToolId, today: string): ToolFreshness {
-  const states = playbookClaims.filter((c) => c.tool === toolId).map((c) => claimState(c, today));
+export function productFreshness(productId: string, today: string): ToolFreshness {
+  const states = playbookClaims
+    .filter((c) => c.product === productId)
+    .map((c) => claimState(c, today));
   const ages = states.map((s) => s.ageDays).filter((n): n is number => n !== null);
 
   return {
@@ -141,17 +144,28 @@ export function toolFreshness(toolId: ToolId, today: string): ToolFreshness {
  * 모르는 값이 **화면에 「모름」 줄로 서고** 그 줄들에서 목록이 나옵니다 — 손으로 쓰는
  * 목록이 없으면 어긋날 자리도 없습니다.
  */
-export function toolOpenItems(toolId: ToolId): string[] {
-  return playbookClaims.filter((c) => c.tool === toolId && c.value === null).map((c) => c.statement);
+export function productOpenItems(productId: string): string[] {
+  return playbookClaims
+    .filter((c) => c.product === productId && c.value === null)
+    .map((c) => c.statement);
 }
 
-/** 그 도구의 노트. 파일 번호 순입니다. */
-export function playbookNotesOf(toolId: ToolId): PlaybookEntry[] {
-  return playbookIndex.filter((entry) => entry.toolId === toolId);
+/** 그 제품의 노트. 파일 번호 순입니다. */
+export function playbookNotesOf(productId: string): PlaybookEntry[] {
+  return playbookIndex.filter((entry) => entry.productId === productId);
 }
 
+/** 그 기업의 노트 전부. 제품을 건너 셉니다. */
+export function playbookNotesOfVendor(vendorId: string): PlaybookEntry[] {
+  return playbookIndex.filter((entry) => entry.vendorId === vendorId);
+}
+
+/** 주소가 폴더 모양을 그대로 따라갑니다 — `/playbook/<기업>/<제품>/<슬러그>`. */
 export const playbookNotePath = (entry: PlaybookEntry): string =>
-  `/playbook/${entry.toolId}/${entry.slug}`;
+  `/playbook/${entry.vendorId}/${entry.productId}/${entry.slug}`;
+
+export const playbookProductPath = (vendorId: string, productId: string): string =>
+  `/playbook/${vendorId}/${productId}`;
 
 /**
  * 이 서랍을 nav에 세워도 되는가.
@@ -159,11 +173,13 @@ export const playbookNotePath = (entry: PlaybookEntry): string =>
  * 만료가 40%를 넘거나 확인 로그가 21일 비면 스스로 내려갑니다.
  * **nav에 안 서는 것이 거짓말하는 것보다 낫습니다.** 되살아나는 조건은 로그 파일 하나입니다.
  *
- * 최소선(도구 여섯 · 주장 마흔 · 노트 여덟)을 못 넘겨도 안 섭니다 — 글 0편인 칸이
- * 466·400·44 옆에 같은 무게로 서면 안 됩니다.
+ * 최소선(기업 셋 · 제품 여섯 · 주장 마흔 · 노트 여덟)을 못 넘겨도 안 섭니다 —
+ * 글 0편인 칸이 466·400·44 옆에 같은 무게로 서면 안 됩니다. 2026-09-16에 기업 층을
+ * 넣으면서 「도구 여섯」이 「기업 셋 + 제품 여섯」이 됐습니다. **낮춘 것이 아닙니다.**
  */
 export function playbookNavVisible(today: string): boolean {
-  if (playbookTools.length < 6) return false;
+  if (guideVendors.length < 3) return false;
+  if (guideProducts.length < 6) return false;
   if (playbookClaims.length < 40) return false;
   if (playbookIndex.length < 8) return false;
 

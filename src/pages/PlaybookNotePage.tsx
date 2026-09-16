@@ -4,13 +4,13 @@ import { Link, Navigate, useParams } from 'react-router';
 import { ImageLightbox } from '../components/ImageLightbox';
 import { Seo } from '../components/Seo';
 import { playbookNotesOf, playbookNotePath, todayInSeoul } from '../data/playbook';
-import { playbookToolById } from '../data/playbookTools';
+import { guideProductById } from '../data/guideProducts';
+import { guideVendorById } from '../data/guideVendors';
 import { fillClaimRefs } from '../lib/claimRef';
 import { initialPlaybookBody, loadPlaybookBody } from '../lib/playbookBody';
 import { watchImageZoom, type ZoomedImage } from '../lib/imageZoom';
 import { watchSelectionRibbon } from '../lib/selectionRibbon';
 import type { ArticleBody } from '../types/article';
-import type { ToolId } from '../types/playbook';
 
 /**
  * 가이드 노트 한 편.
@@ -24,26 +24,34 @@ import type { ToolId } from '../types/playbook';
  * hydrate 뒤 오늘 날짜로 다시 계산돼 만료된 값이 화면에서 사라집니다.
  */
 export function PlaybookNotePage() {
-  const { toolId, slug } = useParams<{ toolId: string; slug: string }>();
-  const tool = toolId ? playbookToolById(toolId as ToolId) : undefined;
-  const note = tool ? playbookNotesOf(tool.id).find((entry) => entry.slug === slug) : undefined;
+  const { vendorId, productId, slug } = useParams<{
+    vendorId: string;
+    productId: string;
+    slug: string;
+  }>();
+  const vendor = vendorId ? guideVendorById(vendorId) : undefined;
+  const product = productId ? guideProductById(productId) : undefined;
+  const note =
+    vendor && product && product.vendorId === vendor.id
+      ? playbookNotesOf(product.id).find((entry) => entry.slug === slug)
+      : undefined;
 
   const [body, setBody] = useState<ArticleBody | null>(() =>
-    tool && slug ? initialPlaybookBody(tool.id, slug) : null,
+    vendor && product && slug ? initialPlaybookBody(vendor.id, product.id, slug) : null,
   );
   const [zoomed, setZoomed] = useState<ZoomedImage | null>(null);
   const proseRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (!tool || !slug) return undefined;
+    if (!vendor || !product || !slug) return undefined;
     let cancelled = false;
-    loadPlaybookBody(tool.id, slug).then((loaded) => {
+    loadPlaybookBody(vendor.id, product.id, slug).then((loaded) => {
       if (!cancelled) setBody(loaded);
     });
     return () => {
       cancelled = true;
     };
-  }, [tool, slug]);
+  }, [vendor, product, slug]);
 
   useEffect(() => {
     if (!proseRef.current) return undefined;
@@ -64,15 +72,15 @@ export function PlaybookNotePage() {
     [body],
   );
 
-  if (!tool || !note) return <Navigate to="/playbook" replace />;
+  if (!vendor || !product || !note) return <Navigate to="/playbook" replace />;
 
   return (
     <>
       <Seo title={note.title} description={note.summary} path={playbookNotePath(note)} />
 
       <article className="site-wrap section-space">
-        <Link to={`/playbook/${tool.id}`} className="playbook-back">
-          <ArrowLeft size={13} aria-hidden="true" /> {tool.name}
+        <Link to={`/playbook/${vendor.id}/${product.id}`} className="playbook-back">
+          <ArrowLeft size={13} aria-hidden="true" /> {product.name}
         </Link>
 
         <p className="playbook-note-meta">
@@ -85,7 +93,7 @@ export function PlaybookNotePage() {
           <div
             ref={proseRef}
             id="playbook-body"
-            data-key={`${tool.id}/${note.slug}`}
+            data-key={`${vendor.id}/${product.id}/${note.slug}`}
             className="article-prose"
             dangerouslySetInnerHTML={{ __html: html }}
           />

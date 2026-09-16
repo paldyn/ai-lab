@@ -826,7 +826,30 @@ AI·데이터 자격증 열넷을 `/learn/certs`에 세운다. **글이 아니�
 ## AI 가이드
 
 AI 도구를 **잘 쓰고 아껴 쓰는 법**을 담는 다섯 번째 서랍. 주소는 `/playbook`이고
-nav 이름은 「가이드」다. 계획과 결정 기록은 `PLAYBOOK-PLAN.md`가 들고 있다.
+nav 이름은 「AI 가이드」다. 계획과 결정 기록은 `PLAYBOOK-PLAN.md`가 들고 있다.
+
+**층이 둘이다 — 기업이 바깥, 제품이 안쪽이다**(2026-09-16에 넣었다). 회사마다
+챗·업무·코딩을 한 벌씩 내놓고 있어서, 무엇과 무엇을 견줄지가 회사 안에서가 아니라
+**회사끼리**일 때가 많다. 기업은 셋(`anthropic`·`openai`·`google`)이고
+`src/data/guideVendors.ts`에, 제품은 `src/data/guideProducts.ts`에 있다.
+
+**표면은 별개 제품이 아니다.** Anthropic 용어집이 못 박는다 — 「Surface: Any place you
+access Claude Code: the CLI, VS Code, JetBrains, Desktop, or claude.ai. All surfaces
+share the same engine.」 Codex도 Antigravity도 같다. 표면을 제품으로 세면 세 회사 합쳐
+예순이 넘는다(실측: Anthropic 16 · OpenAI 23 · Google 24). **제품이 한 칸이고 표면은 그
+칸의 속성**(`surfaces`)이다. 요금제도 제품이 아니다 — Pro·Max·Plus·Team·Enterprise는
+전부 요금제이고, 「Claude Enterprise」가 제품처럼 읽히지만 요금제 페이지의 칸 이름이다.
+
+**이름은 회사가 쓰는 표기 그대로 적는다.** 읽기 좋게 다듬지 않는다 — 「Gemini app」을
+「Gemini」로 줄이면 모델 계열 이름과 제품 이름이 한 낱말이 된다. Google은 그 둘을
+갈라 쓴다. 「Claude Work」는 없다 — Anthropic 쪽은 **Claude Cowork**이고 **ChatGPT
+Work**는 OpenAI 것이다.
+
+**빈 자리는 비워 둔다.** Google에는 챗·코딩에 대응하는 업무 제품을 아직 확정하지
+못했다. 지어내 채우는 대신 그 자리가 화면에 아예 안 서게 둔다 — 자격증 일정 표에서
+값 없는 칸을 열로 안 세우는 것과 같은 규칙이다. 그래서 화면을 **격자로 짜지 않는다**:
+한 갈래에 둘인 회사가 있고(Google의 코딩) 아예 빈 회사도 있어서, 갈래는 머리글이
+아니라 카드에 붙는 꼬리표다.
 
 **경계 한 줄: 원리를 다루면 학습, 지금 그 제품의 상태에 기대면 가이드다.**
 반년 뒤 틀릴 수 있는 문장이 논지를 떠받치면 여기다. 캐싱이 왜 싸지는가는 학습이고,
@@ -836,9 +859,9 @@ nav 이름은 「가이드」다. 계획과 결정 기록은 `PLAYBOOK-PLAN.md`�
 접두사 표·6,000자 하한·채우기 큐·「신규 글 멈춤」에 하나도 안 걸린다(시험 노트와
 같은 이유). 「학습 전체 466편」에도 안 더한다.
 
-- 원고: `src/content/playbook/<도구 id>/NN-슬러그.md`
-- 주소: `/playbook/<도구 id>/NN-슬러그`
-- 도구 id 여섯 — `chatgpt` `claude` `gemini` `claude-code` `codex` `shared`
+- 원고: `src/content/playbook/<기업 id>/<제품 id>/NN-슬러그.md`
+- 주소: `/playbook/<기업 id>/<제품 id>/NN-슬러그` — **폴더가 곧 주소다**
+- 기업 id 셋 — `anthropic` `openai` `google`
 - frontmatter 다섯 칸 — `title`, `description`(30~160자),
   `kind`(`설정`·`기법`·`한도`·`비교`·`대질`), `pubDate`, `claims`
 - `01`~`79` 계획 주제 · `80`~`89` 총정리 · `90`부터 대질
