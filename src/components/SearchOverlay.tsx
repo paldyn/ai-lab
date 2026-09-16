@@ -17,6 +17,7 @@ const SCOPES: Array<{ id: SearchScope; label: string }> = [
   { id: 'learn', label: '학습' },
   { id: 'research', label: '리서치' },
   { id: 'news', label: '뉴스' },
+  { id: 'playbook', label: '가이드' },
 ];
 
 export function SearchOverlay({ open, onClose }: SearchOverlayProps) {
@@ -29,6 +30,12 @@ export function SearchOverlay({ open, onClose }: SearchOverlayProps) {
   const [cursor, setCursor] = useState(0);
 
   const counts = useMemo(() => countByScope(), []);
+  /*
+    0건인 칸은 칩을 안 세웁니다. 가이드 서랍은 최소선을 넘길 때까지 nav에 안 서므로
+    검색이 그리로 가는 유일한 길인데, **0이 적힌 칩은 길이 아니라 막다른 곳입니다** —
+    466·400 옆에 0이 같은 무게로 서면 나머지 칩의 숫자까지 덜 믿기게 됩니다.
+  */
+  const scopes = useMemo(() => SCOPES.filter((item) => counts[item.id] > 0), [counts]);
   const hits = useMemo(() => search(query, scope), [query, scope]);
 
   const close = useCallback(() => {
@@ -113,7 +120,7 @@ export function SearchOverlay({ open, onClose }: SearchOverlayProps) {
         className="search-panel"
         role="dialog"
         aria-modal="true"
-        aria-label="글과 소식 검색"
+        aria-label="글·소식·가이드 검색"
         onKeyDown={handleKeyDown}
       >
         <div className="search-panel-input">
@@ -127,7 +134,7 @@ export function SearchOverlay({ open, onClose }: SearchOverlayProps) {
             aria-activedescendant={hits.length > 0 ? `search-hit-${cursor}` : undefined}
             aria-autocomplete="list"
             autoComplete="off"
-            placeholder="글 제목, 개념, 소식으로 검색"
+            placeholder="글 제목, 개념, 소식, 도구 이름으로 검색"
             value={query}
             onChange={(event) => setQuery(event.target.value)}
           />
@@ -137,7 +144,7 @@ export function SearchOverlay({ open, onClose }: SearchOverlayProps) {
         </div>
 
         <div className="search-scopes" aria-label="검색 범위">
-          {SCOPES.map((item) => (
+          {scopes.map((item) => (
             <button
               key={item.id}
               type="button"

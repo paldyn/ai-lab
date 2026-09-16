@@ -1,8 +1,11 @@
+import { playbookIndex } from 'virtual:playbook-index';
 import { describe, expect, it } from 'vitest';
 import { articles } from '../data/articles';
 import { newsItems, releaseOf } from '../data/news';
+import { playbookToolById } from '../data/playbookTools';
 import { getSource } from '../data/sources';
 import { countByScope, search, splitMatch } from './search';
+import type { ToolId } from '../types/playbook';
 
 /**
  * 이 파일이 지키는 것은 둘입니다.
@@ -11,8 +14,10 @@ import { countByScope, search, splitMatch } from './search';
  * 있는데도 검색으로 닿을 길이 없었고, 오버레이 발밑의 '○○건'이 자른 뒤의 수를
  * 세서 107건 걸린 검색어에 30건이라고 적었습니다.
  *
- * **글과 소식을 함께 훑는다.** 글 306편만 보던 동안 '뉴스' 범위 칩은 언제 눌러도
- * 0건이었고, 소식 387건은 검색 경로에 아예 없었습니다.
+ * **글과 소식과 가이드를 함께 훑는다.** 글 306편만 보던 동안 '뉴스' 범위 칩은 언제
+ * 눌러도 0건이었고, 소식 387건은 검색 경로에 아예 없었습니다. 활용 가이드는 최소선을
+ * 넘기기 전까지 nav에 안 서므로 **검색이 그리로 가는 유일한 길**입니다 — 여기서
+ * 빠지면 그 서랍은 주소를 아는 사람만 볼 수 있습니다.
  *
  * 기대값은 코퍼스에서 직접 세어 만듭니다. 글이나 소식이 몇으로 늘든 성립합니다.
  */
@@ -40,20 +45,29 @@ const 소식매치 = (query: string) =>
     return matches(query, item.title, tags, item.summary);
   }).length;
 
+const 가이드매치 = (query: string) =>
+  playbookIndex.filter((entry) => {
+    const tool = playbookToolById(entry.toolId as ToolId);
+    const tags = [entry.kind, tool?.name].filter((value): value is string => Boolean(value));
+    return matches(query, entry.title, tags, entry.summary);
+  }).length;
+
+const 전부매치 = (query: string) => 글매치(query) + 소식매치(query) + 가이드매치(query);
+
 /** 코퍼스에서 가장 많이 걸리는 한 글자. 상한이 되살아나면 여기서 먼저 걸립니다. */
 const WIDEST = ['a', 'e', 'i', '의', '스', '이'].reduce((best, q) =>
-  글매치(q) + 소식매치(q) > 글매치(best) + 소식매치(best) ? q : best,
+  전부매치(q) > 전부매치(best) ? q : best,
 );
 
 describe('검색', () => {
   it('가장 넓은 검색어가 30건을 훨씬 넘는다', () => {
     // 넘지 않으면 아래 '전부 돌려준다' 검사가 상한을 못 잡습니다.
-    expect(글매치(WIDEST) + 소식매치(WIDEST), `가장 넓은 검색어 "${WIDEST}"`).toBeGreaterThan(30);
+    expect(전부매치(WIDEST), `가장 넓은 검색어 "${WIDEST}"`).toBeGreaterThan(30);
   });
 
   it('걸린 것을 하나도 자르지 않고 전부 돌려준다', () => {
     for (const query of [WIDEST, 'ai', '모델', '학습', 'llm']) {
-      expect(search(query).length, `"${query}"`).toBe(글매치(query) + 소식매치(query));
+      expect(search(query).length, `"${query}"`).toBe(전부매치(query));
     }
   });
 
@@ -77,8 +91,10 @@ describe('검색', () => {
     const 학습 = search(WIDEST, 'learn');
     const 리서치 = search(WIDEST, 'research');
     const 뉴스 = search(WIDEST, 'news');
+    const 가이드 = search(WIDEST, 'playbook');
 
-    expect(학습.length + 리서치.length + 뉴스.length).toBe(whole.length);
+    expect(학습.length + 리서치.length + 뉴스.length + 가이드.length).toBe(whole.length);
+    expect(가이드.every((hit) => hit.href.startsWith('/playbook/'))).toBe(true);
     expect(학습.every((hit) => hit.href.startsWith('/articles/'))).toBe(true);
     expect(리서치.every((hit) => hit.href.startsWith('/articles/'))).toBe(true);
   });
@@ -86,7 +102,7 @@ describe('검색', () => {
   it('결과 수가 곧 화면에 적히는 수다', () => {
     // 오버레이 발밑의 '○○건'은 이 배열의 length를 그대로 씁니다.
     const hits = search(WIDEST);
-    expect(hits.length).toBe(글매치(WIDEST) + 소식매치(WIDEST));
+    expect(hits.length).toBe(전부매치(WIDEST));
     expect(new Set(hits.map((hit) => hit.key)).size).toBe(hits.length);
   });
 
@@ -113,10 +129,26 @@ describe('검색', () => {
 
   it('범위 칩의 숫자가 실제 개수와 맞는다', () => {
     const counts = countByScope();
-    expect(counts.all).toBe(articles.length + newsItems.length);
+    expect(counts.all).toBe(articles.length + newsItems.length + playbookIndex.length);
     expect(counts.news).toBe(newsItems.length);
     expect(counts.news).toBeGreaterThan(0);
-    expect(counts.learn + counts.research + counts.news).toBe(counts.all);
+    expect(counts.playbook).toBe(playbookIndex.length);
+    expect(counts.learn + counts.research + counts.news + counts.playbook).toBe(counts.all);
+  });
+
+  /*
+    **이 서랍을 만든 이유가 걸린 검사입니다.** 절약 이야기를 찾는 사람이 검색으로
+    여기에 못 닿으면, 값을 데이터로 빼고 나이를 붙이고 「모름」을 세운 장치가 전부
+    아무도 안 보는 곳에서만 돕니다. 노트를 더 쓰다가 제목을 바꿔도 이 길은 남아야 합니다.
+  */
+  it('「토큰 절약」으로 가이드 노트를 찾을 수 있다', () => {
+    const hits = search('토큰 절약', 'playbook');
+    expect(hits.length).toBeGreaterThan(0);
+    expect(hits.every((hit) => hit.href.startsWith('/playbook/'))).toBe(true);
+
+    // 전체 범위에서도 같은 것이 나와야 합니다 — 칩을 눌러야만 보이면 길이 아닙니다.
+    const 전체 = search('토큰 절약');
+    expect(전체.some((hit) => hit.href.startsWith('/playbook/'))).toBe(true);
   });
 
   it('제목에서 검색어 구간을 잘라 낸다', () => {

@@ -300,7 +300,7 @@ export function Layout({ children }: { children: ReactNode }) {
               type="button"
               className="nav-search-trigger"
               onClick={() => setSearchOpen(true)}
-              aria-label="글과 소식 검색 열기"
+              aria-label="글·소식·가이드 검색 열기"
               title="검색 ( / )"
             >
               <Search size={16} strokeWidth={1.8} aria-hidden="true" />

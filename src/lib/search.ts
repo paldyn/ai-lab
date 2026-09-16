@@ -1,10 +1,22 @@
+import { playbookIndex } from 'virtual:playbook-index';
 import { articles } from '../data/articles';
 import { categoryById } from '../data/categories';
 import { fullDate, newsItems, releaseOf } from '../data/news';
+import { playbookNotePath } from '../data/playbook';
+import { playbookToolById } from '../data/playbookTools';
 import { getSource } from '../data/sources';
 import type { SectionId } from '../types/article';
+import type { ToolId, Vendor } from '../types/playbook';
 
-export type SearchScope = 'all' | SectionId;
+/**
+ * 검색 범위.
+ *
+ * **`SectionId`를 늘리지 않고 여기만 넓힙니다.** `SectionId`는 섹션 일반이 아니라
+ * `Category.section`의 값이라(`src/types/article.ts`), 늘리면 `categoriesIn('playbook')`이
+ * 영원히 빈 배열이고 아래 `countByScope`의 루프가 영원히 0을 셉니다. 자격증이
+ * `SectionId`가 아니었던 이유가 그대로 있습니다.
+ */
+export type SearchScope = 'all' | SectionId | 'playbook';
 
 /**
  * 결과 한 줄. 글과 소식을 함께 담습니다.
@@ -116,6 +128,56 @@ function newsHits(query: string, scope: SearchScope): SearchHit[] {
   return hits;
 }
 
+/*
+  가이드 노트의 꼬리표 색. 뉴스가 회사마다 색을 다르게 쓰는 것과 같은 자리라 같은
+  토큰을 그대로 씁니다 — 새 색을 내지 않으므로 `theme.test.ts` 파급이 0입니다.
+  도구에 안 매인 `shared`만 브랜드색입니다.
+*/
+const VENDOR_COLOR: Record<Vendor, string> = {
+  OpenAI: 'var(--source-openai-text)',
+  Anthropic: 'var(--source-anthropic-text)',
+  Google: 'var(--source-google-text)',
+};
+
+/**
+ * 가이드 노트.
+ *
+ * **주장은 아직 안 담습니다.** 주장 한 줄은 제 주소가 없어서 눌러도 도구 페이지의
+ * 표 어딘가로 떨어질 뿐이고, 소식처럼 모달로 열 자리도 없습니다. 값으로 찾아오는
+ * 길은 대조표가 맡고 검색은 노트만 겁니다 — 앵커를 붙이기 전까지는 그렇습니다.
+ */
+function playbookHits(query: string, scope: SearchScope): SearchHit[] {
+  if (scope !== 'all' && scope !== 'playbook') return [];
+
+  const hits: SearchHit[] = [];
+
+  for (const entry of playbookIndex) {
+    const tool = playbookToolById(entry.toolId as ToolId);
+
+    /*
+      태그 자리에 도구 이름과 `kind`를 둡니다. 「Codex」처럼 도구만 아는 상태로
+      찾는 것과 「한도」처럼 갈래로 훑는 것이 이 서랍에서 가장 잦습니다.
+    */
+    const tags = [entry.kind, tool?.name].filter((value): value is string => Boolean(value));
+
+    const score = scoreOf(query, entry.title, tags, entry.summary);
+    if (score === 0) continue;
+
+    hits.push({
+      key: `p-${entry.toolId}-${entry.slug}`,
+      score,
+      href: playbookNotePath(entry),
+      title: entry.title,
+      label: tool?.name ?? '가이드',
+      labelColor: tool?.vendor ? VENDOR_COLOR[tool.vendor] : 'var(--brand-text)',
+      meta: `${entry.readTime} MIN`,
+      date: entry.updatedAt,
+    });
+  }
+
+  return hits;
+}
+
 /**
  * 걸린 것을 **전부** 돌려줍니다.
  *
@@ -131,7 +193,11 @@ export function search(rawQuery: string, scope: SearchScope = 'all'): SearchHit[
   const query = normalize(rawQuery);
   if (query.length === 0) return [];
 
-  const hits = [...articleHits(query, scope), ...newsHits(query, scope)];
+  const hits = [
+    ...articleHits(query, scope),
+    ...newsHits(query, scope),
+    ...playbookHits(query, scope),
+  ];
   hits.sort((a, b) => b.score - a.score || b.date.localeCompare(a.date));
   return hits;
 }
@@ -139,10 +205,11 @@ export function search(rawQuery: string, scope: SearchScope = 'all'): SearchHit[
 /** 검색 범위별 개수. 오버레이의 범위 칩에 붙습니다. */
 export function countByScope(): Record<SearchScope, number> {
   const counts: Record<SearchScope, number> = {
-    all: articles.length + newsItems.length,
+    all: articles.length + newsItems.length + playbookIndex.length,
     learn: 0,
     research: 0,
     news: newsItems.length,
+    playbook: playbookIndex.length,
   };
 
   for (const article of articles) {
