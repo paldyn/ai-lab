@@ -130,10 +130,14 @@ function LearnView({ picked }: { picked?: Picked }) {
         kicker="PALDYN LEARN"
         title="AI 학습"
         description="AI가 어떻게 작동하는지 배웁니다. 모델의 원리부터 그 아래를 떠받치는 수학, 실제로 굴리는 방법까지."
-        stats={[
-          { label: '전체', value: `${total}편` },
-          { label: '분야', value: String(learnCategories.length).padStart(2, '0') },
-        ]}
+        /*
+          「분야 08」을 뺐습니다. `section: 'learn'`인 카테고리 수였는데 화면에서
+          그 여덟이 한자리에 서는 곳이 없습니다 — 배너 바로 아래 칩은 넷이고
+          AI 레일은 일곱, 수학은 셋, 언어는 둘입니다. 2026-09-08에 갈래를 넷으로
+          바꾸면서 배너만 옛 구조에 남아 있던 자국이라, 칩이 바로 아래에서 갈래를
+          다 보여 주므로 숫자로 또 세지 않습니다.
+        */
+        stats={[{ label: '전체', value: `${total}편` }]}
       />
 
       {/*
