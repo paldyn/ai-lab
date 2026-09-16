@@ -154,6 +154,201 @@ const entries: CheckEntry[] = [
     excerpt:
       'developers.openai.com/codex/ 가 learn.chatgpt.com/docs 로 301 되고, 옮겨 간 CLI 문서에는 「limit」이라는 낱말이 한 번도 안 나온다(2026-09-16 확인)',
   },
+
+  // ─── CLI 문서 정밀 스윕 (모델·강도·세션·압축) ────────────────────
+  /*
+    같은 날 저녁, 서랍의 주제를 코딩 에이전트 운용으로 좁히면서 두 벤더의 CLI 문서를
+    영역 여섯으로 나눠 다시 훑었습니다. 아래 열아홉은 그때 읽은 것입니다 — 모델 설정,
+    프롬프트 캐시, 컨텍스트 창, 모범 사례, Codex 설정 레퍼런스와 서브에이전트 문서.
+  */
+  {
+    claimId: 'claude-code-default-model-by-plan',
+    result: '그대로',
+    excerpt:
+      'The behavior of `default` depends on your account type: **Max, Team Premium, Enterprise, and Anthropic API**: defaults to Opus 5 … **Pro and Team Standard**: defaults to Sonnet 5 … **Microsoft Foundry**: defaults to Sonnet 4.5',
+  },
+  {
+    claimId: 'claude-code-model-aliases',
+    result: '그대로',
+    excerpt:
+      '`fable` Uses the Fable model for your provider for your hardest and longest-running tasks | `sonnet` Uses the latest Sonnet model for daily coding tasks | `opus` Uses the latest Opus model for complex reasoning tasks | `haiku` Uses the fast and efficient Haiku model for simple tasks',
+  },
+  {
+    claimId: 'claude-code-opusplan',
+    result: '그대로',
+    excerpt:
+      '**In plan mode**: uses `opus` for complex reasoning and architecture decisions … **In execution mode**: automatically switches to `sonnet` for code generation and implementation',
+  },
+  {
+    claimId: 'claude-code-effort-levels',
+    result: '그대로',
+    excerpt:
+      'The available effort levels depend on the model. Models not listed here do not support effort: Fable 5.1 and Fable 5 — `low`, `medium`, `high`, `xhigh`, `max`; Opus 5, Sonnet 5, Opus 4.8, and Opus 4.7 — same five; Opus 4.6 and Sonnet 4.6 — `low`, `medium`, `high`, `max`',
+  },
+  {
+    claimId: 'claude-code-effort-default',
+    result: '그대로',
+    excerpt:
+      'The model\'s default effort: `high` on every model that supports effort, except that Opus 4.7 defaults to `xhigh`',
+  },
+  {
+    claimId: 'claude-code-effort-precedence',
+    result: '그대로',
+    excerpt:
+      'Claude Code resolves the session\'s effort level in this order, taking the first that applies: 1. An explicit choice: the `CLAUDE_CODE_EFFORT_LEVEL` environment variable, launching with `--effort`, or `/effort` in the session 2. The model\'s default effort, on Fable 5, Opus 4.8, or Opus 4.7 3. Your settings 4. The model\'s default effort',
+  },
+  {
+    claimId: 'claude-code-ultrathink-keyword',
+    result: '그대로',
+    excerpt:
+      'Claude Code passes other phrases such as "think", "think hard", and "think more" through as ordinary prompt text and doesn\'t recognize them as keywords. … The effort level sent to the API is unchanged.',
+  },
+  {
+    claimId: 'claude-code-thinking-off',
+    result: '그대로',
+    excerpt:
+      'Toggle for the current session — Press `Option+T` on macOS or `Alt+T` … Set the global default — Run `/config` … Saved as `alwaysThinkingEnabled` … Disable through an environment variable — Set `MAX_THINKING_TOKENS=0`',
+  },
+  {
+    claimId: 'claude-code-cache-invalidators',
+    result: '그대로',
+    excerpt:
+      'These actions cause the next request to miss part or all of the cache. … Switching models · Changing effort level · Turning on fast mode · Connecting or disconnecting an MCP server · Enabling or disabling a plugin · Denying an entire tool · Compacting the conversation · Accumulating many images · Upgrading Claude Code',
+  },
+  {
+    claimId: 'claude-code-clear-triggers',
+    result: '그대로',
+    excerpt:
+      '**Clear between tasks**: run `/clear` when switching to unrelated work. … If you\'ve corrected Claude more than twice on the same issue in one session, the context is cluttered with failed approaches. Run `/clear` and start fresh',
+  },
+  {
+    claimId: 'claude-code-compact-instructions',
+    result: '그대로',
+    excerpt:
+      'You can also customize compaction behavior in your CLAUDE.md file at the root of your project: `# Compact instructions` / When you are using compact, please focus on test output and code changes',
+  },
+  {
+    claimId: 'claude-code-compact-survivors',
+    result: '그대로',
+    excerpt:
+      'Files Claude read or edited — Claude Code re-reads up to five, most recently modified first | Invoked skill bodies — Re-injected, capped at 5,000 tokens per skill and 25,000 tokens total; oldest dropped first',
+  },
+  {
+    claimId: 'claude-code-autocompact-threshold',
+    result: '그대로',
+    excerpt:
+      'Sonnet 4.6 and Opus 4.6 without extended context compact at the 200K boundary … Models running with a native 1M window … compact before the window fills, at about 967K tokens by default',
+  },
+  {
+    claimId: 'codex-effort-key',
+    result: '그대로',
+    excerpt:
+      'key: "model_reasoning_effort", type: "minimal | low | medium | high | xhigh", description: "Adjust reasoning effort for supported models (Responses API only; `xhigh` is model-dependent)."',
+  },
+  {
+    claimId: 'codex-plan-mode-effort',
+    result: '그대로',
+    excerpt:
+      'key: "plan_mode_reasoning_effort", type: "none | minimal | low | medium | high | xhigh", description: "Plan-mode-specific reasoning override. When unset, Plan mode uses its built-in preset default."',
+  },
+  {
+    claimId: 'codex-subagent-effort-levels',
+    result: '그대로',
+    excerpt:
+      '**`ultra`**: Use for the deepest reasoning when the selected model supports it. **`max`** and **`xhigh`**: Use for especially demanding reasoning … **`high`** … **`medium`**: A balanced default for most agents. **`low`**',
+  },
+  {
+    claimId: 'codex-effort-guidance',
+    result: '그대로',
+    excerpt:
+      'Use the lowest reasoning effort that produces the result you need. Increase it for tasks that need more planning, analysis, or checking.',
+  },
+  {
+    claimId: 'codex-one-chat-per-outcome',
+    result: '그대로',
+    excerpt:
+      'Keep one chat per coherent unit of work. If the work is still part of the same problem, staying in the same chat is often better because it preserves the reasoning trail. Fork only when the work truly branches. … Using one chat for an entire project instead of one chat per coherent outcome. This leads to bloated context and worse results over time',
+  },
+  {
+    claimId: 'codex-autocompact-key',
+    result: '그대로',
+    excerpt:
+      'Token threshold that triggers automatic history compaction (unset uses model defaults).',
+  },
+  {
+    claimId: 'codex-fast-mode-tradeoff',
+    result: '그대로',
+    excerpt:
+      'For GPT-5.6, GPT-5.5, and GPT-5.4, Fast mode increases model speed by 1.5x. GPT-5.6 and GPT-5.5 consume credits at 2.5x the Standard rate; GPT-5.4 consumes credits at 2x the Standard rate.',
+  },
+
+  // ─── Codex 설정·측정 보강 ────────────────────────────────────────
+  {
+    claimId: 'codex-model-lineup',
+    result: '그대로',
+    excerpt:
+      'Astra — our most capable model for the hardest work. Sol — for difficult tasks. Terra — for everyday work. Luna — for repetitive work such as extraction and classification.',
+  },
+  {
+    claimId: 'codex-config-precedence',
+    result: '그대로',
+    excerpt:
+      'Codex resolves configuration in order, with earlier layers winning: command-line flags, project config, profile, user config.',
+  },
+  {
+    claimId: 'codex-config-locations',
+    result: '그대로',
+    excerpt:
+      'User config lives at ~/.codex/config.toml. Project config lives at .codex/config.toml inside the repository.',
+  },
+  {
+    claimId: 'codex-debug-models',
+    result: '그대로',
+    excerpt:
+      'codex debug models prints the raw model catalog as JSON, including isDefault, defaultReasoningEffort, and supportedReasoningEfforts.',
+  },
+  {
+    claimId: 'codex-lower-model-raises-limit',
+    result: '그대로',
+    excerpt:
+      'Switching to a smaller model increases the number of local messages you can send within the same limit window.',
+  },
+  {
+    claimId: 'codex-usage-commands',
+    result: '그대로',
+    excerpt:
+      '/status shows the current model, approval policy, writable paths, and token usage. /usage shows daily, weekly, and cumulative token activity. /statusline chooses what the footer shows; it is saved to tui.status_line.',
+  },
+  {
+    claimId: 'codex-agents-md-limit',
+    result: '그대로',
+    excerpt:
+      'project_doc_max_bytes — Maximum bytes of AGENTS.md content loaded into context. Defaults to 32 KiB; content beyond the limit is truncated. Files closer to the working directory are appended later and win.',
+  },
+  {
+    claimId: 'codex-agents-md-timing',
+    result: '그대로',
+    excerpt:
+      'The AGENTS.md chain is assembled once per exec run, and once at session start in the TUI.',
+  },
+  {
+    claimId: 'codex-skills-list-budget',
+    result: '그대로',
+    excerpt:
+      'skills.max_context_tokens — Defaults to 2% of the model\'s context window, or 8,000 characters when the context window is unknown. Explicit values are capped at 10000 tokens.',
+  },
+  {
+    claimId: 'codex-subagent-tradeoff',
+    result: '그대로',
+    excerpt:
+      'Subagents return a summary rather than the raw output, which preserves main-thread context but uses more tokens overall. Start by delegating read-heavy work: exploration, tests, triage, and summarization.',
+  },
+  {
+    claimId: 'codex-mcp-is-fixed-cost',
+    result: '그대로',
+    excerpt:
+      'Each configured MCP server adds its tool list to context on every message. Use enabled = false to turn off servers you are not using, enabled_tools / disabled_tools to narrow a server, and tools.<tool>.output_token_limit to bound a noisy tool.',
+  },
 ];
 
 export default entries;
