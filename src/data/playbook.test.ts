@@ -1,6 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import { renderMarkdown } from '../../plugins/markdown';
 import { fillClaimRefs } from '../lib/claimRef';
+import { playbookIndex } from 'virtual:playbook-index';
 import {
   FRESHNESS_DAYS,
   claimState,
@@ -10,6 +11,7 @@ import {
   shownValue,
 } from './playbook';
 import { playbookClaims } from './playbookClaims';
+import { playbookTools } from './playbookTools';
 import type { Claim } from '../types/playbook';
 
 /** 임계를 시험하려고 짓는 가짜 주장. 실제 목록과 섞이지 않습니다. */
@@ -137,12 +139,20 @@ describe('활용 가이드 — 본문의 값 참조', () => {
 
 describe('활용 가이드 — nav 문턱', () => {
   /*
-    **nav에 안 서는 것이 거짓말하는 것보다 낫습니다.** 지금은 주장이 마흔에 못 미쳐
-    안 섭니다 — 설계대로입니다. 이 검사가 「지금 안 선다」를 못 박아 두어, 나중에
-    최소선을 슬그머니 낮추는 일이 눈에 띄게 합니다.
+    **2026-09-16에 최소선을 넘겼습니다** — 도구 여섯 · 주장 마흔 · 노트 여덟.
+    서랍의 주제를 코딩 에이전트 운용으로 좁히면서 CLI 문서에서 값이 한꺼번에 들어온
+    날입니다.
+
+    검사의 방향이 그날 뒤집혔습니다. 그전에는 「지금 안 선다」를 못 박아 **최소선을
+    슬그머니 낮추는 것**을 막았는데, 넘긴 뒤로는 반대쪽이 위험합니다 — 주장이나 노트를
+    지우다가 문턱 아래로 내려가면 화면은 그대로인 채 근거만 사라집니다. 그래서 지금은
+    셋을 각각 재고, 파생값이 그것과 맞는지 함께 봅니다.
   */
-  it('최소선을 못 넘기면 안 선다', () => {
-    expect(playbookNavVisible('2026-09-16')).toBe(false);
+  it('최소선 셋을 실제로 넘겼다', () => {
+    expect(playbookTools.length).toBeGreaterThanOrEqual(6);
+    expect(playbookClaims.length).toBeGreaterThanOrEqual(40);
+    expect(playbookIndex.length).toBeGreaterThanOrEqual(8);
+    expect(playbookNavVisible('2026-09-16')).toBe(true);
   });
 
   it('확인 로그가 오래 비면 안 선다', () => {
