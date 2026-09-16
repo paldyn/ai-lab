@@ -281,7 +281,24 @@ export function Layout({ children }: { children: ReactNode }) {
     데이터는 이미 초기 번들에 있습니다 — 검색이 `data/playbook`을 부르고 있어서
     이 import로 새로 드는 비용은 없습니다(2026-09-16에 청크를 열어 확인했습니다).
   */
-  const guideInNav = playbookNavVisible(todayInSeoul());
+  /*
+    **개발 중에는 규칙과 무관하게 세웁니다.** 서랍이 최소선을 못 넘겨 스스로 nav에서
+    내려가 있는데(주장 0 · 노트 0 · 확인 로그 0), 그러면 만드는 동안 주소를 직접
+    쳐야만 화면에 닿습니다.
+
+    **규칙 자체는 안 건드립니다** — `playbookNavVisible`을 그대로 두고 부르는 이 자리만
+    엽니다. 둘을 섞으면 `playbook.test.ts`가 깨집니다(그 검사는 지금 `false`를
+    기대하는데, vitest에서는 `DEV`가 참이라 규칙 안에 넣으면 늘 참이 됩니다).
+    배포에서는 `DEV`가 거짓이라 「안 채우면 화면이 스스로 내려간다」는 압력이 그대로
+    남습니다 — 그 압력이 이 장치의 존재 이유이므로 개발 편의로 무르지 않습니다.
+  */
+  const guideMeetsBar = playbookNavVisible(todayInSeoul());
+  const guideDevOnly = !guideMeetsBar && import.meta.env.DEV;
+  const guideInNav = guideMeetsBar || guideDevOnly;
+  /* 개발 중에만 선 링크는 눌러 보면 알 수 없으므로 마우스를 얹으면 말해 줍니다. */
+  const guideNavHint = guideDevOnly
+    ? '개발 중에만 보입니다 — 최소선(주장 40 · 노트 8 · 확인 로그)을 넘기면 배포에도 섭니다'
+    : undefined;
 
   const goToTop = () => {
     // 여기서는 behavior를 넘기지 않습니다. html의 scroll-behavior를 그대로 따르므로
@@ -326,7 +343,7 @@ export function Layout({ children }: { children: ReactNode }) {
               선 채로 머리말만 화면 밖에 남습니다(학습·뉴스와 같은 이유).
             */}
             {guideInNav && (
-              <NavLink to="/playbook" onClick={startAtTop}>
+              <NavLink to="/playbook" onClick={startAtTop} title={guideNavHint}>
                 AI 가이드
               </NavLink>
             )}
@@ -375,7 +392,12 @@ export function Layout({ children }: { children: ReactNode }) {
               <NavLink to="/learn" className={navClass('learn', 'mobile-nav-link')} onClick={startAtTop}>학습</NavLink>
               <NavLink to="/research" className={navClass('research', 'mobile-nav-link')}>리서치</NavLink>
               {guideInNav && (
-                <NavLink to="/playbook" className="mobile-nav-link" onClick={startAtTop}>
+                <NavLink
+                  to="/playbook"
+                  className="mobile-nav-link"
+                  onClick={startAtTop}
+                  title={guideNavHint}
+                >
                   AI 가이드
                 </NavLink>
               )}
