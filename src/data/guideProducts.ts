@@ -20,10 +20,19 @@ import type { Product, Role, VendorId } from '../types/playbook';
  * 확정하지 못했습니다. 지어내 채우는 대신 그 묶음이 화면에 아예 안 서게 둡니다 —
  * 모른다고 적는 것이 이 서랍의 규칙입니다.
  *
- * **심볼은 계열 단위입니다.** 저장소에 있는 로고가 회사·계열 심볼뿐이라 한 계열의
- * 제품 여럿이 같은 심볼을 답니다(Claude 셋은 전부 `claude.svg`). 없는 마크를 지어
- * 그리지 않습니다 — 제품을 가르는 것은 이름과 갈래 꼬리표입니다.
- * Antigravity만 계열 심볼이 따로 없어 회사 로고를 씁니다.
+ * **심볼은 있는 것만 전용으로 씁니다**(2026-09-16에 찾아봤습니다).
+ *
+ * | 제품 | 로고 | 어디서 |
+ * | --- | --- | --- |
+ * | Claude · Claude Cowork | `claude.svg` | 계열 심볼. Cowork 전용 마크는 없습니다 — 그 제품 페이지의 파비콘도 Claude 것입니다 |
+ * | Claude Code | `claude-code.svg` | **전용 심볼이 있습니다.** Simple Icons(CC0) |
+ * | ChatGPT · ChatGPT Work · Codex | `openai.svg` | 셋 다 전용 마크가 없습니다. OpenAI가 한 매듭 심볼을 그대로 씁니다 |
+ * | Gemini app · Gemini CLI | `gemini.svg` | 계열 심볼 |
+ * | Google Antigravity | `antigravity.png` | **전용 심볼이 있습니다.** 제품 사이트가 아이콘으로 거는 파일 |
+ *
+ * 없는 마크를 지어 그리지 않습니다 — 같은 심볼이 겹치는 자리는 이름과 갈래
+ * 꼬리표가 가릅니다. Antigravity 심볼만 그라디언트라 PNG이고, 색이 든 로고이므로
+ * 다크 테마에서 반전시키지 않습니다.
  *
  * 배열 순서가 곧 화면 순서입니다.
  */
@@ -62,7 +71,7 @@ export const guideProducts: Product[] = [
     oneLine: '저장소를 읽고 고치고 명령까지 돌리는 코딩 에이전트.',
     officialUrl: 'https://code.claude.com/docs/en/overview',
     docsUrl: 'https://code.claude.com/docs',
-    logo: 'assets/claude.svg',
+    logo: 'assets/claude-code.svg',
     monochrome: true,
   },
 
@@ -131,7 +140,7 @@ export const guideProducts: Product[] = [
     oneLine: '여러 에이전트를 한자리에서 굴리는 개발 플랫폼.',
     officialUrl: 'https://antigravity.google/',
     docsUrl: null,
-    logo: 'assets/google.svg',
+    logo: 'assets/antigravity.png',
     monochrome: false,
   },
   {

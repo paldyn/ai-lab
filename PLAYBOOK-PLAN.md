@@ -35,6 +35,26 @@
 >   표면을 제품으로 세면 세 회사 합쳐 예순이 넘는다
 > - Pro·Max·Plus·Team·Enterprise는 전부 요금제다. 「Claude Enterprise」도 그렇다
 >
+> ## 로고
+>
+> 약자 마크(AN·OA·GO / CL·CW·CC)를 심볼 로고로 갈았다. 기업 칩에도 단다 — 거기서
+> 고르는 것은 분류가 아니라 **회사**라 로고가 가장 빠른 단서다.
+>
+> | 파일 | 어디서 | 라이선스 |
+> | --- | --- | --- |
+> | `anthropic` `openai` `google` `claude` `gemini` | 이미 저장소에 있던 것(뉴스가 쓰던 것) | Simple Icons · CC0 |
+> | `claude-code.svg` | 2026-09-16에 받음 | Simple Icons · CC0 |
+> | `antigravity.png` | 2026-09-16에 받음. 제품 사이트가 아이콘으로 거는 파일 | Google 상표 |
+>
+> **전용 마크가 있는 것만 전용으로 쓴다.** Simple Icons 전체를 뒤져 보니 이 서랍에
+> 해당하는 것은 Claude Code 하나뿐이었다(Codex·Antigravity·Cowork·Gemini CLI는 없다).
+> 제품 사이트를 직접 열어 보니 **Cowork와 Codex는 전용 마크 자체가 없었다** — Cowork
+> 페이지의 파비콘도 Claude 것이고, OpenAI는 회사·ChatGPT·Codex에 같은 매듭 심볼을
+> 쓴다. 없는 마크를 지어 그리지 않고 계열 심볼을 그대로 둔다.
+>
+> 겹치는 자리는 이름과 갈래 꼬리표가 가른다. 단색 로고만 다크에서 반전시키고,
+> 색이 든 로고(Google·Antigravity)는 그대로 둔다 — 반전을 걸면 다른 로고가 된다.
+>
 > **찾아낸 버그 하나.** 옛 도구 카드에는 **링크가 하나도 없었다.** `/playbook`의
 > 링크 12개가 전부 벤더 공식 페이지로 나가는 바깥 링크였고, 노트 8편으로 들어가는
 > 길이 화면에 0개였다 — 주소를 직접 쳐야만 닿았다. 카드를 링크로 만들면서 안쪽
