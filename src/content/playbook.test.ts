@@ -8,7 +8,7 @@ import { playbookToolIds } from '../data/playbookTools';
 import { collapsedLines } from './collapsedLines';
 
 /**
- * 활용 노트가 지켜야 하는 것.
+ * 가이드 노트가 지켜야 하는 것.
  *
  * **글(`src/content/articles`)과 다른 서랍입니다.** 사슬도 카테고리도 태그도 없고
  * 6,000자 하한·채우기 큐에 안 걸립니다. 대신 이 서랍만의 규칙이 하나 있습니다 —
@@ -42,7 +42,7 @@ function readNotes(): Note[] {
 
 const notes = readNotes();
 
-describe('활용 노트', () => {
+describe('가이드 노트', () => {
   it('폴더 이름이 실제 도구 id다', () => {
     const dirs = existsSync(DIR)
       ? readdirSync(DIR, { withFileTypes: true }).filter((e) => e.isDirectory()).map((e) => e.name)

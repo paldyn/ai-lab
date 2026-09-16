@@ -11,7 +11,7 @@ const RESOLVED_ID = `\0${VIRTUAL_ID}`;
 export const PLAYBOOK_DIR = 'src/content/playbook';
 
 /**
- * 활용 가이드 노트 하나.
+ * AI 가이드 노트 하나.
  *
  * **글(`src/content/articles`)과 다른 서랍입니다.** 학습 글은 원리를 담고 반년 뒤에도
  * 사실이어야 하는데, 여기 담는 것은 「지금 그 제품의 상태」입니다 — 요금제, 사용 한도,
@@ -58,7 +58,7 @@ async function readEntry(file: string, root: string): Promise<PlaybookEntry | nu
 
   const matched = FILE_NAME.exec(name);
   if (!matched) {
-    throw new Error(`${relative}: 활용 노트 파일 이름은 NN-슬러그.md 꼴이어야 합니다`);
+    throw new Error(`${relative}: 가이드 노트 파일 이름은 NN-슬러그.md 꼴이어야 합니다`);
   }
 
   const raw = await readFile(file, 'utf8');

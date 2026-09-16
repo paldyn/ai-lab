@@ -6,7 +6,7 @@ const modules = import.meta.glob<{ html: string; headings: ArticleBody['headings
 
 /*
   시험 노트 본문과 같은 구조입니다(`certPrepBody.ts`). 키가 둘인 것도 같은 이유 —
-  활용 노트는 도구 폴더 안에 있어 슬러그만으로는 어느 도구의 글인지 알 수 없습니다.
+  가이드 노트는 도구 폴더 안에 있어 슬러그만으로는 어느 도구의 글인지 알 수 없습니다.
 */
 const cache = new Map<string, ArticleBody>();
 

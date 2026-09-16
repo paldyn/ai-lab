@@ -32,7 +32,7 @@ function ToolCard({ tool, today }: { tool: Tool; today: string }) {
 }
 
 /**
- * 활용 가이드의 첫 화면 — 도구 카드와 전체 사실 대조표.
+ * AI 가이드의 첫 화면 — 도구 카드와 전체 사실 대조표.
  *
  * **nav 다섯째 칸은 최소선(도구 여섯 · 주장 마흔 · 노트 여덟)을 넘긴 날에 켭니다.**
  * 지금 이 주소는 살아 있되 메뉴에는 안 섭니다.
@@ -47,13 +47,13 @@ export function PlaybookPage() {
   return (
     <>
       <Seo
-        title="가이드"
+        title="AI 가이드"
         description="터미널 코딩 에이전트를 어떤 모델과 강도로 돌리고, 세션을 언제 새로 파고, 언제 압축할지. 공식 지침과 현장 통설과 우리가 직접 잰 것을 갈라 담습니다."
         path="/playbook"
       />
       <PageHeader
         kicker="PALDYN GUIDE"
-        title="활용 가이드"
+        title="AI 가이드"
         description="코딩 에이전트를 어떤 모델과 강도로 돌리고, 세션을 언제 새로 파고, 언제 압축할지를 담습니다. 값마다 어디서 온 것이고 언제 확인한 것인지를 함께 적습니다."
       />
 

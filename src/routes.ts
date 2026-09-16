@@ -32,7 +32,7 @@ export const staticRoutes: string[] = [
   '/learn/certs',
   ...certs.map((cert) => `/learn/certs/${cert.id}`),
   '/research',
-  // 활용 가이드. 도구마다 아는 값과 노트 목록이 섭니다.
+  // AI 가이드. 도구마다 아는 값과 노트 목록이 섭니다.
   '/playbook',
   ...playbookToolIds.map((id) => `/playbook/${id}`),
   '/privacy',
@@ -46,7 +46,7 @@ export const prerenderRoutes: string[] = [
   ...certPrepNotes.map((note) => note.path),
   // 옮겨 온 글. 원문이 techblog에 있어도 이 주소로 들어오는 사람이 있으므로 HTML을 미리 냅니다.
   ...pythonNotes.map((note) => note.path),
-  // 활용 노트. 도구 이름으로 검색해 들어오는 자리라 HTML이 먼저 있어야 합니다.
+  // 가이드 노트. 도구 이름으로 검색해 들어오는 자리라 HTML이 먼저 있어야 합니다.
   ...playbookToolIds.flatMap((id) => playbookNotesOf(id).map(playbookNotePath)),
 ];
 

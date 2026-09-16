@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * 활용 가이드의 **나이**를 봅니다. `npm test`와 일부러 갈라 두었습니다.
+ * AI 가이드의 **나이**를 봅니다. `npm test`와 일부러 갈라 두었습니다.
  *
  * 신선도를 `npm test`에 걸면 1년 중 어느 날 반드시 서고, 그때 값을 채우는 것보다
  * **임계를 올리거나 검사를 지우는 쪽이 언제나 더 쌉니다.** 게다가 매일 도는 글 루틴
@@ -78,6 +78,18 @@ for (const log of logs) {
   for (const id of log.ids) {
     if (!lastChecked.has(id) || lastChecked.get(id) < log.date) lastChecked.set(id, log.date);
   }
+}
+
+/*
+  **빈 서랍은 넘친 것이 아닙니다.** 2026-09-16에 기업 층을 넣으려고 통째로 비웠고,
+  그 상태에서 「확인 로그가 하나도 없습니다」로 매일 빨간불을 켜면 그 경고가
+  의미를 잃습니다. 반쯤 찬 상태만 잡습니다 — 주장이 있는데 로그가 없는 것이
+  진짜 위험이기 때문입니다.
+*/
+if (claims.length === 0 && logs.length === 0) {
+  console.log('  서랍이 비어 있습니다 — 뼈대를 다시 잡는 중입니다.');
+  console.log('\n넘친 것 없습니다.');
+  process.exit(0);
 }
 
 const problems = [];

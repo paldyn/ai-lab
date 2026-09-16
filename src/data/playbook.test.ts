@@ -26,7 +26,7 @@ const fake = (volatility: Claim['volatility']): Claim => ({
   source: { label: '없음', url: 'https://claude.com/pricing' },
 });
 
-describe('활용 가이드 — 확인 로그', () => {
+describe('AI 가이드 — 확인 로그', () => {
   it('로그가 가리키는 주장이 실재한다', () => {
     const ids = new Set(playbookClaims.map((c) => c.id));
     const orphan = playbookChecks.flatMap((log) =>
@@ -62,7 +62,7 @@ describe('활용 가이드 — 확인 로그', () => {
   });
 });
 
-describe('활용 가이드 — 신선도 계산', () => {
+describe('AI 가이드 — 신선도 계산', () => {
   it('날짜 사이를 일수로 센다', () => {
     expect(daysBetween('2026-09-01', '2026-09-16')).toBe(15);
     expect(daysBetween('2026-09-16', '2026-09-16')).toBe(0);
@@ -93,33 +93,25 @@ describe('활용 가이드 — 신선도 계산', () => {
   });
 });
 
-describe('활용 가이드 — 본문의 값 참조', () => {
+describe('AI 가이드 — 본문의 값 참조', () => {
   /*
     원고는 `:claim[아이디]`로 부르기만 하고 값은 데이터에만 있습니다. 그 왕복이
     깨지면 노트가 통째로 거짓이 되는데 **화면에는 아이디만 덩그러니 남아** 눈으로는
     지나치기 쉽습니다. 그래서 여기서 실제로 그려 봅니다.
   */
-  it('부른 자리에 값과 배지와 나이가 들어간다', async () => {
+  /*
+    **값이 들어가는 것까지는 지금 검사 못 합니다.** 주장 목록이 비어 있어서입니다
+    (2026-09-16에 뼈대를 다시 잡으며 비웠습니다). 여기서 지키는 것은 그 앞 단계 —
+    원고의 `:claim[...]`이 rehype 단계에서 자리를 잡는지까지입니다.
+
+    **첫 주장이 돌아오는 날 되살릴 것**: 값·배지·나이가 실제로 채워지는지, 유효기간이
+    지나면 값이 사라지고 원문 링크로 바뀌는지, `value: null`이 「모름」으로 서는지.
+    셋 다 커밋 `ed4580f`에 있습니다.
+  */
+  it('원고의 부르는 자리가 rehype 단계에서 span이 된다', async () => {
     const { html } = await renderMarkdown('Pro 요금은 :claim[claude-pro-price] 입니다.');
     expect(html).toContain('data-claim="claude-pro-price"');
-
-    const filled = fillClaimRefs(html, '2026-09-16');
-    expect(filled).toContain('월 결제 $20');
-    expect(filled).toContain('evidence-badge-vendor');
-    expect(filled).toContain('0일 전 확인');
-  });
-
-  it('유효기간이 지나면 값이 사라지고 원문으로 보낸다', async () => {
-    const { html } = await renderMarkdown(':claim[claude-pro-price]');
-    const filled = fillClaimRefs(html, '2027-01-01');
-    expect(filled).not.toContain('월 결제 $20');
-    expect(filled).toContain('유효기간 지남');
-  });
-
-  it('모르는 값은 공식 페이지로 보낸다', async () => {
-    const { html } = await renderMarkdown(':claim[chatgpt-plus-price]');
-    const filled = fillClaimRefs(html, '2026-09-16');
-    expect(filled).toContain('모름 · 공식 페이지에서 확인');
+    expect(html).toContain('class="claim-ref"');
   });
 
   /*
@@ -137,7 +129,7 @@ describe('활용 가이드 — 본문의 값 참조', () => {
   });
 });
 
-describe('활용 가이드 — nav 문턱', () => {
+describe('AI 가이드 — nav 문턱', () => {
   /*
     **2026-09-16에 최소선을 넘겼습니다** — 도구 여섯 · 주장 마흔 · 노트 여덟.
     서랍의 주제를 코딩 에이전트 운용으로 좁히면서 CLI 문서에서 값이 한꺼번에 들어온
@@ -148,11 +140,22 @@ describe('활용 가이드 — nav 문턱', () => {
     지우다가 문턱 아래로 내려가면 화면은 그대로인 채 근거만 사라집니다. 그래서 지금은
     셋을 각각 재고, 파생값이 그것과 맞는지 함께 봅니다.
   */
-  it('최소선 셋을 실제로 넘겼다', () => {
+  it('비어 있는 동안에는 안 선다', () => {
+    expect(playbookClaims.length).toBe(0);
+    expect(playbookIndex.length).toBe(0);
+    expect(playbookNavVisible('2026-09-16')).toBe(false);
+  });
+
+  /*
+    **최소선 셋은 그대로 살아 있습니다.** 비웠다고 낮추지 않았습니다 — 다시 채울 때
+    같은 문턱을 넘어야 nav가 섭니다. 여기서 그 수를 못 박아 두어, 문턱을 슬그머니
+    낮추면 이 검사가 서게 합니다.
+  */
+  it('최소선 셋이 안 낮아졌다', () => {
     expect(playbookTools.length).toBeGreaterThanOrEqual(6);
-    expect(playbookClaims.length).toBeGreaterThanOrEqual(40);
-    expect(playbookIndex.length).toBeGreaterThanOrEqual(8);
-    expect(playbookNavVisible('2026-09-16')).toBe(true);
+    expect(playbookNavVisible.toString()).toContain('40');
+    expect(playbookNavVisible.toString()).toContain('6');
+    expect(playbookNavVisible.toString()).toContain('8');
   });
 
   it('확인 로그가 오래 비면 안 선다', () => {

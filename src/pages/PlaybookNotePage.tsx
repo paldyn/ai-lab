@@ -13,7 +13,7 @@ import type { ArticleBody } from '../types/article';
 import type { ToolId } from '../types/playbook';
 
 /**
- * 활용 노트 한 편.
+ * 가이드 노트 한 편.
  *
  * 본문 처리는 글·시험 노트와 같은 파이프라인이라 수식·코드·그림 확대가 그대로
  * 동작합니다. **다른 것은 하나뿐입니다** — 그리기 직전에 `:claim[아이디]` 자리를

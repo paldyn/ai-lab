@@ -308,7 +308,7 @@ export function Layout({ children }: { children: ReactNode }) {
               `/playbook/<도구>/<슬러그>`라 주소에 이미 적혀 있습니다. NavLink가
               하위 주소까지 알아서 켭니다.
             */}
-            {guideInNav && <NavLink to="/playbook">가이드</NavLink>}
+            {guideInNav && <NavLink to="/playbook">AI 가이드</NavLink>}
           </nav>
 
           {/* 12px은 techblog.paldyn.com의 .nav-right와 같은 값입니다. */}
@@ -353,7 +353,7 @@ export function Layout({ children }: { children: ReactNode }) {
               <NavLink to="/news" className={navClass('news', 'mobile-nav-link')} onClick={startAtTop}>뉴스</NavLink>
               <NavLink to="/learn" className={navClass('learn', 'mobile-nav-link')} onClick={startAtTop}>학습</NavLink>
               <NavLink to="/research" className={navClass('research', 'mobile-nav-link')}>리서치</NavLink>
-              {guideInNav && <NavLink to="/playbook" className="mobile-nav-link">가이드</NavLink>}
+              {guideInNav && <NavLink to="/playbook" className="mobile-nav-link">AI 가이드</NavLink>}
             </div>
           </nav>
         )}
