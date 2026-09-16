@@ -59,6 +59,17 @@ export interface Product {
   role: Role;
   /** 이 제품을 만나는 자리들. 별개 제품이 아니라 같은 것의 다른 표면입니다. */
   surfaces: string[];
+  /**
+   * 이 제품 안에서 **고를 수 있는** 모델. `guideModels.ts`의 id입니다.
+   *
+   * **모델은 제품의 자식이 아니라 제품에 걸쳐 있습니다.** 같은 모델이 한 회사의
+   * 제품 여럿에서 돕니다 — 그래서 기업 → 제품 → 모델로 층을 세우면 같은 모델이
+   * 여러 번 적힙니다. 표면을 제품으로 세면 예순이 넘던 것과 같은 실수입니다.
+   * 여기서는 **참조만** 하고 모델의 값은 `guideModels.ts`와 주장에 한 번만 둡니다.
+   *
+   * 확인 못 한 제품은 빈 배열입니다. 지어내 채우지 않습니다.
+   */
+  models: string[];
   oneLine: string;
   officialUrl: string;
   /** 값을 다시 확인하러 여는 곳. 갱신 루틴이 여는 자리입니다. */
@@ -84,6 +95,29 @@ export interface Product {
    * `theme.test.ts`가 실제로 계산해 검사합니다.
    */
   accent: string;
+}
+
+/**
+ * 모델 하나 — 제품 안에서 도는 엔진.
+ *
+ * **모델을 화면의 층으로 안 세웁니다.** 이유가 셋입니다.
+ * - 같은 모델이 제품 여럿에 걸쳐 있어 트리로 세우면 중복됩니다.
+ * - **뉴스 서랍이 이미 모델 출시를 다룹니다**(`kind: 'model'`). 여기에 카탈로그를
+ *   또 세우면 두 서랍이 갈립니다.
+ * - 모델은 빨리 썩고 제품은 안 썩습니다. 모델을 뼈대로 삼으면 **뼈대가 썩습니다** —
+ *   이 서랍의 설계가 통째로 「데이터만 늙고 노트는 안 늙는다」인데 그게 무너집니다.
+ *
+ * 그래서 모델은 **값의 주인**이기만 합니다. 컨텍스트 창과 토큰 단가가 여기 붙고,
+ * 그 모델을 돌리는 제품들이 같은 주장을 함께 보여 줍니다(`claimsForProduct`).
+ */
+export interface ModelInfo {
+  /** kebab. 주장의 `subject.id`가 이 값을 부릅니다. */
+  id: string;
+  vendorId: VendorId;
+  /** **공식 표기 그대로.** 읽기 좋게 다듬지 않습니다. */
+  name: string;
+  /** API에서 부르는 id. 공식 페이지에서 못 봤으면 `null`입니다. */
+  apiId: string | null;
 }
 
 /**
@@ -133,11 +167,30 @@ export interface Measurement {
   env: string;
 }
 
+/**
+ * 이 값이 **무엇에 붙는 사실인가.**
+ *
+ * 2026-09-16에 `product: string` 하나에서 넓혔습니다. `topic` 여섯을 하나씩 따져
+ * 보니 주인이 셋으로 갈렸기 때문입니다 — `tier`·`limit`·`feature`·`habit`은 제품,
+ * `context`는 **모델**, `price`는 둘로 갈립니다(구독료는 제품, 토큰 단가는 모델).
+ * 전부 제품에 매달면 같은 모델 값이 그 모델을 쓰는 제품 수만큼 적힙니다.
+ *
+ * **화면의 층과 값의 주인은 다릅니다.** 화면은 기업 → 제품 둘이고, 주인은 셋입니다.
+ * 모델 값은 한 번만 적히고 그 모델을 돌리는 제품들이 같이 불러다 씁니다.
+ */
+export type ClaimSubjectKind = 'vendor' | 'product' | 'model';
+
+export interface ClaimSubject {
+  kind: ClaimSubjectKind;
+  /** `guideVendors` · `guideProducts` · `guideModels` 중 그 종류의 id입니다. */
+  id: string;
+}
+
 export interface Claim {
   /** kebab. 본문의 `:claim[...]`과 확인 로그가 이 id로 이 주장을 부릅니다. */
   id: string;
-  /** 어느 제품의 값인가. `guideProducts.ts`의 id입니다. */
-  product: string;
+  /** 무엇에 붙는 값인가. 기업·제품·모델 셋 중 하나입니다. */
+  subject: ClaimSubject;
   topic: 'tier' | 'limit' | 'price' | 'context' | 'feature' | 'habit';
   /** 한 줄 주장. */
   statement: string;

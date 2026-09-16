@@ -1,7 +1,13 @@
 import type { CSSProperties } from 'react';
 import { Link } from 'react-router';
 import { ClaimRow } from './ClaimRow';
-import { claimState, playbookNotePath, playbookNotesOf } from '../data/playbook';
+import {
+  claimState,
+  claimsForProduct,
+  claimsForVendor,
+  playbookNotePath,
+  playbookNotesOf,
+} from '../data/playbook';
 import { playbookClaims } from '../data/playbookClaims';
 import { guideProducts } from '../data/guideProducts';
 import { guideVendorById } from '../data/guideVendors';
@@ -105,7 +111,8 @@ function OfficialLinks({ rows }: { rows: Array<{ label: string; url: string }> }
 function ProductLedger({ product, today }: { product: Product; today: string }) {
   const vendor = guideVendorById(product.vendorId);
   const notes = playbookNotesOf(product.id);
-  const claims = playbookClaims.filter((c) => c.product === product.id);
+  // 제품 자신의 값 + 이 제품이 돌리는 모델의 값. 모델 값은 한 번만 적힙니다.
+  const claims = claimsForProduct(product.id);
   const peers = guideProducts.filter((p) => p.role === product.role && p.id !== product.id);
 
   const links = [{ label: '제품 페이지', url: product.officialUrl }];
@@ -187,9 +194,9 @@ function ProductLedger({ product, today }: { product: Product; today: string }) 
 /** 기업 하나를 골랐을 때. */
 function VendorLedger({ vendor, today }: { vendor: VendorInfo; today: string }) {
   const products = guideProducts.filter((p) => p.vendorId === vendor.id);
-  const ids = products.map((p) => p.id);
   const notes = playbookIndex.filter((n) => n.vendorId === vendor.id);
-  const claims = playbookClaims.filter((c) => ids.includes(c.product));
+  // 회사 자신 + 제품 전부 + 모델 전부. 한 모델을 제품 둘이 돌려도 한 번만 셉니다.
+  const claims = claimsForVendor(vendor.id);
 
   return (
     <div className="guide-ledger">

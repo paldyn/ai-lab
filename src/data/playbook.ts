@@ -1,6 +1,7 @@
 import { playbookIndex, type PlaybookEntry } from 'virtual:playbook-index';
 import type { CheckEntry, Claim, ClaimState, Freshness, Volatility } from '../types/playbook';
-import { guideProducts } from './guideProducts';
+import { guideModels } from './guideModels';
+import { guideProducts, guideProductById } from './guideProducts';
 import { guideVendors } from './guideVendors';
 import { playbookClaims } from './playbookClaims';
 
@@ -114,10 +115,47 @@ export interface ProductFreshness {
 
 const RECENT_DAYS = 14;
 
+const isSubject = (claim: Claim, kind: Claim['subject']['kind'], id: string) =>
+  claim.subject.kind === kind && claim.subject.id === id;
+
+/**
+ * 그 제품 화면에 서는 값.
+ *
+ * **제품 자신의 값 + 그 제품이 돌리는 모델의 값**입니다. 모델 값을 한 번만 적고
+ * 그 모델을 쓰는 제품들이 같이 불러다 쓰는 것이 이 구조의 이득입니다 — 컨텍스트
+ * 창을 Claude·Cowork·Code 세 군데에 적지 않습니다.
+ *
+ * **기업의 값은 안 끌어옵니다.** 그건 기업 화면에 섭니다. 여기까지 끌어오면 회사
+ * 값 하나가 제품 셋에 세 번 세어져 신선도 집계가 부풉니다.
+ */
+export function claimsForProduct(productId: string): Claim[] {
+  const models = guideProductById(productId)?.models ?? [];
+  return playbookClaims.filter(
+    (c) =>
+      isSubject(c, 'product', productId) ||
+      (c.subject.kind === 'model' && models.includes(c.subject.id)),
+  );
+}
+
+/**
+ * 그 기업 화면에 서는 값 — 회사 자신 + 제품 전부 + 모델 전부.
+ *
+ * **id로 겹침을 없앱니다.** 한 모델을 제품 둘이 함께 돌리면 `claimsForProduct`를
+ * 이어 붙이는 것만으로는 같은 주장이 두 번 세어집니다.
+ */
+export function claimsForVendor(vendorId: string): Claim[] {
+  const productIds = guideProducts.filter((p) => p.vendorId === vendorId).map((p) => p.id);
+  const modelIds = guideModels.filter((m) => m.vendorId === vendorId).map((m) => m.id);
+  return playbookClaims.filter(
+    (c) =>
+      isSubject(c, 'vendor', vendorId) ||
+      (c.subject.kind === 'product' && productIds.includes(c.subject.id)) ||
+      (c.subject.kind === 'model' && modelIds.includes(c.subject.id)),
+  );
+}
+
 export function productFreshness(productId: string, today: string): ProductFreshness {
-  const states = playbookClaims
-    .filter((c) => c.product === productId)
-    .map((c) => claimState(c, today));
+  const states = claimsForProduct(productId).map((c) => claimState(c, today));
   const ages = states.map((s) => s.ageDays).filter((n): n is number => n !== null);
 
   return {
@@ -145,8 +183,8 @@ export function productFreshness(productId: string, today: string): ProductFresh
  * 목록이 없으면 어긋날 자리도 없습니다.
  */
 export function productOpenItems(productId: string): string[] {
-  return playbookClaims
-    .filter((c) => c.product === productId && c.value === null)
+  return claimsForProduct(productId)
+    .filter((c) => c.value === null)
     .map((c) => c.statement);
 }
 

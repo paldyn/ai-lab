@@ -1,7 +1,9 @@
 import { describe, expect, it } from 'vitest';
 import { playbookClaims } from './playbookClaims';
-import { productOpenItems } from './playbook';
+import { claimsForProduct, productOpenItems } from './playbook';
 import { guideProductIds, guideProducts } from './guideProducts';
+import { guideModels } from './guideModels';
+import { guideVendors } from './guideVendors';
 
 /**
  * 값에 매인 검사만 여기 둡니다.
@@ -58,9 +60,41 @@ describe('AI 가이드 — 주장', () => {
     expect(ids.length).toBe(new Set(ids).size);
   });
 
-  it('제품이 실재한다', () => {
-    const unknown = playbookClaims.filter((c) => !guideProductIds.includes(c.product));
-    expect(unknown.map((c) => c.id)).toEqual([]);
+  /*
+    주인이 셋이 됐으므로 종류마다 다른 목록에 대조합니다. 종류를 안 보고 id만
+    맞춰 보면 `{ kind: 'model', id: 'claude-code' }` 같은 어긋난 짝이 통과합니다.
+  */
+  it('주장의 주인이 그 종류의 목록에 실재한다', () => {
+    const known: Record<string, string[]> = {
+      vendor: guideVendors.map((v) => v.id),
+      product: guideProductIds,
+      model: guideModels.map((m) => m.id),
+    };
+    const unknown = playbookClaims.filter((c) => !known[c.subject.kind]?.includes(c.subject.id));
+    expect(unknown.map((c) => `${c.id}(${c.subject.kind}:${c.subject.id})`)).toEqual([]);
+  });
+
+  it('제품이 가리키는 모델이 실재한다', () => {
+    const modelIds = guideModels.map((m) => m.id);
+    const dangling = guideProducts.flatMap((p) =>
+      p.models.filter((m) => !modelIds.includes(m)).map((m) => `${p.id} → ${m}`),
+    );
+    expect(dangling).toEqual([]);
+  });
+
+  /*
+    **모델은 제품의 자식이 아니라 제품에 걸쳐 있습니다.** 한 회사 안에서 같은 모델을
+    제품 여럿이 돌리는 것이 정상이라, 그 겹침을 막는 검사를 두지 않습니다 — 대신
+    제품이 **자기 회사 모델만** 가리키는지를 봅니다.
+  */
+  it('제품이 다른 회사의 모델을 가리키지 않는다', () => {
+    const vendorOf = new Map(guideModels.map((m) => [m.id, m.vendorId]));
+    const crossed = guideProducts.flatMap((p) =>
+      p.models
+        .filter((m) => vendorOf.has(m) && vendorOf.get(m) !== p.vendorId)
+        .map((m) => `${p.id}(${p.vendorId}) → ${m}(${vendorOf.get(m)})`),
+    );
+    expect(crossed).toEqual([]);
   });
 
   it('주장 문장이 비어 있지 않고 지나치게 길지 않다', () => {
@@ -162,7 +196,7 @@ describe('AI 가이드 — 주장', () => {
   it('제품마다 할 일 목록이 모르는 값에서 나온다', () => {
     for (const product of guideProducts) {
       const open = productOpenItems(product.id);
-      const nulls = playbookClaims.filter((c) => c.product === product.id && c.value === null);
+      const nulls = claimsForProduct(product.id).filter((c) => c.value === null);
       expect(open.length).toBe(nulls.length);
     }
   });

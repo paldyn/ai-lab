@@ -18,7 +18,7 @@ import type { Claim } from '../types/playbook';
 /** 임계를 시험하려고 짓는 가짜 주장. 실제 목록과 섞이지 않습니다. */
 const fake = (volatility: Claim['volatility']): Claim => ({
   id: 'x-probe',
-  product: 'claude-code',
+  subject: { kind: 'product', id: 'claude-code' },
   topic: 'habit',
   statement: '임계를 재려고 만든 주장',
   value: '값',
