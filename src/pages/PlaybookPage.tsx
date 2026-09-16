@@ -1,157 +1,37 @@
-import { Link, Navigate, useParams } from 'react-router';
-import { ChevronRight } from 'lucide-react';
-import { ClaimRow } from '../components/ClaimRow';
-import { GuideMark } from '../components/GuideMark';
+import { Navigate, useParams } from 'react-router';
+import { GuideBoard } from '../components/GuideBoard';
+import { GuideLedger } from '../components/GuideLedger';
 import { PageHeader } from '../components/PageHeader';
-import { ProductPanel } from '../components/ProductPanel';
 import { Seo } from '../components/Seo';
-import { claimState, playbookNotesOf, playbookNotesOfVendor, todayInSeoul } from '../data/playbook';
-import { playbookClaims } from '../data/playbookClaims';
-import { guideProductById, productsOfVendor } from '../data/guideProducts';
-import { guideVendorById, guideVendors } from '../data/guideVendors';
-import type { CSSProperties } from 'react';
-import type { Product, VendorInfo } from '../types/playbook';
+import { todayInSeoul } from '../data/playbook';
+import { guideProductById } from '../data/guideProducts';
+import { guideVendorById } from '../data/guideVendors';
 
 /**
- * AI 가이드의 첫 화면 — **기업을 고르고 제품을 고르는 트리 하나**입니다.
+ * AI 가이드의 첫 화면 — **붙박이 판 하나와 그 아래 원장 하나.**
  *
- * 전에는 상단에 기업 칩 줄이 있고 그 아래 제품 카드가 격자로 흘렀습니다. 두 가지가
- * 어긋나 있었습니다. 첫째, **칩과 기업 머리글이 같은 것을 두 번 세웠습니다** — 학습이
- * 「전체」 갈래에서 레일을 아예 안 세워 피한 그 중복입니다. 둘째, 주소는
- * `/playbook/<기업>/<제품>`으로 두 층인데 **화면에는 그 층이 안 보였습니다.**
+ * 세 번 갈아엎은 자리입니다. 카드 격자에서 페이지로 넘어가는 것도, 격자 아래에
+ * 패널이 펼쳐지는 것도, 기업 → 제품 아코디언 트리도 전부 거절당했습니다.
+ * 공통된 원인은 **고르는 자리가 크기나 모양을 바꾼다**는 것이었습니다 — 열리고
+ * 닫히며 아래를 밀어내면 눈이 목록을 다시 훑어야 하고, 그게 「찾기 힘들다」입니다.
  *
- * 트리는 그 둘을 한 번에 없앱니다. 접힌 기업 셋이 서 있고, 기업을 누르면 그 아래
- * 제품이 열리고, 제품을 누르면 그 아래 상세가 열립니다 — **화면의 층과 주소의 층이
- * 같은 모양**입니다. 칩은 기업 줄이 대신하므로 없앴습니다.
+ * 판은 **주소 열셋 전부에서 같은 높이·같은 자리**입니다. 고르면 잉크만 바뀌고
+ * 원장의 내용만 갈립니다. 여닫히는 것이 하나도 없으므로 다시 훑을 일이 없습니다.
  *
- * **여는 것은 언제나 하나뿐입니다.** 주소가 기업 하나·제품 하나만 담으므로 여럿을
- * 열어 두면 그 상태를 주소에 못 적고, 링크로 보낸 화면과 내가 보던 화면이 달라집니다.
+ * 판이 3×3인 것은 우연이 아닙니다 — **기업마다 제품이 정확히 셋**이라 기업으로
+ * 줄을 세우면 빈칸이 없습니다. 갈래로 세우면 Google의 업무가 비고 코딩이 둘이라
+ * 어긋납니다.
  */
-
-/** 트리 한 줄의 접힘 표시. 열리면 90도 돈다. */
-function Caret({ open }: { open: boolean }) {
-  return (
-    <ChevronRight
-      size={14}
-      className={`playbook-caret${open ? ' is-open' : ''}`}
-      aria-hidden="true"
-    />
-  );
-}
-
-function ProductRow({
-  product,
-  open,
-  today,
-}: {
-  product: Product;
-  open: boolean;
-  today: string;
-}) {
-  const notes = playbookNotesOf(product.id);
-
-  return (
-    <li
-      className={`playbook-node is-product${open ? ' is-open' : ''}`}
-      style={{ '--guide-accent': product.accent } as CSSProperties}
-    >
-      <Link
-        to={
-          open
-            ? `/playbook/${product.vendorId}`
-            : `/playbook/${product.vendorId}/${product.id}`
-        }
-        className="playbook-row"
-        aria-expanded={open}
-      >
-        <Caret open={open} />
-        <GuideMark
-          logo={product.logo}
-          monochrome={product.monochrome}
-          accent={product.accent}
-          className="playbook-row-mark"
-        />
-        {/*
-          **이름만 제목으로 올립니다.** 줄 전체가 링크라 접근성 이름에는 갈래·표면·
-          편수가 다 들어가는데, 제목 목록에는 이름만 서야 훑을 수 있습니다.
-          `<a>`는 투명 요소라 안에 제목을 두는 것이 유효합니다.
-        */}
-        <h3 className="playbook-row-name">{product.name}</h3>
-        <span className="playbook-row-role">{product.role}</span>
-        {/* 표면은 별개 제품이 아니라 같은 엔진을 만나는 자리들입니다. */}
-        <span className="playbook-row-meta">{product.surfaces.join(' · ')}</span>
-        <span className="playbook-row-count">
-          {notes.length > 0 ? `노트 ${notes.length}` : '준비 중'}
-        </span>
-      </Link>
-
-      {open && <ProductPanel product={product} today={today} />}
-    </li>
-  );
-}
-
-function VendorNode({
-  vendor,
-  openVendor,
-  openProduct,
-  today,
-}: {
-  vendor: VendorInfo;
-  openVendor: boolean;
-  openProduct?: Product;
-  today: string;
-}) {
-  const products = productsOfVendor(vendor.id);
-  const notes = playbookNotesOfVendor(vendor.id);
-
-  return (
-    <li className={`playbook-node is-vendor${openVendor ? ' is-open' : ''}`}>
-      {/* 열려 있으면 같은 줄이 닫는 줄이 됩니다 — 접는 단추를 따로 두지 않습니다. */}
-      <Link
-        to={openVendor ? '/playbook' : `/playbook/${vendor.id}`}
-        className="playbook-row"
-        aria-expanded={openVendor}
-      >
-        <Caret open={openVendor} />
-        <GuideMark
-          logo={vendor.logo}
-          monochrome={vendor.monochrome}
-          className="playbook-row-mark is-vendor"
-        />
-        <h2 className="playbook-row-name">{vendor.name}</h2>
-        <span className="playbook-row-meta">{vendor.blurb}</span>
-        <span className="playbook-row-count">
-          제품 {products.length}
-          {notes.length > 0 ? ` · 노트 ${notes.length}` : ''}
-        </span>
-      </Link>
-
-      {openVendor && (
-        <ul className="playbook-children">
-          {products.map((product) => (
-            <ProductRow
-              key={product.id}
-              product={product}
-              open={product.id === openProduct?.id}
-              today={today}
-            />
-          ))}
-        </ul>
-      )}
-    </li>
-  );
-}
-
 export function PlaybookPage() {
   const { vendorId, productId } = useParams<{ vendorId: string; productId: string }>();
-  const active = vendorId ? guideVendorById(vendorId) : undefined;
+  const vendor = vendorId ? guideVendorById(vendorId) : undefined;
   const product = productId ? guideProductById(productId) : undefined;
 
   // 없는 기업으로 들어오면 첫 화면으로 돌립니다.
-  if (vendorId && !active) return <Navigate to="/playbook" replace />;
+  if (vendorId && !vendor) return <Navigate to="/playbook" replace />;
   // 기업과 제품이 안 맞는 주소도 돌립니다 — `/playbook/openai/claude` 같은 것.
-  if (productId && (!product || product.vendorId !== active?.id)) {
-    return <Navigate to={active ? `/playbook/${active.id}` : '/playbook'} replace />;
+  if (productId && (!product || product.vendorId !== vendor?.id)) {
+    return <Navigate to={vendor ? `/playbook/${vendor.id}` : '/playbook'} replace />;
   }
 
   /*
@@ -163,15 +43,15 @@ export function PlaybookPage() {
   return (
     <>
       {/*
-        제품이 열려 있으면 제목·설명·주소가 그 제품의 것입니다. 화면의 h1은
+        제품이 골라져 있으면 제목·설명·주소가 그 제품의 것입니다. 화면의 h1은
         「AI 가이드」 그대로지만, 검색 결과에 서는 것은 제품이어야 합니다.
       */}
       <Seo
         title={
           product
             ? `${product.name} · AI 가이드`
-            : active
-              ? `${active.name} · AI 가이드`
+            : vendor
+              ? `${vendor.name} · AI 가이드`
               : 'AI 가이드'
         }
         description={
@@ -182,48 +62,28 @@ export function PlaybookPage() {
         path={
           product
             ? `/playbook/${product.vendorId}/${product.id}`
-            : active
-              ? `/playbook/${active.id}`
+            : vendor
+              ? `/playbook/${vendor.id}`
               : '/playbook'
         }
       />
       <PageHeader
         kicker="PALDYN GUIDE"
         title="AI 가이드"
-        description="기업마다 챗·업무·코딩을 한 벌씩 내놓습니다. 회사를 고르고 제품을 골라 어떻게 굴리는지를 봅니다."
+        description="기업마다 챗·업무·코딩을 한 벌씩 내놓습니다. 어느 제품을 어떻게 굴리는지를 담고, 값마다 어디서 온 것이고 언제 확인한 것인지를 함께 적습니다."
       />
 
       <div className="site-wrap section-space">
-        <ul className="playbook-tree">
-          {guideVendors.map((vendor) => (
-            <VendorNode
-              key={vendor.id}
-              vendor={vendor}
-              openVendor={vendor.id === active?.id}
-              openProduct={product}
-              today={today}
-            />
-          ))}
-        </ul>
-
+        <GuideBoard selectedId={product?.id} vendorId={vendor?.id} />
         {/*
-          **대조표는 값이 있을 때만 섭니다.** 한때 이 표가 페이지의 대부분을 차지해
-          정작 읽을거리가 화면에서 사라졌습니다. 지금은 트리가 먼저 서고 표는 그 아래입니다.
+          판을 보면 바로 생기는 질문(왜 아홉뿐인가)의 답입니다. 제품마다 되풀이하던
+          문장을 여기서 한 번만 적습니다.
         */}
-        {playbookClaims.length > 0 && (
-          <section className="mt-16">
-            <h2 className="playbook-section-title">사실 대조표</h2>
-            <p className="playbook-section-note">
-              값마다 어디서 왔고 언제 확인한 것인지가 함께 섭니다. 유효기간이 지난 값은
-              흐려지지 않고 사라집니다 — 읽히는 숫자는 믿게 되기 때문입니다.
-            </p>
-            <div className="claim-list mt-6">
-              {playbookClaims.map((claim) => (
-                <ClaimRow key={claim.id} state={claimState(claim, today)} />
-              ))}
-            </div>
-          </section>
-        )}
+        <p className="guide-board-note">
+          표면(터미널 · IDE · 데스크톱 · 웹)은 별개 제품이 아니라 같은 엔진을 만나는 자리입니다.
+        </p>
+
+        <GuideLedger product={product} vendor={vendor} today={today} />
       </div>
     </>
   );
