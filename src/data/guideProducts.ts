@@ -28,6 +28,11 @@ import type { Product, VendorId } from '../types/playbook';
  * | Claude Code | `claude-code.svg` | **전용 심볼이 있습니다.** Simple Icons(CC0) |
  * | ChatGPT · ChatGPT Work · Codex | `openai.svg` | 셋 다 전용 마크가 없습니다. OpenAI가 한 매듭 심볼을 그대로 씁니다 |
  * | Gemini app · Gemini CLI | `gemini-color.png` | Google이 제 파비콘으로 쓰는 네 색 그라디언트 |
+ *
+ * **포인트 색은 회사마다 하나입니다.** 처음에는 Gemini에만 보라를 줬는데, 로고를
+ * 진짜 네 색 그라디언트로 바꾸고 나니 그 보라가 로고 어디에도 없는 색이 됐습니다.
+ * 게다가 한 회사 줄 안에서 보라·파랑·보라로 갈려 **색이 무엇을 뜻하는지 안 읽혔습니다.**
+ * 지금은 회사색 하나로 묶습니다 — 색이 가리키는 것은 갈래가 아니라 회사입니다.
  * | Google Antigravity | `antigravity.png` | **전용 심볼이 있습니다.** 제품 사이트가 아이콘으로 거는 파일 |
  *
  * 없는 마크를 지어 그리지 않습니다 — 같은 심볼이 겹치는 자리는 이름과 갈래
@@ -140,7 +145,7 @@ export const guideProducts: Product[] = [
     docsUrl: 'https://gemini.google/subscriptions/',
     logo: 'assets/gemini-color.png',
     monochrome: false,
-    accent: 'var(--guide-gemini-text)',
+    accent: 'var(--source-google-text)',
   },
   {
     id: 'antigravity',
@@ -166,7 +171,7 @@ export const guideProducts: Product[] = [
     docsUrl: null,
     logo: 'assets/gemini-color.png',
     monochrome: false,
-    accent: 'var(--guide-gemini-text)',
+    accent: 'var(--source-google-text)',
   },
 ];
 

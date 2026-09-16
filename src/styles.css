@@ -75,12 +75,6 @@
   --source-openai-text: #111111;
   --source-google: #4285f4;
   --source-google-text: #1b64df;
-  /*
-    Gemini 계열의 포인트 색. 브랜드 원본은 #8e75b2인데 흰 배경에서 3.77:1이라
-    글자색으로는 못 씁니다 — 한 단 내려 씁니다(`theme.test.ts`가 계산해 검사합니다).
-  */
-  --guide-gemini: #8e75b2;
-  --guide-gemini-text: #6d4f9c;
 
   --cat-ai-guide-text: #1b7f46;
   --cat-deep-learning-text: #5f7a00;
@@ -130,8 +124,6 @@
   --source-openai-text: #f0f0f0;
   --source-google: #4285f4;
   --source-google-text: #5b9bff;
-  --guide-gemini: #8e75b2;
-  --guide-gemini-text: #a68fc9;
 
   --cat-ai-guide-text: #70e1a1;
   --cat-deep-learning-text: #bcd94f;
@@ -7293,7 +7285,10 @@ input:focus-visible {
   }
 }
 
+/* 카드 마크와 같은 광학 보정. 상자 중심과 글자의 시각적 중심이 다릅니다. */
 .playbook-vendor-mark {
+  position: relative;
+  top: 1px;
   display: inline-flex;
   width: 20px;
   height: 20px;
@@ -7420,8 +7415,15 @@ input:focus-visible {
 /*
   **테두리 상자를 걷어냈습니다.** 로고마다 제 모양이 있는데 같은 네모에 가두면
   그 모양이 전부 같은 크기의 회색 칸으로 읽힙니다. 지금은 심볼만 놓습니다.
+
+  **1px 내려 앉힙니다.** 상자끼리는 이미 정확히 가운데인데(재 보면 차이 0.00px)
+  글자는 줄 상자 안에서 위아래 여백을 빼고 나면 **시각적 중심이 상자 중심보다
+  아래**에 놓입니다. 그래서 로고가 떠 보입니다 — 상자를 맞추는 것과 눈에 맞는
+  것이 다른 자리라 여기만 손으로 보정합니다.
 */
 .playbook-card-mark {
+  position: relative;
+  top: 1px;
   display: inline-flex;
   width: 19px;
   height: 19px;
