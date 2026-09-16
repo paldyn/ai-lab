@@ -31,6 +31,42 @@ import type { ModelInfo, VendorId } from '../types/playbook';
  */
 const models: ModelInfo[] = [
   /* ── Anthropic ── */
+  /*
+    앱 선택기는 「Fable 5.1」처럼 회사 이름을 떼고 적지만, 등록부에는 **만든 회사의
+    공식 표기**를 씁니다 — 이름을 화면마다 다르게 두면 같은 모델이 둘로 보입니다.
+  */
+  {
+    id: 'claude-fable-5-1',
+    vendorId: 'anthropic',
+    name: 'Claude Fable 5.1',
+    apiId: 'claude-fable-5-1',
+    sourceUrl:
+      'https://platform.claude.com/docs/en/about-claude/models/overview',
+  },
+  {
+    id: 'claude-fable-5',
+    vendorId: 'anthropic',
+    name: 'Claude Fable 5',
+    apiId: 'claude-fable-5',
+    sourceUrl:
+      'https://platform.claude.com/docs/en/about-claude/model-deprecations',
+  },
+  {
+    id: 'claude-opus-5',
+    vendorId: 'anthropic',
+    name: 'Claude Opus 5',
+    apiId: 'claude-opus-5',
+    sourceUrl:
+      'https://platform.claude.com/docs/en/about-claude/models/overview',
+  },
+  {
+    id: 'claude-sonnet-5',
+    vendorId: 'anthropic',
+    name: 'Claude Sonnet 5',
+    apiId: 'claude-sonnet-5',
+    sourceUrl:
+      'https://platform.claude.com/docs/en/about-claude/models/overview',
+  },
   // Antigravity 선택기에는 「Claude Sonnet 4.6 (thinking)」으로 섭니다. thinking은
   // 모드이지 다른 모델이 아니라, 이름은 만든 회사 표기를 씁니다.
   {
@@ -104,6 +140,55 @@ const models: ModelInfo[] = [
   },
 
   /* ── Google ── */
+  /*
+    **Gemini 앱 선택기는 번호를 안 붙입니다.** 도움말이 대는 이름이 이 셋뿐이고,
+    같은 회사 요금제 페이지는 같은 자리를 「Gemini 3.6 Flash」·「Gemini 3.1 Pro」로
+    다르게 적습니다. **원문이 그 둘을 잇지 않으므로 우리가 잇지 않습니다** — 번호를
+    끌어다 붙인 것이 지난 회차에 걸린 자리입니다. 아래 번호가 붙은 항목들과 같은
+    것일 수 있지만, 같다고 적힌 문장을 못 봤습니다.
+  */
+  {
+    id: 'gemini-app-pro',
+    vendorId: 'google',
+    name: 'Gemini Pro',
+    apiId: null,
+    sourceUrl: 'https://support.google.com/gemini/answer/13275745',
+  },
+  {
+    id: 'gemini-app-flash',
+    vendorId: 'google',
+    name: 'Gemini Flash',
+    apiId: null,
+    sourceUrl: 'https://support.google.com/gemini/answer/13275745',
+  },
+  {
+    id: 'gemini-app-flash-lite',
+    vendorId: 'google',
+    name: 'Gemini Flash-Lite',
+    apiId: null,
+    sourceUrl: 'https://support.google.com/gemini/answer/13275745',
+  },
+  {
+    id: 'gemini-3-flash',
+    vendorId: 'google',
+    name: 'Gemini 3 Flash',
+    apiId: 'gemini-3-flash-preview',
+    sourceUrl: 'https://ai.google.dev/gemini-api/docs/models',
+  },
+  {
+    id: 'gemini-2-5-pro',
+    vendorId: 'google',
+    name: 'Gemini 2.5 Pro',
+    apiId: 'gemini-2.5-pro',
+    sourceUrl: 'https://ai.google.dev/gemini-api/docs/models',
+  },
+  {
+    id: 'gemini-2-5-flash',
+    vendorId: 'google',
+    name: 'Gemini 2.5 Flash',
+    apiId: 'gemini-2.5-flash',
+    sourceUrl: 'https://ai.google.dev/gemini-api/docs/models',
+  },
   {
     id: 'gemini-3-8-flash',
     vendorId: 'google',

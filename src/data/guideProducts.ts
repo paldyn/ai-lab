@@ -53,7 +53,20 @@ export const guideProducts: Product[] = [
     name: 'Claude',
     role: '챗',
     surfaces: ['웹', '데스크톱', '모바일'],
-    models: [],
+    models: ['claude-fable-5-1', 'claude-fable-5'],
+    /*
+      support.claude.com/en/articles/15424964 — 「select "Fable 5" or "Fable 5.1"
+      from the model picker」. **고르는 동작 자체를 적은 문장**이라 근거가 됩니다.
+
+      **둘뿐인 것은 둘만 있어서가 아니라 둘만 확인돼서입니다.** 선택기 전체 목록을
+      나열한 공식 페이지가 없습니다 — 선택기를 다루는 도움말은 「click on the model
+      name and choose」라고만 적고 이름을 하나도 안 댑니다. Opus 5·Sonnet 5·Haiku가
+      여기 서는지는 못 봤습니다(API 카탈로그와 요금제 접근 문장에만 나오는데 둘 다
+      근거로 안 칩니다).
+
+      조건부이기도 합니다 — 같은 페이지가 Free 요금제엔 Fable 5가 없고 조직이 막을
+      수 있다고 적습니다. 요금제로 갈리는 값이라 나중에 주장으로 세울 자리입니다.
+    */
     oneLine: '파일과 앱에 붙어 도는 챗 앱. 이 회사 제품의 기본 자리다.',
     officialUrl: 'https://claude.com/download',
     docsUrl: 'https://claude.com/pricing',
@@ -68,6 +81,18 @@ export const guideProducts: Product[] = [
     role: '업무',
     surfaces: ['데스크톱', '웹', '모바일'],
     models: [],
+    /*
+      **비어 있는 것이 확인된 답입니다.** Cowork 선택기에 서는 모델 이름을 어느 공식
+      페이지도 열거하지 않습니다. 선택기가 있다는 것은 확인했고(claude.com/docs/
+      government/desktop/models — 「It sits at the bottom of the message box in Chat,
+      Cowork, and Code.」), 같은 문서가 목록이 고정이 아니라고 못 박습니다 —
+      「Which models it lists depends on the seat tier your organization has assigned
+      to you, so a colleague may see a different list.」
+
+      지난번엔 컨텍스트 창 도움말에서 아홉을 끌어와 「확인」으로 적었습니다. 그것은
+      그 모델을 **지원한다**는 문장이지 고를 수 있다는 문장이 아닙니다. 지어내
+      채우는 대신 비워 두고, 화면에서는 이 절이 아예 안 섭니다.
+    */
     oneLine: '대화가 아니라 일을 통째로 맡기는 자리. 챗 옆에 나란히 선다.',
     officialUrl: 'https://claude.com/product/cowork',
     docsUrl: null,
@@ -81,7 +106,25 @@ export const guideProducts: Product[] = [
     name: 'Claude Code',
     role: '코딩',
     surfaces: ['터미널', 'IDE', '데스크톱', '웹'],
-    models: [],
+    models: ['claude-fable-5-1', 'claude-fable-5', 'claude-opus-5', 'claude-sonnet-5'],
+    /*
+      code.claude.com/docs/en/model-config 의 별칭 해소 표
+      (「| Anthropic API | Opus 5 | Sonnet 5 |」)와 「run `/model claude-fable-5`」 같은
+      선택 지시입니다.
+
+      **지난번에 아홉을 적었다가 틀림 판정을 받은 자리입니다.** 별칭(`fable`·`haiku`)이
+      있다는 것을 「그 버전을 고를 수 있다」로 바꿔 읽었고, 인용문까지 표 네 행을
+      이어 붙여 지어냈습니다. 이번에는 별칭이 **무엇으로 풀리는지** 적힌 줄만 씁니다.
+
+      단서 셋:
+      - **Anthropic API 기준입니다.** 같은 별칭이 프로바이더마다 다른 버전으로
+        풀립니다(AWS는 Sonnet 4.6, Bedrock·Google Cloud는 Sonnet 4.5, Microsoft
+        Foundry는 Opus 4.6). 셋을 한 목록에 섞으면 다른 것을 같이 세우는 것이 됩니다.
+      - Fable은 조직에 열려 있을 때만 피커에 섭니다.
+      - `haiku`는 고를 수 있는 것이 확실한데 **어느 버전인지 문서에 없어** 뺐습니다.
+      「Sonnet 5 (1M context)」도 피커 행으로 있으나 Sonnet 5의 컨텍스트 변형이지
+      다른 모델이 아니라 따로 안 셉니다.
+    */
     oneLine: '저장소를 읽고 고치고 명령까지 돌리는 코딩 에이전트.',
     officialUrl: 'https://code.claude.com/docs/en/overview',
     docsUrl: 'https://code.claude.com/docs',
@@ -179,7 +222,17 @@ export const guideProducts: Product[] = [
     name: 'Gemini app',
     role: '챗',
     surfaces: ['웹', '모바일', '데스크톱'],
-    models: [],
+    models: ['gemini-app-pro', 'gemini-app-flash', 'gemini-app-flash-lite'],
+    /*
+      support.google.com/gemini/answer/13275745 — 「Gemini has the following available
+      models:」 뒤에 이 셋이 불릿으로 섭니다. 같은 절이 「click the model name」 →
+      「Select the model you want to use.」로 고르는 단계를 적습니다. Android 판을
+      따로 열어도 같은 셋이라 표면 차이가 없습니다.
+
+      **번호를 안 붙입니다.** 같은 회사 요금제 페이지는 같은 자리를 「Gemini 3.6
+      Flash」·「Gemini 3.1 Pro」로 적지만 **원문이 그 둘을 잇지 않습니다** — 번호를
+      끌어다 붙인 것이 지난 회차에 걸린 자리라 선택기 표기 그대로 둡니다.
+    */
     oneLine:
       '구글 계정과 붙어 있는 챗 앱. 모델 계열 이름과 제품 이름이 다르다.',
     officialUrl: 'https://gemini.google/about/',
@@ -228,7 +281,21 @@ export const guideProducts: Product[] = [
     name: 'Gemini CLI',
     role: '코딩',
     surfaces: ['터미널'],
-    models: [],
+    models: ['gemini-3-flash', 'gemini-2-5-pro', 'gemini-2-5-flash'],
+    /*
+      google-gemini/gemini-cli 의 docs/cli/model.md 옵션 표입니다.
+
+      **다섯을 적었다가 대질에서 둘이 깎였습니다.**
+      - `gemini-3.1-pro-preview` — 근거 문장이 「접근 권한이 있으면 보인다」라 계정마다
+        갈립니다. 접근을 선택으로 바꾼 자리입니다.
+      - `gemini-3-pro-preview` — CLI 문서엔 남아 있으나 **벤더 모델 페이지가 Shut
+        down으로 적습니다.** 문서가 아직 안 따라온 것이라 뺐습니다.
+
+      **표가 말하는 것은 Auto가 자동으로 고르는 대상이지 사용자가 누르는 항목이
+      아닙니다.** 대화상자에서 실제로 누르는 것은 Auto (Gemini 3)·Auto (Gemini 2.5)·
+      Manual 셋입니다 — 이 셋은 「이 CLI가 돌리는 모델」이지 「메뉴에 뜨는 이름」이
+      아닙니다. 그 구별이 중요해지면 다시 봅니다.
+    */
     oneLine: '터미널에서 도는 오픈소스 코딩 에이전트.',
     officialUrl: 'https://github.com/google-gemini/gemini-cli',
     docsUrl: null,
