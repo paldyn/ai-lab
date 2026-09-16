@@ -1,6 +1,5 @@
 import type { CSSProperties } from 'react';
 import { Link } from 'react-router';
-import { ArrowUpRight } from 'lucide-react';
 import { ClaimRow } from './ClaimRow';
 import { claimState, playbookNotePath, playbookNotesOf } from '../data/playbook';
 import { playbookClaims } from '../data/playbookClaims';
@@ -27,11 +26,29 @@ import type { Product, VendorInfo } from '../types/playbook';
  * 바로 억지로 채운 티입니다. 자격증 일정 표에서 값 없는 칸을 열로 안 세우는 규칙과
  * 같은 자리입니다.
  */
-function Stat({ label, value }: { label: string; value: string }) {
+function Stat({
+  label,
+  value,
+  unit,
+  uncounted,
+}: {
+  label: string;
+  value: string;
+  /**
+   * 단위를 수에서 뗍니다. 같은 크기·같은 글꼴로 붙여 두면 26px 숫자가 실제로는
+   * 절반만 숫자이고, 모노가 한글까지 맡아 「일 전」이 폴백 글꼴로 갈립니다.
+   */
+  unit?: string;
+  /** 센 적이 없다(`claimState`의 `checkedAt: null`). 잉크를 한 단 내립니다. */
+  uncounted?: boolean;
+}) {
   return (
-    <div className="guide-stat">
+    <div className={`guide-stat${uncounted ? ' is-uncounted' : ''}`}>
       <dt>{label}</dt>
-      <dd>{value}</dd>
+      <dd>
+        {value}
+        {unit && <span className="guide-stat-unit">{unit}</span>}
+      </dd>
     </div>
   );
 }
@@ -50,9 +67,18 @@ function StatRow({ notes, claimIds, today }: { notes: number; claimIds: string[]
   const age = freshestAge(claimIds, today);
   return (
     <dl className="guide-stats">
-      <Stat label="노트" value={String(notes)} />
-      <Stat label="아는 값" value={String(claimIds.length)} />
-      <Stat label="마지막 확인" value={age === null ? '—' : `${age}일 전`} />
+      <Stat label="노트" value={String(notes)} unit="편" />
+      <Stat label="아는 값" value={String(claimIds.length)} unit="개" />
+      {/*
+        **`—`는 홀로 섭니다.** 단위가 안 붙는 것 자체가 「셀 것이 없다」는 뜻이라,
+        0편·12편·— 셋이 서로 다른 모양이 됩니다.
+      */}
+      <Stat
+        label="마지막 확인"
+        value={age === null ? '—' : String(age)}
+        unit={age === null ? undefined : '일 전'}
+        uncounted={age === null}
+      />
     </dl>
   );
 }
@@ -67,7 +93,6 @@ function OfficialLinks({ rows }: { rows: Array<{ label: string; url: string }> }
             <a href={row.url} target="_blank" rel="noreferrer">
               <span className="guide-link-label">{row.label}</span>
               <span className="guide-link-host">{new URL(row.url).host}</span>
-              <ArrowUpRight size={12} aria-hidden="true" />
             </a>
           </li>
         ))}

@@ -73,7 +73,8 @@ export function PlaybookPage() {
         description="기업마다 챗·업무·코딩을 한 벌씩 내놓습니다. 어느 제품을 어떻게 굴리는지를 담고, 값마다 어디서 온 것이고 언제 확인한 것인지를 함께 적습니다."
       />
 
-      <div className="site-wrap section-space">
+      {/* `guide-page`가 이 서랍의 조판 상수(--gs-*·--guide-col)를 거는 자리입니다. */}
+      <div className="site-wrap section-space guide-page">
         <GuideBoard selectedId={product?.id} vendorId={vendor?.id} />
         {/*
           판을 보면 바로 생기는 질문(왜 아홉뿐인가)의 답입니다. 제품마다 되풀이하던
@@ -83,7 +84,18 @@ export function PlaybookPage() {
           표면(터미널 · IDE · 데스크톱 · 웹)은 별개 제품이 아니라 같은 엔진을 만나는 자리입니다.
         </p>
 
-        <GuideLedger product={product} vendor={vendor} today={today} />
+        {/*
+          **key가 없으면 원장의 페이드가 아홉 칸 중 여덟 번의 이동에서 안 돕니다.**
+          제품 → 제품은 둘 다 `ProductLedger`라 React가 같은 DOM을 재사용해
+          `guide-ledger-in`이 다시 안 걸립니다 — 「눌렀는데 아무 일도 안 일어난다」의
+          절반이 스타일이 아니라 이 재조정이었습니다.
+        */}
+        <GuideLedger
+          key={product?.id ?? vendor?.id ?? 'root'}
+          product={product}
+          vendor={vendor}
+          today={today}
+        />
       </div>
     </>
   );
