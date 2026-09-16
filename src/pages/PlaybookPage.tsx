@@ -48,13 +48,13 @@ export function PlaybookPage() {
     <>
       <Seo
         title="가이드"
-        description="AI 도구를 잘 쓰고 아껴 쓰는 법. 공식 지침과 현장 통설과 우리가 직접 잰 것을 갈라 담습니다."
+        description="터미널 코딩 에이전트를 어떤 모델과 강도로 돌리고, 세션을 언제 새로 파고, 언제 압축할지. 공식 지침과 현장 통설과 우리가 직접 잰 것을 갈라 담습니다."
         path="/playbook"
       />
       <PageHeader
         kicker="PALDYN GUIDE"
         title="활용 가이드"
-        description="어느 도구를 언제 쓰고 어떻게 아껴 쓰는지를 담습니다. 값마다 어디서 온 것이고 언제 확인한 것인지를 함께 적습니다."
+        description="코딩 에이전트를 어떤 모델과 강도로 돌리고, 세션을 언제 새로 파고, 언제 압축할지를 담습니다. 값마다 어디서 온 것이고 언제 확인한 것인지를 함께 적습니다."
       />
 
       <section className="site-wrap section-space">
