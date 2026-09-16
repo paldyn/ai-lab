@@ -2,8 +2,10 @@ import { existsSync, readFileSync, readdirSync } from 'node:fs';
 import path from 'node:path';
 import matter from 'gray-matter';
 import { describe, expect, it } from 'vitest';
+import { renderMarkdown } from '../../plugins/markdown';
 import { playbookClaims } from '../data/playbookClaims';
 import { playbookToolIds } from '../data/playbookTools';
+import { collapsedLines } from './collapsedLines';
 
 /**
  * 활용 노트가 지켜야 하는 것.
@@ -90,12 +92,20 @@ describe('활용 노트', () => {
     검사 범위를 좁게 잡습니다 — 넓은 정규식은 오탐을 내고, 오탐을 내는 검사는
     내용을 검사에 맞춰 비틀게 만듭니다. 통화 기호가 붙은 수, 「N 토큰」, 소문자
     하이픈 모델 id 셋만 봅니다. 예외는 여기 허용 목록에 이름으로 적습니다.
+
+    **`:claim[...]` 자리는 먼저 걷어냅니다.** 주장 id는 도구 이름으로 시작하므로
+    (`claude-max-usage`·`gemini-tiers-are-multipliers`) 모델 id 정규식에 그대로
+    걸립니다. 그런데 그 자리는 값을 본문에 박은 곳이 아니라 **데이터에서 부르고 있는
+    곳**, 곧 이 검사가 권하는 바로 그 모양입니다. 안 걷어내면 규칙을 지킬수록 검사가
+    더 많이 서고, 그러면 사람은 부르기를 줄이게 됩니다.
   */
   const ALLOWED = ['claude-code', 'gemini-api', 'openai-api'];
 
   it('본문에 요금·토큰 수·모델 id를 적지 않는다', () => {
     const hits = notes.flatMap((note) => {
-      const body = note.content.replace(/```[\s\S]*?```/g, '');
+      const body = note.content
+        .replace(/```[\s\S]*?```/g, '')
+        .replace(/:claim\[[a-z0-9-]+\]/g, '');
       const found: string[] = [];
       for (const m of body.matchAll(/[$₩]\s?[\d,]+/g)) found.push(m[0]);
       for (const m of body.matchAll(/\d[\d,]*\s*[KM]?\s*토큰/g)) found.push(m[0]);
@@ -105,6 +115,34 @@ describe('활용 노트', () => {
       return found.map((text) => `${note.toolId}/${note.file} — 「${text}」는 데이터에 두고 :claim으로 부른다`);
     });
     expect(hits).toEqual([]);
+  });
+
+  /*
+    아래 둘은 `articles/`에서 이미 도는 검사를 이 서랍에도 겁니다. **원고 검사는
+    서랍마다 따로 붙습니다** — `emphasis.test.ts`는 `src/content/articles`만 훑고
+    `certPrep.test.ts`가 시험 노트를 따로 맡습니다. 여기를 안 걸면 새 서랍만 무방비로
+    열립니다. 둘 다 **원고만 보고는 눈으로 못 잡는** 자리라 특히 그렇습니다.
+  */
+  it('닫히지 않은 강조가 없다', async () => {
+    const left: string[] = [];
+    for (const note of notes) {
+      const { html } = await renderMarkdown(note.content);
+      const prose = html
+        .replace(/<pre[\s\S]*?<\/pre>/g, '')
+        .replace(/<code[\s\S]*?<\/code>/g, '');
+      const found = prose.match(/.{0,40}\*\*.{0,40}/s);
+      if (found) left.push(`${note.toolId}/${note.file} — ${found[0]}`);
+    }
+    expect(left).toEqual([]);
+  });
+
+  it('나란히 놓을 줄이 한 줄로 붙지 않는다', () => {
+    const found = notes.flatMap((note) =>
+      collapsedLines(note.content).map(
+        (line) => `${note.toolId}/${note.file}:${line.line} — ${line.text}`,
+      ),
+    );
+    expect(found).toEqual([]);
   });
 
   it('내부 링크가 실제로 있는 곳을 가리킨다', () => {
