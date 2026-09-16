@@ -12,6 +12,12 @@ import type { Tool, ToolId } from '../types/playbook';
  * 제품 주소입니다 — `CLAUDE.md`가 `help.openai.com` 403을 이미 기록해 둔 것과 같은
  * 자리입니다. **4일 차의 URL 검사는 403을 죽은 링크로 치면 안 됩니다.**
  * `platform.claude.com/docs/en/docs/claude-code/overview`는 404라 안 씁니다.
+ *
+ * **2026-09-16 갱신 — Codex 문서가 호스트째 옮겨 갔습니다.**
+ * `developers.openai.com/codex/`는 `learn.chatgpt.com/docs`로 301 됩니다. 죽은 링크가
+ * 아니라 **살아 있는 채로 다른 곳을 가리키는** 자리라 어떤 URL 검사도 안 잡습니다 —
+ * 값이 아니라 구조가 썩은 첫 사례이고, 계획이 「분기에 한 번 구조를 본다」로만 적어 둔
+ * 그 구멍입니다. 넉 달을 기다리지 않고 여기서 고칩니다.
  */
 export const playbookTools: Tool[] = [
   {
@@ -59,8 +65,9 @@ export const playbookTools: Tool[] = [
     name: 'Codex',
     vendor: 'OpenAI',
     surface: 'CLI',
-    officialUrl: 'https://developers.openai.com/codex/',
-    docsUrl: 'https://developers.openai.com/codex/cli/',
+    // 2026-09-16: developers.openai.com/codex/ 가 learn.chatgpt.com/docs 로 301 된다.
+    officialUrl: 'https://chatgpt.com/codex',
+    docsUrl: 'https://learn.chatgpt.com/docs/codex/cli',
     blurb: 'OpenAI의 코딩 에이전트. 저장소의 옛 글이 가장 심하게 썩은 자리이기도 하다.',
     mark: 'CX',
   },

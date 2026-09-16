@@ -21,7 +21,9 @@ import type { Claim } from '../types/playbook';
  * 실측은 우리가 직접 돌린 수가 있어야 하는데 아직 안 돌렸습니다. 둘 다 빈 채로 두는 것이
  * 채워 넣는 것보다 낫습니다 — 이 서랍이 파는 것이 정확히 그 구별이기 때문입니다.
  *
- * 첫 달 `price`·`limit` 상한은 여덟입니다. 지금 여덟을 다 씁니다.
+ * 첫 달 `price`·`limit` 상한은 여덟이고 **값이 있는 것만** 셉니다. 2026-09-16에 여덟을
+ * 다 채웠습니다 — 다음에 요금·한도 값을 하나 더 넣으려면 먼저 하나를 내려야 합니다.
+ * 상한을 올리는 것이 언제나 더 싸므로, 올리려거든 그때 이 줄을 먼저 고칩니다.
  */
 export const playbookClaims: Claim[] = [
   // ─── Claude 앱 ───────────────────────────────────────────────────
@@ -186,30 +188,102 @@ export const playbookClaims: Claim[] = [
     tool: 'claude-code',
     topic: 'limit',
     statement: 'Claude Code 요금제별 사용 한도',
+    /*
+      문서가 숫자를 안 싣고 **제품 안으로 보냅니다** — 한도는 `/usage`가 보여 주고
+      요금은 요금제 페이지로 넘깁니다. 우리가 쓸 수 있는 값이 없다는 뜻이라 「모름」입니다.
+    */
     value: null,
     tier: 'vendor',
     volatility: 'limit',
-    source: { label: 'Claude Code 문서', url: 'https://code.claude.com/docs' },
+    source: { label: 'Claude Code 비용 문서', url: 'https://code.claude.com/docs/en/costs' },
   },
   {
     id: 'codex-plan-limits',
     tool: 'codex',
     topic: 'limit',
     statement: 'Codex 요금제별 사용 한도',
+    // 문서에 「limit」이라는 낱말 자체가 한 번도 안 나옵니다(2026-09-16 확인).
     value: null,
     tier: 'vendor',
     volatility: 'limit',
-    source: { label: 'Codex 문서', url: 'https://developers.openai.com/codex/' },
+    source: { label: 'Codex CLI 문서', url: 'https://learn.chatgpt.com/docs/codex/cli' },
   },
   {
     id: 'codex-default-model',
     tool: 'codex',
     topic: 'feature',
-    statement: 'Codex가 지금 기본으로 쓰는 모델',
-    value: null,
+    statement: 'Codex가 지금 기본으로 쓰는 모델과 추론 강도',
+    value: 'gpt-5.6-sol · medium',
     tier: 'vendor',
     volatility: 'model',
-    source: { label: 'Codex 문서', url: 'https://developers.openai.com/codex/' },
+    source: { label: 'Codex CLI 문서', url: 'https://learn.chatgpt.com/docs/codex/cli' },
+  },
+
+  // ─── Claude Code ─────────────────────────────────────────────────
+  /*
+    전부 **비용 문서 한 페이지**에서 읽었습니다(2026-09-16). 이 서랍에서 벤더가 값을
+    가장 많이 싣는 자리입니다 — 챗 앱 요금제 페이지는 배수만 적고 숫자를 감추는데,
+    CLI 문서는 무엇이 얼마나 먹는지를 수로 적습니다.
+  */
+  {
+    id: 'claude-code-cache-lifetime',
+    tool: 'claude-code',
+    topic: 'limit',
+    statement: '캐시가 살아 있는 시간이 결제 방식마다 다르고, 그 시간을 넘겨 돌아오면 첫 요청이 대화 전체를 다시 처리한다',
+    value: '구독 1시간 · 사용 크레딧이나 API 키 5분',
+    tier: 'vendor',
+    volatility: 'limit',
+    source: { label: 'Claude Code 비용 문서', url: 'https://code.claude.com/docs/en/costs' },
+  },
+  {
+    id: 'claude-code-active-day-cost',
+    tool: 'claude-code',
+    topic: 'price',
+    statement: 'API로 과금할 때 개발자 한 사람이 쓰는 돈',
+    value: '활동일 평균 $13 · 월 $150~250 · 90%는 활동일 $30 미만',
+    tier: 'vendor',
+    volatility: 'price',
+    source: { label: 'Claude Code 비용 문서', url: 'https://code.claude.com/docs/en/costs' },
+  },
+  {
+    id: 'claude-code-claudemd-always-loaded',
+    tool: 'claude-code',
+    topic: 'context',
+    statement: 'CLAUDE.md는 세션이 열릴 때 통째로 들어가고 스킬은 부를 때만 들어온다',
+    value: 'CLAUDE.md는 200줄 이내 권장',
+    tier: 'vendor',
+    volatility: 'concept',
+    source: { label: 'Claude Code 비용 문서', url: 'https://code.claude.com/docs/en/costs' },
+  },
+  {
+    id: 'claude-code-mcp-deferred',
+    tool: 'claude-code',
+    topic: 'context',
+    statement: 'MCP 도구 정의는 기본이 지연 로딩이라 이름과 서버 지침만 먼저 들어간다',
+    value: 'CLI 도구가 여전히 더 가볍다 — 도구 목록 자체가 안 붙는다',
+    tier: 'vendor',
+    volatility: 'concept',
+    source: { label: 'Claude Code 비용 문서', url: 'https://code.claude.com/docs/en/costs' },
+  },
+  {
+    id: 'claude-code-model-choice',
+    tool: 'claude-code',
+    topic: 'feature',
+    statement: '어느 모델을 어디에 쓰라고 문서가 못 박은 것',
+    value: '대부분의 코딩은 Sonnet · 복잡한 설계 판단만 Opus · 간단한 서브에이전트는 Haiku',
+    tier: 'vendor',
+    volatility: 'model',
+    source: { label: 'Claude Code 비용 문서', url: 'https://code.claude.com/docs/en/costs' },
+  },
+  {
+    id: 'claude-code-thinking-is-output',
+    tool: 'claude-code',
+    topic: 'feature',
+    statement: '확장 사고는 기본으로 켜져 있고 사고 토큰은 출력 토큰으로 과금된다',
+    value: '기본 예산은 모델에 따라 요청마다 수만 토큰까지 간다',
+    tier: 'vendor',
+    volatility: 'model',
+    source: { label: 'Claude Code 비용 문서', url: 'https://code.claude.com/docs/en/costs' },
   },
 
   // ─── 어느 도구에나 ───────────────────────────────────────────────

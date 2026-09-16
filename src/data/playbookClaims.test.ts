@@ -29,6 +29,8 @@ const VENDOR_HOSTS = [
   'openai.com',
   'chatgpt.com',
   'developers.openai.com',
+  // developers.openai.com/codex/ 가 여기로 301 된다(2026-09-16).
+  'learn.chatgpt.com',
   'gemini.google',
   'gemini.google.com',
   'ai.google.dev',

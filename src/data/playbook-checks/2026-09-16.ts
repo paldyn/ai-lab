@@ -8,6 +8,11 @@ import type { CheckEntry } from '../../types/playbook';
  *
  * `chatgpt-plus-price`와 `gemini-pro-price`는 페이지에 금액이 아예 없어 못 채웠습니다.
  * 확인은 했으므로(= 그날 열어 봤으므로) 로그에는 남기되 값은 `null`로 둡니다.
+ *
+ * **같은 날 오후에 CLI 문서 둘을 더 열었습니다.** 챗 앱 요금제 페이지가 배수만 적고
+ * 숫자를 감추는 것과 달리 Claude Code 비용 문서는 무엇이 얼마나 먹는지를 수로 싣습니다 —
+ * 아래 `claude-code-*` 여섯이 거기서 나왔습니다. Codex 쪽에서는 값이 아니라 **주소가**
+ * 바뀐 것을 봤습니다(`developers.openai.com/codex/` → `learn.chatgpt.com/docs`).
  */
 const entries: CheckEntry[] = [
   {
@@ -86,6 +91,68 @@ const entries: CheckEntry[] = [
     claimId: 'gemini-tier-absolute-limits',
     result: '그대로',
     excerpt: '「2배·4배·5배·20배 더 높은 사용량 한도」로 배수만 적고 횟수를 안 싣는다(2026-09-16 확인)',
+  },
+
+  // ─── Claude Code 비용 문서 ───────────────────────────────────────
+  {
+    claimId: 'claude-code-plan-limits',
+    result: '그대로',
+    excerpt:
+      'For subscription plan pricing (Pro, Max, Team, Enterprise), see claude.com/pricing. … On a Pro, Max, Team, or Enterprise plan, /usage also shows a breakdown of what counts against your plan limits',
+  },
+  {
+    claimId: 'claude-code-cache-lifetime',
+    result: '그대로',
+    excerpt:
+      'The lifetime is an hour on a subscription and drops to five minutes once you’re drawing on usage credits; on an API key or cloud provider, it’s five minutes by default.',
+  },
+  {
+    claimId: 'claude-code-active-day-cost',
+    result: '그대로',
+    excerpt:
+      'the average cost is around $13 per developer per active day and $150-250 per developer per month, with costs remaining below $30 per active day for 90% of users',
+  },
+  {
+    claimId: 'claude-code-claudemd-always-loaded',
+    result: '그대로',
+    excerpt:
+      'Your CLAUDE.md file is loaded into context at session start. … Aim to keep CLAUDE.md under 200 lines by including only essentials.',
+  },
+  {
+    claimId: 'claude-code-mcp-deferred',
+    result: '그대로',
+    excerpt:
+      'MCP tool definitions are deferred by default, so only tool names and server instructions enter context until Claude uses a specific tool. … Tools like gh, aws, gcloud, and sentry-cli are still more context-efficient than MCP servers because they don’t add any per-tool listing.',
+  },
+  {
+    claimId: 'claude-code-model-choice',
+    result: '그대로',
+    excerpt:
+      'Sonnet handles most coding tasks well and costs less than Opus. Reserve Opus for complex architectural decisions or multi-step reasoning. … For simple subagent tasks, specify model: haiku in your subagent configuration.',
+  },
+  {
+    claimId: 'claude-code-thinking-is-output',
+    result: '그대로',
+    excerpt:
+      'Thinking tokens are billed as output tokens, and the default budget can be tens of thousands of tokens per request depending on the model.',
+  },
+
+  // ─── Codex CLI 문서 ──────────────────────────────────────────────
+  /*
+    값이 아니라 **주소가** 바뀐 자리입니다. 옛 주소가 404가 아니라 301이라 어떤 URL
+    검사에도 안 걸립니다 — 링크는 살아 있는데 다른 곳을 가리킵니다.
+  */
+  {
+    claimId: 'codex-default-model',
+    result: '바뀜',
+    changedTo: 'gpt-5.6-sol · medium',
+    excerpt: 'model:     gpt-5.6-sol medium   /model to change',
+  },
+  {
+    claimId: 'codex-plan-limits',
+    result: '그대로',
+    excerpt:
+      'developers.openai.com/codex/ 가 learn.chatgpt.com/docs 로 301 되고, 옮겨 간 CLI 문서에는 「limit」이라는 낱말이 한 번도 안 나온다(2026-09-16 확인)',
   },
 ];
 
