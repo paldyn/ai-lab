@@ -1,9 +1,15 @@
 import { useEffect, useRef } from 'react';
 import { Link } from 'react-router';
-import { ArrowUpRight, X } from 'lucide-react';
+import { ArrowUpRight } from 'lucide-react';
 import { ClaimRow } from './ClaimRow';
-import { GuideMark } from './GuideMark';
-import { claimState, playbookNotePath, playbookNotesOf, playbookProductPath } from '../data/playbook';
+import { FreshnessMeter } from './FreshnessMeter';
+import {
+  claimState,
+  playbookNotePath,
+  playbookNotesOf,
+  playbookProductPath,
+  productFreshness,
+} from '../data/playbook';
 import { playbookClaims } from '../data/playbookClaims';
 import { guideProducts } from '../data/guideProducts';
 import { guideVendorById } from '../data/guideVendors';
@@ -50,21 +56,11 @@ export function ProductPanel({ product, today }: { product: Product; today: stri
 
   return (
     <section ref={ref} className="playbook-panel" aria-label={`${product.name} 상세`}>
-      <div className="playbook-panel-head">
-        <GuideMark
-          logo={product.logo}
-          monochrome={product.monochrome}
-          accent={product.accent}
-          className="playbook-panel-mark"
-        />
-        <h3 className="playbook-panel-title">{product.name}</h3>
-        <span className="playbook-panel-role">{product.role}</span>
-        {/* 닫으면 기업 목록으로 돌아갑니다 — 첫 화면으로 튕기지 않습니다. */}
-        <Link to={`/playbook/${product.vendorId}`} className="playbook-panel-close" aria-label="상세 닫기">
-          <X size={15} aria-hidden="true" />
-        </Link>
-      </div>
-
+      {/*
+        **제 머리글을 안 답니다.** 바로 위 트리 줄이 이미 로고·이름·갈래를 들고 있고
+        그 줄을 다시 누르면 접힙니다 — 여기 같은 것을 또 세우면 한 화면에 제품 이름이
+        두 번 섭니다.
+      */}
       <p className="playbook-panel-blurb">{product.oneLine}</p>
 
       <div className="playbook-panel-body">
@@ -143,10 +139,11 @@ export function ProductPanel({ product, today }: { product: Product; today: stri
         </div>
       </div>
 
-      {/* 값이 하나라도 있을 때만 섭니다. 빈 표는 안 그립니다. */}
+      {/* 값이 하나라도 있을 때만 섭니다. 빈 표도 빈 신선도 줄도 안 그립니다. */}
       {claims.length > 0 && (
         <>
           <h4 className="playbook-panel-label mt-8">아는 값</h4>
+          <FreshnessMeter fresh={productFreshness(product.id, today)} />
           <div className="claim-list mt-4">
             {claims.map((claim) => (
               <ClaimRow key={claim.id} state={claimState(claim, today)} />

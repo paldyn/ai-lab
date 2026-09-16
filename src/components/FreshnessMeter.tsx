@@ -11,7 +11,7 @@ import type { ProductFreshness } from '../data/playbook';
  */
 export function FreshnessMeter({ fresh }: { fresh: ProductFreshness }) {
   return (
-    <dl className="playbook-card-freshness">
+    <dl className="playbook-freshness">
       <div>
         <dt>값</dt>
         <dd>{fresh.total}개</dd>
