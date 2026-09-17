@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="404" viewBox="0 0 880 404">
+  <rect x="0" y="0" width="880" height="404" rx="12" fill="#0a0a0a"/>
+  <text x="60" y="52" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="22" font-weight="700" fill="#e8e8e8">손실에 들어가는 토큰과 빠지는 토큰</text>
+  <text x="60" y="76" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">프롬프트는 문맥으로 들어가되 채점되지 않는다</text>
+  <text x="64" y="118" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="14" font-weight="600" fill="#e8e8e8">모델에 들어가는 토큰 열</text>
+  <text x="64" y="236" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="14" font-weight="600" fill="#e8e8e8">손실 계산에 쓰는 라벨</text>
+  <rect x="64" y="132" width="180" height="66" rx="8" fill="#141821" stroke="#888888" stroke-width="1.5"/>
+  <text x="154" y="160" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="600" fill="#e8e8e8">시스템 프롬프트</text>
+  <text x="154" y="182" text-anchor="middle" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="12" fill="#888888">&lt;|system|&gt;</text>
+  <rect x="64" y="250" width="180" height="48" rx="8" fill="#141821" stroke="#888888" stroke-width="1.5"/>
+  <text x="154" y="279" text-anchor="middle" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#888888">-100</text>
+  <rect x="250" y="132" width="165" height="66" rx="8" fill="#141821" stroke="#888888" stroke-width="1.5"/>
+  <text x="332" y="160" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="600" fill="#e8e8e8">사용자 지시</text>
+  <text x="332" y="182" text-anchor="middle" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="12" fill="#888888">&lt;|user|&gt;</text>
+  <rect x="250" y="250" width="165" height="48" rx="8" fill="#141821" stroke="#888888" stroke-width="1.5"/>
+  <text x="332" y="279" text-anchor="middle" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#888888">-100</text>
+  <rect x="421" y="132" width="140" height="66" rx="8" fill="#141821" stroke="#888888" stroke-width="1.5"/>
+  <text x="491" y="160" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="600" fill="#e8e8e8">차례 열기</text>
+  <text x="491" y="182" text-anchor="middle" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="12" fill="#888888">&lt;|assistant|&gt;</text>
+  <rect x="421" y="250" width="140" height="48" rx="8" fill="#141821" stroke="#888888" stroke-width="1.5"/>
+  <text x="491" y="279" text-anchor="middle" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#888888">-100</text>
+  <rect x="567" y="132" width="170" height="66" rx="8" fill="#141821" stroke="#55c555" stroke-width="1.5"/>
+  <text x="652" y="160" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="600" fill="#e8e8e8">모델 응답</text>
+  <text x="652" y="182" text-anchor="middle" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="12" fill="#55c555">response ids</text>
+  <rect x="567" y="250" width="170" height="48" rx="8" fill="#141821" stroke="#55c555" stroke-width="1.5"/>
+  <text x="652" y="279" text-anchor="middle" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#55c555">토큰 id</text>
+  <rect x="743" y="132" width="72" height="66" rx="8" fill="#141821" stroke="#55c555" stroke-width="1.5"/>
+  <text x="779" y="160" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="600" fill="#e8e8e8">종료</text>
+  <text x="779" y="182" text-anchor="middle" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="12" fill="#55c555">&lt;|eot|&gt;</text>
+  <rect x="743" y="250" width="72" height="48" rx="8" fill="#141821" stroke="#55c555" stroke-width="1.5"/>
+  <text x="779" y="279" text-anchor="middle" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#55c555">토큰 id</text>
+  <rect x="64" y="330" width="14" height="14" rx="3" fill="#141821" stroke="#888888" stroke-width="1.5"/>
+  <text x="88" y="342" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">-100 은 손실에서 제외된다는 표시다</text>
+  <rect x="384" y="330" width="14" height="14" rx="3" fill="#141821" stroke="#55c555" stroke-width="1.5"/>
+  <text x="408" y="342" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#55c555">응답과 종료 토큰만 학습 신호가 된다</text>
+  <text x="64" y="376" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">마스킹을 빼면 학습 신호의 절반이 사용자 문장을 쓰는 데 쓰인다</text>
+</svg>

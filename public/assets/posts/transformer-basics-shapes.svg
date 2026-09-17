@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="736" viewBox="0 0 880 736">
+  <rect x="0" y="0" width="880" height="736" rx="12" fill="#0a0a0a"/>
+  <defs>
+    <marker id="tbArr" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto"><path d="M 0 0 L 13 7 L 0 14 z" fill="#7777cc"/></marker>
+  </defs>
+  <text x="60" y="52" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="22" font-weight="700" fill="#e8e8e8">블록을 지나는 텐서 모양</text>
+  <text x="60" y="76" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">배치 32 · 길이 10 · d_model 512 · 헤드 8 · 어휘 32000</text>
+  <rect x="70" y="96" width="430" height="54" rx="8" fill="#141821" stroke="#7777cc" stroke-width="1.5"/>
+  <text x="94" y="129" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="15" font-weight="600" fill="#e8e8e8">토큰 id</text>
+  <text x="540" y="123" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="14" fill="#7777cc">(32, 10)</text>
+  <text x="540" y="143" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="12" fill="#888">정수 인덱스</text>
+  <line x1="285" y1="150" x2="285" y2="184" stroke="#7777cc" stroke-width="2" marker-end="url(#tbArr)"/>
+  <rect x="70" y="184" width="430" height="54" rx="8" fill="#141821" stroke="#7777cc" stroke-width="1.5"/>
+  <text x="94" y="217" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="15" font-weight="600" fill="#e8e8e8">임베딩 + 위치 인코딩</text>
+  <text x="540" y="211" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="14" fill="#7777cc">(32, 10, 512)</text>
+  <text x="540" y="231" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="12" fill="#888">여기서부터 d_model 고정</text>
+  <line x1="285" y1="238" x2="285" y2="272" stroke="#7777cc" stroke-width="2" marker-end="url(#tbArr)"/>
+  <rect x="70" y="272" width="430" height="54" rx="8" fill="#141821" stroke="#7777cc" stroke-width="1.5"/>
+  <text x="94" y="305" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="15" font-weight="600" fill="#e8e8e8">Q·K·V 헤드 분할</text>
+  <text x="540" y="299" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="14" fill="#7777cc">(32, 8, 10, 64)</text>
+  <text x="540" y="319" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="12" fill="#888">64 = 512 / 8</text>
+  <line x1="285" y1="326" x2="285" y2="360" stroke="#7777cc" stroke-width="2" marker-end="url(#tbArr)"/>
+  <rect x="70" y="360" width="430" height="54" rx="8" fill="#141821" stroke="#e05555" stroke-width="1.5"/>
+  <text x="94" y="393" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="15" font-weight="600" fill="#e8e8e8">어텐션 가중치</text>
+  <text x="540" y="387" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="14" fill="#e05555">(32, 8, 10, 10)</text>
+  <text x="540" y="407" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="12" fill="#888">길이의 제곱은 여기뿐</text>
+  <line x1="285" y1="414" x2="285" y2="448" stroke="#7777cc" stroke-width="2" marker-end="url(#tbArr)"/>
+  <rect x="70" y="448" width="430" height="54" rx="8" fill="#141821" stroke="#7777cc" stroke-width="1.5"/>
+  <text x="94" y="481" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="15" font-weight="600" fill="#e8e8e8">헤드 합치기 + W_O</text>
+  <text x="540" y="475" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="14" fill="#7777cc">(32, 10, 512)</text>
+  <text x="540" y="495" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="12" fill="#888">입력과 같은 모양</text>
+  <line x1="285" y1="502" x2="285" y2="536" stroke="#7777cc" stroke-width="2" marker-end="url(#tbArr)"/>
+  <rect x="70" y="536" width="430" height="54" rx="8" fill="#141821" stroke="#7ec8e3" stroke-width="1.5"/>
+  <text x="94" y="569" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="15" font-weight="600" fill="#e8e8e8">FFN 중간</text>
+  <text x="540" y="563" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="14" fill="#7ec8e3">(32, 10, 2048)</text>
+  <text x="540" y="583" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="12" fill="#888">d_model 의 4배</text>
+  <line x1="285" y1="590" x2="285" y2="624" stroke="#7777cc" stroke-width="2" marker-end="url(#tbArr)"/>
+  <rect x="70" y="624" width="430" height="54" rx="8" fill="#141821" stroke="#7777cc" stroke-width="1.5"/>
+  <text x="94" y="657" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="15" font-weight="600" fill="#e8e8e8">출력 로짓</text>
+  <text x="540" y="651" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="14" fill="#7777cc">(32, 10, 32000)</text>
+  <text x="540" y="671" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="12" fill="#888">어휘 크기로 투영</text>
+</svg>
