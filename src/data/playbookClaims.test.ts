@@ -3,7 +3,7 @@ import { playbookClaims } from './playbookClaims';
 import { claimsForProduct, productOpenItems } from './playbook';
 import { guideProductIds, guideProducts } from './guideProducts';
 import { guideModels } from './guideModels';
-import { tipGroupIds } from './guideTipGroups';
+import { tipGroupIdsOf } from './guideTipGroups';
 import { guideVendors } from './guideVendors';
 
 /**
@@ -301,11 +301,11 @@ describe('AI 가이드 — 주장', () => {
     **그릴 자리가 없어 화면에서 조용히 사라집니다** — 오류가 아니라 침묵이라
     눈으로는 못 잡습니다. 새 팁을 넣는 사람이 반드시 이 검사를 마주치게 합니다.
   */
-  it('팁마다 묶음이 있고 그 묶음이 실재한다', () => {
+  it('팁마다 묶음이 있고 그것이 제 축의 묶음이다', () => {
     const bad = playbookClaims
       .filter((c) => c.topic === 'habit')
-      .filter((c) => !c.group || !tipGroupIds.includes(c.group));
-    expect(bad.map((c) => `${c.id}(${c.group ?? '없음'})`)).toEqual([]);
+      .filter((c) => !c.group || !c.aim || !tipGroupIdsOf(c.aim).includes(c.group));
+    expect(bad.map((c) => `${c.id}(${c.aim ?? '축없음'}/${c.group ?? '묶음없음'})`)).toEqual([]);
   });
 
   /* 묶음은 팁의 축이라 값 주장에 붙으면 뜻이 없습니다 — `detail`과 같은 자리입니다. */
@@ -320,10 +320,35 @@ describe('AI 가이드 — 주장', () => {
     넷을 다 쓰고 있는 동안에는 넷이 다 차 있어야 하고, 정말 안 쓸 묶음이 생기면
     `guideTipGroups.ts`에서 빼는 것이 맞습니다.
   */
-  it('묶음 넷이 다 쓰이고 있다', () => {
+  it('축마다 묶음 넷이 다 쓰이고 있다', () => {
     const tips = playbookClaims.filter((c) => c.topic === 'habit');
-    const empty = tipGroupIds.filter((id) => !tips.some((c) => c.group === id));
+    const empty = (['save', 'well'] as const).flatMap((aim) =>
+      tipGroupIdsOf(aim)
+        .filter((id) => !tips.some((c) => c.group === id))
+        .map((id) => `${aim}/${id}`),
+    );
     expect(empty).toEqual([]);
+  });
+
+  /*
+    **한 칸에 몰리면 묶은 뜻이 없다.** 2026-09-17에 두 축이 같은 질문 넷을 쓰다가
+    갈랐는데, 그 전에는 잘 씀 팁 서른둘 중 **스물넷이 `feed` 하나**에 있었다(75%).
+    제품 아홉 중 여섯이 그 절에 묶음을 **하나만** 세웠다 — 화면에서 묶음이 하나면
+    묶기 전과 같다.
+
+    절반을 문턱으로 둔다. 지금 가장 큰 칸이 아낌 `load` 32%(20/63) · 잘 씀
+    `brief` 34%(11/32)라 여유가 있고, 넘기는 순간은 **칸을 늘릴 때가 아니라 다시
+    가를 때**다(다섯을 만들면 「기타」가 생긴다).
+  */
+  it('한 축의 팁이 묶음 하나에 몰리지 않는다', () => {
+    const over = (['save', 'well'] as const).flatMap((aim) => {
+      const tips = playbookClaims.filter((c) => c.topic === 'habit' && c.aim === aim);
+      return tipGroupIdsOf(aim)
+        .map((id) => ({ id, n: tips.filter((c) => c.group === id).length }))
+        .filter((g) => g.n > tips.length / 2)
+        .map((g) => `${aim}/${g.id} ${g.n}/${tips.length}`);
+    });
+    expect(over).toEqual([]);
   });
 
   /*

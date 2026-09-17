@@ -8,7 +8,7 @@ import { claimState, claimsForProduct, claimsForVendor } from '../data/playbook'
 import { playbookClaims } from '../data/playbookClaims';
 import { shownModels } from '../data/guideModels';
 import { guideProducts } from '../data/guideProducts';
-import { guideTipGroups } from '../data/guideTipGroups';
+import { tipGroupsOf } from '../data/guideTipGroups';
 import { guideVendorById } from '../data/guideVendors';
 import type { Claim, Product, TipAim, VendorInfo } from '../types/playbook';
 
@@ -165,12 +165,14 @@ function leversOf(tips: Claim[]): string[] {
  * 남은 줄이 있는지를 물어 해결합니다.
  */
 /**
- * 팁을 질문 넷으로 묶습니다. **빈 묶음은 아예 안 만듭니다** — 머리글만 서는 자리가
- * 생기지 않습니다. 위의 지도와 아래의 목록이 **같은 함수**를 써야 번호가 어긋나지
- * 않습니다(번호는 배열 자리가 아니라 **선 묶음 중 몇 번째**입니다).
+ * 팁을 그 **축의** 질문 넷으로 묶습니다. 축마다 묻는 것이 달라서 넷도 다릅니다 —
+ * 아낌은 세션이 지나는 시간이고 잘 씀은 어긋남을 어디서 잡나입니다.
+ *
+ * **빈 묶음은 아예 안 만듭니다** — 머리글만 서는 자리가 생기지 않습니다. 번호는
+ * 배열 자리가 아니라 **선 묶음 중 몇 번째**입니다.
  */
-function groupTips(tips: Claim[]) {
-  return guideTipGroups
+function groupTips(tips: Claim[], aim: TipAim) {
+  return tipGroupsOf(aim)
     .map((group) => ({ group, rows: tips.filter((c) => c.group === group.id) }))
     .filter((g) => g.rows.length > 0);
 }
@@ -218,7 +220,7 @@ function TipBlock({
   label: string;
   lead: string;
 }) {
-  const groups = groupTips(tips);
+  const groups = groupTips(tips, aim);
 
   return (
     <section className="guide-tips-block">
