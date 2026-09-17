@@ -1,9 +1,9 @@
-import { playbookIndex } from 'virtual:playbook-index';
 import { articles } from '../data/articles';
 import { categoryById } from '../data/categories';
 import { fullDate, newsItems, releaseOf } from '../data/news';
-import { playbookNotePath } from '../data/playbook';
-import { guideProductById } from '../data/guideProducts';
+import { playbookChecks, playbookProductPath } from '../data/playbook';
+import { guideProducts } from '../data/guideProducts';
+import { guideVendorById } from '../data/guideVendors';
 import { getSource } from '../data/sources';
 import type { SectionId } from '../types/article';
 import type { VendorId } from '../types/playbook';
@@ -129,7 +129,7 @@ function newsHits(query: string, scope: SearchScope): SearchHit[] {
 }
 
 /*
-  가이드 노트의 꼬리표 색. 뉴스가 회사마다 색을 다르게 쓰는 것과 같은 자리라 같은
+  가이드 꼬리표의 색. 뉴스가 회사마다 색을 다르게 쓰는 것과 같은 자리라 같은
   토큰을 그대로 씁니다 — 새 색을 내지 않으므로 `theme.test.ts` 파급이 0입니다.
 */
 const VENDOR_COLOR: Record<VendorId, string> = {
@@ -139,38 +139,53 @@ const VENDOR_COLOR: Record<VendorId, string> = {
 };
 
 /**
- * 가이드 노트.
+ * 가이드에서 검색이 거는 것은 **제품**입니다.
  *
- * **주장은 아직 안 담습니다.** 주장 한 줄은 제 주소가 없어서 눌러도 도구 페이지의
- * 표 어딘가로 떨어질 뿐이고, 소식처럼 모달로 열 자리도 없습니다. 값으로 찾아오는
- * 길은 대조표가 맡고 검색은 노트만 겁니다 — 앵커를 붙이기 전까지는 그렇습니다.
+ * **2026-09-17에 노트에서 제품으로 옮겼습니다.** 그 전에는 노트를 걸었는데, 이
+ * 서랍에서 노트 개념을 통째로 걷어내면서 걸 것이 사라졌습니다. 그대로 두면 가이드
+ * 범위 칩이 영원히 0건이고, **이 서랍은 주소를 아는 사람만 볼 수 있게** 됩니다.
+ *
+ * 제품이 옳은 단위이기도 합니다 — 열두 줄 전부가 제 주소를 가진 화면이고, 사람이
+ * 검색창에 치는 말이 대개 「Codex」·「Antigravity」 같은 제품 이름입니다.
+ *
+ * **주장은 여전히 안 담습니다.** 주장 한 줄은 제 주소가 없어서 눌러도 제품 화면의
+ * 표 어딘가로 떨어질 뿐입니다 — 앵커를 붙이기 전까지는 그렇습니다.
  */
 function playbookHits(query: string, scope: SearchScope): SearchHit[] {
   if (scope !== 'all' && scope !== 'playbook') return [];
 
   const hits: SearchHit[] = [];
 
-  for (const entry of playbookIndex) {
-    const product = guideProductById(entry.productId);
+  for (const product of guideProducts) {
+    const vendor = guideVendorById(product.vendorId);
 
     /*
-      태그 자리에 제품 이름과 `kind`를 둡니다. 「Codex」처럼 제품만 아는 상태로
-      찾는 것과 「한도」처럼 갈래로 훑는 것이 이 서랍에서 가장 잦습니다.
+      태그 자리에 갈래·회사·표면을 둡니다. 「코딩」처럼 갈래로 훑는 것, 「Anthropic」
+      처럼 회사만 아는 상태로 찾는 것, 「CLI」·「VS Code」처럼 만나는 자리로 찾는 것이
+      이 서랍에서 제품 이름 다음으로 잦습니다.
     */
-    const tags = [entry.kind, product?.name].filter((value): value is string => Boolean(value));
+    const tags = [product.role, vendor?.name, ...product.surfaces].filter(
+      (value): value is string => Boolean(value),
+    );
 
-    const score = scoreOf(query, entry.title, tags, entry.summary);
+    const score = scoreOf(query, product.name, tags, product.oneLine);
     if (score === 0) continue;
 
     hits.push({
-      key: `p-${entry.vendorId}-${entry.productId}-${entry.slug}`,
+      key: `p-${product.id}`,
       score,
-      href: playbookNotePath(entry),
-      title: entry.title,
-      label: product?.name ?? 'AI 가이드',
-      labelColor: VENDOR_COLOR[entry.vendorId as VendorId] ?? 'var(--brand-text)',
-      meta: `${entry.readTime} MIN`,
-      date: entry.updatedAt,
+      href: playbookProductPath(product.vendorId, product.id),
+      title: product.name,
+      label: vendor?.name ?? 'AI 가이드',
+      labelColor: VENDOR_COLOR[product.vendorId] ?? 'var(--brand-text)',
+      meta: product.role,
+      /*
+        제품에는 발행일이 없습니다. 같은 점수 안의 순서를 정하는 값이라 비워 두면
+        글·소식보다 **아래로** 밀리는데, 「Codex」를 친 사람이 가장 보고 싶은 것은
+        그 제품 화면입니다. 서랍이 마지막으로 값을 확인한 날을 씁니다 — 지어낸
+        수가 아니라 이 서랍이 화면에 그대로 적고 있는 날입니다.
+      */
+      date: playbookChecks.at(-1)?.date ?? '',
     });
   }
 
@@ -204,11 +219,11 @@ export function search(rawQuery: string, scope: SearchScope = 'all'): SearchHit[
 /** 검색 범위별 개수. 오버레이의 범위 칩에 붙습니다. */
 export function countByScope(): Record<SearchScope, number> {
   const counts: Record<SearchScope, number> = {
-    all: articles.length + newsItems.length + playbookIndex.length,
+    all: articles.length + newsItems.length + guideProducts.length,
     learn: 0,
     research: 0,
     news: newsItems.length,
-    playbook: playbookIndex.length,
+    playbook: guideProducts.length,
   };
 
   for (const article of articles) {

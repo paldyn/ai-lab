@@ -1,8 +1,8 @@
-import { playbookIndex } from 'virtual:playbook-index';
 import { describe, expect, it } from 'vitest';
 import { articles } from '../data/articles';
 import { newsItems, releaseOf } from '../data/news';
-import { guideProductById } from '../data/guideProducts';
+import { guideProducts } from '../data/guideProducts';
+import { guideVendorById } from '../data/guideVendors';
 import { getSource } from '../data/sources';
 import { countByScope, search, splitMatch } from './search';
 
@@ -16,7 +16,8 @@ import { countByScope, search, splitMatch } from './search';
  * **글과 소식과 가이드를 함께 훑는다.** 글 306편만 보던 동안 '뉴스' 범위 칩은 언제
  * 눌러도 0건이었고, 소식 387건은 검색 경로에 아예 없었습니다. AI 가이드는 최소선을
  * 넘기기 전까지 nav에 안 서므로 **검색이 그리로 가는 유일한 길**입니다 — 여기서
- * 빠지면 그 서랍은 주소를 아는 사람만 볼 수 있습니다.
+ * 빠지면 그 서랍은 주소를 아는 사람만 볼 수 있습니다. 거는 단위는 노트가 아니라
+ * **제품**입니다(2026-09-17).
  *
  * 기대값은 코퍼스에서 직접 세어 만듭니다. 글이나 소식이 몇으로 늘든 성립합니다.
  */
@@ -45,10 +46,12 @@ const 소식매치 = (query: string) =>
   }).length;
 
 const 가이드매치 = (query: string) =>
-  playbookIndex.filter((entry) => {
-    const product = guideProductById(entry.productId);
-    const tags = [entry.kind, product?.name].filter((value): value is string => Boolean(value));
-    return matches(query, entry.title, tags, entry.summary);
+  guideProducts.filter((product) => {
+    const vendor = guideVendorById(product.vendorId);
+    const tags = [product.role, vendor?.name, ...product.surfaces].filter(
+      (value): value is string => Boolean(value),
+    );
+    return matches(query, product.name, tags, product.oneLine);
   }).length;
 
 const 전부매치 = (query: string) => 글매치(query) + 소식매치(query) + 가이드매치(query);
@@ -128,26 +131,40 @@ describe('검색', () => {
 
   it('범위 칩의 숫자가 실제 개수와 맞는다', () => {
     const counts = countByScope();
-    expect(counts.all).toBe(articles.length + newsItems.length + playbookIndex.length);
+    expect(counts.all).toBe(articles.length + newsItems.length + guideProducts.length);
     expect(counts.news).toBe(newsItems.length);
     expect(counts.news).toBeGreaterThan(0);
-    expect(counts.playbook).toBe(playbookIndex.length);
+    expect(counts.playbook).toBe(guideProducts.length);
+    expect(counts.playbook).toBeGreaterThan(0);
     expect(counts.learn + counts.research + counts.news + counts.playbook).toBe(counts.all);
   });
 
   /*
-    **「토큰 절약」으로 가이드 노트가 나오는지 보던 검사를 잠시 내렸습니다.**
-    2026-09-16에 서랍을 비워 노트가 0이라 지금은 성립하지 않습니다. 합류 자체는
-    살아 있어서 `countByScope().playbook`이 위에서 0으로 세어집니다.
+    **2026-09-17에 되살렸습니다.** 2026-09-16에 서랍을 비우면서 「노트가 없는 동안
+    가이드 범위는 0건이다」로 내려 두었던 자리입니다. 노트 개념을 통째로 걷어내면서
+    검색이 거는 것이 **제품**이 됐고, 제품은 열둘이 항상 있으므로 0건일 이유가
+    없어졌습니다.
 
-    **첫 노트가 돌아오는 날 되살릴 것** — 커밋 `12eadc7`에 있습니다. 이 서랍은
-    최소선을 넘기기 전까지 nav에 안 서므로 검색이 그리로 가는 유일한 길이고,
-    그 길이 막히면 값을 데이터로 빼고 나이를 붙인 장치가 전부 아무도 안 보는
-    곳에서만 돕니다.
+    이 서랍은 최소선을 넘기기 전까지 nav에 안 서므로 **검색이 그리로 가는 유일한
+    길**입니다. 그 길이 막히면 값을 데이터로 빼고 나이를 붙인 장치가 전부 아무도 안
+    보는 곳에서만 돕니다.
   */
-  it('노트가 없는 동안 가이드 범위는 0건이다', () => {
-    expect(countByScope().playbook).toBe(0);
-    expect(search('토큰 절약', 'playbook')).toHaveLength(0);
+  it('제품 이름으로 가이드 화면을 찾을 수 있다', () => {
+    for (const product of guideProducts) {
+      const hits = search(product.name, 'playbook');
+      const 제품화면 = `/playbook/${product.vendorId}/${product.id}`;
+      expect(hits.map((hit) => hit.href), product.name).toContain(제품화면);
+    }
+  });
+
+  /*
+    제품 이름을 모르는 채로 오는 길도 있어야 합니다 — 회사만 알거나, 갈래만 알거나,
+    만나는 자리(CLI·VS Code)만 아는 경우입니다.
+  */
+  it('회사·갈래로도 가이드가 걸린다', () => {
+    for (const query of ['Anthropic', 'OpenAI', 'Google', '코딩', '챗']) {
+      expect(search(query, 'playbook').length, query).toBeGreaterThan(0);
+    }
   });
 
   it('제목에서 검색어 구간을 잘라 낸다', () => {
