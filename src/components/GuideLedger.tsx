@@ -2,7 +2,7 @@ import type { CSSProperties } from 'react';
 import { Link } from 'react-router';
 import { ClaimRow } from './ClaimRow';
 import { GuideMark } from './GuideMark';
-import { TIER_LABEL, TIER_ORDER } from './EvidenceBadge';
+import { TIER_ORDER } from './EvidenceBadge';
 import { TipRow } from './TipRow';
 import { claimState, claimsForProduct, claimsForVendor } from '../data/playbook';
 import { playbookClaims } from '../data/playbookClaims';
@@ -10,7 +10,7 @@ import { shownModels } from '../data/guideModels';
 import { guideProducts } from '../data/guideProducts';
 import { guideTipGroups } from '../data/guideTipGroups';
 import { guideVendorById } from '../data/guideVendors';
-import type { Claim, EvidenceTier, Product, TipAim, VendorInfo } from '../types/playbook';
+import type { Claim, Product, TipAim, VendorInfo } from '../types/playbook';
 
 /**
  * 원장 — 판 아래에서 내용만 갈리는 한 칸.
@@ -112,57 +112,6 @@ function OfficialLinks({ rows }: { rows: Array<{ label: string; url: string }> }
 }
 
 /**
- * 거르개를 세우는 문턱.
- *
- * **아홉 줄짜리 목록은 이미 한 화면에 다 보입니다.** 거기에 칩 셋을 세우면 고르는
- * 자리가 읽을 것보다 커집니다 — 3×3 판이 「첫 화면을 통째로 고르는 자리가 먹는다」로
- * 거절된 방향이고, 뉴스에서 「항목에 이미 붙어 있는 값으로 한 번 더 거르는 UI」를
- * 2026-08-05에 되돌린 자리이기도 합니다.
- *
- * 이 문턱으로 거르개가 서는 곳은 셋입니다 — Claude Code 18 · Codex 14 · Antigravity 11.
- * 덤으로 **「한쪽이 0인 화면」이 저절로 빠집니다**: 공식이 0인 제품은 Claude 하나이고
- * 팁이 둘이라 애초에 문턱 아래입니다. 빈 칸을 흐리게 세울 일이 안 생깁니다.
- */
-const FILTER_MIN = 10;
-
-function TierChip({
-  group,
-  value,
-  label,
-  n,
-  on,
-}: {
-  group: string;
-  value: string;
-  label: string;
-  n: number;
-  on?: boolean;
-}) {
-  const id = `${group}-${value}`;
-  return (
-    <>
-      {/*
-        **제어 컴포넌트로 만들지 않습니다.** `checked`를 주면 `onChange`가 필요해지고
-        그 순간 이 기능이 자바스크립트에 매입니다. 프리렌더된 첫 HTML에서 그대로
-        눌려야 합니다.
-      */}
-      <input
-        className="guide-tip-radio"
-        type="radio"
-        name={group}
-        id={id}
-        value={value}
-        defaultChecked={on}
-      />
-      <label htmlFor={id}>
-        {label}
-        <b>{n}</b>
-      </label>
-    </>
-  );
-}
-
-/**
  * 그 묶음의 팁들이 실제로 부르는 레버.
  *
  * **기계로 뽑습니다 — 손으로 적는 목록이 아닙니다.** 팁 문장과 이유의 백틱만 긁어
@@ -231,13 +180,27 @@ const tipAnchor = (scope: string, groupId: string) => `tips-${scope}-${groupId}`
 /**
  * 이 서랍이 파는 두 가지. **화면이 이 둘로 갈립니다.**
  *
- * 가르는 질문 하나입니다 — 이 팁을 따르면 **싸지나, 좋아지나**. 「잘 쓰기」 쪽은
- * 오히려 턴을 더 쓰는 것이 많습니다(계획 모드·리뷰어·인터뷰). 그래도 권하는 이유는
- * 「그럴듯한데 틀린」 결과를 거르기 때문입니다.
+ * 가르는 질문 하나입니다 — 이 팁을 따르면 **싸지나, 좋아지나**.
+ *
+ * **이름을 「이렇게 쓰면 아낀다」·「이렇게 쓰면 잘 쓴다」로 뒀다가 바꿨습니다**
+ * (2026-09-17). 둘이 같은 꼴(「이렇게 쓰면 ~ㄴ다」)에 끝 글자만 달라서, 아래로
+ * 내려오다 두 번째 절을 만나면 **같은 제목의 다른 글**로 읽혔습니다. 지금은 주어와
+ * 동사가 둘 다 다릅니다 — 토큰을 아끼다 / 결과를 좋게 하다.
+ *
+ * **각 절에 한 줄 리드가 붙습니다.** 제목만으로는 무엇이 다른지가 여전히 눌러
+ * 봐야 알 수 있었습니다. 리드가 그 자리에서 답합니다.
  */
-const TIP_AIMS: Array<{ aim: TipAim; label: string }> = [
-  { aim: 'save', label: '이렇게 쓰면 아낀다' },
-  { aim: 'well', label: '이렇게 쓰면 잘 쓴다' },
+const TIP_AIMS: Array<{ aim: TipAim; label: string; lead: string }> = [
+  {
+    aim: 'save',
+    label: '토큰을 아끼는 법',
+    lead: '같은 결과를 더 싸게 얻는 방법입니다.',
+  },
+  {
+    aim: 'well',
+    label: '결과를 좋게 하는 법',
+    lead: '값을 더 치르더라도 「그럴듯한데 틀린」 것을 걸러 내는 방법입니다.',
+  },
 ];
 
 function TipBlock({
@@ -246,47 +209,29 @@ function TipBlock({
   scope,
   aim,
   label,
+  lead,
 }: {
   tips: Claim[];
   today: string;
   scope: string;
   aim: TipAim;
   label: string;
+  lead: string;
 }) {
-  const radioName = `tip-tier-${scope}-${aim}`;
-  const segments = (Object.keys(TIER_ORDER) as EvidenceTier[])
-    .sort((a, b) => TIER_ORDER[a] - TIER_ORDER[b])
-    .map((tier) => ({ tier, n: tips.filter((c) => c.tier === tier).length }))
-    .filter((s) => s.n > 0);
-
   const groups = groupTips(tips);
 
   return (
     <section className="guide-tips-block">
-      <div className="guide-tip-head-row">
+      {/*
+        **거르개를 걷어냈습니다**(2026-09-17). 등급으로 거르는 칩(전체·공식·체감)이
+        절 머리 오른쪽에 섰는데, 읽는 사람이 이 화면에서 묻는 것은 「공식이냐 체감이냐」가
+        아니라 「지금 뭘 하면 되냐」입니다 — 축이 질문으로 바뀌면서 거르개만 옛 축에
+        남아 있었습니다. 등급은 줄마다 배지로 그대로 섭니다.
+      */}
+      <header className="guide-tip-block-head">
         <h3 className="guide-ledger-label">{label}</h3>
-
-        {tips.length >= FILTER_MIN && segments.length > 1 && (
-          /*
-            `legend`는 감추지만 지운 게 아닙니다 — 스크린 리더가 「근거로 거르기,
-            공식, 라디오 버튼, 3개 중 2번째」로 읽고 화살표 키 이동은 네이티브입니다.
-            수가 라벨 안에 박혀 있어 고른 결과가 스스로 읽힙니다(`aria-live` 불필요).
-          */
-          <fieldset className="guide-tip-filter">
-            <legend>근거로 거르기</legend>
-            <TierChip group={radioName} value="all" label="전체" n={tips.length} on />
-            {segments.map((s) => (
-              <TierChip
-                key={s.tier}
-                group={radioName}
-                value={s.tier}
-                label={TIER_LABEL[s.tier]}
-                n={s.n}
-              />
-            ))}
-          </fieldset>
-        )}
-      </div>
+        <p className="guide-tip-block-lead">{lead}</p>
+      </header>
 
       {groups.map(({ group, rows }, i) => (
         /*
@@ -423,7 +368,7 @@ function ProductLedger({ product, today }: { product: Product; today: string }) 
         **한쪽이 비면 그 절이 아예 안 섭니다**(빈 절을 안 그리는 규칙). 지금은 아홉
         제품 모두 양쪽이 차 있지만, 새 제품을 넣으면 한쪽만 서는 화면이 생깁니다.
       */}
-      {TIP_AIMS.map(({ aim, label }) => {
+      {TIP_AIMS.map(({ aim, label, lead }) => {
         const rows = tips.filter((c) => c.aim === aim);
         return rows.length === 0 ? null : (
           <TipBlock
@@ -433,6 +378,7 @@ function ProductLedger({ product, today }: { product: Product; today: string }) 
             scope={product.id}
             aim={aim}
             label={label}
+            lead={lead}
           />
         );
       })}

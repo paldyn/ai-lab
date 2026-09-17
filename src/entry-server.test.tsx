@@ -122,11 +122,7 @@ describe('프리렌더 — 본문이 HTML에 들어간다', () => {
       const shown = html.split('>안 통하는 자리<').length - 1;
       if (shown !== counters) wrong.push(`${product.id}: 반례 ${shown} ≠ ${counters}`);
 
-      /*
-        **화면이 축 둘로 갈립니다**(2026-09-17) — 아끼기와 잘 쓰기. 그래서 아래 둘은
-        **절마다 따로** 셉니다. 합쳐 세면 팁 열짜리 화면이 7 + 3으로 갈려 어느 절도
-        거르개를 안 세우는데 검사는 「열이니 서야 한다」로 읽습니다.
-      */
+      /* **화면이 축 둘로 갈립니다** — 묶음도 절마다 따로 셉니다. */
       const aims = ['save', 'well'] as const;
 
       /*
@@ -141,15 +137,6 @@ describe('프리렌더 — 본문이 HTML에 들어간다', () => {
       const drawn = html.split('guide-tip-group is-').length - 1;
       if (drawn !== used) wrong.push(`${product.id}: 묶음 ${drawn} ≠ 쓰인 질문 ${used}`);
 
-      /* 거르개도 절마다다 — 한 절이 열 줄을 넘고 그 절에 등급이 둘 이상일 때만 선다. */
-      const expected = aims.filter((aim) => {
-        const rows = tips.filter((c) => c.aim === aim);
-        return rows.length >= 10 && new Set(rows.map((c) => c.tier)).size > 1;
-      }).length;
-      const filters = html.split('guide-tip-filter').length - 1;
-      if (filters !== expected) {
-        wrong.push(`${product.id}: 거르개 ${filters} ≠ 서야 할 ${expected}`);
-      }
     }
     expect(wrong).toEqual([]);
   });

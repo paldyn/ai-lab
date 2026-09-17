@@ -7754,149 +7754,38 @@ input:focus-visible {
 */
 
 /*
-  절 머리글과 거르개가 한 줄에 선다. 머리글이 왼쪽, 칩이 오른쪽 끝이다.
+  절 머리. **두 축의 제목이 헷갈리면 안 된다.** 「이렇게 쓰면 아낀다」·「이렇게 쓰면
+  잘 쓴다」로 뒀더니 같은 꼴에 끝 글자만 달라 **같은 제목의 다른 글**로 읽혔다.
+  이름을 주어·동사가 둘 다 다르게 바꾸고(토큰을 아끼다 / 결과를 좋게 하다), 그 아래
+  한 줄 리드를 붙여 무엇이 다른지를 그 자리에서 말한다.
+
+  **절 사이 간격도 벌렸다**(`--gs-r4`의 두 배). 괘선 하나로는 두 절이 이어진 목록으로
+  보인다 — 여기가 화면에서 가장 크게 갈리는 자리다.
+
+  **거르개는 걷어냈다**(2026-09-17). 등급으로 거르는 칩(전체·공식·체감)이 이 줄
+  오른쪽에 섰는데, 읽는 사람이 묻는 것은 「공식이냐 체감이냐」가 아니라 「지금 뭘
+  하면 되냐」다 — 축이 질문으로 바뀌면서 거르개만 옛 축에 남아 있었다.
+  등급은 줄마다 배지로 그대로 선다.
 */
-.guide-tip-head-row {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: baseline;
-  justify-content: space-between;
-  gap: var(--gs-r1) var(--gs-r2);
+.guide-tips-block + .guide-tips-block {
+  margin-top: calc(var(--gs-r4) * 2);
+}
+
+.guide-tip-block-head {
   margin-top: var(--gs-r4);
   max-width: var(--gs-measure);
 }
 
-.guide-tip-head-row .guide-ledger-label {
+.guide-tip-block-head .guide-ledger-label {
   margin-top: 0;
 }
 
-/*
-  근거로 거르는 칩. **라디오 + `:has()`라 자바스크립트가 한 줄도 안 듭니다** —
-  프리렌더된 첫 HTML에서 그대로 눌립니다.
-
-  **`:has()`를 못 읽는 브라우저에서는 아예 안 뜹니다.** 켜진 것처럼 보이면서 아무
-  일도 안 하는 칩을 세우지 않습니다 — 집의 `.answer-all`이 스크립트가 없을 때
-  숨는 것과 같은 판단이고, 무너지는 방향은 「다 보인다」입니다.
-*/
-.guide-tip-filter {
-  display: none;
-  flex-wrap: wrap;
-  gap: var(--gs-r1);
-  /* fieldset의 UA 기본값 셋. min-inline-size를 안 풀면 flex 안에서 안 줄어듭니다. */
-  margin: 0;
-  border: 0;
-  padding: 0;
-  min-inline-size: 0;
-}
-
-@supports selector(:has(*)) {
-  .guide-tip-filter {
-    display: flex;
-  }
-}
-
-/*
-  **`display: none`이 아니라 잘라 냅니다.** 감춘 입력도 포커스를 받아야 키보드로
-  고를 수 있습니다. `.cert-subject-table thead`가 이미 쓰는 패턴입니다.
-*/
-.guide-tip-filter legend,
-.guide-tip-radio {
-  position: absolute;
-  overflow: hidden;
-  width: 1px;
-  height: 1px;
-  clip-path: inset(50%);
-}
-
-/*
-  누르는 자리는 10px 모노에 6/12px 패딩과 1px 테두리라 28px입니다 — 24px 아래로
-  안 내려갑니다. 1024px 아래에서는 레일이 위로 올라와 이 칩이 원장의 첫 컨트롤이
-  되므로 여기서 줄이면 손가락에 안 맞습니다.
-
-  **반지름은 999px입니다 — 집이 거르개에 쓰는 유일한 모양입니다.** `.filter-chip`
-  하나가 뉴스 분류·학습 갈래·카테고리·태그 넷을 다 덮고 `.section-tabs-aside`도
-  같습니다. 한때 3px이었는데 그것은 `.evidence-badge`·`.answer-chip`의 값, 곧
-  **붙는 배지의 반지름**이지 누르는 거르개의 반지름이 아니었습니다 — 반지름을
-  아끼려다 계열을 틀린 자리입니다. 새 값을 안 만드는 것은 그대로입니다: 999px은
-  이 파일에 이미 열여섯 곳 있습니다.
-*/
-.guide-tip-filter label {
-  cursor: pointer;
-  user-select: none;
-  border: 1px solid var(--guide-rule);
-  border-radius: 999px;
-  padding: var(--gs-r1) var(--gs-r2);
+.guide-tip-block-lead {
+  margin-top: var(--gs-r1);
   color: var(--text-muted);
-  font-family: var(--font-mono);
-  font-size: var(--gs-mono);
-  letter-spacing: 0.08em;
-  line-height: 1.4;
-  white-space: nowrap;
-  transition: color 0.15s, border-color 0.15s, background-color 0.15s;
-}
-
-.guide-tip-filter label b {
-  margin-left: var(--gs-r1);
-  color: var(--text-dim);
-  font-weight: 400;
-}
-
-.guide-tip-filter label:hover {
-  border-color: var(--brand);
-  color: var(--brand-text);
-}
-
-/*
-  켜진 칩은 **면이 찹니다** — `.filter-chip.active`가 쓰는 반전 그대로입니다.
-  색 하나가 아니라 면·잉크·굵기 셋이라 흑백으로 봐도 세 칸 중 하나만 채워져 갈립니다.
-*/
-.guide-tip-radio:checked + label {
-  border-color: var(--text-strong);
-  background: var(--text-strong);
-  color: var(--bg);
-  font-weight: 600;
-}
-
-/* 반전 안에서 수를 한 단 죽입니다 — `.tag-filter-list .filter-chip.active i`와 같은 값. */
-.guide-tip-radio:checked + label b {
-  color: var(--bg);
-  opacity: 0.7;
-}
-
-/* 입력이 안 보이므로 포커스 링은 라벨이 대신 그립니다. */
-.guide-tip-radio:focus-visible + label {
-  outline: 2px solid var(--brand);
-  outline-offset: 2px;
-}
-
-/*
-  거르기. **등급 셋을 다 적습니다.** 오늘 `ours` 팁이 0건이라 아무 화면에도 안
-  보이지만 타입이 셋이고 승격 경로가 열려 있으므로 언젠가 옵니다. 둘만 적으면
-  그날 실측 줄이 「공식」에서도 「체감」에서도 사라지고 아무 검사도 안 잡습니다 —
-  `styles.test.ts`가 이 대응을 봅니다.
-
-  `display: none`이라 거른 줄은 접근성 트리에서도 빠집니다. 화면에 없는 줄을
-  스크린 리더가 읽으면 칩에 적힌 수와 안 맞습니다.
-*/
-.guide-tips-block:has(.guide-tip-radio[value='vendor']:checked) .guide-tip:not(.is-vendor),
-.guide-tips-block:has(.guide-tip-radio[value='ours']:checked) .guide-tip:not(.is-ours),
-.guide-tips-block:has(.guide-tip-radio[value='field']:checked) .guide-tip:not(.is-field) {
-  display: none;
-}
-
-/*
-  **거르면 묶음 머리글도 같이 빠집니다.** 안 그러면 줄이 0개인 질문이 덩그러니
-  서서, 원장이 빈 절을 안 세우기로 한 규칙을 거르개가 어깁니다. 남은 줄이 있는지를
-  `:has()`로 그 묶음에 직접 묻습니다 — 수를 세어 두거나 자바스크립트로 지울 필요가
-  없습니다. 등급 셋을 다 적는 것은 위와 같은 이유입니다.
-*/
-.guide-tips-block:has(.guide-tip-radio[value='vendor']:checked)
-  .guide-tip-group:not(:has(.guide-tip.is-vendor)),
-.guide-tips-block:has(.guide-tip-radio[value='ours']:checked)
-  .guide-tip-group:not(:has(.guide-tip.is-ours)),
-.guide-tips-block:has(.guide-tip-radio[value='field']:checked)
-  .guide-tip-group:not(:has(.guide-tip.is-field)) {
-  display: none;
+  font-size: var(--gs-body);
+  line-height: 1.75;
+  text-wrap: pretty;
 }
 
 /*
@@ -8220,7 +8109,6 @@ input:focus-visible {
   반대 방향입니다.
 */
 @media print {
-  .guide-tip-filter,
   .guide-tip-chip {
     display: none;
   }
