@@ -2,6 +2,22 @@ import type { NewsDetail } from '../news';
 
 /** 2026-09 발표의 모달 본문. 목록은 news.ts에 있습니다. */
 export const details: Record<string, NewsDetail> = {
+  'astra-for-law': {
+    points: [
+      'GPT-6 Astra에 법률 검색 인덱스와 법률 분석·작성 지침을 붙인 구성이다',
+      '미국 판례법·제정법·규정·법원 규칙·행정 결정 2억 3천만 URL을 검색한다',
+      'Free Law Project와 협력해 공개된 미국 선례 판례법 99.9% 이상을 담았다',
+      'Vals AI Legal Research Bench 200문항 정답률 54.0%, 웹 검색만은 38.7%였다',
+      '판례 질문에서 참조 판례를 24% 더 찾고 관련 구절은 최대 54% 더 검색했다',
+      '선별 로펌에 ChatGPT·Codex Trusted Access로 먼저 열고 API는 곧 연다',
+      '자격 로펌에는 API Zero Data Retention을 주고 인적 검토에서 기본 제외한다',
+      'Relativity·Clio 등을 잇는 파트너 플러그인 26종과 ChatGPT for Word를 함께 열었다',
+    ],
+    commentary:
+      '기반 모델을 새로 내는 대신 같은 모델에 검색 인덱스와 지침을 얹어 분야를 판다. 9월 10일 금융용 ' +
+      'ChatGPT와 같은 꼴이라, 경쟁이 모델 성능에서 분야별 데이터와 규정 준수로 옮겨 가는 중임을 보여 준다. ' +
+      '다만 접근이 선별 로펌으로 묶여 있어 당장 확인할 수 있는 것은 벤더가 낸 수치뿐이다.',
+  },
   'life-sciences-verification-program': {
     points: [
       '생명과학 전문가에게 Mythos·Opus·Sonnet 모델을 여는 LSVP를 베타로 시작했다',

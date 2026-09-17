@@ -172,6 +172,20 @@ export const globalNewsUpdatedAt = '2026-09-17';
  */
 const entries: NewsItem[] = [
   {
+    id: 'astra-for-law',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'OpenAI, 법률 특화 Astra for Law 공개 — 선별 로펌에 우선 제공',
+    summary:
+      'OpenAI가 GPT-6 Astra에 법률 검색 인덱스와 분석 지침을 붙인 Astra for Law를 공개했다. ' +
+      '미국 판례법 등 2억 3천만 URL을 검색하고, 선별된 로펌에 Trusted Access로 먼저 열며 API는 곧 연다.',
+    publishedAt: '2026-09-17',
+    collectedAt: '2026-09-18',
+    category: 'Product',
+    signal: '법률 AI 도구',
+    url: 'https://openai.com/index/astra-for-law',
+  },
+  {
     id: 'life-sciences-verification-program',
     source: 'Anthropic',
     kind: 'company',
