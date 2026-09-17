@@ -368,8 +368,8 @@ export const playbookClaims: Claim[] = [
     id: 'claude-code-tip-02',
     subject: { kind: 'product', id: 'claude-code' },
     topic: 'habit',
-    statement: '모델과 강도(effort)는 세션 맨 앞에서 정하고 도중에 건드리지 않는다 — 모델은 예외 없이, 강도는 대부분의 모델에서 캐시가 갈린다(Fable 5.1은 API 키·구독에서 강도를 바꿔도 캐시가 남는다).',
-    detail: '모델마다·강도마다 캐시가 따로다. 중간에 바꾸면 다음 요청이 대화 전체를 캐시 없이 다시 읽는다 — 내용이 한 글자도 안 바뀌었어도 그렇다.',
+    statement: '모델과 강도(effort)는 세션 맨 앞에서 정하고 도중에 건드리지 않는다.',
+    detail: '모델마다·강도마다 캐시가 따로다. 중간에 바꾸면 다음 요청이 대화 전체를 캐시 없이 다시 읽는다 — 내용이 한 글자도 안 바뀌었어도 그렇다. 모델은 예외가 없고 강도는 대부분의 모델에서 갈린다(Fable 5.1만 API 키·구독에서 강도를 바꿔도 캐시가 남는다).',
     /* 팁은 셀 값이 아니라 행동을 바꾸는 문장이라 `value`가 빕니다. */
     value: null,
     tier: 'vendor',
@@ -636,8 +636,8 @@ export const playbookClaims: Claim[] = [
     id: 'claude-code-tip-18',
     subject: { kind: 'product', id: 'claude-code' },
     topic: 'habit',
-    statement: '사고는 이미 기본으로 켜져 있으므로 「ultrathink」에 기대지 말고 예산은 `MAX_THINKING_TOKENS`로 정한다 — 그 변수를 두면 키워드 쪽이 무시된다.',
-    detail: '그 마법어는 2026-01-16에 거둬졌고 지금은 적어도 아무 일이 안 난다. 예산을 올리려면 `MAX_THINKING_TOKENS`를, 간단한 편집에서 끄려면 같은 변수를 0으로 둔다.',
+    statement: '사고는 이미 기본으로 켜져 있으므로 「ultrathink」에 기대지 말고 예산을 `MAX_THINKING_TOKENS`로 정한다.',
+    detail: '그 마법어는 2026-01-16에 거둬졌고 지금은 적어도 아무 일이 안 난다. 그 변수를 두면 키워드 쪽은 무시된다. 예산을 올리려면 `MAX_THINKING_TOKENS`를, 간단한 편집에서 끄려면 같은 변수를 0으로 둔다.',
     /* 팁은 셀 값이 아니라 행동을 바꾸는 문장이라 `value`가 빕니다. */
     value: null,
     tier: 'field',
@@ -670,7 +670,7 @@ export const playbookClaims: Claim[] = [
     id: 'claude-tip-02',
     subject: { kind: 'product', id: 'claude' },
     topic: 'habit',
-    statement: 'PDF를 통째로 올리지 말고 필요한 대목만 텍스트로 붙여 넣는다. (교차 확인을 이슈 URL이나 두 번째 정리 글로 바꿔 적은 뒤)',
+    statement: 'PDF를 통째로 올리지 말고 필요한 대목만 텍스트로 붙여 넣는다.',
     detail: 'PDF는 쪽마다 글자와 그림 둘로 처리되고 그 그림이 대화에 남아 이후 매 요청에 다시 실린다. 같은 내용을 붙여 넣으면 값이 몇 분의 일로 떨어진다.',
     /* 팁은 셀 값이 아니라 행동을 바꾸는 문장이라 `value`가 빕니다. */
     value: null,
@@ -788,7 +788,7 @@ export const playbookClaims: Claim[] = [
     id: 'openai-tip-02',
     subject: { kind: 'vendor', id: 'openai' },
     topic: 'habit',
-    statement: 'OpenAI API를 직접 부를 때는 앞 턴을 고쳐 쓰지 말고 뒤에 덧붙이고, 고정 지침과 공유 참고자료를 맨 앞에 둔다 — 그래야 프리픽스가 그대로라 캐시가 맞는다.',
+    statement: 'OpenAI API를 직접 부를 때는 앞 턴을 고쳐 쓰지 말고 뒤에 덧붙이고, 고정 지침과 공유 참고자료를 맨 앞에 둔다.',
     detail: '프리픽스가 그대로일 때만 캐시가 맞는다. 여러 턴짜리에서는 처음 지침만 캐싱하는 것보다 자라나는 대화 기록을 통째로 재사용하는 쪽이 아끼는 입력 토큰이 더 크다. 도구는 정의·순서·스키마를 그대로 두고, 잠시 막고 싶으면 정의를 빼지 말고 `tool_choice`를 `none`으로 둔다. 모델·도구·`reasoning.effort`·`text.verbosity`·컨텍스트 관리 설정을 바꾸면 그 지점 뒤로는 캐시가 안 맞는다.',
     /* 팁은 셀 값이 아니라 행동을 바꾸는 문장이라 `value`가 빕니다. */
     value: null,
@@ -812,8 +812,8 @@ export const playbookClaims: Claim[] = [
     id: 'chatgpt-work-tip-02',
     subject: { kind: 'product', id: 'chatgpt-work' },
     topic: 'habit',
-    statement: '짧은 질문·리라이트·브레인스토밍은 Work로 보내지 않는다 — Work는 소스·도구가 여럿이거나 여러 단계를 거쳐 산출물을 내놓을 때다. (detail의 「Work와 Codex는 같은 크레딧·사용 한도를 쓴다」 한 문장은 뺀다)',
-    detail: 'ChatGPT Work와 Codex는 같은 크레딧·사용 한도를 쓴다. 문서는 크레딧을 더 쓰는 작업이라도 시간을 아끼거나 품질을 올리면 값어치를 한다고 보되 갈라 쓰는 기준을 이렇게 못 박고, 하던 일이 더는 필요 없는 방향으로 흘러가면 범위를 좁히거나 중단하라고 한다("Narrow or stop the task if it starts doing work you no longer need.").',
+    statement: '짧은 질문·리라이트·브레인스토밍은 Work로 보내지 않는다 — Work는 소스·도구가 여럿이거나 여러 단계를 거칠 때다.',
+    detail: '문서는 크레딧을 더 쓰는 작업이라도 시간을 아끼거나 품질을 올리면 값어치를 한다고 보되 갈라 쓰는 기준을 이렇게 못 박고, 하던 일이 더는 필요 없는 방향으로 흘러가면 범위를 좁히거나 중단하라고 한다("Narrow or stop the task if it starts doing work you no longer need.").',
     /* 팁은 셀 값이 아니라 행동을 바꾸는 문장이라 `value`가 빕니다. */
     value: null,
     tier: 'vendor',
@@ -1078,8 +1078,8 @@ export const playbookClaims: Claim[] = [
     id: 'google-tip-02',
     subject: { kind: 'vendor', id: 'google' },
     topic: 'habit',
-    statement: '같은 자료를 두고 물을 것이 여럿이면 짧은 시간 안에 몰아서 보낸다. (detail의 확인 필드를 usage_metadata → usage.total_cached_tokens로 고친다)',
-    detail: '캐시는 시간이 지나면 식는다. 같은 접두사를 쓰는 질문을 하루에 흩어 보내면 매번 전액을 내고, 붙여서 보내면 뒤의 요청들이 캐시 적중으로 깎인다. 적중량은 응답의 usage_metadata에서 확인한다.',
+    statement: '같은 자료를 두고 물을 것이 여럿이면 짧은 시간 안에 몰아서 보낸다.',
+    detail: '캐시는 시간이 지나면 식는다. 같은 접두사를 쓰는 질문을 하루에 흩어 보내면 매번 전액을 내고, 붙여서 보내면 뒤의 요청들이 캐시 적중으로 깎인다.',
     /* 팁은 셀 값이 아니라 행동을 바꾸는 문장이라 `value`가 빕니다. */
     value: null,
     tier: 'vendor',

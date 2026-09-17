@@ -224,6 +224,36 @@ describe('AI 가이드 — 주장', () => {
     expect(bad.map((c) => c.id)).toEqual([]);
   });
 
+  /*
+    **팁 문장은 접힌 줄에 그대로 서는 상품입니다.** 그래서 초고에 남긴 메모가
+    화면에 그대로 나갑니다 — 2026-09-17에 셋이 그러고 있었습니다.
+    「(detail의 … 한 문장은 뺀다)」 같은 자기 지시문이 제품 화면에 찍혀 있었고,
+    이유 줄에 묻혀 눈으로 지나간 자리입니다.
+  */
+  it('팁 문장에 편집 지시문이 안 남아 있다', () => {
+    const bad = playbookClaims
+      .filter((c) => c.topic === 'habit')
+      .filter((c) => /\((?:detail의|교차 확인을|statement의|source를)/.test(c.statement));
+    expect(bad.map((c) => c.id)).toEqual([]);
+  });
+
+  /*
+    **팁 문장만 140자가 아니라 90자입니다.** 접으면 문장이 목록의 리듬을 지고,
+    592px 측정폭에서 배지와 칩 자리를 빼면 첫 줄에 약 504px이 남아 90자를 넘으면
+    세 줄이 됩니다.
+
+    **자르지 않습니다.** 넘긴 다섯 편은 전부 「행동 — 조건」 꼴이었고, 앞머리만
+    남기면 「강도는 대부분의 모델에서 갈린다」 같은 단서가 사라져 권하는 말이
+    거짓이 됩니다. 조건절을 `detail`로 내리는 것이 줄이는 법입니다 —
+    줄이는 자리는 화면이 아니라 원고입니다.
+  */
+  it('팁 문장이 90자를 안 넘는다', () => {
+    const bad = playbookClaims
+      .filter((c) => c.topic === 'habit')
+      .filter((c) => c.statement.length > 90);
+    expect(bad.map((c) => `${c.id}(${c.statement.length}자)`)).toEqual([]);
+  });
+
   it('팁에는 이유가 있고 값이 없다', () => {
     const bad = playbookClaims
       .filter((c) => c.topic === 'habit')
