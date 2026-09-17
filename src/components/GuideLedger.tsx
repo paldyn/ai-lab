@@ -239,8 +239,10 @@ function TipBlock({
         <p className="guide-tip-block-lead">{lead}</p>
       </header>
 
-      {groups.map(({ group, rows }, i) => (
-        /*
+      {groups.map(({ group, rows }, i) => {
+        const levers = leversOf(rows);
+        return (
+          /*
           **묶음이 펼쳐집니다**(2026-09-17). 위에 목차를 따로 세우고 눌러서 내려가게
           했다가 걷어냈습니다 — 같은 질문 넷이 한 화면에 두 벌 서고, 누르면 화면이
           점프해 「어디로 갔지」가 됩니다. 제자리에서 열리면 목차와 내용이 한 몸이라
@@ -258,17 +260,25 @@ function TipBlock({
           <summary className="guide-tip-group-head">
             <h4 className="guide-tip-question">
               <span className="guide-tip-no">{String(i + 1).padStart(2, '0')}</span>
-              {group.question}
+              <span className="guide-tip-q">{group.question}</span>
+              {/*
+                레버가 질문과 **같은 줄**에 섭니다(2026-09-17). 제 줄을 갖던 동안
+                닫힌 칸이 99px이라 넷이 서면 첫 화면이 그것만으로 찹니다 — 접는
+                뜻이 「요점만 남기기」인데 요점이 두 줄이면 요점이 아닙니다.
+                남는 폭만큼만 보이고 나머지는 잘립니다(`overflow: hidden`) —
+                닫힌 줄은 색인의 **맛보기**이고, 잘린 것은 열면 팁 문장 안에
+                `<code>`로 전부 다시 섭니다.
+              */}
+              {levers.length > 0 && (
+                <span className="guide-tip-levers">
+                  {levers.map((lever) => (
+                    <code key={lever}>{lever}</code>
+                  ))}
+                </span>
+              )}
               {/* 글자는 CSS가 넣습니다 — 복사한 글에 안 섞이고 여닫힘도 CSS가 맡습니다. */}
               <span className="guide-tip-count" aria-hidden="true" data-n={rows.length} />
             </h4>
-            {leversOf(rows).length > 0 && (
-              <p className="guide-tip-levers">
-                {leversOf(rows).map((lever) => (
-                  <code key={lever}>{lever}</code>
-                ))}
-              </p>
-            )}
           </summary>
 
           <div className="guide-tips">
@@ -277,7 +287,8 @@ function TipBlock({
             ))}
           </div>
         </details>
-      ))}
+        );
+      })}
     </section>
   );
 }

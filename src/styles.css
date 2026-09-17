@@ -7812,10 +7812,16 @@ input:focus-visible {
   border-top: 1px solid var(--guide-rule);
 }
 
+/*
+  **닫힌 칸은 한 줄이다**(2026-09-17). 그 전에는 99px이었다 — 위아래 패딩 24씩에
+  질문 24, 레버가 제 줄로 27. 넷이 서면 400px이라 절 하나가 첫 화면을 통째로
+  먹었고, 접는 뜻이 「요점만 남기기」인데 요점이 두 줄이면 그건 요점이 아니다.
+  레버를 질문 줄로 올리고 패딩을 절반으로 내려 48px이 됐다.
+*/
 .guide-tip-group-head {
   list-style: none;
   cursor: pointer;
-  padding-block: var(--gs-r3);
+  padding-block: var(--gs-r2);
   max-width: var(--gs-measure);
 }
 
@@ -7834,7 +7840,6 @@ input:focus-visible {
 */
 .guide-tip-count {
   flex-shrink: 0;
-  margin-left: auto;
   color: var(--text-dim);
   font-family: var(--font-mono);
   font-size: var(--gs-mono);
@@ -7886,6 +7891,17 @@ input:focus-visible {
 }
 
 /*
+  질문 글자. **늘고 줄어드는 칸이 이것 하나다** — 번호·레버·수는 전부
+  `flex-shrink: 0`이라 남는 폭이 여기로 오고, 좁아지면 여기부터 감긴다.
+  `min-width: 0`이 없으면 flex 기본값(`auto`)이 내용 폭을 바닥으로 잡아
+  줄이 592px을 넘겨 버린다.
+*/
+.guide-tip-q {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+/*
   번호. **세로로 훑을 때 눈이 붙잡는 자리**라 하나만 브랜드색으로 켭니다.
   `flex-shrink: 0`이 없으면 좁은 폭에서 질문이 번호를 밀어 「0 1」로 감깁니다.
 */
@@ -7902,14 +7918,34 @@ input:focus-visible {
   (`leversOf`) — 새로 쓰는 문장이 0이라 늙을 것이 없습니다. 「명령어를 나열하고
   설명을」이 여기서 성립하되, 명령어가 없는 팁도 제자리를 잃지 않습니다.
 
-  알약이 아니라 **글자 그대로** 세웁니다 — 바로 위 거르개가 알약이라 같은 모양을
-  쓰면 누를 수 있는 것으로 읽힙니다. 이건 색인이지 컨트롤이 아닙니다.
+  알약이 아니라 **글자 그대로** 세웁니다 — 알약으로 그리면 누를 수 있는 것으로
+  읽힙니다. 이건 색인이지 컨트롤이 아닙니다.
+
+  **질문과 같은 줄에 섭니다**(2026-09-17). 제 줄을 갖던 동안 닫힌 칸이 99px이었고,
+  넷이 서면 절 하나가 첫 화면을 통째로 먹었습니다. 늘고 주는 칸은 질문뿐이라
+  (`.guide-tip-q`) 레버는 제 폭을 지키되 **남는 폭의 45%까지만** 먹고 넘치면
+  잘립니다 — 묶음마다 레버가 하나에서 여섯까지라(`steer`가 여섯) 자리를 안 막으면
+  질문이 밀립니다. 잘린 것은 사라지는 것이 아닙니다: 열면 팁 문장 안에 `<code>`로
+  전부 다시 서고, 닫힌 줄이 지는 몫은 **색인이 아니라 맛보기**입니다.
 */
 .guide-tip-levers {
   display: flex;
-  flex-wrap: wrap;
-  gap: var(--gs-r1) var(--gs-r2);
-  margin-top: var(--gs-r2);
+  flex-shrink: 0;
+  gap: var(--gs-r2);
+  max-width: 45%;
+  padding-right: 1.25em;
+  overflow: hidden;
+  white-space: nowrap;
+  /*
+    **잘린 자리를 보이게 한다.** 그냥 자르면 `/rewin`처럼 낱말 중간에서 끊겨
+    고장으로 읽힌다. 흐려지면 「뒤가 더 있다」로 읽히고, 그 뒤는 열면 나온다.
+
+    오른쪽 패딩이 이 장치의 전부다 — 안 넘칠 때 상자는 내용 + 1.25em이라
+    흐려지는 것이 빈 패딩뿐이고, 넘쳐서 `max-width`에 걸릴 때만 흐림이 실제
+    글자를 먹는다. CSS로는 넘쳤는지 물을 수 없어 이렇게 우회한다.
+    `mask-image`를 못 쓰는 브라우저는 그냥 잘린다 — 감추는 것은 없다.
+  */
+  mask-image: linear-gradient(to right, #000 calc(100% - 1.25em), transparent);
 }
 
 .guide-tip-levers code {
@@ -8362,6 +8398,16 @@ input:focus-visible {
 
   .guide-tile-name {
     font-size: var(--gs-body);
+  }
+
+  /*
+    **좁은 폭에서는 레버를 내린다.** 375px에서 레버가 120px을 먹으면 질문이 두
+    줄로 감겨 한 줄로 만든 뜻이 사라진다(여섯 칸 중 넷이 그랬다). 레버는 색인이고
+    질문이 요점이라, 하나를 버려야 하면 색인을 버린다 — 열면 팁 문장 안에
+    `<code>`로 전부 선다. 중단점은 집의 것(640)을 그대로 쓴다.
+  */
+  .guide-tip-levers {
+    display: none;
   }
 
   /*
