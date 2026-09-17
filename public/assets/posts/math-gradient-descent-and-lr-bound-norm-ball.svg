@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="512" viewBox="0 0 880 512">
+  <defs>
+    <marker id="gdarr" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#7777cc"/>
+    </marker>
+    <marker id="gdopt" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#55c555"/>
+    </marker>
+  </defs>
+  <rect x="0" y="0" width="880" height="512" rx="12" fill="#0a0a0a"/>
+  <text x="60" y="64" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="22" font-weight="700" fill="#e8e8e8">걸음을 재는 자가 바뀌면 최적 방향도 바뀐다</text>
+  <text x="60" y="94" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#e8e8e8">그래디언트는 둘 다 같은데, 허용된 걸음의 모양이 달라 닿는 자리가 다르다</text>
+
+  <text x="250" y="148" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#e8e8e8" text-anchor="middle">유클리드 노름</text>
+  <text x="250" y="174" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888" text-anchor="middle">걸음이 원 안에 있어야 한다</text>
+  <circle cx="250" cy="300" r="90" fill="#7ec8e3" fill-opacity="0.10" stroke="#7ec8e3" stroke-width="2"/>
+  <circle cx="250" cy="300" r="5" fill="#e8e8e8"/>
+  <line x1="250" y1="300" x2="312.6" y2="268.7" stroke="#7777cc" stroke-width="2.5" marker-end="url(#gdarr)"/>
+  <line x1="250" y1="300" x2="169.5" y2="340.2" stroke="#55c555" stroke-width="2.5" marker-end="url(#gdopt)"/>
+  <text x="330" y="252" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#7777cc">그래디언트</text>
+  <text x="146" y="366" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#55c555" text-anchor="middle">최적 걸음</text>
+
+  <text x="630" y="148" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#e8e8e8" text-anchor="middle">최대 노름</text>
+  <text x="630" y="174" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888" text-anchor="middle">좌표마다 r 을 넘지 않으면 된다</text>
+  <rect x="540" y="210" width="180" height="180" rx="4" fill="#7ec8e3" fill-opacity="0.10" stroke="#7ec8e3" stroke-width="2"/>
+  <circle cx="630" cy="300" r="5" fill="#e8e8e8"/>
+  <line x1="630" y1="300" x2="692.6" y2="268.7" stroke="#7777cc" stroke-width="2.5" marker-end="url(#gdarr)"/>
+  <line x1="630" y1="300" x2="540" y2="390" stroke="#55c555" stroke-width="2.5" marker-end="url(#gdopt)"/>
+  <text x="710" y="252" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#7777cc">그래디언트</text>
+  <text x="512" y="410" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#55c555" text-anchor="middle">최적 걸음</text>
+
+  <text x="250" y="440" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888" text-anchor="middle">그래디언트와 정확히 반대쪽 — 크기가 값에 실린다</text>
+  <text x="250" y="464" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888" text-anchor="middle">이것이 경사하강법이다</text>
+  <text x="630" y="440" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888" text-anchor="middle">언제나 네 꼭짓점 중 하나 — 부호만 값에 실린다</text>
+  <text x="630" y="464" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888" text-anchor="middle">이것이 sign-SGD 다</text>
+</svg>
