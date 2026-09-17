@@ -7,6 +7,7 @@ import { claimState, claimsForProduct, claimsForVendor } from '../data/playbook'
 import { playbookClaims } from '../data/playbookClaims';
 import { guideModelById } from '../data/guideModels';
 import { guideProducts } from '../data/guideProducts';
+import { guideTipGroups } from '../data/guideTipGroups';
 import { guideVendorById } from '../data/guideVendors';
 import type { Claim, EvidenceTier, Product, VendorInfo } from '../types/playbook';
 
@@ -161,25 +162,69 @@ function TierChip({
 }
 
 /**
- * 팁 한 벌 — 절 머리글 · 거르개 · 줄들.
+ * 그 묶음의 팁들이 실제로 부르는 레버.
  *
- * **거르기가 순수 CSS입니다**(라디오 + `:has()`). 자바스크립트가 한 줄도 안 들고,
- * 그래서 프리렌더된 첫 HTML에서 그대로 눌립니다. 라디오와 줄들이 `.guide-tips-block`
- * 한 부모 안에 있어야 선택자가 닿습니다. `name`은 제품마다 다르게 주되 **CSS는
- * `id`가 아니라 `value`를 겁니다** — 한 페이지에 블록이 둘 서도 안 깨집니다.
+ * **기계로 뽑습니다 — 손으로 적는 목록이 아닙니다.** 팁 문장과 이유의 백틱만 긁어
+ * 첫 등장 순서로 세웁니다. 사용자가 「명령어를 나열하고 설명을 하던지」라고 한 그
+ * 자리인데, 데이터를 세어 보면 **명령어를 뼈대로는 못 씁니다** — 63건 중 백틱이
+ * 있는 것이 13건뿐이고 토큰 열일곱 종 중 `/compact` 5회·`/clear` 4회 말고는 전부
+ * 한 번씩입니다. 뼈대로 삼으면 나머지 50건이 갈 곳을 잃습니다.
  *
- * **거르개는 좁히는 도구이고 배지는 영수증입니다.** 거른다고 줄의 배지를 지우지
- * 않습니다 — 거른 화면에서 한 줄만 캡처해 가면 등급이 사라집니다.
+ * 그래서 **묶음의 색인으로** 세웁니다. 질문 넷이 뼈대를 지고, 레버는 그 아래에서
+ * 「이 자리에서 만지는 것들」을 한 줄로 보여 줍니다 — 레퍼런스로 읽히는 자리가
+ * 생기되 명령어 없는 팁이 밀려나지 않습니다.
  *
- * **등급이 있는 것만 칩으로 세웁니다.** 실측 팁이 하나 생기면 칩이 저절로 넷이
- * 되고, CSS도 세 등급을 다 적어 두었습니다(`styles.test.ts`가 그 대응을 봅니다).
+ * **`statement`만 긁고 `detail`은 안 봅니다.** 레버는 **행동이 부르는 이름**이고
+ * 이유 줄의 토큰은 설명하다 스치는 것입니다. 둘 다 긁어 봤더니 Codex 화면의 첫
+ * 묶음에 `tool_choice none reasoning.effort text.verbosity`가 섰는데, 거기서
+ * `none`은 레버가 아니라 **값**입니다(「`tool_choice`를 `none`으로 둔다」의 목적어).
+ * 값을 명령어처럼 세우면 그 줄이 색인이 아니라 낱말 더미가 됩니다.
+ *
+ * 선을 이렇게 그으면 규칙이 데이터에도 보입니다 — **색인에 세우고 싶은 레버는
+ * 문장에서 부른다.** 이유에만 적힌 것은 그 팁의 행동이 아니라는 뜻입니다.
+ *
+ * **새로 쓰는 문장이 0입니다.** 설계안은 묶음마다 「한 줄 답」을 붙였는데 그것은
+ * 배지도 출처도 없는 주장이 되고 어느 검사에도 안 걸린 채 늙습니다. 여기서 나오는
+ * 것은 전부 팁 원문의 조각이라 팁을 고치면 저절로 따라옵니다.
+ */
+function leversOf(tips: Claim[]): string[] {
+  const seen: string[] = [];
+  for (const tip of tips) {
+    for (const m of tip.statement.matchAll(/`([^`]+)`/g)) {
+      /* 레버는 손잡이라 짧습니다. 긴 것은 문장 조각이지 부르는 이름이 아닙니다. */
+      if (m[1].length <= 30 && !seen.includes(m[1])) seen.push(m[1]);
+    }
+  }
+  return seen;
+}
+
+/**
+ * 팁 한 벌 — 절 머리글 · 거르개 · **질문 넷으로 묶인 줄들**.
+ *
+ * **축이 질문입니다**(2026-09-17). 그 전에는 열여덟이 평평하게 한 줄로 섰고 등급이
+ * 유일한 축이었습니다. 지금은 세션이 지나는 시간으로 묶이고 등급은 **묶음 안의
+ * 정렬 키**로 내려왔습니다 — 한 묶음 안에서 공식이 먼저, 체감이 뒤입니다.
+ *
+ * **빈 묶음은 안 그립니다.** 그 제품에 그 질문의 팁이 없으면 머리글째 안 섭니다 —
+ * 원장이 빈 절을 안 세우는 규칙이 여기에도 그대로 걸립니다. 그래서 팁 둘짜리
+ * Claude 화면에는 묶음이 하나만 서고, 열여덟짜리 Claude Code에는 넷이 다 섭니다.
+ *
+ * **거르기는 순수 CSS입니다**(라디오 + `:has()`). 라디오와 줄들이 `.guide-tips-block`
+ * 한 부모 안에 있어야 선택자가 닿습니다. 거르면 **묶음 머리글도 같이 빠져야
+ * 합니다** — 안 그러면 줄 0개짜리 질문이 덩그러니 섭니다. `:has()`로 그 묶음에
+ * 남은 줄이 있는지를 물어 해결합니다.
  */
 function TipBlock({ tips, today, scope }: { tips: Claim[]; today: string; scope: string }) {
-  const group = `tip-tier-${scope}`;
+  const radioName = `tip-tier-${scope}`;
   const segments = (Object.keys(TIER_ORDER) as EvidenceTier[])
     .sort((a, b) => TIER_ORDER[a] - TIER_ORDER[b])
     .map((tier) => ({ tier, n: tips.filter((c) => c.tier === tier).length }))
     .filter((s) => s.n > 0);
+
+  /* 빈 묶음은 아예 안 만듭니다 — 머리글만 서는 자리가 생기지 않습니다. */
+  const groups = guideTipGroups
+    .map((g) => ({ group: g, rows: tips.filter((c) => c.group === g.id) }))
+    .filter((g) => g.rows.length > 0);
 
   return (
     <section className="guide-tips-block">
@@ -194,11 +239,11 @@ function TipBlock({ tips, today, scope }: { tips: Claim[]; today: string; scope:
           */
           <fieldset className="guide-tip-filter">
             <legend>근거로 거르기</legend>
-            <TierChip group={group} value="all" label="전체" n={tips.length} on />
+            <TierChip group={radioName} value="all" label="전체" n={tips.length} on />
             {segments.map((s) => (
               <TierChip
                 key={s.tier}
-                group={group}
+                group={radioName}
                 value={s.tier}
                 label={TIER_LABEL[s.tier]}
                 n={s.n}
@@ -208,11 +253,35 @@ function TipBlock({ tips, today, scope }: { tips: Claim[]; today: string; scope:
         )}
       </div>
 
-      <div className="guide-tips">
-        {tips.map((claim) => (
-          <TipRow key={claim.id} state={claimState(claim, today)} />
-        ))}
-      </div>
+      {groups.map(({ group, rows }, i) => (
+        <section key={group.id} className={`guide-tip-group is-${group.id}`}>
+          <header className="guide-tip-group-head">
+            {/*
+              차례는 배열 자리가 아니라 **선 묶음 중 몇 번째**입니다. 빈 묶음을
+              건너뛰므로, 팁 둘짜리 화면에서 홀로 선 묶음이 「04」로 서면 앞의 셋을
+              찾게 됩니다 — 없는 것을 가리키는 번호입니다.
+            */}
+            <p className="guide-tip-stage">
+              <span className="guide-tip-no">{String(i + 1).padStart(2, '0')}</span>
+              {group.stage}
+            </p>
+            <h4 className="guide-tip-question">{group.question}</h4>
+            {leversOf(rows).length > 0 && (
+              <p className="guide-tip-levers">
+                {leversOf(rows).map((lever) => (
+                  <code key={lever}>{lever}</code>
+                ))}
+              </p>
+            )}
+          </header>
+
+          <div className="guide-tips">
+            {rows.map((claim) => (
+              <TipRow key={claim.id} state={claimState(claim, today)} />
+            ))}
+          </div>
+        </section>
+      ))}
     </section>
   );
 }
@@ -250,6 +319,7 @@ function ProductLedger({ product, today }: { product: Product; today: string }) 
   const tips = claims
     .filter((c) => c.topic === 'habit')
     .sort((a, b) => TIER_ORDER[a.tier] - TIER_ORDER[b.tier]);
+  /* 묶음은 `TipBlock`이 세웁니다 — 여기서는 묶음 **안의** 차례만 정합니다. */
   const usage = claims.filter((c) => c.topic !== 'context' && c.topic !== 'habit');
   const contextOf = new Map(
     claims.filter((c) => c.topic === 'context').map((c) => [c.subject.id, c]),

@@ -7779,19 +7779,27 @@ input:focus-visible {
   누르는 자리는 10px 모노에 6/12px 패딩과 1px 테두리라 28px입니다 — 24px 아래로
   안 내려갑니다. 1024px 아래에서는 레일이 위로 올라와 이 칩이 원장의 첫 컨트롤이
   되므로 여기서 줄이면 손가락에 안 맞습니다.
+
+  **반지름은 999px입니다 — 집이 거르개에 쓰는 유일한 모양입니다.** `.filter-chip`
+  하나가 뉴스 분류·학습 갈래·카테고리·태그 넷을 다 덮고 `.section-tabs-aside`도
+  같습니다. 한때 3px이었는데 그것은 `.evidence-badge`·`.answer-chip`의 값, 곧
+  **붙는 배지의 반지름**이지 누르는 거르개의 반지름이 아니었습니다 — 반지름을
+  아끼려다 계열을 틀린 자리입니다. 새 값을 안 만드는 것은 그대로입니다: 999px은
+  이 파일에 이미 열여섯 곳 있습니다.
 */
 .guide-tip-filter label {
   cursor: pointer;
   user-select: none;
   border: 1px solid var(--guide-rule);
-  border-radius: 3px; /* .evidence-badge·.answer-chip과 같은 값. 네 번째 반지름을 안 만듭니다. */
+  border-radius: 999px;
   padding: var(--gs-r1) var(--gs-r2);
   color: var(--text-muted);
   font-family: var(--font-mono);
   font-size: var(--gs-mono);
   letter-spacing: 0.08em;
   line-height: 1.4;
-  transition: color 0.15s, border-color 0.15s;
+  white-space: nowrap;
+  transition: color 0.15s, border-color 0.15s, background-color 0.15s;
 }
 
 .guide-tip-filter label b {
@@ -7805,15 +7813,21 @@ input:focus-visible {
   color: var(--brand-text);
 }
 
-/* 켜진 칩은 색 하나가 아니라 테두리·잉크·굵기 셋으로 섭니다 — 흑백에서도 갈립니다. */
+/*
+  켜진 칩은 **면이 찹니다** — `.filter-chip.active`가 쓰는 반전 그대로입니다.
+  색 하나가 아니라 면·잉크·굵기 셋이라 흑백으로 봐도 세 칸 중 하나만 채워져 갈립니다.
+*/
 .guide-tip-radio:checked + label {
   border-color: var(--text-strong);
-  color: var(--text-strong);
+  background: var(--text-strong);
+  color: var(--bg);
   font-weight: 600;
 }
 
+/* 반전 안에서 수를 한 단 죽입니다 — `.tag-filter-list .filter-chip.active i`와 같은 값. */
 .guide-tip-radio:checked + label b {
-  color: var(--text-strong);
+  color: var(--bg);
+  opacity: 0.7;
 }
 
 /* 입력이 안 보이므로 포커스 링은 라벨이 대신 그립니다. */
@@ -7835,6 +7849,92 @@ input:focus-visible {
 .guide-tips-block:has(.guide-tip-radio[value='ours']:checked) .guide-tip:not(.is-ours),
 .guide-tips-block:has(.guide-tip-radio[value='field']:checked) .guide-tip:not(.is-field) {
   display: none;
+}
+
+/*
+  **거르면 묶음 머리글도 같이 빠집니다.** 안 그러면 줄이 0개인 질문이 덩그러니
+  서서, 원장이 빈 절을 안 세우기로 한 규칙을 거르개가 어깁니다. 남은 줄이 있는지를
+  `:has()`로 그 묶음에 직접 묻습니다 — 수를 세어 두거나 자바스크립트로 지울 필요가
+  없습니다. 등급 셋을 다 적는 것은 위와 같은 이유입니다.
+*/
+.guide-tips-block:has(.guide-tip-radio[value='vendor']:checked)
+  .guide-tip-group:not(:has(.guide-tip.is-vendor)),
+.guide-tips-block:has(.guide-tip-radio[value='ours']:checked)
+  .guide-tip-group:not(:has(.guide-tip.is-ours)),
+.guide-tips-block:has(.guide-tip-radio[value='field']:checked)
+  .guide-tip-group:not(:has(.guide-tip.is-field)) {
+  display: none;
+}
+
+/*
+  질문 묶음. **이 서랍의 축입니다**(2026-09-17) — 그 전에는 팁 열여덟이 같은 굵기로
+  평평하게 한 줄로 섰고 거르개가 가르는 것은 등급이었습니다. 그런데 이 화면에 온
+  사람이 묻는 것은 「공식이냐 체감이냐」가 아니라 **「지금 뭘 하면 되냐」**입니다.
+
+  차례는 세션이 지나는 시간입니다 — 짐 싸기 → 첫 줄에서 → 일을 줄 때 → 끊는 자리.
+*/
+.guide-tip-group + .guide-tip-group {
+  margin-top: var(--gs-r4);
+}
+
+.guide-tip-group-head {
+  margin-top: var(--gs-r3);
+  max-width: var(--gs-measure);
+}
+
+/*
+  단계 라벨. 번호와 이름이 한 줄에 서고, 번호만 브랜드색으로 켭니다 — 넷을 세로로
+  훑을 때 눈이 붙잡는 자리가 번호이기 때문입니다.
+*/
+.guide-tip-stage {
+  display: flex;
+  align-items: baseline;
+  gap: var(--gs-r1);
+  color: var(--text-dim);
+  font-family: var(--font-mono);
+  font-size: var(--gs-mono);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.guide-tip-no {
+  color: var(--brand-text);
+}
+
+/*
+  질문. **팁 문장보다 한 급 큽니다**(16 : 13.5) — 묶음 머리와 그 안의 줄이 같은
+  크기면 층이 안 생기고, 그게 「평평하다」의 정체였습니다. 다만 굵기는 안 올립니다:
+  아래 공식 팁이 이미 600이라 머리까지 굵으면 둘이 경쟁합니다.
+*/
+.guide-tip-question {
+  margin-top: var(--gs-r1);
+  color: var(--text-strong);
+  font-size: var(--gs-lead);
+  font-weight: 450;
+  line-height: 1.5;
+  text-wrap: pretty;
+}
+
+/*
+  레버. **이 묶음의 팁들이 실제로 부르는 것**을 기계로 뽑아 세운 색인입니다
+  (`leversOf`) — 새로 쓰는 문장이 0이라 늙을 것이 없습니다. 「명령어를 나열하고
+  설명을」이 여기서 성립하되, 명령어가 없는 팁도 제자리를 잃지 않습니다.
+
+  알약이 아니라 **글자 그대로** 세웁니다 — 바로 위 거르개가 알약이라 같은 모양을
+  쓰면 누를 수 있는 것으로 읽힙니다. 이건 색인이지 컨트롤이 아닙니다.
+*/
+.guide-tip-levers {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--gs-r1) var(--gs-r2);
+  margin-top: var(--gs-r2);
+}
+
+.guide-tip-levers code {
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+  font-size: var(--gs-mono);
+  letter-spacing: 0.04em;
 }
 
 .guide-tips {

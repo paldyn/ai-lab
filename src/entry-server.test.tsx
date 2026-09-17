@@ -126,6 +126,15 @@ describe('프리렌더 — 본문이 HTML에 들어간다', () => {
       if (filtered !== tips.length >= 10) {
         wrong.push(`${product.id}: 팁 ${tips.length}인데 거르개 ${filtered ? '섰다' : '안 섰다'}`);
       }
+
+      /*
+        **묶음은 화면의 축이고 빈 묶음은 안 섭니다.** 그래서 선 묶음의 수는
+        「그 제품에 팁이 있는 질문의 수」와 정확히 같아야 합니다 — 적으면 팁이
+        갈 곳을 잃은 것이고, 많으면 줄 0개짜리 질문이 덩그러니 선 것입니다.
+      */
+      const used = new Set(tips.map((c) => c.group)).size;
+      const drawn = html.split('guide-tip-group is-').length - 1;
+      if (drawn !== used) wrong.push(`${product.id}: 묶음 ${drawn} ≠ 쓰인 질문 ${used}`);
     }
     expect(wrong).toEqual([]);
   });
