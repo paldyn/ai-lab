@@ -383,7 +383,7 @@ export const playbookClaims: Claim[] = [
     subject: { kind: 'product', id: 'claude-code' },
     topic: 'habit',
     group: 'cut',
-    statement: '`/compact`은 자동으로 터지기를 기다리지 말고 일이 끊기는 자리에서 직접 친다.',
+    statement: '이어 갈 일에서 창이 차오르면 자동 압축을 기다리지 말고 `/compact`을 직접 친다.',
     detail: '압축은 대화 층의 캐시를 반드시 깨므로 비용이 어차피 한 번은 든다. 그 비용을 일의 한가운데가 아니라 작업과 작업 사이에 치르게 고르는 것이다.',
     /* 팁은 셀 값이 아니라 행동을 바꾸는 문장이라 `value`가 빕니다. */
     value: null,
@@ -513,8 +513,8 @@ export const playbookClaims: Claim[] = [
     subject: { kind: 'product', id: 'claude-code' },
     topic: 'habit',
     group: 'cut',
-    statement: '일이 끝난 자리에서는 `/compact`가 아니라 `/clear`로 끊는다.',
-    detail: '압축은 끝난 일의 요약을 남은 세션 내내 다시 태운다. 조사→작성, 버그 하나→다른 버그처럼 일이 바뀌는 자리는 이어 갈 맥락이 없으니 빈 창에서 시작하는 쪽이 싸다.',
+    statement: '이어 갈 맥락이 없으면 압축하지 말고 `/clear`로 비운다.',
+    detail: '압축과 비우기를 가르는 것은 창이 얼마나 찼나가 아니라 **앞 맥락을 쓸 일이 남았나**다. 조사→작성, 버그 하나→다른 버그처럼 일이 바뀌는 자리에서 압축하면 끝난 일의 요약을 남은 세션 내내 다시 태운다.',
     /* 팁은 셀 값이 아니라 행동을 바꾸는 문장이라 `value`가 빕니다. */
     value: null,
     tier: 'field',
@@ -549,8 +549,8 @@ export const playbookClaims: Claim[] = [
     subject: { kind: 'product', id: 'claude-code' },
     topic: 'habit',
     group: 'load',
-    statement: 'CLAUDE.md는 150~200줄 안쪽으로 줄이고 일회성 레시피는 스킬 파일로 내린다.',
-    detail: '이 파일은 세션 시작에 통째로 실려 끝날 때까지 매 턴 따라다닌다. 코드를 읽으면 알 수 있는 것은 빼고, 스킬은 이름과 설명만 먼저 실린다.',
+    statement: 'CLAUDE.md에서 먼저 덜어낼 것은 코드를 읽으면 알 수 있는 내용이다.',
+    detail: '줄 수를 목표로 삼으면 무엇을 지울지에서 막힌다. 현장은 공식 상한보다 더 좁게 잡되 기준을 내용으로 둔다 — 코드에 이미 적힌 것은 빼고, 스킬은 이름과 설명만 먼저 실리므로 일회성 레시피는 그쪽으로 내린다.',
     /* 팁은 셀 값이 아니라 행동을 바꾸는 문장이라 `value`가 빕니다. */
     value: null,
     tier: 'field',
@@ -585,8 +585,8 @@ export const playbookClaims: Claim[] = [
     subject: { kind: 'product', id: 'claude-code' },
     topic: 'habit',
     group: 'model',
-    statement: '세션 도중에 모델이나 사고 강도를 갈아타지 않는다 — 지금까지의 맥락을 통째로 다시 읽는다.',
-    detail: '모델마다 캐시가 따로라 전환이 프롬프트 글자를 안 바꿔도 앞부분이 전부 무효가 된다. 바꿀 거면 일을 끊는 자리에서 바꾼다.',
+    statement: '캐시를 깨는 것은 모델 전환만이 아니다 — MCP 툴 정의를 바꾸거나 오래 쉬어도 앞부분이 통째로 무효가 된다.',
+    detail: '캐시 미스의 원인이 셋으로 같이 묶인다 — 모델·강도 전환, MCP 툴 정의 변경, 그리고 유효기간이 지나도록 쉬는 것. 셋 다 프롬프트 글자를 한 자도 안 바꾸고도 앞부분을 통째로 날린다. 그래서 모델만 고정해 두고 서버 구성을 만지면 아낀 것이 없다.',
     /* 팁은 셀 값이 아니라 행동을 바꾸는 문장이라 `value`가 빕니다. */
     value: null,
     tier: 'field',
@@ -742,7 +742,7 @@ export const playbookClaims: Claim[] = [
     subject: { kind: 'product', id: 'codex' },
     topic: 'habit',
     group: 'cut',
-    statement: '긴 실행 뒤 컨텍스트가 차오르면 채팅을 새로 파지 말고 `/compact`로 앞 대화를 요약해 토큰을 비운다.',
+    statement: '긴 실행 뒤 컨텍스트가 차오르면 `/compact`로 앞 대화를 요약해 토큰을 비운다.',
     detail: '`/compact`는 앞 턴들을 요약으로 갈아 끼워 핵심을 남긴 채 컨텍스트를 비운다. 비우기와 줄이기는 다른 동작이다 — `/new`는 같은 CLI 세션 안에서 컨텍스트만 새로 시작하고 `/clear`는 터미널 화면까지 함께 지우며, 둘 다 맥락을 통째로 버리므로 다시 설명해야 한다. Codex는 자동으로도 압축한다.',
     /* 팁은 셀 값이 아니라 행동을 바꾸는 문장이라 `value`가 빕니다. */
     value: null,

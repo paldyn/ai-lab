@@ -249,6 +249,54 @@ describe('AI 가이드 — 주장', () => {
     expect(empty).toEqual([]);
   });
 
+  /*
+    **한 화면의 한 묶음에 거의 같은 문장이 둘 서지 않는다.**
+
+    묶음이 이 겹침을 드러냈습니다. 평평한 열여덟 줄이던 동안에는 「CLAUDE.md는 200줄
+    아래로」(공식)와 「CLAUDE.md는 150~200줄 안쪽으로」(체감)가 다섯 줄 떨어져 각자
+    팁으로 읽혔는데, 질문으로 묶으니 한 칸 안에서 나란히 서서 되풀이가 됐습니다.
+
+    **체감이 공식을 되받아 적으면 그건 통설이 아니라 메아리입니다.** 이 서랍이 파는
+    것은 「벤더는 이렇게 말하고 사람들은 이렇게 겪는다」의 **차이**라, 같은 말을 두
+    번 적으면 값어치가 사라지고 화면만 길어집니다. 고치는 자리는 화면이 아니라
+    원고이고, 고치는 법은 **체감이 공식에 더하는 것만 남기는 것**입니다 —
+    2026-09-17에 넷을 그렇게 다시 썼습니다.
+
+    **문턱은 재서 정했습니다.** 같은 화면·같은 묶음 쌍 아흔둘의 글자 두 개 묶음
+    자카드가 지금 최대 0.161이고, 걷어낸 둘이 0.22·0.23이었습니다. 0.20이면 지금
+    것을 하나도 안 건드리면서 그 둘을 다시 잡습니다.
+
+    **제품 화면 단위로 봅니다** — 기업 주장이 제품에 얹히므로(`claimsForProduct`)
+    따로따로는 안 닮은 둘이 한 화면에서 만납니다.
+  */
+  it('한 화면의 한 묶음에 거의 같은 문장이 둘 안 선다', () => {
+    const bigrams = (text: string) => {
+      const flat = text.replace(/[^가-힣a-zA-Z0-9/]/g, '');
+      return new Set(Array.from({ length: Math.max(0, flat.length - 1) }, (_, i) => flat.slice(i, i + 2)));
+    };
+    const near = (a: string, b: string) => {
+      const [x, y] = [bigrams(a), bigrams(b)];
+      const union = new Set([...x, ...y]);
+      if (union.size === 0) return 0;
+      return [...x].filter((g) => y.has(g)).length / union.size;
+    };
+
+    const tooAlike: string[] = [];
+    for (const product of guideProducts) {
+      const tips = claimsForProduct(product.id).filter((c) => c.topic === 'habit');
+      for (let i = 0; i < tips.length; i += 1) {
+        for (let j = i + 1; j < tips.length; j += 1) {
+          if (tips[i].group !== tips[j].group) continue;
+          const score = near(tips[i].statement, tips[j].statement);
+          if (score >= 0.2) {
+            tooAlike.push(`${product.id}/${tips[i].group}: ${tips[i].id} ↔ ${tips[j].id} (${score.toFixed(2)})`);
+          }
+        }
+      }
+    }
+    expect([...new Set(tooAlike)]).toEqual([]);
+  });
+
   /* 팁에만 이유가 붙습니다 — 값 주장에 설명이 필요하면 `statement`가 덜 써진 것입니다. */
   it('이유는 팁에만 붙는다', () => {
     const bad = playbookClaims.filter((c) => c.detail && c.topic !== 'habit');
