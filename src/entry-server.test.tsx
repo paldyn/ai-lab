@@ -1,6 +1,3 @@
-import { readFileSync } from 'node:fs';
-import path from 'node:path';
-import { playbookIndex } from 'virtual:playbook-index';
 import { guideProducts } from './data/guideProducts';
 import { guideVendorIds } from './data/guideVendors';
 import { describe, expect, it } from 'vitest';
@@ -96,26 +93,5 @@ describe('프리렌더 — 본문이 HTML에 들어간다', () => {
       }
     }
     expect(empty).toEqual([]);
-  });
-
-  /*
-    가이드 노트는 지금 0편이라 실제로 그려 볼 것이 없습니다. **「없어서 통과」로
-    두지 않습니다** — 그러면 이 검사가 첫 노트가 들어올 때까지 아무것도 안 막습니다.
-    대신 `render()`에 그 주소 모양을 다루는 줄이 있는지를 봅니다.
-
-    첫 노트가 돌아오는 날 위의 셋과 같은 모양으로 바꿉니다.
-  */
-  it('AI 가이드 노트 — 주소 모양을 다루는 줄이 있다', async () => {
-    if (playbookIndex.length > 0) {
-      const note = playbookIndex[0];
-      const route = `/playbook/${note.vendorId}/${note.productId}/${note.slug}`;
-      const { html } = await render(route);
-      expect(hasBody(html), route).toBe(true);
-      return;
-    }
-
-    const source = readFileSync(path.join(process.cwd(), 'src/entry-server.tsx'), 'utf8');
-    expect(source).toContain('loadPlaybookBody');
-    expect(source).toMatch(/\/\^\\\/playbook\\\//);
   });
 });

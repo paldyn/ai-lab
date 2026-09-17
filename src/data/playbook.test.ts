@@ -1,6 +1,4 @@
 import { describe, expect, it } from 'vitest';
-import { renderMarkdown } from '../../plugins/markdown';
-import { fillClaimRefs } from '../lib/claimRef';
 import {
   FRESHNESS_DAYS,
   claimState,
@@ -90,48 +88,6 @@ describe('AI 가이드 — 신선도 계산', () => {
     for (const v of ['price', 'limit', 'model'] as const) {
       expect(FRESHNESS_DAYS[v]!.soft).toBeLessThan(FRESHNESS_DAYS[v]!.hard);
     }
-  });
-});
-
-describe('AI 가이드 — 본문의 값 참조', () => {
-  /*
-    원고는 `:claim[아이디]`로 부르기만 하고 값은 데이터에만 있습니다. 그 왕복이
-    깨지면 노트가 통째로 거짓이 되는데 **화면에는 아이디만 덩그러니 남아** 눈으로는
-    지나치기 쉽습니다. 그래서 여기서 실제로 그려 봅니다.
-  */
-  it('원고의 부르는 자리가 rehype 단계에서 span이 된다', async () => {
-    const { html } = await renderMarkdown('Pro 요금은 :claim[claude-pro-price] 입니다.');
-    expect(html).toContain('data-claim="claude-pro-price"');
-    expect(html).toContain('class="claim-ref"');
-  });
-
-  /*
-    없는 아이디를 조용히 지우면 원고에 난 구멍을 아무도 못 봅니다.
-    그대로 두어 화면에서 튀게 하고, 원고 검사가 따로 잡습니다.
-  */
-  it('없는 아이디는 지우지 않고 그대로 둔다', async () => {
-    const { html } = await renderMarkdown(':claim[nope-nope]');
-    expect(fillClaimRefs(html, '2026-09-16')).toContain('nope-nope');
-  });
-
-  /*
-    **2026-09-17에 되살렸습니다.** 주장이 0이던 동안에는 이 검사를 못 세우고
-    「첫 주장이 돌아오는 날 되살릴 것」이라고만 적어 두었습니다. 그날이 왔습니다.
-
-    여기서 지키는 것은 **왕복**입니다 — 원고는 아이디만 부르고 값은 데이터에만
-    있는데, 그 왕복이 깨지면 노트가 통째로 거짓이 되면서도 **화면에는 아이디만
-    덩그러니 남아** 눈으로는 지나치기 쉽습니다.
-  */
-  it('부르는 자리에 실제 값과 나이가 채워진다', async () => {
-    const { html } = await renderMarkdown('Pro 요금은 :claim[claude-pro-price] 입니다.');
-    const filled = fillClaimRefs(html, '2026-09-17');
-    expect(filled).toContain('월 $20');
-    expect(filled).toContain('0일 전');
-  });
-
-  it('부르는 자리가 없는 본문은 손대지 않는다', () => {
-    const plain = '<p>값을 안 부르는 보통 문단입니다.</p>';
-    expect(fillClaimRefs(plain, '2026-09-16')).toBe(plain);
   });
 });
 

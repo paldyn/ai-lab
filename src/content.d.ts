@@ -34,23 +34,6 @@ declare module 'virtual:cert-prep-index' {
   export const certPrepIndex: CertPrepEntry[];
 }
 
-declare module 'virtual:playbook-index' {
-  export interface PlaybookEntry {
-    vendorId: string;
-    productId: string;
-    slug: string;
-    title: string;
-    summary: string;
-    kind: string;
-    order: number;
-    claims: string[];
-    readTime: number;
-    updatedAt: string;
-  }
-
-  export const playbookIndex: PlaybookEntry[];
-}
-
 declare module 'virtual:mirror-index' {
   export interface MirrorEntry {
     slug: string;

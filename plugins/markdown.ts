@@ -306,61 +306,6 @@ function rehypeAnswerToggle() {
  */
 const END_LABELS = new Set(['지난 글', '다음 글']);
 
-/**
- * `:claim[아이디]`를 값이 들어갈 자리로 바꿉니다.
- *
- * **AI 가이드 노트는 본문에 썩는 값을 안 적습니다.** 요금·한도·모델 id를 원고에
- * 적으면 그 노트가 데이터와 같은 속도로 늙고, 고칠 자리가 둘이 되며, 둘이 어긋나도
- * 아무도 모릅니다. 원고는 부르기만 하고 값은 `playbookClaims.ts`에만 둡니다.
- *
- * 여기서는 **자리만 만듭니다.** 값·배지·나이를 채우는 것은 그리는 쪽이고
- * (`src/lib/claimRef.ts`), 그래야 프리렌더된 HTML도 읽는 날 기준으로 다시 계산됩니다.
- * 안 채워졌을 때 빈칸이 아니라 아이디가 그대로 보이게 둡니다 — 조용히 사라지면
- * 원고에 구멍이 난 것을 아무도 못 봅니다.
- */
-function rehypeEvidence() {
-  type Node = Record<string, unknown>;
-  const CLAIM_REF = /:claim\[([a-z0-9][a-z0-9-]*)\]/g;
-
-  const visit = (node: Node) => {
-    const children = (node.children ?? []) as Node[];
-    if (children.length === 0) return;
-
-    const next: Node[] = [];
-    for (const child of children) {
-      if (child.type !== 'text') {
-        visit(child);
-        next.push(child);
-        continue;
-      }
-
-      const value = String(child.value ?? '');
-      if (!value.includes(':claim[')) {
-        next.push(child);
-        continue;
-      }
-
-      let last = 0;
-      for (const match of value.matchAll(CLAIM_REF)) {
-        const at = match.index ?? 0;
-        if (at > last) next.push({ type: 'text', value: value.slice(last, at) });
-        next.push({
-          type: 'element',
-          tagName: 'span',
-          properties: { className: ['claim-ref'], 'data-claim': match[1] },
-          children: [{ type: 'text', value: match[1] }],
-        });
-        last = at + match[0].length;
-      }
-      if (last < value.length) next.push({ type: 'text', value: value.slice(last) });
-    }
-
-    node.children = next;
-  };
-
-  return (tree: unknown) => visit(tree as Node);
-}
-
 function rehypeDropEndNav() {
   type Node = Record<string, unknown>;
   const childrenOf = (node: Node) => (node.children ?? []) as Node[];
@@ -431,7 +376,6 @@ export async function renderMarkdown(body: string): Promise<RenderedMarkdown> {
     .use(rehypeSelectableMathSpace)
     .use(rehypeAnswerToggle)
     .use(rehypeDropEndNav)
-    .use(rehypeEvidence)
     .use(rehypeStringify, { allowDangerousHtml: true })
     .process(body);
 

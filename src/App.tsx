@@ -10,7 +10,6 @@ import { LearnPage } from './pages/LearnPage';
 import { HomePage } from './pages/HomePage';
 import { NewsPage } from './pages/NewsPage';
 import { NotFoundPage } from './pages/NotFoundPage';
-import { PlaybookNotePage } from './pages/PlaybookNotePage';
 import { PlaybookPage } from './pages/PlaybookPage';
 import { PrivacyPage } from './pages/PrivacyPage';
 import { ResearchPage } from './pages/ResearchPage';
@@ -54,13 +53,15 @@ export default function App() {
         {/*
           AI 가이드. `/learn` 아래가 아니라 제 주소를 씁니다 — 학습은 원리를 담고
           여기는 지금 그 제품의 상태를 담아, 썩는 속도가 다릅니다.
-          도구·노트 라우트는 그 페이지가 생기는 2~3일 차에 답니다(PLAYBOOK-PLAN.md).
+
+          **주소가 두 층에서 끝납니다.** 한때 그 아래에 노트 주소가 한 층 더
+          있었는데 2026-09-17에 걷어냈습니다 — 이 서랍이 파는 것은 글이 아니라
+          팁과 값이고, 그 둘은 제품 화면에서 끝납니다.
         */}
         <Route path="/playbook" element={<PlaybookPage />} />
         <Route path="/playbook/:vendorId" element={<PlaybookPage />} />
         {/* 제품 상세는 같은 화면에서 펼쳐집니다 — 주소만 깊어집니다. */}
         <Route path="/playbook/:vendorId/:productId" element={<PlaybookPage />} />
-        <Route path="/playbook/:vendorId/:productId/:slug" element={<PlaybookNotePage />} />
         <Route path="/articles/:slug" element={<ArticlePage />} />
         <Route path="/privacy" element={<PrivacyPage />} />
         {/* 지난 주소들. /concepts는 2026-08-04에 /learn으로 바꿨습니다. */}

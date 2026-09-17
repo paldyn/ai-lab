@@ -6,7 +6,6 @@ import { consumeHead, renderHeadTags } from './lib/head';
 import { loadArticleBody } from './lib/articleBody';
 import { loadCertPrepBody } from './lib/certPrepBody';
 import { loadMirrorBody } from './lib/mirrorBody';
-import { loadPlaybookBody } from './lib/playbookBody';
 import { pythonNoteBySlug } from './data/mirror';
 import { newsItems } from './data/news';
 
@@ -62,10 +61,6 @@ export async function render(route: string): Promise<RenderResult> {
     const note = pythonNoteBySlug(python[1]);
     if (note) await loadMirrorBody(note.sourceSlug);
   }
-
-  // AI 가이드 노트. 폴더가 두 겹이라 키도 셋입니다.
-  const guide = /^\/playbook\/([a-z0-9-]+)\/([a-z0-9-]+)\/([a-z0-9-]+)$/.exec(route);
-  if (guide) await loadPlaybookBody(guide[1], guide[2], guide[3]);
 
   const html = renderToString(
     <StrictMode>
