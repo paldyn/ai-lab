@@ -7566,6 +7566,37 @@ input:focus-visible {
   안 벌어진다. 무게로 우기는 대신 크기로 세운다. 집의 `.article-prose h2`와 같은 값이고,
   수와 같은 26px이지만 하나는 sans 문구이고 하나는 모노 한 글자라 안 헷갈린다.
 */
+/*
+  머리 — 마크와 이름이 한 줄에 선다. **레일에서 고른 줄과 같은 마크**라, 눈이 왼쪽에서
+  오른쪽으로 옮겨 갈 때 「같은 것을 보고 있다」가 그림으로 이어진다.
+
+  가운데 맞춤이 아니라 **위쪽 맞춤**이다 — 이름이 두 줄로 감기는 제품(Google
+  Antigravity)에서 가운데로 맞추면 마크가 두 줄 사이로 내려간다.
+*/
+.guide-ledger-head {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--gs-r2);
+}
+
+/*
+  마크는 이름의 첫 줄 한가운데에 앉는다. 레일의 마크가 14px이라 딱 두 배이고,
+  그래서 왼쪽과 오른쪽 마크가 한 계열로 읽힌다.
+*/
+.guide-ledger-mark {
+  flex-shrink: 0;
+  display: block;
+  width: 28px;
+  height: 28px;
+  margin-top: calc((var(--gs-big) * 1.35 - 28px) / 2);
+}
+
+.guide-ledger-mark img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
 .guide-ledger-title {
   color: var(--text-strong);
   font-size: var(--gs-big);
@@ -7722,19 +7753,26 @@ input:focus-visible {
   안에는 「왜 그런가」와 출처입니다. 그래서 반례가 저절로 밖에 남습니다.
 */
 
+/*
+  거르개 줄. **절 머리글이 여기 없다** — 위의 지도가 「이렇게 쓰면 아낀다」를 이미
+  적었고 400px 아래에서 같은 말을 또 하는 것이 「같은 말을 두 번」이다. 칩만 서므로
+  오른쪽 끝으로 민다.
+
+  비어 있을 수 있다(팁 열 줄 아래인 화면). 그때는 `:empty`로 여백째 접어 첫 묶음이
+  바로 선다 — 안 그러면 아무것도 없는 48px이 남는다.
+*/
 .guide-tip-head-row {
   display: flex;
   flex-wrap: wrap;
   align-items: baseline;
-  justify-content: space-between;
+  justify-content: flex-end;
   gap: var(--gs-r1) var(--gs-r2);
   margin-top: var(--gs-r4);
   max-width: var(--gs-measure);
 }
 
-/* 절 간격은 이제 이 줄이 집니다. */
-.guide-tip-head-row .guide-ledger-label {
-  margin-top: 0;
+.guide-tip-head-row:empty {
+  display: none;
 }
 
 /*
@@ -7864,6 +7902,62 @@ input:focus-visible {
 .guide-tips-block:has(.guide-tip-radio[value='field']:checked)
   .guide-tip-group:not(:has(.guide-tip.is-field)) {
   display: none;
+}
+
+/*
+  **이 제품을 어떻게 쓰면 좋은가 — 한눈에 보는 넷.** 아래 목록의 머리글 넷을 그대로
+  위로 올린 지도다. 새로 쓰는 문장이 0이고(질문은 데이터에 이미 있다) 수는 세어서
+  나오므로 **늙을 것이 없다** — 묶음마다 「한 줄 답」을 지어 붙이는 길을 버린 것과
+  같은 이유다.
+
+  **상자를 안 두른다.** 원장이 괘선으로만 짜인 화면이라 카드를 하나 얹으면 그것만
+  딴 물건이 된다. 대신 위아래 괘선 한 줄씩과 번호의 브랜드색으로 세운다 — 「감싸서가
+  아니라 맞춰서 세운다」가 이 서랍의 조판 규칙이다.
+*/
+.guide-tip-map {
+  margin-top: var(--gs-r4);
+  max-width: var(--gs-measure);
+}
+
+.guide-tip-map ol {
+  margin-top: var(--gs-r2);
+  border-top: 1px solid var(--guide-rule);
+  list-style: none;
+}
+
+.guide-tip-map a {
+  display: flex;
+  align-items: baseline;
+  gap: var(--gs-r2);
+  border-bottom: 1px solid var(--guide-rule);
+  padding: var(--gs-r2) 0;
+  color: var(--text-strong);
+  font-size: var(--gs-lead);
+  font-weight: 450;
+  line-height: 1.4;
+}
+
+.guide-tip-map a:hover .guide-tip-map-q {
+  color: var(--brand-text);
+}
+
+/* 질문이 가운데를 다 쓰고 수를 오른쪽 끝으로 민다 — 넷이 한 세로줄에 선다. */
+.guide-tip-map-q {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+/*
+  수. **모노 한 급으로 작게 적는다** — 세는 값이 아니라 「얼마나 있나」를 귀띔하는
+  자리이고, 크게 적으면 질문보다 수가 먼저 읽힌다. 레일에서 「0편」 기둥을 걷어낸
+  것과 같은 판단이라 **0은 애초에 안 선다**(빈 묶음은 지도에도 안 올라온다).
+*/
+.guide-tip-map-n {
+  flex-shrink: 0;
+  color: var(--text-dim);
+  font-family: var(--font-mono);
+  font-size: var(--gs-mono);
+  letter-spacing: 0.04em;
 }
 
 /*
@@ -8343,7 +8437,8 @@ input:focus-visible {
   그대로 보인다. 빈 네모가 남지 않게 이미지를 DOM에 남겨 둔 이유다.
 */
 @supports (mask-image: url('')) or (-webkit-mask-image: url('')) {
-  .guide-rail-mark.is-tinted {
+  .guide-rail-mark.is-tinted,
+  .guide-ledger-mark.is-tinted {
     background-color: var(--guide-mark-color, currentColor);
     -webkit-mask-image: var(--guide-mark);
     mask-image: var(--guide-mark);
@@ -8355,7 +8450,8 @@ input:focus-visible {
     mask-size: contain;
   }
 
-  .guide-rail-mark.is-tinted img {
+  .guide-rail-mark.is-tinted img,
+  .guide-ledger-mark.is-tinted img {
     visibility: hidden;
   }
 }

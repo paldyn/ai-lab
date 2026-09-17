@@ -1,6 +1,7 @@
 import type { CSSProperties } from 'react';
 import { Link } from 'react-router';
 import { ClaimRow } from './ClaimRow';
+import { GuideMark } from './GuideMark';
 import { TIER_LABEL, TIER_ORDER } from './EvidenceBadge';
 import { TipRow } from './TipRow';
 import { claimState, claimsForProduct, claimsForVendor } from '../data/playbook';
@@ -214,6 +215,54 @@ function leversOf(tips: Claim[]): string[] {
  * 합니다** — 안 그러면 줄 0개짜리 질문이 덩그러니 섭니다. `:has()`로 그 묶음에
  * 남은 줄이 있는지를 물어 해결합니다.
  */
+/**
+ * 팁을 질문 넷으로 묶습니다. **빈 묶음은 아예 안 만듭니다** — 머리글만 서는 자리가
+ * 생기지 않습니다. 위의 지도와 아래의 목록이 **같은 함수**를 써야 번호가 어긋나지
+ * 않습니다(번호는 배열 자리가 아니라 **선 묶음 중 몇 번째**입니다).
+ */
+function groupTips(tips: Claim[]) {
+  return guideTipGroups
+    .map((group) => ({ group, rows: tips.filter((c) => c.group === group.id) }))
+    .filter((g) => g.rows.length > 0);
+}
+
+const tipAnchor = (scope: string, groupId: string) => `tips-${scope}-${groupId}`;
+
+/**
+ * 이 제품을 어떻게 쓰면 좋은가 — **한눈에 보는 넷.**
+ *
+ * 아래 목록의 머리글 넷을 그대로 위로 올린 지도입니다. 새로 쓰는 문장이 0이고
+ * (질문은 이미 `guideTipGroups`에 있습니다) 수는 세어서 나오므로 **늙을 것이
+ * 없습니다** — 묶음마다 「한 줄 답」을 지어 붙이는 길을 버린 것과 같은 이유입니다.
+ *
+ * **넷을 세로로 읽으면 그대로 「이 제품을 쓰면서 물어볼 것들」이 됩니다.** 그게 곧
+ * 잘 쓰는 법의 뼈대라, 요약이 따로 필요하지 않습니다.
+ */
+function TipMap({
+  groups,
+  scope,
+}: {
+  groups: ReturnType<typeof groupTips>;
+  scope: string;
+}) {
+  return (
+    <nav className="guide-tip-map" aria-label="이렇게 쓰면 아낀다">
+      <p className="guide-ledger-label">이렇게 쓰면 아낀다</p>
+      <ol>
+        {groups.map(({ group, rows }, i) => (
+          <li key={group.id}>
+            <a href={`#${tipAnchor(scope, group.id)}`}>
+              <span className="guide-tip-no">{String(i + 1).padStart(2, '0')}</span>
+              <span className="guide-tip-map-q">{group.question}</span>
+              <span className="guide-tip-map-n">{rows.length}</span>
+            </a>
+          </li>
+        ))}
+      </ol>
+    </nav>
+  );
+}
+
 function TipBlock({ tips, today, scope }: { tips: Claim[]; today: string; scope: string }) {
   const radioName = `tip-tier-${scope}`;
   const segments = (Object.keys(TIER_ORDER) as EvidenceTier[])
@@ -221,16 +270,16 @@ function TipBlock({ tips, today, scope }: { tips: Claim[]; today: string; scope:
     .map((tier) => ({ tier, n: tips.filter((c) => c.tier === tier).length }))
     .filter((s) => s.n > 0);
 
-  /* 빈 묶음은 아예 안 만듭니다 — 머리글만 서는 자리가 생기지 않습니다. */
-  const groups = guideTipGroups
-    .map((g) => ({ group: g, rows: tips.filter((c) => c.group === g.id) }))
-    .filter((g) => g.rows.length > 0);
+  const groups = groupTips(tips);
 
   return (
     <section className="guide-tips-block">
+      {/*
+        **절 머리글이 여기 없습니다.** 위의 지도(`TipMap`)가 「이렇게 쓰면 아낀다」를
+        이미 적었고, 400px 아래에서 같은 말을 또 하면 그게 「같은 말을 두 번」입니다 —
+        요약 띠를 제품 화면에서 걷어낸 것과 같은 자리입니다. 이 줄에는 거르개만 섭니다.
+      */}
       <div className="guide-tip-head-row">
-        <h3 className="guide-ledger-label">이렇게 쓰면 아낀다</h3>
-
         {tips.length >= FILTER_MIN && segments.length > 1 && (
           /*
             `legend`는 감추지만 지운 게 아닙니다 — 스크린 리더가 「근거로 거르기,
@@ -254,7 +303,11 @@ function TipBlock({ tips, today, scope }: { tips: Claim[]; today: string; scope:
       </div>
 
       {groups.map(({ group, rows }, i) => (
-        <section key={group.id} className={`guide-tip-group is-${group.id}`}>
+        <section
+          key={group.id}
+          id={tipAnchor(scope, group.id)}
+          className={`guide-tip-group is-${group.id}`}
+        >
           <header className="guide-tip-group-head">
             {/*
               **번호가 질문과 한 줄에 섭니다.** 그 위에 모노 별명을 한 줄 더 세웠다가
@@ -339,11 +392,28 @@ function ProductLedger({ product, today }: { product: Product; today: string }) 
 
   return (
     <div className="guide-ledger" style={{ '--guide-accent': product.accent } as CSSProperties}>
-      <h2 className="guide-ledger-title">{product.name}</h2>
-      <p className="guide-ledger-meta">
-        {vendor?.name} · {product.role}
-      </p>
+      {/*
+        **로고가 이름 왼쪽에 섭니다.** 레일에서 고른 줄과 오른쪽 머리가 같은 마크를
+        달아, 눈이 왼쪽에서 오른쪽으로 옮겨 갈 때 「같은 것을 보고 있다」가 그림으로
+        이어집니다. 마크는 `aria-hidden`이라 이름을 두 번 읽지 않습니다.
+      */}
+      <div className="guide-ledger-head">
+        <GuideMark
+          logo={product.logo}
+          monochrome={product.monochrome}
+          accent={product.accent}
+          className="guide-ledger-mark"
+        />
+        <div>
+          <h2 className="guide-ledger-title">{product.name}</h2>
+          <p className="guide-ledger-meta">
+            {vendor?.name} · {product.role}
+          </p>
+        </div>
+      </div>
       <p className="guide-ledger-blurb">{product.oneLine}</p>
+
+      {tips.length > 0 && <TipMap groups={groupTips(tips)} scope={product.id} />}
 
       {tips.length > 0 && <TipBlock tips={tips} today={today} scope={product.id} />}
 
