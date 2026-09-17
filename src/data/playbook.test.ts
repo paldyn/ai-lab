@@ -1,7 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import { renderMarkdown } from '../../plugins/markdown';
 import { fillClaimRefs } from '../lib/claimRef';
-import { playbookIndex } from 'virtual:playbook-index';
 import {
   FRESHNESS_DAYS,
   claimState,
