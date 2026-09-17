@@ -160,7 +160,7 @@ export interface NewsDetail {
   commentary: string;
 }
 
-export const globalNewsUpdatedAt = '2026-09-15';
+export const globalNewsUpdatedAt = '2026-09-16';
 
 /**
  * 공식 발표 한 건 = 항목 한 개. 2026년 1월부터 쌓는 아카이브이며 오래된 항목을
@@ -171,6 +171,66 @@ export const globalNewsUpdatedAt = '2026-09-15';
  * 목록에서 파생됩니다. 갱신 시 globalNewsUpdatedAt도 함께 올립니다.
  */
 const entries: NewsItem[] = [
+  {
+    id: 'reimagining-advertising-with-ai',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'OpenAI, 광고 클릭 뒤 대화하는 Sponsored Agents 시험',
+    summary:
+      'OpenAI가 ChatGPT 광고를 클릭하면 광고주가 후원하는 에이전트와 대화를 시작하는 Sponsored Agents를 ' +
+      '미국 일부 광고주와 시험한다. ChatGPT Work에서 프롬프트로 광고를 만들고 Ads Manager에 AI 제작 ' +
+      '도구를 넣었으며, 첫 CRM·이커머스 파트너인 HubSpot과 Shopify 연동을 오늘 열었다.',
+    publishedAt: '2026-09-16',
+    collectedAt: '2026-09-17',
+    category: 'Product',
+    signal: 'ChatGPT 광고 플랫폼',
+    url: 'https://openai.com/index/reimagining-advertising-with-ai',
+  },
+  {
+    id: 'unlocking-new-ways-of-working',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'OpenAI, 직무 밖 AI 활용이 일상 업무로 굳는다는 보고서',
+    summary:
+      'OpenAI가 Work at the Frontier 두 번째 보고서를 내놨다. 2026년 4~7월 업무 관련 ChatGPT 메시지 ' +
+      '150만 건 이상을 분석해, 이미 쓴 적 있는 직무 밖 과제가 관찰된 AI 활용에서 차지하는 비중이 ' +
+      '4월 13.1%에서 7월 25.9%로 늘었다고 밝혔다.',
+    publishedAt: '2026-09-16',
+    collectedAt: '2026-09-17',
+    category: 'Research',
+    signal: '경제 연구',
+    url: 'https://openai.com/index/unlocking-new-ways-of-working',
+  },
+  {
+    id: 'how-to-connect-ai-usage-to-business-value',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'OpenAI, 관리 콘솔 분석으로 AI 도입 효과를 재는 법 정리',
+    summary:
+      'OpenAI가 ChatGPT Admin Console의 분석 기능으로 AI 도입 효과를 재는 방법을 정리했다. ' +
+      'Usage·Insights·Outcomes 세 화면이 ChatGPT Work와 Codex의 사용량과 비용, 업무 분류, ' +
+      'Codex의 머지 커밋 기여를 보여 주고, Admin 플러그인과 Admin API로 보고서를 만들 수 있다.',
+    publishedAt: '2026-09-16',
+    collectedAt: '2026-09-17',
+    category: 'Product',
+    signal: '관리 콘솔 분석',
+    url: 'https://openai.com/index/how-to-connect-ai-usage-to-business-value',
+  },
+  {
+    id: 'helping-older-adults-use-ai-in-everyday-life',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'OpenAI, AARP와 함께 고령층 AI 학습 행사 10곳에서 개최',
+    summary:
+      'OpenAI Academy가 AARP 산하 OATS와 함께 고령층을 위한 무료 대면 학습 행사 Older Adults AI ' +
+      'Skills Jam을 미국 10개 지역에서 연다. 미국에서 55세 이상과 연결된 ChatGPT 메시지 비중은 ' +
+      '1년 만에 6%에서 10% 가까이로 늘었다고 밝혔다.',
+    publishedAt: '2026-09-16',
+    collectedAt: '2026-09-17',
+    category: 'Corporate',
+    signal: '고령층 AI 교육',
+    url: 'https://openai.com/index/helping-older-adults-use-ai-in-everyday-life',
+  },
   {
     id: 'blog-introducing-gemini-3-8-live-and-3-8-live-extended-thinking',
     source: 'Google DeepMind',
