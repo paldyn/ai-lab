@@ -6,7 +6,7 @@ import { TIER_LABEL, TIER_ORDER } from './EvidenceBadge';
 import { TipRow } from './TipRow';
 import { claimState, claimsForProduct, claimsForVendor } from '../data/playbook';
 import { playbookClaims } from '../data/playbookClaims';
-import { guideModelById } from '../data/guideModels';
+import { shownModels } from '../data/guideModels';
 import { guideProducts } from '../data/guideProducts';
 import { guideTipGroups } from '../data/guideTipGroups';
 import { guideVendorById } from '../data/guideVendors';
@@ -365,13 +365,27 @@ function ProductLedger({ product, today }: { product: Product; today: string }) 
     .filter((c) => c.topic === 'habit')
     .sort((a, b) => TIER_ORDER[a.tier] - TIER_ORDER[b.tier]);
   /* 묶음은 `TipBlock`이 세웁니다 — 여기서는 묶음 **안의** 차례만 정합니다. */
-  const usage = claims.filter((c) => c.topic !== 'context' && c.topic !== 'habit');
+  const usage = claims.filter(
+    (c) =>
+      c.topic !== 'context' &&
+      c.topic !== 'habit' &&
+      !(c.topic === 'price' && c.subject.kind === 'model'),
+  );
   const contextOf = new Map(
     claims.filter((c) => c.topic === 'context').map((c) => [c.subject.id, c]),
   );
-  const models = product.models
-    .map((id) => guideModelById(id))
-    .filter((m): m is NonNullable<typeof m> => Boolean(m));
+  /*
+    **모델 단가는 「얼마이고 한도가 어떻게 차나」에서 뺍니다.** 바로 위 모델 줄에
+    값으로 서므로, 아래 목록에도 두면 같은 수를 한 화면에서 두 번 적습니다 —
+    컨텍스트 창을 그렇게 뺀 것과 같은 자리입니다.
+  */
+  const priceOf = new Map(
+    claims
+      .filter((c) => c.topic === 'price' && c.subject.kind === 'model')
+      .map((c) => [c.subject.id, c]),
+  );
+  /* 거기서 고를 만한 최신만. 회사별로 보므로 최신이 없는 회사 것은 그대로 섭니다. */
+  const models = shownModels(product.models);
 
   const links = [{ label: '제품 페이지', url: product.officialUrl }];
   if (product.docsUrl && product.docsUrl !== product.officialUrl) {
@@ -418,6 +432,7 @@ function ProductLedger({ product, today }: { product: Product; today: string }) 
           <ul className="guide-models">
             {models.map((model) => {
               const context = contextOf.get(model.id);
+              const price = priceOf.get(model.id);
               return (
                 <li key={model.id}>
                   <p className="guide-model-head">
@@ -429,8 +444,25 @@ function ProductLedger({ product, today }: { product: Product; today: string }) 
                         </span>
                       )}
                     </span>
-                    <span className="guide-model-context">
-                      {context?.value ?? '컨텍스트 창 모름'}
+                    {/*
+                      **수 둘을 한 자리에 모읍니다** — 컨텍스트 창과 100만 토큰당
+                      단가. 고르는 사람이 견주는 것이 그 둘이라, 이름 오른쪽에
+                      나란히 둡니다. 단가가 없으면 그 줄만 빠집니다.
+                    */}
+                    <span className="guide-model-nums">
+                      <span className="guide-model-context">
+                        {context?.value ?? '컨텍스트 창 모름'}
+                      </span>
+                      {price?.value && (
+                        <a
+                          className="guide-model-price"
+                          href={price.source.url}
+                          target="_blank"
+                          rel="noreferrer"
+                        >
+                          {price.value}
+                        </a>
+                      )}
                     </span>
                   </p>
                   {/*
@@ -451,7 +483,9 @@ function ProductLedger({ product, today }: { product: Product; today: string }) 
           </ul>
           <p className="guide-ledger-note">
             쓰임은 만든 회사가 제 문서에 적어 둔 말입니다 — 누르면 그 페이지로 갑니다.
-            오른쪽 수는 입력 컨텍스트 창이고, 같은 모델이 다른 제품에서도 돌면 한 번만 적습니다.
+            오른쪽 수는 입력 컨텍스트 창과 <b>100만 토큰당 입력 / 출력 단가</b>입니다.
+            만든 회사가 구세대·legacy로 부르는 모델은 안 적습니다 — 다만 그 회사의 최신이
+            이 제품에 하나도 없으면 있는 것을 그대로 둡니다.
           </p>
         </>
       )}

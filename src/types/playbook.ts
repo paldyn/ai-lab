@@ -135,6 +135,15 @@ export interface ModelInfo {
    */
   useWhen: { text: string; url: string } | null;
   /**
+   * **지금 고를 만한 최신인가.** 만든 회사가 제 페이지에서 뭐라고 부르는지로 정합니다 —
+   * `previous-generation`·`legacy`·`Retires from`이 붙어 있으면 `false`입니다.
+   *
+   * **버전 번호로 정하지 않습니다.** 낮은 번호가 곧 구세대는 아닙니다 — Gemini 2.5
+   * Pro·Flash는 2026-09-17 기준 벤더의 「Previous models」 표에 없고 제 절을 갖고
+   * 서 있어 `true`입니다. 번호만 보고 적으면 그건 우리 추측이지 벤더의 말이 아닙니다.
+   */
+  current: boolean;
+  /**
    * 이 이름을 본 공식 페이지.
    *
    * **확인 로그에 못 넣어서 여기 답니다.** `CheckEntry`는 `claimId`를 필수로 요구하고

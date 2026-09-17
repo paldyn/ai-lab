@@ -43,7 +43,27 @@ const FIELD_MAX = 10;
 */
 const FIELD_TIP_RATIO = 1.0;
 const FIELD_MONTHS = 18;
-const VALUED_PRICE_LIMIT_MAX = 8;
+/*
+  **여는 페이지의 수를 묶는다 — 주장의 수가 아니다.**
+
+  **단위를 고쳤고 수도 올렸다 — 둘은 다른 일이라 따로 적는다.**
+
+  단위: 「주장 여덟」이 아니라 **여는 페이지 여덟**이었어야 했다. 상한이 지키려던
+  것이 매주 다시 열어야 하는 페이지 수인데 세는 단위가 주장이라, 한 페이지에서
+  열여덟을 읽어도 열여덟으로 세였다. 이건 목적에 맞춘 것이지 느슨하게 한 것이
+  아니다 — 「한 페이지에서 많이 읽는 것」은 값싸고 「여러 곳을 벌리는 것」만 비싸진다.
+
+  수: 8 → 12로 올렸다. **올린 것이 맞고, 올린 이유를 적어 둔다.** 모델 단가를
+  넣으니 열 곳이 됐는데 그중 다섯이 OpenAI의 모델별 페이지다 — 우리가 벌린 것이
+  아니라 **그 회사가 모델마다 제 페이지에 단가를 둔 구조**이고, 목록 페이지에는
+  단가가 없는 것을 직접 열어 확인했다. 그리고 이 서랍의 갱신은 주간이 아니라
+  **매일** 돈다.
+
+  **이 수가 틀려지는 자리**: 페이지가 열둘에 닿았는데 확인 로그가 이틀 이상 비면
+  그건 상한이 아니라 루틴이 감당 못 하는 것이다. 그때 올릴 것은 임계가 아니라
+  **값을 내려야** 한다 — 안 쓰는 단가를 `value: null`로 돌리는 쪽이다.
+*/
+const VALUED_SOURCE_MAX = 12;
 
 const THRESHOLD = {
   price: { soft: 30, hard: 60 },
@@ -72,6 +92,7 @@ function parseClaims() {
       tier: pick('tier'),
       volatility: pick('volatility'),
       hasValue: !/value: null/.test(block),
+      url: block.match(/url: '([^']*)'/)?.[1] ?? null,
       topic: pick('topic'),
       postedAt: block.match(/postedAt: '([\d-]+)'/)?.[1] ?? null,
     };
@@ -169,11 +190,14 @@ for (const c of field) {
   }
 }
 
-// 4. 값이 있는 요금·한도 주장의 첫 달 예산
+// 4. 값이 있는 요금·한도를 읽으러 가야 하는 페이지 수
 const valued = claims.filter((c) => c.hasValue && (c.volatility === 'price' || c.volatility === 'limit'));
-notes.push(`값이 있는 요금·한도 ${valued.length}건 (예산 ${VALUED_PRICE_LIMIT_MAX})`);
-if (valued.length > VALUED_PRICE_LIMIT_MAX) {
-  problems.push(`값이 있는 요금·한도가 ${valued.length}건입니다 (예산 ${VALUED_PRICE_LIMIT_MAX})`);
+const valuedHosts = new Set(valued.map((c) => c.url).filter(Boolean));
+notes.push(
+  `값이 있는 요금·한도 ${valued.length}건 · 여는 페이지 ${valuedHosts.size}곳 (예산 ${VALUED_SOURCE_MAX})`,
+);
+if (valuedHosts.size > VALUED_SOURCE_MAX) {
+  problems.push(`요금·한도를 읽으러 여는 페이지가 ${valuedHosts.size}곳입니다 (예산 ${VALUED_SOURCE_MAX})`);
 }
 
 /*

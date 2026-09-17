@@ -52,6 +52,7 @@ const models: ModelInfo[] = [
       text: '까다로운 추론과 긴 호흡의 에이전트 작업에',
       url: 'https://platform.claude.com/docs/en/about-claude/models/overview',
     },
+    current: true,
     sourceUrl:
       'https://platform.claude.com/docs/en/about-claude/models/overview',
   },
@@ -61,6 +62,7 @@ const models: ModelInfo[] = [
     name: 'Claude Fable 5',
     apiId: 'claude-fable-5',
     useWhen: null,
+    current: false,
     sourceUrl:
       'https://platform.claude.com/docs/en/about-claude/model-deprecations',
   },
@@ -73,6 +75,7 @@ const models: ModelInfo[] = [
       text: '복잡한 에이전트 코딩과 기업 업무에',
       url: 'https://platform.claude.com/docs/en/about-claude/models/overview',
     },
+    current: true,
     sourceUrl:
       'https://platform.claude.com/docs/en/about-claude/models/overview',
   },
@@ -85,6 +88,7 @@ const models: ModelInfo[] = [
       text: '매일 하는 코딩·에이전트·업무에 속도와 성능을 함께',
       url: 'https://platform.claude.com/docs/en/about-claude/models/choosing-a-model',
     },
+    current: true,
     sourceUrl:
       'https://platform.claude.com/docs/en/about-claude/models/overview',
   },
@@ -96,6 +100,7 @@ const models: ModelInfo[] = [
     name: 'Claude Sonnet 4.6',
     apiId: 'claude-sonnet-4-6',
     useWhen: null,
+    current: false,
     sourceUrl:
       'https://platform.claude.com/docs/en/about-claude/model-deprecations',
   },
@@ -105,6 +110,7 @@ const models: ModelInfo[] = [
     name: 'Claude Opus 4.6',
     apiId: 'claude-opus-4-6',
     useWhen: null,
+    current: false,
     sourceUrl:
       'https://platform.claude.com/docs/en/about-claude/model-deprecations',
   },
@@ -119,6 +125,7 @@ const models: ModelInfo[] = [
       text: '복잡한 추론·코딩에 쓰는 기본값',
       url: 'https://developers.openai.com/api/docs/models',
     },
+    current: true,
     sourceUrl: 'https://developers.openai.com/api/docs/models',
   },
   {
@@ -130,6 +137,7 @@ const models: ModelInfo[] = [
       text: '복잡한 코드 변경·심층 조사처럼 판단과 다듬기가 필요할 때',
       url: 'https://learn.chatgpt.com/codex/models',
     },
+    current: true,
     sourceUrl: 'https://developers.openai.com/api/docs/models',
   },
   {
@@ -141,6 +149,7 @@ const models: ModelInfo[] = [
       text: 'Sol만큼 깊지 않아도 되는 일상 작업에',
       url: 'https://learn.chatgpt.com/codex/models',
     },
+    current: true,
     sourceUrl: 'https://developers.openai.com/api/docs/models',
   },
   {
@@ -152,6 +161,7 @@ const models: ModelInfo[] = [
       text: '비용에 민감한 대량 작업에',
       url: 'https://developers.openai.com/api/docs/models',
     },
+    current: true,
     sourceUrl: 'https://developers.openai.com/api/docs/models',
   },
   {
@@ -163,6 +173,7 @@ const models: ModelInfo[] = [
       text: '거의 즉시 오가는 실시간 코딩 반복에',
       url: 'https://learn.chatgpt.com/codex/models',
     },
+    current: true,
     sourceUrl: 'https://learn.chatgpt.com/codex/models',
   },
   {
@@ -174,6 +185,7 @@ const models: ModelInfo[] = [
       text: '가장 복잡한 전문 업무에',
       url: 'https://developers.openai.com/api/docs/models/gpt-5.5',
     },
+    current: false,
     sourceUrl: 'https://learn.chatgpt.com/docs/models',
   },
   // 오픈 웨이트라 Antigravity 선택기에서 봤고 OpenAI 모델 목록에서는 못 봤습니다.
@@ -187,6 +199,7 @@ const models: ModelInfo[] = [
       text: '자유롭게 고쳐 쓰고 상업 배포까지 할 때',
       url: 'https://developers.openai.com/api/docs/models/gpt-oss-120b',
     },
+    current: true,
     sourceUrl: 'https://antigravity.google/docs/models',
   },
 
@@ -207,6 +220,7 @@ const models: ModelInfo[] = [
       text: '복잡한 수학·코딩 프롬프트에 쓴다',
       url: 'https://support.google.com/gemini/answer/13275745',
     },
+    current: true,
     sourceUrl: 'https://support.google.com/gemini/answer/13275745',
   },
   {
@@ -218,6 +232,7 @@ const models: ModelInfo[] = [
       text: '간단한 것부터 복잡한 것까지 두루 쓴다',
       url: 'https://support.google.com/gemini/answer/13275745',
     },
+    current: true,
     sourceUrl: 'https://support.google.com/gemini/answer/13275745',
   },
   {
@@ -229,6 +244,7 @@ const models: ModelInfo[] = [
       text: '요약·브레인스토밍 같은 매일 하는 일에 쓴다',
       url: 'https://support.google.com/gemini/answer/13275745',
     },
+    current: true,
     sourceUrl: 'https://support.google.com/gemini/answer/13275745',
   },
   {
@@ -237,6 +253,7 @@ const models: ModelInfo[] = [
     name: 'Gemini 3 Flash',
     apiId: 'gemini-3-flash-preview',
     useWhen: null,
+    current: false,
     sourceUrl: 'https://ai.google.dev/gemini-api/docs/models',
   },
   {
@@ -248,6 +265,7 @@ const models: ModelInfo[] = [
       text: '깊은 추론과 코딩이 필요한 복잡한 작업에',
       url: 'https://ai.google.dev/gemini-api/docs/models?hl=en',
     },
+    current: true,
     sourceUrl: 'https://ai.google.dev/gemini-api/docs/models',
   },
   {
@@ -259,6 +277,7 @@ const models: ModelInfo[] = [
       text: '추론이 필요한 저지연·대량 작업에',
       url: 'https://ai.google.dev/gemini-api/docs/models?hl=en',
     },
+    current: true,
     sourceUrl: 'https://ai.google.dev/gemini-api/docs/models',
   },
   {
@@ -270,6 +289,7 @@ const models: ModelInfo[] = [
       text: '긴 호흡의 소프트웨어 엔지니어링과 자율 에이전트에',
       url: 'https://ai.google.dev/gemini-api/docs/models?hl=en',
     },
+    current: true,
     sourceUrl: 'https://ai.google.dev/gemini-api/docs/models/gemini-3.8-flash',
   },
   {
@@ -281,6 +301,7 @@ const models: ModelInfo[] = [
       text: '복잡한 코딩과 여러 단계를 밟는 에이전트 작업에',
       url: 'https://ai.google.dev/gemini-api/docs/models?hl=en',
     },
+    current: false,
     sourceUrl: 'https://ai.google.dev/gemini-api/docs/models',
   },
   {
@@ -292,6 +313,7 @@ const models: ModelInfo[] = [
       text: '속도와 멀티모달이 함께 필요한 일상 작업에',
       url: 'https://ai.google.dev/gemini-api/docs/models?hl=en',
     },
+    current: false,
     sourceUrl: 'https://ai.google.dev/gemini-api/docs/models',
   },
   {
@@ -303,6 +325,7 @@ const models: ModelInfo[] = [
       text: '복잡한 문제 풀이와 에이전트·바이브 코딩에',
       url: 'https://ai.google.dev/gemini-api/docs/models?hl=en',
     },
+    current: true,
     sourceUrl: 'https://ai.google.dev/gemini-api/docs/models',
   },
 ];
@@ -310,6 +333,31 @@ const models: ModelInfo[] = [
 export const guideModels: ModelInfo[] = models;
 
 const byId = new Map(guideModels.map((model) => [model.id, model]));
+
+/**
+ * 그 제품 화면에 세울 모델 — **거기서 고를 만한 최신만.**
+ *
+ * **`current`만 보고 거르면 안 됩니다.** Google Antigravity의 선택기에는 Claude
+ * Sonnet 4.6·Opus 4.6이 서는데, Anthropic은 제 페이지에서 그 둘을 「Legacy models
+ * (still available)」로 부릅니다. 그렇다고 화면에서 빼면 **Antigravity에서 실제로
+ * 고를 수 있는 Claude가 하나도 안 남습니다** — 거기에 Claude 5는 없기 때문입니다.
+ * 그건 최신만 보여 주는 것이 아니라 사실을 감추는 것입니다.
+ *
+ * 그래서 **회사별로** 봅니다. 그 제품이 같은 회사의 최신 모델을 이미 들고 있으면
+ * 그 회사의 구세대를 뺍니다(Antigravity는 Gemini 3.8이 있으므로 3.7·3.6이 빠집니다).
+ * 최신이 하나도 없으면 있는 것을 그대로 둡니다 — 그것이 거기서 고를 수 있는
+ * 전부이기 때문입니다.
+ *
+ * 「빈 칸을 안 그린다」와 같은 규칙의 반대편입니다: 없는 것을 세우지 않듯 **있는
+ * 것을 지우지도 않습니다.**
+ */
+export function shownModels(ids: string[]): ModelInfo[] {
+  const models = ids
+    .map((id) => byId.get(id))
+    .filter((m): m is ModelInfo => Boolean(m));
+  const hasCurrent = new Set(models.filter((m) => m.current).map((m) => m.vendorId));
+  return models.filter((m) => m.current || !hasCurrent.has(m.vendorId));
+}
 
 export const guideModelById = (id: string): ModelInfo | undefined =>
   byId.get(id);

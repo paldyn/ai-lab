@@ -8300,6 +8300,41 @@ input:focus-visible {
   text-decoration-color: currentColor;
 }
 
+/*
+  수 둘이 오른쪽에 모여 선다 — 컨텍스트 창과 100만 토큰당 단가. 좁은 폭에서는
+  아래로 감긴다(`flex-wrap`) — 줄이면 손가락에 안 맞고, 자르면 단가가 반만 보인다.
+*/
+.guide-model-nums {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 2px var(--gs-r2);
+  flex: 0 1 auto;
+  text-align: right;
+}
+
+/*
+  단가. **누르면 그 수가 실린 요금 페이지로 간다** — 이 서랍에서 가장 빨리 썩는
+  값이라(`volatility: 'price'`) 읽는 사람이 바로 대조할 수 있어야 한다.
+  밑줄은 hover에서만 켠다 — 모델이 일곱이면 밑줄 일곱이 늘 켜져 있는 꼴이 된다.
+*/
+.guide-model-price {
+  color: var(--text-dim);
+  font-family: var(--font-mono);
+  font-size: var(--gs-mono);
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+  text-decoration-color: transparent;
+  text-underline-offset: 3px;
+  transition: color 0.15s, text-decoration-color 0.15s;
+}
+
+.guide-model-price:hover {
+  color: var(--brand-text);
+  text-decoration: underline;
+  text-decoration-color: currentColor;
+}
+
 /* 값이 이름보다 흐리게 서서 눈이 이름 → 값 순으로 갑니다. */
 .guide-model-context {
   flex: 0 0 auto;

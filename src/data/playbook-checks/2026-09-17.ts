@@ -80,6 +80,36 @@ const entries: CheckEntry[] = [
   { claimId: 'google-tip-04', result: '그대로', excerpt: 'Prompt the model to think less for lengthy outputs to save tokens' },
   { claimId: 'google-tip-05', result: '그대로', excerpt: 'If you were previously using complex prompt engineering (like chain of thought) to force Gemini 2.5 to reason, try Gemini 3 with `thinking_level: "high"` and simplified prompts.' },
   { claimId: 'google-tip-06', result: '그대로', excerpt: 'If requests now exceed the context window due to higher default resolutions, we recommend explicitly reducing the media resolution.' },
+
+  /* ── 같은 날 오후 — 모델 토큰 단가 열여덟 ──────────────────────────
+     벤더 요금 페이지 셋(ai.google.dev · developers.openai.com · platform.claude.com)을
+     열어 100만 토큰당 입력·출력을 읽었다. **읽은 것을 그대로 안 믿고** 같은 페이지를
+     다시 열어 그 수가 글자 그대로 있는지, 입력과 출력이 안 뒤바뀌었는지, 캐시·배치
+     단가를 일반 단가로 옮기지 않았는지 대조했다.
+
+     실제로 걸린 자리가 둘이다 — Gemini 2.5 Pro의 구간 값이 페이지에 두 번 나오는데
+     하나는 Computer Use Preview 것이었고, HTML 태그를 벗기다 「$2.00, prompts 200k
+     tokens」로 뭉개져 `<=`와 `>`가 사라지는 함정도 확인했다. 그래서 아래 excerpt에는
+     구간 표기를 그대로 남긴다.
+     ──────────────────────────────────────────────────────────────── */
+  { claimId: 'gemini-3-8-flash-token-price', result: '그대로', excerpt: 'Gemini 3.8 Flash / gemini-3.8-flash / Standard / Paid Tier, per 1M tokens in USD / Input price: "$0.75 through December 31, 2026." "$1.50 starting January 1, 2027." / Output price (including thinking tokens): "$3.75 through December 31, 2026." "$7.50 starting January 1, 2027." (Free Tier 칸은 두 줄 다 "F' },
+  { claimId: 'gemini-3-7-flash-token-price', result: '그대로', excerpt: 'Gemini 3.7 Flash / gemini-3.7-flash / Standard / Paid Tier, per 1M tokens in USD / Input price: "$0.75 through December 31, 2026." "$1.50 starting January 1, 2027." / Output price (including thinking tokens): "$3.75 through December 31, 2026." "$7.50 starting January 1, 2027."' },
+  { claimId: 'gemini-3-6-flash-token-price', result: '그대로', excerpt: 'Gemini 3.6 Flash / gemini-3.6-flash / Standard / Paid Tier, per 1M tokens in USD / Input price: "$0.75 through December 31, 2026." "$1.50 starting January 1, 2027." / Output price (including thinking tokens): "$3.75 through December 31, 2026." "$7.50 starting January 1, 2027."' },
+  { claimId: 'gemini-3-1-pro-token-price', result: '그대로', excerpt: 'Gemini 3.1 Pro Preview / gemini-3.1-pro-preview and gemini-3.1-pro-preview-customtools / Standard / Paid Tier, per 1M tokens in USD / Input price: "$2.00, prompts <= 200k tokens<br>$4.00, prompts > 200k tokens" / Output price (including thinking tokens): "$12.00, prompts <= 200k tokens<br>$18.00, pr' },
+  { claimId: 'gemini-3-flash-token-price', result: '그대로', excerpt: 'Gemini 3 Flash Preview / gemini-3-flash-preview / Standard / Paid Tier, per 1M tokens in USD / Input price: "$0.50 (text / image / video)" "$1.00 (audio)" / Output price (including thinking tokens): "$3.00"' },
+  { claimId: 'gemini-2-5-pro-token-price', result: '그대로', excerpt: 'Gemini 2.5 Pro / gemini-2.5-pro / Standard / Paid Tier, per 1M tokens in USD / Input price: "$1.25, prompts <= 200k tokens<br>$2.50, prompts > 200k tokens" / Output price (including thinking tokens): "$10.00, prompts <= 200k tokens<br>$15.00, prompts > 200k"' },
+  { claimId: 'gemini-2-5-flash-token-price', result: '그대로', excerpt: 'Gemini 2.5 Flash / gemini-2.5-flash / Standard / Paid Tier, per 1M tokens in USD / Input price: "$0.30 (text / image / video)" "$1.00 (audio)" / Output price (including thinking tokens): "$2.50"' },
+  { claimId: 'gpt-6-astra-token-price', result: '그대로', excerpt: 'Pricing is based on the number of tokens used, or other metrics based on the model type. […] Text tokens / Per 1M tokens / Input $10.00 / Cached input $1.00 / Cache writes $12.50 / Output $50.00 / Prompts with more than 272K input tokens are priced at 2x input and cache rates and 1.5x output for the' },
+  { claimId: 'gpt-5-6-sol-token-price', result: '그대로', excerpt: 'Text tokens / Per 1M tokens / Input $4.00 / Cached input $0.40 / Output $20.00 […] GPT-5.6 Sol costs $4 per million input tokens and $20 per million output tokens, a 20% reduction in input pricing and a 33% reduction in output pricing. GPT-5.6 Sol\'s promotional pricing is available at least through ' },
+  { claimId: 'gpt-5-6-terra-token-price', result: '그대로', excerpt: 'Text tokens / Per 1M tokens / Input $2.00 / Cached input $0.20 / Output $12.00' },
+  { claimId: 'gpt-5-6-luna-token-price', result: '그대로', excerpt: 'Text tokens / Per 1M tokens / Input $0.20 / Cached input $0.02 / Output $1.20' },
+  { claimId: 'gpt-5-5-token-price', result: '그대로', excerpt: 'Text tokens / Per 1M tokens ∙ Batch API price / Input $5.00 / Cached input $0.50 / Output $30.00' },
+  { claimId: 'claude-fable-5-1-token-price', result: '그대로', excerpt: '| Claude Fable 5.1 | $10 / MTok | $12.50 / MTok | $20 / MTok | $0.25 / MTok<sup>1</sup> | $50 / MTok |' },
+  { claimId: 'claude-opus-5-token-price', result: '그대로', excerpt: '| Claude Opus 5 | $5 / MTok | $6.25 / MTok | $10 / MTok | $0.50 / MTok | $25 / MTok |' },
+  { claimId: 'claude-sonnet-5-token-price', result: '그대로', excerpt: '| Claude Sonnet 5 | $2 / MTok | $2.50 / MTok | $4 / MTok | $0.20 / MTok | $10 / MTok |' },
+  { claimId: 'claude-fable-5-token-price', result: '그대로', excerpt: '| Claude Fable 5 | $10 / MTok | $12.50 / MTok | $20 / MTok | $1 / MTok | $50 / MTok |' },
+  { claimId: 'claude-sonnet-4-6-token-price', result: '그대로', excerpt: '| Claude Sonnet 4.6 | $3 / MTok | $3.75 / MTok | $6 / MTok | $0.30 / MTok | $15 / MTok |' },
+  { claimId: 'claude-opus-4-6-token-price', result: '그대로', excerpt: '| Claude Opus 4.6 | $5 / MTok | $6.25 / MTok | $10 / MTok | $0.50 / MTok | $25 / MTok |' },
 ];
 
 export default entries;
