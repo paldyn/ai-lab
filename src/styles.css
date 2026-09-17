@@ -7456,8 +7456,13 @@ input:focus-visible {
 
 /*
   고른 줄. **판에서 쓰던 반전을 여기서는 안 쓴다** — 줄 하나를 통째로 뒤집으면
-  레일에서 그 줄만 칠해진 막대가 되어 목록의 리듬이 끊긴다. 대신 면을 한 단 올리고
-  왼쪽에 브랜드색 띠를 세운다(집의 학습 레일이 켜진 줄에 쓰는 표기와 같다).
+  레일에서 그 줄만 칠해진 막대가 되어 목록의 리듬이 끊긴다. 면을 한 단 올리고
+  글자를 진하게·굵게 하는 것이 전부다.
+
+  **왼쪽 브랜드색 띠를 세웠다가 걷어냈다.** 띠가 없는 쪽이 깔끔하다. 다만 라이트에서
+  면 대비가 #f3f3f3 대 #ffffff로 **1.11:1**이라 거의 안 보이므로, 선택을 실제로
+  지탱하는 것은 **글자색과 굵기**다(#050505/600 대 #666666/400). 면은 거드는 정도다.
+  키보드 포커스는 전역 `a:focus-visible`이 따로 그리므로 띠가 없어도 안 사라진다.
 */
 .guide-rail-product[aria-current='page'] {
   background-color: var(--surface);
@@ -7470,16 +7475,6 @@ input:focus-visible {
 
 .guide-rail-product[aria-current='page'] .guide-rail-role {
   color: var(--text-dim);
-}
-
-.guide-rail-product[aria-current='page']::before {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  width: 2px;
-  background: var(--brand);
-  content: '';
 }
 
 .guide-rail-note {
