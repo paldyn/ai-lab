@@ -329,8 +329,8 @@ export const certs: Cert[] = [
         previewFrom: '2026-09-18',
         previewTo: '2026-09-22',
         resultDate: '2026-09-23',
-        documentFrom: '2026-09-28',
-        documentTo: '2026-10-13',
+        documentFrom: '2026-09-23',
+        documentTo: '2026-10-07',
       },
       {
         round: '제13회 실기',
@@ -407,7 +407,7 @@ export const certs: Cert[] = [
       },
     ],
     officialUrl: 'https://www.dataq.or.kr/www/sub/a_07.do',
-    verifiedAt: '2026-08-25',
+    verifiedAt: '2026-09-17',
     notes:
       '- 국가기술자격법 제23조 및 동법 시행령 제29조(권한의 위임·위탁)에 따라 시행하는 국가기술자격이다. 시행기관 약칭은 K-DATA(KOREA Data ' +
       'Agency)다.\n' +
@@ -417,6 +417,8 @@ export const certs: Cert[] = [
       '- 실기는 CBT 방식이고 공식 홈페이지가 \'실기 체험환경\'을 별도로 제공한다.\n' +
       '- 2026년 기준으로 제12회·제13회가 시행되므로 제도가 유지·운영 중이며 폐지나 대체 계획은 공식 페이지에서 확인되지 않는다.\n' +
       '- 확인에 쓴 페이지는 자격소개·응시안내·시험일정·보수교육 안내 넷이다.\n' +
+      '- 자격소개의 출제기준 끝에 「※ 출제기준 적용기간 : 2024. 1. 1. ~ 2026. 12. 31.」이 붙어 있다. 그 뒤를 잇는 출제기준의 개편 여부나 ' +
+      '적용 시점은 아직 공고되지 않았다.\n' +
       '- 공식 영문 명칭은 확인한 페이지에 없어 nameEn에 한국어 정식 명칭을 그대로 두었다.',
     unknowns: [
       '자격 자체의 유효기간 (공식 자격소개·응시안내에 언급 자체가 없음 — \'없다\'고 적힌 것이 아니라 미확인)',
@@ -1373,7 +1375,7 @@ export const certs: Cert[] = [
       },
     ],
     officialUrl: 'https://aice.study/info/aice',
-    verifiedAt: '2026-08-25',
+    verifiedAt: '2026-09-17',
     notes:
       '- 등급이 9개다 — Future 3·2·1급(블록코딩), Junior·Basic(노코딩 AIDU), Generative 2·1급(생성형 AI), ' +
       'Associate·Professional(파이썬). 흔히 알려진 3~4등급 구성은 옛 정보다.\n' +
@@ -1386,7 +1388,8 @@ export const certs: Cert[] = [
       '- 응시료 표기가 공식 페이지끼리 어긋난다. /info/aice \'자격정보\' 블록만 Junior·Basic·Professional을 셋 다 80,000원으로 ' +
       '적고, 등급 카드·상세 페이지·수험자 가이드 표 셋은 50,000·50,000·120,000원으로 일치해 그쪽을 실었다. 환불 규정도 두 곳이 달라 구체적인 ' +
       'FAQ 쪽을 실었다.\n' +
-      '- \'Associate 완화검정\' 회차가 정규 시험과 무엇이 다른지는 설명을 찾지 못했다.\n' +
+      '- \'Associate 완화검정\'은 일정 페이지의 \'완화검정이란?\' 안내가 「완화검정은 AICE Associate 자격의 국가공인 이전 취득자 대상으로 ' +
+      '시행되는 시험입니다」라고 밝힌다. 응시 대상은 이렇게 확인됐지만 시험 구성이 정규 Associate와 어떻게 다른지는 여전히 적혀 있지 않다.\n' +
       '- 합격 시 블록체인 기반 디지털 배지가 발급되고, 접수 전 샘플 문항으로 유형을 볼 수 있다.',
     unknowns: [
       '시행처가 문장으로 밝힌 연간 정기시험 시행 횟수 — 일정 페이지가 해당 연도의 회차 표만 싣고 \'연 N회\' 문구가 어디에도 없다',
@@ -1395,8 +1398,8 @@ export const certs: Cert[] = [
       '9문항/60분으로 확인됨)',
       'AICE Generative의 응시 방식(온라인/오프라인 여부) — 등급 카드에도 수험자 가이드 \'등급별 시험정보\' 표에도 해당 항목이 아예 없음',
       'AICE Generative의 개인 응시 시행 주기 (일정표에 \'B2B 전용\'으로만 표기)',
-      '\'Associate 완화검정\' 회차의 정의·응시 대상·정규 Associate와의 차이, 그리고 연간 편성 횟수 (2026년 일정표에 3회·4회만 올라와 있어 ' +
-      '1·2회의 존재 여부를 알 수 없다)',
+      '\'Associate 완화검정\'의 시험 구성이 정규 Associate와 어떻게 다른지, 그리고 연간 편성 횟수 (2026년 일정표에 3회·4회만 올라와 있어 ' +
+      '1·2회의 존재 여부를 알 수 없다. 응시 대상이 \'국가공인 이전 취득자\'라는 것은 일정 페이지 안내로 확인됐다)',
       'Future 외 등급의 명시적 응시자격 문구 (등급 간 선수 조건이 없다는 FAQ 답변만 확인됨. \'응시자격 제한 없음\' 문구는 Future 카드에만 있음)',
       '등급별 합격률·응시자 수 통계',
     ],
@@ -1569,12 +1572,14 @@ export const certs: Cert[] = [
       },
     ],
     officialUrl: 'https://aws.amazon.com/certification/certified-ai-practitioner/',
-    verifiedAt: '2026-08-25',
+    verifiedAt: '2026-09-17',
     notes:
-      '- 2026년 8월 기준 현행 버전은 AIF-C01이다. 폐지·대체된 자격증이 아니며 후속 코드도 아직 없다. 참고한 공식 시험 가이드 PDF는 Version ' +
+      '- 2026년 9월 기준 현행 버전은 AIF-C01이다. 폐지·대체된 자격증이 아니며 후속 코드도 아직 없다. 참고한 공식 시험 가이드 PDF는 Version ' +
       '1.4다.\n' +
       '- 한국어 응시가 가능하다. 응시 언어는 한국어·영어·일본어 등 열둘이다. \'ESL +30\'(비영어권 응시자의 시험 시간 30분 추가)은 영어로 응시할 때만 ' +
       '적용되어 한국어 응시자에게는 해당되지 않는다.\n' +
+      '- 그 열둘 중 이탈리아어·독일어는 응시가 종료된다 — 공식 페이지가 「The AWS Certified AI Practitioner exam in Italian and ' +
+      'German will be retired after October 15, 2026.」라고 적었다. 한국어는 그대로다.\n' +
       '- AWS의 AI 계열 자격증은 세 등급이다 — 이 시험(파운데이셔널), MLA-C01(어소시에이트), AIP-C01(프로페셔널). 직접 모델을 만들고 ' +
       '배포하는 쪽 내용을 원한다면 뒤의 둘이다.\n' +
       '- 출제 범위 밖으로 못 박은 직무는 일곱이다 — 모델·알고리즘 코딩, 데이터·특성 공학, 하이퍼파라미터 튜닝과 모델 최적화, 파이프라인·인프라 구축과 배포, ' +
@@ -1673,10 +1678,12 @@ export const certs: Cert[] = [
       '다만 질병이나 예기치 못한 비상 상황은 증빙을 내면 수수료 없이 ' +
       '재예약해 준다. 시험 언어는 영어·일본어·한국어·중국어 간체다. 실제로 예약할 수 있는 날짜·시간은 예약 단계의 Pearson VUE 화면에서 확인한다.',
     fee:
-      '150 USD. 공식 페이지는 가격 옆에 「Visit Exam pricing for additional cost information, including ' +
-      'foreign exchange rates」라고 별도 가격 페이지 안내를 붙여 두었을 뿐, 지역에 따라 추가 비용이 붙는다고 적지는 않았다. 세금과 환율 적용은 ' +
-      '그 가격 페이지에서 확인해야 하며 이 레코드는 열어 보지 않았다. 갱신 응시에는 AWS Certification Account에 들어 있는 50% 할인 ' +
-      '바우처를 쓴다.',
+      '150 USD. 어소시에이트 등급 공통 가격이다. 공식 ' +
+      '요금표(aws.amazon.com/certification/policies/before-testing)는 통화별 금액을 함께 싣는다 — 150 USD / 128 ' +
+      'EUR / 224 AUD / 20,000 JPY / 197,287 KRW / 1,057 CNY / 12,829.50 INR. 원화 가격이 공개되어 있으므로 예약 단계까지 ' +
+      '가야 알 수 있는 값이 아니다. 표시 금액에 세금은 포함되지 않으며 원문은 "Applicable taxes may apply"라고만 적는다. 환율 반영은 ' +
+      '최소 연 1회 5월이고, 그보다 자주 바뀔 때는 최소 30일 전에 공지한다. 갱신 응시에는 AWS Certification Account에 들어 있는 50% ' +
+      '할인 바우처를 쓴다.',
     refund: [
       {
         when: '예약 시각보다 24시간 넘게 앞서 취소',
@@ -1693,14 +1700,13 @@ export const certs: Cert[] = [
       '취소는 Pearson VUE에 연락하거나 AWS Certification 계정에서 하고, 이 정책은 AWS 인증 전 시험에 공통이다. 질병이나 예기치 못한 비상 상황은 ' +
       '증빙을 내면 수수료 없이 다시 예약해 준다.',
     validity:
-      '3년(공식 페이지 문구는 「This certification is valid for 3 years」). 갱신 페이지가 이 자격에 적어 둔 경로는 둘뿐이다 — ' +
+      '3년(공식 페이지 문구는 「This certification is valid for 3 years」). 갱신 페이지가 이 자격에 적어 둔 경로는 셋이다 — ' +
       'Option 1은 이 시험의 최신 버전에 다시 합격하는 것, Option 2는 AWS Certified Generative AI Developer – ' +
-      'Professional 시험에 합격하는 것이다. 둘 다 3년 연장이고 AWS Certification Account의 50% 할인 바우처를 쓸 수 있다. 아무 ' +
-      'Professional 시험이나 되는 것이 아니라 지정된 그 한 시험이다. AWS Skill Builder 구독 활동으로 1년 연장(maintenance)하는 ' +
-      '선택지는 이 자격에 없다 — 갱신 페이지에서 그 선택지를 가진 것은 Cloud Practitioner, Solutions Architect – ' +
-      'Associate, Developer – Associate, CloudOps Engineer – Associate/SysOps Administrator – ' +
-      'Associate, Solutions Architect – Professional, DevOps Engineer – Professional 여섯이고, 그마저 ' +
-      '만료 90일 이내이면서 Skill Builder 유료 구독이 살아 있어야 한다. 어느 경로든 자격이 유효한 상태에서 갱신한다.',
+      'Professional 시험에 합격하는 것, Option 3은 AWS Skill Builder에서 자격을 유지(maintain)하는 것이다. 앞의 둘은 3년 연장이고 ' +
+      'AWS Certification Account의 50% 할인 바우처를 쓸 수 있다. Option 2는 아무 Professional 시험이나 되는 것이 아니라 지정된 ' +
+      '그 한 시험이다. Option 3은 연장 폭이 1년뿐이고 조건이 붙는다 — 원문은 「You must have an active certification that ' +
+      'is within 90 days of expiration and an active subscription to AWS Skill Builder」다. 어느 경로든 자격이 유효한 ' +
+      '상태에서 갱신한다.',
     prerequisite:
       '공식 자격 페이지·시험 가이드·인증 FAQ 어디에도 선수 요건을 언급한 문장이 없다. 요건이 제시되지 않았다는 뜻이지 AWS가 「없다」고 명시한 것은 아니다. ' +
       '실제로 적혀 있는 것은 권장 경험뿐이다 — Amazon SageMaker 등 ML 엔지니어링 AWS 서비스 1년 이상, 그리고 백엔드 소프트웨어 ' +
@@ -1736,10 +1742,11 @@ export const certs: Cert[] = [
       },
     ],
     officialUrl: 'https://aws.amazon.com/certification/certified-machine-learning-engineer-associate/',
-    verifiedAt: '2026-08-25',
+    verifiedAt: '2026-09-17',
     notes:
-      '- MLA-C02로 개편이 진행 중이다. 2026-09-01에 등록이 열리고 영어 MLA-C01의 마지막 응시일은 2026-09-28이지만, 이때 열리는 것은 ' +
-      '베타 시험(ME1-C02)이고 영어 전용이다.\n' +
+      '- MLA-C02로 개편이 진행 중이다. 예고대로 2026-09-01에 등록이 열렸고 공식 페이지는 「Registration is now open for the ' +
+      'updated exam (MLA-C02) beta」라고 적는다 — 지금 접수되는 것은 베타 시험(ME1-C02)이고 영어 전용이다. 영어 MLA-C01의 마지막 ' +
+      '응시일은 2026-09-28이다.\n' +
       '- 한국어·일본어·중국어 간체 MLA-C01은 MLA-C02 정식 출시까지 계속 응시할 수 있고, 그 정식 출시는 공식 블로그가 「2027년 초」로만 적었다.\n' +
       '- 베타 사양은 85문항 / 170분, 응시료 75 USD다. 정식판의 문항 수·시험 시간·가격은 아직 공개되지 않았다. ' +
       'MLA-C01(65문항/130분/150 USD)과 다르므로 어느 버전을 칠지 먼저 정해야 한다.\n' +
@@ -1759,7 +1766,8 @@ export const certs: Cert[] = [
       'MLA-C02 정식 출시(general availability)의 정확한 날짜 — 공식 블로그가 「2027년 초」로만 적었다',
       '한국어 시험의 온라인 감독(online proctored) 제공 여부 — 정책 페이지의 온라인 감독 언어 목록은 영어(24시간)·일본어·중남미 스페인어·중국 ' +
       '본토 만다린뿐이고 한국어가 없다',
-      '한국 내 원화 응시료와 부가세 포함 여부 — Exam pricing 페이지를 열지 않았다',
+      '한국에서 결제할 때 실제로 붙는 세액·부가세율 — 공식 요금표는 197,287 KRW라는 금액과 "Applicable taxes may apply"만 적고 ' +
+      '세율이나 최종 결제액은 밝히지 않는다',
       '선수 요건이 「없음」이라고 적힌 공식 문장 — 자격 페이지·시험 가이드·인증 FAQ 어디에서도 못 찾았다',
     ],
     studyPath: [
