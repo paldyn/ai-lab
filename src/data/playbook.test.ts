@@ -141,10 +141,15 @@ describe('AI 가이드 — nav 문턱', () => {
     지우다가 문턱 아래로 내려가면 화면은 그대로인 채 근거만 사라집니다. 그래서 지금은
     셋을 각각 재고, 파생값이 그것과 맞는지 함께 봅니다.
   */
-  it('비어 있는 동안에는 안 선다', () => {
-    expect(playbookClaims.length).toBe(0);
-    expect(playbookIndex.length).toBe(0);
-    expect(playbookNavVisible('2026-09-16')).toBe(false);
+  /*
+    **2026-09-17부터는 「0이다」가 아니라 「아직 아래다」를 잽니다.** 그날 주장을 다시
+    채우기 시작해 서른이 들어왔는데, 0으로 못 박아 두면 **채울 때마다 이 검사가 섭니다** —
+    일하는 것을 막는 검사가 되고, 그러면 지우는 쪽이 늘 더 쌉니다.
+  */
+  it('최소선 아래라서 아직 안 선다', () => {
+    expect(playbookClaims.length).toBeLessThan(40);
+    expect(playbookIndex.length).toBeLessThan(8);
+    expect(playbookNavVisible('2026-09-17')).toBe(false);
   });
 
   /*
