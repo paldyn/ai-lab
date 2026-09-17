@@ -1,13 +1,14 @@
 import type { CSSProperties } from 'react';
 import { Link } from 'react-router';
 import { ClaimRow } from './ClaimRow';
+import { TIER_LABEL, TIER_ORDER } from './EvidenceBadge';
 import { TipRow } from './TipRow';
 import { claimState, claimsForProduct, claimsForVendor } from '../data/playbook';
 import { playbookClaims } from '../data/playbookClaims';
 import { guideModelById } from '../data/guideModels';
 import { guideProducts } from '../data/guideProducts';
 import { guideVendorById } from '../data/guideVendors';
-import type { Product, VendorInfo } from '../types/playbook';
+import type { Claim, EvidenceTier, Product, VendorInfo } from '../types/playbook';
 
 /**
  * 원장 — 판 아래에서 내용만 갈리는 한 칸.
@@ -109,6 +110,114 @@ function OfficialLinks({ rows }: { rows: Array<{ label: string; url: string }> }
 }
 
 /**
+ * 거르개를 세우는 문턱.
+ *
+ * **아홉 줄짜리 목록은 이미 한 화면에 다 보입니다.** 거기에 칩 셋을 세우면 고르는
+ * 자리가 읽을 것보다 커집니다 — 3×3 판이 「첫 화면을 통째로 고르는 자리가 먹는다」로
+ * 거절된 방향이고, 뉴스에서 「항목에 이미 붙어 있는 값으로 한 번 더 거르는 UI」를
+ * 2026-08-05에 되돌린 자리이기도 합니다.
+ *
+ * 이 문턱으로 거르개가 서는 곳은 셋입니다 — Claude Code 18 · Codex 14 · Antigravity 11.
+ * 덤으로 **「한쪽이 0인 화면」이 저절로 빠집니다**: 공식이 0인 제품은 Claude 하나이고
+ * 팁이 둘이라 애초에 문턱 아래입니다. 빈 칸을 흐리게 세울 일이 안 생깁니다.
+ */
+const FILTER_MIN = 10;
+
+function TierChip({
+  group,
+  value,
+  label,
+  n,
+  on,
+}: {
+  group: string;
+  value: string;
+  label: string;
+  n: number;
+  on?: boolean;
+}) {
+  const id = `${group}-${value}`;
+  return (
+    <>
+      {/*
+        **제어 컴포넌트로 만들지 않습니다.** `checked`를 주면 `onChange`가 필요해지고
+        그 순간 이 기능이 자바스크립트에 매입니다. 프리렌더된 첫 HTML에서 그대로
+        눌려야 합니다.
+      */}
+      <input
+        className="guide-tip-radio"
+        type="radio"
+        name={group}
+        id={id}
+        value={value}
+        defaultChecked={on}
+      />
+      <label htmlFor={id}>
+        {label}
+        <b>{n}</b>
+      </label>
+    </>
+  );
+}
+
+/**
+ * 팁 한 벌 — 절 머리글 · 거르개 · 줄들.
+ *
+ * **거르기가 순수 CSS입니다**(라디오 + `:has()`). 자바스크립트가 한 줄도 안 들고,
+ * 그래서 프리렌더된 첫 HTML에서 그대로 눌립니다. 라디오와 줄들이 `.guide-tips-block`
+ * 한 부모 안에 있어야 선택자가 닿습니다. `name`은 제품마다 다르게 주되 **CSS는
+ * `id`가 아니라 `value`를 겁니다** — 한 페이지에 블록이 둘 서도 안 깨집니다.
+ *
+ * **거르개는 좁히는 도구이고 배지는 영수증입니다.** 거른다고 줄의 배지를 지우지
+ * 않습니다 — 거른 화면에서 한 줄만 캡처해 가면 등급이 사라집니다.
+ *
+ * **등급이 있는 것만 칩으로 세웁니다.** 실측 팁이 하나 생기면 칩이 저절로 넷이
+ * 되고, CSS도 세 등급을 다 적어 두었습니다(`styles.test.ts`가 그 대응을 봅니다).
+ */
+function TipBlock({ tips, today, scope }: { tips: Claim[]; today: string; scope: string }) {
+  const group = `tip-tier-${scope}`;
+  const segments = (Object.keys(TIER_ORDER) as EvidenceTier[])
+    .sort((a, b) => TIER_ORDER[a] - TIER_ORDER[b])
+    .map((tier) => ({ tier, n: tips.filter((c) => c.tier === tier).length }))
+    .filter((s) => s.n > 0);
+
+  return (
+    <section className="guide-tips-block">
+      <div className="guide-tip-head-row">
+        <h3 className="guide-ledger-label">이렇게 쓰면 아낀다</h3>
+
+        {tips.length >= FILTER_MIN && segments.length > 1 && (
+          /*
+            `legend`는 감추지만 지운 게 아닙니다 — 스크린 리더가 「근거로 거르기,
+            공식, 라디오 버튼, 3개 중 2번째」로 읽고 화살표 키 이동은 네이티브입니다.
+            수가 라벨 안에 박혀 있어 고른 결과가 스스로 읽힙니다(`aria-live` 불필요).
+          */
+          <fieldset className="guide-tip-filter">
+            <legend>근거로 거르기</legend>
+            <TierChip group={group} value="all" label="전체" n={tips.length} on />
+            {segments.map((s) => (
+              <TierChip
+                key={s.tier}
+                group={group}
+                value={s.tier}
+                label={TIER_LABEL[s.tier]}
+                n={s.n}
+              />
+            ))}
+          </fieldset>
+        )}
+      </div>
+
+      <div className="guide-tips">
+        {tips.map((claim) => (
+          <TipRow key={claim.id} state={claimState(claim, today)} />
+        ))}
+      </div>
+    </section>
+  );
+}
+
+/**
  * 제품 하나를 골랐을 때 — **이 제품을 어떻게 써야 좋은가**에 답하는 한 칸.
  *
  * **노트 개념을 걷어냈습니다**(2026-09-17). 「노트 0편」을 크게 적고 목록 자리를
@@ -135,11 +244,12 @@ function ProductLedger({ product, today }: { product: Product; today: string }) 
     아닙니다 — 요금·한도는 거드는 값이라 아래로 내립니다.
 
     공식을 먼저, 체감을 뒤에 둡니다. 배지가 이미 가르지만 섞어 놓으면 눈이 배지를
-    하나씩 읽어야 합니다.
+    하나씩 읽어야 합니다. **등급 셋을 다 봅니다** — 실측이 들어오는 날 가운데
+    자리가 이미 나 있어야 합니다.
   */
   const tips = claims
     .filter((c) => c.topic === 'habit')
-    .sort((a, b) => (a.tier === b.tier ? 0 : a.tier === 'vendor' ? -1 : 1));
+    .sort((a, b) => TIER_ORDER[a.tier] - TIER_ORDER[b.tier]);
   const usage = claims.filter((c) => c.topic !== 'context' && c.topic !== 'habit');
   const contextOf = new Map(
     claims.filter((c) => c.topic === 'context').map((c) => [c.subject.id, c]),
@@ -162,16 +272,7 @@ function ProductLedger({ product, today }: { product: Product; today: string }) 
       </p>
       <p className="guide-ledger-blurb">{product.oneLine}</p>
 
-      {tips.length > 0 && (
-        <>
-          <h3 className="guide-ledger-label">이렇게 쓰면 아낀다</h3>
-          <div className="guide-tips">
-            {tips.map((claim) => (
-              <TipRow key={claim.id} state={claimState(claim, today)} />
-            ))}
-          </div>
-        </>
-      )}
+      {tips.length > 0 && <TipBlock tips={tips} today={today} scope={product.id} />}
 
       {/*
         **모델은 층이 아니라 이 제품의 속성입니다.** 같은 모델이 제품 여럿에서 돌기

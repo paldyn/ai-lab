@@ -7292,6 +7292,13 @@ input:focus-visible {
     무관하다. 옛 근거가 주석에 남아 있으면 다음 사람이 레일 폭을 여기에 맞추려 든다.
   */
   --guide-col: 104px;
+
+  /*
+    팁 줄 오른쪽의 칩 자리. 모노 두 자(「이유」·「닫기」)에 좌우 패딩 7px과 테두리
+    1px이면 칩이 36px이고, 12px을 띄워 48px을 비운다. **고정값인 것이 계약이다** —
+    여닫을 때 문장이 다시 안 감기는 것을 이 값이 붙들지, 글자 수가 붙들지 않는다.
+  */
+  --guide-chip: 48px;
 }
 
 /* ── 2단 ────────────────────────────────────────────────────── */
@@ -7706,8 +7713,130 @@ input:focus-visible {
 
 /*
   팁 목록. **이 서랍이 실제로 파는 것이라 가장 먼저, 가장 읽기 좋게 섭니다.**
-  값 줄과 달리 수가 없고 문장이 주인공이라 3열 격자를 안 쓰고 한 단으로 흐릅니다.
+
+  **접힌 줄에는 행동만 남습니다.** 무게가 어디 있었는지 재고 그은 선입니다 — 문장은
+  자수 중앙 49인데 이유는 중앙 94에 최대 281입니다. 그것을 접으면 Claude Code
+  열여덟 개가 약 108줄에서 약 54줄이 됩니다.
+
+  접는 선은 픽셀이 아니라 뜻입니다. 밖에는 「무엇을 하라」와 「언제 안 통하나」,
+  안에는 「왜 그런가」와 출처입니다. 그래서 반례가 저절로 밖에 남습니다.
 */
+
+.guide-tip-head-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--gs-r1) var(--gs-r2);
+  margin-top: var(--gs-r4);
+  max-width: var(--gs-measure);
+}
+
+/* 절 간격은 이제 이 줄이 집니다. */
+.guide-tip-head-row .guide-ledger-label {
+  margin-top: 0;
+}
+
+/*
+  근거로 거르는 칩. **라디오 + `:has()`라 자바스크립트가 한 줄도 안 듭니다** —
+  프리렌더된 첫 HTML에서 그대로 눌립니다.
+
+  **`:has()`를 못 읽는 브라우저에서는 아예 안 뜹니다.** 켜진 것처럼 보이면서 아무
+  일도 안 하는 칩을 세우지 않습니다 — 집의 `.answer-all`이 스크립트가 없을 때
+  숨는 것과 같은 판단이고, 무너지는 방향은 「다 보인다」입니다.
+*/
+.guide-tip-filter {
+  display: none;
+  flex-wrap: wrap;
+  gap: var(--gs-r1);
+  /* fieldset의 UA 기본값 셋. min-inline-size를 안 풀면 flex 안에서 안 줄어듭니다. */
+  margin: 0;
+  border: 0;
+  padding: 0;
+  min-inline-size: 0;
+}
+
+@supports selector(:has(*)) {
+  .guide-tip-filter {
+    display: flex;
+  }
+}
+
+/*
+  **`display: none`이 아니라 잘라 냅니다.** 감춘 입력도 포커스를 받아야 키보드로
+  고를 수 있습니다. `.cert-subject-table thead`가 이미 쓰는 패턴입니다.
+*/
+.guide-tip-filter legend,
+.guide-tip-radio {
+  position: absolute;
+  overflow: hidden;
+  width: 1px;
+  height: 1px;
+  clip-path: inset(50%);
+}
+
+/*
+  누르는 자리는 10px 모노에 6/12px 패딩과 1px 테두리라 28px입니다 — 24px 아래로
+  안 내려갑니다. 1024px 아래에서는 레일이 위로 올라와 이 칩이 원장의 첫 컨트롤이
+  되므로 여기서 줄이면 손가락에 안 맞습니다.
+*/
+.guide-tip-filter label {
+  cursor: pointer;
+  user-select: none;
+  border: 1px solid var(--guide-rule);
+  border-radius: 3px; /* .evidence-badge·.answer-chip과 같은 값. 네 번째 반지름을 안 만듭니다. */
+  padding: var(--gs-r1) var(--gs-r2);
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+  font-size: var(--gs-mono);
+  letter-spacing: 0.08em;
+  line-height: 1.4;
+  transition: color 0.15s, border-color 0.15s;
+}
+
+.guide-tip-filter label b {
+  margin-left: var(--gs-r1);
+  color: var(--text-dim);
+  font-weight: 400;
+}
+
+.guide-tip-filter label:hover {
+  border-color: var(--brand);
+  color: var(--brand-text);
+}
+
+/* 켜진 칩은 색 하나가 아니라 테두리·잉크·굵기 셋으로 섭니다 — 흑백에서도 갈립니다. */
+.guide-tip-radio:checked + label {
+  border-color: var(--text-strong);
+  color: var(--text-strong);
+  font-weight: 600;
+}
+
+.guide-tip-radio:checked + label b {
+  color: var(--text-strong);
+}
+
+/* 입력이 안 보이므로 포커스 링은 라벨이 대신 그립니다. */
+.guide-tip-radio:focus-visible + label {
+  outline: 2px solid var(--brand);
+  outline-offset: 2px;
+}
+
+/*
+  거르기. **등급 셋을 다 적습니다.** 오늘 `ours` 팁이 0건이라 아무 화면에도 안
+  보이지만 타입이 셋이고 승격 경로가 열려 있으므로 언젠가 옵니다. 둘만 적으면
+  그날 실측 줄이 「공식」에서도 「체감」에서도 사라지고 아무 검사도 안 잡습니다 —
+  `styles.test.ts`가 이 대응을 봅니다.
+
+  `display: none`이라 거른 줄은 접근성 트리에서도 빠집니다. 화면에 없는 줄을
+  스크린 리더가 읽으면 칩에 적힌 수와 안 맞습니다.
+*/
+.guide-tips-block:has(.guide-tip-radio[value='vendor']:checked) .guide-tip:not(.is-vendor),
+.guide-tips-block:has(.guide-tip-radio[value='ours']:checked) .guide-tip:not(.is-ours),
+.guide-tips-block:has(.guide-tip-radio[value='field']:checked) .guide-tip:not(.is-field) {
+  display: none;
+}
+
 .guide-tips {
   margin-top: var(--gs-r2);
   max-width: var(--gs-measure);
@@ -7715,21 +7844,25 @@ input:focus-visible {
 }
 
 .guide-tip {
+  position: relative;
   border-bottom: 1px solid var(--guide-rule);
   padding-block: var(--gs-r2);
 }
 
 /*
-  **팁 문장은 제목이 아니라 문장입니다.** 처음에는 16px/600으로 세우고 이유를
-  13.5px/흐린 색으로 뒀는데, 그 점프가 커서 눈이 **제목 + 본문**으로 읽었습니다 —
-  열여덟 개가 이어지니 글 목록처럼 보였습니다. 크기를 이유와 같게 맞추고 무게와
-  잉크로만 가릅니다.
+  접힌 줄. **열어도 이 줄의 높이가 안 바뀌는 것**이 이 설계의 계약입니다 — 칩 자리를
+  `--guide-chip`으로 미리 비우고 칩을 그 위에 절대 위치로 앉히므로 「이유」가
+  「닫기」로 바뀌어도 문장이 다시 안 감깁니다. 붙드는 것은 글자 수가 아니라 이
+  고정 패딩입니다.
 
-  **배지가 이 문장 안에 떠 있습니다.** 따로 줄을 주면 팁 하나가 네 줄이 되어
-  열여덟 개가 벽이 됩니다 — `float`으로 오른쪽 끝에 붙이면 문장이 짧을 때는 같은
-  줄에, 길 때는 첫 줄 끝에 앉아 **줄을 한 개도 안 먹습니다.**
+  **flex로 안 짭니다** — summary를 flex로 만들면 인라인 자식이 각각 항목이 되어
+  문장이 조각납니다(답 토글에서 이미 밟은 자리입니다). list-item 그대로 두고
+  마커만 지웁니다.
 */
-.guide-tip-statement {
+.guide-tip-head {
+  list-style: none;
+  cursor: pointer;
+  padding-right: var(--guide-chip);
   color: var(--text-strong);
   font-size: var(--gs-body);
   font-weight: 600;
@@ -7737,41 +7870,130 @@ input:focus-visible {
   text-wrap: pretty;
 }
 
-.guide-tip-badge {
-  float: right;
-  margin-left: var(--gs-r2);
+.guide-tip-head::-webkit-details-marker {
+  display: none;
 }
 
-/*
-  **체감 팁은 한 단 흐리게 섭니다.** 값 쪽에서 체감 값을 굵게 안 쓰고 `~`를 다는 것과
-  같은 규칙입니다 — 배지만으로는 공식과 같아 보입니다.
-*/
-.guide-tip.is-field .guide-tip-statement {
+.guide-tip-head:focus-visible {
+  outline: 2px solid var(--brand);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+/* 체감은 한 단 흐리게 — 값 쪽에서 체감 값을 굵게 안 쓰고 `~`를 다는 것과 같습니다. */
+.guide-tip.is-field .guide-tip-head {
   color: var(--text);
   font-weight: 500;
 }
 
+/*
+  배지가 문장의 첫 낱말 자리에 박힙니다. **`float: right`을 걷어낸 자리입니다** —
+  띄워 두면 문장이 짧을 땐 줄 끝, 길 땐 첫 줄 중간에 앉아 x가 줄마다 달랐습니다.
+  「배지가 별로」의 실체는 배지가 아니라 그 흩어짐이었습니다.
+
+  고정 열을 안 쓰는 이유는 592px 측정폭에서 열 하나가 60px을 먹어 문장이 한 줄 더
+  감기기 때문이고, 안 써도 되는 이유는 「공식」·「실측」·「체감」이 전부 두 자라
+  x가 저절로 같기 때문입니다.
+
+  **`display`를 명시합니다.** `.evidence-badge`에는 `display` 선언이 없고, 그동안
+  상자로 보인 것은 `float`이 block으로 계산시켰기 때문입니다.
+*/
+.guide-tip .evidence-badge {
+  display: inline-block;
+  margin-right: var(--gs-r1);
+  vertical-align: 1px; /* 눈으로 맞춘 광학 값. em은 배지 자신의 10px로 풀려 안 맞습니다. */
+  font-weight: 400; /* 안 박으면 600/500을 물려받아 공식·체감 알약 굵기가 갈립니다. */
+}
+
+/*
+  「이유」 칩. 바깥 상자를 문장 첫 줄과 같은 높이로 만듭니다(테두리 2px을 뺍니다) —
+  그래야 `.guide-tip`의 padding-top 그대로가 곧 칩 자리가 되고 어림한 오프셋이
+  안 듭니다.
+*/
+.guide-tip-chip {
+  position: absolute;
+  top: var(--gs-r2);
+  right: 0;
+  user-select: none;
+  border: 1px solid var(--border);
+  border-radius: 3px;
+  padding: 0 7px;
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+  font-size: var(--gs-mono);
+  font-weight: 400;
+  letter-spacing: 0.04em;
+  line-height: calc(var(--gs-body) * 1.75 - 2px);
+  white-space: nowrap;
+  transition: color 0.15s, border-color 0.15s;
+}
+
+.guide-tip-chip::after {
+  content: '이유';
+}
+
+.guide-tip-fold[open] .guide-tip-chip::after {
+  content: '닫기';
+}
+
+.guide-tip-head:hover .guide-tip-chip,
+.guide-tip-fold[open] .guide-tip-chip {
+  border-color: var(--brand);
+  color: var(--brand-text);
+}
+
+/*
+  펼친 몸. **왼쪽에 색 띠나 세로선을 안 세웁니다** — `.evidence-badge-ours`가 이미
+  1px 실선을 실측의 뜻으로 쓰고 있어서, 같은 화면(아래 값 줄이 그 배지를 그대로
+  씁니다)에 세로 실선·점선을 더하면 모양 어휘가 둘이 됩니다. 들여쓰기만 줍니다.
+*/
+.guide-tip-body {
+  margin-top: var(--gs-r2);
+  padding-left: var(--gs-r2);
+}
+
 .guide-tip-detail {
-  margin-top: 2px;
   color: var(--text-muted);
   font-size: var(--gs-body);
   line-height: 1.75;
   text-wrap: pretty;
 }
 
-/* 나이는 이유 끝에 붙어 갑니다 — 제 줄을 주면 그 한 줄이 열여덟 번 쌓입니다. */
-.guide-tip-when {
-  margin-left: var(--gs-r1);
+.guide-tip-detail + .guide-tip-detail {
+  margin-top: var(--gs-r1);
+}
+
+/* 출처와 나이. 그동안 배지의 `title`뿐이라 터치 기기에서 볼 방법이 없던 값입니다. */
+.guide-tip-source {
+  margin-top: var(--gs-r1);
   color: var(--text-dim);
   font-family: var(--font-mono);
   font-size: var(--gs-mono);
   letter-spacing: 0.04em;
+  line-height: 1.75;
+}
+
+.guide-tip-source a {
+  color: inherit;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.guide-tip-source a:hover {
+  color: var(--brand-text);
+}
+
+.guide-tip-when {
+  margin-left: var(--gs-r1);
   white-space: nowrap;
 }
 
 /*
-  반례. 점선 상자로 세워 봤더니 그 자체가 딴 물건처럼 떠서 흐름이 끊겼습니다.
-  **한 줄로 이어 붙이되 앞에 라벨을 답니다** — 숨기지 않으면서 문서 안에 남습니다.
+  반례. **접힌 줄에 남습니다** — 그 줄이 곧 그 팁이 실측이 아닌 이유입니다.
+  다만 `<summary>` 밖 형제라, 버튼 이름이 문장 둘을 이어 붙인 227자가 되지 않고
+  이 줄의 글자를 끌어 잡아도 줄이 안 열립니다.
+
+  닫히면 문장 바로 아래, 열리면 몸 아래 — **어느 쪽이든 칸의 맨 아랫줄**입니다.
 */
 .guide-tip-counter {
   margin-top: 2px;
@@ -7780,12 +8002,44 @@ input:focus-visible {
   line-height: 1.75;
 }
 
+.guide-tip-fold[open] + .guide-tip-counter {
+  margin-top: var(--gs-r2);
+}
+
 .guide-tip-counter-label {
   margin-right: var(--gs-r1);
   color: var(--text-dim);
   font-family: var(--font-mono);
   font-size: var(--gs-mono);
   letter-spacing: 0.08em;
+}
+
+/* 원고의 백틱. 그동안 화면에 백틱이 글자 그대로 찍혔습니다(문장 11건). */
+.guide-tip-code {
+  font-family: var(--font-mono);
+  font-size: 0.92em;
+}
+
+/*
+  종이에는 여닫이도 거르개도 없습니다. **거르기를 반드시 되돌립니다** — `:has()`
+  규칙은 fieldset이 안 보여도 그대로 맞으므로, 「공식」을 골라 둔 채 인쇄하면
+  체감 아홉 줄이 빠진 종이가 나오고 그렇게 만든 컨트롤은 같은 규칙이 지운 상태가
+  됩니다. 이 서랍이 「만료된 값을 흐리는 대신 지운다」로 지키려는 것과 정확히
+  반대 방향입니다.
+*/
+@media print {
+  .guide-tip-filter,
+  .guide-tip-chip {
+    display: none;
+  }
+
+  .guide-tip {
+    display: block !important;
+  }
+
+  .guide-tip-fold::details-content {
+    content-visibility: visible;
+  }
 }
 
 

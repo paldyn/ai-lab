@@ -1,3 +1,4 @@
+import { claimsForProduct } from './data/playbook';
 import { guideProducts } from './data/guideProducts';
 import { guideVendorIds } from './data/guideVendors';
 import { describe, expect, it } from 'vitest';
@@ -93,5 +94,39 @@ describe('프리렌더 — 본문이 HTML에 들어간다', () => {
       }
     }
     expect(empty).toEqual([]);
+  });
+
+  /*
+    **팁이 접힌 채로, 내용은 다 들어 있는 채로 나가는가.**
+
+    위 검사는 `guide-ledger-label`만 보는데 그 클래스는 「어디서 쓰나」 h3가 무조건
+    달고 있어 **팁 블록이 통째로 사라져도 초록**입니다. 접기는 기능 전부를 「첫
+    HTML에 다 실려 나가고 브라우저가 접어 둘 뿐」에 걸고 있으므로 그것을 직접 잽니다 —
+    자바스크립트가 안 붙은 상태에서 접힌 내용이 비어 있으면, 그 화면은 영영 못 여는
+    화면입니다.
+
+    반례가 `<summary>` 밖에 남는 것과, 거르개가 열 줄 넘는 화면에만 서는 것도
+    같은 자리에서 봅니다. 셋 다 **눈으로는 못 세는** 수입니다.
+  */
+  it('제품 화면의 첫 HTML에 팁이 접힌 채로 다 실린다', async () => {
+    const wrong: string[] = [];
+    for (const product of guideProducts) {
+      const tips = claimsForProduct(product.id).filter((c) => c.topic === 'habit');
+      if (tips.length === 0) continue;
+      const { html } = await render(`/playbook/${product.vendorId}/${product.id}`);
+
+      const folds = html.split('guide-tip-fold').length - 1;
+      if (folds !== tips.length) wrong.push(`${product.id}: 접힌 칸 ${folds} ≠ 팁 ${tips.length}`);
+
+      const counters = tips.filter((c) => c.corroboration).length;
+      const shown = html.split('>안 통하는 자리<').length - 1;
+      if (shown !== counters) wrong.push(`${product.id}: 반례 ${shown} ≠ ${counters}`);
+
+      const filtered = html.includes('guide-tip-filter');
+      if (filtered !== tips.length >= 10) {
+        wrong.push(`${product.id}: 팁 ${tips.length}인데 거르개 ${filtered ? '섰다' : '안 섰다'}`);
+      }
+    }
+    expect(wrong).toEqual([]);
   });
 });

@@ -64,6 +64,21 @@ describe('스타일시트', () => {
     expect(orphans).toEqual([]);
   });
 
+  /*
+    **등급은 셋인데 화면이 둘만 알면 조용히 샙니다.** 오늘 `ours` 팁이 0건이라
+    거르개에 실측 칸이 안 서고, 그래서 규칙을 빠뜨려도 아무 화면에서도 안 드러납니다.
+    실측 팁이 하나 생기는 날 그 줄은 「공식」에서도 「체감」에서도 사라지는데,
+    타입 검사도 렌더 검사도 그걸 못 잡습니다 — CSS에 안 적힌 것이기 때문입니다.
+  */
+  it('근거 등급 셋이 팁 거르개와 줄 클래스에 다 적혀 있다', () => {
+    const missing = ['vendor', 'ours', 'field'].filter(
+      (tier) =>
+        !css.includes(`.guide-tip-radio[value='${tier}']:checked`) ||
+        !css.includes(`.guide-tip:not(.is-${tier})`),
+    );
+    expect(missing).toEqual([]);
+  });
+
   it('빌드 때 주입되는 예외 넷이 실제로 스타일시트에서 불린다', () => {
     // 예외 목록이 쓸모를 잃고도 남아 있지 않게 한다.
     for (const name of INJECTED_AT_BUILD) {
