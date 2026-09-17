@@ -7719,11 +7719,20 @@ input:focus-visible {
   padding-block: var(--gs-r3);
 }
 
+/*
+  **팁 문장은 제목이 아니라 문장입니다.** 처음에는 16px/600으로 세우고 이유를
+  13.5px/흐린 색으로 뒀는데, 그 점프가 커서 눈이 **제목 + 본문**으로 읽었습니다 —
+  열여덟 개가 이어지니 글 목록처럼 보였습니다.
+
+  지금은 **크기를 이유와 같게 맞추고 무게와 잉크로만 가릅니다.** 같은 크기로 이어지면
+  한 덩이의 글로 읽히고, 굵은 첫 문장이 「무엇을 하라」, 흐린 뒷줄이 「왜」가 됩니다 —
+  잘 요약된 문서의 모양입니다.
+*/
 .guide-tip-statement {
   color: var(--text-strong);
-  font-size: var(--gs-lead);
+  font-size: var(--gs-body);
   font-weight: 600;
-  line-height: 1.65;
+  line-height: 1.8;
   text-wrap: pretty;
 }
 
@@ -7737,10 +7746,10 @@ input:focus-visible {
 }
 
 .guide-tip-detail {
-  margin-top: var(--gs-r1);
+  margin-top: 2px;
   color: var(--text-dim);
   font-size: var(--gs-body);
-  line-height: 1.75;
+  line-height: 1.8;
   text-wrap: pretty;
 }
 
@@ -7748,13 +7757,15 @@ input:focus-visible {
   반례. **숨기면 통설이 공식처럼 읽힙니다** — 이 줄이 곧 그 팁이 실측이 아닌 이유라
   접거나 흐려 두지 않고 제 자리에 세웁니다.
 */
+/*
+  반례. 점선 상자로 세워 봤더니 그 자체가 딴 물건처럼 떠서 흐름이 끊겼습니다.
+  **한 줄로 이어 붙이되 앞에 라벨을 답니다** — 숨기지 않으면서 문서 안에 남습니다.
+*/
 .guide-tip-counter {
-  margin-top: var(--gs-r2);
-  border-left: 1px dashed var(--guide-rule);
-  padding-left: var(--gs-r2);
+  margin-top: var(--gs-r1);
   color: var(--text-muted);
   font-size: var(--gs-body);
-  line-height: 1.7;
+  line-height: 1.8;
 }
 
 .guide-tip-counter-label {
