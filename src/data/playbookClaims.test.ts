@@ -29,6 +29,8 @@ const VENDOR_HOSTS = [
   'claude.ai',
   'code.claude.com',
   'platform.claude.com',
+  // 앱·Cowork 사용법은 도움말 센터에만 있다(2026-09-17).
+  'support.claude.com',
   'openai.com',
   'chatgpt.com',
   'developers.openai.com',
@@ -37,9 +39,33 @@ const VENDOR_HOSTS = [
   'gemini.google',
   'gemini.google.com',
   'ai.google.dev',
+  // Gemini 앱 사용법도 도움말 센터다.
+  'support.google.com',
+  'antigravity.google',
 ];
 
+/**
+ * **호스트만으로는 못 가르는 자리가 하나 있다.** Gemini CLI의 공식 문서는 GitHub
+ * 저장소 안에 있는데(`google-gemini/gemini-cli`의 `docs/`), `github.com`을 통째로
+ * 벤더 호스트로 두면 **누구나 올릴 수 있는 곳**이 공식이 된다.
+ *
+ * **그리고 같은 저장소 안에서도 갈린다.** `docs/` 아래는 그 회사가 쓴 문서이지만
+ * `issues`·`discussions`는 **사용자가 쓴 글**이라 체감 근거다. 실제로 이 검사를
+ * 처음 느슨하게 썼더니 체감 팁 셋(`gemini-cli-tip-01`~`03`)이 「벤더 문서면 등급이
+ * vendor다」에 걸렸다 — 검사가 제 일을 한 자리다. 조직 이름만으로는 부족하고
+ * **경로에 `/docs/`가 있어야** 공식으로 친다.
+ */
+const VENDOR_REPOS = ['github.com/google-gemini/'];
+
 const hostOf = (url: string) => new URL(url).host;
+
+const isVendorUrl = (url: string) => {
+  if (VENDOR_HOSTS.includes(hostOf(url))) return true;
+  const path = new URL(url).pathname;
+  return (
+    VENDOR_REPOS.some((repo) => `${hostOf(url)}${path}`.startsWith(repo)) && path.includes('/docs/')
+  );
+};
 
 describe('AI 가이드 — 주장', () => {
   /*
@@ -164,14 +190,14 @@ describe('AI 가이드 — 주장', () => {
   it('공식 값의 출처가 벤더 호스트다', () => {
     const bad = playbookClaims
       .filter((c) => c.tier === 'vendor')
-      .filter((c) => !VENDOR_HOSTS.includes(hostOf(c.source.url)));
+      .filter((c) => !isVendorUrl(c.source.url));
     expect(bad.map((c) => `${c.id} → ${hostOf(c.source.url)}`)).toEqual([]);
   });
 
   it('체감 주장이 벤더 호스트를 가리키지 않는다', () => {
     const bad = playbookClaims
       .filter((c) => c.tier === 'field')
-      .filter((c) => VENDOR_HOSTS.includes(hostOf(c.source.url)));
+      .filter((c) => isVendorUrl(c.source.url));
     expect(bad.map((c) => `${c.id} — 벤더 문서면 등급이 vendor다`)).toEqual([]);
   });
 
@@ -333,6 +359,39 @@ describe('AI 가이드 — 주장', () => {
       }
     }
     expect([...new Set(tooAlike)]).toEqual([]);
+  });
+
+  /*
+    **축이 없는 팁은 화면에서 사라진다.** 팁은 `aim`으로 두 절에 갈려 서므로,
+    값이 없으면 어느 절에도 안 들어가 조용히 빠진다 — 오류가 아니라 침묵이다.
+  */
+  it('팁마다 축이 있고 둘 중 하나다', () => {
+    const bad = playbookClaims
+      .filter((c) => c.topic === 'habit')
+      .filter((c) => c.aim !== 'save' && c.aim !== 'well');
+    expect(bad.map((c) => `${c.id}(${c.aim ?? '없음'})`)).toEqual([]);
+  });
+
+  /* 축은 팁의 것이다 — 값 주장에 붙으면 뜻이 없다. `detail`·`group`과 같은 자리다. */
+  it('축은 팁에만 붙는다', () => {
+    const bad = playbookClaims.filter((c) => c.aim && c.topic !== 'habit');
+    expect(bad.map((c) => c.id)).toEqual([]);
+  });
+
+  /*
+    **둘 다 화면에 설 만큼 있어야 한다.** 이 서랍이 파는 것이 그 둘이라 한쪽이 비면
+    「빈 절을 그리지 않는다」에 걸려 절이 아예 안 서고, 그러면 두 축이라는 말이
+    화면에서 거짓이 된다.
+
+    2026-09-17에 세어 보니 63건 중 `well`이 **넷**이었다 — 팁을 「토큰을 아끼고」라는
+    주문으로만 모은 자국이다. 스물여덟을 더 긷어 채웠다. 여기서 **열**을 못 박아
+    두는 것은 그 자국이 다시 생기는 것을 막으려는 것이다.
+  */
+  it('두 축이 다 서 있다', () => {
+    const tips = playbookClaims.filter((c) => c.topic === 'habit');
+    for (const aim of ['save', 'well'] as const) {
+      expect(tips.filter((c) => c.aim === aim).length, aim).toBeGreaterThanOrEqual(10);
+    }
   });
 
   /* 팁에만 이유가 붙습니다 — 값 주장에 설명이 필요하면 `statement`가 덜 써진 것입니다. */

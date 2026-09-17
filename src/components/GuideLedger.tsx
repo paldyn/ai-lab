@@ -10,7 +10,7 @@ import { guideModelById } from '../data/guideModels';
 import { guideProducts } from '../data/guideProducts';
 import { guideTipGroups } from '../data/guideTipGroups';
 import { guideVendorById } from '../data/guideVendors';
-import type { Claim, EvidenceTier, Product, VendorInfo } from '../types/playbook';
+import type { Claim, EvidenceTier, Product, TipAim, VendorInfo } from '../types/playbook';
 
 /**
  * 원장 — 판 아래에서 내용만 갈리는 한 칸.
@@ -228,8 +228,32 @@ function groupTips(tips: Claim[]) {
 
 const tipAnchor = (scope: string, groupId: string) => `tips-${scope}-${groupId}`;
 
-function TipBlock({ tips, today, scope }: { tips: Claim[]; today: string; scope: string }) {
-  const radioName = `tip-tier-${scope}`;
+/**
+ * 이 서랍이 파는 두 가지. **화면이 이 둘로 갈립니다.**
+ *
+ * 가르는 질문 하나입니다 — 이 팁을 따르면 **싸지나, 좋아지나**. 「잘 쓰기」 쪽은
+ * 오히려 턴을 더 쓰는 것이 많습니다(계획 모드·리뷰어·인터뷰). 그래도 권하는 이유는
+ * 「그럴듯한데 틀린」 결과를 거르기 때문입니다.
+ */
+const TIP_AIMS: Array<{ aim: TipAim; label: string }> = [
+  { aim: 'save', label: '이렇게 쓰면 아낀다' },
+  { aim: 'well', label: '이렇게 쓰면 잘 쓴다' },
+];
+
+function TipBlock({
+  tips,
+  today,
+  scope,
+  aim,
+  label,
+}: {
+  tips: Claim[];
+  today: string;
+  scope: string;
+  aim: TipAim;
+  label: string;
+}) {
+  const radioName = `tip-tier-${scope}-${aim}`;
   const segments = (Object.keys(TIER_ORDER) as EvidenceTier[])
     .sort((a, b) => TIER_ORDER[a] - TIER_ORDER[b])
     .map((tier) => ({ tier, n: tips.filter((c) => c.tier === tier).length }))
@@ -240,7 +264,7 @@ function TipBlock({ tips, today, scope }: { tips: Claim[]; today: string; scope:
   return (
     <section className="guide-tips-block">
       <div className="guide-tip-head-row">
-        <h3 className="guide-ledger-label">이렇게 쓰면 아낀다</h3>
+        <h3 className="guide-ledger-label">{label}</h3>
 
         {tips.length >= FILTER_MIN && segments.length > 1 && (
           /*
@@ -277,7 +301,7 @@ function TipBlock({ tips, today, scope }: { tips: Claim[]; today: string; scope:
         */
         <details
           key={group.id}
-          id={tipAnchor(scope, group.id)}
+          id={tipAnchor(`${scope}-${aim}`, group.id)}
           className={`guide-tip-group is-${group.id}`}
         >
           <summary className="guide-tip-group-head">
@@ -432,7 +456,24 @@ function ProductLedger({ product, today }: { product: Product; today: string }) 
         </>
       )}
 
-      {tips.length > 0 && <TipBlock tips={tips} today={today} scope={product.id} />}
+      {/*
+        **두 축이 절 둘로 섭니다** — 아끼기와 잘 쓰기. 이 서랍이 파는 것이 그 둘입니다.
+        **한쪽이 비면 그 절이 아예 안 섭니다**(빈 절을 안 그리는 규칙). 지금은 아홉
+        제품 모두 양쪽이 차 있지만, 새 제품을 넣으면 한쪽만 서는 화면이 생깁니다.
+      */}
+      {TIP_AIMS.map(({ aim, label }) => {
+        const rows = tips.filter((c) => c.aim === aim);
+        return rows.length === 0 ? null : (
+          <TipBlock
+            key={aim}
+            tips={rows}
+            today={today}
+            scope={product.id}
+            aim={aim}
+            label={label}
+          />
+        );
+      })}
 
       <h3 className="guide-ledger-label">어디서 쓰나</h3>
       <ul className="guide-surfaces">

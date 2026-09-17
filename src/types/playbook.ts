@@ -158,6 +158,12 @@ export interface ModelInfo {
  */
 export type TipGroupId = 'load' | 'model' | 'feed' | 'cut';
 
+/**
+ * 팁이 바꾸는 것. **이 서랍이 파는 두 가지입니다.**
+ * `save` — 같은 결과를 더 싸게. `well` — 같은 값으로 더 나은 결과를.
+ */
+export type TipAim = 'save' | 'well';
+
 export type EvidenceTier = 'vendor' | 'field' | 'ours';
 
 /**
@@ -234,6 +240,18 @@ export interface Claim {
    * 짐 싸기에도 나옵니다). 대신 **안 썩는 값**이라 한 번 붙이면 끝입니다.
    */
   group?: TipGroupId;
+  /**
+   * 이 팁이 무엇을 바꾸나. **`topic: 'habit'`에만 붙고, 팁에는 반드시 붙습니다.**
+   *
+   * 가르는 질문 하나입니다 — **이 팁을 따르면 싸지나, 좋아지나?**
+   * `save`는 같은 결과를 더 싸게 얻는 것이고 `well`은 **같은 값을 내고 더 나은 결과를**
+   * 얻는 것입니다. 둘 다면 **주된 효과**로 고릅니다.
+   *
+   * **화면이 이 값으로 갈립니다.** 이 서랍이 파는 것이 그 둘이기 때문입니다.
+   * 2026-09-17에 넣었고, 그때 세어 보니 63건 중 `well`이 넷뿐이었습니다 — 팁을
+   * 「토큰을 아끼고」라는 주문으로만 모은 자국입니다. 스물여덟을 더 긷어 채웠습니다.
+   */
+  aim?: TipAim;
   /** 한 줄 주장. */
   statement: string;
   /** 화면에 나가는 값. `null`이면 화면에 「모름 · 공식 페이지에서 확인 →」으로 섭니다. */

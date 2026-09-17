@@ -122,19 +122,34 @@ describe('프리렌더 — 본문이 HTML에 들어간다', () => {
       const shown = html.split('>안 통하는 자리<').length - 1;
       if (shown !== counters) wrong.push(`${product.id}: 반례 ${shown} ≠ ${counters}`);
 
-      const filtered = html.includes('guide-tip-filter');
-      if (filtered !== tips.length >= 10) {
-        wrong.push(`${product.id}: 팁 ${tips.length}인데 거르개 ${filtered ? '섰다' : '안 섰다'}`);
-      }
+      /*
+        **화면이 축 둘로 갈립니다**(2026-09-17) — 아끼기와 잘 쓰기. 그래서 아래 둘은
+        **절마다 따로** 셉니다. 합쳐 세면 팁 열짜리 화면이 7 + 3으로 갈려 어느 절도
+        거르개를 안 세우는데 검사는 「열이니 서야 한다」로 읽습니다.
+      */
+      const aims = ['save', 'well'] as const;
 
       /*
         **묶음은 화면의 축이고 빈 묶음은 안 섭니다.** 그래서 선 묶음의 수는
-        「그 제품에 팁이 있는 질문의 수」와 정확히 같아야 합니다 — 적으면 팁이
-        갈 곳을 잃은 것이고, 많으면 줄 0개짜리 질문이 덩그러니 선 것입니다.
+        「그 절에 팁이 있는 질문의 수」를 두 절에 걸쳐 더한 것과 같아야 합니다 —
+        적으면 팁이 갈 곳을 잃은 것이고, 많으면 줄 0개짜리 질문이 덩그러니 선 것입니다.
       */
-      const used = new Set(tips.map((c) => c.group)).size;
+      const used = aims.reduce(
+        (n, aim) => n + new Set(tips.filter((c) => c.aim === aim).map((c) => c.group)).size,
+        0,
+      );
       const drawn = html.split('guide-tip-group is-').length - 1;
       if (drawn !== used) wrong.push(`${product.id}: 묶음 ${drawn} ≠ 쓰인 질문 ${used}`);
+
+      /* 거르개도 절마다다 — 한 절이 열 줄을 넘고 그 절에 등급이 둘 이상일 때만 선다. */
+      const expected = aims.filter((aim) => {
+        const rows = tips.filter((c) => c.aim === aim);
+        return rows.length >= 10 && new Set(rows.map((c) => c.tier)).size > 1;
+      }).length;
+      const filters = html.split('guide-tip-filter').length - 1;
+      if (filters !== expected) {
+        wrong.push(`${product.id}: 거르개 ${filters} ≠ 서야 할 ${expected}`);
+      }
     }
     expect(wrong).toEqual([]);
   });
