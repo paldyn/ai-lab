@@ -121,18 +121,27 @@ const isSubject = (claim: Claim, kind: Claim['subject']['kind'], id: string) =>
 /**
  * 그 제품 화면에 서는 값.
  *
- * **제품 자신의 값 + 그 제품이 돌리는 모델의 값**입니다. 모델 값을 한 번만 적고
- * 그 모델을 쓰는 제품들이 같이 불러다 쓰는 것이 이 구조의 이득입니다 — 컨텍스트
- * 창을 Claude·Cowork·Code 세 군데에 적지 않습니다.
+ * **셋을 모읍니다 — 제품 자신의 값 + 그 회사의 값 + 그 제품이 돌리는 모델의 값.**
  *
- * **기업의 값은 안 끌어옵니다.** 그건 기업 화면에 섭니다. 여기까지 끌어오면 회사
- * 값 하나가 제품 셋에 세 번 세어져 신선도 집계가 부풉니다.
+ * 모델 값을 한 번만 적고 그 모델을 쓰는 제품들이 같이 불러다 쓰는 것이 이 구조의
+ * 이득입니다 — 컨텍스트 창을 Claude·Cowork·Code 세 군데에 적지 않습니다.
+ *
+ * **기업 값도 끌어옵니다**(2026-09-17에 바꿨습니다). 처음에는 「회사 값 하나가 제품
+ * 셋에 세 번 세어져 집계가 부푼다」는 이유로 뺐는데, 그 걱정이 약했습니다 —
+ * 이 함수를 쓰는 곳은 전부 **제품 하나짜리 화면**이고, 여러 제품을 합치는
+ * `claimsForVendor`는 이미 id로 겹침을 없앱니다.
+ *
+ * 반대로 안 끌어오면 **거짓말이 됩니다.** 구독은 제품 하나가 아니라 회사 것을 사는
+ * 일이라 Claude Pro 하나가 챗·Cowork·Claude Code 셋에 다 걸리는데, 제품에만
+ * 매달아 두니 Claude Code 화면에 한도가 하나도 안 섰습니다.
  */
 export function claimsForProduct(productId: string): Claim[] {
-  const models = guideProductById(productId)?.models ?? [];
+  const product = guideProductById(productId);
+  const models = product?.models ?? [];
   return playbookClaims.filter(
     (c) =>
       isSubject(c, 'product', productId) ||
+      (product && isSubject(c, 'vendor', product.vendorId)) ||
       (c.subject.kind === 'model' && models.includes(c.subject.id)),
   );
 }

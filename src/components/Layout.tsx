@@ -342,9 +342,10 @@ export function Layout({ children }: { children: ReactNode }) {
               깊은 주소에서 이 링크를 눌러도 스크롤 effect가 안 돕니다 — 목록 중간에
               선 채로 머리말만 화면 밖에 남습니다(학습·뉴스와 같은 이유).
             */}
+            {/* nav는 「가이드」, 화면의 h1은 「AI 가이드」다 — 띠에서는 짧은 쪽이 낫다. */}
             {guideInNav && (
               <NavLink to="/playbook" onClick={startAtTop} title={guideNavHint}>
-                AI 가이드
+                가이드
               </NavLink>
             )}
           </nav>
@@ -398,7 +399,7 @@ export function Layout({ children }: { children: ReactNode }) {
                   onClick={startAtTop}
                   title={guideNavHint}
                 >
-                  AI 가이드
+                  가이드
                 </NavLink>
               )}
             </div>

@@ -73,17 +73,27 @@ describe('프리렌더 — 본문이 HTML에 들어간다', () => {
     **원장은 열셋 주소에서 한 번도 안 빕니다.** 아무것도 안 골랐을 때도, 기업만
     골랐을 때도 그 자리에 무엇인가가 섭니다 — 빈 칸을 보여 주지 않으려고 세 갈래로
     나눠 둔 것이 실제로 다 그려지는지 봅니다.
+
+    **화면 종류마다 다른 것을 잽니다**(2026-09-17). 전에는 열셋 전부에서 요약 띠
+    (`guide-stats`)를 찾았는데, 제품 화면에서 그 띠를 걷어냈습니다 — 거기는 값 줄이
+    직접 서므로 개수를 또 적으면 같은 말을 두 번 합니다. 그래서 띠는 **항목을 안
+    그리는 자리**(첫 화면·기업)에서만 찾고, 제품 화면에서는 **절이 실제로 섰는지**를
+    봅니다. 한 줄로 뭉뚱그리면 제품 화면이 통째로 비어도 통과합니다.
   */
   it('원장이 어느 주소에서도 안 빈다', async () => {
-    const routes = [
-      '/playbook',
-      ...guideVendorIds.map((id) => `/playbook/${id}`),
-      ...guideProducts.map((p) => `/playbook/${p.vendorId}/${p.id}`),
-    ];
+    const summary = ['/playbook', ...guideVendorIds.map((id) => `/playbook/${id}`)];
+    const detail = guideProducts.map((p) => `/playbook/${p.vendorId}/${p.id}`);
     const empty: string[] = [];
-    for (const route of routes) {
+
+    for (const route of summary) {
       const { html } = await render(route);
       if (!html.includes('guide-ledger-title') || !html.includes('guide-stats')) empty.push(route);
+    }
+    for (const route of detail) {
+      const { html } = await render(route);
+      if (!html.includes('guide-ledger-title') || !html.includes('guide-ledger-label')) {
+        empty.push(route);
+      }
     }
     expect(empty).toEqual([]);
   });

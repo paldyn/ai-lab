@@ -7705,6 +7705,42 @@ input:focus-visible {
 }
 
 /*
+  고를 수 있는 모델. **이름만 늘어놓던 줄에 값을 붙였습니다** — 어느 모델을 고를지는
+  컨텍스트 창을 보고 정하는데, 그 값이 다른 절에 따로 서 있으면 눈이 오갑니다.
+  라벨 열을 안 쓰고 이름과 값을 양끝에 붙입니다 — 이름 길이가 제각각이라
+  고정 열로 묶으면 짧은 이름 뒤가 비어 「고장난 표」로 읽힙니다.
+*/
+.guide-models {
+  margin-top: var(--gs-r2);
+  max-width: var(--gs-measure);
+  border-top: 1px solid var(--guide-rule);
+}
+
+.guide-models li {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--gs-r2);
+  border-bottom: 1px solid var(--guide-rule);
+  padding-block: var(--gs-r2);
+}
+
+.guide-model-name {
+  color: var(--text);
+  font-size: var(--gs-body);
+}
+
+/* 값이 이름보다 흐리게 서서 눈이 이름 → 값 순으로 갑니다. */
+.guide-model-context {
+  flex: 0 0 auto;
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+  font-size: var(--gs-mono);
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.02em;
+}
+
+/*
   공식 출처. **오늘 이 화면이 독자에게 해 줄 수 있는 일이 이것뿐이라** 상세 구석의
   작은 화살표가 아니라 본문 흐름 안에 줄로 둔다.
 

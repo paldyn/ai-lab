@@ -12,12 +12,17 @@ import type { Claim } from '../types/playbook';
  *
  * **값 있는 요금·한도는 여덟이 상한입니다**(첫 달). 상한의 목적은 「매주 다시
  * 열어야 하는 URL 수」를 묶는 것이라, 넘기면 갱신이 부담이 되어 루틴이 안 돕니다.
- * 그래서 담은 여덟은 전부 **제품 층의 값**입니다 — 구독료와 한도 창. 모델별 API
+ * 그래서 담은 일곱은 전부 **기업 층의 값**입니다 — 구독료와 한도 창. 모델별 API
  * 토큰 단가는 확인은 됐지만 이 예산을 통째로 먹으므로 이번에는 안 실었습니다.
  *
  * **컨텍스트 창은 `volatility: 'model'`이라 그 예산에 안 걸립니다.** 모델 열여덟의
  * 값이 여기 있고, 제품이 그 모델을 돌리면 `claimsForProduct`가 함께 끌어옵니다 —
  * 같은 값을 제품마다 적지 않는 것이 주인을 셋으로 넓힌 이유입니다.
+ *
+ * **요금제와 한도는 기업에 붙습니다.** 구독은 제품 하나가 아니라 회사 것을 사는
+ * 일이라, Claude Pro 하나가 챗·Cowork·Claude Code 셋에 다 걸립니다(공식 문서가
+ * 「Chat, Cowork, and Code」로 함께 적습니다). 제품에 매달아 뒀더니 Claude Code
+ * 화면에 한도가 하나도 안 서던 자리입니다.
  *
  * **못 본 값은 `value: null`입니다.** 화면에 「모름」 줄로 서고 그것으로 통과입니다 —
  * 모른다고 적는 것은 언제나 통과하고, 틀린 값만 막힙니다. 오늘 `null`로 둔 넷은
@@ -206,7 +211,7 @@ export const playbookClaims: Claim[] = [
   },
   {
     id: 'claude-pro-price',
-    subject: { kind: 'product', id: 'claude' },
+    subject: { kind: 'vendor', id: 'anthropic' },
     topic: 'price',
     statement: 'Claude Pro 월 구독료',
     value: '월 $20',
@@ -216,7 +221,7 @@ export const playbookClaims: Claim[] = [
   },
   {
     id: 'claude-session-window',
-    subject: { kind: 'product', id: 'claude' },
+    subject: { kind: 'vendor', id: 'anthropic' },
     topic: 'limit',
     statement: 'Claude 요금제의 사용 한도가 다시 차는 창',
     value: '5시간 롤링 세션 창 · 유료 요금제는 주간 한도가 더 붙는다',
@@ -226,7 +231,7 @@ export const playbookClaims: Claim[] = [
   },
   {
     id: 'claude-pro-usage',
-    subject: { kind: 'product', id: 'claude' },
+    subject: { kind: 'vendor', id: 'anthropic' },
     topic: 'limit',
     statement: 'Pro가 Free보다 주는 사용량',
     value: '5시간 세션당 Free의 5배 이상',
@@ -236,7 +241,7 @@ export const playbookClaims: Claim[] = [
   },
   {
     id: 'claude-max-usage',
-    subject: { kind: 'product', id: 'claude' },
+    subject: { kind: 'vendor', id: 'anthropic' },
     topic: 'limit',
     statement: 'Max가 Pro보다 주는 사용량',
     value: '5시간 세션당 Pro의 5배 또는 20배',
@@ -246,7 +251,7 @@ export const playbookClaims: Claim[] = [
   },
   {
     id: 'chatgpt-plus-price',
-    subject: { kind: 'product', id: 'chatgpt' },
+    subject: { kind: 'vendor', id: 'openai' },
     topic: 'price',
     statement: 'ChatGPT Plus 월 구독료',
     /*
@@ -264,7 +269,7 @@ export const playbookClaims: Claim[] = [
   },
   {
     id: 'chatgpt-pro-price',
-    subject: { kind: 'product', id: 'chatgpt' },
+    subject: { kind: 'vendor', id: 'openai' },
     topic: 'price',
     statement: 'ChatGPT Pro 월 구독료',
     value: '$100 / 월부터',
@@ -274,7 +279,7 @@ export const playbookClaims: Claim[] = [
   },
   {
     id: 'gemini-ai-pro-price',
-    subject: { kind: 'product', id: 'gemini-app' },
+    subject: { kind: 'vendor', id: 'google' },
     topic: 'price',
     statement: 'Google AI Pro 월 구독료',
     value: '$19.99 / 월',
@@ -284,7 +289,7 @@ export const playbookClaims: Claim[] = [
   },
   {
     id: 'gemini-ai-ultra-price',
-    subject: { kind: 'product', id: 'gemini-app' },
+    subject: { kind: 'vendor', id: 'google' },
     topic: 'price',
     statement: 'Google AI Ultra 월 구독료',
     value: '$99.99 / 월부터',
@@ -294,7 +299,7 @@ export const playbookClaims: Claim[] = [
   },
   {
     id: 'claude-max-price',
-    subject: { kind: 'product', id: 'claude' },
+    subject: { kind: 'vendor', id: 'anthropic' },
     topic: 'price',
     statement: 'Claude Max 월 구독료',
     /* 오늘 페이지를 열었지만 이 값을 떠받치는 줄을 못 봤다. 지어내지 않는다. */
@@ -305,7 +310,7 @@ export const playbookClaims: Claim[] = [
   },
   {
     id: 'chatgpt-astra-limit',
-    subject: { kind: 'product', id: 'chatgpt' },
+    subject: { kind: 'vendor', id: 'openai' },
     topic: 'limit',
     statement: 'Plus 요금제에서 GPT-6 Astra를 5시간에 몇 번 쓸 수 있나',
     /* 오늘 페이지를 열었지만 이 값을 떠받치는 줄을 못 봤다. 지어내지 않는다. */
@@ -316,7 +321,7 @@ export const playbookClaims: Claim[] = [
   },
   {
     id: 'gemini-app-limit',
-    subject: { kind: 'product', id: 'gemini-app' },
+    subject: { kind: 'vendor', id: 'google' },
     topic: 'limit',
     statement: 'Gemini 앱의 사용 한도가 다시 차는 창',
     /* 오늘 페이지를 열었지만 이 값을 떠받치는 줄을 못 봤다. 지어내지 않는다. */

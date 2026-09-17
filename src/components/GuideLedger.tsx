@@ -1,18 +1,11 @@
 import type { CSSProperties } from 'react';
 import { Link } from 'react-router';
 import { ClaimRow } from './ClaimRow';
-import {
-  claimState,
-  claimsForProduct,
-  claimsForVendor,
-  playbookNotePath,
-  playbookNotesOf,
-} from '../data/playbook';
+import { claimState, claimsForProduct, claimsForVendor } from '../data/playbook';
 import { playbookClaims } from '../data/playbookClaims';
 import { guideModelById } from '../data/guideModels';
 import { guideProducts } from '../data/guideProducts';
 import { guideVendorById } from '../data/guideVendors';
-import { playbookIndex } from 'virtual:playbook-index';
 import type { Product, VendorInfo } from '../types/playbook';
 
 /**
@@ -70,11 +63,17 @@ function freshestAge(claimIds: string[], today: string): number | null {
   return ages.length > 0 ? Math.min(...ages) : null;
 }
 
-function StatRow({ notes, claimIds, today }: { notes: number; claimIds: string[]; today: string }) {
+/**
+ * 요약 띠. **제품 화면에는 안 섭니다** — 거기는 값 줄이 직접 서므로 개수를 또 적으면
+ * 같은 말을 두 번 합니다. 기업·첫 화면처럼 **항목을 안 그리는 자리**에만 둡니다.
+ *
+ * 「노트」 칸을 걷어냈습니다(2026-09-17). 이 서랍은 글을 세는 곳이 아니라 값을
+ * 모으는 곳이고, 「노트 0편」은 읽는 사람에게 우리 사정이지 답이 아니었습니다.
+ */
+function StatRow({ claimIds, today }: { claimIds: string[]; today: string }) {
   const age = freshestAge(claimIds, today);
   return (
     <dl className="guide-stats">
-      <Stat label="노트" value={String(notes)} unit="편" />
       <Stat label="아는 값" value={String(claimIds.length)} unit="개" />
       {/*
         **`—`는 홀로 섭니다.** 단위가 안 붙는 것 자체가 「셀 것이 없다」는 뜻이라,
@@ -108,14 +107,32 @@ function OfficialLinks({ rows }: { rows: Array<{ label: string; url: string }> }
   );
 }
 
-/** 제품 하나를 골랐을 때. */
+/**
+ * 제품 하나를 골랐을 때 — **이 제품을 어떻게 써야 좋은가**에 답하는 한 칸.
+ *
+ * **노트 개념을 걷어냈습니다**(2026-09-17). 「노트 0편」을 크게 적고 목록 자리를
+ * 비워 두는 구성이었는데, 읽는 사람에게 그건 우리 사정이지 답이 아닙니다.
+ * 지금은 **절마다 질문 하나에 답합니다** — 얼마인가 · 어느 모델인가 · 어디서 쓰나.
+ *
+ * 순서는 「아껴 쓰기」가 정합니다. 요금과 한도가 먼저이고, 그다음이 모델 선택입니다 —
+ * 그 둘이 이 서랍이 파는 것이고 나머지는 거드는 줄입니다.
+ *
+ * **값이 없는 절은 안 섭니다.** 채우려고 빈 제목을 세우지 않습니다.
+ */
 function ProductLedger({ product, today }: { product: Product; today: string }) {
   const vendor = guideVendorById(product.vendorId);
-  const notes = playbookNotesOf(product.id);
-  // 제품 자신의 값 + 이 제품이 돌리는 모델의 값. 모델 값은 한 번만 적힙니다.
+  /* 제품 자신 + 그 회사 + 이 제품이 돌리는 모델의 값. */
   const claims = claimsForProduct(product.id);
   const peers = guideProducts.filter((p) => p.role === product.role && p.id !== product.id);
-  /* 확인 못 한 제품은 빈 배열이라 이 절이 아예 안 섭니다. */
+
+  /*
+    컨텍스트 창은 모델 줄에서 값으로 보여 주므로 위 목록에서 뺍니다 — 같은 값을
+    두 번 그리면 「아는 값」이 부풀어 보입니다.
+  */
+  const usage = claims.filter((c) => c.topic !== 'context');
+  const contextOf = new Map(
+    claims.filter((c) => c.topic === 'context').map((c) => [c.subject.id, c]),
+  );
   const models = product.models
     .map((id) => guideModelById(id))
     .filter((m): m is NonNullable<typeof m> => Boolean(m));
@@ -134,33 +151,16 @@ function ProductLedger({ product, today }: { product: Product; today: string }) 
       </p>
       <p className="guide-ledger-blurb">{product.oneLine}</p>
 
-      <StatRow notes={notes.length} claimIds={claims.map((c) => c.id)} today={today} />
-
-      {/* 노트는 생겼을 때만 섭니다. 0편이면 절 자체가 안 서고 위 숫자가 그 사실을 말합니다. */}
-      {notes.length > 0 && (
+      {usage.length > 0 && (
         <>
-          <h3 className="guide-ledger-label">노트</h3>
-          <ol className="playbook-note-list">
-            {notes.map((note) => (
-              <li key={note.slug}>
-                <Link to={playbookNotePath(note)}>
-                  <span className="playbook-note-kind">{note.kind}</span>
-                  <span className="playbook-note-title">{note.title}</span>
-                  <span className="playbook-note-read">{note.readTime}분</span>
-                </Link>
-              </li>
+          <h3 className="guide-ledger-label">얼마이고 한도가 어떻게 차나</h3>
+          <div className="claim-list">
+            {usage.map((claim) => (
+              <ClaimRow key={claim.id} state={claimState(claim, today)} />
             ))}
-          </ol>
+          </div>
         </>
       )}
-
-      <h3 className="guide-ledger-label">만나는 자리</h3>
-      <ul className="guide-surfaces">
-        {product.surfaces.map((surface) => (
-          <li key={surface}>{surface}</li>
-        ))}
-      </ul>
-      <p className="guide-ledger-note">표면이 달라도 엔진은 하나입니다 — 별개 제품이 아닙니다.</p>
 
       {/*
         **모델은 층이 아니라 이 제품의 속성입니다.** 같은 모델이 제품 여럿에서 돌기
@@ -169,33 +169,47 @@ function ProductLedger({ product, today }: { product: Product; today: string }) 
         **회사 경계를 넘는 자리에 만든 회사를 붙입니다** — Google Antigravity의
         선택기에 Claude 둘과 GPT-OSS가 함께 서는 것이 이 서랍에서 가장 안 알려진
         사실이라, 이름 옆의 작은 회사 표기가 그것을 말합니다.
-
-        확인 못 한 제품은 `models`가 비어 있어 이 절이 아예 안 섭니다.
       */}
       {models.length > 0 && (
         <>
-          <h3 className="guide-ledger-label">고를 수 있는 모델</h3>
-          <ul className="guide-surfaces">
-            {models.map((model) => (
-              <li key={model.id}>
-                {model.name}
-                {model.vendorId !== product.vendorId && (
-                  <span className="guide-peer-vendor">
-                    {guideVendorById(model.vendorId)?.name}
+          <h3 className="guide-ledger-label">어느 모델을 고르나</h3>
+          <ul className="guide-models">
+            {models.map((model) => {
+              const context = contextOf.get(model.id);
+              return (
+                <li key={model.id}>
+                  <span className="guide-model-name">
+                    {model.name}
+                    {model.vendorId !== product.vendorId && (
+                      <span className="guide-peer-vendor">
+                        {guideVendorById(model.vendorId)?.name}
+                      </span>
+                    )}
                   </span>
-                )}
-              </li>
-            ))}
+                  <span className="guide-model-context">
+                    {context?.value ?? '컨텍스트 창 모름'}
+                  </span>
+                </li>
+              );
+            })}
           </ul>
+          <p className="guide-ledger-note">
+            값은 입력 컨텍스트 창입니다. 같은 모델이 다른 제품에서도 돌면 그 값은 한 번만 적습니다.
+          </p>
         </>
       )}
 
+      <h3 className="guide-ledger-label">어디서 쓰나</h3>
+      <ul className="guide-surfaces">
+        {product.surfaces.map((surface) => (
+          <li key={surface}>{surface}</li>
+        ))}
+      </ul>
+      <p className="guide-ledger-note">표면이 달라도 엔진은 하나입니다 — 별개 제품이 아닙니다.</p>
+
       <OfficialLinks rows={links} />
 
-      {/*
-        같은 갈래를 맡은 다른 회사. **절이 아니라 한 줄입니다** — 회사끼리 견주는 축은
-        위의 판이 이미 눈으로 보여 주므로 여기서는 링크 줄 하나면 족합니다.
-      */}
+      {/* 같은 갈래를 맡은 다른 회사. **절이 아니라 한 줄입니다** — 견주는 축은 레일이 보여 줍니다. */}
       {peers.length > 0 && (
         <p className="guide-ledger-peers">
           같은 자리:{' '}
@@ -208,18 +222,6 @@ function ProductLedger({ product, today }: { product: Product; today: string }) 
           ))}
         </p>
       )}
-
-      {/* 값이 생겼을 때만 섭니다. */}
-      {claims.length > 0 && (
-        <>
-          <h3 className="guide-ledger-label">아는 값</h3>
-          <div className="claim-list mt-4">
-            {claims.map((claim) => (
-              <ClaimRow key={claim.id} state={claimState(claim, today)} />
-            ))}
-          </div>
-        </>
-      )}
     </div>
   );
 }
@@ -227,7 +229,6 @@ function ProductLedger({ product, today }: { product: Product; today: string }) 
 /** 기업 하나를 골랐을 때. */
 function VendorLedger({ vendor, today }: { vendor: VendorInfo; today: string }) {
   const products = guideProducts.filter((p) => p.vendorId === vendor.id);
-  const notes = playbookIndex.filter((n) => n.vendorId === vendor.id);
   // 회사 자신 + 제품 전부 + 모델 전부. 한 모델을 제품 둘이 돌려도 한 번만 셉니다.
   const claims = claimsForVendor(vendor.id);
 
@@ -237,7 +238,7 @@ function VendorLedger({ vendor, today }: { vendor: VendorInfo; today: string }) 
       <p className="guide-ledger-meta">제품 {products.length}</p>
       <p className="guide-ledger-blurb">{vendor.blurb}</p>
 
-      <StatRow notes={notes.length} claimIds={claims.map((c) => c.id)} today={today} />
+      <StatRow claimIds={claims.map((c) => c.id)} today={today} />
 
       <OfficialLinks rows={[{ label: '회사', url: vendor.officialUrl }]} />
 
@@ -256,11 +257,7 @@ function RootLedger({ today }: { today: string }) {
         흐려지지 않고 사라집니다 — 읽히는 숫자는 믿게 되기 때문입니다.
       </p>
 
-      <StatRow
-        notes={playbookIndex.length}
-        claimIds={playbookClaims.map((c) => c.id)}
-        today={today}
-      />
+      <StatRow claimIds={playbookClaims.map((c) => c.id)} today={today} />
 
       <h3 className="guide-ledger-label">근거 세 등급</h3>
       <dl className="guide-tiers">

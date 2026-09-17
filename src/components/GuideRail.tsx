@@ -1,7 +1,6 @@
 import type { CSSProperties } from 'react';
 import { Link } from 'react-router';
 import { GuideMark } from './GuideMark';
-import { playbookNotesOf } from '../data/playbook';
 import { productsOfVendor } from '../data/guideProducts';
 import { guideVendors } from '../data/guideVendors';
 import type { Product } from '../types/playbook';
@@ -21,14 +20,12 @@ import type { Product } from '../types/playbook';
  * **여닫히는 것은 여전히 하나도 없습니다.** 열두 줄이 처음부터 다 서 있고 고르면
  * 잉크만 바뀝니다. 아코디언이 아닙니다 — 열둘은 접을 이유가 없는 길이입니다.
  *
- * **수는 0이면 안 적습니다.** 처음 그린 레일이 열세 줄 전부에 「0편」을 달아 왼쪽에
- * 영(零)의 기둥이 섰습니다. 원장에서 빈 절을 안 그리기로 한 것과 같은 규칙을
- * 어긴 자리였습니다 — 지금은 1편 이상인 줄에만 수가 붙으므로, 노트가 쌓이기
- * 시작하면 그 줄만 저절로 수를 답니다.
+ * **수를 아예 안 답니다.** 처음에는 열세 줄 전부에 「0편」을 달아 왼쪽에 영(零)의
+ * 기둥이 섰고, 그다음엔 1편 이상인 줄에만 달기로 했습니다. 2026-09-17에 노트
+ * 개념 자체를 걷어내면서 셀 것이 없어졌습니다 — 이 서랍은 글을 세는 곳이 아니라
+ * 값을 모으는 곳입니다.
  */
 function ProductRow({ product, selected }: { product: Product; selected: boolean }) {
-  const notes = playbookNotesOf(product.id).length;
-
   return (
     <li>
       <Link
@@ -45,8 +42,6 @@ function ProductRow({ product, selected }: { product: Product; selected: boolean
         />
         <span className="guide-rail-name">{product.name}</span>
         <span className="guide-rail-role">{product.role}</span>
-        {/* 0이면 아예 안 그립니다. 빈 줄에 0을 적는 것이 이 레일의 첫 실패였습니다. */}
-        {notes > 0 && <span className="guide-rail-count">{notes}</span>}
       </Link>
     </li>
   );
