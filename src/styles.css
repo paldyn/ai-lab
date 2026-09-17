@@ -7716,24 +7716,30 @@ input:focus-visible {
 
 .guide-tip {
   border-bottom: 1px solid var(--guide-rule);
-  padding-block: var(--gs-r3);
+  padding-block: var(--gs-r2);
 }
 
 /*
   **팁 문장은 제목이 아니라 문장입니다.** 처음에는 16px/600으로 세우고 이유를
   13.5px/흐린 색으로 뒀는데, 그 점프가 커서 눈이 **제목 + 본문**으로 읽었습니다 —
-  열여덟 개가 이어지니 글 목록처럼 보였습니다.
+  열여덟 개가 이어지니 글 목록처럼 보였습니다. 크기를 이유와 같게 맞추고 무게와
+  잉크로만 가릅니다.
 
-  지금은 **크기를 이유와 같게 맞추고 무게와 잉크로만 가릅니다.** 같은 크기로 이어지면
-  한 덩이의 글로 읽히고, 굵은 첫 문장이 「무엇을 하라」, 흐린 뒷줄이 「왜」가 됩니다 —
-  잘 요약된 문서의 모양입니다.
+  **배지가 이 문장 안에 떠 있습니다.** 따로 줄을 주면 팁 하나가 네 줄이 되어
+  열여덟 개가 벽이 됩니다 — `float`으로 오른쪽 끝에 붙이면 문장이 짧을 때는 같은
+  줄에, 길 때는 첫 줄 끝에 앉아 **줄을 한 개도 안 먹습니다.**
 */
 .guide-tip-statement {
   color: var(--text-strong);
   font-size: var(--gs-body);
   font-weight: 600;
-  line-height: 1.8;
+  line-height: 1.75;
   text-wrap: pretty;
+}
+
+.guide-tip-badge {
+  float: right;
+  margin-left: var(--gs-r2);
 }
 
 /*
@@ -7747,25 +7753,31 @@ input:focus-visible {
 
 .guide-tip-detail {
   margin-top: 2px;
-  color: var(--text-dim);
+  color: var(--text-muted);
   font-size: var(--gs-body);
-  line-height: 1.8;
+  line-height: 1.75;
   text-wrap: pretty;
 }
 
-/*
-  반례. **숨기면 통설이 공식처럼 읽힙니다** — 이 줄이 곧 그 팁이 실측이 아닌 이유라
-  접거나 흐려 두지 않고 제 자리에 세웁니다.
-*/
+/* 나이는 이유 끝에 붙어 갑니다 — 제 줄을 주면 그 한 줄이 열여덟 번 쌓입니다. */
+.guide-tip-when {
+  margin-left: var(--gs-r1);
+  color: var(--text-dim);
+  font-family: var(--font-mono);
+  font-size: var(--gs-mono);
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+}
+
 /*
   반례. 점선 상자로 세워 봤더니 그 자체가 딴 물건처럼 떠서 흐름이 끊겼습니다.
   **한 줄로 이어 붙이되 앞에 라벨을 답니다** — 숨기지 않으면서 문서 안에 남습니다.
 */
 .guide-tip-counter {
-  margin-top: var(--gs-r1);
+  margin-top: 2px;
   color: var(--text-muted);
   font-size: var(--gs-body);
-  line-height: 1.8;
+  line-height: 1.75;
 }
 
 .guide-tip-counter-label {
@@ -7776,22 +7788,6 @@ input:focus-visible {
   letter-spacing: 0.08em;
 }
 
-.guide-tip-meta {
-  display: flex;
-  align-items: center;
-  gap: var(--gs-r1);
-  margin-top: var(--gs-r2);
-  color: var(--text-muted);
-  font-family: var(--font-mono);
-  font-size: var(--gs-mono);
-  letter-spacing: 0.04em;
-}
-
-.guide-tip-meta a {
-  color: inherit;
-  text-decoration: underline;
-  text-underline-offset: 2px;
-}
 
 /*
   고를 수 있는 모델. **이름만 늘어놓던 줄에 값을 붙였습니다** — 어느 모델을 고를지는
