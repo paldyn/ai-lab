@@ -415,7 +415,6 @@ function ProductLedger({ product, today }: { product: Product; today: string }) 
 
       {tips.length > 0 && <TipMap groups={groupTips(tips)} scope={product.id} />}
 
-      {tips.length > 0 && <TipBlock tips={tips} today={today} scope={product.id} />}
 
       {/*
         **모델은 층이 아니라 이 제품의 속성입니다.** 같은 모델이 제품 여럿에서 돌기
@@ -427,32 +426,49 @@ function ProductLedger({ product, today }: { product: Product; today: string }) 
       */}
       {models.length > 0 && (
         <>
-          <h3 className="guide-ledger-label">어느 모델을 고르나</h3>
+          <h3 className="guide-ledger-label">어느 모델로 돌리나</h3>
           <ul className="guide-models">
             {models.map((model) => {
               const context = contextOf.get(model.id);
               return (
                 <li key={model.id}>
-                  <span className="guide-model-name">
-                    {model.name}
-                    {model.vendorId !== product.vendorId && (
-                      <span className="guide-peer-vendor">
-                        {guideVendorById(model.vendorId)?.name}
-                      </span>
-                    )}
-                  </span>
-                  <span className="guide-model-context">
-                    {context?.value ?? '컨텍스트 창 모름'}
-                  </span>
+                  <p className="guide-model-head">
+                    <span className="guide-model-name">
+                      {model.name}
+                      {model.vendorId !== product.vendorId && (
+                        <span className="guide-peer-vendor">
+                          {guideVendorById(model.vendorId)?.name}
+                        </span>
+                      )}
+                    </span>
+                    <span className="guide-model-context">
+                      {context?.value ?? '컨텍스트 창 모름'}
+                    </span>
+                  </p>
+                  {/*
+                    **없으면 줄이 안 섭니다.** 「—」로 채우거나 「모름」을 적지 않습니다 —
+                    벤더가 그 모델의 쓰임을 안 적은 것은 스물셋 중 넷이고, 빈 칸을 세우면
+                    그 넷이 나머지와 같은 무게로 자리를 먹습니다.
+                  */}
+                  {model.useWhen && (
+                    <p className="guide-model-use">
+                      <a href={model.useWhen.url} target="_blank" rel="noreferrer">
+                        {model.useWhen.text}
+                      </a>
+                    </p>
+                  )}
                 </li>
               );
             })}
           </ul>
           <p className="guide-ledger-note">
-            값은 입력 컨텍스트 창입니다. 같은 모델이 다른 제품에서도 돌면 그 값은 한 번만 적습니다.
+            쓰임은 만든 회사가 제 문서에 적어 둔 말입니다 — 누르면 그 페이지로 갑니다.
+            오른쪽 수는 입력 컨텍스트 창이고, 같은 모델이 다른 제품에서도 돌면 한 번만 적습니다.
           </p>
         </>
       )}
+
+      {tips.length > 0 && <TipBlock tips={tips} today={today} scope={product.id} />}
 
       <h3 className="guide-ledger-label">어디서 쓰나</h3>
       <ul className="guide-surfaces">

@@ -8249,18 +8249,57 @@ input:focus-visible {
   border-top: 1px solid var(--guide-rule);
 }
 
+/*
+  한 칸이 두 줄이다 — 이름·컨텍스트 창이 윗줄, **쓰임**이 아랫줄. 팁 칸과 같은 모양이라
+  (진한 첫 줄 · 흐린 둘째 줄) 한 화면에서 둘이 같은 리듬으로 읽힌다.
+*/
 .guide-models li {
-  display: flex;
-  align-items: baseline;
-  justify-content: space-between;
-  gap: var(--gs-r2);
   border-bottom: 1px solid var(--guide-rule);
   padding-block: var(--gs-r2);
 }
 
+.guide-model-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--gs-r2);
+}
+
 .guide-model-name {
-  color: var(--text);
+  color: var(--text-strong);
   font-size: var(--gs-body);
+  font-weight: 600;
+}
+
+/*
+  **어떤 상황에서 쓰나** — 만든 회사가 제 문서에 적어 둔 말이다. 링크가 곧 그 문장이
+  실린 페이지라, 따로 배지를 안 달고도 어디서 왔는지가 눌러서 확인된다.
+
+  **없으면 이 줄이 아예 안 선다**(스물셋 중 넷). 「—」로 채우면 빈 칸이 나머지와 같은
+  무게로 자리를 먹는다 — 자격증 일정 표에서 값 없는 칸을 열로 안 세우는 규칙이다.
+
+  밑줄은 hover에서만 켠다. 모델이 일곱인 화면(Antigravity)에서 밑줄 일곱이 늘 켜져
+  있으면 그 절이 링크 목록으로 읽힌다.
+*/
+.guide-model-use {
+  margin-top: 2px;
+  color: var(--text-muted);
+  font-size: var(--gs-body);
+  line-height: 1.75;
+  text-wrap: pretty;
+}
+
+.guide-model-use a {
+  color: inherit;
+  text-decoration-color: transparent;
+  text-underline-offset: 3px;
+  transition: color 0.15s, text-decoration-color 0.15s;
+}
+
+.guide-model-use a:hover {
+  color: var(--brand-text);
+  text-decoration: underline;
+  text-decoration-color: currentColor;
 }
 
 /* 값이 이름보다 흐리게 서서 눈이 이름 → 값 순으로 갑니다. */

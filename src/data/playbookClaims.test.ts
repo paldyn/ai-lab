@@ -103,6 +103,44 @@ describe('AI 가이드 — 주장', () => {
     expect(dupes).toEqual([]);
   });
 
+  /*
+    **모델의 쓰임은 벤더가 제 페이지에 적어 둔 말이다.** 화면에서 그 한 줄이 곧
+    출처 링크라 따로 배지를 안 다는데, 그러면 **주소가 유일한 영수증**이 된다 —
+    벤더 도메인이 아닌 곳을 가리키면 「공식이 이렇게 말한다」가 거짓이 된다.
+
+    호스트 목록을 주장 쪽(`VENDOR_HOSTS`)과 따로 둔다. 모델 쓰임은 도움말 센터에도
+    실려서(`support.google.com`의 Gemini 앱 안내) 요금·한도를 읽는 자리와 집합이
+    다르다 — 한 목록으로 묶으면 둘 중 하나가 느슨해진다.
+  */
+  it('모델 쓰임이 벤더 페이지를 가리킨다', () => {
+    const MODEL_HOSTS = [
+      'platform.claude.com',
+      'claude.com',
+      'developers.openai.com',
+      'learn.chatgpt.com',
+      'ai.google.dev',
+      'support.google.com',
+      'antigravity.google',
+      'gemini.google',
+    ];
+    const bad = guideModels
+      .filter((m) => m.useWhen)
+      .filter((m) => !MODEL_HOSTS.includes(new URL(m.useWhen!.url).host));
+    expect(bad.map((m) => `${m.id} → ${new URL(m.useWhen!.url).host}`)).toEqual([]);
+  });
+
+  /*
+    **빈 쓰임을 빈 문자열로 적지 않는다.** `null`은 「벤더가 그 말을 안 한다」이고
+    빈 문자열은 「적다 말았다」인데, 화면은 둘을 똑같이 안 그려서 구별이 안 된다 —
+    「0과 —를 가른다」가 이 서랍의 규칙이라 여기서도 가른다.
+  */
+  it('모델 쓰임이 빈 문자열이 아니다', () => {
+    const bad = guideModels.filter(
+      (m) => m.useWhen && (!m.useWhen.text.trim() || !m.useWhen.url.trim()),
+    );
+    expect(bad.map((m) => m.id)).toEqual([]);
+  });
+
   it('모델 id가 겹치지 않는다', () => {
     const ids = guideModels.map((m) => m.id);
     expect(ids.length).toBe(new Set(ids).size);
