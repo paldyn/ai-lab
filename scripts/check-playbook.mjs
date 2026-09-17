@@ -23,18 +23,18 @@ const LOGS = path.join(ROOT, 'src/data/playbook-checks');
 const LOG_GAP_DAYS = 14;
 const EXPIRED_RATIO = 0.25;
 /*
-  **값이 있는** 현장 통설의 상한입니다. 상한의 목적은 「매주 다시 열어야 하는 URL
+  **값이 있는** 체감 주장의 상한입니다. 상한의 목적은 「매주 다시 열어야 하는 URL
   수」를 묶는 것이라, 값이 없는 주장은 재확인할 것이 없으므로 안 셉니다 —
   `playbookClaims.test.ts`의 요금·한도 예산이 이미 같은 선을 긋고 있습니다.
 
-  **팁이 들어오면서 갈라야 했습니다**(2026-09-17). 팁 예순셋 중 스물아홉이 현장이라
+  **팁이 들어오면서 갈라야 했습니다**(2026-09-17). 팁 예순셋 중 스물아홉이 체감이라
   옛 셈법으로는 29/10이었는데, 그 스물아홉은 전부 `value: null`이라 다시 열
   URL을 하나도 안 만듭니다. 대신 팁 쪽의 품질은 아래 `FIELD_TIP_RATIO`가 봅니다.
 */
 const FIELD_MAX = 10;
 
 /*
-  **팁에서 현장이 공식을 넘지 않는다.** 현장 통설은 넷(URL·게시일·교차 확인·반례)을
+  **팁에서 체감이 공식을 넘지 않는다.** 체감 등급은 넷(URL·게시일·교차 확인·반례)을
   다 갖춰도 여전히 가장 약한 등급이라, 이 서랍이 「사람들이 그러더라」로 뒤덮이면
   값을 공식 페이지에서 읽어 오는 나머지 장치가 장식이 됩니다.
 
@@ -142,22 +142,22 @@ if (ratio > EXPIRED_RATIO) {
   );
 }
 
-// 3. 현장 통설의 수와 나이
+// 3. 체감 주장의 수와 나이
 const field = claims.filter((c) => c.tier === 'field');
 const valuedField = field.filter((c) => c.hasValue);
-notes.push(`현장 통설 ${field.length}건 · 그중 값이 있는 것 ${valuedField.length}건 (상한 ${FIELD_MAX})`);
+notes.push(`체감 ${field.length}건 · 그중 값이 있는 것 ${valuedField.length}건 (상한 ${FIELD_MAX})`);
 if (valuedField.length > FIELD_MAX) {
-  problems.push(`값이 있는 현장 통설이 ${valuedField.length}건입니다 (상한 ${FIELD_MAX})`);
+  problems.push(`값이 있는 체감 주장이 ${valuedField.length}건입니다 (상한 ${FIELD_MAX})`);
 }
 
-// 3-2. 팁에서 현장이 공식을 넘지 않는가
+// 3-2. 팁에서 체감이 공식을 넘지 않는가
 const tips = claims.filter((c) => c.topic === 'habit');
 const fieldTips = tips.filter((c) => c.tier === 'field').length;
 const vendorTips = tips.filter((c) => c.tier === 'vendor').length;
-notes.push(`팁 ${tips.length}건 (공식 ${vendorTips} · 현장 ${fieldTips})`);
+notes.push(`팁 ${tips.length}건 (공식 ${vendorTips} · 체감 ${fieldTips})`);
 if (vendorTips > 0 && fieldTips > vendorTips * FIELD_TIP_RATIO) {
   problems.push(
-    `팁에서 현장(${fieldTips})이 공식(${vendorTips})을 넘었습니다 — 공식 문서에서 더 긷거나 약한 현장 팁을 내립니다`,
+    `팁에서 체감(${fieldTips})이 공식(${vendorTips})을 넘었습니다 — 공식 문서에서 더 긷거나 약한 체감 팁을 내립니다`,
   );
 }
 
@@ -183,7 +183,7 @@ if (valued.length > VALUED_PRICE_LIMIT_MAX) {
   본 페이지의 숫자가 화면에 서 있다」이고, `value: null`인 주장은 화면에 숫자를 안
   내보내므로 그 위험이 없습니다.
 
-  팁에서는 아예 못 채우는 조건이기도 했습니다 — 현장 팁의 출처는 커뮤니티 글인데
+  팁에서는 아예 못 채우는 조건이기도 했습니다 — 체감 팁의 출처는 커뮤니티 글인데
   로그의 `excerpt`는 그날 본 **원문 한 줄**이라, 로그를 쓰려면 커뮤니티 글을 인용해야
   합니다. 그건 이 저장소가 금지한 것입니다(「커뮤니티 글은 인용하지 않고 주장만 한
   줄로 다시 쓴다」). 못 채우는 경고는 경고가 아니라 소음이고, 소음이 된 경고는

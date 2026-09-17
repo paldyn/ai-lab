@@ -7743,7 +7743,7 @@ input:focus-visible {
 }
 
 /*
-  **체감 팁은 한 단 흐리게 섭니다.** 값 쪽에서 현장 값을 굵게 안 쓰고 `~`를 다는 것과
+  **체감 팁은 한 단 흐리게 섭니다.** 값 쪽에서 체감 값을 굵게 안 쓰고 `~`를 다는 것과
   같은 규칙입니다 — 배지만으로는 공식과 같아 보입니다.
 */
 .guide-tip.is-field .guide-tip-statement {
@@ -8085,7 +8085,7 @@ input:focus-visible {
   line-height: 1.65;
 }
 
-/* 현장 값은 굵게 쓰지 않습니다 — 배지를 봐도 같아 보이는 것을 한 번 더 막습니다. */
+/* 체감 값은 굵게 쓰지 않습니다 — 배지를 봐도 같아 보이는 것을 한 번 더 막습니다. */
 .claim-value .claim-soft {
   color: var(--text-dim);
   font-weight: 400;

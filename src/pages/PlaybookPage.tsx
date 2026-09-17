@@ -56,7 +56,7 @@ export function PlaybookPage() {
         description={
           product
             ? `${product.name} — ${product.oneLine}`
-            : '코딩 에이전트를 어떤 모델과 강도로 돌리고, 세션을 언제 새로 파고, 언제 압축할지. 공식 지침과 현장 통설과 우리가 직접 잰 것을 갈라 담습니다.'
+            : '코딩 에이전트를 어떤 모델과 강도로 돌리고, 세션을 언제 새로 파고, 언제 압축할지. 공식 지침과 사람들이 써 보고 굳힌 것과 우리가 직접 잰 것을 갈라 담습니다.'
         }
         path={
           product

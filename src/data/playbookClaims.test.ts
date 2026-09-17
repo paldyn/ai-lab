@@ -129,7 +129,7 @@ describe('AI 가이드 — 주장', () => {
     expect(bad.map((c) => `${c.id} → ${hostOf(c.source.url)}`)).toEqual([]);
   });
 
-  it('현장 통설이 벤더 호스트를 가리키지 않는다', () => {
+  it('체감 주장이 벤더 호스트를 가리키지 않는다', () => {
     const bad = playbookClaims
       .filter((c) => c.tier === 'field')
       .filter((c) => VENDOR_HOSTS.includes(hostOf(c.source.url)));
@@ -142,7 +142,7 @@ describe('AI 가이드 — 주장', () => {
     「우리 쪽에서는 확인 못 함」이라고 적어야 통과합니다. 그 문장이 곧
     이 주장의 등급이 `ours`가 아닌 이유입니다.
   */
-  it('현장 통설에 게시일·교차 확인·반례가 있다', () => {
+  it('체감 등급에 게시일·교차 확인·반례가 있다', () => {
     const bad = playbookClaims
       .filter((c) => c.tier === 'field')
       .filter(

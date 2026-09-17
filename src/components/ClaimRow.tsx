@@ -12,7 +12,7 @@ import type { ClaimState } from '../types/playbook';
  * **날짜가 아니라 나이를 적습니다.** 「2026-08-25 확인」은 권위로 읽히고
  * 「22일 전 확인」은 위험으로 읽힙니다.
  *
- * 현장(`field`) 값은 **굵게 쓰지 않고 앞에 `~`를 답니다.** 배지를 봐도 같아 보이는
+ * 체감(`field`) 값은 **굵게 쓰지 않고 앞에 `~`를 답니다.** 배지를 봐도 같아 보이는
  * 문제를 한 번 더 막는 자리입니다.
  */
 export function ClaimRow({ state }: { state: ClaimState }) {
