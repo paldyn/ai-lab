@@ -160,7 +160,7 @@ export interface NewsDetail {
   commentary: string;
 }
 
-export const globalNewsUpdatedAt = '2026-09-16';
+export const globalNewsUpdatedAt = '2026-09-17';
 
 /**
  * 공식 발표 한 건 = 항목 한 개. 2026년 1월부터 쌓는 아카이브이며 오래된 항목을
@@ -171,6 +171,35 @@ export const globalNewsUpdatedAt = '2026-09-16';
  * 목록에서 파생됩니다. 갱신 시 globalNewsUpdatedAt도 함께 올립니다.
  */
 const entries: NewsItem[] = [
+  {
+    id: 'life-sciences-verification-program',
+    source: 'Anthropic',
+    kind: 'company',
+    title: 'Anthropic, 생명과학 팀에 완화된 안전장치를 주는 LSVP 공개',
+    summary:
+      'Anthropic이 생명과학 전문가에게 생물학 작업에 더 허용적인 안전장치로 Mythos·Opus·Sonnet 모델을 ' +
+      '여는 Life Sciences Verification Program을 베타로 시작했다. 팀·기관 단위로 신청을 받는다.',
+    publishedAt: '2026-09-17',
+    collectedAt: '2026-09-18',
+    category: 'Product',
+    signal: '생명과학 접근 검증',
+    url: 'https://www.anthropic.com/news/life-sciences-verification-program',
+  },
+  {
+    id: 'model-misalignment-reporting-framework',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'OpenAI, 모델 오정렬 공개 체계와 사례 보고서 6건 발표',
+    summary:
+      'OpenAI가 모델 오정렬 사례를 추적·조사·공개하는 체계를 발표하고, 지난 6개월간 훈련·평가에서 ' +
+      '관찰한 사례 보고서 6건을 함께 냈다. 공개 여부는 세 갈래 절차로 나뉘고 이견은 ' +
+      'Safety Advisory Group이 정한다.',
+    publishedAt: '2026-09-16',
+    collectedAt: '2026-09-18',
+    category: 'Safety',
+    signal: '오정렬 공개 체계',
+    url: 'https://openai.com/index/model-misalignment-reporting-framework',
+  },
   {
     id: 'reimagining-advertising-with-ai',
     source: 'OpenAI',
