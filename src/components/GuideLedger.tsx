@@ -419,6 +419,25 @@ function ProductLedger({ product, today }: { product: Product; today: string }) 
 
 
       {/*
+        **두 축이 절 둘로 섭니다** — 아끼기와 잘 쓰기. 이 서랍이 파는 것이 그 둘입니다.
+        **한쪽이 비면 그 절이 아예 안 섭니다**(빈 절을 안 그리는 규칙). 지금은 아홉
+        제품 모두 양쪽이 차 있지만, 새 제품을 넣으면 한쪽만 서는 화면이 생깁니다.
+      */}
+      {TIP_AIMS.map(({ aim, label }) => {
+        const rows = tips.filter((c) => c.aim === aim);
+        return rows.length === 0 ? null : (
+          <TipBlock
+            key={aim}
+            tips={rows}
+            today={today}
+            scope={product.id}
+            aim={aim}
+            label={label}
+          />
+        );
+      })}
+
+      {/*
         **모델은 층이 아니라 이 제품의 속성입니다.** 같은 모델이 제품 여럿에서 돌기
         때문에 트리로 안 세웠고, 여기서는 참조만 그립니다.
 
@@ -489,25 +508,6 @@ function ProductLedger({ product, today }: { product: Product; today: string }) 
           </p>
         </>
       )}
-
-      {/*
-        **두 축이 절 둘로 섭니다** — 아끼기와 잘 쓰기. 이 서랍이 파는 것이 그 둘입니다.
-        **한쪽이 비면 그 절이 아예 안 섭니다**(빈 절을 안 그리는 규칙). 지금은 아홉
-        제품 모두 양쪽이 차 있지만, 새 제품을 넣으면 한쪽만 서는 화면이 생깁니다.
-      */}
-      {TIP_AIMS.map(({ aim, label }) => {
-        const rows = tips.filter((c) => c.aim === aim);
-        return rows.length === 0 ? null : (
-          <TipBlock
-            key={aim}
-            tips={rows}
-            today={today}
-            scope={product.id}
-            aim={aim}
-            label={label}
-          />
-        );
-      })}
 
       <h3 className="guide-ledger-label">어디서 쓰나</h3>
       <ul className="guide-surfaces">

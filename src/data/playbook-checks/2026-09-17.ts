@@ -110,6 +110,15 @@ const entries: CheckEntry[] = [
   { claimId: 'claude-fable-5-token-price', result: '그대로', excerpt: '| Claude Fable 5 | $10 / MTok | $12.50 / MTok | $20 / MTok | $1 / MTok | $50 / MTok |' },
   { claimId: 'claude-sonnet-4-6-token-price', result: '그대로', excerpt: '| Claude Sonnet 4.6 | $3 / MTok | $3.75 / MTok | $6 / MTok | $0.30 / MTok | $15 / MTok |' },
   { claimId: 'claude-opus-4-6-token-price', result: '그대로', excerpt: '| Claude Opus 4.6 | $5 / MTok | $6.25 / MTok | $10 / MTok | $0.50 / MTok | $25 / MTok |' },
+
+  /* ── 같은 날 저녁 — Claude Haiku 4.5를 되돌리고 컨텍스트 표기를 통일했다 ──
+     Haiku는 한때 「어느 버전인지 문서에 없어」 뺐던 모델이다. 모델 개요 표가 현행
+     넷 중 하나로 세우고 있어 되돌렸다. 같은 자리에서 Opus 5·Sonnet 5의 컨텍스트
+     출처가 **fable-5 페이지**를 가리키던 것도 찾아 고쳤다 — 값은 맞는데 주소가
+     다른 모델이었다.
+     ──────────────────────────────────────────────────────────────── */
+  { claimId: 'claude-haiku-4-5-context', result: '그대로', excerpt: '| [Context window](https://platform.claude.com/docs/en/build-with-claude/context-windows) | 1M tokens | 1M tokens | 1M tokens | 200K tokens |' },
+  { claimId: 'claude-haiku-4-5-token-price', result: '그대로', excerpt: '| Claude Haiku 4.5 | $1 / MTok | $1.25 / MTok | $2 / MTok | $0.10 / MTok | $5 / MTok |' },
 ];
 
 export default entries;

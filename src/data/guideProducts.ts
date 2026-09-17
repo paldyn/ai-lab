@@ -106,7 +106,7 @@ export const guideProducts: Product[] = [
     name: 'Claude Code',
     role: '코딩',
     surfaces: ['터미널', 'IDE', '데스크톱', '웹'],
-    models: ['claude-fable-5-1', 'claude-fable-5', 'claude-opus-5', 'claude-sonnet-5'],
+    models: ['claude-fable-5-1', 'claude-fable-5', 'claude-opus-5', 'claude-sonnet-5', 'claude-haiku-4-5'],
     /*
       code.claude.com/docs/en/model-config 의 별칭 해소 표
       (「| Anthropic API | Opus 5 | Sonnet 5 |」)와 「run `/model claude-fable-5`」 같은
@@ -121,7 +121,10 @@ export const guideProducts: Product[] = [
         풀립니다(AWS는 Sonnet 4.6, Bedrock·Google Cloud는 Sonnet 4.5, Microsoft
         Foundry는 Opus 4.6). 셋을 한 목록에 섞으면 다른 것을 같이 세우는 것이 됩니다.
       - Fable은 조직에 열려 있을 때만 피커에 섭니다.
-      - `haiku`는 고를 수 있는 것이 확실한데 **어느 버전인지 문서에 없어** 뺐습니다.
+      - `haiku`는 **2026-09-17에 되돌렸습니다.** 그때는 어느 버전인지 문서에 없어
+        뺐는데, 모델 개요 표가 현행 넷 중 하나로 Claude Haiku 4.5를 세우고 이 문서도
+        「Haiku models are always available and can't be disabled」라고 못 박습니다.
+        몰라서 뺀 것을 알게 된 날 되돌리는 것은 같은 규칙의 앞면입니다.
       「Sonnet 5 (1M context)」도 피커 행으로 있으나 Sonnet 5의 컨텍스트 변형이지
       다른 모델이 아니라 따로 안 셉니다.
     */

@@ -79,6 +79,30 @@ const models: ModelInfo[] = [
     sourceUrl:
       'https://platform.claude.com/docs/en/about-claude/models/overview',
   },
+  /*
+    **한때 뺐다가 되돌린 자리입니다**(2026-09-17). 이전에는 「`haiku` 별칭을 고를 수
+    있는 것은 확실한데 **어느 버전인지 문서에 없어**」 안 실었습니다. 지금은 답이
+    있습니다 — 모델 개요 표가 현행 넷 중 하나로 **Claude Haiku 4.5**를 세우고
+    API 별칭 `claude-haiku-4-5`를 함께 적습니다. Claude Code 쪽도 못 박습니다:
+    「Haiku models are always available and can't be disabled, so every member keeps
+    at least one usable model.」
+
+    **없어서 뺀 것과 몰라서 뺀 것은 다릅니다.** 그때는 몰라서 뺀 것이 맞았고, 알게
+    된 날 되돌리는 것도 같은 규칙의 앞면입니다.
+  */
+  {
+    id: 'claude-haiku-4-5',
+    vendorId: 'anthropic',
+    name: 'Claude Haiku 4.5',
+    apiId: 'claude-haiku-4-5',
+    useWhen: {
+      text: '가장 낮은 지연과 값이 필요할 때 — 확장 사고를 쓰면서',
+      url: 'https://platform.claude.com/docs/en/about-claude/models/choosing-a-model',
+    },
+    current: true,
+    sourceUrl:
+      'https://platform.claude.com/docs/en/about-claude/models/overview',
+  },
   {
     id: 'claude-sonnet-5',
     vendorId: 'anthropic',
