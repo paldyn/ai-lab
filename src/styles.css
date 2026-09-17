@@ -7294,11 +7294,32 @@ input:focus-visible {
   --guide-col: 104px;
 
   /*
-    팁 줄 오른쪽의 칩 자리. 모노 두 자(「이유」·「닫기」)에 좌우 패딩 7px과 테두리
-    1px이면 칩이 36px이고, 12px을 띄워 48px을 비운다. **고정값인 것이 계약이다** —
-    여닫을 때 문장이 다시 안 감기는 것을 이 값이 붙들지, 글자 수가 붙들지 않는다.
+    팁 줄 오른쪽의 칩 자리. **고정값인 것이 계약이다** — 여닫을 때 문장이 다시 안
+    감기는 것을 이 값이 붙들지, 글자 수가 붙들지 않는다. 테두리를 걷어낸 뒤로
+    칩은 글자뿐이라 「이유 +」가 약 34px이고 14px을 띄워 48px을 비운다.
+
+    **왼쪽 번호 기둥도 같은 값을 쓴다**(2026-09-17). 둘이 한 상수를 쓰므로 아래
+    `--gs-block`의 계산이 좌우 대칭이 된다. `--gs-r4`도 48px이지만 그쪽은 「절과
+    절 사이」를 뜻하는 여백 축이라, 겸용하면 절 간격을 손보는 순간 기둥이 따라
+    움직인다.
   */
   --guide-chip: 48px;
+
+  /*
+    괘선이나 면을 가진 것이 서는 폭. **새 수가 아니라 이미 있는 둘의 합이다** —
+    글줄 592px 양쪽에 기둥 48px을 하나씩 세운 688px이다.
+
+    **폭 값은 이 둘뿐이다**(2026-09-17). 그 전에는 592(`--gs-measure`가 블록에까지
+    걸린 여섯)와 734(`.claim-list`·`.guide-stats`, 캡이 없어 원장 폭을 다 쓰던 것)
+    둘로 끝나는 자리가 갈렸고, **원장 오른쪽 공백의 정체가 빈 폭이 아니라 그
+    「끝나는 자리가 둘」이었다.** 1102px 창에서 142px이던 구멍이 46px이 되고,
+    남는 46px은 구멍이 아니라 여백이다 — 잉크가 그 앞에서 한 줄로 서기 때문이다.
+
+    **산문은 여전히 592다.** 688에서는 한 줄이 51자가 되어 35~45자를 넘는다.
+    블록이 688이고 글줄이 592인 것이 어긋남이 아니라, 블록 안에 기둥 둘이
+    서 있다는 뜻이다.
+  */
+  --gs-block: calc(var(--gs-measure) + var(--guide-chip) * 2);
 }
 
 /* ── 2단 ────────────────────────────────────────────────────── */
@@ -7768,6 +7789,21 @@ input:focus-visible {
   하면 되냐」다 — 축이 질문으로 바뀌면서 거르개만 옛 축에 남아 있었다.
   등급은 줄마다 배지로 그대로 선다.
 */
+/*
+  **괘선이나 면을 가진 것은 전부 같은 오른쪽 끝에 선다**(2026-09-17). 592에서
+  끊기던 팁·모델·링크·등급도, 캡이 없어 원장 폭을 다 쓰던 값 목록과 계기판도
+  전부 688에서 끝난다. 「우측에 빈 공간이 너무 많다」의 정체가 빈 폭이 아니라
+  **끝나는 자리가 둘**이었다.
+*/
+.guide-tips-block,
+.guide-stats,
+.guide-models,
+.guide-links,
+.guide-tiers,
+.claim-list {
+  max-width: var(--gs-block);
+}
+
 .guide-tips-block + .guide-tips-block {
   margin-top: calc(var(--gs-r4) * 2);
 }
@@ -7818,11 +7854,18 @@ input:focus-visible {
   먹었고, 접는 뜻이 「요점만 남기기」인데 요점이 두 줄이면 그건 요점이 아니다.
   레버를 질문 줄로 올리고 패딩을 절반으로 내려 48px이 됐다.
 */
+/*
+  **머리 바에서 글줄 폭을 뗀다**(2026-09-17). 여기는 산문이 아니라 표 한 줄이다
+  (번호 · 질문 · 레버 · 수). 표 줄을 글줄 폭에 가두는 바람에 **닫힌 목록** —
+  이 화면의 기본이자 첫 화면 — 에서 「4 +」가 592px에 서고 그 오른쪽이 통째로
+  비었다. 이제 수가 688px, 곧 아래 줄들의 칩과 같은 세로줄에 선다.
+  **패딩은 안 건드린다 — 닫힌 높이 48px 그대로다.**
+*/
 .guide-tip-group-head {
   list-style: none;
   cursor: pointer;
   padding-block: var(--gs-r2);
-  max-width: var(--gs-measure);
+  max-width: none;
 }
 
 .guide-tip-group-head::-webkit-details-marker {
@@ -7864,8 +7907,9 @@ input:focus-visible {
 }
 
 /* 열린 묶음의 줄들은 질문 아래로 한 칸 들어가 앉는다. */
+/* 칠과 묶음 아랫변 사이의 숨. 전에는 `--gs-r3`이라 위 12 : 아래 24로 어긋났다. */
 .guide-tip-group[open] .guide-tips {
-  margin-bottom: var(--gs-r3);
+  margin-bottom: var(--gs-r2);
 }
 
 /*
@@ -7903,10 +7947,17 @@ input:focus-visible {
 
 /*
   번호. **세로로 훑을 때 눈이 붙잡는 자리**라 하나만 브랜드색으로 켭니다.
-  `flex-shrink: 0`이 없으면 좁은 폭에서 질문이 번호를 밀어 「0 1」로 감깁니다.
+  **번호가 기둥입니다**(2026-09-17). 36px + 질문 줄의 gap 12 = 48px이고, 이것이
+  아래 `.guide-tips`의 들여쓰기와 **같은 값**입니다 — 질문 글자와 팁 문장이 한
+  세로줄에 서고 번호만 그 왼쪽에 걸립니다. 그 전에는 번호가 내용 폭이라 질문이
+  x≈25에서 시작하는데 팁 줄은 x=0이었습니다. **팁이 제 질문보다 왼쪽에 매달려**
+  「01의 내용」이 아니라 「01 다음 줄」로 읽히던 자리입니다.
+
+  기저를 안 박고 `flex-shrink: 0`만 두면 좁은 폭에서 질문이 번호를 밀어
+  「0 1」로 감깁니다.
 */
 .guide-tip-no {
-  flex-shrink: 0;
+  flex: 0 0 calc(var(--guide-chip) - var(--gs-r2));
   color: var(--brand-text);
   font-family: var(--font-mono);
   font-size: var(--gs-mono);
@@ -7955,23 +8006,65 @@ input:focus-visible {
   letter-spacing: 0.04em;
 }
 
+/*
+  펼친 목록. **이 서랍에서 면을 쓰는 곳은 여기 하나다**(2026-09-17).
+
+  **칠이 질문 줄 밖이다.** `.guide-tip-group[open]`에 칠하면 머리까지 덮여, 묶음
+  둘을 함께 펼쳤을 때 같은 색 면 둘이 헤어라인 하나로만 맞붙는다 — 고치려던 증상이
+  한 층 위에서 돌아온다. 목록에만 두면 질문 줄 48px이 페이지 색으로 남아 01과 02
+  사이가 선이 아니라 **빈 띠**다.
+
+  토큰은 `--surface` — 레일에서 **고른 줄**이 쓰는 바로 그 면이다. 같은 값을 쓰면
+  「고른 것은 이 면으로 칠한다」가 왼쪽과 오른쪽에서 같은 말이 된다.
+
+  **면 혼자로는 못 진다**(라이트 1.11:1 · 다크 1.12:1). 영역을 실제로 지탱하는
+  것은 48px 들여쓰기와 묶음 자신의 위아래 괘선이고 **둘 다 테마를 안 탄다.**
+  면은 거든다 — 그래서 `forced-colors`에서 칠이 Canvas로 꺼져도 구역이 남고,
+  되돌리는 규칙을 따로 안 둔다.
+
+  `margin-top: 0`이라 칠이 질문 줄에 매달린다 — 사이 12px은 머리의
+  `padding-bottom`이다. 위아래 `--gs-r1`은 줄 사이 24px보다 좁아야 첫 줄이
+  이웃이 아니라 가장자리에 붙어 보이기 때문이다.
+*/
 .guide-tips {
-  margin-top: var(--gs-r2);
-  max-width: var(--gs-measure);
-  border-top: 1px solid var(--guide-rule);
+  margin-top: 0;
+  max-width: none;
+  background: var(--surface);
+  padding: var(--gs-r1) 0 var(--gs-r1) var(--guide-chip);
 }
 
+/*
+  **바깥 변 둘을 걷고 사이만 남깁니다**(2026-09-17). 위아래 끝은 묶음의 괘선과
+  칠이 이미 긋고 있어, 거기 선을 또 그으면 머리 아래 → 줄 사이 → 바닥까지 같은
+  굵기의 선 여섯이 연달아 섭니다. 그것이 「실선이 너무 많이 보인다」의 정체였습니다.
+  남는 선은 전부 x=48에서 시작하므로 **영역의 왼쪽 끝과 한 번도 안 만납니다** —
+  계급이 굵기가 아니라 자리로 갈립니다.
+
+  **칩 자리를 줄 바깥으로 옮깁니다.** 그동안 `.guide-tip-head`가 48px을 먹어 팁
+  문장만 몰래 544px이었습니다(글줄이 세 갈래였던 자리입니다). 밖으로 옮기면
+  688 − 48(들여쓰기) − 48(칩 자리) = **정확히 592**입니다.
+
+  **계약은 그대로 삽니다.** 칩이 `position: absolute`이고 담는 상자가 이 줄의
+  **패딩 상자**라 `right: 0`은 여전히 x=688이고, 비워 둔 48px도 여전히 고정값입니다.
+*/
 .guide-tip {
   position: relative;
-  border-bottom: 1px solid var(--guide-rule);
   padding-block: var(--gs-r2);
+  padding-right: var(--guide-chip);
+}
+
+.guide-tip + .guide-tip {
+  border-top: 1px solid var(--guide-rule);
 }
 
 /*
   접힌 줄. **열어도 이 줄의 높이가 안 바뀌는 것**이 이 설계의 계약입니다 — 칩 자리를
-  `--guide-chip`으로 미리 비우고 칩을 그 위에 절대 위치로 앉히므로 「이유」가
-  「닫기」로 바뀌어도 문장이 다시 안 감깁니다. 붙드는 것은 글자 수가 아니라 이
-  고정 패딩입니다.
+  `--guide-chip`으로 미리 비우고 칩을 그 위에 절대 위치로 앉히므로 「이유 +」가
+  「이유 −」로 바뀌어도 문장이 다시 안 감깁니다. 붙드는 것은 글자 수가 아니라 이
+  고정값입니다.
+
+  **비우는 자리가 이 줄이 아니라 한 겹 바깥(`.guide-tip`)입니다**(2026-09-17).
+  여기서 먹으면 팁 문장만 592가 아니라 544px이 되어 글줄이 갈립니다.
 
   **flex로 안 짭니다** — summary를 flex로 만들면 인라인 자식이 각각 항목이 되어
   문장이 조각납니다(답 토글에서 이미 밟은 자리입니다). list-item 그대로 두고
@@ -7980,7 +8073,6 @@ input:focus-visible {
 .guide-tip-head {
   list-style: none;
   cursor: pointer;
-  padding-right: var(--guide-chip);
   color: var(--text-strong);
   font-size: var(--gs-body);
   font-weight: 600;
@@ -8024,39 +8116,48 @@ input:focus-visible {
 }
 
 /*
-  「이유」 칩. 바깥 상자를 문장 첫 줄과 같은 높이로 만듭니다(테두리 2px을 뺍니다) —
-  그래야 `.guide-tip`의 padding-top 그대로가 곧 칩 자리가 되고 어림한 오프셋이
-  안 듭니다.
+  「이유」 칩. 줄상자를 문장 첫 줄과 같은 높이로 만듭니다 — 그래야 `.guide-tip`의
+  padding-top 그대로가 곧 칩 자리가 되고 어림한 오프셋이 안 듭니다.
+
+  **테두리를 걷어냈습니다**(2026-09-17, 22개). 이 화면은 테두리에 뜻을 걸어
+  두었습니다 — 채움(공식) · 실선(실측) · 점선(체감). 뜻 없는 1px 실선 스물둘이
+  같은 화면에 서면 그 어휘가 묽어집니다. 펼친 몸에 세로선을 안 세운 것과 같은
+  규칙이고, 한 층 위의 여닫이 표시가 **이미 테두리 없는 모노 글자**였습니다.
+
+  높이 계산에서 `- 2px`이 빠진 것이 그 자국입니다 — 그 2px이 테두리 몫이었고,
+  이제 칩의 줄상자가 문장 첫 줄(13.5 × 1.75)과 똑같습니다.
 */
 .guide-tip-chip {
   position: absolute;
   top: var(--gs-r2);
   right: 0;
   user-select: none;
-  border: 1px solid var(--border);
-  border-radius: 3px;
-  padding: 0 7px;
   color: var(--text-muted);
   font-family: var(--font-mono);
   font-size: var(--gs-mono);
   font-weight: 400;
   letter-spacing: 0.04em;
-  line-height: calc(var(--gs-body) * 1.75 - 2px);
+  line-height: calc(var(--gs-body) * 1.75);
   white-space: nowrap;
-  transition: color 0.15s, border-color 0.15s;
+  transition: color 0.15s;
 }
 
+/*
+  **부호가 상태를 집니다**(2026-09-17). 낱말은 하나이고 여닫이는 `+`/`−`가
+  말합니다 — 한 층 위의 묶음 표시(`.guide-tip-count`의 「4 +」)와 같은 어휘라,
+  같은 일을 하는 것이 두 규격이던 자리가 하나가 됩니다. 글리프 수가 같아
+  여닫아도 칩 폭이 안 흔들립니다.
+*/
 .guide-tip-chip::after {
-  content: '이유';
+  content: '이유 +';
 }
 
 .guide-tip-fold[open] .guide-tip-chip::after {
-  content: '닫기';
+  content: '이유 −';
 }
 
 .guide-tip-head:hover .guide-tip-chip,
 .guide-tip-fold[open] .guide-tip-chip {
-  border-color: var(--brand);
   color: var(--brand-text);
 }
 
@@ -8168,7 +8269,6 @@ input:focus-visible {
 */
 .guide-models {
   margin-top: var(--gs-r2);
-  max-width: var(--gs-measure);
   border-top: 1px solid var(--guide-rule);
 }
 
@@ -8204,8 +8304,10 @@ input:focus-visible {
   밑줄은 hover에서만 켠다. 모델이 일곱인 화면(Antigravity)에서 밑줄 일곱이 늘 켜져
   있으면 그 절이 링크 목록으로 읽힌다.
 */
+/* 산문이라 글줄 폭을 지킨다 — 688px에서는 한 줄이 51자가 되어 35~45자를 넘는다. */
 .guide-model-use {
   margin-top: 2px;
+  max-width: var(--gs-measure);
   color: var(--text-muted);
   font-size: var(--gs-body);
   line-height: 1.75;
@@ -8280,7 +8382,6 @@ input:focus-visible {
 */
 .guide-links {
   margin-top: var(--gs-r2);
-  max-width: var(--gs-measure);
   border-top: 1px solid var(--guide-rule);
 }
 
@@ -8311,12 +8412,19 @@ input:focus-visible {
   라틴 전용 자리. 같은 10px이라도 모노가 sans보다 작게 앉아, 크기를 더 안 줄이고도
   한글 라벨 아래 급으로 내려간다 — 크기가 아니라 글꼴로 만든 단이다.
 */
+/*
+  **호스트를 오른쪽 끝으로 보낸다**(2026-09-17). 라벨 열 104px만 두고 폭을 열면
+  호스트가 x=116에 홀로 서고 그 오른쪽이 통째로 빈다 — 이 화면에서 가장 큰
+  구멍이었다. 모델 줄(`space-between`)·값 줄(3열)이 이미 「이름 왼쪽 · 값 오른쪽
+  끝」이라 링크 줄만 모양이 달랐다. 줄에 괘선이 남아 있어 두 끝이 한 줄로 읽힌다.
+*/
 .guide-link-host {
   overflow: hidden;
   color: var(--text-muted);
   font-family: var(--font-mono);
   font-size: var(--gs-mono);
   letter-spacing: 0.04em;
+  text-align: right;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
@@ -8346,7 +8454,6 @@ input:focus-visible {
 
 .guide-tiers {
   margin-top: var(--gs-r2);
-  max-width: var(--gs-measure);
   border-top: 1px solid var(--guide-rule);
 }
 
@@ -8408,6 +8515,31 @@ input:focus-visible {
   */
   .guide-tip-levers {
     display: none;
+  }
+
+  /*
+    **기둥을 24px로 내리되 번호 칸은 18px로 둔다.** 「01」이 10px 모노에
+    `letter-spacing: 0.12em`이라 실제 글자 폭이 약 14.4px이고, 12px로 잡으면 flex
+    항목의 `min-width: auto`가 내용 폭을 바닥으로 잡아 기둥이 24px이 아니라
+    26~28px이 된다 — 데스크톱에서 세운 「기둥 = 들여쓰기」 짝이 여기서만 어긋난다.
+    18 + gap 6 = 24로 딱 맞는다. 이 폭에서는 레버가 이미 안 서므로 줄의 gap을
+    내려도 질문과 수 사이만 좁아진다.
+  */
+  .guide-tips {
+    padding-left: var(--gs-r3);
+  }
+
+  .guide-tip-question {
+    column-gap: var(--gs-r1);
+  }
+
+  .guide-tip-no {
+    flex-basis: calc(var(--gs-r3) - var(--gs-r1));
+  }
+
+  /* 좁은 폭에서는 라벨 열이 접혀 호스트가 제 줄에 서므로 오른쪽 정렬이 어색하다. */
+  .guide-link-host {
+    text-align: left;
   }
 
   /*
@@ -8515,11 +8647,16 @@ input:focus-visible {
   셋을 한 행에 두는 것이 중요합니다 — 값만 보고 믿을 수 없게 하려는 것이 이 표의
   존재 이유라, 근거와 나이가 값에서 눈을 떼지 않아도 보이는 자리에 있어야 합니다.
 */
+/*
+  값 줄. **이 서랍에 남아 있던 마지막 조판 이탈 넷이다**(`4px 20px`·`14px 6px`,
+  2026-09-17에 고쳤다). 팁 줄의 선을 걷어 24px 리듬이 구분자가 되는 마당에,
+  하필 상수 밖의 값이 여기 있으면 그 리듬이 표에서만 어긋난다.
+*/
 .claim-row {
   display: grid;
-  gap: 4px 20px;
+  gap: var(--gs-r1) var(--gs-r3);
   border-bottom: 1px solid var(--guide-rule);
-  padding: 14px 6px;
+  padding: var(--gs-r2);
 }
 
 /* 860px은 집의 중단점이 아니다 — 이 서랍만 따로 만들어 쓰던 값이다. */
