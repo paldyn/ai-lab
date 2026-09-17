@@ -13,7 +13,7 @@
 > | 층 | 어디에 | 지금 |
 > | --- | --- | --- |
 > | 기업 | `src/data/guideVendors.ts` | Anthropic · OpenAI · Google |
-> | 제품 | `src/data/guideProducts.ts` | 12개 |
+> | 제품 | `src/data/guideProducts.ts` | 9개 |
 > | 모델 | `src/data/guideModels.ts` | 23개 — 이름과 id만, 제품이 참조한다 |
 >
 > 원고 층은 **없다.** 2026-09-17에 걷어냈다 — 아래 「여기에는 글이 없다」를 본다.
@@ -455,7 +455,7 @@ AI 도구를 **잘 쓰고 아껴 쓰는 법**을 담는 다섯 번째 서랍. �
 
 ```
 src/data/guideVendors.ts              기업 3
-src/data/guideProducts.ts             제품 12
+src/data/guideProducts.ts             제품 9
 src/data/guideModels.ts               모델 23 — 이름과 id만
 src/data/playbookClaims.ts            주장 — 서랍의 본체. 값과 팁이 여기 다 있다
 src/data/playbook-checks/<날짜>.ts     append-only 확인 로그
@@ -748,8 +748,10 @@ CSS도 있지만 실제 값으로 검증된 적이 없다 — 첫 `field`·`ours
 하나씩이고, 한 질문에 팁이 둘셋 나오는 것이 보통이다.
 
 **지금 어디까지 찼는지는 화면이 안다** — `/playbook/<기업>/<제품>`의 「이렇게 쓰면
-아낀다」 절 길이가 그 제품의 팁 수다. 오늘 기준 예순셋(공식 34 · 현장 29)이고,
-코딩 에이전트 넷이 두껍고 챗 앱 쪽이 얇다.
+아낀다」 절 길이가 그 제품의 팁 수다. 오늘 기준 예순셋(공식 34 · 현장 29)인데
+**둘에 몰려 있다** — Claude Code 18 · Codex 12이고 나머지 일곱은 둘에서 다섯이다.
+값이 가장 많이 나온 자리를 먼저 팠기 때문이고(6일 차 실측), 그래서 레일의 아래쪽
+일곱 줄은 아직 얇다.
 
 **질문 넷은 제품마다 같다.** 그래야 제품끼리 견줄 수 있고, 레일에서 옆줄로 옮겼을 때
 같은 자리에 같은 종류의 답이 선다.
@@ -761,18 +763,21 @@ CSS도 있지만 실제 값으로 검증된 적이 없다 — 첫 `field`·`ours
 무엇을 안 읽게 하나         — 넣지 않는 것이 가장 싼 절약이다
 ```
 
-**얇은 제품부터 집는다.** 열두 줄이 고르게 차야 레일의 어느 줄을 눌러도 읽을 것이 있다.
-지금 얇은 쪽은 챗 앱들과 Gemini 쪽이다.
+**얇은 제품부터 집는다.** 아홉 줄이 고르게 차야 레일의 어느 줄을 눌러도 읽을 것이 있다.
+괄호는 오늘 기준 팁 수다 — 채우면 이 수를 고친다.
 
 ```
-[ ] anthropic/claude          질문 넷
-[ ] openai/chatgpt            질문 넷
-[ ] openai/chatgpt-work       질문 넷
-[ ] anthropic/claude-cowork   질문 넷
-[ ] google/gemini-app         질문 넷
-[ ] google/gemini-cli         질문 넷
-[ ] google/antigravity        질문 넷
+[ ] anthropic/claude          (2)  질문 넷
+[ ] openai/chatgpt-work       (3)  질문 넷
+[ ] google/gemini-app         (3)  질문 넷
+[ ] google/gemini-cli         (3)  질문 넷
+[ ] anthropic/claude-cowork   (4)  질문 넷
+[ ] openai/chatgpt            (5)  질문 넷
+[ ] google/antigravity        (5)  질문 넷
 ```
+
+Claude Code(18)와 Codex(12)는 당분간 안 집는다. 한 제품이 열여덟이면 그 화면은 이미
+읽는 데 시간이 걸리고, **고르게 차는 것이 더 쌓이는 것보다 낫다.**
 
 **공식이 먼저, 현장이 나중이다.** `check:playbook`이 팁의 두 등급을 세어 현장이 공식을
 넘으면 선다 — 현장 통설은 넷(URL·게시일·교차 확인·반례)을 다 갖춰도 여전히 가장 약한
