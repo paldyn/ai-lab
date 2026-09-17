@@ -3,6 +3,7 @@ import { playbookClaims } from './playbookClaims';
 import { claimsForProduct, productOpenItems } from './playbook';
 import { guideProductIds, guideProducts } from './guideProducts';
 import { guideModels } from './guideModels';
+import { tipGroupIds } from './guideTipGroups';
 import { guideVendors } from './guideVendors';
 
 /**
@@ -216,6 +217,36 @@ describe('AI 가이드 — 주장', () => {
       );
       expect(open.length).toBe(nulls.length);
     }
+  });
+
+  /*
+    **묶음은 화면의 축입니다.** 팁은 `group`으로 묶여 서므로 그 값이 없는 팁은
+    **그릴 자리가 없어 화면에서 조용히 사라집니다** — 오류가 아니라 침묵이라
+    눈으로는 못 잡습니다. 새 팁을 넣는 사람이 반드시 이 검사를 마주치게 합니다.
+  */
+  it('팁마다 묶음이 있고 그 묶음이 실재한다', () => {
+    const bad = playbookClaims
+      .filter((c) => c.topic === 'habit')
+      .filter((c) => !c.group || !tipGroupIds.includes(c.group));
+    expect(bad.map((c) => `${c.id}(${c.group ?? '없음'})`)).toEqual([]);
+  });
+
+  /* 묶음은 팁의 축이라 값 주장에 붙으면 뜻이 없습니다 — `detail`과 같은 자리입니다. */
+  it('묶음은 팁에만 붙는다', () => {
+    const bad = playbookClaims.filter((c) => c.group && c.topic !== 'habit');
+    expect(bad.map((c) => c.id)).toEqual([]);
+  });
+
+  /*
+    **빈 묶음을 안 그립니다.** 넷 중 하나가 통째로 비면 그 질문은 화면에 안 서는데,
+    그게 「아직 안 채웠다」인지 「이 묶음은 이제 안 쓴다」인지 구별이 안 됩니다.
+    넷을 다 쓰고 있는 동안에는 넷이 다 차 있어야 하고, 정말 안 쓸 묶음이 생기면
+    `guideTipGroups.ts`에서 빼는 것이 맞습니다.
+  */
+  it('묶음 넷이 다 쓰이고 있다', () => {
+    const tips = playbookClaims.filter((c) => c.topic === 'habit');
+    const empty = tipGroupIds.filter((id) => !tips.some((c) => c.group === id));
+    expect(empty).toEqual([]);
   });
 
   /* 팁에만 이유가 붙습니다 — 값 주장에 설명이 필요하면 `statement`가 덜 써진 것입니다. */

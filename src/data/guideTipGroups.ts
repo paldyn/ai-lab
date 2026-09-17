@@ -1,0 +1,64 @@
+import type { TipGroupId } from '../types/playbook';
+
+export interface TipGroup {
+  id: TipGroupId;
+  /** 모노 단계 라벨. 「언제의 일인가」를 두 자에서 다섯 자로 적습니다. */
+  stage: string;
+  /** 읽는 사람이 실제로 묻는 말. 묶음 머리글에 그대로 섭니다. */
+  question: string;
+}
+
+/**
+ * 팁을 묶는 질문 넷.
+ *
+ * **축을 등급에서 질문으로 옮긴 자리입니다**(2026-09-17). 그 전에는 팁 열여덟이
+ * 같은 굵기·같은 모양으로 평평하게 한 줄로 섰고, 거르개가 가르는 것은 **공식이냐
+ * 체감이냐**였습니다. 그런데 이 화면에 온 사람이 묻는 것은 그게 아니라 **「지금 뭘
+ * 하면 되냐」**입니다 — 컨트롤의 축이 독자의 질문과 달라서, 칩을 눌러 봐야 열여덟이
+ * 아홉으로 줄 뿐 아무것도 안 정리됐습니다.
+ *
+ * **차례는 세션이 지나는 시간입니다.** 열기 전에 정해 두는 것 → 어느 모델로 →
+ * 일을 시킬 때 → 끊는 자리. 그래서 번호가 그대로 「무엇부터 하면 되는가」의 답이
+ * 됩니다. 등급은 축에서 내려와 묶음 **안의 정렬 키**가 됐습니다.
+ *
+ * **묶음에 「한 줄 답」을 안 답니다.** 처음 설계는 질문마다 답 문장을 하나씩 붙였는데,
+ * 그 문장은 **배지도 출처도 반례도 없는 주장**이 됩니다 — 체감 팁을 압축해 적으면
+ * 「체감 등급에는 넷이 다 있어야 한다」가 그 자리에서 깨지고, `npm test`(값)와
+ * `check:playbook`(나이) 어느 쪽에도 안 걸린 채 늙습니다. 대신 **레버를 기계로
+ * 뽑아 나열합니다**(`leversOf`) — 새로 쓰는 문장이 0이라 늙을 것이 없습니다.
+ *
+ * **묶음을 늘리지 않습니다.** 넷이 63건을 전부 덮고 있고(load 20 · model 10 ·
+ * feed 16 · cut 17), 다섯째를 만드는 순간 「기타」가 생겨 그 안이 다시 위계 없는
+ * 목록이 됩니다. 새 팁이 어느 넷에도 안 들어가면 그건 묶음을 늘릴 일이 아니라
+ * **그 팁이 이 서랍의 것이 맞는지 되물을 자리**입니다.
+ */
+export const guideTipGroups: TipGroup[] = [
+  {
+    id: 'load',
+    stage: '짐 싸기',
+    question: '세션마다 따라붙는 것을 줄였나',
+  },
+  {
+    id: 'model',
+    stage: '첫 줄에서',
+    question: '어느 모델로, 어느 강도로 도나',
+  },
+  {
+    id: 'feed',
+    stage: '일을 줄 때',
+    question: '무엇을 넣고 무엇을 맡기나',
+  },
+  {
+    id: 'cut',
+    stage: '끊는 자리',
+    question: '세션을 어디서 끊나',
+  },
+];
+
+export const tipGroupIds = guideTipGroups.map((g) => g.id);
+
+const byId = new Map(guideTipGroups.map((g) => [g.id, g]));
+export const tipGroupById = (id: string): TipGroup | undefined => byId.get(id as never);
+
+/** 화면에 세우는 차례. 세션이 지나는 시간입니다. */
+export const tipGroupOrder = (id: TipGroupId): number => tipGroupIds.indexOf(id);

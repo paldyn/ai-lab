@@ -136,6 +136,12 @@ export interface ModelInfo {
  * 우리가 돌려 확인했으면 등급을 `ours`로 올리고 원 게시물은 `source`에 남깁니다 —
  * 승격이 확인 로그에 기록으로 남습니다.
  */
+/**
+ * 팁을 묶는 질문 넷. 세션이 지나는 시간 순서입니다 —
+ * 열기 전에 정해 두는 것 → 어느 모델로 → 일을 시킬 때 → 끊는 자리.
+ */
+export type TipGroupId = 'load' | 'model' | 'feed' | 'cut';
+
 export type EvidenceTier = 'vendor' | 'field' | 'ours';
 
 /**
@@ -201,6 +207,17 @@ export interface Claim {
   /** 무엇에 붙는 값인가. 기업·제품·모델 셋 중 하나입니다. */
   subject: ClaimSubject;
   topic: 'tier' | 'limit' | 'price' | 'context' | 'feature' | 'habit';
+  /**
+   * 어느 질문에 답하는 팁인가. **`topic: 'habit'`에만 붙고, 팁에는 반드시 붙습니다.**
+   *
+   * 화면의 축입니다 — 팁은 이 값으로 묶여 서고, 묶음이 없는 팁은 그릴 자리가 없습니다.
+   * 뜻과 차례는 `src/data/guideTipGroups.ts`에 있습니다.
+   *
+   * **손으로 매기는 판단입니다.** 기계로는 못 뽑습니다 — 63건 중 문장에 백틱 토큰이
+   * 있는 것이 11건뿐이고, 있어도 그 토큰이 묶음을 안 말합니다(`/clear`는 끊는 자리에도
+   * 짐 싸기에도 나옵니다). 대신 **안 썩는 값**이라 한 번 붙이면 끝입니다.
+   */
+  group?: TipGroupId;
   /** 한 줄 주장. */
   statement: string;
   /** 화면에 나가는 값. `null`이면 화면에 「모름 · 공식 페이지에서 확인 →」으로 섭니다. */

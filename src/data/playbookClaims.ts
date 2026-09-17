@@ -356,6 +356,7 @@ export const playbookClaims: Claim[] = [
     id: 'claude-code-tip-01',
     subject: { kind: 'product', id: 'claude-code' },
     topic: 'habit',
+    group: 'cut',
     statement: '새 일을 시작하면 세션도 새로 판다 — 관계없는 일로 넘어갈 때 `/clear`를 먼저 친다.',
     detail: '남은 옛 맥락은 이후 모든 메시지마다 다시 실려 나간다. 두 번 고쳐 줬는데도 안 되면 그때도 이어 붙이지 말고 `/clear` 뒤에 배운 것을 넣어 다시 묻는 편이 싸다.',
     /* 팁은 셀 값이 아니라 행동을 바꾸는 문장이라 `value`가 빕니다. */
@@ -368,6 +369,7 @@ export const playbookClaims: Claim[] = [
     id: 'claude-code-tip-02',
     subject: { kind: 'product', id: 'claude-code' },
     topic: 'habit',
+    group: 'model',
     statement: '모델과 강도(effort)는 세션 맨 앞에서 정하고 도중에 건드리지 않는다.',
     detail: '모델마다·강도마다 캐시가 따로다. 중간에 바꾸면 다음 요청이 대화 전체를 캐시 없이 다시 읽는다 — 내용이 한 글자도 안 바뀌었어도 그렇다. 모델은 예외가 없고 강도는 대부분의 모델에서 갈린다(Fable 5.1만 API 키·구독에서 강도를 바꿔도 캐시가 남는다).',
     /* 팁은 셀 값이 아니라 행동을 바꾸는 문장이라 `value`가 빕니다. */
@@ -380,6 +382,7 @@ export const playbookClaims: Claim[] = [
     id: 'claude-code-tip-03',
     subject: { kind: 'product', id: 'claude-code' },
     topic: 'habit',
+    group: 'cut',
     statement: '`/compact`은 자동으로 터지기를 기다리지 말고 일이 끊기는 자리에서 직접 친다.',
     detail: '압축은 대화 층의 캐시를 반드시 깨므로 비용이 어차피 한 번은 든다. 그 비용을 일의 한가운데가 아니라 작업과 작업 사이에 치르게 고르는 것이다.',
     /* 팁은 셀 값이 아니라 행동을 바꾸는 문장이라 `value`가 빕니다. */
@@ -392,6 +395,7 @@ export const playbookClaims: Claim[] = [
     id: 'claude-code-tip-04',
     subject: { kind: 'product', id: 'claude-code' },
     topic: 'habit',
+    group: 'cut',
     statement: '가던 길을 통째로 버릴 때는 `/compact`이 아니라 `/rewind`다.',
     detail: '되감기는 이미 캐시에 있는 접두사까지 잘라 내는 것이라 캐시를 그대로 탄다. 압축은 없던 접두사를 새로 만든다.',
     /* 팁은 셀 값이 아니라 행동을 바꾸는 문장이라 `value`가 빕니다. */
@@ -404,6 +408,7 @@ export const playbookClaims: Claim[] = [
     id: 'claude-code-tip-05',
     subject: { kind: 'product', id: 'claude-code' },
     topic: 'habit',
+    group: 'model',
     statement: '대화가 길어진 뒤에 쉬운 질문이 생겼다고 싼 모델로 갈아타지 마라 — 그게 더 비싸다.',
     detail: '모델을 바꾸면 그 시점까지의 전체 대화를 캐시 없이 다시 읽는다. 쌓인 컨텍스트가 클수록 갈아타는 값이 그냥 비싼 모델로 답하는 값을 넘는다.',
     /* 팁은 셀 값이 아니라 행동을 바꾸는 문장이라 `value`가 빕니다. */
@@ -416,6 +421,7 @@ export const playbookClaims: Claim[] = [
     id: 'claude-code-tip-06',
     subject: { kind: 'product', id: 'claude-code' },
     topic: 'habit',
+    group: 'feed',
     statement: '테스트 실행·문서 수집·로그 처리처럼 출력이 긴 일은 서브에이전트에 맡긴다.',
     detail: '장황한 중간 출력이 자식 컨텍스트에 남고 본 대화에는 요약만 돌아온다. 본 대화는 그 요약만 이후 모든 턴에 다시 싣는다.',
     /* 팁은 셀 값이 아니라 행동을 바꾸는 문장이라 `value`가 빕니다. */
@@ -428,6 +434,7 @@ export const playbookClaims: Claim[] = [
     id: 'claude-code-tip-07',
     subject: { kind: 'product', id: 'claude-code' },
     topic: 'habit',
+    group: 'load',
     statement: 'CLAUDE.md는 200줄 아래로 유지하고, 가끔 쓰는 워크플로는 스킬로 옮긴다.',
     detail: 'CLAUDE.md는 세션 시작마다 통째로 실린다 — PR 리뷰나 마이그레이션 절차를 적어 두면 무관한 일을 할 때도 그 토큰을 낸다. 스킬은 부를 때만 올라온다.',
     /* 팁은 셀 값이 아니라 행동을 바꾸는 문장이라 `value`가 빕니다. */
@@ -440,6 +447,7 @@ export const playbookClaims: Claim[] = [
     id: 'claude-code-tip-08',
     subject: { kind: 'product', id: 'claude-code' },
     topic: 'habit',
+    group: 'load',
     statement: 'GitHub·AWS 같은 외부 서비스는 MCP 서버 대신 `gh`·`aws` 같은 CLI로 부른다.',
     detail: 'CLI는 도구 목록을 컨텍스트에 한 줄도 안 얹는다. 안 쓰는 MCP 서버는 `/mcp`로 꺼 두고, 무엇이 자리를 먹는지는 `/context`로 본다.',
     /* 팁은 셀 값이 아니라 행동을 바꾸는 문장이라 `value`가 빕니다. */
@@ -452,6 +460,7 @@ export const playbookClaims: Claim[] = [
     id: 'claude-code-tip-09',
     subject: { kind: 'product', id: 'claude-code' },
     topic: 'habit',
+    group: 'feed',
     statement: '대화에 남길 필요 없는 곁가지 질문은 `/btw`로 묻는다.',
     detail: '답이 대화 기록에 아예 안 들어가므로, 하나 확인하자고 컨텍스트를 불리지 않는다.',
     /* 팁은 셀 값이 아니라 행동을 바꾸는 문장이라 `value`가 빕니다. */
@@ -464,6 +473,7 @@ export const playbookClaims: Claim[] = [
     id: 'claude-cowork-tip-01',
     subject: { kind: 'product', id: 'claude-cowork' },
     topic: 'habit',
+    group: 'cut',
     statement: '새 일은 이어 붙이지 말고 새 대화에서 시작한다.',
     detail: '메시지를 하나 보낼 때마다 그 대화 전체를 다시 읽는다. 세 가지 일이 한 대화에 섞여 있으면 네 번째 메시지가 셋의 값을 다 치른다.',
     /* 팁은 셀 값이 아니라 행동을 바꾸는 문장이라 `value`가 빕니다. */
@@ -476,6 +486,7 @@ export const playbookClaims: Claim[] = [
     id: 'claude-cowork-tip-02',
     subject: { kind: 'product', id: 'claude-cowork' },
     topic: 'habit',
+    group: 'load',
     statement: '걸어 둔 예약 작업 목록을 가끔 열어 안 쓰는 것을 끈다.',
     detail: '예약 작업도 사용량을 먹는다 — 손을 안 대고 있는 동안에도 제 주기마다 돈다.',
     /* 팁은 셀 값이 아니라 행동을 바꾸는 문장이라 `value`가 빕니다. */
@@ -488,6 +499,7 @@ export const playbookClaims: Claim[] = [
     id: 'claude-cowork-tip-03',
     subject: { kind: 'product', id: 'claude-cowork' },
     topic: 'habit',
+    group: 'feed',
     statement: '시작하기 전에 「내 요청을 다시 말해 보고, 궁금한 걸 다 물어봐」를 프롬프트에 붙인다.',
     detail: '어긋난 채로 결과물을 다 만들고 나서 고치는 것이 가장 비싸다. 빠진 조건을 앞에서 드러내면 다시 돌리는 횟수가 준다.',
     /* 팁은 셀 값이 아니라 행동을 바꾸는 문장이라 `value`가 빕니다. */
@@ -500,6 +512,7 @@ export const playbookClaims: Claim[] = [
     id: 'claude-code-tip-10',
     subject: { kind: 'product', id: 'claude-code' },
     topic: 'habit',
+    group: 'cut',
     statement: '일이 끝난 자리에서는 `/compact`가 아니라 `/clear`로 끊는다.',
     detail: '압축은 끝난 일의 요약을 남은 세션 내내 다시 태운다. 조사→작성, 버그 하나→다른 버그처럼 일이 바뀌는 자리는 이어 갈 맥락이 없으니 빈 창에서 시작하는 쪽이 싸다.',
     /* 팁은 셀 값이 아니라 행동을 바꾸는 문장이라 `value`가 빕니다. */
@@ -517,6 +530,7 @@ export const playbookClaims: Claim[] = [
     id: 'claude-code-tip-11',
     subject: { kind: 'product', id: 'claude-code' },
     topic: 'habit',
+    group: 'cut',
     statement: '작업 도중에 창이 차면 압축하지 말고 요약을 handoff 파일로 남기고 지운 뒤 그 파일로 다시 시작한다.',
     detail: '목표·고친 파일·정한 것·다음 할 일을 파일에 적어 두면 압축이 뭉갠 요약 대신 우리가 고른 문장만 새 창에 실린다.',
     /* 팁은 셀 값이 아니라 행동을 바꾸는 문장이라 `value`가 빕니다. */
@@ -534,6 +548,7 @@ export const playbookClaims: Claim[] = [
     id: 'claude-code-tip-12',
     subject: { kind: 'product', id: 'claude-code' },
     topic: 'habit',
+    group: 'load',
     statement: 'CLAUDE.md는 150~200줄 안쪽으로 줄이고 일회성 레시피는 스킬 파일로 내린다.',
     detail: '이 파일은 세션 시작에 통째로 실려 끝날 때까지 매 턴 따라다닌다. 코드를 읽으면 알 수 있는 것은 빼고, 스킬은 이름과 설명만 먼저 실린다.',
     /* 팁은 셀 값이 아니라 행동을 바꾸는 문장이라 `value`가 빕니다. */
@@ -551,6 +566,7 @@ export const playbookClaims: Claim[] = [
     id: 'claude-code-tip-13',
     subject: { kind: 'product', id: 'claude-code' },
     topic: 'habit',
+    group: 'cut',
     statement: 'CLAUDE.md를 세션 도중에 고치면 그 세션에는 안 먹는다 — 고쳤으면 `/clear`나 `/compact`로 끊거나 세션을 다시 연다.',
     detail: '이 파일은 세션 시작 때 한 번 읽혀 메모리에 남는다. 고친 채로 계속 시키면 예전 규칙으로 일한 결과를 다시 고치느라 토큰이 두 번 든다.',
     /* 팁은 셀 값이 아니라 행동을 바꾸는 문장이라 `value`가 빕니다. */
@@ -568,6 +584,7 @@ export const playbookClaims: Claim[] = [
     id: 'claude-code-tip-14',
     subject: { kind: 'product', id: 'claude-code' },
     topic: 'habit',
+    group: 'model',
     statement: '세션 도중에 모델이나 사고 강도를 갈아타지 않는다 — 지금까지의 맥락을 통째로 다시 읽는다.',
     detail: '모델마다 캐시가 따로라 전환이 프롬프트 글자를 안 바꿔도 앞부분이 전부 무효가 된다. 바꿀 거면 일을 끊는 자리에서 바꾼다.',
     /* 팁은 셀 값이 아니라 행동을 바꾸는 문장이라 `value`가 빕니다. */
@@ -585,6 +602,7 @@ export const playbookClaims: Claim[] = [
     id: 'claude-code-tip-15',
     subject: { kind: 'product', id: 'claude-code' },
     topic: 'habit',
+    group: 'load',
     statement: '안 쓰는 MCP 서버는 떼 둔다 — 쓰지 않아도 툴 스키마 전량이 세션 시작에 실려 첫 글자를 치기 전에 창이 찬다.',
     detail: '쓰든 안 쓰든 서버마다 스키마 전량이 먼저 올라가고, 여럿 붙어 있으면 첫 글자를 치기 전에 창의 상당 부분이 이미 찬다.',
     /* 팁은 셀 값이 아니라 행동을 바꾸는 문장이라 `value`가 빕니다. */
@@ -602,6 +620,7 @@ export const playbookClaims: Claim[] = [
     id: 'claude-code-tip-16',
     subject: { kind: 'product', id: 'claude-code' },
     topic: 'habit',
+    group: 'feed',
     statement: '테스트·빌드 로그를 통째로 읽히지 말고 오류 줄만 걸러 넣는다.',
     detail: '수천 줄짜리 출력이 그대로 대화에 남아 이후 매 턴 다시 실린다. 파이프로 오류와 스택만 추리면 같은 판단을 훨씬 적은 값으로 얻는다.',
     /* 팁은 셀 값이 아니라 행동을 바꾸는 문장이라 `value`가 빕니다. */
@@ -619,6 +638,7 @@ export const playbookClaims: Claim[] = [
     id: 'claude-code-tip-17',
     subject: { kind: 'product', id: 'claude-code' },
     topic: 'habit',
+    group: 'model',
     statement: '탐색만 맡기는 서브에이전트는 `CLAUDE_CODE_SUBAGENT_MODEL=haiku`로 싼 모델에 내린다.',
     detail: '탐색은 만들어 내는 양은 많고 돌려주는 결론은 짧다. 그 큰 중간 산물을 본 스레드 밖에서, 싼 모델로 태우는 것이 이 설정의 전부다.',
     /* 팁은 셀 값이 아니라 행동을 바꾸는 문장이라 `value`가 빕니다. */
@@ -636,6 +656,7 @@ export const playbookClaims: Claim[] = [
     id: 'claude-code-tip-18',
     subject: { kind: 'product', id: 'claude-code' },
     topic: 'habit',
+    group: 'model',
     statement: '사고는 이미 기본으로 켜져 있으므로 「ultrathink」에 기대지 말고 예산을 `MAX_THINKING_TOKENS`로 정한다.',
     detail: '그 마법어는 2026-01-16에 거둬졌고 지금은 적어도 아무 일이 안 난다. 그 변수를 두면 키워드 쪽은 무시된다. 예산을 올리려면 `MAX_THINKING_TOKENS`를, 간단한 편집에서 끄려면 같은 변수를 0으로 둔다.',
     /* 팁은 셀 값이 아니라 행동을 바꾸는 문장이라 `value`가 빕니다. */
@@ -653,6 +674,7 @@ export const playbookClaims: Claim[] = [
     id: 'claude-tip-01',
     subject: { kind: 'product', id: 'claude' },
     topic: 'habit',
+    group: 'feed',
     statement: '잘못 물었으면 「사실은 이런 뜻이었어요」로 되묻지 말고 앞 메시지를 고쳐 다시 보낸다.',
     detail: '후속 메시지는 앞 대화 전부를 다시 태우고 잘못 간 답까지 들고 간다. 고쳐 보내면 그 지점부터 다시 시작해 죽은 맥락이 안 쌓인다.',
     /* 팁은 셀 값이 아니라 행동을 바꾸는 문장이라 `value`가 빕니다. */
@@ -670,6 +692,7 @@ export const playbookClaims: Claim[] = [
     id: 'claude-tip-02',
     subject: { kind: 'product', id: 'claude' },
     topic: 'habit',
+    group: 'feed',
     statement: 'PDF를 통째로 올리지 말고 필요한 대목만 텍스트로 붙여 넣는다.',
     detail: 'PDF는 쪽마다 글자와 그림 둘로 처리되고 그 그림이 대화에 남아 이후 매 요청에 다시 실린다. 같은 내용을 붙여 넣으면 값이 몇 분의 일로 떨어진다.',
     /* 팁은 셀 값이 아니라 행동을 바꾸는 문장이라 `value`가 빕니다. */
@@ -687,6 +710,7 @@ export const playbookClaims: Claim[] = [
     id: 'claude-cowork-tip-04',
     subject: { kind: 'product', id: 'claude-cowork' },
     topic: 'habit',
+    group: 'cut',
     statement: '끝난 일과 새 일을 한 세션에 두지 않고 폴더도 일별로 가른다.',
     detail: 'Cowork은 일을 시작할 때마다 폴더를 읽는다. 한 폴더에 온갖 파일을 쌓아 두면 묻기도 전에 그 값이 나가고, 세션을 이어 가면 끝난 일의 기록까지 매번 다시 실린다.',
     /* 팁은 셀 값이 아니라 행동을 바꾸는 문장이라 `value`가 빕니다. */
@@ -704,6 +728,7 @@ export const playbookClaims: Claim[] = [
     id: 'codex-tip-01',
     subject: { kind: 'product', id: 'codex' },
     topic: 'habit',
+    group: 'cut',
     statement: '같은 문제를 파고드는 동안에는 채팅을 새로 파지 않는다 — 나누는 기준은 길이가 아니라 결과물이다.',
     detail: '프로젝트 하나를 채팅 하나로 끌고 가는 것을 공식 문서가 「흔한 실수」로 꼽는다(컨텍스트가 부풀고 시간이 갈수록 결과가 나빠진다). 반대로 같은 문제의 연속인데 끊으면 추론 흐름이 사라져 앞서 준 맥락을 다시 물어보게 된다. 일이 실제로 갈라질 때만 가지를 치고, CLI에서는 `/fork`가 원본 기록을 남긴 채 새 채팅을 만든다.',
     /* 팁은 셀 값이 아니라 행동을 바꾸는 문장이라 `value`가 빕니다. */
@@ -716,6 +741,7 @@ export const playbookClaims: Claim[] = [
     id: 'codex-tip-02',
     subject: { kind: 'product', id: 'codex' },
     topic: 'habit',
+    group: 'cut',
     statement: '긴 실행 뒤 컨텍스트가 차오르면 채팅을 새로 파지 말고 `/compact`로 앞 대화를 요약해 토큰을 비운다.',
     detail: '`/compact`는 앞 턴들을 요약으로 갈아 끼워 핵심을 남긴 채 컨텍스트를 비운다. 비우기와 줄이기는 다른 동작이다 — `/new`는 같은 CLI 세션 안에서 컨텍스트만 새로 시작하고 `/clear`는 터미널 화면까지 함께 지우며, 둘 다 맥락을 통째로 버리므로 다시 설명해야 한다. Codex는 자동으로도 압축한다.',
     /* 팁은 셀 값이 아니라 행동을 바꾸는 문장이라 `value`가 빕니다. */
@@ -728,6 +754,7 @@ export const playbookClaims: Claim[] = [
     id: 'codex-tip-03',
     subject: { kind: 'product', id: 'codex' },
     topic: 'habit',
+    group: 'load',
     statement: 'AGENTS.md는 짧고 정확하게 쓴다 — 프롬프트에 되풀이하던 규칙만 옮기고 막연한 규칙은 넣지 않는다.',
     detail: 'AGENTS.md는 실행할 때마다 자동으로 컨텍스트에 실리므로 같은 지침을 턴마다 다시 적을 필요가 없다. 대신 파일이 부풀면 그 비용도 매 턴 나간다. 규칙은 처음부터 다 적지 말고 같은 실수가 되풀이될 때 더하고, 커지면 본문은 간결하게 두고 계획·리뷰·아키텍처 같은 작업별 마크다운을 참조시킨다. 결합 크기 상한은 기본 32KiB다.',
     /* 팁은 셀 값이 아니라 행동을 바꾸는 문장이라 `value`가 빕니다. */
@@ -740,6 +767,7 @@ export const playbookClaims: Claim[] = [
     id: 'codex-tip-04',
     subject: { kind: 'product', id: 'codex' },
     topic: 'habit',
+    group: 'feed',
     statement: '서브에이전트는 토큰을 더 쓴다 — 출발점은 탐색·테스트·트리아지·요약처럼 읽기 위주로 쪼갤 수 있는 일이고, 여럿이 동시에 코드를 고치는 쓰기 병렬은 조심한다.',
     detail: '에이전트마다 제 모델·도구 호출을 따로 돌리므로 같은 일을 단일 에이전트로 할 때보다 토큰을 더 쓴다. 문서가 권하는 출발점은 탐색·테스트·트리아지·요약 같은 읽기 위주 작업이고, 여럿이 동시에 코드를 고치는 쓰기 위주 병렬은 충돌과 조율 비용 때문에 조심하라고 한다.',
     /* 팁은 셀 값이 아니라 행동을 바꾸는 문장이라 `value`가 빕니다. */
@@ -752,6 +780,7 @@ export const playbookClaims: Claim[] = [
     id: 'codex-tip-05',
     subject: { kind: 'product', id: 'codex' },
     topic: 'habit',
+    group: 'feed',
     statement: '탐색 노트·테스트 로그·스택 트레이스 같은 중간 출력은 주 채팅에 쌓지 말고 서브에이전트에 맡겨 요약만 돌려받는다.',
     detail: '요구사항·제약·결정을 정하는 주 스레드가 중간 산출물로 덮이면 컨텍스트 오염(useful information gets buried)과 컨텍스트 로트가 생겨 세션이 갈수록 부정확해진다. 컨텍스트 창이 커도 마찬가지라고 문서가 못 박는다. 수백만 토큰짜리 문서 분석처럼 큰 일은 쪼개 돌리고 주 스레드에는 추려낸 결론만 올린다.',
     /* 팁은 셀 값이 아니라 행동을 바꾸는 문장이라 `value`가 빕니다. */
@@ -764,6 +793,7 @@ export const playbookClaims: Claim[] = [
     id: 'codex-tip-06',
     subject: { kind: 'product', id: 'codex' },
     topic: 'habit',
+    group: 'feed',
     statement: '복잡하거나 말로 설명하기 어려운 일은 바로 시키지 말고 `/plan`으로 계획부터 세우게 한다.',
     detail: '계획 모드에서 Codex가 맥락을 모으고 되물어 계획을 세운 뒤 구현에 들어간다(`/plan` 또는 Shift+Tab). 무엇을 만들지 흐릿할 때는 「나를 인터뷰하고 내 가정을 반박하라」고 시켜 요구를 구체화한 다음 코드를 쓰게 한다. 다단계·복잡한 작업에서 계획을 건너뛰는 것을 문서가 흔한 실수로 꼽는다.',
     /* 팁은 셀 값이 아니라 행동을 바꾸는 문장이라 `value`가 빕니다. */
@@ -776,6 +806,7 @@ export const playbookClaims: Claim[] = [
     id: 'openai-tip-01',
     subject: { kind: 'vendor', id: 'openai' },
     topic: 'habit',
+    group: 'model',
     statement: '추론 강도는 필요한 결과가 나오는 가장 낮은 단계에서 시작하고 모자랄 때만 올린다.',
     detail: '강도를 올리면 복잡한 일에서 품질이 좋아질 수 있지만 시간이 더 걸리고 토큰을 더 쓴다. 문서의 기준은 Light(CLI는 Low)가 범위가 분명한 빠른 일, Medium이 계획이 더 필요한 일, High·Extra High가 단계·소스·트레이드오프가 많은 어려운 일이다. Max·Ultra는 「대부분의 작업에 필요 없다」 — Ultra는 일을 의미 있는 조각으로 나눌 수 있을 때만 고른다. GPT-5.5의 강도와 GPT-5.6의 강도는 정확히 대응하지 않으므로 익숙한 일을 한 단 낮춰 보고 맞춘다.',
     /* 팁은 셀 값이 아니라 행동을 바꾸는 문장이라 `value`가 빕니다. */
@@ -788,6 +819,7 @@ export const playbookClaims: Claim[] = [
     id: 'openai-tip-02',
     subject: { kind: 'vendor', id: 'openai' },
     topic: 'habit',
+    group: 'load',
     statement: 'OpenAI API를 직접 부를 때는 앞 턴을 고쳐 쓰지 말고 뒤에 덧붙이고, 고정 지침과 공유 참고자료를 맨 앞에 둔다.',
     detail: '프리픽스가 그대로일 때만 캐시가 맞는다. 여러 턴짜리에서는 처음 지침만 캐싱하는 것보다 자라나는 대화 기록을 통째로 재사용하는 쪽이 아끼는 입력 토큰이 더 크다. 도구는 정의·순서·스키마를 그대로 두고, 잠시 막고 싶으면 정의를 빼지 말고 `tool_choice`를 `none`으로 둔다. 모델·도구·`reasoning.effort`·`text.verbosity`·컨텍스트 관리 설정을 바꾸면 그 지점 뒤로는 캐시가 안 맞는다.',
     /* 팁은 셀 값이 아니라 행동을 바꾸는 문장이라 `value`가 빕니다. */
@@ -800,6 +832,7 @@ export const playbookClaims: Claim[] = [
     id: 'chatgpt-work-tip-01',
     subject: { kind: 'product', id: 'chatgpt-work' },
     topic: 'habit',
+    group: 'feed',
     statement: '업무 작업에는 소스를 통째로 붙이지 말고 결과를 바꾸는 것만 넣고 기간을 잘라 준다.',
     detail: '문서가 「검토할 결과 하나로 시작하라」며 첫 줄에 두는 항목이다. 이어서 대상 독자·출력 형식·길이를 정하고, 꼭 해야 할 일과 있으면 좋은 다듬기를 갈라 적으라고 한다. 소스마다 무엇을 가져와야 하는지도 함께 적는다 — 어떤 검색을 돌릴지 일일이 지시할 필요는 없다.',
     /* 팁은 셀 값이 아니라 행동을 바꾸는 문장이라 `value`가 빕니다. */
@@ -812,6 +845,7 @@ export const playbookClaims: Claim[] = [
     id: 'chatgpt-work-tip-02',
     subject: { kind: 'product', id: 'chatgpt-work' },
     topic: 'habit',
+    group: 'feed',
     statement: '짧은 질문·리라이트·브레인스토밍은 Work로 보내지 않는다 — Work는 소스·도구가 여럿이거나 여러 단계를 거칠 때다.',
     detail: '문서는 크레딧을 더 쓰는 작업이라도 시간을 아끼거나 품질을 올리면 값어치를 한다고 보되 갈라 쓰는 기준을 이렇게 못 박고, 하던 일이 더는 필요 없는 방향으로 흘러가면 범위를 좁히거나 중단하라고 한다("Narrow or stop the task if it starts doing work you no longer need.").',
     /* 팁은 셀 값이 아니라 행동을 바꾸는 문장이라 `value`가 빕니다. */
@@ -824,6 +858,7 @@ export const playbookClaims: Claim[] = [
     id: 'chatgpt-tip-01',
     subject: { kind: 'product', id: 'chatgpt' },
     topic: 'habit',
+    group: 'cut',
     statement: '산출물이 달라지면 채팅을 나누고, 여러 채팅이 함께 쓰는 파일·지침은 프로젝트에 둔다.',
     detail: '프로젝트가 파일·지침·연결 소스를 채팅들에 공유하므로 채팅을 나눠도 맥락을 다시 붙여 넣지 않는다. 반대로 여러 단계를 거치는 한 가지 일은 같은 채팅에서 이어 간다 — 같은 맥락이 있어야 다음 걸음과 완료 시점을 판단한다. 한 요청에만 필요한 파일은 프로젝트가 아니라 그 채팅에 직접 붙인다.',
     /* 팁은 셀 값이 아니라 행동을 바꾸는 문장이라 `value`가 빕니다. */
@@ -836,6 +871,7 @@ export const playbookClaims: Claim[] = [
     id: 'chatgpt-tip-02',
     subject: { kind: 'product', id: 'chatgpt' },
     topic: 'habit',
+    group: 'load',
     statement: '채팅마다 되풀이해 적는 선호는 설정 > 개인 맞춤의 커스텀 인스트럭션으로 올린다.',
     detail: '역할·말투·형식처럼 모든 대화에 걸리는 선호를 한 번 적어 두면 새 대화마다 자동으로 실려 프롬프트 앞머리를 다시 쓰지 않는다. 프롬프트에는 그 채팅에서만 결과를 바꾸는 것만 남긴다 — 문서는 소스도 같은 기준으로 「중요한 것만 넣고 각각에서 무엇을 가져올지 적으라」고 한다.',
     /* 팁은 셀 값이 아니라 행동을 바꾸는 문장이라 `value`가 빕니다. */
@@ -848,6 +884,7 @@ export const playbookClaims: Claim[] = [
     id: 'codex-tip-07',
     subject: { kind: 'product', id: 'codex' },
     topic: 'habit',
+    group: 'load',
     statement: 'MCP 서버를 통째로 붙이지 말고 쓸 도구만 골라 켠다.',
     detail: '도구 정의는 매 턴 프롬프트 앞에 다시 실린다. 도구 하나가 550~1,400 토큰이라 93개짜리 서버 하나가 턴당 5만 토큰대를 먹고, 셋으로 좁히면 3천 토큰대가 된다.',
     /* 팁은 셀 값이 아니라 행동을 바꾸는 문장이라 `value`가 빕니다. */
@@ -865,6 +902,7 @@ export const playbookClaims: Claim[] = [
     id: 'codex-tip-08',
     subject: { kind: 'product', id: 'codex' },
     topic: 'habit',
+    group: 'cut',
     statement: '95%까지 끌지 말고 60%에서 손으로 압축하고, 압축이 두세 번 쌓이면 지금 상태를 적어 남긴 뒤 이어 간다.',
     detail: '자동 압축은 여유가 없는 상태에서 요약을 만들어 품질이 낮다. 첫 압축은 대개 무해하고 두 번째에서 세부가 날아가며 세 번째에는 초반 설계 결정을 잊는다 — 모델이 이미 답한 것을 다시 묻기 시작하면 그 자리다.',
     /* 팁은 셀 값이 아니라 행동을 바꾸는 문장이라 `value`가 빕니다. */
@@ -882,6 +920,7 @@ export const playbookClaims: Claim[] = [
     id: 'codex-tip-09',
     subject: { kind: 'product', id: 'codex' },
     topic: 'habit',
+    group: 'load',
     statement: '세션 도중에 AGENTS.md·MCP 구성·시스템 지시를 건드리지 않는다.',
     detail: '매 호출에 대화 전체가 다시 가지만 앞부분이 그대로면 캐시로 친다. 앞을 한 글자만 고쳐도 캐시가 통째로 깨지므로, 바뀐 사실은 앞을 고치는 대신 맨 뒤에 한 줄로 덧붙인다.',
     /* 팁은 셀 값이 아니라 행동을 바꾸는 문장이라 `value`가 빕니다. */
@@ -899,6 +938,7 @@ export const playbookClaims: Claim[] = [
     id: 'codex-tip-10',
     subject: { kind: 'product', id: 'codex' },
     topic: 'habit',
+    group: 'cut',
     statement: '계획은 한 세션에서 세워 파일로 남기고, 구현은 그 파일만 들고 새 세션에서 시작한다.',
     detail: '계획 대화는 시행착오와 버려진 안으로 길다. 구현 세션이 그것을 이어받으면 매 턴 같이 실리지만, 결론만 적은 파일 하나를 물려주면 그 길이가 통째로 빠진다.',
     /* 팁은 셀 값이 아니라 행동을 바꾸는 문장이라 `value`가 빕니다. */
@@ -916,6 +956,7 @@ export const playbookClaims: Claim[] = [
     id: 'codex-tip-11',
     subject: { kind: 'product', id: 'codex' },
     topic: 'habit',
+    group: 'model',
     statement: '추론 강도를 작업에 맞춘다 — 문구 다듬기 같은 일은 medium이면 충분하고, 코딩은 high까지, ultra high는 거의 값을 못 한다.',
     detail: '강도는 답의 길이가 아니라 생각의 양을 정한다. 올릴수록 추론 토큰이 서너 배가 되므로, 린트 수정·문구 교체처럼 검증이 쉬운 일을 높은 강도로 돌리는 것이 가장 흔한 낭비다.',
     /* 팁은 셀 값이 아니라 행동을 바꾸는 문장이라 `value`가 빕니다. */
@@ -933,6 +974,7 @@ export const playbookClaims: Claim[] = [
     id: 'codex-tip-12',
     subject: { kind: 'product', id: 'codex' },
     topic: 'habit',
+    group: 'load',
     statement: '저장소를 훑게 두지 말고 어디에 무엇이 있는지 적은 지도를 AGENTS.md에 둔다.',
     detail: '에이전트는 답을 찾기 전에 검색과 파일 읽기로 바닥부터 쌓아 올린다. 지도를 주면 파일 쉰 개 대신 세 개를 읽는다 — 토큰은 압축이 아니라 안 읽는 데서 아낀다.',
     /* 팁은 셀 값이 아니라 행동을 바꾸는 문장이라 `value`가 빕니다. */
@@ -950,6 +992,7 @@ export const playbookClaims: Claim[] = [
     id: 'chatgpt-tip-03',
     subject: { kind: 'product', id: 'chatgpt' },
     topic: 'habit',
+    group: 'load',
     statement: '저장된 메모리를 주기적으로 쳐내고, 안 맞는 일에서는 참조를 꺼 둔다.',
     detail: '저장된 메모리는 대화마다 통째로 다시 들어간다. 쌓일수록 매 질문의 고정 비용이 되고, 낡은 선호가 답을 엉뚱한 쪽으로 끌어당긴다.',
     /* 팁은 셀 값이 아니라 행동을 바꾸는 문장이라 `value`가 빕니다. */
@@ -967,6 +1010,7 @@ export const playbookClaims: Claim[] = [
     id: 'chatgpt-tip-04',
     subject: { kind: 'product', id: 'chatgpt' },
     topic: 'habit',
+    group: 'cut',
     statement: '대화가 무거워지면 「지금까지 정한 것」을 한 덩어리로 받아 새 대화에 붙이고 옛 대화는 버린다.',
     detail: '한 대화 안에서는 이전 주고받기가 매 턴 다시 실린다. 결론만 남긴 덩어리로 옮기면 그동안의 시행착오가 통째로 빠진다.',
     /* 팁은 셀 값이 아니라 행동을 바꾸는 문장이라 `value`가 빕니다. */
@@ -984,6 +1028,7 @@ export const playbookClaims: Claim[] = [
     id: 'chatgpt-tip-05',
     subject: { kind: 'product', id: 'chatgpt' },
     topic: 'habit',
+    group: 'feed',
     statement: '스캔본·표가 겹친 PDF는 그대로 올리지 말고 마크다운으로 바꿔 올린다 — 본문만 깔끔한 PDF에서는 차이가 크지 않다.',
     detail: 'PDF에서 뽑히는 것에는 레이아웃과 인코딩 부스러기가 섞인다. 보통 문서에서 30~50%, 스캔본이면 90% 넘게 줄었다는 비교가 있다.',
     /* 팁은 셀 값이 아니라 행동을 바꾸는 문장이라 `value`가 빕니다. */
@@ -1001,6 +1046,7 @@ export const playbookClaims: Claim[] = [
     id: 'chatgpt-work-tip-03',
     subject: { kind: 'product', id: 'chatgpt-work' },
     topic: 'habit',
+    group: 'load',
     statement: '커넥터는 팀이 실제로 쓰는 두셋만 켜고 답을 대조할 수 있는 팀에서 시작한다.',
     detail: '켜 둔 앱이 늘수록 찾아 오는 범위가 넓어지고 사람이 확인해야 하는 자리도 함께 는다. 근거를 확인할 수 있는 팀 하나에서 두셋으로 시작해 넓히는 것이 자리 잡는 순서다.',
     /* 팁은 셀 값이 아니라 행동을 바꾸는 문장이라 `value`가 빕니다. */
@@ -1018,6 +1064,7 @@ export const playbookClaims: Claim[] = [
     id: 'gemini-app-tip-01',
     subject: { kind: 'product', id: 'gemini-app' },
     topic: 'habit',
+    group: 'load',
     statement: '매번 다시 적는 긴 지침은 Gem으로 저장하고 대화는 짧은 요청만 보낸다.',
     detail: '되풀이하는 작업의 역할·어조·출력 형식을 Gem에 한 번 넣어 두면 매 대화 첫머리에 같은 문단을 다시 붙여 넣지 않아도 된다. Google이 Gems를 권하는 자리가 정확히 「가장 반복적인 작업」이다.',
     /* 팁은 셀 값이 아니라 행동을 바꾸는 문장이라 `value`가 빕니다. */
@@ -1030,6 +1077,7 @@ export const playbookClaims: Claim[] = [
     id: 'gemini-app-tip-02',
     subject: { kind: 'product', id: 'gemini-app' },
     topic: 'habit',
+    group: 'feed',
     statement: 'Deep Research는 돌리기 전에 조사 계획을 먼저 고친다.',
     detail: '프롬프트를 넣으면 Gemini가 다중 포인트 조사 계획을 먼저 내놓고, 그 계획은 실행 전에 사용자가 직접 손볼 수 있다. 엉뚱한 범위로 한 번 다 돌린 뒤 다시 시키는 것이 Deep Research에서 가장 비싼 실수다.',
     /* 팁은 셀 값이 아니라 행동을 바꾸는 문장이라 `value`가 빕니다. */
@@ -1042,6 +1090,7 @@ export const playbookClaims: Claim[] = [
     id: 'antigravity-tip-01',
     subject: { kind: 'product', id: 'antigravity' },
     topic: 'habit',
+    group: 'cut',
     statement: '작업 파일은 살리고 대화만 비울 때는 previous_interaction_id를 빼고 environment만 넘긴다.',
     detail: '대화 맥락과 샌드박스 상태는 서로 다른 축이다. 맥락이 지저분해졌다고 통째로 새로 시작하면 설치한 패키지와 만든 파일까지 날아가 다시 만드는 토큰이 든다. 같은 작업 공간에서 대화만 새로 판다.',
     /* 팁은 셀 값이 아니라 행동을 바꾸는 문장이라 `value`가 빕니다. */
@@ -1054,6 +1103,7 @@ export const playbookClaims: Claim[] = [
     id: 'antigravity-tip-02',
     subject: { kind: 'product', id: 'antigravity' },
     topic: 'habit',
+    group: 'load',
     statement: '오래 가는 지침은 AGENTS.md에 두고 system_instruction에는 호출마다 바뀌는 것만 적는다.',
     detail: '둘은 더해져서 함께 적용되므로 같은 내용을 양쪽에 적으면 매 호출마다 두 벌이 들어간다. 페르소나·긴 가이드라인은 코드와 함께 버전 관리되는 AGENTS.md로 내리고, 호출별 조정만 인라인으로 넘긴다.',
     /* 팁은 셀 값이 아니라 행동을 바꾸는 문장이라 `value`가 빕니다. */
@@ -1066,6 +1116,7 @@ export const playbookClaims: Claim[] = [
     id: 'google-tip-01',
     subject: { kind: 'vendor', id: 'google' },
     topic: 'habit',
+    group: 'load',
     statement: '크고 여러 요청에 공통인 내용은 프롬프트 맨 앞에 몰아 둔다.',
     detail: '암묵 캐싱은 접두사가 같을 때 걸린다. 공통 자료를 뒤에 두거나 요청마다 순서를 바꾸면 접두사가 깨져 캐시가 안 붙는다. 2.5 계열은 2,048토큰, 3 계열은 4,096토큰이 최소 문턱이다.',
     /* 팁은 셀 값이 아니라 행동을 바꾸는 문장이라 `value`가 빕니다. */
@@ -1078,6 +1129,7 @@ export const playbookClaims: Claim[] = [
     id: 'google-tip-02',
     subject: { kind: 'vendor', id: 'google' },
     topic: 'habit',
+    group: 'load',
     statement: '같은 자료를 두고 물을 것이 여럿이면 짧은 시간 안에 몰아서 보낸다.',
     detail: '캐시는 시간이 지나면 식는다. 같은 접두사를 쓰는 질문을 하루에 흩어 보내면 매번 전액을 내고, 붙여서 보내면 뒤의 요청들이 캐시 적중으로 깎인다.',
     /* 팁은 셀 값이 아니라 행동을 바꾸는 문장이라 `value`가 빕니다. */
@@ -1090,6 +1142,7 @@ export const playbookClaims: Claim[] = [
     id: 'google-tip-03',
     subject: { kind: 'vendor', id: 'google' },
     topic: 'habit',
+    group: 'load',
     statement: '문맥이 길면 질문은 자료 앞이 아니라 맨 뒤에 붙인다.',
     detail: '긴 문맥에서 질문을 앞에 두면 답 품질이 떨어져 되묻게 되고, 되묻는 한 번이 그 긴 문맥을 통째로 다시 태운다. 캐시 접두사 규칙과도 같은 방향이다 — 공통 자료가 앞, 그날의 질문이 뒤다.',
     /* 팁은 셀 값이 아니라 행동을 바꾸는 문장이라 `value`가 빕니다. */
@@ -1102,6 +1155,7 @@ export const playbookClaims: Claim[] = [
     id: 'google-tip-04',
     subject: { kind: 'vendor', id: 'google' },
     topic: 'habit',
+    group: 'model',
     statement: '출력이 긴 작업에서는 모델에게 덜 생각하라고 명시한다.',
     detail: '긴 글을 뽑는 일은 사고 토큰이 아니라 출력 토큰이 일한다. 사고를 줄이라고 적어 두면 같은 결과에 토큰이 덜 든다. max_output_tokens를 조이는 것으로 대신하면 사고와 출력이 함께 잘려 답이 끊긴다.',
     /* 팁은 셀 값이 아니라 행동을 바꾸는 문장이라 `value`가 빕니다. */
@@ -1114,6 +1168,7 @@ export const playbookClaims: Claim[] = [
     id: 'google-tip-05',
     subject: { kind: 'vendor', id: 'google' },
     topic: 'habit',
+    group: 'model',
     statement: 'Gemini 3로 옮길 때는 chain-of-thought 프롬프트를 걷어내고 thinking_level: "high"로 대신한다.',
     detail: '2.5에서 추론을 끌어내려고 붙여 둔 단계별 지시 문단이 3에서는 중복이다. 프롬프트를 단순하게 줄이면 매 호출의 입력이 그만큼 줄고 모델이 헤매지도 않는다.',
     /* 팁은 셀 값이 아니라 행동을 바꾸는 문장이라 `value`가 빕니다. */
@@ -1126,6 +1181,7 @@ export const playbookClaims: Claim[] = [
     id: 'google-tip-06',
     subject: { kind: 'vendor', id: 'google' },
     topic: 'habit',
+    group: 'feed',
     statement: 'PDF·영상으로 문맥 창이 넘치면 media_resolution을 명시적으로 낮춘다.',
     detail: 'Gemini 3는 기본 해상도가 올라가 같은 PDF가 2.5보다 토큰을 더 먹는다. 영상은 media_resolution을 low로 두면 프레임당 258토큰이 66토큰이 된다(영상 이해 문서).',
     /* 팁은 셀 값이 아니라 행동을 바꾸는 문장이라 `value`가 빕니다. */
@@ -1138,6 +1194,7 @@ export const playbookClaims: Claim[] = [
     id: 'gemini-cli-tip-01',
     subject: { kind: 'product', id: 'gemini-cli' },
     topic: 'habit',
+    group: 'cut',
     statement: '컨텍스트가 15~20%쯤 차면 이어가지 말고 세션을 새로 판다.',
     detail: '긴 세션에서 모델이 지침 파일을 안 지키고 같은 자리를 맴돌기 시작하는 지점이 대체로 그쯤이라는 보고가 반복된다. 한도까지 버티는 것이 이득이 아니라 손해라는 이야기다.',
     /* 팁은 셀 값이 아니라 행동을 바꾸는 문장이라 `value`가 빕니다. */
@@ -1155,6 +1212,7 @@ export const playbookClaims: Claim[] = [
     id: 'gemini-cli-tip-02',
     subject: { kind: 'product', id: 'gemini-cli' },
     topic: 'habit',
+    group: 'feed',
     statement: '--all-files와 디렉터리 통째 @ 참조를 쓰지 말고 파일을 하나씩 짚는다.',
     detail: '저장소를 통째로 올리면 첫 요청부터 100만 토큰 한도를 넘겨 세션이 아예 안 열리고, 그 상태에서는 비우기도 압축도 먹히지 않는다.',
     /* 팁은 셀 값이 아니라 행동을 바꾸는 문장이라 `value`가 빕니다. */
@@ -1172,6 +1230,7 @@ export const playbookClaims: Claim[] = [
     id: 'gemini-cli-tip-03',
     subject: { kind: 'product', id: 'gemini-cli' },
     topic: 'habit',
+    group: 'load',
     statement: 'Gemini API에서는 프롬프트 앞을 고정해도 암묵 캐시가 절반쯤에서 오락가락하니 캐시 적중을 비용 계산의 전제로 두지 않는다.',
     detail: '앞부분이 9천 토큰 넘게 같아도 뒤가 매번 달라지면 암묵 캐시 적중이 절반쯤에서 오락가락한다. 확실히 아끼려면 요청을 통째로 같게 만들거나 명시 캐시를 쓴다.',
     /* 팁은 셀 값이 아니라 행동을 바꾸는 문장이라 `value`가 빕니다. */
@@ -1189,6 +1248,7 @@ export const playbookClaims: Claim[] = [
     id: 'antigravity-tip-03',
     subject: { kind: 'product', id: 'antigravity' },
     topic: 'habit',
+    group: 'model',
     statement: '기본을 Gemini 3 Low·Flash로 두고, 같은 일을 서너 번 실패한 뒤에만 High로 올린다.',
     detail: '높은 사고 강도는 화면에 안 보이는 사고 토큰을 그만큼 더 쓴다. 일상 수정의 대부분은 낮은 강도로 끝나고, 안 될 때 올리는 편이 처음부터 높게 두는 것보다 싸다.',
     /* 팁은 셀 값이 아니라 행동을 바꾸는 문장이라 `value`가 빕니다. */
@@ -1206,6 +1266,7 @@ export const playbookClaims: Claim[] = [
     id: 'antigravity-tip-04',
     subject: { kind: 'product', id: 'antigravity' },
     topic: 'habit',
+    group: 'feed',
     statement: '오래 걸리는 작업은 에디터에서 주고받지 말고 Agent Manager에 큐로 걸어 두고 자리를 뜬다.',
     detail: '인라인 대화는 한 마디마다 맥락을 다시 실어 보내 왕복이 값을 치르고, 위임한 작업은 에이전트가 제 계획으로 한 번에 돈다. 여러 건을 큐로 걸어 두는 쓰임이 굳어 있다.',
     /* 팁은 셀 값이 아니라 행동을 바꾸는 문장이라 `value`가 빕니다. */
@@ -1223,6 +1284,7 @@ export const playbookClaims: Claim[] = [
     id: 'antigravity-tip-05',
     subject: { kind: 'product', id: 'antigravity' },
     topic: 'habit',
+    group: 'load',
     statement: '1.20.5 이후 판에서 한도가 유난히 빨리 닳으면 Settings › Models의 AI Credits 토글이 켜져 있는지 먼저 본다.',
     detail: '이 토글을 켠 뒤로 한도가 눈에 띄게 빨리 닳았다는 보고가 특정 버전 이후로 모인다. 켜 둘 이유가 없으면 꺼 두고 쓰는 쪽이 굳어 있다.',
     /* 팁은 셀 값이 아니라 행동을 바꾸는 문장이라 `value`가 빕니다. */
@@ -1240,6 +1302,7 @@ export const playbookClaims: Claim[] = [
     id: 'gemini-app-tip-03',
     subject: { kind: 'product', id: 'gemini-app' },
     topic: 'habit',
+    group: 'cut',
     statement: '한 대화에 프로젝트를 몰아넣지 말고 스물다섯 마디쯤에서 새 대화로 쪼갠다.',
     detail: '긴 대화에서 처음에 못 박은 형식·제약을 잊고 앞서 준 코드 블록을 버린다는 보고가 유료 사용자들 사이에 반복된다. 100만 토큰이라는 숫자가 앱 대화에서는 그대로 안 나온다는 이야기다.',
     /* 팁은 셀 값이 아니라 행동을 바꾸는 문장이라 `value`가 빕니다. */
