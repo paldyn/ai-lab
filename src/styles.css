@@ -7405,7 +7405,13 @@ input:focus-visible {
   height: 30px;
   align-items: center;
   gap: var(--gs-r1);
-  padding: 0 var(--gs-r2) 0 26px;
+  /*
+    **들여쓰기는 6px이면 족하다.** 26px이었는데, 브랜드색 띠를 걷어내고 나니 고른
+    줄에서 **로고 앞의 빈 칠이 26px**이나 되어 왼쪽이 허해 보였다. 층은 들여쓰기가
+    아니라 기업 줄의 모노 대문자와 괘선이 이미 가르고 있으므로, 여기서 더 밀 이유가
+    없다. 12(기업) + 6 = 18px이라 스케일 밖 값도 안 생긴다.
+  */
+  padding: 0 var(--gs-r2) 0 calc(var(--gs-r2) + var(--gs-r1));
   color: var(--text-dim);
   transition: color 150ms ease, background-color 150ms ease;
 }
