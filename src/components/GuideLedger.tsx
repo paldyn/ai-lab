@@ -257,15 +257,18 @@ function TipBlock({ tips, today, scope }: { tips: Claim[]; today: string; scope:
         <section key={group.id} className={`guide-tip-group is-${group.id}`}>
           <header className="guide-tip-group-head">
             {/*
+              **번호가 질문과 한 줄에 섭니다.** 그 위에 모노 별명을 한 줄 더 세웠다가
+              걷어냈습니다 — 질문이 이미 그 말을 하고 있어 같은 말을 두 번 하는 줄이었고,
+              넷이 시점·비유·되풀이로 제각각이라 위계가 아니라 얼룩이었습니다.
+
               차례는 배열 자리가 아니라 **선 묶음 중 몇 번째**입니다. 빈 묶음을
               건너뛰므로, 팁 둘짜리 화면에서 홀로 선 묶음이 「04」로 서면 앞의 셋을
               찾게 됩니다 — 없는 것을 가리키는 번호입니다.
             */}
-            <p className="guide-tip-stage">
+            <h4 className="guide-tip-question">
               <span className="guide-tip-no">{String(i + 1).padStart(2, '0')}</span>
-              {group.stage}
-            </p>
-            <h4 className="guide-tip-question">{group.question}</h4>
+              {group.question}
+            </h4>
             {leversOf(rows).length > 0 && (
               <p className="guide-tip-levers">
                 {leversOf(rows).map((lever) => (
