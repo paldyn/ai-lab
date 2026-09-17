@@ -228,41 +228,6 @@ function groupTips(tips: Claim[]) {
 
 const tipAnchor = (scope: string, groupId: string) => `tips-${scope}-${groupId}`;
 
-/**
- * 이 제품을 어떻게 쓰면 좋은가 — **한눈에 보는 넷.**
- *
- * 아래 목록의 머리글 넷을 그대로 위로 올린 지도입니다. 새로 쓰는 문장이 0이고
- * (질문은 이미 `guideTipGroups`에 있습니다) 수는 세어서 나오므로 **늙을 것이
- * 없습니다** — 묶음마다 「한 줄 답」을 지어 붙이는 길을 버린 것과 같은 이유입니다.
- *
- * **넷을 세로로 읽으면 그대로 「이 제품을 쓰면서 물어볼 것들」이 됩니다.** 그게 곧
- * 잘 쓰는 법의 뼈대라, 요약이 따로 필요하지 않습니다.
- */
-function TipMap({
-  groups,
-  scope,
-}: {
-  groups: ReturnType<typeof groupTips>;
-  scope: string;
-}) {
-  return (
-    <nav className="guide-tip-map" aria-label="이렇게 쓰면 아낀다">
-      <p className="guide-ledger-label">이렇게 쓰면 아낀다</p>
-      <ol>
-        {groups.map(({ group, rows }, i) => (
-          <li key={group.id}>
-            <a href={`#${tipAnchor(scope, group.id)}`}>
-              <span className="guide-tip-no">{String(i + 1).padStart(2, '0')}</span>
-              <span className="guide-tip-map-q">{group.question}</span>
-              <span className="guide-tip-map-n">{rows.length}</span>
-            </a>
-          </li>
-        ))}
-      </ol>
-    </nav>
-  );
-}
-
 function TipBlock({ tips, today, scope }: { tips: Claim[]; today: string; scope: string }) {
   const radioName = `tip-tier-${scope}`;
   const segments = (Object.keys(TIER_ORDER) as EvidenceTier[])
@@ -274,12 +239,9 @@ function TipBlock({ tips, today, scope }: { tips: Claim[]; today: string; scope:
 
   return (
     <section className="guide-tips-block">
-      {/*
-        **절 머리글이 여기 없습니다.** 위의 지도(`TipMap`)가 「이렇게 쓰면 아낀다」를
-        이미 적었고, 400px 아래에서 같은 말을 또 하면 그게 「같은 말을 두 번」입니다 —
-        요약 띠를 제품 화면에서 걷어낸 것과 같은 자리입니다. 이 줄에는 거르개만 섭니다.
-      */}
       <div className="guide-tip-head-row">
+        <h3 className="guide-ledger-label">이렇게 쓰면 아낀다</h3>
+
         {tips.length >= FILTER_MIN && segments.length > 1 && (
           /*
             `legend`는 감추지만 지운 게 아닙니다 — 스크린 리더가 「근거로 거르기,
@@ -303,24 +265,27 @@ function TipBlock({ tips, today, scope }: { tips: Claim[]; today: string; scope:
       </div>
 
       {groups.map(({ group, rows }, i) => (
-        <section
+        /*
+          **묶음이 펼쳐집니다**(2026-09-17). 위에 목차를 따로 세우고 눌러서 내려가게
+          했다가 걷어냈습니다 — 같은 질문 넷이 한 화면에 두 벌 서고, 누르면 화면이
+          점프해 「어디로 갔지」가 됩니다. 제자리에서 열리면 목차와 내용이 한 몸이라
+          질문 넷이 그대로 요약이 되고 벌이 하나뿐입니다.
+
+          **`name`을 안 줍니다.** 주면 브라우저가 넷을 배타로 묶어 하나를 열 때 앞서
+          연 것이 닫히는데, 그 묶음이 위에 있으면 보던 내용이 위로 딸려 올라갑니다.
+          여럿을 함께 펼쳐 놓고 견주는 것이 이 화면에서 잦기도 합니다.
+        */
+        <details
           key={group.id}
           id={tipAnchor(scope, group.id)}
           className={`guide-tip-group is-${group.id}`}
         >
-          <header className="guide-tip-group-head">
-            {/*
-              **번호가 질문과 한 줄에 섭니다.** 그 위에 모노 별명을 한 줄 더 세웠다가
-              걷어냈습니다 — 질문이 이미 그 말을 하고 있어 같은 말을 두 번 하는 줄이었고,
-              넷이 시점·비유·되풀이로 제각각이라 위계가 아니라 얼룩이었습니다.
-
-              차례는 배열 자리가 아니라 **선 묶음 중 몇 번째**입니다. 빈 묶음을
-              건너뛰므로, 팁 둘짜리 화면에서 홀로 선 묶음이 「04」로 서면 앞의 셋을
-              찾게 됩니다 — 없는 것을 가리키는 번호입니다.
-            */}
+          <summary className="guide-tip-group-head">
             <h4 className="guide-tip-question">
               <span className="guide-tip-no">{String(i + 1).padStart(2, '0')}</span>
               {group.question}
+              {/* 글자는 CSS가 넣습니다 — 복사한 글에 안 섞이고 여닫힘도 CSS가 맡습니다. */}
+              <span className="guide-tip-count" aria-hidden="true" data-n={rows.length} />
             </h4>
             {leversOf(rows).length > 0 && (
               <p className="guide-tip-levers">
@@ -329,14 +294,14 @@ function TipBlock({ tips, today, scope }: { tips: Claim[]; today: string; scope:
                 ))}
               </p>
             )}
-          </header>
+          </summary>
 
           <div className="guide-tips">
             {rows.map((claim) => (
               <TipRow key={claim.id} state={claimState(claim, today)} />
             ))}
           </div>
-        </section>
+        </details>
       ))}
     </section>
   );
@@ -413,7 +378,6 @@ function ProductLedger({ product, today }: { product: Product; today: string }) 
       </div>
       <p className="guide-ledger-blurb">{product.oneLine}</p>
 
-      {tips.length > 0 && <TipMap groups={groupTips(tips)} scope={product.id} />}
 
 
       {/*
