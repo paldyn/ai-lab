@@ -205,6 +205,16 @@ export interface Claim {
   statement: string;
   /** 화면에 나가는 값. `null`이면 화면에 「모름 · 공식 페이지에서 확인 →」으로 섭니다. */
   value: string | null;
+  /**
+   * 왜 그런가. **`topic: 'habit'`(팁)에만 붙습니다.**
+   *
+   * 팁은 값이 없는 주장입니다 — 「5시간마다 몇 개」처럼 셀 것이 아니라 「언제 세션을
+   * 새로 파나」처럼 **행동을 바꾸는 문장**이라, `statement`가 곧 내용이고 `value`가
+   * 빌 자리입니다. 그런데 팁은 이유를 알아야 따를 수 있으므로 한두 줄이 더 필요합니다.
+   *
+   * 값 주장에는 안 씁니다 — 거기서 설명이 필요하면 그건 `statement`가 덜 써진 것입니다.
+   */
+  detail?: string;
   tier: EvidenceTier;
   volatility: Volatility;
   source: EvidenceSource;

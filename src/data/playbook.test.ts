@@ -100,15 +100,6 @@ describe('AI 가이드 — 본문의 값 참조', () => {
     깨지면 노트가 통째로 거짓이 되는데 **화면에는 아이디만 덩그러니 남아** 눈으로는
     지나치기 쉽습니다. 그래서 여기서 실제로 그려 봅니다.
   */
-  /*
-    **값이 들어가는 것까지는 지금 검사 못 합니다.** 주장 목록이 비어 있어서입니다
-    (2026-09-16에 뼈대를 다시 잡으며 비웠습니다). 여기서 지키는 것은 그 앞 단계 —
-    원고의 `:claim[...]`이 rehype 단계에서 자리를 잡는지까지입니다.
-
-    **첫 주장이 돌아오는 날 되살릴 것**: 값·배지·나이가 실제로 채워지는지, 유효기간이
-    지나면 값이 사라지고 원문 링크로 바뀌는지, `value: null`이 「모름」으로 서는지.
-    셋 다 커밋 `ed4580f`에 있습니다.
-  */
   it('원고의 부르는 자리가 rehype 단계에서 span이 된다', async () => {
     const { html } = await renderMarkdown('Pro 요금은 :claim[claude-pro-price] 입니다.');
     expect(html).toContain('data-claim="claude-pro-price"');
@@ -124,6 +115,21 @@ describe('AI 가이드 — 본문의 값 참조', () => {
     expect(fillClaimRefs(html, '2026-09-16')).toContain('nope-nope');
   });
 
+  /*
+    **2026-09-17에 되살렸습니다.** 주장이 0이던 동안에는 이 검사를 못 세우고
+    「첫 주장이 돌아오는 날 되살릴 것」이라고만 적어 두었습니다. 그날이 왔습니다.
+
+    여기서 지키는 것은 **왕복**입니다 — 원고는 아이디만 부르고 값은 데이터에만
+    있는데, 그 왕복이 깨지면 노트가 통째로 거짓이 되면서도 **화면에는 아이디만
+    덩그러니 남아** 눈으로는 지나치기 쉽습니다.
+  */
+  it('부르는 자리에 실제 값과 나이가 채워진다', async () => {
+    const { html } = await renderMarkdown('Pro 요금은 :claim[claude-pro-price] 입니다.');
+    const filled = fillClaimRefs(html, '2026-09-17');
+    expect(filled).toContain('월 $20');
+    expect(filled).toContain('0일 전');
+  });
+
   it('부르는 자리가 없는 본문은 손대지 않는다', () => {
     const plain = '<p>값을 안 부르는 보통 문단입니다.</p>';
     expect(fillClaimRefs(plain, '2026-09-16')).toBe(plain);
@@ -132,37 +138,41 @@ describe('AI 가이드 — 본문의 값 참조', () => {
 
 describe('AI 가이드 — nav 문턱', () => {
   /*
-    **2026-09-16에 최소선을 넘겼습니다** — 도구 여섯 · 주장 마흔 · 노트 여덟.
-    서랍의 주제를 코딩 에이전트 운용으로 좁히면서 CLI 문서에서 값이 한꺼번에 들어온
-    날입니다.
+    **2026-09-17에 문턱을 넘었습니다.** 팁 예순셋이 들어오면서 주장이 아흔셋이 됐고,
+    그날 아침에 「아직 아래다」로 적어 둔 검사가 오후에 섰습니다 — 채우는 일이
+    검사를 밀어 올린 것이라 그게 정상입니다.
 
-    검사의 방향이 그날 뒤집혔습니다. 그전에는 「지금 안 선다」를 못 박아 **최소선을
-    슬그머니 낮추는 것**을 막았는데, 넘긴 뒤로는 반대쪽이 위험합니다 — 주장이나 노트를
-    지우다가 문턱 아래로 내려가면 화면은 그대로인 채 근거만 사라집니다. 그래서 지금은
-    셋을 각각 재고, 파생값이 그것과 맞는지 함께 봅니다.
+    이제 방향이 뒤집힙니다. 위험한 쪽은 **지우다가 모르게 아래로 내려가는 것**이라,
+    셋을 각각 재고 파생값이 그것과 맞는지 함께 봅니다.
   */
-  /*
-    **2026-09-17부터는 「0이다」가 아니라 「아직 아래다」를 잽니다.** 그날 주장을 다시
-    채우기 시작해 서른이 들어왔는데, 0으로 못 박아 두면 **채울 때마다 이 검사가 섭니다** —
-    일하는 것을 막는 검사가 되고, 그러면 지우는 쪽이 늘 더 쌉니다.
-  */
-  it('최소선 아래라서 아직 안 선다', () => {
-    expect(playbookClaims.length).toBeLessThan(40);
-    expect(playbookIndex.length).toBeLessThan(8);
-    expect(playbookNavVisible('2026-09-17')).toBe(false);
+  it('최소선을 넘겼고 그래서 선다', () => {
+    expect(playbookClaims.length).toBeGreaterThanOrEqual(40);
+    expect(playbookClaims.filter((c) => c.topic === 'habit').length).toBeGreaterThanOrEqual(20);
+    expect(playbookChecks.length).toBeGreaterThan(0);
+    expect(playbookNavVisible('2026-09-17')).toBe(true);
   });
 
   /*
-    **최소선 셋은 그대로 살아 있습니다.** 비웠다고 낮추지 않았습니다 — 다시 채울 때
-    같은 문턱을 넘어야 nav가 섭니다. 여기서 그 수를 못 박아 두어, 문턱을 슬그머니
+    **최소선은 그대로 살아 있습니다.** 여기서 그 수를 못 박아 두어, 문턱을 슬그머니
     낮추면 이 검사가 서게 합니다.
+
+    **2026-09-17에 하나를 갈아 끼웠습니다 — 「노트 여덟」 → 「팁 스물」.** 낮춘 것이
+    아니라 바꾼 것입니다: 노트 개념을 화면에서 걷어내면서 그 조건이 **영원히 못
+    채우는 것**이 됐고, 못 채우는 문턱은 문턱이 아니라 잠금입니다. 문턱의 목적
+    (알맹이 없이 nav에 서지 않는 것)은 그대로이고, 이 서랍의 알맹이가 노트에서
+    팁으로 옮겨 갔으므로 세는 것도 팁입니다.
+
+    이 검사가 섰다면 둘 중 하나입니다 — 문턱을 낮췄거나, 또 갈아 끼웠거나.
+    어느 쪽이든 **이 주석을 고쳐 왜 그랬는지 남기고 지나가야** 합니다.
   */
-  it('최소선 셋이 안 낮아졌다', () => {
+  it('최소선이 안 낮아졌다', () => {
     expect(guideVendors.length).toBeGreaterThanOrEqual(3);
     expect(guideProducts.length).toBeGreaterThanOrEqual(6);
-    expect(playbookNavVisible.toString()).toContain('40');
-    expect(playbookNavVisible.toString()).toContain('6');
-    expect(playbookNavVisible.toString()).toContain('8');
+    const rule = playbookNavVisible.toString();
+    expect(rule).toContain('40'); // 주장
+    expect(rule).toContain('20'); // 팁
+    expect(rule).toContain('6'); // 제품
+    expect(rule).toContain('3'); // 기업
   });
 
   it('확인 로그가 오래 비면 안 선다', () => {

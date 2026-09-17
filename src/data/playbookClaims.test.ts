@@ -203,11 +203,31 @@ describe('AI 가이드 — 주장', () => {
     expect(vague.map((c) => c.id)).toEqual([]);
   });
 
+  /*
+    **팁은 빼고 셉니다.** `topic: 'habit'`은 값이 없는 것이 정상이라(행동을 바꾸는
+    문장이지 세는 값이 아닙니다) 할 일 목록에 들어가면 목록이 팁으로 뒤덮여 정작
+    못 채운 값이 안 보입니다.
+  */
   it('제품마다 할 일 목록이 모르는 값에서 나온다', () => {
     for (const product of guideProducts) {
       const open = productOpenItems(product.id);
-      const nulls = claimsForProduct(product.id).filter((c) => c.value === null);
+      const nulls = claimsForProduct(product.id).filter(
+        (c) => c.value === null && c.topic !== 'habit',
+      );
       expect(open.length).toBe(nulls.length);
     }
+  });
+
+  /* 팁에만 이유가 붙습니다 — 값 주장에 설명이 필요하면 `statement`가 덜 써진 것입니다. */
+  it('이유는 팁에만 붙는다', () => {
+    const bad = playbookClaims.filter((c) => c.detail && c.topic !== 'habit');
+    expect(bad.map((c) => c.id)).toEqual([]);
+  });
+
+  it('팁에는 이유가 있고 값이 없다', () => {
+    const bad = playbookClaims
+      .filter((c) => c.topic === 'habit')
+      .filter((c) => !c.detail?.trim() || c.value !== null);
+    expect(bad.map((c) => c.id)).toEqual([]);
   });
 });

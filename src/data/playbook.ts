@@ -205,6 +205,12 @@ export function productFreshness(productId: string, today: string): ProductFresh
 export function productOpenItems(productId: string): string[] {
   return claimsForProduct(productId)
     .filter((c) => c.value === null)
+    /*
+      **팁은 못 채운 값이 아닙니다.** `topic: 'habit'`은 값이 없는 것이 정상이라
+      (「세션을 언제 새로 파나」는 셀 것이 아닙니다) 할 일 목록에 넣으면 목록이
+      팁으로 뒤덮여 **정작 못 채운 값이 안 보입니다.**
+    */
+    .filter((c) => c.topic !== 'habit')
     .map((c) => c.statement);
 }
 
@@ -239,7 +245,15 @@ export function playbookNavVisible(today: string): boolean {
   if (guideVendors.length < 3) return false;
   if (guideProducts.length < 6) return false;
   if (playbookClaims.length < 40) return false;
-  if (playbookIndex.length < 8) return false;
+  /*
+    **노트 여덟에서 팁 스물로 바꿨습니다**(2026-09-17). 노트 개념을 화면에서
+    걷어내면서 그 조건은 **영원히 못 채우는 것**이 됐고, 못 채우는 문턱은 문턱이
+    아니라 잠금입니다.
+
+    문턱의 목적은 그대로입니다 — **알맹이 없이 nav에 서지 않는 것.** 이 서랍의
+    알맹이가 노트에서 팁으로 옮겨 갔으므로 세는 것도 팁입니다.
+  */
+  if (playbookClaims.filter((c) => c.topic === 'habit').length < 20) return false;
 
   const last = playbookChecks.at(-1);
   if (!last || daysBetween(last.date, today) > 21) return false;

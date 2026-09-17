@@ -1,6 +1,7 @@
 import type { CSSProperties } from 'react';
 import { Link } from 'react-router';
 import { ClaimRow } from './ClaimRow';
+import { TipRow } from './TipRow';
 import { claimState, claimsForProduct, claimsForVendor } from '../data/playbook';
 import { playbookClaims } from '../data/playbookClaims';
 import { guideModelById } from '../data/guideModels';
@@ -129,7 +130,17 @@ function ProductLedger({ product, today }: { product: Product; today: string }) 
     컨텍스트 창은 모델 줄에서 값으로 보여 주므로 위 목록에서 뺍니다 — 같은 값을
     두 번 그리면 「아는 값」이 부풀어 보입니다.
   */
-  const usage = claims.filter((c) => c.topic !== 'context');
+  /*
+    **팁이 맨 위입니다.** 읽는 사람이 찾는 것은 「세션을 언제 새로 파나」이지 요금이
+    아닙니다 — 요금·한도는 거드는 값이라 아래로 내립니다.
+
+    공식을 먼저, 체감을 뒤에 둡니다. 배지가 이미 가르지만 섞어 놓으면 눈이 배지를
+    하나씩 읽어야 합니다.
+  */
+  const tips = claims
+    .filter((c) => c.topic === 'habit')
+    .sort((a, b) => (a.tier === b.tier ? 0 : a.tier === 'vendor' ? -1 : 1));
+  const usage = claims.filter((c) => c.topic !== 'context' && c.topic !== 'habit');
   const contextOf = new Map(
     claims.filter((c) => c.topic === 'context').map((c) => [c.subject.id, c]),
   );
@@ -151,12 +162,12 @@ function ProductLedger({ product, today }: { product: Product; today: string }) 
       </p>
       <p className="guide-ledger-blurb">{product.oneLine}</p>
 
-      {usage.length > 0 && (
+      {tips.length > 0 && (
         <>
-          <h3 className="guide-ledger-label">얼마이고 한도가 어떻게 차나</h3>
-          <div className="claim-list">
-            {usage.map((claim) => (
-              <ClaimRow key={claim.id} state={claimState(claim, today)} />
+          <h3 className="guide-ledger-label">이렇게 쓰면 아낀다</h3>
+          <div className="guide-tips">
+            {tips.map((claim) => (
+              <TipRow key={claim.id} state={claimState(claim, today)} />
             ))}
           </div>
         </>
@@ -206,6 +217,17 @@ function ProductLedger({ product, today }: { product: Product; today: string }) 
         ))}
       </ul>
       <p className="guide-ledger-note">표면이 달라도 엔진은 하나입니다 — 별개 제품이 아닙니다.</p>
+
+      {usage.length > 0 && (
+        <>
+          <h3 className="guide-ledger-label">얼마이고 한도가 어떻게 차나</h3>
+          <div className="claim-list">
+            {usage.map((claim) => (
+              <ClaimRow key={claim.id} state={claimState(claim, today)} />
+            ))}
+          </div>
+        </>
+      )}
 
       <OfficialLinks rows={links} />
 

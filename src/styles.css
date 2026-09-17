@@ -7705,6 +7705,84 @@ input:focus-visible {
 }
 
 /*
+  팁 목록. **이 서랍이 실제로 파는 것이라 가장 먼저, 가장 읽기 좋게 섭니다.**
+  값 줄과 달리 수가 없고 문장이 주인공이라 3열 격자를 안 쓰고 한 단으로 흐릅니다.
+*/
+.guide-tips {
+  margin-top: var(--gs-r2);
+  max-width: var(--gs-measure);
+  border-top: 1px solid var(--guide-rule);
+}
+
+.guide-tip {
+  border-bottom: 1px solid var(--guide-rule);
+  padding-block: var(--gs-r3);
+}
+
+.guide-tip-statement {
+  color: var(--text-strong);
+  font-size: var(--gs-lead);
+  font-weight: 600;
+  line-height: 1.65;
+  text-wrap: pretty;
+}
+
+/*
+  **체감 팁은 한 단 흐리게 섭니다.** 값 쪽에서 현장 값을 굵게 안 쓰고 `~`를 다는 것과
+  같은 규칙입니다 — 배지만으로는 공식과 같아 보입니다.
+*/
+.guide-tip.is-field .guide-tip-statement {
+  color: var(--text);
+  font-weight: 500;
+}
+
+.guide-tip-detail {
+  margin-top: var(--gs-r1);
+  color: var(--text-dim);
+  font-size: var(--gs-body);
+  line-height: 1.75;
+  text-wrap: pretty;
+}
+
+/*
+  반례. **숨기면 통설이 공식처럼 읽힙니다** — 이 줄이 곧 그 팁이 실측이 아닌 이유라
+  접거나 흐려 두지 않고 제 자리에 세웁니다.
+*/
+.guide-tip-counter {
+  margin-top: var(--gs-r2);
+  border-left: 1px dashed var(--guide-rule);
+  padding-left: var(--gs-r2);
+  color: var(--text-muted);
+  font-size: var(--gs-body);
+  line-height: 1.7;
+}
+
+.guide-tip-counter-label {
+  margin-right: var(--gs-r1);
+  color: var(--text-dim);
+  font-family: var(--font-mono);
+  font-size: var(--gs-mono);
+  letter-spacing: 0.08em;
+}
+
+.guide-tip-meta {
+  display: flex;
+  align-items: center;
+  gap: var(--gs-r1);
+  margin-top: var(--gs-r2);
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+  font-size: var(--gs-mono);
+  letter-spacing: 0.04em;
+}
+
+.guide-tip-meta a {
+  color: inherit;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+/*
   고를 수 있는 모델. **이름만 늘어놓던 줄에 값을 붙였습니다** — 어느 모델을 고를지는
   컨텍스트 창을 보고 정하는데, 그 값이 다른 절에 따로 서 있으면 눈이 오갑니다.
   라벨 열을 안 쓰고 이름과 값을 양끝에 붙입니다 — 이름 길이가 제각각이라
