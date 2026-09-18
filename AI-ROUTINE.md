@@ -586,11 +586,16 @@ draft: false
 ### 검증
 ```bash
 npm test
+npm run lint
 npm run build
 ```
 `npm test`가 frontmatter 필수 필드와 내부 링크, 에셋 존재, 닫히지 않은 강조,
 그리고 **마무리 블록의 지난 글·다음 글이 사슬과 맞는지**를 확인하고,
-`npm run build`가 타입과 KaTeX 수식을 본다. 둘 다 통과해야 커밋한다.
+`npm run build`가 타입과 KaTeX 수식을 본다. 셋 다 통과해야 커밋한다.
+
+**`npm test`는 lint를 태우지 않는다.** 2026-09-17에 `main`이 며칠 빨간 채로 있었는데,
+`npm test`만 돌리는 루틴 넷이 아무도 못 보고 lint를 돌리는 시험 노트 루틴이 처음 밟았다.
+내 글과 무관한 곳에서 서면 콘텐츠와 섞지 말고 따로 끊어 고친다.
 
 ## 네 편을 마친 뒤 — 커밋 & main 반영 (필수)
 ```bash

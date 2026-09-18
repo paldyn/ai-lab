@@ -589,10 +589,14 @@ model 블록을 붙이지 않는다.** family가 Claude·Gemini·GPT 셋 중 하
 
 ```bash
 npm test
+npm run lint
 npm run build
 ```
 
-둘 다 통과해야 커밋한다. **파이프로 넘기지 마라** — `npm test | tail`처럼 쓰면
+셋 다 통과해야 커밋한다. **`npm test`는 lint를 태우지 않는다** — 2026-09-17에 `main`이
+며칠 빨간 채로 있었는데, `npm test`만 돌리는 루틴 넷이 아무도 못 보고 lint를 돌리는
+시험 노트 루틴이 처음 밟았다. 내 항목과 무관한 곳에서 서면 데이터와 섞지 말고 따로
+끊어 고친다. **파이프로 넘기지 마라** — `npm test | tail`처럼 쓰면
 실패해도 종료 코드가 0이 되어 통과로 착각한다. 실제로 그렇게 배포를 세운 적이 있다.
 꼭 잘라 봐야 하면 `npm test 2>&1 | tail -25; echo "EXIT=${PIPESTATUS[0]}"`처럼
 종료 코드를 따로 확인한다. `vitest: not found`가 나오면 `npm ci`를 먼저 돌린다.
