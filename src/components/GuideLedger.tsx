@@ -231,28 +231,35 @@ function leversOf(tips: Claim[]): string[] {
 }
 
 /**
- * 단가 문자열을 **짝**과 **단서**로 가릅니다 — 「줄이되 뜻을 안 버린다」의 구현입니다.
+ * 단가 문자열을 **입력 · 출력 · 단서** 셋으로 가릅니다 — 「줄이되 뜻을 안 버린다」의
+ * 구현입니다.
+ *
+ * **수 둘을 갈라야 열이 둘이 됩니다**(2026-09-18). 전날까지는 짝(`$2 / $12`)과
+ * 단서만 갈라 짝을 한 칸에 세웠는데, 그러면 열을 아무리 맞춰도 화면에 서는 수 열이
+ * **컨텍스트 하나뿐**입니다 — 「표로 하자」가 두 번 나온 이유가 거기 있었습니다.
+ * 가르는 것은 화면뿐이고 데이터는 그대로 한 주장이라, 두 칸이 같은 요금 페이지로
+ * 갑니다.
  *
  * 모델 단가 열아홉 중 **일곱**이 `기본 (단서)` 꼴이고(`$2 / $12 (200K 초과 시
  * $4 / $18)`, `$0.75 / $3.75 (2027-01-01부터 $1.50 / $7.50)`), 화면에 실제로 서는
- * 것은 넷입니다. 그 넷 때문에 단가 문자열이 13자에서 42자까지 벌어집니다. 오른쪽에
- * 그대로 붙여 두면 **왼쪽의 컨텍스트 창이 단가 길이를 따라 x를 옮겨** 다섯 줄짜리
- * 화면(Antigravity)에서 수가 지그재그로 섭니다 — 「표로 하자」가 가리킨 자리입니다.
+ * 것은 넷입니다. 그 넷 때문에 단가 문자열이 13자에서 42자까지 벌어집니다.
  *
  * **자르지 않고 아래로 내립니다.** 단서는 「지금 이 값이 언제 거짓이 되는가」라
  * 버리면 두 주 뒤에 거짓말이 되고, 괄호째 옮기므로 원문 글자가 하나도 안 바뀝니다 —
- * `pair + ' ' + rider`가 원문과 글자까지 같습니다.
+ * `input + ' / ' + output (+ ' ' + rider)`가 원문과 글자까지 같습니다.
  *
  * **꼴을 문자열이 아니라 문법으로 봅니다.** `indexOf(' (')`로 가르면 기본값 안에
- * 괄호가 들어오는 날 엉뚱한 데서 갈립니다. 안 맞는 꼴은 통째로 `pair`에 남고
- * `raw`가 서서 감기게 두므로, 값이 사라지지는 않습니다.
+ * 괄호가 들어오는 날 엉뚱한 데서 갈립니다. 안 맞는 꼴은 통째로 `input`에 남고
+ * `raw`가 서서 두 열을 함께 쓰며 감기므로, 값이 사라지지는 않습니다.
  */
-const PRICE_PAIR = /^(\$[\d.,]+ \/ \$[\d.,]+)(?: (\(.+\)))?$/;
+const PRICE_PAIR = /^(\$[\d.,]+) \/ (\$[\d.,]+)(?: (\(.+\)))?$/;
 
-function splitPrice(value: string): { pair: string; rider: string | null; raw: boolean } {
+function splitPrice(
+  value: string,
+): { input: string; output: string | null; rider: string | null; raw: boolean } {
   const m = PRICE_PAIR.exec(value);
-  if (!m) return { pair: value, rider: null, raw: true };
-  return { pair: m[1], rider: m[2] ?? null, raw: false };
+  if (!m) return { input: value, output: null, rider: null, raw: true };
+  return { input: m[1], output: m[2], rider: m[3] ?? null, raw: false };
 }
 
 /**
@@ -541,17 +548,22 @@ function ProductLedger({ product, today }: { product: Product; today: string }) 
           label="어느 모델로 돌리나"
           lead={
             <>
+              {/*
+                **범례 문장을 머리 행이 대신합니다**(2026-09-18). 전날까지 여기에
+                「오른쪽 수는 입력 컨텍스트 창과 100만 토큰당 입력 / 출력 단가입니다」가
+                섰습니다 — 열 이름을 안 세우는 대신 리드가 머리 행 노릇을 한 것인데,
+                훑을 때 읽히는 것은 목록 위의 문장이 아니라 열 위의 낱말입니다.
+                단가가 입력·출력 두 열로 갈리면서 「입력 / 출력」이라는 설명 자체도
+                필요가 없어졌습니다. **문장이 하나 줄었지 늘지 않았습니다.**
+              */}
               쓰임은 만든 회사가 제 문서에 적어 둔 말입니다 — 누르면 그 페이지로 갑니다.{' '}
               {/*
-                **범례는 열이 실제로 설 때만 섭니다.** 수가 하나도 없는 화면(Gemini 앱)
-                에서 「오른쪽 수는…」은 아무것도 안 가리킵니다 — 빈 열을 안 그리는 규칙이
-                산문에도 그대로 걸립니다. 문장은 고치지 않고 켰다 끕니다.
+                **단가 열이 설 때만 이 한 마디가 섭니다.** 「100만 토큰당」은 머리 행
+                두 글자가 못 지는 단위라 남기되, 단가가 하나도 없는 화면(Gemini 앱)
+                에서는 아무것도 안 가리킵니다 — 빈 열을 안 그리는 규칙이 산문에도
+                그대로 걸립니다.
               */}
-              {(hasContext || hasPrice) && (
-                <>
-                  오른쪽 수는 입력 컨텍스트 창과 <b>100만 토큰당 입력 / 출력 단가</b>입니다.{' '}
-                </>
-              )}
+              {hasPrice && <>단가는 100만 토큰당입니다. </>}
               만든 회사가 구세대·legacy로 부르는 모델은 안 적습니다 — 다만 그 회사의 최신이
               이 제품에 하나도 없으면 있는 것을 그대로 둡니다.
             </>
@@ -574,6 +586,23 @@ function ProductLedger({ product, today }: { product: Product; today: string }) 
           <ul
             className={`guide-models${hasContext ? ' has-ctx' : ''}${hasPrice ? ' has-price' : ''}`}
           >
+            {/*
+              **머리 행**(2026-09-18). 수 열이 하나라도 설 때만 섭니다 — Gemini 앱처럼
+              이름과 쓰임뿐인 화면에서는 「모델」 한 낱말이 덩그러니 서고 아래는 그냥
+              목록이라, 빈 열을 안 그리는 규칙이 여기도 걸립니다.
+            */}
+            {(hasContext || hasPrice) && (
+              <li className="guide-models-head">
+                <span className="guide-model-name">모델</span>
+                {hasContext && <span className="guide-model-context">컨텍스트</span>}
+                {hasPrice && (
+                  <>
+                    <span className="guide-model-price is-in">입력</span>
+                    <span className="guide-model-price is-out">출력</span>
+                  </>
+                )}
+              </li>
+            )}
             {models.map((model) => {
               /*
                 **`shownValue`를 지나는 자리입니다.** 그 전에는 `claim.value`를 날로
@@ -612,28 +641,50 @@ function ProductLedger({ product, today }: { product: Product; today: string }) 
                     </span>
                   )}
                   {priceClaim &&
-                    (price ? (
-                      <a
-                        className={`guide-model-price${price.raw ? ' is-raw' : ''}`}
-                        href={priceClaim.source.url}
-                        target="_blank"
-                        rel="noreferrer"
-                      >
-                        {price.pair}
-                      </a>
+                    (price && price.output ? (
+                      /*
+                        **입력과 출력이 각자 칸을 갖습니다**(2026-09-18). 둘이 같은
+                        주장이라 같은 요금 페이지로 가지만, 화면에서 한 덩이로 두면
+                        수 열이 실제로는 하나뿐이라 표가 안 됩니다.
+                      */
+                      <>
+                        <a
+                          className="guide-model-price is-in"
+                          href={priceClaim.source.url}
+                          target="_blank"
+                          rel="noreferrer"
+                        >
+                          {price.input}
+                        </a>
+                        <a
+                          className="guide-model-price is-out"
+                          href={priceClaim.source.url}
+                          target="_blank"
+                          rel="noreferrer"
+                        >
+                          {price.output}
+                        </a>
+                      </>
                     ) : (
                       /*
                         값이 안 서는 칸도 **출처로는 갈 수 있어야 합니다** — 「모름」과
                         「유효기간 지남」 둘 다 다음 할 일이 「공식 페이지를 열어 보기」라
                         `ClaimRow`가 그 자리를 링크로 둔 것과 같습니다.
+
+                        꼴이 안 맞아 못 가른 값(`raw`)도 여기로 옵니다 — 두 열을 함께
+                        쓰며 감기므로 값이 사라지지 않습니다.
                       */
                       <a
-                        className="guide-model-price is-note"
+                        className={`guide-model-price is-span${price?.raw ? ' is-raw' : ' is-note'}`}
                         href={priceClaim.source.url}
                         target="_blank"
                         rel="noreferrer"
                       >
-                        {priceState.kind === 'note' ? priceState.text : '모름'}
+                        {price?.raw
+                          ? price.input
+                          : priceState.kind === 'note'
+                            ? priceState.text
+                            : '모름'}
                       </a>
                     ))}
                   {/*
