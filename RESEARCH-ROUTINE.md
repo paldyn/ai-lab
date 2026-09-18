@@ -287,11 +287,19 @@ python3 -m venv /tmp/verify && . /tmp/verify/bin/activate
 
 ```bash
 for f in src/content/articles/{lab,paper,bench,cost,spec}-*.md; do
-  echo "$(grep -c '^## ' "$f") $(grep -c '^### ' "$f") $f"
-done | sort -rn | head -20
+  s=$(grep -c '^## ' "$f"); b=$(grep -c '^### ' "$f")
+  if [ "$s" -ge 8 ] && [ "$b" -eq 0 ]; then p=0; else p=1; fi
+  echo "$p $s $b $f"
+done | sort -k1,1n -k2,2nr | head -20 | sed 's/^0 /▲ /; s/^1 /  /'
 ```
 
-앞 숫자가 절, 뒤 숫자가 소절이다. **절이 여덟 이상인데 소절이 0인 글**이 먼저다.
+`▲`가 **절 여덟 이상인데 소절이 0인 글**이고 맨 위에 모인다. 그다음 숫자가 절,
+그다음이 소절이다. **▲부터 집고**, 없으면 절이 많은 쪽부터다.
+
+**절 수로만 정렬하면 ▲가 안 보인다.** 2026-09-18까지 이 명령이 `sort -rn | head -20`
+이어서 소절 0인 글 셋(`spec-model-deprecation-calendar`·`paper-hnsw-graph-structure`·
+`cost-price-per-work-not-per-token`, 전부 8절 0소절)이 절 수가 낮아 스무 줄 밖으로
+밀려 있었다 — 규칙은 그 셋을 먼저 집으라는데 화면에 아예 안 떴다.
 
 하는 일은 **묶기**다. 가까운 절 둘셋을 한 절 아래 소절로 내려 절을 4~7로 줄이고,
 절 제목을 **그 절이 다루는 것의 이름**으로 단다(「왜 캐시가 안 먹히는가」도
