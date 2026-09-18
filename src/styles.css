@@ -8282,9 +8282,13 @@ input:focus-visible {
   리드를 목록 **앞**으로 올려 둔 것이 그 일을 하라는 뜻이었다 — **리드가 곧 머리
   행이다.** 그래서 **열 차례를 바꾸면 리드 문장도 함께 바꿔야 한다.**
 */
+/*
+  **여기 `border-top`을 되살리지 마라.** 파일 뒤쪽에서 `.guide-models, .guide-links,
+  .guide-tiers, .claim-list { border-top: 0 }`이 덮으므로 실제 화면에는 안 선다 —
+  선을 세는 파일에 죽은 1px 선언이 남아 있으면 다음 사람이 그 수를 잘못 센다.
+*/
 .guide-models {
   margin-top: var(--gs-r2);
-  border-top: 1px solid var(--guide-rule);
 }
 
 /*
