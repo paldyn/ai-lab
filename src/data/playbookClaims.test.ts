@@ -460,4 +460,22 @@ describe('AI 가이드 — 주장', () => {
       .filter((c) => !c.detail?.trim() || c.value !== null);
     expect(bad.map((c) => c.id)).toEqual([]);
   });
+
+  /*
+    **모델 단가는 `$입력 / $출력` 한 꼴이다.** 원장의 모델 표가 그 짝만 열에 세우고
+    단서(구간 요금·인상 예고)는 둘째 줄로 내리는데, 가르는 것이 `GuideLedger`의
+    `splitPrice` 정규식이다. 새 꼴이 들어오면 그 줄만 통째로 감겨 열이 흐트러지므로
+    **꼴이 바뀌는 날 조용히 안 깨지게** 여기서 막는다. 가르고 다시 이으면 원문과
+    글자까지 같아야 한다 — 「줄이되 뜻을 안 버린다」가 식으로 적히는 자리다.
+  */
+  it('모델 단가는 짝과 단서로 갈리고 다시 이으면 원문이다', () => {
+    const pair = /^(\$[\d.,]+ \/ \$[\d.,]+)(?: (\(.+\)))?$/;
+    const bad = playbookClaims
+      .filter((c) => c.topic === 'price' && c.subject.kind === 'model' && c.value)
+      .filter((c) => {
+        const m = pair.exec(c.value as string);
+        return !m || (m[2] ? `${m[1]} ${m[2]}` : m[1]) !== c.value;
+      });
+    expect(bad.map((c) => `${c.id}: ${c.value}`)).toEqual([]);
+  });
 });
