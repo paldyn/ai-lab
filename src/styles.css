@@ -7758,7 +7758,6 @@ input:focus-visible {
   갈린다. 28 : 10 = 2.8:1은 어느 쪽에도 안 붙어 여덟 덩이가 한 덩이로 뭉친다.
 */
 .guide-ledger-label {
-  margin-top: var(--gs-r4);
   color: var(--text-muted);
   font-family: var(--font-mono);
   font-size: var(--gs-mono);
@@ -7827,7 +7826,6 @@ input:focus-visible {
   **끝나는 자리가 둘**이었다.
 */
 .guide-ledger-head,
-.guide-tips-block,
 .guide-stats,
 .guide-models,
 .guide-links,
@@ -7850,27 +7848,6 @@ input:focus-visible {
 .claim-list,
 .guide-tip-group-head {
   padding-right: var(--guide-chip);
-}
-
-.guide-tips-block + .guide-tips-block {
-  margin-top: calc(var(--gs-r4) * 2);
-}
-
-.guide-tip-block-head {
-  margin-top: var(--gs-r4);
-  max-width: var(--gs-measure);
-}
-
-.guide-tip-block-head .guide-ledger-label {
-  margin-top: 0;
-}
-
-.guide-tip-block-lead {
-  margin-top: var(--gs-r1);
-  color: var(--text-muted);
-  font-size: var(--gs-body);
-  line-height: 1.75;
-  text-wrap: pretty;
 }
 
 /*
@@ -8709,8 +8686,7 @@ input:focus-visible {
 }
 
 .claim-list {
-  margin-top: 20px;
-  border-top: 1px solid var(--guide-rule);
+  margin-top: var(--gs-r2);
 }
 
 /*
@@ -8740,13 +8716,13 @@ input:focus-visible {
 
 .claim-statement {
   color: var(--text-dim);
-  font-size: 13px;
+  font-size: var(--gs-body);
   line-height: 1.65;
 }
 
 .claim-value {
   color: var(--text-strong);
-  font-size: 13.5px;
+  font-size: var(--gs-body);
   line-height: 1.65;
 }
 
@@ -8758,7 +8734,7 @@ input:focus-visible {
 
 .claim-missing {
   color: var(--text-muted);
-  font-size: 12.5px;
+  font-size: var(--gs-body);
   text-decoration: underline;
   text-underline-offset: 3px;
 }
@@ -8770,10 +8746,10 @@ input:focus-visible {
 .claim-meta {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: var(--gs-r1);
   color: var(--text-muted);
   font-family: var(--font-mono);
-  font-size: 10px;
+  font-size: var(--gs-mono);
   letter-spacing: 0.04em;
 }
 
@@ -8802,7 +8778,7 @@ input:focus-visible {
   border-radius: 3px;
   padding: 2px 6px;
   font-family: var(--font-mono);
-  font-size: 10px;
+  font-size: var(--gs-mono);
   letter-spacing: 0.04em;
 }
 
@@ -8842,3 +8818,263 @@ input:focus-visible {
   white-space: nowrap;
 }
 
+
+/* ══════════════════════════════════════════════════════════════════════
+   원장 — 절이 제가 담은 것의 종류를 말한다 (2026-09-18)
+
+   **진단: 절이 여섯이 아니라, 종류가 셋인 것 여섯이 한 모양으로 서 있었다.**
+   읽는 것(팁 둘) · 고르는 데 쓰는 것(모델) · 물어보는 것(표면·요금·공식)이
+   전부 같은 10px 모노 라벨에 같은 48px 여백을 받았다. 1440px에서 재면 원장이
+   1,807px인데 그 안의 랜드마크가 여섯뿐이고 여섯 다 **이 화면에서 가장 작고
+   가장 흐린 글자**다(10px `--text-muted`, 그 아래 질문은 16/450/strong,
+   모델 이름과 팁 문장은 13.5/600/strong). 부모가 자식보다 작으면 층이 안 생긴다.
+
+   **크기로 안 푼다.** 올릴 칸이 없다 — 16px은 묶음 질문이 쓰고 있고(질문은 팁
+   문장보다 한 급 커야 한다), 26px은 제품 이름이 쓰고 있어 한 화면에 26px 줄이
+   셋이 된다. 이 글꼴은 400과 700이 4.7%밖에 안 벌어져 무게로도 못 가른다.
+   **레일이 같은 고장에 이미 낸 답을 오른쪽으로 옮긴다** — 모노 라벨에
+   오른쪽으로 뻗는 괘선(`.guide-rail-vendor` + `.guide-rail-rule`,
+   「들여쓰기와 로고 크기만 달라 두 층이 눈에 안 갈렸다」). 계급은 크기가 아니라
+   **자리와 상태**가 진다.
+
+   그래서 종류가 셋이면 모양도 셋이다.
+     읽는 절  펼침 · 라벨 `--text-strong` · 리드 한 줄
+     한 줄    머리 줄 오른쪽에 값이 그대로 올라앉는다(48px)
+     묻는 절  접힘 · 라벨 흐림 · 오른쪽 기둥에 「5 +」(48px)
+
+   **모델은 안 접는다.** 절 순서가 곧 우선순위이고 모델은 「팁 둘을 고르는 데
+   쓰는 값」이라 접으면 팁이 반쪽이 된다. 넷을 다 접으면 접는 것 자체가 아무
+   정보도 못 준다 — 셋이 펼쳐지고 셋이 닫히는 그 갈림이 한 겹의 위계다.
+
+   **면을 안 늘린다.** 이 서랍에서 면(`--surface`)을 쓰는 곳은 펼친 팁 목록
+   하나이고 그대로 둔다. 펼친 절의 영역은 제 머리 괘선과 다음 절의 머리 괘선이
+   진다 — 둘 다 테마를 안 타므로 `forced-colors`용 규칙이 따로 필요 없다.
+   괘선을 `background`가 아니라 `border-top`으로 긋는 것이 그 조건이다(레일은
+   배경으로 긋는데 `forced-colors`가 배경을 Canvas로 강제해 그 선이 사라진다).
+
+   **선이 준다: 23 → 16**(기본 상태, 1440px 실측). 머리 괘선 여섯이 서는 대신
+   목록 넷의 윗변과 팁 묶음의 `first-of-type` 둘이 할 일을 잃고, 접힌 절 안의
+   여덟(값 다섯 · 링크 셋)이 화면에서 빠진다.
+
+   **폭 값이 처음으로 진짜 둘이 된다.** 어제 커밋이 「끝나는 자리는 둘」이라고
+   적어 뒀는데 실측하면 셋이었다 — 592(3) · 736(6) · **847(6)**. 847로 끝나던
+   여섯이 절 머리글 넷 · 표면 · 「같은 자리」다. 캡이 없어 원장 폭을 그대로
+   쓰고 있었고, 그래서 머리 줄의 오른쪽 열에 아무것도 못 세웠다.
+
+   아래 옛 규칙 여섯은 클래스가 없어져 아무도 안 부른다. 정리 커밋에서 지운다:
+     `.guide-tips-block`(`max-width` 목록의 한 줄) · `.guide-tips-block + .guide-tips-block`
+     `.guide-tip-block-head` · `.guide-tip-block-head .guide-ledger-label`
+     `.guide-tip-block-lead` · `.guide-ledger-label`의 `margin-top`
+   ══════════════════════════════════════════════════════════════════════ */
+
+/* ── 값 줄이 조판 상수 밖에 남아 있던 자리 여섯 ──────────────────────────
+   `.claim-*`은 `.guide-` 접두사가 아니라서 2026-09-16 상수 작업에서 통째로
+   빠졌다. 그 결과 화면에 실제로 선 글자 단이 다섯이 아니라 **여섯**이었고
+   (10 · 12.5 · 13 · 13.5 · 16 · 26), 12.5 / 13 / 13.5 셋이 1px 안에 뭉쳐
+   있었다 — 「여덟 단이 4px 안에」로 진단한 그 병이 **사용자가 이름을 댄 다섯 절
+   중 가장 시끄러운 자리**에만 그대로 살아 있었다. 다섯으로 되돌린다.
+
+   주장과 값은 이제 크기가 같고 잉크(`--text-dim` : `--text-strong`)가 가른다.
+   ───────────────────────────────────────────────────────────────────── */
+/* ── 절 ─────────────────────────────────────────────────────────────── */
+
+.guide-section {
+  margin-top: var(--gs-r4);
+  max-width: var(--gs-block);
+}
+
+/*
+  **간격이 머리 treatment가 할 일의 크기를 잰다.**
+  펼친 절끼리는 서로 닮았으므로 96px이 필요하고(지금 팁 두 절 사이에 이미 쓰는
+  값이다), 닫힌 줄은 펼친 절과 이미 딴판이라 48px이면 되고, 닫힌 줄끼리는 제
+  머리 괘선이 갈라 주므로 0이다 — 셋이 붙어 「여기부터는 찾아보는 값」 한 무더기가
+  된다. 팁 묶음 넷이 붙어 서는 것과 같은 리듬이다.
+*/
+.guide-section + .guide-section.is-read {
+  margin-top: calc(var(--gs-r4) * 2);
+}
+
+.guide-section.is-ask + .guide-section.is-ask {
+  margin-top: 0;
+}
+
+/*
+  머리 한 줄. **48px은 새 값이 아니다** — 12 + 24 + 12으로 닫힌 팁 묶음
+  (`.guide-tip-group-head`)과 같은 계산이고, 라벨의 줄상자를 질문 줄과 같게 준
+  것뿐이다. 그래서 이 화면에서 **닫힌 줄은 층에 상관없이 48px**이고, 층은 높이가
+  아니라 자리와 어휘로 갈린다 — 절은 x=0의 괘선, 묶음은 48px 번호 기둥의 16px
+  질문, 팁 줄은 48px 들여쓰기의 배지.
+
+  아래 `padding-bottom` 12px이 그대로 「라벨 → 그 내용」 간격을 겸한다.
+*/
+.guide-section-head {
+  display: flex;
+  align-items: center;
+  gap: var(--gs-r2);
+  padding-block: var(--gs-r2);
+  padding-right: var(--guide-chip);
+}
+
+.guide-section.is-fold > .guide-section-head {
+  list-style: none;
+  cursor: pointer;
+}
+
+.guide-section.is-fold > .guide-section-head::-webkit-details-marker {
+  display: none;
+}
+
+.guide-section.is-fold > .guide-section-head:focus-visible {
+  outline: 2px solid var(--brand);
+  outline-offset: 2px;
+}
+
+/*
+  절 이름. 크기는 한 글자도 안 건드리고 줄상자만 24px로 준다. 절 간격은 이제
+  절이 지므로 제 `margin-top`을 버린다.
+*/
+.guide-ledger-label {
+  margin-top: 0;
+  line-height: calc(var(--gs-lead) * 1.5);
+  white-space: nowrap;
+}
+
+.guide-section.is-read > .guide-section-head .guide-ledger-label {
+  color: var(--text-strong);
+}
+
+/*
+  괘선. 남는 폭을 먹어 이름과 오른쪽 기둥(688px)을 잇는다.
+  `min-width`는 레일이 쓰는 8px이 아니라 여백 축의 `--gs-r1`(6px)로 적는다 —
+  같은 일에 상수 밖의 수를 쓰지 않는다.
+*/
+.guide-section-rule {
+  flex: 1 1 auto;
+  min-width: var(--gs-r1);
+  height: 0;
+  border-top: 1px solid var(--guide-rule);
+}
+
+/* 머리가 12px을 이미 줬으므로 내용은 제 여백을 버린다. */
+.guide-section > .guide-section-lead,
+.guide-section > .guide-models,
+.guide-section > .guide-links,
+.guide-section > .guide-tiers,
+.guide-section > .claim-list {
+  margin-top: 0;
+}
+
+.guide-section-lead {
+  max-width: var(--gs-measure);
+  color: var(--text-muted);
+  font-size: var(--gs-body);
+  line-height: 1.75;
+  text-wrap: pretty;
+}
+
+.guide-section-lead + .guide-models,
+.guide-section-lead + .guide-links,
+.guide-section-lead + .guide-tiers,
+.guide-section-lead + .claim-list {
+  margin-top: var(--gs-r2);
+}
+
+/*
+  **머리가 제 괘선을 들었으니 목록의 윗변은 걷는다.** 두면 12px 사이에 같은
+  굵기의 가로선이 둘 선다 — 걷어낸 서른넷이 여섯 개 돌아오는 자리다.
+*/
+.guide-models,
+.guide-links,
+.guide-tiers,
+.claim-list {
+  margin-top: var(--gs-r2);
+  border-top: 0;
+}
+
+.guide-section .guide-tip-group:first-of-type {
+  border-top: 0;
+}
+
+/*
+  **내용이 한 줄인 절은 절이 아니라 줄이다.** 「어디서 쓰나」는 안에 든 것이
+  네 낱말(20px 한 줄)인데 285px짜리 모델 목록과 똑같이 48px을 받아 131px을
+  먹고 있었다. 285 : 20인데 간격이 같던 자리를 간격이 아니라 **문법**으로 푼다 —
+  머리 줄 오른쪽에 그 한 줄이 그대로 올라앉아 48px이 된다. 공식 링크 줄이
+  이미 「라벨 왼쪽 · 값 오른쪽 끝」이라 같은 문법이다.
+
+  **접지 않는다.** 뒤에 아무것도 없는 문에 손잡이를 달지 않는다.
+*/
+.guide-section-head > .guide-surfaces {
+  flex: 0 1 auto;
+  min-width: 0;
+  margin-top: 0;
+  justify-content: flex-end;
+  line-height: calc(var(--gs-lead) * 1.5);
+}
+
+/*
+  **수는 접힌 절에만 선다** — 펼친 절은 세는 대신 보여 준다. 표시는 한 층 아래
+  묶음과 **같은 클래스**(`.guide-tip-count`)라 「4 +」·「5 +」가 한 어휘로 서고,
+  글자는 CSS가 넣으므로 복사한 글에 안 섞인다. 새 카운터를 만들면 같은 일을
+  하는 것이 두 규격이 된다.
+*/
+.guide-section.is-fold[open] .guide-tip-count::after {
+  content: attr(data-n) ' −';
+}
+
+.guide-section.is-fold > .guide-section-head:hover .guide-ledger-label,
+.guide-section.is-fold[open] > .guide-section-head .guide-ledger-label {
+  color: var(--text-strong);
+}
+
+.guide-section.is-fold > .guide-section-head:hover .guide-tip-count {
+  color: var(--brand-text);
+}
+
+/* 펼친 절의 마지막 줄과 다음 절 머리 사이의 숨. 닫혀 있으면 아무 일도 안 한다. */
+.guide-section.is-fold[open] {
+  padding-bottom: var(--gs-r2);
+}
+
+/*
+  **원장 직계 자식이 끝나는 자리를 둘로 되돌린다.** 캡이 없어 혼자 847px까지
+  나가던 셋 중 마지막이다(절 머리글과 표면은 위에서 절 안으로 들어갔다).
+*/
+.guide-ledger-peers,
+.guide-ledger > .guide-ledger-title,
+.guide-ledger > .guide-ledger-meta {
+  max-width: var(--gs-block);
+}
+
+/* ── 종이 ───────────────────────────────────────────────────────────── */
+@media print {
+  .guide-section.is-fold > .guide-section-head .guide-tip-count {
+    display: none;
+  }
+
+  .guide-section.is-fold::details-content {
+    content-visibility: visible;
+  }
+}
+
+/* ── 좁은 폭 (집의 중단점 640) ───────────────────────────────────────── */
+@media (max-width: 640px) {
+  /* 오른쪽 기둥이 24px인 폭이라 머리도 같이 내린다 — 새 중단점 0. */
+  .guide-section-head {
+    padding-right: var(--gs-r3);
+  }
+
+  /*
+    375px에서는 라벨과 네 낱말이 한 줄에 안 든다. 한 줄짜리 절도 여기서는
+    두 줄이다 — 괘선은 라벨 줄에 남고 값이 아래로 내려온다.
+  */
+  .guide-section-head:has(> .guide-surfaces) {
+    flex-wrap: wrap;
+    padding-bottom: var(--gs-r1);
+  }
+
+  .guide-section-head > .guide-surfaces {
+    flex: 1 1 100%;
+    justify-content: flex-start;
+  }
+}

@@ -1,4 +1,4 @@
-import type { CSSProperties } from 'react';
+import type { CSSProperties, ReactNode } from 'react';
 import { Link } from 'react-router';
 import { ClaimRow } from './ClaimRow';
 import { GuideMark } from './GuideMark';
@@ -93,10 +93,93 @@ function StatRow({ claimIds, today }: { claimIds: string[]; today: string }) {
   );
 }
 
-function OfficialLinks({ rows }: { rows: Array<{ label: string; url: string }> }) {
-  return (
+/**
+ * 절 하나. **원장의 절이 처음으로 객체가 됩니다.**
+ *
+ * 그 전에는 여섯 중 둘(팁)만 `<section>`이었고 나머지 넷은 `h3 + 목록`이 형제로
+ * 흩어져 있어, 묶어서 손댈 데가 없고 머리글만 폭 없이 847px까지 흘러 나갔습니다.
+ *
+ * **종류가 셋이면 모양도 셋입니다.**
+ * - `kind="read"` — 읽는 절(팁 둘 · 모델). 펼쳐진 채로, 라벨이 진하게 섭니다.
+ * - `aside` — 내용이 한 줄뿐인 절(표면). 그 한 줄이 머리 줄 오른쪽에 올라앉습니다.
+ * - `fold` — 묻는 절(요금 · 공식). 48px 닫힌 줄이 되고 오른쪽 기둥에 「5 +」가 섭니다.
+ *   **수는 접힌 절에만 답니다** — 펼친 절은 세는 대신 보여 줍니다. 세어서 나오는
+ *   수라 새로 쓰는 문장이 아닙니다.
+ *
+ * **`name`을 안 주고 `open`을 프롭으로 안 넘깁니다** — 팁 묶음과 같은 이유입니다.
+ * 배타로 묶이면 한 줄을 열 때 위의 줄이 닫히며 보던 내용이 딸려 올라가고(아코디언
+ * 트리를 거절하게 만든 그 움직임입니다), `open`을 넘기면 React가 브라우저와 매
+ * 렌더 싸웁니다.
+ */
+function Section({
+  kind,
+  label,
+  lead,
+  aside,
+  fold,
+  children,
+}: {
+  kind: 'read' | 'ask';
+  label: string;
+  lead?: ReactNode;
+  /** 내용이 한 줄뿐일 때 머리 줄 오른쪽에 세울 것. */
+  aside?: ReactNode;
+  /** 접는 절의 줄 수. 넘기면 그 절이 `<details>`가 된다. */
+  fold?: number;
+  children?: ReactNode;
+}) {
+  const head = (
     <>
-      <h3 className="guide-ledger-label">공식</h3>
+      <h3 className="guide-ledger-label">{label}</h3>
+      <span className="guide-section-rule" aria-hidden="true" />
+      {aside}
+      {/* 글자는 CSS가 넣습니다 — 복사한 글에 안 섞이고 여닫힘도 CSS가 맡습니다. */}
+      {fold !== undefined && <span className="guide-tip-count" aria-hidden="true" data-n={fold} />}
+    </>
+  );
+  const body = (
+    <>
+      {lead && <p className="guide-section-lead">{lead}</p>}
+      {children}
+    </>
+  );
+
+  /*
+    `<summary>` 안의 `<h3>`는 heading 목록에 그대로 남고, 괘선과 수는 `aria-hidden`이라
+    버튼 이름은 절 이름 한 마디입니다.
+  */
+  if (fold !== undefined) {
+    return (
+      <details className={`guide-section is-${kind} is-fold`}>
+        <summary className="guide-section-head">{head}</summary>
+        {body}
+      </details>
+    );
+  }
+
+  return (
+    <section className={`guide-section is-${kind}`}>
+      <div className="guide-section-head">{head}</div>
+      {body}
+    </section>
+  );
+}
+
+/**
+ * 나가는 링크. **제품 화면에서는 접습니다** — 읽는 절이 아니라 찾아가는 줄이고,
+ * 닫아 두면 「공식 ─── 3 +」로 첫 화면 안에 들어옵니다(그 전에는 공식 링크가
+ * 있다는 사실을 알려면 1,600px을 내려가야 했습니다). 기업·첫 화면에서는 안
+ * 접습니다 — 거기 서는 절이 이것 하나라 접으면 화면이 빕니다.
+ */
+function OfficialLinks({
+  rows,
+  fold,
+}: {
+  rows: Array<{ label: string; url: string }>;
+  fold?: boolean;
+}) {
+  return (
+    <Section kind={fold ? 'ask' : 'read'} label="공식" fold={fold ? rows.length : undefined}>
       <ul className="guide-links">
         {rows.map((row) => (
           <li key={row.url}>
@@ -107,7 +190,7 @@ function OfficialLinks({ rows }: { rows: Array<{ label: string; url: string }> }
           </li>
         ))}
       </ul>
-    </>
+    </Section>
   );
 }
 
@@ -226,19 +309,14 @@ function TipBlock({
 }) {
   const groups = groupTips(tips, aim);
 
+  /*
+    **거르개를 걷어냈습니다**(2026-09-17). 등급으로 거르는 칩(전체·공식·체감)이
+    절 머리 오른쪽에 섰는데, 읽는 사람이 이 화면에서 묻는 것은 「공식이냐 체감이냐」가
+    아니라 「지금 뭘 하면 되냐」입니다 — 축이 질문으로 바뀌면서 거르개만 옛 축에
+    남아 있었습니다. 등급은 줄마다 배지로 그대로 섭니다.
+  */
   return (
-    <section className="guide-tips-block">
-      {/*
-        **거르개를 걷어냈습니다**(2026-09-17). 등급으로 거르는 칩(전체·공식·체감)이
-        절 머리 오른쪽에 섰는데, 읽는 사람이 이 화면에서 묻는 것은 「공식이냐 체감이냐」가
-        아니라 「지금 뭘 하면 되냐」입니다 — 축이 질문으로 바뀌면서 거르개만 옛 축에
-        남아 있었습니다. 등급은 줄마다 배지로 그대로 섭니다.
-      */}
-      <header className="guide-tip-block-head">
-        <h3 className="guide-ledger-label">{label}</h3>
-        <p className="guide-tip-block-lead">{lead}</p>
-      </header>
-
+    <Section kind="read" label={label} lead={lead}>
       {groups.map(({ group, rows }, i) => {
         const levers = leversOf(rows);
         return (
@@ -289,7 +367,7 @@ function TipBlock({
         </details>
         );
       })}
-    </section>
+    </Section>
   );
 }
 
@@ -414,9 +492,29 @@ function ProductLedger({ product, today }: { product: Product; today: string }) 
         선택기에 Claude 둘과 GPT-OSS가 함께 서는 것이 이 서랍에서 가장 안 알려진
         사실이라, 이름 옆의 작은 회사 표기가 그것을 말합니다.
       */}
+      {/*
+        **모델은 안 접습니다.** 절 순서가 곧 우선순위이고 이 값은 위 팁 둘을 고르는
+        데 쓰는 것이라, 접으면 팁이 반쪽이 됩니다. 넷을 다 접으면 접는 것 자체가
+        아무 정보도 못 줍니다 — 셋이 펼쳐지고 셋이 닫히는 그 갈림이 한 겹의 위계입니다.
+
+        **목록 아래 누워 있던 71px짜리 회색 문단을 리드로 올립니다.** 그 문단이 곧
+        오른쪽 수 둘(컨텍스트 창 · 단가)의 범례인데 목록 **뒤**에 있어, 읽는 차례가
+        「표를 다 읽고 나서 표 읽는 법」이었습니다. 옮기기만 하므로 새로 쓰는 문장이
+        0이고, 덤으로 리드가 읽는 절 셋에 다 붙어 「리드가 둘에만 있다」가 사라집니다.
+      */}
       {models.length > 0 && (
-        <>
-          <h3 className="guide-ledger-label">어느 모델로 돌리나</h3>
+        <Section
+          kind="read"
+          label="어느 모델로 돌리나"
+          lead={
+            <>
+              쓰임은 만든 회사가 제 문서에 적어 둔 말입니다 — 누르면 그 페이지로 갑니다.
+              오른쪽 수는 입력 컨텍스트 창과 <b>100만 토큰당 입력 / 출력 단가</b>입니다.
+              만든 회사가 구세대·legacy로 부르는 모델은 안 적습니다 — 다만 그 회사의 최신이
+              이 제품에 하나도 없으면 있는 것을 그대로 둡니다.
+            </>
+          }
+        >
           <ul className="guide-models">
             {models.map((model) => {
               const context = contextOf.get(model.id);
@@ -469,35 +567,53 @@ function ProductLedger({ product, today }: { product: Product; today: string }) 
               );
             })}
           </ul>
-          <p className="guide-ledger-note">
-            쓰임은 만든 회사가 제 문서에 적어 둔 말입니다 — 누르면 그 페이지로 갑니다.
-            오른쪽 수는 입력 컨텍스트 창과 <b>100만 토큰당 입력 / 출력 단가</b>입니다.
-            만든 회사가 구세대·legacy로 부르는 모델은 안 적습니다 — 다만 그 회사의 최신이
-            이 제품에 하나도 없으면 있는 것을 그대로 둡니다.
-          </p>
-        </>
+        </Section>
       )}
 
-      <h3 className="guide-ledger-label">어디서 쓰나</h3>
-      <ul className="guide-surfaces">
-        {product.surfaces.map((surface) => (
-          <li key={surface}>{surface}</li>
-        ))}
-      </ul>
-      <p className="guide-ledger-note">표면이 달라도 엔진은 하나입니다 — 별개 제품이 아닙니다.</p>
+      {/*
+        **절이 아니라 줄입니다.** 안에 든 것이 네 낱말(20px 한 줄)인데 285px짜리
+        모델 목록과 똑같이 48px을 받아 131px을 먹고 있었습니다. 머리 줄 오른쪽에
+        그 한 줄이 그대로 올라앉아 48px이 됩니다 — 접지는 않습니다, 뒤에 아무것도
+        없는 문에 손잡이를 달지 않습니다.
 
+        딸려 있던 「표면이 달라도 엔진은 하나입니다 — 별개 제품이 아닙니다」는
+        **지웁니다**. 같은 화면 왼쪽의 레일 주석(`.guide-rail-note`)이 「표면(터미널 ·
+        IDE · 데스크톱 · 웹)은 별개 제품이 아니라 같은 엔진을 만나는 자리입니다」를
+        이미 말하고 있어 한 화면에 두 번 서 있었습니다.
+      */}
+      {product.surfaces.length > 0 && (
+        <Section
+          kind="ask"
+          label="어디서 쓰나"
+          aside={
+            <ul className="guide-surfaces">
+              {product.surfaces.map((surface) => (
+                <li key={surface}>{surface}</li>
+              ))}
+            </ul>
+          }
+        />
+      )}
+
+      {/*
+        **접습니다.** 이 서랍이 맨 아래로 내려 둔 절이고, 채운 배지 다섯이 한 칸에
+        몰려 기본 화면에서 가장 시끄러운 자리였습니다 — 배지를 손대지 않고(모양 셋이
+        등급을 지는 어휘입니다) 절을 닫으면 그 다섯이 첫 화면에서 사라집니다.
+        무엇보다 **주인공인 팁이 접혀 있는데 거드는 절이 펼쳐져 있는 것이 거꾸로**였고,
+        접기는 이 화면의 기본 문법인데(묶음도 팁 줄도 접힙니다) 그 문법이 한 층에만
+        걸려 있었습니다. 닫혀도 「5 +」로 몇 줄인지는 서고 첫 HTML에는 다 실려 나갑니다.
+      */}
       {usage.length > 0 && (
-        <>
-          <h3 className="guide-ledger-label">얼마이고 한도가 어떻게 차나</h3>
+        <Section kind="ask" label="얼마이고 한도가 어떻게 차나" fold={usage.length}>
           <div className="claim-list">
             {usage.map((claim) => (
               <ClaimRow key={claim.id} state={claimState(claim, today)} />
             ))}
           </div>
-        </>
+        </Section>
       )}
 
-      <OfficialLinks rows={links} />
+      <OfficialLinks rows={links} fold />
 
       {/* 같은 갈래를 맡은 다른 회사. **절이 아니라 한 줄입니다** — 견주는 축은 레일이 보여 줍니다. */}
       {peers.length > 0 && (
@@ -549,8 +665,8 @@ function RootLedger({ today }: { today: string }) {
 
       <StatRow claimIds={playbookClaims.map((c) => c.id)} today={today} />
 
-      <h3 className="guide-ledger-label">근거 세 등급</h3>
-      <dl className="guide-tiers">
+      <Section kind="read" label="근거 세 등급">
+        <dl className="guide-tiers">
         <div>
           <dt>공식</dt>
           <dd>벤더 문서에서 그날 직접 읽은 값. 본 원문 한 줄을 로그에 남깁니다.</dd>
@@ -563,7 +679,8 @@ function RootLedger({ today }: { today: string }) {
           <dt>체감</dt>
           <dd>사람들이 써 보고 굳어진 이야기. 단일 게시물·게시일·교차 확인·반례 넷이 다 있어야 싣습니다.</dd>
         </div>
-      </dl>
+        </dl>
+      </Section>
 
       <p className="guide-ledger-note mt-6">위 판에서 제품을 고르면 그 제품의 상태가 이 자리에 섭니다.</p>
     </div>
