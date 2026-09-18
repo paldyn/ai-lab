@@ -231,6 +231,21 @@ const entries: NewsItem[] = [
     url: 'https://openai.com/index/astra-for-law',
   },
   {
+    id: 'cooley-gopublic',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'Cooley, ChatGPT Work로 IPO 준비 도구 GO Public 구축',
+    summary:
+      '국제 로펌 Cooley가 ChatGPT Work 위에 자체 AI 제품 GO Public을 만들어 IPO 준비에 쓴다. ' +
+      '에이전틱 하네스가 정보를 정리하면 변호사가 검토·검증하는 워크플로이고, ' +
+      '비슷한 회사의 선례가 아니라 고객 자신의 자료에서 출발한다.',
+    publishedAt: '2026-09-17',
+    collectedAt: '2026-09-19',
+    category: 'Product',
+    signal: '기업 도입 사례',
+    url: 'https://openai.com/index/cooley-gopublic',
+  },
+  {
     id: 'life-sciences-verification-program',
     source: 'Anthropic',
     kind: 'company',
