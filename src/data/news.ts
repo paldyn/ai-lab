@@ -160,7 +160,7 @@ export interface NewsDetail {
   commentary: string;
 }
 
-export const globalNewsUpdatedAt = '2026-09-17';
+export const globalNewsUpdatedAt = '2026-09-18';
 
 /**
  * 공식 발표 한 건 = 항목 한 개. 2026년 1월부터 쌓는 아카이브이며 오래된 항목을
@@ -171,6 +171,51 @@ export const globalNewsUpdatedAt = '2026-09-17';
  * 목록에서 파생됩니다. 갱신 시 globalNewsUpdatedAt도 함께 올립니다.
  */
 const entries: NewsItem[] = [
+  {
+    id: 'ai-expanding-ai-economy-research-bench',
+    source: 'Google DeepMind',
+    kind: 'company',
+    title: 'Google, AI 경제 연구 프로그램에 노벨 경제학자 등 합류',
+    summary:
+      'Google이 AI & Economy Research Program을 넓히며 외부 자문·방문 연구자와 전담 디렉터를 들였다. ' +
+      '2025년 노벨 경제학상 수상자 Philippe Aghion이 학술 자문으로, Anu Madgavkar와 Daniel Rock이 ' +
+      '프로그램 디렉터로 합류한다.',
+    publishedAt: '2026-09-18',
+    collectedAt: '2026-09-19',
+    category: 'Corporate',
+    signal: '경제 연구진 영입',
+    url: 'https://blog.google/innovation-and-ai/technology/ai/expanding-ai-economy-research-bench',
+  },
+  {
+    id: 'ai-google-flow-fashion-week',
+    source: 'Google DeepMind',
+    kind: 'company',
+    title: 'Google Flow, 패션위크 디자이너와 맞춤 도구 둘 제작',
+    summary:
+      'Google Envisioning Studio가 디자이너 Jane Wade·Sergio Hudson과 함께 Google Flow로 전용 도구 둘을 ' +
+      '만들었다. 디지털 모델에 룩을 맞춰 보는 Styling Suite와 예산 안에서 런웨이를 시뮬레이션하는 ' +
+      'Runway Visualization이고, 결과는 뉴욕 패션위크 런웨이에 올랐다.',
+    publishedAt: '2026-09-18',
+    collectedAt: '2026-09-19',
+    category: 'Product',
+    signal: '창작 워크플로',
+    url: 'https://blog.google/innovation-and-ai/technology/ai/google-flow-fashion-week',
+  },
+  {
+    id: 'ai-google-un-data-commons-platform',
+    source: 'Google DeepMind',
+    kind: 'company',
+    title: 'UN 시스템, Google Data Commons 기반 통계 플랫폼 공개',
+    summary:
+      'UN 시스템이 기관마다 흩어져 있던 통계를 하나로 잇는 UN System Data Commons를 열었다. ' +
+      'Google의 Data Commons를 기반으로 한 오픈소스 플랫폼으로 자연어 질의와 MCP 기반 에이전트 ' +
+      '접근을 지원하고, 2027년까지 UN 시스템 통계 데이터셋의 80%를 담는 것을 목표로 한다.',
+    publishedAt: '2026-09-17',
+    collectedAt: '2026-09-19',
+    category: 'Product',
+    signal: '공공 데이터 플랫폼',
+    url: 'https://blog.google/innovation-and-ai/technology/ai/google-un-data-commons-platform',
+  },
   {
     id: 'astra-for-law',
     source: 'OpenAI',

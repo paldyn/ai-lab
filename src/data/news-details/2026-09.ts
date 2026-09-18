@@ -2,6 +2,54 @@ import type { NewsDetail } from '../news';
 
 /** 2026-09 발표의 모달 본문. 목록은 news.ts에 있습니다. */
 export const details: Record<string, NewsDetail> = {
+  'ai-expanding-ai-economy-research-bench': {
+    points: [
+      'AI & Economy Research Program을 넓혀 외부 자문·방문 연구자·전담 리더십을 함께 들였다',
+      '2025년 노벨 경제학상 수상자이자 INSEAD·콜레주드프랑스 교수인 Philippe Aghion이 학술 자문으로 합류한다',
+      '자문단에는 노벨상 수상자 Michael Spence와 케임브리지의 Diane Coyle이 이미 있다',
+      '토론토대 Rotman의 Ajay Agrawal이 방문 연구자로 들어가 MIT 경제학과장 David Autor와 함께 일한다',
+      '맥킨지글로벌연구소 출신 Anu Madgavkar와 와튼스쿨의 Daniel Rock이 프로그램 디렉터를 맡는다',
+      '연구 축은 일의 미래, 생산성과 성장, 기술 확산, 과학적 발견에 대한 AI의 영향 넷이다',
+      '두 디렉터는 Google DeepMind의 AGI 경제 디렉터 Alex Imas, 수석 이코노미스트실의 Zanna Iscenko와 함께 이끈다',
+      '이 팀의 결과는 앞으로의 AI & Economy ATLAS 갱신과 실증 연구에 반영된다',
+    ],
+    commentary:
+      'AI 노동 영향 논쟁이 추정에서 실측으로 옮겨 가는 중인데, 텔레메트리를 쥔 쪽은 모델 회사다. ' +
+      '9월 15일 ATLAS 공개에 이어 학계 인력을 프로그램 안에 들인 것은 그 데이터에 학술적 권위를 얹는 ' +
+      '수순이다. 문제는 측정 대상과 측정자가 같다는 점이라, 자문단의 독립성이 결과를 얼마나 지탱하는지가 관건이다.',
+  },
+  'ai-google-flow-fashion-week': {
+    points: [
+      'Google Envisioning Studio가 Google Labs 지원을 받아 디자이너 Jane Wade·Sergio Hudson과 도구 둘을 만들었다',
+      'Jane Wade의 Styling Suite는 디지털 모델 위에 헤어·메이크업·액세서리·신발·의상을 얹어 룩을 맞춰 본다',
+      '대면 캐스팅과 피팅은 보통 디자인 팀의 사흘을 쓴다고 원문은 적었다',
+      '샘플을 만들기 전에 균형을 보고 빠진 요소를 찾아 추가 재단·봉제를 줄이는 것이 목적이다',
+      'Sergio Hudson의 Runway Visualization은 조명·소품·모델 동선을 예산 안에서 바꿔 가며 런웨이를 시뮬레이션한다',
+      '전에는 무대 설계를 고칠 때마다 3D 렌더링을 새로 떠야 해 비용이 늘었다',
+      '두 도구를 쓴 결과는 뉴욕 패션위크 런웨이에서 공개됐다',
+      'Google Flow에서는 코딩 없이 자연어로 원하는 도구·워크플로를 설명해 직접 만들 수 있다',
+    ],
+    commentary:
+      '생성 도구를 이미지 뽑는 자리가 아니라 제작 공정의 앞단에 끼운 사례다. 캐스팅 사흘과 3D 렌더링 ' +
+      '재작업처럼 시간과 돈이 실제로 새던 자리를 짚었다는 점이 이전의 시연성 협업과 다르다. 다만 ' +
+      '아낀 시간·비용을 수치로 내놓지 않아, 공정에 남는 도구인지는 다음 시즌에야 드러난다.',
+  },
+  'ai-google-un-data-commons-platform': {
+    points: [
+      'UN 시스템이 UN System Data Commons를 열었다 — Google의 Data Commons를 기반으로 한 오픈소스 플랫폼이다',
+      '기관마다 형식이 다르던 통계를 지표·기간·행정경계 단위로 자동 통합해 하나의 지식 그래프로 잇는다',
+      '자연어로 물으면 관련 데이터와 상호작용 시각화를 바로 돌려준다',
+      'Explore 탭은 지역·주제별 탐색을, Blog는 UNICEF 데이터로 본 아동 빈곤 같은 보고서를 싣는다',
+      '모든 데이터셋은 UN 시스템 통계·기술 전문가의 검증을 거친다고 밝혔다',
+      'Model Context Protocol 같은 공개 표준 위에 올려 AI 에이전트가 수치를 직접 가져와 차트·보고서 초안까지 만든다',
+      'Google.org가 UN 재단을 지원했고, 2027년까지 UN 시스템 통계 데이터셋의 80%를 담는 것이 목표다',
+      '데이터는 data.un.org에서 볼 수 있다',
+    ],
+    commentary:
+      '공신력 있는 통계를 에이전트가 직접 읽을 수 있는 형태로 바꾼 것이 핵심이다. MCP를 붙였다는 것은 ' +
+      '사람이 쓰는 화면보다 도구 호출 경로를 먼저 염두에 뒀다는 뜻이고, 검증된 출처를 물리는 방식이 ' +
+      'RAG의 데이터 층에서 어떤 모양이 될지 보여 준다. 다만 2027년 80%라는 목표는 기관별 합의에 달려 있다.',
+  },
   'astra-for-law': {
     points: [
       'GPT-6 Astra에 법률 검색 인덱스와 법률 분석·작성 지침을 붙인 구성이다',
