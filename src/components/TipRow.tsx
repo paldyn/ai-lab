@@ -1,5 +1,4 @@
 import { Fragment } from 'react';
-import { EvidenceBadge } from './EvidenceBadge';
 import type { ClaimState } from '../types/playbook';
 
 /**
@@ -29,14 +28,10 @@ function withCode(text: string) {
  * 있었는지를 재고 정한 선입니다 — 문장은 자수 중앙 49인데 이유는 중앙 94에 최대
  * 281입니다.
  *
- * **반례는 그래서 `<summary>` 밖입니다.** 두 이유가 겹칩니다. 하나는 뜻입니다 —
- * 반례는 이 팁을 **의심하게** 하는 값이라 행동과 함께 밖에 있어야 하고, 교차 확인은
- * **믿게** 하는 값이라 물어볼 때 나오면 됩니다. 「그 줄이 곧 이 팁이 실측이 아닌
- * 이유라 안 감춘다」가 이 서랍의 규칙이기도 합니다. 다른 하나는 접근성입니다 —
- * `<summary>`는 role=button이고 이름이 내용 전체를 이어 붙이므로, 안에 넣으면
- * 체감 팁의 버튼 이름이 문장 둘을 이은 최대 227자가 됩니다. 「카드를 통째로
- * 감싸면 접근성 이름이 카드 안 모든 문장을 이어 붙인 한 문장이 된다」는 그 고장을
- * 그대로 밟는 자리입니다.
+ * **반례도 배지도 없습니다**(2026-09-18). 둘 다 체감 등급이 지고 있던 것이라,
+ * 체감을 걷어내면서 함께 사라졌습니다 — 반례는 「이 팁이 언제 안 통하나」를
+ * 커뮤니티 근거에 붙이던 값이고, 배지는 공식·체감을 가르던 두 글자입니다.
+ * 남은 팁이 전부 벤더 문서에서 나온 것이라 가를 것이 없습니다.
  *
  * **`<details>`에 `name`을 안 줍니다.** 주면 브라우저가 서로 배타로 묶어 한 줄을
  * 열 때 앞서 열린 줄이 닫히는데, 그 줄이 위에 있으면 보고 있던 내용이 위로 딸려
@@ -52,26 +47,12 @@ function withCode(text: string) {
  */
 export function TipRow({ state }: { state: ClaimState }) {
   const { claim, ageDays } = state;
-  const isField = claim.tier === 'field';
-
-  /*
-    공식은 「언제 확인했나」가 신선도이고, 체감은 「그 글이 언제 쓰였나」가 더
-    중요합니다 — 3년 전 통설은 오늘 확인해도 3년 된 이야기입니다.
-  */
-  const when = isField
-    ? claim.source.postedAt
-      ? `${claim.source.postedAt} 글`
-      : null
-    : ageDays === null
-      ? null
-      : `${ageDays}일 전 확인`;
+  const when = ageDays === null ? null : `${ageDays}일 전 확인`;
 
   return (
     <div className={`guide-tip is-${claim.tier}`}>
       <details className="guide-tip-fold">
         <summary className="guide-tip-head">
-          {/* 배지가 문장의 첫 낱말 자리. 세 등급이 전부 두 자라 x가 저절로 맞습니다. */}
-          <EvidenceBadge tier={claim.tier} />
           {withCode(claim.statement)}
           {/*
             빈 요소입니다. 글자는 CSS가 넣으므로 복사한 글에 안 섞이고, 여닫힘에
@@ -86,17 +67,6 @@ export function TipRow({ state }: { state: ClaimState }) {
           {claim.detail && <p className="guide-tip-detail">{withCode(claim.detail)}</p>}
 
           {/*
-            `kind`·`note`는 규칙이 요구해 데이터에는 29건 전부 들어 있는데
-            **그동안 화면 어디에도 안 나오던 값입니다.** 접힌 칸이 자리를 냈습니다.
-          */}
-          {claim.corroboration && (
-            <p className="guide-tip-detail">
-              <span className="guide-tip-counter-label">교차 확인</span>
-              {claim.corroboration.kind} — {withCode(claim.corroboration.note)}
-            </p>
-          )}
-
-          {/*
             출처와 나이. 그 전에는 배지의 `title` 속성에만 있어 **터치 기기에서 볼
             방법이 아예 없었습니다.** 보이는 글자로 내려옵니다.
           */}
@@ -109,12 +79,6 @@ export function TipRow({ state }: { state: ClaimState }) {
         </div>
       </details>
 
-      {claim.corroboration && (
-        <p className="guide-tip-counter">
-          <span className="guide-tip-counter-label">안 통하는 자리</span>
-          {withCode(claim.corroboration.counter)}
-        </p>
-      )}
     </div>
   );
 }

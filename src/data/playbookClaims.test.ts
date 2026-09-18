@@ -194,32 +194,6 @@ describe('AI 가이드 — 주장', () => {
     expect(bad.map((c) => `${c.id} → ${hostOf(c.source.url)}`)).toEqual([]);
   });
 
-  it('체감 주장이 벤더 호스트를 가리키지 않는다', () => {
-    const bad = playbookClaims
-      .filter((c) => c.tier === 'field')
-      .filter((c) => isVendorUrl(c.source.url));
-    expect(bad.map((c) => `${c.id} — 벤더 문서면 등급이 vendor다`)).toEqual([]);
-  });
-
-  /*
-    통설에 필요한 넷. 하나라도 빠지면 그건 통설이 아니라 일화입니다.
-    특히 `counter`는 비어 있으면 안 됩니다 — 반례를 못 찾았으면
-    「우리 쪽에서는 확인 못 함」이라고 적어야 통과합니다. 그 문장이 곧
-    이 주장의 등급이 `ours`가 아닌 이유입니다.
-  */
-  it('체감 등급에 게시일·교차 확인·반례가 있다', () => {
-    const bad = playbookClaims
-      .filter((c) => c.tier === 'field')
-      .filter(
-        (c) =>
-          !c.source.postedAt ||
-          !c.corroboration ||
-          !c.corroboration.note.trim() ||
-          !c.corroboration.counter.trim(),
-      );
-    expect(bad.map((c) => c.id)).toEqual([]);
-  });
-
   it('실측에 명령·결과·돌린 날·환경이 있다', () => {
     const bad = playbookClaims
       .filter((c) => c.tier === 'ours')
@@ -234,12 +208,24 @@ describe('AI 가이드 — 주장', () => {
     expect(bad.map((c) => c.id)).toEqual([]);
   });
 
-  it('공식이 아닌 값에만 교차 확인·실측 칸이 붙는다', () => {
-    const bad = playbookClaims.filter(
-      (c) =>
-        (c.tier !== 'field' && c.corroboration) || (c.tier !== 'ours' && c.measurement),
-    );
+  it('실측이 아닌 값에 실측 칸이 안 붙는다', () => {
+    const bad = playbookClaims.filter((c) => c.tier !== 'ours' && c.measurement);
     expect(bad.map((c) => c.id)).toEqual([]);
+  });
+
+  /*
+    **등급이 하나뿐인 동안에는 화면에 배지를 안 세웁니다**(2026-09-18). 체감을
+    걷어내 남은 것이 전부 공식이라 라벨이 아무것도 안 가르기 때문입니다.
+
+    그런데 실측(`ours`)이 하나라도 들어오면 그 순간 화면이 거짓말을 합니다 —
+    공식과 실측이 같은 모양으로 서는데 독자는 다 공식인 줄 압니다. 런타임
+    분기로 두면 아무도 안 보는 채로 늙으므로, **여기서 빨간 줄로 세웁니다.**
+  */
+  it('공식 말고 다른 등급이 생기면 배지를 다시 세운다', () => {
+    const others = playbookClaims.filter((c) => c.tier !== 'vendor');
+    expect(
+      others.map((c) => `${c.id}(${c.tier}) — 등급이 둘이 됐으니 배지를 되살려라`),
+    ).toEqual([]);
   });
 
   /*

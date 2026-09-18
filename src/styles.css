@@ -8119,31 +8119,6 @@ input:focus-visible {
   border-radius: 2px;
 }
 
-/* 체감은 한 단 흐리게 — 값 쪽에서 체감 값을 굵게 안 쓰고 `~`를 다는 것과 같습니다. */
-.guide-tip.is-field .guide-tip-head {
-  color: var(--text);
-  font-weight: 500;
-}
-
-/*
-  배지가 문장의 첫 낱말 자리에 박힙니다. **`float: right`을 걷어낸 자리입니다** —
-  띄워 두면 문장이 짧을 땐 줄 끝, 길 땐 첫 줄 중간에 앉아 x가 줄마다 달랐습니다.
-  「배지가 별로」의 실체는 배지가 아니라 그 흩어짐이었습니다.
-
-  고정 열을 안 쓰는 이유는 592px 측정폭에서 열 하나가 60px을 먹어 문장이 한 줄 더
-  감기기 때문이고, 안 써도 되는 이유는 「공식」·「실측」·「체감」이 전부 두 자라
-  x가 저절로 같기 때문입니다.
-
-  **`display`를 명시합니다.** `.evidence-badge`에는 `display` 선언이 없고, 그동안
-  상자로 보인 것은 `float`이 block으로 계산시켰기 때문입니다.
-*/
-.guide-tip .evidence-badge {
-  display: inline-block;
-  margin-right: var(--gs-r1);
-  vertical-align: 1px; /* 눈으로 맞춘 광학 값. em은 배지 자신의 10px로 풀려 안 맞습니다. */
-  font-weight: 400; /* 안 박으면 600/500을 물려받아 공식·체감 알약 굵기가 갈립니다. */
-}
-
 /*
   「이유」 칩. 줄상자를 문장 첫 줄과 같은 높이로 만듭니다 — 그래야 `.guide-tip`의
   padding-top 그대로가 곧 칩 자리가 되고 어림한 오프셋이 안 듭니다.
@@ -8190,11 +8165,7 @@ input:focus-visible {
   color: var(--brand-text);
 }
 
-/*
-  펼친 몸. **왼쪽에 색 띠나 세로선을 안 세웁니다** — `.evidence-badge-ours`가 이미
-  1px 실선을 실측의 뜻으로 쓰고 있어서, 같은 화면(아래 값 줄이 그 배지를 그대로
-  씁니다)에 세로 실선·점선을 더하면 모양 어휘가 둘이 됩니다. 들여쓰기만 줍니다.
-*/
+/* 펼친 몸. **왼쪽에 색 띠나 세로선을 안 세웁니다** — 들여쓰기만 줍니다. */
 .guide-tip-body {
   margin-top: var(--gs-r2);
   padding-left: var(--gs-r2);
@@ -8234,32 +8205,6 @@ input:focus-visible {
 .guide-tip-when {
   margin-left: var(--gs-r1);
   white-space: nowrap;
-}
-
-/*
-  반례. **접힌 줄에 남습니다** — 그 줄이 곧 그 팁이 실측이 아닌 이유입니다.
-  다만 `<summary>` 밖 형제라, 버튼 이름이 문장 둘을 이어 붙인 227자가 되지 않고
-  이 줄의 글자를 끌어 잡아도 줄이 안 열립니다.
-
-  닫히면 문장 바로 아래, 열리면 몸 아래 — **어느 쪽이든 칸의 맨 아랫줄**입니다.
-*/
-.guide-tip-counter {
-  margin-top: 2px;
-  color: var(--text-muted);
-  font-size: var(--gs-body);
-  line-height: 1.75;
-}
-
-.guide-tip-fold[open] + .guide-tip-counter {
-  margin-top: var(--gs-r2);
-}
-
-.guide-tip-counter-label {
-  margin-right: var(--gs-r1);
-  color: var(--text-dim);
-  font-family: var(--font-mono);
-  font-size: var(--gs-mono);
-  letter-spacing: 0.08em;
 }
 
 /*
@@ -8734,12 +8679,6 @@ input:focus-visible {
   line-height: 1.65;
 }
 
-/* 체감 값은 굵게 쓰지 않습니다 — 배지를 봐도 같아 보이는 것을 한 번 더 막습니다. */
-.claim-value .claim-soft {
-  color: var(--text-dim);
-  font-weight: 400;
-}
-
 .claim-missing {
   color: var(--text-muted);
   font-size: var(--gs-body);
@@ -8775,35 +8714,6 @@ input:focus-visible {
 
 .claim-row-soft .claim-value {
   color: var(--text-dim);
-}
-
-/*
-  근거 배지. 색이 아니라 모양으로 먼저 가릅니다 — 채움 · 실선 · 점선.
-  흑백으로 봐도, 색을 못 가리는 눈으로 봐도 셋이 갈립니다.
-*/
-.evidence-badge {
-  flex: 0 0 auto;
-  border-radius: 3px;
-  padding: 2px 6px;
-  font-family: var(--font-mono);
-  font-size: var(--gs-mono);
-  letter-spacing: 0.04em;
-}
-
-.evidence-badge-vendor {
-  border: 1px solid transparent;
-  background: var(--brand-text);
-  color: var(--bg);
-}
-
-.evidence-badge-ours {
-  border: 1px solid var(--cat-lab-notes-text, var(--text-dim));
-  color: var(--cat-lab-notes-text, var(--text-dim));
-}
-
-.evidence-badge-field {
-  border: 1px dashed var(--cat-tools-text, var(--text-muted));
-  color: var(--cat-tools-text, var(--text-muted));
 }
 
 /* 활용 가이드 — 도구 상세와 노트 */

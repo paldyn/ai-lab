@@ -188,7 +188,17 @@ export type TipGroupId = SaveGroupId | WellGroupId;
  */
 export type TipAim = 'save' | 'well';
 
-export type EvidenceTier = 'vendor' | 'field' | 'ours';
+/**
+ * 값이 어디서 왔는가. **`field`(체감)를 걷어냈습니다**(2026-09-18) — 커뮤니티 글에서
+ * 긷던 팁 29건을 통째로 내리고 벤더 문서에서 확인한 것만 남겼습니다.
+ *
+ * **둘이 남은 것은 뜻이 다르기 때문입니다** — 벤더가 제 문서에 적은 것과 우리가
+ * 직접 돌려 잰 것. 지금 `ours`는 0건이라 화면에 등급 배지를 안 세웁니다(다 공식이면
+ * 라벨이 아무것도 안 가릅니다). **`ours`가 하나라도 생기면 배지를 다시 세워야 하고,
+ * `playbookClaims.test.ts`가 그때 빨간 줄로 알려 줍니다** — 런타임 분기로 두지 않은
+ * 것은 아무도 안 보는 채로 늙기 때문입니다.
+ */
+export type EvidenceTier = 'vendor' | 'ours';
 
 /**
  * 얼마나 빨리 썩는가. 유효기간이 여기서 나옵니다.
@@ -201,25 +211,10 @@ export type Volatility = 'price' | 'limit' | 'model' | 'concept';
 export interface EvidenceSource {
   label: string;
   url: string;
-  /** 그 글이 쓰인 날. 우리가 연 날과 다른 값입니다. `field`는 필수입니다. */
+  /** 그 글이 쓰인 날. 우리가 연 날과 다른 값입니다. */
   postedAt?: string;
 }
 
-/** `field` 전용. 넷이 다 있어야 통설로 싣습니다. */
-export interface Corroboration {
-  /** 한 사람이 한 번 한 말은 통설이 아니라 일화입니다. */
-  kind: '재현' | '다수 보고' | '벤더 확인';
-  note: string;
-  /**
-   * 반례 또는 안 통하는 조건.
-   *
-   * 못 찾았으면 「우리 쪽에서는 확인 못 함」이라고 적어야 통과합니다.
-   * 그 문장이 곧 이 주장의 등급이 `ours`가 아닌 이유입니다.
-   */
-  counter: string;
-}
-
-/** `ours` 전용. 무엇을 어떻게 돌렸는지 없으면 실측이 아닙니다. */
 export interface Measurement {
   command: string;
   result: string;
@@ -293,7 +288,6 @@ export interface Claim {
   tier: EvidenceTier;
   volatility: Volatility;
   source: EvidenceSource;
-  corroboration?: Corroboration;
   measurement?: Measurement;
 }
 

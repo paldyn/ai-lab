@@ -22,27 +22,16 @@ const LOGS = path.join(ROOT, 'src/data/playbook-checks');
 
 const LOG_GAP_DAYS = 14;
 const EXPIRED_RATIO = 0.25;
-/*
-  **값이 있는** 체감 주장의 상한입니다. 상한의 목적은 「매주 다시 열어야 하는 URL
-  수」를 묶는 것이라, 값이 없는 주장은 재확인할 것이 없으므로 안 셉니다 —
-  `playbookClaims.test.ts`의 요금·한도 예산이 이미 같은 선을 긋고 있습니다.
-
-  **팁이 들어오면서 갈라야 했습니다**(2026-09-17). 팁 예순셋 중 스물아홉이 체감이라
-  옛 셈법으로는 29/10이었는데, 그 스물아홉은 전부 `value: null`이라 다시 열
-  URL을 하나도 안 만듭니다. 대신 팁 쪽의 품질은 아래 `FIELD_TIP_RATIO`가 봅니다.
-*/
-const FIELD_MAX = 10;
 
 /*
-  **팁에서 체감이 공식을 넘지 않는다.** 체감 등급은 넷(URL·게시일·교차 확인·반례)을
-  다 갖춰도 여전히 가장 약한 등급이라, 이 서랍이 「사람들이 그러더라」로 뒤덮이면
-  값을 공식 페이지에서 읽어 오는 나머지 장치가 장식이 됩니다.
+  **체감(`field`) 검사 셋을 걷어냈습니다**(2026-09-18) — 값이 있는 체감의 상한,
+  팁에서 체감이 공식을 안 넘는 비율, 원 게시물 18개월. 체감 주장 29건을 통째로
+  내리면서 셋 다 셀 것이 없어졌습니다.
 
-  수가 아니라 **비율**로 겁니다 — 팁은 계속 쌓이는 것이고 절대 상한을 걸면 쌓이는
-  족족 임계를 올리게 됩니다. 나이 쪽 상한(18개월)은 팁에도 그대로 걸립니다.
+  **못 채우는 문턱은 문턱이 아니라 잠금**이라 남기지 않습니다 — 「노트 여덟」을
+  「팁 스물」로 갈아 끼운 것과 같은 이유입니다. 등급이 다시 둘이 되는 날
+  `playbookClaims.test.ts`가 먼저 빨간 줄로 세웁니다.
 */
-const FIELD_TIP_RATIO = 1.0;
-const FIELD_MONTHS = 18;
 /*
   **여는 페이지의 수를 묶는다 — 주장의 수가 아니다.**
 
@@ -163,32 +152,9 @@ if (ratio > EXPIRED_RATIO) {
   );
 }
 
-// 3. 체감 주장의 수와 나이
-const field = claims.filter((c) => c.tier === 'field');
-const valuedField = field.filter((c) => c.hasValue);
-notes.push(`체감 ${field.length}건 · 그중 값이 있는 것 ${valuedField.length}건 (상한 ${FIELD_MAX})`);
-if (valuedField.length > FIELD_MAX) {
-  problems.push(`값이 있는 체감 주장이 ${valuedField.length}건입니다 (상한 ${FIELD_MAX})`);
-}
-
-// 3-2. 팁에서 체감이 공식을 넘지 않는가
+// 3. 팁이 몇인가 — 서랍이 nav에 서는 문턱(스물)이 이 수를 본다
 const tips = claims.filter((c) => c.topic === 'habit');
-const fieldTips = tips.filter((c) => c.tier === 'field').length;
-const vendorTips = tips.filter((c) => c.tier === 'vendor').length;
-notes.push(`팁 ${tips.length}건 (공식 ${vendorTips} · 체감 ${fieldTips})`);
-if (vendorTips > 0 && fieldTips > vendorTips * FIELD_TIP_RATIO) {
-  problems.push(
-    `팁에서 체감(${fieldTips})이 공식(${vendorTips})을 넘었습니다 — 공식 문서에서 더 긷거나 약한 체감 팁을 내립니다`,
-  );
-}
-
-for (const c of field) {
-  if (!c.postedAt) continue;
-  const months = daysBetween(c.postedAt, today) / 30.4;
-  if (months > FIELD_MONTHS) {
-    problems.push(`${c.id}: 원 게시물이 ${Math.round(months)}개월 됐습니다 — 재확인해 실측으로 올리거나 지웁니다`);
-  }
-}
+notes.push(`팁 ${tips.length}건`);
 
 // 4. 값이 있는 요금·한도를 읽으러 가야 하는 페이지 수
 const valued = claims.filter((c) => c.hasValue && (c.volatility === 'price' || c.volatility === 'limit'));

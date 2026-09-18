@@ -161,9 +161,9 @@ describe('프리렌더 — 본문이 HTML에 들어간다', () => {
       const folds = html.split('guide-tip-fold').length - 1;
       if (folds !== tips.length) wrong.push(`${product.id}: 접힌 칸 ${folds} ≠ 팁 ${tips.length}`);
 
-      const counters = tips.filter((c) => c.corroboration).length;
+      /* 체감을 걷어내면서 반례 줄도 같이 없어졌다 — 하나라도 남으면 지우다 만 것이다. */
       const shown = html.split('>안 통하는 자리<').length - 1;
-      if (shown !== counters) wrong.push(`${product.id}: 반례 ${shown} ≠ ${counters}`);
+      if (shown !== 0) wrong.push(`${product.id}: 반례 ${shown}줄이 남았다`);
 
       /* **화면이 축 둘로 갈립니다** — 묶음도 절마다 따로 셉니다. */
       const aims = ['save', 'well'] as const;
