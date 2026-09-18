@@ -99,6 +99,39 @@ export function shownValue(state: ClaimState): string | null {
   return state.claim.value;
 }
 
+/**
+ * 모델 표의 한 칸이 무엇을 말해야 하는가.
+ *
+ * **상태가 넷이고 뜻이 다 다릅니다.** 그 전에는 `claim.value ?? '모름'` 하나가 넷을
+ * 뭉갰습니다 — `shownValue`를 안 지나 **만료된 값이 그대로 서 있었고**, 확인 로그가
+ * 아예 없는 칸이 「모름」이라고 말했습니다. 「모름」은 **열어 봤는데 벤더가 안 적었다**는
+ * 뜻이라, 안 열어 본 칸이 그 말을 하면 이 서랍이 파는 구별이 화면에서 거짓이 됩니다.
+ *
+ * | 상태 | 화면 | 뜻 |
+ * | --- | --- | --- |
+ * | 주장 없음 | 빈 칸 | 아직 세우지도 않았다 |
+ * | `freshness: 'unknown'` | 확인 기록 없음 | 주장은 있는데 한 번도 안 열어 봤다 |
+ * | `freshness: 'hard'` | 유효기간 지남 | 열어 봤지만 그 확인이 너무 늙었다 |
+ * | `value: null` | 모름 | 열어 봤고, 벤더가 안 적었다 |
+ * | 그 밖 | 값 | |
+ *
+ * **새로 쓰는 말이 하나도 없습니다** — 셋 다 `ClaimRow`가 이미 쓰는 문구입니다.
+ * 차례가 중요합니다: 안 열어 본 것이 먼저이고 「모름」이 마지막입니다.
+ */
+export type ModelCell =
+  | { kind: 'none' }
+  | { kind: 'value'; value: string }
+  | { kind: 'note'; text: string };
+
+export function modelCell(claim: Claim | undefined, today: string): ModelCell {
+  if (!claim) return { kind: 'none' };
+  const state = claimState(claim, today);
+  if (state.freshness === 'unknown') return { kind: 'note', text: '확인 기록 없음' };
+  if (state.freshness === 'hard') return { kind: 'note', text: '유효기간 지남' };
+  if (claim.value === null) return { kind: 'note', text: '모름' };
+  return { kind: 'value', value: claim.value };
+}
+
 export interface ProductFreshness {
   /** 이 제품이 들고 있는 값의 수. */
   total: number;

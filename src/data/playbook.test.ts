@@ -3,6 +3,7 @@ import {
   FRESHNESS_DAYS,
   claimState,
   daysBetween,
+  modelCell,
   playbookChecks,
   playbookNavVisible,
   shownValue,
@@ -132,5 +133,65 @@ describe('AI 가이드 — nav 문턱', () => {
 
   it('확인 로그가 오래 비면 안 선다', () => {
     expect(playbookNavVisible('2030-01-01')).toBe(false);
+  });
+});
+
+/*
+  **모델 표의 칸이 상태 넷을 가르는가.**
+
+  그 전에는 `claim.value ?? '모름'` 하나가 넷을 뭉갰다 — `shownValue`를 안 지나
+  **만료된 값이 그대로 섰고**, 확인 로그가 없는 칸이 「모름」이라고 말했다.
+  「모름」은 **열어 봤는데 벤더가 안 적었다**는 뜻이라, 안 열어 본 칸이 그 말을 하면
+  이 서랍이 파는 구별이 화면에서 거짓이 된다.
+
+  **지금 만료된 모델 값이 하나도 없다**(서른여덟이 다 `fresh`). 그래서 실제 데이터로는
+  이 고침이 한 줄도 안 밟힌다 — 날짜를 밀어 여기서 밟는다. 안 그러면 값이 늙는 날
+  (단가 60일 · 컨텍스트 90일)에야 드러난다.
+*/
+describe('AI 가이드 — 모델 표의 칸', () => {
+  const logged = playbookClaims.find(
+    (c) => c.subject.kind === 'model' && c.value !== null && claimState(c, '2026-09-18').checkedAt,
+  );
+
+  it('시험할 주장을 찾았다', () => {
+    expect(logged).toBeDefined();
+  });
+
+  it('주장이 없으면 빈 칸이다', () => {
+    expect(modelCell(undefined, '2026-09-18')).toEqual({ kind: 'none' });
+  });
+
+  it('확인이 싱싱하면 값을 적는다', () => {
+    const c = logged!;
+    expect(modelCell(c, claimState(c, '2026-09-18').checkedAt!)).toEqual({
+      kind: 'value',
+      value: c.value,
+    });
+  });
+
+  it('유효기간이 지나면 값이 사라지고 그렇게 적는다', () => {
+    const c = logged!;
+    const hard = FRESHNESS_DAYS[c.volatility]!.hard;
+    const at = new Date(claimState(c, '2026-09-18').checkedAt!);
+    at.setUTCDate(at.getUTCDate() + hard + 1);
+    const cell = modelCell(c, at.toISOString().slice(0, 10));
+    expect(cell).toEqual({ kind: 'note', text: '유효기간 지남' });
+    /* 값이 흐려지는 것이 아니라 사라진다 — 문자열 어디에도 안 남는다. */
+    expect(JSON.stringify(cell)).not.toContain(c.value!);
+  });
+
+  it('확인 로그가 없으면 「모름」이 아니라 「확인 기록 없음」이다', () => {
+    expect(modelCell(fake('price'), '2026-09-18')).toEqual({
+      kind: 'note',
+      text: '확인 기록 없음',
+    });
+  });
+
+  it('열어 봤는데 벤더가 안 적었으면 「모름」이다', () => {
+    const c = { ...logged!, value: null };
+    expect(modelCell(c, claimState(logged!, '2026-09-18').checkedAt!)).toEqual({
+      kind: 'note',
+      text: '모름',
+    });
   });
 });

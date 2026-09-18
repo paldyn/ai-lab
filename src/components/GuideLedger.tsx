@@ -3,7 +3,7 @@ import { Link } from 'react-router';
 import { ClaimRow } from './ClaimRow';
 import { GuideMark } from './GuideMark';
 import { TipRow } from './TipRow';
-import { claimState, claimsForProduct, claimsForVendor } from '../data/playbook';
+import { claimState, claimsForProduct, claimsForVendor, modelCell } from '../data/playbook';
 import { playbookClaims } from '../data/playbookClaims';
 import { shownModels } from '../data/guideModels';
 import { guideProducts } from '../data/guideProducts';
@@ -575,9 +575,16 @@ function ProductLedger({ product, today }: { product: Product; today: string }) 
             className={`guide-models${hasContext ? ' has-ctx' : ''}${hasPrice ? ' has-price' : ''}`}
           >
             {models.map((model) => {
-              const contextClaim = contextOf.get(model.id);
+              /*
+                **`shownValue`를 지나는 자리입니다.** 그 전에는 `claim.value`를 날로
+                읽어, 「만료되면 값이 흐려지는 것이 아니라 사라진다」가 원장에서
+                여기 한 군데만 안 걸려 있었습니다. `modelCell`이 상태 넷을 가릅니다 —
+                주장 없음 · 확인 기록 없음 · 유효기간 지남 · 모름.
+              */
+              const ctx = modelCell(contextOf.get(model.id), today);
               const priceClaim = priceOf.get(model.id);
-              const price = priceClaim?.value ? splitPrice(priceClaim.value) : null;
+              const priceState = modelCell(priceClaim, today);
+              const price = priceState.kind === 'value' ? splitPrice(priceState.value) : null;
               return (
                 <li key={model.id}>
                   <span className="guide-model-name">
@@ -597,8 +604,12 @@ function ProductLedger({ product, today }: { product: Product; today: string }) 
                     안 적었다」고 말하고** 있었습니다 — 이 서랍이 파는 구별입니다.
                     열 이름과 겹치는 「컨텍스트 창」은 뗍니다: 열 위치가 그 말을 합니다.
                   */}
-                  {contextClaim && (
-                    <span className="guide-model-context">{contextClaim.value ?? '모름'}</span>
+                  {ctx.kind !== 'none' && (
+                    <span
+                      className={`guide-model-context${ctx.kind === 'note' ? ' is-note' : ''}`}
+                    >
+                      {ctx.kind === 'value' ? ctx.value : ctx.text}
+                    </span>
                   )}
                   {priceClaim &&
                     (price ? (
@@ -611,7 +622,19 @@ function ProductLedger({ product, today }: { product: Product; today: string }) 
                         {price.pair}
                       </a>
                     ) : (
-                      <span className="guide-model-price is-unknown">모름</span>
+                      /*
+                        값이 안 서는 칸도 **출처로는 갈 수 있어야 합니다** — 「모름」과
+                        「유효기간 지남」 둘 다 다음 할 일이 「공식 페이지를 열어 보기」라
+                        `ClaimRow`가 그 자리를 링크로 둔 것과 같습니다.
+                      */
+                      <a
+                        className="guide-model-price is-note"
+                        href={priceClaim.source.url}
+                        target="_blank"
+                        rel="noreferrer"
+                      >
+                        {priceState.kind === 'note' ? priceState.text : '모름'}
+                      </a>
                     ))}
                   {/*
                     **없으면 줄이 안 섭니다.** 「—」로 채우거나 「모름」을 적지 않습니다 —

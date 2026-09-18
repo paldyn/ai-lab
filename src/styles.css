@@ -8396,9 +8396,9 @@ input:focus-visible {
   **자릿수를 고정한다**(`tabular-nums`). 막대를 안 그리는 대신 자릿수가 그 일을
   한다 — $10과 $0.20이 같은 끝에 서고 소수점이 한 세로줄에 잡힌다.
 
-  **`is-unknown`은 링크가 아니다.** 주장이 있는데 값이 `null`이면(열어 봤는데 벤더가
-  안 적었다) 「모름」이 서고, 주장 자체가 없으면(아직 안 봤다) 아무것도 안 선다.
-  그래서 hover는 `a`에만 건다.
+  **값이 안 서는 칸도 링크다**(2026-09-18). 「모름」·「유효기간 지남」·「확인 기록 없음」
+  셋 다 다음 할 일이 「공식 페이지를 열어 보기」라, `ClaimRow`가 그 자리를 링크로 둔
+  것과 같이 둔다. 주장 자체가 없으면 아무것도 안 선다.
 */
 .guide-model-price {
   grid-area: 1 / -2;
@@ -8419,6 +8419,17 @@ a.guide-model-price:hover {
   color: var(--brand-text);
   text-decoration: underline;
   text-decoration-color: currentColor;
+}
+
+/*
+  **값이 아니라 상태를 적는 칸.** 수가 아니므로 자릿수 고정이 할 일이 없고, 옆 줄의
+  진짜 값보다 한 단 흐려야 「여기엔 수가 없다」가 훑을 때 바로 읽힌다. 새 색이 아니라
+  이미 쓰는 `--text-muted`다(값은 `--text-dim`).
+*/
+.guide-model-context.is-note,
+.guide-model-price.is-note {
+  color: var(--text-muted);
+  font-variant-numeric: normal;
 }
 
 /*
