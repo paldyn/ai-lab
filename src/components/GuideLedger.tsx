@@ -5,7 +5,7 @@ import { GuideMark } from './GuideMark';
 import { TipRow } from './TipRow';
 import { claimState, claimsForProduct, claimsForVendor, modelCell } from '../data/playbook';
 import { playbookClaims } from '../data/playbookClaims';
-import { shownModels } from '../data/guideModels';
+import { modelMark, shownModels } from '../data/guideModels';
 import { guideProducts } from '../data/guideProducts';
 import { tipGroupsOf } from '../data/guideTipGroups';
 import { guideVendorById } from '../data/guideVendors';
@@ -617,6 +617,19 @@ function ProductLedger({ product, today }: { product: Product; today: string }) 
               return (
                 <li key={model.id}>
                   <span className="guide-model-name">
+                    {/*
+                      **계열 마크입니다 — 모델별 마크가 아닙니다.** 모델마다 다른
+                      심볼은 어느 벤더에도 없습니다(`modelMark` 주석에 실측을
+                      적어 뒀습니다). 한 벤더만 도는 제품에서는 같은 마크가
+                      줄마다 되풀이되는데, 그것이 줄머리 앵커가 되어 이름 열의
+                      왼쪽 변을 세웁니다 — 레일이 이미 그렇게 서 있습니다.
+                    */}
+                    <GuideMark
+                      logo={modelMark[model.vendorId].logo}
+                      monochrome={modelMark[model.vendorId].monochrome}
+                      accent={modelMark[model.vendorId].accent}
+                      className="guide-model-mark"
+                    />
                     {model.name}
                     {model.vendorId !== product.vendorId && (
                       <span className="guide-peer-vendor">

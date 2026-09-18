@@ -388,3 +388,36 @@ export const guideModelById = (id: string): ModelInfo | undefined =>
 
 export const modelsOfVendor = (vendorId: VendorId): ModelInfo[] =>
   guideModels.filter((model) => model.vendorId === vendorId);
+
+/**
+ * 모델 줄 앞에 서는 마크 — **계열 마크이지 모델별 마크가 아닙니다.**
+ *
+ * **모델마다 다른 심볼은 존재하지 않습니다.** 2026-09-18에 실제로 받아 보고
+ * 확인했습니다: `anthropic.com/claude/{opus,sonnet,haiku,fable}` 네 페이지가
+ * 저마다 174폭 SVG를 하나씩 걸고 해시가 다 달라 모델별 마크처럼 보이는데,
+ * 경로 데이터를 대조하면 **주황 해(2,423자)와 「Claude」 글자(6,047자)가
+ * 네 파일에서 바이트까지 같습니다.** 다른 것은 모델 이름 글자뿐입니다 —
+ * 곧 모델별 **워드마크 락업**이고 심볼은 한 벌입니다. 게다가 세로로 쌓인
+ * 락업이라 14px에서는 아무것도 안 읽힙니다.
+ *
+ * OpenAI와 Google도 같습니다. 그래서 여기 있는 것은 **계열 마크 셋**이고,
+ * 뉴스 서랍이 이미 같은 짝을 씁니다(`family: 'GPT'` → `openai.svg`).
+ *
+ * **회사 마크가 아니라 계열 마크입니다.** Anthropic의 회사 마크는 `A\` 글리프인데
+ * 모델 줄에 서야 할 것은 Claude 해이고, Google의 회사 마크는 네 색 `G`인데 여기
+ * 서야 할 것은 Gemini 별입니다. 레일의 기업 줄과 다른 자산을 쓰는 이유입니다.
+ *
+ * 셋 다 단색이라 착색됩니다 — `gemini-color.png`(4색)를 안 쓰는 이유이기도 합니다.
+ * 한 벤더의 모델만 도는 제품에서는 같은 마크가 줄마다 되풀이되는데, **그것이
+ * 노이즈가 아니라 줄머리 앵커입니다** — 레일이 이미 그렇게 서 있습니다
+ * (Claude·Claude Cowork 둘 다 `claude.svg`). 섞이는 제품(Antigravity)에서는
+ * 색까지 갈려 한눈에 읽힙니다.
+ */
+export const modelMark: Record<
+  VendorId,
+  { logo: string; monochrome: boolean; accent: string }
+> = {
+  anthropic: { logo: 'assets/claude.svg', monochrome: true, accent: 'var(--source-anthropic-text)' },
+  openai: { logo: 'assets/openai.svg', monochrome: true, accent: 'var(--source-openai-text)' },
+  google: { logo: 'assets/gemini.svg', monochrome: true, accent: 'var(--source-google-text)' },
+};

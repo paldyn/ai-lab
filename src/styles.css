@@ -8392,6 +8392,33 @@ input:focus-visible {
 }
 
 /*
+  모델 줄머리의 **계열 마크**(2026-09-18). 레일 마크와 같은 14px이라 왼쪽에서
+  고른 제품 줄과 오른쪽 모델 줄이 한 계열로 읽힌다.
+
+  **열로 안 세우고 이름 안에 인라인으로 둔다.** 격자에 14px 열을 하나 더 주면
+  마크와 이름 사이가 `column-gap`(12px)에 묶여 레일의 6px과 어긋나고, 640px 아래
+  규칙 넉 줄을 전부 고쳐야 한다. 인라인으로 두고 아래 쓰임 줄에 같은 몫을
+  들여쓰면 **이름과 쓰임이 한 세로줄에 서는 것은 똑같다.**
+
+  `vertical-align`이 −2px인 것은 13.5px 글줄에서 14px 사각형의 광학 중심을
+  맞추는 값이다 — `baseline`으로 두면 마크가 글자 위로 뜬다.
+*/
+.guide-model-mark {
+  display: inline-flex;
+  width: 14px;
+  height: 14px;
+  flex: 0 0 auto;
+  margin-right: var(--gs-r1);
+  vertical-align: -2px;
+}
+
+.guide-model-mark img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+/*
   **어떤 상황에서 쓰나** — 만든 회사가 제 문서에 적어 둔 말이다. 링크가 곧 그 문장이
   실린 페이지라, 따로 배지를 안 달고도 어디서 왔는지가 눌러서 확인된다.
 
@@ -8407,6 +8434,8 @@ input:focus-visible {
 */
 .guide-model-use {
   grid-area: 2 / 1;
+  /* 줄머리 마크 14px + `--gs-r1` 6px. 이름 첫 글자와 한 세로줄에 선다. */
+  padding-left: calc(14px + var(--gs-r1));
   max-width: var(--gs-measure);
   color: var(--text-muted);
   font-size: var(--gs-body);
@@ -8830,7 +8859,8 @@ a.guide-model-price:hover {
 */
 @supports (mask-image: url('')) or (-webkit-mask-image: url('')) {
   .guide-rail-mark.is-tinted,
-  .guide-ledger-mark.is-tinted {
+  .guide-ledger-mark.is-tinted,
+  .guide-model-mark.is-tinted {
     background-color: var(--guide-mark-color, currentColor);
     -webkit-mask-image: var(--guide-mark);
     mask-image: var(--guide-mark);
@@ -8843,7 +8873,8 @@ a.guide-model-price:hover {
   }
 
   .guide-rail-mark.is-tinted img,
-  .guide-ledger-mark.is-tinted img {
+  .guide-ledger-mark.is-tinted img,
+  .guide-model-mark.is-tinted img {
     visibility: hidden;
   }
 }
