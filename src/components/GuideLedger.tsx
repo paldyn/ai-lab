@@ -231,21 +231,28 @@ function leversOf(tips: Claim[]): string[] {
 }
 
 /**
- * 단가 문자열에서 **단서를 뗍니다** — 「줄이되 뜻을 안 버린다」의 구현입니다.
+ * 단가 문자열을 **짝**과 **단서**로 가릅니다 — 「줄이되 뜻을 안 버린다」의 구현입니다.
  *
- * 열넷 중 넷이 `기본 (단서)` 꼴이고(`$2 / $12 (200K 초과 시 $4 / $18)`,
- * `$0.75 / $3.75 (2027-01-01부터 $1.50 / $7.50)`), 그 넷 때문에 단가 문자열이
- * 9자에서 28자까지 벌어집니다. 오른쪽에 그대로 붙여 두면 **왼쪽의 컨텍스트 창이
- * 단가 길이를 따라 x를 옮겨** 다섯 줄짜리 화면(Antigravity·Codex)에서 수가
- * 지그재그로 섭니다 — 「표로 하자」는 말이 가리킨 자리가 정확히 이것입니다.
+ * 모델 단가 열아홉 중 **일곱**이 `기본 (단서)` 꼴이고(`$2 / $12 (200K 초과 시
+ * $4 / $18)`, `$0.75 / $3.75 (2027-01-01부터 $1.50 / $7.50)`), 화면에 실제로 서는
+ * 것은 넷입니다. 그 넷 때문에 단가 문자열이 13자에서 42자까지 벌어집니다. 오른쪽에
+ * 그대로 붙여 두면 **왼쪽의 컨텍스트 창이 단가 길이를 따라 x를 옮겨** 다섯 줄짜리
+ * 화면(Antigravity)에서 수가 지그재그로 섭니다 — 「표로 하자」가 가리킨 자리입니다.
  *
  * **자르지 않고 아래로 내립니다.** 단서는 「지금 이 값이 언제 거짓이 되는가」라
- * 버리면 두 주 뒤에 거짓말이 되고, 괄호째 옮기므로 원문 글자가 하나도 안 바뀝니다.
+ * 버리면 두 주 뒤에 거짓말이 되고, 괄호째 옮기므로 원문 글자가 하나도 안 바뀝니다 —
+ * `pair + ' ' + rider`가 원문과 글자까지 같습니다.
+ *
+ * **꼴을 문자열이 아니라 문법으로 봅니다.** `indexOf(' (')`로 가르면 기본값 안에
+ * 괄호가 들어오는 날 엉뚱한 데서 갈립니다. 안 맞는 꼴은 통째로 `pair`에 남고
+ * `raw`가 서서 감기게 두므로, 값이 사라지지는 않습니다.
  */
-function splitPrice(value: string | null): [string | null, string | null] {
-  if (!value) return [null, null];
-  const at = value.indexOf(' (');
-  return at === -1 ? [value, null] : [value.slice(0, at), value.slice(at + 1)];
+const PRICE_PAIR = /^(\$[\d.,]+ \/ \$[\d.,]+)(?: (\(.+\)))?$/;
+
+function splitPrice(value: string): { pair: string; rider: string | null; raw: boolean } {
+  const m = PRICE_PAIR.exec(value);
+  if (!m) return { pair: value, rider: null, raw: true };
+  return { pair: m[1], rider: m[2] ?? null, raw: false };
 }
 
 /**
@@ -441,14 +448,17 @@ function ProductLedger({ product, today }: { product: Product; today: string }) 
   /* 거기서 고를 만한 최신만. 회사별로 보므로 최신이 없는 회사 것은 그대로 섭니다. */
   const models = shownModels(product.models);
   /*
-    **열은 그 제품의 데이터가 세웁니다.** 한 줄도 값을 안 가진 열은 아예 안 섭니다 —
-    자격증 일정 표에서 값 없는 칸을 열로 안 세우는 그 규칙입니다. Gemini 앱은 셋 다
-    수가 없어 이름·쓰임 한 열로 서고, 그래서 「컨텍스트 창 모름」이 세 줄 겹쳐 서던
-    자리가 사라집니다. 반대로 한 줄만 비면(Codex Spark · GPT-OSS) 그 칸을 빈 채로
-    둡니다 — 옆 넷이 차 있어 **빈 칸 자체가 「안 적혀 있다」는 말**이 됩니다.
+    **열은 그 제품의 데이터가 세웁니다.** 그 값을 한 줄도 확인한 적이 없으면 열이
+    아예 안 섭니다 — 자격증 일정 표에서 값 없는 칸을 열로 안 세우는 그 규칙입니다.
+    Gemini 앱은 셋 다 주장이 없어 이름·쓰임 한 열로 서고, 그래서 「컨텍스트 창 모름」이
+    세 줄 겹쳐 서던 자리가 사라집니다. 반대로 한 줄만 비면(Codex Spark · GPT-OSS)
+    열은 세우고 칸만 비웁니다 — 옆 넷이 차 있어 **빈 칸 자체가 말을 합니다.**
+
+    **`value`가 아니라 `has`로 묻습니다.** 값이 `null`인 주장은 「열어 봤는데 벤더가
+    안 적었다」라 그 자체가 알아낸 것이고, 화면에 「모름」으로 서야 합니다.
   */
-  const hasContext = models.some((m) => contextOf.get(m.id)?.value);
-  const hasPrice = models.some((m) => priceOf.get(m.id)?.value);
+  const hasContext = models.some((m) => contextOf.has(m.id));
+  const hasPrice = models.some((m) => priceOf.has(m.id));
 
   const links = [{ label: '제품 페이지', url: product.officialUrl }];
   if (product.docsUrl && product.docsUrl !== product.officialUrl) {
@@ -531,31 +541,43 @@ function ProductLedger({ product, today }: { product: Product; today: string }) 
           label="어느 모델로 돌리나"
           lead={
             <>
-              쓰임은 만든 회사가 제 문서에 적어 둔 말입니다 — 누르면 그 페이지로 갑니다.
-              오른쪽 수는 입력 컨텍스트 창과 <b>100만 토큰당 입력 / 출력 단가</b>입니다.
+              쓰임은 만든 회사가 제 문서에 적어 둔 말입니다 — 누르면 그 페이지로 갑니다.{' '}
+              {/*
+                **범례는 열이 실제로 설 때만 섭니다.** 수가 하나도 없는 화면(Gemini 앱)
+                에서 「오른쪽 수는…」은 아무것도 안 가리킵니다 — 빈 열을 안 그리는 규칙이
+                산문에도 그대로 걸립니다. 문장은 고치지 않고 켰다 끕니다.
+              */}
+              {(hasContext || hasPrice) && (
+                <>
+                  오른쪽 수는 입력 컨텍스트 창과 <b>100만 토큰당 입력 / 출력 단가</b>입니다.{' '}
+                </>
+              )}
               만든 회사가 구세대·legacy로 부르는 모델은 안 적습니다 — 다만 그 회사의 최신이
               이 제품에 하나도 없으면 있는 것을 그대로 둡니다.
             </>
           }
         >
           {/*
-            **표입니다 — 그래프가 아닙니다.** 단가만 막대로 깔아 봤다가 접었습니다.
-            ① 값이 하나도 없는 화면이 있고(Gemini 앱 세 줄), ② 폭이 50배 벌어져
-            ($0.20 ~ $10) 선형이면 정작 「갈아타라」고 권하는 싼 모델이 사라지고
-            로그면 거짓이 되며, ③ 제품 안에서 정규화하면 **같은 모델이 화면마다 다른
-            길이로** 섭니다(Opus 5는 Claude Code에서 50%, Antigravity에서 100%),
-            ④ 넷은 단서 때문에 가리킬 크기 자체가 없습니다(200K를 넘으면 두 배).
-            그래서 여기서 할 일은 그림을 더하는 것이 아니라 **수를 열로 세우는 것**
-            입니다 — 지금은 단가 길이가 9~28자로 들쭉날쭉해 왼쪽의 컨텍스트 창이
-            줄마다 x를 옮깁니다.
+            **표입니다 — 그래프가 아닙니다.** 단가를 막대로 깔아 봤다가 접었습니다.
+            ① 그릴 것이 하나도 없는 화면이 있고(Gemini 앱 세 줄이 전부 무값), ② 폭이
+            50배 벌어져($0.20 ~ $10) 선형이면 정작 「갈아타라」고 권하는 싼 모델이
+            슬리버로 사라지고 로그면 돈 이야기가 거짓이 되며, ③ 제품 안에서 정규화하면
+            **같은 모델이 화면마다 다른 길이로** 섭니다(Opus 5는 Claude Code에서 50%,
+            Antigravity에서 100%), ④ 컨텍스트 창은 1M·1.05M·200K뿐이라 막대가 전부
+            같은 길이이고, ⑤ 단서가 붙은 넷은 가리킬 크기 자체가 하나가 아닙니다
+            (200K를 넘으면 두 배입니다).
+
+            **열이 뜻하는 것은 크기가 아니라 같은 자리입니다.** 같은 값이 열여섯 번
+            되풀이되는 것이 열에서는 곧은 선이 되고 Haiku의 「200K 토큰」이 그 선을
+            끊습니다 — 목록에서는 그냥 또 하나의 오른쪽 문자열이었습니다.
           */}
           <ul
             className={`guide-models${hasContext ? ' has-ctx' : ''}${hasPrice ? ' has-price' : ''}`}
           >
             {models.map((model) => {
-              const context = contextOf.get(model.id)?.value ?? null;
-              const claim = priceOf.get(model.id);
-              const [price, priceNote] = splitPrice(claim?.value ?? null);
+              const contextClaim = contextOf.get(model.id);
+              const priceClaim = priceOf.get(model.id);
+              const price = priceClaim?.value ? splitPrice(priceClaim.value) : null;
               return (
                 <li key={model.id}>
                   <span className="guide-model-name">
@@ -567,37 +589,35 @@ function ProductLedger({ product, today }: { product: Product; today: string }) 
                     )}
                   </span>
                   {/*
-                    **수 둘이 각자 열을 갖습니다.** 그 전에는 둘이 한 덩이로 오른쪽
-                    끝에 붙어 있어 컨텍스트 창의 x가 옆 단가의 글자 수를 따라다녔고,
-                    Antigravity 다섯 줄에서 「1M 토큰」이 세 자리에 흩어져 섰습니다.
-                    좁은 폭에서는 이 덩이가 다시 한 줄로 모입니다(`display: contents`를
-                    풀면 제 상자가 돌아옵니다) — 104px 열 둘을 세울 폭이 없습니다.
+                    **빈 칸이 셋으로 갈립니다.** 주장이 있고 값도 있으면 값을 적고,
+                    주장은 있는데 값이 `null`이면(공식 페이지를 열어 봤는데 벤더가 안
+                    적었다) 「모름」을 적고, 주장 자체가 없으면(아직 안 봤다) 아무것도
+                    안 적습니다. 그 전에는 `?? '컨텍스트 창 모름'` 하나가 뒤엣둘을
+                    뭉개서, **한 번도 확인 안 한 Gemini 앱 세 줄이 「확인했는데 벤더가
+                    안 적었다」고 말하고** 있었습니다 — 이 서랍이 파는 구별입니다.
+                    열 이름과 겹치는 「컨텍스트 창」은 뗍니다: 열 위치가 그 말을 합니다.
                   */}
-                  {(context || price) && (
-                    <span className="guide-model-nums">
-                      {context && <span className="guide-model-context">{context}</span>}
-                      {price && claim && (
-                        <a
-                          className="guide-model-price"
-                          href={claim.source.url}
-                          target="_blank"
-                          rel="noreferrer"
-                        >
-                          {price}
-                        </a>
-                      )}
-                      {/*
-                        단서는 **링크 밖 형제**입니다 — 반례를 `<summary>` 밖에 둔 것과
-                        같은 이유로, 안에 넣으면 링크 이름이 28자짜리 한 문장이 됩니다.
-                        같은 페이지로 가는 단가가 바로 위에 붙어 있어 갈 길은 안 막힙니다.
-                      */}
-                      {priceNote && <span className="guide-model-note">{priceNote}</span>}
-                    </span>
+                  {contextClaim && (
+                    <span className="guide-model-context">{contextClaim.value ?? '모름'}</span>
                   )}
+                  {priceClaim &&
+                    (price ? (
+                      <a
+                        className={`guide-model-price${price.raw ? ' is-raw' : ''}`}
+                        href={priceClaim.source.url}
+                        target="_blank"
+                        rel="noreferrer"
+                      >
+                        {price.pair}
+                      </a>
+                    ) : (
+                      <span className="guide-model-price is-unknown">모름</span>
+                    ))}
                   {/*
                     **없으면 줄이 안 섭니다.** 「—」로 채우거나 「모름」을 적지 않습니다 —
                     벤더가 그 모델의 쓰임을 안 적은 것은 스물셋 중 넷이고, 빈 칸을 세우면
-                    그 넷이 나머지와 같은 무게로 자리를 먹습니다.
+                    그 넷이 나머지와 같은 무게로 자리를 먹습니다. 값과 달리 여기는 확인
+                    로그가 아니라 등록부라 「안 적혀 있다」는 사실이 데이터에 남습니다.
                   */}
                   {model.useWhen && (
                     <p className="guide-model-use">
@@ -606,6 +626,12 @@ function ProductLedger({ product, today }: { product: Product; today: string }) 
                       </a>
                     </p>
                   )}
+                  {/*
+                    단서는 **링크 밖 형제**입니다 — 반례를 `<summary>` 밖에 둔 것과
+                    같은 이유로, 안에 넣으면 링크 이름이 42자짜리 한 문장이 됩니다.
+                    같은 페이지로 가는 단가가 바로 위에 붙어 있어 갈 길은 안 막힙니다.
+                  */}
+                  {price?.rider && <span className="guide-model-note">{price.rider}</span>}
                 </li>
               );
             })}

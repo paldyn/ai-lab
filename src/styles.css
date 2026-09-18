@@ -8254,10 +8254,33 @@ input:focus-visible {
 
 
 /*
-  고를 수 있는 모델. **이름만 늘어놓던 줄에 값을 붙였습니다** — 어느 모델을 고를지는
-  컨텍스트 창을 보고 정하는데, 그 값이 다른 절에 따로 서 있으면 눈이 오갑니다.
-  라벨 열을 안 쓰고 이름과 값을 양끝에 붙입니다 — 이름 길이가 제각각이라
-  고정 열로 묶으면 짧은 이름 뒤가 비어 「고장난 표」로 읽힙니다.
+  고를 수 있는 모델. **한 줄이 표의 한 행이다**(2026-09-18). 「좀 표로 하든지 그래프로
+  하든지」에 **표로** 답한 자리다 — 단가를 막대로 깔아 보고 접었다.
+
+  ① 그릴 것이 하나도 없는 화면이 있다(Gemini 앱 세 줄이 전부 무값).
+  ② 단가가 $0.20에서 $10까지 50배라 선형이면 정작 「갈아타라」고 권하는 싼 쪽이
+     슬리버로 사라지고, 로그면 돈 이야기가 거짓이 된다.
+  ③ 제품 안에서 정규화하면 **같은 모델이 화면마다 다른 길이로** 선다(Opus 5는
+     Claude Code에서 절반, Antigravity에서 꽉 참).
+  ④ 컨텍스트 창은 1M·1.05M·200K뿐이라 막대가 전부 같은 길이다.
+  ⑤ 모델 단가 열아홉 중 **일곱**에 단서가 붙어(화면에 실제로 서는 것은 넷)
+     **가리킬 크기 자체가 하나가 아니다** — 200K를 넘으면 두 배다.
+
+  **열이 뜻하는 것은 크기가 아니라 같은 자리다.** 같은 값이 열여섯 번 되풀이되는
+  것이 열에서는 **곧은 선**이 되고, Haiku의 「200K 토큰」이 그 선을 끊는다. 목록에서는
+  그냥 또 하나의 오른쪽 문자열이었다 — 막대로는 못 보이는 정보다.
+
+  **고칠 것은 그림이 없는 것이 아니라 열이 없는 것이었다.** 그 전에는 수 둘이
+  `.guide-model-nums` 한 덩이로 오른쪽 끝에 붙어, 컨텍스트 창의 x가 **옆 단가의
+  글자 수**(13~42자)를 따라다녔다 — Antigravity 다섯 줄에서 「1M 토큰」이 네 자리에
+  흩어져 섰다. 이제 각자 열을 갖고 그 덩이는 없앴다.
+
+  **선은 한 줄도 안 는다** — 세로줄도 칸 테두리도 안 세우고 행마다 아래 괘선 하나
+  그대로다(89 → 55 → 16으로 줄여 온 자리를 표가 뒤집지 않는다). **머리 행도 안
+  세운다** — 열 이름을 적으면 새로 쓰는 문장이 둘 생기는데, 바로 위 리드가 이미
+  「오른쪽 수는 입력 컨텍스트 창과 100만 토큰당 입력 / 출력 단가」라고 말한다.
+  리드를 목록 **앞**으로 올려 둔 것이 그 일을 하라는 뜻이었다 — **리드가 곧 머리
+  행이다.** 그래서 **열 차례를 바꾸면 리드 문장도 함께 바꿔야 한다.**
 */
 .guide-models {
   margin-top: var(--gs-r2);
@@ -8265,35 +8288,41 @@ input:focus-visible {
 }
 
 /*
-  **한 줄이 표의 한 행이다**(2026-09-18). 「좀 표로 하든지 그래프로 하든지」에
-  **표로** 답한 자리다 — 단가만 막대로 깔아 봤다가 접었다. 그릴 것이 하나도 없는
-  화면이 있고(Gemini 앱 세 줄이 전부 무값), 폭이 $0.20~$10으로 50배 벌어져 선형이면
-  「갈아타라」고 권하는 싼 모델이 사라지고 로그면 돈 이야기가 거짓이 되며, 제품 안에서
-  정규화하면 같은 모델이 화면마다 다른 길이로 선다(Opus 5는 Claude Code에서 절반,
-  Antigravity에서 꽉 참). 무엇보다 열넷 중 넷은 단서가 붙어 **가리킬 크기 자체가
-  하나가 아니다**(200K를 넘으면 두 배다). 컨텍스트 창은 1M·1.05M·200K뿐이라
-  막대 넷이 같은 길이다.
-
-  **고칠 것은 그림이 없는 것이 아니라 열이 없는 것이었다.** 그 전에는 수 둘이
-  `.guide-model-nums` 한 덩이로 오른쪽 끝에 붙어 있어, 컨텍스트 창의 x가 **옆 단가의
-  글자 수**(9~28자)를 따라다녔다 — Antigravity 다섯 줄에서 「1M 토큰」이 세 자리에
-  흩어져 섰다. 이제 각자 열을 갖는다.
-
-  **선은 한 줄도 안 는다** — 세로줄도 칸 테두리도 안 세우고, 행마다 아래 괘선 하나
-  그대로다(89 → 55 → 16으로 줄여 온 자리를 표가 뒤집지 않는다). **머리 행도 안
-  세운다** — 열 이름을 적으면 새로 쓰는 문장이 둘 생기는데, 바로 위 리드가 이미
-  「오른쪽 수는 입력 컨텍스트 창과 100만 토큰당 입력 / 출력 단가」라고 말하고 있다.
-  **리드가 곧 머리 행이다.**
+  **행 사이 여백을 안 준다.** 전에 있던 `2px`은 조판 상수 밖의 값이었고, 지금은
+  둘째 줄(쓰임)의 반각 여백이 그 일을 한다 — 13.5 × 1.75의 위쪽 몫이다. 값 하나가
+  줄고 칸 높이도 2px 준다.
 */
 .guide-models li {
   display: grid;
-  /* 2px은 새 값이 아니다 — `.guide-model-use`의 `margin-top`이 쓰던 그 값이다. */
-  gap: 2px var(--gs-r2);
+  grid-template-columns: minmax(0, 1fr);
+  column-gap: var(--gs-r2);
+  align-items: baseline;
   border-bottom: 1px solid var(--guide-rule);
   padding-block: var(--gs-r2);
 }
 
+/*
+  **열은 그 제품의 데이터가 세운다.** 한 줄도 그 값을 확인한 적이 없으면 클래스가
+  안 붙어 열이 격자에서 빠진다 — Gemini 앱은 이름 한 열이라 「고장난 표」가 안 되고,
+  「컨텍스트 창 모름」이 세 줄 겹쳐 서던 자리가 통째로 사라진다. 자격증 「시험 일정」
+  표에서 값 없는 칸을 열로 안 세우는 규칙 그대로다. **한 줄만 비는 것은 다르다**
+  (Codex Spark · GPT-OSS): 옆 넷이 차 있으므로 **빈 칸 자체가 말을 한다.**
+
+  **폭은 `--guide-col` 하나다.** 새 수가 아니라 `.guide-links`·`.guide-tiers`가 이미
+  쓰는 104px이라 원장 안의 표 셋이 같은 세로줄을 공유한다. 가장 긴 값이
+  「1.05M 토큰」과 「$0.20 / $1.20」이라 둘 다 든다.
+*/
+.guide-models.has-ctx li,
+.guide-models.has-price li {
+  grid-template-columns: minmax(0, 1fr) var(--guide-col);
+}
+
+.guide-models.has-ctx.has-price li {
+  grid-template-columns: minmax(0, 1fr) var(--guide-col) var(--guide-col);
+}
+
 .guide-model-name {
+  grid-area: 1 / 1;
   color: var(--text-strong);
   font-size: var(--gs-body);
   font-weight: 600;
@@ -8303,17 +8332,18 @@ input:focus-visible {
   **어떤 상황에서 쓰나** — 만든 회사가 제 문서에 적어 둔 말이다. 링크가 곧 그 문장이
   실린 페이지라, 따로 배지를 안 달고도 어디서 왔는지가 눌러서 확인된다.
 
-  **없으면 이 줄이 아예 안 선다**(스물셋 중 넷). 「—」로 채우면 빈 칸이 나머지와 같은
-  무게로 자리를 먹는다 — 자격증 일정 표에서 값 없는 칸을 열로 안 세우는 규칙이다.
-  격자라서 그 줄도 위 칸들은 제자리에 선다.
+  **없으면 이 줄이 아예 안 선다**(스물셋 중 넷 — Antigravity의 Claude 둘이 그렇다).
+  격자라서 그 줄도 윗칸들은 제자리에 선다 — 목록이던 동안 「잘린 줄」로 읽히던 자리다.
 
-  밑줄은 hover에서만 켠다. 모델이 다섯인 화면(Antigravity)에서 밑줄 다섯이 늘 켜져
-  있으면 그 절이 링크 목록으로 읽힌다.
+  밑줄은 hover에서만 켠다. 모델이 다섯인 화면에서 밑줄 다섯이 늘 켜져 있으면 그 절이
+  링크 목록으로 읽힌다.
 
   **글줄 폭 캡이 여기서 일을 한다** — Gemini 앱은 수 열이 하나도 안 서서 이름 열이
-  736px이고, 캡이 없으면 한 줄이 51자가 되어 35~45자를 넘는다.
+  736px이고, 캡이 없으면 한 줄이 51자가 되어 35~45자를 넘는다. 열이 서면 이름 열이
+  504px이라 캡보다 좁다.
 */
 .guide-model-use {
+  grid-area: 2 / 1;
   max-width: var(--gs-measure);
   color: var(--text-muted);
   font-size: var(--gs-body);
@@ -8335,130 +8365,135 @@ input:focus-visible {
 }
 
 /*
-  좁은 폭에서 수가 다시 한 덩이로 모이는 자리. ≥641px에서는 `display: contents`로
-  풀려 안의 셋이 행의 격자 칸으로 직접 앉는다 — 상자 하나로 둘 곳과 셋으로 나눌 곳이
-  폭마다 다르므로, 마크업을 늘리지 않고 상자만 켰다 껐다 한다.
+  컨텍스트 창. 값이 이름보다 흐리게 서서 눈이 이름 → 값 순으로 간다.
 */
-.guide-model-nums {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: baseline;
-  gap: 2px var(--gs-r2);
-}
-
-/* 값이 이름보다 흐리게 서서 눈이 이름 → 값 순으로 간다. */
 .guide-model-context {
+  grid-area: 1 / 2;
   color: var(--text-muted);
   font-family: var(--font-mono);
   font-size: var(--gs-mono);
   font-variant-numeric: tabular-nums;
   letter-spacing: 0.02em;
+  text-align: right;
 }
 
 /*
   단가. **누르면 그 수가 실린 요금 페이지로 간다** — 이 서랍에서 가장 빨리 썩는
   값이라(`volatility: 'price'`) 읽는 사람이 바로 대조할 수 있어야 한다.
-  밑줄은 hover에서만 켠다 — 모델이 다섯이면 밑줄 다섯이 늘 켜져 있는 꼴이 된다.
+  밑줄은 hover에서만 켠다.
 
-  **자릿수를 고정한다**(`tabular-nums`). 열이 오른쪽 정렬이라 $10과 $0.20이 같은
-  끝에 서는데 자릿수가 흔들리면 그 정렬이 눈에 안 잡힌다 — 막대를 안 그리는 대신
-  **자릿수가 그 일을 한다.**
+  **칸을 통째로 차지하는 블록이다**(`display: block`, `justify-self`를 안 건다).
+  글자를 끌어안게 두면 누르는 자리가 104px에서 51px까지 줄어 — 「$1 / $5」가 그렇다 —
+  화면에서 가장 빨리 썩는 값이 가장 누르기 어려운 값이 된다. 밑줄은 글자 밑에만
+  그려지므로 블록으로 둬도 선이 칸 폭으로 늘어나지 않는다.
+
+  **마지막 열(`-2`)이라 컨텍스트 열이 없는 제품에서도 오른쪽 끝에 선다.**
+
+  **자릿수를 고정한다**(`tabular-nums`). 막대를 안 그리는 대신 자릿수가 그 일을
+  한다 — $10과 $0.20이 같은 끝에 서고 소수점이 한 세로줄에 잡힌다.
+
+  **`is-unknown`은 링크가 아니다.** 주장이 있는데 값이 `null`이면(열어 봤는데 벤더가
+  안 적었다) 「모름」이 서고, 주장 자체가 없으면(아직 안 봤다) 아무것도 안 선다.
+  그래서 hover는 `a`에만 건다.
 */
 .guide-model-price {
+  grid-area: 1 / -2;
+  display: block;
   color: var(--text-dim);
   font-family: var(--font-mono);
   font-size: var(--gs-mono);
   font-variant-numeric: tabular-nums;
   letter-spacing: 0.04em;
   white-space: nowrap;
+  text-align: right;
   text-decoration-color: transparent;
   text-underline-offset: 3px;
   transition: color 0.15s, text-decoration-color 0.15s;
 }
 
-.guide-model-price:hover {
+a.guide-model-price:hover {
   color: var(--brand-text);
   text-decoration: underline;
   text-decoration-color: currentColor;
 }
 
 /*
+  꼴이 안 맞아 짝과 단서로 못 가른 값은 통째로 그대로 적고 감기게 둔다 — 자르지
+  않는다. 오늘 열아홉이 전부 맞지만 그건 오늘의 사실이지 계약이 아니다.
+*/
+.guide-model-price.is-raw {
+  white-space: normal;
+}
+
+/*
   단가에 붙은 단서 — 구간 요금과 인상 예고. **버리지 않고 한 단 내린다**: 단가보다
-  한 단 흐린 잉크로 단가 바로 아래, 같은 오른쪽 끝에 선다. 넷뿐인데 이것 때문에
-  단가 문자열이 9자에서 28자까지 벌어져 왼쪽 열을 밀고 있었다. 「$0.75」로만 줄이면
-  두 주 뒤에 거짓이 되므로 자르지 않고 내린다.
+  한 단 흐린 잉크로 단가 바로 아래, 같은 오른쪽 끝에 선다. 이것 때문에 단가 문자열이
+  13자에서 42자까지 벌어져 왼쪽 열을 밀고 있었다. 「$0.75」로만 줄이면 두 주 뒤에
+  거짓이 되므로 자르지 않고 내린다.
+
+  **둘째 줄에서 수 열 둘을 다 쓴다**(104 + 12 + 104 = 220px). 가장 긴 것이
+  「(2027-01-01부터 $1.50 / $7.50)」 28자라 한 줄에 든다.
+
+  **줄상자를 옆의 쓰임과 맞춘다** — 안 맞추면 10px 글자가 제 높이만 차지해 단서가
+  붙은 행만 아랫변이 올라온다.
 */
 .guide-model-note {
+  grid-area: 2 / 2 / auto / -1;
   color: var(--text-muted);
   font-family: var(--font-mono);
   font-size: var(--gs-mono);
   font-variant-numeric: tabular-nums;
   letter-spacing: 0.04em;
+  line-height: calc(var(--gs-body) * 1.75);
+  text-align: right;
 }
 
 /*
-  **열은 그 제품의 데이터가 세운다.** 한 줄도 값을 안 가진 열은 클래스가 안 붙어
-  격자에서 빠진다 — Gemini 앱은 이름 한 열이고, 그래서 「컨텍스트 창 모름」이 세 줄
-  겹쳐 서던 자리가 통째로 사라진다. 한 줄만 비는 것은 다르다(Codex Spark ·
-  GPT-OSS): 옆 넷이 차 있으므로 **빈 칸 자체가 「안 적혀 있다」는 말**이 된다.
-
-  **폭은 `--guide-col` 하나다.** 새 수가 아니라 `.guide-links`·`.guide-tiers`가 이미
-  쓰는 104px이라, 원장 안의 표 셋이 같은 세로줄을 공유한다. 가장 긴 값이
-  「1.05M 토큰」 약 62px과 「$0.20 / $1.20」 약 78px이라 둘 다 든다.
-
-  **중단점은 집의 640 하나다.** 그 아래에서는 104px 열 둘을 세울 폭이 없어
-  (375px에서 이름 열이 143px로 깎인다) 격자가 한 열로 접히고, 수는
-  `.guide-model-nums`가 상자를 되찾아 이름 아래 한 줄로 모인다.
+  **열 개수에 기대지 않는다.** 단가는 있는데 컨텍스트를 하나도 확인 못 한 제품이
+  생기면 위 규칙의 `2 / -1`이 104px 한 칸이 되어 28자짜리 단서가 두 줄로 감긴다.
+  그때는 제 줄을 줘서 폭을 다 쓰게 한다 — 오른쪽 끝이 같으므로 단가와 한 칸으로
+  읽히는 것은 그대로다. 오늘 그런 제품은 없고, 생기는 날 조용히 안 깨지라고 둔다.
 */
-@media (min-width: 641px) {
-  .guide-models li {
-    align-items: baseline;
-    grid-template-columns: [name] minmax(0, 1fr);
-  }
+.guide-models.has-price:not(.has-ctx) .guide-model-note {
+  grid-area: 3 / 1 / auto / -1;
+}
 
-  .guide-models.has-ctx li {
-    grid-template-columns: [name] minmax(0, 1fr) [ctx] var(--guide-col);
-  }
-
-  .guide-models.has-price li {
-    grid-template-columns: [name] minmax(0, 1fr) [price] var(--guide-col);
-  }
-
+/*
+  **375px에서는 열 둘이 220px을 먹어 이름 열이 100px 남짓이 된다.** 수를 이름 아래로
+  내려 제 줄에 세운다 — 열은 `max-content`라 컨텍스트 창이 줄마다 같은 자리에서
+  시작하고, 단가는 자동 배치라 컨텍스트가 없는 줄에서 왼쪽 끝으로 당겨진다.
+  차례는 이름 → 수 → 단서 → 쓰임이다: 단서는 제가 꾸미는 수 바로 아래에 붙는다.
+  **중단점은 집의 것(640)만 쓴다.**
+*/
+@media (max-width: 640px) {
+  .guide-models li,
+  .guide-models.has-ctx li,
+  .guide-models.has-price li,
   .guide-models.has-ctx.has-price li {
-    grid-template-columns: [name] minmax(0, 1fr) [ctx] var(--guide-col) [price] var(--guide-col);
-  }
-
-  /* 상자를 풀어 안의 셋이 행의 칸으로 직접 앉는다. */
-  .guide-model-nums {
-    display: contents;
+    grid-template-columns: max-content minmax(0, 1fr);
   }
 
   .guide-model-name {
-    grid-area: 1 / name;
+    grid-area: 1 / 1 / auto / -1;
   }
 
-  .guide-model-context {
-    grid-area: 1 / ctx;
-    text-align: right;
-  }
-
+  .guide-model-context,
   .guide-model-price {
-    grid-area: 1 / price;
-    text-align: right;
+    grid-row: 2;
+    grid-column: auto;
+    justify-self: start;
+    text-align: left;
   }
 
-  /*
-    단서는 둘째 줄에서 수 열 둘을 다 쓴다(104 + 12 + 104 = 220px). 가장 긴 것이
-    「(2027-01-01부터 $1.50 / $7.50)」 약 176px이라 한 줄에 든다.
-  */
-  .guide-model-note {
-    grid-row: 2;
-    grid-column: 2 / -1;
-    text-align: right;
+  .guide-model-note,
+  .guide-models.has-price:not(.has-ctx) .guide-model-note {
+    grid-area: 3 / 1 / auto / -1;
+    text-align: left;
   }
 
   .guide-model-use {
-    grid-area: 2 / name;
+    grid-area: 4 / 1 / auto / -1;
+    margin-top: var(--gs-r1);
   }
 }
 
