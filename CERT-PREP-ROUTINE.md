@@ -8,7 +8,8 @@
 
 `---` 아래가 지시다. 위 머리말은 사람이 읽는 자리라 루틴은 건너뛴다.
 
-마지막 갱신: 2026-09-09 (제목 기준을 「명사구」에서 「그 절이 다루는 것의 이름」으로 좁힘)
+마지막 갱신: 2026-09-18 (진도에서 80번대 총정리를 뺌 — 모의고사 칸에 들어가 있었다)
+이전 갱신: 2026-09-09 (제목 기준을 「명사구」에서 「그 절이 다루는 것의 이름」으로 좁힘)
 이전 갱신: 2026-09-07 (뼈대 기준을 학습 글과 맞춤 — 절 4~7, 소절 2~4)
 이전 갱신: 2026-08-27 (하루 4편으로 올림)
 이전 갱신: 2026-08-27 (무엇을 쓸지는 `src/data/certPrepPlan.ts`가 정한다)
@@ -77,8 +78,10 @@ for cid, topics, mocks, hold in plans:
             if f.endswith('.md'):
                 files[int(f[:2])] = f
     planned = len(topics) + mocks
-    written = len(files)
-    rows.append((written / planned, cid, d, files, topics, mocks, planned))
+    # 80~89는 계획 밖 과목 총정리라 진도에 세지 않는다 (CLAUDE.md)
+    counted = {n: f for n, f in files.items() if not 80 <= n <= 89}
+    written = len(counted)
+    rows.append((written / planned, cid, d, files, counted, topics, mocks, planned))
 
 rows.sort(key=lambda r: (r[0], r[1]))
 if held:
@@ -87,12 +90,14 @@ if held:
         print(f'  {cid:30s} {why}')
     print()
 print('진도 (낮은 순):')
-for pct, cid, d, files, topics, mocks, planned in rows:
-    concepts = sum(1 for n in files if n <= len(topics))
-    print(f'  {cid:30s} {len(files):3d}/{planned:3d}  ({pct*100:4.1f}%)'
-          f'  개념 {concepts}/{len(topics)} 모의 {len(files) - concepts}/{mocks}')
+for pct, cid, d, files, counted, topics, mocks, planned in rows:
+    concepts = sum(1 for n in counted if n <= len(topics))
+    review = len(files) - len(counted)
+    print(f'  {cid:30s} {len(counted):3d}/{planned:3d}  ({pct*100:4.1f}%)'
+          f'  개념 {concepts}/{len(topics)} 모의 {len(counted) - concepts}/{mocks}'
+          f'{f"  (+총정리 {review})" if review else ""}')
 
-pct, cid, d, files, topics, mocks, planned = rows[0]
+pct, cid, d, files, counted, topics, mocks, planned = rows[0]
 print(f'\n이번 대상 = {cid}')
 print('있는 파일:', ', '.join(files[n] for n in sorted(files)) or '없음')
 
@@ -120,6 +125,13 @@ for n, title, subject, kw, have in picks:
         print(f'      ! {have}이 그 자리에 있다 — git rm 하고 계획의 제목으로 새로 쓴다')
 PLAN
 ```
+
+**80~89번 총정리는 진도에 안 센다.** 계획 밖에서 쓴 글이라 `CLAUDE.md`가 그렇게 못 박고
+있는데, 2026-09-18까지 스크립트는 「번호가 주제 수보다 크면 모의고사」로 갈라 총정리를
+**모의고사 칸에 넣고 있었다** — ADsP는 모의고사를 둘밖에 안 썼는데 총정리 셋이 얹혀
+「모의 5/5」로 찍혔고, 그 차례가 오면 다 쓴 것으로 읽혀 건너뛸 자리였다. 지금은 따로
+세어 줄 끝에 `(+총정리 N)`으로만 적는다. 총정리가 있어도 쓸 자리를 고르는 데는 영향이
+없다 — 그 번호대는 개념(01~79)과도 모의고사(90~)와도 겹치지 않는다.
 
 **대상은 진도율이 가장 낮은 자격증이다.** 같으면 id 사전순으로 앞선 것을 고른다.
 열넷을 돌아가며 채우므로 한 자격증에 몰아 쓰지 않는다. 네 편은 **한 자격증에 이어서**
