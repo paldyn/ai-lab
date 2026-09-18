@@ -1,5 +1,6 @@
 import { claimsForProduct } from './data/playbook';
 import { guideProducts } from './data/guideProducts';
+import { shownModels } from './data/guideModels';
 import { guideVendorIds } from './data/guideVendors';
 import { describe, expect, it } from 'vitest';
 import { certPrepNotes } from './data/certPrep';
@@ -97,10 +98,52 @@ describe('프리렌더 — 본문이 HTML에 들어간다', () => {
   });
 
   /*
-    **팁이 접힌 채로, 내용은 다 들어 있는 채로 나가는가.**
+    **절이 여섯 다 서는가, 그리고 접힌 절이 내용을 다 싣고 나가는가**(2026-09-18).
 
-    위 검사는 `guide-ledger-label`만 보는데 그 클래스는 「어디서 쓰나」 h3가 무조건
-    달고 있어 **팁 블록이 통째로 사라져도 초록**입니다. 접기는 기능 전부를 「첫
+    위 검사는 `guide-ledger-label`이 한 번이라도 나오면 초록입니다 — 지금은 아홉
+    제품 전부 값 줄이 셋 이상이라 「얼마이고 한도」 머리글이 늘 그 클래스를 달고,
+    그래서 **나머지 절이 통째로 사라져도 안 걸립니다.** 절을 세는 것은 이쪽입니다.
+
+    제품마다 서는 절이 다릅니다 — 모델이 0인 제품이 둘(Claude Cowork · ChatGPT)이라
+    다섯이 서고 나머지는 여섯입니다. **고정 수로 안 재고 데이터에서 셉니다.**
+  */
+  it('제품 화면에 절이 데이터대로 서고 묻는 절 둘만 접힌다', async () => {
+    const wrong: string[] = [];
+    for (const product of guideProducts) {
+      const claims = claimsForProduct(product.id);
+      const aims = new Set(
+        claims.filter((c) => c.topic === 'habit').map((c) => c.aim),
+      ).size;
+      const usage = claims.filter(
+        (c) =>
+          c.topic !== 'context' &&
+          c.topic !== 'habit' &&
+          !(c.topic === 'price' && c.subject.kind === 'model'),
+      ).length;
+      const want =
+        aims +
+        (shownModels(product.models).length > 0 ? 1 : 0) +
+        (product.surfaces.length > 0 ? 1 : 0) +
+        (usage > 0 ? 1 : 0) +
+        1; /* 공식 */
+
+      const { html } = await render(`/playbook/${product.vendorId}/${product.id}`);
+      const heads = html.split('guide-section-head').length - 1;
+      if (heads !== want) wrong.push(`${product.id}: 절 머리 ${heads} ≠ ${want}`);
+
+      /* 접히는 것은 「얼마이고 한도」와 「공식」 둘뿐이다 — 모델은 안 접는다. */
+      const folds = html.split('guide-section is-ask is-fold').length - 1;
+      if (folds !== (usage > 0 ? 2 : 1)) wrong.push(`${product.id}: 접힌 절 ${folds}`);
+
+      /* 접혀 있어도 첫 HTML에 값이 다 실린다 — 자바스크립트 없이도 열 수 있어야 한다. */
+      const rows = html.split('claim-row ').length - 1;
+      if (rows !== usage) wrong.push(`${product.id}: 접힌 값 줄 ${rows} ≠ ${usage}`);
+    }
+    expect(wrong).toEqual([]);
+  });
+
+  /*
+    **팁이 접힌 채로, 내용은 다 들어 있는 채로 나가는가.** 접기는 기능 전부를 「첫
     HTML에 다 실려 나가고 브라우저가 접어 둘 뿐」에 걸고 있으므로 그것을 직접 잽니다 —
     자바스크립트가 안 붙은 상태에서 접힌 내용이 비어 있으면, 그 화면은 영영 못 여는
     화면입니다.
