@@ -26,7 +26,8 @@ import type { Product, VendorId } from '../types/playbook';
  * | --- | --- | --- |
  * | Claude · Claude Cowork | `claude.svg` | 계열 심볼. Cowork 전용 마크는 없습니다 — 그 제품 페이지의 파비콘도 Claude 것입니다 |
  * | Claude Code | `claude-code.svg` | **전용 심볼이 있습니다.** Simple Icons(CC0) |
- * | ChatGPT · ChatGPT Work · Codex | `openai.svg` | 셋 다 전용 마크가 없습니다. OpenAI가 한 매듭 심볼을 그대로 씁니다 |
+ * | ChatGPT · ChatGPT Work | `openai.svg` | 둘 다 전용 마크가 없습니다. OpenAI가 한 매듭 심볼을 그대로 씁니다 |
+ * | Codex | `codex.svg` | **전용 심볼이 있습니다.** 매듭 안에 `>_` 프롬프트가 든 마크 |
  * | Gemini app · Gemini CLI | `gemini-color.png` | Google이 제 파비콘으로 쓰는 네 색 그라디언트 |
  *
  * **포인트 색은 회사마다 하나입니다.** 처음에는 Gemini에만 보라를 줬는데, 로고를
@@ -208,7 +209,25 @@ export const guideProducts: Product[] = [
     oneLine: '같은 코딩 에이전트가 앱·IDE·터미널·클라우드 넷에 함께 선다.',
     officialUrl: 'https://chatgpt.com/codex',
     docsUrl: 'https://learn.chatgpt.com/docs/codex/cli',
-    logo: 'assets/openai.svg',
+    /*
+      **Codex에는 전용 마크가 있습니다**(2026-09-18). 그동안 OpenAI 매듭을 그대로
+      써서 ChatGPT·ChatGPT Work와 레일에서 구별이 안 됐습니다 — 한 회사 줄 셋이
+      같은 심볼이었습니다.
+
+      마크는 **매듭 안에 `>_` 프롬프트가 든 모양**이고, 출처는 OpenAI가 배포하는
+      ChatGPT 데스크톱 앱 번들입니다(`Contents/Resources/app.asar`의
+      `webview/assets/codex-new-*.svg`). 같은 번들의 앱 아이콘
+      `icon-codex-light.png`가 그 도형을 그대로 쓰므로 **이것이 현행 마크인 것이
+      번들 안에서 대조됩니다.** 같은 자리에 원 안에 `>_`가 든 구형도 있는데
+      앱 아이콘과 안 맞아 안 씁니다.
+
+      웹에서는 못 찾습니다 — developers.openai.com도 chatgpt.com/codex도 머리에
+      매듭을 걸고, Simple Icons에도 없고, VS Code 확장 아이콘도 매듭입니다.
+      **그래서 찾은 자리를 여기 적어 둡니다.**
+
+      경로가 24 격자의 단색이라 `monochrome: true` 그대로입니다.
+    */
+    logo: 'assets/codex.svg',
     monochrome: true,
     accent: 'var(--source-openai-text)',
   },
