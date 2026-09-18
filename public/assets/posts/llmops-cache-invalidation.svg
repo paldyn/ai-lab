@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="420" viewBox="0 0 880 420">
+  <rect x="0" y="0" width="880" height="420" rx="12" fill="#0a0a0a"/>
+
+  <text x="50" y="52" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="22" font-weight="700" fill="#e8e8e8">캐시를 버리는 세 계기</text>
+  <text x="50" y="78" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">셋을 함께 걸어 둔다 — 하나만으로는 새는 자리가 남는다</text>
+
+  <rect x="50" y="100" width="780" height="76" rx="12" fill="#101010" stroke="#2a2a2a" stroke-width="1"/>
+  <rect x="50" y="100" width="4" height="76" rx="2" fill="#7ec8e3"/>
+  <text x="76" y="130" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#7ec8e3">시간</text>
+  <text x="76" y="152" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">무엇이 바뀌었는지 몰라도 오래된 답은 버린다</text>
+  <text x="804" y="130" text-anchor="end" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="11" fill="#666">지우는 범위</text>
+  <text x="804" y="152" text-anchor="end" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e8e8e8">지난 항목 하나씩</text>
+
+  <rect x="50" y="192" width="780" height="76" rx="12" fill="#101010" stroke="#2a2a2a" stroke-width="1"/>
+  <rect x="50" y="192" width="4" height="76" rx="2" fill="#7777cc"/>
+  <text x="76" y="222" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#7777cc">버전</text>
+  <text x="76" y="244" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">프롬프트·도구 정의를 고치면 옛 설정의 답은 못 믿는다</text>
+  <text x="804" y="222" text-anchor="end" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="11" fill="#666">지우는 범위</text>
+  <text x="804" y="244" text-anchor="end" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e8e8e8">키가 달라져 전부 가려짐</text>
+
+  <rect x="50" y="284" width="780" height="76" rx="12" fill="#101010" stroke="#2a2a2a" stroke-width="1"/>
+  <rect x="50" y="284" width="4" height="76" rx="2" fill="#e05555"/>
+  <text x="76" y="314" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#e05555">원본</text>
+  <text x="76" y="336" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">참고한 문서가 바뀌면 그 문서를 쓴 답만 지운다</text>
+  <text x="804" y="314" text-anchor="end" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="11" fill="#666">지우는 범위</text>
+  <text x="804" y="336" text-anchor="end" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e8e8e8">태그로 고른 항목</text>
+
+  <text x="50" y="392" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#666">구현 — 시간: 저장 시 expires_at · 버전: 키에 system_version · 원본: source_docs 태그</text>
+</svg>

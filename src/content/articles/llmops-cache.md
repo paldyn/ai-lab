@@ -1,88 +1,90 @@
 ---
-title: "LLM 시맨틱 캐시: 반복 요청 비용 제로화 전략"
-description: "Exact Cache·시맨틱 캐시·프롬프트 캐시를 다층으로 쌓아 LLM 응답 비용을 줄이는 캐싱 아키텍처를 구체적인 구현 코드와 함께 다룹니다."
+title: "LLM 캐시 — 같은 질문에 두 번 돈을 내지 않는 법"
+description: "정확 일치 캐시·시맨틱 캐시·프롬프트 캐시가 각각 무엇을 아끼는지, 키에 무엇을 넣어야 하는지, 유사도 임계값을 어떻게 고르고 언제 캐시를 버려야 하는지 정리합니다."
 author: "PALDYN Team"
 pubDate: "2026-05-24"
 category: "ml-ops"
 level: "중급"
-tags: ["시맨틱캐시", "LLMOps", "프롬프트캐싱", "GPTCache", "Redis", "비용최적화", "pgvector"]
+tags: ["시맨틱캐시", "LLMOps", "프롬프트캐싱", "Redis", "비용최적화", "pgvector"]
 featured: false
 draft: false
 ---
-[지난 글](/articles/llmops-cost-tracking)에서 LLM 비용 구조와 최적화 전략을 살펴봤다. 그 중 캐싱은 단연 가장 극적인 효과를 낸다. 이번 글에서는 세 종류의 캐시를 계층적으로 구성하는 **다층 LLM 캐시 아키텍처**를 구현 코드와 함께 상세히 다룬다.
+[지난 글](/articles/llmops-cost-tracking)에서 LLM 청구서가 어떤 항목으로 만들어지는지 살펴봤다. 그 항목 중에서 가장 크게 깎이는 것이 캐시다. 같은 답을 두 번 만들지 않으면 그 호출의 비용은 0이 되고, 그것도 아니면 적어도 입력 토큰의 대부분을 다시 안 읽게 만들 수 있다.
 
-LLM 서비스의 트래픽을 분석하면 흥미로운 패턴이 나타난다. 사용자 질문의 상당수는 의미적으로 중복된다. FAQ 챗봇이라면 "환불 정책이 뭔가요?"와 "환불은 어떻게 하나요?"는 사실상 같은 답변을 원한다. 이 반복 요청에 매번 LLM API를 호출하는 것은 낭비다.
+그런데 LLM 캐시는 HTTP 캐시처럼 "같은 URL이면 같은 응답"으로 끝나지 않는다. 사용자는 매번 다른 문장을 치고, 같은 뜻인지 아닌지는 문자열만 봐서는 모른다. FAQ 챗봇이라면 "환불 정책이 뭔가요?"와 "환불은 어떻게 하나요?"는 같은 답을 원하지만 해시값은 완전히 다르다. 그래서 LLM 캐시의 설계는 대부분 **무엇을 「같은 질문」으로 볼 것인가**를 정하는 일이고, 그 선을 어디에 긋느냐가 절감액과 오답률을 동시에 정한다.
 
-## 다층 캐시 아키텍처
+## 캐시 세 층
 
 ![다층 LLM 캐시 아키텍처](/assets/posts/llmops-cache-architecture.svg)
 
-세 계층의 캐시를 순서대로 통과한다. 앞 단계에서 히트하면 후속 단계를 건너뛴다.
+### 층마다 아끼는 것이 다르다
 
-- **L1 (Exact Cache)**: 해시 기반 완전 일치. 응답시간 1ms 이하, 비용 0
-- **L2 (Semantic Cache)**: 임베딩 기반 의미 유사도. 응답시간 10~30ms, 비용 0
-- **L3 (Prompt Cache)**: Claude 서버 측 프롬프트 캐싱. LLM 호출은 하지만 토큰 비용 90% 절감
+흔히 세 가지를 뭉뚱그려 "캐시"라고 부르지만 아끼는 대상이 다르다. **정확 일치 캐시**(exact cache)는 프롬프트 문자열을 해시해 키로 쓰고 응답을 통째로 저장한다. 히트하면 모델을 아예 안 부르므로 비용도 지연도 0에 가깝다. **시맨틱 캐시**는 질문을 벡터로 바꿔 저장해 두고, 새 질문의 벡터와 가장 가까운 것을 찾아 충분히 가까우면 그 응답을 돌려준다. 여기서 「히트」는 문자열이 같다는 뜻이 아니라 의미가 충분히 가깝다고 판정했다는 뜻이고, 그 판정은 틀릴 수 있다. **프롬프트 캐시**는 성격이 아예 다르다 — 모델은 부르되 입력의 앞부분을 벤더 서버가 기억하고 있어 그 부분을 다시 안 읽는 것이라, 호출은 일어나고 출력 토큰 값도 그대로 나간다.
 
-## L1: Redis Exact Cache
+세 층이 아끼는 것을 한 줄로 적으면 이렇다. 정확 일치는 호출 자체를, 시맨틱은 호출 자체를 위험을 감수하고, 프롬프트 캐시는 입력 토큰의 일부만 아낀다. 절감폭이 큰 쪽일수록 틀렸을 때의 대가도 크다.
+
+### 순서를 뒤집으면 생기는 일
+
+이 셋은 앞에서부터 차례로 물어야 한다. 정확 일치를 먼저 보는 것은 값이 싸기 때문이다 — Redis 조회 한 번이면 끝나고 임베딩을 계산할 필요가 없다. 시맨틱 캐시를 먼저 보면 모든 요청이 임베딩 모델을 한 번씩 지나고, 그 비용은 캐시 히트든 미스든 똑같이 든다. 문장 임베딩 계산은 CPU에서도 수십 밀리초 안에 끝나지만, 그것이 전체 요청의 절반을 차지하는 트래픽에서는 무시할 수 없다.
+
+반대로 시맨틱 캐시에서 히트한 응답은 정확 일치 캐시에도 같이 넣어 둔다. 같은 문장이 다시 들어오면 그때는 임베딩 없이 나가게 하려는 것이다. 이 한 줄을 빼먹으면 자주 들어오는 질문이 계속 두 번째 층까지 내려가고, 임베딩 계산이 트래픽만큼 그대로 쌓인다.
+
+호출 순서를 정리하면 조회는 정확 일치 → 시맨틱 → 모델이고, 저장은 그 반대로 모델이 답을 만든 뒤 시맨틱과 정확 일치 양쪽에 함께 넣는다. 조회와 저장의 방향이 반대라는 점만 기억하면 오케스트레이터 코드는 스무 줄이 안 된다.
+
+### 세 층으로도 안 걸리는 트래픽
+
+캐시를 붙이기 전에 트래픽이 실제로 반복되는지부터 본다. 사용자가 자기 문서를 붙여 넣고 요약을 시키는 서비스라면 입력이 매번 다르므로 앞의 두 층은 거의 놀고, 시스템 프롬프트만 긴 경우라면 반대로 프롬프트 캐시만 값을 한다. 어느 층이 값을 할지는 트래픽 로그에서 입력 문자열의 중복도와 공통 접두사 길이 둘을 세면 대체로 갈린다.
+
+세는 것은 하루치 로그와 몇 줄짜리 스크립트면 된다. 같은 입력이 두 번 이상 들어온 비율이 첫 번째 수이고, 요청들의 프롬프트를 앞에서부터 비교해 얼마나 같은지가 두 번째 수다. 첫 수가 한 자릿수 퍼센트인데 시맨틱 캐시부터 붙이는 팀을 자주 본다. 그런 트래픽에서는 임계값을 아무리 내려도 히트가 안 나고, 대신 비슷해 보이지만 다른 질문만 잘못 걸린다. 캐시를 붙이는 순서는 트래픽이 정하는 것이지 기술의 세련도가 정하는 것이 아니다.
+
+## 캐시 키
+
+### 키에 들어가야 하는 것
+
+정확 일치 캐시의 사고는 대부분 키를 좁게 잡아서 난다. 프롬프트 문자열만 해시하면 모델을 바꾼 뒤에도 옛 모델의 답이 나오고, 온도를 0.7로 올려 다양한 답을 받으려던 요청이 늘 같은 답을 받는다. 키에는 최소한 넷이 들어가야 한다 — 모델 이름, 디코딩 설정(온도·최대 토큰), 시스템 프롬프트의 버전, 그리고 도구를 쓰는 서비스라면 도구 정의의 버전이다.
+
+시스템 프롬프트를 통째로 해시해도 되지만, 버전 문자열을 따로 두는 편이 낫다. 프롬프트를 고쳤을 때 무엇이 무효가 되는지 사람이 읽을 수 있고, 아래 무효화 절에서 그 버전이 그대로 삭제 조건이 되기 때문이다.
 
 ```python
-import redis
 import hashlib
 import json
-from typing import Optional
 
-class ExactCache:
-    def __init__(self, ttl_seconds: int = 3600):
-        self.r = redis.Redis(host="localhost", port=6379, decode_responses=True)
-        self.ttl = ttl_seconds
-
-    def _key(self, prompt: str, model: str) -> str:
-        content = f"{model}:{prompt}"
-        return f"llm:exact:{hashlib.sha256(content.encode()).hexdigest()}"
-
-    def get(self, prompt: str, model: str) -> Optional[str]:
-        val = self.r.get(self._key(prompt, model))
-        return json.loads(val) if val else None
-
-    def set(self, prompt: str, model: str, response: str):
-        key = self._key(prompt, model)
-        self.r.setex(key, self.ttl, json.dumps(response))
+def cache_key(prompt: str, *, model: str, temperature: float,
+              system_version: str, tools_version: str) -> str:
+    payload = json.dumps({
+        "p": prompt,
+        "m": model,
+        "t": temperature,
+        "sv": system_version,
+        "tv": tools_version,
+    }, ensure_ascii=False, sort_keys=True)
+    return "llm:exact:" + hashlib.sha256(payload.encode()).hexdigest()
 ```
 
-## L2: 시맨틱 캐시
+`sort_keys=True`가 붙은 것은 필드 순서가 바뀌어도 같은 키가 나오게 하려는 것이다. 이런 것을 빼먹으면 배포 한 번에 히트율이 0으로 떨어지고, 그 사실을 알아차리는 데 며칠이 걸린다.
+
+### 정규화가 하는 일과 못 하는 일
+
+키를 만들기 전에 문자열을 다듬으면 히트율이 오른다. 앞뒤 공백을 떼고, 연속 공백을 하나로 줄이고, 유니코드 정규화를 한 번 걸어 같은 한글이 다른 바이트로 들어오는 것을 막는 정도는 부작용이 거의 없다. 대소문자를 내리는 것은 코드나 식별자를 다루는 서비스에서 위험하고, 문장부호를 떼는 것은 "가능한가?"와 "가능한가"를 합쳐 주지만 "10.5"와 "105"까지 합칠 수 있으니 도메인을 보고 정한다.
+
+정규화로는 어차피 어순이 다른 문장을 못 합친다. 거기부터가 시맨틱 캐시의 자리다.
+
+### 사용자를 키에 넣어야 하는 자리
+
+같은 질문이라도 답이 사람마다 달라야 하는 서비스가 있다. 사용자의 주문 내역이나 권한을 참고해 답하는 챗봇에서 캐시를 전역으로 두면, 한 사람의 답이 다른 사람에게 그대로 나간다. 이런 서비스는 키에 사용자 식별자나 권한 그룹을 넣어 캐시 공간을 갈라야 하고, 그러면 히트율은 그만큼 떨어진다. **캐시를 공유할 수 있는 범위가 곧 절감의 상한**이라, 설계 단계에서 이 범위를 먼저 정해 두는 편이 낫다.
+
+## 유사도 임계값
 
 ![시맨틱 캐시: 유사 질문 클러스터링](/assets/posts/llmops-cache-semantic.svg)
 
-시맨틱 캐시는 임베딩 벡터 유사도를 사용해 의미가 같은 질문을 탐지한다.
+시맨틱 캐시는 질문을 벡터로 바꿔 저장하고, 새 질문과의 코사인 유사도가 임계값을 넘으면 저장된 답을 돌려준다. 코드에서 바꿀 값은 사실상 그 임계값 하나다.
 
 ```python
-import numpy as np
-from sentence_transformers import SentenceTransformer
-import psycopg2
-from psycopg2.extras import execute_values
-
 class SemanticCache:
-    def __init__(self, threshold: float = 0.92, ttl_hours: int = 24):
+    def __init__(self, threshold: float = 0.92):
         self.model = SentenceTransformer("paraphrase-multilingual-MiniLM-L12-v2")
         self.threshold = threshold
         self.conn = psycopg2.connect("postgresql://localhost/llmcache")
-        self._init_table()
-
-    def _init_table(self):
-        with self.conn.cursor() as cur:
-            cur.execute("""
-                CREATE TABLE IF NOT EXISTS semantic_cache (
-                    id SERIAL PRIMARY KEY,
-                    embedding vector(384),
-                    query TEXT,
-                    response TEXT,
-                    created_at TIMESTAMP DEFAULT NOW(),
-                    expires_at TIMESTAMP
-                );
-                CREATE INDEX IF NOT EXISTS idx_embedding
-                    ON semantic_cache USING ivfflat (embedding vector_cosine_ops);
-            """)
-            self.conn.commit()
 
     def get(self, query: str) -> Optional[str]:
         emb = self.model.encode(query).tolist()
@@ -98,151 +100,146 @@ class SemanticCache:
         if row and row[1] >= self.threshold:
             return row[0]
         return None
-
-    def set(self, query: str, response: str, ttl_hours: int = 24):
-        emb = self.model.encode(query).tolist()
-        with self.conn.cursor() as cur:
-            cur.execute("""
-                INSERT INTO semantic_cache (embedding, query, response, expires_at)
-                VALUES (%s::vector, %s, %s, NOW() + %s * INTERVAL '1 hour')
-            """, (emb, query, response, ttl_hours))
-            self.conn.commit()
 ```
 
-## L3: Claude 프롬프트 캐싱
+### 0.85와 0.95 사이에서 갈리는 것
+
+임계값을 내리면 히트율이 오르고 **오탐**(false positive)도 같이 오른다. 오탐은 뜻이 다른 질문을 같다고 판정해 엉뚱한 답을 돌려주는 것이다. 0.95쯤에서는 대체로 표현만 바꾼 같은 질문이 걸리고, 0.85까지 내리면 "환불 정책"과 "교환 정책"처럼 주제는 같고 답은 다른 질문들이 한데 묶이기 시작한다. 한국어 문장 임베딩은 부정 표현에 약한 편이라 "환불이 되나요"와 "환불이 안 되나요"의 유사도가 0.9를 넘기는 일도 있다. 이 두 문장이 한 칸에 들어가면 캐시는 고객에게 반대되는 답을 준다.
+
+그래서 임계값은 감으로 고르지 말고 곡선을 그려서 고른다. 절차는 짧다. 실제 로그에서 질문 쌍을 몇백 개 뽑아 사람이 "같은 답이어야 함 / 아님"을 표시하고, 임계값을 0.80부터 0.98까지 올리면서 히트율과 오탐률을 각각 재면 두 곡선이 나온다. 대개 어느 구간에서 오탐률이 급격히 꺾이는데 그 바로 위가 쓸 만한 값이다.
+
+### 오탐 한 건의 값
+
+이 곡선 위에서 어느 점을 고를지는 오탐 한 건이 얼마짜리인가가 정한다. 계산은 단순하다. 호출 한 번을 아껴서 버는 돈을 $$c$$, 오탐 한 건이 만드는 손해를 $$L$$이라 하고, 임계값 $$\tau$$에서의 히트율을 $$h(\tau)$$, 히트 중 오탐 비율을 $$e(\tau)$$라 하면 요청 한 건당 기대 이득은
+
+$$
+h(\tau)\bigl[(1 - e(\tau))\,c - e(\tau)\,L\bigr]
+$$
+
+이다. 대괄호 안이 음수가 되는 순간부터는 캐시를 켜 두는 것이 손해다. 호출 한 번이 몇 원 단위이고 잘못된 환불 안내 한 건이 상담원 한 명의 십몇 분을 잡아먹는다면 $$L/c$$는 쉽게 수백이 되고, 그러면 $$e(\tau)$$는 0.1%대로 눌러야 한다. 반대로 내부 문서 검색처럼 틀린 답을 사람이 바로 알아보고 다시 묻는 자리라면 $$L$$이 작아 임계값을 과감하게 내릴 수 있다.
+
+숫자를 한 번 넣어 보면 감이 잡힌다. 임계값을 0.95에서 0.88로 내려 히트율이 22%에서 41%로 올랐고 히트 중 오탐이 0.2%에서 1.6%로 늘었다고 하자. 호출 한 번의 값을 1로 두면 이득은 0.95에서 $$0.22 \times (0.998 - 0.002L)$$, 0.88에서 $$0.41 \times (0.984 - 0.016L)$$이다. 두 값이 뒤집히는 지점은 $$L$$이 30쯤이고, 그보다 손해가 큰 오답이면 히트율이 두 배가 되어도 내리지 않는 편이 낫다. 여기서 중요한 것은 30이라는 수가 아니라 **오탐률이 여덟 배가 될 때 히트율은 두 배밖에 안 된다**는 비대칭이다. 임계값을 내리는 쪽은 언제나 처음 얼마간만 싸게 먹힌다.
+
+### 답이 아니라 근거를 캐시하기
+
+임계값을 안전한 쪽으로 올리면 히트율이 떨어진다. 이 맞바꿈을 우회하는 방법이 하나 있다. RAG 구성이라면 최종 답변 대신 검색 결과를 캐시하는 것이다. 검색 결과가 같으면 생성은 다시 하되 검색 단계의 비용과 지연만 아끼므로, 오탐이 나도 엉뚱한 문서를 참고할 뿐 답이 통째로 뒤집히지는 않는다. 절감폭은 작아지지만 위험도 같이 작아진다.
+
+## 프롬프트 캐시
+
+프롬프트 캐시는 앞의 둘과 달리 우리 인프라가 아니라 벤더 서버에 있다. 입력의 앞부분을 서버가 기억해 두고 다음 요청에서 그 부분의 처리를 건너뛰는 구조라, 규칙이 하나 붙는다 — **접두사가 한 글자라도 다르면 그 뒤는 전부 캐시가 아니다.**
 
 ```python
-import anthropic
+response = client.messages.create(
+    model="claude-sonnet-5",
+    max_tokens=1024,
+    system=[
+        {
+            "type": "text",
+            "text": SYSTEM_PROMPT,
+            "cache_control": {"type": "ephemeral"},
+        }
+    ],
+    messages=[{"role": "user", "content": user_message}],
+)
+usage = response.usage
+```
 
-client = anthropic.Anthropic()
+### 무엇을 앞에 두는가
 
-class PromptCachedClient:
-    """시스템 프롬프트를 Claude 서버 측에 캐싱하는 래퍼"""
+이 규칙 때문에 프롬프트의 배치가 곧 캐시 설계가 된다. 오래 안 바뀌는 것부터 앞에 놓는다 — 시스템 프롬프트, 도구 정의, 여러 요청이 공유하는 참고 문서 순이고, 사용자 입력처럼 매번 바뀌는 것은 맨 뒤다. 현재 시각이나 요청 식별자를 시스템 프롬프트 안에 무심코 끼워 넣으면 접두사가 매번 달라져 캐시가 한 번도 안 걸린다. 캐시 히트가 0인데 원인을 못 찾겠다면 이 자리를 먼저 본다.
 
-    def __init__(self, system_prompt: str, model: str = "claude-sonnet-4-6"):
-        self.system = system_prompt
-        self.model = model
+### 쓰기 할증과 손익분기
 
-    def chat(self, user_message: str, context: str = "") -> dict:
-        messages = []
-        if context:
-            messages.append({
-                "role": "user",
-                "content": [
-                    {
-                        "type": "text",
-                        "text": f"참고 컨텍스트:\n{context}",
-                        "cache_control": {"type": "ephemeral"},  # 컨텍스트도 캐싱
-                    },
-                    {"type": "text", "text": user_message},
-                ],
-            })
-        else:
-            messages.append({"role": "user", "content": user_message})
+프롬프트 캐시는 쓸 때 웃돈을 내고 읽을 때 크게 깎아 준다. Anthropic 문서 기준으로 5분 캐시는 쓰기가 정가의 1.25배, 읽기가 0.1배다. 그러면 한 번 쓰고 $$N$$번 읽을 때 캐시를 쓰는 쪽이 이기는 조건은 $$1.25 + 0.1N < N + 1$$, 곧 $$N > 0.278$$이라 읽기 한 번만 일어나도 이득이다.
 
-        response = client.messages.create(
-            model=self.model,
-            max_tokens=1024,
-            system=[
-                {
-                    "type": "text",
-                    "text": self.system,
-                    "cache_control": {"type": "ephemeral"},  # 시스템 프롬프트 캐싱
-                }
-            ],
-            messages=messages,
+문제는 이 식에 시간이 안 들어간다는 점이다. 캐시에는 유효기간이 있고, 요청 간격이 그 기간보다 길면 매번 다시 쓰기만 하다 끝난다 — 읽기가 한 번도 안 일어나므로 위 식이 적용될 자리 자체가 없고, 요청마다 정가의 1.25배를 내게 된다. 이 계산을 벤더 문서와 대조해 실제로 돌려 본 것은 [프롬프트 캐시의 손익분기는 읽기 횟수가 아니라 요청 간격이었다](/articles/cost-prompt-cache-breakeven)에 있다. 트래픽이 뜸한 시간대가 있는 서비스라면 그 시간대에는 캐시를 끄는 편이 싸다.
+
+### 최소 길이
+
+캐시할 수 있는 접두사에는 하한이 있다. 모델마다 다르고 문서에 표로 적혀 있는데, 그보다 짧은 프롬프트는 `cache_control`을 붙여도 아무 일도 일어나지 않는다. 시스템 프롬프트가 짧은 서비스에서 프롬프트 캐시를 붙였는데 응답의 `cache_read_input_tokens`가 계속 0이라면 대개 이 하한에 걸린 것이다.
+
+하한을 못 넘기는 프롬프트를 억지로 늘려 캐시를 태우려는 시도는 권하지 않는다. 채워 넣은 토큰도 쓸 때는 정가의 할증을 물고, 읽을 때 깎이는 것은 그 늘린 부분까지 포함한 값이라 계산상 이득이 나더라도 그만큼 모델이 읽어야 하는 맥락이 길어진다. 하한에 걸린다는 것은 대개 이 서비스에서 프롬프트 캐시가 아직 값을 할 자리가 아니라는 신호로 읽는 편이 맞다.
+
+## 무효화
+
+![캐시를 버리는 세 계기](/assets/posts/llmops-cache-invalidation.svg)
+
+캐시에서 가장 어려운 문제는 넣는 쪽이 아니라 버리는 쪽이다. 틀린 답을 빠르게 주는 캐시는 없느니만 못하다. 버리는 계기는 셋이고, 셋을 함께 걸어 둔다.
+
+### 시간
+
+첫째는 유효기간이다. 무엇이 바뀌었는지 몰라도 오래된 답은 버린다는 뜻이라, 다른 장치가 전부 새는 자리를 막는 바닥이 된다. 값은 답이 얼마나 빨리 상하는가로 정한다 — 제품 사양 안내는 며칠을 둬도 되고, 재고나 요금처럼 하루에도 바뀌는 것은 애초에 캐시 대상이 아니다.
+
+층마다 값을 다르게 잡는 것이 보통이다. 정확 일치 캐시는 같은 문장에만 걸리므로 길게 둬도 위험이 작지만, 시맨틱 캐시는 오래 둘수록 임계값 근처에서 잘못 걸린 항목이 쌓이는 자리라 짧게 잡는다. 기간을 정한 뒤에는 그 값이 실제로 지켜지는지 한 번 확인한다 — 저장할 때 유효기간을 안 넣어 영구히 남는 항목이 섞이는 실수가 흔하고, 그런 항목은 조회에도 안 걸리는 조건이 없으니 계속 답을 내놓는다.
+
+### 버전
+
+둘째는 버전 키다. 프롬프트나 도구 정의를 고치면 그 뒤의 답은 전부 옛 설정에서 나온 것이라 믿을 수 없다. 앞의 `cache_key`에 `system_version`을 넣어 두었다면 여기서 할 일이 없다 — 버전을 올리는 순간 키가 통째로 달라져 옛 항목은 조회되지 않고 유효기간이 지나면 저절로 사라진다. 캐시를 지우는 대신 안 보이게 만드는 것이고, 배포 직후에 롤백해야 할 때 옛 항목이 그대로 살아 있다는 점에서도 낫다.
+
+### 원본 변경
+
+셋째는 원본 문서가 바뀌었을 때다. 이때는 그 문서를 참고한 답만 골라 지워야 하므로, 캐시에 답을 넣을 때 참고한 문서 식별자를 태그로 함께 저장해 둬야 한다. 나중에 질문 문자열을 `LIKE`로 뒤져 지우는 방식은 못 쓴다 — 질문에 문서 이름이 안 들어 있는 경우가 대부분이고, 우연히 걸린 엉뚱한 항목까지 지운다.
+
+```python
+def invalidate_by_doc(conn, doc_id: str) -> int:
+    with conn.cursor() as cur:
+        cur.execute(
+            "DELETE FROM semantic_cache WHERE %s = ANY(source_docs)",
+            (doc_id,),
         )
-        
-        usage = response.usage
-        return {
-            "text": response.content[0].text,
-            "input_tokens": usage.input_tokens,
-            "output_tokens": usage.output_tokens,
-            "cache_creation_tokens": getattr(usage, "cache_creation_input_tokens", 0),
-            "cache_read_tokens": getattr(usage, "cache_read_input_tokens", 0),
-        }
+        deleted = cur.rowcount
+        conn.commit()
+    return deleted
 ```
 
-## 캐시 오케스트레이터 (전체 통합)
+지운 건수를 돌려받아 로그에 남기는 것이 중요하다. 문서를 고쳤는데 0건이 지워졌다면 태그가 안 붙고 있다는 뜻이고, 그건 캐시가 조용히 옛 답을 내보내고 있다는 뜻이다.
 
-```python
-class LLMCacheOrchestrator:
-    def __init__(self, system_prompt: str):
-        self.exact = ExactCache(ttl_seconds=3600)
-        self.semantic = SemanticCache(threshold=0.92)
-        self.llm = PromptCachedClient(system_prompt)
+## 캐시하면 안 되는 응답
 
-    def query(self, user_input: str, context: str = "") -> dict:
-        # L1: Exact match
-        exact_hit = self.exact.get(user_input, self.llm.model)
-        if exact_hit:
-            return {"response": exact_hit, "source": "exact_cache", "cost": 0}
+무효화 규칙을 아무리 잘 짜도, 애초에 캐시에 들어가면 안 되는 답이 있다. 넣기 전에 거른다.
 
-        # L2: Semantic match
-        semantic_hit = self.semantic.get(user_input)
-        if semantic_hit:
-            self.exact.set(user_input, self.llm.model, semantic_hit)  # L1에 추가
-            return {"response": semantic_hit, "source": "semantic_cache", "cost": 0}
+거르는 자리는 조회가 아니라 저장이다. 조회할 때 판정하면 이미 저장된 항목은 그대로 남아 다음 규칙 변경까지 계속 나가고, 저장할 때 막으면 애초에 들어가지 않는다. 판정은 대개 요청의 갈래로 충분하다 — 어떤 도구를 썼는지, 어떤 검색 경로를 탔는지, 사용자별 데이터를 참고했는지를 보면 아래 셋은 저장 전에 거의 다 걸러진다.
 
-        # L3 + LLM 호출
-        result = self.llm.chat(user_input, context)
-        response = result["text"]
+### 시점에 기대는 답
 
-        # 결과를 L1, L2에 저장
-        self.exact.set(user_input, self.llm.model, response)
-        self.semantic.set(user_input, response)
+"지금 몇 시인가", "오늘 환율", "재고가 있나" 같은 질문은 답이 만들어진 순간에만 맞다. 유효기간을 짧게 잡아 막으려는 시도를 자주 보는데, 1분짜리 유효기간은 히트율을 거의 0으로 만들면서 그 1분 안의 오답 가능성은 그대로 남긴다. 이런 질문은 캐시 대상에서 빼는 편이 간단하다.
 
-        return {
-            "response": response,
-            "source": "llm",
-            "input_tokens": result["input_tokens"],
-            "cache_read_tokens": result["cache_read_tokens"],
-        }
-```
+### 사람마다 달라야 하는 답
 
-## 캐시 무효화 전략
+사용자의 계약·권한·이력을 참고한 답은 앞서 말한 대로 키를 갈라야 하고, 가르기 어려우면 캐시하지 않는다. 판단 기준은 **그 답을 모르는 사람이 봐도 되는가** 하나다. 안 되면 전역 캐시에 들어가면 안 된다.
 
-캐시에서 가장 어려운 문제는 무효화다. 언제 캐시를 비워야 할까?
+### 개인정보가 섞인 답
 
-```python
-class CacheInvalidator:
-    def __init__(self, exact: ExactCache, semantic: SemanticCache):
-        self.exact = exact
-        self.semantic = semantic
+답에 이름·연락처·주문번호가 섞여 들어가면 캐시는 그 순간 개인정보를 담은 저장소가 된다. 보관 기간, 접근 통제, 파기 절차가 전부 따라붙고 대개 그 값어치가 절감액보다 크다. 입력에서 개인정보를 가려내는 단계가 이미 있다면 그 결과를 캐시 여부 판정에도 그대로 쓴다.
 
-    def invalidate_by_tag(self, tag: str):
-        """특정 도메인 관련 캐시 전체 삭제 (예: 가격 정책 변경 시)"""
-        # Redis 패턴 삭제
-        keys = self.exact.r.keys(f"llm:*:{tag}:*")
-        if keys:
-            self.exact.r.delete(*keys)
+## 히트율
 
-        # pgvector: 태그 기반 삭제
-        with self.semantic.conn.cursor() as cur:
-            cur.execute("DELETE FROM semantic_cache WHERE query LIKE %s", (f"%{tag}%",))
-            self.semantic.conn.commit()
+### 층마다 따로 센다
 
-    def invalidate_on_prompt_change(self, new_version: str):
-        """프롬프트 버전이 바뀌면 전체 시맨틱 캐시 초기화"""
-        with self.semantic.conn.cursor() as cur:
-            cur.execute("TRUNCATE semantic_cache")
-            self.semantic.conn.commit()
-```
-
-## 히트율 모니터링
+히트율을 하나의 숫자로 뭉쳐 놓으면 어디를 손볼지 알 수 없다. 층별로 따로 세고, 미스도 한 번만 센다.
 
 ```python
 from prometheus_client import Counter
 
 cache_hits = Counter("llm_cache_hits_total", "Cache hits", ["level"])
 cache_misses = Counter("llm_cache_misses_total", "Cache misses")
-
-# 캐시 히트율 대시보드 쿼리 (Prometheus)
-# sum(rate(llm_cache_hits_total[1h])) / 
-# (sum(rate(llm_cache_hits_total[1h])) + sum(rate(llm_cache_misses_total[1h])))
 ```
 
-캐시 히트율이 30% 이상이면 의미 있는 비용 절감이다. FAQ·고객 지원 챗봇처럼 반복 질문이 많은 도메인에서는 60~80%까지도 달성할 수 있다.
+프롬프트 캐시는 우리 쪽에서 히트를 셀 수 없으므로 응답의 사용량 필드를 쓴다. `cache_read_input_tokens`를 전체 입력 토큰으로 나눈 값이 그 층의 실질 히트율이고, 이 값이 낮으면 접두사가 매번 깨지고 있다는 뜻이다.
+
+이 셋을 한 화면에 세울 때는 분모를 같게 맞춘다. 정확 일치 히트율의 분모는 전체 요청이지만, 시맨틱 히트율의 분모는 정확 일치에서 미스가 난 요청뿐이다. 분모를 각자 두면 아래층의 히트율이 실제보다 커 보여, 전체에서 그 층이 실제로 걷어 낸 몫을 가늠할 수 없다. 대시보드에는 층별 히트 수를 전체 요청으로 나눈 값을 나란히 두고, 셋을 더한 값이 곧 모델 호출을 면한 비율이 되게 한다.
+
+### 낮을 때 먼저 볼 것
+
+정확 일치 히트율이 갑자기 떨어졌다면 키 구성이 바뀐 것을 먼저 의심한다. 모델 별칭을 올렸거나, 프롬프트 버전을 올렸거나, 온도를 요청마다 조금씩 다르게 넘기고 있는 경우다. 시맨틱 히트율이 낮다면 임계값보다 저장량을 먼저 본다 — 유효기간이 짧아 저장된 항목이 몇 개 없으면 임계값을 아무리 내려도 비교할 대상이 없다.
+
+### 절감액으로 환산하기
+
+히트율은 그 자체로 목표가 아니다. 보고할 값은 절감액이고, 그것은 층별 히트 수에 그 층이 아낀 단가를 곱해 더하면 나온다. 정확 일치와 시맨틱은 호출 한 번 값을 통째로 아끼고, 프롬프트 캐시는 읽은 토큰에 정가와 할인가의 차이를 곱한 만큼을 아낀다. 세 층을 같은 단위로 환산해 두면 다음에 어느 층을 손볼지가 숫자로 나온다.
+
+환산해 놓고 보면 순위가 자주 뒤집힌다. 시맨틱 히트가 하루 800건이고 프롬프트 캐시 읽기가 40만 토큰이라면, 건수로는 시맨틱이 훨씬 커 보이지만 아낀 금액은 대개 프롬프트 캐시 쪽이 크다. 앞의 둘은 반복되는 짧은 질문에 걸리고 프롬프트 캐시는 길고 비싼 접두사에 걸리기 때문이다. 절감액을 세지 않고 히트율만 보고 있으면, 가장 값이 큰 층이 접두사 한 줄 때문에 꺼져 있는데도 아무도 눈치채지 못한다.
+
+여기에 반드시 같이 적어야 하는 값이 하나 더 있다. **오탐 표본 검사 결과**다. 시맨틱 캐시 히트에서 무작위로 몇십 건을 뽑아 원 질문과 돌려준 답이 실제로 맞는지 주기적으로 확인하고, 그 비율을 절감액 옆에 나란히 둔다. 절감액만 보고하면 임계값을 내리라는 압력만 남고, 그 끝은 싸고 틀린 답이다.
 
 ---
 
