@@ -47,6 +47,7 @@ const models: ModelInfo[] = [
     id: 'claude-fable-5-1',
     vendorId: 'anthropic',
     name: 'Claude Fable 5.1',
+    mark: { file: 'assets/model-fable.svg', plate: '#6DA7EC' },
     apiId: 'claude-fable-5-1',
     useWhen: {
       text: '까다로운 추론과 긴 호흡의 에이전트 작업에',
@@ -60,6 +61,7 @@ const models: ModelInfo[] = [
     id: 'claude-fable-5',
     vendorId: 'anthropic',
     name: 'Claude Fable 5',
+    mark: { file: 'assets/model-fable.svg', plate: '#6DA7EC' },
     apiId: 'claude-fable-5',
     useWhen: null,
     current: false,
@@ -70,6 +72,7 @@ const models: ModelInfo[] = [
     id: 'claude-opus-5',
     vendorId: 'anthropic',
     name: 'Claude Opus 5',
+    mark: { file: 'assets/model-opus.svg', plate: '#F09978' },
     apiId: 'claude-opus-5',
     useWhen: {
       text: '복잡한 에이전트 코딩과 기업 업무에',
@@ -94,6 +97,7 @@ const models: ModelInfo[] = [
     id: 'claude-haiku-4-5',
     vendorId: 'anthropic',
     name: 'Claude Haiku 4.5',
+    mark: { file: 'assets/model-haiku.svg', plate: '#BCD1CA' },
     apiId: 'claude-haiku-4-5',
     useWhen: {
       text: '가장 낮은 지연과 값이 필요할 때 — 확장 사고를 쓰면서',
@@ -107,6 +111,7 @@ const models: ModelInfo[] = [
     id: 'claude-sonnet-5',
     vendorId: 'anthropic',
     name: 'Claude Sonnet 5',
+    mark: { file: 'assets/model-sonnet.svg', plate: '#F0EEE6' },
     apiId: 'claude-sonnet-5',
     useWhen: {
       text: '매일 하는 코딩·에이전트·업무에 속도와 성능을 함께',
@@ -122,6 +127,7 @@ const models: ModelInfo[] = [
     id: 'claude-sonnet-4-6',
     vendorId: 'anthropic',
     name: 'Claude Sonnet 4.6',
+    mark: { file: 'assets/model-sonnet.svg', plate: '#F0EEE6' },
     apiId: 'claude-sonnet-4-6',
     useWhen: null,
     current: false,
@@ -132,6 +138,7 @@ const models: ModelInfo[] = [
     id: 'claude-opus-4-6',
     vendorId: 'anthropic',
     name: 'Claude Opus 4.6',
+    mark: { file: 'assets/model-opus.svg', plate: '#F09978' },
     apiId: 'claude-opus-4-6',
     useWhen: null,
     current: false,

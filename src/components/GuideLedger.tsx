@@ -6,6 +6,7 @@ import { TipRow } from './TipRow';
 import { claimState, claimsForProduct, claimsForVendor, modelCell } from '../data/playbook';
 import { playbookClaims } from '../data/playbookClaims';
 import { modelMark, shownModels } from '../data/guideModels';
+import { assetUrl } from '../data/sources';
 import { guideProducts } from '../data/guideProducts';
 import { tipGroupsOf } from '../data/guideTipGroups';
 import { guideVendorById } from '../data/guideVendors';
@@ -618,18 +619,32 @@ function ProductLedger({ product, today }: { product: Product; today: string }) 
                 <li key={model.id}>
                   <span className="guide-model-name">
                     {/*
-                      **계열 마크입니다 — 모델별 마크가 아닙니다.** 모델마다 다른
-                      심볼은 어느 벤더에도 없습니다(`modelMark` 주석에 실측을
-                      적어 뒀습니다). 한 벤더만 도는 제품에서는 같은 마크가
-                      줄마다 되풀이되는데, 그것이 줄머리 앵커가 되어 이름 열의
-                      왼쪽 변을 세웁니다 — 레일이 이미 그렇게 서 있습니다.
+                      **모델 제 마크가 있으면 그것, 없으면 계열 마크입니다.**
+                      Anthropic만 등급마다 손그림과 판 색을 짝지어 두었고
+                      (`ModelInfo.mark`), OpenAI·Google은 우리가 세우는 모델에
+                      해당하는 것이 없습니다.
+
+                      제 마크는 **잉크가 2색이라 착색하지 않고** 판 위에 그대로
+                      올립니다 — 한 색으로 마스킹하면 덩어리가 됩니다. 계열 마크는
+                      그대로 벤더색으로 착색됩니다. 둘이 같은 24px 자리에 서므로
+                      섞이는 제품에서도 이름 첫 글자의 x는 하나입니다.
                     */}
-                    <GuideMark
-                      logo={modelMark[model.vendorId].logo}
-                      monochrome={modelMark[model.vendorId].monochrome}
-                      accent={modelMark[model.vendorId].accent}
-                      className="guide-model-mark"
-                    />
+                    {model.mark ? (
+                      <span
+                        className="guide-model-mark is-plate"
+                        style={{ '--guide-plate': model.mark.plate } as CSSProperties}
+                        aria-hidden="true"
+                      >
+                        <img src={assetUrl(model.mark.file)} alt="" />
+                      </span>
+                    ) : (
+                      <GuideMark
+                        logo={modelMark[model.vendorId].logo}
+                        monochrome={modelMark[model.vendorId].monochrome}
+                        accent={modelMark[model.vendorId].accent}
+                        className="guide-model-mark"
+                      />
+                    )}
                     {model.name}
                     {model.vendorId !== product.vendorId && (
                       <span className="guide-peer-vendor">
