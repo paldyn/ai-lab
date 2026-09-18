@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="430" viewBox="0 0 880 430">
+  <defs>
+    <marker id="arrOk" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#55c555"/>
+    </marker>
+    <marker id="arrNo" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#e05555"/>
+    </marker>
+  </defs>
+
+  <rect x="0" y="0" width="880" height="430" rx="12" fill="#0a0a0a"/>
+
+  <text x="60" y="56" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="22" font-weight="700" fill="#e8e8e8">되돌릴 수 있는 조작과 없는 조작</text>
+  <text x="60" y="86" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#888">둘 다 등호는 지켜진다. 갈림은 돌아올 수 있느냐에서 생긴다</text>
+
+  <text x="60" y="130" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#55c555">더하기 — 돌아온다</text>
+  <text x="480" y="130" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#e05555">제곱 — 못 돌아온다</text>
+
+  <rect x="60" y="160" width="360" height="56" rx="6" fill="#55c555" fill-opacity="0.10" stroke="#55c555" stroke-width="2"/>
+  <text x="240" y="194" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="18" font-weight="600" fill="#e8e8e8">a = b</text>
+
+  <rect x="480" y="160" width="360" height="56" rx="6" fill="#e05555" fill-opacity="0.10" stroke="#e05555" stroke-width="2"/>
+  <text x="660" y="194" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="18" font-weight="600" fill="#e8e8e8">a = b</text>
+
+  <line x1="180" y1="216" x2="180" y2="272" stroke="#55c555" stroke-width="2.5" marker-end="url(#arrOk)"/>
+  <line x1="300" y1="272" x2="300" y2="216" stroke="#55c555" stroke-width="2.5" marker-end="url(#arrOk)"/>
+  <text x="168" y="249" text-anchor="end" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">양변에 +3</text>
+  <text x="312" y="249" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">양변에 −3</text>
+
+  <line x1="600" y1="216" x2="600" y2="272" stroke="#e05555" stroke-width="2.5" marker-end="url(#arrNo)"/>
+  <line x1="720" y1="272" x2="720" y2="216" stroke="#e05555" stroke-width="2.5" stroke-dasharray="4,4" marker-end="url(#arrNo)"/>
+  <text x="588" y="249" text-anchor="end" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">양변을 제곱</text>
+  <text x="732" y="249" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e05555">보장 없음</text>
+
+  <rect x="60" y="272" width="360" height="56" rx="6" fill="#55c555" fill-opacity="0.10" stroke="#55c555" stroke-width="2"/>
+  <text x="240" y="306" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="18" font-weight="600" fill="#e8e8e8">a + 3 = b + 3</text>
+
+  <rect x="480" y="272" width="360" height="56" rx="6" fill="#e05555" fill-opacity="0.10" stroke="#e05555" stroke-width="2"/>
+  <text x="660" y="306" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="18" font-weight="600" fill="#e8e8e8">a² = b²</text>
+
+  <text x="60" y="370" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">어느 쪽에서 출발해도 상대가 나온다</text>
+  <text x="480" y="370" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">a = 2, b = −2 면 a² = b² 인데 a 와 b 는 다르다</text>
+</svg>

@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="360" viewBox="0 0 880 360">
+  <rect x="0" y="0" width="880" height="360" rx="12" fill="#0a0a0a"/>
+
+  <text x="60" y="56" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="22" font-weight="700" fill="#e8e8e8">같은 수 13을 두 밑으로 적기</text>
+  <text x="60" y="86" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#888">자리의 값만 다르고 펴서 더하는 얼개는 같다</text>
+
+  <text x="104" y="136" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#e8e8e8">십진법 — 13</text>
+  <text x="488" y="136" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#e8e8e8">이진법 — 1101</text>
+
+  <text x="136" y="168" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">10</text>
+  <text x="200" y="168" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">1</text>
+  <text x="520" y="168" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">8</text>
+  <text x="584" y="168" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">4</text>
+  <text x="648" y="168" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">2</text>
+  <text x="712" y="168" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">1</text>
+
+  <rect x="104" y="182" width="64" height="64" fill="#7ec8e3" fill-opacity="0.10" stroke="#7ec8e3" stroke-width="2"/>
+  <rect x="168" y="182" width="64" height="64" fill="#7ec8e3" fill-opacity="0.10" stroke="#7ec8e3" stroke-width="2"/>
+  <rect x="488" y="182" width="64" height="64" fill="#7ec8e3" fill-opacity="0.10" stroke="#7ec8e3" stroke-width="2"/>
+  <rect x="552" y="182" width="64" height="64" fill="#7ec8e3" fill-opacity="0.10" stroke="#7ec8e3" stroke-width="2"/>
+  <rect x="616" y="182" width="64" height="64" fill="#7ec8e3" fill-opacity="0.10" stroke="#7ec8e3" stroke-width="2"/>
+  <rect x="680" y="182" width="64" height="64" fill="#7ec8e3" fill-opacity="0.10" stroke="#7ec8e3" stroke-width="2"/>
+
+  <text x="136" y="224" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="26" font-weight="700" fill="#e8e8e8">1</text>
+  <text x="200" y="224" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="26" font-weight="700" fill="#e8e8e8">3</text>
+  <text x="520" y="224" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="26" font-weight="700" fill="#e8e8e8">1</text>
+  <text x="584" y="224" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="26" font-weight="700" fill="#e8e8e8">1</text>
+  <text x="648" y="224" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="26" font-weight="700" fill="#e8e8e8">0</text>
+  <text x="712" y="224" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="26" font-weight="700" fill="#e8e8e8">1</text>
+
+  <text x="104" y="288" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="15" fill="#7ec8e3">1×10 + 3×1 = 13</text>
+  <text x="488" y="288" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="15" fill="#7ec8e3">1×8 + 1×4 + 0×2 + 1×1 = 13</text>
+</svg>
