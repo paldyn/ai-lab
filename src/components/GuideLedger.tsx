@@ -369,7 +369,13 @@ function ProductLedger({ product, today }: { product: Product; today: string }) 
           accent={product.accent}
           className="guide-ledger-mark"
         />
-        <div>
+        {/*
+          **회사·갈래 라벨이 이름 오른쪽 끝에 섭니다**(2026-09-18). 이름 아래에
+          두던 동안 그 두 줄이 한 덩이로 읽혀 제목이 두 줄짜리가 됐습니다.
+          오른쪽으로 보내면 이름은 한 줄로 남고, 라벨은 아래 줄들의 수·칩과 같은
+          세로줄에 붙습니다 — 잉크의 오른쪽 열이 머리에서부터 시작됩니다.
+        */}
+        <div className="guide-ledger-headline">
           <h2 className="guide-ledger-title">{product.name}</h2>
           <p className="guide-ledger-meta">
             {vendor?.name} · {product.role}
