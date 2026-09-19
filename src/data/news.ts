@@ -172,6 +172,21 @@ export const globalNewsUpdatedAt = '2026-09-18';
  */
 const entries: NewsItem[] = [
   {
+    id: 'accenture-embedded-evaluation',
+    source: 'Anthropic',
+    kind: 'company',
+    title: 'Anthropic, Accenture와 사내 상주 독립 평가 파트너십',
+    summary:
+      '앤트로픽이 Accenture와 프런티어 AI 독립 평가 파트너십을 맺었다. Accenture의 AI 전문 조직 ' +
+      'Faculty가 모델 평가와 레드팀, 정렬 평가, 안전장치 시험을 맡고, 두 회사는 각각 5년간 최소 ' +
+      '10억 달러를 이 분야 역량 구축에 투자할 계획이다.',
+    publishedAt: '2026-09-18',
+    collectedAt: '2026-09-20',
+    category: 'Safety',
+    signal: '독립 평가 파트너십',
+    url: 'https://www.anthropic.com/news/accenture-embedded-evaluation',
+  },
+  {
     id: 'ai-expanding-ai-economy-research-bench',
     source: 'Google DeepMind',
     kind: 'company',
