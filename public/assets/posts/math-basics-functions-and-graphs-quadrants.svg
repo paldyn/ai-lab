@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="470" viewBox="0 0 880 470" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <rect width="880" height="470" rx="12" fill="#0a0a0a"/>
+  <defs>
+    <marker id="qdAx" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#888"/>
+    </marker>
+  </defs>
+  <text x="60" y="48" font-size="22" font-weight="700" fill="#e8e8e8">사분면 넷과 각 칸의 부호</text>
+  <text x="60" y="74" font-size="13" fill="#888">오른쪽 위부터 시계 반대 방향으로 센다. 축 위의 점은 어느 칸에도 들지 않는다</text>
+  <line x1="254" y1="250" x2="606" y2="250" stroke="#888" stroke-width="1.5" marker-end="url(#qdAx)"/>
+  <line x1="430" y1="393" x2="430" y2="107" stroke="#888" stroke-width="1.5" marker-end="url(#qdAx)"/>
+  <text x="618" y="254" font-size="13" fill="#888">x</text>
+  <text x="440" y="97" font-size="13" fill="#888">y</text>
+  <line x1="304" y1="245" x2="304" y2="255" stroke="#444" stroke-width="1.5"/>
+  <line x1="346" y1="245" x2="346" y2="255" stroke="#444" stroke-width="1.5"/>
+  <line x1="388" y1="245" x2="388" y2="255" stroke="#444" stroke-width="1.5"/>
+  <line x1="472" y1="245" x2="472" y2="255" stroke="#444" stroke-width="1.5"/>
+  <line x1="514" y1="245" x2="514" y2="255" stroke="#444" stroke-width="1.5"/>
+  <line x1="556" y1="245" x2="556" y2="255" stroke="#444" stroke-width="1.5"/>
+  <line x1="425" y1="334" x2="435" y2="334" stroke="#444" stroke-width="1.5"/>
+  <line x1="425" y1="292" x2="435" y2="292" stroke="#444" stroke-width="1.5"/>
+  <line x1="425" y1="208" x2="435" y2="208" stroke="#444" stroke-width="1.5"/>
+  <line x1="425" y1="166" x2="435" y2="166" stroke="#444" stroke-width="1.5"/>
+  <text x="518" y="170" font-size="16" font-weight="600" fill="#e8e8e8" text-anchor="middle">1사분면</text>
+  <text x="518" y="194" font-size="13" fill="#7ec8e3" text-anchor="middle">( + , + )</text>
+  <text x="342" y="170" font-size="16" font-weight="600" fill="#e8e8e8" text-anchor="middle">2사분면</text>
+  <text x="342" y="194" font-size="13" fill="#7ec8e3" text-anchor="middle">( − , + )</text>
+  <text x="342" y="330" font-size="16" font-weight="600" fill="#e8e8e8" text-anchor="middle">3사분면</text>
+  <text x="342" y="354" font-size="13" fill="#7ec8e3" text-anchor="middle">( − , − )</text>
+  <text x="518" y="330" font-size="16" font-weight="600" fill="#e8e8e8" text-anchor="middle">4사분면</text>
+  <text x="518" y="354" font-size="13" fill="#7ec8e3" text-anchor="middle">( + , − )</text>
+  <circle cx="556" cy="250" r="5" fill="#e8e8e8"/>
+  <circle cx="430" cy="334" r="5" fill="#e8e8e8"/>
+  <text x="556" y="232" font-size="13" fill="#888" text-anchor="middle">(3, 0)</text>
+  <text x="446" y="339" font-size="13" fill="#888">(0, −2)</text>
+  <text x="60" y="434" font-size="13" fill="#888">0 은 양수도 음수도 아니라, 축 위의 점은 부호를 묻는 물음 자체가 서지 않는다</text>
+</svg>

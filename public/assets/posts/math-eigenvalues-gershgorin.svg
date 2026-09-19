@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="410" viewBox="0 0 880 410" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <rect width="880" height="410" rx="12" fill="#0a0a0a"/>
+  <defs>
+    <marker id="gshAx" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#888"/>
+    </marker>
+  </defs>
+  <text x="60" y="48" font-size="22" font-weight="700" fill="#e8e8e8">행마다 구간 하나, 고윳값은 그 안에 있다</text>
+  <text x="60" y="74" font-size="13" fill="#888">A 의 열이 (4,1),(1,2) 일 때 — 가운데는 대각 성분, 반지름은 그 행의 나머지 합</text>
+  <rect x="460" y="134" width="213" height="34" rx="6" fill="#7ec8e3" fill-opacity="0.18" stroke="#7ec8e3" stroke-width="1.5"/>
+  <text x="567" y="156" font-size="13" fill="#7ec8e3" text-anchor="middle">1행 · 가운데 4, 반지름 1</text>
+  <rect x="247" y="286" width="213" height="34" rx="6" fill="#55c555" fill-opacity="0.18" stroke="#55c555" stroke-width="1.5"/>
+  <text x="353" y="308" font-size="13" fill="#55c555" text-anchor="middle">2행 · 가운데 2, 반지름 1</text>
+  <line x1="460" y1="168" x2="460" y2="222" stroke="#7ec8e3" stroke-width="1.5" stroke-dasharray="4,4"/>
+  <line x1="673" y1="168" x2="673" y2="222" stroke="#7ec8e3" stroke-width="1.5" stroke-dasharray="4,4"/>
+  <line x1="247" y1="238" x2="247" y2="286" stroke="#55c555" stroke-width="1.5" stroke-dasharray="4,4"/>
+  <line x1="460" y1="238" x2="460" y2="286" stroke="#55c555" stroke-width="1.5" stroke-dasharray="4,4"/>
+  <line x1="120" y1="230" x2="810" y2="230" stroke="#888" stroke-width="1.5" marker-end="url(#gshAx)"/>
+  <line x1="140" y1="224" x2="140" y2="236" stroke="#888" stroke-width="1.5"/>
+  <text x="140" y="256" font-size="12" fill="#888" text-anchor="middle">0</text>
+  <line x1="247" y1="224" x2="247" y2="236" stroke="#888" stroke-width="1.5"/>
+  <text x="247" y="256" font-size="12" fill="#888" text-anchor="middle">1</text>
+  <line x1="353" y1="224" x2="353" y2="236" stroke="#888" stroke-width="1.5"/>
+  <text x="353" y="256" font-size="12" fill="#888" text-anchor="middle">2</text>
+  <line x1="460" y1="224" x2="460" y2="236" stroke="#888" stroke-width="1.5"/>
+  <text x="460" y="256" font-size="12" fill="#888" text-anchor="middle">3</text>
+  <line x1="567" y1="224" x2="567" y2="236" stroke="#888" stroke-width="1.5"/>
+  <text x="567" y="256" font-size="12" fill="#888" text-anchor="middle">4</text>
+  <line x1="673" y1="224" x2="673" y2="236" stroke="#888" stroke-width="1.5"/>
+  <text x="673" y="256" font-size="12" fill="#888" text-anchor="middle">5</text>
+  <line x1="780" y1="224" x2="780" y2="236" stroke="#888" stroke-width="1.5"/>
+  <text x="780" y="256" font-size="12" fill="#888" text-anchor="middle">6</text>
+  <circle cx="309.2" cy="230" r="5" fill="#e8e8e8"/>
+  <text x="309.2" y="210" font-size="13" fill="#e8e8e8" text-anchor="middle">λ ≈ 1.586</text>
+  <circle cx="610.8" cy="230" r="5" fill="#e8e8e8"/>
+  <text x="610.8" y="210" font-size="13" fill="#e8e8e8" text-anchor="middle">λ ≈ 4.414</text>
+  <text x="60" y="372" font-size="13" fill="#888">두 구간을 합친 [1, 5] 가 고윳값이 있을 수 있는 자리이고, 실제로 둘 다 그 안에 있다</text>
+</svg>
