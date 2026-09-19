@@ -187,6 +187,36 @@ const entries: NewsItem[] = [
     url: 'https://www.anthropic.com/news/accenture-embedded-evaluation',
   },
   {
+    id: 'australian-youth-safety-blueprint',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'OpenAI, 호주 청소년 AI 안전 청사진 공개 — 여섯 기둥 제시',
+    summary:
+      'OpenAI가 호주 정책 논의에 부치는 Australian Youth Safety Blueprint를 공개했다. AI 리터러시, ' +
+      '연령에 맞는 안전장치, 프라이버시를 지키는 연령 확인, 위기 지원 연결, 부모 관리 기능 등 여섯 ' +
+      '기둥을 담았다.',
+    publishedAt: '2026-09-18',
+    collectedAt: '2026-09-20',
+    category: 'Safety',
+    signal: '청소년 AI 안전',
+    url: 'https://openai.com/index/australian-youth-safety-blueprint',
+  },
+  {
+    id: 'hex-gpt-6-astra',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'Hex, GPT-6 Astra로 분석을 대화형 시각 리포트로',
+    summary:
+      '에이전틱 데이터 플랫폼 Hex가 GPT-6 Astra로 분석 결과를 대화형 시각 리포트로 내놓는다고 밝혔다. ' +
+      '지리 공간 시각화가 요구하는 데이터 변환을 모델이 직접 처리하고, 나온 답이 질문과 사업 목적에 ' +
+      '맞는지 모델에게 되짚게 한다.',
+    publishedAt: '2026-09-16',
+    collectedAt: '2026-09-20',
+    category: 'Product',
+    signal: '기업 도입 사례',
+    url: 'https://openai.com/index/hex-gpt-6-astra',
+  },
+  {
     id: 'ai-expanding-ai-economy-research-bench',
     source: 'Google DeepMind',
     kind: 'company',
