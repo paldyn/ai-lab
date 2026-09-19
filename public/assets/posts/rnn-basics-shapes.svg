@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="470" viewBox="0 0 880 470">
+  <defs>
+    <marker id="arrShape" viewBox="0 0 14 14" refX="12" refY="7"
+            markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#7777cc"/>
+    </marker>
+  </defs>
+  <rect x="0" y="0" width="880" height="470" rx="12" fill="#0a0a0a"/>
+
+  <text x="60" y="52" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="22" font-weight="700" fill="#e8e8e8">입출력 형태 네 가지</text>
+  <text x="60" y="80" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">셀과 갱신식은 넷 모두 같다. 달라지는 것은 어느 스텝에서 넣고 어느 스텝에서 꺼내는가다</text>
+
+  <text x="60" y="122" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#e8e8e8">one-to-many</text>
+  <rect x="60" y="138" width="44" height="34" rx="4" fill="#132a13" stroke="#55c555" stroke-width="1.5"/>
+  <rect x="116" y="138" width="44" height="34" rx="4" fill="#111111" stroke="#3a4a6e" stroke-width="1"/>
+  <rect x="172" y="138" width="44" height="34" rx="4" fill="#111111" stroke="#3a4a6e" stroke-width="1"/>
+  <rect x="228" y="138" width="44" height="34" rx="4" fill="#111111" stroke="#3a4a6e" stroke-width="1"/>
+  <rect x="116" y="184" width="44" height="34" rx="4" fill="#2a1a33" stroke="#7777cc" stroke-width="1.5"/>
+  <rect x="172" y="184" width="44" height="34" rx="4" fill="#2a1a33" stroke="#7777cc" stroke-width="1.5"/>
+  <rect x="228" y="184" width="44" height="34" rx="4" fill="#2a1a33" stroke="#7777cc" stroke-width="1.5"/>
+  <text x="60" y="242" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">이미지 캡셔닝</text>
+
+  <text x="470" y="122" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#e8e8e8">many-to-one</text>
+  <rect x="470" y="138" width="44" height="34" rx="4" fill="#132a13" stroke="#55c555" stroke-width="1.5"/>
+  <rect x="526" y="138" width="44" height="34" rx="4" fill="#132a13" stroke="#55c555" stroke-width="1.5"/>
+  <rect x="582" y="138" width="44" height="34" rx="4" fill="#132a13" stroke="#55c555" stroke-width="1.5"/>
+  <rect x="638" y="138" width="44" height="34" rx="4" fill="#132a13" stroke="#55c555" stroke-width="1.5"/>
+  <rect x="638" y="184" width="44" height="34" rx="4" fill="#2a1a33" stroke="#7777cc" stroke-width="1.5"/>
+  <text x="470" y="242" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">감성 분류</text>
+
+  <text x="60" y="292" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#e8e8e8">정렬형 many-to-many</text>
+  <rect x="60" y="308" width="44" height="34" rx="4" fill="#132a13" stroke="#55c555" stroke-width="1.5"/>
+  <rect x="116" y="308" width="44" height="34" rx="4" fill="#132a13" stroke="#55c555" stroke-width="1.5"/>
+  <rect x="172" y="308" width="44" height="34" rx="4" fill="#132a13" stroke="#55c555" stroke-width="1.5"/>
+  <rect x="228" y="308" width="44" height="34" rx="4" fill="#132a13" stroke="#55c555" stroke-width="1.5"/>
+  <rect x="60" y="354" width="44" height="34" rx="4" fill="#2a1a33" stroke="#7777cc" stroke-width="1.5"/>
+  <rect x="116" y="354" width="44" height="34" rx="4" fill="#2a1a33" stroke="#7777cc" stroke-width="1.5"/>
+  <rect x="172" y="354" width="44" height="34" rx="4" fill="#2a1a33" stroke="#7777cc" stroke-width="1.5"/>
+  <rect x="228" y="354" width="44" height="34" rx="4" fill="#2a1a33" stroke="#7777cc" stroke-width="1.5"/>
+  <text x="60" y="412" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">품사 태깅 · 개체명 인식</text>
+
+  <text x="470" y="292" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#e8e8e8">비정렬형 many-to-many</text>
+  <rect x="470" y="308" width="44" height="34" rx="4" fill="#132a13" stroke="#55c555" stroke-width="1.5"/>
+  <rect x="526" y="308" width="44" height="34" rx="4" fill="#132a13" stroke="#55c555" stroke-width="1.5"/>
+  <rect x="582" y="308" width="44" height="34" rx="4" fill="#132a13" stroke="#55c555" stroke-width="1.5"/>
+  <rect x="638" y="308" width="44" height="34" rx="4" fill="#132a13" stroke="#55c555" stroke-width="1.5"/>
+  <rect x="694" y="308" width="44" height="34" rx="4" fill="#132a13" stroke="#55c555" stroke-width="1.5"/>
+  <rect x="694" y="354" width="44" height="34" rx="4" fill="#2a1a33" stroke="#7777cc" stroke-width="1.5"/>
+  <rect x="750" y="354" width="44" height="34" rx="4" fill="#2a1a33" stroke="#7777cc" stroke-width="1.5"/>
+  <text x="470" y="412" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">기계 번역 — 길이가 서로 다르다</text>
+
+  <rect x="60" y="430" width="14" height="14" rx="3" fill="#132a13" stroke="#55c555" stroke-width="1.5"/>
+  <text x="84" y="442" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">입력이 들어가는 스텝</text>
+  <rect x="260" y="430" width="14" height="14" rx="3" fill="#2a1a33" stroke="#7777cc" stroke-width="1.5"/>
+  <text x="284" y="442" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">출력을 꺼내는 스텝</text>
+  <rect x="460" y="430" width="14" height="14" rx="3" fill="#111111" stroke="#3a4a6e" stroke-width="1"/>
+  <text x="484" y="442" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">입력 없이 도는 스텝</text>
+</svg>

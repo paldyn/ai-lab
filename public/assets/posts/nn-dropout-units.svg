@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="420" viewBox="0 0 880 420">
+  <rect x="0" y="0" width="880" height="420" rx="12" fill="#0a0a0a"/>
+
+  <text x="60" y="52" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="22" font-weight="700" fill="#e8e8e8">무엇을 끄는가 — 단위 셋</text>
+  <text x="60" y="80" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">붉은 칸이 이번 스텝에 0이 되는 자리다. 단위가 굵어질수록 옆자리가 대신 메우기 어려워진다</text>
+
+  <text x="60" y="126" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#e8e8e8">Dropout — 원소</text>
+  <text x="340" y="126" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#e8e8e8">Dropout2d — 채널</text>
+  <text x="620" y="126" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#e8e8e8">DropPath — 블록</text>
+
+  <rect x="60" y="150" width="34" height="34" rx="4" fill="#111111" stroke="#3a4a6e" stroke-width="1"/>
+  <rect x="102" y="150" width="34" height="34" rx="4" fill="#3a1414" stroke="#e05555" stroke-width="1.5"/>
+  <rect x="144" y="150" width="34" height="34" rx="4" fill="#111111" stroke="#3a4a6e" stroke-width="1"/>
+  <rect x="186" y="150" width="34" height="34" rx="4" fill="#111111" stroke="#3a4a6e" stroke-width="1"/>
+  <rect x="60" y="192" width="34" height="34" rx="4" fill="#111111" stroke="#3a4a6e" stroke-width="1"/>
+  <rect x="102" y="192" width="34" height="34" rx="4" fill="#111111" stroke="#3a4a6e" stroke-width="1"/>
+  <rect x="144" y="192" width="34" height="34" rx="4" fill="#3a1414" stroke="#e05555" stroke-width="1.5"/>
+  <rect x="186" y="192" width="34" height="34" rx="4" fill="#111111" stroke="#3a4a6e" stroke-width="1"/>
+  <rect x="60" y="234" width="34" height="34" rx="4" fill="#3a1414" stroke="#e05555" stroke-width="1.5"/>
+  <rect x="102" y="234" width="34" height="34" rx="4" fill="#111111" stroke="#3a4a6e" stroke-width="1"/>
+  <rect x="144" y="234" width="34" height="34" rx="4" fill="#111111" stroke="#3a4a6e" stroke-width="1"/>
+  <rect x="186" y="234" width="34" height="34" rx="4" fill="#3a1414" stroke="#e05555" stroke-width="1.5"/>
+
+  <rect x="340" y="150" width="34" height="118" rx="4" fill="#111111" stroke="#3a4a6e" stroke-width="1"/>
+  <rect x="382" y="150" width="34" height="118" rx="4" fill="#3a1414" stroke="#e05555" stroke-width="1.5"/>
+  <rect x="424" y="150" width="34" height="118" rx="4" fill="#111111" stroke="#3a4a6e" stroke-width="1"/>
+  <rect x="466" y="150" width="34" height="118" rx="4" fill="#111111" stroke="#3a4a6e" stroke-width="1"/>
+
+  <rect x="620" y="150" width="200" height="34" rx="4" fill="#111111" stroke="#3a4a6e" stroke-width="1"/>
+  <text x="640" y="172" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">블록 1</text>
+  <rect x="620" y="192" width="200" height="34" rx="4" fill="#3a1414" stroke="#e05555" stroke-width="1.5"/>
+  <text x="640" y="214" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">블록 2</text>
+  <rect x="620" y="234" width="200" height="34" rx="4" fill="#111111" stroke="#3a4a6e" stroke-width="1"/>
+  <text x="640" y="256" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">블록 3</text>
+
+  <text x="60" y="300" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">활성값 하나씩</text>
+  <text x="340" y="300" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">채널의 H × W 전부</text>
+  <text x="620" y="300" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">잔차 분기 f(x) 전부</text>
+
+  <rect x="60" y="326" width="760" height="62" rx="6" fill="#111111" stroke="#3a4a6e" stroke-width="1"/>
+  <text x="84" y="352" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="14" font-weight="600" fill="#7ec8e3">단위를 굵게 만드는 이유</text>
+  <text x="84" y="374" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">이웃한 값이 서로 비슷하면 하나를 꺼도 옆에서 메운다. 끊기려면 함께 묶인 단위를 통째로 꺼야 한다</text>
+</svg>
