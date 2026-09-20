@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="450" viewBox="0 0 880 450" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <rect x="0" y="0" width="880" height="450" rx="12" fill="#0a0a0a"/>
+
+  <text x="60" y="46" font-size="22" font-weight="700" fill="#e8e8e8">문맥을 두 배로 늘리면 둘 다 네 배</text>
+  <text x="60" y="70" font-size="13" fill="#888">점수 표 (B, H, T, T) 기준 · B=8 · H=12 · d_h=64 · 막대 높이는 값에 비례한다</text>
+
+  <text x="90" y="110" font-size="16" font-weight="600" fill="#e8e8e8">활성값 메모리 (fp16)</text>
+  <line x1="60" y1="360" x2="410" y2="360" stroke="#888" stroke-width="1.5"/>
+
+  <rect x="90" y="357" width="50" height="3" fill="#7ec8e3"/>
+  <rect x="170" y="347" width="50" height="13" fill="#7ec8e3"/>
+  <rect x="250" y="310" width="50" height="50" fill="#7ec8e3"/>
+  <rect x="330" y="160" width="50" height="200" fill="#7ec8e3"/>
+
+  <text x="115" y="347" font-size="13" fill="#e8e8e8" text-anchor="middle">50MB</text>
+  <text x="195" y="337" font-size="13" fill="#e8e8e8" text-anchor="middle">201MB</text>
+  <text x="275" y="300" font-size="13" fill="#e8e8e8" text-anchor="middle">805MB</text>
+  <text x="355" y="150" font-size="13" fill="#e8e8e8" text-anchor="middle">3.2GB</text>
+
+  <text x="115" y="382" font-size="13" fill="#888" text-anchor="middle">512</text>
+  <text x="195" y="382" font-size="13" fill="#888" text-anchor="middle">1024</text>
+  <text x="275" y="382" font-size="13" fill="#888" text-anchor="middle">2048</text>
+  <text x="355" y="382" font-size="13" fill="#888" text-anchor="middle">4096</text>
+  <text x="60" y="404" font-size="13" fill="#888">T</text>
+
+  <text x="510" y="110" font-size="16" font-weight="600" fill="#e8e8e8">연산량 (QKᵀ와 가중치V)</text>
+  <line x1="480" y1="360" x2="830" y2="360" stroke="#888" stroke-width="1.5"/>
+
+  <rect x="510" y="357" width="50" height="3" fill="#7777cc"/>
+  <rect x="590" y="347" width="50" height="13" fill="#7777cc"/>
+  <rect x="670" y="310" width="50" height="50" fill="#7777cc"/>
+  <rect x="750" y="160" width="50" height="200" fill="#7777cc"/>
+
+  <text x="535" y="347" font-size="13" fill="#e8e8e8" text-anchor="middle">6.4G</text>
+  <text x="615" y="337" font-size="13" fill="#e8e8e8" text-anchor="middle">26G</text>
+  <text x="695" y="300" font-size="13" fill="#e8e8e8" text-anchor="middle">103G</text>
+  <text x="775" y="150" font-size="13" fill="#e8e8e8" text-anchor="middle">412G</text>
+
+  <text x="535" y="382" font-size="13" fill="#888" text-anchor="middle">512</text>
+  <text x="615" y="382" font-size="13" fill="#888" text-anchor="middle">1024</text>
+  <text x="695" y="382" font-size="13" fill="#888" text-anchor="middle">2048</text>
+  <text x="775" y="382" font-size="13" fill="#888" text-anchor="middle">4096</text>
+  <text x="480" y="404" font-size="13" fill="#888">T</text>
+</svg>

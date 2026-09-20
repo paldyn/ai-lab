@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="450" viewBox="0 0 880 450" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <rect x="0" y="0" width="880" height="450" rx="12" fill="#0a0a0a"/>
+
+  <text x="60" y="46" font-size="22" font-weight="700" fill="#e8e8e8">ρ가 1이어도 자라는 경우가 있다</text>
+  <text x="60" y="70" font-size="13" fill="#888">세로축은 로그 눈금 — 한 칸이 10배다. 아래 두 줄은 스펙트럼 반지름이 똑같이 1이다.</text>
+
+  <line x1="90" y1="355" x2="90" y2="140" stroke="#888" stroke-width="1.5"/>
+  <line x1="90" y1="355" x2="810" y2="355" stroke="#888" stroke-width="1.5"/>
+
+  <line x1="90" y1="145" x2="800" y2="145" stroke="#444" stroke-width="1"/>
+  <line x1="90" y1="197.5" x2="800" y2="197.5" stroke="#444" stroke-width="1"/>
+  <line x1="90" y1="250" x2="800" y2="250" stroke="#444" stroke-width="1"/>
+  <line x1="90" y1="302.5" x2="800" y2="302.5" stroke="#444" stroke-width="1"/>
+
+  <text x="80" y="150" font-size="13" fill="#888" text-anchor="end">10000</text>
+  <text x="80" y="202" font-size="13" fill="#888" text-anchor="end">1000</text>
+  <text x="80" y="255" font-size="13" fill="#888" text-anchor="end">100</text>
+  <text x="80" y="307" font-size="13" fill="#888" text-anchor="end">10</text>
+  <text x="80" y="360" font-size="13" fill="#888" text-anchor="end">1</text>
+
+  <text x="828" y="360" font-size="13" fill="#888">k</text>
+  <text x="90" y="381" font-size="13" fill="#888" text-anchor="middle">0</text>
+  <text x="232" y="381" font-size="13" fill="#888" text-anchor="middle">10</text>
+  <text x="374" y="381" font-size="13" fill="#888" text-anchor="middle">20</text>
+  <text x="516" y="381" font-size="13" fill="#888" text-anchor="middle">30</text>
+  <text x="658" y="381" font-size="13" fill="#888" text-anchor="middle">40</text>
+  <text x="800" y="381" font-size="13" fill="#888" text-anchor="middle">50</text>
+
+  <polyline fill="none" stroke="#e05555" stroke-width="2.5" points="90,355 232,313.4 374,271.9 516,230.3 658,188.7 800,147.2"/>
+  <polyline fill="none" stroke="#7ec8e3" stroke-width="2.5" points="90,355 104.2,344.0 118.4,334.9 161,317.4 232,302.3 303,293.2 374,286.6 445,281.5 516,277.4 587,273.9 658,270.9 729,268.2 800,265.8"/>
+  <polyline fill="none" stroke="#55c555" stroke-width="2.5" points="90,355 800,355"/>
+
+  <text x="120" y="170" font-size="14" font-weight="600" fill="#e05555">ρ = 1.2 · 지수로 자란다</text>
+  <text x="120" y="196" font-size="14" font-weight="600" fill="#7ec8e3">ρ = 1 · 조르당 블록 · k에 비례</text>
+  <text x="120" y="222" font-size="14" font-weight="600" fill="#55c555">ρ = 1 · 대각화됨 · 그대로</text>
+</svg>
