@@ -1,6 +1,10 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="880" height="520" viewBox="0 0 880 520">
   <defs>
     <style>text:not([font-family]) { font-family: 'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif; }</style>
+    <marker id="flywheel-arrow" viewBox="0 0 14 14" refX="12" refY="7"
+            markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#666"/>
+    </marker>
   </defs>
   <rect width="880" height="520" fill="#0a0a0a" rx="12"/>
 
@@ -20,8 +24,7 @@
   <text x="440" y="118" text-anchor="middle" font-size="12" fill="#aaa">더 많은 사람이 제품을 사용</text>
 
   <!-- Arrow 1→2 (clockwise) -->
-  <path d="M 560 140 Q 610 160 620 220" fill="none" stroke="#555" stroke-width="2"/>
-  <polygon points="614,220 628,218 620,232" fill="#555"/>
+  <path d="M 520 138 C 570 153 608 181 621 216" fill="none" stroke="#666" stroke-width="2" stroke-linecap="round" marker-end="url(#flywheel-arrow)"/>
 
   <!-- Node 2: 데이터 수집 (right) -->
   <rect x="618" y="222" width="162" height="54" rx="8" fill="#111" stroke="#7ec8e3" stroke-width="2"/>
@@ -29,8 +32,7 @@
   <text x="699" y="263" text-anchor="middle" font-size="12" fill="#aaa">사용 로그·피드백 축적</text>
 
   <!-- Arrow 2→3 -->
-  <path d="M 618 310 Q 580 360 520 390" fill="none" stroke="#555" stroke-width="2"/>
-  <polygon points="525,382 516,394 509,383" fill="#555"/>
+  <path d="M 626 284 C 616 324 594 354 557 382" fill="none" stroke="#666" stroke-width="2" stroke-linecap="round" marker-end="url(#flywheel-arrow)"/>
 
   <!-- Node 3: 모델 학습 (bottom-right) -->
   <rect x="486" y="390" width="174" height="54" rx="8" fill="#111" stroke="#7ec8e3" stroke-width="2"/>
@@ -38,8 +40,7 @@
   <text x="573" y="431" text-anchor="middle" font-size="12" fill="#aaa">새 데이터로 성능 향상</text>
 
   <!-- Arrow 3→4 -->
-  <path d="M 480 418 Q 420 440 370 418" fill="none" stroke="#555" stroke-width="2"/>
-  <polygon points="375,426 362,416 374,408" fill="#555"/>
+  <path d="M 478 430 C 452 448 418 448 390 430" fill="none" stroke="#666" stroke-width="2" stroke-linecap="round" marker-end="url(#flywheel-arrow)"/>
 
   <!-- Node 4: 제품 개선 (bottom-left) -->
   <rect x="220" y="390" width="162" height="54" rx="8" fill="#111" stroke="#e05555" stroke-width="2"/>
@@ -47,8 +48,7 @@
   <text x="301" y="431" text-anchor="middle" font-size="12" fill="#aaa">더 정확한 추천·답변</text>
 
   <!-- Arrow 4→5 -->
-  <path d="M 248 390 Q 210 340 232 278" fill="none" stroke="#555" stroke-width="2"/>
-  <polygon points="226,282 232,268 240,279" fill="#555"/>
+  <path d="M 212 397 C 185 356 188 316 220 284" fill="none" stroke="#666" stroke-width="2" stroke-linecap="round" marker-end="url(#flywheel-arrow)"/>
 
   <!-- Node 5: 경쟁력 (left) -->
   <rect x="100" y="222" width="162" height="54" rx="8" fill="#111" stroke="#e05555" stroke-width="2"/>
@@ -56,8 +56,7 @@
   <text x="181" y="263" text-anchor="middle" font-size="12" fill="#aaa">타 서비스 대비 차별화</text>
 
   <!-- Arrow 5→1 -->
-  <path d="M 270 222 Q 320 150 360 128" fill="none" stroke="#555" stroke-width="2"/>
-  <polygon points="356,140 368,126 370,140" fill="#555"/>
+  <path d="M 266 218 C 290 176 318 148 346 132" fill="none" stroke="#666" stroke-width="2" stroke-linecap="round" marker-end="url(#flywheel-arrow)"/>
 
   <!-- Data quality note -->
   <rect x="60" y="458" width="760" height="40" rx="6" fill="#111"/>
