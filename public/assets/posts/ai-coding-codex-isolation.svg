@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="448" viewBox="0 0 880 448">
+  <rect x="0" y="0" width="880" height="448" rx="12" fill="#0a0a0a"/>
+
+  <text x="60" y="52" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="22" font-weight="700" fill="#e8e8e8">코드 실행 격리의 세 겹</text>
+  <text x="60" y="76" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">바깥 겹이 뚫려도 안쪽 겹에서 피해가 멈추도록 겹마다 다른 것을 막는다</text>
+
+  <rect x="60" y="96" width="760" height="312" rx="12" fill="#101216" stroke="#7777cc" stroke-width="1.5"/>
+  <text x="84" y="126" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#e8e8e8">호스트</text>
+  <text x="84" y="146" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">사내망 · 비밀 값 · 다른 요청의 워커가 함께 있는 곳</text>
+
+  <rect x="92" y="160" width="696" height="216" rx="12" fill="#14171d" stroke="#7ec8e3" stroke-width="1.5"/>
+  <text x="116" y="190" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#e8e8e8">컨테이너</text>
+  <text x="116" y="210" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#9aa4b8">네트워크 차단 · 읽기 전용 파일 시스템 · 비루트 사용자 · 요청마다 폐기</text>
+
+  <rect x="124" y="226" width="632" height="118" rx="12" fill="#191c23" stroke="#55c555" stroke-width="1.5"/>
+  <text x="148" y="254" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#e8e8e8">파이썬 프로세스</text>
+
+  <rect x="148" y="272" width="186" height="48" rx="6" fill="#0a0a0a" stroke="#3a4a6e" stroke-width="1"/>
+  <text x="241" y="302" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e8e8e8">실행 시간 30초</text>
+
+  <rect x="350" y="272" width="186" height="48" rx="6" fill="#0a0a0a" stroke="#3a4a6e" stroke-width="1"/>
+  <text x="443" y="302" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e8e8e8">메모리 512MB</text>
+
+  <rect x="552" y="272" width="186" height="48" rx="6" fill="#0a0a0a" stroke="#3a4a6e" stroke-width="1"/>
+  <text x="645" y="302" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e8e8e8">출력 8KB 상한</text>
+
+  <text x="796" y="392" text-anchor="end" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">상한에 걸려 죽은 요청은 이유를 모델에 돌려준다</text>
+</svg>

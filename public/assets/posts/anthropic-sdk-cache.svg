@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="400" viewBox="0 0 880 400">
+  <rect x="0" y="0" width="880" height="400" rx="12" fill="#0a0a0a"/>
+
+  <text x="60" y="52" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="22" font-weight="700" fill="#e8e8e8">프롬프트 캐싱의 경계</text>
+  <text x="60" y="76" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">캐시는 앞에서부터 이어지는 접두사 단위로 잡힌다</text>
+
+  <text x="600" y="118" text-anchor="middle" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#55c555">cache_control</text>
+  <line x1="600" y1="126" x2="600" y2="240" stroke="#55c555" stroke-width="2" stroke-dasharray="4,4"/>
+
+  <rect x="60" y="150" width="140" height="64" rx="6" fill="#14171d" stroke="#7ec8e3" stroke-width="1.5"/>
+  <text x="130" y="188" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e8e8e8">시스템 지침</text>
+
+  <rect x="200" y="150" width="160" height="64" rx="6" fill="#14171d" stroke="#7ec8e3" stroke-width="1.5"/>
+  <text x="280" y="188" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e8e8e8">도구 정의</text>
+
+  <rect x="360" y="150" width="240" height="64" rx="6" fill="#14171d" stroke="#7ec8e3" stroke-width="1.5"/>
+  <text x="480" y="188" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e8e8e8">긴 문서</text>
+
+  <rect x="600" y="150" width="130" height="64" rx="6" fill="#14171d" stroke="#e05555" stroke-width="1.5"/>
+  <text x="665" y="188" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e8e8e8">대화 이력</text>
+
+  <rect x="730" y="150" width="90" height="64" rx="6" fill="#14171d" stroke="#e05555" stroke-width="1.5"/>
+  <text x="775" y="188" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e8e8e8">새 질문</text>
+
+  <text x="60" y="266" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#9aa4b8">변하지 않는 접두사</text>
+  <text x="820" y="266" text-anchor="end" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#9aa4b8">매 요청 달라지는 부분</text>
+
+  <rect x="60" y="286" width="360" height="48" rx="6" fill="#0a0a0a" stroke="#3a4a6e" stroke-width="1"/>
+  <text x="240" y="316" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e8e8e8">첫 요청 — 캐시를 만든다, 조금 비싸다</text>
+
+  <rect x="460" y="286" width="360" height="48" rx="6" fill="#0a0a0a" stroke="#3a4a6e" stroke-width="1"/>
+  <text x="640" y="316" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e8e8e8">다음 요청 — 캐시를 읽는다, 크게 싸다</text>
+
+  <text x="60" y="364" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">앞쪽에 현재 시각이나 사용자 이름이 섞이면 뒤의 캐시가 통째로 무효가 된다</text>
+</svg>

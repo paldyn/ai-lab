@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="500" viewBox="0 0 880 500">
+  <rect x="0" y="0" width="880" height="500" rx="12" fill="#0a0a0a"/>
+
+  <text x="50" y="52" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="22" font-weight="700" fill="#e8e8e8">손실 곡선의 네 가지 모양</text>
+  <text x="50" y="76" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">가로축은 에폭, 세로축은 손실</text>
+
+  <line x1="600" y1="72" x2="630" y2="72" stroke="#7ec8e3" stroke-width="2"/>
+  <text x="638" y="76" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#9aa4b8">훈련</text>
+  <line x1="700" y1="72" x2="730" y2="72" stroke="#e05555" stroke-width="2"/>
+  <text x="738" y="76" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#9aa4b8">검증</text>
+
+  <text x="50" y="112" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#e8e8e8">과적합</text>
+  <rect x="50" y="120" width="360" height="120" rx="6" fill="#101216" stroke="#2f3440" stroke-width="1"/>
+  <polyline points="62,140 110,175 160,196 220,208 280,215 340,219 398,221" fill="none" stroke="#7ec8e3" stroke-width="2"/>
+  <polyline points="62,148 110,180 160,193 210,196 260,190 320,178 398,160" fill="none" stroke="#e05555" stroke-width="2"/>
+  <text x="50" y="262" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">검증이 올라가는 지점이 멈췄어야 할 자리</text>
+
+  <text x="470" y="112" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#e8e8e8">학습률 과다</text>
+  <rect x="470" y="120" width="360" height="120" rx="6" fill="#101216" stroke="#2f3440" stroke-width="1"/>
+  <polyline points="482,200 512,145 542,206 578,140 612,202 650,136 690,208 730,134 770,212 818,132" fill="none" stroke="#7ec8e3" stroke-width="2"/>
+  <polyline points="482,210 512,158 542,214 578,152 612,212 650,148 690,218 730,146 770,222 818,144" fill="none" stroke="#e05555" stroke-width="2"/>
+  <text x="470" y="262" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">한 걸음이 커서 골짜기를 건너뛴다</text>
+
+  <text x="50" y="310" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#e8e8e8">학습률 부족</text>
+  <rect x="50" y="318" width="360" height="120" rx="6" fill="#101216" stroke="#2f3440" stroke-width="1"/>
+  <polyline points="62,345 130,350 200,354 280,358 398,362" fill="none" stroke="#7ec8e3" stroke-width="2"/>
+  <polyline points="62,353 130,358 200,362 280,366 398,370" fill="none" stroke="#e05555" stroke-width="2"/>
+  <text x="50" y="460" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">거의 평평하면 학습률이나 모델 크기를 본다</text>
+
+  <text x="470" y="310" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#e8e8e8">정상 수렴</text>
+  <rect x="470" y="318" width="360" height="120" rx="6" fill="#101216" stroke="#2f3440" stroke-width="1"/>
+  <polyline points="482,338 530,375 590,398 660,410 730,415 818,417" fill="none" stroke="#7ec8e3" stroke-width="2"/>
+  <polyline points="482,345 530,381 590,402 660,413 730,418 818,421" fill="none" stroke="#e05555" stroke-width="2"/>
+  <text x="470" y="460" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">간격이 좁고 기울기가 0에 가깝다</text>
+</svg>
