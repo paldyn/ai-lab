@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="460" viewBox="0 0 880 460">
+  <rect x="0" y="0" width="880" height="460" rx="12" fill="#0a0a0a"/>
+  <text x="60" y="44" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="22" font-weight="700" fill="#e8e8e8">β를 올리면 계단 입력을 따라잡는 데 그만큼 오래 걸린다</text>
+  <text x="60" y="70" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">0이던 입력이 t = 0 에서 1로 뛴 뒤 EMA 가 따라가는 모습</text>
+  <line x1="100" y1="86" x2="100" y2="380" stroke="#888" stroke-width="1.5"/>
+  <line x1="100" y1="380" x2="830" y2="380" stroke="#888" stroke-width="1.5"/>
+  <line x1="94" y1="241.9" x2="100" y2="241.9" stroke="#444" stroke-width="1.5"/>
+  <text x="88" y="245.905" text-anchor="end" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">0.5</text>
+  <line x1="94" y1="103.8" x2="100" y2="103.8" stroke="#444" stroke-width="1.5"/>
+  <text x="88" y="107.81" text-anchor="end" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">1.0</text>
+  <text x="88" y="384" text-anchor="end" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">0</text>
+  <line x1="218.3" y1="380" x2="218.3" y2="386" stroke="#444" stroke-width="1.5"/>
+  <text x="218.34" y="404" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">20</text>
+  <line x1="336.7" y1="380" x2="336.7" y2="386" stroke="#444" stroke-width="1.5"/>
+  <text x="336.68" y="404" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">40</text>
+  <line x1="455.0" y1="380" x2="455.0" y2="386" stroke="#444" stroke-width="1.5"/>
+  <text x="455.02" y="404" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">60</text>
+  <line x1="573.4" y1="380" x2="573.4" y2="386" stroke="#444" stroke-width="1.5"/>
+  <text x="573.36" y="404" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">80</text>
+  <line x1="691.7" y1="380" x2="691.7" y2="386" stroke="#444" stroke-width="1.5"/>
+  <text x="691.6999999999999" y="404" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">100</text>
+  <line x1="810.0" y1="380" x2="810.0" y2="386" stroke="#444" stroke-width="1.5"/>
+  <text x="810.04" y="404" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">120</text>
+  <text x="830" y="430" text-anchor="end" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">스텝 t</text>
+  <text x="100" y="78" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">값</text>
+  <line x1="100" y1="205.4" x2="810" y2="205.4" stroke="#7777cc" stroke-width="2" stroke-dasharray="4,4"/>
+  <text x="816" y="209.44792" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#7777cc">63%</text>
+  <polyline points="100.0,380.0 111.8,280.6 123.7,216.9 135.5,176.2 147.3,150.1 159.2,133.5 171.0,122.8 182.8,116.0 194.7,111.6 206.5,108.8 218.3,107.0 230.2,105.8 242.0,105.1 253.8,104.6 265.7,104.3 277.5,104.2 289.3,104.0 301.2,104.0 313.0,103.9 324.8,103.9 336.7,103.8 348.5,103.8 360.3,103.8 372.2,103.8 384.0,103.8 395.8,103.8 407.7,103.8 419.5,103.8 431.4,103.8 443.2,103.8 455.0,103.8 466.9,103.8 478.7,103.8 490.5,103.8 502.4,103.8 514.2,103.8 526.0,103.8 537.9,103.8 549.7,103.8 561.5,103.8 573.4,103.8 585.2,103.8 597.0,103.8 608.9,103.8 620.7,103.8 632.5,103.8 644.4,103.8 656.2,103.8 668.0,103.8 679.9,103.8 691.7,103.8 703.5,103.8 715.4,103.8 727.2,103.8 739.0,103.8 750.9,103.8 762.7,103.8 774.5,103.8 786.4,103.8 798.2,103.8 810.0,103.8" stroke="#55c555" stroke-width="2.5" fill="none"/>
+  <polyline points="100.0,380.0 111.8,327.5 123.7,285.0 135.5,250.6 147.3,222.7 159.2,200.1 171.0,181.8 182.8,167.0 194.7,155.0 206.5,145.3 218.3,137.4 230.2,131.0 242.0,125.8 253.8,121.7 265.7,118.3 277.5,115.5 289.3,113.3 301.2,111.5 313.0,110.0 324.8,108.8 336.7,107.9 348.5,107.1 360.3,106.5 372.2,106.0 384.0,105.6 395.8,105.2 407.7,105.0 419.5,104.7 431.4,104.6 443.2,104.4 455.0,104.3 466.9,104.2 478.7,104.1 490.5,104.1 502.4,104.0 514.2,104.0 526.0,104.0 537.9,103.9 549.7,103.9 561.5,103.9 573.4,103.9 585.2,103.9 597.0,103.8 608.9,103.8 620.7,103.8 632.5,103.8 644.4,103.8 656.2,103.8 668.0,103.8 679.9,103.8 691.7,103.8 703.5,103.8 715.4,103.8 727.2,103.8 739.0,103.8 750.9,103.8 762.7,103.8 774.5,103.8 786.4,103.8 798.2,103.8 810.0,103.8" stroke="#7ec8e3" stroke-width="2.5" fill="none"/>
+  <polyline points="100.0,380.0 111.8,369.1 123.7,358.6 135.5,348.5 147.3,338.8 159.2,329.5 171.0,320.5 182.8,312.0 194.7,303.7 206.5,295.8 218.3,288.2 230.2,280.9 242.0,273.9 253.8,267.1 265.7,260.7 277.5,254.5 289.3,248.5 301.2,242.8 313.0,237.3 324.8,232.0 336.7,226.9 348.5,222.0 360.3,217.4 372.2,212.9 384.0,208.5 395.8,204.4 407.7,200.4 419.5,196.6 431.4,192.9 443.2,189.4 455.0,186.0 466.9,182.7 478.7,179.6 490.5,176.6 502.4,173.7 514.2,171.0 526.0,168.3 537.9,165.7 549.7,163.3 561.5,160.9 573.4,158.7 585.2,156.5 597.0,154.4 608.9,152.4 620.7,150.5 632.5,148.6 644.4,146.9 656.2,145.2 668.0,143.5 679.9,141.9 691.7,140.4 703.5,139.0 715.4,137.6 727.2,136.3 739.0,135.0 750.9,133.7 762.7,132.6 774.5,131.4 786.4,130.3 798.2,129.3 810.0,128.3" stroke="#e05555" stroke-width="2.5" fill="none"/>
+  <circle cx="129.6" cy="194.3" r="5" fill="#e8e8e8"/>
+  <circle cx="159.2" cy="200.1" r="5" fill="#e8e8e8"/>
+  <circle cx="395.8" cy="204.4" r="5" fill="#e8e8e8"/>
+  <line x1="560" y1="247" x2="588" y2="247" stroke="#55c555" stroke-width="2.5"/>
+  <text x="600" y="252" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#55c555">β = 0.8 · 창 5</text>
+  <line x1="560" y1="277" x2="588" y2="277" stroke="#7ec8e3" stroke-width="2.5"/>
+  <text x="600" y="282" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#7ec8e3">β = 0.9 · 창 10</text>
+  <line x1="560" y1="307" x2="588" y2="307" stroke="#e05555" stroke-width="2.5"/>
+  <text x="600" y="312" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#e05555">β = 0.98 · 창 50</text>
+  <text x="175" y="360" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">점은 t = 1/(1−β) 인 자리다 — 세 곡선 모두 거기서 63% 를 지난다</text>
+</svg>

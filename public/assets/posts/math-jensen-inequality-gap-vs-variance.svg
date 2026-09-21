@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="470" viewBox="0 0 880 470">
+  <rect x="0" y="0" width="880" height="470" rx="12" fill="#0a0a0a"/>
+  <text x="60" y="44" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="22" font-weight="700" fill="#e8e8e8">분산이 커지면 젠센 갭이 2차 어림을 앞지른다</text>
+  <text x="60" y="70" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">X 는 평균 50.5 인 두 점 분포, f = log</text>
+
+  <line x1="90" y1="96" x2="90" y2="400" stroke="#888" stroke-width="1.5"/>
+  <line x1="90" y1="400" x2="818" y2="400" stroke="#888" stroke-width="1.5"/>
+
+  <line x1="86" y1="311.1" x2="90" y2="311.1" stroke="#444" stroke-width="1.5"/>
+  <line x1="86" y1="222.2" x2="90" y2="222.2" stroke="#444" stroke-width="1.5"/>
+  <line x1="86" y1="133.3" x2="90" y2="133.3" stroke="#444" stroke-width="1.5"/>
+  <text x="78" y="315" text-anchor="end" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">0.5</text>
+  <text x="78" y="226" text-anchor="end" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">1.0</text>
+  <text x="78" y="137" text-anchor="end" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">1.5</text>
+  <text x="78" y="404" text-anchor="end" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">0</text>
+
+  <line x1="232" y1="400" x2="232" y2="404" stroke="#444" stroke-width="1.5"/>
+  <line x1="374" y1="400" x2="374" y2="404" stroke="#444" stroke-width="1.5"/>
+  <line x1="516" y1="400" x2="516" y2="404" stroke="#444" stroke-width="1.5"/>
+  <line x1="658" y1="400" x2="658" y2="404" stroke="#444" stroke-width="1.5"/>
+  <line x1="800" y1="400" x2="800" y2="404" stroke="#444" stroke-width="1.5"/>
+  <text x="232" y="422" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">500</text>
+  <text x="374" y="422" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">1000</text>
+  <text x="516" y="422" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">1500</text>
+  <text x="658" y="422" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">2000</text>
+  <text x="800" y="422" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">2500</text>
+  <text x="818" y="446" text-anchor="end" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">Var(X)</text>
+  <text x="90" y="88" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">갭</text>
+
+  <line x1="90" y1="400" x2="785.9" y2="314.6" stroke="#7777cc" stroke-width="2.5" stroke-dasharray="5,3" fill="none"/>
+  <polyline points="90.0,400.0 117.8,396.5 145.7,392.9 173.5,389.1 201.3,385.2 229.2,381.0 257.0,376.7 284.8,372.1 312.7,367.3 340.5,362.3 368.3,356.9 396.2,351.2 424.0,345.0 451.9,338.5 479.7,331.4 507.5,323.6 535.4,315.2 563.2,305.8 591.0,295.4 618.9,283.5 646.7,269.9 674.5,253.7 702.4,234.0 730.2,208.6 758.0,172.8 785.9,112.1" stroke="#7ec8e3" stroke-width="2.5" fill="none"/>
+
+  <circle cx="785.9" cy="112.1" r="5" fill="#e8e8e8"/>
+  <text x="772" y="108" text-anchor="end" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#7ec8e3">1 과 100 · 실제 갭 1.619</text>
+  <circle cx="785.9" cy="314.6" r="5" fill="#e8e8e8"/>
+  <text x="772" y="348" text-anchor="end" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#7777cc">같은 자리의 2차 어림 0.480</text>
+
+  <text x="118" y="140" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#e8e8e8">분산 2.25 (49 와 52)</text>
+  <text x="118" y="164" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">실제 갭 0.000441 · 2차 어림 0.000441</text>
+  <text x="118" y="184" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">소수 여섯째 자리까지 같다</text>
+</svg>

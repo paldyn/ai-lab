@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="540" viewBox="0 0 880 540">
+  <rect x="0" y="0" width="880" height="540" rx="12" fill="#0a0a0a"/>
+  <text x="60.0" y="44.0" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="22" font-weight="700" fill="#e8e8e8">J 의 등고선은 직선이라 같은 값을 주는 정책이 한 선 위에 여럿이다</text>
+  <text x="60.0" y="70.0" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">답이 셋인 확률 단체 · 점수 r = (1, 0, −1) · J = p1 − p3</text>
+  <polygon points="440.0,110.0 180.0,430.0 700.0,430.0" fill="none" stroke="#888" stroke-width="1.5"/>
+  <line x1="570.0" y1="430.0" x2="667.5" y2="390.0" stroke="#444" stroke-width="1.5"/>
+  <line x1="440.0" y1="430.0" x2="635.0" y2="350.0" stroke="#444" stroke-width="1.5"/>
+  <line x1="310.0" y1="430.0" x2="602.5" y2="310.0" stroke="#444" stroke-width="1.5"/>
+  <line x1="245.0" y1="350.0" x2="537.5" y2="230.0" stroke="#444" stroke-width="1.5"/>
+  <line x1="310.0" y1="270.0" x2="505.0" y2="190.0" stroke="#444" stroke-width="1.5"/>
+  <line x1="375.0" y1="190.0" x2="472.5" y2="150.0" stroke="#444" stroke-width="1.5"/>
+  <line x1="180.0" y1="430.0" x2="570.0" y2="270.0" stroke="#7777cc" stroke-width="2" stroke-dasharray="5,3"/>
+  <line x1="222.2" y1="378.1" x2="548.9" y2="244.0" stroke="#7ec8e3" stroke-width="2.5"/>
+  <circle cx="417.2" cy="298.1" r="5" fill="#e8e8e8"/>
+  <circle cx="485.7" cy="270.0" r="5" fill="#e8e8e8"/>
+  <text x="440.0" y="90.0" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#e8e8e8">p1 = 1 · r = 1</text>
+  <text x="172.0" y="458.0" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#e8e8e8">p2 = 1 · r = 0</text>
+  <text x="708.0" y="458.0" text-anchor="end" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#e8e8e8">p3 = 1 · r = −1</text>
+  <text x="484.5" y="144.0" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">J = 0.75</text>
+  <text x="582.0" y="264.0" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#7777cc">J = 0</text>
+  <text x="679.5" y="384.0" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">J = −0.75</text>
+  <text x="556.0" y="226.0" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#7ec8e3">J = 0.162 등고선</text>
+  <text x="556.0" y="246.0" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#7ec8e3">점 둘이 같은 J 를 준다</text>
+  <text x="60.0" y="478.0" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">J 은 p 에 대해 일차식이므로 등고선이 직선이다 — 오른쪽 아래로 갈수록 J 가 작아진다</text>
+</svg>
