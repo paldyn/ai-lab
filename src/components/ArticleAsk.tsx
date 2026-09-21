@@ -132,6 +132,18 @@ export function ArticleAsk({ title, fallbackContext, proseRef, ready }: ArticleA
   const resizeStartRef = useRef<{ pointerId: number; y: number; height: number } | null>(null);
   const mobileViewportBaselineRef = useRef<{ height: number; width: number } | null>(null);
 
+  const resetPicksPreview = useCallback(() => {
+    window.clearTimeout(picksTimerRef.current);
+    picksTimerRef.current = 0;
+    setPicksOpen(false);
+  }, []);
+
+  const resetShotsPreview = useCallback(() => {
+    window.clearTimeout(shotsTimerRef.current);
+    shotsTimerRef.current = 0;
+    setShotsOpen(false);
+  }, []);
+
   const readPanelGeometry = useCallback((): ArticlePanelGeometry => {
     const prose = ready ? proseRef.current : null;
     const rect = prose?.getBoundingClientRect();
@@ -244,9 +256,11 @@ export function ArticleAsk({ title, fallbackContext, proseRef, ready }: ArticleA
     pageRoot?.removeAttribute('data-article-ai-open');
     pageRoot?.removeAttribute('data-article-ai-placement');
     mobileViewportBaselineRef.current = null;
+    resetPicksPreview();
+    resetShotsPreview();
     setLoading(false);
     setOpen(false);
-  }, []);
+  }, [resetPicksPreview, resetShotsPreview]);
 
   // 대화는 아래로 자란다. 새 차례가 붙거나 답이 채워지면 그 자리가 보이게 따라간다.
   useEffect(() => {
@@ -513,7 +527,6 @@ export function ArticleAsk({ title, fallbackContext, proseRef, ready }: ArticleA
   );
 
   const openGeneral = () => {
-    setActiveSelections([]);
     setSelectionPrompt(null);
     syncPanelGeometry();
     syncMobileViewport();
@@ -533,6 +546,7 @@ export function ArticleAsk({ title, fallbackContext, proseRef, ready }: ArticleA
     requestRef.current = null;
     setLoading(false);
     setThinkingSeconds(0);
+    resetPicksPreview();
     // 이미 붙인 문장을 다시 고르면 칩만 늘고 문맥은 그대로입니다 — 한 번만 둡니다.
     const picked: ActiveSelection = {
       context: buildArticleSelectionContext(root, selectionPrompt.range, selectionPrompt.selectedText),
@@ -710,6 +724,8 @@ export function ArticleAsk({ title, fallbackContext, proseRef, ready }: ArticleA
     setQuestion('');
     setActiveSelections([]);
     setActiveImages([]);
+    resetPicksPreview();
+    resetShotsPreview();
 
     await runTurn(turnId, payload);
   };
@@ -985,7 +1001,10 @@ export function ArticleAsk({ title, fallbackContext, proseRef, ready }: ArticleA
                           <button
                             type="button"
                             className="article-ai-pick-clear"
-                            onClick={() => setActiveSelections((prev) => prev.filter((_, at) => at !== index))}
+                            onClick={() => {
+                              resetPicksPreview();
+                              setActiveSelections((prev) => prev.filter((_, at) => at !== index));
+                            }}
                             aria-label="이 문장 빼기"
                             title="빼기"
                           >
@@ -1001,7 +1020,10 @@ export function ArticleAsk({ title, fallbackContext, proseRef, ready }: ArticleA
                     <button
                       type="button"
                       className="article-ai-selection-clear"
-                      onClick={() => setActiveSelections([])}
+                      onClick={() => {
+                        resetPicksPreview();
+                        setActiveSelections([]);
+                      }}
                       aria-label="선택 모두 해제"
                       title="모두 해제"
                     >
@@ -1025,7 +1047,10 @@ export function ArticleAsk({ title, fallbackContext, proseRef, ready }: ArticleA
                         <button
                           type="button"
                           className="article-ai-pick-clear"
-                          onClick={() => setActiveImages((prev) => prev.filter((_, at) => at !== index))}
+                          onClick={() => {
+                            resetShotsPreview();
+                            setActiveImages((prev) => prev.filter((_, at) => at !== index));
+                          }}
                           aria-label="이 이미지 빼기"
                           title="빼기"
                         >
@@ -1040,7 +1065,10 @@ export function ArticleAsk({ title, fallbackContext, proseRef, ready }: ArticleA
                     <button
                       type="button"
                       className="article-ai-images-clear"
-                      onClick={() => setActiveImages([])}
+                      onClick={() => {
+                        resetShotsPreview();
+                        setActiveImages([]);
+                      }}
                       aria-label="이미지 모두 빼기"
                       title="모두 빼기"
                     >
