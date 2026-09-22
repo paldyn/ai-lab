@@ -1914,7 +1914,7 @@ export const certs: Cert[] = [
       },
     ],
     officialUrl: 'https://cloud.google.com/learn/certification/machine-learning-engineer',
-    verifiedAt: '2026-08-25',
+    verifiedAt: '2026-09-22',
     notes:
       '- 2026-06-01자 개정판이 시행 중이다. 개정일이 적힌 곳은 시험 가이드 PDF의 `_new` 판본 한 곳뿐이고 랜딩 페이지에는 없다.\n' +
       '- 섹션 여섯 개의 비중도 랜딩 페이지가 아니라 가이드 PDF에 적혀 있다 — 랜딩 페이지는 여섯 영역을 비중 없이 나열만 한다.\n' +
@@ -2068,7 +2068,7 @@ export const certs: Cert[] = [
       },
     ],
     officialUrl: 'https://www.nvidia.com/en-us/learn/certification/generative-ai-llm-associate/',
-    verifiedAt: '2026-08-25',
+    verifiedAt: '2026-09-22',
     notes:
       '- NVIDIA 자격증 체계의 Associate(입문) 등급이다. 현재 Associate 4종(NCA-AIIO, NCA-ADS, NCA-GENL, ' +
       'NCA-GENM) 중 하나로 정상 운영 중이며, 폐지·대체·명칭 변경 안내는 공식 페이지에서 확인되지 않았다.\n' +
@@ -2203,7 +2203,7 @@ export const certs: Cert[] = [
       },
     ],
     officialUrl: 'https://www.databricks.com/learn/certification/machine-learning-associate',
-    verifiedAt: '2026-08-25',
+    verifiedAt: '2026-09-22',
     notes:
       '- 시행은 Kryterion이 맡고 등록은 Webassessor(webassessor.com/databricks)에서 한다.\n' +
       '- 시험 자체의 공식 명칭은 \'Databricks Certified Machine Learning Associate\'인데, 인증 목록 페이지에서는 \'ML ' +
@@ -2340,7 +2340,7 @@ export const certs: Cert[] = [
       },
     ],
     officialUrl: 'https://www.databricks.com/learn/certification/genai-engineer-associate',
-    verifiedAt: '2026-08-25',
+    verifiedAt: '2026-09-22',
     notes:
       '- 현행 버전은 2026년 3월 18일자 시험 가이드가 다루는 것이다. 같은 문단이 시험 2주 전에 최신 버전인지 다시 확인하라고 적어 둘 만큼 출제 범위가 ' +
       '자주 바뀐다 — Agent Bricks, MCP 서버 연동, 프롬프트 버전 관리, AI Gateway, 커스텀 Scorer 같은 최근 기능이 출제 목표에 ' +
