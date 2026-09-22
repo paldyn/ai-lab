@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="450" viewBox="0 0 880 450" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <rect width="880" height="450" rx="12" fill="#0a0a0a"/>
+  <defs><marker id="rr" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto"><path d="M 0 0 L 13 7 L 0 14 z" fill="#7777cc"/></marker></defs>
+  <text x="60" y="56" font-size="22" font-weight="700" fill="#e8e8e8">배율은 더해지지 않고 곱해진다</text>
+  <text x="60" y="82" font-size="13" fill="#888">u = 2x + 1 이고 y = u² 일 때 x = 1 근처. 색칠한 폭은 세 자에서 모두 같다</text>
+  <rect x="440.0" y="132" width="310.0" height="16" fill="#7ec8e3" fill-opacity="0.18"/>
+  <line x1="130" y1="140" x2="750" y2="140" stroke="#888" stroke-width="1.5"/>
+  <line x1="130.0" y1="131" x2="130.0" y2="149" stroke="#888" stroke-width="1"/>
+  <text x="130.0" y="168" font-size="13" fill="#888" text-anchor="middle">0</text>
+  <line x1="285.0" y1="131" x2="285.0" y2="149" stroke="#888" stroke-width="1"/>
+  <text x="285.0" y="168" font-size="13" fill="#888" text-anchor="middle">0.5</text>
+  <line x1="440.0" y1="131" x2="440.0" y2="149" stroke="#888" stroke-width="1"/>
+  <text x="440.0" y="168" font-size="13" fill="#888" text-anchor="middle">1</text>
+  <line x1="595.0" y1="131" x2="595.0" y2="149" stroke="#888" stroke-width="1"/>
+  <text x="595.0" y="168" font-size="13" fill="#888" text-anchor="middle">1.5</text>
+  <line x1="750.0" y1="131" x2="750.0" y2="149" stroke="#888" stroke-width="1"/>
+  <text x="750.0" y="168" font-size="13" fill="#888" text-anchor="middle">2</text>
+  <line x1="440.0" y1="126" x2="440.0" y2="154" stroke="#7ec8e3" stroke-width="2.5"/>
+  <line x1="750.0" y1="126" x2="750.0" y2="154" stroke="#7ec8e3" stroke-width="2.5"/>
+  <text x="595.0" y="118" font-size="15" font-weight="600" fill="#7ec8e3" text-anchor="middle">1칸</text>
+  <text x="100" y="145" font-size="16" font-weight="600" fill="#e8e8e8" text-anchor="end">x</text>
+  <rect x="440.0" y="232" width="310.0" height="16" fill="#7ec8e3" fill-opacity="0.18"/>
+  <line x1="130" y1="240" x2="750" y2="240" stroke="#888" stroke-width="1.5"/>
+  <line x1="130.0" y1="231" x2="130.0" y2="249" stroke="#888" stroke-width="1"/>
+  <text x="130.0" y="268" font-size="13" fill="#888" text-anchor="middle">1</text>
+  <line x1="285.0" y1="231" x2="285.0" y2="249" stroke="#888" stroke-width="1"/>
+  <text x="285.0" y="268" font-size="13" fill="#888" text-anchor="middle">2</text>
+  <line x1="440.0" y1="231" x2="440.0" y2="249" stroke="#888" stroke-width="1"/>
+  <text x="440.0" y="268" font-size="13" fill="#888" text-anchor="middle">3</text>
+  <line x1="595.0" y1="231" x2="595.0" y2="249" stroke="#888" stroke-width="1"/>
+  <text x="595.0" y="268" font-size="13" fill="#888" text-anchor="middle">4</text>
+  <line x1="750.0" y1="231" x2="750.0" y2="249" stroke="#888" stroke-width="1"/>
+  <text x="750.0" y="268" font-size="13" fill="#888" text-anchor="middle">5</text>
+  <line x1="440.0" y1="226" x2="440.0" y2="254" stroke="#7ec8e3" stroke-width="2.5"/>
+  <line x1="750.0" y1="226" x2="750.0" y2="254" stroke="#7ec8e3" stroke-width="2.5"/>
+  <text x="595.0" y="218" font-size="15" font-weight="600" fill="#7ec8e3" text-anchor="middle">2칸</text>
+  <text x="100" y="245" font-size="16" font-weight="600" fill="#e8e8e8" text-anchor="end">u</text>
+  <rect x="362.5" y="332" width="310.0" height="16" fill="#7ec8e3" fill-opacity="0.18"/>
+  <line x1="130" y1="340" x2="750" y2="340" stroke="#888" stroke-width="1.5"/>
+  <line x1="130.0" y1="335" x2="130.0" y2="345" stroke="#444" stroke-width="1"/>
+  <line x1="207.5" y1="335" x2="207.5" y2="345" stroke="#444" stroke-width="1"/>
+  <line x1="285.0" y1="335" x2="285.0" y2="345" stroke="#444" stroke-width="1"/>
+  <line x1="362.5" y1="335" x2="362.5" y2="345" stroke="#444" stroke-width="1"/>
+  <line x1="440.0" y1="335" x2="440.0" y2="345" stroke="#444" stroke-width="1"/>
+  <line x1="517.5" y1="335" x2="517.5" y2="345" stroke="#444" stroke-width="1"/>
+  <line x1="595.0" y1="335" x2="595.0" y2="345" stroke="#444" stroke-width="1"/>
+  <line x1="672.5" y1="335" x2="672.5" y2="345" stroke="#444" stroke-width="1"/>
+  <line x1="750.0" y1="335" x2="750.0" y2="345" stroke="#444" stroke-width="1"/>
+  <line x1="130.0" y1="331" x2="130.0" y2="349" stroke="#888" stroke-width="1"/>
+  <text x="130.0" y="368" font-size="13" fill="#888" text-anchor="middle">0</text>
+  <line x1="285.0" y1="331" x2="285.0" y2="349" stroke="#888" stroke-width="1"/>
+  <text x="285.0" y="368" font-size="13" fill="#888" text-anchor="middle">6</text>
+  <line x1="440.0" y1="331" x2="440.0" y2="349" stroke="#888" stroke-width="1"/>
+  <text x="440.0" y="368" font-size="13" fill="#888" text-anchor="middle">12</text>
+  <line x1="595.0" y1="331" x2="595.0" y2="349" stroke="#888" stroke-width="1"/>
+  <text x="595.0" y="368" font-size="13" fill="#888" text-anchor="middle">18</text>
+  <line x1="750.0" y1="331" x2="750.0" y2="349" stroke="#888" stroke-width="1"/>
+  <text x="750.0" y="368" font-size="13" fill="#888" text-anchor="middle">24</text>
+  <line x1="362.5" y1="326" x2="362.5" y2="354" stroke="#7ec8e3" stroke-width="2.5"/>
+  <line x1="672.5" y1="326" x2="672.5" y2="354" stroke="#7ec8e3" stroke-width="2.5"/>
+  <text x="517.5" y="318" font-size="15" font-weight="600" fill="#7ec8e3" text-anchor="middle">12칸</text>
+  <text x="100" y="345" font-size="16" font-weight="600" fill="#e8e8e8" text-anchor="end">y</text>
+  <path d="M 200 180 L 200 228" fill="none" stroke="#7777cc" stroke-width="2.5" marker-end="url(#rr)"/>
+  <text x="222" y="210" font-size="14" font-weight="600" fill="#7777cc">u = 2x + 1 이라 배율 2</text>
+  <path d="M 200 280 L 200 328" fill="none" stroke="#7777cc" stroke-width="2.5" marker-end="url(#rr)"/>
+  <text x="222" y="310" font-size="14" font-weight="600" fill="#7777cc">y = u² 이라 u = 3 에서 배율 6</text>
+  <text x="60" y="420" font-size="13" fill="#7777cc">x 가 1칸 가면 u 는 2칸, 그 1칸마다 y 가 6칸이니 2 × 6 = 12칸이다</text>
+</svg>

@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="450" viewBox="0 0 880 450" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <rect width="880" height="450" rx="12" fill="#0a0a0a"/>
+  <text x="60" y="56" font-size="22" font-weight="700" fill="#e8e8e8">공간 대각선은 두 번에 나눠 잰다</text>
+  <text x="60" y="82" font-size="13" fill="#888">가로 3 · 세로 4 · 높이 12 인 상자. 바닥 대각선을 다시 한 변으로 쓴다</text>
+  <polygon points="270.0,380.0 486.0,334.0 486.0,134.0" fill="#e05555" fill-opacity="0.12"/>
+  <line x1="270" y1="380" x2="420" y2="380" stroke="#888" stroke-width="1.5"/>
+  <line x1="420" y1="380" x2="486" y2="334" stroke="#888" stroke-width="1.5"/>
+  <line x1="486" y1="334" x2="336" y2="334" stroke="#888" stroke-width="1.5"/>
+  <line x1="336" y1="334" x2="270" y2="380" stroke="#888" stroke-width="1.5"/>
+  <line x1="270" y1="180" x2="420" y2="180" stroke="#888" stroke-width="1.5"/>
+  <line x1="420" y1="180" x2="486" y2="134" stroke="#888" stroke-width="1.5"/>
+  <line x1="486" y1="134" x2="336" y2="134" stroke="#888" stroke-width="1.5"/>
+  <line x1="336" y1="134" x2="270" y2="180" stroke="#888" stroke-width="1.5"/>
+  <line x1="270" y1="380" x2="270" y2="180" stroke="#888" stroke-width="1.5"/>
+  <line x1="420" y1="380" x2="420" y2="180" stroke="#888" stroke-width="1.5"/>
+  <line x1="486" y1="334" x2="486" y2="134" stroke="#888" stroke-width="1.5"/>
+  <line x1="336" y1="334" x2="336" y2="134" stroke="#888" stroke-width="1.5"/>
+  <line x1="270" y1="380" x2="486" y2="334" stroke="#55c555" stroke-width="2.5"/>
+  <line x1="270" y1="380" x2="486" y2="134" stroke="#e05555" stroke-width="2.5"/>
+  <path d="M 486 318 L 470.4 321.3 L 470.4 337.3" fill="none" stroke="#e05555" stroke-width="1.5"/>
+  <text x="345" y="404" font-size="14" font-weight="600" fill="#e8e8e8" text-anchor="middle">가로 3</text>
+  <text x="470" y="374" font-size="14" font-weight="600" fill="#e8e8e8">세로 4</text>
+  <text x="498" y="240" font-size="14" font-weight="600" fill="#e8e8e8">높이 12</text>
+  <line x1="600" y1="186" x2="640" y2="186" stroke="#55c555" stroke-width="3"/>
+  <text x="654" y="191" font-size="14" font-weight="600" fill="#55c555">바닥 대각선</text>
+  <text x="600" y="216" font-size="14" fill="#888">3² + 4² = 25</text>
+  <line x1="600" y1="266" x2="640" y2="266" stroke="#e05555" stroke-width="3"/>
+  <text x="654" y="271" font-size="14" font-weight="600" fill="#e05555">공간 대각선</text>
+  <text x="600" y="296" font-size="14" fill="#888">25 + 12² = 169</text>
+  <text x="600" y="322" font-size="15" font-weight="600" fill="#e8e8e8">길이는 13</text>
+  <text x="60" y="428" font-size="13" fill="#7777cc">바닥 대각선과 높이는 직각으로 만나므로 붉은 삼각형이 직각삼각형이다</text>
+</svg>

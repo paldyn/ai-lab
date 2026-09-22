@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="430" viewBox="0 0 880 430" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <rect width="880" height="430" rx="12" fill="#0a0a0a"/>
+  <text x="60" y="56" font-size="22" font-weight="700" fill="#e8e8e8">√2 를 가두는 구간은 계속 줄어든다</text>
+  <text x="60" y="82" font-size="13" fill="#888">한 줄 내려갈 때마다 파란 토막만 남기고 열 배로 당겨 그린 것이다</text>
+  <line x1="220" y1="130" x2="760" y2="130" stroke="#888" stroke-width="2"/>
+  <line x1="220" y1="121" x2="220" y2="139" stroke="#888" stroke-width="2"/>
+  <line x1="760" y1="121" x2="760" y2="139" stroke="#888" stroke-width="2"/>
+  <line x1="436.0" y1="130" x2="490.0" y2="130" stroke="#7ec8e3" stroke-width="6"/>
+  <path d="M 436.0 136 L 220 178" fill="none" stroke="#7777cc" stroke-width="2" stroke-dasharray="4,4"/>
+  <path d="M 490.0 136 L 760 178" fill="none" stroke="#7777cc" stroke-width="2" stroke-dasharray="4,4"/>
+  <circle cx="443.7" cy="130" r="5" fill="#e05555"/>
+  <text x="220" y="156" font-size="13" fill="#888" text-anchor="middle">1</text>
+  <text x="760" y="156" font-size="13" fill="#888" text-anchor="middle">2</text>
+  <text x="140" y="135" font-size="13" fill="#888" text-anchor="middle">1단계</text>
+  <line x1="220" y1="190" x2="760" y2="190" stroke="#888" stroke-width="2"/>
+  <line x1="220" y1="181" x2="220" y2="199" stroke="#888" stroke-width="2"/>
+  <line x1="760" y1="181" x2="760" y2="199" stroke="#888" stroke-width="2"/>
+  <line x1="274.0" y1="190" x2="328.0" y2="190" stroke="#7ec8e3" stroke-width="6"/>
+  <path d="M 274.0 196 L 220 238" fill="none" stroke="#7777cc" stroke-width="2" stroke-dasharray="4,4"/>
+  <path d="M 328.0 196 L 760 238" fill="none" stroke="#7777cc" stroke-width="2" stroke-dasharray="4,4"/>
+  <circle cx="296.8" cy="190" r="5" fill="#e05555"/>
+  <text x="220" y="216" font-size="13" fill="#888" text-anchor="middle">1.4</text>
+  <text x="760" y="216" font-size="13" fill="#888" text-anchor="middle">1.5</text>
+  <text x="140" y="195" font-size="13" fill="#888" text-anchor="middle">2단계</text>
+  <line x1="220" y1="250" x2="760" y2="250" stroke="#888" stroke-width="2"/>
+  <line x1="220" y1="241" x2="220" y2="259" stroke="#888" stroke-width="2"/>
+  <line x1="760" y1="241" x2="760" y2="259" stroke="#888" stroke-width="2"/>
+  <line x1="436.0" y1="250" x2="490.0" y2="250" stroke="#7ec8e3" stroke-width="6"/>
+  <path d="M 436.0 256 L 220 298" fill="none" stroke="#7777cc" stroke-width="2" stroke-dasharray="4,4"/>
+  <path d="M 490.0 256 L 760 298" fill="none" stroke="#7777cc" stroke-width="2" stroke-dasharray="4,4"/>
+  <circle cx="447.5" cy="250" r="5" fill="#e05555"/>
+  <text x="220" y="276" font-size="13" fill="#888" text-anchor="middle">1.41</text>
+  <text x="760" y="276" font-size="13" fill="#888" text-anchor="middle">1.42</text>
+  <text x="140" y="255" font-size="13" fill="#888" text-anchor="middle">3단계</text>
+  <line x1="220" y1="310" x2="760" y2="310" stroke="#888" stroke-width="2"/>
+  <line x1="220" y1="301" x2="220" y2="319" stroke="#888" stroke-width="2"/>
+  <line x1="760" y1="301" x2="760" y2="319" stroke="#888" stroke-width="2"/>
+  <line x1="328.0" y1="310" x2="382.0" y2="310" stroke="#7ec8e3" stroke-width="6"/>
+  <path d="M 328.0 316 L 220 358" fill="none" stroke="#7777cc" stroke-width="2" stroke-dasharray="4,4"/>
+  <path d="M 382.0 316 L 760 358" fill="none" stroke="#7777cc" stroke-width="2" stroke-dasharray="4,4"/>
+  <circle cx="335.3" cy="310" r="5" fill="#e05555"/>
+  <text x="220" y="336" font-size="13" fill="#888" text-anchor="middle">1.414</text>
+  <text x="760" y="336" font-size="13" fill="#888" text-anchor="middle">1.415</text>
+  <text x="140" y="315" font-size="13" fill="#888" text-anchor="middle">4단계</text>
+  <line x1="220" y1="370" x2="760" y2="370" stroke="#888" stroke-width="2"/>
+  <line x1="220" y1="361" x2="220" y2="379" stroke="#888" stroke-width="2"/>
+  <line x1="760" y1="361" x2="760" y2="379" stroke="#888" stroke-width="2"/>
+  <circle cx="293.2" cy="370" r="5" fill="#e05555"/>
+  <text x="220" y="396" font-size="13" fill="#888" text-anchor="middle">1.4142</text>
+  <text x="760" y="396" font-size="13" fill="#888" text-anchor="middle">1.4143</text>
+  <text x="140" y="375" font-size="13" fill="#888" text-anchor="middle">5단계</text>
+  <text x="461.7" y="118" font-size="15" font-weight="600" fill="#e05555">√2</text>
+  <text x="60" y="412" font-size="13" fill="#7777cc">폭은 1 → 0.1 → 0.01 → 0.001 → 0.0001 로 줄지만 끝점 중 어느 것도 제곱해서 딱 2가 되지 않는다</text>
+</svg>

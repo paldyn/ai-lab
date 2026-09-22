@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="330" viewBox="0 0 880 330" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <rect width="880" height="330" rx="12" fill="#0a0a0a"/>
+
+  <text x="60" y="56" font-size="22" font-weight="700" fill="#e8e8e8">|x − 1| ≤ 2 는 1에서 2 이내라는 말이다</text>
+  <text x="60" y="82" font-size="13" fill="#888">기준이 0에서 1로 옮겨졌을 뿐, 재는 법은 절댓값 그대로다</text>
+
+  <rect x="370" y="182" width="280" height="16" fill="#7ec8e3" fill-opacity="0.18"/>
+
+  <line x1="140" y1="190" x2="810" y2="190" stroke="#888" stroke-width="1.5"/>
+  <line x1="160" y1="182" x2="160" y2="198" stroke="#444" stroke-width="1"/>
+  <line x1="230" y1="182" x2="230" y2="198" stroke="#444" stroke-width="1"/>
+  <line x1="300" y1="182" x2="300" y2="198" stroke="#444" stroke-width="1"/>
+  <line x1="370" y1="182" x2="370" y2="198" stroke="#444" stroke-width="1"/>
+  <line x1="440" y1="178" x2="440" y2="202" stroke="#e8e8e8" stroke-width="2"/>
+  <line x1="510" y1="182" x2="510" y2="198" stroke="#444" stroke-width="1"/>
+  <line x1="580" y1="182" x2="580" y2="198" stroke="#444" stroke-width="1"/>
+  <line x1="650" y1="182" x2="650" y2="198" stroke="#444" stroke-width="1"/>
+  <line x1="720" y1="182" x2="720" y2="198" stroke="#444" stroke-width="1"/>
+  <line x1="790" y1="182" x2="790" y2="198" stroke="#444" stroke-width="1"/>
+
+  <text x="160" y="220" font-size="13" fill="#888" text-anchor="middle">−4</text>
+  <text x="230" y="220" font-size="13" fill="#888" text-anchor="middle">−3</text>
+  <text x="300" y="220" font-size="13" fill="#888" text-anchor="middle">−2</text>
+  <text x="370" y="220" font-size="13" font-weight="600" fill="#7ec8e3" text-anchor="middle">−1</text>
+  <text x="440" y="222" font-size="14" font-weight="700" fill="#e8e8e8" text-anchor="middle">0</text>
+  <text x="510" y="220" font-size="13" font-weight="600" fill="#55c555" text-anchor="middle">1</text>
+  <text x="580" y="220" font-size="13" fill="#888" text-anchor="middle">2</text>
+  <text x="650" y="220" font-size="13" font-weight="600" fill="#7ec8e3" text-anchor="middle">3</text>
+  <text x="720" y="220" font-size="13" fill="#888" text-anchor="middle">4</text>
+  <text x="790" y="220" font-size="13" fill="#888" text-anchor="middle">5</text>
+
+  <line x1="370" y1="182" x2="650" y2="182" stroke="#7ec8e3" stroke-width="4"/>
+  <circle cx="370" cy="182" r="6" fill="#7ec8e3"/>
+  <circle cx="650" cy="182" r="6" fill="#7ec8e3"/>
+  <circle cx="510" cy="190" r="5" fill="#55c555"/>
+
+  <path d="M 508 140 L 372 140" fill="none" stroke="#55c555" stroke-width="2"/>
+  <path d="M 512 140 L 648 140" fill="none" stroke="#55c555" stroke-width="2"/>
+  <line x1="370" y1="132" x2="370" y2="148" stroke="#55c555" stroke-width="2"/>
+  <line x1="650" y1="132" x2="650" y2="148" stroke="#55c555" stroke-width="2"/>
+  <line x1="510" y1="132" x2="510" y2="148" stroke="#55c555" stroke-width="2"/>
+  <text x="440" y="124" font-size="14" font-weight="600" fill="#55c555" text-anchor="middle">왼쪽으로 2</text>
+  <text x="580" y="124" font-size="14" font-weight="600" fill="#55c555" text-anchor="middle">오른쪽으로 2</text>
+
+  <text x="510" y="264" font-size="16" font-weight="600" fill="#7ec8e3" text-anchor="middle">−1 ≤ x ≤ 3</text>
+  <text x="60" y="300" font-size="13" fill="#7777cc">채운 동그라미는 끝점을 포함한다는 표시다. 부등호가 &lt; 이면 빈 동그라미로 그린다</text>
+</svg>

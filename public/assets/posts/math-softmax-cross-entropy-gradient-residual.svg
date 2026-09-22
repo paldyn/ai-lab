@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="440" viewBox="0 0 880 440" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <rect width="880" height="440" rx="12" fill="#0a0a0a"/>
+  <text x="60" y="56" font-size="22" font-weight="700" fill="#e8e8e8">p − y 는 틀린 만큼만 민다</text>
+  <text x="60" y="82" font-size="13" fill="#888">정답은 y = (1, 0, 0). 두 판의 세로 눈금은 같다</text>
+  <line x1="110" y1="170" x2="770" y2="170" stroke="#444" stroke-width="1" stroke-dasharray="4,4"/>
+  <text x="100" y="174" font-size="13" fill="#888" text-anchor="end">+1</text>
+  <line x1="110" y1="350" x2="770" y2="350" stroke="#444" stroke-width="1" stroke-dasharray="4,4"/>
+  <text x="100" y="354" font-size="13" fill="#888" text-anchor="end">−1</text>
+  <line x1="440" y1="120" x2="440" y2="400" stroke="#444" stroke-width="1"/>
+  <text x="250" y="112" font-size="16" font-weight="600" fill="#e8e8e8" text-anchor="middle">잘 맞힌 표본</text>
+  <text x="250" y="134" font-size="13" fill="#888" text-anchor="middle">p = (0.97, 0.02, 0.01)</text>
+  <line x1="110" y1="260" x2="390" y2="260" stroke="#888" stroke-width="1.5"/>
+  <rect x="122" y="260.0" width="56" height="3.0" rx="2" fill="#55c555"/>
+  <text x="150" y="283" font-size="14" font-weight="600" fill="#55c555" text-anchor="middle">-0.03</text>
+  <text x="150" y="418" font-size="13" fill="#888" text-anchor="middle">A (정답)</text>
+  <rect x="222" y="257.0" width="56" height="3.0" rx="2" fill="#e05555"/>
+  <text x="250" y="247" font-size="14" font-weight="600" fill="#e05555" text-anchor="middle">+0.02</text>
+  <text x="250" y="418" font-size="13" fill="#888" text-anchor="middle">B</text>
+  <rect x="322" y="257.0" width="56" height="3.0" rx="2" fill="#e05555"/>
+  <text x="350" y="247" font-size="14" font-weight="600" fill="#e05555" text-anchor="middle">+0.01</text>
+  <text x="350" y="418" font-size="13" fill="#888" text-anchor="middle">C</text>
+  <text x="630" y="112" font-size="16" font-weight="600" fill="#e8e8e8" text-anchor="middle">크게 틀린 표본</text>
+  <text x="630" y="134" font-size="13" fill="#888" text-anchor="middle">p = (0.02, 0.95, 0.03)</text>
+  <line x1="490" y1="260" x2="770" y2="260" stroke="#888" stroke-width="1.5"/>
+  <rect x="502" y="260.0" width="56" height="88.2" rx="2" fill="#55c555"/>
+  <text x="530" y="368" font-size="14" font-weight="600" fill="#55c555" text-anchor="middle">-0.98</text>
+  <text x="530" y="418" font-size="13" fill="#888" text-anchor="middle">A (정답)</text>
+  <rect x="602" y="174.5" width="56" height="85.5" rx="2" fill="#e05555"/>
+  <text x="630" y="164" font-size="14" font-weight="600" fill="#e05555" text-anchor="middle">+0.95</text>
+  <text x="630" y="418" font-size="13" fill="#888" text-anchor="middle">B</text>
+  <rect x="702" y="257.0" width="56" height="3.0" rx="2" fill="#e05555"/>
+  <text x="730" y="247" font-size="14" font-weight="600" fill="#e05555" text-anchor="middle">+0.03</text>
+  <text x="730" y="418" font-size="13" fill="#888" text-anchor="middle">C</text>
+  <text x="60" y="392" font-size="13" fill="#7777cc">초록은 음수라 그 로짓을 올리고, 붉은색은 양수라 내린다</text>
+</svg>

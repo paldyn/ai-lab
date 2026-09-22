@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="460" viewBox="0 0 880 460" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <rect width="880" height="460" rx="12" fill="#0a0a0a"/>
+  <text x="60" y="56" font-size="22" font-weight="700" fill="#e8e8e8">한 변이 c 인 정사각형 안으로 접어 넣기</text>
+  <text x="60" y="82" font-size="13" fill="#888">빗변 c 가 큰 정사각형의 네 변이 되고, 가운데에 한 변 b − a 인 정사각형이 남는다</text>
+  <polygon points="330.0,320.0 550.0,320.0 550.0,100.0 330.0,100.0" fill="none" stroke="#e8e8e8" stroke-width="2"/>
+  <polygon points="330.0,320.0 550.0,320.0 470.8,214.4" fill="#7ec8e3" fill-opacity="0.18" stroke="#7ec8e3" stroke-width="1.5"/>
+  <polygon points="550.0,320.0 550.0,100.0 444.4,179.2" fill="#7ec8e3" fill-opacity="0.18" stroke="#7ec8e3" stroke-width="1.5"/>
+  <polygon points="550.0,100.0 330.0,100.0 409.2,205.6" fill="#7ec8e3" fill-opacity="0.18" stroke="#7ec8e3" stroke-width="1.5"/>
+  <polygon points="330.0,100.0 330.0,320.0 435.6,240.8" fill="#7ec8e3" fill-opacity="0.18" stroke="#7ec8e3" stroke-width="1.5"/>
+  <polygon points="470.8,214.4 444.4,179.2 409.2,205.6 435.6,240.8" fill="#55c555" fill-opacity="0.25" stroke="#55c555" stroke-width="2"/>
+  <text x="388" y="284" font-size="15" font-weight="600" fill="#7ec8e3">b</text>
+  <text x="516" y="280" font-size="15" font-weight="600" fill="#7ec8e3">a</text>
+  <text x="440" y="346" font-size="15" font-weight="600" fill="#e8e8e8" text-anchor="middle">c</text>
+  <path d="M 476.8 210.4 L 600 186" fill="none" stroke="#55c555" stroke-width="1.5"/>
+  <text x="610" y="182" font-size="14" font-weight="600" fill="#55c555">가운데 정사각형</text>
+  <text x="610" y="204" font-size="14" fill="#55c555">한 변은 b − a</text>
+  <text x="610" y="252" font-size="13" fill="#888">삼각형 하나의 넓이는</text>
+  <text x="610" y="274" font-size="14" font-weight="600" fill="#7ec8e3">ab / 2</text>
+  <text x="440" y="400" font-size="17" font-weight="600" fill="#e8e8e8" text-anchor="middle">c² = 4 · (ab / 2) + (b − a)² = a² + b²</text>
+  <text x="60" y="436" font-size="13" fill="#7777cc">2ab 가 서로 지워지면서 한 줄로 결론이 나온다</text>
+</svg>
