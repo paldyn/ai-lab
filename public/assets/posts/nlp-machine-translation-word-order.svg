@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" viewBox="0 0 880 400" role="img">
+  <defs>
+    <marker id="mtArrA" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#7ec8e3"/>
+    </marker>
+    <marker id="mtArrB" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#55c555"/>
+    </marker>
+  </defs>
+  <rect x="0" y="0" width="880" height="400" rx="12" fill="#0a0a0a"/>
+  <text x="60" y="48" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="22" font-weight="700" fill="#e8e8e8">관계절은 자리를 통째로 옮겨야 한다</text>
+
+  <text x="820" y="92" text-anchor="end" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888888">영어 — 꾸미는 말이 뒤에</text>
+  <rect x="60" y="104" width="230" height="54" rx="6" fill="#121212" stroke="#7ec8e3" stroke-width="1"/>
+  <text x="175" y="136" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="14" fill="#ffffff">the report</text>
+  <rect x="330" y="104" width="440" height="54" rx="6" fill="#121212" stroke="#55c555" stroke-width="1"/>
+  <text x="550" y="136" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="14" fill="#ffffff">that the team submitted last week</text>
+
+  <path d="M 175 158 C 175 200, 530 200, 530 244" fill="none" stroke="#7ec8e3" stroke-width="2.5" marker-end="url(#mtArrA)"/>
+  <path d="M 550 158 C 550 200, 230 200, 230 244" fill="none" stroke="#55c555" stroke-width="2.5" marker-end="url(#mtArrB)"/>
+
+  <text x="820" y="232" text-anchor="end" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888888">한국어 — 꾸미는 말이 앞에</text>
+  <rect x="60" y="244" width="340" height="54" rx="6" fill="#121212" stroke="#55c555" stroke-width="1"/>
+  <text x="230" y="276" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="14" fill="#ffffff">팀이 지난주에 제출한</text>
+  <rect x="440" y="244" width="180" height="54" rx="6" fill="#121212" stroke="#7ec8e3" stroke-width="1"/>
+  <text x="530" y="276" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="14" fill="#ffffff">보고서</text>
+
+  <text x="60" y="348" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#7ec8e3">어텐션은 출력 토큰마다 소스 전체를 다시 본다 — 그래서 순서에 매이지 않는다</text>
+</svg>

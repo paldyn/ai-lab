@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" viewBox="0 0 880 440" role="img">
+  <rect x="0" y="0" width="880" height="440" rx="12" fill="#0a0a0a"/>
+  <text x="60" y="50" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="22" font-weight="700" fill="#e8e8e8">같은 한국어 글, 토크나이저마다 3배로 갈린다</text>
+  <text x="60" y="80" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888888">자/토큰 — 클수록 같은 글에 토큰이 적게 든다. 아홉 개를 직접 재어 얻은 양 끝이다</text>
+
+  <text x="60" y="174" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e8e8e8">한국어를 따로 학습한 것</text>
+  <rect x="280" y="158" width="300" height="26" rx="4" fill="#55c555"/>
+  <text x="600" y="166" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="14" font-weight="600" fill="#e8e8e8">2.67 자/토큰</text>
+  <text x="600" y="188" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888888">100만 토큰 창 = 267만 자</text>
+
+  <text x="60" y="238" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e8e8e8">그렇지 않은 것</text>
+  <rect x="280" y="222" width="100" height="26" rx="4" fill="#e05555"/>
+  <text x="600" y="230" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="14" font-weight="600" fill="#e8e8e8">0.89 자/토큰</text>
+  <text x="600" y="252" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888888">100만 토큰 창 = 89만 자</text>
+
+  <line x1="60" y1="292" x2="820" y2="292" stroke="#2a2a2a" stroke-width="1"/>
+
+  <rect x="60" y="312" width="760" height="64" rx="6" fill="#121212" stroke="#333333" stroke-width="1"/>
+  <text x="84" y="341" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#7ec8e3">어휘 크기와의 상관은 0.078 — 사전이 크다고 한국어에 나은 것이 아니다</text>
+  <text x="84" y="363" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888888">2.0자를 넘긴 것은 한국어를 따로 학습한 둘뿐이었다</text>
+
+  <text x="60" y="412" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e05555">분절률이 나쁘면 문맥 창과 청구서가 함께 나빠진다</text>
+</svg>

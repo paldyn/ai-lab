@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" viewBox="0 0 880 460" role="img">
+  <defs>
+    <marker id="sumArr" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#7777cc"/>
+    </marker>
+    <marker id="sumLeak" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#e05555"/>
+    </marker>
+  </defs>
+  <rect x="0" y="0" width="880" height="460" rx="12" fill="#0a0a0a"/>
+  <text x="60" y="50" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="22" font-weight="700" fill="#e8e8e8">계층 요약과 내용이 새는 두 지점</text>
+
+  <rect x="60" y="90" width="500" height="44" rx="6" fill="#121212" stroke="#333333" stroke-width="1"/>
+  <text x="310" y="115" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="14" fill="#e8e8e8">원문 — 결론은 마지막 문단에만 있다</text>
+
+  <line x1="136" y1="134" x2="136" y2="166" stroke="#7777cc" stroke-width="2" marker-end="url(#sumArr)"/>
+  <line x1="310" y1="134" x2="310" y2="166" stroke="#7777cc" stroke-width="2" marker-end="url(#sumArr)"/>
+  <line x1="484" y1="134" x2="484" y2="166" stroke="#7777cc" stroke-width="2" marker-end="url(#sumArr)"/>
+
+  <rect x="60" y="170" width="152" height="48" rx="6" fill="#121212" stroke="#333333" stroke-width="1"/>
+  <text x="136" y="197" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e8e8e8">청크 1</text>
+  <rect x="234" y="170" width="152" height="48" rx="6" fill="#121212" stroke="#333333" stroke-width="1"/>
+  <text x="310" y="197" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e8e8e8">청크 2</text>
+  <rect x="408" y="170" width="152" height="48" rx="6" fill="#121212" stroke="#333333" stroke-width="1"/>
+  <text x="484" y="197" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e8e8e8">청크 3</text>
+
+  <line x1="136" y1="218" x2="136" y2="254" stroke="#7777cc" stroke-width="2" marker-end="url(#sumArr)"/>
+  <line x1="310" y1="218" x2="310" y2="254" stroke="#7777cc" stroke-width="2" marker-end="url(#sumArr)"/>
+  <line x1="484" y1="218" x2="484" y2="254" stroke="#7777cc" stroke-width="2" marker-end="url(#sumArr)"/>
+  <text x="560" y="242" text-anchor="end" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="14" font-weight="600" fill="#e05555">①</text>
+
+  <rect x="60" y="254" width="152" height="48" rx="6" fill="#121212" stroke="#333333" stroke-width="1"/>
+  <text x="136" y="281" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e8e8e8">중간 요약 1</text>
+  <rect x="234" y="254" width="152" height="48" rx="6" fill="#121212" stroke="#333333" stroke-width="1"/>
+  <text x="310" y="281" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e8e8e8">중간 요약 2</text>
+  <rect x="408" y="254" width="152" height="48" rx="6" fill="#121212" stroke="#333333" stroke-width="1"/>
+  <text x="484" y="281" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e8e8e8">중간 요약 3</text>
+
+  <path d="M 136 302 L 136 320 L 310 320 L 310 338" fill="none" stroke="#7777cc" stroke-width="2" marker-end="url(#sumArr)"/>
+  <path d="M 484 302 L 484 320 L 310 320" fill="none" stroke="#7777cc" stroke-width="2"/>
+  <line x1="310" y1="302" x2="310" y2="320" stroke="#7777cc" stroke-width="2"/>
+  <text x="560" y="328" text-anchor="end" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="14" font-weight="600" fill="#e05555">②</text>
+
+  <rect x="160" y="338" width="300" height="48" rx="6" fill="#121212" stroke="#55c555" stroke-width="1"/>
+  <text x="310" y="365" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e8e8e8">최종 요약</text>
+
+  <rect x="620" y="170" width="200" height="72" rx="6" fill="#121212" stroke="#e05555" stroke-width="2" stroke-dasharray="4,4"/>
+  <text x="640" y="199" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e05555">① 청크 안에서만</text>
+  <text x="640" y="219" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888888">중요도를 판단한다</text>
+
+  <rect x="620" y="262" width="200" height="72" rx="6" fill="#121212" stroke="#e05555" stroke-width="2" stroke-dasharray="4,4"/>
+  <text x="640" y="291" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e05555">② 한 번만 나온 것이</text>
+  <text x="640" y="311" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888888">중복 제거에 걸려 빠진다</text>
+
+  <line x1="620" y1="206" x2="576" y2="230" stroke="#e05555" stroke-width="2" stroke-dasharray="4,4" marker-end="url(#sumLeak)"/>
+  <line x1="620" y1="298" x2="576" y2="318" stroke="#e05555" stroke-width="2" stroke-dasharray="4,4" marker-end="url(#sumLeak)"/>
+
+  <text x="60" y="428" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#7ec8e3">완화 — 청크마다 문서 제목을 함께 넣고, 병합 단계의 압축률을 낮게 잡는다</text>
+</svg>

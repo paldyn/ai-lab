@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" viewBox="0 0 880 460" role="img">
+  <rect x="0" y="0" width="880" height="460" rx="12" fill="#0a0a0a"/>
+  <text x="60" y="50" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="22" font-weight="700" fill="#e8e8e8">레이블 구조가 출력층과 손실을 정한다</text>
+
+  <!-- 왼쪽: 다중 클래스 -->
+  <rect x="60" y="100" width="350" height="294" rx="12" fill="#121212" stroke="#333333" stroke-width="1"/>
+  <text x="84" y="128" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#e8e8e8">다중 클래스</text>
+  <text x="84" y="152" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888888">소프트맥스 · 교차 엔트로피</text>
+
+  <text x="84" y="193" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e8e8e8">스포츠</text>
+  <rect x="170" y="180" width="112" height="18" rx="3" fill="#7ec8e3"/>
+  <text x="386" y="193" text-anchor="end" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888888">0.70</text>
+
+  <text x="84" y="227" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e8e8e8">경제</text>
+  <rect x="170" y="214" width="32" height="18" rx="3" fill="#7777cc"/>
+  <text x="386" y="227" text-anchor="end" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888888">0.20</text>
+
+  <text x="84" y="261" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e8e8e8">정치</text>
+  <rect x="170" y="248" width="16" height="18" rx="3" fill="#7777cc"/>
+  <text x="386" y="261" text-anchor="end" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888888">0.10</text>
+
+  <line x1="84" y1="288" x2="386" y2="288" stroke="#2a2a2a" stroke-width="1"/>
+  <text x="84" y="312" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e8e8e8">세 값을 더하면 1이다</text>
+  <text x="84" y="334" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888888">하나가 오르면 나머지가 내린다</text>
+  <text x="84" y="366" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#55c555">판정 — 가장 큰 것 하나</text>
+
+  <!-- 오른쪽: 다중 레이블 -->
+  <rect x="470" y="100" width="350" height="294" rx="12" fill="#121212" stroke="#333333" stroke-width="1"/>
+  <text x="494" y="128" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#e8e8e8">다중 레이블</text>
+  <text x="494" y="152" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888888">시그모이드 · BCE</text>
+
+  <text x="494" y="193" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e8e8e8">경제</text>
+  <rect x="580" y="180" width="144" height="18" rx="3" fill="#7ec8e3"/>
+  <text x="796" y="193" text-anchor="end" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888888">0.90</text>
+
+  <text x="494" y="227" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e8e8e8">글로벌</text>
+  <rect x="580" y="214" width="128" height="18" rx="3" fill="#7ec8e3"/>
+  <text x="796" y="227" text-anchor="end" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888888">0.80</text>
+
+  <text x="494" y="261" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e8e8e8">스포츠</text>
+  <rect x="580" y="248" width="16" height="18" rx="3" fill="#7777cc"/>
+  <text x="796" y="261" text-anchor="end" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888888">0.10</text>
+
+  <line x1="494" y1="288" x2="796" y2="288" stroke="#2a2a2a" stroke-width="1"/>
+  <text x="494" y="312" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e8e8e8">더한 값에 제약이 없다</text>
+  <text x="494" y="334" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888888">셋이 동시에 높아도 된다</text>
+  <text x="494" y="366" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#55c555">판정 — 클래스마다 임계값</text>
+
+  <text x="60" y="430" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e05555">다중 레이블에 소프트맥스를 붙이면 한 레이블이 오를 때 다른 레이블이 억지로 내려간다</text>
+</svg>
