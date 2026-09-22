@@ -2,6 +2,23 @@ import type { NewsDetail } from '../news';
 
 /** 2026-09 발표의 모달 본문. 목록은 news.ts에 있습니다. */
 export const details: Record<string, NewsDetail> = {
+  'introducing-gpt-6-sol-and-luna': {
+    points: [
+      'GPT-6 계열에 Sol과 Luna를 더했고 Astra와 비슷한 방법으로 학습했다',
+      'Sol API 가격은 100만 토큰당 입력 $2, 출력 $10으로 50% 내렸다',
+      'Luna는 입력 $0.10, 출력 $0.50으로 역시 50% 인하다',
+      'AutomationBench에서 Sol(xhigh)이 Claude Opus 5(max)를 앞서고 작업당 비용은 9%다',
+      'DeepSWE 1.1에서 Sol(max) 68.8%로 Claude Fable 5 최고점과 1.1%포인트 차다',
+      'OSWorld 2.0 오프라인에서 Sol(xhigh) 60.5%, Claude Opus 5(medium) 60.3%다',
+      '프롬프트 캐싱 적중률을 올렸고 캐시된 입력 토큰 읽기 할인은 90%다',
+      'ChatGPT Work·Codex에 당일 열리고 API 이름은 gpt-6-sol·gpt-6-luna다',
+    ],
+    commentary:
+      'Astra가 성능 상한을 올린 발표였다면 이번은 같은 세대의 값을 내리는 발표다. 벤치마크 비교를 ' +
+      '점수가 아니라 「작업당 비용」으로 적어 둔 것이 그 신호다. 쓰는 쪽에서는 어느 모델을 고르느냐가 ' +
+      '성능 문제에서 예산 문제로 옮겨 가고, 값이 절반이면 같은 예산으로 더 오래 돌리는 에이전트 쪽이 ' +
+      '먼저 영향을 받는다.',
+  },
   'advisory-group-on-mathematics-and-ai': {
     points: [
       '8월 28일부터 학습을 시작한 사내 모델이 수학 전 분야에서 미해결 문제를 100건 넘게 풀었다',

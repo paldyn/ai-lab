@@ -160,7 +160,7 @@ export interface NewsDetail {
   commentary: string;
 }
 
-export const globalNewsUpdatedAt = '2026-09-18';
+export const globalNewsUpdatedAt = '2026-09-21';
 
 /**
  * 공식 발표 한 건 = 항목 한 개. 2026년 1월부터 쌓는 아카이브이며 오래된 항목을
@@ -171,6 +171,31 @@ export const globalNewsUpdatedAt = '2026-09-18';
  * 목록에서 파생됩니다. 갱신 시 globalNewsUpdatedAt도 함께 올립니다.
  */
 const entries: NewsItem[] = [
+  {
+    id: 'introducing-gpt-6-sol-and-luna',
+    source: 'OpenAI',
+    kind: 'model',
+    title: 'OpenAI, GPT-6 Sol·Luna 공개 — API 가격 50% 인하',
+    summary:
+      'OpenAI가 GPT-6 계열에 Sol과 Luna를 더했다. GPT-6 Astra와 비슷한 방법으로 학습해 업무·사실성· ' +
+      '코딩·컴퓨터 사용 성능을 올렸고, API 가격은 GPT-5.6 프로모션가 대비 둘 다 50% 내렸다. ' +
+      'ChatGPT Work와 Codex에서 당일부터 쓸 수 있다.',
+    publishedAt: '2026-09-22',
+    collectedAt: '2026-09-23',
+    category: 'Frontier',
+    signal: '프런티어 모델군',
+    url: 'https://openai.com/index/introducing-gpt-6-sol-and-luna',
+    model: {
+      family: 'GPT',
+      name: 'GPT-6 Sol · Luna',
+      kind: '신규 모델',
+      status: '공개',
+      useCase: '일상 업무와 대규모 에이전트',
+      headline: 'Astra의 학습 방법을 이어받아 절반 값으로 내놓은 두 모델이다.',
+      logo: 'assets/openai.svg',
+      tone: 'gpt',
+    },
+  },
   {
     id: 'advisory-group-on-mathematics-and-ai',
     source: 'OpenAI',
