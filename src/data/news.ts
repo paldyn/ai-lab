@@ -172,6 +172,80 @@ export const globalNewsUpdatedAt = '2026-09-18';
  */
 const entries: NewsItem[] = [
   {
+    id: 'advisory-group-on-mathematics-and-ai',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'OpenAI, 독립 수학 자문 그룹과 협력 — 수학자 9인 참여',
+    summary:
+      'OpenAI가 수학자들이 세운 독립 자문 그룹과 함께 일한다고 밝혔다. 8월 28일부터 학습한 사내 모델이 ' +
+      'Navier–Stokes 밀레니엄 문제를 비롯해 수학 전 분야에서 미해결 문제를 100건 넘게 풀었고, 그 결과를 ' +
+      '어떻게 검토하고 알릴지를 이 그룹이 자문한다.',
+    publishedAt: '2026-09-21',
+    collectedAt: '2026-09-22',
+    category: 'Safety',
+    signal: '수학 자문 그룹',
+    url: 'https://openai.com/index/advisory-group-on-mathematics-and-ai',
+  },
+  {
+    id: 'building-standards-next-phase-ai',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'OpenAI, 재귀적 자기개선 대비 국제 AI 표준 수립 촉구',
+    summary:
+      'OpenAI가 프런티어 AI의 국제 기술 표준을 미국이 주도해 만들어야 한다는 입장문을 냈다. AI가 AI 연구를 ' +
+      '맡으면서 생기는 재귀적 자기개선(RSI)을 표준이 다뤄야 할 핵심으로 짚었고, 완전 자율 RSI는 안전하게 ' +
+      '할 수 있을 때까지 추진하지 않겠다고 밝혔다.',
+    publishedAt: '2026-09-21',
+    collectedAt: '2026-09-22',
+    category: 'Safety',
+    signal: '국제 AI 표준',
+    url: 'https://openai.com/index/building-standards-next-phase-ai',
+  },
+  {
+    id: 'expanding-openai-academy-with-new-learning-paths',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'OpenAI Academy에 개발자·리더·교육자 학습 경로 추가',
+    summary:
+      'OpenAI가 OpenAI Academy에 개발자, 리더, 교육자, 대학생을 위한 과정을 더했다. 기존 Apply AI at ' +
+      'Work와 함께 학습 경로가 넷이 되고, 과정 평가를 통과하면 수료 배지를 받는다.',
+    publishedAt: '2026-09-21',
+    collectedAt: '2026-09-22',
+    category: 'Product',
+    signal: 'AI 교육 과정',
+    url: 'https://openai.com/index/expanding-openai-academy-with-new-learning-paths',
+  },
+  {
+    id: 'higgsfield-from-prompt-to-production-with-astra',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'Higgsfield, GPT-6 Astra로 영상 기능을 하루 만에 출시',
+    summary:
+      'AI 영상 제작 서비스 Higgsfield AI가 GPT-6 Astra로 새 탐색 기능을 하루 만에 내놓았고 그 일을 ' +
+      '엔지니어 한 명이 했다고 밝혔다. 고객 쪽에서는 성과가 좋은 광고 하나로 변형 100개를 만드는 요청을 ' +
+      '한 문장으로 받아 처리한다.',
+    publishedAt: '2026-09-21',
+    collectedAt: '2026-09-22',
+    category: 'Product',
+    signal: '기업 도입 사례',
+    url: 'https://openai.com/index/higgsfield-from-prompt-to-production-with-astra',
+  },
+  {
+    id: 'v7',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'V7, GPT-5.6으로 기업 문서를 묶어 에이전트 기억을 만든다',
+    summary:
+      '에이전틱 플랫폼 V7 Go가 GPT-5.6 Luna로 수백만 건의 파일에서 정보를 뽑아 Context Graph에 담는다고 ' +
+      '밝혔다. 50~100단계 워크플로를 몇 분 만에 99.9% 정확도로 끝내고 모든 판단의 감사 기록을 남긴다고 ' +
+      '한다.',
+    publishedAt: '2026-09-21',
+    collectedAt: '2026-09-22',
+    category: 'Product',
+    signal: '기업 도입 사례',
+    url: 'https://openai.com/index/v7',
+  },
+  {
     id: 'accenture-embedded-evaluation',
     source: 'Anthropic',
     kind: 'company',
