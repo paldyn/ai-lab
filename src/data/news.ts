@@ -160,7 +160,7 @@ export interface NewsDetail {
   commentary: string;
 }
 
-export const globalNewsUpdatedAt = '2026-09-21';
+export const globalNewsUpdatedAt = '2026-09-22';
 
 /**
  * 공식 발표 한 건 = 항목 한 개. 2026년 1월부터 쌓는 아카이브이며 오래된 항목을
@@ -171,6 +171,36 @@ export const globalNewsUpdatedAt = '2026-09-21';
  * 목록에서 파생됩니다. 갱신 시 globalNewsUpdatedAt도 함께 올립니다.
  */
 const entries: NewsItem[] = [
+  {
+    id: 'better-prompt-caching-for-gpt-6',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'OpenAI, GPT-6 프롬프트 캐싱 개선 — 캐시 대시보드·진단 도구 공개',
+    summary:
+      'OpenAI가 GPT-6 계열의 프롬프트 캐싱을 개선하고 적중률을 살피고 미스를 진단하는 도구를 내놓았다. ' +
+      '30분 창 안에서 재사용되는 공유 프리픽스에 캐시 할인을 주고, 명시적 브레이크포인트와 프리워밍, ' +
+      '추론 강도 조정을 캐시를 깨지 않고 쓸 수 있게 했다.',
+    publishedAt: '2026-09-22',
+    collectedAt: '2026-09-23',
+    category: 'Product',
+    signal: '프롬프트 캐싱',
+    url: 'https://openai.com/index/better-prompt-caching-for-gpt-6',
+  },
+  {
+    id: 'priorities-principles-third-party-assessments',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'OpenAI, 제3자 안전 평가 우선 영역 넷과 원칙 공개',
+    summary:
+      'OpenAI가 독립 제3자 기술 안전 평가의 우선 영역 넷과 원칙을 공개했다. 안전 케이스, 핵심 안전장치, ' +
+      '역량·정렬 평가, 정렬 실패 사고 조사를 우선 대상으로 삼고, 사전 합의된 범위와 비례적 접근권, ' +
+      '이해상충 공개, 시정 기간과 편집 독립성을 원칙으로 제시했다.',
+    publishedAt: '2026-09-22',
+    collectedAt: '2026-09-23',
+    category: 'Safety',
+    signal: '독립 평가 원칙',
+    url: 'https://openai.com/index/priorities-principles-third-party-assessments',
+  },
   {
     id: 'introducing-gpt-6-sol-and-luna',
     source: 'OpenAI',
