@@ -172,6 +172,76 @@ export const globalNewsUpdatedAt = '2026-09-22';
  */
 const entries: NewsItem[] = [
   {
+    id: 'claude-discovers-novel-enzyme-system',
+    source: 'Anthropic',
+    kind: 'company',
+    title: 'Anthropic, Claude가 CRISPR 닮은 새 효소 체계 발견',
+    summary:
+      'Anthropic이 생명과학 연구 그룹과 자체 실험실을 소개하며 Claude가 찾아낸 새 효소 체계 ART를 공개했다. ' +
+      '약 950개 에이전트가 21시간 동안 DNA 데이터베이스를 뒤져 CRISPR 배열과 닮은 반복 서열을 가진 ' +
+      '역전사효소 계열을 찾았고, 기능은 아직 밝히지 못했다.',
+    publishedAt: '2026-09-23',
+    collectedAt: '2026-09-25',
+    category: 'Research',
+    signal: '과학 AI',
+    url: 'https://www.anthropic.com/news/claude-discovers-novel-enzyme-system',
+  },
+  {
+    id: 'blog-advancing-private-ai-compute-with-secure-server-side-memory',
+    source: 'Google DeepMind',
+    kind: 'company',
+    title: 'Google, Private AI Compute에 암호화된 서버 측 메모리 도입',
+    summary:
+      'Google이 Private AI Compute에 기기 간 이어지는 영구 메모리를 더하는 설계를 공개했다. 데이터는 ' +
+      '사용자별 암호화 저장소에 두고 열쇠는 사용자 기기에만 있으며, 서버 소프트웨어의 변조 불가 공개 ' +
+      '기록과 외부 감사 결과를 함께 내놨다.',
+    publishedAt: '2026-09-23',
+    collectedAt: '2026-09-25',
+    category: 'Safety',
+    signal: '프라이버시 설계',
+    url: 'https://deepmind.google/blog/advancing-private-ai-compute-with-secure-server-side-memory',
+  },
+  {
+    id: 'blog-say-hello-to-gemini-38-text-to-speech',
+    source: 'Google DeepMind',
+    kind: 'model',
+    title: 'Google, 음성 생성 모델 Gemini 3.8 Flash TTS·Flash-Lite TTS 공개',
+    summary:
+      'Google이 음성 생성 모델 Gemini 3.8 Flash TTS와 3.8 Flash-Lite TTS를 공개했다. 자연어로 목소리를 ' +
+      '새로 설계하거나 30초 녹음으로 복제할 수 있고, 둘 다 오늘부터 Gemini API와 Google AI Studio에 ' +
+      '풀린다.',
+    publishedAt: '2026-09-23',
+    collectedAt: '2026-09-25',
+    category: 'Multimodal',
+    signal: '음성 모델',
+    url: 'https://deepmind.google/blog/say-hello-to-gemini-38-text-to-speech',
+    model: {
+      family: 'Gemini',
+      name: 'Gemini 3.8 Flash TTS',
+      kind: '신규 모델',
+      status: '공개',
+      useCase: '오디오북·더빙·음성 에이전트',
+      headline: '프리셋 목소리를 고르던 TTS를 목소리를 설계하고 줄마다 연기를 지시하는 도구로 바꿨다.',
+      logo: 'assets/gemini.svg',
+      tone: 'gemini',
+    },
+  },
+  {
+    id: 'research-google-beam-expansion',
+    source: 'Google DeepMind',
+    kind: 'company',
+    title: 'Google Beam, 6개국 출하와 Industrious 확장 네트워크',
+    summary:
+      'Google이 화상 회의 장비 Google Beam을 미국·캐나다·영국·프랑스·독일·일본 6개국 고객에게 ' +
+      '출하한다고 밝혔다. 채널 파트너 18곳이 배포를 맡고, 10월부터 미국 Industrious 일부 지점에서 ' +
+      'HP Dimension with Google Beam을 예약해 쓸 수 있다.',
+    publishedAt: '2026-09-23',
+    collectedAt: '2026-09-25',
+    category: 'Product',
+    signal: '시장 확대',
+    url: 'https://blog.google/innovation-and-ai/technology/research/google-beam-expansion',
+  },
+  {
     id: 'claude-opus-5-5',
     source: 'Anthropic',
     kind: 'model',
