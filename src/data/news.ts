@@ -172,6 +172,61 @@ export const globalNewsUpdatedAt = '2026-09-22';
  */
 const entries: NewsItem[] = [
   {
+    id: 'claude-opus-5-5',
+    source: 'Anthropic',
+    kind: 'model',
+    title: 'Anthropic, Claude Opus 5.5 공개 — 토큰 단가 20% 인하',
+    summary:
+      'Anthropic이 Claude 5.5 계열의 첫 모델 Claude Opus 5.5를 공개했다. 입력·출력 단가는 100만 토큰당 ' +
+      '4달러·20달러로 Opus 5보다 20% 낮고, 캐시 읽기는 0.20달러로 60% 낮다. Sonnet 5.5와 Haiku 5.5는 ' +
+      '몇 주 안에 나온다고 밝혔다.',
+    publishedAt: '2026-09-22',
+    collectedAt: '2026-09-25',
+    category: 'Frontier',
+    signal: '모델 경제성',
+    url: 'https://www.anthropic.com/claude-opus-5-5',
+    model: {
+      family: 'Claude',
+      name: 'Claude Opus 5.5',
+      kind: '신규 모델',
+      status: '공개',
+      useCase: '장기 에이전틱 코딩·지식 작업',
+      headline: 'Fable 5.1 수준의 일을 Opus 5보다 적은 토큰과 낮은 단가로 끝내게 한 모델',
+      logo: 'assets/claude.svg',
+      tone: 'claude',
+    },
+  },
+  {
+    id: 'claude-platform-september-22-2026',
+    source: 'Anthropic',
+    kind: 'company',
+    title: 'Claude Opus 5.5의 API 규칙과 대화 중 도구 정의 베타',
+    summary:
+      'Claude Opus 5.5에서는 thinking을 끌 수 없고 tool_choice의 any·tool이 400 오류를 돌려주며, ' +
+      'Claude API의 computer use는 새 toolset을 써야 한다. 대화 도중 system 메시지 안에서 도구를 ' +
+      '정의하는 기능이 inline-tools-2026-09-15 베타 헤더로 열렸다.',
+    publishedAt: '2026-09-22',
+    collectedAt: '2026-09-25',
+    category: 'Product',
+    signal: '플랫폼 변경',
+    url: 'https://platform.claude.com/docs/en/release-notes/overview#september-22-2026',
+  },
+  {
+    id: 'ebola-response',
+    source: 'Anthropic',
+    kind: 'company',
+    title: 'WHO 아프리카·CEPI, 콩고 에볼라 대응에 Claude 활용',
+    summary:
+      'Anthropic이 콩고민주공화국 Bundibugyo 에볼라 대응에서 WHO 아프리카 지역사무소·CEPI·INRB가 ' +
+      'Claude를 쓰는 사례를 소개했다. 하루 걸리던 상황 보고서 작성이 한 시간 안쪽으로 줄었고, INRB는 ' +
+      'Claude Science로 바이러스 유전체를 조립한다.',
+    publishedAt: '2026-09-22',
+    collectedAt: '2026-09-25',
+    category: 'Product',
+    signal: '보건 의료 AI',
+    url: 'https://www.anthropic.com/features/ebola-response',
+  },
+  {
     id: 'better-prompt-caching-for-gpt-6',
     source: 'OpenAI',
     kind: 'company',

@@ -2,6 +2,53 @@ import type { NewsDetail } from '../news';
 
 /** 2026-09 발표의 모달 본문. 목록은 news.ts에 있습니다. */
 export const details: Record<string, NewsDetail> = {
+  'claude-opus-5-5': {
+    points: [
+      'Claude 5.5 계열의 첫 모델이며 대부분의 작업에서 Claude Fable 5.1 수준이라고 밝혔다',
+      '입력·출력 100만 토큰당 4달러·20달러로 Opus 5보다 20% 낮다',
+      '캐시 읽기는 100만 토큰당 0.20달러로 Opus 5의 0.50달러보다 60% 낮다',
+      '기본 설정의 일반 작업량에서 Opus 5보다 비용이 40% 적게 들고 출력 속도는 30% 넘게 빠르다',
+      'Terminal-Bench 4.0 66.4%, GDPval-AA v2.1 1,846 Elo로 표의 비교 모델 중 가장 높았다',
+      '생물·사이버보안 역량이 Mythos 5.1과 비슷해 Fable 5.1과 비슷한 안전장치를 걸어 배포한다',
+      'Pro·Max·Team·좌석형 Enterprise의 5시간 사용 한도를 늘리고 구독자에게 한도 초기화를 한 번 준다',
+      'Claude Sonnet 5.5와 Claude Haiku 5.5는 몇 주 안에 뒤따른다',
+    ],
+    commentary:
+      '성능 표보다 단가 표가 먼저 읽히는 발표다. 캐시 읽기를 60% 내린 것은 에이전트 비용의 대부분이 ' +
+      '같은 컨텍스트를 되읽는 데서 나온다는 계산에 맞춘 선택이고, 같은 주 OpenAI의 GPT-6 가격 인하·캐싱 ' +
+      '개선과 겹친다. 상위 모델 Fable 5.1과의 격차를 스스로 좁게 적은 만큼, 비싼 쪽을 고를 이유를 다시 ' +
+      '따져 볼 자리다.',
+  },
+  'claude-platform-september-22-2026': {
+    points: [
+      'Claude Opus 5.5에서는 thinking을 끌 수 없어 disabled·enabled 지정이 400 오류를 돌려준다',
+      'thinking 필드를 빼고 깊이는 effort 파라미터로 조절한다',
+      'tool_choice의 any·tool 타입도 Fable 5.1처럼 400을 돌려주며 auto와 strict tool use를 쓰라고 안내했다',
+      'Claude API와 Google Cloud에서 이 모델의 computer use는 computer_toolset_20260801이 필요하고 Bedrock에서는 이전 도구가 계속 동작한다',
+      '대화 도중 system 메시지 안에서 도구를 정의하는 기능이 inline-tools-2026-09-15 베타 헤더로 열렸다',
+      'tool_addition 블록에 도구 정의를 통째로 실어 도구 추가·스키마 변경·서버 도구 버전 교체를 프롬프트 캐시를 깨지 않고 할 수 있다',
+      'MCP 커넥터 헤더를 함께 쓰면 MCP toolset을 정의로 넣을 수 있고 응답의 mcp_tool_listing 블록이 받아 온 도구 목록을 고정한다',
+    ],
+    commentary:
+      '추론을 끄는 스위치와 강제 도구 호출을 걷어 내는 방향이 Fable 5.1에 이어 Opus 계열에도 왔다. ' +
+      '호출 코드를 모델 이름만 바꿔 옮기면 400이 나는 자리가 셋이라 이전 전에 요청 모양부터 봐야 한다. ' +
+      '도구를 대화 중간에 붙이면서 캐시를 지키게 한 것은 긴 에이전트 실행의 단가를 겨냥한 변경이다.',
+  },
+  'ebola-response': {
+    points: [
+      '콩고민주공화국 동부에서 백신이 승인되지 않은 Bundibugyo 에볼라가 5월부터 퍼지고 있다',
+      'CEPI가 주선한 협력에 WHO 아프리카 지역사무소와 INRB 등이 참여해 Anthropic 팀과 함께 Claude를 쓴다',
+      'WHO 아프리카 팀이 만든 Claude 스킬로 하루 걸리던 상황 보고서 작성이 한 시간 안쪽으로 줄었다',
+      '데이터 팀은 시간 때문에 모델 하나만 돌리던 것을 여러 질병 모델을 함께 돌려 예측하게 됐다',
+      'CEPI는 Claude로 백신 개발 작업을 추적하는 대시보드를 만들었다',
+      'INRB 연구실은 Claude Science에 평이한 말로 지시해 바이러스 유전체를 조립하고 계통수를 그린다',
+      'WHO 아프리카는 치쿤구니야 유행의 환자 목록 정리·검증에도 Claude를 쓰고 있다',
+    ],
+    commentary:
+      '모델 성능이 아니라 현장의 병목이 어디였는지를 보여 주는 사례다. 줄어든 것은 분석보다 슬라이드에서 ' +
+      '숫자를 옮겨 적는 일이었고, 그 시간이 모델을 여러 개 돌려 보는 데로 옮겨 갔다. 판단은 사람이 한다는 ' +
+      '선을 시행 기관 쪽이 직접 긋고 있다는 점도 눈여겨볼 만하다.',
+  },
   'better-prompt-caching-for-gpt-6': {
     points: [
       'GPT-6 계열과 함께 도입한 캐싱 시스템이 기본 캐시 적중률을 높인다',
