@@ -2,6 +2,21 @@ import type { NewsDetail } from '../news';
 
 /** 2026-09 발표의 모달 본문. 목록은 news.ts에 있습니다. */
 export const details: Record<string, NewsDetail> = {
+  'blog-introducing-gemini-38-live-with-live-avatar': {
+    points: [
+      '지난주 나온 Gemini 3.8 Live에 저지연 영상 생성을 결합해 말하는 아바타를 붙였다',
+      '입 모양 맞춤, 표정, 자연스러운 말 차례 주고받기를 지원한다',
+      '시각·음성 입력을 함께 처리하며 대화를 이어 가는 동안 비동기로 도구를 호출한다',
+      '97개 언어를 대화 도중 바꿔도 입 모양과 표정이 따라가도록 다국어 동기화를 넣었다',
+      '프리셋 아바타 외에 참조 이미지로 맞춤 아바타를 만들 수 있지만 지금은 기업 허용 목록에만 열려 있다',
+      '생성된 음성과 영상에는 모두 SynthID 워터마크가 들어간다',
+      '오늘부터 Gemini Enterprise에서 쓸 수 있고 API 문서와 모델 카드를 함께 냈다',
+    ],
+    commentary:
+      '음성 에이전트 경쟁이 얼굴까지 번졌다. 고객 상담·호텔 체크인 같은 예시가 말하듯 겨냥은 소비자가 아니라 ' +
+      '기업 창구이고, 그래서 Gemini Enterprise에만 먼저 풀었다. 맞춤 아바타를 허용 목록으로 묶어 둔 것은 ' +
+      '실존 인물 얼굴을 쓰는 악용을 의식한 문턱으로 보인다.',
+  },
   'claude-discovers-novel-enzyme-system': {
     points: [
       'Anthropic 안에 Claude로 기초 생물학을 연구하는 생명과학 연구 그룹과 실험실을 새로 꾸렸다',

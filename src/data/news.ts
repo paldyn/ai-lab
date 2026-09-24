@@ -172,6 +172,31 @@ export const globalNewsUpdatedAt = '2026-09-22';
  */
 const entries: NewsItem[] = [
   {
+    id: 'blog-introducing-gemini-38-live-with-live-avatar',
+    source: 'Google DeepMind',
+    kind: 'model',
+    title: 'Google, 실시간 영상 아바타를 더한 Gemini 3.8 Live with Live Avatar',
+    summary:
+      'Google이 Gemini 3.8 Live에 저지연 영상 생성을 붙인 Gemini 3.8 Live with Live Avatar를 공개했다. ' +
+      '입 모양을 맞춘 아바타가 97개 언어로 대화하고 대화 중에 도구를 뒤에서 호출하며, 오늘부터 Gemini ' +
+      'Enterprise에서 쓸 수 있다.',
+    publishedAt: '2026-09-24',
+    collectedAt: '2026-09-25',
+    category: 'Multimodal',
+    signal: '실시간 아바타',
+    url: 'https://deepmind.google/blog/introducing-gemini-38-live-with-live-avatar',
+    model: {
+      family: 'Gemini',
+      name: 'Gemini 3.8 Live with Live Avatar',
+      kind: '모델 패밀리',
+      status: '공개',
+      useCase: '기업용 영상 상담 에이전트',
+      headline: '듣고 말하던 3.8 Live에 얼굴을 붙여 보고 말하는 상담 창구로 만들었다.',
+      logo: 'assets/gemini.svg',
+      tone: 'gemini',
+    },
+  },
+  {
     id: 'claude-discovers-novel-enzyme-system',
     source: 'Anthropic',
     kind: 'company',
