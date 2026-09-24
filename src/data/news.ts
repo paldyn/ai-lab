@@ -267,6 +267,20 @@ const entries: NewsItem[] = [
     url: 'https://blog.google/innovation-and-ai/technology/research/google-beam-expansion',
   },
   {
+    id: 'parallel-cuts-time-and-cost-with-astra',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'Parallel, GPT-6 Astra로 웹 리서치 시간과 비용을 절반으로',
+    summary:
+      '웹 기반 지식 작업 에이전트 인프라를 만드는 Parallel이 GPT-6 Astra로 긴 리서치 과제를 이전 모델의 ' +
+      '절반 시간에 끝냈다고 밝혔다. 같은 품질에 비용은 약 50% 줄었고, 검색 단계도 더 적게 썼다.',
+    publishedAt: '2026-09-22',
+    collectedAt: '2026-09-25',
+    category: 'Product',
+    signal: '기업 도입 사례',
+    url: 'https://openai.com/index/parallel-cuts-time-and-cost-with-astra',
+  },
+  {
     id: 'claude-opus-5-5',
     source: 'Anthropic',
     kind: 'model',
