@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="480" viewBox="0 0 880 480" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <defs>
+    <marker id="arrK" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#e05555"/>
+    </marker>
+    <marker id="arrF" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#7ec8e3"/>
+    </marker>
+  </defs>
+  <rect x="0" y="0" width="880" height="480" rx="12" fill="#0a0a0a"/>
+
+  <text x="60" y="46" font-size="22" font-weight="700" fill="#e8e8e8">입력 공간은 핵과 그 평행선들로 갈린다</text>
+
+  <!-- left: input plane, unit 40, origin (200,250) -->
+  <text x="210" y="96" text-anchor="middle" font-size="16" font-weight="600" fill="#e8e8e8">입력 평면</text>
+  <text x="210" y="120" text-anchor="middle" font-size="13" fill="#888">C의 열 = (1, 2), (2, 4)</text>
+  <line x1="70" y1="250" x2="355" y2="250" stroke="#888" stroke-width="1.5"/>
+  <line x1="200" y1="345" x2="200" y2="140" stroke="#888" stroke-width="1.5"/>
+  <text x="361" y="254" font-size="13" fill="#888">x</text>
+  <text x="194" y="134" font-size="13" fill="#888">y</text>
+  <line x1="80" y1="190" x2="320" y2="310" stroke="#e05555" stroke-width="2.5" stroke-dasharray="5,3"/>
+  <line x1="140" y1="160" x2="340" y2="260" stroke="#7ec8e3" stroke-width="2.5"/>
+  <circle cx="200" cy="250" r="5" fill="#e05555"/>
+  <circle cx="240" cy="210" r="5" fill="#e8e8e8"/>
+  <circle cx="320" cy="250" r="5" fill="#e8e8e8"/>
+  <text x="252" y="198" font-size="13" fill="#e8e8e8">(1, 1)</text>
+  <text x="310" y="274" font-size="13" fill="#e8e8e8">(3, 0)</text>
+  <text x="84" y="176" font-size="13" fill="#e05555">핵</text>
+
+  <!-- right: output plane, unit 20, origin (620,280) -->
+  <text x="660" y="96" text-anchor="middle" font-size="16" font-weight="600" fill="#e8e8e8">출력 평면</text>
+  <text x="660" y="120" text-anchor="middle" font-size="13" fill="#888">상 = (1, 2) 방향 직선</text>
+  <line x1="560" y1="280" x2="770" y2="280" stroke="#888" stroke-width="1.5"/>
+  <line x1="620" y1="345" x2="620" y2="140" stroke="#888" stroke-width="1.5"/>
+  <text x="776" y="284" font-size="13" fill="#888">x</text>
+  <text x="614" y="134" font-size="13" fill="#888">y</text>
+  <line x1="590" y1="340" x2="690" y2="140" stroke="#7777cc" stroke-width="2.5"/>
+  <circle cx="620" cy="280" r="5" fill="#e05555"/>
+  <circle cx="680" cy="160" r="5" fill="#e8e8e8"/>
+  <text x="630" y="302" font-size="13" fill="#e05555">0</text>
+  <text x="694" y="176" font-size="13" fill="#e8e8e8">(3, 6)</text>
+
+  <!-- arrows -->
+  <path d="M 322 322 Q 470 390 612 288" fill="none" stroke="#e05555" stroke-width="2" stroke-dasharray="5,3" marker-end="url(#arrK)"/>
+  <path d="M 348 254 Q 500 175 668 162" fill="none" stroke="#7ec8e3" stroke-width="2" marker-end="url(#arrF)"/>
+
+  <line x1="60" y1="398" x2="90" y2="398" stroke="#e05555" stroke-width="2.5" stroke-dasharray="5,3"/>
+  <text x="102" y="403" font-size="13" fill="#888">핵: (−2, 1) 방향 직선. 이 위의 입력은 전부 0으로 간다</text>
+  <line x1="60" y1="424" x2="90" y2="424" stroke="#7ec8e3" stroke-width="2.5"/>
+  <text x="102" y="429" font-size="13" fill="#888">핵을 옮긴 평행선. (1, 1)과 (3, 0)을 비롯해 이 위의 입력은 전부 (3, 6)으로 간다</text>
+  <text x="60" y="456" font-size="13" fill="#e8e8e8">핵 1차원 + 계수 1 = 입력 2차원. 평행선 하나가 출력 한 점으로 접힌다.</text>
+</svg>

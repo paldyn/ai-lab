@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" viewBox="0 0 880 540">
+<rect x="0" y="0" width="880" height="540" rx="12" fill="#0a0a0a"/>
+<text x="60.0" y="44.0" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="22" font-weight="700" fill="#e8e8e8" text-anchor="start">배치를 k배로 할 때 학습률은 몇 배인가</text>
+<text x="60.0" y="70.0" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="400" fill="#888" text-anchor="start">가로축은 배치 배수 k, 세로축은 학습률 배수. 둘 다 잡음이 신호보다 큰 구간의 규칙이다</text>
+<line x1="110" y1="345.0" x2="560" y2="345.0" stroke="#444" stroke-width="1" stroke-dasharray="3,4"/>
+<text x="98.0" y="350.0" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="400" fill="#888" text-anchor="end">2</text>
+<line x1="110" y1="270.0" x2="560" y2="270.0" stroke="#444" stroke-width="1" stroke-dasharray="3,4"/>
+<text x="98.0" y="275.0" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="400" fill="#888" text-anchor="end">4</text>
+<line x1="110" y1="195.0" x2="560" y2="195.0" stroke="#444" stroke-width="1" stroke-dasharray="3,4"/>
+<text x="98.0" y="200.0" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="400" fill="#888" text-anchor="end">6</text>
+<line x1="110" y1="120.0" x2="560" y2="120.0" stroke="#444" stroke-width="1" stroke-dasharray="3,4"/>
+<text x="98.0" y="125.0" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="400" fill="#888" text-anchor="end">8</text>
+<text x="98.0" y="425.0" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="400" fill="#888" text-anchor="end">0</text>
+<line x1="110" y1="420" x2="570" y2="420" stroke="#888" stroke-width="1.5"/>
+<line x1="110" y1="420" x2="110" y2="108" stroke="#888" stroke-width="1.5"/>
+<text x="576.0" y="425.0" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="400" fill="#888" text-anchor="start">k</text>
+<line x1="110.0" y1="420" x2="110.0" y2="426" stroke="#888" stroke-width="1.5"/>
+<text x="110.0" y="444.0" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="400" fill="#888" text-anchor="middle">1</text>
+<line x1="174.3" y1="420" x2="174.3" y2="426" stroke="#888" stroke-width="1.5"/>
+<text x="174.3" y="444.0" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="400" fill="#888" text-anchor="middle">2</text>
+<line x1="238.6" y1="420" x2="238.6" y2="426" stroke="#888" stroke-width="1.5"/>
+<text x="238.6" y="444.0" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="400" fill="#888" text-anchor="middle">3</text>
+<line x1="302.9" y1="420" x2="302.9" y2="426" stroke="#888" stroke-width="1.5"/>
+<text x="302.9" y="444.0" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="400" fill="#888" text-anchor="middle">4</text>
+<line x1="367.1" y1="420" x2="367.1" y2="426" stroke="#888" stroke-width="1.5"/>
+<text x="367.1" y="444.0" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="400" fill="#888" text-anchor="middle">5</text>
+<line x1="431.4" y1="420" x2="431.4" y2="426" stroke="#888" stroke-width="1.5"/>
+<text x="431.4" y="444.0" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="400" fill="#888" text-anchor="middle">6</text>
+<line x1="495.7" y1="420" x2="495.7" y2="426" stroke="#888" stroke-width="1.5"/>
+<text x="495.7" y="444.0" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="400" fill="#888" text-anchor="middle">7</text>
+<line x1="560.0" y1="420" x2="560.0" y2="426" stroke="#888" stroke-width="1.5"/>
+<text x="560.0" y="444.0" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="400" fill="#888" text-anchor="middle">8</text>
+<polyline points="110.0,382.5 113.8,380.3 117.6,378.1 121.3,375.9 125.1,373.7 128.9,371.5 132.7,369.3 136.5,367.1 140.3,364.9 144.0,362.6 147.8,360.4 151.6,358.2 155.4,356.0 159.2,353.8 162.9,351.6 166.7,349.4 170.5,347.2 174.3,345.0 178.1,342.8 181.8,340.6 185.6,338.4 189.4,336.2 193.2,334.0 197.0,331.8 200.8,329.6 204.5,327.4 208.3,325.1 212.1,322.9 215.9,320.7 219.7,318.5 223.4,316.3 227.2,314.1 231.0,311.9 234.8,309.7 238.6,307.5 242.4,305.3 246.1,303.1 249.9,300.9 253.7,298.7 257.5,296.5 261.3,294.3 265.0,292.1 268.8,289.9 272.6,287.6 276.4,285.4 280.2,283.2 283.9,281.0 287.7,278.8 291.5,276.6 295.3,274.4 299.1,272.2 302.9,270.0 306.6,267.8 310.4,265.6 314.2,263.4 318.0,261.2 321.8,259.0 325.5,256.8 329.3,254.6 333.1,252.4 336.9,250.1 340.7,247.9 344.5,245.7 348.2,243.5 352.0,241.3 355.8,239.1 359.6,236.9 363.4,234.7 367.1,232.5 370.9,230.3 374.7,228.1 378.5,225.9 382.3,223.7 386.1,221.5 389.8,219.3 393.6,217.1 397.4,214.9 401.2,212.6 405.0,210.4 408.7,208.2 412.5,206.0 416.3,203.8 420.1,201.6 423.9,199.4 427.6,197.2 431.4,195.0 435.2,192.8 439.0,190.6 442.8,188.4 446.6,186.2 450.3,184.0 454.1,181.8 457.9,179.6 461.7,177.4 465.5,175.1 469.2,172.9 473.0,170.7 476.8,168.5 480.6,166.3 484.4,164.1 488.2,161.9 491.9,159.7 495.7,157.5 499.5,155.3 503.3,153.1 507.1,150.9 510.8,148.7 514.6,146.5 518.4,144.3 522.2,142.1 526.0,139.9 529.7,137.6 533.5,135.4 537.3,133.2 541.1,131.0 544.9,128.8 548.7,126.6 552.4,124.4 556.2,122.2 560.0,120.0" fill="none" stroke="#7ec8e3" stroke-width="2.5"/>
+<polyline points="110.0,382.5 113.8,381.4 117.6,380.4 121.3,379.3 125.1,378.3 128.9,377.3 132.7,376.4 136.5,375.4 140.3,374.5 144.0,373.6 147.8,372.7 151.6,371.9 155.4,371.0 159.2,370.2 162.9,369.4 166.7,368.6 170.5,367.8 174.3,367.0 178.1,366.2 181.8,365.4 185.6,364.7 189.4,363.9 193.2,363.2 197.0,362.5 200.8,361.8 204.5,361.1 208.3,360.4 212.1,359.7 215.9,359.0 219.7,358.3 223.4,357.6 227.2,357.0 231.0,356.3 234.8,355.7 238.6,355.0 242.4,354.4 246.1,353.8 249.9,353.2 253.7,352.5 257.5,351.9 261.3,351.3 265.0,350.7 268.8,350.1 272.6,349.5 276.4,349.0 280.2,348.4 283.9,347.8 287.7,347.2 291.5,346.7 295.3,346.1 299.1,345.6 302.9,345.0 306.6,344.5 310.4,343.9 314.2,343.4 318.0,342.8 321.8,342.3 325.5,341.8 329.3,341.2 333.1,340.7 336.9,340.2 340.7,339.7 344.5,339.2 348.2,338.7 352.0,338.1 355.8,337.6 359.6,337.1 363.4,336.6 367.1,336.1 370.9,335.7 374.7,335.2 378.5,334.7 382.3,334.2 386.1,333.7 389.8,333.2 393.6,332.8 397.4,332.3 401.2,331.8 405.0,331.4 408.7,330.9 412.5,330.4 416.3,330.0 420.1,329.5 423.9,329.0 427.6,328.6 431.4,328.1 435.2,327.7 439.0,327.2 442.8,326.8 446.6,326.4 450.3,325.9 454.1,325.5 457.9,325.0 461.7,324.6 465.5,324.2 469.2,323.7 473.0,323.3 476.8,322.9 480.6,322.5 484.4,322.0 488.2,321.6 491.9,321.2 495.7,320.8 499.5,320.4 503.3,320.0 507.1,319.5 510.8,319.1 514.6,318.7 518.4,318.3 522.2,317.9 526.0,317.5 529.7,317.1 533.5,316.7 537.3,316.3 541.1,315.9 544.9,315.5 548.7,315.1 552.4,314.7 556.2,314.3 560.0,313.9" fill="none" stroke="#7777cc" stroke-width="2.5"/>
+<circle cx="174.3" cy="345.0" r="5" fill="#e8e8e8"/>
+<circle cx="174.3" cy="367.0" r="5" fill="#e8e8e8"/>
+<circle cx="302.9" cy="270.0" r="5" fill="#e8e8e8"/>
+<circle cx="302.9" cy="345.0" r="5" fill="#e8e8e8"/>
+<circle cx="560.0" cy="120.0" r="5" fill="#e8e8e8"/>
+<circle cx="560.0" cy="313.9" r="5" fill="#e8e8e8"/>
+<text x="544.0" y="125.0" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="600" fill="#7ec8e3" text-anchor="end">SGD  8</text>
+<text x="558.0" y="297.9" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="600" fill="#7777cc" text-anchor="end">Adam  √8 ≈ 2.83</text>
+<text x="316.9" y="260.0" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="400" fill="#7ec8e3" text-anchor="start">4</text>
+<text x="304.9" y="369.0" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="400" fill="#7777cc" text-anchor="middle">2</text>
+<rect x="596" y="120" width="224" height="300" rx="8" fill="none" stroke="#333" stroke-width="1"/>
+<text x="620.0" y="156.0" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#e8e8e8" text-anchor="start">k = 8 일 때 바꾸는 값</text>
+<text x="620.0" y="196.0" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="600" fill="#7ec8e3" text-anchor="start">SGD</text>
+<text x="620.0" y="220.0" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="400" fill="#e8e8e8" text-anchor="start">η → 8η</text>
+<text x="620.0" y="260.0" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="600" fill="#7777cc" text-anchor="start">Adam</text>
+<text x="620.0" y="284.0" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="400" fill="#e8e8e8" text-anchor="start">η → √8·η ≈ 2.83η</text>
+<text x="620.0" y="306.0" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="400" fill="#e8e8e8" text-anchor="start">1−β₁, 1−β₂ → 8배</text>
+<text x="620.0" y="328.0" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="400" fill="#e8e8e8" text-anchor="start">ε → ε / √8</text>
+<text x="620.0" y="376.0" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="400" fill="#888" text-anchor="start">β₂ = 0.999 였다면</text>
+<text x="620.0" y="396.0" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="400" fill="#888" text-anchor="start">8배 뒤에는 β₂ = 0.992</text>
+<text x="60.0" y="478.0" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="400" fill="#888" text-anchor="start">SGD는 걸음이 그래디언트 크기를 그대로 따라가 k스텝치를 한 번에 가려면 k배가 필요하다. Adam은 √v̂로 나누어</text>
+<text x="60.0" y="500.0" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="400" fill="#888" text-anchor="start">크기가 약분되므로 큰 배치의 한 걸음이 이미 √k배 커져 있고, 나머지 √k배만 학습률이 채운다.</text>
+</svg>
