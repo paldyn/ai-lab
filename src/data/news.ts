@@ -160,7 +160,7 @@ export interface NewsDetail {
   commentary: string;
 }
 
-export const globalNewsUpdatedAt = '2026-09-22';
+export const globalNewsUpdatedAt = '2026-09-23';
 
 /**
  * 공식 발표 한 건 = 항목 한 개. 2026년 1월부터 쌓는 아카이브이며 오래된 항목을
@@ -195,6 +195,148 @@ const entries: NewsItem[] = [
       logo: 'assets/gemini.svg',
       tone: 'gemini',
     },
+  },
+  {
+    id: 'sam-altman-un-security-council-remarks',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'Sam Altman, 유엔 안보리 연설 — 인간 통제와 국제 AI 표준 촉구',
+    summary:
+      'OpenAI CEO Sam Altman이 유엔 안전보장이사회에서 AI를 주제로 연설했다. AI가 통제를 벗어나는 것과 ' +
+      '권력이 소수에 쏠리는 것을 피해야 할 두 위험으로 꼽고, 역량 측정·위험 평가·사고 보고를 아우르는 ' +
+      '국가·국제 프런티어 AI 표준 체계를 제안했다.',
+    publishedAt: '2026-09-23',
+    collectedAt: '2026-09-25',
+    category: 'Safety',
+    signal: 'AI 거버넌스',
+    url: 'https://openai.com/index/sam-altman-un-security-council-remarks',
+  },
+  {
+    id: 'openai-extends-cyber-access-to-ukraine-for-civilian-defense',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'OpenAI, 우크라이나 정부에 Daybreak 사이버 방어 접근권 제공',
+    summary:
+      'OpenAI가 우크라이나 디지털전환부와 함께 정부에 Daybreak 프로그램 접근권을 주기로 했다. ' +
+      '민간 기반시설의 소프트웨어 취약점을 찾고 수정안을 만들어 시험하는 도구를 우크라이나 팀이 쓰게 된다.',
+    publishedAt: '2026-09-23',
+    collectedAt: '2026-09-25',
+    category: 'Corporate',
+    signal: '사이버 방어 지원',
+    url: 'https://openai.com/index/openai-extends-cyber-access-to-ukraine-for-civilian-defense',
+  },
+  {
+    id: 'introducing-mentalhealthbench',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'OpenAI, 정신건강 대화 평가 벤치마크 MentalHealthBench 공개',
+    summary:
+      'OpenAI가 실제와 비슷한 정신건강 대화에서 AI 응답을 재는 공개 벤치마크 MentalHealthBench를 냈다. ' +
+      '22개국 면허 전문가 80여 명이 합성 대화마다 가중 채점 기준을 썼고, 일상 대화부터 응급 상황까지 ' +
+      '성인·청소년·보호자·임상의 넷의 대화를 다룬다.',
+    publishedAt: '2026-09-23',
+    collectedAt: '2026-09-25',
+    category: 'Research',
+    signal: '정신건강 벤치마크',
+    url: 'https://openai.com/index/introducing-mentalhealthbench',
+  },
+  {
+    id: 'chatgpt-ads-expands-southeast-asia-taiwan',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'ChatGPT 광고, 동남아 6개국과 대만으로 확대',
+    summary:
+      'ChatGPT 광고가 인도네시아·말레이시아·필리핀·싱가포르·태국·베트남과 대만에서 차례로 시작된다. ' +
+      '광고는 Free·Go 이용자에게만 보이고 유료 플랜은 광고가 없으며, 이번 확대로 제공 국가가 60곳을 넘었다.',
+    publishedAt: '2026-09-23',
+    collectedAt: '2026-09-25',
+    category: 'Product',
+    signal: '광고 아시아 확대',
+    url: 'https://openai.com/index/chatgpt-ads-expands-southeast-asia-taiwan',
+  },
+  {
+    id: 'two-years-of-openai-academy',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'OpenAI Academy 2주년, 지역 강사를 기르는 시범 프로그램 시작',
+    summary:
+      'OpenAI Academy가 2024년 9월 출범 뒤 2년간 행사 250회 넘게를 열고 400만 명 넘게가 콘텐츠를 접했다고 밝혔다. ' +
+      '다음 단계로 파트너 기관 직원이 Academy 과정을 직접 가르치도록 훈련하는 Community Trainer Program을 시범 운영한다.',
+    publishedAt: '2026-09-23',
+    collectedAt: '2026-09-25',
+    category: 'Corporate',
+    signal: '지역 강사 양성',
+    url: 'https://openai.com/index/two-years-of-openai-academy',
+  },
+  {
+    id: 'grab-openai-ai-skills-southeast-asia',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'Grab·OpenAI, 동남아 파트너 3만 명 대상 AI 교육 시작',
+    summary:
+      'OpenAI가 Grab과 함께 기사·배달·가맹점 파트너 3만 명에게 2년간 AI 활용법을 가르치는 GO Forward with AI를 시작했다. ' +
+      '싱가포르에서 먼저 열고 올해 안에 태국·인도네시아·필리핀, 2027년 말레이시아·베트남으로 넓힌다.',
+    publishedAt: '2026-09-23',
+    collectedAt: '2026-09-25',
+    category: 'Corporate',
+    signal: '플랫폼 노동자 교육',
+    url: 'https://openai.com/index/grab-openai-ai-skills-southeast-asia',
+  },
+  {
+    id: 'airbnb-gpt-6-astra',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'Airbnb, 새 계약으로 GPT-6 Astra 등 OpenAI 모델 접근 확대',
+    summary:
+      'Airbnb가 OpenAI와 새 계약을 맺어 엔지니어링·제품 개발 팀이 GPT-6 Astra를 비롯한 프런티어 모델을 ' +
+      '더 넓게 쓰게 했다. 접근 경로는 OpenAI API와 Amazon Bedrock이고, 개발팀은 1년 전보다 기능을 약 80% 더 낸다고 밝혔다.',
+    publishedAt: '2026-09-23',
+    collectedAt: '2026-09-25',
+    category: 'Product',
+    signal: '기업 도입 사례',
+    url: 'https://openai.com/index/airbnb-gpt-6-astra',
+  },
+  {
+    id: 'ringg',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'Ringg, OpenAI 모델로 고객 상담 전화 최대 65% 자동 처리',
+    summary:
+      '인도 음성·채팅 에이전트 플랫폼 Ringg가 작업마다 GPT-4.1과 GPT-5.6 계열을 골라 쓰는 방식으로 ' +
+      '월 700만 건 넘는 통화를 처리한다고 밝혔다. 일부 실시간 작업을 GPT-4.1에서 GPT-5.6 Luna로 옮겨 모델 비용을 약 90% 줄였다.',
+    publishedAt: '2026-09-23',
+    collectedAt: '2026-09-25',
+    category: 'Product',
+    signal: '기업 도입 사례',
+    url: 'https://openai.com/index/ringg',
+  },
+  {
+    id: 'harvey-from-context-to-confidence-with-astra',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'Harvey, GPT-6 Astra로 법률 문서 초안의 맥락 반영 강화',
+    summary:
+      '법률 AI 서비스 Harvey가 GPT-6 Astra로 소송 자료·판례·로펌 문서를 더 많이 넣어 초안을 쓴다고 밝혔다. ' +
+      '다른 모델보다 문서 서식과 맥락 인식이 크게 나아졌고, 변호사 선호를 담는 메모리 패널을 초안 작성에 붙였다.',
+    publishedAt: '2026-09-23',
+    collectedAt: '2026-09-25',
+    category: 'Product',
+    signal: '기업 도입 사례',
+    url: 'https://openai.com/index/harvey-from-context-to-confidence-with-astra',
+  },
+  {
+    id: 'invideo-builds-with-gpt-6-astra',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'invideo, GPT-6 Astra로 영상 색 보정 성공률 약 3배',
+    summary:
+      '에이전트형 영상 편집기 invideo가 GPT-6 Astra를 쓴 뒤 색 보정·색 교정 작업의 성공률이 약 세 배 올랐다고 밝혔다. ' +
+      '더 적은 추론 단계로 복잡한 편집을 계획하고, 하루 만에 편집자 몇 명이 맞춤 효과 약 50개를 만들었다.',
+    publishedAt: '2026-09-23',
+    collectedAt: '2026-09-25',
+    category: 'Product',
+    signal: '기업 도입 사례',
+    url: 'https://openai.com/index/invideo-builds-with-gpt-6-astra',
   },
   {
     id: 'claude-discovers-novel-enzyme-system',
