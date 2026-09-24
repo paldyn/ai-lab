@@ -1,0 +1,74 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="430" viewBox="0 0 880 430">
+  <rect width="880" height="430" rx="12" fill="#0a0a0a"/>
+  <g font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+    <text x="440" y="46" font-size="22" font-weight="700" fill="#e8e8e8" text-anchor="middle">스트리밍 중 깨진 한 글자</text>
+    <text x="440" y="72" font-size="16" font-weight="600" fill="#e8e8e8" text-anchor="middle">cl100k로 나눈 「안녕하세요」 — 토큰 경계가 글자 한가운데를 지난다</text>
+    <text x="60" y="125" font-size="13" fill="#888">글자</text>
+    <text x="60" y="177" font-size="13" fill="#888">UTF-8 바이트</text>
+    <text x="60" y="229" font-size="13" fill="#888">토큰 번호</text>
+    <text x="60" y="293" font-size="13" fill="#888">따로 디코딩</text>
+    <text x="60" y="345" font-size="13" fill="#888">모아 디코딩</text>
+    <rect x="162" y="100" width="128" height="40" rx="6" fill="#141414" stroke="#7777cc"/>
+    <text x="226" y="126" font-size="16" font-weight="600" fill="#e8e8e8" text-anchor="middle">안</text>
+    <rect x="294" y="100" width="128" height="40" rx="6" fill="#141414" stroke="#7777cc"/>
+    <text x="358" y="126" font-size="16" font-weight="600" fill="#e8e8e8" text-anchor="middle">녕</text>
+    <rect x="426" y="100" width="128" height="40" rx="6" fill="#141414" stroke="#7777cc"/>
+    <text x="490" y="126" font-size="16" font-weight="600" fill="#e8e8e8" text-anchor="middle">하</text>
+    <rect x="558" y="100" width="128" height="40" rx="6" fill="#141414" stroke="#7777cc"/>
+    <text x="622" y="126" font-size="16" font-weight="600" fill="#e8e8e8" text-anchor="middle">세</text>
+    <rect x="690" y="100" width="128" height="40" rx="6" fill="#141414" stroke="#7777cc"/>
+    <text x="754" y="126" font-size="16" font-weight="600" fill="#e8e8e8" text-anchor="middle">요</text>
+    <rect x="162" y="152" width="40" height="40" rx="4" fill="#000000" stroke="#3a4a6e"/>
+    <text x="182" y="177" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#ffffff" text-anchor="middle">EC</text>
+    <rect x="206" y="152" width="40" height="40" rx="4" fill="#000000" stroke="#3a4a6e"/>
+    <text x="226" y="177" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#ffffff" text-anchor="middle">95</text>
+    <rect x="250" y="152" width="40" height="40" rx="4" fill="#000000" stroke="#3a4a6e"/>
+    <text x="270" y="177" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#ffffff" text-anchor="middle">88</text>
+    <rect x="294" y="152" width="40" height="40" rx="4" fill="#000000" stroke="#3a4a6e"/>
+    <text x="314" y="177" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#ffffff" text-anchor="middle">EB</text>
+    <rect x="338" y="152" width="40" height="40" rx="4" fill="#000000" stroke="#3a4a6e"/>
+    <text x="358" y="177" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#ffffff" text-anchor="middle">85</text>
+    <rect x="382" y="152" width="40" height="40" rx="4" fill="#000000" stroke="#3a4a6e"/>
+    <text x="402" y="177" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#ffffff" text-anchor="middle">95</text>
+    <rect x="426" y="152" width="40" height="40" rx="4" fill="#000000" stroke="#3a4a6e"/>
+    <text x="446" y="177" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#ffffff" text-anchor="middle">ED</text>
+    <rect x="470" y="152" width="40" height="40" rx="4" fill="#000000" stroke="#3a4a6e"/>
+    <text x="490" y="177" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#ffffff" text-anchor="middle">95</text>
+    <rect x="514" y="152" width="40" height="40" rx="4" fill="#000000" stroke="#3a4a6e"/>
+    <text x="534" y="177" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#ffffff" text-anchor="middle">98</text>
+    <rect x="558" y="152" width="40" height="40" rx="4" fill="#000000" stroke="#3a4a6e"/>
+    <text x="578" y="177" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#ffffff" text-anchor="middle">EC</text>
+    <rect x="602" y="152" width="40" height="40" rx="4" fill="#000000" stroke="#3a4a6e"/>
+    <text x="622" y="177" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#ffffff" text-anchor="middle">84</text>
+    <rect x="646" y="152" width="40" height="40" rx="4" fill="#000000" stroke="#3a4a6e"/>
+    <text x="666" y="177" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#ffffff" text-anchor="middle">B8</text>
+    <rect x="690" y="152" width="40" height="40" rx="4" fill="#000000" stroke="#3a4a6e"/>
+    <text x="710" y="177" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#ffffff" text-anchor="middle">EC</text>
+    <rect x="734" y="152" width="40" height="40" rx="4" fill="#000000" stroke="#3a4a6e"/>
+    <text x="754" y="177" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#ffffff" text-anchor="middle">9A</text>
+    <rect x="778" y="152" width="40" height="40" rx="4" fill="#000000" stroke="#3a4a6e"/>
+    <text x="798" y="177" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#ffffff" text-anchor="middle">94</text>
+    <rect x="162" y="204" width="84" height="40" rx="6" fill="#141414" stroke="#7ec8e3" stroke-width="2"/>
+    <text x="204" y="229" font-size="13" fill="#7ec8e3" text-anchor="middle">1</text>
+    <text x="204" y="293" font-size="15" font-weight="600" fill="#e05555" text-anchor="middle">�</text>
+    <text x="204" y="345" font-size="12" fill="#888" text-anchor="middle">(대기)</text>
+    <rect x="250" y="204" width="40" height="40" rx="6" fill="#141414" stroke="#7ec8e3" stroke-width="2"/>
+    <text x="270" y="229" font-size="13" fill="#7ec8e3" text-anchor="middle">2</text>
+    <text x="270" y="293" font-size="15" font-weight="600" fill="#e05555" text-anchor="middle">�</text>
+    <text x="270" y="345" font-size="15" font-weight="600" fill="#55c555" text-anchor="middle">안</text>
+    <rect x="294" y="204" width="84" height="40" rx="6" fill="#141414" stroke="#7ec8e3" stroke-width="2"/>
+    <text x="336" y="229" font-size="13" fill="#7ec8e3" text-anchor="middle">3</text>
+    <text x="336" y="293" font-size="15" font-weight="600" fill="#e05555" text-anchor="middle">�</text>
+    <text x="336" y="345" font-size="12" fill="#888" text-anchor="middle">(대기)</text>
+    <rect x="382" y="204" width="40" height="40" rx="6" fill="#141414" stroke="#7ec8e3" stroke-width="2"/>
+    <text x="402" y="229" font-size="13" fill="#7ec8e3" text-anchor="middle">4</text>
+    <text x="402" y="293" font-size="15" font-weight="600" fill="#e05555" text-anchor="middle">�</text>
+    <text x="402" y="345" font-size="15" font-weight="600" fill="#55c555" text-anchor="middle">녕</text>
+    <rect x="426" y="204" width="392" height="40" rx="6" fill="#141414" stroke="#7ec8e3" stroke-width="2"/>
+    <text x="622" y="229" font-size="13" fill="#7ec8e3" text-anchor="middle">5</text>
+    <text x="622" y="293" font-size="15" font-weight="600" fill="#e8e8e8" text-anchor="middle">하세요</text>
+    <text x="622" y="345" font-size="15" font-weight="600" fill="#55c555" text-anchor="middle">하세요</text>
+    <line x1="60" y1="262" x2="820" y2="262" stroke="#333" stroke-width="1"/>
+    <text x="440" y="396" font-size="13" fill="#888" text-anchor="middle">바이트를 쌓아 두었다가 완성된 글자가 될 때만 내보내면 깨진 문자가 화면에 나가지 않는다</text>
+  </g>
+</svg>

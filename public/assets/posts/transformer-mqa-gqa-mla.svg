@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="470" viewBox="0 0 880 470">
+  <defs>
+    <marker id="arr" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#7ec8e3"/>
+    </marker>
+  </defs>
+  <rect width="880" height="470" rx="12" fill="#0a0a0a"/>
+  <g font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+    <text x="440" y="46" font-size="22" font-weight="700" fill="#e8e8e8" text-anchor="middle">MLA — K·V 대신 잠재 벡터를 캐시에 둔다</text>
+    <text x="440" y="72" font-size="16" font-weight="600" fill="#e8e8e8" text-anchor="middle">DeepSeek-V2 기준 · 레이어 하나, 토큰 하나당</text>
+
+    <!-- input -->
+    <rect x="60" y="110" width="150" height="70" rx="8" fill="#141414" stroke="#555"/>
+    <text x="135" y="140" font-size="14" font-weight="600" fill="#e8e8e8" text-anchor="middle">입력 은닉 상태</text>
+    <text x="135" y="160" font-size="13" fill="#888" text-anchor="middle">5,120차원</text>
+
+    <!-- latent -->
+    <rect x="290" y="110" width="200" height="70" rx="8" fill="#0f1f0f" stroke="#55c555" stroke-width="2"/>
+    <text x="390" y="140" font-size="14" font-weight="600" fill="#55c555" text-anchor="middle">잠재 벡터 c_KV</text>
+    <text x="390" y="160" font-size="13" fill="#888" text-anchor="middle">512차원 · 캐시에 저장</text>
+    <line x1="210" y1="145" x2="290" y2="145" stroke="#7ec8e3" stroke-width="2" marker-end="url(#arr)"/>
+    <text x="250" y="130" font-size="12" fill="#888" text-anchor="middle">압축</text>
+
+    <!-- K, V -->
+    <rect x="570" y="96" width="250" height="50" rx="8" fill="#141414" stroke="#7777cc"/>
+    <text x="695" y="126" font-size="13" fill="#e8e8e8" text-anchor="middle">K 복원 · 128헤드 × 128</text>
+    <rect x="570" y="164" width="250" height="50" rx="8" fill="#141414" stroke="#7777cc"/>
+    <text x="695" y="194" font-size="13" fill="#e8e8e8" text-anchor="middle">V 복원 · 128헤드 × 128</text>
+    <path d="M 490 135 L 530 135 L 530 121 L 570 121" fill="none" stroke="#7ec8e3" stroke-width="2" marker-end="url(#arr)"/>
+    <path d="M 490 155 L 530 155 L 530 189 L 570 189" fill="none" stroke="#7ec8e3" stroke-width="2" marker-end="url(#arr)"/>
+
+    <!-- rope key -->
+    <rect x="290" y="236" width="200" height="60" rx="8" fill="#0f1f0f" stroke="#55c555" stroke-width="2"/>
+    <text x="390" y="261" font-size="14" font-weight="600" fill="#55c555" text-anchor="middle">위치용 키 k_R</text>
+    <text x="390" y="281" font-size="13" fill="#888" text-anchor="middle">64차원 · 헤드 공유 · 저장</text>
+    <path d="M 135 180 L 135 266 L 290 266" fill="none" stroke="#7ec8e3" stroke-width="2" marker-end="url(#arr)"/>
+    <text x="570" y="261" font-size="13" fill="#888">RoPE를 걸어야 하는 몫은</text>
+    <text x="570" y="281" font-size="13" fill="#888">압축 밖에 따로 둔다</text>
+
+    <!-- comparison -->
+    <text x="440" y="336" font-size="16" font-weight="600" fill="#e8e8e8" text-anchor="middle">토큰·레이어당 캐시에 남는 값의 수</text>
+    <rect x="60" y="356" width="240" height="70" rx="8" fill="#141414" stroke="#e05555"/>
+    <text x="180" y="386" font-size="14" font-weight="600" fill="#e05555" text-anchor="middle">MHA · 32,768</text>
+    <text x="180" y="406" font-size="13" fill="#888" text-anchor="middle">2 × 128헤드 × 128</text>
+    <rect x="320" y="356" width="240" height="70" rx="8" fill="#141414" stroke="#7ec8e3"/>
+    <text x="440" y="386" font-size="14" font-weight="600" fill="#7ec8e3" text-anchor="middle">GQA(KV 8) · 2,048</text>
+    <text x="440" y="406" font-size="13" fill="#888" text-anchor="middle">2 × 8헤드 × 128</text>
+    <rect x="580" y="356" width="240" height="70" rx="8" fill="#141414" stroke="#55c555"/>
+    <text x="700" y="386" font-size="14" font-weight="600" fill="#55c555" text-anchor="middle">MLA · 576</text>
+    <text x="700" y="406" font-size="13" fill="#888" text-anchor="middle">512 + 64</text>
+  </g>
+</svg>

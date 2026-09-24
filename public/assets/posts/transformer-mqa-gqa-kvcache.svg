@@ -29,11 +29,11 @@
   <text x="330" y="324" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#55c555" text-anchor="end">8,192</text>
 
   <line x1="80" y1="336" x2="340" y2="336" stroke="#333" stroke-width="1"/>
-  <text x="80" y="358" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="14" font-weight="600" fill="#e8e8e8">GQA KV Cache</text>
-  <text x="330" y="358" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="14" font-weight="600" fill="#55c555" text-anchor="end">~20 GB</text>
+  <text x="80" y="358" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="14" font-weight="600" fill="#e8e8e8">GQA KV 캐시 (배치 1)</text>
+  <text x="330" y="358" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="14" font-weight="600" fill="#55c555" text-anchor="end">~2.7 GB</text>
 
   <text x="80" y="382" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">MHA라면 (64 KV heads)</text>
-  <text x="330" y="382" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e05555" text-anchor="end">~160 GB</text>
+  <text x="330" y="382" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e05555" text-anchor="end">~21.5 GB</text>
   <text x="80" y="400" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">절감 비율</text>
   <text x="330" y="400" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#55c555" text-anchor="end">8× 절약</text>
 

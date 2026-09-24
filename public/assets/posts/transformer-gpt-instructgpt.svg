@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="400" viewBox="0 0 880 400">
+  <defs>
+    <marker id="arr" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#7ec8e3"/>
+    </marker>
+  </defs>
+  <rect width="880" height="400" rx="12" fill="#0a0a0a"/>
+  <g font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+    <text x="440" y="46" font-size="22" font-weight="700" fill="#e8e8e8" text-anchor="middle">InstructGPT의 세 단계</text>
+    <text x="440" y="72" font-size="16" font-weight="600" fill="#e8e8e8" text-anchor="middle">점수의 기준이 벤치마크에서 사람의 선호로 옮겨 간다</text>
+
+    <!-- step 1 -->
+    <rect x="60" y="110" width="220" height="150" rx="10" fill="#141414" stroke="#7ec8e3" stroke-width="2"/>
+    <text x="170" y="139" font-size="13" fill="#7ec8e3" text-anchor="middle">1단계</text>
+    <text x="170" y="163" font-size="16" font-weight="600" fill="#e8e8e8" text-anchor="middle">지도 파인튜닝</text>
+    <text x="170" y="193" font-size="13" fill="#888" text-anchor="middle">사람이 쓴 모범 답으로</text>
+    <text x="170" y="213" font-size="13" fill="#888" text-anchor="middle">GPT-3를 추가 학습</text>
+    <text x="170" y="237" font-size="13" fill="#888" text-anchor="middle">→ SFT 모델</text>
+
+    <!-- step 2 -->
+    <rect x="330" y="110" width="220" height="150" rx="10" fill="#141414" stroke="#7777cc" stroke-width="2"/>
+    <text x="440" y="139" font-size="13" fill="#7777cc" text-anchor="middle">2단계</text>
+    <text x="440" y="163" font-size="16" font-weight="600" fill="#e8e8e8" text-anchor="middle">보상 모델</text>
+    <text x="440" y="193" font-size="13" fill="#888" text-anchor="middle">사람이 답들에 순위를 매기고</text>
+    <text x="440" y="213" font-size="13" fill="#888" text-anchor="middle">그 순위를 흉내 내게 학습</text>
+    <text x="440" y="237" font-size="13" fill="#888" text-anchor="middle">→ 선호 점수기</text>
+
+    <!-- step 3 -->
+    <rect x="600" y="110" width="220" height="150" rx="10" fill="#141414" stroke="#55c555" stroke-width="2"/>
+    <text x="710" y="139" font-size="13" fill="#55c555" text-anchor="middle">3단계</text>
+    <text x="710" y="163" font-size="16" font-weight="600" fill="#e8e8e8" text-anchor="middle">강화학습 (PPO)</text>
+    <text x="710" y="193" font-size="13" fill="#888" text-anchor="middle">SFT 모델이 답을 쓰면</text>
+    <text x="710" y="213" font-size="13" fill="#888" text-anchor="middle">보상 모델이 점수를 매긴다</text>
+    <text x="710" y="237" font-size="13" fill="#888" text-anchor="middle">→ InstructGPT</text>
+
+    <line x1="280" y1="185" x2="330" y2="185" stroke="#7ec8e3" stroke-width="2" marker-end="url(#arr)"/>
+    <line x1="550" y1="185" x2="600" y2="185" stroke="#7ec8e3" stroke-width="2" marker-end="url(#arr)"/>
+
+    <!-- result -->
+    <rect x="60" y="296" width="760" height="70" rx="10" fill="#0f1f0f" stroke="#55c555"/>
+    <text x="440" y="326" font-size="14" font-weight="600" fill="#55c555" text-anchor="middle">사람 평가에서 1.3B InstructGPT의 답이 175B GPT-3의 답보다 더 자주 선택됐다</text>
+    <text x="440" y="346" font-size="13" fill="#888" text-anchor="middle">크기를 백 배 넘게 줄여도, 무엇을 기준으로 맞췄느냐가 더 컸다</text>
+  </g>
+</svg>
