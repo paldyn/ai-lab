@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="440" viewBox="0 0 880 440">
+  <rect width="880" height="440" rx="12" fill="#0a0a0a"/>
+  <g font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+    <text x="440" y="46" font-size="22" font-weight="700" fill="#e8e8e8" text-anchor="middle">품질 분류기 문턱과 그 대가</text>
+    <text x="440" y="72" font-size="16" font-weight="600" fill="#e8e8e8" text-anchor="middle">문턱마다 같은 크기의 작은 모델을 학습해 잰 결과 (가상의 숫자)</text>
+
+    <!-- legend -->
+    <rect x="250" y="88" width="14" height="14" fill="#1c1c3a" stroke="#7777cc"/>
+    <text x="272" y="100" font-size="13" fill="#888">남는 양 (왼쪽 축, %)</text>
+    <line x1="470" y1="95" x2="498" y2="95" stroke="#55c555" stroke-width="2.5"/>
+    <circle cx="484" cy="95" r="4" fill="#55c555"/>
+    <text x="506" y="100" font-size="13" fill="#888">벤치마크 평균 (오른쪽 축)</text>
+
+    <!-- axes -->
+    <line x1="80" y1="350" x2="800" y2="350" stroke="#555"/>
+    <line x1="80" y1="130" x2="80" y2="350" stroke="#555"/>
+    <line x1="800" y1="130" x2="800" y2="350" stroke="#555"/>
+    <text x="72" y="354" font-size="13" fill="#888" text-anchor="end">0</text>
+    <text x="72" y="244" font-size="13" fill="#888" text-anchor="end">50</text>
+    <text x="72" y="134" font-size="13" fill="#888" text-anchor="end">100</text>
+    <text x="808" y="310" font-size="13" fill="#888">41</text>
+    <text x="808" y="222" font-size="13" fill="#888">43</text>
+    <text x="808" y="134" font-size="13" fill="#888">45</text>
+
+    <!-- bars: x center = 110 + t*660 -->
+    <rect x="88" y="130" width="44" height="220" fill="#1c1c3a" stroke="#7777cc"/>
+    <rect x="253" y="213.6" width="44" height="136.4" fill="#1c1c3a" stroke="#7777cc"/>
+    <rect x="418" y="266.4" width="44" height="83.6" fill="#1c1c3a" stroke="#7777cc"/>
+    <rect x="583" y="303.8" width="44" height="46.2" fill="#1c1c3a" stroke="#7777cc"/>
+    <rect x="682" y="330.2" width="44" height="19.8" fill="#1c1c3a" stroke="#7777cc"/>
+    <text x="164" y="146" font-size="13" fill="#7777cc">100%</text>
+    <text x="305" y="234" font-size="13" fill="#7777cc">62%</text>
+    <text x="490" y="286" font-size="13" fill="#7777cc">38%</text>
+    <text x="605" y="296" font-size="13" fill="#7777cc" text-anchor="middle">21%</text>
+    <text x="704" y="322" font-size="13" fill="#7777cc" text-anchor="middle">9%</text>
+
+    <!-- peak -->
+    <line x1="440" y1="130" x2="440" y2="266" stroke="#7ec8e3" stroke-width="2" stroke-dasharray="4,4"/>
+    <text x="440" y="122" font-size="13" font-weight="600" fill="#7ec8e3" text-anchor="middle">봉우리 · 문턱 0.5</text>
+
+    <!-- metric line -->
+    <polyline points="110,306 275,209.2 440,169.6 605,191.6 704,270.8" fill="none" stroke="#55c555" stroke-width="2.5"/>
+    <circle cx="110" cy="306" r="5" fill="#55c555"/>
+    <circle cx="275" cy="209.2" r="5" fill="#55c555"/>
+    <circle cx="440" cy="169.6" r="5" fill="#55c555"/>
+    <circle cx="605" cy="191.6" r="5" fill="#55c555"/>
+    <circle cx="704" cy="270.8" r="5" fill="#55c555"/>
+    <text x="142" y="318" font-size="13" fill="#55c555">41.0</text>
+    <text x="215" y="206" font-size="13" fill="#55c555">43.2</text>
+    <text x="456" y="166" font-size="13" fill="#55c555">44.1</text>
+    <text x="620" y="186" font-size="13" fill="#55c555">43.6</text>
+    <text x="720" y="266" font-size="13" fill="#55c555">41.8</text>
+
+    <!-- x labels -->
+    <text x="110" y="372" font-size="13" fill="#888" text-anchor="middle">0.0</text>
+    <text x="275" y="372" font-size="13" fill="#888" text-anchor="middle">0.25</text>
+    <text x="440" y="372" font-size="13" fill="#888" text-anchor="middle">0.5</text>
+    <text x="605" y="372" font-size="13" fill="#888" text-anchor="middle">0.75</text>
+    <text x="704" y="372" font-size="13" fill="#888" text-anchor="middle">0.9</text>
+    <text x="440" y="394" font-size="13" fill="#888" text-anchor="middle">분류기 점수 문턱</text>
+
+    <text x="440" y="422" font-size="13" fill="#888" text-anchor="middle">문턱을 올리면 남는 양은 계속 줄지만 지표는 0.5를 지나며 다시 떨어진다 — 다양성이 빠지는 자리다</text>
+  </g>
+</svg>

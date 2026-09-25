@@ -1,6 +1,6 @@
 ---
 title: "데이터 중복 제거: 정확한 매칭부터 시맨틱 디덥까지"
-description: "정확 매칭·퍼지 매칭·시맨틱 임베딩 기반 중복 제거 기법을 비교하고, RapidFuzz·recordlinkage·SentenceTransformers를 활용한 실무 파이프라인을 코드와 함께 설명합니다."
+description: "정확 매칭·퍼지 매칭·MinHash LSH·SemDeDup을 비교하고, 밴드와 행이 임계 유사도를 정하는 계산, 표본으로 임계값을 정하는 절차, 억 단위 파이프라인, 평가 문항 제거와 지우면 안 되는 중복까지 설명합니다."
 author: "PALDYN Team"
 pubDate: "2026-05-26"
 category: "ml-ops"
@@ -9,11 +9,15 @@ tags: ["데이터중복제거", "Deduplication", "퍼지매칭", "RecordLinkage"
 featured: false
 draft: false
 ---
-[지난 글](/articles/data-quality)에서 데이터 품질의 6대 차원을 살펴봤다. 그 중 **유일성**(Uniqueness)은 중복 제거라는 구체적인 작업으로 구현된다. 중복 데이터는 모델 학습에서 특정 패턴을 과대표집해 편향을 일으키고, 암기(memorization)를 조장한다. LLM 사전 학습 데이터셋에서도 중복 문서를 제거하는 것이 모델 성능과 일반화에 유의미한 영향을 미친다는 연구 결과가 있다.
+[지난 글](/articles/data-quality)에서 데이터 품질의 6대 차원을 살펴봤다. 그중 **유일성**(Uniqueness)은 같은 대상이 데이터에 한 번만 있어야 한다는 차원이고, 그것을 실제로 지키는 작업이 중복 제거다. 중복은 무해해 보이지만 학습에서는 비용이 분명하다. 같은 예가 여러 번 들어가면 모델은 그 예를 과대평가해 편향되고, 그 문장을 통째로 외워 되뱉기 쉬워진다.
+
+LLM 사전 학습 데이터에서도 이 효과가 측정됐다. 2021년 Google 연구팀은 C4 데이터셋에서 61단어짜리 영어 문장 하나가 6만 번 넘게 되풀이되는 것을 찾았고, 중복을 걷어 낸 데이터로 학습한 모델이 학습 문장을 그대로 뱉는 빈도가 약 10분의 1로 줄었다고 보고했다. 이 글은 중복을 찾는 방법을 싼 것부터 비싼 것까지 차례로 보고, 문턱을 어떻게 정하는지, 억 단위 문서에서 어떻게 돌리는지, 그리고 지우면 안 되는 중복은 무엇인지를 다룬다.
 
 ## 중복의 종류
 
-모든 중복이 같지 않다. 유형을 먼저 파악해야 적절한 기법을 선택할 수 있다.
+### 네 유형
+
+모든 중복이 같지 않다. 무엇이 같아야 중복인지가 유형마다 달라서, 유형을 먼저 가려야 기법을 고를 수 있다.
 
 | 유형 | 예시 | 탐지 난이도 |
 |---|---|---|
@@ -22,13 +26,21 @@ draft: false
 | 레코드 중복 | 다른 시스템의 동일 개체 | 높음 |
 | 의미 중복 | 같은 내용 다른 표현 | 매우 높음 |
 
-## 기법 비교
+위로 갈수록 「같다」의 정의가 기계적이고 아래로 갈수록 판단이 든다. 완전 중복은 바이트가 같으면 끝이지만, 의미 중복은 「환불은 7일 안에 가능합니다」와 「구매 후 일주일 이내라면 돈을 돌려받을 수 있어요」가 같은 말인지를 판정해야 한다. 판정이 어려울수록 계산도 비싸진다.
+
+### 중복의 비용
+
+중복이 해를 끼치는 방식은 데이터 종류에 따라 다르다. 정형 데이터에서는 집계가 틀어진다. 같은 고객이 두 번 적재되면 고객 수가 부풀고, 그 고객의 구매 패턴이 두 배 무게로 모델에 들어간다. 텍스트 데이터에서는 **암기**가 문제다. 모델은 여러 번 본 문자열을 확률이 높은 문장으로 배우므로, 약관 한 문단이 수천 번 들어가면 관계없는 질문에도 그 문단을 이어 쓰려 한다.
+
+평가에도 흔적이 남는다. 학습 세트와 검증 세트에 같은 예가 나뉘어 들어가면 검증 점수는 모델이 일반화한 정도가 아니라 외운 정도를 잰다. 위 연구는 C4의 검증 세트 예 가운데 일부가 학습 세트에 거의 그대로 있다는 것도 함께 찾았다.
+
+## 정확 매칭과 퍼지 매칭
 
 ![데이터 중복 제거 기법](/assets/posts/data-deduplication-techniques.svg)
 
-### 정확 매칭
+### 해시 매칭
 
-가장 빠르고 확실하다. 해시(MD5, SHA256)를 계산해 동일한 값이면 중복으로 판단한다.
+가장 빠르고 확실한 방법은 **해시**다. 행이나 문서 전체를 MD5·SHA256 같은 함수에 넣어 고정 길이 값을 얻고, 값이 같으면 중복으로 본다. 문서 수가 n이면 해시를 n번 계산하고 정렬하거나 해시 표에 넣기만 하면 되므로 계산량이 n에 비례한다.
 
 ```python
 import hashlib
@@ -40,64 +52,50 @@ def row_hash(row):
 
 df['_hash'] = df.apply(row_hash, axis=1)
 df_dedup = df.drop_duplicates(subset=['_hash'])
-print(f"원본: {len(df)} rows → 중복 제거 후: {len(df_dedup)} rows")
-```
-
-Primary Key 중복은 더 간단하다.
-
-```python
-# 이메일로 중복 제거 (첫 번째 등장을 유지)
-df_dedup = df.drop_duplicates(subset=['email'], keep='first')
 
 # 특정 컬럼 조합으로 중복 탐지
 dup_mask = df.duplicated(subset=['name', 'birth_date', 'phone'], keep=False)
-duplicates = df[dup_mask]
 ```
 
-### 퍼지 매칭
+해시는 한 글자만 달라도 완전히 다른 값을 낸다. 그래서 해시 전에 **정규화**를 한다. 대소문자와 앞뒤 공백을 통일하고, 연속 공백을 하나로 줄이고, 텍스트라면 HTML 태그와 날짜 스탬프를 걷는다. 정규화를 어디까지 하느냐가 「완전 중복」의 경계를 정한다.
 
-오타, 약어, 순서 변경 등으로 완전히 일치하지 않지만 같은 개체를 의미하는 경우 퍼지 매칭이 필요하다.
+해시 길이도 한 번은 따져 볼 만하다. 해시는 서로 다른 입력이 같은 값을 받는 **충돌**이 드물게 생기고, 충돌하면 다른 문서가 중복으로 지워진다. 충돌 확률은 생일 문제로 어림한다. 값이 64비트인 해시로 문서 10억 건을 넣으면 한 쌍이라도 충돌할 확률이 (10⁹)² ÷ 2⁶⁵ ≈ 2.7%다. 문서 한두 건이 잘못 지워지는 정도라 대개 문제가 안 되지만, 128비트인 MD5를 그대로 쓰면 이 확률은 사실상 0이 된다. 보안이 목적이 아니므로 MD5의 암호학적 약점은 여기서 상관이 없다.
+
+### 문자열 유사도
+
+오타, 약어, 낱말 순서가 달라 해시로 안 잡히는 경우에는 **퍼지 매칭**이 필요하다. 두 문자열이 얼마나 비슷한지를 0~100 점수로 재고 문턱을 넘으면 같은 것으로 본다.
 
 ![중복 제거 코드 예시](/assets/posts/data-deduplication-code.svg)
 
-**RapidFuzz**는 C++ 기반으로 속도가 빠르며 다양한 유사도 알고리즘을 제공한다.
+RapidFuzz는 C++로 구현되어 빠른 문자열 유사도 라이브러리다. `fuzz.ratio`는 편집 거리 기반이고, `token_sort_ratio`는 낱말을 정렬한 뒤 비교해서 「삼성전자 주식회사」와 「주식회사 삼성전자」를 같게 본다.
 
 ```python
 from rapidfuzz import fuzz, process
-import pandas as pd
 
 def find_duplicates_fuzzy(df, col='company_name', threshold=85):
     names = df[col].tolist()
-    duplicate_pairs = []
-
+    pairs = []
     for i, name in enumerate(names):
-        matches = process.extract(
-            name,
-            names[i+1:],
-            scorer=fuzz.token_sort_ratio,
-            score_cutoff=threshold
-        )
-        for match, score, idx in matches:
-            duplicate_pairs.append((i, i + 1 + idx, score))
-
-    return duplicate_pairs
-
-pairs = find_duplicates_fuzzy(df)
-print(f"중복 후보 쌍: {len(pairs)}개")
+        for match, score, idx in process.extract(
+            name, names[i+1:], scorer=fuzz.token_sort_ratio, score_cutoff=threshold
+        ):
+            pairs.append((i, i + 1 + idx, score))
+    return pairs
 ```
 
-**recordlinkage** 라이브러리는 대규모 데이터에서 효율적인 Record Linkage를 지원한다. 블로킹(Blocking)으로 비교 쌍을 먼저 줄이고, 여러 컬럼의 유사도를 결합해 최종 판단한다.
+이 코드는 모든 쌍을 비교하므로 계산량이 n²에 비례한다. 1만 건이면 5천만 쌍이라 몇 초에 끝나지만 1천만 건이면 50조 쌍이라 끝나지 않는다. 그래서 퍼지 매칭은 거의 늘 다음 소절의 블로킹과 함께 쓴다.
+
+### 레코드 연결
+
+**레코드 연결**(Record Linkage)은 서로 다른 시스템에 있는 행이 같은 개체를 가리키는지 찾는 일이다. 쇼핑몰 회원 DB와 고객센터 DB의 「김민수」가 같은 사람인지 가리는 식이다. 핵심 장치가 **블로킹**이다. 우편번호가 같은 쌍처럼 같을 가능성이 있는 쌍만 먼저 추려서 비교할 쌍의 수를 줄인다.
 
 ```python
 import recordlinkage
 
-# 블로킹: 우편번호가 같은 쌍만 비교
 indexer = recordlinkage.Index()
 indexer.block('postal_code')
 candidates = indexer.index(df_a, df_b)
-print(f"후보 쌍: {len(candidates)} (전체 {len(df_a)*len(df_b)} 중)")
 
-# 여러 컬럼 유사도 계산
 compare = recordlinkage.Compare()
 compare.exact('customer_id', 'customer_id', label='id')
 compare.string('name', 'name', method='jarowinkler', threshold=0.85, label='name')
@@ -105,122 +103,167 @@ compare.string('email', 'email', method='levenshtein', label='email')
 compare.date('birth_date', 'birth_date', label='birth')
 
 features = compare.compute(candidates, df_a, df_b)
-
-# 임계값 기반 판정 (3개 이상 일치 시 중복)
 matches = features[features.sum(axis=1) >= 3]
 ```
 
-### 시맨틱 중복 제거
+블로킹 키를 고르는 것이 이 방법의 전부라 해도 과장이 아니다. 키가 너무 거칠면 후보가 줄지 않고, 너무 잘면 진짜 중복이 다른 블록에 떨어져 영영 비교되지 않는다. 이사한 고객은 우편번호가 달라 위 코드에서 빠진다. 그래서 흔히 키를 두세 개 두고(우편번호, 전화번호 뒷자리, 이름의 초성) 어느 하나라도 같으면 후보로 올린다.
 
-텍스트 내용이 의미상 같지만 표현이 다른 경우(LLM 학습 데이터, 뉴스 기사, 고객 문의 등)에는 임베딩 기반 시맨틱 디덥이 효과적이다.
+## MinHash와 LSH
 
-```python
-from sentence_transformers import SentenceTransformer, util
-import torch
-import numpy as np
+### 자카드 유사도와 MinHash
 
-model = SentenceTransformer('paraphrase-multilingual-mpnet-base-v2')
-sentences = df['text'].tolist()
+수십억 개 문서에서는 블로킹 키조차 마땅치 않다. 여기서 쓰는 것이 **MinHash**와 **LSH**의 조합이다. 먼저 문서를 겹치는 조각의 집합으로 바꾼다. 연속한 5단어(5-gram)를 한 조각으로 보면 문서 하나가 조각 수백 개의 집합이 된다. 두 집합의 **자카드 유사도**는 교집합 크기를 합집합 크기로 나눈 값이다. 조각의 80%를 공유하는 두 문서는 자카드 유사도가 0.8 근처다.
 
-# 배치 인코딩 (GPU 권장)
-embeddings = model.encode(
-    sentences,
-    batch_size=256,
-    convert_to_tensor=True,
-    show_progress_bar=True
-)
+두 집합을 직접 비교하는 것은 비싸므로, MinHash는 문서마다 짧은 **서명**을 만든다. 해시 함수 하나를 골라 문서의 모든 조각에 적용하고 그중 최솟값을 적는다. 이 최솟값이 두 문서에서 같을 확률이 정확히 자카드 유사도와 같다는 것이 MinHash의 성질이다. 해시 함수를 128개 쓰면 문서마다 128개짜리 서명이 생기고, 두 서명에서 같은 칸의 비율이 자카드 유사도의 어림값이 된다.
 
-# 쌍별 코사인 유사도 (메모리 주의: n²)
-threshold = 0.92
-to_remove = set()
+### 밴드와 행
 
-# 청크 단위로 처리해 메모리 효율화
-chunk_size = 1000
-for i in range(0, len(sentences), chunk_size):
-    chunk = embeddings[i:i+chunk_size]
-    scores = util.cos_sim(chunk, embeddings)
-    # 자기 자신(대각선) 제외, 이미 제거 예정 제외
-    for j, row in enumerate(scores):
-        if i + j in to_remove:
-            continue
-        dups = (row > threshold).nonzero(as_tuple=True)[0]
-        for dup_idx in dups:
-            if dup_idx.item() > i + j:
-                to_remove.add(dup_idx.item())
+서명을 만들어도 모든 쌍을 비교하면 여전히 n²이다. LSH는 서명 128칸을 b개의 **밴드**로 자르고, 밴드마다 r개 **행**을 묶어 해시한다(b × r = 128). 어느 한 밴드라도 해시가 같은 두 문서만 후보 쌍이 된다. 같은 통에 떨어진 문서끼리만 비교하므로 계산량이 크게 준다.
 
-df_dedup = df.drop(index=list(to_remove)).reset_index(drop=True)
-print(f"제거된 의미 중복: {len(to_remove)} / {len(df)}")
-```
+자카드 유사도가 J인 두 문서가 후보가 될 확률은 계산할 수 있다. 한 밴드의 r칸이 모두 같을 확률이 J^r이고, b개 밴드 가운데 하나도 안 맞을 확률이 (1 − J^r)^b이므로, 후보가 될 확률은 1 − (1 − J^r)^b다. 이 곡선은 어느 지점에서 급하게 솟는 S자 모양이고, 그 지점, 곧 **임계 유사도**는 대략 (1/b)^(1/r)이다.
 
-### MinHash LSH: 초대규모 텍스트 디덥
+![밴드와 행의 조합이 후보가 될 확률 곡선을 옮기는 모양](/assets/posts/data-deduplication-lsh-curve.svg)
 
-수십억 개 문서를 처리할 때는 O(n²) 쌍별 비교가 불가능하다. **MinHash + LSH**(Locality Sensitive Hashing)는 실제로 유사한 쌍만 빠르게 찾아낸다.
+### 임계 유사도 계산
+
+128칸을 b = 16, r = 8로 자르면 임계 유사도가 (1/16)^(1/8) ≈ 0.71이다. 자카드 0.5인 쌍은 6.1%만 후보가 되고, 0.7이면 61%, 0.8이면 95%, 0.9면 사실상 100%다. b = 8, r = 16으로 자르면 임계가 0.88로 올라가 자카드 0.8인 쌍도 20%만 후보가 된다. 칸 수는 같은데 자르는 방식만으로 문턱이 옮겨 간다.
 
 ```python
 from datasketch import MinHash, MinHashLSH
 
-def text_to_minhash(text, num_perm=128):
+def text_to_minhash(text, num_perm=128, k=5):
+    words = text.split()
     m = MinHash(num_perm=num_perm)
-    for shingle in get_shingles(text, k=5):
-        m.update(shingle.encode('utf-8'))
+    for i in range(len(words) - k + 1):
+        m.update(" ".join(words[i:i+k]).encode("utf-8"))
     return m
 
-def get_shingles(text, k=5):
-    return {text[i:i+k] for i in range(len(text) - k + 1)}
-
-# LSH 인덱스 (threshold: Jaccard 유사도 임계값)
+# threshold를 주면 datasketch가 오탐·누락이 가장 적은 b, r을 고른다
 lsh = MinHashLSH(threshold=0.8, num_perm=128)
+# 직접 정하려면: MinHashLSH(num_perm=128, params=(16, 8))
 
-for idx, text in enumerate(texts):
-    m = text_to_minhash(text)
-    lsh.insert(f"doc_{idx}", m)
-
-# 중복 후보 탐색
 duplicates = set()
 for idx, text in enumerate(texts):
     m = text_to_minhash(text)
-    candidates = lsh.query(m)
-    for cand in candidates:
-        cand_idx = int(cand.split('_')[1])
-        if cand_idx > idx:
-            duplicates.add(cand_idx)
-
-print(f"MinHash LSH로 {len(duplicates)}개 중복 감지")
+    for cand in lsh.query(m):
+        duplicates.add(idx)          # 먼저 들어간 문서가 남는다
+        break
+    else:
+        lsh.insert(f"doc_{idx}", m)
 ```
 
-## LLM 학습 데이터 중복 제거
+FineWeb은 해시 112개를 8개씩 14개 밴드로 나눈 설정을 공개했는데, 식에 넣으면 임계가 (1/14)^(1/8) ≈ 0.72다. 곡선이 S자라 임계 근처의 쌍은 확률적으로만 잡힌다는 점을 기억해 두자. 임계가 0.72여도 자카드 0.75인 쌍의 23%는 빠진다. 더 확실하게 잡고 싶으면 칸 수를 늘려 곡선을 가파르게 만든다 — 서명이 길어지는 만큼 메모리를 더 쓴다.
 
-대규모 사전 학습 데이터셋(Common Crawl 등)에서는 **SemDeDup** 방식이 주목받고 있다. Meta의 연구에서 웹 크롤 데이터의 30~50%가 의미 중복임이 밝혀졌으며, 이를 제거하면 동일한 품질을 적은 학습 스텝으로 달성할 수 있다.
+## 임계값
 
-일반적인 LLM 데이터 전처리 파이프라인에서 중복 제거는 다음 순서로 실행된다:
+### 표본 라벨링
 
-1. **URL 중복 제거** - 동일 URL 문서 제거
-2. **Exact MinHash** - 텍스트 해시 기반 완전 중복 제거
-3. **Fuzzy MinHash(LSH)** - 유사 문서(Jaccard ≥ 0.8) 제거
-4. **Semantic Clustering** - 임베딩으로 의미 중복 최종 정리
+「자카드 0.8 이상이면 중복」이라는 문턱은 데이터마다 다시 정해야 한다. 뉴스 기사에서는 0.8이 같은 기사의 재게재를 뜻하지만, 상품 설명에서는 색상만 다른 별개 상품이 0.9를 넘기도 한다. 문턱을 정하는 가장 믿을 만한 방법은 사람이 표본을 보는 것이다.
 
-## 중복 제거 후 품질 확인
+절차는 이렇다. 후보 쌍을 유사도 구간(0.6~0.7, 0.7~0.8, 0.8~0.9, 0.9 이상)으로 나누고 구간마다 100쌍쯤 무작위로 뽑는다. 사람이 쌍마다 「같은 것으로 쳐야 한다 / 아니다」를 표시한다. 그러면 구간마다 진짜 중복의 비율, 곧 그 구간에서 지웠을 때의 **정밀도**가 나온다. 예를 들어 0.9 이상 구간이 98%, 0.8~0.9가 91%, 0.7~0.8이 64%라면 문턱은 0.8 근처에 둔다.
+
+### 재현율과 정밀도
+
+정밀도만으로는 반쪽이다. 문턱을 높이면 지우는 쌍이 진짜 중복일 확률은 오르지만, 문턱 아래로 빠진 진짜 중복이 늘어난다. 놓친 중복의 비율, 곧 **재현율**을 재려면 이미 중복이라고 알고 있는 쌍이 필요하다. 흔한 방법은 깨끗한 문서 일부를 골라 공백·문장부호·낱말 몇 개를 바꾼 사본을 일부러 섞어 넣고, 파이프라인이 그 사본을 얼마나 찾아내는지 보는 것이다.
+
+어느 쪽으로 기울일지는 용도가 정한다. 사전 학습 데이터에서는 조금 더 지워도 양이 넉넉하므로 재현율 쪽으로 기운다. 반대로 드문 도메인의 파인튜닝 데이터나 고객 레코드처럼 한 건 한 건이 귀하면 정밀도 쪽으로 기운다 — 별개의 고객 둘을 한 사람으로 합치는 실수는 되돌리기 어렵다.
+
+표본 라벨링은 한 번으로 끝나지 않는다. 출처가 새로 붙거나 정규화 규칙이 바뀌면 유사도 분포가 달라지므로, 분기마다 같은 절차를 작게 다시 돌려 구간별 정밀도가 처음 잰 값에서 얼마나 움직였는지 본다. 라벨링한 쌍은 버리지 말고 모아 두면 다음 번에는 비교 기준이 된다.
+
+## 시맨틱 중복 제거
+
+### 임베딩 쌍 비교
+
+표현이 다르지만 같은 내용인 **의미 중복**은 조각 겹침으로 잡히지 않는다. 이때는 문장을 벡터로 바꾸는 임베딩 모델을 쓴다. 뜻이 비슷한 문장은 벡터 공간에서 가까이 놓이므로 코사인 유사도로 가까운 쌍을 찾는다.
 
 ```python
-# 중복 제거 전/후 통계 비교
-def dedup_report(df_before, df_after):
-    removed = len(df_before) - len(df_after)
-    ratio = removed / len(df_before) * 100
-    print(f"원본: {len(df_before):,} rows")
-    print(f"중복 제거 후: {len(df_after):,} rows")
-    print(f"제거율: {ratio:.1f}%")
+from sentence_transformers import SentenceTransformer, util
 
-    # 카테고리 분포 변화 확인
-    if 'category' in df_before.columns:
-        before_dist = df_before['category'].value_counts(normalize=True)
-        after_dist = df_after['category'].value_counts(normalize=True)
-        drift = (before_dist - after_dist).abs().max()
-        print(f"카테고리 분포 최대 변화: {drift:.4f}")
+model = SentenceTransformer('paraphrase-multilingual-mpnet-base-v2')
+embeddings = model.encode(df['text'].tolist(), batch_size=256, convert_to_tensor=True)
 
-dedup_report(df_raw, df_dedup)
+threshold, to_remove, chunk = 0.92, set(), 1000
+for i in range(0, len(embeddings), chunk):
+    scores = util.cos_sim(embeddings[i:i+chunk], embeddings)
+    for j, row in enumerate(scores):
+        if i + j in to_remove:
+            continue
+        for d in (row > threshold).nonzero(as_tuple=True)[0].tolist():
+            if d > i + j:
+                to_remove.add(d)
 ```
 
-중복 제거 비율이 20%를 초과한다면, 데이터 수집 파이프라인 자체에 문제가 있을 가능성이 높다. 원인을 파악하고 수집 단계부터 중복을 방지하는 것이 장기적으로 효율적이다.
+청크로 나눠도 결국 모든 쌍을 비교하므로 n²이다. 수만 건의 고객 문의나 파인튜닝 데이터에는 이것으로 충분하지만, 수백만 건을 넘으면 벡터 색인(FAISS 같은 근사 최근접 탐색)으로 이웃 몇 개만 찾는 방식으로 바꿔야 한다.
+
+코드의 0.92라는 문턱은 모델에 매인 값이다. 코사인 유사도의 분포는 임베딩 모델마다 달라서, 어떤 모델은 관계없는 문장끼리도 0.7을 넘기고 어떤 모델은 거의 같은 문장도 0.85에 머문다. 모델을 바꾸면 앞 절의 표본 라벨링을 다시 해야 하고, 같은 모델이라도 한국어와 영어에서 분포가 다르다. 그래서 문턱을 설정 파일에 적을 때는 모델 이름과 함께 적는다.
+
+의미 중복 제거가 지우는 것에는 주의가 더 필요하다. 「환불 규정」을 묻는 고객 문의 천 건은 의미상 거의 같지만, 그 천 건이 곧 사람들이 그것을 많이 묻는다는 정보다. 분류 모델을 학습한다면 그 빈도가 클래스 비율이므로 함부로 지우면 안 되고, 생성 모델을 학습한다면 같은 답을 천 번 외울 필요가 없으니 줄이는 편이 낫다. 같은 도구가 과제에 따라 정반대로 쓰인다.
+
+### SemDeDup
+
+**SemDeDup**은 2023년 Meta 연구팀이 대규모 데이터용으로 제안한 방법이다. 모든 문서를 임베딩한 뒤 k-means로 수만 개 군집으로 나누고, 같은 군집 안에서만 쌍을 비교한다. 군집 하나가 수천 건이면 그 안의 n²은 감당할 만하다. 비교는 블로킹과 같은 원리이고, 블로킹 키가 우편번호 대신 「임베딩 공간의 이웃」인 셈이다.
+
+유사도가 문턱을 넘는 무리를 찾으면 하나만 남기고 지우는데, 남길 것을 고르는 규칙이 흥미롭다. 군집 중심에 가장 가까운 것부터 지우고 중심에서 가장 먼 것을 남긴다. 중심에 가까운 것은 그 군집의 가장 전형적인 예라 비슷한 것이 이미 많고, 먼 것일수록 그 무리에 없던 변화를 담고 있기 때문이다. 연구팀은 이미지-텍스트 데이터셋 LAION의 절반가량을 이렇게 지우고도 성능 손실이 거의 없었고 학습은 더 빨라졌다고 보고했다.
+
+## 대규모 파이프라인
+
+### 단계 순서
+
+LLM 사전 학습 데이터에서는 위 기법을 싼 순서로 쌓는다.
+
+1. URL 중복 제거 — 같은 URL의 문서를 하나만 남긴다
+2. 정확 중복 제거 — 정규화한 본문의 해시로 완전 중복을 지운다
+3. 퍼지 중복 제거 — MinHash LSH로 거의 같은 문서를 지운다
+4. 의미 중복 제거 — 필요하면 임베딩 군집으로 마지막 정리를 한다
+
+앞 단계가 지운 만큼 뒤 단계가 볼 양이 준다. 3단계와 4단계는 문서 하나에 드는 계산이 앞의 수백 배라, 앞에서 한 건이라도 더 걸러 두는 것이 전체 시간을 크게 줄인다. FineWeb 팀은 크롤 회차 전체를 한꺼번에 중복 제거하는 것보다 회차마다 따로 하는 쪽이 오히려 결과가 좋았다고 보고했다. 전체를 묶어 지우고 나니 오래된 회차에서 살아남은 문서가 지워진 문서보다 오히려 질이 낮았다는 것이다 — 여러 회차에 되풀이 실리는 문서는 대개 질이 좋아서 되풀이되는 것이었다.
+
+### 샤딩과 메모리
+
+MinHash 서명은 128칸 × 4바이트 = 문서당 512바이트다. 문서 10억 건이면 512GB라 한 기계의 메모리에 안 들어간다. 그래서 억 단위 파이프라인은 네 단계로 나눠 디스크를 거친다. 먼저 문서를 샤드로 나눠 샤드마다 서명을 계산해 파일로 쓴다. 다음으로 밴드마다 해시값 기준으로 서명을 모아 정렬하고, 같은 해시를 가진 문서 쌍을 뽑는다. 셋째로 뽑힌 쌍을 이어 **연결 요소**를 찾는다 — A와 B가, B와 C가 후보면 A·B·C가 한 무리다. 마지막으로 무리마다 하나만 남기고 원래 샤드에서 나머지를 지운다.
+
+Hugging Face의 datatrove가 이 네 단계를 따로따로 실행하는 블록으로 제공한다. 단계 사이를 파일로 끊는 것은 메모리 상한 때문만이 아니다. 셋째 단계에서 문턱을 바꾸고 싶을 때 서명을 다시 계산하지 않고 그 단계부터 다시 돌릴 수 있다.
+
+### 중간 산출물
+
+무리마다 무엇을 남길지는 규칙으로 정해 둔다. 가장 오래된 크롤 회차의 것, 품질 점수가 가장 높은 것, 가장 긴 것 가운데 하나를 고르고 그 규칙을 문서로 남긴다. 규칙이 없으면 실행할 때마다 남는 문서가 달라져 재현이 안 된다.
+
+중간 산출물 가운데 연결 요소 목록은 지우지 말고 보관한다. 「이 문서는 왜 빠졌나」라는 질문에 답할 유일한 기록이고, 뒤에서 볼 지우면 안 되는 중복을 되살릴 때도 이 목록이 필요하다. 전체 제거율과 함께 도메인별 제거율을 적어 두면 특정 사이트가 통째로 빠지는 이상도 일찍 보인다.
+
+이 목록은 삭제 요청에도 쓰인다. 저작권자나 개인이 특정 문서를 빼 달라고 하면, 그 문서 하나만 지우고 끝낼 수 없다. 같은 무리에 묶였던 사본이 다른 샤드에 남아 있을 수 있고, 더 나쁘게는 요청받은 문서가 무리의 대표로 남아 있던 것이라 지우는 순간 다른 사본이 대표 자리를 이어받아야 할 수도 있다. 무리 목록이 있으면 요청 하나에 대해 지울 문서 전부를 한 번에 찾는다.
+
+## 오염과 의도된 반복
+
+### 평가 문항 제거
+
+중복 제거는 학습 세트 안에서만 하는 일이 아니다. 학습 세트와 평가 세트 사이의 중복, 곧 평가 문항이 학습 데이터에 섞여 들어간 것도 같은 기계로 찾는다. 평가 문항을 조각으로 쪼개 색인에 넣고 학습 문서를 거기에 질의하면, 문항이 통째로 들어간 문서뿐 아니라 해설 블로그처럼 문항을 약간 바꿔 옮긴 문서도 잡힌다.
+
+두 경우의 기준은 다르게 잡는다. 학습 세트 안의 중복은 거의 같아야 지우지만, 평가 문항과의 겹침은 13단어처럼 긴 조각 하나만 겹쳐도 지운다. 학습 문서 하나를 더 버리는 비용보다 평가 점수가 부풀려지는 비용이 훨씬 크기 때문이다. 이 검사는 수집 단계에서 이미 한 번 하지만, 중복 제거 파이프라인에 같이 걸어 두면 새 벤치마크가 추가될 때 다시 돌리기 쉽다.
+
+### 지우면 안 되는 중복
+
+모든 반복이 잡음은 아니다. 법령 조항, 표준 약관, 자주 묻는 질문의 답은 원래 같은 글이 여러 곳에 실리는 것이 정상이다. 법률 도메인 모델이라면 그 조항을 정확히 외우는 것이 오히려 목표이고, 지우면 모델이 조문을 흐릿하게 기억해 틀린 인용을 만든다. 이런 도메인은 중복 제거에서 빼거나, 무리마다 하나가 아니라 몇 개를 남기도록 따로 규칙을 둔다.
+
+정형 데이터에서는 「완전 중복」이 실제 사건일 수 있다. 같은 고객이 같은 날 같은 금액으로 같은 상품을 두 번 산 것은 행 두 개가 바이트까지 같아도 두 건의 구매다. 거래 ID나 타임스탬프가 없는 표를 해시로 지우면 매출이 줄어든다. 레이블 데이터에서는 같은 문장에 서로 다른 레이블이 붙은 경우가 있는데, 이것은 지울 중복이 아니라 판정이 갈린 문항이라 사람이 다시 봐야 한다.
+
+### 제거 후 점검
+
+지운 뒤에는 분포가 어떻게 바뀌었는지 본다. 중복은 고르게 퍼져 있지 않아서, 지우고 나면 특정 카테고리가 크게 줄어 있을 수 있다.
+
+```python
+def dedup_report(df_before, df_after):
+    removed = len(df_before) - len(df_after)
+    print(f"원본 {len(df_before):,} → {len(df_after):,} (제거율 {removed / len(df_before):.1%})")
+
+    if 'category' in df_before.columns:
+        before = df_before['category'].value_counts(normalize=True)
+        after = df_after['category'].value_counts(normalize=True)
+        print(f"카테고리 비율 최대 변화: {(before - after).abs().max():.4f}")
+```
+
+제거율 자체도 신호다. 사내 정형 데이터에서 20%가 넘게 지워진다면 적재 작업이 재시도하며 같은 행을 두 번 넣는 등 수집 파이프라인에 구멍이 있을 가능성이 높다. 중복을 뒤에서 지우는 것보다 앞에서 안 만드는 편이 싸다. 웹 크롤은 사정이 달라서 절반 가까이 지워지는 일도 드물지 않으니, 비교할 기준은 같은 출처의 지난 회차 제거율이다.
+
+여기까지 모으고 정리한 데이터는 이제 학습에 들어갈 준비가 됐다. 다음 글은 그 데이터를 실제로 계산하는 쪽으로 넘어가, 딥러닝 연산을 떠받치는 GPU와 CUDA가 어떤 구조로 행렬 곱을 빠르게 만드는지를 본다.
 
 ---
 

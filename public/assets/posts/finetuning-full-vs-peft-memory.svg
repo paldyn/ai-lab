@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="420" viewBox="0 0 880 420">
+  <rect width="880" height="420" rx="12" fill="#0a0a0a"/>
+  <g font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+    <text x="440" y="46" font-size="22" font-weight="700" fill="#e8e8e8" text-anchor="middle">7B 모델 학습의 메모리, 자리별로</text>
+    <text x="440" y="72" font-size="16" font-weight="600" fill="#e8e8e8" text-anchor="middle">활성값을 뺀 값 — 네 줄의 가로 눈금은 같다</text>
+
+    <!-- legend -->
+    <rect x="150" y="90" width="14" height="14" fill="#7ec8e3"/>
+    <text x="172" y="102" font-size="13" fill="#888">가중치</text>
+    <rect x="250" y="90" width="14" height="14" fill="#7777cc"/>
+    <text x="272" y="102" font-size="13" fill="#888">그래디언트</text>
+    <rect x="370" y="90" width="14" height="14" fill="#e05555"/>
+    <text x="392" y="102" font-size="13" fill="#888">옵티마이저 상태 (+fp32 사본)</text>
+    <rect x="600" y="90" width="14" height="14" fill="#55c555"/>
+    <text x="622" y="102" font-size="13" fill="#888">LoRA 학습 상태</text>
+
+    <!-- row 1: 4.5px per GB, x0=220 -->
+    <text x="204" y="146" font-size="14" font-weight="600" fill="#e8e8e8" text-anchor="end">Full · 혼합 정밀도</text>
+    <rect x="220" y="126" width="63" height="32" fill="#7ec8e3"/>
+    <rect x="283" y="126" width="63" height="32" fill="#7777cc"/>
+    <rect x="346" y="126" width="378" height="32" fill="#e05555"/>
+    <text x="736" y="147" font-size="14" font-weight="600" fill="#e8e8e8">112GB</text>
+
+    <!-- row 2 -->
+    <text x="204" y="206" font-size="14" font-weight="600" fill="#e8e8e8" text-anchor="end">Full · 전부 bf16</text>
+    <rect x="220" y="186" width="63" height="32" fill="#7ec8e3"/>
+    <rect x="283" y="186" width="63" height="32" fill="#7777cc"/>
+    <rect x="346" y="186" width="126" height="32" fill="#e05555"/>
+    <text x="484" y="207" font-size="14" font-weight="600" fill="#e8e8e8">56GB</text>
+
+    <!-- row 3 -->
+    <text x="204" y="266" font-size="14" font-weight="600" fill="#e8e8e8" text-anchor="end">LoRA · bf16</text>
+    <rect x="220" y="246" width="63" height="32" fill="#7ec8e3"/>
+    <rect x="283" y="246" width="4" height="32" fill="#55c555"/>
+    <text x="299" y="267" font-size="14" font-weight="600" fill="#e8e8e8">14.6GB</text>
+
+    <!-- row 4 -->
+    <text x="204" y="326" font-size="14" font-weight="600" fill="#e8e8e8" text-anchor="end">QLoRA · NF4</text>
+    <rect x="220" y="306" width="21" height="32" fill="#7ec8e3"/>
+    <rect x="241" y="306" width="4" height="32" fill="#55c555"/>
+    <text x="257" y="327" font-size="14" font-weight="600" fill="#e8e8e8">약 5GB</text>
+
+    <line x1="220" y1="112" x2="220" y2="350" stroke="#555"/>
+    <text x="440" y="378" font-size="13" fill="#888" text-anchor="middle">LoRA가 없애는 것은 빨간 덩어리이고, QLoRA가 누르는 것은 파란 덩어리다</text>
+    <text x="440" y="400" font-size="13" fill="#888" text-anchor="middle">활성값은 네 줄 모두에 따로 붙는다 — 2,048토큰 · 배치 1에 약 9GB</text>
+  </g>
+</svg>
