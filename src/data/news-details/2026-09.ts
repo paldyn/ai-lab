@@ -2,6 +2,21 @@ import type { NewsDetail } from '../news';
 
 /** 2026-09 발표의 모달 본문. 목록은 news.ts에 있습니다. */
 export const details: Record<string, NewsDetail> = {
+  'claude-platform-september-24-2026': {
+    points: [
+      '출력이 나오기 전의 거절 중 stop_details.category가 bio·frontier_llm·reasoning_extraction인 것에 과금을 재개했다',
+      '세 범주는 오탐이 적게 측정된 범주라고 밝혔고, 스트리밍 도중 거절은 원래부터 과금됐다',
+      '과금되는 거절은 다른 요청과 같이 그 요청을 처리한 모델의 단가로 매겨진다',
+      '다른 범주의 출력 전 거절은 여전히 과금하지 않고 fallback 크레딧도 그대로이며 모든 플랫폼에 적용된다',
+      'Compliance API의 로컬 세션 엔드포인트가 Excel·PowerPoint·Word·Outlook의 Claude for Microsoft 365 세션에서 베타를 벗었다',
+      'Compliance API Activity Feed는 파일 이름·프로젝트 문서 이름·아티팩트 제목을 더 돌려주지 않으며 이전 기록에도 적용된다',
+      '이름이나 제목은 read:compliance_user_data 범위의 Compliance Access Key로 ID를 따로 조회해야 한다',
+    ],
+    commentary:
+      '거절을 공짜로 두던 정책을 범주별로 거둬들인 것이라, 생물·모델 추출 쪽 요청이 많은 서비스는 비용 산정에 거절 비율을 넣어야 한다. ' +
+      'Activity Feed에서 이름을 뺀 것은 감사 로그 자체가 민감 정보를 퍼뜨리는 통로가 되지 않게 한 조치로 보이며, ' +
+      '로그를 사람이 읽는 대시보드로 쓰던 곳은 조회 경로를 새로 붙여야 한다.',
+  },
   'sam-altman-un-security-council-remarks': {
     points: [
       'OpenAI CEO Sam Altman이 유엔 안전보장이사회에서 AI를 주제로 연설했다',

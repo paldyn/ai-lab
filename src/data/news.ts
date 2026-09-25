@@ -160,7 +160,7 @@ export interface NewsDetail {
   commentary: string;
 }
 
-export const globalNewsUpdatedAt = '2026-09-23';
+export const globalNewsUpdatedAt = '2026-09-24';
 
 /**
  * 공식 발표 한 건 = 항목 한 개. 2026년 1월부터 쌓는 아카이브이며 오래된 항목을
@@ -171,6 +171,20 @@ export const globalNewsUpdatedAt = '2026-09-23';
  * 목록에서 파생됩니다. 갱신 시 globalNewsUpdatedAt도 함께 올립니다.
  */
 const entries: NewsItem[] = [
+  {
+    id: 'claude-platform-september-24-2026',
+    source: 'Anthropic',
+    kind: 'company',
+    title: 'Claude API, 출력 전 거절 일부 과금 재개와 Compliance API 변경',
+    summary:
+      'stop_details.category가 bio·frontier_llm·reasoning_extraction인 출력 전 거절에 다시 요금을 매긴다. ' +
+      'Compliance API는 Microsoft 365용 로컬 세션 엔드포인트가 베타를 벗었고 Activity Feed에서 파일 이름과 제목이 빠졌다.',
+    publishedAt: '2026-09-24',
+    collectedAt: '2026-09-26',
+    category: 'Product',
+    signal: '플랫폼 변경',
+    url: 'https://platform.claude.com/docs/en/release-notes/overview#september-24-2026',
+  },
   {
     id: 'blog-introducing-gemini-38-live-with-live-avatar',
     source: 'Google DeepMind',
