@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="470" viewBox="0 0 880 470" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <rect width="880" height="470" rx="12" fill="#0a0a0a"/>
+  <defs>
+    <marker id="gmArr" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#888"/>
+    </marker>
+  </defs>
+  <text x="60" y="56" font-size="22" font-weight="700" fill="#e8e8e8">두 해 성장률의 평균 — 더하지 말고 곱으로 잇는다</text>
+  <text x="60" y="82" font-size="13" fill="#888">10% 오르고 30% 오른 두 해를 한 가지 비율로 두 번 이어 보면</text>
+  <text x="60" y="136" font-size="16" font-weight="600" fill="#e8e8e8">실제</text>
+  <text x="60" y="156" font-size="13" fill="#888">10% 뒤 30%</text>
+  <rect x="250" y="112" width="120" height="56" rx="6" fill="#101010" stroke="#333" stroke-width="1.5"/>
+  <text x="310" y="148" font-size="20" font-weight="700" fill="#e8e8e8" text-anchor="middle">100</text>
+  <rect x="470" y="112" width="120" height="56" rx="6" fill="#101010" stroke="#333" stroke-width="1.5"/>
+  <text x="530" y="148" font-size="20" font-weight="700" fill="#e8e8e8" text-anchor="middle">110</text>
+  <rect x="690" y="112" width="120" height="56" rx="6" fill="#101010" stroke="#333" stroke-width="1.5"/>
+  <text x="750" y="148" font-size="20" font-weight="700" fill="#55c555" text-anchor="middle">143</text>
+  <line x1="370" y1="140" x2="470" y2="140" stroke="#888" stroke-width="2" marker-end="url(#gmArr)"/>
+  <text x="420" y="128" font-size="13" fill="#7ec8e3" text-anchor="middle">× 1.1</text>
+  <line x1="590" y1="140" x2="690" y2="140" stroke="#888" stroke-width="2" marker-end="url(#gmArr)"/>
+  <text x="640" y="128" font-size="13" fill="#7ec8e3" text-anchor="middle">× 1.3</text>
+  <text x="60" y="226" font-size="16" font-weight="600" fill="#e8e8e8">산술평균</text>
+  <text x="60" y="246" font-size="13" fill="#888">20%씩 두 번</text>
+  <rect x="250" y="202" width="120" height="56" rx="6" fill="#101010" stroke="#333" stroke-width="1.5"/>
+  <text x="310" y="238" font-size="20" font-weight="700" fill="#e8e8e8" text-anchor="middle">100</text>
+  <rect x="470" y="202" width="120" height="56" rx="6" fill="#101010" stroke="#333" stroke-width="1.5"/>
+  <text x="530" y="238" font-size="20" font-weight="700" fill="#e8e8e8" text-anchor="middle">120</text>
+  <rect x="690" y="202" width="120" height="56" rx="6" fill="#101010" stroke="#333" stroke-width="1.5"/>
+  <text x="750" y="238" font-size="20" font-weight="700" fill="#e05555" text-anchor="middle">144</text>
+  <line x1="370" y1="230" x2="470" y2="230" stroke="#888" stroke-width="2" marker-end="url(#gmArr)"/>
+  <text x="420" y="218" font-size="13" fill="#7ec8e3" text-anchor="middle">× 1.2</text>
+  <line x1="590" y1="230" x2="690" y2="230" stroke="#888" stroke-width="2" marker-end="url(#gmArr)"/>
+  <text x="640" y="218" font-size="13" fill="#7ec8e3" text-anchor="middle">× 1.2</text>
+  <text x="60" y="316" font-size="16" font-weight="600" fill="#e8e8e8">기하평균</text>
+  <text x="60" y="336" font-size="13" fill="#888">19.6%씩 두 번</text>
+  <rect x="250" y="292" width="120" height="56" rx="6" fill="#101010" stroke="#333" stroke-width="1.5"/>
+  <text x="310" y="328" font-size="20" font-weight="700" fill="#e8e8e8" text-anchor="middle">100</text>
+  <rect x="470" y="292" width="120" height="56" rx="6" fill="#101010" stroke="#333" stroke-width="1.5"/>
+  <text x="530" y="328" font-size="20" font-weight="700" fill="#e8e8e8" text-anchor="middle">119.6</text>
+  <rect x="690" y="292" width="120" height="56" rx="6" fill="#101010" stroke="#333" stroke-width="1.5"/>
+  <text x="750" y="328" font-size="20" font-weight="700" fill="#55c555" text-anchor="middle">143.0</text>
+  <line x1="370" y1="320" x2="470" y2="320" stroke="#888" stroke-width="2" marker-end="url(#gmArr)"/>
+  <text x="420" y="308" font-size="13" fill="#7ec8e3" text-anchor="middle">× 1.196</text>
+  <line x1="590" y1="320" x2="690" y2="320" stroke="#888" stroke-width="2" marker-end="url(#gmArr)"/>
+  <text x="640" y="308" font-size="13" fill="#7ec8e3" text-anchor="middle">× 1.196</text>
+  <text x="310" y="390" font-size="13" fill="#888" text-anchor="middle">처음</text>
+  <text x="530" y="390" font-size="13" fill="#888" text-anchor="middle">1년 뒤</text>
+  <text x="750" y="390" font-size="13" fill="#888" text-anchor="middle">2년 뒤</text>
+  <rect x="60" y="406" width="760" height="50" rx="6" fill="#101010" stroke="#333" stroke-width="1"/>
+  <text x="84" y="436" font-size="13" font-weight="600" fill="#e8e8e8">1.2 × 1.2 = 1.44 로 어긋나고, 1.196 × 1.196 ≈ 1.43 으로 실제와 맞는다</text>
+</svg>

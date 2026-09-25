@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="540" viewBox="0 0 880 540" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <defs>
+    <marker id="arrF" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#7ec8e3"/>
+    </marker>
+    <marker id="arrB" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#e05555"/>
+    </marker>
+  </defs>
+  <rect x="0" y="0" width="880" height="540" rx="12" fill="#0a0a0a"/>
+  <text x="60" y="44" font-size="22" font-weight="700" fill="#e8e8e8">순전파의 브로드캐스트와 역전파의 합은 짝이다</text>
+  <text x="60" y="74" font-size="13" fill="#888">Y = XWᵀ + b 에서 편향 b 는 (2,), 배치 B = 2</text>
+
+  <text x="60" y="118" font-size="16" font-weight="600" fill="#7ec8e3">순전파 — 없는 축으로 복제한다</text>
+  <text x="140" y="150" font-size="13" fill="#888">b : (2,)</text>
+  <rect x="140" y="160" width="80" height="44" fill="#000000" stroke="#7ec8e3" stroke-width="1.5"/>
+  <text x="180" y="187" font-size="15" font-weight="600" fill="#ffffff" text-anchor="middle">0.5</text>
+  <rect x="220" y="160" width="80" height="44" fill="#000000" stroke="#7ec8e3" stroke-width="1.5"/>
+  <text x="260" y="187" font-size="15" font-weight="600" fill="#ffffff" text-anchor="middle">−0.5</text>
+  <text x="560" y="150" font-size="13" fill="#888">복제된 b : (2, 2)</text>
+  <rect x="560" y="160" width="80" height="44" fill="#000000" stroke="#7777cc" stroke-width="1.5"/>
+  <text x="600" y="187" font-size="15" font-weight="600" fill="#ffffff" text-anchor="middle">0.5</text>
+  <rect x="640" y="160" width="80" height="44" fill="#000000" stroke="#7777cc" stroke-width="1.5"/>
+  <text x="680" y="187" font-size="15" font-weight="600" fill="#ffffff" text-anchor="middle">−0.5</text>
+  <rect x="560" y="204" width="80" height="44" fill="#000000" stroke="#7777cc" stroke-width="1.5"/>
+  <text x="600" y="231" font-size="15" font-weight="600" fill="#ffffff" text-anchor="middle">0.5</text>
+  <rect x="640" y="204" width="80" height="44" fill="#000000" stroke="#7777cc" stroke-width="1.5"/>
+  <text x="680" y="231" font-size="15" font-weight="600" fill="#ffffff" text-anchor="middle">−0.5</text>
+  <line x1="300" y1="182" x2="560" y2="182" stroke="#7ec8e3" stroke-width="2" marker-end="url(#arrF)"/>
+  <text x="430" y="164" font-size="14" font-weight="600" fill="#7ec8e3" text-anchor="middle">행 B개로 복제</text>
+
+  <text x="60" y="300" font-size="16" font-weight="600" fill="#e05555">역전파 — 그 축을 따라 더한다</text>
+  <text x="140" y="332" font-size="13" fill="#888">∂L/∂b : (2,)</text>
+  <rect x="140" y="342" width="80" height="44" fill="#000000" stroke="#55c555" stroke-width="1.5"/>
+  <text x="180" y="369" font-size="15" font-weight="600" fill="#ffffff" text-anchor="middle">1.0</text>
+  <rect x="220" y="342" width="80" height="44" fill="#000000" stroke="#55c555" stroke-width="1.5"/>
+  <text x="260" y="369" font-size="15" font-weight="600" fill="#ffffff" text-anchor="middle">0.0</text>
+  <text x="560" y="332" font-size="13" fill="#888">Δ : (2, 2)</text>
+  <rect x="560" y="342" width="80" height="44" fill="#000000" stroke="#e05555" stroke-width="1.5"/>
+  <text x="600" y="369" font-size="15" font-weight="600" fill="#ffffff" text-anchor="middle">0.5</text>
+  <rect x="640" y="342" width="80" height="44" fill="#000000" stroke="#e05555" stroke-width="1.5"/>
+  <text x="680" y="369" font-size="15" font-weight="600" fill="#ffffff" text-anchor="middle">0.5</text>
+  <rect x="560" y="386" width="80" height="44" fill="#000000" stroke="#e05555" stroke-width="1.5"/>
+  <text x="600" y="413" font-size="15" font-weight="600" fill="#ffffff" text-anchor="middle">0.5</text>
+  <rect x="640" y="386" width="80" height="44" fill="#000000" stroke="#e05555" stroke-width="1.5"/>
+  <text x="680" y="413" font-size="15" font-weight="600" fill="#ffffff" text-anchor="middle">−0.5</text>
+  <line x1="560" y1="364" x2="300" y2="364" stroke="#e05555" stroke-width="2" marker-end="url(#arrB)"/>
+  <text x="430" y="346" font-size="14" font-weight="600" fill="#e05555" text-anchor="middle">배치 축 합</text>
+  <text x="140" y="412" font-size="13" fill="#888">0.5 + 0.5 = 1.0</text>
+  <text x="140" y="432" font-size="13" fill="#888">0.5 − 0.5 = 0.0</text>
+
+  <rect x="60" y="462" width="760" height="48" rx="6" fill="#000000" stroke="#3a4a6e" stroke-width="1"/>
+  <text x="440" y="492" font-size="15" font-weight="600" fill="#ffffff" text-anchor="middle">복제의 전치가 합이다 — 모양이 (2, 2)에서 (2,)로 돌아와 b 와 같아진다</text>
+</svg>
