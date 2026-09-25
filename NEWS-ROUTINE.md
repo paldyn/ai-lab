@@ -15,7 +15,8 @@
 `job_config`를 통째로 다시 올린다. 이 루틴은 `created_via: http_api`라 그게 된다 —
 클라우드에서 도는 루틴 자신은 그 도구가 없어 스스로 못 고친다.
 
-마지막 갱신: 2026-09-01 (STEP 1 첫 줄에서 원격 main에 맞춘다)
+마지막 갱신: 2026-09-25 (Anthropic 목록을 `/news/` 밖 링크까지 읽는다 — Opus 5.5 출시를 이틀 놓쳤다)
+이전 갱신: 2026-09-01 (STEP 1 첫 줄에서 원격 main에 맞춘다)
 이전 갱신: 2026-08-23 (완료 보고에 읽은 파일 목록 추가)
 이전 갱신: 2026-08-19 (`web.archive.org` 접속이 뚫린 것을 반영 — 웨이백 확인 절차)
 
@@ -140,6 +141,25 @@ TZ='Asia/Seoul' date +%Y-%m-%d
   `datePublished`를 믿을 수 없다. 값이 아예 없거나 **최신 글의 날짜가 박혀 있다.**
 - **openai.com, blog.google — RSS `pubDate` 또는 페이지의 `datePublished`.** 둘 다 맞는다.
 - **www.anthropic.com — 페이지 본문의 `Mon D, YYYY` 표기.** JSON-LD도 og 태그도 없다.
+
+  **목록에서 `/news/` 링크만 골라 읽지 마라.** 모델 출시 글은 `/news/` 밖에 선다 —
+  `/claude-opus-5-5`, `/claude-fable-and-mythos-5-1`처럼 사이트 바로 아래 경로다.
+  2026-09-22에 나온 Claude Opus 5.5를 `/news/`만 훑은 실행 둘이 놓쳤고, 09-25 실행이
+  목록의 모든 내부 링크를 보다가 찾았다. 목록 페이지에서 **날짜가 붙은 내부 링크는
+  경로와 상관없이 전부** 후보로 삼는다:
+
+  ```python
+  import re
+  s = open('/tmp/news/anthropic.html', encoding='utf-8').read()
+  seen = set()
+  for m in re.finditer(r'href="(/[a-z0-9\-/]+)"', s):
+      h = m.group(1)
+      if h in seen: continue
+      d = re.search(r'([A-Z][a-z]{2} \d{1,2}, 20\d\d)', s[m.end():m.end() + 2500])
+      if d: seen.add(h); print(h, d.group(1))
+  ```
+
+  날짜가 뒤 링크의 것을 주워 올 수 있으니 후보의 날짜는 그 글 본문에서 다시 확인한다.
 - **platform.claude.com — RSS의 `pubDate`.** 항목 자체가 날짜 단위라 그 날짜가 곧 발행일이다.
   목록 페이지의 `PublicationList` 항목마다 날짜가 붙어 있어 거기서 한 번에 읽어도 된다.
 
