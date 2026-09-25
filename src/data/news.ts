@@ -160,7 +160,7 @@ export interface NewsDetail {
   commentary: string;
 }
 
-export const globalNewsUpdatedAt = '2026-09-24';
+export const globalNewsUpdatedAt = '2026-09-25';
 
 /**
  * 공식 발표 한 건 = 항목 한 개. 2026년 1월부터 쌓는 아카이브이며 오래된 항목을
@@ -171,6 +171,20 @@ export const globalNewsUpdatedAt = '2026-09-24';
  * 목록에서 파생됩니다. 갱신 시 globalNewsUpdatedAt도 함께 올립니다.
  */
 const entries: NewsItem[] = [
+  {
+    id: 'proaction',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'Proaction, Codex로 비개발자 COO가 맞춤 데모를 직접 만든 사례',
+    summary:
+      '차량 운영 소프트웨어 기업 Proaction의 COO가 통화 기록과 메일을 Codex에 넘겨 고객별 데모를 30~45분에 만든다. ' +
+      '데모 뒤 솔루션 개발로 넘어가는 거래가 50~60% 늘었고, GPT-Live-1과 GPT-6 Astra로 음성 정비 에이전트도 만든다.',
+    publishedAt: '2026-09-25',
+    collectedAt: '2026-09-26',
+    category: 'Product',
+    signal: '기업 도입 사례',
+    url: 'https://openai.com/index/proaction',
+  },
   {
     id: 'claude-platform-september-24-2026',
     source: 'Anthropic',

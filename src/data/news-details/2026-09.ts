@@ -2,6 +2,22 @@ import type { NewsDetail } from '../news';
 
 /** 2026-09 발표의 모달 본문. 목록은 news.ts에 있습니다. */
 export const details: Record<string, NewsDetail> = {
+  proaction: {
+    points: [
+      'COO Colin Knudsen이 개발자 없이 Codex로 고객 맞춤 인터랙티브 데모를 매달 4~6개, 한 개에 30~45분 들여 만든다',
+      'Granola 통화 기록·메일 스레드·고객 스프레드시트를 넘기면 Codex가 고객 차량과 업무 흐름을 반영한 HTML 데모 환경을 꾸민다',
+      '개발자가 만들면 데모 하나에 약 10시간이라 매달 40~60시간의 개발 작업을 아낀다고 추산했다',
+      '맞춤 데모 뒤 첫 접촉에서 솔루션 개발 단계로 넘어가는 거래 비율이 50~60% 늘었다고 추정했다',
+      'Codex로 고객이 로그인해 맞춤 업무 흐름과 영업 자료를 보는 고객 솔루션 센터도 만들었다',
+      'Granola·Gmail·Slack·Linear·GitHub·HubSpot 플러그인과 예약 자동화로 하루 15~20개 업무를 처리해 월 25~33시간을 아낀다고 밝혔다',
+      'GPT-Live-1과 GPT-6 Astra로 전화를 걸어 정비소 예약과 견적 승인까지 맡는 정비 조율 에이전트 Marty를 만들고 있다',
+      '차량 파손 사진 판독에는 ChatGPT-5.6 Sol을 쓰고, GPT-6 Astra의 컴퓨터 사용 실행이 GPT-5.6 Sol보다 짧다고 평가했다',
+    ],
+    commentary:
+      'Codex 사례가 개발 조직이 아니라 영업·운영을 맡은 비개발자 공동창업자에게서 나왔다는 점이 눈에 띈다. ' +
+      '코딩 에이전트가 제품을 만드는 도구에서 영업 자료를 즉석에서 짓는 도구로 쓰임이 넓어지고 있고, ' +
+      '수치는 전부 본인 추정이라 효과 크기보다 업무 흐름의 모양을 참고하는 편이 맞다.',
+  },
   'claude-platform-september-24-2026': {
     points: [
       '출력이 나오기 전의 거절 중 stop_details.category가 bio·frontier_llm·reasoning_extraction인 것에 과금을 재개했다',
