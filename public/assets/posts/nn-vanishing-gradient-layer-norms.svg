@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" viewBox="0 0 880 580" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+<rect width="880" height="580" rx="12" fill="#0a0a0a"/>
+<text x="440" y="46" text-anchor="middle" fill="#e8e8e8" font-size="22" font-weight="700">층별 기울기 노름</text>
+<text x="440" y="72" text-anchor="middle" fill="#888" font-size="13">20층 MLP · 폭 64 · 배치 32 — 가중치 기울기 노름을 로그 눈금으로</text>
+<line x1="140" y1="128.0" x2="800" y2="128.0" stroke="#222" stroke-width="1"/>
+<text x="126" y="132.0" text-anchor="end" fill="#888" font-size="13">10³</text>
+<line x1="140" y1="182.0" x2="800" y2="182.0" stroke="#222" stroke-width="1"/>
+<text x="126" y="186.0" text-anchor="end" fill="#888" font-size="13">10⁰</text>
+<line x1="140" y1="236.0" x2="800" y2="236.0" stroke="#222" stroke-width="1"/>
+<text x="126" y="240.0" text-anchor="end" fill="#888" font-size="13">10⁻³</text>
+<line x1="140" y1="290.0" x2="800" y2="290.0" stroke="#222" stroke-width="1"/>
+<text x="126" y="294.0" text-anchor="end" fill="#888" font-size="13">10⁻⁶</text>
+<line x1="140" y1="344.0" x2="800" y2="344.0" stroke="#222" stroke-width="1"/>
+<text x="126" y="348.0" text-anchor="end" fill="#888" font-size="13">10⁻⁹</text>
+<line x1="140" y1="398.0" x2="800" y2="398.0" stroke="#222" stroke-width="1"/>
+<text x="126" y="402.0" text-anchor="end" fill="#888" font-size="13">10⁻¹²</text>
+<line x1="140" y1="452.0" x2="800" y2="452.0" stroke="#222" stroke-width="1"/>
+<text x="126" y="456.0" text-anchor="end" fill="#888" font-size="13">10⁻¹⁵</text>
+<text x="140.0" y="484" text-anchor="middle" fill="#888" font-size="13">층 1</text>
+<text x="278.9" y="484" text-anchor="middle" fill="#888" font-size="13">층 5</text>
+<text x="452.6" y="484" text-anchor="middle" fill="#888" font-size="13">층 10</text>
+<text x="626.3" y="484" text-anchor="middle" fill="#888" font-size="13">층 15</text>
+<text x="800.0" y="484" text-anchor="middle" fill="#888" font-size="13">층 20</text>
+<text x="470" y="510" text-anchor="middle" fill="#888" font-size="13">입력 쪽 ← 층 번호 → 출력 쪽</text>
+<polyline points="140.0,130.5 278.9,123.3 452.6,118.8 626.3,124.8 800.0,128.9" fill="none" stroke="#7ec8e3" stroke-width="2.5"/>
+<circle cx="140.0" cy="130.5" r="4.5" fill="#7ec8e3"/>
+<circle cx="278.9" cy="123.3" r="4.5" fill="#7ec8e3"/>
+<circle cx="452.6" cy="118.8" r="4.5" fill="#7ec8e3"/>
+<circle cx="626.3" cy="124.8" r="4.5" fill="#7ec8e3"/>
+<circle cx="800.0" cy="128.9" r="4.5" fill="#7ec8e3"/>
+<text x="154" y="152.5" fill="#7ec8e3" font-size="13" font-weight="600">≈10³</text>
+<polyline points="140.0,272.7 278.9,254.9 452.6,219.3 626.3,180.6 800.0,149.4" fill="none" stroke="#e0a040" stroke-width="2.5"/>
+<circle cx="140.0" cy="272.7" r="4.5" fill="#e0a040"/>
+<circle cx="278.9" cy="254.9" r="4.5" fill="#e0a040"/>
+<circle cx="452.6" cy="219.3" r="4.5" fill="#e0a040"/>
+<circle cx="626.3" cy="180.6" r="4.5" fill="#e0a040"/>
+<circle cx="800.0" cy="149.4" r="4.5" fill="#e0a040"/>
+<text x="154" y="294.7" fill="#e0a040" font-size="13" font-weight="600">≈10⁻⁵</text>
+<polyline points="140.0,435.8 278.9,366.1 452.6,291.3 626.3,214.8 800.0,138.8" fill="none" stroke="#e05555" stroke-width="2.5"/>
+<circle cx="140.0" cy="435.8" r="4.5" fill="#e05555"/>
+<circle cx="278.9" cy="366.1" r="4.5" fill="#e05555"/>
+<circle cx="452.6" cy="291.3" r="4.5" fill="#e05555"/>
+<circle cx="626.3" cy="214.8" r="4.5" fill="#e05555"/>
+<circle cx="800.0" cy="138.8" r="4.5" fill="#e05555"/>
+<text x="154" y="457.8" fill="#e05555" font-size="13" font-weight="600">≈10⁻¹⁴</text>
+<line x1="100" y1="545" x2="124" y2="545" stroke="#7ec8e3" stroke-width="2.5"/>
+<text x="134" y="550" fill="#e8e8e8" font-size="13">ReLU + He 초기화</text>
+<line x1="330" y1="545" x2="354" y2="545" stroke="#e0a040" stroke-width="2.5"/>
+<text x="364" y="550" fill="#e8e8e8" font-size="13">ReLU + 기본 초기화</text>
+<line x1="560" y1="545" x2="584" y2="545" stroke="#e05555" stroke-width="2.5"/>
+<text x="594" y="550" fill="#e8e8e8" font-size="13">시그모이드 + 기본 초기화</text>
+</svg>

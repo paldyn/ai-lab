@@ -90,7 +90,7 @@
   <text x="556" y="264" fill="#888" font-size="11">AUC: 임의 양성 샘플이</text>
   <text x="556" y="280" fill="#888" font-size="11">임의 음성 샘플보다 높은</text>
   <text x="556" y="296" fill="#888" font-size="11">점수를 받을 확률</text>
-  <text x="556" y="318" fill="#7ec8e3" font-size="11" font-weight="600">클래스 불균형에 강건하다</text>
+  <text x="556" y="318" fill="#7ec8e3" font-size="11" font-weight="600">순위만 본다 (확률값 무관)</text>
   <text x="556" y="334" fill="#7ec8e3" font-size="11" font-weight="600">임계값 독립적 평가</text>
 
   <!-- Footer -->

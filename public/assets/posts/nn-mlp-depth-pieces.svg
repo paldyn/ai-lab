@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" viewBox="0 0 880 400" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+<rect width="880" height="400" rx="12" fill="#0a0a0a"/>
+<text x="440" y="46" text-anchor="middle" fill="#e8e8e8" font-size="22" font-weight="700">겹칠수록 곱으로 느는 조각</text>
+<text x="440" y="74" text-anchor="middle" fill="#888" font-size="13">T(x) = 2·ReLU(x) − 4·ReLU(x − 0.5),  구간 [0, 1]</text>
+<rect x="60" y="96" width="240" height="250" rx="8" fill="#111111" stroke="#2a2a2a"/>
+<text x="180" y="126" text-anchor="middle" fill="#e8e8e8" font-size="16" font-weight="600">T(x)</text>
+<line x1="84" y1="290" x2="276" y2="290" stroke="#444" stroke-width="1"/>
+<polyline points="84.0,290 180.0,160 276.0,290" fill="none" stroke="#7ec8e3" stroke-width="2.5"/>
+<text x="180" y="322" text-anchor="middle" fill="#888" font-size="13">조각 2 · 뉴런 2</text>
+<rect x="340" y="96" width="240" height="250" rx="8" fill="#111111" stroke="#2a2a2a"/>
+<text x="460" y="126" text-anchor="middle" fill="#e8e8e8" font-size="16" font-weight="600">T(T(x))</text>
+<line x1="364" y1="290" x2="556" y2="290" stroke="#444" stroke-width="1"/>
+<polyline points="364.0,290 412.0,160 460.0,290 508.0,160 556.0,290" fill="none" stroke="#7ec8e3" stroke-width="2.5"/>
+<text x="460" y="322" text-anchor="middle" fill="#888" font-size="13">조각 4 · 뉴런 4</text>
+<rect x="620" y="96" width="240" height="250" rx="8" fill="#111111" stroke="#2a2a2a"/>
+<text x="740" y="126" text-anchor="middle" fill="#e8e8e8" font-size="16" font-weight="600">T(T(T(x)))</text>
+<line x1="644" y1="290" x2="836" y2="290" stroke="#444" stroke-width="1"/>
+<polyline points="644.0,290 668.0,160 692.0,290 716.0,160 740.0,290 764.0,160 788.0,290 812.0,160 836.0,290" fill="none" stroke="#7ec8e3" stroke-width="2.5"/>
+<text x="740" y="322" text-anchor="middle" fill="#888" font-size="13">조각 8 · 뉴런 6</text>
+<text x="440" y="378" text-anchor="middle" fill="#7777cc" font-size="13">k번 겹치면 조각 2ᵏ · 뉴런 2k — 10번이면 조각 1,024개에 뉴런 20개</text>
+</svg>

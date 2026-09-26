@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" viewBox="0 0 880 620" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+<rect width="880" height="620" rx="12" fill="#0a0a0a"/>
+<defs>
+<marker id="ab" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto"><path d="M 0 0 L 13 7 L 0 14 z" fill="#7ec8e3"/></marker>
+<marker id="ag" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto"><path d="M 0 0 L 13 7 L 0 14 z" fill="#55c555"/></marker>
+</defs>
+<text x="440" y="46" text-anchor="middle" fill="#e8e8e8" font-size="22" font-weight="700">노름 클리핑과 값 클리핑</text>
+<text x="440" y="72" text-anchor="middle" fill="#888" font-size="13">기울기 g = (3, 4), 임계값 c = 1</text>
+<text x="250" y="118" text-anchor="middle" fill="#e8e8e8" font-size="16" font-weight="600">노름 클리핑</text>
+<text x="250" y="140" text-anchor="middle" fill="#888" font-size="13">길이를 c로 줄인다</text>
+<line x1="70" y1="470" x2="390" y2="470" stroke="#444" stroke-width="1"/>
+<line x1="130" y1="520" x2="130" y2="200" stroke="#444" stroke-width="1"/>
+<circle cx="130" cy="470" r="48" fill="none" stroke="#7777cc" stroke-width="1.5" stroke-dasharray="4,4"/>
+<text x="72" y="414" fill="#7777cc" font-size="13">‖g‖ = 1</text>
+<line x1="130" y1="470" x2="274" y2="278" stroke="#7ec8e3" stroke-width="2.5" marker-end="url(#ab)"/>
+<text x="286" y="282" fill="#7ec8e3" font-size="13">g = (3, 4)</text>
+<text x="286" y="300" fill="#888" font-size="13">‖g‖ = 5</text>
+<line x1="130" y1="470" x2="158.8" y2="431.6" stroke="#55c555" stroke-width="3" marker-end="url(#ag)"/>
+<text x="174.8" y="449.6" fill="#55c555" font-size="13" font-weight="600">53.1°</text>
+<text x="250" y="566" text-anchor="middle" fill="#e8e8e8" font-size="13">결과 (0.6, 0.8) · 방향 53.1° 그대로</text>
+<text x="660" y="118" text-anchor="middle" fill="#e8e8e8" font-size="16" font-weight="600">값 클리핑</text>
+<text x="660" y="140" text-anchor="middle" fill="#888" font-size="13">원소마다 [−c, c]로 자른다</text>
+<line x1="480" y1="470" x2="800" y2="470" stroke="#444" stroke-width="1"/>
+<line x1="540" y1="520" x2="540" y2="200" stroke="#444" stroke-width="1"/>
+<rect x="492" y="422" width="96" height="96" fill="none" stroke="#7777cc" stroke-width="1.5" stroke-dasharray="4,4"/>
+<text x="484" y="412" fill="#7777cc" font-size="13">[−1, 1]²</text>
+<line x1="540" y1="470" x2="684" y2="278" stroke="#7ec8e3" stroke-width="2.5" marker-end="url(#ab)"/>
+<text x="696" y="282" fill="#7ec8e3" font-size="13">g = (3, 4)</text>
+<text x="696" y="300" fill="#888" font-size="13">‖g‖ = 5</text>
+<line x1="540" y1="470" x2="588.0" y2="422.0" stroke="#55c555" stroke-width="3" marker-end="url(#ag)"/>
+<text x="604.0" y="440.0" fill="#55c555" font-size="13" font-weight="600">45°</text>
+<text x="660" y="566" text-anchor="middle" fill="#e8e8e8" font-size="13">결과 (1, 1) · 방향 45°로 바뀜</text>
+</svg>

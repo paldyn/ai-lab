@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" viewBox="0 0 880 430" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+<rect width="880" height="430" rx="12" fill="#0a0a0a"/>
+<text x="440" y="42" text-anchor="middle" fill="#e8e8e8" font-size="22" font-weight="700">양성 4 × 음성 6 = 24쌍</text>
+<text x="440" y="66" text-anchor="middle" fill="#888" font-size="13">칸마다 양성의 점수가 음성보다 높은지를 본다</text>
+<text x="440" y="104" text-anchor="middle" fill="#e05555" font-size="13" font-weight="600">음성의 점수</text>
+<text x="290" y="128" text-anchor="middle" fill="#e05555" font-size="13">0.80</text>
+<text x="350" y="128" text-anchor="middle" fill="#e05555" font-size="13">0.60</text>
+<text x="410" y="128" text-anchor="middle" fill="#e05555" font-size="13">0.55</text>
+<text x="470" y="128" text-anchor="middle" fill="#e05555" font-size="13">0.40</text>
+<text x="530" y="128" text-anchor="middle" fill="#e05555" font-size="13">0.30</text>
+<text x="590" y="128" text-anchor="middle" fill="#e05555" font-size="13">0.20</text>
+<text x="160" y="233" text-anchor="middle" fill="#55c555" font-size="13" font-weight="600">양성의 점수</text>
+<text x="244" y="167" text-anchor="end" fill="#55c555" font-size="13">0.95</text>
+<rect x="262" y="142" width="56" height="40" rx="4" fill="#55c555" fill-opacity="0.25" stroke="#55c555" stroke-width="1"/>
+<text x="290" y="167" text-anchor="middle" fill="#e8e8e8" font-size="13">맞음</text>
+<rect x="322" y="142" width="56" height="40" rx="4" fill="#55c555" fill-opacity="0.25" stroke="#55c555" stroke-width="1"/>
+<text x="350" y="167" text-anchor="middle" fill="#e8e8e8" font-size="13">맞음</text>
+<rect x="382" y="142" width="56" height="40" rx="4" fill="#55c555" fill-opacity="0.25" stroke="#55c555" stroke-width="1"/>
+<text x="410" y="167" text-anchor="middle" fill="#e8e8e8" font-size="13">맞음</text>
+<rect x="442" y="142" width="56" height="40" rx="4" fill="#55c555" fill-opacity="0.25" stroke="#55c555" stroke-width="1"/>
+<text x="470" y="167" text-anchor="middle" fill="#e8e8e8" font-size="13">맞음</text>
+<rect x="502" y="142" width="56" height="40" rx="4" fill="#55c555" fill-opacity="0.25" stroke="#55c555" stroke-width="1"/>
+<text x="530" y="167" text-anchor="middle" fill="#e8e8e8" font-size="13">맞음</text>
+<rect x="562" y="142" width="56" height="40" rx="4" fill="#55c555" fill-opacity="0.25" stroke="#55c555" stroke-width="1"/>
+<text x="590" y="167" text-anchor="middle" fill="#e8e8e8" font-size="13">맞음</text>
+<text x="644" y="167" fill="#888" font-size="13">6 / 6</text>
+<text x="244" y="211" text-anchor="end" fill="#55c555" font-size="13">0.85</text>
+<rect x="262" y="186" width="56" height="40" rx="4" fill="#55c555" fill-opacity="0.25" stroke="#55c555" stroke-width="1"/>
+<text x="290" y="211" text-anchor="middle" fill="#e8e8e8" font-size="13">맞음</text>
+<rect x="322" y="186" width="56" height="40" rx="4" fill="#55c555" fill-opacity="0.25" stroke="#55c555" stroke-width="1"/>
+<text x="350" y="211" text-anchor="middle" fill="#e8e8e8" font-size="13">맞음</text>
+<rect x="382" y="186" width="56" height="40" rx="4" fill="#55c555" fill-opacity="0.25" stroke="#55c555" stroke-width="1"/>
+<text x="410" y="211" text-anchor="middle" fill="#e8e8e8" font-size="13">맞음</text>
+<rect x="442" y="186" width="56" height="40" rx="4" fill="#55c555" fill-opacity="0.25" stroke="#55c555" stroke-width="1"/>
+<text x="470" y="211" text-anchor="middle" fill="#e8e8e8" font-size="13">맞음</text>
+<rect x="502" y="186" width="56" height="40" rx="4" fill="#55c555" fill-opacity="0.25" stroke="#55c555" stroke-width="1"/>
+<text x="530" y="211" text-anchor="middle" fill="#e8e8e8" font-size="13">맞음</text>
+<rect x="562" y="186" width="56" height="40" rx="4" fill="#55c555" fill-opacity="0.25" stroke="#55c555" stroke-width="1"/>
+<text x="590" y="211" text-anchor="middle" fill="#e8e8e8" font-size="13">맞음</text>
+<text x="644" y="211" fill="#888" font-size="13">6 / 6</text>
+<text x="244" y="255" text-anchor="end" fill="#55c555" font-size="13">0.70</text>
+<rect x="262" y="230" width="56" height="40" rx="4" fill="#e05555" fill-opacity="0.35" stroke="#e05555" stroke-width="1"/>
+<text x="290" y="255" text-anchor="middle" fill="#e8e8e8" font-size="13">틀림</text>
+<rect x="322" y="230" width="56" height="40" rx="4" fill="#55c555" fill-opacity="0.25" stroke="#55c555" stroke-width="1"/>
+<text x="350" y="255" text-anchor="middle" fill="#e8e8e8" font-size="13">맞음</text>
+<rect x="382" y="230" width="56" height="40" rx="4" fill="#55c555" fill-opacity="0.25" stroke="#55c555" stroke-width="1"/>
+<text x="410" y="255" text-anchor="middle" fill="#e8e8e8" font-size="13">맞음</text>
+<rect x="442" y="230" width="56" height="40" rx="4" fill="#55c555" fill-opacity="0.25" stroke="#55c555" stroke-width="1"/>
+<text x="470" y="255" text-anchor="middle" fill="#e8e8e8" font-size="13">맞음</text>
+<rect x="502" y="230" width="56" height="40" rx="4" fill="#55c555" fill-opacity="0.25" stroke="#55c555" stroke-width="1"/>
+<text x="530" y="255" text-anchor="middle" fill="#e8e8e8" font-size="13">맞음</text>
+<rect x="562" y="230" width="56" height="40" rx="4" fill="#55c555" fill-opacity="0.25" stroke="#55c555" stroke-width="1"/>
+<text x="590" y="255" text-anchor="middle" fill="#e8e8e8" font-size="13">맞음</text>
+<text x="644" y="255" fill="#888" font-size="13">5 / 6</text>
+<text x="244" y="299" text-anchor="end" fill="#55c555" font-size="13">0.45</text>
+<rect x="262" y="274" width="56" height="40" rx="4" fill="#e05555" fill-opacity="0.35" stroke="#e05555" stroke-width="1"/>
+<text x="290" y="299" text-anchor="middle" fill="#e8e8e8" font-size="13">틀림</text>
+<rect x="322" y="274" width="56" height="40" rx="4" fill="#e05555" fill-opacity="0.35" stroke="#e05555" stroke-width="1"/>
+<text x="350" y="299" text-anchor="middle" fill="#e8e8e8" font-size="13">틀림</text>
+<rect x="382" y="274" width="56" height="40" rx="4" fill="#e05555" fill-opacity="0.35" stroke="#e05555" stroke-width="1"/>
+<text x="410" y="299" text-anchor="middle" fill="#e8e8e8" font-size="13">틀림</text>
+<rect x="442" y="274" width="56" height="40" rx="4" fill="#55c555" fill-opacity="0.25" stroke="#55c555" stroke-width="1"/>
+<text x="470" y="299" text-anchor="middle" fill="#e8e8e8" font-size="13">맞음</text>
+<rect x="502" y="274" width="56" height="40" rx="4" fill="#55c555" fill-opacity="0.25" stroke="#55c555" stroke-width="1"/>
+<text x="530" y="299" text-anchor="middle" fill="#e8e8e8" font-size="13">맞음</text>
+<rect x="562" y="274" width="56" height="40" rx="4" fill="#55c555" fill-opacity="0.25" stroke="#55c555" stroke-width="1"/>
+<text x="590" y="299" text-anchor="middle" fill="#e8e8e8" font-size="13">맞음</text>
+<text x="644" y="299" fill="#888" font-size="13">3 / 6</text>
+<text x="440" y="358" text-anchor="middle" fill="#e8e8e8" font-size="16" font-weight="600">맞은 쌍 6 + 6 + 5 + 3 = 20</text>
+<text x="440" y="386" text-anchor="middle" fill="#55c555" font-size="15" font-weight="600">AUC = 20 / 24 = 5/6 ≈ 0.833</text>
+</svg>

@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" viewBox="0 0 880 400">
+<defs>
+<marker id="arr" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto"><path d="M 0 0 L 13 7 L 0 14 z" fill="#888"/></marker>
+<marker id="arrb" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto"><path d="M 0 0 L 13 7 L 0 14 z" fill="#7ec8e3"/></marker>
+<marker id="arrr" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto"><path d="M 0 0 L 13 7 L 0 14 z" fill="#e05555"/></marker>
+</defs>
+<rect width="880" height="400" rx="12" fill="#0a0a0a"/>
+<text x="60" y="52" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="22" font-weight="700" fill="#e8e8e8">UMAP의 세 단계</text>
+<text x="60" y="80" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#e8e8e8">이웃 그래프를 만들고, 합치고, 2차원에 펼친다</text>
+
+<rect x="60" y="110" width="220" height="240" rx="10" fill="#111" stroke="#3a4a6e" stroke-width="1"/>
+<text x="170" y="140" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#e8e8e8" text-anchor="middle">① 방향 있는 무게</text>
+<text x="170" y="162" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888" text-anchor="middle">가까운 k개만 잇는다</text>
+<circle cx="110" cy="250" r="18" fill="#0d1a2a" stroke="#7ec8e3" stroke-width="2"/>
+<text x="110" y="255" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="14" font-weight="700" fill="#e8e8e8" text-anchor="middle">i</text>
+<circle cx="230" cy="250" r="18" fill="#0d1a2a" stroke="#7ec8e3" stroke-width="2"/>
+<text x="230" y="255" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="14" font-weight="700" fill="#e8e8e8" text-anchor="middle">j</text>
+<path d="M 124 238 Q 170 205 216 238" fill="none" stroke="#7ec8e3" stroke-width="2.5" marker-end="url(#arrb)"/>
+<text x="170" y="206" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="600" fill="#7ec8e3" text-anchor="middle">i → j  0.8</text>
+<path d="M 216 262 Q 170 295 124 262" fill="none" stroke="#e05555" stroke-width="2" stroke-dasharray="4,4" marker-end="url(#arrr)"/>
+<text x="170" y="306" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="600" fill="#e05555" text-anchor="middle">j → i  0.3</text>
+<text x="170" y="332" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888" text-anchor="middle">가장 가까운 이웃은 1</text>
+
+<line x1="280" y1="230" x2="330" y2="230" stroke="#888" stroke-width="2" marker-end="url(#arr)"/>
+
+<rect x="330" y="110" width="220" height="240" rx="10" fill="#111" stroke="#3a4a6e" stroke-width="1"/>
+<text x="440" y="140" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#e8e8e8" text-anchor="middle">② 대칭화</text>
+<text x="440" y="162" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888" text-anchor="middle">두 방향을 하나로 합친다</text>
+<text x="440" y="206" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="14" fill="#e8e8e8" text-anchor="middle">0.8 + 0.3 − 0.8 × 0.3</text>
+<text x="440" y="232" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="700" fill="#55c555" text-anchor="middle">= 0.86</text>
+<circle cx="380" cy="286" r="18" fill="#0d1a2a" stroke="#7ec8e3" stroke-width="2"/>
+<text x="380" y="291" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="14" font-weight="700" fill="#e8e8e8" text-anchor="middle">i</text>
+<circle cx="500" cy="286" r="18" fill="#0d1a2a" stroke="#7ec8e3" stroke-width="2"/>
+<text x="500" y="291" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="14" font-weight="700" fill="#e8e8e8" text-anchor="middle">j</text>
+<line x1="398" y1="286" x2="482" y2="286" stroke="#55c555" stroke-width="3"/>
+<text x="440" y="332" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888" text-anchor="middle">한쪽만 이어져도 선이 남는다</text>
+
+<line x1="550" y1="230" x2="600" y2="230" stroke="#888" stroke-width="2" marker-end="url(#arr)"/>
+
+<rect x="600" y="110" width="220" height="240" rx="10" fill="#111" stroke="#3a4a6e" stroke-width="1"/>
+<text x="710" y="140" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#e8e8e8" text-anchor="middle">③ 2차원 배치</text>
+<text x="710" y="162" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888" text-anchor="middle">교차 엔트로피를 줄인다</text>
+<circle cx="650" cy="220" r="5" fill="#7ec8e3"/><circle cx="664" cy="212" r="5" fill="#7ec8e3"/><circle cx="660" cy="232" r="5" fill="#7ec8e3"/><circle cx="676" cy="226" r="5" fill="#7ec8e3"/><circle cx="670" cy="244" r="5" fill="#7ec8e3"/>
+<circle cx="752" cy="276" r="5" fill="#e05555"/><circle cx="766" cy="268" r="5" fill="#e05555"/><circle cx="760" cy="290" r="5" fill="#e05555"/><circle cx="776" cy="284" r="5" fill="#e05555"/><circle cx="744" cy="292" r="5" fill="#e05555"/>
+<circle cx="760" cy="206" r="5" fill="#55c555"/><circle cx="774" cy="214" r="5" fill="#55c555"/><circle cx="752" cy="220" r="5" fill="#55c555"/><circle cx="768" cy="228" r="5" fill="#55c555"/>
+<text x="710" y="332" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888" text-anchor="middle">min_dist가 뭉침을 정한다</text>
+</svg>
