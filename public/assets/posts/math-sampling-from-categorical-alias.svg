@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="510" viewBox="0 0 880 510">
+<defs><marker id="arr" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto"><path d="M 0 0 L 13 7 L 0 14 z" fill="#888"/></marker></defs>
+<rect width="880" height="510" rx="12" fill="#0a0a0a"/>
+<text x="60" y="46" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="22" font-weight="700" fill="#e8e8e8">별칭법으로 기둥 쌓기</text>
+<text x="60" y="72" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">확률 0.5, 0.3, 0.2에 3을 곱해 높이 1짜리 기둥 셋으로 다시 쌓는다. 기둥마다 주인은 많아야 둘.</text>
+<text x="220" y="112" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#e8e8e8" text-anchor="middle">확률 × 3</text>
+<text x="660" y="112" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#e8e8e8" text-anchor="middle">기둥 셋, 높이 1씩</text>
+<rect x="90" y="160.0" width="60" height="240.0" fill="#7ec8e3" fill-opacity="0.85" stroke="#0a0a0a" stroke-width="1"/>
+<text x="120" y="424" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e8e8e8" text-anchor="middle">t₁ 1.5</text>
+<rect x="180" y="256.0" width="60" height="144.0" fill="#55c555" fill-opacity="0.85" stroke="#0a0a0a" stroke-width="1"/>
+<text x="210" y="424" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e8e8e8" text-anchor="middle">t₂ 0.9</text>
+<rect x="270" y="304.0" width="60" height="96.0" fill="#7777cc" fill-opacity="0.85" stroke="#0a0a0a" stroke-width="1"/>
+<text x="300" y="424" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e8e8e8" text-anchor="middle">t₃ 0.6</text>
+<line x1="70" y1="240" x2="370" y2="240" stroke="#e8e8e8" stroke-width="1.5" stroke-dasharray="4,4"/>
+<text x="370" y="230" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888" text-anchor="end">높이 1</text>
+<line x1="70" y1="400" x2="370" y2="400" stroke="#888" stroke-width="1.5"/>
+<line x1="395" y1="300" x2="485" y2="300" stroke="#888" stroke-width="2" marker-end="url(#arr)"/>
+<text x="440" y="284" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888" text-anchor="middle">넘친 몫을</text>
+<text x="440" y="324" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888" text-anchor="middle">빌려 준다</text>
+<rect x="530" y="240.0" width="60" height="160.0" fill="#7ec8e3" fill-opacity="0.85" stroke="#0a0a0a" stroke-width="1"/>
+<text x="560" y="424" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e8e8e8" text-anchor="middle">t₁ 1.0</text>
+<rect x="620" y="256.0" width="60" height="144.0" fill="#55c555" fill-opacity="0.85" stroke="#0a0a0a" stroke-width="1"/>
+<rect x="620" y="240.0" width="60" height="16.0" fill="#7ec8e3" fill-opacity="0.85" stroke="#0a0a0a" stroke-width="1"/>
+<text x="650" y="424" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e8e8e8" text-anchor="middle">t₂ 0.9</text>
+<text x="650" y="444" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#7ec8e3" text-anchor="middle">t₁ 0.1</text>
+<rect x="710" y="304.0" width="60" height="96.0" fill="#7777cc" fill-opacity="0.85" stroke="#0a0a0a" stroke-width="1"/>
+<rect x="710" y="240.0" width="60" height="64.0" fill="#7ec8e3" fill-opacity="0.85" stroke="#0a0a0a" stroke-width="1"/>
+<text x="740" y="424" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e8e8e8" text-anchor="middle">t₃ 0.6</text>
+<text x="740" y="444" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#7ec8e3" text-anchor="middle">t₁ 0.4</text>
+<line x1="510" y1="400" x2="790" y2="400" stroke="#888" stroke-width="1.5"/>
+<text x="440" y="484" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e8e8e8" text-anchor="middle">t₁이 뽑힐 확률 = (1.0 + 0.1 + 0.4) ÷ 3 = 0.5</text>
+</svg>

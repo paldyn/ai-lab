@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="560" viewBox="0 0 880 560">
+<rect width="880" height="560" rx="12" fill="#0a0a0a"/>
+<text x="60.0" y="46.0" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="22" fill="#e8e8e8" font-weight="700">이상치 하나가 끄는 정도</text>
+<text x="60.0" y="72.0" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">정규분포를 맞추면 평균, 라플라스를 맞추면 중앙값이 답이 된다.</text>
+<text x="60.0" y="105.0" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" fill="#e8e8e8" font-weight="600">자료 8개: 2, 4, 4, 4, 5, 5, 7, 9</text>
+<line x1="70" y1="215" x2="810" y2="215" stroke="#888" stroke-width="1.5"/>
+<line x1="80.0" y1="210" x2="80.0" y2="220" stroke="#444" stroke-width="1.5"/>
+<text x="80.0" y="237.0" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888" text-anchor="middle">0</text>
+<line x1="236.5" y1="210" x2="236.5" y2="220" stroke="#444" stroke-width="1.5"/>
+<text x="236.5" y="237.0" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888" text-anchor="middle">10</text>
+<line x1="393.0" y1="210" x2="393.0" y2="220" stroke="#444" stroke-width="1.5"/>
+<text x="393.0" y="237.0" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888" text-anchor="middle">20</text>
+<line x1="549.6" y1="210" x2="549.6" y2="220" stroke="#444" stroke-width="1.5"/>
+<text x="549.6" y="237.0" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888" text-anchor="middle">30</text>
+<line x1="706.1" y1="210" x2="706.1" y2="220" stroke="#444" stroke-width="1.5"/>
+<text x="706.1" y="237.0" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888" text-anchor="middle">40</text>
+<circle cx="111.3" cy="206" r="5" fill="#e8e8e8"/>
+<circle cx="142.6" cy="206" r="5" fill="#e8e8e8"/>
+<circle cx="142.6" cy="194" r="5" fill="#e8e8e8"/>
+<circle cx="142.6" cy="182" r="5" fill="#e8e8e8"/>
+<circle cx="158.3" cy="206" r="5" fill="#e8e8e8"/>
+<circle cx="158.3" cy="194" r="5" fill="#e8e8e8"/>
+<circle cx="189.6" cy="206" r="5" fill="#e8e8e8"/>
+<circle cx="220.9" cy="206" r="5" fill="#e8e8e8"/>
+<path d="M 151.3 153 L 165.3 153 L 158.3 163 z" fill="#7ec8e3"/>
+<line x1="158.3" y1="163" x2="158.3" y2="215" stroke="#7ec8e3" stroke-width="2" stroke-dasharray="4,4"/>
+<text x="158.3" y="145.0" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#7ec8e3" text-anchor="middle" font-weight="600">정규 → 평균 5</text>
+<line x1="142.6" y1="257" x2="158.3" y2="257" stroke="#55c555" stroke-width="5"/>
+<line x1="142.6" y1="215" x2="142.6" y2="257" stroke="#55c555" stroke-width="2" stroke-dasharray="4,4"/>
+<line x1="158.3" y1="215" x2="158.3" y2="257" stroke="#55c555" stroke-width="2" stroke-dasharray="4,4"/>
+<text x="150.4" y="283.0" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#55c555" text-anchor="middle" font-weight="600">라플라스 → 중앙값 4~5 어디든</text>
+<text x="60.0" y="345.0" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" fill="#e8e8e8" font-weight="600">이상치 45를 더한 9개</text>
+<line x1="70" y1="455" x2="810" y2="455" stroke="#888" stroke-width="1.5"/>
+<line x1="80.0" y1="450" x2="80.0" y2="460" stroke="#444" stroke-width="1.5"/>
+<text x="80.0" y="477.0" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888" text-anchor="middle">0</text>
+<line x1="236.5" y1="450" x2="236.5" y2="460" stroke="#444" stroke-width="1.5"/>
+<text x="236.5" y="477.0" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888" text-anchor="middle">10</text>
+<line x1="393.0" y1="450" x2="393.0" y2="460" stroke="#444" stroke-width="1.5"/>
+<text x="393.0" y="477.0" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888" text-anchor="middle">20</text>
+<line x1="549.6" y1="450" x2="549.6" y2="460" stroke="#444" stroke-width="1.5"/>
+<text x="549.6" y="477.0" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888" text-anchor="middle">30</text>
+<line x1="706.1" y1="450" x2="706.1" y2="460" stroke="#444" stroke-width="1.5"/>
+<text x="706.1" y="477.0" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888" text-anchor="middle">40</text>
+<circle cx="111.3" cy="446" r="5" fill="#e8e8e8"/>
+<circle cx="142.6" cy="446" r="5" fill="#e8e8e8"/>
+<circle cx="142.6" cy="434" r="5" fill="#e8e8e8"/>
+<circle cx="142.6" cy="422" r="5" fill="#e8e8e8"/>
+<circle cx="158.3" cy="446" r="5" fill="#e8e8e8"/>
+<circle cx="158.3" cy="434" r="5" fill="#e8e8e8"/>
+<circle cx="189.6" cy="446" r="5" fill="#e8e8e8"/>
+<circle cx="220.9" cy="446" r="5" fill="#e8e8e8"/>
+<circle cx="784.3" cy="446" r="5" fill="#e8e8e8"/>
+<path d="M 220.8 393 L 234.8 393 L 227.8 403 z" fill="#7ec8e3"/>
+<line x1="227.8" y1="403" x2="227.8" y2="455" stroke="#7ec8e3" stroke-width="2" stroke-dasharray="4,4"/>
+<text x="227.8" y="385.0" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#7ec8e3" text-anchor="middle" font-weight="600">정규 → 평균 9.44</text>
+<path d="M 151.3 503 L 165.3 503 L 158.3 493 z" fill="#55c555"/>
+<line x1="158.3" y1="455" x2="158.3" y2="493" stroke="#55c555" stroke-width="2" stroke-dasharray="4,4"/>
+<text x="158.3" y="523.0" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#55c555" text-anchor="middle" font-weight="600">라플라스 → 중앙값 5</text>
+<text x="430.0" y="395.0" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">평균은 5에서 9.44로 끌려가고 중앙값은 5다</text>
+<text x="784.3" y="429.0" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e05555" text-anchor="middle" font-weight="600">이상치</text>
+</svg>

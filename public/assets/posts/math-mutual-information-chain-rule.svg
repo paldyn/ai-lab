@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="420" viewBox="0 0 880 420" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <rect x="0" y="0" width="880" height="420" rx="12" fill="#0a0a0a"/>
+  <text x="60" y="44" font-size="22" font-weight="700" fill="#e8e8e8">특정 y에서는 놀람이 커져도 평균은 줄어든다</text>
+  <text x="60" y="72" font-size="13" fill="#888">결합분포 세 칸: (Y=1, A) 0.8 · (Y=2, A) 0.1 · (Y=2, B) 0.1</text>
+
+  <text x="92" y="112" font-size="16" font-weight="600" fill="#e8e8e8">조건부 엔트로피 (비트)</text>
+
+  <line x1="92" y1="246.2" x2="450" y2="246.2" stroke="#7777cc" stroke-width="1.5" stroke-dasharray="4,4"/>
+
+  <rect x="92" y="246.2" width="56" height="93.8" fill="#7777cc" fill-opacity="0.55"/>
+  <text x="120" y="236" font-size="13" font-weight="600" fill="#e8e8e8" text-anchor="middle">0.469</text>
+
+  <line x1="187" y1="339" x2="243" y2="339" stroke="#7ec8e3" stroke-width="3"/>
+  <text x="215" y="326" font-size="13" font-weight="600" fill="#e8e8e8" text-anchor="middle">0</text>
+
+  <rect x="282" y="140" width="56" height="200" fill="#e05555" fill-opacity="0.55"/>
+  <text x="310" y="130" font-size="13" font-weight="600" fill="#e05555" text-anchor="middle">1.000</text>
+
+  <rect x="377" y="300" width="56" height="40" fill="#55c555" fill-opacity="0.55"/>
+  <text x="405" y="290" font-size="13" font-weight="600" fill="#55c555" text-anchor="middle">0.200</text>
+
+  <line x1="80" y1="340" x2="450" y2="340" stroke="#888" stroke-width="1.5"/>
+
+  <text x="120" y="362" font-size="13" fill="#e8e8e8" text-anchor="middle">H(X)</text>
+  <text x="215" y="362" font-size="13" fill="#e8e8e8" text-anchor="middle">H(X|Y=1)</text>
+  <text x="310" y="362" font-size="13" fill="#e8e8e8" text-anchor="middle">H(X|Y=2)</text>
+  <text x="405" y="362" font-size="13" fill="#e8e8e8" text-anchor="middle">H(X|Y)</text>
+  <text x="120" y="382" font-size="13" fill="#888" text-anchor="middle">모를 때</text>
+  <text x="215" y="382" font-size="13" fill="#888" text-anchor="middle">확률 0.8</text>
+  <text x="310" y="382" font-size="13" fill="#888" text-anchor="middle">확률 0.2</text>
+  <text x="405" y="382" font-size="13" fill="#888" text-anchor="middle">평균</text>
+
+  <text x="520" y="112" font-size="16" font-weight="600" fill="#e8e8e8">사슬 규칙 (비트)</text>
+
+  <text x="520" y="188" font-size="13" font-weight="600" fill="#7777cc">H(Y) = 0.722</text>
+  <text x="778" y="188" font-size="13" font-weight="600" fill="#55c555" text-anchor="end">H(X|Y) = 0.200</text>
+  <rect x="520" y="200" width="202" height="44" fill="#7777cc" fill-opacity="0.55"/>
+  <rect x="722" y="200" width="56" height="44" fill="#55c555" fill-opacity="0.55"/>
+
+  <line x1="520" y1="262" x2="778" y2="262" stroke="#888" stroke-width="1.5"/>
+  <line x1="520" y1="254" x2="520" y2="270" stroke="#888" stroke-width="1.5"/>
+  <line x1="778" y1="254" x2="778" y2="270" stroke="#888" stroke-width="1.5"/>
+  <text x="649" y="292" font-size="14" font-weight="600" fill="#e8e8e8" text-anchor="middle">H(X, Y) = 0.922</text>
+
+  <text x="520" y="340" font-size="13" fill="#888">I(X;Y) = 0.469 − 0.200 = 0.269</text>
+</svg>
