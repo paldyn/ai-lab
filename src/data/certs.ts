@@ -582,7 +582,7 @@ export const certs: Cert[] = [
       },
     ],
     officialUrl: 'https://www.dataq.or.kr/www/sub/a_06.do',
-    verifiedAt: '2026-09-07',
+    verifiedAt: '2026-09-27',
     notes:
       '- 시행·발급 주체는 한국데이터산업진흥원(K-DATA)이다. \'데이터자격검정센터\'라는 이름은 접수 안내 페이지의 장애인 편의 제공 문장에 한 번 나올 뿐, ' +
       '발급·시행 주체를 밝히는 자리가 아니다.\n' +
@@ -775,7 +775,7 @@ export const certs: Cert[] = [
       },
     ],
     officialUrl: 'https://www.dataq.or.kr/www/sub/a_05.do',
-    verifiedAt: '2026-09-07',
+    verifiedAt: '2026-09-27',
     notes:
       '- 국가공인 민간자격이다 — 시행처 페이지가 제목 옆에 「(공인자격 제2022-05호)」를, 근거로 「자격기본법 제17조(민간자격의 신설 및 등록 등)」를 ' +
       '적는다. 같은 번호가 ADsP 페이지에도 붙어 있어 「데이터분석」 종목 단위 번호로 보이며, 공인일자는 확인하지 못했다.\n' +
@@ -943,7 +943,7 @@ export const certs: Cert[] = [
       },
     ],
     officialUrl: 'https://www.dataq.or.kr/www/sub/a_04.do',
-    verifiedAt: '2026-08-25',
+    verifiedAt: '2026-09-27',
     notes:
       '- 국가공인 민간자격이다 — 시행처 소개 페이지가 「관련 근거」 칸에 「공인자격 제2022-04호」와 「자격기본법 제17조(민간자격의 신설 및 등록 등)」를 ' +
       '나란히 적어 두었다.\n' +
@@ -2857,7 +2857,7 @@ export const certs: Cert[] = [
       },
     ],
     officialUrl: 'https://learn.microsoft.com/en-us/credentials/certifications/azure-ai-apps-and-agents-developer-associate/',
-    verifiedAt: '2026-09-07',
+    verifiedAt: '2026-09-27',
     notes:
       '- 시험 예약·감독은 Pearson VUE가 맡는다.\n' +
       '- 이전 자격증 AI-102(Azure AI Engineer Associate)는 2026년 6월 30일 은퇴했고 같은 날 AI-900도 은퇴했다. ' +
