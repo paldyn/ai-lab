@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" viewBox="0 0 880 440" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+<rect width="880" height="440" rx="12" fill="#0a0a0a"/>
+<text x="440" y="44" text-anchor="middle" fill="#e8e8e8" font-size="22" font-weight="700">레이블이 줄수록 벌어지는 차이</text>
+<text x="440" y="72" text-anchor="middle" fill="#888" font-size="13">붓꽃 · 레이블을 가린 점에서만 채점 · 시드 20개 평균 · 세로축은 0.70부터</text>
+<line x1="120" y1="330.0" x2="820" y2="330.0" stroke="#2a2a2a" stroke-width="1"/>
+<text x="108" y="334.0" text-anchor="end" fill="#888" font-size="13">0.70</text>
+<line x1="120" y1="256.7" x2="820" y2="256.7" stroke="#2a2a2a" stroke-width="1"/>
+<text x="108" y="260.7" text-anchor="end" fill="#888" font-size="13">0.80</text>
+<line x1="120" y1="183.3" x2="820" y2="183.3" stroke="#2a2a2a" stroke-width="1"/>
+<text x="108" y="187.3" text-anchor="end" fill="#888" font-size="13">0.90</text>
+<line x1="120" y1="110.0" x2="820" y2="110.0" stroke="#2a2a2a" stroke-width="1"/>
+<text x="108" y="114.0" text-anchor="end" fill="#888" font-size="13">1.00</text>
+<rect x="174" y="153.3" width="60" height="176.7" rx="3" fill="#7ec8e3"/>
+<text x="204" y="143.3" text-anchor="middle" fill="#e8e8e8" font-size="13">0.941</text>
+<rect x="246" y="151.8" width="60" height="178.2" rx="3" fill="#7777cc"/>
+<text x="276" y="141.8" text-anchor="middle" fill="#e8e8e8" font-size="13">0.943</text>
+<text x="240" y="356" text-anchor="middle" fill="#e8e8e8" font-size="16" font-weight="600">레이블 30%</text>
+<text x="240" y="380" text-anchor="middle" fill="#888" font-size="13">차이 -0.2%p</text>
+<rect x="404" y="197.3" width="60" height="132.7" rx="3" fill="#7ec8e3"/>
+<text x="434" y="187.3" text-anchor="middle" fill="#e8e8e8" font-size="13">0.881</text>
+<rect x="476" y="239.8" width="60" height="90.2" rx="3" fill="#7777cc"/>
+<text x="506" y="229.8" text-anchor="middle" fill="#e8e8e8" font-size="13">0.823</text>
+<text x="470" y="356" text-anchor="middle" fill="#e8e8e8" font-size="16" font-weight="600">레이블 10%</text>
+<text x="470" y="380" text-anchor="middle" fill="#55c555" font-size="13">차이 +5.8%p</text>
+<rect x="634" y="253.0" width="60" height="77.0" rx="3" fill="#7ec8e3"/>
+<text x="664" y="243.0" text-anchor="middle" fill="#e8e8e8" font-size="13">0.805</text>
+<rect x="706" y="284.5" width="60" height="45.5" rx="3" fill="#7777cc"/>
+<text x="736" y="274.5" text-anchor="middle" fill="#e8e8e8" font-size="13">0.762</text>
+<text x="700" y="356" text-anchor="middle" fill="#e8e8e8" font-size="16" font-weight="600">레이블 5%</text>
+<text x="700" y="380" text-anchor="middle" fill="#55c555" font-size="13">차이 +4.3%p</text>
+<rect x="290" y="400" width="14" height="14" rx="2" fill="#7ec8e3"/><text x="312" y="412" fill="#e8e8e8" font-size="13">레이블 전파</text>
+<rect x="470" y="400" width="14" height="14" rx="2" fill="#7777cc"/><text x="492" y="412" fill="#e8e8e8" font-size="13">레이블 있는 점만으로 지도 학습</text>
+</svg>

@@ -9,11 +9,47 @@ tags: ["SVM", "서포트벡터머신", "커널트릭", "마진", "ML기초"]
 featured: false
 draft: false
 ---
-[지난 글](/articles/ml-naive-bayes)에서 확률 기반의 나이브 베이즈를 배웠다. 이번에는 완전히 다른 기하학적 접근으로 분류를 수행하는 **서포트 벡터 머신**(Support Vector Machine, SVM)을 다룬다. SVM의 핵심 아이디어는 단순하다. 두 클래스를 나누는 경계선(초평면)은 무수히 많은데, 그 중에서 **두 클래스 사이의 간격(마진)이 가장 넓은** 경계선을 선택하자는 것이다. 마진이 클수록 새로운 데이터에 대한 일반화 성능이 좋아진다.
+[지난 글](/articles/ml-naive-bayes)에서 확률 기반의 나이브 베이즈를 배웠다. 이번에는 완전히 다른 기하학적 접근으로 분류를 수행하는 **서포트 벡터 머신**(Support Vector Machine, SVM)을 다룬다. 나이브 베이즈가 "이 점이 각 부류에서 나왔을 확률"을 계산했다면, SVM은 확률을 묻지 않고 "두 부류 사이에 선을 어디에 그어야 가장 안전한가"를 묻는다. 이 글에서는 그 질문이 어떻게 최적화 문제가 되는지, 경계를 정하는 소수의 점이 왜 따로 이름을 얻었는지, 직선으로 안 갈리는 데이터를 커널이 어떻게 푸는지, 그리고 C와 gamma 두 값을 어떻게 고르는지를 차례로 실제 숫자와 함께 따라간다.
 
 ## 최대 마진 초평면
 
-분류 경계를 **초평면**(Hyperplane)이라고 한다. 2차원에서는 선, 3차원에서는 평면, n차원에서는 (n-1)차원 초평면이다.
+### 문제 설정
+
+평면 위에 두 부류의 점이 흩어져 있고, 직선 하나로 둘을 깔끔히 가를 수 있다고 하자. 그런 직선은 하나가 아니다. 두 무리 사이의 빈 띠 안에서 조금씩 기울이거나 평행이동한 직선이 전부 훈련 데이터를 완벽히 가른다. 퍼셉트론은 이 중 아무거나 처음 찾은 것에서 멈추지만, 새 데이터가 들어왔을 때 이 직선들이 똑같이 잘 맞지는 않는다. 한쪽 무리에 바짝 붙은 직선은 그쪽 부류의 점이 조금만 흔들려 들어와도 틀린다.
+
+분류 경계를 일반화해 부르는 이름이 **초평면**(hyperplane)이다. 2차원에서는 선, 3차원에서는 평면, n차원에서는 (n−1)차원의 평평한 면이고, 식으로는 $$\mathbf{w}^\top\mathbf{x} + b = 0$$ 이다. 여기서 $$\mathbf{w}$$ 와 $$b$$ 가 SVM의 파라미터이고, 학습은 이 둘을 정하는 일이다. SVM의 답은 명쾌하다. 가장 가까운 점과의 거리가 가장 먼 초평면, 곧 양쪽 무리 한가운데를 지나는 초평면을 고른다.
+
+### 마진 폭
+
+초평면에서 가장 가까운 점까지의 거리의 두 배, 곧 양쪽 무리 사이 빈 띠의 폭을 **마진**(margin)이라 한다. 점 $$\mathbf{x}$$ 에서 초평면까지의 거리는 $$|\mathbf{w}^\top\mathbf{x} + b| / \|\mathbf{w}\|$$ 다. 그런데 $$\mathbf{w}$$ 와 $$b$$ 에 같은 수를 곱해도 초평면은 그대로이므로, 크기를 하나로 못 박을 자유가 있다. 가장 가까운 점에서 $$|\mathbf{w}^\top\mathbf{x} + b| = 1$$ 이 되도록 크기를 맞추면 그 점까지의 거리가 $$1/\|\mathbf{w}\|$$ 이 되고, 양쪽을 합한 마진은 이렇게 된다.
+
+$$\text{마진} = \frac{2}{\|\mathbf{w}\|}$$
+
+마진을 넓히는 것과 $$\|\mathbf{w}\|$$ 를 줄이는 것이 같은 일이 됐다. 계산 편의를 위해 제곱에 ½을 붙인 $$\tfrac{1}{2}\|\mathbf{w}\|^2$$ 을 최소화하는 문제로 바꾸면, 미분이 깔끔하고 볼록해서 전역 최솟값이 하나뿐인 문제가 된다.
+
+마진이 넓은 경계가 왜 새 데이터에 강한지는 흔들림으로 생각하면 쉽다. 테스트 점은 훈련 점과 똑같이 나오지 않고 조금씩 어긋나서 들어온다. 마진이 넓으면 훈련 점이 마진 폭의 절반만큼 흔들려도 여전히 맞는 쪽에 남는다. 마진이 좁은 경계는 같은 흔들림에 바로 넘어간다. 통계 학습 이론은 이 직관을 식으로 굳혀, 마진이 넓을수록 분류기가 쓸 수 있는 경계의 가짓수가 줄어 과적합할 여지가 작아진다는 것을 보였다. 일반화 오차의 상한이 특성 차원이 아니라 마진의 크기에 좌우된다는 이 결과가, 차원이 높은 데이터에서 SVM이 잘 버티는 근거다.
+
+![SVM 최대 마진 초평면](/assets/posts/ml-svm-margin.svg)
+
+### 제약 조건
+
+$$\|\mathbf{w}\|$$ 만 줄이면 $$\mathbf{w} = 0$$ 이 답이 되어 버리므로 조건이 붙는다. 레이블을 $$y_i \in \{-1, +1\}$$ 로 두면 조건은 한 줄이다.
+
+$$y_i(\mathbf{w}^\top\mathbf{x}_i + b) \ge 1 \quad (\text{모든 } i)$$
+
+$$\mathbf{w}^\top\mathbf{x}_i + b$$ 는 점이 초평면의 어느 쪽에 얼마나 떨어져 있는지를 부호와 크기로 알려 주는 값이다. 여기에 레이블 $$y_i$$ 를 곱하면 맞는 쪽에 있을 때 양수가 된다. 그 값이 1 이상이라는 것은 "맞는 쪽에 있을 뿐 아니라 경계선 $$\pm 1$$ 바깥에 있다"는 뜻이다. 모든 점이 이 조건을 지키면 경계 양옆의 띠 안에 아무 점도 없다. 이렇게 오분류를 하나도 허용하지 않는 형태를 **하드 마진**이라 부른다.
+
+## 서포트 벡터
+
+### 경계를 정하는 점
+
+위 최적화를 풀면 대부분의 점에서 제약이 느슨하다. 즉 $$y_i(\mathbf{w}^\top\mathbf{x}_i + b)$$ 가 1보다 넉넉히 크다. 이 점들은 조금 움직여도 답이 바뀌지 않는다. 답을 붙들고 있는 것은 제약이 딱 1로 걸린 점들, 곧 띠의 가장자리에 정확히 놓인 점들뿐이다. 이 점들을 **서포트 벡터**(support vector)라 부른다. 초평면이 이 점들에 기대어 서 있다는 뜻의 이름이다.
+
+이 성질은 수학적으로 확인된다. 최적화 문제를 라그랑주 쌍대로 바꾸면 $$\mathbf{w} = \sum_i \alpha_i y_i \mathbf{x}_i$$ 꼴이 되는데, $$\alpha_i$$ 는 서포트 벡터에서만 0이 아니다. 나머지 점은 $$\alpha_i = 0$$ 이라 $$\mathbf{w}$$ 에 아무것도 보태지 않는다. 그래서 서포트 벡터가 아닌 점을 전부 지우고 다시 학습해도 같은 경계가 나온다.
+
+### 개수 확인
+
+scikit-learn의 `SVC`는 학습 후 서포트 벡터를 속성으로 들고 있다. `n_support_`는 부류별 개수, `support_`는 원래 데이터에서의 인덱스, `support_vectors_`는 좌표다.
 
 ```python
 import numpy as np
@@ -21,233 +57,178 @@ from sklearn.svm import SVC
 from sklearn.datasets import make_classification
 from sklearn.preprocessing import StandardScaler
 
-# 선형으로 분리 가능한 데이터 생성
 X, y = make_classification(
-    n_samples=100, n_features=2,
-    n_redundant=0, n_informative=2,
-    random_state=42, n_clusters_per_class=1
-)
+    n_samples=100, n_features=2, n_redundant=0, n_informative=2,
+    random_state=42, n_clusters_per_class=1)
+X_scaled = StandardScaler().fit_transform(X)   # SVM은 거리를 쓰므로 필수
 
-# SVM은 스케일에 민감 → 반드시 표준화!
-scaler = StandardScaler()
-X_scaled = scaler.fit_transform(X)
+svm = SVC(kernel='linear', C=1.0).fit(X_scaled, y)
+print(svm.n_support_)            # [2 2] — 100개 중 4개
 
-# 선형 SVM (hard margin: 오분류 허용 안 함)
-svm_linear = SVC(kernel='linear', C=1.0)
-svm_linear.fit(X_scaled, y)
-
-print(f"지지 벡터 수: {svm_linear.n_support_}")
-print(f"지지 벡터 인덱스:\n{svm_linear.support_}")
-print(f"결정 경계 가중치 w: {svm_linear.coef_}")
-print(f"편향 b: {svm_linear.intercept_}")
+sv = svm.support_
+svm_sv = SVC(kernel='linear', C=1.0).fit(X_scaled[sv], y[sv])
+print(svm.coef_, svm_sv.coef_)   # [[-0.822  1.460]]  [[-0.821  1.460]]
 ```
 
-마진의 너비는 `2 / ||w||`이다. 마진을 최대화하려면 ||w||를 최소화해야 한다. 이것이 SVM의 최적화 문제다.
+100개 점 중 4개만 서포트 벡터이고, 그 4개만으로 다시 학습한 $$\mathbf{w}$$ 가 소수점 셋째 자리까지 같다. 끝자리의 작은 차이는 풀이기가 멈추는 허용 오차에서 온다. 예측할 때도 서포트 벡터만 있으면 되므로, 학습이 끝난 SVM은 훈련 데이터 전체를 들고 다닐 필요가 없다. 반대로 서포트 벡터 하나를 지우거나 옮기면 경계가 곧바로 움직이므로, 이 몇 개의 점에 레이블 오류가 섞이면 그 영향이 고스란히 경계에 실린다.
 
-![SVM 최대 마진 초평면](/assets/posts/ml-svm-margin.svg)
+### 개수가 말하는 것
 
-## 서포트 벡터: 경계를 결정하는 핵심 데이터
+서포트 벡터의 수는 모델이 문제를 얼마나 어렵게 느끼는지를 알려 주는 신호다. 두 무리가 멀찍이 떨어져 있으면 가장자리에 걸리는 점이 몇 개뿐이다. 무리가 겹치거나 경계가 복잡하면 많은 점이 띠 위나 안쪽에 걸려 서포트 벡터가 된다.
 
-**서포트 벡터**(Support Vector)는 결정 경계에서 가장 가까이 있는 훈련 데이터 포인트들이다. 이 소수의 점들만이 모델을 정의하며, 나머지 데이터는 제거해도 결과가 바뀌지 않는다. 이 특성이 SVM을 메모리 효율적으로 만든다.
+그래서 서포트 벡터가 훈련 데이터의 절반을 넘으면 의심해야 한다. 원인은 셋 중 하나인 경우가 많다. 특성 스케일링을 빠뜨려 거리 계산이 한 특성에 쏠렸거나, 아래에서 볼 C가 너무 작아 띠를 지나치게 넓혔거나, 데이터 자체가 이 특성들로는 잘 안 갈리는 것이다. 마지막 경우라면 커널을 바꾸거나 특성을 새로 만들어야 한다. 서포트 벡터가 많으면 예측도 느려진다 — 새 점 하나를 분류할 때 서포트 벡터 전부와 계산을 해야 하기 때문이다.
 
-```python
-import matplotlib
-matplotlib.use('Agg')
-import matplotlib.pyplot as plt
+## 소프트 마진
 
-# 서포트 벡터 시각화
-fig, ax = plt.subplots(figsize=(8, 6))
+### 여유 변수
 
-# 전체 데이터
-ax.scatter(X_scaled[y==0, 0], X_scaled[y==0, 1],
-           c='steelblue', label='Class 0')
-ax.scatter(X_scaled[y==1, 0], X_scaled[y==1, 1],
-           c='salmon', label='Class 1')
+실제 데이터에는 잡음이 있어 하드 마진의 조건을 만족하는 초평면이 아예 없는 경우가 흔하다. 한두 점이 반대편 무리에 섞여 있기만 해도 제약을 모두 지킬 방법이 사라진다. 그래서 점마다 조건을 어길 수 있는 몫을 준다. 이 몫을 **여유 변수**(slack variable) $$\xi_i \ge 0$$ 라 하고, 조건을 이렇게 느슨하게 만든다.
 
-# 서포트 벡터 강조
-sv = svm_linear.support_vectors_
-ax.scatter(sv[:, 0], sv[:, 1],
-           s=200, facecolors='none',
-           edgecolors='yellow', linewidth=2,
-           label='Support Vectors')
+$$y_i(\mathbf{w}^\top\mathbf{x}_i + b) \ge 1 - \xi_i$$
 
-ax.legend()
-plt.tight_layout()
-plt.savefig('/tmp/svm_sv.png', dpi=100)
-print(f"서포트 벡터 {len(sv)}개가 결정 경계를 결정")
-```
+$$\xi_i$$ 가 0이면 원래 조건 그대로이고, 0과 1 사이면 맞는 쪽이지만 띠 안으로 들어온 것이며, 1을 넘으면 반대편으로 넘어간 오분류다. 공짜로 어기게 둘 수는 없으니 목적 함수에 값을 매긴다.
 
-## 소프트 마진: 오분류를 허용하는 현실적 SVM
+$$\min_{\mathbf{w}, b, \xi} \; \tfrac{1}{2}\|\mathbf{w}\|^2 + C\sum_i \xi_i$$
 
-실제 데이터는 완전히 선형 분리가 되지 않는 경우가 많다. **소프트 마진**(Soft Margin)은 일부 오분류를 허용하는 대신 더 유연한 경계를 찾는다.
+C가 오분류 한 단위의 가격이다. C가 크면 어기는 것이 비싸서 띠가 좁아지더라도 점을 맞히려 들고, C가 작으면 어기는 것이 싸서 띠를 넓게 유지하고 점 몇 개를 포기한다. 이렇게 오분류를 허용하는 형태가 **소프트 마진**이다.
 
-**C 파라미터**: 마진 너비 vs. 오분류 허용 트레이드오프
+### 힌지 손실
 
-```python
-from sklearn.model_selection import cross_val_score
+여유 변수는 최적해에서 필요한 만큼만 쓰이므로 $$\xi_i = \max(0, 1 - y_i f(\mathbf{x}_i))$$ 가 된다. 이것을 목적 함수에 넣으면 제약 없는 한 줄이 나온다.
 
-# C 값에 따른 영향
-for C in [0.01, 0.1, 1.0, 10.0, 100.0]:
-    svm = SVC(kernel='linear', C=C)
-    scores = cross_val_score(svm, X_scaled, y, cv=5)
-    print(f"C={C:6.2f}: CV 정확도 {scores.mean():.4f} "
-          f"(±{scores.std():.4f})")
+$$\min_{\mathbf{w}, b} \; C\sum_i \max\big(0,\, 1 - y_i f(\mathbf{x}_i)\big) + \tfrac{1}{2}\|\mathbf{w}\|^2$$
 
-# C가 작을수록: 마진 넓음, 더 많은 오분류 허용 → 과소적합 위험
-# C가 클수록:  마진 좁음, 오분류 줄임 → 과적합 위험
-```
+앞의 항을 **힌지 손실**(hinge loss)이라 부른다. 문 경첩처럼 한 지점에서 꺾이는 모양이라 붙은 이름이다. 이렇게 다시 쓰면 SVM이 낯선 기계가 아니라 익숙한 틀 안에 들어온다. [손실 함수와 정규화](/articles/ai-loss-functions)에서 본 "손실 + L2 정규화"와 같은 구조이고, 로지스틱 회귀와 다른 것은 손실 함수 하나뿐이다. 로지스틱 손실은 이미 맞게 분류한 점에서도 끝없이 조금씩 손실을 내지만, 힌지 손실은 $$y f(\mathbf{x}) \ge 1$$ 인 순간 정확히 0이 된다. 충분히 맞힌 점은 더 이상 학습에 관여하지 않는다는 것이고, 그것이 서포트 벡터만 남는 성질의 다른 얼굴이다.
 
-## 커널 트릭: 비선형 분류를 가능하게 하는 마법
+![힌지 손실과 로지스틱 손실](/assets/posts/ml-svm-hinge.svg)
 
-XOR 문제처럼 선형으로 분리 불가능한 데이터가 있다. **커널 트릭**은 데이터를 고차원 공간으로 변환하면 선형 분리가 가능해진다는 수학적 원리를 활용한다.
+### C 값 훑기
 
-```python
-from sklearn.datasets import make_circles, make_moons
+같은 100개 점에서 C를 100배씩 바꿔 가며 5겹 교차 검증 정확도, 서포트 벡터 수, 마진 폭 $$2/\|\mathbf{w}\|$$ 를 함께 보면 C의 역할이 숫자로 보인다.
 
-# 원형 데이터 (선형 분리 불가)
-X_circles, y_circles = make_circles(
-    n_samples=200, noise=0.1, factor=0.3, random_state=42
-)
-X_circles = StandardScaler().fit_transform(X_circles)
+| C | CV 정확도 | 서포트 벡터 | 마진 폭 |
+| ---: | ---: | ---: | ---: |
+| 0.01 | 0.87 | 92 | 2.901 |
+| 0.1 | 1.00 | 26 | 1.304 |
+| 1 | 1.00 | 4 | 1.194 |
+| 10 | 1.00 | 3 | 1.185 |
+| 100 | 1.00 | 3 | 1.185 |
 
-# 다양한 커널 비교
-kernels = {
-    'linear': SVC(kernel='linear', C=1.0),
-    'rbf':    SVC(kernel='rbf',    C=1.0, gamma='scale'),
-    'poly':   SVC(kernel='poly',   C=1.0, degree=3, gamma='scale'),
-    'sigmoid':SVC(kernel='sigmoid', C=1.0, gamma='scale')
-}
+C=0.01에서는 오분류가 너무 싸서 띠가 데이터 대부분을 삼킨다. 100개 중 92개가 띠 안에 들어와 서포트 벡터가 되고, 경계가 제자리를 못 잡아 정확도도 0.87로 떨어진다. C를 올릴수록 띠가 좁아지고 서포트 벡터가 줄어든다. C=10부터는 표가 더 이상 안 바뀌는데, 이 데이터가 원래 깨끗이 갈려 여유 변수를 쓸 일이 없어졌기 때문이다 — 사실상 하드 마진이다. 잡음 있는 데이터라면 C를 계속 올릴 때 서포트 벡터는 줄지만 교차 검증 정확도가 도리어 내려가는 구간이 나타나고, 그것이 과적합의 신호다.
 
-for name, model in kernels.items():
-    scores = cross_val_score(model, X_circles, y_circles, cv=5)
-    print(f"{name:8s}: {scores.mean():.4f} ±{scores.std():.4f}")
+## 커널 트릭
 
-# 결과:
-# linear:   ~0.54 (원형 데이터에 취약)
-# rbf:      ~0.99 (원형 데이터에 완벽)
-# poly:     ~0.96
-```
+### 내적 바꿔 끼우기
+
+직선으로 안 갈리는 데이터라도 특성을 늘리면 갈릴 수 있다. 동심원 모양의 두 부류는 평면에서는 어떤 직선으로도 안 갈리지만, 세 번째 특성으로 $$x_1^2 + x_2^2$$ 을 더하면 안쪽 원은 낮게, 바깥 원은 높게 떠올라 수평한 평면 하나로 갈린다. 이렇게 입력을 더 높은 차원으로 옮기는 함수를 $$\phi(\mathbf{x})$$ 라 쓴다.
+
+문제는 비용이다. 특성의 모든 2차 조합만 만들어도 차원이 제곱으로 늘고, RBF 커널이 대응하는 $$\phi$$ 는 차원이 무한하다. 그런데 SVM의 쌍대 문제와 예측 식을 보면 데이터가 늘 두 점의 내적 $$\mathbf{x}_i^\top\mathbf{x}_j$$ 꼴로만 등장한다. 그러니 $$\phi$$ 를 직접 계산하지 않고, 옮긴 뒤의 내적 $$\phi(\mathbf{x})^\top\phi(\mathbf{x}')$$ 을 원래 공간에서 바로 계산하는 함수 $$K(\mathbf{x}, \mathbf{x}')$$ 만 있으면 된다. 이 함수를 **커널**(kernel)이라 하고, 내적 자리에 커널을 끼워 넣는 것을 **커널 트릭**이라 한다. 쓰는 커널이 어떤 공간의 내적으로 해석될 수 있기만 하면 그 공간을 한 번도 만들지 않고도 거기서 최대 마진을 찾은 것과 같은 결과가 나온다.
 
 ![SVM 커널 트릭과 비선형 분류](/assets/posts/ml-svm-kernel.svg)
 
-### 주요 커널 함수
+### 동심원 데이터
 
-**RBF (Radial Basis Function, 가우시안) 커널 - 가장 많이 사용**:
-```
-K(x, x') = exp(-γ||x - x'||²)
-```
-- `gamma`: 가우시안의 너비. 크면 복잡한 경계, 작으면 단순한 경계
+실제로 돌려 보면 커널 선택이 결과를 얼마나 바꾸는지가 드러난다.
 
-**다항식(Polynomial) 커널**:
-```
-K(x, x') = (γ·xᵀx' + r)^d
-```
-- `degree`: 다항식 차수
+```python
+from sklearn.datasets import make_circles
+from sklearn.model_selection import cross_val_score
 
-**선형(Linear) 커널**:
-```
-K(x, x') = xᵀx'
-```
-- 텍스트 분류, 고차원 데이터에 효과적
+X_c, y_c = make_circles(n_samples=200, noise=0.1, factor=0.3, random_state=42)
+X_c = StandardScaler().fit_transform(X_c)
 
-## C와 gamma 하이퍼파라미터 튜닝
+for name, model in {
+    'linear': SVC(kernel='linear'),
+    'rbf':    SVC(kernel='rbf', gamma='scale'),
+    'poly':   SVC(kernel='poly', degree=3, gamma='scale'),
+    'poly2':  SVC(kernel='poly', degree=2, gamma='scale'),
+}.items():
+    print(name, cross_val_score(model, X_c, y_c, cv=5).mean().round(3))
+# linear 0.63 · rbf 1.0 · poly 0.585 · poly2 1.0
+```
 
-RBF 커널 SVM의 두 핵심 파라미터:
+선형은 0.63으로 동전 던지기보다 조금 나은 수준이고 RBF는 1.0이다. 눈여겨볼 것은 3차 다항식 커널이 0.585로 선형보다도 나쁘다는 점이다. 다항식 커널은 $$(\gamma\mathbf{x}^\top\mathbf{x}' + r)^d$$ 인데, scikit-learn의 기본값은 $$r = 0$$ 이다. 이러면 3차 커널은 정확히 3차 항들만 담고, 동심원을 가르는 데 필요한 $$x_1^2 + x_2^2$$ 같은 2차 항이 빠진다. 차수를 2로 바꾸거나 `coef0=1`을 주어 낮은 차수 항을 살리면 둘 다 1.0이 된다. 커널은 "고차원으로 보내 주는 마법"이 아니라 어떤 특성 조합을 쓸지 정하는 선택이고, 그 선택이 데이터 모양과 어긋나면 효과가 없다.
+
+### 커널 고르기
+
+세 커널의 성격은 이렇다.
+
+| 커널 | 식 | 맞는 자리 |
+| --- | --- | --- |
+| 선형 | $$\mathbf{x}^\top\mathbf{x}'$$ | 특성이 샘플보다 많을 때(텍스트 등) |
+| 다항식 | $$(\gamma\mathbf{x}^\top\mathbf{x}' + r)^d$$ | 특성끼리의 곱이 뜻을 가질 때 |
+| RBF | $$\exp(-\gamma\lVert\mathbf{x}-\mathbf{x}'\rVert^2)$$ | 모양을 모를 때의 기본값 |
+
+특성이 수만 개인 텍스트의 단어 빈도 벡터에서는 선형 커널이 대개 충분하다. 차원이 이미 높아 데이터가 거의 선형으로 갈리고, 커널을 바꿔 봐야 과적합 위험만 커진다. 특성이 몇 개에서 몇십 개이고 모양을 모르면 RBF로 시작한다. RBF는 두 점이 가까우면 1, 멀면 0에 가까운 값을 내는 유사도라, 경계를 서포트 벡터 주변의 봉우리들을 겹쳐 만든다. 다항식은 차수와 상수항을 함께 조정해야 해서 고를 값이 많고, 위에서 본 대로 기본값이 함정이 되기도 한다.
+
+## C와 gamma
+
+### gamma와 경계의 굴곡
+
+RBF 커널에서 **gamma**는 봉우리의 폭을 정한다. 커널 값이 $$\exp(-\gamma d^2)$$ 이므로 gamma가 크면 거리 d가 조금만 벌어져도 값이 0으로 떨어진다. 서포트 벡터 하나의 영향이 제 바로 옆에만 미치고, 경계는 점 하나하나를 감싸는 작은 섬들로 쪼개진다. gamma가 작으면 영향이 멀리까지 퍼져 경계가 완만한 곡선이 되고, 극단에서는 거의 직선이 된다.
+
+C는 오분류의 가격이었다. 두 값은 서로 얽혀 있다. gamma가 경계가 얼마나 구불구불할 수 있는지를 정하고, C는 그 구불구불함을 써서 훈련 점을 얼마나 악착같이 맞힐지를 정한다. 둘 다 올리면 경계가 훈련 점마다 휘어 감기고, 둘 다 내리면 경계가 데이터를 무시하고 뻣뻣해진다.
+
+### gamma='scale'
+
+scikit-learn의 기본값 `gamma='scale'`은 $$1 / (\text{특성 수} \times \text{X의 분산})$$ 이다. 이 식에는 이유가 있다. 두 점 사이 거리의 제곱 $$d^2$$ 은 특성마다 차이의 제곱을 더한 것이라, 특성 수가 늘고 각 특성의 분산이 클수록 평균적으로 커진다. 그 평균 크기로 gamma를 나눠 두면 $$\gamma d^2$$ 이 대략 1 근처가 되어, 전형적인 두 점의 커널 값이 0도 1도 아닌 중간에 놓인다. 표준화한 2차원 데이터라면 분산이 1이므로 gamma는 0.5다. 데이터 규모에 맞춘 중립적인 출발점일 뿐 최적값은 아니므로, 여기서부터 로그 간격으로 넓혀 탐색한다.
+
+### 격자 탐색
+
+초승달 두 개가 맞물린 데이터(300개, 잡음 0.2)에서 C와 gamma를 10배 간격으로 바꿔 5겹 교차 검증 정확도를 보면 이렇다.
+
+| C \ gamma | 0.01 | 0.1 | 1 | 10 | 100 |
+| ---: | ---: | ---: | ---: | ---: | ---: |
+| 0.1 | 0.85 | 0.86 | 0.92 | 0.95 | 0.82 |
+| 1 | 0.85 | 0.87 | 0.96 | 0.95 | 0.90 |
+| 10 | 0.86 | 0.89 | 0.96 | 0.94 | 0.90 |
+| 100 | 0.87 | 0.93 | 0.96 | 0.92 | 0.90 |
+| 1000 | 0.88 | 0.95 | 0.94 | 0.93 | 0.90 |
+
+왼쪽 열은 gamma가 너무 작아 경계가 직선에 가깝다. 초승달의 휜 모양을 못 따라가 0.85~0.88에 묶인다. 오른쪽 끝 열은 반대로 gamma=100이라 훈련 정확도는 전부 0.99~1.00인데 교차 검증은 0.82~0.90이다. 이때 서포트 벡터는 300개 중 280~300개로, 거의 모든 점이 제 섬을 가진 채 외워진 상태다. 좋은 값은 gamma=1 열의 가운데에 모여 있고, C가 1 이상인 그 칸들에서는 서포트 벡터가 28~68개로 줄어든다. 과적합이 gamma가 큰 오른쪽 열에, 과소적합이 gamma가 작은 왼쪽 열에 몰리는 이 모양은 데이터가 달라도 거의 늘 나타난다.
 
 ```python
 from sklearn.model_selection import GridSearchCV
 
-X_moons, y_moons = make_moons(n_samples=300, noise=0.2,
-                               random_state=42)
-X_moons = StandardScaler().fit_transform(X_moons)
-
-# C와 gamma 격자 탐색
-param_grid = {
-    'C':     [0.1, 1, 10, 100],
-    'gamma': [0.001, 0.01, 0.1, 1, 'scale', 'auto']
-}
-
 grid = GridSearchCV(
     SVC(kernel='rbf'),
-    param_grid,
-    cv=5,
-    scoring='accuracy',
-    n_jobs=-1
-)
+    {'C': [0.1, 1, 10, 100], 'gamma': [0.001, 0.01, 0.1, 1, 'scale']},
+    cv=5)
 grid.fit(X_moons, y_moons)
-
-print(f"최적 파라미터: {grid.best_params_}")
-print(f"최적 CV 점수: {grid.best_score_:.4f}")
-
-# 실전 팁:
-# C × gamma를 동시에 올리면 과적합
-# gamma='scale': 1/(n_features * X.var()) — 좋은 출발점
+print(grid.best_params_, round(grid.best_score_, 3))  # {'C': 1, 'gamma': 1} 0.963
 ```
 
-## SVM 회귀 (SVR)
+격자 탐색 결과는 최적값 한 칸만 보지 말고 표 전체를 본다. 최적 칸 주변이 고르게 높으면 안심해도 되고, 최적 칸만 홀로 높으면 교차 검증 분할의 운일 가능성이 크다.
 
-SVM은 분류뿐 아니라 회귀에도 사용된다. **SVR**(Support Vector Regression)은 예측값이 ε-튜브 안에 들어오도록 학습한다.
+## 규모·확률·회귀
 
-```python
-from sklearn.svm import SVR
-from sklearn.metrics import mean_squared_error
-import numpy as np
+### 학습 비용
 
-# 비선형 회귀 예시
-rng = np.random.RandomState(42)
-X_reg = np.sort(5 * rng.rand(100, 1), axis=0)
-y_reg = np.sin(X_reg).ravel() + rng.randn(100) * 0.1
+SVM의 약점은 데이터 규모다. 커널 SVM은 모든 점 쌍의 커널 값을 다뤄야 해서 학습 시간이 샘플 수 n에 대해 대략 $$O(n^2)$$ 에서 $$O(n^3)$$ 사이로 늘어난다. 특성 20개짜리 합성 데이터에서 재 보면 2,000개가 0.05초, 4,000개가 0.30초, 8,000개가 1.35초였다. 데이터를 두 배로 늘릴 때마다 4.5~6배씩 늘어난 셈이라, 수십만 건에서는 현실적으로 쓰기 어렵다.
 
-X_reg_scaled = StandardScaler().fit_transform(X_reg)
-
-svr = SVR(kernel='rbf', C=100, gamma=0.1, epsilon=0.1)
-svr.fit(X_reg_scaled, y_reg)
-
-y_pred = svr.predict(X_reg_scaled)
-rmse = mean_squared_error(y_reg, y_pred) ** 0.5
-print(f"SVR RMSE: {rmse:.4f}")
-# epsilon: 허용 오차 범위 (튜브 너비)
-```
-
-## SVM의 강점과 약점
-
-**강점:**
-- **고차원 공간에서 효과적**: 특성 수가 샘플 수보다 많아도 잘 동작
-- **메모리 효율**: 서포트 벡터만 저장
-- **강력한 이론적 기반**: 구조적 위험 최소화(SRM) 이론
-- **다양한 커널**: 비선형 패턴 포착 가능
-- **이상치 강건**: 서포트 벡터만 경계에 영향
-
-**약점:**
-- **대규모 데이터에 느림**: 학습 시간 O(n²~n³) — 수만 샘플이 한계
-- **확률 출력 없음**: 기본적으로 결정 값만 출력 (probability=True로 가능하나 느림)
-- **특성 스케일링 필수**: 거리 기반이므로 표준화 반드시 필요
-- **해석 어려움**: 특히 RBF 커널 사용 시
-
-## 실전 체크리스트
+그 규모에서는 커널을 포기하고 선형 SVM 전용 풀이기로 갈아탄다. `LinearSVC`는 같은 8,000개를 0.01초에 학습했다. 데이터가 메모리에 다 안 들어가면 `SGDClassifier(loss='hinge')`로 힌지 손실을 확률적 경사 하강법으로 최소화한다. 비선형이 꼭 필요하면 `Nystroem` 같은 커널 근사로 특성을 명시적으로 만든 뒤 선형 모델에 넣는 방법도 있다. 어느 경우든 스케일링은 빠뜨리면 안 되므로 파이프라인에 묶어 둔다.
 
 ```python
-from sklearn.pipeline import Pipeline
-from sklearn.preprocessing import StandardScaler
-from sklearn.svm import SVC
-
-# SVM 파이프라인 (스케일링 포함)
-svm_pipeline = Pipeline([
-    ('scaler', StandardScaler()),
-    ('svm',    SVC(kernel='rbf', C=1.0, gamma='scale',
-                   probability=True))  # 확률 출력 활성화
-])
-
-# 데이터 크기별 권장 설정
-# < 10,000 샘플: SVC (정확, 느림)
-# > 10,000 샘플: LinearSVC 또는 SGDClassifier(SVM)
-
+from sklearn.pipeline import make_pipeline
 from sklearn.svm import LinearSVC
-linear_svc = LinearSVC(C=1.0, max_iter=2000)
-# LinearSVC: liblinear 기반, 대용량에 적합 (kernel 없음)
+
+small = make_pipeline(StandardScaler(), SVC(kernel='rbf', C=1.0, gamma='scale'))
+large = make_pipeline(StandardScaler(), LinearSVC(C=1.0))   # 수만 건 이상
 ```
 
-SVM은 데이터가 많지 않고 차원이 높은 문제(텍스트, 이미지 특성 벡터)에서 탁월하다. 딥러닝 이전에는 이미지 분류의 최강자였고, 현재도 중소 규모 데이터셋에서 강력한 베이스라인을 제공한다. 다음 글에서는 질문의 연쇄로 데이터를 나누는 **결정 트리**를 살펴본다.
+### 확률 출력
+
+SVM이 내는 것은 확률이 아니라 초평면까지의 부호 있는 거리, `decision_function` 값이다. 크면 확신이 크다는 뜻이지만 0.8 같은 확률로 읽을 수는 없다. `SVC(probability=True)`를 주면 `predict_proba`가 생기는데, 내부에서 5겹 교차 검증을 돌려 거리 값을 시그모이드에 맞추는 **플랫 스케일링**을 한다. 모델을 여러 번 학습하는 셈이라 위 실험에서 학습 시간이 3.5~4배 늘었다.
+
+또 하나 조심할 점은 이 확률이 `predict`와 어긋날 수 있다는 것이다. `predict`는 거리의 부호로 정하고 `predict_proba`는 별도로 맞춘 시그모이드로 정하므로, 경계 근처의 점에서는 `predict`가 1인데 확률은 0.48로 나오는 일이 생긴다. 확률이 꼭 필요하면 차라리 로지스틱 회귀를 쓰거나, 분류기를 따로 학습한 뒤 보정 단계를 명시적으로 붙이는 편이 깔끔하다.
+
+### SVR
+
+같은 발상은 회귀로도 옮겨진다. **SVR**(Support Vector Regression)은 예측선 위아래로 폭 ε의 관을 두고, 관 안에 들어온 점은 오차를 0으로 쳐 준다. 분류에서 "충분히 맞힌 점은 학습에 관여하지 않는다"였던 것이 회귀에서는 "ε 안쪽으로 맞힌 점은 봐준다"가 된다. 관 밖으로 나간 점만 서포트 벡터가 되고 C가 관 밖 오차의 가격을 정한다.
+
+사인 곡선에 잡음 0.1을 얹은 100개 점에서 ε만 바꿔 보면 역할 분담이 보인다. ε=0.01이면 관이 잡음보다 좁아 90개가 서포트 벡터가 되고, ε=0.1이면 잡음 크기와 맞아 30개로 줄면서 훈련 RMSE는 0.093으로 거의 같다. ε=0.3이면 관이 너무 넓어 서포트 벡터가 4개뿐이고 곡선의 굴곡을 놓쳐 RMSE가 0.136으로 나빠진다. ε은 "이 정도 오차는 잡음으로 보겠다"는 선언이라, 타깃의 측정 오차를 알면 그 크기로 두는 것이 좋은 출발점이다.
+
+SVM은 데이터가 수천에서 수만 건이고 차원이 높은 문제에서 지금도 튼튼한 기준선이다. 다음 글에서는 거리도 확률도 아닌 세 번째 방식, 질문을 연쇄로 던져 데이터를 나누는 결정 트리를 살펴본다.
 
 ---
 
