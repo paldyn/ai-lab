@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="400" viewBox="0 0 880 400" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <defs>
+    <marker id="vr" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#e05555"/>
+    </marker>
+    <marker id="vb" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#7ec8e3"/>
+    </marker>
+    <marker id="vp" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#7777cc"/>
+    </marker>
+  </defs>
+  <rect x="0" y="0" width="880" height="400" rx="12" fill="#0a0a0a"/>
+  <text x="60" y="46" font-size="22" font-weight="700" fill="#e8e8e8">세 변형은 한 식의 서로 다른 자리를 건드린다</text>
+
+  <rect x="60" y="76" width="760" height="104" rx="8" fill="#000" stroke="#3a4a6e" stroke-width="1"/>
+  <text x="96" y="118" font-size="20" fill="#e8e8e8">ε̃ =</text>
+  <text x="160" y="118" font-size="20" font-weight="600" fill="#e05555">ε(∅)</text>
+  <text x="222" y="118" font-size="20" fill="#e8e8e8">+</text>
+  <text x="248" y="118" font-size="20" font-weight="600" fill="#7ec8e3">w(t)</text>
+  <text x="306" y="118" font-size="20" fill="#e8e8e8">·  [ ε(y) −</text>
+  <text x="432" y="118" font-size="20" font-weight="600" fill="#e05555">ε(∅)</text>
+  <text x="490" y="118" font-size="20" fill="#e8e8e8">]</text>
+  <text x="96" y="156" font-size="16" fill="#e8e8e8">x̂₀ = (x_t − σ_t ε̃) / α_t</text>
+  <text x="470" y="156" font-size="16" font-weight="600" fill="#7777cc">→ 범위를 넘으면 잘라 되돌림</text>
+
+  <line x1="180" y1="260" x2="184" y2="180" stroke="#e05555" stroke-width="2" marker-end="url(#vr)"/>
+  <line x1="440" y1="260" x2="272" y2="180" stroke="#7ec8e3" stroke-width="2" marker-end="url(#vb)"/>
+  <line x1="700" y1="260" x2="640" y2="180" stroke="#7777cc" stroke-width="2" marker-end="url(#vp)"/>
+
+  <rect x="60" y="260" width="240" height="100" rx="8" fill="#111" stroke="#e05555" stroke-width="1.5"/>
+  <text x="84" y="294" font-size="16" font-weight="600" fill="#e05555">부정 프롬프트</text>
+  <text x="84" y="318" font-size="13" fill="#888">∅ 자리에 피하고 싶은</text>
+  <text x="84" y="338" font-size="13" fill="#888">조건 y_neg를 넣는다</text>
+
+  <rect x="320" y="260" width="240" height="100" rx="8" fill="#111" stroke="#7ec8e3" stroke-width="1.5"/>
+  <text x="344" y="294" font-size="16" font-weight="600" fill="#7ec8e3">가이던스 스케줄</text>
+  <text x="344" y="318" font-size="13" fill="#888">w를 상수가 아니라</text>
+  <text x="344" y="338" font-size="13" fill="#888">시각 t의 함수로 둔다</text>
+
+  <rect x="580" y="260" width="240" height="100" rx="8" fill="#111" stroke="#7777cc" stroke-width="1.5"/>
+  <text x="604" y="294" font-size="16" font-weight="600" fill="#7777cc">동적 임계</text>
+  <text x="604" y="318" font-size="13" fill="#888">x̂₀가 범위를 넘으면</text>
+  <text x="604" y="338" font-size="13" fill="#888">분위수로 잘라 되돌린다</text>
+</svg>

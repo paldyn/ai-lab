@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="440" viewBox="0 0 880 440" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+<rect width="880" height="440" rx="12" fill="#0a0a0a"/>
+<text x="60" y="46" font-size="22" font-weight="700" fill="#e8e8e8">h를 반으로 줄이면 간격은 넷으로 준다</text>
+<text x="60" y="74" font-size="13" fill="#888">곡선 eʰ와 접선 1 + h 사이의 간격 eʰ − (1 + h)를 h마다 세로로 잰 그래프</text>
+<line x1="120" y1="340" x2="780" y2="340" stroke="#888" stroke-width="1.5"/>
+<line x1="120" y1="340" x2="120" y2="110" stroke="#888" stroke-width="1.5"/>
+<text x="786" y="345" font-size="13" fill="#888">h</text>
+<text x="116" y="102" font-size="13" fill="#888">간격</text>
+<line x1="114" y1="285.0" x2="120" y2="285.0" stroke="#444" stroke-width="1.5"/>
+<text x="108" y="289.0" font-size="13" fill="#888" text-anchor="end">0.002</text>
+<line x1="114" y1="230.0" x2="120" y2="230.0" stroke="#444" stroke-width="1.5"/>
+<text x="108" y="234.0" font-size="13" fill="#888" text-anchor="end">0.004</text>
+<line x1="114" y1="175.0" x2="120" y2="175.0" stroke="#444" stroke-width="1.5"/>
+<text x="108" y="179.0" font-size="13" fill="#888" text-anchor="end">0.006</text>
+<line x1="386.7" y1="340" x2="386.7" y2="346" stroke="#444" stroke-width="1.5"/>
+<text x="386.7" y="364" font-size="13" fill="#888" text-anchor="middle">0.05</text>
+<line x1="653.3" y1="340" x2="653.3" y2="346" stroke="#444" stroke-width="1.5"/>
+<text x="653.3" y="364" font-size="13" fill="#888" text-anchor="middle">0.1</text>
+<path d="M 120.0,340.0 L 133.3,339.9 L 146.7,339.7 L 160.0,339.2 L 173.3,338.6 L 186.7,337.8 L 200.0,336.9 L 213.3,335.8 L 226.7,334.5 L 240.0,333.0 L 253.3,331.3 L 266.7,329.5 L 280.0,327.5 L 293.3,325.3 L 306.7,323.0 L 320.0,320.4 L 333.3,317.7 L 346.7,314.8 L 360.0,311.7 L 373.3,308.5 L 386.7,305.0 L 400.0,301.4 L 413.3,297.6 L 426.7,293.7 L 440.0,289.5 L 453.3,285.2 L 466.7,280.6 L 480.0,275.9 L 493.3,271.0 L 506.7,265.9 L 520.0,260.7 L 533.3,255.2 L 546.7,249.6 L 560.0,243.8 L 573.3,237.8 L 586.7,231.6 L 600.0,225.2 L 613.3,218.6 L 626.7,211.9 L 640.0,204.9 L 653.3,197.8 L 666.7,190.5 L 680.0,183.0 L 693.3,175.3 L 706.7,167.4 L 720.0,159.3 L 733.3,151.0 L 746.7,142.5 L 760.0,133.8" stroke="#7ec8e3" stroke-width="2.5" fill="none"/>
+<line x1="386.7" y1="340" x2="386.7" y2="305.0" stroke="#7777cc" stroke-width="2" stroke-dasharray="4,4"/>
+<circle cx="386.7" cy="305.0" r="5" fill="#e8e8e8"/>
+<text x="372.7" y="291.0" font-size="13" fill="#e8e8e8" text-anchor="end">0.0012711</text>
+<line x1="653.3" y1="340" x2="653.3" y2="197.8" stroke="#7777cc" stroke-width="2" stroke-dasharray="4,4"/>
+<circle cx="653.3" cy="197.8" r="5" fill="#e8e8e8"/>
+<text x="639.3" y="183.8" font-size="13" fill="#e8e8e8" text-anchor="end">0.0051709</text>
+<text x="60" y="404" font-size="13" fill="#888">h = 0.1 → 0.05로 절반이 되면 간격은 0.0051709 → 0.0012711, 약 4.07분의 1입니다.</text>
+</svg>

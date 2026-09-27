@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="420" viewBox="0 0 880 420" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <defs>
+    <marker id="arrW" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#888"/>
+    </marker>
+    <marker id="arrR" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#e05555"/>
+    </marker>
+    <marker id="arrG" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#55c555"/>
+    </marker>
+  </defs>
+  <rect x="0" y="0" width="880" height="420" rx="12" fill="#0a0a0a"/>
+  <text x="60" y="44" font-size="22" font-weight="700" fill="#e8e8e8">로짓에서 손실까지 가는 두 길</text>
+  <text x="60" y="72" font-size="16" font-weight="600" fill="#e8e8e8">로짓 (0, 200), 정답은 0번 자리</text>
+
+  <!-- input -->
+  <rect x="60" y="110" width="160" height="220" rx="8" fill="#000000" stroke="#7ec8e3" stroke-width="1.5"/>
+  <text x="140" y="212" font-size="16" font-weight="600" fill="#e8e8e8" text-anchor="middle">로짓 z</text>
+  <text x="140" y="236" font-size="13" fill="#888" text-anchor="middle">(0, 200)</text>
+
+  <!-- top path: separate -->
+  <text x="260" y="100" font-size="13" fill="#e05555">따로 계산</text>
+  <line x1="220" y1="150" x2="260" y2="150" stroke="#e05555" stroke-width="2" marker-end="url(#arrR)"/>
+  <rect x="260" y="110" width="160" height="80" rx="8" fill="#000000" stroke="#e05555" stroke-width="1.5"/>
+  <text x="340" y="146" font-size="13" fill="#ffffff" text-anchor="middle">softmax</text>
+  <text x="340" y="166" font-size="13" fill="#888" text-anchor="middle">q₀ = e⁻²⁰⁰</text>
+  <line x1="420" y1="150" x2="460" y2="150" stroke="#e05555" stroke-width="2" marker-end="url(#arrR)"/>
+  <rect x="460" y="110" width="180" height="80" rx="8" fill="#000000" stroke="#e05555" stroke-width="1.5"/>
+  <text x="550" y="146" font-size="13" fill="#ffffff" text-anchor="middle">float32로는</text>
+  <text x="550" y="166" font-size="13" fill="#888" text-anchor="middle">q₀ = 0 으로 떨어짐</text>
+  <line x1="640" y1="150" x2="680" y2="150" stroke="#e05555" stroke-width="2" marker-end="url(#arrR)"/>
+  <rect x="680" y="110" width="140" height="80" rx="8" fill="#000000" stroke="#e05555" stroke-width="1.5"/>
+  <text x="750" y="146" font-size="13" fill="#ffffff" text-anchor="middle">−log q₀</text>
+  <text x="750" y="166" font-size="13" fill="#e05555" text-anchor="middle">= ∞</text>
+
+  <!-- bottom path: fused -->
+  <text x="260" y="240" font-size="13" fill="#55c555">한 연산으로</text>
+  <line x1="220" y1="290" x2="260" y2="290" stroke="#55c555" stroke-width="2" marker-end="url(#arrG)"/>
+  <rect x="260" y="250" width="380" height="80" rx="8" fill="#000000" stroke="#55c555" stroke-width="1.5"/>
+  <text x="450" y="286" font-size="13" fill="#ffffff" text-anchor="middle">log(e⁰ + e²⁰⁰) − z₀</text>
+  <text x="450" y="306" font-size="13" fill="#888" text-anchor="middle">확률을 만들지 않고 log-sum-exp에서 정답 로짓을 뺀다</text>
+  <line x1="640" y1="290" x2="680" y2="290" stroke="#55c555" stroke-width="2" marker-end="url(#arrG)"/>
+  <rect x="680" y="250" width="140" height="80" rx="8" fill="#000000" stroke="#55c555" stroke-width="1.5"/>
+  <text x="750" y="286" font-size="13" fill="#ffffff" text-anchor="middle">≈ 200</text>
+  <text x="750" y="306" font-size="13" fill="#55c555" text-anchor="middle">유한한 손실</text>
+
+  <text x="60" y="380" font-size="13" fill="#888">크게 틀린 순간이 학습 신호가 가장 필요한 때인데, 따로 계산하면 바로 그때 값이 사라진다.</text>
+</svg>

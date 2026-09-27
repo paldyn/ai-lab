@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="500" viewBox="0 0 880 500" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <rect x="0" y="0" width="880" height="500" rx="12" fill="#0a0a0a"/>
+  <text x="60" y="44" font-size="22" font-weight="700" fill="#e8e8e8">패딩을 셈에 넣으면 평균이 묽어진다</text>
+  <text x="60" y="72" font-size="16" font-weight="600" fill="#e8e8e8">토큰 여덟 칸 중 두 칸이 패딩인 배치의 토큰별 손실 (내트)</text>
+  <line x1="80" y1="340" x2="810" y2="340" stroke="#888" stroke-width="1.5"/>
+  <rect x="100" y="260.8" width="60" height="79.2" fill="#7ec8e3"/>
+  <text x="130" y="362" font-size="13" fill="#e8e8e8" text-anchor="middle">0.495</text>
+  <text x="130" y="382" font-size="13" fill="#888" text-anchor="middle">토큰 1</text>
+  <rect x="190" y="244.2" width="60" height="95.8" fill="#7ec8e3"/>
+  <text x="220" y="362" font-size="13" fill="#e8e8e8" text-anchor="middle">0.599</text>
+  <text x="220" y="382" font-size="13" fill="#888" text-anchor="middle">토큰 2</text>
+  <rect x="280" y="186.9" width="60" height="153.1" fill="#7ec8e3"/>
+  <text x="310" y="362" font-size="13" fill="#e8e8e8" text-anchor="middle">0.957</text>
+  <text x="310" y="382" font-size="13" fill="#888" text-anchor="middle">토큰 3</text>
+  <rect x="370" y="140.0" width="60" height="200.0" fill="#7ec8e3"/>
+  <text x="400" y="362" font-size="13" fill="#e8e8e8" text-anchor="middle">1.250</text>
+  <text x="400" y="382" font-size="13" fill="#888" text-anchor="middle">토큰 4</text>
+  <rect x="460" y="196.5" width="60" height="143.5" fill="#7ec8e3"/>
+  <text x="490" y="362" font-size="13" fill="#e8e8e8" text-anchor="middle">0.897</text>
+  <text x="490" y="382" font-size="13" fill="#888" text-anchor="middle">토큰 5</text>
+  <rect x="550" y="236.8" width="60" height="103.2" fill="#7ec8e3"/>
+  <text x="580" y="362" font-size="13" fill="#e8e8e8" text-anchor="middle">0.645</text>
+  <text x="580" y="382" font-size="13" fill="#888" text-anchor="middle">토큰 6</text>
+  <rect x="640" y="338.9" width="60" height="3.0" fill="#7777cc"/>
+  <text x="670" y="362" font-size="13" fill="#e8e8e8" text-anchor="middle">0.007</text>
+  <text x="670" y="382" font-size="13" fill="#888" text-anchor="middle">패딩</text>
+  <rect x="730" y="338.9" width="60" height="3.0" fill="#7777cc"/>
+  <text x="760" y="362" font-size="13" fill="#e8e8e8" text-anchor="middle">0.007</text>
+  <text x="760" y="382" font-size="13" fill="#888" text-anchor="middle">패딩</text>
+  <line x1="80" y1="210.9" x2="810" y2="210.9" stroke="#55c555" stroke-width="2" stroke-dasharray="5,3"/>
+  <line x1="80" y1="242.9" x2="810" y2="242.9" stroke="#e05555" stroke-width="2" stroke-dasharray="5,3"/>
+  <line x1="80" y1="428" x2="112" y2="428" stroke="#55c555" stroke-width="2" stroke-dasharray="5,3"/>
+  <text x="124" y="433" font-size="13" fill="#e8e8e8">패딩을 뺀 평균 4.844 ÷ 6 = 0.807</text>
+  <line x1="450" y1="428" x2="482" y2="428" stroke="#e05555" stroke-width="2" stroke-dasharray="5,3"/>
+  <text x="494" y="433" font-size="13" fill="#e8e8e8">패딩까지 센 평균 4.859 ÷ 8 = 0.607</text>
+  <text x="80" y="468" font-size="13" fill="#888">패딩 칸은 맞히기 쉬워 손실이 0.007이라, 칸 수만 늘리고 합은 거의 안 늘린다.</text>
+</svg>

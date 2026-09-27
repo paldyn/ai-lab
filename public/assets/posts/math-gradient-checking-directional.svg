@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="460" viewBox="0 0 880 460">
+<rect width="880" height="460" rx="12" fill="#0a0a0a"/>
+<defs><marker id="arr" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto"><path d="M 0 0 L 13 7 L 0 14 z" fill="#888"/></marker></defs>
+<text x="440" y="42" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="22" font-weight="700" fill="#e8e8e8" text-anchor="middle">무작위 벡터로 야코비안을 줄인다</text>
+<text x="440" y="68" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888" text-anchor="middle">출력 m 개 · 입력 n 개 — 재는 칸이 줄수록 순전파 횟수도 준다</text>
+<text x="160" y="116" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#e8e8e8" text-anchor="middle">칸마다 잰다</text>
+<rect x="94" y="166" width="22" height="22" fill="#7777cc" fill-opacity="0.25" stroke="#7777cc" stroke-width="1"/>
+<rect x="116" y="166" width="22" height="22" fill="#7777cc" fill-opacity="0.25" stroke="#7777cc" stroke-width="1"/>
+<rect x="138" y="166" width="22" height="22" fill="#7777cc" fill-opacity="0.25" stroke="#7777cc" stroke-width="1"/>
+<rect x="160" y="166" width="22" height="22" fill="#7777cc" fill-opacity="0.25" stroke="#7777cc" stroke-width="1"/>
+<rect x="182" y="166" width="22" height="22" fill="#7777cc" fill-opacity="0.25" stroke="#7777cc" stroke-width="1"/>
+<rect x="204" y="166" width="22" height="22" fill="#7777cc" fill-opacity="0.25" stroke="#7777cc" stroke-width="1"/>
+<rect x="94" y="188" width="22" height="22" fill="#7777cc" fill-opacity="0.25" stroke="#7777cc" stroke-width="1"/>
+<rect x="116" y="188" width="22" height="22" fill="#7777cc" fill-opacity="0.25" stroke="#7777cc" stroke-width="1"/>
+<rect x="138" y="188" width="22" height="22" fill="#7777cc" fill-opacity="0.25" stroke="#7777cc" stroke-width="1"/>
+<rect x="160" y="188" width="22" height="22" fill="#7777cc" fill-opacity="0.25" stroke="#7777cc" stroke-width="1"/>
+<rect x="182" y="188" width="22" height="22" fill="#7777cc" fill-opacity="0.25" stroke="#7777cc" stroke-width="1"/>
+<rect x="204" y="188" width="22" height="22" fill="#7777cc" fill-opacity="0.25" stroke="#7777cc" stroke-width="1"/>
+<rect x="94" y="210" width="22" height="22" fill="#7777cc" fill-opacity="0.25" stroke="#7777cc" stroke-width="1"/>
+<rect x="116" y="210" width="22" height="22" fill="#7777cc" fill-opacity="0.25" stroke="#7777cc" stroke-width="1"/>
+<rect x="138" y="210" width="22" height="22" fill="#7777cc" fill-opacity="0.25" stroke="#7777cc" stroke-width="1"/>
+<rect x="160" y="210" width="22" height="22" fill="#7777cc" fill-opacity="0.25" stroke="#7777cc" stroke-width="1"/>
+<rect x="182" y="210" width="22" height="22" fill="#7777cc" fill-opacity="0.25" stroke="#7777cc" stroke-width="1"/>
+<rect x="204" y="210" width="22" height="22" fill="#7777cc" fill-opacity="0.25" stroke="#7777cc" stroke-width="1"/>
+<rect x="94" y="232" width="22" height="22" fill="#7777cc" fill-opacity="0.25" stroke="#7777cc" stroke-width="1"/>
+<rect x="116" y="232" width="22" height="22" fill="#7777cc" fill-opacity="0.25" stroke="#7777cc" stroke-width="1"/>
+<rect x="138" y="232" width="22" height="22" fill="#7777cc" fill-opacity="0.25" stroke="#7777cc" stroke-width="1"/>
+<rect x="160" y="232" width="22" height="22" fill="#7777cc" fill-opacity="0.25" stroke="#7777cc" stroke-width="1"/>
+<rect x="182" y="232" width="22" height="22" fill="#7777cc" fill-opacity="0.25" stroke="#7777cc" stroke-width="1"/>
+<rect x="204" y="232" width="22" height="22" fill="#7777cc" fill-opacity="0.25" stroke="#7777cc" stroke-width="1"/>
+<text x="160" y="290" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="15" fill="#e8e8e8" text-anchor="middle">J  (m × n)</text>
+<text x="160" y="318" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="15" font-weight="600" fill="#7777cc" text-anchor="middle">순전파 2n 번</text>
+<text x="440" y="116" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#e8e8e8" text-anchor="middle">출력을 u로 묶는다</text>
+<rect x="374" y="199" width="22" height="22" fill="#7ec8e3" fill-opacity="0.25" stroke="#7ec8e3" stroke-width="1"/>
+<rect x="396" y="199" width="22" height="22" fill="#7ec8e3" fill-opacity="0.25" stroke="#7ec8e3" stroke-width="1"/>
+<rect x="418" y="199" width="22" height="22" fill="#7ec8e3" fill-opacity="0.25" stroke="#7ec8e3" stroke-width="1"/>
+<rect x="440" y="199" width="22" height="22" fill="#7ec8e3" fill-opacity="0.25" stroke="#7ec8e3" stroke-width="1"/>
+<rect x="462" y="199" width="22" height="22" fill="#7ec8e3" fill-opacity="0.25" stroke="#7ec8e3" stroke-width="1"/>
+<rect x="484" y="199" width="22" height="22" fill="#7ec8e3" fill-opacity="0.25" stroke="#7ec8e3" stroke-width="1"/>
+<text x="440" y="290" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="15" fill="#e8e8e8" text-anchor="middle">uᵀJ  (1 × n)</text>
+<text x="440" y="318" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="15" font-weight="600" fill="#7ec8e3" text-anchor="middle">순전파 2n 번</text>
+<text x="720" y="116" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#e8e8e8" text-anchor="middle">방향 v로 한 번</text>
+<rect x="709" y="199" width="22" height="22" fill="#55c555" fill-opacity="0.25" stroke="#55c555" stroke-width="1"/>
+<text x="720" y="290" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="15" fill="#e8e8e8" text-anchor="middle">uᵀJv  (1 × 1)</text>
+<text x="720" y="318" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="15" font-weight="600" fill="#55c555" text-anchor="middle">순전파 2 번</text>
+<line x1="240" y1="210" x2="360" y2="210" stroke="#888" stroke-width="2" marker-end="url(#arr)"/>
+<line x1="520" y1="210" x2="640" y2="210" stroke="#888" stroke-width="2" marker-end="url(#arr)"/>
+<text x="300" y="186" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="12" fill="#888" text-anchor="middle">u 와 내적</text>
+<text x="580" y="186" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="12" fill="#888" text-anchor="middle">v 방향으로 흔들기</text>
+<rect x="90" y="354" width="700" height="66" rx="8" fill="#000000" stroke="#3a4a6e" stroke-width="1.5"/>
+<text x="440" y="381" xml:space="preserve" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="14" fill="#ffffff" text-anchor="middle">수치 쪽: ( u·f(x + h·v) − u·f(x − h·v) ) ÷ 2h      해석 쪽: uᵀ J v</text>
+<text x="440" y="404" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="12" fill="#9aa4b8" text-anchor="middle">두 수가 맞으면 모든 칸이 한꺼번에 한 번 검사된 것이다 — 다만 칸 하나의 실수는 묽어진다</text>
+</svg>

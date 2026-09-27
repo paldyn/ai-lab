@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="410" viewBox="0 0 880 410" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <defs>
+    <marker id="cd" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#7ec8e3"/>
+    </marker>
+  </defs>
+  <rect x="0" y="0" width="880" height="410" rx="12" fill="#0a0a0a"/>
+  <text x="50" y="46" font-size="22" font-weight="700" fill="#e8e8e8">학습 때 조건을 가끔 빼 두고, 추론 때 둘 다 부른다</text>
+
+  <text x="50" y="94" font-size="16" font-weight="600" fill="#e8e8e8">학습</text>
+  <text x="470" y="94" font-size="16" font-weight="600" fill="#e8e8e8">추론</text>
+
+  <rect x="50" y="110" width="360" height="60" rx="8" fill="#111" stroke="#3a4a6e" stroke-width="1"/>
+  <text x="74" y="136" font-size="15" font-weight="600" fill="#e8e8e8">한 쌍 (x₀, y)</text>
+  <text x="74" y="156" font-size="13" fill="#888">이미지와 그 프롬프트</text>
+
+  <line x1="135" y1="170" x2="135" y2="210" stroke="#7ec8e3" stroke-width="2" marker-end="url(#cd)"/>
+  <line x1="325" y1="170" x2="325" y2="210" stroke="#7ec8e3" stroke-width="2" marker-end="url(#cd)"/>
+
+  <rect x="50" y="210" width="170" height="60" rx="8" fill="#111" stroke="#3a4a6e" stroke-width="1"/>
+  <text x="70" y="236" font-size="15" font-weight="600" fill="#e8e8e8">90%: y 그대로</text>
+  <text x="70" y="256" font-size="13" fill="#888">조건부를 배운다</text>
+  <rect x="240" y="210" width="170" height="60" rx="8" fill="#111" stroke="#e05555" stroke-width="1.5"/>
+  <text x="260" y="236" font-size="15" font-weight="600" fill="#e05555">10%: ∅로 바꿈</text>
+  <text x="260" y="256" font-size="13" fill="#888">조건 없음을 배운다</text>
+
+  <line x1="135" y1="270" x2="135" y2="310" stroke="#7ec8e3" stroke-width="2" marker-end="url(#cd)"/>
+  <line x1="325" y1="270" x2="325" y2="310" stroke="#7ec8e3" stroke-width="2" marker-end="url(#cd)"/>
+
+  <rect x="50" y="310" width="360" height="60" rx="8" fill="#000" stroke="#55c555" stroke-width="1.5"/>
+  <text x="74" y="336" font-size="15" font-weight="600" fill="#55c555">신경망 하나 ε_θ(x_t, t, c)</text>
+  <text x="74" y="356" font-size="13" fill="#888">c 자리에 y 또는 ∅가 들어온다</text>
+
+  <rect x="470" y="110" width="360" height="60" rx="8" fill="#111" stroke="#3a4a6e" stroke-width="1"/>
+  <text x="494" y="136" font-size="15" font-weight="600" fill="#e8e8e8">같은 x_t, 같은 t</text>
+  <text x="494" y="156" font-size="13" fill="#888">샘플러의 한 스텝</text>
+
+  <line x1="555" y1="170" x2="555" y2="210" stroke="#7ec8e3" stroke-width="2" marker-end="url(#cd)"/>
+  <line x1="745" y1="170" x2="745" y2="210" stroke="#7ec8e3" stroke-width="2" marker-end="url(#cd)"/>
+
+  <rect x="470" y="210" width="170" height="60" rx="8" fill="#111" stroke="#e05555" stroke-width="1.5"/>
+  <text x="490" y="236" font-size="15" font-weight="600" fill="#e05555">ε_θ(x_t, t, ∅)</text>
+  <text x="490" y="256" font-size="13" fill="#888">조건 없는 예측</text>
+  <rect x="660" y="210" width="170" height="60" rx="8" fill="#111" stroke="#3a4a6e" stroke-width="1"/>
+  <text x="680" y="236" font-size="15" font-weight="600" fill="#e8e8e8">ε_θ(x_t, t, y)</text>
+  <text x="680" y="256" font-size="13" fill="#888">조건부 예측</text>
+
+  <line x1="555" y1="270" x2="555" y2="310" stroke="#7ec8e3" stroke-width="2" marker-end="url(#cd)"/>
+  <line x1="745" y1="270" x2="745" y2="310" stroke="#7ec8e3" stroke-width="2" marker-end="url(#cd)"/>
+
+  <rect x="470" y="310" width="360" height="60" rx="8" fill="#000" stroke="#55c555" stroke-width="1.5"/>
+  <text x="494" y="336" font-size="15" font-weight="600" fill="#55c555">ε_u + w (ε_c − ε_u)</text>
+  <text x="494" y="356" font-size="13" fill="#888">두 예측을 잇는 직선 위에서 w만큼 간다</text>
+</svg>

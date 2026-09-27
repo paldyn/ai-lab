@@ -35,5 +35,5 @@
 <text x="642" y="192" font-size="13" fill="#888">w = 10</text>
 <line x1="600" y1="211" x2="632" y2="211" stroke="#666" stroke-width="2" stroke-dasharray="5,3"/>
 <text x="642" y="216" font-size="13" fill="#888">조건 없는 분포 p(x)</text>
-<text x="110" y="416" font-size="13" fill="#888">왼쪽 봉우리(원래 질량 2.3%)는 w = 10에서 0.0005%까지 줄어든다 — 다양성이 사라지는 자리다</text>
+<text x="110" y="416" font-size="13" fill="#888">0보다 왼쪽 질량은 w = 1의 2.3%에서 w = 10의 0.0005%로 4천 배 준다 — 폭은 14%만 줄었다</text>
 </svg>

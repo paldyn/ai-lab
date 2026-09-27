@@ -1,0 +1,78 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="520" viewBox="0 0 880 520">
+<rect width="880" height="520" rx="12" fill="#0a0a0a"/>
+<text x="440" y="42" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="22" font-weight="700" fill="#e8e8e8" text-anchor="middle">복소 스텝에는 되돌아오는 쪽이 없다</text>
+<text x="440" y="68" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888" text-anchor="middle">tanh 근사 GELU를 x = 1.2 에서 잰 오차 · 가로는 log₁₀ h, 세로는 log₁₀ 오차</text>
+<rect x="110" y="120" width="660" height="300" fill="none" stroke="#2a2a2a" stroke-width="1"/>
+<line x1="110.0" y1="120" x2="110.0" y2="420" stroke="#333" stroke-width="1"/>
+<text x="110.0" y="442" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="12" fill="#888" text-anchor="middle">0</text>
+<line x1="192.5" y1="120" x2="192.5" y2="420" stroke="#333" stroke-width="1"/>
+<text x="192.5" y="442" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="12" fill="#888" text-anchor="middle">-2</text>
+<line x1="275.0" y1="120" x2="275.0" y2="420" stroke="#333" stroke-width="1"/>
+<text x="275.0" y="442" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="12" fill="#888" text-anchor="middle">-4</text>
+<line x1="357.5" y1="120" x2="357.5" y2="420" stroke="#333" stroke-width="1"/>
+<text x="357.5" y="442" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="12" fill="#888" text-anchor="middle">-6</text>
+<line x1="440.0" y1="120" x2="440.0" y2="420" stroke="#333" stroke-width="1"/>
+<text x="440.0" y="442" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="12" fill="#888" text-anchor="middle">-8</text>
+<line x1="522.5" y1="120" x2="522.5" y2="420" stroke="#333" stroke-width="1"/>
+<text x="522.5" y="442" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="12" fill="#888" text-anchor="middle">-10</text>
+<line x1="605.0" y1="120" x2="605.0" y2="420" stroke="#333" stroke-width="1"/>
+<text x="605.0" y="442" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="12" fill="#888" text-anchor="middle">-12</text>
+<line x1="687.5" y1="120" x2="687.5" y2="420" stroke="#333" stroke-width="1"/>
+<text x="687.5" y="442" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="12" fill="#888" text-anchor="middle">-14</text>
+<line x1="770.0" y1="120" x2="770.0" y2="420" stroke="#333" stroke-width="1"/>
+<text x="770.0" y="442" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="12" fill="#888" text-anchor="middle">-16</text>
+<line x1="110" y1="136.7" x2="770" y2="136.7" stroke="#333" stroke-width="1"/>
+<text x="100" y="140.7" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="12" fill="#888" text-anchor="end">0</text>
+<line x1="110" y1="203.3" x2="770" y2="203.3" stroke="#333" stroke-width="1"/>
+<text x="100" y="207.3" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="12" fill="#888" text-anchor="end">-4</text>
+<line x1="110" y1="270.0" x2="770" y2="270.0" stroke="#333" stroke-width="1"/>
+<text x="100" y="274.0" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="12" fill="#888" text-anchor="end">-8</text>
+<line x1="110" y1="336.7" x2="770" y2="336.7" stroke="#333" stroke-width="1"/>
+<text x="100" y="340.7" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="12" fill="#888" text-anchor="end">-12</text>
+<line x1="110" y1="403.3" x2="770" y2="403.3" stroke="#333" stroke-width="1"/>
+<text x="100" y="407.3" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="12" fill="#888" text-anchor="end">-16</text>
+<text x="440.0" y="466" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888" text-anchor="middle">h 가 작아진다 →</text>
+<polyline points="110.0,154.0 151.2,186.8 192.5,220.1 233.8,253.4 275.0,286.8 316.2,328.6 357.5,304.4 398.8,296.8 440.0,287.7 481.2,287.7 522.5,247.5 563.8,231.7 605.0,208.9 646.2,187.9 687.5,172.1 728.8,153.1 770.0,135.9" fill="none" stroke="#e05555" stroke-width="2.5"/>
+<circle cx="110.0" cy="154.0" r="3.5" fill="#e05555"/>
+<circle cx="151.2" cy="186.8" r="3.5" fill="#e05555"/>
+<circle cx="192.5" cy="220.1" r="3.5" fill="#e05555"/>
+<circle cx="233.8" cy="253.4" r="3.5" fill="#e05555"/>
+<circle cx="275.0" cy="286.8" r="3.5" fill="#e05555"/>
+<circle cx="316.2" cy="328.6" r="3.5" fill="#e05555"/>
+<circle cx="357.5" cy="304.4" r="3.5" fill="#e05555"/>
+<circle cx="398.8" cy="296.8" r="3.5" fill="#e05555"/>
+<circle cx="440.0" cy="287.7" r="3.5" fill="#e05555"/>
+<circle cx="481.2" cy="287.7" r="3.5" fill="#e05555"/>
+<circle cx="522.5" cy="247.5" r="3.5" fill="#e05555"/>
+<circle cx="563.8" cy="231.7" r="3.5" fill="#e05555"/>
+<circle cx="605.0" cy="208.9" r="3.5" fill="#e05555"/>
+<circle cx="646.2" cy="187.9" r="3.5" fill="#e05555"/>
+<circle cx="687.5" cy="172.1" r="3.5" fill="#e05555"/>
+<circle cx="728.8" cy="153.1" r="3.5" fill="#e05555"/>
+<circle cx="770.0" cy="135.9" r="3.5" fill="#e05555"/>
+<polyline points="110.0,152.9 151.2,186.8 192.5,220.1 233.8,253.4 275.0,286.8 316.2,320.1 357.5,353.4 398.8,387.5 440.0,420.0" fill="none" stroke="#55c555" stroke-width="2.5"/>
+<circle cx="110.0" cy="152.9" r="3.5" fill="#55c555"/>
+<circle cx="151.2" cy="186.8" r="3.5" fill="#55c555"/>
+<circle cx="192.5" cy="220.1" r="3.5" fill="#55c555"/>
+<circle cx="233.8" cy="253.4" r="3.5" fill="#55c555"/>
+<circle cx="275.0" cy="286.8" r="3.5" fill="#55c555"/>
+<circle cx="316.2" cy="320.1" r="3.5" fill="#55c555"/>
+<circle cx="357.5" cy="353.4" r="3.5" fill="#55c555"/>
+<circle cx="398.8" cy="387.5" r="3.5" fill="#55c555"/>
+<circle cx="440.0" cy="420.0" r="3.5" fill="#55c555"/>
+<circle cx="481.2" cy="420.0" r="3.5" fill="#55c555"/>
+<circle cx="522.5" cy="420.0" r="3.5" fill="#55c555"/>
+<circle cx="563.8" cy="420.0" r="3.5" fill="#55c555"/>
+<circle cx="605.0" cy="420.0" r="3.5" fill="#55c555"/>
+<circle cx="646.2" cy="420.0" r="3.5" fill="#55c555"/>
+<circle cx="687.5" cy="420.0" r="3.5" fill="#55c555"/>
+<circle cx="728.8" cy="420.0" r="3.5" fill="#55c555"/>
+<circle cx="770.0" cy="420.0" r="3.5" fill="#55c555"/>
+<line x1="440.0" y1="420.0" x2="770" y2="420.0" stroke="#55c555" stroke-width="2.5"/>
+<line x1="270" y1="148" x2="300" y2="148" stroke="#e05555" stroke-width="2.5"/>
+<text x="310" y="152" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e8e8e8">중심차분 — 뺄셈이 있어 V 자로 되돌아온다</text>
+<line x1="270" y1="174" x2="300" y2="174" stroke="#55c555" stroke-width="2.5"/>
+<text x="310" y="178" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e8e8e8">복소 스텝 — 뺄셈이 없어 한 번 내려가면 그대로다</text>
+<text x="762" y="408.0" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="12" fill="#55c555" text-anchor="end">오차 0 (float64로 정확히 같은 값)</text>
+<text x="440" y="498" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="12" fill="#9aa4b8" text-anchor="middle">h가 큰 쪽에서는 두 곡선이 겹친다 — 절단오차가 둘 다 h²/6 · f‴ 이다</text>
+</svg>
