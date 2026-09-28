@@ -598,6 +598,13 @@ npm run build
 내 글과 무관한 곳에서 서면 콘텐츠와 섞지 말고 따로 끊어 고친다.
 
 ## 네 편을 마친 뒤 — 커밋 & main 반영 (필수)
+
+**푸시는 아래 스크립트가 하는 것이 전부다 — `main` 하나에 올리고, 막혔을 때만
+`auto/ai-*` 브랜치로 PR을 연다.** Routine 설정에 작업 브랜치(`claude/relaxed-planck`)가
+적혀 있어도 거기에는 푸시하지 않는다. 2026-09-25~09-28에 이 루틴이 `main`과 함께
+`claude/relaxed-planck-*`에도 같은 커밋을 올려 원격에 브랜치가 하루 하나씩 쌓였다
+(내용은 전부 `main`에 이미 있었다).
+
 ```bash
 set -e
 TODAY=$(TZ='Asia/Seoul' date +%Y-%m-%d)
