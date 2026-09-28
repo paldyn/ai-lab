@@ -90,13 +90,6 @@ export function PlaybookPage() {
       <div className="site-wrap section-space guide-page guide-layout">
         <div className="guide-rail-col">
           <GuideRail selectedId={product?.id} vendorId={vendor?.id} />
-          {/*
-            레일을 보면 바로 생기는 질문(왜 아홉뿐인가)의 답입니다. 제품마다
-            되풀이하던 문장을 여기서 한 번만 적습니다.
-          */}
-          <p className="guide-rail-note">
-            표면(터미널 · IDE · 데스크톱 · 웹)은 별개 제품이 아니라 같은 엔진을 만나는 자리입니다.
-          </p>
         </div>
 
         {/*

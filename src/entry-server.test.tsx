@@ -207,5 +207,6 @@ describe('프리렌더 — 본문이 HTML에 들어간다', () => {
     /* 걷어낸 첫 화면의 흔적이 되살아나면 빨갛게. */
     expect(html).not.toContain('체감');
     expect(html).not.toContain('위 판');
+    expect(html).not.toContain('guide-rail-note');
   });
 });
