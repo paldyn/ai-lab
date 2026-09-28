@@ -4877,8 +4877,14 @@ input:focus-visible {
   to { opacity: 1; transform: none; }
 }
 
+/*
+  리서치 목록. **갈래 띠 아래 간격은 학습 목록(`.learn-layout`)과 같다**(46 · 78). 칩이 목록
+  안에 있던 동안에는 `section-space`(72)에 54를 덮어 써서 배너와 칩 사이가 다른 서랍보다
+  한참 벌어져 있었다.
+*/
 .research-archive {
-  padding-top: 54px;
+  padding-top: 46px;
+  padding-bottom: 78px;
 }
 
 /* ============================================================
