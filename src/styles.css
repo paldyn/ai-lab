@@ -7613,6 +7613,20 @@ input:focus-visible {
   box-shadow: 0 6px 18px -8px var(--guide-accent);
 }
 
+/*
+  타일 위 마크의 색. 기본은 배경색이다 — 「공식 사이트」 단추와 같은 짝(제품색 면 + 배경색 글자).
+  **다크의 Claude 셋만 흰색이다**(2026-09-28, 「다크 테마일 때 블랙인데 화이트로」). 다크의
+  배경색은 검정이라 주황 타일 위에 검은 해가 섰는데, Claude의 해는 주황 위에 흰색으로 서는
+  마크다. OpenAI는 다크 타일이 밝은 회색이라 검정 그대로 둔다(흰색이면 사라진다).
+*/
+.gl-ledger {
+  --gl-tile-ink: var(--bg);
+}
+
+[data-theme='dark'] .gl-ledger[data-vendor='anthropic'] {
+  --gl-tile-ink: var(--text-strong);
+}
+
 /* 여러 색이 든 마크는 제품색 판 위에서 색끼리 부딪힌다 — 흰 판에 제품색 테두리로 둔다. */
 .gl-tile.is-plain {
   background: var(--bg);

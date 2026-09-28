@@ -727,10 +727,11 @@ function GuideHead({ product }: { product: Product }) {
       />
       <h2 className="gl-title" tabIndex={-1}>
         <span className={`gl-tile${product.monochrome ? '' : ' is-plain'}`} aria-hidden="true">
+          {/* 타일 위 마크의 색은 CSS가 회사마다 정합니다(`--gl-tile-ink`, 다크의 Claude는 흰색). */}
           <GuideMark
             logo={product.logo}
             monochrome={product.monochrome}
-            accent="var(--bg)"
+            accent="var(--gl-tile-ink)"
             className="gl-mark"
           />
         </span>
@@ -1058,6 +1059,7 @@ export function GuideLedger({
     <article
       className="gl-ledger"
       ref={ledgerRef}
+      data-vendor={product.vendorId}
       style={{ '--guide-accent': product.accent } as CSSProperties}
     >
       <GuideHead product={product} />
