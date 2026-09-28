@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="460" viewBox="0 0 880 460">
+  <rect width="880" height="460" fill="#0a0a0a" rx="12"/>
+  <text x="440" y="44" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="22" font-weight="700" fill="#e8e8e8" text-anchor="middle">턴마다 다시 보내는 입력 토큰</text>
+  <text x="440" y="70" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888" text-anchor="middle">system 200 · 질문 100 · 답 300토큰인 10턴 대화</text>
+  <rect x="100" y="98" width="14" height="14" rx="3" fill="#7777cc"/>
+  <text x="122" y="110" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#b0b0b0">system</text>
+  <rect x="230" y="98" width="14" height="14" rx="3" fill="#e05555"/>
+  <text x="252" y="110" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#b0b0b0">앞 턴의 질문과 답</text>
+  <rect x="412" y="98" width="14" height="14" rx="3" fill="#7ec8e3"/>
+  <text x="434" y="110" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#b0b0b0">이번 질문</text>
+  <line x1="90" y1="360" x2="820" y2="360" stroke="#444" stroke-width="1"/>
+  <rect x="110" y="348.0" width="44" height="12.0" fill="#7777cc"/>
+  <rect x="110" y="342.0" width="44" height="6.0" fill="#7ec8e3"/>
+  <text x="132.0" y="334.0" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#e8e8e8" text-anchor="middle">300</text>
+  <text x="132.0" y="382" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888" text-anchor="middle">1턴</text>
+  <rect x="182" y="348.0" width="44" height="12.0" fill="#7777cc"/>
+  <rect x="182" y="324.0" width="44" height="24.0" fill="#e05555"/>
+  <rect x="182" y="318.0" width="44" height="6.0" fill="#7ec8e3"/>
+  <text x="204.0" y="310.0" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#e8e8e8" text-anchor="middle">700</text>
+  <text x="204.0" y="382" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888" text-anchor="middle">2턴</text>
+  <rect x="254" y="348.0" width="44" height="12.0" fill="#7777cc"/>
+  <rect x="254" y="300.0" width="44" height="48.0" fill="#e05555"/>
+  <rect x="254" y="294.0" width="44" height="6.0" fill="#7ec8e3"/>
+  <text x="276.0" y="286.0" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#e8e8e8" text-anchor="middle">1,100</text>
+  <text x="276.0" y="382" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888" text-anchor="middle">3턴</text>
+  <rect x="326" y="348.0" width="44" height="12.0" fill="#7777cc"/>
+  <rect x="326" y="276.0" width="44" height="72.0" fill="#e05555"/>
+  <rect x="326" y="270.0" width="44" height="6.0" fill="#7ec8e3"/>
+  <text x="348.0" y="262.0" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#e8e8e8" text-anchor="middle">1,500</text>
+  <text x="348.0" y="382" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888" text-anchor="middle">4턴</text>
+  <rect x="398" y="348.0" width="44" height="12.0" fill="#7777cc"/>
+  <rect x="398" y="252.0" width="44" height="96.0" fill="#e05555"/>
+  <rect x="398" y="246.0" width="44" height="6.0" fill="#7ec8e3"/>
+  <text x="420.0" y="238.0" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#e8e8e8" text-anchor="middle">1,900</text>
+  <text x="420.0" y="382" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888" text-anchor="middle">5턴</text>
+  <rect x="470" y="348.0" width="44" height="12.0" fill="#7777cc"/>
+  <rect x="470" y="228.0" width="44" height="120.0" fill="#e05555"/>
+  <rect x="470" y="222.0" width="44" height="6.0" fill="#7ec8e3"/>
+  <text x="492.0" y="214.0" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#e8e8e8" text-anchor="middle">2,300</text>
+  <text x="492.0" y="382" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888" text-anchor="middle">6턴</text>
+  <rect x="542" y="348.0" width="44" height="12.0" fill="#7777cc"/>
+  <rect x="542" y="204.0" width="44" height="144.0" fill="#e05555"/>
+  <rect x="542" y="198.0" width="44" height="6.0" fill="#7ec8e3"/>
+  <text x="564.0" y="190.0" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#e8e8e8" text-anchor="middle">2,700</text>
+  <text x="564.0" y="382" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888" text-anchor="middle">7턴</text>
+  <rect x="614" y="348.0" width="44" height="12.0" fill="#7777cc"/>
+  <rect x="614" y="180.0" width="44" height="168.0" fill="#e05555"/>
+  <rect x="614" y="174.0" width="44" height="6.0" fill="#7ec8e3"/>
+  <text x="636.0" y="166.0" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#e8e8e8" text-anchor="middle">3,100</text>
+  <text x="636.0" y="382" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888" text-anchor="middle">8턴</text>
+  <rect x="686" y="348.0" width="44" height="12.0" fill="#7777cc"/>
+  <rect x="686" y="156.0" width="44" height="192.0" fill="#e05555"/>
+  <rect x="686" y="150.0" width="44" height="6.0" fill="#7ec8e3"/>
+  <text x="708.0" y="142.0" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#e8e8e8" text-anchor="middle">3,500</text>
+  <text x="708.0" y="382" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888" text-anchor="middle">9턴</text>
+  <rect x="758" y="348.0" width="44" height="12.0" fill="#7777cc"/>
+  <rect x="758" y="132.0" width="44" height="216.0" fill="#e05555"/>
+  <rect x="758" y="126.0" width="44" height="6.0" fill="#7ec8e3"/>
+  <text x="780.0" y="118.0" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#e8e8e8" text-anchor="middle">3,900</text>
+  <text x="780.0" y="382" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888" text-anchor="middle">10턴</text>
+  <text x="440" y="420" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#e8e8e8" text-anchor="middle">입력 합계 21,000토큰 · 새 질문만 세면 1,000 · 출력 합계 3,000</text>
+</svg>

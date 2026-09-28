@@ -1,0 +1,84 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="560" viewBox="0 0 880 560">
+  <defs>
+    <marker id="arr" viewBox="0 0 14 14" refX="12" refY="7"
+            markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#7ec8e3"/>
+    </marker>
+    <marker id="arr-o" viewBox="0 0 14 14" refX="12" refY="7"
+            markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#ce9178"/>
+    </marker>
+    <marker id="arr-g" viewBox="0 0 14 14" refX="12" refY="7"
+            markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#55c555"/>
+    </marker>
+  </defs>
+
+  <rect width="880" height="560" fill="#0a0a0a" rx="12"/>
+
+  <text x="440" y="44" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="22" font-weight="700" fill="#e8e8e8" text-anchor="middle">도구 호출 왕복: 선언에서 최종 답까지</text>
+
+  <!-- 레인 머리 -->
+  <rect x="80" y="70" width="240" height="44" rx="8" fill="#000000" stroke="#3a4a6e" stroke-width="1.5"/>
+  <text x="200" y="97" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="16" font-weight="600" fill="#e8e8e8" text-anchor="middle">우리 코드</text>
+  <rect x="560" y="70" width="240" height="44" rx="8" fill="#000000" stroke="#3a4a6e" stroke-width="1.5"/>
+  <text x="680" y="97" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="16" font-weight="600" fill="#e8e8e8" text-anchor="middle">Gemini API</text>
+
+  <line x1="200" y1="114" x2="200" y2="400" stroke="#3a4a6e" stroke-width="2" stroke-dasharray="4,4"/>
+  <line x1="680" y1="114" x2="680" y2="400" stroke="#3a4a6e" stroke-width="2" stroke-dasharray="4,4"/>
+
+  <!-- ① 요청 -->
+  <text x="440" y="146" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="13" fill="#7ec8e3" text-anchor="middle">① contents + tools(함수 선언)</text>
+  <line x1="200" y1="162" x2="680" y2="162" stroke="#7ec8e3" stroke-width="2" marker-end="url(#arr)"/>
+
+  <!-- ② 호출 요청 -->
+  <text x="440" y="200" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="13" fill="#ce9178" text-anchor="middle">② function_calls: name, args</text>
+  <line x1="680" y1="216" x2="200" y2="216" stroke="#ce9178" stroke-width="2" marker-end="url(#arr-o)"/>
+
+  <!-- ③ 실행 -->
+  <rect x="100" y="238" width="200" height="56" rx="8" fill="#000000" stroke="#3a4a6e" stroke-width="1.5"/>
+  <text x="200" y="261" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="13" font-weight="600" fill="#7ec8e3" text-anchor="middle">③ 함수 실행</text>
+  <text x="200" y="280" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="11" fill="#888" text-anchor="middle">결과는 result, 실패는 error로</text>
+
+  <!-- ④ 결과 전달 -->
+  <text x="490" y="310" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="13" fill="#7ec8e3" text-anchor="middle">④ 이력 + 호출 차례 + from_function_response</text>
+  <line x1="300" y1="326" x2="680" y2="326" stroke="#7ec8e3" stroke-width="2" marker-end="url(#arr)"/>
+
+  <!-- ⑤ 최종 답 -->
+  <text x="440" y="364" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="13" fill="#55c555" text-anchor="middle">⑤ function_calls 없음 → 최종 text</text>
+  <line x1="680" y1="380" x2="200" y2="380" stroke="#55c555" stroke-width="2" marker-end="url(#arr-g)"/>
+
+  <text x="440" y="420" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="13" fill="#7777cc" text-anchor="middle">②가 또 오면 ③·④를 되풀이한다 — 루프에 왕복 상한을 둔다</text>
+
+  <!-- tool_config 모드 -->
+  <rect x="80" y="440" width="720" height="96" rx="8" fill="#000000" stroke="#3a4a6e" stroke-width="1.5"/>
+  <text x="440" y="464" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="13" font-weight="600" fill="#e8e8e8" text-anchor="middle">tool_config 함수 호출 모드</text>
+
+  <text x="200" y="488" font-family="'JetBrains Mono','Menlo','Consolas',monospace"
+        font-size="13" font-weight="600" fill="#7ec8e3" text-anchor="middle">AUTO</text>
+  <text x="200" y="506" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="11" fill="#888" text-anchor="middle">기본 · 부를지 모델이 고른다</text>
+
+  <text x="440" y="488" font-family="'JetBrains Mono','Menlo','Consolas',monospace"
+        font-size="13" font-weight="600" fill="#ce9178" text-anchor="middle">ANY</text>
+  <text x="440" y="506" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="11" fill="#888" text-anchor="middle">반드시 함수 호출로 답한다</text>
+  <text x="440" y="522" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="11" fill="#888" text-anchor="middle">allowed_function_names로 좁힌다</text>
+
+  <text x="680" y="488" font-family="'JetBrains Mono','Menlo','Consolas',monospace"
+        font-size="13" font-weight="600" fill="#9aa4b8" text-anchor="middle">NONE</text>
+  <text x="680" y="506" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="11" fill="#888" text-anchor="middle">함수를 부르지 않는다</text>
+</svg>

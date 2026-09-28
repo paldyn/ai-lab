@@ -1,353 +1,298 @@
 ---
 title: "Google Gemini SDK 활용 가이드"
-description: "google-generativeai 패키지로 Gemini 2.0 Flash부터 1.5 Pro까지 — generate_content(), 스트리밍, 채팅 세션, 멀티모달 입력, Function Declarations, safety_settings, generation_config, 비동기 클라이언트, Google AI Studio vs Vertex AI까지 실전 예제 완전 정리"
+description: "google-genai 패키지의 Client 하나로 Gemini API를 부르는 법 — 응답 객체와 finish_reason, 생성 설정과 구조화 출력, 인라인 데이터와 Files API, 도구 호출 왕복, 안전 설정과 재시도, 대화 비용과 컨텍스트 캐싱까지 정리한다."
 author: "PALDYN Team"
 pubDate: "2026-05-28"
 category: "build-with-ai"
 level: "중급"
-tags: ["Gemini", "Google", "SDK", "GenerativeAI", "Multimodal", "FunctionCalling", "VertexAI", "Python", "gemini-2.0-flash"]
+tags: ["Gemini", "Google", "SDK", "google-genai", "Multimodal", "FunctionCalling", "ContextCaching", "Python"]
 featured: false
 draft: false
 ---
-[지난 글](/articles/openai-sdk)에서 OpenAI Python SDK의 Chat Completions, Function Calling, 임베딩, Structured Outputs, 배치 API를 처음부터 끝까지 다뤘다. 이번에는 멀티모달 네이티브 설계로 탄생한 **Google Gemini SDK**를 살펴본다. `google-generativeai` 패키지 하나로 텍스트, 이미지, 동영상, 코드 실행까지 아우르는 Gemini의 강점과 독특한 API 패턴을 실전 예제로 완전 정리한다.
+[지난 글](/articles/openai-sdk)에서 OpenAI Python SDK로 Chat Completions, 도구 호출, 구조화 출력을 다뤘다. 이번에는 Google의 Gemini API를 파이썬에서 부르는 SDK를 본다. 호출 한 줄은 어느 SDK나 비슷하고, 차이는 응답이 비었을 때, 입력이 커졌을 때, 모델이 함수를 부를 때, 대화가 길어졌을 때 드러난다.
 
-## 설치와 초기 설정
+## 클라이언트와 인증
+
+### 두 SDK
+
+Gemini용 파이썬 패키지는 두 개가 돌아다닌다. 예전 예제에 흔한 `google-generativeai`(`genai.configure()`, `GenerativeModel`)는 레거시가 됐고, 저장소 안내문에 따르면 지원이 2025년 11월 30일에 끝났다. 지금 공식 SDK는 `google-genai`이고 가져오는 줄이 `from google import genai`다. 옮겨 온 코드에 `configure`나 `GenerativeModel`이 보이면 옛 방식이다.
+
+새 SDK의 중심은 **클라이언트** 객체다. 전역 상태에 키를 심는 대신 `genai.Client()` 하나를 만들고, 기능은 그 아래로 갈린다 — 생성은 `client.models`, 대화는 `client.chats`, 파일은 `client.files`, 캐시는 `client.caches`, 비동기는 `client.aio`다.
 
 ```bash
-pip install google-generativeai pillow
+pip install google-genai
 ```
 
-Google AI Studio에서 API 키를 발급받은 후, `genai.configure()`로 글로벌하게 설정한다.
-
 ```python
-import google.generativeai as genai
-import os
+from google import genai
+from google.genai import types
 
-genai.configure(api_key=os.environ["GOOGLE_API_KEY"])
-```
+MODEL = "gemini-flash-latest"   # 모델 페이지에서 확인하고 한 곳에서만 바꾼다
+client = genai.Client()         # GEMINI_API_KEY 환경변수를 읽는다
 
-OpenAI SDK와 달리 Gemini SDK는 전역 설정 방식을 기본으로 사용한다. 이후 모든 API 호출에 자동으로 적용된다.
-
-## GenerativeModel과 generate_content()
-
-`GenerativeModel`은 특정 모델에 바인딩된 클라이언트 객체다. 모델별로 하나씩 생성해 재사용한다.
-
-```python
-model = genai.GenerativeModel("gemini-2.0-flash")
-
-response = model.generate_content("파이썬의 GIL이란 무엇인지 설명해주세요.")
+response = client.models.generate_content(model=MODEL, contents="파이썬의 GIL을 설명해 주세요.")
 print(response.text)
 ```
 
-`generate_content()`는 단일 텍스트 프롬프트부터 복잡한 멀티모달 입력까지 모두 처리하는 핵심 메서드다.
+### API 키 관리
 
-![Gemini SDK generate_content 흐름](/assets/posts/gemini-sdk-generate.svg)
+`Client()`에 인자를 안 주면 SDK가 `GEMINI_API_KEY`나 `GOOGLE_API_KEY` 환경변수를 읽고, 둘 다 있으면 `GOOGLE_API_KEY`가 이긴다. 키가 실제로 새는 길은 셋이다. 키가 찍힌 노트북 출력이 `.ipynb`째 커밋되는 것, `.gitignore`에 넣기 전에 한 번 올라간 `.env`가 이력에 남는 것, 브라우저나 앱 코드에 키를 넣는 것이다. 마지막 것은 누구나 꺼내 쓸 수 있으므로 키는 늘 서버에 둔다.
 
-## 모델 선택 가이드
+### 엔터프라이즈 경로
 
-### gemini-2.0-flash
+같은 모델을 부르는 길이 둘이다. AI Studio에서 받은 API 키로 붙는 Gemini Developer API와, Google Cloud 프로젝트 위에서 도는 쪽이다. 뒤쪽을 오래 Vertex AI라고 불렀는데 SDK 변경 기록은 지금 Gemini Enterprise Agent Platform으로 적는다. 코드에서는 `genai.Client(enterprise=True, project=..., location=...)`로 고르고, 예전 인자 `vertexai=True`는 같은 뜻의 레거시 플래그로 남아 있다.
 
-현재 Gemini 계열에서 가장 범용적으로 권장되는 모델이다. 속도와 품질의 균형이 뛰어나고, 멀티모달 처리가 가능하며, 비용도 합리적이다. 대부분의 프로덕션 사용 사례에 첫 번째 선택지다.
+호출 코드는 거의 그대로 옮겨 가지만 다시 할 일이 있다. 인증 주체가 API 키에서 서비스 계정과 IAM 권한으로 바뀌고, 리전을 `location`으로 정하며, 데이터 처리 조건은 두 길이 서로 다른 약관을 따른다. 그리고 Files API는 Developer API에만 있어서, 클라우드 쪽에서는 Cloud Storage의 `gs://` 주소로 파일을 넘기도록 새로 짜야 한다.
 
-### gemini-1.5-pro
+### 모델 이름 상수
 
-최대 **1M 토큰**(약 700,000 단어)의 컨텍스트를 지원한다. 소설 전집, 긴 코드베이스, 전체 법률 문서를 한 번에 처리할 수 있다. 긴 문서 분석, 동영상 전체 이해, 대규모 코드 리뷰에 적합하다.
+위 예제가 모델 이름을 `MODEL` 상수로 뺀 것은 Gemini 모델의 세대가 빨리 바뀌기 때문이다. 이름이 코드 곳곳에 흩어져 있으면 갈아탈 때 한 곳을 빠뜨린다.
 
-## generation_config로 생성 제어
+이름에는 `gemini-flash-latest`처럼 가리키는 대상이 때때로 바뀌는 **별칭**과 특정 버전에 묶인 고정 이름이 있다. 별칭을 프로덕션에 두면 코드 한 줄 안 바꿨는데 출력 형식이나 지연이 달라지는 날이 온다. 운영 코드는 모델 페이지에서 확인한 고정 이름을 적고, 바꿀 때 평가를 돌린 뒤 그 한 줄을 고친다.
 
-`GenerationConfig`로 응답의 무작위성, 길이, 다양성을 세밀하게 제어한다.
+## 응답 객체
+
+![google-genai 클라이언트의 호출 흐름과 응답 객체](/assets/posts/gemini-sdk-generate.svg)
+
+### 비어 있는 text
+
+`response.text`는 첫 번째 **후보**(candidate), 곧 모델이 내놓은 답안 하나의 텍스트를 이어 붙여 주는 편의 속성이다. 옛 SDK에서는 답이 비면 예외를 던졌는데 새 SDK는 `None`을 돌려준다. 입력이 차단돼 후보가 없을 때, 출력이 차단돼 내용이 없을 때, 함수 호출만 와서 텍스트가 없을 때가 모두 그렇다.
+
+그러면 `response.text.strip()` 같은 줄이 `AttributeError`로 죽는데, 그 메시지는 차단이 원인이라는 것을 말해 주지 않는다. 텍스트를 쓰기 전에 후보와 종료 이유부터 보는 헬퍼를 둔다.
 
 ```python
-from google.generativeai.types import GenerationConfig
+def text_or_reason(response) -> str:
+    if not response.candidates:                       # 입력 단계에서 막힘
+        return f"[입력 차단: {response.prompt_feedback.block_reason}]"
+    cand = response.candidates[0]
+    if response.text is None:                         # 출력이 비었거나 함수 호출만 옴
+        return f"[텍스트 없음: {cand.finish_reason}]"
+    return response.text
+```
 
-model = genai.GenerativeModel(
-    "gemini-2.0-flash",
-    generation_config=GenerationConfig(
-        temperature=0.4,      # 0.0(결정적) ~ 1.0(창의적)
-        top_p=0.95,           # nucleus sampling
-        top_k=40,             # top-k sampling
-        max_output_tokens=1024,
-        candidate_count=1,    # 생성할 응답 후보 수
-    ),
+### 파트와 후보
+
+응답의 실제 구조는 `candidates[0].content.parts`다. **파트**는 응답을 이루는 조각이고, 한 조각에 텍스트·함수 호출·실행 코드 가운데 하나가 든다. 둘이 섞여 올 수 있으므로 `parts[0].text`를 가정한 코드는 모델이 「설명한 뒤 함수를 부르는」 순간 깨진다. 함수 호출은 `response.function_calls`로 모아 보고, `response.text`는 텍스트 파트만 이으며 사고 과정 파트는 건너뛴다.
+
+### finish_reason
+
+후보마다 `finish_reason`, 곧 **종료 이유**가 붙는다. `STOP`은 정상 종료이고, `MAX_TOKENS`는 출력 한도에 걸려 문장 중간에서 잘린 것이며, `SAFETY`는 안전 필터가 멈춘 것이다. 인용이 의심될 때의 `RECITATION`, 함수 호출 형식이 틀렸을 때의 `MALFORMED_FUNCTION_CALL`도 있다.
+
+`MAX_TOKENS`는 한도를 올려 다시 부르고, `SAFETY`는 재시도해도 같을 가능성이 높으므로 알리고 끝내며, `MALFORMED_FUNCTION_CALL`은 도구 스키마를 단순하게 만들 신호다. 종료 이유는 늘 로그에 남긴다 — 「가끔 답이 짧다」는 제보는 대개 이 값으로 설명된다.
+
+### 스트리밍 청크
+
+스트리밍은 `client.models.generate_content_stream()`이 청크를 차례로 내놓는 방식이다. 청크도 응답과 같은 모양이라 `chunk.text`가 `None`인 청크가 섞이므로 `chunk.text or ""`로 받는다. 사용량(`usage_metadata`)은 보통 마지막 청크에 실리므로 과금 기록용으로 마지막 청크를 붙잡아 둔다.
+
+스트림 도중에 차단되면 앞 청크들은 이미 화면에 나간 뒤이고, 그 청크는 내용이 빈 채 종료 이유 `SAFETY`로 온다. 그래서 스트리밍 UI는 마지막 청크의 `finish_reason`을 보고, 정상 종료가 아니면 중단 안내를 덧붙이고 그 답을 이력에 남기지 않는다.
+
+## 생성 설정
+
+### 샘플링 파라미터
+
+생성 옵션은 전부 `config=types.GenerateContentConfig(...)` 한 곳에 들어간다. 시스템 지시(`system_instruction`), 샘플링, 출력 형식, 안전 설정, 도구까지 같은 객체다.
+
+```python
+config = types.GenerateContentConfig(
+    system_instruction="답은 한국어로, 세 문장 이내로.",
+    temperature=0.2, top_p=0.95, max_output_tokens=1024, seed=7,
 )
-
-response = model.generate_content("딥러닝이란?")
-print(response.text)
+response = client.models.generate_content(model=MODEL, contents="딥러닝이란?", config=config)
 ```
 
-`temperature=0.0`은 항상 같은 응답을 반환해 결정적 작업(분류, 파싱 등)에 적합하다. `temperature=0.8~1.0`은 창작, 브레인스토밍에 사용한다.
+`temperature`는 다음 토큰의 확률 분포를 얼마나 평평하게 펼지 정하고, `top_p`와 `top_k`는 뽑을 후보를 확률 누적이나 개수로 잘라 낸다. 온도가 낮으면 첫 문장과 구조가 거의 같게 나오고, 높이면 예시와 어휘가 매번 달라진다.
 
-## 스트리밍
+예전 이 글은 「`temperature=0`이면 항상 같은 응답」이라고 적었는데 사실이 아니다. 0은 가장 확률 높은 토큰을 고르는 **그리디 디코딩**에 가깝게 만들 뿐, 서버 쪽 연산과 배치가 달라지면 결과가 바뀔 수 있다. `seed`도 SDK 설명대로 「최선을 다하는」 값이지 보장이 아니다. 흔들리면 안 되는 작업은 출력을 스키마로 묶고 검증한다.
 
-`stream=True`로 토큰을 실시간으로 받아 출력한다.
+### 출력 길이와 잘림
+
+`max_output_tokens`에 걸린 답은 끊긴 채 `MAX_TOKENS`로 온다. 산문이면 끝이 어색한 정도지만 JSON이면 닫는 괄호가 없어 파싱이 통째로 실패한다. 파싱 전에 종료 이유부터 보고, `MAX_TOKENS`이면 한도를 두 배로 올려 한 번 다시 부르고, 그래도 잘리면 요청을 쪼갠다.
+
+사고 과정을 쓰는 모델은 사용량에 사고 토큰(`thoughts_token_count`)이 따로 잡히고, 사고에 한도를 많이 쓰면 답이 짧게 끊긴다. 사고의 양은 `thinking_config`로 조절한다.
+
+### 구조화 출력
+
+**구조화 출력**은 응답을 정해 둔 스키마 모양으로 받는 기능이다. `response_mime_type="application/json"`에 Pydantic 모델을 `response_schema`로 넘기면 `response.parsed`에 그 객체가 담겨 온다.
 
 ```python
-for chunk in model.generate_content(
-    "우주의 탄생을 자세히 설명해주세요.",
-    stream=True,
-):
-    print(chunk.text, end="", flush=True)
+from pydantic import BaseModel
+
+class Ticket(BaseModel):
+    category: str
+    urgent: bool
+
+r = client.models.generate_content(
+    model=MODEL, contents="결제가 두 번 됐어요. 오늘 안에 환불해 주세요.",
+    config=types.GenerateContentConfig(response_mime_type="application/json", response_schema=Ticket),
+)
+ticket = r.parsed   # Ticket 인스턴스, 잘렸거나 막혔으면 None
 ```
 
-스트리밍 중에는 `response.text` 대신 `chunk.text`로 각 청크의 텍스트를 접근한다.
-
-## 채팅 세션
-
-멀티턴 대화는 `start_chat()`으로 세션을 생성하고 `send_message()`로 메시지를 주고받는다. 대화 히스토리가 세션 객체 내부에 자동으로 유지된다.
-
-```python
-chat = model.start_chat(history=[])
-
-# 첫 번째 메시지
-r1 = chat.send_message("안녕하세요! 저는 파이썬을 배우고 있어요.")
-print(r1.text)
-
-# 두 번째 메시지 (이전 맥락 자동 포함)
-r2 = chat.send_message("리스트와 튜플의 차이점이 뭔가요?")
-print(r2.text)
-
-# 세 번째 메시지
-r3 = chat.send_message("그렇다면 언제 튜플을 쓰는 게 좋나요?")
-print(r3.text)
-
-# 히스토리 확인
-for msg in chat.history:
-    print(f"[{msg.role}]: {msg.parts[0].text[:50]}...")
-```
-
-`history` 파라미터에 이전 대화 내역을 미리 넣어 맥락 있는 대화를 이어받을 수 있다.
+SDK 문서는 스키마를 프롬프트에 또 적거나 예시 JSON을 붙이면 품질이 떨어질 수 있다고 적는다. 그리고 형식이 맞아도 내용은 틀릴 수 있다 — 없는 분류가 들어오거나 `urgent`가 반대로 찍히는 일은 스키마가 못 막으므로, 허용 값은 `enum`으로 좁히고 업무 규칙은 코드로 다시 검사한다.
 
 ## 멀티모달 입력
 
-Gemini의 가장 강력한 기능이다. 텍스트와 이미지, 동영상, PDF를 동시에 입력할 수 있다.
+![이미지·파일을 contents에 섞어 넣는 구조](/assets/posts/gemini-sdk-multimodal.svg)
 
-![Gemini SDK 멀티모달 입력 흐름](/assets/posts/gemini-sdk-multimodal.svg)
+### 인라인 데이터
 
-### 이미지 입력 (PIL)
+`contents`에는 문자열만 아니라 파트 목록을 넣을 수 있다. 작은 파일은 바이트를 요청 본문에 그대로 싣는 **인라인 데이터**로 보낸다.
 
 ```python
-from PIL import Image
-import google.generativeai as genai
+with open("architecture.png", "rb") as f:
+    image = types.Part.from_bytes(data=f.read(), mime_type="image/png")
 
-model = genai.GenerativeModel("gemini-2.0-flash")
-image = Image.open("architecture_diagram.png")
-
-response = model.generate_content([
-    image,
-    "이 아키텍처 다이어그램에서 잠재적인 단일 장애점(SPOF)을 찾아주세요.",
-])
-print(response.text)
+r = client.models.generate_content(model=MODEL, contents=[image, "이 구성에서 단일 장애점을 찾아 주세요."])
 ```
 
-### URL로 이미지 입력
+인라인은 요청 전체 크기에 상한이 있고, 같은 파일을 여러 번 물으면 매번 다시 올린다. 상한 값은 문서에서 바뀐 적이 있으니 숫자를 박기보다 파일 크기를 재서 넘으면 Files API로 돌린다.
+
+### Files API
+
+**Files API**는 파일을 먼저 올리고 요청에는 참조만 싣는 길이다. `client.files.upload(file="talk.mp4")`가 돌려준 객체를 `contents`에 넣는다. Google 쿡북 설명으로는 파일 하나가 2GB, 프로젝트 전체가 20GB까지이고, 올린 파일은 48시간 뒤 사라지며 다시 내려받을 수 없다.
+
+48시간이라는 점이 설계를 가른다. 업로드 파일은 원본 저장소가 아니라 잠깐 쓰는 작업대라, 그 이름을 DB에 적어 두면 사흘 뒤 요청이 전부 실패한다. 원본은 자기 저장소에 두고 필요할 때 올려 쓴 뒤 `client.files.delete()`로 지운다. 동영상처럼 처리에 시간이 걸리는 파일은 `client.files.get()`으로 준비 상태를 확인한 뒤 요청한다.
+
+### 입력 순서와 토큰
+
+예전 이 글은 「이미지를 앞에 두는 것이 유리하다」고 단정했지만, 이미지 하나에 질문 하나라면 차이가 나는지는 자기 데이터로 양쪽을 돌려 봐야 안다. 순서가 확실히 중요한 것은 이미지가 여럿일 때다. 지시문이 「두 번째 그림」처럼 순서로 가리키므로 이미지마다 앞에 짧은 이름표 텍스트를 끼운다.
+
+이미지·오디오·동영상·PDF도 전부 토큰으로 바뀌어 과금되고, 동영상은 길이에 비례해 늘어난다. 짐작하지 말고 `client.models.count_tokens()`로 미리 재거나 `usage_metadata.prompt_token_count`를 확인한다.
+
+## 도구 호출
+
+![Gemini 도구 호출 왕복: 선언에서 최종 답까지](/assets/posts/gemini-sdk-function-calling.svg)
+
+### 자동 함수 호출
+
+파이썬 함수를 그대로 `tools`에 넣으면 SDK가 타입 힌트와 독스트링에서 **함수 선언**, 곧 모델에게 보여 줄 이름·설명·인자 스키마를 만든다. 모델이 호출을 요청하면 SDK가 그 함수를 실행해 결과를 돌려주고 최종 답만 건넨다. 이것이 **자동 함수 호출**이다.
 
 ```python
-import httpx
+def get_weather(city: str) -> str:
+    """도시의 현재 날씨를 돌려준다. city: 도시 이름(예: 서울)"""
+    return "맑음, 21도"
 
-image_url = "https://example.com/chart.png"
-image_data = httpx.get(image_url).content
-
-response = model.generate_content([
-    {"mime_type": "image/png", "data": image_data},
-    "이 차트의 주요 인사이트를 3가지로 요약해주세요.",
-])
-```
-
-### Google Files API로 대용량 파일 처리
-
-```python
-# 동영상 파일 업로드 (최대 2GB)
-video_file = genai.upload_file("presentation.mp4")
-
-response = model.generate_content([
-    video_file,
-    "이 발표 동영상의 핵심 내용을 시간순으로 요약해주세요.",
-])
-print(response.text)
-
-# 사용 후 삭제
-genai.delete_file(video_file.name)
-```
-
-## Function Declarations (도구 사용)
-
-Gemini의 Function Calling은 OpenAI와 유사하지만 `function_declarations` 형식을 사용한다.
-
-```python
-import json
-
-# 도구 정의
-tools = [
-    genai.protos.Tool(function_declarations=[
-        genai.protos.FunctionDeclaration(
-            name="get_current_weather",
-            description="특정 도시의 현재 날씨를 조회합니다.",
-            parameters=genai.protos.Schema(
-                type=genai.protos.Type.OBJECT,
-                properties={
-                    "city": genai.protos.Schema(
-                        type=genai.protos.Type.STRING,
-                        description="도시 이름 (예: 서울, 부산)"
-                    ),
-                    "unit": genai.protos.Schema(
-                        type=genai.protos.Type.STRING,
-                        enum=["celsius", "fahrenheit"]
-                    ),
-                },
-                required=["city"],
-            ),
-        )
-    ])
-]
-
-model = genai.GenerativeModel("gemini-2.0-flash", tools=tools)
-response = model.generate_content("서울 날씨 알려줘")
-
-# 함수 호출 확인
-if response.candidates[0].content.parts[0].function_call:
-    fc = response.candidates[0].content.parts[0].function_call
-    print(f"호출 함수: {fc.name}")
-    print(f"인자: {dict(fc.args)}")
-```
-
-`tool_config`로 모델이 반드시 도구를 쓰도록 강제하거나(`ANY`), 특정 함수만 허용하거나(`NONE`으로 비활성화) 제어할 수 있다.
-
-## safety_settings
-
-Gemini는 유해 콘텐츠 필터링 정책을 개발자가 직접 조정할 수 있다.
-
-```python
-from google.generativeai.types import HarmCategory, HarmBlockThreshold
-
-model = genai.GenerativeModel(
-    "gemini-2.0-flash",
-    safety_settings={
-        HarmCategory.HARM_CATEGORY_HATE_SPEECH: HarmBlockThreshold.BLOCK_ONLY_HIGH,
-        HarmCategory.HARM_CATEGORY_HARASSMENT: HarmBlockThreshold.BLOCK_MEDIUM_AND_ABOVE,
-        HarmCategory.HARM_CATEGORY_SEXUALLY_EXPLICIT: HarmBlockThreshold.BLOCK_LOW_AND_ABOVE,
-        HarmCategory.HARM_CATEGORY_DANGEROUS_CONTENT: HarmBlockThreshold.BLOCK_MEDIUM_AND_ABOVE,
-    },
+r = client.models.generate_content(
+    model=MODEL, contents="서울 날씨 어때?", config=types.GenerateContentConfig(tools=[get_weather]),
 )
+print(r.text)   # 함수 실행과 두 번째 요청은 SDK가 이미 마쳤다
 ```
 
-응답이 차단됐는지 확인하려면 `response.candidates[0].finish_reason`이 `SAFETY`인지 확인한다. 차단된 경우 `response.text` 접근 시 예외가 발생할 수 있으므로 반드시 처리해야 한다.
+독스트링이 곧 모델이 읽는 설명이라 대충 쓰면 함수를 잘못 고른다. 중간 왕복은 `r.automatic_function_calling_history`에 남는다. SDK 문서로는 원격 호출에 기본 상한 10회가 있고 `AutomaticFunctionCallingConfig`로 바꾸거나 끈다.
 
-## 비동기 클라이언트
+### 수동 왕복
 
-FastAPI나 asyncio 환경에서는 동기 클라이언트를 그대로 사용하면 이벤트 루프를 블로킹한다. `asyncio`와 함께 사용하려면 비동기 메서드를 활용한다.
+결제나 삭제처럼 실행 전에 확인이 필요한 도구라면 자동을 끄고 왕복을 손으로 돈다 — 요청하고, `function_calls`에서 이름과 인자를 꺼내고, 함수를 실행하고, 호출 차례와 결과를 이력에 붙여 다시 요청한다.
+
+```python
+cfg = types.GenerateContentConfig(
+    tools=[get_weather],
+    automatic_function_calling=types.AutomaticFunctionCallingConfig(disable=True),
+)
+run_tool = lambda fc: {"result": get_weather(**fc.args)}   # 실제로는 확인 절차를 여기에
+history = [types.Content(role="user", parts=[types.Part.from_text(text="서울 날씨 어때?")])]
+r = client.models.generate_content(model=MODEL, contents=history, config=cfg)
+
+for _ in range(5):                                   # 왕복 상한
+    if not r.function_calls:
+        break
+    history.append(r.candidates[0].content)          # 모델의 호출 차례를 그대로 붙인다
+    results = [types.Part.from_function_response(name=fc.name, response=run_tool(fc))
+               for fc in r.function_calls]           # 한 번에 여럿이 오면 전부 답한다
+    history.append(types.Content(role="tool", parts=results))
+    r = client.models.generate_content(model=MODEL, contents=history, config=cfg)
+print(r.text)
+```
+
+예전 이 글의 예제는 호출 요청을 출력하고 끝났다. 결과를 돌려주는 두 번째 요청부터가 도구 호출이고, 모델이 또 다른 도구를 부를 수 있으므로 루프와 상한을 둔다. 호출 차례를 이력에서 빠뜨리면 모델은 무엇을 불렀는지 모른 채 결과만 받는다.
+
+### 함수 호출 모드
+
+`tool_config`의 **함수 호출 모드**는 도구 사용을 정한다. `AUTO`가 기본이라 모델이 부를지 말지 고르고, `ANY`는 반드시 함수 호출로만 답하게 하며, `NONE`은 선언을 안 넘긴 것처럼 부르지 않게 한다.
+
+예전 이 글은 「특정 함수만 허용하려면 `NONE`」이라고 적었는데 반대다. 특정 함수만 허용하는 것은 `ANY`에 `allowed_function_names`를 함께 주는 조합이다.
+
+```python
+tool_config = types.ToolConfig(function_calling_config=types.FunctionCallingConfig(
+    mode="ANY", allowed_function_names=["get_weather"]))
+```
+
+`ANY`를 자동 호출과 함께 켜 두면 매 차례 함수를 부르다 상한에 닿아서야 멈춘다. 첫 차례만 강제하고 다음 요청은 `AUTO`로 돌린다.
+
+### 도구 오류
+
+도구가 실패했을 때 예외를 터뜨리면 대화가 거기서 끝난다. SDK 예제는 실패를 결과로 돌려준다 — 실패면 `{"error": "도시 이름을 찾지 못함"}`을 `from_function_response`에 담고, 그러면 모델이 도시를 다시 묻거나 다른 도구를 고른다. 스택 트레이스 전체는 내부 경로가 답에 샐 수 있으니 한 줄로 줄인다.
+
+## 안전 필터와 오류
+
+### 유해 범주와 임계값
+
+**안전 설정**은 유해 범주마다 어느 확률부터 막을지 정하는 값이다. Gemini API에서 조정하는 범주는 괴롭힘(`HARASSMENT`), 혐오 표현(`HATE_SPEECH`), 성적으로 노골적인 내용(`SEXUALLY_EXPLICIT`), 위험한 내용(`DANGEROUS_CONTENT`) 넷이고, 이름 앞에 `HARM_CATEGORY_`가 붙는다.
+
+임계값은 `BLOCK_LOW_AND_ABOVE`, `BLOCK_MEDIUM_AND_ABOVE`, `BLOCK_ONLY_HIGH`, `BLOCK_NONE`, 그리고 필터를 끄는 `OFF`다. 의료·보안처럼 위험한 낱말이 정상 업무에 나오는 서비스에서는 멀쩡한 질문이 막히는데, 통째로 끄기 전에 문제 범주 하나만 한 단계 올려 보고 막힌 사례를 모아 판단한다.
+
+```python
+safety = [types.SafetySetting(category="HARM_CATEGORY_DANGEROUS_CONTENT", threshold="BLOCK_ONLY_HIGH")]
+config = types.GenerateContentConfig(safety_settings=safety)
+```
+
+### 입력 차단과 출력 차단
+
+차단은 두 단계에서 일어나고 흔적이 다르다. 입력이 막히면 후보가 없고 `prompt_feedback.block_reason`에 이유가 적힌다. 출력이 막히면 후보의 `finish_reason`이 `SAFETY`이고 `safety_ratings`에 범주별 판정이 붙는다. 입력 차단이면 질문을 바꿔 달라고 하고, 출력 차단은 되풀이해도 대개 또 막힌다.
+
+사용자에게는 「이 요청은 처리할 수 없습니다」 정도만 보이고 범주별 판정은 로그에만 남긴다. 판정을 그대로 내보내면 어느 표현이 걸렸는지 알려 주는 셈이라 우회의 단서가 된다.
+
+### 재시도와 한도
+
+SDK는 HTTP 오류를 `google.genai.errors`의 `ClientError`(4xx)와 `ServerError`(5xx)로 올리고 `code`에 상태 코드를 싣는다. 429와 5xx는 잠시 뒤 성공할 수 있으니 대기 시간을 두 배씩 늘려 다시 부르는 **지수 백오프**가 맞고, 400·403·404는 요청 자체가 틀린 것이라 바로 실패시킨다.
+
+새 SDK는 기본으로 재시도하지 않는다. 클라이언트에 `http_options=types.HttpOptions(retry_options=types.HttpRetryOptions(attempts=5))`를 주면 408·429와 500·502·503·504를 지수 백오프로 다시 부른다. 이것을 켰다면 바깥에 재시도 루프를 또 두지 않는다 — 두 겹이면 장애 한 번에 요청이 곱절로 분다. 한도는 티어마다 다르므로 동시 호출 수를 한도에서 역산해 정한다.
+
+## 대화와 컨텍스트 비용
+
+### 누적 입력 토큰
+
+`client.chats.create(model=MODEL)`로 만든 대화는 `send_message()`마다 지금까지의 이력 전체에 새 메시지를 붙여 보낸다. 서버가 기억하는 것이 아니라 SDK가 매번 다시 올리고, 입력 토큰도 매번 다시 과금된다.
+
+숫자로 따라가 보자. 시스템 지시가 500토큰, 사용자 메시지가 평균 150토큰, 답이 평균 400토큰이라고 하자. 첫 차례 입력은 650토큰이다. 차례마다 앞의 질문과 답 550토큰이 쌓이므로 n번째 차례 입력은 650 + 550 × (n − 1)이고, 스무 번째 차례 하나가 11,100토큰이다. 스무 차례를 모두 더하면 650 × 20 + 550 × 190 = 117,500토큰이다. 매번 새 질문만 보냈다면 13,000토큰이었을 것이니 아홉 배쯤이다. 늘어나는 모양이 직선이 아니라 차례 수의 제곱이라는 점이 중요하다 — 마흔 차례면 네 배 가까이로 뛴다.
+
+그래서 긴 대화에는 자르는 자리를 정해 둔다. 최근 몇 차례만 원문으로 두고 그 앞은 요약으로 바꾸되, 사용자가 준 조건·수치·고유명사는 요약에서 빠지지 않게 붙들어 둔다. 줄인 이력을 `chats.create(history=...)`에 넣어 새 대화를 연다.
+
+### 컨텍스트 캐싱
+
+같은 긴 문서에 여러 번 묻는다면 **컨텍스트 캐싱**이 맞다. `client.caches.create()`로 문서를 캐시에 올리고 이후 요청은 `cached_content=cache.name`으로 가리킨다. 캐시 토큰은 일반 입력보다 싸게 과금되는 대신 보관 시간만큼 저장 요금이 붙는다. Google 쿡북 설명으로는 기본 보관이 한 시간이고(`ttl`로 바꾼다), 캐시는 만든 모델에만 쓸 수 있다.
+
+이득인지는 재사용 횟수가 정한다. 캐시할 문서가 $$N$$ 토큰, 일반 입력 단가가 $$p$$, 캐시 토큰 단가가 $$p_c$$, 시간당 저장 단가가 $$s$$, 보관 시간이 $$T$$일 때, 요청 $$k$$번으로 아끼는 돈이 저장비를 넘어야 한다.
+
+$$
+k \cdot N (p - p_c) > N \cdot s \cdot T \quad\Longrightarrow\quad k > \frac{s \cdot T}{p - p_c}
+$$
+
+문서 길이 $$N$$은 양변에서 지워져 「보관 시간 동안 몇 번 묻는가」만 남는다. 단가와 최소 캐시 크기는 모델마다 달라 가격 페이지의 현재 값을 넣는다. 캐시가 먹혔는지는 `usage_metadata.cached_content_token_count`로 확인한다.
+
+### 비동기 호출
+
+예전 이 글은 `asyncio.to_thread`로 동기 호출을 감싸 비동기라고 불렀지만, 그것은 스레드 풀에서 동기 함수를 돌린 것이다. 새 SDK는 `client.aio` 아래에 비동기판을 모두 둔다. 동시 요청 수는 **세마포어**, 곧 동시에 들어갈 자리 수를 정한 카운터로 묶는다 — 안 그러면 천 개가 한꺼번에 나가 429가 쏟아진다.
 
 ```python
 import asyncio
-import google.generativeai as genai
 
-genai.configure(api_key="YOUR_API_KEY")
-
-async def analyze_batch(texts: list[str]) -> list[str]:
-    model = genai.GenerativeModel("gemini-2.0-flash")
-    tasks = [
-        asyncio.to_thread(model.generate_content, text)
-        for text in texts
-    ]
-    responses = await asyncio.gather(*tasks)
-    return [r.text for r in responses]
-
-results = asyncio.run(analyze_batch([
-    "파이썬 특징 요약",
-    "자바스크립트 특징 요약",
-    "러스트 특징 요약",
-]))
+async def summarize_all(texts: list[str], limit: int = 8) -> list[str]:
+    sem = asyncio.Semaphore(limit)
+    async def one(t: str) -> str:
+        async with sem:
+            r = await client.aio.models.generate_content(model=MODEL, contents=f"한 줄 요약: {t}")
+            return r.text or ""
+    return await asyncio.gather(*(one(t) for t in texts))
 ```
 
-또는 `vertexai` 패키지의 `AsyncGenerativeModel`을 사용하면 네이티브 비동기를 지원한다.
+### 긴 컨텍스트
 
-## Google AI Studio vs Vertex AI
+Gemini 모델은 입력 한도가 크지만(값은 모델 페이지에 있다) 「넣을 수 있다」와 「넣는 것이 낫다」는 다르다. 가득 채운 요청은 첫 토큰까지 오래 걸리고 요금은 입력 토큰에 비례한다.
 
-Gemini API를 사용하는 두 가지 경로를 명확히 구분해야 한다.
+코드베이스 전체를 한 번 통째로 봐야 하는 작업이면 긴 컨텍스트가 맞다. 같은 문서에 여러 번 물으면 캐싱을, 질문마다 필요한 부분이 조금씩이면 검색으로 관련 조각만 넣는 쪽을 먼저 따진다. 어느 쪽이든 `count_tokens()`로 먼저 재고 `usage_metadata`를 남긴다.
 
-**Google AI Studio (`google-generativeai`):**
-- 개인 API 키 기반의 빠른 시작 환경
-- 무료 티어(분당 요청 제한) 제공
-- 프로토타이핑, 개인 프로젝트, 학습용
-- `genai.configure(api_key=...)` 한 줄로 시작
-- 데이터가 Google 서버에서 학습에 사용될 수 있음
-
-**Vertex AI (`vertexai`):**
-- Google Cloud Platform 기반의 엔터프라이즈 환경
-- 데이터 거버넌스, VPC, 프라이빗 엔드포인트 지원
-- SOC2, HIPAA 등 컴플라이언스 요건 충족
-- 사용자 데이터가 학습에 사용되지 않음 보장
-- 프로덕션 배포, 기업 서비스용
-
-```python
-# Vertex AI 방식
-import vertexai
-from vertexai.generative_models import GenerativeModel
-
-vertexai.init(project="my-project", location="us-central1")
-model = GenerativeModel("gemini-2.0-flash")
-response = model.generate_content("안녕하세요!")
-```
-
-API 인터페이스는 거의 동일하지만 인증 방식(서비스 계정 vs API 키)과 데이터 처리 정책이 다르다. 스타트업이나 학습 단계에서는 Google AI Studio, 엔터프라이즈 서비스에서는 Vertex AI를 선택한다.
-
-## 1M 토큰 컨텍스트 활용
-
-Gemini 1.5 Pro의 1M 토큰 컨텍스트는 단순한 스펙이 아니라 기존에 불가능했던 사용 사례를 열어준다.
-
-```python
-model = genai.GenerativeModel("gemini-1.5-pro")
-
-# 대용량 코드베이스 전체 분석
-with open("entire_codebase.py", "r") as f:
-    code = f.read()  # 수만 줄 가능
-
-response = model.generate_content(
-    f"다음 코드베이스에서 보안 취약점을 모두 찾아주세요:\n\n{code}"
-)
-print(response.text)
-```
-
-단, 긴 컨텍스트는 비용도 높아진다. `response.usage_metadata.prompt_token_count`로 실제 사용된 토큰 수를 확인하며 비용을 모니터링한다.
-
-## 에러 핸들링
-
-```python
-import google.api_core.exceptions as gexc
-
-def safe_generate(model, prompt: str, max_retries: int = 3) -> str:
-    for attempt in range(max_retries):
-        try:
-            response = model.generate_content(prompt)
-            # 안전 필터 차단 확인
-            if not response.candidates:
-                return "[응답 없음: 안전 필터 차단]"
-            return response.text
-        except gexc.ResourceExhausted:
-            import time
-            wait = 2 ** attempt
-            print(f"할당량 초과. {wait}초 후 재시도...")
-            time.sleep(wait)
-        except gexc.InvalidArgument as e:
-            print(f"잘못된 요청: {e}")
-            raise
-        except gexc.InternalServerError:
-            print("서버 오류. 재시도 중...")
-    return "[오류: 최대 재시도 초과]"
-```
-
-`BlockedPromptException`은 입력 자체가 안전 정책에 위반될 때 발생한다. `StopCandidateException`은 생성 중간에 안전 필터가 작동했을 때 발생한다.
-
-## 실전 패턴 정리
-
-**모델 선택**: 일반 작업은 `gemini-2.0-flash`, 장문 처리는 `gemini-1.5-pro`.
-
-**멀티모달 조합**: 텍스트와 이미지를 리스트로 전달. 순서는 자유롭지만 이미지를 앞에 두는 것이 컨텍스트 이해에 유리하다.
-
-**채팅 세션 재사용**: `start_chat()`으로 생성한 세션 객체를 재사용해 대화를 이어나간다. 새 세션은 히스토리가 초기화된다.
-
-**safety_settings 최적화**: 기본 설정은 꽤 보수적이다. B2B 서비스나 전문 도메인에서는 `BLOCK_ONLY_HIGH`로 완화하는 경우가 많다.
-
-**토큰 비용**: `response.usage_metadata`로 항상 실제 사용량을 추적한다. 1M 토큰 컨텍스트는 강력하지만 비용이 선형 증가한다.
+응답 객체를 셀 단위로 들여다보는 일은 노트북에서 가장 편하다. 다음 글에서는 그 작업대인 Jupyter Notebook과 JupyterLab을 다룬다.
 
 ---
 

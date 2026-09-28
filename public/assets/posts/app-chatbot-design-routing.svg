@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" viewBox="0 0 880 450"
+     style="border-radius:12px" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <defs>
+    <marker id="rb" viewBox="0 0 14 14" refX="12" refY="7"
+            markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#7ec8e3"/>
+    </marker>
+    <marker id="rg" viewBox="0 0 14 14" refX="12" refY="7"
+            markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#55c555"/>
+    </marker>
+    <marker id="rr" viewBox="0 0 14 14" refX="12" refY="7"
+            markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#e05555"/>
+    </marker>
+    <marker id="rp" viewBox="0 0 14 14" refX="12" refY="7"
+            markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#7777cc"/>
+    </marker>
+  </defs>
+
+  <rect width="880" height="450" rx="12" fill="#0a0a0a"/>
+
+  <text x="440" y="42" text-anchor="middle" font-size="22" font-weight="700" fill="#e8e8e8">모델 라우팅과 승급 경로</text>
+
+  <!-- Row A -->
+  <rect x="60" y="90" width="220" height="70" rx="8" fill="#111" stroke="#3a4a6e" stroke-width="1.5"/>
+  <text x="170" y="120" text-anchor="middle" font-size="15" font-weight="600" fill="#e8e8e8">사전 신호 분류</text>
+  <text x="170" y="142" text-anchor="middle" font-size="12" fill="#888">길이 · 문서 수 · 의도</text>
+
+  <rect x="340" y="90" width="200" height="70" rx="8" fill="#0f1a2e" stroke="#7ec8e3" stroke-width="1.5"/>
+  <text x="440" y="120" text-anchor="middle" font-size="15" font-weight="600" fill="#7ec8e3">작은 모델</text>
+  <text x="440" y="142" text-anchor="middle" font-size="12" fill="#888">기본 경로 · 저비용</text>
+
+  <rect x="600" y="90" width="220" height="70" rx="8" fill="#1a0a0a" stroke="#e05555" stroke-width="1.5"/>
+  <text x="710" y="120" text-anchor="middle" font-size="15" font-weight="600" fill="#e05555">실패 검사</text>
+  <text x="710" y="142" text-anchor="middle" font-size="12" fill="#888">JSON · 거절 · 인용 없음</text>
+
+  <line x1="280" y1="125" x2="340" y2="125" stroke="#7ec8e3" stroke-width="2" marker-end="url(#rb)"/>
+  <text x="310" y="108" text-anchor="middle" font-size="13" fill="#7ec8e3">단순</text>
+  <line x1="540" y1="125" x2="600" y2="125" stroke="#7ec8e3" stroke-width="2" marker-end="url(#rb)"/>
+
+  <!-- Row B -->
+  <rect x="340" y="310" width="200" height="70" rx="8" fill="#1a1030" stroke="#7777cc" stroke-width="1.5"/>
+  <text x="440" y="340" text-anchor="middle" font-size="15" font-weight="600" fill="#7777cc">큰 모델</text>
+  <text x="440" y="362" text-anchor="middle" font-size="12" fill="#888">추론 · 코드 · 여러 문서</text>
+
+  <rect x="600" y="310" width="220" height="70" rx="8" fill="#1a2010" stroke="#55c555" stroke-width="1.5"/>
+  <text x="710" y="340" text-anchor="middle" font-size="15" font-weight="600" fill="#55c555">응답</text>
+  <text x="710" y="362" text-anchor="middle" font-size="12" fill="#888">SSE 스트리밍 전송</text>
+
+  <!-- complex: sig -> big -->
+  <path d="M 170 160 L 170 345 L 340 345" fill="none" stroke="#7777cc" stroke-width="2" marker-end="url(#rp)"/>
+  <text x="184" y="250" font-size="13" fill="#7777cc">복잡 · 상위 요금제</text>
+
+  <!-- pass: check -> response -->
+  <line x1="760" y1="160" x2="760" y2="310" stroke="#55c555" stroke-width="2" marker-end="url(#rg)"/>
+  <text x="774" y="240" font-size="13" fill="#55c555">통과</text>
+
+  <!-- fail: check -> big -->
+  <path d="M 660 160 L 660 250 L 440 250 L 440 310" fill="none" stroke="#e05555" stroke-width="2" stroke-dasharray="4,4" marker-end="url(#rr)"/>
+  <text x="550" y="232" text-anchor="middle" font-size="13" fill="#e05555">실패 · 다시 생성 → 승급</text>
+
+  <line x1="540" y1="345" x2="600" y2="345" stroke="#55c555" stroke-width="2" marker-end="url(#rg)"/>
+
+  <text x="440" y="420" text-anchor="middle" font-size="13" fill="#888">승급한 대화는 이후 턴도 큰 모델에 고정한다</text>
+</svg>

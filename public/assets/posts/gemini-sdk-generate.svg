@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="880" height="560" viewBox="0 0 880 560">
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="480" viewBox="0 0 880 480">
   <defs>
     <marker id="arr" viewBox="0 0 14 14" refX="12" refY="7"
             markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
@@ -14,126 +14,80 @@
     </marker>
   </defs>
 
-  <!-- 배경 -->
-  <rect width="880" height="560" fill="#0a0a0a" rx="12"/>
+  <rect width="880" height="480" fill="#0a0a0a" rx="12"/>
 
-  <!-- 제목 -->
   <text x="440" y="44" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
-        font-size="22" font-weight="700" fill="#e8e8e8" text-anchor="middle">Gemini SDK: generate_content() 흐름</text>
+        font-size="22" font-weight="700" fill="#e8e8e8" text-anchor="middle">google-genai: 호출과 응답 읽기</text>
 
-  <!-- ── 상단 흐름 ── -->
+  <!-- 상단 흐름 -->
+  <rect x="35" y="72" width="170" height="64" rx="8" fill="#000000" stroke="#3a4a6e" stroke-width="1.5"/>
+  <text x="120" y="96" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="13" font-weight="600" fill="#7ec8e3" text-anchor="middle">1. 클라이언트</text>
+  <text x="120" y="116" font-family="'JetBrains Mono','Menlo','Consolas',monospace"
+        font-size="11" fill="#9aa4b8" text-anchor="middle">genai.Client()</text>
 
-  <!-- Step 1: 설정 -->
-  <rect x="30" y="70" width="160" height="64" rx="8" fill="#000000" stroke="#3a4a6e" stroke-width="1.5"/>
-  <text x="110" y="94" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
-        font-size="13" font-weight="600" fill="#7ec8e3" text-anchor="middle">1. 설정</text>
-  <text x="110" y="112" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
-        font-size="11" fill="#888" text-anchor="middle">genai.configure(</text>
-  <text x="110" y="126" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
-        font-size="11" fill="#888" text-anchor="middle">api_key=...)</text>
+  <line x1="205" y1="104" x2="245" y2="104" stroke="#7ec8e3" stroke-width="2" marker-end="url(#arr)"/>
 
-  <line x1="190" y1="102" x2="240" y2="102" stroke="#7ec8e3" stroke-width="2" marker-end="url(#arr)"/>
+  <rect x="245" y="72" width="180" height="64" rx="8" fill="#000000" stroke="#3a4a6e" stroke-width="1.5"/>
+  <text x="335" y="96" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="13" font-weight="600" fill="#7ec8e3" text-anchor="middle">2. 생성 설정</text>
+  <text x="335" y="116" font-family="'JetBrains Mono','Menlo','Consolas',monospace"
+        font-size="11" fill="#9aa4b8" text-anchor="middle">GenerateContentConfig</text>
 
-  <!-- Step 2: 모델 생성 -->
-  <rect x="240" y="70" width="180" height="64" rx="8" fill="#000000" stroke="#3a4a6e" stroke-width="1.5"/>
-  <text x="330" y="94" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
-        font-size="13" font-weight="600" fill="#7ec8e3" text-anchor="middle">2. 모델 생성</text>
-  <text x="330" y="112" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
-        font-size="11" fill="#888" text-anchor="middle">GenerativeModel(</text>
-  <text x="330" y="126" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
-        font-size="11" fill="#888" text-anchor="middle">"gemini-2.0-flash")</text>
+  <line x1="425" y1="104" x2="465" y2="104" stroke="#7ec8e3" stroke-width="2" marker-end="url(#arr)"/>
 
-  <line x1="420" y1="102" x2="470" y2="102" stroke="#7ec8e3" stroke-width="2" marker-end="url(#arr)"/>
-
-  <!-- Step 3: 생성 호출 -->
-  <rect x="470" y="70" width="190" height="64" rx="8" fill="#0f1a0f" stroke="#3a6e3a" stroke-width="1.5"/>
-  <text x="565" y="94" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+  <rect x="465" y="72" width="190" height="64" rx="8" fill="#0f1a0f" stroke="#3a6e3a" stroke-width="1.5"/>
+  <text x="560" y="96" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
         font-size="13" font-weight="600" fill="#55c555" text-anchor="middle">3. 생성 호출</text>
-  <text x="565" y="112" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
-        font-size="11" fill="#888" text-anchor="middle">model.generate_content(</text>
-  <text x="565" y="126" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
-        font-size="11" fill="#888" text-anchor="middle">prompt / [image, text])</text>
+  <text x="560" y="116" font-family="'JetBrains Mono','Menlo','Consolas',monospace"
+        font-size="11" fill="#9aa4b8" text-anchor="middle">models.generate_content</text>
 
-  <line x1="660" y1="102" x2="710" y2="102" stroke="#55c555" stroke-width="2" marker-end="url(#arr-g)"/>
+  <line x1="655" y1="104" x2="695" y2="104" stroke="#55c555" stroke-width="2" marker-end="url(#arr-g)"/>
 
-  <!-- Step 4: 응답 -->
-  <rect x="710" y="70" width="140" height="64" rx="8" fill="#1a0f0a" stroke="#6e5a3a" stroke-width="1.5"/>
-  <text x="780" y="94" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
-        font-size="13" font-weight="600" fill="#ce9178" text-anchor="middle">4. 응답</text>
-  <text x="780" y="112" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
-        font-size="11" fill="#888" text-anchor="middle">response.text</text>
-  <text x="780" y="126" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
-        font-size="11" fill="#888" text-anchor="middle">usage_metadata</text>
+  <rect x="695" y="72" width="150" height="64" rx="8" fill="#1a0f0a" stroke="#6e5a3a" stroke-width="1.5"/>
+  <text x="770" y="96" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="13" font-weight="600" fill="#ce9178" text-anchor="middle">4. 응답 객체</text>
+  <text x="770" y="116" font-family="'JetBrains Mono','Menlo','Consolas',monospace"
+        font-size="11" fill="#9aa4b8" text-anchor="middle">candidates[0]</text>
 
-  <!-- ── 모델 선택 섹션 ── -->
-  <text x="60" y="164" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
-        font-size="15" font-weight="600" fill="#e8e8e8">모델 선택 가이드</text>
+  <!-- 코드 블록 -->
+  <rect x="35" y="164" width="440" height="262" rx="8" fill="#000000" stroke="#3a4a6e" stroke-width="1.5"/>
+  <text x="51" y="190" xml:space="preserve" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13"><tspan fill="#7ec8e3" font-weight="600">from</tspan><tspan fill="#ffffff"> google </tspan><tspan fill="#7ec8e3" font-weight="600">import</tspan><tspan fill="#ffffff"> genai</tspan></text>
+  <text x="51" y="210" xml:space="preserve" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13"><tspan fill="#7ec8e3" font-weight="600">from</tspan><tspan fill="#ffffff"> google.genai </tspan><tspan fill="#7ec8e3" font-weight="600">import</tspan><tspan fill="#ffffff"> types</tspan></text>
+  <text x="51" y="230" xml:space="preserve" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13"><tspan fill="#ffffff">client = genai.Client()</tspan></text>
+  <text x="51" y="250" xml:space="preserve" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13"><tspan fill="#ffffff">MODEL = </tspan><tspan fill="#ce9178">"gemini-flash-latest"</tspan></text>
+  <text x="51" y="270" xml:space="preserve" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13"><tspan fill="#ffffff">cfg = types.GenerateContentConfig(</tspan></text>
+  <text x="51" y="290" xml:space="preserve" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13"><tspan fill="#ffffff">    temperature=</tspan><tspan fill="#b5cea8">0.2</tspan><tspan fill="#ffffff">,</tspan></text>
+  <text x="51" y="310" xml:space="preserve" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13"><tspan fill="#ffffff">    max_output_tokens=</tspan><tspan fill="#b5cea8">1024</tspan><tspan fill="#ffffff">)</tspan></text>
+  <text x="51" y="330" xml:space="preserve" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13"><tspan fill="#ffffff">r = client.models.generate_content(</tspan></text>
+  <text x="51" y="350" xml:space="preserve" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13"><tspan fill="#ffffff">    model=MODEL, config=cfg,</tspan></text>
+  <text x="51" y="370" xml:space="preserve" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13"><tspan fill="#ffffff">    contents=</tspan><tspan fill="#ce9178">"딥러닝이란?"</tspan><tspan fill="#ffffff">)</tspan></text>
+  <text x="51" y="390" xml:space="preserve" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13"><tspan fill="#7ec8e3" font-weight="600">print</tspan><tspan fill="#ffffff">(r.candidates[</tspan><tspan fill="#b5cea8">0</tspan><tspan fill="#ffffff">].finish_reason)</tspan></text>
+  <text x="51" y="410" xml:space="preserve" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13"><tspan fill="#7ec8e3" font-weight="600">print</tspan><tspan fill="#ffffff">(r.usage_metadata)</tspan></text>
 
-  <rect x="30" y="174" width="260" height="70" rx="8" fill="#000000" stroke="#3a4a6e" stroke-width="1.5"/>
-  <text x="160" y="198" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
-        font-size="13" font-weight="600" fill="#7ec8e3" text-anchor="middle">gemini-2.0-flash</text>
-  <text x="160" y="216" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
-        font-size="11" fill="#888" text-anchor="middle">속도 · 비용 균형 · 멀티모달</text>
-  <text x="160" y="232" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
-        font-size="11" fill="#888" text-anchor="middle">범용 프로덕션 기본 선택</text>
+  <!-- 응답 읽는 순서 -->
+  <text x="675" y="184" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="15" font-weight="600" fill="#e8e8e8" text-anchor="middle">응답을 읽는 순서</text>
 
-  <rect x="310" y="174" width="260" height="70" rx="8" fill="#000000" stroke="#3a4a6e" stroke-width="1.5"/>
-  <text x="440" y="198" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
-        font-size="13" font-weight="600" fill="#7ec8e3" text-anchor="middle">gemini-1.5-pro</text>
-  <text x="440" y="216" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
-        font-size="11" fill="#888" text-anchor="middle">1M 토큰 컨텍스트</text>
-  <text x="440" y="232" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
-        font-size="11" fill="#888" text-anchor="middle">장문 문서 · 동영상 전체 처리</text>
+  <rect x="515" y="200" width="330" height="60" rx="8" fill="#000000" stroke="#3a4a6e" stroke-width="1.5"/>
+  <text x="680" y="224" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="13" font-weight="600" fill="#7ec8e3" text-anchor="middle">① candidates가 있는가</text>
+  <text x="680" y="244" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="11" fill="#888" text-anchor="middle">없으면 입력 차단 · prompt_feedback.block_reason</text>
 
-  <rect x="590" y="174" width="260" height="70" rx="8" fill="#000000" stroke="#3a4a6e" stroke-width="1.5"/>
-  <text x="720" y="198" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
-        font-size="13" font-weight="600" fill="#7ec8e3" text-anchor="middle">generation_config</text>
-  <text x="720" y="216" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
-        font-size="11" fill="#888" text-anchor="middle">temperature / top_p / top_k</text>
-  <text x="720" y="232" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
-        font-size="11" fill="#888" text-anchor="middle">max_output_tokens</text>
+  <line x1="680" y1="260" x2="680" y2="290" stroke="#7ec8e3" stroke-width="2" marker-end="url(#arr)"/>
 
-  <!-- ── 코드 블록 ── -->
-  <rect x="30" y="262" width="820" height="272" rx="8" fill="#000000" stroke="#3a4a6e" stroke-width="1.5"/>
+  <rect x="515" y="290" width="330" height="60" rx="8" fill="#000000" stroke="#3a4a6e" stroke-width="1.5"/>
+  <text x="680" y="314" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="13" font-weight="600" fill="#7ec8e3" text-anchor="middle">② finish_reason은 무엇인가</text>
+  <text x="680" y="334" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="11" fill="#888" text-anchor="middle">STOP · MAX_TOKENS(잘림) · SAFETY(출력 차단)</text>
 
-  <text x="50" y="283" xml:space="preserve"
-        font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#9aa4b8"
-        ># Gemini SDK: 기본 generate_content() 예시</text>
+  <line x1="680" y1="350" x2="680" y2="380" stroke="#ce9178" stroke-width="2" marker-end="url(#arr-o)"/>
 
-  <text x="50" y="303" xml:space="preserve"
-        font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13"><tspan fill="#7ec8e3" font-weight="600">import</tspan><tspan fill="#ffffff"> google.generativeai </tspan><tspan fill="#7ec8e3" font-weight="600">as</tspan><tspan fill="#ffffff"> genai</tspan></text>
-
-  <text x="50" y="323" xml:space="preserve"
-        font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13"><tspan fill="#7ec8e3" font-weight="600">from</tspan><tspan fill="#ffffff"> google.generativeai.types </tspan><tspan fill="#7ec8e3" font-weight="600">import</tspan><tspan fill="#ffffff"> GenerationConfig</tspan></text>
-
-  <text x="50" y="343" xml:space="preserve"
-        font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13"><tspan fill="#ffffff">genai.configure(api_key=</tspan><tspan fill="#ce9178">"YOUR_API_KEY"</tspan><tspan fill="#ffffff">)</tspan></text>
-
-  <text x="50" y="363" xml:space="preserve"
-        font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13"><tspan fill="#ffffff">model = genai.GenerativeModel(</tspan><tspan fill="#ce9178">"gemini-2.0-flash"</tspan><tspan fill="#ffffff">,</tspan></text>
-
-  <text x="50" y="383" xml:space="preserve"
-        font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13"><tspan fill="#ffffff">    generation_config=GenerationConfig(temperature=</tspan><tspan fill="#b5cea8">0.4</tspan><tspan fill="#ffffff">,</tspan></text>
-
-  <text x="50" y="403" xml:space="preserve"
-        font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13"><tspan fill="#ffffff">        top_p=</tspan><tspan fill="#b5cea8">0.95</tspan><tspan fill="#ffffff">, max_output_tokens=</tspan><tspan fill="#b5cea8">1024</tspan><tspan fill="#ffffff">))</tspan></text>
-
-  <text x="50" y="423" xml:space="preserve"
-        font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13"><tspan fill="#ffffff">response = model.generate_content(</tspan><tspan fill="#ce9178">"딥러닝이란?"</tspan><tspan fill="#ffffff">)</tspan></text>
-
-  <text x="50" y="443" xml:space="preserve"
-        font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13"><tspan fill="#7ec8e3" font-weight="600">print</tspan><tspan fill="#ffffff">(response.text)</tspan></text>
-
-  <text x="50" y="463" xml:space="preserve"
-        font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#9aa4b8"><tspan># 토큰 사용량 확인</tspan></text>
-
-  <text x="50" y="483" xml:space="preserve"
-        font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13"><tspan fill="#7ec8e3" font-weight="600">print</tspan><tspan fill="#ffffff">(response.usage_metadata.prompt_token_count)</tspan></text>
-
-  <text x="50" y="503" xml:space="preserve"
-        font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#9aa4b8"><tspan># 스트리밍: stream=True → chunk.text 로 실시간 출력</tspan></text>
-
-  <text x="50" y="523" xml:space="preserve"
-        font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13"><tspan fill="#7ec8e3" font-weight="600">for</tspan><tspan fill="#ffffff"> chunk </tspan><tspan fill="#7ec8e3" font-weight="600">in</tspan><tspan fill="#ffffff"> model.generate_content(prompt, stream=</tspan><tspan fill="#7ec8e3" font-weight="600">True</tspan><tspan fill="#ffffff">):</tspan></text>
-
+  <rect x="515" y="380" width="330" height="60" rx="8" fill="#1a0f0a" stroke="#6e5a3a" stroke-width="1.5"/>
+  <text x="680" y="404" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="13" font-weight="600" fill="#ce9178" text-anchor="middle">③ text · parsed를 쓴다</text>
+  <text x="680" y="424" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif"
+        font-size="11" fill="#888" text-anchor="middle">None일 수 있다 · usage_metadata를 기록</text>
 </svg>
