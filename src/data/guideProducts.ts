@@ -54,14 +54,19 @@ export const guideProducts: Product[] = [
     name: 'Claude',
     role: '챗',
     surfaces: ['웹', '데스크톱', '모바일'],
-    models: ['claude-fable-5-1', 'claude-fable-5'],
+    models: ['claude-fable-5-1', 'claude-fable-5', 'claude-opus-5-5', 'claude-opus-5'],
     /*
       support.claude.com/en/articles/15424964 — 「select "Fable 5" or "Fable 5.1"
       from the model picker」. **고르는 동작 자체를 적은 문장**이라 근거가 됩니다.
 
-      **둘뿐인 것은 둘만 있어서가 아니라 둘만 확인돼서입니다.** 선택기 전체 목록을
+      Opus 둘은 2026-09-28에 더했습니다. support.claude.com/en/articles/16049681이
+      대화 안의 자동 전환을 풀면서 「You can switch back to Opus 5 or Opus 5.5 anytime
+      from the model picker.」라고 적습니다 — 역시 고르는 동작 자체입니다. Opus 5는
+      구세대라 화면에서는 빠집니다(`shownModels`).
+
+      **넷뿐인 것은 넷만 있어서가 아니라 넷만 확인돼서입니다.** 선택기 전체 목록을
       나열한 공식 페이지가 없습니다 — 선택기를 다루는 도움말은 「click on the model
-      name and choose」라고만 적고 이름을 하나도 안 댑니다. Opus 5·Sonnet 5·Haiku가
+      name and choose」라고만 적고 이름을 하나도 안 댑니다. Sonnet 5·Haiku가
       여기 서는지는 못 봤습니다(API 카탈로그와 요금제 접근 문장에만 나오는데 둘 다
       근거로 안 칩니다).
 
@@ -109,11 +114,25 @@ export const guideProducts: Product[] = [
     name: 'Claude Code',
     role: '코딩',
     surfaces: ['터미널', 'IDE', '데스크톱', '웹'],
-    models: ['claude-fable-5-1', 'claude-fable-5', 'claude-opus-5', 'claude-sonnet-5', 'claude-haiku-4-5'],
+    models: [
+      'claude-fable-5-1',
+      'claude-fable-5',
+      'claude-opus-5-5',
+      'claude-opus-5',
+      'claude-sonnet-5',
+      'claude-haiku-4-5',
+    ],
     /*
       code.claude.com/docs/en/model-config 의 별칭 해소 표
-      (「| Anthropic API | Opus 5 | Sonnet 5 |」)와 「run `/model claude-fable-5`」 같은
+      (「| Anthropic API | Opus 5.5 | Sonnet 5 |」)와 「run `/model claude-fable-5`」 같은
       선택 지시입니다.
+
+      **2026-09-28에 열어 보니 `opus`가 Opus 5.5로 풀립니다**(표 아래 「Before v2.1.280,
+      `opus` resolved to Opus 5 on the Anthropic API, …」). Opus 5는 별칭에서 빠졌지만
+      목록에 남깁니다 — support.claude.com/en/articles/16049681이 적용 범위에 Claude
+      Code를 넣고 「You can switch back to Opus 5 or Opus 5.5 anytime from the model
+      picker.」라고 적고, 이 문서도 「Opus 5 requires v2.1.219 or later.」로 아직 쓰는
+      모델로 다룹니다. 구세대라 화면에서는 빠집니다(`shownModels`).
 
       **지난번에 아홉을 적었다가 틀림 판정을 받은 자리입니다.** 별칭(`fable`·`haiku`)이
       있다는 것을 「그 버전을 고를 수 있다」로 바꿔 읽었고, 인용문까지 표 네 행을

@@ -68,17 +68,53 @@ const models: ModelInfo[] = [
     sourceUrl:
       'https://platform.claude.com/docs/en/about-claude/model-deprecations',
   },
+  /*
+    **2026-09-28에 넣었습니다.** 모델 개요 표가 현행 넷을 Fable 5.1 · **Opus 5.5** ·
+    Sonnet 5 · Haiku 4.5로 세우고, Opus 5는 표 아래 「Legacy models (still available)」
+    줄로 내려갔습니다. 그 전까지 Claude Code 팁의 이유 줄은 Opus 5.5를 부르는데 같은
+    화면의 모델 표에는 Opus 5만 서 있었습니다.
+
+    쓰임은 「Choosing the right model」의 선택표에서 옮겼습니다 — 「Complex agentic
+    coding and enterprise work | Claude Opus 5.5」. Sonnet 5·Haiku 4.5와 같은 표입니다.
+    마크는 문서 첫 화면의 Opus 5.5 카드가 짝지어 둔 것입니다 — `cursor.svg`를
+    `--cds-orange-250`(그 사이트 CSS에서 `#f09978`) 판에 세웁니다.
+  */
+  {
+    id: 'claude-opus-5-5',
+    vendorId: 'anthropic',
+    name: 'Claude Opus 5.5',
+    mark: { file: 'assets/model-opus.svg', plate: '#F09978' },
+    apiId: 'claude-opus-5-5',
+    useWhen: {
+      text: '복잡한 에이전트 코딩과 기업 업무에',
+      url: 'https://platform.claude.com/docs/en/about-claude/models/choosing-a-model',
+    },
+    current: true,
+    sourceUrl:
+      'https://platform.claude.com/docs/en/about-claude/models/overview',
+  },
+  /*
+    **2026-09-28에 구세대로 내렸습니다.** 모델 개요가 「Legacy models (still available)」
+    줄에 세우고, 제 모델 문서도 「**Legacy.** Released July 24, 2026.」으로 시작해
+    「Claude Opus 5 is a legacy model; Claude Opus 5.5 is the current Opus model.」이라고
+    적습니다.
+
+    쓰임은 `null`로 내렸습니다. 선택표는 이제 「Complex agentic coding and enterprise
+    work」를 Opus 5.5에 달고 Opus 5는 줄로 세우지 않으며, 제 모델 문서도 쓰임 한 줄
+    없이 Legacy 표기와 이관 안내로 시작합니다 — 지어 채우지 않습니다.
+
+    `model-deprecations` 표는 여전히 `claude-opus-5`를 「Active」로 적습니다. 그 표의
+    Active는 은퇴 전이라는 뜻이라, Fable 5·Sonnet 4.6·Opus 4.6과 같이 개요의 Legacy
+    표기를 따릅니다(제 모델 문서의 상태 칸도 「Active (legacy)」입니다).
+  */
   {
     id: 'claude-opus-5',
     vendorId: 'anthropic',
     name: 'Claude Opus 5',
     mark: { file: 'assets/model-opus.svg', plate: '#F09978' },
     apiId: 'claude-opus-5',
-    useWhen: {
-      text: '복잡한 에이전트 코딩과 기업 업무에',
-      url: 'https://platform.claude.com/docs/en/about-claude/models/overview',
-    },
-    current: true,
+    useWhen: null,
+    current: false,
     sourceUrl:
       'https://platform.claude.com/docs/en/about-claude/models/overview',
   },
