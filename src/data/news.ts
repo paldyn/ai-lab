@@ -160,7 +160,7 @@ export interface NewsDetail {
   commentary: string;
 }
 
-export const globalNewsUpdatedAt = '2026-09-25';
+export const globalNewsUpdatedAt = '2026-09-27';
 
 /**
  * 공식 발표 한 건 = 항목 한 개. 2026년 1월부터 쌓는 아카이브이며 오래된 항목을
@@ -171,6 +171,45 @@ export const globalNewsUpdatedAt = '2026-09-25';
  * 목록에서 파생됩니다. 갱신 시 globalNewsUpdatedAt도 함께 올립니다.
  */
 const entries: NewsItem[] = [
+  {
+    id: 'claude-sonnet-5-5',
+    source: 'Anthropic',
+    kind: 'model',
+    title: 'Anthropic, Claude Sonnet 5.5 공개 — 단가 그대로 30% 넘게 빠르게',
+    summary:
+      'Anthropic이 Claude 5.5 계열의 두 번째 모델 Claude Sonnet 5.5를 공개했다. 단가는 Sonnet 5와 같은 ' +
+      '100만 토큰당 입력 2달러·출력 10달러이고, 출력 속도는 30% 넘게 빠르며 작업당 비용은 최대 30% 적다고 밝혔다.',
+    publishedAt: '2026-09-28',
+    collectedAt: '2026-09-29',
+    category: 'Frontier',
+    signal: '모델 경제성',
+    url: 'https://www.anthropic.com/claude-sonnet-5-5',
+    model: {
+      family: 'Claude',
+      name: 'Claude Sonnet 5.5',
+      kind: '신규 모델',
+      status: '공개',
+      useCase: '일상 코딩·문서 작성',
+      headline: 'Opus 5.5 옆에서 범위가 정해진 일을 더 빠르고 싸게 맡도록 둔 Sonnet',
+      logo: 'assets/claude.svg',
+      tone: 'claude',
+    },
+  },
+  {
+    id: 'ai-winner-future-vision-xprize',
+    source: 'Google DeepMind',
+    kind: 'company',
+    title: 'Google, Future Vision XPRIZE 대상작 「The Gifted」 발표',
+    summary:
+      'Google이 XPRIZE·Range Media Partners와 연 영화 공모전 Future Vision XPRIZE의 대상이 독립 영화감독 ' +
+      'Jeff Synthesized의 「The Gifted」로 정해졌다고 밝혔다. 2,500편 넘는 응모작 중에서 뽑혀 상금 10만 달러와 ' +
+      '장편 제작비 250만 달러를 받는다.',
+    publishedAt: '2026-09-28',
+    collectedAt: '2026-09-29',
+    category: 'Corporate',
+    signal: 'AI 영화 공모전',
+    url: 'https://blog.google/innovation-and-ai/technology/ai/winner-future-vision-xprize',
+  },
   {
     id: 'proaction',
     source: 'OpenAI',

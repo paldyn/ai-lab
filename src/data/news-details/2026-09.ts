@@ -2,6 +2,37 @@ import type { NewsDetail } from '../news';
 
 /** 2026-09 발표의 모달 본문. 목록은 news.ts에 있습니다. */
 export const details: Record<string, NewsDetail> = {
+  'claude-sonnet-5-5': {
+    points: [
+      'Claude 5.5 계열의 두 번째 모델이며 Claude Haiku 5.5는 몇 주 안에 합류한다고 밝혔다',
+      '단가는 Sonnet 5와 같은 100만 토큰당 입력 2달러·출력 10달러·캐시 읽기 0.20달러다',
+      '출력 속도가 Sonnet 5보다 30% 넘게 빠르고 작업당 비용은 최대 30% 적다',
+      'Terminal-Bench 4.0 70.6%로 Sonnet 5의 10.3%를 크게 넘었고, GDPval-AA에서는 Opus 5.5보다 2점 낮았다',
+      '사이버 역량이 Opus 5와 비슷해 Sonnet으로는 처음 사이버 안전장치와 Sonnet 5로의 대체 응답을 건다',
+      '추론 추출을 막는 안전 분류기도 Sonnet으로는 처음 붙였다',
+      'AWS·Google Cloud·Microsoft Azure를 포함한 전 플랫폼에서 claude-sonnet-5-5로 쓸 수 있다',
+      'thinking을 끄고 쓰던 경우 새 between_tools 설정으로 바꿔야 한다',
+    ],
+    commentary:
+      '단가를 그대로 두고 토큰 사용량과 속도로 값을 내린 발표다. Opus 5.5가 단가를 20% 내린 지 엿새 만이라 ' +
+      '두 모델의 가격 차이는 여전히 두 배이고, Anthropic이 스스로 긋는 선은 「범위가 정해진 일은 Sonnet, 오래 ' +
+      '판단이 필요한 일은 Opus」다. thinking을 끈 호출은 설정을 바꿔야 옮겨지니 모델 이름만 갈아 끼우지 말 것.',
+  },
+  'ai-winner-future-vision-xprize': {
+    points: [
+      'Google이 올해 XPRIZE·Range Media Partners와 함께 Future Vision XPRIZE를 열었다',
+      '기술이 뒷받침하는 희망적인 미래를 그리는 영화를 전 세계에서 모은 공모전이다',
+      '지난주 로스앤젤레스에서 독립 영화감독 Jeff Synthesized의 「The Gifted」가 대상으로 발표됐다',
+      '세상을 떠난 어머니의 목소리를 코드로 되살리는 11살 소년의 이야기다',
+      '2,500편 넘는 응모작 중에서 뽑혔고 혼자 만든 작품이다',
+      '상금 10만 달러와 장편 제작비 250만 달러를 받는다',
+      'Google의 100 ZEROS 프로그램을 통해 Range Media Partners와 장편화를 돕는다',
+    ],
+    commentary:
+      'AI 기업이 제품 대신 이야기에 돈을 대는 자리다. 공모 주제가 「희망적인 기술 미래」로 정해져 있어 ' +
+      '문화 쪽에서 AI에 대한 인식을 다듬으려는 투자로 읽힌다. 수상작이 AI로 고인의 목소리를 되살리는 ' +
+      '이야기라는 점은 그 기술을 둘러싼 논쟁과 나란히 놓고 볼 만하다.',
+  },
   proaction: {
     points: [
       'COO Colin Knudsen이 개발자 없이 Codex로 고객 맞춤 인터랙티브 데모를 매달 4~6개, 한 개에 30~45분 들여 만든다',
