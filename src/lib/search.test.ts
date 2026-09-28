@@ -1,9 +1,10 @@
 import { describe, expect, it } from 'vitest';
 import { articles } from '../data/articles';
 import { newsItems, releaseOf } from '../data/news';
-import { guideProducts } from '../data/guideProducts';
+import { guideProducts, surfaceAliases } from '../data/guideProducts';
 import { guideVendorById } from '../data/guideVendors';
 import { getSource } from '../data/sources';
+import type { Surface } from '../types/playbook';
 import { countByScope, search, splitMatch } from './search';
 
 /**
@@ -48,9 +49,12 @@ const 소식매치 = (query: string) =>
 const 가이드매치 = (query: string) =>
   guideProducts.filter((product) => {
     const vendor = guideVendorById(product.vendorId);
-    const tags = [product.role, vendor?.name, ...product.surfaces].filter(
-      (value): value is string => Boolean(value),
-    );
+    const tags = [
+      product.role,
+      vendor?.name,
+      ...product.surfaces,
+      ...product.surfaces.flatMap((surface) => surfaceAliases[surface]),
+    ].filter((value): value is string => Boolean(value));
     return matches(query, product.name, tags, product.oneLine);
   }).length;
 
@@ -165,6 +169,44 @@ describe('검색', () => {
     for (const query of ['Anthropic', 'OpenAI', 'Google', '코딩', '챗']) {
       expect(search(query, 'playbook').length, query).toBeGreaterThan(0);
     }
+  });
+
+  /*
+    **표면 낱말을 한 벌로 줄여도 옛 말로 찾아진다.** 화면에는 「터미널」·「IDE」·「데스크톱」만
+    서지만 사람은 벤더가 쓰는 「CLI」·「IDE 확장」·「VS Code」·「앱」으로 칩니다(2026-09-28에
+    낱말을 맞추기 전에는 이 말들이 데이터에 그대로 있었습니다). 기대값은 그 표면을 가진
+    제품 전부입니다 — 한 제품만 걸려도 초록이면 별칭이 낱말에서 빠진 것을 못 잡습니다.
+
+    소개 한 줄(「채팅 앱」)이 먼저 걸어 주는 제품이 있어 「앱」은 데스크톱 제품이 전부
+    걸리는지만 봅니다. 요약 점수보다 태그 점수가 높으므로 Codex처럼 소개에 「앱」이 없는
+    제품이 여기서 걸립니다.
+  */
+  it('옛 표면 낱말로도 그 표면을 가진 제품이 전부 걸린다', () => {
+    const 표면제품 = (surface: Surface) =>
+      guideProducts
+        .filter((product) => product.surfaces.includes(surface))
+        .map((product) => `/playbook/${product.vendorId}/${product.id}`)
+        .sort();
+    const 걸린제품 = (query: string) =>
+      search(query, 'playbook')
+        .map((hit) => hit.href)
+        .sort();
+
+    const 옛말: [string, Surface][] = [
+      ['CLI', '터미널'],
+      ['IDE 확장', 'IDE'],
+      ['VS Code', 'IDE'],
+      ['vs code', 'IDE'],
+      ['JetBrains', 'IDE'],
+    ];
+    for (const [query, surface] of 옛말) {
+      expect(표면제품(surface).length, surface).toBeGreaterThan(0);
+      expect(걸린제품(query), query).toEqual(표면제품(surface));
+    }
+
+    const 앱 = 걸린제품('앱');
+    expect(표면제품('데스크톱').length).toBeGreaterThan(0);
+    for (const href of 표면제품('데스크톱')) expect(앱, href).toContain(href);
   });
 
   it('제목에서 검색어 구간을 잘라 낸다', () => {

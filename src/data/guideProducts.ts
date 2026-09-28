@@ -65,6 +65,28 @@ export const surfaceOrder: readonly Surface[] = [
   'SDK',
 ];
 
+/**
+ * 검색이 표면 낱말 옆에 함께 거는 말.
+ *
+ * **낱말을 한 벌로 줄이면 사람이 치는 옛 말로는 안 찾아집니다.** 「CLI」·「IDE 확장」·
+ * 「VS Code」·「앱」은 벤더가 제 문서에서 실제로 쓰는 말이라 검색창에 그대로 들어옵니다.
+ * 화면에는 안 서고 `src/lib/search.ts`가 태그로만 씁니다.
+ *
+ * **그 낱말을 가진 제품 모두에게 참이어야 합니다.** 별칭은 제품이 아니라 낱말에 붙으므로
+ * 한 제품에만 맞는 말(Antigravity의 Zed, Codex의 Cursor)을 넣으면 나머지 제품이 거짓으로
+ * 걸립니다. VS Code와 JetBrains는 IDE를 가진 셋(Claude Code · Codex · Antigravity)이 다
+ * 공식 문서에 적습니다(2026-09-28).
+ */
+export const surfaceAliases: Record<Surface, readonly string[]> = {
+  웹: ['브라우저'],
+  데스크톱: ['데스크톱 앱'],
+  모바일: ['모바일 앱'],
+  터미널: ['CLI'],
+  IDE: ['IDE 확장', 'VS Code', 'JetBrains'],
+  클라우드: [],
+  SDK: [],
+};
+
 export const guideProducts: Product[] = [
   // ─── Anthropic ───────────────────────────────────────────────────
   {

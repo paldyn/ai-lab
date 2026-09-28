@@ -2,7 +2,7 @@ import { articles } from '../data/articles';
 import { categoryById } from '../data/categories';
 import { fullDate, newsItems, releaseOf } from '../data/news';
 import { playbookChecks, playbookProductPath } from '../data/playbook';
-import { guideProducts } from '../data/guideProducts';
+import { guideProducts, surfaceAliases } from '../data/guideProducts';
 import { guideVendorById } from '../data/guideVendors';
 import { getSource } from '../data/sources';
 import type { SectionId } from '../types/article';
@@ -163,10 +163,17 @@ function playbookHits(query: string, scope: SearchScope): SearchHit[] {
       태그 자리에 갈래·회사·표면을 둡니다. 「코딩」처럼 갈래로 훑는 것, 「Anthropic」
       처럼 회사만 아는 상태로 찾는 것, 「CLI」·「VS Code」처럼 만나는 자리로 찾는 것이
       이 서랍에서 제품 이름 다음으로 잦습니다.
+
+      **표면은 별칭까지 겁니다.** 화면의 표면 낱말은 한 벌(「터미널」·「IDE」)로 줄였지만
+      사람은 벤더의 말(「CLI」·「VS Code」)로 칩니다 — 별칭이 없으면 그 말로 오던 길이
+      낱말을 맞추는 날 조용히 끊깁니다.
     */
-    const tags = [product.role, vendor?.name, ...product.surfaces].filter(
-      (value): value is string => Boolean(value),
-    );
+    const tags = [
+      product.role,
+      vendor?.name,
+      ...product.surfaces,
+      ...product.surfaces.flatMap((surface) => surfaceAliases[surface]),
+    ].filter((value): value is string => Boolean(value));
 
     const score = scoreOf(query, product.name, tags, product.oneLine);
     if (score === 0) continue;

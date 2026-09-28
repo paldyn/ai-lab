@@ -1,7 +1,7 @@
 import { existsSync } from 'node:fs';
 import path from 'node:path';
 import { describe, expect, it } from 'vitest';
-import { guideProducts, surfaceOrder } from './guideProducts';
+import { guideProducts, surfaceAliases, surfaceOrder } from './guideProducts';
 import { guideVendorIds, guideVendors } from './guideVendors';
 
 /**
@@ -140,6 +140,23 @@ describe('AI 가이드 — 기업과 제품', () => {
   it('한 벌의 낱말은 전부 어느 제품이 쓴다', () => {
     const used = new Set(guideProducts.flatMap((p) => p.surfaces));
     expect(surfaceOrder.filter((surface) => !used.has(surface))).toEqual([]);
+  });
+
+  /*
+    **별칭이 다른 표면 낱말을 품으면 검색이 엉뚱한 제품을 건다.** 검색은 부분 일치라
+    모바일에 「웹 앱」을 달면 「웹」으로 찾는 사람에게 웹이 없는 제품이 섞인다.
+    제 낱말을 품는 것(「IDE 확장」 ⊃ 「IDE」)은 괜찮다.
+  */
+  it('표면 별칭이 다른 표면 낱말을 품지 않는다', () => {
+    const lower = (value: string) => value.toLocaleLowerCase('ko-KR');
+    const bad = surfaceOrder.flatMap((surface) =>
+      surfaceAliases[surface]
+        .filter((alias) =>
+          surfaceOrder.some((other) => other !== surface && lower(alias).includes(lower(other))),
+        )
+        .map((alias) => `${surface} — ${alias}`),
+    );
+    expect(bad).toEqual([]);
   });
 
   /*
