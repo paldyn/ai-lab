@@ -217,7 +217,7 @@ export function productOpenItems(productId: string): string[] {
     .filter((c) => c.value === null)
     /*
       **팁은 못 채운 값이 아닙니다.** `topic: 'habit'`은 값이 없는 것이 정상이라
-      (「세션을 언제 새로 파나」는 셀 것이 아닙니다) 할 일 목록에 넣으면 목록이
+      (「언제 대화를 새로 시작하나」는 셀 것이 아닙니다) 할 일 목록에 넣으면 목록이
       팁으로 뒤덮여 **정작 못 채운 값이 안 보입니다.**
     */
     .filter((c) => c.topic !== 'habit')

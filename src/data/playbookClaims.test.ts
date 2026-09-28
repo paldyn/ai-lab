@@ -520,4 +520,98 @@ describe('AI 가이드 — 주장', () => {
       .filter((c) => c.audience !== 'api');
     expect(bad.map((c) => `${c.id} → ${hostOf(c.source.url)}`)).toEqual([]);
   });
+
+  /*
+    **팁에는 숫자를 박지 않는다 — 이유 줄도 마찬가지다.** 팁은 `concept`이라 나이
+    검사가 없는데, 이유 줄에 「32KiB」·「2,048토큰」 같은 수가 들어가면 그 수만 소리
+    없이 늙는다(2026-09-28에 셋을 걷었다). 수는 값 주장이 들고 확인 로그가 나이를 붙인다.
+
+    **K·M 접미사 꼴까지 본다.** 값 주장이 전부 「1M 토큰」·「200K 토큰」으로 적혀 있어
+    이유 줄로 새어 들어온다면 그 꼴일 가능성이 가장 크고, 원문에서 옮긴 「100k tokens」도
+    같은 수다. 처음 쓴 식은 걷은 세 건의 꼴(「2,048토큰」·「32KiB」)에만 맞춰져 있었다.
+  */
+  it('팁 이유에 수와 단위를 박지 않는다', () => {
+    const numberWithUnit = /\d[\d,.]*\s?[km]?\s?(토큰|tokens?|kib|kb|mb)/i;
+    const bad = playbookClaims
+      .filter((c) => c.topic === 'habit')
+      .filter((c) => numberWithUnit.test(c.detail ?? ''));
+    expect(bad.map((c) => c.id)).toEqual([]);
+  });
+
+  /*
+    **출처 줄에서 「 · 」는 나이와의 구분자다.** 라벨 안에 또 있으면 「ChatGPT Learn ·
+    Prompting · 11일 전 확인」처럼 어디까지가 이름인지 안 읽힌다. 라벨 안의 구분은
+    「 — 」로 적는다. 낫표로 감싼 라벨은 표기 실수다 — 화면이 이미 링크로 갈라 보인다.
+  */
+  it('출처 라벨에 「 · 」가 없고 낫표로 시작하지 않는다', () => {
+    const bad = playbookClaims.filter(
+      (c) => c.source.label.includes(' · ') || c.source.label.startsWith('「'),
+    );
+    expect(bad.map((c) => `${c.id}: ${c.source.label}`)).toEqual([]);
+  });
+
+  /*
+    **팁은 한다체 행동문이다.** 혼자만 명령형인 「~마라」와, 예시를 늘어놓다 끊긴
+    「~처럼.」 조각과, 명사문(「A가 아니라 B다.」)은 목록에서 튄다. 예시는 괄호로
+    닫는다 — 「(예: 「…」)」.
+
+    **「마라」는 끝맺음만 보지 않는다.** 이 검사를 만든 계기였던 옛 문장은 「…갈아타지
+    마라 — 그게 더 비싸다.」로 「마라」가 줄표 앞에 있었고, 옛 데이터에 「마라.」로
+    끝나는 문장은 한 건도 없었다 — 끝맺음만 보던 식은 한 번도 빨간 줄을 못 세웠다.
+    낫표 안은 모델에게 하는 말이라 명령형이 정상이므로(「…추측하지 말고 표시하라」)
+    걷어 내고 본다.
+
+    **명사문은 받침으로 가른다.** 한다체 현재형은 「한다」·「둔다」·「넣는다」처럼
+    「다」 앞 음절에 언제나 ㄴ 받침이 있고, 명사문(「`/rewind`다.」·「거칠 때다.」·
+    「결과물이다.」)과 과거형(「했다.」)에는 없다. 행동문 뒤에 이유를 줄표로 붙여
+    형용사로 끝나는 줄만 예외 목록에 그 끝말을 적는다.
+  */
+  it('팁 문장이 한다체 행동문으로 끝난다', () => {
+    const ADJECTIVE_ENDINGS: Record<string, string> = { 'claude-code-tip-05': '비싸다' };
+    const hasNieun = (ch: string) => {
+      const code = ch.charCodeAt(0) - 0xac00;
+      return code >= 0 && code < 11172 && code % 28 === 4;
+    };
+    const bad = playbookClaims
+      .filter((c) => c.topic === 'habit')
+      .filter((c) => {
+        const text = c.statement.replace(/「[^」]*」/g, '「」');
+        if (/마라(?=[.\s—,]|$)/.test(text) || /처럼\.$/.test(text)) return true;
+        const body = text.replace(/\.$/, '').replace(/\([^()]*\)$/, '');
+        const last = /(.)다$/.exec(body);
+        if (!last) return true;
+        if (hasNieun(last[1])) return false;
+        const allowed = ADJECTIVE_ENDINGS[c.id];
+        return !(allowed && body.endsWith(allowed));
+      });
+    expect(bad.map((c) => `${c.id}: …${c.statement.slice(-16)}`)).toEqual([]);
+  });
+
+  /*
+    **같은 것을 한 화면에서 한 이름으로 부른다.** 「프리픽스」와 「접두사」, 「문맥」과
+    「컨텍스트」, 「클로드」와 「Claude」가 한 목록에 섞여 있었고, 「세션을 새로 판다」는
+    「판다(팔다)」로 먼저 읽혔다. 문장과 이유 둘 다 본다.
+
+    **「새로 파다」는 동사 활용만 잡는다.** 「새로 파」·「새로 판」으로 두면 「새로 파일을
+    만든다」·「새로 판단한다」가 걸린다 — 뜻이 멀쩡한 문장을 막는 검사는 곧 지워진다.
+  */
+  it('주장 문구가 한 용어로 부른다', () => {
+    const banned = /프리픽스|문맥|클로드|새로 (판(다|\s|$)|파[고나는서면며지])/;
+    const bad = playbookClaims.filter(
+      (c) => banned.test(c.statement) || banned.test(c.detail ?? ''),
+    );
+    expect(bad.map((c) => `${c.id}: ${(c.statement.match(banned) ?? c.detail?.match(banned))?.[0]}`)).toEqual([]);
+  });
+
+  /*
+    **모델 쓰임은 「~에」로 끝난다.** 표의 둘째 줄에 한 꼴로 서므로 「~에 쓴다」·
+    「~할 때」·「~기본값」이 섞이면 메모 더미로 읽힌다. 덧붙일 말은 괄호로 뒤에 단다
+    — 「지연과 비용을 가장 낮춰야 하는 일에(확장 사고 지원)」.
+  */
+  it('모델 쓰임이 「~에」로 끝난다', () => {
+    const bad = guideModels
+      .filter((m) => m.useWhen)
+      .filter((m) => !/에(\(.+\))?$/.test(m.useWhen!.text));
+    expect(bad.map((m) => `${m.id}: ${m.useWhen!.text}`)).toEqual([]);
+  });
 });

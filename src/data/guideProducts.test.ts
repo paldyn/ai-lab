@@ -108,4 +108,27 @@ describe('AI 가이드 — 기업과 제품', () => {
     const bad = guideProducts.filter((p) => p.apiTips && !p.surfaces.includes('SDK'));
     expect(bad.map((p) => `${p.id} — ${p.surfaces.join('·')}`)).toEqual([]);
   });
+
+  /*
+    **소개 한 줄은 그 제품이 하는 일이다.** 「기본 자리」·「나란히 선다」 같은 레일
+    배치 이야기, 「표면」 같은 작업 용어, 「가장 많이 쓰는」 같은 출처 없는 판단,
+    「돌리다」·「굴리다」 같은 구어가 한 번씩 들어가 있었다(2026-09-28). 회사 이름은
+    레일 머리글과 검색 설명이 지므로 넣지 않는다 — Gemini app의 「Google 앱」만은
+    제품이 하는 일 자체라 예외다. 공식 소개가 「You can choose which Google apps to
+    connect」로 적는 그 말이고, 앱 이름도 그 페이지가 드는 것(Gmail·Photos·Search·
+    YouTube)에서만 고른다.
+
+    구어는 활용형까지 본다 — 「돌려」·「돈다」·「굴려」도 같은 말이다. 「되돌리다」와
+    「정도는」은 다른 말이라 뒤보기로 뺀다.
+  */
+  it('oneLine에 작업 말투와 회사 이름이 없다', () => {
+    const allowed: Record<string, string[]> = { 'gemini-app': ['Google 앱'] };
+    const banned =
+      /자리|표면|가장 많이|(?<!되)돌[리려]|돈다|(?<!정)도는|굴[리려]|Anthropic|OpenAI|Google|앤트로픽|오픈AI|구글/;
+    const bad = guideProducts.filter((p) => {
+      const text = (allowed[p.id] ?? []).reduce((t, ok) => t.replaceAll(ok, ''), p.oneLine);
+      return banned.test(text);
+    });
+    expect(bad.map((p) => `${p.id}: ${p.oneLine}`)).toEqual([]);
+  });
 });

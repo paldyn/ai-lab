@@ -68,7 +68,7 @@ export const guideProducts: Product[] = [
       조건부이기도 합니다 — 같은 페이지가 Free 요금제엔 Fable 5가 없고 조직이 막을
       수 있다고 적습니다. 요금제로 갈리는 값이라 나중에 주장으로 세울 자리입니다.
     */
-    oneLine: '파일과 앱에 붙어 도는 챗 앱. 이 회사 제품의 기본 자리다.',
+    oneLine: '파일을 다루고 다른 앱을 연결해 대화하는 채팅 앱.',
     officialUrl: 'https://claude.com/download',
     docsUrl: 'https://claude.com/pricing',
     logo: 'assets/claude.svg',
@@ -94,7 +94,7 @@ export const guideProducts: Product[] = [
       그 모델을 **지원한다**는 문장이지 고를 수 있다는 문장이 아닙니다. 지어내
       채우는 대신 비워 두고, 화면에서는 이 절이 아예 안 섭니다.
     */
-    oneLine: '대화가 아니라 일을 통째로 맡기는 자리. 챗 옆에 나란히 선다.',
+    oneLine: '대화 대신 일을 통째로 맡기는 업무 도구.',
     officialUrl: 'https://claude.com/product/cowork',
     docsUrl: null,
     logo: 'assets/claude.svg',
@@ -129,7 +129,7 @@ export const guideProducts: Product[] = [
       「Sonnet 5 (1M context)」도 피커 행으로 있으나 Sonnet 5의 컨텍스트 변형이지
       다른 모델이 아니라 따로 안 셉니다.
     */
-    oneLine: '저장소를 읽고 고치고 명령까지 돌리는 코딩 에이전트.',
+    oneLine: '저장소를 읽고 고치고 명령까지 실행하는 코딩 에이전트.',
     officialUrl: 'https://code.claude.com/docs/en/overview',
     docsUrl: 'https://code.claude.com/docs',
     logo: 'assets/claude-code.svg',
@@ -145,7 +145,7 @@ export const guideProducts: Product[] = [
     role: '챗',
     surfaces: ['웹', '데스크톱', '모바일'],
     models: [],
-    oneLine: '가장 많이 쓰는 챗 앱. 챗·업무·코딩을 한 화면에 모아 두었다.',
+    oneLine: '대화·업무·코딩을 한 앱에 모아 둔 채팅 앱.',
     officialUrl: 'https://chatgpt.com/overview',
     docsUrl: 'https://openai.com/chatgpt/pricing/',
     logo: 'assets/openai.svg',
@@ -174,7 +174,7 @@ export const guideProducts: Product[] = [
       ChatGPT web이 true인데 은퇴일로 걸러 뺐습니다 — 페이지가 말한 사실이 아니라
       우리가 내린 판단이라 여기 적어 둡니다. 되살릴지 말지는 다시 훑을 때 정합니다.
     */
-    oneLine: '목표를 넘기면 계획을 세우고 실행까지 하는 업무 표면.',
+    oneLine: '목표를 넘기면 계획을 세우고 실행까지 하는 업무 에이전트.',
     officialUrl: 'https://learn.chatgpt.com/docs/get-started-with-work',
     docsUrl: null,
     logo: 'assets/openai.svg',
@@ -206,7 +206,7 @@ export const guideProducts: Product[] = [
       Codex cloud는 다릅니다 — 거기서 true인 것은 Sol 하나입니다. 표면마다 갈리는
       값이라 여기 안 적고 주장으로 세울 자리입니다.
     */
-    oneLine: '같은 코딩 에이전트가 앱·IDE·터미널·클라우드 넷에 함께 선다.',
+    oneLine: '코드를 읽고 고치고 리뷰까지 맡는 코딩 에이전트.',
     officialUrl: 'https://chatgpt.com/codex',
     docsUrl: 'https://learn.chatgpt.com/docs/codex/cli',
     /*
@@ -255,8 +255,7 @@ export const guideProducts: Product[] = [
       Flash」·「Gemini 3.1 Pro」로 적지만 **원문이 그 둘을 잇지 않습니다** — 번호를
       끌어다 붙인 것이 지난 회차에 걸린 자리라 선택기 표기 그대로 둡니다.
     */
-    oneLine:
-      '구글 계정과 붙어 있는 챗 앱. 모델 계열 이름과 제품 이름이 다르다.',
+    oneLine: 'Gmail·포토 같은 Google 앱을 골라 연결해 쓰는 채팅 앱.',
     officialUrl: 'https://gemini.google/about/',
     docsUrl: 'https://gemini.google/subscriptions/',
     logo: 'assets/gemini-color.png',
@@ -290,7 +289,7 @@ export const guideProducts: Product[] = [
       표에 따르면 Claude 둘과 GPT-OSS는 Enterprise에서 ❌입니다 — 요금제로 갈리는
       값이라 여기 안 적고, 주장으로 세울 자리입니다.
     */
-    oneLine: '여러 에이전트를 한자리에서 굴리는 개발 플랫폼.',
+    oneLine: '여러 에이전트를 한 작업 공간에서 다루는 개발 플랫폼.',
     officialUrl: 'https://antigravity.google/',
     docsUrl: null,
     // Gemini API의 managed agents를 다루는 제품이라 API 팁이 여기에 섭니다.
@@ -320,7 +319,7 @@ export const guideProducts: Product[] = [
       Manual 셋입니다 — 이 셋은 「이 CLI가 돌리는 모델」이지 「메뉴에 뜨는 이름」이
       아닙니다. 그 구별이 중요해지면 다시 봅니다.
     */
-    oneLine: '터미널에서 도는 오픈소스 코딩 에이전트.',
+    oneLine: '터미널에서 쓰는 오픈소스 코딩 에이전트.',
     officialUrl: 'https://github.com/google-gemini/gemini-cli',
     docsUrl: null,
     logo: 'assets/gemini-color.png',

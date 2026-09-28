@@ -100,7 +100,7 @@ const models: ModelInfo[] = [
     mark: { file: 'assets/model-haiku.svg', plate: '#BCD1CA' },
     apiId: 'claude-haiku-4-5',
     useWhen: {
-      text: '가장 낮은 지연과 값이 필요할 때 — 확장 사고를 쓰면서',
+      text: '지연과 비용을 가장 낮춰야 하는 일에(확장 사고 지원)',
       url: 'https://platform.claude.com/docs/en/about-claude/models/choosing-a-model',
     },
     current: true,
@@ -114,7 +114,7 @@ const models: ModelInfo[] = [
     mark: { file: 'assets/model-sonnet.svg', plate: '#F0EEE6' },
     apiId: 'claude-sonnet-5',
     useWhen: {
-      text: '매일 하는 코딩·에이전트·업무에 속도와 성능을 함께',
+      text: '속도와 성능이 함께 필요한 일상의 코딩·에이전트·기업 업무에',
       url: 'https://platform.claude.com/docs/en/about-claude/models/choosing-a-model',
     },
     current: true,
@@ -153,7 +153,7 @@ const models: ModelInfo[] = [
     name: 'GPT-6 Astra',
     apiId: 'gpt-6-astra',
     useWhen: {
-      text: '복잡한 추론·코딩에 쓰는 기본값',
+      text: '복잡한 추론·코딩에(대표 모델)',
       url: 'https://developers.openai.com/api/docs/models',
     },
     current: true,
@@ -165,7 +165,7 @@ const models: ModelInfo[] = [
     name: 'GPT-5.6 Sol',
     apiId: 'gpt-5.6-sol',
     useWhen: {
-      text: '복잡한 코드 변경·심층 조사처럼 판단과 다듬기가 필요할 때',
+      text: '판단과 다듬기가 필요한 복잡한 코드 변경·심층 조사에',
       url: 'https://learn.chatgpt.com/codex/models',
     },
     current: true,
@@ -177,7 +177,7 @@ const models: ModelInfo[] = [
     name: 'GPT-5.6 Terra',
     apiId: 'gpt-5.6-terra',
     useWhen: {
-      text: 'Sol만큼 깊지 않아도 되는 일상 작업에',
+      text: 'GPT-5.6 Sol만큼 깊지 않아도 되는 일상 작업에',
       url: 'https://learn.chatgpt.com/codex/models',
     },
     current: true,
@@ -227,7 +227,7 @@ const models: ModelInfo[] = [
     name: 'GPT-OSS 120B',
     apiId: null,
     useWhen: {
-      text: '자유롭게 고쳐 쓰고 상업 배포까지 할 때',
+      text: '자유롭게 고쳐 쓰고 상업적으로 배포할 일에',
       url: 'https://developers.openai.com/api/docs/models/gpt-oss-120b',
     },
     current: true,
@@ -248,7 +248,7 @@ const models: ModelInfo[] = [
     name: 'Gemini Pro',
     apiId: null,
     useWhen: {
-      text: '복잡한 수학·코딩 프롬프트에 쓴다',
+      text: '복잡한 수학·코딩 프롬프트에',
       url: 'https://support.google.com/gemini/answer/13275745',
     },
     current: true,
@@ -260,7 +260,7 @@ const models: ModelInfo[] = [
     name: 'Gemini Flash',
     apiId: null,
     useWhen: {
-      text: '간단한 것부터 복잡한 것까지 두루 쓴다',
+      text: '간단한 일부터 복잡한 일까지 폭넓은 작업에',
       url: 'https://support.google.com/gemini/answer/13275745',
     },
     current: true,
@@ -272,7 +272,7 @@ const models: ModelInfo[] = [
     name: 'Gemini Flash-Lite',
     apiId: null,
     useWhen: {
-      text: '요약·브레인스토밍 같은 매일 하는 일에 쓴다',
+      text: '요약·브레인스토밍 같은 매일 하는 일에',
       url: 'https://support.google.com/gemini/answer/13275745',
     },
     current: true,
