@@ -7427,19 +7427,6 @@ input:focus-visible {
   white-space: nowrap;
 }
 
-/*
-  **0이면 아예 안 그린다**(`GuideRail.tsx`가 안 그린다). 처음 그린 레일이 열세 줄
-  전부에 「0편」을 달아 왼쪽에 영의 기둥이 섰다 — 원장에서 빈 절을 안 세우기로 한
-  규칙을 레일이 어긴 자리였다. 지금은 차오르는 줄만 저절로 수를 단다.
-*/
-.guide-rail-count {
-  margin-left: auto;
-  color: var(--text-muted);
-  font-family: var(--font-mono);
-  font-size: var(--gs-mono);
-  font-variant-numeric: tabular-nums;
-}
-
 .guide-rail-mark {
   display: inline-flex;
   width: 14px;
