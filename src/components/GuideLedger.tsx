@@ -83,20 +83,49 @@ export function withCode(text: string): ReactNode[] {
 /* ── 팁 ─────────────────────────────────────────────────────────── */
 
 /**
- * 팁 한 편 — 하라는 것, 왜, 어디서.
+ * 출처 라벨을 첫 「 — 」에서 발행처와 문서 이름으로 가릅니다. **보이는 글자는 라벨
+ * 그대로입니다** — 발행처만 남기면 한 탭에서 「Claude Code Docs」가 여덟 번 서는데
+ * 가는 페이지는 셋이라 어느 문서인지 안 갈립니다. 가르는 것은 줄바꿈 자리를 정하려는
+ * 것뿐입니다(발행처는 가운데서 안 끊깁니다).
+ */
+function SourceLabel({ label }: { label: string }) {
+  const at = label.indexOf(' — ');
+  if (at < 0) return <span className="gl-src-pub">{label}</span>;
+  return (
+    <>
+      <span className="gl-src-pub">{label.slice(0, at)}</span>
+      {' — '}
+      <span className="gl-src-page">{label.slice(at + 3)}</span>
+    </>
+  );
+}
+
+/**
+ * 팁 한 편 — **한 행**이고, 행 사이는 헤어라인입니다(2026-09-28).
  *
- * **나이를 안 답니다.** 팁은 `concept`라 유효기간이 없고, 정확히 시키기 축은 확인 로그가
- * 하나도 없어 한 축에만 「11일 전 확인」이 스무 번 되풀이되는 비대칭이 생겼습니다.
- * 나이는 늙는 것, 곧 모델 표와 요금 목록의 값에만 섭니다.
+ * 「가독성이 안 좋다」의 원인은 글의 양이 아니라 **팁의 시작과 끝을 알리는 표시가 없는
+ * 것**이었습니다. 팁 안 간격과 팁 사이 간격이 1.5배밖에 안 벌어져 여백만으로는 안
+ * 갈렸고, 팁을 끊는 일을 12px 출처 줄이 떠맡아 그 줄이 아홉 번 서며 줄무늬가 됐습니다.
+ * 이제 경계는 선이 맡고, 크기와 색은 행 안의 위계(행동 > 이유 > 출처)만 맡습니다.
+ *
+ * **출처는 제 줄이 아니라 이유 끝의 꼬리입니다.** 팁마다 한 줄이 줄고 밑줄 줄무늬가
+ * 사라집니다. 라벨은 통째로 보입니다(터치에서도 어느 문서인지 알 수 있어야 합니다).
+ *
+ * **나이를 안 답니다.** 팁은 `concept`라 유효기간이 없습니다. 나이는 늙는 것, 곧 모델
+ * 표와 요금 목록의 값에만 섭니다.
  */
 function TipItem({ claim }: { claim: Claim }) {
   return (
     <li className="gl-tip" id={`tip-${claim.id}`}>
       <p className="gl-tip-do">{withCode(claim.statement)}</p>
-      {claim.detail && <p className="gl-tip-why">{withCode(claim.detail)}</p>}
-      <p className="gl-tip-src">
-        <a href={claim.source.url} target="_blank" rel="noreferrer">
-          {claim.source.label}
+      <p className="gl-tip-why">
+        {claim.detail && (
+          <>
+            {withCode(claim.detail)}{' '}
+          </>
+        )}
+        <a className="gl-tip-src" href={claim.source.url} target="_blank" rel="noreferrer">
+          <SourceLabel label={claim.source.label} />
           <ArrowUpRight size={12} aria-hidden="true" />
         </a>
       </p>
@@ -126,10 +155,10 @@ function groupTips(aim: TipAim, tips: Claim[]) {
 /**
  * 팁 탭 하나의 내용 — 순간마다 팁 목록.
  *
- * **순간 라벨은 팁보다 작고 흐립니다**(14.5/600). 헤딩이 팁보다 크면 「라벨 — 팁 하나 —
- * 라벨 — 팁 하나」가 목차처럼 번갈아 서서 팁이 라벨의 각주로 읽힙니다. 탭 안의 가장
- * 높은 층이라 `h2`이지만 크기는 라벨입니다. **순간이 하나뿐이면 라벨을 안 세웁니다** —
- * 목록 하나 위에 이름을 붙이면 탭 이름을 한 번 더 말하는 것입니다.
+ * **순간 라벨은 팁보다 작지만 진하고, 아래에 선을 답니다**(14.5/600). 헤딩이 팁보다
+ * 크면 「라벨 — 팁 하나」가 목차처럼 번갈아 서고, 흐리면(옛 모양) 이유 문단과 같아 보여
+ * 무리가 바뀌는 자리가 안 보였습니다. 제품 이름(`h2`) 아래 층이라 `h3`입니다.
+ * **순간이 하나뿐이면 라벨을 안 세웁니다** — 탭 이름을 한 번 더 말하는 것입니다.
  */
 function TipGroups({ aim, groups }: { aim: TipAim; groups: ReturnType<typeof groupTips> }) {
   if (groups.length === 1) {
@@ -145,9 +174,9 @@ function TipGroups({ aim, groups }: { aim: TipAim; groups: ReturnType<typeof gro
     <>
       {groups.map(({ group, rows }) => (
         <div key={group.id} className="gl-situation-block">
-          <h2 className="gl-situation" id={`${aim}-${group.id}`}>
+          <h3 className="gl-situation" id={`${aim}-${group.id}`}>
             {group.situation}
-          </h2>
+          </h3>
           <ul className="gl-tips">
             {rows.map((claim) => (
               <TipItem key={claim.id} claim={claim} />
@@ -651,7 +680,7 @@ export function GuideLedger({
               <>
                 {models.length > 0 && (
                   <>
-                    {both && <h2 className="gl-facts-sub">고를 수 있는 모델</h2>}
+                    {both && <h3 className="gl-facts-sub">고를 수 있는 모델</h3>}
                     <ModelTable
                       product={product}
                       models={models}
@@ -663,7 +692,7 @@ export function GuideLedger({
                 )}
                 {plans.length > 0 && (
                   <>
-                    {both && <h2 className="gl-facts-sub">요금제와 사용 한도</h2>}
+                    {both && <h3 className="gl-facts-sub">요금제와 사용 한도</h3>}
                     <PlanList claims={plans} today={today} />
                   </>
                 )}

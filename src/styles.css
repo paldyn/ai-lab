@@ -7272,7 +7272,7 @@ input:focus-visible {
 
   --gl-r1: 6px; /* 한 덩이 안 — 팁의 세 줄 사이 */
   --gl-r2: 12px; /* 이름 → 그 내용 */
-  --gl-r3: 24px; /* 팁 → 팁 */
+  --gl-r3: 24px; /* 탭 줄 → 내용 · 캡션 위 */
   --gl-r4: 48px; /* 순간 → 순간 */
   --gl-sect: 72px; /* 절 → 절. 집의 `.section-space`와 같은 값이다 */
 
@@ -7781,60 +7781,108 @@ input:focus-visible {
 }
 
 /*
-  **순간 라벨은 팁 문장보다 작고 흐리다.** 헤딩이 팁보다 크면 라벨과 팁이 번갈아 서며
-  목차처럼 읽힌다. 무게(600)와 위 48px 여백이 이것을 무리의 머리로 세운다.
+  **순간 머리: 작지만 진하고, 아래에 선을 단다**(2026-09-28). 흐리게 두던 동안 이유 문단과
+  모양이 같아 무리가 바뀌는 자리가 안 보였다. 크기는 팁 문장(16)보다 작은 14.5로 둔다 —
+  헤딩이 팁보다 크면 「라벨 — 팁 하나」가 목차처럼 번갈아 선다. 자격증 상세의 무리 머리
+  (`.cert-group-title`)와 같은 말씨다.
+
+  `scroll-margin-top`은 붙박이 머리(71) + 붙박이 탭 줄(61) + 12다. 96이던 동안 앵커가
+  탭 줄 밑에 가려졌다.
 */
 .gl-situation {
-  scroll-margin-top: 96px;
-  color: var(--text-dim);
+  scroll-margin-top: calc(71px + 61px + var(--gl-r2));
+  padding-bottom: var(--gl-r2);
+  border-bottom: 1px solid var(--text-muted);
+  color: var(--text-strong);
   font-size: var(--gl-note);
   font-weight: 600;
   line-height: 1.5;
 }
 
-.gl-situation + .gl-tips {
-  margin-top: var(--gl-r2);
-}
-
 /* ── 팁 ── */
 
+/*
+  **팁 한 편이 한 행이고, 행 사이는 헤어라인이다**(2026-09-28). 학습 목록(`.article-row`)·
+  뉴스(`.news-feed-row`)·자격증(`.cert-row`)과 같은 모양이다. 전에는 팁 사이를 24px 여백만이
+  갈랐는데 팁 안 간격과 1.5배밖에 안 벌어져 글 벽으로 읽혔다. 선은 `--guide-rule`이다 —
+  `--border`는 다크에서 1.21:1이라 안 보인다.
+*/
 .gl-tips {
-  display: grid;
-  gap: var(--gl-r3);
   margin: 0;
   padding: 0;
   list-style: none;
 }
 
 .gl-tip {
-  scroll-margin-top: 96px;
+  padding-block: var(--gl-r2);
+  scroll-margin-top: calc(71px + 61px + var(--gl-r2));
 }
 
+.gl-tip + .gl-tip {
+  border-top: 1px solid var(--guide-rule);
+}
+
+/* 라벨 없는 탭은 탭 줄 아래 24px에서 바로 시작한다. */
+.gl-panel > .gl-tips > .gl-tip:first-child {
+  padding-top: 0;
+}
+
+/* 행 안의 위계: 행동 > 이유 > 출처 꼬리. 사이트의 「제목 strong 500 + 요약 text-dim」 짝이다. */
 .gl-tip-do {
   color: var(--text-strong);
   font-size: var(--gl-body);
   font-weight: 500;
-  line-height: 1.65;
+  line-height: 1.6;
 }
 
+/* `--prose-text`에서 `--text-dim`으로 내렸다 — 두 테마 모두 AA(5.74 / 7.37:1)다. */
 .gl-tip-why {
   margin-top: var(--gl-r1);
-  color: var(--prose-text);
+  color: var(--text-dim);
   font-size: var(--gl-note);
-  line-height: 1.8;
-}
-
-.gl-tip-src {
-  margin-top: var(--gl-r1);
-  font-size: var(--gl-meta);
-  line-height: 1.5;
+  line-height: 1.7;
 }
 
 /*
-  출처 링크 셋(팁 · 요금 줄 · 캡션)은 한 모양이다 — 흐린 글자에 밑줄, 새 창 화살표.
-  누르는 높이를 위아래로 10px씩 넓힌다(12px 글자는 손가락에 안 맞는다).
+  **출처는 이유 끝에 붙는 꼬리다.** 제 줄을 없애 팁마다 한 줄이 줄고, 밑줄 줄무늬가
+  사라진다. 인라인이라 긴 라벨도 좁은 화면에서 넘치지 않고 감기며, 발행처는 가운데서
+  안 끊긴다(`.gl-src-pub`). 누르는 면은 위아래로 넓힌다(줄 높이는 그대로다).
 */
-.gl-tip-src a,
+.gl-tip-src {
+  margin-left: var(--gl-r1);
+  padding-block: 10px;
+  color: var(--text-muted);
+  font-size: var(--gl-meta);
+  text-decoration: underline;
+  text-decoration-color: var(--guide-rule);
+  text-underline-offset: 3px;
+}
+
+.gl-tip-src:hover {
+  color: var(--brand-text);
+  text-decoration-color: currentColor;
+}
+
+.gl-src-pub {
+  white-space: nowrap;
+}
+
+.gl-tip-src svg {
+  display: inline;
+  margin-left: 2px;
+  vertical-align: -1px;
+}
+
+@media print {
+  .gl-tip {
+    break-inside: avoid;
+  }
+}
+
+/*
+  요금 줄과 캡션의 출처 링크는 제 줄에 선다 — 흐린 글자에 밑줄, 새 창 화살표. 밑줄은
+  팁 꼬리와 같은 `--guide-rule`이다. 누르는 높이를 위아래로 10px씩 넓힌다.
+*/
 .gl-plan-meta a,
 .gl-caption a {
   display: inline-flex;
@@ -7844,11 +7892,10 @@ input:focus-visible {
   margin-block: -10px;
   color: var(--text-muted);
   text-decoration: underline;
-  text-decoration-color: var(--text-muted);
+  text-decoration-color: var(--guide-rule);
   text-underline-offset: 3px;
 }
 
-.gl-tip-src a:hover,
 .gl-plan-meta a:hover,
 .gl-caption a:hover {
   color: var(--brand-text);
@@ -7869,6 +7916,29 @@ input:focus-visible {
   background: var(--bg-subtle);
   font-family: var(--font-mono);
   font-size: 0.92em;
+}
+
+/*
+  **행동 문장의 코드는 테두리 있는 판, 이유 안의 코드는 글자꼴만.** 이유 줄에 판이 여럿
+  서면 얼룩이 된다. 판 색(`--bg-subtle`)은 배경과 1.04:1이라 테두리가 없으면 다크에서
+  판이 안 보인다. 크기 0.92em(광학 보정)은 둘 다 그대로다.
+*/
+.gl-tip-do .guide-tip-code {
+  border: 1px solid var(--guide-rule);
+  padding: 0.06em 0.25em;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+}
+
+.gl-tip-why .guide-tip-code {
+  padding: 0;
+  background: none;
+  color: inherit;
+}
+
+/* 키캡 모양은 이유 안에서도 둔다 — 치는 것과 누르는 것의 구별은 거기서도 필요하다. */
+.gl-tip-why .gl-kbd {
+  color: inherit;
 }
 
 /* 키 조합은 누르는 것이라 `<kbd>` 판으로 선다. 아래 테두리를 두껍게 해 키캡으로 읽힌다. */
