@@ -96,15 +96,15 @@ describe('프리렌더 — 본문이 HTML에 들어간다', () => {
 
   /*
     **원장은 가이드의 열 주소에서 한 번도 안 빕니다.** 첫 주소도 제품 아홉도 전부 제품
-    화면을 그리므로 절(`gl-read`)이 하나라도 서는지 봅니다 — 제목 하나만 찾으면 제품
-    화면이 통째로 비어도 통과합니다.
+    화면을 그리므로 탭 내용(`gl-panel`)이 하나라도 서는지 봅니다 — 제목 하나만 찾으면
+    제품 화면이 통째로 비어도 통과합니다.
   */
   it('원장이 어느 주소에서도 안 빈다', async () => {
     const routes = ['/playbook', ...guideProducts.map((p) => `/playbook/${p.vendorId}/${p.id}`)];
     const empty: string[] = [];
     for (const route of routes) {
       const { html } = await render(route);
-      if (classCount(html, 'gl-title') !== 1 || classCount(ledgerOf(html), 'gl-read') === 0) {
+      if (classCount(html, 'gl-title') !== 1 || classCount(ledgerOf(html), 'gl-panel') === 0) {
         empty.push(route);
       }
     }
@@ -160,12 +160,15 @@ describe('프리렌더 — 본문이 HTML에 들어간다', () => {
   });
 
   /*
-    **절·순간 라벨·표의 줄이 데이터대로 서는가.** 빈 절을 안 그리는 규칙(팁이 없는 축,
-    모델도 요금도 없는 참고 절, 같은 갈래가 없는 다른 제품)과 **순간이 하나뿐이면 라벨을
-    안 세우는** 규칙을 제품마다 데이터에서 세어 봅니다. 모델 0인 제품, 팁 한 편인
-    제품이 섞여 있어 고정 수로는 못 잽니다.
+    **탭·순간 라벨·표의 줄이 데이터대로 서는가.** 빈 탭을 안 세우는 규칙(팁이 없는 축,
+    모델도 요금도 없는 참고 탭)과 같은 갈래가 없으면 다른 제품 절이 안 서는 규칙, 그리고
+    **순간이 하나뿐이면 라벨을 안 세우는** 규칙을 제품마다 데이터에서 세어 봅니다. 모델
+    0인 제품, 팁 한 편인 제품이 섞여 있어 고정 수로는 못 잽니다.
+
+    **탭은 하나만 열려 있고 나머지 내용도 HTML에 다 실립니다**(`hidden`). 첫 탭이
+    열려 있어야 서버와 클라이언트의 첫 그림이 같습니다.
   */
-  it('절·순간·표의 줄이 데이터대로 선다', async () => {
+  it('탭·순간·표의 줄이 데이터대로 선다', async () => {
     const wrong: string[] = [];
     for (const product of guideProducts) {
       const ledger = ledgerOf((await render(`/playbook/${product.vendorId}/${product.id}`)).html);
@@ -182,17 +185,23 @@ describe('프리렌더 — 본문이 HTML에 들어간다', () => {
         (aim) => tipGroupsOf(aim).filter((g) => tips.some((c) => c.aim === aim && c.group === g.id)).length,
       );
       const peers = guideProducts.filter((p) => p.role === product.role && p.id !== product.id);
+      const panels =
+        groupsPerAim.filter((n) => n > 0).length + (models.length > 0 || plans.length > 0 ? 1 : 0);
       const expected = {
-        read:
-          groupsPerAim.filter((n) => n > 0).length +
-          (models.length > 0 || plans.length > 0 ? 1 : 0) +
-          (peers.length > 0 ? 1 : 0),
+        tab: panels,
+        panel: panels,
+        open: panels > 0 ? 1 : 0,
+        peers: peers.length > 0 ? 1 : 0,
         situation: groupsPerAim.reduce((sum, n) => sum + (n >= 2 ? n : 0), 0),
         model: models.length,
         plan: plans.length,
       };
+      const panelTags = [...ledger.matchAll(/<section[^>]*class="gl-panel"[^>]*>/g)].map((m) => m[0]);
       const got = {
-        read: classCount(ledger, 'gl-read'),
+        tab: classCount(ledger, 'gl-tab'),
+        panel: panelTags.length,
+        open: panelTags.filter((tag) => !/\shidden(=|\s|>)/.test(tag)).length,
+        peers: classCount(ledger, 'gl-peers-sect'),
         situation: classCount(ledger, 'gl-situation'),
         model: classCount(ledger, 'gl-model'),
         plan: classCount(ledger, 'gl-plan'),

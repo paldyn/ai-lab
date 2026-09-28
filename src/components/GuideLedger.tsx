@@ -1,6 +1,13 @@
-import { Fragment, type CSSProperties, type ReactNode } from 'react';
+import {
+  Fragment,
+  useLayoutEffect,
+  useRef,
+  type CSSProperties,
+  type KeyboardEvent,
+  type ReactNode,
+} from 'react';
 import { Link } from 'react-router';
-import { ArrowDown, ArrowUpRight } from 'lucide-react';
+import { ArrowUpRight } from 'lucide-react';
 import { PlanRow, ageText } from './ClaimRow';
 import { GuideMark } from './GuideMark';
 import {
@@ -102,55 +109,53 @@ function TipItem({ claim }: { claim: Claim }) {
  *
  * **리드를 안 답니다.** 「같은 결과를 더 싸게 얻는 방법입니다」 같은 합니다체 설명이
  * 한다체 팁 위에 끼어 말투가 부딪혔고, 「~법」 제목 아래 「~방법입니다」가 같은 말을
- * 두 번 했습니다. 제목 둘이 동사로 갈리면(아끼다 / 시키다) 설명 없이 갈립니다.
+ * 두 번 했습니다. 이름 둘이 동사로 갈리면(아끼다 / 시키다) 설명 없이 갈립니다.
  */
 const READ_AIMS: Array<{ aim: TipAim; title: string }> = [
   { aim: 'save', title: '아껴 쓰기' },
   { aim: 'well', title: '정확히 시키기' },
 ];
 
-/**
- * 팁 절 하나 — h2와 수, 그 아래 순간마다 팁 목록.
- *
- * **순간 라벨은 팁보다 작고 흐립니다**(14.5/600). 헤딩이 팁보다 크면 「라벨 — 팁 하나 —
- * 라벨 — 팁 하나」가 목차처럼 번갈아 서서 팁이 라벨의 각주로 읽힙니다.
- * **순간이 하나뿐이면 라벨을 안 세웁니다** — 목록 하나 위에 이름을 붙이면 h2를 한 번 더
- * 말하는 것입니다.
- */
-function ReadSection({ aim, title, tips }: { aim: TipAim; title: string; tips: Claim[] }) {
-  const groups = tipGroupsOf(aim)
+/** 그 축의 팁을 순간마다 묶습니다. 빈 순간은 안 만듭니다. */
+function groupTips(aim: TipAim, tips: Claim[]) {
+  return tipGroupsOf(aim)
     .map((group) => ({ group, rows: tips.filter((c) => c.group === group.id) }))
     .filter((g) => g.rows.length > 0);
-  if (groups.length === 0) return null;
-  const count = groups.reduce((n, g) => n + g.rows.length, 0);
+}
 
+/**
+ * 팁 탭 하나의 내용 — 순간마다 팁 목록.
+ *
+ * **순간 라벨은 팁보다 작고 흐립니다**(14.5/600). 헤딩이 팁보다 크면 「라벨 — 팁 하나 —
+ * 라벨 — 팁 하나」가 목차처럼 번갈아 서서 팁이 라벨의 각주로 읽힙니다. 탭 안의 가장
+ * 높은 층이라 `h2`이지만 크기는 라벨입니다. **순간이 하나뿐이면 라벨을 안 세웁니다** —
+ * 목록 하나 위에 이름을 붙이면 탭 이름을 한 번 더 말하는 것입니다.
+ */
+function TipGroups({ aim, groups }: { aim: TipAim; groups: ReturnType<typeof groupTips> }) {
+  if (groups.length === 1) {
+    return (
+      <ul className="gl-tips">
+        {groups[0].rows.map((claim) => (
+          <TipItem key={claim.id} claim={claim} />
+        ))}
+      </ul>
+    );
+  }
   return (
-    <section className="gl-read" id={aim} aria-labelledby={`${aim}-title`}>
-      <div className="gl-read-head">
-        <h2 id={`${aim}-title`}>{title}</h2>
-        <span className="gl-read-count">{count}개</span>
-      </div>
-      {groups.length === 1 ? (
-        <ul className="gl-tips">
-          {groups[0].rows.map((claim) => (
-            <TipItem key={claim.id} claim={claim} />
-          ))}
-        </ul>
-      ) : (
-        groups.map(({ group, rows }) => (
-          <div key={group.id} className="gl-situation-block">
-            <h3 className="gl-situation" id={`${aim}-${group.id}`}>
-              {group.situation}
-            </h3>
-            <ul className="gl-tips">
-              {rows.map((claim) => (
-                <TipItem key={claim.id} claim={claim} />
-              ))}
-            </ul>
-          </div>
-        ))
-      )}
-    </section>
+    <>
+      {groups.map(({ group, rows }) => (
+        <div key={group.id} className="gl-situation-block">
+          <h2 className="gl-situation" id={`${aim}-${group.id}`}>
+            {group.situation}
+          </h2>
+          <ul className="gl-tips">
+            {rows.map((claim) => (
+              <TipItem key={claim.id} claim={claim} />
+            ))}
+          </ul>
+        </div>
+      ))}
+    </>
   );
 }
 
@@ -471,7 +476,7 @@ function factsTitle(hasModels: boolean, hasPlans: boolean): string | null {
   return null;
 }
 
-function GuideHead({ product, facts }: { product: Product; facts: string | null }) {
+function GuideHead({ product }: { product: Product }) {
   return (
     <header className="gl-head">
       {/*
@@ -498,8 +503,19 @@ function GuideHead({ product, facts }: { product: Product; facts: string | null 
         </dl>
       )}
 
+      {/*
+        **공식 사이트는 제품 브랜드색으로 채웁니다**(2026-09-28). 무채색 테두리 단추가
+        화면에서 가장 조용한 것이라 이 화면의 첫 행동이 안 보였습니다. 글자는 `--bg`라
+        브랜드색(`-text` 토큰)과의 대비가 라이트·다크 모두 4.5:1을 넘습니다 —
+        `theme.test.ts`가 그 둘을 이미 잽니다. 둘째 단추는 같은 색의 옅은 테두리입니다.
+      */}
       <div className="gl-head-links">
-        <a className="gl-head-link" href={product.officialUrl} target="_blank" rel="noreferrer">
+        <a
+          className="gl-head-link is-primary"
+          href={product.officialUrl}
+          target="_blank"
+          rel="noreferrer"
+        >
           공식 사이트
           <ArrowUpRight size={14} aria-hidden="true" />
         </a>
@@ -507,26 +523,6 @@ function GuideHead({ product, facts }: { product: Product; facts: string | null 
           <a className="gl-head-link" href={product.docsUrl} target="_blank" rel="noreferrer">
             {product.docsLabel}
             <ArrowUpRight size={14} aria-hidden="true" />
-          </a>
-        )}
-        {facts && (
-          /*
-            **해시를 주소에 안 남깁니다.** `#facts`가 주소에 붙은 채 다른 제품으로 옮기면 해시가
-            빠지면서 `Layout`이 맨 위로 되감아, 새 제품 머리로 옮긴 스크롤을 덮었습니다
-            (좁은 화면에서는 레일로 떨어집니다). JS가 없으면 `href`가 그대로 일합니다.
-          */
-          <a
-            className="gl-head-jump"
-            href="#facts"
-            onClick={(event) => {
-              const target = document.getElementById('facts');
-              if (!target) return;
-              event.preventDefault();
-              target.scrollIntoView();
-            }}
-          >
-            {facts}
-            <ArrowDown size={14} aria-hidden="true" />
           </a>
         )}
       </div>
@@ -579,11 +575,40 @@ function PeersSection({ product }: { product: Product }) {
 
 /* ── 원장 ───────────────────────────────────────────────────────── */
 
+export type GuideTab = 'save' | 'well' | 'facts';
+
+/** 붙박이 nav 높이. 탭 줄이 여기에 붙어 따라옵니다(`.section-tabs`와 같은 값). */
+const STICKY_TOP = 71;
+
 /**
  * **원장에는 늘 제품이 옵니다**(2026-09-28). 첫 화면 원장도 기업 원장도 걷었습니다 —
  * `/playbook`과 기업 주소는 `PlaybookPage`가 제품 하나로 풀어서 넘깁니다.
+ *
+ * **머리 아래는 탭입니다**(2026-09-28, 같은 날 펼친 글에서 바꿨다). 아껴 쓰기 · 정확히
+ * 시키기 · 모델과 요금을 한 글로 이어 두니 Claude Code가 3,400px이었고, 모델 표를 보려면
+ * 팁 열셋을 지나야 했습니다. 탭은 **사이트의 칩 모양**이고(뉴스·학습의 `.filter-chip`),
+ * 밑줄 탭 띠는 이 사이트가 이미 되돌린 모양이라 안 씁니다.
+ *
+ * - **모든 탭의 내용이 HTML에 실립니다.** 안 고른 탭은 `hidden`일 뿐이라 프리렌더와
+ *   검색에는 전부 들어갑니다. 첫 탭이 기본이라 서버와 클라이언트의 첫 그림이 같습니다.
+ * - **고른 탭은 제품을 바꿔도 남습니다**(`PlaybookPage`가 들고 있습니다). 모델 표를
+ *   견주려고 레일을 오갈 때 매번 탭을 다시 누르지 않게 하려는 것입니다. 새 제품에 그
+ *   탭이 없으면(Claude에는 아껴 쓰기가 없습니다) 첫 탭이 섭니다.
+ * - **탭 줄은 머리 아래에 붙어 따라옵니다.** 그래서 긴 탭을 읽다가 옆 탭으로 바꾸면
+ *   새 탭의 첫머리로 옮깁니다 — 안 그러면 새 탭의 중간에 말없이 떨어집니다.
  */
-export function GuideLedger({ product, today }: { product: Product; today: string }) {
+export function GuideLedger({
+  product,
+  today,
+  tab,
+  onTab,
+}: {
+  product: Product;
+  today: string;
+  /** 고른 탭. 이 제품에 없거나 아직 안 골랐으면 첫 탭이 섭니다. */
+  tab: GuideTab | null;
+  onTab: (tab: GuideTab) => void;
+}) {
   /* 제품 자신 + 그 회사 + 이 제품이 돌리는 모델의 값. */
   const claims = claimsForProduct(product.id);
   const tips = claims.filter((c) => c.topic === 'habit');
@@ -607,38 +632,131 @@ export function GuideLedger({ product, today }: { product: Product; today: strin
   const facts = factsTitle(models.length > 0, plans.length > 0);
   const both = models.length > 0 && plans.length > 0;
 
+  /* 빈 탭은 안 세웁니다 — 팁이 없는 축, 모델도 요금도 없는 참고 탭. */
+  const tipTabs = READ_AIMS.map(({ aim, title }) => {
+    const groups = groupTips(
+      aim,
+      tips.filter((c) => c.aim === aim),
+    );
+    const count = groups.reduce((n, g) => n + g.rows.length, 0);
+    return { id: aim as GuideTab, label: title, count, body: <TipGroups aim={aim} groups={groups} /> };
+  }).filter((t) => t.count > 0);
+  const tabs: Array<{ id: GuideTab; label: string; count?: number; body: ReactNode }> = [
+    ...tipTabs,
+    ...(facts
+      ? [
+          {
+            id: 'facts' as const,
+            label: facts,
+            body: (
+              <>
+                {models.length > 0 && (
+                  <>
+                    {both && <h2 className="gl-facts-sub">고를 수 있는 모델</h2>}
+                    <ModelTable
+                      product={product}
+                      models={models}
+                      contextOf={contextOf}
+                      priceOf={priceOf}
+                      today={today}
+                    />
+                  </>
+                )}
+                {plans.length > 0 && (
+                  <>
+                    {both && <h2 className="gl-facts-sub">요금제와 사용 한도</h2>}
+                    <PlanList claims={plans} today={today} />
+                  </>
+                )}
+              </>
+            ),
+          },
+        ]
+      : []),
+  ];
+  const active = tabs.some((t) => t.id === tab) ? tab! : tabs[0]?.id;
+
+  /*
+    탭 줄이 붙어 있을 때(원래 자리보다 아래를 읽는 중) 탭을 바꾸면 새 탭의 첫머리로
+    옮깁니다. 원래 자리는 탭 줄 바로 위의 표지(`gl-tabs-anchor`)가 압니다.
+  */
+  const anchorRef = useRef<HTMLDivElement>(null);
+  const pendingScroll = useRef(false);
+  useLayoutEffect(() => {
+    if (!pendingScroll.current || !anchorRef.current) return;
+    pendingScroll.current = false;
+    const top = anchorRef.current.getBoundingClientRect().top;
+    window.scrollTo({ top: window.scrollY + top - STICKY_TOP, behavior: 'instant' });
+  }, [active]);
+
+  const select = (id: GuideTab) => {
+    if (id === active) return;
+    pendingScroll.current = (anchorRef.current?.getBoundingClientRect().top ?? 0) < STICKY_TOP;
+    onTab(id);
+  };
+
+  /* 탭 사이는 화살표·Home·End로 옮깁니다(WAI-ARIA 탭 패턴). Tab 키는 고른 탭 하나에만 멎습니다. */
+  const onKeyDown = (event: KeyboardEvent<HTMLButtonElement>) => {
+    const i = tabs.findIndex((t) => t.id === active);
+    const next =
+      event.key === 'ArrowRight'
+        ? tabs[(i + 1) % tabs.length]
+        : event.key === 'ArrowLeft'
+          ? tabs[(i - 1 + tabs.length) % tabs.length]
+          : event.key === 'Home'
+            ? tabs[0]
+            : event.key === 'End'
+              ? tabs[tabs.length - 1]
+              : null;
+    if (!next) return;
+    event.preventDefault();
+    select(next.id);
+    document.getElementById(`tab-${next.id}`)?.focus();
+  };
+
   return (
     <article className="gl-ledger" style={{ '--guide-accent': product.accent } as CSSProperties}>
-      <GuideHead product={product} facts={facts} />
+      <GuideHead product={product} />
 
-      {READ_AIMS.map(({ aim, title }) => (
-        <ReadSection key={aim} aim={aim} title={title} tips={tips.filter((c) => c.aim === aim)} />
-      ))}
-
-      {facts && (
-        <section className="gl-read" id="facts" aria-labelledby="facts-title">
-          <div className="gl-read-head">
-            <h2 id="facts-title">{facts}</h2>
+      {tabs.length > 0 && (
+        <>
+          <div className="gl-tabs-anchor" ref={anchorRef} />
+          <div
+            className="gl-tabs"
+            role="tablist"
+            aria-label={`${product.name} 가이드`}
+          >
+            {tabs.map((t) => (
+              <button
+                key={t.id}
+                type="button"
+                role="tab"
+                id={`tab-${t.id}`}
+                aria-controls={`panel-${t.id}`}
+                aria-selected={t.id === active}
+                tabIndex={t.id === active ? 0 : -1}
+                className={`gl-tab${t.id === active ? ' is-on' : ''}`}
+                onClick={() => select(t.id)}
+                onKeyDown={onKeyDown}
+              >
+                {t.label}
+                {t.count !== undefined && <span className="gl-tab-count">{t.count}</span>}
+              </button>
+            ))}
           </div>
-          {models.length > 0 && (
-            <>
-              {both && <h3 className="gl-facts-sub">고를 수 있는 모델</h3>}
-              <ModelTable
-                product={product}
-                models={models}
-                contextOf={contextOf}
-                priceOf={priceOf}
-                today={today}
-              />
-            </>
-          )}
-          {plans.length > 0 && (
-            <>
-              {both && <h3 className="gl-facts-sub">요금제와 사용 한도</h3>}
-              <PlanList claims={plans} today={today} />
-            </>
-          )}
-        </section>
+          {tabs.map((t) => (
+            <section
+              key={t.id}
+              className="gl-panel"
+              role="tabpanel"
+              id={`panel-${t.id}`}
+              aria-labelledby={`tab-${t.id}`}
+              hidden={t.id !== active}
+            >
+              {t.body}
+            </section>
+          ))}
+        </>
       )}
 
       <PeersSection product={product} />

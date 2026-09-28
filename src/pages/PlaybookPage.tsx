@@ -1,7 +1,7 @@
-import { useLayoutEffect, useRef } from 'react';
+import { useLayoutEffect, useRef, useState } from 'react';
 import { Navigate, useParams } from 'react-router';
 import { GuideRail } from '../components/GuideRail';
-import { GuideLedger } from '../components/GuideLedger';
+import { GuideLedger, type GuideTab } from '../components/GuideLedger';
 import { Seo } from '../components/Seo';
 import { todayInSeoul } from '../data/playbook';
 import { guideProductById } from '../data/guideProducts';
@@ -91,6 +91,12 @@ export function PlaybookPage() {
     들어온 첫 로드에서 「제품이 바뀌었다」로 읽혀 스크롤이 움직였습니다.
   */
   const paneRef = useScrollToHeadOnSwitch(redirectTo ?? picked?.id ?? guideHomeProductId);
+  /*
+    고른 탭은 원장 밖에 둡니다. 원장은 제품마다 `key`로 새로 그려지므로 안에 두면 제품을
+    바꿀 때마다 첫 탭으로 돌아갑니다 — 모델 표를 견주며 레일을 오가는 사람이 매번 다시
+    눌러야 했습니다.
+  */
+  const [tab, setTab] = useState<GuideTab | null>(null);
 
   // 없는 기업으로 들어오면 첫 화면으로 돌립니다.
   if (vendorId && !vendor) return <Navigate to="/playbook" replace />;
@@ -136,7 +142,13 @@ export function PlaybookPage() {
           절반이 스타일이 아니라 이 재조정이었습니다.
         */}
         <div className="guide-pane" ref={paneRef}>
-          <GuideLedger key={product.id} product={product} today={today} />
+          <GuideLedger
+            key={product.id}
+            product={product}
+            today={today}
+            tab={tab}
+            onTab={setTab}
+          />
         </div>
       </div>
     </>

@@ -7635,24 +7635,129 @@ input:focus-visible {
 }
 
 /*
-  안으로 가는 링크는 단추가 아니라 밑줄 글자다. 나가는 것(↗, 테두리)과 모양·방향이
-  달라야 누르기 전에 갈린다. 글자는 도착하는 절의 이름과 같다.
+  **공식 사이트는 제품 브랜드색으로 채운다**(2026-09-28). 무채색 테두리 단추가 화면에서
+  가장 조용한 것이라 첫 행동이 안 보였다. 글자는 `--bg`다 — 브랜드색은 `-text` 토큰이라
+  `--bg`와의 대비가 라이트·다크 모두 4.5:1을 넘고(`theme.test.ts`가 잰다), 채운 면 위의
+  글자도 그 대비를 그대로 받는다. 새 색을 만들지 않는다.
 */
-.gl-head-jump {
-  display: inline-flex;
-  align-items: center;
-  gap: 2px;
-  margin-left: auto;
-  color: var(--text-dim);
-  font-size: var(--gl-note);
-  text-decoration: underline;
-  text-decoration-color: var(--text-muted);
-  text-underline-offset: 4px;
+.gl-head-link.is-primary {
+  border-color: var(--guide-accent);
+  background: var(--guide-accent);
+  color: var(--bg);
+  font-weight: 500;
+  transition:
+    background-color 150ms ease,
+    border-color 150ms ease;
 }
 
-.gl-head-jump:hover {
-  color: var(--brand-text);
-  text-decoration-color: currentColor;
+.gl-head-link.is-primary svg,
+.gl-head-link.is-primary:hover svg {
+  color: currentColor;
+}
+
+.gl-head-link.is-primary:hover {
+  border-color: color-mix(in srgb, var(--guide-accent) 86%, var(--text-strong));
+  background: color-mix(in srgb, var(--guide-accent) 86%, var(--text-strong));
+  color: var(--bg);
+}
+
+/* 둘째 단추는 같은 색의 옅은 테두리다 — 레일 칩 줄의 「자격증」 단추(`.section-tabs-aside`)와 같은 말씨. */
+.gl-head-link:not(.is-primary) {
+  border-color: color-mix(in srgb, var(--guide-accent) 42%, transparent);
+  background: color-mix(in srgb, var(--guide-accent) 7%, transparent);
+  color: var(--guide-accent);
+}
+
+.gl-head-link:not(.is-primary) svg {
+  color: currentColor;
+}
+
+.gl-head-link:not(.is-primary):hover {
+  border-color: var(--guide-accent);
+  background: color-mix(in srgb, var(--guide-accent) 14%, transparent);
+  color: var(--guide-accent);
+}
+
+/* ── 탭 ── */
+
+/*
+  **탭은 사이트의 칩 모양이다**(`.filter-chip`과 같은 말씨: 알약 테두리, 고르면 반전).
+  뉴스·학습이 밑줄 탭 띠를 세웠다가 되돌린 사이트라 여기서도 안 쓴다. 원장 안에서는
+  12px 아래 글자를 안 쓰므로 칩보다 한 단 크게 선다.
+
+  **머리 아래에 붙어 따라온다**(`.section-tabs`와 같은 71px · 반투명 · 흐림). 팁이 열셋인
+  탭을 읽다가 옆 탭으로 가려고 맨 위까지 되감지 않게 하려는 것이다. 붙기 전의 원래 자리는
+  바로 위 표지(`.gl-tabs-anchor`)가 들고 있어, 붙은 채로 탭을 바꾸면 새 탭 첫머리로 옮긴다.
+*/
+.gl-tabs-anchor {
+  margin-top: var(--gl-r4);
+}
+
+.gl-tabs {
+  position: sticky;
+  top: 71px;
+  z-index: 20;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding-block: var(--gl-r2);
+  border-bottom: 1px solid var(--guide-rule);
+  background: var(--header-bg);
+  backdrop-filter: blur(16px);
+}
+
+.gl-tab {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  height: 36px;
+  padding: 0 15px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: var(--bg);
+  color: var(--text-dim);
+  font: inherit;
+  font-size: var(--gl-note);
+  font-weight: 500;
+  white-space: nowrap;
+  cursor: pointer;
+  transition:
+    border-color 140ms ease,
+    color 140ms ease,
+    background-color 140ms ease;
+}
+
+.gl-tab:hover {
+  border-color: var(--text-muted);
+  color: var(--text);
+}
+
+.gl-tab.is-on {
+  border-color: var(--text-strong);
+  background: var(--text-strong);
+  color: var(--bg);
+}
+
+.gl-tab:focus-visible {
+  outline: 2px solid var(--brand);
+  outline-offset: 2px;
+}
+
+/* 세어서 나오는 수. 숫자라 모노이고 한 단 흐리다. */
+.gl-tab-count {
+  font-family: var(--font-mono);
+  font-size: 0.85em;
+  font-weight: 400;
+  opacity: 0.66;
+}
+
+.gl-panel {
+  padding-top: var(--gl-r3);
+}
+
+/* 탭 안 첫머리는 위 여백을 탭 줄 아래 24px 하나로 받는다. */
+.gl-panel > :first-child {
+  margin-top: 0;
 }
 
 /* ── 절 ── */
@@ -7676,16 +7781,6 @@ input:focus-visible {
   font-weight: 500;
   line-height: 1.3;
   letter-spacing: -0.02em;
-}
-
-.gl-read-count {
-  color: var(--text-muted);
-  font-size: var(--gl-note);
-}
-
-.gl-read-head + .gl-tips,
-.gl-read-head + .gl-situation-block {
-  margin-top: var(--gl-r3);
 }
 
 .gl-situation-block + .gl-situation-block {
@@ -7811,14 +7906,10 @@ input:focus-visible {
 /* ── 참고 절 — 모델과 요금 ── */
 
 .gl-facts-sub {
-  margin-top: var(--gl-r3);
+  margin-top: var(--gl-r4);
   color: var(--text-strong);
   font-size: var(--gl-body);
   font-weight: 600;
-}
-
-.gl-facts-sub:not(:first-of-type) {
-  margin-top: var(--gl-r4);
 }
 
 .gl-models,
@@ -7826,11 +7917,6 @@ input:focus-visible {
   margin: var(--gl-r2) 0 0;
   padding: 0;
   list-style: none;
-}
-
-.gl-read-head + .gl-models,
-.gl-read-head + .gl-plans {
-  margin-top: var(--gl-r3);
 }
 
 /*
@@ -8126,10 +8212,24 @@ a.gl-num:hover {
 
 /* ── 좁은 폭 (집의 중단점 640) ── */
 @media (max-width: 640px) {
-  .gl-head-jump {
-    flex-basis: 100%;
-    margin-top: 4px;
-    margin-left: 0;
+  /* 좁은 화면에서는 줄바꿈 대신 옆으로 굴린다 — 칩이 두 줄이 되면 붙박이 띠가 두 배가 된다. */
+  .gl-tabs {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+
+  .gl-tabs::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* 탭 셋이 375px 한 줄에 드는 선까지 조인다(가장 긴 제품에서 5px 넘쳤다). */
+  .gl-tabs {
+    gap: 6px;
+  }
+
+  .gl-tab {
+    padding: 0 12px;
   }
 
   /*
@@ -8215,8 +8315,14 @@ a.gl-num:hover {
 
 /* ── 종이 ── */
 @media print {
-  .gl-head-links {
+  .gl-head-links,
+  .gl-tabs {
     display: none;
+  }
+
+  /* 종이에는 탭이 없다 — 안 고른 탭도 전부 찍는다. */
+  .gl-panel[hidden] {
+    display: block;
   }
 }
 
