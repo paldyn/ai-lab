@@ -1,6 +1,8 @@
 import { claimsForProduct } from './data/playbook';
+import { playbookClaims } from './data/playbookClaims';
 import { guideProducts } from './data/guideProducts';
 import { shownModels } from './data/guideModels';
+import { tipGroupsOf } from './data/guideTipGroups';
 import { guideVendors } from './data/guideVendors';
 import { prerenderRoutes } from './routes';
 import { describe, expect, it } from 'vitest';
@@ -31,6 +33,28 @@ const LOADING = '본문을 불러오는 중입니다';
 /** 본문이 실렸다는 표시. 모든 서랍이 같은 산문 컨테이너를 씁니다. */
 const hasBody = (html: string) => html.includes('article-prose') && !html.includes(LOADING);
 
+/** React가 글자를 HTML에 넣을 때와 같은 꼴로 바꿉니다. */
+const esc = (text: string) =>
+  text
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#x27;');
+
+/**
+ * 클래스 **토큰**으로 셉니다. 문자열 포함으로 세면 `gl-tip`이 `gl-tips`·`gl-tip-do`에도
+ * 걸려 수가 부풉니다 — 그래서 `class="…"`를 잡아 공백으로 가른 낱말과 견줍니다.
+ */
+const classCount = (html: string, token: string) =>
+  [...html.matchAll(/class="([^"]*)"/g)].filter((m) => m[1].split(/\s+/).includes(token)).length;
+
+/** 원장만. 레일과 사이트 머리·꼬리에 같은 낱말이 있어도 안 섞이게 합니다. */
+const ledgerOf = (html: string) => {
+  const start = html.indexOf('<article class="gl-ledger"');
+  return start < 0 ? '' : html.slice(start, html.indexOf('</article>', start) + 10);
+};
+
 describe('프리렌더 — 본문이 HTML에 들어간다', () => {
   it('학습 글', async () => {
     const { html } = await render(`/articles/${articles[0].slug}`);
@@ -54,15 +78,16 @@ describe('프리렌더 — 본문이 HTML에 들어간다', () => {
   });
 
   /*
-    **제품 상세는 판 아래 원장에서 갈리지만 주소는 진짜 라우트입니다.** 원장이 순수
-    클라이언트 상태였으면 프리렌더된 HTML에 상세가 안 들어갑니다 — 파이썬 265편이
-    그 이유로 빈 껍데기였던 그 자리입니다. 여기서 실제로 그려 확인합니다.
+    **제품 화면은 주소가 진짜 라우트이고, 원장째 HTML에 실립니다.** 원장이 순수 클라이언트
+    상태였으면 프리렌더된 HTML에 본문이 안 들어갑니다 — 파이썬 265편이 그 이유로 빈
+    껍데기였던 그 자리입니다. 제품 이름은 h1(`gl-title`)에 섭니다.
   */
-  it('제품 상세가 원장에 채워진 채로 HTML에 들어간다', async () => {
+  it('제품 화면이 원장째 HTML에 실리고 제품 이름이 h1이다', async () => {
     const missing: string[] = [];
     for (const product of guideProducts) {
       const { html } = await render(`/playbook/${product.vendorId}/${product.id}`);
-      if (!html.includes('guide-ledger') || !html.includes(product.oneLine)) {
+      const h1 = /<h1 class="gl-title"[^>]*>([\s\S]*?)<\/h1>/.exec(html)?.[1] ?? '';
+      if (!h1.includes(esc(product.name)) || !html.includes(esc(product.oneLine))) {
         missing.push(`${product.vendorId}/${product.id}`);
       }
     }
@@ -70,20 +95,16 @@ describe('프리렌더 — 본문이 HTML에 들어간다', () => {
   });
 
   /*
-    **원장은 가이드의 열 주소에서 한 번도 안 빕니다.** 첫 주소도 제품 아홉도 전부
-    제품 화면을 그리므로, **절이 실제로 섰는지**를 봅니다 — 제목 하나만 찾으면 제품
+    **원장은 가이드의 열 주소에서 한 번도 안 빕니다.** 첫 주소도 제품 아홉도 전부 제품
+    화면을 그리므로 절(`gl-read`)이 하나라도 서는지 봅니다 — 제목 하나만 찾으면 제품
     화면이 통째로 비어도 통과합니다.
-
-    그 전에는 첫 화면·기업 화면에서 요약 띠(`guide-stats`)를 따로 찾았는데, 두 화면을
-    2026-09-28에 걷었습니다(첫 주소는 기본 제품을 그리고, 기업 주소는 넘깁니다).
   */
   it('원장이 어느 주소에서도 안 빈다', async () => {
     const routes = ['/playbook', ...guideProducts.map((p) => `/playbook/${p.vendorId}/${p.id}`)];
     const empty: string[] = [];
-
     for (const route of routes) {
       const { html } = await render(route);
-      if (!html.includes('guide-ledger-title') || !html.includes('guide-ledger-label')) {
+      if (classCount(html, 'gl-title') !== 1 || classCount(ledgerOf(html), 'gl-read') === 0) {
         empty.push(route);
       }
     }
@@ -118,112 +139,134 @@ describe('프리렌더 — 본문이 HTML에 들어간다', () => {
   });
 
   /*
-    **절이 여섯 다 서는가, 그리고 접힌 절이 내용을 다 싣고 나가는가**(2026-09-18).
-
-    위 검사는 `guide-ledger-label`이 한 번이라도 나오면 초록입니다 — 지금은 아홉
-    제품 전부 값 줄이 셋 이상이라 「얼마이고 한도」 머리글이 늘 그 클래스를 달고,
-    그래서 **나머지 절이 통째로 사라져도 안 걸립니다.** 절을 세는 것은 이쪽입니다.
-
-    제품마다 서는 절이 다릅니다 — 모델이 0인 제품이 둘(Claude Cowork · ChatGPT)이라
-    다섯이 서고 나머지는 여섯입니다. **고정 수로 안 재고 데이터에서 셉니다.**
+    **팁은 접히지 않고 데이터대로 다 섭니다**(2026-09-28 개편). 옛 원장은 팁 문장이
+    `<details>` 두 겹 아래라 첫 화면에 한 줄도 없었고, 다 읽는 데 19번 눌러야 했습니다.
+    원장 안에 `<details>`가 되살아나거나, 팁이 한 편이라도 빠지면 빨갛게 섭니다.
+    수는 손으로 적지 않고 데이터에서 셉니다 — 루틴이 하루 팁 넷을 더합니다.
   */
-  it('제품 화면에 절이 데이터대로 서고 묻는 절 둘만 접힌다', async () => {
+  it('팁이 접히지 않고 데이터대로 다 선다', async () => {
     const wrong: string[] = [];
     for (const product of guideProducts) {
-      const claims = claimsForProduct(product.id);
-      const aims = new Set(
-        claims.filter((c) => c.topic === 'habit').map((c) => c.aim),
-      ).size;
-      const usage = claims.filter(
-        (c) =>
-          c.topic !== 'context' &&
-          c.topic !== 'habit' &&
-          !(c.topic === 'price' && c.subject.kind === 'model'),
-      ).length;
-      const want =
-        aims +
-        (shownModels(product.models).length > 0 ? 1 : 0) +
-        (product.surfaces.length > 0 ? 1 : 0) +
-        (usage > 0 ? 1 : 0) +
-        1; /* 공식 */
-
-      const { html } = await render(`/playbook/${product.vendorId}/${product.id}`);
-      const heads = html.split('guide-section-head').length - 1;
-      if (heads !== want) wrong.push(`${product.id}: 절 머리 ${heads} ≠ ${want}`);
-
-      /* 접히는 것은 「얼마이고 한도」와 「공식」 둘뿐이다 — 모델은 안 접는다. */
-      const folds = html.split('guide-section is-ask is-fold').length - 1;
-      if (folds !== (usage > 0 ? 2 : 1)) wrong.push(`${product.id}: 접힌 절 ${folds}`);
-
-      /* 접혀 있어도 첫 HTML에 값이 다 실린다 — 자바스크립트 없이도 열 수 있어야 한다. */
-      const rows = html.split('claim-row ').length - 1;
-      if (rows !== usage) wrong.push(`${product.id}: 접힌 값 줄 ${rows} ≠ ${usage}`);
+      const ledger = ledgerOf((await render(`/playbook/${product.vendorId}/${product.id}`)).html);
+      const tips = claimsForProduct(product.id).filter((c) => c.topic === 'habit');
+      const drawn = classCount(ledger, 'gl-tip');
+      const details = ledger.split('<details').length - 1;
+      const missingId = tips.find((c) => !ledger.includes(`id="tip-${c.id}"`));
+      if (drawn !== tips.length || details !== 0 || missingId) {
+        wrong.push(`${product.id}: 팁 ${drawn}/${tips.length} · details ${details}${missingId ? ` · ${missingId.id} 없음` : ''}`);
+      }
     }
     expect(wrong).toEqual([]);
   });
 
   /*
-    **팁이 접힌 채로, 내용은 다 들어 있는 채로 나가는가.** 접기는 기능 전부를 「첫
-    HTML에 다 실려 나가고 브라우저가 접어 둘 뿐」에 걸고 있으므로 그것을 직접 잽니다 —
-    자바스크립트가 안 붙은 상태에서 접힌 내용이 비어 있으면, 그 화면은 영영 못 여는
-    화면입니다.
-
-    반례가 `<summary>` 밖에 남는 것과, 거르개가 열 줄 넘는 화면에만 서는 것도
-    같은 자리에서 봅니다. 셋 다 **눈으로는 못 세는** 수입니다.
+    **절·순간 라벨·표의 줄이 데이터대로 서는가.** 빈 절을 안 그리는 규칙(팁이 없는 축,
+    모델도 요금도 없는 참고 절, 같은 갈래가 없는 다른 제품)과 **순간이 하나뿐이면 라벨을
+    안 세우는** 규칙을 제품마다 데이터에서 세어 봅니다. 모델 0인 제품, 팁 한 편인
+    제품이 섞여 있어 고정 수로는 못 잽니다.
   */
-  it('제품 화면의 첫 HTML에 팁이 접힌 채로 다 실린다', async () => {
+  it('절·순간·표의 줄이 데이터대로 선다', async () => {
     const wrong: string[] = [];
     for (const product of guideProducts) {
-      const tips = claimsForProduct(product.id).filter((c) => c.topic === 'habit');
-      if (tips.length === 0) continue;
-      const { html } = await render(`/playbook/${product.vendorId}/${product.id}`);
-
-      const folds = html.split('guide-tip-fold').length - 1;
-      if (folds !== tips.length) wrong.push(`${product.id}: 접힌 칸 ${folds} ≠ 팁 ${tips.length}`);
-
-      /* 체감을 걷어내면서 반례 줄도 같이 없어졌다 — 하나라도 남으면 지우다 만 것이다. */
-      const shown = html.split('>안 통하는 자리<').length - 1;
-      if (shown !== 0) wrong.push(`${product.id}: 반례 ${shown}줄이 남았다`);
-
-      /* **화면이 축 둘로 갈립니다** — 묶음도 절마다 따로 셉니다. */
-      const aims = ['save', 'well'] as const;
-
-      /*
-        **묶음은 화면의 축이고 빈 묶음은 안 섭니다.** 그래서 선 묶음의 수는
-        「그 절에 팁이 있는 질문의 수」를 두 절에 걸쳐 더한 것과 같아야 합니다 —
-        적으면 팁이 갈 곳을 잃은 것이고, 많으면 줄 0개짜리 질문이 덩그러니 선 것입니다.
-      */
-      const used = aims.reduce(
-        (n, aim) => n + new Set(tips.filter((c) => c.aim === aim).map((c) => c.group)).size,
-        0,
+      const ledger = ledgerOf((await render(`/playbook/${product.vendorId}/${product.id}`)).html);
+      const claims = claimsForProduct(product.id);
+      const tips = claims.filter((c) => c.topic === 'habit');
+      const plans = claims.filter(
+        (c) =>
+          c.topic !== 'context' &&
+          c.topic !== 'habit' &&
+          !(c.topic === 'price' && c.subject.kind === 'model'),
       );
-      const drawn = html.split('guide-tip-group is-').length - 1;
-      if (drawn !== used) wrong.push(`${product.id}: 묶음 ${drawn} ≠ 쓰인 질문 ${used}`);
-
+      const models = shownModels(product.models);
+      const groupsPerAim = (['save', 'well'] as const).map(
+        (aim) => tipGroupsOf(aim).filter((g) => tips.some((c) => c.aim === aim && c.group === g.id)).length,
+      );
+      const peers = guideProducts.filter((p) => p.role === product.role && p.id !== product.id);
+      const expected = {
+        read:
+          groupsPerAim.filter((n) => n > 0).length +
+          (models.length > 0 || plans.length > 0 ? 1 : 0) +
+          (peers.length > 0 ? 1 : 0),
+        situation: groupsPerAim.reduce((sum, n) => sum + (n >= 2 ? n : 0), 0),
+        model: models.length,
+        plan: plans.length,
+      };
+      const got = {
+        read: classCount(ledger, 'gl-read'),
+        situation: classCount(ledger, 'gl-situation'),
+        model: classCount(ledger, 'gl-model'),
+        plan: classCount(ledger, 'gl-plan'),
+      };
+      if (JSON.stringify(got) !== JSON.stringify(expected)) {
+        wrong.push(`${product.id}: ${JSON.stringify(got)} ≠ ${JSON.stringify(expected)}`);
+      }
     }
     expect(wrong).toEqual([]);
+  });
+
+  /*
+    **API를 직접 부르는 팁은 API 표면이 있는 제품에만 섭니다.** 회사 주체 팁이라 그 회사
+    제품 전부에 끌려오는데, 「컨텍스트 캐시를 켠다」는 Gemini 앱·CLI 사용자가 할 수 없는
+    행동입니다.
+  */
+  it('API 팁은 API 표면이 있는 제품에만 선다', async () => {
+    const apiTips = playbookClaims.filter((c) => c.audience === 'api');
+    const wrong: string[] = [];
+    for (const product of guideProducts) {
+      const ledger = ledgerOf((await render(`/playbook/${product.vendorId}/${product.id}`)).html);
+      for (const tip of apiTips.filter((c) => c.subject.id === product.vendorId)) {
+        const shown = ledger.includes(`id="tip-${tip.id}"`);
+        if (shown !== (product.apiTips === true)) wrong.push(`${product.id} · ${tip.id}`);
+      }
+    }
+    expect(wrong).toEqual([]);
+  });
+
+  /*
+    **옛 원장의 문구가 되살아나면 빨갛게.** 「멘트가 별로」라는 말에 갈아 쓴 자리들이다 —
+    만드는 쪽의 말(「같은 자리」·「값을 확인하는 곳」), 우리 로그 이야기(「확인 기록
+    없음」), 쿠폰처럼 읽히던 「유효기간 지남」, 「~법 / ~방법입니다」 되풀이.
+  */
+  it('옛 원장의 문구가 되살아나지 않는다', async () => {
+    const retired = [
+      '같은 자리',
+      '값을 확인하는 곳',
+      '확인 기록 없음',
+      '유효기간 지남',
+      '토큰을 아끼는 법',
+      '제대로 시키는 법',
+      '어느 모델로 돌리나',
+      '얼마이고 한도가 어떻게 차나',
+      '방법입니다',
+      '기업마다 챗·업무·코딩',
+    ];
+    const found: string[] = [];
+    for (const product of guideProducts) {
+      const { html } = await render(`/playbook/${product.vendorId}/${product.id}`);
+      for (const phrase of retired) if (html.includes(phrase)) found.push(`${product.id} · ${phrase}`);
+    }
+    expect(found).toEqual([]);
   });
 
   /*
     **`/playbook`이 기본 제품을 그리고, canonical이 그 제품 주소를 가리키는가**(2026-09-28).
 
-    첫 화면 원장을 걷고 `/playbook`이 Claude Code를 그대로 그리게 했습니다. 리다이렉트가
-    아니라 그 자리에서 그리므로 같은 내용이 두 주소에 섭니다 — canonical이 제품 주소를
-    안 가리키면 검색엔진이 둘 중 하나를 중복으로 떨어뜨리고, 어느 쪽인지는 우리가 못
-    고릅니다. 그리고 이 주소는 nav와 사이트맵이 가리키므로 **HTML에 본문이 실제로 실려
-    나가는지**도 봅니다(`<Navigate>`로 바꾸면 빈 껍데기가 나갑니다).
+    리다이렉트가 아니라 그 자리에서 그리므로 같은 내용이 두 주소에 섭니다 — canonical이
+    제품 주소를 안 가리키면 검색엔진이 둘 중 하나를 중복으로 떨어뜨리고, 어느 쪽인지는
+    우리가 못 고릅니다. 이 주소는 nav와 사이트맵이 가리키므로 **HTML에 본문이 실제로
+    실려 나가는지**도 봅니다(`<Navigate>`로 바꾸면 빈 껍데기가 나갑니다).
   */
   it('가이드 첫 주소가 기본 제품을 그리고 그 제품 주소를 canonical로 건다', async () => {
     const home = guideProducts.find((p) => p.id === guideVendors[0].homeProductId)!;
     const { html, head } = await render('/playbook');
-    expect(html).toContain('guide-ledger-title');
-    expect(html).toContain(home.name);
-    expect(html).toContain('guide-tip-group');
+    expect(html).toMatch(/<h1 class="gl-title"[^>]*>/);
+    expect(html).toContain(esc(home.name));
+    expect(classCount(html, 'gl-tip')).toBeGreaterThan(0);
     expect(head).toContain(`/playbook/${home.vendorId}/${home.id}"`);
-    /* 걷어낸 첫 화면·기업 화면의 흔적이 되살아나면 빨갛게. */
+    /* 걷어낸 첫 화면·기업 화면·서랍 공통 머리의 흔적이 되살아나면 빨갛게. */
     expect(html).not.toContain('체감');
-    expect(html).not.toContain('위 판');
     expect(html).not.toContain('guide-rail-note');
     expect(html).not.toContain('guide-stats');
+    expect(html).not.toContain('page-header');
   });
 });

@@ -71,6 +71,7 @@ export const guideProducts: Product[] = [
     oneLine: '파일을 다루고 다른 앱을 연결해 대화하는 채팅 앱.',
     officialUrl: 'https://claude.com/download',
     docsUrl: 'https://claude.com/pricing',
+    docsLabel: '요금 안내',
     logo: 'assets/claude.svg',
     monochrome: true,
     accent: 'var(--source-anthropic-text)',
@@ -97,6 +98,7 @@ export const guideProducts: Product[] = [
     oneLine: '대화 대신 일을 통째로 맡기는 업무 도구.',
     officialUrl: 'https://claude.com/product/cowork',
     docsUrl: null,
+    docsLabel: null,
     logo: 'assets/claude.svg',
     monochrome: true,
     accent: 'var(--source-anthropic-text)',
@@ -132,6 +134,8 @@ export const guideProducts: Product[] = [
     oneLine: '저장소를 읽고 고치고 명령까지 실행하는 코딩 에이전트.',
     officialUrl: 'https://code.claude.com/docs/en/overview',
     docsUrl: 'https://code.claude.com/docs',
+    // docsUrl이 officialUrl과 같은 문서라 단추를 둘 세우지 않습니다.
+    docsLabel: null,
     logo: 'assets/claude-code.svg',
     monochrome: true,
     accent: 'var(--source-anthropic-text)',
@@ -148,6 +152,7 @@ export const guideProducts: Product[] = [
     oneLine: '대화·업무·코딩을 한 앱에 모아 둔 채팅 앱.',
     officialUrl: 'https://chatgpt.com/overview',
     docsUrl: 'https://openai.com/chatgpt/pricing/',
+    docsLabel: '요금 안내',
     logo: 'assets/openai.svg',
     monochrome: true,
     accent: 'var(--source-openai-text)',
@@ -177,6 +182,7 @@ export const guideProducts: Product[] = [
     oneLine: '목표를 넘기면 계획을 세우고 실행까지 하는 업무 에이전트.',
     officialUrl: 'https://learn.chatgpt.com/docs/get-started-with-work',
     docsUrl: null,
+    docsLabel: null,
     logo: 'assets/openai.svg',
     monochrome: true,
     accent: 'var(--source-openai-text)',
@@ -209,6 +215,7 @@ export const guideProducts: Product[] = [
     oneLine: '코드를 읽고 고치고 리뷰까지 맡는 코딩 에이전트.',
     officialUrl: 'https://chatgpt.com/codex',
     docsUrl: 'https://learn.chatgpt.com/docs/codex/cli',
+    docsLabel: '문서',
     /*
       **Codex에는 전용 마크가 있습니다**(2026-09-18). 그동안 OpenAI 매듭을 그대로
       써서 ChatGPT·ChatGPT Work와 레일에서 구별이 안 됐습니다 — 한 회사 줄 셋이
@@ -258,6 +265,7 @@ export const guideProducts: Product[] = [
     oneLine: 'Gmail·포토 같은 Google 앱을 골라 연결해 쓰는 채팅 앱.',
     officialUrl: 'https://gemini.google/about/',
     docsUrl: 'https://gemini.google/subscriptions/',
+    docsLabel: '요금 안내',
     logo: 'assets/gemini-color.png',
     monochrome: false,
     accent: 'var(--source-google-text)',
@@ -292,6 +300,7 @@ export const guideProducts: Product[] = [
     oneLine: '여러 에이전트를 한 작업 공간에서 다루는 개발 플랫폼.',
     officialUrl: 'https://antigravity.google/',
     docsUrl: null,
+    docsLabel: null,
     // Gemini API의 managed agents를 다루는 제품이라 API 팁이 여기에 섭니다.
     apiTips: true,
     logo: 'assets/antigravity.png',
@@ -322,6 +331,7 @@ export const guideProducts: Product[] = [
     oneLine: '터미널에서 쓰는 오픈소스 코딩 에이전트.',
     officialUrl: 'https://github.com/google-gemini/gemini-cli',
     docsUrl: null,
+    docsLabel: null,
     logo: 'assets/gemini-color.png',
     monochrome: false,
     accent: 'var(--source-google-text)',

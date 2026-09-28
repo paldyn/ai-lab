@@ -1,173 +1,176 @@
-import type { CSSProperties, ReactNode } from 'react';
+import { Fragment, type CSSProperties, type ReactNode } from 'react';
 import { Link } from 'react-router';
-import { ClaimRow } from './ClaimRow';
+import { ArrowDown, ArrowUpRight } from 'lucide-react';
+import { PlanRow, ageText } from './ClaimRow';
 import { GuideMark } from './GuideMark';
-import { TipRow } from './TipRow';
-import { claimState, claimsForProduct, modelCell } from '../data/playbook';
+import {
+  ageLayout,
+  claimState,
+  claimsForProduct,
+  valueCell,
+  type ValueCell,
+} from '../data/playbook';
 import { modelMark, shownModels } from '../data/guideModels';
 import { assetUrl } from '../data/sources';
 import { guideProducts } from '../data/guideProducts';
 import { tipGroupsOf } from '../data/guideTipGroups';
 import { guideVendorById } from '../data/guideVendors';
-import type { Claim, Product, TipAim } from '../types/playbook';
+import type { Claim, ModelInfo, Product, Role, TipAim } from '../types/playbook';
 
 /**
- * 절 하나. **원장의 절이 처음으로 객체가 됩니다.**
+ * 원장 — **제품 하나를 다룬 짧은 가이드로 읽히는 한 칸**(2026-09-28 전면 개편).
  *
- * 그 전에는 여섯 중 둘(팁)만 `<section>`이었고 나머지 넷은 `h3 + 목록`이 형제로
- * 흩어져 있어, 묶어서 손댈 데가 없고 머리글만 폭 없이 847px까지 흘러 나갔습니다.
+ * 그 전 화면은 데이터 분류표 차례대로 서 있었습니다. 팁 문장은 `<details>` 두 겹 아래라
+ * 첫 화면에 한 줄도 없었고(다 읽는 데 19번 눌러야 했습니다), 보이는 것은 10px 모노 라벨·
+ * 괘선·「2 +」 같은 여닫이 장치와 「값을 확인하는 곳」 같은 만드는 쪽의 말이었습니다.
+ * 「뭔가 별로」·「멘트 별로」의 정체가 그것이었습니다.
  *
- * **종류가 셋이면 모양도 셋입니다.**
- * - `kind="read"` — 읽는 절(팁 둘 · 모델). 펼쳐진 채로, 라벨이 진하게 섭니다.
- * - `aside` — 내용이 한 줄뿐인 절(표면). 그 한 줄이 머리 줄 오른쪽에 올라앉습니다.
- * - `fold` — 묻는 절(요금 · 공식). 48px 닫힌 줄이 되고 오른쪽 기둥에 「5 +」가 섭니다.
- *   **수는 접힌 절에만 답니다** — 펼친 절은 세는 대신 보여 줍니다. 세어서 나오는
- *   수라 새로 쓰는 문장이 아닙니다.
+ * 지금은 차례와 노출을 뒤집었습니다.
+ * - **제품 이름이 h1입니다.** 서랍 공통 머리(「AI 가이드」 40px)를 걷고 그 이름은 작은
+ *   킥커로 남겼습니다 — 아홉 화면에서 늘 같은 제목이 주제보다 컸습니다.
+ * - **팁은 접지 않습니다.** 행동 문장(16/500) → 이유(14.5) → 출처(12)가 크기와 색으로
+ *   갈립니다. 접기가 하던 「요점만 남기기」를 위계가 맡습니다.
+ * - 모델·요금은 글 끝의 참고 절 하나로 모읍니다. 값에만 나이와 상태가 붙습니다.
  *
- * **`name`을 안 주고 `open`을 프롭으로 안 넘깁니다** — 팁 묶음과 같은 이유입니다.
- * 배타로 묶이면 한 줄을 열 때 위의 줄이 닫히며 보던 내용이 딸려 올라가고(아코디언
- * 트리를 거절하게 만든 그 움직임입니다), `open`을 넘기면 React가 브라우저와 매
- * 렌더 싸웁니다.
+ * **빈 절은 안 그립니다.** 팁이 없는 축, 모델도 요금도 없는 참고 절, 같은 갈래의 다른
+ * 제품이 없는 경우 전부 그 절이 통째로 안 섭니다.
  */
-function Section({
-  kind,
-  label,
-  lead,
-  aside,
-  fold,
-  children,
-}: {
-  kind: 'read' | 'ask';
-  label: string;
-  lead?: ReactNode;
-  /** 내용이 한 줄뿐일 때 머리 줄 오른쪽에 세울 것. */
-  aside?: ReactNode;
-  /** 접는 절의 줄 수. 넘기면 그 절이 `<details>`가 된다. */
-  fold?: number;
-  children?: ReactNode;
-}) {
-  const head = (
-    <>
-      <h3 className="guide-ledger-label">{label}</h3>
-      <span className="guide-section-rule" aria-hidden="true" />
-      {aside}
-      {/* 글자는 CSS가 넣습니다 — 복사한 글에 안 섞이고 여닫힘도 CSS가 맡습니다. */}
-      {fold !== undefined && <span className="guide-tip-count" aria-hidden="true" data-n={fold} />}
-    </>
-  );
-  const body = (
-    <>
-      {lead && <p className="guide-section-lead">{lead}</p>}
-      {children}
-    </>
-  );
 
-  /*
-    `<summary>` 안의 `<h3>`는 heading 목록에 그대로 남고, 괘선과 수는 `aria-hidden`이라
-    버튼 이름은 절 이름 한 마디입니다.
-  */
-  if (fold !== undefined) {
+/* ── 코드와 키 ──────────────────────────────────────────────────── */
+
+/** 백틱 안이 키 조합이면 캡마다 `<kbd>`로 그립니다(`Shift+Tab`, `Esc`, `Ctrl+G`). */
+const KEY_COMBO = /^(Shift|Ctrl|Cmd|Alt|Option|Esc|Tab|Enter)(\+[A-Za-z]+)*$/;
+
+/**
+ * 원고의 백틱을 코드 조각으로 그립니다. 마크다운이 아니라 **백틱 한 겹만** 봅니다.
+ *
+ * 키 조합은 코드가 아니라 누르는 것이라 `<kbd>`입니다 — 「`Shift+Tab`으로 계획 모드에
+ * 들어간다」에서 명령어와 단축키가 같은 모양이면 무엇을 치고 무엇을 누르는지가 안 갈립니다.
+ */
+export function withCode(text: string): ReactNode[] {
+  return text.split(/(`[^`]+`)/g).map((part, i) => {
+    if (!(part.length > 2 && part.startsWith('`') && part.endsWith('`'))) {
+      return <Fragment key={i}>{part}</Fragment>;
+    }
+    const inner = part.slice(1, -1);
+    if (KEY_COMBO.test(inner)) {
+      return (
+        <span key={i} className="gl-keys">
+          {inner.split('+').map((key, k) => (
+            <Fragment key={k}>
+              {k > 0 && <span className="gl-keys-plus">+</span>}
+              <kbd className="gl-kbd">{key}</kbd>
+            </Fragment>
+          ))}
+        </span>
+      );
+    }
     return (
-      <details className={`guide-section is-${kind} is-fold`}>
-        <summary className="guide-section-head">{head}</summary>
-        {body}
-      </details>
+      <code key={i} className="guide-tip-code">
+        {inner}
+      </code>
     );
-  }
+  });
+}
+
+/* ── 팁 ─────────────────────────────────────────────────────────── */
+
+/**
+ * 팁 한 편 — 하라는 것, 왜, 어디서.
+ *
+ * **나이를 안 답니다.** 팁은 `concept`라 유효기간이 없고, 정확히 시키기 축은 확인 로그가
+ * 하나도 없어 한 축에만 「11일 전 확인」이 스무 번 되풀이되는 비대칭이 생겼습니다.
+ * 나이는 늙는 것, 곧 모델 표와 요금 목록의 값에만 섭니다.
+ */
+function TipItem({ claim }: { claim: Claim }) {
+  return (
+    <li className="gl-tip" id={`tip-${claim.id}`}>
+      <p className="gl-tip-do">{withCode(claim.statement)}</p>
+      {claim.detail && <p className="gl-tip-why">{withCode(claim.detail)}</p>}
+      <p className="gl-tip-src">
+        <a href={claim.source.url} target="_blank" rel="noreferrer">
+          {claim.source.label}
+          <ArrowUpRight size={12} aria-hidden="true" />
+        </a>
+      </p>
+    </li>
+  );
+}
+
+/**
+ * 이 서랍이 파는 두 가지. **가르는 질문 하나입니다 — 이 팁을 따르면 싸지나, 정확해지나.**
+ *
+ * **리드를 안 답니다.** 「같은 결과를 더 싸게 얻는 방법입니다」 같은 합니다체 설명이
+ * 한다체 팁 위에 끼어 말투가 부딪혔고, 「~법」 제목 아래 「~방법입니다」가 같은 말을
+ * 두 번 했습니다. 제목 둘이 동사로 갈리면(아끼다 / 시키다) 설명 없이 갈립니다.
+ */
+const READ_AIMS: Array<{ aim: TipAim; title: string }> = [
+  { aim: 'save', title: '아껴 쓰기' },
+  { aim: 'well', title: '정확히 시키기' },
+];
+
+/**
+ * 팁 절 하나 — h2와 수, 그 아래 순간마다 팁 목록.
+ *
+ * **순간 라벨은 팁보다 작고 흐립니다**(14.5/600). 헤딩이 팁보다 크면 「라벨 — 팁 하나 —
+ * 라벨 — 팁 하나」가 목차처럼 번갈아 서서 팁이 라벨의 각주로 읽힙니다.
+ * **순간이 하나뿐이면 라벨을 안 세웁니다** — 목록 하나 위에 이름을 붙이면 h2를 한 번 더
+ * 말하는 것입니다.
+ */
+function ReadSection({ aim, title, tips }: { aim: TipAim; title: string; tips: Claim[] }) {
+  const groups = tipGroupsOf(aim)
+    .map((group) => ({ group, rows: tips.filter((c) => c.group === group.id) }))
+    .filter((g) => g.rows.length > 0);
+  if (groups.length === 0) return null;
+  const count = groups.reduce((n, g) => n + g.rows.length, 0);
 
   return (
-    <section className={`guide-section is-${kind}`}>
-      <div className="guide-section-head">{head}</div>
-      {body}
+    <section className="gl-read" id={aim} aria-labelledby={`${aim}-title`}>
+      <div className="gl-read-head">
+        <h2 id={`${aim}-title`}>{title}</h2>
+        <span className="gl-read-count">{count}개</span>
+      </div>
+      {groups.length === 1 ? (
+        <ul className="gl-tips">
+          {groups[0].rows.map((claim) => (
+            <TipItem key={claim.id} claim={claim} />
+          ))}
+        </ul>
+      ) : (
+        groups.map(({ group, rows }) => (
+          <div key={group.id} className="gl-situation-block">
+            <h3 className="gl-situation" id={`${aim}-${group.id}`}>
+              {group.situation}
+            </h3>
+            <ul className="gl-tips">
+              {rows.map((claim) => (
+                <TipItem key={claim.id} claim={claim} />
+              ))}
+            </ul>
+          </div>
+        ))
+      )}
     </section>
   );
 }
 
-/**
- * 나가는 링크. **접어 둡니다** — 읽는 절이 아니라 찾아가는 줄이고, 닫아 두면
- * 「공식 ─── 3 +」로 첫 화면 안에 들어옵니다(그 전에는 공식 링크가 있다는 사실을
- * 알려면 1,600px을 내려가야 했습니다). 펼친 채로 두던 기업·첫 화면은 2026-09-28에
- * 둘 다 걷었습니다.
- */
-function OfficialLinks({ rows }: { rows: Array<{ label: string; url: string }> }) {
-  return (
-    <Section kind="ask" label="공식" fold={rows.length}>
-      <ul className="guide-links">
-        {rows.map((row) => (
-          <li key={row.url}>
-            <a href={row.url} target="_blank" rel="noreferrer">
-              <span className="guide-link-label">{row.label}</span>
-              <span className="guide-link-host">{new URL(row.url).host}</span>
-            </a>
-          </li>
-        ))}
-      </ul>
-    </Section>
-  );
-}
-
-/**
- * 그 묶음의 팁들이 실제로 부르는 레버.
- *
- * **기계로 뽑습니다 — 손으로 적는 목록이 아닙니다.** 팁 문장과 이유의 백틱만 긁어
- * 첫 등장 순서로 세웁니다. 사용자가 「명령어를 나열하고 설명을 하던지」라고 한 그
- * 자리인데, 데이터를 세어 보면 **명령어를 뼈대로는 못 씁니다** — 63건 중 백틱이
- * 있는 것이 13건뿐이고 토큰 열일곱 종 중 `/compact` 5회·`/clear` 4회 말고는 전부
- * 한 번씩입니다. 뼈대로 삼으면 나머지 50건이 갈 곳을 잃습니다.
- *
- * 그래서 **묶음의 색인으로** 세웁니다. 질문 넷이 뼈대를 지고, 레버는 그 아래에서
- * 「이 자리에서 만지는 것들」을 한 줄로 보여 줍니다 — 레퍼런스로 읽히는 자리가
- * 생기되 명령어 없는 팁이 밀려나지 않습니다.
- *
- * **`statement`만 긁고 `detail`은 안 봅니다.** 레버는 **행동이 부르는 이름**이고
- * 이유 줄의 토큰은 설명하다 스치는 것입니다. 둘 다 긁어 봤더니 Codex 화면의 첫
- * 묶음에 `tool_choice none reasoning.effort text.verbosity`가 섰는데, 거기서
- * `none`은 레버가 아니라 **값**입니다(「`tool_choice`를 `none`으로 둔다」의 목적어).
- * 값을 명령어처럼 세우면 그 줄이 색인이 아니라 낱말 더미가 됩니다.
- *
- * 선을 이렇게 그으면 규칙이 데이터에도 보입니다 — **색인에 세우고 싶은 레버는
- * 문장에서 부른다.** 이유에만 적힌 것은 그 팁의 행동이 아니라는 뜻입니다.
- *
- * **새로 쓰는 문장이 0입니다.** 설계안은 묶음마다 「한 줄 답」을 붙였는데 그것은
- * 배지도 출처도 없는 주장이 되고 어느 검사에도 안 걸린 채 늙습니다. 여기서 나오는
- * 것은 전부 팁 원문의 조각이라 팁을 고치면 저절로 따라옵니다.
- */
-function leversOf(tips: Claim[]): string[] {
-  const seen: string[] = [];
-  for (const tip of tips) {
-    for (const m of tip.statement.matchAll(/`([^`]+)`/g)) {
-      /* 레버는 손잡이라 짧습니다. 긴 것은 문장 조각이지 부르는 이름이 아닙니다. */
-      if (m[1].length <= 30 && !seen.includes(m[1])) seen.push(m[1]);
-    }
-  }
-  return seen;
-}
+/* ── 모델 ───────────────────────────────────────────────────────── */
 
 /**
  * 단가 문자열을 **입력 · 출력 · 단서** 셋으로 가릅니다 — 「줄이되 뜻을 안 버린다」의
  * 구현입니다.
  *
- * **수 둘을 갈라야 열이 둘이 됩니다**(2026-09-18). 전날까지는 짝(`$2 / $12`)과
- * 단서만 갈라 짝을 한 칸에 세웠는데, 그러면 열을 아무리 맞춰도 화면에 서는 수 열이
- * **컨텍스트 하나뿐**입니다 — 「표로 하자」가 두 번 나온 이유가 거기 있었습니다.
- * 가르는 것은 화면뿐이고 데이터는 그대로 한 주장이라, 두 칸이 같은 요금 페이지로
- * 갑니다.
+ * **수 둘을 갈라야 열이 둘이 됩니다.** 짝(`$2 / $12`)을 한 칸에 세우면 열을 아무리
+ * 맞춰도 수 열이 컨텍스트 하나뿐입니다. 가르는 것은 화면뿐이고 두 칸이 같은 요금
+ * 페이지로 갑니다.
  *
- * 모델 단가 열아홉 중 **일곱**이 `기본 (단서)` 꼴이고(`$2 / $12 (200K 초과 시
- * $4 / $18)`, `$0.75 / $3.75 (2027-01-01부터 $1.50 / $7.50)`), 화면에 실제로 서는
- * 것은 넷입니다. 그 넷 때문에 단가 문자열이 13자에서 42자까지 벌어집니다.
- *
- * **자르지 않고 아래로 내립니다.** 단서는 「지금 이 값이 언제 거짓이 되는가」라
- * 버리면 두 주 뒤에 거짓말이 되고, 괄호째 옮기므로 원문 글자가 하나도 안 바뀝니다 —
- * `input + ' / ' + output (+ ' ' + rider)`가 원문과 글자까지 같습니다.
- *
- * **꼴을 문자열이 아니라 문법으로 봅니다.** `indexOf(' (')`로 가르면 기본값 안에
- * 괄호가 들어오는 날 엉뚱한 데서 갈립니다. 안 맞는 꼴은 통째로 `input`에 남고
- * `raw`가 서서 두 열을 함께 쓰며 감기므로, 값이 사라지지는 않습니다.
+ * **단서는 자르지 않고 아래로 내립니다.** 「지금 이 값이 언제 거짓이 되는가」라 버리면
+ * 두 주 뒤에 거짓말이 되고, 괄호째 옮기므로 `input + ' / ' + output (+ ' ' + rider)`가
+ * 원문과 글자까지 같습니다. 안 맞는 꼴은 통째로 `input`에 남고 `raw`가 섭니다.
  */
 const PRICE_PAIR = /^(\$[\d.,]+) \/ (\$[\d.,]+)(?: (\(.+\)))?$/;
 
-function splitPrice(
+export function splitPrice(
   value: string,
 ): { input: string; output: string | null; rider: string | null; raw: boolean } {
   const m = PRICE_PAIR.exec(value);
@@ -175,178 +178,417 @@ function splitPrice(
   return { input: m[1], output: m[2], rider: m[3] ?? null, raw: false };
 }
 
-/**
- * 팁 한 벌 — 절 머리글 · 거르개 · **질문 넷으로 묶인 줄들**.
- *
- * **축이 질문입니다**(2026-09-17). 그 전에는 열여덟이 평평하게 한 줄로 섰고 등급이
- * 유일한 축이었습니다. 지금은 세션이 지나는 시간으로 묶이고 등급은 **묶음 안의
- * 정렬 키**로 내려왔습니다 — 한 묶음 안에서 공식이 먼저, 체감이 뒤입니다.
- *
- * **빈 묶음은 안 그립니다.** 그 제품에 그 질문의 팁이 없으면 머리글째 안 섭니다 —
- * 원장이 빈 절을 안 세우는 규칙이 여기에도 그대로 걸립니다. 그래서 팁 둘짜리
- * Claude 화면에는 묶음이 하나만 서고, 열여덟짜리 Claude Code에는 넷이 다 섭니다.
- *
- * **거르기는 순수 CSS입니다**(라디오 + `:has()`). 라디오와 줄들이 `.guide-tips-block`
- * 한 부모 안에 있어야 선택자가 닿습니다. 거르면 **묶음 머리글도 같이 빠져야
- * 합니다** — 안 그러면 줄 0개짜리 질문이 덩그러니 섭니다. `:has()`로 그 묶음에
- * 남은 줄이 있는지를 물어 해결합니다.
- */
-/**
- * 팁을 그 **축의** 질문 넷으로 묶습니다. 축마다 묻는 것이 달라서 넷도 다릅니다 —
- * 아낌은 세션이 지나는 시간이고 잘 씀은 어긋남을 어디서 잡나입니다.
- *
- * **빈 묶음은 아예 안 만듭니다** — 머리글만 서는 자리가 생기지 않습니다. 번호는
- * 배열 자리가 아니라 **선 묶음 중 몇 번째**입니다.
- */
-function groupTips(tips: Claim[], aim: TipAim) {
-  return tipGroupsOf(aim)
-    .map((group) => ({ group, rows: tips.filter((c) => c.group === group.id) }))
-    .filter((g) => g.rows.length > 0);
-}
+/** 컨텍스트 칸에서만 「 토큰」을 뗍니다 — 열 이름이 단위를 집니다. 데이터는 그대로입니다. */
+const contextLabel = (value: string) => value.replace(/^([\d.,]+[KM]?) 토큰$/, '$1');
 
-const tipAnchor = (scope: string, groupId: string) => `tips-${scope}-${groupId}`;
-
-/**
- * 이 서랍이 파는 두 가지. **화면이 이 둘로 갈립니다.**
- *
- * 가르는 질문 하나입니다 — 이 팁을 따르면 **싸지나, 좋아지나**.
- *
- * **이름을 두 번 고쳤습니다**(2026-09-17). 처음은 「이렇게 쓰면 아낀다」·「이렇게
- * 쓰면 잘 쓴다」였는데 같은 꼴에 끝 글자만 달라 **같은 제목의 다른 글**로 읽혔고,
- * 다음은 「결과를 좋게 하는 법」이었는데 「좋게 한다」가 아무것도 안 가리켰습니다 —
- * 무엇을 어떻게 한다는 말이 없어 제목이 소원처럼 읽힙니다.
- *
- * 지금은 **동사가 가리키는 행동이 둘 다 구체적입니다** — 아끼다 / 시키다. 잘 쓰기
- * 축의 질문 넷(박아 두기 · 맞춰 보기 · 그 자리만 고치기 · 판정)이 전부 **일을 어떻게
- * 넘기는가**라 그 말이 축의 이름이기도 합니다.
- *
- * **각 절에 한 줄 리드가 붙습니다.** 제목만으로는 무엇이 다른지가 여전히 눌러
- * 봐야 알 수 있었습니다. 리드가 그 자리에서 답합니다.
- */
-const TIP_AIMS: Array<{ aim: TipAim; label: string; lead: string }> = [
-  {
-    aim: 'save',
-    label: '토큰을 아끼는 법',
-    lead: '같은 결과를 더 싸게 얻는 방법입니다.',
-  },
-  {
-    aim: 'well',
-    label: '제대로 시키는 법',
-    lead: '값을 더 치르더라도 「그럴듯한데 틀린」 것을 걸러 내는 방법입니다.',
-  },
-];
-
-function TipBlock({
-  tips,
-  today,
-  scope,
-  aim,
-  label,
-  lead,
-}: {
-  tips: Claim[];
-  today: string;
-  scope: string;
-  aim: TipAim;
-  label: string;
-  lead: string;
-}) {
-  const groups = groupTips(tips, aim);
-
+/** 모델 줄머리 마크 — 제 마크가 있으면 판 위에, 없으면 계열 마크. */
+function ModelMarkSlot({ model }: { model: ModelInfo }) {
   /*
-    **거르개를 걷어냈습니다**(2026-09-17). 등급으로 거르는 칩(전체·공식·체감)이
-    절 머리 오른쪽에 섰는데, 읽는 사람이 이 화면에서 묻는 것은 「공식이냐 체감이냐」가
-    아니라 「지금 뭘 하면 되냐」입니다 — 축이 질문으로 바뀌면서 거르개만 옛 축에
-    남아 있었습니다. 등급은 줄마다 배지로 그대로 섭니다.
+    Anthropic만 등급마다 손그림과 판 색을 짝지어 두었습니다(`ModelInfo.mark`). 잉크가
+    2색이라 착색하지 않고 판 위에 그대로 올립니다 — 한 색으로 마스킹하면 덩어리가 됩니다.
   */
+  if (model.mark) {
+    return (
+      <span
+        className="guide-model-mark is-plate"
+        style={{ '--guide-plate': model.mark.plate } as CSSProperties}
+        aria-hidden="true"
+      >
+        <img src={assetUrl(model.mark.file)} alt="" />
+      </span>
+    );
+  }
+  const family = modelMark[model.vendorId];
   return (
-    <Section kind="read" label={label} lead={lead}>
-      {groups.map(({ group, rows }, i) => {
-        const levers = leversOf(rows);
-        return (
-          /*
-          **묶음이 펼쳐집니다**(2026-09-17). 위에 목차를 따로 세우고 눌러서 내려가게
-          했다가 걷어냈습니다 — 같은 질문 넷이 한 화면에 두 벌 서고, 누르면 화면이
-          점프해 「어디로 갔지」가 됩니다. 제자리에서 열리면 목차와 내용이 한 몸이라
-          질문 넷이 그대로 요약이 되고 벌이 하나뿐입니다.
-
-          **`name`을 안 줍니다.** 주면 브라우저가 넷을 배타로 묶어 하나를 열 때 앞서
-          연 것이 닫히는데, 그 묶음이 위에 있으면 보던 내용이 위로 딸려 올라갑니다.
-          여럿을 함께 펼쳐 놓고 견주는 것이 이 화면에서 잦기도 합니다.
-        */
-        <details
-          key={group.id}
-          id={tipAnchor(`${scope}-${aim}`, group.id)}
-          className={`guide-tip-group is-${group.id}`}
-        >
-          <summary className="guide-tip-group-head">
-            <h4 className="guide-tip-question">
-              <span className="guide-tip-no">{String(i + 1).padStart(2, '0')}</span>
-              <span className="guide-tip-q">{group.question}</span>
-              {/*
-                레버가 질문과 **같은 줄**에 섭니다(2026-09-17). 제 줄을 갖던 동안
-                닫힌 칸이 99px이라 넷이 서면 첫 화면이 그것만으로 찹니다 — 접는
-                뜻이 「요점만 남기기」인데 요점이 두 줄이면 요점이 아닙니다.
-                남는 폭만큼만 보이고 나머지는 잘립니다(`overflow: hidden`) —
-                닫힌 줄은 색인의 **맛보기**이고, 잘린 것은 열면 팁 문장 안에
-                `<code>`로 전부 다시 섭니다.
-              */}
-              {levers.length > 0 && (
-                <span className="guide-tip-levers">
-                  {levers.map((lever) => (
-                    <code key={lever}>{lever}</code>
-                  ))}
-                </span>
-              )}
-              {/* 글자는 CSS가 넣습니다 — 복사한 글에 안 섞이고 여닫힘도 CSS가 맡습니다. */}
-              <span className="guide-tip-count" aria-hidden="true" data-n={rows.length} />
-            </h4>
-          </summary>
-
-          <div className="guide-tips">
-            {rows.map((claim) => (
-              <TipRow key={claim.id} state={claimState(claim, today)} />
-            ))}
-          </div>
-        </details>
-        );
-      })}
-    </Section>
+    <GuideMark
+      logo={family.logo}
+      monochrome={family.monochrome}
+      accent={family.accent}
+      className="guide-model-mark"
+    />
   );
 }
 
 /**
- * 제품 하나를 골랐을 때 — **이 제품을 어떻게 써야 좋은가**에 답하는 한 칸.
- *
- * **노트 개념을 걷어냈습니다**(2026-09-17). 「노트 0편」을 크게 적고 목록 자리를
- * 비워 두는 구성이었는데, 읽는 사람에게 그건 우리 사정이지 답이 아닙니다.
- * 지금은 **절마다 질문 하나에 답합니다** — 얼마인가 · 어느 모델인가 · 어디서 쓰나.
- *
- * 순서는 「아껴 쓰기」가 정합니다. 요금과 한도가 먼저이고, 그다음이 모델 선택입니다 —
- * 그 둘이 이 서랍이 파는 것이고 나머지는 거드는 줄입니다.
- *
- * **값이 없는 절은 안 섭니다.** 채우려고 빈 제목을 세우지 않습니다.
+ * 값 칸 하나. 값이든 상태 낱말이든 **출처로 갈 수 있어야 합니다** — 「문서에 없음」도
+ * 「재확인 필요」도 다음 할 일이 「공식 페이지를 열어 보기」입니다.
+ * `data-label`은 좁은 화면에서 열 이름 대신 수 앞에 붙습니다.
  */
-function ProductLedger({ product, today }: { product: Product; today: string }) {
-  const vendor = guideVendorById(product.vendorId);
+function Cell({
+  cell,
+  url,
+  label,
+  modelName,
+  text,
+  className,
+}: {
+  cell: ValueCell;
+  url: string;
+  label: string;
+  modelName: string;
+  /** 값일 때 칸에 서는 글자. 상태 낱말이면 그 낱말이 섭니다. */
+  text?: string;
+  className: string;
+}) {
+  if (cell.kind === 'none') return <span className={`${className} is-empty`} />;
+  const note = cell.kind === 'note';
+  const soft = cell.kind === 'value' && cell.soft;
+  const shown = note ? cell.text : (text ?? '');
+  return (
+    /*
+      **이름에 모델과 열을 함께 싣습니다.** 열 머리는 따로 선 `<li>`라 칸과 안 이어지고,
+      데스크톱에서는 `data-label`도 안 보여 링크 이름이 「1M」·「$2」뿐이었습니다 — 링크
+      목록에서 「1M」이 셋이고 입력인지 출력인지도 안 갈렸습니다. 보이는 글자를 이름에
+      그대로 담아 음성으로 부를 때도 맞습니다.
+    */
+    <a
+      className={`${className}${note ? ' is-note' : ''}${soft ? ' is-soft' : ''}`}
+      href={url}
+      target="_blank"
+      rel="noreferrer"
+      data-label={label}
+      aria-label={`${modelName} ${label} ${shown}`}
+    >
+      {shown}
+    </a>
+  );
+}
+
+/**
+ * 고를 수 있는 모델 — **표입니다.** 열 이름이 단위를 지고 수는 모노로 한 세로줄에 섭니다.
+ *
+ * **열은 그 제품의 데이터가 세웁니다.** 한 줄도 주장이 없는 열은 아예 안 섭니다
+ * (Gemini 앱은 이름·쓰임만 섭니다). 한 줄만 비면 열은 세우고 칸만 비웁니다.
+ *
+ * **나이는 하나면 캡션에, 여럿이면 줄마다**(`ageLayout`). 처음에는 확인 전 칸이 하나라도
+ * 있으면 줄마다 적었는데, Codex 표에서 「11일 전 확인」이 네 번 되풀이됐습니다.
+ */
+function ModelTable({
+  product,
+  models,
+  contextOf,
+  priceOf,
+  today,
+}: {
+  product: Product;
+  models: ModelInfo[];
+  contextOf: Map<string, Claim>;
+  priceOf: Map<string, Claim>;
+  today: string;
+}) {
+  const hasContext = models.some((m) => contextOf.has(m.id));
+  const hasPrice = models.some((m) => priceOf.has(m.id));
+  const rows = models.map((model) => {
+    const ctx = valueCell(contextOf.get(model.id), today);
+    const priceClaim = priceOf.get(model.id);
+    const price = valueCell(priceClaim, today);
+    const split = price.kind === 'value' ? splitPrice(price.value) : null;
+    return { model, ctx, price, priceClaim, split };
+  });
+  const ages = ageLayout(rows.map((r) => [r.ctx, r.price]));
+  const oneAge = ages.caption;
+
+  return (
+    <>
+      <ul className={`gl-models${hasContext ? ' has-ctx' : ''}${hasPrice ? ' has-price' : ''}`}>
+        {/*
+          **머리 행은 `<li>`입니다.** 목록 밖 형제로 빼면 격자를 한 벌 더 써야 하고,
+          `<table>`로 바꾸면 쓰임 줄이 `colspan` 행으로 갈려 행 높이가 들쭉날쭉해집니다.
+          수 열이 하나도 안 서면 머리 행도 안 섭니다.
+        */}
+        {(hasContext || hasPrice) && (
+          <li className="gl-models-head">
+            <span>모델</span>
+            {hasContext && <span className="is-num">컨텍스트(토큰)</span>}
+            {hasPrice && (
+              <>
+                <span className="is-num">입력 단가</span>
+                <span className="is-num">출력 단가</span>
+              </>
+            )}
+          </li>
+        )}
+        {rows.map(({ model, ctx, price, priceClaim, split }, i) => {
+          const rowAge = ages.perRow[i];
+          return (
+            <li key={model.id} className="gl-model">
+              <span className="gl-model-name">
+                <ModelMarkSlot model={model} />
+                <span>
+                  {model.name}
+                  {/*
+                    이름·회사·꼬리표 사이에 **진짜 공백**을 둡니다. 간격을 margin으로만 주면
+                    복사한 글과 낭독에서 「Claude Sonnet 4.6Anthropic이전 세대」로 붙습니다.
+                  */}
+                  {model.vendorId !== product.vendorId && (
+                    <>
+                      {' '}
+                      <span className="gl-model-vendor">
+                        {guideVendorById(model.vendorId)?.name}
+                      </span>
+                    </>
+                  )}
+                  {/* 만든 회사가 구세대로 부르는데도 남긴 줄 — 그 회사의 최신이 여기 없을 때입니다. */}
+                  {model.current === false && (
+                    <>
+                      {' '}
+                      <span className="gl-tag">이전 세대</span>
+                    </>
+                  )}
+                </span>
+              </span>
+              {hasContext && (
+                <Cell
+                  cell={ctx}
+                  url={contextOf.get(model.id)?.source.url ?? ''}
+                  label="컨텍스트"
+                  modelName={model.name}
+                  text={ctx.kind === 'value' ? contextLabel(ctx.value) : undefined}
+                  className="gl-num"
+                />
+              )}
+              {hasPrice &&
+                (priceClaim && split && split.output ? (
+                  <>
+                    <Cell
+                      cell={price}
+                      url={priceClaim.source.url}
+                      label="입력 단가"
+                      modelName={model.name}
+                      text={split.input}
+                      className="gl-num"
+                    />
+                    <Cell
+                      cell={price}
+                      url={priceClaim.source.url}
+                      label="출력 단가"
+                      modelName={model.name}
+                      text={split.output}
+                      className="gl-num"
+                    />
+                  </>
+                ) : (
+                  /* 값이 안 서거나 꼴이 안 맞으면 두 열을 함께 씁니다 — 값이 사라지지 않습니다. */
+                  <Cell
+                    cell={price}
+                    url={priceClaim?.source.url ?? ''}
+                    label="단가"
+                    modelName={model.name}
+                    text={split?.input}
+                    className="gl-num is-span"
+                  />
+                ))}
+              {(model.useWhen || split?.rider || rowAge !== null) && (
+                <div className="gl-model-sub">
+                  {model.useWhen && (
+                    <a
+                      className="gl-model-use"
+                      href={model.useWhen.url}
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      {model.useWhen.text}
+                    </a>
+                  )}
+                  {(split?.rider || rowAge !== null) && (
+                    <span className="gl-model-meta">
+                      {split?.rider}
+                      {split?.rider && rowAge !== null && ' · '}
+                      {rowAge !== null && ageText(rowAge)}
+                    </span>
+                  )}
+                </div>
+              )}
+            </li>
+          );
+        })}
+      </ul>
+      {(hasPrice || oneAge !== null) && (
+        <p className="gl-caption">
+          {hasPrice && '단가는 100만 토큰당 달러'}
+          {hasPrice && oneAge !== null && ' · '}
+          {oneAge !== null && ageText(oneAge)}
+        </p>
+      )}
+    </>
+  );
+}
+
+/* ── 요금 ───────────────────────────────────────────────────────── */
+
+/** 요금이 먼저, 한도가 뒤입니다 — 「얼마인가」를 묻고 나서 「얼마나 쓰나」를 묻습니다. */
+const PLAN_ORDER: Partial<Record<Claim['topic'], number>> = { price: 0, tier: 0, limit: 1 };
+
+/**
+ * 요금제와 사용 한도. **줄이 전부 같은 출처이고 확인된 줄의 나이가 하나면** 출처와
+ * 나이를 목록 아래 캡션에 한 번 적고, 확인된 줄에서는 걷습니다(Claude 요금 다섯 줄이
+ * 「Claude 요금제 ↗ · 11일 전 확인」을 네 번 되풀이했습니다). **확인 전 줄은 제 출처
+ * 링크를 그대로 둡니다** — 다음 할 일이 그 페이지를 열어 보는 것이라 길이 줄에 있어야
+ * 하고, 값 칸이 「확인 전」이라 캡션의 나이에 안 덮입니다.
+ */
+function PlanList({ claims, today }: { claims: Claim[]; today: string }) {
+  const sorted = [...claims].sort(
+    (a, b) => (PLAN_ORDER[a.topic] ?? 2) - (PLAN_ORDER[b.topic] ?? 2),
+  );
+  const states = sorted.map((c) => claimState(c, today));
+  const urls = new Set(sorted.map((c) => c.source.url));
+  const ages = [...new Set(states.flatMap((s) => (s.ageDays === null ? [] : [s.ageDays])))];
+  const mergedAge = urls.size === 1 && ages.length === 1 ? ages[0] : null;
+
+  return (
+    <>
+      <dl className="gl-plans">
+        {sorted.map((claim, i) => (
+          <PlanRow
+            key={claim.id}
+            claim={claim}
+            today={today}
+            hideMeta={mergedAge !== null && states[i].ageDays !== null}
+          />
+        ))}
+      </dl>
+      {mergedAge !== null && (
+        <p className="gl-caption">
+          <a href={sorted[0].source.url} target="_blank" rel="noreferrer">
+            {sorted[0].source.label}
+            <ArrowUpRight size={12} aria-hidden="true" />
+          </a>
+          {' · '}
+          {ageText(mergedAge)}
+        </p>
+      )}
+    </>
+  );
+}
+
+/* ── 머리 ───────────────────────────────────────────────────────── */
+
+/** 참고 절의 이름. 안에 든 것을 그대로 이름으로 씁니다 — 머리의 이동 링크도 같은 글자입니다. */
+function factsTitle(hasModels: boolean, hasPlans: boolean): string | null {
+  if (hasModels && hasPlans) return '모델과 요금';
+  if (hasModels) return '고를 수 있는 모델';
+  if (hasPlans) return '요금제와 사용 한도';
+  return null;
+}
+
+function GuideHead({ product, facts }: { product: Product; facts: string | null }) {
+  return (
+    <header className="gl-head">
+      {/*
+        서랍 이름. nav 「가이드」에서 들어와 제품 하나에 바로 떨어진 사람이 어디인지 압니다.
+        회사 이름은 옆 레일의 머리글이 말하므로 여기 안 적습니다.
+      */}
+      <p className="gl-kicker">AI 가이드</p>
+      {/* 제품을 바꾼 뒤 포커스를 받는 자리라 `tabIndex={-1}`입니다(`PlaybookPage`). */}
+      <h1 className="gl-title" tabIndex={-1}>
+        <GuideMark
+          logo={product.logo}
+          monochrome={product.monochrome}
+          accent={product.accent}
+          className="gl-mark"
+        />
+        <span>{product.name}</span>
+      </h1>
+      <p className="gl-dek">{product.oneLine}</p>
+
+      {product.surfaces.length > 0 && (
+        <dl className="gl-facts">
+          <dt>쓸 수 있는 곳</dt>
+          <dd>{product.surfaces.join(' · ')}</dd>
+        </dl>
+      )}
+
+      <div className="gl-head-links">
+        <a className="gl-head-link" href={product.officialUrl} target="_blank" rel="noreferrer">
+          공식 사이트
+          <ArrowUpRight size={14} aria-hidden="true" />
+        </a>
+        {product.docsUrl && product.docsLabel && (
+          <a className="gl-head-link" href={product.docsUrl} target="_blank" rel="noreferrer">
+            {product.docsLabel}
+            <ArrowUpRight size={14} aria-hidden="true" />
+          </a>
+        )}
+        {facts && (
+          /*
+            **해시를 주소에 안 남깁니다.** `#facts`가 주소에 붙은 채 다른 제품으로 옮기면 해시가
+            빠지면서 `Layout`이 맨 위로 되감아, 새 제품 머리로 옮긴 스크롤을 덮었습니다
+            (좁은 화면에서는 레일로 떨어집니다). JS가 없으면 `href`가 그대로 일합니다.
+          */
+          <a
+            className="gl-head-jump"
+            href="#facts"
+            onClick={(event) => {
+              const target = document.getElementById('facts');
+              if (!target) return;
+              event.preventDefault();
+              target.scrollIntoView();
+            }}
+          >
+            {facts}
+            <ArrowDown size={14} aria-hidden="true" />
+          </a>
+        )}
+      </div>
+    </header>
+  );
+}
+
+/* ── 다른 제품 ──────────────────────────────────────────────────── */
+
+const ROLE_NOUN: Record<Role, string> = { 챗: '채팅 앱', 업무: '업무 도구', 코딩: '코딩 도구' };
+
+/**
+ * 같은 갈래의 다른 회사 제품. **1024px 아래에서만 보입니다.** 데스크톱에서는 바로 옆
+ * 레일이 같은 목록을 보여 주므로 두 번 말하지 않고, 레일이 위로 올라간 좁은 화면에서는
+ * 긴 글을 다 읽은 뒤 레일까지 되감지 않고 옆 제품으로 가는 길이 됩니다.
+ * 프리렌더 HTML에는 늘 실립니다.
+ */
+function PeersSection({ product }: { product: Product }) {
+  const peers = guideProducts.filter((p) => p.role === product.role && p.id !== product.id);
+  if (peers.length === 0) return null;
+  return (
+    <section className="gl-read gl-peers-sect" id="peers" aria-labelledby="peers-title">
+      <div className="gl-read-head">
+        <h2 id="peers-title">다른 {ROLE_NOUN[product.role]}</h2>
+      </div>
+      <ul className="gl-peers">
+        {peers.map((peer) => (
+          <li key={peer.id}>
+            <GuideMark
+              logo={peer.logo}
+              monochrome={peer.monochrome}
+              accent={peer.accent}
+              className="gl-mark"
+            />
+            <div>
+              <p className="gl-peer-name">
+                <Link className="card-trigger" to={`/playbook/${peer.vendorId}/${peer.id}`}>
+                  {peer.name}
+                </Link>{' '}
+                <span className="gl-peer-vendor">{guideVendorById(peer.vendorId)?.name}</span>
+              </p>
+              <p className="gl-peer-dek">{peer.oneLine}</p>
+            </div>
+          </li>
+        ))}
+      </ul>
+    </section>
+  );
+}
+
+/* ── 원장 ───────────────────────────────────────────────────────── */
+
+/**
+ * **원장에는 늘 제품이 옵니다**(2026-09-28). 첫 화면 원장도 기업 원장도 걷었습니다 —
+ * `/playbook`과 기업 주소는 `PlaybookPage`가 제품 하나로 풀어서 넘깁니다.
+ */
+export function GuideLedger({ product, today }: { product: Product; today: string }) {
   /* 제품 자신 + 그 회사 + 이 제품이 돌리는 모델의 값. */
   const claims = claimsForProduct(product.id);
-  const peers = guideProducts.filter((p) => p.role === product.role && p.id !== product.id);
-
-  /*
-    컨텍스트 창은 모델 줄에서 값으로 보여 주므로 위 목록에서 뺍니다 — 같은 값을
-    두 번 그리면 「아는 값」이 부풀어 보입니다.
-  */
-  /*
-    **팁이 맨 위입니다.** 읽는 사람이 찾는 것은 「세션을 언제 새로 파나」이지 요금이
-    아닙니다 — 요금·한도는 거드는 값이라 아래로 내립니다.
-
-    **등급으로 안 정렬합니다**(2026-09-18). 체감을 걷어내 남은 팁이 전부 공식이라
-    정렬 키가 상수가 됐습니다 — 묶음 안의 차례는 데이터에 적힌 순서 그대로입니다.
-  */
   const tips = claims.filter((c) => c.topic === 'habit');
-  /* 묶음은 `TipBlock`이 세웁니다 — 여기서는 묶음 **안의** 차례만 정합니다. */
-  const usage = claims.filter(
+  /* 컨텍스트 창과 모델 단가는 모델 표가 값으로 보여 주므로 요금 목록에서 뺍니다. */
+  const plans = claims.filter(
     (c) =>
       c.topic !== 'context' &&
       c.topic !== 'habit' &&
@@ -355,11 +597,6 @@ function ProductLedger({ product, today }: { product: Product; today: string }) 
   const contextOf = new Map(
     claims.filter((c) => c.topic === 'context').map((c) => [c.subject.id, c]),
   );
-  /*
-    **모델 단가는 「얼마이고 한도가 어떻게 차나」에서 뺍니다.** 바로 위 모델 줄에
-    값으로 서므로, 아래 목록에도 두면 같은 수를 한 화면에서 두 번 적습니다 —
-    컨텍스트 창을 그렇게 뺀 것과 같은 자리입니다.
-  */
   const priceOf = new Map(
     claims
       .filter((c) => c.topic === 'price' && c.subject.kind === 'model')
@@ -367,360 +604,44 @@ function ProductLedger({ product, today }: { product: Product; today: string }) 
   );
   /* 거기서 고를 만한 최신만. 회사별로 보므로 최신이 없는 회사 것은 그대로 섭니다. */
   const models = shownModels(product.models);
-  /*
-    **열은 그 제품의 데이터가 세웁니다.** 그 값을 한 줄도 확인한 적이 없으면 열이
-    아예 안 섭니다 — 자격증 일정 표에서 값 없는 칸을 열로 안 세우는 그 규칙입니다.
-    Gemini 앱은 셋 다 주장이 없어 이름·쓰임 한 열로 서고, 그래서 「컨텍스트 창 모름」이
-    세 줄 겹쳐 서던 자리가 사라집니다. 반대로 한 줄만 비면(Codex Spark · GPT-OSS)
-    열은 세우고 칸만 비웁니다 — 옆 넷이 차 있어 **빈 칸 자체가 말을 합니다.**
-
-    **`value`가 아니라 `has`로 묻습니다.** 값이 `null`인 주장은 「열어 봤는데 벤더가
-    안 적었다」라 그 자체가 알아낸 것이고, 화면에 「모름」으로 서야 합니다.
-  */
-  const hasContext = models.some((m) => contextOf.has(m.id));
-  const hasPrice = models.some((m) => priceOf.has(m.id));
-
-  const links = [{ label: '제품 페이지', url: product.officialUrl }];
-  if (product.docsUrl && product.docsUrl !== product.officialUrl) {
-    links.push({ label: '값을 확인하는 곳', url: product.docsUrl });
-  }
-  if (vendor) links.push({ label: '회사', url: vendor.officialUrl });
+  const facts = factsTitle(models.length > 0, plans.length > 0);
+  const both = models.length > 0 && plans.length > 0;
 
   return (
-    <div className="guide-ledger" style={{ '--guide-accent': product.accent } as CSSProperties}>
-      {/*
-        **로고가 이름 왼쪽에 섭니다.** 레일에서 고른 줄과 오른쪽 머리가 같은 마크를
-        달아, 눈이 왼쪽에서 오른쪽으로 옮겨 갈 때 「같은 것을 보고 있다」가 그림으로
-        이어집니다. 마크는 `aria-hidden`이라 이름을 두 번 읽지 않습니다.
-      */}
-      <div className="guide-ledger-head">
-        <GuideMark
-          logo={product.logo}
-          monochrome={product.monochrome}
-          accent={product.accent}
-          className="guide-ledger-mark"
-        />
-        {/*
-          **회사·갈래 라벨이 이름 오른쪽 끝에 섭니다**(2026-09-18). 이름 아래에
-          두던 동안 그 두 줄이 한 덩이로 읽혀 제목이 두 줄짜리가 됐습니다.
-          오른쪽으로 보내면 이름은 한 줄로 남고, 라벨은 아래 줄들의 수·칩과 같은
-          세로줄에 붙습니다 — 잉크의 오른쪽 열이 머리에서부터 시작됩니다.
-        */}
-        <div className="guide-ledger-headline">
-          <h2 className="guide-ledger-title">{product.name}</h2>
-          <p className="guide-ledger-meta">
-            {vendor?.name} · {product.role}
-          </p>
-        </div>
-      </div>
-      <p className="guide-ledger-blurb">{product.oneLine}</p>
+    <article className="gl-ledger" style={{ '--guide-accent': product.accent } as CSSProperties}>
+      <GuideHead product={product} facts={facts} />
 
+      {READ_AIMS.map(({ aim, title }) => (
+        <ReadSection key={aim} aim={aim} title={title} tips={tips.filter((c) => c.aim === aim)} />
+      ))}
 
-
-      {/*
-        **두 축이 절 둘로 섭니다** — 아끼기와 잘 쓰기. 이 서랍이 파는 것이 그 둘입니다.
-        **한쪽이 비면 그 절이 아예 안 섭니다**(빈 절을 안 그리는 규칙). 지금은 아홉
-        제품 모두 양쪽이 차 있지만, 새 제품을 넣으면 한쪽만 서는 화면이 생깁니다.
-      */}
-      {TIP_AIMS.map(({ aim, label, lead }) => {
-        const rows = tips.filter((c) => c.aim === aim);
-        return rows.length === 0 ? null : (
-          <TipBlock
-            key={aim}
-            tips={rows}
-            today={today}
-            scope={product.id}
-            aim={aim}
-            label={label}
-            lead={lead}
-          />
-        );
-      })}
-
-      {/*
-        **모델은 층이 아니라 이 제품의 속성입니다.** 같은 모델이 제품 여럿에서 돌기
-        때문에 트리로 안 세웠고, 여기서는 참조만 그립니다.
-
-        **회사 경계를 넘는 자리에 만든 회사를 붙입니다** — Google Antigravity의
-        선택기에 Claude 둘과 GPT-OSS가 함께 서는 것이 이 서랍에서 가장 안 알려진
-        사실이라, 이름 옆의 작은 회사 표기가 그것을 말합니다.
-      */}
-      {/*
-        **모델은 안 접습니다.** 절 순서가 곧 우선순위이고 이 값은 위 팁 둘을 고르는
-        데 쓰는 것이라, 접으면 팁이 반쪽이 됩니다. 넷을 다 접으면 접는 것 자체가
-        아무 정보도 못 줍니다 — 셋이 펼쳐지고 셋이 닫히는 그 갈림이 한 겹의 위계입니다.
-
-        **목록 아래 누워 있던 71px짜리 회색 문단을 리드로 올립니다.** 그 문단이 곧
-        오른쪽 수 둘(컨텍스트 창 · 단가)의 범례인데 목록 **뒤**에 있어, 읽는 차례가
-        「표를 다 읽고 나서 표 읽는 법」이었습니다. 옮기기만 하므로 새로 쓰는 문장이
-        0이고, 덤으로 리드가 읽는 절 셋에 다 붙어 「리드가 둘에만 있다」가 사라집니다.
-      */}
-      {models.length > 0 && (
-        <Section
-          kind="read"
-          label="어느 모델로 돌리나"
-          lead={
-            <>
-              {/*
-                **범례 문장을 머리 행이 대신합니다**(2026-09-18). 전날까지 여기에
-                「오른쪽 수는 입력 컨텍스트 창과 100만 토큰당 입력 / 출력 단가입니다」가
-                섰습니다 — 열 이름을 안 세우는 대신 리드가 머리 행 노릇을 한 것인데,
-                훑을 때 읽히는 것은 목록 위의 문장이 아니라 열 위의 낱말입니다.
-                단가가 입력·출력 두 열로 갈리면서 「입력 / 출력」이라는 설명 자체도
-                필요가 없어졌습니다. **문장이 하나 줄었지 늘지 않았습니다.**
-              */}
-              쓰임은 만든 회사가 제 문서에 적어 둔 말입니다 — 누르면 그 페이지로 갑니다.{' '}
-              {/*
-                **단가 열이 설 때만 이 한 마디가 섭니다.** 「100만 토큰당」은 머리 행
-                두 글자가 못 지는 단위라 남기되, 단가가 하나도 없는 화면(Gemini 앱)
-                에서는 아무것도 안 가리킵니다 — 빈 열을 안 그리는 규칙이 산문에도
-                그대로 걸립니다.
-              */}
-              {hasPrice && <>단가는 100만 토큰당입니다. </>}
-              만든 회사가 구세대·legacy로 부르는 모델은 안 적습니다 — 다만 그 회사의 최신이
-              이 제품에 하나도 없으면 있는 것을 그대로 둡니다.
-            </>
-          }
-        >
-          {/*
-            **표입니다 — 그래프가 아닙니다.** 단가를 막대로 깔아 봤다가 접었습니다.
-            ① 그릴 것이 하나도 없는 화면이 있고(Gemini 앱 세 줄이 전부 무값), ② 폭이
-            50배 벌어져($0.20 ~ $10) 선형이면 정작 「갈아타라」고 권하는 싼 모델이
-            슬리버로 사라지고 로그면 돈 이야기가 거짓이 되며, ③ 제품 안에서 정규화하면
-            **같은 모델이 화면마다 다른 길이로** 섭니다(Opus 5는 Claude Code에서 50%,
-            Antigravity에서 100%), ④ 컨텍스트 창은 1M·1.05M·200K뿐이라 막대가 전부
-            같은 길이이고, ⑤ 단서가 붙은 넷은 가리킬 크기 자체가 하나가 아닙니다
-            (200K를 넘으면 두 배입니다).
-
-            **열이 뜻하는 것은 크기가 아니라 같은 자리입니다.** 같은 값이 열여섯 번
-            되풀이되는 것이 열에서는 곧은 선이 되고 Haiku의 「200K 토큰」이 그 선을
-            끊습니다 — 목록에서는 그냥 또 하나의 오른쪽 문자열이었습니다.
-          */}
-          <ul
-            className={`guide-models${hasContext ? ' has-ctx' : ''}${hasPrice ? ' has-price' : ''}`}
-          >
-            {/*
-              **머리 행**(2026-09-18). 수 열이 하나라도 설 때만 섭니다 — Gemini 앱처럼
-              이름과 쓰임뿐인 화면에서는 「모델」 한 낱말이 덩그러니 서고 아래는 그냥
-              목록이라, 빈 열을 안 그리는 규칙이 여기도 걸립니다.
-            */}
-            {(hasContext || hasPrice) && (
-              <li className="guide-models-head">
-                <span className="guide-model-name">모델</span>
-                {hasContext && <span className="guide-model-context">컨텍스트</span>}
-                {hasPrice && (
-                  <>
-                    <span className="guide-model-price is-in">입력</span>
-                    <span className="guide-model-price is-out">출력</span>
-                  </>
-                )}
-              </li>
-            )}
-            {models.map((model) => {
-              /*
-                **`shownValue`를 지나는 자리입니다.** 그 전에는 `claim.value`를 날로
-                읽어, 「만료되면 값이 흐려지는 것이 아니라 사라진다」가 원장에서
-                여기 한 군데만 안 걸려 있었습니다. `modelCell`이 상태 넷을 가릅니다 —
-                주장 없음 · 확인 기록 없음 · 유효기간 지남 · 모름.
-              */
-              const ctx = modelCell(contextOf.get(model.id), today);
-              const priceClaim = priceOf.get(model.id);
-              const priceState = modelCell(priceClaim, today);
-              const price = priceState.kind === 'value' ? splitPrice(priceState.value) : null;
-              return (
-                <li key={model.id}>
-                  <span className="guide-model-name">
-                    {/*
-                      **모델 제 마크가 있으면 그것, 없으면 계열 마크입니다.**
-                      Anthropic만 등급마다 손그림과 판 색을 짝지어 두었고
-                      (`ModelInfo.mark`), OpenAI·Google은 우리가 세우는 모델에
-                      해당하는 것이 없습니다.
-
-                      제 마크는 **잉크가 2색이라 착색하지 않고** 판 위에 그대로
-                      올립니다 — 한 색으로 마스킹하면 덩어리가 됩니다. 계열 마크는
-                      그대로 벤더색으로 착색됩니다. 둘이 같은 24px 자리에 서므로
-                      섞이는 제품에서도 이름 첫 글자의 x는 하나입니다.
-                    */}
-                    {model.mark ? (
-                      <span
-                        className="guide-model-mark is-plate"
-                        style={{ '--guide-plate': model.mark.plate } as CSSProperties}
-                        aria-hidden="true"
-                      >
-                        <img src={assetUrl(model.mark.file)} alt="" />
-                      </span>
-                    ) : (
-                      <GuideMark
-                        logo={modelMark[model.vendorId].logo}
-                        monochrome={modelMark[model.vendorId].monochrome}
-                        accent={modelMark[model.vendorId].accent}
-                        className="guide-model-mark"
-                      />
-                    )}
-                    {model.name}
-                    {model.vendorId !== product.vendorId && (
-                      <span className="guide-peer-vendor">
-                        {guideVendorById(model.vendorId)?.name}
-                      </span>
-                    )}
-                  </span>
-                  {/*
-                    **빈 칸이 셋으로 갈립니다.** 주장이 있고 값도 있으면 값을 적고,
-                    주장은 있는데 값이 `null`이면(공식 페이지를 열어 봤는데 벤더가 안
-                    적었다) 「모름」을 적고, 주장 자체가 없으면(아직 안 봤다) 아무것도
-                    안 적습니다. 그 전에는 `?? '컨텍스트 창 모름'` 하나가 뒤엣둘을
-                    뭉개서, **한 번도 확인 안 한 Gemini 앱 세 줄이 「확인했는데 벤더가
-                    안 적었다」고 말하고** 있었습니다 — 이 서랍이 파는 구별입니다.
-                    열 이름과 겹치는 「컨텍스트 창」은 뗍니다: 열 위치가 그 말을 합니다.
-                  */}
-                  {ctx.kind !== 'none' && (
-                    <span
-                      className={`guide-model-context${ctx.kind === 'note' ? ' is-note' : ''}`}
-                    >
-                      {ctx.kind === 'value' ? ctx.value : ctx.text}
-                    </span>
-                  )}
-                  {priceClaim &&
-                    (price && price.output ? (
-                      /*
-                        **입력과 출력이 각자 칸을 갖습니다**(2026-09-18). 둘이 같은
-                        주장이라 같은 요금 페이지로 가지만, 화면에서 한 덩이로 두면
-                        수 열이 실제로는 하나뿐이라 표가 안 됩니다.
-                      */
-                      <>
-                        <a
-                          className="guide-model-price is-in"
-                          href={priceClaim.source.url}
-                          target="_blank"
-                          rel="noreferrer"
-                        >
-                          {price.input}
-                        </a>
-                        <a
-                          className="guide-model-price is-out"
-                          href={priceClaim.source.url}
-                          target="_blank"
-                          rel="noreferrer"
-                        >
-                          {price.output}
-                        </a>
-                      </>
-                    ) : (
-                      /*
-                        값이 안 서는 칸도 **출처로는 갈 수 있어야 합니다** — 「모름」과
-                        「유효기간 지남」 둘 다 다음 할 일이 「공식 페이지를 열어 보기」라
-                        `ClaimRow`가 그 자리를 링크로 둔 것과 같습니다.
-
-                        꼴이 안 맞아 못 가른 값(`raw`)도 여기로 옵니다 — 두 열을 함께
-                        쓰며 감기므로 값이 사라지지 않습니다.
-                      */
-                      <a
-                        className={`guide-model-price is-span${price?.raw ? ' is-raw' : ' is-note'}`}
-                        href={priceClaim.source.url}
-                        target="_blank"
-                        rel="noreferrer"
-                      >
-                        {price?.raw
-                          ? price.input
-                          : priceState.kind === 'note'
-                            ? priceState.text
-                            : '모름'}
-                      </a>
-                    ))}
-                  {/*
-                    **없으면 줄이 안 섭니다.** 「—」로 채우거나 「모름」을 적지 않습니다 —
-                    벤더가 그 모델의 쓰임을 안 적은 것은 스물셋 중 넷이고, 빈 칸을 세우면
-                    그 넷이 나머지와 같은 무게로 자리를 먹습니다. 값과 달리 여기는 확인
-                    로그가 아니라 등록부라 「안 적혀 있다」는 사실이 데이터에 남습니다.
-                  */}
-                  {model.useWhen && (
-                    <p className="guide-model-use">
-                      <a href={model.useWhen.url} target="_blank" rel="noreferrer">
-                        {model.useWhen.text}
-                      </a>
-                    </p>
-                  )}
-                  {/*
-                    단서는 **링크 밖 형제**입니다 — 반례를 `<summary>` 밖에 둔 것과
-                    같은 이유로, 안에 넣으면 링크 이름이 42자짜리 한 문장이 됩니다.
-                    같은 페이지로 가는 단가가 바로 위에 붙어 있어 갈 길은 안 막힙니다.
-                  */}
-                  {price?.rider && <span className="guide-model-note">{price.rider}</span>}
-                </li>
-              );
-            })}
-          </ul>
-        </Section>
-      )}
-
-      {/*
-        **절이 아니라 줄입니다.** 안에 든 것이 네 낱말(20px 한 줄)인데 285px짜리
-        모델 목록과 똑같이 48px을 받아 131px을 먹고 있었습니다. 머리 줄 오른쪽에
-        그 한 줄이 그대로 올라앉아 48px이 됩니다 — 접지는 않습니다, 뒤에 아무것도
-        없는 문에 손잡이를 달지 않습니다.
-
-        딸려 있던 「표면이 달라도 엔진은 하나입니다 — 별개 제품이 아닙니다」는
-        **지웁니다**. 그때는 레일 아래 주석이 같은 말을 하고 있어 한 화면에 두 번
-        섰습니다. 그 레일 주석도 2026-09-28에 걷어냈습니다 — 레일이 제품을 열두 줄로
-        세워 두는 것 자체가 「표면은 제품이 아니다」를 말하고, 절 이름 「어디서 쓰나」가
-        그 목록이 무엇인지를 말합니다. 되살리지 마십시오.
-      */}
-      {product.surfaces.length > 0 && (
-        <Section
-          kind="ask"
-          label="어디서 쓰나"
-          aside={
-            <ul className="guide-surfaces">
-              {product.surfaces.map((surface) => (
-                <li key={surface}>{surface}</li>
-              ))}
-            </ul>
-          }
-        />
-      )}
-
-      {/*
-        **접습니다.** 이 서랍이 맨 아래로 내려 둔 절이고, 채운 배지 다섯이 한 칸에
-        몰려 기본 화면에서 가장 시끄러운 자리였습니다 — 배지를 손대지 않고(모양 셋이
-        등급을 지는 어휘입니다) 절을 닫으면 그 다섯이 첫 화면에서 사라집니다.
-        무엇보다 **주인공인 팁이 접혀 있는데 거드는 절이 펼쳐져 있는 것이 거꾸로**였고,
-        접기는 이 화면의 기본 문법인데(묶음도 팁 줄도 접힙니다) 그 문법이 한 층에만
-        걸려 있었습니다. 닫혀도 「5 +」로 몇 줄인지는 서고 첫 HTML에는 다 실려 나갑니다.
-      */}
-      {usage.length > 0 && (
-        <Section kind="ask" label="얼마이고 한도가 어떻게 차나" fold={usage.length}>
-          <div className="claim-list">
-            {usage.map((claim) => (
-              <ClaimRow key={claim.id} state={claimState(claim, today)} />
-            ))}
+      {facts && (
+        <section className="gl-read" id="facts" aria-labelledby="facts-title">
+          <div className="gl-read-head">
+            <h2 id="facts-title">{facts}</h2>
           </div>
-        </Section>
+          {models.length > 0 && (
+            <>
+              {both && <h3 className="gl-facts-sub">고를 수 있는 모델</h3>}
+              <ModelTable
+                product={product}
+                models={models}
+                contextOf={contextOf}
+                priceOf={priceOf}
+                today={today}
+              />
+            </>
+          )}
+          {plans.length > 0 && (
+            <>
+              {both && <h3 className="gl-facts-sub">요금제와 사용 한도</h3>}
+              <PlanList claims={plans} today={today} />
+            </>
+          )}
+        </section>
       )}
 
-      <OfficialLinks rows={links} />
-
-      {/* 같은 갈래를 맡은 다른 회사. **절이 아니라 한 줄입니다** — 견주는 축은 레일이 보여 줍니다. */}
-      {peers.length > 0 && (
-        <p className="guide-ledger-peers">
-          같은 자리:{' '}
-          {peers.map((peer, i) => (
-            <span key={peer.id}>
-              {i > 0 && ' · '}
-              <Link to={`/playbook/${peer.vendorId}/${peer.id}`}>{peer.name}</Link>
-              <span className="guide-peer-vendor">{guideVendorById(peer.vendorId)?.name}</span>
-            </span>
-          ))}
-        </p>
-      )}
-    </div>
+      <PeersSection product={product} />
+    </article>
   );
-}
-
-/**
- * **원장에는 늘 제품이 옵니다**(2026-09-28). 첫 화면 원장도 기업 원장도 걷었습니다 —
- * 둘 다 이 서랍이 파는 것(팁·값) 대신 요약만 서 있는 빈 화면이었고, `/playbook`과
- * 기업 주소는 `PlaybookPage`가 제품 하나로 풀어서 넘깁니다.
- */
-export function GuideLedger({ product, today }: { product: Product; today: string }) {
-  return <ProductLedger product={product} today={today} />;
 }

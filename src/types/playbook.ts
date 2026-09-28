@@ -85,6 +85,12 @@ export interface Product {
   officialUrl: string;
   /** 값을 다시 확인하러 여는 곳. 갱신 루틴이 여는 자리입니다. */
   docsUrl: string | null;
+  /**
+   * 제품 머리의 둘째 단추 이름. **`docsUrl`이 무엇인지를 손으로 적습니다** — URL로
+   * 추측하지 않습니다. `null`이면 단추가 안 섭니다(`docsUrl`이 없거나 `officialUrl`과
+   * 사실상 같은 곳일 때).
+   */
+  docsLabel: '문서' | '요금 안내' | null;
   /** API 표면이 있어 `audience: 'api'`인 팁이 이 제품에 서는가. */
   apiTips?: true;
   /**
@@ -314,7 +320,7 @@ export interface Claim {
   audience?: 'api';
   /** 한 줄 주장. */
   statement: string;
-  /** 화면에 나가는 값. `null`이면 화면에 「모름 · 공식 페이지에서 확인 →」으로 섭니다. */
+  /** 화면에 나가는 값. `null`이면 화면에 「문서에 없음」으로 섭니다. */
   value: string | null;
   /**
    * 왜 그런가. **`topic: 'habit'`(팁)에만 붙습니다.**

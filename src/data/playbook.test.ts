@@ -3,10 +3,12 @@ import {
   FRESHNESS_DAYS,
   claimState,
   daysBetween,
-  modelCell,
+  valueCell,
+  ageLayout,
   playbookChecks,
   playbookNavVisible,
   shownValue,
+  type ValueCell,
 } from './playbook';
 import { playbookClaims } from './playbookClaims';
 import { guideProducts } from './guideProducts';
@@ -137,18 +139,18 @@ describe('AI 가이드 — nav 문턱', () => {
 });
 
 /*
-  **모델 표의 칸이 상태 넷을 가르는가.**
+  **값 칸이 상태 넷을 가르는가**(모델 표와 요금 목록이 같은 `valueCell`을 쓴다).
 
   그 전에는 `claim.value ?? '모름'` 하나가 넷을 뭉갰다 — `shownValue`를 안 지나
   **만료된 값이 그대로 섰고**, 확인 로그가 없는 칸이 「모름」이라고 말했다.
-  「모름」은 **열어 봤는데 벤더가 안 적었다**는 뜻이라, 안 열어 본 칸이 그 말을 하면
-  이 서랍이 파는 구별이 화면에서 거짓이 된다.
+  「문서에 없음」은 **열어 봤는데 벤더가 안 적었다**는 뜻이라, 안 열어 본 칸이 그 말을
+  하면 이 서랍이 파는 구별이 화면에서 거짓이 된다.
 
   **지금 만료된 모델 값이 하나도 없다**(서른여덟이 다 `fresh`). 그래서 실제 데이터로는
   이 고침이 한 줄도 안 밟힌다 — 날짜를 밀어 여기서 밟는다. 안 그러면 값이 늙는 날
   (단가 60일 · 컨텍스트 90일)에야 드러난다.
 */
-describe('AI 가이드 — 모델 표의 칸', () => {
+describe('AI 가이드 — 값 칸', () => {
   const logged = playbookClaims.find(
     (c) => c.subject.kind === 'model' && c.value !== null && claimState(c, '2026-09-18').checkedAt,
   );
@@ -158,40 +160,94 @@ describe('AI 가이드 — 모델 표의 칸', () => {
   });
 
   it('주장이 없으면 빈 칸이다', () => {
-    expect(modelCell(undefined, '2026-09-18')).toEqual({ kind: 'none' });
+    expect(valueCell(undefined, '2026-09-18')).toEqual({ kind: 'none' });
   });
 
   it('확인이 싱싱하면 값을 적는다', () => {
     const c = logged!;
-    expect(modelCell(c, claimState(c, '2026-09-18').checkedAt!)).toEqual({
+    expect(valueCell(c, claimState(c, '2026-09-18').checkedAt!)).toEqual({
       kind: 'value',
       value: c.value,
+      soft: false,
+      ageDays: 0,
     });
   });
 
-  it('유효기간이 지나면 값이 사라지고 그렇게 적는다', () => {
+  it('유효기간이 가까우면 값은 서되 soft로 표시한다', () => {
+    const c = logged!;
+    const { soft, hard } = FRESHNESS_DAYS[c.volatility]!;
+    const at = new Date(claimState(c, '2026-09-18').checkedAt!);
+    at.setUTCDate(at.getUTCDate() + soft);
+    expect(soft).toBeLessThan(hard);
+    expect(valueCell(c, at.toISOString().slice(0, 10))).toMatchObject({
+      kind: 'value',
+      value: c.value,
+      soft: true,
+    });
+  });
+
+  it('유효기간이 지나면 값이 사라지고 「재확인 필요」라 적는다', () => {
     const c = logged!;
     const hard = FRESHNESS_DAYS[c.volatility]!.hard;
     const at = new Date(claimState(c, '2026-09-18').checkedAt!);
     at.setUTCDate(at.getUTCDate() + hard + 1);
-    const cell = modelCell(c, at.toISOString().slice(0, 10));
-    expect(cell).toEqual({ kind: 'note', text: '유효기간 지남' });
+    const cell = valueCell(c, at.toISOString().slice(0, 10));
+    expect(cell).toMatchObject({ kind: 'note', text: '재확인 필요' });
     /* 값이 흐려지는 것이 아니라 사라진다 — 문자열 어디에도 안 남는다. */
     expect(JSON.stringify(cell)).not.toContain(c.value!);
   });
 
-  it('확인 로그가 없으면 「모름」이 아니라 「확인 기록 없음」이다', () => {
-    expect(modelCell(fake('price'), '2026-09-18')).toEqual({
+  it('확인 로그가 없으면 「문서에 없음」이 아니라 「확인 전」이다', () => {
+    expect(valueCell(fake('price'), '2026-09-18')).toEqual({
       kind: 'note',
-      text: '확인 기록 없음',
+      text: '확인 전',
+      ageDays: null,
     });
   });
 
-  it('열어 봤는데 벤더가 안 적었으면 「모름」이다', () => {
+  it('열어 봤는데 벤더가 안 적었으면 「문서에 없음」이다', () => {
     const c = { ...logged!, value: null };
-    expect(modelCell(c, claimState(logged!, '2026-09-18').checkedAt!)).toEqual({
+    expect(valueCell(c, claimState(logged!, '2026-09-18').checkedAt!)).toMatchObject({
       kind: 'note',
-      text: '모름',
+      text: '문서에 없음',
     });
+  });
+
+  /*
+    **요금 줄도 같은 판정을 탑니다.** 그 전에는 요금 줄만 따로 판정해, 확인 로그가 없는
+    Claude Max 월 구독료에 「모름」과 「확인 기록 없음」이 한 줄에 함께 섰습니다 —
+    값이 `null`이면서 로그도 없는 줄은 「확인 전」 하나만 말해야 합니다.
+  */
+  it('값도 로그도 없는 줄은 「확인 전」 하나만 말한다', () => {
+    const c = { ...fake('price'), value: null };
+    expect(valueCell(c, '2026-09-28')).toEqual({ kind: 'note', text: '확인 전', ageDays: null });
+  });
+});
+
+/*
+  **표의 나이가 어디에 서는가**(`ageLayout`). 지금 확인 로그가 하루치뿐이라 실제 데이터로는
+  나이가 늘 하나다 — 루틴이 한쪽만 다시 여는 날에야 드러나는 자리를 여기서 밟는다.
+*/
+describe('AI 가이드 — 표의 나이', () => {
+  const v = (ageDays: number): ValueCell => ({ kind: 'value', value: 'x', soft: false, ageDays });
+  const unchecked: ValueCell = { kind: 'note', text: '확인 전', ageDays: null };
+  const none: ValueCell = { kind: 'none' };
+
+  it('확인된 칸의 나이가 하나면 캡션에 한 번 적는다 — 확인 전 칸이 섞여도', () => {
+    expect(ageLayout([[v(11), v(11)], [unchecked, none], [v(11), v(11)]])).toEqual({
+      caption: 11,
+      perRow: [null, null, null],
+    });
+  });
+
+  it('나이가 여럿이면 줄마다 적고, 한 줄 안에서 갈리면 가장 오래된 것을 적는다', () => {
+    expect(ageLayout([[v(11), v(3)], [v(3), v(3)], [unchecked, none]])).toEqual({
+      caption: null,
+      perRow: [11, 3, null],
+    });
+  });
+
+  it('확인된 칸이 하나도 없으면 아무 데도 안 적는다', () => {
+    expect(ageLayout([[unchecked, none]])).toEqual({ caption: null, perRow: [null] });
   });
 });

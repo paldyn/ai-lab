@@ -100,6 +100,15 @@ describe('AI 가이드 — 기업과 제품', () => {
   });
 
   /*
+    **둘째 단추는 `docsUrl`이 있어야 선다.** 이름만 있고 주소가 없으면 누를 곳 없는
+    단추가 서거나 조용히 사라진다 — 어느 쪽이 될지는 화면 코드가 정하므로 데이터에서 막는다.
+  */
+  it('docsUrl이 없으면 docsLabel도 없다', () => {
+    const bad = guideProducts.filter((p) => p.docsUrl === null && p.docsLabel !== null);
+    expect(bad.map((p) => `${p.id} — ${p.docsLabel}`)).toEqual([]);
+  });
+
+  /*
     **API 팁은 API를 부를 수 있는 제품에만 선다.** `apiTips`를 켠 제품에 SDK 표면이
     없으면 그 화면의 독자가 할 수 없는 행동을 권하게 된다 — `audience`를 둔 이유가
     통째로 거꾸로 선다.

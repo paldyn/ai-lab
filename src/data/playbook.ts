@@ -99,36 +99,69 @@ export function shownValue(state: ClaimState): string | null {
 }
 
 /**
- * 모델 표의 한 칸이 무엇을 말해야 하는가.
+ * 값 한 칸이 무엇을 말해야 하는가 — **모델 표와 요금 목록이 이것 하나만 씁니다.**
  *
  * **상태가 넷이고 뜻이 다 다릅니다.** 그 전에는 `claim.value ?? '모름'` 하나가 넷을
- * 뭉갰습니다 — `shownValue`를 안 지나 **만료된 값이 그대로 서 있었고**, 확인 로그가
- * 아예 없는 칸이 「모름」이라고 말했습니다. 「모름」은 **열어 봤는데 벤더가 안 적었다**는
- * 뜻이라, 안 열어 본 칸이 그 말을 하면 이 서랍이 파는 구별이 화면에서 거짓이 됩니다.
+ * 뭉갰고(모델 표), 요금 줄은 따로 판정해서 확인 로그가 없는 Claude Max 줄에 「모름」과
+ * 「확인 기록 없음」이 한 줄에 함께 섰습니다. 판정이 한 곳이면 그런 충돌이 안 납니다.
  *
  * | 상태 | 화면 | 뜻 |
  * | --- | --- | --- |
  * | 주장 없음 | 빈 칸 | 아직 세우지도 않았다 |
- * | `freshness: 'unknown'` | 확인 기록 없음 | 주장은 있는데 한 번도 안 열어 봤다 |
- * | `freshness: 'hard'` | 유효기간 지남 | 열어 봤지만 그 확인이 너무 늙었다 |
- * | `value: null` | 모름 | 열어 봤고, 벤더가 안 적었다 |
- * | 그 밖 | 값 | |
+ * | `freshness: 'unknown'` | 확인 전 | 주장은 있는데 한 번도 안 열어 봤다 |
+ * | `freshness: 'hard'` | 재확인 필요 | 열어 봤지만 그 확인이 너무 늙었다 |
+ * | `value: null` | 문서에 없음 | 열어 봤고, 벤더가 안 적었다 |
+ * | 그 밖 | 값 | `soft`면 곧 다시 볼 값 |
  *
- * **새로 쓰는 말이 하나도 없습니다** — 셋 다 `ClaimRow`가 이미 쓰는 문구입니다.
- * 차례가 중요합니다: 안 열어 본 것이 먼저이고 「모름」이 마지막입니다.
+ * **차례가 중요합니다** — 안 열어 본 것이 먼저이고 「문서에 없음」이 마지막입니다.
+ *
+ * **낱말을 2026-09-28에 갈았습니다.** 「확인 기록 없음」의 「기록」은 우리 로그 이야기였고,
+ * 요금 옆의 「유효기간 지남」은 요금제·쿠폰이 만료된 것처럼 읽혔고, 「모름」은 우리가
+ * 모른다는 뜻으로 읽혀 「열어 봤는데 문서에 없다」가 안 전해졌습니다.
  */
-export type ModelCell =
+export type ValueCell =
   | { kind: 'none' }
-  | { kind: 'value'; value: string }
-  | { kind: 'note'; text: string };
+  | { kind: 'value'; value: string; soft: boolean; ageDays: number }
+  | { kind: 'note'; text: '확인 전' | '재확인 필요' | '문서에 없음'; ageDays: number | null };
 
-export function modelCell(claim: Claim | undefined, today: string): ModelCell {
+export function valueCell(claim: Claim | undefined, today: string): ValueCell {
   if (!claim) return { kind: 'none' };
   const state = claimState(claim, today);
-  if (state.freshness === 'unknown') return { kind: 'note', text: '확인 기록 없음' };
-  if (state.freshness === 'hard') return { kind: 'note', text: '유효기간 지남' };
-  if (claim.value === null) return { kind: 'note', text: '모름' };
-  return { kind: 'value', value: claim.value };
+  if (state.freshness === 'unknown') return { kind: 'note', text: '확인 전', ageDays: null };
+  if (state.freshness === 'hard') return { kind: 'note', text: '재확인 필요', ageDays: state.ageDays };
+  if (claim.value === null) return { kind: 'note', text: '문서에 없음', ageDays: state.ageDays };
+  return {
+    kind: 'value',
+    value: claim.value,
+    soft: state.freshness === 'soft',
+    ageDays: state.ageDays ?? 0,
+  };
+}
+
+/**
+ * 표의 나이를 어디에 적나 — **캡션에 한 번, 아니면 줄마다.**
+ *
+ * 확인된 칸들의 나이가 하나면 캡션에 한 번 적습니다. 확인 전 칸은 칸 자신이 「확인 전」이라
+ * 말하므로 그 나이에 안 덮입니다(그래서 캡션에 「모두」를 안 씁니다).
+ *
+ * 나이가 여럿이면 줄마다 적고, **한 줄 안에서도 칸의 나이가 갈리면 가장 오래된 것**을
+ * 적습니다. 처음에는 그런 줄의 나이를 통째로 버렸는데, 그러면 캡션에도 줄에도 나이가 없어
+ * 「값에만 나이가 선다」가 조용히 깨졌습니다 — 컨텍스트는 모델 페이지에, 단가는 요금
+ * 페이지에 있어 루틴이 한쪽만 다시 여는 날이 곧 옵니다. 오래된 쪽을 적어야 늙은 값이
+ * 싱싱해 보이지 않습니다.
+ */
+export function ageLayout(rows: ValueCell[][]): { caption: number | null; perRow: Array<number | null> } {
+  const agesOf = (cells: ValueCell[]) =>
+    cells.flatMap((c) => (c.kind !== 'none' && c.ageDays !== null ? [c.ageDays] : []));
+  const all = [...new Set(rows.flatMap(agesOf))];
+  if (all.length <= 1) return { caption: all[0] ?? null, perRow: rows.map(() => null) };
+  return {
+    caption: null,
+    perRow: rows.map((cells) => {
+      const ages = agesOf(cells);
+      return ages.length > 0 ? Math.max(...ages) : null;
+    }),
+  };
 }
 
 export interface ProductFreshness {

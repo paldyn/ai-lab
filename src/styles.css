@@ -7231,127 +7231,58 @@ input:focus-visible {
 }
 
 /*
-  AI 가이드 — **붙박이 판과 그 아래 원장.**
+  AI 가이드 — **왼쪽 레일에서 고르고 오른쪽 원장에서 읽는다.**
 
-  세 번 갈아엎은 자리다. 카드 격자 → 페이지 이동도, 격자 아래 펼침 패널도,
-  기업 → 제품 아코디언 트리도 거절당했다. 공통 원인은 **고르는 자리가 크기나
-  모양을 바꾼다**는 것이었다 — 열리고 닫히며 아래를 밀어내면 눈이 목록을 다시
-  훑어야 하고 그게 「찾기 힘들다」다.
-
-  그래서 여기엔 **여닫히는 것이 하나도 없다.** caret도 아코디언도 필터 칩도 없고,
-  판은 주소 열셋 전부에서 같은 높이·같은 자리다. 고르면 잉크만 바뀐다.
-
-  **칠해진 면이 페이지에 하나뿐이다** — 고른 칸. 나머지는 전부 1px 헤어라인이다.
-  「지금 무엇이 켜져 있나」가 한눈에 읽히는 이유가 그 희소성이라, 여기에 다른
-  칠한 면을 더하면 그 값어치가 깎인다.
-
-  **2026-09-16에 조판을 다시 짰다.** 「좀 더 모던하게」라는 말에 새 색이나 면을
-  더하는 대신 잰 것이 셋이다 — 글자가 여덟 단(9.5~13.5px)으로 4px 안에 뭉쳐 단
-  사이가 평균 0.57px이었고, 여백이 열여섯 종이었고, 라벨 스물한 개가 여섯 규격으로
-  흩어져 있었다. 위계가 아니라 얼룩이다. 크기 다섯 단 · 여백 넷 · 라벨 한 급 ·
-  글줄 길이 하나로 다시 짰다. 그리고 **모노가 여기서 한 번도 켜진 적이 없었다** —
-  `--font-mono` 호출이 열여섯인데 그 이름의 정의가 0이었다.
+  레일(`.guide-rail-*`)과 원장(`.gl-*`)은 **조판 상수를 따로 쓴다.** 레일은 좁은 고르는
+  자리라 10~13.5px 단(`--gs-*`)이 맞고, 원장은 제품 하나를 다룬 짧은 글이라 12~26px 단
+  (`--gl-*`)이 맞다. 2026-09-28에 원장을 전면 개편하면서 갈랐다 — 한 벌을 둘이 나눠
+  쓰던 동안 원장 최상위 절 이름이 레일 라벨과 같은 10px 모노로 서 있었고, 그래서 이
+  서랍에서 가장 큰 층이 가장 작은 글자였다.
 */
 
 /*
-  이 서랍의 조판 상수. 값이 라이트·다크에서 같아 팔레트 블록에 둘 이유가 없고
+  레일의 조판 상수. 값이 라이트·다크에서 같아 팔레트 블록에 둘 이유가 없고
   (파일 앞쪽 두 번째 `:root` 주석과 같은 이유), 쓰는 곳이 이 서랍 하나뿐이라
   전역이 아니라 서랍에 건다.
 */
 .guide-page {
-  /*
-    크기 다섯 단. **라벨은 한 급이고 글꼴만 둘이다** — 같은 급에서 모노가 sans보다
-    시각적으로 크게 앉아 10 : 11이 한 칸으로 맞는다. 나머지 단은 2.5 / 2.5 / 10.5px
-    벌어진다.
-  */
-  --gs-mono: 10px; /* 모노 라벨 */
-  --gs-label: 11px; /* sans 라벨 — 수 바로 아래 */
-  --gs-body: 13.5px; /* 본문·표 설명 */
-  --gs-lead: 16px; /* 리드 문장, 칸 이름 */
-  --gs-big: 26px; /* 수와 제목. 글꼴과 무게로 갈린다 */
-
-  /*
-    **모델 표의 수. 단이 아니라 광학 보정이다**(2026-09-18) — `.guide-tip-code`가
-    이미 쓰는 그 규칙이고, 그래서 px이 아니라 비율로 적는다. 13.5px Wanted Sans의
-    x-높이가 6.80이고 JetBrains Mono는 12.42px에서 6.83이다(0.4% 차). 곧 **옆
-    모델 이름과 같은 크기로 보이는 모노**다.
-
-    **10px에서 올린 것이 이 표의 핵심이다.** 표에서 주인공은 수인데 이름이
-    13.5/600/strong이고 수가 10/400/muted라 계급이 거꾸로 서 있었다 — 「모던하지
-    않다」를 절 라벨에서 진단했던 그 고장이 절 **안**에도 있었다. 색으로는 여전히
-    한 단 아래다(`--text-dim`·`--text-muted`), 그래서 이름이 먼저 읽힌다.
-
-    `--gs-body`로 「정리」하지 마라 — 13.5px 모노는 x-높이 7.43이라 제 옆
-    이름보다 9% 커 보인다. 맞추는 것이 px이 아니라 x-높이다.
-  */
-  --gs-num: calc(var(--gs-body) * 0.92); /* 12.42px — 모노 수 */
+  --gs-mono: 10px; /* 모노 라벨 — 기업 머리글 */
+  --gs-body: 13.5px; /* 제품 이름 */
 
   /* 여백 넷. 2배씩 오른다. 예외를 두지 않는다. */
   --gs-r1: 6px; /* 한 덩이 안 */
   --gs-r2: 12px; /* 라벨 → 그 내용 */
   --gs-r3: 24px; /* 덩이 → 덩이 */
-  --gs-r4: 48px; /* 절 → 절 */
+  --gs-r4: 48px; /* 레일 → 원장 */
+}
+
+/*
+  원장의 조판 상수. **이 단 밖의 값을 안 쓴다.**
+
+  크기 넷 — 12 · 14.5 · 16 · 26. 제품 이름(h1)만 사이트의 상세 제목 규격(자격증·글과
+  같은 2rem → 2.6rem)을 쓴다. **원장 안에는 12px 아래 글자가 없다** — 옛 원장의 10px
+  모노 라벨이 「흐리고 가늘다」의 절반이었다. 그리고 **한글이 드는 자리에는 모노를
+  안 쓴다** — 모노는 코드·키·표의 수에만 선다.
+*/
+.guide-pane {
+  --gl-meta: 12px; /* 출처·나이·표 머리 */
+  --gl-note: 14.5px; /* 이유·순간 라벨·값 이름 */
+  --gl-body: 16px; /* 팁 문장·모델 이름·소개 */
+  --gl-head: 26px; /* 절 이름(h2) */
+
+  --gl-r1: 6px; /* 한 덩이 안 — 팁의 세 줄 사이 */
+  --gl-r2: 12px; /* 이름 → 그 내용 */
+  --gl-r3: 24px; /* 팁 → 팁 */
+  --gl-r4: 48px; /* 순간 → 순간 */
+  --gl-sect: 72px; /* 절 → 절. 집의 `.section-space`와 같은 값이다 */
 
   /*
-    글줄 길이 하나. 62ch는 숫자 0의 폭을 세는 단위라 한글과 무관했고, 네 곳이
-    581·484·620px 세 갈래로 끊겨 원장 오른쪽에 계단을 만들었다.
-    592px은 16px 리드 37자 · 13.5px 주석 43자 — 둘 다 한 줄에 35~45자 안이다.
+    글줄 하나. 16px 팁 문장이 한 줄에 45자 안팎이다. 표와 목록도 같은 폭에서 끝나
+    오른쪽 끝이 한 세로줄에 선다 — 옛 원장은 592·736·847 세 자리에서 끝나 계단이 졌다.
   */
-  --gs-measure: 592px;
-
-  /*
-    원장 안 표의 라벨 열. `.guide-links`가 이 값을 써서 라벨과 내용이 한 세로줄에
-    선다. 첫 화면의 「근거 세 등급」(`.guide-tiers`)도 같은 열을 썼는데, 첫 화면 원장을
-    2026-09-28에 걷으면서 함께 사라졌다.
-
-    **한때 판의 기업 열과도 같은 값이었다**(2026-09-16). 판을 버리고 레일로 가면서
-    그 짝은 사라졌고 지금은 원장 안에서만 맞춘다 — 레일은 폭이 224px이라 이 값과
-    무관하다. 옛 근거가 주석에 남아 있으면 다음 사람이 레일 폭을 여기에 맞추려 든다.
-  */
-  --guide-col: 104px;
-
-  /*
-    모델 표의 단가 열. **`--guide-col`을 안 쓴다** — 그쪽은 「1.05M 토큰」·
-    「확인 기록 없음」이 드는 라벨·컨텍스트 열이고, 단가는 가장 긴 것이 `$0.20`
-    다섯 자다. 104px을 주면 입력과 출력 사이가 60px 넘게 벌어져 짝으로 안 읽힌다.
-    56px은 12.42px 모노 다섯 자(약 40px)에 여유 16px이다.
-  */
-  --guide-num: 56px;
-
-  /*
-    팁 줄 오른쪽의 칩 자리. **고정값인 것이 계약이다** — 여닫을 때 문장이 다시 안
-    감기는 것을 이 값이 붙들지, 글자 수가 붙들지 않는다. 테두리를 걷어낸 뒤로
-    칩은 글자뿐이라 「이유 +」가 약 34px이고 14px을 띄워 48px을 비운다.
-
-    **왼쪽 번호 기둥도 같은 값을 쓴다**(2026-09-17). 둘이 한 상수를 쓰므로 아래
-    `--gs-block`의 계산이 좌우 대칭이 된다. `--gs-r4`도 48px이지만 그쪽은 「절과
-    절 사이」를 뜻하는 여백 축이라, 겸용하면 절 간격을 손보는 순간 기둥이 따라
-    움직인다.
-  */
-  --guide-chip: 48px;
-
-  /*
-    괘선이나 면을 가진 것이 서는 폭. **새 수가 아니라 이미 있는 둘의 합이다** —
-    글줄 592px에 기둥 48px 셋을 더한 736px이다. 셋인 이유가 있다: 왼쪽 여백 ·
-    칩 자리 · 오른쪽 여백. **가운데 하나는 잉크가 쓰고 바깥 둘은 비운다.**
-
-    **처음엔 기둥 둘(688px)이었다가 하루 만에 늘렸다**(2026-09-18). 오른쪽 여백을
-    안 두면 「이유 +」가 칠의 오른쪽 끝에 딱 붙는데, 왼쪽은 48px이 비어 있어
-    **펼친 칠의 좌우 공백이 48 : 0이 됐다.** 글줄을 592로 지키면서 좌우를 맞추는
-    길은 폭을 한 기둥 더 주는 것뿐이다 — 줄이면 글줄이 544로 깎이고, 안 늘리면
-    칠이 한쪽으로 쏠린다. 덤으로 원장 오른쪽 여백이 1440px 창에서 159 → 111px이다.
-
-    **폭 값은 이 둘뿐이다**(2026-09-17). 그 전에는 592(`--gs-measure`가 블록에까지
-    걸린 여섯)와 734(`.claim-list`·`.guide-stats`, 캡이 없어 원장 폭을 다 쓰던 것)
-    둘로 끝나는 자리가 갈렸고, **원장 오른쪽 공백의 정체가 빈 폭이 아니라 그
-    「끝나는 자리가 둘」이었다.** 1102px 창에서 142px이던 구멍이 46px이 되고,
-    남는 46px은 구멍이 아니라 여백이다 — 잉크가 그 앞에서 한 줄로 서기 때문이다.
-
-    **산문은 여전히 592다.** 688에서는 한 줄이 51자가 되어 35~45자를 넘는다.
-    블록이 688이고 글줄이 592인 것이 어긋남이 아니라, 블록 안에 기둥 둘이
-    서 있다는 뜻이다.
-  */
-  --gs-block: calc(var(--gs-measure) + var(--guide-chip) * 3);
+  --gl-measure: 720px;
+  /* 표의 값 쪽 폭. 모델 표의 수 열 셋과 요금 목록의 값 열이 같은 x에서 시작한다. */
+  --gl-val: 320px;
 }
 
 /* ── 2단 ────────────────────────────────────────────────────── */
@@ -7576,736 +7507,485 @@ input:focus-visible {
 /* ── 원장 ───────────────────────────────────────────────────── */
 
 /*
-  원장. 판 아래에서 **내용만** 갈린다 — 자리도 크기도 안 움직인다.
+  원장 — **제품 하나를 다룬 짧은 가이드**(2026-09-28 전면 개편).
 
-  **한 칸이다.** 2단으로 짜 봤더니 왼쪽이 250px에서 끝나는데 오른쪽 상자만 늘어나
-  반씩 빈 두 칸으로 읽혔고, 그 테두리 상자가 페이지에서 두 번째로 칠해진 면이 됐다.
-  2단은 값이 실제로 생겨 옆칸에 신선도 미터가 설 때 되살린다 — 지금 노트 0편,
-  주장 0개, 확인 로그 0일이라 그 조건이 아직 아니다.
+  옛 원장은 데이터 분류표였다. 팁 문장이 `<details>` 두 겹 아래라 첫 화면에 한 줄도
+  없었고, 보이는 것은 10px 모노 라벨·괘선·「2 +」 같은 여닫이 장치였다. 지금은
+  **접히는 것이 하나도 없고**, 행동 → 이유 → 출처가 크기와 색으로 갈린다.
 
-  판에서 여기까지 48 + 1 + 24 = 73px이다. 집의 `.section-space`가 72px이라
-  판과 원장이 「한 페이지의 두 절」로 읽힌다. 34 + 28 = 63px은 절 간격도 블록
-  간격도 아닌 중간값이었다.
+  **면을 안 칠한다.** 원장 안 `--surface`는 0이다. 영역은 절 머리 아래 괘선 한 줄과
+  72px 절 간격이 가른다. 괘선은 절 머리 · 표의 줄 사이 · 다른 제품 줄 사이뿐이다.
 */
-/*
-  **가르는 선은 이제 읽는 칸(`.guide-pane`)이 들고 있다.** 판이 위에 있던 시절에는
-  원장이 제 윗선을 그렸는데, 2단이 되면서 그 선이 칸 안쪽에 한 겹 더 그어졌다.
-*/
-.guide-ledger {
-  animation: guide-ledger-in 120ms ease;
+.gl-ledger {
+  max-width: var(--gl-measure);
+  animation: gl-ledger-in 120ms ease;
 }
 
-@keyframes guide-ledger-in {
+@keyframes gl-ledger-in {
   from {
     opacity: 0;
   }
 }
 
-/*
-  700은 Wanted Sans에서 브라우저 기본 <b>로 읽힌다 — 이 글꼴은 400과 700이 4.7%밖에
-  안 벌어진다. 무게로 우기는 대신 크기로 세운다. 집의 `.article-prose h2`와 같은 값이고,
-  수와 같은 26px이지만 하나는 sans 문구이고 하나는 모노 한 글자라 안 헷갈린다.
-*/
-/*
-  머리 — 마크와 이름이 한 줄에 선다. **레일에서 고른 줄과 같은 마크**라, 눈이 왼쪽에서
-  오른쪽으로 옮겨 갈 때 「같은 것을 보고 있다」가 그림으로 이어진다.
+/* ── 머리 ── */
 
-  가운데 맞춤이 아니라 **위쪽 맞춤**이다 — 이름이 두 줄로 감기는 제품(Google
-  Antigravity)에서 가운데로 맞추면 마크가 두 줄 사이로 내려간다.
+.gl-kicker {
+  color: var(--text-muted);
+  font-size: var(--gl-meta);
+  letter-spacing: 0.02em;
+}
+
+/*
+  제품 이름이 이 화면의 h1이다. 사이트 상세 제목(자격증·글)과 같은 규격이라 서랍이
+  달라도 「한 편의 머리」로 읽힌다. 마크는 **첫 줄 가운데**에 붙는다 — 두 줄로 감기는
+  이름에서 마크가 두 줄 사이로 내려가면 이름이 둘로 쪼개져 보인다.
 */
-.guide-ledger-head {
+.gl-title {
   display: flex;
   align-items: flex-start;
-  gap: var(--gs-r2);
-}
-
-/*
-  마크는 이름의 첫 줄 한가운데에 앉는다. 레일의 마크가 14px이라 딱 두 배이고,
-  그래서 왼쪽과 오른쪽 마크가 한 계열로 읽힌다.
-*/
-.guide-ledger-mark {
-  flex-shrink: 0;
-  display: block;
-  width: 28px;
-  height: 28px;
-  margin-top: calc((var(--gs-big) * 1.35 - 28px) / 2);
-}
-
-.guide-ledger-mark img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-}
-
-.guide-ledger-title {
+  gap: var(--gl-r2);
+  margin-top: var(--gl-r2);
   color: var(--text-strong);
-  font-size: var(--gs-big);
-  font-weight: 450;
-  /* 한글은 em 상자를 꽉 채워 1.2~1.3에서 줄이 붙어 보인다. */
+  font-size: 2rem;
+  font-weight: 500;
   line-height: 1.35;
-  letter-spacing: -0.02em;
-  text-wrap: balance;
+  letter-spacing: -0.01em;
 }
 
-/*
-  이름과 회사·갈래 라벨이 **한 줄**에 선다(2026-09-18). 이름은 늘고 줄고, 라벨은
-  제 폭을 지키며 오른쪽 끝에 붙는다 — 그 끝이 아래 줄들의 수·칩과 같은 688px이다.
-
-  **밑줄 맞춤이다.** 바깥 머리는 `flex-start`라야 이름이 두 줄로 감기는 제품
-  (Google Antigravity)에서 마크가 두 줄 사이로 안 내려가는데, 그 줄 안에서
-  이름과 라벨은 밑줄이 맞아야 라벨이 제목에 얹힌 꼬리표로 읽힌다. 겹을 하나 더
-  두어 바깥은 `flex-start`, 안은 `baseline`으로 가른다.
-*/
-.guide-ledger-headline {
-  flex: 1 1 auto;
-  display: flex;
-  align-items: baseline;
-  gap: var(--gs-r2);
-  justify-content: space-between;
-  min-width: 0;
+@media (min-width: 640px) {
+  .gl-title {
+    font-size: 2.6rem;
+  }
 }
 
-.guide-ledger-headline .guide-ledger-meta {
-  flex-shrink: 0;
-  white-space: nowrap;
+/* 제품을 바꾼 뒤 포커스만 받는 자리다(`tabIndex={-1}`). 누를 수 있는 것처럼 테를 두르지 않는다. */
+.gl-title:focus {
+  outline: none;
 }
 
-.guide-ledger-meta {
-  color: var(--text-muted);
-  font-family: var(--font-mono);
-  font-size: var(--gs-mono);
-  letter-spacing: 0.08em;
+.gl-title .gl-mark {
+  width: 32px;
+  height: 32px;
+  margin-top: calc((1.35em - 32px) / 2);
 }
 
-.guide-ledger-blurb {
-  margin-top: var(--gs-r2);
-  max-width: var(--gs-measure);
+.gl-dek {
+  margin-top: var(--gl-r2);
+  max-width: 38rem;
   color: var(--text-dim);
-  font-size: var(--gs-lead);
-  line-height: 1.75;
+  font-size: var(--gl-body);
+  font-weight: 300;
+  line-height: 1.9;
   text-wrap: pretty;
 }
 
-/*
-  절 머리글. 48 : 12 = 4:1이면 라벨이 아래 내용에 붙은 것이 눈에 보이고 절과 절이
-  갈린다. 28 : 10 = 2.8:1은 어느 쪽에도 안 붙어 여덟 덩이가 한 덩이로 뭉친다.
-*/
-.guide-ledger-label {
-  color: var(--text-muted);
-  font-family: var(--font-mono);
-  font-size: var(--gs-mono);
-  font-weight: 500;
-  letter-spacing: 0.08em;
+.gl-facts {
+  display: grid;
+  grid-template-columns: 6.5rem minmax(0, 1fr);
+  gap: var(--gl-r2);
+  align-items: baseline;
+  margin: var(--gl-r3) 0 0;
 }
 
-/*
-  「만나는 자리」. 상자 넷을 지우면 **테두리 열여섯 변**이 사라진다. 이 네 낱말은
-  누를 수 없는데 알약처럼 생겨 칩으로 오해됐고, 4px 반지름은 이 화면의 세 번째
-  반지름 언어였다. 가운뎃점으로 이은 한 줄이 바로 아래 문장(「별개 제품이
-  아닙니다」)과도 맞는다 — 구분자는 집의 `.cert-notes li::before`와 같은 표기다.
-*/
-.guide-surfaces {
+.gl-facts dt {
+  color: var(--text-muted);
+  font-size: var(--gl-meta);
+}
+
+.gl-facts dd {
+  margin: 0;
+  color: var(--text);
+  font-size: var(--gl-note);
+}
+
+.gl-head-links {
   display: flex;
   flex-wrap: wrap;
-  margin-top: var(--gs-r2);
-  color: var(--text-dim);
-  font-size: var(--gs-body);
+  align-items: center;
+  gap: 8px;
+  margin-top: var(--gl-r3);
 }
 
-.guide-surfaces li + li::before {
-  margin-inline: var(--gs-r1);
+/* 나가는 단추. 누르면 새 창이 열리는 곳이라 화살표가 오른쪽 위를 가리킨다. */
+.gl-head-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  height: 36px;
+  padding: 0 14px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  color: var(--text);
+  font-size: var(--gl-note);
+  text-decoration: none;
+  transition:
+    border-color 150ms ease,
+    color 150ms ease;
+}
+
+.gl-head-link svg {
   color: var(--text-muted);
-  content: '·';
+  transition: color 150ms ease;
+}
+
+.gl-head-link:hover,
+.gl-head-link:hover svg {
+  border-color: var(--text-muted);
+  color: var(--brand-text);
 }
 
 /*
-  팁 목록. **이 서랍이 실제로 파는 것이라 가장 먼저, 가장 읽기 좋게 섭니다.**
-
-  **접힌 줄에는 행동만 남습니다.** 무게가 어디 있었는지 재고 그은 선입니다 — 문장은
-  자수 중앙 49인데 이유는 중앙 94에 최대 281입니다. 그것을 접으면 Claude Code
-  열여덟 개가 약 108줄에서 약 54줄이 됩니다.
-
-  접는 선은 픽셀이 아니라 뜻입니다. 밖에는 「무엇을 하라」와 「언제 안 통하나」,
-  안에는 「왜 그런가」와 출처입니다. 그래서 반례가 저절로 밖에 남습니다.
+  안으로 가는 링크는 단추가 아니라 밑줄 글자다. 나가는 것(↗, 테두리)과 모양·방향이
+  달라야 누르기 전에 갈린다. 글자는 도착하는 절의 이름과 같다.
 */
-
-/*
-  절 머리. **두 축의 제목이 헷갈리면 안 된다.** 「이렇게 쓰면 아낀다」·「이렇게 쓰면
-  잘 쓴다」로 뒀더니 같은 꼴에 끝 글자만 달라 **같은 제목의 다른 글**로 읽혔다.
-  이름을 주어·동사가 둘 다 다르게 바꾸고(토큰을 아끼다 / 제대로 시키다), 그 아래
-  한 줄 리드를 붙여 무엇이 다른지를 그 자리에서 말한다. 사이에 「결과를 좋게 하는
-  법」을 한 번 거쳤는데 「좋게 한다」가 아무것도 안 가리켜 소원처럼 읽혔다.
-
-  **절 사이 간격도 벌렸다**(`--gs-r4`의 두 배). 괘선 하나로는 두 절이 이어진 목록으로
-  보인다 — 여기가 화면에서 가장 크게 갈리는 자리다.
-
-  **거르개는 걷어냈다**(2026-09-17). 등급으로 거르는 칩(전체·공식·체감)이 이 줄
-  오른쪽에 섰는데, 읽는 사람이 묻는 것은 「공식이냐 체감이냐」가 아니라 「지금 뭘
-  하면 되냐」다 — 축이 질문으로 바뀌면서 거르개만 옛 축에 남아 있었다.
-  등급은 줄마다 배지로 그대로 선다.
-*/
-/*
-  **괘선이나 면을 가진 것은 전부 같은 오른쪽 끝에 선다**(2026-09-17). 592에서
-  끊기던 팁·모델·링크·등급도, 캡이 없어 원장 폭을 다 쓰던 값 목록과 계기판도
-  전부 688에서 끝난다. 「우측에 빈 공간이 너무 많다」의 정체가 빈 폭이 아니라
-  **끝나는 자리가 둘**이었다.
-*/
-.guide-ledger-head,
-.guide-models,
-.guide-links,
-.claim-list {
-  max-width: var(--gs-block);
+.gl-head-jump {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  margin-left: auto;
+  color: var(--text-dim);
+  font-size: var(--gl-note);
+  text-decoration: underline;
+  text-decoration-color: var(--text-muted);
+  text-underline-offset: 4px;
 }
 
-/*
-  **오른쪽 기둥을 비우는 것은 칠 안쪽뿐이다**(2026-09-18에 한 번 더 좁혔다).
+.gl-head-jump:hover {
+  color: var(--brand-text);
+  text-decoration-color: currentColor;
+}
 
-  처음에는 원장 안의 모든 잉크를 688에서 끊었다 — 칠의 좌우를 48 : 48로 맞추려면
-  칠 안의 칩이 688에서 서야 하고, 그러면 밖의 수·단가·호스트도 같은 세로줄이라야
-  한 열로 읽힌다고 봤다. 그런데 **칠이 없는 줄에서는 그 48px이 열이 아니라 구멍**
-  이었다: 절 머리의 괘선은 736까지 뻗는데 「3 +」가 그보다 48px 안쪽에 떠서, 수가
-  줄 끝에 안 붙고 허공에 매달린 것처럼 보였다.
+/* ── 절 ── */
 
-  그래서 선을 **칠을 기준으로** 다시 긋는다. **칠 안은 들여쓰고 칠 밖은 끝에
-  붙인다** — 안쪽(팁 문장·칩)은 48 : 48로 대칭이고, 바깥(절 머리의 수, 묶음의 수,
-  모델 단가, 호스트, 값 줄 근거)은 상자 끝 736에 붙는다. 두 열이 어긋나는 것이
-  아니라, **칠이 눈에 보이게 들어가 있으므로 그 안이 안쪽 열인 것이 읽힌다.**
-*/
+.gl-read {
+  margin-top: var(--gl-sect);
+  scroll-margin-top: 96px;
+}
 
-/*
-  질문 묶음. **이 서랍의 축입니다**(2026-09-17) — 그 전에는 팁 열여덟이 같은 굵기로
-  평평하게 한 줄로 섰고 거르개가 가르는 것은 등급이었습니다. 그런데 이 화면에 온
-  사람이 묻는 것은 「공식이냐 체감이냐」가 아니라 **「지금 뭘 하면 되냐」**입니다.
-
-  차례는 세션이 지나는 시간입니다 — 짐 싸기 → 첫 줄에서 → 일을 줄 때 → 끊는 자리.
-*/
-/*
-  **묶음이 제자리에서 펼쳐진다**(2026-09-17). 위에 목차를 따로 세우고 눌러서 내려가게
-  했다가 걷어냈다 — 같은 질문 넷이 한 화면에 두 벌 섰고, 누르면 화면이 점프해
-  「어디로 갔지」가 됐다. 제자리에서 열리면 목차와 내용이 한 몸이라 질문 넷이 그대로
-  요약이 되고 벌이 하나뿐이다.
-
-  닫힌 상태가 기본이라 첫 화면에 질문 넷과 레버만 선다 — 요점만 남는다.
-*/
-.guide-tip-group {
+.gl-read-head {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  padding-bottom: var(--gl-r2);
   border-bottom: 1px solid var(--guide-rule);
 }
 
-.guide-tip-group:first-of-type {
-  border-top: 1px solid var(--guide-rule);
-}
-
-/*
-  **닫힌 칸은 한 줄이다**(2026-09-17). 그 전에는 99px이었다 — 위아래 패딩 24씩에
-  질문 24, 레버가 제 줄로 27. 넷이 서면 400px이라 절 하나가 첫 화면을 통째로
-  먹었고, 접는 뜻이 「요점만 남기기」인데 요점이 두 줄이면 그건 요점이 아니다.
-  레버를 질문 줄로 올리고 패딩을 절반으로 내려 48px이 됐다.
-*/
-/*
-  **머리 바에서 글줄 폭을 뗀다**(2026-09-17). 여기는 산문이 아니라 표 한 줄이다
-  (번호 · 질문 · 레버 · 수). 표 줄을 글줄 폭에 가두는 바람에 **닫힌 목록** —
-  이 화면의 기본이자 첫 화면 — 에서 「4 +」가 592px에 서고 그 오른쪽이 통째로
-  비었다. 이제 수가 688px, 곧 아래 줄들의 칩과 같은 세로줄에 선다.
-  **패딩은 안 건드린다 — 닫힌 높이 48px 그대로다.**
-*/
-.guide-tip-group-head {
-  list-style: none;
-  cursor: pointer;
-  padding-block: var(--gs-r2);
-  max-width: none;
-}
-
-.guide-tip-group-head::-webkit-details-marker {
-  display: none;
-}
-
-.guide-tip-group-head:focus-visible {
-  outline: 2px solid var(--brand);
-  outline-offset: 2px;
-}
-
-/*
-  수. **여닫이 표시를 겸한다** — 닫히면 「4」, 열리면 「4 −」다. 셰브런을 따로 그리지
-  않는 것은 원장에 도형이 하나도 없어서다(괘선과 글자뿐이다).
-*/
-.guide-tip-count {
-  flex-shrink: 0;
-  color: var(--text-dim);
-  font-family: var(--font-mono);
-  font-size: var(--gs-mono);
-  letter-spacing: 0.04em;
-}
-
-.guide-tip-count::after {
-  content: attr(data-n) ' +';
-}
-
-.guide-tip-group[open] .guide-tip-count::after {
-  content: attr(data-n) ' −';
-}
-
-.guide-tip-group-head:hover .guide-tip-question,
-.guide-tip-group[open] .guide-tip-question {
+.gl-read-head h2 {
   color: var(--text-strong);
+  font-size: var(--gl-head);
+  font-weight: 500;
+  line-height: 1.3;
+  letter-spacing: -0.02em;
 }
 
-.guide-tip-group-head:hover .guide-tip-count {
-  color: var(--brand-text);
-}
-
-/* 열린 묶음의 줄들은 질문 아래로 한 칸 들어가 앉는다. */
-/* 칠과 묶음 아랫변 사이의 숨. 전에는 `--gs-r3`이라 위 12 : 아래 24로 어긋났다. */
-.guide-tip-group[open] .guide-tips {
-  margin-bottom: var(--gs-r2);
-}
-
-/*
-  질문. **팁 문장보다 한 급 큽니다**(16 : 13.5) — 묶음 머리와 그 안의 줄이 같은
-  크기면 층이 안 생기고, 그게 「평평하다」의 정체였습니다. 다만 굵기는 안 올립니다:
-  아래 공식 팁이 이미 600이라 머리까지 굵으면 둘이 경쟁합니다.
-
-  **번호가 이 줄에 함께 섭니다.** 그 위에 모노 별명을 한 줄 더 세웠다가 걷어냈습니다
-  (2026-09-17) — 질문이 이미 그 말을 하고 있어 같은 말을 두 번 하는 줄이었고, 넷이
-  시점(「첫 줄에서」)·비유(「짐 싸기」)·되풀이(「끊는 자리」)로 제각각이라 위계가
-  아니라 얼룩이었습니다.
-*/
-.guide-tip-question {
-  display: flex;
-  align-items: baseline;
-  gap: var(--gs-r2);
-  margin: 0;
-  color: var(--text-strong);
-  font-size: var(--gs-lead);
-  font-weight: 450;
-  line-height: 1.5;
-  text-wrap: pretty;
-}
-
-/*
-  질문 글자. **늘고 줄어드는 칸이 이것 하나다** — 번호·레버·수는 전부
-  `flex-shrink: 0`이라 남는 폭이 여기로 오고, 좁아지면 여기부터 감긴다.
-  `min-width: 0`이 없으면 flex 기본값(`auto`)이 내용 폭을 바닥으로 잡아
-  줄이 592px을 넘겨 버린다.
-*/
-.guide-tip-q {
-  flex: 1 1 auto;
-  min-width: 0;
-}
-
-/*
-  번호. **세로로 훑을 때 눈이 붙잡는 자리**라 하나만 브랜드색으로 켭니다.
-  **번호가 기둥입니다**(2026-09-17). 36px + 질문 줄의 gap 12 = 48px이고, 이것이
-  아래 `.guide-tips`의 들여쓰기와 **같은 값**입니다 — 질문 글자와 팁 문장이 한
-  세로줄에 서고 번호만 그 왼쪽에 걸립니다. 그 전에는 번호가 내용 폭이라 질문이
-  x≈25에서 시작하는데 팁 줄은 x=0이었습니다. **팁이 제 질문보다 왼쪽에 매달려**
-  「01의 내용」이 아니라 「01 다음 줄」로 읽히던 자리입니다.
-
-  기저를 안 박고 `flex-shrink: 0`만 두면 좁은 폭에서 질문이 번호를 밀어
-  「0 1」로 감깁니다.
-*/
-.guide-tip-no {
-  flex: 0 0 calc(var(--guide-chip) - var(--gs-r2));
-  color: var(--brand-text);
-  font-family: var(--font-mono);
-  font-size: var(--gs-mono);
-  letter-spacing: 0.12em;
-}
-
-/*
-  레버. **이 묶음의 팁들이 실제로 부르는 것**을 기계로 뽑아 세운 색인입니다
-  (`leversOf`) — 새로 쓰는 문장이 0이라 늙을 것이 없습니다. 「명령어를 나열하고
-  설명을」이 여기서 성립하되, 명령어가 없는 팁도 제자리를 잃지 않습니다.
-
-  알약이 아니라 **글자 그대로** 세웁니다 — 알약으로 그리면 누를 수 있는 것으로
-  읽힙니다. 이건 색인이지 컨트롤이 아닙니다.
-
-  **질문과 같은 줄에 섭니다**(2026-09-17). 제 줄을 갖던 동안 닫힌 칸이 99px이었고,
-  넷이 서면 절 하나가 첫 화면을 통째로 먹었습니다. 늘고 주는 칸은 질문뿐이라
-  (`.guide-tip-q`) 레버는 제 폭을 지키되 **남는 폭의 45%까지만** 먹고 넘치면
-  잘립니다 — 묶음마다 레버가 하나에서 여섯까지라(`steer`가 여섯) 자리를 안 막으면
-  질문이 밀립니다. 잘린 것은 사라지는 것이 아닙니다: 열면 팁 문장 안에 `<code>`로
-  전부 다시 서고, 닫힌 줄이 지는 몫은 **색인이 아니라 맛보기**입니다.
-*/
-.guide-tip-levers {
-  display: flex;
-  flex-shrink: 0;
-  gap: var(--gs-r2);
-  max-width: 45%;
-  padding-right: 1.25em;
-  overflow: hidden;
-  white-space: nowrap;
-  /*
-    **잘린 자리를 보이게 한다.** 그냥 자르면 `/rewin`처럼 낱말 중간에서 끊겨
-    고장으로 읽힌다. 흐려지면 「뒤가 더 있다」로 읽히고, 그 뒤는 열면 나온다.
-
-    오른쪽 패딩이 이 장치의 전부다 — 안 넘칠 때 상자는 내용 + 1.25em이라
-    흐려지는 것이 빈 패딩뿐이고, 넘쳐서 `max-width`에 걸릴 때만 흐림이 실제
-    글자를 먹는다. CSS로는 넘쳤는지 물을 수 없어 이렇게 우회한다.
-    `mask-image`를 못 쓰는 브라우저는 그냥 잘린다 — 감추는 것은 없다.
-  */
-  mask-image: linear-gradient(to right, #000 calc(100% - 1.25em), transparent);
-}
-
-.guide-tip-levers code {
+.gl-read-count {
   color: var(--text-muted);
-  font-family: var(--font-mono);
-  font-size: var(--gs-mono);
-  letter-spacing: 0.04em;
+  font-size: var(--gl-note);
+}
+
+.gl-read-head + .gl-tips,
+.gl-read-head + .gl-situation-block {
+  margin-top: var(--gl-r3);
+}
+
+.gl-situation-block + .gl-situation-block {
+  margin-top: var(--gl-r4);
 }
 
 /*
-  펼친 목록. **이 서랍에서 면을 쓰는 곳은 여기 하나다**(2026-09-17).
-
-  **칠이 질문 줄 밖이다.** `.guide-tip-group[open]`에 칠하면 머리까지 덮여, 묶음
-  둘을 함께 펼쳤을 때 같은 색 면 둘이 헤어라인 하나로만 맞붙는다 — 고치려던 증상이
-  한 층 위에서 돌아온다. 목록에만 두면 질문 줄 48px이 페이지 색으로 남아 01과 02
-  사이가 선이 아니라 **빈 띠**다.
-
-  토큰은 `--surface` — 레일에서 **고른 줄**이 쓰는 바로 그 면이다. 같은 값을 쓰면
-  「고른 것은 이 면으로 칠한다」가 왼쪽과 오른쪽에서 같은 말이 된다.
-
-  **면 혼자로는 못 진다**(라이트 1.11:1 · 다크 1.12:1). 영역을 실제로 지탱하는
-  것은 48px 들여쓰기와 묶음 자신의 위아래 괘선이고 **둘 다 테마를 안 탄다.**
-  면은 거든다 — 그래서 `forced-colors`에서 칠이 Canvas로 꺼져도 구역이 남고,
-  되돌리는 규칙을 따로 안 둔다.
-
-  `margin-top: 0`이라 칠이 질문 줄에 매달린다 — 사이 12px은 머리의
-  `padding-bottom`이다. 위아래 `--gs-r1`은 줄 사이 24px보다 좁아야 첫 줄이
-  이웃이 아니라 가장자리에 붙어 보이기 때문이다.
-
-  **좌우가 같은 값이다**(2026-09-18). 오른쪽을 0으로 두었더니 「이유 +」가 칠의
-  끝에 딱 붙어 48 : 0이 됐다 — 왼쪽은 들여쓰기라 넓고 오른쪽은 아예 없어,
-  영역이 한쪽으로 쏠려 보였다. 지금은 배지가 왼쪽 변에서 48px, 칩이 오른쪽
-  변에서 48px이다.
+  **순간 라벨은 팁 문장보다 작고 흐리다.** 헤딩이 팁보다 크면 라벨과 팁이 번갈아 서며
+  목차처럼 읽힌다. 무게(600)와 위 48px 여백이 이것을 무리의 머리로 세운다.
 */
-.guide-tips {
-  margin-top: 0;
-  max-width: none;
-  background: var(--surface);
-  padding: var(--gs-r1) var(--guide-chip);
-}
-
-/*
-  **바깥 변 둘을 걷고 사이만 남깁니다**(2026-09-17). 위아래 끝은 묶음의 괘선과
-  칠이 이미 긋고 있어, 거기 선을 또 그으면 머리 아래 → 줄 사이 → 바닥까지 같은
-  굵기의 선 여섯이 연달아 섭니다. 그것이 「실선이 너무 많이 보인다」의 정체였습니다.
-  남는 선은 전부 x=48에서 시작하므로 **영역의 왼쪽 끝과 한 번도 안 만납니다** —
-  계급이 굵기가 아니라 자리로 갈립니다.
-
-  **칩 자리를 줄 바깥으로 옮깁니다.** 그동안 `.guide-tip-head`가 48px을 먹어 팁
-  문장만 몰래 544px이었습니다(글줄이 세 갈래였던 자리입니다). 밖으로 옮기면
-  688 − 48(들여쓰기) − 48(칩 자리) = **정확히 592**입니다.
-
-  **계약은 그대로 삽니다.** 칩이 `position: absolute`이고 담는 상자가 이 줄의
-  **패딩 상자**라 `right: 0`은 여전히 x=688이고, 비워 둔 48px도 여전히 고정값입니다.
-*/
-.guide-tip {
-  position: relative;
-  padding-block: var(--gs-r2);
-  padding-right: var(--guide-chip);
-}
-
-.guide-tip + .guide-tip {
-  border-top: 1px solid var(--guide-rule);
-}
-
-/*
-  접힌 줄. **열어도 이 줄의 높이가 안 바뀌는 것**이 이 설계의 계약입니다 — 칩 자리를
-  `--guide-chip`으로 미리 비우고 칩을 그 위에 절대 위치로 앉히므로 「이유 +」가
-  「이유 −」로 바뀌어도 문장이 다시 안 감깁니다. 붙드는 것은 글자 수가 아니라 이
-  고정값입니다.
-
-  **비우는 자리가 이 줄이 아니라 한 겹 바깥(`.guide-tip`)입니다**(2026-09-17).
-  여기서 먹으면 팁 문장만 592가 아니라 544px이 되어 글줄이 갈립니다.
-
-  **flex로 안 짭니다** — summary를 flex로 만들면 인라인 자식이 각각 항목이 되어
-  문장이 조각납니다(답 토글에서 이미 밟은 자리입니다). list-item 그대로 두고
-  마커만 지웁니다.
-*/
-.guide-tip-head {
-  list-style: none;
-  cursor: pointer;
-  color: var(--text-strong);
-  font-size: var(--gs-body);
+.gl-situation {
+  scroll-margin-top: 96px;
+  color: var(--text-dim);
+  font-size: var(--gl-note);
   font-weight: 600;
-  line-height: 1.75;
-  text-wrap: pretty;
+  line-height: 1.5;
 }
 
-.guide-tip-head::-webkit-details-marker {
-  display: none;
+.gl-situation + .gl-tips {
+  margin-top: var(--gl-r2);
 }
 
-.guide-tip-head:focus-visible {
-  outline: 2px solid var(--brand);
-  outline-offset: 2px;
-  border-radius: 2px;
+/* ── 팁 ── */
+
+.gl-tips {
+  display: grid;
+  gap: var(--gl-r3);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.gl-tip {
+  scroll-margin-top: 96px;
+}
+
+.gl-tip-do {
+  color: var(--text-strong);
+  font-size: var(--gl-body);
+  font-weight: 500;
+  line-height: 1.65;
+}
+
+.gl-tip-why {
+  margin-top: var(--gl-r1);
+  color: var(--prose-text);
+  font-size: var(--gl-note);
+  line-height: 1.8;
+}
+
+.gl-tip-src {
+  margin-top: var(--gl-r1);
+  font-size: var(--gl-meta);
+  line-height: 1.5;
 }
 
 /*
-  「이유」 칩. 줄상자를 문장 첫 줄과 같은 높이로 만듭니다 — 그래야 `.guide-tip`의
-  padding-top 그대로가 곧 칩 자리가 되고 어림한 오프셋이 안 듭니다.
-
-  **테두리를 걷어냈습니다**(2026-09-17, 22개). 이 화면은 테두리에 뜻을 걸어
-  두었습니다 — 채움(공식) · 실선(실측) · 점선(체감). 뜻 없는 1px 실선 스물둘이
-  같은 화면에 서면 그 어휘가 묽어집니다. 펼친 몸에 세로선을 안 세운 것과 같은
-  규칙이고, 한 층 위의 여닫이 표시가 **이미 테두리 없는 모노 글자**였습니다.
-
-  높이 계산에서 `- 2px`이 빠진 것이 그 자국입니다 — 그 2px이 테두리 몫이었고,
-  이제 칩의 줄상자가 문장 첫 줄(13.5 × 1.75)과 똑같습니다.
+  출처 링크 셋(팁 · 요금 줄 · 캡션)은 한 모양이다 — 흐린 글자에 밑줄, 새 창 화살표.
+  누르는 높이를 위아래로 10px씩 넓힌다(12px 글자는 손가락에 안 맞는다).
 */
-.guide-tip-chip {
-  position: absolute;
-  top: var(--gs-r2);
-  right: 0;
-  user-select: none;
+.gl-tip-src a,
+.gl-plan-meta a,
+.gl-caption a {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  padding-block: 10px;
+  margin-block: -10px;
   color: var(--text-muted);
-  font-family: var(--font-mono);
-  font-size: var(--gs-mono);
-  font-weight: 400;
-  letter-spacing: 0.04em;
-  line-height: calc(var(--gs-body) * 1.75);
-  white-space: nowrap;
-  transition: color 0.15s;
-}
-
-/*
-  **부호가 상태를 집니다**(2026-09-17). 낱말은 하나이고 여닫이는 `+`/`−`가
-  말합니다 — 한 층 위의 묶음 표시(`.guide-tip-count`의 「4 +」)와 같은 어휘라,
-  같은 일을 하는 것이 두 규격이던 자리가 하나가 됩니다. 글리프 수가 같아
-  여닫아도 칩 폭이 안 흔들립니다.
-*/
-.guide-tip-chip::after {
-  content: '이유 +';
-}
-
-.guide-tip-fold[open] .guide-tip-chip::after {
-  content: '이유 −';
-}
-
-.guide-tip-head:hover .guide-tip-chip,
-.guide-tip-fold[open] .guide-tip-chip {
-  color: var(--brand-text);
-}
-
-/* 펼친 몸. **왼쪽에 색 띠나 세로선을 안 세웁니다** — 들여쓰기만 줍니다. */
-.guide-tip-body {
-  margin-top: var(--gs-r2);
-  padding-left: var(--gs-r2);
-}
-
-.guide-tip-detail {
-  color: var(--text-muted);
-  font-size: var(--gs-body);
-  line-height: 1.75;
-  text-wrap: pretty;
-}
-
-.guide-tip-detail + .guide-tip-detail {
-  margin-top: var(--gs-r1);
-}
-
-/* 출처와 나이. 그동안 배지의 `title`뿐이라 터치 기기에서 볼 방법이 없던 값입니다. */
-.guide-tip-source {
-  margin-top: var(--gs-r1);
-  color: var(--text-dim);
-  font-family: var(--font-mono);
-  font-size: var(--gs-mono);
-  letter-spacing: 0.04em;
-  line-height: 1.75;
-}
-
-.guide-tip-source a {
-  color: inherit;
   text-decoration: underline;
-  text-underline-offset: 2px;
+  text-decoration-color: var(--text-muted);
+  text-underline-offset: 3px;
 }
 
-.guide-tip-source a:hover {
+.gl-tip-src a:hover,
+.gl-plan-meta a:hover,
+.gl-caption a:hover {
   color: var(--brand-text);
-}
-
-.guide-tip-when {
-  margin-left: var(--gs-r1);
-  white-space: nowrap;
+  text-decoration-color: currentColor;
 }
 
 /*
-  원고의 백틱. 그동안 화면에 백틱이 글자 그대로 찍혔습니다(문장 11건).
+  **백틱은 코드 조각으로 그린다**(`withCode`). 옅은 판을 깔아 문장 안에서 명령어가
+  먼저 눈에 걸린다 — 「`/clear`를 먼저 친다」에서 칠 것이 무엇인지가 한눈에 보인다.
 
-  **`0.92em`은 조판 상수를 빠뜨린 자리가 아니라 광학 보정입니다** — 크기 단으로
-  되돌리지 마세요(2026-09-18에 재고 남깁니다). 13.5px 본문 안에서 두 글꼴의
-  x-높이를 재면 이렇습니다.
-
-    Wanted Sans 13.5px (둘러싼 글)   6.80
-    JetBrains Mono 12.42px (0.92em)  6.83   ← 0.4% 차
-    JetBrains Mono 13.5px            7.43   ← 9% 크다
-    JetBrains Mono 11px              6.05   ← 11% 작다
-
-  `--gs-body`로 맞추면 코드 조각이 제 문장보다 9% 커 보이고, `--gs-label`로
-  내리면 11% 작아 보입니다. **여기서 맞추는 것은 px이 아니라 x-높이**라 비율로
-  적습니다 — `em`이라 부모가 바뀌어도 따라갑니다.
-
-  그래서 화면에 실제로 선 글자 단을 세면 다섯이 아니라 여섯이 나옵니다. 그 하나는
-  **새 단이 아니라 같은 단의 다른 글꼴**입니다.
+  **크기는 0.92em이다 — 단이 아니라 광학 보정이다.** 둘러싼 Wanted Sans의 x-높이에
+  JetBrains Mono를 맞춘 비율이라(0.4% 차) px이 아니라 `em`으로 적는다. 1em으로
+  「정리」하면 코드가 제 문장보다 9% 커 보인다.
 */
 .guide-tip-code {
+  padding: 0.06em 0.2em;
+  border-radius: 3px;
+  background: var(--bg-subtle);
   font-family: var(--font-mono);
   font-size: 0.92em;
 }
 
-/*
-  종이에는 여닫이도 거르개도 없습니다. **거르기를 반드시 되돌립니다** — `:has()`
-  규칙은 fieldset이 안 보여도 그대로 맞으므로, 「공식」을 골라 둔 채 인쇄하면
-  체감 아홉 줄이 빠진 종이가 나오고 그렇게 만든 컨트롤은 같은 규칙이 지운 상태가
-  됩니다. 이 서랍이 「만료된 값을 흐리는 대신 지운다」로 지키려는 것과 정확히
-  반대 방향입니다.
-*/
-@media print {
-  .guide-tip-chip {
-    display: none;
-  }
-
-  .guide-tip {
-    display: block !important;
-  }
-
-  .guide-tip-fold::details-content {
-    content-visibility: visible;
-  }
+/* 키 조합은 누르는 것이라 `<kbd>` 판으로 선다. 아래 테두리를 두껍게 해 키캡으로 읽힌다. */
+.gl-keys {
+  white-space: nowrap;
 }
 
-
-/*
-  고를 수 있는 모델. **한 줄이 표의 한 행이다**(2026-09-18). 「좀 표로 하든지 그래프로
-  하든지」에 **표로** 답한 자리다 — 단가를 막대로 깔아 보고 접었다.
-
-  ① 그릴 것이 하나도 없는 화면이 있다(Gemini 앱 세 줄이 전부 무값).
-  ② 단가가 $0.20에서 $10까지 50배라 선형이면 정작 「갈아타라」고 권하는 싼 쪽이
-     슬리버로 사라지고, 로그면 돈 이야기가 거짓이 된다.
-  ③ 제품 안에서 정규화하면 **같은 모델이 화면마다 다른 길이로** 선다(Opus 5는
-     Claude Code에서 절반, Antigravity에서 꽉 참).
-  ④ 컨텍스트 창은 1M·1.05M·200K뿐이라 막대가 전부 같은 길이다.
-  ⑤ 모델 단가 열아홉 중 **일곱**에 단서가 붙어(화면에 실제로 서는 것은 넷)
-     **가리킬 크기 자체가 하나가 아니다** — 200K를 넘으면 두 배다.
-
-  **열이 뜻하는 것은 크기가 아니라 같은 자리다.** 같은 값이 열여섯 번 되풀이되는
-  것이 열에서는 **곧은 선**이 되고, Haiku의 「200K 토큰」이 그 선을 끊는다. 목록에서는
-  그냥 또 하나의 오른쪽 문자열이었다 — 막대로는 못 보이는 정보다.
-
-  **고칠 것은 그림이 없는 것이 아니라 열이 없는 것이었다.** 그 전에는 수 둘이
-  `.guide-model-nums` 한 덩이로 오른쪽 끝에 붙어, 컨텍스트 창의 x가 **옆 단가의
-  글자 수**(13~42자)를 따라다녔다 — Antigravity 다섯 줄에서 「1M 토큰」이 네 자리에
-  흩어져 섰다. 이제 각자 열을 갖고 그 덩이는 없앴다.
-
-  **선은 한 줄도 안 는다** — 세로줄도 칸 테두리도 안 세우고 행마다 아래 괘선 하나
-  그대로다(89 → 55 → 16으로 줄여 온 자리를 표가 뒤집지 않는다). **머리 행도 안
-  세운다** — 열 이름을 적으면 새로 쓰는 문장이 둘 생기는데, 바로 위 리드가 이미
-  「오른쪽 수는 입력 컨텍스트 창과 100만 토큰당 입력 / 출력 단가」라고 말한다.
-  리드를 목록 **앞**으로 올려 둔 것이 그 일을 하라는 뜻이었다 — **리드가 곧 머리
-  행이다.** 그래서 **열 차례를 바꾸면 리드 문장도 함께 바꿔야 한다.**
-*/
-/*
-  **여기 `border-top`을 되살리지 마라.** 파일 뒤쪽에서 `.guide-models, .guide-links,
-  .claim-list { border-top: 0 }`이 덮으므로 실제 화면에는 안 선다 —
-  선을 세는 파일에 죽은 1px 선언이 남아 있으면 다음 사람이 그 수를 잘못 센다.
-*/
-.guide-models {
-  margin-top: var(--gs-r2);
-}
-
-/*
-  **행 사이 여백을 안 준다.** 전에 있던 `2px`은 조판 상수 밖의 값이었고, 지금은
-  둘째 줄(쓰임)의 반각 여백이 그 일을 한다 — 13.5 × 1.75의 위쪽 몫이다. 값 하나가
-  줄고 칸 높이도 2px 준다.
-*/
-.guide-models li {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr);
-  column-gap: var(--gs-r2);
-  align-items: baseline;
-  border-bottom: 1px solid var(--guide-rule);
-  padding-block: var(--gs-r2);
-}
-
-/*
-  **열은 그 제품의 데이터가 세운다.** 한 줄도 그 값을 확인한 적이 없으면 클래스가
-  안 붙어 열이 격자에서 빠진다 — Gemini 앱은 이름 한 열이라 「고장난 표」가 안 되고,
-  「컨텍스트 창 모름」이 세 줄 겹쳐 서던 자리가 통째로 사라진다. 자격증 「시험 일정」
-  표에서 값 없는 칸을 열로 안 세우는 규칙 그대로다. **한 줄만 비는 것은 다르다**
-  (Codex Spark · GPT-OSS): 옆 넷이 차 있으므로 **빈 칸 자체가 말을 한다.**
-
-  **폭은 `--guide-col` 하나다.** 새 수가 아니라 `.guide-links`가 이미
-  쓰는 104px이라 원장 안의 표 둘이 같은 세로줄을 공유한다. 가장 긴 값이
-  「1.05M 토큰」과 「$0.20 / $1.20」이라 둘 다 든다.
-*/
-.guide-models.has-ctx li {
-  grid-template-columns: minmax(0, 1fr) var(--guide-col);
-}
-
-.guide-models.has-price li {
-  grid-template-columns: minmax(0, 1fr) var(--guide-num) var(--guide-num);
-}
-
-.guide-models.has-ctx.has-price li {
-  grid-template-columns: minmax(0, 1fr) var(--guide-col) var(--guide-num) var(--guide-num);
-}
-
-/*
-  **머리 행**(2026-09-18). 「표로 하든지 그래프로 하든지 이쁘게」를 두 번째로 들은
-  자리다. 전날 열을 세워 수를 한 세로줄에 맞췄지만 화면에 남은 것은 **오른쪽에
-  숫자가 붙은 목록**이었다 — 열 이름이 없고 단가가 `$2 / $12` 한 덩이라 열이 둘이
-  아니라 하나였고, 수는 10px 흐린 모노라 13.5px 이름 밑에서 잔주가 됐다.
-  표에서 주인공은 수인데 화면에서 가장 작고 흐린 것이 수였다.
-
-  **전날 「머리 행도 안 세운다 — 리드가 곧 머리 행이다」로 적어 둔 것을 뒤집는다.**
-  그 근거는 「열 이름을 적으면 새로 쓰는 문장이 둘 는다」였는데, 실제로는 **줄어든다**:
-  머리 행 네 낱말(모델·컨텍스트·입력·출력)이 서면서 리드에서 「오른쪽 수는 입력
-  컨텍스트 창과 100만 토큰당 입력 / 출력 단가입니다」 서른 자가 빠진다. 낱말 넷이
-  열 위에 서는 것과 문장 하나가 목록 위에 서는 것 중, 훑을 때 읽히는 것은 앞이다.
-  **그래서 리드는 이제 머리 행이 아니다 — 열 차례를 바꾸면 고칠 곳은 이 행이다.**
-
-  라벨은 10px 모노 `--text-muted`, 수는 12.42px다. 계급이 뒤집혀 있던 것을
-  바로 세운 것이지 라벨을 키운 것이 아니다.
-
-  **`<li>`로 둔다.** 목록 밖 형제로 빼면 격자 규칙을 한 벌 더 써야 하고, `<table>`로
-  바꾸면 쓰임(둘째 줄)과 단서(수 열을 가로지르는 줄)가 `colspan` 행으로 갈려 행 높이가
-  들쭉날쭉해진다. 화면 낭독기는 첫 항목으로 「모델 컨텍스트 입력 출력」을 읽는다 —
-  열과 묶이지는 않지만, 라벨이 아예 없던 전날보다 낫다.
-*/
-.guide-models-head .guide-model-name,
-.guide-models-head .guide-model-context,
-.guide-models-head .guide-model-price {
-  color: var(--text-muted);
+.gl-kbd {
+  display: inline-block;
+  padding: 0 5px;
+  border: 1px solid var(--guide-rule);
+  border-bottom-width: 2px;
+  border-radius: 4px;
+  background: var(--bg-subtle);
+  color: var(--text);
   font-family: var(--font-mono);
-  font-size: var(--gs-mono);
-  font-weight: 400;
-  letter-spacing: 0.08em;
+  font-size: 0.8em;
+  line-height: 1.55;
+  vertical-align: 0.06em;
 }
 
-.guide-model-name {
-  grid-area: 1 / 1;
+.gl-keys-plus {
+  margin: 0 2px;
+  color: var(--text-muted);
+  font-size: 0.85em;
+}
+
+/* ── 참고 절 — 모델과 요금 ── */
+
+.gl-facts-sub {
+  margin-top: var(--gl-r3);
   color: var(--text-strong);
-  font-size: var(--gs-body);
+  font-size: var(--gl-body);
   font-weight: 600;
 }
 
+.gl-facts-sub:not(:first-of-type) {
+  margin-top: var(--gl-r4);
+}
+
+.gl-models,
+.gl-plans {
+  margin: var(--gl-r2) 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.gl-read-head + .gl-models,
+.gl-read-head + .gl-plans {
+  margin-top: var(--gl-r3);
+}
+
 /*
-  모델 줄머리의 마크(2026-09-18). **자리는 24px 하나이고 안에 드는 것이 둘이다** —
-  그 모델 제 마크(`.is-plate`)이거나 계열 마크다. 자리가 같아서 섞이는 제품
-  (Antigravity)에서도 이름 첫 글자의 x가 하나로 선다.
+  **표다 — 열 이름이 단위를 지고 수는 한 세로줄에 선다.** 수 열 셋의 합(112 + 88 + 88
+  + 사이 32)이 `--gl-val`이라 아래 요금 목록의 값과 같은 x에서 시작한다.
+  **열은 그 제품의 데이터가 세운다** — 한 줄도 주장이 없는 열은 아예 안 선다.
+*/
+.gl-models li {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  column-gap: 16px;
+  align-items: baseline;
+  padding-block: 14px;
+  border-bottom: 1px solid var(--guide-rule);
+  font-size: var(--gl-body);
+}
 
-  24px인 것은 **제 마크가 24px 아래에서 안 읽히기 때문**이다. 손그림이라 획이
-  가늘고, 14·18·22px에서 차례로 띄워 보니 Sonnet의 노드 그래프가 덩어리가 됐다.
-  만든 회사도 제 문서에서 40px 판에 24px로 세운다 — 그 비율(0.6)을 그대로 쓴다.
+.gl-models.has-ctx li {
+  grid-template-columns: minmax(0, 1fr) 112px;
+}
 
-  **열로 안 세우고 이름 안에 인라인으로 둔다.** 격자에 열을 하나 더 주면 마크와
-  이름 사이가 `column-gap`(12px)에 묶이고 640px 아래 규칙 넉 줄을 전부 고쳐야
-  한다. 인라인으로 두고 아래 쓰임 줄에 같은 몫(24 + 8)을 들여쓰면 **이름과 쓰임이
-  한 세로줄에 서는 것은 똑같다.**
+.gl-models.has-price li {
+  grid-template-columns: minmax(0, 1fr) 88px 88px;
+}
 
-  `vertical-align`이 −7px인 것은 13.5px 글줄에서 24px 사각형의 광학 중심을 맞추는
-  값이다 — `baseline`으로 두면 마크가 글자 위로 뜬다.
+.gl-models.has-ctx.has-price li {
+  grid-template-columns: minmax(0, 1fr) 112px 88px 88px;
+}
+
+/* 머리 행이 안 서는 표(수 열이 하나도 없는 Gemini 앱)도 윗변을 갖는다. */
+.gl-models > li:first-child:not(.gl-models-head) {
+  border-top: 1px solid var(--guide-rule);
+}
+
+.gl-models li.gl-models-head {
+  padding-block: 0 8px;
+  color: var(--text-muted);
+  font-size: var(--gl-meta);
+}
+
+.gl-models-head .is-num {
+  text-align: right;
+}
+
+.gl-model-name {
+  display: flex;
+  align-items: center;
+  min-width: 0;
+  color: var(--text-strong);
+  font-weight: 500;
+  line-height: 1.5;
+}
+
+.gl-model-vendor {
+  margin-left: 4px;
+  color: var(--text-muted);
+  font-size: var(--gl-meta);
+  font-weight: 400;
+}
+
+/* 만든 회사가 구세대로 부르는데도 남긴 줄의 꼬리표. */
+.gl-tag {
+  display: inline-block;
+  margin-left: 4px;
+  padding: 1px 6px;
+  border: 1px solid var(--border);
+  border-radius: 3px;
+  color: var(--text-muted);
+  font-size: var(--gl-meta);
+  font-weight: 400;
+  line-height: 1.4;
+  vertical-align: 0.12em;
+}
+
+/*
+  수 칸. **전부 링크이고 밑줄이 늘 보인다** — 그 수가 실린 페이지로 간다. 점선이라
+  문장 링크보다 조용하다. 0.92em은 옆 이름의 x-높이에 맞춘 광학 보정이다.
+*/
+.gl-num {
+  color: var(--text);
+  font-family: var(--font-mono);
+  font-size: 0.92em;
+  font-variant-numeric: tabular-nums;
+  text-align: right;
+  text-decoration: underline dotted;
+  text-decoration-color: var(--text-muted);
+  text-underline-offset: 4px;
+  white-space: nowrap;
+}
+
+a.gl-num:hover {
+  color: var(--brand-text);
+  text-decoration-color: currentColor;
+}
+
+/* 곧 다시 볼 값. 흐려지는 것은 여기까지다 — 유효기간이 지나면 값이 아예 사라진다. */
+.gl-num.is-soft {
+  color: var(--text-dim);
+}
+
+.gl-num.is-note {
+  color: var(--text-dim);
+  font-family: inherit;
+  font-size: var(--gl-meta);
+}
+
+.gl-num.is-span {
+  grid-column: span 2;
+}
+
+.gl-model-sub {
+  display: flex;
+  flex-wrap: wrap;
+  grid-column: 1 / -1;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 4px 16px;
+  margin-top: 4px;
+  /* 마크 24 + 10. 이름과 쓰임이 한 세로줄에 선다. */
+  padding-left: 34px;
+}
+
+.gl-model-use {
+  color: var(--text-dim);
+  font-size: var(--gl-note);
+  text-decoration: underline;
+  text-decoration-color: var(--text-muted);
+  text-underline-offset: 3px;
+}
+
+.gl-model-use:hover {
+  color: var(--brand-text);
+  text-decoration-color: currentColor;
+}
+
+.gl-model-meta {
+  margin-left: auto;
+  color: var(--text-muted);
+  font-size: var(--gl-meta);
+  text-align: right;
+}
+
+.gl-caption {
+  margin-top: var(--gl-r2);
+  color: var(--text-muted);
+  font-size: var(--gl-meta);
+}
+
+/*
+  모델 줄머리 마크 — 자리는 24px 하나이고 안에 드는 것이 둘이다. 그 모델 제 마크
+  (Anthropic의 판 위 손그림)이거나 계열 마크다.
+
+  **24px인 것은 제 마크가 그 아래에서 안 읽히기 때문이다.** 손그림이라 획이 가늘다.
+  만든 회사도 40px 판에 24px로 세우므로 그 비율(0.6)을 그대로 써서 판 24px에 15px로
+  올린다. 계열 마크는 판이 없으므로 잉크 크기를 맞춰 20px로 선다.
 */
 .guide-model-mark {
   display: inline-flex;
@@ -8314,14 +7994,9 @@ input:focus-visible {
   width: 24px;
   height: 24px;
   flex: 0 0 auto;
-  margin-right: 8px;
-  vertical-align: -7px;
+  margin-right: 10px;
 }
 
-/*
-  계열 마크는 24px 자리 안에서 20px로 선다 — 판이 없으므로 제 마크와 **잉크 크기**를
-  맞추는 쪽이 맞다(판 24px 안의 그림이 15px이지만 판 자체가 잉크처럼 읽힌다).
-*/
 .guide-model-mark:not(.is-plate) img {
   width: 20px;
   height: 20px;
@@ -8329,16 +8004,9 @@ input:focus-visible {
 }
 
 /*
-  **그 모델 제 마크는 판 위에 원본 색 그대로 선다.** 판 색은 만든 회사가 제 문서에서
-  그 모델에 붙여 둔 색이고(`ModelInfo.mark.plate`), 잉크는 밝은 부분과 어두운 부분
-  둘로 그려져 있어 **착색하면 안 된다** — 한 색으로 마스킹하면 통째로 덩어리가 된다.
-
-  **헤어라인을 두른다.** Sonnet의 판이 `#F0EEE6`이라 라이트 테마 배경과 거의 같은
-  색이어서, 선이 없으면 그 줄만 판이 사라지고 그림이 공중에 뜬 것처럼 보인다.
-  새 색이 아니라 원장이 이미 쓰는 `--guide-rule`이다.
-
-  모서리 5px은 만든 회사의 40px 판 7px을 24px로 줄인 값이다(7 × 24 / 40 ≒ 4.2를
-  올림). **판은 테마를 안 탄다** — 회사가 정한 색이라 다크에서도 그대로다.
+  **제 마크는 판 위에 원본 색 그대로 선다.** 잉크가 밝은 부분과 어두운 부분 둘이라
+  착색하면 덩어리가 된다. **헤어라인을 두른다** — Sonnet의 판(`#F0EEE6`)이 라이트
+  배경과 거의 같은 색이라 선이 없으면 그 줄만 판이 사라진다. 판은 테마를 안 탄다.
 */
 .guide-model-mark.is-plate {
   border-radius: 5px;
@@ -8353,380 +8021,202 @@ input:focus-visible {
 }
 
 /*
-  **어떤 상황에서 쓰나** — 만든 회사가 제 문서에 적어 둔 말이다. 링크가 곧 그 문장이
-  실린 페이지라, 따로 배지를 안 달고도 어디서 왔는지가 눌러서 확인된다.
-
-  **없으면 이 줄이 아예 안 선다**(스물셋 중 넷 — Antigravity의 Claude 둘이 그렇다).
-  격자라서 그 줄도 윗칸들은 제자리에 선다 — 목록이던 동안 「잘린 줄」로 읽히던 자리다.
-
-  밑줄은 hover에서만 켠다. 모델이 다섯인 화면에서 밑줄 다섯이 늘 켜져 있으면 그 절이
-  링크 목록으로 읽힌다.
-
-  **글줄 폭 캡이 여기서 일을 한다** — Gemini 앱은 수 열이 하나도 안 서서 이름 열이
-  736px이고, 캡이 없으면 한 줄이 51자가 되어 35~45자를 넘는다. 열이 서면 이름 열이
-  504px이라 캡보다 좁다.
+  요금제와 사용 한도. 이름 왼쪽, 값 오른쪽 열(`--gl-val`)이다. **값은 왼쪽 정렬이다** —
+  「월 $20」과 「5시간 롤링 세션 창 · …」이 한 목록에 서서, 오른쪽 정렬이면 긴 값이
+  감길 때 줄마다 들쭉날쭉한 오른쪽 끝을 만든다.
 */
-.guide-model-use {
-  grid-area: 2 / 1;
-  /* 줄머리 마크 24px + 8px. 이름 첫 글자와 한 세로줄에 선다. */
-  padding-left: 32px;
-  max-width: var(--gs-measure);
-  color: var(--text-muted);
-  font-size: var(--gs-body);
-  line-height: 1.75;
-  text-wrap: pretty;
-}
-
-.guide-model-use a {
-  color: inherit;
-  text-decoration-color: transparent;
-  text-underline-offset: 3px;
-  transition: color 0.15s, text-decoration-color 0.15s;
-}
-
-.guide-model-use a:hover {
-  color: var(--brand-text);
-  text-decoration: underline;
-  text-decoration-color: currentColor;
-}
-
-/*
-  컨텍스트 창. 값이 이름보다 흐리게 서서 눈이 이름 → 값 순으로 간다.
-*/
-.guide-model-context {
-  grid-area: 1 / 2;
-  color: var(--text-muted);
-  font-family: var(--font-mono);
-  font-size: var(--gs-num);
-  font-variant-numeric: tabular-nums;
-  letter-spacing: 0.02em;
-  text-align: right;
-}
-
-/*
-  단가. **누르면 그 수가 실린 요금 페이지로 간다** — 이 서랍에서 가장 빨리 썩는
-  값이라(`volatility: 'price'`) 읽는 사람이 바로 대조할 수 있어야 한다.
-  밑줄은 hover에서만 켠다.
-
-  **칸을 통째로 차지하는 블록이다**(`display: block`, `justify-self`를 안 건다).
-  글자를 끌어안게 두면 누르는 자리가 104px에서 51px까지 줄어 — 「$1 / $5」가 그렇다 —
-  화면에서 가장 빨리 썩는 값이 가장 누르기 어려운 값이 된다. 밑줄은 글자 밑에만
-  그려지므로 블록으로 둬도 선이 칸 폭으로 늘어나지 않는다.
-
-  **마지막 열(`-2`)이라 컨텍스트 열이 없는 제품에서도 오른쪽 끝에 선다.**
-
-  **자릿수를 고정한다**(`tabular-nums`). 막대를 안 그리는 대신 자릿수가 그 일을
-  한다 — $10과 $0.20이 같은 끝에 서고 소수점이 한 세로줄에 잡힌다.
-
-  **값이 안 서는 칸도 링크다**(2026-09-18). 「모름」·「유효기간 지남」·「확인 기록 없음」
-  셋 다 다음 할 일이 「공식 페이지를 열어 보기」라, `ClaimRow`가 그 자리를 링크로 둔
-  것과 같이 둔다. 주장 자체가 없으면 아무것도 안 선다.
-*/
-.guide-model-price {
-  display: block;
-  color: var(--text-dim);
-  font-family: var(--font-mono);
-  font-size: var(--gs-num);
-  font-variant-numeric: tabular-nums;
-  letter-spacing: 0.04em;
-  white-space: nowrap;
-  text-align: right;
-  text-decoration-color: transparent;
-  text-underline-offset: 3px;
-  transition: color 0.15s, text-decoration-color 0.15s;
-}
-
-a.guide-model-price:hover {
-  color: var(--brand-text);
-  text-decoration: underline;
-  text-decoration-color: currentColor;
-}
-
-/*
-  **단가가 두 열이다**(2026-09-18). 전날까지는 `$2 / $12` 한 문자열이 한 칸에 서서,
-  열을 세워 놓고도 **수 열이 실제로는 하나**였다 — 「표로 하자」가 두 번 나온 이유다.
-  가르는 것은 화면뿐이고 데이터는 그대로 한 주장이라(`splitPrice`), 둘 다 같은 요금
-  페이지로 간다.
-
-  **오른쪽에서 센다.** 컨텍스트 열이 없는 제품이 생겨도(오늘은 없다) 입력이 `-3`,
-  출력이 `-2`라 오른쪽 끝이 안 흔들린다.
-*/
-.guide-model-price.is-in {
-  grid-area: 1 / -3;
-}
-
-.guide-model-price.is-out {
-  grid-area: 1 / -2;
-}
-
-/*
-  **상태를 적는 칸은 두 열을 함께 쓴다.** 「모름」·「유효기간 지남」·「확인 기록 없음」은
-  입력·출력을 가르지 않는 한 주장의 상태라, 한쪽 열에만 세우면 나머지 한 칸이
-  「그 수는 있다」고 말하게 된다. 꼴이 안 맞아 못 가른 값(`is-raw`)도 여기로 온다.
-*/
-.guide-model-price.is-span {
-  grid-area: 1 / -3 / auto / -1;
-}
-
-/*
-  **값이 아니라 상태를 적는 칸.** 수가 아니므로 자릿수 고정이 할 일이 없고, 옆 줄의
-  진짜 값보다 한 단 흐려야 「여기엔 수가 없다」가 훑을 때 바로 읽힌다. 새 색이 아니라
-  이미 쓰는 `--text-muted`다(값은 `--text-dim`).
-*/
-.guide-model-context.is-note,
-.guide-model-price.is-note {
-  color: var(--text-muted);
-  font-variant-numeric: normal;
-}
-
-/*
-  꼴이 안 맞아 짝과 단서로 못 가른 값은 통째로 그대로 적고 감기게 둔다 — 자르지
-  않는다. 오늘 열아홉이 전부 맞지만 그건 오늘의 사실이지 계약이 아니다.
-*/
-.guide-model-price.is-raw {
-  white-space: normal;
-}
-
-/*
-  단가에 붙은 단서 — 구간 요금과 인상 예고. **버리지 않고 한 단 내린다**: 단가보다
-  한 단 흐린 잉크로 단가 바로 아래, 같은 오른쪽 끝에 선다. 이것 때문에 단가 문자열이
-  13자에서 42자까지 벌어져 왼쪽 열을 밀고 있었다. 「$0.75」로만 줄이면 두 주 뒤에
-  거짓이 되므로 자르지 않고 내린다.
-
-  **둘째 줄에서 수 열 둘을 다 쓴다**(104 + 12 + 104 = 220px). 가장 긴 것이
-  「(2027-01-01부터 $1.50 / $7.50)」 28자라 한 줄에 든다.
-
-  **줄상자를 옆의 쓰임과 맞춘다** — 안 맞추면 10px 글자가 제 높이만 차지해 단서가
-  붙은 행만 아랫변이 올라온다.
-*/
-.guide-model-note {
-  grid-area: 2 / 2 / auto / -1;
-  color: var(--text-muted);
-  font-family: var(--font-mono);
-  font-size: var(--gs-mono);
-  font-variant-numeric: tabular-nums;
-  letter-spacing: 0.04em;
-  line-height: calc(var(--gs-body) * 1.75);
-  text-align: right;
-}
-
-/*
-  **열 개수에 기대지 않는다.** 단가는 있는데 컨텍스트를 하나도 확인 못 한 제품이
-  생기면 위 규칙의 `2 / -1`이 104px 한 칸이 되어 28자짜리 단서가 두 줄로 감긴다.
-  그때는 제 줄을 줘서 폭을 다 쓰게 한다 — 오른쪽 끝이 같으므로 단가와 한 칸으로
-  읽히는 것은 그대로다. 오늘 그런 제품은 없고, 생기는 날 조용히 안 깨지라고 둔다.
-*/
-.guide-models.has-price:not(.has-ctx) .guide-model-note {
-  grid-area: 3 / 1 / auto / -1;
-}
-
-/*
-  **375px에서는 수 열 셋이 240px을 먹어 이름 열이 100px 남짓이 된다.** 수를 이름
-  아래로 내려 제 줄에 세운다. 차례는 이름 → 수 → 단서 → 쓰임이다: 단서는 제가
-  꾸미는 수 바로 아래에 붙는다. 머리 행도 같은 규칙을 타서 「모델」이 한 줄,
-  「컨텍스트 입력 출력」이 그 아래 세 자리에 선다.
-  **중단점은 집의 것(640)만 쓴다.**
-
-  **`max-content`를 쓰면 안 된다** — `li` 하나하나가 제 격자라 열 폭이 **줄마다**
-  잡히고, 그러면 머리 행의 「입력」이 x=50인데 아래 줄의 `$0.75`는 x=57에 서서
-  열이 어긋난다. 데스크톱이 안 어긋났던 것은 폭이 고정값이었기 때문이다. 좁은
-  화면에서도 같은 두 상수를 쓰고 마지막 열만 남은 폭을 준다.
-
-  **`grid-column: auto`가 이기려면 선택자를 한 급 올려야 한다** — 데스크톱의
-  `.guide-model-price.is-in`이 0,2,0이라 `.guide-model-price` 하나로는 안 덮인다.
-*/
-@media (max-width: 640px) {
-  .guide-models li,
-  .guide-models.has-ctx li,
-  .guide-models.has-price li,
-  .guide-models.has-ctx.has-price li {
-    grid-template-columns: var(--guide-col) var(--guide-num) minmax(0, 1fr);
-  }
-
-  .guide-model-name {
-    grid-area: 1 / 1 / auto / -1;
-  }
-
-  .guide-models .guide-model-context,
-  .guide-models .guide-model-price,
-  .guide-models .guide-model-price.is-in,
-  .guide-models .guide-model-price.is-out {
-    grid-row: 2;
-    grid-column: auto;
-    justify-self: start;
-    text-align: left;
-  }
-
-  /*
-    상태를 적는 칸은 여기서도 단가 두 열을 함께 쓴다 — 「유효기간 지남」 일곱 자가
-    56px 칸에서 두 줄로 감기지 않게.
-  */
-  .guide-models .guide-model-price.is-span {
-    grid-area: 2 / 2 / auto / -1;
-    justify-self: start;
-    text-align: left;
-  }
-
-  .guide-model-note,
-  .guide-models.has-price:not(.has-ctx) .guide-model-note {
-    grid-area: 3 / 1 / auto / -1;
-    text-align: left;
-  }
-
-  .guide-model-use {
-    grid-area: 4 / 1 / auto / -1;
-    margin-top: var(--gs-r1);
-  }
-}
-
-/*
-  공식 출처. **오늘 이 화면이 독자에게 해 줄 수 있는 일이 이것뿐이라** 상세 구석의
-  작은 화살표가 아니라 본문 흐름 안에 줄로 둔다.
-
-  라벨 열이 판의 기업 열과 **같은 104px**이고 gap도 같은 값이라, ≥1024px에서
-  기업 이름·라벨·내용이 x=0과 x=116 두 세로줄에 함께 선다. 전에는 라벨 옆에
-  호스트가 곧바로 붙고 그 뒤 450px이 비어 「고장난 표」로 읽혔다.
-*/
-.guide-links {
-  margin-top: var(--gs-r2);
-  border-top: 1px solid var(--guide-rule);
-}
-
-.guide-links a {
+.gl-plan {
   display: grid;
-  grid-template-columns: var(--guide-col) minmax(0, 1fr);
-  gap: var(--gs-r2);
+  grid-template-columns: minmax(0, 1fr) var(--gl-val);
+  column-gap: 16px;
   align-items: baseline;
+  padding-block: 14px;
   border-bottom: 1px solid var(--guide-rule);
-  padding-block: var(--gs-r2);
-  color: var(--text-dim);
-  transition: color 150ms ease;
 }
 
-.guide-links a:hover {
+.gl-plan dt {
+  color: var(--text);
+  font-size: var(--gl-note);
+  line-height: 1.6;
+}
+
+.gl-plan-v {
+  margin: 0;
   color: var(--text-strong);
+  font-size: var(--gl-body);
+  font-weight: 500;
+  line-height: 1.5;
 }
 
-/*
-  라벨은 카피 그대로다 — 「값을 확인하는 곳」은 이 서랍의 논지를 한 번 더 말하는
-  문장이라 두 자로 깎아 정렬을 사지 않는다. 열 폭이 104px이면 둘 다 얻는다.
-*/
-.guide-link-label {
-  font-size: var(--gs-body);
-}
-
-/*
-  라틴 전용 자리. 같은 10px이라도 모노가 sans보다 작게 앉아, 크기를 더 안 줄이고도
-  한글 라벨 아래 급으로 내려간다 — 크기가 아니라 글꼴로 만든 단이다.
-*/
-/*
-  **호스트를 오른쪽 끝으로 보낸다**(2026-09-17). 라벨 열 104px만 두고 폭을 열면
-  호스트가 x=116에 홀로 서고 그 오른쪽이 통째로 빈다 — 이 화면에서 가장 큰
-  구멍이었다. 모델 줄(`space-between`)·값 줄(3열)이 이미 「이름 왼쪽 · 값 오른쪽
-  끝」이라 링크 줄만 모양이 달랐다. 줄에 괘선이 남아 있어 두 끝이 한 줄로 읽힌다.
-*/
-.guide-link-host {
-  overflow: hidden;
-  color: var(--text-muted);
-  font-family: var(--font-mono);
-  font-size: var(--gs-mono);
-  letter-spacing: 0.04em;
-  text-align: right;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-
-/* 같은 갈래의 다른 회사. **절이 아니라 한 줄이다** — 견주는 축은 판이 이미 보여 준다. */
-.guide-ledger-peers {
-  margin-top: var(--gs-r4);
-  color: var(--text-muted);
-  font-size: var(--gs-body);
-  line-height: 1.9;
-}
-
-.guide-ledger-peers a {
+.gl-plan-v.is-soft {
   color: var(--text-dim);
 }
 
-.guide-ledger-peers a:hover {
+.gl-plan-v.is-note {
+  color: var(--text-dim);
+  font-size: var(--gl-note);
+  font-weight: 400;
+}
+
+.gl-plan-meta {
+  grid-column: 2;
+  margin: 4px 0 0;
+  color: var(--text-muted);
+  font-size: var(--gl-meta);
+}
+
+/* ── 다른 제품 — 좁은 화면에서만 ── */
+
+.gl-peers {
+  margin: var(--gl-r3) 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.gl-peers li {
+  position: relative;
+  display: grid;
+  grid-template-columns: 24px minmax(0, 1fr);
+  gap: var(--gl-r2);
+  padding-block: 14px;
+  border-bottom: 1px solid var(--guide-rule);
+}
+
+.gl-peers .gl-mark {
+  width: 24px;
+  height: 24px;
+  margin-top: 1px;
+}
+
+.gl-peer-name {
   color: var(--text-strong);
+  font-size: var(--gl-body);
+  font-weight: 500;
 }
 
-.guide-peer-vendor {
-  margin-left: var(--gs-r1);
-  font-family: var(--font-mono);
-  font-size: var(--gs-mono);
-  letter-spacing: 0.04em;
+.gl-peer-name a {
+  color: inherit;
+  text-decoration: none;
 }
 
-/* ── 모바일 ─────────────────────────────────────────────────── */
+.gl-peers li:hover .gl-peer-name a {
+  color: var(--brand-text);
+}
 
-/*
-  719px → 640px(집의 값). 375px에서 칸 하나가 (335 − 12) / 3 = 107.7px이고,
-  패딩을 6px로 좁히면 안쪽 글자 폭이 **93.7px**이다(전 81.7px). 가장 긴
-  「Antigravity」가 13.5px에서 약 77px이라 17px이 남는다 — 16px으로 두면 91px이라
-  낱말 한가운데서 끊긴다(`body`에 `overflow-wrap: break-word`가 걸려 있다).
-*/
-@media (max-width: 640px) {
-  .guide-tile {
-    padding: var(--gs-r1);
+.gl-peer-vendor {
+  margin-left: 4px;
+  color: var(--text-muted);
+  font-size: var(--gl-meta);
+  font-weight: 400;
+}
+
+.gl-peer-dek {
+  margin-top: 2px;
+  color: var(--text-dim);
+  font-size: var(--gl-note);
+  line-height: 1.6;
+}
+
+/* 데스크톱에서는 바로 옆 레일이 같은 목록을 보여 준다. */
+@media (min-width: 1024px) {
+  .gl-peers-sect {
+    display: none;
   }
+}
 
-  .guide-tile-name {
-    font-size: var(--gs-body);
+/* ── 좁은 폭 (집의 중단점 640) ── */
+@media (max-width: 640px) {
+  .gl-head-jump {
+    flex-basis: 100%;
+    margin-top: 4px;
+    margin-left: 0;
   }
 
   /*
-    **좁은 폭에서는 레버를 내린다.** 375px에서 레버가 120px을 먹으면 질문이 두
-    줄로 감겨 한 줄로 만든 뜻이 사라진다(여섯 칸 중 넷이 그랬다). 레버는 색인이고
-    질문이 요점이라, 하나를 버려야 하면 색인을 버린다 — 열면 팁 문장 안에
-    `<code>`로 전부 선다. 중단점은 집의 것(640)을 그대로 쓴다.
+    **모델 표는 줄마다 블록으로 쌓는다.** 이름이 제 줄을 갖고, 수는 그 아래에 열 이름을
+    앞에 달고 이어 선다(`data-label`). 열 머리는 숨긴다. 줄마다 격자 폭을 잡던 옛 표는
+    머리 행과 아래 줄의 수 x가 어긋났다.
   */
-  .guide-tip-levers {
+  /* 머리 행을 숨기면 첫 모델 줄이 윗변을 잃는다 — 머리 행 바로 뒤 줄이 대신 긋는다. */
+  .gl-models-head + .gl-model {
+    border-top: 1px solid var(--guide-rule);
+  }
+
+  .gl-models li.gl-models-head {
     display: none;
   }
 
-  /*
-    **기둥을 24px로 내리되 번호 칸은 18px로 둔다.** 「01」이 10px 모노에
-    `letter-spacing: 0.12em`이라 실제 글자 폭이 약 14.4px이고, 12px로 잡으면 flex
-    항목의 `min-width: auto`가 내용 폭을 바닥으로 잡아 기둥이 24px이 아니라
-    26~28px이 된다 — 데스크톱에서 세운 「기둥 = 들여쓰기」 짝이 여기서만 어긋난다.
-    18 + gap 6 = 24로 딱 맞는다. 이 폭에서는 레버가 이미 안 서므로 줄의 gap을
-    내려도 질문과 수 사이만 좁아진다.
-  */
-  .guide-tips {
-    padding-inline: var(--gs-r3);
+  /* 머리 행을 뺀 모델 줄만 — 격자 규칙들의 명시도가 머리 행 숨김을 덮지 않게 한다. */
+  .gl-models li.gl-model {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px 14px;
+    padding-left: 34px;
+  }
+
+  .gl-model-name {
+    flex: 1 1 100%;
+    margin-left: -34px;
   }
 
   /*
-    칠 밖의 잉크는 데스크톱과 같이 상자 끝에 붙으므로 여기서 따로 내릴 것이 없다 —
-    좁은 폭에서 오른쪽 기둥을 쓰는 곳은 칠 하나뿐이고 위에서 24로 내렸다.
-
-    **`.guide-tip`의 칩 자리(48px)는 안 줄인다.** 그건 기둥이 아니라 칩이 실제로
-    차지하는 폭이고(「이유 +」가 31px), 24로 내리면 칩이 문장 마지막 글자에 겹친다.
-    칩은 화면 폭을 안 탄다.
+    **누르는 높이를 넓힌다.** 수 칸이 22px, 「확인 전」 칸이 18px이라 손가락에 안 맞았다.
+    출처 링크처럼 위아래 10px씩 넓히면 4px 간격으로 붙은 칸끼리 겹치므로, 칸 자체에
+    6px씩 주고 줄 간격을 그만큼 벌린다.
   */
-
-  .guide-tip-question {
-    column-gap: var(--gs-r1);
+  .gl-models li.gl-model {
+    row-gap: 2px;
   }
 
-  .guide-tip-no {
-    flex-basis: calc(var(--gs-r3) - var(--gs-r1));
+  .gl-num,
+  .gl-model-use {
+    display: inline-block;
+    padding-block: 6px;
   }
 
-  /* 좁은 폭에서는 라벨 열이 접혀 호스트가 제 줄에 서므로 오른쪽 정렬이 어색하다. */
-  .guide-link-host {
+  .gl-num {
     text-align: left;
   }
 
-  /*
-    라벨 열을 접는다. 「값을 확인하는 곳」이 104px에 겨우 드는 폭이라 가로로 두면
-    줄이 늘 두 줄이 된다.
-  */
-  .guide-links a {
+  /* `inline-block`이라야 링크의 밑줄이 열 이름까지 번지지 않는다. */
+  .gl-num[data-label]::before {
+    content: attr(data-label);
+    display: inline-block;
+    margin-right: 5px;
+    color: var(--text-muted);
+    font-family: 'Wanted Sans Variable', 'Wanted Sans', system-ui, sans-serif;
+    font-size: var(--gl-meta);
+  }
+
+  .gl-num.is-empty {
+    display: none;
+  }
+
+  .gl-model-sub {
+    flex: 1 1 100%;
+    padding-left: 0;
+  }
+
+  .gl-model-meta {
+    margin-left: 0;
+    text-align: left;
+  }
+
+  /* 요금 줄은 이름 → 값 → 출처를 세로로 쌓는다. */
+  .gl-plan {
     grid-template-columns: minmax(0, 1fr);
-    gap: var(--gs-r1);
+    row-gap: 4px;
+  }
+
+  .gl-plan-meta {
+    grid-column: 1;
+  }
+}
+
+/* ── 종이 ── */
+@media print {
+  .gl-head-links {
+    display: none;
   }
 }
 
@@ -8734,19 +8224,23 @@ a.guide-model-price:hover {
 
 /*
   심볼 로고. 단색 로고에는 브랜드 색을 입히고, 여러 색이 든 로고는 손대지 않는다 —
-  마스크를 씌우면 그라디언트와 네 색이 한 색으로 납작해진다. 기업 로고에는 포인트
-  색을 안 입힌다(`accent`를 안 받으면 `currentColor`로 칠해진다).
+  마스크를 씌우면 그라디언트와 네 색이 한 색으로 납작해진다.
 
-  **한 클래스다**(`.guide-rail-mark`). 판을 쓰던 시절에는 `.guide-tile-mark`와
-  `.guide-board-vendor-mark` 둘이었는데, 레일로 옮기면서 이 블록만 옛 이름을 겨눈
-  채 남았다. 그러면 마스크도 `<img>` 숨김도 안 걸려 **원본 SVG의 검은 칠이 검은
-  배경 위에 그대로 나온다** — 다크에서 단색 로고 여섯이 통째로 안 보였고, 다색인
-  Google 셋만 멀쩡해서 「구글만 잘 보인다」로 드러났다.
+  **착색 목록에 없는 클래스는 다크에서 사라진다.** 마스크도 `<img>` 숨김도 안 걸리면
+  원본 SVG의 검은 칠이 검은 배경 위에 그대로 나온다 — 판을 레일로 옮길 때 한 번,
+  원장 마크 이름을 바꿀 때 한 번 밟을 뻔한 자리다. 마크 클래스를 새로 만들면 아래
+  두 목록에 함께 넣는다.
 */
-.guide-rail-mark img {
+.guide-rail-mark img,
+.gl-mark img {
   width: 100%;
   height: 100%;
   object-fit: contain;
+}
+
+.gl-mark {
+  display: inline-flex;
+  flex: 0 0 auto;
 }
 
 /*
@@ -8755,7 +8249,7 @@ a.guide-model-price:hover {
 */
 @supports (mask-image: url('')) or (-webkit-mask-image: url('')) {
   .guide-rail-mark.is-tinted,
-  .guide-ledger-mark.is-tinted,
+  .gl-mark.is-tinted,
   .guide-model-mark.is-tinted {
     background-color: var(--guide-mark-color, currentColor);
     -webkit-mask-image: var(--guide-mark);
@@ -8769,399 +8263,8 @@ a.guide-model-price:hover {
   }
 
   .guide-rail-mark.is-tinted img,
-  .guide-ledger-mark.is-tinted img,
+  .gl-mark.is-tinted img,
   .guide-model-mark.is-tinted img {
     visibility: hidden;
-  }
-}
-
-/* 신선도 줄. 값이 생기는 날 원장 안에서 다시 선다. */
-.playbook-freshness {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 22px;
-  margin-top: 12px;
-  border-top: 1px solid var(--guide-rule);
-  padding-top: 11px;
-}
-
-.playbook-freshness dt {
-  color: var(--text-muted);
-  font-family: var(--font-mono);
-  font-size: 10px;
-  letter-spacing: 0.08em;
-}
-
-.playbook-freshness dd {
-  margin-top: 3px;
-  color: var(--text-dim);
-  font-size: 13px;
-}
-
-.playbook-freshness dd.is-warn {
-  color: var(--cat-ai-news-text, var(--brand-text));
-}
-
-.playbook-section-title {
-  color: var(--text-strong);
-  font-size: 18px;
-  font-weight: 600;
-}
-
-.playbook-section-note {
-  margin-top: 8px;
-  /* `--gs-measure`와 같은 값. 여기는 노트 화면이라 그 변수가 안 닿는다. */
-  max-width: 592px;
-  color: var(--text-dim);
-  font-size: 13px;
-  line-height: 1.75;
-}
-
-.claim-list {
-  margin-top: var(--gs-r2);
-}
-
-/*
-  값 한 줄. 왼쪽에 주장, 가운데에 값, 오른쪽에 「어디서 왔나 · 언제 확인했나」입니다.
-  셋을 한 행에 두는 것이 중요합니다 — 값만 보고 믿을 수 없게 하려는 것이 이 표의
-  존재 이유라, 근거와 나이가 값에서 눈을 떼지 않아도 보이는 자리에 있어야 합니다.
-*/
-/*
-  값 줄. **이 서랍에 남아 있던 마지막 조판 이탈 넷이다**(`4px 20px`·`14px 6px`,
-  2026-09-17에 고쳤다). 팁 줄의 선을 걷어 24px 리듬이 구분자가 되는 마당에,
-  하필 상수 밖의 값이 여기 있으면 그 리듬이 표에서만 어긋난다.
-*/
-.claim-row {
-  display: grid;
-  gap: var(--gs-r1) var(--gs-r3);
-  border-bottom: 1px solid var(--guide-rule);
-  padding: var(--gs-r2) 0;
-}
-
-/* 860px은 집의 중단점이 아니다 — 이 서랍만 따로 만들어 쓰던 값이다. */
-@media (min-width: 1024px) {
-  .claim-row {
-    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) 220px;
-    align-items: baseline;
-  }
-}
-
-.claim-statement {
-  color: var(--text-dim);
-  font-size: var(--gs-body);
-  line-height: 1.65;
-}
-
-.claim-value {
-  color: var(--text-strong);
-  font-size: var(--gs-body);
-  line-height: 1.65;
-}
-
-.claim-missing {
-  color: var(--text-muted);
-  font-size: var(--gs-body);
-  text-decoration: underline;
-  text-underline-offset: 3px;
-}
-
-.claim-missing:hover {
-  color: var(--brand-text);
-}
-
-.claim-meta {
-  display: flex;
-  align-items: center;
-  gap: var(--gs-r1);
-  color: var(--text-muted);
-  font-family: var(--font-mono);
-  font-size: var(--gs-mono);
-  letter-spacing: 0.04em;
-}
-
-.claim-meta a {
-  color: inherit;
-  text-decoration: underline;
-  text-underline-offset: 2px;
-}
-
-/* 유효기간이 지난 줄은 주장만 남고 값이 사라집니다. */
-.claim-row-hard .claim-statement,
-.claim-row-unknown .claim-statement {
-  color: var(--text-muted);
-}
-
-.claim-row-soft .claim-value {
-  color: var(--text-dim);
-}
-
-/* 활용 가이드 — 도구 상세와 노트 */
-.playbook-product-meta {
-  margin-bottom: 18px;
-  color: var(--text-muted);
-  font-family: var(--font-mono);
-  font-size: 10px;
-  letter-spacing: 0.08em;
-}
-
-/* 아이콘이 붙은 링크라 inline-flex로 묶지 않으면 화살표만 다음 줄로 떨어집니다. */
-.playbook-product-meta a {
-  display: inline-flex;
-  align-items: center;
-  gap: 3px;
-  color: var(--brand-text);
-  text-decoration: underline;
-  text-underline-offset: 3px;
-  white-space: nowrap;
-}
-
-
-/* ══════════════════════════════════════════════════════════════════════
-   원장 — 절이 제가 담은 것의 종류를 말한다 (2026-09-18)
-
-   **진단: 절이 여섯이 아니라, 종류가 셋인 것 여섯이 한 모양으로 서 있었다.**
-   읽는 것(팁 둘) · 고르는 데 쓰는 것(모델) · 물어보는 것(표면·요금·공식)이
-   전부 같은 10px 모노 라벨에 같은 48px 여백을 받았다. 1440px에서 재면 원장이
-   1,807px인데 그 안의 랜드마크가 여섯뿐이고 여섯 다 **이 화면에서 가장 작고
-   가장 흐린 글자**다(10px `--text-muted`, 그 아래 질문은 16/450/strong,
-   모델 이름과 팁 문장은 13.5/600/strong). 부모가 자식보다 작으면 층이 안 생긴다.
-
-   **크기로 안 푼다.** 올릴 칸이 없다 — 16px은 묶음 질문이 쓰고 있고(질문은 팁
-   문장보다 한 급 커야 한다), 26px은 제품 이름이 쓰고 있어 한 화면에 26px 줄이
-   셋이 된다. 이 글꼴은 400과 700이 4.7%밖에 안 벌어져 무게로도 못 가른다.
-   **레일이 같은 고장에 이미 낸 답을 오른쪽으로 옮긴다** — 모노 라벨에
-   오른쪽으로 뻗는 괘선(`.guide-rail-vendor` + `.guide-rail-rule`,
-   「들여쓰기와 로고 크기만 달라 두 층이 눈에 안 갈렸다」). 계급은 크기가 아니라
-   **자리와 상태**가 진다.
-
-   그래서 종류가 셋이면 모양도 셋이다.
-     읽는 절  펼침 · 라벨 `--text-strong` · 리드 한 줄
-     한 줄    머리 줄 오른쪽에 값이 그대로 올라앉는다(48px)
-     묻는 절  접힘 · 라벨 흐림 · 오른쪽 기둥에 「5 +」(48px)
-
-   **모델은 안 접는다.** 절 순서가 곧 우선순위이고 모델은 「팁 둘을 고르는 데
-   쓰는 값」이라 접으면 팁이 반쪽이 된다. 넷을 다 접으면 접는 것 자체가 아무
-   정보도 못 준다 — 셋이 펼쳐지고 셋이 닫히는 그 갈림이 한 겹의 위계다.
-
-   **면을 안 늘린다.** 이 서랍에서 면(`--surface`)을 쓰는 곳은 펼친 팁 목록
-   하나이고 그대로 둔다. 펼친 절의 영역은 제 머리 괘선과 다음 절의 머리 괘선이
-   진다 — 둘 다 테마를 안 타므로 `forced-colors`용 규칙이 따로 필요 없다.
-   괘선을 `background`가 아니라 `border-top`으로 긋는 것이 그 조건이다(레일은
-   배경으로 긋는데 `forced-colors`가 배경을 Canvas로 강제해 그 선이 사라진다).
-
-   **선이 준다: 23 → 16**(기본 상태, 1440px 실측). 머리 괘선 여섯이 서는 대신
-   목록 넷의 윗변과 팁 묶음의 `first-of-type` 둘이 할 일을 잃고, 접힌 절 안의
-   여덟(값 다섯 · 링크 셋)이 화면에서 빠진다.
-
-   **폭 값이 처음으로 진짜 둘이 된다.** 어제 커밋이 「끝나는 자리는 둘」이라고
-   적어 뒀는데 실측하면 셋이었다 — 592(3) · 736(6) · **847(6)**. 847로 끝나던
-   여섯이 절 머리글 넷 · 표면 · 「같은 자리」다. 캡이 없어 원장 폭을 그대로
-   쓰고 있었고, 그래서 머리 줄의 오른쪽 열에 아무것도 못 세웠다.
-
-   아래 옛 규칙 여섯은 클래스가 없어져 아무도 안 부른다. 정리 커밋에서 지운다:
-     `.guide-tips-block`(`max-width` 목록의 한 줄) · `.guide-tips-block + .guide-tips-block`
-     `.guide-tip-block-head` · `.guide-tip-block-head .guide-ledger-label`
-     `.guide-tip-block-lead` · `.guide-ledger-label`의 `margin-top`
-   ══════════════════════════════════════════════════════════════════════ */
-
-/* ── 값 줄이 조판 상수 밖에 남아 있던 자리 여섯 ──────────────────────────
-   `.claim-*`은 `.guide-` 접두사가 아니라서 2026-09-16 상수 작업에서 통째로
-   빠졌다. 그 결과 화면에 실제로 선 글자 단이 다섯이 아니라 **여섯**이었고
-   (10 · 12.5 · 13 · 13.5 · 16 · 26), 12.5 / 13 / 13.5 셋이 1px 안에 뭉쳐
-   있었다 — 「여덟 단이 4px 안에」로 진단한 그 병이 **사용자가 이름을 댄 다섯 절
-   중 가장 시끄러운 자리**에만 그대로 살아 있었다. 다섯으로 되돌린다.
-
-   주장과 값은 이제 크기가 같고 잉크(`--text-dim` : `--text-strong`)가 가른다.
-   ───────────────────────────────────────────────────────────────────── */
-/* ── 절 ─────────────────────────────────────────────────────────────── */
-
-.guide-section {
-  margin-top: var(--gs-r4);
-  max-width: var(--gs-block);
-}
-
-/*
-  **간격이 머리 treatment가 할 일의 크기를 잰다.**
-  펼친 절끼리는 서로 닮았으므로 96px이 필요하고(지금 팁 두 절 사이에 이미 쓰는
-  값이다), 닫힌 줄은 펼친 절과 이미 딴판이라 48px이면 되고, 닫힌 줄끼리는 제
-  머리 괘선이 갈라 주므로 0이다 — 셋이 붙어 「여기부터는 찾아보는 값」 한 무더기가
-  된다. 팁 묶음 넷이 붙어 서는 것과 같은 리듬이다.
-*/
-.guide-section + .guide-section.is-read {
-  margin-top: calc(var(--gs-r4) * 2);
-}
-
-.guide-section.is-ask + .guide-section.is-ask {
-  margin-top: 0;
-}
-
-/*
-  머리 한 줄. **48px은 새 값이 아니다** — 12 + 24 + 12으로 닫힌 팁 묶음
-  (`.guide-tip-group-head`)과 같은 계산이고, 라벨의 줄상자를 질문 줄과 같게 준
-  것뿐이다. 그래서 이 화면에서 **닫힌 줄은 층에 상관없이 48px**이고, 층은 높이가
-  아니라 자리와 어휘로 갈린다 — 절은 x=0의 괘선, 묶음은 48px 번호 기둥의 16px
-  질문, 팁 줄은 48px 들여쓰기의 배지.
-
-  아래 `padding-bottom` 12px이 그대로 「라벨 → 그 내용」 간격을 겸한다.
-*/
-.guide-section-head {
-  display: flex;
-  align-items: center;
-  gap: var(--gs-r2);
-  padding-block: var(--gs-r2);
-}
-
-.guide-section.is-fold > .guide-section-head {
-  list-style: none;
-  cursor: pointer;
-}
-
-.guide-section.is-fold > .guide-section-head::-webkit-details-marker {
-  display: none;
-}
-
-.guide-section.is-fold > .guide-section-head:focus-visible {
-  outline: 2px solid var(--brand);
-  outline-offset: 2px;
-}
-
-/*
-  절 이름. 크기는 한 글자도 안 건드리고 줄상자만 24px로 준다. 절 간격은 이제
-  절이 지므로 제 `margin-top`을 버린다.
-*/
-.guide-ledger-label {
-  margin-top: 0;
-  line-height: calc(var(--gs-lead) * 1.5);
-  white-space: nowrap;
-}
-
-.guide-section.is-read > .guide-section-head .guide-ledger-label {
-  color: var(--text-strong);
-}
-
-/*
-  괘선. 남는 폭을 먹어 이름과 오른쪽 기둥(688px)을 잇는다.
-  `min-width`는 레일이 쓰는 8px이 아니라 여백 축의 `--gs-r1`(6px)로 적는다 —
-  같은 일에 상수 밖의 수를 쓰지 않는다.
-*/
-.guide-section-rule {
-  flex: 1 1 auto;
-  min-width: var(--gs-r1);
-  height: 0;
-  border-top: 1px solid var(--guide-rule);
-}
-
-/* 머리가 12px을 이미 줬으므로 내용은 제 여백을 버린다. */
-.guide-section > .guide-section-lead,
-.guide-section > .guide-models,
-.guide-section > .guide-links,
-.guide-section > .claim-list {
-  margin-top: 0;
-}
-
-.guide-section-lead {
-  max-width: var(--gs-measure);
-  color: var(--text-muted);
-  font-size: var(--gs-body);
-  line-height: 1.75;
-  text-wrap: pretty;
-}
-
-.guide-section-lead + .guide-models,
-.guide-section-lead + .guide-links,
-.guide-section-lead + .claim-list {
-  margin-top: var(--gs-r2);
-}
-
-/*
-  **머리가 제 괘선을 들었으니 목록의 윗변은 걷는다.** 두면 12px 사이에 같은
-  굵기의 가로선이 둘 선다 — 걷어낸 서른넷이 여섯 개 돌아오는 자리다.
-*/
-.guide-models,
-.guide-links,
-.claim-list {
-  margin-top: var(--gs-r2);
-  border-top: 0;
-}
-
-.guide-section .guide-tip-group:first-of-type {
-  border-top: 0;
-}
-
-/*
-  **내용이 한 줄인 절은 절이 아니라 줄이다.** 「어디서 쓰나」는 안에 든 것이
-  네 낱말(20px 한 줄)인데 285px짜리 모델 목록과 똑같이 48px을 받아 131px을
-  먹고 있었다. 285 : 20인데 간격이 같던 자리를 간격이 아니라 **문법**으로 푼다 —
-  머리 줄 오른쪽에 그 한 줄이 그대로 올라앉아 48px이 된다. 공식 링크 줄이
-  이미 「라벨 왼쪽 · 값 오른쪽 끝」이라 같은 문법이다.
-
-  **접지 않는다.** 뒤에 아무것도 없는 문에 손잡이를 달지 않는다.
-*/
-.guide-section-head > .guide-surfaces {
-  flex: 0 1 auto;
-  min-width: 0;
-  margin-top: 0;
-  justify-content: flex-end;
-  line-height: calc(var(--gs-lead) * 1.5);
-}
-
-/*
-  **수는 접힌 절에만 선다** — 펼친 절은 세는 대신 보여 준다. 표시는 한 층 아래
-  묶음과 **같은 클래스**(`.guide-tip-count`)라 「4 +」·「5 +」가 한 어휘로 서고,
-  글자는 CSS가 넣으므로 복사한 글에 안 섞인다. 새 카운터를 만들면 같은 일을
-  하는 것이 두 규격이 된다.
-*/
-.guide-section.is-fold[open] .guide-tip-count::after {
-  content: attr(data-n) ' −';
-}
-
-.guide-section.is-fold > .guide-section-head:hover .guide-ledger-label,
-.guide-section.is-fold[open] > .guide-section-head .guide-ledger-label {
-  color: var(--text-strong);
-}
-
-.guide-section.is-fold > .guide-section-head:hover .guide-tip-count {
-  color: var(--brand-text);
-}
-
-/* 펼친 절의 마지막 줄과 다음 절 머리 사이의 숨. 닫혀 있으면 아무 일도 안 한다. */
-.guide-section.is-fold[open] {
-  padding-bottom: var(--gs-r2);
-}
-
-/*
-  **원장 직계 자식이 끝나는 자리를 둘로 되돌린다.** 캡이 없어 혼자 847px까지
-  나가던 셋 중 마지막이다(절 머리글과 표면은 위에서 절 안으로 들어갔다).
-  함께 묶여 있던 기업 화면의 제목·메타는 그 화면과 함께 걷었다(2026-09-28).
-*/
-.guide-ledger-peers {
-  max-width: var(--gs-block);
-}
-
-/* ── 종이 ───────────────────────────────────────────────────────────── */
-@media print {
-  .guide-section.is-fold > .guide-section-head .guide-tip-count {
-    display: none;
-  }
-
-  .guide-section.is-fold::details-content {
-    content-visibility: visible;
-  }
-}
-
-/* ── 좁은 폭 (집의 중단점 640) ───────────────────────────────────────── */
-@media (max-width: 640px) {
-  /*
-    375px에서는 라벨과 네 낱말이 한 줄에 안 든다. 한 줄짜리 절도 여기서는
-    두 줄이다 — 괘선은 라벨 줄에 남고 값이 아래로 내려온다.
-  */
-  .guide-section-head:has(> .guide-surfaces) {
-    flex-wrap: wrap;
-    padding-bottom: var(--gs-r1);
-  }
-
-  .guide-section-head > .guide-surfaces {
-    flex: 1 1 100%;
-    justify-content: flex-start;
   }
 }

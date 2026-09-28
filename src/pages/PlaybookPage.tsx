@@ -1,7 +1,7 @@
+import { useLayoutEffect, useRef } from 'react';
 import { Navigate, useParams } from 'react-router';
 import { GuideRail } from '../components/GuideRail';
 import { GuideLedger } from '../components/GuideLedger';
-import { PageHeader } from '../components/PageHeader';
 import { Seo } from '../components/Seo';
 import { todayInSeoul } from '../data/playbook';
 import { guideProductById } from '../data/guideProducts';
@@ -41,19 +41,61 @@ import { guideHomeProductId, guideVendorById } from '../data/guideVendors';
  * 주소에 서는 것은 canonical이 제품 주소를 가리켜 풉니다. 기업 주소는 이제 사이트
  * 어디서도 안 가리키므로 목록에서 뺐고, 학습의 옛 묶음 주소처럼 넘기기만 합니다.
  */
+/**
+ * **제품을 바꾸면 새 제품의 머리로 옮깁니다**(2026-09-28). 공통 머리를 걷고 원장이
+ * 한 편의 글이 되면서, 3,000px 아래를 읽다 레일에서 다른 제품을 누르면 새 제품의
+ * 중간에 말없이 떨어졌습니다. 그리기 전에 옮겨 한 프레임도 중간이 안 보입니다.
+ *
+ * **첫 로드에는 안 움직입니다.** 이전 id를 ref로 들고 있다가 달라졌을 때만 옮기므로
+ * StrictMode가 effect를 두 번 돌려도(두 번째도 같은 id) 제자리입니다. 머리가 이미
+ * 화면 위쪽에 보이면 그대로 둡니다.
+ */
+function useScrollToHeadOnSwitch(productId: string) {
+  const paneRef = useRef<HTMLDivElement>(null);
+  const prevId = useRef<string | null>(null);
+  useLayoutEffect(() => {
+    const prev = prevId.current;
+    prevId.current = productId;
+    if (prev === null || prev === productId || !paneRef.current) return;
+    const top = paneRef.current.getBoundingClientRect().top;
+    if (top < HEAD_OFFSET || top > window.innerHeight * 0.6) {
+      window.scrollTo({ top: window.scrollY + top - HEAD_OFFSET, behavior: 'instant' });
+    }
+    /*
+      **포커스가 갈 곳을 잃었으면 새 제품 이름으로 옮깁니다.** 원장 안의 「다른 제품」 링크로
+      옮기면 그 링크가 새 원장과 함께 사라져 포커스가 `body`로 떨어지고, 화면 낭독기는 새
+      제품을 알리지 않습니다. 레일 링크는 원장 밖이라 포커스가 제자리에 남으므로 건드리지
+      않습니다.
+    */
+    if (!document.activeElement || document.activeElement === document.body) {
+      paneRef.current.querySelector<HTMLElement>('h1')?.focus({ preventScroll: true });
+    }
+  }, [productId]);
+  return paneRef;
+}
+
+/** 붙박이 nav(71px) 아래로 조금 띄운 자리. 레일의 `sticky top`과 같은 값입니다. */
+const HEAD_OFFSET = 96;
+
 export function PlaybookPage() {
   const { vendorId, productId } = useParams<{ vendorId: string; productId: string }>();
-
-  // 없는 기업으로 들어오면 첫 화면으로 돌립니다.
+  const picked = productId ? guideProductById(productId) : undefined;
   const vendor = vendorId ? guideVendorById(vendorId) : undefined;
-  if (vendorId && !vendor) return <Navigate to="/playbook" replace />;
   /*
     기업만 적힌 주소와, 기업과 제품이 안 맞는 주소(`/playbook/openai/claude`)는
     그 회사의 대표 제품으로 넘깁니다.
   */
-  const picked = productId ? guideProductById(productId) : undefined;
-  if (vendor && (!picked || picked.vendorId !== vendor.id)) {
-    return <Navigate to={`/playbook/${vendor.id}/${vendor.homeProductId}`} replace />;
+  const redirectTo = vendor && (!picked || picked.vendorId !== vendor.id) ? vendor.homeProductId : null;
+  /*
+    **훅에는 넘긴 뒤 그릴 제품을 줍니다.** 넘기기 전 렌더의 id를 주면 `/playbook/google`로
+    들어온 첫 로드에서 「제품이 바뀌었다」로 읽혀 스크롤이 움직였습니다.
+  */
+  const paneRef = useScrollToHeadOnSwitch(redirectTo ?? picked?.id ?? guideHomeProductId);
+
+  // 없는 기업으로 들어오면 첫 화면으로 돌립니다.
+  if (vendorId && !vendor) return <Navigate to="/playbook" replace />;
+  if (vendor && redirectTo) {
+    return <Navigate to={`/playbook/${vendor.id}/${redirectTo}`} replace />;
   }
   const product = picked ?? guideProductById(guideHomeProductId)!;
 
@@ -66,21 +108,22 @@ export function PlaybookPage() {
   return (
     <>
       {/*
-        제목·설명·주소는 그 제품의 것입니다. 화면의 h1은 「AI 가이드」 그대로지만,
-        검색 결과에 서는 것은 제품이어야 합니다.
+        제목·설명·주소는 그 제품의 것입니다. **회사 이름은 여기에만 붙습니다** — 화면에서는
+        옆 레일의 머리글이 말하지만 검색 결과에는 레일이 없습니다.
       */}
       <Seo
         title={`${product.name} · AI 가이드`}
-        description={`${product.name} — ${product.oneLine}`}
+        description={`${product.name}(${guideVendorById(product.vendorId)?.name}) — ${product.oneLine}`}
         path={`/playbook/${product.vendorId}/${product.id}`}
       />
-      <PageHeader
-        kicker="PALDYN GUIDE"
-        title="AI 가이드"
-        description="기업마다 챗·업무·코딩을 한 벌씩 내놓습니다. 어느 제품을 어떻게 굴리는지를 담고, 값마다 어디서 온 것이고 언제 확인한 것인지를 함께 적습니다."
-      />
 
-      {/* `guide-page`가 이 서랍의 조판 상수(--gs-*·--guide-col)를 거는 자리입니다. */}
+      {/*
+        **서랍 공통 머리(`PageHeader`)가 없습니다**(2026-09-28). 「AI 가이드」 40px 제목과
+        두 문장 설명이 아홉 화면에서 늘 같았는데 주제인 제품 이름(26px)보다 컸고, 설명은
+        규정을 풀이하는 말이었습니다. 제품 이름이 h1이 되고 서랍 이름은 원장 머리의 킥커로
+        남습니다. 그래서 레일과 원장이 같은 높이에서 시작합니다.
+      */}
+      {/* `guide-page`가 레일의 조판 상수(--gs-*)를, `guide-pane`이 원장의 상수(--gl-*)를 겁니다. */}
       <div className="site-wrap section-space guide-page guide-layout">
         <div className="guide-rail-col">
           <GuideRail selectedId={product.id} vendorId={product.vendorId} />
@@ -88,11 +131,11 @@ export function PlaybookPage() {
 
         {/*
           **key가 없으면 원장의 페이드가 아홉 칸 중 여덟 번의 이동에서 안 돕니다.**
-          제품 → 제품은 둘 다 `ProductLedger`라 React가 같은 DOM을 재사용해
-          `guide-ledger-in`이 다시 안 걸립니다 — 「눌렀는데 아무 일도 안 일어난다」의
+          제품 → 제품은 둘 다 `GuideLedger`라 React가 같은 DOM을 재사용해
+          `gl-ledger-in`이 다시 안 걸립니다 — 「눌렀는데 아무 일도 안 일어난다」의
           절반이 스타일이 아니라 이 재조정이었습니다.
         */}
-        <div className="guide-pane">
+        <div className="guide-pane" ref={paneRef}>
           <GuideLedger key={product.id} product={product} today={today} />
         </div>
       </div>
