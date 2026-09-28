@@ -622,8 +622,9 @@ export const playbookClaims: Claim[] = [
     id: 'openai-tip-02',
     subject: { kind: 'vendor', id: 'openai' },
     topic: 'habit',
-    group: 'load',
+    group: 'feed',
     aim: 'save',
+    audience: 'api',
     statement: 'OpenAI API를 직접 부를 때는 앞 턴을 고쳐 쓰지 말고 뒤에 덧붙이고, 고정 지침과 공유 참고자료를 맨 앞에 둔다.',
     detail: '프리픽스가 그대로일 때만 캐시가 맞는다. 여러 턴짜리에서는 처음 지침만 캐싱하는 것보다 자라나는 대화 기록을 통째로 재사용하는 쪽이 아끼는 입력 토큰이 더 크다. 도구는 정의·순서·스키마를 그대로 두고, 잠시 막고 싶으면 정의를 빼지 말고 `tool_choice`를 `none`으로 둔다. 모델·도구·`reasoning.effort`·`text.verbosity`·컨텍스트 관리 설정을 바꾸면 그 지점 뒤로는 캐시가 안 맞는다.',
     /* 팁은 셀 값이 아니라 행동을 바꾸는 문장이라 `value`가 빕니다. */
@@ -744,12 +745,20 @@ export const playbookClaims: Claim[] = [
     volatility: 'concept',
     source: { label: 'Gemini API — Building managed agents', url: 'https://ai.google.dev/gemini-api/docs/custom-agents' },
   },
+  /*
+    **Gemini API 문서에서 긷은 여섯은 `audience: 'api'`다**(2026-09-28). 캐시·
+    `thinking_level`·`media_resolution`은 API를 직접 부르는 사람만 만질 수 있어,
+    회사 주체라도 API 표면이 있는 제품(`Product.apiTips`)에만 선다. 같은 날 01~03(캐시
+    둘과 질문 위치 하나)과 `openai-tip-02`를 `load`에서 `feed`로 옮겼다 — 도구를 갖추는
+    일이 아니라 넣는 자료의 순서·묶음이다.
+  */
   {
     id: 'google-tip-01',
     subject: { kind: 'vendor', id: 'google' },
     topic: 'habit',
-    group: 'load',
+    group: 'feed',
     aim: 'save',
+    audience: 'api',
     statement: '크고 여러 요청에 공통인 내용은 프롬프트 맨 앞에 몰아 둔다.',
     detail: '암묵 캐싱은 접두사가 같을 때 걸린다. 공통 자료를 뒤에 두거나 요청마다 순서를 바꾸면 접두사가 깨져 캐시가 안 붙는다. 2.5 계열은 2,048토큰, 3 계열은 4,096토큰이 최소 문턱이다.',
     /* 팁은 셀 값이 아니라 행동을 바꾸는 문장이라 `value`가 빕니다. */
@@ -762,8 +771,9 @@ export const playbookClaims: Claim[] = [
     id: 'google-tip-02',
     subject: { kind: 'vendor', id: 'google' },
     topic: 'habit',
-    group: 'load',
+    group: 'feed',
     aim: 'save',
+    audience: 'api',
     statement: '같은 자료를 두고 물을 것이 여럿이면 짧은 시간 안에 몰아서 보낸다.',
     detail: '캐시는 시간이 지나면 식는다. 같은 접두사를 쓰는 질문을 하루에 흩어 보내면 매번 전액을 내고, 붙여서 보내면 뒤의 요청들이 캐시 적중으로 깎인다.',
     /* 팁은 셀 값이 아니라 행동을 바꾸는 문장이라 `value`가 빕니다. */
@@ -776,8 +786,9 @@ export const playbookClaims: Claim[] = [
     id: 'google-tip-03',
     subject: { kind: 'vendor', id: 'google' },
     topic: 'habit',
-    group: 'load',
+    group: 'feed',
     aim: 'save',
+    audience: 'api',
     statement: '문맥이 길면 질문은 자료 앞이 아니라 맨 뒤에 붙인다.',
     detail: '긴 문맥에서 질문을 앞에 두면 답 품질이 떨어져 되묻게 되고, 되묻는 한 번이 그 긴 문맥을 통째로 다시 태운다. 캐시 접두사 규칙과도 같은 방향이다 — 공통 자료가 앞, 그날의 질문이 뒤다.',
     /* 팁은 셀 값이 아니라 행동을 바꾸는 문장이라 `value`가 빕니다. */
@@ -792,6 +803,7 @@ export const playbookClaims: Claim[] = [
     topic: 'habit',
     group: 'model',
     aim: 'save',
+    audience: 'api',
     statement: '출력이 긴 작업에서는 모델에게 덜 생각하라고 명시한다.',
     detail: '긴 글을 뽑는 일은 사고 토큰이 아니라 출력 토큰이 일한다. 사고를 줄이라고 적어 두면 같은 결과에 토큰이 덜 든다. max_output_tokens를 조이는 것으로 대신하면 사고와 출력이 함께 잘려 답이 끊긴다.',
     /* 팁은 셀 값이 아니라 행동을 바꾸는 문장이라 `value`가 빕니다. */
@@ -806,6 +818,7 @@ export const playbookClaims: Claim[] = [
     topic: 'habit',
     group: 'model',
     aim: 'save',
+    audience: 'api',
     statement: 'Gemini 3로 옮길 때는 chain-of-thought 프롬프트를 걷어내고 thinking_level: "high"로 대신한다.',
     detail: '2.5에서 추론을 끌어내려고 붙여 둔 단계별 지시 문단이 3에서는 중복이다. 프롬프트를 단순하게 줄이면 매 호출의 입력이 그만큼 줄고 모델이 헤매지도 않는다.',
     /* 팁은 셀 값이 아니라 행동을 바꾸는 문장이라 `value`가 빕니다. */
@@ -820,6 +833,7 @@ export const playbookClaims: Claim[] = [
     topic: 'habit',
     group: 'feed',
     aim: 'save',
+    audience: 'api',
     statement: 'PDF·영상으로 문맥 창이 넘치면 media_resolution을 명시적으로 낮춘다.',
     detail: 'Gemini 3는 기본 해상도가 올라가 같은 PDF가 2.5보다 토큰을 더 먹는다. 영상은 media_resolution을 low로 두면 프레임당 258토큰이 66토큰이 된다(영상 이해 문서).',
     /* 팁은 셀 값이 아니라 행동을 바꾸는 문장이라 `value`가 빕니다. */

@@ -85,6 +85,8 @@ export interface Product {
   officialUrl: string;
   /** 값을 다시 확인하러 여는 곳. 갱신 루틴이 여는 자리입니다. */
   docsUrl: string | null;
+  /** API 표면이 있어 `audience: 'api'`인 팁이 이 제품에 서는가. */
+  apiTips?: true;
   /**
    * 심볼 로고.
    *
@@ -301,6 +303,15 @@ export interface Claim {
    * 「토큰을 아끼고」라는 주문으로만 모은 자국입니다. 스물여덟을 더 긷어 채웠습니다.
    */
   aim?: TipAim;
+  /**
+   * 누가 따를 수 있는 팁인가. **API를 직접 부르는 사람에게만 해당하면 `'api'`입니다.**
+   *
+   * 회사 주체 팁(Gemini API·OpenAI API 문서에서 긷은 것)은 `claimsForProduct`가 그
+   * 회사 제품 전부에 끌어옵니다. 그런데 「컨텍스트 캐시를 켠다」·「`thinking_level`을
+   * 올린다」는 채팅 앱·CLI 사용자가 할 수 없는 행동입니다 — 그래서 API 표면이 있는
+   * 제품(`Product.apiTips`)에서만 섭니다. 데이터는 그대로 남습니다.
+   */
+  audience?: 'api';
   /** 한 줄 주장. */
   statement: string;
   /** 화면에 나가는 값. `null`이면 화면에 「모름 · 공식 페이지에서 확인 →」으로 섭니다. */

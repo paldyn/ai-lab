@@ -484,4 +484,40 @@ describe('AI 가이드 — 주장', () => {
       });
     expect(bad.map((c) => `${c.id}: ${c.value}`)).toEqual([]);
   });
+
+  /*
+    **`audience`는 회사 주체 팁에만 붙는다.** 제품 주체 팁은 이미 그 제품 화면에만
+    서므로 거를 것이 없고, 값 주장에 붙으면 뜻이 없다 — `group`·`aim`과 같은 자리다.
+  */
+  it('audience는 회사 주체 팁에만 붙는다', () => {
+    const bad = playbookClaims
+      .filter((c) => c.audience)
+      .filter((c) => c.topic !== 'habit' || c.subject.kind !== 'vendor');
+    expect(bad.map((c) => `${c.id}(${c.topic}/${c.subject.kind})`)).toEqual([]);
+  });
+
+  /*
+    **API 문서에서 긷은 회사 팁은 API를 부르는 사람만 따를 수 있다.** 회사 주체 팁은
+    `claimsForProduct`가 그 회사 제품 전부에 끌어오므로, 표시가 없으면 채팅 앱·CLI
+    화면에 「캐시를 켠다」·「`thinking_level`을 올린다」가 선다(2026-09-28까지 일곱 건이
+    여덟 제품에 그렇게 서 있었다). 새 팁을 긷는 사람이 반드시 이 줄을 만나게 한다.
+
+    **`platform.claude.com`도 API 문서다.** 지금은 Anthropic 회사 주체 팁이 0건이라
+    빠져 있어도 초록이지만, 그 호스트에서 팁을 긷는 날 Claude 챗·Cowork 화면에
+    API 팁이 선다. 모델·요금 문서도 같은 호스트에 있으나 위에서 회사 주체 팁으로
+    먼저 좁히므로 값 주장은 여기 안 걸린다.
+  */
+  it('API 문서에서 긷은 회사 팁에는 audience가 붙는다', () => {
+    const API_HOSTS = [
+      'ai.google.dev',
+      'developers.openai.com',
+      'platform.openai.com',
+      'platform.claude.com',
+    ];
+    const bad = playbookClaims
+      .filter((c) => c.topic === 'habit' && c.subject.kind === 'vendor')
+      .filter((c) => API_HOSTS.includes(hostOf(c.source.url)))
+      .filter((c) => c.audience !== 'api');
+    expect(bad.map((c) => `${c.id} → ${hostOf(c.source.url)}`)).toEqual([]);
+  });
 });

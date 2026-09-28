@@ -293,6 +293,8 @@ export const guideProducts: Product[] = [
     oneLine: '여러 에이전트를 한자리에서 굴리는 개발 플랫폼.',
     officialUrl: 'https://antigravity.google/',
     docsUrl: null,
+    // Gemini API의 managed agents를 다루는 제품이라 API 팁이 여기에 섭니다.
+    apiTips: true,
     logo: 'assets/antigravity.png',
     monochrome: false,
     accent: 'var(--source-google-text)',

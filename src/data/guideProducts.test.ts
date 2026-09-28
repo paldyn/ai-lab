@@ -98,4 +98,14 @@ describe('AI 가이드 — 기업과 제품', () => {
     ].filter((u): u is string => Boolean(u));
     expect(urls.filter((u) => !u.startsWith('https://'))).toEqual([]);
   });
+
+  /*
+    **API 팁은 API를 부를 수 있는 제품에만 선다.** `apiTips`를 켠 제품에 SDK 표면이
+    없으면 그 화면의 독자가 할 수 없는 행동을 권하게 된다 — `audience`를 둔 이유가
+    통째로 거꾸로 선다.
+  */
+  it('API 팁을 세우는 제품에는 SDK 표면이 있다', () => {
+    const bad = guideProducts.filter((p) => p.apiTips && !p.surfaces.includes('SDK'));
+    expect(bad.map((p) => `${p.id} — ${p.surfaces.join('·')}`)).toEqual([]);
+  });
 });

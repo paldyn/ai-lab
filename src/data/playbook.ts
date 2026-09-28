@@ -172,7 +172,14 @@ export function claimsForProduct(productId: string): Claim[] {
   return playbookClaims.filter(
     (c) =>
       isSubject(c, 'product', productId) ||
-      (product && isSubject(c, 'vendor', product.vendorId)) ||
+      (product &&
+        isSubject(c, 'vendor', product.vendorId) &&
+        /*
+          **API를 직접 부르는 팁은 API 표면이 있는 제품에만 섭니다**(2026-09-28). 회사
+          주체라 그 회사 제품 전부에 끌려오는데, 「컨텍스트 캐시를 켠다」는 Gemini 앱·CLI
+          사용자가 할 수 없는 행동입니다 — 할 수 없는 일을 시키는 팁은 팁이 아닙니다.
+        */
+        (c.audience !== 'api' || product.apiTips === true)) ||
       (c.subject.kind === 'model' && models.includes(c.subject.id)),
   );
 }
