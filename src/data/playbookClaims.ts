@@ -77,7 +77,7 @@ export const playbookClaims: Claim[] = [
     value: '1M 토큰',
     tier: 'vendor',
     volatility: 'model',
-    source: { label: 'Claude Fable 5.1 모델 문서', url: 'https://platform.claude.com/docs/en/models/fable-5/overview' },
+    source: { label: 'Claude Fable 5.1 모델 문서', url: 'https://platform.claude.com/docs/en/models/fable-5-1/overview' },
   },
   {
     id: 'claude-fable-5-context',

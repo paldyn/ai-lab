@@ -79,6 +79,11 @@ const entries: CheckEntry[] = [
   { claimId: 'claude-sonnet-5-token-price', result: '그대로', excerpt: '| Claude Sonnet 5 | $2 / MTok<sup>3</sup> | $2.50 / MTok | $4 / MTok | $0.20 / MTok | $10 / MTok<sup>3</sup> |' },
   { claimId: 'claude-sonnet-4-6-token-price', result: '그대로', excerpt: '| Claude Sonnet 4.6 | $3 / MTok | $3.75 / MTok | $6 / MTok | $0.30 / MTok | $15 / MTok |' },
   { claimId: 'claude-haiku-4-5-token-price', result: '그대로', excerpt: '| Claude Haiku 4.5 | $1 / MTok | $1.25 / MTok | $2 / MTok | $0.10 / MTok | $5 / MTok |' },
+  /*
+    출처가 fable-5 문서를 가리키고 있던 것을 fable-5-1 문서로 바로잡으며 그 페이지를 열었습니다.
+    값은 그대로(1M 토큰)입니다.
+  */
+  { claimId: 'claude-fable-5-1-context', result: '그대로', excerpt: 'Context window: 1M tokens · Max output: 128K tokens · Input pricing: $10 / MTok · Output pricing: $50 / MTok' },
 ];
 
 export default entries;
