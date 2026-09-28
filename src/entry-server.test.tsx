@@ -102,6 +102,22 @@ describe('프리렌더 — 본문이 HTML에 들어간다', () => {
   });
 
   /*
+    **레일의 기업 줄은 누를 수 없는 머리글입니다.** 링크로 되살아나면 기업 주소를
+    가리키게 되고, 그 주소는 넘김뿐이라 누른 줄이 아니라 아래 대표 제품 줄이 켜집니다.
+    머리글이 서는 것 자체는 지킵니다 — Codex·Antigravity는 이름에 회사가 없어 그
+    머리글이 회사를 알려 주는 자리입니다.
+  */
+  it('레일의 기업 줄은 링크가 아닌 머리글로 선다', async () => {
+    const { html } = await render('/playbook');
+    expect(html).not.toMatch(/<a[^>]*class="guide-rail-vendor/);
+    for (const vendor of guideVendors) {
+      expect(html).not.toContain(`href="/playbook/${vendor.id}"`);
+      expect(html).toContain(`id="guide-rail-${vendor.id}"`);
+      expect(html).toContain(`aria-labelledby="guide-rail-${vendor.id}"`);
+    }
+  });
+
+  /*
     **절이 여섯 다 서는가, 그리고 접힌 절이 내용을 다 싣고 나가는가**(2026-09-18).
 
     위 검사는 `guide-ledger-label`이 한 번이라도 나오면 초록입니다 — 지금은 아홉

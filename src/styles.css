@@ -7408,16 +7408,21 @@ input:focus-visible {
   달아 계급을 벌린다 — 남는 폭을 괘선이 먹으므로 레일이 244px일 때 수가 오른쪽
   끝에 붕 뜨던 문제도 같이 사라진다.
 
-  집의 학습 레일과 달리 **눌린다** — 기업도 갈 곳이기 때문이다(`/playbook/<기업>`).
+  **안 눌린다**(2026-09-28). 기업 화면을 걷으면서 링크를 내려놓았고, 그래서 이 줄에는
+  **누를 수 있어 보이는 신호가 하나도 없어야 한다** — hover 잉크도, 전환도, I-빔
+  커서도. 하나라도 남으면 「눌렀는데 아무 일도 안 일어난다」가 고장으로 읽힌다.
+  학습 레일이 「hover는 누를 수 있는 줄에만 겁니다」로 같은 선을 그었다.
+  켜지는 것(`.is-on`)은 누른 결과가 아니라 **지금 보는 제품이 이 회사 것**이라는 뜻이다.
 */
 .guide-rail-vendor {
   display: flex;
   height: 26px;
   align-items: center;
   gap: var(--gs-r1);
+  margin: 0;
   padding: 0 var(--gs-r2);
   color: var(--text-muted);
-  transition: color 150ms ease;
+  cursor: default;
 }
 
 .guide-rail-vendor-name {
@@ -7433,15 +7438,12 @@ input:focus-visible {
   height: 1px;
   flex: 1 1 auto;
   background: var(--border);
-  transition: background 150ms ease;
 }
 
-.guide-rail-vendor:hover,
 .guide-rail-vendor.is-on {
   color: var(--text-strong);
 }
 
-.guide-rail-vendor:hover .guide-rail-rule,
 .guide-rail-vendor.is-on .guide-rail-rule {
   background: var(--guide-rule);
 }
@@ -7449,10 +7451,8 @@ input:focus-visible {
 /* 기업 마크는 한 단 흐리게 서서 제품 마크와 또 한 번 갈린다. */
 .guide-rail-vendor .guide-rail-mark {
   opacity: 0.68;
-  transition: opacity 150ms ease;
 }
 
-.guide-rail-vendor:hover .guide-rail-mark,
 .guide-rail-vendor.is-on .guide-rail-mark {
   opacity: 1;
 }

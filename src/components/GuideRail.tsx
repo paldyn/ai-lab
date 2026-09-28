@@ -17,8 +17,9 @@ import type { Product } from '../types/playbook';
  * 레일은 그것을 좌우로 돌립니다. 고르는 것과 읽는 것이 **한 화면에 나란히** 서고,
  * 레일이 따라와서(sticky) 읽다가 눈만 왼쪽으로 옮기면 됩니다.
  *
- * **여닫히는 것은 여전히 하나도 없습니다.** 열두 줄이 처음부터 다 서 있고 고르면
- * 잉크만 바뀝니다. 아코디언이 아닙니다 — 열둘은 접을 이유가 없는 길이입니다.
+ * **여닫히는 것은 여전히 하나도 없습니다.** 열두 줄(머리글 셋 + 제품 아홉)이
+ * 처음부터 다 서 있고 고르면 잉크만 바뀝니다. 아코디언이 아닙니다 — 열둘은 접을
+ * 이유가 없는 길이입니다. **누르는 줄은 제품 아홉 한 층뿐입니다.**
  *
  * **수를 아예 안 답니다.** 처음에는 열세 줄 전부에 「0편」을 달아 왼쪽에 영(零)의
  * 기둥이 섰고, 그다음엔 1편 이상인 줄에만 달기로 했습니다. 2026-09-17에 노트
@@ -53,13 +54,20 @@ export function GuideRail({ selectedId, vendorId }: { selectedId?: string; vendo
       {guideVendors.map((vendor) => (
         <div key={vendor.id} className="guide-rail-group">
           {/*
-            기업도 갈 곳입니다 — 주소의 두 층이 화면의 두 축으로 그대로 섭니다.
+            **기업은 갈 곳이 아닙니다 — 누를 수 없는 구역 머리글입니다**(2026-09-28).
+            기업 화면이 360px에 링크 1개인 빈 요약이라 걷었고, 그러면서 이 줄도 링크를
+            내려놓았습니다. 누르면 대표 제품으로 가게 두는 길도 있었지만, 그러면 이 줄과
+            아래 대표 제품 줄이 같은 곳을 가리키는 링크 둘이 되고 **누른 줄이 아니라 다른
+            줄이 켜집니다.** 학습 레일의 묶음 머리글이 누를 수 없게 된 것과 같은 결론입니다.
+
             제품 줄과 **계급이 갈려야** 합니다: 모노 대문자에 오른쪽으로 뻗는 괘선을
             달아, 이름이 아니라 구역 머리글로 읽히게 했습니다. 처음 그린 레일은
             기업과 제품이 들여쓰기만 다르고 크기·색이 같아 두 층이 안 보였습니다.
+            Codex·Antigravity는 이름에 회사가 안 들어 있어, 이 머리글이 회사를 알려
+            주는 자리이기도 합니다. `is-on`은 「지금 보는 제품이 이 회사 것」입니다.
           */}
-          <Link
-            to={`/playbook/${vendor.id}`}
+          <p
+            id={`guide-rail-${vendor.id}`}
             className={`guide-rail-vendor${vendor.id === vendorId ? ' is-on' : ''}`}
           >
             <GuideMark
@@ -69,9 +77,9 @@ export function GuideRail({ selectedId, vendorId }: { selectedId?: string; vendo
             />
             <span className="guide-rail-vendor-name">{vendor.name}</span>
             <span className="guide-rail-rule" aria-hidden="true" />
-          </Link>
+          </p>
 
-          <ul className="guide-rail-products">
+          <ul className="guide-rail-products" aria-labelledby={`guide-rail-${vendor.id}`}>
             {productsOfVendor(vendor.id).map((product) => (
               <ProductRow
                 key={product.id}
