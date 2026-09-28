@@ -1,6 +1,7 @@
 import { useLayoutEffect, useRef, useState } from 'react';
 import { Navigate, useParams } from 'react-router';
 import { GuideRail } from '../components/GuideRail';
+import { PageHeader } from '../components/PageHeader';
 import { GuideLedger, type GuideTab } from '../components/GuideLedger';
 import { Seo } from '../components/Seo';
 import { todayInSeoul } from '../data/playbook';
@@ -68,7 +69,7 @@ function useScrollToHeadOnSwitch(productId: string) {
       않습니다.
     */
     if (!document.activeElement || document.activeElement === document.body) {
-      paneRef.current.querySelector<HTMLElement>('h1')?.focus({ preventScroll: true });
+      paneRef.current.querySelector<HTMLElement>('.gl-title')?.focus({ preventScroll: true });
     }
   }, [productId]);
   return paneRef;
@@ -124,11 +125,15 @@ export function PlaybookPage() {
       />
 
       {/*
-        **서랍 공통 머리(`PageHeader`)가 없습니다**(2026-09-28). 「AI 가이드」 40px 제목과
-        두 문장 설명이 아홉 화면에서 늘 같았는데 주제인 제품 이름(26px)보다 컸고, 설명은
-        규정을 풀이하는 말이었습니다. 제품 이름이 h1이 되고 서랍 이름은 원장 머리의 킥커로
-        남습니다. 그래서 레일과 원장이 같은 높이에서 시작합니다.
+        **서랍 배너는 다른 서랍과 같다**(`PageHeader`). 한때 걷어 제품 이름을 h1로 세웠는데,
+        뉴스·학습·리서치에서 넘어온 사람에게 이 서랍만 머리가 없어 다른 사이트처럼 보였다.
+        설명은 규정을 풀이하지 않고 이 서랍에 무엇이 있는지만 말한다.
       */}
+      <PageHeader
+        kicker="PALDYN GUIDE"
+        title="AI 가이드"
+        description="Claude·ChatGPT·Gemini를 제품별로 나눠, 공식 문서에서 확인한 사용 팁과 모델·요금 정보를 모았습니다."
+      />
       {/* `guide-page`가 레일의 조판 상수(--gs-*)를, `guide-pane`이 원장의 상수(--gl-*)를 겁니다. */}
       <div className="site-wrap section-space guide-page guide-layout">
         <div className="guide-rail-col">

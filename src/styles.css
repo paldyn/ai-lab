@@ -7529,24 +7529,17 @@ input:focus-visible {
 
 /* ── 머리 ── */
 
-.gl-kicker {
-  color: var(--text-muted);
-  font-size: var(--gl-meta);
-  letter-spacing: 0.02em;
-}
-
 /*
-  제품 이름이 이 화면의 h1이다. 사이트 상세 제목(자격증·글)과 같은 규격이라 서랍이
-  달라도 「한 편의 머리」로 읽힌다. 마크는 **첫 줄 가운데**에 붙는다 — 두 줄로 감기는
-  이름에서 마크가 두 줄 사이로 내려가면 이름이 둘로 쪼개져 보인다.
+  제품 이름. 페이지의 h1은 위 서랍 배너의 「AI 가이드」라 이것은 h2이고, 배너 제목
+  (1.9~2.5rem/600)보다 한 단 작게 선다. 마크는 **첫 줄 가운데**에 붙는다 — 두 줄로
+  감기는 이름에서 마크가 두 줄 사이로 내려가면 이름이 둘로 쪼개져 보인다.
 */
 .gl-title {
   display: flex;
   align-items: flex-start;
   gap: var(--gl-r2);
-  margin-top: var(--gl-r2);
   color: var(--text-strong);
-  font-size: 2rem;
+  font-size: 1.6rem;
   font-weight: 500;
   line-height: 1.35;
   letter-spacing: -0.01em;
@@ -7554,7 +7547,7 @@ input:focus-visible {
 
 @media (min-width: 640px) {
   .gl-title {
-    font-size: 2.6rem;
+    font-size: 2rem;
   }
 }
 
@@ -7564,9 +7557,9 @@ input:focus-visible {
 }
 
 .gl-title .gl-mark {
-  width: 32px;
-  height: 32px;
-  margin-top: calc((1.35em - 32px) / 2);
+  width: 28px;
+  height: 28px;
+  margin-top: calc((1.35em - 28px) / 2);
 }
 
 .gl-dek {

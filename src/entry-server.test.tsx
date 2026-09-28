@@ -80,14 +80,14 @@ describe('프리렌더 — 본문이 HTML에 들어간다', () => {
   /*
     **제품 화면은 주소가 진짜 라우트이고, 원장째 HTML에 실립니다.** 원장이 순수 클라이언트
     상태였으면 프리렌더된 HTML에 본문이 안 들어갑니다 — 파이썬 265편이 그 이유로 빈
-    껍데기였던 그 자리입니다. 제품 이름은 h1(`gl-title`)에 섭니다.
+    껍데기였던 그 자리입니다. 제품 이름은 서랍 배너(h1 「AI 가이드」) 아래 h2(`gl-title`)에 섭니다.
   */
-  it('제품 화면이 원장째 HTML에 실리고 제품 이름이 h1이다', async () => {
+  it('제품 화면이 원장째 HTML에 실리고 제품 이름이 원장 머리에 선다', async () => {
     const missing: string[] = [];
     for (const product of guideProducts) {
       const { html } = await render(`/playbook/${product.vendorId}/${product.id}`);
-      const h1 = /<h1 class="gl-title"[^>]*>([\s\S]*?)<\/h1>/.exec(html)?.[1] ?? '';
-      if (!h1.includes(esc(product.name)) || !html.includes(esc(product.oneLine))) {
+      const title = /<h2 class="gl-title"[^>]*>([\s\S]*?)<\/h2>/.exec(html)?.[1] ?? '';
+      if (!title.includes(esc(product.name)) || !html.includes(esc(product.oneLine))) {
         missing.push(`${product.vendorId}/${product.id}`);
       }
     }
@@ -268,14 +268,16 @@ describe('프리렌더 — 본문이 HTML에 들어간다', () => {
   it('가이드 첫 주소가 기본 제품을 그리고 그 제품 주소를 canonical로 건다', async () => {
     const home = guideProducts.find((p) => p.id === guideVendors[0].homeProductId)!;
     const { html, head } = await render('/playbook');
-    expect(html).toMatch(/<h1 class="gl-title"[^>]*>/);
+    expect(html).toMatch(/<h2 class="gl-title"[^>]*>/);
+    /* 서랍 배너는 다른 서랍과 같은 모양으로 선다 — 한때 걷었다가 되살렸다. */
+    expect(html).toContain('page-header');
+    expect(html).toMatch(/<h1>AI 가이드<\/h1>/);
     expect(html).toContain(esc(home.name));
     expect(classCount(html, 'gl-tip')).toBeGreaterThan(0);
     expect(head).toContain(`/playbook/${home.vendorId}/${home.id}"`);
-    /* 걷어낸 첫 화면·기업 화면·서랍 공통 머리의 흔적이 되살아나면 빨갛게. */
+    /* 걷어낸 첫 화면·기업 화면의 흔적이 되살아나면 빨갛게. */
     expect(html).not.toContain('체감');
     expect(html).not.toContain('guide-rail-note');
     expect(html).not.toContain('guide-stats');
-    expect(html).not.toContain('page-header');
   });
 });

@@ -480,12 +480,11 @@ function GuideHead({ product }: { product: Product }) {
   return (
     <header className="gl-head">
       {/*
-        서랍 이름. nav 「가이드」에서 들어와 제품 하나에 바로 떨어진 사람이 어디인지 압니다.
-        회사 이름은 옆 레일의 머리글이 말하므로 여기 안 적습니다.
+        제품 이름은 `h2`입니다 — 페이지의 `h1`은 서랍 배너의 「AI 가이드」입니다. 회사 이름은
+        옆 레일의 머리글이 말하므로 여기 안 적습니다. 제품을 바꾼 뒤 포커스를 받는 자리라
+        `tabIndex={-1}`입니다(`PlaybookPage`).
       */}
-      <p className="gl-kicker">AI 가이드</p>
-      {/* 제품을 바꾼 뒤 포커스를 받는 자리라 `tabIndex={-1}`입니다(`PlaybookPage`). */}
-      <h1 className="gl-title" tabIndex={-1}>
+      <h2 className="gl-title" tabIndex={-1}>
         <GuideMark
           logo={product.logo}
           monochrome={product.monochrome}
@@ -493,7 +492,7 @@ function GuideHead({ product }: { product: Product }) {
           className="gl-mark"
         />
         <span>{product.name}</span>
-      </h1>
+      </h2>
       <p className="gl-dek">{product.oneLine}</p>
 
       {product.surfaces.length > 0 && (
