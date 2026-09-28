@@ -7259,8 +7259,8 @@ input:focus-visible {
 /*
   원장의 조판 상수. **이 단 밖의 값을 안 쓴다.**
 
-  크기 넷 — 12 · 14.5 · 16 · 26. 제품 이름(h1)만 사이트의 상세 제목 규격(자격증·글과
-  같은 2rem → 2.6rem)을 쓴다. **원장 안에는 12px 아래 글자가 없다** — 옛 원장의 10px
+  크기 넷 — 12 · 14.5 · 16 · 26. 제품 이름(h2)만 1.6rem → 2rem을 쓴다 — 배너의
+  「AI 가이드」(h1)보다 한 단 작다. **원장 안에는 12px 아래 글자가 없다** — 옛 원장의 10px
   모노 라벨이 「흐리고 가늘다」의 절반이었다. 그리고 **한글이 드는 자리에는 모노를
   안 쓴다** — 모노는 코드·키·표의 수에만 선다.
 */
@@ -7511,10 +7511,11 @@ input:focus-visible {
 
   옛 원장은 데이터 분류표였다. 팁 문장이 `<details>` 두 겹 아래라 첫 화면에 한 줄도
   없었고, 보이는 것은 10px 모노 라벨·괘선·「2 +」 같은 여닫이 장치였다. 지금은
-  **접히는 것이 하나도 없고**, 행동 → 이유 → 출처가 크기와 색으로 갈린다.
+  **접히는 것이 하나도 없고**, 행동 → 이유 → 출처가 굵기·크기·색으로 갈린다.
 
-  **면을 안 칠한다.** 원장 안 `--surface`는 0이다. 영역은 절 머리 아래 괘선 한 줄과
-  72px 절 간격이 가른다. 괘선은 절 머리 · 표의 줄 사이 · 다른 제품 줄 사이뿐이다.
+  **면을 안 칠한다.** 원장 안 `--surface`는 0이다. 괘선은 탭 줄 아래 · 구역 머리 옆 ·
+  팁 행 사이 · 표의 줄 사이 · 다른 제품 줄 사이뿐이다. 코드 판·키캡은 면이 아니라 글자에
+  붙은 표지다.
 */
 .gl-ledger {
   max-width: var(--gl-measure);
@@ -7624,7 +7625,7 @@ input:focus-visible {
 .gl-head-link:hover,
 .gl-head-link:hover svg {
   border-color: var(--text-muted);
-  color: var(--brand-text);
+  color: var(--guide-accent);
 }
 
 /*
@@ -7781,22 +7782,52 @@ input:focus-visible {
 }
 
 /*
-  **순간 머리: 작지만 진하고, 아래에 선을 단다**(2026-09-28). 흐리게 두던 동안 이유 문단과
-  모양이 같아 무리가 바뀌는 자리가 안 보였다. 크기는 팁 문장(16)보다 작은 14.5로 둔다 —
-  헤딩이 팁보다 크면 「라벨 — 팁 하나」가 목차처럼 번갈아 선다. 자격증 상세의 무리 머리
-  (`.cert-group-title`)와 같은 말씨다.
+  **구역 머리는 제품색 글자에 오른쪽으로 뻗는 괘선이다**(2026-09-28). 순간 라벨과 참고 탭
+  소제목(「고를 수 있는 모델」·「요금제와 사용 한도」)이 이 한 모양을 쓴다 — 레일의 기업
+  머리글(`.guide-rail-vendor`)과 같은 말씨다.
 
-  `scroll-margin-top`은 붙박이 머리(71) + 붙박이 탭 줄(61) + 12다. 96이던 동안 앵커가
-  탭 줄 밑에 가려졌다.
+  검정 글자에 아래 선을 달던 동안에는 무리가 바뀌는 선과 팁 행을 가르는 선이 같은 가로
+  괘선이라 둘이 안 갈렸고, 화면에 색이 하나도 없어 「강조나 컬러가 없다」였다. 크기는 팁
+  문장(16)보다 작은 14.5로 둔다 — 헤딩이 팁보다 크면 「라벨 — 팁 하나」가 목차처럼 번갈아
+  선다. 글자색은 `-text` 토큰이라 두 테마 모두 4.5:1을 넘는다(`theme.test.ts`).
+
+  `scroll-margin-top`은 붙박이 머리(71) + 붙박이 탭 줄(61) + 12다.
 */
-.gl-situation {
-  scroll-margin-top: calc(71px + 61px + var(--gl-r2));
-  padding-bottom: var(--gl-r2);
-  border-bottom: 1px solid var(--text-muted);
-  color: var(--text-strong);
+.gl-situation,
+.gl-facts-sub {
+  display: flex;
+  align-items: center;
+  gap: var(--gl-r2);
+  margin-bottom: var(--gl-r1);
+  color: var(--guide-accent);
   font-size: var(--gl-note);
   font-weight: 600;
   line-height: 1.5;
+}
+
+.gl-situation::after,
+.gl-facts-sub::after {
+  content: '';
+  flex: 1 1 auto;
+  height: 1px;
+  background: color-mix(in srgb, var(--guide-accent) 35%, transparent);
+}
+
+.gl-situation {
+  scroll-margin-top: calc(71px + 61px + var(--gl-r2));
+}
+
+.gl-facts-sub {
+  margin-top: var(--gl-r4);
+}
+
+/* 강제 색 모드에서는 배경으로 그린 괘선이 사라지므로 글자색으로 칠한다. */
+@media (forced-colors: active) {
+  .gl-situation::after,
+  .gl-facts-sub::after {
+    background: CanvasText;
+    forced-color-adjust: none;
+  }
 }
 
 /* ── 팁 ── */
@@ -7827,11 +7858,15 @@ input:focus-visible {
   padding-top: 0;
 }
 
-/* 행 안의 위계: 행동 > 이유 > 출처 꼬리. 사이트의 「제목 strong 500 + 요약 text-dim」 짝이다. */
+/*
+  행 안의 위계: 행동 > 이유 > 출처 꼬리. **행동은 600이다**(2026-09-28). Wanted Sans
+  Variable은 무게 대비가 낮아 500과 400이 거의 안 갈리고, 그래서 행동 한 줄이 두세 줄짜리
+  회색 이유 덩어리에 묻혔다. 600이라야 세로로 훑을 때 행동만 짚인다.
+*/
 .gl-tip-do {
   color: var(--text-strong);
   font-size: var(--gl-body);
-  font-weight: 500;
+  font-weight: 600;
   line-height: 1.6;
 }
 
@@ -7858,8 +7893,9 @@ input:focus-visible {
   text-underline-offset: 3px;
 }
 
+/* 원장 안 링크의 hover 잉크는 제품색이다 — 한 화면에 색상이 하나다(Google 화면에서 주황이 튀었다). */
 .gl-tip-src:hover {
-  color: var(--brand-text);
+  color: var(--guide-accent);
   text-decoration-color: currentColor;
 }
 
@@ -7898,7 +7934,7 @@ input:focus-visible {
 
 .gl-plan-meta a:hover,
 .gl-caption a:hover {
-  color: var(--brand-text);
+  color: var(--guide-accent);
   text-decoration-color: currentColor;
 }
 
@@ -7919,15 +7955,27 @@ input:focus-visible {
 }
 
 /*
-  **행동 문장의 코드는 테두리 있는 판, 이유 안의 코드는 글자꼴만.** 이유 줄에 판이 여럿
-  서면 얼룩이 된다. 판 색(`--bg-subtle`)은 배경과 1.04:1이라 테두리가 없으면 다크에서
-  판이 안 보인다. 크기 0.92em(광학 보정)은 둘 다 그대로다.
+  **행동 문장의 코드는 제품색 판, 이유 안의 코드는 글자꼴만.** 이유 줄에 판이 여럿
+  서면 얼룩이 된다. 크기 0.92em(광학 보정)은 둘 다 그대로다.
+
+  **판은 제품색 8%, 테두리 30%, 글자는 제품색이다**(2026-09-28). 칠 것(명령어·파일)이
+  행동 문장 안에서 먼저 눈에 걸린다 — 그날 팁 예순셋 중 스물여섯의 행동 문장에 코드가 있었다.
+  판 위 글자 대비는 두 테마 모두 4.5:1을 넘고 `theme.test.ts`가 잰다(라이트 Anthropic이
+  가장 낮다). 코드는 500으로 못 박는다 — 행동 문장이 600인데 JetBrains Mono는 400·500만
+  받아 와서, 물려받으면 브라우저가 가짜 굵기를 합성한다.
 */
 .gl-tip-do .guide-tip-code {
-  border: 1px solid var(--guide-rule);
+  border: 1px solid color-mix(in srgb, var(--guide-accent) 30%, transparent);
   padding: 0.06em 0.25em;
+  background: color-mix(in srgb, var(--guide-accent) 8%, var(--bg));
+  color: var(--guide-accent);
+  font-weight: 500;
   box-decoration-break: clone;
   -webkit-box-decoration-break: clone;
+}
+
+.gl-tip-do .gl-kbd {
+  font-weight: 500;
 }
 
 .gl-tip-why .guide-tip-code {
@@ -7955,7 +8003,8 @@ input:focus-visible {
   background: var(--bg-subtle);
   color: var(--text);
   font-family: var(--font-mono);
-  font-size: 0.8em;
+  /* 0.8em은 이유 줄(14.5)에서 11.6px이라 원장의 12px 하한을 밑돌았다. */
+  font-size: max(0.8em, 12px);
   line-height: 1.55;
   vertical-align: 0.06em;
 }
@@ -7968,15 +8017,7 @@ input:focus-visible {
 
 /* ── 참고 절 — 모델과 요금 ── */
 
-.gl-facts-sub {
-  margin-top: var(--gl-r4);
-  color: var(--text-strong);
-  font-size: var(--gl-body);
-  font-weight: 600;
-}
-
-.gl-models,
-.gl-plans {
+.gl-models {
   margin: var(--gl-r2) 0 0;
   padding: 0;
   list-style: none;
@@ -8071,7 +8112,7 @@ input:focus-visible {
 }
 
 a.gl-num:hover {
-  color: var(--brand-text);
+  color: var(--guide-accent);
   text-decoration-color: currentColor;
 }
 
@@ -8249,7 +8290,7 @@ a.gl-num:hover {
 }
 
 .gl-peers li:hover .gl-peer-name a {
-  color: var(--brand-text);
+  color: var(--guide-accent);
 }
 
 .gl-peer-vendor {
