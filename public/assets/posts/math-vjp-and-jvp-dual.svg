@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="400" viewBox="0 0 880 400" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <rect x="0" y="0" width="880" height="400" rx="12" fill="#0a0a0a"/>
+  <defs>
+    <marker id="dA" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#7ec8e3"/>
+    </marker>
+  </defs>
+  <text x="60" y="44" font-size="22" font-weight="700" fill="#e8e8e8">이중수로 굴린 순전파 한 번</text>
+  <text x="60" y="76" font-size="13" fill="#888">점 (2, 3), 방향 v = (1, 2) — 입력의 꼬리에 v 를 달고 ε² = 0 으로 계산한다</text>
+
+  <text x="150" y="126" font-size="16" font-weight="600" fill="#e8e8e8" text-anchor="middle">입력</text>
+  <rect x="60" y="140" width="180" height="110" rx="8" fill="#000000" stroke="#3a4a6e" stroke-width="1.5"/>
+  <text x="150" y="186" font-size="17" font-weight="600" fill="#ffffff" text-anchor="middle" font-family="'JetBrains Mono','Menlo','Consolas',monospace">x₁ = 2 + 1ε</text>
+  <text x="150" y="220" font-size="17" font-weight="600" fill="#ffffff" text-anchor="middle" font-family="'JetBrains Mono','Menlo','Consolas',monospace">x₂ = 3 + 2ε</text>
+
+  <line x1="240" y1="195" x2="350" y2="195" stroke="#7ec8e3" stroke-width="2.5" marker-end="url(#dA)"/>
+  <text x="295" y="178" font-size="16" font-weight="700" fill="#7ec8e3" text-anchor="middle">f</text>
+
+  <text x="440" y="126" font-size="16" font-weight="600" fill="#e8e8e8" text-anchor="middle">f 를 지난 값</text>
+  <rect x="350" y="140" width="180" height="110" rx="8" fill="#000000" stroke="#3a4a6e" stroke-width="1.5"/>
+  <text x="440" y="186" font-size="17" font-weight="600" fill="#ffffff" text-anchor="middle" font-family="'JetBrains Mono','Menlo','Consolas',monospace">12 + <tspan fill="#55c555">20</tspan>ε</text>
+  <text x="440" y="220" font-size="17" font-weight="600" fill="#ffffff" text-anchor="middle" font-family="'JetBrains Mono','Menlo','Consolas',monospace">11 + <tspan fill="#55c555">7</tspan>ε</text>
+
+  <line x1="530" y1="195" x2="640" y2="195" stroke="#7ec8e3" stroke-width="2.5" marker-end="url(#dA)"/>
+  <text x="585" y="178" font-size="16" font-weight="700" fill="#7ec8e3" text-anchor="middle">g</text>
+
+  <text x="730" y="126" font-size="16" font-weight="600" fill="#e8e8e8" text-anchor="middle">출력</text>
+  <rect x="640" y="140" width="180" height="110" rx="8" fill="#000000" stroke="#55c555" stroke-width="1.5"/>
+  <text x="730" y="186" font-size="17" font-weight="600" fill="#ffffff" text-anchor="middle" font-family="'JetBrains Mono','Menlo','Consolas',monospace">23 + <tspan fill="#55c555">27</tspan>ε</text>
+  <text x="730" y="220" font-size="17" font-weight="600" fill="#ffffff" text-anchor="middle" font-family="'JetBrains Mono','Menlo','Consolas',monospace">132 + <tspan fill="#55c555">304</tspan>ε</text>
+
+  <text x="440" y="280" font-size="13" fill="#888" text-anchor="middle">꼬리 (20, 7) = J_f v</text>
+  <text x="730" y="280" font-size="13" fill="#888" text-anchor="middle">꼬리 (27, 304) = J v</text>
+
+  <rect x="60" y="306" width="760" height="64" rx="8" fill="none" stroke="#3a4a6e" stroke-width="1"/>
+  <text x="84" y="333" font-size="14" font-weight="600" fill="#e8e8e8">앞자리 (23, 132) 는 합성함수의 값, 꼬리 (27, 304) 는 야코비안을 만들지 않고 얻은 JVP</text>
+  <text x="84" y="355" font-size="13" fill="#888">곱셈마다 (a + bε)(c + dε) = ac + (ad + bc)ε — 꼬리 자리에 곱의 미분법이 저절로 선다</text>
+</svg>

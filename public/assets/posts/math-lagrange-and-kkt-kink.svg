@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="500" viewBox="0 0 880 500" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <rect x="0" y="0" width="880" height="500" rx="12" fill="#0a0a0a"/>
+  <text x="60" y="46" font-size="22" font-weight="700" fill="#e8e8e8">활성 집합이 바뀌는 자리의 꺾임</text>
+  <text x="60" y="72" font-size="14" fill="#888">x 를 최대화하되 x ≤ c 와 x ≤ 2 를 함께 걸면 최적값은 f*(c) = min(c, 2) 다</text>
+
+  <line x1="120" y1="400" x2="740" y2="400" stroke="#888" stroke-width="1.5"/>
+  <line x1="120" y1="400" x2="120" y2="110" stroke="#888" stroke-width="1.5"/>
+  <line x1="120" y1="300" x2="740" y2="300" stroke="#333" stroke-width="1"/>
+  <line x1="120" y1="200" x2="740" y2="200" stroke="#333" stroke-width="1"/>
+  <text x="98" y="405" font-size="13" fill="#888">0</text>
+  <text x="98" y="305" font-size="13" fill="#888">1</text>
+  <text x="98" y="205" font-size="13" fill="#888">2</text>
+  <text x="82" y="100" font-size="13" fill="#888">f*(c)</text>
+  <text x="752" y="405" font-size="13" fill="#888">c</text>
+  <text x="116" y="426" font-size="13" fill="#888">0</text>
+  <text x="266" y="426" font-size="13" fill="#888">1</text>
+  <text x="416" y="426" font-size="13" fill="#888">2</text>
+  <text x="566" y="426" font-size="13" fill="#888">3</text>
+  <text x="716" y="426" font-size="13" fill="#888">4</text>
+
+  <line x1="340" y1="216" x2="500" y2="184" stroke="#55c555" stroke-width="2" stroke-dasharray="4,4"/>
+  <line x1="340" y1="232" x2="500" y2="168" stroke="#55c555" stroke-width="2" stroke-dasharray="4,4"/>
+  <polyline points="120,400 420,200 720,200" fill="none" stroke="#7ec8e3" stroke-width="2.5"/>
+  <line x1="420" y1="206" x2="420" y2="400" stroke="#555" stroke-width="1" stroke-dasharray="4,4"/>
+  <circle cx="420" cy="200" r="6" fill="#e05555"/>
+
+  <text x="150" y="232" font-size="14" fill="#7ec8e3">기울기 1</text>
+  <text x="150" y="254" font-size="13" fill="#888">예산이 막는다 · λ = 1</text>
+  <text x="560" y="182" font-size="14" fill="#7ec8e3">기울기 0</text>
+  <text x="560" y="160" font-size="13" fill="#888">한계가 막는다 · λ = 0</text>
+  <text x="440" y="130" font-size="13" fill="#55c555">c = 2 에 닿는 직선은 기울기 0~1 어느 것이든 된다</text>
+
+  <rect x="460" y="270" width="340" height="94" rx="8" fill="#12161f" stroke="#3a4a6e" stroke-width="1"/>
+  <text x="484" y="300" font-size="14" font-weight="600" fill="#e8e8e8">c = 2 에서</text>
+  <text x="484" y="324" font-size="13" fill="#888">왼쪽 기울기 1, 오른쪽 기울기 0</text>
+  <text x="484" y="346" font-size="13" fill="#e05555">λ₁ + λ₂ = 1 이라 가격이 하나로 안 정해진다</text>
+
+  <rect x="60" y="448" width="760" height="32" rx="8" fill="#12161f" stroke="#3a4a6e" stroke-width="1"/>
+  <text x="86" y="469" font-size="13" fill="#888">예산을 2 바로 아래·위로 옮기면 맞춰야 할 가격이 1 에서 0 으로 한 번에 뛴다.</text>
+</svg>

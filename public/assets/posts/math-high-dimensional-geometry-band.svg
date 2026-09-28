@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="450" viewBox="0 0 880 450" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+<rect x="0" y="0" width="880" height="450" rx="12" fill="#0a0a0a"/>
+<text x="60" y="46" font-size="22" font-weight="700" fill="#e8e8e8">구의 겉넓이가 적도 띠 하나에 몰린다</text>
+<defs><clipPath id="disk"><circle cx="200" cy="260" r="125"/></clipPath></defs>
+<text x="60" y="92" font-size="16" font-weight="600" fill="#e8e8e8">적도 띠 |x₁| &lt; 0.1</text>
+<rect x="60" y="247.5" width="280" height="25" fill="#7ec8e3" fill-opacity="0.35" clip-path="url(#disk)"/>
+<circle cx="200" cy="260" r="125" fill="none" stroke="#7ec8e3" stroke-width="2.5"/>
+<line x1="60" y1="260" x2="340" y2="260" stroke="#444" stroke-width="1.5" stroke-dasharray="4,4"/>
+<text x="200" y="124" font-size="13" fill="#888" text-anchor="middle">북극 x₁ = 1</text>
+<text x="200" y="406" font-size="13" fill="#888" text-anchor="middle">남극 x₁ = −1</text>
+<text x="200" y="432" font-size="13" fill="#888" text-anchor="middle">단면에서 띠의 폭은 지름의 10%</text>
+<text x="420" y="92" font-size="16" font-weight="600" fill="#e8e8e8">띠 안에 든 겉넓이의 비율</text>
+<rect x="440" y="338.0" width="60" height="22.0" rx="4" fill="#7ec8e3" fill-opacity="0.5" stroke="#7ec8e3" stroke-width="2"/>
+<text x="470" y="326.0" font-size="16" font-weight="600" fill="#e8e8e8" text-anchor="middle">10%</text>
+<text x="470" y="384" font-size="13" fill="#888" text-anchor="middle">d = 3</text>
+<rect x="540" y="309.4" width="60" height="50.6" rx="4" fill="#7ec8e3" fill-opacity="0.5" stroke="#7ec8e3" stroke-width="2"/>
+<text x="570" y="297.4" font-size="16" font-weight="600" fill="#e8e8e8" text-anchor="middle">23%</text>
+<text x="570" y="384" font-size="13" fill="#888" text-anchor="middle">d = 10</text>
+<rect x="640" y="210.4" width="60" height="149.6" rx="4" fill="#7ec8e3" fill-opacity="0.5" stroke="#7ec8e3" stroke-width="2"/>
+<text x="670" y="198.4" font-size="16" font-weight="600" fill="#e8e8e8" text-anchor="middle">68%</text>
+<text x="670" y="384" font-size="13" fill="#888" text-anchor="middle">d = 100</text>
+<rect x="740" y="140.3" width="60" height="219.7" rx="4" fill="#7ec8e3" fill-opacity="0.5" stroke="#7ec8e3" stroke-width="2"/>
+<text x="770" y="128.3" font-size="16" font-weight="600" fill="#e8e8e8" text-anchor="middle">99.85%</text>
+<text x="770" y="384" font-size="13" fill="#888" text-anchor="middle">d = 1000</text>
+<line x1="420" y1="360" x2="820" y2="360" stroke="#888" stroke-width="1.5"/>
+<text x="620" y="432" font-size="13" fill="#888" text-anchor="middle">띠의 폭은 그대로 두고 차원만 올렸다</text>
+</svg>

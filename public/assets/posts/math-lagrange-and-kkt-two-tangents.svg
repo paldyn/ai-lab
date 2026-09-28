@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="500" viewBox="0 0 880 500" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <defs>
+    <marker id="ag" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#55c555"/>
+    </marker>
+    <marker id="ab" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#7ec8e3"/>
+    </marker>
+  </defs>
+  <rect x="0" y="0" width="880" height="500" rx="12" fill="#0a0a0a"/>
+  <text x="60" y="46" font-size="22" font-weight="700" fill="#e8e8e8">등고선이 원에 접하는 두 자리</text>
+  <text x="60" y="72" font-size="14" fill="#888">x + y = c 를 옮기다 원에 닿는 곳은 두 군데이고, 승수의 부호가 서로 다르다</text>
+
+  <line x1="140" y1="285" x2="470" y2="285" stroke="#444" stroke-width="1"/>
+  <line x1="300" y1="120" x2="300" y2="450" stroke="#444" stroke-width="1"/>
+  <text x="476" y="290" font-size="13" fill="#888">x</text>
+  <text x="306" y="126" font-size="13" fill="#888">y</text>
+  <circle cx="300" cy="285" r="130" fill="none" stroke="#7777cc" stroke-width="2.5"/>
+  <text x="150" y="190" font-size="13" fill="#7777cc">x² + y² = 1</text>
+
+  <line x1="292" y1="93" x2="492" y2="293" stroke="#888" stroke-width="2" stroke-dasharray="5,3"/>
+  <line x1="123" y1="292" x2="293" y2="462" stroke="#888" stroke-width="2" stroke-dasharray="5,3"/>
+  <text x="284" y="104" font-size="13" fill="#888" text-anchor="end">x + y = √2</text>
+  <text x="302" y="474" font-size="13" fill="#888">x + y = −√2</text>
+
+  <line x1="392" y1="193" x2="445" y2="140" stroke="#7ec8e3" stroke-width="2.5" marker-end="url(#ab)"/>
+  <line x1="392" y1="193" x2="420" y2="165" stroke="#55c555" stroke-width="2.5" marker-end="url(#ag)"/>
+  <circle cx="392" cy="193" r="5" fill="#e8e8e8"/>
+  <text x="452" y="140" font-size="13" fill="#7ec8e3">∇g</text>
+  <text x="404" y="150" font-size="13" fill="#55c555">∇f</text>
+
+  <line x1="208" y1="377" x2="155" y2="430" stroke="#7ec8e3" stroke-width="2.5" marker-end="url(#ab)"/>
+  <line x1="208" y1="377" x2="238" y2="347" stroke="#55c555" stroke-width="2.5" marker-end="url(#ag)"/>
+  <circle cx="208" cy="377" r="5" fill="#e8e8e8"/>
+  <text x="132" y="446" font-size="13" fill="#7ec8e3">∇g</text>
+  <text x="244" y="344" font-size="13" fill="#55c555">∇f</text>
+
+  <rect x="560" y="120" width="260" height="116" rx="8" fill="#12161f" stroke="#3a4a6e" stroke-width="1"/>
+  <text x="584" y="150" font-size="16" font-weight="600" fill="#e8e8e8">최대점 (0.71, 0.71)</text>
+  <text x="584" y="176" font-size="13" fill="#888">∇f 와 ∇g 가 같은 방향</text>
+  <text x="584" y="198" font-size="13" fill="#55c555">λ = +1/√2 ≈ 0.71</text>
+  <text x="584" y="220" font-size="13" fill="#888">f = √2 ≈ 1.41</text>
+
+  <rect x="560" y="264" width="260" height="116" rx="8" fill="#12161f" stroke="#3a4a6e" stroke-width="1"/>
+  <text x="584" y="294" font-size="16" font-weight="600" fill="#e8e8e8">최소점 (−0.71, −0.71)</text>
+  <text x="584" y="320" font-size="13" fill="#888">∇f 와 ∇g 가 반대 방향</text>
+  <text x="584" y="342" font-size="13" fill="#e05555">λ = −1/√2 ≈ −0.71</text>
+  <text x="584" y="364" font-size="13" fill="#888">f = −√2 ≈ −1.41</text>
+
+  <text x="560" y="420" font-size="13" fill="#888">둘 다 세 식을 만족한다.</text>
+  <text x="560" y="442" font-size="13" fill="#888">어느 쪽이 최대인지는 f 값으로 가른다.</text>
+</svg>
