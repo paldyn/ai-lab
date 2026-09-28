@@ -352,7 +352,21 @@ function ModelTable({
               <span className="gl-model-name">
                 <ModelMarkSlot model={model} />
                 <span>
-                  {model.name}
+                  {/*
+                    **이름이 링크입니다**(2026-09-28). 그 전에는 아래 쓰임 문장이 링크였고 이름은
+                    글자뿐이라 「모델을 누르면 어디로 가나」가 안 보였습니다. 가는 곳은 쓰임 문장이
+                    실린 페이지이고, 쓰임이 없는 모델(벤더가 그 말을 안 한 다섯)은 이름을 본
+                    페이지입니다 — 어느 쪽이든 그 줄에 적힌 것을 떠받치는 곳입니다.
+                  */}
+                  <a
+                    className="gl-model-link"
+                    href={model.useWhen?.url ?? model.sourceUrl}
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    {model.name}
+                    <ArrowUpRight size={12} aria-hidden="true" />
+                  </a>
                   {/*
                     이름·회사·꼬리표 사이에 **진짜 공백**을 둡니다. 간격을 margin으로만 주면
                     복사한 글과 낭독에서 「Claude Sonnet 4.6Anthropic이전 세대」로 붙습니다.
@@ -417,16 +431,7 @@ function ModelTable({
                 ))}
               {(model.useWhen || split?.rider || rowAge !== null) && (
                 <div className="gl-model-sub">
-                  {model.useWhen && (
-                    <a
-                      className="gl-model-use"
-                      href={model.useWhen.url}
-                      target="_blank"
-                      rel="noreferrer"
-                    >
-                      {model.useWhen.text}
-                    </a>
-                  )}
+                  {model.useWhen && <span className="gl-model-use">{model.useWhen.text}</span>}
                   {(split?.rider || rowAge !== null) && (
                     <span className="gl-model-meta">
                       {split?.rider}

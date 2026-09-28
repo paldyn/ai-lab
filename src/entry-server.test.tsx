@@ -214,6 +214,29 @@ describe('프리렌더 — 본문이 HTML에 들어간다', () => {
   });
 
   /*
+    **모델 이름이 링크이고, 쓰임 문장은 글자입니다**(2026-09-28). 「링크가 모델 텍스트에
+    있어야지 그 밑 문구가 아니라」에 답한 자리입니다. 이름 링크는 모델 줄마다 하나이고
+    쓰임 문장이 실린 페이지(없으면 이름을 본 페이지)로 갑니다. 쓰임이 링크로 되살아나면
+    한 줄에 링크가 둘이 되어 다시 「어디가 링크인가」가 됩니다.
+  */
+  it('모델 이름이 링크이고 쓰임 문장은 링크가 아니다', async () => {
+    const wrong: string[] = [];
+    for (const product of guideProducts) {
+      const ledger = ledgerOf((await render(`/playbook/${product.vendorId}/${product.id}`)).html);
+      const models = shownModels(product.models);
+      const links = classCount(ledger, 'gl-model-link');
+      const useLinks = (ledger.match(/<a [^>]*class="gl-model-use/g) ?? []).length;
+      const missing = models.find(
+        (m) => !ledger.includes(`class="gl-model-link" href="${esc(m.useWhen?.url ?? m.sourceUrl)}"`),
+      );
+      if (links !== models.length || useLinks !== 0 || missing) {
+        wrong.push(`${product.id}: 이름 링크 ${links}/${models.length} · 쓰임 링크 ${useLinks}${missing ? ` · ${missing.id} 주소 틀림` : ''}`);
+      }
+    }
+    expect(wrong).toEqual([]);
+  });
+
+  /*
     **API를 직접 부르는 팁은 API 표면이 있는 제품에만 섭니다.** 회사 주체 팁이라 그 회사
     제품 전부에 끌려오는데, 「컨텍스트 캐시를 켠다」는 Gemini 앱·CLI 사용자가 할 수 없는
     행동입니다.

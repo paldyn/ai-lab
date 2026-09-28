@@ -8143,17 +8143,44 @@ a.gl-num:hover {
   padding-left: 34px;
 }
 
+/*
+  **모델 이름이 링크다**(2026-09-28). 쓰임 문장이 링크이던 동안에는 줄에서 가장 진한 밑줄이
+  둘째 줄에 서 있었고, 「모델을 누르면 어디로 가나」가 안 보였다. 밑줄은 늘 보인다 — 옆 수
+  칸의 점선과 같은 이유다(hover에만 켜면 누를 수 있다는 것이 안 보인다). 실선이라 수 칸의
+  점선과 갈린다. 인라인이라 누르는 높이를 위아래로 넓혀도 줄 높이는 그대로다.
+*/
+.gl-model-link {
+  padding-block: 10px;
+  color: inherit;
+  text-decoration: underline;
+  text-decoration-color: var(--text-muted);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 4px;
+}
+
+.gl-model-link svg {
+  display: inline;
+  margin-left: 2px;
+  color: var(--text-muted);
+  vertical-align: 0;
+}
+
+/* 넓힌 누르는 면(위아래 10px)을 따라 포커스 테가 그려지면 아래 쓰임 줄을 가른다 — 글자 쪽으로 당긴다. */
+.gl-model-link:focus-visible,
+.gl-plan-state:focus-visible {
+  outline-offset: -8px;
+}
+
+.gl-model-link:hover,
+.gl-model-link:hover svg {
+  color: var(--guide-accent);
+  text-decoration-color: currentColor;
+}
+
+/* 쓰임은 글자다 — 그 문장이 실린 페이지로는 위의 이름이 간다. */
 .gl-model-use {
   color: var(--text-dim);
   font-size: var(--gl-note);
-  text-decoration: underline;
-  text-decoration-color: var(--text-muted);
-  text-underline-offset: 3px;
-}
-
-.gl-model-use:hover {
-  color: var(--brand-text);
-  text-decoration-color: currentColor;
 }
 
 .gl-model-meta {
@@ -8372,8 +8399,7 @@ a.gl-num:hover {
     row-gap: 2px;
   }
 
-  .gl-num,
-  .gl-model-use {
+  .gl-num {
     display: inline-block;
     padding-block: 6px;
   }

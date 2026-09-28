@@ -130,15 +130,16 @@ describe('AI 가이드 — 주장', () => {
   });
 
   /*
-    **모델의 쓰임은 벤더가 제 페이지에 적어 둔 말이다.** 화면에서 그 한 줄이 곧
-    출처 링크라 따로 배지를 안 다는데, 그러면 **주소가 유일한 영수증**이 된다 —
-    벤더 도메인이 아닌 곳을 가리키면 「공식이 이렇게 말한다」가 거짓이 된다.
+    **모델 이름이 곧 출처 링크다**(2026-09-28). 쓰임 문장이 실린 페이지로 가고, 쓰임이
+    없으면 이름을 본 페이지로 간다(`useWhen?.url ?? sourceUrl`). 따로 배지를 안 다는데,
+    그러면 **주소가 유일한 영수증**이 된다 — 벤더 도메인이 아닌 곳을 가리키면 「공식이
+    이렇게 말한다」가 거짓이 된다. 그래서 화면에 나가는 주소와 이름을 본 주소를 둘 다 본다.
 
     호스트 목록을 주장 쪽(`VENDOR_HOSTS`)과 따로 둔다. 모델 쓰임은 도움말 센터에도
     실려서(`support.google.com`의 Gemini 앱 안내) 요금·한도를 읽는 자리와 집합이
     다르다 — 한 목록으로 묶으면 둘 중 하나가 느슨해진다.
   */
-  it('모델 쓰임이 벤더 페이지를 가리킨다', () => {
+  it('모델 이름 링크가 벤더 페이지를 가리킨다', () => {
     const MODEL_HOSTS = [
       'platform.claude.com',
       'claude.com',
@@ -149,10 +150,12 @@ describe('AI 가이드 — 주장', () => {
       'antigravity.google',
       'gemini.google',
     ];
-    const bad = guideModels
-      .filter((m) => m.useWhen)
-      .filter((m) => !MODEL_HOSTS.includes(new URL(m.useWhen!.url).host));
-    expect(bad.map((m) => `${m.id} → ${new URL(m.useWhen!.url).host}`)).toEqual([]);
+    const bad = guideModels.flatMap((m) =>
+      [m.useWhen?.url ?? m.sourceUrl, m.sourceUrl]
+        .filter((url) => !MODEL_HOSTS.includes(new URL(url).host))
+        .map((url) => `${m.id} → ${new URL(url).host}`),
+    );
+    expect(bad).toEqual([]);
   });
 
   /*
