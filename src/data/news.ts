@@ -160,7 +160,7 @@ export interface NewsDetail {
   commentary: string;
 }
 
-export const globalNewsUpdatedAt = '2026-09-27';
+export const globalNewsUpdatedAt = '2026-09-28';
 
 /**
  * 공식 발표 한 건 = 항목 한 개. 2026년 1월부터 쌓는 아카이브이며 오래된 항목을
@@ -171,6 +171,34 @@ export const globalNewsUpdatedAt = '2026-09-27';
  * 목록에서 파생됩니다. 갱신 시 globalNewsUpdatedAt도 함께 올립니다.
  */
 const entries: NewsItem[] = [
+  {
+    id: 'lenfest-ai-collaborative-expansion',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'OpenAI, Lenfest 지역 언론 AI 펠로십에 지원 두 배로 확대',
+    summary:
+      'Lenfest Institute가 지역 언론사에 AI 엔지니어를 두는 AI Collaborative and Fellowship Program의 다음 단계를 발표했다. ' +
+      'OpenAI는 500만 달러를 새로 내고 최대 500만 달러어치 소프트웨어 크레딧과 엔지니어링 지원을 더해 이전 지원을 두 배로 늘렸다.',
+    publishedAt: '2026-09-28',
+    collectedAt: '2026-09-29',
+    category: 'Corporate',
+    signal: '언론사 AI 지원',
+    url: 'https://openai.com/index/lenfest-ai-collaborative-expansion',
+  },
+  {
+    id: 'basis-tax-workbook-with-astra',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'Basis, GPT-6 Astra로 50탭 세무 워크북을 절반 시간에',
+    summary:
+      '회계 자동화 에이전트를 만드는 Basis가 50개 탭짜리 세무 워크북을 GPT-6 Astra로 GPT-5.6 Sol의 절반 시간에 끝냈다고 밝혔다. ' +
+      '내부 평가 점수는 약 20% 올랐고, 단계 난도에 맞춰 추론량을 조절해 비용과 응답 시간을 줄였다.',
+    publishedAt: '2026-09-28',
+    collectedAt: '2026-09-29',
+    category: 'Product',
+    signal: '기업 도입 사례',
+    url: 'https://openai.com/index/basis-tax-workbook-with-astra',
+  },
   {
     id: 'claude-sonnet-5-5',
     source: 'Anthropic',
