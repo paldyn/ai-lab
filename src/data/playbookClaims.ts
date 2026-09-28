@@ -40,6 +40,16 @@ import type { Claim } from '../types/playbook';
  */
 export const playbookClaims: Claim[] = [
   {
+    id: 'claude-opus-5-5-context',
+    subject: { kind: 'model', id: 'claude-opus-5-5' },
+    topic: 'context',
+    statement: 'Claude Opus 5.5의 입력 컨텍스트 창',
+    value: '1M 토큰',
+    tier: 'vendor',
+    volatility: 'model',
+    source: { label: 'Claude Opus 5.5 모델 문서', url: 'https://platform.claude.com/docs/en/models/opus-5-5/overview' },
+  },
+  {
     id: 'claude-opus-5-context',
     subject: { kind: 'model', id: 'claude-opus-5' },
     topic: 'context',
@@ -1477,6 +1487,19 @@ export const playbookClaims: Claim[] = [
     topic: 'price',
     statement: '100만 토큰당 입력 / 출력 단가',
     value: '$10 / $50',
+    tier: 'vendor',
+    volatility: 'price',
+    source: {
+      label: 'Claude Docs — Pricing',
+      url: 'https://platform.claude.com/docs/en/about-claude/pricing',
+    },
+  },
+  {
+    id: 'claude-opus-5-5-token-price',
+    subject: { kind: 'model', id: 'claude-opus-5-5' },
+    topic: 'price',
+    statement: '100만 토큰당 입력 / 출력 단가',
+    value: '$4 / $20',
     tier: 'vendor',
     volatility: 'price',
     source: {
