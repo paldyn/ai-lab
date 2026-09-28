@@ -1,4 +1,4 @@
-import type { Product, VendorId } from '../types/playbook';
+import type { Product, Surface, VendorId } from '../types/playbook';
 
 /**
  * AI 가이드가 다루는 제품.
@@ -46,6 +46,25 @@ import type { Product, VendorId } from '../types/playbook';
  *
  * 배열 순서가 곧 화면 순서입니다.
  */
+
+/**
+ * 표면 한 벌의 차례. 제품마다 `surfaces`를 이 차례대로 적습니다.
+ *
+ * **바깥에서 안으로 갑니다** — 아무것도 안 깔고 여는 웹, 깔아 쓰는 앱 둘(데스크톱 ·
+ * 모바일), 개발 도구 안(터미널 · IDE), 그리고 사람이 아니라 코드가 부르는 자리(클라우드 ·
+ * SDK). 제품마다 차례가 다르면 「쓸 수 있는 곳」 한 줄을 견줄 때 같은 낱말을 매번 다른
+ * 자리에서 찾아야 합니다. `guideProducts.test.ts`가 이 차례와 빠짐을 봅니다.
+ */
+export const surfaceOrder: readonly Surface[] = [
+  '웹',
+  '데스크톱',
+  '모바일',
+  '터미널',
+  'IDE',
+  '클라우드',
+  'SDK',
+];
+
 export const guideProducts: Product[] = [
   // ─── Anthropic ───────────────────────────────────────────────────
   {
@@ -86,7 +105,7 @@ export const guideProducts: Product[] = [
     vendorId: 'anthropic',
     name: 'Claude Cowork',
     role: '업무',
-    surfaces: ['데스크톱', '웹', '모바일'],
+    surfaces: ['웹', '데스크톱', '모바일'],
     models: [],
     /*
       **비어 있는 것이 확인된 답입니다.** Cowork 선택기에 서는 모델 이름을 어느 공식
@@ -113,7 +132,7 @@ export const guideProducts: Product[] = [
     vendorId: 'anthropic',
     name: 'Claude Code',
     role: '코딩',
-    surfaces: ['터미널', 'IDE', '데스크톱', '웹'],
+    surfaces: ['웹', '데스크톱', '터미널', 'IDE'],
     models: [
       'claude-fable-5-1',
       'claude-fable-5',
@@ -211,7 +230,12 @@ export const guideProducts: Product[] = [
     vendorId: 'openai',
     name: 'Codex',
     role: '코딩',
-    surfaces: ['앱', 'IDE', '터미널', '클라우드'],
+    /*
+      learn.chatgpt.com/docs/codex/cli 의 「Other ChatGPT and Codex surfaces」 —
+      「Desktop app」·「IDE extension」·「Codex cloud」. 예전의 「앱」은 그 데스크톱 앱이라
+      데스크톱으로 적습니다(2026-09-28).
+    */
+    surfaces: ['데스크톱', '터미널', 'IDE', '클라우드'],
     models: [
       'gpt-6-astra',
       'gpt-5-6-sol',
@@ -269,7 +293,7 @@ export const guideProducts: Product[] = [
     vendorId: 'google',
     name: 'Gemini app',
     role: '챗',
-    surfaces: ['웹', '모바일', '데스크톱'],
+    surfaces: ['웹', '데스크톱', '모바일'],
     models: ['gemini-app-pro', 'gemini-app-flash', 'gemini-app-flash-lite'],
     /*
       support.google.com/gemini/answer/13275745 — 「Gemini has the following available
@@ -294,7 +318,18 @@ export const guideProducts: Product[] = [
     vendorId: 'google',
     name: 'Google Antigravity',
     role: '코딩',
-    surfaces: ['데스크톱', 'CLI', 'IDE 확장', 'SDK'],
+    /*
+      antigravity.google 의 제품 목록 — Antigravity 2.0(데스크톱)·CLI·IDE·Extensions·SDK.
+      예전의 「CLI」는 「terminal-first surface」라 터미널이고, 「IDE 확장」은
+      docs/ide/extensions 가 VS Code·Visual Studio·JetBrains·Zed·Xcode에 꽂는 것으로
+      적어 Claude Code·Codex의 IDE와 같은 자리입니다. Antigravity IDE는 그 자체가
+      IDE라 같은 낱말에 함께 듭니다(2026-09-28).
+
+      **웹은 아직 안 적습니다.** 같은 페이지에 「Launch Remote Control」(antigravity.google.com)이
+      있지만 로컬 에이전트를 원격으로 조종하는 창이라, 브라우저에서 일을 시작하는 다른
+      제품의 웹과 같은 자리인지 따로 봐야 합니다.
+    */
+    surfaces: ['데스크톱', '터미널', 'IDE', 'SDK'],
     models: [
       'gemini-3-8-flash',
       'gemini-3-7-flash',

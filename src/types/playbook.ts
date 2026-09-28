@@ -53,6 +53,25 @@ export interface VendorInfo {
 export type Role = '챗' | '업무' | '코딩';
 
 /**
+ * 제품을 만나는 자리 — 표면 낱말 한 벌.
+ *
+ * **같은 표면은 제품이 달라도 같은 낱말입니다.** 한때 제품마다 벤더의 말을 그대로
+ * 옮겨 Antigravity는 「CLI · IDE 확장」, Codex는 「앱」, Claude Code는 「터미널 · IDE」로
+ * 섰습니다. 공식 페이지를 열어 대조하니 셋 다 같은 자리였습니다(2026-09-28) —
+ * Antigravity CLI는 「terminal-first surface」이고, Antigravity의 IDE 확장은 VS Code·
+ * JetBrains에 꽂는 것으로 Claude Code·Codex의 IDE와 같으며, Codex의 앱은 데스크톱
+ * 앱입니다. 화면 한 줄(「쓸 수 있는 곳」)에 제품마다 다른 낱말이 서면 다른 것처럼 읽힙니다.
+ *
+ * **웹과 클라우드는 다른 낱말입니다.** 웹은 브라우저에서 여는 자리이고(Anthropic 용어집이
+ * 「Claude Code on the web」을 claude.ai/code라는 브라우저 표면으로만 부릅니다), 클라우드는
+ * 에이전트가 도는 곳입니다(「Codex cloud — Run coding tasks in parallel cloud environments」).
+ *
+ * 낱말을 더하려면 여기에 먼저 적어야 하고, 그러면 `guideProducts.ts`의 `surfaceOrder`에
+ * 차례를 받아야 `guideProducts.test.ts`를 지납니다.
+ */
+export type Surface = '웹' | '데스크톱' | '모바일' | '터미널' | 'IDE' | '클라우드' | 'SDK';
+
+/**
  * 제품 하나.
  *
  * **표면(surface)은 별개 제품이 아닙니다.** Anthropic 용어집이 못 박습니다 —
@@ -68,8 +87,11 @@ export interface Product {
   /** **공식 표기 그대로.** 대소문자와 띄어쓰기를 바꾸지 않습니다. */
   name: string;
   role: Role;
-  /** 이 제품을 만나는 자리들. 별개 제품이 아니라 같은 것의 다른 표면입니다. */
-  surfaces: string[];
+  /**
+   * 이 제품을 만나는 자리들. 별개 제품이 아니라 같은 것의 다른 표면입니다.
+   * **`surfaceOrder`의 차례대로 적습니다** — 화면에 그 차례 그대로 섭니다.
+   */
+  surfaces: Surface[];
   /**
    * 이 제품 안에서 **고를 수 있는** 모델. `guideModels.ts`의 id입니다.
    *

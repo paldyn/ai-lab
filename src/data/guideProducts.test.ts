@@ -1,7 +1,7 @@
 import { existsSync } from 'node:fs';
 import path from 'node:path';
 import { describe, expect, it } from 'vitest';
-import { guideProducts } from './guideProducts';
+import { guideProducts, surfaceOrder } from './guideProducts';
 import { guideVendorIds, guideVendors } from './guideVendors';
 
 /**
@@ -116,6 +116,30 @@ describe('AI 가이드 — 기업과 제품', () => {
   it('API 팁을 세우는 제품에는 SDK 표면이 있다', () => {
     const bad = guideProducts.filter((p) => p.apiTips && !p.surfaces.includes('SDK'));
     expect(bad.map((p) => `${p.id} — ${p.surfaces.join('·')}`)).toEqual([]);
+  });
+
+  /*
+    **표면 낱말은 한 벌이고 차례도 한 벌이다.** 낱말은 `Surface` 타입이 묶으므로 새 말은
+    `tsc`에서 서고, 여기서는 차례를 본다 — 제품마다 차례가 다르면 「쓸 수 있는 곳」
+    한 줄을 견줄 때 같은 낱말을 매번 다른 자리에서 찾아야 한다. `surfaceOrder`에 없는
+    낱말(타입에만 더하고 차례를 안 준 것)도 여기서 걸린다.
+  */
+  it('표면이 한 벌의 차례대로 서고 겹치지 않는다', () => {
+    expect(new Set(surfaceOrder).size).toBe(surfaceOrder.length);
+    const bad = guideProducts.filter((p) => {
+      const ranks = p.surfaces.map((surface) => surfaceOrder.indexOf(surface));
+      return ranks.some((rank, i) => rank < 0 || (i > 0 && rank <= ranks[i - 1]));
+    });
+    expect(bad.map((p) => `${p.id} — ${p.surfaces.join('·')}`)).toEqual([]);
+  });
+
+  /*
+    **아무 제품도 안 쓰는 낱말은 한 벌에서 뺀다.** 쓰지 않는 칸은 다음 사람에게
+    「여기에 채우는 것이 정상」이라고 말한다 — 지어내 채우는 자리가 된다.
+  */
+  it('한 벌의 낱말은 전부 어느 제품이 쓴다', () => {
+    const used = new Set(guideProducts.flatMap((p) => p.surfaces));
+    expect(surfaceOrder.filter((surface) => !used.has(surface))).toEqual([]);
   });
 
   /*
