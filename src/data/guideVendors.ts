@@ -11,9 +11,10 @@ import type { VendorInfo } from '../types/playbook';
  * Anthropic이 앞에 섭니다 — 가나다순·알파벳순으로 되돌리지 마세요. **첫 회사의
  * `homeProductId`가 `/playbook`의 기본 제품**이라 순서를 바꾸면 첫 화면도 바뀝니다.
  *
- * 대표 제품은 셋 다 그 회사의 코딩 제품입니다 — 2026-09-28에 팁·값·모델을 세어
- * 셋 모두 그 회사에서 가장 두꺼웠고(13·15·4 / 12·14·5 / 12·15·5), 이 서랍의 설명
- * 「코딩 에이전트를 어떤 모델과 강도로…」와 맞습니다.
+ * **대표 제품은 그 회사의 레일 첫 줄입니다**(Claude · ChatGPT · Gemini app). 처음에는 팁이
+ * 가장 두꺼운 코딩 제품(Claude Code · Codex · Antigravity)으로 골랐는데, 레일 맨 위 줄이
+ * 아니라 셋째 줄이 켜진 채 열려 「왜 Claude가 아니라 Claude Code냐」가 됐습니다(2026-09-28).
+ * 눈이 레일을 위에서부터 읽으므로 켜진 줄도 맨 위여야 합니다.
  */
 export const guideVendors: VendorInfo[] = [
   {
@@ -21,7 +22,7 @@ export const guideVendors: VendorInfo[] = [
     name: 'Anthropic',
     logo: 'assets/anthropic.svg',
     monochrome: true,
-    homeProductId: 'claude-code',
+    homeProductId: 'claude',
     officialUrl: 'https://claude.com',
   },
   {
@@ -29,7 +30,7 @@ export const guideVendors: VendorInfo[] = [
     name: 'OpenAI',
     logo: 'assets/openai.svg',
     monochrome: true,
-    homeProductId: 'codex',
+    homeProductId: 'chatgpt',
     officialUrl: 'https://openai.com',
   },
   {
@@ -38,7 +39,7 @@ export const guideVendors: VendorInfo[] = [
     logo: 'assets/google.svg',
     // 네 색이 든 로고라 색을 입히면 한 색으로 납작해집니다.
     monochrome: false,
-    homeProductId: 'antigravity',
+    homeProductId: 'gemini-app',
     officialUrl: 'https://gemini.google',
   },
 ];

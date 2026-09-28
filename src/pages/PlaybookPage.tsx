@@ -33,7 +33,7 @@ import { guideHomeProductId, guideVendorById } from '../data/guideVendors';
  * **기업 화면도 같은 이유로 걷었습니다**(같은 날). 제목·「제품 3」·한 줄 소개·수 셋·
  * 공식 링크 하나로 360px에 링크 1개라, 지운 첫 화면과 같은 종류의 빈 요약이었습니다.
  * 어느 제품을 여는지는 기업 데이터의 `homeProductId`가 들고 있고, `/playbook`은 레일
- * 첫 회사(Anthropic)의 그 값 — Claude Code입니다.
+ * 첫 회사(Anthropic)의 그 값 — 레일 맨 위 줄인 Claude입니다.
  *
  * **`/playbook`은 그 자리에서 그리고, 기업 주소는 넘깁니다.** 둘이 다른 것은 프리렌더
  * 목록 안이냐 밖이냐입니다. `/playbook`은 nav가 가리키고 사이트맵·프리렌더에 든 주소라
