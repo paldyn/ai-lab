@@ -1,4 +1,4 @@
-import { claimsForProduct } from './data/playbook';
+import { claimsForProduct, isPlanClaim } from './data/playbook';
 import { playbookClaims } from './data/playbookClaims';
 import { guideProducts } from './data/guideProducts';
 import { shownModels } from './data/guideModels';
@@ -174,12 +174,7 @@ describe('프리렌더 — 본문이 HTML에 들어간다', () => {
       const ledger = ledgerOf((await render(`/playbook/${product.vendorId}/${product.id}`)).html);
       const claims = claimsForProduct(product.id);
       const tips = claims.filter((c) => c.topic === 'habit');
-      const plans = claims.filter(
-        (c) =>
-          c.topic !== 'context' &&
-          c.topic !== 'habit' &&
-          !(c.topic === 'price' && c.subject.kind === 'model'),
-      );
+      const plans = claims.filter(isPlanClaim);
       const models = shownModels(product.models);
       const groupsPerAim = (['save', 'well'] as const).map(
         (aim) => tipGroupsOf(aim).filter((g) => tips.some((c) => c.aim === aim && c.group === g.id)).length,
@@ -231,6 +226,26 @@ describe('프리렌더 — 본문이 HTML에 들어간다', () => {
       );
       if (links !== models.length || useLinks !== 0 || missing) {
         wrong.push(`${product.id}: 이름 링크 ${links}/${models.length} · 쓰임 링크 ${useLinks}${missing ? ` · ${missing.id} 주소 틀림` : ''}`);
+      }
+    }
+    expect(wrong).toEqual([]);
+  });
+
+  /*
+    **요금표는 요금제가 행입니다**(2026-09-28). 요금제 이름이 행 머리(`th scope="row"`)로
+    한 번씩만 서고, 칸이 없는 주장(요금제를 안 가리는 값)은 표 아래 줄로 섭니다.
+  */
+  it('요금표가 요금제마다 한 행으로 선다', async () => {
+    const wrong: string[] = [];
+    for (const product of guideProducts) {
+      const ledger = ledgerOf((await render(`/playbook/${product.vendorId}/${product.id}`)).html);
+      const plans = claimsForProduct(product.id).filter(isPlanClaim);
+      const names = [...new Set(plans.flatMap((c) => (c.planCell ? [c.planCell.plan] : [])))];
+      const rows = [...ledger.matchAll(/<th scope="row">([^<]*)/g)].map((m) => m[1]);
+      const lines = classCount(ledger, 'gl-plan-line');
+      const common = plans.filter((c) => !c.planCell).length;
+      if (JSON.stringify(rows) !== JSON.stringify(names.map(esc)) || lines !== common) {
+        wrong.push(`${product.id}: 행 ${JSON.stringify(rows)} ≠ ${JSON.stringify(names)} · 아래 줄 ${lines}/${common}`);
       }
     }
     expect(wrong).toEqual([]);

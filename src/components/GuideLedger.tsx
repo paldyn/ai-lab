@@ -8,12 +8,12 @@ import {
 } from 'react';
 import { Link } from 'react-router';
 import { ArrowUpRight } from 'lucide-react';
-import { PlanRow, ageText } from './ClaimRow';
+import { ageText } from './ClaimRow';
 import { GuideMark } from './GuideMark';
 import {
   ageLayout,
-  claimState,
   claimsForProduct,
+  isPlanClaim,
   valueCell,
   type ValueCell,
 } from '../data/playbook';
@@ -22,7 +22,7 @@ import { assetUrl } from '../data/sources';
 import { guideProducts } from '../data/guideProducts';
 import { tipGroupsOf } from '../data/guideTipGroups';
 import { guideVendorById } from '../data/guideVendors';
-import type { Claim, ModelInfo, Product, Role, TipAim } from '../types/playbook';
+import type { Claim, ModelInfo, PlanFacet, Product, Role, TipAim } from '../types/playbook';
 
 /**
  * 원장 — **제품 하나를 다룬 짧은 가이드로 읽히는 한 칸**(2026-09-28 전면 개편).
@@ -112,7 +112,7 @@ function SourceLabel({ label }: { label: string }) {
  * 사라집니다. 라벨은 통째로 보입니다(터치에서도 어느 문서인지 알 수 있어야 합니다).
  *
  * **나이를 안 답니다.** 팁은 `concept`라 유효기간이 없습니다. 나이는 늙는 것, 곧 모델
- * 표와 요금 목록의 값에만 섭니다.
+ * 표와 요금표의 값에만 섭니다.
  */
 function TipItem({ claim }: { claim: Claim }) {
   return (
@@ -458,47 +458,154 @@ function ModelTable({
 
 /* ── 요금 ───────────────────────────────────────────────────────── */
 
-/** 요금이 먼저, 한도가 뒤입니다 — 「얼마인가」를 묻고 나서 「얼마나 쓰나」를 묻습니다. */
-const PLAN_ORDER: Partial<Record<Claim['topic'], number>> = { price: 0, tier: 0, limit: 1 };
+/** 요금표의 열. 데이터에 그 칸이 하나라도 있는 열만 섭니다(Google은 월 구독료 하나). */
+const PLAN_FACETS: Array<{ facet: PlanFacet; label: string }> = [
+  { facet: 'fee', label: '월 구독료' },
+  { facet: 'usage', label: '사용량' },
+];
+
+/** 월 구독료 칸에서만 「월 」을 뗍니다 — 열 이름이 단위를 집니다(`contextLabel`과 같은 자리). */
+const feeLabel = (value: string) => value.replace(/^월 /, '');
 
 /**
- * 요금제와 사용 한도. **줄이 전부 같은 출처이고 확인된 줄의 나이가 하나면** 출처와
- * 나이를 목록 아래 캡션에 한 번 적고, 확인된 줄에서는 걷습니다(Claude 요금 다섯 줄이
- * 「Claude 요금제 ↗ · 11일 전 확인」을 네 번 되풀이했습니다). **확인 전 줄은 제 출처
- * 링크를 그대로 둡니다** — 다음 할 일이 그 페이지를 열어 보는 것이라 길이 줄에 있어야
- * 하고, 값 칸이 「확인 전」이라 캡션의 나이에 안 덮입니다.
+ * 요금 칸 하나. **값은 글자이고, 상태 낱말만 출처로 가는 링크입니다** — 「확인 전」·
+ * 「문서에 없음」의 다음 할 일이 그 페이지를 열어 보는 것이라 길이 칸에 있어야 합니다.
+ * 확인된 값의 출처는 표 아래 캡션이 한 번 말합니다.
+ *
+ * `gl-plan` 토큰은 **주장이 든 칸에만** 답니다 — 프리렌더 검사가 그 수를 요금 주장 수와
+ * 견줍니다. 빈 칸(그 요금제에 그 열의 주장이 없다)은 `gl-plan-empty`입니다.
  */
-function PlanList({ claims, today }: { claims: Claim[]; today: string }) {
-  const sorted = [...claims].sort(
-    (a, b) => (PLAN_ORDER[a.topic] ?? 2) - (PLAN_ORDER[b.topic] ?? 2),
+function PlanValue({ claim, today }: { claim: Claim; today: string }) {
+  const cell = valueCell(claim, today);
+  const note = claim.planCell?.note;
+  return (
+    <>
+      {cell.kind === 'value' ? (
+        <span className={`gl-plan-v${cell.soft ? ' is-soft' : ''}`}>
+          {claim.planCell?.facet === 'fee' ? feeLabel(cell.value) : cell.value}
+        </span>
+      ) : cell.kind === 'note' ? (
+        <a
+          className="gl-plan-state"
+          href={claim.source.url}
+          target="_blank"
+          rel="noreferrer"
+          aria-label={`${claim.statement} ${cell.text}`}
+        >
+          {cell.text}
+        </a>
+      ) : null}
+      {note && <span className="gl-plan-note">{note}</span>}
+    </>
   );
-  const states = sorted.map((c) => claimState(c, today));
-  const urls = new Set(sorted.map((c) => c.source.url));
-  const ages = [...new Set(states.flatMap((s) => (s.ageDays === null ? [] : [s.ageDays])))];
-  const mergedAge = urls.size === 1 && ages.length === 1 ? ages[0] : null;
+}
+
+/**
+ * 요금제와 사용 한도 — **요금제가 행, 월 구독료 · 사용량이 열인 표**(2026-09-28).
+ *
+ * 그 전에는 주장 한 줄이 한 줄이었습니다(「Claude Pro 월 구독료 → 월 $20」). 사실은 2×2
+ * 행렬을 한 줄씩 펼친 것이라, Pro와 Max를 견주려면 1↔2행, 4↔5행을 오가야 했고 요금제
+ * 이름이 네 번 되풀이됐습니다. **바로 위 모델 표와 축이 같습니다** — 대상이 행, 속성이 열.
+ * 요금제가 늘면 표가 세로로 자랍니다(열로 세우면 셋째 요금제부터 칸이 좁아집니다).
+ *
+ * **요금제를 안 가리는 값은 표 아래 줄로 섭니다**(`planCell`이 없는 주장). 이름은
+ * `statement` 그대로입니다 — 「Gemini 앱 사용 한도 초기화 기준」은 Antigravity 화면에도
+ * 서므로 「한도 초기화」로 줄이면 그 제품의 한도처럼 읽힙니다.
+ *
+ * **나이는 모델 표와 같은 규칙입니다**(`ageLayout`) — 하나면 캡션에, 여럿이면 줄마다.
+ */
+function PlanTable({ claims, today }: { claims: Claim[]; today: string }) {
+  const inTable = claims.filter((c) => c.planCell);
+  const common = claims.filter((c) => !c.planCell);
+  /*
+    요금제는 데이터(`playbookClaims.ts`)에 처음 나온 차례로 섭니다. **싼 요금제를 앞에
+    적는 것이 규칙입니다**(CLAUDE.md · PLAYBOOK-ROUTINE.md) — 차례를 값으로 정렬하지 않는 것은
+    「$100부터」·「확인 전」처럼 수로 못 견주는 칸이 섞여 있어서입니다.
+  */
+  const plans = [...new Set(inTable.map((c) => c.planCell!.plan))];
+  const facets = PLAN_FACETS.filter(({ facet }) => inTable.some((c) => c.planCell!.facet === facet));
+  const cellOf = (plan: string, facet: PlanFacet) =>
+    inTable.find((c) => c.planCell!.plan === plan && c.planCell!.facet === facet);
+
+  const ages = ageLayout([
+    ...plans.map((plan) => facets.map(({ facet }) => valueCell(cellOf(plan, facet), today))),
+    ...common.map((c) => [valueCell(c, today)]),
+  ]);
+  const sources = [...new Map(claims.map((c) => [c.source.url, c.source])).values()];
 
   return (
     <>
-      <dl className="gl-plans">
-        {sorted.map((claim, i) => (
-          <PlanRow
-            key={claim.id}
-            claim={claim}
-            today={today}
-            hideMeta={mergedAge !== null && states[i].ageDays !== null}
-          />
-        ))}
-      </dl>
-      {mergedAge !== null && (
-        <p className="gl-caption">
-          <a href={sorted[0].source.url} target="_blank" rel="noreferrer">
-            {sorted[0].source.label}
-            <ArrowUpRight size={12} aria-hidden="true" />
-          </a>
-          {' · '}
-          {ageText(mergedAge)}
-        </p>
+      {plans.length > 0 && (
+        <table className="gl-plan-table" aria-label="요금제와 사용 한도">
+          <thead>
+            <tr>
+              <th scope="col">요금제</th>
+              {facets.map(({ facet, label }) => (
+                <th key={facet} scope="col">
+                  {label}
+                </th>
+              ))}
+            </tr>
+          </thead>
+          <tbody>
+            {plans.map((plan, i) => (
+              <tr key={plan}>
+                {/*
+                  행 머리에는 요금제 이름만 둡니다 — 나이까지 넣으면 낭독기가 칸마다 「Claude
+                  Pro11일 전 확인」을 머리로 읽습니다. 줄마다 서는 나이는 그 줄의 마지막 칸 아래로
+                  갑니다.
+                */}
+                <th scope="row">{plan}</th>
+                {facets.map(({ facet, label }) => {
+                  const claim = cellOf(plan, facet);
+                  const lastFilled =
+                    facets.filter(({ facet: x }) => cellOf(plan, x)).at(-1)?.facet === facet;
+                  return claim ? (
+                    <td key={facet} className={`gl-plan is-${facet}`} data-label={label}>
+                      <PlanValue claim={claim} today={today} />
+                      {lastFilled && ages.perRow[i] !== null && (
+                        <span className="gl-plan-age">{ageText(ages.perRow[i]!)}</span>
+                      )}
+                    </td>
+                  ) : (
+                    <td key={facet} className={`gl-plan-empty is-${facet}`} />
+                  );
+                })}
+              </tr>
+            ))}
+          </tbody>
+        </table>
       )}
+      {common.length > 0 && (
+        <dl className="gl-plan-common">
+          {common.map((claim, i) => {
+            const age = ages.perRow[plans.length + i];
+            return (
+              <div key={claim.id} className="gl-plan-line">
+                <dt>
+                  {claim.statement}
+                  {age !== null && <span className="gl-plan-age">{` · ${ageText(age)}`}</span>}
+                </dt>
+                <dd className="gl-plan">
+                  <PlanValue claim={claim} today={today} />
+                </dd>
+              </div>
+            );
+          })}
+        </dl>
+      )}
+      <p className="gl-caption">
+        {sources.map((source, i) => (
+          <Fragment key={source.url}>
+            {i > 0 && ' · '}
+            <a href={source.url} target="_blank" rel="noreferrer">
+              {source.label}
+              <ArrowUpRight size={12} aria-hidden="true" />
+            </a>
+          </Fragment>
+        ))}
+        {ages.caption !== null && <> · {ageText(ages.caption)}</>}
+      </p>
     </>
   );
 }
@@ -648,13 +755,8 @@ export function GuideLedger({
   /* 제품 자신 + 그 회사 + 이 제품이 돌리는 모델의 값. */
   const claims = claimsForProduct(product.id);
   const tips = claims.filter((c) => c.topic === 'habit');
-  /* 컨텍스트 창과 모델 단가는 모델 표가 값으로 보여 주므로 요금 목록에서 뺍니다. */
-  const plans = claims.filter(
-    (c) =>
-      c.topic !== 'context' &&
-      c.topic !== 'habit' &&
-      !(c.topic === 'price' && c.subject.kind === 'model'),
-  );
+  /* 컨텍스트 창과 모델 단가는 모델 표가 값으로 보여 주므로 요금표에서 뺍니다. */
+  const plans = claims.filter(isPlanClaim);
   const contextOf = new Map(
     claims.filter((c) => c.topic === 'context').map((c) => [c.subject.id, c]),
   );
@@ -701,7 +803,7 @@ export function GuideLedger({
                 {plans.length > 0 && (
                   <>
                     {both && <h3 className="gl-facts-sub">요금제와 사용 한도</h3>}
-                    <PlanList claims={plans} today={today} />
+                    <PlanTable claims={plans} today={today} />
                   </>
                 )}
               </>

@@ -344,7 +344,10 @@ export interface Claim {
   audience?: 'api';
   /** 한 줄 주장. */
   statement: string;
-  /** 화면에 나가는 값. `null`이면 화면에 「문서에 없음」으로 섭니다. */
+  /**
+   * 화면에 나가는 값. `null`이면 화면에 「문서에 없음」으로 섭니다 — **확인 로그가 있을 때만**
+   * 그렇습니다. 로그가 한 번도 없으면 값이 무엇이든 「확인 전」이 먼저입니다(`valueCell`).
+   */
   value: string | null;
   /**
    * 왜 그런가. **`topic: 'habit'`(팁)에만 붙습니다.**
@@ -356,11 +359,32 @@ export interface Claim {
    * 값 주장에는 안 씁니다 — 거기서 설명이 필요하면 그건 `statement`가 덜 써진 것입니다.
    */
   detail?: string;
+  /**
+   * 요금표의 어느 칸인가 — **요금제(행) × 무엇(열)**(2026-09-28).
+   *
+   * 요금 목록이 「Claude Pro 월 구독료」·「Claude Max 사용량(Pro 대비)」처럼 한 줄씩 펼쳐져
+   * 있어, Pro와 Max를 견주려면 1↔2행, 4↔5행을 오가야 했습니다. 표로 세우려면 행과 열이
+   * 데이터에 있어야 하고, **`statement`를 정규식으로 가르지 않습니다** — 「ChatGPT Plus의
+   * GPT-6 Astra 사용 횟수(5시간당)」처럼 꼴이 제각각입니다. 손으로 매기고 검사로 막습니다.
+   *
+   * **요금제를 안 가리는 값(「사용 한도 초기화 기준」)에는 안 붙습니다** — 표 아래 줄로
+   * `statement`를 이름 삼아 섭니다. 회사 주체라 다른 제품 화면에도 서므로 「Gemini 앱」 같은
+   * 한정어를 떼면 그 제품의 한도처럼 읽힙니다.
+   *
+   * - `plan`: 요금제 이름. **`statement`가 이 이름으로 시작해야 합니다**(검사가 봅니다).
+   * - `facet`: `fee`는 월 구독료(`topic: 'price' | 'tier'`), `usage`는 사용량(`topic: 'limit'`).
+   * - `note`: 열 이름이 덮어 버리는 한정어. 「사용량」 열 아래 ChatGPT Plus 칸은 사실
+   *   「GPT-6 Astra · 5시간당」이라, 그 말을 칸 아래 작은 줄로 남깁니다.
+   */
+  planCell?: { plan: string; facet: PlanFacet; note?: string };
   tier: EvidenceTier;
   volatility: Volatility;
   source: EvidenceSource;
   measurement?: Measurement;
 }
+
+/** 요금표의 열. 화면의 열 차례는 `GuideLedger`의 `PLAN_FACETS`가 정합니다(구독료 → 사용량). */
+export type PlanFacet = 'fee' | 'usage';
 
 /**
  * 확인 로그 한 줄. `src/data/playbook-checks/<날짜>.ts`가 하루치입니다.

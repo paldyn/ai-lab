@@ -7281,8 +7281,8 @@ input:focus-visible {
     오른쪽 끝이 한 세로줄에 선다 — 옛 원장은 592·736·847 세 자리에서 끝나 계단이 졌다.
   */
   --gl-measure: 720px;
-  /* 표의 값 쪽 폭. 모델 표의 수 열 셋과 요금 목록의 값 열이 같은 x에서 시작한다. */
-  --gl-val: 320px;
+  /* 요금표의 구독료 열. 「$99.99부터」가 한 줄에 들고, 사용량 열이 나머지를 쓴다. */
+  --gl-fee: 128px;
 }
 
 /* ── 2단 ────────────────────────────────────────────────────── */
@@ -7916,10 +7916,9 @@ input:focus-visible {
 }
 
 /*
-  요금 줄과 캡션의 출처 링크는 제 줄에 선다 — 흐린 글자에 밑줄, 새 창 화살표. 밑줄은
-  팁 꼬리와 같은 `--guide-rule`이다. 누르는 높이를 위아래로 10px씩 넓힌다.
+  캡션의 출처 링크 — 흐린 글자에 밑줄, 새 창 화살표. 밑줄은 팁 꼬리와 같은
+  `--guide-rule`이다. 누르는 높이를 위아래로 10px씩 넓힌다.
 */
-.gl-plan-meta a,
 .gl-caption a {
   display: inline-flex;
   align-items: center;
@@ -7932,7 +7931,6 @@ input:focus-visible {
   text-underline-offset: 3px;
 }
 
-.gl-plan-meta a:hover,
 .gl-caption a:hover {
   color: var(--guide-accent);
   text-decoration-color: currentColor;
@@ -8024,8 +8022,7 @@ input:focus-visible {
 }
 
 /*
-  **표다 — 열 이름이 단위를 지고 수는 한 세로줄에 선다.** 수 열 셋의 합(112 + 88 + 88
-  + 사이 32)이 `--gl-val`이라 아래 요금 목록의 값과 같은 x에서 시작한다.
+  **표다 — 열 이름이 단위를 지고 수는 한 세로줄에 선다.**
   **열은 그 제품의 데이터가 세운다** — 한 줄도 주장이 없는 열은 아예 안 선다.
 */
 .gl-models li {
@@ -8238,48 +8235,138 @@ a.gl-num:hover {
 }
 
 /*
-  요금제와 사용 한도. 이름 왼쪽, 값 오른쪽 열(`--gl-val`)이다. **값은 왼쪽 정렬이다** —
-  「월 $20」과 「5시간 롤링 세션 창 · …」이 한 목록에 서서, 오른쪽 정렬이면 긴 값이
-  감길 때 줄마다 들쭉날쭉한 오른쪽 끝을 만든다.
+  **요금표 — 요금제가 행, 월 구독료 · 사용량이 열이다**(2026-09-28). 바로 위 모델 표와 축이
+  같다(대상이 행, 속성이 열). 그 전에는 주장 한 줄이 한 줄이라 Pro와 Max를 견주려면 줄을
+  건너 오가야 했다.
+
+  - 요금제 이름 열은 글자 폭만 잡는다(`width: 1%` + 줄바꿈 없음) — 「Claude Pro」와 「$20」이
+    붙어 읽힌다. 구독료 열은 `--gl-fee`로 못 박아 사용량 열이 나머지를 쓴다.
+  - **구독료는 굵은 16, 사용량은 보통 14.5다.** 둘을 같은 16/500으로 세우던 동안 31자짜리
+    한도 문장이 표에서 가장 무거운 것이 됐다. 이 표에서 먼저 읽히는 것은 값이다.
+  - 상태 낱말은 모델 표의 상태 칸과 같은 점선 링크다(출처로 간다).
 */
-.gl-plan {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) var(--gl-val);
-  column-gap: 16px;
-  align-items: baseline;
-  padding-block: 14px;
-  border-bottom: 1px solid var(--guide-rule);
+.gl-plan-table {
+  width: 100%;
+  margin-top: var(--gl-r2);
+  border-collapse: collapse;
 }
 
-.gl-plan dt {
+.gl-plan-table th,
+.gl-plan-table td {
+  padding: 14px 16px 14px 0;
+  border-bottom: 1px solid var(--guide-rule);
+  text-align: left;
+  vertical-align: baseline;
+}
+
+.gl-plan-table tr > :last-child {
+  padding-right: 0;
+}
+
+.gl-plan-table thead th {
+  padding-block: 0 8px;
+  color: var(--text-muted);
+  font-size: var(--gl-meta);
+  font-weight: 400;
+}
+
+.gl-plan-table tbody th {
+  width: 1%;
+  padding-right: var(--gl-r3);
+  color: var(--text-strong);
+  font-size: var(--gl-body);
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.gl-plan-table td.is-fee {
+  width: var(--gl-fee);
+}
+
+.gl-plan-v {
   color: var(--text);
   font-size: var(--gl-note);
   line-height: 1.6;
 }
 
-.gl-plan-v {
-  margin: 0;
+.gl-plan-table td.is-fee .gl-plan-v {
   color: var(--text-strong);
   font-size: var(--gl-body);
-  font-weight: 500;
+  font-weight: 600;
+}
+
+/* 곧 다시 볼 값. 흐려지는 것은 여기까지다 — 유효기간이 지나면 값이 아예 사라진다. */
+.gl-plan-v.is-soft,
+.gl-plan-table td.is-fee .gl-plan-v.is-soft {
+  color: var(--text-dim);
+}
+
+.gl-plan-state {
+  /* 12px 한 줄이라 손가락에 안 맞는다 — 캡션 링크처럼 위아래 10px을 넓히되 줄 높이는 그대로 둔다. */
+  display: inline-block;
+  padding-block: 10px;
+  margin-block: -10px;
+  color: var(--text-dim);
+  font-size: var(--gl-meta);
+  text-decoration: underline dotted;
+  text-decoration-color: var(--text-muted);
+  text-underline-offset: 4px;
+}
+
+.gl-plan-state:hover {
+  color: var(--guide-accent);
+  text-decoration-color: currentColor;
+}
+
+/* 열 이름이 덮어 버린 한정어(「GPT-6 Astra · 5시간당」)와 줄마다 서는 나이. */
+.gl-plan-note,
+.gl-plan-age {
+  display: block;
+  margin-top: 2px;
+  color: var(--text-muted);
+  font-size: var(--gl-meta);
+  font-weight: 400;
+  white-space: normal;
+}
+
+/*
+  요금제를 안 가리는 값 — 표 아래 줄. 이름은 statement 그대로다. **이름 위, 값 아래로
+  쌓는다** — 이름(「Claude 사용 한도 초기화 기준」)이 요금제 이름 열보다 길어 옆으로
+  세우면 값이 표의 어느 열과도 안 맞는 x에 선다.
+*/
+.gl-plan-common {
+  margin: var(--gl-r2) 0 0;
+}
+
+.gl-plan-table + .gl-plan-common {
+  margin-top: 0;
+}
+
+.gl-plan-line {
+  padding-block: 14px;
+  border-bottom: 1px solid var(--guide-rule);
+}
+
+.gl-plan-common > .gl-plan-line:first-child {
+  border-top: 1px solid var(--guide-rule);
+}
+
+.gl-plan-table + .gl-plan-common > .gl-plan-line:first-child {
+  border-top: 0;
+}
+
+.gl-plan-line dt {
+  color: var(--text-muted);
+  font-size: var(--gl-meta);
   line-height: 1.5;
 }
 
-.gl-plan-v.is-soft {
-  color: var(--text-dim);
+.gl-plan-line dt .gl-plan-age {
+  display: inline;
 }
 
-.gl-plan-v.is-note {
-  color: var(--text-dim);
-  font-size: var(--gl-note);
-  font-weight: 400;
-}
-
-.gl-plan-meta {
-  grid-column: 2;
-  margin: 4px 0 0;
-  color: var(--text-muted);
-  font-size: var(--gl-meta);
+.gl-plan-line dd {
+  margin: 2px 0 0;
 }
 
 /* ── 다른 제품 — 좁은 화면에서만 ── */
@@ -8432,15 +8519,67 @@ a.gl-num:hover {
     text-align: left;
   }
 
-  /* 요금 줄은 이름 → 값 → 출처를 세로로 쌓는다. */
-  .gl-plan {
-    grid-template-columns: minmax(0, 1fr);
-    row-gap: 4px;
+  /*
+    **요금표는 요금제마다 블록으로 쌓는다.** 블록으로 푸는 것은 자격증 환불 표, 열 이름을
+    앞에 다는 것은 모델 표와 같은 방식이다. 요금제 이름이 제 줄을 갖고, 값은 그 아래에 열
+    이름을 앞에 달고 선다(`data-label`). 열 머리는 화면에서만 숨긴다.
+  */
+  .gl-plan-table thead {
+    position: absolute;
+    overflow: hidden;
+    width: 1px;
+    height: 1px;
+    clip-path: inset(50%);
   }
 
-  .gl-plan-meta {
-    grid-column: 1;
+  .gl-plan-table,
+  .gl-plan-table tbody {
+    display: block;
   }
+
+  .gl-plan-table tr {
+    display: block;
+    padding-block: 14px;
+    border-bottom: 1px solid var(--guide-rule);
+  }
+
+  .gl-plan-table tbody tr:first-child {
+    border-top: 1px solid var(--guide-rule);
+  }
+
+  .gl-plan-table tbody th,
+  .gl-plan-table td,
+  .gl-plan-table td.is-fee {
+    display: block;
+    width: auto;
+    padding: 0;
+    border: 0;
+  }
+
+  .gl-plan-table td {
+    margin-top: 4px;
+  }
+
+  .gl-plan-table td.gl-plan-empty {
+    display: none;
+  }
+
+  /* 한정어와 나이는 열 이름 밑이 아니라 제 값 밑에 선다(열 이름 칸 4.5em + 8px만큼 들인다). */
+  .gl-plan-table td[data-label] .gl-plan-note,
+  .gl-plan-table td[data-label] .gl-plan-age {
+    padding-left: calc(4.5em + 8px);
+  }
+
+  /* `inline-block`이라야 상태 링크의 밑줄이 열 이름까지 번지지 않는다. */
+  .gl-plan-table td[data-label]::before {
+    content: attr(data-label);
+    display: inline-block;
+    min-width: 4.5em;
+    margin-right: 8px;
+    color: var(--text-muted);
+    font-size: var(--gl-meta);
+  }
+
 }
 
 /* ── 종이 ── */

@@ -99,7 +99,7 @@ export function shownValue(state: ClaimState): string | null {
 }
 
 /**
- * 값 한 칸이 무엇을 말해야 하는가 — **모델 표와 요금 목록이 이것 하나만 씁니다.**
+ * 값 한 칸이 무엇을 말해야 하는가 — **모델 표와 요금표가 이것 하나만 씁니다.**
  *
  * **상태가 넷이고 뜻이 다 다릅니다.** 그 전에는 `claim.value ?? '모름'` 하나가 넷을
  * 뭉갰고(모델 표), 요금 줄은 따로 판정해서 확인 로그가 없는 Claude Max 줄에 「모름」과
@@ -163,6 +163,15 @@ export function ageLayout(rows: ValueCell[][]): { caption: number | null; perRow
     }),
   };
 }
+
+/**
+ * 요금표에 서는 주장인가 — 팁도, 모델 표가 보여 주는 값(컨텍스트 창 · 토큰 단가)도 아닌 것.
+ *
+ * **원장·프리렌더 검사·데이터 검사가 이 식 하나를 씁니다.** 세 곳에 따로 적혀 있던 동안
+ * 한쪽만 고치면 화면과 검사가 다른 집합을 셌습니다.
+ */
+export const isPlanClaim = (c: Claim): boolean =>
+  c.topic !== 'context' && c.topic !== 'habit' && !(c.topic === 'price' && c.subject.kind === 'model');
 
 const isSubject = (claim: Claim, kind: Claim['subject']['kind'], id: string) =>
   claim.subject.kind === kind && claim.subject.id === id;

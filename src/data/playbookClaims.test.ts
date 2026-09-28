@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import { playbookClaims } from './playbookClaims';
-import { claimsForProduct, productOpenItems } from './playbook';
+import { claimsForProduct, isPlanClaim, productOpenItems } from './playbook';
 import { guideProductIds, guideProducts } from './guideProducts';
 import { guideModels } from './guideModels';
 import { tipGroupIdsOf } from './guideTipGroups';
@@ -615,5 +615,59 @@ describe('AI 가이드 — 주장', () => {
       .filter((m) => m.useWhen)
       .filter((m) => !/에(\(.+\))?$/.test(m.useWhen!.text));
     expect(bad.map((m) => `${m.id}: ${m.useWhen!.text}`)).toEqual([]);
+  });
+});
+
+/**
+ * **요금표의 칸 — `planCell`**(2026-09-28). 요금 목록을 요금제 × 열 표로 세우면서 행과 열을
+ * 데이터에 손으로 매겼다. `statement`를 정규식으로 가르지 않으므로 어긋나는 자리를 여기서 막는다.
+ * 대상 집합은 원장과 같은 식(`isPlanClaim`)이다 — 따로 적으면 화면과 검사가 다른 것을 센다.
+ */
+describe('요금표 칸', () => {
+  const plans = playbookClaims.filter(isPlanClaim);
+
+  it('칸은 요금표에 서는 주장에만 붙는다', () => {
+    const stray = playbookClaims.filter((c) => c.planCell && !isPlanClaim(c)).map((c) => c.id);
+    expect(stray).toEqual([]);
+  });
+
+  /* 구독료가 칸 없이 들어오면 표가 아니라 표 아래 줄로 떨어져 「Pro와 Max 견주기」가 깨진다. */
+  it('구독료는 반드시 칸을 갖는다', () => {
+    const missing = plans.filter((c) => (c.topic === 'price' || c.topic === 'tier') && !c.planCell);
+    expect(missing.map((c) => c.id)).toEqual([]);
+  });
+
+  it('주장 문장이 그 요금제 이름으로 시작한다', () => {
+    const bad = plans.filter((c) => c.planCell && !c.statement.startsWith(c.planCell.plan));
+    expect(bad.map((c) => `${c.id}: ${c.planCell!.plan} / ${c.statement}`)).toEqual([]);
+  });
+
+  it('열이 주제와 맞는다 — 구독료는 price·tier, 사용량은 limit', () => {
+    const want = { fee: ['price', 'tier'], usage: ['limit'] } as const;
+    const bad = plans.filter(
+      (c) => c.planCell && !(want[c.planCell.facet] as readonly string[]).includes(c.topic),
+    );
+    expect(bad.map((c) => `${c.id}: ${c.planCell!.facet} · ${c.topic}`)).toEqual([]);
+  });
+
+  /* 한 칸에 주장 둘이면 표가 하나만 그리고 나머지는 말없이 사라진다. */
+  it('한 화면의 한 칸에 주장이 둘 서지 않는다', () => {
+    const bad: string[] = [];
+    for (const product of guideProducts) {
+      const seen = new Map<string, string>();
+      for (const c of claimsForProduct(product.id).filter((x) => isPlanClaim(x) && x.planCell)) {
+        const key = `${c.planCell!.plan} · ${c.planCell!.facet}`;
+        if (seen.has(key)) bad.push(`${product.id}: ${key} (${seen.get(key)}, ${c.id})`);
+        seen.set(key, c.id);
+      }
+    }
+    expect(bad).toEqual([]);
+  });
+
+  it('한정어는 비어 있지 않고 짧다', () => {
+    const bad = plans.filter(
+      (c) => c.planCell?.note !== undefined && (!c.planCell.note.trim() || c.planCell.note.length > 24),
+    );
+    expect(bad.map((c) => c.id)).toEqual([]);
   });
 });
