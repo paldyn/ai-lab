@@ -78,12 +78,10 @@ function parseClaims() {
     const pick = (key) => block.match(new RegExp(`${key}: '([^']*)'`))?.[1] ?? null;
     return {
       id: m[1],
-      tier: pick('tier'),
       volatility: pick('volatility'),
       hasValue: !/value: null/.test(block),
       url: block.match(/url: '([^']*)'/)?.[1] ?? null,
       topic: pick('topic'),
-      postedAt: block.match(/postedAt: '([\d-]+)'/)?.[1] ?? null,
     };
   });
 }

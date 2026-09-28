@@ -249,8 +249,6 @@ export type Volatility = 'price' | 'limit' | 'model' | 'concept';
 export interface EvidenceSource {
   label: string;
   url: string;
-  /** 그 글이 쓰인 날. 우리가 연 날과 다른 값입니다. */
-  postedAt?: string;
 }
 
 export interface Measurement {
