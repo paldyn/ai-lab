@@ -164,21 +164,6 @@ export function ageLayout(rows: ValueCell[][]): { caption: number | null; perRow
   };
 }
 
-export interface ProductFreshness {
-  /** 이 제품이 들고 있는 값의 수. */
-  total: number;
-  /** 그중 14일 안에 확인한 것. */
-  checkedRecently: number;
-  /** 유효기간이 지나 값을 내린 것. */
-  expired: number;
-  /** 값을 아직 못 채운 것(`value: null`). */
-  unfilled: number;
-  /** 가장 오래된 확인의 나이. 확인 기록이 하나도 없으면 `null`. */
-  oldestAgeDays: number | null;
-}
-
-const RECENT_DAYS = 14;
-
 const isSubject = (claim: Claim, kind: Claim['subject']['kind'], id: string) =>
   claim.subject.kind === kind && claim.subject.id === id;
 
@@ -215,26 +200,6 @@ export function claimsForProduct(productId: string): Claim[] {
         (c.audience !== 'api' || product.apiTips === true)) ||
       (c.subject.kind === 'model' && models.includes(c.subject.id)),
   );
-}
-
-export function productFreshness(productId: string, today: string): ProductFreshness {
-  const states = claimsForProduct(productId).map((c) => claimState(c, today));
-  const ages = states.map((s) => s.ageDays).filter((n): n is number => n !== null);
-
-  return {
-    total: states.length,
-    checkedRecently: states.filter((s) => s.ageDays !== null && s.ageDays < RECENT_DAYS).length,
-    /*
-      **「모름」은 만료가 아닙니다.** 값을 안 내보내고 있으니 독자를 속이지 않습니다.
-      만료는 「값이 있었는데 이제 못 믿는다」일 때만입니다 — 그래야 만료율로 서랍을
-      nav에서 내리는 장치가 진짜 위험만 셉니다.
-    */
-    expired: states.filter(
-      (s) => s.claim.value !== null && (s.freshness === 'hard' || s.freshness === 'unknown'),
-    ).length,
-    unfilled: states.filter((s) => s.claim.value === null).length,
-    oldestAgeDays: ages.length > 0 ? Math.max(...ages) : null,
-  };
 }
 
 /**
