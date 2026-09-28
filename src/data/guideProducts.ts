@@ -154,7 +154,12 @@ export const guideProducts: Product[] = [
     vendorId: 'anthropic',
     name: 'Claude Code',
     role: '코딩',
-    surfaces: ['웹', '데스크톱', '터미널', 'IDE'],
+    /*
+      code.claude.com/docs/en/claude-code-on-the-web — 「Run Claude Code sessions in the cloud
+      from your browser, phone, desktop app, or terminal」. 클라우드는 세션이 도는 곳이고
+      웹·모바일은 그것을 여는 곳이라 둘 다 적습니다. Codex와 같은 기준입니다(2026-09-28).
+    */
+    surfaces: ['웹', '데스크톱', '모바일', '터미널', 'IDE', '클라우드'],
     models: [
       'claude-fable-5-1',
       'claude-fable-5',
@@ -255,9 +260,11 @@ export const guideProducts: Product[] = [
     /*
       learn.chatgpt.com/docs/codex/cli 의 「Other ChatGPT and Codex surfaces」 —
       「Desktop app」·「IDE extension」·「Codex cloud」. 예전의 「앱」은 그 데스크톱 앱이라
-      데스크톱으로 적습니다(2026-09-28).
+      데스크톱으로 적습니다(2026-09-28). learn.chatgpt.com/docs/cloud가 Codex cloud를
+      「start work from the web」이라 적어 웹도 적습니다 — 클라우드는 도는 곳, 웹은 여는
+      곳이라는 기준을 Claude Code와 똑같이 씁니다.
     */
-    surfaces: ['데스크톱', '터미널', 'IDE', '클라우드'],
+    surfaces: ['웹', '데스크톱', '터미널', 'IDE', '클라우드'],
     models: [
       'gpt-6-astra',
       'gpt-5-6-sol',
