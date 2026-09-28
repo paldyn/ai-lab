@@ -109,10 +109,14 @@ export interface Product {
   docsUrl: string | null;
   /**
    * 제품 머리의 둘째 단추 이름. **`docsUrl`이 무엇인지를 손으로 적습니다** — URL로
-   * 추측하지 않습니다. `null`이면 단추가 안 섭니다(`docsUrl`이 없거나 `officialUrl`과
-   * 사실상 같은 곳일 때).
+   * 추측하지 않습니다. `null`이면 단추가 안 섭니다(`docsUrl`이 없거나, `officialUrl`과
+   * 사실상 같은 곳이거나, 요금 페이지일 때).
+   *
+   * **요금 페이지에는 단추를 안 세웁니다**(2026-09-28). 「요금 안내」가 한때 있었는데,
+   * 바로 아래 「모델과 요금」 탭이 같은 페이지로 가는 출처 링크를 이미 들고 있어 한
+   * 화면이 같은 곳을 두 번 가리켰습니다. 되살리지 못하게 값에서 뺐습니다.
    */
-  docsLabel: '문서' | '요금 안내' | null;
+  docsLabel: '문서' | null;
   /** API 표면이 있어 `audience: 'api'`인 팁이 이 제품에 서는가. */
   apiTips?: true;
   /**
