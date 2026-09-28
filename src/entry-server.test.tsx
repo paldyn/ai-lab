@@ -248,6 +248,8 @@ describe('프리렌더 — 본문이 HTML에 들어간다', () => {
       '얼마이고 한도가 어떻게 차나',
       '방법입니다',
       '기업마다 챗·업무·코딩',
+      '아껴 쓰기',
+      '정확히 시키기',
     ];
     const found: string[] = [];
     for (const product of guideProducts) {
