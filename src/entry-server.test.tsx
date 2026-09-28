@@ -80,8 +80,12 @@ describe('프리렌더 — 본문이 HTML에 들어간다', () => {
     봅니다. 한 줄로 뭉뚱그리면 제품 화면이 통째로 비어도 통과합니다.
   */
   it('원장이 어느 주소에서도 안 빈다', async () => {
-    const summary = ['/playbook', ...guideVendorIds.map((id) => `/playbook/${id}`)];
-    const detail = guideProducts.map((p) => `/playbook/${p.vendorId}/${p.id}`);
+    /*
+      **`/playbook`은 제품 화면 쪽에서 잽니다**(2026-09-28). 첫 화면 원장을 걷고 그 주소가
+      기본 제품(Claude Code)을 그대로 그리게 됐으므로, 요약 띠가 아니라 절이 서는지를 봅니다.
+    */
+    const summary = guideVendorIds.map((id) => `/playbook/${id}`);
+    const detail = ['/playbook', ...guideProducts.map((p) => `/playbook/${p.vendorId}/${p.id}`)];
     const empty: string[] = [];
 
     for (const route of summary) {
@@ -182,5 +186,26 @@ describe('프리렌더 — 본문이 HTML에 들어간다', () => {
 
     }
     expect(wrong).toEqual([]);
+  });
+
+  /*
+    **`/playbook`이 기본 제품을 그리고, canonical이 그 제품 주소를 가리키는가**(2026-09-28).
+
+    첫 화면 원장을 걷고 `/playbook`이 Claude Code를 그대로 그리게 했습니다. 리다이렉트가
+    아니라 그 자리에서 그리므로 같은 내용이 두 주소에 섭니다 — canonical이 제품 주소를
+    안 가리키면 검색엔진이 둘 중 하나를 중복으로 떨어뜨리고, 어느 쪽인지는 우리가 못
+    고릅니다. 그리고 이 주소는 nav와 사이트맵이 가리키므로 **HTML에 본문이 실제로 실려
+    나가는지**도 봅니다(`<Navigate>`로 바꾸면 빈 껍데기가 나갑니다).
+  */
+  it('가이드 첫 주소가 기본 제품을 그리고 그 제품 주소를 canonical로 건다', async () => {
+    const home = guideProducts.find((p) => p.id === 'claude-code')!;
+    const { html, head } = await render('/playbook');
+    expect(html).toContain('guide-ledger-title');
+    expect(html).toContain(home.name);
+    expect(html).toContain('guide-tip-group');
+    expect(head).toContain(`/playbook/${home.vendorId}/${home.id}"`);
+    /* 걷어낸 첫 화면의 흔적이 되살아나면 빨갛게. */
+    expect(html).not.toContain('체감');
+    expect(html).not.toContain('위 판');
   });
 });

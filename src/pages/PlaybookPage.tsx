@@ -21,10 +21,36 @@ import { guideVendorById } from '../data/guideVendors';
  * 레일이 따라와서 읽다가 눈만 왼쪽으로 옮기면 됩니다. 여닫히는 것은 여전히 하나도
  * 없습니다 — 열두 줄이 처음부터 다 서 있고 고르면 잉크만 바뀝니다.
  */
+/**
+ * **`/playbook`은 이 제품을 그대로 그립니다**(2026-09-28). 첫 화면용 원장을 따로 두지
+ * 않습니다.
+ *
+ * 그 전의 첫 화면은 732px에 누를 자리가 0개였고, 가장 큰 블록이 걷어낸 「체감」 등급을
+ * 풀이하고 꼬리말이 레일로 바뀐 「판」을 가리켰습니다. 질문 여덟 × 회사 셋 교차표로
+ * 돌려 봤지만 「너무 별로」였고, 결론은 **첫 화면을 따로 세우지 말고 제품 하나를 연 채로
+ * 시작한다**였습니다. 이 서랍이 파는 것(팁·값)은 전부 제품 화면에 있습니다.
+ *
+ * **Claude Code인 이유.** 「Anthropic이 기본」이라는 결정에서 Anthropic의 어느 화면인지를
+ * 골라야 했습니다. 기업 화면은 제목·제품 수·한 줄 소개·수 셋·공식 링크 하나로 360px에
+ * 링크 1개라 지운 첫 화면과 같은 종류로 비어 있고, 레일 첫 줄인 Claude(챗)는 팁이 1건
+ * 뿐입니다. Claude Code는 팁 13 · 값 15 · 모델 4로 가장 두껍고 이 서랍의 설명
+ * 「코딩 에이전트를 어떤 모델과 강도로…」와 맞습니다.
+ *
+ * **리다이렉트가 아니라 그 자리에서 그립니다.** `/playbook`은 nav가 가리키고 사이트맵·
+ * 프리렌더에 든 주소라, `<Navigate>`로 바꾸면 검색엔진이 받는 HTML이 빈 껍데기가 됩니다
+ * (`/about` 같은 옛 주소는 프리렌더 목록 밖이라 괜찮은 것입니다). 같은 내용이 두 주소에
+ * 서는 것은 canonical이 제품 주소를 가리켜 해결합니다.
+ */
+const HOME_PRODUCT_ID = 'claude-code';
+
 export function PlaybookPage() {
   const { vendorId, productId } = useParams<{ vendorId: string; productId: string }>();
-  const vendor = vendorId ? guideVendorById(vendorId) : undefined;
-  const product = productId ? guideProductById(productId) : undefined;
+  const vendor = vendorId ? guideVendorById(vendorId) : guideVendorById('anthropic');
+  const product = productId
+    ? guideProductById(productId)
+    : vendorId
+      ? undefined
+      : guideProductById(HOME_PRODUCT_ID);
 
   // 없는 기업으로 들어오면 첫 화면으로 돌립니다.
   if (vendorId && !vendor) return <Navigate to="/playbook" replace />;
@@ -46,24 +72,12 @@ export function PlaybookPage() {
         「AI 가이드」 그대로지만, 검색 결과에 서는 것은 제품이어야 합니다.
       */}
       <Seo
-        title={
-          product
-            ? `${product.name} · AI 가이드`
-            : vendor
-              ? `${vendor.name} · AI 가이드`
-              : 'AI 가이드'
-        }
+        title={product ? `${product.name} · AI 가이드` : `${vendor!.name} · AI 가이드`}
         description={
-          product
-            ? `${product.name} — ${product.oneLine}`
-            : '코딩 에이전트를 어떤 모델과 강도로 돌리고, 세션을 언제 새로 파고, 언제 압축할지. 공식 지침과 사람들이 써 보고 굳힌 것과 우리가 직접 잰 것을 갈라 담습니다.'
+          product ? `${product.name} — ${product.oneLine}` : `${vendor!.name} — ${vendor!.blurb}`
         }
         path={
-          product
-            ? `/playbook/${product.vendorId}/${product.id}`
-            : vendor
-              ? `/playbook/${vendor.id}`
-              : '/playbook'
+          product ? `/playbook/${product.vendorId}/${product.id}` : `/playbook/${vendor!.id}`
         }
       />
       <PageHeader
@@ -93,7 +107,7 @@ export function PlaybookPage() {
         */}
         <div className="guide-pane">
           <GuideLedger
-            key={product?.id ?? vendor?.id ?? 'root'}
+            key={product?.id ?? vendor?.id}
             product={product}
             vendor={vendor}
             today={today}

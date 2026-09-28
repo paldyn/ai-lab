@@ -3,7 +3,13 @@ import { Link } from 'react-router';
 import { ClaimRow } from './ClaimRow';
 import { GuideMark } from './GuideMark';
 import { TipRow } from './TipRow';
-import { claimState, claimsForProduct, claimsForVendor, modelCell } from '../data/playbook';
+import {
+  claimState,
+  claimsForProduct,
+  claimsForVendor,
+  modelCell,
+  shownValue,
+} from '../data/playbook';
 import { playbookClaims } from '../data/playbookClaims';
 import { modelMark, shownModels } from '../data/guideModels';
 import { assetUrl } from '../data/sources';
@@ -69,16 +75,36 @@ function freshestAge(claimIds: string[], today: string): number | null {
 
 /**
  * 요약 띠. **제품 화면에는 안 섭니다** — 거기는 값 줄이 직접 서므로 개수를 또 적으면
- * 같은 말을 두 번 합니다. 기업·첫 화면처럼 **항목을 안 그리는 자리**에만 둡니다.
+ * 같은 말을 두 번 합니다. **기업 화면에만 둡니다**(첫 화면 원장은 2026-09-28에 걷었습니다).
  *
  * 「노트」 칸을 걷어냈습니다(2026-09-17). 이 서랍은 글을 세는 곳이 아니라 값을
  * 모으는 곳이고, 「노트 0편」은 읽는 사람에게 우리 사정이지 답이 아니었습니다.
+ *
+ * **칸이 셋입니다**(2026-09-28). 그 전에는 「아는 값」에 주장 개수를 통째로 적었는데,
+ * 그중 절반 넘게가 팁이고 **팁은 정의상 값이 없습니다**(`value === null`). 이 서랍이
+ * 화면에서 「모름」이라 부르는 것까지 「아는 값」으로 세고 있었습니다(서랍 전체로
+ * 112 중 62, Anthropic으로 39 중 20).
+ *
+ * **「아는 값」은 `shownValue`를 지납니다.** 주장 개수가 아니라 오늘 화면에 실제로 설
+ * 수 있는 수라, 단가가 유효기간을 넘기면 이 수도 저절로 내려갑니다 — 「만료되면 값이
+ * 흐려지는 것이 아니라 사라진다」가 여기에도 걸립니다. 팁은 제 칸을 따로 갖습니다.
+ *
+ * 셋째 열은 원래 비어 있었습니다. `.guide-stats`가 3열인데 「노트」 칸을 걷으면서 열을
+ * 안 줄인 자국이라, 이 손질은 **CSS가 0줄**입니다.
  */
-function StatRow({ claimIds, today }: { claimIds: string[]; today: string }) {
-  const age = freshestAge(claimIds, today);
+function StatRow({ claims, today }: { claims: Claim[]; today: string }) {
+  const tips = claims.filter((c) => c.topic === 'habit').length;
+  const known = claims.filter(
+    (c) => c.topic !== 'habit' && shownValue(claimState(c, today)) !== null,
+  ).length;
+  const age = freshestAge(
+    claims.map((c) => c.id),
+    today,
+  );
   return (
     <dl className="guide-stats">
-      <Stat label="아는 값" value={String(claimIds.length)} unit="개" />
+      <Stat label="팁" value={String(tips)} unit="건" />
+      <Stat label="아는 값" value={String(known)} unit="개" />
       {/*
         **`—`는 홀로 섭니다.** 단위가 안 붙는 것 자체가 「셀 것이 없다」는 뜻이라,
         0편·12편·— 셋이 서로 다른 모양이 됩니다.
@@ -815,45 +841,9 @@ function VendorLedger({ vendor, today }: { vendor: VendorInfo; today: string }) 
       <p className="guide-ledger-meta">제품 {products.length}</p>
       <p className="guide-ledger-blurb">{vendor.blurb}</p>
 
-      <StatRow claimIds={claims.map((c) => c.id)} today={today} />
+      <StatRow claims={claims} today={today} />
 
       <OfficialLinks rows={[{ label: '회사', url: vendor.officialUrl }]} />
-
-      <p className="guide-ledger-note mt-6">위 판에서 제품을 고르면 그 제품의 상태가 이 자리에 섭니다.</p>
-    </div>
-  );
-}
-
-/** 아무것도 안 골랐을 때 — 서랍 전체의 상태. 원장은 열셋 주소에서 한 번도 안 빕니다. */
-function RootLedger({ today }: { today: string }) {
-  return (
-    <div className="guide-ledger">
-      <h2 className="guide-ledger-title">AI 가이드가 지금 아는 것</h2>
-      <p className="guide-ledger-blurb">
-        값마다 어디서 왔고 언제 확인한 것인지를 함께 적습니다. 유효기간이 지난 값은
-        흐려지지 않고 사라집니다 — 읽히는 숫자는 믿게 되기 때문입니다.
-      </p>
-
-      <StatRow claimIds={playbookClaims.map((c) => c.id)} today={today} />
-
-      <Section kind="read" label="근거 세 등급">
-        <dl className="guide-tiers">
-        <div>
-          <dt>공식</dt>
-          <dd>벤더 문서에서 그날 직접 읽은 값. 본 원문 한 줄을 로그에 남깁니다.</dd>
-        </div>
-        <div>
-          <dt>실측</dt>
-          <dd>우리가 직접 돌려 얻은 수. 명령·결과·환경이 없으면 실측이 아닙니다.</dd>
-        </div>
-        <div>
-          <dt>체감</dt>
-          <dd>사람들이 써 보고 굳어진 이야기. 단일 게시물·게시일·교차 확인·반례 넷이 다 있어야 싣습니다.</dd>
-        </div>
-        </dl>
-      </Section>
-
-      <p className="guide-ledger-note mt-6">위 판에서 제품을 고르면 그 제품의 상태가 이 자리에 섭니다.</p>
     </div>
   );
 }
@@ -868,6 +858,9 @@ export function GuideLedger({
   today: string;
 }) {
   if (product) return <ProductLedger product={product} today={today} />;
-  if (vendor) return <VendorLedger vendor={vendor} today={today} />;
-  return <RootLedger today={today} />;
+  /*
+    **첫 화면 원장은 없습니다**(2026-09-28). `/playbook`은 `PlaybookPage`가 기본 제품을
+    골라 넘기므로 여기에는 늘 제품이나 기업이 옵니다. 둘 다 없는 경로는 없습니다.
+  */
+  return vendor ? <VendorLedger vendor={vendor} today={today} /> : null;
 }
