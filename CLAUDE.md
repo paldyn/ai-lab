@@ -846,6 +846,12 @@ share the same engine.」 Codex도 Antigravity도 같다. 표면을 제품으로
 칸의 속성**(`surfaces`)이다. 요금제도 제품이 아니다 — Pro·Max·Plus·Team·Enterprise는
 전부 요금제이고, 「Claude Enterprise」가 제품처럼 읽히지만 요금제 페이지의 칸 이름이다.
 
+**표면 낱말은 한 벌이다** — 웹 · 데스크톱 · 모바일 · 터미널 · IDE · 클라우드 · SDK, 이 차례로
+적는다. `Surface` 타입이 낱말을 묶어 새 말은 `tsc -b`에서 서고, 차례는 `guideProducts.test.ts`가
+본다(2026-09-28). 벤더의 말(「CLI」·「IDE 확장」·「앱」)은 옮기지 않고 한 벌의 낱말로 적되,
+공식 페이지와 대조해 뜻이 다르면 합치지 않는다 — 웹(브라우저에서 여는 자리)과 클라우드(에이전트가
+도는 곳)가 그래서 따로 있다. 옛 말은 검색 별칭(`surfaceAliases`)으로만 남는다.
+
 **모델도 별개 층이 아니다**(2026-09-16에 정했다). 「기업별 제품이 맞나, 기업별
 모델이 맞나, 기업별 제품별 모델이 맞나」를 따지다 정한 자리다. 답은 `Claim.topic`
 여섯에 이미 적혀 있었다 — `tier`·`limit`·`feature`·`habit`은 제품 것이고 `context`는

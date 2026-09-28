@@ -228,4 +228,5 @@ git push "https://x-access-token:${GITHUB_TOKEN}@github.com/paldyn/ai-lab.git" H
 
 **같은 날 제품 목록도 본다.** 벤더가 제품을 새로 내거나 이름을 갈면 `guideProducts.ts`가
 틀려진다 — 그 파일의 이름은 전부 공식 표기 그대로여야 하고, 표면(터미널·IDE·데스크톱)은
-별개 제품이 아니라 그 제품의 `surfaces`다.
+별개 제품이 아니라 그 제품의 `surfaces`다. **표면 낱말은 `Surface` 한 벌에서 고른다** — 벤더가
+「CLI」라 적어도 `터미널`이고, 한 벌에 없는 자리가 새로 생기면 루틴이 낱말을 늘리지 말고 사람에게 넘긴다.
