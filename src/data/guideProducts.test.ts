@@ -29,6 +29,19 @@ describe('AI 가이드 — 기업과 제품', () => {
     expect(clash.map((p) => p.id)).toEqual([]);
   });
 
+  /*
+    **대표 제품은 그 회사 것이어야 합니다.** 옛 기업 주소가 이 제품으로 넘어가므로,
+    남의 회사 제품을 적으면 `/playbook/openai`가 Claude를 열고 레일에서는 OpenAI
+    머리글이 꺼집니다. 없는 id를 적으면 넘김이 없는 주소로 가서 한 번 더 튕깁니다.
+  */
+  it('기업마다 대표 제품이 실재하고 그 회사 것이다', () => {
+    const wrong = guideVendors.filter((v) => {
+      const home = guideProducts.find((p) => p.id === v.homeProductId);
+      return !home || home.vendorId !== v.id;
+    });
+    expect(wrong.map((v) => `${v.id} → ${v.homeProductId}`)).toEqual([]);
+  });
+
   it('id가 kebab이고 겹치지 않는다', () => {
     const ids = [...guideVendorIds, ...guideProducts.map((p) => p.id)];
     expect(ids.filter((id) => !/^[a-z0-9]+(-[a-z0-9]+)*$/.test(id))).toEqual([]);

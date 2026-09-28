@@ -3,121 +3,13 @@ import { Link } from 'react-router';
 import { ClaimRow } from './ClaimRow';
 import { GuideMark } from './GuideMark';
 import { TipRow } from './TipRow';
-import {
-  claimState,
-  claimsForProduct,
-  claimsForVendor,
-  modelCell,
-  shownValue,
-} from '../data/playbook';
-import { playbookClaims } from '../data/playbookClaims';
+import { claimState, claimsForProduct, modelCell } from '../data/playbook';
 import { modelMark, shownModels } from '../data/guideModels';
 import { assetUrl } from '../data/sources';
 import { guideProducts } from '../data/guideProducts';
 import { tipGroupsOf } from '../data/guideTipGroups';
 import { guideVendorById } from '../data/guideVendors';
-import type { Claim, Product, TipAim, VendorInfo } from '../types/playbook';
-
-/**
- * 원장 — 판 아래에서 내용만 갈리는 한 칸.
- *
- * **숨겨야 할 것을 크게 적는 것이 이 구성의 전부입니다.** 노트도 값도 0인데 상세를
- * 3단으로 크게 짜니 자리를 메우려고 「같은 자리, 다른 회사」 같은 것을 넣게 됐고,
- * 그게 채운 티로 읽혔습니다. 지금은 0을 26px 숫자로 맨 위에 적습니다 — 계기판의
- * 관용구라 임시 화면이 아니라 **완성된 화면의 0**으로 읽히고, 차오르면 같은 자리가
- * 그대로 지표가 됩니다.
- *
- * **0과 —를 가릅니다.** 0은 세어서 0이고 —는 센 적이 없다는 뜻입니다
- * (`claimState`의 `checkedAt: null`). 이 서랍이 파는 것이 그 구별 자체라 가장 먼저,
- * 가장 크게 적습니다.
- *
- * **빈 절은 안 세웁니다.** 「아직 없습니다. 이 제품을 어떤 모델과 강도로…」 같은
- * 예고 문단도 안 씁니다 — 원장 줄이 이미 0이라고 적었고 그 위에 다짐을 얹는 것이
- * 바로 억지로 채운 티입니다. 자격증 일정 표에서 값 없는 칸을 열로 안 세우는 규칙과
- * 같은 자리입니다.
- */
-function Stat({
-  label,
-  value,
-  unit,
-  uncounted,
-}: {
-  label: string;
-  value: string;
-  /**
-   * 단위를 수에서 뗍니다. 같은 크기·같은 글꼴로 붙여 두면 26px 숫자가 실제로는
-   * 절반만 숫자이고, 모노가 한글까지 맡아 「일 전」이 폴백 글꼴로 갈립니다.
-   */
-  unit?: string;
-  /** 센 적이 없다(`claimState`의 `checkedAt: null`). 잉크를 한 단 내립니다. */
-  uncounted?: boolean;
-}) {
-  return (
-    <div className={`guide-stat${uncounted ? ' is-uncounted' : ''}`}>
-      <dt>{label}</dt>
-      <dd>
-        {value}
-        {unit && <span className="guide-stat-unit">{unit}</span>}
-      </dd>
-    </div>
-  );
-}
-
-/** 가장 최근에 확인한 나이. 한 번도 안 찍혔으면 `null`입니다. */
-function freshestAge(claimIds: string[], today: string): number | null {
-  const ages = claimIds
-    .map((id) => playbookClaims.find((c) => c.id === id))
-    .filter((c): c is NonNullable<typeof c> => Boolean(c))
-    .map((c) => claimState(c, today).ageDays)
-    .filter((n): n is number => n !== null);
-  return ages.length > 0 ? Math.min(...ages) : null;
-}
-
-/**
- * 요약 띠. **제품 화면에는 안 섭니다** — 거기는 값 줄이 직접 서므로 개수를 또 적으면
- * 같은 말을 두 번 합니다. **기업 화면에만 둡니다**(첫 화면 원장은 2026-09-28에 걷었습니다).
- *
- * 「노트」 칸을 걷어냈습니다(2026-09-17). 이 서랍은 글을 세는 곳이 아니라 값을
- * 모으는 곳이고, 「노트 0편」은 읽는 사람에게 우리 사정이지 답이 아니었습니다.
- *
- * **칸이 셋입니다**(2026-09-28). 그 전에는 「아는 값」에 주장 개수를 통째로 적었는데,
- * 그중 절반 넘게가 팁이고 **팁은 정의상 값이 없습니다**(`value === null`). 이 서랍이
- * 화면에서 「모름」이라 부르는 것까지 「아는 값」으로 세고 있었습니다(서랍 전체로
- * 112 중 62, Anthropic으로 39 중 20).
- *
- * **「아는 값」은 `shownValue`를 지납니다.** 주장 개수가 아니라 오늘 화면에 실제로 설
- * 수 있는 수라, 단가가 유효기간을 넘기면 이 수도 저절로 내려갑니다 — 「만료되면 값이
- * 흐려지는 것이 아니라 사라진다」가 여기에도 걸립니다. 팁은 제 칸을 따로 갖습니다.
- *
- * 셋째 열은 원래 비어 있었습니다. `.guide-stats`가 3열인데 「노트」 칸을 걷으면서 열을
- * 안 줄인 자국이라, 이 손질은 **CSS가 0줄**입니다.
- */
-function StatRow({ claims, today }: { claims: Claim[]; today: string }) {
-  const tips = claims.filter((c) => c.topic === 'habit').length;
-  const known = claims.filter(
-    (c) => c.topic !== 'habit' && shownValue(claimState(c, today)) !== null,
-  ).length;
-  const age = freshestAge(
-    claims.map((c) => c.id),
-    today,
-  );
-  return (
-    <dl className="guide-stats">
-      <Stat label="팁" value={String(tips)} unit="건" />
-      <Stat label="아는 값" value={String(known)} unit="개" />
-      {/*
-        **`—`는 홀로 섭니다.** 단위가 안 붙는 것 자체가 「셀 것이 없다」는 뜻이라,
-        0편·12편·— 셋이 서로 다른 모양이 됩니다.
-      */}
-      <Stat
-        label="마지막 확인"
-        value={age === null ? '—' : String(age)}
-        unit={age === null ? undefined : '일 전'}
-        uncounted={age === null}
-      />
-    </dl>
-  );
-}
+import type { Claim, Product, TipAim } from '../types/playbook';
 
 /**
  * 절 하나. **원장의 절이 처음으로 객체가 됩니다.**
@@ -192,20 +84,14 @@ function Section({
 }
 
 /**
- * 나가는 링크. **제품 화면에서는 접습니다** — 읽는 절이 아니라 찾아가는 줄이고,
- * 닫아 두면 「공식 ─── 3 +」로 첫 화면 안에 들어옵니다(그 전에는 공식 링크가
- * 있다는 사실을 알려면 1,600px을 내려가야 했습니다). 기업·첫 화면에서는 안
- * 접습니다 — 거기 서는 절이 이것 하나라 접으면 화면이 빕니다.
+ * 나가는 링크. **접어 둡니다** — 읽는 절이 아니라 찾아가는 줄이고, 닫아 두면
+ * 「공식 ─── 3 +」로 첫 화면 안에 들어옵니다(그 전에는 공식 링크가 있다는 사실을
+ * 알려면 1,600px을 내려가야 했습니다). 펼친 채로 두던 기업·첫 화면은 2026-09-28에
+ * 둘 다 걷었습니다.
  */
-function OfficialLinks({
-  rows,
-  fold,
-}: {
-  rows: Array<{ label: string; url: string }>;
-  fold?: boolean;
-}) {
+function OfficialLinks({ rows }: { rows: Array<{ label: string; url: string }> }) {
   return (
-    <Section kind={fold ? 'ask' : 'read'} label="공식" fold={fold ? rows.length : undefined}>
+    <Section kind="ask" label="공식" fold={rows.length}>
       <ul className="guide-links">
         {rows.map((row) => (
           <li key={row.url}>
@@ -811,7 +697,7 @@ function ProductLedger({ product, today }: { product: Product; today: string }) 
         </Section>
       )}
 
-      <OfficialLinks rows={links} fold />
+      <OfficialLinks rows={links} />
 
       {/* 같은 갈래를 맡은 다른 회사. **절이 아니라 한 줄입니다** — 견주는 축은 레일이 보여 줍니다. */}
       {peers.length > 0 && (
@@ -830,38 +716,11 @@ function ProductLedger({ product, today }: { product: Product; today: string }) 
   );
 }
 
-/** 기업 하나를 골랐을 때. */
-function VendorLedger({ vendor, today }: { vendor: VendorInfo; today: string }) {
-  const products = guideProducts.filter((p) => p.vendorId === vendor.id);
-  // 회사 자신 + 제품 전부 + 모델 전부. 한 모델을 제품 둘이 돌려도 한 번만 셉니다.
-  const claims = claimsForVendor(vendor.id);
-
-  return (
-    <div className="guide-ledger">
-      <h2 className="guide-ledger-title">{vendor.name}</h2>
-      <p className="guide-ledger-meta">제품 {products.length}</p>
-      <p className="guide-ledger-blurb">{vendor.blurb}</p>
-
-      <StatRow claims={claims} today={today} />
-
-      <OfficialLinks rows={[{ label: '회사', url: vendor.officialUrl }]} />
-    </div>
-  );
-}
-
-export function GuideLedger({
-  product,
-  vendor,
-  today,
-}: {
-  product?: Product;
-  vendor?: VendorInfo;
-  today: string;
-}) {
-  if (product) return <ProductLedger product={product} today={today} />;
-  /*
-    **첫 화면 원장은 없습니다**(2026-09-28). `/playbook`은 `PlaybookPage`가 기본 제품을
-    골라 넘기므로 여기에는 늘 제품이나 기업이 옵니다. 둘 다 없는 경로는 없습니다.
-  */
-  return vendor ? <VendorLedger vendor={vendor} today={today} /> : null;
+/**
+ * **원장에는 늘 제품이 옵니다**(2026-09-28). 첫 화면 원장도 기업 원장도 걷었습니다 —
+ * 둘 다 이 서랍이 파는 것(팁·값) 대신 요약만 서 있는 빈 화면이었고, `/playbook`과
+ * 기업 주소는 `PlaybookPage`가 제품 하나로 풀어서 넘깁니다.
+ */
+export function GuideLedger({ product, today }: { product: Product; today: string }) {
+  return <ProductLedger product={product} today={today} />;
 }

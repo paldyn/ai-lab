@@ -6,7 +6,6 @@ import { mathTracks } from './data/curriculum';
 import { pythonNotes } from './data/mirror';
 import { newsViewIds } from './data/news';
 import { guideProducts } from './data/guideProducts';
-import { guideVendorIds } from './data/guideVendors';
 
 /** 정적으로 존재하는 페이지. 리다이렉트 전용 경로는 포함하지 않습니다. */
 export const staticRoutes: string[] = [
@@ -32,9 +31,12 @@ export const staticRoutes: string[] = [
   '/learn/certs',
   ...certs.map((cert) => `/learn/certs/${cert.id}`),
   '/research',
-  // AI 가이드. 왼쪽 레일에서 고르고 오른쪽에 그 제품의 팁과 값이 섭니다.
+  /*
+    AI 가이드. 왼쪽 레일에서 고르고 오른쪽에 그 제품의 팁과 값이 섭니다.
+    **기업 주소(`/playbook/<기업>`)는 없습니다**(2026-09-28) — 기업 화면을 걷고 그
+    주소는 대표 제품으로 넘기기만 합니다. 학습의 옛 묶음 주소와 같은 자리입니다.
+  */
   '/playbook',
-  ...guideVendorIds.map((id) => `/playbook/${id}`),
   ...guideProducts.map((p) => `/playbook/${p.vendorId}/${p.id}`),
   '/privacy',
 ];
@@ -48,8 +50,9 @@ export const prerenderRoutes: string[] = [
   // 옮겨 온 글. 원문이 techblog에 있어도 이 주소로 들어오는 사람이 있으므로 HTML을 미리 냅니다.
   ...pythonNotes.map((note) => note.path),
   /*
-    **가이드는 여기에 더할 것이 없습니다.** 주소 열둘이 전부 `staticRoutes`에
-    있습니다 — 2026-09-17에 노트 개념을 걷어내면서 그 아래 한 층이 사라졌습니다.
+    **가이드는 여기에 더할 것이 없습니다.** 주소 열(첫 주소 하나 + 제품 아홉)이 전부
+    `staticRoutes`에 있습니다 — 2026-09-17에 노트 개념을 걷어내면서 그 아래 한 층이
+    사라졌고, 2026-09-28에 기업 주소 셋을 넘김으로 돌렸습니다.
   */
 ];
 

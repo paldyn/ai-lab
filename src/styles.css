@@ -7667,12 +7667,10 @@ input:focus-visible {
 
 .guide-ledger-headline .guide-ledger-meta {
   flex-shrink: 0;
-  margin-top: 0;
   white-space: nowrap;
 }
 
 .guide-ledger-meta {
-  margin-top: var(--gs-r1);
   color: var(--text-muted);
   font-family: var(--font-mono);
   font-size: var(--gs-mono);
@@ -7686,83 +7684,6 @@ input:focus-visible {
   font-size: var(--gs-lead);
   line-height: 1.75;
   text-wrap: pretty;
-}
-
-/*
-  원장 줄. **숨겨야 할 것을 26px 숫자로 적는 것이 이 구성의 전부다.**
-  0을 화면 구석에 두면 구멍이고 맨 위에 크게 두면 공표한 사실이다.
-
-  띠가 1120px을 가로지르는데 안에 든 것이 191px이었다 — **83%가 빈 구간.**
-  1fr 셋으로 나누면 면도 색도 안 쓰고 격자만으로 띠가 채워진다.
-
-  **수가 위, 라벨이 아래다.** 집의 계기판(`.page-header-stats`)이 이미 그 모양인데
-  이 서랍만 뒤집혀 있어 같은 관용구가 두 규격이었다. 마크업은 dt → dd 순서 그대로
-  두고 `column-reverse`로 돌린다 — `<dl>`의 뜻을 안 깨려는 것이다.
-*/
-.guide-stats {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  margin-top: var(--gs-r3);
-  border-top: 1px solid var(--guide-rule);
-  border-bottom: 1px solid var(--guide-rule);
-  padding-block: var(--gs-r3);
-}
-
-.guide-stat {
-  display: flex;
-  flex-direction: column-reverse;
-  align-items: flex-start;
-  gap: var(--gs-r1);
-}
-
-/*
-  수 바로 아래 라벨은 **sans**다. 집이 `.page-header-stats dt`에서 그렇게 하고
-  있고, 라벨과 수가 형제로 붙어 설 때 둘 다 모노면 모노가 두 벌이 된다.
-  모노 라벨은 제목 자리에 설 때만 쓴다(`.guide-ledger-label`).
-*/
-.guide-stat dt {
-  color: var(--text-muted);
-  font-size: var(--gs-label);
-}
-
-/*
-  **수와 단위를 갈라 조판한다.** 단위가 같은 크기·같은 글꼴이면 26px 숫자가 실제로는
-  절반만 숫자다. 떼어 내야 모노가 라틴 숫자만 맡아 `tabular-nums`가 실제로 걸리고,
-  「일 전」이 모노 폴백으로 갈리는 일도 없어진다.
-*/
-.guide-stat dd {
-  display: flex;
-  align-items: baseline;
-  gap: 3px;
-  margin: 0;
-  color: var(--text-strong);
-  font-family: var(--font-mono);
-  font-size: var(--gs-big);
-  font-weight: 400;
-  line-height: 1;
-  letter-spacing: -0.02em;
-  /*
-    이 화면의 주인공이 0이다. 받아 온 서브셋에 `slashed-zero`가 없으면 조용히
-    기본 0으로 떨어지는데, JetBrains Mono의 기본 0에는 이미 점이 박혀 있어
-    「세어서 0」이라는 뜻은 어느 쪽이든 남는다.
-  */
-  font-variant-numeric: tabular-nums slashed-zero;
-}
-
-.guide-stat-unit {
-  color: var(--text-muted);
-  font-family: 'Wanted Sans Variable', 'Wanted Sans', system-ui, sans-serif;
-  font-size: var(--gs-label);
-  letter-spacing: 0;
-}
-
-/*
-  **`—`는 값이 아니라 값이 없다는 표시다.** 값이 선 칸보다 한 단 흐리게 둔다 —
-  흐려지는 것이 숫자가 아니므로 「만료된 값은 흐려지지 않고 사라진다」와 안 부딪힌다.
-  구별을 글자(`0` 대 `—`)와 잉크 두 겹으로 말한다. 점도 트랙도 안 더한다.
-*/
-.guide-stat.is-uncounted dd {
-  color: var(--text-muted);
 }
 
 /*
@@ -7830,7 +7751,6 @@ input:focus-visible {
   **끝나는 자리가 둘**이었다.
 */
 .guide-ledger-head,
-.guide-stats,
 .guide-models,
 .guide-links,
 .claim-list {
@@ -9212,10 +9132,9 @@ a.guide-model-price:hover {
 /*
   **원장 직계 자식이 끝나는 자리를 둘로 되돌린다.** 캡이 없어 혼자 847px까지
   나가던 셋 중 마지막이다(절 머리글과 표면은 위에서 절 안으로 들어갔다).
+  함께 묶여 있던 기업 화면의 제목·메타는 그 화면과 함께 걷었다(2026-09-28).
 */
-.guide-ledger-peers,
-.guide-ledger > .guide-ledger-title,
-.guide-ledger > .guide-ledger-meta {
+.guide-ledger-peers {
   max-width: var(--gs-block);
 }
 

@@ -5,7 +5,7 @@ import { PageHeader } from '../components/PageHeader';
 import { Seo } from '../components/Seo';
 import { todayInSeoul } from '../data/playbook';
 import { guideProductById } from '../data/guideProducts';
-import { guideVendorById } from '../data/guideVendors';
+import { guideHomeProductId, guideVendorById } from '../data/guideVendors';
 
 /**
  * AI 가이드의 첫 화면 — **왼쪽에서 고르고 오른쪽에서 읽는 2단.**
@@ -30,34 +30,32 @@ import { guideVendorById } from '../data/guideVendors';
  * 돌려 봤지만 「너무 별로」였고, 결론은 **첫 화면을 따로 세우지 말고 제품 하나를 연 채로
  * 시작한다**였습니다. 이 서랍이 파는 것(팁·값)은 전부 제품 화면에 있습니다.
  *
- * **Claude Code인 이유.** 「Anthropic이 기본」이라는 결정에서 Anthropic의 어느 화면인지를
- * 골라야 했습니다. 기업 화면은 제목·제품 수·한 줄 소개·수 셋·공식 링크 하나로 360px에
- * 링크 1개라 지운 첫 화면과 같은 종류로 비어 있고, 레일 첫 줄인 Claude(챗)는 팁이 1건
- * 뿐입니다. Claude Code는 팁 13 · 값 15 · 모델 4로 가장 두껍고 이 서랍의 설명
- * 「코딩 에이전트를 어떤 모델과 강도로…」와 맞습니다.
+ * **기업 화면도 같은 이유로 걷었습니다**(같은 날). 제목·「제품 3」·한 줄 소개·수 셋·
+ * 공식 링크 하나로 360px에 링크 1개라, 지운 첫 화면과 같은 종류의 빈 요약이었습니다.
+ * 어느 제품을 여는지는 기업 데이터의 `homeProductId`가 들고 있고, `/playbook`은 레일
+ * 첫 회사(Anthropic)의 그 값 — Claude Code입니다.
  *
- * **리다이렉트가 아니라 그 자리에서 그립니다.** `/playbook`은 nav가 가리키고 사이트맵·
- * 프리렌더에 든 주소라, `<Navigate>`로 바꾸면 검색엔진이 받는 HTML이 빈 껍데기가 됩니다
- * (`/about` 같은 옛 주소는 프리렌더 목록 밖이라 괜찮은 것입니다). 같은 내용이 두 주소에
- * 서는 것은 canonical이 제품 주소를 가리켜 해결합니다.
+ * **`/playbook`은 그 자리에서 그리고, 기업 주소는 넘깁니다.** 둘이 다른 것은 프리렌더
+ * 목록 안이냐 밖이냐입니다. `/playbook`은 nav가 가리키고 사이트맵·프리렌더에 든 주소라
+ * `<Navigate>`로 바꾸면 검색엔진이 받는 HTML이 빈 껍데기가 됩니다 — 같은 내용이 두
+ * 주소에 서는 것은 canonical이 제품 주소를 가리켜 풉니다. 기업 주소는 이제 사이트
+ * 어디서도 안 가리키므로 목록에서 뺐고, 학습의 옛 묶음 주소처럼 넘기기만 합니다.
  */
-const HOME_PRODUCT_ID = 'claude-code';
-
 export function PlaybookPage() {
   const { vendorId, productId } = useParams<{ vendorId: string; productId: string }>();
-  const vendor = vendorId ? guideVendorById(vendorId) : guideVendorById('anthropic');
-  const product = productId
-    ? guideProductById(productId)
-    : vendorId
-      ? undefined
-      : guideProductById(HOME_PRODUCT_ID);
 
   // 없는 기업으로 들어오면 첫 화면으로 돌립니다.
+  const vendor = vendorId ? guideVendorById(vendorId) : undefined;
   if (vendorId && !vendor) return <Navigate to="/playbook" replace />;
-  // 기업과 제품이 안 맞는 주소도 돌립니다 — `/playbook/openai/claude` 같은 것.
-  if (productId && (!product || product.vendorId !== vendor?.id)) {
-    return <Navigate to={vendor ? `/playbook/${vendor.id}` : '/playbook'} replace />;
+  /*
+    기업만 적힌 주소와, 기업과 제품이 안 맞는 주소(`/playbook/openai/claude`)는
+    그 회사의 대표 제품으로 넘깁니다.
+  */
+  const picked = productId ? guideProductById(productId) : undefined;
+  if (vendor && (!picked || picked.vendorId !== vendor.id)) {
+    return <Navigate to={`/playbook/${vendor.id}/${vendor.homeProductId}`} replace />;
   }
+  const product = picked ?? guideProductById(guideHomeProductId)!;
 
   /*
     그리는 시점에 오늘을 읽습니다. 모듈이 읽힐 때 정하면 프리렌더된 HTML에 빌드일이
@@ -68,17 +66,13 @@ export function PlaybookPage() {
   return (
     <>
       {/*
-        제품이 골라져 있으면 제목·설명·주소가 그 제품의 것입니다. 화면의 h1은
-        「AI 가이드」 그대로지만, 검색 결과에 서는 것은 제품이어야 합니다.
+        제목·설명·주소는 그 제품의 것입니다. 화면의 h1은 「AI 가이드」 그대로지만,
+        검색 결과에 서는 것은 제품이어야 합니다.
       */}
       <Seo
-        title={product ? `${product.name} · AI 가이드` : `${vendor!.name} · AI 가이드`}
-        description={
-          product ? `${product.name} — ${product.oneLine}` : `${vendor!.name} — ${vendor!.blurb}`
-        }
-        path={
-          product ? `/playbook/${product.vendorId}/${product.id}` : `/playbook/${vendor!.id}`
-        }
+        title={`${product.name} · AI 가이드`}
+        description={`${product.name} — ${product.oneLine}`}
+        path={`/playbook/${product.vendorId}/${product.id}`}
       />
       <PageHeader
         kicker="PALDYN GUIDE"
@@ -89,7 +83,7 @@ export function PlaybookPage() {
       {/* `guide-page`가 이 서랍의 조판 상수(--gs-*·--guide-col)를 거는 자리입니다. */}
       <div className="site-wrap section-space guide-page guide-layout">
         <div className="guide-rail-col">
-          <GuideRail selectedId={product?.id} vendorId={vendor?.id} />
+          <GuideRail selectedId={product.id} vendorId={product.vendorId} />
         </div>
 
         {/*
@@ -99,12 +93,7 @@ export function PlaybookPage() {
           절반이 스타일이 아니라 이 재조정이었습니다.
         */}
         <div className="guide-pane">
-          <GuideLedger
-            key={product?.id ?? vendor?.id}
-            product={product}
-            vendor={vendor}
-            today={today}
-          />
+          <GuideLedger key={product.id} product={product} today={today} />
         </div>
       </div>
     </>

@@ -1,5 +1,4 @@
 import type { CheckEntry, Claim, ClaimState, Freshness, Volatility } from '../types/playbook';
-import { guideModels } from './guideModels';
 import { guideProducts, guideProductById } from './guideProducts';
 import { guideVendors } from './guideVendors';
 import { playbookClaims } from './playbookClaims';
@@ -160,8 +159,8 @@ const isSubject = (claim: Claim, kind: Claim['subject']['kind'], id: string) =>
  *
  * **기업 값도 끌어옵니다**(2026-09-17에 바꿨습니다). 처음에는 「회사 값 하나가 제품
  * 셋에 세 번 세어져 집계가 부푼다」는 이유로 뺐는데, 그 걱정이 약했습니다 —
- * 이 함수를 쓰는 곳은 전부 **제품 하나짜리 화면**이고, 여러 제품을 합치는
- * `claimsForVendor`는 이미 id로 겹침을 없앱니다.
+ * 이 함수를 쓰는 곳은 전부 **제품 하나짜리 화면**입니다. 여러 제품을 합쳐 세던
+ * 기업 화면은 2026-09-28에 걷었습니다.
  *
  * 반대로 안 끌어오면 **거짓말이 됩니다.** 구독은 제품 하나가 아니라 회사 것을 사는
  * 일이라 Claude Pro 하나가 챗·Cowork·Claude Code 셋에 다 걸리는데, 제품에만
@@ -175,34 +174,6 @@ export function claimsForProduct(productId: string): Claim[] {
       isSubject(c, 'product', productId) ||
       (product && isSubject(c, 'vendor', product.vendorId)) ||
       (c.subject.kind === 'model' && models.includes(c.subject.id)),
-  );
-}
-
-/**
- * 그 기업 화면에 서는 값 — 회사 자신 + 제품 전부 + 모델 전부.
- *
- * **id로 겹침을 없앱니다.** 한 모델을 제품 둘이 함께 돌리면 `claimsForProduct`를
- * 이어 붙이는 것만으로는 같은 주장이 두 번 세어집니다.
- */
-export function claimsForVendor(vendorId: string): Claim[] {
-  const products = guideProducts.filter((p) => p.vendorId === vendorId);
-  const productIds = products.map((p) => p.id);
-  /*
-    **그 회사가 만든 모델 + 그 회사 제품이 돌리는 모델**입니다. 둘이 다릅니다 —
-    Google Antigravity의 선택기에 Claude 둘과 GPT-OSS가 서므로, 만든 회사로만
-    모으면 Google 화면이 제 제품에 실제로 서는 값을 빠뜨립니다.
-  */
-  const modelIds = [
-    ...new Set([
-      ...guideModels.filter((m) => m.vendorId === vendorId).map((m) => m.id),
-      ...products.flatMap((p) => p.models),
-    ]),
-  ];
-  return playbookClaims.filter(
-    (c) =>
-      isSubject(c, 'vendor', vendorId) ||
-      (c.subject.kind === 'product' && productIds.includes(c.subject.id)) ||
-      (c.subject.kind === 'model' && modelIds.includes(c.subject.id)),
   );
 }
 

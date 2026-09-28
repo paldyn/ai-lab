@@ -1,7 +1,8 @@
 import { claimsForProduct } from './data/playbook';
 import { guideProducts } from './data/guideProducts';
 import { shownModels } from './data/guideModels';
-import { guideVendorIds } from './data/guideVendors';
+import { guideVendors } from './data/guideVendors';
+import { prerenderRoutes } from './routes';
 import { describe, expect, it } from 'vitest';
 import { certPrepNotes } from './data/certPrep';
 import { pythonNotes } from './data/mirror';
@@ -69,36 +70,35 @@ describe('프리렌더 — 본문이 HTML에 들어간다', () => {
   });
 
   /*
-    **원장은 열셋 주소에서 한 번도 안 빕니다.** 아무것도 안 골랐을 때도, 기업만
-    골랐을 때도 그 자리에 무엇인가가 섭니다 — 빈 칸을 보여 주지 않으려고 세 갈래로
-    나눠 둔 것이 실제로 다 그려지는지 봅니다.
+    **원장은 가이드의 열 주소에서 한 번도 안 빕니다.** 첫 주소도 제품 아홉도 전부
+    제품 화면을 그리므로, **절이 실제로 섰는지**를 봅니다 — 제목 하나만 찾으면 제품
+    화면이 통째로 비어도 통과합니다.
 
-    **화면 종류마다 다른 것을 잽니다**(2026-09-17). 전에는 열셋 전부에서 요약 띠
-    (`guide-stats`)를 찾았는데, 제품 화면에서 그 띠를 걷어냈습니다 — 거기는 값 줄이
-    직접 서므로 개수를 또 적으면 같은 말을 두 번 합니다. 그래서 띠는 **항목을 안
-    그리는 자리**(첫 화면·기업)에서만 찾고, 제품 화면에서는 **절이 실제로 섰는지**를
-    봅니다. 한 줄로 뭉뚱그리면 제품 화면이 통째로 비어도 통과합니다.
+    그 전에는 첫 화면·기업 화면에서 요약 띠(`guide-stats`)를 따로 찾았는데, 두 화면을
+    2026-09-28에 걷었습니다(첫 주소는 기본 제품을 그리고, 기업 주소는 넘깁니다).
   */
   it('원장이 어느 주소에서도 안 빈다', async () => {
-    /*
-      **`/playbook`은 제품 화면 쪽에서 잽니다**(2026-09-28). 첫 화면 원장을 걷고 그 주소가
-      기본 제품(Claude Code)을 그대로 그리게 됐으므로, 요약 띠가 아니라 절이 서는지를 봅니다.
-    */
-    const summary = guideVendorIds.map((id) => `/playbook/${id}`);
-    const detail = ['/playbook', ...guideProducts.map((p) => `/playbook/${p.vendorId}/${p.id}`)];
+    const routes = ['/playbook', ...guideProducts.map((p) => `/playbook/${p.vendorId}/${p.id}`)];
     const empty: string[] = [];
 
-    for (const route of summary) {
-      const { html } = await render(route);
-      if (!html.includes('guide-ledger-title') || !html.includes('guide-stats')) empty.push(route);
-    }
-    for (const route of detail) {
+    for (const route of routes) {
       const { html } = await render(route);
       if (!html.includes('guide-ledger-title') || !html.includes('guide-ledger-label')) {
         empty.push(route);
       }
     }
     expect(empty).toEqual([]);
+  });
+
+  /*
+    **기업은 갈 곳이 아닙니다**(2026-09-28). 기업 화면은 360px에 링크 1개인 빈 요약이라
+    걷었고, 옛 주소는 대표 제품으로 넘기기만 합니다. 프리렌더 목록에 되살아나면 그
+    주소가 사이트맵에 올라 빈 껍데기(넘김) HTML이 색인되므로 여기서 막습니다 — 학습의
+    옛 묶음 주소를 `learnGroups.test.ts`가 막는 것과 같은 자리입니다.
+  */
+  it('기업 주소는 프리렌더하지 않는다', () => {
+    const vendorOnly = guideVendors.map((v) => `/playbook/${v.id}`);
+    expect(prerenderRoutes.filter((route) => vendorOnly.includes(route))).toEqual([]);
   });
 
   /*
@@ -198,15 +198,16 @@ describe('프리렌더 — 본문이 HTML에 들어간다', () => {
     나가는지**도 봅니다(`<Navigate>`로 바꾸면 빈 껍데기가 나갑니다).
   */
   it('가이드 첫 주소가 기본 제품을 그리고 그 제품 주소를 canonical로 건다', async () => {
-    const home = guideProducts.find((p) => p.id === 'claude-code')!;
+    const home = guideProducts.find((p) => p.id === guideVendors[0].homeProductId)!;
     const { html, head } = await render('/playbook');
     expect(html).toContain('guide-ledger-title');
     expect(html).toContain(home.name);
     expect(html).toContain('guide-tip-group');
     expect(head).toContain(`/playbook/${home.vendorId}/${home.id}"`);
-    /* 걷어낸 첫 화면의 흔적이 되살아나면 빨갛게. */
+    /* 걷어낸 첫 화면·기업 화면의 흔적이 되살아나면 빨갛게. */
     expect(html).not.toContain('체감');
     expect(html).not.toContain('위 판');
     expect(html).not.toContain('guide-rail-note');
+    expect(html).not.toContain('guide-stats');
   });
 });
