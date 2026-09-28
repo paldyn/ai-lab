@@ -7234,7 +7234,7 @@ input:focus-visible {
   AI 가이드 — **왼쪽 레일에서 고르고 오른쪽 원장에서 읽는다.**
 
   레일(`.guide-rail-*`)과 원장(`.gl-*`)은 **조판 상수를 따로 쓴다.** 레일은 좁은 고르는
-  자리라 10~13.5px 단(`--gs-*`)이 맞고, 원장은 제품 하나를 다룬 짧은 글이라 12~26px 단
+  자리라 10~13.5px 단(`--gs-*`)이 맞고, 원장은 제품 하나를 다룬 짧은 글이라 12~34px 단
   (`--gl-*`)이 맞다. 2026-09-28에 원장을 전면 개편하면서 갈랐다 — 한 벌을 둘이 나눠
   쓰던 동안 원장 최상위 절 이름이 레일 라벨과 같은 10px 모노로 서 있었고, 그래서 이
   서랍에서 가장 큰 층이 가장 작은 글자였다.
@@ -7257,32 +7257,37 @@ input:focus-visible {
 }
 
 /*
-  원장의 조판 상수. **이 단 밖의 값을 안 쓴다.**
+  원장의 조판 상수. **글자 크기는 이 단 밖의 값을 안 쓴다.**
 
-  크기 넷 — 12 · 14.5 · 16 · 26. 제품 이름(h2)만 1.6rem → 2rem을 쓴다 — 배너의
-  「AI 가이드」(h1)보다 한 단 작다. **원장 안에는 12px 아래 글자가 없다** — 옛 원장의 10px
-  모노 라벨이 「흐리고 가늘다」의 절반이었다. 그리고 **한글이 드는 자리에는 모노를
-  안 쓴다** — 모노는 코드·키·표의 수에만 선다.
+  크기 아홉 — 12 · 13.5 · 14.5 · 16 · 17 · 19 · 22 · 26 · 34. 타임라인 원장(2026-09-28)에서
+  단이 늘었다 — 순간 이름(19)이 팁 문장(17)보다 크고, 모델 수(22)와 가격·제품 이름(34)이
+  크게 선다. **원장 안에는 12px 아래 글자가 없다** — 옛 원장의 10px 모노 라벨이 「흐리고
+  가늘다」의 절반이었다. 그리고 **한글이 드는 자리에는 모노를 안 쓴다** — 모노는 코드·키·
+  수에만 선다(가격의 「부터」는 본문 글꼴로 뗀다).
 */
 .guide-pane {
-  --gl-meta: 12px; /* 출처·나이·표 머리 */
-  --gl-note: 14.5px; /* 이유·순간 라벨·값 이름 */
-  --gl-body: 16px; /* 팁 문장·모델 이름·소개 */
-  --gl-head: 26px; /* 절 이름(h2) */
+  --gl-meta: 12px; /* 출처·나이·꼬리표 */
+  --gl-label: 13.5px; /* 열 이름·칸 이름·칩·축 머리 */
+  --gl-note: 14.5px; /* 이유·쓰임 */
+  --gl-body: 16px; /* 다른 제품·좁은 화면의 팁 문장 */
+  --gl-lead: 17px; /* 팁 문장·모델 이름·요금제 이름·소개 */
+  --gl-stop: 19px; /* 순간 이름·절 이름 */
+  --gl-num: 22px; /* 모델 수 */
+  --gl-head: 26px; /* 좁은 화면의 다른 제품 절 */
+  --gl-display: 34px; /* 제품 이름·가격 */
 
-  --gl-r1: 6px; /* 한 덩이 안 — 팁의 세 줄 사이 */
+  --gl-r1: 6px; /* 한 덩이 안 — 행동과 이유 사이 */
   --gl-r2: 12px; /* 이름 → 그 내용 */
-  --gl-r3: 24px; /* 탭 줄 → 내용 · 캡션 위 */
-  --gl-r4: 48px; /* 순간 → 순간 */
+  --gl-r3: 24px; /* 머리 → 탭 줄 · 탭 줄 → 내용 */
   --gl-sect: 72px; /* 절 → 절. 집의 `.section-space`와 같은 값이다 */
 
-  /*
-    글줄 하나. 16px 팁 문장이 한 줄에 45자 안팎이다. 표와 목록도 같은 폭에서 끝나
-    오른쪽 끝이 한 세로줄에 선다 — 옛 원장은 592·736·847 세 자리에서 끝나 계단이 졌다.
-  */
+  /* 글줄 하나. 줄기 칸(70)을 빼면 팁 문장이 한 줄에 40자 안팎이다. */
   --gl-measure: 720px;
-  /* 요금표의 구독료 열. 「$99.99부터」가 한 줄에 들고, 사용량 열이 나머지를 쓴다. */
-  --gl-fee: 128px;
+
+  /* 줄기 — x(줄기 가운데) · 마디 지름 · 글이 서는 자리. 좁은 화면에서 13 · 30 · 36이다. */
+  --gl-tl-x: 28px;
+  --gl-tl-node: 44px;
+  --gl-tl-indent: 70px;
 }
 
 /* ── 2단 ────────────────────────────────────────────────────── */
@@ -7494,19 +7499,52 @@ input:focus-visible {
 /* ── 원장 ───────────────────────────────────────────────────── */
 
 /*
-  원장 — **제품 하나를 다룬 짧은 가이드**(2026-09-28 전면 개편).
+  원장 — **제품 하나를 타임라인으로 읽는 한 칸**(2026-09-28, 일곱 번째 원장).
 
-  옛 원장은 데이터 분류표였다. 팁 문장이 `<details>` 두 겹 아래라 첫 화면에 한 줄도
-  없었고, 보이는 것은 10px 모노 라벨·괘선·「2 +」 같은 여닫이 장치였다. 지금은
-  **접히는 것이 하나도 없고**, 행동 → 이유 → 출처가 굵기·크기·색으로 갈린다.
+  헤어라인 목록 원장은 읽히기는 했지만 「별론데, 좀 더 색다르게」였다. 방향 넷(타임라인 ·
+  카드 · 체크리스트 · 에디토리얼)을 목업으로 그려 보였고 고른 것이 **타임라인, 요금만 카드**다.
 
-  **면을 안 칠한다.** 원장 안 `--surface`는 0이다. 괘선은 탭 줄 아래 · 구역 머리 옆 ·
-  팁 행 사이 · 표의 줄 사이 · 다른 제품 줄 사이뿐이다. 코드 판·키캡은 면이 아니라 글자에
-  붙은 표지다.
+  **색은 제품색 하나다**(`--guide-accent`, 원장 태그에 인라인으로 걸린다). 옅은 면
+  (`--gl-a04`~`--gl-a35`)은 전부 그 색을 배경에 섞은 것이라 테마를 따라 저절로 옅어진다 —
+  다크에서만 몇 단 더 섞는다(검정 위에서는 같은 비율이 묻힌다). 새 색은 없다.
 */
 .gl-ledger {
+  --gl-a04: color-mix(in srgb, var(--guide-accent) 4%, var(--bg));
+  --gl-a07: color-mix(in srgb, var(--guide-accent) 7%, var(--bg));
+  --gl-a12: color-mix(in srgb, var(--guide-accent) 12%, var(--bg));
+  --gl-a14: color-mix(in srgb, var(--guide-accent) 14%, var(--bg));
+  --gl-a22: color-mix(in srgb, var(--guide-accent) 22%, var(--bg));
+  --gl-a35: color-mix(in srgb, var(--guide-accent) 35%, var(--bg));
+  /* 카드·칩의 테두리 — 헤어라인에 제품색을 조금 섞는다. */
+  --gl-edge: color-mix(in srgb, var(--guide-accent) 16%, var(--guide-rule));
+  /* 줄기 — 아직 안 지난 칸, 마디 테두리, 수 칸의 점선 */
+  --gl-track: color-mix(in srgb, var(--guide-accent) 30%, var(--bg));
+  --gl-node-edge: color-mix(in srgb, var(--guide-accent) 55%, var(--bg));
+  --gl-num-line: color-mix(in srgb, var(--guide-accent) 60%, var(--bg));
+  /* 요금 카드 */
+  --gl-card: var(--bg);
+  --gl-card-shadow:
+    0 1px 2px rgb(0 0 0 / 5%),
+    0 6px 18px -10px color-mix(in srgb, var(--guide-accent) 45%, rgb(0 0 0 / 35%));
+  /*
+    탭 줄 높이 — 순간 머리가 그 아래에 붙는다. 기본값은 잰 값이고(데스크톱 75, 좁은 화면 90)
+    `useTimeline`이 글꼴·줄바꿈만큼 다시 재서 넣는다. JS 전(프리렌더 HTML)에도 머리가 탭 줄
+    밑에 걸리지 않게 하려는 기본값이다.
+  */
+  --gl-tabs-h: 75px;
+
   max-width: var(--gl-measure);
   animation: gl-ledger-in 120ms ease;
+}
+
+[data-theme='dark'] .gl-ledger {
+  --gl-a07: color-mix(in srgb, var(--guide-accent) 10%, var(--bg));
+  --gl-a12: color-mix(in srgb, var(--guide-accent) 17%, var(--bg));
+  --gl-track: color-mix(in srgb, var(--guide-accent) 50%, var(--bg));
+  --gl-node-edge: color-mix(in srgb, var(--guide-accent) 75%, var(--bg));
+  --gl-num-line: color-mix(in srgb, var(--guide-accent) 85%, var(--bg));
+  --gl-card: color-mix(in srgb, var(--guide-accent) 6%, var(--surface));
+  --gl-card-shadow: inset 0 1px 0 rgb(255 255 255 / 5%);
 }
 
 @keyframes gl-ledger-in {
@@ -7518,25 +7556,45 @@ input:focus-visible {
 /* ── 머리 ── */
 
 /*
-  제품 이름. 페이지의 h1은 위 서랍 배너의 「AI 가이드」라 이것은 h2이고, 배너 제목
-  (1.9~2.5rem/600)보다 한 단 작게 선다. 마크는 **첫 줄 가운데**에 붙는다 — 두 줄로
-  감기는 이름에서 마크가 두 줄 사이로 내려가면 이름이 둘로 쪼개져 보인다.
+  **제품 머리는 제품색이 옅게 밴 카드다.** 왼쪽 위에서 제품색이 번지고, 오른쪽 아래에
+  제품 마크가 크게 흐리게 깔린다. 이 화면이 어느 제품의 것인지를 글보다 먼저 말한다.
+*/
+.gl-head {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  padding: 28px 28px 26px;
+  border: 1px solid var(--gl-edge);
+  border-radius: 22px;
+  background:
+    radial-gradient(120% 140% at 0% 0%, var(--gl-a14) 0%, transparent 55%),
+    var(--gl-a04);
+}
+
+.gl-head-ghost {
+  position: absolute;
+  z-index: -1;
+  right: -34px;
+  bottom: -58px;
+  width: 250px;
+  height: 250px;
+  opacity: 0.07;
+}
+
+/*
+  제품 이름. 페이지의 h1은 서랍 배너의 「AI 가이드」라 이것은 h2다. 마크는 제품색 타일
+  위에 배경색으로 선다 — 「공식 사이트」 단추와 같은 짝(제품색 면 + 배경색 글자)이라
+  대비가 같다.
 */
 .gl-title {
   display: flex;
-  align-items: flex-start;
-  gap: var(--gl-r2);
+  align-items: center;
+  gap: 14px;
   color: var(--text-strong);
-  font-size: 1.6rem;
-  font-weight: 500;
-  line-height: 1.35;
-  letter-spacing: -0.01em;
-}
-
-@media (min-width: 640px) {
-  .gl-title {
-    font-size: 2rem;
-  }
+  font-size: var(--gl-display);
+  font-weight: 800;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
 }
 
 /* 제품을 바꾼 뒤 포커스만 받는 자리다(`tabIndex={-1}`). 누를 수 있는 것처럼 테를 두르지 않는다. */
@@ -7544,204 +7602,1152 @@ input:focus-visible {
   outline: none;
 }
 
-.gl-title .gl-mark {
-  width: 28px;
-  height: 28px;
-  margin-top: calc((1.35em - 28px) / 2);
+.gl-tile {
+  display: grid;
+  flex: 0 0 auto;
+  width: 52px;
+  height: 52px;
+  place-items: center;
+  border-radius: 15px;
+  background: var(--guide-accent);
+  box-shadow: 0 6px 18px -8px var(--guide-accent);
+}
+
+/* 여러 색이 든 마크는 제품색 판 위에서 색끼리 부딪힌다 — 흰 판에 제품색 테두리로 둔다. */
+.gl-tile.is-plain {
+  background: var(--bg);
+  box-shadow: inset 0 0 0 1.5px var(--gl-a35);
+}
+
+.gl-tile .gl-mark {
+  width: 30px;
+  height: 30px;
 }
 
 .gl-dek {
-  margin-top: var(--gl-r2);
-  max-width: 38rem;
-  color: var(--text-dim);
-  font-size: var(--gl-body);
-  font-weight: 300;
-  line-height: 1.9;
-  text-wrap: pretty;
+  max-width: 34em;
+  margin-top: 14px;
+  color: var(--prose-text);
+  font-size: var(--gl-lead);
+  line-height: 1.6;
 }
 
+/* 쓸 수 있는 곳 — 표면마다 칩 하나. */
 .gl-facts {
-  display: grid;
-  grid-template-columns: 6.5rem minmax(0, 1fr);
-  gap: var(--gl-r2);
-  align-items: baseline;
-  margin: var(--gl-r3) 0 0;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+  margin-top: 18px;
 }
 
 .gl-facts dt {
-  color: var(--text-muted);
-  font-size: var(--gl-meta);
+  margin-right: 4px;
+  color: var(--text-dim);
+  font-size: var(--gl-label);
 }
 
 .gl-facts dd {
   margin: 0;
+  padding: 6px 11px;
+  border: 1px solid var(--gl-edge);
+  border-radius: 999px;
+  background: var(--bg);
   color: var(--text);
-  font-size: var(--gl-note);
+  font-size: var(--gl-label);
+  line-height: 1;
 }
 
 .gl-head-links {
   display: flex;
   flex-wrap: wrap;
-  align-items: center;
   gap: 8px;
-  margin-top: var(--gl-r3);
+  margin-top: 20px;
 }
 
-/* 나가는 단추. 누르면 새 창이 열리는 곳이라 화살표가 오른쪽 위를 가리킨다. */
+/*
+  **공식 사이트는 제품색 알약이다.** 글자는 `--bg` — 제품색이 `-text` 토큰이라 두 테마
+  모두 4.5:1을 넘는다(`theme.test.ts`). 둘째 단추(`docsLabel`)는 같은 색의 옅은 테두리다.
+*/
 .gl-head-link {
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  height: 36px;
-  padding: 0 14px;
-  border: 1px solid var(--border);
-  border-radius: 6px;
-  color: var(--text);
-  font-size: var(--gl-note);
-  text-decoration: none;
-  transition:
-    border-color 150ms ease,
-    color 150ms ease;
-}
-
-.gl-head-link svg {
-  color: var(--text-muted);
-  transition: color 150ms ease;
-}
-
-.gl-head-link:hover,
-.gl-head-link:hover svg {
-  border-color: var(--text-muted);
+  min-height: 44px;
+  padding: 0 18px;
+  border: 1px solid color-mix(in srgb, var(--guide-accent) 42%, transparent);
+  border-radius: 999px;
+  background: var(--bg);
   color: var(--guide-accent);
-}
-
-/*
-  **공식 사이트는 제품 브랜드색으로 채운다**(2026-09-28). 무채색 테두리 단추가 화면에서
-  가장 조용한 것이라 첫 행동이 안 보였다. 글자는 `--bg`다 — 브랜드색은 `-text` 토큰이라
-  `--bg`와의 대비가 라이트·다크 모두 4.5:1을 넘고(`theme.test.ts`가 잰다), 채운 면 위의
-  글자도 그 대비를 그대로 받는다. 새 색을 만들지 않는다.
-*/
-.gl-head-link.is-primary {
-  border-color: var(--guide-accent);
-  background: var(--guide-accent);
-  color: var(--bg);
-  font-weight: 500;
+  font-size: var(--gl-note);
+  font-weight: 600;
+  text-decoration: none;
   transition:
     background-color 150ms ease,
     border-color 150ms ease;
 }
 
-.gl-head-link.is-primary svg,
-.gl-head-link.is-primary:hover svg {
+.gl-head-link svg {
   color: currentColor;
+}
+
+.gl-head-link:hover {
+  border-color: var(--guide-accent);
+  background: var(--gl-a07);
+}
+
+.gl-head-link.is-primary {
+  border-color: var(--guide-accent);
+  background: var(--guide-accent);
+  color: var(--bg);
 }
 
 .gl-head-link.is-primary:hover {
   border-color: color-mix(in srgb, var(--guide-accent) 86%, var(--text-strong));
   background: color-mix(in srgb, var(--guide-accent) 86%, var(--text-strong));
-  color: var(--bg);
 }
 
-/* 둘째 단추는 같은 색의 옅은 테두리다 — 레일 칩 줄의 「자격증」 단추(`.section-tabs-aside`)와 같은 말씨. */
-.gl-head-link:not(.is-primary) {
-  border-color: color-mix(in srgb, var(--guide-accent) 42%, transparent);
-  background: color-mix(in srgb, var(--guide-accent) 7%, transparent);
-  color: var(--guide-accent);
-}
-
-.gl-head-link:not(.is-primary) svg {
-  color: currentColor;
-}
-
-.gl-head-link:not(.is-primary):hover {
-  border-color: var(--guide-accent);
-  background: color-mix(in srgb, var(--guide-accent) 14%, transparent);
-  color: var(--guide-accent);
-}
-
-/* ── 탭 ── */
+/* ── 탭 — 세 칸 세그먼트 ── */
 
 /*
-  **탭은 사이트의 칩 모양이다**(`.filter-chip`과 같은 말씨: 알약 테두리, 고르면 반전).
-  뉴스·학습이 밑줄 탭 띠를 세웠다가 되돌린 사이트라 여기서도 안 쓴다. 원장 안에서는
-  12px 아래 글자를 안 쓰므로 칩보다 한 단 크게 선다.
+  **탭은 세 칸 세그먼트이고, 고른 칸이 제품색으로 찬다.** 칸마다 아이콘과 수가 선다.
 
-  **머리 아래에 붙어 따라온다**(`.section-tabs`와 같은 71px · 반투명 · 흐림). 팁이 열셋인
-  탭을 읽다가 옆 탭으로 가려고 맨 위까지 되감지 않게 하려는 것이다. 붙기 전의 원래 자리는
-  바로 위 표지(`.gl-tabs-anchor`)가 들고 있어, 붙은 채로 탭을 바꾸면 새 탭 첫머리로 옮긴다.
+  탭 줄은 머리(71px) 아래에 붙어 따라오고 **불투명하다** — 밑으로 들어간 줄기와 마디가
+  비치면 줄기가 두 벌로 보인다. 붙은 자리를 알리는 것은 아래 헤어라인 하나다. 원래
+  자리는 바로 위 표지(`.gl-tabs-anchor`)가 들고 있어, 붙은 채로 탭을 바꾸면 새 탭 첫머리로
+  옮긴다.
 */
 .gl-tabs-anchor {
-  margin-top: var(--gl-r4);
+  height: 0;
+  /*
+    **여백은 표지가 든다** — 빈 블록의 여백이 겹쳐 표지의 윗변이 곧 탭 줄의 원래 윗변이 된다.
+    탭 줄에 여백을 주면 표지가 24px 위에 서서, 붙은 채로 탭을 바꿀 때 줄이 24px 내려앉으며
+    풀렸다.
+  */
+  margin-top: var(--gl-r3);
 }
 
 .gl-tabs {
   position: sticky;
   top: 71px;
   z-index: 20;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  padding-block: var(--gl-r2);
+  padding-block: 10px;
   border-bottom: 1px solid var(--guide-rule);
-  background: var(--header-bg);
-  backdrop-filter: blur(16px);
+  background: var(--bg);
+}
+
+.gl-tabs-seg {
+  display: grid;
+  grid-template-columns: repeat(var(--gl-tab-n, 3), minmax(0, 1fr));
+  gap: 4px;
+  padding: 5px;
+  border-radius: 18px;
+  background: var(--surface);
 }
 
 .gl-tab {
-  display: inline-flex;
+  display: flex;
   align-items: center;
-  gap: 7px;
-  height: 36px;
-  padding: 0 15px;
-  border: 1px solid var(--border);
-  border-radius: 999px;
-  background: var(--bg);
+  justify-content: center;
+  gap: 8px;
+  min-height: 44px;
+  padding: 0 10px;
+  border: 0;
+  border-radius: 14px;
+  background: transparent;
   color: var(--text-dim);
   font: inherit;
   font-size: var(--gl-note);
-  font-weight: 500;
+  font-weight: 600;
+  line-height: 1.2;
   white-space: nowrap;
   cursor: pointer;
   transition:
-    border-color 140ms ease,
-    color 140ms ease,
-    background-color 140ms ease;
+    background-color 180ms ease,
+    color 180ms ease;
 }
 
 .gl-tab:hover {
-  border-color: var(--text-muted);
-  color: var(--text);
+  color: var(--text-strong);
 }
 
 .gl-tab.is-on {
-  border-color: var(--text-strong);
-  background: var(--text-strong);
+  background: var(--guide-accent);
   color: var(--bg);
+  box-shadow: 0 8px 20px -12px var(--guide-accent);
 }
 
 .gl-tab:focus-visible {
-  outline: 2px solid var(--brand);
+  border-radius: 14px;
+  outline: 2px solid var(--guide-accent);
   outline-offset: 2px;
 }
 
-/* 세어서 나오는 수. 숫자라 모노이고 한 단 흐리다. */
+/* 전역 포커스 테(모서리 2px)가 알약·틀의 모서리를 덮지 않게 제 모서리를 되돌린다. */
+.gl-head-link:focus-visible {
+  border-radius: 999px;
+}
+
+.gl-pc-empty:focus-visible {
+  border-radius: 12px;
+}
+
+.gl-panel:focus-visible {
+  border-radius: 12px;
+  outline: 2px solid var(--text-muted);
+  outline-offset: 4px;
+}
+
+/* 세어서 나오는 수. 숫자라 모노다. */
 .gl-tab-count {
+  display: inline-grid;
+  min-width: 24px;
+  height: 22px;
+  padding: 0 6px;
+  place-items: center;
+  border-radius: 999px;
+  background: var(--guide-rule);
+  color: var(--text);
   font-family: var(--font-mono);
-  font-size: 0.85em;
-  font-weight: 400;
-  opacity: 0.66;
+  font-size: var(--gl-meta);
+  font-weight: 500;
+}
+
+.gl-tab.is-on .gl-tab-count {
+  background: var(--bg);
+  color: var(--guide-accent);
 }
 
 .gl-panel {
   padding-top: var(--gl-r3);
+  padding-bottom: 40px;
 }
 
-/* 탭 안 첫머리는 위 여백을 탭 줄 아래 24px 하나로 받는다. */
-.gl-panel > :first-child {
-  margin-top: 0;
+/* ── 줄기 ── */
+
+/*
+  **팁 탭은 줄기 하나에 순간 마디가 차례로 서는 타임라인이다.** 순간 넷은 나란한 넷이 아니라
+  차례라(사용량 절감은 세션이 지나는 시간, 품질 향상은 고치는 값이 커지는 순서) 그 차례를
+  줄기와 마디로 그린다. 팁은 상자 없이 줄기에서 뻗은 가지 끝에 매달린다.
+
+  줄기의 x · 마디 지름 · 글이 서는 자리가 `--gl-tl-*` 셋이다. 줄기(`.gl-tl-track`) 위에
+  찬 줄기(`.gl-tl-fill`)가 겹쳐 읽는 자리까지 자란다(`useTimeline`).
+*/
+.gl-tl {
+  position: relative;
+  padding-left: var(--gl-tl-indent);
 }
 
-/* ── 절 ── */
+.gl-stops,
+.gl-tips,
+.gl-rows,
+.gl-pcs {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.gl-tl-track,
+.gl-tl-fill {
+  position: absolute;
+  z-index: 0;
+  left: calc(var(--gl-tl-x) - 1.5px);
+  width: 3px;
+  border-radius: 3px;
+}
+
+.gl-tl-track {
+  top: 12px;
+  bottom: 8px;
+  background: var(--gl-track);
+}
+
+.gl-tl-fill {
+  top: 12px;
+  /*
+    **처음부터 첫 마디까지 찬다**(줄기 머리 24 + 12 + 순간 머리 64의 반 − 줄기 윗변 12).
+    프리렌더 HTML에서 첫 마디는 켜진 채 나가는데 줄기가 비어 있으면 둘이 어긋났다.
+    자라는 전환은 첫 측정 뒤에만 건다(`is-ready`) — 안 그러면 불러올 때마다 0에서 자랐다.
+  */
+  height: 56px;
+  background: var(--guide-accent);
+}
+
+.gl-tl.is-ready .gl-tl-fill {
+  transition: height 140ms linear;
+}
+
+/* 줄기 머리 — 이 축이 무엇을 따라 흐르나(`tipAxes`). */
+.gl-tl-axis {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 24px;
+  margin-bottom: var(--gl-r2);
+  color: var(--guide-accent);
+  font-size: var(--gl-label);
+  font-weight: 650;
+}
+
+.gl-tl-axis::before {
+  content: '';
+  position: absolute;
+  z-index: 1;
+  top: 50%;
+  left: calc(var(--gl-tl-x) - var(--gl-tl-indent) - 7px);
+  width: 14px;
+  height: 14px;
+  margin-top: -7px;
+  border-radius: 50%;
+  background: var(--guide-accent);
+  box-shadow: 0 0 0 4px var(--bg);
+}
+
+/* 줄기 끝 — 다 읽으면 찬다. */
+.gl-tl-end {
+  position: relative;
+  height: 16px;
+}
+
+.gl-tl-end::before {
+  content: '';
+  position: absolute;
+  z-index: 1;
+  bottom: 0;
+  left: calc(var(--gl-tl-x) - var(--gl-tl-indent) - 6px);
+  width: 12px;
+  height: 12px;
+  border: 2px solid var(--gl-node-edge);
+  border-radius: 2px;
+  background: var(--bg);
+  transform: rotate(45deg);
+}
+
+.gl-tl.is-done .gl-tl-end::before {
+  border-color: var(--guide-accent);
+  background: var(--guide-accent);
+}
+
+/* ── 순간 ── */
+
+.gl-stop {
+  position: relative;
+  margin-bottom: 22px;
+}
+
+/*
+  **순간 머리는 탭 줄 바로 아래에 붙어 따라온다.** 마디가 그 머리 안에 있어 읽는 동안 지금
+  어느 순간인지가 늘 보인다.
+*/
+.gl-stop-head {
+  position: sticky;
+  top: calc(71px + var(--gl-tabs-h));
+  z-index: 5;
+  margin-left: calc(-1 * var(--gl-tl-indent));
+  padding: 8px 0 8px var(--gl-tl-indent);
+  background: var(--bg);
+}
+
+.gl-stop-head::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: calc(var(--gl-tl-x) - 1.5px);
+  width: 3px;
+  background: var(--gl-track);
+  transition: background-color 200ms;
+}
+
+.gl-stop.is-reached .gl-stop-head::before {
+  background: var(--guide-accent);
+}
+
+.gl-ref .gl-stop-head::before {
+  top: 50%;
+}
+
+/*
+  붙은 머리 아래 — 밑으로 들어가는 글과 가지가 칼로 자른 듯 끊기지 않게 짧게 흐린다. 줄기는
+  그 위로 그대로 이어 그린다(흐림에 줄기가 끊겨 보이지 않게).
+*/
+.gl-stop-head::after {
+  --gl-stem: var(--guide-accent);
+  content: '';
+  position: absolute;
+  top: 100%;
+  right: 0;
+  left: 0;
+  height: 18px;
+  background:
+    linear-gradient(
+      90deg,
+      transparent calc(var(--gl-tl-x) - 1.5px),
+      var(--gl-stem) 0 calc(var(--gl-tl-x) + 1.5px),
+      transparent 0
+    ),
+    linear-gradient(var(--bg) 30%, transparent);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 150ms;
+}
+
+.gl-ref .gl-stop-head::after {
+  --gl-stem: var(--gl-track);
+}
+
+/* 요금 카드는 줄기에 안 매달린다 — 절 머리 마디에서 줄기가 끝난다. */
+.gl-ref.is-plans .gl-stop-head::before {
+  display: none;
+}
+
+.gl-ref.is-plans .gl-stop-head::after {
+  --gl-stem: transparent;
+}
+
+.gl-stop.is-stuck .gl-stop-head::after {
+  opacity: 1;
+}
+
+.gl-stop-node {
+  position: absolute;
+  z-index: 1;
+  top: 50%;
+  left: calc(var(--gl-tl-x) - var(--gl-tl-node) / 2);
+  display: grid;
+  width: var(--gl-tl-node);
+  height: var(--gl-tl-node);
+  margin-top: calc(var(--gl-tl-node) / -2);
+  place-items: center;
+  border: 2px solid var(--gl-node-edge);
+  border-radius: 50%;
+  background: var(--bg);
+  color: var(--guide-accent);
+  transition:
+    background-color 250ms,
+    color 250ms,
+    border-color 250ms,
+    box-shadow 250ms;
+}
+
+.gl-stop.is-reached .gl-stop-node {
+  border-color: var(--guide-accent);
+  background: var(--guide-accent);
+  color: var(--bg);
+}
+
+.gl-stop.is-current .gl-stop-node {
+  box-shadow: 0 0 0 6px var(--gl-a22);
+  animation: gl-pop 450ms ease-out 1;
+}
+
+@keyframes gl-pop {
+  0% {
+    transform: scale(0.86);
+  }
+
+  60% {
+    transform: scale(1.08);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
+.gl-stop-band {
+  display: flex;
+  align-items: center;
+  gap: 8px 14px;
+  min-height: 48px;
+  padding: 9px 16px;
+  border-radius: 14px;
+  background: var(--gl-a07);
+  transition:
+    background-color 250ms,
+    box-shadow 250ms;
+}
+
+.gl-stop.is-current .gl-stop-band {
+  background: var(--gl-a12);
+  box-shadow: inset 0 0 0 1px var(--gl-a35);
+}
+
+/*
+  순간 이름. **팁 문장(17)보다 크다** — 헤어라인 목록에서는 라벨이 크면 「라벨 — 팁 하나」가
+  목차처럼 번갈아 서서 작게 뒀지만, 여기서는 띠와 마디가 무리를 거느리는 층이 된다.
+*/
+.gl-situation,
+.gl-facts-sub {
+  flex: 1;
+  color: var(--text-strong);
+  font-size: var(--gl-stop);
+  font-weight: 750;
+  line-height: 1.35;
+  letter-spacing: -0.01em;
+  text-wrap: balance;
+  /* 붙박이 머리 71 + 탭 줄 + 12 — 앵커로 왔을 때 탭 줄 밑에 가리지 않게. */
+  scroll-margin-top: calc(71px + var(--gl-tabs-h) + var(--gl-r2));
+}
+
+.gl-stop-meta {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  /* `--text-dim`이면 OpenAI 라이트의 켜진 띠(12%) 위에서 4.45:1로 AA를 못 넘었다. */
+  color: var(--text);
+  font-size: var(--gl-label);
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+/* 작은 줄기 — 넷 중 몇째인가. */
+.gl-mini {
+  display: flex;
+  align-items: center;
+}
+
+.gl-mini i {
+  position: relative;
+  width: 9px;
+  height: 9px;
+  border: 2px solid var(--gl-node-edge);
+  border-radius: 50%;
+  background: var(--bg);
+}
+
+.gl-mini i + i {
+  margin-left: 9px;
+}
+
+.gl-mini i + i::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  right: 100%;
+  width: 11px;
+  height: 2px;
+  margin: -1px 2px 0 0;
+  background: var(--gl-track);
+}
+
+.gl-mini i.is-on,
+.gl-mini i.is-on::before {
+  border-color: var(--guide-accent);
+  background: var(--guide-accent);
+}
+
+.gl-mini i.is-here {
+  box-shadow: 0 0 0 3px var(--gl-a22);
+}
+
+/* ── 팁 ── */
+
+.gl-tips {
+  margin-top: 4px;
+}
+
+/* 팁 — 가지(`::before`)와 그 끝의 점(`::after`)이 줄기에서 뻗는다. 줄기가 닿으면 켜진다. */
+.gl-tip {
+  position: relative;
+  padding: 12px 0 12px 2px;
+  scroll-margin-top: calc(71px + var(--gl-tabs-h) + 72px);
+}
+
+.gl-tip::before {
+  content: '';
+  position: absolute;
+  z-index: 1;
+  top: 24px;
+  left: calc(var(--gl-tl-x) - var(--gl-tl-indent) + 7px);
+  width: calc(var(--gl-tl-indent) - var(--gl-tl-x) - 18px);
+  height: 2px;
+  border-radius: 2px;
+  background: var(--gl-track);
+  transition: background-color 200ms;
+}
+
+.gl-tip::after {
+  content: '';
+  position: absolute;
+  z-index: 1;
+  top: 19px;
+  left: calc(var(--gl-tl-x) - var(--gl-tl-indent) - 6px);
+  width: 12px;
+  height: 12px;
+  border: 2px solid var(--gl-node-edge);
+  border-radius: 50%;
+  background: var(--bg);
+  transition:
+    background-color 200ms,
+    border-color 200ms;
+}
+
+.gl-tip.is-reached::before {
+  background: var(--guide-accent);
+}
+
+.gl-tip.is-reached::after {
+  border-color: var(--guide-accent);
+  background: var(--guide-accent);
+}
+
+/* 행동 — 굵은 17. Wanted Sans는 무게 대비가 낮아 500으로는 회색 이유에 묻힌다. */
+.gl-tip-do {
+  color: var(--text-strong);
+  font-size: var(--gl-lead);
+  font-weight: 650;
+  line-height: 1.5;
+  text-wrap: pretty;
+}
+
+.gl-tip-why {
+  margin-top: var(--gl-r1);
+  color: var(--text-dim);
+  font-size: var(--gl-note);
+  line-height: 1.7;
+  text-wrap: pretty;
+}
+
+/* 출처는 이유 끝의 꼬리다. 발행처는 굵게, 가운데서 안 끊는다. */
+.gl-tip-src {
+  color: var(--text-dim);
+  font-size: var(--gl-meta);
+  text-decoration: underline;
+  text-decoration-color: color-mix(in srgb, currentColor 45%, transparent);
+  text-underline-offset: 3px;
+}
+
+.gl-tip-src:hover {
+  color: var(--guide-accent);
+  text-decoration-color: currentColor;
+}
+
+.gl-src-pub {
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.gl-tip-src svg {
+  display: inline;
+  margin-left: 2px;
+  vertical-align: -1px;
+}
+
+/*
+  **백틱은 코드 조각으로 그린다**(`withCode`). 크기 0.92em은 둘러싼 Wanted Sans의 x-높이에
+  JetBrains Mono를 맞춘 광학 보정이다(0.4% 차). 모노는 400·500만 받아 오므로 500으로 못 박는다 —
+  600 문장 안에서 물려받으면 가짜 굵기가 선다.
+*/
+.guide-tip-code {
+  font-family: var(--font-mono);
+  font-size: 0.92em;
+  font-weight: 500;
+}
+
+/*
+  **행동 문장의 코드는 제품색 판이다**(판 8%, 테두리 30%, 글자는 제품색). 칠 것이 행동 문장
+  안에서 먼저 눈에 걸린다. 판 위 글자 대비는 `theme.test.ts`가 따로 잰다. 이유 안의 코드는
+  글자꼴만 — 이유 줄에 판이 여럿 서면 얼룩이 된다.
+*/
+.gl-tip-do .guide-tip-code {
+  margin: 0 1px;
+  padding: 0 4px;
+  border-radius: 6px;
+  background: color-mix(in srgb, var(--guide-accent) 8%, var(--bg));
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--guide-accent) 30%, transparent);
+  color: var(--guide-accent);
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+}
+
+/* 괄호에 바로 붙은 코드 — 판이 괄호에서 떨어져 「강도( effort )」로 읽히지 않게 당긴다. */
+.gl-tip-do .guide-tip-code.is-paren {
+  margin: 0 -1px;
+  padding: 0 3px;
+}
+
+.gl-tip-why .guide-tip-code {
+  color: var(--text);
+}
+
+/* 키 조합은 누르는 것이라 `<kbd>` 판으로 선다. 아래 테두리를 두껍게 해 키캡으로 읽힌다. */
+.gl-keys {
+  white-space: nowrap;
+}
+
+.gl-kbd {
+  display: inline-block;
+  padding: 1px 7px;
+  border: 1px solid var(--guide-rule);
+  border-bottom-width: 3px;
+  border-radius: 6px;
+  background: var(--bg);
+  color: var(--text-strong);
+  font-family: var(--font-mono);
+  /* 0.8em은 이유 줄(14.5)에서 11.6px이라 원장의 12px 하한을 밑돈다. */
+  font-size: max(0.8em, 12px);
+  font-weight: 500;
+  line-height: 1.5;
+}
+
+.gl-keys-plus {
+  margin: 0 2px;
+  color: var(--text-dim);
+}
+
+/* ── 참고 탭 — 모델과 요금 ── */
+
+/* 절 둘도 같은 줄기를 쓴다. 차례가 시간이 아니라 목록이라 줄기는 차오르지 않는다. */
+.gl-ref + .gl-ref {
+  margin-top: 30px;
+}
+
+.gl-ref .gl-stop {
+  margin-bottom: 0;
+}
+
+/* 띠가 열 이름을 겸한다 — 띠와 줄이 같은 격자를 쓴다. */
+.gl-cols {
+  display: grid;
+  align-items: center;
+  column-gap: 14px;
+}
+
+.gl-cols.is-model {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+.gl-cols.is-model.has-ctx {
+  grid-template-columns: minmax(0, 1fr) 112px;
+}
+
+.gl-cols.is-model.has-price {
+  grid-template-columns: minmax(0, 1fr) 86px 86px;
+}
+
+.gl-cols.is-model.has-ctx.has-price {
+  grid-template-columns: minmax(0, 1fr) 112px 86px 86px;
+}
+
+.gl-band-label {
+  color: var(--text-dim);
+  font-size: var(--gl-label);
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+/* ── 모델 ── */
+
+.gl-model {
+  position: relative;
+  padding: 14px 16px;
+}
+
+.gl-model + .gl-model {
+  box-shadow: 0 -1px 0 var(--guide-rule);
+}
+
+/*
+  **줄기는 줄마다 한 토막씩 잇는다** — 절 머리 아래에서 마지막 판의 가운데까지. 줄기를
+  절 전체에 한 줄로 그으면 줄 높이가 제각각이라 마지막 판 아래로 꼬리가 들쭉날쭉 남았다.
+*/
+.gl-model::after {
+  content: '';
+  position: absolute;
+  z-index: 0;
+  top: 0;
+  bottom: 0;
+  left: calc(var(--gl-tl-x) - var(--gl-tl-indent) - 1.5px);
+  width: 3px;
+  background: var(--gl-track);
+}
+
+.gl-model:last-child::after {
+  bottom: auto;
+  height: 35px;
+}
+
+/* 가지 — 줄기에서 줄 머리로 */
+.gl-model::before {
+  content: '';
+  position: absolute;
+  z-index: 1;
+  top: 34px;
+  left: calc(var(--gl-tl-x) - var(--gl-tl-indent) + 20px);
+  width: calc(var(--gl-tl-indent) - var(--gl-tl-x) - 20px);
+  height: 2px;
+  background: var(--gl-track);
+}
+
+/*
+  **모델 마크 판이 줄기 위의 마디다.** 40px 판에 24px 마크 — 만든 회사가 모델 카드에 세우는
+  비율(0.6) 그대로다. 제 마크(Anthropic)는 잉크가 2색이라 착색하지 않고 판 색 위에 그대로
+  올린다. 판에 헤어라인을 두른다 — Sonnet의 판(`#F0EEE6`)이 라이트 배경과 거의 같은 색이다.
+*/
+.gl-plate {
+  position: absolute;
+  z-index: 2;
+  top: 15px;
+  left: calc(var(--gl-tl-x) - var(--gl-tl-indent) - 20px);
+  display: grid;
+  width: 40px;
+  height: 40px;
+  place-items: center;
+  border-radius: 11px;
+  background: var(--guide-plate, var(--bg));
+  box-shadow:
+    0 0 0 1px var(--guide-rule),
+    0 0 0 5px var(--bg);
+}
+
+.gl-plate img {
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+}
+
+.gl-plate .guide-model-mark {
+  display: inline-flex;
+  width: 24px;
+  height: 24px;
+}
+
+.gl-plate .guide-model-mark img {
+  width: 100%;
+  height: 100%;
+}
+
+.gl-model-name {
+  color: var(--text-strong);
+  font-size: var(--gl-lead);
+  font-weight: 750;
+  line-height: 1.4;
+}
+
+/*
+  **모델 이름이 링크다.** 밑줄은 늘 보인다 — hover에만 켜면 누를 수 있다는 것이 안 보인다.
+  실선이라 수 칸의 점선과 갈린다.
+*/
+.gl-model-link {
+  color: inherit;
+  text-decoration: underline;
+  text-decoration-color: color-mix(in srgb, currentColor 50%, transparent);
+  text-decoration-thickness: 1.5px;
+  text-underline-offset: 4px;
+}
+
+.gl-model-link svg {
+  display: inline;
+  margin-left: 2px;
+  color: var(--text-muted);
+  vertical-align: -1px;
+}
+
+.gl-model-link:hover,
+.gl-model-link:hover svg {
+  color: var(--guide-accent);
+  text-decoration-color: currentColor;
+}
+
+/*
+  **누르는 면은 의사 요소로 넓힌다**(위아래 10px). 여백으로 넓히면 포커스 테가 그 여백을 따라
+  그려져 아래 줄 글자를 갈랐다. 의사 요소는 테에 안 걸리므로 전역 테(3px 밖)가 글자를 감싼다.
+*/
+.gl-model-link,
+.gl-state,
+.gl-tip-src,
+.gl-num {
+  position: relative;
+}
+
+.gl-model-link::after,
+.gl-state::after,
+.gl-tip-src::after {
+  content: '';
+  position: absolute;
+  inset: -10px 0;
+}
+
+.gl-num::after {
+  content: '';
+  position: absolute;
+  inset: -8px -6px;
+}
+
+.gl-model-vendor {
+  color: var(--text-muted);
+  font-size: var(--gl-meta);
+  font-weight: 400;
+}
+
+/* 만든 회사가 구세대로 부르는데도 남긴 줄의 꼬리표. */
+.gl-tag {
+  display: inline-block;
+  padding: 1px 6px;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  color: var(--text-muted);
+  font-size: var(--gl-meta);
+  font-weight: 400;
+  line-height: 1.4;
+  vertical-align: 0.12em;
+}
+
+/* 쓰임은 글자다 — 그 문장이 실린 페이지로는 위의 이름이 간다. */
+.gl-model-use {
+  margin-top: 4px;
+  color: var(--text-dim);
+  font-size: var(--gl-note);
+  line-height: 1.55;
+  text-wrap: pretty;
+}
+
+.gl-model-meta {
+  margin-top: 4px;
+  color: var(--text-muted);
+  font-size: var(--gl-meta);
+}
+
+.gl-num-cell {
+  align-self: start;
+  padding-top: 1px;
+}
+
+.gl-num-cell.is-span {
+  grid-column: span 2;
+}
+
+/*
+  수 칸. **전부 링크이고 점선 밑줄이 늘 보인다** — 그 수가 실린 페이지로 간다. 점선은
+  제품색을 섞어 줄기와 한 벌로 읽힌다.
+*/
+.gl-num {
+  color: var(--text-strong);
+  font-family: var(--font-mono);
+  font-size: var(--gl-num);
+  font-variant-numeric: tabular-nums;
+  font-weight: 500;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  text-decoration: underline dotted;
+  text-decoration-color: var(--gl-num-line);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 6px;
+  white-space: nowrap;
+}
+
+/* 곧 다시 볼 값. 흐려지는 것은 여기까지다 — 유효기간이 지나면 값이 아예 사라진다. */
+.gl-num.is-soft {
+  color: var(--text-dim);
+}
+
+a.gl-num:hover {
+  color: var(--guide-accent);
+  text-decoration-color: currentColor;
+}
+
+/* 상태 낱말(「확인 전」 등) — 출처로 가는 점선 링크. */
+.gl-state {
+  display: inline-block;
+  color: var(--text);
+  font-size: var(--gl-note);
+  font-weight: 600;
+  line-height: 1.4;
+  text-decoration: underline dotted;
+  text-decoration-color: var(--gl-num-line);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 5px;
+}
+
+.gl-state:hover {
+  color: var(--guide-accent);
+}
+
+.gl-caption {
+  margin: 10px 0 0 calc(var(--gl-tl-indent) + 16px);
+  color: var(--text-dim);
+  font-size: var(--gl-meta);
+}
+
+/* 캡션의 출처 링크 — 누르는 높이를 위아래로 10px씩 넓힌다. */
+.gl-caption a {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  margin-block: -10px;
+  padding-block: 10px;
+  color: var(--text-dim);
+  text-decoration: underline;
+  text-decoration-color: color-mix(in srgb, currentColor 45%, transparent);
+  text-underline-offset: 3px;
+}
+
+.gl-caption a:hover {
+  color: var(--guide-accent);
+  text-decoration-color: currentColor;
+}
+
+/* ── 요금 — 카드 ── */
+
+/*
+  **요금제마다 카드 하나.** 제품색이 옅게 밴 판 위에 카드가 뜬다 — 요금 페이지처럼 큰
+  가격이 먼저 읽히고, 요금제끼리 나란히 서서 견준다. 판은 줄기 오른쪽, 글이 서는 자리에서
+  시작한다.
+*/
+.gl-board {
+  margin-top: 10px;
+  padding: 14px;
+  border-radius: 20px;
+  background: var(--gl-a07);
+}
+
+.gl-pcs {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.gl-pc {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  border-radius: 16px;
+  background: var(--gl-card);
+  box-shadow: var(--gl-card-shadow);
+}
+
+.gl-pc.is-wide {
+  grid-column: 1 / -1;
+  padding-block: 16px;
+}
+
+.gl-pc-name {
+  color: var(--text-strong);
+  font-size: var(--gl-lead);
+  font-weight: 750;
+  line-height: 1.35;
+}
+
+.gl-pc-row {
+  margin-top: 18px;
+}
+
+.gl-pc-label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--text-dim);
+  font-size: var(--gl-label);
+  font-weight: 400;
+  line-height: 1.4;
+}
+
+.gl-pc-label svg {
+  flex: 0 0 auto;
+  color: var(--guide-accent);
+}
+
+/* 구독료 칸은 값이 있든 없든 같은 높이다 — 「확인 전」은 점선 틀로 그 자리를 채운다. */
+.gl-plan.is-fee {
+  display: flex;
+  min-height: 52px;
+  margin-top: 6px;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.gl-pc-fee {
+  display: flex;
+  align-items: baseline;
+  gap: 4px;
+  color: var(--text-strong);
+}
+
+.gl-pc-fee.is-soft {
+  color: var(--text-dim);
+}
+
+/* 수는 크게 모노로, 한글 꼬리(「부터」)는 본문 글꼴로 — 한글에 모노를 안 쓴다. */
+.gl-pc-amount {
+  font-family: var(--font-mono);
+  font-size: var(--gl-display);
+  font-variant-numeric: tabular-nums;
+  font-weight: 500;
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+}
+
+.gl-pc-rest {
+  font-size: var(--gl-body);
+  font-weight: 600;
+}
+
+.gl-pc-empty {
+  display: flex;
+  align-items: center;
+  align-self: stretch;
+  gap: 8px;
+  min-height: 52px;
+  padding: 0 16px;
+  border: 1.5px dashed color-mix(in srgb, var(--text-dim) 45%, transparent);
+  border-radius: 12px;
+  color: var(--text);
+  font-size: var(--gl-note);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.gl-pc-empty span {
+  text-decoration: underline dotted;
+  text-underline-offset: 4px;
+}
+
+.gl-pc-empty svg {
+  color: var(--text-dim);
+}
+
+.gl-pc-empty:hover {
+  border-color: currentColor;
+  color: var(--guide-accent);
+}
+
+.gl-pc-empty:hover svg {
+  color: currentColor;
+}
+
+.gl-pc-usage {
+  margin-top: 4px;
+  color: var(--text-strong);
+  font-size: var(--gl-body);
+  font-weight: 600;
+  line-height: 1.55;
+}
+
+.gl-pc-usage.is-soft {
+  color: var(--text-dim);
+}
+
+.gl-pc.is-wide .gl-plan {
+  margin-top: 4px;
+}
+
+/* 열 이름이 덮어 버린 한정어(「GPT-6 Astra · 5시간당」)와 카드마다 서는 나이. */
+.gl-pc-note,
+.gl-pc-age {
+  display: block;
+  margin-top: 6px;
+  color: var(--text-muted);
+  font-size: var(--gl-meta);
+}
+
+.gl-pc-age {
+  margin-top: auto;
+  padding-top: 14px;
+}
+
+/* ── 절 — 좁은 화면의 다른 제품 ── */
 
 .gl-read {
   margin-top: var(--gl-sect);
@@ -7763,600 +8769,6 @@ input:focus-visible {
   line-height: 1.3;
   letter-spacing: -0.02em;
 }
-
-.gl-situation-block + .gl-situation-block {
-  margin-top: var(--gl-r4);
-}
-
-/*
-  **구역 머리는 제품색 글자에 오른쪽으로 뻗는 괘선이다**(2026-09-28). 순간 라벨과 참고 탭
-  소제목(「고를 수 있는 모델」·「요금제와 사용 한도」)이 이 한 모양을 쓴다 — 레일의 기업
-  머리글(`.guide-rail-vendor`)과 같은 말씨다.
-
-  검정 글자에 아래 선을 달던 동안에는 무리가 바뀌는 선과 팁 행을 가르는 선이 같은 가로
-  괘선이라 둘이 안 갈렸고, 화면에 색이 하나도 없어 「강조나 컬러가 없다」였다. 크기는 팁
-  문장(16)보다 작은 14.5로 둔다 — 헤딩이 팁보다 크면 「라벨 — 팁 하나」가 목차처럼 번갈아
-  선다. 글자색은 `-text` 토큰이라 두 테마 모두 4.5:1을 넘는다(`theme.test.ts`).
-
-  `scroll-margin-top`은 붙박이 머리(71) + 붙박이 탭 줄(61) + 12다.
-*/
-.gl-situation,
-.gl-facts-sub {
-  display: flex;
-  align-items: center;
-  gap: var(--gl-r2);
-  margin-bottom: var(--gl-r1);
-  color: var(--guide-accent);
-  font-size: var(--gl-note);
-  font-weight: 600;
-  line-height: 1.5;
-}
-
-.gl-situation::after,
-.gl-facts-sub::after {
-  content: '';
-  flex: 1 1 auto;
-  height: 1px;
-  background: color-mix(in srgb, var(--guide-accent) 35%, transparent);
-}
-
-.gl-situation {
-  scroll-margin-top: calc(71px + 61px + var(--gl-r2));
-}
-
-.gl-facts-sub {
-  margin-top: var(--gl-r4);
-}
-
-/* 강제 색 모드에서는 배경으로 그린 괘선이 사라지므로 글자색으로 칠한다. */
-@media (forced-colors: active) {
-  .gl-situation::after,
-  .gl-facts-sub::after {
-    background: CanvasText;
-    forced-color-adjust: none;
-  }
-}
-
-/* ── 팁 ── */
-
-/*
-  **팁 한 편이 한 행이고, 행 사이는 헤어라인이다**(2026-09-28). 학습 목록(`.article-row`)·
-  뉴스(`.news-feed-row`)·자격증(`.cert-row`)과 같은 모양이다. 전에는 팁 사이를 24px 여백만이
-  갈랐는데 팁 안 간격과 1.5배밖에 안 벌어져 글 벽으로 읽혔다. 선은 `--guide-rule`이다 —
-  `--border`는 다크에서 1.21:1이라 안 보인다.
-*/
-.gl-tips {
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-
-.gl-tip {
-  padding-block: var(--gl-r2);
-  scroll-margin-top: calc(71px + 61px + var(--gl-r2));
-}
-
-.gl-tip + .gl-tip {
-  border-top: 1px solid var(--guide-rule);
-}
-
-/* 라벨 없는 탭은 탭 줄 아래 24px에서 바로 시작한다. */
-.gl-panel > .gl-tips > .gl-tip:first-child {
-  padding-top: 0;
-}
-
-/*
-  행 안의 위계: 행동 > 이유 > 출처 꼬리. **행동은 600이다**(2026-09-28). Wanted Sans
-  Variable은 무게 대비가 낮아 500과 400이 거의 안 갈리고, 그래서 행동 한 줄이 두세 줄짜리
-  회색 이유 덩어리에 묻혔다. 600이라야 세로로 훑을 때 행동만 짚인다.
-*/
-.gl-tip-do {
-  color: var(--text-strong);
-  font-size: var(--gl-body);
-  font-weight: 600;
-  line-height: 1.6;
-}
-
-/* `--prose-text`에서 `--text-dim`으로 내렸다 — 두 테마 모두 AA(5.74 / 7.37:1)다. */
-.gl-tip-why {
-  margin-top: var(--gl-r1);
-  color: var(--text-dim);
-  font-size: var(--gl-note);
-  line-height: 1.7;
-}
-
-/*
-  **출처는 이유 끝에 붙는 꼬리다.** 제 줄을 없애 팁마다 한 줄이 줄고, 밑줄 줄무늬가
-  사라진다. 인라인이라 긴 라벨도 좁은 화면에서 넘치지 않고 감기며, 발행처는 가운데서
-  안 끊긴다(`.gl-src-pub`). 누르는 면은 위아래로 넓힌다(줄 높이는 그대로다).
-*/
-.gl-tip-src {
-  margin-left: var(--gl-r1);
-  padding-block: 10px;
-  color: var(--text-muted);
-  font-size: var(--gl-meta);
-  text-decoration: underline;
-  text-decoration-color: var(--guide-rule);
-  text-underline-offset: 3px;
-}
-
-/* 원장 안 링크의 hover 잉크는 제품색이다 — 한 화면에 색상이 하나다(Google 화면에서 주황이 튀었다). */
-.gl-tip-src:hover {
-  color: var(--guide-accent);
-  text-decoration-color: currentColor;
-}
-
-.gl-src-pub {
-  white-space: nowrap;
-}
-
-.gl-tip-src svg {
-  display: inline;
-  margin-left: 2px;
-  vertical-align: -1px;
-}
-
-@media print {
-  .gl-tip {
-    break-inside: avoid;
-  }
-}
-
-/*
-  캡션의 출처 링크 — 흐린 글자에 밑줄, 새 창 화살표. 밑줄은 팁 꼬리와 같은
-  `--guide-rule`이다. 누르는 높이를 위아래로 10px씩 넓힌다.
-*/
-.gl-caption a {
-  display: inline-flex;
-  align-items: center;
-  gap: 2px;
-  padding-block: 10px;
-  margin-block: -10px;
-  color: var(--text-muted);
-  text-decoration: underline;
-  text-decoration-color: var(--guide-rule);
-  text-underline-offset: 3px;
-}
-
-.gl-caption a:hover {
-  color: var(--guide-accent);
-  text-decoration-color: currentColor;
-}
-
-/*
-  **백틱은 코드 조각으로 그린다**(`withCode`). 옅은 판을 깔아 문장 안에서 명령어가
-  먼저 눈에 걸린다 — 「`/clear`를 먼저 친다」에서 칠 것이 무엇인지가 한눈에 보인다.
-
-  **크기는 0.92em이다 — 단이 아니라 광학 보정이다.** 둘러싼 Wanted Sans의 x-높이에
-  JetBrains Mono를 맞춘 비율이라(0.4% 차) px이 아니라 `em`으로 적는다. 1em으로
-  「정리」하면 코드가 제 문장보다 9% 커 보인다.
-*/
-.guide-tip-code {
-  padding: 0.06em 0.2em;
-  border-radius: 3px;
-  background: var(--bg-subtle);
-  font-family: var(--font-mono);
-  font-size: 0.92em;
-}
-
-/*
-  **행동 문장의 코드는 제품색 판, 이유 안의 코드는 글자꼴만.** 이유 줄에 판이 여럿
-  서면 얼룩이 된다. 크기 0.92em(광학 보정)은 둘 다 그대로다.
-
-  **판은 제품색 8%, 테두리 30%, 글자는 제품색이다**(2026-09-28). 칠 것(명령어·파일)이
-  행동 문장 안에서 먼저 눈에 걸린다 — 그날 팁 예순셋 중 스물여섯의 행동 문장에 코드가 있었다.
-  판 위 글자 대비는 두 테마 모두 4.5:1을 넘고 `theme.test.ts`가 잰다(라이트 Anthropic이
-  가장 낮다). 코드는 500으로 못 박는다 — 행동 문장이 600인데 JetBrains Mono는 400·500만
-  받아 와서, 물려받으면 브라우저가 가짜 굵기를 합성한다.
-*/
-.gl-tip-do .guide-tip-code {
-  border: 1px solid color-mix(in srgb, var(--guide-accent) 30%, transparent);
-  padding: 0.06em 0.25em;
-  background: color-mix(in srgb, var(--guide-accent) 8%, var(--bg));
-  color: var(--guide-accent);
-  font-weight: 500;
-  box-decoration-break: clone;
-  -webkit-box-decoration-break: clone;
-}
-
-.gl-tip-do .gl-kbd {
-  font-weight: 500;
-}
-
-.gl-tip-why .guide-tip-code {
-  padding: 0;
-  background: none;
-  color: inherit;
-}
-
-/* 키캡 모양은 이유 안에서도 둔다 — 치는 것과 누르는 것의 구별은 거기서도 필요하다. */
-.gl-tip-why .gl-kbd {
-  color: inherit;
-}
-
-/* 키 조합은 누르는 것이라 `<kbd>` 판으로 선다. 아래 테두리를 두껍게 해 키캡으로 읽힌다. */
-.gl-keys {
-  white-space: nowrap;
-}
-
-.gl-kbd {
-  display: inline-block;
-  padding: 0 5px;
-  border: 1px solid var(--guide-rule);
-  border-bottom-width: 2px;
-  border-radius: 4px;
-  background: var(--bg-subtle);
-  color: var(--text);
-  font-family: var(--font-mono);
-  /* 0.8em은 이유 줄(14.5)에서 11.6px이라 원장의 12px 하한을 밑돌았다. */
-  font-size: max(0.8em, 12px);
-  line-height: 1.55;
-  vertical-align: 0.06em;
-}
-
-.gl-keys-plus {
-  margin: 0 2px;
-  color: var(--text-muted);
-  font-size: 0.85em;
-}
-
-/* ── 참고 절 — 모델과 요금 ── */
-
-.gl-models {
-  margin: var(--gl-r2) 0 0;
-  padding: 0;
-  list-style: none;
-}
-
-/*
-  **표다 — 열 이름이 단위를 지고 수는 한 세로줄에 선다.**
-  **열은 그 제품의 데이터가 세운다** — 한 줄도 주장이 없는 열은 아예 안 선다.
-*/
-.gl-models li {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr);
-  column-gap: 16px;
-  align-items: baseline;
-  padding-block: 14px;
-  border-bottom: 1px solid var(--guide-rule);
-  font-size: var(--gl-body);
-}
-
-.gl-models.has-ctx li {
-  grid-template-columns: minmax(0, 1fr) 112px;
-}
-
-.gl-models.has-price li {
-  grid-template-columns: minmax(0, 1fr) 88px 88px;
-}
-
-.gl-models.has-ctx.has-price li {
-  grid-template-columns: minmax(0, 1fr) 112px 88px 88px;
-}
-
-/* 머리 행이 안 서는 표(수 열이 하나도 없는 Gemini 앱)도 윗변을 갖는다. */
-.gl-models > li:first-child:not(.gl-models-head) {
-  border-top: 1px solid var(--guide-rule);
-}
-
-.gl-models li.gl-models-head {
-  padding-block: 0 8px;
-  color: var(--text-muted);
-  font-size: var(--gl-meta);
-}
-
-.gl-models-head .is-num {
-  text-align: right;
-}
-
-.gl-model-name {
-  display: flex;
-  align-items: center;
-  min-width: 0;
-  color: var(--text-strong);
-  font-weight: 500;
-  line-height: 1.5;
-}
-
-.gl-model-vendor {
-  margin-left: 4px;
-  color: var(--text-muted);
-  font-size: var(--gl-meta);
-  font-weight: 400;
-}
-
-/* 만든 회사가 구세대로 부르는데도 남긴 줄의 꼬리표. */
-.gl-tag {
-  display: inline-block;
-  margin-left: 4px;
-  padding: 1px 6px;
-  border: 1px solid var(--border);
-  border-radius: 3px;
-  color: var(--text-muted);
-  font-size: var(--gl-meta);
-  font-weight: 400;
-  line-height: 1.4;
-  vertical-align: 0.12em;
-}
-
-/*
-  수 칸. **전부 링크이고 밑줄이 늘 보인다** — 그 수가 실린 페이지로 간다. 점선이라
-  문장 링크보다 조용하다. 0.92em은 옆 이름의 x-높이에 맞춘 광학 보정이다.
-*/
-.gl-num {
-  color: var(--text);
-  font-family: var(--font-mono);
-  font-size: 0.92em;
-  font-variant-numeric: tabular-nums;
-  text-align: right;
-  text-decoration: underline dotted;
-  text-decoration-color: var(--text-muted);
-  text-underline-offset: 4px;
-  white-space: nowrap;
-}
-
-a.gl-num:hover {
-  color: var(--guide-accent);
-  text-decoration-color: currentColor;
-}
-
-/* 곧 다시 볼 값. 흐려지는 것은 여기까지다 — 유효기간이 지나면 값이 아예 사라진다. */
-.gl-num.is-soft {
-  color: var(--text-dim);
-}
-
-.gl-num.is-note {
-  color: var(--text-dim);
-  font-family: inherit;
-  font-size: var(--gl-meta);
-}
-
-.gl-num.is-span {
-  grid-column: span 2;
-}
-
-.gl-model-sub {
-  display: flex;
-  flex-wrap: wrap;
-  grid-column: 1 / -1;
-  align-items: baseline;
-  justify-content: space-between;
-  gap: 4px 16px;
-  margin-top: 4px;
-  /* 마크 24 + 10. 이름과 쓰임이 한 세로줄에 선다. */
-  padding-left: 34px;
-}
-
-/*
-  **모델 이름이 링크다**(2026-09-28). 쓰임 문장이 링크이던 동안에는 줄에서 가장 진한 밑줄이
-  둘째 줄에 서 있었고, 「모델을 누르면 어디로 가나」가 안 보였다. 밑줄은 늘 보인다 — 옆 수
-  칸의 점선과 같은 이유다(hover에만 켜면 누를 수 있다는 것이 안 보인다). 실선이라 수 칸의
-  점선과 갈린다. 인라인이라 누르는 높이를 위아래로 넓혀도 줄 높이는 그대로다.
-*/
-.gl-model-link {
-  padding-block: 10px;
-  color: inherit;
-  text-decoration: underline;
-  text-decoration-color: var(--text-muted);
-  text-decoration-thickness: 1px;
-  text-underline-offset: 4px;
-}
-
-.gl-model-link svg {
-  display: inline;
-  margin-left: 2px;
-  color: var(--text-muted);
-  vertical-align: 0;
-}
-
-/* 넓힌 누르는 면(위아래 10px)을 따라 포커스 테가 그려지면 아래 쓰임 줄을 가른다 — 글자 쪽으로 당긴다. */
-.gl-model-link:focus-visible,
-.gl-plan-state:focus-visible {
-  outline-offset: -8px;
-}
-
-.gl-model-link:hover,
-.gl-model-link:hover svg {
-  color: var(--guide-accent);
-  text-decoration-color: currentColor;
-}
-
-/* 쓰임은 글자다 — 그 문장이 실린 페이지로는 위의 이름이 간다. */
-.gl-model-use {
-  color: var(--text-dim);
-  font-size: var(--gl-note);
-}
-
-.gl-model-meta {
-  margin-left: auto;
-  color: var(--text-muted);
-  font-size: var(--gl-meta);
-  text-align: right;
-}
-
-.gl-caption {
-  margin-top: var(--gl-r2);
-  color: var(--text-muted);
-  font-size: var(--gl-meta);
-}
-
-/*
-  모델 줄머리 마크 — 자리는 24px 하나이고 안에 드는 것이 둘이다. 그 모델 제 마크
-  (Anthropic의 판 위 손그림)이거나 계열 마크다.
-
-  **24px인 것은 제 마크가 그 아래에서 안 읽히기 때문이다.** 손그림이라 획이 가늘다.
-  만든 회사도 40px 판에 24px로 세우므로 그 비율(0.6)을 그대로 써서 판 24px에 15px로
-  올린다. 계열 마크는 판이 없으므로 잉크 크기를 맞춰 20px로 선다.
-*/
-.guide-model-mark {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 24px;
-  height: 24px;
-  flex: 0 0 auto;
-  margin-right: 10px;
-}
-
-.guide-model-mark:not(.is-plate) img {
-  width: 20px;
-  height: 20px;
-  object-fit: contain;
-}
-
-/*
-  **제 마크는 판 위에 원본 색 그대로 선다.** 잉크가 밝은 부분과 어두운 부분 둘이라
-  착색하면 덩어리가 된다. **헤어라인을 두른다** — Sonnet의 판(`#F0EEE6`)이 라이트
-  배경과 거의 같은 색이라 선이 없으면 그 줄만 판이 사라진다. 판은 테마를 안 탄다.
-*/
-.guide-model-mark.is-plate {
-  border-radius: 5px;
-  background: var(--guide-plate);
-  box-shadow: inset 0 0 0 1px var(--guide-rule);
-}
-
-.guide-model-mark.is-plate img {
-  width: 15px;
-  height: 15px;
-  object-fit: contain;
-}
-
-/*
-  **요금표 — 요금제가 행, 월 구독료 · 사용량이 열이다**(2026-09-28). 바로 위 모델 표와 축이
-  같다(대상이 행, 속성이 열). 그 전에는 주장 한 줄이 한 줄이라 Pro와 Max를 견주려면 줄을
-  건너 오가야 했다.
-
-  - 요금제 이름 열은 글자 폭만 잡는다(`width: 1%` + 줄바꿈 없음) — 「Claude Pro」와 「$20」이
-    붙어 읽힌다. 구독료 열은 `--gl-fee`로 못 박아 사용량 열이 나머지를 쓴다.
-  - **구독료는 굵은 16, 사용량은 보통 14.5다.** 둘을 같은 16/500으로 세우던 동안 31자짜리
-    한도 문장이 표에서 가장 무거운 것이 됐다. 이 표에서 먼저 읽히는 것은 값이다.
-  - 상태 낱말은 모델 표의 상태 칸과 같은 점선 링크다(출처로 간다).
-*/
-.gl-plan-table {
-  width: 100%;
-  margin-top: var(--gl-r2);
-  border-collapse: collapse;
-}
-
-.gl-plan-table th,
-.gl-plan-table td {
-  padding: 14px 16px 14px 0;
-  border-bottom: 1px solid var(--guide-rule);
-  text-align: left;
-  vertical-align: baseline;
-}
-
-.gl-plan-table tr > :last-child {
-  padding-right: 0;
-}
-
-.gl-plan-table thead th {
-  padding-block: 0 8px;
-  color: var(--text-muted);
-  font-size: var(--gl-meta);
-  font-weight: 400;
-}
-
-.gl-plan-table tbody th {
-  width: 1%;
-  padding-right: var(--gl-r3);
-  color: var(--text-strong);
-  font-size: var(--gl-body);
-  font-weight: 600;
-  white-space: nowrap;
-}
-
-.gl-plan-table td.is-fee {
-  width: var(--gl-fee);
-}
-
-.gl-plan-v {
-  color: var(--text);
-  font-size: var(--gl-note);
-  line-height: 1.6;
-}
-
-.gl-plan-table td.is-fee .gl-plan-v {
-  color: var(--text-strong);
-  font-size: var(--gl-body);
-  font-weight: 600;
-}
-
-/* 곧 다시 볼 값. 흐려지는 것은 여기까지다 — 유효기간이 지나면 값이 아예 사라진다. */
-.gl-plan-v.is-soft,
-.gl-plan-table td.is-fee .gl-plan-v.is-soft {
-  color: var(--text-dim);
-}
-
-.gl-plan-state {
-  /* 12px 한 줄이라 손가락에 안 맞는다 — 캡션 링크처럼 위아래 10px을 넓히되 줄 높이는 그대로 둔다. */
-  display: inline-block;
-  padding-block: 10px;
-  margin-block: -10px;
-  color: var(--text-dim);
-  font-size: var(--gl-meta);
-  text-decoration: underline dotted;
-  text-decoration-color: var(--text-muted);
-  text-underline-offset: 4px;
-}
-
-.gl-plan-state:hover {
-  color: var(--guide-accent);
-  text-decoration-color: currentColor;
-}
-
-/* 열 이름이 덮어 버린 한정어(「GPT-6 Astra · 5시간당」)와 줄마다 서는 나이. */
-.gl-plan-note,
-.gl-plan-age {
-  display: block;
-  margin-top: 2px;
-  color: var(--text-muted);
-  font-size: var(--gl-meta);
-  font-weight: 400;
-  white-space: normal;
-}
-
-/*
-  요금제를 안 가리는 값 — 표 아래 줄. 이름은 statement 그대로다. **이름 위, 값 아래로
-  쌓는다** — 이름(「Claude 사용 한도 초기화 기준」)이 요금제 이름 열보다 길어 옆으로
-  세우면 값이 표의 어느 열과도 안 맞는 x에 선다.
-*/
-.gl-plan-common {
-  margin: var(--gl-r2) 0 0;
-}
-
-.gl-plan-table + .gl-plan-common {
-  margin-top: 0;
-}
-
-.gl-plan-line {
-  padding-block: 14px;
-  border-bottom: 1px solid var(--guide-rule);
-}
-
-.gl-plan-common > .gl-plan-line:first-child {
-  border-top: 1px solid var(--guide-rule);
-}
-
-.gl-plan-table + .gl-plan-common > .gl-plan-line:first-child {
-  border-top: 0;
-}
-
-.gl-plan-line dt {
-  color: var(--text-muted);
-  font-size: var(--gl-meta);
-  line-height: 1.5;
-}
-
-.gl-plan-line dt .gl-plan-age {
-  display: inline;
-}
-
-.gl-plan-line dd {
-  margin: 2px 0 0;
-}
-
-/* ── 다른 제품 — 좁은 화면에서만 ── */
 
 .gl-peers {
   margin: var(--gl-r3) 0 0;
@@ -8417,156 +8829,304 @@ a.gl-num:hover {
 
 /* ── 좁은 폭 (집의 중단점 640) ── */
 @media (max-width: 640px) {
-  /* 좁은 화면에서는 줄바꿈 대신 옆으로 굴린다 — 칩이 두 줄이 되면 붙박이 띠가 두 배가 된다. */
-  .gl-tabs {
-    flex-wrap: nowrap;
-    overflow-x: auto;
-    scrollbar-width: none;
+  /*
+    줄기를 안쪽으로 들인다(x 21 · 글 자리 44). 13 · 36이던 동안 마디(30)와 그 고리가 원장 왼쪽
+    밖으로 나가 붙박이 탭 줄 옆으로 비쳤다.
+  */
+  .guide-pane {
+    --gl-tl-x: 21px;
+    --gl-tl-node: 30px;
+    --gl-tl-indent: 44px;
+    --gl-display: var(--gl-head);
   }
 
-  .gl-tabs::-webkit-scrollbar {
-    display: none;
+  /* 칸이 좁아 이름이 둘째 줄로 내려가 탭 줄이 90px이다. */
+  .gl-ledger {
+    --gl-tabs-h: 90px;
   }
 
-  /* 탭 셋이 375px 한 줄에 드는 선까지 조인다(가장 긴 제품에서 5px 넘쳤다). */
-  .gl-tabs {
-    gap: 6px;
+  /* 첫 마디까지(줄기 머리 36 + 순간 머리 54의 반 − 12). */
+  .gl-tl-fill {
+    height: 51px;
   }
 
+  .gl-head {
+    padding: 22px 20px 20px;
+    border-radius: 18px;
+  }
+
+  .gl-title {
+    gap: 12px;
+  }
+
+  .gl-tile {
+    width: 44px;
+    height: 44px;
+    border-radius: 13px;
+  }
+
+  .gl-tile .gl-mark {
+    width: 26px;
+    height: 26px;
+  }
+
+  .gl-head-ghost {
+    right: -40px;
+    bottom: -50px;
+    width: 180px;
+    height: 180px;
+  }
+
+  .gl-dek {
+    font-size: var(--gl-body);
+  }
+
+  /* 칸이 좁아 아이콘과 수를 위에, 이름을 아래에 둔다. */
   .gl-tab {
-    padding: 0 12px;
+    display: grid;
+    grid-template-columns: auto auto;
+    justify-content: center;
+    gap: 4px 6px;
+    padding: 8px 4px;
+    font-size: var(--gl-note);
   }
 
-  /*
-    **모델 표는 줄마다 블록으로 쌓는다.** 이름이 제 줄을 갖고, 수는 그 아래에 열 이름을
-    앞에 달고 이어 선다(`data-label`). 열 머리는 숨긴다. 줄마다 격자 폭을 잡던 옛 표는
-    머리 행과 아래 줄의 수 x가 어긋났다.
-  */
-  /* 머리 행을 숨기면 첫 모델 줄이 윗변을 잃는다 — 머리 행 바로 뒤 줄이 대신 긋는다. */
-  .gl-models-head + .gl-model {
-    border-top: 1px solid var(--guide-rule);
+  /* 「요금제와 사용 한도」가 칸보다 길다 — 두 줄을 허락한다. */
+  .gl-tab .gl-tab-label {
+    grid-column: 1 / -1;
+    grid-row: 2;
+    white-space: normal;
+    text-align: center;
+    text-wrap: balance;
   }
 
-  .gl-models li.gl-models-head {
+  .gl-tab svg {
+    justify-self: end;
+  }
+
+  .gl-tab-count {
+    justify-self: start;
+  }
+
+  .gl-tab:not(:has(.gl-tab-count)) svg {
+    grid-column: 1 / -1;
+    justify-self: center;
+  }
+
+  .gl-stop-node svg {
+    width: 15px;
+    height: 15px;
+  }
+
+  .gl-stop-band {
+    min-height: 42px;
+    padding: 8px 12px;
+    border-radius: 12px;
+  }
+
+  .gl-situation,
+  .gl-facts-sub {
+    font-size: var(--gl-lead);
+  }
+
+  .gl-mini {
     display: none;
   }
 
-  /* 머리 행을 뺀 모델 줄만 — 격자 규칙들의 명시도가 머리 행 숨김을 덮지 않게 한다. */
-  .gl-models li.gl-model {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 4px 14px;
-    padding-left: 34px;
+  .gl-stop {
+    margin-bottom: 14px;
   }
 
-  .gl-model-name {
-    flex: 1 1 100%;
-    margin-left: -34px;
+  .gl-stop-head {
+    padding: 6px 0 6px var(--gl-tl-indent);
   }
 
-  /*
-    **누르는 높이를 넓힌다.** 수 칸이 22px, 「확인 전」 칸이 18px이라 손가락에 안 맞았다.
-    출처 링크처럼 위아래 10px씩 넓히면 4px 간격으로 붙은 칸끼리 겹치므로, 칸 자체에
-    6px씩 주고 줄 간격을 그만큼 벌린다.
-  */
-  .gl-models li.gl-model {
-    row-gap: 2px;
+  .gl-tip {
+    padding: 10px 0;
   }
 
-  .gl-num {
-    display: inline-block;
-    padding-block: 6px;
+  .gl-tip::before {
+    top: 22px;
+    left: calc(var(--gl-tl-x) - var(--gl-tl-indent) + 6px);
+    width: calc(var(--gl-tl-indent) - var(--gl-tl-x) - 12px);
   }
 
-  .gl-num {
-    text-align: left;
+  .gl-tip::after {
+    top: 17px;
   }
 
-  /* `inline-block`이라야 링크의 밑줄이 열 이름까지 번지지 않는다. */
-  .gl-num[data-label]::before {
-    content: attr(data-label);
-    display: inline-block;
-    margin-right: 5px;
-    color: var(--text-muted);
-    font-family: 'Wanted Sans Variable', 'Wanted Sans', system-ui, sans-serif;
-    font-size: var(--gl-meta);
+  .gl-tip-do {
+    font-size: var(--gl-body);
   }
 
-  .gl-num.is-empty {
-    display: none;
-  }
-
-  .gl-model-sub {
-    flex: 1 1 100%;
-    padding-left: 0;
-  }
-
-  .gl-model-meta {
-    margin-left: 0;
-    text-align: left;
-  }
-
-  /*
-    **요금표는 요금제마다 블록으로 쌓는다.** 블록으로 푸는 것은 자격증 환불 표, 열 이름을
-    앞에 다는 것은 모델 표와 같은 방식이다. 요금제 이름이 제 줄을 갖고, 값은 그 아래에 열
-    이름을 앞에 달고 선다(`data-label`). 열 머리는 화면에서만 숨긴다.
-  */
-  .gl-plan-table thead {
-    position: absolute;
-    overflow: hidden;
-    width: 1px;
-    height: 1px;
-    clip-path: inset(50%);
-  }
-
-  .gl-plan-table,
-  .gl-plan-table tbody {
-    display: block;
-  }
-
-  .gl-plan-table tr {
-    display: block;
-    padding-block: 14px;
-    border-bottom: 1px solid var(--guide-rule);
-  }
-
-  .gl-plan-table tbody tr:first-child {
-    border-top: 1px solid var(--guide-rule);
-  }
-
-  .gl-plan-table tbody th,
-  .gl-plan-table td,
-  .gl-plan-table td.is-fee {
-    display: block;
-    width: auto;
-    padding: 0;
-    border: 0;
-  }
-
-  .gl-plan-table td {
+  .gl-tip-why {
     margin-top: 4px;
+    line-height: 1.62;
   }
 
-  .gl-plan-table td.gl-plan-empty {
+  .gl-tl-axis::before {
+    left: calc(var(--gl-tl-x) - var(--gl-tl-indent) - 6px);
+    width: 12px;
+    height: 12px;
+    margin-top: -6px;
+  }
+
+  /* 참고 탭 — 띠는 이름만, 수는 줄 아래에 열 이름을 달고 선다. */
+  .gl-stop-band.gl-cols {
+    display: flex;
+  }
+
+  .gl-band-label {
     display: none;
   }
 
-  /* 한정어와 나이는 열 이름 밑이 아니라 제 값 밑에 선다(열 이름 칸 4.5em + 8px만큼 들인다). */
-  .gl-plan-table td[data-label] .gl-plan-note,
-  .gl-plan-table td[data-label] .gl-plan-age {
-    padding-left: calc(4.5em + 8px);
+  .gl-model {
+    padding: 12px 0 12px 14px;
   }
 
-  /* `inline-block`이라야 상태 링크의 밑줄이 열 이름까지 번지지 않는다. */
-  .gl-plan-table td[data-label]::before {
+  /* 판 오른쪽 변에서 이름 앞 6px까지 — 팁 가지와 같은 틈을 둔다. */
+  .gl-model::before {
+    top: 27px;
+    z-index: 0;
+    left: calc(var(--gl-tl-x) - var(--gl-tl-indent) + 16px);
+    width: calc(var(--gl-tl-indent) - var(--gl-tl-x) - 8px);
+  }
+
+  .gl-model:last-child::after {
+    height: 27px;
+  }
+
+  .gl-plate {
+    top: 11px;
+    left: calc(var(--gl-tl-x) - var(--gl-tl-indent) - 16px);
+    width: 32px;
+    height: 32px;
+    border-radius: 9px;
+    box-shadow:
+      0 0 0 1px var(--guide-rule),
+      0 0 0 4px var(--bg);
+  }
+
+  .gl-plate img,
+  .gl-plate .guide-model-mark {
+    width: 19px;
+    height: 19px;
+  }
+
+  .gl-cols.is-model,
+  .gl-cols.is-model.has-ctx,
+  .gl-cols.is-model.has-price,
+  .gl-cols.is-model.has-ctx.has-price {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    row-gap: 10px;
+  }
+
+  .gl-model-main {
+    grid-column: 1 / -1;
+  }
+
+  .gl-num-cell.is-empty {
+    display: none;
+  }
+
+  .gl-num-cell::before {
     content: attr(data-label);
-    display: inline-block;
-    min-width: 4.5em;
-    margin-right: 8px;
-    color: var(--text-muted);
+    display: block;
+    margin-bottom: 2px;
+    color: var(--text-dim);
     font-size: var(--gl-meta);
+    font-weight: 500;
   }
 
+
+  .gl-caption {
+    margin-left: calc(var(--gl-tl-indent) + 14px);
+  }
+
+  .gl-board {
+    padding: 10px;
+    border-radius: 16px;
+  }
+
+  .gl-pcs {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 10px;
+  }
+
+  .gl-pc {
+    padding: 16px;
+  }
+}
+
+/*
+  **강제 색 모드** — 배경으로 그린 줄기·가지·마디 채움이 사라지고, 고른 탭이 안 고른 탭과
+  같아진다. 시스템 색으로 되살린다.
+*/
+@media (forced-colors: active) {
+  .gl-tl-track,
+  .gl-stop-head::before,
+  .gl-tip::before,
+  .gl-model::before,
+  .gl-model::after,
+  .gl-mini i + i::before {
+    background: GrayText;
+    forced-color-adjust: none;
+  }
+
+  .gl-tl-fill,
+  .gl-stop.is-reached .gl-stop-head::before,
+  .gl-tip.is-reached::before {
+    background: CanvasText;
+    forced-color-adjust: none;
+  }
+
+  .gl-stop.is-reached .gl-stop-node,
+  .gl-tip.is-reached::after {
+    background: CanvasText;
+    color: Canvas;
+    forced-color-adjust: none;
+  }
+
+  .gl-tab.is-on {
+    background: SelectedItem;
+    color: SelectedItemText;
+    forced-color-adjust: none;
+  }
+
+  .gl-tab.is-on .gl-tab-count {
+    background: SelectedItemText;
+    color: SelectedItem;
+  }
+
+  .gl-pc {
+    border: 1px solid CanvasText;
+  }
+}
+
+/*
+  **낮은 화면**(가로로 든 전화, 400% 확대) — 붙박이 탭 줄과 순간 머리가 화면의 8할을 먹었다.
+  둘 다 풀어 글과 함께 흐르게 한다.
+*/
+@media (max-height: 500px) {
+  .gl-tabs,
+  .gl-stop-head {
+    position: static;
+  }
+
+  .gl-stop-head::after {
+    display: none;
+  }
+}
+
+/* ── 움직임을 줄인 환경 ── */
+@media (prefers-reduced-motion: reduce) {
+  .gl-ledger,
+  .gl-ledger *,
+  .gl-ledger *::before,
+  .gl-ledger *::after {
+    transition: none !important;
+    animation: none !important;
+  }
 }
 
 /* ── 종이 ── */
@@ -8576,9 +9136,19 @@ a.gl-num:hover {
     display: none;
   }
 
-  /* 종이에는 탭이 없다 — 안 고른 탭도 전부 찍는다. */
+  /* 종이에는 탭이 없다 — 안 고른 탭도 전부 찍는다. 붙박이도 풀린다. */
   .gl-panel[hidden] {
     display: block;
+  }
+
+  .gl-stop-head {
+    position: static;
+  }
+
+  .gl-tip,
+  .gl-model,
+  .gl-pc {
+    break-inside: avoid;
   }
 }
 
@@ -8594,7 +9164,8 @@ a.gl-num:hover {
   두 목록에 함께 넣는다.
 */
 .guide-rail-mark img,
-.gl-mark img {
+.gl-mark img,
+.gl-head-ghost img {
   width: 100%;
   height: 100%;
   object-fit: contain;
@@ -8612,6 +9183,7 @@ a.gl-num:hover {
 @supports (mask-image: url('')) or (-webkit-mask-image: url('')) {
   .guide-rail-mark.is-tinted,
   .gl-mark.is-tinted,
+  .gl-head-ghost.is-tinted,
   .guide-model-mark.is-tinted {
     background-color: var(--guide-mark-color, currentColor);
     -webkit-mask-image: var(--guide-mark);
@@ -8626,6 +9198,7 @@ a.gl-num:hover {
 
   .guide-rail-mark.is-tinted img,
   .gl-mark.is-tinted img,
+  .gl-head-ghost.is-tinted img,
   .guide-model-mark.is-tinted img {
     visibility: hidden;
   }

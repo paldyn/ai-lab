@@ -1,13 +1,33 @@
 import {
   Fragment,
+  useEffect,
   useLayoutEffect,
   useRef,
   type CSSProperties,
   type KeyboardEvent,
   type ReactNode,
+  type RefObject,
 } from 'react';
 import { Link } from 'react-router';
-import { ArrowUpRight } from 'lucide-react';
+import {
+  ArrowDown,
+  ArrowUpRight,
+  CircleCheck,
+  Clock,
+  Compass,
+  Cpu,
+  CreditCard,
+  Gauge,
+  GitFork,
+  Repeat,
+  Scissors,
+  Send,
+  SlidersHorizontal,
+  Tag,
+  Target,
+  TrendingDown,
+  type LucideIcon,
+} from 'lucide-react';
 import { ageText } from './ClaimRow';
 import { GuideMark } from './GuideMark';
 import {
@@ -20,25 +40,33 @@ import {
 import { modelMark, shownModels } from '../data/guideModels';
 import { assetUrl } from '../data/sources';
 import { guideProducts } from '../data/guideProducts';
-import { tipGroupsOf } from '../data/guideTipGroups';
+import { tipAxes, tipGroupsOf } from '../data/guideTipGroups';
 import { guideVendorById } from '../data/guideVendors';
-import type { Claim, ModelInfo, PlanFacet, Product, Role, TipAim } from '../types/playbook';
+import type {
+  Claim,
+  ModelInfo,
+  PlanFacet,
+  Product,
+  Role,
+  TipAim,
+  TipGroupId,
+} from '../types/playbook';
 
 /**
- * 원장 — **제품 하나를 다룬 짧은 가이드로 읽히는 한 칸**(2026-09-28 전면 개편).
+ * 원장 — **제품 하나를 타임라인으로 읽는 한 칸**(2026-09-28, 일곱 번째 원장).
  *
- * 그 전 화면은 데이터 분류표 차례대로 서 있었습니다. 팁 문장은 `<details>` 두 겹 아래라
- * 첫 화면에 한 줄도 없었고(다 읽는 데 19번 눌러야 했습니다), 보이는 것은 10px 모노 라벨·
- * 괘선·「2 +」 같은 여닫이 장치와 「값을 확인하는 곳」 같은 만드는 쪽의 말이었습니다.
- * 「뭔가 별로」·「멘트 별로」의 정체가 그것이었습니다.
+ * 헤어라인 목록으로 펼친 원장은 읽히기는 했지만 「별론데, 좀 더 색다르게」였습니다. 방향
+ * 넷(타임라인 · 카드 · 체크리스트 · 에디토리얼)을 실제 데이터 목업으로 그려 보였고, 고른
+ * 것이 **타임라인에 요금만 카드**입니다.
  *
- * 지금은 차례와 노출을 뒤집었습니다.
- * - **제품 이름이 배너 아래 `h2`입니다.** 배너(`PageHeader`)의 「AI 가이드」가 `h1`입니다.
- * - **팁은 접지 않습니다.** 행동 문장(16/600) → 이유(14.5) → 출처(12)가 굵기·크기·색으로
- *   갈립니다. 접기가 하던 「요점만 남기기」를 위계가 맡습니다.
- * - 모델·요금은 참고 탭 하나로 모읍니다. 값에만 나이와 상태가 붙습니다.
+ * - **팁 탭은 줄기 위의 여정입니다.** 순간 넷은 나란한 넷이 아니라 차례라(사용량 절감은
+ *   세션이 지나는 시간, 품질 향상은 고치는 값이 커지는 순서), 그 차례를 제품색 줄기와 마디로
+ *   그립니다. 팁은 줄기에서 뻗은 가지 끝에 매달리고, 스크롤하면 줄기가 읽는 자리까지 찹니다.
+ * - **모델도 같은 줄기에 매답니다.** 모델 마크 판이 줄기 위 마디가 되고, 순간 머리 띠가 열
+ *   이름을 겸합니다.
+ * - **요금제는 카드입니다.** 요금 페이지처럼 요금제마다 큰 가격을 단 카드를 나란히 세웁니다.
  *
- * **빈 절은 안 그립니다.** 팁이 없는 축, 모델도 요금도 없는 참고 절, 같은 갈래의 다른
+ * **빈 절은 안 그립니다.** 팁이 없는 축, 모델도 요금도 없는 참고 탭, 같은 갈래의 다른
  * 제품이 없는 경우 전부 그 절이 통째로 안 섭니다.
  */
 
@@ -52,9 +80,13 @@ const KEY_COMBO = /^(Shift|Ctrl|Cmd|Alt|Option|Esc|Tab|Enter)(\+[A-Za-z]+)*$/;
  *
  * 키 조합은 코드가 아니라 누르는 것이라 `<kbd>`입니다 — 「`Shift+Tab`으로 계획 모드에
  * 들어간다」에서 명령어와 단축키가 같은 모양이면 무엇을 치고 무엇을 누르는지가 안 갈립니다.
+ *
+ * **괄호에 바로 붙은 코드는 판을 괄호 쪽으로 당깁니다**(`is-paren`). 판의 안쪽 여백 때문에
+ * 「강도(`effort`)」가 「강도( effort )」로 읽혔습니다.
  */
 export function withCode(text: string): ReactNode[] {
-  return text.split(/(`[^`]+`)/g).map((part, i) => {
+  const parts = text.split(/(`[^`]+`)/g);
+  return parts.map((part, i) => {
     if (!(part.length > 2 && part.startsWith('`') && part.endsWith('`'))) {
       return <Fragment key={i}>{part}</Fragment>;
     }
@@ -71,8 +103,9 @@ export function withCode(text: string): ReactNode[] {
         </span>
       );
     }
+    const paren = (parts[i - 1] ?? '').endsWith('(') && (parts[i + 1] ?? '').startsWith(')');
     return (
-      <code key={i} className="guide-tip-code">
+      <code key={i} className={`guide-tip-code${paren ? ' is-paren' : ''}`}>
         {inner}
       </code>
     );
@@ -84,8 +117,7 @@ export function withCode(text: string): ReactNode[] {
 /**
  * 출처 라벨을 첫 「 — 」에서 발행처와 문서 이름으로 가릅니다. **보이는 글자는 라벨
  * 그대로입니다** — 발행처만 남기면 한 탭에서 「Claude Code Docs」가 여덟 번 서는데
- * 가는 페이지는 셋이라 어느 문서인지 안 갈립니다. 가르는 것은 줄바꿈 자리를 정하려는
- * 것뿐입니다(발행처는 가운데서 안 끊깁니다).
+ * 가는 페이지는 셋이라 어느 문서인지 안 갈립니다. 발행처는 굵게, 가운데서 안 끊깁니다.
  */
 function SourceLabel({ label }: { label: string }) {
   const at = label.indexOf(' — ');
@@ -100,19 +132,11 @@ function SourceLabel({ label }: { label: string }) {
 }
 
 /**
- * 팁 한 편 — **한 행**이고, 행 사이는 헤어라인입니다(2026-09-28).
+ * 팁 한 편 — **줄기에서 뻗은 가지 끝에 매달린 한 덩이**. 상자가 없습니다. 가지와 그 끝의
+ * 점은 CSS가 그리고(`::before`·`::after`), 줄기가 그 높이까지 차면 점이 켜집니다.
  *
- * 「가독성이 안 좋다」의 원인은 글의 양이 아니라 **팁의 시작과 끝을 알리는 표시가 없는
- * 것**이었습니다. 팁 안 간격과 팁 사이 간격이 1.5배밖에 안 벌어져 여백만으로는 안
- * 갈렸고, 팁을 끊는 일을 12px 출처 줄이 떠맡아 그 줄이 아홉 번 서며 줄무늬가 됐습니다.
- * 이제 경계는 선이 맡고, 굵기·크기·색은 행 안의 위계(행동 > 이유 > 출처)만 맡습니다.
- * 행동은 600입니다 — 500이던 동안 행동 한 줄이 두세 줄짜리 회색 이유에 묻혔습니다.
- *
- * **출처는 제 줄이 아니라 이유 끝의 꼬리입니다.** 팁마다 한 줄이 줄고 밑줄 줄무늬가
- * 사라집니다. 라벨은 통째로 보입니다(터치에서도 어느 문서인지 알 수 있어야 합니다).
- *
- * **나이를 안 답니다.** 팁은 `concept`라 유효기간이 없습니다. 나이는 늙는 것, 곧 모델
- * 표와 요금표의 값에만 섭니다.
+ * **나이를 안 답니다.** 팁은 `concept`라 유효기간이 없습니다. 나이는 늙는 것, 곧 모델과
+ * 요금의 값에만 섭니다.
  */
 function TipItem({ claim }: { claim: Claim }) {
   return (
@@ -142,10 +166,25 @@ function TipItem({ claim }: { claim: Claim }) {
  * 절감」은 정액 구독자에게 틀린 말이고, 「정확도 향상」은 이 사이트에서 ML 지표로
  * 읽혀 안 썼습니다. 리드는 안 답니다 — 합니다체 설명이 한다체 팁 위에 끼어 부딪혔습니다.
  */
-const READ_AIMS: Array<{ aim: TipAim; title: string }> = [
-  { aim: 'save', title: '사용량 절감' },
-  { aim: 'well', title: '품질 향상' },
+const READ_AIMS: Array<{ aim: TipAim; title: string; icon: LucideIcon }> = [
+  { aim: 'save', title: '사용량 절감', icon: TrendingDown },
+  { aim: 'well', title: '품질 향상', icon: Target },
 ];
+
+/**
+ * 순간마다 마디에 서는 아이콘. **데이터가 아니라 그림의 일이라 여기 둡니다** — 순간의 뜻은
+ * `guideTipGroups.ts`가 들고, 무엇으로 그릴지는 원장이 정합니다.
+ */
+const SITUATION_ICON: Record<TipGroupId, LucideIcon> = {
+  load: SlidersHorizontal,
+  model: Gauge,
+  feed: GitFork,
+  cut: Scissors,
+  standing: Repeat,
+  brief: Send,
+  steer: Compass,
+  verdict: CircleCheck,
+};
 
 /** 그 축의 팁을 순간마다 묶습니다. 빈 순간은 안 만듭니다. */
 function groupTips(aim: TipAim, tips: Claim[]) {
@@ -154,40 +193,68 @@ function groupTips(aim: TipAim, tips: Claim[]) {
     .filter((g) => g.rows.length > 0);
 }
 
-/**
- * 팁 탭 하나의 내용 — 순간마다 팁 목록.
- *
- * **순간 라벨은 제품색 글자에 오른쪽으로 뻗는 괘선입니다**(14.5/600, 2026-09-28). 검정
- * 글자에 아래 선을 달던 동안에는 무리를 가르는 선과 팁 행을 가르는 선이 같은 모양이라
- * 안 갈렸고, 화면에 색이 하나도 없었습니다. 크기는 팁보다 작게 둡니다 — 헤딩이 팁보다
- * 크면 「라벨 — 팁 하나」가 목차처럼 번갈아 섭니다. 제품 이름(`h2`) 아래 층이라 `h3`입니다.
- * **순간이 하나뿐이면 라벨을 안 세웁니다** — 탭 이름을 한 번 더 말하는 것입니다.
- */
-function TipGroups({ aim, groups }: { aim: TipAim; groups: ReturnType<typeof groupTips> }) {
-  if (groups.length === 1) {
-    return (
-      <ul className="gl-tips">
-        {groups[0].rows.map((claim) => (
-          <TipItem key={claim.id} claim={claim} />
-        ))}
-      </ul>
-    );
-  }
+/** 작은 줄기 — 팁이 든 순간 중 몇째 마디인가. 순간 머리가 위에 붙어 큰 줄기가 안 보일 때도 자리가 남습니다. */
+function MiniStem({ at, of }: { at: number; of: number }) {
   return (
-    <>
-      {groups.map(({ group, rows }) => (
-        <div key={group.id} className="gl-situation-block">
-          <h3 className="gl-situation" id={`${aim}-${group.id}`}>
-            {group.situation}
-          </h3>
-          <ul className="gl-tips">
-            {rows.map((claim) => (
-              <TipItem key={claim.id} claim={claim} />
-            ))}
-          </ul>
-        </div>
+    <span className="gl-mini" aria-hidden="true">
+      {Array.from({ length: of }, (_, j) => (
+        <i key={j} className={`${j <= at ? 'is-on' : ''}${j === at ? ' is-here' : ''}`} />
       ))}
-    </>
+    </span>
+  );
+}
+
+/**
+ * 팁 탭 하나 — **줄기 하나에 순간 마디가 차례로 서는 타임라인.**
+ *
+ * - 줄기 머리에 축이 무엇을 따라 흐르는지 적습니다(`tipAxes`). 안 적으면 위에서 아래로
+ *   가는 것이 「중요한 순」으로 읽힙니다.
+ * - 순간 머리(마디 + 띠)는 탭 줄 바로 아래에 붙어 따라옵니다. 읽는 동안 지금 어느 순간인지
+ *   늘 보입니다.
+ * - **첫 마디는 처음부터 켜진 채 나갑니다**(프리렌더 HTML에도). 줄기가 차는 것은 그 뒤
+ *   스크롤이 맡습니다(`useTimeline`).
+ * - **순간이 하나뿐이어도 마디를 세웁니다.** 헤어라인 목록에서는 라벨이 탭 이름을 되풀이해
+ *   걷었지만, 줄기 위에서는 마디가 없으면 가지가 매달릴 데가 없습니다. 작은 줄기만 뺍니다.
+ */
+function TipTimeline({ aim, groups }: { aim: TipAim; groups: ReturnType<typeof groupTips> }) {
+  return (
+    <div className="gl-tl" data-live="">
+      <span className="gl-tl-track" aria-hidden="true" />
+      <span className="gl-tl-fill" aria-hidden="true" />
+      <p className="gl-tl-axis">
+        <ArrowDown size={15} aria-hidden="true" />
+        {tipAxes[aim]}
+      </p>
+      <ol className="gl-stops">
+        {groups.map(({ group, rows }, i) => {
+          const Icon = SITUATION_ICON[group.id];
+          return (
+            <li key={group.id} className={`gl-stop${i === 0 ? ' is-reached is-current' : ''}`}>
+              <div className="gl-stop-head">
+                <span className="gl-stop-node" aria-hidden="true">
+                  <Icon size={20} />
+                </span>
+                <div className="gl-stop-band">
+                  <h3 className="gl-situation" id={`${aim}-${group.id}`}>
+                    {group.situation}
+                  </h3>
+                  <span className="gl-stop-meta">
+                    팁 {rows.length}
+                    {groups.length > 1 && <MiniStem at={i} of={groups.length} />}
+                  </span>
+                </div>
+              </div>
+              <ul className="gl-tips">
+                {rows.map((claim) => (
+                  <TipItem key={claim.id} claim={claim} />
+                ))}
+              </ul>
+            </li>
+          );
+        })}
+      </ol>
+      <div className="gl-tl-end" aria-hidden="true" />
+    </div>
   );
 }
 
@@ -218,16 +285,16 @@ export function splitPrice(
 /** 컨텍스트 칸에서만 「 토큰」을 뗍니다 — 열 이름이 단위를 집니다. 데이터는 그대로입니다. */
 const contextLabel = (value: string) => value.replace(/^([\d.,]+[KM]?) 토큰$/, '$1');
 
-/** 모델 줄머리 마크 — 제 마크가 있으면 판 위에, 없으면 계열 마크. */
-function ModelMarkSlot({ model }: { model: ModelInfo }) {
-  /*
-    Anthropic만 등급마다 손그림과 판 색을 짝지어 두었습니다(`ModelInfo.mark`). 잉크가
-    2색이라 착색하지 않고 판 위에 그대로 올립니다 — 한 색으로 마스킹하면 덩어리가 됩니다.
-  */
+/**
+ * 모델 줄머리 마크 — **줄기 위의 마디**입니다. 제 마크가 있으면 만든 회사의 판 색 위에,
+ * 없으면 계열 마크를 배경색 판(`--bg`) 위에 올립니다. 만든 회사가 40px 판에 24px로 세우는 비율(0.6)을
+ * 그대로 씁니다.
+ */
+function ModelPlate({ model }: { model: ModelInfo }) {
   if (model.mark) {
     return (
       <span
-        className="guide-model-mark is-plate"
+        className="gl-plate"
         style={{ '--guide-plate': model.mark.plate } as CSSProperties}
         aria-hidden="true"
       >
@@ -237,19 +304,21 @@ function ModelMarkSlot({ model }: { model: ModelInfo }) {
   }
   const family = modelMark[model.vendorId];
   return (
-    <GuideMark
-      logo={family.logo}
-      monochrome={family.monochrome}
-      accent={family.accent}
-      className="guide-model-mark"
-    />
+    <span className="gl-plate" aria-hidden="true">
+      <GuideMark
+        logo={family.logo}
+        monochrome={family.monochrome}
+        accent={family.accent}
+        className="guide-model-mark"
+      />
+    </span>
   );
 }
 
 /**
  * 값 칸 하나. 값이든 상태 낱말이든 **출처로 갈 수 있어야 합니다** — 「문서에 없음」도
  * 「재확인 필요」도 다음 할 일이 「공식 페이지를 열어 보기」입니다.
- * `data-label`은 좁은 화면에서 열 이름 대신 수 앞에 붙습니다.
+ * `data-label`은 좁은 화면에서 열 이름 대신 수 위에 붙습니다.
  */
 function Cell({
   cell,
@@ -267,40 +336,73 @@ function Cell({
   text?: string;
   className: string;
 }) {
-  if (cell.kind === 'none') return <span className={`${className} is-empty`} />;
+  if (cell.kind === 'none') return <span className={`${className} is-empty`} data-label={label} />;
   const note = cell.kind === 'note';
   const soft = cell.kind === 'value' && cell.soft;
   const shown = note ? cell.text : (text ?? '');
   return (
-    /*
-      **이름에 모델과 열을 함께 싣습니다.** 열 머리는 따로 선 `<li>`라 칸과 안 이어지고,
-      데스크톱에서는 `data-label`도 안 보여 링크 이름이 「1M」·「$2」뿐이었습니다 — 링크
-      목록에서 「1M」이 셋이고 입력인지 출력인지도 안 갈렸습니다. 보이는 글자를 이름에
-      그대로 담아 음성으로 부를 때도 맞습니다.
-    */
-    <a
-      className={`${className}${note ? ' is-note' : ''}${soft ? ' is-soft' : ''}`}
-      href={url}
-      target="_blank"
-      rel="noreferrer"
-      data-label={label}
-      aria-label={`${modelName} ${label} ${shown}`}
-    >
-      {shown}
-    </a>
+    <span className={className} data-label={label}>
+      {/*
+        **이름에 모델과 열을 함께 싣습니다.** 열 이름은 띠 안에 따로 서 있어 칸과 안 이어지므로
+        링크 이름이 「1M」·「$2」뿐이면 링크 목록에서 무엇인지 안 갈립니다.
+      */}
+      <a
+        className={note ? 'gl-state' : `gl-num${soft ? ' is-soft' : ''}`}
+        href={url}
+        target="_blank"
+        rel="noreferrer"
+        aria-label={`${modelName} ${label} ${shown}`}
+      >
+        {shown}
+      </a>
+    </span>
+  );
+}
+
+/** 참고 탭의 절 머리 — 팁 탭의 순간 머리와 같은 마디 + 띠. 띠가 열 이름을 겸할 수 있습니다. */
+function RefHead({
+  icon: Icon,
+  id,
+  title,
+  labels,
+  cols,
+}: {
+  icon: LucideIcon;
+  id: string;
+  title: string;
+  labels?: string[];
+  cols?: string;
+}) {
+  return (
+    <div className="gl-stop-head">
+      <span className="gl-stop-node" aria-hidden="true">
+        <Icon size={20} />
+      </span>
+      <div className={`gl-stop-band${cols ? ` gl-cols ${cols}` : ''}`}>
+        <h3 className="gl-facts-sub" id={id}>
+          {title}
+        </h3>
+        {/* 열 이름은 눈에만 섭니다 — 칸마다 링크 이름이 열 이름을 싣습니다. */}
+        {labels?.map((l) => (
+          <span key={l} className="gl-band-label" aria-hidden="true">
+            {l}
+          </span>
+        ))}
+      </div>
+    </div>
   );
 }
 
 /**
- * 고를 수 있는 모델 — **표입니다.** 열 이름이 단위를 지고 수는 모노로 한 세로줄에 섭니다.
+ * 고를 수 있는 모델 — **줄기에 매단 줄들.** 모델 판이 줄기 위 마디이고, 절 머리 띠가 열
+ * 이름(컨텍스트 · 입력 단가 · 출력 단가)을 겸합니다.
  *
  * **열은 그 제품의 데이터가 세웁니다.** 한 줄도 주장이 없는 열은 아예 안 섭니다
  * (Gemini 앱은 이름·쓰임만 섭니다). 한 줄만 비면 열은 세우고 칸만 비웁니다.
  *
- * **나이는 하나면 캡션에, 여럿이면 줄마다**(`ageLayout`). 처음에는 확인 전 칸이 하나라도
- * 있으면 줄마다 적었는데, Codex 표에서 「11일 전 확인」이 네 번 되풀이됐습니다.
+ * **나이는 하나면 캡션에, 여럿이면 줄마다**(`ageLayout`).
  */
-function ModelTable({
+function ModelTimeline({
   product,
   models,
   contextOf,
@@ -323,277 +425,259 @@ function ModelTable({
     return { model, ctx, price, priceClaim, split };
   });
   const ages = ageLayout(rows.map((r) => [r.ctx, r.price]));
-  const oneAge = ages.caption;
+  const cols = `is-model${hasContext ? ' has-ctx' : ''}${hasPrice ? ' has-price' : ''}`;
+  const labels = [
+    ...(hasContext ? ['컨텍스트(토큰)'] : []),
+    ...(hasPrice ? ['입력 단가', '출력 단가'] : []),
+  ];
 
   return (
-    <>
-      <ul className={`gl-models${hasContext ? ' has-ctx' : ''}${hasPrice ? ' has-price' : ''}`}>
-        {/*
-          **머리 행은 `<li>`입니다.** 목록 밖 형제로 빼면 격자를 한 벌 더 써야 하고,
-          `<table>`로 바꾸면 쓰임 줄이 `colspan` 행으로 갈려 행 높이가 들쭉날쭉해집니다.
-          수 열이 하나도 안 서면 머리 행도 안 섭니다.
-        */}
-        {(hasContext || hasPrice) && (
-          <li className="gl-models-head">
-            <span>모델</span>
-            {hasContext && <span className="is-num">컨텍스트(토큰)</span>}
-            {hasPrice && (
-              <>
-                <span className="is-num">입력 단가</span>
-                <span className="is-num">출력 단가</span>
-              </>
-            )}
-          </li>
-        )}
-        {rows.map(({ model, ctx, price, priceClaim, split }, i) => {
-          const rowAge = ages.perRow[i];
-          return (
-            <li key={model.id} className="gl-model">
-              <span className="gl-model-name">
-                <ModelMarkSlot model={model} />
-                <span>
-                  {/*
-                    **이름이 링크입니다**(2026-09-28). 그 전에는 아래 쓰임 문장이 링크였고 이름은
-                    글자뿐이라 「모델을 누르면 어디로 가나」가 안 보였습니다. 가는 곳은 쓰임 문장이
-                    실린 페이지이고, 쓰임이 없는 모델(벤더가 그 말을 안 한 다섯)은 이름을 본
-                    페이지입니다 — 어느 쪽이든 그 줄에 적힌 것을 떠받치는 곳입니다.
-                  */}
-                  <a
-                    className="gl-model-link"
-                    href={model.useWhen?.url ?? model.sourceUrl}
-                    target="_blank"
-                    rel="noreferrer"
-                  >
-                    {model.name}
-                    <ArrowUpRight size={12} aria-hidden="true" />
-                  </a>
-                  {/*
-                    이름·회사·꼬리표 사이에 **진짜 공백**을 둡니다. 간격을 margin으로만 주면
-                    복사한 글과 낭독에서 「Claude Sonnet 4.6Anthropic이전 세대」로 붙습니다.
-                  */}
-                  {model.vendorId !== product.vendorId && (
-                    <>
-                      {' '}
-                      <span className="gl-model-vendor">
-                        {guideVendorById(model.vendorId)?.name}
-                      </span>
-                    </>
-                  )}
-                  {/* 만든 회사가 구세대로 부르는데도 남긴 줄 — 그 회사의 최신이 여기 없을 때입니다. */}
-                  {model.current === false && (
-                    <>
-                      {' '}
-                      <span className="gl-tag">이전 세대</span>
-                    </>
-                  )}
-                </span>
-              </span>
-              {hasContext && (
-                <Cell
-                  cell={ctx}
-                  url={contextOf.get(model.id)?.source.url ?? ''}
-                  label="컨텍스트"
-                  modelName={model.name}
-                  text={ctx.kind === 'value' ? contextLabel(ctx.value) : undefined}
-                  className="gl-num"
-                />
-              )}
-              {hasPrice &&
-                (priceClaim && split && split.output ? (
-                  <>
+    <section className="gl-ref" aria-labelledby="models-title">
+      {/* 줄기는 줄마다 한 토막씩 CSS가 잇습니다(`.gl-model::after`) — 마지막 판에서 끝납니다. */}
+      <div className="gl-tl is-static">
+        <div className="gl-stop is-reached">
+          <RefHead icon={Cpu} id="models-title" title="고를 수 있는 모델" labels={labels} cols={cols} />
+          <ul className="gl-rows">
+            {rows.map(({ model, ctx, price, priceClaim, split }, i) => {
+              const rowAge = ages.perRow[i];
+              return (
+                <li key={model.id} className={`gl-model gl-cols ${cols}`}>
+                  <ModelPlate model={model} />
+                  <div className="gl-model-main">
+                    {/*
+                      **이름이 링크입니다.** 가는 곳은 쓰임 문장이 실린 페이지이고, 쓰임이 없는
+                      모델은 이름을 본 페이지입니다 — 어느 쪽이든 그 줄에 적힌 것을 떠받칩니다.
+                      이름·회사·꼬리표 사이에는 **진짜 공백**을 둡니다(복사·낭독에서 안 붙게).
+                    */}
+                    <p className="gl-model-name">
+                      <a
+                        className="gl-model-link"
+                        href={model.useWhen?.url ?? model.sourceUrl}
+                        target="_blank"
+                        rel="noreferrer"
+                      >
+                        {model.name}
+                        <ArrowUpRight size={13} aria-hidden="true" />
+                      </a>
+                      {model.vendorId !== product.vendorId && (
+                        <>
+                          {' '}
+                          <span className="gl-model-vendor">
+                            {guideVendorById(model.vendorId)?.name}
+                          </span>
+                        </>
+                      )}
+                      {model.current === false && (
+                        <>
+                          {' '}
+                          <span className="gl-tag">이전 세대</span>
+                        </>
+                      )}
+                    </p>
+                    {model.useWhen && <p className="gl-model-use">{model.useWhen.text}</p>}
+                    {(split?.rider || rowAge !== null) && (
+                      <p className="gl-model-meta">
+                        {split?.rider}
+                        {split?.rider && rowAge !== null && ' · '}
+                        {rowAge !== null && ageText(rowAge)}
+                      </p>
+                    )}
+                  </div>
+                  {hasContext && (
                     <Cell
-                      cell={price}
-                      url={priceClaim.source.url}
-                      label="입력 단가"
+                      cell={ctx}
+                      url={contextOf.get(model.id)?.source.url ?? ''}
+                      label="컨텍스트(토큰)"
                       modelName={model.name}
-                      text={split.input}
-                      className="gl-num"
+                      text={ctx.kind === 'value' ? contextLabel(ctx.value) : undefined}
+                      className="gl-num-cell"
                     />
-                    <Cell
-                      cell={price}
-                      url={priceClaim.source.url}
-                      label="출력 단가"
-                      modelName={model.name}
-                      text={split.output}
-                      className="gl-num"
-                    />
-                  </>
-                ) : (
-                  /* 값이 안 서거나 꼴이 안 맞으면 두 열을 함께 씁니다 — 값이 사라지지 않습니다. */
-                  <Cell
-                    cell={price}
-                    url={priceClaim?.source.url ?? ''}
-                    label="단가"
-                    modelName={model.name}
-                    text={split?.input}
-                    className="gl-num is-span"
-                  />
-                ))}
-              {(model.useWhen || split?.rider || rowAge !== null) && (
-                <div className="gl-model-sub">
-                  {model.useWhen && <span className="gl-model-use">{model.useWhen.text}</span>}
-                  {(split?.rider || rowAge !== null) && (
-                    <span className="gl-model-meta">
-                      {split?.rider}
-                      {split?.rider && rowAge !== null && ' · '}
-                      {rowAge !== null && ageText(rowAge)}
-                    </span>
                   )}
-                </div>
-              )}
-            </li>
-          );
-        })}
-      </ul>
-      {(hasPrice || oneAge !== null) && (
+                  {hasPrice &&
+                    (priceClaim && split && split.output ? (
+                      <>
+                        <Cell
+                          cell={price}
+                          url={priceClaim.source.url}
+                          label="입력 단가"
+                          modelName={model.name}
+                          text={split.input}
+                          className="gl-num-cell"
+                        />
+                        <Cell
+                          cell={price}
+                          url={priceClaim.source.url}
+                          label="출력 단가"
+                          modelName={model.name}
+                          text={split.output}
+                          className="gl-num-cell"
+                        />
+                      </>
+                    ) : (
+                      /* 값이 안 서거나 꼴이 안 맞으면 두 열을 함께 씁니다 — 값이 사라지지 않습니다. */
+                      <Cell
+                        cell={price}
+                        url={priceClaim?.source.url ?? ''}
+                        label="단가"
+                        modelName={model.name}
+                        text={split?.input}
+                        className="gl-num-cell is-span"
+                      />
+                    ))}
+                </li>
+              );
+            })}
+          </ul>
+        </div>
+      </div>
+      {(hasPrice || ages.caption !== null) && (
         <p className="gl-caption">
           {hasPrice && '단가는 100만 토큰당 달러'}
-          {hasPrice && oneAge !== null && ' · '}
-          {oneAge !== null && ageText(oneAge)}
+          {hasPrice && ages.caption !== null && ' · '}
+          {ages.caption !== null && ageText(ages.caption)}
         </p>
       )}
-    </>
+    </section>
   );
 }
 
 /* ── 요금 ───────────────────────────────────────────────────────── */
 
-/** 요금표의 열. 데이터에 그 칸이 하나라도 있는 열만 섭니다(Google은 월 구독료 하나). */
+/** 요금 카드 안의 두 칸. 그 요금제에 그 칸의 주장이 있을 때만 섭니다(ChatGPT Pro에는 사용량이 없습니다). */
 const PLAN_FACETS: Array<{ facet: PlanFacet; label: string }> = [
   { facet: 'fee', label: '월 구독료' },
   { facet: 'usage', label: '사용량' },
 ];
 
-/** 월 구독료 칸에서만 「월 」을 뗍니다 — 열 이름이 단위를 집니다(`contextLabel`과 같은 자리). */
-const feeLabel = (value: string) => value.replace(/^월 /, '');
+/**
+ * 구독료를 **수와 꼬리**로 가릅니다 — 「월 $99.99부터」 → 「$99.99」 + 「부터」. 칸 이름이
+ * 「월 구독료」라 「월 」은 뗍니다. 수는 크게 모노로, 한글 꼬리는 작게 본문 글꼴로 섭니다
+ * (한글에 모노를 안 씁니다). 꼴이 안 맞으면 통째로 수 자리에 섭니다.
+ */
+function splitFee(value: string): { amount: string; rest: string } {
+  const bare = value.replace(/^월 /, '');
+  const m = /^(\$[\d.,]+)(.*)$/.exec(bare);
+  return m ? { amount: m[1], rest: m[2] } : { amount: bare, rest: '' };
+}
 
 /**
- * 요금 칸 하나. **값은 글자이고, 상태 낱말만 출처로 가는 링크입니다** — 「확인 전」·
- * 「문서에 없음」의 다음 할 일이 그 페이지를 열어 보는 것이라 길이 칸에 있어야 합니다.
- * 확인된 값의 출처는 표 아래 캡션이 한 번 말합니다.
+ * 요금 카드의 값 한 칸. **값은 글자이고, 상태 낱말만 출처로 가는 링크입니다** — 「확인 전」의
+ * 다음 할 일이 그 페이지를 열어 보는 것이라 길이 칸에 있어야 합니다. 확인된 값의 출처는
+ * 카드 아래 캡션이 한 번 말합니다.
  *
  * `gl-plan` 토큰은 **주장이 든 칸에만** 답니다 — 프리렌더 검사가 그 수를 요금 주장 수와
- * 견줍니다. 빈 칸(그 요금제에 그 열의 주장이 없다)은 `gl-plan-empty`입니다.
+ * 견줍니다.
  */
-function PlanValue({ claim, today }: { claim: Claim; today: string }) {
+function PlanValue({ claim, today, big }: { claim: Claim; today: string; big?: boolean }) {
   const cell = valueCell(claim, today);
   const note = claim.planCell?.note;
-  return (
-    <>
-      {cell.kind === 'value' ? (
-        <span className={`gl-plan-v${cell.soft ? ' is-soft' : ''}`}>
-          {claim.planCell?.facet === 'fee' ? feeLabel(cell.value) : cell.value}
-        </span>
-      ) : cell.kind === 'note' ? (
+  if (cell.kind === 'note') {
+    return (
+      <div className={`gl-plan${big ? ' is-fee' : ''}`}>
         <a
-          className="gl-plan-state"
+          className={big ? 'gl-pc-empty' : 'gl-state'}
           href={claim.source.url}
           target="_blank"
           rel="noreferrer"
           aria-label={`${claim.statement} ${cell.text}`}
         >
-          {cell.text}
+          <span>{cell.text}</span>
+          {big && <ArrowUpRight size={14} aria-hidden="true" />}
         </a>
-      ) : null}
-      {note && <span className="gl-plan-note">{note}</span>}
-    </>
+        {note && <span className="gl-pc-note">{note}</span>}
+      </div>
+    );
+  }
+  if (cell.kind !== 'value') return null;
+  if (big) {
+    const { amount, rest } = splitFee(cell.value);
+    return (
+      <div className="gl-plan is-fee">
+        <span className={`gl-pc-fee${cell.soft ? ' is-soft' : ''}`}>
+          <span className="gl-pc-amount">{amount}</span>
+          {rest && <span className="gl-pc-rest">{rest}</span>}
+        </span>
+        {note && <span className="gl-pc-note">{note}</span>}
+      </div>
+    );
+  }
+  return (
+    <div className="gl-plan">
+      <p className={`gl-pc-usage${cell.soft ? ' is-soft' : ''}`}>{cell.value}</p>
+      {note && <span className="gl-pc-note">{note}</span>}
+    </div>
   );
 }
 
 /**
- * 요금제와 사용 한도 — **요금제가 행, 월 구독료 · 사용량이 열인 표**(2026-09-28).
+ * 요금제와 사용 한도 — **요금제마다 카드 하나**(2026-09-28). 요금 페이지처럼 큰 가격이 먼저
+ * 읽히고, 요금제끼리 나란히 서서 견줍니다. 타임라인 원장에서 여기만 카드인 것은 사용자가
+ * 고른 조합입니다(「A로 하고 요금제와 사용 한도는 B」).
  *
- * 그 전에는 주장 한 줄이 한 줄이었습니다(「Claude Pro 월 구독료 → 월 $20」). 사실은 2×2
- * 행렬을 한 줄씩 펼친 것이라, Pro와 Max를 견주려면 1↔2행, 4↔5행을 오가야 했고 요금제
- * 이름이 네 번 되풀이됐습니다. **바로 위 모델 표와 축이 같습니다** — 대상이 행, 속성이 열.
- * 요금제가 늘면 표가 세로로 자랍니다(열로 세우면 셋째 요금제부터 칸이 좁아집니다).
- *
- * **요금제를 안 가리는 값은 표 아래 줄로 섭니다**(`planCell`이 없는 주장). 이름은
- * `statement` 그대로입니다 — 「Gemini 앱 사용 한도 초기화 기준」은 Antigravity 화면에도
- * 서므로 「한도 초기화」로 줄이면 그 제품의 한도처럼 읽힙니다.
- *
- * **나이는 모델 표와 같은 규칙입니다**(`ageLayout`) — 하나면 캡션에, 여럿이면 줄마다.
+ * - **카드의 차례는 요금제가 데이터에 처음 나온 차례입니다** — 싼 요금제를 앞에 적습니다.
+ * - **구독료 칸은 값이 있든 없든 같은 높이입니다.** 「확인 전」은 점선 틀로 그 자리를
+ *   채워, 옆 카드의 큰 가격과 줄이 맞습니다.
+ * - **요금제를 안 가리는 값은 넓은 카드 하나로 섭니다**(`planCell`이 없는 주장). 이름은
+ *   `statement` 그대로입니다 — 「Gemini 앱 사용 한도 초기화 기준」은 Antigravity 화면에도
+ *   서므로 줄이면 그 제품의 한도처럼 읽힙니다.
+ * - **나이는 모델과 같은 규칙입니다**(`ageLayout`) — 하나면 캡션에, 여럿이면 카드마다.
  */
-function PlanTable({ claims, today }: { claims: Claim[]; today: string }) {
-  const inTable = claims.filter((c) => c.planCell);
+function PlanCards({ claims, today }: { claims: Claim[]; today: string }) {
+  const inCards = claims.filter((c) => c.planCell);
   const common = claims.filter((c) => !c.planCell);
-  /*
-    요금제는 데이터(`playbookClaims.ts`)에 처음 나온 차례로 섭니다. **싼 요금제를 앞에
-    적는 것이 규칙입니다**(CLAUDE.md · PLAYBOOK-ROUTINE.md) — 차례를 값으로 정렬하지 않는 것은
-    「$100부터」·「확인 전」처럼 수로 못 견주는 칸이 섞여 있어서입니다.
-  */
-  const plans = [...new Set(inTable.map((c) => c.planCell!.plan))];
-  const facets = PLAN_FACETS.filter(({ facet }) => inTable.some((c) => c.planCell!.facet === facet));
+  const plans = [...new Set(inCards.map((c) => c.planCell!.plan))];
   const cellOf = (plan: string, facet: PlanFacet) =>
-    inTable.find((c) => c.planCell!.plan === plan && c.planCell!.facet === facet);
+    inCards.find((c) => c.planCell!.plan === plan && c.planCell!.facet === facet);
 
   const ages = ageLayout([
-    ...plans.map((plan) => facets.map(({ facet }) => valueCell(cellOf(plan, facet), today))),
+    ...plans.map((plan) => PLAN_FACETS.map(({ facet }) => valueCell(cellOf(plan, facet), today))),
     ...common.map((c) => [valueCell(c, today)]),
   ]);
   const sources = [...new Map(claims.map((c) => [c.source.url, c.source])).values()];
 
   return (
-    <>
-      {plans.length > 0 && (
-        <table className="gl-plan-table" aria-label="요금제와 사용 한도">
-          <thead>
-            <tr>
-              <th scope="col">요금제</th>
-              {facets.map(({ facet, label }) => (
-                <th key={facet} scope="col">
-                  {label}
-                </th>
+    <section className="gl-ref is-plans" aria-labelledby="plans-title">
+      {/* 카드는 줄기에 안 매달립니다 — 절 머리 마디에서 줄기가 끝납니다. */}
+      <div className="gl-tl is-static">
+        <div className="gl-stop is-reached">
+          <RefHead icon={CreditCard} id="plans-title" title="요금제와 사용 한도" />
+          <div className="gl-board">
+            <ul className="gl-pcs">
+              {plans.map((plan, i) => (
+                <li key={plan} className="gl-pc">
+                  <h4 className="gl-pc-name">{plan}</h4>
+                  {PLAN_FACETS.map(({ facet, label }) => {
+                    const claim = cellOf(plan, facet);
+                    return claim ? (
+                      <div key={facet} className={`gl-pc-row is-${facet}`}>
+                        <span className="gl-pc-label">{label}</span>
+                        <PlanValue claim={claim} today={today} big={facet === 'fee'} />
+                      </div>
+                    ) : null;
+                  })}
+                  {ages.perRow[i] !== null && (
+                    <p className="gl-pc-age">{ageText(ages.perRow[i]!)}</p>
+                  )}
+                </li>
               ))}
-            </tr>
-          </thead>
-          <tbody>
-            {plans.map((plan, i) => (
-              <tr key={plan}>
-                {/*
-                  행 머리에는 요금제 이름만 둡니다 — 나이까지 넣으면 낭독기가 칸마다 「Claude
-                  Pro11일 전 확인」을 머리로 읽습니다. 줄마다 서는 나이는 그 줄의 마지막 칸 아래로
-                  갑니다.
-                */}
-                <th scope="row">{plan}</th>
-                {facets.map(({ facet, label }) => {
-                  const claim = cellOf(plan, facet);
-                  const lastFilled =
-                    facets.filter(({ facet: x }) => cellOf(plan, x)).at(-1)?.facet === facet;
-                  return claim ? (
-                    <td key={facet} className={`gl-plan is-${facet}`} data-label={label}>
-                      <PlanValue claim={claim} today={today} />
-                      {lastFilled && ages.perRow[i] !== null && (
-                        <span className="gl-plan-age">{ageText(ages.perRow[i]!)}</span>
-                      )}
-                    </td>
-                  ) : (
-                    <td key={facet} className={`gl-plan-empty is-${facet}`} />
-                  );
-                })}
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      )}
-      {common.length > 0 && (
-        <dl className="gl-plan-common">
-          {common.map((claim, i) => {
-            const age = ages.perRow[plans.length + i];
-            return (
-              <div key={claim.id} className="gl-plan-line">
-                <dt>
-                  {claim.statement}
-                  {age !== null && <span className="gl-plan-age">{` · ${ageText(age)}`}</span>}
-                </dt>
-                <dd className="gl-plan">
-                  <PlanValue claim={claim} today={today} />
-                </dd>
-              </div>
-            );
-          })}
-        </dl>
-      )}
+              {common.map((claim, i) => {
+                const age = ages.perRow[plans.length + i];
+                return (
+                  <li key={claim.id} className="gl-pc is-wide">
+                    {/* 요금제 카드와 같은 층(h4)에 섭니다 — 마지막 요금제 밑에 딸린 것처럼 읽히지 않게. */}
+                    <h4 className="gl-pc-label">
+                      <Clock size={13} aria-hidden="true" />
+                      {claim.statement}
+                      {age !== null && ` · ${ageText(age)}`}
+                    </h4>
+                    <PlanValue claim={claim} today={today} />
+                  </li>
+                );
+              })}
+            </ul>
+          </div>
+        </div>
+      </div>
       <p className="gl-caption">
         {sources.map((source, i) => (
           <Fragment key={source.url}>
@@ -606,13 +690,13 @@ function PlanTable({ claims, today }: { claims: Claim[]; today: string }) {
         ))}
         {ages.caption !== null && <> · {ageText(ages.caption)}</>}
       </p>
-    </>
+    </section>
   );
 }
 
 /* ── 머리 ───────────────────────────────────────────────────────── */
 
-/** 참고 절의 이름. 안에 든 것을 그대로 이름으로 씁니다 — 머리의 이동 링크도 같은 글자입니다. */
+/** 참고 탭의 이름. 안에 든 것을 그대로 이름으로 씁니다. */
 function factsTitle(hasModels: boolean, hasPlans: boolean): string | null {
   if (hasModels && hasPlans) return '모델과 요금';
   if (hasModels) return '고를 수 있는 모델';
@@ -620,21 +704,36 @@ function factsTitle(hasModels: boolean, hasPlans: boolean): string | null {
   return null;
 }
 
+/**
+ * 제품 머리 — **제품색이 옅게 밴 카드**(2026-09-28). 왼쪽 위에서 번지는 제품색, 오른쪽
+ * 아래에 크게 흐린 제품 마크, 제품색 타일 위의 마크가 이 화면이 어느 제품의 것인지를
+ * 먼저 말합니다. 쓸 수 있는 곳은 칩으로, 공식 사이트는 제품색 알약 단추로 섭니다.
+ *
+ * 제품 이름은 `h2`입니다 — 페이지의 `h1`은 서랍 배너의 「AI 가이드」입니다. 회사 이름은
+ * 옆 레일의 머리글이 말하므로 여기 안 적습니다. 제품을 바꾼 뒤 포커스를 받는 자리라
+ * `tabIndex={-1}`입니다(`PlaybookPage`).
+ *
+ * **여러 색이 든 마크(Gemini·Antigravity)는 타일을 채우지 않습니다** — 제품색 판 위에 네 색
+ * 마크를 올리면 색끼리 부딪힙니다. 그때 타일은 배경색 판에 제품색 테두리입니다.
+ */
 function GuideHead({ product }: { product: Product }) {
   return (
     <header className="gl-head">
-      {/*
-        제품 이름은 `h2`입니다 — 페이지의 `h1`은 서랍 배너의 「AI 가이드」입니다. 회사 이름은
-        옆 레일의 머리글이 말하므로 여기 안 적습니다. 제품을 바꾼 뒤 포커스를 받는 자리라
-        `tabIndex={-1}`입니다(`PlaybookPage`).
-      */}
+      <GuideMark
+        logo={product.logo}
+        monochrome={product.monochrome}
+        accent="var(--guide-accent)"
+        className="gl-head-ghost"
+      />
       <h2 className="gl-title" tabIndex={-1}>
-        <GuideMark
-          logo={product.logo}
-          monochrome={product.monochrome}
-          accent={product.accent}
-          className="gl-mark"
-        />
+        <span className={`gl-tile${product.monochrome ? '' : ' is-plain'}`} aria-hidden="true">
+          <GuideMark
+            logo={product.logo}
+            monochrome={product.monochrome}
+            accent="var(--bg)"
+            className="gl-mark"
+          />
+        </span>
         <span>{product.name}</span>
       </h2>
       <p className="gl-dek">{product.oneLine}</p>
@@ -642,16 +741,12 @@ function GuideHead({ product }: { product: Product }) {
       {product.surfaces.length > 0 && (
         <dl className="gl-facts">
           <dt>쓸 수 있는 곳</dt>
-          <dd>{product.surfaces.join(' · ')}</dd>
+          {product.surfaces.map((s) => (
+            <dd key={s}>{s}</dd>
+          ))}
         </dl>
       )}
 
-      {/*
-        **공식 사이트는 제품 브랜드색으로 채웁니다**(2026-09-28). 무채색 테두리 단추가
-        화면에서 가장 조용한 것이라 이 화면의 첫 행동이 안 보였습니다. 글자는 `--bg`라
-        브랜드색(`-text` 토큰)과의 대비가 라이트·다크 모두 4.5:1을 넘습니다 —
-        `theme.test.ts`가 그 둘을 이미 잽니다. 둘째 단추는 같은 색의 옅은 테두리입니다.
-      */}
       <div className="gl-head-links">
         <a
           className="gl-head-link is-primary"
@@ -716,29 +811,129 @@ function PeersSection({ product }: { product: Product }) {
   );
 }
 
-/* ── 원장 ───────────────────────────────────────────────────────── */
-
-export type GuideTab = 'save' | 'well' | 'facts';
+/* ── 줄기의 움직임 ──────────────────────────────────────────────── */
 
 /** 붙박이 nav 높이. 탭 줄이 여기에 붙어 따라옵니다(`.section-tabs`와 같은 값). */
 const STICKY_TOP = 71;
 
 /**
- * **원장에는 늘 제품이 옵니다**(2026-09-28). 첫 화면 원장도 기업 원장도 걷었습니다 —
- * `/playbook`과 기업 주소는 `PlaybookPage`가 제품 하나로 풀어서 넘깁니다.
+ * **줄기가 읽는 자리까지 찹니다.** 읽는 선은 화면 높이의 45%(탭 줄 아래 120px보다 위로는
+ * 안 올라갑니다)이고, 줄기는 그 선까지 차오르며 지나친 마디와 가지를 켭니다.
  *
- * **머리 아래는 탭입니다**(2026-09-28, 같은 날 펼친 글에서 바꿨다). 사용량 절감 · 품질
- * 향상 · 모델과 요금을 한 글로 이어 두니 Claude Code가 3,400px이었고, 모델 표를 보려면
- * 팁 열셋을 지나야 했습니다. 탭은 **사이트의 칩 모양**이고(뉴스·학습의 `.filter-chip`),
- * 밑줄 탭 띠는 이 사이트가 이미 되돌린 모양이라 안 씁니다.
+ * - 맨 위에서도 첫 마디까지는 늘 차 있습니다 — 첫 화면에서 줄기가 비지 않게.
+ * - 바닥에 닿으면 끝까지 찹니다 — 마지막 순간은 읽는 선까지 못 올라옵니다.
+ * - 지금 순간(`is-current`)은 줄기가 마지막으로 닿은 마디입니다.
+ * - 순간 머리가 탭 줄 아래에 붙으면 `is-stuck`이 붙어 그 아래를 짧게 흐립니다.
+ *
+ * 클래스를 DOM에 직접 겁니다 — 스크롤마다 React를 다시 그리지 않으려는 것입니다. React는
+ * `className`을 이전 렌더와 견주므로 여기서 건 클래스를 되돌리지 않습니다. 탭 줄 높이도
+ * 재서 `--gl-tabs-h`로 넘깁니다(순간 머리가 붙는 자리).
+ *
+ * **문서의 `scroll-padding-top`을 붙박이 층 높이로 둡니다**(nav + 탭 줄 + 순간 머리). 키보드로
+ * 링크를 옮겨 다닐 때 브라우저가 포커스를 그 층 아래로 끌어내리게 하려는 것입니다 — 안 그러면
+ * 포커스가 붙박이 층 밑에 숨습니다. 원장이 사라지면 되돌립니다.
+ */
+function useTimeline(root: RefObject<HTMLElement | null>, active: string | undefined) {
+  useEffect(() => {
+    const el = root.current;
+    if (!el) return;
+    let raf = 0;
+
+    const update = () => {
+      raf = 0;
+      const bar = el.querySelector<HTMLElement>('.gl-tabs');
+      const barH = bar?.offsetHeight ?? 0;
+      el.style.setProperty('--gl-tabs-h', `${barH}px`);
+      const top = STICKY_TOP + barH;
+      const panel = el.querySelector<HTMLElement>('.gl-panel:not([hidden])');
+      if (!panel) return;
+      /* 열린 탭의 순간 머리로 잽니다 — 숨은 탭의 머리는 높이가 0입니다. */
+      const headH = panel.querySelector<HTMLElement>('.gl-stop-head')?.offsetHeight ?? 0;
+      document.documentElement.style.scrollPaddingTop = `${top + headH + 8}px`;
+
+      panel.querySelectorAll<HTMLElement>('.gl-stop').forEach((stop) => {
+        const head = stop.querySelector<HTMLElement>('.gl-stop-head');
+        if (!head) return;
+        const headTop = head.getBoundingClientRect().top;
+        stop.classList.toggle(
+          'is-stuck',
+          headTop <= top + 0.5 && stop.getBoundingClientRect().top < top - 1,
+        );
+      });
+
+      const tl = panel.querySelector<HTMLElement>('.gl-tl[data-live]');
+      if (!tl) return;
+      const box = tl.getBoundingClientRect();
+      const track = tl.querySelector<HTMLElement>('.gl-tl-track');
+      const fill = tl.querySelector<HTMLElement>('.gl-tl-fill');
+      const stops = [...tl.querySelectorAll<HTMLElement>('.gl-stop')];
+      if (!track || !fill || stops.length === 0) return;
+      const trackTop = track.offsetTop;
+      const trackBottom = trackTop + track.offsetHeight;
+      const nodeY = (s: HTMLElement) =>
+        s.getBoundingClientRect().top -
+        box.top +
+        (s.querySelector<HTMLElement>('.gl-stop-head')?.offsetHeight ?? 0) / 2;
+
+      const line = Math.max(window.innerHeight * 0.45, top + 120);
+      const atBottom =
+        window.scrollY + window.innerHeight >= document.documentElement.scrollHeight - 4;
+      let to = Math.max(line - box.top, nodeY(stops[0]));
+      if (atBottom) to = trackBottom;
+      to = Math.min(to, trackBottom);
+      fill.style.height = `${Math.max(0, to - trackTop)}px`;
+      tl.classList.toggle('is-done', to >= trackBottom - 1);
+      /* 첫 측정은 전환 없이 — 그 뒤부터 줄기가 자라는 전환을 겁니다. */
+      if (!tl.classList.contains('is-ready')) {
+        requestAnimationFrame(() => tl.classList.add('is-ready'));
+      }
+
+      let current = stops[0];
+      for (const stop of stops) {
+        const reached = nodeY(stop) <= to + 1;
+        stop.classList.toggle('is-reached', reached);
+        if (reached) current = stop;
+        stop.querySelectorAll<HTMLElement>('.gl-tip').forEach((tip) => {
+          tip.classList.toggle('is-reached', tip.getBoundingClientRect().top - box.top + 25 <= to);
+        });
+      }
+      for (const stop of stops) stop.classList.toggle('is-current', stop === current);
+    };
+
+    const schedule = () => {
+      if (!raf) raf = requestAnimationFrame(update);
+    };
+    update();
+    window.addEventListener('scroll', schedule, { passive: true });
+    window.addEventListener('resize', schedule);
+    void document.fonts?.ready.then(schedule);
+    return () => {
+      window.removeEventListener('scroll', schedule);
+      window.removeEventListener('resize', schedule);
+      if (raf) cancelAnimationFrame(raf);
+      document.documentElement.style.scrollPaddingTop = '';
+    };
+  }, [root, active]);
+}
+
+/* ── 원장 ───────────────────────────────────────────────────────── */
+
+export type GuideTab = 'save' | 'well' | 'facts';
+
+/**
+ * **원장에는 늘 제품이 옵니다**(2026-09-28). `/playbook`과 기업 주소는 `PlaybookPage`가 제품
+ * 하나로 풀어서 넘깁니다.
+ *
+ * **머리 아래는 탭입니다** — 사용량 절감 · 품질 향상 · 모델과 요금. 셋을 한 글로 이어 두니
+ * 모델 표를 보려면 팁 열셋을 지나야 했습니다. 탭은 **세 칸 세그먼트**이고 고른 칸이
+ * 제품색으로 채워집니다(칸마다 아이콘과 수).
  *
  * - **모든 탭의 내용이 HTML에 실립니다.** 안 고른 탭은 `hidden`일 뿐이라 프리렌더와
  *   검색에는 전부 들어갑니다. 첫 탭이 기본이라 서버와 클라이언트의 첫 그림이 같습니다.
- * - **고른 탭은 제품을 바꿔도 남습니다**(`PlaybookPage`가 들고 있습니다). 모델 표를
- *   견주려고 레일을 오갈 때 매번 탭을 다시 누르지 않게 하려는 것입니다. 새 제품에 그
+ * - **고른 탭은 제품을 바꿔도 남습니다**(`PlaybookPage`가 들고 있습니다). 새 제품에 그
  *   탭이 없으면(Claude에는 사용량 절감이 없습니다) 첫 탭이 섭니다.
- * - **탭 줄은 머리 아래에 붙어 따라옵니다.** 그래서 긴 탭을 읽다가 옆 탭으로 바꾸면
- *   새 탭의 첫머리로 옮깁니다 — 안 그러면 새 탭의 중간에 말없이 떨어집니다.
+ * - **탭 줄은 머리 아래에 붙어 따라오고, 불투명합니다** — 밑으로 들어간 마디가 비치면
+ *   줄기가 두 벌로 보입니다. 긴 탭을 읽다가 옆 탭으로 바꾸면 새 탭의 첫머리로 옮깁니다.
  */
 export function GuideLedger({
   product,
@@ -755,7 +950,7 @@ export function GuideLedger({
   /* 제품 자신 + 그 회사 + 이 제품이 돌리는 모델의 값. */
   const claims = claimsForProduct(product.id);
   const tips = claims.filter((c) => c.topic === 'habit');
-  /* 컨텍스트 창과 모델 단가는 모델 표가 값으로 보여 주므로 요금표에서 뺍니다. */
+  /* 컨텍스트 창과 모델 단가는 모델 줄이 값으로 보여 주므로 요금에서 뺍니다. */
   const plans = claims.filter(isPlanClaim);
   const contextOf = new Map(
     claims.filter((c) => c.topic === 'context').map((c) => [c.subject.id, c]),
@@ -768,44 +963,48 @@ export function GuideLedger({
   /* 거기서 고를 만한 최신만. 회사별로 보므로 최신이 없는 회사 것은 그대로 섭니다. */
   const models = shownModels(product.models);
   const facts = factsTitle(models.length > 0, plans.length > 0);
-  const both = models.length > 0 && plans.length > 0;
 
   /* 빈 탭은 안 세웁니다 — 팁이 없는 축, 모델도 요금도 없는 참고 탭. */
-  const tipTabs = READ_AIMS.map(({ aim, title }) => {
+  const tipTabs = READ_AIMS.map(({ aim, title, icon }) => {
     const groups = groupTips(
       aim,
       tips.filter((c) => c.aim === aim),
     );
     const count = groups.reduce((n, g) => n + g.rows.length, 0);
-    return { id: aim as GuideTab, label: title, count, body: <TipGroups aim={aim} groups={groups} /> };
+    return {
+      id: aim as GuideTab,
+      label: title,
+      icon,
+      count,
+      body: <TipTimeline aim={aim} groups={groups} />,
+    };
   }).filter((t) => t.count > 0);
-  const tabs: Array<{ id: GuideTab; label: string; count?: number; body: ReactNode }> = [
+  const tabs: Array<{
+    id: GuideTab;
+    label: string;
+    icon: LucideIcon;
+    count?: number;
+    body: ReactNode;
+  }> = [
     ...tipTabs,
     ...(facts
       ? [
           {
             id: 'facts' as const,
             label: facts,
+            icon: Tag,
             body: (
               <>
                 {models.length > 0 && (
-                  <>
-                    {both && <h3 className="gl-facts-sub">고를 수 있는 모델</h3>}
-                    <ModelTable
-                      product={product}
-                      models={models}
-                      contextOf={contextOf}
-                      priceOf={priceOf}
-                      today={today}
-                    />
-                  </>
+                  <ModelTimeline
+                    product={product}
+                    models={models}
+                    contextOf={contextOf}
+                    priceOf={priceOf}
+                    today={today}
+                  />
                 )}
-                {plans.length > 0 && (
-                  <>
-                    {both && <h3 className="gl-facts-sub">요금제와 사용 한도</h3>}
-                    <PlanTable claims={plans} today={today} />
-                  </>
-                )}
+                {plans.length > 0 && <PlanCards claims={plans} today={today} />}
               </>
             ),
           },
@@ -813,6 +1012,9 @@ export function GuideLedger({
       : []),
   ];
   const active = tabs.some((t) => t.id === tab) ? tab! : tabs[0]?.id;
+
+  const ledgerRef = useRef<HTMLElement>(null);
+  useTimeline(ledgerRef, active);
 
   /*
     탭 줄이 붙어 있을 때(원래 자리보다 아래를 읽는 중) 탭을 바꾸면 새 탭의 첫머리로
@@ -853,40 +1055,53 @@ export function GuideLedger({
   };
 
   return (
-    <article className="gl-ledger" style={{ '--guide-accent': product.accent } as CSSProperties}>
+    <article
+      className="gl-ledger"
+      ref={ledgerRef}
+      style={{ '--guide-accent': product.accent } as CSSProperties}
+    >
       <GuideHead product={product} />
 
       {tabs.length > 0 && (
         <>
           <div className="gl-tabs-anchor" ref={anchorRef} />
-          <div
-            className="gl-tabs"
-            role="tablist"
-            aria-label={`${product.name} 가이드`}
-          >
-            {tabs.map((t) => (
-              <button
-                key={t.id}
-                type="button"
-                role="tab"
-                id={`tab-${t.id}`}
-                aria-controls={`panel-${t.id}`}
-                aria-selected={t.id === active}
-                tabIndex={t.id === active ? 0 : -1}
-                className={`gl-tab${t.id === active ? ' is-on' : ''}`}
-                onClick={() => select(t.id)}
-                onKeyDown={onKeyDown}
-              >
-                {t.label}
-                {t.count !== undefined && <span className="gl-tab-count">{t.count}</span>}
-              </button>
-            ))}
+          <div className="gl-tabs">
+            <div
+              className="gl-tabs-seg"
+              role="tablist"
+              aria-label={`${product.name} 가이드`}
+              style={{ '--gl-tab-n': tabs.length } as CSSProperties}
+            >
+              {tabs.map((t) => {
+                const Icon = t.icon;
+                return (
+                  <button
+                    key={t.id}
+                    type="button"
+                    role="tab"
+                    id={`tab-${t.id}`}
+                    aria-controls={`panel-${t.id}`}
+                    aria-selected={t.id === active}
+                    tabIndex={t.id === active ? 0 : -1}
+                    className={`gl-tab${t.id === active ? ' is-on' : ''}`}
+                    onClick={() => select(t.id)}
+                    onKeyDown={onKeyDown}
+                  >
+                    <Icon size={18} aria-hidden="true" />
+                    <span className="gl-tab-label">{t.label}</span>
+                    {t.count !== undefined && <span className="gl-tab-count">{t.count}</span>}
+                  </button>
+                );
+              })}
+            </div>
           </div>
           {tabs.map((t) => (
             <section
               key={t.id}
               className="gl-panel"
               role="tabpanel"
+              /* 탭에서 Tab을 누르면 탭 내용으로 옵니다(WAI-ARIA 탭 패턴). */
+              tabIndex={0}
               id={`panel-${t.id}`}
               aria-labelledby={`tab-${t.id}`}
               hidden={t.id !== active}

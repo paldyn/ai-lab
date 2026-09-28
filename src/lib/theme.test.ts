@@ -106,3 +106,76 @@ describe('제품색 판 위의 제품색 글자', () => {
     }
   }
 });
+
+/*
+  **제품색을 섞은 면 위의 글자**(AI 가이드 타임라인 원장, 2026-09-28). 순간 띠 · 머리 카드 ·
+  다크의 요금 카드 · 탭 세그먼트가 전부 `color-mix`라 첫 `:root`만 읽는 위 검사에 안 걸린다.
+  OpenAI 라이트의 켜진 띠(12%) 위 `--text-dim`이 4.45:1로 AA를 못 넘은 적이 있다.
+
+  비율은 styles.css의 `.gl-ledger` · `[data-theme='dark'] .gl-ledger` 블록과 같아야 한다 —
+  아래 첫 검사가 그 줄을 못 박는다.
+*/
+describe('제품색을 섞은 면 위의 글자', () => {
+  const accents = [
+    ...new Set(
+      guideProducts.map((p) => /^var\((--[a-z0-9-]+)\)$/.exec(p.accent)?.[1] ?? p.accent),
+    ),
+  ];
+  /* [면 이름, 섞는 비율(라이트, 다크), 바탕 토큰, 그 위에 서는 글자 토큰] */
+  const surfaces: Array<[string, [number, number], string, string[]]> = [
+    ['순간 띠', [0.07, 0.1], '--bg', ['--text-strong', '--text-dim']],
+    ['켜진 순간 띠', [0.12, 0.17], '--bg', ['--text-strong', '--text']],
+    ['머리 카드', [0.04, 0.04], '--bg', ['--text-strong', '--prose-text', '--text-dim']],
+    ['머리 카드 모서리', [0.14, 0.14], '--bg', ['--text-strong', '--prose-text']],
+  ];
+
+  it('섞는 비율이 styles.css와 같다', () => {
+    const light = /\.gl-ledger \{[^}]*\}/.exec(css)?.[0] ?? '';
+    const dark = /\[data-theme='dark'\] \.gl-ledger \{[^}]*\}/.exec(css)?.[0] ?? '';
+    const mix = (block: string, token: string, pct: number, base: string) =>
+      block.includes(`${token}: color-mix(in srgb, var(--guide-accent) ${pct}%, var(${base}));`);
+    expect(mix(light, '--gl-a04', 4, '--bg')).toBe(true);
+    expect(mix(light, '--gl-a07', 7, '--bg')).toBe(true);
+    expect(mix(light, '--gl-a12', 12, '--bg')).toBe(true);
+    expect(mix(light, '--gl-a14', 14, '--bg')).toBe(true);
+    expect(mix(dark, '--gl-a07', 10, '--bg')).toBe(true);
+    expect(mix(dark, '--gl-a12', 17, '--bg')).toBe(true);
+    expect(mix(dark, '--gl-card', 6, '--surface')).toBe(true);
+  });
+
+  for (const [i, { name, tokens }] of themes.entries()) {
+    for (const token of accents) {
+      for (const [surface, pct, base, inks] of surfaces) {
+        for (const ink of inks) {
+          it(`${name} · ${token} · ${surface} 위 ${ink}`, () => {
+            const plate = mixHex(tokens[token], tokens[base], pct[i]);
+            const ratio = contrastRatio(tokens[ink], plate);
+            expect(ratio, `${ink}(${tokens[ink]}) on ${plate} = ${ratio.toFixed(2)}:1`).toBeGreaterThanOrEqual(
+              AA_NORMAL_TEXT,
+            );
+          });
+        }
+      }
+    }
+  }
+
+  /* 다크의 요금 카드는 `--surface`에 제품색 6%를 섞는다. 라이트 카드는 `--bg`라 위 검사가 덮는다. */
+  const dark = themes[1].tokens;
+  for (const token of accents) {
+    for (const ink of ['--text-strong', '--text-dim', '--text-muted']) {
+      it(`dark · ${token} · 요금 카드 위 ${ink}`, () => {
+        const plate = mixHex(dark[token], dark['--surface'], 0.06);
+        const ratio = contrastRatio(dark[ink], plate);
+        expect(ratio, `${ink} on ${plate} = ${ratio.toFixed(2)}:1`).toBeGreaterThanOrEqual(AA_NORMAL_TEXT);
+      });
+    }
+  }
+
+  /* 탭 세그먼트 — 무채색 `--surface` 위의 안 고른 탭 이름, `--guide-rule` 위의 수. */
+  for (const { name, tokens } of themes) {
+    it(`${name} · 탭 세그먼트 위 이름과 수`, () => {
+      expect(contrastRatio(tokens['--text-dim'], tokens['--surface'])).toBeGreaterThanOrEqual(AA_NORMAL_TEXT);
+      expect(contrastRatio(tokens['--text'], tokens['--guide-rule'])).toBeGreaterThanOrEqual(AA_NORMAL_TEXT);
+    });
+  }
+});

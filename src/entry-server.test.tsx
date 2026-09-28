@@ -160,10 +160,14 @@ describe('프리렌더 — 본문이 HTML에 들어간다', () => {
   });
 
   /*
-    **탭·순간 라벨·표의 줄이 데이터대로 서는가.** 빈 탭을 안 세우는 규칙(팁이 없는 축,
+    **탭·순간 마디·표의 줄이 데이터대로 서는가.** 빈 탭을 안 세우는 규칙(팁이 없는 축,
     모델도 요금도 없는 참고 탭)과 같은 갈래가 없으면 다른 제품 절이 안 서는 규칙, 그리고
-    **순간이 하나뿐이면 라벨을 안 세우는** 규칙을 제품마다 데이터에서 세어 봅니다. 모델
-    0인 제품, 팁 한 편인 제품이 섞여 있어 고정 수로는 못 잽니다.
+    **팁이 든 순간마다 줄기 위에 마디가 하나씩 서는** 규칙을 제품마다 데이터에서 세어
+    봅니다. 모델 0인 제품, 팁 한 편인 제품이 섞여 있어 고정 수로는 못 잽니다.
+
+    타임라인 원장(2026-09-28)부터는 **순간이 하나뿐이어도 마디를 세웁니다** — 헤어라인
+    목록에서는 라벨이 탭 이름을 되풀이해 걷었지만, 줄기 위에서는 마디가 없으면 가지가
+    매달릴 데가 없습니다.
 
     **탭은 하나만 열려 있고 나머지 내용도 HTML에 다 실립니다**(`hidden`). 첫 탭이
     열려 있어야 서버와 클라이언트의 첫 그림이 같습니다.
@@ -187,7 +191,7 @@ describe('프리렌더 — 본문이 HTML에 들어간다', () => {
         panel: panels,
         open: panels > 0 ? 1 : 0,
         peers: peers.length > 0 ? 1 : 0,
-        situation: groupsPerAim.reduce((sum, n) => sum + (n >= 2 ? n : 0), 0),
+        situation: groupsPerAim.reduce((sum, n) => sum + n, 0),
         model: models.length,
         plan: plans.length,
       };
@@ -232,20 +236,21 @@ describe('프리렌더 — 본문이 HTML에 들어간다', () => {
   });
 
   /*
-    **요금표는 요금제가 행입니다**(2026-09-28). 요금제 이름이 행 머리(`th scope="row"`)로
-    한 번씩만 서고, 칸이 없는 주장(요금제를 안 가리는 값)은 표 아래 줄로 섭니다.
+    **요금제마다 카드 하나입니다**(2026-09-28). 요금제 이름이 카드 머리(`gl-pc-name`)로
+    데이터 차례대로 한 번씩만 서고, 칸이 없는 주장(요금제를 안 가리는 값)은 넓은 카드로
+    섭니다.
   */
-  it('요금표가 요금제마다 한 행으로 선다', async () => {
+  it('요금제가 카드마다 하나씩 선다', async () => {
     const wrong: string[] = [];
     for (const product of guideProducts) {
       const ledger = ledgerOf((await render(`/playbook/${product.vendorId}/${product.id}`)).html);
       const plans = claimsForProduct(product.id).filter(isPlanClaim);
       const names = [...new Set(plans.flatMap((c) => (c.planCell ? [c.planCell.plan] : [])))];
-      const rows = [...ledger.matchAll(/<th scope="row">([^<]*)/g)].map((m) => m[1]);
-      const lines = classCount(ledger, 'gl-plan-line');
+      const rows = [...ledger.matchAll(/<h4 class="gl-pc-name">([^<]*)/g)].map((m) => m[1]);
+      const lines = (ledger.match(/class="gl-pc is-wide"/g) ?? []).length;
       const common = plans.filter((c) => !c.planCell).length;
       if (JSON.stringify(rows) !== JSON.stringify(names.map(esc)) || lines !== common) {
-        wrong.push(`${product.id}: 행 ${JSON.stringify(rows)} ≠ ${JSON.stringify(names)} · 아래 줄 ${lines}/${common}`);
+        wrong.push(`${product.id}: 카드 ${JSON.stringify(rows)} ≠ ${JSON.stringify(names)} · 넓은 카드 ${lines}/${common}`);
       }
     }
     expect(wrong).toEqual([]);
