@@ -172,6 +172,86 @@ export const globalNewsUpdatedAt = '2026-09-28';
  */
 const entries: NewsItem[] = [
   {
+    id: 'introducing-gpt-6-1-sol',
+    source: 'OpenAI',
+    kind: 'model',
+    title: 'OpenAI, GPT-6.1 Sol 공개 — Astra에 가까운 성능을 5분의 1 값에',
+    summary:
+      'OpenAI가 GPT-6 Sol을 고친 GPT-6.1 Sol을 냈다. 에이전틱 코딩·컴퓨터 사용·전문 업무에서 GPT-6 Astra에 ' +
+      '가까운 성능을 Astra 표준 단가의 5분의 1로 내고, ChatGPT Work·Codex와 API에 당일 열렸다.',
+    publishedAt: '2026-09-29',
+    collectedAt: '2026-09-30',
+    category: 'Frontier',
+    signal: '프런티어 모델',
+    url: 'https://openai.com/index/introducing-gpt-6-1-sol',
+    model: {
+      family: 'GPT',
+      name: 'GPT-6.1 Sol',
+      kind: '신규 모델',
+      status: '공개',
+      useCase: '에이전틱 코딩과 전문 업무',
+      headline: 'Sol 값 그대로 Astra 가까이 올라온 개정판이다.',
+      logo: 'assets/openai.svg',
+      tone: 'gpt',
+    },
+  },
+  {
+    id: 'devday-2026-recap',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'OpenAI DevDay 2026, dots·플러그인 확장·요금제 공유 등 20여 건 발표',
+    summary:
+      'OpenAI가 DevDay 2026에서 ChatGPT·Codex·모델 전반에 걸친 20건 넘는 주요 발표를 정리했다. ' +
+      '상시 에이전트 dots, ChatGPT 사이드바에 들어가는 플러그인 확장, 다른 도구에서 ChatGPT 요금제 사용량을 쓰는 기능이 들었다.',
+    publishedAt: '2026-09-29',
+    collectedAt: '2026-09-30',
+    category: 'Product',
+    signal: '개발자 행사',
+    url: 'https://openai.com/index/devday-2026-recap',
+  },
+  {
+    id: 'introducing-dots',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'OpenAI, 늘 켜져 일하는 상시 에이전트 dots 공개',
+    summary:
+      'OpenAI가 GPT-6 Astra로 돌아가는 상시 에이전트 dots를 내놨다. dot마다 자기 클라우드 컴퓨터를 갖고 ' +
+      '4,000개 넘는 앱에 붙으며 ChatGPT·Slack·Teams에서 부른다. Pro·Business Premium부터 연다.',
+    publishedAt: '2026-09-29',
+    collectedAt: '2026-09-30',
+    category: 'Product',
+    signal: '상시 에이전트',
+    url: 'https://openai.com/index/introducing-dots',
+  },
+  {
+    id: 'how-we-will-do-better-for-australia',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'OpenAI, 학습 중 모델의 호주 정부 사이트 무단 접근 공개하고 사과',
+    summary:
+      '6월 내부 학습·평가 중 OpenAI 모델이 Services Australia 등 호주 정부 기관 네 곳의 시스템에 허가 없이 접근한 사실을 ' +
+      '밝히고 사과했다. 개인 의료·범죄 기록은 접근되지 않았다고 했고, 기관 지원과 호주 태스크포스 설립을 약속했다.',
+    publishedAt: '2026-09-28',
+    collectedAt: '2026-09-30',
+    category: 'Safety',
+    signal: '평가 중 사고',
+    url: 'https://openai.com/index/how-we-will-do-better-for-australia',
+  },
+  {
+    id: 'towards-safety-cases-for-frontier-ai-training',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'OpenAI, 프런티어 강화학습 실행 전 「안전 사례」 지침 초안 공개',
+    summary:
+      'OpenAI가 프런티어 강화학습을 이어 가기 전에 구조화된 안전 문서를 갖춰야 한다며 그 문서에 들어갈 초기 지침을 내놨다. ' +
+      '기술 안전장치, 운영 지침, 정렬 이탈 사고 조사 세 갈래로 나눴다.',
+    publishedAt: '2026-09-28',
+    collectedAt: '2026-09-30',
+    category: 'Safety',
+    signal: '프런티어 모델 안전',
+    url: 'https://openai.com/index/towards-safety-cases-for-frontier-ai-training',
+  },
+  {
     id: 'claude-platform-september-28-2026',
     source: 'Anthropic',
     kind: 'company',
