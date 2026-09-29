@@ -260,8 +260,12 @@ export const guideProducts: Product[] = [
     ],
     /*
       learn.chatgpt.com/docs/models 의 web 모드 블록이 「These recommendations apply
-      to **ChatGPT Work** on the web.」이라고 못 박고, 이 다섯은 모델 카드의
-      「ChatGPT web」 행이 전부 true입니다.
+      to **ChatGPT Work** on the web.」이라고 못 박습니다. 근거는 셋으로 갈립니다
+      (2026-09-29) — GPT-6 Astra·Sol·Luna는 모델 카드의 「ChatGPT Work on the web」 행이
+      true이고 같은 페이지가 「In ChatGPT, GPT-6 Sol and GPT-6 Luna are available in Work and
+      Codex.」라고 적습니다. GPT-5.6 셋은 카드가 없고 「GPT-5.6 Sol, GPT-5.6 Terra, and GPT-5.6
+      Luna remain available during the rollout.」 한 문장이 받칩니다. GPT-5.5는 「View other
+      models」 칸의 카드이고 2026-10-14에 은퇴합니다(구세대라 화면에서는 빠집니다).
 
       **다만 표를 그대로 옮긴 것이 아닙니다.** 같은 표에서 GPT-5.4와 GPT-5.4 mini도
       ChatGPT web이 true인데 은퇴일로 걸러 뺐습니다 — 페이지가 말한 사실이 아니라
@@ -302,7 +306,8 @@ export const guideProducts: Product[] = [
       Sol and GPT-6 Luna are rolling out to Codex and ChatGPT Work」, 모델 페이지 「In ChatGPT,
       GPT-6 Sol and GPT-6 Luna are available in Work and Codex.」), GPT-5.3 Codex Spark가 빠졌습니다
       (2026-09-14 폐기). GPT-5.6 셋은 「remain available during the rollout」이라 남깁니다.
-      **차례는 회사 등급입니다** — API 모델 페이지의 추론 등급이 높은 것부터, 같으면 새것부터.
+      **차례는 회사 등급입니다** — API 모델 페이지의 추론 등급이 높은 것부터, 같으면 세대가
+      새것부터, 같은 세대 안에서는 단가가 높은 것부터(GPT-6 Astra $10 > GPT-6 Sol $2).
       ChatGPT Work도 같은 차례입니다.
 
       learn.chatgpt.com/codex/models(→ /docs/models). 근거는 각 모델 카드의 표면 행입니다 —

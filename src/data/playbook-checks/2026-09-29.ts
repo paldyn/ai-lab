@@ -42,7 +42,9 @@ import type { CheckEntry } from '../../types/playbook';
  * - `developers.openai.com/api/docs/pricing`(.md) — **OpenAI 단가의 출처를 여기 한 곳으로 모았습니다.**
  *   모델마다 한 줄에 Short context · Long context 단가가 다 서고, Long context 값이 모델 페이지의
  *   272K 규칙(2배 · 1.5배)으로 낸 값과 전부 같습니다. 모델 페이지는 단가 칸마다 한 줄이라 열 자를
- *   못 넘었고, 모델이 늘 때마다 여는 페이지가 늘어 상한(열두 곳)에 닿아 있었습니다.
+ *   못 넘었고, 모델이 늘 때마다 여는 페이지가 늘었습니다(GPT-6 Sol·Luna 페이지를 더하면 상한 열두
+ *   곳을 넘을 참이었습니다). 모아서 여덟 곳이 됐습니다. GPT-6·GPT-5.6 행에는 272K 경계가 없고
+ *   모델 페이지 규칙 줄에 있습니다(GPT-5.5 행은 표가 「<272K」를 적습니다).
  * - `openai.com/index/introducing-gpt-oss/` — GPT-OSS 120B의 컨텍스트와, 단가가 없는 까닭.
  * - `learn.chatgpt.com/docs/changelog` · `learn.chatgpt.com/docs/models` — Spark 폐기, GPT-6
  *   Sol·Luna의 Codex·Work 도입, GPT-5.6 셋이 롤아웃 동안 남는다는 문장.

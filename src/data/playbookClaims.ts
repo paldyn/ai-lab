@@ -427,17 +427,6 @@ export const playbookClaims: Claim[] = [
     volatility: 'limit',
     source: { label: 'Gemini 구독', url: 'https://gemini.google/us/subscriptions/?hl=en' },
   },
-  {
-    id: 'gpt-5-3-codex-spark-context',
-    subject: { kind: 'model', id: 'gpt-5-3-codex-spark' },
-    topic: 'context',
-    statement: 'GPT-5.3 Codex Spark의 입력 컨텍스트 창',
-    /* 오늘 페이지를 열었지만 이 값을 떠받치는 줄을 못 봤다. 지어내지 않는다. */
-    value: null,
-    tier: 'vendor',
-    volatility: 'model',
-    source: { label: 'Codex 모델 문서', url: 'https://learn.chatgpt.com/codex/models' },
-  },
 
   /* ── 팁 ── 이 서랍이 실제로 파는 것. 값이 아니라 행동을 바꾸는 문장이다. ── */
   {
@@ -1506,10 +1495,11 @@ export const playbookClaims: Claim[] = [
 
       **OpenAI 단가의 출처를 단가 표 한 곳으로 모았다**(같은 날). 모델 페이지는 단가 칸마다
       한 줄이라 열 자를 못 넘어 덩어리를 이어 붙여 인용해 왔고(「조립한 인용」에 가깝다), 모델이
-      늘 때마다 여는 페이지가 하나씩 늘어 「열두 곳」 상한에 닿았다. 단가 표의 원고(.md)는
-      모델마다 한 줄에 Short context · Long context 단가를 다 싣는다. 구간의 경계(272K)는 표에
-      안 적히고 모델 페이지의 규칙 줄에 있다 — 표의 Long context 값이 그 규칙(2배 · 1.5배)과
-      전부 맞는 것을 대조했다.
+      늘 때마다 여는 페이지가 하나씩 늘었다(GPT-6 Sol·Luna 모델 페이지를 더하면 「열두 곳」
+      상한을 넘을 참이었다). 단가 표의 원고(.md)는 모델마다 한 줄에 Short context · Long context
+      단가를 다 싣는다. GPT-6·GPT-5.6 행에는 구간의 경계(272K)가 없고 모델 페이지의 규칙 줄에
+      있다(GPT-5.5·5.4 행은 표가 「<272K」를 적는다) — 표의 Long context 값이 그 규칙
+      (2배 · 1.5배)과 전부 맞는 것을 대조했다.
     */
     value: '$10 / $50 (272K 초과 시 $20 / $75)',
     tier: 'vendor',

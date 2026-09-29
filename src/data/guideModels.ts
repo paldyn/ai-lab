@@ -173,12 +173,14 @@ const models: ModelInfo[] = [
     하나 안 바뀌고 5에서 5.5로 옮겨 갔습니다. 마크와 판 색도 5와 같습니다(`bubble.svg` ·
     `#F0EEE6`, 문서 홈 카드).
 
-    **서열은 3위(넷 중)입니다.** 서열 문장(「From lowest to highest cost and capability, the
-    current models are Claude Haiku 4.5, Claude Sonnet 5, Claude Opus 5.5, and Claude Fable 5.1」)이
-    2026-09-29에도 아직 Sonnet 5로 적혀 있어, 그 자리를 현행 Sonnet에 이어 붙였습니다 — Sonnet
-    5.5 발표 글이 「Opus 5.5 remains clearly stronger at complex, open-ended work requiring
-    sustained judgment」라고 적어 Opus 아래 자리를 떠받칩니다. 벤치마크 하나(Terminal-Bench 4.0)
-    에서는 Opus 5.5보다 높지만, 회사 자신이 서열을 그렇게 두지 않습니다.
+    **서열은 3위(넷 중)이고, 근거는 모델 선택표입니다.** 다른 셋이 가리키는 서열 문장(「From
+    lowest to highest cost and capability, the current models are Claude Haiku 4.5, Claude Sonnet 5,
+    Claude Opus 5.5, and Claude Fable 5.1」)은 2026-09-29에도 아직 Sonnet 5로 적혀 있어 Sonnet
+    5.5를 그리로 이으면 누른 사람이 다른 모델의 이름을 봅니다. 선택표(choosing-a-model)는
+    「The highest available capability」 Fable 5.1 → Opus 5.5 → Sonnet 5.5 → 「The lowest latency
+    and price」 Haiku 4.5 차례로 서고, Sonnet 5.5 발표 글도 「Opus 5.5 remains clearly stronger at
+    complex, open-ended work requiring sustained judgment」라고 적습니다. 벤치마크 하나
+    (Terminal-Bench 4.0)에서는 Opus 5.5보다 높지만, 회사 자신이 서열을 그렇게 두지 않습니다.
   */
   {
     id: 'claude-sonnet-5-5',
@@ -194,7 +196,7 @@ const models: ModelInfo[] = [
       kind: 'order',
       rank: 3,
       of: 4,
-      url: 'https://platform.claude.com/docs/en/about-claude/models/optimizing-for-cost-and-intelligence',
+      url: 'https://platform.claude.com/docs/en/about-claude/models/choosing-a-model',
       speed: 'Fast',
       speedUrl: 'https://platform.claude.com/docs/en/models/overview',
     },
@@ -363,24 +365,6 @@ const models: ModelInfo[] = [
     },
     current: true,
     sourceUrl: 'https://developers.openai.com/api/docs/models',
-  },
-  {
-    id: 'gpt-5-3-codex-spark',
-    vendorId: 'openai',
-    name: 'GPT-5.3 Codex Spark',
-    apiId: 'gpt-5.3-codex-spark',
-    useWhen: {
-      text: '거의 즉시 오가는 실시간 코딩 반복에',
-      url: 'https://learn.chatgpt.com/codex/models',
-    },
-    /*
-      **2026-09-14에 폐기됐습니다.** Codex 변경 기록 「GPT-5.3-Codex-Spark was deprecated on
-      September 14, 2026. The research preview is no longer available in the ChatGPT desktop app,
-      Codex CLI, or IDE extension.」 고를 수 없으므로 Codex 목록에서 뺐고, 등록부에는 옛 확인
-      기록을 받치려고 남깁니다(쓰임의 주소는 이제 이 모델이 없는 페이지로 넘어갑니다).
-    */
-    current: false,
-    sourceUrl: 'https://learn.chatgpt.com/docs/changelog',
   },
   {
     id: 'gpt-5-5',
@@ -587,9 +571,9 @@ export const modelsOfVendor = (vendorId: VendorId): ModelInfo[] =>
   guideModels.filter((model) => model.vendorId === vendorId);
 
 /**
- * 모델 줄 앞에 서는 마크 — **계열 마크이지 모델별 마크가 아닙니다.**
+ * 모델 줄 앞에 서는 마크 — **제 그림(`ModelInfo.mark`)이 없는 모델에만 서는 계열 마크**입니다.
  *
- * **모델마다 다른 심볼은 존재하지 않습니다.** 2026-09-18에 실제로 받아 보고
+ * **아래는 워드마크 락업 이야기입니다.** 2026-09-18에 실제로 받아 보고
  * 확인했습니다: `anthropic.com/claude/{opus,sonnet,haiku,fable}` 네 페이지가
  * 저마다 174폭 SVG를 하나씩 걸고 해시가 다 달라 모델별 마크처럼 보이는데,
  * 경로 데이터를 대조하면 **주황 해(2,423자)와 「Claude」 글자(6,047자)가
@@ -597,8 +581,10 @@ export const modelsOfVendor = (vendorId: VendorId): ModelInfo[] =>
  * 곧 모델별 **워드마크 락업**이고 심볼은 한 벌입니다. 게다가 세로로 쌓인
  * 락업이라 14px에서는 아무것도 안 읽힙니다.
  *
- * OpenAI와 Google도 같습니다. 그래서 여기 있는 것은 **계열 마크 셋**이고,
- * 뉴스 서랍이 이미 같은 짝을 씁니다(`family: 'GPT'` → `openai.svg`).
+ * 제 그림은 따로 있습니다 — Anthropic은 판 위의 손그림(모델 개요 카드), OpenAI는 판까지
+ * 그려진 타일(2026-09-29에 찾음, 「All models」 카탈로그)이고 둘 다 `ModelInfo.mark`가 섭니다.
+ * Google은 제 그림이 없습니다. 그래서 여기 있는 것은 **계열 마크 셋**이고, 뉴스 서랍이 이미
+ * 같은 짝을 씁니다(`family: 'GPT'` → `openai.svg`).
  *
  * **회사 마크가 아니라 계열 마크입니다.** Anthropic의 회사 마크는 `A\` 글리프인데
  * 모델 줄에 서야 할 것은 Claude 해이고, Google의 회사 마크는 네 색 `G`인데 여기
