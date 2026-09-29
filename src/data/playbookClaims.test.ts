@@ -1,3 +1,5 @@
+import { existsSync } from 'node:fs';
+import path from 'node:path';
 import { describe, expect, it } from 'vitest';
 import { playbookClaims } from './playbookClaims';
 import { claimsForProduct, isPlanClaim, productOpenItems } from './playbook';
@@ -34,6 +36,8 @@ const VENDOR_HOSTS = [
   'openai.com',
   'chatgpt.com',
   'developers.openai.com',
+  // ChatGPT Plus 구독료는 요금 페이지가 두 조각이라 도움말이 출처다(2026-09-29).
+  'help.openai.com',
   // developers.openai.com/codex/ 가 여기로 301 된다(2026-09-16).
   'learn.chatgpt.com',
   'gemini.google',
@@ -150,12 +154,62 @@ describe('AI 가이드 — 주장', () => {
       'antigravity.google',
       'gemini.google',
     ];
+    /* 등급(`rating`)도 링크라 같은 영수증이다 — Anthropic은 서열과 속도가 다른 페이지다. */
+    const ratingUrls = (m: (typeof guideModels)[number]) =>
+      !m.rating ? [] : m.rating.kind === 'order' ? [m.rating.url, m.rating.speedUrl] : [m.rating.url];
     const bad = guideModels.flatMap((m) =>
-      [m.useWhen?.url ?? m.sourceUrl, m.sourceUrl]
+      [m.useWhen?.url ?? m.sourceUrl, m.sourceUrl, ...ratingUrls(m)]
         .filter((url) => !MODEL_HOSTS.includes(new URL(url).host))
         .map((url) => `${m.id} → ${new URL(url).host}`),
     );
     expect(bad).toEqual([]);
+  });
+
+  /*
+    **모델 마크 파일이 저장소에 있다**(2026-09-29). OpenAI 타일 일곱을 더하면서 붙였다 —
+    파일이 없으면 `<img>`가 깨진 그림으로 서고, 빌드도 검사도 그걸 모른다.
+  */
+  it('모델 마크 파일이 있다', () => {
+    const missing = guideModels
+      .filter((m) => m.mark && !existsSync(path.join(process.cwd(), 'public', m.mark.file)))
+      .map((m) => `${m.id} → ${m.mark!.file}`);
+    expect(missing).toEqual([]);
+  });
+
+  /*
+    **OpenAI 등급의 낱말과 단계가 짝이 맞는다**(2026-09-29). OpenAI는 채운 아이콘만 그려
+    단계 수를 안 적고, 우리는 여러 모델 페이지를 대조해 다섯 단계로 세웠다. 낱말과 점 수가
+    어긋나면(「Highest」인데 점 넷) 화면의 점과 글자가 서로 다른 말을 한다.
+  */
+  it('OpenAI 등급의 낱말과 단계가 짝이 맞는다', () => {
+    const REASONING = { Average: 2, High: 3, Higher: 4, Highest: 5 } as const;
+    const SPEED = { Medium: 3, Fast: 4, 'Very fast': 5 } as const;
+    const bad = guideModels.flatMap((m) =>
+      m.rating?.kind === 'scale' &&
+      (REASONING[m.rating.reasoning.label] !== m.rating.reasoning.level ||
+        SPEED[m.rating.speed.label] !== m.rating.speed.level)
+        ? [m.id]
+        : [],
+    );
+    expect(bad).toEqual([]);
+  });
+
+  /*
+    **등급의 모양은 회사를 따른다**(2026-09-29) — OpenAI는 점 척도(`scale`), Anthropic은
+    서열(`order`), Google은 소개 구절(`phrase`). 회사마다 매기는 방식이 달라 모양을 갈랐는데,
+    한 회사 안에서 모양이 섞이면 같은 목록에 두 잣대가 선다. 그리고 Anthropic 서열은 현행
+    모델끼리 자리가 겹치지 않고 `of` 안에 든다.
+  */
+  it('등급의 모양이 회사를 따르고 Anthropic 서열이 겹치지 않는다', () => {
+    const KIND = { openai: 'scale', anthropic: 'order', google: 'phrase' } as const;
+    const wrongKind = guideModels
+      .filter((m) => m.rating && m.rating.kind !== KIND[m.vendorId])
+      .map((m) => m.id);
+    expect(wrongKind).toEqual([]);
+    const orders = guideModels.flatMap((m) => (m.rating?.kind === 'order' && m.current ? [m.rating] : []));
+    const ranks = orders.map((r) => r.rank);
+    expect(new Set(ranks).size).toBe(ranks.length);
+    expect(orders.filter((r) => r.rank < 1 || r.rank > r.of)).toEqual([]);
   });
 
   /*

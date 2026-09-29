@@ -53,6 +53,14 @@ const models: ModelInfo[] = [
       text: '까다로운 추론과 긴 호흡의 에이전트 작업에',
       url: 'https://platform.claude.com/docs/en/about-claude/models/overview',
     },
+    rating: {
+      kind: 'order',
+      rank: 1,
+      of: 4,
+      url: 'https://platform.claude.com/docs/en/about-claude/models/optimizing-for-cost-and-intelligence',
+      speed: 'Slower',
+      speedUrl: 'https://platform.claude.com/docs/en/models/overview',
+    },
     current: true,
     sourceUrl:
       'https://platform.claude.com/docs/en/about-claude/models/overview',
@@ -88,6 +96,14 @@ const models: ModelInfo[] = [
     useWhen: {
       text: '복잡한 에이전트 코딩과 기업 업무에',
       url: 'https://platform.claude.com/docs/en/about-claude/models/choosing-a-model',
+    },
+    rating: {
+      kind: 'order',
+      rank: 2,
+      of: 4,
+      url: 'https://platform.claude.com/docs/en/about-claude/models/optimizing-for-cost-and-intelligence',
+      speed: 'Moderate',
+      speedUrl: 'https://platform.claude.com/docs/en/models/overview',
     },
     current: true,
     sourceUrl:
@@ -139,23 +155,67 @@ const models: ModelInfo[] = [
       text: '지연과 비용을 가장 낮춰야 하는 일에(확장 사고 지원)',
       url: 'https://platform.claude.com/docs/en/about-claude/models/choosing-a-model',
     },
+    rating: {
+      kind: 'order',
+      rank: 4,
+      of: 4,
+      url: 'https://platform.claude.com/docs/en/about-claude/models/optimizing-for-cost-and-intelligence',
+      speed: 'Fastest',
+      speedUrl: 'https://platform.claude.com/docs/en/models/overview',
+    },
     current: true,
     sourceUrl:
       'https://platform.claude.com/docs/en/about-claude/models/overview',
   },
+  /*
+    **Claude Sonnet 5.5**(2026-09-28 출시)가 현행 Sonnet입니다. 모델 문서가 「Active (latest)」,
+    개요 비교표의 셋째 열, 선택표의 Sonnet 줄이 전부 5.5로 옮겨 갔습니다 — 선택표 문장은 글자
+    하나 안 바뀌고 5에서 5.5로 옮겨 갔습니다. 마크와 판 색도 5와 같습니다(`bubble.svg` ·
+    `#F0EEE6`, 문서 홈 카드).
+
+    **서열은 3위(넷 중)입니다.** 서열 문장(「From lowest to highest cost and capability, the
+    current models are Claude Haiku 4.5, Claude Sonnet 5, Claude Opus 5.5, and Claude Fable 5.1」)이
+    2026-09-29에도 아직 Sonnet 5로 적혀 있어, 그 자리를 현행 Sonnet에 이어 붙였습니다 — Sonnet
+    5.5 발표 글이 「Opus 5.5 remains clearly stronger at complex, open-ended work requiring
+    sustained judgment」라고 적어 Opus 아래 자리를 떠받칩니다. 벤치마크 하나(Terminal-Bench 4.0)
+    에서는 Opus 5.5보다 높지만, 회사 자신이 서열을 그렇게 두지 않습니다.
+  */
+  {
+    id: 'claude-sonnet-5-5',
+    vendorId: 'anthropic',
+    name: 'Claude Sonnet 5.5',
+    mark: { file: 'assets/model-sonnet.svg', plate: '#F0EEE6' },
+    apiId: 'claude-sonnet-5-5',
+    useWhen: {
+      text: '속도와 성능이 함께 필요한 일상의 코딩·에이전트·기업 업무에',
+      url: 'https://platform.claude.com/docs/en/about-claude/models/choosing-a-model',
+    },
+    rating: {
+      kind: 'order',
+      rank: 3,
+      of: 4,
+      url: 'https://platform.claude.com/docs/en/about-claude/models/optimizing-for-cost-and-intelligence',
+      speed: 'Fast',
+      speedUrl: 'https://platform.claude.com/docs/en/models/overview',
+    },
+    current: true,
+    sourceUrl: 'https://platform.claude.com/docs/en/models/sonnet-5-5/overview',
+  },
+  /*
+    Sonnet 5.5가 나와 **이전 세대**입니다(2026-09-29). 모델 문서 머리가 「Although Claude Sonnet 5
+    is still available, you should consider migrating to Claude Sonnet 5.5」이고 배지가 「Legacy」,
+    상태가 「Active (legacy)」입니다. 선택표에서 줄이 빠져 쓰임은 `null`입니다(Opus 5와 같은 자리).
+    Claude Code와 앱에서는 여전히 고를 수 있어 목록에 남깁니다.
+  */
   {
     id: 'claude-sonnet-5',
     vendorId: 'anthropic',
     name: 'Claude Sonnet 5',
     mark: { file: 'assets/model-sonnet.svg', plate: '#F0EEE6' },
     apiId: 'claude-sonnet-5',
-    useWhen: {
-      text: '속도와 성능이 함께 필요한 일상의 코딩·에이전트·기업 업무에',
-      url: 'https://platform.claude.com/docs/en/about-claude/models/choosing-a-model',
-    },
-    current: true,
-    sourceUrl:
-      'https://platform.claude.com/docs/en/about-claude/models/overview',
+    useWhen: null,
+    current: false,
+    sourceUrl: 'https://platform.claude.com/docs/en/models/sonnet-5/overview',
   },
   // Antigravity 선택기에는 「Claude Sonnet 4.6 (thinking)」으로 섭니다. thinking은
   // 모드이지 다른 모델이 아니라, 이름은 만든 회사 표기를 씁니다.
@@ -187,22 +247,81 @@ const models: ModelInfo[] = [
     id: 'gpt-6-astra',
     vendorId: 'openai',
     name: 'GPT-6 Astra',
+    mark: { file: 'assets/model-gpt-6-astra.png', tile: true },
     apiId: 'gpt-6-astra',
     useWhen: {
       text: '복잡한 추론·코딩에(대표 모델)',
       url: 'https://developers.openai.com/api/docs/models',
     },
+    rating: {
+      kind: 'scale',
+      reasoning: { level: 5, label: 'Highest' },
+      speed: { level: 4, label: 'Fast' },
+      url: 'https://developers.openai.com/api/docs/models/gpt-6-astra',
+    },
     current: true,
     sourceUrl: 'https://developers.openai.com/api/docs/models',
+  },
+  /*
+    **GPT-6 Sol · GPT-6 Luna**(2026-09-22). API 변경 기록 「Released GPT-6 Sol (gpt-6-sol) and
+    GPT-6 Luna (gpt-6-luna).」, Codex 변경 기록 「GPT-6 Sol and GPT-6 Luna are rolling out to
+    Codex and ChatGPT Work at lower token prices than their GPT-5.6 predecessors.」 쓰임은 모델
+    목록 머리의 한 문장이 둘을 함께 놓는 말입니다 — 「Choose GPT-6 Sol to balance intelligence
+    and cost, or GPT-6 Luna for cost-sensitive, high-volume workloads.」
+  */
+  {
+    id: 'gpt-6-sol',
+    vendorId: 'openai',
+    name: 'GPT-6 Sol',
+    mark: { file: 'assets/model-gpt-6-sol.png', tile: true },
+    apiId: 'gpt-6-sol',
+    useWhen: {
+      text: '지능과 비용의 균형이 필요한 일에',
+      url: 'https://developers.openai.com/api/docs/models',
+    },
+    rating: {
+      kind: 'scale',
+      reasoning: { level: 5, label: 'Highest' },
+      speed: { level: 4, label: 'Fast' },
+      url: 'https://developers.openai.com/api/docs/models/gpt-6-sol',
+    },
+    current: true,
+    sourceUrl: 'https://developers.openai.com/api/docs/models/gpt-6-sol',
+  },
+  {
+    id: 'gpt-6-luna',
+    vendorId: 'openai',
+    name: 'GPT-6 Luna',
+    mark: { file: 'assets/model-gpt-6-luna.png', tile: true },
+    apiId: 'gpt-6-luna',
+    useWhen: {
+      text: '비용에 민감한 대량 작업에',
+      url: 'https://developers.openai.com/api/docs/models',
+    },
+    rating: {
+      kind: 'scale',
+      reasoning: { level: 3, label: 'High' },
+      speed: { level: 4, label: 'Fast' },
+      url: 'https://developers.openai.com/api/docs/models/gpt-6-luna',
+    },
+    current: true,
+    sourceUrl: 'https://developers.openai.com/api/docs/models/gpt-6-luna',
   },
   {
     id: 'gpt-5-6-sol',
     vendorId: 'openai',
     name: 'GPT-5.6 Sol',
+    mark: { file: 'assets/model-gpt-5-6-sol.png', tile: true },
     apiId: 'gpt-5.6-sol',
     useWhen: {
       text: '판단과 다듬기가 필요한 복잡한 코드 변경·심층 조사에',
       url: 'https://learn.chatgpt.com/codex/models',
+    },
+    rating: {
+      kind: 'scale',
+      reasoning: { level: 5, label: 'Highest' },
+      speed: { level: 4, label: 'Fast' },
+      url: 'https://developers.openai.com/api/docs/models/gpt-5.6-sol',
     },
     current: true,
     sourceUrl: 'https://developers.openai.com/api/docs/models',
@@ -211,10 +330,17 @@ const models: ModelInfo[] = [
     id: 'gpt-5-6-terra',
     vendorId: 'openai',
     name: 'GPT-5.6 Terra',
+    mark: { file: 'assets/model-gpt-5-6-terra.png', tile: true },
     apiId: 'gpt-5.6-terra',
     useWhen: {
       text: 'GPT-5.6 Sol만큼 깊지 않아도 되는 일상 작업에',
       url: 'https://learn.chatgpt.com/codex/models',
+    },
+    rating: {
+      kind: 'scale',
+      reasoning: { level: 4, label: 'Higher' },
+      speed: { level: 4, label: 'Fast' },
+      url: 'https://developers.openai.com/api/docs/models/gpt-5.6-terra',
     },
     current: true,
     sourceUrl: 'https://developers.openai.com/api/docs/models',
@@ -223,10 +349,17 @@ const models: ModelInfo[] = [
     id: 'gpt-5-6-luna',
     vendorId: 'openai',
     name: 'GPT-5.6 Luna',
+    mark: { file: 'assets/model-gpt-5-6-luna.png', tile: true },
     apiId: 'gpt-5.6-luna',
     useWhen: {
       text: '비용에 민감한 대량 작업에',
       url: 'https://developers.openai.com/api/docs/models',
+    },
+    rating: {
+      kind: 'scale',
+      reasoning: { level: 3, label: 'High' },
+      speed: { level: 4, label: 'Fast' },
+      url: 'https://developers.openai.com/api/docs/models/gpt-5.6-luna',
     },
     current: true,
     sourceUrl: 'https://developers.openai.com/api/docs/models',
@@ -240,8 +373,14 @@ const models: ModelInfo[] = [
       text: '거의 즉시 오가는 실시간 코딩 반복에',
       url: 'https://learn.chatgpt.com/codex/models',
     },
-    current: true,
-    sourceUrl: 'https://learn.chatgpt.com/codex/models',
+    /*
+      **2026-09-14에 폐기됐습니다.** Codex 변경 기록 「GPT-5.3-Codex-Spark was deprecated on
+      September 14, 2026. The research preview is no longer available in the ChatGPT desktop app,
+      Codex CLI, or IDE extension.」 고를 수 없으므로 Codex 목록에서 뺐고, 등록부에는 옛 확인
+      기록을 받치려고 남깁니다(쓰임의 주소는 이제 이 모델이 없는 페이지로 넘어갑니다).
+    */
+    current: false,
+    sourceUrl: 'https://learn.chatgpt.com/docs/changelog',
   },
   {
     id: 'gpt-5-5',
@@ -255,15 +394,26 @@ const models: ModelInfo[] = [
     current: false,
     sourceUrl: 'https://learn.chatgpt.com/docs/models',
   },
-  // 오픈 웨이트라 Antigravity 선택기에서 봤고 OpenAI 모델 목록에서는 못 봤습니다.
-  // 그래서 API id가 `null`입니다 — 지어내지 않습니다.
+  /*
+    오픈 웨이트라 Antigravity 선택기에서 먼저 봤습니다. 2026-09-17에는 OpenAI 모델 목록에서 못
+    봐 API id를 `null`로 뒀는데, 2026-09-29에 「All models」 카탈로그의 Open-weight 묶음에
+    `gpt-oss-120b`가 서 있고 상세 페이지도 열리는 것을 봤습니다(OpenAI는 이름을 소문자
+    「gpt-oss-120b」로 적습니다 — 화면 이름은 Antigravity 선택기 표기를 둡니다).
+  */
   {
     id: 'gpt-oss-120b',
     vendorId: 'openai',
     name: 'GPT-OSS 120B',
-    apiId: null,
+    mark: { file: 'assets/model-gpt-oss-120b.png', tile: true },
+    apiId: 'gpt-oss-120b',
     useWhen: {
       text: '자유롭게 고쳐 쓰고 상업적으로 배포할 일에',
+      url: 'https://developers.openai.com/api/docs/models/gpt-oss-120b',
+    },
+    rating: {
+      kind: 'scale',
+      reasoning: { level: 4, label: 'Higher' },
+      speed: { level: 3, label: 'Medium' },
       url: 'https://developers.openai.com/api/docs/models/gpt-oss-120b',
     },
     current: true,
@@ -287,6 +437,7 @@ const models: ModelInfo[] = [
       text: '복잡한 수학·코딩 프롬프트에',
       url: 'https://support.google.com/gemini/answer/13275745',
     },
+    rating: { kind: 'phrase', text: '가장 앞선 모델', url: 'https://support.google.com/gemini/answer/13275745' },
     current: true,
     sourceUrl: 'https://support.google.com/gemini/answer/13275745',
   },
@@ -332,6 +483,7 @@ const models: ModelInfo[] = [
       text: '깊은 추론과 코딩이 필요한 복잡한 작업에',
       url: 'https://ai.google.dev/gemini-api/docs/models?hl=en',
     },
+    rating: { kind: 'phrase', text: '2.5 계열에서 가장 앞선 모델', url: 'https://ai.google.dev/gemini-api/docs/models' },
     current: true,
     sourceUrl: 'https://ai.google.dev/gemini-api/docs/models',
   },
@@ -344,6 +496,7 @@ const models: ModelInfo[] = [
       text: '추론이 필요한 저지연·대량 작업에',
       url: 'https://ai.google.dev/gemini-api/docs/models?hl=en',
     },
+    rating: { kind: 'phrase', text: '가격 대비 성능이 가장 좋은 모델', url: 'https://ai.google.dev/gemini-api/docs/models' },
     current: true,
     sourceUrl: 'https://ai.google.dev/gemini-api/docs/models',
   },
@@ -356,6 +509,7 @@ const models: ModelInfo[] = [
       text: '긴 호흡의 소프트웨어 엔지니어링과 자율 에이전트에',
       url: 'https://ai.google.dev/gemini-api/docs/models?hl=en',
     },
+    rating: { kind: 'phrase', text: '가장 똑똑한 Flash', url: 'https://ai.google.dev/gemini-api/docs/models' },
     current: true,
     sourceUrl: 'https://ai.google.dev/gemini-api/docs/models/gemini-3.8-flash',
   },

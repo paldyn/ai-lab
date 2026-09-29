@@ -95,8 +95,23 @@ export const guideProducts: Product[] = [
     name: 'Claude',
     role: '챗',
     surfaces: ['웹', '데스크톱', '모바일'],
-    models: ['claude-fable-5-1', 'claude-fable-5', 'claude-opus-5-5', 'claude-opus-5'],
+    models: [
+      'claude-fable-5-1',
+      'claude-fable-5',
+      'claude-opus-5-5',
+      'claude-opus-5',
+      'claude-sonnet-5-5',
+      'claude-sonnet-5',
+    ],
     /*
+      **차례는 회사 서열입니다**(2026-09-29) — 모델 개요의 서열 문장(싼 것·약한 것부터
+      Haiku · Sonnet · Opus · Fable)을 거꾸로 세웁니다. 구세대는 같은 등급의 현행 바로 뒤에 둡니다.
+
+      Sonnet 둘은 2026-09-29에 더했습니다. support.claude.com/en/articles/17161993이 대화 안의
+      자동 전환을 풀면서 「You can switch back to Sonnet 5.5 anytime from the model picker.」라고
+      적고, 바로 앞 문장이 「the model picker stays on Sonnet 5 for the rest of the chat」입니다 —
+      고르는 동작 자체를 적은 문장이라 Opus 둘과 같은 근거입니다.
+
       support.claude.com/en/articles/15424964 — 「select "Fable 5" or "Fable 5.1"
       from the model picker」. **고르는 동작 자체를 적은 문장**이라 근거가 됩니다.
 
@@ -105,11 +120,10 @@ export const guideProducts: Product[] = [
       from the model picker.」라고 적습니다 — 역시 고르는 동작 자체입니다. Opus 5는
       구세대라 화면에서는 빠집니다(`shownModels`).
 
-      **넷뿐인 것은 넷만 있어서가 아니라 넷만 확인돼서입니다.** 선택기 전체 목록을
+      **여섯뿐인 것은 여섯만 있어서가 아니라 여섯만 확인돼서입니다.** 선택기 전체 목록을
       나열한 공식 페이지가 없습니다 — 선택기를 다루는 도움말은 「click on the model
-      name and choose」라고만 적고 이름을 하나도 안 댑니다. Sonnet 5·Haiku가
-      여기 서는지는 못 봤습니다(API 카탈로그와 요금제 접근 문장에만 나오는데 둘 다
-      근거로 안 칩니다).
+      name and choose」라고만 적고 이름을 하나도 안 댑니다. Haiku가 여기 서는지는
+      못 봤습니다(API 카탈로그와 요금제 접근 문장에만 나오는데 둘 다 근거로 안 칩니다).
 
       조건부이기도 합니다 — 같은 페이지가 Free 요금제엔 Fable 5가 없고 조직이 막을
       수 있다고 적습니다. 요금제로 갈리는 값이라 나중에 주장으로 세울 자리입니다.
@@ -165,6 +179,7 @@ export const guideProducts: Product[] = [
       'claude-fable-5',
       'claude-opus-5-5',
       'claude-opus-5',
+      'claude-sonnet-5-5',
       'claude-sonnet-5',
       'claude-haiku-4-5',
     ],
@@ -195,6 +210,12 @@ export const guideProducts: Product[] = [
         몰라서 뺀 것을 알게 된 날 되돌리는 것은 같은 규칙의 앞면입니다.
       「Sonnet 5 (1M context)」도 피커 행으로 있으나 Sonnet 5의 컨텍스트 변형이지
       다른 모델이 아니라 따로 안 셉니다.
+
+      **2026-09-29에 `sonnet`이 Sonnet 5.5로 풀립니다** — 별칭 표 「| Anthropic API | Opus 5.5 |
+      Sonnet 5.5 |」, 「Sonnet 5.5 requires Claude Code v2.1.284 or later」. Sonnet 5는 별칭에서
+      빠졌지만 목록에 남깁니다 — support.claude.com/en/articles/11940350의 지원 모델 목록에
+      「Sonnet 5, claude-sonnet-5」가 있고 「claude --model claude-sonnet-5」로 고릅니다.
+      구세대라 화면에서는 빠집니다. 차례는 회사 서열(Fable · Opus · Sonnet · Haiku)입니다.
     */
     oneLine: '저장소를 읽고 고치고 명령까지 실행하는 코딩 에이전트.',
     officialUrl: 'https://code.claude.com/docs/en/overview',
@@ -230,8 +251,10 @@ export const guideProducts: Product[] = [
     surfaces: ['웹', '데스크톱'],
     models: [
       'gpt-6-astra',
+      'gpt-6-sol',
       'gpt-5-6-sol',
       'gpt-5-6-terra',
+      'gpt-6-luna',
       'gpt-5-6-luna',
       'gpt-5-5',
     ],
@@ -267,15 +290,24 @@ export const guideProducts: Product[] = [
     surfaces: ['웹', '데스크톱', '터미널', 'IDE', '클라우드'],
     models: [
       'gpt-6-astra',
+      'gpt-6-sol',
       'gpt-5-6-sol',
       'gpt-5-6-terra',
+      'gpt-6-luna',
       'gpt-5-6-luna',
-      'gpt-5-3-codex-spark',
       'gpt-5-5',
     ],
     /*
-      learn.chatgpt.com/codex/models. 근거는 각 모델 카드의 표면 행입니다 —
-      여섯 다 「Codex CLI」와 「Codex IDE extension」이 true입니다.
+      **2026-09-29에 고쳤습니다.** GPT-6 Sol·Luna가 들어오고(Codex 변경 기록 2026-09-22 「GPT-6
+      Sol and GPT-6 Luna are rolling out to Codex and ChatGPT Work」, 모델 페이지 「In ChatGPT,
+      GPT-6 Sol and GPT-6 Luna are available in Work and Codex.」), GPT-5.3 Codex Spark가 빠졌습니다
+      (2026-09-14 폐기). GPT-5.6 셋은 「remain available during the rollout」이라 남깁니다.
+      **차례는 회사 등급입니다** — API 모델 페이지의 추론 등급이 높은 것부터, 같으면 새것부터.
+      ChatGPT Work도 같은 차례입니다.
+
+      learn.chatgpt.com/codex/models(→ /docs/models). 근거는 각 모델 카드의 표면 행입니다 —
+      카드가 선 모델은 전부 「Codex CLI」와 「Codex IDE extension」이 true입니다. GPT-5.6 셋은
+      카드가 없고 위 한 문장으로만 남아 있습니다.
 
       **권장 문장을 근거로 쓰지 않습니다.** 처음에는 「Codex works best with the
       recommended models」를 출처로 달았는데, 그건 가용성이 아니라 권장이라 대질에서

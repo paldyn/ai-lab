@@ -60,6 +60,16 @@ export const playbookClaims: Claim[] = [
     source: { label: 'Claude Opus 5 모델 문서', url: 'https://platform.claude.com/docs/en/models/opus-5/overview' },
   },
   {
+    id: 'claude-sonnet-5-5-context',
+    subject: { kind: 'model', id: 'claude-sonnet-5-5' },
+    topic: 'context',
+    statement: 'Claude Sonnet 5.5의 입력 컨텍스트 창',
+    value: '1M 토큰',
+    tier: 'vendor',
+    volatility: 'model',
+    source: { label: 'Claude Sonnet 5.5 모델 문서', url: 'https://platform.claude.com/docs/en/models/sonnet-5-5/overview' },
+  },
+  {
     id: 'claude-sonnet-5-context',
     subject: { kind: 'model', id: 'claude-sonnet-5' },
     topic: 'context',
@@ -118,6 +128,41 @@ export const playbookClaims: Claim[] = [
     tier: 'vendor',
     volatility: 'model',
     source: { label: 'GPT-6 Astra 모델 문서', url: 'https://developers.openai.com/api/docs/models/gpt-6-astra' },
+  },
+  {
+    id: 'gpt-6-sol-context',
+    subject: { kind: 'model', id: 'gpt-6-sol' },
+    topic: 'context',
+    statement: 'GPT-6 Sol의 입력 컨텍스트 창',
+    value: '1.05M 토큰',
+    tier: 'vendor',
+    volatility: 'model',
+    source: { label: 'GPT-6 Sol 모델 문서', url: 'https://developers.openai.com/api/docs/models/gpt-6-sol' },
+  },
+  {
+    id: 'gpt-6-luna-context',
+    subject: { kind: 'model', id: 'gpt-6-luna' },
+    topic: 'context',
+    statement: 'GPT-6 Luna의 입력 컨텍스트 창',
+    value: '1.05M 토큰',
+    tier: 'vendor',
+    volatility: 'model',
+    source: { label: 'GPT-6 Luna 모델 문서', url: 'https://developers.openai.com/api/docs/models/gpt-6-luna' },
+  },
+  /*
+    오픈 웨이트라 OpenAI 발표 글이 적는 값이다 — 「natively support context lengths of up to 128k」.
+    모델 페이지는 「131,072 context window」라 적는데 131,072 = 128 × 1,024라 같은 값이고,
+    「128k」가 OpenAI 자신의 표기다. Antigravity 안에서 쓰는 창은 문서에 없다.
+  */
+  {
+    id: 'gpt-oss-120b-context',
+    subject: { kind: 'model', id: 'gpt-oss-120b' },
+    topic: 'context',
+    statement: 'GPT-OSS 120B의 입력 컨텍스트 창',
+    value: '128K 토큰',
+    tier: 'vendor',
+    volatility: 'model',
+    source: { label: 'gpt-oss 발표 글', url: 'https://openai.com/index/introducing-gpt-oss/' },
   },
   {
     id: 'gpt-5-6-sol-context',
@@ -278,18 +323,21 @@ export const playbookClaims: Claim[] = [
     topic: 'price',
     statement: 'ChatGPT Plus 월 구독료',
     /*
-      **값은 확인했는데 인용이 못 버틴다.** 요금제 페이지가 그 자리에 적은 것은
-      「$20/month」 한 조각뿐이고, 그건 아홉 자라 로그 검사의 열 자 하한에 걸린다.
-      제목과 이어 붙이면 「조립한 인용」이 되어 같은 날 대질이 여덟 건 잡아낸 그
-      실수를 우리가 저지르는 것이다. `openai.com/chatgpt/pricing`은 403이라 더 긴
-      문장을 가진 다른 공식 경로도 없다. 그래서 참인 값을 알면서 `null`로 둔다 —
-      우리 증거 기준이 값을 못 세우는 자리이고, 기준이 이겨야 하는 자리다.
+      **요금제 페이지 대신 도움말이 출처다**(2026-09-29). 요금제 페이지(learn.chatgpt.com/
+      docs/pricing)는 여전히 「$20」과 「/month」를 두 조각으로 적어 열 자 하한을 못 넘고,
+      openai.com/chatgpt/pricing은 실제 크롬으로는 열리지만(chatgpt.com/pricing으로 넘어간다)
+      접속한 나라의 통화로 값을 바꿔 그려 한국에서는 「₩29,000 / month」가 나온다 — 달러
+      근거가 못 된다. 도움말 「What is ChatGPT Plus?」는 한 줄에 「Price: $20/month (billed
+      monthly).」라고 적는다. 연 결제는 없다고도 적는다.
     */
-    value: null,
+    value: '월 $20',
     planCell: { plan: 'ChatGPT Plus', facet: 'fee' },
     tier: 'vendor',
     volatility: 'price',
-    source: { label: 'ChatGPT 요금제', url: 'https://learn.chatgpt.com/docs/pricing' },
+    source: {
+      label: 'ChatGPT Plus 도움말',
+      url: 'https://help.openai.com/en/articles/6950777-what-is-chatgpt-plus',
+    },
   },
   {
     id: 'chatgpt-pro-price',
@@ -329,21 +377,36 @@ export const playbookClaims: Claim[] = [
     subject: { kind: 'vendor', id: 'anthropic' },
     topic: 'price',
     statement: 'Claude Max 월 구독료',
-    /* 오늘 페이지를 열었지만 이 값을 떠받치는 줄을 못 봤다. 지어내지 않는다. */
-    value: null,
+    /*
+      **요금제 페이지 대신 도움말이 출처다**(2026-09-29). claude.com/pricing의 Max 카드는
+      「From $100」과 「Per month」가 두 조각이라 한 줄로 열 자를 못 넘고, 접속한 나라에 따라
+      값을 바꿔 그린다(한국에서 열면 부가세를 더해 「From $110」). 도움말 「What is the Max
+      plan?」이 한 줄에 「Max 5x: $100 per month」라고 적는다 — 두 단 중 싼 쪽이라 「부터」다
+      (바로 아래 줄이 「Max 20x: $200 per month」). 웹 구독 기준이고 월 결제만 있다.
+    */
+    value: '월 $100부터',
     planCell: { plan: 'Claude Max', facet: 'fee' },
     tier: 'vendor',
     volatility: 'price',
-    source: { label: 'Claude 요금제', url: 'https://claude.com/pricing' },
+    source: {
+      label: 'Claude Max 도움말',
+      url: 'https://support.claude.com/en/articles/11049741-what-is-the-max-plan',
+    },
   },
   {
     id: 'chatgpt-astra-limit',
     subject: { kind: 'vendor', id: 'openai' },
     topic: 'limit',
-    statement: 'ChatGPT Plus의 GPT-6 Astra 사용 횟수(5시간당)',
-    /* 오늘 페이지를 열었지만 이 값을 떠받치는 줄을 못 봤다. 지어내지 않는다. */
-    value: null,
-    planCell: { plan: 'ChatGPT Plus', facet: 'usage', note: 'GPT-6 Astra · 5시간당' },
+    statement: 'ChatGPT Plus의 GPT-6 Astra 사용량(Work·Codex, 5시간당)',
+    /*
+      **이름을 고쳤다**(2026-09-29). 요금 페이지의 사용량 표는 Chat이 아니라 Work·Codex의
+      「local messages per five-hour period」 **추정치**다(「These estimates are not fixed
+      message limits」). Plus의 Chat에는 Astra가 없다 — 도움말 「Plus includes Astra in Work
+      and Codex, but not GPT-6 Pro in Chat.」 표의 Plus 칸이 「5-45」라 범위 그대로 싣고
+      추정이라고 붙인다. 주간 한도가 따로 걸릴 수 있다(「Weekly limits may also apply.」).
+    */
+    value: '5~45회(추정)',
+    planCell: { plan: 'ChatGPT Plus', facet: 'usage', note: 'Astra · Work·Codex 5시간당' },
     tier: 'vendor',
     volatility: 'limit',
     source: { label: 'ChatGPT 요금제', url: 'https://learn.chatgpt.com/docs/pricing' },
@@ -353,8 +416,13 @@ export const playbookClaims: Claim[] = [
     subject: { kind: 'vendor', id: 'google' },
     topic: 'limit',
     statement: 'Gemini 앱 사용 한도 초기화 기준',
-    /* 오늘 페이지를 열었지만 이 값을 떠받치는 줄을 못 봤다. 지어내지 않는다. */
-    value: null,
+    /*
+      구독 페이지 각주 「Usage access limits in the Gemini app」의 한 문장(2026-09-29). 같은
+      문장이 도움말(support.google.com/gemini/answer/16275805) 머리에도 있다. **롤링인지 고정
+      시각인지는 원문이 말하지 않으므로** 「롤링」이라 적지 않는다. 한도는 연산량 기준이다
+      (프롬프트 복잡도·쓰는 기능·대화 길이).
+    */
+    value: '5시간마다 초기화 · 주간 한도가 따로 있다',
     tier: 'vendor',
     volatility: 'limit',
     source: { label: 'Gemini 구독', url: 'https://gemini.google/us/subscriptions/?hl=en' },
@@ -1430,12 +1498,70 @@ export const playbookClaims: Claim[] = [
     subject: { kind: 'model', id: 'gpt-6-astra' },
     topic: 'price',
     statement: '100만 토큰당 입력 / 출력 단가',
-    value: '$10 / $50',
+    /*
+      **구간 단서를 붙였다**(2026-09-29). 모델 페이지가 「Prompts with more than 272K input
+      tokens are priced at 2x input and cache rates and 1.5x output for the full request.」라
+      적는데, 그동안 값에서 빠져 있었다(2026-09-17 로그의 인용에는 그 줄이 들어 있었다).
+      272K를 넘으면 요청 전체가 입력 2배 · 출력 1.5배다.
+
+      **OpenAI 단가의 출처를 단가 표 한 곳으로 모았다**(같은 날). 모델 페이지는 단가 칸마다
+      한 줄이라 열 자를 못 넘어 덩어리를 이어 붙여 인용해 왔고(「조립한 인용」에 가깝다), 모델이
+      늘 때마다 여는 페이지가 하나씩 늘어 「열두 곳」 상한에 닿았다. 단가 표의 원고(.md)는
+      모델마다 한 줄에 Short context · Long context 단가를 다 싣는다. 구간의 경계(272K)는 표에
+      안 적히고 모델 페이지의 규칙 줄에 있다 — 표의 Long context 값이 그 규칙(2배 · 1.5배)과
+      전부 맞는 것을 대조했다.
+    */
+    value: '$10 / $50 (272K 초과 시 $20 / $75)',
     tier: 'vendor',
     volatility: 'price',
     source: {
-      label: 'OpenAI API — Models',
-      url: 'https://developers.openai.com/api/docs/models/gpt-6-astra',
+      label: 'OpenAI API — Pricing',
+      url: 'https://developers.openai.com/api/docs/pricing',
+    },
+  },
+  {
+    id: 'gpt-6-sol-token-price',
+    subject: { kind: 'model', id: 'gpt-6-sol' },
+    topic: 'price',
+    statement: '100만 토큰당 입력 / 출력 단가',
+    value: '$2 / $10 (272K 초과 시 $4 / $15)',
+    tier: 'vendor',
+    volatility: 'price',
+    source: {
+      label: 'OpenAI API — Pricing',
+      url: 'https://developers.openai.com/api/docs/pricing',
+    },
+  },
+  {
+    id: 'gpt-6-luna-token-price',
+    subject: { kind: 'model', id: 'gpt-6-luna' },
+    topic: 'price',
+    statement: '100만 토큰당 입력 / 출력 단가',
+    value: '$0.10 / $0.50 (272K 초과 시 $0.20 / $0.75)',
+    tier: 'vendor',
+    volatility: 'price',
+    source: {
+      label: 'OpenAI API — Pricing',
+      url: 'https://developers.openai.com/api/docs/pricing',
+    },
+  },
+  {
+    id: 'gpt-oss-120b-token-price',
+    subject: { kind: 'model', id: 'gpt-oss-120b' },
+    topic: 'price',
+    statement: '100만 토큰당 입력 / 출력 단가',
+    /*
+      **문서에 없음**이 답이다(2026-09-29). 오픈 웨이트라 가중치를 내려받아 돌리는 모델이고
+      (「The weights for both gpt-oss-120b and gpt-oss-20b are freely available for download on
+      Hugging Face」), 모델 페이지에 단가 절이 없으며 API 단가 표에도 줄이 없다. Antigravity에서는
+      요금제 안에서 쓴다.
+    */
+    value: null,
+    tier: 'vendor',
+    volatility: 'price',
+    source: {
+      label: 'gpt-oss 발표 글',
+      url: 'https://openai.com/index/introducing-gpt-oss/',
     },
   },
   {
@@ -1443,12 +1569,12 @@ export const playbookClaims: Claim[] = [
     subject: { kind: 'model', id: 'gpt-5-6-sol' },
     topic: 'price',
     statement: '100만 토큰당 입력 / 출력 단가',
-    value: '$4 / $20',
+    value: '$4 / $20 (272K 초과 시 $8 / $30)',
     tier: 'vendor',
     volatility: 'price',
     source: {
-      label: 'OpenAI API — Models',
-      url: 'https://developers.openai.com/api/docs/models/gpt-5.6-sol',
+      label: 'OpenAI API — Pricing',
+      url: 'https://developers.openai.com/api/docs/pricing',
     },
   },
   {
@@ -1456,12 +1582,12 @@ export const playbookClaims: Claim[] = [
     subject: { kind: 'model', id: 'gpt-5-6-terra' },
     topic: 'price',
     statement: '100만 토큰당 입력 / 출력 단가',
-    value: '$2 / $12',
+    value: '$2 / $12 (272K 초과 시 $4 / $18)',
     tier: 'vendor',
     volatility: 'price',
     source: {
-      label: 'OpenAI API — Models',
-      url: 'https://developers.openai.com/api/docs/models/gpt-5.6-terra',
+      label: 'OpenAI API — Pricing',
+      url: 'https://developers.openai.com/api/docs/pricing',
     },
   },
   {
@@ -1469,12 +1595,12 @@ export const playbookClaims: Claim[] = [
     subject: { kind: 'model', id: 'gpt-5-6-luna' },
     topic: 'price',
     statement: '100만 토큰당 입력 / 출력 단가',
-    value: '$0.20 / $1.20',
+    value: '$0.20 / $1.20 (272K 초과 시 $0.40 / $1.80)',
     tier: 'vendor',
     volatility: 'price',
     source: {
-      label: 'OpenAI API — Models',
-      url: 'https://developers.openai.com/api/docs/models/gpt-5.6-luna',
+      label: 'OpenAI API — Pricing',
+      url: 'https://developers.openai.com/api/docs/pricing',
     },
   },
   {
@@ -1482,12 +1608,12 @@ export const playbookClaims: Claim[] = [
     subject: { kind: 'model', id: 'gpt-5-5' },
     topic: 'price',
     statement: '100만 토큰당 입력 / 출력 단가',
-    value: '$5 / $30',
+    value: '$5 / $30 (272K 초과 시 $10 / $45)',
     tier: 'vendor',
     volatility: 'price',
     source: {
-      label: 'OpenAI API — Models',
-      url: 'https://developers.openai.com/api/docs/models/gpt-5.5',
+      label: 'OpenAI API — Pricing',
+      url: 'https://developers.openai.com/api/docs/pricing',
     },
   },
   {
@@ -1522,6 +1648,19 @@ export const playbookClaims: Claim[] = [
     topic: 'price',
     statement: '100만 토큰당 입력 / 출력 단가',
     value: '$5 / $25',
+    tier: 'vendor',
+    volatility: 'price',
+    source: {
+      label: 'Claude Docs — Pricing',
+      url: 'https://platform.claude.com/docs/en/about-claude/pricing',
+    },
+  },
+  {
+    id: 'claude-sonnet-5-5-token-price',
+    subject: { kind: 'model', id: 'claude-sonnet-5-5' },
+    topic: 'price',
+    statement: '100만 토큰당 입력 / 출력 단가',
+    value: '$2 / $10',
     tier: 'vendor',
     volatility: 'price',
     source: {
