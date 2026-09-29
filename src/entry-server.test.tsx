@@ -236,18 +236,23 @@ describe('프리렌더 — 본문이 HTML에 들어간다', () => {
   });
 
   /*
-    **모델은 판 위의 칸이고, 절 머리는 요금 절과 같은 마디 + 띠입니다**(2026-09-29).
+    **모델은 바탕 위의 칸이고, 절 머리는 요금 절과 같은 마디 + 띠입니다**(2026-09-29).
     타임라인에서 「고를 수 있는 모델도 C(체크리스트)로」 바꾼 뒤 「타이틀을 요금쪽과 폼을
-    맞추자」가 왔습니다 — 한 탭 안에서 절 이름이 두 모양으로 서면 안 됩니다. 그래서 두 절의
-    머리(마디 + 띠 + 제목)를 같은 틀로 대조하고, 모델 절에 차오르는 줄기(`data-live`)나 줄마다
-    매달던 가지가 되살아나지 않는지 봅니다. 띠의 열 이름은 그 제품의 데이터가 세운 열 수와
-    같아야 합니다(Gemini 앱은 0).
+    맞추자」가 왔습니다 — 한 탭 안에서 절 이름이 두 모양으로 서면 안 됩니다. 그래서 두 절을
+    **같은 틀 하나**로 대조합니다: 절 → 줄기 → 마디 + 띠 + 제목이 차례로 서고, 머리가 닫힌
+    바로 뒤에 바탕(모델)이나 판(요금)이 열립니다. 머리를 바탕 안으로 넣거나(처음 C 모양),
+    열 이름을 띠 밖으로 빼면(붙어 따라오는 머리에서 열 이름이 사라진다) 여기서 걸립니다.
+    띠 안의 열 이름은 그 제품의 데이터가 세운 열 수와 같아야 합니다(Gemini 앱은 0).
+    옛 줄기 모양으로 되돌리면 바탕·수 칸 묶음 수가 어긋나 잡히고, 팁 탭의 차오르는 줄기
+    (`data-live`)가 모델 절에 붙는 것도 막습니다.
   */
-  it('모델 절은 요금 절과 같은 머리 아래 판 위의 칸이다', async () => {
-    const head = (id: string) =>
+  it('모델 절은 요금 절과 같은 머리 아래 바탕 위의 칸이다', async () => {
+    const head = (id: string, title: string, body: string) =>
       new RegExp(
-        `<div class="gl-stop-head"><span class="gl-stop-node" aria-hidden="true"><svg[^>]*>.*?</svg></span>` +
-          `<div class="gl-stop-band[^"]*"><h3 class="gl-facts-sub" id="${id}">`,
+        `aria-labelledby="${id}"><div class="gl-tl"><div class="gl-stop is-reached">` +
+          `<div class="gl-stop-head"><span class="gl-stop-node" aria-hidden="true"><svg[^>]*>.*?</svg></span>` +
+          `<div class="gl-stop-band[^"]*"><h3 class="gl-facts-sub" id="${id}">${title}</h3>` +
+          `((?:<span class="gl-mlabel" aria-hidden="true">[^<]*</span>)*)</div></div><div class="${body}">`,
       );
     const wrong: string[] = [];
     for (const product of guideProducts) {
@@ -262,20 +267,24 @@ describe('프리렌더 — 본문이 HTML에 들어간다', () => {
         claims.some((c) => c.topic === topic && c.subject.kind === 'model' && ids.has(c.subject.id));
       const cols = (ofTopic('context') ? 1 : 0) + (ofTopic('price') ? 2 : 0);
       const hasPlans = claims.some(isPlanClaim);
+      const modelHead = head('models-title', '고를 수 있는 모델', 'gl-tray').exec(ledger);
+      const plansHead = head('plans-title', '요금제와 사용 한도', 'gl-board').exec(ledger);
       const got = {
-        head: head('models-title').test(sect),
-        sameAsPlans: hasPlans ? head('plans-title').test(ledger) : true,
+        head: modelHead !== null,
+        bandLabels: classCount(modelHead?.[1] ?? '', 'gl-mlabel'),
+        labels: classCount(sect, 'gl-mlabel'),
+        sameAsPlans: hasPlans ? plansHead !== null && plansHead[1] === '' : true,
         tray: classCount(sect, 'gl-tray'),
         live: sect.includes('data-live'),
-        labels: classCount(sect, 'gl-mlabel'),
         specs: classCount(sect, 'gl-mspec'),
       };
       const expected = {
         head: true,
+        bandLabels: cols,
+        labels: cols,
         sameAsPlans: true,
         tray: 1,
         live: false,
-        labels: cols,
         specs: cols > 0 ? models.length : 0,
       };
       if (JSON.stringify(got) !== JSON.stringify(expected)) {
