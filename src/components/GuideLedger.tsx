@@ -538,8 +538,9 @@ function Dots({ level, of }: { level: number; of: number }) {
  * 세우면 이름 열이 또 좁아집니다(641~1023px에서 이미 한 번 밟았습니다).
  *
  * **등급이 실린 페이지로 가는 링크입니다**(수 칸처럼 점선 밑줄). Anthropic은 서열과 속도가
- * 다른 페이지라 둘을 따로 겁니다. 링크 이름은 모델과 등급을 함께 싣습니다 — 점은 눈에만
- * 서므로 낱말이 뜻을 집니다.
+ * 다른 페이지라 둘을 따로 겁니다. 링크 이름은 「모델 이름 + **화면 글자 그대로** + 괄호 보충」
+ * 꼴입니다(수 칸과 같은 꼴) — 화면 글자가 이름에 이어진 채 들어 있어야 음성 제어로 「성능」을
+ * 말해 누를 수 있습니다(WCAG 2.5.3). 점은 눈에만 서므로 단계 수는 괄호가 싣습니다.
  */
 function RatingLine({ model }: { model: ModelInfo }) {
   const r = model.rating;
@@ -554,7 +555,7 @@ function RatingLine({ model }: { model: ModelInfo }) {
           href={r.url}
           target="_blank"
           rel="noreferrer"
-          aria-label={`${model.name} 공식 등급: 추론 5단계 중 ${r.reasoning.level}(${reasoning}), 속도 5단계 중 ${r.speed.level}(${speed})`}
+          aria-label={`${model.name} 추론 ${reasoning} · 속도 ${speed} (공식 등급: 추론 5단계 중 ${r.reasoning.level}, 속도 5단계 중 ${r.speed.level})`}
         >
           <span className="gl-rate-part">
             <span className="gl-rate-name">추론</span>
@@ -582,7 +583,7 @@ function RatingLine({ model }: { model: ModelInfo }) {
           href={r.url}
           target="_blank"
           rel="noreferrer"
-          aria-label={`${model.name} 공식 서열: 현행 ${r.of}종 중 ${r.rank}위`}
+          aria-label={`${model.name} 성능 ${r.of}종 중 ${r.rank}위 (공식 서열)`}
         >
           <span className="gl-rate-part">
             <span className="gl-rate-name">성능</span>
@@ -599,7 +600,7 @@ function RatingLine({ model }: { model: ModelInfo }) {
           href={r.speedUrl}
           target="_blank"
           rel="noreferrer"
-          aria-label={`${model.name} 공식 속도: 4단계 중 ${LATENCY_LEVEL[r.speed]}(${speed})`}
+          aria-label={`${model.name} 속도 ${speed} (공식 속도: 4단계 중 ${LATENCY_LEVEL[r.speed]})`}
         >
           <span className="gl-rate-part">
             <span className="gl-rate-name">속도</span>
@@ -617,7 +618,7 @@ function RatingLine({ model }: { model: ModelInfo }) {
         href={r.url}
         target="_blank"
         rel="noreferrer"
-        aria-label={`${model.name} 공식 소개: ${r.text}`}
+        aria-label={`${model.name} 「${r.text}」 (공식 소개)`}
       >
         <span className="gl-rate-word">「{r.text}」</span>
       </a>
