@@ -40,6 +40,13 @@ npm run check:playbook
 403은 죽은 링크가 아니다 — `chatgpt.com`·`claude.ai`·`openai.com/chatgpt/pricing`은
 봇 차단이지만 사람에게는 열린다. 브라우저로 열어 읽는다.
 
+**요금 페이지는 접속한 나라를 따라 값을 바꿔 그린다**(2026-09-29). `claude.com/pricing`을
+한국에서 열면 부가세를 더해 Pro가 「$22」, Max가 「From $110」이고, `chatgpt.com/pricing`은
+「₩29,000 / month」다. **그 값을 `'바뀜'`으로 적지 않는다** — 우리 값은 미국 달러 기준이다.
+`claude-pro-price`는 아직 `claude.com/pricing`이 출처라 특히 조심한다(미국 달러 「$20 if billed
+monthly」로 대조한다). Claude Max·ChatGPT Plus 구독료는 그래서 달러를 한 줄에 적은 도움말
+문서가 출처다. 페이지는 DOM의 `data-original-text`처럼 현지화 전 값을 남기기도 한다.
+
 ---
 
 ## STEP 1 — 오늘 어느 제품에서 길을지 고른다
