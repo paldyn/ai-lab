@@ -123,7 +123,7 @@ describe('제품색을 섞은 면 위의 글자', () => {
   ];
   /* [면 이름, 섞는 비율(라이트, 다크), 바탕 토큰, 그 위에 서는 글자 토큰] */
   const surfaces: Array<[string, [number, number], string, string[]]> = [
-    ['순간 띠', [0.07, 0.1], '--bg', ['--text-strong', '--text-dim']],
+    ['순간 띠 · 모델 판', [0.07, 0.1], '--bg', ['--text-strong', '--text-dim']],
     ['켜진 순간 띠', [0.12, 0.17], '--bg', ['--text-strong', '--text']],
     ['머리 카드', [0.04, 0.04], '--bg', ['--text-strong', '--prose-text', '--text-dim']],
     ['머리 카드 모서리', [0.14, 0.14], '--bg', ['--text-strong', '--prose-text']],

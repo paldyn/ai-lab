@@ -236,6 +236,39 @@ describe('프리렌더 — 본문이 HTML에 들어간다', () => {
   });
 
   /*
+    **모델은 판 위의 칸입니다**(2026-09-29). 타임라인에서 「고를 수 있는 모델도 C
+    (체크리스트)로」 바꿨습니다 — 모델은 시간의 차례가 아니라 나란히 견주는 목록입니다.
+    모델 절 안에 줄기(`gl-tl`)나 마디(`gl-stop`)가 되살아나면 빨간 줄이 섭니다. 판 머리의 열
+    이름은 그 제품의 데이터가 세운 열 수와 같아야 합니다(Gemini 앱은 0).
+  */
+  it('모델 절은 줄기가 아니라 판 위의 칸이다', async () => {
+    const wrong: string[] = [];
+    for (const product of guideProducts) {
+      const models = shownModels(product.models);
+      if (models.length === 0) continue;
+      const ledger = ledgerOf((await render(`/playbook/${product.vendorId}/${product.id}`)).html);
+      const start = ledger.indexOf('aria-labelledby="models-title"');
+      const sect = ledger.slice(start, ledger.indexOf('</section>', start));
+      const claims = claimsForProduct(product.id);
+      const ids = new Set(models.map((m) => m.id));
+      const ofTopic = (topic: string) =>
+        claims.some((c) => c.topic === topic && c.subject.kind === 'model' && ids.has(c.subject.id));
+      const cols = (ofTopic('context') ? 1 : 0) + (ofTopic('price') ? 2 : 0);
+      const got = {
+        tray: classCount(sect, 'gl-tray'),
+        stem: classCount(sect, 'gl-tl') + classCount(sect, 'gl-stop'),
+        labels: classCount(sect, 'gl-mlabel'),
+        specs: classCount(sect, 'gl-mspec'),
+      };
+      const expected = { tray: 1, stem: 0, labels: cols, specs: cols > 0 ? models.length : 0 };
+      if (JSON.stringify(got) !== JSON.stringify(expected)) {
+        wrong.push(`${product.id}: ${JSON.stringify(got)} ≠ ${JSON.stringify(expected)}`);
+      }
+    }
+    expect(wrong).toEqual([]);
+  });
+
+  /*
     **요금제마다 카드 하나입니다**(2026-09-28). 요금제 이름이 카드 머리(`gl-pc-name`)로
     데이터 차례대로 한 번씩만 서고, 칸이 없는 주장(요금제를 안 가리는 값)은 넓은 카드로
     섭니다.

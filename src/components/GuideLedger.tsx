@@ -62,8 +62,8 @@ import type {
  * - **팁 탭은 줄기 위의 여정입니다.** 순간 넷은 나란한 넷이 아니라 차례라(사용량 절감은
  *   세션이 지나는 시간, 품질 향상은 고치는 값이 커지는 순서), 그 차례를 제품색 줄기와 마디로
  *   그립니다. 팁은 줄기에서 뻗은 가지 끝에 매달리고, 스크롤하면 줄기가 읽는 자리까지 찹니다.
- * - **모델도 같은 줄기에 매답니다.** 모델 마크 판이 줄기 위 마디가 되고, 순간 머리 띠가 열
- *   이름을 겸합니다.
+ * - **모델은 판 위의 칸입니다**(2026-09-29, 체크리스트의 모양). 모델마다 칸 하나에 판 ·
+ *   이름 · 쓰임 · 수가 한 줄로 서고, 판 머리가 열 이름을 겸합니다.
  * - **요금제는 카드입니다.** 요금 페이지처럼 요금제마다 큰 가격을 단 카드를 나란히 세웁니다.
  *
  * **빈 절은 안 그립니다.** 팁이 없는 축, 모델도 요금도 없는 참고 탭, 같은 갈래의 다른
@@ -286,9 +286,9 @@ export function splitPrice(
 const contextLabel = (value: string) => value.replace(/^([\d.,]+[KM]?) 토큰$/, '$1');
 
 /**
- * 모델 줄머리 마크 — **줄기 위의 마디**입니다. 제 마크가 있으면 만든 회사의 판 색 위에,
- * 없으면 계열 마크를 배경색 판(`--bg`) 위에 올립니다. 만든 회사가 40px 판에 24px로 세우는 비율(0.6)을
- * 그대로 씁니다.
+ * 모델 줄머리 마크 — 칸 왼쪽의 판. 제 마크가 있으면 만든 회사의 판 색 위에, 없으면 계열
+ * 마크를 배경색 판(`--bg`) 위에 올립니다. 만든 회사가 모델 카드에 세우는 비율(0.6)을
+ * 그대로 씁니다(36px 판에 22px).
  */
 function ModelPlate({ model }: { model: ModelInfo }) {
   if (model.mark) {
@@ -343,7 +343,7 @@ function Cell({
   return (
     <span className={className} data-label={label}>
       {/*
-        **이름에 모델과 열을 함께 싣습니다.** 열 이름은 띠 안에 따로 서 있어 칸과 안 이어지므로
+        **이름에 모델과 열을 함께 싣습니다.** 열 이름은 판 머리에 따로 서 있어 칸과 안 이어지므로
         링크 이름이 「1M」·「$2」뿐이면 링크 목록에서 무엇인지 안 갈립니다.
       */}
       <a
@@ -359,50 +359,35 @@ function Cell({
   );
 }
 
-/** 참고 탭의 절 머리 — 팁 탭의 순간 머리와 같은 마디 + 띠. 띠가 열 이름을 겸할 수 있습니다. */
-function RefHead({
-  icon: Icon,
-  id,
-  title,
-  labels,
-  cols,
-}: {
-  icon: LucideIcon;
-  id: string;
-  title: string;
-  labels?: string[];
-  cols?: string;
-}) {
+/** 요금 절의 머리 — 팁 탭의 순간 머리와 같은 마디 + 띠. */
+function RefHead({ icon: Icon, id, title }: { icon: LucideIcon; id: string; title: string }) {
   return (
     <div className="gl-stop-head">
       <span className="gl-stop-node" aria-hidden="true">
         <Icon size={20} />
       </span>
-      <div className={`gl-stop-band${cols ? ` gl-cols ${cols}` : ''}`}>
+      <div className="gl-stop-band">
         <h3 className="gl-facts-sub" id={id}>
           {title}
         </h3>
-        {/* 열 이름은 눈에만 섭니다 — 칸마다 링크 이름이 열 이름을 싣습니다. */}
-        {labels?.map((l) => (
-          <span key={l} className="gl-band-label" aria-hidden="true">
-            {l}
-          </span>
-        ))}
       </div>
     </div>
   );
 }
 
 /**
- * 고를 수 있는 모델 — **줄기에 매단 줄들.** 모델 판이 줄기 위 마디이고, 절 머리 띠가 열
- * 이름(컨텍스트 · 입력 단가 · 출력 단가)을 겸합니다.
+ * 고를 수 있는 모델 — **제품색이 옅게 밴 판 위에 모델마다 칸 하나**(2026-09-29, 방향 넷 중
+ * C 「체크리스트」의 모양). 판 머리가 절 이름과 열 이름(컨텍스트 · 입력 단가 · 출력 단가)을
+ * 한 줄에 세우고, 칸마다 판 · 이름 · 쓰임 · 수가 한 줄에 섭니다. 줄기에 매달던
+ * 모양(타임라인)에서 「고를 수 있는 모델도 C로」 바꿨습니다 — 모델은 시간의 차례가 아니라
+ * 나란히 견주는 목록이라 줄기보다 칸이 맞습니다.
  *
  * **열은 그 제품의 데이터가 세웁니다.** 한 줄도 주장이 없는 열은 아예 안 섭니다
  * (Gemini 앱은 이름·쓰임만 섭니다). 한 줄만 비면 열은 세우고 칸만 비웁니다.
  *
  * **나이는 하나면 캡션에, 여럿이면 줄마다**(`ageLayout`).
  */
-function ModelTimeline({
+function ModelChecklist({
   product,
   models,
   contextOf,
@@ -425,7 +410,8 @@ function ModelTimeline({
     return { model, ctx, price, priceClaim, split };
   });
   const ages = ageLayout(rows.map((r) => [r.ctx, r.price]));
-  const cols = `is-model${hasContext ? ' has-ctx' : ''}${hasPrice ? ' has-price' : ''}`;
+  /* 판 머리와 칸이 같은 격자를 씁니다 — 열 이름이 칸의 수와 한 세로줄에 섭니다. */
+  const cols = `gl-mcols${hasContext ? ' has-ctx' : ''}${hasPrice ? ' has-price' : ''}`;
   const labels = [
     ...(hasContext ? ['컨텍스트(토큰)'] : []),
     ...(hasPrice ? ['입력 단가', '출력 단가'] : []),
@@ -433,102 +419,122 @@ function ModelTimeline({
 
   return (
     <section className="gl-ref" aria-labelledby="models-title">
-      {/* 줄기는 줄마다 한 토막씩 CSS가 잇습니다(`.gl-model::after`) — 마지막 판에서 끝납니다. */}
-      <div className="gl-tl is-static">
-        <div className="gl-stop is-reached">
-          <RefHead icon={Cpu} id="models-title" title="고를 수 있는 모델" labels={labels} cols={cols} />
-          <ul className="gl-rows">
-            {rows.map(({ model, ctx, price, priceClaim, split }, i) => {
-              const rowAge = ages.perRow[i];
-              return (
-                <li key={model.id} className={`gl-model gl-cols ${cols}`}>
-                  <ModelPlate model={model} />
-                  <div className="gl-model-main">
-                    {/*
-                      **이름이 링크입니다.** 가는 곳은 쓰임 문장이 실린 페이지이고, 쓰임이 없는
-                      모델은 이름을 본 페이지입니다 — 어느 쪽이든 그 줄에 적힌 것을 떠받칩니다.
-                      이름·회사·꼬리표 사이에는 **진짜 공백**을 둡니다(복사·낭독에서 안 붙게).
-                    */}
-                    <p className="gl-model-name">
-                      <a
-                        className="gl-model-link"
-                        href={model.useWhen?.url ?? model.sourceUrl}
-                        target="_blank"
-                        rel="noreferrer"
-                      >
-                        {model.name}
-                        <ArrowUpRight size={13} aria-hidden="true" />
-                      </a>
-                      {model.vendorId !== product.vendorId && (
-                        <>
-                          {' '}
-                          <span className="gl-model-vendor">
-                            {guideVendorById(model.vendorId)?.name}
-                          </span>
-                        </>
-                      )}
-                      {model.current === false && (
-                        <>
-                          {' '}
-                          <span className="gl-tag">이전 세대</span>
-                        </>
-                      )}
-                    </p>
-                    {model.useWhen && <p className="gl-model-use">{model.useWhen.text}</p>}
-                    {(split?.rider || rowAge !== null) && (
-                      <p className="gl-model-meta">
-                        {split?.rider}
-                        {split?.rider && rowAge !== null && ' · '}
-                        {rowAge !== null && ageText(rowAge)}
-                      </p>
-                    )}
-                  </div>
-                  {hasContext && (
-                    <Cell
-                      cell={ctx}
-                      url={contextOf.get(model.id)?.source.url ?? ''}
-                      label="컨텍스트(토큰)"
-                      modelName={model.name}
-                      text={ctx.kind === 'value' ? contextLabel(ctx.value) : undefined}
-                      className="gl-num-cell"
-                    />
-                  )}
-                  {hasPrice &&
-                    (priceClaim && split && split.output ? (
-                      <>
-                        <Cell
-                          cell={price}
-                          url={priceClaim.source.url}
-                          label="입력 단가"
-                          modelName={model.name}
-                          text={split.input}
-                          className="gl-num-cell"
-                        />
-                        <Cell
-                          cell={price}
-                          url={priceClaim.source.url}
-                          label="출력 단가"
-                          modelName={model.name}
-                          text={split.output}
-                          className="gl-num-cell"
-                        />
-                      </>
-                    ) : (
-                      /* 값이 안 서거나 꼴이 안 맞으면 두 열을 함께 씁니다 — 값이 사라지지 않습니다. */
-                      <Cell
-                        cell={price}
-                        url={priceClaim?.source.url ?? ''}
-                        label="단가"
-                        modelName={model.name}
-                        text={split?.input}
-                        className="gl-num-cell is-span"
-                      />
-                    ))}
-                </li>
-              );
-            })}
-          </ul>
+      <div className="gl-tray">
+        <div className={`gl-tray-head ${cols}`}>
+          <div className="gl-tray-title">
+            <span className="gl-tray-icon" aria-hidden="true">
+              <Cpu size={18} />
+            </span>
+            <h3 className="gl-facts-sub" id="models-title">
+              고를 수 있는 모델
+            </h3>
+          </div>
+          {/* 열 이름은 눈에만 섭니다 — 칸마다 링크 이름이 열 이름을 싣습니다. */}
+          {labels.map((l) => (
+            <span key={l} className="gl-mlabel" aria-hidden="true">
+              {l}
+            </span>
+          ))}
         </div>
+        <ul className="gl-rows">
+          {rows.map(({ model, ctx, price, priceClaim, split }, i) => {
+            const rowAge = ages.perRow[i];
+            return (
+              <li key={model.id} className={`gl-model ${cols}`}>
+                <ModelPlate model={model} />
+                <div className="gl-model-main">
+                  {/*
+                    **이름이 링크입니다.** 가는 곳은 쓰임 문장이 실린 페이지이고, 쓰임이 없는
+                    모델은 이름을 본 페이지입니다 — 어느 쪽이든 그 줄에 적힌 것을 떠받칩니다.
+                    이름·회사·꼬리표 사이에는 **진짜 공백**을 둡니다(복사·낭독에서 안 붙게).
+                  */}
+                  <p className="gl-model-name">
+                    <a
+                      className="gl-model-link"
+                      href={model.useWhen?.url ?? model.sourceUrl}
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      {model.name}
+                      <ArrowUpRight size={13} aria-hidden="true" />
+                    </a>
+                    {model.vendorId !== product.vendorId && (
+                      <>
+                        {' '}
+                        <span className="gl-model-vendor">
+                          {guideVendorById(model.vendorId)?.name}
+                        </span>
+                      </>
+                    )}
+                    {model.current === false && (
+                      <>
+                        {' '}
+                        <span className="gl-tag">이전 세대</span>
+                      </>
+                    )}
+                  </p>
+                  {model.useWhen && <p className="gl-model-use">{model.useWhen.text}</p>}
+                  {(split?.rider || rowAge !== null) && (
+                    <p className="gl-model-meta">
+                      {split?.rider}
+                      {split?.rider && rowAge !== null && ' · '}
+                      {rowAge !== null && ageText(rowAge)}
+                    </p>
+                  )}
+                </div>
+                {labels.length > 0 && (
+                  /*
+                    넓은 화면에서는 칸들이 줄 격자의 열로 풀리고(`display: contents`),
+                    좁은 화면에서는 이름 아래 세 칸이 됩니다.
+                  */
+                  <div className="gl-mspec">
+                    {hasContext && (
+                      <Cell
+                        cell={ctx}
+                        url={contextOf.get(model.id)?.source.url ?? ''}
+                        label="컨텍스트(토큰)"
+                        modelName={model.name}
+                        text={ctx.kind === 'value' ? contextLabel(ctx.value) : undefined}
+                        className="gl-num-cell"
+                      />
+                    )}
+                    {hasPrice &&
+                      (priceClaim && split && split.output ? (
+                        <>
+                          <Cell
+                            cell={price}
+                            url={priceClaim.source.url}
+                            label="입력 단가"
+                            modelName={model.name}
+                            text={split.input}
+                            className="gl-num-cell"
+                          />
+                          <Cell
+                            cell={price}
+                            url={priceClaim.source.url}
+                            label="출력 단가"
+                            modelName={model.name}
+                            text={split.output}
+                            className="gl-num-cell"
+                          />
+                        </>
+                      ) : (
+                        /* 값이 안 서거나 꼴이 안 맞으면 두 열을 함께 씁니다 — 값이 안 사라집니다. */
+                        <Cell
+                          cell={price}
+                          url={priceClaim?.source.url ?? ''}
+                          label="단가"
+                          modelName={model.name}
+                          text={split?.input}
+                          className="gl-num-cell is-span"
+                        />
+                      ))}
+                  </div>
+                )}
+              </li>
+            );
+          })}
+        </ul>
       </div>
       {(hasPrice || ages.caption !== null) && (
         <p className="gl-caption">
@@ -636,9 +642,9 @@ function PlanCards({ claims, today }: { claims: Claim[]; today: string }) {
   const sources = [...new Map(claims.map((c) => [c.source.url, c.source])).values()];
 
   return (
-    <section className="gl-ref is-plans" aria-labelledby="plans-title">
+    <section className="gl-ref" aria-labelledby="plans-title">
       {/* 카드는 줄기에 안 매달립니다 — 절 머리 마디에서 줄기가 끝납니다. */}
-      <div className="gl-tl is-static">
+      <div className="gl-tl">
         <div className="gl-stop is-reached">
           <RefHead icon={CreditCard} id="plans-title" title="요금제와 사용 한도" />
           <div className="gl-board">
@@ -997,7 +1003,7 @@ export function GuideLedger({
             body: (
               <>
                 {models.length > 0 && (
-                  <ModelTimeline
+                  <ModelChecklist
                     product={product}
                     models={models}
                     contextOf={contextOf}
