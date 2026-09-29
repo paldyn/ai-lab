@@ -506,12 +506,18 @@ function RefHead({
   );
 }
 
-/** 벤더 낱말 → 화면 낱말. 표에 없는 낱말은 타입(`ModelRating`)이 막습니다. */
-const REASONING_KO: Record<OpenAiReasoning, string> = {
+/**
+ * 벤더 낱말 → 화면 낱말. 표에 없는 낱말은 타입(`ModelRating`)이 막습니다.
+ *
+ * **두 회사 다 「성능」·「속도」로 부릅니다**(2026-09-29). 처음에는 OpenAI를 벤더 말 그대로
+ * 「추론」, Anthropic을 「성능 4종 중 1위」로 세웠는데, 한 화면에 서는 말이 제각각이라 무엇을
+ * 견주는지가 먼저 안 읽혔습니다(「좀 더 직관적으로」). 벤더의 원래 낱말은 칩에 올리면 뜹니다.
+ */
+const PERF_KO: Record<OpenAiReasoning, string> = {
   Average: '보통',
   High: '높음',
-  Higher: '더 높음',
-  Highest: '가장 높음',
+  Higher: '매우 높음',
+  Highest: '최고',
 };
 const SPEED_KO: Record<OpenAiSpeed, string> = { Medium: '보통', Fast: '빠름', 'Very fast': '매우 빠름' };
 const LATENCY_KO: Record<AnthropicLatency, string> = {
@@ -522,10 +528,13 @@ const LATENCY_KO: Record<AnthropicLatency, string> = {
 };
 const LATENCY_LEVEL: Record<AnthropicLatency, number> = { Slower: 1, Moderate: 2, Fast: 3, Fastest: 4 };
 
-/** 채운 점 `level`개와 빈 점으로 `of`칸. 눈에만 섭니다 — 낱말이 같은 뜻을 싣습니다. */
-function Dots({ level, of }: { level: number; of: number }) {
+/**
+ * 칸 막대 — 채운 칸 `level`개와 빈 칸으로 `of`칸. 신호 막대처럼 **많이 찰수록 좋다**만
+ * 읽히면 됩니다. 눈에만 섭니다 — 낱말이 같은 뜻을 싣습니다.
+ */
+function Bar({ level, of }: { level: number; of: number }) {
   return (
-    <span className="gl-dots" aria-hidden="true">
+    <span className="gl-bar" aria-hidden="true">
       {Array.from({ length: of }, (_, i) => (
         <i key={i} className={i < level ? 'is-on' : undefined} />
       ))}
@@ -534,91 +543,111 @@ function Dots({ level, of }: { level: number; of: number }) {
 }
 
 /**
- * 회사가 매긴 성능 자리 한 줄(2026-09-29). 이름 아래, 쓰임 위에 섭니다 — 열을 하나 더
- * 세우면 이름 열이 또 좁아집니다(641~1023px에서 이미 한 번 밟았습니다).
+ * 등급 칩 하나 — 「성능 ▰▰▰▰▰ 최고」. 칩 전체가 그 등급이 실린 공식 페이지로 가는
+ * 링크이고, 올리면 벤더의 원래 표기가 뜹니다(`title`). 링크 이름은 「모델 이름 + 화면 글자
+ * 그대로 + 괄호 보충」 꼴입니다 — 음성 제어로 「성능」을 말해 누를 수 있어야 합니다(WCAG 2.5.3).
+ */
+function RateChip({
+  model,
+  href,
+  name,
+  level,
+  of,
+  word,
+  detail,
+}: {
+  model: ModelInfo;
+  href: string;
+  name: '성능' | '속도';
+  level: number;
+  of: number;
+  word: string;
+  detail: string;
+}) {
+  return (
+    <a
+      className="gl-rate"
+      href={href}
+      target="_blank"
+      rel="noreferrer"
+      aria-label={`${model.name} ${name} ${word} (${detail})`}
+      title={detail}
+    >
+      <span className="gl-rate-name">{name}</span>
+      <Bar level={level} of={of} />
+      <span className="gl-rate-word">{word}</span>
+    </a>
+  );
+}
+
+/**
+ * 회사가 매긴 성능 자리 — 이름 아래 칩 둘(2026-09-29). 열을 하나 더 세우면 이름 열이 또
+ * 좁아집니다(641~1023px에서 이미 한 번 밟았습니다).
  *
- * **등급이 실린 페이지로 가는 링크입니다**(수 칸처럼 점선 밑줄). Anthropic은 서열과 속도가
- * 다른 페이지라 둘을 따로 겁니다. 링크 이름은 「모델 이름 + **화면 글자 그대로** + 괄호 보충」
- * 꼴입니다(수 칸과 같은 꼴) — 화면 글자가 이름에 이어진 채 들어 있어야 음성 제어로 「성능」을
- * 말해 누를 수 있습니다(WCAG 2.5.3). 점은 눈에만 서므로 단계 수는 괄호가 싣습니다.
+ * - OpenAI: 성능 = API 모델 페이지의 REASONING(추론) 등급 다섯 칸, 속도 = SPEED 다섯 칸.
+ * - Anthropic: 성능 = 현행 넷의 서열(1위가 네 칸 다 참), 속도 = 비교표의 상대 속도 네 칸.
+ * - Google: 등급이 없어 소개 문장의 최상급 구절 칩 하나.
  */
 function RatingLine({ model }: { model: ModelInfo }) {
   const r = model.rating;
   if (!r) return null;
   if (r.kind === 'scale') {
-    const reasoning = REASONING_KO[r.reasoning.label];
-    const speed = SPEED_KO[r.speed.label];
     return (
       <p className="gl-model-rate">
-        <a
-          className="gl-rate"
+        <RateChip
+          model={model}
           href={r.url}
-          target="_blank"
-          rel="noreferrer"
-          aria-label={`${model.name} 추론 ${reasoning} · 속도 ${speed} (공식 등급: 추론 5단계 중 ${r.reasoning.level}, 속도 5단계 중 ${r.speed.level})`}
-        >
-          <span className="gl-rate-part">
-            <span className="gl-rate-name">추론</span>
-            <Dots level={r.reasoning.level} of={5} />
-            <span className="gl-rate-word">{reasoning}</span>
-          </span>
-          <span className="gl-rate-sep" aria-hidden="true">
-            ·
-          </span>
-          <span className="gl-rate-part">
-            <span className="gl-rate-name">속도</span>
-            <Dots level={r.speed.level} of={5} />
-            <span className="gl-rate-word">{speed}</span>
-          </span>
-        </a>
+          name="성능"
+          level={r.reasoning.level}
+          of={5}
+          word={PERF_KO[r.reasoning.label]}
+          detail={`OpenAI 추론 등급 ${r.reasoning.label}, 5단계 중 ${r.reasoning.level}`}
+        />
+        <RateChip
+          model={model}
+          href={r.url}
+          name="속도"
+          level={r.speed.level}
+          of={5}
+          word={SPEED_KO[r.speed.label]}
+          detail={`OpenAI 속도 등급 ${r.speed.label}, 5단계 중 ${r.speed.level}`}
+        />
       </p>
     );
   }
   if (r.kind === 'order') {
-    const speed = LATENCY_KO[r.speed];
     return (
       <p className="gl-model-rate">
-        <a
-          className="gl-rate"
+        <RateChip
+          model={model}
           href={r.url}
-          target="_blank"
-          rel="noreferrer"
-          aria-label={`${model.name} 성능 ${r.of}종 중 ${r.rank}위 (공식 서열)`}
-        >
-          <span className="gl-rate-part">
-            <span className="gl-rate-name">성능</span>
-            <span className="gl-rate-word">
-              {r.of}종 중 {r.rank}위
-            </span>
-          </span>
-        </a>
-        <span className="gl-rate-sep" aria-hidden="true">
-          ·
-        </span>
-        <a
-          className="gl-rate"
+          name="성능"
+          level={r.of - r.rank + 1}
+          of={r.of}
+          word={`${r.rank}위`}
+          detail={`Anthropic 공식 서열, 현행 ${r.of}종 중 ${r.rank}위`}
+        />
+        <RateChip
+          model={model}
           href={r.speedUrl}
-          target="_blank"
-          rel="noreferrer"
-          aria-label={`${model.name} 속도 ${speed} (공식 속도: 4단계 중 ${LATENCY_LEVEL[r.speed]})`}
-        >
-          <span className="gl-rate-part">
-            <span className="gl-rate-name">속도</span>
-            <Dots level={LATENCY_LEVEL[r.speed]} of={4} />
-            <span className="gl-rate-word">{speed}</span>
-          </span>
-        </a>
+          name="속도"
+          level={LATENCY_LEVEL[r.speed]}
+          of={4}
+          word={LATENCY_KO[r.speed]}
+          detail={`Anthropic 상대 속도 ${r.speed}, 4단계 중 ${LATENCY_LEVEL[r.speed]}`}
+        />
       </p>
     );
   }
   return (
     <p className="gl-model-rate">
       <a
-        className="gl-rate"
+        className="gl-rate is-phrase"
         href={r.url}
         target="_blank"
         rel="noreferrer"
-        aria-label={`${model.name} 「${r.text}」 (공식 소개)`}
+        aria-label={`${model.name} 「${r.text}」 (Google 공식 소개)`}
+        title="Google은 등급을 매기지 않아 공식 소개의 최상급 구절을 옮겼습니다"
       >
         <span className="gl-rate-word">「{r.text}」</span>
       </a>

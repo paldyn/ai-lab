@@ -332,7 +332,7 @@ describe('프리렌더 — 본문이 HTML에 들어간다', () => {
   /*
     **등급 링크의 이름이 화면 글자를 그대로 싣습니다**(WCAG 2.5.3, 2026-09-29). 처음에는 화면이
     「성능 4종 중 1위」인데 이름이 「공식 서열: 현행 4종 중 1위」라 음성 제어로 「성능」을 말해도
-    링크가 안 잡혔습니다. 눈에만 서는 것(점 · 가운뎃점)을 빼고 남은 글자가 이름 안에 차례대로
+    링크가 안 잡혔습니다. 눈에만 서는 것(칸 막대)을 빼고 남은 글자가 이름 안에 차례대로
     이어져 있어야 합니다.
   */
   it('등급 링크의 이름이 화면 글자를 싣는다', async () => {
@@ -340,11 +340,11 @@ describe('프리렌더 — 본문이 HTML에 들어간다', () => {
     const norm = (t: string) => t.replace(/·/g, ' ').replace(/\s+/g, ' ').trim();
     for (const product of guideProducts) {
       const ledger = ledgerOf((await render(`/playbook/${product.vendorId}/${product.id}`)).html);
-      for (const m of ledger.matchAll(/<a class="gl-rate"[^>]*aria-label="([^"]*)"[^>]*>(.*?)<\/a>/g)) {
+      for (const m of ledger.matchAll(/<a class="gl-rate[^"]*"[^>]*aria-label="([^"]*)"[^>]*>(.*?)<\/a>/g)) {
         const visible = norm(
           m[2]
             .replace(/<!-- -->/g, '')
-            .replace(/<span class="gl-(?:dots|rate-sep)"[^>]*>.*?<\/span>/g, ' ')
+            .replace(/<span class="gl-bar"[^>]*>.*?<\/span>/g, ' ')
             .replace(/<[^>]+>/g, ' '),
         );
         const name = norm(m[1].replace(/&quot;/g, '"').replace(/&amp;/g, '&'));
