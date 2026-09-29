@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="440" viewBox="0 0 880 440" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <rect x="0" y="0" width="880" height="440" rx="12" fill="#0a0a0a"/>
+  <text x="62" y="42" font-size="22" font-weight="700" fill="#e8e8e8">히트맵 봉우리와 소수점 보정</text>
+  <text x="62" y="68" font-size="13" fill="#888">손목 하나의 히트맵 일부 — 한 칸이 원본 4픽셀이다. 진할수록 「여기일 확률」이 높다.</text>
+  <rect x="62" y="100" width="40" height="40" fill="#7ec8e3" fill-opacity="0.06" stroke="#0a0a0a" stroke-width="1"/>
+  <rect x="102" y="100" width="40" height="40" fill="#7ec8e3" fill-opacity="0.07" stroke="#0a0a0a" stroke-width="1"/>
+  <rect x="142" y="100" width="40" height="40" fill="#7ec8e3" fill-opacity="0.10" stroke="#0a0a0a" stroke-width="1"/>
+  <rect x="182" y="100" width="40" height="40" fill="#7ec8e3" fill-opacity="0.15" stroke="#0a0a0a" stroke-width="1"/>
+  <rect x="222" y="100" width="40" height="40" fill="#7ec8e3" fill-opacity="0.13" stroke="#0a0a0a" stroke-width="1"/>
+  <rect x="262" y="100" width="40" height="40" fill="#7ec8e3" fill-opacity="0.09" stroke="#0a0a0a" stroke-width="1"/>
+  <rect x="302" y="100" width="40" height="40" fill="#7ec8e3" fill-opacity="0.06" stroke="#0a0a0a" stroke-width="1"/>
+  <rect x="62" y="140" width="40" height="40" fill="#7ec8e3" fill-opacity="0.06" stroke="#0a0a0a" stroke-width="1"/>
+  <rect x="102" y="140" width="40" height="40" fill="#7ec8e3" fill-opacity="0.10" stroke="#0a0a0a" stroke-width="1"/>
+  <rect x="142" y="140" width="40" height="40" fill="#7ec8e3" fill-opacity="0.26" stroke="#0a0a0a" stroke-width="1"/>
+  <rect x="182" y="140" width="40" height="40" fill="#7ec8e3" fill-opacity="0.48" stroke="#0a0a0a" stroke-width="1"/>
+  <rect x="222" y="140" width="40" height="40" fill="#7ec8e3" fill-opacity="0.41" stroke="#0a0a0a" stroke-width="1"/>
+  <rect x="262" y="140" width="40" height="40" fill="#7ec8e3" fill-opacity="0.18" stroke="#0a0a0a" stroke-width="1"/>
+  <rect x="302" y="140" width="40" height="40" fill="#7ec8e3" fill-opacity="0.08" stroke="#0a0a0a" stroke-width="1"/>
+  <rect x="62" y="180" width="40" height="40" fill="#7ec8e3" fill-opacity="0.07" stroke="#0a0a0a" stroke-width="1"/>
+  <rect x="102" y="180" width="40" height="40" fill="#7ec8e3" fill-opacity="0.13" stroke="#0a0a0a" stroke-width="1"/>
+  <rect x="142" y="180" width="40" height="40" fill="#7ec8e3" fill-opacity="0.44" stroke="#0a0a0a" stroke-width="1"/>
+  <rect x="182" y="180" width="40" height="40" fill="#7ec8e3" fill-opacity="0.85" stroke="#0a0a0a" stroke-width="1"/>
+  <rect x="222" y="180" width="40" height="40" fill="#7ec8e3" fill-opacity="0.72" stroke="#0a0a0a" stroke-width="1"/>
+  <rect x="262" y="180" width="40" height="40" fill="#7ec8e3" fill-opacity="0.28" stroke="#0a0a0a" stroke-width="1"/>
+  <rect x="302" y="180" width="40" height="40" fill="#7ec8e3" fill-opacity="0.09" stroke="#0a0a0a" stroke-width="1"/>
+  <rect x="62" y="220" width="40" height="40" fill="#7ec8e3" fill-opacity="0.06" stroke="#0a0a0a" stroke-width="1"/>
+  <rect x="102" y="220" width="40" height="40" fill="#7ec8e3" fill-opacity="0.12" stroke="#0a0a0a" stroke-width="1"/>
+  <rect x="142" y="220" width="40" height="40" fill="#7ec8e3" fill-opacity="0.35" stroke="#0a0a0a" stroke-width="1"/>
+  <rect x="182" y="220" width="40" height="40" fill="#7ec8e3" fill-opacity="0.66" stroke="#0a0a0a" stroke-width="1"/>
+  <rect x="222" y="220" width="40" height="40" fill="#7ec8e3" fill-opacity="0.56" stroke="#0a0a0a" stroke-width="1"/>
+  <rect x="262" y="220" width="40" height="40" fill="#7ec8e3" fill-opacity="0.23" stroke="#0a0a0a" stroke-width="1"/>
+  <rect x="302" y="220" width="40" height="40" fill="#7ec8e3" fill-opacity="0.08" stroke="#0a0a0a" stroke-width="1"/>
+  <rect x="62" y="260" width="40" height="40" fill="#7ec8e3" fill-opacity="0.06" stroke="#0a0a0a" stroke-width="1"/>
+  <rect x="102" y="260" width="40" height="40" fill="#7ec8e3" fill-opacity="0.08" stroke="#0a0a0a" stroke-width="1"/>
+  <rect x="142" y="260" width="40" height="40" fill="#7ec8e3" fill-opacity="0.15" stroke="#0a0a0a" stroke-width="1"/>
+  <rect x="182" y="260" width="40" height="40" fill="#7ec8e3" fill-opacity="0.24" stroke="#0a0a0a" stroke-width="1"/>
+  <rect x="222" y="260" width="40" height="40" fill="#7ec8e3" fill-opacity="0.21" stroke="#0a0a0a" stroke-width="1"/>
+  <rect x="262" y="260" width="40" height="40" fill="#7ec8e3" fill-opacity="0.11" stroke="#0a0a0a" stroke-width="1"/>
+  <rect x="302" y="260" width="40" height="40" fill="#7ec8e3" fill-opacity="0.07" stroke="#0a0a0a" stroke-width="1"/>
+  <rect x="182" y="180" width="40" height="40" fill="none" stroke="#e05555" stroke-width="2.5"/>
+  <circle cx="202" cy="200" r="5" fill="#e05555"/>
+  <circle cx="212" cy="210" r="5" fill="#55c555" stroke="#0a0a0a" stroke-width="1.5"/>
+  <circle cx="72" cy="330" r="5" fill="#e05555"/><text x="86" y="335" font-size="13" fill="#e8e8e8">가장 높은 칸의 중심</text>
+  <circle cx="72" cy="356" r="5" fill="#55c555"/><text x="86" y="361" font-size="13" fill="#e8e8e8">이웃 칸으로 ¼칸 옮긴 자리</text>
+  <text x="62" y="392" font-size="13" fill="#888">오른쪽·아래 이웃이 왼쪽·위보다 높다</text>
+  <text x="62" y="412" font-size="13" fill="#888">→ 참 봉우리는 칸 중심보다 그쪽에 있다</text>
+  <rect x="400" y="100" width="418" height="84" rx="8" fill="#12151c" stroke="#3a4a6e" stroke-width="1.5"/>
+  <text x="424" y="128" font-size="15" font-weight="600" fill="#e8e8e8">① 해상도의 상한</text>
+  <text x="424" y="150" font-size="12" fill="#9aa4b8">입력 256×192 → 히트맵 64×48, 한 칸 = 원본 4픽셀</text>
+  <text x="424" y="168" font-size="12" fill="#9aa4b8">칸 중심만 쓰면 가로·세로로 최대 2픽셀씩 어긋난다</text>
+  <rect x="400" y="200" width="418" height="84" rx="8" fill="#12151c" stroke="#3a4a6e" stroke-width="1.5"/>
+  <text x="424" y="228" font-size="15" font-weight="600" fill="#e8e8e8">② 이웃과 견주기</text>
+  <text x="424" y="250" font-size="12" fill="#9aa4b8">가장 높은 칸의 좌우·상하 이웃 값을 비교한다</text>
+  <text x="424" y="268" font-size="12" fill="#9aa4b8">높은 쪽으로 ¼칸(원본 1픽셀) 옮기는 것이 흔한 보정</text>
+  <rect x="400" y="300" width="418" height="84" rx="8" fill="#12151c" stroke="#e05555" stroke-width="1.5"/>
+  <text x="424" y="328" font-size="15" font-weight="600" fill="#e8e8e8">③ 두 봉우리</text>
+  <text x="424" y="350" font-size="12" fill="#9aa4b8">비슷한 높이의 봉우리가 둘이면 모델이 헷갈리는 중</text>
+  <text x="424" y="368" font-size="12" fill="#9aa4b8">좌표만 내는 회귀에는 이 정보가 남지 않는다</text>
+</svg>

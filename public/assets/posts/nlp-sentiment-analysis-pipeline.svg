@@ -134,5 +134,5 @@
   <rect x="60" y="456" width="756" height="60" fill="#0d1117" rx="8" stroke="#3a4a6e" stroke-width="1"/>
   <text x="88" y="476" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="600" fill="#e8e8e8">예시 분석: "이 영화 정말 최고!" → </text>
   <text x="330" y="476" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="600" fill="#55c555">긍정 0.97</text>
-  <text x="88" y="500" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="12" fill="#888">규칙 기반: 최고(+2), 정말(+1) → 점수 +3 → 긍정  |  BERT: [CLS] 표현으로 0.97 확률 → 긍정  |  감성 분석 정확도: 규칙 ~75%, ML ~85%, BERT ~92%</text>
+  <text x="88" y="500" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="12" fill="#888">규칙 기반: 최고(+2), 정말(+1) → 점수 +3 → 긍정  |  BERT: [CLS] 표현으로 0.97 확률 → 긍정  |  감성 분석 정확도: 규칙 ~75%, ML ~85%, BERT ~90%</text>
 </svg>

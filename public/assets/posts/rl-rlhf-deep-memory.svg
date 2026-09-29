@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" viewBox="0 0 880 520">
+  <rect width="880" height="520" fill="#0a0a0a" rx="12"/>
+  <text x="440" y="44" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="22" font-weight="700" fill="#e8e8e8" text-anchor="middle">7B 모델 RLHF의 메모리 예산</text>
+  <text x="440" y="70" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888" text-anchor="middle">학습하는 모델 16바이트/파라미터 · 고정 모델 2바이트/파라미터 · 활성값과 KV 캐시 제외</text>
+
+  <text x="60" y="121" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="14" font-weight="600" fill="#e8e8e8">정책 모델 · 학습</text>
+  <rect x="280" y="100" width="336" height="32" rx="4" fill="#7ec8e3"/>
+  <text x="632" y="121" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="14" font-weight="600" fill="#7ec8e3">112GB</text>
+
+  <text x="60" y="169" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="14" font-weight="600" fill="#e8e8e8">가치 모델 · 학습</text>
+  <rect x="280" y="148" width="336" height="32" rx="4" fill="#7777cc"/>
+  <text x="632" y="169" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="14" font-weight="600" fill="#7777cc">112GB</text>
+
+  <text x="60" y="217" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="14" font-weight="600" fill="#e8e8e8">참조 모델 · 고정</text>
+  <rect x="280" y="196" width="42" height="32" rx="4" fill="#55c555"/>
+  <text x="338" y="217" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="14" font-weight="600" fill="#55c555">14GB</text>
+
+  <text x="60" y="265" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="14" font-weight="600" fill="#e8e8e8">보상 모델 · 고정</text>
+  <rect x="280" y="244" width="42" height="32" rx="4" fill="#e0a555"/>
+  <text x="338" y="265" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="14" font-weight="600" fill="#e0a555">14GB</text>
+
+  <line x1="60" y1="304" x2="820" y2="304" stroke="#2a2a2a" stroke-width="1"/>
+  <text x="60" y="336" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#e8e8e8">방법별 합계</text>
+
+  <text x="60" y="381" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="14" font-weight="600" fill="#e8e8e8">PPO</text>
+  <rect x="280" y="360" width="168" height="32" fill="#7ec8e3"/>
+  <rect x="448" y="360" width="168" height="32" fill="#7777cc"/>
+  <rect x="616" y="360" width="21" height="32" fill="#55c555"/>
+  <rect x="637" y="360" width="21" height="32" fill="#e0a555"/>
+  <text x="674" y="381" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="14" font-weight="600" fill="#e8e8e8">252GB</text>
+
+  <text x="60" y="429" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="14" font-weight="600" fill="#e8e8e8">GRPO</text>
+  <rect x="280" y="408" width="168" height="32" fill="#7ec8e3"/>
+  <rect x="448" y="408" width="21" height="32" fill="#55c555"/>
+  <rect x="469" y="408" width="21" height="32" fill="#e0a555"/>
+  <text x="506" y="429" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="14" font-weight="600" fill="#e8e8e8">140GB</text>
+
+  <text x="60" y="477" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="14" font-weight="600" fill="#e8e8e8">DPO</text>
+  <rect x="280" y="456" width="168" height="32" fill="#7ec8e3"/>
+  <rect x="448" y="456" width="21" height="32" fill="#55c555"/>
+  <text x="485" y="477" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="14" font-weight="600" fill="#e8e8e8">126GB</text>
+</svg>

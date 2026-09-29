@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="540" viewBox="0 0 880 540">
+<defs><marker id="arr" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto"><path d="M 0 0 L 13 7 L 0 14 z" fill="#888"/></marker></defs>
+<rect width="880" height="540" fill="#0a0a0a" rx="12"/>
+<text x="440" y="44" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="22" font-weight="700" fill="#e8e8e8" text-anchor="middle">부정 범위: 앞뒤 두 칸의 창</text>
+<text x="440" y="70" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888" text-anchor="middle">감성어에서 앞뒤 두 형태소 안의 부정어 수만큼 부호를 뒤집는다</text>
+<text x="60" y="100" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#e8e8e8">① 안 좋다 — 짧은 부정</text>
+<rect x="60" y="116" width="120" height="56" rx="8" fill="#141414" stroke="#e05555" stroke-width="1.5"/>
+<text x="120" y="141" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="15" font-weight="600" fill="#e8e8e8" text-anchor="middle">안</text>
+<text x="120" y="160" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="12" fill="#888" text-anchor="middle">부정어</text>
+<rect x="200" y="116" width="120" height="56" rx="8" fill="#141414" stroke="#7ec8e3" stroke-width="1.5"/>
+<text x="260" y="141" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="15" font-weight="600" fill="#e8e8e8" text-anchor="middle">좋다</text>
+<text x="260" y="160" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="12" fill="#888" text-anchor="middle">(+)</text>
+<line x1="320" y1="144" x2="630" y2="144" stroke="#888" stroke-width="1.5" marker-end="url(#arr)"/>
+<rect x="630" y="116" width="190" height="56" rx="8" fill="#141414" stroke="#55c555" stroke-width="1.5"/>
+<text x="725" y="141" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888" text-anchor="middle">뒤집기 1번</text>
+<text x="725" y="160" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="15" font-weight="600" fill="#55c555" text-anchor="middle">부정 ✓</text>
+<path d="M 60 180 L 60 186 L 180 186 L 180 180" fill="none" stroke="#7777cc" stroke-width="2"/>
+<text x="120" y="206" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#7777cc" text-anchor="middle">창 (두 칸)</text>
+<text x="60" y="238" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#e8e8e8">② 나쁘지 않다 — 긴 부정</text>
+<rect x="60" y="254" width="120" height="56" rx="8" fill="#141414" stroke="#7ec8e3" stroke-width="1.5"/>
+<text x="120" y="279" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="15" font-weight="600" fill="#e8e8e8" text-anchor="middle">나쁘다</text>
+<text x="120" y="298" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="12" fill="#888" text-anchor="middle">(−)</text>
+<rect x="200" y="254" width="120" height="56" rx="8" fill="#141414" stroke="#e05555" stroke-width="1.5"/>
+<text x="260" y="279" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="15" font-weight="600" fill="#e8e8e8" text-anchor="middle">않다</text>
+<text x="260" y="298" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="12" fill="#888" text-anchor="middle">부정어</text>
+<line x1="320" y1="282" x2="630" y2="282" stroke="#888" stroke-width="1.5" marker-end="url(#arr)"/>
+<rect x="630" y="254" width="190" height="56" rx="8" fill="#141414" stroke="#55c555" stroke-width="1.5"/>
+<text x="725" y="279" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888" text-anchor="middle">뒤집기 1번</text>
+<text x="725" y="298" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="15" font-weight="600" fill="#55c555" text-anchor="middle">긍정 ✓</text>
+<path d="M 200 318 L 200 324 L 320 324 L 320 318" fill="none" stroke="#7777cc" stroke-width="2"/>
+<text x="260" y="344" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#7777cc" text-anchor="middle">창 (두 칸)</text>
+<text x="60" y="376" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#e8e8e8">③ 좋지 않은 건 아니다 — 이중 부정</text>
+<rect x="60" y="392" width="120" height="56" rx="8" fill="#141414" stroke="#7ec8e3" stroke-width="1.5"/>
+<text x="120" y="417" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="15" font-weight="600" fill="#e8e8e8" text-anchor="middle">좋다</text>
+<text x="120" y="436" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="12" fill="#888" text-anchor="middle">(+)</text>
+<rect x="200" y="392" width="120" height="56" rx="8" fill="#141414" stroke="#e05555" stroke-width="1.5"/>
+<text x="260" y="417" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="15" font-weight="600" fill="#e8e8e8" text-anchor="middle">않다</text>
+<text x="260" y="436" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="12" fill="#888" text-anchor="middle">부정어</text>
+<rect x="340" y="392" width="120" height="56" rx="8" fill="#141414" stroke="#555" stroke-width="1.5"/>
+<text x="400" y="425" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="15" font-weight="600" fill="#e8e8e8" text-anchor="middle">건</text>
+<rect x="480" y="392" width="120" height="56" rx="8" fill="#141414" stroke="#e05555" stroke-width="1.5" stroke-dasharray="5,3"/>
+<text x="540" y="417" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="15" font-weight="600" fill="#e8e8e8" text-anchor="middle">아니다</text>
+<text x="540" y="436" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="12" fill="#888" text-anchor="middle">창 밖 부정어</text>
+<line x1="600" y1="420" x2="630" y2="420" stroke="#888" stroke-width="1.5" marker-end="url(#arr)"/>
+<rect x="630" y="392" width="190" height="56" rx="8" fill="#141414" stroke="#e05555" stroke-width="1.5"/>
+<text x="725" y="417" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888" text-anchor="middle">뒤집기 1번뿐</text>
+<text x="725" y="436" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="15" font-weight="600" fill="#e05555" text-anchor="middle">부정 ✗</text>
+<path d="M 200 456 L 200 462 L 460 462 L 460 456" fill="none" stroke="#7777cc" stroke-width="2"/>
+<text x="330" y="482" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#7777cc" text-anchor="middle">창 (두 칸)</text>
+</svg>

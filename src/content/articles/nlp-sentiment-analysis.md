@@ -9,27 +9,49 @@ tags: ["감성분석", "Sentiment Analysis", "BERT", "ABSA", "NLP", "KNU감성�
 featured: false
 draft: false
 ---
-[지난 글](/articles/nlp-pos-tagging)에서 각 단어의 품사를 분석하여 문장의 문법적 구조를 파악하는 품사 태깅을 다뤘다. 이제 단어들이 모여 이루는 가장 인간적인 차원, 즉 **감정과 의견**을 읽는 단계로 넘어간다. **감성 분석**(Sentiment Analysis)은 텍스트에 담긴 감정적 뉘앙스를 자동으로 파악하는 NLP 태스크다. "이 영화 정말 최고!"가 긍정이고 "배송이 너무 느렸어요"가 부정임을 기계가 이해하게 만드는 것이다. 제품 리뷰 분석, 소셜 미디어 여론 모니터링, 고객 서비스 자동화 등 실제 비즈니스에서 가장 많이 활용되는 NLP 응용 중 하나다.
+[지난 글](/articles/nlp-pos-tagging)에서 각 단어의 품사를 분석하여 문장의 문법적 구조를 파악하는 품사 태깅을 다뤘다. 이제 단어들이 모여 이루는 가장 인간적인 차원, 즉 감정과 의견을 읽는 단계로 넘어간다. **감성 분석**(Sentiment Analysis)은 텍스트에 담긴 감정적 뉘앙스를 자동으로 파악하는 NLP 태스크다. "이 영화 정말 최고!"가 긍정이고 "배송이 너무 느렸어요"가 부정임을 기계가 알아보게 만드는 일이다. 제품 리뷰 분석, 소셜 미디어 여론 모니터링, 상담 기록 분류처럼 실제 서비스에서 가장 많이 쓰이는 NLP 응용 가운데 하나다.
 
-## 감성 분석의 스펙트럼
+이 글은 무엇을 맞힐지부터 정한다. 같은 "감성 분석"이라는 이름 아래 라벨의 모양이 넷이나 되고, 어느 것을 고르느냐에 따라 데이터·손실·지표가 모두 달라진다. 그다음 학습 데이터 없이 돌아가는 사전 기반, 한국어에서 특히 자주 깨지는 부정 처리, 지금의 기본값인 BERT 파인튜닝, 한 리뷰를 속성별로 쪼개 보는 방법을 차례로 보고, 마지막으로 라벨이 흔들리는 자리와 나온 점수를 실제로 쓰는 법을 다룬다.
 
-감성 분석은 단순한 이진 분류("긍정이냐 부정이냐")부터 복잡한 감정 이해까지 다양한 수준이 있다.
+## 감성 분석의 층위
 
-**극성 분류(Polarity Classification):** 가장 기본. 긍정/부정 또는 긍정/부정/중립 3분류.
+### 네 가지 층위
 
-**강도 분류(Intensity Classification):** "조금 좋다"와 "매우 좋다"를 구분. 별점 1~5점 예측이 대표적.
+감성 분석은 무엇을 라벨로 두느냐에 따라 네 층으로 나뉜다. 가장 바깥은 **극성**(polarity)이다. 글이 좋다는 쪽인지 나쁘다는 쪽인지만 묻고, 라벨은 긍정·부정 둘이거나 여기에 중립을 더한 셋이다. 그 안쪽의 **강도**는 "조금 좋다"와 "매우 좋다"를 가른다. 극성에 크기를 얹은 것이라 라벨이 순서 있는 값, 대표적으로 별점 1~5가 된다.
 
-**감정 분류(Emotion Classification):** 기쁨, 슬픔, 분노, 두려움, 놀람, 혐오 같은 세밀한 감정 카테고리 분류.
+세 번째 층인 **감정 분류**는 극성과 다른 축을 쓴다. 기쁨·슬픔·분노·두려움·놀람·혐오처럼 감정의 종류를 묻는데, 분노와 슬픔은 둘 다 부정이지만 상담 창구에서 해야 할 일은 전혀 다르다. 라벨이 여섯 개 안팎의 이름이고 서로 순서가 없으며, 한 문장에 둘이 겹치기도 해서 여러 라벨을 동시에 붙이는 문제로 푸는 경우가 많다.
 
-**속성 기반 감성 분석(Aspect-Based Sentiment Analysis, ABSA):** "배터리는 좋은데 카메라가 별로야"처럼 하나의 리뷰에서 여러 속성에 대한 감성을 각각 분석.
+마지막 층인 **속성 기반 감성 분석**(ABSA)은 "배터리는 좋은데 카메라가 별로야"처럼 한 리뷰 안의 평가 대상마다 극성을 따로 매긴다. 라벨이 문장당 하나가 아니라 (속성, 극성) 쌍의 목록이다. 네 층을 나란히 놓으면 라벨의 모양이 차례로 복잡해진다 — 이름 하나, 순서 있는 수 하나, 겹칠 수 있는 이름 여럿, 쌍의 목록. 라벨러에게 줄 지침도, 모델의 출력층도 이 모양을 따라 정해진다.
 
-## 접근법 1: 규칙/사전 기반
+### 별점과 회귀
 
-사전 기반 방법은 미리 감성 점수가 부여된 단어 사전을 활용한다.
+강도를 별점으로 맞힐 때는 두 길이 있다. 1~5를 다섯 개의 이름으로 보고 분류로 풀 수도 있고, 하나의 수로 보고 회귀로 풀 수도 있다. 차이는 틀렸을 때 얼마나 벌을 주느냐에서 난다. 분류에 쓰는 교차 엔트로피는 정답 칸의 확률만 본다. 정답이 5점인데 4점을 고르든 1점을 고르든, 5점 칸에 준 확률이 같으면 손실도 같다. 회귀에 쓰는 평균제곱오차는 거리를 본다. 5점을 4점으로 맞히면 오차의 제곱이 1이고 1점으로 맞히면 16이다.
 
-### VADER (영어)
+$$
+\text{MSE} = \frac{1}{n}\sum_{i=1}^{n} (y_i - \hat{y}_i)^2
+$$
 
-VADER(Valence Aware Dictionary and sEntiment Reasoner)는 영어 소셜 미디어 텍스트에 최적화된 감성 분석 도구다. 단어 감성 점수뿐 아니라 대소문자, 느낌표, "VERY" 같은 강조어, 부정어도 처리한다.
+지표도 따라 갈린다. 분류로 풀면 정확도나 F1을 보고, 회귀로 풀면 평균 절대 오차(MAE)를 본다. 리뷰 네 건의 정답이 5·5·1·3이고 예측이 4·4·2·3이면 정확도는 4건 중 1건이라 25%다. 그런데 MAE는 (1+1+1+0)/4로 0.75점, 틀린 셋이 모두 한 칸 차이다. 같은 예측을 두고 한 지표는 형편없다고, 다른 지표는 제법 맞힌다고 말한다. 별점처럼 이웃한 값이 서로 비슷한 라벨이라면 회귀 쪽 지표가 실제 쓰임에 더 가깝다. 대신 회귀 모델은 3.4 같은 값을 내므로 화면에 별 개수로 보이려면 반올림 규칙을 따로 정해야 하고, 리뷰 대부분이 5점에 몰린 데이터에서는 예측이 평균 근처로 쏠리는 경향도 있다.
+
+### 중립 클래스
+
+긍정·부정 둘에 중립을 더하면 겉보기에는 선택지가 하나 늘 뿐이지만, 라벨을 다는 사람들 사이의 합의가 눈에 띄게 흔들린다. 이 합의의 정도를 **라벨러 간 일치도**라 하고, 흔히 우연히 맞을 확률을 뺀 코언의 카파로 잰다. 두 사람이 실제로 같은 라벨을 단 비율을 $$p_o$$, 각자의 라벨 분포만으로 우연히 같아질 비율을 $$p_e$$라 하면 다음과 같다.
+
+$$
+\kappa = \frac{p_o - p_e}{1 - p_e}
+$$
+
+두 사람이 리뷰 100건 중 80건에서 같은 라벨을 달았고 우연 일치가 0.5라면 카파는 (0.8−0.5)/(1−0.5)=0.6이다. 여기에 중립 칸이 생기면 "그럭저럭 괜찮았어요"를 한 사람은 긍정에, 다른 사람은 중립에 넣는다. 극단의 두 칸 사이에 경계가 하나가 아니라 둘이 생기고, 애매한 문장은 거의 다 그 경계 근처에 산다. 그래서 중립을 둘 때는 "사실만 적은 문장은 중립, 약하게라도 평가가 섞이면 그쪽 극성" 같은 판정 규칙을 라벨 지침에 먼저 적고, 샘플 수백 건으로 일치도를 재 본 뒤 본 작업에 들어가는 편이 낫다. 사람끼리 60% 남짓 합의하는 라벨이라면 모델의 정확도도 그 선을 크게 넘기 어렵다.
+
+## 사전 기반
+
+![감성 분석 3가지 접근법 비교](/assets/posts/nlp-sentiment-analysis-pipeline.svg)
+
+### VADER
+
+사전 기반 방법은 단어마다 감성 점수를 미리 매겨 둔 사전, 곧 **감성사전**을 들고 문장의 단어 점수를 더해 판정한다. 영어에서 가장 널리 쓰이는 것이 VADER(Valence Aware Dictionary and sEntiment Reasoner)다. 소셜 미디어 글에 맞춰 만들어져서 단어 점수에 몇 가지 규칙을 얹는다. 문장 안에서 한 단어만 대문자로 쓰면(AMAZING) 그 단어의 세기를 키우고, 느낌표가 붙으면 몇 개까지는 개수만큼 세기를 더하며, "very"·"extremely" 같은 강조어는 뒤 단어를 키우고 "kind of" 같은 완화어는 줄인다. 부정어 "not"이 앞에 오면 부호를 뒤집되 크기를 조금 깎는다.
+
+이렇게 모은 단어 점수의 합은 −1~+1 사이로 눌러 담은 **compound** 점수가 된다. 관례적인 경계는 ±0.05다 — 0.05 이상이면 긍정, −0.05 이하면 부정, 그 사이는 중립이다.
 
 ```python
 from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
@@ -44,372 +66,230 @@ texts = [
 
 for text in texts:
     scores = analyzer.polarity_scores(text)
-    print(f"{text}")
-    print(f"  pos: {scores['pos']:.3f}, neg: {scores['neg']:.3f}, "
-          f"compound: {scores['compound']:.3f}")
+    print(f"{text}  compound: {scores['compound']:.3f}")
     # compound ≥ 0.05: 긍정, ≤ -0.05: 부정, 그 사이: 중립
 ```
 
-VADER의 장점은 학습 데이터 없이 즉시 사용 가능하다는 것이다. 단점은 문맥 없이 단어 단위로 판단하기 때문에 "이 음식이 굉장히 나쁘지 않다"처럼 이중 부정이나 반어법을 제대로 처리하기 어렵다.
+VADER의 장점은 학습 데이터 없이 바로 돌아가고, 왜 그 점수가 나왔는지 단어 단위로 짚을 수 있다는 것이다. 한계는 규칙이 닿는 범위가 좁다는 데 있다. 부정어는 앞 몇 단어 안에서만 보고, 반어나 문장 전체의 흐름은 보지 않는다.
 
-### KNU 한국어 감성사전
+### KNU 감성사전
 
-한국어의 경우 군산대학교에서 개발한 **KNU 한국어 감성사전**이 대표적이다. 약 14,000개 어휘에 -2~+2 점수가 부여됐다.
+한국어에서는 군산대학교에서 만든 **KNU 한국어 감성사전**이 대표적이다. 약 14,000개 어휘에 −2부터 +2까지의 극성 점수를 매겼다. "최고"가 +2, "아쉽다"가 −2 같은 식으로, 낱말뿐 아니라 짧은 구도 들어 있다. 쓰는 법은 단순하다. 문장을 형태소로 쪼개 원형으로 돌리고, 사전에 있는 형태소의 점수를 더한다.
 
-```python
-import pandas as pd
+한계는 사전이 만들어진 자리에서 나온다. 사전은 특정 말뭉치에서 뽑은 낱말에 사람이 점수를 매긴 것이라, 그 말뭉치에 없던 표현은 아예 점수가 없다. 쇼핑 리뷰의 "재구매각", 게임 커뮤니티의 "갓겜", 상담 기록의 "처리가 안 됨" 같은 말은 사전에 걸리지 않고 조용히 0점으로 지나간다. 사전에 있는 말도 도메인을 옮기면 부호가 바뀐다. "가볍다"는 노트북 리뷰에서는 칭찬이고 "사람이 가볍다"에서는 흠이다. 사전은 낱말 하나에 점수 하나만 주므로 이 둘을 가를 방법이 없다.
 
-# KNU 감성사전 로드 (실제 파일 경로 필요)
-knu_dict = pd.read_csv('knu_sentiment_lexicon.csv', 
-                        encoding='utf-8')
-sentiment_dict = dict(zip(knu_dict['word'], knu_dict['polarity']))
+### 하루짜리 기준선
 
-from konlpy.tag import Okt
+그럼에도 사전 기반이 남아 있는 까닭은 라벨이 한 건도 없는 날 할 수 있는 거의 유일한 일이기 때문이다. 새 서비스가 리뷰를 모으기 시작했는데 라벨을 달 사람도 시간도 없다면, 사전과 형태소 분석기만으로 하루 만에 긍정·부정 비율을 뽑아 볼 수 있다. 이 숫자는 정확하지 않지만 두 가지 쓸모가 있다.
 
-okt = Okt()
+하나는 **기준선**이다. 나중에 모델을 학습시켰을 때 "사전보다 얼마나 나은가"를 재는 바닥이 된다. 모델이 사전을 못 이기면 데이터나 학습 절차가 잘못됐다는 신호다. 다른 하나는 라벨링의 시작점이다. 사전 점수가 크게 양수이거나 크게 음수인 리뷰는 대개 맞으므로, 그 둘을 빼고 점수가 0 근처인 리뷰부터 사람에게 보이면 라벨러의 시간이 어려운 문장에 쓰인다. 다만 사전이 맞히기 쉬운 문장만 골라 학습 데이터를 채우면 모델도 쉬운 문장만 배우게 되니, 이 방식으로 모은 데이터에는 무작위로 뽑은 표본을 섞어야 한다.
 
-def knu_sentiment_score(text):
-    """KNU 사전 기반 감성 점수 계산"""
-    morphs = okt.morphs(text, norm=True, stem=True)
-    score = 0
-    hit_words = []
-    
-    for i, morph in enumerate(morphs):
-        if morph in sentiment_dict:
-            word_score = sentiment_dict[morph]
-            
-            # 부정어 처리: 앞 2개 형태소에서 부정어 확인
-            negation = False
-            for j in range(max(0, i-2), i):
-                if morphs[j] in ['안', '못', '없', '아니']:
-                    negation = True
-                    break
-            
-            if negation:
-                word_score *= -1
-            
-            score += word_score
-            hit_words.append((morph, word_score))
-    
-    return score, hit_words
+## 부정 처리
 
-text = "이 영화는 정말 최고였지만 결말이 너무 아쉬웠어요"
-score, words = knu_sentiment_score(text)
-print(f"총점: {score}, 감지된 단어: {words}")
-# 총점: 0, 감지된 단어: [('최고', 2), ('아쉽다', -2)]
-# → 혼합 감성 (복합적)
-```
+### 이중 부정
 
-![감성 분석 3가지 접근법 비교](/assets/posts/nlp-sentiment-analysis-pipeline.svg)
+사전 기반이 가장 먼저 깨지는 자리가 부정이다. **부정어**는 뒤나 앞의 말이 뜻하는 바를 뒤집는 말로, 한국어에서는 "안"·"못" 같은 짧은 부정과 "-지 않다"·"-지 못하다"·"아니다"·"없다" 같은 긴 부정이 있다. "나쁘지 않다"를 형태소로 쪼개면 "나쁘다"와 "않다"가 나온다. 사전은 "나쁘다"에 음수 점수를 주고 "않다"에는 점수가 없으니, 부정을 모르는 합산은 이 문장을 부정으로 판정한다. 실제 뜻은 약한 긍정인데 부호가 거꾸로 나간다.
 
-## 접근법 2: ML 기반
+이중 부정은 한 번 더 꼬인다. "좋지 않은 건 아니다"는 "좋다"를 두 번 뒤집어 다시 약한 긍정이 된다. 부정어가 보일 때마다 부호를 한 번씩 뒤집는 규칙은 이 문장을 맞히지만, "안 좋은 게 없다"(나쁜 점이 없다는 뜻)처럼 "없다"가 부정어이면서 동시에 대상의 부재를 말하는 문장에서는 다시 틀린다. 규칙을 하나 더할 때마다 그 규칙이 틀리는 새 문장이 생긴다.
 
-기계 학습 기반 방법은 레이블이 달린 학습 데이터를 사용하여 분류기를 학습한다.
+### 불용어와 부정어
 
-### TF-IDF + 분류기
+**불용어**는 너무 흔해서 뜻을 거의 싣지 않는다고 보고 전처리에서 지우는 낱말 목록이다. 주제 분류나 검색에서는 이 목록이 잡음을 덜어 주지만, 흔히 쓰는 한국어·영어 불용어 목록에는 "안"·"못"·"않다"·"not"·"no"가 들어 있는 경우가 많다. 이 목록을 그대로 감성 분석에 쓰면 "안 좋다"가 "좋다"로, "not bad"가 "bad"로 바뀌어 모델에 들어간다. 극성을 뒤집는 낱말을 지우고 극성을 맞히라고 하는 셈이다.
+
+TF-IDF 같은 단어 빈도 기반 모델에서도 마찬가지다. 불용어 목록에서 부정어를 빼고, 가능하면 "안_좋다"처럼 부정어와 바로 뒤 낱말을 묶은 바이그램이 특징으로 들어가게 한다. 아래 코드의 `ngram_range=(1, 2)`가 그 역할을 한다. 형태소 분석기로 명사·형용사·동사만 남기는 필터도 같은 함정을 품는다. "안"은 부사로, "않다"는 보조용언으로 태깅되어 필터에서 떨어져 나가기 쉬우니 부정어는 품사와 무관하게 남기는 예외를 둔다.
 
 ```python
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.linear_model import LogisticRegression
-from sklearn.model_selection import train_test_split
-from sklearn.metrics import classification_report
 from konlpy.tag import Okt
 
 okt = Okt()
+KEEP_POS = {'Noun', 'Adjective', 'Verb'}
+NEGATIONS = {'안', '못', '않다', '없다', '아니다'}
 
 def tokenize_korean(text):
-    """한국어 명사/동사/형용사 추출"""
+    """명사·형용사·동사를 남기되 부정어는 품사와 무관하게 남긴다"""
     pos = okt.pos(text, norm=True, stem=True)
-    return [word for word, tag in pos 
-            if tag in ['Noun', 'Adjective', 'Verb'] and len(word) > 1]
+    return [w for w, tag in pos if tag in KEEP_POS or w in NEGATIONS]
 
-# 학습 데이터 (실제로는 대용량 데이터셋 사용)
-texts = [
-    "정말 맛있어요 강추합니다",    # 긍정
-    "배송이 빠르고 품질도 좋아요",  # 긍정
-    "완전 별로예요 돈 낭비",        # 부정
-    "짝퉁 같아요 실망했습니다",     # 부정
-    "보통이에요 그냥 그렇네요",     # 중립
-]
-labels = [1, 1, 0, 0, 2]  # 1:긍정, 0:부정, 2:중립
-
-# TF-IDF 벡터화
-vectorizer = TfidfVectorizer(
-    tokenizer=tokenize_korean,
-    ngram_range=(1, 2),  # 유니그램 + 바이그램
-    min_df=1
-)
-X = vectorizer.fit_transform(texts)
-
-# 로지스틱 회귀 분류기
+vectorizer = TfidfVectorizer(tokenizer=tokenize_korean, ngram_range=(1, 2))
 clf = LogisticRegression(max_iter=1000)
-clf.fit(X, labels)
-
-# 새 텍스트 예측
-new_texts = ["진짜 최고입니다!", "다시는 안 살 것 같아요"]
-X_new = vectorizer.transform(new_texts)
-predictions = clf.predict(X_new)
-proba = clf.predict_proba(X_new)
-label_map = {0: '부정', 1: '긍정', 2: '중립'}
-
-for text, pred, prob in zip(new_texts, predictions, proba):
-    print(f"{text}: {label_map[pred]} (신뢰도: {max(prob):.3f})")
+# X = vectorizer.fit_transform(train_texts); clf.fit(X, train_labels)
 ```
 
-ML 기반의 장점은 도메인 특화 데이터로 빠르게 학습할 수 있다는 것이다. 단점은 학습 데이터에 없는 표현에 취약하고, 어휘 의미가 아닌 통계적 패턴에 의존한다는 점이다.
+### 부정의 범위
 
-## 접근법 3: BERT 파인튜닝
+부정어가 어디까지 뒤집는지를 **부정 범위**(negation scope)라 한다. 규칙으로 잡을 때는 보통 "부정어에서 몇 형태소 안"으로 창을 정한다. 한국어에서 이 창이 까다로운 것은 부정이 양쪽에 붙기 때문이다. 짧은 부정 "안 좋다"는 부정어가 앞에 오고, 긴 부정 "좋지 않다"는 뒤에 온다. 앞쪽 두 형태소만 보는 규칙은 "안 좋다"는 뒤집지만 "나쁘지 않다"는 그대로 둔다.
 
-현재 최고 성능을 내는 방법은 사전 학습된 BERT를 감성 분석 태스크에 **파인튜닝**(Fine-tuning)하는 것이다.
+![부정 범위: 짧은 부정·긴 부정·이중 부정에서 창이 닿는 자리](/assets/posts/nlp-sentiment-analysis-negation-scope.svg)
 
-![BERT 감성 분석 코드](/assets/posts/nlp-sentiment-analysis-code.svg)
-
-### Hugging Face Pipeline 사용
+아래 코드는 앞뒤 두 형태소를 모두 보고, 창 안의 부정어 개수만큼 부호를 뒤집는다. 짝수 번이면 원래 부호로 돌아오므로 이중 부정도 원리상으로는 맞힌다. 그런데 "좋지 않은 건 아니다"를 쪼개면 형태소 분석기에 따라 대략 "좋다·않다·건·아니다"가 되고, "아니다"는 "좋다"에서 세 칸 떨어져 있다. 창이 2면 "않다" 하나만 걸려 한 번만 뒤집히고, 문장은 부정으로 나간다.
 
 ```python
-from transformers import pipeline
+from konlpy.tag import Okt
 
-# 파이프라인으로 즉시 사용
-sa = pipeline(
-    "sentiment-analysis",
-    model="snunlp/KR-FinBert-SC",  # 한국어 금융 도메인 감성 분석
-)
+okt = Okt()
+NEGATIONS = {'안', '못', '않다', '없다', '아니다'}
 
-texts = [
-    "이 제품 정말 좋아요!",
-    "배송이 너무 느렸어요.",
-    "그냥 보통이에요. 기대했던 것과 달랐어요.",
-]
-results = sa(texts)
-
-for text, result in zip(texts, results):
-    emoji = "😊" if result['label'] == 'positive' else "😢"
-    print(f"{emoji} {text}")
-    print(f"   → {result['label']} (신뢰도: {result['score']:.3f})")
-```
-
-### BERT 직접 파인튜닝
-
-더 많은 제어가 필요할 때는 직접 파인튜닝한다.
-
-```python
-from transformers import (
-    AutoTokenizer, 
-    AutoModelForSequenceClassification,
-    Trainer,
-    TrainingArguments
-)
-from datasets import Dataset
-import torch
-
-# 모델 및 토크나이저 로드
-model_name = "klue/bert-base"
-tokenizer = AutoTokenizer.from_pretrained(model_name)
-model = AutoModelForSequenceClassification.from_pretrained(
-    model_name,
-    num_labels=3  # 긍정, 부정, 중립
-)
-
-def tokenize_function(examples):
-    return tokenizer(
-        examples["text"],
-        padding="max_length",
-        truncation=True,
-        max_length=128
-    )
-
-# 데이터셋 준비 (실제로는 대용량 데이터 사용)
-data = {
-    "text": ["정말 좋아요", "완전 별로", "그냥 그래요"],
-    "label": [0, 1, 2]  # 0:긍정, 1:부정, 2:중립
-}
-dataset = Dataset.from_dict(data)
-tokenized = dataset.map(tokenize_function, batched=True)
-
-# 학습 설정
-training_args = TrainingArguments(
-    output_dir="./sentiment_model",
-    num_train_epochs=3,
-    per_device_train_batch_size=16,
-    learning_rate=2e-5,
-    warmup_steps=100,
-    evaluation_strategy="epoch",
-    save_strategy="epoch",
-)
-
-trainer = Trainer(
-    model=model,
-    args=training_args,
-    train_dataset=tokenized,
-)
-
-trainer.train()
-```
-
-## 속성 기반 감성 분석 (ABSA)
-
-일반적인 감성 분석은 문서나 문장 전체의 감성을 하나의 레이블로 표현한다. 하지만 "음식은 맛있었는데 서비스가 별로였다"처럼 한 문장에 여러 감성이 공존하는 경우, **ABSA**가 필요하다.
-
-ABSA는 두 단계로 이루어진다.
-1. **속성 추출(Aspect Extraction):** "음식", "서비스" 같은 평가 대상 추출
-2. **속성별 감성 분류:** 각 속성에 대한 긍정/부정 판단
-
-```python
-# ABSA 예시 (단순화된 구현)
-import re
-
-ASPECTS = {
-    '음식': ['음식', '맛', '메뉴', '요리', '식사'],
-    '서비스': ['서비스', '직원', '종업원', '응대', '친절'],
-    '가격': ['가격', '값', '비용', '가성비', '저렴'],
-    '배달': ['배달', '배송', '배달속도', '포장'],
-}
-
-def extract_aspect_sentiments(text, sentiment_analyzer, aspect_dict):
-    """텍스트에서 속성별 감성 추출"""
-    results = {}
-    
-    # 문장 분리
-    sentences = re.split(r'[.!?ㄴ]', text)
-    
-    for sentence in sentences:
-        sentence = sentence.strip()
-        if not sentence:
+def knu_sentiment_score(text, lexicon, window=2):
+    """KNU 사전 점수를 더하되, 앞뒤 window 안의 부정어 수만큼 부호를 뒤집는다"""
+    morphs = okt.morphs(text, norm=True, stem=True)
+    score, hits = 0, []
+    for i, m in enumerate(morphs):
+        if m not in lexicon:
             continue
-        
-        # 어떤 속성에 해당하는지 확인
-        for aspect, keywords in aspect_dict.items():
-            if any(kw in sentence for kw in keywords):
-                # 해당 문장의 감성 분석
-                sentiment = sentiment_analyzer(sentence)[0]
-                results[aspect] = {
-                    'sentence': sentence,
-                    'sentiment': sentiment['label'],
-                    'score': sentiment['score']
-                }
-    
-    return results
+        around = morphs[max(0, i - window):i] + morphs[i + 1:i + 1 + window]
+        flips = sum(w in NEGATIONS for w in around)
+        s = lexicon[m] * (-1) ** flips
+        score += s
+        hits.append((m, s))
+    return score, hits
 
-# 사용 예시
-from transformers import pipeline
-sa = pipeline("sentiment-analysis", model="snunlp/KR-FinBert-SC")
-
-review = "음식은 정말 맛있었는데 서비스가 너무 불친절했어요. 가격도 좀 비싼 편이에요."
-aspect_sentiments = extract_aspect_sentiments(review, sa, ASPECTS)
-
-print(f"리뷰: {review}\n")
-for aspect, info in aspect_sentiments.items():
-    emoji = "😊" if info['sentiment'] == 'positive' else "😢"
-    print(f"{emoji} [{aspect}] {info['sentiment']} ({info['score']:.2f})")
-    print(f"     문장: {info['sentence']}")
-# 😊 [음식] positive (0.95)
-#      문장: 음식은 정말 맛있었는데
-# 😢 [서비스] negative (0.91)
-#      문장: 서비스가 너무 불친절했어요
-# 😢 [가격] negative (0.78)
-#      문장: 가격도 좀 비싼 편이에요
+# lexicon = dict(zip(knu['word'], knu['polarity']))
+# knu_sentiment_score("이 영화는 정말 최고였지만 결말이 너무 아쉬웠어요", lexicon)
+# → (0, [('최고', 2), ('아쉽다', -2)])  긍정과 부정이 상쇄된 혼합 감성
 ```
 
-## 한국어 감성 분석 데이터셋
+그렇다고 창을 넓히면 먼 곳의 부정어가 엉뚱한 낱말을 뒤집는다. "배송은 안 빨랐지만 품질은 좋다"에서 창이 넉넉하면 "안"이 "좋다"까지 닿는다. 창을 좁히면 "그다지 만족스럽다고 하기는 어렵다" 같은 긴 완곡 부정을 놓친다. 어느 크기를 골라도 틀리는 문장이 남는다. BERT 같은 문맥 모델이 이기는 곳이 바로 여기다. 모델은 창의 크기를 정해 받지 않고, "지만"이 부정의 범위를 끊는다는 것을 학습 데이터에서 스스로 배운다.
 
-좋은 모델을 만들려면 좋은 학습 데이터가 필요하다. 한국어 감성 분석에서 자주 사용되는 데이터셋:
+## BERT 파인튜닝
 
-**NSMC (Naver Sentiment Movie Corpus):** 네이버 영화 리뷰 15만 개, 긍정/부정 레이블. 한국어 감성 분석의 표준 벤치마크.
+### TF-IDF 분류기
+
+라벨 달린 데이터가 생기면 사전 대신 분류기를 학습시킬 수 있다. 가장 먼저 세우는 것이 위 부정 처리 절에서 본 TF-IDF와 로지스틱 회귀의 조합이다. 문서를 낱말·바이그램의 가중 빈도 벡터로 바꾸고 그 위에 선형 분류기를 얹는다. 학습이 몇 초면 끝나고, 어떤 낱말이 긍정 쪽 가중치를 크게 받았는지 계수를 열어 볼 수 있어 오류를 따라가기 쉽다.
+
+한계는 낱말이 곧 특징이라는 데서 온다. 학습 데이터에 "노잼"이 없었다면 모델은 그 낱말에 아무 가중치도 없고, "재미없다"와 "노잼"이 같은 뜻이라는 것도 모른다. 이 빈자리를 메우는 것이 대량의 글로 먼저 학습해 낱말의 뜻과 문맥을 익혀 둔 사전 학습 모델이다.
+
+### NSMC 기준선
+
+**파인튜닝**은 사전 학습된 모델에 분류용 층 하나를 얹고, 우리 과제의 라벨 데이터로 전체를 조금 더 학습시키는 일이다. 한국어 감성 분석에서 그 출발점이 되는 데이터가 **NSMC**(Naver Sentiment Movie Corpus)다. 네이버 영화 리뷰 20만 건에 긍정·부정 라벨을 달았고, 학습 15만 건과 평가 5만 건으로 나뉘어 있다. 긍정과 부정이 거의 반씩이라 정확도를 그대로 지표로 써도 무리가 없다.
 
 ```python
 from datasets import load_dataset
+from transformers import (AutoTokenizer, AutoModelForSequenceClassification,
+                          Trainer, TrainingArguments)
 
-# NSMC 데이터셋 로드 (Hugging Face Hub)
-dataset = load_dataset("nsmc")
-print(dataset)
-# DatasetDict({
-#     train: Dataset({features: ['id', 'document', 'label'], num_rows: 150000})
-#     test:  Dataset({features: ['id', 'document', 'label'], num_rows: 50000})
-# })
+ds = load_dataset("nsmc")          # train 150,000 / test 50,000
+model_name = "klue/bert-base"
+tok = AutoTokenizer.from_pretrained(model_name)
+model = AutoModelForSequenceClassification.from_pretrained(model_name, num_labels=2)
 
-# 데이터 확인
-print(dataset['train'][0])
-# {'id': '9976970', 'document': '아 더빙..살짝 이상하긴 했지만 그래도 재밌었다', 'label': 1}
+def encode(batch):
+    return tok(batch["document"], truncation=True, max_length=128)
+
+ds = ds.filter(lambda x: x["document"] is not None).map(encode, batched=True)
+
+args = TrainingArguments(output_dir="./nsmc_bert", num_train_epochs=2,
+                         per_device_train_batch_size=32, learning_rate=2e-5,
+                         eval_strategy="epoch")
+trainer = Trainer(model=model, args=args, tokenizer=tok,
+                  train_dataset=ds["train"], eval_dataset=ds["test"])
+trainer.train()
 ```
 
-**KoEMOTION:** 감정 분류 (기쁨, 슬픔, 분노, 공포, 혐오, 놀람) 데이터셋.
+절차는 네 걸음이다. 비어 있는 리뷰를 걸러 내고, 토크나이저로 토큰 ID로 바꾸고, 학습률 2e-5 안팎으로 두세 에폭 돌리고, 평가셋 정확도를 잰다. KoBERT·KcBERT·KLUE-BERT 계열을 이렇게 파인튜닝하면 대체로 80퍼센트대 후반에서 90퍼센트 언저리의 정확도가 나온다고 알려져 있다. 같은 데이터에서 TF-IDF 분류기는 이보다 몇 %p 낮은 자리에 서는 경우가 많다. 이 대역이 기준선이다 — 여기서 크게 모자라면 모델보다 전처리나 학습 설정을 먼저 의심한다. 사람끼리도 판정이 갈리는 리뷰가 섞여 있어 100%에 가까워지는 일은 없다.
 
-**AIHub 한국어 감정 정보가 포함된 단발성 대화 데이터셋:** 대화 맥락에서의 감성 분석 데이터.
+### 입력 길이
 
-## 감성 분석의 도전과 한계
+`max_length`는 모델이 한 리뷰에서 읽을 최대 토큰 수다. 이보다 긴 리뷰는 뒤가 잘리고, 짧은 리뷰는 배치 안에서 채움 토큰으로 늘어난다. 길게 잡으면 잘리는 리뷰는 줄지만 계산량이 길이에 비례해 늘고, 어텐션은 길이의 제곱으로 는다. 그래서 값은 감으로 정하지 말고 데이터의 길이 분포를 보고 정한다. 학습 데이터를 한 번 토크나이즈해서 토큰 수의 95번째·99번째 백분위를 보고, 99%가 들어가는 자리 근처에서 고른다.
 
-### 풍자와 반어법
+NSMC는 네이버 영화 한줄평이라 한 리뷰가 140자를 넘지 못하고, 대부분은 그보다 훨씬 짧다. 토큰으로 바꿔도 128이면 거의 다 들어가므로 이보다 길게 잡을 이유가 적다. 쇼핑몰 상세 리뷰나 상담 기록은 사정이 다르다. 수백 자가 흔하고, 불만의 핵심이 "그런데"로 시작하는 끝부분에 오는 경우가 많다. 이런 데이터에서 앞 128토큰만 읽으면 결론을 잘라 버리게 되니, 길이를 늘리거나 앞뒤를 함께 남기는 자르기를 쓴다.
 
-"오 진짜 배송 빠르네요. 3주 만에 왔어요." — 표면적으로는 긍정 표현("빠르네요")이지만 실제로는 강한 부정이다. BERT도 이런 풍자(sarcasm)를 완벽히 처리하지 못한다.
+### 도메인 이동
 
-### 도메인 의존성
+영화 리뷰로 학습한 모델을 쇼핑 리뷰나 상담 기록에 그대로 쓰면 정확도가 떨어진다. 학습한 분포와 쓰는 분포가 다른 이 상황을 **도메인 이동**이라 한다. 떨어지는 폭은 두 도메인이 얼마나 다른지에 따라 몇 %p에서 십수 %p까지 벌어진다. 영화 리뷰에서 "지루하다"·"연기"·"결말"이 하던 일을 쇼핑에서는 "배송"·"사이즈"·"교환"이 하는데, 모델은 이 말들이 극성과 어떻게 엮이는지 본 적이 없다. 상담 기록은 더 멀다. 고객은 문제를 설명하느라 부정적인 낱말을 쓰지만, 상담이 잘 끝났다면 대화 전체의 극성은 긍정일 수 있다.
 
-"이 약의 부작용이 심각하다"는 의료 도메인에서 부정이지만, 의약학 전문가의 논문에서는 중립적 설명일 수 있다. 도메인에 따라 같은 단어의 감성 극성이 달라진다.
+아래 코드 그림의 `snunlp/KR-FinBert-SC`도 같은 문제를 품는다. 금융 뉴스 문장으로 학습한 모델이라 음식점 리뷰에 쓰면 금융 문장에서 익힌 경계를 그대로 들고 온다. 대응은 순서대로 셋이다. 먼저 목표 도메인에서 수백 건을 뽑아 라벨을 달고, 기존 모델을 그 위에서 재 본다. 떨어진 폭이 크면 그 수백~수천 건으로 한 번 더 파인튜닝한다. 여력이 있으면 라벨 없는 목표 도메인 글로 언어 모델 학습을 조금 더 해 어휘부터 익히게 한 뒤 파인튜닝한다.
 
-### 문화적 맥락
+![BERT 감성 분석 코드](/assets/posts/nlp-sentiment-analysis-code.svg)
 
-한국어의 "그냥 그래요", "뭐 나쁘지는 않아요" 같은 표현은 문화적 맥락상 부정에 가깝지만, 단어 자체의 의미로는 중립이다. 영어로 학습된 모델을 한국어에 직접 적용하면 이런 미묘한 차이를 놓친다.
+## 속성 기반 분석
 
-### 혼합 감성
+### 두 단계
 
-"가격 대비 성능은 좋은데 배터리가 너무 빨리 닳아요"는 속성별로 다른 감성을 가진다. 전체 감성을 하나로 결정하는 것 자체가 어렵다.
+"음식은 정말 맛있었는데 서비스가 너무 불친절했어요. 가격도 좀 비싼 편이에요." 이 리뷰에 극성 하나를 붙이면 부정이 되겠지만, 식당 주인이 알고 싶은 것은 "무엇이 좋았고 무엇이 나빴나"다. 속성 기반 분석은 이 질문을 두 단계로 푼다. 첫 단계인 **속성 추출**은 평가 대상, 곧 "음식"·"서비스"·"가격"을 찾는다. 둘째 단계는 찾은 속성마다 그 속성에 걸린 표현만 보고 극성을 판정한다.
 
-## 실전 파이프라인 구성
+![속성 기반 분석의 두 단계: 속성 추출 후 속성별 극성 판정](/assets/posts/nlp-sentiment-analysis-absa-two-stage.svg)
+
+두 단계를 나누는 이유는 틀리는 방식이 다르기 때문이다. 속성 추출이 틀리면 없는 속성이 생기거나 있는 속성이 빠지고, 극성 판정이 틀리면 속성은 맞는데 부호가 틀린다. 두 오류를 따로 재야 어디를 고칠지 안다. 가장 단순한 구현은 속성마다 키워드 목록을 두고, 문장을 절 단위로 자른 뒤 키워드가 들어간 절에 감성 모델을 돌리는 것이다.
 
 ```python
-from transformers import pipeline
-import pandas as pd
-from collections import Counter
-import matplotlib.pyplot as plt
+import re
 
-class SentimentAnalysisPipeline:
-    def __init__(self, model_name="snunlp/KR-FinBert-SC"):
-        self.sa = pipeline("sentiment-analysis", model=model_name)
-        self.label_map = {
-            'positive': '긍정',
-            'negative': '부정',
-            'neutral': '중립'
-        }
-    
-    def analyze_batch(self, texts, batch_size=32):
-        """대량 텍스트 배치 처리"""
-        results = []
-        for i in range(0, len(texts), batch_size):
-            batch = texts[i:i+batch_size]
-            batch_results = self.sa(batch)
-            results.extend(batch_results)
-        return results
-    
-    def summarize(self, texts):
-        """감성 분포 요약 통계"""
-        results = self.analyze_batch(texts)
-        labels = [r['label'] for r in results]
-        scores = [r['score'] for r in results]
-        
-        label_counts = Counter(labels)
-        total = len(labels)
-        
-        print("=== 감성 분석 요약 ===")
-        for label, count in label_counts.most_common():
-            pct = count / total * 100
-            kr_label = self.label_map.get(label, label)
-            print(f"{kr_label}: {count}건 ({pct:.1f}%)")
-        
-        avg_score = sum(scores) / len(scores)
-        print(f"\n평균 신뢰도: {avg_score:.3f}")
-        
-        return results
+ASPECTS = {
+    '음식': ['음식', '맛', '메뉴', '요리'],
+    '서비스': ['서비스', '직원', '응대', '친절'],
+    '가격': ['가격', '값', '가성비'],
+}
 
-# 사용 예시: 제품 리뷰 100개 분석
-reviews = [
-    "정말 좋아요!", "별로예요", "그냥 그래요",
-    # ... 실제로는 수백~수천 건
-]
-pipeline_obj = SentimentAnalysisPipeline()
-pipeline_obj.summarize(reviews)
+def aspect_sentiments(text, classify):
+    """문장부호와 대조 연결어미(는데·지만)에서 절을 자르고, 속성 키워드가 든 절만 판정한다"""
+    clauses = re.split(r'[.!?]|(?<=는데)|(?<=지만)', text)
+    results = {}
+    for clause in (c.strip() for c in clauses if c.strip()):
+        for aspect, keywords in ASPECTS.items():
+            if any(kw in clause for kw in keywords):
+                results.setdefault(aspect, []).append((clause, classify(clause)))
+    return results
+
+# aspect_sentiments("음식은 정말 맛있었는데 서비스가 너무 불친절했어요. "
+#                   "가격도 좀 비싼 편이에요.", classify)
+# → 음식: 긍정 / 서비스: 부정 / 가격: 부정
 ```
 
-감성 분석은 AI와 자연어 처리 기술이 실제 비즈니스 가치를 만들어 내는 가장 직접적인 영역이다. 단순한 긍/부정 분류에서 시작하여 속성별 감성, 감정 분류, 의견 요약까지 발전하고 있다. 최근에는 GPT-4 같은 LLM에 직접 감성 분석을 요청하거나, Chain-of-Thought 프롬프팅으로 모델이 판단 근거를 설명하게 만드는 방향으로도 발전하고 있다. 텍스트에서 인간의 감정을 이해하는 이 기술은 앞으로도 NLP에서 가장 활발히 연구되고 활용될 분야로 남을 것이다.
+### 속성 경계
+
+절을 문장부호로만 자르면 "음식은 정말 맛있었는데 서비스가 너무 불친절했어요"가 한 조각으로 남는다. 그러면 음식과 서비스가 같은 절에서 같은 극성을 받는다 — 모델이 이 절 전체를 부정으로 보면 음식도 부정이 된다. 위 코드가 "는데"·"지만"에서도 자르는 까닭이다. 한국어 리뷰에서 대조는 문장부호보다 연결어미로 더 자주 이어진다.
+
+그래도 경계가 겹치는 문장은 남는다. "맛있는데 이 가격이면 좀"에는 음식과 가격이 한 절에 있고, 극성은 가격에만 걸린다. "직원이 친절해서 음식이 더 맛있게 느껴졌다"는 서비스 덕에 음식 평가가 올라간 문장이다. 키워드와 절 자르기로는 이런 자리를 못 가른다. 속성과 문장을 함께 모델에 넣어 "이 문장에서 서비스에 대한 극성은?"을 묻는 방식, 곧 문장 쌍 분류로 바꾸면 모델이 속성마다 다른 곳을 보게 할 수 있다.
+
+### 속성 목록
+
+속성 목록을 미리 고정하느냐 열어 두느냐도 정해야 한다. 식당이라면 음식·서비스·가격·분위기·위생처럼 다섯 안팎으로 고정할 수 있다. 고정하면 라벨링 지침이 짧아지고 대시보드에 속성별 추세를 바로 그릴 수 있다. 대신 목록에 없는 불만, 예를 들어 "주차"가 늘어나도 보이지 않는다.
+
+열어 두면 리뷰에 나온 명사구를 그대로 속성으로 뽑는다. 새 불만이 바로 드러나는 대신 "맛"·"음식 맛"·"간"·"요리"가 제각각 속성으로 서서 한 줄로 모으는 정리가 따로 필요하다. 실무에서는 두 방식을 섞는 경우가 많다. 고정 목록으로 대시보드를 돌리고, 목록에 안 걸린 명사구를 주기적으로 모아 자주 나오는 것을 목록에 올린다.
+
+## 라벨의 흔들림
+
+### 풍자와 반어
+
+"오 진짜 배송 빠르네요. 3주 만에 왔어요." 표면의 낱말은 칭찬("빠르네요")인데 뜻은 강한 부정이다. **풍자**(sarcasm)는 말한 것과 뜻하는 것을 일부러 거꾸로 두는 표현이다. 이 문장에서 부정을 알려 주는 것은 감성 낱말이 아니라 "3주"라는 사실과, 배송에 3주는 느리다는 세상 지식이다. 사전 기반은 그 지식이 없고, BERT도 학습 데이터에 비슷한 풍자가 충분히 없으면 낱말을 믿는다.
+
+풍자는 라벨러 사이에서도 갈린다. 앞뒤 맥락 없이 한 문장만 보면 사람도 진심인지 비꼼인지 확신하지 못하는 경우가 있다. 그래서 풍자를 따로 맞히려 애쓰기보다, 사람도 갈리는 문장은 평가셋에서 표시해 두고 모델 오류를 셀 때 따로 본다.
+
+### 도메인과 극성
+
+같은 낱말이 도메인에 따라 극성을 바꾸는 예는 앞의 "가볍다"만이 아니다. 공포 영화 리뷰의 "무섭다"는 칭찬이고, 놀이기구 안전 후기에서는 경고다. 휴대폰 배터리가 "오래간다"는 긍정이지만 배송이 "오래 걸린다"는 부정이다. "이 약의 부작용이 심각하다"는 환자 후기에서는 부정이지만, 약학 논문의 한 문장이라면 평가가 아닌 사실 기술이라 중립에 가깝다.
+
+그래서 라벨 지침은 도메인마다 따로 쓴다. 한 도메인의 지침과 데이터를 다른 도메인에 가져가면, 도메인 이동이 모델뿐 아니라 라벨에도 일어난다.
+
+### 완곡한 부정
+
+한국어의 "그냥 그래요", "뭐 나쁘지는 않아요"는 글자로는 중립이나 약한 긍정이지만, 리뷰 맥락에서는 부정에 가깝게 쓰인다. 별점 5점이 기본인 쇼핑몰에서 "나쁘지는 않아요"와 함께 3점을 준 리뷰는 사실상 불만이다. 이런 **완곡한 부정**은 직접적인 부정 낱말이 없어 사전 기반에서 0점 근처로 떨어지고, 중립 클래스가 있으면 대개 그리로 간다.
+
+영어로 학습한 모델을 번역해 쓰거나 다국어 모델을 그대로 쓰면 이 차이를 더 놓친다. 같은 문장의 무게가 문화마다 달라서다. 별점이 함께 있는 데이터라면 글 대신 별점으로 라벨을 만들어 이런 문장이 실제로 어느 쪽에 붙는지 모델이 배우게 하는 것이 가장 싼 해결책이다.
+
+## 점수 활용
+
+### 건별 판정과 집계
+
+감성 모델의 출력은 두 방식으로 쓰인다. 하나는 건별 판정이다. 부정 리뷰가 올라오면 담당자에게 알리고, 분노로 분류된 상담은 우선 처리한다. 여기서는 한 건 한 건의 오류가 그대로 비용이다. 다른 하나는 집계다. 한 주 동안의 부정 비율이 12%에서 18%로 올랐다는 추세를 본다. 집계에서는 개별 오류가 서로 상쇄되기도 해서, 정확도 85%짜리 모델로도 추세의 방향은 꽤 믿을 만하게 나온다. 단, 오류가 한쪽으로 치우쳐 있지 않을 때의 이야기다. 모델이 완곡한 부정을 늘 중립으로 보낸다면 부정 비율은 일관되게 낮게 찍힌다.
+
+그래서 같은 모델이라도 쓰는 방식에 따라 보는 지표가 다르다. 건별 판정에서는 놓치면 안 되는 부정의 재현율을, 집계에서는 클래스별 예측 비율이 실제 비율과 얼마나 어긋나는지를 본다.
+
+### 사람에게 넘기기
+
+모델은 판정과 함께 **신뢰도**를 낸다. 분류기의 마지막 층이 클래스마다 내는 확률 가운데 가장 큰 값이다. 이 값이 낮은 건, 예를 들어 0.6 아래인 건은 모델이 두 클래스 사이에서 망설인 것이라 틀릴 가능성이 높다. 이런 건만 사람에게 넘기면 사람의 시간이 어려운 건에 모인다. 전체의 10%를 넘기는 대신 오류의 상당 부분을 잡는 식으로, 문턱값을 옮겨 가며 넘기는 비율과 남는 오류율을 함께 그려 보고 고른다.
+
+다만 신경망의 신뢰도는 과하게 높게 나오는 경향이 있다. 0.95라고 말한 판정이 실제로 95% 맞는다는 보장이 없다. 문턱을 정하기 전에 검증셋에서 신뢰도 구간별 실제 정확도를 재 보고, 어긋나면 온도 조정 같은 보정을 한 번 거친다.
+
+### 지표의 착시
+
+감성 지표는 누가 글을 쓰느냐에 따라 움직인다. 리뷰를 남기는 사람은 아주 만족했거나 아주 불만인 사람 쪽으로 치우쳐 있어, 리뷰의 긍정 비율이 고객 전체의 만족도를 그대로 비추지 않는다. 이것이 표본 편향이다. 유입 시점도 숫자를 움직인다. 할인 행사 주간에는 평소와 다른 고객이 들어와 다른 기대를 품고 리뷰를 쓰고, 배송 지연이 몰린 주에는 제품과 무관한 불만이 쏟아진다. 부정 비율이 올랐을 때 제품이 나빠졌는지, 쓰는 사람이 바뀌었는지부터 가른다.
+
+모델을 바꾼 날도 조심해야 한다. 새 모델이 중립을 더 많이 내면 긍정·부정 비율이 함께 떨어져 보인다. 모델을 교체할 때는 한동안 옛 모델과 새 모델을 나란히 돌려 두 추세의 차이를 기록해 두면, 지표가 꺾인 원인이 고객인지 모델인지 가릴 수 있다.
+
+감성 분석은 결국 텍스트에 라벨을 붙이는 일이고, 긍정·부정도 그 라벨 집합 가운데 하나일 뿐이다. 다음 글에서는 이 틀을 넓혀 주제·의도·스팸처럼 임의의 레이블을 붙이는 텍스트 분류를 다룬다 — 이 글에서 본 TF-IDF 기준선, BERT 파인튜닝, 신뢰도로 사람에게 넘기는 방식이 거기서 더 일반적인 모양으로 다시 나온다.
 
 ---
 

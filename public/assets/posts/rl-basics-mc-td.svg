@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" viewBox="0 0 880 470">
+<defs><marker id="arr" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto"><path d="M 0 0 L 13 7 L 0 14 z" fill="#888"/></marker></defs>
+<rect width="880" height="470" fill="#0a0a0a" rx="12"/>
+<text x="440" y="46" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="22" font-weight="700" fill="#e8e8e8" text-anchor="middle">같은 에피소드, 두 가지 갱신</text>
+<text x="440" y="74" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#e8e8e8" text-anchor="middle">무작위 정책 · 2 → 3 → 2 → 3 → 목표</text>
+<rect x="60" y="116" width="80" height="44" rx="8" fill="#15151f" stroke="#7777cc" stroke-width="2"/>
+<text x="100" y="143" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#e8e8e8" text-anchor="middle">칸 2</text>
+<line x1="140" y1="138" x2="230" y2="138" stroke="#888" stroke-width="2" marker-end="url(#arr)"/>
+<text x="185" y="120" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888" text-anchor="middle">r = 0</text>
+<rect x="230" y="116" width="80" height="44" rx="8" fill="#15151f" stroke="#7777cc" stroke-width="2"/>
+<text x="270" y="143" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#e8e8e8" text-anchor="middle">칸 3</text>
+<line x1="310" y1="138" x2="400" y2="138" stroke="#888" stroke-width="2" marker-end="url(#arr)"/>
+<text x="355" y="120" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888" text-anchor="middle">r = 0</text>
+<rect x="400" y="116" width="80" height="44" rx="8" fill="#15151f" stroke="#7777cc" stroke-width="2"/>
+<text x="440" y="143" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#e8e8e8" text-anchor="middle">칸 2</text>
+<line x1="480" y1="138" x2="570" y2="138" stroke="#888" stroke-width="2" marker-end="url(#arr)"/>
+<text x="525" y="120" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888" text-anchor="middle">r = 0</text>
+<rect x="570" y="116" width="80" height="44" rx="8" fill="#15151f" stroke="#7777cc" stroke-width="2"/>
+<text x="610" y="143" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#e8e8e8" text-anchor="middle">칸 3</text>
+<line x1="650" y1="138" x2="740" y2="138" stroke="#888" stroke-width="2" marker-end="url(#arr)"/>
+<text x="695" y="120" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#55c555" text-anchor="middle">r = 1</text>
+<rect x="740" y="116" width="80" height="44" rx="8" fill="#0f1a2e" stroke="#7ec8e3" stroke-width="2"/>
+<text x="780" y="143" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#e8e8e8" text-anchor="middle">목표</text>
+<rect x="60" y="196" width="340" height="206" rx="10" fill="#111118" stroke="#7777cc" stroke-width="2"/>
+<text x="84" y="230" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="700" fill="#7777cc">MC — 에피소드가 끝난 뒤</text>
+<text x="84" y="262" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e8e8e8">칸 2의 반환값 G = 0.9³ = 0.729</text>
+<text x="84" y="286" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#55c555">V(2): 0 → 0.073</text>
+<text x="84" y="310" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e8e8e8">칸 3의 반환값 G = 0.9² = 0.81</text>
+<text x="84" y="334" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#55c555">V(3): 0 → 0.081</text>
+<text x="84" y="358" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">지나간 두 칸이 모두 바뀐다</text>
+<rect x="480" y="196" width="340" height="206" rx="10" fill="#111118" stroke="#7ec8e3" stroke-width="2"/>
+<text x="504" y="230" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="700" fill="#7ec8e3">TD(0) — 걸음마다 바로</text>
+<text x="504" y="262" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e8e8e8">걸음 1~3: 타깃 = 0 + 0.9 × 0 = 0</text>
+<text x="504" y="286" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">값이 바뀌지 않는다</text>
+<text x="504" y="310" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e8e8e8">걸음 4: 끝났으니 타깃 = 1</text>
+<text x="504" y="334" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#55c555">V(3): 0 → 0.1</text>
+<text x="504" y="358" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">목표 옆 한 칸만 바뀐다</text>
+<text x="440" y="440" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888" text-anchor="middle">시작값은 모두 0 · α = 0.1 · γ = 0.9 · MC는 칸마다 처음 방문만 반영</text>
+</svg>

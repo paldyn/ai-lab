@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="520" viewBox="0 0 880 520">
+<defs><marker id="arr" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto"><path d="M 0 0 L 13 7 L 0 14 z" fill="#888"/></marker></defs>
+<rect width="880" height="520" fill="#0a0a0a" rx="12"/>
+<text x="440" y="44" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="22" font-weight="700" fill="#e8e8e8" text-anchor="middle">속성 기반 분석의 두 단계</text>
+<rect x="60" y="72" width="760" height="56" rx="8" fill="#141414" stroke="#555" stroke-width="1.5"/>
+<text x="440" y="106" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="15" fill="#e8e8e8" text-anchor="middle">음식은 정말 맛있었는데 서비스가 너무 불친절했어요. 가격도 좀 비싼 편이에요.</text>
+<line x1="440" y1="128" x2="440" y2="170" stroke="#888" stroke-width="1.5" marker-end="url(#arr)"/>
+<text x="452" y="154" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">절 자르기 (문장부호 · 는데 · 지만)</text>
+<text x="260" y="196" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#e8e8e8" text-anchor="middle">1단계 · 속성 추출</text>
+<text x="670" y="196" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#e8e8e8" text-anchor="middle">2단계 · 속성별 극성</text>
+<rect x="60" y="216" width="400" height="56" rx="8" fill="#141414" stroke="#7ec8e3" stroke-width="1.5"/>
+<text x="260" y="241" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="15" fill="#e8e8e8" text-anchor="middle">음식은 정말 맛있었는데</text>
+<text x="260" y="260" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="12" fill="#7ec8e3" text-anchor="middle">속성: 음식</text>
+<line x1="460" y1="244" x2="520" y2="244" stroke="#888" stroke-width="1.5" marker-end="url(#arr)"/>
+<rect x="520" y="216" width="300" height="56" rx="8" fill="#141414" stroke="#55c555" stroke-width="1.5"/>
+<text x="670" y="250" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#55c555" text-anchor="middle">음식 → 긍정</text>
+<rect x="60" y="292" width="400" height="56" rx="8" fill="#141414" stroke="#7ec8e3" stroke-width="1.5"/>
+<text x="260" y="317" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="15" fill="#e8e8e8" text-anchor="middle">서비스가 너무 불친절했어요</text>
+<text x="260" y="336" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="12" fill="#7ec8e3" text-anchor="middle">속성: 서비스</text>
+<line x1="460" y1="320" x2="520" y2="320" stroke="#888" stroke-width="1.5" marker-end="url(#arr)"/>
+<rect x="520" y="292" width="300" height="56" rx="8" fill="#141414" stroke="#e05555" stroke-width="1.5"/>
+<text x="670" y="326" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#e05555" text-anchor="middle">서비스 → 부정</text>
+<rect x="60" y="368" width="400" height="56" rx="8" fill="#141414" stroke="#7ec8e3" stroke-width="1.5"/>
+<text x="260" y="393" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="15" fill="#e8e8e8" text-anchor="middle">가격도 좀 비싼 편이에요</text>
+<text x="260" y="412" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="12" fill="#7ec8e3" text-anchor="middle">속성: 가격</text>
+<line x1="460" y1="396" x2="520" y2="396" stroke="#888" stroke-width="1.5" marker-end="url(#arr)"/>
+<rect x="520" y="368" width="300" height="56" rx="8" fill="#141414" stroke="#e05555" stroke-width="1.5"/>
+<text x="670" y="402" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#e05555" text-anchor="middle">가격 → 부정</text>
+<text x="440" y="460" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888" text-anchor="middle">문장 전체 극성 하나 대신 (속성, 극성) 쌍 세 개가 나온다</text>
+</svg>

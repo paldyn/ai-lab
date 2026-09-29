@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" viewBox="0 0 880 500">
+<rect width="880" height="500" fill="#0a0a0a" rx="12"/>
+<text x="440" y="46" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="22" font-weight="700" fill="#e8e8e8" text-anchor="middle">세 칸 복도의 가치 반복</text>
+<text x="440" y="74" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#e8e8e8" text-anchor="middle">스윕마다 V(1) · V(2) · V(3)을 다시 계산한다</text>
+<text x="285" y="118" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888" text-anchor="middle">칸 1</text>
+<text x="431" y="118" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888" text-anchor="middle">칸 2</text>
+<text x="577" y="118" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888" text-anchor="middle">칸 3</text>
+<text x="723" y="118" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888" text-anchor="middle">목표</text>
+<text x="60" y="161" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#e8e8e8">스윕 0</text>
+<rect x="220" y="132" width="130" height="46" rx="8" fill="#15151f" stroke="#3a3a4a" stroke-width="2"/>
+<text x="285" y="161" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#e8e8e8" text-anchor="middle">0</text>
+<rect x="366" y="132" width="130" height="46" rx="8" fill="#15151f" stroke="#3a3a4a" stroke-width="2"/>
+<text x="431" y="161" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#e8e8e8" text-anchor="middle">0</text>
+<rect x="512" y="132" width="130" height="46" rx="8" fill="#15151f" stroke="#3a3a4a" stroke-width="2"/>
+<text x="577" y="161" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#e8e8e8" text-anchor="middle">0</text>
+<rect x="658" y="132" width="130" height="46" rx="8" fill="#0f1a2e" stroke="#7ec8e3" stroke-width="2"/>
+<text x="723" y="160" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#7ec8e3" text-anchor="middle">보상 +1</text>
+<text x="60" y="221" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#e8e8e8">스윕 1</text>
+<rect x="220" y="192" width="130" height="46" rx="8" fill="#15151f" stroke="#3a3a4a" stroke-width="2"/>
+<text x="285" y="221" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#e8e8e8" text-anchor="middle">0</text>
+<rect x="366" y="192" width="130" height="46" rx="8" fill="#15151f" stroke="#3a3a4a" stroke-width="2"/>
+<text x="431" y="221" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#e8e8e8" text-anchor="middle">0</text>
+<rect x="512" y="192" width="130" height="46" rx="8" fill="#15151f" stroke="#55c555" stroke-width="2"/>
+<text x="577" y="221" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#55c555" text-anchor="middle">1</text>
+<rect x="658" y="192" width="130" height="46" rx="8" fill="#0f1a2e" stroke="#7ec8e3" stroke-width="2"/>
+<text x="723" y="220" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#7ec8e3" text-anchor="middle">보상 +1</text>
+<text x="60" y="281" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#e8e8e8">스윕 2</text>
+<rect x="220" y="252" width="130" height="46" rx="8" fill="#15151f" stroke="#3a3a4a" stroke-width="2"/>
+<text x="285" y="281" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#e8e8e8" text-anchor="middle">0</text>
+<rect x="366" y="252" width="130" height="46" rx="8" fill="#15151f" stroke="#55c555" stroke-width="2"/>
+<text x="431" y="281" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#55c555" text-anchor="middle">0.9</text>
+<rect x="512" y="252" width="130" height="46" rx="8" fill="#15151f" stroke="#3a3a4a" stroke-width="2"/>
+<text x="577" y="281" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#e8e8e8" text-anchor="middle">1</text>
+<rect x="658" y="252" width="130" height="46" rx="8" fill="#0f1a2e" stroke="#7ec8e3" stroke-width="2"/>
+<text x="723" y="280" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#7ec8e3" text-anchor="middle">보상 +1</text>
+<text x="60" y="341" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#e8e8e8">스윕 3</text>
+<rect x="220" y="312" width="130" height="46" rx="8" fill="#15151f" stroke="#55c555" stroke-width="2"/>
+<text x="285" y="341" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#55c555" text-anchor="middle">0.81</text>
+<rect x="366" y="312" width="130" height="46" rx="8" fill="#15151f" stroke="#3a3a4a" stroke-width="2"/>
+<text x="431" y="341" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#e8e8e8" text-anchor="middle">0.9</text>
+<rect x="512" y="312" width="130" height="46" rx="8" fill="#15151f" stroke="#3a3a4a" stroke-width="2"/>
+<text x="577" y="341" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#e8e8e8" text-anchor="middle">1</text>
+<rect x="658" y="312" width="130" height="46" rx="8" fill="#0f1a2e" stroke="#7ec8e3" stroke-width="2"/>
+<text x="723" y="340" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#7ec8e3" text-anchor="middle">보상 +1</text>
+<text x="60" y="401" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#e8e8e8">스윕 4</text>
+<rect x="220" y="372" width="130" height="46" rx="8" fill="#15151f" stroke="#3a3a4a" stroke-width="2"/>
+<text x="285" y="401" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#e8e8e8" text-anchor="middle">0.81</text>
+<rect x="366" y="372" width="130" height="46" rx="8" fill="#15151f" stroke="#3a3a4a" stroke-width="2"/>
+<text x="431" y="401" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#e8e8e8" text-anchor="middle">0.9</text>
+<rect x="512" y="372" width="130" height="46" rx="8" fill="#15151f" stroke="#3a3a4a" stroke-width="2"/>
+<text x="577" y="401" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#e8e8e8" text-anchor="middle">1</text>
+<rect x="658" y="372" width="130" height="46" rx="8" fill="#0f1a2e" stroke="#7ec8e3" stroke-width="2"/>
+<text x="723" y="400" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#7ec8e3" text-anchor="middle">보상 +1</text>
+<text x="440" y="442" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888" text-anchor="middle">초록 테두리는 그 스윕에서 값이 처음 바뀐 칸 · 스윕 4에서 아무것도 안 바뀌어 멈춘다</text>
+<text x="440" y="466" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888" text-anchor="middle">γ = 0.9 · 칸마다 오른쪽·왼쪽 중 큰 값 = 보상 + 0.9 × 옆 칸 값</text>
+</svg>
