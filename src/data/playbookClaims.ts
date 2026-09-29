@@ -306,16 +306,34 @@ export const playbookClaims: Claim[] = [
     volatility: 'limit',
     source: { label: 'Claude 요금제', url: 'https://claude.com/pricing' },
   },
+  /*
+    **Claude Max는 요금제가 둘이다**(2026-09-29) — 도움말이 「The Max plan is available in two
+    tiers」라고 적고 단마다 값과 사용량을 따로 둔다. 그동안 한 카드에 「월 $100부터」 · 「Pro의
+    5배 또는 20배」로 뭉쳐 세워, 무엇이 얼마인지 카드만 보고는 몰랐다. 출처도 도움말 한 곳으로
+    모았다 — 단마다 한 줄씩(「Max 5x includes five times the Pro plan's per-session usage
+    allowance.」) 적혀 있다.
+  */
   {
     id: 'claude-max-usage',
     subject: { kind: 'vendor', id: 'anthropic' },
     topic: 'limit',
-    statement: 'Claude Max 사용량(Pro 대비)',
-    value: '5시간 세션당 Pro의 5배 또는 20배',
-    planCell: { plan: 'Claude Max', facet: 'usage' },
+    statement: 'Claude Max 5x 사용량(Pro 대비)',
+    value: '5시간 세션당 Pro의 5배',
+    planCell: { plan: 'Claude Max 5x', facet: 'usage' },
     tier: 'vendor',
     volatility: 'limit',
-    source: { label: 'Claude 요금제', url: 'https://claude.com/pricing' },
+    source: { label: 'Claude Max 도움말', url: 'https://support.claude.com/en/articles/11049741-what-is-the-max-plan' },
+  },
+  {
+    id: 'claude-max-20x-usage',
+    subject: { kind: 'vendor', id: 'anthropic' },
+    topic: 'limit',
+    statement: 'Claude Max 20x 사용량(Pro 대비)',
+    value: '5시간 세션당 Pro의 20배',
+    planCell: { plan: 'Claude Max 20x', facet: 'usage' },
+    tier: 'vendor',
+    volatility: 'limit',
+    source: { label: 'Claude Max 도움말', url: 'https://support.claude.com/en/articles/11049741-what-is-the-max-plan' },
   },
   {
     id: 'chatgpt-plus-price',
@@ -376,16 +394,30 @@ export const playbookClaims: Claim[] = [
     id: 'claude-max-price',
     subject: { kind: 'vendor', id: 'anthropic' },
     topic: 'price',
-    statement: 'Claude Max 월 구독료',
+    statement: 'Claude Max 5x 월 구독료',
     /*
       **요금제 페이지 대신 도움말이 출처다**(2026-09-29). claude.com/pricing의 Max 카드는
       「From $100」과 「Per month」가 두 조각이라 한 줄로 열 자를 못 넘고, 접속한 나라에 따라
       값을 바꿔 그린다(한국에서 열면 부가세를 더해 「From $110」). 도움말 「What is the Max
-      plan?」이 한 줄에 「Max 5x: $100 per month」라고 적는다 — 두 단 중 싼 쪽이라 「부터」다
-      (바로 아래 줄이 「Max 20x: $200 per month」). 웹 구독 기준이고 월 결제만 있다.
+      plan?」이 단마다 한 줄씩 적는다 — 「Max 5x: $100 per month」, 「Max 20x: $200 per month」.
+      웹 구독 기준이고 월 결제만 있다.
     */
-    value: '월 $100부터',
-    planCell: { plan: 'Claude Max', facet: 'fee' },
+    value: '월 $100',
+    planCell: { plan: 'Claude Max 5x', facet: 'fee' },
+    tier: 'vendor',
+    volatility: 'price',
+    source: {
+      label: 'Claude Max 도움말',
+      url: 'https://support.claude.com/en/articles/11049741-what-is-the-max-plan',
+    },
+  },
+  {
+    id: 'claude-max-20x-price',
+    subject: { kind: 'vendor', id: 'anthropic' },
+    topic: 'price',
+    statement: 'Claude Max 20x 월 구독료',
+    value: '월 $200',
+    planCell: { plan: 'Claude Max 20x', facet: 'fee' },
     tier: 'vendor',
     volatility: 'price',
     source: {

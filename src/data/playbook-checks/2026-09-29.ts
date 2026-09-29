@@ -53,7 +53,23 @@ import type { CheckEntry } from '../../types/playbook';
  */
 const entries: CheckEntry[] = [
   /* ── 「확인 전」이던 요금·한도 넷 ── */
+  /*
+    Claude Max를 두 단으로 갈랐다 — 도움말이 단마다 값과 사용량을 한 줄씩 적는다. 사용량은
+    출처를 요금 페이지에서 이 도움말로 옮겼고 값이 「5배 또는 20배」에서 단마다 하나로 바뀌었다.
+  */
   { claimId: 'claude-max-price', result: '그대로', excerpt: 'Max 5x: $100 per month' },
+  { claimId: 'claude-max-20x-price', result: '그대로', excerpt: 'Max 20x: $200 per month' },
+  {
+    claimId: 'claude-max-usage',
+    result: '바뀜',
+    changedTo: '5시간 세션당 Pro의 5배',
+    excerpt: "Max 5x includes five times the Pro plan's per-session usage allowance.",
+  },
+  {
+    claimId: 'claude-max-20x-usage',
+    result: '그대로',
+    excerpt: "Max 20x includes 20 times the Pro plan's per-session usage allowance.",
+  },
   { claimId: 'chatgpt-plus-price', result: '그대로', excerpt: 'Price: $20/month (billed monthly).' },
   { claimId: 'chatgpt-astra-limit', result: '그대로', excerpt: 'GPT-6 Astra\t5-45\t25-225\t100-900\t5-45' },
   {
