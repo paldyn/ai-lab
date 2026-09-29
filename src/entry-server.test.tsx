@@ -236,12 +236,19 @@ describe('프리렌더 — 본문이 HTML에 들어간다', () => {
   });
 
   /*
-    **모델은 판 위의 칸입니다**(2026-09-29). 타임라인에서 「고를 수 있는 모델도 C
-    (체크리스트)로」 바꿨습니다 — 모델은 시간의 차례가 아니라 나란히 견주는 목록입니다.
-    모델 절 안에 줄기(`gl-tl`)나 마디(`gl-stop`)가 되살아나면 빨간 줄이 섭니다. 판 머리의 열
-    이름은 그 제품의 데이터가 세운 열 수와 같아야 합니다(Gemini 앱은 0).
+    **모델은 판 위의 칸이고, 절 머리는 요금 절과 같은 마디 + 띠입니다**(2026-09-29).
+    타임라인에서 「고를 수 있는 모델도 C(체크리스트)로」 바꾼 뒤 「타이틀을 요금쪽과 폼을
+    맞추자」가 왔습니다 — 한 탭 안에서 절 이름이 두 모양으로 서면 안 됩니다. 그래서 두 절의
+    머리(마디 + 띠 + 제목)를 같은 틀로 대조하고, 모델 절에 차오르는 줄기(`data-live`)나 줄마다
+    매달던 가지가 되살아나지 않는지 봅니다. 띠의 열 이름은 그 제품의 데이터가 세운 열 수와
+    같아야 합니다(Gemini 앱은 0).
   */
-  it('모델 절은 줄기가 아니라 판 위의 칸이다', async () => {
+  it('모델 절은 요금 절과 같은 머리 아래 판 위의 칸이다', async () => {
+    const head = (id: string) =>
+      new RegExp(
+        `<div class="gl-stop-head"><span class="gl-stop-node" aria-hidden="true"><svg[^>]*>.*?</svg></span>` +
+          `<div class="gl-stop-band[^"]*"><h3 class="gl-facts-sub" id="${id}">`,
+      );
     const wrong: string[] = [];
     for (const product of guideProducts) {
       const models = shownModels(product.models);
@@ -254,13 +261,23 @@ describe('프리렌더 — 본문이 HTML에 들어간다', () => {
       const ofTopic = (topic: string) =>
         claims.some((c) => c.topic === topic && c.subject.kind === 'model' && ids.has(c.subject.id));
       const cols = (ofTopic('context') ? 1 : 0) + (ofTopic('price') ? 2 : 0);
+      const hasPlans = claims.some(isPlanClaim);
       const got = {
+        head: head('models-title').test(sect),
+        sameAsPlans: hasPlans ? head('plans-title').test(ledger) : true,
         tray: classCount(sect, 'gl-tray'),
-        stem: classCount(sect, 'gl-tl') + classCount(sect, 'gl-stop'),
+        live: sect.includes('data-live'),
         labels: classCount(sect, 'gl-mlabel'),
         specs: classCount(sect, 'gl-mspec'),
       };
-      const expected = { tray: 1, stem: 0, labels: cols, specs: cols > 0 ? models.length : 0 };
+      const expected = {
+        head: true,
+        sameAsPlans: true,
+        tray: 1,
+        live: false,
+        labels: cols,
+        specs: cols > 0 ? models.length : 0,
+      };
       if (JSON.stringify(got) !== JSON.stringify(expected)) {
         wrong.push(`${product.id}: ${JSON.stringify(got)} ≠ ${JSON.stringify(expected)}`);
       }

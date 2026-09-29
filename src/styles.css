@@ -8327,15 +8327,17 @@ input:focus-visible {
 /*
   **제품색이 옅게 밴 판 위에 모델마다 칸 하나**(2026-09-29, 방향 넷 중 C 「체크리스트」의 모양).
   줄기에 매달던 모양에서 바꿨다 — 모델은 시간의 차례가 아니라 나란히 견주는 목록이다. 판은
-  요금 판(`.gl-board`)과 같은 면이고, 칸은 요금 카드와 같은 면(`--gl-card`)이다.
+  요금 판(`.gl-board`)과 같은 면이고 같은 자리(줄기 오른쪽 글 자리)에서 시작하며, 칸은 요금
+  카드와 같은 면(`--gl-card`)이다. 절 머리는 요금 절과 같은 마디 + 띠다.
 */
 .gl-tray {
-  padding: 4px 10px 10px;
+  margin-top: 10px;
+  padding: 10px;
   border-radius: 20px;
   background: var(--gl-a07);
 }
 
-/* 판 머리와 칸이 같은 격자를 쓴다 — 열 이름이 칸의 수와 한 세로줄에 선다. */
+/* 절 머리 띠와 칸이 같은 격자를 쓴다 — 열 이름이 칸의 수와 한 세로줄에 선다. */
 .gl-mcols {
   display: grid;
   grid-template-columns: 36px minmax(0, 1fr);
@@ -8355,31 +8357,17 @@ input:focus-visible {
   grid-template-columns: 36px minmax(0, 1fr) 92px 72px 72px;
 }
 
-.gl-tray-head {
+/*
+  **띠가 열 이름을 겸한다.** 오른쪽 여백은 판(10) + 칸(16)과 같아 열 이름의 오른쪽 끝이 칸의
+  수와 맞는다. 머리가 탭 줄 아래 붙어 따라오므로 칸을 읽는 동안 열 이름도 보인다.
+*/
+.gl-stop-band.gl-mcols {
   align-items: center;
-  padding: 10px 16px 8px;
+  padding-right: 26px;
 }
 
-.gl-tray-title {
-  display: flex;
+.gl-stop-band.gl-mcols .gl-facts-sub {
   grid-column: 1 / 3;
-  align-items: center;
-  gap: 12px;
-  min-width: 0;
-}
-
-/* 절 아이콘 — 칸과 같은 면에 제품색 그림. 칸의 판(36px)과 가운데가 한 세로줄에 선다. */
-.gl-tray-icon {
-  display: grid;
-  width: 32px;
-  height: 32px;
-  flex: none;
-  margin-left: 2px;
-  place-items: center;
-  border-radius: 10px;
-  background: var(--gl-card);
-  box-shadow: inset 0 0 0 1px var(--gl-edge);
-  color: var(--guide-accent);
 }
 
 .gl-mlabel {
@@ -8593,10 +8581,6 @@ a.gl-num:hover {
   font-size: var(--gl-meta);
 }
 
-/* 모델 판 아래 — 칸 안의 판(36px)과 왼쪽 변을 맞춘다. */
-.gl-tray + .gl-caption {
-  margin-left: 26px;
-}
 
 /* 캡션의 출처 링크 — 누르는 높이를 위아래로 10px씩 넓힌다. */
 .gl-caption a {
@@ -9000,20 +8984,16 @@ a.gl-num:hover {
 
   /* 모델 — 이름이 한 줄을 다 쓰고, 수 셋이 그 아래 세 칸 격자에 열 이름을 달고 선다. */
   .gl-tray {
-    padding: 2px 6px 6px;
-    border-radius: 18px;
+    padding: 6px;
+    border-radius: 16px;
   }
 
-  .gl-tray-head {
-    padding: 10px 8px;
+  .gl-stop-band.gl-mcols {
+    padding-right: 12px;
   }
 
   .gl-mlabel {
     display: none;
-  }
-
-  .gl-tray-icon {
-    margin-left: 0;
   }
 
   .gl-mcols,
@@ -9057,10 +9037,6 @@ a.gl-num:hover {
 
   .gl-caption {
     margin-left: calc(var(--gl-tl-indent) + 14px);
-  }
-
-  .gl-tray + .gl-caption {
-    margin-left: 20px;
   }
 
   .gl-board {
