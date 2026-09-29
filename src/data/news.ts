@@ -172,6 +172,20 @@ export const globalNewsUpdatedAt = '2026-09-28';
  */
 const entries: NewsItem[] = [
   {
+    id: 'claude-platform-september-28-2026',
+    source: 'Anthropic',
+    kind: 'company',
+    title: 'Claude Sonnet 5.5로 옮길 때 깨지는 API 다섯 가지와 thinking 블록 계정 제한',
+    summary:
+      'Sonnet 5에서 쓰던 코드가 Sonnet 5.5에서 깨지는 다섯 지점을 밝혔다. 강제 도구 사용은 400을 돌려주고, ' +
+      'Sonnet 5.5가 만든 thinking 블록은 만든 계정이나 연결된 계정에서만 쓰인다.',
+    publishedAt: '2026-09-28',
+    collectedAt: '2026-09-30',
+    category: 'Product',
+    signal: '플랫폼 변경',
+    url: 'https://platform.claude.com/docs/en/release-notes/overview#september-28-2026',
+  },
+  {
     id: 'lenfest-ai-collaborative-expansion',
     source: 'OpenAI',
     kind: 'company',

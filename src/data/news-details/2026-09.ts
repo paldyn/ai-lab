@@ -2,6 +2,22 @@ import type { NewsDetail } from '../news';
 
 /** 2026-09 발표의 모달 본문. 목록은 news.ts에 있습니다. */
 export const details: Record<string, NewsDetail> = {
+  'claude-platform-september-28-2026': {
+    points: [
+      'Sonnet 5용 코드가 Sonnet 5.5에서 깨질 수 있는 지점을 다섯 가지로 정리했다',
+      '앞머리 thinking을 끄려면 "disabled" 대신 between_tools를 보내야 하고 effort high 이하에서만 된다',
+      'tool_choice를 any나 tool로 둔 강제 도구 사용은 400 오류를 돌려준다',
+      'thinking 블록은 그것을 만든 모델과 대화에 묶인다',
+      '이전 computer use 도구 computer_20251124는 받지 않는다',
+      'advisor 도구는 Claude Opus 4.8·Opus 4.7·Sonnet 5를 advisor로 받지 않는다',
+      'Sonnet 5.5의 thinking 블록을 다른 계정이 보내면 모델에 닿기 전에 버려지고 요청 자체는 성공한다',
+      '이전 모델이 만든 thinking 블록은 이 계정 제한의 영향을 받지 않는다',
+    ],
+    commentary:
+      '모델 이름만 바꿔 끼우면 되는 업그레이드가 아니다. 특히 강제 도구 사용은 구조화 출력을 뽑던 파이프라인의 ' +
+      '흔한 패턴이라 400으로 곧장 선다. 계정 간 thinking 블록이 오류 없이 조용히 버려지는 점도 주의할 자리다 — ' +
+      '여러 계정을 오가는 프록시나 멀티 테넌트 구성이면 추론 연속성이 끊겨도 로그에는 아무것도 안 남는다.',
+  },
   'lenfest-ai-collaborative-expansion': {
     points: [
       'Lenfest Institute for Journalism과 OpenAI가 2026년 9월 28일에 공동 발표했다',
