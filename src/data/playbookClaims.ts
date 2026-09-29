@@ -335,6 +335,31 @@ export const playbookClaims: Claim[] = [
     volatility: 'limit',
     source: { label: 'Claude Max 도움말', url: 'https://support.claude.com/en/articles/11049741-what-is-the-max-plan' },
   },
+  /*
+    **ChatGPT 개인 요금제는 넷이다**(2026-09-29) — 싼 것부터 Go · Plus · Pro 5x · Pro 20x. 그동안
+    Plus와 「Pro 월 $100부터」 둘만 세워 Go가 없었고 Pro 두 단이 한 카드에 뭉쳐 있었다. Pro는
+    도움말 제목부터 「About ChatGPT Pro tiers」이고 두 단을 「Pro $100」 · 「Pro $200 (Pro 20X)」로
+    부른다 — 카드 이름은 사용량 표 머리의 「Pro 5x」 · 「Pro 20x」를 쓴다(Claude Max 5x · 20x와 같은 틀).
+    Free와 Business · Enterprise는 뺐다(요금 페이지 FAQ 「Go, Free, and Plus plans are designed to be
+    used by individuals.」 · 「Business and Enterprise are for businesses.」).
+  */
+  {
+    id: 'chatgpt-go-price',
+    subject: { kind: 'vendor', id: 'openai' },
+    topic: 'price',
+    statement: 'ChatGPT Go 월 구독료',
+    /*
+      달러가 한 줄에 적힌 곳이 발표 글뿐이다 — 요금 페이지 카드는 「$8」과 「/month」가 두 줄이고
+      한국에서 「₩13,000」으로 그려지며, Go 도움말은 값을 안 적는다. **사용량 칸은 안 세운다** —
+      Plus · Pro가 쓰는 잣대(Work·Codex의 GPT-6 Astra)에 Go 열이 없고, Go 도움말의 「Free and Go
+      users both have unlimited everyday text chats.」는 Free와 같다는 말이라 견줄 값이 아니다.
+    */
+    value: '월 $8',
+    planCell: { plan: 'ChatGPT Go', facet: 'fee' },
+    tier: 'vendor',
+    volatility: 'price',
+    source: { label: 'ChatGPT Go 발표 글', url: 'https://openai.com/index/introducing-chatgpt-go/' },
+  },
   {
     id: 'chatgpt-plus-price',
     subject: { kind: 'vendor', id: 'openai' },
@@ -361,12 +386,63 @@ export const playbookClaims: Claim[] = [
     id: 'chatgpt-pro-price',
     subject: { kind: 'vendor', id: 'openai' },
     topic: 'price',
-    statement: 'ChatGPT Pro 월 구독료',
-    value: '월 $100부터',
-    planCell: { plan: 'ChatGPT Pro', facet: 'fee' },
+    statement: 'ChatGPT Pro 5x 월 구독료',
+    /*
+      2026-09-17까지는 「월 $100부터」 한 카드였다(요금 페이지 「From / $100 / /month」). 그 카드는
+      이제 세 줄로 갈려 한 줄 근거가 못 되고, 달러가 단마다 한 줄에 적힌 곳이 릴리스 노트
+      (2026-09-09 「Updated models and usage limits in ChatGPT Voice」 항목)다.
+    */
+    value: '월 $100',
+    planCell: { plan: 'ChatGPT Pro 5x', facet: 'fee' },
     tier: 'vendor',
     volatility: 'price',
-    source: { label: 'ChatGPT 요금제', url: 'https://learn.chatgpt.com/docs/pricing' },
+    source: { label: 'ChatGPT 릴리스 노트', url: 'https://help.openai.com/en/articles/6825453-chatgpt-release-notes' },
+  },
+  {
+    id: 'chatgpt-pro-20x-price',
+    subject: { kind: 'vendor', id: 'openai' },
+    topic: 'price',
+    statement: 'ChatGPT Pro 20x 월 구독료',
+    /*
+      **2026-09-10부터 신규 가입 · 업그레이드가 멈춰 있다** — 도움말 「As of September 10, 2026, we’re
+      temporarily pausing new sign-ups and upgrades to the ChatGPT Pro $200 plan (Pro 20X).」 기존
+      구독은 그대로 갱신되므로 카드를 세우되 한정어로 알린다.
+    */
+    value: '월 $200',
+    planCell: { plan: 'ChatGPT Pro 20x', facet: 'fee', note: '신규 가입 일시 중단' },
+    tier: 'vendor',
+    volatility: 'price',
+    source: { label: 'ChatGPT 릴리스 노트', url: 'https://help.openai.com/en/articles/6825453-chatgpt-release-notes' },
+  },
+  /*
+    **Google AI 개인 요금제는 넷이다**(2026-09-29) — 싼 것부터 Plus · Pro · Ultra 5x · Ultra 20x.
+    그동안 Pro와 「Ultra 월 $99.99부터」 둘만 세워 Plus가 없었고, 2026-05-19에 두 단으로 갈린
+    Ultra가 한 카드에 뭉쳐 있었다. 이름은 Google One 도움말의 「Choose between Google AI Ultra 5x
+    (20 TB of storage) and Google AI Ultra 20x (30 TB of storage)」를 따른다. 사용량은 구독 페이지가
+    요금제마다 적는 배수다 — Plus · Pro는 Free 대비, Ultra 둘은 Pro 대비로 적는다(Claude와 같은 꼴).
+    값은 미국 경로(`/us/`)의 달러다.
+  */
+  {
+    id: 'gemini-ai-plus-price',
+    subject: { kind: 'vendor', id: 'google' },
+    topic: 'price',
+    statement: 'Google AI Plus 월 구독료',
+    value: '월 $4.99',
+    planCell: { plan: 'Google AI Plus', facet: 'fee' },
+    tier: 'vendor',
+    volatility: 'price',
+    source: { label: 'Gemini 구독', url: 'https://gemini.google/us/subscriptions/?hl=en' },
+  },
+  {
+    id: 'gemini-ai-plus-usage',
+    subject: { kind: 'vendor', id: 'google' },
+    topic: 'limit',
+    statement: 'Google AI Plus 사용량(Free 대비)',
+    value: 'Free의 2배',
+    planCell: { plan: 'Google AI Plus', facet: 'usage', note: 'Gemini 앱 사용 한도' },
+    tier: 'vendor',
+    volatility: 'limit',
+    source: { label: 'Gemini 구독', url: 'https://gemini.google/us/subscriptions/?hl=en' },
   },
   {
     id: 'gemini-ai-pro-price',
@@ -380,14 +456,59 @@ export const playbookClaims: Claim[] = [
     source: { label: 'Gemini 구독', url: 'https://gemini.google/us/subscriptions/?hl=en' },
   },
   {
+    id: 'gemini-ai-pro-usage',
+    subject: { kind: 'vendor', id: 'google' },
+    topic: 'limit',
+    statement: 'Google AI Pro 사용량(Free 대비)',
+    value: 'Free의 4배',
+    planCell: { plan: 'Google AI Pro', facet: 'usage', note: 'Gemini 앱 사용 한도' },
+    tier: 'vendor',
+    volatility: 'limit',
+    source: { label: 'Gemini 구독', url: 'https://gemini.google/us/subscriptions/?hl=en' },
+  },
+  {
     id: 'gemini-ai-ultra-price',
     subject: { kind: 'vendor', id: 'google' },
     topic: 'price',
-    statement: 'Google AI Ultra 월 구독료',
-    value: '월 $99.99부터',
-    planCell: { plan: 'Google AI Ultra', facet: 'fee' },
+    statement: 'Google AI Ultra 5x 월 구독료',
+    /* 「월 $99.99부터」는 할인이 아니라 두 단을 묶은 표기였다. 구독 페이지가 단마다 한 줄씩 적는다. */
+    value: '월 $99.99',
+    planCell: { plan: 'Google AI Ultra 5x', facet: 'fee' },
     tier: 'vendor',
     volatility: 'price',
+    source: { label: 'Gemini 구독', url: 'https://gemini.google/us/subscriptions/?hl=en' },
+  },
+  {
+    id: 'gemini-ai-ultra-usage',
+    subject: { kind: 'vendor', id: 'google' },
+    topic: 'limit',
+    statement: 'Google AI Ultra 5x 사용량(Pro 대비)',
+    value: 'Pro의 5배',
+    planCell: { plan: 'Google AI Ultra 5x', facet: 'usage', note: 'Gemini 앱 사용 한도' },
+    tier: 'vendor',
+    volatility: 'limit',
+    source: { label: 'Gemini 구독', url: 'https://gemini.google/us/subscriptions/?hl=en' },
+  },
+  {
+    id: 'gemini-ai-ultra-20x-price',
+    subject: { kind: 'vendor', id: 'google' },
+    topic: 'price',
+    statement: 'Google AI Ultra 20x 월 구독료',
+    value: '월 $199.99',
+    planCell: { plan: 'Google AI Ultra 20x', facet: 'fee' },
+    tier: 'vendor',
+    volatility: 'price',
+    source: { label: 'Gemini 구독', url: 'https://gemini.google/us/subscriptions/?hl=en' },
+  },
+  {
+    id: 'gemini-ai-ultra-20x-usage',
+    subject: { kind: 'vendor', id: 'google' },
+    topic: 'limit',
+    statement: 'Google AI Ultra 20x 사용량(Pro 대비)',
+    value: 'Pro의 20배',
+    planCell: { plan: 'Google AI Ultra 20x', facet: 'usage', note: 'Gemini 앱 사용 한도' },
+    tier: 'vendor',
+    volatility: 'limit',
     source: { label: 'Gemini 구독', url: 'https://gemini.google/us/subscriptions/?hl=en' },
   },
   {
@@ -439,6 +560,29 @@ export const playbookClaims: Claim[] = [
     */
     value: '5~45회(추정)',
     planCell: { plan: 'ChatGPT Plus', facet: 'usage', note: 'Astra · Work·Codex 5시간당' },
+    tier: 'vendor',
+    volatility: 'limit',
+    source: { label: 'ChatGPT 요금제', url: 'https://learn.chatgpt.com/docs/pricing' },
+  },
+  {
+    id: 'chatgpt-pro-5x-astra-limit',
+    subject: { kind: 'vendor', id: 'openai' },
+    topic: 'limit',
+    statement: 'ChatGPT Pro 5x의 GPT-6 Astra 사용량(Work·Codex, 5시간당)',
+    /* Plus와 같은 표 행의 Pro 5x 칸. Plus 칸의 정확히 5배다(도움말 「Pro $100 unlocks 5x higher usage than Plus」). */
+    value: '25~225회(추정)',
+    planCell: { plan: 'ChatGPT Pro 5x', facet: 'usage', note: 'Astra · Work·Codex 5시간당' },
+    tier: 'vendor',
+    volatility: 'limit',
+    source: { label: 'ChatGPT 요금제', url: 'https://learn.chatgpt.com/docs/pricing' },
+  },
+  {
+    id: 'chatgpt-pro-20x-astra-limit',
+    subject: { kind: 'vendor', id: 'openai' },
+    topic: 'limit',
+    statement: 'ChatGPT Pro 20x의 GPT-6 Astra 사용량(Work·Codex, 5시간당)',
+    value: '100~900회(추정)',
+    planCell: { plan: 'ChatGPT Pro 20x', facet: 'usage', note: 'Astra · Work·Codex 5시간당' },
     tier: 'vendor',
     volatility: 'limit',
     source: { label: 'ChatGPT 요금제', url: 'https://learn.chatgpt.com/docs/pricing' },

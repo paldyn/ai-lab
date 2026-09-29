@@ -24,7 +24,11 @@ import type { CheckEntry } from '../../types/playbook';
  * - `learn.chatgpt.com/docs/pricing` — 사용량 표의 GPT-6 Astra 행. 열이 Model · Plus · Pro 5x ·
  *   Pro 20x · Standard Business · API Key라 Plus 칸이 「5-45」입니다(칸 사이는 탭 문자).
  *   표 위 문장이 「local messages per five-hour period」의 **추정치**라고 적습니다.
- * - `gemini.google/us/subscriptions/?hl=en` — 각주 「Usage access limits in the Gemini app」의 한 문장.
+ * - `gemini.google/us/subscriptions/?hl=en` — 각주 「Usage access limits in the Gemini app」의 한 문장,
+ *   그리고 요금제 넷(Plus $4.99 · Pro $19.99 · Ultra 5x $99.99 · Ultra 20x $199.99)의 값과 배수.
+ * - `openai.com/index/introducing-chatgpt-go/` · `help.openai.com/en/articles/6825453`(릴리스 노트) ·
+ *   `help.openai.com/en/articles/9793128`(Pro 두 단) — ChatGPT Go · Pro 5x · Pro 20x의 달러 값과
+ *   Pro 20x 신규 가입 중단.
  * - `platform.claude.com/docs/en/models/sonnet-5-5/overview` · `…/sonnet-5/overview` · `…/models/
  *   overview` · `…/about-claude/pricing` · `…/about-claude/models/choosing-a-model` ·
  *   `…/about-claude/models/optimizing-for-cost-and-intelligence` · `…/docs/en/home` — Sonnet 5.5의
@@ -76,6 +80,45 @@ const entries: CheckEntry[] = [
     claimId: 'gemini-app-limit',
     result: '그대로',
     excerpt: 'Your limit refreshes every 5 hours until you reach your weekly limit.',
+  },
+
+  /*
+    ── ChatGPT 요금제 넷 — Go를 더하고 Pro를 두 단(5x · 20x)으로 갈랐다. 요금 페이지는 한국에서
+    원화로 그려져, 달러가 한 줄에 적힌 곳을 출처로 삼는다(Go 발표 글 · Plus 도움말 · 릴리스 노트).
+    Pro 사용량은 Plus와 같은 표 행의 칸이다. Pro 20x는 9월 10일부터 신규 가입이 멈췄다. ──
+  */
+  { claimId: 'chatgpt-go-price', result: '그대로', excerpt: 'In the US, Go is available for $8 per month.' },
+  {
+    claimId: 'chatgpt-pro-price',
+    result: '바뀜',
+    changedTo: '월 $100',
+    excerpt: 'Pro ($100/month): Up to 15 hours with GPT-Live-1.',
+  },
+  { claimId: 'chatgpt-pro-20x-price', result: '그대로', excerpt: 'Pro ($200/month): Unlimited GPT-Live-1 usage.' },
+  { claimId: 'chatgpt-pro-5x-astra-limit', result: '그대로', excerpt: 'GPT-6 Astra\t5-45\t25-225\t100-900\t5-45' },
+  { claimId: 'chatgpt-pro-20x-astra-limit', result: '그대로', excerpt: 'GPT-6 Astra\t5-45\t25-225\t100-900\t5-45' },
+
+  /*
+    ── Google AI 요금제 넷 — Plus를 더하고 Ultra를 두 단(5x · 20x)으로 갈랐다. 구독 페이지의 미국
+    경로(`/us/`)는 서버 HTML부터 달러다. Ultra 두 줄의 「AI Pro」 사이는 줄바꿈 없는 공백(U+00A0)이라
+    그대로 옮긴다. ──
+  */
+  { claimId: 'gemini-ai-plus-price', result: '그대로', excerpt: '$4.99/ month' },
+  { claimId: 'gemini-ai-plus-usage', result: '그대로', excerpt: 'Get 2x higher usage access than Free' },
+  { claimId: 'gemini-ai-pro-price', result: '그대로', excerpt: '$19.99/ month' },
+  { claimId: 'gemini-ai-pro-usage', result: '그대로', excerpt: 'Get 4x higher usage access than Free' },
+  {
+    claimId: 'gemini-ai-ultra-price',
+    result: '바뀜',
+    changedTo: '월 $99.99',
+    excerpt: '$99.99/ month: 5x higher usage limits vs. AI\u00a0Pro',
+  },
+  { claimId: 'gemini-ai-ultra-usage', result: '그대로', excerpt: '$99.99/ month: 5x higher usage limits vs. AI\u00a0Pro' },
+  { claimId: 'gemini-ai-ultra-20x-price', result: '그대로', excerpt: '$199.99 / month: 20x higher usage limits vs. AI\u00a0Pro' },
+  {
+    claimId: 'gemini-ai-ultra-20x-usage',
+    result: '그대로',
+    excerpt: '$199.99 / month: 20x higher usage limits vs. AI\u00a0Pro',
   },
 
   /* ── Claude Sonnet 5.5 — 새로 세운 값 둘, 이전 세대가 된 Sonnet 5의 값 ── */
