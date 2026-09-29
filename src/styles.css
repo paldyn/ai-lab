@@ -8834,6 +8834,11 @@ a.gl-num:hover {
   gap: 12px;
 }
 
+/* 넷이면 2 × 2 — 셋 칸 격자에서는 「3 + 1」로 한 장이 혼자 남는다(ChatGPT · Google AI 요금제). */
+.gl-pcs:has(> .gl-pc:not(.is-wide):nth-child(4)) {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
 .gl-pc {
   display: flex;
   flex-direction: column;
@@ -9293,7 +9298,8 @@ a.gl-num:hover {
     border-radius: 16px;
   }
 
-  .gl-pcs {
+  .gl-pcs,
+  .gl-pcs:has(> .gl-pc:not(.is-wide):nth-child(4)) {
     grid-template-columns: minmax(0, 1fr);
     gap: 10px;
   }
