@@ -200,23 +200,78 @@ export interface ModelInfo {
   /**
    * **그 모델 제 마크.** 만든 회사가 모델마다 따로 그려 둔 것이 있을 때만 답니다.
    *
-   * 오늘 이것을 가진 것은 **Anthropic 여덟**뿐입니다. Anthropic은 등급마다 손그림
-   * 하나와 판 색 하나를 짝지어 `platform.claude.com`의 모델 개요 카드에 세웁니다 —
-   * Opus는 커서, Sonnet은 노드 그래프, Haiku는 새, Fable은 옆얼굴입니다. 해석이
-   * 아니라 그 카드가 짝지어 놓은 것을 그대로 옮긴 값입니다.
+   * **두 갈래입니다.**
+   * - `plate` — **판 위에 올리는 그림**(Anthropic). 등급마다 손그림 하나와 판 색 하나를
+   *   짝지어 `platform.claude.com`의 모델 개요 카드에 세웁니다 — Opus는 커서, Sonnet은
+   *   노드 그래프, Haiku는 새, Fable은 옆얼굴입니다. 해석이 아니라 그 카드가 짝지어 놓은
+   *   것을 그대로 옮긴 값입니다. **잉크가 2색이라 착색하지 않습니다** — 밝은 부분(#FAF9F5)과
+   *   어두운 부분(#141413) 둘로 그려져 판 위에 올라가게 설계돼 있어, 한 색으로 마스킹하면
+   *   통째로 덩어리가 됩니다. 그래서 `<img>`로 그대로 그리고 판을 깝니다.
+   * - `tile` — **판까지 그려진 타일**(OpenAI, 2026-09-29). 모델 id마다 128px 앱 아이콘형
+   *   PNG가 있고 판(은하·해·지구·달 사진)과 흰 글자(「6 / astra」)가 그림에 박혀 있습니다.
+   *   `developers.openai.com/api/docs/models/all` 카탈로그와 모델 상세 페이지가 모델 이름
+   *   바로 옆에 세웁니다. 글자가 박혀 있어 줄이면 안 읽히므로 판 자리를 통째로 채웁니다.
+   *   2026-09-17에는 「OpenAI 아이콘은 전부 오디오·이미지·realtime 계열」이라 적었는데, 그건
+   *   목록 첫 페이지만 본 결론이었습니다(첫 페이지는 주력 모델을 배너 사진으로 그립니다).
    *
-   * **없으면 `undefined`이고 계열 마크가 대신 섭니다**(`modelMark`). OpenAI는
-   * 모델별 아이콘을 열여덟 개 두는데 전부 오디오·이미지·realtime 계열이라 우리가
-   * 세우는 여섯에는 하나도 안 걸리고, Google은 아예 없습니다. 없는 것을 지어
-   * 그리지 않습니다.
-   *
-   * **잉크가 2색이라 착색하지 않습니다.** 밝은 부분(#FAF9F5)과 어두운 부분(#141413)
-   * 둘로 그려져 판 위에 올라가게 설계돼 있어, 한 색으로 마스킹하면 통째로 덩어리가
-   * 됩니다(14~22px에서 실제로 뭉갰습니다). 그래서 이것만 `<img>`로 그대로 그리고
-   * 판을 깝니다.
+   * **없으면 `undefined`이고 계열 마크가 대신 섭니다**(`modelMark`). Google은 모델별
+   * 그림이 없습니다(2026-09-29에 다시 확인). 없는 것을 지어 그리지 않습니다.
    */
-  mark?: { file: string; plate: string };
+  mark?: { file: string; plate: string } | { file: string; tile: true };
+  /**
+   * **회사가 매긴 성능 자리**(2026-09-29). 「모르는 사람은 어떤 게 좋은 모델인지 모를 수
+   * 있으니까」에 답한 자리이고, `useWhen`처럼 **등록부**입니다 — 수가 아니라 회사가 그
+   * 모델을 줄 세운 자리라 값이 틀리는 것이 아니라 라인업이 바뀔 때 자리가 바뀝니다.
+   *
+   * **회사마다 매기는 방식이 달라 모양이 셋이고, 회사끼리는 못 견줍니다.** 화면이 캡션으로
+   * 그렇게 말합니다. 벤치마크 수치를 안 쓴 이유는 판(버전)이 회사·모델마다 달라 같은 표에
+   * 못 세우고, 벤치마크 순위가 회사 서열과 어긋나기도 해서입니다(Terminal-Bench 4.0에서
+   * Sonnet 5.5 > Opus 5.5 > Fable 5.1).
+   *
+   * 없는 회사·모델은 `undefined`이고 그 줄이 안 섭니다. 지어내지 않습니다.
+   */
+  rating?: ModelRating;
 }
+
+/**
+ * 회사가 제 모델에 매긴 성능 자리. 모양이 회사마다 다릅니다.
+ *
+ * - `scale` — **OpenAI**. API 모델 페이지 머리의 추론·속도 등급(아이콘 개수 + 낱말).
+ *   OpenAI는 채운 아이콘만 그리고 「N of 5」를 안 적습니다 — 다섯 단계는 여러 모델
+ *   페이지를 대조해 얻은 것입니다(Average 2 · High 3 · Higher 4 · Highest 5, Medium 3 ·
+ *   Fast 4 · Very fast 5). 추론 모델이 아니면 페이지가 Reasoning 대신 Intelligence라
+ *   적습니다.
+ * - `order` — **Anthropic**. 등급이 없고, 현행 모델을 「싼 것·약한 것부터」 줄 세운 문장이
+ *   있습니다(`rank`/`of`, 1이 가장 강함). 속도는 모델 비교표의 Comparative latency 네 단계.
+ * - `phrase` — **Google**. 등급도 서열도 없어, 소개 문장의 **최상급 한 구절**만 옮깁니다
+ *   (「Our most intelligent Flash model」 → 「가장 똑똑한 Flash」). 최상급이 없으면 안 답니다.
+ *
+ * 낱말(`label`·`speed`)은 **벤더의 영어 그대로** 담고 화면이 한국어로 옮깁니다 — 옮김 표는
+ * `GuideLedger.tsx`에 있고, 표에 없는 낱말이 들어오면 타입이 막습니다.
+ */
+export type ModelRating =
+  | {
+      kind: 'scale';
+      reasoning: { level: 1 | 2 | 3 | 4 | 5; label: OpenAiReasoning };
+      speed: { level: 1 | 2 | 3 | 4 | 5; label: OpenAiSpeed };
+      url: string;
+    }
+  | {
+      kind: 'order';
+      /** 1이 가장 강합니다. */
+      rank: number;
+      of: number;
+      /** 서열 문장이 실린 페이지. */
+      url: string;
+      speed: AnthropicLatency;
+      /** 속도 등급이 실린 페이지(모델 비교표). */
+      speedUrl: string;
+    }
+  | { kind: 'phrase'; text: string; url: string };
+
+export type OpenAiReasoning = 'Average' | 'High' | 'Higher' | 'Highest';
+export type OpenAiSpeed = 'Medium' | 'Fast' | 'Very fast';
+export type AnthropicLatency = 'Slower' | 'Moderate' | 'Fast' | 'Fastest';
 
 /**
  * 이 값이 어디서 왔는가.

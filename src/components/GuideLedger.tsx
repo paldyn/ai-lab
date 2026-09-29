@@ -46,8 +46,11 @@ import { guideProducts } from '../data/guideProducts';
 import { tipAxes, tipGroupsOf } from '../data/guideTipGroups';
 import { guideVendorById } from '../data/guideVendors';
 import type {
+  AnthropicLatency,
   Claim,
   ModelInfo,
+  OpenAiReasoning,
+  OpenAiSpeed,
   PlanFacet,
   Product,
   Role,
@@ -292,9 +295,17 @@ const contextLabel = (value: string) => value.replace(/^([\d.,]+[KM]?) 토큰$/,
 /**
  * 모델 줄머리 마크 — 칸 왼쪽의 판. 제 마크가 있으면 만든 회사의 판 색 위에, 없으면 계열
  * 마크를 배경색 판(`--bg`) 위에 올립니다. 만든 회사가 모델 카드에 세우는 비율(0.6)을
- * 그대로 씁니다(36px 판에 22px).
+ * 그대로 씁니다(36px 판에 22px). **판까지 그려진 타일(OpenAI)은 판 자리를 통째로
+ * 채웁니다** — 글자가 그림에 박혀 있어 줄이면 안 읽힙니다.
  */
 function ModelPlate({ model }: { model: ModelInfo }) {
+  if (model.mark && 'tile' in model.mark) {
+    return (
+      <span className="gl-plate is-tile" aria-hidden="true">
+        <img src={assetUrl(model.mark.file)} alt="" />
+      </span>
+    );
+  }
   if (model.mark) {
     return (
       <span
@@ -495,6 +506,125 @@ function RefHead({
   );
 }
 
+/** 벤더 낱말 → 화면 낱말. 표에 없는 낱말은 타입(`ModelRating`)이 막습니다. */
+const REASONING_KO: Record<OpenAiReasoning, string> = {
+  Average: '보통',
+  High: '높음',
+  Higher: '더 높음',
+  Highest: '가장 높음',
+};
+const SPEED_KO: Record<OpenAiSpeed, string> = { Medium: '보통', Fast: '빠름', 'Very fast': '매우 빠름' };
+const LATENCY_KO: Record<AnthropicLatency, string> = {
+  Slower: '느림',
+  Moderate: '보통',
+  Fast: '빠름',
+  Fastest: '가장 빠름',
+};
+const LATENCY_LEVEL: Record<AnthropicLatency, number> = { Slower: 1, Moderate: 2, Fast: 3, Fastest: 4 };
+
+/** 채운 점 `level`개와 빈 점으로 `of`칸. 눈에만 섭니다 — 낱말이 같은 뜻을 싣습니다. */
+function Dots({ level, of }: { level: number; of: number }) {
+  return (
+    <span className="gl-dots" aria-hidden="true">
+      {Array.from({ length: of }, (_, i) => (
+        <i key={i} className={i < level ? 'is-on' : undefined} />
+      ))}
+    </span>
+  );
+}
+
+/**
+ * 회사가 매긴 성능 자리 한 줄(2026-09-29). 이름 아래, 쓰임 위에 섭니다 — 열을 하나 더
+ * 세우면 이름 열이 또 좁아집니다(641~1023px에서 이미 한 번 밟았습니다).
+ *
+ * **등급이 실린 페이지로 가는 링크입니다**(수 칸처럼 점선 밑줄). Anthropic은 서열과 속도가
+ * 다른 페이지라 둘을 따로 겁니다. 링크 이름은 모델과 등급을 함께 싣습니다 — 점은 눈에만
+ * 서므로 낱말이 뜻을 집니다.
+ */
+function RatingLine({ model }: { model: ModelInfo }) {
+  const r = model.rating;
+  if (!r) return null;
+  if (r.kind === 'scale') {
+    const reasoning = REASONING_KO[r.reasoning.label];
+    const speed = SPEED_KO[r.speed.label];
+    return (
+      <p className="gl-model-rate">
+        <a
+          className="gl-rate"
+          href={r.url}
+          target="_blank"
+          rel="noreferrer"
+          aria-label={`${model.name} 공식 등급: 추론 5단계 중 ${r.reasoning.level}(${reasoning}), 속도 5단계 중 ${r.speed.level}(${speed})`}
+        >
+          <span className="gl-rate-part">
+            <span className="gl-rate-name">추론</span>
+            <Dots level={r.reasoning.level} of={5} />
+            <span className="gl-rate-word">{reasoning}</span>
+          </span>
+          <span className="gl-rate-sep" aria-hidden="true">
+            ·
+          </span>
+          <span className="gl-rate-part">
+            <span className="gl-rate-name">속도</span>
+            <Dots level={r.speed.level} of={5} />
+            <span className="gl-rate-word">{speed}</span>
+          </span>
+        </a>
+      </p>
+    );
+  }
+  if (r.kind === 'order') {
+    const speed = LATENCY_KO[r.speed];
+    return (
+      <p className="gl-model-rate">
+        <a
+          className="gl-rate"
+          href={r.url}
+          target="_blank"
+          rel="noreferrer"
+          aria-label={`${model.name} 공식 서열: 현행 ${r.of}종 중 ${r.rank}위`}
+        >
+          <span className="gl-rate-part">
+            <span className="gl-rate-name">성능</span>
+            <span className="gl-rate-word">
+              {r.of}종 중 {r.rank}위
+            </span>
+          </span>
+        </a>
+        <span className="gl-rate-sep" aria-hidden="true">
+          ·
+        </span>
+        <a
+          className="gl-rate"
+          href={r.speedUrl}
+          target="_blank"
+          rel="noreferrer"
+          aria-label={`${model.name} 공식 속도: 4단계 중 ${LATENCY_LEVEL[r.speed]}(${speed})`}
+        >
+          <span className="gl-rate-part">
+            <span className="gl-rate-name">속도</span>
+            <Dots level={LATENCY_LEVEL[r.speed]} of={4} />
+            <span className="gl-rate-word">{speed}</span>
+          </span>
+        </a>
+      </p>
+    );
+  }
+  return (
+    <p className="gl-model-rate">
+      <a
+        className="gl-rate"
+        href={r.url}
+        target="_blank"
+        rel="noreferrer"
+        aria-label={`${model.name} 공식 소개: ${r.text}`}
+      >
+        <span className="gl-rate-word">「{r.text}」</span>
+      </a>
+    </p>
+  );
+}
+
 /**
  * 고를 수 있는 모델 — **제품색이 옅게 밴 바탕 위에 모델마다 칸 하나**(2026-09-29, 방향 넷 중
  * C 「체크리스트」의 모양). 칸마다 마크 판 · 이름 · 쓰임 · 수가 한 줄에 섭니다. 줄기에 매달던
@@ -526,6 +656,7 @@ function ModelChecklist({
 }) {
   const hasContext = models.some((m) => contextOf.has(m.id));
   const hasPrice = models.some((m) => priceOf.has(m.id));
+  const hasRating = models.some((m) => m.rating);
   const rows = models.map((model) => {
     const ctx = valueCell(contextOf.get(model.id), today);
     const priceClaim = priceOf.get(model.id);
@@ -590,6 +721,7 @@ function ModelChecklist({
                           </>
                         )}
                       </p>
+                      <RatingLine model={model} />
                       {model.useWhen && <p className="gl-model-use">{model.useWhen.text}</p>}
                       {(split?.rider || rowAge !== null) && (
                         <p className="gl-model-meta">
@@ -655,11 +787,15 @@ function ModelChecklist({
           </div>
         </div>
       </div>
-      {(hasPrice || ages.caption !== null) && (
+      {(hasRating || hasPrice || ages.caption !== null) && (
         <p className="gl-caption">
-          {hasPrice && '단가는 100만 토큰당 달러'}
-          {hasPrice && ages.caption !== null && ' · '}
-          {ages.caption !== null && ageText(ages.caption)}
+          {[
+            hasRating && '등급은 각 회사가 제 모델에 매긴 것이라 회사끼리는 못 견준다',
+            hasPrice && '단가는 100만 토큰당 달러',
+            ages.caption !== null && ageText(ages.caption),
+          ]
+            .filter(Boolean)
+            .join(' · ')}
         </p>
       )}
     </section>

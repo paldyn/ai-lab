@@ -298,6 +298,38 @@ describe('프리렌더 — 본문이 HTML에 들어간다', () => {
   });
 
   /*
+    **회사가 매긴 성능 자리가 데이터대로 섭니다**(2026-09-29). 모델마다 등급(`rating`)이 있으면
+    이름 아래 한 줄(`gl-model-rate`)이 서고, 없으면 안 섭니다(빈 줄을 안 그립니다). 판까지
+    그려진 타일(OpenAI)은 `is-tile` 판으로 섭니다. 등급이 하나라도 서면 캡션이 「회사끼리는
+    못 견준다」를 말합니다 — Antigravity처럼 세 회사가 한 목록에 설 때 잣대가 셋이기 때문입니다.
+  */
+  it('성능 등급 줄과 타일 마크가 데이터대로 선다', async () => {
+    const wrong: string[] = [];
+    for (const product of guideProducts) {
+      const models = shownModels(product.models);
+      if (models.length === 0) continue;
+      const ledger = ledgerOf((await render(`/playbook/${product.vendorId}/${product.id}`)).html);
+      const start = ledger.indexOf('aria-labelledby="models-title"');
+      const sect = ledger.slice(start, ledger.indexOf('</section>', start) + 400);
+      const rated = models.filter((m) => m.rating).length;
+      const got = {
+        rate: classCount(sect, 'gl-model-rate'),
+        tile: classCount(sect, 'is-tile'),
+        note: sect.includes('회사끼리는 못 견준다'),
+      };
+      const expected = {
+        rate: rated,
+        tile: models.filter((m) => m.mark && 'tile' in m.mark).length,
+        note: rated > 0,
+      };
+      if (JSON.stringify(got) !== JSON.stringify(expected)) {
+        wrong.push(`${product.id}: ${JSON.stringify(got)} ≠ ${JSON.stringify(expected)}`);
+      }
+    }
+    expect(wrong).toEqual([]);
+  });
+
+  /*
     **요금제마다 카드 하나입니다**(2026-09-28). 요금제 이름이 카드 머리(`gl-pc-name`)로
     데이터 차례대로 한 번씩만 서고, 칸이 없는 주장(요금제를 안 가리는 값)은 넓은 카드로
     섭니다.

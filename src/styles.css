@@ -8540,6 +8540,21 @@ input:focus-visible {
   height: 100%;
 }
 
+/*
+  **판까지 그려진 타일(OpenAI)** — 128px 앱 아이콘형 PNG에 판(사진)과 흰 글자가 박혀 있어
+  판 자리를 통째로 채운다. 제 판 색·헤어라인은 안 깐다(그림의 모서리가 이미 둥글고 투명하다).
+*/
+.gl-plate.is-tile {
+  overflow: hidden;
+  background: none;
+  box-shadow: none;
+}
+
+.gl-plate.is-tile img {
+  width: 100%;
+  height: 100%;
+}
+
 .gl-model-name {
   color: var(--text-strong);
   font-size: var(--gl-body);
@@ -8614,6 +8629,77 @@ input:focus-visible {
   font-weight: 400;
   line-height: 1.4;
   vertical-align: 0.12em;
+}
+
+/*
+  **회사가 매긴 성능 자리**(2026-09-29). 이름 아래 한 줄 — 열을 하나 더 세우면 이름 열이
+  또 좁아진다. 낱말이 뜻을 싣고 점은 눈에만 선다. 점은 제품색이고 빈 점은 칸 테두리 색이라
+  새 색이 없다. 등급이 실린 페이지로 가는 링크라 수 칸과 같은 점선 밑줄을 단다.
+*/
+.gl-model-rate {
+  margin-top: 6px;
+  color: var(--text-dim);
+  font-size: var(--gl-label);
+  line-height: 1.7;
+}
+
+/*
+  밑줄은 글자 밑줄이 아니라 **링크에 한 줄**이다(인라인 아래 테두리 — 줄이 바뀌면 줄마다
+  따라간다). 글자 밑줄은 점과 낱말 사이에서 끊겨 「추론 · 가장 높음 · 속도 · 빠름」이 네 토막으로
+  섰다. 줄은 덩이(`gl-rate-part`) 사이에서만 바뀐다 — 좁은 화면에서 「속도」와 점이 찢어졌다.
+*/
+.gl-rate {
+  position: relative;
+  padding-bottom: 2px;
+  border-bottom: 1.5px dotted var(--gl-num-line);
+  color: var(--text);
+}
+
+.gl-rate-part {
+  white-space: nowrap;
+}
+
+.gl-rate::after {
+  content: '';
+  position: absolute;
+  inset: -6px 0;
+}
+
+.gl-rate:hover {
+  border-bottom-color: currentColor;
+  color: var(--guide-accent);
+}
+
+.gl-rate-name {
+  margin-right: 5px;
+  color: var(--text-dim);
+}
+
+.gl-rate-word {
+  font-weight: 600;
+}
+
+.gl-rate-sep {
+  margin: 0 6px;
+  color: var(--text-muted);
+}
+
+.gl-dots {
+  display: inline-flex;
+  gap: 3px;
+  margin-right: 5px;
+  vertical-align: 1px;
+}
+
+.gl-dots i {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--gl-edge);
+}
+
+.gl-dots i.is-on {
+  background: var(--guide-accent);
 }
 
 /* 쓰임은 글자다 — 그 문장이 실린 페이지로는 위의 이름이 간다. */
@@ -9241,6 +9327,15 @@ a.gl-num:hover {
   .gl-pc,
   .gl-model {
     border: 1px solid CanvasText;
+  }
+
+  .gl-dots i {
+    background: GrayText;
+    forced-color-adjust: none;
+  }
+
+  .gl-dots i.is-on {
+    background: CanvasText;
   }
 }
 
