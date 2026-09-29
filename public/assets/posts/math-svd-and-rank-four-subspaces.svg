@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="470" viewBox="0 0 880 470" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <rect x="0" y="0" width="880" height="470" rx="12" fill="#0a0a0a"/>
+
+  <text x="60" y="46" font-size="22" font-weight="700" fill="#e8e8e8">네 부분공간 — U와 V의 열이 기저를 나눠 든다</text>
+  <text x="60" y="70" font-size="13" fill="#888">B = (1 2 3 / 2 4 6 / 3 6 9), 랭크 1. 특잇값 14, 0, 0.</text>
+
+  <defs>
+    <marker id="fs-arr" viewBox="0 0 14 14" refX="12" refY="7"
+            markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#7ec8e3"/>
+    </marker>
+    <marker id="fs-arr-r" viewBox="0 0 14 14" refX="12" refY="7"
+            markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#e05555"/>
+    </marker>
+  </defs>
+
+  <text x="200" y="104" font-size="16" font-weight="600" fill="#e8e8e8" text-anchor="middle">입력 쪽 ℝ³ (V의 열)</text>
+  <text x="680" y="104" font-size="16" font-weight="600" fill="#e8e8e8" text-anchor="middle">출력 쪽 ℝ³ (U의 열)</text>
+
+  <rect x="60" y="120" width="280" height="100" rx="10" fill="#101820" stroke="#7ec8e3" stroke-width="1.5"/>
+  <text x="84" y="150" font-size="16" font-weight="600" fill="#7ec8e3">행공간 · 1차원</text>
+  <text x="84" y="176" font-size="13" fill="#9aa4b8">V의 앞 r열: v₁ = (1, 2, 3)/√14</text>
+  <text x="84" y="198" font-size="13" fill="#9aa4b8">σ₁ = 14배로 늘어나 건너간다</text>
+
+  <rect x="540" y="120" width="280" height="100" rx="10" fill="#101820" stroke="#7ec8e3" stroke-width="1.5"/>
+  <text x="564" y="150" font-size="16" font-weight="600" fill="#7ec8e3">열공간 · 1차원</text>
+  <text x="564" y="176" font-size="13" fill="#9aa4b8">U의 앞 r열: u₁ = (1, 2, 3)/√14</text>
+  <text x="564" y="198" font-size="13" fill="#9aa4b8">Bx가 닿을 수 있는 곳 전부</text>
+
+  <line x1="340" y1="170" x2="540" y2="170" stroke="#7ec8e3" stroke-width="2" marker-end="url(#fs-arr)"/>
+  <text x="440" y="154" font-size="13" fill="#7ec8e3" text-anchor="middle">Bv₁ = 14u₁</text>
+
+  <rect x="60" y="250" width="280" height="100" rx="10" fill="#101820" stroke="#e05555" stroke-width="1.5"/>
+  <text x="84" y="280" font-size="16" font-weight="600" fill="#e05555">영공간 · 2차원</text>
+  <text x="84" y="306" font-size="13" fill="#9aa4b8">V의 뒤 두 열: 평면 x + 2y + 3z = 0</text>
+  <text x="84" y="328" font-size="13" fill="#9aa4b8">σ = 0이라 통째로 0이 된다</text>
+
+  <rect x="540" y="250" width="280" height="100" rx="10" fill="#101820" stroke="#7777cc" stroke-width="1.5"/>
+  <text x="564" y="280" font-size="16" font-weight="600" fill="#7777cc">왼쪽 영공간 · 2차원</text>
+  <text x="564" y="306" font-size="13" fill="#9aa4b8">U의 뒤 두 열: 열공간에 수직인 평면</text>
+  <text x="564" y="328" font-size="13" fill="#9aa4b8">Bx가 절대 닿지 않는 방향</text>
+
+  <line x1="340" y1="300" x2="440" y2="300" stroke="#e05555" stroke-width="2" marker-end="url(#fs-arr-r)"/>
+  <circle cx="452" cy="300" r="5" fill="#e8e8e8"/>
+  <text x="452" y="330" font-size="13" fill="#e05555" text-anchor="middle">0으로</text>
+
+  <rect x="60" y="376" width="760" height="70" rx="8" fill="#101820" stroke="#888" stroke-width="1.5"/>
+  <text x="82" y="404" font-size="14" fill="#e8e8e8">입력 쪽: 행공간 1 + 영공간 2 = 3 = n.   출력 쪽: 열공간 1 + 왼쪽 영공간 2 = 3 = m.</text>
+  <text x="82" y="428" font-size="14" fill="#9aa4b8">σ가 0인 자리에서 U의 열은 Av/σ로 못 구하니 직교여공간에서 골라 채운다.</text>
+</svg>

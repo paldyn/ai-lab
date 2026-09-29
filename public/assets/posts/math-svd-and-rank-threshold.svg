@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="470" viewBox="0 0 880 470" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <rect x="0" y="0" width="880" height="470" rx="12" fill="#0a0a0a"/>
+  <text x="60" y="46" font-size="22" font-weight="700" fill="#e8e8e8">문턱을 어디에 긋느냐가 수치 랭크를 정한다</text>
+  <text x="60" y="70" font-size="13" fill="#888">같은 200×16 행렬의 특잇값 16개를 로그 눈금으로 세웠다. 문턱보다 높은 막대만 센다.</text>
+  <line x1="90" y1="330" x2="800" y2="330" stroke="#888" stroke-width="1.5"/>
+  <line x1="90" y1="340" x2="90" y2="100" stroke="#888" stroke-width="1.5"/>
+  <line x1="92" y1="110.0" x2="790" y2="110.0" stroke="#444" stroke-width="1"/>
+  <text x="80" y="115.0" font-size="13" fill="#888" text-anchor="end">100</text>
+  <line x1="92" y1="201.7" x2="790" y2="201.7" stroke="#444" stroke-width="1"/>
+  <text x="80" y="206.7" font-size="13" fill="#888" text-anchor="end">10</text>
+  <line x1="92" y1="293.5" x2="790" y2="293.5" stroke="#444" stroke-width="1"/>
+  <text x="80" y="298.5" font-size="13" fill="#888" text-anchor="end">1</text>
+  <rect x="100.0" y="118.6" width="28" height="211.4" fill="#7ec8e3" fill-opacity="0.7" stroke="#7ec8e3" stroke-width="1"/>
+  <rect x="142.5" y="128.5" width="28" height="201.5" fill="#7ec8e3" fill-opacity="0.7" stroke="#7ec8e3" stroke-width="1"/>
+  <rect x="185.0" y="132.9" width="28" height="197.1" fill="#7ec8e3" fill-opacity="0.7" stroke="#7ec8e3" stroke-width="1"/>
+  <rect x="227.5" y="140.3" width="28" height="189.7" fill="#7ec8e3" fill-opacity="0.7" stroke="#7ec8e3" stroke-width="1"/>
+  <rect x="270.0" y="147.3" width="28" height="182.7" fill="#7ec8e3" fill-opacity="0.7" stroke="#7ec8e3" stroke-width="1"/>
+  <rect x="312.5" y="297.5" width="28" height="32.5" fill="#7777cc" fill-opacity="0.7" stroke="#7777cc" stroke-width="1"/>
+  <rect x="355.0" y="301.4" width="28" height="28.6" fill="#7777cc" fill-opacity="0.7" stroke="#7777cc" stroke-width="1"/>
+  <rect x="397.5" y="304.2" width="28" height="25.8" fill="#666666" fill-opacity="0.7" stroke="#666666" stroke-width="1"/>
+  <rect x="440.0" y="305.1" width="28" height="24.9" fill="#666666" fill-opacity="0.7" stroke="#666666" stroke-width="1"/>
+  <rect x="482.5" y="307.3" width="28" height="22.7" fill="#666666" fill-opacity="0.7" stroke="#666666" stroke-width="1"/>
+  <rect x="525.0" y="308.2" width="28" height="21.8" fill="#666666" fill-opacity="0.7" stroke="#666666" stroke-width="1"/>
+  <rect x="567.5" y="309.6" width="28" height="20.4" fill="#666666" fill-opacity="0.7" stroke="#666666" stroke-width="1"/>
+  <rect x="610.0" y="310.7" width="28" height="19.3" fill="#666666" fill-opacity="0.7" stroke="#666666" stroke-width="1"/>
+  <rect x="652.5" y="311.5" width="28" height="18.5" fill="#666666" fill-opacity="0.7" stroke="#666666" stroke-width="1"/>
+  <rect x="695.0" y="312.7" width="28" height="17.3" fill="#666666" fill-opacity="0.7" stroke="#666666" stroke-width="1"/>
+  <rect x="737.5" y="314.6" width="28" height="15.4" fill="#666666" fill-opacity="0.7" stroke="#666666" stroke-width="1"/>
+  <text x="114.0" y="350" font-size="13" fill="#888" text-anchor="middle">1</text>
+  <text x="284.0" y="350" font-size="13" fill="#888" text-anchor="middle">5</text>
+  <text x="326.5" y="350" font-size="13" fill="#888" text-anchor="middle">6</text>
+  <text x="369.0" y="350" font-size="13" fill="#888" text-anchor="middle">7</text>
+  <text x="751.5" y="350" font-size="13" fill="#888" text-anchor="middle">16</text>
+  <line x1="92" y1="210.4" x2="790" y2="210.4" stroke="#55c555" stroke-width="2" stroke-dasharray="5,3"/>
+  <text x="786" y="200.4" font-size="14" font-weight="600" fill="#55c555" text-anchor="end">문턱 0.1·σ₁ = 8.05 → 5개 남는다</text>
+  <line x1="92" y1="302.1" x2="790" y2="302.1" stroke="#e05555" stroke-width="2" stroke-dasharray="5,3"/>
+  <text x="786" y="292.1" font-size="14" font-weight="600" fill="#e05555" text-anchor="end">문턱 0.01·σ₁ = 0.805 → 7개 남는다</text>
+  <rect x="60" y="370" width="760" height="84" rx="8" fill="#101820" stroke="#7ec8e3" stroke-width="1.5"/>
+  <text x="82" y="398" font-size="14" fill="#7ec8e3">파랑 다섯 — 어느 문턱에서도 살아남는 구조 (39.2 이상)</text>
+  <text x="82" y="420" font-size="14" fill="#7777cc">보라 둘 — 0.90과 0.82. 문턱을 1%로 낮추면 잡음이 랭크에 끼어든다</text>
+  <text x="82" y="442" font-size="14" fill="#9aa4b8">회색 아홉 — 어떤 합리적 문턱에서도 뭉개지는 축</text>
+</svg>

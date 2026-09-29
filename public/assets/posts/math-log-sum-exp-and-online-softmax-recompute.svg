@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="540" viewBox="0 0 880 540">
+<rect width="880" height="540" rx="12" fill="#0a0a0a"/>
+<defs><marker id="rc" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto"><path d="M 0 0 L 13 7 L 0 14 z" fill="#888"/></marker></defs>
+<text x="440" y="42" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="22" font-weight="700" fill="#e8e8e8" text-anchor="middle">P 를 저장하느냐, LSE 로 되살리느냐</text>
+<text x="235" y="96" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#e05555" text-anchor="middle">보통 구현 — P 를 저장</text>
+<rect x="60" y="116" width="350" height="74" rx="8" fill="#000000" stroke="#3a4a6e" stroke-width="1.5"/>
+<text x="235" y="146" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888" text-anchor="middle">순전파</text>
+<text x="235" y="170" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="15" fill="#ffffff" font-weight="600" text-anchor="middle">S = QKᵀ → P = softmax(S) → O = PV</text>
+<line x1="235" y1="190" x2="235" y2="226" stroke="#888" stroke-width="2" marker-end="url(#rc)"/>
+<rect x="60" y="226" width="350" height="74" rx="8" fill="#000000" stroke="#e05555" stroke-width="1.5"/>
+<text x="235" y="256" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888" text-anchor="middle">남겨 두는 것</text>
+<text x="235" y="280" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="15" fill="#e05555" font-weight="600" text-anchor="middle">P 전체 : n × N  (4096² → 64MiB)</text>
+<line x1="235" y1="300" x2="235" y2="336" stroke="#888" stroke-width="2" marker-end="url(#rc)"/>
+<rect x="60" y="336" width="350" height="98" rx="8" fill="#000000" stroke="#3a4a6e" stroke-width="1.5"/>
+<text x="235" y="366" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888" text-anchor="middle">역전파</text>
+<text x="235" y="390" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="15" fill="#ffffff" font-weight="600" text-anchor="middle">저장한 P 를 꺼내</text>
+<text x="235" y="414" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="15" fill="#ffffff" font-weight="600" text-anchor="middle">dV, dS, dQ, dK 계산</text>
+<text x="645" y="96" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#55c555" text-anchor="middle">LSE 만 저장 — P 를 되살림</text>
+<rect x="470" y="116" width="350" height="74" rx="8" fill="#000000" stroke="#3a4a6e" stroke-width="1.5"/>
+<text x="645" y="146" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888" text-anchor="middle">순전파</text>
+<text x="645" y="170" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="15" fill="#ffffff" font-weight="600" text-anchor="middle">블록마다 (m, ℓ, õ) 갱신 → O = õ / ℓ</text>
+<line x1="645" y1="190" x2="645" y2="226" stroke="#888" stroke-width="2" marker-end="url(#rc)"/>
+<rect x="470" y="226" width="350" height="74" rx="8" fill="#000000" stroke="#55c555" stroke-width="1.5"/>
+<text x="645" y="256" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888" text-anchor="middle">남겨 두는 것</text>
+<text x="645" y="280" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="15" fill="#55c555" font-weight="600" text-anchor="middle">L = m + log ℓ : 길이 n  (4096 → 16KiB)</text>
+<line x1="645" y1="300" x2="645" y2="336" stroke="#888" stroke-width="2" marker-end="url(#rc)"/>
+<rect x="470" y="336" width="350" height="98" rx="8" fill="#000000" stroke="#3a4a6e" stroke-width="1.5"/>
+<text x="645" y="366" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888" text-anchor="middle">역전파</text>
+<text x="645" y="390" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="15" fill="#ffffff" font-weight="600" text-anchor="middle">S = QKᵀ 를 다시 계산하고</text>
+<text x="645" y="414" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="15" fill="#ffffff" font-weight="600" text-anchor="middle">P = e^(S − L) 로 되살려 같은 계산</text>
+<rect x="60" y="460" width="760" height="52" rx="8" fill="#000000" stroke="#3a4a6e" stroke-width="1.5"/>
+<text x="440" y="491" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="15" font-weight="600" fill="#ffffff" text-anchor="middle">저장은 N 배 줄고, 대가는 QKᵀ 행렬곱 한 번 더 — 메모리를 계산으로 되산다</text>
+</svg>
