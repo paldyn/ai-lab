@@ -1,8 +1,10 @@
 import {
   Fragment,
   useEffect,
+  useId,
   useLayoutEffect,
   useRef,
+  useState,
   type CSSProperties,
   type KeyboardEvent,
   type ReactNode,
@@ -13,6 +15,7 @@ import {
   ArrowDown,
   ArrowUpRight,
   CircleCheck,
+  CircleHelp,
   Clock,
   Compass,
   Cpu,
@@ -360,6 +363,96 @@ function Cell({
   );
 }
 
+/** 모델 표의 열 하나 — 이름과, 물음표에 서는 한두 줄 풀이. */
+interface ModelColumn {
+  label: string;
+  hint: string;
+}
+
+/**
+ * 모델 표의 열 이름과 풀이(2026-09-29). 「컨텍스트/입력/출력도 무슨 의미인지 모르는 사람이
+ * 있을 수 있으니」에 답한 자리입니다. **풀이는 값이 아니라 뜻이라** 주장으로 세우지 않고
+ * 확인 로그도 받지 않습니다 — 수를 박지 않는 것도 그래서입니다(수는 칸이 말합니다).
+ * 말투는 팁과 같은 한다체입니다.
+ */
+const MODEL_COLUMNS = {
+  context: {
+    label: '컨텍스트(토큰)',
+    hint: '모델이 한 번에 붙잡고 읽을 수 있는 글의 양이다. 주고받은 대화와 넣은 파일, 모델의 답까지 모두 이 안에 들어가야 한다. 토큰은 모델이 글을 잘게 쪼개 세는 단위다.',
+  },
+  input: {
+    label: '입력 단가',
+    hint: '모델에게 보내는 글(질문·파일·지난 대화)에 매기는 값이다. API로 쓸 때 100만 토큰당 달러로 셈하고, 구독으로 쓸 때는 이 값 대신 요금제의 사용 한도가 걸린다.',
+  },
+  output: {
+    label: '출력 단가',
+    hint: '모델이 써 내는 글(답·코드·생각하는 과정)에 매기는 값이다. 입력과 같은 100만 토큰당 달러이고, 보통 입력보다 비싸다.',
+  },
+} satisfies Record<string, ModelColumn>;
+
+/**
+ * 열 이름 옆 물음표 — 올리거나(마우스) 누르면(손가락·키보드) 풀이가 섭니다.
+ *
+ * **WAI-ARIA 툴팁 꼴입니다** — 단추가 `aria-describedby`로 풀이를 가리켜, 화면 낭독기는
+ * 「컨텍스트(토큰) 설명, 단추, 모델이 한 번에…」로 읽습니다. 올려서 선 풀이는 **Esc로
+ * 걷히고**(`is-hushed`), 포인터를 풀이 위로 옮겨도 안 사라집니다(CSS의 다리) — WCAG
+ * 1.4.13(올렸을 때 서는 내용)의 세 조건입니다. 손가락은 올리기가 없어 누르면 열리고
+ * (`is-open`) 바깥을 누르면 닫힙니다 — iOS Safari는 단추를 눌러도 포커스를 안 줘서
+ * `blur`만으로는 못 닫습니다.
+ */
+function Hint({ label, text }: { label: string; text: string }) {
+  const id = useId();
+  const ref = useRef<HTMLSpanElement>(null);
+  const [open, setOpen] = useState(false);
+  const [hushed, setHushed] = useState(false);
+
+  useEffect(() => {
+    if (!open) return;
+    const away = (e: PointerEvent) => {
+      if (!ref.current?.contains(e.target as Node)) setOpen(false);
+    };
+    document.addEventListener('pointerdown', away);
+    return () => document.removeEventListener('pointerdown', away);
+  }, [open]);
+
+  /* 포인터만 올려 둔 채(포커스 없이) 누른 Esc도 받아야 해서 문서에서 듣습니다. */
+  useEffect(() => {
+    const onKey = (e: globalThis.KeyboardEvent) => {
+      if (e.key !== 'Escape') return;
+      setOpen(false);
+      setHushed(true);
+    };
+    document.addEventListener('keydown', onKey);
+    return () => document.removeEventListener('keydown', onKey);
+  }, []);
+
+  return (
+    <span
+      ref={ref}
+      className={`gl-hint${open ? ' is-open' : ''}${hushed ? ' is-hushed' : ''}`}
+      onMouseEnter={() => setHushed(false)}
+    >
+      <button
+        type="button"
+        className="gl-hint-btn"
+        aria-label={`${label} 설명`}
+        aria-describedby={id}
+        onFocus={() => setHushed(false)}
+        onClick={() => {
+          setHushed(false);
+          setOpen((v) => !v);
+        }}
+        onBlur={() => setOpen(false)}
+      >
+        <CircleHelp size={13} aria-hidden="true" />
+      </button>
+      <span role="tooltip" id={id} className="gl-hint-pop">
+        {text}
+      </span>
+    </span>
+  );
+}
+
 /**
  * 참고 탭의 절 머리 — 팁 탭의 순간 머리와 같은 마디 + 띠. 모델 절과 요금 절이 같은 모양을
  * 씁니다(2026-09-29). **모델 절에서는 띠가 열 이름을 겸합니다** — 띠가 아래 칸과 같은
@@ -375,7 +468,7 @@ function RefHead({
   icon: LucideIcon;
   id: string;
   title: string;
-  labels?: string[];
+  labels?: ModelColumn[];
   cols?: string;
 }) {
   return (
@@ -387,10 +480,14 @@ function RefHead({
         <h3 className="gl-facts-sub" id={id}>
           {title}
         </h3>
-        {/* 열 이름은 눈에만 섭니다 — 칸마다 링크 이름이 열 이름을 싣습니다. */}
+        {/*
+          열 이름 글자는 눈에만 섭니다 — 칸마다 링크 이름이 열 이름을 싣습니다. 물음표는
+          읽는 사람 모두의 것이라 숨기지 않습니다(이름 「컨텍스트(토큰) 설명」 + 설명문).
+        */}
         {labels.map((l) => (
-          <span key={l} className="gl-mlabel" aria-hidden="true">
-            {l}
+          <span key={l.label} className="gl-mlabel">
+            <span aria-hidden="true">{l.label}</span>
+            <Hint label={l.label} text={l.hint} />
           </span>
         ))}
       </div>
@@ -439,9 +536,9 @@ function ModelChecklist({
   const ages = ageLayout(rows.map((r) => [r.ctx, r.price]));
   /* 절 머리 띠와 칸이 같은 격자를 씁니다 — 열 이름이 칸의 수와 한 세로줄에 섭니다. */
   const cols = `gl-mcols${hasContext ? ' has-ctx' : ''}${hasPrice ? ' has-price' : ''}`;
-  const labels = [
-    ...(hasContext ? ['컨텍스트(토큰)'] : []),
-    ...(hasPrice ? ['입력 단가', '출력 단가'] : []),
+  const labels: ModelColumn[] = [
+    ...(hasContext ? [MODEL_COLUMNS.context] : []),
+    ...(hasPrice ? [MODEL_COLUMNS.input, MODEL_COLUMNS.output] : []),
   ];
 
   return (
@@ -512,7 +609,7 @@ function ModelChecklist({
                           <Cell
                             cell={ctx}
                             url={contextOf.get(model.id)?.source.url ?? ''}
-                            label="컨텍스트(토큰)"
+                            label={MODEL_COLUMNS.context.label}
                             modelName={model.name}
                             text={ctx.kind === 'value' ? contextLabel(ctx.value) : undefined}
                             className="gl-num-cell"
@@ -524,7 +621,7 @@ function ModelChecklist({
                               <Cell
                                 cell={price}
                                 url={priceClaim.source.url}
-                                label="입력 단가"
+                                label={MODEL_COLUMNS.input.label}
                                 modelName={model.name}
                                 text={split.input}
                                 className="gl-num-cell"
@@ -532,7 +629,7 @@ function ModelChecklist({
                               <Cell
                                 cell={price}
                                 url={priceClaim.source.url}
-                                label="출력 단가"
+                                label={MODEL_COLUMNS.output.label}
                                 modelName={model.name}
                                 text={split.output}
                                 className="gl-num-cell"

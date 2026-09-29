@@ -242,7 +242,8 @@ describe('프리렌더 — 본문이 HTML에 들어간다', () => {
     **같은 틀 하나**로 대조합니다: 절 → 줄기 → 마디 + 띠 + 제목이 차례로 서고, 머리가 닫힌
     바로 뒤에 바탕(모델)이나 판(요금)이 열립니다. 머리를 바탕 안으로 넣거나(처음 C 모양),
     열 이름을 띠 밖으로 빼면(붙어 따라오는 머리에서 열 이름이 사라진다) 여기서 걸립니다.
-    띠 안의 열 이름은 그 제품의 데이터가 세운 열 수와 같아야 합니다(Gemini 앱은 0).
+    띠 안의 열 이름은 그 제품의 데이터가 세운 열 수와 같아야 하고, 열 이름마다 풀이 물음표가
+    하나씩 붙습니다(Gemini 앱은 0).
     옛 줄기 모양으로 되돌리면 바탕·수 칸 묶음 수가 어긋나 잡히고, 팁 탭의 차오르는 줄기
     (`data-live`)가 모델 절에 붙는 것도 막습니다.
   */
@@ -252,7 +253,7 @@ describe('프리렌더 — 본문이 HTML에 들어간다', () => {
         `aria-labelledby="${id}"><div class="gl-tl"><div class="gl-stop is-reached">` +
           `<div class="gl-stop-head"><span class="gl-stop-node" aria-hidden="true"><svg[^>]*>.*?</svg></span>` +
           `<div class="gl-stop-band[^"]*"><h3 class="gl-facts-sub" id="${id}">${title}</h3>` +
-          `((?:<span class="gl-mlabel" aria-hidden="true">[^<]*</span>)*)</div></div><div class="${body}">`,
+          `(.*?)</div></div><div class="${body}">`,
       );
     const wrong: string[] = [];
     for (const product of guideProducts) {
@@ -272,6 +273,7 @@ describe('프리렌더 — 본문이 HTML에 들어간다', () => {
       const got = {
         head: modelHead !== null,
         bandLabels: classCount(modelHead?.[1] ?? '', 'gl-mlabel'),
+        hints: classCount(modelHead?.[1] ?? '', 'gl-hint-btn'),
         labels: classCount(sect, 'gl-mlabel'),
         sameAsPlans: hasPlans ? plansHead !== null && plansHead[1] === '' : true,
         tray: classCount(sect, 'gl-tray'),
@@ -281,6 +283,7 @@ describe('프리렌더 — 본문이 HTML에 들어간다', () => {
       const expected = {
         head: true,
         bandLabels: cols,
+        hints: cols,
         labels: cols,
         sameAsPlans: true,
         tray: 1,

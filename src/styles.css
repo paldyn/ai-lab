@@ -8392,11 +8392,101 @@ input:focus-visible {
 }
 
 .gl-mlabel {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 2px;
   color: var(--text-dim);
   font-size: var(--gl-meta);
   font-weight: 600;
   line-height: 1.3;
   text-align: right;
+}
+
+/*
+  **열 이름 옆 물음표**(2026-09-29). 올리거나 누르면 풀이가 선다. 풀이는 무채색을 뒤집은 판
+  (`--text-strong` 위 `--bg`)이라 새 색이 없고, 두 테마에서 같은 대비를 받는다. 오른쪽 끝을
+  열 이름에 맞춰 원장 밖으로 안 나간다.
+*/
+.gl-hint {
+  position: relative;
+  display: inline-flex;
+}
+
+.gl-hint-btn {
+  position: relative;
+  display: grid;
+  width: 16px;
+  height: 16px;
+  place-items: center;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: none;
+  color: var(--text-muted);
+  cursor: help;
+}
+
+/* 누르는 면을 24px 넘게 넓힌다 — 16px 그림만으로는 손가락에 안 맞는다. */
+.gl-hint-btn::after {
+  content: '';
+  position: absolute;
+  inset: -6px;
+}
+
+.gl-hint-btn:hover,
+.gl-hint.is-open .gl-hint-btn {
+  color: var(--guide-accent);
+}
+
+.gl-hint-pop {
+  position: absolute;
+  z-index: 20;
+  top: calc(100% + 8px);
+  right: -6px;
+  width: max-content;
+  max-width: 260px;
+  padding: 10px 12px;
+  border-radius: 10px;
+  background: var(--text-strong);
+  box-shadow: 0 8px 24px -8px rgb(0 0 0 / 35%);
+  color: var(--bg);
+  font-size: var(--gl-label);
+  font-weight: 400;
+  line-height: 1.55;
+  text-align: left;
+  text-wrap: pretty;
+  visibility: hidden;
+  opacity: 0;
+  pointer-events: none;
+  transition:
+    opacity 120ms,
+    visibility 0s 120ms;
+}
+
+/* 단추와 풀이 사이 8px 다리 — 포인터를 풀이로 옮기는 동안 안 사라진다. */
+.gl-hint-pop::before {
+  content: '';
+  position: absolute;
+  right: 0;
+  bottom: 100%;
+  left: 0;
+  height: 8px;
+}
+
+.gl-hint:hover .gl-hint-pop,
+.gl-hint-btn:focus-visible + .gl-hint-pop,
+.gl-hint.is-open .gl-hint-pop {
+  visibility: visible;
+  opacity: 1;
+  pointer-events: auto;
+  transition: opacity 120ms;
+}
+
+.gl-hint.is-hushed .gl-hint-pop {
+  visibility: hidden;
+  opacity: 0;
+  pointer-events: none;
 }
 
 .gl-tray .gl-rows {
@@ -9009,12 +9099,37 @@ a.gl-num:hover {
     border-radius: 16px;
   }
 
+  /*
+    좁은 화면의 띠 — 수가 칸마다 제 열 이름을 달고 쌓이므로 띠의 열 이름은 머리글이 아니라
+    풀이 줄이다. 제목 아래 한 줄로 흘리고, 풀이는 띠 폭을 다 쓴다(열 이름에 붙이면 화면 밖으로
+    나간다).
+  */
   .gl-stop-band.gl-mcols {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2px 14px;
     padding-right: 12px;
   }
 
+  .gl-stop-band.gl-mcols .gl-facts-sub {
+    flex-basis: 100%;
+  }
+
   .gl-mlabel {
-    display: none;
+    justify-content: flex-start;
+    font-weight: 500;
+  }
+
+  .gl-hint {
+    position: static;
+  }
+
+  .gl-hint-pop {
+    right: 8px;
+    left: 8px;
+    width: auto;
+    max-width: none;
   }
 
   .gl-mcols,
