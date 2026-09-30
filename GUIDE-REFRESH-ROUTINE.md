@@ -12,17 +12,29 @@ GPT-6 Sol·Luna 추가, GPT-5.3 Codex Spark 폐기, Claude Max · ChatGPT Pro ·
 옛 구성을 그대로 보여 주고 있었다. **나이 장치는 값의 나이만 센다 — 구조가 바뀐 것은 못 센다.**
 그래서 이 루틴은 값만이 아니라 **목록(모델 · 요금제)이 아직 맞는지**도 매일 본다.
 
+**이 루틴은 클라우드가 아니라 이 맥에서 돈다**(예약 작업 `ailab-guide-refresh`, 매일 06:40 KST).
+처음에는 클라우드 Routine(`trig_01Brj7XyCgtCkar4hAHDSW9m`, 03:00 KST)으로 걸었는데, 첫 실행
+(2026-09-30)에서 샌드박스의 네트워크 정책이 OpenAI·Google 호스트를 막아 Anthropic 페이지만 열렸다
+(`0f1349b` — 25건). 대조할 곳 셋 중 둘을 못 여는 루틴은 그 둘의 값을 매일 확인 없이 늙힌다.
+이 맥에서는 `developers.openai.com`·`learn.chatgpt.com`·`gemini.google`·`antigravity.google`·
+`support.google.com`이 열리고, `help.openai.com`처럼 봇 차단(403)인 곳은 WebFetch나 헤드리스
+크롬으로 연다. 자격증 데이터 루틴을 `ailab-cert-refresh`로 옮긴 것과 같은 얼개이고, 같은 일을 두
+곳에 켜 두지 않으려고 **같은 날 클라우드 쪽은 껐다.** egress가 열렸다는 소식이 있으면 그때 되돌린다.
+
 ---
 
 ## STEP 0 — 원격 main에 맞춘다
 
 ```bash
-cd "$(git rev-parse --show-toplevel)"
-git fetch origin main -q && git reset --hard origin/main
+cd /Users/lwm/vault/dev/company/paldyn/ai-lab
+git status --short          # 비어 있지 않으면 아무것도 하지 말고 보고하고 끝낸다
+git checkout -q main && git pull --ff-only origin main
 git log --oneline -3
-npm ci
+npm ci                      # package-lock.json이 바뀌었을 때만
 ```
 
+**`git reset --hard`를 쓰지 않는다** — 이 맥의 클론은 사람이 작업하는 자리다. 작업 트리가
+더럽거나 main이 아닌 브랜치에 커밋이 쌓여 있으면 사람이 편집 중인 것이니 손대지 않고 보고한다.
 받아 둔 클론이 뒤처져 있으면 이미 고친 값을 다시 고치다 push에서 막힌다.
 
 ## STEP 1 — 읽는다
@@ -169,11 +181,10 @@ data: AI 가이드 요금제 갱신 — <무엇> (YYYY-MM-DD)    ← 요금제 �
 ```
 
 ```bash
-git config user.email "bot@paldyn.com"
-git config user.name "PALDYN Bot"
-REMOTE="https://x-access-token:${GITHUB_TOKEN}@github.com/paldyn/ai-lab.git"
-git push "$REMOTE" HEAD:main || { git pull --rebase "$REMOTE" main && git push "$REMOTE" HEAD:main; }
+git push origin main || { git pull --rebase origin main && git push origin main; }
 ```
+
+커밋 작성자는 이 맥의 git 설정을 그대로 쓴다(`git config`를 바꾸지 않는다).
 
 두 번째도 실패하면 상황을 보고하고 멈춘다.
 
@@ -185,4 +196,5 @@ git push "$REMOTE" HEAD:main || { git pull --rebase "$REMOTE" main && git push "
 - 목록 변화(새 모델 · 이전 세대 · 폐기 · 요금제 변화)와 각각의 근거 문장
 - **사람이 정할 것**으로 남긴 것
 
-마지막 갱신: 2026-09-29 (처음 씀 — 하루에 여섯 군데가 바뀐 것을 계기로)
+마지막 갱신: 2026-09-30 (클라우드에서 이 맥의 예약 작업으로 옮김 — OpenAI·Google 호스트가 막혀서)
+이전 갱신: 2026-09-29 (처음 씀 — 하루에 여섯 군데가 바뀐 것을 계기로)
