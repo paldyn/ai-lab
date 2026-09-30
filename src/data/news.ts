@@ -160,7 +160,7 @@ export interface NewsDetail {
   commentary: string;
 }
 
-export const globalNewsUpdatedAt = '2026-09-28';
+export const globalNewsUpdatedAt = '2026-09-29';
 
 /**
  * 공식 발표 한 건 = 항목 한 개. 2026년 1월부터 쌓는 아카이브이며 오래된 항목을
@@ -171,6 +171,20 @@ export const globalNewsUpdatedAt = '2026-09-28';
  * 목록에서 파생됩니다. 갱신 시 globalNewsUpdatedAt도 함께 올립니다.
  */
 const entries: NewsItem[] = [
+  {
+    id: 'blog-introducing-synthid-bio',
+    source: 'Google DeepMind',
+    kind: 'company',
+    title: 'Google DeepMind, AI 설계 단백질에 워터마크 넣는 SynthID Bio 공개',
+    summary:
+      'Google DeepMind가 합성생물학용 워터마크 방법 모음 SynthID Bio를 개념 증명으로 공개했다. ' +
+      '서열과 3D 구조에 신호를 넣되 습식 실험에서 단백질 기능이 유지됐고, 논문·코드·가중치를 연구계에 푼다.',
+    publishedAt: '2026-09-30',
+    collectedAt: '2026-10-01',
+    category: 'Safety',
+    signal: 'AI 생물보안',
+    url: 'https://deepmind.google/blog/introducing-synthid-bio',
+  },
   {
     id: 'expanding-support-for-scientists',
     source: 'Anthropic',

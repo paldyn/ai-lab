@@ -2,6 +2,22 @@ import type { NewsDetail } from '../news';
 
 /** 2026-09 발표의 모달 본문. 목록은 news.ts에 있습니다. */
 export const details: Record<string, NewsDetail> = {
+  'blog-introducing-synthid-bio': {
+    points: [
+      '아미노산 서열은 고르는 아미노산을, 3D 구조는 원자 좌표를 살짝 틀어 신호를 넣는다',
+      'AlphaProteo와 SynthID Bio를 붙인 ProteinMPNN으로 단백질 결합체에 워터마크를 넣었다',
+      'VEGF-A·스파이크 RBD·PD-L1 습식 실험에서 적중률·결합력이 워터마크 없는 쪽과 같았다',
+      'AlphaFold 3 확산 신경망 일부를 파인튜닝해 예측 구조 자체에 신호가 실리게 했다',
+      'DNA 합성 업체의 주문 선별과 PDB·UniProt·GenBank의 합성 데이터 표시에 쓸 수 있다고 밝혔다',
+      '의도적 변조에 버티게 만드는 것을 남은 과제로 꼽았다',
+      'Stanford Hie 연구실·Arc Institute와 Evo 2가 설계한 박테리오파지 유전체에도 넣어 기능을 확인했다',
+      '방법 논문을 내고 코드·실험 데이터를 공개하며 가중치를 연구계에 푼다',
+    ],
+    commentary:
+      '텍스트·이미지에서 쓰던 SynthID를 물질로 옮긴 첫 사례다. 디지털 파일이 아니라 합성된 단백질에서 신호를 ' +
+      '읽는다는 점이 다르고, DNA 합성 선별처럼 이미 있는 관문에 끼워 넣을 자리를 겨냥했다. 다만 변조 내성이 ' +
+      '과제로 남아 악의적 설계자를 막기보다는 선량한 개발자의 설계를 빨리 통과시키는 쪽에 먼저 쓰일 것이다.',
+  },
   'introducing-gpt-6-1-sol': {
     points: [
       'GPT-6 Sol을 개선한 모델로 API 이름은 gpt-6.1-sol이다',
