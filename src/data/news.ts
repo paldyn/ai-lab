@@ -172,6 +172,20 @@ export const globalNewsUpdatedAt = '2026-09-28';
  */
 const entries: NewsItem[] = [
   {
+    id: 'expanding-support-for-scientists',
+    source: 'Anthropic',
+    kind: 'company',
+    title: 'Anthropic, 과학자용 Claude 팀 요금제로 1만 석 무료·할인 제공',
+    summary:
+      'Anthropic이 과학자용 Claude 팀 요금제로 1년간 1만 석을 연다. 표준 석은 무료, 사용 한도 5배인 ' +
+      '프리미엄 석은 월 15달러이고, AI for Science 크레딧도 생물학 밖으로 넓혔다.',
+    publishedAt: '2026-08-27',
+    collectedAt: '2026-09-30',
+    category: 'Product',
+    signal: '학술 연구 지원',
+    url: 'https://www.anthropic.com/news/expanding-support-for-scientists',
+  },
+  {
     id: 'introducing-gpt-6-1-sol',
     source: 'OpenAI',
     kind: 'model',
