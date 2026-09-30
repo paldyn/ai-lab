@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 400" width="880" height="400">
+  <defs>
+    <marker id="arr" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#888"/>
+    </marker>
+  </defs>
+  <rect width="880" height="400" fill="#0a0a0a" rx="12"/>
+  <text x="440" y="46" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="22" font-weight="700" fill="#e8e8e8">첫 토큰 1.5초를 나눠 쓰기</text>
+  <text x="440" y="72" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="14" fill="#888">가정한 예시 배분 · 막대 길이는 시간에 비례</text>
+
+  <!-- scale: x0=80, 1500ms = 600px (0.4px/ms) -->
+  <!-- labels above for thin segments -->
+  <text x="84" y="128" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#7ec8e3">임베딩 20ms</text>
+  <line x1="84" y1="134" x2="84" y2="160" stroke="#7ec8e3" stroke-width="1"/>
+  <text x="200" y="128" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#9999dd">검색 50ms</text>
+  <line x1="98" y1="160" x2="198" y2="134" stroke="#9999dd" stroke-width="1"/>
+
+  <rect x="80" y="160" width="8" height="56" fill="#7ec8e3"/>
+  <rect x="88" y="160" width="20" height="56" fill="#7777cc"/>
+  <rect x="108" y="160" width="172" height="56" fill="#1e3a1e" stroke="#55c555" stroke-width="1.5"/>
+  <text x="194" y="184" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="600" fill="#55c555">리랭킹 · 왕복</text>
+  <text x="194" y="204" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#aaddaa">약 430ms</text>
+  <rect x="280" y="160" width="400" height="56" fill="#2a1414" stroke="#e05555" stroke-width="1.5"/>
+  <text x="480" y="184" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="600" fill="#e05555">LLM이 컨텍스트를 읽고 첫 토큰</text>
+  <text x="480" y="204" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e8b0b0">약 1,000ms</text>
+  <rect x="680" y="160" width="140" height="56" fill="none" stroke="#888" stroke-width="2" stroke-dasharray="4,4"/>
+  <text x="750" y="184" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#aaa">생성</text>
+  <text x="750" y="204" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#aaa">스트리밍</text>
+
+  <!-- TTFT marker -->
+  <line x1="680" y1="112" x2="680" y2="236" stroke="#d9a441" stroke-width="2"/>
+  <text x="680" y="100" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="600" fill="#d9a441">첫 토큰 1.5초</text>
+
+  <!-- brackets -->
+  <line x1="80" y1="256" x2="680" y2="256" stroke="#e05555" stroke-width="2"/>
+  <line x1="80" y1="248" x2="80" y2="264" stroke="#e05555" stroke-width="2"/>
+  <line x1="680" y1="248" x2="680" y2="264" stroke="#e05555" stroke-width="2"/>
+  <text x="380" y="286" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="14" fill="#e8e8e8">스트리밍으로 가려지지 않는 구간 — 리랭킹은 전부 여기에 든다</text>
+  <line x1="690" y1="256" x2="820" y2="256" stroke="#55c555" stroke-width="2" stroke-dasharray="4,4"/>
+  <text x="755" y="286" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#55c555">스트리밍이 가림</text>
+
+  <!-- levers -->
+  <rect x="60" y="316" width="760" height="60" rx="8" fill="#111" stroke="#333"/>
+  <text x="84" y="341" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="14" font-weight="600" fill="#7ec8e3">리랭킹 몫이 넘치면</text>
+  <text x="84" y="363" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#aaa">k를 무릎까지 내림 → 청크를 상한에 맞춤 → 짝을 한 호출에 묶음 → 작은 모델로</text>
+</svg>

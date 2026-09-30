@@ -1,0 +1,72 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 470" width="880" height="470">
+  <defs>
+    <marker id="mq" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto"><path d="M 0 0 L 13 7 L 0 14 z" fill="#e8e8e8"/></marker>
+    <marker id="ma" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto"><path d="M 0 0 L 13 7 L 0 14 z" fill="#7ec8e3"/></marker>
+    <marker id="mb" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto"><path d="M 0 0 L 13 7 L 0 14 z" fill="#e05555"/></marker>
+    <marker id="mc" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto"><path d="M 0 0 L 13 7 L 0 14 z" fill="#55c555"/></marker>
+  </defs>
+  <rect width="880" height="470" fill="#0a0a0a" rx="12"/>
+  <g font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+    <text x="440" y="44" text-anchor="middle" font-size="22" font-weight="700" fill="#e8e8e8">같은 벡터, 세 가지 순위</text>
+    <text x="440" y="70" text-anchor="middle" font-size="16" font-weight="600" fill="#e8e8e8">질의 q = (3, 4)에 문서 A · B · C를 세 지표로 줄 세운다</text>
+
+    <!-- 좌표평면: 원점 (140, 380), 1칸 = 30px -->
+    <g transform="translate(50,0)">
+    <line x1="90" y1="380" x2="370" y2="380" stroke="#444" stroke-width="1.5"/>
+    <line x1="90" y1="380" x2="90" y2="220" stroke="#444" stroke-width="1.5"/>
+    <text x="90" y="402" text-anchor="middle" font-size="13" fill="#888">0</text>
+    <text x="330" y="402" text-anchor="middle" font-size="13" fill="#888">8</text>
+    <text x="74" y="265" text-anchor="middle" font-size="13" fill="#888">4</text>
+    <line x1="330" y1="376" x2="330" y2="384" stroke="#444" stroke-width="1.5"/>
+    <line x1="86" y1="260" x2="94" y2="260" stroke="#444" stroke-width="1.5"/>
+
+    <line x1="90" y1="380" x2="180" y2="260" stroke="#e8e8e8" stroke-width="2.5" marker-end="url(#mq)"/>
+    <line x1="90" y1="380" x2="210" y2="290" stroke="#7ec8e3" stroke-width="2.5" marker-end="url(#ma)"/>
+    <line x1="90" y1="380" x2="330" y2="320" stroke="#e05555" stroke-width="2.5" marker-end="url(#mb)"/>
+    <line x1="90" y1="380" x2="108" y2="356" stroke="#55c555" stroke-width="3" marker-end="url(#mc)"/>
+
+    <text x="160" y="246" font-size="14" font-weight="700" fill="#e8e8e8">q (3, 4)</text>
+    <text x="218" y="286" font-size="14" font-weight="700" fill="#7ec8e3">A (4, 3)</text>
+    <text x="276" y="306" font-size="14" font-weight="700" fill="#e05555">B (8, 2)</text>
+    <text x="86" y="362" text-anchor="end" font-size="13" font-weight="700" fill="#55c555">C (0.6, 0.8)</text>
+    <text x="40" y="436" font-size="13" fill="#888">C는 q와 방향이 같고 길이가 1, B는 가장 길다</text>
+    </g>
+
+    <!-- 순위 세 열 -->
+    <text x="496" y="118" text-anchor="middle" font-size="15" font-weight="700" fill="#7777cc">코사인</text>
+    <text x="496" y="138" text-anchor="middle" font-size="13" fill="#888">클수록 가깝다</text>
+    <text x="628" y="118" text-anchor="middle" font-size="15" font-weight="700" fill="#7ec8e3">내적</text>
+    <text x="628" y="138" text-anchor="middle" font-size="13" fill="#888">클수록 가깝다</text>
+    <text x="760" y="118" text-anchor="middle" font-size="15" font-weight="700" fill="#55c555">유클리드</text>
+    <text x="760" y="138" text-anchor="middle" font-size="13" fill="#888">작을수록 가깝다</text>
+
+    <!-- 코사인: C 1.00, A 0.96, B 0.78 -->
+    <rect x="444" y="154" width="104" height="44" rx="6" fill="#0e1a0e" stroke="#55c555" stroke-width="1.5"/>
+    <text x="496" y="181" text-anchor="middle" font-size="15" font-weight="700" fill="#55c555">1  C  1.00</text>
+    <rect x="444" y="208" width="104" height="44" rx="6" fill="#0a1a22" stroke="#7ec8e3" stroke-width="1.5"/>
+    <text x="496" y="235" text-anchor="middle" font-size="15" font-weight="700" fill="#7ec8e3">2  A  0.96</text>
+    <rect x="444" y="262" width="104" height="44" rx="6" fill="#1e0e0e" stroke="#e05555" stroke-width="1.5"/>
+    <text x="496" y="289" text-anchor="middle" font-size="15" font-weight="700" fill="#e05555">3  B  0.78</text>
+
+    <!-- 내적: B 32, A 24, C 5 -->
+    <rect x="576" y="154" width="104" height="44" rx="6" fill="#1e0e0e" stroke="#e05555" stroke-width="1.5"/>
+    <text x="628" y="181" text-anchor="middle" font-size="15" font-weight="700" fill="#e05555">1  B  32</text>
+    <rect x="576" y="208" width="104" height="44" rx="6" fill="#0a1a22" stroke="#7ec8e3" stroke-width="1.5"/>
+    <text x="628" y="235" text-anchor="middle" font-size="15" font-weight="700" fill="#7ec8e3">2  A  24</text>
+    <rect x="576" y="262" width="104" height="44" rx="6" fill="#0e1a0e" stroke="#55c555" stroke-width="1.5"/>
+    <text x="628" y="289" text-anchor="middle" font-size="15" font-weight="700" fill="#55c555">3  C  5</text>
+
+    <!-- 유클리드: A 1.41, C 4.00, B 5.39 -->
+    <rect x="708" y="154" width="104" height="44" rx="6" fill="#0a1a22" stroke="#7ec8e3" stroke-width="1.5"/>
+    <text x="760" y="181" text-anchor="middle" font-size="15" font-weight="700" fill="#7ec8e3">1  A  1.41</text>
+    <rect x="708" y="208" width="104" height="44" rx="6" fill="#0e1a0e" stroke="#55c555" stroke-width="1.5"/>
+    <text x="760" y="235" text-anchor="middle" font-size="15" font-weight="700" fill="#55c555">2  C  4.00</text>
+    <rect x="708" y="262" width="104" height="44" rx="6" fill="#1e0e0e" stroke="#e05555" stroke-width="1.5"/>
+    <text x="760" y="289" text-anchor="middle" font-size="15" font-weight="700" fill="#e05555">3  B  5.39</text>
+
+    <!-- 정규화 뒤 -->
+    <rect x="444" y="336" width="368" height="72" rx="8" fill="#12121f" stroke="#7777cc" stroke-width="1.5"/>
+    <text x="628" y="364" text-anchor="middle" font-size="15" font-weight="700" fill="#e8e8e8">길이를 1로 맞춘 뒤에는 셋 다 C · A · B</text>
+    <text x="628" y="388" text-anchor="middle" font-size="13" fill="#888">내적 1.00 · 0.96 · 0.78 — 유클리드 0.00 · 0.28 · 0.67</text>
+  </g>
+</svg>

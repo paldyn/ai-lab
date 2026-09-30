@@ -26,8 +26,8 @@
   <text x="200" y="201" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e8e8e8">미정규화·가변 크기 벡터</text>
   <rect x="356" y="181" width="68" height="26" rx="4" fill="#1a1040"/>
   <text x="390" y="199" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#7777cc">★ 최적</text>
-  <rect x="526" y="181" width="68" height="26" rx="4" fill="#0a1e0a"/>
-  <text x="560" y="199" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#55c555">★ 최적</text>
+  <rect x="526" y="181" width="68" height="26" rx="4" fill="#1e1e1e"/>
+  <text x="560" y="199" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">주의</text>
   <rect x="697" y="181" width="68" height="26" rx="4" fill="#1e1e1e"/>
   <text x="731" y="199" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#555">주의</text>
 
