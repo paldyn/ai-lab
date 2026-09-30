@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="420" viewBox="0 0 880 420" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <rect x="0" y="0" width="880" height="420" rx="12" fill="#0a0a0a"/>
+
+  <text x="60" y="46" font-size="22" font-weight="700" fill="#e8e8e8">1-노름은 최대 열합, ∞-노름은 최대 행합</text>
+  <text x="60" y="70" font-size="13" fill="#888">같은 A 의 성분 절댓값을 열로 더하고 행으로 더한다 · 특잇값 분해가 필요 없다</text>
+
+  <rect x="100" y="110" width="80" height="56" fill="#7ec8e3" fill-opacity="0.18" stroke="#444" stroke-width="1"/>
+  <rect x="180" y="110" width="80" height="56" fill="none" stroke="#444" stroke-width="1"/>
+  <rect x="100" y="166" width="80" height="56" fill="#7ec8e3" fill-opacity="0.18" stroke="#444" stroke-width="1"/>
+  <rect x="180" y="166" width="80" height="56" fill="#55c555" fill-opacity="0.18" stroke="#444" stroke-width="1"/>
+  <rect x="100" y="222" width="80" height="56" fill="#7ec8e3" fill-opacity="0.18" stroke="#444" stroke-width="1"/>
+  <rect x="180" y="222" width="80" height="56" fill="none" stroke="#444" stroke-width="1"/>
+  <rect x="100" y="166" width="160" height="56" fill="none" stroke="#55c555" stroke-width="2.5"/>
+  <rect x="100" y="110" width="80" height="168" fill="none" stroke="#7ec8e3" stroke-width="2.5"/>
+
+  <text x="140" y="144" font-size="18" font-weight="600" fill="#e8e8e8" text-anchor="middle">3</text>
+  <text x="220" y="144" font-size="18" font-weight="600" fill="#e8e8e8" text-anchor="middle">0</text>
+  <text x="140" y="200" font-size="18" font-weight="600" fill="#e8e8e8" text-anchor="middle">4</text>
+  <text x="220" y="200" font-size="18" font-weight="600" fill="#e8e8e8" text-anchor="middle">5</text>
+  <text x="140" y="256" font-size="18" font-weight="600" fill="#e8e8e8" text-anchor="middle">0</text>
+  <text x="220" y="256" font-size="18" font-weight="600" fill="#e8e8e8" text-anchor="middle">0</text>
+
+  <text x="284" y="144" font-size="15" fill="#888">행합 3</text>
+  <text x="284" y="200" font-size="15" font-weight="700" fill="#55c555">행합 9</text>
+  <text x="284" y="256" font-size="15" fill="#888">행합 0</text>
+
+  <text x="140" y="304" font-size="15" font-weight="700" fill="#7ec8e3" text-anchor="middle">열합 7</text>
+  <text x="220" y="304" font-size="15" fill="#888" text-anchor="middle">열합 5</text>
+
+  <text x="100" y="344" font-size="14" font-weight="600" fill="#7ec8e3">‖A‖₁ = 7  (가장 큰 열합)</text>
+  <text x="100" y="368" font-size="14" font-weight="600" fill="#55c555">‖A‖∞ = 9  (가장 큰 행합)</text>
+
+  <line x1="410" y1="100" x2="410" y2="380" stroke="#444" stroke-width="1"/>
+
+  <text x="450" y="118" font-size="13" fill="#e8e8e8">‖A‖₂ = σ₁ = 6.708</text>
+  <rect x="450" y="128" width="201" height="16" rx="3" fill="#e8e8e8" fill-opacity="0.85"/>
+  <text x="450" y="176" font-size="13" fill="#7ec8e3">‖A‖₁ = 7</text>
+  <rect x="450" y="186" width="210" height="16" rx="3" fill="#7ec8e3" fill-opacity="0.85"/>
+  <text x="450" y="234" font-size="13" fill="#55c555">‖A‖∞ = 9</text>
+  <rect x="450" y="244" width="270" height="16" rx="3" fill="#55c555" fill-opacity="0.85"/>
+  <text x="450" y="292" font-size="13" fill="#7777cc">√(‖A‖₁‖A‖∞) = 7.937</text>
+  <rect x="450" y="302" width="238" height="16" rx="3" fill="#7777cc" fill-opacity="0.85"/>
+
+  <line x1="651" y1="120" x2="651" y2="330" stroke="#e05555" stroke-width="2" stroke-dasharray="4,4"/>
+
+  <text x="450" y="360" font-size="13" fill="#9aa4b8">더하기만으로 ‖A‖₂ ≤ 7.937 을 얻는다</text>
+  <text x="450" y="382" font-size="13" fill="#9aa4b8">실제 값 6.708 과는 18% 차이다</text>
+</svg>

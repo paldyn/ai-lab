@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="420" viewBox="0 0 880 420" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <rect x="0" y="0" width="880" height="420" rx="12" fill="#0a0a0a"/>
+  <text x="60" y="46" font-size="22" font-weight="700" fill="#e8e8e8">층별 노름의 곱은 층이 늘수록 실제에서 멀어진다</text>
+  <text x="60" y="70" font-size="13" fill="#888">64×64 무작위 층을 차례로 곱했다 · 층마다 ‖W‖₂ ≈ 2 · 세로축은 로그 눈금</text>
+  <text x="100" y="334.0" font-size="13" fill="#888" text-anchor="end">1</text>
+  <line x1="110" y1="290.0" x2="800" y2="290.0" stroke="#444" stroke-width="1"/>
+  <text x="100" y="294.0" font-size="13" fill="#888" text-anchor="end">10</text>
+  <line x1="110" y1="250.0" x2="800" y2="250.0" stroke="#444" stroke-width="1"/>
+  <text x="100" y="254.0" font-size="13" fill="#888" text-anchor="end">100</text>
+  <line x1="110" y1="210.0" x2="800" y2="210.0" stroke="#444" stroke-width="1"/>
+  <text x="100" y="214.0" font-size="13" fill="#888" text-anchor="end">1,000</text>
+  <line x1="110" y1="170.0" x2="800" y2="170.0" stroke="#444" stroke-width="1"/>
+  <text x="100" y="174.0" font-size="13" fill="#888" text-anchor="end">10⁴</text>
+  <line x1="110" y1="130.0" x2="800" y2="130.0" stroke="#444" stroke-width="1"/>
+  <text x="100" y="134.0" font-size="13" fill="#888" text-anchor="end">10⁵</text>
+  <line x1="110" y1="90.0" x2="800" y2="90.0" stroke="#444" stroke-width="1"/>
+  <text x="100" y="94.0" font-size="13" fill="#888" text-anchor="end">10⁶</text>
+  <line x1="110" y1="330" x2="800" y2="330" stroke="#888" stroke-width="1.5"/>
+  <line x1="110" y1="330" x2="110" y2="86" stroke="#888" stroke-width="1.5"/>
+  <text x="110.0" y="350" font-size="13" fill="#888" text-anchor="middle">1</text>
+  <text x="255.3" y="350" font-size="13" fill="#888" text-anchor="middle">5</text>
+  <text x="436.8" y="350" font-size="13" fill="#888" text-anchor="middle">10</text>
+  <text x="618.4" y="350" font-size="13" fill="#888" text-anchor="middle">15</text>
+  <text x="800.0" y="350" font-size="13" fill="#888" text-anchor="middle">20</text>
+  <text x="455" y="376" font-size="13" fill="#888" text-anchor="middle">층 수</text>
+  <polyline points="110.0,317.9 146.3,306.0 182.6,294.5 218.9,283.9 255.3,272.4 291.6,260.6 327.9,248.3 364.2,236.4 400.5,225.3 436.8,213.5 473.2,201.1 509.5,189.7 545.8,178.3 582.1,167.1 618.4,156.5 654.7,144.8 691.1,132.9 727.4,121.1 763.7,109.1 800.0,97.8" fill="none" stroke="#7777cc" stroke-width="2.5"/>
+  <polyline points="110.0,317.9 146.3,312.9 182.6,311.4 218.9,310.9 255.3,310.8 291.6,309.3 327.9,306.9 364.2,305.3 400.5,305.9 436.8,307.3 473.2,306.6 509.5,307.1 545.8,308.6 582.1,307.7 618.4,308.4 654.7,310.1 691.1,309.6 727.4,309.8 763.7,310.8 800.0,310.4" fill="none" stroke="#7ec8e3" stroke-width="2.5"/>
+  <line x1="436.8" y1="213.5" x2="436.8" y2="307.3" stroke="#e05555" stroke-width="2" stroke-dasharray="4,4"/>
+  <circle cx="436.8" cy="213.5" r="5" fill="#e8e8e8"/>
+  <circle cx="436.8" cy="307.3" r="5" fill="#e8e8e8"/>
+  <line x1="800.0" y1="97.8" x2="800.0" y2="310.4" stroke="#e05555" stroke-width="2" stroke-dasharray="4,4"/>
+  <circle cx="800.0" cy="97.8" r="5" fill="#e8e8e8"/>
+  <circle cx="800.0" cy="310.4" r="5" fill="#e8e8e8"/>
+  <text x="422.8" y="199.5" font-size="13" fill="#7777cc" text-anchor="end">817</text>
+  <text x="450.8" y="291.3" font-size="13" fill="#7ec8e3">3.70</text>
+  <text x="450.8" y="264.4" font-size="13" font-weight="600" fill="#e05555">221배</text>
+  <text x="794.0" y="83.8" font-size="13" fill="#7777cc" text-anchor="end">636,752</text>
+  <text x="786.0" y="294.4" font-size="13" fill="#7ec8e3" text-anchor="end">3.08</text>
+  <text x="786.0" y="208.1" font-size="13" font-weight="600" fill="#e05555" text-anchor="end">약 20만 배</text>
+  <line x1="140" y1="110" x2="176" y2="110" stroke="#7777cc" stroke-width="2.5"/>
+  <text x="186" y="115" font-size="13" fill="#e8e8e8">상한 ‖W₁‖₂‖W₂‖₂⋯‖Wₙ‖₂</text>
+  <line x1="140" y1="136" x2="176" y2="136" stroke="#7ec8e3" stroke-width="2.5"/>
+  <text x="186" y="141" font-size="13" fill="#e8e8e8">실제 ‖Wₙ⋯W₂W₁‖₂</text>
+  <text x="60" y="400" font-size="13" fill="#888">상한은 층마다 두 배씩 불어나지만 실제 배율은 3~4 근처에 머문다</text>
+</svg>

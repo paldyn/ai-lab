@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" viewBox="0 0 880 540" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+<rect x="0" y="0" width="880" height="540" rx="12" fill="#0a0a0a"/>
+<text x="440" y="44" text-anchor="middle" font-size="22" font-weight="700" fill="#e8e8e8">1부터 100까지 — 2 · 3 · 5의 배수 세 집합</text>
+<text x="440" y="70" text-anchor="middle" font-size="13" fill="#888">칸마다 그 칸에만 드는 수의 개수를 적었다</text>
+<circle cx="360" cy="220" r="120" fill="#7ec8e3" fill-opacity="0.12" stroke="#7ec8e3" stroke-width="2"/>
+<circle cx="520" cy="220" r="120" fill="#7777cc" fill-opacity="0.12" stroke="#7777cc" stroke-width="2"/>
+<circle cx="440" cy="350" r="120" fill="#55c555" fill-opacity="0.12" stroke="#55c555" stroke-width="2"/>
+<text x="232" y="118" text-anchor="end" font-size="16" font-weight="600" fill="#7ec8e3">2의 배수 50개</text>
+<text x="648" y="118" text-anchor="start" font-size="16" font-weight="600" fill="#7777cc">3의 배수 33개</text>
+<text x="572" y="456" text-anchor="start" font-size="16" font-weight="600" fill="#55c555">5의 배수 20개</text>
+<text x="300" y="196" text-anchor="middle" font-size="18" font-weight="700" fill="#e8e8e8">27</text>
+<text x="580" y="196" text-anchor="middle" font-size="18" font-weight="700" fill="#e8e8e8">14</text>
+<text x="440" y="426" text-anchor="middle" font-size="18" font-weight="700" fill="#e8e8e8">7</text>
+<text x="440" y="186" text-anchor="middle" font-size="18" font-weight="700" fill="#e8e8e8">13</text>
+<text x="370" y="316" text-anchor="middle" font-size="18" font-weight="700" fill="#e8e8e8">7</text>
+<text x="510" y="316" text-anchor="middle" font-size="18" font-weight="700" fill="#e8e8e8">3</text>
+<circle cx="440" cy="264" r="16" fill="#e05555" fill-opacity="0.25" stroke="#e05555" stroke-width="2"/>
+<text x="440" y="270" text-anchor="middle" font-size="18" font-weight="700" fill="#e8e8e8">3</text>
+<text x="440" y="506" text-anchor="middle" font-size="16" font-weight="600" fill="#e8e8e8">50 + 33 + 20 − 16 − 10 − 6 + 3 = 74</text>
+</svg>

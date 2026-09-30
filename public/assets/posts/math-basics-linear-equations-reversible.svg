@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="480" viewBox="0 0 880 480" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <rect width="880" height="480" rx="12" fill="#0a0a0a"/>
+  <defs>
+    <marker id="go" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#7ec8e3"/>
+    </marker>
+    <marker id="back" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#55c555"/>
+    </marker>
+    <marker id="stop" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#e05555"/>
+    </marker>
+  </defs>
+
+  <text x="60" y="52" font-size="22" font-weight="700" fill="#e8e8e8">되돌릴 수 있어야 해가 안 바뀐다</text>
+  <text x="60" y="78" font-size="13" fill="#888">오른쪽으로 간 길을 왼쪽으로 되짚을 수 있으면 두 식의 해가 같다</text>
+
+  <rect x="60" y="100" width="180" height="70" rx="8" fill="#7ec8e3" fill-opacity="0.10" stroke="#7ec8e3" stroke-width="1.5"/>
+  <text x="150" y="130" font-size="17" font-weight="600" fill="#e8e8e8" text-anchor="middle">2x = 4</text>
+  <text x="150" y="153" font-size="13" fill="#888" text-anchor="middle">해: 2</text>
+  <rect x="640" y="100" width="180" height="70" rx="8" fill="#7ec8e3" fill-opacity="0.10" stroke="#7ec8e3" stroke-width="1.5"/>
+  <text x="730" y="130" font-size="17" font-weight="600" fill="#e8e8e8" text-anchor="middle">x = 2</text>
+  <text x="730" y="153" font-size="13" fill="#888" text-anchor="middle">해: 2</text>
+  <line x1="240" y1="122" x2="640" y2="122" stroke="#7ec8e3" stroke-width="2" marker-end="url(#go)"/>
+  <text x="440" y="108" font-size="13" fill="#7ec8e3" text-anchor="middle">양변을 2로 나눈다</text>
+  <line x1="640" y1="150" x2="240" y2="150" stroke="#55c555" stroke-width="2" marker-end="url(#back)"/>
+  <text x="440" y="168" font-size="13" fill="#55c555" text-anchor="middle">양변에 2를 곱한다</text>
+  <text x="440" y="198" font-size="15" font-weight="600" fill="#55c555" text-anchor="middle">서로 오간다 → 해가 같다</text>
+
+  <rect x="60" y="232" width="180" height="70" rx="8" fill="#7ec8e3" fill-opacity="0.10" stroke="#7ec8e3" stroke-width="1.5"/>
+  <text x="150" y="262" font-size="17" font-weight="600" fill="#e8e8e8" text-anchor="middle">2x = 4</text>
+  <text x="150" y="285" font-size="13" fill="#888" text-anchor="middle">해: 2</text>
+  <rect x="640" y="232" width="180" height="70" rx="8" fill="#e05555" fill-opacity="0.10" stroke="#e05555" stroke-width="1.5"/>
+  <text x="730" y="262" font-size="17" font-weight="600" fill="#e8e8e8" text-anchor="middle">0 = 0</text>
+  <text x="730" y="285" font-size="13" fill="#888" text-anchor="middle">해: 모든 수</text>
+  <line x1="240" y1="254" x2="640" y2="254" stroke="#7ec8e3" stroke-width="2" marker-end="url(#go)"/>
+  <text x="440" y="240" font-size="13" fill="#7ec8e3" text-anchor="middle">양변에 0을 곱한다</text>
+  <line x1="640" y1="282" x2="240" y2="282" stroke="#e05555" stroke-width="2" stroke-dasharray="5,3" marker-end="url(#stop)"/>
+  <text x="440" y="300" font-size="13" fill="#e05555" text-anchor="middle">0으로 나눌 수 없다</text>
+  <text x="440" y="330" font-size="15" font-weight="600" fill="#e05555" text-anchor="middle">돌아올 길이 없다 → 해가 늘어난다</text>
+
+  <rect x="60" y="364" width="180" height="70" rx="8" fill="#7ec8e3" fill-opacity="0.10" stroke="#7ec8e3" stroke-width="1.5"/>
+  <text x="150" y="394" font-size="17" font-weight="600" fill="#e8e8e8" text-anchor="middle">x = 3</text>
+  <text x="150" y="417" font-size="13" fill="#888" text-anchor="middle">해: 3</text>
+  <rect x="640" y="364" width="180" height="70" rx="8" fill="#e05555" fill-opacity="0.10" stroke="#e05555" stroke-width="1.5"/>
+  <text x="730" y="394" font-size="17" font-weight="600" fill="#e8e8e8" text-anchor="middle">x² = 9</text>
+  <text x="730" y="417" font-size="13" fill="#888" text-anchor="middle">해: 3, −3</text>
+  <line x1="240" y1="386" x2="640" y2="386" stroke="#7ec8e3" stroke-width="2" marker-end="url(#go)"/>
+  <text x="440" y="372" font-size="13" fill="#7ec8e3" text-anchor="middle">양변을 제곱한다</text>
+  <line x1="640" y1="414" x2="240" y2="414" stroke="#e05555" stroke-width="2" stroke-dasharray="5,3" marker-end="url(#stop)"/>
+  <text x="440" y="432" font-size="13" fill="#e05555" text-anchor="middle">3에서 왔는지 −3에서 왔는지 모른다</text>
+  <text x="440" y="462" font-size="15" font-weight="600" fill="#e05555" text-anchor="middle">−3이 끼어든다 → 없던 해가 생긴다</text>
+</svg>

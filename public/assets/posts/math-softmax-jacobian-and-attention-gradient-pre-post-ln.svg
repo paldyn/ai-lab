@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="560" viewBox="0 0 880 560">
+<rect width="880" height="560" rx="12" fill="#0a0a0a"/>
+<defs><marker id="ag" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto"><path d="M 0 0 L 13 7 L 0 14 z" fill="#55c555"/></marker><marker id="aw" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto"><path d="M 0 0 L 13 7 L 0 14 z" fill="#888"/></marker><marker id="ar" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto"><path d="M 0 0 L 13 7 L 0 14 z" fill="#e05555"/></marker></defs>
+<text x="440" y="42" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="22" font-weight="700" fill="#e8e8e8" text-anchor="middle">post-LN과 pre-LN의 항등 경로</text>
+<text x="240" y="84" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#e8e8e8" text-anchor="middle">post-LN</text>
+<text x="640" y="84" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#e8e8e8" text-anchor="middle">pre-LN</text>
+<line x1="440" y1="104" x2="440" y2="470" stroke="#333" stroke-width="1.5" stroke-dasharray="4,4"/>
+<rect x="180" y="104" width="120" height="40" rx="8" fill="#000000" stroke="#3a4a6e" stroke-width="1.5"/>
+<text x="240" y="129.0" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="15" font-weight="600" fill="#ffffff" text-anchor="middle">x</text>
+<line x1="240" y1="144" x2="240" y2="164" stroke="#888" stroke-width="2"/>
+<circle cx="240" cy="164" r="5" fill="#888"/>
+<path d="M 240 164 L 110 164 L 110 304 L 226 304" stroke="#55c555" stroke-width="2.5" fill="none" marker-end="url(#ag)"/>
+<line x1="240" y1="164" x2="240" y2="194" stroke="#888" stroke-width="2" marker-end="url(#aw)"/>
+<rect x="180" y="194" width="120" height="44" rx="8" fill="#000000" stroke="#3a4a6e" stroke-width="1.5"/>
+<text x="240" y="221.0" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="15" font-weight="600" fill="#ffffff" text-anchor="middle">Attn</text>
+<line x1="240" y1="238" x2="240" y2="290" stroke="#888" stroke-width="2" marker-end="url(#aw)"/>
+<circle cx="240" cy="304" r="14" fill="#000000" stroke="#e8e8e8" stroke-width="2"/>
+<text x="240" y="310" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="18" font-weight="700" fill="#e8e8e8" text-anchor="middle">+</text>
+<line x1="240" y1="318" x2="240" y2="344" stroke="#e05555" stroke-width="2.5" marker-end="url(#ar)"/>
+<rect x="180" y="344" width="120" height="44" rx="8" fill="#000000" stroke="#e05555" stroke-width="1.5"/>
+<text x="240" y="371.0" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="15" font-weight="600" fill="#ffffff" text-anchor="middle">LN</text>
+<line x1="240" y1="388" x2="240" y2="418" stroke="#e05555" stroke-width="2.5" marker-end="url(#ar)"/>
+<rect x="180" y="418" width="120" height="40" rx="8" fill="#000000" stroke="#3a4a6e" stroke-width="1.5"/>
+<text x="240" y="443.0" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="15" font-weight="600" fill="#ffffff" text-anchor="middle">out</text>
+<rect x="580" y="104" width="120" height="40" rx="8" fill="#000000" stroke="#3a4a6e" stroke-width="1.5"/>
+<text x="640" y="129.0" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="15" font-weight="600" fill="#ffffff" text-anchor="middle">x</text>
+<line x1="640" y1="144" x2="640" y2="164" stroke="#888" stroke-width="2"/>
+<circle cx="640" cy="164" r="5" fill="#888"/>
+<path d="M 640 164 L 510 164 L 510 378 L 626 378" stroke="#55c555" stroke-width="2.5" fill="none" marker-end="url(#ag)"/>
+<line x1="640" y1="164" x2="640" y2="184" stroke="#888" stroke-width="2" marker-end="url(#aw)"/>
+<rect x="580" y="184" width="120" height="40" rx="8" fill="#000000" stroke="#3a4a6e" stroke-width="1.5"/>
+<text x="640" y="209.0" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="15" font-weight="600" fill="#ffffff" text-anchor="middle">LN</text>
+<line x1="640" y1="224" x2="640" y2="254" stroke="#888" stroke-width="2" marker-end="url(#aw)"/>
+<rect x="580" y="254" width="120" height="44" rx="8" fill="#000000" stroke="#3a4a6e" stroke-width="1.5"/>
+<text x="640" y="281.0" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="15" font-weight="600" fill="#ffffff" text-anchor="middle">Attn</text>
+<line x1="640" y1="298" x2="640" y2="364" stroke="#888" stroke-width="2" marker-end="url(#aw)"/>
+<circle cx="640" cy="378" r="14" fill="#000000" stroke="#55c555" stroke-width="2"/>
+<text x="640" y="384" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="18" font-weight="700" fill="#55c555" text-anchor="middle">+</text>
+<line x1="640" y1="392" x2="640" y2="418" stroke="#55c555" stroke-width="2.5" marker-end="url(#ag)"/>
+<rect x="580" y="418" width="120" height="40" rx="8" fill="#000000" stroke="#3a4a6e" stroke-width="1.5"/>
+<text x="640" y="443.0" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="15" font-weight="600" fill="#ffffff" text-anchor="middle">out</text>
+<text x="240" y="500" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="14" fill="#e8e8e8" text-anchor="middle">∂out/∂x = J_LN · (I + ∂Attn/∂x)</text>
+<text x="640" y="500" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="14" fill="#e8e8e8" text-anchor="middle">∂out/∂x = I + ∂Attn/∂z · J_LN</text>
+<text x="240" y="528" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e05555" font-weight="600" text-anchor="middle">항등 경로도 층마다 J_LN 을 지난다</text>
+<text x="640" y="528" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#55c555" font-weight="600" text-anchor="middle">I 가 아무것도 안 곱해진 채 남는다</text>
+</svg>

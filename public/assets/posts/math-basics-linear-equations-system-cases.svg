@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="420" viewBox="0 0 880 420" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <rect width="880" height="420" rx="12" fill="#0a0a0a"/>
+  <defs>
+    <marker id="dn" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#7777cc"/>
+    </marker>
+  </defs>
+
+  <text x="60" y="52" font-size="22" font-weight="700" fill="#e8e8e8">소거 뒤 남은 줄이 연립의 갈래를 정한다</text>
+  <text x="60" y="78" font-size="13" fill="#888">가감법으로 한 미지수를 지웠을 때, 무엇이 남는지만 본다</text>
+
+  <rect x="60" y="104" width="220" height="80" rx="8" fill="#7777cc" fill-opacity="0.10" stroke="#7777cc" stroke-width="1.5"/>
+  <text x="170" y="138" font-size="15" fill="#e8e8e8" text-anchor="middle">x + y = 7</text>
+  <text x="170" y="162" font-size="15" fill="#e8e8e8" text-anchor="middle">2x − y = 2</text>
+  <rect x="330" y="104" width="220" height="80" rx="8" fill="#7777cc" fill-opacity="0.10" stroke="#7777cc" stroke-width="1.5"/>
+  <text x="440" y="138" font-size="15" fill="#e8e8e8" text-anchor="middle">x + y = 1</text>
+  <text x="440" y="162" font-size="15" fill="#e8e8e8" text-anchor="middle">x + y = 3</text>
+  <rect x="600" y="104" width="220" height="80" rx="8" fill="#7777cc" fill-opacity="0.10" stroke="#7777cc" stroke-width="1.5"/>
+  <text x="710" y="138" font-size="15" fill="#e8e8e8" text-anchor="middle">x + y = 1</text>
+  <text x="710" y="162" font-size="15" fill="#e8e8e8" text-anchor="middle">2x + 2y = 2</text>
+
+  <line x1="170" y1="184" x2="170" y2="240" stroke="#7777cc" stroke-width="2" marker-end="url(#dn)"/>
+  <text x="182" y="217" font-size="13" fill="#888">두 식을 더한다</text>
+  <line x1="440" y1="184" x2="440" y2="240" stroke="#7777cc" stroke-width="2" marker-end="url(#dn)"/>
+  <text x="452" y="217" font-size="13" fill="#888">아래 − 위</text>
+  <line x1="710" y1="184" x2="710" y2="240" stroke="#7777cc" stroke-width="2" marker-end="url(#dn)"/>
+  <text x="722" y="217" font-size="13" fill="#888">아래 − 위 × 2</text>
+
+  <rect x="60" y="240" width="220" height="64" rx="8" fill="#55c555" fill-opacity="0.10" stroke="#55c555" stroke-width="1.5"/>
+  <text x="170" y="278" font-size="16" font-weight="600" fill="#e8e8e8" text-anchor="middle">3x = 9 → (3, 4)</text>
+  <rect x="330" y="240" width="220" height="64" rx="8" fill="#e05555" fill-opacity="0.10" stroke="#e05555" stroke-width="1.5"/>
+  <text x="440" y="278" font-size="16" font-weight="600" fill="#e8e8e8" text-anchor="middle">0 = 2 · 거짓</text>
+  <rect x="600" y="240" width="220" height="64" rx="8" fill="#7ec8e3" fill-opacity="0.10" stroke="#7ec8e3" stroke-width="1.5"/>
+  <text x="710" y="278" font-size="16" font-weight="600" fill="#e8e8e8" text-anchor="middle">0 = 0 · 참</text>
+
+  <text x="170" y="336" font-size="15" font-weight="700" fill="#55c555" text-anchor="middle">해가 하나</text>
+  <text x="440" y="336" font-size="15" font-weight="700" fill="#e05555" text-anchor="middle">해가 없다</text>
+  <text x="710" y="336" font-size="15" font-weight="700" fill="#7ec8e3" text-anchor="middle">해가 무수히 많다</text>
+
+  <text x="60" y="384" font-size="14" fill="#888">미지수가 모두 사라지면 ax = b 에서 a = 0 인 두 갈래와 같다 — 0 = 수 이면 없음, 0 = 0 이면 무수히</text>
+</svg>
