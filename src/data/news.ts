@@ -1823,29 +1823,46 @@ const entries: NewsItem[] = [
     url: 'https://openai.com/index/ai-native-company-workflows',
   },
   {
-    id: 'claude-platform-september-1-2026',
+    id: 'claude-fable-and-mythos-5-1',
     source: 'Anthropic',
     kind: 'model',
-    title: 'Claude Fable 5.1 공개, 1M 컨텍스트 기본에 캐시 읽기 인하',
+    title: 'Anthropic, Claude Fable 5.1 공개 — 캐시 읽기 75% 인하',
     summary:
-      '앤트로픽이 Claude Fable 5.1과 Project Glasswing 참가자용 Mythos 5.1을 공개했다. ' +
-      '둘 다 1M 토큰 컨텍스트가 기본이고, 가격은 Fable 5와 같은 100만 토큰당 ' +
-      '10·50달러에 캐시 읽기만 0.25달러로 내렸다.',
+      'Anthropic이 안전장치만 다른 같은 모델 Claude Fable ' +
+      '5.1·Mythos 5.1을 공개했다. 입력·출력 단가는 Fable 5 그대로 ' +
+      '100만 토큰당 10·50달러이고, 캐시 읽기 인하로 토큰 과금 시 일반 작업 ' +
+      '비용이 약 25% 준다.',
     publishedAt: '2026-09-01',
-    collectedAt: '2026-09-02',
+    collectedAt: '2026-09-30',
     category: 'Frontier',
-    signal: '플랫폼 모델 출시',
-    url: 'https://platform.claude.com/docs/en/release-notes/overview#september-1-2026',
+    signal: '모델 경제성',
+    url: 'https://www.anthropic.com/claude-fable-and-mythos-5-1',
     model: {
       family: 'Claude',
       name: 'Claude Fable 5.1',
       kind: '신규 모델',
       status: '공개',
-      useCase: '장기 실행 에이전틱 코딩',
-      headline: '가격은 Fable 5 그대로 두고 캐시 읽기 값만 4분의 1로 내린 후속 모델',
+      useCase: '코딩·지식 작업·장기 과제 해결',
+      headline: 'Fable 5보다 성능을 올리고 캐시 읽기 값을 4분의 1로 내린 후속 모델',
       logo: 'assets/claude.svg',
       tone: 'claude',
     },
+  },
+  {
+    id: 'claude-platform-september-1-2026',
+    source: 'Anthropic',
+    kind: 'company',
+    title: 'Claude Fable 5.1의 API 규칙과 대화 중 effort 변경 베타',
+    summary:
+      'Fable 5.1·Mythos 5.1에서 tool_choice의 any·tool은 ' +
+      '400을 돌려주고 thinking 블록은 만든 모델이나 더 새 모델에서만 보존된다. ' +
+      '메시지별 effort 변경·턴 한정 system 메시지·진행 상황 표시가 베타로 ' +
+      '열렸다.',
+    publishedAt: '2026-09-01',
+    collectedAt: '2026-09-02',
+    category: 'Product',
+    signal: '플랫폼 변경',
+    url: 'https://platform.claude.com/docs/en/release-notes/overview#september-1-2026',
   },
   {
     id: 'enterprise-frontier-safeguards',

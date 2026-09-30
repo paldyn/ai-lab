@@ -1671,22 +1671,41 @@ export const details: Record<string, NewsDetail> = {
       '「상위 10%가 8.3배」라는 격차를 숫자로 보였다면 이 글은 그 격차가 무엇으로 벌어지는지를 ' +
       '보여 주려는 후속이다. 다만 절약한 시간은 모두 회사가 스스로 밝힌 값이라 그대로 받기는 이르다.',
   },
-  'claude-platform-september-1-2026': {
+  'claude-fable-and-mythos-5-1': {
     points: [
-      'Claude Fable 5.1(claude-fable-5-1)이 Fable 5의 후속으로 나왔다',
-      'Project Glasswing 참가자용 Claude Mythos 5.1도 함께 열렸다',
-      '둘 다 1M 토큰 컨텍스트와 128k 최대 출력, 상시 적응형 사고가 기본이다',
-      '가격은 100만 토큰당 입력 10달러·출력 50달러로 Fable 5와 같다',
-      '캐시 읽기는 100만 토큰당 0.25달러로, 다른 모델의 0.1배가 아닌 입력가의 0.025배다',
-      'Claude API와 Bedrock, AWS·Google Cloud·Microsoft Foundry에서 쓸 수 있다',
-      '두 모델에서 tool_choice의 any와 tool은 400 오류를 내고 auto·none만 그대로다',
-      '두 모델의 출력에는 텍스트 워터마크가 붙고 30일 데이터 보존이 필요하다',
+      'AWS·Google Cloud·Azure 등 전 플랫폼에서 claude-fable-5-1로 쓸 수 있다',
+      'Mythos 5.1은 검증된 사이버 방어자·생명과학자용이며 지금은 일부 미국 기관만 쓸 수 있다',
+      '토큰 과금에서 캐시 읽기를 100만 토큰당 0.25달러로 내려 에이전트 작업은 최대 약 45% 싸질 수 있다',
+      'Terminal-Bench 4.0 55.8%로 Fable 5 42.0%·Opus 5 52.3%보다 높았다',
+      'Low·Medium 추론 강도에서도 Fable 5와 비슷하거나 나은 결과를 훨씬 싸게 낸다',
+      '취약점 찾기는 허용했지만 침투 테스트·익스플로잇 생성·바이너리 기반 취약점 스캔은 Opus로 넘긴다',
+      'Claude Code 세션당 사이버 안전장치 개입이 Fable 5 때보다 평균 약 60% 줄 것으로 봤다',
+      'Mythos 5.1이 설계한 단백질 결합체는 12개 표적에서 적중률이 50%에 가까웠다(보통 10~15%)',
     ],
     commentary:
-      '가격표를 그대로 둔 채 세대만 올린 발표다. 실질적인 변화는 캐시 읽기를 입력가의 ' +
-      '0.1배에서 0.025배로 내린 쪽인데, 같은 맥락을 되풀이해 읽는 장기 실행 에이전트일수록 ' +
-      '청구서가 눈에 띄게 줄어든다. 다만 tool_choice의 any·tool이 막히고 사고 블록을 다시 ' +
-      '넣는 조건이 깐깐해져, 옮겨 타는 쪽은 도구 호출부를 손봐야 한다.',
+      'Fable 5.1은 입력·출력 단가가 Opus 5의 두 배인데 캐시 읽기는 ' +
+      '0.25달러로 Opus 5의 0.50달러보다 오히려 싸다. 컨텍스트를 되읽는 몫이 ' +
+      '큰 에이전트 작업이면 두 모델의 청구서 차이가 단가표의 두 배보다 좁아, 무거운 ' +
+      '일을 Opus로 내리던 셈법을 다시 볼 만하다. 정액 구독 요금은 이 인하와 ' +
+      '무관하다.',
+  },
+  'claude-platform-september-1-2026': {
+    points: [
+      'Claude Fable 5.1·Mythos 5.1에서 tool_choice의 any·tool 타입은 400 오류를 돌려주고 auto·none은 그대로다',
+      '두 모델이 만든 thinking 블록은 만든 모델이나 더 새 모델에서만 보존되며, 이전 모델은 읽지 못하고 이전 모델에 다시 보내면 API가 버린다',
+      'Fable 5.1에서는 API가 블록 앞 기록도 확인해, 2026년 8월 31일부터 만든 계정이 system 프롬프트·tools·이전 메시지를 바꾼 뒤 블록을 다시 보내면 400 오류가 난다',
+      'thinking-binding-controls-2026-08-01 베타 헤더로 버린 블록을 input_transformations 필드에서 확인하고, 기록이 바뀐 블록의 거절·버림을 고른다',
+      '메시지별 effort 변경이 Claude API의 Fable 5.1·Mythos 5.1·Opus 5에서 베타가 돼, system 메시지로 프롬프트 캐시를 지키며 뒤 턴의 effort를 바꾼다',
+      '턴 한정 system 메시지가 베타가 됐다 — clear_at: "next_user_message"를 단 대화 중 system 메시지는 그 턴에만 적용되고 기록에는 토큰 비용 없이 남는다',
+      'thinking.display의 베타 값 "updates"는 thinking 필드를 비우고 Fable 5.1·Mythos 5.1·Fable 5가 도구 호출 사이에 쓰는 짧은 진행 상황을 텍스트로 준다',
+      '코드 실행 도구로 만든 지원 형식의 이미지·영상·오디오 파일을 Claude API의 Files API로 받으면 C2PA Content Credentials가 붙는다',
+    ],
+    commentary:
+      '장애 때 이전 모델로 되돌리는 폴백을 둔 에이전트는 그 순간 쌓인 추론을 잃는다. ' +
+      '새 계정에서는 앞 기록을 요약하거나 고친 뒤 thinking 블록을 되보내는 구성이 ' +
+      '400에 걸리니, 거절과 버림 중 어느 쪽으로 받을지 먼저 정해야 한다. 메시지별 ' +
+      'effort와 턴 한정 system 메시지는 캐시를 깨지 않고 긴 실행 중간에 ' +
+      '손잡이를 돌리게 해 준다.',
   },
   'enterprise-frontier-safeguards': {
     points: [
