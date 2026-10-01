@@ -243,8 +243,9 @@ describe('프리렌더 — 본문이 HTML에 들어간다', () => {
     바로 뒤에 바탕이 열립니다(2026-10-01부터 요금 절도 같은 바탕 위의 줄이다). 머리를 바탕
     안으로 넣거나(처음 C 모양), 열 이름을 띠 밖으로 빼면(붙어 따라오는 머리에서 열 이름이
     사라진다) 여기서 걸립니다. 띠 안의 열 이름은 그 제품의 데이터가 세운 열 수와 같아야 하고,
-    열 이름마다 풀이 물음표가 하나씩 붙습니다(Gemini 앱은 0). 요금 절의 띠도 같은 규칙입니다 —
-    요금제 칸이 든 열(월 구독료 · 사용량)만큼 열 이름과 물음표가 섭니다.
+    열 이름마다 풀이 물음표가 하나씩 붙습니다(Gemini 앱은 0). 요금 절의 띠도 요금제 칸이 든
+    열(월 구독료 · 사용량)만큼 열 이름이 서되 **물음표는 하나도 안 섭니다** — 2026-10-01에
+    「월 구독료하고 사용량은 물음표 가이드 없어도 돼」로 걷었습니다.
     옛 줄기 모양으로 되돌리면 바탕·수 칸 묶음 수가 어긋나 잡히고, 팁 탭의 차오르는 줄기
     (`data-live`)가 모델 절에 붙는 것도 막습니다.
   */
@@ -281,7 +282,7 @@ describe('프리렌더 — 본문이 HTML에 들어간다', () => {
           plans.length > 0
             ? plansHead !== null &&
               classCount(plansHead[1], 'gl-mlabel') === planCols &&
-              classCount(plansHead[1], 'gl-hint-btn') === planCols
+              classCount(plansHead[1], 'gl-hint-btn') === 0
             : true,
         tray: classCount(sect, 'gl-tray'),
         live: sect.includes('data-live'),
