@@ -350,8 +350,8 @@ export function Layout({ children }: { children: ReactNode }) {
             )}
           </nav>
 
-          {/* 12px은 techblog.paldyn.com의 .nav-right와 같은 값입니다. */}
-          <div className="flex items-center gap-3">
+          {/* 12px은 techblog.paldyn.com의 .nav-right와 같은 값입니다(가장 작은 폰에서만 조입니다 — styles.css). */}
+          <div className="site-header-actions flex items-center gap-3">
             {/*
               모양은 techblog.paldyn.com의 검색 입력창과 같지만 실제로는 버튼입니다 —
               누르면 오버레이가 열립니다. `<input>`으로 두면 여기에 글자를 칠 수 있는

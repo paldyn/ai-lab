@@ -795,6 +795,28 @@ input:focus-visible {
   border-radius: 4px;
 }
 
+/*
+  **가장 작은 폰(320px)에서 헤더가 넘쳤다**(2026-10-01). 로고 묶음 155 · 간격 24 · 아이콘 셋
+  126이 안쪽 폭 280을 24.6px 넘어 모든 페이지가 가로로 밀렸다(WCAG 1.4.10의 기준 폭이 320이다).
+  간격을 조이고(640 아래 로고–아이콘 12, 여기서 아이콘 사이 8 · 로고 안 5) 원을 32로 줄여
+  272px에 넣는다. 360 위에서는 원래 값이 다 들어가므로 이 블록만 따로 둔다.
+*/
+@media (max-width: 359px) {
+  .site-header-actions {
+    gap: 8px;
+  }
+
+  .site-header .brand-lockup {
+    gap: 5px;
+  }
+
+  .site-header .icon-button,
+  .site-header .nav-search-trigger {
+    width: 32px;
+    height: 32px;
+  }
+}
+
 .icon-button:hover {
   border-color: var(--border);
   background: var(--bg-subtle);
@@ -5801,6 +5823,14 @@ input:focus-visible {
 
   .brand-suffix {
     font-size: 10px;
+  }
+
+  /*
+    로고와 아이콘 사이 최소 간격. 양 끝으로 벌려 세우므로(justify-between) 이 값은 둘이
+    가장 가까워질 때만 보인다 — 330px 위에서는 어차피 이보다 멀다.
+  */
+  .site-header .site-wrap {
+    column-gap: 12px;
   }
 
   /* AI가 없는 화면의 맨 위로 단추는 모바일 하단 여백에 맞춥니다. */
