@@ -922,7 +922,8 @@ function PlanValue({ claim, today, fee }: { claim: Claim; today: string; fee?: b
  * - **줄의 차례는 요금제가 데이터에 처음 나온 차례입니다** — 싼 요금제를 앞에 적습니다.
  * - **요금제를 안 가리는 값은 넓은 줄 하나로 섭니다**(`planCell`이 없는 주장). 이름은
  *   `statement` 그대로입니다 — 「Gemini 앱 사용 한도 초기화 기준」은 Antigravity 화면에도
- *   서므로 줄이면 그 제품의 한도처럼 읽힙니다. 값은 두 열을 함께 씁니다.
+ *   서므로 줄이면 그 제품의 한도처럼 읽힙니다. 값은 열을 안 따르고 이름 옆에 이어 섭니다 —
+ *   두 열 사이 가운데에 서면 위의 열 이름 어느 쪽과도 줄이 안 맞습니다.
  * - **나이는 모델과 같은 규칙입니다**(`ageLayout`) — 하나면 캡션에, 여럿이면 줄마다.
  */
 function PlanRows({ claims, today }: { claims: Claim[]; today: string }) {

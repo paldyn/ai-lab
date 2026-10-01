@@ -8862,11 +8862,42 @@ a.gl-num:hover {
     inset 0 0 0 1px var(--gl-edge);
 }
 
+/*
+  **한 줄의 값은 첫 줄 기준선에 맞춘다**(2026-10-01, 「헤드셀 바디셀 가운데 정렬 이쁘게」). 세로
+  가운데 정렬이던 동안 사용량 아래 한정어(「Astra · Work·Codex 5시간당」)가 붙은 줄에서 큰 가격이
+  사용량 값과 한정어 사이에 떠서, 이름 · 가격 · 사용량이 한 줄로 안 읽혔다. 줄 전체는 칸 안에서
+  가운데에 둔다(`align-content`) — 한정어가 없는 줄이 위로 쏠리지 않게.
+*/
+.gl-prow.gl-pcols {
+  align-items: baseline;
+  align-content: center;
+}
+
+/*
+  **넓은 줄은 열을 안 따른다**(2026-10-01). 요금제를 안 가리는 값(「5시간 롤링 세션 창 · …」)이
+  두 열을 함께 쓰며 그 가운데에 서던 동안, 위의 열 이름 어느 쪽과도 한 세로줄이 아니라 표에서
+  혼자 비켜 서 있었고, 두 줄로 감긴 16px 값이 그 줄의 이름(14.5)보다 무거웠다. 이름 옆에 이어
+  쓰는 왼쪽 정렬 한 줄로 두고, 폭이 모자라면 값이 이름 아래로 내려간다(좁은 화면과 같은 모양).
+  위로 붙인다 — 이름 아래 나이 줄이 서면 가운데 정렬로는 값이 이름보다 10px 내려앉는다. 값의 줄
+  높이를 이름(1.35)에 맞춰 두 첫 줄이 한 기준선에 선다.
+*/
+.gl-prow.gl-pcols.is-wide {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  align-content: center;
+  gap: 4px 12px;
+}
+
 /* 이름 묶음과 값 묶음을 풀어 줄 격자의 열로 세운다(모델 칸과 같은 수). */
 .gl-pspec {
   display: contents;
 }
 
+/*
+  641~679px에서 이름 열이 135px까지 줄어 「ChatGPT Pro 100」이 「100」 하나만 다음 줄로 떨궜다 —
+  두 줄로 감길 때는 고르게 나눈다.
+*/
 .gl-prow-name {
   display: flex;
   align-items: center;
@@ -8875,6 +8906,7 @@ a.gl-num:hover {
   font-size: var(--gl-lead);
   font-weight: 750;
   line-height: 1.35;
+  text-wrap: balance;
 }
 
 .gl-prow-name svg {
@@ -8913,7 +8945,17 @@ a.gl-num:hover {
 }
 
 .gl-pcell.is-span {
-  grid-column: 2 / -1;
+  text-align: left;
+}
+
+.gl-pcell.is-span .gl-pr-usage:not(.is-soft) {
+  color: var(--text);
+}
+
+.gl-pcell.is-span .gl-pr-usage {
+  font-size: var(--gl-note);
+  font-weight: 500;
+  line-height: 1.35;
 }
 
 .gl-pr-fee {
@@ -9302,10 +9344,14 @@ a.gl-num:hover {
     padding: 14px;
   }
 
-  /* 위로 붙인다 — 사용량 아래 한정어가 붙어 칸 높이가 달라도 열 이름 둘이 한 줄에 선다. */
+  /*
+    위로 붙인다 — 사용량 아래 한정어가 붙어 칸 높이가 달라도 열 이름 둘이 한 줄에 선다.
+    두 칸은 반씩이되 가격이 제 폭보다 좁아지지는 않는다(`1fr`의 최소는 내용 폭이다) — 320px에서
+    「$199.99」(96px)가 반 칸(93px)을 3px 넘어 옆 칸 쪽 틈으로 삐져나왔다. 모자란 폭은 감기는 사용량이 낸다.
+  */
   .gl-pspec {
     display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-columns: repeat(2, 1fr);
     align-items: start;
     column-gap: 10px;
     margin-top: 10px;
@@ -9332,9 +9378,7 @@ a.gl-num:hover {
   }
 
   .gl-pcell.is-span {
-    grid-column: auto;
-    margin-top: 6px;
-    text-align: left;
+    margin-top: 2px;
   }
 }
 
