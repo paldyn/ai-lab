@@ -1700,6 +1700,10 @@ npm run build     # 타입 검사 + 번들 + 프리렌더까지
 
 `npm test`가 통과하면 링크 깨짐과 없는 이미지 참조는 없다고 봐도 된다.
 
+**Node 22 이상에서 돌린다**(`.nvmrc`, CI도 22다). `src/styles.test.ts`가 쓰는 `fs.globSync`가
+Node 22에서 들어와, v20에서는 그 검사 하나가 `globSync is not a function`으로 선다 — 코드가
+틀린 것이 아니다. 이 맥의 기본 `node`가 v20이라 2026-10-01에 예약 작업에서 밟았다.
+
 **타입 검사는 `npm run typecheck`(`tsc -b`)로 한다 — `npx tsc --noEmit`은 아무것도
 검사하지 않는다.** 루트 `tsconfig.json`이 `"files": []`에 프로젝트 참조만 들고 있어
 그 명령은 조용히 통과한다. 2026-09-09에 없는 변수를 쓴 파일이 `--noEmit`을 통과했다.

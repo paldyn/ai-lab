@@ -33,6 +33,11 @@ git log --oneline -3
 npm ci                      # package-lock.json이 바뀌었을 때만
 ```
 
+**npm은 Node 22로 부른다**(`.nvmrc`). 이 맥의 기본 `node`는 v20이라 `npm test`가 선다 —
+`src/styles.test.ts`가 쓰는 `fs.globSync`가 Node 22에서 들어왔다(2026-10-01에 깨끗한 main에서도
+섰다). 셸 상태가 명령 사이에 안 이어지므로 npm을 부르는 명령마다 앞에
+`source ~/.nvm/nvm.sh >/dev/null && nvm use >/dev/null &&`를 붙인다.
+
 **`git reset --hard`를 쓰지 않는다** — 이 맥의 클론은 사람이 작업하는 자리다. 작업 트리가
 더럽거나 main이 아닌 브랜치에 커밋이 쌓여 있으면 사람이 편집 중인 것이니 손대지 않고 보고한다.
 받아 둔 클론이 뒤처져 있으면 이미 고친 값을 다시 고치다 push에서 막힌다.
