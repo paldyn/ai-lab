@@ -240,10 +240,11 @@ describe('프리렌더 — 본문이 HTML에 들어간다', () => {
     타임라인에서 「고를 수 있는 모델도 C(체크리스트)로」 바꾼 뒤 「타이틀을 요금쪽과 폼을
     맞추자」가 왔습니다 — 한 탭 안에서 절 이름이 두 모양으로 서면 안 됩니다. 그래서 두 절을
     **같은 틀 하나**로 대조합니다: 절 → 줄기 → 마디 + 띠 + 제목이 차례로 서고, 머리가 닫힌
-    바로 뒤에 바탕(모델)이나 판(요금)이 열립니다. 머리를 바탕 안으로 넣거나(처음 C 모양),
-    열 이름을 띠 밖으로 빼면(붙어 따라오는 머리에서 열 이름이 사라진다) 여기서 걸립니다.
-    띠 안의 열 이름은 그 제품의 데이터가 세운 열 수와 같아야 하고, 열 이름마다 풀이 물음표가
-    하나씩 붙습니다(Gemini 앱은 0).
+    바로 뒤에 바탕이 열립니다(2026-10-01부터 요금 절도 같은 바탕 위의 줄이다). 머리를 바탕
+    안으로 넣거나(처음 C 모양), 열 이름을 띠 밖으로 빼면(붙어 따라오는 머리에서 열 이름이
+    사라진다) 여기서 걸립니다. 띠 안의 열 이름은 그 제품의 데이터가 세운 열 수와 같아야 하고,
+    열 이름마다 풀이 물음표가 하나씩 붙습니다(Gemini 앱은 0). 요금 절의 띠도 같은 규칙입니다 —
+    요금제 칸이 든 열(월 구독료 · 사용량)만큼 열 이름과 물음표가 섭니다.
     옛 줄기 모양으로 되돌리면 바탕·수 칸 묶음 수가 어긋나 잡히고, 팁 탭의 차오르는 줄기
     (`data-live`)가 모델 절에 붙는 것도 막습니다.
   */
@@ -267,15 +268,21 @@ describe('프리렌더 — 본문이 HTML에 들어간다', () => {
       const ofTopic = (topic: string) =>
         claims.some((c) => c.topic === topic && c.subject.kind === 'model' && ids.has(c.subject.id));
       const cols = (ofTopic('context') ? 1 : 0) + (ofTopic('price') ? 2 : 0);
-      const hasPlans = claims.some(isPlanClaim);
+      const plans = claims.filter(isPlanClaim);
+      const planCols = new Set(plans.flatMap((c) => (c.planCell ? [c.planCell.facet] : []))).size;
       const modelHead = head('models-title', '고를 수 있는 모델', 'gl-tray').exec(ledger);
-      const plansHead = head('plans-title', '요금제와 사용 한도', 'gl-board').exec(ledger);
+      const plansHead = head('plans-title', '요금제와 사용 한도', 'gl-tray').exec(ledger);
       const got = {
         head: modelHead !== null,
         bandLabels: classCount(modelHead?.[1] ?? '', 'gl-mlabel'),
         hints: classCount(modelHead?.[1] ?? '', 'gl-hint-btn'),
         labels: classCount(sect, 'gl-mlabel'),
-        sameAsPlans: hasPlans ? plansHead !== null && plansHead[1] === '' : true,
+        sameAsPlans:
+          plans.length > 0
+            ? plansHead !== null &&
+              classCount(plansHead[1], 'gl-mlabel') === planCols &&
+              classCount(plansHead[1], 'gl-hint-btn') === planCols
+            : true,
         tray: classCount(sect, 'gl-tray'),
         live: sect.includes('data-live'),
         specs: classCount(sect, 'gl-mspec'),
@@ -355,21 +362,47 @@ describe('프리렌더 — 본문이 HTML에 들어간다', () => {
   });
 
   /*
-    **요금제마다 카드 하나입니다**(2026-09-28). 요금제 이름이 카드 머리(`gl-pc-name`)로
-    데이터 차례대로 한 번씩만 서고, 칸이 없는 주장(요금제를 안 가리는 값)은 넓은 카드로
-    섭니다.
+    **요금제마다 줄 하나입니다**(2026-10-01 — 그 전에는 카드였다). 요금제 이름이 줄 머리
+    (`gl-prow-name`)로 데이터 차례대로 한 번씩만 서고, 칸이 없는 주장(요금제를 안 가리는 값)은
+    넓은 줄로 섭니다. 요금제 줄마다 값 칸 묶음(`gl-pspec`)이 하나이고, 그 안의 칸 수는 띠의 열
+    이름 수와 같습니다 — 칸이 빠지면 값이 옆 열로 밀려 열 이름과 어긋납니다. 값이 든 칸마다
+    열 이름 글자(`gl-pcell-label`)가 하나씩 섭니다 — 띠의 열 이름은 낭독기에 안 읽혀서, 이것이
+    빠지면 넓은 화면의 낭독기에서 「$20」이 무슨 값인지 안 들립니다. 옛 카드(`gl-pc`·`gl-board`)가
+    되살아나도 걸립니다.
   */
-  it('요금제가 카드마다 하나씩 선다', async () => {
+  it('요금제가 줄마다 하나씩 선다', async () => {
     const wrong: string[] = [];
     for (const product of guideProducts) {
       const ledger = ledgerOf((await render(`/playbook/${product.vendorId}/${product.id}`)).html);
       const plans = claimsForProduct(product.id).filter(isPlanClaim);
       const names = [...new Set(plans.flatMap((c) => (c.planCell ? [c.planCell.plan] : [])))];
-      const rows = [...ledger.matchAll(/<h4 class="gl-pc-name">([^<]*)/g)].map((m) => m[1]);
-      const lines = (ledger.match(/class="gl-pc is-wide"/g) ?? []).length;
+      const rows = [
+        ...ledger.matchAll(
+          /<li class="gl-prow gl-pcols[^"]*"><div class="gl-prow-main"><h4 class="gl-prow-name">([^<]*)</g,
+        ),
+      ].map((m) => m[1]);
+      const lines = (ledger.match(/class="gl-prow is-wide /g) ?? []).length;
       const common = plans.filter((c) => !c.planCell).length;
-      if (JSON.stringify(rows) !== JSON.stringify(names.map(esc)) || lines !== common) {
-        wrong.push(`${product.id}: 카드 ${JSON.stringify(rows)} ≠ ${JSON.stringify(names)} · 넓은 카드 ${lines}/${common}`);
+      const cols = new Set(plans.flatMap((c) => (c.planCell ? [c.planCell.facet] : []))).size;
+      const specs = [...ledger.matchAll(/<div class="gl-pspec">(.*?)<\/div><\/li>/g)].map(
+        (m) => (m[1].match(/class="gl-pcell /g) ?? []).length,
+      );
+      const oldCards = /class="gl-(pc|pcs|board)[" ]/.test(ledger);
+      const labels = classCount(ledger, 'gl-pcell-label');
+      const cells = plans.filter((c) => c.planCell).length;
+      const badSpecs =
+        cols > 0 ? specs.length !== names.length || specs.some((n) => n !== cols) : specs.length !== 0;
+      if (
+        JSON.stringify(rows) !== JSON.stringify(names.map(esc)) ||
+        lines !== common ||
+        badSpecs ||
+        oldCards ||
+        labels !== cells
+      ) {
+        wrong.push(
+          `${product.id}: 줄 ${JSON.stringify(rows)} ≠ ${JSON.stringify(names)} · 넓은 줄 ${lines}/${common} · ` +
+            `칸 ${JSON.stringify(specs)}/${cols} · 열 이름 글자 ${labels}/${cells}${oldCards ? ' · 옛 카드' : ''}`,
+        );
       }
     }
     expect(wrong).toEqual([]);

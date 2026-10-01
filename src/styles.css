@@ -7266,7 +7266,8 @@ input:focus-visible {
   원장의 조판 상수. **글자 크기는 이 단 밖의 값을 안 쓴다.**
 
   크기 여덟 — 12 · 13.5 · 14.5 · 16 · 17 · 19 · 26 · 34. 타임라인 원장(2026-09-28)에서
-  단이 늘었다 — 순간 이름(19)이 팁 문장(17)보다 크고, 가격·제품 이름(34)이 크게 선다.
+  단이 늘었다 — 순간 이름(19)이 팁 문장(17)보다 크고, 제품 이름(34)과 가격(26)이 크게 선다(가격은
+  요금이 줄이 된 2026-10-01에 34에서 26으로 내려왔다).
   모델 수(22)는 모델 절이 바탕 위의 칸이 되면서(2026-09-29) 이름(16) 옆 17로 내려왔다.
   **원장 안에는 12px 아래 글자가 없다** — 옛 원장의 10px 모노 라벨이 「흐리고 가늘다」의
   절반이었다. 그리고 **한글이 드는 자리에는 모노를 안 쓴다** — 모노는 코드·키·
@@ -7279,8 +7280,8 @@ input:focus-visible {
   --gl-body: 16px; /* 모델 이름·다른 제품·좁은 화면의 팁 문장 */
   --gl-lead: 17px; /* 팁 문장·모델 수·요금제 이름·소개 */
   --gl-stop: 19px; /* 순간 이름·절 이름 */
-  --gl-head: 26px; /* 좁은 화면의 다른 제품 절 */
-  --gl-display: 34px; /* 제품 이름·가격 */
+  --gl-head: 26px; /* 가격 · 좁은 화면의 다른 제품 절 · 좁은 화면의 제품 이름 */
+  --gl-display: 34px; /* 제품 이름 */
 
   --gl-r1: 6px; /* 한 덩이 안 — 행동과 이유 사이 */
   --gl-r2: 12px; /* 이름 → 그 내용 */
@@ -7527,11 +7528,8 @@ input:focus-visible {
   --gl-track: color-mix(in srgb, var(--guide-accent) 30%, var(--bg));
   --gl-node-edge: color-mix(in srgb, var(--guide-accent) 55%, var(--bg));
   --gl-num-line: color-mix(in srgb, var(--guide-accent) 60%, var(--bg));
-  /* 요금 카드 */
+  /* 모델 칸 · 요금 줄의 면 */
   --gl-card: var(--bg);
-  --gl-card-shadow:
-    0 1px 2px rgb(0 0 0 / 5%),
-    0 6px 18px -10px color-mix(in srgb, var(--guide-accent) 45%, rgb(0 0 0 / 35%));
   /*
     탭 줄 높이 — 순간 머리가 그 아래에 붙는다. 기본값은 잰 값이고(데스크톱 75, 좁은 화면 90)
     `useTimeline`이 글꼴·줄바꿈만큼 다시 재서 넣는다. JS 전(프리렌더 HTML)에도 머리가 탭 줄
@@ -7550,7 +7548,6 @@ input:focus-visible {
   --gl-node-edge: color-mix(in srgb, var(--guide-accent) 75%, var(--bg));
   --gl-num-line: color-mix(in srgb, var(--guide-accent) 85%, var(--bg));
   --gl-card: color-mix(in srgb, var(--guide-accent) 6%, var(--surface));
-  --gl-card-shadow: inset 0 1px 0 rgb(255 255 255 / 5%);
 }
 
 @keyframes gl-ledger-in {
@@ -7808,10 +7805,6 @@ input:focus-visible {
   border-radius: 999px;
 }
 
-.gl-pc-empty:focus-visible {
-  border-radius: 12px;
-}
-
 .gl-panel:focus-visible {
   border-radius: 12px;
   outline: 2px solid var(--text-muted);
@@ -7860,8 +7853,7 @@ input:focus-visible {
 
 .gl-stops,
 .gl-tips,
-.gl-rows,
-.gl-pcs {
+.gl-rows {
   margin: 0;
   padding: 0;
   list-style: none;
@@ -8009,7 +8001,7 @@ input:focus-visible {
   transition: opacity 150ms;
 }
 
-/* 요금 카드는 줄기에 안 매달린다 — 참고 탭의 줄기는 절 머리 마디에서 끝난다. */
+/* 모델 칸과 요금 줄은 줄기에 안 매달린다 — 참고 탭의 줄기는 절 머리 마디에서 끝난다. */
 .gl-ref .gl-stop-head::before {
   display: none;
 }
@@ -8313,7 +8305,7 @@ input:focus-visible {
 
 /*
   절 둘은 나란히 견주는 목록이라 줄기가 차오르지 않는다. 두 절 모두 같은 마디 + 띠 머리를 달고,
-  그 아래 모델은 바탕 위의 칸(C), 요금은 판 위의 카드(B)다.
+  그 아래 같은 바탕 위에 모델은 칸, 요금은 줄이 선다(2026-10-01까지 요금은 판 위의 카드였다).
 */
 .gl-ref + .gl-ref {
   margin-top: 30px;
@@ -8328,8 +8320,8 @@ input:focus-visible {
 /*
   **제품색이 옅게 밴 바탕 위에 모델마다 칸 하나**(2026-09-29, 방향 넷 중 C 「체크리스트」의 모양).
   줄기에 매달던 모양에서 바꿨다 — 모델은 시간의 차례가 아니라 나란히 견주는 목록이다. 바탕은
-  요금 판(`.gl-board`)과 같은 면이고 같은 자리(줄기 오른쪽 글 자리)에서 시작하며, 칸은 요금
-  카드와 같은 면(`--gl-card`)이다. 절 머리는 요금 절과 같은 마디 + 띠다.
+  줄기 오른쪽 글 자리에서 시작하고 칸 면은 `--gl-card`다. 요금 절도 같은 바탕 · 같은 면을 쓴다
+  (요금은 칸 대신 줄이다). 절 머리는 두 절이 같은 마디 + 띠다.
 */
 .gl-tray {
   margin-top: 10px;
@@ -8384,7 +8376,8 @@ input:focus-visible {
   오른쪽 정렬이던 동안 짧은 수($4)가 열 이름 끝에만 붙어 칸이 비어 보였다. 머리가 탭 줄 아래
   붙어 따라오므로 칸을 읽는 동안 열 이름도 보인다.
 */
-.gl-stop-band.gl-mcols {
+.gl-stop-band.gl-mcols,
+.gl-stop-band.gl-pcols {
   align-items: center;
   padding-right: 26px;
 }
@@ -8810,171 +8803,161 @@ a.gl-num:hover {
   text-decoration-color: currentColor;
 }
 
-/* ── 요금 — 카드 ── */
+/* ── 요금 — 바탕 위의 줄 ── */
 
 /*
-  **요금제마다 카드 하나.** 제품색이 옅게 밴 판 위에 카드가 뜬다 — 요금 페이지처럼 큰
-  가격이 먼저 읽히고, 요금제끼리 나란히 서서 견준다. 판은 줄기 오른쪽, 글이 서는 자리에서
-  시작한다.
-*/
-.gl-board {
-  margin-top: 10px;
-  padding: 14px;
-  border-radius: 20px;
-  background: var(--gl-a07);
-}
+  **요금제마다 줄 하나**(2026-10-01). 모델 절과 같은 바탕(`.gl-tray`) · 같은 칸 면(`--gl-card`)이고,
+  절 머리 띠가 열 이름(월 구독료 · 사용량)을 겸한다. 카드 격자(2026-09-28)는 요금제 수마다 모양이
+  달랐다 — 넷이면 2 × 2, 다섯이면 3 + 2. 줄은 몇 개든 같은 모양이다(「우리 요금을 행의 형태로」).
 
-/*
-  요금제 수를 따라 칸을 나눈다 — 둘이면 둘, 셋이면 셋(Claude: Pro · Max 5x · Max 20x). 빈 칸은
-  접혀(auto-fit) 둘일 때 카드가 판 폭을 나눠 쓴다. 칸이 180px 아래로 좁아지면 줄을 바꾼다.
+  **값 열은 오른쪽에서 고정 폭이다.** 띠와 줄은 오른쪽 끝만 맞고(띠의 오른쪽 여백 26 = 바탕 10 +
+  칸 16) 왼쪽 시작은 다르므로, 비율(fr) 열을 쓰면 열 이름과 값이 어긋난다. 이름 열만 늘고 준다.
+  구독료 열(116)은 「$199.99」(26px 모노, 104px)가 들고, 사용량 열(200)은 가장 긴 「5시간 세션당
+  Free의 5배 이상」(194px)이 한 줄로 드는 폭이다. 132 · 236으로 처음 뒀더니 레일이 옆에 서는 1024에서
+  이름 열이 1023보다 좁아졌다.
 */
-.gl-pcs {
+.gl-pcols {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-  gap: 12px;
+  grid-template-columns: minmax(0, 1fr);
+  align-items: center;
+  column-gap: 10px;
 }
 
-/* 넷이면 2 × 2 — 셋 칸 격자에서는 「3 + 1」로 한 장이 혼자 남는다(ChatGPT · Google AI 요금제). */
-.gl-pcs:has(> .gl-pc:not(.is-wide):nth-child(4)) {
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+.gl-pcols.has-fee {
+  grid-template-columns: minmax(0, 1fr) 116px;
 }
 
-.gl-pc {
-  display: flex;
-  flex-direction: column;
-  padding: 20px;
-  border-radius: 16px;
+.gl-pcols.has-usage {
+  grid-template-columns: minmax(0, 1fr) 200px;
+}
+
+.gl-pcols.has-fee.has-usage {
+  grid-template-columns: minmax(0, 1fr) 116px 200px;
+}
+
+/*
+  1024 아래에서는 사용량 열만 조인다(긴 것은 두 줄로 감긴다) — 641px 언저리에서 이름 열과 띠의
+  절 제목 「요금제와 사용 한도」가 두 줄로 꺾였다. 구독료 열은 「$199.99」 때문에 못 줄인다.
+*/
+@media (max-width: 1023px) {
+  .gl-pcols.has-usage {
+    grid-template-columns: minmax(0, 1fr) 168px;
+  }
+
+  .gl-pcols.has-fee.has-usage {
+    grid-template-columns: minmax(0, 1fr) 116px 168px;
+  }
+}
+
+.gl-prow {
+  min-height: 64px;
+  padding: 12px 16px;
+  border-radius: 14px;
   background: var(--gl-card);
-  box-shadow: var(--gl-card-shadow);
+  box-shadow:
+    0 1px 2px rgb(0 0 0 / 5%),
+    inset 0 0 0 1px var(--gl-edge);
 }
 
-.gl-pc.is-wide {
-  grid-column: 1 / -1;
-  padding-block: 16px;
+/* 이름 묶음과 값 묶음을 풀어 줄 격자의 열로 세운다(모델 칸과 같은 수). */
+.gl-pspec {
+  display: contents;
 }
 
-.gl-pc-name {
+.gl-prow-name {
+  display: flex;
+  align-items: center;
+  gap: 6px;
   color: var(--text-strong);
   font-size: var(--gl-lead);
   font-weight: 750;
   line-height: 1.35;
 }
 
-.gl-pc-row {
-  margin-top: 18px;
-}
-
-.gl-pc-label {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  color: var(--text-dim);
-  font-size: var(--gl-label);
-  font-weight: 400;
-  line-height: 1.4;
-}
-
-.gl-pc-label svg {
+.gl-prow-name svg {
   flex: 0 0 auto;
   color: var(--guide-accent);
 }
 
-/* 구독료 칸은 값이 있든 없든 같은 높이다 — 「확인 전」은 점선 틀로 그 자리를 채운다. */
-.gl-plan.is-fee {
-  display: flex;
-  min-height: 52px;
-  margin-top: 6px;
-  flex-direction: column;
-  justify-content: center;
+.gl-prow.is-wide .gl-prow-name {
+  font-size: var(--gl-note);
+  font-weight: 650;
 }
 
-.gl-pc-fee {
-  display: flex;
+.gl-prow-meta {
+  margin-top: 2px;
+  color: var(--text-muted);
+  font-size: var(--gl-meta);
+}
+
+/* 값 칸은 가운데 정렬이다 — 모델 수 칸과 같다(「헤드셀·바디셀 중앙정렬」). */
+.gl-pcell {
+  position: relative;
+  text-align: center;
+}
+
+/*
+  칸 안의 열 이름 — 넓은 화면에서는 띠가 눈에 보이는 열 이름이라 눈에서만 숨기고 낭독기에는
+  남긴다(「월 구독료 $20」). 좁은 화면에서는 값 위에 선다.
+*/
+.gl-pcell-label {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+.gl-pcell.is-span {
+  grid-column: 2 / -1;
+}
+
+.gl-pr-fee {
+  display: inline-flex;
   align-items: baseline;
   gap: 4px;
   color: var(--text-strong);
 }
 
-.gl-pc-fee.is-soft {
+.gl-pr-fee.is-soft {
   color: var(--text-dim);
 }
 
 /* 수는 크게 모노로, 한글 꼬리(「부터」)는 본문 글꼴로 — 한글에 모노를 안 쓴다. */
-.gl-pc-amount {
+.gl-pr-amount {
   font-family: var(--font-mono);
-  font-size: var(--gl-display);
+  font-size: var(--gl-head);
   font-variant-numeric: tabular-nums;
   font-weight: 500;
-  line-height: 1.1;
+  line-height: 1.15;
   letter-spacing: -0.03em;
 }
 
-.gl-pc-rest {
-  font-size: var(--gl-body);
-  font-weight: 600;
-}
-
-.gl-pc-empty {
-  display: flex;
-  align-items: center;
-  align-self: stretch;
-  gap: 8px;
-  min-height: 52px;
-  padding: 0 16px;
-  border: 1.5px dashed color-mix(in srgb, var(--text-dim) 45%, transparent);
-  border-radius: 12px;
-  color: var(--text);
+.gl-pr-rest {
   font-size: var(--gl-note);
   font-weight: 600;
-  text-decoration: none;
 }
 
-.gl-pc-empty span {
-  text-decoration: underline dotted;
-  text-underline-offset: 4px;
-}
-
-.gl-pc-empty svg {
-  color: var(--text-dim);
-}
-
-.gl-pc-empty:hover {
-  border-color: currentColor;
-  color: var(--guide-accent);
-}
-
-.gl-pc-empty:hover svg {
-  color: currentColor;
-}
-
-.gl-pc-usage {
-  margin-top: 4px;
+.gl-pr-usage {
   color: var(--text-strong);
   font-size: var(--gl-body);
   font-weight: 600;
-  line-height: 1.55;
+  line-height: 1.45;
+  text-wrap: balance;
 }
 
-.gl-pc-usage.is-soft {
+.gl-pr-usage.is-soft {
   color: var(--text-dim);
 }
 
-.gl-pc.is-wide .gl-plan {
-  margin-top: 4px;
-}
-
-/* 열 이름이 덮어 버린 한정어(「GPT-6 Astra · 5시간당」)와 카드마다 서는 나이. */
-.gl-pc-note,
-.gl-pc-age {
+/* 열 이름이 덮어 버린 한정어(「Astra · Work·Codex 5시간당」). */
+.gl-pr-note {
   display: block;
-  margin-top: 6px;
+  margin-top: 2px;
   color: var(--text-muted);
   font-size: var(--gl-meta);
-}
-
-.gl-pc-age {
-  margin-top: auto;
-  padding-top: 14px;
+  line-height: 1.4;
 }
 
 /* ── 절 — 좁은 화면의 다른 제품 ── */
@@ -9212,7 +9195,8 @@ a.gl-num:hover {
     풀이 줄이다. 제목 아래 한 줄로 흘리고, 풀이는 띠 폭을 다 쓴다(열 이름에 붙이면 화면 밖으로
     나간다).
   */
-  .gl-stop-band.gl-mcols {
+  .gl-stop-band.gl-mcols,
+  .gl-stop-band.gl-pcols {
     position: relative;
     display: flex;
     flex-wrap: wrap;
@@ -9220,7 +9204,8 @@ a.gl-num:hover {
     padding-right: 12px;
   }
 
-  .gl-stop-band.gl-mcols .gl-facts-sub {
+  .gl-stop-band.gl-mcols .gl-facts-sub,
+  .gl-stop-band.gl-pcols .gl-facts-sub {
     flex-basis: 100%;
   }
 
@@ -9293,19 +9278,51 @@ a.gl-num:hover {
     margin-left: calc(var(--gl-tl-indent) + 14px);
   }
 
-  .gl-board {
-    padding: 10px;
-    border-radius: 16px;
-  }
-
-  .gl-pcs,
-  .gl-pcs:has(> .gl-pc:not(.is-wide):nth-child(4)) {
+  /* 요금 — 이름이 한 줄을 다 쓰고, 값 둘이 그 아래 두 칸에 열 이름을 달고 선다(모델 칸과 같은 수). */
+  .gl-pcols,
+  .gl-pcols.has-fee,
+  .gl-pcols.has-usage,
+  .gl-pcols.has-fee.has-usage {
     grid-template-columns: minmax(0, 1fr);
-    gap: 10px;
   }
 
-  .gl-pc {
-    padding: 16px;
+  .gl-prow {
+    padding: 14px;
+  }
+
+  /* 위로 붙인다 — 사용량 아래 한정어가 붙어 칸 높이가 달라도 열 이름 둘이 한 줄에 선다. */
+  .gl-pspec {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    align-items: start;
+    column-gap: 10px;
+    margin-top: 10px;
+    padding-top: 10px;
+    border-top: 1px solid var(--gl-edge);
+  }
+
+  .gl-pcell.is-empty {
+    display: none;
+  }
+
+  .gl-pspec .gl-pcell-label {
+    position: static;
+    display: block;
+    width: auto;
+    height: auto;
+    margin-bottom: 2px;
+    overflow: visible;
+    clip-path: none;
+    color: var(--text-dim);
+    font-size: var(--gl-meta);
+    font-weight: 500;
+    white-space: normal;
+  }
+
+  .gl-pcell.is-span {
+    grid-column: auto;
+    margin-top: 6px;
+    text-align: left;
   }
 }
 
@@ -9347,7 +9364,7 @@ a.gl-num:hover {
     color: SelectedItem;
   }
 
-  .gl-pc,
+  .gl-prow,
   .gl-model {
     border: 1px solid CanvasText;
   }
@@ -9410,7 +9427,7 @@ a.gl-num:hover {
 
   .gl-tip,
   .gl-model,
-  .gl-pc {
+  .gl-prow {
     break-inside: avoid;
   }
 }

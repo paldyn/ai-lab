@@ -438,7 +438,7 @@ export interface Claim {
   measurement?: Measurement;
 }
 
-/** 요금표의 열. 화면의 열 차례는 `GuideLedger`의 `PLAN_FACETS`가 정합니다(구독료 → 사용량). */
+/** 요금 줄의 열. 화면의 열 차례와 열 이름·물음표 풀이는 `GuideLedger`의 `PLAN_COLUMNS`가 정합니다(구독료 → 사용량). */
 export type PlanFacet = 'fee' | 'usage';
 
 /**

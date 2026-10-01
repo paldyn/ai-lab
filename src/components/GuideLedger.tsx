@@ -63,7 +63,7 @@ import type {
  *
  * 헤어라인 목록으로 펼친 원장은 읽히기는 했지만 「별론데, 좀 더 색다르게」였습니다. 방향
  * 넷(타임라인 · 카드 · 체크리스트 · 에디토리얼)을 실제 데이터 목업으로 그려 보였고, 고른
- * 것이 **타임라인에 요금만 카드**입니다.
+ * 것이 **타임라인에 요금만 카드**였습니다(요금은 2026-10-01에 모델과 같은 바탕 위의 줄로 바꿨습니다).
  *
  * - **팁 탭은 줄기 위의 여정입니다.** 순간 넷은 나란한 넷이 아니라 차례라(사용량 절감은
  *   세션이 지나는 시간, 품질 향상은 고치는 값이 커지는 순서), 그 차례를 제품색 줄기와 마디로
@@ -71,7 +71,8 @@ import type {
  * - **모델은 바탕 위의 칸입니다**(2026-09-29, 체크리스트의 모양). 모델마다 칸 하나에 마크 판 ·
  *   이름 · 쓰임 · 수가 한 줄로 서고, 절 머리는 요금 절과 같은 마디 + 띠이며 띠가 열 이름을
  *   겸합니다.
- * - **요금제는 카드입니다.** 요금 페이지처럼 요금제마다 큰 가격을 단 카드를 나란히 세웁니다.
+ * - **요금제는 바탕 위의 줄입니다**(2026-10-01, 모델 절과 같은 모양). 요금제마다 줄 하나에 월 구독료 ·
+ *   사용량이 서고, 절 머리 띠가 열 이름을 겸합니다.
  *
  * **빈 절은 안 그립니다.** 팁이 없는 축, 모델도 요금도 없는 참고 탭, 같은 갈래의 다른
  * 제품이 없는 경우 전부 그 절이 통째로 안 섭니다.
@@ -466,8 +467,8 @@ function Hint({ label, text }: { label: string; text: string }) {
 
 /**
  * 참고 탭의 절 머리 — 팁 탭의 순간 머리와 같은 마디 + 띠. 모델 절과 요금 절이 같은 모양을
- * 씁니다(2026-09-29). **모델 절에서는 띠가 열 이름을 겸합니다** — 띠가 아래 칸과 같은
- * 격자(`cols`)를 써서, 머리가 붙어 따라오는 동안 열 이름도 함께 보입니다.
+ * 씁니다(2026-09-29). **띠가 열 이름을 겸합니다**(요금 절은 2026-10-01부터) — 띠가 아래 칸과
+ * 같은 격자(`cols`)를 써서, 머리가 붙어 따라오는 동안 열 이름도 함께 보입니다.
  */
 function RefHead({
   icon: Icon,
@@ -492,7 +493,8 @@ function RefHead({
           {title}
         </h3>
         {/*
-          열 이름 글자는 눈에만 섭니다 — 칸마다 링크 이름이 열 이름을 싣습니다. 물음표는
+          열 이름 글자는 눈에만 섭니다 — 칸마다 열 이름을 따로 싣습니다(모델은 수 칸의 링크
+          이름, 요금은 칸 안의 숨긴 글자 `gl-pcell-label`). 물음표는
           읽는 사람 모두의 것이라 숨기지 않습니다(이름 「컨텍스트(토큰) 설명」 + 설명문).
         */}
         {labels.map((l) => (
@@ -664,7 +666,7 @@ function RatingLine({ model }: { model: ModelInfo }) {
  * **절 머리는 요금 절과 같은 마디 + 띠입니다**(같은 날, 「타이틀을 요금쪽과 폼을 맞추자」).
  * 처음에는 바탕 안에 작은 아이콘 타일과 제목을 뒀는데, 바로 아래 요금 절은 마디 + 띠라 한 탭
  * 안에서 절 이름이 두 모양으로 섰습니다. 띠가 열 이름(컨텍스트 · 입력 단가 · 출력 단가)을
- * 겸하고, 바탕은 요금 판처럼 줄기 오른쪽 글 자리에서 시작합니다.
+ * 겸하고, 바탕은 줄기 오른쪽 글 자리에서 시작합니다(요금 절도 같은 바탕 위에 줄로 섭니다).
  *
  * **열은 그 제품의 데이터가 세웁니다.** 한 줄도 주장이 없는 열은 아예 안 섭니다
  * (Gemini 앱은 이름·쓰임만 섭니다). 한 줄만 비면 열은 세우고 칸만 비웁니다.
@@ -834,14 +836,26 @@ function ModelChecklist({
 
 /* ── 요금 ───────────────────────────────────────────────────────── */
 
-/** 요금 카드 안의 두 칸. 그 요금제에 그 칸의 주장이 있을 때만 섭니다(ChatGPT Pro에는 사용량이 없습니다). */
-const PLAN_FACETS: Array<{ facet: PlanFacet; label: string }> = [
-  { facet: 'fee', label: '월 구독료' },
-  { facet: 'usage', label: '사용량' },
+/**
+ * 요금 줄의 두 열 — 이름과, 물음표에 서는 한두 줄 풀이(모델 열과 같은 꼴). 그 요금제에 그 칸의
+ * 주장이 없으면 칸만 비고(ChatGPT Go에는 사용량이 없습니다), 한 줄도 없는 열은 아예 안 섭니다.
+ * 풀이는 값이 아니라 뜻이라 수를 박지 않습니다.
+ */
+const PLAN_COLUMNS: Array<{ facet: PlanFacet } & ModelColumn> = [
+  {
+    facet: 'fee',
+    label: '월 구독료',
+    hint: '한 달 요금이다. 미국 달러로 적었고, 요금 페이지는 접속한 나라에 따라 통화와 세금을 바꿔 보여 줄 수 있다.',
+  },
+  {
+    facet: 'usage',
+    label: '사용량',
+    hint: '그 요금제로 쓸 수 있는 양을 회사가 적은 잣대 그대로 옮겼다. 잣대가 회사마다 달라 회사끼리는 견줄 수 없다.',
+  },
 ];
 
 /**
- * 구독료를 **수와 꼬리**로 가릅니다 — 「월 $99.99부터」 → 「$99.99」 + 「부터」. 칸 이름이
+ * 구독료를 **수와 꼬리**로 가릅니다 — 「월 $99.99부터」 → 「$99.99」 + 「부터」. 열 이름이
  * 「월 구독료」라 「월 」은 뗍니다. 수는 크게 모노로, 한글 꼬리는 작게 본문 글꼴로 섭니다
  * (한글에 모노를 안 씁니다). 꼴이 안 맞으면 통째로 수 자리에 섭니다.
  */
@@ -852,116 +866,144 @@ function splitFee(value: string): { amount: string; rest: string } {
 }
 
 /**
- * 요금 카드의 값 한 칸. **값은 글자이고, 상태 낱말만 출처로 가는 링크입니다** — 「확인 전」의
+ * 요금 줄의 값 한 칸. **값은 글자이고, 상태 낱말만 출처로 가는 링크입니다** — 「확인 전」의
  * 다음 할 일이 그 페이지를 열어 보는 것이라 길이 칸에 있어야 합니다. 확인된 값의 출처는
- * 카드 아래 캡션이 한 번 말합니다.
+ * 절 아래 캡션이 한 번 말합니다.
  *
  * `gl-plan` 토큰은 **주장이 든 칸에만** 답니다 — 프리렌더 검사가 그 수를 요금 주장 수와
  * 견줍니다.
  */
-function PlanValue({ claim, today, big }: { claim: Claim; today: string; big?: boolean }) {
+function PlanValue({ claim, today, fee }: { claim: Claim; today: string; fee?: boolean }) {
   const cell = valueCell(claim, today);
   const note = claim.planCell?.note;
   if (cell.kind === 'note') {
     return (
-      <div className={`gl-plan${big ? ' is-fee' : ''}`}>
+      <div className="gl-plan">
         <a
-          className={big ? 'gl-pc-empty' : 'gl-state'}
+          className="gl-state"
           href={claim.source.url}
           target="_blank"
           rel="noreferrer"
           aria-label={`${claim.statement} ${cell.text}`}
         >
-          <span>{cell.text}</span>
-          {big && <ArrowUpRight size={14} aria-hidden="true" />}
+          {cell.text}
         </a>
-        {note && <span className="gl-pc-note">{note}</span>}
+        {note && <span className="gl-pr-note">{note}</span>}
       </div>
     );
   }
   if (cell.kind !== 'value') return null;
-  if (big) {
+  if (fee) {
     const { amount, rest } = splitFee(cell.value);
     return (
-      <div className="gl-plan is-fee">
-        <span className={`gl-pc-fee${cell.soft ? ' is-soft' : ''}`}>
-          <span className="gl-pc-amount">{amount}</span>
-          {rest && <span className="gl-pc-rest">{rest}</span>}
+      <div className="gl-plan">
+        <span className={`gl-pr-fee${cell.soft ? ' is-soft' : ''}`}>
+          <span className="gl-pr-amount">{amount}</span>
+          {rest && <span className="gl-pr-rest">{rest}</span>}
         </span>
-        {note && <span className="gl-pc-note">{note}</span>}
+        {note && <span className="gl-pr-note">{note}</span>}
       </div>
     );
   }
   return (
     <div className="gl-plan">
-      <p className={`gl-pc-usage${cell.soft ? ' is-soft' : ''}`}>{cell.value}</p>
-      {note && <span className="gl-pc-note">{note}</span>}
+      <p className={`gl-pr-usage${cell.soft ? ' is-soft' : ''}`}>{cell.value}</p>
+      {note && <span className="gl-pr-note">{note}</span>}
     </div>
   );
 }
 
 /**
- * 요금제와 사용 한도 — **요금제마다 카드 하나**(2026-09-28). 요금 페이지처럼 큰 가격이 먼저
- * 읽히고, 요금제끼리 나란히 서서 견줍니다. 타임라인 원장에서 여기만 카드인 것은 사용자가
- * 고른 조합입니다(「A로 하고 요금제와 사용 한도는 B」).
+ * 요금제와 사용 한도 — **요금제마다 줄 하나**(2026-10-01). 모델 절과 같은 모양입니다 — 제품색이
+ * 옅게 밴 바탕 위에 요금제마다 칸 하나가 뜨고, 절 머리 띠가 열 이름(월 구독료 · 사용량)을
+ * 겸해 칸의 값과 한 세로줄에 섭니다. 요금제마다 카드 하나(2026-09-28)였는데 OpenAI가 다섯 단이
+ * 되면서 「우리 요금을 행의 형태로 하자. 그게 이쁘겠다」가 왔습니다 — 카드 격자는 넷이면 2 × 2,
+ * 다섯이면 3 + 2로 서서 요금제 수마다 모양이 달랐고, 줄은 몇 개든 같은 모양입니다.
  *
- * - **카드의 차례는 요금제가 데이터에 처음 나온 차례입니다** — 싼 요금제를 앞에 적습니다.
- * - **구독료 칸은 값이 있든 없든 같은 높이입니다.** 「확인 전」은 점선 틀로 그 자리를
- *   채워, 옆 카드의 큰 가격과 줄이 맞습니다.
- * - **요금제를 안 가리는 값은 넓은 카드 하나로 섭니다**(`planCell`이 없는 주장). 이름은
+ * - **줄의 차례는 요금제가 데이터에 처음 나온 차례입니다** — 싼 요금제를 앞에 적습니다.
+ * - **요금제를 안 가리는 값은 넓은 줄 하나로 섭니다**(`planCell`이 없는 주장). 이름은
  *   `statement` 그대로입니다 — 「Gemini 앱 사용 한도 초기화 기준」은 Antigravity 화면에도
- *   서므로 줄이면 그 제품의 한도처럼 읽힙니다.
- * - **나이는 모델과 같은 규칙입니다**(`ageLayout`) — 하나면 캡션에, 여럿이면 카드마다.
+ *   서므로 줄이면 그 제품의 한도처럼 읽힙니다. 값은 두 열을 함께 씁니다.
+ * - **나이는 모델과 같은 규칙입니다**(`ageLayout`) — 하나면 캡션에, 여럿이면 줄마다.
  */
-function PlanCards({ claims, today }: { claims: Claim[]; today: string }) {
-  const inCards = claims.filter((c) => c.planCell);
+function PlanRows({ claims, today }: { claims: Claim[]; today: string }) {
+  const inRows = claims.filter((c) => c.planCell);
   const common = claims.filter((c) => !c.planCell);
-  const plans = [...new Set(inCards.map((c) => c.planCell!.plan))];
+  const plans = [...new Set(inRows.map((c) => c.planCell!.plan))];
   const cellOf = (plan: string, facet: PlanFacet) =>
-    inCards.find((c) => c.planCell!.plan === plan && c.planCell!.facet === facet);
+    inRows.find((c) => c.planCell!.plan === plan && c.planCell!.facet === facet);
+  const columns = PLAN_COLUMNS.filter(({ facet }) => inRows.some((c) => c.planCell!.facet === facet));
+  /* 절 머리 띠와 줄이 같은 격자를 씁니다 — 열 이름이 칸의 값과 한 세로줄에 섭니다. */
+  const cols = `gl-pcols${columns.map(({ facet }) => ` has-${facet}`).join('')}`;
 
   const ages = ageLayout([
-    ...plans.map((plan) => PLAN_FACETS.map(({ facet }) => valueCell(cellOf(plan, facet), today))),
+    ...plans.map((plan) => columns.map(({ facet }) => valueCell(cellOf(plan, facet), today))),
     ...common.map((c) => [valueCell(c, today)]),
   ]);
   const sources = [...new Map(claims.map((c) => [c.source.url, c.source])).values()];
 
   return (
     <section className="gl-ref" aria-labelledby="plans-title">
-      {/* 카드는 줄기에 안 매달립니다 — 절 머리 마디에서 줄기가 끝납니다. */}
       <div className="gl-tl">
         <div className="gl-stop is-reached">
-          <RefHead icon={CreditCard} id="plans-title" title="요금제와 사용 한도" />
-          <div className="gl-board">
-            <ul className="gl-pcs">
+          <RefHead
+            icon={CreditCard}
+            id="plans-title"
+            title="요금제와 사용 한도"
+            labels={columns}
+            cols={cols}
+          />
+          <div className="gl-tray">
+            <ul className="gl-rows">
               {plans.map((plan, i) => (
-                <li key={plan} className="gl-pc">
-                  <h4 className="gl-pc-name">{plan}</h4>
-                  {PLAN_FACETS.map(({ facet, label }) => {
-                    const claim = cellOf(plan, facet);
-                    return claim ? (
-                      <div key={facet} className={`gl-pc-row is-${facet}`}>
-                        <span className="gl-pc-label">{label}</span>
-                        <PlanValue claim={claim} today={today} big={facet === 'fee'} />
-                      </div>
-                    ) : null;
-                  })}
-                  {ages.perRow[i] !== null && (
-                    <p className="gl-pc-age">{ageText(ages.perRow[i]!)}</p>
+                <li key={plan} className={`gl-prow ${cols}`}>
+                  <div className="gl-prow-main">
+                    <h4 className="gl-prow-name">{plan}</h4>
+                    {ages.perRow[i] !== null && (
+                      <p className="gl-prow-meta">{ageText(ages.perRow[i]!)}</p>
+                    )}
+                  </div>
+                  {columns.length > 0 && (
+                    /*
+                      넓은 화면에서는 칸들이 줄 격자의 열로 풀리고(`display: contents`), 좁은
+                      화면에서는 이름 아래 두 칸이 됩니다. **칸마다 열 이름을 진짜 글자로 답니다**
+                      (`gl-pcell-label`) — 넓은 화면에서는 눈에서만 숨기고 좁은 화면에서는 값 위에
+                      세웁니다. 띠의 열 이름은 낭독기에 안 읽히고(`aria-hidden`), 요금 값은 모델 수
+                      칸과 달리 링크 이름이 없어서, 이것이 없으면 「$20」이 무슨 값인지 안 들립니다.
+                    */
+                    <div className="gl-pspec">
+                      {columns.map(({ facet, label }) => {
+                        const claim = cellOf(plan, facet);
+                        return (
+                          <div key={facet} className={`gl-pcell is-${facet}${claim ? '' : ' is-empty'}`}>
+                            {claim && (
+                              <>
+                                <span className="gl-pcell-label">{label}</span>
+                                <PlanValue claim={claim} today={today} fee={facet === 'fee'} />
+                              </>
+                            )}
+                          </div>
+                        );
+                      })}
+                    </div>
                   )}
                 </li>
               ))}
               {common.map((claim, i) => {
                 const age = ages.perRow[plans.length + i];
                 return (
-                  <li key={claim.id} className="gl-pc is-wide">
-                    {/* 요금제 카드와 같은 층(h4)에 섭니다 — 마지막 요금제 밑에 딸린 것처럼 읽히지 않게. */}
-                    <h4 className="gl-pc-label">
-                      <Clock size={13} aria-hidden="true" />
-                      {claim.statement}
-                      {age !== null && ` · ${ageText(age)}`}
-                    </h4>
-                    <PlanValue claim={claim} today={today} />
+                  <li key={claim.id} className={`gl-prow is-wide ${cols}`}>
+                    {/* 요금제 줄과 같은 층(h4)에 섭니다 — 마지막 요금제 밑에 딸린 것처럼 읽히지 않게. */}
+                    <div className="gl-prow-main">
+                      <h4 className="gl-prow-name">
+                        <Clock size={14} aria-hidden="true" />
+                        {claim.statement}
+                      </h4>
+                      {age !== null && <p className="gl-prow-meta">{ageText(age)}</p>}
+                    </div>
+                    <div className="gl-pcell is-span">
+                      <PlanValue claim={claim} today={today} />
+                    </div>
                   </li>
                 );
               })}
@@ -1296,7 +1338,7 @@ export function GuideLedger({
                     today={today}
                   />
                 )}
-                {plans.length > 0 && <PlanCards claims={plans} today={today} />}
+                {plans.length > 0 && <PlanRows claims={plans} today={today} />}
               </>
             ),
           },

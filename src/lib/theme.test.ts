@@ -109,7 +109,7 @@ describe('제품색 판 위의 제품색 글자', () => {
 
 /*
   **제품색을 섞은 면 위의 글자**(AI 가이드 타임라인 원장, 2026-09-28). 순간 띠 · 머리 카드 ·
-  다크의 요금 카드 · 탭 세그먼트가 전부 `color-mix`라 첫 `:root`만 읽는 위 검사에 안 걸린다.
+  다크의 모델 칸 · 요금 줄 · 탭 세그먼트가 전부 `color-mix`라 첫 `:root`만 읽는 위 검사에 안 걸린다.
   OpenAI 라이트의 켜진 띠(12%) 위 `--text-dim`이 4.45:1로 AA를 못 넘은 적이 있다.
 
   비율은 styles.css의 `.gl-ledger` · `[data-theme='dark'] .gl-ledger` 블록과 같아야 한다 —
@@ -159,11 +159,11 @@ describe('제품색을 섞은 면 위의 글자', () => {
     }
   }
 
-  /* 다크의 요금 카드는 `--surface`에 제품색 6%를 섞는다. 라이트 카드는 `--bg`라 위 검사가 덮는다. */
+  /* 다크의 모델 칸 · 요금 줄(`--gl-card`)은 `--surface`에 제품색 6%를 섞는다. 라이트는 `--bg`라 위 검사가 덮는다. */
   const dark = themes[1].tokens;
   for (const token of accents) {
     for (const ink of ['--text-strong', '--text-dim', '--text-muted']) {
-      it(`dark · ${token} · 요금 카드 위 ${ink}`, () => {
+      it(`dark · ${token} · 모델 칸·요금 줄 위 ${ink}`, () => {
         const plate = mixHex(dark[token], dark['--surface'], 0.06);
         const ratio = contrastRatio(dark[ink], plate);
         expect(ratio, `${ink} on ${plate} = ${ratio.toFixed(2)}:1`).toBeGreaterThanOrEqual(AA_NORMAL_TEXT);
