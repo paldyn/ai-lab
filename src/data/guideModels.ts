@@ -245,25 +245,6 @@ const models: ModelInfo[] = [
   },
 
   /* ── OpenAI ── */
-  {
-    id: 'gpt-6-astra',
-    vendorId: 'openai',
-    name: 'GPT-6 Astra',
-    mark: { file: 'assets/model-gpt-6-astra.png', tile: true },
-    apiId: 'gpt-6-astra',
-    useWhen: {
-      text: '복잡한 추론·코딩에(대표 모델)',
-      url: 'https://developers.openai.com/api/docs/models',
-    },
-    rating: {
-      kind: 'scale',
-      reasoning: { level: 5, label: 'Highest' },
-      speed: { level: 4, label: 'Fast' },
-      url: 'https://developers.openai.com/api/docs/models/gpt-6-astra',
-    },
-    current: true,
-    sourceUrl: 'https://developers.openai.com/api/docs/models',
-  },
   /*
     **GPT-6.1 Sol**(2026-10-01에 더했다). ChatGPT 릴리스 노트 2026-09-29 「GPT-6.1 Sol improves on
     GPT-6 Sol in agentic coding, computer use, and professional work.」 API 모델 목록 머리의 문장이
@@ -289,6 +270,25 @@ const models: ModelInfo[] = [
     },
     current: true,
     sourceUrl: 'https://developers.openai.com/api/docs/models/gpt-6.1-sol',
+  },
+  {
+    id: 'gpt-6-astra',
+    vendorId: 'openai',
+    name: 'GPT-6 Astra',
+    mark: { file: 'assets/model-gpt-6-astra.png', tile: true },
+    apiId: 'gpt-6-astra',
+    useWhen: {
+      text: '복잡한 추론·코딩에(대표 모델)',
+      url: 'https://developers.openai.com/api/docs/models',
+    },
+    rating: {
+      kind: 'scale',
+      reasoning: { level: 5, label: 'Highest' },
+      speed: { level: 4, label: 'Fast' },
+      url: 'https://developers.openai.com/api/docs/models/gpt-6-astra',
+    },
+    current: true,
+    sourceUrl: 'https://developers.openai.com/api/docs/models',
   },
   /*
     **GPT-6 Sol · GPT-6 Luna**(2026-09-22). API 변경 기록 「Released GPT-6 Sol (gpt-6-sol) and
