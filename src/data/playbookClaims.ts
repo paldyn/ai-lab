@@ -138,7 +138,8 @@ export const playbookClaims: Claim[] = [
     tier: 'vendor',
     volatility: 'model',
     source: { label: 'GPT-6.1 Sol 모델 문서', url: 'https://developers.openai.com/api/docs/models/gpt-6.1-sol' },
-  },  {
+  },
+  {
     id: 'gpt-6-sol-context',
     subject: { kind: 'model', id: 'gpt-6-sol' },
     topic: 'context',
@@ -345,10 +346,12 @@ export const playbookClaims: Claim[] = [
     source: { label: 'Claude Max 도움말', url: 'https://support.claude.com/en/articles/11049741-what-is-the-max-plan' },
   },
   /*
-    **ChatGPT 개인 요금제는 넷이다**(2026-09-29) — 싼 것부터 Go · Plus · Pro 5x · Pro 20x. 그동안
-    Plus와 「Pro 월 $100부터」 둘만 세워 Go가 없었고 Pro 두 단이 한 카드에 뭉쳐 있었다. Pro는
-    도움말 제목부터 「About ChatGPT Pro tiers」이고 두 단을 「Pro $100」 · 「Pro $200 (Pro 20X)」로
-    부른다 — 카드 이름은 사용량 표 머리의 「Pro 5x」 · 「Pro 20x」를 쓴다(Claude Max 5x · 20x와 같은 틀).
+    **ChatGPT 개인 요금제는 다섯이다**(2026-10-01) — 싼 것부터 Go · Plus · Pro 100 · Pro 200 · Pro 500.
+    2026-09-29에 Go · Plus · Pro 5x · Pro 20x 넷으로 세웠는데, 이틀 사이 OpenAI가 Pro를 셋으로 갈았다
+    (릴리스 노트 2026-09-29 「We’re introducing Pro 500, a new $500/month plan …」). 도움말 「About
+    ChatGPT Pro tiers」가 이제 단을 「Pro 100」 · 「Pro 200」 · 「Pro 500」으로 부르고, 카드 이름의 근거였던
+    사용량 표 머리 「Pro 5x」 · 「Pro 20x」는 표에서 사라졌다 — 그래서 회사가 쓰는 이름으로 옮겼다.
+    주장 id(`chatgpt-pro-price` · `chatgpt-pro-20x-price` …)는 지난 확인 로그가 가리키므로 그대로 둔다.
     Free와 Business · Enterprise는 뺐다(요금 페이지 FAQ 「Go, Free, and Plus plans are designed to be
     used by individuals.」 · 「Business and Enterprise are for businesses.」).
   */
@@ -395,14 +398,14 @@ export const playbookClaims: Claim[] = [
     id: 'chatgpt-pro-price',
     subject: { kind: 'vendor', id: 'openai' },
     topic: 'price',
-    statement: 'ChatGPT Pro 5x 월 구독료',
+    statement: 'ChatGPT Pro 100 월 구독료',
     /*
       2026-09-17까지는 「월 $100부터」 한 카드였다(요금 페이지 「From / $100 / /month」). 그 카드는
       이제 세 줄로 갈려 한 줄 근거가 못 되고, 달러가 단마다 한 줄에 적힌 곳이 릴리스 노트
       (2026-09-09 「Updated models and usage limits in ChatGPT Voice」 항목)다.
     */
     value: '월 $100',
-    planCell: { plan: 'ChatGPT Pro 5x', facet: 'fee' },
+    planCell: { plan: 'ChatGPT Pro 100', facet: 'fee' },
     tier: 'vendor',
     volatility: 'price',
     source: { label: 'ChatGPT 릴리스 노트', url: 'https://help.openai.com/en/articles/6825453-chatgpt-release-notes' },
@@ -411,14 +414,31 @@ export const playbookClaims: Claim[] = [
     id: 'chatgpt-pro-20x-price',
     subject: { kind: 'vendor', id: 'openai' },
     topic: 'price',
-    statement: 'ChatGPT Pro 20x 월 구독료',
+    statement: 'ChatGPT Pro 200 월 구독료',
     /*
-      **2026-09-10부터 신규 가입 · 업그레이드가 멈춰 있다** — 도움말 「As of September 10, 2026, we’re
-      temporarily pausing new sign-ups and upgrades to the ChatGPT Pro $200 plan (Pro 20X).」 기존
-      구독은 그대로 갱신되므로 카드를 세우되 한정어로 알린다.
+      2026-09-10부터 신규 가입 · 업그레이드가 멈춰 있어 한정어 「신규 가입 일시 중단」을 달았는데,
+      **2026-10-01에 걷었다** — 도움말 「Pro 200 is also available for new subscriptions again.」 다만
+      새 구독은 사용량이 예전보다 적다(「New subscriptions that aren’t eligible for grandfathering
+      include a lower usage allowance.」). 값은 그대로다(「The monthly price remains $200.」).
     */
     value: '월 $200',
-    planCell: { plan: 'ChatGPT Pro 20x', facet: 'fee', note: '신규 가입 일시 중단' },
+    planCell: { plan: 'ChatGPT Pro 200', facet: 'fee' },
+    tier: 'vendor',
+    volatility: 'price',
+    source: { label: 'ChatGPT 릴리스 노트', url: 'https://help.openai.com/en/articles/6825453-chatgpt-release-notes' },
+  },
+  {
+    id: 'chatgpt-pro-500-price',
+    subject: { kind: 'vendor', id: 'openai' },
+    topic: 'price',
+    statement: 'ChatGPT Pro 500 월 구독료',
+    /*
+      2026-10-01에 더했다. 릴리스 노트 2026-09-29 「A new Pro plan with Astra Ultrafast」 항목이 달러를
+      한 줄에 적는다. Pro 가운데 Astra Ultrafast가 드는 것은 이 단뿐이다(「Among Pro plans, Ultrafast
+      is available only with Pro 500.」). 출시 때는 웹에서만 가입한다.
+    */
+    value: '월 $500',
+    planCell: { plan: 'ChatGPT Pro 500', facet: 'fee' },
     tier: 'vendor',
     volatility: 'price',
     source: { label: 'ChatGPT 릴리스 노트', url: 'https://help.openai.com/en/articles/6825453-chatgpt-release-notes' },
@@ -577,10 +597,17 @@ export const playbookClaims: Claim[] = [
     id: 'chatgpt-pro-5x-astra-limit',
     subject: { kind: 'vendor', id: 'openai' },
     topic: 'limit',
-    statement: 'ChatGPT Pro 5x의 GPT-6 Astra 사용량(Work·Codex, 5시간당)',
-    /* Plus와 같은 표 행의 Pro 5x 칸. Plus 칸의 정확히 5배다(도움말 「Pro $100 unlocks 5x higher usage than Plus」). */
-    value: '25~225회(추정)',
-    planCell: { plan: 'ChatGPT Pro 5x', facet: 'usage', note: 'Astra · Work·Codex 5시간당' },
+    statement: 'ChatGPT Pro 100의 GPT-6 Astra 사용량(Work·Codex, 5시간당)',
+    /*
+      2026-09-29까지는 Plus와 같은 표 행의 Pro 5x 칸(「25-225」)이었다. **2026-10-01에 표에서 Pro 열이
+      사라졌다** — 표 위 문장이 「The estimates below show local messages per five-hour period for Plus
+      and Standard Business. Pro plans currently have no five-hour limit.」로 바뀌었다. 「currently」라
+      다시 생길 수 있고, 주간 한도는 따로 걸릴 수 있다(「Weekly limits may also apply.」). Pro 셋 사이의
+      차이는 도움말이 수 없이 「Pro 200 includes more usage than Pro 100. Pro 500 offers the highest
+      included usage of the three plans.」라고만 적는다.
+    */
+    value: '5시간 한도 없음',
+    planCell: { plan: 'ChatGPT Pro 100', facet: 'usage', note: 'Astra · Work·Codex 5시간당' },
     tier: 'vendor',
     volatility: 'limit',
     source: { label: 'ChatGPT 요금제', url: 'https://learn.chatgpt.com/docs/pricing' },
@@ -589,9 +616,20 @@ export const playbookClaims: Claim[] = [
     id: 'chatgpt-pro-20x-astra-limit',
     subject: { kind: 'vendor', id: 'openai' },
     topic: 'limit',
-    statement: 'ChatGPT Pro 20x의 GPT-6 Astra 사용량(Work·Codex, 5시간당)',
-    value: '100~900회(추정)',
-    planCell: { plan: 'ChatGPT Pro 20x', facet: 'usage', note: 'Astra · Work·Codex 5시간당' },
+    statement: 'ChatGPT Pro 200의 GPT-6 Astra 사용량(Work·Codex, 5시간당)',
+    value: '5시간 한도 없음',
+    planCell: { plan: 'ChatGPT Pro 200', facet: 'usage', note: 'Astra · Work·Codex 5시간당' },
+    tier: 'vendor',
+    volatility: 'limit',
+    source: { label: 'ChatGPT 요금제', url: 'https://learn.chatgpt.com/docs/pricing' },
+  },
+  {
+    id: 'chatgpt-pro-500-astra-limit',
+    subject: { kind: 'vendor', id: 'openai' },
+    topic: 'limit',
+    statement: 'ChatGPT Pro 500의 GPT-6 Astra 사용량(Work·Codex, 5시간당)',
+    value: '5시간 한도 없음',
+    planCell: { plan: 'ChatGPT Pro 500', facet: 'usage', note: 'Astra · Work·Codex 5시간당' },
     tier: 'vendor',
     volatility: 'limit',
     source: { label: 'ChatGPT 요금제', url: 'https://learn.chatgpt.com/docs/pricing' },
@@ -1712,7 +1750,8 @@ export const playbookClaims: Claim[] = [
       label: 'OpenAI API — Pricing',
       url: 'https://developers.openai.com/api/docs/pricing',
     },
-  },  {
+  },
+  {
     id: 'gpt-6-sol-token-price',
     subject: { kind: 'model', id: 'gpt-6-sol' },
     topic: 'price',
