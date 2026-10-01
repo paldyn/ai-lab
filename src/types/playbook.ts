@@ -429,7 +429,7 @@ export interface Claim {
    * - `plan`: 요금제 이름. **`statement`가 이 이름으로 시작해야 합니다**(검사가 봅니다).
    * - `facet`: `fee`는 월 구독료(`topic: 'price' | 'tier'`), `usage`는 사용량(`topic: 'limit'`).
    * - `note`: 열 이름이 덮어 버리는 한정어. 「사용량」 열 아래 ChatGPT Plus 칸은 사실
-   *   「GPT-6 Astra · 5시간당」이라, 그 말을 칸 아래 작은 줄로 남깁니다.
+   *   「Astra · Work·Codex 5시간당」이라, 그 말을 칸 아래 작은 줄로 남깁니다.
    */
   planCell?: { plan: string; facet: PlanFacet; note?: string };
   tier: EvidenceTier;
@@ -438,7 +438,7 @@ export interface Claim {
   measurement?: Measurement;
 }
 
-/** 요금 줄의 열. 화면의 열 차례와 열 이름·물음표 풀이는 `GuideLedger`의 `PLAN_COLUMNS`가 정합니다(구독료 → 사용량). */
+/** 요금 줄의 열. 화면의 열 차례와 열 이름은 `GuideLedger`의 `PLAN_COLUMNS`가 정합니다(구독료 → 사용량). */
 export type PlanFacet = 'fee' | 'usage';
 
 /**
