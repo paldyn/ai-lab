@@ -265,11 +265,43 @@ const models: ModelInfo[] = [
     sourceUrl: 'https://developers.openai.com/api/docs/models',
   },
   /*
+    **GPT-6.1 Sol**(2026-10-01에 더했다). ChatGPT 릴리스 노트 2026-09-29 「GPT-6.1 Sol improves on
+    GPT-6 Sol in agentic coding, computer use, and professional work.」 API 모델 목록 머리의 문장이
+    GPT-6 Sol에서 이 모델로 바뀌었다 — 「Choose GPT-6.1 Sol to balance intelligence and cost, or GPT-6
+    Luna for cost-sensitive, high-volume workloads.」 등급은 모델 페이지 머리 「Reasoning Highest ·
+    Speed Fast」, 마크는 「All models」 카탈로그에서 이름 옆에 서는 아이콘이다.
+  */
+  {
+    id: 'gpt-6-1-sol',
+    vendorId: 'openai',
+    name: 'GPT-6.1 Sol',
+    mark: { file: 'assets/model-gpt-6-1-sol.png', tile: true },
+    apiId: 'gpt-6.1-sol',
+    useWhen: {
+      text: '지능과 비용의 균형이 필요한 일에',
+      url: 'https://developers.openai.com/api/docs/models',
+    },
+    rating: {
+      kind: 'scale',
+      reasoning: { level: 5, label: 'Highest' },
+      speed: { level: 4, label: 'Fast' },
+      url: 'https://developers.openai.com/api/docs/models/gpt-6.1-sol',
+    },
+    current: true,
+    sourceUrl: 'https://developers.openai.com/api/docs/models/gpt-6.1-sol',
+  },
+  /*
     **GPT-6 Sol · GPT-6 Luna**(2026-09-22). API 변경 기록 「Released GPT-6 Sol (gpt-6-sol) and
     GPT-6 Luna (gpt-6-luna).」, Codex 변경 기록 「GPT-6 Sol and GPT-6 Luna are rolling out to
     Codex and ChatGPT Work at lower token prices than their GPT-5.6 predecessors.」 쓰임은 모델
     목록 머리의 한 문장이 둘을 함께 놓는 말입니다 — 「Choose GPT-6 Sol to balance intelligence
     and cost, or GPT-6 Luna for cost-sensitive, high-volume workloads.」
+
+    **2026-10-01에 GPT-6 Sol의 쓰임을 갈았다.** 그 문장이 GPT-6.1 Sol을 부르게 바뀌어, 모델
+    페이지 머리의 「GPT-6 Sol is built for complex coding and agentic workflows.」를 쓴다. 같은
+    페이지가 「See GPT-6.1 Sol for the newer Sol model.」이라 적지만 legacy · previous-generation ·
+    Retires from은 아니라 `current`는 그대로 두고, Work·Codex에서도 아직 고를 수 있다(「In ChatGPT,
+    GPT-6.1 Sol, GPT-6 Sol, and GPT-6 Luna are available in Work and Codex.」).
   */
   {
     id: 'gpt-6-sol',
@@ -278,8 +310,8 @@ const models: ModelInfo[] = [
     mark: { file: 'assets/model-gpt-6-sol.png', tile: true },
     apiId: 'gpt-6-sol',
     useWhen: {
-      text: '지능과 비용의 균형이 필요한 일에',
-      url: 'https://developers.openai.com/api/docs/models',
+      text: '복잡한 코딩·에이전트 워크플로에',
+      url: 'https://developers.openai.com/api/docs/models/gpt-6-sol',
     },
     rating: {
       kind: 'scale',

@@ -251,6 +251,7 @@ export const guideProducts: Product[] = [
     surfaces: ['웹', '데스크톱'],
     models: [
       'gpt-6-astra',
+      'gpt-6-1-sol',
       'gpt-6-sol',
       'gpt-5-6-sol',
       'gpt-5-6-terra',
@@ -294,6 +295,7 @@ export const guideProducts: Product[] = [
     surfaces: ['웹', '데스크톱', '터미널', 'IDE', '클라우드'],
     models: [
       'gpt-6-astra',
+      'gpt-6-1-sol',
       'gpt-6-sol',
       'gpt-5-6-sol',
       'gpt-5-6-terra',
@@ -320,6 +322,14 @@ export const guideProducts: Product[] = [
 
       Codex cloud는 다릅니다 — 거기서 true인 것은 Sol 하나입니다. 표면마다 갈리는
       값이라 여기 안 적고 주장으로 세울 자리입니다.
+
+      **GPT-6.1 Sol을 더했습니다**(2026-10-01). 모델 페이지 「In ChatGPT, GPT-6.1 Sol, GPT-6 Sol, and
+      GPT-6 Luna are available in Work and Codex.」와 출시 범위 「The GPT-6.1 Sol launch rollout includes
+      Plus, Pro, Business, Enterprise, and Edu in Codex in the desktop app and CLI, and ChatGPT Work on the
+      web and mobile.」이 근거입니다(Free · Go는 출시 때 빠졌습니다). 같은 문장이 GPT-6 Sol도 부르므로
+      그대로 둡니다. **차례는 Astra 바로 뒤입니다** — 셋 다 추론 등급이 Highest이고, 6.1을 GPT-6과 한 세대로
+      보아 단가가 높은 Astra($10)를 앞에, 단가가 같은($2) 두 Sol은 새것을 앞에 둡니다. 벤더의 카드
+      차례(Astra · 6.1 Sol · 6 Luna)와도 같습니다. ChatGPT Work도 같은 차례입니다.
     */
     oneLine: '코드를 읽고 고치고 리뷰까지 맡는 코딩 에이전트.',
     officialUrl: 'https://chatgpt.com/codex',
