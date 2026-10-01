@@ -160,7 +160,7 @@ export interface NewsDetail {
   commentary: string;
 }
 
-export const globalNewsUpdatedAt = '2026-09-29';
+export const globalNewsUpdatedAt = '2026-09-30';
 
 /**
  * 공식 발표 한 건 = 항목 한 개. 2026년 1월부터 쌓는 아카이브이며 오래된 항목을
@@ -171,6 +171,34 @@ export const globalNewsUpdatedAt = '2026-09-29';
  * 목록에서 파생됩니다. 갱신 시 globalNewsUpdatedAt도 함께 올립니다.
  */
 const entries: NewsItem[] = [
+  {
+    id: 'disrupting-a-coordinated-model-distillation-campaign',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'OpenAI, 추론 내용을 빼내려던 조직적 증류 시도 적발·차단',
+    summary:
+      'OpenAI가 모델의 숨긴 추론을 빼내 다른 모델 학습에 쓰려던 조직적 증류 시도를 적발해 7월 28일까지 ' +
+      '차단했다고 밝혔다. 핵심 무리는 Kimi 개발사 Moonshot AI 관련 인물로 판단했다.',
+    publishedAt: '2026-09-30',
+    collectedAt: '2026-10-01',
+    category: 'Safety',
+    signal: '모델 보안',
+    url: 'https://openai.com/index/disrupting-a-coordinated-model-distillation-campaign',
+  },
+  {
+    id: 'helping-small-businesses-put-ai-to-work',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'OpenAI, 미국 소상공인 지원망 SBDC와 AI 교육 제휴',
+    summary:
+      'OpenAI가 America’s SBDC와 손잡고 상담사 약 150명을 교육해 소상공인 1,000곳 이상에 실습 워크숍을 연다. ' +
+      '소규모 기업의 AI 사용을 다룬 보고서도 함께 냈다.',
+    publishedAt: '2026-09-30',
+    collectedAt: '2026-10-01',
+    category: 'Corporate',
+    signal: '지역 강사 양성',
+    url: 'https://openai.com/index/helping-small-businesses-put-ai-to-work',
+  },
   {
     id: 'blog-introducing-synthid-bio',
     source: 'Google DeepMind',
