@@ -8713,6 +8713,19 @@ input:focus-visible {
   background: var(--gl-a12);
 }
 
+/*
+  **회사 소개 구절 칩(Google)만은 감긴다**(2026-10-01). 「가격 대비 성능이 가장 좋은 모델」이
+  320px의 Gemini CLI에서 이름 열(190px 안팎)을 9px 넘어 페이지가 가로로 밀렸다. 칸 막대 칩은
+  짧아 한 줄로 두고, 이 구절만 폭이 모자랄 때 두 줄로 고르게 감는다. 모서리 14는 한 줄일 때(높이
+  26) 알약과 똑같이 그려지고, 두 줄이 되면 둥근 사각이 되어 글자가 곡선에 안 걸린다.
+*/
+.gl-rate.is-phrase {
+  max-width: 100%;
+  border-radius: 14px;
+  white-space: normal;
+  text-wrap: balance;
+}
+
 .gl-rate-name {
   color: var(--text-dim);
   font-size: var(--gl-meta);
