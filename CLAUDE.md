@@ -1351,13 +1351,17 @@ viewBox를 덜 채우면 `contain`이 그만큼 작게 그린다 — 「Codex �
   | 회사 | 카드(싼 것부터) | 사용량 칸의 잣대 |
   | --- | --- | --- |
   | Anthropic | Pro $20 · Max 5x $100 · Max 20x $200 | 5시간 세션당 배수(Free 대비 · Pro 대비) |
-  | OpenAI | Go $8 · Plus $20 · Pro 5x $100 · Pro 20x $200 | Work·Codex의 GPT-6 Astra 5시간당 추정치 |
+  | OpenAI | Go $8 · Plus $20 · Pro 100 $100 · Pro 200 $200 · Pro 500 $500 | Work·Codex의 GPT-6 Astra 5시간당 추정치(Pro는 「5시간 한도 없음」) |
   | Google | AI Plus $4.99 · AI Pro $19.99 · AI Ultra 5x $99.99 · AI Ultra 20x $199.99 | Gemini 앱 한도 배수(Free 대비 · Pro 대비) |
 
   - **ChatGPT Go에는 사용량 칸이 없다** — 다른 셋이 쓰는 잣대(Astra)에 Go 열이 없고, Go 도움말의
     「Free and Go users both have unlimited everyday text chats.」는 Free와 같다는 말이라 견줄 값이
     아니다. 주장이 없으면 칸째 안 선다.
-  - **ChatGPT Pro 20x는 한정어 「신규 가입 일시 중단」을 단다**(2026-09-10부터). 기존 구독은 갱신된다.
+  - **ChatGPT Pro는 셋이다**(2026-10-01) — 2026-09-29에 OpenAI가 Pro 500을 내고 단 이름을 Pro 100 ·
+    Pro 200 · Pro 500으로 갈았다. 카드 이름의 근거였던 사용량 표 머리 「Pro 5x」·「Pro 20x」가 사라져
+    회사가 쓰는 이름으로 옮겼다(주장 id는 지난 로그가 가리켜 그대로다). 같은 날 Pro 200의 신규 가입이
+    다시 열려 한정어 「신규 가입 일시 중단」을 걷었고, 표에서 Pro 열이 빠지며 「Pro plans currently have
+    no five-hour limit.」가 섰다 — Pro 세 카드의 사용량 칸이 「5시간 한도 없음」이다.
   - 달러가 한 줄에 적힌 곳을 출처로 삼는다 — 요금 페이지는 한국에서 원화로 그려진다(Go 발표 글 ·
     Plus 도움말 · ChatGPT 릴리스 노트 · Gemini 구독 미국 경로).
   - **넷이면 2 × 2로 선다** — 셋 칸 격자에서는 「3 + 1」로 한 장이 혼자 남는다.
