@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="460" viewBox="0 0 880 460">
+  <rect width="880" height="460" fill="#0a0a0a" rx="12"/>
+  <text x="440" y="44" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="22" font-weight="700" fill="#e8e8e8" text-anchor="middle">서브워드 라벨 정렬</text>
+  <text x="440" y="68" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="14" fill="#888" text-anchor="middle">「서울대학교에서」 — 낱말 하나가 조각 넷으로 쪼개질 때 라벨을 다는 법</text>
+  <text x="158" y="104" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="600" fill="#55c555">올바른 정렬 — 첫 조각에만 라벨, 나머지는 -100</text>
+  <rect x="158" y="116" width="448" height="40" fill="#0d1a1a" rx="6" stroke="#55c555" stroke-width="1.5"/>
+  <text x="382" y="141" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="15" font-weight="600" fill="#e8e8e8" text-anchor="middle">서울대학교 (낱말 1)</text>
+  <rect x="622" y="116" width="100" height="40" fill="#111827" rx="6" stroke="#333" stroke-width="1.5"/>
+  <text x="672" y="141" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="15" font-weight="600" fill="#888" text-anchor="middle">에서</text>
+  <rect x="158" y="172" width="100" height="60" fill="#0d1a1a" rx="6" stroke="#55c555" stroke-width="1.5"/>
+  <text x="208" y="196" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="15" font-weight="600" fill="#e8e8e8" text-anchor="middle">서울</text>
+  <text x="208" y="216" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="600" fill="#55c555" text-anchor="middle">B-ORG</text>
+  <rect x="274" y="172" width="100" height="60" fill="#111827" rx="6" stroke="#333" stroke-width="1.5"/>
+  <text x="324" y="196" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="15" font-weight="600" fill="#e8e8e8" text-anchor="middle">##대</text>
+  <text x="324" y="216" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="600" fill="#888" text-anchor="middle">-100</text>
+  <rect x="390" y="172" width="100" height="60" fill="#111827" rx="6" stroke="#333" stroke-width="1.5"/>
+  <text x="440" y="196" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="15" font-weight="600" fill="#e8e8e8" text-anchor="middle">##학</text>
+  <text x="440" y="216" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="600" fill="#888" text-anchor="middle">-100</text>
+  <rect x="506" y="172" width="100" height="60" fill="#111827" rx="6" stroke="#333" stroke-width="1.5"/>
+  <text x="556" y="196" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="15" font-weight="600" fill="#e8e8e8" text-anchor="middle">##교</text>
+  <text x="556" y="216" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="600" fill="#888" text-anchor="middle">-100</text>
+  <rect x="622" y="172" width="100" height="60" fill="#111827" rx="6" stroke="#333" stroke-width="1.5"/>
+  <text x="672" y="196" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="15" font-weight="600" fill="#e8e8e8" text-anchor="middle">에서</text>
+  <text x="672" y="216" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="600" fill="#888" text-anchor="middle">O</text>
+  <text x="440" y="256" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#7ec8e3" text-anchor="middle">추론 때도 첫 조각의 예측만 읽는다 → ORG 「서울대학교」 하나</text>
+  <text x="158" y="294" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="600" fill="#e05555">흔한 실수 — 조각마다 B-ORG를 복사</text>
+  <rect x="158" y="306" width="100" height="60" fill="#1f0d0d" rx="6" stroke="#e05555" stroke-width="1.5"/>
+  <text x="208" y="330" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="15" font-weight="600" fill="#e8e8e8" text-anchor="middle">서울</text>
+  <text x="208" y="350" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="600" fill="#e05555" text-anchor="middle">B-ORG</text>
+  <rect x="274" y="306" width="100" height="60" fill="#1f0d0d" rx="6" stroke="#e05555" stroke-width="1.5"/>
+  <text x="324" y="330" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="15" font-weight="600" fill="#e8e8e8" text-anchor="middle">##대</text>
+  <text x="324" y="350" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="600" fill="#e05555" text-anchor="middle">B-ORG</text>
+  <rect x="390" y="306" width="100" height="60" fill="#1f0d0d" rx="6" stroke="#e05555" stroke-width="1.5"/>
+  <text x="440" y="330" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="15" font-weight="600" fill="#e8e8e8" text-anchor="middle">##학</text>
+  <text x="440" y="350" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="600" fill="#e05555" text-anchor="middle">B-ORG</text>
+  <rect x="506" y="306" width="100" height="60" fill="#1f0d0d" rx="6" stroke="#e05555" stroke-width="1.5"/>
+  <text x="556" y="330" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="15" font-weight="600" fill="#e8e8e8" text-anchor="middle">##교</text>
+  <text x="556" y="350" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="600" fill="#e05555" text-anchor="middle">B-ORG</text>
+  <rect x="622" y="306" width="100" height="60" fill="#111827" rx="6" stroke="#333" stroke-width="1.5"/>
+  <text x="672" y="330" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="15" font-weight="600" fill="#e8e8e8" text-anchor="middle">에서</text>
+  <text x="672" y="350" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="600" fill="#888" text-anchor="middle">O</text>
+  <text x="440" y="392" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e05555" text-anchor="middle">모델이 낱말 안에서도 B-를 배운다 → 추론에서 ORG 개체 넷으로 갈린다</text>
+  <text x="440" y="428" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888" text-anchor="middle">-100은 PyTorch 교차 엔트로피 손실의 ignore_index 기본값 — 그 자리는 손실에서 빠진다</text>
+</svg>
