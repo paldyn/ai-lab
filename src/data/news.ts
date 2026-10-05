@@ -172,6 +172,20 @@ export const globalNewsUpdatedAt = '2026-09-30';
  */
 const entries: NewsItem[] = [
   {
+    id: 'barclays-scales-claude',
+    source: 'Anthropic',
+    kind: 'company',
+    title: 'Barclays, Claude 전사 확대 — 2027년엔 엔지니어 대다수가 Claude Code',
+    summary:
+      'Anthropic이 영국 은행 Barclays와 협력을 넓혀 Claude를 은행 전반으로 펼친다고 밝혔다. Barclays는 ' +
+      '2026년 말까지 개발자의 50%, 2027년에는 소프트웨어 엔지니어 대다수가 Claude Code를 쓸 것으로 본다.',
+    publishedAt: '2026-10-01',
+    collectedAt: '2026-10-06',
+    category: 'Product',
+    signal: '기업 도입 사례',
+    url: 'https://www.anthropic.com/news/barclays-scales-claude',
+  },
+  {
     id: 'blog-gemini-4-argon-our-next-era-of-frontier-intelligence',
     source: 'Google DeepMind',
     kind: 'model',
