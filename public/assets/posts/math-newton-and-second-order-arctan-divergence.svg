@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" viewBox="0 0 880 476">
+<rect x="0" y="0" width="880" height="476" rx="12" fill="#0a0a0a"/>
+<defs><marker id="ao" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto"><path d="M 0 0 L 13 7 L 0 14 z" fill="#e0a355"/></marker></defs>
+<text x="60.0" y="44.0" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="22" font-weight="700" fill="#e8e8e8">볼록한 함수에서도 뉴턴법은 발산할 수 있다</text>
+<text x="60.0" y="70.0" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="400" fill="#888">f′(x) = arctan x 인 볼록함수를 x₀ = 1.5 에서 시작. 접선이 축과 만나는 곳이 다음 점이다</text>
+<rect x="450.7" y="120" width="245.2" height="290" fill="#55c555" fill-opacity="0.10"/>
+<line x1="450.7" y1="120" x2="450.7" y2="410" stroke="#55c555" stroke-width="1.2" stroke-dasharray="4,4"/>
+<line x1="695.9" y1="120" x2="695.9" y2="410" stroke="#55c555" stroke-width="1.2" stroke-dasharray="4,4"/>
+<text x="573.3" y="112.0" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="600" fill="#55c555" text-anchor="middle">|x₀| &lt; 1.39 이면 수렴</text>
+<line x1="70" y1="270" x2="830" y2="270" stroke="#888" stroke-width="1.5"/>
+<line x1="573.3" y1="410" x2="573.3" y2="125" stroke="#888" stroke-width="1.5"/>
+<text x="838.0" y="275.0" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="400" fill="#888">x</text>
+<line x1="132.9" y1="266" x2="132.9" y2="274" stroke="#444" stroke-width="1.5"/>
+<line x1="221.0" y1="266" x2="221.0" y2="274" stroke="#444" stroke-width="1.5"/>
+<line x1="309.0" y1="266" x2="309.0" y2="274" stroke="#444" stroke-width="1.5"/>
+<line x1="397.1" y1="266" x2="397.1" y2="274" stroke="#444" stroke-width="1.5"/>
+<line x1="485.2" y1="266" x2="485.2" y2="274" stroke="#444" stroke-width="1.5"/>
+<line x1="661.4" y1="266" x2="661.4" y2="274" stroke="#444" stroke-width="1.5"/>
+<line x1="749.5" y1="266" x2="749.5" y2="274" stroke="#444" stroke-width="1.5"/>
+<polyline points="80.0,381.5 84.4,381.4 88.8,381.3 93.2,381.1 97.6,381.0 102.0,380.9 106.4,380.7 110.8,380.6 115.2,380.5 119.6,380.3 124.0,380.2 128.5,380.0 132.9,379.9 137.3,379.7 141.7,379.6 146.1,379.4 150.5,379.2 154.9,379.1 159.3,378.9 163.7,378.7 168.1,378.5 172.5,378.4 176.9,378.2 181.3,378.0 185.7,377.8 190.1,377.6 194.5,377.4 198.9,377.2 203.3,377.0 207.7,376.7 212.1,376.5 216.5,376.3 221.0,376.1 225.4,375.8 229.8,375.6 234.2,375.3 238.6,375.1 243.0,374.8 247.4,374.5 251.8,374.3 256.2,374.0 260.6,373.7 265.0,373.4 269.4,373.1 273.8,372.8 278.2,372.5 282.6,372.1 287.0,371.8 291.4,371.4 295.8,371.1 300.2,370.7 304.6,370.3 309.0,369.9 313.5,369.5 317.9,369.1 322.3,368.7 326.7,368.2 331.1,367.8 335.5,367.3 339.9,366.8 344.3,366.3 348.7,365.8 353.1,365.2 357.5,364.7 361.9,364.1 366.3,363.5 370.7,362.9 375.1,362.2 379.5,361.5 383.9,360.8 388.3,360.1 392.7,359.4 397.1,358.6 401.5,357.8 406.0,356.9 410.4,356.0 414.8,355.1 419.2,354.1 423.6,353.1 428.0,352.1 432.4,351.0 436.8,349.8 441.2,348.6 445.6,347.4 450.0,346.0 454.4,344.7 458.8,343.2 463.2,341.7 467.6,340.1 472.0,338.4 476.4,336.6 480.8,334.8 485.2,332.8 489.6,330.8 494.0,328.6 498.5,326.4 502.9,324.0 507.3,321.5 511.7,318.9 516.1,316.1 520.5,313.2 524.9,310.2 529.3,307.1 533.7,303.8 538.1,300.4 542.5,296.9 546.9,293.3 551.3,289.6 555.7,285.8 560.1,281.9 564.5,278.0 568.9,274.0 573.3,270.0 577.7,266.0 582.1,262.0 586.5,258.1 591.0,254.2 595.4,250.4 599.8,246.7 604.2,243.1 608.6,239.6 613.0,236.2 617.4,232.9 621.8,229.8 626.2,226.8 630.6,223.9 635.0,221.1 639.4,218.5 643.8,216.0 648.2,213.6 652.6,211.4 657.0,209.2 661.4,207.2 665.8,205.2 670.2,203.4 674.6,201.6 679.0,199.9 683.5,198.3 687.9,196.8 692.3,195.3 696.7,194.0 701.1,192.6 705.5,191.4 709.9,190.2 714.3,189.0 718.7,187.9 723.1,186.9 727.5,185.9 731.9,184.9 736.3,184.0 740.7,183.1 745.1,182.2 749.5,181.4 753.9,180.6 758.3,179.9 762.7,179.2 767.1,178.5 771.5,177.8 776.0,177.1 780.4,176.5 784.8,175.9 789.2,175.3 793.6,174.8 798.0,174.2 802.4,173.7 806.8,173.2 811.2,172.7 815.6,172.2 820.0,171.8" fill="none" stroke="#7ec8e3" stroke-width="2.5"/>
+<text x="820.0" y="155.8" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="600" fill="#7ec8e3" text-anchor="end">arctan x</text>
+<line x1="705.5" y1="191.4" x2="424.1" y2="270" stroke="#e0a355" stroke-width="2" marker-end="url(#ao)"/>
+<line x1="424.1" y1="270" x2="424.1" y2="353.0" stroke="#e0a355" stroke-width="2" stroke-dasharray="4,4"/>
+<line x1="424.1" y1="353.0" x2="777.8" y2="270" stroke="#e0a355" stroke-width="2" marker-end="url(#ao)"/>
+<line x1="777.8" y1="270" x2="777.8" y2="176.9" stroke="#e0a355" stroke-width="2" stroke-dasharray="4,4"/>
+<line x1="777.8" y1="176.9" x2="122.8" y2="270" stroke="#e0a355" stroke-width="2" marker-end="url(#ao)"/>
+<line x1="122.8" y1="270" x2="122.8" y2="380.2" stroke="#e0a355" stroke-width="2" stroke-dasharray="4,4"/>
+<circle cx="705.5" cy="191.4" r="5" fill="#e8e8e8"/>
+<text x="693.5" y="181.4" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="600" fill="#e8e8e8" text-anchor="end">x₀ = 1.5</text>
+<circle cx="424.1" cy="353.0" r="5" fill="#e8e8e8"/>
+<text x="424.1" y="254.0" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="600" fill="#e8e8e8" text-anchor="middle">x₁ = −1.69</text>
+<circle cx="777.8" cy="176.9" r="5" fill="#e8e8e8"/>
+<text x="777.8" y="292.0" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="600" fill="#e8e8e8" text-anchor="middle">x₂ = 2.32</text>
+<circle cx="122.8" cy="380.2" r="5" fill="#e8e8e8"/>
+<text x="122.8" y="254.0" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="600" fill="#e8e8e8" text-anchor="middle">x₃ = −5.11</text>
+<text x="60.0" y="436.0" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="400" fill="#888">1.5 → −1.69 → 2.32 → −5.11 → 32.3 … 점이 멀어질수록 arctan 이 납작해져 접선이 더 멀리 던진다.</text>
+<text x="60.0" y="458.0" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="400" fill="#888">경계 1.39 에서는 x₁ = −x₀ 이 되어 두 점을 영원히 오간다. 그 안쪽에서만 이차수렴이 선다.</text>
+</svg>

@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="520" viewBox="0 0 880 520" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <rect width="880" height="520" fill="#0a0a0a" rx="12"/>
+  <text x="60" y="46" font-size="22" font-weight="700" fill="#e8e8e8">젠센 부등식 — 볼록한 g에서는 평균점이 곡선 위에 선다</text>
+  <text x="60" y="76" font-size="14" fill="#888">g(x) = x², X는 1·2·3을 확률 0.5·0.3·0.2로 갖는다</text>
+  <line x1="120" y1="410" x2="785.0" y2="410" stroke="#888" stroke-width="1.5"/>
+  <line x1="120" y1="410" x2="120" y2="118.8" stroke="#888" stroke-width="1.5"/>
+  <text x="793.0" y="415" font-size="13" fill="#888">x</text>
+  <text x="114" y="110.8" font-size="13" fill="#888" text-anchor="end">y</text>
+  <line x1="310" y1="410" x2="310" y2="416" stroke="#888" stroke-width="1.5"/>
+  <text x="310" y="434" font-size="13" fill="#888" text-anchor="middle">1</text>
+  <line x1="500" y1="410" x2="500" y2="416" stroke="#888" stroke-width="1.5"/>
+  <text x="500" y="434" font-size="13" fill="#888" text-anchor="middle">2</text>
+  <line x1="690" y1="410" x2="690" y2="416" stroke="#888" stroke-width="1.5"/>
+  <text x="690" y="434" font-size="13" fill="#888" text-anchor="middle">3</text>
+  <text x="108" y="414" font-size="13" fill="#888" text-anchor="end">0</text>
+  <text x="108" y="302" font-size="13" fill="#888" text-anchor="end">4</text>
+  <line x1="120" y1="298" x2="766.0" y2="298" stroke="#444" stroke-width="1"/>
+  <text x="108" y="162" font-size="13" fill="#888" text-anchor="end">9</text>
+  <line x1="120" y1="158" x2="766.0" y2="158" stroke="#444" stroke-width="1"/>
+  <polygon points="310,382 500,298 690,158" fill="#7ec8e3" fill-opacity="0.18" stroke="#7777cc" stroke-width="1.5"/>
+  <polyline points="120.0,410.0 129.5,409.9 139.0,409.7 148.5,409.4 158.0,408.9 167.5,408.2 177.0,407.5 186.5,406.6 196.0,405.5 205.5,404.3 215.0,403.0 224.5,401.5 234.0,399.9 243.5,398.2 253.0,396.3 262.5,394.2 272.0,392.1 281.5,389.8 291.0,387.3 300.5,384.7 310.0,382.0 319.5,379.1 329.0,376.1 338.5,373.0 348.0,369.7 357.5,366.2 367.0,362.7 376.5,359.0 386.0,355.1 395.5,351.1 405.0,347.0 414.5,342.7 424.0,338.3 433.5,333.8 443.0,329.1 452.5,324.2 462.0,319.3 471.5,314.2 481.0,308.9 490.5,303.5 500.0,298.0 509.5,292.3 519.0,286.5 528.5,280.6 538.0,274.5 547.5,268.2 557.0,261.9 566.5,255.4 576.0,248.7 585.5,241.9 595.0,235.0 604.5,227.9 614.0,220.7 623.5,213.4 633.0,205.9 642.5,198.3 652.0,190.5 661.5,182.6 671.0,174.5 680.5,166.3 690.0,158.0 699.5,149.5 709.0,140.9 718.5,132.2 728.0,123.3 737.5,114.3" stroke="#7ec8e3" stroke-width="2.5" fill="none"/>
+  <circle cx="310" cy="382" r="5" fill="#e8e8e8"/>
+  <circle cx="500" cy="298" r="5" fill="#e8e8e8"/>
+  <circle cx="690" cy="158" r="5" fill="#e8e8e8"/>
+  <text x="314" y="404" font-size="13" fill="#888">(1, 1) 확률 0.5</text>
+  <text x="516" y="318" font-size="13" fill="#888">(2, 4) 확률 0.3</text>
+  <text x="706" y="163" font-size="13" fill="#888">(3, 9) 확률 0.2</text>
+  <line x1="443.0" y1="312.0" x2="443.0" y2="410" stroke="#888" stroke-width="1.5" stroke-dasharray="4,4"/>
+  <text x="443.0" y="454" font-size="13" font-weight="600" fill="#e8e8e8" text-anchor="middle">E[X] = 1.7</text>
+  <circle cx="443.0" cy="312.0" r="6" fill="#55c555"/>
+  <circle cx="443.0" cy="329.1" r="5" fill="#e05555"/>
+  <text x="427.0" y="302.0" font-size="14" font-weight="600" fill="#55c555" text-anchor="end">E[X²] = 3.5 (평균점)</text>
+  <text x="459.0" y="351.1" font-size="14" font-weight="600" fill="#e05555">(E[X])² = 2.89</text>
+  <text x="60" y="490" font-size="13" fill="#888">세 점의 무게중심은 삼각형 안에 있고, 그 삼각형은 볼록한 곡선 위쪽에 놓인다 — 그래서 3.5 ≥ 2.89.</text>
+</svg>

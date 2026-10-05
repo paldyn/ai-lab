@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="660" viewBox="0 0 880 660" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <defs>
+    <marker id="arr" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#888"/>
+    </marker>
+  </defs>
+  <rect width="880" height="660" rx="12" fill="#0a0a0a"/>
+
+  <text x="60" y="52" font-size="22" font-weight="700" fill="#e8e8e8">자릿수의 합으로 3의 배수 가르기</text>
+  <text x="60" y="78" font-size="13" fill="#888">4782를 3으로 나누지 않고, 숫자 넷을 더한 값만 보고 판정한다</text>
+
+  <rect x="60" y="100" width="760" height="90" rx="8" fill="#101010" stroke="#333" stroke-width="1"/>
+  <text x="84" y="140" font-size="16" font-weight="600" fill="#e8e8e8">① 자리마다 숫자를 떼어 놓는다</text>
+  <text x="84" y="162" font-size="13" fill="#888">천의 자리 · 백의 자리 · 십의 자리 · 일의 자리</text>
+  <rect x="580" y="123" width="44" height="44" rx="6" fill="#7ec8e3" fill-opacity="0.18" stroke="#7ec8e3" stroke-width="1.5"/>
+  <rect x="634" y="123" width="44" height="44" rx="6" fill="#7ec8e3" fill-opacity="0.18" stroke="#7ec8e3" stroke-width="1.5"/>
+  <rect x="688" y="123" width="44" height="44" rx="6" fill="#7ec8e3" fill-opacity="0.18" stroke="#7ec8e3" stroke-width="1.5"/>
+  <rect x="742" y="123" width="44" height="44" rx="6" fill="#7ec8e3" fill-opacity="0.18" stroke="#7ec8e3" stroke-width="1.5"/>
+  <text x="602" y="152" font-size="20" font-weight="700" fill="#e8e8e8" text-anchor="middle">4</text>
+  <text x="656" y="152" font-size="20" font-weight="700" fill="#e8e8e8" text-anchor="middle">7</text>
+  <text x="710" y="152" font-size="20" font-weight="700" fill="#e8e8e8" text-anchor="middle">8</text>
+  <text x="764" y="152" font-size="20" font-weight="700" fill="#e8e8e8" text-anchor="middle">2</text>
+
+  <line x1="440" y1="190" x2="440" y2="230" stroke="#888" stroke-width="2" marker-end="url(#arr)"/>
+
+  <rect x="60" y="230" width="760" height="90" rx="8" fill="#101010" stroke="#333" stroke-width="1"/>
+  <text x="84" y="270" font-size="16" font-weight="600" fill="#e8e8e8">② 떼어 놓은 숫자를 모두 더한다</text>
+  <text x="84" y="292" font-size="13" fill="#888">자릿값은 버리고 숫자만 더한다</text>
+  <text x="796" y="282" font-size="20" font-weight="700" fill="#7ec8e3" text-anchor="end">4 + 7 + 8 + 2 = 21</text>
+
+  <line x1="440" y1="320" x2="440" y2="360" stroke="#888" stroke-width="2" marker-end="url(#arr)"/>
+
+  <rect x="60" y="360" width="760" height="90" rx="8" fill="#101010" stroke="#333" stroke-width="1"/>
+  <text x="84" y="400" font-size="16" font-weight="600" fill="#e8e8e8">③ 합이 3의 배수인지 본다</text>
+  <text x="84" y="422" font-size="13" fill="#888">합이 아직 크면 한 번 더 더한다: 2 + 1 = 3</text>
+  <text x="796" y="412" font-size="20" font-weight="700" fill="#7ec8e3" text-anchor="end">21 = 3 × 7</text>
+
+  <line x1="440" y1="450" x2="440" y2="490" stroke="#888" stroke-width="2" marker-end="url(#arr)"/>
+
+  <rect x="60" y="490" width="760" height="90" rx="8" fill="#101010" stroke="#55c555" stroke-width="1.5"/>
+  <text x="84" y="530" font-size="16" font-weight="600" fill="#e8e8e8">④ 합이 3의 배수이면 처음 수도 3의 배수</text>
+  <text x="84" y="552" font-size="13" fill="#888">나머지도 같다: 21을 3으로 나눈 나머지 0</text>
+  <text x="796" y="542" font-size="20" font-weight="700" fill="#55c555" text-anchor="end">4782 = 3 × 1594</text>
+
+  <text x="440" y="622" font-size="13" fill="#888" text-anchor="middle">까닭: 4782 = (4 × 999 + 7 × 99 + 8 × 9) + (4 + 7 + 8 + 2) — 앞 묶음은 언제나 3의 배수다</text>
+</svg>

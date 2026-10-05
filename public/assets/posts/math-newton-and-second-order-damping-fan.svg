@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" viewBox="0 0 880 476">
+<rect x="0" y="0" width="880" height="476" rx="12" fill="#0a0a0a"/>
+<defs><marker id="fg" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto"><path d="M 0 0 L 13 7 L 0 14 z" fill="#55c555"/></marker><marker id="fb" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto"><path d="M 0 0 L 13 7 L 0 14 z" fill="#7ec8e3"/></marker><marker id="fo" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto"><path d="M 0 0 L 13 7 L 0 14 z" fill="#e0a355"/></marker></defs>
+<text x="60.0" y="44.0" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="22" font-weight="700" fill="#e8e8e8">λ를 키우면 갱신 방향이 뉴턴에서 경사하강으로 돈다</text>
+<text x="60.0" y="70.0" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="400" fill="#888">f(x,y) = ½(10x² + y²), 출발점 (1, 5). d(λ) = −(H + λI)⁻¹∇f 의 방향만 같은 길이로 그렸다</text>
+<ellipse cx="470" cy="250" rx="29.1" ry="30.0" fill="none" stroke="#444" stroke-width="1.2"/>
+<ellipse cx="470" cy="250" rx="58.2" ry="60.0" fill="none" stroke="#444" stroke-width="1.2"/>
+<ellipse cx="470" cy="250" rx="87.3" ry="90.0" fill="none" stroke="#444" stroke-width="1.2"/>
+<ellipse cx="470" cy="250" rx="116.4" ry="120.0" fill="none" stroke="#444" stroke-width="1.2"/>
+<ellipse cx="470" cy="250" rx="145.5" ry="150.0" fill="none" stroke="#444" stroke-width="1.2"/>
+<line x1="157.2" y1="250" x2="782.8" y2="250" stroke="#888" stroke-width="1.5"/>
+<line x1="470" y1="418" x2="470" y2="82" stroke="#888" stroke-width="1.5"/>
+<text x="794.8" y="255.0" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="400" fill="#888">x</text>
+<text x="480.0" y="90.0" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="400" fill="#888">y</text>
+<line x1="562.0" y1="100.0" x2="441.7" y2="296.1" stroke="#55c555" stroke-width="2.5" marker-end="url(#fg)"/>
+<text x="429.7" y="314.1" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="600" fill="#55c555" text-anchor="end">λ = 0  뉴턴</text>
+<line x1="562.0" y1="100.0" x2="390.8" y2="253.6" stroke="#7ec8e3" stroke-width="2.5" marker-end="url(#fb)"/>
+<text x="378.8" y="247.6" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="600" fill="#7ec8e3" text-anchor="end">λ = 1</text>
+<line x1="562.0" y1="100.0" x2="358.8" y2="207.7" stroke="#7ec8e3" stroke-width="2.5" marker-end="url(#fb)"/>
+<text x="346.8" y="212.7" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="600" fill="#7ec8e3" text-anchor="end">λ = 3</text>
+<line x1="562.0" y1="100.0" x2="341.5" y2="165.4" stroke="#7ec8e3" stroke-width="2.5" marker-end="url(#fb)"/>
+<text x="329.5" y="170.4" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="600" fill="#7ec8e3" text-anchor="end">λ = 10</text>
+<line x1="562.0" y1="100.0" x2="335.0" y2="137.0" stroke="#e0a355" stroke-width="2.5" marker-end="url(#fo)"/>
+<text x="323.0" y="142.0" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="600" fill="#e0a355" text-anchor="end">λ → ∞  경사하강</text>
+<circle cx="562.0" cy="100.0" r="5.5" fill="#e8e8e8"/>
+<text x="576.0" y="92.0" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="600" fill="#e8e8e8">출발점 (1, 5)</text>
+<circle cx="470" cy="250" r="5" fill="#55c555"/>
+<text x="484.0" y="272.0" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="600" fill="#55c555">최소점</text>
+<text x="60.0" y="436.0" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="400" fill="#888">λ = 0이면 (−1, −5)로 최소점을 곧장 겨누고, λ가 커질수록 −∇f = (−10, −5) 쪽으로 미끄러진다.</text>
+<text x="60.0" y="458.0" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="400" fill="#888">실제 스텝 길이는 λ가 클수록 짧다 — λ = 10에서 (−0.5, −0.45), λ = 100에서 (−0.09, −0.05).</text>
+</svg>
