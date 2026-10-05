@@ -412,20 +412,30 @@ export const guideProducts: Product[] = [
       'gemini-3-7-flash',
       'gemini-3-6-flash',
       'gemini-3-1-pro',
-      'claude-sonnet-4-6',
+      'claude-opus-5-5',
       'claude-opus-4-6',
+      'claude-sonnet-5-5',
+      'claude-sonnet-4-6',
       'gpt-oss-120b',
     ],
     /*
       **셋 중 유일하게 모델 선택기 목록 자체로 확인한 것입니다.**
       antigravity.google/docs/models 의 Reasoning Model 표와 그 아래 드롭다운 목록
-      양쪽에 이 일곱이 그대로 있습니다(선택기 표기는 「GPT-OSS 120B (Medium)」).
+      양쪽에 이 아홉이 그대로 있습니다(선택기 표기는 「GPT-OSS 120B (Medium)」).
 
-      **회사 경계를 넘는 자리입니다** — Google 제품인데 Claude 둘과 GPT-OSS가
+      Claude 5.5 둘은 2026-10-06에 더했습니다 — 드롭다운에 「Claude Sonnet 5.5 (Thinking)」·
+      「Claude Opus 5.5 (Thinking)」이 섰고, 표의 각주가 「** Available on Google AI Pro for
+      non-trial subscriptions only.」입니다. 같은 날 4.6 둘과 GPT-OSS에는 「* Will be removed on
+      November 2, 2026.」이 붙었습니다 — 아직 고를 수 있어 목록에 둡니다. 4.6 둘은 이제 같은
+      회사의 현행(5.5 둘)이 있어 화면에서 빠집니다(`shownModels`). 차례는 회사 서열을 따라
+      Opus를 앞에, 구세대를 같은 등급의 현행 바로 뒤에 둡니다.
+
+      **회사 경계를 넘는 자리입니다** — Google 제품인데 Claude 넷과 GPT-OSS가
       함께 섭니다. 「제품은 자기 회사 모델만 가리킨다」는 검사를 썼다가 이것 때문에
-      지웠습니다. Claude 둘은 선택기에 「(thinking)」이 붙지만 그건 모드입니다.
+      지웠습니다. Claude 넷은 선택기에 「(thinking)」이 붙지만 그건 모드입니다.
 
-      표에 따르면 Claude 둘과 GPT-OSS는 Enterprise에서 ❌입니다 — 요금제로 갈리는
+      표에 따르면 Claude 넷은 Enterprise에서, Claude 5.5 둘은 Free & Plus에서, 4.6 둘은 Ultra에서,
+      GPT-OSS는 Enterprise에서 ❌입니다 — 요금제로 갈리는
       값이라 여기 안 적고, 주장으로 세울 자리입니다.
     */
     oneLine: '여러 에이전트를 한 작업 공간에서 다루는 개발 플랫폼.',
