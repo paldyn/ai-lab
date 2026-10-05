@@ -172,6 +172,30 @@ export const globalNewsUpdatedAt = '2026-09-30';
  */
 const entries: NewsItem[] = [
   {
+    id: 'blog-gemini-4-argon-our-next-era-of-frontier-intelligence',
+    source: 'Google DeepMind',
+    kind: 'model',
+    title: 'Google DeepMind, Gemini 4 Argon 공개 — 사이버 방어 기관부터 단계 배포',
+    summary:
+      'Google DeepMind가 새 프런티어 모델 Gemini 4 Argon을 Fairwind Program의 사이버 방어 기관부터 열었다. ' +
+      '출력 한도를 64K에서 100만 토큰으로 늘렸고, 도입가는 100만 토큰당 입력 2달러·출력 10달러다.',
+    publishedAt: '2026-09-30',
+    collectedAt: '2026-10-06',
+    category: 'Frontier',
+    signal: '프런티어 모델',
+    url: 'https://deepmind.google/blog/gemini-4-argon-our-next-era-of-frontier-intelligence',
+    model: {
+      family: 'Gemini',
+      name: 'Gemini 4 Argon',
+      kind: '신규 모델',
+      status: '제한 공개',
+      useCase: '장기 코딩·사이버 방어',
+      headline: '한 번에 수십만 토큰을 생각하고 써 내도록 출력 한도를 100만으로 연 Gemini 4 세대 첫 모델',
+      logo: 'assets/gemini.svg',
+      tone: 'gemini',
+    },
+  },
+  {
     id: 'disrupting-a-coordinated-model-distillation-campaign',
     source: 'OpenAI',
     kind: 'company',

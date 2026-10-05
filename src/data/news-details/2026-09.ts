@@ -2,6 +2,21 @@ import type { NewsDetail } from '../news';
 
 /** 2026-09 발표의 모달 본문. 목록은 news.ts에 있습니다. */
 export const details: Record<string, NewsDetail> = {
+  'blog-gemini-4-argon-our-next-era-of-frontier-intelligence': {
+    points: [
+      'Fairwind Program의 신뢰할 수 있는 사이버 방어 기관에 먼저 배포하고, 유료 API 고객과 Google AI Ultra 구독자부터 넓힌다',
+      '출력 토큰 한도를 이전 64K에서 100만 토큰으로 늘렸다',
+      '도입가는 100만 토큰당 입력 2달러·출력 10달러, 캐시 입력은 95% 할인이며 도입 기간 뒤 입력 4달러·출력 20달러가 된다',
+      'DeepSWE v1.1 77.9%, LVBench 91.7%, AutomationBench 51.3%로 1위라고 밝혔다',
+      'CWE-bench v1에서 68%로 공동 1위이며, 신뢰 방어 기관과 내부 팀에는 사이버 가드레일 없이 제공한다',
+      '사내에서는 Fuchsia Zircon 커널 등 80만 줄 넘는 C/C++의 Rust 이전과 데이터센터 메모리 300TiB 넘는 절감에 쓰였다',
+      '미국 정부의 자율적 사전 모델 접근 절차에 참여하며, 사고 사슬과 행동을 감시해 필요하면 실행을 멈추는 장치를 둔다',
+    ],
+    commentary:
+      '숫자보다 눈에 띄는 것은 배포 순서다. 사이버 역량이 큰 모델을 방어 기관에 먼저, 가드레일을 걷은 채로 주는 방식은 ' +
+      '3.8 Flash Cyber에서 시작한 Fairwind 경로를 프런티어 모델로 넓힌 것이다. 출력 100만 토큰은 긴 이전 작업을 한 번에 ' +
+      '맡기는 쓰임을 겨냥하지만, 일반 개발자가 언제 쓸 수 있는지는 아직 날짜가 없다.',
+  },
   'disrupting-a-coordinated-model-distillation-campaign': {
     points: [
       '7월 1일 시작해 7월 24~25일에 4,000명 넘는 사용자가 16,000건의 추출 요청을 몰아 보냈다',
