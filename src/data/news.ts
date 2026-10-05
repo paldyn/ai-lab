@@ -172,6 +172,34 @@ export const globalNewsUpdatedAt = '2026-09-30';
  */
 const entries: NewsItem[] = [
   {
+    id: 'claude-frontier-academy',
+    source: 'Anthropic',
+    kind: 'company',
+    title: 'Anthropic, 1억 달러로 엔지니어 1만 명 기르는 Claude Frontier Academy',
+    summary:
+      'Anthropic이 1억 달러를 들여 2027년 말까지 Frontier Deployed Engineer 1만 명을 기르는 Claude Frontier Academy를 ' +
+      '열었다. 첫 기수에는 Accenture·Deloitte·McKinsey·Morgan Stanley 등의 엔지니어가 들어갔다.',
+    publishedAt: '2026-10-02',
+    collectedAt: '2026-10-06',
+    category: 'Corporate',
+    signal: 'AI 인재 양성',
+    url: 'https://www.anthropic.com/news/claude-frontier-academy',
+  },
+  {
+    id: 'ai-google-ai-updates-september-2026',
+    source: 'Google DeepMind',
+    kind: 'company',
+    title: 'Google이 정리한 9월 AI 발표 — Gemini 4 Argon과 WeatherNext 3',
+    summary:
+      'Google이 9월에 내놓은 AI 발표를 한데 정리했다. Gemini 4 Argon과 3.8 Flash·Flash Cyber, 3.8 Live 음성 모델, ' +
+      'Gemini 앱의 Connected Apps와 Windows판, Googlebook 사전 주문, WeatherNext 3, AlphaGenome Atlas가 들어갔다.',
+    publishedAt: '2026-10-02',
+    collectedAt: '2026-10-06',
+    category: 'Product',
+    signal: '월간 발표 정리',
+    url: 'https://blog.google/innovation-and-ai/technology/ai/google-ai-updates-september-2026',
+  },
+  {
     id: 'barclays-scales-claude',
     source: 'Anthropic',
     kind: 'company',
