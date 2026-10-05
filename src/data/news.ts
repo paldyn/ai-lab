@@ -160,7 +160,7 @@ export interface NewsDetail {
   commentary: string;
 }
 
-export const globalNewsUpdatedAt = '2026-09-30';
+export const globalNewsUpdatedAt = '2026-10-05';
 
 /**
  * 공식 발표 한 건 = 항목 한 개. 2026년 1월부터 쌓는 아카이브이며 오래된 항목을
@@ -171,6 +171,118 @@ export const globalNewsUpdatedAt = '2026-09-30';
  * 목록에서 파생됩니다. 갱신 시 globalNewsUpdatedAt도 함께 올립니다.
  */
 const entries: NewsItem[] = [
+  {
+    id: 'eu-text-provenance',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'OpenAI, EU AI 법 대응해 ChatGPT·Codex 텍스트에 워터마크',
+    summary:
+      'OpenAI가 EU AI 법의 텍스트 식별 의무에 맞춰 단계적 워터마크 방침을 밝혔다. API는 오늘부터 일부 모델에서 ' +
+      '선택 적용하고, ChatGPT·Codex는 몇 주 안에 EU에서만 보이지 않는 워터마크를 넣는다.',
+    publishedAt: '2026-10-05',
+    collectedAt: '2026-10-06',
+    category: 'Safety',
+    signal: '콘텐츠 출처 표시',
+    url: 'https://openai.com/index/eu-text-provenance',
+  },
+  {
+    id: 'new-chatgpt-ads-format-and-measurement',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'ChatGPT 광고, 이미지 생성 중 뜨는 시각 광고와 성과 측정 확대',
+    summary:
+      'OpenAI가 ChatGPT 이미지 생성 중에 보이는 새 시각 광고 형식을 이달 말 미국에서 시험한다고 밝혔다. ' +
+      '전환 데이터 연동·어트리뷰션 파트너를 넓히고 DoubleVerify·IAS와 브랜드 적합성 평가 시범도 시작한다.',
+    publishedAt: '2026-10-05',
+    collectedAt: '2026-10-06',
+    category: 'Product',
+    signal: 'ChatGPT 광고',
+    url: 'https://openai.com/index/new-chatgpt-ads-format-and-measurement',
+  },
+  {
+    id: 'practical-guide-building-gpt-6',
+    source: 'OpenAI',
+    kind: 'model',
+    title: 'OpenAI, GPT-6 계열 모델 고르기와 장시간 작업 운영 가이드',
+    summary:
+      'OpenAI가 GPT-6 Astra·GPT-6.1 Sol·GPT-6 Luna를 일에 맞게 고르는 법과 추론 강도·속도 선택, ' +
+      '프롬프트·스킬 정리, 실행 중 조정과 비동기 도구로 장시간 작업을 끌고 가는 법을 정리했다.',
+    publishedAt: '2026-10-02',
+    collectedAt: '2026-10-06',
+    category: 'Frontier',
+    signal: '에이전틱 워크플로',
+    url: 'https://openai.com/index/practical-guide-building-gpt-6',
+  },
+  {
+    id: 'chatham-financial',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'Chatham Financial, Codex로 만든 앱으로 거래 검증 30분→4분 미만',
+    summary:
+      '자본시장 자문사 Chatham Financial이 Codex로 내부·고객용 도구를 만들고 GPT-5.6으로 AI 기능을 돌린다고 밝혔다. ' +
+      'Codex로 만든 거래 검증 앱은 초기 측정에서 검토 시간을 약 30분에서 4분 미만으로 줄였다.',
+    publishedAt: '2026-10-02',
+    collectedAt: '2026-10-06',
+    category: 'Product',
+    signal: '기업 도입 사례',
+    url: 'https://openai.com/index/chatham-financial',
+  },
+  {
+    id: 'the-eternal-complement',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'Intelligence Age 에세이, 초지능은 지루한 일에서 가치를 낼까',
+    summary:
+      'OpenAI의 Intelligence Age가 다음 경제를 다루는 연재 첫 에세이를 실었다. 아이디어를 실현할 실행 역량이 ' +
+      '병목이 되는 미래를 사고 중심의 깊이 문명과 물리적 확장 중심의 너비 문명 두 갈래로 그린다.',
+    publishedAt: '2026-10-01',
+    collectedAt: '2026-10-06',
+    category: 'Research',
+    signal: '경제 에세이',
+    url: 'https://openai.com/index/the-eternal-complement',
+  },
+  {
+    id: 'albertsons-reimagining-retail',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'Albertsons, ChatGPT 안 Safeway 장보기와 전사 AI 확대',
+    summary:
+      '매장 2,200여 곳을 둔 미국 식료품 유통사 Albertsons가 OpenAI와 협력을 넓힌다. 레시피·사진·목록에서 ' +
+      '장바구니를 꾸려 Safeway 결제로 넘기는 ChatGPT 경험을 내놨고 다른 자사 브랜드로도 넓힐 계획이다.',
+    publishedAt: '2026-10-01',
+    collectedAt: '2026-10-06',
+    category: 'Product',
+    signal: '기업 도입 사례',
+    url: 'https://openai.com/index/albertsons-reimagining-retail',
+  },
+  {
+    id: 'the-den-family-social',
+    source: 'OpenAI',
+    kind: 'company',
+    title: '부모 위한 사교 클럽 The Den, ChatGPT Work로 주 10~15시간 절약',
+    summary:
+      '덴버의 부모 대상 사교 클럽 The Den이 두 번째 지점을 준비하며 ChatGPT Work를 쓴다고 밝혔다. ' +
+      '보조금 신청은 사흘에서 두 시간, 주류 면허 서류는 나흘에서 세 시간으로 줄었다.',
+    publishedAt: '2026-10-01',
+    collectedAt: '2026-10-06',
+    category: 'Product',
+    signal: '중소기업 도입',
+    url: 'https://openai.com/index/the-den-family-social',
+  },
+  {
+    id: 'wayfair',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'Wayfair, OpenAI 모델로 상품 정보 1,100만 건 검증·공급사 문의 자동화',
+    summary:
+      '가구·홈 리테일러 Wayfair가 OpenAI 모델로 상품 속성을 점검하는 시스템과 공급사 지원 플랫폼 Wilma를 만들었다. ' +
+      '상품 1,100만 개 넘게의 속성을 검증했고 공급사 문의를 월 41,000건 자동 처리한다.',
+    publishedAt: '2026-09-25',
+    collectedAt: '2026-10-06',
+    category: 'Product',
+    signal: '기업 도입 사례',
+    url: 'https://openai.com/index/wayfair',
+  },
   {
     id: 'claude-frontier-academy',
     source: 'Anthropic',
