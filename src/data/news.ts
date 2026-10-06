@@ -172,6 +172,20 @@ export const globalNewsUpdatedAt = '2026-10-05';
  */
 const entries: NewsItem[] = [
   {
+    id: 'cyber-verification-program',
+    source: 'Anthropic',
+    kind: 'company',
+    title: 'Anthropic, 사이버 검증 프로그램을 접근 등급 셋으로 확대',
+    summary:
+      'Anthropic이 Cyber Verification Program을 Defense·Red Team·Specialized 세 등급으로 개편하고 ' +
+      'Project Glasswing을 여기에 합쳤다. 등급마다 Opus 5.5·Sonnet 5.5·Mythos 5.1 등 최상위 모델을 연다.',
+    publishedAt: '2026-10-06',
+    collectedAt: '2026-10-07',
+    category: 'Product',
+    signal: '사이버 접근 검증',
+    url: 'https://www.anthropic.com/news/cyber-verification-program',
+  },
+  {
     id: 'eu-text-provenance',
     source: 'OpenAI',
     kind: 'company',

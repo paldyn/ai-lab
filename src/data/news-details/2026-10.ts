@@ -2,6 +2,22 @@ import type { NewsDetail } from '../news';
 
 /** 2026-10 발표의 모달 본문. 목록은 news.ts에 있습니다. */
 export const details: Record<string, NewsDetail> = {
+  'cyber-verification-program': {
+    points: [
+      'CVP를 Defense Access·Red Team Access·Specialized Access 세 등급으로 나눠 다시 열었다',
+      'Defense Access는 관제·사고 대응·악성코드 분석 등 방어 작업용이고 개인 연구자도 신청할 수 있다',
+      'Red Team Access는 승인된 침투 테스트를 더하며 심사에 몇 주가 걸리고 조직만 받는다',
+      'Specialized Access는 항공·전력망·통신 등 안전 시스템 시험용으로 미국 정부와 함께 심사한다',
+      'Project Glasswing 기존 참여사는 재승인 없이 Specialized Access로 옮겨진다',
+      '참여 조직은 데이터 보존이 필수이고, 올가을 EFS가 나오면 자체 클라우드에 보관할 수 있다',
+      'CyScenarioBench 50회 시험에서 Defense 등급은 46회가 차단됐고 Red Team 등급은 차단 없이 34회 성공했다',
+      'Glasswing 참여사는 2026년 4~7월 검증된 취약점을 최소 129,000건 찾았다고 밝혔다',
+    ],
+    commentary:
+      '일반 모델은 사이버 작업을 대부분 막고, 검증된 방어자에게만 단계별로 푸는 구조를 공식화했다. ' +
+      'OpenAI의 Daybreak, Google의 Fairwind와 같은 「신원 확인 뒤 접근」 모델이라, 보안 업무에 Claude를 쓰려는 ' +
+      '조직은 이제 모델 선택보다 어느 등급의 심사를 통과하느냐가 먼저다. 데이터 보존 의무도 도입 판단에 걸린다.',
+  },
   'eu-text-provenance': {
     points: [
       'EU AI 법은 생성 AI 제공자에게 생성 텍스트를 기계가 식별할 수 있게 하라고 요구한다',
