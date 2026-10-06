@@ -1467,15 +1467,16 @@ export const certs: Cert[] = [
     difficulty: 1,
     difficultyBasis: '선행 요건 없는 파운데이셔널 등급, 객관식 65문항을 90분에 봅니다.',
     employment: 2,
-    employmentBasis: 'AWS 파운데이셔널 등급이고 비기술 직군을 대상으로 합니다.',
+    employmentBasis: 'AWS 파운데이셔널(입문) 등급이고 선행 요건이 없습니다.',
     whatItMeasures:
       'AI·머신러닝·생성형 AI의 개념과 방법, 전략을 일반론과 AWS 양쪽에서 이해하고 있는지를 재는 파운데이셔널(입문) 등급 자격증이다. 특정 직무에 매이지 ' +
       '않는 시험이며, AI/ML 솔루션을 직접 만들지는 않더라도 사용하는 사람을 대상으로 한다. 검증 항목은 넷이다 — 개념·방법·전략의 이해, 업무 문제에 ' +
       'AI/ML과 생성형 AI를 적용할 자리의 판단, 사용 사례에 맞는 기술 종류의 선택, 책임 있는 사용이다. 모델·알고리즘 코딩과 파이프라인 구축 같은 구현 ' +
       '작업은 출제 범위 밖이다.',
     audience:
-      'AI/ML 솔루션을 직접 만들지는 않지만 업무에서 쓰거나 판단해야 하는 사람이다. 공식 페이지는 비즈니스 분석가, IT 지원, 마케터, 제품·프로젝트 관리자, ' +
-      '현업·IT 관리자, 영업 직군을 예로 든다.',
+      'AWS에서 AI/ML과 생성형 AI의 기초 지식을 검증하려는 사람이다. 공식 페이지는 대상 역할을 「AWS에서 AI/ML을 탐색하는 누구나」로 적고 ' +
+      '클라우드·개발·데이터·IT·AI/ML·현업(line-of-business) 직군을 예로 든다. 예전에 예로 들던 비즈니스 분석가·마케터·영업·제품 관리자 같은 비기술 ' +
+      '직군은 이제 같은 시행처의 AWS Certified AI Business Strategist 쪽 예시로 옮겨 갔다.',
     format:
       '총 65문항 / 90분. 이 중 채점되는 것은 50문항이고 나머지 15문항은 향후 출제 검증용 비채점 문항으로, 시험 중에는 어느 것이 비채점인지 표시되지 ' +
       '않는다. 문항 유형은 객관식(정답 1 + 오답 3), 복수응답(선택지 5개 이상 중 정답 2개 이상, 전부 맞혀야 득점), 순서 배열(3~5개를 올바른 ' +
@@ -1514,9 +1515,9 @@ export const certs: Cert[] = [
       '취소는 Pearson VUE에 연락하거나 AWS Certification 계정에서 하고, 이 정책은 AWS 인증 전 시험에 공통이다. 질병이나 예기치 못한 비상 상황은 ' +
       '증빙을 내면 수수료 없이 다시 예약해 준다.',
     validity:
-      '3년. 갱신 경로는 셋이고 모두 3년 연장이다 — 최신 버전의 AWS Certified AI Practitioner 시험 합격, AWS Certified ' +
-      'Machine Learning Engineer - Associate(MLA-C01) 합격, AWS Certified Generative AI Developer ' +
-      '- Professional(AIP-C01) 합격. 셋 다 AWS Certification 계정에 들어오는 50% 할인 바우처를 쓸 수 있다. 이 셋 중 하나에 ' +
+      '3년. 갱신 경로는 셋이고 모두 3년 연장이다 — 최신 버전의 AWS Certified AI Practitioner 시험 합격, 최신 버전의 AWS Certified ' +
+      'Machine Learning Engineer - Associate 시험 합격, 최신 버전의 AWS Certified Generative AI Developer ' +
+      '- Professional 시험 합격. 셋 다 AWS Certification 계정에 들어오는 50% 할인 바우처를 쓸 수 있다. 이 셋 중 하나에 ' +
       '합격하면 갱신되고 별도 절차는 없다. 다만 상위 등급이면 아무거나 되는 것은 아니다 — 공식 recertification 페이지가 이 자격증의 갱신 경로로 ' +
       '인정하는 것은 위 셋뿐이라, Solutions Architect - Professional 같은 다른 상위 자격증을 따도 이 자격증은 갱신되지 않는다.',
     prerequisite:
@@ -1572,16 +1573,19 @@ export const certs: Cert[] = [
       },
     ],
     officialUrl: 'https://aws.amazon.com/certification/certified-ai-practitioner/',
-    verifiedAt: '2026-09-17',
+    verifiedAt: '2026-10-06',
     notes:
-      '- 2026년 9월 기준 현행 버전은 AIF-C01이다. 폐지·대체된 자격증이 아니며 후속 코드도 아직 없다. 참고한 공식 시험 가이드 PDF는 Version ' +
+      '- 2026년 10월 기준 현행 버전은 AIF-C01이다. 폐지·대체된 자격증이 아니며 후속 코드도 아직 없다. 참고한 공식 시험 가이드 PDF는 Version ' +
       '1.4다.\n' +
       '- 한국어 응시가 가능하다. 응시 언어는 한국어·영어·일본어 등 열둘이다. \'ESL +30\'(비영어권 응시자의 시험 시간 30분 추가)은 영어로 응시할 때만 ' +
       '적용되어 한국어 응시자에게는 해당되지 않는다.\n' +
       '- 그 열둘 중 이탈리아어·독일어는 응시가 종료된다 — 공식 페이지가 「The AWS Certified AI Practitioner exam in Italian and ' +
       'German will be retired after October 15, 2026.」라고 적었다. 한국어는 그대로다.\n' +
-      '- AWS의 AI 계열 자격증은 세 등급이다 — 이 시험(파운데이셔널), MLA-C01(어소시에이트), AIP-C01(프로페셔널). 직접 모델을 만들고 ' +
+      '- AWS의 AI 계열 기술 자격증은 세 등급이다 — 이 시험(파운데이셔널), MLA-C01(어소시에이트), AIP-C01(프로페셔널). 직접 모델을 만들고 ' +
       '배포하는 쪽 내용을 원한다면 뒤의 둘이다.\n' +
+      '- 이와 별도로 Business 범주의 AWS Certified AI Business Strategist가 베타로 나와 있다. 공식 페이지가 두 자격의 차이를 직접 적는다 — ' +
+      'AI Business Strategist는 AI 투자·사업 타당성·거버넌스·도입 확산의 판단을 검증하고 AWS AI 서비스 지식은 평가하지 않으며, 이 시험은 AI·ML·' +
+      '생성형 AI 개념과 AWS AI 서비스의 기초 지식을 검증한다.\n' +
       '- 출제 범위 밖으로 못 박은 직무는 일곱이다 — 모델·알고리즘 코딩, 데이터·특성 공학, 하이퍼파라미터 튜닝과 모델 최적화, 파이프라인·인프라 구축과 배포, ' +
       '수학·통계 분석, 보안·컴플라이언스 프로토콜 구현, 거버넌스 프레임워크·정책 수립. 뒤의 둘 때문에 도메인 5는 개념만 묻고 구현은 묻지 않는다.\n' +
       '- 공식 출처 두 곳이 어긋나는 자리가 둘 있다 — 문항 유형(PDF는 다섯, 온라인 가이드는 넷)과 권장 지식의 서비스 목록(PDF는 SageMaker, ' +
