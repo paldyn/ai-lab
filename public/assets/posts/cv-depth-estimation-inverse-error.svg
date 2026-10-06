@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="470" viewBox="0 0 880 470" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <defs>
+    <marker id="dieArr" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#888888"/>
+    </marker>
+  </defs>
+  <rect x="0" y="0" width="880" height="470" rx="12" fill="#0a0a0a"/>
+
+  <text x="62" y="42" font-size="22" font-weight="700" fill="#e8e8e8">같은 0.005가 만드는 두 오차</text>
+  <text x="62" y="68" font-size="13" fill="#888">깊이 = 1 ÷ 시차. 시차가 0에 가까울수록 곡선이 서 있어 작은 어긋남이 크게 뛴다.</text>
+
+  <!-- axes -->
+  <line x1="100" y1="400" x2="480" y2="400" stroke="#888888" stroke-width="1.5" marker-end="url(#dieArr)"/>
+  <line x1="100" y1="400" x2="100" y2="96" stroke="#888888" stroke-width="1.5" marker-end="url(#dieArr)"/>
+  <text x="430" y="428" font-size="13" fill="#888">시차</text>
+  <text x="56" y="112" font-size="13" fill="#888">깊이</text>
+
+  <!-- curve d = 1/p : x from 0.004(p) ; map p in [0,0.6] to x 100..460 ; d in [0,220] to y 400..110 -->
+  <path d="M 106 110 C 112 330, 160 385, 460 397" stroke="#7ec8e3" stroke-width="2.5" fill="none"/>
+
+  <!-- far band -->
+  <rect x="103" y="110" width="6" height="150" fill="#e05555" opacity="0.55"/>
+  <line x1="112" y1="185" x2="196" y2="185" stroke="#e05555" stroke-width="2" stroke-dasharray="4,4"/>
+  <text x="204" y="180" font-size="13" font-weight="600" fill="#e05555">먼 점</text>
+  <text x="204" y="198" font-size="12" fill="#9aa4b8">0.010 → 0.005 · 100m → 200m</text>
+
+  <!-- near band -->
+  <rect x="397" y="388" width="6" height="12" fill="#55c555" opacity="0.8"/>
+  <line x1="400" y1="384" x2="400" y2="330" stroke="#55c555" stroke-width="2" stroke-dasharray="4,4"/>
+  <text x="300" y="298" font-size="13" font-weight="600" fill="#55c555">가까운 점</text>
+  <text x="300" y="318" font-size="12" fill="#9aa4b8">0.500 → 0.495 · 2m → 2.02m</text>
+
+  <!-- right panel -->
+  <rect x="540" y="110" width="280" height="96" rx="8" fill="#12151c" stroke="#55c555" stroke-width="1.5"/>
+  <text x="564" y="146" font-size="16" font-weight="600" fill="#e8e8e8">가까운 곳은 값으로</text>
+  <text x="564" y="176" font-size="13" fill="#9aa4b8">시차 오차 0.005 → 깊이 오차 1%</text>
+
+  <rect x="540" y="230" width="280" height="96" rx="8" fill="#12151c" stroke="#e05555" stroke-width="1.5"/>
+  <text x="564" y="266" font-size="16" font-weight="600" fill="#e8e8e8">먼 곳은 순서로만</text>
+  <text x="564" y="296" font-size="13" fill="#9aa4b8">시차 오차 0.005 → 깊이 두 배</text>
+
+  <text x="540" y="372" font-size="13" fill="#9aa4b8">쓸 거리의 상한을 정해 두고</text>
+  <text x="540" y="394" font-size="13" fill="#9aa4b8">그 너머는 「멀다」 하나로 묶는다.</text>
+</svg>

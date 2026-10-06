@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="400" viewBox="0 0 880 400" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <defs>
+    <marker id="nfArr" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#888888"/>
+    </marker>
+  </defs>
+  <rect x="0" y="0" width="880" height="400" rx="12" fill="#0a0a0a"/>
+
+  <text x="62" y="42" font-size="22" font-weight="700" fill="#e8e8e8">지운 것이 정답이었다</text>
+  <text x="62" y="68" font-size="13" fill="#888">기본 불용어 목록과 특수문자 정리를 그대로 걸면 부정 리뷰가 긍정이 된다.</text>
+
+  <!-- stage 1 -->
+  <rect x="62" y="110" width="220" height="120" rx="8" fill="#12151c" stroke="#3a4a6e" stroke-width="1.5"/>
+  <text x="86" y="144" font-size="13" fill="#888">원문</text>
+  <text x="86" y="178" font-size="16" font-weight="600" fill="#e8e8e8">not good at all 😞</text>
+  <text x="86" y="206" font-size="13" fill="#e05555">판정: 부정</text>
+
+  <line x1="282" y1="170" x2="330" y2="170" stroke="#888888" stroke-width="2" marker-end="url(#nfArr)"/>
+
+  <!-- stage 2 -->
+  <rect x="330" y="110" width="220" height="120" rx="8" fill="#12151c" stroke="#3a4a6e" stroke-width="1.5"/>
+  <text x="354" y="144" font-size="13" fill="#888">불용어 제거</text>
+  <text x="354" y="178" font-size="16" font-weight="600" fill="#e8e8e8">good 😞</text>
+  <text x="354" y="206" font-size="13" fill="#9aa4b8">not · at · all 삭제</text>
+
+  <line x1="550" y1="170" x2="598" y2="170" stroke="#888888" stroke-width="2" marker-end="url(#nfArr)"/>
+
+  <!-- stage 3 -->
+  <rect x="598" y="110" width="220" height="120" rx="8" fill="#12151c" stroke="#e05555" stroke-width="1.5"/>
+  <text x="622" y="144" font-size="13" fill="#888">특수문자 정리</text>
+  <text x="622" y="178" font-size="16" font-weight="600" fill="#e8e8e8">good</text>
+  <text x="622" y="206" font-size="13" fill="#55c555">판정: 긍정</text>
+
+  <!-- remedy -->
+  <rect x="62" y="270" width="756" height="84" rx="8" fill="#12151c" stroke="#55c555" stroke-width="1.5"/>
+  <text x="86" y="304" font-size="16" font-weight="600" fill="#e8e8e8">대응</text>
+  <text x="86" y="332" font-size="13" fill="#9aa4b8">부정어(not · no · nor)는 목록에서 빼고, 이모지는 지우지 말고 &lt;울음&gt; 같은 자리표시자로 묶는다.</text>
+</svg>
