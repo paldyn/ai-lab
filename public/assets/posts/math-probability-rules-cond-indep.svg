@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="470" viewBox="0 0 880 470" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <defs>
+    <marker id="arrCi" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#7ec8e3"/>
+    </marker>
+    <marker id="arrCiDim" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#555"/>
+    </marker>
+  </defs>
+  <rect width="880" height="470" fill="#0a0a0a" rx="12"/>
+  <text x="60" y="46" font-size="22" font-weight="700" fill="#e8e8e8">사슬 x → y → z: y를 알면 x와 z 사이의 길이 끊긴다</text>
+
+  <text x="60" y="94" font-size="16" font-weight="600" fill="#e8e8e8">y를 모를 때</text>
+  <circle cx="200" cy="150" r="34" fill="none" stroke="#7ec8e3" stroke-width="2"/>
+  <circle cx="440" cy="150" r="34" fill="none" stroke="#7ec8e3" stroke-width="2"/>
+  <circle cx="680" cy="150" r="34" fill="none" stroke="#7ec8e3" stroke-width="2"/>
+  <text x="200" y="157" font-size="20" fill="#e8e8e8" text-anchor="middle">x</text>
+  <text x="440" y="157" font-size="20" fill="#e8e8e8" text-anchor="middle">y</text>
+  <text x="680" y="157" font-size="20" fill="#e8e8e8" text-anchor="middle">z</text>
+  <line x1="234" y1="150" x2="406" y2="150" stroke="#7ec8e3" stroke-width="2.5" marker-end="url(#arrCi)"/>
+  <line x1="474" y1="150" x2="646" y2="150" stroke="#7ec8e3" stroke-width="2.5" marker-end="url(#arrCi)"/>
+  <text x="200" y="210" font-size="13" fill="#888" text-anchor="middle">먼 과거</text>
+  <text x="440" y="210" font-size="13" fill="#888" text-anchor="middle">바로 앞 토큰</text>
+  <text x="680" y="210" font-size="13" fill="#888" text-anchor="middle">다음 토큰</text>
+  <text x="820" y="157" font-size="14" fill="#55c555" text-anchor="end">종속</text>
+
+  <line x1="60" y1="240" x2="820" y2="240" stroke="#333" stroke-width="1"/>
+
+  <text x="60" y="280" font-size="16" font-weight="600" fill="#e8e8e8">y를 알 때</text>
+  <circle cx="200" cy="336" r="34" fill="none" stroke="#555" stroke-width="2"/>
+  <circle cx="440" cy="336" r="34" fill="#7ec8e3" fill-opacity="0.35" stroke="#7ec8e3" stroke-width="2"/>
+  <circle cx="680" cy="336" r="34" fill="none" stroke="#555" stroke-width="2"/>
+  <text x="200" y="343" font-size="20" fill="#e8e8e8" text-anchor="middle">x</text>
+  <text x="440" y="343" font-size="20" fill="#e8e8e8" text-anchor="middle">y</text>
+  <text x="680" y="343" font-size="20" fill="#e8e8e8" text-anchor="middle">z</text>
+  <line x1="234" y1="336" x2="406" y2="336" stroke="#555" stroke-width="2" stroke-dasharray="4,4" marker-end="url(#arrCiDim)"/>
+  <line x1="474" y1="336" x2="646" y2="336" stroke="#555" stroke-width="2" stroke-dasharray="4,4" marker-end="url(#arrCiDim)"/>
+  <line x1="308" y1="320" x2="332" y2="352" stroke="#e05555" stroke-width="3"/>
+  <line x1="332" y1="320" x2="308" y2="352" stroke="#e05555" stroke-width="3"/>
+  <line x1="548" y1="320" x2="572" y2="352" stroke="#e05555" stroke-width="3"/>
+  <line x1="572" y1="320" x2="548" y2="352" stroke="#e05555" stroke-width="3"/>
+  <text x="440" y="396" font-size="13" fill="#7ec8e3" text-anchor="middle">관측됨</text>
+  <text x="820" y="343" font-size="14" fill="#e05555" text-anchor="end">조건부독립</text>
+
+  <text x="60" y="440" font-size="14" fill="#888">p(x, z | y) = p(x | y) p(z | y) — x가 z에 전할 것은 이미 y에 다 담겨 있다</text>
+</svg>

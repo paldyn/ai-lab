@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="520" viewBox="0 0 880 520">
+<rect width="880" height="520" rx="12" fill="#0a0a0a"/>
+<text x="60" y="46" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="22" font-weight="700" fill="#e8e8e8">sparsemax 는 문턱 위만 남긴다</text>
+<text x="60" y="72" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">같은 로짓 (1, 0.5, −1). sparsemax 는 셋째 후보에 정확히 0을 주고, softmax 는 작은 양수를 남긴다.</text>
+<text x="170" y="120" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#e8e8e8" text-anchor="middle">로짓과 문턱 τ = 0.25</text>
+<text x="104.0" y="450" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888" text-anchor="middle">z₁</text>
+<text x="170.0" y="450" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888" text-anchor="middle">z₂</text>
+<text x="236.0" y="450" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888" text-anchor="middle">z₃</text>
+<text x="440" y="120" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#7ec8e3" text-anchor="middle">sparsemax</text>
+<text x="374.0" y="450" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888" text-anchor="middle">z₁</text>
+<text x="440.0" y="450" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888" text-anchor="middle">z₂</text>
+<text x="506.0" y="450" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888" text-anchor="middle">z₃</text>
+<text x="710" y="120" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#7777cc" text-anchor="middle">softmax</text>
+<text x="644.0" y="450" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888" text-anchor="middle">z₁</text>
+<text x="710.0" y="450" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888" text-anchor="middle">z₂</text>
+<text x="776.0" y="450" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888" text-anchor="middle">z₃</text>
+<rect x="82" y="180.0" width="44" height="110.0" rx="3" fill="#888" fill-opacity="0.35"/>
+<rect x="82" y="180.0" width="44" height="82.5" rx="3" fill="#7ec8e3" fill-opacity="0.85"/>
+<text x="104.0" y="170.0" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e8e8e8" text-anchor="middle">1</text>
+<rect x="148" y="235.0" width="44" height="55.0" rx="3" fill="#888" fill-opacity="0.35"/>
+<rect x="148" y="235.0" width="44" height="27.5" rx="3" fill="#7ec8e3" fill-opacity="0.85"/>
+<text x="170.0" y="225.0" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e8e8e8" text-anchor="middle">0.5</text>
+<rect x="214" y="290.0" width="44" height="110.0" rx="3" fill="#888" fill-opacity="0.35"/>
+<text x="236.0" y="418.0" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e8e8e8" text-anchor="middle">-1</text>
+<line x1="70" y1="290" x2="270" y2="290" stroke="#888" stroke-width="1.5"/>
+<line x1="70" y1="262.5" x2="270" y2="262.5" stroke="#e05555" stroke-width="2" stroke-dasharray="5,3"/>
+<text x="270" y="280.5" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e05555" text-anchor="end">τ</text>
+<rect x="352" y="220.0" width="44" height="180.0" rx="3" fill="#7ec8e3" fill-opacity="0.85"/>
+<text x="374.0" y="210.0" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e8e8e8" text-anchor="middle">0.75</text>
+<rect x="418" y="340.0" width="44" height="60.0" rx="3" fill="#7ec8e3" fill-opacity="0.85"/>
+<text x="440.0" y="330.0" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e8e8e8" text-anchor="middle">0.25</text>
+<text x="506.0" y="390.0" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e8e8e8" text-anchor="middle">0</text>
+<line x1="340" y1="400" x2="540" y2="400" stroke="#888" stroke-width="1.5"/>
+<rect x="622" y="262.2" width="44" height="137.8" rx="3" fill="#7777cc" fill-opacity="0.85"/>
+<text x="644.0" y="252.2" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e8e8e8" text-anchor="middle">0.574</text>
+<rect x="688" y="316.5" width="44" height="83.5" rx="3" fill="#7777cc" fill-opacity="0.85"/>
+<text x="710.0" y="306.5" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e8e8e8" text-anchor="middle">0.348</text>
+<rect x="754" y="381.3" width="44" height="18.7" rx="3" fill="#7777cc" fill-opacity="0.85"/>
+<text x="776.0" y="371.3" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e8e8e8" text-anchor="middle">0.078</text>
+<line x1="610" y1="400" x2="810" y2="400" stroke="#888" stroke-width="1.5"/>
+<text x="440" y="490" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888" text-anchor="middle">p = max(z − τ, 0): 문턱 위로 솟은 파란 부분이 그대로 sparsemax 의 확률이다 (0.75, 0.25, 0)</text>
+</svg>

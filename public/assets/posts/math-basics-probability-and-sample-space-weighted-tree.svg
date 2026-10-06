@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" viewBox="0 0 880 540" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+<rect x="0" y="0" width="880" height="540" rx="12" fill="#0a0a0a"/>
+<text x="440" y="44" text-anchor="middle" font-size="22" font-weight="700" fill="#e8e8e8">앞면이 0.6인 동전 세 번 — 가지를 곱한다</text>
+<text x="440" y="70" text-anchor="middle" font-size="13" fill="#888">가지마다 그 갈래의 확률, 잎마다 지나온 가지의 곱</text>
+<text x="110" y="100" text-anchor="middle" font-size="13" fill="#888">시작</text>
+<text x="270" y="100" text-anchor="middle" font-size="13" fill="#888">첫 번째</text>
+<text x="430" y="100" text-anchor="middle" font-size="13" fill="#888">두 번째</text>
+<text x="590" y="100" text-anchor="middle" font-size="13" fill="#888">세 번째</text>
+<line x1="122" y1="290.0" x2="258" y2="210.0" stroke="#7ec8e3" stroke-width="2"/>
+<text x="190.0" y="241.0" text-anchor="middle" font-size="13" fill="#7ec8e3">앞 0.6</text>
+<line x1="122" y1="290.0" x2="258" y2="370.0" stroke="#7777cc" stroke-width="2"/>
+<text x="190.0" y="347.0" text-anchor="middle" font-size="13" fill="#7777cc">뒤 0.4</text>
+<line x1="282" y1="210.0" x2="418" y2="170.0" stroke="#7ec8e3" stroke-width="2"/>
+<text x="350.0" y="181.0" text-anchor="middle" font-size="13" fill="#7ec8e3">앞 0.6</text>
+<line x1="282" y1="210.0" x2="418" y2="250.0" stroke="#7777cc" stroke-width="2"/>
+<text x="350.0" y="247.0" text-anchor="middle" font-size="13" fill="#7777cc">뒤 0.4</text>
+<line x1="282" y1="370.0" x2="418" y2="330.0" stroke="#7ec8e3" stroke-width="2"/>
+<text x="350.0" y="341.0" text-anchor="middle" font-size="13" fill="#7ec8e3">앞 0.6</text>
+<line x1="282" y1="370.0" x2="418" y2="410.0" stroke="#7777cc" stroke-width="2"/>
+<text x="350.0" y="407.0" text-anchor="middle" font-size="13" fill="#7777cc">뒤 0.4</text>
+<line x1="442" y1="170.0" x2="578" y2="150.0" stroke="#7ec8e3" stroke-width="2"/>
+<text x="510.0" y="151.0" text-anchor="middle" font-size="13" fill="#7ec8e3">앞 0.6</text>
+<line x1="442" y1="170.0" x2="578" y2="190.0" stroke="#7777cc" stroke-width="2"/>
+<text x="510.0" y="197.0" text-anchor="middle" font-size="13" fill="#7777cc">뒤 0.4</text>
+<line x1="442" y1="250.0" x2="578" y2="230.0" stroke="#7ec8e3" stroke-width="2"/>
+<text x="510.0" y="231.0" text-anchor="middle" font-size="13" fill="#7ec8e3">앞 0.6</text>
+<line x1="442" y1="250.0" x2="578" y2="270.0" stroke="#7777cc" stroke-width="2"/>
+<text x="510.0" y="277.0" text-anchor="middle" font-size="13" fill="#7777cc">뒤 0.4</text>
+<line x1="442" y1="330.0" x2="578" y2="310.0" stroke="#7ec8e3" stroke-width="2"/>
+<text x="510.0" y="311.0" text-anchor="middle" font-size="13" fill="#7ec8e3">앞 0.6</text>
+<line x1="442" y1="330.0" x2="578" y2="350.0" stroke="#7777cc" stroke-width="2"/>
+<text x="510.0" y="357.0" text-anchor="middle" font-size="13" fill="#7777cc">뒤 0.4</text>
+<line x1="442" y1="410.0" x2="578" y2="390.0" stroke="#7ec8e3" stroke-width="2"/>
+<text x="510.0" y="391.0" text-anchor="middle" font-size="13" fill="#7ec8e3">앞 0.6</text>
+<line x1="442" y1="410.0" x2="578" y2="430.0" stroke="#7777cc" stroke-width="2"/>
+<text x="510.0" y="437.0" text-anchor="middle" font-size="13" fill="#7777cc">뒤 0.4</text>
+<circle cx="110" cy="290.0" r="5" fill="#e8e8e8"/>
+<circle cx="270" cy="210.0" r="5" fill="#e8e8e8"/>
+<circle cx="270" cy="370.0" r="5" fill="#e8e8e8"/>
+<circle cx="430" cy="170.0" r="5" fill="#e8e8e8"/>
+<circle cx="430" cy="250.0" r="5" fill="#e8e8e8"/>
+<circle cx="430" cy="330.0" r="5" fill="#e8e8e8"/>
+<circle cx="430" cy="410.0" r="5" fill="#e8e8e8"/>
+<circle cx="590" cy="150.0" r="5" fill="#e8e8e8"/>
+<circle cx="590" cy="190.0" r="5" fill="#e8e8e8"/>
+<circle cx="590" cy="230.0" r="5" fill="#e8e8e8"/>
+<circle cx="590" cy="270.0" r="5" fill="#e8e8e8"/>
+<circle cx="590" cy="310.0" r="5" fill="#e8e8e8"/>
+<circle cx="590" cy="350.0" r="5" fill="#e8e8e8"/>
+<circle cx="590" cy="390.0" r="5" fill="#e8e8e8"/>
+<circle cx="590" cy="430.0" r="5" fill="#e8e8e8"/>
+<text x="612" y="155.0" font-size="16" font-weight="600" fill="#e8e8e8">앞앞앞</text>
+<text x="700" y="155.0" font-size="16" font-weight="600" fill="#e8e8e8">0.216</text>
+<text x="612" y="195.0" font-size="16" font-weight="600" fill="#55c555">앞앞뒤</text>
+<text x="700" y="195.0" font-size="16" font-weight="600" fill="#55c555">0.144</text>
+<text x="612" y="235.0" font-size="16" font-weight="600" fill="#55c555">앞뒤앞</text>
+<text x="700" y="235.0" font-size="16" font-weight="600" fill="#55c555">0.144</text>
+<text x="612" y="275.0" font-size="16" font-weight="600" fill="#e8e8e8">앞뒤뒤</text>
+<text x="700" y="275.0" font-size="16" font-weight="600" fill="#e8e8e8">0.096</text>
+<text x="612" y="315.0" font-size="16" font-weight="600" fill="#55c555">뒤앞앞</text>
+<text x="700" y="315.0" font-size="16" font-weight="600" fill="#55c555">0.144</text>
+<text x="612" y="355.0" font-size="16" font-weight="600" fill="#e8e8e8">뒤앞뒤</text>
+<text x="700" y="355.0" font-size="16" font-weight="600" fill="#e8e8e8">0.096</text>
+<text x="612" y="395.0" font-size="16" font-weight="600" fill="#e8e8e8">뒤뒤앞</text>
+<text x="700" y="395.0" font-size="16" font-weight="600" fill="#e8e8e8">0.096</text>
+<text x="612" y="435.0" font-size="16" font-weight="600" fill="#e8e8e8">뒤뒤뒤</text>
+<text x="700" y="435.0" font-size="16" font-weight="600" fill="#e8e8e8">0.064</text>
+<text x="440" y="490" text-anchor="middle" font-size="16" font-weight="600" fill="#e8e8e8">0.216 + 0.432 + 0.288 + 0.064 = 1</text>
+<text x="440" y="516" text-anchor="middle" font-size="13" fill="#55c555">초록 셋이 앞면 두 번 — 3 × 0.144 = 0.432</text>
+</svg>

@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="560" viewBox="0 0 880 560" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <defs>
+    <marker id="arrSim" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#888"/>
+    </marker>
+  </defs>
+  <rect width="880" height="560" fill="#0a0a0a" rx="12"/>
+  <text x="60" y="46" font-size="22" font-weight="700" fill="#e8e8e8">부분마다 A가 앞서는데, 합치면 B가 앞선다</text>
+
+  <rect x="60" y="76" width="360" height="172" fill="#7ec8e3" fill-opacity="0.08" stroke="#7ec8e3" stroke-width="1" rx="8"/>
+  <text x="84" y="106" font-size="16" font-weight="600" fill="#e8e8e8">쉬운 문제</text>
+  <text x="200" y="138" font-size="13" fill="#888">정답 / 문제</text>
+  <text x="330" y="138" font-size="13" fill="#888">정답률</text>
+  <text x="84" y="170" font-size="15" fill="#e8e8e8">A</text>
+  <text x="200" y="170" font-size="15" fill="#e8e8e8">81 / 87</text>
+  <text x="330" y="170" font-size="15" font-weight="700" fill="#55c555">93.1%</text>
+  <text x="84" y="202" font-size="15" fill="#e8e8e8">B</text>
+  <text x="200" y="202" font-size="15" fill="#e8e8e8">234 / 270</text>
+  <text x="330" y="202" font-size="15" fill="#e8e8e8">86.7%</text>
+  <text x="84" y="226" font-size="13" fill="#888">A가 앞선다</text>
+
+  <rect x="460" y="76" width="360" height="172" fill="#7ec8e3" fill-opacity="0.08" stroke="#7ec8e3" stroke-width="1" rx="8"/>
+  <text x="484" y="106" font-size="16" font-weight="600" fill="#e8e8e8">어려운 문제</text>
+  <text x="600" y="138" font-size="13" fill="#888">정답 / 문제</text>
+  <text x="730" y="138" font-size="13" fill="#888">정답률</text>
+  <text x="484" y="170" font-size="15" fill="#e8e8e8">A</text>
+  <text x="600" y="170" font-size="15" fill="#e8e8e8">192 / 263</text>
+  <text x="730" y="170" font-size="15" font-weight="700" fill="#55c555">73.0%</text>
+  <text x="484" y="202" font-size="15" fill="#e8e8e8">B</text>
+  <text x="600" y="202" font-size="15" fill="#e8e8e8">55 / 80</text>
+  <text x="730" y="202" font-size="15" fill="#e8e8e8">68.8%</text>
+  <text x="484" y="226" font-size="13" fill="#888">A가 앞선다</text>
+
+  <line x1="240" y1="248" x2="360" y2="300" stroke="#888" stroke-width="2" marker-end="url(#arrSim)"/>
+  <line x1="640" y1="248" x2="520" y2="300" stroke="#888" stroke-width="2" marker-end="url(#arrSim)"/>
+  <text x="440" y="276" font-size="13" fill="#888" text-anchor="middle">더한다</text>
+
+  <rect x="200" y="300" width="480" height="140" fill="#e05555" fill-opacity="0.08" stroke="#e05555" stroke-width="1" rx="8"/>
+  <text x="224" y="330" font-size="16" font-weight="600" fill="#e8e8e8">합친 것</text>
+  <text x="320" y="330" font-size="13" fill="#888">정답 / 문제</text>
+  <text x="430" y="330" font-size="13" fill="#888">정답률</text>
+  <text x="540" y="330" font-size="13" fill="#888">어려운 문제 비중</text>
+  <text x="224" y="366" font-size="15" fill="#e8e8e8">A</text>
+  <text x="320" y="366" font-size="15" fill="#e8e8e8">273 / 350</text>
+  <text x="430" y="366" font-size="15" fill="#e8e8e8">78.0%</text>
+  <text x="540" y="366" font-size="15" fill="#e05555">75.1%</text>
+  <text x="224" y="400" font-size="15" fill="#e8e8e8">B</text>
+  <text x="320" y="400" font-size="15" fill="#e8e8e8">289 / 350</text>
+  <text x="430" y="400" font-size="15" font-weight="700" fill="#55c555">82.6%</text>
+  <text x="540" y="400" font-size="15" fill="#e8e8e8">22.9%</text>
+  <text x="224" y="426" font-size="13" fill="#e05555">B가 앞선다 — 비교가 뒤집혔다</text>
+
+  <text x="60" y="482" font-size="14" fill="#888">합친 정답률 = 난이도별 정답률을 «그 모델이 받은 문제 구성»으로 가중평균한 값</text>
+  <text x="60" y="510" font-size="14" fill="#888">A는 정답률이 낮은 어려운 문제에 무게의 75.1%가 실려 평균이 끌려 내려갔다</text>
+</svg>
