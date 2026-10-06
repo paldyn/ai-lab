@@ -1375,7 +1375,7 @@ export const certs: Cert[] = [
       },
     ],
     officialUrl: 'https://aice.study/info/aice',
-    verifiedAt: '2026-09-17',
+    verifiedAt: '2026-10-06',
     notes:
       '- 등급이 9개다 — Future 3·2·1급(블록코딩), Junior·Basic(노코딩 AIDU), Generative 2·1급(생성형 AI), ' +
       'Associate·Professional(파이썬). 흔히 알려진 3~4등급 구성은 옛 정보다.\n' +
@@ -2552,7 +2552,7 @@ export const certs: Cert[] = [
       },
     ],
     officialUrl: 'https://www.dataq.or.kr/www/sub/a_03.do',
-    verifiedAt: '2026-09-07',
+    verifiedAt: '2026-10-06',
     notes:
       '- 국가공인 민간자격(공인자격 제2022-04호), 근거는 자격기본법 제17조. 시행처 주소는 서울시 중구 세종대로9길 42 부영빌딩 8층, Tel ' +
       '1877-9817.\n' +
@@ -2691,7 +2691,7 @@ export const certs: Cert[] = [
       },
     ],
     officialUrl: 'https://learn.microsoft.com/en-us/credentials/certifications/exams/ai-901/',
-    verifiedAt: '2026-09-07',
+    verifiedAt: '2026-10-06',
     notes:
       '- 시험 전달은 Pearson VUE가 맡고, 학생·교육기관 및 MOS 경로는 Certiport다.\n' +
       '- AI-900은 2026년 6월 30일에 사용 중지되고 AI-901로 대체됐다. 2026년 7월 1일 이후 Microsoft Certified: Azure ' +
