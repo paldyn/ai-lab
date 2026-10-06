@@ -325,3 +325,5 @@ dense   nostop  0.7387  0.9260  -0.0427 [-0.0620, -0.0227]   46.8
 읽어주셔서 감사합니다. 😊
 
 **지난 글:** [질의를 앞에서부터 자르면 검색은 몇 토큰에서 무너지는가: 공짜 구간은 없었다](/articles/lab-query-length-recall)
+
+**다음 글:** [무관 문서를 섞어 코퍼스를 키우면 Recall은 어떻게 떨어지는가: 떨어뜨린 것은 양이 아니라 닮음이었다](/articles/lab-distractor-corpus-growth)
