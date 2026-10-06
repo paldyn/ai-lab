@@ -2,6 +2,36 @@ import type { NewsDetail } from '../news';
 
 /** 2026-10 발표의 모달 본문. 목록은 news.ts에 있습니다. */
 export const details: Record<string, NewsDetail> = {
+  'advancing-computer-use-with-ironclad': {
+    points: [
+      'OpenAI가 전문 소프트웨어를 쓰는 에이전트 연구를 위해 소수 소프트웨어 기업과 직접 협력하며, 첫 파트너가 Ironclad다',
+      'Ironclad 직원과 사내 사용자와 함께 법무·상거래·조달 업무 11개 과제를 골랐고, 숙련자 기준 과제당 30~40분짜리다',
+      '과제마다 복잡도에 따라 8~50개 기준으로 채점했고, Ironclad가 모델이 연습할 호스팅 환경을 제공했다',
+      '대표 워크플로를 본뜬 합성 과제를 만들어 강화학습으로 모델을 훈련했다',
+      'GPT-6 Astra(Max 추론)는 평균 55.0%로 GPT-5.6 Sol(High 추론)의 41.6%보다 높았고, 시도당 추정 시간은 37.0분에서 19.2분으로 줄었다',
+      'Astra 개발에 쓴 내부 모델은 같은 과제에서 63.7%를 기록했다',
+      '어려운 업무 사례와 실패 증거, 평가 기준, 안전한 테스트 환경을 가져올 소프트웨어 기업을 추가로 모집한다',
+    ],
+    commentary:
+      '컴퓨터 사용 에이전트의 다음 병목이 범용 화면 조작이 아니라 업무 규칙을 지키는 특정 소프트웨어 운용이라는 판단이 ' +
+      '읽힌다. 소프트웨어 회사가 과제·채점·환경을 내주고 모델 개선을 받아 가는 방식이라, 자사 제품 위에서 에이전트가 잘 ' +
+      '돌게 하려는 SaaS 기업에게는 새로운 협업 경로가 생긴 셈이다. 다만 과제 11개와 내부 평가라 일반화는 지켜볼 일이다.',
+  },
+  'atlassian-partnership': {
+    points: [
+      '새 계약으로 OpenAI 프런티어 모델이 Atlassian 플랫폼 전반과 Rovo의 에이전트를 구동한다',
+      'Rovo는 사람·프로젝트·문서·결정을 잇는 Atlassian의 Teamwork Graph와 OpenAI 모델을 결합한다',
+      'Atlassian은 GPT-6 Astra와 GPT-5.6 계열을 포함한 최신 모델에 더 넓게 접근하게 된다',
+      '2023년에 시작한 협력의 확대이며, Atlassian 개발자 3,000명 이상이 Codex를 쓴다',
+      'Atlassian·Teamwork Graph CLI 플러그인으로 ChatGPT와 Codex에서 Jira 작업 항목과 Confluence 문서를 권한 범위 안에서 불러올 수 있다',
+      'OpenAI는 사내 핵심 워크플로 관리에 Jira를 계속 쓴다',
+      '두 회사는 Jira에서 AI 에이전트에게 일을 맡기고 진행을 추적하는 더 깊은 통합과, 개발 생산성 측정 플랫폼 DX와의 연계를 검토하고 있다',
+    ],
+    commentary:
+      '업무 도구 회사가 자체 모델 대신 프런티어 모델을 들여와 자기 데이터 그래프 위에 얹는 흐름의 한 사례다. 경쟁의 축이 ' +
+      '모델 자체보다 조직 맥락을 누가 쥐고 있느냐로 옮겨 가고 있다. 거꾸로 ChatGPT·Codex 쪽에서 Jira·Confluence를 ' +
+      '끌어오는 플러그인도 함께 열려, 어느 화면에서 일하든 같은 맥락을 쓰려는 양방향 연결이라는 점이 눈에 띈다.',
+  },
   'cyber-verification-program': {
     points: [
       'CVP를 Defense Access·Red Team Access·Specialized Access 세 등급으로 나눠 다시 열었다',

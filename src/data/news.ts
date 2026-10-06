@@ -160,7 +160,7 @@ export interface NewsDetail {
   commentary: string;
 }
 
-export const globalNewsUpdatedAt = '2026-10-05';
+export const globalNewsUpdatedAt = '2026-10-06';
 
 /**
  * 공식 발표 한 건 = 항목 한 개. 2026년 1월부터 쌓는 아카이브이며 오래된 항목을
@@ -171,6 +171,34 @@ export const globalNewsUpdatedAt = '2026-10-05';
  * 목록에서 파생됩니다. 갱신 시 globalNewsUpdatedAt도 함께 올립니다.
  */
 const entries: NewsItem[] = [
+  {
+    id: 'advancing-computer-use-with-ironclad',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'OpenAI, Ironclad와 계약 업무로 컴퓨터 사용 에이전트 학습',
+    summary:
+      'OpenAI가 Ironclad와 손잡고 계약·조달 업무 11개 과제를 만들어 모델 학습과 평가에 썼다고 밝혔다. ' +
+      '이 과제로 학습한 GPT-6 Astra는 평균 55.0%로 GPT-5.6 Sol(41.6%)보다 높았고 시도당 시간은 줄었다.',
+    publishedAt: '2026-10-06',
+    collectedAt: '2026-10-07',
+    category: 'Research',
+    signal: '컴퓨터 사용',
+    url: 'https://openai.com/index/advancing-computer-use-with-ironclad',
+  },
+  {
+    id: 'atlassian-partnership',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'Atlassian, OpenAI 모델로 Rovo와 플랫폼 에이전트 구동',
+    summary:
+      'Atlassian과 OpenAI가 제휴를 넓혀 GPT-6 계열 모델이 Atlassian 플랫폼과 Rovo의 에이전트를 돌리게 한다. ' +
+      'Atlassian은 GPT-6 Astra·GPT-5.6 계열에 더 넓게 접근하고, 개발자 3,000명 넘게 Codex를 쓴다.',
+    publishedAt: '2026-10-06',
+    collectedAt: '2026-10-07',
+    category: 'Product',
+    signal: '기업용 에이전트',
+    url: 'https://openai.com/index/atlassian-partnership',
+  },
   {
     id: 'cyber-verification-program',
     source: 'Anthropic',
