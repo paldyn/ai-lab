@@ -57,7 +57,7 @@ const models: ModelInfo[] = [
       kind: 'order',
       rank: 1,
       of: 4,
-      url: 'https://platform.claude.com/docs/en/about-claude/models/optimizing-for-cost-and-intelligence',
+      url: 'https://platform.claude.com/docs/en/about-claude/models/choosing-a-model',
       speed: 'Slower',
       speedUrl: 'https://platform.claude.com/docs/en/models/overview',
     },
@@ -101,7 +101,7 @@ const models: ModelInfo[] = [
       kind: 'order',
       rank: 2,
       of: 4,
-      url: 'https://platform.claude.com/docs/en/about-claude/models/optimizing-for-cost-and-intelligence',
+      url: 'https://platform.claude.com/docs/en/about-claude/models/choosing-a-model',
       speed: 'Moderate',
       speedUrl: 'https://platform.claude.com/docs/en/models/overview',
     },
@@ -135,15 +135,48 @@ const models: ModelInfo[] = [
       'https://platform.claude.com/docs/en/about-claude/models/overview',
   },
   /*
-    **한때 뺐다가 되돌린 자리입니다**(2026-09-17). 이전에는 「`haiku` 별칭을 고를 수
-    있는 것은 확실한데 **어느 버전인지 문서에 없어**」 안 실었습니다. 지금은 답이
-    있습니다 — 모델 개요 표가 현행 넷 중 하나로 **Claude Haiku 4.5**를 세우고
-    API 별칭 `claude-haiku-4-5`를 함께 적습니다. Claude Code 쪽도 못 박습니다:
-    「Haiku models are always available and can't be disabled, so every member keeps
-    at least one usable model.」
+    **Claude Haiku 5.5**(2026-10-07 출시)가 현행 Haiku입니다. 2026-10-08에 열어 보니 모델 개요
+    비교표의 넷째 열이 Haiku 5.5로 바뀌었고(「Claude API ID | `claude-haiku-5-5`」), 선택표의
+    「The lowest latency and price」 줄도 Haiku 5.5로 옮겨 갔습니다 — 쓰임은 그 줄에서 옮깁니다.
+    서열은 넷 중 4위, 속도는 개요 표의 「Fastest」입니다.
 
-    **없어서 뺀 것과 몰라서 뺀 것은 다릅니다.** 그때는 몰라서 뺀 것이 맞았고, 알게
-    된 날 되돌리는 것도 같은 규칙의 앞면입니다.
+    Claude Code에서 고를 수 있다는 근거는 별칭 표 「| Anthropic API | Opus 5.5 | Sonnet 5.5 |
+    Haiku 5.5 |」와 「Use v2.1.293 or later with Haiku 5.5.」입니다(code.claude.com/docs/en/model-config).
+    마크는 문서 첫 화면의 Haiku 5.5 카드가 짝지어 둔 것입니다 — `bird.svg`를 `--cds-cactus`
+    (그 사이트 CSS에서 `#bcd1ca`) 판에 세웁니다. Haiku 4.5와 같습니다.
+  */
+  {
+    id: 'claude-haiku-5-5',
+    vendorId: 'anthropic',
+    name: 'Claude Haiku 5.5',
+    mark: { file: 'assets/model-haiku.svg', plate: '#BCD1CA' },
+    apiId: 'claude-haiku-5-5',
+    useWhen: {
+      text: '지연과 비용을 가장 낮춰야 하는 일에',
+      url: 'https://platform.claude.com/docs/en/about-claude/models/choosing-a-model',
+    },
+    rating: {
+      kind: 'order',
+      rank: 4,
+      of: 4,
+      url: 'https://platform.claude.com/docs/en/about-claude/models/choosing-a-model',
+      speed: 'Fastest',
+      speedUrl: 'https://platform.claude.com/docs/en/models/overview',
+    },
+    current: true,
+    sourceUrl: 'https://platform.claude.com/docs/en/models/haiku-5-5/overview',
+  },
+  /*
+    **한때 뺐다가 되돌린 자리입니다**(2026-09-17). 이전에는 「`haiku` 별칭을 고를 수
+    있는 것은 확실한데 **어느 버전인지 문서에 없어**」 안 실었습니다. 그때 모델 개요 표가
+    현행 넷 중 하나로 **Claude Haiku 4.5**를 세워 되돌렸습니다.
+
+    **2026-10-08에 구세대로 내렸습니다.** Haiku 5.5가 나와 모델 개요가 Haiku 4.5를
+    「Legacy models (still available)」 줄에 세우고, 제 모델 문서도 「**Legacy.** Released
+    October 15, 2025.」로 시작해 상태 칸이 「Active (legacy)」입니다. 선택표의 줄이 Haiku 5.5로
+    옮겨 가 쓰임은 `null`이고, 서열에서도 빠집니다. Claude Code 문서가 아직 Haiku 4.5를
+    부르므로(「a session saved on Haiku 4.5 resumes on Haiku 5.5」, 다른 프로바이더의 `haiku`)
+    목록에는 남기고 화면에서만 빠집니다(`shownModels`).
   */
   {
     id: 'claude-haiku-4-5',
@@ -151,21 +184,9 @@ const models: ModelInfo[] = [
     name: 'Claude Haiku 4.5',
     mark: { file: 'assets/model-haiku.svg', plate: '#BCD1CA' },
     apiId: 'claude-haiku-4-5',
-    useWhen: {
-      text: '지연과 비용을 가장 낮춰야 하는 일에(확장 사고 지원)',
-      url: 'https://platform.claude.com/docs/en/about-claude/models/choosing-a-model',
-    },
-    rating: {
-      kind: 'order',
-      rank: 4,
-      of: 4,
-      url: 'https://platform.claude.com/docs/en/about-claude/models/optimizing-for-cost-and-intelligence',
-      speed: 'Fastest',
-      speedUrl: 'https://platform.claude.com/docs/en/models/overview',
-    },
-    current: true,
-    sourceUrl:
-      'https://platform.claude.com/docs/en/about-claude/models/overview',
+    useWhen: null,
+    current: false,
+    sourceUrl: 'https://platform.claude.com/docs/en/models/haiku-4-5/overview',
   },
   /*
     **Claude Sonnet 5.5**(2026-09-28 출시)가 현행 Sonnet입니다. 모델 문서가 「Active (latest)」,
@@ -181,6 +202,9 @@ const models: ModelInfo[] = [
     and price」 Haiku 4.5 차례로 서고, Sonnet 5.5 발표 글도 「Opus 5.5 remains clearly stronger at
     complex, open-ended work requiring sustained judgment」라고 적습니다. 벤치마크 하나
     (Terminal-Bench 4.0)에서는 Opus 5.5보다 높지만, 회사 자신이 서열을 그렇게 두지 않습니다.
+
+    **2026-10-08에 그 서열 문장이 `optimizing-for-cost-and-intelligence`에서 사라졌습니다**(페이지가
+    다시 쓰였습니다). 그래서 Anthropic 넷의 서열 링크가 모두 선택표를 가리킵니다.
   */
   {
     id: 'claude-sonnet-5-5',

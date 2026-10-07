@@ -181,6 +181,7 @@ export const guideProducts: Product[] = [
       'claude-opus-5',
       'claude-sonnet-5-5',
       'claude-sonnet-5',
+      'claude-haiku-5-5',
       'claude-haiku-4-5',
     ],
     /*
@@ -216,6 +217,11 @@ export const guideProducts: Product[] = [
       빠졌지만 목록에 남깁니다 — support.claude.com/en/articles/11940350의 지원 모델 목록에
       「Sonnet 5, claude-sonnet-5」가 있고 「claude --model claude-sonnet-5」로 고릅니다.
       구세대라 화면에서는 빠집니다. 차례는 회사 서열(Fable · Opus · Sonnet · Haiku)입니다.
+
+      **2026-10-08에 `haiku`가 Haiku 5.5로 풀립니다** — 별칭 표 「| Anthropic API | Opus 5.5 |
+      Sonnet 5.5 | Haiku 5.5 |」, 「Use v2.1.293 or later with Haiku 5.5.」. Haiku 4.5는 별칭에서
+      빠졌지만 같은 문서가 「a session saved on Haiku 4.5 resumes on Haiku 5.5」로 아직 부르고
+      다른 프로바이더의 `haiku`가 Haiku 4.5로 풀려 목록에 남깁니다. 구세대라 화면에서는 빠집니다.
     */
     oneLine: '저장소를 읽고 고치고 명령까지 실행하는 코딩 에이전트.',
     officialUrl: 'https://code.claude.com/docs/en/overview',

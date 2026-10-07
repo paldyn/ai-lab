@@ -1953,6 +1953,16 @@ export const playbookClaims: Claim[] = [
     },
   },
   {
+    id: 'claude-haiku-5-5-context',
+    subject: { kind: 'model', id: 'claude-haiku-5-5' },
+    topic: 'context',
+    statement: 'Claude Haiku 5.5의 입력 컨텍스트 창',
+    value: '1M 토큰',
+    tier: 'vendor',
+    volatility: 'model',
+    source: { label: 'Claude Haiku 5.5 모델 문서', url: 'https://platform.claude.com/docs/en/models/haiku-5-5/overview' },
+  },
+  {
     id: 'claude-haiku-4-5-context',
     subject: { kind: 'model', id: 'claude-haiku-4-5' },
     topic: 'context',
@@ -1961,8 +1971,21 @@ export const playbookClaims: Claim[] = [
     tier: 'vendor',
     volatility: 'model',
     source: {
-      label: 'Claude Docs — Models overview',
-      url: 'https://platform.claude.com/docs/en/about-claude/models/overview',
+      label: 'Claude Haiku 4.5 모델 문서',
+      url: 'https://platform.claude.com/docs/en/models/haiku-4-5/overview',
+    },
+  },
+  {
+    id: 'claude-haiku-5-5-token-price',
+    subject: { kind: 'model', id: 'claude-haiku-5-5' },
+    topic: 'price',
+    statement: '100만 토큰당 입력 / 출력 단가',
+    value: '$0.10 / $0.50 (100K 초과 시 $0.50 / $2.50)',
+    tier: 'vendor',
+    volatility: 'price',
+    source: {
+      label: 'Claude Docs — Pricing',
+      url: 'https://platform.claude.com/docs/en/about-claude/pricing',
     },
   },
   {
