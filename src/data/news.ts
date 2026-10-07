@@ -172,6 +172,58 @@ export const globalNewsUpdatedAt = '2026-10-06';
  */
 const entries: NewsItem[] = [
   {
+    id: 'claude-haiku-5-5',
+    source: 'Anthropic',
+    kind: 'model',
+    title: 'Anthropic, Claude Haiku 5.5 공개 — Haiku 4.5보다 실행 비용 약 75% 낮춰',
+    summary:
+      'Anthropic이 대량·저지연 작업용 소형 모델 Claude Haiku 5.5를 공개했다. 10만 토큰 이하 요청은 100만 토큰당 ' +
+      '입력 0.10달러·출력 0.50달러이고, 같은 날 Sonnet 5.5 캐시 읽기 단가를 절반으로 내렸다.',
+    publishedAt: '2026-10-07',
+    collectedAt: '2026-10-08',
+    category: 'Frontier',
+    signal: '모델 경제성',
+    url: 'https://www.anthropic.com/claude-haiku-5-5',
+    model: {
+      family: 'Claude',
+      name: 'Claude Haiku 5.5',
+      kind: '신규 모델',
+      status: '공개',
+      useCase: '요약·분류·서브에이전트',
+      headline: '큰 모델 곁에서 요약·조회·서브에이전트를 싸고 빠르게 맡도록 둔 Haiku',
+      logo: 'assets/claude.svg',
+      tone: 'claude',
+    },
+  },
+  {
+    id: 'ai-playground-experimental-gaming-platform',
+    source: 'Google DeepMind',
+    kind: 'company',
+    title: 'Google, 프롬프트로 게임을 만들어 공유하는 실험 플랫폼 Playground 공개',
+    summary:
+      'Google이 코딩 없이 대화로 게임을 만들고 플레이·공유하는 실험적 플랫폼 Playground를 공개했다. ' +
+      '미국 18세 이상 사용자에게 playground.google에서 열렸고 만들기 권한은 Google AI 구독 등급에 따라 순차 제공한다.',
+    publishedAt: '2026-10-07',
+    collectedAt: '2026-10-08',
+    category: 'Product',
+    signal: '소비자 AI',
+    url: 'https://blog.google/innovation-and-ai/technology/ai/playground-experimental-gaming-platform',
+  },
+  {
+    id: 'claude-platform-october-7-2026',
+    source: 'Anthropic',
+    kind: 'company',
+    title: 'Claude Managed Agents, 제한 네트워크의 허용 호스트를 웹 검색·가져오기에도 적용',
+    summary:
+      'Managed Agents의 제한 네트워크 환경에서 allowed_hosts가 web_search·web_fetch 도구에도 걸린다. ' +
+      'Python·TypeScript SDK에는 브라우저 사용·컴퓨터 사용 도구를 위한 클래스가 베타로 들어갔다.',
+    publishedAt: '2026-10-07',
+    collectedAt: '2026-10-08',
+    category: 'Product',
+    signal: '플랫폼 변경',
+    url: 'https://platform.claude.com/docs/en/release-notes/overview#october-7-2026',
+  },
+  {
     id: 'blog-embeddinggemma-2-an-open-lightweight-multimodal-embedding-model',
     source: 'Google DeepMind',
     kind: 'model',
