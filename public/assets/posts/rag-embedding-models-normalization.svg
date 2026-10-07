@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 420" width="880" height="420">
+  <rect width="880" height="420" fill="#0a0a0a" rx="12"/>
+  <g font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+    <text x="440" y="44" text-anchor="middle" font-size="22" font-weight="700" fill="#e8e8e8">정규화와 내적 순위</text>
+
+    <!-- 왼쪽: 정규화함 -->
+    <rect x="60" y="70" width="360" height="250" rx="10" fill="#111520" stroke="#55c555" stroke-width="1.5"/>
+    <text x="240" y="102" text-anchor="middle" font-size="16" font-weight="600" fill="#e8e8e8">L2 정규화한 벡터</text>
+
+    <rect x="84" y="122" width="312" height="70" rx="8" fill="#0f1a12" stroke="#55c555" stroke-width="1"/>
+    <text x="104" y="150" font-size="14" font-weight="600" fill="#e8e8e8">문서 A · 코사인 0.9 · 길이 1.0</text>
+    <text x="104" y="174" font-size="13" fill="#55c555">내적 0.9 → 1등</text>
+
+    <rect x="84" y="206" width="312" height="70" rx="8" fill="#141414" stroke="#3a4a6e" stroke-width="1"/>
+    <text x="104" y="234" font-size="14" font-weight="600" fill="#e8e8e8">문서 B · 코사인 0.7 · 길이 1.0</text>
+    <text x="104" y="258" font-size="13" fill="#888">내적 0.7 → 2등</text>
+
+    <text x="240" y="304" text-anchor="middle" font-size="13" fill="#888">내적 = 코사인, 각도만 순위를 정한다</text>
+
+    <!-- 오른쪽: 정규화 안 함 -->
+    <rect x="460" y="70" width="360" height="250" rx="10" fill="#111520" stroke="#e05555" stroke-width="1.5"/>
+    <text x="640" y="102" text-anchor="middle" font-size="16" font-weight="600" fill="#e8e8e8">정규화 안 한 벡터 + 내적 색인</text>
+
+    <rect x="484" y="122" width="312" height="70" rx="8" fill="#141414" stroke="#3a4a6e" stroke-width="1"/>
+    <text x="504" y="150" font-size="14" font-weight="600" fill="#e8e8e8">문서 A · 코사인 0.9 · 길이 1.0</text>
+    <text x="504" y="174" font-size="13" fill="#888">내적 0.9 → 2등</text>
+
+    <rect x="484" y="206" width="312" height="70" rx="8" fill="#1a1010" stroke="#e05555" stroke-width="1"/>
+    <text x="504" y="234" font-size="14" font-weight="600" fill="#e8e8e8">문서 B · 코사인 0.7 · 길이 1.5</text>
+    <text x="504" y="258" font-size="13" fill="#e05555">내적 0.7 × 1.5 = 1.05 → 1등</text>
+
+    <text x="640" y="304" text-anchor="middle" font-size="13" fill="#888">길이가 긴 벡터가 순위를 가져간다</text>
+
+    <!-- 아래 식 -->
+    <rect x="60" y="340" width="760" height="56" rx="8" fill="#111520" stroke="#7777cc" stroke-width="1"/>
+    <text x="440" y="364" text-anchor="middle" font-size="14" font-weight="600" fill="#7ec8e3">길이가 1이면  거리² = 2 − 2 × 코사인</text>
+    <text x="440" y="384" text-anchor="middle" font-size="13" fill="#888">코사인 0.8 → 거리² 0.4 · 코사인 0.6 → 거리² 0.8 — 세 지표의 순위가 같아진다</text>
+  </g>
+</svg>

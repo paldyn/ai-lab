@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="540" viewBox="0 0 880 540">
+  <rect x="0" y="0" width="880" height="540" rx="12" fill="#0a0a0a"/>
+  <text x="60" y="46" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="22" font-weight="700" fill="#e8e8e8">일주일치 실패 분포</text>
+  <text x="60" y="72" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">가상의 예 — 호출 10,000건 중 어긋난 312건을 지점별로 센 것</text>
+  <text x="60" y="133" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13.5" font-weight="600" fill="#e8e8e8">1. 도구 선택</text>
+  <rect x="200" y="118" width="192" height="20" rx="3" fill="#7ec8e3" opacity="0.85"/>
+  <text x="402" y="133" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="600" fill="#e8e8e8">48건</text>
+  <text x="200" y="160" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="12" fill="#9aa4b8">설명문에 언제 쓰는지 · 비슷한 도구와의 경계</text>
+  <text x="60" y="203" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13.5" font-weight="600" fill="#e8e8e8">2. 인자 구성</text>
+  <rect x="200" y="188" width="384" height="20" rx="3" fill="#7ec8e3" opacity="0.85"/>
+  <text x="594" y="203" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="600" fill="#e8e8e8">96건</text>
+  <text x="200" y="230" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="12" fill="#9aa4b8">pattern·enum과 값의 출처 · 없으면 되묻기</text>
+  <text x="60" y="273" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13.5" font-weight="600" fill="#e8e8e8">3. 실행</text>
+  <rect x="200" y="258" width="284" height="20" rx="3" fill="#e0a555" opacity="0.85"/>
+  <text x="494" y="273" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="600" fill="#e8e8e8">71건</text>
+  <text x="200" y="300" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="12" fill="#9aa4b8">백오프 재시도 · 멱등이 아닌 도구는 제외</text>
+  <text x="60" y="343" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13.5" font-weight="600" fill="#e8e8e8">4. 결과 해석</text>
+  <rect x="200" y="328" width="236" height="20" rx="3" fill="#e0a555" opacity="0.85"/>
+  <text x="446" y="343" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="600" fill="#e8e8e8">59건</text>
+  <text x="200" y="370" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="12" fill="#9aa4b8">ok·empty·error 세 갈래 · hint 한 줄</text>
+  <text x="60" y="413" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13.5" font-weight="600" fill="#e8e8e8">5. 종료 판단</text>
+  <rect x="200" y="398" width="152" height="20" rx="3" fill="#e0a555" opacity="0.85"/>
+  <text x="362" y="413" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="600" fill="#e8e8e8">38건</text>
+  <text x="200" y="440" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="12" fill="#9aa4b8">호출 수 · 중복 해시 · 벽시계 상한</text>
+  <path d="M 700 118 L 712 118 L 712 208 L 700 208" stroke="#7ec8e3" stroke-width="2" fill="none"/>
+  <text x="728" y="159.0" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13.5" font-weight="600" fill="#7ec8e3">144건 · 46%</text>
+  <text x="728" y="179.0" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="12" fill="#9aa4b8">모델·스키마 몫</text>
+  <path d="M 700 258 L 712 258 L 712 418 L 700 418" stroke="#e0a555" stroke-width="2" fill="none"/>
+  <text x="728" y="334.0" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13.5" font-weight="600" fill="#e0a555">168건 · 54%</text>
+  <text x="728" y="354.0" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="12" fill="#9aa4b8">우리 코드 몫</text>
+  <text x="60" y="500" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#7ec8e3">한 지점으로는 인자 구성이 가장 크지만, 모델을 바꿔도 남는 아래 세 지점이 절반을 넘는다.</text>
+</svg>

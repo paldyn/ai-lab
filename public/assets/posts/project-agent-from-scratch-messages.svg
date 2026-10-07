@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 540" width="880" height="540">
+<rect width="880" height="540" fill="#0a0a0a" rx="12"/>
+<text x="440" y="44" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="22" font-weight="700" fill="#e8e8e8">호출마다 보내는 messages</text>
+<text x="440" y="70" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#e8e8e8">도구를 k번 부르면 마지막 호출에 2k+1개를 보낸다</text>
+<text x="155.0" y="108" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="15" font-weight="700" fill="#e8e8e8">호출 1 · 1개</text>
+<rect x="70" y="124" width="170" height="34" rx="8" fill="#111" stroke="#888" stroke-width="1"/>
+<text x="155.0" y="146" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e8e8e8">질문</text>
+<text x="155.0" y="434" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">응답</text>
+<rect x="70" y="444" width="170" height="34" rx="8" fill="#000000" stroke="#7ec8e3" stroke-width="2" stroke-dasharray="5,3"/>
+<text x="155.0" y="466" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e8e8e8">tool_use · 검색</text>
+<text x="345.0" y="108" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="15" font-weight="700" fill="#e8e8e8">호출 2 · 3개</text>
+<rect x="260" y="124" width="170" height="34" rx="8" fill="#111" stroke="#888" stroke-width="1"/>
+<text x="345.0" y="146" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">질문</text>
+<rect x="260" y="166" width="170" height="34" rx="8" fill="#111" stroke="#7ec8e3" stroke-width="2"/>
+<text x="345.0" y="188" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e8e8e8">tool_use · 검색</text>
+<rect x="260" y="208" width="170" height="34" rx="8" fill="#111" stroke="#55c555" stroke-width="2"/>
+<text x="345.0" y="230" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e8e8e8">tool_result · GDP</text>
+<text x="345.0" y="434" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">응답</text>
+<rect x="260" y="444" width="170" height="34" rx="8" fill="#000000" stroke="#7ec8e3" stroke-width="2" stroke-dasharray="5,3"/>
+<text x="345.0" y="466" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e8e8e8">tool_use · 검색</text>
+<text x="535.0" y="108" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="15" font-weight="700" fill="#e8e8e8">호출 3 · 5개</text>
+<rect x="450" y="124" width="170" height="34" rx="8" fill="#111" stroke="#888" stroke-width="1"/>
+<text x="535.0" y="146" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">질문</text>
+<rect x="450" y="166" width="170" height="34" rx="8" fill="#111" stroke="#7ec8e3" stroke-width="1"/>
+<text x="535.0" y="188" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">tool_use · 검색</text>
+<rect x="450" y="208" width="170" height="34" rx="8" fill="#111" stroke="#55c555" stroke-width="1"/>
+<text x="535.0" y="230" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">tool_result · GDP</text>
+<rect x="450" y="250" width="170" height="34" rx="8" fill="#111" stroke="#7ec8e3" stroke-width="2"/>
+<text x="535.0" y="272" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e8e8e8">tool_use · 검색</text>
+<rect x="450" y="292" width="170" height="34" rx="8" fill="#111" stroke="#55c555" stroke-width="2"/>
+<text x="535.0" y="314" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e8e8e8">tool_result · 인구</text>
+<text x="535.0" y="434" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">응답</text>
+<rect x="450" y="444" width="170" height="34" rx="8" fill="#000000" stroke="#7ec8e3" stroke-width="2" stroke-dasharray="5,3"/>
+<text x="535.0" y="466" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e8e8e8">tool_use · 계산</text>
+<text x="725.0" y="108" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="15" font-weight="700" fill="#e8e8e8">호출 4 · 7개</text>
+<rect x="640" y="124" width="170" height="34" rx="8" fill="#111" stroke="#888" stroke-width="1"/>
+<text x="725.0" y="146" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">질문</text>
+<rect x="640" y="166" width="170" height="34" rx="8" fill="#111" stroke="#7ec8e3" stroke-width="1"/>
+<text x="725.0" y="188" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">tool_use · 검색</text>
+<rect x="640" y="208" width="170" height="34" rx="8" fill="#111" stroke="#55c555" stroke-width="1"/>
+<text x="725.0" y="230" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">tool_result · GDP</text>
+<rect x="640" y="250" width="170" height="34" rx="8" fill="#111" stroke="#7ec8e3" stroke-width="1"/>
+<text x="725.0" y="272" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">tool_use · 검색</text>
+<rect x="640" y="292" width="170" height="34" rx="8" fill="#111" stroke="#55c555" stroke-width="1"/>
+<text x="725.0" y="314" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">tool_result · 인구</text>
+<rect x="640" y="334" width="170" height="34" rx="8" fill="#111" stroke="#7ec8e3" stroke-width="2"/>
+<text x="725.0" y="356" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e8e8e8">tool_use · 계산</text>
+<rect x="640" y="376" width="170" height="34" rx="8" fill="#111" stroke="#55c555" stroke-width="2"/>
+<text x="725.0" y="398" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e8e8e8">tool_result · 값</text>
+<text x="725.0" y="434" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">응답</text>
+<rect x="640" y="444" width="170" height="34" rx="8" fill="#000000" stroke="#55c555" stroke-width="2" stroke-dasharray="5,3"/>
+<text x="725.0" y="466" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e8e8e8">text · 최종 답</text>
+<text x="440" y="510" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">파란 테 = assistant의 tool_use · 초록 테 = user의 tool_result · 굵은 테 = 이번에 새로 붙은 것</text>
+</svg>

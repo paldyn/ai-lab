@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 440" width="880" height="440">
+  <rect width="880" height="440" fill="#0a0a0a" rx="12"/>
+  <text x="440" y="44" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="22" font-weight="700" fill="#e8e8e8">예시가 만드는 편향 셋</text>
+  <text x="440" y="72" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">예시의 레이블 수 · 순서 · 모양이 모두 조건으로 들어간다</text>
+  <rect x="50" y="100" width="244" height="300" rx="10" fill="#141414" stroke="#2a2a2a"/>
+  <text x="172" y="134" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#e8e8e8">다수 레이블 편향</text>
+  <rect x="70" y="152" width="204" height="24" rx="5" fill="#1c1c1c" stroke="#3a3a3a"/>
+  <text x="82" y="169" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e8e8e8">예시 1 → 긍정</text>
+  <rect x="70" y="182" width="204" height="24" rx="5" fill="#1c1c1c" stroke="#3a3a3a"/>
+  <text x="82" y="199" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e8e8e8">예시 2 → 긍정</text>
+  <rect x="70" y="212" width="204" height="24" rx="5" fill="#1c1c1c" stroke="#3a3a3a"/>
+  <text x="82" y="229" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e8e8e8">예시 3 → 긍정</text>
+  <rect x="70" y="242" width="204" height="24" rx="5" fill="#1c1c1c" stroke="#3a3a3a"/>
+  <text x="82" y="259" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e8e8e8">예시 4 → 긍정</text>
+  <rect x="70" y="272" width="204" height="24" rx="5" fill="#1c1c1c" stroke="#3a3a3a"/>
+  <text x="82" y="289" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e8e8e8">예시 5 → 긍정</text>
+  <rect x="70" y="304" width="204" height="36" rx="6" fill="#2a1414" stroke="#e05555"/>
+  <text x="172" y="327" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e8e8e8">새 입력도 긍정 쪽으로</text>
+  <text x="172" y="372" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#55c555">대응: 레이블을 고르게</text>
+  <rect x="318" y="100" width="244" height="300" rx="10" fill="#141414" stroke="#2a2a2a"/>
+  <text x="440" y="134" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#e8e8e8">최근성 편향</text>
+  <rect x="338" y="152" width="204" height="24" rx="5" fill="#1c1c1c" stroke="#3a3a3a"/>
+  <text x="350" y="169" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e8e8e8">예시 1 → 긍정</text>
+  <rect x="338" y="182" width="204" height="24" rx="5" fill="#1c1c1c" stroke="#3a3a3a"/>
+  <text x="350" y="199" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e8e8e8">예시 2 → 부정</text>
+  <rect x="338" y="212" width="204" height="24" rx="5" fill="#1c1c1c" stroke="#e05555"/>
+  <text x="350" y="229" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e8e8e8">예시 3 → 중립</text>
+  <text x="440" y="270" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#7ec8e3">끝에 가까울수록 세게 작용</text>
+  <rect x="338" y="304" width="204" height="36" rx="6" fill="#2a1414" stroke="#e05555"/>
+  <text x="440" y="327" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e8e8e8">애매한 입력은 중립 쪽으로</text>
+  <text x="440" y="372" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#55c555">대응: 번갈아 두기</text>
+  <rect x="586" y="100" width="244" height="300" rx="10" fill="#141414" stroke="#2a2a2a"/>
+  <text x="708" y="134" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#e8e8e8">형식 과적합</text>
+  <rect x="606" y="152" width="204" height="24" rx="5" fill="#1c1c1c" stroke="#3a3a3a"/>
+  <text x="618" y="169" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e8e8e8">이 글은 ~를 다룬다. …</text>
+  <rect x="606" y="182" width="204" height="24" rx="5" fill="#1c1c1c" stroke="#3a3a3a"/>
+  <text x="618" y="199" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e8e8e8">이 글은 ~를 다룬다. …</text>
+  <rect x="606" y="212" width="204" height="24" rx="5" fill="#1c1c1c" stroke="#3a3a3a"/>
+  <text x="618" y="229" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e8e8e8">이 글은 ~를 다룬다. …</text>
+  <text x="708" y="270" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#7ec8e3">예시 요약 셋이 같은 시작</text>
+  <rect x="606" y="304" width="204" height="36" rx="6" fill="#2a1414" stroke="#e05555"/>
+  <text x="708" y="327" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e8e8e8">출력도 「이 글은」으로 시작</text>
+  <text x="708" y="372" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#55c555">대응: 길이·시작을 다르게</text>
+</svg>

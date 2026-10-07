@@ -10,7 +10,7 @@
   <text x="270" y="73" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="600" fill="#7777cc">차원</text>
   <text x="370" y="73" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="600" fill="#7777cc">최대 토큰</text>
   <text x="490" y="73" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="600" fill="#7777cc">언어</text>
-  <text x="600" y="73" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="600" fill="#7777cc">비용</text>
+  <text x="600" y="73" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="600" fill="#7777cc">제공</text>
   <text x="750" y="73" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="600" fill="#7777cc">특징</text>
 
   <!-- Column dividers in header -->
@@ -28,10 +28,10 @@
   <text x="270" y="122" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="600" fill="#55c555">3072</text>
   <text x="370" y="122" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e8e8e8">8,191</text>
   <text x="490" y="122" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#7ec8e3">다국어</text>
-  <text x="600" y="115" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="12" fill="#e05555">$0.13/1M</text>
-  <text x="600" y="131" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="11" fill="#888">유료 API</text>
-  <text x="750" y="115" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="12" fill="#55c555">최고 성능</text>
-  <text x="750" y="131" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="11" fill="#888">MTEB 1위</text>
+  <text x="600" y="115" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="12" fill="#e05555">API</text>
+  <text x="600" y="131" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="11" fill="#888">사용량 과금</text>
+  <text x="750" y="115" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="12" fill="#55c555">상위 모델</text>
+  <text x="750" y="131" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="11" fill="#888">차원 축소 지원</text>
 
   <!-- Row 2: text-embedding-3-small -->
   <rect x="40" y="148" width="800" height="52" rx="4" fill="#0f1318" stroke="#3a4a6e" stroke-width="1"/>
@@ -41,10 +41,10 @@
   <text x="270" y="178" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="600" fill="#7ec8e3">1536</text>
   <text x="370" y="178" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e8e8e8">8,191</text>
   <text x="490" y="178" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#7ec8e3">다국어</text>
-  <text x="600" y="171" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="12" fill="#55c555">$0.02/1M</text>
-  <text x="600" y="187" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="11" fill="#888">비용 효율</text>
-  <text x="750" y="171" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="12" fill="#7ec8e3">가성비 최고</text>
-  <text x="750" y="187" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="11" fill="#888">실무 권장</text>
+  <text x="600" y="171" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="12" fill="#7777cc">API</text>
+  <text x="600" y="187" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="11" fill="#888">사용량 과금</text>
+  <text x="750" y="171" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="12" fill="#7ec8e3">가벼운 기본값</text>
+  <text x="750" y="187" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="11" fill="#888">차원 축소 지원</text>
 
   <!-- Row 3: BGE-M3 -->
   <rect x="40" y="204" width="800" height="52" rx="4" fill="#111520" stroke="#3a4a6e" stroke-width="1"/>
@@ -54,23 +54,23 @@
   <text x="270" y="234" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="600" fill="#7ec8e3">1024</text>
   <text x="370" y="234" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e8e8e8">8,192</text>
   <text x="490" y="234" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#7ec8e3">다국어 100+</text>
-  <text x="600" y="227" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="12" fill="#55c555">무료</text>
-  <text x="600" y="243" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="11" fill="#888">오픈소스</text>
+  <text x="600" y="227" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="12" fill="#55c555">무료 공개</text>
+  <text x="600" y="243" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="11" fill="#888">직접 실행</text>
   <text x="750" y="227" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="12" fill="#55c555">Dense+Sparse+ColBERT</text>
   <text x="750" y="243" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="11" fill="#888">하이브리드 검색 지원</text>
 
   <!-- Row 4: E5-large -->
   <rect x="40" y="260" width="800" height="52" rx="4" fill="#0f1318" stroke="#3a4a6e" stroke-width="1"/>
   <rect x="40" y="260" width="4" height="52" rx="2" fill="#55c555"/>
-  <text x="120" y="283" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="12" font-weight="600" fill="#e8e8e8">E5-large-v2</text>
+  <text x="120" y="283" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="12" font-weight="600" fill="#e8e8e8">multilingual-e5-large</text>
   <text x="120" y="301" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="11" fill="#888">Microsoft</text>
   <text x="270" y="290" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="600" fill="#7ec8e3">1024</text>
   <text x="370" y="290" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e8e8e8">512</text>
   <text x="490" y="290" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#7ec8e3">다국어</text>
-  <text x="600" y="283" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="12" fill="#55c555">무료</text>
-  <text x="600" y="299" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="11" fill="#888">오픈소스</text>
-  <text x="750" y="283" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="12" fill="#7ec8e3">query: 접두사 필요</text>
-  <text x="750" y="299" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="11" fill="#888">passage: 접두사 사용</text>
+  <text x="600" y="283" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="12" fill="#55c555">무료 공개</text>
+  <text x="600" y="299" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="11" fill="#888">직접 실행</text>
+  <text x="750" y="283" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="12" fill="#7ec8e3">query: 접두사</text>
+  <text x="750" y="299" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="11" fill="#888">passage: 접두사</text>
 
   <!-- Row 5: KURE-v1 -->
   <rect x="40" y="316" width="800" height="52" rx="4" fill="#111520" stroke="#3a4a6e" stroke-width="1"/>
@@ -78,12 +78,12 @@
   <text x="120" y="339" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="12" font-weight="600" fill="#e8e8e8">KURE-v1</text>
   <text x="120" y="357" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="11" fill="#888">한국어 특화</text>
   <text x="270" y="346" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="600" fill="#7ec8e3">1024</text>
-  <text x="370" y="346" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e8e8e8">512</text>
+  <text x="370" y="346" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e8e8e8">8,192</text>
   <text x="490" y="346" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e05555">한국어</text>
-  <text x="600" y="339" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="12" fill="#55c555">무료</text>
-  <text x="600" y="355" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="11" fill="#888">오픈소스</text>
-  <text x="750" y="339" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="12" fill="#e05555">한국어 MTEB 최고</text>
-  <text x="750" y="355" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="11" fill="#888">HuggingFace 제공</text>
+  <text x="600" y="339" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="12" fill="#55c555">무료 공개</text>
+  <text x="600" y="355" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="11" fill="#888">직접 실행</text>
+  <text x="750" y="339" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="12" fill="#e05555">BGE-M3 기반</text>
+  <text x="750" y="355" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="11" fill="#888">한국어 검색 학습</text>
 
   <!-- Column dividers body -->
   <line x1="200" y1="92" x2="200" y2="368" stroke="#3a4a6e" stroke-width="0.5"/>
