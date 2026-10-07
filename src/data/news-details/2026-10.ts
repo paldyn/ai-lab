@@ -2,6 +2,22 @@ import type { NewsDetail } from '../news';
 
 /** 2026-10 발표의 모달 본문. 목록은 news.ts에 있습니다. */
 export const details: Record<string, NewsDetail> = {
+  'blog-embeddinggemma-2-an-open-lightweight-multimodal-embedding-model': {
+    points: [
+      '텍스트 전용이던 EmbeddingGemma를 코드·이미지·영상·오디오까지 한 임베딩 공간으로 넓혔다',
+      'Gemma 4 구조 기반 7억 4천만 파라미터이고 Apache 2.0 라이선스로 나왔다',
+      '텍스트만 쓰면 2억 7천만 파라미터로 충분하고 비전(1억 7천만)·오디오(3억) 인코더는 골라 붙인다',
+      '출력 벡터를 768차원에서 512·256·128차원으로 줄일 수 있어 저장 공간을 최대 6배 아낀다',
+      '양자화하면 Pixel 11 Pro에서 텍스트 전용 약 191MB, 멀티모달 전체 약 567MB 메모리로 돈다',
+      '컨텍스트 창은 8K 토큰으로 전작의 4배이고 오디오 5.5분·이미지 29장·영상 프레임 58장까지 넣는다',
+      'MTEB Code 점수가 68.76에서 78.68로 9.92점 올랐다',
+      '가중치는 Hugging Face·Kaggle에 있고 Model Garden 제공은 곧 시작한다고 밝혔다',
+    ],
+    commentary:
+      '검색용 임베딩을 기기 안에서 멀티모달로 돌리는 선택지가 1B 아래에서 생겼다. 음성 메모로 영상 장면을 찾는 식의 ' +
+      '교차 모달 검색을 서버 없이 짤 수 있고, Gemma 4와 토크나이저·오디오 인코더를 공유해 온디바이스 RAG를 한 파이프라인으로 ' +
+      '묶기 쉽다. 차원을 줄여 쓰는 MRL은 벡터 DB 비용과 정확도를 맞바꾸는 손잡이라 실제 질의로 재 보고 고를 일이다.',
+  },
   'advancing-computer-use-with-ironclad': {
     points: [
       'OpenAI가 전문 소프트웨어를 쓰는 에이전트 연구를 위해 소수 소프트웨어 기업과 직접 협력하며, 첫 파트너가 Ironclad다',

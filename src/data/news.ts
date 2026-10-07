@@ -172,6 +172,20 @@ export const globalNewsUpdatedAt = '2026-10-06';
  */
 const entries: NewsItem[] = [
   {
+    id: 'blog-embeddinggemma-2-an-open-lightweight-multimodal-embedding-model',
+    source: 'Google DeepMind',
+    kind: 'model',
+    title: 'Google, 텍스트·이미지·오디오·영상 잇는 오픈 임베딩 EmbeddingGemma 2',
+    summary:
+      'Google DeepMind가 코드·이미지·영상·오디오를 한 임베딩 공간에 담는 7억 4천만 파라미터 EmbeddingGemma 2를 ' +
+      'Apache 2.0으로 공개했다. Gemma 4 구조 위에 만들었고 컨텍스트 창은 전작의 4배인 8K 토큰이다.',
+    publishedAt: '2026-10-06',
+    collectedAt: '2026-10-08',
+    category: 'Open',
+    signal: '오픈 멀티모달 모델',
+    url: 'https://deepmind.google/blog/embeddinggemma-2-an-open-lightweight-multimodal-embedding-model',
+  },
+  {
     id: 'advancing-computer-use-with-ironclad',
     source: 'OpenAI',
     kind: 'company',
