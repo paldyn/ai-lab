@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" viewBox="0 0 880 500" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+<rect x="0" y="0" width="880" height="500" rx="12" fill="#0a0a0a"/>
+<text x="440" y="42" text-anchor="middle" font-size="22" font-weight="700" fill="#e8e8e8">사회자가 무엇을 알았느냐가 답을 정한다</text>
+<text x="440" y="68" text-anchor="middle" font-size="13" fill="#888">600판 · 처음 고른 문은 1번 · 3번 문이 열려 염소가 보인 판만 남긴다</text>
+<rect x="60" y="86" width="340" height="390" rx="10" fill="none" stroke="#333" stroke-width="1.5"/>
+<text x="230" y="120" text-anchor="middle" font-size="16" font-weight="600" fill="#e8e8e8">사회자가 안다</text>
+<text x="84" y="160" font-size="14" fill="#e8e8e8">차가 1번 · 200판</text>
+<rect x="84" y="172" width="200" height="18" rx="3" fill="#222" stroke="#444" stroke-width="1"/>
+<rect x="84" y="172" width="100" height="18" rx="3" fill="#7ec8e3" fill-opacity="0.75"/>
+<text x="292" y="186" font-size="13" fill="#7ec8e3">남는 판 100</text>
+<text x="84" y="232" font-size="14" fill="#e8e8e8">차가 2번 · 200판</text>
+<rect x="84" y="244" width="200" height="18" rx="3" fill="#222" stroke="#444" stroke-width="1"/>
+<rect x="84" y="244" width="200" height="18" rx="3" fill="#55c555" fill-opacity="0.75"/>
+<text x="292" y="258" font-size="13" fill="#55c555">남는 판 200</text>
+<text x="84" y="304" font-size="14" fill="#e8e8e8">차가 3번 · 200판</text>
+<rect x="84" y="316" width="200" height="18" rx="3" fill="#222" stroke="#444" stroke-width="1"/>
+<text x="292" y="330" font-size="13" fill="#888">남는 판 0</text>
+<rect x="84" y="386" width="292" height="70" rx="8" fill="none" stroke="#55c555" stroke-width="1.5"/>
+<text x="230" y="414" text-anchor="middle" font-size="13" fill="#e8e8e8">남은 300판 중 차가 2번인 판 200</text>
+<text x="230" y="436" text-anchor="middle" font-size="14" font-weight="600" fill="#55c555">바꾸면 2/3</text>
+<rect x="480" y="86" width="340" height="390" rx="10" fill="none" stroke="#333" stroke-width="1.5"/>
+<text x="650" y="120" text-anchor="middle" font-size="16" font-weight="600" fill="#e8e8e8">사회자가 모른다</text>
+<text x="504" y="160" font-size="14" fill="#e8e8e8">차가 1번 · 200판</text>
+<rect x="504" y="172" width="200" height="18" rx="3" fill="#222" stroke="#444" stroke-width="1"/>
+<rect x="504" y="172" width="100" height="18" rx="3" fill="#7ec8e3" fill-opacity="0.75"/>
+<text x="712" y="186" font-size="13" fill="#7ec8e3">남는 판 100</text>
+<text x="504" y="232" font-size="14" fill="#e8e8e8">차가 2번 · 200판</text>
+<rect x="504" y="244" width="200" height="18" rx="3" fill="#222" stroke="#444" stroke-width="1"/>
+<rect x="504" y="244" width="100" height="18" rx="3" fill="#55c555" fill-opacity="0.75"/>
+<text x="712" y="258" font-size="13" fill="#55c555">남는 판 100</text>
+<text x="504" y="304" font-size="14" fill="#e8e8e8">차가 3번 · 200판</text>
+<rect x="504" y="316" width="200" height="18" rx="3" fill="#222" stroke="#444" stroke-width="1"/>
+<rect x="504" y="316" width="100" height="18" rx="3" fill="#e05555" fill-opacity="0.75"/>
+<text x="712" y="330" font-size="13" fill="#e05555">차 노출 100</text>
+<rect x="504" y="386" width="292" height="70" rx="8" fill="none" stroke="#7ec8e3" stroke-width="1.5"/>
+<text x="650" y="414" text-anchor="middle" font-size="13" fill="#e8e8e8">남은 200판 중 차가 2번인 판 100</text>
+<text x="650" y="436" text-anchor="middle" font-size="14" font-weight="600" fill="#7ec8e3">바꿔도 1/2</text>
+</svg>

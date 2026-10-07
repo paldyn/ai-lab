@@ -1,0 +1,88 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="490" viewBox="0 0 880 490" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <defs>
+    <marker id="anQ" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#7ec8e3"/>
+    </marker>
+    <marker id="anA" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#7777cc"/>
+    </marker>
+    <marker id="anB" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#55c555"/>
+    </marker>
+  </defs>
+
+  <rect x="0" y="0" width="880" height="490" rx="12" fill="#0a0a0a"/>
+
+  <text x="60" y="46" font-size="22" font-weight="700" fill="#e8e8e8">같은 세 점, 좌표로 재면 가까운 쪽이 뒤집힌다</text>
+
+  <!-- left: standard basis, origin (110,360), unit 30 -->
+  <text x="220" y="88" text-anchor="middle" font-size="16" font-weight="600" fill="#e8e8e8">표준기저로 읽은 세 점</text>
+  <g stroke="#444" stroke-width="1">
+    <line x1="80" y1="390" x2="320" y2="390"/>
+    <line x1="80" y1="330" x2="320" y2="330"/>
+    <line x1="80" y1="300" x2="320" y2="300"/>
+    <line x1="80" y1="270" x2="320" y2="270"/>
+    <line x1="80" y1="240" x2="320" y2="240"/>
+    <line x1="80" y1="210" x2="320" y2="210"/>
+    <line x1="80" y1="180" x2="320" y2="180"/>
+    <line x1="80" y1="180" x2="80" y2="390"/>
+    <line x1="140" y1="180" x2="140" y2="390"/>
+    <line x1="170" y1="180" x2="170" y2="390"/>
+    <line x1="200" y1="180" x2="200" y2="390"/>
+    <line x1="230" y1="180" x2="230" y2="390"/>
+    <line x1="260" y1="180" x2="260" y2="390"/>
+    <line x1="290" y1="180" x2="290" y2="390"/>
+    <line x1="320" y1="180" x2="320" y2="390"/>
+  </g>
+  <line x1="80" y1="360" x2="330" y2="360" stroke="#888" stroke-width="1.5"/>
+  <line x1="110" y1="396" x2="110" y2="170" stroke="#888" stroke-width="1.5"/>
+  <text x="336" y="365" font-size="13" fill="#888">x</text>
+  <text x="96" y="176" font-size="13" fill="#888">y</text>
+
+  <line x1="110" y1="360" x2="230" y2="210" stroke="#7ec8e3" stroke-width="2.5" marker-end="url(#anQ)"/>
+  <line x1="110" y1="360" x2="110" y2="270" stroke="#7777cc" stroke-width="2.5" marker-end="url(#anA)"/>
+  <line x1="110" y1="360" x2="170" y2="330" stroke="#55c555" stroke-width="2.5" marker-end="url(#anB)"/>
+  <circle cx="230" cy="210" r="5" fill="#e8e8e8"/>
+  <circle cx="110" cy="270" r="5" fill="#e8e8e8"/>
+  <circle cx="170" cy="330" r="5" fill="#e8e8e8"/>
+  <text x="246" y="204" font-size="14" font-weight="600" fill="#7ec8e3">q (4, 5)</text>
+  <text x="122" y="250" font-size="14" font-weight="600" fill="#7777cc">a (0, 3)</text>
+  <text x="186" y="336" font-size="14" font-weight="600" fill="#55c555">b (2, 1)</text>
+
+  <!-- right: coordinates in basis (1,2),(2,1), origin (560,300), unit 50 -->
+  <text x="660" y="88" text-anchor="middle" font-size="16" font-weight="600" fill="#e8e8e8">기저 (1,2)·(2,1)의 좌표로 옮기면</text>
+  <g stroke="#444" stroke-width="1">
+    <line x1="510" y1="200" x2="760" y2="200"/>
+    <line x1="510" y1="250" x2="760" y2="250"/>
+    <line x1="510" y1="350" x2="760" y2="350"/>
+    <line x1="510" y1="400" x2="760" y2="400"/>
+    <line x1="510" y1="200" x2="510" y2="400"/>
+    <line x1="610" y1="200" x2="610" y2="400"/>
+    <line x1="660" y1="200" x2="660" y2="400"/>
+    <line x1="710" y1="200" x2="710" y2="400"/>
+    <line x1="760" y1="200" x2="760" y2="400"/>
+  </g>
+  <line x1="510" y1="300" x2="770" y2="300" stroke="#888" stroke-width="1.5"/>
+  <line x1="560" y1="406" x2="560" y2="190" stroke="#888" stroke-width="1.5"/>
+  <text x="776" y="305" font-size="13" fill="#888">c₁</text>
+  <text x="540" y="196" font-size="13" fill="#888">c₂</text>
+
+  <line x1="560" y1="300" x2="660" y2="250" stroke="#7ec8e3" stroke-width="2.5" marker-end="url(#anQ)"/>
+  <line x1="560" y1="300" x2="660" y2="350" stroke="#7777cc" stroke-width="2.5" marker-end="url(#anA)"/>
+  <line x1="560" y1="300" x2="560" y2="250" stroke="#55c555" stroke-width="2.5" marker-end="url(#anB)"/>
+  <circle cx="660" cy="250" r="5" fill="#e8e8e8"/>
+  <circle cx="660" cy="350" r="5" fill="#e8e8e8"/>
+  <circle cx="560" cy="250" r="5" fill="#e8e8e8"/>
+  <text x="676" y="244" font-size="14" font-weight="600" fill="#7ec8e3">q → (2, 1)</text>
+  <text x="676" y="368" font-size="14" font-weight="600" fill="#7777cc">a → (2, −1)</text>
+  <text x="572" y="232" font-size="14" font-weight="600" fill="#55c555">b → (0, 1)</text>
+
+  <!-- result boxes -->
+  <rect x="60" y="414" width="320" height="56" rx="8" fill="#111" stroke="#444" stroke-width="1"/>
+  <text x="80" y="437" font-size="13" fill="#888">cos(q, a) = 0.78 · cos(q, b) = 0.91</text>
+  <text x="80" y="458" font-size="14" font-weight="600" fill="#e8e8e8">b가 q에 더 가깝다</text>
+
+  <rect x="500" y="414" width="320" height="56" rx="8" fill="#111" stroke="#444" stroke-width="1"/>
+  <text x="520" y="437" font-size="13" fill="#888">cos(q, a) = 0.60 · cos(q, b) = 0.45</text>
+  <text x="520" y="458" font-size="14" font-weight="600" fill="#e8e8e8">a가 q에 더 가깝다 — 순위가 뒤집힘</text>
+</svg>

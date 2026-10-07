@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="420" viewBox="0 0 880 420" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <defs>
+    <marker id="bbA" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#e05555"/>
+    </marker>
+    <marker id="bbB" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#55c555"/>
+    </marker>
+  </defs>
+
+  <rect x="0" y="0" width="880" height="420" rx="12" fill="#0a0a0a"/>
+
+  <text x="60" y="46" font-size="22" font-weight="700" fill="#e8e8e8">기저를 만드는 두 방향 — ℝ²에서</text>
+
+  <!-- left column: remove from a spanning set -->
+  <text x="230" y="90" text-anchor="middle" font-size="16" font-weight="600" fill="#e05555">생성집합에서 빼기</text>
+  <rect x="60" y="110" width="340" height="70" rx="8" fill="#111" stroke="#444" stroke-width="1"/>
+  <text x="84" y="139" font-size="16" font-weight="600" fill="#e8e8e8">(1, 2), (2, 1), (4, 5)</text>
+  <text x="84" y="161" font-size="13" fill="#888">평면을 생성하지만 종속 — 군더더기가 있다</text>
+  <line x1="230" y1="180" x2="230" y2="250" stroke="#e05555" stroke-width="2.5" marker-end="url(#bbA)"/>
+  <text x="246" y="212" font-size="13" fill="#e05555">(4,5) = 2(1,2) + 1(2,1)</text>
+  <text x="246" y="232" font-size="13" fill="#e05555">이므로 뺀다</text>
+  <rect x="60" y="250" width="340" height="70" rx="8" fill="#0d1a0d" stroke="#55c555" stroke-width="1.5"/>
+  <text x="84" y="279" font-size="16" font-weight="600" fill="#e8e8e8">(1, 2), (2, 1)</text>
+  <text x="84" y="301" font-size="13" fill="#888">여전히 평면을 생성하고 독립 → 기저</text>
+
+  <!-- right column: add to an independent set -->
+  <text x="650" y="90" text-anchor="middle" font-size="16" font-weight="600" fill="#55c555">독립집합에 보태기</text>
+  <rect x="480" y="110" width="340" height="70" rx="8" fill="#111" stroke="#444" stroke-width="1"/>
+  <text x="504" y="139" font-size="16" font-weight="600" fill="#e8e8e8">(1, 2)</text>
+  <text x="504" y="161" font-size="13" fill="#888">독립이지만 span은 직선 하나뿐</text>
+  <line x1="650" y1="180" x2="650" y2="250" stroke="#55c555" stroke-width="2.5" marker-end="url(#bbB)"/>
+  <text x="666" y="212" font-size="13" fill="#55c555">직선 밖의 (2, 1)을</text>
+  <text x="666" y="232" font-size="13" fill="#55c555">보탠다</text>
+  <rect x="480" y="250" width="340" height="70" rx="8" fill="#0d1a0d" stroke="#55c555" stroke-width="1.5"/>
+  <text x="504" y="279" font-size="16" font-weight="600" fill="#e8e8e8">(1, 2), (2, 1)</text>
+  <text x="504" y="301" font-size="13" fill="#888">독립이고 이제 평면을 생성 → 기저</text>
+
+  <!-- bottom -->
+  <rect x="60" y="342" width="760" height="50" rx="8" fill="#0d1520" stroke="#7ec8e3" stroke-width="1.5"/>
+  <text x="440" y="372" text-anchor="middle" font-size="14" font-weight="600" fill="#e8e8e8">두 길은 같은 개수에서 만난다 — 벡터 2개, 그 개수가 차원</text>
+</svg>

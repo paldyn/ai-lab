@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" viewBox="0 0 880 480">
+<defs><marker id="arr" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto"><path d="M 0 0 L 13 7 L 0 14 z" fill="#e05555"/></marker></defs>
+<rect x="0" y="0" width="880" height="480" rx="12" fill="#0a0a0a"/>
+<text x="60" y="44" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="22" font-weight="700" fill="#e8e8e8">그래디언트가 커져도 Adam의 걸음은 그대로다</text>
+<text x="60" y="70" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">가로축은 그래디언트 성분의 크기 |g|, 세로축은 한 스텝에 파라미터가 움직이는 거리. 두 축 모두 로그 눈금</text>
+<text x="60" y="90" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">같은 그래디언트가 이어지는 경우 — SGD는 η = 0.1, Adam은 η = 3×10⁻⁴</text>
+<line x1="130.0" y1="130" x2="130.0" y2="390" stroke="#444" stroke-width="1" stroke-dasharray="3,4"/>
+<text x="130.0" y="410" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888" text-anchor="middle">10<tspan dy="-6" font-size="10">-4</tspan></text>
+<line x1="241.7" y1="130" x2="241.7" y2="390" stroke="#444" stroke-width="1" stroke-dasharray="3,4"/>
+<text x="241.7" y="410" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888" text-anchor="middle">10<tspan dy="-6" font-size="10">-3</tspan></text>
+<line x1="353.3" y1="130" x2="353.3" y2="390" stroke="#444" stroke-width="1" stroke-dasharray="3,4"/>
+<text x="353.3" y="410" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888" text-anchor="middle">10<tspan dy="-6" font-size="10">-2</tspan></text>
+<line x1="465.0" y1="130" x2="465.0" y2="390" stroke="#444" stroke-width="1" stroke-dasharray="3,4"/>
+<text x="465.0" y="410" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888" text-anchor="middle">10<tspan dy="-6" font-size="10">-1</tspan></text>
+<line x1="576.7" y1="130" x2="576.7" y2="390" stroke="#444" stroke-width="1" stroke-dasharray="3,4"/>
+<text x="576.7" y="410" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888" text-anchor="middle">1</text>
+<line x1="688.3" y1="130" x2="688.3" y2="390" stroke="#444" stroke-width="1" stroke-dasharray="3,4"/>
+<text x="688.3" y="410" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888" text-anchor="middle">10</text>
+<line x1="800.0" y1="130" x2="800.0" y2="390" stroke="#444" stroke-width="1" stroke-dasharray="3,4"/>
+<text x="800.0" y="410" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888" text-anchor="middle">100</text>
+<line x1="130" y1="390.0" x2="800" y2="390.0" stroke="#444" stroke-width="1" stroke-dasharray="3,4"/>
+<text x="118" y="395.0" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888" text-anchor="end">10<tspan dy="-6" font-size="10">-5</tspan></text>
+<line x1="130" y1="346.7" x2="800" y2="346.7" stroke="#444" stroke-width="1" stroke-dasharray="3,4"/>
+<text x="118" y="351.7" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888" text-anchor="end">10<tspan dy="-6" font-size="10">-4</tspan></text>
+<line x1="130" y1="303.3" x2="800" y2="303.3" stroke="#444" stroke-width="1" stroke-dasharray="3,4"/>
+<text x="118" y="308.3" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888" text-anchor="end">10<tspan dy="-6" font-size="10">-3</tspan></text>
+<line x1="130" y1="260.0" x2="800" y2="260.0" stroke="#444" stroke-width="1" stroke-dasharray="3,4"/>
+<text x="118" y="265.0" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888" text-anchor="end">10<tspan dy="-6" font-size="10">-2</tspan></text>
+<line x1="130" y1="216.7" x2="800" y2="216.7" stroke="#444" stroke-width="1" stroke-dasharray="3,4"/>
+<text x="118" y="221.7" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888" text-anchor="end">10<tspan dy="-6" font-size="10">-1</tspan></text>
+<line x1="130" y1="173.3" x2="800" y2="173.3" stroke="#444" stroke-width="1" stroke-dasharray="3,4"/>
+<text x="118" y="178.3" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888" text-anchor="end">1</text>
+<line x1="130" y1="130.0" x2="800" y2="130.0" stroke="#444" stroke-width="1" stroke-dasharray="3,4"/>
+<text x="118" y="135.0" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888" text-anchor="end">10</text>
+<line x1="130" y1="390" x2="800" y2="390" stroke="#888" stroke-width="1.5"/>
+<line x1="130" y1="390" x2="130" y2="130" stroke="#888" stroke-width="1.5"/>
+<text x="800" y="432" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888" text-anchor="end">그래디언트 크기 |g|</text>
+<line x1="130.0" y1="390.0" x2="800.0" y2="130.0" stroke="#7777cc" stroke-width="2.5"/>
+<line x1="130" y1="326.0" x2="800" y2="326.0" stroke="#7ec8e3" stroke-width="2.5"/>
+<text x="629.9" y="226.0" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="600" fill="#7777cc">SGD — 걸음 = 0.1 × |g|</text>
+<text x="688.3" y="314.0" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="600" fill="#7ec8e3" text-anchor="middle">Adam — 걸음 ≈ 3×10⁻⁴</text>
+<circle cx="294.9" cy="326.0" r="5" fill="#e8e8e8"/>
+<text x="308.9" y="350.0" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">|g| = 0.003 에서 같다</text>
+<circle cx="353.3" cy="303.3" r="5" fill="#e05555"/>
+<circle cx="576.7" cy="216.7" r="5" fill="#e05555"/>
+<path d="M 353.3 303.3 L 353.3 216.7 L 569.7 216.7" fill="none" stroke="#e05555" stroke-width="2" stroke-dasharray="5,3" marker-end="url(#arr)"/>
+<text x="343.3" y="202.7" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="600" fill="#e05555">|g| 100배 → SGD 걸음 100배</text>
+<text x="60" y="456" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">빨간 점은 |g| = 0.01 과 1. SGD는 걸음이 0.001 에서 0.1 로 뛰고, Adam의 선은 어느 자리에서나 같은 높이다.</text>
+</svg>
