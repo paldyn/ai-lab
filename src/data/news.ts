@@ -172,6 +172,48 @@ export const globalNewsUpdatedAt = '2026-10-07';
  */
 const entries: NewsItem[] = [
   {
+    id: 'anthropic-cyber-mission',
+    source: 'Anthropic',
+    kind: 'company',
+    title: 'Anthropic Cyber Mission 출범 — 오픈소스 무료 스캔 OSS Scanner 공개',
+    summary:
+      'Anthropic이 방어자를 돕는 장기 사업 Anthropic Cyber Mission을 시작했다. 기반시설 보안 업체에 모델·현장 엔지니어를 붙이는 ' +
+      'Critical Infrastructure Defense Program과, 오픈소스 프로젝트를 무료로 정기 스캔하는 OSS Scanner를 함께 내놓았다.',
+    publishedAt: '2026-10-08',
+    collectedAt: '2026-10-09',
+    category: 'Product',
+    signal: 'AI 사이버 방어',
+    url: 'https://www.anthropic.com/news/anthropic-cyber-mission',
+  },
+  {
+    id: 'genesis-mission-commitment',
+    source: 'Anthropic',
+    kind: 'company',
+    title: 'Anthropic, Genesis Mission에 3년간 1억 5천만 달러 지원 약속',
+    summary:
+      'Anthropic이 미국 연방 과학 사업 Genesis Mission에 3년간 1억 5천만 달러를 내놓겠다고 밝혔다. ' +
+      'NASA·NIH·NSF 등 15곳이 넘는 기관에 Claude를 제공하고 수백 개 연구 과제에 크레딧과 기술 지원을 준다.',
+    publishedAt: '2026-10-08',
+    collectedAt: '2026-10-09',
+    category: 'Corporate',
+    signal: '국가 과학 AI',
+    url: 'https://www.anthropic.com/news/genesis-mission-commitment',
+  },
+  {
+    id: '2026-usage-policy-update',
+    source: 'Anthropic',
+    kind: 'company',
+    title: 'Anthropic, 2026 이용 정책 개정 — 기만 캠페인 절 신설·모델 학대 금지',
+    summary:
+      'Anthropic이 새 이용 정책을 공개했고 11월 12일부터 적용한다. 흩어져 있던 기만 활동 규칙을 한 절로 모으고 ' +
+      '무기·감시 조항을 구체화했으며, 물리적 행동을 하는 하드웨어 연결 요건과 모델에 대한 악의적 학대 금지를 더했다.',
+    publishedAt: '2026-10-08',
+    collectedAt: '2026-10-09',
+    category: 'Safety',
+    signal: '이용 정책 개정',
+    url: 'https://www.anthropic.com/news/2026-usage-policy-update',
+  },
+  {
     id: 'claude-haiku-5-5',
     source: 'Anthropic',
     kind: 'model',

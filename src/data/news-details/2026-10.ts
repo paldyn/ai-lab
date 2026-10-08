@@ -2,6 +2,53 @@ import type { NewsDetail } from '../news';
 
 /** 2026-10 발표의 모달 본문. 목록은 news.ts에 있습니다. */
 export const details: Record<string, NewsDetail> = {
+  'anthropic-cyber-mission': {
+    points: [
+      '방어자에게 도구·연구·자원을 지원하는 장기 사업으로, 첫 두 영역은 핵심 기반시설과 오픈소스 소프트웨어다',
+      'Critical Infrastructure Defense Program은 전력·수도·교통 운영기술(OT) 보안 업체에 프런티어 모델·현장 엔지니어·위협 연구를 제공한다',
+      '창립 파트너는 Accenture·Booz Allen·CrowdStrike·Deloitte·Dragos·Hitachi·Palo Alto Networks·PwC·Rockwell Automation 등 11곳이다',
+      'OSS Scanner는 신청한 오픈소스 프로젝트를 가장 강한 모델로 무료 정기 스캔하고 개념 증명·설명·수정안을 담은 보고서를 보낸다',
+      'OSS Scanner 보고서는 사람 검토 없이 모델이 쓴 것이며 참양성 비율은 90% 이상을 예상한다고 밝혔다',
+      '이번 주 초 Project Glasswing을 확대된 Cyber Verification Program에 합쳤다',
+      'PSF·Alpha-Omega·OpenSSF·Apache 재단 등에 자금을 댔고, 8월 출범한 Defender Advantage Fund(0xDAF)가 OSS Scanner를 무료로 유지한다',
+      '6월 시작한 주·지방정부 사이버 방어 프로그램은 미국 주의 절반 넘게 지원했다고 밝혔다',
+    ],
+    commentary:
+      '취약점을 찾는 비용은 내려갔는데 고치는 쪽은 여전히 사람 손이라는 진단이 이 사업의 출발점이다. OSS Scanner가 사람 검토를 ' +
+      '빼고 보고서를 바로 보내는 것도 같은 판단이다. 빨라진 만큼 오탐이 섞이니, 메인테이너 입장에서는 감당할 여력이 있는 ' +
+      '프로젝트만 신청하라는 단서를 그대로 받아들이는 편이 맞다. OT 쪽은 패치 자체가 어려운 영역이라 성과가 늦게 보일 것이다.',
+  },
+  'genesis-mission-commitment': {
+    points: [
+      '연방 과학 사업 Genesis Mission에 3년간 1억 5천만 달러를 약속했다',
+      '자금은 NASA·NIH·NSF 등 사업에 참여한 15곳이 넘는 기관에 Claude를 제공하는 데 쓴다',
+      '수백 개 Genesis Mission 연구 과제에 Claude·Claude Code·API 크레딧을 준다',
+      '핵융합 에너지·양자 컴퓨팅 같은 정부 우선 과제에서 기관·국립연구소와 협력한다',
+      '과학자 교육·온보딩·기술 지원과, 새로 합류한 기관의 첫 과제 착수를 돕는다',
+      '백악관 과학기술정책실이 연 Science: A New Golden Age Summit에서 발표했다',
+      '지난해 12월 DOE와 Genesis Mission 파트너십을 처음 발표했다',
+    ],
+    commentary:
+      'Google(4,000만 달러)·OpenAI에 이어 Anthropic도 Genesis Mission에 돈과 모델을 얹었다. 액수보다 눈여겨볼 것은 ' +
+      'DOE 국립연구소에서 NASA·NIH·NSF로 대상 기관이 넓어졌다는 점이다. 연방 연구 현장에서 어느 모델이 기본 도구로 ' +
+      '자리 잡느냐가 걸린 경쟁이고, 크레딧이 끝나는 3년 뒤 실제 조달로 이어지는지가 성패를 가른다.',
+  },
+  '2026-usage-policy-update': {
+    points: [
+      '새 이용 정책은 11월 12일부터 적용되며 대부분은 기존 규칙을 분명히 하는 개정이라고 밝혔다',
+      '선거·사기·개인정보·허위정보 절에 흩어진 규칙을 Do Not Engage in Deceptive Campaigns or Artificial Activity 절로 모았다',
+      '선거 절을 Do Not Undermine Democratic Processes로 바꾸고 개인 맞춤 투표·캠페인 타기팅 전면 금지를 걷었다',
+      '무기 금지에 무기를 작동시키는 소프트웨어·부품과 드론·자율 이동체 무장을 포함한다고 명시했다',
+      '동의 없는 추적, 수사·체포·기소 대상 결정·추천, 감시 도구 제작을 금지 대상으로 구체화했다',
+      '물리적 행동을 하는 하드웨어에 연결할 때 운영자가 지켜보며 멈출 수 있고 연결이 끊겨도 안전 상태를 유지해야 한다',
+      '지속적이고 불필요한 모델 학대를 금지했으며 대화 종료 기능이 주된 집행 수단이라고 밝혔다',
+      '지원 지역 정책에서 비지원 지역 소재·설립·과반 지배 주체의 이용 금지를 다시 명시했다',
+    ],
+    commentary:
+      '금지 범위를 넓혔다기보다 이미 해 오던 집행을 문장으로 옮긴 개정이다. 실무에서 볼 자리는 둘이다. 투표 안내 같은 ' +
+      '시민 활동이 풀렸다는 것, 그리고 로봇·실험 장비처럼 물리적으로 움직이는 하드웨어에 붙일 때 정지 수단과 안전 상태가 ' +
+      '이용 조건이 됐다는 것이다. 에이전트를 장비에 연결하려는 팀은 적용일 전에 설계를 맞춰 둘 필요가 있다.',
+  },
   'claude-haiku-5-5': {
     points: [
       '요약·압축·DB 조회·분류 같은 대량·비용 민감 작업용 소형 모델이며 Anthropic 모델 중 표준 속도로는 가장 빠르다',
