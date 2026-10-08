@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="560" viewBox="0 0 880 560" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <defs>
+    <marker id="psrArr" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#7ec8e3"/>
+    </marker>
+    <marker id="psrGray" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#6a7180"/>
+    </marker>
+  </defs>
+  <rect x="0" y="0" width="880" height="560" fill="#0a0a0a" rx="12"/>
+  <text x="60" y="48" font-size="22" font-weight="700" fill="#e8e8e8">손실 스파이크 대응 절차</text>
+  <text x="60" y="74" font-size="14" fill="#9aa4b8">직전 체크포인트로 되감고, 문제 구간의 배치를 건너뛰어 다시 출발한다</text>
+  <line x1="90" y1="300" x2="820" y2="300" stroke="#3a3f4a" stroke-width="1.5"/>
+  <line x1="90" y1="110" x2="90" y2="300" stroke="#3a3f4a" stroke-width="1.5"/>
+  <text x="70" y="120" text-anchor="end" font-size="12" fill="#888">손실</text>
+  <text x="820" y="322" text-anchor="end" font-size="12" fill="#888">학습 스텝 →</text>
+  <rect x="470" y="112" width="70" height="186" fill="#1a1414" stroke="none"/>
+  <text x="505" y="282" text-anchor="middle" font-size="12" fill="#e05555">건너뛸 배치</text>
+  <path d="M 100 130 C 180 190, 300 222, 440 236 C 480 240, 500 241, 520 240 L 540 140 L 560 200 L 580 170 L 600 150" fill="none" stroke="#e05555" stroke-width="2.5"/>
+  <text x="612" y="148" font-size="12" fill="#e05555">발산</text>
+  <path d="M 440 236 C 560 246, 680 252, 810 256" fill="none" stroke="#55c555" stroke-width="2.5"/>
+  <text x="700" y="240" font-size="12" fill="#55c555">다시 돈 학습</text>
+  <rect x="194" y="190" width="12" height="12" fill="#7ec8e3"/>
+  <rect x="314" y="216" width="12" height="12" fill="#7ec8e3"/>
+  <rect x="434" y="230" width="12" height="12" fill="#7ec8e3"/>
+  <text x="200" y="176" text-anchor="middle" font-size="12" fill="#7ec8e3">체크포인트</text>
+  <path d="M 536 150 C 500 110, 460 150, 444 224" fill="none" stroke="#7ec8e3" stroke-width="2" stroke-dasharray="4,4" marker-end="url(#psrArr)"/>
+  <text x="360" y="140" text-anchor="middle" font-size="12" fill="#7ec8e3">약 100스텝 전으로 되감기</text>
+  <rect x="60" y="370" width="172" height="90" rx="8" fill="#111318" stroke="#2a2f3a" stroke-width="1"/>
+  <text x="76" y="400" font-size="14" font-weight="700" fill="#e8e8e8">① 감지</text>
+  <text x="76" y="424" font-size="12" fill="#e8e8e8">그래디언트 크기 경보</text>
+  <text x="76" y="444" font-size="12" fill="#9aa4b8">손실보다 먼저 불어난다</text>
+  <line x1="232" y1="415" x2="256" y2="415" stroke="#6a7180" stroke-width="2" marker-end="url(#psrGray)"/>
+  <rect x="256" y="370" width="172" height="90" rx="8" fill="#111318" stroke="#2a2f3a" stroke-width="1"/>
+  <text x="272" y="400" font-size="14" font-weight="700" fill="#e8e8e8">② 되감기</text>
+  <text x="272" y="424" font-size="12" fill="#e8e8e8">스파이크 직전 체크포인트</text>
+  <text x="272" y="444" font-size="12" fill="#9aa4b8">옵티마이저 상태까지</text>
+  <line x1="428" y1="415" x2="452" y2="415" stroke="#6a7180" stroke-width="2" marker-end="url(#psrGray)"/>
+  <rect x="452" y="370" width="172" height="90" rx="8" fill="#111318" stroke="#2a2f3a" stroke-width="1"/>
+  <text x="468" y="400" font-size="14" font-weight="700" fill="#e8e8e8">③ 건너뛰기</text>
+  <text x="468" y="424" font-size="12" fill="#e8e8e8">그 구간 배치 200~500개</text>
+  <text x="468" y="444" font-size="12" fill="#9aa4b8">같은 자리 재발 방지</text>
+  <line x1="624" y1="415" x2="648" y2="415" stroke="#6a7180" stroke-width="2" marker-end="url(#psrGray)"/>
+  <rect x="648" y="370" width="172" height="90" rx="8" fill="#111318" stroke="#2a2f3a" stroke-width="1"/>
+  <text x="664" y="400" font-size="14" font-weight="700" fill="#e8e8e8">④ 재개</text>
+  <text x="664" y="424" font-size="12" fill="#e8e8e8">학습률 잠시 낮춤</text>
+  <text x="664" y="444" font-size="12" fill="#9aa4b8">같은 스텝 통과 확인</text>
+  <text x="60" y="510" font-size="13" fill="#9aa4b8">수치는 PaLM 논문이 보고한 방식의 어림이다 — 모델과 구성마다 다르다</text>
+</svg>

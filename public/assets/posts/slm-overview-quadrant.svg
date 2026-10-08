@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="530" viewBox="0 0 880 530">
+  <defs>
+    <marker id="qArr" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#8a8a8a"/>
+    </marker>
+  </defs>
+  <rect x="0" y="0" width="880" height="530" rx="12" fill="#0a0a0a"/>
+  <text x="60" y="46" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="22" font-weight="700" fill="#e8e8e8">작업 사분면: 무엇이 주어지고 무엇이 정해졌나</text>
+  <rect x="140" y="80" width="330" height="150" rx="8" fill="#12161c" stroke="#7777cc" stroke-width="1.5"/>
+  <text x="305" y="132" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#e8e8e8">시험해 봐야 안다</text>
+  <text x="305" y="164" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">형식은 정해졌고 정보는 모델이 채운다</text>
+  <text x="305" y="188" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">예: 근거 없이 사실 퀴즈 맞히기</text>
+  <rect x="490" y="80" width="330" height="150" rx="8" fill="#101c10" stroke="#55c555" stroke-width="1.5"/>
+  <text x="655" y="132" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#e8e8e8">작은 모델의 자리</text>
+  <text x="655" y="164" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">정보도 주어지고 형식도 정해졌다</text>
+  <text x="655" y="188" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">예: 날짜·금액 추출, 문의 분류</text>
+  <rect x="140" y="250" width="330" height="150" rx="8" fill="#1c1010" stroke="#e05555" stroke-width="1.5"/>
+  <text x="305" y="302" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#e8e8e8">큰 모델에 남긴다</text>
+  <text x="305" y="334" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">정보도 형식도 모델이 채운다</text>
+  <text x="305" y="358" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">예: 열린 조언, 계획 세우기</text>
+  <rect x="490" y="250" width="330" height="150" rx="8" fill="#12161c" stroke="#7777cc" stroke-width="1.5"/>
+  <text x="655" y="302" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#e8e8e8">시험해 봐야 안다</text>
+  <text x="655" y="334" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">정보는 주어지고 형식은 열려 있다</text>
+  <text x="655" y="358" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">예: 근거 문서를 읽고 자유롭게 설명</text>
+  <line x1="140" y1="430" x2="818" y2="430" stroke="#8a8a8a" stroke-width="1.5" marker-end="url(#qArr)"/>
+  <text x="820" y="456" text-anchor="end" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">밖에서 주어지는 정보 많음</text>
+  <line x1="116" y1="400" x2="116" y2="82" stroke="#8a8a8a" stroke-width="1.5" marker-end="url(#qArr)"/>
+  <text x="96" y="240" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888" transform="rotate(-90 96 240)">답의 형태가 정해짐</text>
+  <text x="60" y="496" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">근거 문서를 붙이면 오른쪽으로, 출력 형식을 스키마로 못 박으면 위로 칸을 옮긴다.</text>
+</svg>

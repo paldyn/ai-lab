@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="494" viewBox="0 0 880 494">
+  <rect x="0" y="0" width="880" height="494" rx="12" fill="#0a0a0a"/>
+  <text x="60" y="46" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="22" font-weight="700" fill="#e8e8e8">7B 모델: 가중치 + KV 캐시(16비트)</text>
+  <rect x="60" y="66" width="14" height="14" rx="2" fill="#7ec8e3"/>
+  <text x="82" y="78" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">가중치</text>
+  <rect x="150" y="66" width="14" height="14" rx="2" fill="#e05555"/>
+  <text x="172" y="78" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">KV 캐시</text>
+  <text x="60" y="148" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#e8e8e8">16비트</text>
+  <text x="200" y="119" text-anchor="end" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">4K</text>
+  <rect x="220" y="104" width="224.0" height="20" fill="#7ec8e3"/>
+  <rect x="444.0" y="104" width="8.6" height="20" fill="#e05555"/>
+  <text x="466.6" y="119" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e8e8e8">14.5GB</text>
+  <text x="200" y="149" text-anchor="end" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">32K</text>
+  <rect x="220" y="134" width="224.0" height="20" fill="#7ec8e3"/>
+  <rect x="444.0" y="134" width="68.7" height="20" fill="#e05555"/>
+  <text x="526.7" y="149" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e8e8e8">18.3GB</text>
+  <text x="200" y="179" text-anchor="end" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">128K</text>
+  <rect x="220" y="164" width="224.0" height="20" fill="#7ec8e3"/>
+  <rect x="444.0" y="164" width="274.9" height="20" fill="#e05555"/>
+  <text x="732.9" y="179" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e8e8e8">31.2GB</text>
+  <text x="60" y="258" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#e8e8e8">8비트</text>
+  <text x="200" y="229" text-anchor="end" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">4K</text>
+  <rect x="220" y="214" width="112.0" height="20" fill="#7ec8e3"/>
+  <rect x="332.0" y="214" width="8.6" height="20" fill="#e05555"/>
+  <text x="354.6" y="229" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e8e8e8">7.5GB</text>
+  <text x="200" y="259" text-anchor="end" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">32K</text>
+  <rect x="220" y="244" width="112.0" height="20" fill="#7ec8e3"/>
+  <rect x="332.0" y="244" width="68.7" height="20" fill="#e05555"/>
+  <text x="414.7" y="259" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e8e8e8">11.3GB</text>
+  <text x="200" y="289" text-anchor="end" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">128K</text>
+  <rect x="220" y="274" width="112.0" height="20" fill="#7ec8e3"/>
+  <rect x="332.0" y="274" width="274.9" height="20" fill="#e05555"/>
+  <text x="620.9" y="289" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e8e8e8">24.2GB</text>
+  <text x="60" y="368" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#e8e8e8">4비트</text>
+  <text x="200" y="339" text-anchor="end" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">4K</text>
+  <rect x="220" y="324" width="56.0" height="20" fill="#7ec8e3"/>
+  <rect x="276.0" y="324" width="8.6" height="20" fill="#e05555"/>
+  <text x="298.6" y="339" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e8e8e8">4.0GB</text>
+  <text x="200" y="369" text-anchor="end" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">32K</text>
+  <rect x="220" y="354" width="56.0" height="20" fill="#7ec8e3"/>
+  <rect x="276.0" y="354" width="68.7" height="20" fill="#e05555"/>
+  <text x="358.7" y="369" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e8e8e8">7.8GB</text>
+  <text x="200" y="399" text-anchor="end" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">128K</text>
+  <rect x="220" y="384" width="56.0" height="20" fill="#7ec8e3"/>
+  <rect x="276.0" y="384" width="274.9" height="20" fill="#e05555"/>
+  <text x="564.9" y="399" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e8e8e8">20.7GB</text>
+  <line x1="348" y1="96" x2="348" y2="398" stroke="#e8e8e8" stroke-width="1.5" stroke-dasharray="4,4"/>
+  <text x="348" y="418" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e8e8e8">8GB 장치</text>
+  <text x="60" y="446" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">KV 캐시가 가중치를 넘는 문맥: 4비트 약 27K · 8비트 약 53K · 16비트 약 107K 토큰.</text>
+  <text x="60" y="468" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">활성값과 작업 공간은 뺀 값이다.</text>
+</svg>

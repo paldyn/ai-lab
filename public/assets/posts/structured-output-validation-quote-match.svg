@@ -1,0 +1,72 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="520" viewBox="0 0 880 520">
+  <defs>
+    <marker id="qmArr" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#7ec8e3"/>
+    </marker>
+    <marker id="qmOk" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#55c555"/>
+    </marker>
+    <marker id="qmBad" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#e05555"/>
+    </marker>
+  </defs>
+
+  <rect x="0" y="0" width="880" height="520" rx="12" fill="#0a0a0a"/>
+
+  <text x="50" y="46" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="22" font-weight="700" fill="#e8e8e8">인용 대조의 순서</text>
+  <text x="50" y="72" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">뜻이 같은 표기 차이만 접고, 남은 차이는 유사도 문턱이 가른다</text>
+
+  <rect x="50" y="110" width="200" height="76" rx="8" fill="#12121a" stroke="#7ec8e3" stroke-width="1"/>
+  <text x="72" y="140" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="600" fill="#e8e8e8">모델의 인용</text>
+  <text x="72" y="166" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="11.5" fill="#888">amount_quote 필드</text>
+
+  <line x1="250" y1="148" x2="310" y2="148" stroke="#7ec8e3" stroke-width="2" marker-end="url(#qmArr)"/>
+
+  <rect x="310" y="110" width="220" height="76" rx="8" fill="#12121a" stroke="#7ec8e3" stroke-width="1"/>
+  <text x="332" y="140" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="600" fill="#e8e8e8">정규화</text>
+  <text x="332" y="166" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="11.5" fill="#888">공백·줄바꿈 · 전각 · 따옴표</text>
+
+  <line x1="530" y1="148" x2="590" y2="148" stroke="#7ec8e3" stroke-width="2" marker-end="url(#qmArr)"/>
+
+  <rect x="590" y="110" width="240" height="76" rx="8" fill="#12121a" stroke="#7ec8e3" stroke-width="1"/>
+  <text x="612" y="140" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="600" fill="#e8e8e8">완전 일치</text>
+  <text x="612" y="166" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="11.5" fill="#888">정규화한 원문 안에 그대로 있는가</text>
+
+  <path d="M 640 186 L 640 218 L 420 218 L 420 250" fill="none" stroke="#55c555" stroke-width="2" marker-end="url(#qmOk)"/>
+  <text x="440" y="204" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="11.5" fill="#55c555">일치</text>
+
+  <line x1="760" y1="186" x2="760" y2="250" stroke="#e0a555" stroke-width="2" marker-end="url(#qmArr)"/>
+  <text x="772" y="222" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="11.5" fill="#e0a555">불일치</text>
+
+  <rect x="590" y="250" width="240" height="76" rx="8" fill="#12121a" stroke="#e0a555" stroke-width="1"/>
+  <text x="612" y="280" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="600" fill="#e0a555">유사도 0.9 이상</text>
+  <text x="612" y="306" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="11.5" fill="#888">가장 가까운 원문 구간과 견준다</text>
+
+  <line x1="590" y1="288" x2="530" y2="288" stroke="#55c555" stroke-width="2" marker-end="url(#qmOk)"/>
+  <text x="546" y="274" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="11.5" fill="#55c555">넘음</text>
+
+  <rect x="310" y="250" width="220" height="76" rx="8" fill="#12121a" stroke="#55c555" stroke-width="1"/>
+  <text x="332" y="280" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="600" fill="#55c555">통과</text>
+  <text x="332" y="306" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="11.5" fill="#888">값을 쓴다</text>
+
+  <line x1="760" y1="326" x2="760" y2="380" stroke="#e05555" stroke-width="2" marker-end="url(#qmBad)"/>
+  <text x="772" y="358" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="11.5" fill="#e05555">못 넘음</text>
+
+  <rect x="590" y="380" width="240" height="76" rx="8" fill="#12121a" stroke="#e05555" stroke-width="1"/>
+  <text x="612" y="410" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="600" fill="#e05555">근거 실패</text>
+  <text x="612" y="436" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="11.5" fill="#888">폴백 — 사람 검토 큐로</text>
+
+  <text x="50" y="382" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="600" fill="#e8e8e8">문턱별 결과 (예: 사람이 표시한 200건)</text>
+  <text x="50" y="410" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="11.5" fill="#888">문턱</text>
+  <text x="150" y="410" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="11.5" fill="#888">진짜 인용 탈락</text>
+  <text x="320" y="410" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="11.5" fill="#888">가짜 인용 통과</text>
+  <text x="50" y="434" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e8e8e8">1.0</text>
+  <text x="150" y="434" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e05555">23건</text>
+  <text x="320" y="434" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e8e8e8">0건</text>
+  <text x="50" y="458" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="600" fill="#55c555">0.9</text>
+  <text x="150" y="458" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e8e8e8">4건</text>
+  <text x="320" y="458" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e8e8e8">1건</text>
+  <text x="50" y="482" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e8e8e8">0.8</text>
+  <text x="150" y="482" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e8e8e8">0건</text>
+  <text x="320" y="482" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e05555">6건</text>
+</svg>

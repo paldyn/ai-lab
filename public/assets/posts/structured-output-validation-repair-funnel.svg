@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="440" viewBox="0 0 880 440">
+  <rect x="0" y="0" width="880" height="440" rx="12" fill="#0a0a0a"/>
+
+  <text x="50" y="46" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="22" font-weight="700" fill="#e8e8e8">수리 회차마다 고쳐지는 몫이 줄어든다</text>
+  <text x="50" y="72" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">예: 하루 1,000건 중 의미 검증에 걸린 62건에 되먹임 재시도를 붙였을 때</text>
+
+  <text x="50" y="112" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="600" fill="#888">회차</text>
+  <text x="190" y="112" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="600" fill="#888">시도한 건 중 고친 건</text>
+  <text x="690" y="112" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="600" fill="#888">한 건 건지는 토큰</text>
+
+  <text x="50" y="157" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#e8e8e8">1회 수리</text>
+  <rect x="190" y="134" width="496" height="36" rx="6" fill="#12121a" stroke="#55c555" stroke-width="1"/>
+  <rect x="190" y="134" width="352" height="36" rx="6" fill="#55c555" fill-opacity="0.35"/>
+  <text x="204" y="157" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e8e8e8">62건 중 44건 · 71%</text>
+  <text x="690" y="157" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#55c555">약 2,760</text>
+
+  <text x="50" y="227" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#e8e8e8">2회 수리</text>
+  <rect x="190" y="204" width="144" height="36" rx="6" fill="#12121a" stroke="#e0a555" stroke-width="1"/>
+  <rect x="190" y="204" width="56" height="36" rx="6" fill="#e0a555" fill-opacity="0.35"/>
+  <text x="350" y="227" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e8e8e8">18건 중 7건 · 39%</text>
+  <text x="690" y="227" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#e0a555">약 5,710</text>
+
+  <text x="50" y="297" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#888">3회 수리</text>
+  <rect x="190" y="274" width="88" height="36" rx="6" fill="#12121a" stroke="#e05555" stroke-width="1" stroke-dasharray="4,4"/>
+  <rect x="190" y="274" width="8" height="36" rx="2" fill="#e05555" fill-opacity="0.5"/>
+  <text x="294" y="297" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e8e8e8">11건 중 1건 · 9%</text>
+  <text x="690" y="297" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#e05555">27,280</text>
+
+  <line x1="50" y1="334" x2="830" y2="334" stroke="#2a2a35" stroke-width="1"/>
+  <text x="50" y="364" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">수리 한 번의 토큰: 1회 1,960 · 2회 2,220 · 3회 2,480 (앞선 답과 오류 문장이 쌓여 입력이 260씩 는다)</text>
+  <text x="50" y="398" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#7ec8e3">상한을 2회로 두면 남은 11건은 폴백으로 간다 — 3회째는 한 건에 첫 회차의 열 배 가까이 든다</text>
+</svg>

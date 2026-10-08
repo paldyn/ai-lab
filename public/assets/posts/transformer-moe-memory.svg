@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="400" viewBox="0 0 880 400">
+<rect width="880" height="400" rx="12" fill="#0a0a0a"/>
+<text x="440" y="46" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="22" font-weight="700" fill="#e8e8e8" text-anchor="middle">Mixtral 8×7B의 적재 메모리와 활성 메모리</text>
+<text x="440" y="72" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#e8e8e8" text-anchor="middle">bf16(파라미터당 2바이트) 기준 가중치 크기</text>
+<text x="60" y="130" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="15" font-weight="600" fill="#e8e8e8" text-anchor="start">적재 파라미터</text>
+<text x="60" y="150" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888" text-anchor="start">GPU에 올려 둘 전부</text>
+<rect x="260" y="110" width="560" height="48" rx="6" fill="#e05555" fill-opacity="0.8"/>
+<text x="800" y="140" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="14" font-weight="700" fill="#0a0a0a" text-anchor="end">47B × 2바이트 ≈ 94GB</text>
+<text x="60" y="210" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="15" font-weight="600" fill="#e8e8e8" text-anchor="start">활성 파라미터</text>
+<text x="60" y="230" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888" text-anchor="start">토큰 하나가 계산에 쓰는 몫</text>
+<rect x="260" y="190" width="155" height="48" rx="6" fill="#55c555" fill-opacity="0.8"/>
+<text x="431" y="220" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="14" font-weight="600" fill="#e8e8e8" text-anchor="start">13B × 2바이트 ≈ 26GB</text>
+<text x="60" y="290" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="15" font-weight="600" fill="#e8e8e8" text-anchor="start">밀집 13B 모델</text>
+<text x="60" y="310" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888" text-anchor="start">적재와 활성이 같다</text>
+<rect x="260" y="270" width="155" height="48" rx="6" fill="#7ec8e3" fill-opacity="0.8"/>
+<text x="431" y="300" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="14" font-weight="600" fill="#e8e8e8" text-anchor="start">13B × 2바이트 ≈ 26GB</text>
+<text x="440" y="360" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="14" fill="#888" text-anchor="middle">연산은 아래 두 줄과 같지만, 메모리는 맨 위 줄만큼 든다</text>
+</svg>
