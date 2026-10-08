@@ -256,3 +256,5 @@ candidate recall ceiling: R@5=0.7379 R@10=0.7833 R@20=0.8373 R@30=0.8653 R@50=0.
 읽어주셔서 감사합니다. 😊
 
 **지난 글:** [무관 문서를 섞어 코퍼스를 키우면 Recall은 어떻게 떨어지는가: 떨어뜨린 것은 양이 아니라 닮음이었다](/articles/lab-distractor-corpus-growth)
+
+**다음 글:** [「답 없음」을 내는 유사도 임계값은 어디인가: 거짓 응답 5%에 답할 질의 63%를 버렸다](/articles/lab-score-threshold-cutoff)
