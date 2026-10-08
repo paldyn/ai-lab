@@ -160,7 +160,7 @@ export interface NewsDetail {
   commentary: string;
 }
 
-export const globalNewsUpdatedAt = '2026-10-06';
+export const globalNewsUpdatedAt = '2026-10-07';
 
 /**
  * 공식 발표 한 건 = 항목 한 개. 2026년 1월부터 쌓는 아카이브이며 오래된 항목을
@@ -224,6 +224,58 @@ const entries: NewsItem[] = [
     url: 'https://platform.claude.com/docs/en/release-notes/overview#october-7-2026',
   },
   {
+    id: 'gpt-6-for-everyone',
+    source: 'OpenAI',
+    kind: 'model',
+    title: 'ChatGPT 채팅에 GPT-6 — 화면을 짜서 답하는 Intelligent UI',
+    summary:
+      'OpenAI가 ChatGPT 채팅 탭의 모델을 GPT-6로 바꿨다. 유료는 GPT-6 Sol, Free·Go는 GPT-6 Luna가 맡고, ' +
+      '답변을 그래픽·버튼·폼·차트 같은 인터랙티브 요소로 짜는 Intelligent UI와 생각하면서 답하기를 함께 넣었다.',
+    publishedAt: '2026-10-07',
+    collectedAt: '2026-10-08',
+    category: 'Frontier',
+    signal: '기본 모델 전환',
+    url: 'https://openai.com/index/gpt-6-for-everyone',
+    model: {
+      family: 'GPT',
+      name: 'GPT-6 Sol · Luna',
+      kind: '모델 패밀리',
+      status: '공개',
+      useCase: '일상 대화와 시각적 답변',
+      headline: '채팅 탭이 GPT-6로 넘어가며 답이 글에서 화면으로 바뀐다.',
+      logo: 'assets/openai.svg',
+      tone: 'gpt',
+    },
+  },
+  {
+    id: 'teens-learn-and-plan',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'ChatGPT for Teens에 플래시카드 추가·College Planner 예고',
+    summary:
+      'OpenAI가 ChatGPT for Teens의 초기 이용 수치를 공개하고 플래시카드·퀴즈 만들기와 여러 장 연속 촬영을 더했다. ' +
+      '미국 고교생의 대학 지원을 돕는 College Planner를 곧 넣는다고 밝혔다.',
+    publishedAt: '2026-10-07',
+    collectedAt: '2026-10-08',
+    category: 'Product',
+    signal: '청소년 학습 경험',
+    url: 'https://openai.com/index/teens-learn-and-plan',
+  },
+  {
+    id: 'radisson',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'Radisson, ChatGPT 플러그인 예약 전환율 자연 검색의 약 1.5배',
+    summary:
+      'Radisson Hotel Group이 Accenture Song과 6주 만에 만든 ChatGPT 플러그인으로 호텔 비교·탐색을 제공한다. ' +
+      '7~8월 방문 대비 예약 전환율이 자연 검색의 약 1.5배였고 ChatGPT 스폰서 광고도 함께 집행한다.',
+    publishedAt: '2026-10-07',
+    collectedAt: '2026-10-08',
+    category: 'Product',
+    signal: '기업 도입 사례',
+    url: 'https://openai.com/index/radisson',
+  },
+  {
     id: 'blog-embeddinggemma-2-an-open-lightweight-multimodal-embedding-model',
     source: 'Google DeepMind',
     kind: 'model',
@@ -278,6 +330,34 @@ const entries: NewsItem[] = [
     category: 'Product',
     signal: '사이버 접근 검증',
     url: 'https://www.anthropic.com/news/cyber-verification-program',
+  },
+  {
+    id: 'jump-trading',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'Jump Trading, GPT-6 Astra로 며칠짜리 퀀트 연구를 에이전트에 맡긴다',
+    summary:
+      '퀀트 트레이딩 회사 Jump Trading이 GPT-6 Astra를 들여 일상 코딩부터 가설 검증용 정량 연구까지 에이전트에 넘긴다고 ' +
+      '밝혔다. 연구자가 문제·환경·평가 기준을 정하고, 출력은 사람이 최종 검토한다.',
+    publishedAt: '2026-10-06',
+    collectedAt: '2026-10-08',
+    category: 'Product',
+    signal: '기업 도입 사례',
+    url: 'https://openai.com/index/jump-trading',
+  },
+  {
+    id: 'sharing-ai-progress-in-mathematics',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'OpenAI, 사내 모델의 새 수학 결과를 GitHub에 공개 — Lean 형식화 포함',
+    summary:
+      'OpenAI가 사내 프런티어 모델이 낸 수학 결과를 GitHub 저장소로 공개했다. 증명 상당수의 Lean 형식화와 추론 요약 ' +
+      '10건, 컴퓨트 추정, 시도한 문제 수 통계를 함께 실었다.',
+    publishedAt: '2026-10-06',
+    collectedAt: '2026-10-08',
+    category: 'Research',
+    signal: 'AI 수학 발견',
+    url: 'https://openai.com/index/sharing-ai-progress-in-mathematics',
   },
   {
     id: 'eu-text-provenance',
