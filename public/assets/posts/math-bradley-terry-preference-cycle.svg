@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="540" viewBox="0 0 880 540" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <defs>
+    <marker id="btC" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#7ec8e3"/>
+    </marker>
+    <marker id="btX" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#e05555"/>
+    </marker>
+  </defs>
+  <rect x="0" y="0" width="880" height="540" rx="12" fill="#0a0a0a"/>
+  <text x="60" y="46" font-size="22" font-weight="700" fill="#e8e8e8">순환 선호는 실수 축 하나에 담기지 않는다</text>
+  <text x="60" y="72" font-size="14" fill="#888">세 쌍을 각각 10번 비교했더니 매번 7 : 3으로 갈렸다. 화살표는 이긴 쪽에서 진 쪽으로 간다.</text>
+
+  <text x="60" y="112" font-size="16" font-weight="600" fill="#7ec8e3">세 쌍의 비교</text>
+  <line x1="247.1" y1="197.1" x2="332.9" y2="322.9" stroke="#7ec8e3" stroke-width="2.5" marker-end="url(#btC)"/>
+  <line x1="318" y1="350" x2="142" y2="350" stroke="#7ec8e3" stroke-width="2.5" marker-end="url(#btC)"/>
+  <line x1="127.1" y1="322.9" x2="212.9" y2="197.1" stroke="#7ec8e3" stroke-width="2.5" marker-end="url(#btC)"/>
+  <circle cx="230" cy="170" r="32" fill="#0a0a0a" stroke="#e8e8e8" stroke-width="2"/>
+  <circle cx="350" cy="350" r="32" fill="#0a0a0a" stroke="#e8e8e8" stroke-width="2"/>
+  <circle cx="110" cy="350" r="32" fill="#0a0a0a" stroke="#e8e8e8" stroke-width="2"/>
+  <text x="230" y="176" font-size="18" font-weight="700" fill="#e8e8e8" text-anchor="middle">A</text>
+  <text x="350" y="356" font-size="18" font-weight="700" fill="#e8e8e8" text-anchor="middle">B</text>
+  <text x="110" y="356" font-size="18" font-weight="700" fill="#e8e8e8" text-anchor="middle">C</text>
+  <text x="308" y="252" font-size="14" fill="#e8e8e8">A ≻ B  7 : 3</text>
+  <text x="152" y="252" font-size="14" fill="#e8e8e8" text-anchor="end">C ≻ A  7 : 3</text>
+  <text x="230" y="384" font-size="14" fill="#e8e8e8" text-anchor="middle">B ≻ C  7 : 3</text>
+
+  <text x="480" y="112" font-size="16" font-weight="600" fill="#7777cc">한 축에 세우기</text>
+  <line x1="480" y1="260" x2="820" y2="260" stroke="#888" stroke-width="1.5"/>
+  <path d="M 652 248 Q 705 214 758 248" fill="none" stroke="#55c555" stroke-width="2"/>
+  <path d="M 542 248 Q 595 214 648 248" fill="none" stroke="#55c555" stroke-width="2"/>
+  <text x="705" y="200" font-size="14" fill="#55c555" text-anchor="middle">A ≻ B ✓</text>
+  <text x="595" y="200" font-size="14" fill="#55c555" text-anchor="middle">B ≻ C ✓</text>
+  <circle cx="540" cy="260" r="5" fill="#e8e8e8"/>
+  <circle cx="650" cy="260" r="5" fill="#e8e8e8"/>
+  <circle cx="760" cy="260" r="5" fill="#e8e8e8"/>
+  <text x="540" y="290" font-size="14" fill="#e8e8e8" text-anchor="middle">C</text>
+  <text x="650" y="290" font-size="14" fill="#e8e8e8" text-anchor="middle">B</text>
+  <text x="760" y="290" font-size="14" fill="#e8e8e8" text-anchor="middle">A</text>
+  <path d="M 540 300 Q 650 360 790 296" fill="none" stroke="#e05555" stroke-width="2" stroke-dasharray="5,3" marker-end="url(#btX)"/>
+  <text x="650" y="372" font-size="14" fill="#e05555" text-anchor="middle">C ≻ A ✗  C가 A보다 오른쪽이어야 한다</text>
+
+  <rect x="60" y="410" width="760" height="98" rx="8" fill="#000000" stroke="#3a4a6e" stroke-width="1"/>
+  <text x="84" y="436" font-size="14" fill="#e8e8e8">(r_A − r_B) + (r_B − r_C) + (r_C − r_A) = 0 이라 셋이 동시에 양수일 수 없다</text>
+  <text x="84" y="462" font-size="14" font-weight="600" fill="#e8e8e8">최대가능도의 답: r_A = r_B = r_C</text>
+  <text x="84" y="488" font-size="14" fill="#888">모형은 세 쌍 모두를 0.5로 예측한다 — 데이터는 매번 0.7이었다.</text>
+</svg>

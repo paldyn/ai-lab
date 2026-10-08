@@ -1,0 +1,98 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="470" viewBox="0 0 880 470">
+<rect width="880" height="470" rx="12" fill="#0a0a0a"/>
+<text x="60" y="46" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="22" font-weight="700" fill="#e8e8e8">같은 4,000번의 추정, 두 가지 평균 내기</text>
+<text x="60" y="72" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">q = N(0,1), p = N(2,1), 표본 1,000개로 E_p[x] = 2를 추정한 값의 분포</text>
+<text x="100" y="112" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#e8e8e8">보통의 중요도 표집</text>
+<text x="820" y="112" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" text-anchor="end" fill="#7777cc">평균 2.00 · 표준편차 0.91 · 최댓값 19.5</text>
+<rect x="200.8" y="249.7" width="13.4" height="0.3" fill="#7777cc" fill-opacity="0.75"/>
+<rect x="215.2" y="249.7" width="13.4" height="0.3" fill="#7777cc" fill-opacity="0.75"/>
+<rect x="229.6" y="245.5" width="13.4" height="4.5" fill="#7777cc" fill-opacity="0.75"/>
+<rect x="244.0" y="237.8" width="13.4" height="12.2" fill="#7777cc" fill-opacity="0.75"/>
+<rect x="258.4" y="220.8" width="13.4" height="29.2" fill="#7777cc" fill-opacity="0.75"/>
+<rect x="272.8" y="185.5" width="13.4" height="64.5" fill="#7777cc" fill-opacity="0.75"/>
+<rect x="287.2" y="167.5" width="13.4" height="82.5" fill="#7777cc" fill-opacity="0.75"/>
+<rect x="301.6" y="146.0" width="13.4" height="104.0" fill="#7777cc" fill-opacity="0.75"/>
+<rect x="316.0" y="134.5" width="13.4" height="115.5" fill="#7777cc" fill-opacity="0.75"/>
+<rect x="330.4" y="130.0" width="13.4" height="120.0" fill="#7777cc" fill-opacity="0.75"/>
+<rect x="344.8" y="135.1" width="13.4" height="114.9" fill="#7777cc" fill-opacity="0.75"/>
+<rect x="359.2" y="150.9" width="13.4" height="99.1" fill="#7777cc" fill-opacity="0.75"/>
+<rect x="373.6" y="161.1" width="13.4" height="88.9" fill="#7777cc" fill-opacity="0.75"/>
+<rect x="388.0" y="182.3" width="13.4" height="67.7" fill="#7777cc" fill-opacity="0.75"/>
+<rect x="402.4" y="197.1" width="13.4" height="52.9" fill="#7777cc" fill-opacity="0.75"/>
+<rect x="416.8" y="203.2" width="13.4" height="46.8" fill="#7777cc" fill-opacity="0.75"/>
+<rect x="431.2" y="202.2" width="13.4" height="47.8" fill="#7777cc" fill-opacity="0.75"/>
+<rect x="445.6" y="213.1" width="13.4" height="36.9" fill="#7777cc" fill-opacity="0.75"/>
+<rect x="460.0" y="225.3" width="13.4" height="24.7" fill="#7777cc" fill-opacity="0.75"/>
+<rect x="474.4" y="225.0" width="13.4" height="25.0" fill="#7777cc" fill-opacity="0.75"/>
+<rect x="488.8" y="228.8" width="13.4" height="21.2" fill="#7777cc" fill-opacity="0.75"/>
+<rect x="503.2" y="236.2" width="13.4" height="13.8" fill="#7777cc" fill-opacity="0.75"/>
+<rect x="517.6" y="236.8" width="13.4" height="13.2" fill="#7777cc" fill-opacity="0.75"/>
+<rect x="532.0" y="238.1" width="13.4" height="11.9" fill="#7777cc" fill-opacity="0.75"/>
+<rect x="546.4" y="240.4" width="13.4" height="9.6" fill="#7777cc" fill-opacity="0.75"/>
+<rect x="560.8" y="240.4" width="13.4" height="9.6" fill="#7777cc" fill-opacity="0.75"/>
+<rect x="575.2" y="239.4" width="13.4" height="10.6" fill="#7777cc" fill-opacity="0.75"/>
+<rect x="589.6" y="243.9" width="13.4" height="6.1" fill="#7777cc" fill-opacity="0.75"/>
+<rect x="604.0" y="246.5" width="13.4" height="3.5" fill="#7777cc" fill-opacity="0.75"/>
+<rect x="618.4" y="246.5" width="13.4" height="3.5" fill="#7777cc" fill-opacity="0.75"/>
+<rect x="632.8" y="246.5" width="13.4" height="3.5" fill="#7777cc" fill-opacity="0.75"/>
+<rect x="647.2" y="246.8" width="13.4" height="3.2" fill="#7777cc" fill-opacity="0.75"/>
+<rect x="661.6" y="246.1" width="13.4" height="3.9" fill="#7777cc" fill-opacity="0.75"/>
+<rect x="676.0" y="246.1" width="13.4" height="3.9" fill="#7777cc" fill-opacity="0.75"/>
+<rect x="690.4" y="246.8" width="13.4" height="3.2" fill="#7777cc" fill-opacity="0.75"/>
+<rect x="704.8" y="248.1" width="13.4" height="1.9" fill="#7777cc" fill-opacity="0.75"/>
+<rect x="719.2" y="248.4" width="13.4" height="1.6" fill="#7777cc" fill-opacity="0.75"/>
+<rect x="733.6" y="249.4" width="13.4" height="0.6" fill="#7777cc" fill-opacity="0.75"/>
+<rect x="748.0" y="247.4" width="13.4" height="2.6" fill="#7777cc" fill-opacity="0.75"/>
+<rect x="762.4" y="249.4" width="13.4" height="0.6" fill="#7777cc" fill-opacity="0.75"/>
+<rect x="776.8" y="248.7" width="13.4" height="1.3" fill="#7777cc" fill-opacity="0.75"/>
+<rect x="791.2" y="249.0" width="13.4" height="1.0" fill="#7777cc" fill-opacity="0.75"/>
+<rect x="805.6" y="234.6" width="13.4" height="15.4" fill="#7777cc" fill-opacity="0.75"/>
+<line x1="100" y1="250" x2="820" y2="250" stroke="#888" stroke-width="1.5"/>
+<line x1="388.0" y1="124" x2="388.0" y2="250" stroke="#e8e8e8" stroke-width="1.5" stroke-dasharray="4,4"/>
+<text x="100" y="282" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#e8e8e8">자기 정규화</text>
+<text x="820" y="282" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" text-anchor="end" fill="#7ec8e3">평균 1.94 · 표준편차 0.28</text>
+<rect x="287.2" y="419.8" width="13.4" height="0.2" fill="#7ec8e3" fill-opacity="0.75"/>
+<rect x="301.6" y="417.1" width="13.4" height="2.9" fill="#7ec8e3" fill-opacity="0.75"/>
+<rect x="316.0" y="400.6" width="13.4" height="19.4" fill="#7ec8e3" fill-opacity="0.75"/>
+<rect x="330.4" y="351.0" width="13.4" height="69.0" fill="#7ec8e3" fill-opacity="0.75"/>
+<rect x="344.8" y="310.7" width="13.4" height="109.3" fill="#7ec8e3" fill-opacity="0.75"/>
+<rect x="359.2" y="300.0" width="13.4" height="120.0" fill="#7ec8e3" fill-opacity="0.75"/>
+<rect x="373.6" y="320.6" width="13.4" height="99.4" fill="#7ec8e3" fill-opacity="0.75"/>
+<rect x="388.0" y="358.9" width="13.4" height="61.1" fill="#7ec8e3" fill-opacity="0.75"/>
+<rect x="402.4" y="376.4" width="13.4" height="43.6" fill="#7ec8e3" fill-opacity="0.75"/>
+<rect x="416.8" y="394.3" width="13.4" height="25.7" fill="#7ec8e3" fill-opacity="0.75"/>
+<rect x="431.2" y="400.2" width="13.4" height="19.8" fill="#7ec8e3" fill-opacity="0.75"/>
+<rect x="445.6" y="410.3" width="13.4" height="9.7" fill="#7ec8e3" fill-opacity="0.75"/>
+<rect x="460.0" y="412.7" width="13.4" height="7.3" fill="#7ec8e3" fill-opacity="0.75"/>
+<rect x="474.4" y="414.4" width="13.4" height="5.6" fill="#7ec8e3" fill-opacity="0.75"/>
+<rect x="488.8" y="416.1" width="13.4" height="3.9" fill="#7ec8e3" fill-opacity="0.75"/>
+<rect x="503.2" y="418.0" width="13.4" height="2.0" fill="#7ec8e3" fill-opacity="0.75"/>
+<rect x="517.6" y="418.8" width="13.4" height="1.2" fill="#7ec8e3" fill-opacity="0.75"/>
+<rect x="532.0" y="419.2" width="13.4" height="0.8" fill="#7ec8e3" fill-opacity="0.75"/>
+<rect x="546.4" y="419.2" width="13.4" height="0.8" fill="#7ec8e3" fill-opacity="0.75"/>
+<rect x="560.8" y="419.1" width="13.4" height="0.9" fill="#7ec8e3" fill-opacity="0.75"/>
+<rect x="575.2" y="418.9" width="13.4" height="1.1" fill="#7ec8e3" fill-opacity="0.75"/>
+<rect x="589.6" y="419.4" width="13.4" height="0.6" fill="#7ec8e3" fill-opacity="0.75"/>
+<rect x="604.0" y="419.7" width="13.4" height="0.3" fill="#7ec8e3" fill-opacity="0.75"/>
+<rect x="618.4" y="419.8" width="13.4" height="0.2" fill="#7ec8e3" fill-opacity="0.75"/>
+<rect x="647.2" y="419.8" width="13.4" height="0.2" fill="#7ec8e3" fill-opacity="0.75"/>
+<rect x="661.6" y="419.8" width="13.4" height="0.2" fill="#7ec8e3" fill-opacity="0.75"/>
+<rect x="690.4" y="419.8" width="13.4" height="0.2" fill="#7ec8e3" fill-opacity="0.75"/>
+<rect x="719.2" y="419.8" width="13.4" height="0.2" fill="#7ec8e3" fill-opacity="0.75"/>
+<rect x="733.6" y="419.8" width="13.4" height="0.2" fill="#7ec8e3" fill-opacity="0.75"/>
+<line x1="100" y1="420" x2="820" y2="420" stroke="#888" stroke-width="1.5"/>
+<line x1="388.0" y1="294" x2="388.0" y2="420" stroke="#e8e8e8" stroke-width="1.5" stroke-dasharray="4,4"/>
+<line x1="100.0" y1="420" x2="100.0" y2="426" stroke="#444" stroke-width="1"/>
+<text x="100.0" y="442" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" text-anchor="middle" fill="#888">0</text>
+<line x1="244.0" y1="420" x2="244.0" y2="426" stroke="#444" stroke-width="1"/>
+<text x="244.0" y="442" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" text-anchor="middle" fill="#888">1</text>
+<line x1="388.0" y1="420" x2="388.0" y2="426" stroke="#444" stroke-width="1"/>
+<text x="388.0" y="442" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" text-anchor="middle" fill="#888">2</text>
+<line x1="532.0" y1="420" x2="532.0" y2="426" stroke="#444" stroke-width="1"/>
+<text x="532.0" y="442" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" text-anchor="middle" fill="#888">3</text>
+<line x1="676.0" y1="420" x2="676.0" y2="426" stroke="#444" stroke-width="1"/>
+<text x="676.0" y="442" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" text-anchor="middle" fill="#888">4</text>
+<line x1="820.0" y1="420" x2="820.0" y2="426" stroke="#444" stroke-width="1"/>
+<text x="820.0" y="442" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" text-anchor="middle" fill="#888">5</text>
+<text x="820" y="462" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" text-anchor="end" fill="#888">흰 점선이 참값 2 · 오른쪽 끝 칸은 5 이상을 모은 것</text>
+</svg>

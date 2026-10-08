@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="480" viewBox="0 0 880 480" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <rect x="0" y="0" width="880" height="480" rx="12" fill="#0a0a0a"/>
+  <defs>
+    <marker id="mg-arr" viewBox="0 0 14 14" refX="12" refY="7"
+            markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#888"/>
+    </marker>
+    <marker id="mg-blue" viewBox="0 0 14 14" refX="12" refY="7"
+            markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#7ec8e3"/>
+    </marker>
+  </defs>
+
+  <text x="60" y="46" font-size="22" font-weight="700" fill="#e8e8e8">병합 전에는 곱이 셋, 병합 뒤에는 하나</text>
+  <text x="60" y="70" font-size="13" fill="#888">학습하는 것은 A·B뿐이지만, 두 조각을 따로 둔 채 추론하면 계산은 오히려 조금 는다.</text>
+
+  <text x="60" y="108" font-size="16" font-weight="600" fill="#e8e8e8">학습 중 · 병합 전</text>
+
+  <text x="78" y="201" font-size="18" font-weight="600" fill="#e8e8e8">x</text>
+  <path d="M 96 190 L 160 150 L 200 150" fill="none" stroke="#888" stroke-width="2" marker-end="url(#mg-arr)"/>
+  <path d="M 96 202 L 160 240 L 200 240" fill="none" stroke="#7ec8e3" stroke-width="2" marker-end="url(#mg-blue)"/>
+
+  <rect x="200" y="128" width="160" height="44" rx="8" fill="#141414" stroke="#888" stroke-width="1.5"/>
+  <text x="280" y="155" font-size="15" font-weight="600" fill="#e8e8e8" text-anchor="middle">W₀  (m×n)</text>
+  <text x="280" y="190" font-size="12" fill="#888" text-anchor="middle">고정 · 큰 곱</text>
+
+  <rect x="200" y="218" width="120" height="44" rx="8" fill="#101820" stroke="#7ec8e3" stroke-width="1.5"/>
+  <text x="260" y="245" font-size="15" font-weight="600" fill="#7ec8e3" text-anchor="middle">A  (r×n)</text>
+  <line x1="320" y1="240" x2="380" y2="240" stroke="#7ec8e3" stroke-width="2" marker-end="url(#mg-blue)"/>
+  <text x="350" y="226" font-size="12" fill="#7ec8e3" text-anchor="middle">Ax</text>
+  <rect x="380" y="218" width="120" height="44" rx="8" fill="#101820" stroke="#7ec8e3" stroke-width="1.5"/>
+  <text x="440" y="245" font-size="15" font-weight="600" fill="#7ec8e3" text-anchor="middle">B  (m×r)</text>
+  <text x="350" y="282" font-size="12" fill="#7ec8e3" text-anchor="middle">학습 · 작은 곱 둘</text>
+
+  <path d="M 360 150 L 620 150 L 620 177" fill="none" stroke="#888" stroke-width="2" marker-end="url(#mg-arr)"/>
+  <text x="490" y="140" font-size="13" fill="#888" text-anchor="middle">W₀x</text>
+  <path d="M 500 240 L 620 240 L 620 213" fill="none" stroke="#7ec8e3" stroke-width="2" marker-end="url(#mg-blue)"/>
+  <text x="560" y="262" font-size="13" fill="#7ec8e3" text-anchor="middle">B(Ax)</text>
+
+  <circle cx="620" cy="195" r="18" fill="#141414" stroke="#e8e8e8" stroke-width="1.5"/>
+  <text x="620" y="201" font-size="18" font-weight="600" fill="#e8e8e8" text-anchor="middle">+</text>
+  <line x1="638" y1="195" x2="700" y2="195" stroke="#888" stroke-width="2" marker-end="url(#mg-arr)"/>
+  <text x="712" y="201" font-size="18" font-weight="600" fill="#e8e8e8">h</text>
+
+  <line x1="60" y1="318" x2="820" y2="318" stroke="#444" stroke-width="1"/>
+
+  <text x="60" y="352" font-size="16" font-weight="600" fill="#e8e8e8">병합 후</text>
+  <text x="78" y="411" font-size="18" font-weight="600" fill="#e8e8e8">x</text>
+  <line x1="96" y1="405" x2="200" y2="405" stroke="#888" stroke-width="2" marker-end="url(#mg-arr)"/>
+  <rect x="200" y="383" width="260" height="44" rx="8" fill="#0f1a0f" stroke="#55c555" stroke-width="1.5"/>
+  <text x="330" y="410" font-size="15" font-weight="600" fill="#55c555" text-anchor="middle">W = W₀ + BA  (m×n)</text>
+  <line x1="460" y1="405" x2="540" y2="405" stroke="#888" stroke-width="2" marker-end="url(#mg-arr)"/>
+  <text x="552" y="411" font-size="18" font-weight="600" fill="#e8e8e8">h</text>
+  <text x="600" y="400" font-size="13" fill="#55c555">곱 하나 — 원래 모델과</text>
+  <text x="600" y="418" font-size="13" fill="#55c555">크기도 계산도 같다</text>
+  <text x="60" y="458" font-size="13" fill="#888">어댑터 여럿을 한 기반 모델 위에서 갈아 끼우려면 병합하지 않은 위쪽 꼴로 둔다.</text>
+</svg>

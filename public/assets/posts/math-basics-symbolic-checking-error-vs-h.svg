@@ -1,0 +1,80 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="520" viewBox="0 0 880 520" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <rect x="0" y="0" width="880" height="520" rx="12" fill="#0a0a0a"/>
+
+  <text x="60" y="44" font-size="22" font-weight="700" fill="#e8e8e8">h를 줄일수록 오차는 내려가다 다시 오른다</text>
+  <text x="60" y="68" font-size="13" fill="#888">sin의 x = 1 에서 중심차분, 참값 cos 1 과의 상대오차 · 두 축 모두 로그 눈금</text>
+
+  <!-- grid -->
+  <g stroke="#444" stroke-width="1">
+    <line x1="90" y1="110" x2="820" y2="110"/>
+    <line x1="90" y1="170" x2="820" y2="170"/>
+    <line x1="90" y1="230" x2="820" y2="230"/>
+    <line x1="90" y1="290" x2="820" y2="290"/>
+    <line x1="90" y1="350" x2="820" y2="350"/>
+    <line x1="90" y1="410" x2="820" y2="410"/>
+  </g>
+
+  <!-- axes -->
+  <line x1="90" y1="96" x2="90" y2="430" stroke="#888" stroke-width="1.5"/>
+  <line x1="90" y1="430" x2="824" y2="430" stroke="#888" stroke-width="1.5"/>
+
+  <!-- y tick labels -->
+  <g font-size="13" fill="#888" text-anchor="end">
+    <text x="80" y="114">10⁻²</text>
+    <text x="80" y="174">10⁻⁴</text>
+    <text x="80" y="234">10⁻⁶</text>
+    <text x="80" y="294">10⁻⁸</text>
+    <text x="80" y="354">10⁻¹⁰</text>
+    <text x="80" y="414">10⁻¹²</text>
+  </g>
+  <text x="60" y="90" font-size="13" fill="#888">상대오차</text>
+
+  <!-- x tick labels -->
+  <g stroke="#888" stroke-width="1.5">
+    <line x1="110" y1="430" x2="110" y2="436"/>
+    <line x1="225" y1="430" x2="225" y2="436"/>
+    <line x1="340" y1="430" x2="340" y2="436"/>
+    <line x1="455" y1="430" x2="455" y2="436"/>
+    <line x1="570" y1="430" x2="570" y2="436"/>
+    <line x1="685" y1="430" x2="685" y2="436"/>
+    <line x1="800" y1="430" x2="800" y2="436"/>
+  </g>
+  <g font-size="13" fill="#888" text-anchor="middle">
+    <text x="110" y="454">10⁻¹</text>
+    <text x="225" y="454">10⁻³</text>
+    <text x="340" y="454">10⁻⁵</text>
+    <text x="455" y="454">10⁻⁷</text>
+    <text x="570" y="454">10⁻⁹</text>
+    <text x="685" y="454">10⁻¹¹</text>
+    <text x="800" y="454">10⁻¹³</text>
+  </g>
+  <text x="820" y="484" font-size="13" fill="#888" text-anchor="end">h  (오른쪽으로 갈수록 작다)</text>
+
+  <!-- guide lines -->
+  <line x1="110" y1="133.4" x2="375" y2="410" stroke="#7777cc" stroke-width="2" stroke-dasharray="5,3"/>
+  <line x1="311" y1="410" x2="800" y2="155" stroke="#7777cc" stroke-width="2" stroke-dasharray="5,3"/>
+  <text x="100" y="300" font-size="13" fill="#7777cc">절단 오차 ∝ h²</text>
+  <text x="620" y="330" font-size="13" fill="#7777cc">반올림 오차 ∝ 1/h</text>
+
+  <!-- data curve -->
+  <polyline fill="none" stroke="#7ec8e3" stroke-width="2.5" points="110,133.3 167.5,193.3 225,253.3 282.5,313.3 340,370.6 397.5,358.7 455,333.3 512.5,299.6 570,297.8 627.5,259 685,219.9 742.5,189.3 800,154.4"/>
+  <g fill="#7ec8e3">
+    <circle cx="110" cy="133.3" r="4"/>
+    <circle cx="167.5" cy="193.3" r="4"/>
+    <circle cx="225" cy="253.3" r="4"/>
+    <circle cx="282.5" cy="313.3" r="4"/>
+    <circle cx="397.5" cy="358.7" r="4"/>
+    <circle cx="455" cy="333.3" r="4"/>
+    <circle cx="512.5" cy="299.6" r="4"/>
+    <circle cx="570" cy="297.8" r="4"/>
+    <circle cx="627.5" cy="259" r="4"/>
+    <circle cx="685" cy="219.9" r="4"/>
+    <circle cx="742.5" cy="189.3" r="4"/>
+    <circle cx="800" cy="154.4" r="4"/>
+  </g>
+  <circle cx="340" cy="370.6" r="5" fill="#e8e8e8"/>
+  <text x="322" y="398" font-size="13" fill="#e8e8e8" text-anchor="end">바닥: h = 10⁻⁵ · 오차 2.1 × 10⁻¹¹</text>
+
+  <text x="140" y="120" font-size="13" fill="#888">h = 0.1 : 1.7 × 10⁻³</text>
+  <text x="780" y="126" font-size="13" fill="#888" text-anchor="end">h = 10⁻¹³ : 3.3 × 10⁻⁴</text>
+</svg>
