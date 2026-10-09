@@ -242,3 +242,5 @@ IVF 두 줄의 recall이 크기와 함께 오르는 것은 작은 크기에서 �
 읽어주셔서 감사합니다. 😊
 
 **지난 글:** [한국어 질의로 영어 문서를 찾을 때 잃는 것: R@1이 30%p 빠졌고, 두 언어를 섞으면 영어 문서는 1위에 한 번도 안 올랐다](/articles/lab-cross-lingual-retrieval)
+
+**다음 글:** [중복 문서가 Recall을 부풀리는 방식: 10%만 다섯 벌로 넣었더니 nDCG는 0.645에서 0.747로 올랐고, 찾은 문서는 줄었다](/articles/lab-duplicate-documents-effect)

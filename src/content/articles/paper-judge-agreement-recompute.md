@@ -300,3 +300,5 @@ $$\kappa = \frac{p_o - p_e}{1 - p_e}$$
 읽어주셔서 감사합니다. 😊
 
 **지난 글:** [GSM1k 재계산: 계열 판정은 그대로 재현되고 모델 하나짜리 판정은 무너진다](/articles/paper-gsm1k-contamination)
+
+**다음 글:** [k1=1.2·b=0.75는 한국어에서도 최적인가: KLUE-MRC에서는 최적이었고, 갈린 것은 언어가 아니라 질문과 지문의 겹침이었다](/articles/paper-bm25-parameter-defaults)
