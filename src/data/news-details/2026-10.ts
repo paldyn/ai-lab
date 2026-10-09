@@ -2,6 +2,21 @@ import type { NewsDetail } from '../news';
 
 /** 2026-10 발표의 모달 본문. 목록은 news.ts에 있습니다. */
 export const details: Record<string, NewsDetail> = {
+  'claude-platform-october-9-2026': {
+    points: [
+      'Claude Managed Agents 에이전트가 동적 워크플로를 쓸 수 있게 됐고, managed-agents-2026-04-01 베타 헤더로 베타 제공된다',
+      '수백 건의 문서 검토처럼 조각이 많은 일에서 에이전트가 워크플로를 직접 작성한다',
+      '워크플로는 여러 에이전트를 단계별로 실행하고 그 결과를 합치는 프로그램이다',
+      '서버가 워크플로를 백그라운드에서 workflow run으로 실행한다',
+      '켜려면 에이전트의 multiagent 필드에 multiagent_20261001 타입과 workflows: enabled를 지정한다',
+      '언제 실행을 시작할지는 에이전트의 시스템 프롬프트로 알려 준다',
+      '각 실행은 세션 이벤트 스트림의 workflow_run.* 이벤트로 따라간다',
+    ],
+    commentary:
+      '지금까지는 에이전트 하나가 도구를 차례로 부르는 구조였다면, 이제 에이전트가 하위 에이전트 무리를 짜서 서버에 맡길 수 있다. ' +
+      '대량 문서 처리처럼 병렬이 이득인 일에 맞지만, 실행 시점을 시스템 프롬프트로만 정하므로 비용이 언제 얼마나 불어나는지는 ' +
+      '이벤트 스트림을 직접 지켜봐야 알 수 있다.',
+  },
   'disrupting-ai-enabled-false-front-operations': {
     points: [
       '러시아발·이란발 영향력 공작 두 건의 ChatGPT 계정을 차단했고, 두 사건 모두 관계 당국과 정보를 공유했다',

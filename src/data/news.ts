@@ -172,6 +172,20 @@ export const globalNewsUpdatedAt = '2026-10-08';
  */
 const entries: NewsItem[] = [
   {
+    id: 'claude-platform-october-9-2026',
+    source: 'Anthropic',
+    kind: 'company',
+    title: 'Claude Managed Agents, 여러 에이전트를 단계로 돌리는 동적 워크플로 베타',
+    summary:
+      'Managed Agents 에이전트가 많은 조각으로 이뤄진 일을 위해 워크플로를 직접 작성해 실행할 수 있게 됐다. ' +
+      '워크플로는 여러 에이전트를 단계별로 돌려 결과를 합치는 프로그램이고 서버가 백그라운드에서 돌린다.',
+    publishedAt: '2026-10-09',
+    collectedAt: '2026-10-10',
+    category: 'Product',
+    signal: '플랫폼 변경',
+    url: 'https://platform.claude.com/docs/en/release-notes/overview#october-9-2026',
+  },
+  {
     id: 'disrupting-ai-enabled-false-front-operations',
     source: 'OpenAI',
     kind: 'company',
