@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" viewBox="0 0 880 440"
+     font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <rect width="880" height="440" fill="#0a0a0a" rx="12"/>
+  <defs>
+    <marker id="dqgarr" viewBox="0 0 14 14" refX="12" refY="7"
+            markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#888"/>
+    </marker>
+  </defs>
+  <text x="440" y="48" text-anchor="middle" font-size="22" font-weight="700" fill="#e8e8e8">품질 게이트 두 곳과 실패 처리 세 갈래</text>
+  <text x="440" y="74" text-anchor="middle" font-size="13" fill="#888">두 게이트는 다른 질문을 묻는다 — 서로를 대신하지 못한다</text>
+
+  <rect x="60" y="104" width="120" height="70" rx="8" fill="#1a1a1a" stroke="#555" stroke-width="1.5"/>
+  <text x="120" y="145" text-anchor="middle" font-size="14" fill="#e8e8e8">원천</text>
+  <line x1="180" y1="139" x2="214" y2="139" stroke="#888" stroke-width="2" marker-end="url(#dqgarr)"/>
+  <rect x="214" y="104" width="190" height="70" rx="8" fill="#1a1a2e" stroke="#7ec8e3" stroke-width="2"/>
+  <text x="309" y="132" text-anchor="middle" font-size="14" font-weight="600" fill="#7ec8e3">수집 직후 게이트</text>
+  <text x="309" y="154" text-anchor="middle" font-size="13" fill="#888">스키마 · 행 수 · 적시성</text>
+  <line x1="404" y1="139" x2="438" y2="139" stroke="#888" stroke-width="2" marker-end="url(#dqgarr)"/>
+  <rect x="438" y="104" width="120" height="70" rx="8" fill="#1a1a1a" stroke="#555" stroke-width="1.5"/>
+  <text x="498" y="134" text-anchor="middle" font-size="14" fill="#e8e8e8">변환</text>
+  <text x="498" y="155" text-anchor="middle" font-size="13" fill="#888">조인 · 피처</text>
+  <line x1="558" y1="139" x2="592" y2="139" stroke="#888" stroke-width="2" marker-end="url(#dqgarr)"/>
+  <rect x="592" y="104" width="228" height="70" rx="8" fill="#1a1a2e" stroke="#7ec8e3" stroke-width="2"/>
+  <text x="706" y="132" text-anchor="middle" font-size="14" font-weight="600" fill="#7ec8e3">학습 직전 게이트</text>
+  <text x="706" y="154" text-anchor="middle" font-size="13" fill="#888">레이블 분포 · 범위 · 분할 겹침</text>
+
+  <text x="440" y="222" text-anchor="middle" font-size="16" font-weight="600" fill="#e8e8e8">검사가 실패하면</text>
+
+  <rect x="60" y="248" width="240" height="160" rx="10" fill="#2e1a1a" stroke="#e05555" stroke-width="1.5"/>
+  <text x="180" y="284" text-anchor="middle" font-size="16" font-weight="600" fill="#e05555">세우기</text>
+  <text x="180" y="314" text-anchor="middle" font-size="13" fill="#888">기본 키 중복 · 스키마 위반</text>
+  <text x="180" y="338" text-anchor="middle" font-size="13" fill="#888">어제 모델이 그대로 서빙된다</text>
+  <text x="180" y="372" text-anchor="middle" font-size="13" fill="#e8e8e8">아래 단계를 확실히 망가뜨릴 때</text>
+
+  <rect x="320" y="248" width="240" height="160" rx="10" fill="#2e2a1a" stroke="#e0b055" stroke-width="1.5"/>
+  <text x="440" y="284" text-anchor="middle" font-size="16" font-weight="600" fill="#e0b055">격리하기</text>
+  <text x="440" y="314" text-anchor="middle" font-size="13" fill="#888">어긴 행만 따로 떼고 진행</text>
+  <text x="440" y="338" text-anchor="middle" font-size="13" fill="#888">격리율이 임계값을 넘으면 세움</text>
+  <text x="440" y="372" text-anchor="middle" font-size="13" fill="#e8e8e8">일부 행만 문제일 때</text>
+
+  <rect x="580" y="248" width="240" height="160" rx="10" fill="#1a2e1a" stroke="#55c555" stroke-width="1.5"/>
+  <text x="700" y="284" text-anchor="middle" font-size="16" font-weight="600" fill="#55c555">경고만</text>
+  <text x="700" y="314" text-anchor="middle" font-size="13" fill="#888">적시성 · 분포 변화</text>
+  <text x="700" y="338" text-anchor="middle" font-size="13" fill="#888">담당자와 기한을 정해 둔다</text>
+  <text x="700" y="372" text-anchor="middle" font-size="13" fill="#e8e8e8">판단이 필요할 때</text>
+</svg>

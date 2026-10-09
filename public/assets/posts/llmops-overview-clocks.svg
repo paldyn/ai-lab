@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" viewBox="0 0 880 420"
+     font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <rect width="880" height="420" fill="#0a0a0a" rx="12"/>
+  <defs>
+    <marker id="llcarr" viewBox="0 0 14 14" refX="12" refY="7"
+            markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#888"/>
+    </marker>
+  </defs>
+  <text x="440" y="48" text-anchor="middle" font-size="22" font-weight="700" fill="#e8e8e8">서로 다른 속도로 도는 세 시계</text>
+  <text x="440" y="74" text-anchor="middle" font-size="13" fill="#888">요청 하나마다 셋의 버전을 함께 남겨야 무엇이 바뀌었는지 답할 수 있다</text>
+
+  <rect x="60" y="104" width="230" height="110" rx="10" fill="#1a2e1a" stroke="#55c555" stroke-width="1.5"/>
+  <text x="175" y="140" text-anchor="middle" font-size="16" font-weight="600" fill="#55c555">프롬프트</text>
+  <text x="175" y="168" text-anchor="middle" font-size="13" fill="#888">하루에도 여러 번</text>
+  <text x="175" y="190" text-anchor="middle" font-size="13" fill="#888">우리가 바꾼다</text>
+
+  <rect x="325" y="104" width="230" height="110" rx="10" fill="#1a1a2e" stroke="#7ec8e3" stroke-width="1.5"/>
+  <text x="440" y="140" text-anchor="middle" font-size="16" font-weight="600" fill="#7ec8e3">검색 인덱스</text>
+  <text x="440" y="168" text-anchor="middle" font-size="13" fill="#888">매일 · 매주 재생성</text>
+  <text x="440" y="190" text-anchor="middle" font-size="13" fill="#888">원본 문서를 따른다</text>
+
+  <rect x="590" y="104" width="230" height="110" rx="10" fill="#2e1a1a" stroke="#e05555" stroke-width="1.5"/>
+  <text x="705" y="140" text-anchor="middle" font-size="16" font-weight="600" fill="#e05555">모델</text>
+  <text x="705" y="168" text-anchor="middle" font-size="13" fill="#888">새 스냅숏 · 폐기 공지</text>
+  <text x="705" y="190" text-anchor="middle" font-size="13" fill="#888">공급사가 정한다</text>
+
+  <line x1="175" y1="214" x2="175" y2="268" stroke="#888" stroke-width="2" marker-end="url(#llcarr)"/>
+  <line x1="440" y1="214" x2="440" y2="268" stroke="#888" stroke-width="2" marker-end="url(#llcarr)"/>
+  <line x1="705" y1="214" x2="705" y2="268" stroke="#888" stroke-width="2" marker-end="url(#llcarr)"/>
+
+  <rect x="60" y="268" width="760" height="120" rx="10" fill="#1a1a1a" stroke="#555" stroke-width="1.5"/>
+  <text x="440" y="300" text-anchor="middle" font-size="16" font-weight="600" fill="#e8e8e8">요청 로그 한 줄</text>
+  <rect x="84" y="320" width="230" height="44" rx="6" fill="#000000" stroke="#3a4a6e" stroke-width="1"/>
+  <text x="100" y="347" xml:space="preserve" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#ffffff">prompt=support@v14</text>
+  <rect x="325" y="320" width="230" height="44" rx="6" fill="#000000" stroke="#3a4a6e" stroke-width="1"/>
+  <text x="341" y="347" xml:space="preserve" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#ffffff">index=kb-2026-05-24</text>
+  <rect x="566" y="320" width="230" height="44" rx="6" fill="#000000" stroke="#3a4a6e" stroke-width="1"/>
+  <text x="582" y="347" xml:space="preserve" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#ffffff">model=응답한 스냅숏</text>
+</svg>

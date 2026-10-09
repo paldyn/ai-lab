@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" viewBox="0 0 880 400"
+     font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <rect width="880" height="400" fill="#0a0a0a" rx="12"/>
+  <defs>
+    <marker id="ftsarr" viewBox="0 0 14 14" refX="12" refY="7"
+            markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#888"/>
+    </marker>
+  </defs>
+  <text x="440" y="48" text-anchor="middle" font-size="22" font-weight="700" fill="#e8e8e8">모델이 거치는 학습 단계</text>
+  <text x="440" y="74" text-anchor="middle" font-size="13" fill="#888">앞의 셋은 받아 오고, 우리가 손대는 것은 마지막 칸이다</text>
+
+  <rect x="60" y="110" width="170" height="120" rx="10" fill="#1a1a1a" stroke="#555" stroke-width="1.5"/>
+  <text x="145" y="146" text-anchor="middle" font-size="16" font-weight="600" fill="#e8e8e8">사전 학습</text>
+  <text x="145" y="174" text-anchor="middle" font-size="13" fill="#888">수조 토큰의 텍스트</text>
+  <text x="145" y="196" text-anchor="middle" font-size="13" fill="#888">다음 토큰 맞히기</text>
+
+  <line x1="230" y1="170" x2="264" y2="170" stroke="#888" stroke-width="2" marker-end="url(#ftsarr)"/>
+
+  <rect x="264" y="110" width="170" height="120" rx="10" fill="#1a1a1a" stroke="#555" stroke-width="1.5"/>
+  <text x="349" y="146" text-anchor="middle" font-size="16" font-weight="600" fill="#e8e8e8">SFT</text>
+  <text x="349" y="174" text-anchor="middle" font-size="13" fill="#888">지시와 모범 응답 쌍</text>
+  <text x="349" y="196" text-anchor="middle" font-size="13" fill="#888">응답 토큰에만 손실</text>
+
+  <line x1="434" y1="170" x2="468" y2="170" stroke="#888" stroke-width="2" marker-end="url(#ftsarr)"/>
+
+  <rect x="468" y="110" width="170" height="120" rx="10" fill="#1a1a1a" stroke="#555" stroke-width="1.5"/>
+  <text x="553" y="146" text-anchor="middle" font-size="16" font-weight="600" fill="#e8e8e8">선호 학습</text>
+  <text x="553" y="174" text-anchor="middle" font-size="13" fill="#888">둘 중 나은 쪽 비교</text>
+  <text x="553" y="196" text-anchor="middle" font-size="13" fill="#888">RLHF · DPO · RLVR</text>
+
+  <line x1="638" y1="170" x2="672" y2="170" stroke="#888" stroke-width="2" marker-end="url(#ftsarr)"/>
+
+  <rect x="672" y="110" width="148" height="120" rx="10" fill="#1a2e1a" stroke="#55c555" stroke-width="2"/>
+  <text x="746" y="146" text-anchor="middle" font-size="16" font-weight="600" fill="#55c555">우리 파인튜닝</text>
+  <text x="746" y="174" text-anchor="middle" font-size="13" fill="#888">우리 데이터 SFT</text>
+  <text x="746" y="196" text-anchor="middle" font-size="13" fill="#888">필요하면 DPO</text>
+
+  <text x="145" y="268" text-anchor="middle" font-size="13" fill="#7ec8e3">바꾸는 것</text>
+  <text x="145" y="292" text-anchor="middle" font-size="13" fill="#e8e8e8">지식 · 문법</text>
+  <text x="349" y="268" text-anchor="middle" font-size="13" fill="#7ec8e3">바꾸는 것</text>
+  <text x="349" y="292" text-anchor="middle" font-size="13" fill="#e8e8e8">형식 · 태도</text>
+  <text x="553" y="268" text-anchor="middle" font-size="13" fill="#7ec8e3">바꾸는 것</text>
+  <text x="553" y="292" text-anchor="middle" font-size="13" fill="#e8e8e8">말투 · 안전성</text>
+  <text x="746" y="268" text-anchor="middle" font-size="13" fill="#7ec8e3">바꾸는 것</text>
+  <text x="746" y="292" text-anchor="middle" font-size="13" fill="#e8e8e8">우리 과제의 행동</text>
+
+  <rect x="60" y="322" width="760" height="50" rx="8" fill="#1a1a2e" stroke="#7777cc" stroke-width="1.5"/>
+  <text x="440" y="352" text-anchor="middle" font-size="13" fill="#e8e8e8">새 사실은 사전 학습에 넓게 퍼져 있어 수백 건의 SFT로는 잘 안 박힌다 — 사실은 RAG가 맡는다</text>
+</svg>

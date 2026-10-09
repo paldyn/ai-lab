@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" viewBox="0 0 880 400"
+     font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <rect width="880" height="400" fill="#0a0a0a" rx="12"/>
+  <text x="440" y="48" text-anchor="middle" font-size="22" font-weight="700" fill="#e8e8e8">재시도 한 번이 남기는 것</text>
+  <text x="440" y="74" text-anchor="middle" font-size="13" fill="#888">5월 24일 실행이 쓰기 도중 실패하고 다시 돈 경우</text>
+
+  <rect x="60" y="100" width="360" height="270" rx="10" fill="#2e1a1a" stroke="#e05555" stroke-width="1.5"/>
+  <text x="240" y="134" text-anchor="middle" font-size="16" font-weight="600" fill="#e05555">테이블 끝에 붙이기</text>
+  <rect x="90" y="156" width="300" height="34" rx="6" fill="#1a1a1a" stroke="#555" stroke-width="1"/>
+  <text x="240" y="178" text-anchor="middle" font-size="13" fill="#e8e8e8">5월 23일 행</text>
+  <rect x="90" y="198" width="300" height="34" rx="6" fill="#1a1a1a" stroke="#e05555" stroke-width="1"/>
+  <text x="240" y="220" text-anchor="middle" font-size="13" fill="#e8e8e8">5월 24일 행 (첫 시도, 일부)</text>
+  <rect x="90" y="240" width="300" height="34" rx="6" fill="#1a1a1a" stroke="#e05555" stroke-width="1"/>
+  <text x="240" y="262" text-anchor="middle" font-size="13" fill="#e8e8e8">5월 24일 행 (재시도, 전부)</text>
+  <text x="240" y="314" text-anchor="middle" font-size="13" fill="#e05555">같은 날 데이터가 겹쳐 쌓인다</text>
+  <text x="240" y="340" text-anchor="middle" font-size="13" fill="#888">에러 없이 지나가 모델이 그날을 두 번 배운다</text>
+
+  <rect x="460" y="100" width="360" height="270" rx="10" fill="#1a2e1a" stroke="#55c555" stroke-width="1.5"/>
+  <text x="640" y="134" text-anchor="middle" font-size="16" font-weight="600" fill="#55c555">날짜 파티션 덮어쓰기</text>
+  <rect x="490" y="156" width="300" height="34" rx="6" fill="#1a1a1a" stroke="#555" stroke-width="1"/>
+  <text x="640" y="178" text-anchor="middle" font-size="13" fill="#e8e8e8">ds=2026-05-23/</text>
+  <rect x="490" y="198" width="300" height="34" rx="6" fill="#1a1a1a" stroke="#55c555" stroke-width="1"/>
+  <text x="640" y="220" text-anchor="middle" font-size="13" fill="#e8e8e8">ds=2026-05-24/ (지우고 다시 씀)</text>
+  <text x="640" y="314" text-anchor="middle" font-size="13" fill="#55c555">몇 번 돌려도 그날은 한 벌만 남는다</text>
+  <text x="640" y="340" text-anchor="middle" font-size="13" fill="#888">백필도 날짜만 바꿔 같은 실행을 반복한다</text>
+</svg>

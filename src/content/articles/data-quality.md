@@ -1,6 +1,6 @@
 ---
 title: "데이터 품질 관리: 쓰레기 in, 쓰레기 out을 막는 법"
-description: "정확성·완전성·일관성·적시성·타당성·유일성 6대 차원으로 데이터 품질을 정의하고, Great Expectations·Pandera·dbt로 파이프라인에서 자동 검증하는 실무 방법을 설명합니다."
+description: "데이터 품질 6대 차원을 실제 검사 쿼리로 옮기고, 스키마 변경 감지, 결측·이상값을 지울지 표시할지, 품질 게이트의 위치와 실패 처리, 입력 품질과 레이블 품질을 따로 재는 법까지 파이프라인 관점에서 정리합니다."
 author: "PALDYN Team"
 pubDate: "2026-05-26"
 category: "ml-ops"
@@ -9,84 +9,68 @@ tags: ["데이터품질", "DataQuality", "GreatExpectations", "Pandera", "dbt", 
 featured: false
 draft: false
 ---
-[지난 글](/articles/data-synthetic)에서 합성 데이터를 만드는 방법을 살펴봤다. 합성이든 실제든, 데이터가 낮은 품질이라면 그 위에서 학습한 AI 모델도 신뢰할 수 없다. **"Garbage In, Garbage Out"**—이 오래된 격언이 ML 시대에도 그대로 통한다. 이번 글에서는 데이터 품질을 정의하는 6대 차원과, 파이프라인에서 자동으로 검증하는 실무 방법을 정리한다.
+[지난 글](/articles/data-synthetic)에서 합성 데이터를 만드는 방법을 살펴봤다. 합성이든 실제든, 데이터의 품질이 낮으면 그 위에서 학습한 모델도 믿을 수 없다. 「Garbage In, Garbage Out」이라는 오래된 격언이 머신러닝에서 유독 아픈 이유는, 나쁜 데이터가 에러를 내지 않고 조용히 모델 안으로 스며든다는 데 있다. 나이 칸에 999가 들어간 행은 학습을 멈추지 않는다. 그저 모델이 「나이가 많을수록」에 대해 이상한 것을 배울 뿐이다.
 
-## 데이터 품질의 6대 차원
+이 글은 품질을 말로 정의하는 데서 멈추지 않고, 그 정의를 파이프라인 안에서 돌아가는 검사로 옮기는 데 집중한다. 품질 차원마다 무엇을 세는지, 상류의 스키마가 바뀌면 무엇이 먼저 깨지는지, 결측과 이상값을 지울지 표시할지, 검사를 어디에 두고 실패하면 어떻게 할지, 그리고 입력과 정답 레이블의 품질을 왜 따로 재야 하는지를 차례로 본다.
 
-데이터 품질은 단일 지표가 아니라 여러 차원의 복합 개념이다.
+## 품질 차원
 
 ![데이터 품질 6대 차원](/assets/posts/data-quality-dimensions.svg)
 
+### 여섯 차원
+
+데이터 품질은 숫자 하나가 아니라 서로 다른 질문 여섯 개의 묶음이다.
+
 | 차원 | 질문 | 측정 방법 |
-|---|---|---|
-| **정확성** | 실제 세계를 올바르게 반영하는가? | 레퍼런스 데이터와 비교 |
-| **완전성** | 필수 값이 빠짐없이 있는가? | NULL 비율, 레코드 수 |
-| **일관성** | 여러 소스 간 모순이 없는가? | 교차 테이블 검증 |
-| **적시성** | 필요할 때 최신 상태인가? | 마지막 업데이트 시간 |
-| **타당성** | 형식·범위가 규칙을 따르는가? | 정규식, 범위 체크 |
-| **유일성** | 중복 레코드가 없는가? | Primary key 중복 수 |
+| --- | --- | --- |
+| 정확성 | 실제 세계를 올바르게 반영하는가 | 신뢰할 수 있는 원천과 대조 |
+| 완전성 | 있어야 할 값과 행이 다 있는가 | NULL 비율, 기대 행 수 대비 실제 행 수 |
+| 일관성 | 여러 테이블·소스 사이에 모순이 없는가 | 교차 테이블 조인 검사 |
+| 적시성 | 쓰는 시점에 충분히 최신인가 | 마지막 적재 이후 지난 시간 |
+| 타당성 | 형식과 범위가 규칙을 따르는가 | 정규식, 범위, 허용값 목록 |
+| 유일성 | 같은 대상이 한 번만 있는가 | 기본 키 중복 수 |
 
-실무에서는 이 6가지를 모두 100% 달성하기 어렵다. 도메인에 따라 어떤 차원이 더 중요한지 우선순위를 정하고, 각 차원에 허용 임계값(threshold)을 설정하는 것이 현실적이다.
+여섯 가지가 다 중요하지만 다 같은 방법으로 잴 수는 없다. 타당성·완전성·유일성은 테이블 하나만 보고 기계가 판정할 수 있다. 일관성은 테이블 둘을 맞대야 하고, 적시성은 시계가 필요하다. 정확성은 가장 중요하면서 가장 재기 어렵다. 「이 주소가 실제 고객의 주소인가」는 데이터 안에서 답이 안 나오고 바깥의 원천과 견줘야 한다.
 
-## 데이터 품질 파이프라인
+### 차원별 검사
 
-![데이터 품질 파이프라인](/assets/posts/data-quality-pipeline.svg)
+말로 된 차원을 검사로 바꾸면 대개 쿼리 한 줄이 된다. 아래는 차원 넷을 SQL로 옮긴 것이다.
 
-좋은 품질 파이프라인은 4단계로 구성된다.
+```sql
+-- 완전성: 필수 컬럼의 NULL 비율
+SELECT AVG(CASE WHEN email IS NULL THEN 1.0 ELSE 0 END) AS email_null_rate
+FROM users;
 
-1. **프로파일링(Profiling)**: 데이터의 통계적 특성을 자동으로 탐색한다.
-2. **검증(Validation)**: 사전 정의된 규칙에 따라 데이터를 검사한다.
-3. **클리닝(Cleaning)**: 문제가 발견된 데이터를 수정·제거한다.
-4. **모니터링(Monitoring)**: 지속적으로 품질 지표를 추적하고 드리프트를 감지한다.
+-- 유일성: 기본 키가 두 번 이상 나온 값
+SELECT user_id, COUNT(*) AS n
+FROM users
+GROUP BY user_id
+HAVING COUNT(*) > 1;
 
-## Great Expectations로 검증 파이프라인 구축
+-- 일관성: 주문은 있는데 그 사용자가 없는 행
+SELECT COUNT(*) AS orphan_orders
+FROM orders o
+LEFT JOIN users u ON o.user_id = u.user_id
+WHERE u.user_id IS NULL;
 
-**Great Expectations**(GX)는 파이썬 기반의 데이터 검증 프레임워크다. "Expectation"이라는 단위로 품질 규칙을 정의하고, 배치(batch) 단위로 검증을 실행한다.
-
-```python
-import great_expectations as gx
-
-context = gx.get_context()
-
-# 데이터 소스 등록
-datasource = context.sources.add_pandas("my_source")
-asset = datasource.add_dataframe_asset("user_data")
-
-# Batch Request
-batch_request = asset.build_batch_request(dataframe=df)
-
-# Expectation Suite 생성
-suite = context.add_expectation_suite("user_quality_suite")
-
-validator = context.get_validator(
-    batch_request=batch_request,
-    expectation_suite=suite
-)
-
-# 품질 규칙 정의
-validator.expect_column_values_to_not_be_null("user_id")
-validator.expect_column_values_to_be_unique("user_id")
-validator.expect_column_values_to_be_between("age", min_value=0, max_value=120)
-validator.expect_column_values_to_match_regex("email", r"^[^@]+@[^@]+\.[^@]+$")
-validator.expect_column_pair_values_A_to_be_greater_than_B(
-    "order_date", "created_at"
-)
-
-validator.save_expectation_suite()
-
-# 검증 실행
-checkpoint = context.add_checkpoint(
-    name="daily_check",
-    batch_request=batch_request,
-    expectation_suite_name="user_quality_suite"
-)
-results = checkpoint.run()
-print(results.success)
+-- 적시성: 마지막 적재 이후 지난 시간
+SELECT NOW() - MAX(loaded_at) AS staleness
+FROM events;
 ```
 
-### Pandera로 DataFrame 스키마 검증
+정확성은 쿼리 하나로 안 된다. 실무에서는 표본을 뽑아 사람이 원천과 대조하거나, 정확한 값을 아는 일부 레코드(결제 대행사의 정산 내역처럼)와 맞춰 보는 방식으로 잰다. 비싸므로 매일 돌리지 않고 분기마다 표본 수백 건으로 오차율을 추정한다.
 
-**Pandera**는 선언적 방식으로 pandas DataFrame의 스키마를 정의하고 검증한다. 타입 힌트와 결합해 함수 인수에 직접 적용할 수 있어 데이터 파이프라인 함수에 자연스럽게 통합된다.
+### 임계값
+
+검사가 숫자를 내면 그다음 질문은 「얼마면 괜찮은가」다. 모든 차원을 100%로 요구하면 검사가 매일 실패하고, 매일 실패하는 검사는 곧 아무도 안 본다. 그래서 차원마다 허용 범위를 정한다. 기본 키 중복은 0건이어야 하지만, 선택 입력인 전화번호의 NULL 비율은 30%여도 정상일 수 있다. 중요한 것은 절대값보다 변화다. 평소 NULL 비율이 2%이던 컬럼이 어느 날 40%가 되면, 40%라는 값보다 그 점프가 상류에서 무언가 바뀌었다는 신호다. 고정 임계값과 함께 「지난 30일 평균에서 몇 배 벗어났는가」를 보는 검사를 같이 두면 이런 변화를 잡는다.
+
+## 스키마 변경
+
+### 스키마 계약
+
+상류 시스템은 우리 모델을 위해 존재하지 않는다. 주문 시스템 팀은 자기 기능을 위해 컬럼 이름을 바꾸고, 금액 단위를 원에서 천 원으로 바꾸고, 상태값에 새 코드를 추가한다. 그 변경이 우리에게 알려지지 않으면 파이프라인은 다음 날 아침 엉뚱한 데이터를 받는다. 이 위험을 줄이는 장치가 **스키마 계약**이다. 컬럼 이름과 타입, 허용값, NULL 허용 여부를 코드로 적어 두고, 데이터가 들어올 때마다 그 계약과 대조한다.
+
+Pandera는 이 계약을 pandas DataFrame에 대해 클래스 하나로 적게 해 준다.
 
 ```python
 import pandera as pa
@@ -96,138 +80,211 @@ class UserSchema(pa.DataFrameModel):
     user_id: Series[int] = pa.Field(unique=True, gt=0)
     name: Series[str] = pa.Field(nullable=False)
     age: Series[int] = pa.Field(ge=0, le=120)
-    email: Series[str] = pa.Field(
-        str_matches=r"^[^@]+@[^@]+\.[^@]+$"
-    )
+    email: Series[str] = pa.Field(str_matches=r"^[^@]+@[^@]+\.[^@]+$")
     signup_date: Series[pa.DateTime]
 
     class Config:
-        strict = True  # 정의되지 않은 컬럼 불허
+        strict = True  # 정의되지 않은 컬럼이 들어오면 실패
 
 @pa.check_types
 def process_users(df: DataFrame[UserSchema]) -> DataFrame[UserSchema]:
-    # 이 함수에 UserSchema를 만족하지 않는 df를 넘기면 자동으로 예외 발생
-    return df[df['age'] >= 18]
+    return df[df["age"] >= 18]
 ```
 
-### dbt로 SQL 파이프라인 검증
+`strict = True`가 이 클래스에서 가장 중요한 한 줄이다. 계약에 없는 컬럼이 들어오면 실패하게 해서, 상류가 컬럼을 추가하거나 이름을 바꾼 사실을 그날 바로 알게 한다.
 
-데이터 웨어하우스 환경에서는 **dbt tests**가 표준이다.
+### 깨지는 순서
+
+상류가 컬럼 하나를 바꿨을 때 무엇이 먼저 깨지는지는 변경의 종류에 따라 다르다. 컬럼 이름이 바뀌거나 사라지면 조인과 선택 단계에서 곧바로 에러가 난다. 이것은 오히려 다행이다. 시끄럽게 깨지므로 그날 고친다.
+
+위험한 것은 조용히 지나가는 변경이다. 금액의 단위가 원에서 천 원으로 바뀌면 타입도 이름도 그대로라 아무 에러가 없다. 그 컬럼을 쓰는 피처의 분포만 천 분의 일로 줄어들고, 모델은 모든 고객을 소액 고객으로 본다. 상태 코드에 새 값이 추가되면 원-핫 인코딩이 그 값을 「알 수 없음」으로 보내고, 그 비율이 서서히 늘면서 예측이 흔들린다. 그래서 스키마 검사(이름·타입)만으로는 모자라고, 값의 범위와 분포를 보는 검사가 함께 있어야 한다. 앞 절의 「평소 대비 변화」 검사가 바로 이 조용한 변경을 잡는 자리다.
+
+### 변경의 전달
+
+기술적 검사와 별도로, 상류 팀이 변경을 미리 알려 줄 길을 만드는 것도 품질 관리의 일부다. 우리가 의존하는 테이블과 컬럼 목록을 상류 팀과 공유하고, 그 컬럼을 바꾸는 변경에는 리뷰어로 들어가는 식이다. 데이터 계약을 코드 저장소에 두면 상류의 변경 요청이 그 파일을 건드리는 순간 우리에게 알림이 오게 할 수 있다. 검사가 사후에 잡는 것이라면 이쪽은 사전에 막는 것이다.
+
+계약에는 무엇을 적을까. 컬럼 이름과 타입은 기본이고, 단위(원인지 천 원인지, 초인지 밀리초인지), 시간대(UTC인지 KST인지), 허용값 목록, NULL이 무엇을 뜻하는지(「모름」인지 「해당 없음」인지)까지 적어야 조용한 변경을 막는다. 특히 시간대는 타입이 같아 어떤 검사에도 안 걸리면서, 하루 단위로 집계하는 피처를 아홉 시간씩 밀어 버린다. 이렇게 적어 두면 계약 파일 자체가 그 데이터의 설명서가 되어, 새로 온 사람이 컬럼의 뜻을 묻는 일도 줄어든다.
+
+## 검증 도구
+
+### Great Expectations
+
+**Great Expectations**(GX)는 파이썬 기반의 데이터 검증 프레임워크다. 품질 규칙 하나를 「Expectation」이라 부르고, 그것들을 묶은 「Suite」를 데이터 한 묶음(Batch)에 대고 검증한다. 아래는 GX 1.x의 API로 적은 것이다. 0.x 시절의 `context.sources`·`get_validator` 방식에서 크게 바뀌었으므로 예전 예제를 옮겨 올 때 주의한다.
+
+```python
+import great_expectations as gx
+
+context = gx.get_context()
+
+source = context.data_sources.add_pandas("users_source")
+asset = source.add_dataframe_asset(name="users")
+batch_def = asset.add_batch_definition_whole_dataframe("daily")
+
+suite = context.suites.add(gx.ExpectationSuite(name="users_quality"))
+suite.add_expectation(gx.expectations.ExpectColumnValuesToBeUnique(column="user_id"))
+suite.add_expectation(
+    gx.expectations.ExpectColumnValuesToNotBeNull(column="email", mostly=0.98)
+)
+suite.add_expectation(
+    gx.expectations.ExpectColumnValuesToBeBetween(column="age", min_value=0, max_value=120)
+)
+
+batch = batch_def.get_batch(batch_parameters={"dataframe": df})
+result = batch.validate(suite)
+print(result.success)
+```
+
+`mostly=0.98`이 앞 절의 임계값을 코드로 적은 자리다. 이메일 값의 98% 이상이 NULL이 아니면 통과한다는 뜻이고, 이 인자 없이 쓰면 NULL이 한 건만 있어도 실패한다.
+
+### dbt 테스트
+
+데이터 웨어하우스에서 SQL로 변환을 짜는 팀이라면 **dbt**의 테스트가 가장 가까운 도구다. 모델(테이블) 정의 옆의 YAML에 컬럼별 검사를 적으면 `dbt test`가 그것을 SQL로 바꿔 돌린다. dbt 1.8부터는 이 키의 이름이 `tests`에서 `data_tests`로 바뀌었다(옛 이름도 아직 받는다).
 
 ```yaml
-# models/schema.yml
 version: 2
 models:
   - name: orders
     columns:
       - name: order_id
-        tests:
+        data_tests:
           - unique
           - not_null
       - name: amount
-        tests:
+        data_tests:
           - not_null
           - dbt_utils.accepted_range:
               min_value: 0
               max_value: 1000000
       - name: status
-        tests:
+        data_tests:
           - accepted_values:
               values: ['pending', 'shipped', 'delivered', 'cancelled']
 ```
 
-```bash
-dbt test --select orders
-# 테스트 결과를 메타데이터 스토어에 자동 기록
-```
+`accepted_values`가 앞 절의 「상태 코드에 새 값이 추가되는」 변경을 잡는다. 목록에 없는 값이 한 건이라도 나오면 실패하므로, 상류가 `refunded`를 새로 쓰기 시작한 날 바로 안다.
 
-## 결측값 처리 전략
+### 도구 고르기
 
-결측값은 품질 문제 중 가장 흔하다. 처리 전략은 결측 메커니즘에 따라 달라진다.
+세 도구는 서는 자리가 다르다. Pandera는 파이썬 함수의 입출력에 붙어 코드 안에서 계약을 지키고, dbt 테스트는 웨어하우스 안의 변환 결과를 지키며, GX는 그 둘 사이에서 여러 원천을 같은 방식으로 검사하고 결과를 문서로 남기는 데 강하다. 하나만 고를 필요는 없고, 데이터가 머무는 자리마다 그 자리에 맞는 것을 붙인다.
 
-| 메커니즘 | 설명 | 권장 처리 |
-|---|---|---|
-| MCAR (완전 랜덤) | 결측이 다른 변수와 무관 | 행 삭제 또는 단순 대체 |
-| MAR (랜덤) | 결측이 다른 관측 변수와 관련 | 조건부 대체, 다중 대체 |
-| MNAR (비랜덤) | 결측 자체가 값과 관련 | 도메인 지식 활용, 결측 플래그 추가 |
+다만 같은 규칙을 세 도구에 따로 적으면 셋이 갈라진다. 나이의 상한을 Pandera에는 120으로, dbt에는 150으로 적어 두면 한쪽은 통과하고 다른 쪽은 실패하는 날이 온다. 규칙의 원본은 한 곳에 두고, 나머지는 그 원본을 참조하거나 원본에서 생성하게 한다. 그리고 검사 코드에도 리뷰를 건다. 임계값을 슬쩍 느슨하게 고쳐 실패를 없애는 변경은 데이터 문제를 고친 것이 아니라 경보를 끈 것이다.
+
+## 결측값과 이상값
+
+### 결측 메커니즘
+
+결측은 품질 문제 가운데 가장 흔하다. 어떻게 다룰지는 값이 왜 빠졌는지에 달려 있다.
+
+| 메커니즘 | 뜻 | 권장 처리 |
+| --- | --- | --- |
+| MCAR | 결측이 어떤 변수와도 무관하다 | 행 삭제나 단순 대체 |
+| MAR | 결측이 다른 관측 변수와 관련된다 | 조건부 대체, 다중 대체 |
+| MNAR | 결측이 빠진 값 자체와 관련된다 | 결측 표시 컬럼 추가, 도메인 지식 |
+
+세 번째가 실무에서 가장 흔하고 가장 위험하다. 소득을 적지 않은 사람은 소득이 아주 높거나 아주 낮을 가능성이 크다. 이 결측을 평균으로 채우면 모델은 「소득을 안 적었다」는, 그 자체로 정보인 사실을 잃는다.
+
+숫자로 따라가 보자. 대출 신청 1만 건 중 소득 칸이 빈 것이 1,500건이고, 소득을 적은 8,500건의 연체율은 4%, 비운 1,500건의 연체율은 12%라고 하자. 빈 칸을 평균 소득으로 채우면 이 1,500건은 소득이 평범한 사람들 사이에 섞이고, 모델은 평범한 소득 구간의 연체율을 실제보다 높게 배운다. 소득을 적은 성실한 신청자까지 불이익을 받는다. 결측 표시 컬럼을 하나 두면, 모델은 「비웠다」는 사실에 12%를, 적힌 소득에는 제 몫의 연체율을 붙인다. 같은 채우기라도 표시가 있느냐에 따라 모델이 배우는 것이 달라진다.
+
+어느 메커니즘인지는 데이터만으로 확정할 수 없다. MCAR인지는 결측 여부를 다른 컬럼으로 예측해 보면 어느 정도 가릴 수 있지만, MNAR은 빠진 값 자체를 모르니 검정할 방법이 없다. 그래서 도메인 담당자에게 「이 칸은 왜 비는가」를 묻는 것이 어떤 통계 기법보다 먼저다.
+
+### 지우기와 표시하기
+
+결측이나 이상값을 만났을 때의 선택지는 지우기, 채우기, 표시하기 셋이다. 학습 데이터에서는 지우기가 쉬워 보이지만, 지우면 모델은 그런 행이 세상에 없다고 배운다. 그런데 서빙에서는 그 행이 그대로 들어온다. 학습 때 이메일이 빈 행을 다 지운 모델은 운영에서 이메일이 빈 요청을 받으면 한 번도 본 적 없는 입력을 받는 셈이다.
+
+그래서 학습과 서빙의 답이 갈린다. 학습에서는 지우기보다 채우고 표시하는 쪽이 안전하다. 값은 그럴듯하게 채우되, 「원래 비어 있었다」는 표시 컬럼을 하나 더해 모델이 그 사실을 피처로 쓰게 한다. 서빙에서는 지울 수 없으니, 학습 때와 정확히 같은 채우기 규칙을 적용해야 한다. 학습 때 계산한 중앙값을 저장해 두고 서빙에서도 그 값으로 채우는 것이다. 서빙 시점의 데이터로 중앙값을 다시 계산하면 학습과 서빙의 처리가 어긋나는 **학습-서빙 불일치**가 생긴다.
 
 ```python
 import pandas as pd
-from sklearn.impute import KNNImputer, SimpleImputer
+from sklearn.impute import SimpleImputer
 
-# 수치형: KNN 대체 (주변 k개 샘플 평균)
-knn_imputer = KNNImputer(n_neighbors=5)
-df[numeric_cols] = knn_imputer.fit_transform(df[numeric_cols])
+df["income_missing"] = df["income"].isna().astype(int)
 
-# 범주형: 최빈값 대체
-cat_imputer = SimpleImputer(strategy='most_frequent')
-df[cat_cols] = cat_imputer.fit_transform(df[cat_cols])
+imputer = SimpleImputer(strategy="median")
+df[["income"]] = imputer.fit_transform(df[["income"]])
+# 서빙에서는 fit 하지 않고, 학습 때 저장한 imputer로 transform만 한다
 
-# 시계열: 앞/뒤 값으로 채우기
-df['sensor_value'] = df['sensor_value'].fillna(method='ffill').fillna(method='bfill')
+df["sensor_value"] = df["sensor_value"].ffill().bfill()
 ```
 
-## 이상값 탐지와 처리
+### 이상값 탐지
 
-이상값(Outlier)은 모델 학습에 큰 영향을 미친다.
+이상값에는 두 종류가 있다. 입력 오류로 생긴 값(나이 999, 음수 가격)과 실제로 드물게 일어난 값(하루 매출이 평소의 50배인 블랙프라이데이)이다. 앞의 것은 고치거나 지우고, 뒤의 것은 남겨야 한다. 탐지 방법은 둘을 가려 주지 않으므로, 탐지는 기계가 하고 판정은 규칙이나 사람이 한다.
 
 ```python
 import numpy as np
 from scipy import stats
-
-# IQR 방법
-Q1 = df['value'].quantile(0.25)
-Q3 = df['value'].quantile(0.75)
-IQR = Q3 - Q1
-outlier_mask = (df['value'] < Q1 - 1.5 * IQR) | (df['value'] > Q3 + 1.5 * IQR)
-print(f"이상값 수: {outlier_mask.sum()}")
-
-# Z-score 방법
-z_scores = np.abs(stats.zscore(df[numeric_cols]))
-outlier_rows = (z_scores > 3).any(axis=1)
-
-# Isolation Forest (고차원 데이터)
 from sklearn.ensemble import IsolationForest
+
+q1, q3 = df["value"].quantile([0.25, 0.75])
+iqr = q3 - q1
+iqr_mask = (df["value"] < q1 - 1.5 * iqr) | (df["value"] > q3 + 1.5 * iqr)
+
+z_mask = (np.abs(stats.zscore(df[numeric_cols])) > 3).any(axis=1)
+
 iso = IsolationForest(contamination=0.05, random_state=42)
-df['is_outlier'] = iso.fit_predict(df[numeric_cols]) == -1
+df["is_outlier"] = iso.fit_predict(df[numeric_cols]) == -1
 ```
 
-## 데이터 드리프트 모니터링
+IQR은 사분위 범위의 1.5배 밖을 이상값으로 보는데, 분포가 한쪽으로 긴 꼬리를 가지면 정상값을 대량으로 잡는다. 거래 금액처럼 오른쪽으로 꼬리가 긴 컬럼은 로그를 씌운 뒤 적용한다. Isolation Forest의 `contamination=0.05`는 「5%를 이상값으로 표시하라」는 지시라서, 실제 이상값이 1%뿐이어도 5%를 잡아낸다. 이 값은 탐지 결과가 아니라 우리가 넣은 가정이라는 점을 잊지 않는다.
 
-모델을 배포한 후에도 입력 데이터의 분포가 학습 시점과 달라질 수 있다(Data Drift). 이를 방치하면 모델 성능이 서서히 저하된다.
+## 품질 게이트
 
-```python
-from evidently.report import Report
-from evidently.metric_preset import DataDriftPreset
+![데이터 품질 파이프라인](/assets/posts/data-quality-pipeline.svg)
 
-report = Report(metrics=[DataDriftPreset()])
-report.run(
-    reference_data=train_df,   # 학습 시 데이터
-    current_data=production_df  # 현재 서빙 데이터
-)
+### 게이트 위치
 
-# HTML 리포트 저장
-report.save_html("drift_report.html")
+검사를 파이프라인의 어디에 둘지는 무엇을 막으려는지로 정한다. 수집 직후의 게이트는 원천에서 온 원본을 본다. 여기서는 스키마, 행 수, 적시성처럼 「데이터가 제대로 도착했는가」를 묻는다. 이 자리에서 실패를 잡으면 나쁜 데이터가 아래 단계의 캐시와 테이블로 퍼지기 전에 멈출 수 있다.
 
-# 드리프트 감지 결과
-result = report.as_dict()
-drifted_columns = [
-    col for col, info in result['metrics'][0]['result']['drift_by_columns'].items()
-    if info['drift_detected']
-]
-print(f"드리프트 감지 컬럼: {drifted_columns}")
-```
+학습 직전의 게이트는 변환과 조인을 다 거친 학습 테이블을 본다. 여기서는 레이블 분포, 피처의 범위, 학습·검증 분할 사이의 겹침처럼 「이것으로 학습해도 되는가」를 묻는다. 수집 단계에서 멀쩡했던 데이터도 조인 키가 어긋나면 이 자리에서 행이 반으로 줄어 있다. 두 게이트는 서로를 대신하지 못하므로 둘 다 둔다.
 
-## 실무 체크리스트
+### 실패 처리
 
-데이터 파이프라인을 구축하거나 점검할 때 사용할 수 있는 체크리스트다.
 
-- [ ] 각 테이블의 Primary Key 유일성 검증이 자동화되어 있는가?
-- [ ] 필수 컬럼의 NULL 비율 임계값이 설정되어 있는가?
-- [ ] 파이프라인 실패 시 알림(Slack, PagerDuty 등)이 연결되어 있는가?
-- [ ] 검증 결과가 메타스토어에 기록되어 히스토리를 볼 수 있는가?
-- [ ] 프로덕션 데이터와 학습 데이터 간 분포 비교가 주기적으로 실행되는가?
-- [ ] 이상값 처리 로직이 코드로 문서화되어 있는가?
+![수집 직후와 학습 직전의 품질 게이트, 그리고 실패를 세우기·격리하기·경고만으로 나누는 기준](/assets/posts/data-quality-gates.svg)
+검사가 실패했을 때의 선택은 세우기, 격리하기, 경고만 하기 셋이다. 기본 키 중복이나 스키마 위반처럼 아래 단계를 확실히 망가뜨리는 실패는 파이프라인을 세운다. 어제의 모델이 그대로 서비스되는 것이 오늘의 망가진 모델보다 낫다.
+
+일부 행만 문제라면 격리가 낫다. 규칙을 어긴 행을 따로 떼어 격리 테이블에 넣고 나머지로 진행하되, 격리된 비율이 임계값을 넘으면 그때 세운다. 0.1%의 행 때문에 전체를 세우면 파이프라인이 일주일에 세 번 멈추고, 결국 누군가 검사를 끄게 된다.
+
+격리에도 함정이 하나 있다. 격리된 행이 무작위가 아니면 남은 데이터가 기운다. 예를 들어 해외 사용자의 전화번호 형식이 국내 정규식에 안 맞아 매일 격리된다면, 학습 데이터에서 해외 사용자가 통째로 빠진다. 격리율이 0.5%로 낮아도 그 0.5%가 특정 집단이면 모델은 그 집단을 못 본다. 그래서 격리 테이블은 쌓아 두기만 하지 말고, 격리된 행이 어떤 값에 몰려 있는지 주기적으로 들여다본다. 몰려 있다면 고칠 것은 데이터가 아니라 규칙인 경우가 많다.
+
+경고만 하는 검사는 적시성이나 분포 변화처럼 판단이 필요한 것에 쓴다. 다만 경고가 쌓이기만 하고 아무도 안 보면 없는 것과 같으므로, 경고마다 누가 언제까지 보는지를 정해 둔다. 세 가지 처리 중 무엇을 고를지를 검사마다 미리 적어 두면, 새벽에 실패가 났을 때 당직자가 즉흥적으로 판단하지 않아도 된다.
+
+### 드리프트 감시
+
+게이트가 오늘 들어온 데이터의 규칙 위반을 본다면, 드리프트 감시는 데이터 전체의 분포가 학습 시점에서 얼마나 멀어졌는지를 본다. 규칙은 하나도 안 어겼는데 고객층이 바뀌어 연령 분포가 통째로 이동하는 경우다. 이 감시는 배포한 모델의 운영 지표와 함께 보는 것이 맞아서, 방법과 도구는 [모델 모니터링](/articles/mlops-monitoring) 글에서 따로 다룬다.
+
+## 레이블 품질
+
+### 입력과 레이블
+
+지금까지의 검사는 전부 입력, 곧 모델이 보는 쪽의 품질이었다. 지도 학습에는 품질을 따로 재야 하는 것이 하나 더 있다. 모델이 맞히려는 정답, 곧 **레이블**이다. 입력이 완벽해도 레이블의 5%가 틀려 있으면 모델은 그 틀린 5%를 맞히려고 애쓰다 경계를 비튼다. 그리고 평가셋의 레이블이 틀려 있으면, 모델이 맞혔는데 틀렸다고 채점된다. 더 정확한 모델이 더 낮은 점수를 받는 일이 생긴다.
+
+레이블 품질은 입력 품질 검사로 잡히지 않는다. 「스팸」이라는 레이블은 허용값 목록에 들어 있으므로 타당성 검사를 통과한다. 그 메일이 실제로 스팸인지는 다른 방법으로 물어야 한다.
+
+### 레이블 오류 측정
+
+첫째 방법은 같은 항목을 둘 이상이 레이블링하게 하고 일치도를 재는 것이다. 우연히 맞을 확률을 뺀 일치도인 코헨의 카파가 흔히 쓰이며, 0.6 아래면 레이블링 지침 자체가 모호하다는 신호다. 이때 고칠 것은 레이블을 단 사람이 아니라 지침이다.
+
+카파가 단순 일치율보다 나은 이유는 숫자로 보인다. 스팸이 10%인 메일 1,000통을 두 사람이 레이블링했는데 92%가 일치했다고 하자. 높아 보이지만, 둘 다 거의 모든 메일을 「정상」으로 찍기만 해도 일치율은 80%를 넘는다. 이 우연한 일치 몫을 빼고 나면 카파는 0.55 안팎으로 내려와, 스팸을 가르는 기준이 생각보다 덜 맞았다는 것이 드러난다. 클래스가 한쪽으로 쏠린 데이터일수록 일치율만 보면 속는다.
+
+둘째는 모델로 의심스러운 레이블을 찾는 방법이다. 교차 검증으로 각 항목에 대한 모델의 예측 확률을 얻고, 모델이 아주 확신하는데 레이블과 다른 항목을 골라 사람이 다시 본다. 이 아이디어를 정리한 것이 confident learning이고, cleanlab 같은 라이브러리가 구현해 두었다. 널리 쓰이는 공개 벤치마크의 평가셋에서도 이 방법으로 적지 않은 레이블 오류가 확인되었다. 표본 몇백 건만 다시 보아도 오류율을 추정할 수 있고, 그 오류율이 곧 그 데이터로 얻을 수 있는 정확도의 천장이 된다.
+
+### 기록과 알림
+
+검사는 결과가 남아야 쓸모가 있다. 검증 결과를 날짜별로 저장해 두면 「NULL 비율이 언제부터 올랐나」를 그래프로 볼 수 있고, 모델 성능이 떨어진 날과 맞대어 원인을 좁힐 수 있다. 실패는 메신저나 호출 시스템으로 담당자에게 바로 가게 하고, 경고는 하루 한 번 묶어서 보낸다. 모든 것을 바로 보내면 정작 중요한 것이 묻힌다.
+
+### 점검 목록
+
+파이프라인을 새로 세우거나 점검할 때 아래를 하나씩 확인한다.
+
+- 기본 키의 유일성 검사가 자동으로 돌고 있는가
+- 필수 컬럼마다 NULL 비율의 임계값과 「평소 대비 변화」 검사가 있는가
+- 스키마 계약이 코드로 적혀 있고, 계약에 없는 컬럼이 들어오면 실패하는가
+- 결측과 이상값의 처리 규칙이 학습과 서빙에서 같은 코드로 적용되는가
+- 게이트마다 실패 시 세울지, 격리할지, 경고만 할지 정해져 있는가
+- 레이블의 일치도나 오류율을 마지막으로 잰 날짜를 아는가
+
+다음 글에서는 여섯 차원 중 유일성을 실제로 지키는 작업, 곧 데이터 중복 제거를 정확한 매칭부터 의미 기반 매칭까지 따라간다.
 
 ---
 
