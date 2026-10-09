@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="520" viewBox="0 0 880 520" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <rect width="880" height="520" rx="12" fill="#0a0a0a"/>
+
+  <text x="60" y="56" font-size="22" font-weight="700" fill="#e8e8e8">각이 커질수록 세로가 는다</text>
+  <text x="60" y="82" font-size="13" fill="#888">왼쪽 아래 예각에서 본 계단 — 가로 4 세로 3, 가로 4 세로 4, 가로 3 세로 4</text>
+
+  <polygon points="90,330 210,330 210,240" fill="#7ec8e3" fill-opacity="0.12" stroke="#7ec8e3" stroke-width="2.5"/>
+  <path d="M 200 330 L 200 320 L 210 320" fill="none" stroke="#888" stroke-width="1.5"/>
+  <path d="M 118 330 A 28 28 0 0 0 112.4 313.2" fill="none" stroke="#e8e8e8" stroke-width="2"/>
+  <text x="150" y="358" font-size="14" font-weight="600" fill="#e8e8e8" text-anchor="middle">가로 4 · 세로 3</text>
+  <text x="150" y="384" font-size="13" fill="#7ec8e3" text-anchor="middle">45도보다 작다</text>
+
+  <polygon points="360,330 480,330 480,210" fill="#55c555" fill-opacity="0.12" stroke="#55c555" stroke-width="2.5"/>
+  <path d="M 470 330 L 470 320 L 480 320" fill="none" stroke="#888" stroke-width="1.5"/>
+  <path d="M 388 330 A 28 28 0 0 0 379.8 310.2" fill="none" stroke="#e8e8e8" stroke-width="2"/>
+  <text x="420" y="358" font-size="14" font-weight="600" fill="#e8e8e8" text-anchor="middle">가로 4 · 세로 4</text>
+  <text x="420" y="384" font-size="13" fill="#55c555" text-anchor="middle">45도, 계단 1 : 1</text>
+
+  <polygon points="630,330 720,330 720,210" fill="#7777cc" fill-opacity="0.12" stroke="#7777cc" stroke-width="2.5"/>
+  <path d="M 710 330 L 710 320 L 720 320" fill="none" stroke="#888" stroke-width="1.5"/>
+  <path d="M 658 330 A 28 28 0 0 0 646.8 307.6" fill="none" stroke="#e8e8e8" stroke-width="2"/>
+  <text x="675" y="358" font-size="14" font-weight="600" fill="#e8e8e8" text-anchor="middle">가로 3 · 세로 4</text>
+  <text x="675" y="384" font-size="13" fill="#7777cc" text-anchor="middle">45도보다 크다</text>
+
+  <rect x="60" y="412" width="760" height="70" rx="6" fill="#101010" stroke="#333" stroke-width="1"/>
+  <text x="84" y="441" font-size="14" font-weight="600" fill="#e8e8e8">세로가 가로보다 짧으면 45도 아래, 같으면 45도, 길면 45도 위</text>
+  <text x="84" y="463" font-size="13" fill="#888">오른쪽은 3·4·5 를 다른 쪽 예각에서 본 것 — 두 예각의 합이 90도라 계단의 가로와 세로가 바뀐다</text>
+</svg>

@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="560" viewBox="0 0 880 560" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <defs>
+    <marker id="arrB" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#7ec8e3"/>
+    </marker>
+    <marker id="arrP" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#7777cc"/>
+    </marker>
+  </defs>
+  <rect width="880" height="560" rx="12" fill="#0a0a0a"/>
+
+  <text x="60" y="56" font-size="22" font-weight="700" fill="#e8e8e8">같은 네 수가 두 가지 비로 묶인다</text>
+  <text x="60" y="82" font-size="13" fill="#888">3·4·5 와 6·8·10 — 한 삼각형 안에서 견주는 비와 두 삼각형 사이에서 견주는 비</text>
+
+  <text x="430" y="122" font-size="13" font-weight="600" fill="#7777cc" text-anchor="middle">두 삼각형 사이 — 3 : 6</text>
+  <path d="M 212 300 C 260 120, 700 120, 630 268" fill="none" stroke="#7777cc" stroke-width="2" stroke-dasharray="5,3" marker-end="url(#arrP)"/>
+
+  <polygon points="90,360 194,360 194,282" fill="#7ec8e3" fill-opacity="0.08" stroke="#e8e8e8" stroke-width="2"/>
+  <path d="M 182 360 L 182 348 L 194 348" fill="none" stroke="#888" stroke-width="1.5"/>
+  <text x="142" y="384" font-size="14" font-weight="600" fill="#e8e8e8" text-anchor="middle">4</text>
+  <text x="206" y="326" font-size="14" font-weight="600" fill="#e8e8e8">3</text>
+  <text x="128" y="312" font-size="14" font-weight="600" fill="#e8e8e8" text-anchor="end">5</text>
+  <path d="M 154 380 Q 226 394 214 340" fill="none" stroke="#7ec8e3" stroke-width="2" marker-end="url(#arrB)"/>
+
+  <polygon points="400,360 608,360 608,204" fill="#7ec8e3" fill-opacity="0.08" stroke="#e8e8e8" stroke-width="2"/>
+  <path d="M 596 360 L 596 348 L 608 348" fill="none" stroke="#888" stroke-width="1.5"/>
+  <text x="504" y="384" font-size="14" font-weight="600" fill="#e8e8e8" text-anchor="middle">8</text>
+  <text x="620" y="288" font-size="14" font-weight="600" fill="#e8e8e8">6</text>
+  <text x="490" y="270" font-size="14" font-weight="600" fill="#e8e8e8" text-anchor="end">10</text>
+  <path d="M 520 380 Q 640 398 626 304" fill="none" stroke="#7ec8e3" stroke-width="2" marker-end="url(#arrB)"/>
+
+  <text x="142" y="424" font-size="13" fill="#7ec8e3" text-anchor="middle">한 삼각형 안 — 4 : 3</text>
+  <text x="504" y="424" font-size="13" fill="#7ec8e3" text-anchor="middle">한 삼각형 안 — 8 : 6</text>
+
+  <rect x="60" y="448" width="760" height="76" rx="6" fill="#101010" stroke="#333" stroke-width="1"/>
+  <text x="84" y="478" font-size="14" font-weight="600" fill="#7ec8e3">안의 비  4 : 3 = 8 : 6 — 모양이 정한다, 크기와 무관하다</text>
+  <text x="84" y="504" font-size="14" font-weight="600" fill="#7777cc">사이의 비  3 : 6 = 4 : 8 = 5 : 10 = 1 : 2 — 크기 차이가 정한다, 곧 닮음비</text>
+</svg>

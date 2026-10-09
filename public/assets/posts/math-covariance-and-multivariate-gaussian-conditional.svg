@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="580" viewBox="0 0 880 580">
+<rect width="880" height="580" rx="12" fill="#0a0a0a"/>
+<text x="60" y="46" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="22" font-weight="700" fill="#e8e8e8">x 를 알면 y 의 분포가 좁아진다</text>
+<text x="60" y="72" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">μ = (10, 10), Σ = [[25,15],[15,25]]. 세로로 자른 단면마다 y 는 정규분포이고, 그 평균이 회귀선 위를 지난다.</text>
+<line x1="100" y1="530" x2="100" y2="536" stroke="#444" stroke-width="1"/>
+<text x="100" y="552" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888" text-anchor="middle">0</text>
+<line x1="200" y1="530" x2="200" y2="536" stroke="#444" stroke-width="1"/>
+<text x="200" y="552" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888" text-anchor="middle">5</text>
+<line x1="94" y1="430" x2="100" y2="430" stroke="#444" stroke-width="1"/>
+<text x="88" y="435" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888" text-anchor="end">5</text>
+<line x1="300" y1="530" x2="300" y2="536" stroke="#444" stroke-width="1"/>
+<text x="300" y="552" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888" text-anchor="middle">10</text>
+<line x1="94" y1="330" x2="100" y2="330" stroke="#444" stroke-width="1"/>
+<text x="88" y="335" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888" text-anchor="end">10</text>
+<line x1="400" y1="530" x2="400" y2="536" stroke="#444" stroke-width="1"/>
+<text x="400" y="552" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888" text-anchor="middle">15</text>
+<line x1="94" y1="230" x2="100" y2="230" stroke="#444" stroke-width="1"/>
+<text x="88" y="235" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888" text-anchor="end">15</text>
+<line x1="500" y1="530" x2="500" y2="536" stroke="#444" stroke-width="1"/>
+<text x="500" y="552" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888" text-anchor="middle">20</text>
+<line x1="94" y1="130" x2="100" y2="130" stroke="#444" stroke-width="1"/>
+<text x="88" y="135" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888" text-anchor="end">20</text>
+<ellipse cx="300" cy="330" rx="126.5" ry="63.2" fill="#7ec8e3" fill-opacity="0.12" stroke="#7ec8e3" stroke-width="2.5" transform="rotate(-45 300 330)"/>
+<line x1="120" y1="510" x2="480" y2="150" stroke="#888" stroke-width="1.5" stroke-dasharray="4,4"/>
+<line x1="100" y1="450" x2="500" y2="210" stroke="#e05555" stroke-width="2.5"/>
+<line x1="100" y1="530" x2="514" y2="530" stroke="#888" stroke-width="1.5"/>
+<line x1="100" y1="530" x2="100" y2="116" stroke="#888" stroke-width="1.5"/>
+<text x="520" y="535" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">x</text>
+<text x="96" y="110" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">y</text>
+<line x1="212" y1="470" x2="212" y2="310" stroke="#55c555" stroke-width="4"/>
+<line x1="206" y1="470" x2="218" y2="470" stroke="#55c555" stroke-width="2"/>
+<line x1="206" y1="310" x2="218" y2="310" stroke="#55c555" stroke-width="2"/>
+<rect x="206" y="384" width="12" height="12" fill="#55c555" transform="rotate(45 212 390)"/>
+<line x1="412" y1="350" x2="412" y2="190" stroke="#55c555" stroke-width="4"/>
+<line x1="406" y1="350" x2="418" y2="350" stroke="#55c555" stroke-width="2"/>
+<line x1="406" y1="190" x2="418" y2="190" stroke="#55c555" stroke-width="2"/>
+<rect x="406" y="264" width="12" height="12" fill="#55c555" transform="rotate(45 412 270)"/>
+<circle cx="200" cy="470" r="5" fill="#e8e8e8"/>
+<circle cx="200" cy="310" r="5" fill="#e8e8e8"/>
+<circle cx="300" cy="330" r="5" fill="#e8e8e8"/>
+<circle cx="400" cy="350" r="5" fill="#e8e8e8"/>
+<circle cx="400" cy="190" r="5" fill="#e8e8e8"/>
+<text x="426" y="275" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="600" fill="#55c555">13</text>
+<text x="226" y="395" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="600" fill="#55c555">7</text>
+<rect x="560" y="130" width="260" height="400" rx="8" fill="#141414" stroke="#2a2a2a" stroke-width="1"/>
+<line x1="584" y1="158" x2="616" y2="158" stroke="#7ec8e3" stroke-width="2.5"/>
+<text x="628" y="162" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e8e8e8">마할라노비스 거리 1</text>
+<line x1="584" y1="186" x2="616" y2="186" stroke="#888" stroke-width="1.5" stroke-dasharray="4,4"/>
+<text x="628" y="190" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e8e8e8">타원의 긴 축 y = x</text>
+<line x1="584" y1="214" x2="616" y2="214" stroke="#e05555" stroke-width="2.5"/>
+<text x="628" y="218" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e8e8e8">회귀선 기울기 0.6</text>
+<line x1="600" y1="232" x2="600" y2="252" stroke="#55c555" stroke-width="4"/>
+<text x="628" y="246" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e8e8e8">조건부 평균 ± 4</text>
+<line x1="584" y1="274" x2="796" y2="274" stroke="#2a2a2a" stroke-width="1"/>
+<text x="584" y="298" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="600" fill="#e8e8e8">x = 15 일 때</text>
+<text x="584" y="320" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="400" fill="#888">평균 10 + 0.6 × 5 = 13</text>
+<text x="584" y="342" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="400" fill="#888">분산 25 − 15²/25 = 16</text>
+<text x="584" y="364" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="400" fill="#888">표준편차 4 → 9 ~ 17</text>
+<text x="584" y="398" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="600" fill="#e8e8e8">x = 5 일 때</text>
+<text x="584" y="420" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="400" fill="#888">평균 10 + 0.6 × (−5) = 7</text>
+<text x="584" y="442" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="400" fill="#888">분산은 그대로 16 → 3 ~ 11</text>
+</svg>

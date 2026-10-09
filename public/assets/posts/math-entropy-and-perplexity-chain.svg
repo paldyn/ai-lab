@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="410" viewBox="0 0 880 410">
+<rect width="880" height="410" rx="12" fill="#0a0a0a"/>
+<text x="60" y="46" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="22" font-weight="700" fill="#e8e8e8">문장의 정보량을 토큰마다 쪼개기</text>
+<text x="60" y="72" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">사슬 규칙: −ln q(문장) = 토큰마다 앞 문맥이 주어졌을 때의 −ln q 를 더한 것</text>
+<rect x="60" y="100" width="130" height="90" rx="8" fill="#111a22" stroke="#7ec8e3" stroke-width="1.5"/>
+<text x="125.0" y="128" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#e8e8e8" text-anchor="middle">고양이가</text>
+<text x="125.0" y="152" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888" text-anchor="middle">q = 0.05</text>
+<text x="125.0" y="174" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="600" fill="#7ec8e3" text-anchor="middle">−ln q = 3.00</text>
+<text x="205.0" y="152.0" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="22" font-weight="700" fill="#e8e8e8" text-anchor="middle">+</text>
+<rect x="220" y="100" width="130" height="90" rx="8" fill="#111a22" stroke="#7ec8e3" stroke-width="1.5"/>
+<text x="285.0" y="128" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#e8e8e8" text-anchor="middle">소파</text>
+<text x="285.0" y="152" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888" text-anchor="middle">q = 0.2</text>
+<text x="285.0" y="174" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="600" fill="#7ec8e3" text-anchor="middle">−ln q = 1.61</text>
+<text x="365.0" y="152.0" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="22" font-weight="700" fill="#e8e8e8" text-anchor="middle">+</text>
+<rect x="380" y="100" width="130" height="90" rx="8" fill="#111a22" stroke="#7ec8e3" stroke-width="1.5"/>
+<text x="445.0" y="128" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#e8e8e8" text-anchor="middle">위에서</text>
+<text x="445.0" y="152" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888" text-anchor="middle">q = 0.6</text>
+<text x="445.0" y="174" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="600" fill="#7ec8e3" text-anchor="middle">−ln q = 0.51</text>
+<text x="525.0" y="152.0" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="22" font-weight="700" fill="#e8e8e8" text-anchor="middle">+</text>
+<rect x="540" y="100" width="130" height="90" rx="8" fill="#111a22" stroke="#7ec8e3" stroke-width="1.5"/>
+<text x="605.0" y="128" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#e8e8e8" text-anchor="middle">잔다</text>
+<text x="605.0" y="152" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888" text-anchor="middle">q = 0.7</text>
+<text x="605.0" y="174" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="600" fill="#7ec8e3" text-anchor="middle">−ln q = 0.36</text>
+<text x="685.0" y="152.0" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="22" font-weight="700" fill="#e8e8e8" text-anchor="middle">=</text>
+<rect x="700" y="100" width="120" height="90" rx="8" fill="#0f1a10" stroke="#55c555" stroke-width="1.5"/>
+<text x="760.0" y="128" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#e8e8e8" text-anchor="middle">문장 전체</text>
+<text x="760.0" y="152" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888" text-anchor="middle">q = 0.0042</text>
+<text x="760.0" y="174" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="600" fill="#55c555" text-anchor="middle">−ln q = 5.47</text>
+<text x="60" y="222" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">막대 길이 = 내트</text>
+<rect x="120.0" y="236" width="350.3" height="36" fill="#7ec8e3" fill-opacity="0.9" stroke="#0a0a0a" stroke-width="1.5"/>
+<text x="295.2" y="294" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e8e8e8" text-anchor="middle">3.00</text>
+<rect x="470.3" y="236" width="188.2" height="36" fill="#7ec8e3" fill-opacity="0.6" stroke="#0a0a0a" stroke-width="1.5"/>
+<text x="564.4" y="294" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e8e8e8" text-anchor="middle">1.61</text>
+<rect x="658.6" y="236" width="59.7" height="36" fill="#7ec8e3" fill-opacity="0.4" stroke="#0a0a0a" stroke-width="1.5"/>
+<text x="688.4" y="294" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e8e8e8" text-anchor="middle">0.51</text>
+<rect x="718.3" y="236" width="41.7" height="36" fill="#7ec8e3" fill-opacity="0.25" stroke="#0a0a0a" stroke-width="1.5"/>
+<text x="739.1" y="294" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e8e8e8" text-anchor="middle">0.36</text>
+<text x="772" y="259.0" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="600" fill="#55c555">5.47</text>
+<text x="60" y="344" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">첫 토큰 하나가 전체의 55%를 진다. 앞 문맥이 쌓일수록 다음 토큰은 덜 놀랍다.</text>
+<text x="60" y="370" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">토큰 수로 나누면 1.368내트, 토큰당 perplexity는 e^1.368 = 3.93이다.</text>
+</svg>

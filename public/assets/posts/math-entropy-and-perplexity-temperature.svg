@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="500" viewBox="0 0 880 500">
+<rect width="880" height="500" rx="12" fill="#0a0a0a"/>
+<text x="60" y="46" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="22" font-weight="700" fill="#e8e8e8">온도에 따른 엔트로피</text>
+<text x="60" y="72" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">로짓 (3, 1.5, 1, 0, −1)을 T로 나눈 뒤 softmax. 가로축은 T의 로그 눈금이다.</text>
+<line x1="150" y1="400" x2="770" y2="400" stroke="#888" stroke-width="1.5"/>
+<line x1="150" y1="410" x2="150" y2="110" stroke="#888" stroke-width="1.5"/>
+<text x="780" y="405" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">T</text>
+<text x="150" y="100" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888" text-anchor="middle">H (비트)</text>
+<line x1="150.0" y1="396" x2="150.0" y2="404" stroke="#888" stroke-width="1.5"/>
+<text x="150.0" y="422" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888" text-anchor="middle">0.05</text>
+<line x1="205.6" y1="396" x2="205.6" y2="404" stroke="#888" stroke-width="1.5"/>
+<line x1="261.3" y1="396" x2="261.3" y2="404" stroke="#888" stroke-width="1.5"/>
+<text x="261.3" y="422" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888" text-anchor="middle">0.2</text>
+<line x1="334.8" y1="396" x2="334.8" y2="404" stroke="#888" stroke-width="1.5"/>
+<line x1="390.4" y1="396" x2="390.4" y2="404" stroke="#888" stroke-width="1.5"/>
+<text x="390.4" y="422" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888" text-anchor="middle">1</text>
+<line x1="446.0" y1="396" x2="446.0" y2="404" stroke="#888" stroke-width="1.5"/>
+<line x1="519.6" y1="396" x2="519.6" y2="404" stroke="#888" stroke-width="1.5"/>
+<text x="519.6" y="422" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888" text-anchor="middle">5</text>
+<line x1="575.2" y1="396" x2="575.2" y2="404" stroke="#888" stroke-width="1.5"/>
+<line x1="630.8" y1="396" x2="630.8" y2="404" stroke="#888" stroke-width="1.5"/>
+<text x="630.8" y="422" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888" text-anchor="middle">20</text>
+<line x1="704.4" y1="396" x2="704.4" y2="404" stroke="#888" stroke-width="1.5"/>
+<line x1="760.0" y1="396" x2="760.0" y2="404" stroke="#888" stroke-width="1.5"/>
+<text x="760.0" y="422" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888" text-anchor="middle">100</text>
+<line x1="150" y1="346.0" x2="760" y2="346.0" stroke="#444" stroke-width="1"/>
+<text x="138" y="351.0" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888" text-anchor="end">0.5</text>
+<line x1="150" y1="292.0" x2="760" y2="292.0" stroke="#444" stroke-width="1"/>
+<text x="138" y="297.0" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888" text-anchor="end">1</text>
+<line x1="150" y1="238.0" x2="760" y2="238.0" stroke="#444" stroke-width="1"/>
+<text x="138" y="243.0" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888" text-anchor="end">1.5</text>
+<line x1="150" y1="184.0" x2="760" y2="184.0" stroke="#444" stroke-width="1"/>
+<text x="138" y="189.0" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888" text-anchor="end">2</text>
+<text x="138" y="405" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888" text-anchor="end">0</text>
+<line x1="150" y1="149.2" x2="760" y2="149.2" stroke="#7777cc" stroke-width="2" stroke-dasharray="4,4"/>
+<text x="760" y="137.2" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#7777cc" text-anchor="end">log₂ 5 = 2.32 — 균등분포</text>
+<polyline points="150.0,400.0 152.0,400.0 154.1,400.0 156.1,400.0 158.2,400.0 160.2,400.0 162.2,400.0 164.3,400.0 166.3,400.0 168.4,400.0 170.4,400.0 172.4,400.0 174.5,400.0 176.5,400.0 178.6,400.0 180.6,400.0 182.6,400.0 184.7,400.0 186.7,400.0 188.8,400.0 190.8,400.0 192.8,400.0 194.9,400.0 196.9,400.0 199.0,400.0 201.0,400.0 203.0,400.0 205.1,400.0 207.1,400.0 209.2,400.0 211.2,400.0 213.2,400.0 215.3,400.0 217.3,400.0 219.4,400.0 221.4,400.0 223.4,400.0 225.5,400.0 227.5,400.0 229.6,400.0 231.6,400.0 233.6,400.0 235.7,399.9 237.7,399.9 239.8,399.9 241.8,399.9 243.8,399.8 245.9,399.8 247.9,399.8 250.0,399.7 252.0,399.6 254.0,399.6 256.1,399.5 258.1,399.4 260.2,399.3 262.2,399.1 264.2,399.0 266.3,398.8 268.3,398.6 270.4,398.3 272.4,398.0 274.4,397.7 276.5,397.4 278.5,397.0 280.6,396.5 282.6,396.0 284.6,395.4 286.7,394.8 288.7,394.2 290.8,393.4 292.8,392.6 294.8,391.7 296.9,390.7 298.9,389.6 301.0,388.5 303.0,387.3 305.1,385.9 307.1,384.5 309.1,382.9 311.2,381.3 313.2,379.6 315.3,377.7 317.3,375.7 319.3,373.7 321.4,371.5 323.4,369.2 325.5,366.8 327.5,364.3 329.5,361.6 331.6,358.9 333.6,356.1 335.7,353.1 337.7,350.1 339.7,346.9 341.8,343.7 343.8,340.4 345.9,337.0 347.9,333.5 349.9,329.9 352.0,326.3 354.0,322.6 356.1,318.9 358.1,315.1 360.1,311.3 362.2,307.4 364.2,303.6 366.3,299.7 368.3,295.7 370.3,291.8 372.4,287.9 374.4,284.0 376.5,280.1 378.5,276.2 380.5,272.3 382.6,268.5 384.6,264.7 386.7,261.0 388.7,257.3 390.7,253.6 392.8,250.1 394.8,246.5 396.9,243.1 398.9,239.7 400.9,236.4 403.0,233.1 405.0,230.0 407.1,226.9 409.1,223.9 411.1,220.9 413.2,218.1 415.2,215.3 417.3,212.6 419.3,210.0 421.3,207.5 423.4,205.1 425.4,202.7 427.5,200.4 429.5,198.3 431.5,196.1 433.6,194.1 435.6,192.1 437.7,190.2 439.7,188.4 441.7,186.6 443.8,185.0 445.8,183.3 447.9,181.8 449.9,180.3 451.9,178.9 454.0,177.5 456.0,176.2 458.1,174.9 460.1,173.7 462.1,172.6 464.2,171.5 466.2,170.4 468.3,169.4 470.3,168.5 472.3,167.6 474.4,166.7 476.4,165.9 478.5,165.1 480.5,164.3 482.5,163.6 484.6,162.9 486.6,162.2 488.7,161.6 490.7,161.0 492.7,160.4 494.8,159.9 496.8,159.4 498.9,158.9 500.9,158.4 502.9,157.9 505.0,157.5 507.0,157.1 509.1,156.7 511.1,156.4 513.1,156.0 515.2,155.7 517.2,155.4 519.3,155.1 521.3,154.8 523.3,154.5 525.4,154.2 527.4,154.0 529.5,153.8 531.5,153.5 533.5,153.3 535.6,153.1 537.6,152.9 539.7,152.7 541.7,152.6 543.7,152.4 545.8,152.2 547.8,152.1 549.9,152.0 551.9,151.8 553.9,151.7 556.0,151.6 558.0,151.5 560.1,151.3 562.1,151.2 564.1,151.1 566.2,151.0 568.2,151.0 570.3,150.9 572.3,150.8 574.3,150.7 576.4,150.6 578.4,150.6 580.5,150.5 582.5,150.4 584.5,150.4 586.6,150.3 588.6,150.3 590.7,150.2 592.7,150.2 594.7,150.1 596.8,150.1 598.8,150.0 600.9,150.0 602.9,150.0 604.9,149.9 607.0,149.9 609.0,149.9 611.1,149.8 613.1,149.8 615.2,149.8 617.2,149.7 619.2,149.7 621.3,149.7 623.3,149.7 625.4,149.6 627.4,149.6 629.4,149.6 631.5,149.6 633.5,149.6 635.6,149.6 637.6,149.5 639.6,149.5 641.7,149.5 643.7,149.5 645.8,149.5 647.8,149.5 649.8,149.5 651.9,149.4 653.9,149.4 656.0,149.4 658.0,149.4 660.0,149.4 662.1,149.4 664.1,149.4 666.2,149.4 668.2,149.4 670.2,149.4 672.3,149.4 674.3,149.4 676.4,149.3 678.4,149.3 680.4,149.3 682.5,149.3 684.5,149.3 686.6,149.3 688.6,149.3 690.6,149.3 692.7,149.3 694.7,149.3 696.8,149.3 698.8,149.3 700.8,149.3 702.9,149.3 704.9,149.3 707.0,149.3 709.0,149.3 711.0,149.3 713.1,149.3 715.1,149.3 717.2,149.3 719.2,149.3 721.2,149.3 723.3,149.3 725.3,149.3 727.4,149.3 729.4,149.3 731.4,149.3 733.5,149.3 735.5,149.3 737.6,149.3 739.6,149.3 741.6,149.3 743.7,149.3 745.7,149.3 747.8,149.3 749.8,149.3 751.8,149.2 753.9,149.2 755.9,149.2 758.0,149.2 760.0,149.2" fill="none" stroke="#7ec8e3" stroke-width="2.5"/>
+<circle cx="150.0" cy="400.0" r="5" fill="#e8e8e8"/>
+<circle cx="261.3" cy="399.2" r="5" fill="#e8e8e8"/>
+<circle cx="334.8" cy="354.4" r="5" fill="#e8e8e8"/>
+<circle cx="390.4" cy="254.2" r="5" fill="#e8e8e8"/>
+<circle cx="446.0" cy="183.2" r="5" fill="#e8e8e8"/>
+<circle cx="519.6" cy="155.0" r="5" fill="#e8e8e8"/>
+<circle cx="630.8" cy="149.6" r="5" fill="#e8e8e8"/>
+<circle cx="760.0" cy="149.2" r="5" fill="#e8e8e8"/>
+<text x="406.4" y="276.2" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="600" fill="#55c555">T = 1 · 1.35비트</text>
+<line x1="180.0" y1="212" x2="154.0" y2="390" stroke="#e05555" stroke-width="1.5" stroke-dasharray="4,4"/>
+<text x="164.0" y="200" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e05555">T → 0 · 확정 분포, 0비트</text>
+<text x="60" y="462" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">T를 낮추면 가장 큰 로짓 하나로 쏠리고, 높이면 다섯 후보가 고르게 펴진다. 그 사이에서 엔트로피는 단조롭게 오른다.</text>
+</svg>

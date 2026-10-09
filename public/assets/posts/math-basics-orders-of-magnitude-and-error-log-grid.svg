@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="440" viewBox="0 0 880 440" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <rect x="0" y="0" width="880" height="440" rx="12" fill="#0a0a0a"/>
+  <text x="60" y="46" font-size="22" font-weight="700" fill="#e8e8e8">로그 축 한 칸(10배) 안의 눈금</text>
+  <text x="60" y="74" font-size="13" fill="#888">각 수는 log₁₀ 값의 자리에 선다 — 1·2·5·10이 칸을 셋으로 나눈다</text>
+  <path d="M 103.0 140 L 103.0 128 L 301.7 128 L 301.7 140" stroke="#7777cc" stroke-width="1.5" fill="none"/>
+  <text x="202.4" y="116" text-anchor="middle" font-size="16" font-weight="600" fill="#e8e8e8">30.1%</text>
+  <path d="M 307.7 140 L 307.7 128 L 572.3 128 L 572.3 140" stroke="#7777cc" stroke-width="1.5" fill="none"/>
+  <text x="440.0" y="116" text-anchor="middle" font-size="16" font-weight="600" fill="#e8e8e8">39.8%</text>
+  <path d="M 578.3 140 L 578.3 128 L 777.0 128 L 777.0 140" stroke="#7777cc" stroke-width="1.5" fill="none"/>
+  <text x="677.6" y="116" text-anchor="middle" font-size="16" font-weight="600" fill="#e8e8e8">30.1%</text>
+  <line x1="100" y1="200" x2="780" y2="200" stroke="#888" stroke-width="1.5"/>
+  <line x1="100.0" y1="184" x2="100.0" y2="216" stroke="#e8e8e8" stroke-width="2"/>
+  <text x="100.0" y="240" text-anchor="middle" font-size="16" font-weight="700" fill="#e8e8e8">1</text>
+  <line x1="304.7" y1="184" x2="304.7" y2="216" stroke="#e8e8e8" stroke-width="2"/>
+  <text x="304.7" y="240" text-anchor="middle" font-size="16" font-weight="700" fill="#e8e8e8">2</text>
+  <line x1="424.4" y1="192" x2="424.4" y2="208" stroke="#444" stroke-width="1.5"/>
+  <text x="424.4" y="238" text-anchor="middle" font-size="13" fill="#888">3</text>
+  <line x1="509.4" y1="192" x2="509.4" y2="208" stroke="#444" stroke-width="1.5"/>
+  <text x="509.4" y="238" text-anchor="middle" font-size="13" fill="#888">4</text>
+  <line x1="575.3" y1="184" x2="575.3" y2="216" stroke="#e8e8e8" stroke-width="2"/>
+  <text x="575.3" y="240" text-anchor="middle" font-size="16" font-weight="700" fill="#e8e8e8">5</text>
+  <line x1="629.1" y1="192" x2="629.1" y2="208" stroke="#444" stroke-width="1.5"/>
+  <text x="629.1" y="238" text-anchor="middle" font-size="13" fill="#888">6</text>
+  <line x1="674.7" y1="192" x2="674.7" y2="208" stroke="#444" stroke-width="1.5"/>
+  <text x="674.7" y="238" text-anchor="middle" font-size="13" fill="#888">7</text>
+  <line x1="714.1" y1="192" x2="714.1" y2="208" stroke="#444" stroke-width="1.5"/>
+  <text x="714.1" y="238" text-anchor="middle" font-size="13" fill="#888">8</text>
+  <line x1="748.9" y1="192" x2="748.9" y2="208" stroke="#444" stroke-width="1.5"/>
+  <text x="748.9" y="238" text-anchor="middle" font-size="13" fill="#888">9</text>
+  <line x1="780.0" y1="184" x2="780.0" y2="216" stroke="#e8e8e8" stroke-width="2"/>
+  <text x="780.0" y="240" text-anchor="middle" font-size="16" font-weight="700" fill="#e8e8e8">10</text>
+  <line x1="202.4" y1="206" x2="202.4" y2="276" stroke="#7ec8e3" stroke-width="1" stroke-dasharray="4,4"/>
+  <circle cx="202.4" cy="200" r="5" fill="#7ec8e3"/>
+  <text x="202.4" y="294" text-anchor="middle" font-size="13" font-weight="600" fill="#7ec8e3">1과 2의 한가운데</text>
+  <text x="202.4" y="312" text-anchor="middle" font-size="13" fill="#888">√2 ≈ 1.41 (1.5가 아니다)</text>
+  <line x1="440.0" y1="206" x2="440.0" y2="276" stroke="#7ec8e3" stroke-width="1" stroke-dasharray="4,4"/>
+  <circle cx="440.0" cy="200" r="5" fill="#7ec8e3"/>
+  <text x="440.0" y="294" text-anchor="middle" font-size="13" font-weight="600" fill="#7ec8e3">1과 10의 한가운데</text>
+  <text x="440.0" y="312" text-anchor="middle" font-size="13" fill="#888">√10 ≈ 3.16</text>
+  <rect x="60" y="340" width="760" height="76" rx="8" fill="#14141c" stroke="#7777cc" stroke-width="1.5"/>
+  <text x="84" y="370" font-size="16" font-weight="600" fill="#e8e8e8">10과 100 사이 칸의 60% 지점은 10 × 10<tspan dy="-7" font-size="12">0.6</tspan><tspan dy="7"> ≈ 40</tspan></text>
+  <text x="84" y="394" font-size="13" fill="#888">log₁₀ 4 ≈ 0.602 라 4의 눈금이 칸의 60.2% 지점에 서 있다. 8과 9 사이는 칸의 5%뿐이다</text>
+</svg>
