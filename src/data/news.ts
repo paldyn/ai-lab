@@ -160,7 +160,7 @@ export interface NewsDetail {
   commentary: string;
 }
 
-export const globalNewsUpdatedAt = '2026-10-07';
+export const globalNewsUpdatedAt = '2026-10-08';
 
 /**
  * 공식 발표 한 건 = 항목 한 개. 2026년 1월부터 쌓는 아카이브이며 오래된 항목을
@@ -171,6 +171,48 @@ export const globalNewsUpdatedAt = '2026-10-07';
  * 목록에서 파생됩니다. 갱신 시 globalNewsUpdatedAt도 함께 올립니다.
  */
 const entries: NewsItem[] = [
+  {
+    id: 'disrupting-ai-enabled-false-front-operations',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'OpenAI, 가짜 싱크탱크·기자를 내세운 러시아·이란 영향력 공작 차단',
+    summary:
+      'OpenAI가 위장 조직을 앞세운 러시아발·이란발 영향력 공작 두 건의 ChatGPT 계정을 차단했다. 러시아 쪽은 중남미에 「연구 플랫폼」을 ' +
+      '세워 현지인을 썼고, 이란 쪽은 가짜 기자 일곱 명 이름으로 기사를 투고해 약 100편이 실렸다.',
+    publishedAt: '2026-10-08',
+    collectedAt: '2026-10-09',
+    category: 'Safety',
+    signal: '비밀 영향력 공작',
+    url: 'https://openai.com/index/disrupting-ai-enabled-false-front-operations',
+  },
+  {
+    id: 'pollo-ai',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'Pollo AI, GPT-6 Astra·GPT-Image-2.5로 영상·광고 제작 에이전트 운영',
+    summary:
+      '이용자 2,600만 명의 영상 제작 플랫폼 Pollo AI가 Pollo Agent에 OpenAI 모델을 쓴다고 밝혔다. 라우팅은 GPT-5.6, 어려운 기획은 ' +
+      'GPT-6 Astra, 이미지는 GPT-Image-2.5가 맡는다.',
+    publishedAt: '2026-10-08',
+    collectedAt: '2026-10-09',
+    category: 'Product',
+    signal: '기업 도입 사례',
+    url: 'https://openai.com/index/pollo-ai',
+  },
+  {
+    id: 'oracle',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'Oracle, 임직원 10만여 명이 ChatGPT Work·Codex로 업무 시간 단축',
+    summary:
+      'Oracle 임직원 10만 명 넘게가 채용·사내 애플리케이션·IT 조직에서 ChatGPT Work와 Codex를 쓴다고 OpenAI가 소개했다. ' +
+      '며칠 걸리던 채용 시장 조사가 15~20분 준비로 줄었다.',
+    publishedAt: '2026-10-08',
+    collectedAt: '2026-10-09',
+    category: 'Product',
+    signal: '기업 도입 사례',
+    url: 'https://openai.com/index/oracle',
+  },
   {
     id: 'anthropic-cyber-mission',
     source: 'Anthropic',
