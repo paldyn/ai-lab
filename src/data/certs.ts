@@ -2607,7 +2607,7 @@ export const certs: Cert[] = [
       '- 한국어로 응시할 수 있다 — 인증 페이지가 언어를 "English, 日本語, Português BR, 한국어"로 안내한다.\n' +
       '- 이름이 비슷한 무료 accreditation 셋(Databricks Fundamentals·Generative AI Fundamentals·AI Agent ' +
       'Fundamentals)과 헷갈리지 않게 한다. 이 자격증은 유료 감독 시험이다.\n' +
-      '- 인증 목록에 Databricks Certified Context Engineering Associate가 새로 올라와 생성형 AI 계열 Associate ' +
+      '- 인증 목록에 Databricks Certified Context Engineer Associate가 새로 올라와 생성형 AI 계열 Associate ' +
       '시험이 둘로 늘었다 — 대체가 아니라 둘 다 현행이다.\n' +
       '- 인증 페이지는 도구 이름을 "AI Search", 시험 가이드는 같은 자리를 "Vector Search"로 적는다. 출제 목표가 "Mosaic AI ' +
       'Vector Search"이므로 가이드 표기를 따랐다.',
@@ -2662,6 +2662,233 @@ export const certs: Cert[] = [
         subject: 'Evaluation and Monitoring (평가와 모니터링)',
         items: [
           { site: 'ailab', slug: 'llmops-cost-tracking' },
+        ],
+      },
+    ],
+  },
+  {
+    id: 'databricks-context-engineer-associate',
+    nameKo: 'Databricks Context Engineer Associate',
+    nameEn: 'Databricks Certified Context Engineer Associate',
+    issuer: 'Databricks',
+    region: '해외',
+    status: '해외 벤더 자격',
+    level: '중급',
+    difficulty: 3,
+    difficultyBasis: '응시자격은 없지만 실무 6개월을 권장하고 영어로만 봅니다.',
+    employment: 2.5,
+    employmentBasis: '같은 어소시에이트 등급이지만 갓 생긴 시험이라 국내에서 쓰이는 자리를 아직 확인할 수 없습니다.',
+    whatItMeasures:
+      'Databricks를 써서 AI 에이전트 시스템이 추론 시점에 받는 정보를 설계하고 조립하고 통제하는 능력을 잰다(인증 페이지 "design, assemble, ' +
+      'and govern the information that AI agent systems receive at inference time"). 범위는 지시문·시스템 프롬프트 구성, AI Search ' +
+      '같은 검색 시스템 설정, Lakebase와 MLflow로 세션을 넘어 상태를 남기는 메모리 설계, MCP 같은 프로토콜로 도구·데이터 원천 연결, 컴팩션과 ' +
+      '트리밍으로 컨텍스트 창 제약 관리다. 컨텍스트에 무엇이 들어가는지의 통제는 Unity Catalog 메타데이터 층(데이터 품질·PII 처리·정책 적용)에 ' +
+      '기댄다. 멀티에이전트·장기 작업의 컨텍스트 전략과, 컨텍스트를 조정했을 때 에이전트가 나아졌는지 나빠졌는지를 실험으로 판단하는 일까지 본다. 합격자는 ' +
+      '에이전트가 일을 믿을 만하게 해낼 기업 컨텍스트를 받도록 Databricks 위에서 그 정보 환경을 만들고 관리할 수 있는 사람으로 본다.',
+    audience:
+      'Databricks를 배우는 만 18세 이상 개인이 대상이며, 공식 FAQ는 잠재 고객·고객·파트너·Databricks 임직원을 함께 든다. 권장 경험은 시험 ' +
+      '가이드에 적힌 컨텍스트 엔지니어링 작업을 6개월 이상 직접 해 본 것이다("6+ months of hands-on experience performing the context ' +
+      'engineering solutions tasks outlined in the exam guide").',
+    format:
+      '채점 문항 45개, 제한 시간 90분. 참고 자료 반입 불가(Test aides: None allowed). 감독형 시험이다(Type: Proctored certification). ' +
+      '문항 수와 유형은 두 문서의 표기가 조금 다르다 — 인증 페이지는 "Total number of scored questions: 45"와 "Question types: ' +
+      'Multiple choice"를 적고, 시험 가이드는 "approximately 45 multiple-choice or multiple-selection items"로 복수 선택을 함께 ' +
+      '든다. 통계 수집용 비채점 문항이 섞여 나올 수 있는데 문제지에 표시되지 않고 점수에 반영되지 않으며, 그만큼 시간이 더 배정되어 있다. 합격 기준 점수는 ' +
+      '통계 분석으로 정하고 문항이 바뀌면 함께 바뀌기 때문에 Databricks가 공개하지 않는다(공식 FAQ). 시험 직후 비공식 결과를 바로 알려 주고, 합격이면 ' +
+      '프록터 녹화를 검토한 뒤 credentials.databricks.com에 디지털 배지가 게시되며 Accredible에서 공유용 배지 메일이 온다. 시험의 코드는 ' +
+      '전부 Python이고, 머신러닝 과제에 한정되지 않는 워크플로나 코드에서는 데이터 조작 코드가 SQL로 나올 수 있다(인증 페이지). 언어는 영어 하나다("Languages: ' +
+      'English").',
+    cadence:
+      '시행처가 회차나 접수 기간을 못 박아 둔 문장이 공식 페이지 어디에도 없다. 공식 안내가 밝히는 것은 예약 방식뿐이다 — 시험은 Kryterion이 ' +
+      '시행하고("Databricks Certification exams are delivered via Kryterion"), 인증 페이지는 등록을 "To register for a ' +
+      'certification exam, please log in or create an account on our exam delivery platform" 한 문장으로 안내하며 그 ' +
+      '링크가 webassessor.com/databricks다. 일정 변경은 Webassessor에 로그인해서 하며, 공식 FAQ는 기한을 응시 방식에 따라 가른다 — ' +
+      '온라인 감독 시험은 예약 시각 24시간 넘게 전, 시험센터 시험은 72시간 넘게 전까지 바꿔야 하고 그 뒤에는 변경 수수료가 붙는다("For online ' +
+      'proctored exams, you must reschedule your exam more than 24 hours before your scheduled exam time. For testing center ' +
+      'exams, you must reschedule your exam more than 72 hours before your scheduled exam time."). 약관은 응시 방식을 가르지 않고 ' +
+      '72시간 미만 통보로는 변경·취소를 할 수 없으며 변경·취소하려면 test sponsor에 연락해야 한다고 적는다("I cannot reschedule or cancel my ' +
+      'scheduled test session with less than seventy-two (72) hours notice and rescheduling or canceling will require contacting my ' +
+      'test sponsor"). 불합격하면 14일 뒤에 다시 등록해 응시할 수 있고 횟수 제한은 없으나 모든 응시 사이에 14일을 두어야 ' +
+      '한다("There is a 14-day wait between all attempts"). 응시자가 날짜를 골라 예약하는 방식이라 실제 응시 가능한 날짜·시간은 공식 예약 ' +
+      '페이지(webassessor.com/databricks)에서 확인한다.',
+    fee:
+      'US$200(인증 페이지·시험 가이드 "Registration fee: $200", 응시 1회 기준). 공식 FAQ가 "All Databricks Certification exams ' +
+      'cost 200 USD"로 모든 Databricks 인증 시험이 같은 금액이라고 적고, 재응시도 첫 응시와 같은 금액이며("Each attempt is charged at ' +
+      'the same price as the original exam") 무료 재응시는 없다("there are no free retakes for any Databricks Certification ' +
+      'exam"). 약관도 응시할 때마다 결제한다고 적는다("Payment is required each time you take an exam"). 바우처 코드가 있으면 결제 ' +
+      '화면(exam checkout page)에서 입력한 뒤 Submit, Check Out 순으로 진행하며, 재응시 바우처는 발급하지 않는다.',
+    refundNote:
+      '환불 비율을 못 박은 공식 문장이 없다. 주관사 Databricks 약관은 온라인·시험센터를 가리지 않고 72시간 미만 통보로 변경·취소하려면 test sponsor에 ' +
+      '연락해야 하고 그때 추가 비용을 낼 수 있다고만 적으며("I may be required to pay an additional fee"), 온라인 감독 시험에서 장비 고장이나 인터넷 연결 ' +
+      '불량으로 등록이 정지·취소되면 이미 낸 응시료를 잃을 수 있다고 적는다("any exam fees paid may be forfeited").',
+    validity:
+      '2년. 인증 페이지가 "Validity period: 2 years"로 적고, 자격을 유지하려면 2년마다 재인증해야 한다. 재인증은 그 시점의 현행 시험을 ' +
+      '다시 치르는 방식이다(인증 페이지 "you must take the current version of the exam", 시험 가이드 "you must take the full ' +
+      'exam that is currently live"). 공식 FAQ는 인증에 딸린 디지털 배지도 발급 2년 뒤 만료되고, 인증이 만료되기 전에 미리 알려 준다고 적는다. 부분 갱신이나 갱신 전용 ' +
+      '시험을 안내한 문장은 없다.',
+    prerequisite:
+      '없음. 시험 가이드는 "Prerequisite: None is required; related course attendance and six months of hands-on ' +
+      'experience are highly recommended."로, 인증 페이지는 "Prerequisites: None, but related training highly ' +
+      'recommended"로 적는다. 가이드가 권하는 준비는 Databricks Academy 자기주도 과정 두 묶음 — Generative AI Engineering with ' +
+      'Databricks(Building RAG Agents with Agent Bricks, Building Agentic Applications on Databricks, Agent Evaluation on ' +
+      'Databricks, Deploying and Monitoring Agent Applications on Databricks, Building Reliable Conversational Agents with ' +
+      'Genie)와 Data Engineering with Databricks(Get started with Databricks for Data Engineering, Get Started with Data ' +
+      'Governance, Data Governance at Scale) — 그리고 LLM 컨텍스트 창과 길이가 성능에 주는 영향, 프롬프트 엔지니어링·시스템 프롬프트 설계·few-shot ' +
+      '예시 구성, 에이전트 프레임워크와 MCP, Agent Bricks·Semantic Search·임베딩 모델, 에이전트 메모리용 Lakebase와 평가용 MLflow 3, ' +
+      '에이전트 도구·검색 원천에 대한 Unity Catalog 거버넌스 지식이다. 공식 연습 시험은 제공하지 않는다(공식 FAQ). 시험 가이드 끝에 예시 문항 열 개와 ' +
+      '정답이 실려 있다.',
+    subjects: [
+      {
+        name: 'Foundations of Context Engineering (컨텍스트 엔지니어링 기초)',
+        weight: '16%',
+        note:
+          '에이전트 실패를 보고 가장 직접적인 컨텍스트 관리 기법 고르기, 최소 도구 집합·just-in-time 검색·도구 결과 범위 좁히기처럼 컴팩션이 필요해지기 ' +
+          '전에 창 압력을 덜어 주는 선제 전략, 에이전트 트레이스로 context poisoning·distraction·confusion·clash 진단, 시나리오에 맞는 ' +
+          'Databricks 도구(Unity Catalog·Lakebase·MCP·MLflow 3) 고르기, 주의 예산(attention budget)을 과하게 먹는 컨텍스트 요소 ' +
+          '찾기, 토큰 예산과 창 영향을 근거로 추론 모드(standard·extended thinking·reduced thinking) 고르기, 긴 상호작용에서 컨텍스트 ' +
+          '길이가 검색 정확도·추론 품질을 떨어뜨리기 시작하는 지점과 성능을 되돌리는 개입',
+      },
+      {
+        name: 'System Prompt and Instruction Design (시스템 프롬프트와 지시 설계)',
+        weight: '9%',
+        note:
+          'Genie 스페이스를 운영 수준으로 만드는 지시(instructions)·예시 질문·trusted SQL 자산의 선택과 검증, 토큰 예산 안에서 few-shot 예시를 ' +
+          '성능 기여도로 넣고 빼기(테스트 안 된 도구 경로·출력 구조 시연·모호한 입력 처리), 관찰된 실패 패턴에 맞춰 시스템 프롬프트를 토큰 비용과 유지보수 ' +
+          '부담이 가장 덜 늘게 고치기, 실험 추적 결과로 토큰이 더 드는 프롬프트 구성이 값어치를 하는지와 그 차이를 만드는 프롬프트 요소 판단',
+      },
+      {
+        name: 'Knowledge Retrieval and Genie Configuration (지식 검색과 Genie 구성)',
+        weight: '20%',
+        note:
+          '가장 배점이 큰 영역. Unity Catalog 메타데이터의 빠지거나 부실한 요소가 만드는 정확도 차이와 영향이 가장 큰 구성 변경, Genie 스페이스에 ' +
+          '담을 UC 객체(managed table·view·parameterized query·SQL 함수) 고르기, Databricks AI Search 구성의 근본 원인 진단과 ' +
+          '검색 신호 품질 개선, UC로 관리되는 문서 코퍼스에서 청크를 검색해 에이전트 컨텍스트에 넣는 RAG 파이프라인 설계, 문서 구조·임베딩 모델 ' +
+          '컨텍스트 길이·질의 유형에 맞는 청킹, 과제 범위를 정하고 실행하는 데 필요한 컨텍스트 요소, 사전 적재 검색(pre-inference)과 ' +
+          'just-in-time 에이전트 검색(도구 호출·동적 Delta 테이블 질의)의 구분, MLflow 평가 로그와 UC 메타데이터로 검색 실패 갈래를 찾고 UC ' +
+          '거버넌스 조치 고르기, 권위 있는 자산과 파생 자산이 섞인 환경에서 배포 전에 검색 범위를 권위 있는 출처로 묶는 거버넌스 전략',
+      },
+      {
+        name: 'Memory Architecture with Lakebase and MLflow (Lakebase·MLflow 메모리 설계)',
+        weight: '18%',
+        note:
+          '부적절한 메모리 원천(세션 안에 있는 정보를 장기 저장소에서 꺼내거나 세션을 넘어야 할 정보를 세션 이력에 기대는 것)이 낳는 성능 저하와 메모리 ' +
+          '전략 교정, 다단계 작업에서 컨텍스트 안 스크래치패드 대신 Delta 기반 상태 객체가 필요한 때, Lakebase에 남긴 메모리를 AI Search로 찾을지 ' +
+          '구조화 질의로 찾을지, MLflow 3 실험 결과로 가장 안정적인 컨텍스트 구성 찾기, Lakebase에서의 정적·동적 검색 트레이드오프, 과잉 ' +
+          '검색(context pollution)과 과소 검색(관련 이력 누락) 위험, Lakebase 기반 영속 저장소로 세션을 넘는 메모리 구성, 컨텍스트 검색 전에 ' +
+          '사용자 의도를 풀어야 할 파이프라인 단계',
+      },
+      {
+        name: 'Tool Design, MCP, and Agent Context (도구 설계·MCP·에이전트 컨텍스트)',
+        weight: '13%',
+        note:
+          'MCP 도구 접근의 점진적 공개(progressive disclosure — 단계적 도구 발견과 컨텍스트 효율적 실행)로 원시 도구 덤프보다 토큰 줄이기와 그 ' +
+          '원리, 에이전트가 계속 헷갈리는 두 MCP 도구 설명의 겹침 찾기, 창이 차 갈 때 지울 원시 도구 출력 고르기, Unity Catalog에 등록된 ' +
+          '도구(이름·설명·파라미터 스키마) 가운데 기능 적합성·입출력 호환성·과제 요구로 가장 맞는 도구 고르기, 드물게 쓰는 능력 지시로 부푼 시스템 ' +
+          '프롬프트에서 Agent Skills로 묶을 후보와 기본 컨텍스트 비용을 줄이는 적재 전략',
+      },
+      {
+        name: 'Context Compression and Compaction (컨텍스트 압축과 컴팩션)',
+        weight: '11%',
+        note:
+          '컴팩션 뒤 하류 일관성이 무너질 때 잘못 버려진 정보 갈래를 찾고 요약 토큰 비용을 크게 늘리지 않게 컴팩션 프롬프트 고치기, 에이전트 트레이스로 ' +
+          '컴팩션 프롬프트를 재현율 먼저·정밀도 다음 순서로 튜닝, 하드코딩한 트리밍 휴리스틱으로 충분한지 더 정교한 컴팩션이 필요한지 판단, 지워도 하류 작업 ' +
+          '실행에 영향이 없는 내용 가리기, 공격적 컴팩션(낮은 토큰 비용·미묘한 맥락 손실)과 보수적 컴팩션(높은 충실도·높은 비용)의 트레이드오프',
+      },
+      {
+        name: 'Multi-Agent and Long-Horizon Task Design (멀티에이전트·장기 작업 설계)',
+        weight: '13%',
+        note:
+          '공유 컨텍스트 부족이 멀티에이전트 시스템에 낳는 실패(불일치 출력·상충 결정·신뢰도 저하), 조정 에이전트가 하위 에이전트에 전체 에이전트 트레이스 ' +
+          '대신 개별 과제 메시지만 보낼 때의 근본 원인과 하위 에이전트 창을 늘리지 않는 해결, 상충 출력을 막는 컨텍스트 전파 변경, 오케스트레이터 컨텍스트 ' +
+          '포화를 줄이는 하위 에이전트 출력 설계, 에이전트 경계를 잘못 그어 생기는 핸드오프 압축 부담 또는 개별 에이전트 창 팽창 진단, 장기 작업에서 전략 ' +
+          '불일치를 찾고 과제의 의존 구조에 맞는 대체 전략을 근거와 함께 고르기',
+      },
+    ],
+    officialUrl: 'https://www.databricks.com/learn/certification/context-engineer-associate',
+    verifiedAt: '2026-10-10',
+    notes:
+      '- 시행은 Kryterion이 맡고 등록은 Webassessor(webassessor.com/databricks)에서 한다.\n' +
+      '- 이름 표기가 둘이다. 인증 페이지 제목과 시험 가이드는 \'Databricks Certified Context Engineer Associate\', 인증 목록 ' +
+      '카드의 소개 문장은 \'Databricks Certified Context Engineering Associate\'다 — 시험 페이지와 가이드를 따랐다.\n' +
+      '- 영어로만 응시할 수 있다(인증 페이지 "Languages: English"). 같은 회사의 ML·GenAI Associate가 한국어를 제공하는 것과 다르다.\n' +
+      '- 현행 시험 가이드는 2026년 7월 29일부터 시행하는 판을 다룬다("This version covers the version available beginning July ' +
+      '29, 2026"). 같은 문단이 그 날짜 2주 전에 다시 들러 최신판인지 확인하라고 안내하고("Please check back two weeks before this time"), ' +
+      '공식 FAQ는 시험 버전이 늘 하나만 운영되며 가이드가 출제 범위의 기준 ' +
+      '문서라고 적는다.\n' +
+      '- 출제 영역 비중(16/9/20/18/13/11/13%)은 시험 가이드에만 있고 인증 페이지에는 없다.\n' +
+      '- 문서끼리 어긋나는 자리가 둘이다. 응시 방식은 인증 페이지가 \'Online or test center\', 가이드가 \'Online Proctored\'이고, ' +
+      '채점 문항 수는 페이지가 45, 가이드가 \'approximately 45\'다.\n' +
+      '- 검색 도구 이름은 인증 페이지가 \'AI Search\', 가이드 출제 목표가 \'Databricks AI Search\'이고, 같은 가이드의 권장 준비 목록은 ' +
+      '\'Semantic Search\'라고 적는다.\n' +
+      '- 생성형 AI 계열 Associate인 Databricks Certified Generative AI Engineer Associate와 둘 다 현행이다. 두 가이드 모두 권장 준비로 ' +
+      'Generative AI Engineering with Databricks 묶음을 들고(묶음 안 과정 이름은 서로 다르다), 청킹 전략처럼 출제 목표가 겹치는 자리가 ' +
+      '있다.\n' +
+      '- 공식 연습 시험은 없다(공식 FAQ). 인증 페이지의 준비 단계(Getting Ready for the Exam)에는 어느 Databricks 인증에나 쓰는 AI Prep ' +
+      'Guide(쓰던 AI 챗봇을 학습 도우미로 쓰는 방법을 적은 PDF)가 걸려 있다.',
+    unknowns: [
+      '기한 안에 취소했을 때의 환불 비율 — Databricks 약관·FAQ 어디에도 금액이나 비율이 없다(시행사 Kryterion 안내 페이지는 이번에 ' +
+      '열리지 않아(403·404) 다시 보지 못했다)',
+      '합격 기준 점수(합격선) — 공식 FAQ가 통계 분석으로 정하며 바뀔 수 있어 공개하지 않는다고 밝히고 있어 숫자를 확인할 수 없음',
+      '첫 출시일 — 시험 가이드는 현행판이 2026년 7월 29일부터라고만 적고, 그 앞에 다른 판이나 베타가 있었는지는 공식 문서에 없다',
+      '시험센터 응시 가능 여부 — 인증 페이지는 \'Delivery Method: Online or test center\', 시험 가이드는 \'Delivery method: ' +
+      'Online Proctored\'만 적어 확정하지 않았다',
+      '회차·접수 기간·상시 시행 여부를 못 박은 문장 — 공식 페이지와 FAQ에 예약 링크(webassessor.com/databricks)만 있고 시행 주기를 적은 ' +
+      '문장이 없음(미확인)',
+      '한국어 등 영어 밖 언어의 추가 계획 — 인증 페이지는 지금 제공 언어를 English 하나로만 적는다(미확인)',
+      '응시료 200달러에 세금·부가 수수료가 포함되는지 여부(미확인)',
+    ],
+    studyPath: [
+      {
+        subject: 'Foundations of Context Engineering (컨텍스트 엔지니어링 기초)',
+        items: [
+          { site: 'ailab', slug: 'context-engineering-overview' },
+          { site: 'ailab', slug: 'context-long-context-reality' },
+          { site: 'ailab', slug: 'reasoning-budget-control' },
+        ],
+      },
+      {
+        subject: 'System Prompt and Instruction Design (시스템 프롬프트와 지시 설계)',
+        items: [
+          { site: 'ailab', slug: 'context-system-prompt-design' },
+          { site: 'ailab', slug: 'prompt-zero-few-shot' },
+        ],
+      },
+      {
+        subject: 'Knowledge Retrieval and Genie Configuration (지식 검색과 Genie 구성)',
+        items: [
+          { site: 'ailab', slug: 'rag-chunking-strategies' },
+          { site: 'ailab', slug: 'context-retrieval-vs-longcontext' },
+          { site: 'ailab', slug: 'rag-freshness-updates' },
+        ],
+      },
+      {
+        subject: 'Memory Architecture with Lakebase and MLflow (Lakebase·MLflow 메모리 설계)',
+        items: [
+          { site: 'ailab', slug: 'agent-memory' },
+          { site: 'ailab', slug: 'context-summarization-memory' },
+        ],
+      },
+      {
+        subject: 'Tool Design, MCP, and Agent Context (도구 설계·MCP·에이전트 컨텍스트)',
+        items: [
+          { site: 'ailab', slug: 'tool-schema-design' },
+          { site: 'ailab', slug: 'ai-agents-and-mcp' },
+        ],
+      },
+      {
+        subject: 'Context Compression and Compaction (컨텍스트 압축과 컴팩션)',
+        items: [
+          { site: 'ailab', slug: 'context-compression' },
+          { site: 'ailab', slug: 'context-window-budgeting' },
+          { site: 'ailab', slug: 'context-multi-turn-management' },
+        ],
+      },
+      {
+        subject: 'Multi-Agent and Long-Horizon Task Design (멀티에이전트·장기 작업 설계)',
+        items: [
+          { site: 'ailab', slug: 'agent-multi-agent-patterns' },
+          { site: 'ailab', slug: 'agent-handoff-protocols' },
+          { site: 'ailab', slug: 'agent-long-running' },
         ],
       },
     ],

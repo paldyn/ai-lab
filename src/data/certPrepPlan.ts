@@ -2158,6 +2158,139 @@ export const certPrepPlans: CertPrepPlan[] = [
     ],
   },
   {
+    certId: 'databricks-context-engineer-associate',
+    mockExams: 5,
+    sourceUrl: 'https://www.databricks.com/sites/default/files/2026-07/databricks-certified-context-engineer-associate-exam-guide.pdf',
+    basis: '근거는 공식 시험 가이드(2026-07-29부터 시행하는 판) Exam outline의 7개 섹션 45개 출제목표(7+4+9+8+6+5+6, About the Exam은 채점 문항 약 45개)이고, 섹션별 비중은 같은 가이드의 16/9/20/18/13/11/13%다 — 인증 페이지에는 비중표가 없다. 25편을 비중대로 나눠 1섹션 4편, 2섹션 2편, 3섹션 5편, 4섹션 5편, 5·6·7섹션 3편씩 주었다(편수 비중 16/8/20/20/12/12/12%). 4섹션이 비중보다 한 칸 두꺼운 것은 출제목표가 여덟으로 같은 비중대 섹션보다 많고 Lakebase 체크포인터 구성처럼 코드를 읽는 목표가 끼어 있어서다. 2섹션은 넷 중 셋(시스템 프롬프트 수정·few-shot 선별·두 구성의 실험 비교)이 한 갈래라 한 편에 묶고 Genie 스페이스 구성을 따로 세웠다. GenAI Associate 계획처럼 도구 지도를 공통 편으로 따로 두지 않은 것은, 이 가이드에서는 그것이 1섹션 출제목표("Select the right tool in the Databricks product stack")이기 때문이다 — 1섹션 첫 편으로 세웠다. 출제목표 하나가 한 편이 된 자리 가운데 넷(Databricks AI Search 구성 진단, MLflow 3 실험 비교, Lakebase 영속 메모리 구성, 컴팩션 뒤 일관성 붕괴)은 가이드 예시 문항이 그 목표 하나로 시나리오를 길게 세운 자리이고, 장기 작업 전략 불일치는 예시 문항이 없지만 목표 한 줄이 불일치 진단·대체 전략 고르기·원래 전략이 모자란 특성 짚기 세 걸음을 담고 있어 따로 세웠다.',
+    topics: [
+      {
+        title: '컨텍스트 엔지니어링과 Databricks 도구 지도',
+        subject: 'Foundations of Context Engineering (컨텍스트 엔지니어링 기초) · 16%',
+        keywords: ['추론 시점에 컨텍스트로 들어가는 것 — 지시·검색 지식·메모리·도구 결과', 'Unity Catalog — 거버넌스와 메타데이터 층', 'Lakebase — 세션을 넘는 상태 저장', 'MCP — 도구·데이터 원천 연결', 'MLflow 3 — 트레이스와 평가', '시나리오에 맞는 도구 고르기'],
+      },
+      {
+        title: '컨텍스트 실패 네 갈래와 처방',
+        subject: 'Foundations of Context Engineering (컨텍스트 엔지니어링 기초) · 16%',
+        keywords: ['context poisoning', 'context distraction', 'context confusion', 'context clash', '에이전트 트레이스에서 실패 갈래 읽기', '실패마다 가장 직접적인 컨텍스트 관리 기법'],
+      },
+      {
+        title: '주의 예산과 선제적 컨텍스트 관리',
+        subject: 'Foundations of Context Engineering (컨텍스트 엔지니어링 기초) · 16%',
+        keywords: ['주의 예산(attention budget)', '최소 도구 집합(minimal tool sets)', 'just-in-time 검색', '도구 결과 범위 좁히기(tool result scoping)', '컴팩션 전에 창 압력 줄이기', '주의를 과하게 먹는 컨텍스트 요소 찾기'],
+      },
+      {
+        title: '추론 모드 선택과 긴 대화의 성능 저하',
+        subject: 'Foundations of Context Engineering (컨텍스트 엔지니어링 기초) · 16%',
+        keywords: ['standard·extended thinking·reduced thinking', '토큰 예산과 컨텍스트 창 영향으로 모드 고르기', '컨텍스트 길이에 따른 검색 정확도·추론 품질 저하', '저하가 시작되는 지점을 트레이스로 재기', '성능을 되돌리는 개입 고르기'],
+      },
+      {
+        title: 'Genie 지시·예시 질문·trusted SQL',
+        subject: 'System Prompt and Instruction Design (시스템 프롬프트와 지시 설계) · 9%',
+        keywords: ['업무 도메인 용어를 일반 지시(instructions)로 정의', '예시 질문(sample questions)', 'trusted SQL 자산', 'SQL 표현식(SQL expressions)', '운영 투입 전 검증', '해석 실패마다 고칠 자리 고르기'],
+      },
+      {
+        title: '시스템 프롬프트 보정과 few-shot 선별',
+        subject: 'System Prompt and Instruction Design (시스템 프롬프트와 지시 설계) · 9%',
+        keywords: ['관찰된 실패 패턴에 맞춘 표적 수정', '토큰 비용과 유지보수 부담', 'few-shot 예시의 한계 기여도', '테스트 안 된 도구 경로·출력 구조 시연·모호한 입력', '실험 추적으로 두 프롬프트 구성 비교', '비용-성능 차이를 만드는 프롬프트 요소'],
+      },
+      {
+        title: 'UC 메타데이터와 Genie 객체 큐레이션',
+        subject: 'Knowledge Retrieval and Genie Configuration (지식 검색과 Genie 구성) · 20%',
+        keywords: ['빠지거나 부실한 Unity Catalog 메타데이터 찾기', '테이블·컬럼 설명과 정확도 차이', '영향이 가장 큰 구성 변경', 'Genie 스페이스에 담을 managed table·view', 'parameterized query·SQL 함수', '업무 도메인별 객체 큐레이션'],
+      },
+      {
+        title: 'UC 문서 코퍼스 RAG와 청킹 고르기',
+        subject: 'Knowledge Retrieval and Genie Configuration (지식 검색과 Genie 구성) · 20%',
+        keywords: ['Unity Catalog로 관리되는 문서 코퍼스', '청크를 검색해 에이전트 컨텍스트에 주입', '문서 구조에 맞춘 분할', '임베딩 모델 컨텍스트 길이', '질의 유형 — 넓은 개념 질문과 좁은 조회', 'chunk size와 overlap'],
+      },
+      {
+        title: 'Databricks AI Search 구성 진단',
+        subject: 'Knowledge Retrieval and Genie Configuration (지식 검색과 Genie 구성) · 20%',
+        keywords: ['검색 품질 문제의 근본 원인이 되는 구성', 'DELTA_SYNC와 DIRECT_ACCESS 인덱스', 'pipeline_type TRIGGERED와 CONTINUOUS', '원본 Delta 테이블과 인덱스 sync의 어긋남', '검색 신호 품질을 가장 직접 올리는 조치', '비용까지 따진 해결 고르기'],
+      },
+      {
+        title: '사전 적재 검색과 just-in-time 검색',
+        subject: 'Knowledge Retrieval and Genie Configuration (지식 검색과 Genie 구성) · 20%',
+        keywords: ['과제를 범위 짓고 실행하는 데 필요한 컨텍스트 요소', 'pre-inference 검색 — 임베딩 기반 사전 적재', 'just-in-time 에이전트 검색 — 도구 호출', '동적 Delta 테이블 질의', '사용 사례별 검색 전략 고르기'],
+      },
+      {
+        title: '검색 실패 진단과 권위 있는 출처 제한',
+        subject: 'Knowledge Retrieval and Genie Configuration (지식 검색과 Genie 구성) · 20%',
+        keywords: ['MLflow 평가 로그로 검색 실패 갈래 찾기', 'UC 메타데이터로 원인 좁히기', 'Unity Catalog 거버넌스 조치 고르기', '권위 있는(authoritative) 자산과 파생(derived) 자산', '배포 전 검색 범위 제한', '데이터 품질·PII 처리·정책 적용'],
+      },
+      {
+        title: '메모리 원천 고르기와 Delta 상태 객체',
+        subject: 'Memory Architecture with Lakebase and MLflow (Lakebase·MLflow 메모리 설계) · 18%',
+        keywords: ['세션 안 정보와 세션을 넘는 정보', '장기 저장소와 세션 이력의 잘못된 선택', '메모리 유형과 정보 요구의 어긋남 찾기', '컨텍스트 안 스크래치패드', 'Delta 기반 상태 객체가 필요한 다단계 작업'],
+      },
+      {
+        title: 'Lakebase로 세션을 넘는 메모리 구성',
+        subject: 'Memory Architecture with Lakebase and MLflow (Lakebase·MLflow 메모리 설계) · 18%',
+        keywords: ['Lakebase 기반 영속 저장소', 'Lakebase PostgreSQL과 연결 풀', 'LangGraph 체크포인터 등록', 'AsyncPostgresSaver와 setup()', '대화 스레드 상태 저장과 재개'],
+      },
+      {
+        title: 'Lakebase 메모리의 정적·동적 검색',
+        subject: 'Memory Architecture with Lakebase and MLflow (Lakebase·MLflow 메모리 설계) · 18%',
+        keywords: ['Lakebase에 남긴 메모리 꺼내기', 'AI Search와 구조화 질의 중 고르기', '질의 유형에 맞는 검색 방식', '정적 검색과 동적 검색의 트레이드오프', '에이전트 아키텍처별 선택'],
+      },
+      {
+        title: '과잉·과소 검색과 의도 해석 단계',
+        subject: 'Memory Architecture with Lakebase and MLflow (Lakebase·MLflow 메모리 설계) · 18%',
+        keywords: ['과잉 검색(context pollution)', '과소 검색 — 관련 이력 누락', '정확하지만 맥락이 어긋난 응답', '컨텍스트 검색 전에 사용자 의도를 풀 단계', '메모리 시스템의 위험 진단'],
+      },
+      {
+        title: 'MLflow 3 실험으로 컨텍스트 구성 고르기',
+        subject: 'Memory Architecture with Lakebase and MLflow (Lakebase·MLflow 메모리 설계) · 18%',
+        keywords: ['여러 에이전트 실행을 한 실험에 기록', '품질 지표 여럿을 함께 보기', '가장 안정적인 구성의 기준', '평행 좌표 차트로 실행 비교', '컨텍스트 조정의 효과를 실험으로 판단'],
+      },
+      {
+        title: 'MCP 도구의 점진적 공개',
+        subject: 'Tool Design, MCP, and Agent Context (도구 설계·MCP·에이전트 컨텍스트) · 13%',
+        keywords: ['progressive disclosure — 단계적 도구 발견', '원시 도구 덤프·전체 스키마 선적재와의 토큰 비교', '단계마다 컨텍스트에 드는 도구 정보량', '컨텍스트 효율적인 실행', '도구 메타데이터와 의도 신호로 후보 좁히기'],
+      },
+      {
+        title: '도구 설명 겹침과 UC 등록 도구 선택',
+        subject: 'Tool Design, MCP, and Agent Context (도구 설계·MCP·에이전트 컨텍스트) · 13%',
+        keywords: ['에이전트가 헷갈리는 두 도구 설명의 겹침', '모호한 도구 선택', 'Unity Catalog에 등록된 도구 — 이름·설명·파라미터 스키마', '기능 적합성·입출력 호환성·과제 요구', '고른 도구의 근거 대기'],
+      },
+      {
+        title: '도구 출력 정리와 Agent Skills 적재',
+        subject: 'Tool Design, MCP, and Agent Context (도구 설계·MCP·에이전트 컨텍스트) · 13%',
+        keywords: ['창이 차 갈 때 지울 원시 도구 출력', '깊은 메시지 이력', '드물게 쓰는 능력 지시로 부푼 시스템 프롬프트', 'Agent Skills로 묶을 후보', '기본 컨텍스트 비용을 줄이는 적재 전략', '과제 성공률을 해치지 않는 선'],
+      },
+      {
+        title: '트리밍 휴리스틱과 컴팩션 강도',
+        subject: 'Context Compression and Compaction (컨텍스트 압축과 컴팩션) · 11%',
+        keywords: ['하드코딩한 트리밍 휴리스틱', '과제의 정보 관련성 패턴', '더 정교한 컴팩션이 필요한 때', '공격적 컴팩션 — 낮은 비용과 미묘한 맥락 손실', '보수적 컴팩션 — 높은 충실도와 높은 비용'],
+      },
+      {
+        title: '컴팩션 프롬프트 튜닝 — 재현율 먼저',
+        subject: 'Context Compression and Compaction (컨텍스트 압축과 컴팩션) · 11%',
+        keywords: ['에이전트 트레이스로 컴팩션 프롬프트 다듬기', '관련 정보를 다 담는 재현율 우선', '불필요한 출력을 덜어 내는 정밀도 반복', '지워도 안전한 내용 가리기', '하류 작업 실행에 영향 주는 내용'],
+      },
+      {
+        title: '컴팩션 뒤 일관성 붕괴 되짚기',
+        subject: 'Context Compression and Compaction (컨텍스트 압축과 컴팩션) · 11%',
+        keywords: ['컴팩션 뒤 하류 일관성 실패', '잘못 버려진 정보 갈래 찾기', '사용자가 밝힌 제약·제외·선호', '요약 토큰 비용을 크게 늘리지 않는 프롬프트 수정', '대화 턴을 사실 요약 하나로 접을 때 잃는 것'],
+      },
+      {
+        title: '공유 컨텍스트 부족과 전파 설계',
+        subject: 'Multi-Agent and Long-Horizon Task Design (멀티에이전트·장기 작업 설계) · 13%',
+        keywords: ['공유 컨텍스트 부족이 낳는 실패 — 불일치·상충 결정·신뢰도 저하', '하위 에이전트에 개별 과제 메시지만 보낼 때', '전체 트레이스와 압축한 트레이스 요약', '하위 에이전트 창을 늘리지 않는 해결', '상충 출력을 막는 컨텍스트 전파 변경'],
+      },
+      {
+        title: '오케스트레이터 포화와 에이전트 경계',
+        subject: 'Multi-Agent and Long-Horizon Task Design (멀티에이전트·장기 작업 설계) · 13%',
+        keywords: ['오케스트레이터의 컨텍스트 포화', '하위 에이전트 출력 설계', '과제 일관성 유지', '에이전트 경계 배치 실패 두 갈래', '핸드오프 압축 부담과 개별 에이전트 창 팽창'],
+      },
+      {
+        title: '장기 작업 전략 불일치 진단',
+        subject: 'Multi-Agent and Long-Horizon Task Design (멀티에이전트·장기 작업 설계) · 13%',
+        keywords: ['장기 작업(long-horizon) 전략', '성능 실패 기록에서 불일치 찾기', '과제의 의존 구조', '원래 전략이 모자란 특성 짚기', '대체 전략 고르기와 근거'],
+      },
+    ],
+  },
+  {
     certId: 'ai-901',
     mockExams: 4,
     sourceUrl: 'https://learn.microsoft.com/en-us/credentials/certifications/resources/study-guides/ai-901',
