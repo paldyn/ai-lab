@@ -2822,6 +2822,9 @@ export const certs: Cert[] = [
       '- 출제 영역 비중(16/9/20/18/13/11/13%)은 시험 가이드에만 있고 인증 페이지에는 없다.\n' +
       '- 문서끼리 어긋나는 자리가 둘이다. 응시 방식은 인증 페이지가 \'Online or test center\', 가이드가 \'Online Proctored\'이고, ' +
       '채점 문항 수는 페이지가 45, 가이드가 \'approximately 45\'다.\n' +
+      '- 시험 가이드의 예시 문항 10번은 가이드 안에서 어긋난다. 문항 머리의 Objective 줄은 근본 원인을 「sub-agents receiving individual task ' +
+      'messages rather than full agent traces at dispatch time」(보기 A에 해당)으로 적는데, 정답표는 B(벡터 검색 인덱스를 업데이트된 Delta 테이블에 ' +
+      '동기화하지 않음)다. 이 문항 하나로 멀티에이전트 컨텍스트 전달을 정리하지 말고 7번 영역의 출제 목표 문장을 기준으로 삼는다.\n' +
       '- 검색 도구 이름은 인증 페이지가 \'AI Search\', 가이드 출제 목표가 \'Databricks AI Search\'이고, 같은 가이드의 권장 준비 목록은 ' +
       '\'Semantic Search\'라고 적는다.\n' +
       '- 생성형 AI 계열 Associate인 Databricks Certified Generative AI Engineer Associate와 둘 다 현행이다. 두 가이드 모두 권장 준비로 ' +
