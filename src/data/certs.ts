@@ -1834,6 +1834,220 @@ export const certs: Cert[] = [
     ],
   },
   {
+    id: 'aws-genai-developer-professional',
+    nameKo: 'AWS GenAI Developer – Professional',
+    nameEn: 'AWS Certified Generative AI Developer – Professional',
+    issuer: 'Amazon Web Services',
+    region: '해외',
+    status: '해외 벤더 자격',
+    level: '고급',
+    difficulty: 4,
+    difficultyBasis: '응시 요건은 없지만 개발 경력 2년·GenAI 실무 1년을 권장하는 180분 75문항 시험입니다.',
+    employment: 3,
+    employmentBasis: 'AWS 프로페셔널 등급이고 AWS 스택은 국내 채용에 흔합니다.',
+    whatItMeasures:
+      '공식 시험 가이드는 이 시험을 GenAI 개발자 역할을 하는 사람을 위한 시험으로 두고, 파운데이션 모델(FM)을 애플리케이션과 비즈니스 워크플로에 효과적으로 ' +
+      '통합하는 능력을 검증한다고 적는다(원문: 「validates a candidate\'s ability to effectively integrate foundation models (FMs) into ' +
+      'applications and business workflows」). 함께 검증하는 작업은 여덟이다 — 벡터 저장소·RAG·지식 기반 같은 GenAI 아키텍처의 설계와 구현, FM을 ' +
+      '앱과 워크플로에 통합하기, 프롬프트 엔지니어링과 관리, 에이전틱 AI 솔루션 구현, 비용·성능·비즈니스 가치 최적화, 보안·거버넌스·책임 있는 AI 실천, ' +
+      '문제 해결·모니터링·최적화, FM의 품질과 책임 평가. 반대로 모델 개발과 훈련, 고급 ML 기법, 데이터 엔지니어링과 특성 공학은 범위 밖으로 못 박았다 — ' +
+      '모델을 만드는 시험이 아니라 만들어진 모델을 프로덕션에 붙이고 지키고 재는 시험이다.',
+    audience:
+      'GenAI 개발자 역할을 하는 사람이다. 공식 시험 가이드가 적는 대상 응시자는 AWS 또는 오픈소스 기술로 프로덕션급 애플리케이션을 만든 경험이 2년 ' +
+      '이상이고, 일반 AI/ML 또는 데이터 엔지니어링 경험이 있으며, GenAI 솔루션을 구현한 실무 경험이 1년 이상인 사람이다. 자격 페이지는 「Perfect for ' +
+      'developers with 2+ years of cloud experience」라고 소개하고, 개념 증명(PoC)을 넘어 프로덕션급 생성형 AI 솔루션을 만들 수 있는 개발자를 가려내는 ' +
+      '수단으로 내세운다.',
+    format:
+      '75문항 / 180분(AIP-C01). 이 중 채점되는 문항은 65개이고 나머지 10개는 향후 출제 검증용 미채점 문항이며 시험 중에는 구분 표시가 없다. 문항 ' +
+      '유형은 객관식(정답 1 + 오답 3)과 복수응답(선택지 5개 이상 중 정답 2개 이상을 전부 선택해야 득점) 둘뿐이다 — 자격 페이지도 「75 questions, ' +
+      'either multiple choice or multiple response」라고 적는다. 무응답은 오답 처리되고 찍기에 대한 감점은 없다. 결과는 100~1,000 척도 점수로 ' +
+      '나오며 750점 이상이면 합격이다(파운데이셔널 700, 어소시에이트 720보다 높다). 도메인별 과락이 없는 보상형(compensatory) 채점이라 전체 점수만 넘기면 ' +
+      '된다. AWS Certification FAQ는 대부분의 시험이 끝날 때 화면에 합격 여부를 보여 주지 않는다고 적고, 결과는 시험 후 영업일 5일 안에 AWS ' +
+      'Certification 계정의 Exam History에 올라온다.',
+    cadence:
+      '회차가 없는 상시 시험이다. AWS Certification Account(AWS Builder ID로 생성)에서 \'Schedule New Exam\'을 고르고 \'Schedule with ' +
+      'Pearson VUE\'를 누르면 Pearson VUE 대시보드로 넘어가며, 거기서 장소·날짜·시간을 직접 정한다. 응시 방식은 Pearson VUE 시험센터와 온라인 ' +
+      '감독(online proctored) 두 가지다. 정책이 못 박은 선은 넷이다 — 예약 변경은 시험 24시간 전까지 한 예약당 최대 2회이고 세 번째부터는 취소한 ' +
+      '뒤 새로 예약해야 한다. 예약 시각을 놓치면 그 시각부터 24시간이 지나야 다시 접수할 수 있다(불합격으로 치지는 않는다). 불합격하면 14일(역일)을 ' +
+      '기다려야 다시 응시할 수 있고 응시 횟수 제한은 없다. 합격한 뒤에는 같은 시험을 2년간 다시 칠 수 없다(새 시험 가이드·시리즈 코드로 바뀐 판은 칠 수 ' +
+      '있다). 시험 언어는 영어·일본어·한국어·중국어 간체다. 실제로 예약할 수 있는 날짜·시간은 예약 단계의 Pearson VUE 화면에서 확인한다.',
+    fee:
+      '300 USD. 프로페셔널 등급 공통 가격이다(스페셜티도 같다). 공식 ' +
+      '요금표(aws.amazon.com/certification/policies/before-testing)는 통화별 금액을 함께 싣는다 — 300 USD / 256 ' +
+      'EUR / 449 AUD / 40,000 JPY / 394,575 KRW / 2,113 CNY / 25,659 INR(INR은 Pearson Mindhub 바우처 스토어에서만 받는다). 원화 ' +
+      '가격이 공개되어 있으므로 예약 단계까지 가야 알 수 있는 값이 아니다. 금액은 응시 한 번 기준이고(「Prices are valid for one exam ' +
+      'attempt」) 세금은 포함되지 않으며 원문은 "Applicable taxes may apply"라고만 적는다. 환율 반영은 최소 연 1회 5월이고, 그보다 자주 바뀔 때는 ' +
+      '최소 30일 전에 공지한다. 재응시는 할인 없이 매번 전액을 내고, 갱신 응시에는 AWS Certification Account의 50% 할인 바우처를 쓴다.',
+    refund: [
+      {
+        when: '예약 시각보다 24시간 넘게 앞서 취소',
+        rate: '전액',
+        note: '구매 시점에 결제한 응시료를 그대로 돌려받는다',
+      },
+      {
+        when: '예약 시각 24시간 이내 취소, 또는 예약 시각에 나타나지 않음',
+        rate: '불가',
+        note: '24시간 안쪽에서는 취소도 일정 변경도 막히고 이미 낸 응시료를 그대로 잃는다',
+      },
+    ],
+    refundNote:
+      '취소는 Pearson VUE에 연락하거나 AWS Certification 계정에서 하고, 이 정책은 AWS 인증 전 시험에 공통이다. 질병이나 예기치 못한 비상 상황은 ' +
+      '증빙을 내면 수수료 없이 다시 예약해 준다. 바우처로 결제했다면 예약을 바꾸기 전에 바우처 만료일을 확인해야 한다 — 원문은 「Exam voucher ' +
+      'expiration dates cannot be extended」다.',
+    validity:
+      '3년(AWS Certification FAQ: 「You will be required to update your certification (or recertify) every three years」). 갱신 ' +
+      '페이지가 이 자격에 적어 둔 경로는 하나뿐이다 — 「Pass the latest version of this exam.」이고, AWS Certification Account의 50% 할인 ' +
+      '바우처를 쓸 수 있으며 3년이 연장된다. 같은 프로페셔널 등급의 Solutions Architect·DevOps Engineer에는 있는 AWS Skill Builder ' +
+      '유지(maintain, 1년 연장) 경로가 이 자격의 칸에는 없다. 갱신하려면 자격이 유효한 상태여야 하고(「Certification must be active to ' +
+      'renew」), 연장 3년은 갱신 시험을 치른 날부터 센다. 반대 방향으로는 이 시험 합격이 AWS Certified AI Practitioner·Machine Learning ' +
+      'Engineer – Associate·Data Engineer – Associate 세 자격의 갱신 경로로 인정된다.',
+    prerequisite:
+      '선수 요건은 없다 — AWS 시험 정책 페이지(Before Testing)가 「All AWS Certifications may be earned without completing specific ' +
+      'prerequisites」라고 적고, 자격 페이지 FAQ도 이 시험 전에 특정 자격을 먼저 딸 필요가 없다고 적는다. 다만 같은 FAQ는 AWS Certified AI ' +
+      'Practitioner, Solutions Architect – Associate, Machine Learning Engineer – Associate, Data Engineer – Associate를 먼저 따 ' +
+      '두면 도움이 될 수 있다고 덧붙인다. 교육 수강도 필수가 아니다(「Training is recommended as part of your certification preparation, ' +
+      'but it is not mandatory」). 실제로 적혀 있는 것은 권장 경험이다 — 프로덕션급 애플리케이션 구축 2년 이상, 일반 AI/ML 또는 데이터 엔지니어링 ' +
+      '경험, GenAI 솔루션 구현 실무 1년 이상. 권장 AWS 지식은 다섯이다 — 컴퓨팅·스토리지·네트워킹 서비스 경험, 보안 모범 사례와 ID 관리 이해, 배포와 ' +
+      'IaC 도구 경험, 모니터링·관측성 서비스 숙지, 비용 최적화 원칙 이해.',
+    subjects: [
+      {
+        name: 'Foundation Model Integration, Data Management, and Compliance (파운데이션 모델 통합, 데이터 관리 및 규정 준수)',
+        weight: '31%',
+        note:
+          '요구 분석과 GenAI 솔루션 설계(Well-Architected Generative AI Lens), FM 선택·구성과 교차 리전 추론·커스텀 모델 수명주기, FM에 넣을 ' +
+          '데이터의 검증·처리 파이프라인, 벡터 저장소 설계·구현과 동기화, 청킹·임베딩·하이브리드 검색·리랭커·쿼리 변환 같은 검색 메커니즘, 프롬프트 ' +
+          '엔지니어링 전략과 거버넌스(Bedrock Prompt Management·Prompt Flows)',
+      },
+      {
+        name: 'Implementation and Integration (구현 및 통합)',
+        weight: '26%',
+        note:
+          '에이전틱 AI 솔루션과 도구 통합(Strands Agents·AWS Agent Squad·MCP 서버), 모델 배포 전략(프로비저닝된 처리량·SageMaker AI 엔드포인트·모델 ' +
+          '캐스케이딩), 엔터프라이즈 통합 아키텍처(이벤트 기반 연동·ID 연동·CI/CD와 GenAI 게이트웨이), FM API 통합(동기·비동기·스트리밍·재시도·라우팅), ' +
+          '애플리케이션 통합 패턴과 개발 도구(Amplify·Amazon Q Developer)',
+      },
+      {
+        name: 'AI Safety, Security, and Governance (AI 안전, 보안 및 거버넌스)',
+        weight: '20%',
+        note:
+          '입력·출력 안전 제어(Bedrock Guardrails·그라운딩과 JSON Schema로 환각 억제·프롬프트 인젝션과 탈옥 탐지), 데이터 보안과 개인정보 보호(VPC ' +
+          '엔드포인트·Lake Formation·Macie·Comprehend PII 탐지), AI 거버넌스와 규정 준수(프로그래밍 방식 모델 카드·Glue 데이터 계보·CloudTrail 감사), ' +
+          '책임 있는 AI 원칙(투명성·공정성 평가·정책 준수)',
+      },
+      {
+        name: 'Operational Efficiency and Optimization for GenAI Applications (GenAI 애플리케이션을 위한 운영 효율성 및 최적화)',
+        weight: '12%',
+        note:
+          '비용 최적화와 리소스 효율(토큰 효율·질의 복잡도에 따른 계층형 FM 사용·프로비저닝된 처리량·시맨틱 캐싱과 프롬프트 캐싱), 애플리케이션 성능 ' +
+          '최적화(지연·검색 성능·처리량·temperature와 top-k/top-p), GenAI 모니터링 시스템(토큰 사용량·환각률·Bedrock Model Invocation Logs·도구 호출과 ' +
+          '벡터 저장소 운영·골든 데이터셋)',
+      },
+      {
+        name: 'Testing, Validation, and Troubleshooting (테스트, 검증 및 문제 해결)',
+        weight: '11%',
+        note:
+          'GenAI 평가 시스템(관련성·사실 정확도·일관성·유창성, Bedrock Model Evaluations, RAG·에이전트 평가, LLM-as-a-Judge, 회귀 테스트와 배포 ' +
+          '검증), GenAI 애플리케이션 문제 해결(컨텍스트 창 초과, API 통합 오류, 프롬프트·검색·프롬프트 유지보수 문제)',
+      },
+    ],
+    officialUrl: 'https://aws.amazon.com/certification/certified-generative-ai-developer-professional/',
+    verifiedAt: '2026-10-10',
+    notes:
+      '- 현행 버전은 AIP-C01이다. 베타 등록이 2025-11-18에 열렸고(베타는 85문항 / 205분) 공식 블로그가 2026-03-17에 표준판 등록 개시를 알리며 베타 ' +
+      '마지막 응시일을 2026-03-31로 적었다. 블로그는 표준판이 AWS 서비스 변경을 반영해 새로 고쳐졌다고 하며 그 예로 Amazon Bedrock AgentCore 추가를 ' +
+      '든다. 베타 합격자도 같은 자격을 받았고 유효기간은 3년이다(시험 정책의 Beta exams 절).\n' +
+      '- 시험 가이드(docs.aws.amazon.com의 웹 문서와 그 PDF)에는 판번호도 개정일도 없다 — PDF에는 「Copyright © 2026」만 있다. 한국어판 가이드가 같은 ' +
+      '주소의 ko_kr 경로에 있고 도메인·태스크 구성, 문항 수, 합격선이 영어판과 같다.\n' +
+      '- 한국어로 응시할 수 있다. \'ESL +30\'(비영어권 응시자의 시험 시간 30분 연장)은 영어로 칠 때만 붙는다. 번역 시험을 고른 사람은 시험 중에 영어 ' +
+      '문항을 토글해 볼 수 있다.\n' +
+      '- 같은 AI 계열의 AWS Certified Machine Learning – Specialty는 마지막 응시일이 2026-03-31이었다(공식 블로그). 그래서 AWS의 AI 기술 자격은 ' +
+      'AIF-C01(파운데이셔널) → MLA(어소시에이트) → 이 시험(프로페셔널) 세 등급이 남았고 이 시험이 맨 위다.\n' +
+      '- MLA와 갈리는 자리는 범위 밖 목록이다 — 이 시험은 모델 개발·훈련, 고급 ML 기법, 데이터 엔지니어링·특성 공학을 범위 밖으로 둔다. 파운데이션 ' +
+      '모델을 고르고 붙이고 지키고 재는 쪽이 이 시험이고 SageMaker로 모델을 학습하는 쪽은 MLA다. 다만 파인튜닝된 모델을 SageMaker AI로 배포하는 일, ' +
+      'LoRA·어댑터 같은 파라미터 효율적 적응 기법의 배포, 모델을 퇴역·교체하는 수명주기 관리는 Skill 1.2.4에 들어 있다.\n' +
+      '- 시험 범위 서비스 목록(In-Scope AWS Services)은 열세 범주다. Machine Learning 범주에 Amazon Bedrock·Bedrock AgentCore·Bedrock ' +
+      'Knowledge Bases·Bedrock Prompt Management·Bedrock Prompt Flows·Amazon Q Developer·Amazon Q Business·SageMaker AI 등이 있고 ' +
+      'Developer Tools 범주에 Kiro가 있다. Strands Agents와 AWS Agent Squad는 서비스 목록이 아니라 skill 문장(2.1.1·2.5.5)에 나온다.\n' +
+      '- 시험 문항은 잘 알려진 서비스를 공식 약칭으로 쓰고(예: Amazon SNS), 문항마다 쓸 수 있는 Help 기능에 약칭과 정식 이름 목록이 있다.\n' +
+      '- 공식 페이지끼리 어긋나는 자리가 셋이다 — ① 환율 반영 시점: 시험 정책 페이지와 FAQ의 환율 문답은 「at least annually in May」인데, ' +
+      '같은 FAQ의 응시료 문답은 「annually in April」이다. ② AWS 자격 목록 페이지는 Professional 범주를 「2+ years AWS experience required」라고 소개하지만 시험 정책의 Eligibility는 선수 ' +
+      '요건이 없다고 적는다 — 요건이 아니라 권장이다. ③ 한국어 자격 페이지의 「먼저 따면 좋은 자격」에는 AI Practitioner가 빠져 있다(영어 페이지는 ' +
+      '넷).\n' +
+      '- 준비 자료는 AWS Skill Builder의 Exam Prep Plan이다 — 공식 연습 문제 세트, Official Pretest, Official Practice Exam, AWS SimuLearn. ' +
+      '자격 페이지는 실습 환경에서 치르는 마이크로크리덴셜 넷(AWS Agentic AI Demonstrated 등)을 관련 자격으로 함께 건다.\n' +
+      '- 우리 글과 이을 때: 도메인 1(31%)이 벡터 저장소·청킹·임베딩·하이브리드 검색·프롬프트 거버넌스라 agents-rag가 가장 많이 걸리고, 도메인 4·5는 ' +
+      'llmops·eval 글이, 도메인 3은 guardrails 글이 받는다. 우리 글은 개념 설명이라 Bedrock·Step Functions 같은 AWS 구현 세부는 시험 노트가 맡는다.',
+    unknowns: [
+      '바우처·할인 코드로 결제한 시험을 기한 안에 취소했을 때 그 바우처가 되살아나는지 — 공식 페이지에 문장이 없다',
+      '한국에서 결제할 때 실제로 붙는 세액·부가세율 — 공식 요금표는 394,575 KRW라는 금액과 "Applicable taxes may apply"만 적고 ' +
+      '세율이나 최종 결제액은 밝히지 않는다',
+      '예약 마감 시한 — 시험 며칠 전까지 예약해야 하는지 자격 페이지·before-testing 정책·FAQ 어디에도 명시가 없다',
+      '한국어 시험의 온라인 감독(online proctored) 제공 여부 — 정책 페이지의 온라인 감독 언어 목록은 영어(24시간)·일본어·중남미 스페인어·중국 ' +
+      '본토 만다린뿐이고 한국어가 없다',
+      '한국 내 Pearson VUE 시험센터 위치·운영 일정 (예약 단계에서만 확인 가능)',
+      '도메인별 문항 수 — 가이드는 채점 문항 65개와 도메인 비중만 적고 도메인마다 몇 문항인지는 밝히지 않는다',
+      '시험 가이드의 판번호와 개정 발효일 — 웹 문서와 PDF 어디에도 없다',
+      '베타판과 표준판의 출제 범위 차이 전체 — 공식 블로그는 「including the addition of Amazon Bedrock AgentCore」만 예로 든다',
+      '합격률·응시자 통계 (AWS 비공개)',
+    ],
+    studyPath: [
+      {
+        subject: 'Foundation Model Integration, Data Management, and Compliance (파운데이션 모델 통합, 데이터 관리 및 규정 준수)',
+        items: [
+          { site: 'ailab', slug: 'model-selection-strategy' },
+          { site: 'ailab', slug: 'rag-chunking-strategies' },
+          { site: 'ailab', slug: 'rag-embedding-models' },
+          { site: 'ailab', slug: 'rag-hybrid-search-tuning' },
+          { site: 'ailab', slug: 'rag-query-rewriting' },
+          { site: 'ailab', slug: 'rag-freshness-updates' },
+          { site: 'ailab', slug: 'prompt-versioning' },
+        ],
+      },
+      {
+        subject: 'Implementation and Integration (구현 및 통합)',
+        items: [
+          { site: 'ailab', slug: 'ai-agents-and-mcp' },
+          { site: 'ailab', slug: 'agent-multi-agent-patterns' },
+          { site: 'ailab', slug: 'agent-human-in-the-loop' },
+          { site: 'ailab', slug: 'tool-schema-design' },
+          { site: 'ailab', slug: 'model-routing-cascade' },
+          { site: 'ailab', slug: 'llmops-fallback-strategies' },
+          { site: 'ailab', slug: 'serving-api-design' },
+        ],
+      },
+      {
+        subject: 'AI Safety, Security, and Governance (AI 안전, 보안 및 거버넌스)',
+        items: [
+          { site: 'ailab', slug: 'guardrails-input-filtering' },
+          { site: 'ailab', slug: 'guardrails-output-validation' },
+          { site: 'ailab', slug: 'prompt-injection-defense' },
+          { site: 'ailab', slug: 'guardrails-pii-redaction' },
+          { site: 'ailab', slug: 'structured-output-json-schema' },
+        ],
+      },
+      {
+        subject: 'Operational Efficiency and Optimization for GenAI Applications (GenAI 애플리케이션을 위한 운영 효율성 및 최적화)',
+        items: [
+          { site: 'ailab', slug: 'llmops-cost-tracking' },
+          { site: 'ailab', slug: 'context-prompt-caching' },
+          { site: 'ailab', slug: 'llmops-cache' },
+          { site: 'ailab', slug: 'rag-cost-latency-tuning' },
+          { site: 'ailab', slug: 'llmops-observability' },
+        ],
+      },
+      {
+        subject: 'Testing, Validation, and Troubleshooting (테스트, 검증 및 문제 해결)',
+        items: [
+          { site: 'ailab', slug: 'rag-evaluation' },
+          { site: 'ailab', slug: 'eval-golden-dataset' },
+          { site: 'ailab', slug: 'eval-regression-testing' },
+          { site: 'ailab', slug: 'agent-evaluation' },
+          { site: 'ailab', slug: 'eval-online-ab' },
+        ],
+      },
+    ],
+  },
+  {
     id: 'gcp-ml-engineer',
     nameKo: 'GCP ML Engineer',
     nameEn: 'Google Cloud Professional Machine Learning Engineer',

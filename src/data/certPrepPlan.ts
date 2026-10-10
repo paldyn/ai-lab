@@ -1428,6 +1428,194 @@ export const certPrepPlans: CertPrepPlan[] = [
     ],
   },
   {
+    certId: 'aws-genai-developer-professional',
+    mockExams: 6,
+    sourceUrl: 'https://docs.aws.amazon.com/aws-certification/latest/ai-professional-01/ai-professional-01.html',
+    basis: '공식 시험 가이드(docs.aws.amazon.com 웹 문서 — 판번호·개정일 표기가 없다)의 도메인 다섯(31/26/20/12/11%)과 그 아래 태스크 20개·skill 98개(28/25/15/16/14)로 쪼갰다. 다섯 도메인이 모두 전제하는 Bedrock 구성 요소와 시험 범위 서비스 지도 1편을 앞에 두고 도메인별 11·9·6·5·4편, 개념 36편이다 — 공통 1편을 뺀 35편으로 재면 31.4/25.7/17.1/14.3/11.4%다. 도메인 4가 비중보다 한 편 두꺼운 것은 skill이 16개로 도메인 3(15개)보다 많고 태스크 4.3 하나에 여섯이 몰려 한 편에 담기지 않아서다 — 4.3을 관측성(4.3.1~4.3.3)과 도구·벡터 저장소 운영·GenAI 고유 장애(4.3.4~4.3.6) 둘로 갈랐다. 도메인 3은 3.1(skill 다섯)을 콘텐츠 필터·환각 억제·심층 방어 세 편에, 3.2·3.3·3.4를 한 편씩 두었다. 도메인 2에서는 2.5의 skill 여섯을 흩었다 — 2.5.1(API Gateway 스트리밍·토큰 한도·타임아웃 재시도)은 FM API 호출 편에, 2.5.3(CRM·문서 처리·Bedrock Data Automation)은 레거시 연동 편에, 2.5.5(Strands Agents·AWS Agent Squad 오케스트레이션)는 2.1.1과 같은 도구라 멀티 에이전트 편에 붙이고, 남은 셋(2.5.2·2.5.4·2.5.6)을 개발 도구 편 하나로 묶었다. 98개 skill이 모두 한 편씩에 들어가고 두 편에 걸친 것은 없다. 75문항(채점 65)에 범위 서비스가 열세 범주라 모의고사는 6편으로 잡았다.',
+    topics: [
+      {
+        title: 'Bedrock 구성 요소와 시험 범위 서비스',
+        subject: '전 영역 공통 (In-Scope AWS Services)',
+        keywords: ['Amazon Bedrock과 Bedrock Knowledge Bases·Prompt Management·Prompt Flows', 'Amazon Bedrock AgentCore와 Bedrock Guardrails', 'Amazon SageMaker AI·JumpStart·Model Registry가 맡는 자리', 'Amazon Q Developer·Amazon Q Business·Kiro', 'Comprehend·Textract·Transcribe·Rekognition·Kendra·Lex', '서비스 목록 밖에서 skill 문장에 나오는 Strands Agents·AWS Agent Squad', '범위 밖 작업 — 모델 개발·훈련, 고급 ML 기법, 데이터·특성 공학', '시험 문항의 서비스 약칭과 Help 기능'],
+      },
+      {
+        title: '요구 분석과 GenAI 아키텍처 설계',
+        subject: 'Foundation Model Integration, Data Management, and Compliance (파운데이션 모델 통합, 데이터 관리 및 규정 준수)',
+        keywords: ['비즈니스 요구와 기술 제약에 맞춘 아키텍처 설계 — FM·통합 패턴·배포 전략', 'Amazon Bedrock으로 만드는 기술 개념 증명(PoC)', 'PoC로 실현 가능성·성능 특성·비즈니스 가치를 검증한 뒤 전면 배포로 넘어가는 판단', '여러 배포 시나리오에 쓰는 표준화된 기술 구성 요소', 'AWS Well-Architected Framework', 'AWS WA Tool의 Generative AI Lens'],
+      },
+      {
+        title: 'FM 선택과 공급자 전환·복원력',
+        subject: 'Foundation Model Integration, Data Management, and Compliance (파운데이션 모델 통합, 데이터 관리 및 규정 준수)',
+        keywords: ['성능 벤치마크·역량 분석·한계 평가로 FM 고르기', 'Lambda·API Gateway·AWS AppConfig로 코드 수정 없이 모델·공급자 바꾸기', 'Step Functions 서킷 브레이커 패턴', 'Amazon Bedrock 교차 리전 추론(Cross-Region Inference)', '리전 가용성이 제한된 모델과 교차 리전 모델 배포', '서비스 장애 때의 단계적 기능 저하(graceful degradation)'],
+      },
+      {
+        title: '커스텀 FM 배포와 모델 수명주기',
+        subject: 'Foundation Model Integration, Data Management, and Compliance (파운데이션 모델 통합, 데이터 관리 및 규정 준수)',
+        keywords: ['SageMaker AI로 도메인 특화 파인튜닝 모델 배포', 'LoRA와 어댑터 같은 파라미터 효율적 적응 기법의 배포', 'SageMaker Model Registry로 버전 관리와 커스텀 모델 배포', '모델을 갱신하는 자동 배포 파이프라인', '배포 실패 때의 롤백 전략', '모델을 퇴역시키고 교체하는 수명주기 관리'],
+      },
+      {
+        title: 'FM 입력 데이터 검증과 형식 맞추기',
+        subject: 'Foundation Model Integration, Data Management, and Compliance (파운데이션 모델 통합, 데이터 관리 및 규정 준수)',
+        keywords: ['AWS Glue Data Quality·SageMaker Data Wrangler·Lambda·CloudWatch 지표로 데이터 검증', '텍스트·이미지·오디오·표 데이터의 멀티모달 처리(Bedrock 멀티모달 모델·SageMaker Processing·Transcribe)', 'Amazon Bedrock API 요청의 JSON 형식', 'SageMaker AI 엔드포인트용 구조화 데이터 준비', '대화형 애플리케이션의 대화 형식', 'Bedrock으로 텍스트 재구성, Comprehend로 엔터티 추출, Lambda로 정규화'],
+      },
+      {
+        title: '벡터 저장소 구조와 메타데이터 설계',
+        subject: 'Foundation Model Integration, Data Management, and Compliance (파운데이션 모델 통합, 데이터 관리 및 규정 준수)',
+        keywords: ['Bedrock Knowledge Bases의 계층적 구성', 'OpenSearch Service의 Neural 플러그인과 Bedrock 연동', 'RDS와 S3 문서 저장소, DynamoDB에 둔 메타데이터와 임베딩', 'S3 객체 메타데이터(타임스탬프)·작성자 사용자 지정 속성·도메인 분류 태그', 'OpenSearch 샤딩 전략', '특화 도메인별 멀티 인덱스와 계층적 인덱싱'],
+      },
+      {
+        title: '외부 문서 연결과 벡터 저장소 동기화',
+        subject: 'Foundation Model Integration, Data Management, and Compliance (파운데이션 모델 통합, 데이터 관리 및 규정 준수)',
+        keywords: ['문서 관리 시스템·지식 기반·사내 위키를 잇는 통합 구성 요소', '증분 업데이트 메커니즘', '실시간 변경 감지 시스템', '자동 동기화 워크플로', '예약된 새로 고침 파이프라인', '벡터 저장소의 최신성과 정확성 유지'],
+      },
+      {
+        title: '청킹 방식과 임베딩 모델 고르기',
+        subject: 'Foundation Model Integration, Data Management, and Compliance (파운데이션 모델 통합, 데이터 관리 및 규정 준수)',
+        keywords: ['Amazon Bedrock의 청킹 기능', 'Lambda로 구현하는 고정 크기 청킹', '콘텐츠 구조에 따른 계층적 청킹', 'Amazon Titan 임베딩의 차원과 도메인 적합성', 'Bedrock 임베딩 모델의 성능 특성 평가', 'Lambda로 임베딩 일괄 생성'],
+      },
+      {
+        title: '벡터 검색·하이브리드 검색과 리랭커',
+        subject: 'Foundation Model Integration, Data Management, and Compliance (파운데이션 모델 통합, 데이터 관리 및 규정 준수)',
+        keywords: ['OpenSearch Service의 벡터 검색', 'Amazon Aurora의 pgvector 확장', 'Bedrock Knowledge Bases의 관리형 벡터 저장소', 'OpenSearch 시맨틱 검색', '키워드와 벡터를 합친 하이브리드 검색', 'Amazon Bedrock 리랭커 모델'],
+      },
+      {
+        title: '쿼리 확장·분해와 MCP 검색 연결',
+        subject: 'Foundation Model Integration, Data Management, and Compliance (파운데이션 모델 통합, 데이터 관리 및 규정 준수)',
+        keywords: ['Bedrock으로 쿼리 확장', 'Lambda로 쿼리 분해', 'Step Functions로 쿼리 변환', '벡터 검색용 함수 호출 인터페이스', '벡터 질의용 MCP 클라이언트', '검색 증강의 표준화된 API 패턴'],
+      },
+      {
+        title: '프롬프트 템플릿 거버넌스와 품질 보증',
+        subject: 'Foundation Model Integration, Data Management, and Compliance (파운데이션 모델 통합, 데이터 관리 및 규정 준수)',
+        keywords: ['Bedrock Prompt Management로 역할 정의 강제', 'Bedrock Guardrails로 책임 있는 AI 지침 강제와 응답 형식 템플릿', '파라미터화된 템플릿과 승인 워크플로', 'S3 템플릿 저장소·CloudTrail 사용 추적·CloudWatch Logs 접근 기록', 'Lambda로 기대 출력 검증, Step Functions로 엣지 케이스 테스트', 'CloudWatch로 프롬프트 회귀 테스트'],
+      },
+      {
+        title: '대화 맥락 유지와 Prompt Flows 체인',
+        subject: 'Foundation Model Integration, Data Management, and Compliance (파운데이션 모델 통합, 데이터 관리 및 규정 준수)',
+        keywords: ['Step Functions 되묻기(clarification) 워크플로', 'Comprehend 의도 인식과 DynamoDB 대화 이력 저장', '구조화된 입력 구성 요소와 출력 형식 명세', 'chain-of-thought 지시 패턴과 피드백 루프', 'Bedrock Prompt Flows의 순차 프롬프트 체인', '모델 응답에 따른 조건 분기와 재사용 가능한 프롬프트 구성 요소', '전처리·후처리 단계 통합'],
+      },
+      {
+        title: 'Strands Agents와 멀티 에이전트 조율',
+        subject: 'Implementation and Integration (구현 및 통합)',
+        keywords: ['메모리와 상태 관리를 갖춘 자율 시스템', 'Strands Agents와 AWS Agent Squad로 짜는 멀티 에이전트 시스템', '에이전트와 도구 사이의 MCP', '특화 FM 분담과 모델 앙상블의 사용자 지정 집계 로직', '모델 선택 프레임워크', 'Step Functions로 에이전트 설계 패턴 오케스트레이션과 Bedrock 프롬프트 체이닝'],
+      },
+      {
+        title: 'ReAct 추론과 에이전트 안전장치',
+        subject: 'Implementation and Integration (구현 및 통합)',
+        keywords: ['Step Functions로 구현하는 ReAct 패턴과 chain-of-thought 추론', 'Step Functions 중단 조건(stopping conditions)', 'Lambda 타임아웃 메커니즘', 'IAM 정책으로 자원 경계 강제', '실패를 막는 서킷 브레이커', 'Step Functions 검토·승인 프로세스와 API Gateway 피드백 수집', '사람 보강(human augmentation) 패턴'],
+      },
+      {
+        title: '도구 통합과 MCP 서버 구현',
+        subject: 'Implementation and Integration (구현 및 통합)',
+        keywords: ['Strands API로 사용자 지정 동작 구현', '표준화된 함수 정의', 'Lambda로 오류 처리와 파라미터 검증', 'Lambda로 만드는 무상태(stateless) MCP 서버', 'Amazon ECS로 복잡한 도구를 제공하는 MCP 서버', '일관된 접근 패턴을 위한 MCP 클라이언트 라이브러리'],
+      },
+      {
+        title: 'FM 배포 방식과 모델 캐스케이딩',
+        subject: 'Implementation and Integration (구현 및 통합)',
+        keywords: ['Lambda 온디맨드 호출', 'Amazon Bedrock 프로비저닝된 처리량 구성', 'SageMaker AI 엔드포인트로 짜는 하이브리드 구성', '메모리·GPU 사용률·토큰 처리 용량에 맞춘 컨테이너 배포 패턴', '전통 ML 배포와 다른 LLM의 모델 로딩 전략', '특정 작업용 소형 사전학습 모델과 API 기반 모델 캐스케이딩'],
+      },
+      {
+        title: '레거시 연동과 이벤트 기반 통합',
+        subject: 'Implementation and Integration (구현 및 통합)',
+        keywords: ['레거시 시스템과의 API 기반 통합', '느슨한 결합을 위한 이벤트 기반 아키텍처', '데이터 동기화 패턴', 'API Gateway 마이크로서비스 통합과 Lambda 웹훅 핸들러', 'Amazon EventBridge 이벤트 기반 통합', 'Lambda로 CRM 기능 보강, Step Functions 문서 처리, Bedrock Data Automation'],
+      },
+      {
+        title: '연합 인증·하이브리드 배포와 GenAI 게이트웨이',
+        subject: 'Implementation and Integration (구현 및 통합)',
+        keywords: ['FM 서비스와 기업 시스템 사이의 ID 연동(identity federation)', '모델·데이터 접근의 역할 기반 접근 제어와 최소 권한 API 접근', 'AWS Outposts 온프레미스 데이터 통합과 AWS Wavelength 엣지 배포', '클라우드와 온프레미스 사이의 보안 라우팅', 'CodePipeline·CodeBuild로 보안 스캔과 롤백을 갖춘 CI/CD', '중앙 추상화 계층과 관측·제어 장치를 둔 GenAI 게이트웨이'],
+      },
+      {
+        title: 'Bedrock 동기·비동기·스트리밍 호출',
+        subject: 'Implementation and Integration (구현 및 통합)',
+        keywords: ['Amazon Bedrock API의 동기 요청', '언어별 AWS SDK와 Amazon SQS로 비동기 처리', 'API Gateway 요청 검증', 'Bedrock 스트리밍 API로 응답을 점진적으로 전달', 'WebSocket·서버 전송 이벤트(SSE)와 청크 전송 인코딩', 'API Gateway에서 스트리밍 응답·토큰 한도·모델 타임아웃 재시도 다루기'],
+      },
+      {
+        title: '재시도·속도 제한과 모델 라우팅',
+        subject: 'Implementation and Integration (구현 및 통합)',
+        keywords: ['AWS SDK의 지수 백오프', 'API Gateway 속도 제한(rate limiting)', '단계적 기능 저하를 위한 폴백 메커니즘', 'AWS X-Ray로 서비스 경계를 넘는 관측', '정적 라우팅 구성과 Step Functions 콘텐츠 기반 동적 라우팅', '지표 기반 지능형 라우팅과 API Gateway 요청 변환'],
+      },
+      {
+        title: 'Amplify·Q Developer와 앱 문제 추적',
+        subject: 'Implementation and Integration (구현 및 통합)',
+        keywords: ['AWS Amplify 선언형 UI 컴포넌트', 'OpenAPI 명세로 하는 API 우선 개발', 'Bedrock Prompt Flows 노코드 워크플로 빌더', 'Amazon Q Developer로 코드 생성·리팩터링과 AI 구성 요소 테스트', 'CloudWatch Logs Insights로 프롬프트와 응답 분석', 'X-Ray로 FM API 호출 추적과 Q Developer의 GenAI 오류 패턴 인식'],
+      },
+      {
+        title: 'Guardrails 입력·출력 콘텐츠 필터',
+        subject: 'AI Safety, Security, and Governance (AI 안전, 보안 및 거버넌스)',
+        keywords: ['Bedrock Guardrails로 유해 입력 걸러내기', 'Step Functions와 Lambda로 짜는 사용자 지정 모더레이션 워크플로', '실시간 검증 메커니즘', 'Bedrock Guardrails로 응답 걸러내기', '콘텐츠 모더레이션·독성 탐지용 특화 FM 평가', '결정적 결과를 위한 text-to-SQL 변환'],
+      },
+      {
+        title: '그라운딩과 구조화 출력으로 환각 줄이기',
+        subject: 'AI Safety, Security, and Governance (AI 안전, 보안 및 거버넌스)',
+        keywords: ['Bedrock Knowledge Base로 응답 그라운딩과 사실 확인', '신뢰도 점수(confidence scoring)', '검증용 의미 유사도 검색', 'JSON Schema로 구조화된 출력 강제', '환각을 줄이는 정확도 검증 시스템의 구성'],
+      },
+      {
+        title: '심층 방어와 프롬프트 인젝션 탐지',
+        subject: 'AI Safety, Security, and Governance (AI 안전, 보안 및 거버넌스)',
+        keywords: ['Comprehend 전처리 필터', 'Bedrock 모델 기반 가드레일', 'Lambda 후처리 검증과 API Gateway 응답 필터링', '프롬프트 인젝션·탈옥 탐지 메커니즘', '입력 정제(sanitization)와 콘텐츠 필터·안전 분류기', '자동화된 적대적 테스트 워크플로'],
+      },
+      {
+        title: 'VPC 격리와 PII 탐지·마스킹',
+        subject: 'AI Safety, Security, and Governance (AI 안전, 보안 및 거버넌스)',
+        keywords: ['VPC 엔드포인트로 네트워크 격리', 'IAM 정책으로 안전한 데이터 접근 패턴 강제', 'AWS Lake Formation의 세분화된 데이터 접근과 CloudWatch 접근 모니터링', 'Comprehend와 Macie로 PII 탐지', 'Bedrock 기본 데이터 프라이버시 기능과 Guardrails 출력 필터', 'S3 수명주기 구성으로 데이터 보존 정책', '데이터 마스킹과 익명화 전략'],
+      },
+      {
+        title: '모델 카드·데이터 계보와 감사 체계',
+        subject: 'AI Safety, Security, and Governance (AI 안전, 보안 및 거버넌스)',
+        keywords: ['SageMaker AI로 만드는 프로그래밍 방식 모델 카드', 'AWS Glue 데이터 계보 자동 추적과 Glue Data Catalog 데이터 출처 등록', '메타데이터 태깅으로 출처 귀속(source attribution)', 'CloudWatch Logs 의사결정 로그와 CloudTrail 감사 로깅', '조직 정책·규제 요구·책임 있는 AI 원칙에 맞춘 거버넌스 프레임워크', '오용·드리프트·정책 위반 자동 탐지와 편향 드리프트 모니터링', '자동 경보와 조치(remediation) 워크플로','토큰 수준 편집(redaction)·응답 로깅·AI 출력 정책 필터'],
+      },
+      {
+        title: '투명성·공정성 평가와 정책 준수',
+        subject: 'AI Safety, Security, and Governance (AI 안전, 보안 및 거버넌스)',
+        keywords: ['사용자에게 보여 주는 추론 설명(reasoning display)', 'CloudWatch로 신뢰도 지표 수집과 불확실성 정량화', '출처 귀속을 위한 근거 제시와 Bedrock 에이전트 추적', 'CloudWatch의 사전 정의 공정성 지표', 'Prompt Management·Prompt Flows로 하는 체계적 A/B 테스트', 'LLM-as-a-judge로 자동 모델 평가', '정책 기반 Guardrails·FM 한계를 적은 모델 카드·Lambda 자동 준수 검사'],
+      },
+      {
+        title: '토큰 효율과 비용 대비 모델 선택',
+        subject: 'Operational Efficiency and Optimization for GenAI Applications (GenAI 애플리케이션을 위한 운영 효율성 및 최적화)',
+        keywords: ['토큰 추정과 추적', '컨텍스트 창 최적화와 컨텍스트 가지치기', '응답 크기 제어·응답 제한과 프롬프트 압축', '비용-역량 트레이드오프 평가', '질의 복잡도에 따른 계층형 FM 사용', '가격 대비 성능 비율 측정과 효율적 추론 패턴'],
+      },
+      {
+        title: '처리량·용량 계획과 캐싱 전략',
+        subject: 'Operational Efficiency and Optimization for GenAI Applications (GenAI 애플리케이션을 위한 운영 효율성 및 최적화)',
+        keywords: ['배칭 전략과 배치 추론', '토큰 처리 요구에 맞춘 용량 계획과 사용률 모니터링', 'GenAI 트래픽 패턴에 맞춘 오토 스케일링', '프로비저닝된 처리량 최적화와 동시 모델 호출 관리', '시맨틱 캐싱과 프롬프트 캐싱', '결과 지문(result fingerprinting)·엣지 캐싱·결정적 요청 해싱'],
+      },
+      {
+        title: '지연 단축과 추론 파라미터 조정',
+        subject: 'Operational Efficiency and Optimization for GenAI Applications (GenAI 애플리케이션을 위한 운영 효율성 및 최적화)',
+        keywords: ['예측 가능한 질의의 사전 계산', '지연 최적화된 Bedrock 모델과 병렬 요청', '응답 스트리밍과 성능 벤치마킹', '인덱스 최적화·쿼리 전처리·사용자 지정 점수를 쓴 하이브리드 검색', '요구에 맞는 temperature·top-k·top-p 선택과 A/B 테스트', '프롬프트-응답 패턴의 API 호출 프로파일링과 LLM 추론 지연 단축 기법'],
+      },
+      {
+        title: 'GenAI 관측성과 모델 호출 로그',
+        subject: 'Operational Efficiency and Optimization for GenAI Applications (GenAI 애플리케이션을 위한 운영 효율성 및 최적화)',
+        keywords: ['운영 지표·성능 추적·FM 상호작용 추적', '사용자 지정 대시보드의 비즈니스 영향 지표', 'CloudWatch로 토큰 사용량·프롬프트 효과·환각률·응답 품질 추적', '토큰 급증과 응답 드리프트의 이상 탐지', 'Amazon Bedrock Model Invocation Logs로 요청·응답 상세 분석', '비용 이상 탐지와 규정 준수 모니터링·포렌식 추적성·감사 로깅'],
+      },
+      {
+        title: '도구·벡터 저장소 운영과 장애 유형',
+        subject: 'Operational Efficiency and Optimization for GenAI Applications (GenAI 애플리케이션을 위한 운영 효율성 및 최적화)',
+        keywords: ['도구 호출 패턴 추적과 성능 지표 수집', '도구 호출 관측성과 멀티 에이전트 조율 추적', '이상 탐지용 사용량 기준선', '벡터 데이터베이스 성능 모니터링·자동 인덱스 최적화·데이터 품질 검증','골든 데이터셋으로 환각 탐지', '출력 비교(output diffing)로 응답 일관성 분석과 추론 경로 추적'],
+      },
+      {
+        title: '출력 품질 지표와 FM 비교 평가',
+        subject: 'Testing, Validation, and Troubleshooting (테스트, 검증 및 문제 해결)',
+        keywords: ['관련성·사실 정확도·일관성·유창성 지표', '전통 ML 평가를 넘는 FM 출력 평가 프레임워크', 'Amazon Bedrock Model Evaluations', 'FM의 A/B 테스트와 카나리 테스트', '여러 모델 비교 평가', '토큰 효율·지연 대비 품질·비즈니스 성과로 하는 비용-성능 분석'],
+      },
+      {
+        title: 'RAG·에이전트 평가와 LLM 판정자',
+        subject: 'Testing, Validation, and Troubleshooting (테스트, 검증 및 문제 해결)',
+        keywords: ['RAG 평가', 'LLM-as-a-Judge 기법의 자동 품질 평가', '사람 피드백 수집 인터페이스', '관련성 점수·컨텍스트 일치 확인·검색 지연 측정', '작업 완료율과 도구 사용 효과 평가', 'Amazon Bedrock Agent 평가와 다단계 워크플로의 추론 품질 평가'],
+      },
+      {
+        title: '피드백·회귀 테스트와 배포 검증',
+        subject: 'Testing, Validation, and Troubleshooting (테스트, 검증 및 문제 해결)',
+        keywords: ['피드백 인터페이스·출력 평점 시스템·주석(annotation) 워크플로', '지속 평가 워크플로와 모델 출력 회귀 테스트', '배포용 자동 품질 게이트', '시각화 도구·자동 보고·모델 비교 시각화', '합성 사용자 워크플로', '환각률·의미 드리프트의 AI 특화 출력 검증과 응답 일관성 자동 점검'],
+      },
+      {
+        title: '컨텍스트 초과·검색·프롬프트 문제 해결',
+        subject: 'Testing, Validation, and Troubleshooting (테스트, 검증 및 문제 해결)',
+        keywords: ['컨텍스트 창 초과 진단과 잘림(truncation) 오류 분석', '동적 청킹 전략과 프롬프트 설계 최적화', '오류 로깅·요청 검증·응답 분석으로 API 통합 문제 진단', '프롬프트 테스트 프레임워크와 버전 비교·체계적 개선', '임베딩 품질 진단·드리프트 모니터링·벡터화 문제 해결', 'CloudWatch Logs로 프롬프트 혼동 진단, X-Ray 프롬프트 관측 파이프라인, 스키마 검증으로 형식 불일치 탐지'],
+      },
+    ],
+  },
+  {
     certId: 'gcp-ml-engineer',
     mockExams: 5,
     sourceUrl: 'https://services.google.com/fh/files/misc/professional_machine_learning_engineer_exam_guide_english_new.pdf',
