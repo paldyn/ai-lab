@@ -3406,6 +3406,218 @@ export const certs: Cert[] = [
       },
     ],
   },
+  {
+    id: 'ai-300',
+    nameKo: 'Microsoft AI-300',
+    nameEn: 'Microsoft Certified: Machine Learning Operations Engineer Associate — Exam AI-300: Operationalizing Machine Learning and Generative AI Solutions',
+    issuer: 'Microsoft',
+    region: '해외',
+    status: '해외 벤더 자격',
+    level: '중급',
+    difficulty: 3.5,
+    difficultyBasis: '응시 요건은 없지만 영어로만 출제되고, Azure ML·Foundry 운영에 Bicep·GitHub Actions까지 걸칩니다.',
+    employment: 2.5,
+    employmentBasis: '해외 벤더 어소시에이트 자격이라 국내 제도상 우대가 없고, 2026년에 DP-100을 대신해 생긴 자격이라 국내 인지도가 아직 얕습니다.',
+    whatItMeasures:
+      'Azure에서 머신러닝 운영(MLOps)과 생성형 AI 운영(GenAIOps) 인프라를 세우고 굴리는 역량을 검증한다. 공식 설명은 "Demonstrate skills ' +
+      'setting up infrastructure for machine learning operations (MLOps) and generative AI operations (GenAIOps) ' +
+      'solutions on Azure, together referred to as AI operations (AIOps)"다. 두 플랫폼을 함께 본다 — Azure Machine Learning으로 ' +
+      '전통적 머신러닝 모델을 학습·최적화·배포·유지하는 일과, Microsoft Foundry로 생성형 AI 앱과 에이전트를 배포·평가·모니터링·최적화하는 일이다. ' +
+      '다루는 업무는 MLOps 인프라 설계·구현, 머신러닝 모델 수명 주기·운영, GenAIOps 인프라 설계·구현, 생성형 AI 품질 보증·관측성, 생성형 AI ' +
+      '시스템·모델 성능 최적화 다섯이다. 레벨은 Intermediate, 역할은 AI Engineer, 제품은 Azure Machine Learning과 Microsoft Foundry다.',
+    audience:
+      '데이터 과학 배경을 갖고 Azure에서 머신러닝 모델과 생성형 AI 앱을 운영 단계로 올리는 엔지니어. 공식 응시자 프로필은 Python 프로그래밍 경험과 ' +
+      'GitHub Actions·CLI를 쓰는 입문 수준의 DevOps 이해를 요구하고, Machine Learning·Foundry·GitHub Actions·Bicep과 Azure CLI 기반 ' +
+      'IaC 경험을 꼽는다. 데이터 과학자·DevOps 팀·이해관계자와 협업하는 역할로 적혀 있다. 2026년 6월에 은퇴한 DP-100(Azure Data Scientist ' +
+      'Associate)을 준비하던 사람이 옮겨 갈 자리이기도 하다.',
+    format:
+      '시험 시간은 120분이다. 감독(proctored) 시험이며 상호작용형(interactive) 구성 요소가 포함될 수 있다. 문항 수는 시험별로 공개하지 않고, ' +
+      '대부분의 Microsoft 인증 시험이 40~60문항이라고만 안내한다. 합격선은 700점 이상이다. 역할 기반 시험이라 시험 중 learn.microsoft.com ' +
+      '열람이 허용된다(Q&A·연습 평가·프로필 제외, 추가 시간은 없고 타이머는 계속 간다). 사전 신청 없이 비정기 휴식을 쓸 수 있으나 시험 시계는 멈추지 ' +
+      '않고 휴식 전에 본 문항으로는 돌아갈 수 없다. 대부분 문항은 GA 기능을 다루며 널리 쓰이는 프리뷰 기능이 나올 수 있다. **제공 언어는 영어 ' +
+      '하나다**("This exam is offered in the following languages: English"). 학습 가이드는 원하는 언어로 시험이 없으면 30분 추가 시간을 ' +
+      '신청할 수 있다고 적고, FAQ는 그 추가 시간이 사례별 승인이며 시험 전에 English as a Second Language 절차로 미리 신청해야 한다고 적는다. ' +
+      '시험 중 여는 Microsoft Learn도 시험과 같은 언어로만 제공된다. 연습 평가는 Microsoft Learn이 아니라 AI Skills Navigator에서 제공되며 ' +
+      '로그인이 필요하다. 시험 UI는 exam sandbox로 미리 체험할 수 있다.',
+    cadence:
+      '정해진 회차가 없다. 공식 페이지는 일정표 대신 Pearson VUE 예약 링크("Schedule through Pearson Vue")만 두고 응시자가 개별로 예약해 ' +
+      '대개 시험 센터와 온라인 감독 중에서 골라 치른다. Pearson VUE로 동시에 예약해 둘 수 있는 Microsoft 인증 시험은 최대 2개이고, 시험은 90일 이내 앞으로만 ' +
+      '예약할 수 있다. 등록 시 개인 MSA 계정 사용을 강하게 권장한다 — 조직(직장·학교) 계정으로 등록하면 조직을 떠날 때 응시 기록이 사라지고 복구되지 ' +
+      '않는다고 명시한다. 재응시는 첫 시도 실패 후 24시간이 지나면 가능하고, 그 다음부터는 시도 사이마다 14일을 기다려야 한다. 같은 시험은 첫 ' +
+      '응시일로부터 12개월 안에 다섯 번까지만 볼 수 있고, 다섯 번 모두 떨어지면 첫 응시일로부터 12개월이 지나야 다시 볼 수 있다. 합격한 시험은 ' +
+      '자격이 만료되기 전에는 다시 볼 수 없다.',
+    fee:
+      '공식 페이지는 "Price based on the country or region in which the exam is proctored."(응시 국가·지역에 따라 가격이 정해진다)라고 ' +
+      '적고, 같은 자리의 국가·지역 선택 상자에서 고른 나라의 금액을 보여 준다 — 확인한 날 미국은 "$165 USD*", 한국(목록 표기 "Korean")은 ' +
+      '"$99 USD*"였다. 공식 FAQ는 "Associate and Expert exams typically cost US$165 but are priced according to currency ' +
+      'values in specific countries and regions. Exam prices are subject to change. In some countries and regions, ' +
+      'additional taxes may apply."라고 적고, MOS 외 시험의 가격은 각 시험 페이지에서 확인하라고 안내한다. 재응시는 다시 결제하며, 재응시 1회를 ' +
+      '묶은 Exam Replay 상품과 학생 할인가(인도·중국 제외)가 따로 안내되어 있다. 갱신 평가는 무료다.',
+    refund: [
+      {
+        when: '시험 시작 24시간 이내 취소·일정 변경, 또는 예약해 두고 미응시',
+        rate: '불가',
+        note: '회사가 구매한 바우처로 접수했다면 바우처도 함께 소멸한다. 미응시 때는 회사에 미응시 수수료가 청구될 수 있다',
+      },
+      {
+        when: '응시한 뒤 불합격',
+        rate: '불가',
+        note: '재응시는 다시 결제한다',
+      },
+    ],
+    refundNote:
+      '시행처는 몰수 쪽만 못 박는다 — 「시험 시작 24시간 전까지 일정을 변경하거나 취소하지 않으면 응시료를 잃는다」이고, 기한 안에 취소했을 때 얼마를 ' +
+      '돌려주는지는 공식 페이지에 적혀 있지 않다. FAQ는 불합격과 놓친 예약에 환불하지 않는다고 적고, 학생 인증을 받기 전에 정가로 결제한 경우도 소급 ' +
+      '환불하지 않는다. 부정행위로 응시가 금지되거나 결과가 무효가 되면 응시료를 환불할 의무가 없다고 프로그램 약관 6조가 적는다.',
+    validity:
+      '1년. Microsoft 어소시에이트·엑스퍼트·스페셜티 자격증은 매년 만료된다("Microsoft associate, expert, and specialty certifications ' +
+      'expire annually"). 만료 전 6개월 자격 기간 안에 Microsoft Learn에서 무료 온라인 갱신 평가에 합격하면 만료일로부터 1년 연장되고' +
+      '("Once you pass, your certification will be extended one year from the expiration date."), 합격하는 즉시 프로필의 ' +
+      '만료일이 새로 바뀐다. 갱신 평가는 감독 없는(unproctored) 오픈북 방식이고 약 45분이며, 만료 전에 합격하기만 하면 응시 횟수 제한이 없다(실패하면 ' +
+      '바로 다시 볼 수 있고, 두 번째 시도 뒤부터는 시도 사이에 24시간 이상 기다린다). 갱신 FAQ가 갱신 평가는 해당 시험과 같은 언어로 제공된다고 적으므로 AI-300의 갱신 ' +
+      '평가도 영어다. 만료되면 시험에 다시 합격해야 한다.',
+    prerequisite:
+      '공식 페이지에 응시 자격 요건(선행 자격증·경력 조건)은 없고 권장 배경만 적혀 있다 — 데이터 과학 배경, Python 프로그래밍 경험, GitHub ' +
+      'Actions와 CLI를 쓰는 입문 수준의 DevOps 이해, 그리고 Machine Learning·Foundry·GitHub Actions·Bicep과 Azure CLI 기반 IaC에 ' +
+      '대한 지식과 경험. 준비 과정으로 4일짜리 강사 주도 과정 AI-300T00-A "Operationalize machine learning and generative AI ' +
+      'solutions"가 이 자격증과 연결되어 있고, 같은 내용을 자기 주도 학습 경로 둘(Operationalize machine learning models (MLOps) 5시간 ' +
+      '44분 · Operationalize generative AI applications (GenAIOps) 6시간 4분)로도 볼 수 있다.',
+    subjects: [
+      {
+        name: 'Design and implement an MLOps infrastructure (MLOps 인프라 설계·구현)',
+        weight: '15–20%',
+        note:
+          '세 개 하위 절로 나뉜다. ① Machine Learning 작업 영역의 리소스 — 작업 영역·데이터 저장소·컴퓨팅 대상 만들고 관리하기, 작업 영역의 ' +
+          'ID·접근 관리 구성. ② 작업 영역의 자산 — 데이터 자산·환경·구성 요소(component) 만들고 관리하기, 레지스트리로 작업 영역 간 자산 공유. ' +
+          '③ Machine Learning용 IaC — 보안 접근을 위한 GitHub 연동 구성, Bicep과 Azure CLI로 작업 영역·리소스 배포, GitHub Actions ' +
+          '워크플로로 리소스 프로비저닝 자동화, 작업 영역 네트워크 접근 제한, Git으로 머신러닝 프로젝트 소스 제어.',
+      },
+      {
+        name: 'Implement machine learning model lifecycle and operations (머신러닝 모델 수명 주기·운영 구현)',
+        weight: '25–30%',
+        note:
+          '네 개 하위 절로 나뉜다. ① 모델 학습 오케스트레이션 — MLflow 실험 추적 구성, 자동화된 머신러닝으로 최적 모델 탐색, 노트북으로 실험·탐색, ' +
+          '하이퍼파라미터 튜닝 자동화, 학습 스크립트 실행, 대규모·딥러닝 모델의 분산 학습 관리, 학습 파이프라인 구현, 작업 간 모델 성능 비교. ② 모델 ' +
+          '등록과 버전 관리 — 특징 검색 사양(feature retrieval specification)을 모델 아티팩트와 함께 패키징, MLflow 모델 등록, 책임 있는 AI ' +
+          '원칙으로 모델 평가, 모델 보관을 포함한 수명 주기 관리. ③ 프로덕션 배포 — 관리형 추론 옵션으로 실시간·배치 엔드포인트 배포, 엔드포인트 ' +
+          '테스트·문제 해결, 점진적 롤아웃과 안전한 롤백. ④ 프로덕션 모니터링·유지 — 데이터 드리프트 감지·분석, 배포된 모델의 성능 지표 모니터링, ' +
+          '임계값을 넘을 때 재학습·알림 트리거 구성.',
+      },
+      {
+        name: 'Design and implement a GenAIOps infrastructure (GenAIOps 인프라 설계·구현)',
+        weight: '20–25%',
+        note:
+          '세 개 하위 절로 나뉜다. ① Foundry 환경과 플랫폼 구성 — Foundry 리소스와 프로젝트 환경 만들고 구성하기, 관리 ID와 RBAC로 ID·접근 ' +
+          '관리, 네트워크 보안과 프라이빗 네트워킹 구성, Bicep 템플릿과 Azure CLI로 인프라 배포. ② 프로덕션용 기반 모델 배포·관리 — 서버리스 API ' +
+          '엔드포인트와 관리형 컴퓨팅으로 기반 모델 배포, 용도에 맞는 모델 선택, 모델 버전 관리와 프로덕션 배포 전략, 대량 워크로드용 프로비저닝된 ' +
+          '처리량 단위(PTU) 구성. ③ 소스 제어로 프롬프트 버전 관리 — 프롬프트 설계·작성, 프롬프트 변형을 만들어 성능 비교, Git 리포지토리로 ' +
+          '프롬프트 버전 관리.',
+      },
+      {
+        name: 'Implement generative AI quality assurance and observability (생성형 AI 품질 보증·관측성 구현)',
+        weight: '10–15%',
+        note:
+          '두 개 하위 절로 나뉜다. ① 생성형 AI 앱·에이전트의 평가·검증 구성 — 포괄적 모델 평가용 테스트 데이터셋과 데이터 매핑 만들기, ' +
+          '근거성(groundedness)·관련성·일관성·유창성 같은 AI 품질 지표 구현, 유해 콘텐츠 탐지를 위한 위험·안전 평가 구성, 기본 제공·사용자 정의 ' +
+          '평가 지표로 자동 평가 워크플로 구성. ② 생성형 AI 앱·에이전트의 관측성 — Foundry의 지속 모니터링 살피기, 지연 시간·처리량·응답 시간 같은 ' +
+          '성능 지표 모니터링, 토큰 소비·리소스 사용량 같은 비용 지표 추적·최적화, 프로덕션 문제 해결을 위한 상세 로깅·트레이싱·디버깅 구성.',
+      },
+      {
+        name: 'Optimize generative AI systems and model performance (생성형 AI 시스템·모델 성능 최적화)',
+        weight: '10–15%',
+        note:
+          '두 개 하위 절로 나뉜다. ① RAG 성능·정확도 최적화 — 유사도 임계값·청크 크기·검색 전략을 조정해 검색 성능 최적화, 도메인 특화 용도와 ' +
+          '정확도 개선을 위한 임베딩 모델 선택·파인튜닝, 시맨틱 검색과 키워드 검색을 결합한 하이브리드 검색 구현·최적화, 관련성 지표와 A/B 테스트 ' +
+          '프레임워크로 RAG 시스템 평가·개선. ② 고급 파인튜닝과 모델 커스터마이징 — 고급 파인튜닝 방법 설계·구현, 파인튜닝용 합성 데이터 ' +
+          '만들기·관리, 파인튜닝 모델 성능 모니터링·최적화, 개발부터 프로덕션 배포까지 파인튜닝 모델 관리.',
+      },
+    ],
+    officialUrl: 'https://learn.microsoft.com/en-us/credentials/certifications/operationalizing-machine-learning-and-generative-ai-solutions/',
+    verifiedAt: '2026-10-10',
+    notes:
+      '- 시험 예약·감독은 Pearson VUE가 맡는다. 시험 페이지 주소(exams/ai-300)는 자격 페이지로 넘어간다.\n' +
+      '- 이 자격증을 얻는 데 필요한 시험은 AI-300 하나다 — 시행처 발표 글이 "To earn this Certification, you need to pass Exam ' +
+      'AI-300"이라고 적는다.\n' +
+      '- DP-100(Azure Data Scientist Associate)을 대신하는 자격이다. 시행처 발표 글(2026-03-05 게시, 2026-05-12 갱신)이 "This ' +
+      'Certification replaces the Microsoft Certified: Azure Data Scientist Associate Certification (Exam DP-100), which ' +
+      'is retiring on June 1, 2026"이라고 적고, 은퇴 시험 목록도 DP-100의 은퇴일을 2026년 6월 1일로 적는다. 2026년 6월 자격 소식 글의 ' +
+      '은퇴 표도 DP-100 옆 권장 자격 칸에 AI-300을 적는다. DP-100 자격 페이지의 은퇴 경고가 거는 Microsoft Skills Hub 블로그 글의 은퇴 표도 ' +
+      '\'Replacement Certification\' 열에 Machine Learning Operations Engineer Associate (Exam AI-300)를 적는다.\n' +
+      '- 베타로 시작해 정식이 됐다. 발표 글은 AI-300을 "currently in beta"로 소개하며 2026년 5월 정식 출시를 예고했고, 2026년 6월 자격 소식 ' +
+      '글의 표가 AI-300을 "Generally available"로 적는다. 지금 자격 페이지 제목에는 (beta) 표기가 없다.\n' +
+      '- DP-100과 견주면 학습·평가는 남기고 자동화, IaC, CI/CD, 수명 주기 거버넌스, 관측성, 드리프트 감지, 비용 통제, 생성형 AI 운영 쪽을 크게 ' +
+      '늘렸다고 발표 글이 적는다.\n' +
+      '- 랩(lab) 문항이 실제로 나오는지는 공개되지 않지만, 시험 시간 120분은 시행처 시험 시간 표에서 \'랩이 포함될 수 있는 어소시에이트·엑스퍼트 ' +
+      '역할 기반 시험\' 칸의 값이다(좌석 시간 140분). Microsoft는 Azure 장애 등으로 랩을 언제든 뺄 수 있어 랩 포함 시험 목록을 공개하지 않는다고 ' +
+      '밝힌다.\n' +
+      '- 학습 가이드에는 스킬 기준일과 change log가 없다. 문서의 마지막 갱신일은 2026-03-05다.\n' +
+      '- 연계 강사 주도 과정 AI-300T00-A는 한국어를 포함한 12개 언어로 제공되지만 시험은 영어로만 본다.\n' +
+      '- AI-300 자격은 Agentic AI Business Solutions Architect Expert(AB-100)의 선수 어소시에이트 자격 목록에 들어 있다.',
+    unknowns: [
+      '시험 24시간 전 이전에 취소했을 때의 환불 비율 — 공식 페이지가 몰수만 적고 환급은 적지 않는다',
+      '원화 결제 금액과 한국에서 세금이 붙는지 — 자격 페이지가 한국 가격을 USD로만 보여 주고 FAQ는 \'일부 국가·지역에서 세금이 추가될 수 있다\'고만 ' +
+      '적는다',
+      'AI-300의 실제 문항 수 — Microsoft가 시험별 문항 수를 공개하지 않는다',
+      '랩 문항 포함 여부 — Microsoft가 랩 포함 시험 목록을 공개하지 않는다',
+      '한국어 등 영어 외 언어판 계획 — 공식 페이지에 언급이 없다',
+      '학습 가이드의 스킬 기준일 — 가이드에 날짜와 change log가 없다',
+      'DP-100 보유자에 대한 AI-300 이관·면제·할인 경로 유무',
+      'AI-300 갱신 평가가 열리는 시점 — 갱신 FAQ가 \'6개월 넘게 제공된\' 자격에 갱신 옵션이 있다고 적는데 AI-300의 정식 출시일이 공식 문서에 날짜로 ' +
+      '적혀 있지 않다',
+      '한국 내 시험 센터 위치·응시 가능 여부 등 국내 시행 세부 사항 — Microsoft 페이지가 아닌 Pearson VUE 소관',
+    ],
+    studyPath: [
+      {
+        subject: 'Design and implement an MLOps infrastructure (MLOps 인프라 설계·구현)',
+        items: [
+          { site: 'ailab', slug: 'mlops-overview' },
+          { site: 'ailab', slug: 'mlops-data-versioning' },
+          { site: 'ailab', slug: 'mlops-ci-cd' },
+        ],
+      },
+      {
+        subject: 'Implement machine learning model lifecycle and operations (머신러닝 모델 수명 주기·운영 구현)',
+        items: [
+          { site: 'ailab', slug: 'mlops-experiment-tracking' },
+          { site: 'ailab', slug: 'mlops-pipeline' },
+          { site: 'ailab', slug: 'mlops-model-registry' },
+          { site: 'ailab', slug: 'mlops-feature-store' },
+          { site: 'ailab', slug: 'ai-bias-fairness' },
+          { site: 'ailab', slug: 'mlops-monitoring' },
+        ],
+      },
+      {
+        subject: 'Design and implement a GenAIOps infrastructure (GenAIOps 인프라 설계·구현)',
+        items: [
+          { site: 'ailab', slug: 'llmops-overview' },
+          { site: 'ailab', slug: 'model-selection-strategy' },
+          { site: 'ailab', slug: 'llmops-prompt-management' },
+          { site: 'ailab', slug: 'prompt-versioning' },
+        ],
+      },
+      {
+        subject: 'Implement generative AI quality assurance and observability (생성형 AI 품질 보증·관측성 구현)',
+        items: [
+          { site: 'ailab', slug: 'eval-golden-dataset' },
+          { site: 'ailab', slug: 'llmops-eval-pipelines' },
+          { site: 'ailab', slug: 'llmops-observability' },
+          { site: 'ailab', slug: 'llmops-cost-tracking' },
+        ],
+      },
+      {
+        subject: 'Optimize generative AI systems and model performance (생성형 AI 시스템·모델 성능 최적화)',
+        items: [
+          { site: 'ailab', slug: 'rag-chunking-strategies' },
+          { site: 'ailab', slug: 'rag-hybrid-search-tuning' },
+          { site: 'ailab', slug: 'rag-embedding-models' },
+          { site: 'ailab', slug: 'eval-rag-metrics-deep' },
+          { site: 'ailab', slug: 'eval-online-ab' },
+          { site: 'ailab', slug: 'finetuning-data-synthesis' },
+          { site: 'ailab', slug: 'finetuning-evaluation' },
+        ],
+      },
+    ],
+  },
 ];
 
 const byId = new Map(certs.map((cert) => [cert.id, cert]));

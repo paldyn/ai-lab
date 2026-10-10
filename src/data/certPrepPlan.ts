@@ -2526,6 +2526,149 @@ export const certPrepPlans: CertPrepPlan[] = [
       },
     ],
   },
+  {
+    certId: 'ai-300',
+    mockExams: 5,
+    sourceUrl: 'https://learn.microsoft.com/en-us/credentials/certifications/resources/study-guides/ai-300',
+    basis: 'study guide(Skills measured)의 다섯 도메인·하위 절 열넷·불릿 쉰여덟을 노트 27편으로 쪼갰다. 도메인 순서가 곧 공부 순서라 그대로 두었다 — Azure Machine Learning 인프라를 세우고 그 위에서 모델을 학습·배포·모니터링한 뒤, 같은 운영 패턴을 Foundry로 옮겨 생성형 AI를 배포·평가·관측·최적화한다. 편수는 비중 밴드에 맞췄다 — 5·8·6·4·4편이 18.5/29.6/22.2/14.8/14.8%라 15–20 / 25–30 / 20–25 / 10–15 / 10–15% 안에 전부 든다. 편당 불릿은 둘 안팎이다. 불릿이 여덟인 「Orchestrate model training」은 노트북·MLflow 추적·작업 비교, 명령·스윕·AutoML 작업, 분산 학습·파이프라인 셋으로 갈랐고, 배포 절은 온라인 엔드포인트와 롤아웃·롤백을 한 편에, 배치 엔드포인트와 문제 해결을 다른 한 편에 두었다. 불릿이 하나뿐인 Git 프롬프트 버전 관리는 프롬프트 변경을 평가에 거는 흐름까지 붙여 한 편으로 세웠다. 가이드에 스킬 기준일과 change log가 없어(마지막 갱신 2026-03-05) 개편이 오면 과목 확인 단계에서 다시 대조한다.',
+    topics: [
+      {
+        title: 'Azure ML 작업 영역과 데이터 저장소',
+        subject: 'Design and implement an MLOps infrastructure (MLOps 인프라 설계·구현)',
+        keywords: ['작업 영역 만들기와 함께 붙는 리소스(Storage·Key Vault·Container Registry·Application Insights)', '데이터 저장소(datastore) 종류와 등록(Blob·ADLS Gen2·Azure Files)', '자격 증명 기반 접근과 ID 기반 접근', 'Azure CLI ml 확장과 Python SDK v2로 작업 영역 관리', '기본 데이터 저장소와 작업 영역 설정'],
+      },
+      {
+        title: 'Azure ML 컴퓨팅 대상과 접근 권한',
+        subject: 'Design and implement an MLOps infrastructure (MLOps 인프라 설계·구현)',
+        keywords: ['컴퓨팅 인스턴스와 컴퓨팅 클러스터', '서버리스 컴퓨팅과 연결된 Kubernetes 컴퓨팅', '클러스터 최소·최대 노드와 유휴 시 축소', '작업 영역 RBAC 기본 제공 역할 배정', '관리 ID로 저장소·레지스트리에 접근하기'],
+      },
+      {
+        title: '데이터 자산·환경·구성 요소와 레지스트리',
+        subject: 'Design and implement an MLOps infrastructure (MLOps 인프라 설계·구현)',
+        keywords: ['데이터 자산 유형(uri_file·uri_folder·mltable)과 버전', '큐레이팅된 환경과 사용자 지정 환경(conda 사양·Docker 이미지)', '구성 요소(component) YAML 정의와 입출력', '레지스트리로 작업 영역 간 모델·환경·구성 요소 공유', '자산 버전과 레이블 관리'],
+      },
+      {
+        title: 'Bicep·Azure CLI 배포와 네트워크 제한',
+        subject: 'Design and implement an MLOps infrastructure (MLOps 인프라 설계·구현)',
+        keywords: ['Bicep 템플릿으로 작업 영역과 종속 리소스 배포', 'Azure CLI로 리소스 만들기와 매개 변수화', '관리형 가상 네트워크 격리 모드', '프라이빗 엔드포인트와 공용 네트워크 접근 차단', '환경별(개발·테스트·운영) 작업 영역 분리'],
+      },
+      {
+        title: 'GitHub Actions 연동과 Git 소스 제어',
+        subject: 'Design and implement an MLOps infrastructure (MLOps 인프라 설계·구현)',
+        keywords: ['GitHub와 Machine Learning의 보안 연동(OIDC 페더레이션 자격 증명·서비스 주체)', 'GitHub Actions 워크플로로 리소스 프로비저닝 자동화', '워크플로 비밀과 환경 보호 규칙', 'Git으로 머신러닝 프로젝트 소스 제어(브랜치·풀 요청)', '컴퓨팅 인스턴스에서 Git 리포지토리 다루기'],
+      },
+      {
+        title: '노트북 실험과 MLflow 추적',
+        subject: 'Implement machine learning model lifecycle and operations (머신러닝 모델 수명 주기·운영 구현)',
+        keywords: ['노트북으로 실험·탐색하기', 'MLflow 추적 URI와 자동 로깅(autolog)', '매개 변수·지표·아티팩트 기록', '실험과 실행(run)의 구조', '작업(job) 간 모델 성능 비교'],
+      },
+      {
+        title: '명령·스윕·AutoML 작업 실행',
+        subject: 'Implement machine learning model lifecycle and operations (머신러닝 모델 수명 주기·운영 구현)',
+        keywords: ['명령 작업(command job)으로 학습 스크립트 실행', '스윕 작업으로 하이퍼파라미터 튜닝 자동화(랜덤·그리드·베이지안 샘플링)', '조기 종료 정책', '자동화된 머신러닝으로 최적 모델 탐색(작업 유형·기본 지표)', 'AutoML 결과에서 최상 모델 고르기'],
+      },
+      {
+        title: '분산 학습과 학습 파이프라인',
+        subject: 'Implement machine learning model lifecycle and operations (머신러닝 모델 수명 주기·운영 구현)',
+        keywords: ['대규모·딥러닝 모델의 분산 학습(PyTorch·DeepSpeed)', '인스턴스 수와 인스턴스당 프로세스 수', 'GPU 클러스터 구성', '구성 요소로 학습 파이프라인 만들기', '파이프라인 일정 예약과 재사용'],
+      },
+      {
+        title: 'MLflow 모델 등록과 모델 보관',
+        subject: 'Implement machine learning model lifecycle and operations (머신러닝 모델 수명 주기·운영 구현)',
+        keywords: ['MLflow 모델 등록(MLmodel 파일·시그니처)', '모델 아티팩트에 특징 검색 사양(feature retrieval specification) 패키징', '모델 버전과 태그', '모델 보관(archive)을 포함한 수명 주기 관리', '등록된 모델의 계보 추적'],
+      },
+      {
+        title: '책임 있는 AI 대시보드로 모델 평가',
+        subject: 'Implement machine learning model lifecycle and operations (머신러닝 모델 수명 주기·운영 구현)',
+        keywords: ['책임 있는 AI 원칙에 따른 모델 평가', '오류 분석', '모델 개요와 공정성 평가', '해석 가능성(특징 중요도)', '반사실(what-if)·인과 분석', '책임 있는 AI 스코어카드'],
+      },
+      {
+        title: '관리형 온라인 엔드포인트와 롤아웃',
+        subject: 'Implement machine learning model lifecycle and operations (머신러닝 모델 수명 주기·운영 구현)',
+        keywords: ['실시간(온라인) 엔드포인트와 배포', '관리형 추론 옵션과 인스턴스 유형', '블루-그린 트래픽 분할과 점진적 롤아웃', '미러링 트래픽으로 새 배포 검증', '안전한 롤백'],
+      },
+      {
+        title: '배치 엔드포인트와 엔드포인트 문제 해결',
+        subject: 'Implement machine learning model lifecycle and operations (머신러닝 모델 수명 주기·운영 구현)',
+        keywords: ['배치 엔드포인트와 모델 배포', '미니 배치·출력 설정과 작업 호출', '엔드포인트 테스트(호출·로컬 엔드포인트)', '배포 로그와 컨테이너 로그로 문제 해결', '흔한 배포 오류와 대처'],
+      },
+      {
+        title: '데이터 드리프트와 재학습 트리거',
+        subject: 'Implement machine learning model lifecycle and operations (머신러닝 모델 수명 주기·운영 구현)',
+        keywords: ['데이터 드리프트 감지와 분석', '프로덕션에 배포된 모델의 성능 지표 모니터링', '모델 모니터링 신호와 참조 데이터', '임계값을 넘을 때 알림 구성', '재학습 트리거 구성'],
+      },
+      {
+        title: 'Foundry 리소스·프로젝트와 IaC 배포',
+        subject: 'Design and implement a GenAIOps infrastructure (GenAIOps 인프라 설계·구현)',
+        keywords: ['Foundry 리소스 만들고 구성하기', '프로젝트 환경 구성(개발·운영 분리)', 'Bicep 템플릿으로 인프라 배포', 'Azure CLI로 Foundry 리소스 관리', '연결(connection)과 종속 리소스'],
+      },
+      {
+        title: 'Foundry 관리 ID·RBAC과 네트워크 보안',
+        subject: 'Design and implement a GenAIOps infrastructure (GenAIOps 인프라 설계·구현)',
+        keywords: ['관리 ID 구성(시스템 할당·사용자 할당)', 'RBAC 역할 배정과 최소 권한', '네트워크 보안과 프라이빗 네트워킹 구성', '프라이빗 엔드포인트와 공용 접근 차단', '키 없는 인증'],
+      },
+      {
+        title: '기반 모델 선택과 서버리스·관리형 배포',
+        subject: 'Design and implement a GenAIOps infrastructure (GenAIOps 인프라 설계·구현)',
+        keywords: ['용도별 적절한 모델 선택', '모델 카탈로그에서 후보 비교하기', '서버리스 API 엔드포인트로 기반 모델 배포', '관리형 컴퓨팅으로 기반 모델 배포', '배포 방식별 비용·운영 차이'],
+      },
+      {
+        title: '모델 버전 전략과 PTU 처리량 구성',
+        subject: 'Design and implement a GenAIOps infrastructure (GenAIOps 인프라 설계·구현)',
+        keywords: ['모델 버전 관리와 업그레이드 정책', '프로덕션 배포 전략', '대량 워크로드용 프로비저닝된 처리량 단위(PTU) 구성', '표준 배포와 프로비저닝 배포 비교', 'PTU 사용률과 용량 계획'],
+      },
+      {
+        title: '프롬프트 설계와 변형 성능 비교',
+        subject: 'Design and implement a GenAIOps infrastructure (GenAIOps 인프라 설계·구현)',
+        keywords: ['프롬프트 설계와 작성', '시스템 메시지와 출력 형식 지정', '프롬프트 변형(variant) 만들기', '변형 간 성능 비교와 평가 기준', '비교 결과로 프롬프트 고르기'],
+      },
+      {
+        title: 'Git으로 프롬프트 버전 관리하기',
+        subject: 'Design and implement a GenAIOps infrastructure (GenAIOps 인프라 설계·구현)',
+        keywords: ['Git 리포지토리로 프롬프트 버전 관리', '프롬프트를 코드와 분리한 파일로 두기', '풀 요청 리뷰와 변경 이력', '프롬프트 변경 시 자동 평가 연결', '태그·릴리스로 배포 버전 고정'],
+      },
+      {
+        title: '평가 데이터셋과 AI 품질 지표',
+        subject: 'Implement generative AI quality assurance and observability (생성형 AI 품질 보증·관측성 구현)',
+        keywords: ['포괄적 모델 평가용 테스트 데이터셋 만들기', '데이터 매핑(열 매핑)', '근거성(groundedness)·관련성·일관성·유창성 지표', '지표 점수 해석과 통과 기준', 'AI 지원 평가자와 판정 모델'],
+      },
+      {
+        title: '위험·안전 평가와 자동 평가 흐름',
+        subject: 'Implement generative AI quality assurance and observability (생성형 AI 품질 보증·관측성 구현)',
+        keywords: ['유해 콘텐츠 탐지를 위한 위험·안전 평가', '위험 범주(증오·불공정, 성적, 폭력, 자해 등)', '기본 제공 지표와 사용자 정의 지표', '자동 평가 워크플로 구성', 'CI 파이프라인에 평가 넣기'],
+      },
+      {
+        title: 'Foundry 지속 모니터링과 성능 지표',
+        subject: 'Implement generative AI quality assurance and observability (생성형 AI 품질 보증·관측성 구현)',
+        keywords: ['Foundry의 지속 모니터링(continuous monitoring)', '지연 시간·처리량·응답 시간 모니터링', 'Application Insights 연결', '대시보드와 경고', '앱과 에이전트의 운영 지표'],
+      },
+      {
+        title: '토큰 비용 추적과 트레이싱 디버깅',
+        subject: 'Implement generative AI quality assurance and observability (생성형 AI 품질 보증·관측성 구현)',
+        keywords: ['토큰 소비·리소스 사용량 같은 비용 지표 추적과 최적화', '상세 로깅 구성', '트레이싱(OpenTelemetry)으로 요청 따라가기', '프로덕션 문제 해결과 디버깅', '에이전트 실행 단계 추적'],
+      },
+      {
+        title: '청크·유사도 임계값과 하이브리드 검색',
+        subject: 'Optimize generative AI systems and model performance (생성형 AI 시스템·모델 성능 최적화)',
+        keywords: ['유사도 임계값 조정', '청크 크기 조정', '검색 전략 선택(top-k 등)', '시맨틱 검색과 키워드 검색을 결합한 하이브리드 검색', '순위 융합과 재순위화'],
+      },
+      {
+        title: '임베딩 모델 튜닝과 RAG A/B 평가',
+        subject: 'Optimize generative AI systems and model performance (생성형 AI 시스템·모델 성능 최적화)',
+        keywords: ['도메인 특화 임베딩 모델 선택', '임베딩 모델 파인튜닝으로 정확도 개선', '관련성 지표로 RAG 성능 평가', 'A/B 테스트 프레임워크', '평가 결과로 개선 반복'],
+      },
+      {
+        title: '고급 파인튜닝 기법과 합성 데이터',
+        subject: 'Optimize generative AI systems and model performance (생성형 AI 시스템·모델 성능 최적화)',
+        keywords: ['고급 파인튜닝 방법 설계·구현', '지도 파인튜닝(SFT)·선호 최적화(DPO)·강화 파인튜닝(RFT) 구분', '파인튜닝용 합성 데이터 만들기·관리', '학습 데이터 형식과 검증 데이터', '하이퍼파라미터 설정'],
+      },
+      {
+        title: '파인튜닝 모델 모니터링과 운영 배포',
+        subject: 'Optimize generative AI systems and model performance (생성형 AI 시스템·모델 성능 최적화)',
+        keywords: ['파인튜닝 모델 성능 모니터링·최적화', '학습·검증 손실과 체크포인트', '개발부터 프로덕션 배포까지 파인튜닝 모델 관리', '파인튜닝 모델 배포와 버전', '기반 모델 대비 평가'],
+      },
+    ],
+  },
 ];
 
 /*
