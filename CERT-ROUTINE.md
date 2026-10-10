@@ -293,6 +293,7 @@ AI·데이터 자격이 있는지** 본다. 다섯 곳이다.
 | 자격증 | 공식 페이지 | 정해 둔 날 | 지금 상태 |
 | --- | --- | --- | --- |
 | AWS Certified AI Business Strategist | `aws.amazon.com/certification/certified-ai-business-strategist/` | 2026-10-06 | 베타(85문항 · 170분 · 베타 50 USD, 정식 100 USD · 영어·일본어) |
+| Google Cloud Professional Agentic Architect | `cloud.google.com/learn/certification/agentic-architect/` | 2026-10-10 | 베타 접수 마감, 정식 접수 11월 2일 시작(베타 약 80문항 · 3시간 · 베타 120 USD, 정식 200 USD · 영어 — 정식은 2시간, 문항 수·언어는 공식 페이지에 없음. 객관식 합격 뒤 실습 랩까지 붙어야 취득) |
 
 **정식 출시를 확인한 주에는 `certs.ts`에 혼자 넣지 말고 보고에서 사람에게 알린다.**
 자격증을 하나 더하면 `certPrepPlan.ts`에 그 시험의 계획(주제 15편 이상, 과목 × 3 이상)도
