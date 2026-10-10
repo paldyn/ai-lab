@@ -144,6 +144,54 @@ describe('자격증 시험 노트', () => {
   });
 
   /*
+    **출제 빈도를 단정하지 않습니다.** 기출을 옮기지 않으니 「자주 나온다」·「단골」을
+    받칠 근거가 없습니다. 2026-10-10에 열세 폴더에서 이런 문장 삼백여 곳을 걷어냈습니다 —
+    루틴 지시서가 「출제 경향은 절의 마지막 문단에 녹인다」고만 적어 두어 빈도 단정이
+    그 자리를 채웠습니다. 시행처 문서로 확인되는 것(문항 수·배점·영역 비중·예시 문항)은
+    빈도가 아니라 통과합니다.
+
+    잡는 꼴은 시험 맥락이 분명한 것만입니다. 「cp949가 자주 나옵니다」나 「매번 다른 답이
+    나옵니다」는 데이터·모델 이야기라 걸리면 안 되므로 「나온다」만으로는 잡지 않습니다.
+  */
+  it('출제 빈도를 단정하지 않는다', () => {
+    const FREQUENCY =
+      /단골|빈출|출제 빈도|(문항|문제|출제|시험)[^.\n]{0,20}(자주|잘 나오지|매번|매회|빈번)|(자주|매번|매회|빈번하게|가장 많이)[^.\n]{0,12}(출제|묻습니다|묻는다|물어|나오는 문항)/;
+    const flagged = notes.flatMap((note) =>
+      note.content
+        .replace(/```[\s\S]*?```/g, '')
+        .split('\n')
+        .flatMap((line, index) => {
+          const hit = FREQUENCY.exec(line);
+          return hit ? [`${note.certId}/${note.file}:${index + 1} ${hit[0]}`] : [];
+        }),
+    );
+    expect(flagged).toEqual([]);
+  });
+
+  /*
+    개념 노트(01~79)의 뼈대는 **절 4~7, 절마다 소절 2~4**입니다(CERT-PREP-ROUTINE.md
+    STEP 3). 마지막 「연습 문제」 절은 소절 없이 서므로 셈에서 뺍니다. 규칙(2026-09-07)
+    전에 쓴 노트 34편이 절만 늘어놓은 평평한 목차로 남아 있었고 아무 검사도 그걸
+    못 봤습니다(2026-10-10에 맞췄다). 총정리(80~89)와 모의고사(90~)는 꼴이 달라 뺍니다.
+  */
+  it('개념 노트의 뼈대가 절 4~7, 절마다 소절 2~4다', () => {
+    const flagged = notes
+      .filter((note) => note.order >= 1 && note.order <= 79)
+      .flatMap((note) => {
+        const body = note.content.replace(/```[\s\S]*?```/g, '');
+        const sections = body
+          .split(/^## /m)
+          .slice(1)
+          .filter((section) => !section.startsWith('연습 문제'));
+        const subsections = sections.map((section) => (section.match(/^### /gm) ?? []).length);
+        const ok =
+          sections.length >= 4 && sections.length <= 7 && subsections.every((count) => count >= 2 && count <= 4);
+        return ok ? [] : [`${note.certId}/${note.file}: 절 ${sections.length} · 소절 ${subsections.join(',')}`];
+      });
+    expect(flagged).toEqual([]);
+  });
+
+  /*
     문단 안의 홑 줄바꿈은 공백이 됩니다 — 객관식 보기를 역슬래시 없이 줄만 나눠 적으면
     네 보기가 한 줄로 이어 붙습니다. 원고에서는 네 줄로 보여 눈으로는 안 잡힙니다.
   */
