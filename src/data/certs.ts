@@ -3120,10 +3120,11 @@ export const certs: Cert[] = [
       '다시 예약할 수 있다. 그리고 시험은 90일 이내 앞으로만 예약할 수 있다. 응시 방식은 시험 센터와 온라인 감독(OnVUE) 중에서 고른다. AI-901 ' +
       '페이지의 사용 중지(retirement) 날짜는 "없음"이다.',
     fee:
-      '공식 페이지가 금액을 싣지 않는다. "시험이 감독되는 국가 또는 지역에 따라 가격이 결정된다"고만 적고, 각주로 "판촉 제품이나 Microsoft ' +
-      'Certified Trainer·Microsoft 파트너 네트워크 회원 할인가는 반영되지 않으며, 가격은 통지 없이 변경될 수 있고 세금은 포함되지 않는다. ' +
-      '등록에 앞서 시험 공급 기업에 정확한 가격을 확인하라"고 안내한다. 실제 금액은 Pearson VUE 등록 단계에서 확인해야 한다. 재응시 비용을 덜어 주는 ' +
-      'Exam Replay 상품이 별도로 안내되어 있다.',
+      '공식 페이지는 "Price based on the country or region in which the exam is proctored."(응시 국가·지역에 따라 가격이 정해진다)라고 ' +
+      '적고, 같은 자리의 국가·지역 선택 상자에서 고른 나라의 금액을 보여 준다 — 확인한 날 미국은 "$99 USD*", 한국(목록 표기 "Korean")은 ' +
+      '"$59 USD*"였다. 별표 각주는 "판촉가나 Microsoft Certified Trainer·Microsoft 파트너 네트워크 회원 할인가는 반영되지 않으며, 가격은 ' +
+      '통지 없이 변경될 수 있고 세금은 포함되지 않는다. 등록에 앞서 시험 공급 기업에 정확한 가격을 확인하라"고 안내한다. 재응시는 다시 결제하며, ' +
+      '재응시 1회를 묶은 Exam Replay 상품과 학생 할인가(인도·중국 제외)가 따로 안내되어 있다.',
     refund: [
       {
         when: '시험 시작 24시간 이내 취소·일정 변경, 또는 예약해 두고 미응시',
@@ -3194,8 +3195,8 @@ export const certs: Cert[] = [
       'Pearson VUE 케이스가 열린 경우에만 신청할 수 있다.',
     unknowns: [
       '시험 24시간 전 이전에 취소했을 때의 환불 비율 — 공식 페이지가 몰수만 적고 환급은 적지 않는다',
-      '응시료 실제 금액 (USD 및 KRW) — 공식 페이지가 \'국가·지역에 따라 결정된다\'고만 적고 숫자를 싣지 않으며, learn.microsoft.com ' +
-      '카탈로그 API에도 price 필드가 없다. Pearson VUE 등록 화면에서만 확인 가능',
+      '원화 결제 금액과 한국에서 세금이 붙는지 — 시험 페이지가 한국 가격을 USD로만 보여 주고 별표 각주는 \'세금은 포함되지 않는다\'고만 ' +
+      '적는다',
       'AI-901의 정확한 문항 수 — Fundamentals 공통 안내(\'대부분 40~60문항\')만 있고 이 시험 개별 값은 비공개',
       '출제 문항 유형의 구성 비율 — Microsoft가 시험 보안을 이유로 사전 공개하지 않음',
       '한국어판 출제 범위가 2026-04-15 기준으로 갱신 완료되었는지 여부와 그 정확한 날짜 — \'영어판 갱신 약 8주 후\'라는 일반 안내만 있음',
@@ -3260,10 +3261,13 @@ export const certs: Cert[] = [
       '자격이 만료되기 전에는 다시 볼 수 없다. 자격증 자체는 매년 갱신 대상이며 갱신 평가는 6개월 자격 기간 안에 아무 때나 Microsoft Learn에서 볼 수 ' +
       '있다.',
     fee:
-      '공식 페이지에 금액이 적혀 있지 않다. "Price based on the country or region in which the exam is ' +
-      'proctored."(응시 국가·지역에 따라 가격이 정해진다)라고만 밝히고, 실제 금액은 Pearson VUE 예약 단계에서 확인된다. 갱신 평가는 무료다 — ' +
-      '"Renewals are free … There\'s no cost to renew your certification". 별도로 재응시 바우처 상품(Exam ' +
-      'Replay)을 안내한다.',
+      '공식 페이지는 "Price based on the country or region in which the exam is proctored."(응시 국가·지역에 따라 가격이 정해진다)라고 ' +
+      '적고, 같은 자리의 국가·지역 선택 상자에서 고른 나라의 금액을 보여 준다 — 확인한 날 미국은 "$165 USD*", 한국(목록 표기 "Korean")은 ' +
+      '"$99 USD*"였다. 공식 FAQ는 "Associate and Expert exams typically cost US$165 but are priced according to currency ' +
+      'values in specific countries and regions. Exam prices are subject to change. In some countries and regions, ' +
+      'additional taxes may apply."라고 적고, MOS 외 시험의 가격은 각 시험 페이지에서 확인하라고 안내한다. 재응시는 다시 결제하며, 재응시 1회를 ' +
+      '묶은 Exam Replay 상품과 학생 할인가(인도·중국 제외)가 따로 안내되어 있다. 갱신 평가는 무료다 — "Renewals are free … There\'s no ' +
+      'cost to renew your certification".',
     refund: [
       {
         when: '시험 시작 24시간 이내 취소·일정 변경, 또는 예약해 두고 미응시',
@@ -3367,7 +3371,8 @@ export const certs: Cert[] = [
       '아직 없는 첫 판이라 글에 기준일을 함께 적는 편이 안전하다.',
     unknowns: [
       '시험 24시간 전 이전에 취소했을 때의 환불 비율 — 공식 페이지가 몰수만 적고 환급은 적지 않는다',
-      '응시료 실제 금액 (USD·KRW) — 공식 페이지가 \'응시 국가·지역에 따라 정해진다\'고만 적고 숫자를 두지 않는다',
+      '원화 결제 금액과 한국에서 세금이 붙는지 — 자격 페이지가 한국 가격을 USD로만 보여 주고 FAQ는 \'일부 국가·지역에서 세금이 추가될 수 있다\'고만 ' +
+      '적는다',
       'AI-103의 실제 문항 수 — Microsoft가 시험별 문항 수를 공개하지 않는다',
       'AI-102 보유자에 대한 AI-103 이관·면제·할인 경로 유무',
       'AI-103 한국어판에 4월 16일 스킬 개정이 반영된 시점',
