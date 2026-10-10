@@ -21,7 +21,7 @@ const SOURCE_HOSTS = [
 ];
 
 describe('시험 노트 계획', () => {
-  it('자격증 열넷을 모두 덮는다', () => {
+  it('자격증을 빠짐없이 덮는다', () => {
     const planned = new Set(certPrepPlans.map((plan) => plan.certId));
     expect(certs.filter((cert) => !planned.has(cert.id)).map((cert) => cert.id)).toEqual([]);
   });
