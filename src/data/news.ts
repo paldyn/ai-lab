@@ -160,7 +160,7 @@ export interface NewsDetail {
   commentary: string;
 }
 
-export const globalNewsUpdatedAt = '2026-10-08';
+export const globalNewsUpdatedAt = '2026-10-09';
 
 /**
  * 공식 발표 한 건 = 항목 한 개. 2026년 1월부터 쌓는 아카이브이며 오래된 항목을
@@ -171,6 +171,62 @@ export const globalNewsUpdatedAt = '2026-10-08';
  * 목록에서 파생됩니다. 갱신 시 globalNewsUpdatedAt도 함께 올립니다.
  */
 const entries: NewsItem[] = [
+  {
+    id: 'sophos',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'Sophos, Daybreak 에이전트로 위협 사건 대응 38분에서 89초로 단축',
+    summary:
+      '보안 기업 Sophos가 OpenAI Daybreak로 만든 조사·대응 에이전트를 MDR 서비스에 넣었다. 에이전트를 쓴 사건의 평균 대응 시간이 ' +
+      '약 38분에서 89초로 줄었고, MDR 사건의 52%를 AI가 처음부터 끝까지 처리한다.',
+    publishedAt: '2026-10-09',
+    collectedAt: '2026-10-10',
+    category: 'Product',
+    signal: '기업 도입 사례',
+    url: 'https://openai.com/index/sophos',
+  },
+  {
+    id: 'asana-browser-agent',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'Asana, Codex의 GPT-6 Astra로 브라우저 에이전트 비용 76분의 1로 절감',
+    summary:
+      'Asana가 StackAI 브라우저 에이전트를 GPT-6 Astra in Codex로 실험해 캐싱과 스크린숏 정책을 고쳤다. GPT-6.1 Sol에서 돌린 ' +
+      '최적화 워크플로는 한 번에 약 $0.47로, 원래 구성보다 76배 싸고 5배 빨랐다.',
+    publishedAt: '2026-10-09',
+    collectedAt: '2026-10-10',
+    category: 'Product',
+    signal: '기업 도입 사례',
+    url: 'https://openai.com/index/asana-browser-agent',
+  },
+  {
+    id: 'legalon-halves-codex-costs',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'LegalOn, 작업별 모델 배분으로 Codex 비용 절반 이하로 절감',
+    summary:
+      'LegalOn Technologies가 작업 난도에 따라 GPT-6 Luna·GPT-6.1 Sol·GPT-6 Astra를 나눠 쓰고 Fast 모드를 기본 제한했다. ' +
+      '부서·개인별 예산 상한과 함께 추정 일일 비용을 약 65% 줄였다.',
+    publishedAt: '2026-10-08',
+    collectedAt: '2026-10-10',
+    category: 'Product',
+    signal: '기업 도입 사례',
+    url: 'https://openai.com/index/legalon-halves-codex-costs',
+  },
+  {
+    id: 'lowes',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'Lowe’s, OpenAI 기반 Mylow로 고객·직원 질문 수백만 건 응답',
+    summary:
+      'Lowe’s가 OpenAI 모델로 만든 고객용 Mylow와 직원용 Mylow Companion이 2025년 봄 출시 뒤 수백만 건의 질문에 답했다고 밝혔다. ' +
+      'Mylow Companion은 1,700개 매장의 직원 약 30만 명이 쓴다.',
+    publishedAt: '2026-09-25',
+    collectedAt: '2026-10-10',
+    category: 'Product',
+    signal: '기업 도입 사례',
+    url: 'https://openai.com/index/lowes',
+  },
   {
     id: 'claude-platform-october-9-2026',
     source: 'Anthropic',

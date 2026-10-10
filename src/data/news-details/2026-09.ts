@@ -2,6 +2,20 @@ import type { NewsDetail } from '../news';
 
 /** 2026-09 발표의 모달 본문. 목록은 news.ts에 있습니다. */
 export const details: Record<string, NewsDetail> = {
+  'lowes': {
+    points: [
+      'Lowe’s의 고객용 Mylow와 직원용 Mylow Companion은 OpenAI 모델로 만들었고 2025년 봄 출시 뒤 수백만 건의 질문에 답했다',
+      'Mylow는 Lowes.com에서 단계별 안내·상품 추천·사용법 콘텐츠를 대화로 주는 상담 도구다',
+      'Mylow Companion은 50개 주 1,700개 매장의 직원 약 30만 명이 모바일·데스크톱에서 쓴다',
+      'Mylow Companion 상호작용의 절반 가까이가 음성으로 이뤄진다',
+      'Q2 2026 실적 발표에 따르면 Mylow 이용자의 구매 전환율은 비이용자의 3배다',
+      '직원이 매장에서 Mylow Companion으로 응대할 때 고객 만족도가 200bp 올랐다',
+      '본사 지원 조직인 Store Support Center에는 ChatGPT Enterprise를 도입했다',
+    ],
+    commentary:
+      '대형 매장에서 직원 한 사람이 모든 부서를 알 수 없다는 문제를 음성 질의로 푸는 사례다. 상호작용의 절반이 음성이라는 수치는 현장 ' +
+      '업무에서 손이 자유로운 입력 방식이 채택을 좌우한다는 점을 보여 준다. 전환율 3배는 스스로 Mylow를 찾은 이용자의 선택 효과가 섞여 있을 수 있다.',
+  },
   'wayfair': {
     points: [
       'Wayfair의 카탈로그는 약 4,000만 개 상품, 1,000개 가까운 상품 분류로 이뤄져 있다',
