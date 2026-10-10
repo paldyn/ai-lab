@@ -2301,10 +2301,14 @@ export const certs: Cert[] = [
       '가이드·약관 어디에도 없다. 약관이 문장으로 못 박은 시간 규칙은 둘이다 — 예약한 시험 일정의 변경·취소는 72시간 전까지만 가능하고 그보다 늦으면 추가 ' +
       '비용이 붙을 수 있으며("I cannot reschedule or cancel my scheduled test session with less than ' +
       'seventy-two (72) hours notice"), 불합격하면 14일 뒤에 다시 볼 수 있고 이 14일 대기는 모든 응시 사이에 적용된다("There ' +
-      'is a 14-day wait between all attempts"). 회차별 실제 날짜는 공식 일정 페이지에서 확인한다.',
+      'is a 14-day wait between all attempts"). 공식 FAQ는 일정 변경 기한을 응시 방식에 따라 가른다 — 온라인 감독 시험은 예약 시각 24시간 넘게 전, ' +
+      '시험센터 시험은 72시간 넘게 전까지 Webassessor에서 바꿔야 하고 그 뒤에는 변경 수수료가 붙는다("For online proctored exams, you must ' +
+      'reschedule your exam more than 24 hours before your scheduled exam time. For testing center exams, you must reschedule your ' +
+      'exam more than 72 hours before your scheduled exam time."). 회차별 실제 날짜는 공식 일정 페이지에서 확인한다.',
     fee:
-      'US$200 (인증 페이지 "Registration fee: $200", 응시 1회 기준). 공식 약관은 "Payment is required each ' +
-      'time you take an exam"까지만 적는다 — 응시할 때마다 결제한다.',
+      'US$200 (인증 페이지 "Registration fee: $200", 응시 1회 기준). 공식 약관이 "Payment is required each time you take an ' +
+      'exam"으로 응시할 때마다 결제한다고 적고, 공식 FAQ는 재응시도 첫 응시와 같은 금액이며("Each attempt is charged at the same price as ' +
+      'the original exam") 무료 재응시는 없다고("there are no free retakes for any Databricks Certification exam") 밝힌다.',
     refundNote:
       '환불 비율을 못 박은 공식 문장이 없다. 시행사 Kryterion은 온라인 24시간 전·시험센터 72시간 전까지 취소하면 「Kryterion 수수료가 붙지 않는다」고만 하고 ' +
       '취소 규정은 시험 주관사 페이지를 보라고 넘기며, 주관사 Databricks 약관은 온라인·시험센터를 가리지 않고 72시간 미만 통보로는 변경도 취소도 할 수 없다고만 ' +
@@ -2365,7 +2369,7 @@ export const certs: Cert[] = [
       },
     ],
     officialUrl: 'https://www.databricks.com/learn/certification/genai-engineer-associate',
-    verifiedAt: '2026-09-22',
+    verifiedAt: '2026-10-10',
     notes:
       '- 현행 버전은 2026년 3월 18일자 시험 가이드가 다루는 것이다. 같은 문단이 시험 2주 전에 최신 버전인지 다시 확인하라고 적어 둘 만큼 출제 범위가 ' +
       '자주 바뀐다 — Agent Bricks, MCP 서버 연동, 프롬프트 버전 관리, AI Gateway, 커스텀 Scorer 같은 최근 기능이 출제 목표에 ' +
@@ -2388,7 +2392,6 @@ export const certs: Cert[] = [
       '않았다.',
       '한국어 응시 시 번역 범위(문항 전체인지 일부인지) — 언어 목록에 한국어가 있다는 것 외에 범위를 말한 문장이 없다.',
       '정기 시행 회차 유무를 명시한 공식 문구 — 예약제로 보이지만 \'연중 상시\'나 \'연 N회\'를 못 박은 공식 서술은 세 문서 어디에도 없다.',
-      '재응시 요금 액수 — 약관은 \'응시할 때마다 결제한다\'까지만 말하고 금액이 첫 응시와 같은지는 적지 않는다.',
     ],
     studyPath: [
       {
