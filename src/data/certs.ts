@@ -2228,7 +2228,7 @@ export const certs: Cert[] = [
       },
     ],
     officialUrl: 'https://www.databricks.com/learn/certification/machine-learning-associate',
-    verifiedAt: '2026-09-22',
+    verifiedAt: '2026-10-10',
     notes:
       '- 시행은 Kryterion이 맡고 등록은 Webassessor(webassessor.com/databricks)에서 한다.\n' +
       '- 시험 자체의 공식 명칭은 \'Databricks Certified Machine Learning Associate\'인데, 인증 목록 페이지에서는 \'ML ' +
