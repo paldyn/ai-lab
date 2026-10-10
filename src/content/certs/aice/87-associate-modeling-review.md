@@ -135,7 +135,7 @@ model.summary()
 | 다중 분류 (정수 라벨) | `Dense(클래스 수)` | `softmax` | `sparse_categorical_crossentropy` |
 | 다중 분류 (원핫 라벨) | `Dense(클래스 수)` | `softmax` | `categorical_crossentropy` |
 
-**여기가 가장 자주 틀리는 자리**입니다. `sigmoid`는 값 하나를 0과 1 사이 확률로, `softmax`는 여러 값을 합이 1인 확률로 바꿉니다. 손실함수가 갈리는 기준은 타깃의 모양 하나로, 정답이 `2`처럼 정수면 앞쪽이고 `[0,0,1]`처럼 원핫이면 뒤쪽입니다.
+여기가 틀리기 쉬운 자리입니다. `sigmoid`는 값 하나를 0과 1 사이 확률로, `softmax`는 여러 값을 합이 1인 확률로 바꿉니다. 손실함수가 갈리는 기준은 타깃의 모양 하나로, 정답이 `2`처럼 정수면 앞쪽이고 `[0,0,1]`처럼 원핫이면 뒤쪽입니다.
 
 ```python
 model.compile(optimizer='adam', loss='binary_crossentropy', metrics=['accuracy'])

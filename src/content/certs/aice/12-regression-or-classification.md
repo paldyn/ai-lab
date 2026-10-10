@@ -7,7 +7,7 @@ pubDate: "2026-10-08"
 
 데이터가 학습용과 평가용으로 나뉘었으면 이제 모델을 꺼낼 차례입니다. 사이킷런에는 모델이 수십 개 있지만 처음 고르는 것은 이름이 아니라 **문제의 종류**입니다. 맞히려는 것이 숫자의 크기인지, 몇 갈래 중 하나인지에 따라 쓸 수 있는 모델과 재는 점수가 통째로 갈립니다.
 
-AICE Associate의 모델링 문항은 대개 「`RandomForestClassifier`로 학습하시오」처럼 모델을 지정하지만, 지정한 모델이 문제와 안 맞는지 따지거나 타깃을 보고 문제의 종류를 고르게 하는 문항도 섞여 나옵니다. 여기서 가르는 틀이 이후 모델링 노트 전부의 바탕이 됩니다.
+AICE Associate의 모델링 문항은 「`RandomForestClassifier`로 학습하시오」처럼 모델을 지정할 수도 있고, 지정한 모델이 문제와 안 맞는지 따지거나 타깃을 보고 문제의 종류를 고르게 할 수도 있습니다. 여기서 가르는 틀이 이후 모델링 노트 전부의 바탕이 됩니다.
 
 ## 타깃 열 읽기
 
@@ -61,7 +61,7 @@ pred = model.predict(X_test)         # 예측
 print(model.score(X_test, y_test))   # 점수
 ```
 
-`fit`은 피처와 정답을 함께 받아 규칙을 배우고, `predict`는 피처만 받아 정답을 내놓으며, `score`는 피처와 정답을 받아 예측이 얼마나 맞는지를 숫자 하나로 돌려줍니다. `predict`에 `y`를 넣지 않는다는 것, `fit`과 `score`에는 학습용과 평가용을 각각 넣는다는 것이 자주 묻는 자리입니다.
+`fit`은 피처와 정답을 함께 받아 규칙을 배우고, `predict`는 피처만 받아 정답을 내놓으며, `score`는 피처와 정답을 받아 예측이 얼마나 맞는지를 숫자 하나로 돌려줍니다. `predict`에 `y`를 넣지 않는다는 것, `fit`과 `score`에는 학습용과 평가용을 각각 넣는다는 것이 헷갈리기 쉬운 자리입니다.
 
 ### score의 지표
 
@@ -94,7 +94,7 @@ print(model.classes_)                 # 열의 차례
 
 ### LogisticRegression
 
-가장 자주 함정이 되는 것은 `LogisticRegression`입니다. 이름에 「Regression」이 들어 있지만 **분류 모델**입니다. 선형식으로 값을 계산한 뒤 시그모이드 함수로 0과 1 사이의 확률로 바꾸고, 그 확률로 갈래를 정하기 때문입니다. `predict_proba`가 있고 `score`는 정확도를 돌려줍니다. 「다음 중 회귀 모델이 아닌 것」 같은 문항에서 단골로 나옵니다.
+함정이 되기 쉬운 것은 `LogisticRegression`입니다. 이름에 「Regression」이 들어 있지만 **분류 모델**입니다. 선형식으로 값을 계산한 뒤 시그모이드 함수로 0과 1 사이의 확률로 바꾸고, 그 확률로 갈래를 정하기 때문입니다. `predict_proba`가 있고 `score`는 정확도를 돌려줍니다. 「다음 중 회귀 모델이 아닌 것」 같은 문항이라면 이것부터 가려냅니다.
 
 ### 잘못된 짝
 
@@ -122,7 +122,7 @@ from xgboost import XGBClassifier
 
 모델 말고도 지금까지 쓴 것들의 자리를 함께 정리해 둡니다. 전처리 도구는 `sklearn.preprocessing`(`LabelEncoder`·`OneHotEncoder`·`StandardScaler`), 분할은 `sklearn.model_selection`(`train_test_split`), 지표는 `sklearn.metrics`(`accuracy_score`·`mean_squared_error`)에 있습니다. 「preprocessing·model_selection·metrics」 세 이름만 정확히 적어도 임포트 오류의 대부분이 사라집니다.
 
-출제 형태는 셋입니다. 타깃의 `value_counts` 결과를 주고 문제의 종류를 고르게 하거나, 회귀 모델이 아닌 것을 고르게 하거나, 빈칸에 알맞은 모듈 이름이나 메서드를 채우게 합니다.
+이 영역은 이런 꼴로 물을 수 있습니다. 타깃의 `value_counts` 결과를 주고 문제의 종류를 고르게 하거나, 회귀 모델이 아닌 것을 고르게 하거나, 빈칸에 알맞은 모듈 이름이나 메서드를 채우게 하는 식입니다.
 
 ## 연습 문제
 

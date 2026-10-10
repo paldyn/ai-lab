@@ -7,7 +7,9 @@ pubDate: "2026-09-07"
 
 로우코드 섹션은 시험의 13%지만 배우는 비용이 가장 쌉니다. SQL을 쓸 줄 알면 그날 바로 모델이 나오기 때문입니다. **BigQuery ML**(BQML)은 BigQuery 안에서 SQL 문으로 모델을 학습하고 예측까지 하는 기능이고, 데이터를 창고 밖으로 옮기지 않는다는 것이 존재 이유입니다.
 
-## CREATE MODEL과 model_type
+## CREATE MODEL
+
+### 문장 골격
 
 모든 것이 `CREATE MODEL` 한 문장에서 시작합니다. 골격은 늘 같습니다 — 이름을 정하고, `OPTIONS`로 어떤 모델인지 말하고, `AS SELECT`로 학습 데이터를 줍니다.
 
@@ -22,9 +24,13 @@ SELECT tenure_months, monthly_fee, plan, support_tickets, churned
 FROM `shop.customers`;
 ```
 
+### 입력 열과 분할
+
 `input_label_cols`가 정답 열을 가리키고 나머지 열이 전부 입력이 됩니다. **따로 지정하지 않은 열이 자동으로 피처가 되므로**, 고객 ID나 예측 시점 이후에 생긴 열을 `SELECT`에 그대로 두면 그것이 곧 데이터 누수입니다. `data_split_method`는 학습·평가 분할 방식으로, `AUTO_SPLIT`은 데이터가 작으면 전부 학습에 쓰고 크면 일부를 평가로 떼어 냅니다. 시간 순서가 중요한 데이터라면 `SEQ`로 뒤쪽을 평가로 떼는 것이 맞습니다.
 
-`model_type`이 과제를 정합니다. 시험이 이름으로 묻는 것은 이 정도입니다.
+### model_type
+
+`model_type`이 과제를 정합니다. 과제별 대표 값은 이렇습니다.
 
 | 과제 | model_type |
 | --- | --- |
@@ -37,9 +43,13 @@ FROM `shop.customers`;
 
 **`LOGISTIC_REG`는 이진만이 아니라 다중 분류도 합니다.** 라벨 열에 값이 셋 이상이면 알아서 다중 분류로 학습하므로, 「클래스가 세 개라 로지스틱 회귀를 못 쓴다」는 보기는 오답입니다.
 
-## TRANSFORM 절 — 전처리를 모델 안에 넣는다
+## 피처 전처리
 
-전처리를 `SELECT` 안에서 하면 학습은 되지만 예측할 때 **같은 전처리를 손으로 다시 써야** 합니다. 그러다 한쪽만 고치면 학습 때와 서빙 때 입력이 달라지는데, 이것을 **학습-서빙 스큐**(training-serving skew)라고 부릅니다. 시험이 반복해서 파는 자리입니다.
+### 학습-서빙 스큐
+
+전처리를 `SELECT` 안에서 하면 학습은 되지만 예측할 때 **같은 전처리를 손으로 다시 써야** 합니다. 그러다 한쪽만 고치면 학습 때와 서빙 때 입력이 달라지는데, 이것을 **학습-서빙 스큐**(training-serving skew)라고 부릅니다. BigQuery ML만이 아니라 Dataflow와 Feature Store를 다룰 때도 다시 만나는 개념입니다.
+
+### TRANSFORM 절
 
 `TRANSFORM` 절은 그 전처리를 **모델 안에 넣어** 예측할 때 자동으로 다시 적용되게 합니다.
 
@@ -57,29 +67,41 @@ SELECT monthly_fee, tenure_months, plan, churned FROM `shop.customers`;
 
 이제 `ML.PREDICT`에 **원본 열**을 그대로 넘기면 됩니다. 표준화도 버킷화도 원-핫 인코딩도 모델이 안에서 다시 합니다. 자주 쓰는 전처리 함수는 `ML.STANDARD_SCALER`·`ML.MIN_MAX_SCALER`(수치 스케일), `ML.BUCKETIZE`·`ML.QUANTILE_BUCKETIZE`(구간화), `ML.ONE_HOT_ENCODER`(범주형), `ML.FEATURE_CROSS`(피처 교차)입니다.
 
+### 기본 전처리
+
 `TRANSFORM`을 아예 안 쓰면 BQML이 **기본 전처리를 자동으로** 합니다 — 수치는 표준화하고 범주형은 원-핫 인코딩합니다. 그래서 문자열 열을 그냥 넣어도 오류가 나지 않습니다. `TRANSFORM`은 그 기본 위에 내가 원하는 변환을 얹는 자리입니다.
+
+### 피처 선택
 
 피처를 **줄이는** 일은 옵션으로 합니다. 선형·로지스틱 모델에서 `l1_reg`를 주면 L1 정규화가 쓸모없는 피처의 계수를 0으로 밀어 사실상 피처 선택이 됩니다. 트리 계열은 학습 뒤 `ML.FEATURE_IMPORTANCE`로 어느 피처가 얼마나 기여했는지 보고 지울 것을 고릅니다.
 
-## 쓰고 재는 두 함수 — ML.PREDICT와 ML.EVALUATE
+## 예측과 평가
 
 학습된 모델은 테이블처럼 함수에 넘겨 씁니다.
+
+### ML.PREDICT
 
 ```sql
 SELECT customer_id, predicted_churned, predicted_churned_probs
 FROM ML.PREDICT(MODEL `shop.churn_t`,
                 (SELECT customer_id, monthly_fee, tenure_months, plan
                  FROM `shop.customers_new`));
-
-SELECT * FROM ML.EVALUATE(MODEL `shop.churn_t`,
-                          (SELECT * FROM `shop.customers_holdout`));
 ```
 
 `ML.PREDICT`는 입력 열을 그대로 두고 `predicted_` 접두어가 붙은 열을 더해 돌려줍니다. 분류 모델이면 확률까지 함께 옵니다.
 
+### ML.EVALUATE
+
+```sql
+SELECT * FROM ML.EVALUATE(MODEL `shop.churn_t`,
+                          (SELECT * FROM `shop.customers_holdout`));
+```
+
 `ML.EVALUATE`는 모델 유형에 따라 다른 지표를 냅니다 — 분류면 `precision`·`recall`·`accuracy`·`f1_score`·`log_loss`·`roc_auc`, 회귀면 `mean_absolute_error`·`mean_squared_error`·`r2_score`, 군집이면 `davies_bouldin_index`가 나옵니다. 평가 데이터를 넘기지 않으면 학습 때 떼어 둔 평가 분할로 잽니다.
 
-## 시계열은 ARIMA_PLUS로
+## 시계열 예측
+
+### ARIMA_PLUS
 
 시계열 예측은 함수부터 다릅니다. `ARIMA_PLUS`로 학습하고 **`ML.PREDICT`가 아니라 `ML.FORECAST`로** 미래를 뽑습니다.
 
@@ -98,9 +120,13 @@ SELECT * FROM ML.FORECAST(MODEL `shop.daily_sales_fc`,
                           STRUCT(30 AS horizon, 0.9 AS confidence_level));
 ```
 
+### 다중 계열과 외생 변수
+
 `time_series_id_col`이 있으면 **매장마다 모델을 따로 만들 필요 없이 한 문장으로 여러 계열을 한꺼번에** 학습합니다. 매장 500곳에 각각 모델을 만들자는 보기가 오답이 되는 이유입니다. `ARIMA_PLUS`는 계절성·휴일·이상치를 자동으로 다루고, 기온 같은 **외생 변수**(모델 밖에서 주어지는 설명 변수)를 함께 쓰려면 `ARIMA_PLUS_XREG`를 씁니다.
 
-## BigQuery에서 Gemini를 부르고 튜닝하기
+## Gemini 호출과 튜닝
+
+### 원격 모델
 
 BQML은 자기가 학습한 모델만 다루지 않습니다. **원격 모델**을 만들면 BigQuery 안에서 Gemini를 SQL로 호출할 수 있습니다. 연결(connection)을 만들고 그 위에 모델을 세우는 식입니다.
 
@@ -114,6 +140,8 @@ FROM ML.GENERATE_TEXT(MODEL `shop.gemini`,
        (SELECT CONCAT('다음 리뷰의 감정을 한 단어로: ', review_text) AS prompt
         FROM `shop.reviews` LIMIT 100));
 ```
+
+### 지도 파인튜닝
 
 여기서 한 걸음 더 가면 **지도 파인튜닝**입니다. 프롬프트와 정답이 짝지어진 테이블을 학습 데이터로 주면 BigQuery에서 Gemini 튜닝 작업이 돌고, 튜닝된 모델을 같은 방식으로 호출합니다. 우리 도메인의 말투나 분류 체계를 프롬프트만으로 못 맞출 때 고르는 길이고, 그 판단 기준은 뒤의 파인튜닝 노트에서 자세히 봅니다.
 

@@ -5,19 +5,25 @@ kind: "개념"
 pubDate: "2026-09-07"
 ---
 
-[앞 노트](/learn/certs/gcp-ml-engineer/01-exam-structure-and-data-products)가 데이터가 앉는 자리를 그렸다면, 이번에는 **모델이 만들어져 배포되고 감시되기까지** 지나가는 제품들을 순서대로 세웁니다. 시험 문항 대부분이 「이 요구사항이면 이 줄 어디쯤인가」를 묻는 것이라, 순서를 외워 두면 보기 넷 중 둘은 바로 지워집니다.
+[앞 노트](/learn/certs/gcp-ml-engineer/01-exam-structure-and-data-products)가 데이터가 앉는 자리를 그렸다면, 이번에는 **모델이 만들어져 배포되고 감시되기까지** 지나가는 제품들을 순서대로 세웁니다. 요구사항 하나를 읽고 「이 줄 어디쯤인가」를 짚을 수 있으면, 엉뚱한 단계의 제품을 고른 보기는 바로 지워집니다.
 
-## 모델을 어디서 얻는가 — Model Garden과 AutoML
+## 모델 확보
 
 모델을 손에 넣는 길이 크게 셋이고, 앞의 둘이 「직접 짜지 않는」 길입니다.
 
+### Model Garden
+
 **Model Garden**은 쓸 수 있는 모델을 모아 둔 카탈로그입니다. Google의 Gemini·Imagen·Veo 같은 자체 모델, Gemma·Llama 같은 오픈 웨이트 모델, 파트너 모델이 한자리에 있고, 모델 카드에서 용도·라이선스·크기를 보고 고릅니다. 여기서 고른 모델은 **그대로 호출하거나, 파인튜닝하거나, 엔드포인트에 배포**할 수 있습니다.
+
+### AutoML
 
 **AutoML**은 데이터를 주면 모델 구조와 하이퍼파라미터를 플랫폼이 알아서 찾는 학습 방식입니다. 정형·이미지·텍스트 데이터셋을 등록하고 예산(학습 시간)을 정하면 학습이 돌아갑니다. 코드를 한 줄도 쓰지 않아도 되는 대신 안을 들여다보거나 구조를 바꿀 수는 없습니다.
 
-셋째 길이 **커스텀 학습**입니다. 내가 쓴 학습 코드를 플랫폼이 대신 돌려 주는 것으로, 이 시험이 가장 무겁게 묻는 자리입니다.
+## 커스텀 학습
 
-## 내 코드를 돌리는 자리 — 커스텀 학습과 그 이웃들
+셋째 길이 **커스텀 학습**입니다. 내가 쓴 학습 코드를 플랫폼이 대신 돌려 주는 것으로, 시험 가이드에서 비중이 가장 큰 섹션(Scaling prototypes into ML models, ~21%)이 다루는 일입니다.
+
+### 학습 작업
 
 **커스텀 학습 작업**(custom training job)은 학습 코드를 컨테이너에 담아 제출하면 플랫폼이 머신을 띄워 돌리고 끝나면 치우는 방식입니다. PyTorch·TensorFlow·JAX·scikit-learn 무엇이든 됩니다.
 
@@ -38,26 +44,39 @@ model = job.run(replica_count=1, machine_type="n1-standard-8",
 
 여기에 붙는 이웃이 둘입니다.
 
-- **Tabular Workflows**는 정형 데이터용으로 미리 짜여 있는 학습 파이프라인입니다. AutoML보다 손댈 곳이 많고 커스텀 학습보다 쓸 것이 적은, 그 사이 자리입니다.
-- **Vizier**는 하이퍼파라미터를 자동으로 탐색해 주는 최적화 서비스입니다. 탐색 공간과 목표 지표를 주면 베이지안 최적화로 다음 시도를 고릅니다. 커스텀 학습 작업에 얹어 씁니다.
+### Tabular Workflows
+
+**Tabular Workflows**는 정형 데이터용으로 미리 짜여 있는 학습 파이프라인입니다. AutoML보다 손댈 곳이 많고 커스텀 학습보다 쓸 것이 적은, 그 사이 자리입니다.
+
+### Vizier
+
+**Vizier**는 하이퍼파라미터를 자동으로 탐색해 주는 최적화 서비스입니다. 탐색 공간과 목표 지표를 주면 베이지안 최적화로 다음 시도를 고릅니다. 커스텀 학습 작업에 얹어 씁니다.
 
 **AutoML과 Vizier를 헷갈리지 않는 것이 중요합니다.** AutoML은 모델 자체를 대신 만들어 주고, Vizier는 **내가 만든 모델의 설정값만** 찾아 줍니다. 「이미 학습 코드가 있는데 학습률과 층 수를 어떻게 정할지 모르겠다」는 Vizier 쪽입니다.
 
-## 여러 단계를 하나로 묶는 자리 — Pipelines와 Ray
+## 오케스트레이션
+
+### Pipelines
 
 **Agent Platform Pipelines**는 전처리 → 학습 → 평가 → 배포 같은 여러 단계를 **컴포넌트로 쪼개 그래프로 잇고 한 번에 실행하는** 오케스트레이션 서비스입니다. 각 단계가 컨테이너 하나로 돌고 결과 아티팩트가 다음 단계로 넘어가며, 실행마다 계보가 남습니다. 노트북에서 손으로 순서대로 돌리던 것을 사람 없이 재현 가능하게 만드는 자리입니다.
 
+### Ray
+
 **Ray on Agent Platform**은 성격이 다릅니다. Ray는 파이썬 코드를 여러 머신에 분산하는 프레임워크이고, 플랫폼이 그 클러스터를 관리해 줍니다. 파이프라인이 **단계 사이의 순서**를 다룬다면 Ray는 **한 단계 안의 병렬**을 다룹니다.
 
-시험이 파이프라인을 물을 때 보기에 자주 끼는 것이 **Managed Service for Apache Airflow**입니다. Airflow는 데이터 파이프라인 전반을 스케줄링하는 범용 도구라 ML 밖의 작업까지 함께 엮을 때 고르고, ML 단계만 잇는다면 Pipelines가 자연스럽습니다.
+### Airflow
 
-## 만든 모델을 보관하는 자리 — Model Registry
+Pipelines와 헷갈리기 쉬운 것이 **Managed Service for Apache Airflow**입니다. Airflow는 데이터 파이프라인 전반을 스케줄링하는 범용 도구라 ML 밖의 작업까지 함께 엮을 때 고르고, ML 단계만 잇는다면 Pipelines가 자연스럽습니다.
+
+## 등록과 서빙
+
+### Model Registry
 
 **Model Registry**는 학습이 끝난 모델을 등록해 버전으로 관리하는 곳입니다. 같은 모델 이름 아래 버전 1, 2, 3이 쌓이고, `default` 같은 **별칭**(alias)을 특정 버전에 붙였다 뗄 수 있습니다.
 
 별칭이 있는 이유는 배포를 갈아 끼울 때 **엔드포인트를 부르는 쪽 코드를 고치지 않기 위해서**입니다. 버전 번호를 코드에 박아 두면 승격할 때마다 호출부를 고쳐야 하지만, 별칭을 가리키면 별칭이 옮겨 붙는 것만으로 끝납니다.
 
-## 실제로 응답하는 자리 — Agent Platform Inference
+### 온라인·배치 추론
 
 **Agent Platform Inference**는 모델을 실제 요청에 응답시키는 서빙 제품이고, 방식이 둘입니다.
 
@@ -70,19 +89,25 @@ model = job.run(replica_count=1, machine_type="n1-standard-8",
 
 **「실시간이 필요한가」 한 질문이 이 둘을 가릅니다.** 매일 새벽 전 고객의 이탈 점수를 다시 매기는 요구에 온라인 엔드포인트를 띄우는 보기는, 24시간 떠 있는 비용을 하루 한 번 쓰려고 내는 셈이라 오답입니다.
 
-## 배포한 뒤를 보는 자리 — Model Monitoring과 Model Armor
+## 모니터링
 
 배포는 끝이 아닙니다. 감시하는 제품도 둘이고, 지키는 것이 서로 다릅니다.
 
+### Model Monitoring
+
 **Model Monitoring**은 **입력과 예측이 학습 때와 달라지고 있는지**를 봅니다. 학습 데이터와 서빙 입력의 분포가 어긋나는 학습-서빙 스큐, 시간이 지나며 입력이 흘러가는 데이터 드리프트, 입력과 정답의 관계 자체가 변하는 컨셉 드리프트를 지표로 잡아 임계값을 넘으면 알립니다.
+
+### Model Armor
 
 **Model Armor**는 **생성형 AI의 입출력을 검사하는 안전 장치**입니다. 프롬프트 인젝션, 유해 콘텐츠, 민감정보 유출 같은 것을 요청과 응답 양쪽에서 걸러 냅니다. 통계가 아니라 내용을 봅니다.
 
-## 제품과 섹션의 대응
+## 섹션 대응
+
+### 대응표
 
 지금까지 세운 제품이 시험 어느 섹션에서 나오는지 한 표로 묶으면 이렇습니다.
 
-| 제품 | 주로 나오는 섹션 |
+| 제품 | 다루는 섹션 |
 | --- | --- |
 | BigQuery ML, AutoML, 업종 API, Model Garden | Architecting low-code AI solutions |
 | Feature Store, Workbench, Colab Enterprise, Experiments | Collaborating within and across teams |
@@ -90,6 +115,8 @@ model = job.run(replica_count=1, machine_type="n1-standard-8",
 | Inference 엔드포인트, 컨테이너, Model Registry, 배포 전략 | Serving and scaling models |
 | Pipelines, Ray, Airflow, CI/CD/CT | Automating and orchestrating ML pipelines |
 | Model Monitoring, Model Armor, 설명 가능성 | Monitoring AI solutions |
+
+### 섹션 경계
 
 Model Garden만 두 자리에 걸칩니다 — 모델을 고르는 이야기는 첫 섹션이고, Model Garden의 오픈 모델을 노트북에서 프로토타이핑하는 이야기는 둘째 섹션입니다.
 

@@ -7,7 +7,7 @@ pubDate: "2026-09-26"
 
 앞의 두 노트에서 피처를 다듬었습니다. 이렇게 만든 피처를 노트북 안의 DataFrame으로만 두면, 다음 모델을 만드는 사람은 같은 계산을 다시 짜고 추론 코드는 또 한 번 짭니다. 세 벌의 코드가 조금씩 달라지는 순간 학습 때와 추론 때의 입력이 어긋납니다. **피처 스토어**(feature store)는 계산을 끝낸 피처를 테이블로 한곳에 두고, 학습과 추론이 같은 테이블을 읽게 하는 저장소입니다. 이 노트는 그 테이블을 만들고 채우는 법을, 다음 노트는 그 테이블로 모델을 학습하고 스코어링하는 법을 다룹니다.
 
-이 과목은 시험 비중이 가장 큰 영역이고, 문항이 API 이름과 인자를 그대로 묻습니다. 코드 조각을 눈에 익혀 두는 것이 곧 공부입니다.
+피처 스토어는 시험 페이지 배점표에서 비중이 가장 큰 「Databricks Machine Learning」 영역(38%)에 들고, API 이름과 인자를 가려야 답이 갈리는 자리입니다. 코드 조각을 눈에 익혀 두는 것이 곧 공부입니다.
 
 ## 피처 테이블
 
@@ -80,7 +80,7 @@ fe.write_table(
 
 ### overwrite 모드
 
-`FeatureStoreClient.write_table`은 `mode`로 `"merge"`와 `"overwrite"` 둘을 받았습니다. `overwrite`는 테이블의 행을 모두 `df`로 갈아 끼우는 방식입니다. 그런데 `FeatureEngineeringClient.write_table`이 받는 것은 `"merge"` 하나뿐입니다. 테이블 전체를 새로 쓰고 싶으면 SQL `DELETE FROM`으로 행을 모두 지우거나 테이블을 지우고 다시 만든 뒤 `write_table`을 부릅니다. 「어제 없던 고객을 지우고 싶다」는 요구에 merge만으로는 답이 안 된다는 점이 문항으로 자주 나옵니다.
+`FeatureStoreClient.write_table`은 `mode`로 `"merge"`와 `"overwrite"` 둘을 받았습니다. `overwrite`는 테이블의 행을 모두 `df`로 갈아 끼우는 방식입니다. 그런데 `FeatureEngineeringClient.write_table`이 받는 것은 `"merge"` 하나뿐입니다. 테이블 전체를 새로 쓰고 싶으면 SQL `DELETE FROM`으로 행을 모두 지우거나 테이블을 지우고 다시 만든 뒤 `write_table`을 부릅니다. 「어제 없던 고객을 지우고 싶다」는 요구가 merge만으로 풀리지 않는 것도 이 때문입니다.
 
 ## 클라이언트 전환
 
