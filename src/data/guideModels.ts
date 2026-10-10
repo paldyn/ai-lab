@@ -558,10 +558,8 @@ const models: ModelInfo[] = [
     vendorId: 'google',
     name: 'Gemini 3.7 Flash',
     apiId: 'gemini-3.7-flash',
-    useWhen: {
-      text: '복잡한 코딩과 여러 단계를 밟는 에이전트 작업에',
-      url: 'https://ai.google.dev/gemini-api/docs/models?hl=en',
-    },
+    /* 2026-10-10에 폐기돼 모델 목록에서 빠졌다 — 쓰임 문장도 함께 사라졌다. */
+    useWhen: null,
     current: false,
     sourceUrl: 'https://ai.google.dev/gemini-api/docs/models',
   },
