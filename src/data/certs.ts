@@ -1726,8 +1726,8 @@ export const certs: Cert[] = [
       'is within 90 days of expiration and an active subscription to AWS Skill Builder」다. 어느 경로든 자격이 유효한 ' +
       '상태에서 갱신한다.',
     prerequisite:
-      '공식 자격 페이지·시험 가이드·인증 FAQ 어디에도 선수 요건을 언급한 문장이 없다. 요건이 제시되지 않았다는 뜻이지 AWS가 「없다」고 명시한 것은 아니다. ' +
-      '실제로 적혀 있는 것은 권장 경험뿐이다 — Amazon SageMaker 등 ML 엔지니어링 AWS 서비스 1년 이상, 그리고 백엔드 소프트웨어 ' +
+      '선수 요건은 없다 — AWS 시험 정책 페이지(Before Testing)가 「All AWS Certifications may be earned without completing specific ' +
+      'prerequisites」라고 적는다. 실제로 적혀 있는 것은 권장 경험뿐이다 — Amazon SageMaker 등 ML 엔지니어링 AWS 서비스 1년 이상, 그리고 백엔드 소프트웨어 ' +
       '개발자·DevOps 개발자·데이터 엔지니어·데이터 사이언티스트 같은 관련 직무 1년 이상. 권장 일반 IT 지식은 일반 ML 알고리즘과 활용처 이해, 데이터 ' +
       '형식·수집·변환 등 데이터 엔지니어링 기초, 쿼리와 데이터 변환, 모듈화·재사용 가능한 코드 개발과 배포·디버깅, 클라우드·온프레미스 ML 자원의 프로비저닝과 ' +
       '모니터링, CI/CD와 IaC 경험, 버전 관리 저장소 사용이다. 권장 AWS 지식은 SageMaker의 기능과 알고리즘, 데이터 저장·처리 서비스, ' +
@@ -1760,14 +1760,23 @@ export const certs: Cert[] = [
       },
     ],
     officialUrl: 'https://aws.amazon.com/certification/certified-machine-learning-engineer-associate/',
-    verifiedAt: '2026-09-17',
+    verifiedAt: '2026-10-10',
     notes:
       '- MLA-C02로 개편이 진행 중이다. 예고대로 2026-09-01에 등록이 열렸고 공식 페이지는 「Registration is now open for the ' +
       'updated exam (MLA-C02) beta」라고 적는다 — 지금 접수되는 것은 베타 시험(ME1-C02)이고 영어 전용이다. 영어 MLA-C01의 마지막 ' +
       '응시일은 2026-09-28이다.\n' +
-      '- 한국어·일본어·중국어 간체 MLA-C01은 MLA-C02 정식 출시까지 계속 응시할 수 있고, 그 정식 출시는 공식 블로그가 「2027년 초」로만 적었다.\n' +
-      '- 베타 사양은 85문항 / 170분, 응시료 75 USD다. 정식판의 문항 수·시험 시간·가격은 아직 공개되지 않았다. ' +
+      '- 한국어·일본어·중국어 간체 MLA-C01은 MLA-C02 정식 출시까지 계속 응시할 수 있다. 공식 블로그(2026-09-01 게시)는 정식판 시행을 2027-01-14로 ' +
+      '적었다 — 그날 정식판이 모든 언어로 시작되고 MLA-C01은 모든 언어에서 끝난다. 자격 페이지의 주요 일정은 아직 GA 등록·시행을 「TBD」로 둔다.\n' +
+      '- 베타 사양은 85문항 / 170분, 응시료 75 USD다. MLA-C02 시험 가이드는 채점 문항 50개와 미채점 문항 15개를 적는다 — 정식판도 C01처럼 ' +
+      '65문항이고, 문항 유형은 객관식과 복수응답 둘이다. 정식판의 시험 시간·가격은 아직 공개되지 않았다. ' +
       'MLA-C01(65문항/130분/150 USD)과 다르므로 어느 버전을 칠지 먼저 정해야 한다.\n' +
+      '- MLA-C02 시험 가이드가 도메인별 배점을 공개했다 — 데이터 준비(Data Preparation for ML and AI) 28%, 모델·파운데이션 모델 개발(ML Model and ' +
+      'Foundation Model (FM) Development) 24%, ML·AI 워크플로 배포와 오케스트레이션(Deployment and Orchestration of ML and AI Workflows) 24%, ' +
+      'ML·AI 솔루션 운영·모니터링·보안(Operating, Monitoring, and Securing ML and AI Solutions) 24%. C01(28·26·22·24)보다 도메인 2가 2%p 줄고 ' +
+      '도메인 3이 2%p 늘었다.\n' +
+      '- 불합격하면 14일(역일)을 기다려야 다시 응시할 수 있다. 응시 횟수 제한은 없고 응시할 때마다 응시료 전액을 낸다. 합격한 시험은 2년 동안 다시 칠 수 없지만, ' +
+      '새 시험 가이드·시리즈 코드로 바뀐 판은 칠 수 있다(AWS Certification FAQ). 베타 시험은 한 번만 칠 수 있고, 다시 치려면 정식판이 나올 때까지 기다려야 ' +
+      '한다(시험 정책 페이지).\n' +
       '- 개편은 도메인 구조를 그대로 두고(새 도메인 추가 없음) 담기는 주제를 넓히는 쪽이다 — 생성형 AI 솔루션 구축과 RAG 아키텍처, 에이전틱 AI ' +
       '워크플로 오케스트레이션, 파운데이션 모델·LLM 선택과 운영화, Amazon Bedrock 커버리지 확대, 책임 있는 AI 지침.\n' +
       '- RAG는 MLA-C02에서 들어오는 주제라 현행 MLA-C01 준비자의 학습 주제로 매핑하면 안 된다 — C01 시험 가이드 전문에 ' +
@@ -1778,15 +1787,13 @@ export const certs: Cert[] = [
       'Functions·CodePipeline·CloudFormation·CloudWatch·IAM·KMS 등이다.',
     unknowns: [
       '바우처·할인 코드로 결제한 시험을 기한 안에 취소했을 때 그 바우처가 되살아나는지 — 공식 페이지에 문장이 없다',
-      '불합격 후 재응시 대기 기간 — before-testing 정책 페이지에는 규정이 없다',
-      'MLA-C02 도메인별 배점',
-      'MLA-C02 정식판의 응시료·문항 수·시험 시간 — 공개된 85문항/170분/75 USD는 베타(ME1-C02) 값이다',
-      'MLA-C02 정식 출시(general availability)의 정확한 날짜 — 공식 블로그가 「2027년 초」로만 적었다',
+      'MLA-C02 정식판의 응시료·시험 시간 — 공개된 170분/75 USD는 베타(ME1-C02) 값이다',
+      'MLA-C02 정식 출시(general availability)의 등록·시행 날짜 — 공식 블로그(2026-09-01)는 2027-01-14 시행을 적지만 자격 페이지의 주요 일정은 ' +
+      '아직 「TBD」라 두 공식 출처가 어긋난다',
       '한국어 시험의 온라인 감독(online proctored) 제공 여부 — 정책 페이지의 온라인 감독 언어 목록은 영어(24시간)·일본어·중남미 스페인어·중국 ' +
       '본토 만다린뿐이고 한국어가 없다',
       '한국에서 결제할 때 실제로 붙는 세액·부가세율 — 공식 요금표는 197,287 KRW라는 금액과 "Applicable taxes may apply"만 적고 ' +
       '세율이나 최종 결제액은 밝히지 않는다',
-      '선수 요건이 「없음」이라고 적힌 공식 문장 — 자격 페이지·시험 가이드·인증 FAQ 어디에서도 못 찾았다',
     ],
     studyPath: [
       {
