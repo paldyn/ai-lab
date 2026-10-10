@@ -1632,7 +1632,8 @@ export const playbookClaims: Claim[] = [
     subject: { kind: 'model', id: 'gemini-3-7-flash' },
     topic: 'price',
     statement: '100만 토큰당 입력 / 출력 단가',
-    value: '$0.75 / $3.75 (2027-01-01부터 $1.50 / $7.50)',
+    /* 2026-10-10에 폐기돼 단가 페이지에서 절이 빠졌다(3.8 Flash로 자동 라우팅). */
+    value: null,
     tier: 'vendor',
     volatility: 'price',
     source: {
