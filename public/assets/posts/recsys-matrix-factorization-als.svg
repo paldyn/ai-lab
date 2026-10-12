@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="480" viewBox="0 0 880 480">
+  <defs>
+    <marker id="arr" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#e8e8e8"/>
+    </marker>
+    <marker id="arr-b" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#7777cc"/>
+    </marker>
+  </defs>
+  <rect width="880" height="480" fill="#0a0a0a" rx="12"/>
+  <text x="440" y="44" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="22" font-weight="700" fill="#e8e8e8" text-anchor="middle">ALS — 한쪽을 고정하고 다른 쪽을 푼다</text>
+  <rect x="60" y="80" width="200" height="130" rx="8" fill="#111418" stroke="#7ec8e3" stroke-width="1.5"/>
+  <text x="160" y="140" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="700" fill="#e8e8e8" text-anchor="middle">① Q를 고정</text>
+  <text x="160" y="164" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888" text-anchor="middle">아이템 벡터는 상수</text>
+  <rect x="320" y="80" width="500" height="130" rx="8" fill="#111418" stroke="#3a3a4a" stroke-width="1.5"/>
+  <text x="570" y="106" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="600" fill="#e8e8e8" text-anchor="middle">사용자마다 따로 푸는 최소제곱</text>
+  <rect x="340" y="124" width="100" height="62" rx="6" fill="#0d0d12" stroke="#7ec8e3" stroke-width="1"/>
+  <text x="390" y="150" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="14" fill="#e8e8e8" text-anchor="middle">사용자 1</text>
+  <text x="390" y="172" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#7ec8e3" text-anchor="middle">워커 1</text>
+  <rect x="460" y="124" width="100" height="62" rx="6" fill="#0d0d12" stroke="#7ec8e3" stroke-width="1"/>
+  <text x="510" y="150" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="14" fill="#e8e8e8" text-anchor="middle">사용자 2</text>
+  <text x="510" y="172" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#7ec8e3" text-anchor="middle">워커 2</text>
+  <rect x="580" y="124" width="100" height="62" rx="6" fill="#0d0d12" stroke="#7ec8e3" stroke-width="1"/>
+  <text x="630" y="150" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="14" fill="#e8e8e8" text-anchor="middle">사용자 3</text>
+  <text x="630" y="172" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#7ec8e3" text-anchor="middle">워커 3</text>
+  <rect x="700" y="124" width="100" height="62" rx="6" fill="#0d0d12" stroke="#7ec8e3" stroke-width="1"/>
+  <text x="750" y="150" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="14" fill="#e8e8e8" text-anchor="middle">사용자 m</text>
+  <text x="750" y="172" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#7ec8e3" text-anchor="middle">워커 4</text>
+  <line x1="260" y1="145" x2="320" y2="145" stroke="#e8e8e8" stroke-width="2" marker-end="url(#arr)"/>
+  <rect x="60" y="280" width="200" height="130" rx="8" fill="#111418" stroke="#55c555" stroke-width="1.5"/>
+  <text x="160" y="340" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="700" fill="#e8e8e8" text-anchor="middle">② P를 고정</text>
+  <text x="160" y="364" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888" text-anchor="middle">사용자 벡터는 상수</text>
+  <rect x="320" y="280" width="500" height="130" rx="8" fill="#111418" stroke="#3a3a4a" stroke-width="1.5"/>
+  <text x="570" y="306" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="600" fill="#e8e8e8" text-anchor="middle">아이템마다 따로 푸는 최소제곱</text>
+  <rect x="340" y="324" width="100" height="62" rx="6" fill="#0d0d12" stroke="#55c555" stroke-width="1"/>
+  <text x="390" y="350" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="14" fill="#e8e8e8" text-anchor="middle">아이템 1</text>
+  <text x="390" y="372" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#55c555" text-anchor="middle">워커 1</text>
+  <rect x="460" y="324" width="100" height="62" rx="6" fill="#0d0d12" stroke="#55c555" stroke-width="1"/>
+  <text x="510" y="350" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="14" fill="#e8e8e8" text-anchor="middle">아이템 2</text>
+  <text x="510" y="372" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#55c555" text-anchor="middle">워커 2</text>
+  <rect x="580" y="324" width="100" height="62" rx="6" fill="#0d0d12" stroke="#55c555" stroke-width="1"/>
+  <text x="630" y="350" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="14" fill="#e8e8e8" text-anchor="middle">아이템 3</text>
+  <text x="630" y="372" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#55c555" text-anchor="middle">워커 3</text>
+  <rect x="700" y="324" width="100" height="62" rx="6" fill="#0d0d12" stroke="#55c555" stroke-width="1"/>
+  <text x="750" y="350" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="14" fill="#e8e8e8" text-anchor="middle">아이템 n</text>
+  <text x="750" y="372" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#55c555" text-anchor="middle">워커 4</text>
+  <line x1="260" y1="345" x2="320" y2="345" stroke="#e8e8e8" stroke-width="2" marker-end="url(#arr)"/>
+  <line x1="130" y1="210" x2="130" y2="280" stroke="#e8e8e8" stroke-width="2" marker-end="url(#arr)"/>
+  <line x1="190" y1="280" x2="190" y2="210" stroke="#7777cc" stroke-width="2" stroke-dasharray="4,4" marker-end="url(#arr-b)"/>
+  <text x="440" y="444" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888" text-anchor="middle">한 단계 안에서는 서로의 결과를 쓰지 않는다 — 워커를 늘려도 답이 같다 · 보통 10~20회 반복</text>
+</svg>

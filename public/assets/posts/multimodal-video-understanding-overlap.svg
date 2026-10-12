@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="430" viewBox="0 0 880 430">
+  <defs>
+    <marker id="arr" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#e8e8e8"/>
+    </marker>
+    <marker id="arr-b" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#7777cc"/>
+    </marker>
+  </defs>
+  <rect width="880" height="430" fill="#0a0a0a" rx="12"/>
+  <text x="440" y="44" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="22" font-weight="700" fill="#e8e8e8" text-anchor="middle">토막 경계 — 겹치게 자르면 사건이 통째로 들어간다</text>
+  <rect x="317.5" y="84" width="45.0" height="236" fill="#e05555" fill-opacity="0.18" stroke="#e05555" stroke-width="1"/>
+  <text x="60" y="104" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="14" font-weight="600" fill="#e8e8e8" text-anchor="start">30초씩 자르기</text>
+  <rect x="102.0" y="118" width="221.0" height="40" rx="6" fill="#111418" stroke="#7ec8e3" stroke-width="1.5"/>
+  <text x="212.5" y="143" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e8e8e8" text-anchor="middle">0–30초</text>
+  <rect x="327.0" y="118" width="221.0" height="40" rx="6" fill="#111418" stroke="#7ec8e3" stroke-width="1.5"/>
+  <text x="437.5" y="143" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e8e8e8" text-anchor="middle">30–60초</text>
+  <rect x="552.0" y="118" width="221.0" height="40" rx="6" fill="#111418" stroke="#7ec8e3" stroke-width="1.5"/>
+  <text x="662.5" y="143" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e8e8e8" text-anchor="middle">60–90초</text>
+  <text x="60" y="190" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="14" font-weight="600" fill="#e8e8e8" text-anchor="start">20초마다 30초씩 (10초 겹침)</text>
+  <rect x="102.0" y="204" width="221.0" height="40" rx="6" fill="#111418" stroke="#7ec8e3" stroke-width="1.5"/>
+  <text x="212.5" y="229" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e8e8e8" text-anchor="middle">0–30초</text>
+  <rect x="252.0" y="256" width="221.0" height="40" rx="6" fill="#111418" stroke="#55c555" stroke-width="2"/>
+  <text x="362.5" y="281" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#55c555" text-anchor="middle">20–50초</text>
+  <rect x="402.0" y="204" width="221.0" height="40" rx="6" fill="#111418" stroke="#7ec8e3" stroke-width="1.5"/>
+  <text x="512.5" y="229" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e8e8e8" text-anchor="middle">40–70초</text>
+  <rect x="552.0" y="256" width="221.0" height="40" rx="6" fill="#111418" stroke="#7ec8e3" stroke-width="1.5"/>
+  <text x="662.5" y="281" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e8e8e8" text-anchor="middle">60–90초</text>
+  <line x1="100.0" y1="330" x2="775.0" y2="330" stroke="#888" stroke-width="1.5"/>
+  <line x1="100.0" y1="325" x2="100.0" y2="335" stroke="#888" stroke-width="1.5"/>
+  <text x="100.0" y="352" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888" text-anchor="middle">0초</text>
+  <line x1="325.0" y1="325" x2="325.0" y2="335" stroke="#888" stroke-width="1.5"/>
+  <text x="325.0" y="352" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888" text-anchor="middle">30초</text>
+  <line x1="550.0" y1="325" x2="550.0" y2="335" stroke="#888" stroke-width="1.5"/>
+  <text x="550.0" y="352" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888" text-anchor="middle">60초</text>
+  <line x1="775.0" y1="325" x2="775.0" y2="335" stroke="#888" stroke-width="1.5"/>
+  <text x="775.0" y="352" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888" text-anchor="middle">90초</text>
+  <text x="340.0" y="74" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="600" fill="#e05555" text-anchor="middle">사건 29–35초</text>
+  <text x="440" y="395" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888" text-anchor="middle">위: 사건이 두 토막에 1초·5초로 갈린다 · 아래: 20–50초 토막에 통째로 담긴다 (토막 수는 1.5배)</text>
+</svg>

@@ -59,5 +59,5 @@
 
   <!-- 줄 12: 결과 주석 -->
   <text x="60" y="282" xml:space="preserve"
-        font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#9aa4b8"># RMSE: 0.8731  (MovieLens 100K 기준)</text>
+        font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#9aa4b8"># 값은 데이터셋마다 다르다 — 본문 참고</text>
 </svg>

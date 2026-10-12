@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="430" viewBox="0 0 880 430">
+  <defs>
+    <marker id="arr" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#e8e8e8"/>
+    </marker>
+    <marker id="arr-b" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#7777cc"/>
+    </marker>
+  </defs>
+  <rect width="880" height="430" fill="#0a0a0a" rx="12"/>
+  <text x="440" y="44" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="22" font-weight="700" fill="#e8e8e8" text-anchor="middle">아이템 기반 CF — 미리 계산하고 요청 때는 조회만</text>
+  <text x="60" y="92" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="14" font-weight="600" fill="#7ec8e3" text-anchor="start">배치 · 하루 한 번</text>
+  <rect x="60" y="105" width="220" height="70" rx="8" fill="#111418" stroke="#7ec8e3" stroke-width="1.5"/>
+  <text x="170.0" y="136.0" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="15" font-weight="600" fill="#e8e8e8" text-anchor="middle">행동 로그</text>
+  <text x="170.0" y="157.0" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888" text-anchor="middle">평점·구매·재생 기록</text>
+  <rect x="330" y="105" width="220" height="70" rx="8" fill="#111418" stroke="#7ec8e3" stroke-width="1.5"/>
+  <text x="440.0" y="136.0" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="15" font-weight="600" fill="#e8e8e8" text-anchor="middle">아이템 간 유사도</text>
+  <text x="440.0" y="157.0" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888" text-anchor="middle">함께 평가한 사용자로 계산</text>
+  <rect x="600" y="105" width="220" height="70" rx="8" fill="#111418" stroke="#7ec8e3" stroke-width="1.5"/>
+  <text x="710.0" y="136.0" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="15" font-weight="600" fill="#e8e8e8" text-anchor="middle">이웃 목록 저장</text>
+  <text x="710.0" y="157.0" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888" text-anchor="middle">아이템마다 상위 100개</text>
+  <text x="60" y="267" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="14" font-weight="600" fill="#55c555" text-anchor="start">실시간 · 요청마다</text>
+  <rect x="60" y="280" width="220" height="70" rx="8" fill="#111418" stroke="#55c555" stroke-width="1.5"/>
+  <text x="170.0" y="311.0" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="15" font-weight="600" fill="#e8e8e8" text-anchor="middle">최근 본 아이템</text>
+  <text x="170.0" y="332.0" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888" text-anchor="middle">사용자의 최근 10개</text>
+  <rect x="330" y="280" width="220" height="70" rx="8" fill="#111418" stroke="#55c555" stroke-width="1.5"/>
+  <text x="440.0" y="311.0" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="15" font-weight="600" fill="#e8e8e8" text-anchor="middle">이웃 목록 조회</text>
+  <text x="440.0" y="332.0" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888" text-anchor="middle">밀리초 단위</text>
+  <rect x="600" y="280" width="220" height="70" rx="8" fill="#111418" stroke="#55c555" stroke-width="1.5"/>
+  <text x="710.0" y="311.0" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="15" font-weight="600" fill="#e8e8e8" text-anchor="middle">후보 합치기</text>
+  <text x="710.0" y="332.0" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888" text-anchor="middle">유사도로 가중해 수백 개</text>
+  <line x1="280" y1="140" x2="330" y2="140" stroke="#e8e8e8" stroke-width="2" marker-end="url(#arr)"/>
+  <line x1="550" y1="140" x2="600" y2="140" stroke="#e8e8e8" stroke-width="2" marker-end="url(#arr)"/>
+  <line x1="280" y1="315" x2="330" y2="315" stroke="#e8e8e8" stroke-width="2" marker-end="url(#arr)"/>
+  <line x1="550" y1="315" x2="600" y2="315" stroke="#e8e8e8" stroke-width="2" marker-end="url(#arr)"/>
+  <path d="M 710 175 L 710 220 L 440 220 L 440 280" fill="none" stroke="#7777cc" stroke-width="2" stroke-dasharray="4,4" marker-end="url(#arr-b)"/>
+  <text x="575" y="204" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#7777cc" text-anchor="middle">미리 계산한 이웃 목록</text>
+  <text x="440" y="398" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888" text-anchor="middle">무거운 계산은 배치에 두고, 요청 시점에는 조회와 합치기만 한다</text>
+</svg>
