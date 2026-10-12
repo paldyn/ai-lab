@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="640" viewBox="0 0 880 640" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <rect width="880" height="640" rx="12" fill="#0a0a0a"/>
+  <defs>
+    <marker id="up" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#55c555"/>
+    </marker>
+    <marker id="dn" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#e05555"/>
+    </marker>
+  </defs>
+  <text x="60" y="46" font-size="22" font-weight="700" fill="#e8e8e8">f(x) = x³ − 3x 의 부호표와 그래프</text>
+  <rect x="60" y="78" width="760" height="138" rx="6" fill="none" stroke="#444" stroke-width="1"/>
+  <line x1="60" y1="124" x2="820" y2="124" stroke="#444" stroke-width="1"/>
+  <line x1="60" y1="170" x2="820" y2="170" stroke="#444" stroke-width="1"/>
+  <line x1="170" y1="78" x2="170" y2="216" stroke="#444" stroke-width="1"/>
+  <text x="115" y="107" font-size="16" font-weight="600" fill="#e8e8e8" text-anchor="middle">x</text>
+  <text x="250" y="107" font-size="16" font-weight="600" fill="#e8e8e8" text-anchor="middle">…</text>
+  <text x="370" y="107" font-size="16" font-weight="600" fill="#e8e8e8" text-anchor="middle">−1</text>
+  <text x="490" y="107" font-size="16" font-weight="600" fill="#e8e8e8" text-anchor="middle">…</text>
+  <text x="610" y="107" font-size="16" font-weight="600" fill="#e8e8e8" text-anchor="middle">1</text>
+  <text x="730" y="107" font-size="16" font-weight="600" fill="#e8e8e8" text-anchor="middle">…</text>
+  <text x="115" y="153" font-size="16" font-weight="600" fill="#e8e8e8" text-anchor="middle">f′(x)</text>
+  <text x="250" y="153" font-size="16" font-weight="600" fill="#55c555" text-anchor="middle">+</text>
+  <text x="370" y="153" font-size="16" font-weight="600" fill="#e8e8e8" text-anchor="middle">0</text>
+  <text x="490" y="153" font-size="16" font-weight="600" fill="#e05555" text-anchor="middle">−</text>
+  <text x="610" y="153" font-size="16" font-weight="600" fill="#e8e8e8" text-anchor="middle">0</text>
+  <text x="730" y="153" font-size="16" font-weight="600" fill="#55c555" text-anchor="middle">+</text>
+  <text x="115" y="199" font-size="16" font-weight="600" fill="#e8e8e8" text-anchor="middle">f(x)</text>
+  <text x="370" y="199" font-size="16" font-weight="600" fill="#e8e8e8" text-anchor="middle">2</text>
+  <text x="610" y="199" font-size="16" font-weight="600" fill="#e8e8e8" text-anchor="middle">−2</text>
+  <line x1="215" y1="203" x2="283" y2="183" stroke="#55c555" stroke-width="2.5" marker-end="url(#up)"/>
+  <line x1="455" y1="183" x2="523" y2="203" stroke="#e05555" stroke-width="2.5" marker-end="url(#dn)"/>
+  <line x1="695" y1="203" x2="763" y2="183" stroke="#55c555" stroke-width="2.5" marker-end="url(#up)"/>
+  <text x="370" y="238" font-size="13" fill="#888" text-anchor="middle">극댓값</text>
+  <text x="610" y="238" font-size="13" fill="#888" text-anchor="middle">극솟값</text>
+  <rect x="356.0" y="280.0" width="294.7" height="300.0" fill="#7ec8e3" fill-opacity="0.08"/>
+  <line x1="130.0" y1="527.8" x2="690.0" y2="527.8" stroke="#888" stroke-width="1.5"/>
+  <line x1="356.0" y1="280.0" x2="356.0" y2="580.0" stroke="#888" stroke-width="1.5"/>
+  <text x="696.0" y="532.8" font-size="13" fill="#888">x</text>
+  <text x="352.0" y="274.0" font-size="13" fill="#888">y</text>
+  <line x1="351.0" y1="462.6" x2="361.0" y2="462.6" stroke="#666" stroke-width="1.5"/>
+  <text x="346.0" y="467.6" font-size="13" fill="#888" text-anchor="end">5</text>
+  <line x1="351.0" y1="397.4" x2="361.0" y2="397.4" stroke="#666" stroke-width="1.5"/>
+  <text x="346.0" y="402.4" font-size="13" fill="#888" text-anchor="end">10</text>
+  <line x1="351.0" y1="332.2" x2="361.0" y2="332.2" stroke="#666" stroke-width="1.5"/>
+  <text x="346.0" y="337.2" font-size="13" fill="#888" text-anchor="end">15</text>
+  <line x1="159.5" y1="522.8" x2="159.5" y2="532.8" stroke="#666" stroke-width="1.5"/>
+  <text x="159.5" y="547.8" font-size="13" fill="#888" text-anchor="middle">-2</text>
+  <line x1="257.7" y1="522.8" x2="257.7" y2="532.8" stroke="#666" stroke-width="1.5"/>
+  <text x="257.7" y="547.8" font-size="13" fill="#888" text-anchor="middle">-1</text>
+  <line x1="454.2" y1="522.8" x2="454.2" y2="532.8" stroke="#666" stroke-width="1.5"/>
+  <text x="454.2" y="547.8" font-size="13" fill="#888" text-anchor="middle">1</text>
+  <line x1="552.5" y1="522.8" x2="552.5" y2="532.8" stroke="#666" stroke-width="1.5"/>
+  <text x="552.5" y="547.8" font-size="13" fill="#888" text-anchor="middle">2</text>
+  <line x1="650.7" y1="522.8" x2="650.7" y2="532.8" stroke="#666" stroke-width="1.5"/>
+  <text x="650.7" y="547.8" font-size="13" fill="#888" text-anchor="middle">3</text>
+  <path d="M 139.8 580.6 L 142.4 576.7 L 145.0 573.0 L 147.6 569.3 L 150.1 565.8 L 152.7 562.4 L 155.3 559.0 L 157.9 555.8 L 160.5 552.7 L 163.0 549.8 L 165.6 546.9 L 168.2 544.1 L 170.8 541.4 L 173.4 538.9 L 175.9 536.4 L 178.5 534.0 L 181.1 531.7 L 183.7 529.6 L 186.2 527.5 L 188.8 525.5 L 191.4 523.6 L 194.0 521.8 L 196.6 520.0 L 199.1 518.4 L 201.7 516.9 L 204.3 515.4 L 206.9 514.0 L 209.5 512.7 L 212.0 511.5 L 214.6 510.4 L 217.2 509.3 L 219.8 508.3 L 222.4 507.4 L 224.9 506.6 L 227.5 505.8 L 230.1 505.1 L 232.7 504.5 L 235.2 503.9 L 237.8 503.5 L 240.4 503.0 L 243.0 502.7 L 245.6 502.4 L 248.1 502.1 L 250.7 501.9 L 253.3 501.8 L 255.9 501.8 L 258.5 501.7 L 261.0 501.8 L 263.6 501.9 L 266.2 502.0 L 268.8 502.2 L 271.4 502.5 L 273.9 502.7 L 276.5 503.1 L 279.1 503.5 L 281.7 503.9 L 284.2 504.3 L 286.8 504.8 L 289.4 505.4 L 292.0 505.9 L 294.6 506.6 L 297.1 507.2 L 299.7 507.9 L 302.3 508.6 L 304.9 509.3 L 307.5 510.1 L 310.0 510.9 L 312.6 511.7 L 315.2 512.5 L 317.8 513.4 L 320.4 514.3 L 322.9 515.2 L 325.5 516.1 L 328.1 517.0 L 330.7 518.0 L 333.2 518.9 L 335.8 519.9 L 338.4 520.9 L 341.0 521.9 L 343.6 522.9 L 346.1 523.9 L 348.7 524.9 L 351.3 526.0 L 353.9 527.0 L 356.5 528.0 L 359.0 529.0 L 361.6 530.1 L 364.2 531.1 L 366.8 532.1 L 369.4 533.1 L 371.9 534.1 L 374.5 535.1 L 377.1 536.1 L 379.7 537.1 L 382.2 538.0 L 384.8 539.0 L 387.4 539.9 L 390.0 540.8 L 392.6 541.7 L 395.1 542.6 L 397.7 543.5 L 400.3 544.3 L 402.9 545.1 L 405.5 545.9 L 408.0 546.6 L 410.6 547.3 L 413.2 548.0 L 415.8 548.7 L 418.4 549.3 L 420.9 549.9 L 423.5 550.5 L 426.1 551.0 L 428.7 551.5 L 431.2 551.9 L 433.8 552.3 L 436.4 552.7 L 439.0 553.0 L 441.6 553.3 L 444.1 553.5 L 446.7 553.7 L 449.3 553.8 L 451.9 553.9 L 454.5 553.9 L 457.0 553.9 L 459.6 553.8 L 462.2 553.6 L 464.8 553.4 L 467.4 553.2 L 469.9 552.9 L 472.5 552.5 L 475.1 552.0 L 477.7 551.5 L 480.2 550.9 L 482.8 550.3 L 485.4 549.6 L 488.0 548.8 L 490.6 547.9 L 493.1 547.0 L 495.7 545.9 L 498.3 544.9 L 500.9 543.7 L 503.5 542.4 L 506.0 541.1 L 508.6 539.7 L 511.2 538.2 L 513.8 536.6 L 516.4 535.0 L 518.9 533.2 L 521.5 531.4 L 524.1 529.4 L 526.7 527.4 L 529.2 525.3 L 531.8 523.1 L 534.4 520.7 L 537.0 518.3 L 539.6 515.8 L 542.1 513.2 L 544.7 510.5 L 547.3 507.7 L 549.9 504.8 L 552.5 501.7 L 555.0 498.6 L 557.6 495.4 L 560.2 492.0 L 562.8 488.5 L 565.4 485.0 L 567.9 481.3 L 570.5 477.4 L 573.1 473.5 L 575.7 469.5 L 578.2 465.3 L 580.8 461.0 L 583.4 456.6 L 586.0 452.0 L 588.6 447.4 L 591.1 442.6 L 593.7 437.7 L 596.3 432.6 L 598.9 427.4 L 601.5 422.1 L 604.0 416.7 L 606.6 411.1 L 609.2 405.3 L 611.8 399.5 L 614.4 393.5 L 616.9 387.3 L 619.5 381.0 L 622.1 374.6 L 624.7 368.0 L 627.2 361.3 L 629.8 354.4 L 632.4 347.4 L 635.0 340.2 L 637.6 332.8 L 640.1 325.4 L 642.7 317.7 L 645.3 309.9 L 647.9 301.9 L 650.5 293.8 L 653.0 285.5 L 655.6 277.1" stroke="#7ec8e3" stroke-width="2.5" fill="none"/>
+  <circle cx="257.7" cy="501.7" r="5" fill="#7777cc"/>
+  <circle cx="356.0" cy="527.8" r="5" fill="#e8e8e8"/>
+  <circle cx="454.2" cy="553.9" r="5" fill="#e8e8e8"/>
+  <circle cx="650.7" cy="293.0" r="5" fill="#e8e8e8"/>
+  <text x="243.7" y="487.7" font-size="13" fill="#7777cc" text-anchor="end">(−1, 2) 구간 밖</text>
+  <text x="470.2" y="573.9" font-size="13" fill="#e05555">(1, −2) 최솟값</text>
+  <text x="634.7" y="321.0" font-size="13" fill="#55c555" text-anchor="end">(3, 18) 최댓값 · 끝점</text>
+  <text x="368.0" y="513.8" font-size="13" fill="#888">(0, 0)</text>
+  <text x="364.0" y="300.0" font-size="13" fill="#7ec8e3">닫힌 구간 [0, 3]</text>
+</svg>

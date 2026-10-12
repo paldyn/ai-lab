@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" viewBox="0 0 880 430" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+<rect x="0" y="0" width="880" height="430" rx="12" fill="#0a0a0a"/>
+<text x="440" y="44" text-anchor="middle" font-size="22" font-weight="700" fill="#e8e8e8">칸 폭이 다르면 개수가 아니라 밀도로 그린다</text>
+<text x="440" y="70" text-anchor="middle" font-size="13" fill="#888">같은 자료 12개, 같은 칸 넷 — 왼쪽은 개수, 오른쪽은 폭 1당 개수</text>
+<text x="220.0" y="112.0" text-anchor="middle" font-size="16" font-weight="600" fill="#e8e8e8">높이 = 개수</text>
+<rect x="60.0" y="180.0" width="160.0" height="160.0" fill="#e05555" fill-opacity="0.35" stroke="#e05555" stroke-width="1.5"/>
+<text x="140.0" y="172.0" text-anchor="middle" font-size="13" font-weight="600" fill="#e05555">4</text>
+<rect x="220.0" y="260.0" width="40.0" height="80.0" fill="#7ec8e3" fill-opacity="0.35" stroke="#7ec8e3" stroke-width="1.5"/>
+<text x="240.0" y="252.0" text-anchor="middle" font-size="13" font-weight="600" fill="#7ec8e3">2</text>
+<rect x="260.0" y="220.0" width="40.0" height="120.0" fill="#7ec8e3" fill-opacity="0.35" stroke="#7ec8e3" stroke-width="1.5"/>
+<text x="280.0" y="212.0" text-anchor="middle" font-size="13" font-weight="600" fill="#7ec8e3">3</text>
+<rect x="300.0" y="220.0" width="80.0" height="120.0" fill="#7ec8e3" fill-opacity="0.35" stroke="#7ec8e3" stroke-width="1.5"/>
+<text x="340.0" y="212.0" text-anchor="middle" font-size="13" font-weight="600" fill="#7ec8e3">3</text>
+<line x1="50.0" y1="340" x2="390.0" y2="340" stroke="#888" stroke-width="1.5"/>
+<line x1="60.0" y1="340" x2="60.0" y2="345" stroke="#444" stroke-width="1.5"/>
+<text x="60.0" y="362.0" text-anchor="middle" font-size="13" fill="#888">0</text>
+<line x1="140.0" y1="340" x2="140.0" y2="345" stroke="#444" stroke-width="1.5"/>
+<text x="140.0" y="362.0" text-anchor="middle" font-size="13" fill="#888">4</text>
+<line x1="220.0" y1="340" x2="220.0" y2="345" stroke="#444" stroke-width="1.5"/>
+<text x="220.0" y="362.0" text-anchor="middle" font-size="13" fill="#888">8</text>
+<line x1="300.0" y1="340" x2="300.0" y2="345" stroke="#444" stroke-width="1.5"/>
+<text x="300.0" y="362.0" text-anchor="middle" font-size="13" fill="#888">12</text>
+<line x1="380.0" y1="340" x2="380.0" y2="345" stroke="#444" stroke-width="1.5"/>
+<text x="380.0" y="362.0" text-anchor="middle" font-size="13" fill="#888">16</text>
+<text x="220.0" y="400.0" text-anchor="middle" font-size="13" fill="#e05555">가장 높은 칸: 0~8 (넓어서 많이 든 것)</text>
+<text x="660.0" y="112.0" text-anchor="middle" font-size="16" font-weight="600" fill="#e8e8e8">높이 = 밀도 (넓이 = 개수)</text>
+<rect x="500.0" y="280.0" width="160.0" height="60.0" fill="#7ec8e3" fill-opacity="0.35" stroke="#7ec8e3" stroke-width="1.5"/>
+<text x="580.0" y="272.0" text-anchor="middle" font-size="13" font-weight="600" fill="#7ec8e3">0.5</text>
+<rect x="660.0" y="220.0" width="40.0" height="120.0" fill="#7ec8e3" fill-opacity="0.35" stroke="#7ec8e3" stroke-width="1.5"/>
+<text x="680.0" y="212.0" text-anchor="middle" font-size="13" font-weight="600" fill="#7ec8e3">1</text>
+<rect x="700.0" y="160.0" width="40.0" height="180.0" fill="#e05555" fill-opacity="0.35" stroke="#e05555" stroke-width="1.5"/>
+<text x="720.0" y="152.0" text-anchor="middle" font-size="13" font-weight="600" fill="#e05555">1.5</text>
+<rect x="740.0" y="250.0" width="80.0" height="90.0" fill="#7ec8e3" fill-opacity="0.35" stroke="#7ec8e3" stroke-width="1.5"/>
+<text x="780.0" y="242.0" text-anchor="middle" font-size="13" font-weight="600" fill="#7ec8e3">0.75</text>
+<line x1="490.0" y1="340" x2="830.0" y2="340" stroke="#888" stroke-width="1.5"/>
+<line x1="500.0" y1="340" x2="500.0" y2="345" stroke="#444" stroke-width="1.5"/>
+<text x="500.0" y="362.0" text-anchor="middle" font-size="13" fill="#888">0</text>
+<line x1="580.0" y1="340" x2="580.0" y2="345" stroke="#444" stroke-width="1.5"/>
+<text x="580.0" y="362.0" text-anchor="middle" font-size="13" fill="#888">4</text>
+<line x1="660.0" y1="340" x2="660.0" y2="345" stroke="#444" stroke-width="1.5"/>
+<text x="660.0" y="362.0" text-anchor="middle" font-size="13" fill="#888">8</text>
+<line x1="740.0" y1="340" x2="740.0" y2="345" stroke="#444" stroke-width="1.5"/>
+<text x="740.0" y="362.0" text-anchor="middle" font-size="13" fill="#888">12</text>
+<line x1="820.0" y1="340" x2="820.0" y2="345" stroke="#444" stroke-width="1.5"/>
+<text x="820.0" y="362.0" text-anchor="middle" font-size="13" fill="#888">16</text>
+<text x="660.0" y="400.0" text-anchor="middle" font-size="13" fill="#e05555">가장 높은 칸: 10~12 (실제로 빽빽한 곳)</text>
+</svg>
