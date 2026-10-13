@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="420" viewBox="0 0 880 420" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <defs>
+    <marker id="rvq-a" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#7ec8e3"/>
+    </marker>
+    <marker id="rvq-b" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#55c555"/>
+    </marker>
+  </defs>
+  <rect x="0" y="0" width="880" height="420" rx="12" fill="#0a0a0a"/>
+
+  <text x="60" y="42" font-size="22" font-weight="700" fill="#e8e8e8">잔차 벡터 양자화 — 프레임 하나가 토큰 여러 개가 된다</text>
+  <text x="60" y="72" font-size="13" fill="#888">겹마다 앞 겹이 근사하고 남은 차이(잔차)만 다시 근사한다</text>
+
+  <rect x="60" y="96" width="120" height="70" rx="8" fill="#111318" stroke="#3a4a6e" stroke-width="1"/>
+  <text x="120" y="126" font-size="13" font-weight="600" fill="#e8e8e8" text-anchor="middle">프레임 벡터</text>
+  <text x="120" y="146" font-size="11" fill="#9aa4b8" text-anchor="middle">1/75초 구간</text>
+
+  <rect x="220" y="96" width="120" height="70" rx="8" fill="#111318" stroke="#7ec8e3" stroke-width="1"/>
+  <text x="280" y="126" font-size="13" font-weight="600" fill="#e8e8e8" text-anchor="middle">1겹 코드북</text>
+  <text x="280" y="146" font-size="11" fill="#9aa4b8" text-anchor="middle">큰 윤곽</text>
+
+  <rect x="380" y="96" width="120" height="70" rx="8" fill="#111318" stroke="#7ec8e3" stroke-width="1"/>
+  <text x="440" y="126" font-size="13" font-weight="600" fill="#e8e8e8" text-anchor="middle">2겹 코드북</text>
+  <text x="440" y="146" font-size="11" fill="#9aa4b8" text-anchor="middle">남은 차이</text>
+
+  <rect x="540" y="96" width="120" height="70" rx="8" fill="#111318" stroke="#3a4a6e" stroke-width="1" stroke-dasharray="4,4"/>
+  <text x="600" y="126" font-size="13" font-weight="600" fill="#e8e8e8" text-anchor="middle">3~7겹</text>
+  <text x="600" y="146" font-size="11" fill="#9aa4b8" text-anchor="middle">점점 미세하게</text>
+
+  <rect x="700" y="96" width="120" height="70" rx="8" fill="#111318" stroke="#7ec8e3" stroke-width="1"/>
+  <text x="760" y="126" font-size="13" font-weight="600" fill="#e8e8e8" text-anchor="middle">8겹 코드북</text>
+  <text x="760" y="146" font-size="11" fill="#9aa4b8" text-anchor="middle">숨소리 · 음색</text>
+
+  <line x1="180" y1="131" x2="220" y2="131" stroke="#7ec8e3" stroke-width="2" marker-end="url(#rvq-a)"/>
+  <line x1="340" y1="131" x2="380" y2="131" stroke="#7ec8e3" stroke-width="2" marker-end="url(#rvq-a)"/>
+  <line x1="500" y1="131" x2="540" y2="131" stroke="#7ec8e3" stroke-width="2" marker-end="url(#rvq-a)"/>
+  <line x1="660" y1="131" x2="700" y2="131" stroke="#7ec8e3" stroke-width="2" marker-end="url(#rvq-a)"/>
+
+  <line x1="280" y1="166" x2="280" y2="214" stroke="#55c555" stroke-width="2" marker-end="url(#rvq-b)"/>
+  <line x1="440" y1="166" x2="440" y2="214" stroke="#55c555" stroke-width="2" marker-end="url(#rvq-b)"/>
+  <line x1="600" y1="166" x2="600" y2="214" stroke="#55c555" stroke-width="2" marker-end="url(#rvq-b)"/>
+  <line x1="760" y1="166" x2="760" y2="214" stroke="#55c555" stroke-width="2" marker-end="url(#rvq-b)"/>
+
+  <rect x="220" y="214" width="120" height="44" rx="8" fill="#111318" stroke="#55c555" stroke-width="1"/>
+  <text x="280" y="241" font-size="13" font-weight="600" fill="#e8e8e8" text-anchor="middle">토큰 412</text>
+  <rect x="380" y="214" width="120" height="44" rx="8" fill="#111318" stroke="#55c555" stroke-width="1"/>
+  <text x="440" y="241" font-size="13" font-weight="600" fill="#e8e8e8" text-anchor="middle">토큰 87</text>
+  <rect x="540" y="214" width="120" height="44" rx="8" fill="#111318" stroke="#55c555" stroke-width="1"/>
+  <text x="600" y="241" font-size="13" font-weight="600" fill="#e8e8e8" text-anchor="middle">토큰 다섯 개</text>
+  <rect x="700" y="214" width="120" height="44" rx="8" fill="#111318" stroke="#55c555" stroke-width="1"/>
+  <text x="760" y="241" font-size="13" font-weight="600" fill="#e8e8e8" text-anchor="middle">토큰 905</text>
+
+  <text x="60" y="241" font-size="13" fill="#9aa4b8">각 겹의 번호</text>
+  <text x="220" y="286" font-size="13" fill="#55c555">프레임 하나 = 0~1,023 사이의 번호 8개</text>
+
+  <rect x="60" y="310" width="360" height="76" rx="8" fill="#111318" stroke="#e05555" stroke-width="1"/>
+  <text x="240" y="340" font-size="16" font-weight="600" fill="#e8e8e8" text-anchor="middle">음향 토큰 1초 = 600개</text>
+  <text x="240" y="364" font-size="13" fill="#9aa4b8" text-anchor="middle">75프레임 × 8겹</text>
+
+  <rect x="460" y="310" width="360" height="76" rx="8" fill="#111318" stroke="#3a4a6e" stroke-width="1"/>
+  <text x="640" y="340" font-size="16" font-weight="600" fill="#e8e8e8" text-anchor="middle">텍스트 토큰 1초 ≈ 서너 개</text>
+  <text x="640" y="364" font-size="13" fill="#9aa4b8" text-anchor="middle">같은 말을 글자로 적었을 때</text>
+</svg>

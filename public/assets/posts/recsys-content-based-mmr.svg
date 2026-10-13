@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="400" viewBox="0 0 880 400">
+  <defs>
+    <marker id="ab" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#7ec8e3"/>
+    </marker>
+  </defs>
+  <rect width="880" height="400" fill="#0a0a0a" rx="12"/>
+  <text x="440" y="40" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="22" font-weight="700" fill="#e8e8e8" text-anchor="middle">MMR 재랭킹 (λ = 0.7)</text>
+
+  <text x="170" y="88" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#e8e8e8" text-anchor="middle">점수순 후보</text>
+  <text x="440" y="88" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#e8e8e8" text-anchor="middle">둘째 자리 계산</text>
+  <text x="710" y="88" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#e8e8e8" text-anchor="middle">재랭킹 목록</text>
+
+  <!-- 열 1 -->
+  <rect x="60" y="110" width="220" height="60" rx="8" fill="#141414" stroke="#3a3a3a"/>
+  <text x="84" y="135" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="600" fill="#e8e8e8">A · 관련도 0.61</text>
+  <text x="84" y="155" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="12" fill="#888">가장 높다</text>
+  <rect x="60" y="185" width="220" height="60" rx="8" fill="#141414" stroke="#3a3a3a"/>
+  <text x="84" y="210" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="600" fill="#e8e8e8">B · 관련도 0.60</text>
+  <text x="84" y="230" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="12" fill="#888">A와 유사도 0.9</text>
+  <rect x="60" y="260" width="220" height="60" rx="8" fill="#141414" stroke="#3a3a3a"/>
+  <text x="84" y="285" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="600" fill="#e8e8e8">C · 관련도 0.40</text>
+  <text x="84" y="305" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="12" fill="#888">A와 유사도 0.2</text>
+
+  <line x1="280" y1="215" x2="330" y2="215" stroke="#7ec8e3" stroke-width="2" marker-end="url(#ab)"/>
+
+  <!-- 열 2 -->
+  <rect x="330" y="110" width="220" height="60" rx="8" fill="#141414" stroke="#3a3a3a"/>
+  <text x="354" y="135" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="600" fill="#e8e8e8">A · 첫 자리</text>
+  <text x="354" y="155" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="12" fill="#888">견줄 것이 없어 관련도만</text>
+  <rect x="330" y="185" width="220" height="60" rx="8" fill="#1f1212" stroke="#e05555"/>
+  <text x="354" y="210" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="600" fill="#e8e8e8">B · 0.7×0.60 − 0.3×0.9</text>
+  <text x="354" y="230" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="12" fill="#e05555">= 0.15</text>
+  <rect x="330" y="260" width="220" height="60" rx="8" fill="#0f1a0f" stroke="#55c555"/>
+  <text x="354" y="285" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="600" fill="#e8e8e8">C · 0.7×0.40 − 0.3×0.2</text>
+  <text x="354" y="305" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="12" fill="#55c555">= 0.22 → 선택</text>
+
+  <line x1="550" y1="215" x2="600" y2="215" stroke="#7ec8e3" stroke-width="2" marker-end="url(#ab)"/>
+
+  <!-- 열 3 -->
+  <rect x="600" y="110" width="220" height="60" rx="8" fill="#141414" stroke="#3a3a3a"/>
+  <text x="624" y="146" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="600" fill="#e8e8e8">1 · A</text>
+  <rect x="600" y="185" width="220" height="60" rx="8" fill="#0f1a0f" stroke="#55c555"/>
+  <text x="624" y="221" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="600" fill="#e8e8e8">2 · C</text>
+  <rect x="600" y="260" width="220" height="60" rx="8" fill="#141414" stroke="#3a3a3a"/>
+  <text x="624" y="296" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="600" fill="#e8e8e8">3 · B</text>
+
+  <text x="440" y="362" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888" text-anchor="middle">목록 안 다양성: [A, C]는 0.8, 점수순 [A, B]였다면 0.1</text>
+</svg>

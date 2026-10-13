@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="420" viewBox="0 0 880 420">
+  <defs>
+    <marker id="arr" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#7ec8e3"/>
+    </marker>
+  </defs>
+  <rect width="880" height="420" fill="#0a0a0a" rx="12"/>
+  <g font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+    <text x="440" y="46" font-size="22" font-weight="700" fill="#e8e8e8" text-anchor="middle">잔차 벡터 양자화</text>
+    <text x="440" y="74" font-size="13" fill="#888" text-anchor="middle">원래 값 0.73을 코드북 세 겹이 차례로 근사한다 (1차원 예)</text>
+
+    <rect x="60" y="110" width="220" height="120" rx="8" fill="#141a26" stroke="#7ec8e3" stroke-width="1.5"/>
+    <text x="170" y="144" font-size="16" font-weight="600" fill="#e8e8e8" text-anchor="middle">1겹 코드북</text>
+    <text x="170" y="174" font-size="13" fill="#e8e8e8" text-anchor="middle">입력 0.73 → 고름 0.5</text>
+    <text x="170" y="202" font-size="14" fill="#ce9178" text-anchor="middle">남은 잔차 0.23</text>
+
+    <line x1="280" y1="170" x2="330" y2="170" stroke="#7ec8e3" stroke-width="2" marker-end="url(#arr)"/>
+
+    <rect x="330" y="110" width="220" height="120" rx="8" fill="#141a26" stroke="#7ec8e3" stroke-width="1.5"/>
+    <text x="440" y="144" font-size="16" font-weight="600" fill="#e8e8e8" text-anchor="middle">2겹 코드북</text>
+    <text x="440" y="174" font-size="13" fill="#e8e8e8" text-anchor="middle">입력 0.23 → 고름 0.25</text>
+    <text x="440" y="202" font-size="14" fill="#ce9178" text-anchor="middle">남은 잔차 −0.02</text>
+
+    <line x1="550" y1="170" x2="600" y2="170" stroke="#7ec8e3" stroke-width="2" marker-end="url(#arr)"/>
+
+    <rect x="600" y="110" width="220" height="120" rx="8" fill="#141a26" stroke="#7ec8e3" stroke-width="1.5"/>
+    <text x="710" y="144" font-size="16" font-weight="600" fill="#e8e8e8" text-anchor="middle">3겹 코드북</text>
+    <text x="710" y="174" font-size="13" fill="#e8e8e8" text-anchor="middle">입력 −0.02 → 고름 −0.02</text>
+    <text x="710" y="202" font-size="14" fill="#55c555" text-anchor="middle">남은 잔차 0</text>
+
+    <rect x="60" y="256" width="220" height="56" rx="8" fill="#0f1a12" stroke="#55c555" stroke-width="1"/>
+    <text x="170" y="289" font-size="14" fill="#e8e8e8" text-anchor="middle">누적 근사 0.50</text>
+    <rect x="330" y="256" width="220" height="56" rx="8" fill="#0f1a12" stroke="#55c555" stroke-width="1"/>
+    <text x="440" y="289" font-size="14" fill="#e8e8e8" text-anchor="middle">누적 근사 0.75</text>
+    <rect x="600" y="256" width="220" height="56" rx="8" fill="#0f1a12" stroke="#55c555" stroke-width="1"/>
+    <text x="710" y="289" font-size="14" fill="#55c555" text-anchor="middle">누적 근사 0.73</text>
+
+    <text x="440" y="352" font-size="16" font-weight="600" fill="#e8e8e8" text-anchor="middle">디코더는 겹마다 고른 값을 더한다 — 0.5 + 0.25 − 0.02 = 0.73</text>
+    <text x="440" y="382" font-size="13" fill="#888" text-anchor="middle">앞 겹이 큰 줄기를, 뒤 겹이 남은 작은 오차를 맡는다</text>
+  </g>
+</svg>

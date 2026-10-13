@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="430" viewBox="0 0 880 430" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <defs>
+    <marker id="opBlue" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#7ec8e3"/>
+    </marker>
+    <marker id="opGreen" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#55c555"/>
+    </marker>
+    <marker id="opPurple" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#7777cc"/>
+    </marker>
+  </defs>
+  <rect x="0" y="0" width="880" height="430" rx="12" fill="#0a0a0a"/>
+
+  <text x="62" y="42" font-size="22" font-weight="700" fill="#e8e8e8">출력은 모달리티마다 다른 길로 나간다</text>
+  <text x="62" y="68" font-size="13" fill="#888">경계 토큰이 나오면 그 뒤를 어느 길로 보낼지 갈린다. 텍스트 길은 그대로 둔다.</text>
+
+  <rect x="62" y="104" width="170" height="236" rx="8" fill="#12151c" stroke="#3a4a6e" stroke-width="1.5"/>
+  <text x="86" y="210" font-size="16" font-weight="600" fill="#e8e8e8">백본</text>
+  <text x="86" y="234" font-size="11" fill="#9aa4b8">한 줄을 이어 쓰는</text>
+  <text x="86" y="252" font-size="11" fill="#9aa4b8">언어 모델 본체</text>
+
+  <line x1="232" y1="144" x2="290" y2="144" stroke="#7ec8e3" stroke-width="2" marker-end="url(#opBlue)"/>
+  <rect x="290" y="114" width="230" height="60" rx="8" fill="#12151c" stroke="#7ec8e3" stroke-width="1.5"/>
+  <text x="314" y="138" font-size="13" font-weight="600" fill="#7ec8e3">텍스트 토큰</text>
+  <text x="314" y="158" font-size="11" fill="#9aa4b8">어휘 번호를 고른다</text>
+  <line x1="520" y1="144" x2="578" y2="144" stroke="#7ec8e3" stroke-width="2" marker-end="url(#opBlue)"/>
+  <rect x="578" y="114" width="240" height="60" rx="8" fill="#12151c" stroke="#3a4a6e" stroke-width="1.5"/>
+  <text x="602" y="138" font-size="13" font-weight="600" fill="#e8e8e8">글자</text>
+  <text x="602" y="158" font-size="11" fill="#9aa4b8">번호를 그대로 글자로 바꾼다</text>
+
+  <line x1="232" y1="222" x2="290" y2="222" stroke="#55c555" stroke-width="2" marker-end="url(#opGreen)"/>
+  <rect x="290" y="192" width="230" height="60" rx="8" fill="#12151c" stroke="#55c555" stroke-width="1.5"/>
+  <text x="314" y="216" font-size="13" font-weight="600" fill="#55c555">&lt;aud&gt; 이산 토큰</text>
+  <text x="314" y="236" font-size="11" fill="#9aa4b8">코드북 번호를 고른다</text>
+  <line x1="520" y1="222" x2="578" y2="222" stroke="#55c555" stroke-width="2" marker-end="url(#opGreen)"/>
+  <rect x="578" y="192" width="240" height="60" rx="8" fill="#12151c" stroke="#3a4a6e" stroke-width="1.5"/>
+  <text x="602" y="216" font-size="13" font-weight="600" fill="#e8e8e8">코덱 디코더</text>
+  <text x="602" y="236" font-size="11" fill="#9aa4b8">번호를 파형으로 되살린다</text>
+
+  <line x1="232" y1="300" x2="290" y2="300" stroke="#7777cc" stroke-width="2" marker-end="url(#opPurple)"/>
+  <rect x="290" y="270" width="230" height="60" rx="8" fill="#12151c" stroke="#7777cc" stroke-width="1.5"/>
+  <text x="314" y="294" font-size="13" font-weight="600" fill="#7777cc">&lt;img&gt; 조건 벡터</text>
+  <text x="314" y="314" font-size="11" fill="#9aa4b8">고르지 않고 벡터만 넘긴다</text>
+  <line x1="520" y1="300" x2="578" y2="300" stroke="#7777cc" stroke-width="2" marker-end="url(#opPurple)"/>
+  <rect x="578" y="270" width="240" height="60" rx="8" fill="#12151c" stroke="#3a4a6e" stroke-width="1.5"/>
+  <text x="602" y="294" font-size="13" font-weight="600" fill="#e8e8e8">확산 디코더</text>
+  <text x="602" y="314" font-size="11" fill="#9aa4b8">잡음에서 픽셀을 다듬는다</text>
+
+  <text x="62" y="378" font-size="12" fill="#9aa4b8">위 두 길은 같은 손실 하나로 학습되고 같은 줄에 섞인다. 아래 길은 품질이 오르는 대신</text>
+  <text x="62" y="398" font-size="12" fill="#9aa4b8">백본과 디코더 사이에 경계가 다시 생긴다 — 다만 오가는 것이 글자가 아니라 벡터다.</text>
+</svg>

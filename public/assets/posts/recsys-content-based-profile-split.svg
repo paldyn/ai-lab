@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="430" viewBox="0 0 880 430">
+  <defs>
+    <marker id="ar" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#e05555"/>
+    </marker>
+    <marker id="ag" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#55c555"/>
+    </marker>
+    <marker id="ax" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#555"/>
+    </marker>
+  </defs>
+  <rect width="880" height="430" fill="#0a0a0a" rx="12"/>
+  <text x="440" y="40" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="22" font-weight="700" fill="#e8e8e8" text-anchor="middle">평균 프로파일과 군집 프로파일</text>
+
+  <rect x="60" y="62" width="360" height="330" rx="10" fill="none" stroke="#2a2a2a"/>
+  <rect x="460" y="62" width="360" height="330" rx="10" fill="none" stroke="#2a2a2a"/>
+  <text x="240" y="88" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#e8e8e8" text-anchor="middle">평균 하나</text>
+  <text x="640" y="88" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#e8e8e8" text-anchor="middle">갈래마다 하나</text>
+
+  <!-- 왼쪽 축 -->
+  <line x1="100" y1="340" x2="380" y2="340" stroke="#555" stroke-width="1.5" marker-end="url(#ax)"/>
+  <line x1="100" y1="340" x2="100" y2="110" stroke="#555" stroke-width="1.5" marker-end="url(#ax)"/>
+  <circle cx="299" cy="323" r="6" fill="#7ec8e3"/>
+  <circle cx="312" cy="303" r="6" fill="#7ec8e3"/>
+  <circle cx="284" cy="291" r="6" fill="#7ec8e3"/>
+  <circle cx="152" cy="147" r="6" fill="#7777cc"/>
+  <circle cx="137" cy="128" r="6" fill="#7777cc"/>
+  <circle cx="117" cy="151" r="6" fill="#7777cc"/>
+  <text x="326" y="300" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="600" fill="#7ec8e3">SF</text>
+  <text x="166" y="128" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="600" fill="#7777cc">로맨틱 코미디</text>
+  <line x1="100" y1="340" x2="227" y2="213" stroke="#e05555" stroke-width="2.5" marker-end="url(#ar)"/>
+  <text x="236" y="236" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e05555">평균 (0.5, 0.5)</text>
+  <circle cx="263" cy="177" r="7" fill="none" stroke="#e8e8e8" stroke-width="2"/>
+  <text x="278" y="174" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e8e8e8">SF 로맨스 · 1.0</text>
+  <text x="240" y="374" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888" text-anchor="middle">순수 SF·로맨틱 코미디는 둘 다 0.707</text>
+
+  <!-- 오른쪽 축 -->
+  <line x1="500" y1="340" x2="780" y2="340" stroke="#555" stroke-width="1.5" marker-end="url(#ax)"/>
+  <line x1="500" y1="340" x2="500" y2="110" stroke="#555" stroke-width="1.5" marker-end="url(#ax)"/>
+  <circle cx="699" cy="323" r="6" fill="#7ec8e3"/>
+  <circle cx="712" cy="303" r="6" fill="#7ec8e3"/>
+  <circle cx="684" cy="291" r="6" fill="#7ec8e3"/>
+  <circle cx="552" cy="147" r="6" fill="#7777cc"/>
+  <circle cx="537" cy="128" r="6" fill="#7777cc"/>
+  <circle cx="517" cy="151" r="6" fill="#7777cc"/>
+  <line x1="500" y1="340" x2="667" y2="311" stroke="#55c555" stroke-width="2.5" marker-end="url(#ag)"/>
+  <line x1="500" y1="340" x2="529" y2="173" stroke="#55c555" stroke-width="2.5" marker-end="url(#ag)"/>
+  <text x="700" y="270" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#55c555">SF 프로파일</text>
+  <text x="570" y="128" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#55c555">로맨틱 코미디</text>
+  <text x="570" y="146" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#55c555">프로파일</text>
+  <text x="640" y="374" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888" text-anchor="middle">후보를 따로 뽑아 비중대로 자리를 나눈다</text>
+</svg>

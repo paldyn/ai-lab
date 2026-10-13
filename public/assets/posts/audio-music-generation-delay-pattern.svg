@@ -1,0 +1,72 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="470" viewBox="0 0 880 470">
+  <rect width="880" height="470" fill="#0a0a0a" rx="12"/>
+  <g font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+    <text x="440" y="46" font-size="22" font-weight="700" fill="#e8e8e8" text-anchor="middle">지연 패턴</text>
+    <text x="440" y="74" font-size="13" fill="#888" text-anchor="middle">k번째 겹을 k−1스텝 늦춘다 · 칸의 t는 그 토큰이 속한 프레임</text>
+    <rect x="430" y="96" width="88" height="240" rx="8" fill="none" stroke="#ce9178" stroke-width="2" stroke-dasharray="5,3"/>
+    <text x="210" y="118" font-size="13" fill="#888" text-anchor="middle">스텝 1</text>
+    <text x="298" y="118" font-size="13" fill="#888" text-anchor="middle">스텝 2</text>
+    <text x="386" y="118" font-size="13" fill="#888" text-anchor="middle">스텝 3</text>
+    <text x="474" y="118" font-size="13" fill="#ce9178" text-anchor="middle">스텝 4</text>
+    <text x="562" y="118" font-size="13" fill="#888" text-anchor="middle">스텝 5</text>
+    <text x="650" y="118" font-size="13" fill="#888" text-anchor="middle">스텝 6</text>
+    <text x="738" y="118" font-size="13" fill="#888" text-anchor="middle">스텝 7</text>
+    <text x="140" y="158" font-size="14" font-weight="600" fill="#e8e8e8" text-anchor="end">1겹</text>
+    <rect x="170" y="130" width="80" height="44" rx="6" fill="#141a26" stroke="#7ec8e3" stroke-width="1.2"/>
+    <text x="210" y="158" font-size="14" fill="#e8e8e8" text-anchor="middle">t1</text>
+    <rect x="258" y="130" width="80" height="44" rx="6" fill="#141a26" stroke="#7ec8e3" stroke-width="1.2"/>
+    <text x="298" y="158" font-size="14" fill="#e8e8e8" text-anchor="middle">t2</text>
+    <rect x="346" y="130" width="80" height="44" rx="6" fill="#141a26" stroke="#7ec8e3" stroke-width="1.2"/>
+    <text x="386" y="158" font-size="14" fill="#e8e8e8" text-anchor="middle">t3</text>
+    <rect x="434" y="130" width="80" height="44" rx="6" fill="#141a26" stroke="#7ec8e3" stroke-width="1.2"/>
+    <text x="474" y="158" font-size="14" fill="#e8e8e8" text-anchor="middle">t4</text>
+    <rect x="522" y="130" width="80" height="44" rx="6" fill="#141a26" stroke="#7ec8e3" stroke-width="1.2"/>
+    <text x="562" y="158" font-size="14" fill="#e8e8e8" text-anchor="middle">t5</text>
+    <rect x="610" y="130" width="80" height="44" rx="6" fill="#141a26" stroke="#7ec8e3" stroke-width="1.2"/>
+    <text x="650" y="158" font-size="14" fill="#e8e8e8" text-anchor="middle">t6</text>
+    <rect x="698" y="130" width="80" height="44" rx="6" fill="#141a26" stroke="#7ec8e3" stroke-width="1.2"/>
+    <text x="738" y="158" font-size="14" fill="#e8e8e8" text-anchor="middle">t7</text>
+    <text x="140" y="210" font-size="14" font-weight="600" fill="#e8e8e8" text-anchor="end">2겹</text>
+    <rect x="170" y="182" width="80" height="44" rx="6" fill="none" stroke="#333" stroke-width="1" stroke-dasharray="4,4"/>
+    <rect x="258" y="182" width="80" height="44" rx="6" fill="#141a26" stroke="#7ec8e3" stroke-width="1.2"/>
+    <text x="298" y="210" font-size="14" fill="#e8e8e8" text-anchor="middle">t1</text>
+    <rect x="346" y="182" width="80" height="44" rx="6" fill="#141a26" stroke="#7ec8e3" stroke-width="1.2"/>
+    <text x="386" y="210" font-size="14" fill="#e8e8e8" text-anchor="middle">t2</text>
+    <rect x="434" y="182" width="80" height="44" rx="6" fill="#141a26" stroke="#7ec8e3" stroke-width="1.2"/>
+    <text x="474" y="210" font-size="14" fill="#e8e8e8" text-anchor="middle">t3</text>
+    <rect x="522" y="182" width="80" height="44" rx="6" fill="#141a26" stroke="#7ec8e3" stroke-width="1.2"/>
+    <text x="562" y="210" font-size="14" fill="#e8e8e8" text-anchor="middle">t4</text>
+    <rect x="610" y="182" width="80" height="44" rx="6" fill="#141a26" stroke="#7ec8e3" stroke-width="1.2"/>
+    <text x="650" y="210" font-size="14" fill="#e8e8e8" text-anchor="middle">t5</text>
+    <rect x="698" y="182" width="80" height="44" rx="6" fill="#141a26" stroke="#7ec8e3" stroke-width="1.2"/>
+    <text x="738" y="210" font-size="14" fill="#e8e8e8" text-anchor="middle">t6</text>
+    <text x="140" y="262" font-size="14" font-weight="600" fill="#e8e8e8" text-anchor="end">3겹</text>
+    <rect x="170" y="234" width="80" height="44" rx="6" fill="none" stroke="#333" stroke-width="1" stroke-dasharray="4,4"/>
+    <rect x="258" y="234" width="80" height="44" rx="6" fill="none" stroke="#333" stroke-width="1" stroke-dasharray="4,4"/>
+    <rect x="346" y="234" width="80" height="44" rx="6" fill="#141a26" stroke="#7ec8e3" stroke-width="1.2"/>
+    <text x="386" y="262" font-size="14" fill="#e8e8e8" text-anchor="middle">t1</text>
+    <rect x="434" y="234" width="80" height="44" rx="6" fill="#141a26" stroke="#7ec8e3" stroke-width="1.2"/>
+    <text x="474" y="262" font-size="14" fill="#e8e8e8" text-anchor="middle">t2</text>
+    <rect x="522" y="234" width="80" height="44" rx="6" fill="#141a26" stroke="#7ec8e3" stroke-width="1.2"/>
+    <text x="562" y="262" font-size="14" fill="#e8e8e8" text-anchor="middle">t3</text>
+    <rect x="610" y="234" width="80" height="44" rx="6" fill="#141a26" stroke="#7ec8e3" stroke-width="1.2"/>
+    <text x="650" y="262" font-size="14" fill="#e8e8e8" text-anchor="middle">t4</text>
+    <rect x="698" y="234" width="80" height="44" rx="6" fill="#141a26" stroke="#7ec8e3" stroke-width="1.2"/>
+    <text x="738" y="262" font-size="14" fill="#e8e8e8" text-anchor="middle">t5</text>
+    <text x="140" y="314" font-size="14" font-weight="600" fill="#e8e8e8" text-anchor="end">4겹</text>
+    <rect x="170" y="286" width="80" height="44" rx="6" fill="none" stroke="#333" stroke-width="1" stroke-dasharray="4,4"/>
+    <rect x="258" y="286" width="80" height="44" rx="6" fill="none" stroke="#333" stroke-width="1" stroke-dasharray="4,4"/>
+    <rect x="346" y="286" width="80" height="44" rx="6" fill="none" stroke="#333" stroke-width="1" stroke-dasharray="4,4"/>
+    <rect x="434" y="286" width="80" height="44" rx="6" fill="#141a26" stroke="#7ec8e3" stroke-width="1.2"/>
+    <text x="474" y="314" font-size="14" fill="#e8e8e8" text-anchor="middle">t1</text>
+    <rect x="522" y="286" width="80" height="44" rx="6" fill="#141a26" stroke="#7ec8e3" stroke-width="1.2"/>
+    <text x="562" y="314" font-size="14" fill="#e8e8e8" text-anchor="middle">t2</text>
+    <rect x="610" y="286" width="80" height="44" rx="6" fill="#141a26" stroke="#7ec8e3" stroke-width="1.2"/>
+    <text x="650" y="314" font-size="14" fill="#e8e8e8" text-anchor="middle">t3</text>
+    <rect x="698" y="286" width="80" height="44" rx="6" fill="#141a26" stroke="#7ec8e3" stroke-width="1.2"/>
+    <text x="738" y="314" font-size="14" fill="#e8e8e8" text-anchor="middle">t4</text>
+    <text x="440" y="376" font-size="14" fill="#e8e8e8" text-anchor="middle">스텝 4에서 함께 내는 넷은 t4·t3·t2·t1 — 서로 다른 프레임의 토큰이다</text>
+    <text x="440" y="402" font-size="13" fill="#888" text-anchor="middle">2겹의 t3을 고를 때 1겹의 t3은 이미 한 스텝 앞(스텝 3)에 나와 있다</text>
+    <text x="440" y="438" font-size="16" font-weight="600" fill="#e8e8e8" text-anchor="middle">30초 기준 스텝 수 — 펼치기 6,000 · 병렬 1,500 · 지연 1,503</text>
+  </g>
+</svg>

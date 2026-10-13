@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="380" viewBox="0 0 880 380" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <defs>
+    <marker id="rvqArr" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#888888"/>
+    </marker>
+  </defs>
+  <rect x="0" y="0" width="880" height="380" rx="12" fill="#0a0a0a"/>
+
+  <text x="62" y="42" font-size="22" font-weight="700" fill="#e8e8e8">겹마다 남은 오차를 다시 고른다</text>
+  <text x="62" y="68" font-size="13" fill="#888">0.737을 담는 예. 겹이 늘수록 코드북 간격이 촘촘해지고 남는 오차가 줄어든다.</text>
+
+  <rect x="62" y="100" width="220" height="130" rx="8" fill="#12151c" stroke="#3a4a6e" stroke-width="1.5"/>
+  <text x="86" y="128" font-size="13" font-weight="600" fill="#7ec8e3">1겹 · 0.1 간격</text>
+  <text x="86" y="156" font-size="11" fill="#9aa4b8">담을 값</text>
+  <text x="200" y="156" font-size="13" fill="#e8e8e8">0.737</text>
+  <text x="86" y="182" font-size="11" fill="#9aa4b8">고른 값</text>
+  <text x="200" y="182" font-size="13" font-weight="600" fill="#7ec8e3">0.7</text>
+  <text x="86" y="208" font-size="11" fill="#9aa4b8">남은 오차</text>
+  <text x="200" y="208" font-size="13" fill="#e05555">0.037</text>
+
+  <rect x="330" y="100" width="220" height="130" rx="8" fill="#12151c" stroke="#3a4a6e" stroke-width="1.5"/>
+  <text x="354" y="128" font-size="13" font-weight="600" fill="#7777cc">2겹 · 0.01 간격</text>
+  <text x="354" y="156" font-size="11" fill="#9aa4b8">담을 값</text>
+  <text x="468" y="156" font-size="13" fill="#e8e8e8">0.037</text>
+  <text x="354" y="182" font-size="11" fill="#9aa4b8">고른 값</text>
+  <text x="468" y="182" font-size="13" font-weight="600" fill="#7777cc">0.04</text>
+  <text x="354" y="208" font-size="11" fill="#9aa4b8">남은 오차</text>
+  <text x="468" y="208" font-size="13" fill="#e05555">−0.003</text>
+
+  <rect x="598" y="100" width="220" height="130" rx="8" fill="#12151c" stroke="#3a4a6e" stroke-width="1.5"/>
+  <text x="622" y="128" font-size="13" font-weight="600" fill="#55c555">3겹 · 0.001 간격</text>
+  <text x="622" y="156" font-size="11" fill="#9aa4b8">담을 값</text>
+  <text x="736" y="156" font-size="13" fill="#e8e8e8">−0.003</text>
+  <text x="622" y="182" font-size="11" fill="#9aa4b8">고른 값</text>
+  <text x="736" y="182" font-size="13" font-weight="600" fill="#55c555">−0.003</text>
+  <text x="622" y="208" font-size="11" fill="#9aa4b8">남은 오차</text>
+  <text x="736" y="208" font-size="13" fill="#55c555">0</text>
+
+  <line x1="282" y1="165" x2="330" y2="165" stroke="#888888" stroke-width="2" marker-end="url(#rvqArr)"/>
+  <line x1="550" y1="165" x2="598" y2="165" stroke="#888888" stroke-width="2" marker-end="url(#rvqArr)"/>
+
+  <text x="62" y="268" font-size="13" font-weight="600" fill="#e8e8e8">고른 값을 더하면 되살아나는 값</text>
+  <rect x="62" y="284" width="220" height="48" rx="6" fill="#12151c" stroke="#3a4a6e" stroke-width="1"/>
+  <text x="86" y="313" font-size="13" fill="#9aa4b8">1겹까지 <tspan fill="#e8e8e8" font-weight="600">0.7</tspan></text>
+  <rect x="330" y="284" width="220" height="48" rx="6" fill="#12151c" stroke="#3a4a6e" stroke-width="1"/>
+  <text x="354" y="313" font-size="13" fill="#9aa4b8">2겹까지 <tspan fill="#e8e8e8" font-weight="600">0.74</tspan></text>
+  <rect x="598" y="284" width="220" height="48" rx="6" fill="#12151c" stroke="#3a4a6e" stroke-width="1"/>
+  <text x="622" y="313" font-size="13" fill="#9aa4b8">3겹까지 <tspan fill="#55c555" font-weight="600">0.737</tspan></text>
+  <text x="62" y="360" font-size="12" fill="#9aa4b8">겹을 덜 쓰면 토큰이 줄고 소리가 거칠어진다. 첫 겹이 큰 줄기를, 뒷 겹이 결을 맡는다.</text>
+</svg>
