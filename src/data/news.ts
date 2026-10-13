@@ -160,7 +160,7 @@ export interface NewsDetail {
   commentary: string;
 }
 
-export const globalNewsUpdatedAt = '2026-10-12';
+export const globalNewsUpdatedAt = '2026-10-13';
 
 /**
  * 공식 발표 한 건 = 항목 한 개. 2026년 1월부터 쌓는 아카이브이며 오래된 항목을
@@ -171,6 +171,20 @@ export const globalNewsUpdatedAt = '2026-10-12';
  * 목록에서 파생됩니다. 갱신 시 globalNewsUpdatedAt도 함께 올립니다.
  */
 const entries: NewsItem[] = [
+  {
+    id: 'higgsfield-longer-videos-voice',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'Higgsfield AI, GPT-6 Astra로 AI 영상을 1분에서 10분 넘게 늘려',
+    summary:
+      'OpenAI가 영상·이미지 생성 플랫폼 Higgsfield AI의 도입 사례를 소개했다. ' +
+      'GPT-6 Astra 이전 1분 안팎이던 영상이 10분을 넘게 됐고, GPT-Image-2.5와 Codex도 제작·개발 흐름에 쓴다.',
+    publishedAt: '2026-10-13',
+    collectedAt: '2026-10-14',
+    category: 'Product',
+    signal: '기업 도입 사례',
+    url: 'https://openai.com/index/higgsfield-longer-videos-voice',
+  },
   {
     id: 'gemini-models-introducing-gemini-4-argon',
     source: 'Google DeepMind',

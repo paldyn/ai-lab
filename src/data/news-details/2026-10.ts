@@ -2,6 +2,20 @@ import type { NewsDetail } from '../news';
 
 /** 2026-10 발표의 모달 본문. 목록은 news.ts에 있습니다. */
 export const details: Record<string, NewsDetail> = {
+  'higgsfield-longer-videos-voice': {
+    points: [
+      'GPT-6 Astra 이전에는 약 1분이던 Higgsfield AI 영상이 이제 10분 넘게 만들어진다고 CEO가 밝혔다',
+      '크리에이티브 에이전트가 외부 도구를 불러 3D 모델링 작업을 맡아 긴 영상의 일관성 문제를 다룬다',
+      '구독자 50만 명 가까운 자사 YouTube 채널의 10분 넘는 교육 영상을 AI 워크플로로 만든다',
+      'GPT-Image-2.5는 이미지 위 글자와 인포그래픽을 안정적으로 그려 소상공인 홍보물에 쓴다고 했다',
+      '크리에이티브 약 200명과 엔지니어 약 100명이 협업하며, 크리에이티브가 Codex로 소프트웨어 시제품을 만든다',
+      'GPT-6 Astra가 시제품을 제품에 넣는 데 드는 프런트엔드·백엔드 작업을 줄였다고 했다',
+      '다음 목표는 GPT-Live-1을 염두에 둔 「voice to movie」, 말로 설명하면 실시간으로 영상이 만들어지는 경험이다',
+    ],
+    commentary:
+      '고객 사례지만 영상 길이의 한계를 생성 모델 자체가 아니라 도구를 부르는 에이전트로 넘었다는 점이 눈에 띈다. ' +
+      '수치는 모두 고객 CEO의 말이라 독립 검증은 없고, 한 회사 안에서 GPT-6 Astra·GPT-Image-2.5·Codex·GPT-Live-1을 함께 엮는 그림을 보여 주려는 글로 읽힌다.',
+  },
   'gemini-models-introducing-gemini-4-argon': {
     points: [
       '개발자·기업은 AI Studio와 Gemini platform의 API로, 전 세계에서 오늘부터 쓸 수 있다',
