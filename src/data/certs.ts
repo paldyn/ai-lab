@@ -2536,7 +2536,7 @@ export const certs: Cert[] = [
     difficulty: 3,
     difficultyBasis: '응시자격은 없지만 생성형 AI 실무 6개월을 권장합니다.',
     employment: 2.5,
-    employmentBasis: '같은 등급이지만 신설이라 국내 공고 언급을 못 찾았습니다.',
+    employmentBasis: '같은 등급이지만 국내 채용에서 이 자격을 요구하는 자리는 못 찾았습니다.',
     whatItMeasures:
       'Databricks를 써서 LLM 기반 솔루션을 설계하고 구현하는 능력을 잰다. 복잡한 요구사항을 다룰 수 있는 작업으로 쪼개는 문제 분해와, 지금의 생성형 ' +
       'AI 지형에서 알맞은 모델·도구·접근법을 고르는 판단을 함께 본다. 시험 가이드는 Vector Search, Model Serving, MLflow, ' +
