@@ -339,3 +339,5 @@ k1이 왜 이렇게 움직이는지는 앞 글의 설명으로 이어집니다. 
 읽어주셔서 감사합니다. 😊
 
 **지난 글:** [LLM 심판 일치도 재계산: 무승부를 어떻게 세느냐가 21%p를 만든다](/articles/paper-judge-agreement-recompute)
+
+**다음 글:** [화이트닝이 문장 임베딩을 정말 올리는가: 원본 BERT에서는 올렸고, 검색용으로 학습한 MiniLM에서는 검색과 STS를 둘 다 내렸다](/articles/paper-embedding-whitening)
