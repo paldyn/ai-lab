@@ -292,8 +292,8 @@ AI·데이터 자격이 있는지** 본다. 다섯 곳이다.
 
 | 자격증 | 공식 페이지 | 정해 둔 날 | 지금 상태 |
 | --- | --- | --- | --- |
-| AWS Certified AI Business Strategist | `aws.amazon.com/certification/certified-ai-business-strategist/` | 2026-10-06 | 베타(85문항 · 170분 · 베타 50 USD, 정식 100 USD · 영어·일본어) |
-| Google Cloud Professional Agentic Architect | `cloud.google.com/learn/certification/agentic-architect/` | 2026-10-10 | 베타 접수 마감, 정식 접수 11월 2일 시작(베타 약 80문항 · 3시간 · 베타 120 USD, 정식 200 USD · 영어 — 정식은 2시간, 문항 수·언어는 공식 페이지에 없음. 객관식 합격 뒤 실습 랩까지 붙어야 취득) |
+| AWS Certified AI Business Strategist | `aws.amazon.com/certification/certified-ai-business-strategist/` | 2026-10-06 | 베타(2026-10-13 확인). 베타는 85문항 · 170분 · 50 USD(정식 100 USD) · 영어·일본어. 시험 가이드(AIB-C01, `docs.aws.amazon.com/aws-certification/latest/ai-business-strategist-01.html`)는 130분 · 합격 700점(100~1,000) · 객관식·복수응답 · 도메인 24/28/24/24%를 적는다 — 시간이 베타 페이지와 다르고 「정식」이라 못 박지 않으며 정식판 문항 수는 없다. 정식 출시일은 공식 페이지에 없음. 발표 블로그(2026-09-01)는 정식 출시 때 언어를 늘린다고 적는다. 2027-02-15까지 따면 Early Adopter 배지가 붙는다 |
+| Google Cloud Professional Agentic Architect | `cloud.google.com/learn/certification/agentic-architect/` | 2026-10-10 | 베타 접수 마감(2026-10-13 확인). 정식 접수는 11월 2일 시작이고, FAQ(`support.google.com/cloud-certification/answer/18080541`)가 정식 공개를 11월 중순으로 적는다. 정식은 2시간 · 200 USD · 결과 7~10영업일이고, 객관식에 붙은 뒤 2개월 안에 실습 랩까지 붙어야 취득한다. 유효기간 1년(다른 Professional은 2년). 시험 가이드 PDF의 섹션 비중은 ~13/17/33/22/15%. 베타는 약 80문항 · 3시간 · 120 USD · 영어이고 결과는 10월 말, 랩 마감은 2026-12-31. 정식판 문항 수·언어는 공식 페이지에 없음 |
 
 **정식 출시를 확인한 주에는 `certs.ts`에 혼자 넣지 말고 보고에서 사람에게 알린다.**
 자격증을 하나 더하면 `certPrepPlan.ts`에 그 시험의 계획(주제 15편 이상, 과목 × 3 이상)도
