@@ -2257,11 +2257,12 @@ export const certs: Cert[] = [
       'NVIDIA 자격증 체계의 입문(entry-level) 등급 자격증이다. 특정 제품 조작 능력보다 머신러닝·AI 핵심 지식부터 신뢰할 수 있는 AI까지 넓게 ' +
       '훑는 구성이다.',
     audience:
-      '데이터 사이언티스트, 머신러닝·소프트웨어 엔지니어, AI DevOps 엔지니어, 클라우드 솔루션 아키텍트, 딥러닝 연구자, LLM 전문가를 포함한 공식 목록 ' +
-      '14개 직군. 생성형 AI·LLM 기초를 처음 정리하려는 입문자 대상이다.',
+      '공식 상세 페이지는 대상을 생성형 AI·LLM 어소시에이트 개발자라는 역할로 적는다 — 최신 생성형 AI LLM 시스템의 개발·프로그래밍·품질 보증에 ' +
+      '기여하고, 숙련된 AI 팀과 함께 데이터셋을 만들고 학습할 모델을 고르고 모델을 학습시키며 모델 테스트·디버깅 과정을 구현하는 사람이다. ' +
+      '애플리케이션용 모델 배포를 이해하고 있어야 하고, 소프트웨어 설계·구현, 여러 언어·플랫폼의 프로그래밍, 시스템 갱신도 맡는다. 생성형 AI·LLM ' +
+      '기초를 처음 정리하려는 입문자 대상이다.',
     format:
-      '객관식(multiple-choice) 시험이고 제한 시간은 1시간이다. 문항 수는 공식 페이지 안에서 갈린다 — 개요 문단은 "includes 50 ' +
-      'questions, and has a 60-minute time limit"라 적고, 상세 표는 "50-60 multiple-choice"라 적는다. 온라인 ' +
+      '객관식(multiple-choice) 50~60문항이고 제한 시간은 1시간이다. 온라인 ' +
       '원격 감독(remote proctored) 방식이며 시험 언어는 상세 페이지 기준 영어다. 원격 응시는 NVIDIA 공인 시험 파트너(NATP)가 응시 ' +
       '절차·본인 확인·360도 환경 점검을 진행하고, 현장 응시도 있다. 원격 응시에는 휴식이 허용되지 않으며 현장 응시에서 휴식을 받더라도 시험 시계는 멈추지 ' +
       '않는다. 결과는 pass/fail로만 나오고 점수를 주지 않는다 — 따라서 합격 기준 정답률은 공식적으로 공개되지 않는다. 결과는 시험 종료 화면에 바로 뜨고 ' +
@@ -2274,7 +2275,8 @@ export const certs: Cert[] = [
       '지나야 재응시할 수 있고, 같은 시험은 12개월에 5회까지이며 이 12개월은 첫 시험을 구매한 날부터 센다. 회차별 실제 날짜는 공식 일정 페이지에서 ' +
       '확인한다.',
     fee:
-      'USD $125 (공식 상세 페이지에 명시). 정책 페이지는 "Exam prices vary and are subject to change."라고만 적는다.',
+      'USD $125 (공식 상세 페이지에 명시). 정책 페이지는 "Exam prices vary and are subject to change."라고 적고, 일부 국가·지역에서는 ' +
+      '세금이 더 붙을 수 있다("In some countries and regions, additional taxes may apply.")고 덧붙인다.',
     refund: [
       {
         when: '시험 시작 24시간 전까지 취소',
@@ -2309,29 +2311,50 @@ export const certs: Cert[] = [
       {
         name: 'Core Machine Learning and AI Knowledge (머신러닝·AI 핵심 지식)',
         weight: '30%',
+        note:
+          '출제 항목: 선임 팀원 감독 아래 모델의 확장성·성능·신뢰성 배포·평가 보조, 데이터 마이닝·시각화 등으로 대규모 데이터에서 인사이트를 뽑는 과정 ' +
+          '이해, RAG·챗봇·요약기 같은 LLM 활용 사례 구축, RAG용 콘텐츠 데이터셋 큐레이션·임베딩, 머신러닝 기초(특성 공학·모델 비교·교차 검증), 파이썬 ' +
+          '자연어 패키지(spaCy·NumPy·벡터 DB 등)의 기능, 연구 논문으로 새 LLM 동향·기술 파악, 텍스트 임베딩 모델 선택·사용, 원하는 결과를 얻는 프롬프트 ' +
+          '엔지니어링, 파이썬 패키지(spaCy·NumPy·Keras 등)로 전통적 머신러닝 분석 구현',
       },
       {
         name: 'Software Development (소프트웨어 개발)',
         weight: '24%',
+        note:
+          '출제 항목: 선임 팀원 감독 아래 모델의 확장성·성능·신뢰성 배포·평가 보조, RAG·챗봇·요약기 같은 LLM 활용 사례 구축, 파이썬 자연어 패키지(spaCy·' +
+          'NumPy·벡터 DB 등)의 기능, 사용자 요구에 필요한 시스템 데이터·하드웨어·소프트웨어 구성 요소 식별, 데이터 수집·실험 등 소프트웨어 프로세스의 동작 ' +
+          '모니터링, 파이썬 패키지(spaCy·NumPy·Keras 등)로 전통적 머신러닝 분석 구현, 선임 팀원 감독 아래 소프트웨어 구성 요소·스크립트 작성',
       },
       {
         name: 'Experimentation (실험)',
         weight: '22%',
+        note:
+          '출제 항목: 선임 팀원 감독 아래 모델 학습·학습 최적화 보조, 사전학습·파인튜닝·RLHF용 대규모 데이터셋 준비(스크래핑·토큰화 등) 보조, LLM ' +
+          '애플리케이션의 하드웨어·소프트웨어 테스트 설계·수행 보조, 비용·이식성·호환성·사용성을 따지는 현행·신기술 평가 보조, 사람 대상 데이터 수집(RLHF ' +
+          '등) 이해·참여, 기존 모델 평가·개선과 벤치마킹, 모델·파이프라인을 평가하는 실험 수행',
       },
       {
-        name: 'Data Analysis and Visualization (데이터 분석·시각화)',
+        name: 'Data Analysis (데이터 분석)',
         weight: '14%',
+        note:
+          '출제 항목: 데이터 마이닝·시각화 등으로 대규모 데이터에서 인사이트를 뽑는 과정 이해, 손실 함수·설명된 분산 비율 같은 통계적 성능 지표로 모델 ' +
+          '비교, 선임 팀원 감독 아래 데이터 분석, 전용 소프트웨어로 그래프·차트 등 시각화를 만들어 분석 결과 전달, 관계·추세, 그리고 연구 결과에 영향을 줄 ' +
+          '수 있는 요인 파악',
       },
       {
         name: 'Trustworthy AI (신뢰할 수 있는 AI)',
         weight: '10%',
+        note: '출제 항목: 신뢰할 수 있는 AI의 윤리 원칙, 데이터 프라이버시와 데이터 동의의 균형, NVIDIA 등의 기술로 AI 신뢰성 높이기, AI 시스템의 편향 최소화',
       },
     ],
     officialUrl: 'https://www.nvidia.com/en-us/learn/certification/generative-ai-llm-associate/',
-    verifiedAt: '2026-09-22',
+    verifiedAt: '2026-10-13',
     notes:
       '- NVIDIA 자격증 체계의 Associate(입문) 등급이다. 현재 Associate 4종(NCA-AIIO, NCA-ADS, NCA-GENL, ' +
-      'NCA-GENM) 중 하나로 정상 운영 중이며, 폐지·대체·명칭 변경 안내는 공식 페이지에서 확인되지 않았다.\n' +
+      'NCA-GENM) 중 하나로 정상 운영 중이고 넷 다 상세 페이지가 응시료를 $125로 적는다. 폐지·대체·명칭 변경 안내는 공식 페이지에서 확인되지 않았다. ' +
+      '인증 인덱스 페이지가 웨비나 안내에서 새 Associate 시험 둘(NCA AI Model & App Development, AI Power & Cooling)을 예고하지만 아직 자격 목록에는 ' +
+      '없다.\n' +
+      '- 과목마다 세부 출제 항목(Exam Topics)과 권장 교육·읽을거리가 상세 페이지에 공개돼 있다.\n' +
       '- 같은 주제의 상위 등급으로 NVIDIA-Certified Professional: Generative AI LLMs(NCP-GENL, $200, 120분, ' +
       '60~70문항)가 따로 있으나, 그 페이지 어디에도 NCA-GENL을 선행 조건으로 요구한다는 문구는 없다 — 선행 자격증 대신 "AI/ML 실무 2~3년"을 ' +
       '권장 사항으로 든다.\n' +
@@ -2342,13 +2365,11 @@ export const certs: Cert[] = [
       '- 정해진 회차가 없는 예약제 시험이므로 응시 일정은 공식 링크로 안내한다.',
     unknowns: [
       '합격 기준 정답률(공식적으로 pass/fail만 통보하며 숫자 기준 미공개)',
-      '각 과목 안의 세부 출제 항목(공식 blueprint는 과목명과 퍼센트만 싣고, study guide 본문은 인증 포털 로그인 뒤에 있어 확인 못 함)',
-      '정확한 문항 수(공식 페이지 안에서 개요 문단은 50문항, 상세 표는 50~60문항으로 갈린다)',
+      '정확한 문항 수(공식 상세 페이지는 50~60문항 범위로만 적는다)',
       '재응시 시 응시료 전액 재납부 여부',
       '한국 응시자 대상 원화 가격·부가세 포함 여부',
       'NCA-GENL의 영어 외 시험 언어 제공 여부와 계획(정책 페이지는 일부 시험만 중국어 간체를 제공한다고 적는데 NCA-GENL이 그에 드는지 불명)',
       '시험 버전 개정 이력 및 개정 주기',
-      'NVIDIA Associate 4종이 모두 $125인지 여부(각 상세 페이지를 전부 대조하지 않음)',
     ],
     studyPath: [
       {
@@ -2360,7 +2381,7 @@ export const certs: Cert[] = [
         ],
       },
       {
-        subject: 'Data Analysis and Visualization (데이터 분석·시각화)',
+        subject: 'Data Analysis (데이터 분석)',
         items: [
           { site: 'ailab', slug: 'ml-tsne-umap' },
           { site: 'ailab', slug: 'app-data-analysis' },
