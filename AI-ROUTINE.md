@@ -603,7 +603,8 @@ npm run build
 `auto/ai-*` 브랜치로 PR을 연다.** Routine 설정에 작업 브랜치(`claude/relaxed-planck`)가
 적혀 있어도 거기에는 푸시하지 않는다. 2026-09-25~09-28에 이 루틴이 `main`과 함께
 `claude/relaxed-planck-*`에도 같은 커밋을 올려 원격에 브랜치가 하루 하나씩 쌓였다
-(내용은 전부 `main`에 이미 있었다).
+(내용은 전부 `main`에 이미 있었다). 2026-10-13에 Routine 설정에서 그 작업 브랜치를
+걷어냈다 — 남아 있는 동안 종료 훅이 「push 안 한 커밋이 있다」고 매번 경고했다.
 
 ```bash
 set -e
