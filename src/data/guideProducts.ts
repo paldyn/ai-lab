@@ -377,12 +377,16 @@ export const guideProducts: Product[] = [
     name: 'Gemini app',
     role: '챗',
     surfaces: ['웹', '데스크톱', '모바일'],
-    models: ['gemini-app-pro', 'gemini-app-flash', 'gemini-app-flash-lite'],
+    models: ['gemini-app-argon', 'gemini-app-pro', 'gemini-app-flash', 'gemini-app-flash-lite'],
     /*
-      support.google.com/gemini/answer/13275745 — 「Gemini has the following available
-      models:」 뒤에 이 셋이 불릿으로 섭니다. 같은 절이 「click the model name」 →
-      「Select the model you want to use.」로 고르는 단계를 적습니다. Android 판을
-      따로 열어도 같은 셋이라 표면 차이가 없습니다.
+      support.google.com/gemini/answer/18648722(「About Gemini models」) — 「Overview of Gemini
+      models」에 넷이 한 줄씩 서고, 「Manually switch models」 절이 「Click the model you want to
+      use.」로 고르는 단계를 적습니다. 「Model availability」 표에서 Argon은 Google AI Pro · Ultra
+      칸에만 있습니다(요금제로 갈리는 값이라 여기 안 적습니다).
+
+      2026-10-14 전에는 「Use Gemini Apps」(13275745)의 「Gemini has the following available
+      models:」 셋이 근거였는데, 그 문서에서 목록이 빠지고 위 문서로 옮겨 갔습니다. Argon은 그날
+      더했습니다(차례는 성능 서열을 따라 맨 앞).
 
       **번호를 안 붙입니다.** 같은 회사 요금제 페이지는 같은 자리를 「Gemini 3.6
       Flash」·「Gemini 3.1 Pro」로 적지만 **원문이 그 둘을 잇지 않습니다** — 번호를
@@ -414,6 +418,7 @@ export const guideProducts: Product[] = [
     */
     surfaces: ['데스크톱', '터미널', 'IDE', 'SDK'],
     models: [
+      'gemini-4-argon',
       'gemini-3-8-flash',
       'gemini-3-7-flash',
       'gemini-3-6-flash',
@@ -427,7 +432,11 @@ export const guideProducts: Product[] = [
     /*
       **셋 중 유일하게 모델 선택기 목록 자체로 확인한 것입니다.**
       antigravity.google/docs/models 의 Reasoning Model 표와 그 아래 드롭다운 목록
-      양쪽에 이 아홉이 그대로 있습니다(선택기 표기는 「GPT-OSS 120B (Medium)」).
+      양쪽에 이 열이 그대로 있습니다(선택기 표기는 「GPT-OSS 120B (Medium)」).
+
+      Gemini 4 Argon은 2026-10-14에 더했습니다 — 표 맨 위에 서고 드롭다운에도 있습니다. 표에서는
+      Ultra · Enterprise만 ✅이고, 각주가 「Not available in Antigravity IDE. Available in the
+      Antigravity app, Antigravity CLI, and IDE extensions.」입니다(표면 · 요금제로 갈리는 값).
 
       Claude 5.5 둘은 2026-10-06에 더했습니다 — 드롭다운에 「Claude Sonnet 5.5 (Thinking)」·
       「Claude Opus 5.5 (Thinking)」이 섰고, 표의 각주가 「** Available on Google AI Pro for

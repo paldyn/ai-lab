@@ -462,24 +462,42 @@ const models: ModelInfo[] = [
 
   /* ── Google ── */
   /*
-    **Gemini 앱 선택기는 번호를 안 붙입니다.** 도움말이 대는 이름이 이 셋뿐이고,
-    같은 회사 요금제 페이지는 같은 자리를 「Gemini 3.6 Flash」·「Gemini 3.1 Pro」로
+    **Gemini 앱 선택기는 번호를 안 붙입니다.** 도움말이 대는 이름이 이 넷뿐이고,
+    같은 회사 요금제 페이지는 같은 자리를 「Gemini 3.8 Flash」·「Gemini 3.1 Pro」로
     다르게 적습니다. **원문이 그 둘을 잇지 않으므로 우리가 잇지 않습니다** — 번호를
     끌어다 붙인 것이 지난 회차에 걸린 자리입니다. 아래 번호가 붙은 항목들과 같은
     것일 수 있지만, 같다고 적힌 문장을 못 봤습니다.
+
+    **2026-10-14에 출처를 옮겼습니다.** 「Use Gemini Apps」(13275745)에서 모델 목록이 빠지고
+    「About Gemini models」(18648722)로 갔습니다 — 「Overview of Gemini models」에 넷이 한 줄씩
+    서고, 「Model availability」 표가 요금제마다 고를 수 있는 것을 적습니다(Argon은 AI Pro ·
+    Ultra). Gemini Pro의 「가장 앞선 모델」 구절도 함께 사라졌습니다 — 지금 Pro는 「An advanced
+    reasoning model」이고 최상급은 Argon의 「the highest performance」입니다.
   */
+  {
+    id: 'gemini-app-argon',
+    vendorId: 'google',
+    name: 'Gemini Argon',
+    apiId: null,
+    useWhen: {
+      text: '깊은 추론이 필요한 복잡한 워크플로에',
+      url: 'https://support.google.com/gemini/answer/18648722',
+    },
+    rating: { kind: 'phrase', text: '가장 높은 성능', url: 'https://support.google.com/gemini/answer/18648722' },
+    current: true,
+    sourceUrl: 'https://support.google.com/gemini/answer/18648722',
+  },
   {
     id: 'gemini-app-pro',
     vendorId: 'google',
     name: 'Gemini Pro',
     apiId: null,
     useWhen: {
-      text: '복잡한 수학·코딩 프롬프트에',
-      url: 'https://support.google.com/gemini/answer/13275745',
+      text: '복잡한 프롬프트와 정교한 코딩, 깊이 있는 문제 풀이에',
+      url: 'https://support.google.com/gemini/answer/18648722',
     },
-    rating: { kind: 'phrase', text: '가장 앞선 모델', url: 'https://support.google.com/gemini/answer/13275745' },
     current: true,
-    sourceUrl: 'https://support.google.com/gemini/answer/13275745',
+    sourceUrl: 'https://support.google.com/gemini/answer/18648722',
   },
   {
     id: 'gemini-app-flash',
@@ -487,11 +505,11 @@ const models: ModelInfo[] = [
     name: 'Gemini Flash',
     apiId: null,
     useWhen: {
-      text: '간단한 일부터 복잡한 일까지 폭넓은 작업에',
-      url: 'https://support.google.com/gemini/answer/13275745',
+      text: '성능과 반응 속도를 함께 챙길 일반 채팅·작업에',
+      url: 'https://support.google.com/gemini/answer/18648722',
     },
     current: true,
-    sourceUrl: 'https://support.google.com/gemini/answer/13275745',
+    sourceUrl: 'https://support.google.com/gemini/answer/18648722',
   },
   {
     id: 'gemini-app-flash-lite',
@@ -499,11 +517,11 @@ const models: ModelInfo[] = [
     name: 'Gemini Flash-Lite',
     apiId: null,
     useWhen: {
-      text: '요약·브레인스토밍 같은 매일 하는 일에',
-      url: 'https://support.google.com/gemini/answer/13275745',
+      text: '일상 질문의 빠른 답과 가벼운 작업에',
+      url: 'https://support.google.com/gemini/answer/18648722',
     },
     current: true,
-    sourceUrl: 'https://support.google.com/gemini/answer/13275745',
+    sourceUrl: 'https://support.google.com/gemini/answer/18648722',
   },
   {
     id: 'gemini-3-flash',
@@ -539,6 +557,25 @@ const models: ModelInfo[] = [
     rating: { kind: 'phrase', text: '가격 대비 성능이 가장 좋은 모델', url: 'https://ai.google.dev/gemini-api/docs/models' },
     current: true,
     sourceUrl: 'https://ai.google.dev/gemini-api/docs/models',
+  },
+  {
+    id: 'gemini-4-argon',
+    vendorId: 'google',
+    name: 'Gemini 4 Argon',
+    apiId: 'gemini-4-argon',
+    /*
+      2026-10-14에 더했습니다(10-13 일반 공개). 모델 목록 카드는 「Our flagship reasoning model with a
+      unified 1M context window and long decodes up to 1M tokens.」 — 「flagship」은 최상급이 아니라
+      등급 칩을 안 답니다. 쓰임은 모델 페이지 「built for complex software engineering, deep
+      mathematical and scientific problem solving, autonomous multi-step agents, and long decode up
+      to 1M tokens.」입니다.
+    */
+    useWhen: {
+      text: '복잡한 소프트웨어 엔지니어링과 깊은 수학·과학 문제 풀이에',
+      url: 'https://ai.google.dev/gemini-api/docs/models/gemini-4-argon',
+    },
+    current: true,
+    sourceUrl: 'https://ai.google.dev/gemini-api/docs/models/gemini-4-argon',
   },
   {
     id: 'gemini-3-8-flash',

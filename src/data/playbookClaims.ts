@@ -215,6 +215,17 @@ export const playbookClaims: Claim[] = [
     source: { label: 'GPT-5.5 모델 문서', url: 'https://developers.openai.com/api/docs/models/gpt-5.5' },
   },
   {
+    id: 'gemini-4-argon-context',
+    subject: { kind: 'model', id: 'gemini-4-argon' },
+    topic: 'context',
+    /* 입력과 출력을 합친 한도다 — 「Context window (unified input and output token limit)」. */
+    statement: 'Gemini 4 Argon의 컨텍스트 창(입력·출력 합산)',
+    value: '1M 토큰',
+    tier: 'vendor',
+    volatility: 'model',
+    source: { label: 'Gemini API — Models', url: 'https://ai.google.dev/gemini-api/docs/models' },
+  },
+  {
     id: 'gemini-3-8-flash-context',
     subject: { kind: 'model', id: 'gemini-3-8-flash' },
     topic: 'context',
@@ -1614,6 +1625,20 @@ export const playbookClaims: Claim[] = [
      2027-01-01부터 두 배가 된다고 미리 적어 두어 화면에도 그 날짜를 함께 적습니다 —
      줄이되 뜻을 안 버립니다.
      ───────────────────────────────────────────────────────────────── */
+  {
+    id: 'gemini-4-argon-token-price',
+    subject: { kind: 'model', id: 'gemini-4-argon' },
+    topic: 'price',
+    statement: '100만 토큰당 입력 / 출력 단가',
+    /* 도입가다 — 2026-12-01부터 두 배(「$4.00 starting December 1, 2026.」 · 「$20.00 starting December 1, 2026.」). */
+    value: '$2 / $10 (2026-12-01부터 $4 / $20)',
+    tier: 'vendor',
+    volatility: 'price',
+    source: {
+      label: 'Gemini API — Pricing',
+      url: 'https://ai.google.dev/gemini-api/docs/pricing',
+    },
+  },
   {
     id: 'gemini-3-8-flash-token-price',
     subject: { kind: 'model', id: 'gemini-3-8-flash' },
