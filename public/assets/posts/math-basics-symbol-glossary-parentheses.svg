@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="490" viewBox="0 0 880 490" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <rect width="880" height="490" rx="12" fill="#0a0a0a"/>
+
+  <text x="60" y="56" font-size="22" font-weight="700" fill="#e8e8e8">괄호 한 쌍이 하는 네 가지 일</text>
+  <text x="60" y="82" font-size="13" fill="#888">쉼표가 있는지, 앞에 무엇이 붙었는지, 문장이 무엇이라 부르는지로 가린다</text>
+
+  <rect x="60" y="114" width="368" height="156" rx="6" fill="#101010" stroke="#333" stroke-width="1"/>
+  <text x="244" y="146" font-size="15" font-weight="600" fill="#e8e8e8" text-anchor="middle">함수 적용</text>
+  <text x="244" y="192" font-size="24" font-weight="700" fill="#7ec8e3" text-anchor="middle">f(x)</text>
+  <text x="244" y="222" font-size="13" fill="#888" text-anchor="middle">f 에 x 를 넣어 나온 값</text>
+  <text x="244" y="246" font-size="13" fill="#7777cc" text-anchor="middle">단서: f 가 함수로 소개되었다</text>
+
+  <rect x="452" y="114" width="368" height="156" rx="6" fill="#101010" stroke="#333" stroke-width="1"/>
+  <text x="636" y="146" font-size="15" font-weight="600" fill="#e8e8e8" text-anchor="middle">곱의 묶음</text>
+  <text x="636" y="192" font-size="24" font-weight="700" fill="#7ec8e3" text-anchor="middle">3(a + b)</text>
+  <text x="636" y="222" font-size="13" fill="#888" text-anchor="middle">안쪽을 먼저 계산해 3 을 곱한다</text>
+  <text x="636" y="246" font-size="13" fill="#7777cc" text-anchor="middle">단서: 쉼표가 없고 앞이 수다</text>
+
+  <rect x="60" y="294" width="368" height="156" rx="6" fill="#101010" stroke="#333" stroke-width="1"/>
+  <text x="244" y="326" font-size="15" font-weight="600" fill="#e8e8e8" text-anchor="middle">순서쌍</text>
+  <text x="244" y="372" font-size="24" font-weight="700" fill="#55c555" text-anchor="middle">(2, 5)</text>
+  <text x="244" y="402" font-size="13" fill="#888" text-anchor="middle">순서가 있는 두 수의 짝, 좌표평면의 점</text>
+  <text x="244" y="426" font-size="13" fill="#7777cc" text-anchor="middle">단서: 문장이 「점」이라 부른다</text>
+
+  <rect x="452" y="294" width="368" height="156" rx="6" fill="#101010" stroke="#333" stroke-width="1"/>
+  <text x="636" y="326" font-size="15" font-weight="600" fill="#e8e8e8" text-anchor="middle">열린구간</text>
+  <text x="636" y="372" font-size="24" font-weight="700" fill="#55c555" text-anchor="middle">(2, 5)</text>
+  <text x="636" y="402" font-size="13" fill="#888" text-anchor="middle">2 와 5 사이의 실수 전부, 양 끝은 뺀다</text>
+  <text x="636" y="426" font-size="13" fill="#7777cc" text-anchor="middle">단서: 「구간」이라 부르거나 ∈ 의 오른쪽</text>
+</svg>

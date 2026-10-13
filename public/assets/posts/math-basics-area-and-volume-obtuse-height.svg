@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="500" viewBox="0 0 880 500" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <rect width="880" height="500" rx="12" fill="#0a0a0a"/>
+  <text x="60" y="56" font-size="22" font-weight="700" fill="#e8e8e8">둔각삼각형의 높이는 밖에 선다</text>
+  <text x="60" y="82" font-size="13" fill="#888">밑변을 늘인 선까지 수직으로 내린 길이가 높이다</text>
+  <polygon points="360,330 540,330 540,150" fill="none" stroke="#7777cc" stroke-width="2" stroke-dasharray="4,4"/>
+  <polygon points="120,330 360,330 540,150" fill="#7ec8e3" fill-opacity="0.18" stroke="#7ec8e3" stroke-width="2.5"/>
+  <line x1="120" y1="330" x2="360" y2="330" stroke="#e8e8e8" stroke-width="4"/>
+  <polyline points="526,330 526,316 540,316" fill="none" stroke="#e8e8e8" stroke-width="1.5"/>
+  <circle cx="120" cy="330" r="5" fill="#e8e8e8"/>
+  <circle cx="360" cy="330" r="5" fill="#e8e8e8"/>
+  <circle cx="540" cy="150" r="5" fill="#e8e8e8"/>
+  <text x="240" y="358" font-size="13" fill="#e8e8e8" text-anchor="middle">밑변 4</text>
+  <text x="450" y="358" font-size="13" fill="#7777cc" text-anchor="middle">늘인 선 3</text>
+  <text x="556" y="245" font-size="13" fill="#7777cc">높이 3</text>
+  <text x="240" y="315" font-size="13" fill="#7ec8e3" text-anchor="middle">둔각삼각형</text>
+  <path d="M 338 330 A 22 22 0 0 1 375.6 314.4" fill="none" stroke="#e8e8e8" stroke-width="1.5"/>
+  <text x="326" y="312" font-size="13" fill="#888" text-anchor="middle">둔각</text>
+
+  <text x="120" y="408" font-size="15" fill="#e8e8e8">큰 직각삼각형(밑변 7, 높이 3)</text>
+  <text x="560" y="408" font-size="15" fill="#e8e8e8">7 × 3 ÷ 2 = 10.5</text>
+  <text x="120" y="436" font-size="15" fill="#7777cc">바깥 직각삼각형(밑변 3, 높이 3)</text>
+  <text x="560" y="436" font-size="15" fill="#7777cc">3 × 3 ÷ 2 = 4.5</text>
+  <text x="120" y="464" font-size="15" font-weight="600" fill="#7ec8e3">둔각삼각형</text>
+  <text x="560" y="464" font-size="15" font-weight="600" fill="#7ec8e3">10.5 − 4.5 = 6</text>
+</svg>

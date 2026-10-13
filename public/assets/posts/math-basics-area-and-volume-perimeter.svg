@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="450" viewBox="0 0 880 450" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <rect width="880" height="450" rx="12" fill="#0a0a0a"/>
+  <text x="60" y="56" font-size="22" font-weight="700" fill="#e8e8e8">둘레는 같아도 넓이는 다르다</text>
+  <text x="60" y="82" font-size="13" fill="#888">세 직사각형 모두 둘레가 20이다 — 안에 든 칸의 수만 다르다</text>
+  <rect x="110" y="126" width="26" height="234" fill="#7ec8e3" fill-opacity="0.18"/>
+  <line x1="110" y1="152" x2="136" y2="152" stroke="#444" stroke-width="1"/>
+  <line x1="110" y1="178" x2="136" y2="178" stroke="#444" stroke-width="1"/>
+  <line x1="110" y1="204" x2="136" y2="204" stroke="#444" stroke-width="1"/>
+  <line x1="110" y1="230" x2="136" y2="230" stroke="#444" stroke-width="1"/>
+  <line x1="110" y1="256" x2="136" y2="256" stroke="#444" stroke-width="1"/>
+  <line x1="110" y1="282" x2="136" y2="282" stroke="#444" stroke-width="1"/>
+  <line x1="110" y1="308" x2="136" y2="308" stroke="#444" stroke-width="1"/>
+  <line x1="110" y1="334" x2="136" y2="334" stroke="#444" stroke-width="1"/>
+  <rect x="110" y="126" width="26" height="234" fill="none" stroke="#7ec8e3" stroke-width="2.5"/>
+  <text x="123.0" y="392" font-size="16" font-weight="600" fill="#e8e8e8" text-anchor="middle">가로 1 · 세로 9</text>
+  <text x="123.0" y="416" font-size="13" fill="#888" text-anchor="middle">둘레 20 · 넓이 <tspan fill="#7ec8e3" font-weight="600">9</tspan></text>
+  <rect x="330" y="178" width="78" height="182" fill="#7ec8e3" fill-opacity="0.18"/>
+  <line x1="356" y1="178" x2="356" y2="360" stroke="#444" stroke-width="1"/>
+  <line x1="382" y1="178" x2="382" y2="360" stroke="#444" stroke-width="1"/>
+  <line x1="330" y1="204" x2="408" y2="204" stroke="#444" stroke-width="1"/>
+  <line x1="330" y1="230" x2="408" y2="230" stroke="#444" stroke-width="1"/>
+  <line x1="330" y1="256" x2="408" y2="256" stroke="#444" stroke-width="1"/>
+  <line x1="330" y1="282" x2="408" y2="282" stroke="#444" stroke-width="1"/>
+  <line x1="330" y1="308" x2="408" y2="308" stroke="#444" stroke-width="1"/>
+  <line x1="330" y1="334" x2="408" y2="334" stroke="#444" stroke-width="1"/>
+  <rect x="330" y="178" width="78" height="182" fill="none" stroke="#7ec8e3" stroke-width="2.5"/>
+  <text x="369.0" y="392" font-size="16" font-weight="600" fill="#e8e8e8" text-anchor="middle">가로 3 · 세로 7</text>
+  <text x="369.0" y="416" font-size="13" fill="#888" text-anchor="middle">둘레 20 · 넓이 <tspan fill="#7ec8e3" font-weight="600">21</tspan></text>
+  <rect x="580" y="230" width="130" height="130" fill="#7ec8e3" fill-opacity="0.18"/>
+  <line x1="606" y1="230" x2="606" y2="360" stroke="#444" stroke-width="1"/>
+  <line x1="632" y1="230" x2="632" y2="360" stroke="#444" stroke-width="1"/>
+  <line x1="658" y1="230" x2="658" y2="360" stroke="#444" stroke-width="1"/>
+  <line x1="684" y1="230" x2="684" y2="360" stroke="#444" stroke-width="1"/>
+  <line x1="580" y1="256" x2="710" y2="256" stroke="#444" stroke-width="1"/>
+  <line x1="580" y1="282" x2="710" y2="282" stroke="#444" stroke-width="1"/>
+  <line x1="580" y1="308" x2="710" y2="308" stroke="#444" stroke-width="1"/>
+  <line x1="580" y1="334" x2="710" y2="334" stroke="#444" stroke-width="1"/>
+  <rect x="580" y="230" width="130" height="130" fill="none" stroke="#7ec8e3" stroke-width="2.5"/>
+  <text x="645.0" y="392" font-size="16" font-weight="600" fill="#e8e8e8" text-anchor="middle">가로 5 · 세로 5</text>
+  <text x="645.0" y="416" font-size="13" fill="#888" text-anchor="middle">둘레 20 · 넓이 <tspan fill="#7ec8e3" font-weight="600">25</tspan></text>
+</svg>

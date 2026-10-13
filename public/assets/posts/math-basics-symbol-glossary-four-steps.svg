@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="610" viewBox="0 0 880 610" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <defs>
+    <marker id="arr" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#7777cc"/>
+    </marker>
+  </defs>
+  <rect width="880" height="610" rx="12" fill="#0a0a0a"/>
+
+  <text x="60" y="56" font-size="22" font-weight="700" fill="#e8e8e8">처음 보는 식을 읽는 네 걸음</text>
+  <text x="60" y="82" font-size="13" fill="#888">한 걸음에 한 가지씩만 한다 — 이름, 안에 든 것, 변수, 정의</text>
+
+  <rect x="60" y="110" width="760" height="90" rx="6" fill="#101010" stroke="#3a4a6e" stroke-width="1"/>
+  <text x="410" y="152" font-size="26" font-weight="700" fill="#e8e8e8" text-anchor="end">g(t) =</text>
+  <text x="446" y="152" font-size="26" font-weight="700" fill="#7ec8e3" text-anchor="middle">max</text>
+  <text x="482" y="152" font-size="26" font-weight="700" fill="#e8e8e8">f(s)</text>
+  <text x="446" y="178" font-size="14" fill="#7ec8e3" text-anchor="middle">0 ≤ s ≤ t</text>
+
+  <line x1="440" y1="200" x2="440" y2="226" stroke="#7777cc" stroke-width="2" marker-end="url(#arr)"/>
+
+  <rect x="60" y="226" width="760" height="64" rx="6" fill="#101010" stroke="#333" stroke-width="1"/>
+  <text x="84" y="263" font-size="15" font-weight="600" fill="#7ec8e3">① 이름 부르기</text>
+  <text x="270" y="263" font-size="14" fill="#e8e8e8">「g t 는, 맥스, s 가 0 이상 t 이하, f s」</text>
+
+  <line x1="440" y1="290" x2="440" y2="316" stroke="#7777cc" stroke-width="2" marker-end="url(#arr)"/>
+
+  <rect x="60" y="316" width="760" height="64" rx="6" fill="#101010" stroke="#333" stroke-width="1"/>
+  <text x="84" y="353" font-size="15" font-weight="600" fill="#7ec8e3">② 안에 든 것 보기</text>
+  <text x="270" y="353" font-size="14" fill="#e8e8e8">아래 첨자는 s 가 움직이는 범위, 괄호 안은 f 에 넣는 값</text>
+
+  <line x1="440" y1="380" x2="440" y2="406" stroke="#7777cc" stroke-width="2" marker-end="url(#arr)"/>
+
+  <rect x="60" y="406" width="760" height="64" rx="6" fill="#101010" stroke="#333" stroke-width="1"/>
+  <text x="84" y="443" font-size="15" font-weight="600" fill="#7ec8e3">③ 변수 가르기</text>
+  <text x="270" y="443" font-size="14" fill="#e8e8e8">s 는 묶인 변수, t 는 자유 변수 — 결과는 t 에 따라 달라진다</text>
+
+  <line x1="440" y1="470" x2="440" y2="496" stroke="#7777cc" stroke-width="2" marker-end="url(#arr)"/>
+
+  <rect x="60" y="496" width="760" height="64" rx="6" fill="#101010" stroke="#333" stroke-width="1"/>
+  <text x="84" y="533" font-size="15" font-weight="600" fill="#7ec8e3">④ 정의 찾기</text>
+  <text x="270" y="533" font-size="14" fill="#e8e8e8">f 는 이 줄에서 안 정해진다 → 앞 문장에서 「f 는 …」을 찾는다</text>
+</svg>

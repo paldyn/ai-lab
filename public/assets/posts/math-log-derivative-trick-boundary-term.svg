@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="500" viewBox="0 0 880 500" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <defs>
+    <marker id="btb" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#7ec8e3"/>
+    </marker>
+    <marker id="btv" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#7777cc"/>
+    </marker>
+    <marker id="btg" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#55c555"/>
+    </marker>
+  </defs>
+  <rect x="0" y="0" width="880" height="500" rx="12" fill="#0a0a0a"/>
+  <text x="60" y="46" font-size="22" font-weight="700" fill="#e8e8e8">참값 1/2 = 경계항 1 + 안쪽 적분 −1/2</text>
+  <text x="60" y="72" font-size="14" fill="#888">[0, θ] 위의 균등분포, f(x) = x. 라이프니츠 규칙으로 미분을 두 몫으로 가른다.</text>
+
+  <line x1="290" y1="110" x2="290" y2="372" stroke="#444" stroke-width="1" stroke-dasharray="4,4"/>
+  <line x1="440" y1="110" x2="440" y2="372" stroke="#444" stroke-width="1" stroke-dasharray="4,4"/>
+  <line x1="590" y1="110" x2="590" y2="372" stroke="#444" stroke-width="1" stroke-dasharray="4,4"/>
+
+  <text x="60" y="138" font-size="15" font-weight="600" fill="#7ec8e3">안쪽 적분</text>
+  <text x="60" y="158" font-size="13" fill="#888">로그 미분 트릭이 주는 몫</text>
+  <line x1="440" y1="150" x2="292" y2="150" stroke="#7ec8e3" stroke-width="3" marker-end="url(#btb)"/>
+  <text x="330" y="132" font-size="14" fill="#7ec8e3">− 1/2</text>
+
+  <text x="60" y="228" font-size="15" font-weight="600" fill="#7777cc">경계항</text>
+  <text x="60" y="248" font-size="13" fill="#888">p(θ)·f(θ) = (1/θ)·θ</text>
+  <line x1="290" y1="240" x2="588" y2="240" stroke="#7777cc" stroke-width="3" marker-end="url(#btv)"/>
+  <text x="350" y="222" font-size="14" fill="#7777cc">+ 1</text>
+
+  <text x="60" y="318" font-size="15" font-weight="600" fill="#55c555">참값</text>
+  <text x="60" y="338" font-size="13" fill="#888">∇E[x] = d(θ/2)/dθ</text>
+  <line x1="440" y1="330" x2="588" y2="330" stroke="#55c555" stroke-width="3" marker-end="url(#btg)"/>
+  <text x="490" y="312" font-size="14" fill="#55c555">+ 1/2</text>
+
+  <line x1="140" y1="390" x2="740" y2="390" stroke="#888" stroke-width="1.5"/>
+  <line x1="140" y1="382" x2="140" y2="398" stroke="#888" stroke-width="1.5"/>
+  <line x1="290" y1="382" x2="290" y2="398" stroke="#888" stroke-width="1.5"/>
+  <line x1="440" y1="382" x2="440" y2="398" stroke="#888" stroke-width="1.5"/>
+  <line x1="590" y1="382" x2="590" y2="398" stroke="#888" stroke-width="1.5"/>
+  <line x1="740" y1="382" x2="740" y2="398" stroke="#888" stroke-width="1.5"/>
+  <text x="140" y="418" font-size="13" fill="#888" text-anchor="middle">−1</text>
+  <text x="290" y="418" font-size="13" fill="#888" text-anchor="middle">−1/2</text>
+  <text x="440" y="418" font-size="13" fill="#888" text-anchor="middle">0</text>
+  <text x="590" y="418" font-size="13" fill="#888" text-anchor="middle">1/2</text>
+  <text x="740" y="418" font-size="13" fill="#888" text-anchor="middle">1</text>
+
+  <rect x="60" y="438" width="760" height="42" rx="8" fill="#12161f" stroke="#3a4a6e" stroke-width="1"/>
+  <text x="86" y="464" font-size="14" fill="#888">지지집합이 고정이면 경계항이 0이라 로그 미분 트릭의 몫이 곧 참값이 된다.</text>
+</svg>
