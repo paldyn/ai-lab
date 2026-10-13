@@ -2063,7 +2063,7 @@ export const certs: Cert[] = [
     status: '해외 벤더 자격',
     level: '고급',
     difficulty: 4,
-    difficultyBasis: '객관식뿐이지만 경력 3년을 권장하고 범위가 Vertex AI 전반입니다.',
+    difficultyBasis: '객관식뿐이지만 경력 3년을 권장하고 범위가 Agent Platform(옛 Vertex AI) 전반입니다.',
     employment: 3,
     employmentBasis: '구글 클라우드 프로페셔널 등급이고 공고에 AWS와 함께 오릅니다.',
     whatItMeasures:
@@ -2072,7 +2072,7 @@ export const certs: Cert[] = [
       'MLOps, 지표 해석 네 영역에 능숙할 것을 전제로 하며 프롬프트·컨텍스트 엔지니어링과 책임 있는 AI 관행도 범위에 든다. 코딩 실력을 직접 채점하지는 ' +
       '않는다.',
     audience:
-      '응시 제한은 없다. 시행처는 업계 경력 3년 이상에 그중 Google Cloud로 솔루션을 설계·관리한 경력 1년 이상을 권장하지만, 요건이 아니라 어디까지나 ' +
+      '만 18세 이상이어야 응시할 수 있다. 시행처는 업계 경력 3년 이상에 그중 Google Cloud로 솔루션을 설계·관리한 경력 1년 이상을 권장하지만, 요건이 아니라 어디까지나 ' +
       '권장이다.',
     format:
       '50~60문항, 객관식(단일 선택)과 복수 선택 혼합. 시험 시간 2시간. **합격 커트라인은 공개하지 않는다** — 공식 FAQ가 "Google Cloud ' +
@@ -2174,7 +2174,7 @@ export const certs: Cert[] = [
       },
     ],
     officialUrl: 'https://cloud.google.com/learn/certification/machine-learning-engineer',
-    verifiedAt: '2026-09-22',
+    verifiedAt: '2026-10-13',
     notes:
       '- 2026-06-01자 개정판이 시행 중이다. 개정일이 적힌 곳은 시험 가이드 PDF의 `_new` 판본 한 곳뿐이고 랜딩 페이지에는 없다.\n' +
       '- 섹션 여섯 개의 비중도 랜딩 페이지가 아니라 가이드 PDF에 적혀 있다 — 랜딩 페이지는 여섯 영역을 비중 없이 나열만 한다.\n' +
