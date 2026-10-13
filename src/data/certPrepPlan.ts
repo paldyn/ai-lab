@@ -1811,17 +1811,17 @@ export const certPrepPlans: CertPrepPlan[] = [
       },
       {
         title: '탐색적 데이터 분석과 기술통계',
-        subject: 'Data Analysis and Visualization (데이터 분석·시각화)',
+        subject: 'Data Analysis (데이터 분석)',
         keywords: ['평균·중앙값·최빈값', '분산과 표준편차', '분포와 왜도', '상관계수', '결측치 탐지', '이상치 판별(IQR·z-score)', 'pandas와 cuDF'],
       },
       {
         title: '데이터 전처리와 피처 엔지니어링',
-        subject: 'Data Analysis and Visualization (데이터 분석·시각화)',
+        subject: 'Data Analysis (데이터 분석)',
         keywords: ['결측치 대치', '표준화와 정규화', '범주형 인코딩(원-핫·레이블)', '텍스트 정제와 중복 제거', '파생 변수 만들기', '클래스 불균형과 샘플링', '학습·검증·테스트 분할'],
       },
       {
         title: '시각화 차트 고르기와 차원 축소',
-        subject: 'Data Analysis and Visualization (데이터 분석·시각화)',
+        subject: 'Data Analysis (데이터 분석)',
         keywords: ['히스토그램·박스플롯·산점도·히트맵', '목적에 따른 차트 선택', 'PCA', 't-SNE', 'UMAP', '임베딩 공간 시각화', '시각화로 데이터 문제 찾기'],
       },
       {
