@@ -2839,6 +2839,8 @@ export const certs: Cert[] = [
       '- 이름 표기가 둘이다. 인증 페이지 제목과 시험 가이드는 \'Databricks Certified Context Engineer Associate\', 인증 목록 ' +
       '카드의 소개 문장은 \'Databricks Certified Context Engineering Associate\'다 — 시험 페이지와 가이드를 따랐다.\n' +
       '- 영어로만 응시할 수 있다(인증 페이지 "Languages: English"). 같은 회사의 ML·GenAI Associate가 한국어를 제공하는 것과 다르다.\n' +
+      '- 2026년 5월 19일 Databricks 공식 블로그가 이 자격을 발표하면서 Data + AI Summit 참석자에게 베타 시험을 무료로 연다고 알렸다(참석자당 한 번, ' +
+      '베타 결과는 6~8주 뒤).\n' +
       '- 현행 시험 가이드는 2026년 7월 29일부터 시행하는 판을 다룬다("This version covers the version available beginning July ' +
       '29, 2026"). 같은 문단이 그 날짜 2주 전에 다시 들러 최신판인지 확인하라고 안내하고("Please check back two weeks before this time"), ' +
       '공식 FAQ는 시험 버전이 늘 하나만 운영되며 가이드가 출제 범위의 기준 ' +
@@ -2860,7 +2862,6 @@ export const certs: Cert[] = [
       '기한 안에 취소했을 때의 환불 비율 — Databricks 약관·FAQ 어디에도 금액이나 비율이 없다(시행사 Kryterion 안내 페이지는 이번에 ' +
       '열리지 않아(403·404) 다시 보지 못했다)',
       '합격 기준 점수(합격선) — 공식 FAQ가 통계 분석으로 정하며 바뀔 수 있어 공개하지 않는다고 밝히고 있어 숫자를 확인할 수 없음',
-      '첫 출시일 — 시험 가이드는 현행판이 2026년 7월 29일부터라고만 적고, 그 앞에 다른 판이나 베타가 있었는지는 공식 문서에 없다',
       '시험센터 응시 가능 여부 — 인증 페이지는 \'Delivery Method: Online or test center\', 시험 가이드는 \'Delivery method: ' +
       'Online Proctored\'만 적어 확정하지 않았다',
       '회차·접수 기간·상시 시행 여부를 못 박은 문장 — 공식 페이지와 FAQ에 예약 링크(webassessor.com/databricks)만 있고 시행 주기를 적은 ' +
