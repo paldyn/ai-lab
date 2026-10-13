@@ -160,7 +160,7 @@ export interface NewsDetail {
   commentary: string;
 }
 
-export const globalNewsUpdatedAt = '2026-10-09';
+export const globalNewsUpdatedAt = '2026-10-12';
 
 /**
  * 공식 발표 한 건 = 항목 한 개. 2026년 1월부터 쌓는 아카이브이며 오래된 항목을
@@ -171,6 +171,30 @@ export const globalNewsUpdatedAt = '2026-10-09';
  * 목록에서 파생됩니다. 갱신 시 globalNewsUpdatedAt도 함께 올립니다.
  */
 const entries: NewsItem[] = [
+  {
+    id: 'gemini-models-introducing-gemini-4-argon',
+    source: 'Google DeepMind',
+    kind: 'model',
+    title: 'Gemini 4 Argon 일반 공개 — API·Gemini 앱·AI Mode로 확대',
+    summary:
+      'Google이 사이버 방어 기관부터 열었던 Gemini 4 Argon을 전 세계 개발자·기업과 Google AI Ultra·Pro 구독자에게 공개했다. ' +
+      'API 도입가는 100만 토큰당 입력 2달러·출력 10달러이고, Fairwind Program 파트너도 수백 곳 더 늘린다.',
+    publishedAt: '2026-10-13',
+    collectedAt: '2026-10-14',
+    category: 'Frontier',
+    signal: '프런티어 모델',
+    url: 'https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-4-argon',
+    model: {
+      family: 'Gemini',
+      name: 'Gemini 4 Argon',
+      kind: '모델 패밀리',
+      status: '공개',
+      useCase: '코딩·전문 업무·과학 연구',
+      headline: '방어 기관 한정이던 Argon이 API와 Gemini 앱, 검색의 AI Mode까지 문을 열었다',
+      logo: 'assets/gemini.svg',
+      tone: 'gemini',
+    },
+  },
   {
     id: 'sophos',
     source: 'OpenAI',

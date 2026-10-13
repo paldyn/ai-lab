@@ -2,6 +2,22 @@ import type { NewsDetail } from '../news';
 
 /** 2026-10 발표의 모달 본문. 목록은 news.ts에 있습니다. */
 export const details: Record<string, NewsDetail> = {
+  'gemini-models-introducing-gemini-4-argon': {
+    points: [
+      '개발자·기업은 AI Studio와 Gemini platform의 API로, 전 세계에서 오늘부터 쓸 수 있다',
+      'Antigravity에서는 Google AI Ultra 구독자, Gemini 앱과 검색 AI Mode에서는 Ultra·Pro 구독자가 쓴다',
+      '도입가는 100만 토큰당 입력 2달러·출력 10달러이고 캐시 입력은 95% 할인이다',
+      '금융·코딩·법률·세무 성능을 재는 Vals Index에서 1위라고 밝혔다',
+      '사내에서 Antigravity의 Argon이 에이전트 코드 제출을 35% 넘게 늘리고 롤백을 3분의 1 가까이 줄였다',
+      'vLLM의 Gemma 4 E2B 추론을 A100에서 2.85배 빠르게 하는 최적화를 며칠 만에 해냈다',
+      '사이버 방어 역량은 오늘부터 Fairwind Program 파트너 수백 곳으로 넓힌다',
+      'Gamow Labs 자체 평가에서 RareBench 57%, LabBench 52.2%로 가장 높았다고 밝혔다',
+    ],
+    commentary:
+      '9월 30일 공개 때는 방어 기관과 유료 API 일부에만 열려 일반 개발자가 언제 쓸지 날짜가 없었는데, 2주 만에 그 답이 나왔다. ' +
+      '도입가는 그때와 같아 API 가격 경쟁은 그대로 이어지고, 앱 쪽은 Pro 구독에도 열려 프런티어 모델의 소비자 접근 문턱이 한 단 낮아졌다. ' +
+      '사례의 무게가 벤치마크보다 Antigravity 속 장기 코딩 작업에 실려 있다.',
+  },
   'sophos': {
     points: [
       'Sophos는 62만 5,000곳 넘는 조직을 보호하며 OpenAI Daybreak로 자사 위협 인텔리전스·대응 플레이북에 OpenAI 모델을 결합했다',
