@@ -21,7 +21,7 @@ import type { Root } from 'mdast';
 const LANGUAGES = [
   'python', 'bash', 'yaml', 'json', 'jsonc', 'sql', 'markdown', 'typescript',
   'javascript', 'tsx', 'jsx', 'html', 'css', 'dockerfile', 'nginx', 'prolog',
-  'diff', 'toml', 'go', 'rust', 'java',
+  'diff', 'toml', 'go', 'rust', 'java', 'r', 'jsonl', 'bicep',
 ];
 
 const THEMES = { light: 'github-light', dark: 'github-dark' } as const;
@@ -399,7 +399,7 @@ const CACHE_DIR = 'node_modules/.cache/paldyn-markdown';
  * 선택 가능하게 바꾸고도 화면이 그대로여서 한 번 헤맸습니다 — 캐시가 예전 결과를
  * 돌려주고 있었습니다.
  */
-const RENDERER_VERSION = '2026-08-12-endnav-drop';
+const RENDERER_VERSION = '2026-10-13-r-jsonl-bicep';
 
 async function renderCached(body: string): Promise<RenderedMarkdown> {
   const key = createHash('sha256').update(RENDERER_VERSION).update(body).digest('hex').slice(0, 32);
