@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 400" width="880" height="400">
+  <defs>
+    <marker id="arr" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#888"/>
+    </marker>
+    <marker id="arrb" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#7777cc"/>
+    </marker>
+  </defs>
+  <rect width="880" height="400" fill="#0a0a0a" rx="12"/>
+  <text x="440" y="46" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="22" font-weight="700" fill="#e8e8e8">프롬프트 개선 한 바퀴</text>
+  <text x="440" y="72" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#888">한 바퀴에 한 곳만 고친다</text>
+
+  <rect x="60" y="110" width="140" height="84" rx="10" fill="#141414" stroke="#e05555" stroke-width="1.5"/>
+  <text x="130" y="144" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="15" font-weight="700" fill="#e05555">① 실패 모으기</text>
+  <text x="130" y="170" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#bbbbbb">평가 세트에 추가</text>
+
+  <rect x="230" y="110" width="140" height="84" rx="10" fill="#141414" stroke="#7ec8e3" stroke-width="1.5"/>
+  <text x="300" y="144" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="15" font-weight="700" fill="#7ec8e3">② 원인 가설</text>
+  <text x="300" y="170" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#bbbbbb">어느 칸이 비었나</text>
+
+  <rect x="400" y="110" width="140" height="84" rx="10" fill="#141414" stroke="#7ec8e3" stroke-width="1.5"/>
+  <text x="470" y="144" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="15" font-weight="700" fill="#7ec8e3">③ 한 곳 고치기</text>
+  <text x="470" y="170" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#bbbbbb">바뀐 줄은 하나</text>
+
+  <rect x="570" y="110" width="110" height="84" rx="10" fill="#141414" stroke="#55c555" stroke-width="1.5"/>
+  <text x="625" y="144" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="15" font-weight="700" fill="#55c555">④ 재실행</text>
+  <text x="625" y="170" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#bbbbbb">세트 전체</text>
+
+  <rect x="710" y="110" width="110" height="84" rx="10" fill="#141414" stroke="#55c555" stroke-width="1.5"/>
+  <text x="765" y="144" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="15" font-weight="700" fill="#55c555">⑤ 기록</text>
+  <text x="765" y="170" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#bbbbbb">네 칸 남기기</text>
+
+  <line x1="200" y1="152" x2="230" y2="152" stroke="#888" stroke-width="2" marker-end="url(#arr)"/>
+  <line x1="370" y1="152" x2="400" y2="152" stroke="#888" stroke-width="2" marker-end="url(#arr)"/>
+  <line x1="540" y1="152" x2="570" y2="152" stroke="#888" stroke-width="2" marker-end="url(#arr)"/>
+  <line x1="680" y1="152" x2="710" y2="152" stroke="#888" stroke-width="2" marker-end="url(#arr)"/>
+
+  <path d="M 765 194 L 765 250 L 130 250 L 130 194" fill="none" stroke="#7777cc" stroke-width="2" stroke-dasharray="4,4" marker-end="url(#arrb)"/>
+  <text x="448" y="288" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#7777cc">새로 깨진 사례도 다음 바퀴의 실패로 들어간다</text>
+
+  <rect x="60" y="308" width="760" height="64" rx="10" fill="#141414" stroke="#3a4a6e" stroke-width="1"/>
+  <text x="440" y="336" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="700" fill="#e8e8e8">기록의 네 칸</text>
+  <text x="440" y="358" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#bbbbbb">바꾼 줄 · 바꾼 이유(본 실패) · 통과 수 · 새로 깨진 사례</text>
+</svg>

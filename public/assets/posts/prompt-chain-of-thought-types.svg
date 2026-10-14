@@ -48,5 +48,5 @@
 
   <!-- Bottom note -->
   <rect x="60" y="450" width="760" height="36" rx="6" fill="#111111" stroke="#3a4a6e"/>
-  <text x="440" y="472" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="12" fill="#e8e8e8">GPT-4, Claude 등 대형 모델(~100B+)에서 CoT 효과 극대화 — 소형 모델은 오히려 혼란 가능</text>
+  <text x="440" y="472" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="12" fill="#e8e8e8">Zero-shot은 추론의 모양을 못 정하고, Few-shot은 예시를 쓰는 품이 든다 — 효과는 모델마다 재 본다</text>
 </svg>

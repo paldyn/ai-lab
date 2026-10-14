@@ -1,71 +1,47 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 540" width="880" height="540">
-  <rect width="880" height="540" fill="#0a0a0a" rx="12"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 560" width="880" height="560" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <defs>
+    <marker id="arrG" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#666666"/>
+    </marker>
+  </defs>
+  <rect width="880" height="560" fill="#0a0a0a" rx="12"/>
 
-  <!-- Title -->
-  <text x="440" y="44" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="22" font-weight="700" fill="#e8e8e8">Chain-of-Thought 프롬프팅 흐름</text>
-  <text x="440" y="68" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#888">Standard vs Chain-of-Thought 비교</text>
+  <text x="440" y="46" text-anchor="middle" font-size="22" font-weight="700" fill="#e8e8e8">한 번에 답하기와 나눠 쓰기</text>
+  <text x="440" y="72" text-anchor="middle" font-size="16" font-weight="600" fill="#e8e8e8">같은 문제, 같은 모델 — 답 앞에 무엇이 쓰이는가</text>
 
-  <!-- Left column: Standard -->
-  <text x="200" y="106" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="14" font-weight="600" fill="#7ec8e3">Standard Prompting</text>
+  <!-- 문제 -->
+  <rect x="60" y="96" width="760" height="56" rx="8" fill="#111827" stroke="#3a4a6e"/>
+  <text x="440" y="120" text-anchor="middle" font-size="14" fill="#e8e8e8">식당에 사과가 23개 있었다. 점심에 20개를 쓰고 6개를 더 샀다.</text>
+  <text x="440" y="140" text-anchor="middle" font-size="14" fill="#e8e8e8">지금 몇 개인가?</text>
 
-  <!-- Input box -->
-  <rect x="60" y="118" width="280" height="56" rx="8" fill="#111827" stroke="#3a4a6e"/>
-  <text x="200" y="140" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e8e8e8">Q: 철수는 사과 3개, 배 2개를</text>
-  <text x="200" y="158" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e8e8e8">가지고 있다. 총 몇 개인가?</text>
+  <!-- 왼쪽: 답만 -->
+  <text x="220" y="186" text-anchor="middle" font-size="16" font-weight="600" fill="#7ec8e3">답만 내게 할 때</text>
+  <rect x="80" y="204" width="280" height="56" rx="8" fill="#111111" stroke="#3a4a6e"/>
+  <text x="220" y="237" text-anchor="middle" font-size="14" fill="#e8e8e8">「답:」 다음 첫 토큰</text>
+  <line x1="220" y1="260" x2="220" y2="300" stroke="#666666" stroke-width="2" marker-end="url(#arrG)"/>
+  <rect x="80" y="300" width="280" height="70" rx="8" fill="#1a1111" stroke="#e05555"/>
+  <text x="220" y="330" text-anchor="middle" font-size="16" font-weight="600" fill="#e05555">답: 27</text>
+  <text x="220" y="352" text-anchor="middle" font-size="13" fill="#888">빼기·더하기가 한 토큰에 접힌다</text>
+  <text x="220" y="402" text-anchor="middle" font-size="13" fill="#888">문제의 수를 엮은 그럴듯한 오답</text>
 
-  <!-- Arrow down -->
-  <line x1="200" y1="174" x2="200" y2="210" stroke="#444" stroke-width="2"/>
-  <polygon points="200,218 194,206 206,206" fill="#444"/>
+  <!-- 가운데 구분선 -->
+  <line x1="440" y1="172" x2="440" y2="470" stroke="#333333" stroke-width="2" stroke-dasharray="4,4"/>
 
-  <!-- LLM box -->
-  <rect x="110" y="218" width="180" height="40" rx="8" fill="#1a1a2e" stroke="#7777cc"/>
-  <text x="200" y="243" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#7777cc">LLM</text>
+  <!-- 오른쪽: CoT -->
+  <text x="660" y="186" text-anchor="middle" font-size="16" font-weight="600" fill="#55c555">단계를 쓰게 할 때</text>
+  <rect x="520" y="204" width="280" height="44" rx="8" fill="#111111" stroke="#3a4a6e"/>
+  <text x="660" y="231" text-anchor="middle" font-size="14" fill="#7ec8e3">단계별로 생각해 보자.</text>
+  <line x1="660" y1="248" x2="660" y2="270" stroke="#666666" stroke-width="2" marker-end="url(#arrG)"/>
+  <rect x="520" y="270" width="280" height="44" rx="8" fill="#0d1117" stroke="#55c555"/>
+  <text x="660" y="297" text-anchor="middle" font-size="14" fill="#e8e8e8">① 23개에서 20개를 쓰면 3개</text>
+  <line x1="660" y1="314" x2="660" y2="336" stroke="#666666" stroke-width="2" marker-end="url(#arrG)"/>
+  <rect x="520" y="336" width="280" height="44" rx="8" fill="#0d1117" stroke="#55c555"/>
+  <text x="660" y="363" text-anchor="middle" font-size="14" fill="#e8e8e8">② 3개에 6개를 사면 3 + 6 = 9</text>
+  <line x1="660" y1="380" x2="660" y2="402" stroke="#666666" stroke-width="2" marker-end="url(#arrG)"/>
+  <rect x="520" y="402" width="280" height="44" rx="8" fill="#0d1117" stroke="#55c555"/>
+  <text x="660" y="429" text-anchor="middle" font-size="16" font-weight="600" fill="#55c555">답: 9</text>
 
-  <!-- Arrow down -->
-  <line x1="200" y1="258" x2="200" y2="294" stroke="#444" stroke-width="2"/>
-  <polygon points="200,302 194,290 206,290" fill="#444"/>
-
-  <!-- Output box standard -->
-  <rect x="110" y="302" width="180" height="40" rx="8" fill="#1a1a1a" stroke="#e05555"/>
-  <text x="200" y="327" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e05555">5개 (?)</text>
-
-  <text x="200" y="368" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="12" fill="#888">단순 출력 — 오류 가능성↑</text>
-
-  <!-- Right column: CoT -->
-  <text x="660" y="106" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="14" font-weight="600" fill="#55c555">Chain-of-Thought Prompting</text>
-
-  <!-- Input box -->
-  <rect x="520" y="118" width="280" height="56" rx="8" fill="#111827" stroke="#3a4a6e"/>
-  <text x="660" y="140" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e8e8e8">Q: … 총 몇 개인가?</text>
-  <text x="660" y="158" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#7ec8e3">→ "단계별로 생각해 봅시다."</text>
-
-  <!-- Arrow down -->
-  <line x1="660" y1="174" x2="660" y2="210" stroke="#444" stroke-width="2"/>
-  <polygon points="660,218 654,206 666,206" fill="#444"/>
-
-  <!-- LLM box -->
-  <rect x="570" y="218" width="180" height="40" rx="8" fill="#1a1a2e" stroke="#7777cc"/>
-  <text x="660" y="243" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#7777cc">LLM</text>
-
-  <!-- Arrow down -->
-  <line x1="660" y1="258" x2="660" y2="294" stroke="#444" stroke-width="2"/>
-  <polygon points="660,302 654,290 666,290" fill="#444"/>
-
-  <!-- Reasoning steps -->
-  <rect x="520" y="302" width="280" height="110" rx="8" fill="#0d1117" stroke="#55c555"/>
-  <text x="540" y="322" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="12" fill="#888">추론 단계:</text>
-  <text x="540" y="342" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="12" fill="#e8e8e8">① 사과 3개</text>
-  <text x="540" y="360" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="12" fill="#e8e8e8">② 배 2개</text>
-  <text x="540" y="378" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="12" fill="#e8e8e8">③ 3 + 2 = 5</text>
-  <text x="540" y="400" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="600" fill="#55c555">∴ 정답: 5개 ✓</text>
-
-  <text x="660" y="436" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="12" fill="#888">단계별 추론 — 정확도↑</text>
-
-  <!-- Divider -->
-  <line x1="440" y1="96" x2="440" y2="460" stroke="#222" stroke-width="2" stroke-dasharray="4,4"/>
-
-  <!-- Bottom comparison -->
-  <rect x="60" y="460" width="760" height="50" rx="8" fill="#111111" stroke="#3a4a6e"/>
-  <text x="440" y="483" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e8e8e8">핵심: "Let's think step by step" 한 문장이 복잡한 추론 정확도를 평균 <tspan fill="#55c555">40~80%</tspan> 향상</text>
-  <text x="440" y="501" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="12" fill="#888">Wei et al. 2022 — GSM8K, SVAMP, AQuA, CSQA 등 다수 벤치마크에서 검증</text>
+  <!-- 아래 요약 -->
+  <rect x="60" y="484" width="760" height="52" rx="8" fill="#111111" stroke="#3a4a6e"/>
+  <text x="440" y="515" text-anchor="middle" font-size="14" fill="#e8e8e8">앞서 쓴 단계가 뒤 토큰의 조건이 된다 — 걸음마다 연산은 하나뿐이다</text>
 </svg>

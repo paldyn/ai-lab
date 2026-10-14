@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="490" viewBox="0 0 880 490">
+  <defs>
+    <marker id="ab" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto"><path d="M 0 0 L 13 7 L 0 14 z" fill="#7777cc"/></marker>
+  </defs>
+  <rect x="0" y="0" width="880" height="490" rx="12" fill="#0a0a0a"/>
+  <text x="60" y="46" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="22" font-weight="700" fill="#e8e8e8">같은 쓰기가 두 번 나가는 경로</text>
+  <text x="60" y="72" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">타임아웃 뒤 재시도 — 키를 모델이 아니라 실행기가 만들면 막힌다</text>
+  <text x="60" y="108" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#e05555">멱등 키 없음</text>
+  <text x="460" y="108" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#55c555">실행기가 만든 멱등 키</text>
+  <rect x="60" y="124" width="360" height="56" rx="8" fill="#12121a" stroke="#3a4a6e" stroke-width="1.5"/>
+  <text x="84" y="147" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="14" font-weight="600" fill="#e8e8e8">create_order 전송</text>
+  <text x="84" y="166" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="12" fill="#9aa4b8">키 없이 보낸다</text>
+  <line x1="240" y1="180" x2="240" y2="210" stroke="#7777cc" stroke-width="2" marker-end="url(#ab)"/>
+  <rect x="60" y="210" width="360" height="56" rx="8" fill="#12121a" stroke="#3a4a6e" stroke-width="1.5"/>
+  <text x="84" y="233" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="14" font-weight="600" fill="#e8e8e8">8초 타임아웃, 실패로 처리</text>
+  <text x="84" y="252" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="12" fill="#9aa4b8">서버는 9초째에 주문을 만들었다</text>
+  <line x1="240" y1="266" x2="240" y2="296" stroke="#7777cc" stroke-width="2" marker-end="url(#ab)"/>
+  <rect x="60" y="296" width="360" height="56" rx="8" fill="#12121a" stroke="#3a4a6e" stroke-width="1.5"/>
+  <text x="84" y="319" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="14" font-weight="600" fill="#e8e8e8">모델이 같은 주문을 다시 부름</text>
+  <text x="84" y="338" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="12" fill="#9aa4b8">서버는 새 요청으로 받는다</text>
+  <line x1="240" y1="352" x2="240" y2="382" stroke="#7777cc" stroke-width="2" marker-end="url(#ab)"/>
+  <rect x="460" y="124" width="360" height="56" rx="8" fill="#12121a" stroke="#3a4a6e" stroke-width="1.5"/>
+  <text x="484" y="147" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="14" font-weight="600" fill="#e8e8e8">create_order 전송</text>
+  <text x="484" y="166" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="12" fill="#9aa4b8">키 = 해시(요청 id, 도구, 인자)</text>
+  <line x1="640" y1="180" x2="640" y2="210" stroke="#7777cc" stroke-width="2" marker-end="url(#ab)"/>
+  <rect x="460" y="210" width="360" height="56" rx="8" fill="#12121a" stroke="#3a4a6e" stroke-width="1.5"/>
+  <text x="484" y="233" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="14" font-weight="600" fill="#e8e8e8">8초 타임아웃, 실패로 처리</text>
+  <text x="484" y="252" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="12" fill="#9aa4b8">서버는 9초째에 주문을 만들었다</text>
+  <line x1="640" y1="266" x2="640" y2="296" stroke="#7777cc" stroke-width="2" marker-end="url(#ab)"/>
+  <rect x="460" y="296" width="360" height="56" rx="8" fill="#12121a" stroke="#3a4a6e" stroke-width="1.5"/>
+  <text x="484" y="319" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="14" font-weight="600" fill="#e8e8e8">모델이 같은 주문을 다시 부름</text>
+  <text x="484" y="338" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="12" fill="#9aa4b8">실행기가 같은 키를 다시 붙인다</text>
+  <line x1="640" y1="352" x2="640" y2="382" stroke="#7777cc" stroke-width="2" marker-end="url(#ab)"/>
+  <rect x="60" y="382" width="360" height="56" rx="8" fill="#1a1010" stroke="#e05555" stroke-width="1.5"/>
+  <text x="84" y="405" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="14" font-weight="600" fill="#e8e8e8">주문 2건</text>
+  <text x="84" y="424" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="12" fill="#9aa4b8">사람이 하나를 취소해야 한다</text>
+  <rect x="460" y="382" width="360" height="56" rx="8" fill="#101a10" stroke="#55c555" stroke-width="1.5"/>
+  <text x="484" y="405" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="14" font-weight="600" fill="#e8e8e8">주문 1건</text>
+  <text x="484" y="424" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="12" fill="#9aa4b8">서버가 처음 결과를 그대로 돌려준다</text>
+</svg>
