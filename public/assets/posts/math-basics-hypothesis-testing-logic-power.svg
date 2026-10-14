@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="600" viewBox="0 0 880 600" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+<rect width="880" height="600" fill="#0a0a0a" rx="12"/>
+<text x="60" y="46" fill="#e8e8e8" font-size="22" font-weight="700">같은 기각역, 다른 동전: 검정력</text>
+<text x="60" y="72" fill="#888" font-size="13">n = 20 · 기각역(위쪽)은 X ≥ 15 · 위는 공정한 동전, 아래는 앞면 확률 0.7인 동전</text>
+<line x1="80" y1="270" x2="820" y2="270" stroke="#888" stroke-width="1.5"/>
+<text x="80" y="112" fill="#e8e8e8" font-size="16" font-weight="600">H₀: p = 0.5</text>
+<text x="820" y="112" fill="#888" font-size="13" text-anchor="end">X ≥ 15에 들 확률 0.021 (1종 오류)</text>
+<rect x="88" y="270.0" width="32" height="0.0" fill="#7ec8e3"/>
+<rect x="122" y="270.0" width="32" height="0.0" fill="#7ec8e3"/>
+<rect x="156" y="269.9" width="32" height="0.1" fill="#7ec8e3"/>
+<rect x="190" y="269.2" width="32" height="0.8" fill="#7ec8e3"/>
+<rect x="224" y="266.8" width="32" height="3.2" fill="#7ec8e3"/>
+<rect x="258" y="259.6" width="32" height="10.4" fill="#7ec8e3"/>
+<rect x="292" y="244.1" width="32" height="25.9" fill="#7ec8e3"/>
+<rect x="326" y="218.2" width="32" height="51.8" fill="#7ec8e3"/>
+<rect x="360" y="185.9" width="32" height="84.1" fill="#7ec8e3"/>
+<rect x="394" y="157.9" width="32" height="112.1" fill="#7ec8e3"/>
+<rect x="428" y="146.7" width="32" height="123.3" fill="#7ec8e3"/>
+<rect x="462" y="157.9" width="32" height="112.1" fill="#7ec8e3"/>
+<rect x="496" y="185.9" width="32" height="84.1" fill="#7ec8e3"/>
+<rect x="530" y="218.2" width="32" height="51.8" fill="#7ec8e3"/>
+<rect x="564" y="244.1" width="32" height="25.9" fill="#7ec8e3"/>
+<rect x="598" y="259.6" width="32" height="10.4" fill="#e05555"/>
+<rect x="632" y="266.8" width="32" height="3.2" fill="#e05555"/>
+<rect x="666" y="269.2" width="32" height="0.8" fill="#e05555"/>
+<rect x="700" y="269.9" width="32" height="0.1" fill="#e05555"/>
+<rect x="734" y="270.0" width="32" height="0.0" fill="#e05555"/>
+<rect x="768" y="270.0" width="32" height="0.0" fill="#e05555"/>
+<text x="104.0" y="288" fill="#888" font-size="13" text-anchor="middle">0</text>
+<text x="274.0" y="288" fill="#888" font-size="13" text-anchor="middle">5</text>
+<text x="444.0" y="288" fill="#888" font-size="13" text-anchor="middle">10</text>
+<text x="614.0" y="288" fill="#888" font-size="13" text-anchor="middle">15</text>
+<text x="784.0" y="288" fill="#888" font-size="13" text-anchor="middle">20</text>
+<line x1="80" y1="520" x2="820" y2="520" stroke="#888" stroke-width="1.5"/>
+<text x="80" y="362" fill="#e8e8e8" font-size="16" font-weight="600">실제: p = 0.7</text>
+<text x="820" y="362" fill="#888" font-size="13" text-anchor="end">X ≥ 15에 들 확률 0.416 (검정력)</text>
+<rect x="88" y="520.0" width="32" height="0.0" fill="#555577"/>
+<rect x="122" y="520.0" width="32" height="0.0" fill="#555577"/>
+<rect x="156" y="520.0" width="32" height="0.0" fill="#555577"/>
+<rect x="190" y="520.0" width="32" height="0.0" fill="#555577"/>
+<rect x="224" y="520.0" width="32" height="0.0" fill="#555577"/>
+<rect x="258" y="520.0" width="32" height="0.0" fill="#555577"/>
+<rect x="292" y="519.8" width="32" height="0.2" fill="#555577"/>
+<rect x="326" y="519.3" width="32" height="0.7" fill="#555577"/>
+<rect x="360" y="517.3" width="32" height="2.7" fill="#555577"/>
+<rect x="394" y="511.6" width="32" height="8.4" fill="#555577"/>
+<rect x="428" y="498.4" width="32" height="21.6" fill="#555577"/>
+<rect x="462" y="474.2" width="32" height="45.8" fill="#555577"/>
+<rect x="496" y="439.9" width="32" height="80.1" fill="#555577"/>
+<rect x="530" y="405.0" width="32" height="115.0" fill="#555577"/>
+<rect x="564" y="385.9" width="32" height="134.1" fill="#555577"/>
+<rect x="598" y="394.8" width="32" height="125.2" fill="#55c555"/>
+<rect x="632" y="428.7" width="32" height="91.3" fill="#55c555"/>
+<rect x="666" y="469.9" width="32" height="50.1" fill="#55c555"/>
+<rect x="700" y="500.5" width="32" height="19.5" fill="#55c555"/>
+<rect x="734" y="515.2" width="32" height="4.8" fill="#55c555"/>
+<rect x="768" y="519.4" width="32" height="0.6" fill="#55c555"/>
+<text x="104.0" y="538" fill="#888" font-size="13" text-anchor="middle">0</text>
+<text x="274.0" y="538" fill="#888" font-size="13" text-anchor="middle">5</text>
+<text x="444.0" y="538" fill="#888" font-size="13" text-anchor="middle">10</text>
+<text x="614.0" y="538" fill="#888" font-size="13" text-anchor="middle">15</text>
+<text x="784.0" y="538" fill="#888" font-size="13" text-anchor="middle">20</text>
+<line x1="597" y1="100" x2="597" y2="530" stroke="#e8e8e8" stroke-width="2" stroke-dasharray="5,3"/>
+<text x="605" y="314" fill="#e8e8e8" font-size="13">기각역 경계</text>
+<text x="394" y="566" fill="#9a9acc" font-size="13" text-anchor="middle">경계 왼쪽 0.584 = 놓치는 확률 β</text>
+<text x="683.0" y="566" fill="#55c555" font-size="13" text-anchor="middle">오른쪽 0.416 = 1 − β</text>
+<text x="820" y="586" fill="#888" font-size="13" text-anchor="end">k (앞면 개수)</text>
+</svg>

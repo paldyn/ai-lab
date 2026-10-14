@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="500" viewBox="0 0 880 500" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <rect width="880" height="500" rx="12" fill="#0a0a0a"/>
+  <text x="60" y="56" font-size="22" font-weight="700" fill="#e8e8e8">숫자 배열 셋을 판정 세 걸음에 넣어 본다</text>
+  <text x="60" y="82" font-size="13" fill="#888">더해 보기 · 배수 해 보기 · 다시 넣어 보기 — 셋 다 통과해야 벡터로 다룰 수 있다</text>
+  <text x="325.0" y="130" font-size="16" font-weight="600" fill="#e8e8e8" text-anchor="middle">토큰 ID</text>
+  <text x="523.0" y="130" font-size="16" font-weight="600" fill="#e8e8e8" text-anchor="middle">별점 1~5</text>
+  <text x="721.0" y="130" font-size="16" font-weight="600" fill="#e8e8e8" text-anchor="middle">임베딩</text>
+  <text x="60" y="203.0" font-size="14" font-weight="600" fill="#e8e8e8">더해 보기</text>
+  <rect x="232" y="150" width="186" height="96" rx="8" fill="#101010" stroke="#e05555" stroke-width="1.5"/>
+  <text x="325.0" y="180" font-size="13" font-weight="600" fill="#e05555" text-anchor="middle">통과 못 함</text>
+  <text x="325.0" y="202" font-size="13" fill="#e8e8e8" text-anchor="middle">9906 + 1917 = 11823</text>
+  <text x="325.0" y="222" font-size="13" fill="#888" text-anchor="middle">무관한 토큰</text>
+  <rect x="430" y="150" width="186" height="96" rx="8" fill="#101010" stroke="#e05555" stroke-width="1.5"/>
+  <text x="523.0" y="180" font-size="13" font-weight="600" fill="#e05555" text-anchor="middle">통과 못 함</text>
+  <text x="523.0" y="202" font-size="13" fill="#e8e8e8" text-anchor="middle">5 + 4 = 9</text>
+  <text x="523.0" y="222" font-size="13" fill="#888" text-anchor="middle">1~5 밖</text>
+  <rect x="628" y="150" width="186" height="96" rx="8" fill="#101010" stroke="#55c555" stroke-width="1.5"/>
+  <text x="721.0" y="180" font-size="13" font-weight="600" fill="#55c555" text-anchor="middle">통과</text>
+  <text x="721.0" y="202" font-size="13" fill="#e8e8e8" text-anchor="middle">768개의 실수</text>
+  <text x="721.0" y="222" font-size="13" fill="#888" text-anchor="middle">같은 공간</text>
+  <text x="60" y="313.0" font-size="14" font-weight="600" fill="#e8e8e8">배수 해 보기</text>
+  <rect x="232" y="260" width="186" height="96" rx="8" fill="#101010" stroke="#e05555" stroke-width="1.5"/>
+  <text x="325.0" y="290" font-size="13" font-weight="600" fill="#e05555" text-anchor="middle">통과 못 함</text>
+  <text x="325.0" y="312" font-size="13" fill="#e8e8e8" text-anchor="middle">0.5 × 9906 = 4953</text>
+  <text x="325.0" y="332" font-size="13" fill="#888" text-anchor="middle">무관한 토큰</text>
+  <rect x="430" y="260" width="186" height="96" rx="8" fill="#101010" stroke="#e05555" stroke-width="1.5"/>
+  <text x="523.0" y="290" font-size="13" font-weight="600" fill="#e05555" text-anchor="middle">통과 못 함</text>
+  <text x="523.0" y="312" font-size="13" fill="#e8e8e8" text-anchor="middle">2 × 3 = 6</text>
+  <text x="523.0" y="332" font-size="13" fill="#888" text-anchor="middle">1~5 밖</text>
+  <rect x="628" y="260" width="186" height="96" rx="8" fill="#101010" stroke="#55c555" stroke-width="1.5"/>
+  <text x="721.0" y="290" font-size="13" font-weight="600" fill="#55c555" text-anchor="middle">통과</text>
+  <text x="721.0" y="312" font-size="13" fill="#e8e8e8" text-anchor="middle">768개의 실수</text>
+  <text x="721.0" y="332" font-size="13" fill="#888" text-anchor="middle">같은 공간</text>
+  <text x="60" y="423.0" font-size="14" font-weight="600" fill="#e8e8e8">다시 넣어 보기</text>
+  <rect x="232" y="370" width="186" height="96" rx="8" fill="#101010" stroke="#e05555" stroke-width="1.5"/>
+  <text x="325.0" y="400" font-size="13" font-weight="600" fill="#e05555" text-anchor="middle">통과 못 함</text>
+  <text x="325.0" y="422" font-size="13" fill="#e8e8e8" text-anchor="middle">평균 5911.5</text>
+  <text x="325.0" y="442" font-size="13" fill="#888" text-anchor="middle">줄 번호가 아니다</text>
+  <rect x="430" y="370" width="186" height="96" rx="8" fill="#101010" stroke="#7777cc" stroke-width="1.5"/>
+  <text x="523.0" y="400" font-size="13" font-weight="600" fill="#7777cc" text-anchor="middle">애매</text>
+  <text x="523.0" y="422" font-size="13" fill="#e8e8e8" text-anchor="middle">평균 3</text>
+  <text x="523.0" y="442" font-size="13" fill="#888" text-anchor="middle">뜻이 정해지지 않음</text>
+  <rect x="628" y="370" width="186" height="96" rx="8" fill="#101010" stroke="#55c555" stroke-width="1.5"/>
+  <text x="721.0" y="400" font-size="13" font-weight="600" fill="#55c555" text-anchor="middle">통과</text>
+  <text x="721.0" y="422" font-size="13" fill="#e8e8e8" text-anchor="middle">검색 함수에 넣기</text>
+  <text x="721.0" y="442" font-size="13" fill="#888" text-anchor="middle">유사도가 그대로 나옴</text>
+</svg>

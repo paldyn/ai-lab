@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="600" viewBox="0 0 880 600" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <rect width="880" height="600" rx="12" fill="#0a0a0a"/>
+  <text x="60" y="56" font-size="22" font-weight="700" fill="#e8e8e8">어텐션 출력은 값 벡터들의 볼록껍질 안에 남는다</text>
+  <text x="60" y="82" font-size="13" fill="#888">값 벡터 (1, 0) · (0, 1) · (1, 1) 과 계수 두 벌</text>
+  <defs>
+    <marker id="hax" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#888"/>
+    </marker>
+  </defs>
+  <line x1="244.0" y1="390" x2="596.0" y2="390" stroke="#888" stroke-width="1.5" marker-end="url(#hax)"/>
+  <line x1="300" y1="510.0" x2="300" y2="166.0" stroke="#888" stroke-width="1.5" marker-end="url(#hax)"/>
+  <text x="604.0" y="395" font-size="13" fill="#888">x</text>
+  <text x="290" y="170.0" font-size="13" fill="#888" text-anchor="end">y</text>
+  <line x1="460" y1="386" x2="460" y2="394" stroke="#444"/>
+  <text x="460" y="410" font-size="12" fill="#888" text-anchor="middle">1</text>
+  <line x1="296" y1="230" x2="304" y2="230" stroke="#444"/>
+  <text x="290" y="234" font-size="12" fill="#888" text-anchor="end">1</text>
+  <polygon points="460,390 300,230 460,230" fill="#7ec8e3" fill-opacity="0.18" stroke="#7ec8e3" stroke-width="2"/>
+  <circle cx="460" cy="390" r="5" fill="#e8e8e8"/>
+  <text x="474" y="412" font-size="14" fill="#e8e8e8" text-anchor="start">v₁ (1, 0)</text>
+  <circle cx="300" cy="230" r="5" fill="#e8e8e8"/>
+  <text x="286" y="218" font-size="14" fill="#e8e8e8" text-anchor="end">v₂ (0, 1)</text>
+  <circle cx="460" cy="230" r="5" fill="#e8e8e8"/>
+  <text x="474" y="218" font-size="14" fill="#e8e8e8" text-anchor="start">v₃ (1, 1)</text>
+  <circle cx="423.0" cy="330.6" r="6" fill="#55c555"/>
+  <text x="409.0" y="352.6" font-size="13" fill="#55c555" text-anchor="end">(0.769, 0.371)</text>
+  <circle cx="540.0" cy="470.0" r="6" fill="#e05555"/>
+  <text x="554.0" y="475.0" font-size="13" fill="#e05555">(1.5, −0.5)</text>
+  <rect x="630" y="170" width="190" height="96" rx="8" fill="#101010" stroke="#55c555" stroke-width="1.5"/>
+  <text x="646" y="198" font-size="13" font-weight="600" fill="#55c555">어텐션 계수</text>
+  <text x="646" y="220" font-size="13" fill="#e8e8e8">0.629 · 0.231 · 0.140</text>
+  <text x="646" y="242" font-size="13" fill="#888">모두 양수, 합 1</text>
+  <rect x="630" y="290" width="190" height="96" rx="8" fill="#101010" stroke="#e05555" stroke-width="1.5"/>
+  <text x="646" y="318" font-size="13" font-weight="600" fill="#e05555">아핀결합 계수</text>
+  <text x="646" y="340" font-size="13" fill="#e8e8e8">1.5 · −0.5 · 0</text>
+  <text x="646" y="362" font-size="13" fill="#888">합은 1, 음수가 있음</text>
+  <rect x="60" y="520" width="760" height="48" rx="6" fill="#101010" stroke="#333" stroke-width="1"/>
+  <text x="84" y="549" font-size="13" fill="#e8e8e8">세 벡터의 생성 공간은 평면 전체지만, 어텐션 출력은 색칠한 삼각형을 못 벗어난다</text>
+</svg>
