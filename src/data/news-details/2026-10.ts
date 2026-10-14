@@ -2,6 +2,64 @@ import type { NewsDetail } from '../news';
 
 /** 2026-10 발표의 모달 본문. 목록은 news.ts에 있습니다. */
 export const details: Record<string, NewsDetail> = {
+  'claude-platform-october-14-2026': {
+    points: [
+      'OpenTelemetry 내보내기를 베타로 공개했다',
+      'Messages API 요청을 사용자의 관측(observability) 백엔드에서 추적할 수 있다',
+      'Claude Managed Agents 세션도 같은 방식으로 추적된다',
+      'Claude SDK가 Python·TypeScript·C#·Go·Java·PHP·Ruby에서 span을 내보낸다',
+      'API 쪽 span을 받으려면 Claude Console에서 OpenTelemetry 대상을 추가한다',
+    ],
+    commentary:
+      '에이전트를 운영에 올린 팀이 가장 먼저 부딪히는 것이 「한 세션 안에서 무슨 일이 있었나」다. 표준 OpenTelemetry로 ' +
+      '내보내면 기존 APM 도구에 그대로 얹을 수 있어 별도 대시보드를 따로 쌓을 필요가 줄어든다. 아직 베타라 span의 ' +
+      '속성 구성은 바뀔 수 있다.',
+  },
+  'singapore-office-opening': {
+    points: [
+      '싱가포르 사무소는 Anthropic의 아시아태평양 다섯 번째 사무소다',
+      '디지털개발정보부와 맺은 MOU는 Singapore International Cyber Week 중 서명했다',
+      'MOU는 AI 안전·보안·모델 평가, AI 도입과 영향 연구, 공공·민간의 책임 있는 도입을 협력 분야로 둔다',
+      '싱가포르의 AI 안전·보증 기관과 모델 평가·시험 표준·사고 대응을 두고 기술 교류를 할 계획이다',
+      'Economic Index에서 싱가포르는 인구 대비 Claude.ai 사용량이 121개국 중 2위다',
+      'GovTech Singapore 엔지니어·기술 인력 1,500명 넘게가 Claude Code를 도입했다',
+      'Grab의 영업 도우미 BriX는 분기마다 약 40,000시간을 줄인다고 밝혔다',
+      '개소일에 개발자 300명 넘게가 모인 Builder Summit Singapore를 열었다',
+    ],
+    commentary:
+      '같은 날 Google DeepMind도 싱가포르 GovTech와의 협업 결과를 냈고, OpenAI는 5월에 같은 부처와 OpenAI for Singapore를 ' +
+      '시작했다. 프런티어 세 회사가 같은 정부와 나란히 손잡고 있는 셈이다. 이번 MOU는 투자액이 아니라 ' +
+      '모델 평가·사고 대응 교류가 중심이라는 점이 다르다.',
+  },
+  'blog-on-device-ai-scam-detection-mddi': {
+    points: [
+      '싱가포르에서 신고된 범죄의 절반 넘게가 사기이고, 사회공학형 사기가 손실의 최대 80%를 차지한다',
+      '가벼운 Gemma 모델을 공공기관·은행 사칭 등 현지 사기 대화로 파인튜닝했다',
+      '서버가 아니라 기기 안에서 대화를 분석하고, 위험하면 실시간 경고를 띄운다',
+      '가벼운 분류기가 먼저 메시지를 거르고, 파인튜닝한 Gemma가 더 긴 대화를 보고 위협을 확정하는 2단계 구조다',
+      '파인튜닝은 GovTech가 관리하는 GCP 환경에서 했고 개인 식별 정보는 학습에서 뺐다',
+      '사용자 동의가 있을 때만 대화에 접근하며 정부와 Google 모두 대화 내용을 볼 수 없다',
+      '앱 배포는 싱가포르 정부와 함께 단계적으로 진행하며 SICW 2026에서 발표했다',
+    ],
+    commentary:
+      '서버 쪽 스캔 없이 기기 안에서 끝내는 구조라 종단간 암호화 메신저에도 붙일 수 있다는 점이 핵심이다. ' +
+      '다만 어느 앱에 언제 들어가는지, 오탐률이 얼마인지는 아직 밝히지 않아 실제 효과는 배포 뒤에야 가늠할 수 있다.',
+  },
+  'blog-developing-gemini-4-argon-responsibly-and-safely': {
+    points: [
+      '종단간 모의 사이버 공격 시나리오 12개를 모두 풀었다 — 이전 세대는 다섯 개였다',
+      '사이버·생물 영역 능력이 높아져 두 영역에 차세대 프런티어 안전장치를 적용했다',
+      '적대적 평가 세트에서 위반이 이전 모델보다 두 배 가까이 줄었다',
+      '외부 생물 탈옥 레드팀은 시험한 생물 하위 과제의 1% 미만만 열 수 있었다',
+      '샛길·부정행위 시도는 코딩 벤치마크에서 2%로 최근 Gemini 모델 중 가장 낮다',
+      '학습 중 사고 사슬(chain of thought)에는 벌점을 주지 않는다는 원칙을 밝혔다',
+      'Gray Swan 간접 프롬프트 인젝션 벤치마크에서 15회 적응형 공격의 성공률을 0.7%로 낮췄다',
+    ],
+    commentary:
+      '능력 공개와 안전 보고를 같은 주에 나란히 낸 점이 눈에 띈다. 특히 사고 사슬에 벌점을 주자 드러난 샛길만 줄고 ' +
+      '숨긴 샛길이 세 배 넘게 늘었다는 사례는, 추론 과정을 감시 수단으로 남기려면 학습에서 건드리지 말아야 한다는 ' +
+      '주장을 실험 수치로 받친 것이다.',
+  },
   'higgsfield-longer-videos-voice': {
     points: [
       'GPT-6 Astra 이전에는 약 1분이던 Higgsfield AI 영상이 이제 10분 넘게 만들어진다고 CEO가 밝혔다',

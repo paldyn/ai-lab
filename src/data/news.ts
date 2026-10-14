@@ -172,6 +172,62 @@ export const globalNewsUpdatedAt = '2026-10-13';
  */
 const entries: NewsItem[] = [
   {
+    id: 'claude-platform-october-14-2026',
+    source: 'Anthropic',
+    kind: 'company',
+    title: 'Claude API·Managed Agents, OpenTelemetry 내보내기 베타 공개',
+    summary:
+      'Claude 플랫폼에 OpenTelemetry 내보내기가 베타로 나왔다. Messages API 요청과 Claude Managed Agents 세션을 ' +
+      '자체 관측 백엔드에서 추적할 수 있고, Claude Console에서 대상을 추가해 켠다.',
+    publishedAt: '2026-10-14',
+    collectedAt: '2026-10-15',
+    category: 'Product',
+    signal: '플랫폼 변경',
+    url: 'https://platform.claude.com/docs/en/release-notes/overview#october-14-2026',
+  },
+  {
+    id: 'singapore-office-opening',
+    source: 'Anthropic',
+    kind: 'company',
+    title: 'Anthropic, 싱가포르 사무소 개소와 정부 MOU 체결',
+    summary:
+      'Anthropic이 아시아태평양 다섯 번째 사무소를 싱가포르에 열고 디지털개발정보부(MDDI)와 MOU를 맺었다. ' +
+      'AI 안전·보안·모델 평가, AI 도입 연구, 공공·민간의 책임 있는 도입에서 협력한다.',
+    publishedAt: '2026-10-14',
+    collectedAt: '2026-10-15',
+    category: 'Corporate',
+    signal: '지역 확장',
+    url: 'https://www.anthropic.com/news/singapore-office-opening',
+  },
+  {
+    id: 'blog-on-device-ai-scam-detection-mddi',
+    source: 'Google DeepMind',
+    kind: 'company',
+    title: 'Google DeepMind·싱가포르 GovTech, 온디바이스 사기 탐지 모델 개발',
+    summary:
+      'Google DeepMind가 싱가포르 GovTech와 현지 사기 대화로 Gemma를 파인튜닝해 기기 안에서 도는 사기 탐지 모델을 만들었다. ' +
+      '앱에 단계적으로 넣을 예정이며 정부와 Google 모두 대화 내용에 접근할 수 없다고 밝혔다.',
+    publishedAt: '2026-10-14',
+    collectedAt: '2026-10-15',
+    category: 'Safety',
+    signal: '온디바이스 사기 탐지',
+    url: 'https://deepmind.google/blog/on-device-ai-scam-detection-mddi',
+  },
+  {
+    id: 'blog-developing-gemini-4-argon-responsibly-and-safely',
+    source: 'Google DeepMind',
+    kind: 'company',
+    title: 'Google DeepMind, Gemini 4 Argon의 안전·보안 대책 공개',
+    summary:
+      'Google DeepMind가 Gemini 4 Argon에 적용한 오용 방지·정렬·프롬프트 인젝션 방어를 정리하고 Safety and Security Report를 냈다. ' +
+      '사이버·생물 영역 능력이 높아져 차세대 프런티어 안전장치를 두 영역에 적용했다.',
+    publishedAt: '2026-10-13',
+    collectedAt: '2026-10-15',
+    category: 'Safety',
+    signal: '프런티어 모델 안전',
+    url: 'https://deepmind.google/blog/developing-gemini-4-argon-responsibly-and-safely',
+  },
+  {
     id: 'higgsfield-longer-videos-voice',
     source: 'OpenAI',
     kind: 'company',
