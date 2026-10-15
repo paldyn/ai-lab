@@ -160,7 +160,7 @@ export interface NewsDetail {
   commentary: string;
 }
 
-export const globalNewsUpdatedAt = '2026-10-14';
+export const globalNewsUpdatedAt = '2026-10-15';
 
 /**
  * 공식 발표 한 건 = 항목 한 개. 2026년 1월부터 쌓는 아카이브이며 오래된 항목을
@@ -171,6 +171,34 @@ export const globalNewsUpdatedAt = '2026-10-14';
  * 목록에서 파생됩니다. 갱신 시 globalNewsUpdatedAt도 함께 올립니다.
  */
 const entries: NewsItem[] = [
+  {
+    id: 'teaching-students-to-think-and-learn-through-questions',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'OpenAI, 교사의 날 맞아 교사용 AI 강좌 포르투갈어판 공개',
+    summary:
+      'OpenAI가 교사의 날을 맞아 OpenAI Academy의 무료 강좌 AI for Educators를 브라질 포르투갈어로 내놓았다. ' +
+      '질문과 힌트로 한 단계씩 학습을 이끄는 ChatGPT 학습 모드의 교실 활용 예도 함께 소개했다.',
+    publishedAt: '2026-10-15',
+    collectedAt: '2026-10-16',
+    category: 'Product',
+    signal: '교육 현장 AI',
+    url: 'https://openai.com/index/teaching-students-to-think-and-learn-through-questions',
+  },
+  {
+    id: 'block-ai-powered-security',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'Block, Daybreak로 취약점 발견에서 패치 제안까지 18분',
+    summary:
+      'OpenAI가 Square·Cash App·Afterpay 운영사 Block의 보안팀 도입 사례를 소개했다. ' +
+      'Daybreak 기반 보안 하네스로 분기마다 오탐 분류 약 600시간을 줄이고 약 1,100시간 분량의 조사를 자동으로 수행한다고 밝혔다.',
+    publishedAt: '2026-10-14',
+    collectedAt: '2026-10-16',
+    category: 'Product',
+    signal: '기업 도입 사례',
+    url: 'https://openai.com/index/block-ai-powered-security',
+  },
   {
     id: 'an-update-on-independent-evaluators',
     source: 'Anthropic',
