@@ -172,6 +172,20 @@ export const globalNewsUpdatedAt = '2026-10-14';
  */
 const entries: NewsItem[] = [
   {
+    id: 'blog-gemini-4-argon-for-robotics',
+    source: 'Google DeepMind',
+    kind: 'model',
+    title: 'Gemini 4 Argon 로보틱스 활용법 — 로봇 제어부터 자기 개선까지',
+    summary:
+      'Google이 Gemini 4 Argon을 로봇 제어·Real2Sim·물리 이해·연구와 자기 개선에 쓰는 대표 프롬프트를 공개했다. ' +
+      '3D 물리·공간 문제를 푸는 ERQA 벤치마크에서는 87%로 다른 프런티어 모델을 앞섰다고 밝혔다.',
+    publishedAt: '2026-10-13',
+    collectedAt: '2026-10-15',
+    category: 'Frontier',
+    signal: '체화 AI',
+    url: 'https://deepmind.google/blog/gemini-4-argon-for-robotics',
+  },
+  {
     id: 'the-eus-next-chapter-in-ai-is-agentic',
     source: 'OpenAI',
     kind: 'company',

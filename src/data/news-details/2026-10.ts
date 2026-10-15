@@ -2,6 +2,21 @@ import type { NewsDetail } from '../news';
 
 /** 2026-10 발표의 모달 본문. 목록은 news.ts에 있습니다. */
 export const details: Record<string, NewsDetail> = {
+  'blog-gemini-4-argon-for-robotics': {
+    points: [
+      '3D 물리·공간 추론 벤치마크 ERQA에서 순수 추론만으로 87%를 기록해 다른 프런티어 모델을 앞섰다고 밝혔다',
+      'Argon이 Boston Dynamics Spot을 제어해, 발판 쓰레기통의 MuJoCo 트윈을 만들어 연습한 뒤 실제로 캔을 버리게 했다',
+      '로봇 카메라 영상·사람의 1인칭 영상·손그림 스케치 사진에서 물리 보정된 MuJoCo 트윈을 만드는 사례를 실었다',
+      'Argon이 ALOHA 2의 136초 종이접기 영상에 4층 사후 주석을 달고, 실수·재시도 구간은 진척도를 멈춰 두었다',
+      '사진 한 장으로 만든 트윈의 에피소드 4,500개 이상으로 VLA를 파인튜닝해 실제 로봇 성공률 56%→75%, 완료 시간 35초→24초를 얻었다고 밝혔다',
+      'Argon이 6-DoF SO-101 팔에서 시도와 자기 점검을 되풀이해 집어 옮기는 시간을 58.9초에서 22.9초, 17.4초로 줄였다',
+      'API는 유료 티어 Interactions API에서 gemini-4-argon으로, AI Studio·Antigravity는 Google AI Ultra 구독자가 쓴다',
+    ],
+    commentary:
+      'Google은 Gemini Robotics처럼 로봇 전용 모델을 따로 내 왔는데, 이 글은 범용 프런티어 모델 하나가 로봇 직접 제어부터 ' +
+      '시뮬레이션 구축·데이터 라벨링까지 로봇 개발 전 과정에 쓰이는 그림을 보여 준다. 다만 실제 로봇에서 잰 수치가 붙은 사례는 ' +
+      '일부라, 로봇 팀은 공개된 프롬프트를 자기 과제에 걸어 재 보는 것이 먼저다.',
+  },
   'the-eus-next-chapter-in-ai-is-agentic': {
     points: [
       'EU 표본의 ChatGPT Enterprise 고객에서 Codex와 ChatGPT Work가 출력 토큰의 절반 이상을 차지한다',
