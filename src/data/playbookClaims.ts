@@ -218,12 +218,15 @@ export const playbookClaims: Claim[] = [
     id: 'gemini-4-argon-context',
     subject: { kind: 'model', id: 'gemini-4-argon' },
     topic: 'context',
-    /* 입력과 출력을 합친 한도다 — 「Context window (unified input and output token limit)」. */
+    /*
+      입력과 출력을 합친 한도다 — 「Context window (unified input and output token limit)」.
+      2026-10-16에 출처를 모델 목록에서 모델 페이지로 옮겼다 — 목록에서 Argon 카드가 빠졌다.
+    */
     statement: 'Gemini 4 Argon의 컨텍스트 창(입력·출력 합산)',
     value: '1M 토큰',
     tier: 'vendor',
     volatility: 'model',
-    source: { label: 'Gemini API — Models', url: 'https://ai.google.dev/gemini-api/docs/models' },
+    source: { label: 'Gemini 4 Argon 모델 문서', url: 'https://ai.google.dev/gemini-api/docs/models/gemini-4-argon' },
   },
   {
     id: 'gemini-3-8-flash-context',
