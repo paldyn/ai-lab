@@ -302,3 +302,5 @@ du -sk v/lib/python3.11/site-packages/{bm25s,numpy}
 읽어주셔서 감사합니다. 😊
 
 **지난 글:** [Recall@k·MRR·nDCG는 언제 서로 다른 결론을 내는가 — 1위가 갈린 두 자리, 그중 하나는 잡음이었다](/articles/bench-retrieval-eval-metrics)
+
+**다음 글:** [한국어 형태소 분석기 실측: 속도·설치 난이도·검색 품질 — BM25에서는 문자 2-gram이 분석기 넷과 구별되지 않았고 질의당 29배 빨랐다](/articles/bench-korean-morph-analyzers)
