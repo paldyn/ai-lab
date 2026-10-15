@@ -263,7 +263,6 @@ export const guideProducts: Product[] = [
       'gpt-5-6-terra',
       'gpt-6-luna',
       'gpt-5-6-luna',
-      'gpt-5-5',
     ],
     /*
       learn.chatgpt.com/docs/models 의 web 모드 블록이 「These recommendations apply
@@ -271,8 +270,9 @@ export const guideProducts: Product[] = [
       (2026-09-29) — GPT-6 Astra·Sol·Luna는 모델 카드의 「ChatGPT Work on the web」 행이
       true이고 같은 페이지가 「In ChatGPT, GPT-6 Sol and GPT-6 Luna are available in Work and
       Codex.」라고 적습니다. GPT-5.6 셋은 카드가 없고 「GPT-5.6 Sol, GPT-5.6 Terra, and GPT-5.6
-      Luna remain available during the rollout.」 한 문장이 받칩니다. GPT-5.5는 「View other
-      models」 칸의 카드이고 2026-10-14에 은퇴합니다(구세대라 화면에서는 빠집니다).
+      Luna remain available during the rollout.」 한 문장이 받칩니다. GPT-5.5는 2026-10-14에
+      은퇴해 목록에서 뺐습니다(2026-10-15 — 변경 기록 「On October 14, 2026, GPT-5.5 will retire
+      from ChatGPT, ChatGPT Work, and Codex」, 카드가 사라지고 「Deprecated Codex models」 절로 옮겨 갔습니다).
 
       **다만 표를 그대로 옮긴 것이 아닙니다.** 같은 표에서 GPT-5.4와 GPT-5.4 mini도
       ChatGPT web이 true인데 은퇴일로 걸러 뺐습니다 — 페이지가 말한 사실이 아니라
@@ -307,13 +307,15 @@ export const guideProducts: Product[] = [
       'gpt-5-6-terra',
       'gpt-6-luna',
       'gpt-5-6-luna',
-      'gpt-5-5',
     ],
     /*
       **2026-09-29에 고쳤습니다.** GPT-6 Sol·Luna가 들어오고(Codex 변경 기록 2026-09-22 「GPT-6
       Sol and GPT-6 Luna are rolling out to Codex and ChatGPT Work」, 모델 페이지 「In ChatGPT,
       GPT-6 Sol and GPT-6 Luna are available in Work and Codex.」), GPT-5.3 Codex Spark가 빠졌습니다
       (2026-09-14 폐기). GPT-5.6 셋은 「remain available during the rollout」이라 남깁니다.
+      **2026-10-15에 GPT-5.5를 뺐습니다** — 「Effective October 14, 2026, at noon PDT (19:00 UTC),
+      GPT-5.5 retires from Codex for users signed in with ChatGPT.」 API 키로 로그인한 Codex에는
+      남지만, GPT-5.4를 뺄 때와 같이 ChatGPT 로그인 기준으로 적습니다.
       **차례는 회사 등급입니다** — API 모델 페이지의 추론 등급이 높은 것부터, 같으면 세대가
       새것부터, 같은 세대 안에서는 단가가 높은 것부터(GPT-6 Astra $10 > GPT-6 Sol $2).
       ChatGPT Work도 같은 차례입니다.
