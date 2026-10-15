@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="430" viewBox="0 0 880 430">
+  <defs>
+  </defs>
+  <rect x="0" y="0" width="880" height="430" rx="12" fill="#0a0a0a"/>
+  <text x="60" y="46" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="22" font-weight="700" fill="#e8e8e8">LLM의 세 갈래</text>
+  <text x="60" y="72" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">가중치를 공개하는가, 얼마나 큰가로 갈린다</text>
+  <rect x="60" y="100" width="240" height="250" rx="8" fill="#12161c" stroke="#7777cc" stroke-width="1.5"/>
+  <text x="180" y="136" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="17" font-weight="700" fill="#e8e8e8">프런티어</text>
+  <text x="84" y="180" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#7777cc">쓰는 법</text>
+  <text x="84" y="202" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="14" fill="#e8e8e8">API · 채팅 서비스로만</text>
+  <text x="84" y="236" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#7777cc">예</text>
+  <text x="84" y="258" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="14" fill="#e8e8e8">GPT · Claude · Gemini</text>
+  <text x="84" y="292" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#7777cc">고르는 자리</text>
+  <text x="84" y="314" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="14" fill="#e8e8e8">품질이 가장 중요할 때</text>
+  <rect x="320" y="100" width="240" height="250" rx="8" fill="#12161c" stroke="#7ec8e3" stroke-width="1.5"/>
+  <text x="440" y="136" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="17" font-weight="700" fill="#e8e8e8">오픈 웨이트</text>
+  <text x="344" y="180" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#7ec8e3">쓰는 법</text>
+  <text x="344" y="202" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="14" fill="#e8e8e8">가중치를 받아 직접 실행</text>
+  <text x="344" y="236" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#7ec8e3">예</text>
+  <text x="344" y="258" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="14" fill="#e8e8e8">Llama · Qwen · DeepSeek</text>
+  <text x="344" y="292" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#7ec8e3">고르는 자리</text>
+  <text x="344" y="314" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="14" fill="#e8e8e8">데이터를 못 내보낼 때</text>
+  <rect x="580" y="100" width="240" height="250" rx="8" fill="#12161c" stroke="#55c555" stroke-width="1.5"/>
+  <text x="700" y="136" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="17" font-weight="700" fill="#e8e8e8">소형</text>
+  <text x="604" y="180" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#55c555">쓰는 법</text>
+  <text x="604" y="202" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="14" fill="#e8e8e8">노트북 · 휴대폰에서도</text>
+  <text x="604" y="236" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#55c555">예</text>
+  <text x="604" y="258" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="14" fill="#e8e8e8">오픈 웨이트의 작은 판</text>
+  <text x="604" y="292" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#55c555">고르는 자리</text>
+  <text x="604" y="314" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="14" fill="#e8e8e8">좁은 일 · 비용과 지연</text>
+  <text x="60" y="392" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">세 갈래 모두 하나의 사전학습 모델 위에 프롬프트 · 검색 · 파인튜닝으로 쓰임을 얹는다.</text>
+</svg>

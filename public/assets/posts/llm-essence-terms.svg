@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="430" viewBox="0 0 880 430">
+  <defs>
+    <marker id="tmA" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#7777cc"/>
+    </marker>
+    <marker id="tmB" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#7ec8e3"/>
+    </marker>
+  </defs>
+  <rect x="0" y="0" width="880" height="430" rx="12" fill="#0a0a0a"/>
+  <text x="60" y="46" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="22" font-weight="700" fill="#e8e8e8">모델 · 파라미터 · 학습 · 추론은 한 줄로 이어진다</text>
+  <text x="60" y="72" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">학습은 파라미터를 정하고, 추론은 정해진 파라미터를 읽기만 한다</text>
+  <rect x="330" y="100" width="220" height="250" rx="8" fill="#12161c" stroke="#55c555" stroke-width="1.5"/>
+  <text x="440" y="200" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="17" font-weight="700" fill="#e8e8e8">모델</text>
+  <text x="440" y="228" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="14" fill="#e8e8e8">구조 + 파라미터 θ</text>
+  <text x="440" y="252" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">수십억~수천억 개의 숫자</text>
+  <rect x="60" y="110" width="190" height="70" rx="8" fill="#12161c" stroke="#7777cc" stroke-width="1.5"/>
+  <text x="155" y="140" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="15" font-weight="600" fill="#e8e8e8">학습 데이터</text>
+  <text x="155" y="162" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">수조 개의 토큰</text>
+  <rect x="630" y="110" width="190" height="70" rx="8" fill="#12161c" stroke="#7777cc" stroke-width="1.5"/>
+  <text x="725" y="140" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="15" font-weight="600" fill="#e8e8e8">학습 알고리즘</text>
+  <text x="725" y="162" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">θ를 옮기는 방법</text>
+  <line x1="250" y1="145" x2="330" y2="145" stroke="#7777cc" stroke-width="2" marker-end="url(#tmA)"/>
+  <line x1="630" y1="145" x2="550" y2="145" stroke="#7777cc" stroke-width="2" marker-end="url(#tmA)"/>
+  <text x="60" y="212" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#7777cc">학습 — θ를 정한다 · 한 번, 큰 비용</text>
+  <rect x="60" y="270" width="190" height="70" rx="8" fill="#12161c" stroke="#7ec8e3" stroke-width="1.5"/>
+  <text x="155" y="300" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="15" font-weight="600" fill="#e8e8e8">새 입력</text>
+  <text x="155" y="322" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">프롬프트</text>
+  <rect x="630" y="270" width="190" height="70" rx="8" fill="#12161c" stroke="#7ec8e3" stroke-width="1.5"/>
+  <text x="725" y="300" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="15" font-weight="600" fill="#e8e8e8">답</text>
+  <text x="725" y="322" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">토큰을 하나씩</text>
+  <line x1="250" y1="305" x2="330" y2="305" stroke="#7ec8e3" stroke-width="2" marker-end="url(#tmB)"/>
+  <line x1="550" y1="305" x2="630" y2="305" stroke="#7ec8e3" stroke-width="2" marker-end="url(#tmB)"/>
+  <text x="60" y="372" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#7ec8e3">추론 — θ를 읽기만 한다 · 매번, 작은 비용</text>
+  <text x="60" y="400" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">대화에서 알려 준 것은 θ에 남지 않는다. 다음 대화에서는 다시 입력에 넣어야 한다.</text>
+</svg>

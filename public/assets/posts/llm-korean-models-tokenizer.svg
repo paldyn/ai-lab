@@ -1,27 +1,39 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 380" width="880" height="380">
-  <rect width="880" height="380" fill="#0a0a0a" rx="12"/>
-
-  <!-- Title -->
-  <text x="440" y="44" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="22" font-weight="700" fill="#e8e8e8">한국어 토크나이저 효율성 비교</text>
-  <text x="440" y="68" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#888">"안녕하세요, 반갑습니다" 토크나이징 예시</text>
-
-  <!-- GPT-4 tokenizer -->
-  <rect x="60" y="96" width="760" height="56" rx="6" fill="#111827" stroke="#e05555" stroke-width="1.5"/>
-  <text x="80" y="118" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="700" fill="#e05555">GPT-4 (tiktoken, cl100k)</text>
-  <text x="80" y="140" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="12" fill="#888">["안", "녕", "하", "세", "요", ",", " ", "반", "갑", "습", "니", "다"] → 12토큰 (글자 단위 분리)</text>
-
-  <!-- LLaMA 3 tokenizer -->
-  <rect x="60" y="164" width="760" height="56" rx="6" fill="#111827" stroke="#7777cc" stroke-width="1.5"/>
-  <text x="80" y="186" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="700" fill="#7777cc">LLaMA 3 (128K 어휘)</text>
-  <text x="80" y="208" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="12" fill="#888">["안녕", "하세요", ",", " 반갑", "습니다"] → 5토큰 (어절 단위 일부 묶음)</text>
-
-  <!-- HyperCLOVA tokenizer -->
-  <rect x="60" y="232" width="760" height="56" rx="6" fill="#111827" stroke="#55c555" stroke-width="2"/>
-  <text x="80" y="254" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="700" fill="#55c555">HyperCLOVA X (한국어 특화 BPE)</text>
-  <text x="80" y="276" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="12" fill="#888">["안녕하세요", ",", " 반갑습니다"] → 3토큰 (단어/구 단위 묶음)</text>
-
-  <!-- Explanation -->
-  <rect x="60" y="304" width="760" height="56" rx="6" fill="#0d1117" stroke="#333"/>
-  <text x="80" y="326" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e8e8e8">토큰 수가 적을수록: API 비용↓, 컨텍스트 효율↑, 처리 속도↑</text>
-  <text x="80" y="348" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#55c555">한국어 특화 토크나이저는 동일 텍스트를 2~4배 적은 토큰으로 처리 → 실질적 비용 절감</text>
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="480" viewBox="0 0 880 480">
+  <rect x="0" y="0" width="880" height="480" rx="12" fill="#0a0a0a"/>
+  <text x="60" y="46" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="22" font-weight="700" fill="#e8e8e8">같은 한국어 문단(139자)을 담는 데 드는 토큰 수</text>
+  <text x="60" y="76" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">허깅페이스에 공개된 토크나이저 파일로 직접 셈 · 짧을수록 효율이 좋다</text>
+  <text x="326" y="126" text-anchor="end" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e8e8e8">SKT A.X 4.0</text>
+  <rect x="340" y="112" width="134" height="20" rx="3" fill="#55c555" fill-opacity="0.85"/>
+  <text x="484" y="126" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e8e8e8">61</text>
+  <text x="326" y="156" text-anchor="end" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e8e8e8">Upstage Solar Open 100B</text>
+  <rect x="340" y="142" width="139" height="20" rx="3" fill="#55c555" fill-opacity="0.85"/>
+  <text x="489" y="156" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e8e8e8">63</text>
+  <text x="326" y="186" text-anchor="end" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e8e8e8">LG EXAONE 4.0</text>
+  <rect x="340" y="172" width="189" height="20" rx="3" fill="#55c555" fill-opacity="0.85"/>
+  <text x="539" y="186" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e8e8e8">86</text>
+  <text x="326" y="216" text-anchor="end" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e8e8e8">HyperCLOVA X SEED Think 14B</text>
+  <rect x="340" y="202" width="196" height="20" rx="3" fill="#55c555" fill-opacity="0.85"/>
+  <text x="546" y="216" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e8e8e8">89</text>
+  <text x="326" y="246" text-anchor="end" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e8e8e8">Gemma 3</text>
+  <rect x="340" y="232" width="218" height="20" rx="3" fill="#7ec8e3" fill-opacity="0.85"/>
+  <text x="568" y="246" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e8e8e8">99</text>
+  <text x="326" y="276" text-anchor="end" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e8e8e8">GPT-4o 이후 (o200k)</text>
+  <rect x="340" y="262" width="231" height="20" rx="3" fill="#7ec8e3" fill-opacity="0.85"/>
+  <text x="581" y="276" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e8e8e8">105</text>
+  <text x="326" y="306" text-anchor="end" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e8e8e8">Llama 3.1</text>
+  <rect x="340" y="292" width="233" height="20" rx="3" fill="#7ec8e3" fill-opacity="0.85"/>
+  <text x="583" y="306" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e8e8e8">106</text>
+  <text x="326" y="336" text-anchor="end" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e8e8e8">Qwen3</text>
+  <rect x="340" y="322" width="266" height="20" rx="3" fill="#7ec8e3" fill-opacity="0.85"/>
+  <text x="616" y="336" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e8e8e8">121</text>
+  <text x="326" y="366" text-anchor="end" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e8e8e8">GPT-4 (cl100k)</text>
+  <rect x="340" y="352" width="385" height="20" rx="3" fill="#7ec8e3" fill-opacity="0.85"/>
+  <text x="735" y="366" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e8e8e8">175</text>
+  <text x="326" y="396" text-anchor="end" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e8e8e8">SOLAR 10.7B (2023)</text>
+  <rect x="340" y="382" width="436" height="20" rx="3" fill="#7ec8e3" fill-opacity="0.85"/>
+  <text x="786" y="396" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e8e8e8">198</text>
+  <rect x="60" y="429" width="14" height="14" rx="3" fill="#55c555"/>
+  <text x="82" y="440" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">국내 모델</text>
+  <rect x="170" y="429" width="14" height="14" rx="3" fill="#7ec8e3"/>
+  <text x="192" y="440" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">글로벌 모델 · 옛 모델 (같은 문단의 영어 번역은 어느 토크나이저로나 75~85토큰)</text>
 </svg>

@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="420" viewBox="0 0 880 420">
+  <defs>
+    <marker id="roArr" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#7ec8e3"/>
+    </marker>
+    <marker id="roBack" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#e05555"/>
+    </marker>
+  </defs>
+
+  <rect x="0" y="0" width="880" height="420" rx="12" fill="#0a0a0a"/>
+
+  <text x="60" y="46" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="22" font-weight="700" fill="#e8e8e8">사용자 몫을 단계마다 넘기고, 조건이 걸리면 되돌린다</text>
+
+  <rect x="60" y="90" width="170" height="96" rx="8" fill="#12161c" stroke="#7777cc" stroke-width="1.5"/>
+  <text x="145" y="122" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="15" font-weight="600" fill="#e8e8e8">그림자 배포</text>
+  <text x="145" y="146" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">사용자 몫 0%</text>
+  <text x="145" y="168" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">일주일 이상 비교</text>
+
+  <rect x="260" y="90" width="170" height="96" rx="8" fill="#12161c" stroke="#7ec8e3" stroke-width="1.5"/>
+  <text x="345" y="122" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="15" font-weight="600" fill="#e8e8e8">10% 전환</text>
+  <text x="345" y="146" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">수천 건이 쌓일 때까지</text>
+  <text x="345" y="168" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">관측</text>
+
+  <rect x="460" y="90" width="170" height="96" rx="8" fill="#12161c" stroke="#7ec8e3" stroke-width="1.5"/>
+  <text x="545" y="122" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="15" font-weight="600" fill="#e8e8e8">50% 전환</text>
+  <text x="545" y="146" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">두 구간의 지표를</text>
+  <text x="545" y="168" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">나란히 비교</text>
+
+  <rect x="660" y="90" width="170" height="96" rx="8" fill="#12161c" stroke="#55c555" stroke-width="1.5"/>
+  <text x="745" y="122" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="15" font-weight="600" fill="#e8e8e8">100% 전환</text>
+  <text x="745" y="146" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">폴백 경로는</text>
+  <text x="745" y="168" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">그대로 둔다</text>
+
+  <line x1="230" y1="138" x2="260" y2="138" stroke="#7ec8e3" stroke-width="2" marker-end="url(#roArr)"/>
+  <line x1="430" y1="138" x2="460" y2="138" stroke="#7ec8e3" stroke-width="2" marker-end="url(#roArr)"/>
+  <line x1="630" y1="138" x2="660" y2="138" stroke="#7ec8e3" stroke-width="2" marker-end="url(#roArr)"/>
+
+  <line x1="345" y1="186" x2="345" y2="286" stroke="#e05555" stroke-width="2" stroke-dasharray="4,4" marker-end="url(#roBack)"/>
+  <line x1="545" y1="186" x2="545" y2="286" stroke="#e05555" stroke-width="2" stroke-dasharray="4,4" marker-end="url(#roBack)"/>
+  <line x1="745" y1="186" x2="745" y2="286" stroke="#e05555" stroke-width="2" stroke-dasharray="4,4" marker-end="url(#roBack)"/>
+
+  <rect x="260" y="288" width="570" height="64" rx="8" fill="#2a1a1a" stroke="#e05555" stroke-width="1.5"/>
+  <text x="545" y="316" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="15" font-weight="600" fill="#e8e8e8">롤백 조건이 하나라도 걸리면</text>
+  <text x="545" y="338" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">설정 한 줄로 큰 모델 100%로 되돌린다</text>
+
+  <text x="60" y="386" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">관측 기간은 날짜가 아니라 건수로 정한다. 트래픽이 적으면 10% 단계 대신 그림자 배포를 길게 둔다.</text>
+</svg>

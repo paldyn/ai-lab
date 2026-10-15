@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="430" viewBox="0 0 880 430">
+  <defs>
+    <marker id="esFail" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#e05555"/>
+    </marker>
+    <marker id="esPass" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#55c555"/>
+    </marker>
+  </defs>
+
+  <rect x="0" y="0" width="880" height="430" rx="12" fill="#0a0a0a"/>
+
+  <text x="60" y="46" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="22" font-weight="700" fill="#e8e8e8">실패한 요청만 한 칸씩 올려 보낸다</text>
+  <text x="60" y="72" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">실패 = 검증 불통과 · 사고 예산 소진 · 형식 오류</text>
+
+  <rect x="60" y="110" width="200" height="86" rx="8" fill="#12161c" stroke="#7ec8e3" stroke-width="1.5"/>
+  <text x="160" y="142" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="15" font-weight="600" fill="#e8e8e8">낮은 등급</text>
+  <text x="160" y="166" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">사고 끔 · 대부분 여기서 끝</text>
+
+  <rect x="340" y="110" width="200" height="86" rx="8" fill="#12161c" stroke="#7777cc" stroke-width="1.5"/>
+  <text x="440" y="142" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="15" font-weight="600" fill="#e8e8e8">큰 등급</text>
+  <text x="440" y="166" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">사고 켬 · 예산 상한</text>
+
+  <rect x="620" y="110" width="200" height="86" rx="8" fill="#2a1a1a" stroke="#e05555" stroke-width="1.5"/>
+  <text x="720" y="142" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="15" font-weight="600" fill="#e8e8e8">사람 · 되묻기</text>
+  <text x="720" y="166" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">두 등급을 다 쓴 요청</text>
+
+  <line x1="260" y1="153" x2="340" y2="153" stroke="#e05555" stroke-width="2" marker-end="url(#esFail)"/>
+  <text x="300" y="135" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e05555">실패</text>
+  <line x1="540" y1="153" x2="620" y2="153" stroke="#e05555" stroke-width="2" marker-end="url(#esFail)"/>
+  <text x="580" y="135" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e05555">실패</text>
+
+  <line x1="160" y1="196" x2="160" y2="280" stroke="#55c555" stroke-width="2" marker-end="url(#esPass)"/>
+  <text x="174" y="244" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#55c555">통과</text>
+  <line x1="440" y1="196" x2="440" y2="280" stroke="#55c555" stroke-width="2" marker-end="url(#esPass)"/>
+  <text x="454" y="244" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#55c555">통과</text>
+
+  <rect x="60" y="282" width="480" height="56" rx="8" fill="#142014" stroke="#55c555" stroke-width="1.5"/>
+  <text x="300" y="316" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="15" font-weight="600" fill="#e8e8e8">응답</text>
+
+  <text x="60" y="380" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">승급 성공률이 낮으면 그 요청은 모델이 아니라 요청이 모호한 것이다 — 승급 대신 바로 사람에게 보낸다.</text>
+</svg>

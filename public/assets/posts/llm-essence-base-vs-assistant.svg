@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="420" viewBox="0 0 880 420">
+  <defs>
+    <marker id="bvA" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#888"/>
+    </marker>
+  </defs>
+  <rect x="0" y="0" width="880" height="420" rx="12" fill="#0a0a0a"/>
+  <text x="60" y="46" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="22" font-weight="700" fill="#e8e8e8">같은 질문, 다른 답</text>
+  <text x="60" y="72" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">베이스 모델은 문서를 이어 쓰고, 어시스턴트 모델은 질문에 답한다 (흔히 나오는 답의 예)</text>
+  <rect x="240" y="96" width="400" height="56" rx="6" fill="#000000" stroke="#3a4a6e" stroke-width="1"/>
+  <text x="440" y="130" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="15" fill="#ffffff">대한민국의 수도는 어디인가요?</text>
+  <line x1="340" y1="152" x2="215" y2="200" stroke="#888" stroke-width="2" marker-end="url(#bvA)"/>
+  <line x1="540" y1="152" x2="665" y2="200" stroke="#888" stroke-width="2" marker-end="url(#bvA)"/>
+  <rect x="60" y="202" width="360" height="150" rx="8" fill="#12161c" stroke="#e05555" stroke-width="1.5"/>
+  <text x="240" y="232" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#e8e8e8">베이스 모델</text>
+  <text x="240" y="254" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">사전학습만</text>
+  <text x="84" y="290" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="14" fill="#e8e8e8">일본의 수도는 어디인가요?</text>
+  <text x="84" y="314" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="14" fill="#e8e8e8">중국의 수도는 어디인가요?</text>
+  <text x="84" y="338" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="14" fill="#888">…</text>
+  <rect x="460" y="202" width="360" height="150" rx="8" fill="#12161c" stroke="#55c555" stroke-width="1.5"/>
+  <text x="640" y="232" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#e8e8e8">어시스턴트 모델</text>
+  <text x="640" y="254" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">사전학습 + 지시 학습 + RLHF</text>
+  <text x="484" y="290" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="14" fill="#e8e8e8">서울입니다.</text>
+  <text x="60" y="388" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">지식은 둘이 거의 같다. 추가 학습이 바꾸는 것은 그 지식을 꺼내는 행동이다.</text>
+</svg>
