@@ -172,6 +172,48 @@ export const globalNewsUpdatedAt = '2026-10-14';
  */
 const entries: NewsItem[] = [
   {
+    id: 'an-update-on-independent-evaluators',
+    source: 'Anthropic',
+    kind: 'company',
+    title: 'Anthropic, METR 평가팀에 직원 수준 접근권 부여',
+    summary:
+      'Anthropic이 비영리 평가 기관 METR 팀에 직원에 준하는 내부 접근권을 주고, METR가 위험 평가 결과를 직접 공개하게 했다. ' +
+      '평가 기관의 접근권과 공개 권한을 세 단계로 나누고 SecureBio·Accenture와도 협력 중이라고 밝혔다.',
+    publishedAt: '2026-10-15',
+    collectedAt: '2026-10-16',
+    category: 'Safety',
+    signal: '독립 평가 파트너십',
+    url: 'https://www.anthropic.com/news/an-update-on-independent-evaluators',
+  },
+  {
+    id: 'blog-accelerating-antimicrobial-discovery',
+    source: 'Google DeepMind',
+    kind: 'company',
+    title: 'Google Antigravity로 새 항균 펩타이드 후보를 찾은 과정 공개',
+    summary:
+      'Google DeepMind가 Google Antigravity의 에이전트와 단백질 기능 예측 모델 ProtNLM으로 UniProt의 미분류 단백질을 훑어 ' +
+      '새 항균 펩타이드 후보를 찾은 과정을 공개했다. 이 후보는 지금 습식 실험으로 검증 중이다.',
+    publishedAt: '2026-10-15',
+    collectedAt: '2026-10-16',
+    category: 'Product',
+    signal: '과학 에이전트',
+    url: 'https://deepmind.google/blog/accelerating-antimicrobial-discovery',
+  },
+  {
+    id: '2026-us-midterms',
+    source: 'Anthropic',
+    kind: 'company',
+    title: 'Anthropic, 2026 미국 중간선거 대비 안전장치 강화',
+    summary:
+      'Anthropic이 미국 중간선거를 앞두고 Democracy Works의 공식 투표 정보와 선거 당일 개표 결과를 Claude.ai 답변에 넣기로 했다. ' +
+      '여러 요청에 나눈 선거 악용을 잡는 분류기를 더하고 외부 기관 셋의 표현의 자유 평가 결과도 공개했다.',
+    publishedAt: '2026-10-14',
+    collectedAt: '2026-10-16',
+    category: 'Safety',
+    signal: '선거 무결성',
+    url: 'https://www.anthropic.com/news/2026-us-midterms',
+  },
+  {
     id: 'blog-gemini-4-argon-for-robotics',
     source: 'Google DeepMind',
     kind: 'model',
