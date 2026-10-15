@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="560" viewBox="0 0 880 560">
+<rect width="880" height="560" rx="12" fill="#0a0a0a"/>
+<text x="440" y="42" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="22" font-weight="700" fill="#e8e8e8">같은 격자, 세 가지 반올림</text>
+<text x="440" y="68" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">오차 e = x − Q(x)가 놓이는 범위와 평균 · 아래는 Δ = 0.01로 값 4,096개를 더했을 때</text>
+<text x="60" y="151" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#e8e8e8">반올림</text>
+<line x1="300" y1="145" x2="740" y2="145" stroke="#444" stroke-width="1.5"/>
+<rect x="410.0" y="119" width="220.0" height="26" fill="#55c555" fill-opacity="0.25" stroke="#55c555" stroke-width="2"/>
+<line x1="520" y1="109" x2="520" y2="153" stroke="#e8e8e8" stroke-width="2" stroke-dasharray="4,4"/>
+<text x="520" y="101" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e8e8e8">평균</text>
+<text x="300" y="175" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">평균 0 · 평균제곱오차 Δ²/12</text>
+<text x="300" y="195" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#55c555">합의 오차: 0 주위, 표준편차 0.18</text>
+<text x="60" y="291" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#e8e8e8">버림</text>
+<line x1="300" y1="285" x2="740" y2="285" stroke="#444" stroke-width="1.5"/>
+<rect x="520" y="259" width="220" height="26" fill="#e05555" fill-opacity="0.25" stroke="#e05555" stroke-width="2"/>
+<line x1="630.0" y1="249" x2="630.0" y2="293" stroke="#e8e8e8" stroke-width="2" stroke-dasharray="4,4"/>
+<text x="630.0" y="241" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e8e8e8">평균</text>
+<text x="300" y="315" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">평균 Δ/2 · 평균제곱오차 Δ²/3</text>
+<text x="300" y="335" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e05555">합의 오차: 한쪽으로 평균 20.48</text>
+<text x="60" y="431" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#e8e8e8">확률적 반올림</text>
+<line x1="300" y1="425" x2="740" y2="425" stroke="#444" stroke-width="1.5"/>
+<polygon points="300,425 520,395 740,425" fill="#7ec8e3" fill-opacity="0.25" stroke="#7ec8e3" stroke-width="2"/>
+<line x1="520" y1="389" x2="520" y2="433" stroke="#e8e8e8" stroke-width="2" stroke-dasharray="4,4"/>
+<text x="520" y="381" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e8e8e8">평균</text>
+<text x="300" y="455" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">평균 0 · 평균제곱오차 Δ²/6</text>
+<text x="300" y="475" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#7ec8e3">합의 오차: 0 주위, 치우침 없음</text>
+<line x1="300" y1="505" x2="740" y2="505" stroke="#888" stroke-width="1.5"/>
+<line x1="300" y1="499" x2="300" y2="511" stroke="#888" stroke-width="1.5"/>
+<text x="300" y="529" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">−Δ</text>
+<line x1="410.0" y1="499" x2="410.0" y2="511" stroke="#888" stroke-width="1.5"/>
+<text x="410.0" y="529" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">−Δ/2</text>
+<line x1="520" y1="499" x2="520" y2="511" stroke="#888" stroke-width="1.5"/>
+<text x="520" y="529" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">0</text>
+<line x1="630.0" y1="499" x2="630.0" y2="511" stroke="#888" stroke-width="1.5"/>
+<text x="630.0" y="529" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">Δ/2</text>
+<line x1="740" y1="499" x2="740" y2="511" stroke="#888" stroke-width="1.5"/>
+<text x="740" y="529" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">Δ</text>
+<text x="754" y="510" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">e</text>
+<line x1="300" y1="108" x2="300" y2="497" stroke="#444" stroke-width="1" stroke-dasharray="4,4"/>
+<line x1="410.0" y1="108" x2="410.0" y2="497" stroke="#444" stroke-width="1" stroke-dasharray="4,4"/>
+<line x1="520" y1="108" x2="520" y2="497" stroke="#444" stroke-width="1" stroke-dasharray="4,4"/>
+<line x1="630.0" y1="108" x2="630.0" y2="497" stroke="#444" stroke-width="1" stroke-dasharray="4,4"/>
+<line x1="740" y1="108" x2="740" y2="497" stroke="#444" stroke-width="1" stroke-dasharray="4,4"/>
+</svg>

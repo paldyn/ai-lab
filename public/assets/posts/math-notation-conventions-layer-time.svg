@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="500" viewBox="0 0 880 500" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <defs>
+    <marker id="arr" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#7777cc"/>
+    </marker>
+  </defs>
+  <rect width="880" height="500" rx="12" fill="#0a0a0a"/>
+  <text x="60" y="56" font-size="22" font-weight="700" fill="#e8e8e8">아래 첨자는 시각, 괄호 친 위 첨자는 층</text>
+  <text x="60" y="82" font-size="13" fill="#888">층 셋 × 시각 넷의 격자에서 h₃⁽²⁾ 한 칸이 받는 두 값</text>
+
+  <text x="120" y="243" font-size="13" fill="#888" text-anchor="middle">l = 3</text>
+  <text x="120" y="333" font-size="13" fill="#888" text-anchor="middle">l = 2</text>
+  <text x="120" y="423" font-size="13" fill="#888" text-anchor="middle">l = 1</text>
+  <text x="225" y="200" font-size="13" fill="#888" text-anchor="middle">t = 1</text>
+  <text x="365" y="200" font-size="13" fill="#888" text-anchor="middle">t = 2</text>
+  <text x="505" y="200" font-size="13" fill="#888" text-anchor="middle">t = 3</text>
+  <text x="645" y="200" font-size="13" fill="#888" text-anchor="middle">t = 4</text>
+  <line x1="170" y1="160" x2="700" y2="160" stroke="#888" stroke-width="1.5" marker-end="url(#arr)"/>
+  <text x="170" y="146" font-size="13" fill="#888">시각 t (아래 첨자)</text>
+
+  <g font-size="16" text-anchor="middle">
+    <rect x="170" y="215" width="110" height="46" rx="6" fill="#101010" stroke="#333"/>
+    <rect x="310" y="215" width="110" height="46" rx="6" fill="#101010" stroke="#333"/>
+    <rect x="450" y="215" width="110" height="46" rx="6" fill="#101010" stroke="#333"/>
+    <rect x="590" y="215" width="110" height="46" rx="6" fill="#101010" stroke="#333"/>
+    <text x="225" y="244" fill="#888">h₁⁽³⁾</text>
+    <text x="365" y="244" fill="#888">h₂⁽³⁾</text>
+    <text x="505" y="244" fill="#888">h₃⁽³⁾</text>
+    <text x="645" y="244" fill="#888">h₄⁽³⁾</text>
+
+    <rect x="170" y="305" width="110" height="46" rx="6" fill="#101010" stroke="#333"/>
+    <rect x="310" y="305" width="110" height="46" rx="6" fill="#101010" stroke="#7777cc" stroke-width="1.5"/>
+    <rect x="450" y="305" width="110" height="46" rx="6" fill="#7ec8e3" fill-opacity="0.15" stroke="#7ec8e3" stroke-width="2"/>
+    <rect x="590" y="305" width="110" height="46" rx="6" fill="#101010" stroke="#333"/>
+    <text x="225" y="334" fill="#888">h₁⁽²⁾</text>
+    <text x="365" y="334" fill="#e8e8e8">h₂⁽²⁾</text>
+    <text x="505" y="334" fill="#7ec8e3" font-weight="700">h₃⁽²⁾</text>
+    <text x="645" y="334" fill="#888">h₄⁽²⁾</text>
+
+    <rect x="170" y="395" width="110" height="46" rx="6" fill="#101010" stroke="#333"/>
+    <rect x="310" y="395" width="110" height="46" rx="6" fill="#101010" stroke="#333"/>
+    <rect x="450" y="395" width="110" height="46" rx="6" fill="#101010" stroke="#7777cc" stroke-width="1.5"/>
+    <rect x="590" y="395" width="110" height="46" rx="6" fill="#101010" stroke="#333"/>
+    <text x="225" y="424" fill="#888">h₁⁽¹⁾</text>
+    <text x="365" y="424" fill="#888">h₂⁽¹⁾</text>
+    <text x="505" y="424" fill="#e8e8e8">h₃⁽¹⁾</text>
+    <text x="645" y="424" fill="#888">h₄⁽¹⁾</text>
+  </g>
+
+  <line x1="420" y1="328" x2="450" y2="328" stroke="#7777cc" stroke-width="2" marker-end="url(#arr)"/>
+  <line x1="505" y1="395" x2="505" y2="351" stroke="#7777cc" stroke-width="2" marker-end="url(#arr)"/>
+
+  <text x="725" y="320" font-size="13" fill="#e8e8e8">왼쪽: 같은 층,</text>
+  <text x="725" y="340" font-size="13" fill="#e8e8e8">앞 시각</text>
+  <text x="725" y="410" font-size="13" fill="#e8e8e8">아래: 같은 시각,</text>
+  <text x="725" y="430" font-size="13" fill="#e8e8e8">아래 층</text>
+  <text x="60" y="472" font-size="13" fill="#888">h_t^(l) = f( W^(l) h_t^(l−1) + U^(l) h_(t−1)^(l) ) — 가중치에는 층 첨자만 붙는다</text>
+</svg>

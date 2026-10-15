@@ -1,0 +1,86 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="620" viewBox="0 0 880 620" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <rect width="880" height="620" rx="12" fill="#0a0a0a"/>
+  <text x="60" y="56" font-size="22" font-weight="700" fill="#e8e8e8">보폭과 팽창이 읽는 입력 칸</text>
+  <text x="60" y="82" font-size="13" fill="#888">길이 6 입력, 길이 3 커널 — 출력 0번과 1번이 읽는 칸</text>
+  <text x="60" y="142" font-size="16" font-weight="600" fill="#e8e8e8">보폭 1 · 팽창 1</text>
+  <rect x="260" y="116" width="56" height="40" fill="none" stroke="#666" stroke-width="1"/>
+  <text x="288" y="141" font-size="14" fill="#888" text-anchor="middle">0</text>
+  <rect x="316" y="116" width="56" height="40" fill="none" stroke="#666" stroke-width="1"/>
+  <text x="344" y="141" font-size="14" fill="#888" text-anchor="middle">1</text>
+  <rect x="372" y="116" width="56" height="40" fill="none" stroke="#666" stroke-width="1"/>
+  <text x="400" y="141" font-size="14" fill="#888" text-anchor="middle">2</text>
+  <rect x="428" y="116" width="56" height="40" fill="none" stroke="#666" stroke-width="1"/>
+  <text x="456" y="141" font-size="14" fill="#888" text-anchor="middle">3</text>
+  <rect x="484" y="116" width="56" height="40" fill="none" stroke="#666" stroke-width="1"/>
+  <text x="512" y="141" font-size="14" fill="#888" text-anchor="middle">4</text>
+  <rect x="540" y="116" width="56" height="40" fill="none" stroke="#666" stroke-width="1"/>
+  <text x="568" y="141" font-size="14" fill="#888" text-anchor="middle">5</text>
+  <text x="240" y="185" font-size="13" fill="#888" text-anchor="end">출력 0</text>
+  <line x1="288" y1="180" x2="400" y2="180" stroke="#7ec8e3" stroke-width="2" stroke-opacity="0.6"/>
+  <circle cx="288" cy="180" r="7" fill="#7ec8e3"/>
+  <circle cx="344" cy="180" r="7" fill="#7ec8e3"/>
+  <circle cx="400" cy="180" r="7" fill="#7ec8e3"/>
+  <text x="636" y="185" font-size="13" fill="#7ec8e3">입력 0·1·2</text>
+  <text x="240" y="211" font-size="13" fill="#888" text-anchor="end">출력 1</text>
+  <line x1="344" y1="206" x2="456" y2="206" stroke="#7777cc" stroke-width="2" stroke-opacity="0.6"/>
+  <circle cx="344" cy="206" r="7" fill="#7777cc"/>
+  <circle cx="400" cy="206" r="7" fill="#7777cc"/>
+  <circle cx="456" cy="206" r="7" fill="#7777cc"/>
+  <text x="636" y="211" font-size="13" fill="#7777cc">입력 1·2·3</text>
+  <text x="820" y="142" font-size="16" font-weight="600" fill="#55c555" text-anchor="end">출력 4칸</text>
+  <text x="60" y="274" font-size="16" font-weight="600" fill="#e8e8e8">보폭 2 · 팽창 1</text>
+  <rect x="260" y="248" width="56" height="40" fill="none" stroke="#666" stroke-width="1"/>
+  <text x="288" y="273" font-size="14" fill="#888" text-anchor="middle">0</text>
+  <rect x="316" y="248" width="56" height="40" fill="none" stroke="#666" stroke-width="1"/>
+  <text x="344" y="273" font-size="14" fill="#888" text-anchor="middle">1</text>
+  <rect x="372" y="248" width="56" height="40" fill="none" stroke="#666" stroke-width="1"/>
+  <text x="400" y="273" font-size="14" fill="#888" text-anchor="middle">2</text>
+  <rect x="428" y="248" width="56" height="40" fill="none" stroke="#666" stroke-width="1"/>
+  <text x="456" y="273" font-size="14" fill="#888" text-anchor="middle">3</text>
+  <rect x="484" y="248" width="56" height="40" fill="none" stroke="#666" stroke-width="1"/>
+  <text x="512" y="273" font-size="14" fill="#888" text-anchor="middle">4</text>
+  <rect x="540" y="248" width="56" height="40" fill="none" stroke="#666" stroke-width="1"/>
+  <text x="568" y="273" font-size="14" fill="#888" text-anchor="middle">5</text>
+  <text x="240" y="317" font-size="13" fill="#888" text-anchor="end">출력 0</text>
+  <line x1="288" y1="312" x2="400" y2="312" stroke="#7ec8e3" stroke-width="2" stroke-opacity="0.6"/>
+  <circle cx="288" cy="312" r="7" fill="#7ec8e3"/>
+  <circle cx="344" cy="312" r="7" fill="#7ec8e3"/>
+  <circle cx="400" cy="312" r="7" fill="#7ec8e3"/>
+  <text x="636" y="317" font-size="13" fill="#7ec8e3">입력 0·1·2</text>
+  <text x="240" y="343" font-size="13" fill="#888" text-anchor="end">출력 1</text>
+  <line x1="400" y1="338" x2="512" y2="338" stroke="#7777cc" stroke-width="2" stroke-opacity="0.6"/>
+  <circle cx="400" cy="338" r="7" fill="#7777cc"/>
+  <circle cx="456" cy="338" r="7" fill="#7777cc"/>
+  <circle cx="512" cy="338" r="7" fill="#7777cc"/>
+  <text x="636" y="343" font-size="13" fill="#7777cc">입력 2·3·4</text>
+  <text x="820" y="274" font-size="16" font-weight="600" fill="#55c555" text-anchor="end">출력 2칸</text>
+  <text x="60" y="406" font-size="16" font-weight="600" fill="#e8e8e8">보폭 1 · 팽창 2</text>
+  <rect x="260" y="380" width="56" height="40" fill="none" stroke="#666" stroke-width="1"/>
+  <text x="288" y="405" font-size="14" fill="#888" text-anchor="middle">0</text>
+  <rect x="316" y="380" width="56" height="40" fill="none" stroke="#666" stroke-width="1"/>
+  <text x="344" y="405" font-size="14" fill="#888" text-anchor="middle">1</text>
+  <rect x="372" y="380" width="56" height="40" fill="none" stroke="#666" stroke-width="1"/>
+  <text x="400" y="405" font-size="14" fill="#888" text-anchor="middle">2</text>
+  <rect x="428" y="380" width="56" height="40" fill="none" stroke="#666" stroke-width="1"/>
+  <text x="456" y="405" font-size="14" fill="#888" text-anchor="middle">3</text>
+  <rect x="484" y="380" width="56" height="40" fill="none" stroke="#666" stroke-width="1"/>
+  <text x="512" y="405" font-size="14" fill="#888" text-anchor="middle">4</text>
+  <rect x="540" y="380" width="56" height="40" fill="none" stroke="#666" stroke-width="1"/>
+  <text x="568" y="405" font-size="14" fill="#888" text-anchor="middle">5</text>
+  <text x="240" y="449" font-size="13" fill="#888" text-anchor="end">출력 0</text>
+  <line x1="288" y1="444" x2="512" y2="444" stroke="#7ec8e3" stroke-width="2" stroke-opacity="0.6"/>
+  <circle cx="288" cy="444" r="7" fill="#7ec8e3"/>
+  <circle cx="400" cy="444" r="7" fill="#7ec8e3"/>
+  <circle cx="512" cy="444" r="7" fill="#7ec8e3"/>
+  <text x="636" y="449" font-size="13" fill="#7ec8e3">입력 0·2·4</text>
+  <text x="240" y="475" font-size="13" fill="#888" text-anchor="end">출력 1</text>
+  <line x1="344" y1="470" x2="568" y2="470" stroke="#7777cc" stroke-width="2" stroke-opacity="0.6"/>
+  <circle cx="344" cy="470" r="7" fill="#7777cc"/>
+  <circle cx="456" cy="470" r="7" fill="#7777cc"/>
+  <circle cx="568" cy="470" r="7" fill="#7777cc"/>
+  <text x="636" y="475" font-size="13" fill="#7777cc">입력 1·3·5</text>
+  <text x="820" y="406" font-size="16" font-weight="600" fill="#55c555" text-anchor="end">출력 2칸</text>
+  <rect x="60" y="520" width="760" height="70" rx="6" fill="#101010" stroke="#333" stroke-width="1"/>
+  <text x="84" y="549" font-size="13" font-weight="600" fill="#e8e8e8">출력 y번이 읽는 입력 칸 = y·s + k·d  (k = 0, 1, 2)</text>
+  <text x="84" y="571" font-size="13" fill="#888">출력 길이 = ⌊(H − d(K−1) − 1) / s⌋ + 1  →  H = 6, K = 3 에서 4 · 2 · 2</text>
+</svg>

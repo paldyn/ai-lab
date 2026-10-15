@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="540" viewBox="0 0 880 540">
+<rect width="880" height="540" rx="12" fill="#0a0a0a"/>
+<text x="440" y="42" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="22" font-weight="700" fill="#e8e8e8">어디서 자를까: 두 오차의 합이 U자를 그린다</text>
+<text x="440" y="68" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">표준정규분포 200만 개 · 4비트 · 구간 [−c, c] · 세로축은 평균제곱오차</text>
+<line x1="110" y1="450.0" x2="800" y2="450.0" stroke="#444" stroke-width="1"/>
+<text x="98" y="454.0" text-anchor="end" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">0.00</text>
+<line x1="110" y1="382.0" x2="800" y2="382.0" stroke="#444" stroke-width="1"/>
+<text x="98" y="386.0" text-anchor="end" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">0.01</text>
+<line x1="110" y1="314.0" x2="800" y2="314.0" stroke="#444" stroke-width="1"/>
+<text x="98" y="318.0" text-anchor="end" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">0.02</text>
+<line x1="110" y1="246.0" x2="800" y2="246.0" stroke="#444" stroke-width="1"/>
+<text x="98" y="250.0" text-anchor="end" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">0.03</text>
+<line x1="110" y1="178.0" x2="800" y2="178.0" stroke="#444" stroke-width="1"/>
+<text x="98" y="182.0" text-anchor="end" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">0.04</text>
+<line x1="110" y1="110.0" x2="800" y2="110.0" stroke="#444" stroke-width="1"/>
+<text x="98" y="114.0" text-anchor="end" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">0.05</text>
+<line x1="110.0" y1="450" x2="110.0" y2="456" stroke="#888" stroke-width="1.5"/>
+<text x="110.0" y="474" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">1.5</text>
+<line x1="203.2" y1="450" x2="203.2" y2="456" stroke="#888" stroke-width="1.5"/>
+<text x="203.24324324324323" y="474" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">2</text>
+<line x1="296.5" y1="450" x2="296.5" y2="456" stroke="#888" stroke-width="1.5"/>
+<text x="296.48648648648646" y="474" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">2.5</text>
+<line x1="389.7" y1="450" x2="389.7" y2="456" stroke="#888" stroke-width="1.5"/>
+<text x="389.7297297297297" y="474" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">3</text>
+<line x1="483.0" y1="450" x2="483.0" y2="456" stroke="#888" stroke-width="1.5"/>
+<text x="482.9729729729729" y="474" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">3.5</text>
+<line x1="576.2" y1="450" x2="576.2" y2="456" stroke="#888" stroke-width="1.5"/>
+<text x="576.2162162162163" y="474" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">4</text>
+<line x1="669.5" y1="450" x2="669.5" y2="456" stroke="#888" stroke-width="1.5"/>
+<text x="669.4594594594594" y="474" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">4.5</text>
+<line x1="762.7" y1="450" x2="762.7" y2="456" stroke="#888" stroke-width="1.5"/>
+<text x="762.7027027027027" y="474" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">5</text>
+<line x1="110" y1="450" x2="800" y2="450" stroke="#888" stroke-width="1.5"/>
+<line x1="110" y1="450" x2="110" y2="100" stroke="#888" stroke-width="1.5"/>
+<text x="814" y="455" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">c</text>
+<path d="M 110.0 137.4 L 119.3 175.1 L 128.6 208.8 L 138.0 238.7 L 147.3 265.3 L 156.6 288.8 L 165.9 309.6 L 175.3 327.9 L 184.6 344.0 L 193.9 358.2 L 203.2 370.7 L 212.6 381.6 L 221.9 391.1 L 231.2 399.4 L 240.5 406.6 L 249.9 412.8 L 259.2 418.2 L 268.5 422.9 L 277.8 427.0 L 287.2 430.4 L 296.5 433.4 L 305.8 436.0 L 315.1 438.1 L 324.5 440.0 L 333.8 441.6 L 343.1 442.9 L 352.4 444.1 L 361.8 445.1 L 371.1 445.9 L 380.4 446.6 L 389.7 447.2 L 399.1 447.6 L 408.4 448.1 L 417.7 448.4 L 427.0 448.7 L 436.4 448.9 L 445.7 449.1 L 455.0 449.3 L 464.3 449.4 L 473.6 449.5 L 483.0 449.6 L 492.3 449.7 L 501.6 449.8 L 510.9 449.8 L 520.3 449.8 L 529.6 449.9 L 538.9 449.9 L 548.2 449.9 L 557.6 449.9 L 566.9 450.0 L 576.2 450.0 L 585.5 450.0 L 594.9 450.0 L 604.2 450.0 L 613.5 450.0 L 622.8 450.0 L 632.2 450.0 L 641.5 450.0 L 650.8 450.0 L 660.1 450.0 L 669.5 450.0 L 678.8 450.0 L 688.1 450.0 L 697.4 450.0 L 706.8 450.0 L 716.1 450.0 L 725.4 450.0 L 734.7 450.0 L 744.1 450.0 L 753.4 450.0 L 762.7 450.0" stroke="#e05555" stroke-width="2" fill="none" stroke-dasharray="5,3"/>
+<path d="M 110.0 430.3 L 119.3 428.7 L 128.6 427.0 L 138.0 425.3 L 147.3 423.5 L 156.6 421.6 L 165.9 419.7 L 175.3 417.7 L 184.6 415.7 L 193.9 413.7 L 203.2 411.6 L 212.6 409.4 L 221.9 407.2 L 231.2 404.9 L 240.5 402.7 L 249.9 400.3 L 259.2 397.9 L 268.5 395.5 L 277.8 393.0 L 287.2 390.4 L 296.5 387.8 L 305.8 385.2 L 315.1 382.5 L 324.5 379.8 L 333.8 377.1 L 343.1 374.3 L 352.4 371.4 L 361.8 368.5 L 371.1 365.5 L 380.4 362.5 L 389.7 359.5 L 399.1 356.4 L 408.4 353.3 L 417.7 350.2 L 427.0 347.0 L 436.4 343.7 L 445.7 340.4 L 455.0 337.1 L 464.3 333.7 L 473.6 330.2 L 483.0 326.7 L 492.3 323.1 L 501.6 319.5 L 510.9 315.9 L 520.3 312.2 L 529.6 308.4 L 538.9 304.6 L 548.2 300.8 L 557.6 296.9 L 566.9 292.9 L 576.2 288.9 L 585.5 284.8 L 594.9 280.7 L 604.2 276.5 L 613.5 272.2 L 622.8 267.9 L 632.2 263.6 L 641.5 259.2 L 650.8 254.8 L 660.1 250.3 L 669.5 245.8 L 678.8 241.3 L 688.1 236.6 L 697.4 232.0 L 706.8 227.2 L 716.1 222.5 L 725.4 217.7 L 734.7 212.8 L 744.1 207.9 L 753.4 202.9 L 762.7 197.9" stroke="#7777cc" stroke-width="2" fill="none" stroke-dasharray="5,3"/>
+<path d="M 110.0 117.7 L 119.3 153.8 L 128.6 185.8 L 138.0 214.0 L 147.3 238.7 L 156.6 260.4 L 165.9 279.2 L 175.3 295.6 L 184.6 309.8 L 193.9 321.9 L 203.2 332.3 L 212.6 341.0 L 221.9 348.3 L 231.2 354.3 L 240.5 359.2 L 249.9 363.2 L 259.2 366.2 L 268.5 368.4 L 277.8 369.9 L 287.2 370.8 L 296.5 371.2 L 305.8 371.1 L 315.1 370.7 L 324.5 369.8 L 333.8 368.7 L 343.1 367.2 L 352.4 365.5 L 361.8 363.5 L 371.1 361.4 L 380.4 359.1 L 389.7 356.7 L 399.1 354.1 L 408.4 351.4 L 417.7 348.6 L 427.0 345.7 L 436.4 342.6 L 445.7 339.5 L 455.0 336.3 L 464.3 333.1 L 473.6 329.7 L 483.0 326.3 L 492.3 322.8 L 501.6 319.3 L 510.9 315.7 L 520.3 312.0 L 529.6 308.3 L 538.9 304.5 L 548.2 300.7 L 557.6 296.8 L 566.9 292.9 L 576.2 288.9 L 585.5 284.8 L 594.9 280.7 L 604.2 276.5 L 613.5 272.2 L 622.8 267.9 L 632.2 263.6 L 641.5 259.2 L 650.8 254.8 L 660.1 250.3 L 669.5 245.8 L 678.8 241.3 L 688.1 236.6 L 697.4 232.0 L 706.8 227.2 L 716.1 222.5 L 725.4 217.7 L 734.7 212.8 L 744.1 207.9 L 753.4 202.9 L 762.7 197.9" stroke="#7ec8e3" stroke-width="2.5" fill="none"/>
+<circle cx="296.5" cy="371.2" r="5" fill="#e8e8e8"/>
+<line x1="296.5" y1="361.2" x2="296.5" y2="311.2" stroke="#e8e8e8" stroke-width="1.5" stroke-dasharray="4,4"/>
+<text x="296.4864864864867" y="299.20242092901157" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="600" fill="#e8e8e8">바닥: c = 2.5, 0.0116</text>
+<circle cx="771.2" cy="193.4" r="5" fill="#e8e8e8"/>
+<text x="777.1513030856405" y="173.3859651213055" text-anchor="end" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="600" fill="#e8e8e8">자르지 않음: c = 5.05, 0.0377</text>
+<line x1="200" y1="140" x2="236" y2="140" stroke="#7ec8e3" stroke-width="2.5"/>
+<text x="248" y="145" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e8e8e8">합 (전체 평균제곱오차)</text>
+<line x1="200" y1="164" x2="236" y2="164" stroke="#e05555" stroke-width="2.5" stroke-dasharray="5,3"/>
+<text x="248" y="169" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e8e8e8">클램프 오차</text>
+<line x1="200" y1="188" x2="236" y2="188" stroke="#7777cc" stroke-width="2.5" stroke-dasharray="5,3"/>
+<text x="248" y="193" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e8e8e8">반올림 오차</text>
+</svg>

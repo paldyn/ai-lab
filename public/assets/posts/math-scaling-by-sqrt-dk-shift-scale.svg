@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="470" viewBox="0 0 880 470">
+<rect width="880" height="470" rx="12" fill="#0a0a0a"/>
+<text x="440" y="42" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="22" fill="#e8e8e8" font-weight="700" text-anchor="middle">더하면 그대로, 곱하면 뾰족해진다</text>
+<text x="180" y="96" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="15" fill="#e8e8e8" font-weight="600" text-anchor="middle">√d_k 로 나눈 점수</text>
+<text x="180" y="118" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="12" fill="#9aa4b8" text-anchor="middle">점수 그대로</text>
+<line x1="80" y1="170.0" x2="280" y2="170.0" stroke="#444" stroke-width="1" stroke-dasharray="4,4"/>
+<rect x="84" y="282.4" width="26" height="87.6" rx="3" fill="#7ec8e3" fill-opacity="0.35" stroke="#7ec8e3" stroke-width="1.5"/>
+<text x="97" y="274.4" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="11" fill="#e8e8e8" text-anchor="middle">0.219</text>
+<text x="97" y="390" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="12" fill="#888" text-anchor="middle">1</text>
+<rect x="117" y="293.2" width="26" height="76.8" rx="3" fill="#7ec8e3" fill-opacity="0.35" stroke="#7ec8e3" stroke-width="1.5"/>
+<text x="130" y="285.2" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="11" fill="#e8e8e8" text-anchor="middle">0.192</text>
+<text x="130" y="390" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="12" fill="#888" text-anchor="middle">2</text>
+<rect x="150" y="247.2" width="26" height="122.8" rx="3" fill="#7ec8e3" fill-opacity="0.35" stroke="#7ec8e3" stroke-width="1.5"/>
+<text x="163" y="239.2" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="11" fill="#e8e8e8" text-anchor="middle">0.307</text>
+<text x="163" y="390" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="12" fill="#888" text-anchor="middle">3</text>
+<rect x="183" y="304.0" width="26" height="66.0" rx="3" fill="#7ec8e3" fill-opacity="0.35" stroke="#7ec8e3" stroke-width="1.5"/>
+<text x="196" y="296.0" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="11" fill="#e8e8e8" text-anchor="middle">0.165</text>
+<text x="196" y="390" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="12" fill="#888" text-anchor="middle">4</text>
+<rect x="216" y="346.0" width="26" height="24.0" rx="3" fill="#7ec8e3" fill-opacity="0.35" stroke="#7ec8e3" stroke-width="1.5"/>
+<text x="229" y="338.0" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="11" fill="#e8e8e8" text-anchor="middle">0.060</text>
+<text x="229" y="390" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="12" fill="#888" text-anchor="middle">5</text>
+<rect x="249" y="346.8" width="26" height="23.2" rx="3" fill="#7ec8e3" fill-opacity="0.35" stroke="#7ec8e3" stroke-width="1.5"/>
+<text x="262" y="338.8" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="11" fill="#e8e8e8" text-anchor="middle">0.058</text>
+<text x="262" y="390" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="12" fill="#888" text-anchor="middle">6</text>
+<text x="286" y="174.0" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="11" fill="#888" text-anchor="start">0.5</text>
+<line x1="80" y1="370" x2="280" y2="370" stroke="#888" stroke-width="1.5"/>
+<text x="180" y="420" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#7ec8e3" font-weight="600" text-anchor="middle">최대 0.307</text>
+<text x="440" y="96" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="15" fill="#e8e8e8" font-weight="600" text-anchor="middle">모든 점수에 +3</text>
+<text x="440" y="118" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="12" fill="#9aa4b8" text-anchor="middle">이동</text>
+<line x1="340" y1="170.0" x2="540" y2="170.0" stroke="#444" stroke-width="1" stroke-dasharray="4,4"/>
+<rect x="344" y="282.4" width="26" height="87.6" rx="3" fill="#7ec8e3" fill-opacity="0.35" stroke="#7ec8e3" stroke-width="1.5"/>
+<text x="357" y="274.4" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="11" fill="#e8e8e8" text-anchor="middle">0.219</text>
+<text x="357" y="390" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="12" fill="#888" text-anchor="middle">1</text>
+<rect x="377" y="293.2" width="26" height="76.8" rx="3" fill="#7ec8e3" fill-opacity="0.35" stroke="#7ec8e3" stroke-width="1.5"/>
+<text x="390" y="285.2" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="11" fill="#e8e8e8" text-anchor="middle">0.192</text>
+<text x="390" y="390" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="12" fill="#888" text-anchor="middle">2</text>
+<rect x="410" y="247.2" width="26" height="122.8" rx="3" fill="#7ec8e3" fill-opacity="0.35" stroke="#7ec8e3" stroke-width="1.5"/>
+<text x="423" y="239.2" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="11" fill="#e8e8e8" text-anchor="middle">0.307</text>
+<text x="423" y="390" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="12" fill="#888" text-anchor="middle">3</text>
+<rect x="443" y="304.0" width="26" height="66.0" rx="3" fill="#7ec8e3" fill-opacity="0.35" stroke="#7ec8e3" stroke-width="1.5"/>
+<text x="456" y="296.0" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="11" fill="#e8e8e8" text-anchor="middle">0.165</text>
+<text x="456" y="390" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="12" fill="#888" text-anchor="middle">4</text>
+<rect x="476" y="346.0" width="26" height="24.0" rx="3" fill="#7ec8e3" fill-opacity="0.35" stroke="#7ec8e3" stroke-width="1.5"/>
+<text x="489" y="338.0" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="11" fill="#e8e8e8" text-anchor="middle">0.060</text>
+<text x="489" y="390" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="12" fill="#888" text-anchor="middle">5</text>
+<rect x="509" y="346.8" width="26" height="23.2" rx="3" fill="#7ec8e3" fill-opacity="0.35" stroke="#7ec8e3" stroke-width="1.5"/>
+<text x="522" y="338.8" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="11" fill="#e8e8e8" text-anchor="middle">0.058</text>
+<text x="522" y="390" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="12" fill="#888" text-anchor="middle">6</text>
+<text x="546" y="174.0" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="11" fill="#888" text-anchor="start">0.5</text>
+<line x1="340" y1="370" x2="540" y2="370" stroke="#888" stroke-width="1.5"/>
+<text x="440" y="420" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#7ec8e3" font-weight="600" text-anchor="middle">최대 0.307 — 그대로</text>
+<text x="700" y="96" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="15" fill="#e8e8e8" font-weight="600" text-anchor="middle">모든 점수에 ×2</text>
+<text x="700" y="118" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="12" fill="#9aa4b8" text-anchor="middle">배율</text>
+<line x1="600" y1="170.0" x2="800" y2="170.0" stroke="#444" stroke-width="1" stroke-dasharray="4,4"/>
+<rect x="604" y="280.0" width="26" height="90.0" rx="3" fill="#e05555" fill-opacity="0.35" stroke="#e05555" stroke-width="1.5"/>
+<text x="617" y="272.0" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="11" fill="#e8e8e8" text-anchor="middle">0.225</text>
+<text x="617" y="390" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="12" fill="#888" text-anchor="middle">1</text>
+<rect x="637" y="300.4" width="26" height="69.6" rx="3" fill="#e05555" fill-opacity="0.35" stroke="#e05555" stroke-width="1.5"/>
+<text x="650" y="292.4" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="11" fill="#e8e8e8" text-anchor="middle">0.174</text>
+<text x="650" y="390" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="12" fill="#888" text-anchor="middle">2</text>
+<rect x="670" y="193.2" width="26" height="176.8" rx="3" fill="#e05555" fill-opacity="0.35" stroke="#e05555" stroke-width="1.5"/>
+<text x="683" y="185.2" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="11" fill="#e8e8e8" text-anchor="middle">0.442</text>
+<text x="683" y="390" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="12" fill="#888" text-anchor="middle">3</text>
+<rect x="703" y="319.2" width="26" height="50.8" rx="3" fill="#e05555" fill-opacity="0.35" stroke="#e05555" stroke-width="1.5"/>
+<text x="716" y="311.2" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="11" fill="#e8e8e8" text-anchor="middle">0.127</text>
+<text x="716" y="390" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="12" fill="#888" text-anchor="middle">4</text>
+<rect x="736" y="363.2" width="26" height="6.8" rx="3" fill="#e05555" fill-opacity="0.35" stroke="#e05555" stroke-width="1.5"/>
+<text x="749" y="355.2" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="11" fill="#e8e8e8" text-anchor="middle">0.017</text>
+<text x="749" y="390" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="12" fill="#888" text-anchor="middle">5</text>
+<rect x="769" y="363.6" width="26" height="6.4" rx="3" fill="#e05555" fill-opacity="0.35" stroke="#e05555" stroke-width="1.5"/>
+<text x="782" y="355.6" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="11" fill="#e8e8e8" text-anchor="middle">0.016</text>
+<text x="782" y="390" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="12" fill="#888" text-anchor="middle">6</text>
+<text x="806" y="174.0" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="11" fill="#888" text-anchor="start">0.5</text>
+<line x1="600" y1="370" x2="800" y2="370" stroke="#888" stroke-width="1.5"/>
+<text x="700" y="420" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e05555" font-weight="600" text-anchor="middle">최대 0.442 — 뾰족해짐</text>
+<text x="440" y="446" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="12" fill="#9aa4b8" text-anchor="middle">이동은 분자와 분모의 e^a 가 약분되어 사라지고, 배율은 차이를 키운 채 지수 위에 올라간다</text>
+</svg>

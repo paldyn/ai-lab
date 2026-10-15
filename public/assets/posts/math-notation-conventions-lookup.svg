@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="470" viewBox="0 0 880 470" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <defs>
+    <marker id="arr" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#7ec8e3"/>
+    </marker>
+  </defs>
+  <rect width="880" height="470" rx="12" fill="#0a0a0a"/>
+  <text x="60" y="56" font-size="22" font-weight="700" fill="#e8e8e8">기호의 뜻을 찾는 차례</text>
+  <text x="60" y="82" font-size="13" fill="#888">위에서 답이 나오면 거기서 멈춘다 — 대부분은 둘째 단계에서 끝난다</text>
+
+  <rect x="60" y="110" width="760" height="64" rx="6" fill="#101010" stroke="#333" stroke-width="1"/>
+  <circle cx="100" cy="142" r="16" fill="none" stroke="#7ec8e3" stroke-width="1.5"/>
+  <text x="100" y="147" font-size="15" font-weight="700" fill="#7ec8e3" text-anchor="middle">1</text>
+  <text x="136" y="136" font-size="15" font-weight="600" fill="#e8e8e8">Notation 절</text>
+  <text x="136" y="158" font-size="13" fill="#888">Notation · Preliminaries 절에 기호 규약이 모여 있는지 본다</text>
+
+  <line x1="440" y1="174" x2="440" y2="198" stroke="#7ec8e3" stroke-width="2" marker-end="url(#arr)"/>
+
+  <rect x="60" y="198" width="760" height="64" rx="6" fill="#7ec8e3" fill-opacity="0.08" stroke="#7ec8e3" stroke-width="1.5"/>
+  <circle cx="100" cy="230" r="16" fill="none" stroke="#7ec8e3" stroke-width="1.5"/>
+  <text x="100" y="235" font-size="15" font-weight="700" fill="#7ec8e3" text-anchor="middle">2</text>
+  <text x="136" y="224" font-size="15" font-weight="600" fill="#e8e8e8">처음 나온 문장</text>
+  <text x="136" y="246" font-size="13" fill="#888">식 바로 뒤의 "where X ∈ ℝ^(n×d) is …"를 찾는다</text>
+  <text x="796" y="235" font-size="13" font-weight="600" fill="#55c555" text-anchor="end">대부분 여기서 끝난다</text>
+
+  <line x1="440" y1="262" x2="440" y2="286" stroke="#7ec8e3" stroke-width="2" marker-end="url(#arr)"/>
+
+  <rect x="60" y="286" width="760" height="64" rx="6" fill="#101010" stroke="#333" stroke-width="1"/>
+  <circle cx="100" cy="318" r="16" fill="none" stroke="#7ec8e3" stroke-width="1.5"/>
+  <text x="100" y="323" font-size="15" font-weight="700" fill="#7ec8e3" text-anchor="middle">3</text>
+  <text x="136" y="312" font-size="15" font-weight="600" fill="#e8e8e8">연산자에서 역추론</text>
+  <text x="136" y="334" font-size="13" fill="#888">γ ⊙ x 에서 x가 (d,)이면 γ도 (d,)여야 한다</text>
+
+  <line x1="440" y1="350" x2="440" y2="374" stroke="#7ec8e3" stroke-width="2" marker-end="url(#arr)"/>
+
+  <rect x="60" y="374" width="760" height="64" rx="6" fill="#101010" stroke="#333" stroke-width="1"/>
+  <circle cx="100" cy="406" r="16" fill="none" stroke="#7ec8e3" stroke-width="1.5"/>
+  <text x="100" y="411" font-size="15" font-weight="700" fill="#7ec8e3" text-anchor="middle">4</text>
+  <text x="136" y="400" font-size="15" font-weight="600" fill="#e8e8e8">코드 저장소</text>
+  <text x="136" y="422" font-size="13" fill="#888">공개 구현에서 그 변수의 셰이프를 확인한다</text>
+</svg>

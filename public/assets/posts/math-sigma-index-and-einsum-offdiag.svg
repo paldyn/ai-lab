@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="500" viewBox="0 0 880 500" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <rect width="880" height="500" rx="12" fill="#0a0a0a"/>
+  <text x="60" y="56" font-size="22" font-weight="700" fill="#e8e8e8">대각선을 뺀 칸만 더하기</text>
+  <text x="60" y="82" font-size="13" fill="#888">i ≠ j 조건은 코드에서 대각선이 0인 마스크가 된다</text>
+  <text x="144" y="132" font-size="16" font-weight="600" fill="#e8e8e8" text-anchor="middle">M</text>
+  <rect x="60" y="150" width="56" height="56" fill="#444" fill-opacity="0.35" stroke="#666" stroke-width="1"/>
+  <text x="88" y="184" font-size="17" font-weight="600" fill="#e8e8e8" text-anchor="middle">2</text>
+  <rect x="116" y="150" width="56" height="56" fill="#7ec8e3" fill-opacity="0.22" stroke="#666" stroke-width="1"/>
+  <text x="144" y="184" font-size="17" font-weight="600" fill="#e8e8e8" text-anchor="middle">1</text>
+  <rect x="172" y="150" width="56" height="56" fill="#7ec8e3" fill-opacity="0.22" stroke="#666" stroke-width="1"/>
+  <text x="200" y="184" font-size="17" font-weight="600" fill="#e8e8e8" text-anchor="middle">3</text>
+  <rect x="60" y="206" width="56" height="56" fill="#7ec8e3" fill-opacity="0.22" stroke="#666" stroke-width="1"/>
+  <text x="88" y="240" font-size="17" font-weight="600" fill="#e8e8e8" text-anchor="middle">0</text>
+  <rect x="116" y="206" width="56" height="56" fill="#444" fill-opacity="0.35" stroke="#666" stroke-width="1"/>
+  <text x="144" y="240" font-size="17" font-weight="600" fill="#e8e8e8" text-anchor="middle">4</text>
+  <rect x="172" y="206" width="56" height="56" fill="#7ec8e3" fill-opacity="0.22" stroke="#666" stroke-width="1"/>
+  <text x="200" y="240" font-size="17" font-weight="600" fill="#e8e8e8" text-anchor="middle">1</text>
+  <rect x="60" y="262" width="56" height="56" fill="#7ec8e3" fill-opacity="0.22" stroke="#666" stroke-width="1"/>
+  <text x="88" y="296" font-size="17" font-weight="600" fill="#e8e8e8" text-anchor="middle">5</text>
+  <rect x="116" y="262" width="56" height="56" fill="#7ec8e3" fill-opacity="0.22" stroke="#666" stroke-width="1"/>
+  <text x="144" y="296" font-size="17" font-weight="600" fill="#e8e8e8" text-anchor="middle">2</text>
+  <rect x="172" y="262" width="56" height="56" fill="#444" fill-opacity="0.35" stroke="#666" stroke-width="1"/>
+  <text x="200" y="296" font-size="17" font-weight="600" fill="#e8e8e8" text-anchor="middle">6</text>
+  <text x="440" y="132" font-size="16" font-weight="600" fill="#e8e8e8" text-anchor="middle">마스크 1 − I</text>
+  <rect x="356" y="150" width="56" height="56" fill="#444" fill-opacity="0.35" stroke="#666" stroke-width="1"/>
+  <text x="384" y="184" font-size="17" font-weight="600" fill="#e8e8e8" text-anchor="middle">0</text>
+  <rect x="412" y="150" width="56" height="56" fill="#7777cc" fill-opacity="0.22" stroke="#666" stroke-width="1"/>
+  <text x="440" y="184" font-size="17" font-weight="600" fill="#e8e8e8" text-anchor="middle">1</text>
+  <rect x="468" y="150" width="56" height="56" fill="#7777cc" fill-opacity="0.22" stroke="#666" stroke-width="1"/>
+  <text x="496" y="184" font-size="17" font-weight="600" fill="#e8e8e8" text-anchor="middle">1</text>
+  <rect x="356" y="206" width="56" height="56" fill="#7777cc" fill-opacity="0.22" stroke="#666" stroke-width="1"/>
+  <text x="384" y="240" font-size="17" font-weight="600" fill="#e8e8e8" text-anchor="middle">1</text>
+  <rect x="412" y="206" width="56" height="56" fill="#444" fill-opacity="0.35" stroke="#666" stroke-width="1"/>
+  <text x="440" y="240" font-size="17" font-weight="600" fill="#e8e8e8" text-anchor="middle">0</text>
+  <rect x="468" y="206" width="56" height="56" fill="#7777cc" fill-opacity="0.22" stroke="#666" stroke-width="1"/>
+  <text x="496" y="240" font-size="17" font-weight="600" fill="#e8e8e8" text-anchor="middle">1</text>
+  <rect x="356" y="262" width="56" height="56" fill="#7777cc" fill-opacity="0.22" stroke="#666" stroke-width="1"/>
+  <text x="384" y="296" font-size="17" font-weight="600" fill="#e8e8e8" text-anchor="middle">1</text>
+  <rect x="412" y="262" width="56" height="56" fill="#7777cc" fill-opacity="0.22" stroke="#666" stroke-width="1"/>
+  <text x="440" y="296" font-size="17" font-weight="600" fill="#e8e8e8" text-anchor="middle">1</text>
+  <rect x="468" y="262" width="56" height="56" fill="#444" fill-opacity="0.35" stroke="#666" stroke-width="1"/>
+  <text x="496" y="296" font-size="17" font-weight="600" fill="#e8e8e8" text-anchor="middle">0</text>
+  <text x="736" y="132" font-size="16" font-weight="600" fill="#e8e8e8" text-anchor="middle">M ⊙ 마스크</text>
+  <rect x="652" y="150" width="56" height="56" fill="#444" fill-opacity="0.35" stroke="#666" stroke-width="1"/>
+  <text x="680" y="184" font-size="17" font-weight="600" fill="#888" text-anchor="middle">0</text>
+  <rect x="708" y="150" width="56" height="56" fill="#55c555" fill-opacity="0.22" stroke="#666" stroke-width="1"/>
+  <text x="736" y="184" font-size="17" font-weight="600" fill="#e8e8e8" text-anchor="middle">1</text>
+  <rect x="764" y="150" width="56" height="56" fill="#55c555" fill-opacity="0.22" stroke="#666" stroke-width="1"/>
+  <text x="792" y="184" font-size="17" font-weight="600" fill="#e8e8e8" text-anchor="middle">3</text>
+  <rect x="652" y="206" width="56" height="56" fill="#55c555" fill-opacity="0.22" stroke="#666" stroke-width="1"/>
+  <text x="680" y="240" font-size="17" font-weight="600" fill="#e8e8e8" text-anchor="middle">0</text>
+  <rect x="708" y="206" width="56" height="56" fill="#444" fill-opacity="0.35" stroke="#666" stroke-width="1"/>
+  <text x="736" y="240" font-size="17" font-weight="600" fill="#888" text-anchor="middle">0</text>
+  <rect x="764" y="206" width="56" height="56" fill="#55c555" fill-opacity="0.22" stroke="#666" stroke-width="1"/>
+  <text x="792" y="240" font-size="17" font-weight="600" fill="#e8e8e8" text-anchor="middle">1</text>
+  <rect x="652" y="262" width="56" height="56" fill="#55c555" fill-opacity="0.22" stroke="#666" stroke-width="1"/>
+  <text x="680" y="296" font-size="17" font-weight="600" fill="#e8e8e8" text-anchor="middle">5</text>
+  <rect x="708" y="262" width="56" height="56" fill="#55c555" fill-opacity="0.22" stroke="#666" stroke-width="1"/>
+  <text x="736" y="296" font-size="17" font-weight="600" fill="#e8e8e8" text-anchor="middle">2</text>
+  <rect x="764" y="262" width="56" height="56" fill="#444" fill-opacity="0.35" stroke="#666" stroke-width="1"/>
+  <text x="792" y="296" font-size="17" font-weight="600" fill="#888" text-anchor="middle">0</text>
+  <text x="290" y="242" font-size="24" fill="#e8e8e8" text-anchor="middle">⊙</text>
+  <text x="586" y="242" font-size="24" fill="#e8e8e8" text-anchor="middle">=</text>
+  <text x="144" y="352" font-size="15" font-weight="600" fill="#e8e8e8" text-anchor="middle">전체 합 24 · 대각합 12</text>
+  <text x="440" y="352" font-size="13" fill="#888" text-anchor="middle">대각선 0, 나머지 1</text>
+  <text x="736" y="352" font-size="15" font-weight="600" fill="#55c555" text-anchor="middle">남은 칸의 합 12</text>
+  <rect x="60" y="390" width="760" height="70" rx="6" fill="#101010" stroke="#333" stroke-width="1"/>
+  <text x="84" y="419" font-size="13" font-weight="600" fill="#e8e8e8">Σ(i≠j) M[i,j] = 전체 합 − 대각합 = 24 − 12 = 12</text>
+  <text x="84" y="441" font-size="13" fill="#888">인과 어텐션의 j ≤ i, 대조학습 분모의 j ≠ i도 같은 꼴의 마스크다</text>
+</svg>
