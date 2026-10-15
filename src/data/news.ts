@@ -160,7 +160,7 @@ export interface NewsDetail {
   commentary: string;
 }
 
-export const globalNewsUpdatedAt = '2026-10-13';
+export const globalNewsUpdatedAt = '2026-10-14';
 
 /**
  * 공식 발표 한 건 = 항목 한 개. 2026년 1월부터 쌓는 아카이브이며 오래된 항목을
@@ -171,6 +171,62 @@ export const globalNewsUpdatedAt = '2026-10-13';
  * 목록에서 파생됩니다. 갱신 시 globalNewsUpdatedAt도 함께 올립니다.
  */
 const entries: NewsItem[] = [
+  {
+    id: 'the-eus-next-chapter-in-ai-is-agentic',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'OpenAI, EU 기업의 에이전트형 AI 사용을 분석한 보고서 공개',
+    summary:
+      'OpenAI Economic Research가 EU 기업의 에이전트형 AI 사용을 분석했다. EU 표본의 ChatGPT Enterprise 출력 토큰 절반 이상이 ' +
+      'Codex와 ChatGPT Work에서 나왔고, 중소기업 주간 사용자는 2026년 5월 이후 여덟 배 넘게 늘었다.',
+    publishedAt: '2026-10-14',
+    collectedAt: '2026-10-15',
+    category: 'Research',
+    signal: '경제 연구',
+    url: 'https://openai.com/index/the-eus-next-chapter-in-ai-is-agentic',
+  },
+  {
+    id: 'third-moment-research',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'Third Moment Research, 에이전트 1만 개를 36시간 넘게 돌리는 사례',
+    summary:
+      'OpenAI가 자기 개선형 에이전트 시스템을 만드는 Third Moment Research의 도입 사례를 소개했다. ' +
+      'Codex와 GPT-6 계열로 에이전트 1만 개를 36~48시간 조사에 동시에 돌리고, Daybreak로 실험 환경의 보안을 시험한다.',
+    publishedAt: '2026-10-14',
+    collectedAt: '2026-10-15',
+    category: 'Product',
+    signal: '기업 도입 사례',
+    url: 'https://openai.com/index/third-moment-research',
+  },
+  {
+    id: 'sentinelone',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'SentinelOne, Daybreak로 악성코드 분석을 몇 주에서 몇 시간으로',
+    summary:
+      'OpenAI가 보안 기업 SentinelOne의 Daybreak 도입 사례를 소개했다. ' +
+      '최상급 연구자가 4~6주 걸리던 악성코드 역공학을 사람 수준의 결과로 약 8시간에 해낸다고 회사 측이 밝혔다.',
+    publishedAt: '2026-10-14',
+    collectedAt: '2026-10-15',
+    category: 'Product',
+    signal: '기업 도입 사례',
+    url: 'https://openai.com/index/sentinelone',
+  },
+  {
+    id: 'amp-beyond-coding',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'Amp, OpenAI 모델로 코딩 밖 업무까지 에이전트에 맡겨',
+    summary:
+      'OpenAI가 코딩 에이전트 Amp의 도입 사례를 소개했다. Amp 토큰 사용의 대부분이 OpenAI 모델이고, ' +
+      'Sign in with ChatGPT 연동과 GPT-Live-1 기반 음성 호출, GPT-6 Astra Ultrafast 모드 시험을 다뤘다.',
+    publishedAt: '2026-10-14',
+    collectedAt: '2026-10-15',
+    category: 'Product',
+    signal: '기업 도입 사례',
+    url: 'https://openai.com/index/amp-beyond-coding',
+  },
   {
     id: 'claude-platform-october-14-2026',
     source: 'Anthropic',
