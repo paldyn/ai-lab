@@ -378,3 +378,5 @@ kss는 문장 분리 하나를 위해 646MB를 들입니다. pecab이 의존하�
 읽어주셔서 감사합니다. 😊
 
 **지난 글:** [한국어 형태소 분석기 실측: 속도·설치 난이도·검색 품질 — BM25에서는 문자 2-gram이 분석기 넷과 구별되지 않았고 질의당 29배 빨랐다](/articles/bench-korean-morph-analyzers)
+
+**다음 글:** [CPU에서 돌릴 수 있는 재순위 모델 — 4.4M짜리 TinyBERT와 278M짜리 bge가 구별되지 않았고, 갈린 것은 ModernBERT 하나였다](/articles/bench-reranker-models-cpu)
