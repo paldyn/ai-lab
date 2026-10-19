@@ -279,3 +279,5 @@ torch는 PyPI 기본 휠(CUDA 빌드)로 깔렸습니다. PyTorch CPU 휠 색인
 읽어주셔서 감사합니다. 😊
 
 **지난 글:** [CPU에서 돌릴 수 있는 재순위 모델 — 4.4M짜리 TinyBERT와 278M짜리 bge가 구별되지 않았고, 갈린 것은 ModernBERT 하나였다](/articles/bench-reranker-models-cpu)
+
+**다음 글:** [임베딩 API의 조항: 배치 상한·차원 옵션·토큰 상한 — 가장 조용한 것은 잘림이 아니라 묶음이었다](/articles/spec-embedding-api-limits)
