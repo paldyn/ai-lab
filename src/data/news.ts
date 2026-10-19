@@ -160,7 +160,7 @@ export interface NewsDetail {
   commentary: string;
 }
 
-export const globalNewsUpdatedAt = '2026-10-15';
+export const globalNewsUpdatedAt = '2026-10-16';
 
 /**
  * 공식 발표 한 건 = 항목 한 개. 2026년 1월부터 쌓는 아카이브이며 오래된 항목을
@@ -171,6 +171,76 @@ export const globalNewsUpdatedAt = '2026-10-15';
  * 목록에서 파생됩니다. 갱신 시 globalNewsUpdatedAt도 함께 올립니다.
  */
 const entries: NewsItem[] = [
+  {
+    id: 'itau-generative-ai',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'Itaú, OpenAI 모델로 대화형 금융 비서 ia.i 구축',
+    summary:
+      'OpenAI가 브라질 은행 Itaú의 도입 사례를 소개했다. 텍스트·음성으로 계좌·카드·보험 업무를 한곳에서 다루는 ia.i를 ' +
+      '1단계에서 고객 약 30만 명에게 열었고, 2026년 말까지 전체 고객으로 넓힐 계획이다.',
+    publishedAt: '2026-10-16',
+    collectedAt: '2026-10-20',
+    category: 'Product',
+    signal: '기업 도입 사례',
+    url: 'https://openai.com/index/itau-generative-ai',
+  },
+  {
+    id: 'benefit-street-partners',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'Benefit Street Partners, Codex로 신용 계약 분석 도구 직접 구축',
+    summary:
+      'OpenAI가 신용 투자 운용사 Benefit Street Partners의 도입 사례를 소개했다. 포트폴리오 매니저가 Codex로 ' +
+      'BDC 평가 비교 도구와 신용 계약 분석기를 직접 만들어 투자위원회 후속 질문에 하루 안에 답한다고 밝혔다.',
+    publishedAt: '2026-10-16',
+    collectedAt: '2026-10-20',
+    category: 'Product',
+    signal: '기업 도입 사례',
+    url: 'https://openai.com/index/benefit-street-partners',
+  },
+  {
+    id: 'stack-overflow-chatgpt-plugin',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'Stack Overflow, ChatGPT 플러그인 출시 뒤 에이전트 제품 가입 3배',
+    summary:
+      'OpenAI가 Stack Overflow의 도입 사례를 소개했다. 엔지니어 두 명이 Codex로 몇 주 만에 Stack Overflow for Agents를 ' +
+      '만들었고, ChatGPT 플러그인을 낸 뒤 가입이 하룻밤 새 세 배가 됐다고 밝혔다.',
+    publishedAt: '2026-10-16',
+    collectedAt: '2026-10-20',
+    category: 'Product',
+    signal: '기업 도입 사례',
+    url: 'https://openai.com/index/stack-overflow-chatgpt-plugin',
+  },
+  {
+    id: 'introducing-the-rosalind-academic-plan',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'OpenAI, 미국 대학 연구실용 Rosalind Academic Plan 공개',
+    summary:
+      'OpenAI가 미국 대학 연구실이 생명과학 모델 GPT-Rosalind를 쓰도록 Rosalind Academic Plan을 내놓았다. ' +
+      '자격을 갖춘 연구실은 Business Standard 좌석 최대 30개를 최대 12개월 무료로 받는다.',
+    publishedAt: '2026-10-15',
+    collectedAt: '2026-10-20',
+    category: 'Product',
+    signal: '학술 연구 지원',
+    url: 'https://openai.com/index/introducing-the-rosalind-academic-plan',
+  },
+  {
+    id: 'sullivan-cromwell',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'Sullivan & Cromwell, 계약 검토 도구 Agreement Analyzer 구축',
+    summary:
+      'OpenAI가 로펌 Sullivan & Cromwell의 도입 사례를 소개했다. 파트너 변호사가 Codex로 시작한 Agreement Analyzer가 ' +
+      '회사의 선례·협상 플레이북과 ChatGPT Enterprise를 엮어 검토 메모와 수정안을 낸다.',
+    publishedAt: '2026-10-15',
+    collectedAt: '2026-10-20',
+    category: 'Product',
+    signal: '기업 도입 사례',
+    url: 'https://openai.com/index/sullivan-cromwell',
+  },
   {
     id: 'public-benefit-fund',
     source: 'Anthropic',
