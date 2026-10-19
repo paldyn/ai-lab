@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="430" viewBox="0 0 880 430">
+<defs><marker id="arr" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto"><path d="M 0 0 L 13 7 L 0 14 z" fill="#7ec8e3"/></marker></defs>
+<rect width="880" height="430" fill="#0a0a0a" rx="12"/>
+<text x="440" y="44" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="22" font-weight="700" fill="#e8e8e8" text-anchor="middle">길이 조절기</text>
+<text x="440" y="70" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888" text-anchor="middle">예측한 지속 시간만큼 음소 표현을 복제해 멜 프레임 줄과 길이를 맞춘다</text>
+<text x="60" y="137" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">음소 표현</text>
+<rect x="150" y="108" width="140" height="44" rx="8" fill="#1a1a2e" stroke="#7ec8e3" stroke-width="1.5"/>
+<text x="220" y="136" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#7ec8e3" text-anchor="middle">음소 1</text>
+<rect x="370" y="108" width="140" height="44" rx="8" fill="#1a1a2e" stroke="#55c555" stroke-width="1.5"/>
+<text x="440" y="136" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#55c555" text-anchor="middle">음소 2</text>
+<rect x="590" y="108" width="140" height="44" rx="8" fill="#1a1a2e" stroke="#7777cc" stroke-width="1.5"/>
+<text x="660" y="136" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#7777cc" text-anchor="middle">음소 3</text>
+<text x="60" y="207" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">지속 시간</text>
+<text x="220" y="207" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="700" fill="#e8e8e8" text-anchor="middle">3프레임</text>
+<text x="440" y="207" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="700" fill="#e8e8e8" text-anchor="middle">5프레임</text>
+<text x="660" y="207" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="700" fill="#e8e8e8" text-anchor="middle">2프레임</text>
+<text x="60" y="317" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">멜 프레임</text>
+<rect x="166" y="290" width="60" height="40" rx="6" fill="#1a1a2e" stroke="#7ec8e3" stroke-width="1.5"/>
+<text x="196" y="315" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#7ec8e3" text-anchor="middle">1</text>
+<rect x="232" y="290" width="60" height="40" rx="6" fill="#1a1a2e" stroke="#7ec8e3" stroke-width="1.5"/>
+<text x="262" y="315" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#7ec8e3" text-anchor="middle">2</text>
+<rect x="298" y="290" width="60" height="40" rx="6" fill="#1a1a2e" stroke="#7ec8e3" stroke-width="1.5"/>
+<text x="328" y="315" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#7ec8e3" text-anchor="middle">3</text>
+<rect x="364" y="290" width="60" height="40" rx="6" fill="#1a1a2e" stroke="#55c555" stroke-width="1.5"/>
+<text x="394" y="315" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#55c555" text-anchor="middle">4</text>
+<rect x="430" y="290" width="60" height="40" rx="6" fill="#1a1a2e" stroke="#55c555" stroke-width="1.5"/>
+<text x="460" y="315" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#55c555" text-anchor="middle">5</text>
+<rect x="496" y="290" width="60" height="40" rx="6" fill="#1a1a2e" stroke="#55c555" stroke-width="1.5"/>
+<text x="526" y="315" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#55c555" text-anchor="middle">6</text>
+<rect x="562" y="290" width="60" height="40" rx="6" fill="#1a1a2e" stroke="#55c555" stroke-width="1.5"/>
+<text x="592" y="315" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#55c555" text-anchor="middle">7</text>
+<rect x="628" y="290" width="60" height="40" rx="6" fill="#1a1a2e" stroke="#55c555" stroke-width="1.5"/>
+<text x="658" y="315" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#55c555" text-anchor="middle">8</text>
+<rect x="694" y="290" width="60" height="40" rx="6" fill="#1a1a2e" stroke="#7777cc" stroke-width="1.5"/>
+<text x="724" y="315" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#7777cc" text-anchor="middle">9</text>
+<rect x="760" y="290" width="60" height="40" rx="6" fill="#1a1a2e" stroke="#7777cc" stroke-width="1.5"/>
+<text x="790" y="315" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#7777cc" text-anchor="middle">10</text>
+<path d="M 220 220 L 262.0 288" stroke="#7ec8e3" stroke-width="2" fill="none" marker-end="url(#arr)"/>
+<path d="M 440 220 L 526.0 288" stroke="#55c555" stroke-width="2" fill="none" marker-end="url(#arr)"/>
+<path d="M 660 220 L 757.0 288" stroke="#7777cc" stroke-width="2" fill="none" marker-end="url(#arr)"/>
+<text x="440" y="372" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888" text-anchor="middle">3 + 5 + 2 = 10프레임 · 한 프레임 약 11.6ms (22,050Hz, 홉 256)</text>
+<text x="440" y="398" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888" text-anchor="middle">음소 2는 약 58ms 동안 울린다 — 길이를 알면 열 프레임을 한 번에 계산한다</text>
+</svg>

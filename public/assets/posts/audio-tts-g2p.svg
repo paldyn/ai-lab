@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="460" viewBox="0 0 880 460">
+<defs><marker id="arr" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto"><path d="M 0 0 L 13 7 L 0 14 z" fill="#7ec8e3"/></marker></defs>
+<rect width="880" height="460" fill="#0a0a0a" rx="12"/>
+<text x="440" y="44" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="22" font-weight="700" fill="#e8e8e8" text-anchor="middle">표기와 발음이 갈리는 다섯 규칙</text>
+<text x="440" y="70" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888" text-anchor="middle">G2P가 이 규칙을 적용하지 않으면 모델은 적힌 대로 또박또박 읽는다</text>
+<text x="60" y="132" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#e8e8e8">연음</text>
+<rect x="180" y="108" width="120" height="40" rx="8" fill="#1a1a2e" stroke="#888" stroke-width="1.5"/>
+<text x="240" y="134" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" fill="#e8e8e8" text-anchor="middle">옷이</text>
+<line x1="300" y1="128" x2="378" y2="128" stroke="#7ec8e3" stroke-width="2" marker-end="url(#arr)"/>
+<rect x="380" y="108" width="120" height="40" rx="8" fill="#10261a" stroke="#55c555" stroke-width="1.5"/>
+<text x="440" y="134" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#55c555" text-anchor="middle">[오시]</text>
+<text x="540" y="133" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">받침이 뒤 모음으로 넘어간다</text>
+<text x="60" y="196" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#e8e8e8">경음화</text>
+<rect x="180" y="172" width="120" height="40" rx="8" fill="#1a1a2e" stroke="#888" stroke-width="1.5"/>
+<text x="240" y="198" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" fill="#e8e8e8" text-anchor="middle">먹고</text>
+<line x1="300" y1="192" x2="378" y2="192" stroke="#7ec8e3" stroke-width="2" marker-end="url(#arr)"/>
+<rect x="380" y="172" width="120" height="40" rx="8" fill="#10261a" stroke="#55c555" stroke-width="1.5"/>
+<text x="440" y="198" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#55c555" text-anchor="middle">[먹꼬]</text>
+<text x="540" y="197" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">받침 뒤 예사소리가 된소리로</text>
+<text x="60" y="260" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#e8e8e8">비음화</text>
+<rect x="180" y="236" width="120" height="40" rx="8" fill="#1a1a2e" stroke="#888" stroke-width="1.5"/>
+<text x="240" y="262" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" fill="#e8e8e8" text-anchor="middle">국물</text>
+<line x1="300" y1="256" x2="378" y2="256" stroke="#7ec8e3" stroke-width="2" marker-end="url(#arr)"/>
+<rect x="380" y="236" width="120" height="40" rx="8" fill="#10261a" stroke="#55c555" stroke-width="1.5"/>
+<text x="440" y="262" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#55c555" text-anchor="middle">[궁물]</text>
+<text x="540" y="261" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">비음 앞에서 받침이 바뀐다</text>
+<text x="60" y="324" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#e8e8e8">유음화</text>
+<rect x="180" y="300" width="120" height="40" rx="8" fill="#1a1a2e" stroke="#888" stroke-width="1.5"/>
+<text x="240" y="326" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" fill="#e8e8e8" text-anchor="middle">신라</text>
+<line x1="300" y1="320" x2="378" y2="320" stroke="#7ec8e3" stroke-width="2" marker-end="url(#arr)"/>
+<rect x="380" y="300" width="120" height="40" rx="8" fill="#10261a" stroke="#55c555" stroke-width="1.5"/>
+<text x="440" y="326" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#55c555" text-anchor="middle">[실라]</text>
+<text x="540" y="325" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">ㄴ이 ㄹ을 만나 ㄹ로</text>
+<text x="60" y="388" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#e8e8e8">구개음화</text>
+<rect x="180" y="364" width="120" height="40" rx="8" fill="#1a1a2e" stroke="#888" stroke-width="1.5"/>
+<text x="240" y="390" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" fill="#e8e8e8" text-anchor="middle">같이</text>
+<line x1="300" y1="384" x2="378" y2="384" stroke="#7ec8e3" stroke-width="2" marker-end="url(#arr)"/>
+<rect x="380" y="364" width="120" height="40" rx="8" fill="#10261a" stroke="#55c555" stroke-width="1.5"/>
+<text x="440" y="390" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#55c555" text-anchor="middle">[가치]</text>
+<text x="540" y="389" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">ㄷ·ㅌ 받침이 이 앞에서 바뀐다</text>
+</svg>

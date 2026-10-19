@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="470" viewBox="0 0 880 470" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <defs>
+    <marker id="mf-a" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#7ec8e3"/>
+    </marker>
+  </defs>
+  <rect x="0" y="0" width="880" height="470" rx="12" fill="#0a0a0a"/>
+
+  <text x="60" y="44" font-size="22" font-weight="700" fill="#e8e8e8">같은 내용, 토큰은 2.33배 — cl100k_base</text>
+
+  <rect x="60" y="76" width="360" height="70" rx="8" fill="#111318" stroke="#3a4a6e" stroke-width="1"/>
+  <text x="84" y="104" font-size="16" font-weight="600" fill="#e8e8e8">영어 설명문 811자</text>
+  <text x="84" y="128" font-size="13" fill="#888">5.20자/토큰 → 약 156토큰</text>
+
+  <rect x="460" y="76" width="360" height="70" rx="8" fill="#111318" stroke="#e05555" stroke-width="1"/>
+  <text x="484" y="104" font-size="16" font-weight="600" fill="#e8e8e8">한국어 설명문 366자</text>
+  <text x="484" y="128" font-size="13" fill="#888">1.01자/토큰 → 약 362토큰</text>
+
+  <text x="60" y="184" font-size="13" fill="#888">토큰 수</text>
+  <rect x="130" y="172" width="181" height="18" rx="3" fill="#7ec8e3"/>
+  <text x="322" y="186" font-size="13" fill="#7ec8e3">156</text>
+  <rect x="130" y="200" width="420" height="18" rx="3" fill="#e05555"/>
+  <text x="562" y="214" font-size="13" fill="#e05555">362 (2.33배)</text>
+
+  <path d="M 440 232 L 440 256 L 170 256 L 170 284" fill="none" stroke="#7ec8e3" stroke-width="2" marker-end="url(#mf-a)"/>
+  <path d="M 440 232 L 440 284" fill="none" stroke="#7ec8e3" stroke-width="2" marker-end="url(#mf-a)"/>
+  <path d="M 440 256 L 710 256 L 710 284" fill="none" stroke="#7ec8e3" stroke-width="2" marker-end="url(#mf-a)"/>
+
+  <rect x="60" y="284" width="220" height="130" rx="8" fill="#111318" stroke="#3a4a6e" stroke-width="1"/>
+  <text x="84" y="318" font-size="16" font-weight="600" fill="#e8e8e8">문맥 창</text>
+  <text x="84" y="346" font-size="13" fill="#888">같은 창에 담기는</text>
+  <text x="84" y="366" font-size="13" fill="#888">한국어 내용이</text>
+  <text x="84" y="386" font-size="13" fill="#e05555">영어의 43% 남짓</text>
+
+  <rect x="330" y="284" width="220" height="130" rx="8" fill="#111318" stroke="#3a4a6e" stroke-width="1"/>
+  <text x="354" y="318" font-size="16" font-weight="600" fill="#e8e8e8">비용</text>
+  <text x="354" y="346" font-size="13" fill="#888">토큰 단가로 매기므로</text>
+  <text x="354" y="366" font-size="13" fill="#888">같은 일의 청구서가</text>
+  <text x="354" y="386" font-size="13" fill="#e05555">2.33배</text>
+
+  <rect x="600" y="284" width="220" height="130" rx="8" fill="#111318" stroke="#3a4a6e" stroke-width="1"/>
+  <text x="624" y="318" font-size="16" font-weight="600" fill="#e8e8e8">표현</text>
+  <text x="624" y="346" font-size="13" fill="#888">낱말이 조각으로 흩어져</text>
+  <text x="624" y="366" font-size="13" fill="#888">뜻이 옅고 다른 언어와</text>
+  <text x="624" y="386" font-size="13" fill="#e05555">겹치는 못이 줄어든다</text>
+
+  <text x="60" y="446" font-size="13" fill="#888">수치: 한국어 토큰세 실측(토크나이저 아홉 개 중 cl100k_base 한 줄)</text>
+</svg>
