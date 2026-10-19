@@ -172,6 +172,34 @@ export const globalNewsUpdatedAt = '2026-10-15';
  */
 const entries: NewsItem[] = [
   {
+    id: 'public-benefit-fund',
+    source: 'Anthropic',
+    kind: 'company',
+    title: 'Anthropic, 지분 5%로 Anthropic Public Benefit Fund 설립',
+    summary:
+      'Anthropic이 주주 승인을 전제로 자사 지분 5%를 새 법인 Anthropic Public Benefit Fund에 내놓는다고 밝혔다. ' +
+      '기업 가치가 기준선보다 50% 오를 때마다 이사회 재량으로 2%씩 더 얹는 구조다.',
+    publishedAt: '2026-10-18',
+    collectedAt: '2026-10-20',
+    category: 'Corporate',
+    signal: 'AI 자선 사업',
+    url: 'https://www.anthropic.com/news/public-benefit-fund',
+  },
+  {
+    id: 'claude-platform-october-15-2026-5',
+    source: 'Anthropic',
+    kind: 'company',
+    title: 'Claude Opus 5.5 fast mode, 연구 프리뷰 끝내고 신청 없이 제공',
+    summary:
+      'Claude Opus 5.5의 fast mode가 연구 프리뷰를 벗어나 접근 신청과 베타 헤더 없이 쓸 수 있게 됐고 Microsoft Foundry에도 들어갔다. ' +
+      '같은 날 Compliance API가 구성원이 저장한 Claude 지침을 돌려주는 기능이 Enterprise 대상 베타로 나왔다.',
+    publishedAt: '2026-10-15',
+    collectedAt: '2026-10-20',
+    category: 'Product',
+    signal: '플랫폼 변경',
+    url: 'https://platform.claude.com/docs/en/release-notes/overview#october-15-2026-5',
+  },
+  {
     id: 'teaching-students-to-think-and-learn-through-questions',
     source: 'OpenAI',
     kind: 'company',

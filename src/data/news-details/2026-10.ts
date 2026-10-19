@@ -2,6 +2,36 @@ import type { NewsDetail } from '../news';
 
 /** 2026-10 발표의 모달 본문. 목록은 news.ts에 있습니다. */
 export const details: Record<string, NewsDetail> = {
+  'public-benefit-fund': {
+    points: [
+      '주주 승인을 전제로 Anthropic 지분 5%를 새 법인 Anthropic Public Benefit Fund에 내놓는다',
+      '기업 가치가 정해 둔 기준선보다 50% 오를 때마다 이사회 재량으로 지분 2%를 더한다',
+      '501(c)(3)이 아닌 Anthropic 전액 출자 LLC로 세워 기부 방식을 바꿀 여지를 둔다',
+      '기금이 가진 Anthropic 지분은 미국 안팎의 로비·정치 기부에 쓰지 않는다',
+      '전통 비영리 단체 대규모 기부나 특정 집단 직접 분배를 예로 들었고, 노동시장 영향을 대표 분야로 꼽았다',
+      '공동 창업자 80% 지분 기부 서약과 직원 지분 매칭을 더하면 지분 약 20%가 공익에 묶인다고 밝혔다',
+      '기금의 구조·지배구조와 지분을 늘리는 가치 기준선은 앞으로 몇 달 안에 공개한다고 했다',
+    ],
+    commentary:
+      '경영진 보상에 흔히 쓰는 「가치가 오르면 더 받는」 구조를 공익 쪽에 건 것이 눈에 띈다. 회사가 클수록 공익 몫도 ' +
+      '커지므로 상장이나 대형 투자 유치 국면에서 지분 희석 논의에 들어갈 수 있다. 다만 기준선과 운영 주체가 아직 ' +
+      '안 정해져 실제 규모와 독립성은 이후 공개될 지배구조를 봐야 판단할 수 있다.',
+  },
+  'claude-platform-october-15-2026-5': {
+    points: [
+      'Claude Opus 5.5의 fast mode가 연구 프리뷰를 벗어나 접근 신청 없이 쓸 수 있다',
+      'Opus 5.5 요청에 fast-mode-2026-02-01 베타 헤더가 필요 없고, 계속 보내도 동작한다',
+      'Opus 5.5는 Start·Build·Scale 사용 등급에서 fast mode 기본 레이트 리밋을 받는다',
+      'Claude Opus 5와 Opus 4.8의 fast mode는 연구 프리뷰로 남아 베타 헤더를 계속 보내야 한다',
+      'Opus 5.5 fast mode는 Azure에 호스팅한 Claude in Microsoft Foundry 배포에서도 쓸 수 있다',
+      'Compliance API가 구성원이 claude.ai 지침과 Cowork 전역 지침으로 저장한 글을 돌려준다(Enterprise 베타)',
+      '이 조회에는 기존 Compliance Access Key와 read:compliance_user_data 범위가 필요하다',
+    ],
+    commentary:
+      'fast mode가 신청제에서 기본 제공으로 바뀌면서 응답 지연이 중요한 서비스가 Opus 5.5를 고르는 문턱이 낮아졌다. ' +
+      '구형 Opus는 여전히 베타 헤더가 필요하므로 모델을 섞어 쓰는 코드는 헤더를 모델별로 붙이는지 확인해야 한다. ' +
+      'Compliance API 확장은 사용자가 Claude에 준 지침까지 감사 범위에 넣는 것이라 규제 산업의 도입 심사에 영향을 준다.',
+  },
   'teaching-students-to-think-and-learn-through-questions': {
     points: [
       '교사의 날을 맞아 대학 강의실을 배경으로 한 캠페인을 선보였다',
