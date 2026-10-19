@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="600" viewBox="0 0 880 600" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <defs>
+    <marker id="cbb" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto"><path d="M 0 0 L 13 7 L 0 14 z" fill="#7ec8e3"/></marker>
+    <marker id="cbr" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto"><path d="M 0 0 L 13 7 L 0 14 z" fill="#e05555"/></marker>
+    <marker id="cbg" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto"><path d="M 0 0 L 13 7 L 0 14 z" fill="#55c555"/></marker>
+    <marker id="cbw" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto"><path d="M 0 0 L 13 7 L 0 14 z" fill="#e8e8e8"/></marker>
+  </defs>
+  <rect width="880" height="600" rx="12" fill="#0a0a0a"/>
+  <text x="60" y="56" font-size="22" fill="#e8e8e8" font-weight="700">자른 뒤의 평균은 평균의 방향을 따르지 않는다</text>
+  <text x="60" y="82" font-size="13" fill="#888">미니배치 그래디언트 g1 = (10, 0), g2 = (0, 2)가 반반 — 문턱 c = 1</text>
+  <text x="60" y="124" font-size="16" fill="#e8e8e8" font-weight="600">원래 그래디언트</text>
+  <text x="480" y="124" font-size="16" fill="#e8e8e8" font-weight="600">문턱 1로 자른 결과</text>
+  <line x1="70" y1="420" x2="420" y2="420" stroke="#888" stroke-width="1.5"/>
+  <line x1="90" y1="440" x2="90" y2="170" stroke="#888" stroke-width="1.5"/>
+  <line x1="90" y1="420" x2="370" y2="420" stroke="#7ec8e3" stroke-width="2.5" marker-end="url(#cbb)"/>
+  <line x1="90" y1="420" x2="90" y2="364" stroke="#7ec8e3" stroke-width="2.5" marker-end="url(#cbb)"/>
+  <line x1="90" y1="420" x2="230" y2="392" stroke="#e8e8e8" stroke-width="2.5" marker-end="url(#cbw)"/>
+  <text x="330" y="446" font-size="13" fill="#7ec8e3">g1 = (10, 0)</text>
+  <text x="104" y="358" font-size="13" fill="#7ec8e3">g2 = (0, 2)</text>
+  <text x="242" y="376" font-size="13" fill="#e8e8e8" font-weight="600">평균 (5, 1)</text>
+  <text x="242" y="394" font-size="13" fill="#888">11.3°</text>
+  <line x1="500" y1="420" x2="780" y2="420" stroke="#888" stroke-width="1.5"/>
+  <line x1="520" y1="440" x2="520" y2="170" stroke="#888" stroke-width="1.5"/>
+  <path d="M 720 420 A 200 200 0 0 0 520 220" fill="none" stroke="#7777cc" stroke-width="1.5" stroke-dasharray="4,4"/>
+  <text x="672" y="260" font-size="12" fill="#7777cc">길이 1</text>
+  <line x1="520" y1="420" x2="720" y2="420" stroke="#7ec8e3" stroke-width="2.5" marker-end="url(#cbb)"/>
+  <line x1="520" y1="420" x2="520" y2="220" stroke="#7ec8e3" stroke-width="2.5" marker-end="url(#cbb)"/>
+  <line x1="520" y1="420" x2="620.0" y2="320.0" stroke="#e05555" stroke-width="2.5" marker-end="url(#cbr)"/>
+  <line x1="520" y1="420" x2="716.2" y2="380.8" stroke="#55c555" stroke-width="2.5" marker-end="url(#cbg)"/>
+  <text x="680" y="446" font-size="13" fill="#7ec8e3">(1, 0)</text>
+  <text x="508" y="224" font-size="13" fill="#7ec8e3" text-anchor="end">(0, 1)</text>
+  <text x="530" y="276" font-size="13" fill="#e05555" font-weight="600">자르고 평균</text>
+  <text x="530" y="294" font-size="13" fill="#e05555">(0.5, 0.5) 45°</text>
+  <text x="730.2" y="374.8" font-size="13" fill="#55c555" font-weight="600">평균 후 자름</text>
+  <text x="730.2" y="392.8" font-size="13" fill="#55c555">11.3°</text>
+  <rect x="60" y="470" width="760" height="90" rx="6" fill="#101010" stroke="#333" stroke-width="1"/>
+  <text x="84" y="502" font-size="13" fill="#e8e8e8" font-weight="600">큰 그래디언트일수록 많이 깎인다 — 그 방향의 몫이 줄어 기대 갱신이 45°로 기운다</text>
+  <text x="84" y="530" font-size="13" fill="#888">평균을 먼저 내고 자르면 방향은 11.3° 그대로이고 길이만 1이 된다</text>
+</svg>

@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="500" viewBox="0 0 880 500" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <rect x="0" y="0" width="880" height="500" rx="12" fill="#0a0a0a"/>
+
+  <text x="70" y="46" font-size="22" font-weight="700" fill="#e8e8e8">충분조건과 필요조건</text>
+  <text x="70" y="70" font-size="13" fill="#888">자연수 n · 「n이 4의 배수이면 n은 짝수이다」</text>
+
+  <rect x="70" y="96" width="430" height="320" rx="14" fill="#7ec8e3" fill-opacity="0.08" stroke="#7ec8e3" stroke-width="2"/>
+  <text x="92" y="124" font-size="16" font-weight="600" fill="#7ec8e3">짝수</text>
+  <rect x="100" y="146" width="210" height="240" rx="12" fill="#55c555" fill-opacity="0.10" stroke="#55c555" stroke-width="2"/>
+  <text x="122" y="174" font-size="16" font-weight="600" fill="#55c555">4의 배수</text>
+
+  <circle cx="160" cy="226" r="5" fill="#e8e8e8"/>
+  <text x="176" y="231" font-size="15" fill="#e8e8e8">4</text>
+  <circle cx="200" cy="282" r="5" fill="#e8e8e8"/>
+  <text x="216" y="287" font-size="15" fill="#e8e8e8">8</text>
+  <circle cx="160" cy="338" r="5" fill="#e8e8e8"/>
+  <text x="176" y="343" font-size="15" fill="#e8e8e8">12</text>
+
+  <circle cx="370" cy="186" r="5" fill="#e8e8e8"/>
+  <text x="386" y="191" font-size="15" fill="#e8e8e8">2</text>
+  <circle cx="400" cy="266" r="5" fill="#e05555"/>
+  <text x="416" y="271" font-size="15" font-weight="600" fill="#e05555">6</text>
+  <circle cx="370" cy="346" r="5" fill="#e8e8e8"/>
+  <text x="386" y="351" font-size="15" fill="#e8e8e8">10</text>
+
+  <circle cx="110" cy="452" r="5" fill="#888"/>
+  <text x="126" y="457" font-size="15" fill="#888">3</text>
+  <circle cx="180" cy="452" r="5" fill="#888"/>
+  <text x="196" y="457" font-size="15" fill="#888">5</text>
+  <circle cx="250" cy="452" r="5" fill="#888"/>
+  <text x="266" y="457" font-size="15" fill="#888">7</text>
+  <text x="300" y="457" font-size="13" fill="#888">짝수가 아닌 수 — 바깥 영역 밖</text>
+
+  <rect x="540" y="96" width="280" height="90" rx="8" fill="#0f1a10" stroke="#55c555" stroke-width="1.5"/>
+  <text x="564" y="126" font-size="15" font-weight="600" fill="#e8e8e8">4의 배수 ⇒ 짝수</text>
+  <text x="564" y="148" font-size="13" fill="#888">안쪽에 있으면 바깥에도 있다</text>
+  <text x="564" y="168" font-size="13" font-weight="600" fill="#55c555">4의 배수는 충분조건</text>
+
+  <rect x="540" y="210" width="280" height="90" rx="8" fill="#0d1820" stroke="#7ec8e3" stroke-width="1.5"/>
+  <text x="564" y="240" font-size="15" font-weight="600" fill="#e8e8e8">짝수가 아님 ⇒ 4의 배수 아님</text>
+  <text x="564" y="262" font-size="13" fill="#888">바깥 영역 밖이면 안쪽에도 없다</text>
+  <text x="564" y="282" font-size="13" font-weight="600" fill="#7ec8e3">짝수는 필요조건</text>
+
+  <rect x="540" y="324" width="280" height="92" rx="8" fill="#1a0f0f" stroke="#e05555" stroke-width="1.5"/>
+  <text x="564" y="354" font-size="15" font-weight="600" fill="#e8e8e8">거꾸로는 안 된다</text>
+  <text x="564" y="376" font-size="13" fill="#888">6은 짝수지만 4의 배수가 아니다</text>
+  <text x="564" y="396" font-size="13" font-weight="600" fill="#e05555">짝수는 충분조건이 아니다</text>
+</svg>
