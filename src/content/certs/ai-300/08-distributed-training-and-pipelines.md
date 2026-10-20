@@ -142,7 +142,7 @@ ml_client.schedules.begin_create_or_update(schedule).result()
    ③ `instance_count=3`, `process_count_per_instance=1`, 월드 크기 3\
    ④ `instance_count=1`, `process_count_per_instance=12`, 월드 크기 12
 
-   답. ②. 인스턴스 수는 노드 수, 인스턴스당 프로세스 수는 노드의 GPU 수이고 월드 크기는 $$3 \times 4 = 12$$입니다. ①은 곱은 같지만 노드에 GPU보다 많은 프로세스를 띄웁니다.
+   답. ②. 인스턴스 수는 노드 수, 인스턴스당 프로세스 수는 노드의 GPU 수이고 월드 크기는 $$3 \times 4 = 12$$입니다. ①은 곱은 같지만 두 값을 뒤바꿔, 3대뿐인 노드를 4대로 잡고 노드마다 GPU 4장 중 3장만 씁니다.
 2. 월드 크기 16에서 프로세스마다 배치 크기 24를 쓰면 한 단계의 전체 배치 크기는?\
    ① 40\
    ② 192\
