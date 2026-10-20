@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" viewBox="0 0 880 470" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <defs>
+    <marker id="tm" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#888"/>
+    </marker>
+  </defs>
+  <rect width="880" height="470" rx="12" fill="#0a0a0a"/>
+  <text x="60" y="52" font-size="22" font-weight="700" fill="#e8e8e8">한 연결 위에서 이벤트가 겹친다</text>
+  <text x="60" y="80" font-size="13" fill="#888">가로가 시간이다. 위 두 줄은 클라이언트가 보내고, 아래 세 줄은 서버가 보낸다.</text>
+
+  <!-- lane labels -->
+  <text x="60" y="137" font-size="13" fill="#e8e8e8">오디오 조각</text>
+  <text x="60" y="187" font-size="13" fill="#e8e8e8">취소</text>
+  <text x="60" y="237" font-size="13" fill="#e8e8e8">부분 인식</text>
+  <text x="60" y="287" font-size="13" fill="#e8e8e8">응답 오디오</text>
+  <text x="60" y="337" font-size="13" fill="#e8e8e8">응답 텍스트</text>
+
+  <line x1="170" y1="157" x2="820" y2="157" stroke="#333" stroke-width="1"/>
+  <line x1="170" y1="207" x2="820" y2="207" stroke="#444" stroke-width="1" stroke-dasharray="4,4"/>
+  <line x1="170" y1="257" x2="820" y2="257" stroke="#333" stroke-width="1"/>
+  <line x1="170" y1="307" x2="820" y2="307" stroke="#333" stroke-width="1"/>
+  <line x1="170" y1="357" x2="820" y2="357" stroke="#333" stroke-width="1"/>
+
+  <!-- user audio: speaking 180-400, again 640-800 -->
+  <rect x="180" y="124" width="220" height="20" rx="4" fill="#7ec8e3" opacity="0.85"/>
+  <rect x="640" y="124" width="170" height="20" rx="4" fill="#7ec8e3" opacity="0.85"/>
+  <!-- partial transcripts during speech -->
+  <rect x="210" y="224" width="40" height="20" rx="4" fill="#7777cc"/>
+  <rect x="270" y="224" width="40" height="20" rx="4" fill="#7777cc"/>
+  <rect x="330" y="224" width="40" height="20" rx="4" fill="#7777cc"/>
+  <rect x="670" y="224" width="40" height="20" rx="4" fill="#7777cc"/>
+  <rect x="730" y="224" width="40" height="20" rx="4" fill="#7777cc"/>
+  <!-- response audio chunks sent ahead -->
+  <rect x="440" y="274" width="24" height="20" rx="3" fill="#55c555"/>
+  <rect x="468" y="274" width="24" height="20" rx="3" fill="#55c555"/>
+  <rect x="496" y="274" width="24" height="20" rx="3" fill="#55c555"/>
+  <rect x="524" y="274" width="24" height="20" rx="3" fill="#55c555"/>
+  <rect x="552" y="274" width="24" height="20" rx="3" fill="#55c555"/>
+  <rect x="580" y="274" width="24" height="20" rx="3" fill="#55c555"/>
+  <!-- response text -->
+  <rect x="440" y="324" width="160" height="20" rx="4" fill="#55c555" opacity="0.45"/>
+  <!-- cancel arrow up from 650 -->
+  <rect x="644" y="174" width="14" height="20" rx="3" fill="#e05555"/>
+  <text x="670" y="189" font-size="13" fill="#e05555">취소 + 재생 위치</text>
+
+  <!-- time axis -->
+  <line x1="170" y1="392" x2="820" y2="392" stroke="#888" stroke-width="1.5" marker-end="url(#tm)"/>
+  <text x="180" y="414" font-size="13" fill="#888">사용자가 말한다</text>
+  <text x="440" y="414" font-size="13" fill="#888">서버가 앞질러 보낸다</text>
+  <text x="640" y="414" font-size="13" fill="#888">사용자가 끼어든다</text>
+  <text x="60" y="446" font-size="13" fill="#888">재생 위치는 클라이언트만 안다. 그래서 취소가 그 값을 싣고 거꾸로 올라가야 한다.</text>
+</svg>

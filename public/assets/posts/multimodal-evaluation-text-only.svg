@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" viewBox="0 0 880 400" style="font-family:'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif;">
+  <rect width="880" height="400" fill="#0a0a0a" rx="12"/>
+
+  <text x="440" y="48" font-size="22" font-weight="700" fill="#e8e8e8" text-anchor="middle">텍스트만 준 점수로 시각 능력의 몫 가르기</text>
+  <text x="440" y="74" font-size="13" fill="#888" text-anchor="middle">보기 넷인 선택형 셋, 같은 모델 · 같은 문항</text>
+
+  <!-- axis: x=240 is 0%, 1% = 5px, 100% = 740 -->
+  <line x1="240" y1="100" x2="240" y2="290" stroke="#333" stroke-width="1"/>
+
+  <!-- row 1: with image 78 -->
+  <text x="220" y="133" font-size="14" font-weight="600" fill="#e8e8e8" text-anchor="end">이미지 + 질문</text>
+  <rect x="240" y="112" width="390" height="32" fill="#1a2a3a" stroke="#7ec8e3" stroke-width="1.5" rx="4"/>
+  <text x="646" y="133" font-size="14" font-weight="700" fill="#7ec8e3">78%</text>
+
+  <!-- row 2: text only 52 -->
+  <text x="220" y="193" font-size="14" font-weight="600" fill="#e8e8e8" text-anchor="end">질문만</text>
+  <rect x="240" y="172" width="260" height="32" fill="#2a2a1a" stroke="#e0b055" stroke-width="1.5" rx="4"/>
+  <text x="516" y="193" font-size="14" font-weight="700" fill="#e0b055">52%</text>
+
+  <!-- row 3: chance 25 -->
+  <text x="220" y="253" font-size="14" font-weight="600" fill="#e8e8e8" text-anchor="end">무작위로 찍기</text>
+  <rect x="240" y="232" width="125" height="32" fill="#1a1a1a" stroke="#666" stroke-width="1.5" rx="4"/>
+  <text x="381" y="253" font-size="14" font-weight="700" fill="#888">25%</text>
+
+  <!-- dashed guides -->
+  <line x1="365" y1="104" x2="365" y2="290" stroke="#555" stroke-width="2" stroke-dasharray="4,4"/>
+  <line x1="500" y1="104" x2="500" y2="290" stroke="#555" stroke-width="2" stroke-dasharray="4,4"/>
+  <line x1="630" y1="104" x2="630" y2="290" stroke="#555" stroke-width="2" stroke-dasharray="4,4"/>
+
+  <!-- shares bar -->
+  <rect x="240" y="306" width="125" height="40" fill="#1a1a1a" stroke="#666" stroke-width="1" rx="4"/>
+  <text x="302" y="331" font-size="13" fill="#888" text-anchor="middle">우연 25</text>
+  <rect x="365" y="306" width="135" height="40" fill="#2a2a1a" stroke="#e0b055" stroke-width="1" rx="4"/>
+  <text x="432" y="331" font-size="13" font-weight="600" fill="#e0b055" text-anchor="middle">언어 27</text>
+  <rect x="500" y="306" width="130" height="40" fill="#1a2a3a" stroke="#7ec8e3" stroke-width="1" rx="4"/>
+  <text x="565" y="331" font-size="13" font-weight="600" fill="#7ec8e3" text-anchor="middle">시각 26</text>
+  <text x="220" y="331" font-size="13" fill="#888" text-anchor="end">78점의 내역</text>
+
+  <text x="440" y="374" font-size="13" fill="#888" text-anchor="middle">두 점수의 차이(78 − 52)만 그림을 읽어서 얻은 몫이다</text>
+</svg>

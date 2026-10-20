@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="440" viewBox="0 0 880 440" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <rect x="0" y="0" width="880" height="440" rx="12" fill="#0a0a0a"/>
+  <text x="62" y="42" font-size="22" font-weight="700" fill="#e8e8e8">자동 통과선은 구간별 실측으로 긋는다</text>
+  <text x="62" y="68" font-size="13" fill="#888">검수용 데이터를 인식 확률 구간으로 나누고, 구간마다 실제 필드 일치율을 잰다 (예시 값).</text>
+
+  <line x1="120" y1="340" x2="800" y2="340" stroke="#555" stroke-width="1"/>
+  <line x1="120" y1="110" x2="120" y2="340" stroke="#555" stroke-width="1"/>
+  <text x="108" y="114" font-size="13" fill="#888" text-anchor="end">100%</text>
+  <text x="108" y="229" font-size="13" fill="#888" text-anchor="end">50%</text>
+  <text x="108" y="344" font-size="13" fill="#888" text-anchor="end">0%</text>
+
+  <rect x="150" y="225" width="90" height="115" fill="#e05555" opacity="0.8"/>
+  <text x="195" y="215" font-size="13" fill="#e8e8e8" text-anchor="middle">50%</text>
+  <text x="195" y="362" font-size="13" fill="#888" text-anchor="middle">&lt; 0.7</text>
+
+  <rect x="280" y="178" width="90" height="162" fill="#e05555" opacity="0.8"/>
+  <text x="325" y="168" font-size="13" fill="#e8e8e8" text-anchor="middle">70%</text>
+  <text x="325" y="362" font-size="13" fill="#888" text-anchor="middle">0.7–0.85</text>
+
+  <rect x="410" y="152" width="90" height="188" fill="#e05555" opacity="0.8"/>
+  <text x="455" y="142" font-size="13" fill="#e8e8e8" text-anchor="middle">82%</text>
+  <text x="455" y="362" font-size="13" fill="#888" text-anchor="middle">0.85–0.95</text>
+
+  <rect x="560" y="122" width="90" height="218" fill="#55c555" opacity="0.85"/>
+  <text x="605" y="112" font-size="13" fill="#e8e8e8" text-anchor="middle">95%</text>
+  <text x="605" y="362" font-size="13" fill="#888" text-anchor="middle">0.95–0.99</text>
+
+  <rect x="690" y="113" width="90" height="227" fill="#55c555" opacity="0.85"/>
+  <text x="735" y="103" font-size="13" fill="#e8e8e8" text-anchor="middle">99%</text>
+  <text x="735" y="362" font-size="13" fill="#888" text-anchor="middle">≥ 0.99</text>
+
+  <line x1="530" y1="96" x2="530" y2="340" stroke="#7ec8e3" stroke-width="2" stroke-dasharray="4,4"/>
+  <text x="460" y="392" font-size="13" font-weight="600" fill="#e05555" text-anchor="end">← 사람이 검수</text>
+  <text x="600" y="392" font-size="13" font-weight="600" fill="#55c555">자동 통과 →</text>
+  <text x="530" y="392" font-size="13" fill="#7ec8e3" text-anchor="middle">0.95</text>
+  <text x="440" y="420" font-size="13" fill="#888" text-anchor="middle">가로: 인식 확률 구간 · 세로: 그 구간의 실제 필드 일치율</text>
+</svg>

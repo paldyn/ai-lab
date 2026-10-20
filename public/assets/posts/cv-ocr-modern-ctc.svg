@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="420" viewBox="0 0 880 420" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <defs>
+    <marker id="arr" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#7ec8e3"/>
+    </marker>
+  </defs>
+  <rect x="0" y="0" width="880" height="420" rx="12" fill="#0a0a0a"/>
+  <text x="62" y="42" font-size="22" font-weight="700" fill="#e8e8e8">CTC는 조각별 예측을 두 규칙으로 줄인다</text>
+  <text x="62" y="68" font-size="13" fill="#888">글자 수를 몰라도 된다 — 조각 수만 정해 두고, 남는 자리는 빈칸(_)이 채운다.</text>
+
+  <text x="62" y="118" font-size="13" font-weight="600" fill="#7ec8e3">① 조각마다 예측</text>
+  <rect x="250" y="94" width="60" height="40" rx="6" fill="#12151c" stroke="#3a4a6e"/>
+  <text x="280" y="120" font-size="16" fill="#e8e8e8" text-anchor="middle">서</text>
+  <rect x="320" y="94" width="60" height="40" rx="6" fill="#12151c" stroke="#3a4a6e"/>
+  <text x="350" y="120" font-size="16" fill="#e8e8e8" text-anchor="middle">서</text>
+  <rect x="390" y="94" width="60" height="40" rx="6" fill="#12151c" stroke="#3a4a6e"/>
+  <text x="420" y="120" font-size="16" fill="#888" text-anchor="middle">_</text>
+  <rect x="460" y="94" width="60" height="40" rx="6" fill="#12151c" stroke="#3a4a6e"/>
+  <text x="490" y="120" font-size="16" fill="#888" text-anchor="middle">_</text>
+  <rect x="530" y="94" width="60" height="40" rx="6" fill="#12151c" stroke="#3a4a6e"/>
+  <text x="560" y="120" font-size="16" fill="#e8e8e8" text-anchor="middle">울</text>
+  <rect x="600" y="94" width="60" height="40" rx="6" fill="#12151c" stroke="#3a4a6e"/>
+  <text x="630" y="120" font-size="16" fill="#e8e8e8" text-anchor="middle">울</text>
+  <text x="680" y="119" font-size="13" fill="#888">조각 6개</text>
+
+  <line x1="455" y1="134" x2="455" y2="174" stroke="#7ec8e3" stroke-width="2" marker-end="url(#arr)"/>
+
+  <text x="62" y="200" font-size="13" font-weight="600" fill="#7ec8e3">② 연속 중복 합치기</text>
+  <rect x="320" y="176" width="60" height="40" rx="6" fill="#12151c" stroke="#3a4a6e"/>
+  <text x="350" y="202" font-size="16" fill="#e8e8e8" text-anchor="middle">서</text>
+  <rect x="425" y="176" width="60" height="40" rx="6" fill="#12151c" stroke="#3a4a6e"/>
+  <text x="455" y="202" font-size="16" fill="#888" text-anchor="middle">_</text>
+  <rect x="530" y="176" width="60" height="40" rx="6" fill="#12151c" stroke="#3a4a6e"/>
+  <text x="560" y="202" font-size="16" fill="#e8e8e8" text-anchor="middle">울</text>
+
+  <line x1="455" y1="216" x2="455" y2="256" stroke="#7ec8e3" stroke-width="2" marker-end="url(#arr)"/>
+
+  <text x="62" y="282" font-size="13" font-weight="600" fill="#7ec8e3">③ 빈칸 지우기</text>
+  <rect x="395" y="258" width="120" height="40" rx="6" fill="#12151c" stroke="#55c555" stroke-width="1.5"/>
+  <text x="455" y="284" font-size="16" font-weight="600" fill="#55c555" text-anchor="middle">서울</text>
+
+  <rect x="62" y="326" width="756" height="62" rx="8" fill="#12151c" stroke="#7777cc" stroke-width="1"/>
+  <text x="84" y="353" font-size="13" font-weight="600" fill="#e8e8e8">빈칸이 있어야 겹글자가 산다</text>
+  <text x="84" y="373" font-size="13" fill="#9aa4b8">「다 _ 다」 → 다다 · 「다 다」 → 다 — 빈칸이 같은 글자 둘 사이를 갈라 줘야 합쳐지지 않는다.</text>
+</svg>

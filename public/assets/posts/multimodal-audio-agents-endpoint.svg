@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="470" viewBox="0 0 880 470" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+<rect x="0" y="0" width="880" height="470" rx="12" fill="#0a0a0a"/>
+<text x="62" y="42" font-size="22" font-weight="700" fill="#e8e8e8">발화 끝을 정하는 세 가지 방식</text>
+<text x="62" y="68" font-size="13" fill="#888">사용자가 1,000 ms 말하고 500 ms 멈춘 뒤 800 ms 더 말한 같은 발화를 놓고 본다.</text>
+<text x="62" y="117" font-size="14" font-weight="600" fill="#e8e8e8">사용자</text>
+<text x="62" y="135" font-size="12" fill="#888">실제 발화</text>
+<rect x="200.0" y="102" width="170.0" height="36" rx="6" fill="#1a2030" stroke="#3a4a6e" stroke-width="1.5"/>
+<text x="285.0" y="125" text-anchor="middle" font-size="13" fill="#c8d0e0">삼십이만 오천 원을</text>
+<rect x="455.0" y="102" width="136.0" height="36" rx="6" fill="#1a2030" stroke="#3a4a6e" stroke-width="1.5"/>
+<text x="523.0" y="125" text-anchor="middle" font-size="13" fill="#c8d0e0">보내 주세요</text>
+<text x="62" y="202" font-size="14" font-weight="600" fill="#e05555">임계값 200 ms</text>
+<text x="62" y="220" font-size="12" fill="#888">말허리 자름</text>
+<rect x="404.0" y="187" width="187.0" height="36" rx="6" fill="#2a1414" stroke="#e05555" stroke-width="1.5"/>
+<text x="497.5" y="210" text-anchor="middle" font-size="13" fill="#e05555">에이전트가 답하기 시작</text>
+<text x="62" y="287" font-size="14" font-weight="600" fill="#c8a55a">임계값 1,000 ms</text>
+<text x="62" y="305" font-size="12" fill="#888">굼뜸</text>
+<line x1="591.0" y1="290" x2="761.0" y2="290" stroke="#c8a55a" stroke-width="2" stroke-dasharray="4,4"/>
+<text x="676.0" y="276" text-anchor="middle" font-size="12" fill="#c8a55a">1,000 ms 침묵</text>
+<rect x="761.0" y="272" width="34.0" height="36" rx="6" fill="#2a2416" stroke="#c8a55a" stroke-width="1.5"/>
+<text x="778.0" y="295" text-anchor="middle" font-size="13" fill="#c8a55a">답</text>
+<text x="62" y="372" font-size="14" font-weight="600" fill="#55c555">문장 완결성</text>
+<text x="62" y="390" font-size="12" fill="#888">끝난 문장만 짧게</text>
+<text x="412.5" y="380" text-anchor="middle" font-size="12" fill="#888">기다림</text>
+<line x1="591.0" y1="375" x2="642.0" y2="375" stroke="#55c555" stroke-width="2" stroke-dasharray="4,4"/>
+<rect x="642.0" y="357" width="153.0" height="36" rx="6" fill="#14261a" stroke="#55c555" stroke-width="1.5"/>
+<text x="718.5" y="380" text-anchor="middle" font-size="13" fill="#55c555">답</text>
+<line x1="370.0" y1="96" x2="370.0" y2="400" stroke="#333" stroke-width="1" stroke-dasharray="4,4"/>
+<line x1="455.0" y1="96" x2="455.0" y2="400" stroke="#333" stroke-width="1" stroke-dasharray="4,4"/>
+<line x1="591.0" y1="96" x2="591.0" y2="400" stroke="#333" stroke-width="1" stroke-dasharray="4,4"/>
+<line x1="200.0" y1="425" x2="795.0" y2="425" stroke="#4a5568" stroke-width="1.5"/>
+<line x1="200.0" y1="425" x2="200.0" y2="433" stroke="#4a5568" stroke-width="1.5"/>
+<text x="200.0" y="451" text-anchor="middle" font-size="11" fill="#888">0</text>
+<line x1="285.0" y1="425" x2="285.0" y2="433" stroke="#4a5568" stroke-width="1.5"/>
+<text x="285.0" y="451" text-anchor="middle" font-size="11" fill="#888">500</text>
+<line x1="370.0" y1="425" x2="370.0" y2="433" stroke="#4a5568" stroke-width="1.5"/>
+<text x="370.0" y="451" text-anchor="middle" font-size="11" fill="#888">1000</text>
+<line x1="455.0" y1="425" x2="455.0" y2="433" stroke="#4a5568" stroke-width="1.5"/>
+<text x="455.0" y="451" text-anchor="middle" font-size="11" fill="#888">1500</text>
+<line x1="540.0" y1="425" x2="540.0" y2="433" stroke="#4a5568" stroke-width="1.5"/>
+<text x="540.0" y="451" text-anchor="middle" font-size="11" fill="#888">2000</text>
+<line x1="625.0" y1="425" x2="625.0" y2="433" stroke="#4a5568" stroke-width="1.5"/>
+<text x="625.0" y="451" text-anchor="middle" font-size="11" fill="#888">2500</text>
+<line x1="710.0" y1="425" x2="710.0" y2="433" stroke="#4a5568" stroke-width="1.5"/>
+<text x="710.0" y="451" text-anchor="middle" font-size="11" fill="#888">3000</text>
+<line x1="795.0" y1="425" x2="795.0" y2="433" stroke="#4a5568" stroke-width="1.5"/>
+<text x="795.0" y="451" text-anchor="middle" font-size="11" fill="#888">3500 ms</text>
+</svg>
