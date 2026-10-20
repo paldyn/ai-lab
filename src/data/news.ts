@@ -160,7 +160,7 @@ export interface NewsDetail {
   commentary: string;
 }
 
-export const globalNewsUpdatedAt = '2026-10-16';
+export const globalNewsUpdatedAt = '2026-10-20';
 
 /**
  * 공식 발표 한 건 = 항목 한 개. 2026년 1월부터 쌓는 아카이브이며 오래된 항목을
@@ -171,6 +171,48 @@ export const globalNewsUpdatedAt = '2026-10-16';
  * 목록에서 파생됩니다. 갱신 시 globalNewsUpdatedAt도 함께 올립니다.
  */
 const entries: NewsItem[] = [
+  {
+    id: 'openai-to-acquire-orchestra-bio',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'OpenAI, 신약 개발 조율 플랫폼 Orchestra Bio 인수',
+    summary:
+      'OpenAI가 바이오제약 팀의 신약 개발 과정을 조율하는 플랫폼 Orchestra Bio를 인수했다. ' +
+      'Orchestra의 팀과 기술을 생명과학용 모델·도구 묶음 Rosalind와 합쳐 개발 업무를 맡는 에이전트를 만들 계획이다.',
+    publishedAt: '2026-10-20',
+    collectedAt: '2026-10-21',
+    category: 'Corporate',
+    signal: '생명과학 인수',
+    url: 'https://openai.com/index/openai-to-acquire-orchestra-bio',
+  },
+  {
+    id: 'ted-taylor-restaurant',
+    source: 'OpenAI',
+    kind: 'company',
+    title: '레스토랑 가맹점주, ChatGPT Work로 현금 대사 시간 94% 단축',
+    summary:
+      'OpenAI가 뉴멕시코에서 Schlotzsky’s·Cinnabon 매장 셋을 운영하는 가맹점주 Ted Taylor의 사례를 소개했다. ' +
+      'ChatGPT Work로 메뉴 가격 재조정, 인건비 분석, 근무표, 월간 현금 대사를 처리한다고 밝혔다.',
+    publishedAt: '2026-10-20',
+    collectedAt: '2026-10-21',
+    category: 'Product',
+    signal: '중소기업 도입',
+    url: 'https://openai.com/index/ted-taylor-restaurant',
+  },
+  {
+    id: 'low-resource-programming-languages',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'OpenAI, COBOL·Fortran 등 저자원 언어 코딩 평가 둘 공개',
+    summary:
+      'OpenAI가 20개 언어로 SQLite 호환 엔진을 처음부터 만드는 MultiLangBench와 COBOL 이전 평가를 공개했다. ' +
+      'GPT-6 Astra는 MultiLangBench 평균 통과율 87.4%, GPT-6.1 Sol은 COBOL 이전에서 낮은 추론 강도로 86.6%를 기록했다.',
+    publishedAt: '2026-10-19',
+    collectedAt: '2026-10-21',
+    category: 'Research',
+    signal: '코딩 벤치마크',
+    url: 'https://openai.com/index/low-resource-programming-languages',
+  },
   {
     id: 'itau-generative-ai',
     source: 'OpenAI',
