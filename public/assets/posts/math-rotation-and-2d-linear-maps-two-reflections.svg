@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="420" viewBox="0 0 880 420" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <defs>
+    <marker id="arr-g" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#55c555"/>
+    </marker>
+    <marker id="arr-p" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#7777cc"/>
+    </marker>
+    <marker id="arr-b" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#e8e8e8"/>
+    </marker>
+  </defs>
+  <rect x="0" y="0" width="880" height="420" rx="12" fill="#0a0a0a"/>
+  <text x="440" y="44" text-anchor="middle" font-size="22" font-weight="700" fill="#e8e8e8">반사 두 번은 회전 한 번</text>
+
+  <!-- 좌표축 -->
+  <line x1="70" y1="270" x2="470" y2="270" stroke="#888" stroke-width="1.5"/>
+  <line x1="260" y1="80" x2="260" y2="370" stroke="#888" stroke-width="1.5"/>
+  <!-- 거울 2: 30도 직선 -->
+  <line x1="104.1" y1="360" x2="450.5" y2="160" stroke="#7ec8e3" stroke-width="2.5"/>
+  <text x="74" y="256" font-size="13" fill="#888">거울 1: x축</text>
+  <text x="404" y="140" font-size="13" fill="#7ec8e3">거울 2: 30° 직선</text>
+
+  <!-- 사잇각 30도 -->
+  <path d="M 300 270 A 40 40 0 0 0 294.6 250" fill="none" stroke="#888" stroke-width="1.5"/>
+  <text x="308" y="262" font-size="13" fill="#888">30°</text>
+
+  <!-- 반사 ①: P → P′ -->
+  <line x1="404.9" y1="236" x2="404.9" y2="300" stroke="#7777cc" stroke-width="2" stroke-dasharray="4,4" marker-end="url(#arr-p)"/>
+  <!-- 반사 ②: P′ → P″ -->
+  <line x1="401.9" y1="303.6" x2="302.8" y2="132" stroke="#55c555" stroke-width="2" stroke-dasharray="4,4" marker-end="url(#arr-g)"/>
+
+  <!-- 60도 회전 호 -->
+  <path d="M 415 213.6 A 165 165 0 0 0 319.1 116" fill="none" stroke="#e8e8e8" stroke-width="2" marker-end="url(#arr-b)"/>
+  <text x="392" y="140" font-size="16" font-weight="600" fill="#e8e8e8" text-anchor="end">60°</text>
+
+  <!-- 점 -->
+  <circle cx="260" cy="270" r="4" fill="#888"/>
+  <circle cx="404.9" cy="231.2" r="5" fill="#e8e8e8"/>
+  <circle cx="404.9" cy="308.8" r="5" fill="#e8e8e8"/>
+  <circle cx="298.8" cy="125.1" r="5" fill="#e8e8e8"/>
+  <text x="416" y="226" font-size="13" fill="#e8e8e8">P (15°)</text>
+  <text x="416" y="314" font-size="13" fill="#e8e8e8">P′ (−15°)</text>
+  <text x="232" y="112" font-size="13" fill="#e8e8e8">P″ (75°)</text>
+
+  <!-- 오른쪽 설명 -->
+  <text x="540" y="110" font-size="16" font-weight="600" fill="#7777cc">① x축에 비춘다</text>
+  <text x="540" y="132" font-size="13" fill="#888">F(0): 15° 자리가 −15° 자리로</text>
+  <text x="540" y="176" font-size="16" font-weight="600" fill="#55c555">② 30° 직선에 비춘다</text>
+  <text x="540" y="198" font-size="13" fill="#888">F(30°): −15° 자리가 75° 자리로</text>
+  <text x="540" y="252" font-size="16" font-weight="600" fill="#e8e8e8">F(30°) F(0) = R(60°)</text>
+  <text x="540" y="274" font-size="13" fill="#888">사잇각 30°의 두 배만큼 돈다</text>
+  <text x="540" y="318" font-size="16" font-weight="600" fill="#e8e8e8">det = (−1) × (−1) = +1</text>
+  <text x="540" y="340" font-size="13" fill="#888">두 번 뒤집으면 방향이 돌아온다</text>
+</svg>
