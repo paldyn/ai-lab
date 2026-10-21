@@ -281,3 +281,5 @@ Cohere의 `c4ai-command-r7b`는 `unsloth`에 미러가 없었다(`RepositoryNotF
 읽어주셔서 감사합니다. 😊
 
 **지난 글:** [임베딩 API의 조항: 배치 상한·차원 옵션·토큰 상한 — 가장 조용한 것은 잘림이 아니라 묶음이었다](/articles/spec-embedding-api-limits)
+
+**다음 글:** [임베딩 API와 CPU 자체 호스팅의 손익분기 — 같은 e5-small을 배치 요금으로 사면 CPU는 쉬지 않고 돌려도 못 따라갔다](/articles/cost-embedding-selfhost-breakeven)
