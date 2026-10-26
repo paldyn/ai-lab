@@ -403,6 +403,35 @@ export const guideProducts: Product[] = [
     accent: 'var(--source-google-text)',
   },
   {
+    id: 'gemini-cli',
+    vendorId: 'google',
+    name: 'Gemini CLI',
+    role: '코딩',
+    surfaces: ['터미널'],
+    models: ['gemini-3-flash', 'gemini-2-5-pro', 'gemini-2-5-flash'],
+    /*
+      google-gemini/gemini-cli 의 docs/cli/model.md 옵션 표입니다.
+
+      **다섯을 적었다가 대질에서 둘이 깎였습니다.**
+      - `gemini-3.1-pro-preview` — 근거 문장이 「접근 권한이 있으면 보인다」라 계정마다
+        갈립니다. 접근을 선택으로 바꾼 자리입니다.
+      - `gemini-3-pro-preview` — CLI 문서엔 남아 있으나 **벤더 모델 페이지가 Shut
+        down으로 적습니다.** 문서가 아직 안 따라온 것이라 뺐습니다.
+
+      **표가 말하는 것은 Auto가 자동으로 고르는 대상이지 사용자가 누르는 항목이
+      아닙니다.** 대화상자에서 실제로 누르는 것은 Auto (Gemini 3)·Auto (Gemini 2.5)·
+      Manual 셋입니다 — 이 셋은 「이 CLI가 돌리는 모델」이지 「메뉴에 뜨는 이름」이
+      아닙니다. 그 구별이 중요해지면 다시 봅니다.
+    */
+    oneLine: '터미널에서 쓰는 오픈소스 코딩 에이전트.',
+    officialUrl: 'https://github.com/google-gemini/gemini-cli',
+    docsUrl: null,
+    docsLabel: null,
+    logo: 'assets/gemini-color.png',
+    monochrome: false,
+    accent: 'var(--source-google-text)',
+  },
+  {
     id: 'antigravity',
     vendorId: 'google',
     name: 'Google Antigravity',
@@ -462,35 +491,6 @@ export const guideProducts: Product[] = [
     // Gemini API의 managed agents를 다루는 제품이라 API 팁이 여기에 섭니다.
     apiTips: true,
     logo: 'assets/antigravity.png',
-    monochrome: false,
-    accent: 'var(--source-google-text)',
-  },
-  {
-    id: 'gemini-cli',
-    vendorId: 'google',
-    name: 'Gemini CLI',
-    role: '코딩',
-    surfaces: ['터미널'],
-    models: ['gemini-3-flash', 'gemini-2-5-pro', 'gemini-2-5-flash'],
-    /*
-      google-gemini/gemini-cli 의 docs/cli/model.md 옵션 표입니다.
-
-      **다섯을 적었다가 대질에서 둘이 깎였습니다.**
-      - `gemini-3.1-pro-preview` — 근거 문장이 「접근 권한이 있으면 보인다」라 계정마다
-        갈립니다. 접근을 선택으로 바꾼 자리입니다.
-      - `gemini-3-pro-preview` — CLI 문서엔 남아 있으나 **벤더 모델 페이지가 Shut
-        down으로 적습니다.** 문서가 아직 안 따라온 것이라 뺐습니다.
-
-      **표가 말하는 것은 Auto가 자동으로 고르는 대상이지 사용자가 누르는 항목이
-      아닙니다.** 대화상자에서 실제로 누르는 것은 Auto (Gemini 3)·Auto (Gemini 2.5)·
-      Manual 셋입니다 — 이 셋은 「이 CLI가 돌리는 모델」이지 「메뉴에 뜨는 이름」이
-      아닙니다. 그 구별이 중요해지면 다시 봅니다.
-    */
-    oneLine: '터미널에서 쓰는 오픈소스 코딩 에이전트.',
-    officialUrl: 'https://github.com/google-gemini/gemini-cli',
-    docsUrl: null,
-    docsLabel: null,
-    logo: 'assets/gemini-color.png',
     monochrome: false,
     accent: 'var(--source-google-text)',
   },
