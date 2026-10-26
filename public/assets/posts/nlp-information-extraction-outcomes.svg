@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="500" viewBox="0 0 880 500" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <rect x="0" y="0" width="880" height="500" rx="12" fill="#0a0a0a"/>
+
+  <text x="60" y="44" font-size="22" font-weight="700" fill="#e8e8e8">칸 하나의 결과를 여섯으로 가른다</text>
+  <text x="60" y="72" font-size="13" fill="#888">예: 수주사 칸 · 정답이 있으면 「㈜누리테크」</text>
+
+  <text x="220" y="104" font-size="13" font-weight="600" fill="#888">모델이 낸 값</text>
+  <text x="480" y="104" font-size="13" font-weight="600" fill="#888">고칠 자리</text>
+
+  <text x="60" y="134" font-size="16" font-weight="600" fill="#e8e8e8">정답에 값이 있는 칸</text>
+
+  <rect x="60" y="148" width="140" height="40" rx="6" fill="#111318" stroke="#55c555" stroke-width="1.5"/>
+  <text x="130" y="173" font-size="13" font-weight="600" fill="#55c555" text-anchor="middle">맞음</text>
+  <text x="220" y="173" font-size="13" fill="#e8e8e8">누리테크 주식회사</text>
+  <text x="480" y="173" font-size="13" fill="#9aa4b8">없음 — 표준형이 같다</text>
+
+  <rect x="60" y="198" width="140" height="40" rx="6" fill="#111318" stroke="#7ec8e3" stroke-width="1.5"/>
+  <text x="130" y="223" font-size="13" font-weight="600" fill="#7ec8e3" text-anchor="middle">부분 일치</text>
+  <text x="220" y="223" font-size="13" fill="#e8e8e8">누리테크은</text>
+  <text x="480" y="223" font-size="13" fill="#9aa4b8">정규화 — 끝 조사 떼기</text>
+
+  <rect x="60" y="248" width="140" height="40" rx="6" fill="#111318" stroke="#e05555" stroke-width="1.5"/>
+  <text x="130" y="273" font-size="13" font-weight="600" fill="#e05555" text-anchor="middle">틀림</text>
+  <text x="220" y="273" font-size="13" fill="#e8e8e8">팔딘㈜</text>
+  <text x="480" y="273" font-size="13" fill="#9aa4b8">프롬프트 · 구간 선택</text>
+
+  <rect x="60" y="298" width="140" height="40" rx="6" fill="#111318" stroke="#7777cc" stroke-width="1.5"/>
+  <text x="130" y="323" font-size="13" font-weight="600" fill="#7777cc" text-anchor="middle">놓침</text>
+  <text x="220" y="323" font-size="13" fill="#e8e8e8">null</text>
+  <text x="480" y="323" font-size="13" fill="#9aa4b8">구간 선택 · 문서 파싱</text>
+
+  <text x="60" y="374" font-size="16" font-weight="600" fill="#e8e8e8">정답이 빈 칸</text>
+
+  <rect x="60" y="388" width="140" height="40" rx="6" fill="#111318" stroke="#55c555" stroke-width="1.5"/>
+  <text x="130" y="413" font-size="13" font-weight="600" fill="#55c555" text-anchor="middle">비움</text>
+  <text x="220" y="413" font-size="13" fill="#e8e8e8">null</text>
+  <text x="480" y="413" font-size="13" fill="#9aa4b8">없음</text>
+
+  <rect x="60" y="438" width="140" height="40" rx="6" fill="#111318" stroke="#e05555" stroke-width="1.5"/>
+  <text x="130" y="463" font-size="13" font-weight="600" fill="#e05555" text-anchor="middle">지어냄</text>
+  <text x="220" y="463" font-size="13" fill="#e8e8e8">㈜한빛시스템</text>
+  <text x="480" y="463" font-size="13" fill="#9aa4b8">「없으면 null」 지시 · 인용문 검사</text>
+</svg>
