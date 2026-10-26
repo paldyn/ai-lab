@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" viewBox="0 0 880 470" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+<rect x="0" y="0" width="880" height="470" rx="12" fill="#0a0a0a"/>
+<text x="440" y="44" text-anchor="middle" font-size="22" font-weight="700" fill="#e8e8e8">같은 공분산을 펴는 세 가지 W</text>
+<text x="440" y="72" text-anchor="middle" font-size="13" fill="#888">Σ = [[4, 2], [2, 2]] · 빨간 점 (2, 1) · 파란 점 (0, 1)</text>
+<text x="140" y="118" text-anchor="middle" font-size="16" font-weight="600" fill="#e8e8e8">원본</text>
+<line x1="60" y1="230" x2="220" y2="230" stroke="#333" stroke-width="1"/>
+<line x1="140" y1="150" x2="140" y2="310" stroke="#333" stroke-width="1"/>
+<ellipse cx="140" cy="230" rx="75.5" ry="28.8" transform="rotate(-31.7 140 230)" fill="#7777cc" fill-opacity="0.12" stroke="#7777cc" stroke-width="1.5"/>
+<line x1="140" y1="230" x2="206.0" y2="197.0" stroke="#e05555" stroke-width="2"/>
+<line x1="140" y1="230" x2="140.0" y2="197.0" stroke="#7ec8e3" stroke-width="2"/>
+<circle cx="206.0" cy="197.0" r="5" fill="#e05555"/>
+<circle cx="140.0" cy="197.0" r="5" fill="#7ec8e3"/>
+<text x="140" y="340" text-anchor="middle" font-size="13" fill="#e8e8e8">두 점 사이 63.4°</text>
+<text x="140" y="364" text-anchor="middle" font-size="13" fill="#888">원점에서 본 각</text>
+<text x="340" y="118" text-anchor="middle" font-size="16" font-weight="600" fill="#e8e8e8">ZCA</text>
+<line x1="260" y1="230" x2="420" y2="230" stroke="#333" stroke-width="1"/>
+<line x1="340" y1="150" x2="340" y2="310" stroke="#333" stroke-width="1"/>
+<circle cx="340" cy="230" r="62.0" fill="#7777cc" fill-opacity="0.12" stroke="#7777cc" stroke-width="1.5"/>
+<line x1="340" y1="230" x2="398.8" y2="210.4" stroke="#e05555" stroke-width="2"/>
+<line x1="340" y1="230" x2="320.4" y2="171.2" stroke="#7ec8e3" stroke-width="2"/>
+<circle cx="398.8" cy="210.4" r="5" fill="#e05555"/>
+<circle cx="320.4" cy="171.2" r="5" fill="#7ec8e3"/>
+<text x="340" y="340" text-anchor="middle" font-size="13" fill="#e8e8e8">두 점 사이 90.0°</text>
+<text x="340" y="364" text-anchor="middle" font-size="13" fill="#888">W = [0.63, −0.32]</text>
+<text x="340" y="384" text-anchor="middle" font-size="13" fill="#888">      [−0.32, 0.95]</text>
+<text x="540" y="118" text-anchor="middle" font-size="16" font-weight="600" fill="#e8e8e8">PCA</text>
+<line x1="460" y1="230" x2="620" y2="230" stroke="#333" stroke-width="1"/>
+<line x1="540" y1="150" x2="540" y2="310" stroke="#333" stroke-width="1"/>
+<circle cx="540" cy="230" r="62.0" fill="#7777cc" fill-opacity="0.12" stroke="#7777cc" stroke-width="1.5"/>
+<line x1="540" y1="230" x2="600.3" y2="244.2" stroke="#e05555" stroke-width="2"/>
+<line x1="540" y1="230" x2="554.2" y2="169.7" stroke="#7ec8e3" stroke-width="2"/>
+<circle cx="600.3" cy="244.2" r="5" fill="#e05555"/>
+<circle cx="554.2" cy="169.7" r="5" fill="#7ec8e3"/>
+<text x="540" y="340" text-anchor="middle" font-size="13" fill="#e8e8e8">두 점 사이 90.0°</text>
+<text x="540" y="364" text-anchor="middle" font-size="13" fill="#888">W = [0.37, 0.23]</text>
+<text x="540" y="384" text-anchor="middle" font-size="13" fill="#888">      [−0.60, 0.97]</text>
+<text x="740" y="118" text-anchor="middle" font-size="16" font-weight="600" fill="#e8e8e8">콜레스키</text>
+<line x1="660" y1="230" x2="820" y2="230" stroke="#333" stroke-width="1"/>
+<line x1="740" y1="150" x2="740" y2="310" stroke="#333" stroke-width="1"/>
+<circle cx="740" cy="230" r="62.0" fill="#7777cc" fill-opacity="0.12" stroke="#7777cc" stroke-width="1.5"/>
+<line x1="740" y1="230" x2="802.0" y2="230.0" stroke="#e05555" stroke-width="2"/>
+<line x1="740" y1="230" x2="740.0" y2="168.0" stroke="#7ec8e3" stroke-width="2"/>
+<circle cx="802.0" cy="230.0" r="5" fill="#e05555"/>
+<circle cx="740.0" cy="168.0" r="5" fill="#7ec8e3"/>
+<text x="740" y="340" text-anchor="middle" font-size="13" fill="#e8e8e8">두 점 사이 90.0°</text>
+<text x="740" y="364" text-anchor="middle" font-size="13" fill="#888">W = [0.50, 0.00]</text>
+<text x="740" y="384" text-anchor="middle" font-size="13" fill="#888">      [−0.50, 1.00]</text>
+<rect x="60" y="408" width="760" height="40" rx="8" fill="#111" stroke="#2a2a2a"/>
+<text x="440" y="433" text-anchor="middle" font-size="13" fill="#55c555">세 W 모두 공분산을 I로 만들고 두 점 사이 각도 90°로 같다 — 다른 것은 전체를 돌린 정도뿐</text>
+</svg>

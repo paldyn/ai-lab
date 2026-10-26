@@ -1,0 +1,104 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" viewBox="0 0 880 500" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+<rect x="0" y="0" width="880" height="500" rx="12" fill="#0a0a0a"/>
+<text x="440" y="44" text-anchor="middle" font-size="22" font-weight="700" fill="#e8e8e8">문턱을 무작위 쌍의 눈금으로 읽기</text>
+<text x="440" y="72" text-anchor="middle" font-size="13" fill="#888">회색: 무작위 쌍의 코사인 · 초록: 같은 주제 쌍의 코사인 · 각각 합이 1인 비율</text>
+<text x="240.0" y="112" text-anchor="middle" font-size="16" font-weight="600" fill="#e8e8e8">원본 · 평균 0.739 · 표준편차 0.169</text>
+<rect x="133.0" y="329.7" width="10" height="0.3" fill="#888" fill-opacity="0.75"/>
+<rect x="145.0" y="329.7" width="10" height="0.3" fill="#888" fill-opacity="0.75"/>
+<rect x="157.0" y="329.7" width="10" height="0.3" fill="#888" fill-opacity="0.75"/>
+<rect x="169.0" y="329.7" width="10" height="0.3" fill="#888" fill-opacity="0.75"/>
+<rect x="181.0" y="329.4" width="10" height="0.6" fill="#888" fill-opacity="0.75"/>
+<rect x="193.0" y="329.4" width="10" height="0.6" fill="#888" fill-opacity="0.75"/>
+<rect x="205.0" y="329.1" width="10" height="0.9" fill="#888" fill-opacity="0.75"/>
+<rect x="217.0" y="328.8" width="10" height="1.2" fill="#888" fill-opacity="0.75"/>
+<rect x="229.0" y="328.2" width="10" height="1.8" fill="#888" fill-opacity="0.75"/>
+<rect x="241.0" y="327.9" width="10" height="2.1" fill="#888" fill-opacity="0.75"/>
+<rect x="253.0" y="327.3" width="10" height="2.7" fill="#888" fill-opacity="0.75"/>
+<rect x="265.0" y="326.1" width="10" height="3.9" fill="#888" fill-opacity="0.75"/>
+<rect x="277.0" y="325.2" width="10" height="4.8" fill="#888" fill-opacity="0.75"/>
+<rect x="289.0" y="323.4" width="10" height="6.6" fill="#888" fill-opacity="0.75"/>
+<rect x="289.0" y="329.7" width="10" height="0.3" fill="#55c555" fill-opacity="0.55"/>
+<rect x="301.0" y="321.3" width="10" height="8.7" fill="#888" fill-opacity="0.75"/>
+<rect x="301.0" y="329.7" width="10" height="0.3" fill="#55c555" fill-opacity="0.55"/>
+<rect x="313.0" y="318.0" width="10" height="12.0" fill="#888" fill-opacity="0.75"/>
+<rect x="313.0" y="329.7" width="10" height="0.3" fill="#55c555" fill-opacity="0.55"/>
+<rect x="325.0" y="313.5" width="10" height="16.5" fill="#888" fill-opacity="0.75"/>
+<rect x="325.0" y="328.8" width="10" height="1.2" fill="#55c555" fill-opacity="0.55"/>
+<rect x="337.0" y="307.5" width="10" height="22.5" fill="#888" fill-opacity="0.75"/>
+<rect x="337.0" y="328.5" width="10" height="1.5" fill="#55c555" fill-opacity="0.55"/>
+<rect x="349.0" y="298.5" width="10" height="31.5" fill="#888" fill-opacity="0.75"/>
+<rect x="349.0" y="327.3" width="10" height="2.7" fill="#55c555" fill-opacity="0.55"/>
+<rect x="361.0" y="285.9" width="10" height="44.1" fill="#888" fill-opacity="0.75"/>
+<rect x="361.0" y="324.3" width="10" height="5.7" fill="#55c555" fill-opacity="0.55"/>
+<rect x="373.0" y="272.1" width="10" height="57.9" fill="#888" fill-opacity="0.75"/>
+<rect x="373.0" y="318.0" width="10" height="12.0" fill="#55c555" fill-opacity="0.55"/>
+<rect x="385.0" y="272.4" width="10" height="57.6" fill="#888" fill-opacity="0.75"/>
+<rect x="385.0" y="300.9" width="10" height="29.1" fill="#55c555" fill-opacity="0.55"/>
+<rect x="397.0" y="308.4" width="10" height="21.6" fill="#888" fill-opacity="0.75"/>
+<rect x="397.0" y="239.4" width="10" height="90.6" fill="#55c555" fill-opacity="0.55"/>
+<rect x="409.0" y="329.1" width="10" height="0.9" fill="#888" fill-opacity="0.75"/>
+<rect x="409.0" y="173.4" width="10" height="156.6" fill="#55c555" fill-opacity="0.55"/>
+<line x1="60" y1="330" x2="420" y2="330" stroke="#555" stroke-width="1"/>
+<line x1="60.0" y1="330" x2="60.0" y2="336" stroke="#555"/>
+<text x="60.0" y="354" text-anchor="middle" font-size="13" fill="#888">−0.5</text>
+<line x1="180.0" y1="330" x2="180.0" y2="336" stroke="#555"/>
+<text x="180.0" y="354" text-anchor="middle" font-size="13" fill="#888">0</text>
+<line x1="300.0" y1="330" x2="300.0" y2="336" stroke="#555"/>
+<text x="300.0" y="354" text-anchor="middle" font-size="13" fill="#888">0.5</text>
+<line x1="420.0" y1="330" x2="420.0" y2="336" stroke="#555"/>
+<text x="420.0" y="354" text-anchor="middle" font-size="13" fill="#888">1</text>
+<line x1="357.4" y1="330" x2="357.4" y2="150" stroke="#7ec8e3" stroke-width="1.5" stroke-dasharray="4,4"/>
+<line x1="380.2" y1="330" x2="380.2" y2="230" stroke="#e05555" stroke-width="2"/>
+<text x="374.2" y="374" text-anchor="end" font-size="13" fill="#e05555">0.834 = z 0.56</text>
+<text x="357.4" y="142" text-anchor="middle" font-size="13" fill="#7ec8e3">평균 +0.739</text>
+<text x="640.0" y="112" text-anchor="middle" font-size="16" font-weight="600" fill="#e8e8e8">평균 제거 + whitening · 표준편차 0.124</text>
+<rect x="485.0" y="329.7" width="10" height="0.3" fill="#888" fill-opacity="0.75"/>
+<rect x="497.0" y="329.1" width="10" height="0.9" fill="#888" fill-opacity="0.75"/>
+<rect x="509.0" y="326.7" width="10" height="3.3" fill="#888" fill-opacity="0.75"/>
+<rect x="521.0" y="321.9" width="10" height="8.1" fill="#888" fill-opacity="0.75"/>
+<rect x="533.0" y="312.6" width="10" height="17.4" fill="#888" fill-opacity="0.75"/>
+<rect x="545.0" y="300.0" width="10" height="30.0" fill="#888" fill-opacity="0.75"/>
+<rect x="557.0" y="287.1" width="10" height="42.9" fill="#888" fill-opacity="0.75"/>
+<rect x="569.0" y="279.3" width="10" height="50.7" fill="#888" fill-opacity="0.75"/>
+<rect x="581.0" y="280.5" width="10" height="49.5" fill="#888" fill-opacity="0.75"/>
+<rect x="593.0" y="288.9" width="10" height="41.1" fill="#888" fill-opacity="0.75"/>
+<rect x="605.0" y="302.1" width="10" height="27.9" fill="#888" fill-opacity="0.75"/>
+<rect x="617.0" y="314.4" width="10" height="15.6" fill="#888" fill-opacity="0.75"/>
+<rect x="629.0" y="322.8" width="10" height="7.2" fill="#888" fill-opacity="0.75"/>
+<rect x="641.0" y="327.3" width="10" height="2.7" fill="#888" fill-opacity="0.75"/>
+<rect x="653.0" y="329.1" width="10" height="0.9" fill="#888" fill-opacity="0.75"/>
+<rect x="665.0" y="329.7" width="10" height="0.3" fill="#888" fill-opacity="0.75"/>
+<rect x="689.0" y="329.7" width="10" height="0.3" fill="#55c555" fill-opacity="0.55"/>
+<rect x="701.0" y="327.3" width="10" height="2.7" fill="#55c555" fill-opacity="0.55"/>
+<rect x="713.0" y="319.8" width="10" height="10.2" fill="#55c555" fill-opacity="0.55"/>
+<rect x="725.0" y="299.1" width="10" height="30.9" fill="#55c555" fill-opacity="0.55"/>
+<rect x="737.0" y="329.7" width="10" height="0.3" fill="#888" fill-opacity="0.75"/>
+<rect x="737.0" y="262.5" width="10" height="67.5" fill="#55c555" fill-opacity="0.55"/>
+<rect x="749.0" y="329.4" width="10" height="0.6" fill="#888" fill-opacity="0.75"/>
+<rect x="749.0" y="231.6" width="10" height="98.4" fill="#55c555" fill-opacity="0.55"/>
+<rect x="761.0" y="329.7" width="10" height="0.3" fill="#888" fill-opacity="0.75"/>
+<rect x="761.0" y="259.8" width="10" height="70.2" fill="#55c555" fill-opacity="0.55"/>
+<rect x="773.0" y="311.1" width="10" height="18.9" fill="#55c555" fill-opacity="0.55"/>
+<rect x="785.0" y="329.1" width="10" height="0.9" fill="#55c555" fill-opacity="0.55"/>
+<line x1="460" y1="330" x2="820" y2="330" stroke="#555" stroke-width="1"/>
+<line x1="460.0" y1="330" x2="460.0" y2="336" stroke="#555"/>
+<text x="460.0" y="354" text-anchor="middle" font-size="13" fill="#888">−0.5</text>
+<line x1="580.0" y1="330" x2="580.0" y2="336" stroke="#555"/>
+<text x="580.0" y="354" text-anchor="middle" font-size="13" fill="#888">0</text>
+<line x1="700.0" y1="330" x2="700.0" y2="336" stroke="#555"/>
+<text x="700.0" y="354" text-anchor="middle" font-size="13" fill="#888">0.5</text>
+<line x1="820.0" y1="330" x2="820.0" y2="336" stroke="#555"/>
+<text x="820.0" y="354" text-anchor="middle" font-size="13" fill="#888">1</text>
+<line x1="579.8" y1="330" x2="579.8" y2="150" stroke="#7ec8e3" stroke-width="1.5" stroke-dasharray="4,4"/>
+<line x1="669.0" y1="330" x2="669.0" y2="188" stroke="#e05555" stroke-width="2"/>
+<text x="675.0" y="200" text-anchor="start" font-size="13" fill="#e05555">z 3 = 0.371</text>
+<line x1="609.8" y1="330" x2="609.8" y2="228" stroke="#e8e8e8" stroke-width="2"/>
+<text x="615.8" y="240" text-anchor="start" font-size="13" fill="#e8e8e8">z 1</text>
+<text x="579.8" y="142" text-anchor="middle" font-size="13" fill="#7ec8e3">평균 -0.001</text>
+<rect x="60" y="388" width="360" height="84" rx="8" fill="#111" stroke="#2a2a2a"/>
+<text x="240" y="418" text-anchor="middle" font-size="13" fill="#e8e8e8">같은 주제 쌍의 평균이 z 약 1.1</text>
+<text x="240" y="442" text-anchor="middle" font-size="13" fill="#888">z 3은 코사인 1.25라 축 밖이다</text>
+<rect x="460" y="388" width="360" height="84" rx="8" fill="#111" stroke="#2a2a2a"/>
+<text x="640" y="418" text-anchor="middle" font-size="13" fill="#e8e8e8">같은 주제 쌍의 평균이 z 약 5.8</text>
+<text x="640" y="442" text-anchor="middle" font-size="13" fill="#888">z 3 위: 무작위 쌍 0.52% · 같은 주제 쌍 100%</text>
+</svg>

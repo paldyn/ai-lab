@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="460" viewBox="0 0 880 460">
+<rect width="880" height="460" rx="12" fill="#0a0a0a"/>
+<defs><marker id="n1" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto"><path d="M 0 0 L 13 7 L 0 14 z" fill="#7777cc"/></marker></defs>
+<text x="440" y="42" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="22" font-weight="700" fill="#e8e8e8">최댓값으로 나눠 두면 제곱이 넘치지 않는다</text>
+<text x="440" y="68" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">fp16은 65,504까지 담는다 — 300²과 400²은 이미 그 한계를 넘는다</text>
+<text x="220" y="112" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#e05555">그대로 잰다</text>
+<rect x="70" y="140" width="300" height="66" rx="8" fill="#111820" stroke="#3a4a6e" stroke-width="1.5"/>
+<text x="220" y="167" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">성분 g</text>
+<text x="220" y="189" text-anchor="middle" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" xml:space="preserve" fill="#ffffff">300   400</text>
+<line x1="220" y1="210" x2="220" y2="230" stroke="#7777cc" stroke-width="2" marker-end="url(#n1)"/>
+<rect x="70" y="234" width="300" height="66" rx="8" fill="#111820" stroke="#3a4a6e" stroke-width="1.5"/>
+<text x="220" y="261" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">제곱 g²</text>
+<text x="220" y="283" text-anchor="middle" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" xml:space="preserve" fill="#ffffff">inf   inf</text>
+<line x1="220" y1="304" x2="220" y2="324" stroke="#7777cc" stroke-width="2" marker-end="url(#n1)"/>
+<rect x="70" y="328" width="300" height="66" rx="8" fill="#111820" stroke="#e05555" stroke-width="1.5"/>
+<text x="220" y="355" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">√(제곱합)</text>
+<text x="220" y="377" text-anchor="middle" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" xml:space="preserve" fill="#e05555">inf</text>
+<text x="660" y="112" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#55c555">최댓값 400으로 나눠 잰다</text>
+<rect x="510" y="140" width="300" height="66" rx="8" fill="#111820" stroke="#3a4a6e" stroke-width="1.5"/>
+<text x="660" y="167" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">g ÷ 400</text>
+<text x="660" y="189" text-anchor="middle" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" xml:space="preserve" fill="#ffffff">0.75   1</text>
+<line x1="660" y1="210" x2="660" y2="230" stroke="#7777cc" stroke-width="2" marker-end="url(#n1)"/>
+<rect x="510" y="234" width="300" height="66" rx="8" fill="#111820" stroke="#3a4a6e" stroke-width="1.5"/>
+<text x="660" y="261" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">제곱합</text>
+<text x="660" y="283" text-anchor="middle" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" xml:space="preserve" fill="#ffffff">0.5625 + 1 = 1.5625</text>
+<line x1="660" y1="304" x2="660" y2="324" stroke="#7777cc" stroke-width="2" marker-end="url(#n1)"/>
+<rect x="510" y="328" width="300" height="66" rx="8" fill="#111820" stroke="#55c555" stroke-width="1.5"/>
+<text x="660" y="355" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">√(제곱합) × 400</text>
+<text x="660" y="377" text-anchor="middle" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" xml:space="preserve" fill="#55c555">1.25 × 400 = 500</text>
+<text x="440" y="438" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">나눴다가 다시 곱하므로 값은 그대로이고, 나눈 성분은 전부 1 이하라 제곱해도 넘칠 수 없다</text>
+</svg>

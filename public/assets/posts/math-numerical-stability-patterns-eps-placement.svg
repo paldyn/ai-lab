@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="440" viewBox="0 0 880 440">
+<rect width="880" height="440" rx="12" fill="#0a0a0a"/>
+<defs></defs>
+<text x="440" y="42" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="22" font-weight="700" fill="#e8e8e8">같은 ε이라도 제곱근 안과 밖은 다른 값이다</text>
+<text x="440" y="68" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">분모가 내려갈 수 있는 바닥이 나눗셈 이득의 천장을 정한다</text>
+<text x="220" y="108" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#7ec8e3">정규화 — 제곱근 안</text>
+<rect x="50" y="126" width="340" height="244" rx="8" fill="#111820" stroke="#7ec8e3" stroke-width="1.5"/>
+<text x="70" y="161" text-anchor="start" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">식</text>
+<text x="370" y="161" text-anchor="end" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" xml:space="preserve" fill="#ffffff">(x − μ) / √(σ² + ε)</text>
+<line x1="70" y1="184" x2="370" y2="184" stroke="#333" stroke-width="1"/>
+<text x="70" y="219" text-anchor="start" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">ε (LayerNorm 기본값)</text>
+<text x="370" y="219" text-anchor="end" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" xml:space="preserve" fill="#ffffff">1e-5</text>
+<line x1="70" y1="242" x2="370" y2="242" stroke="#333" stroke-width="1"/>
+<text x="70" y="277" text-anchor="start" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">분모의 하한</text>
+<text x="370" y="277" text-anchor="end" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" xml:space="preserve" fill="#ffffff">√ε ≈ 3.16e-3</text>
+<line x1="70" y1="300" x2="370" y2="300" stroke="#333" stroke-width="1"/>
+<text x="70" y="335" text-anchor="start" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">이득의 상한</text>
+<text x="370" y="335" text-anchor="end" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" xml:space="preserve" fill="#ffffff">316배</text>
+<text x="660" y="108" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#7777cc">Adam — 제곱근 밖</text>
+<rect x="490" y="126" width="340" height="244" rx="8" fill="#111820" stroke="#7777cc" stroke-width="1.5"/>
+<text x="510" y="161" text-anchor="start" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">식</text>
+<text x="810" y="161" text-anchor="end" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" xml:space="preserve" fill="#ffffff">m / (√v + ε)</text>
+<line x1="510" y1="184" x2="810" y2="184" stroke="#333" stroke-width="1"/>
+<text x="510" y="219" text-anchor="start" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">ε (Adam 기본값)</text>
+<text x="810" y="219" text-anchor="end" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" xml:space="preserve" fill="#ffffff">1e-8</text>
+<line x1="510" y1="242" x2="810" y2="242" stroke="#333" stroke-width="1"/>
+<text x="510" y="277" text-anchor="start" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">분모의 하한</text>
+<text x="810" y="277" text-anchor="end" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" xml:space="preserve" fill="#ffffff">ε = 1e-8</text>
+<line x1="510" y1="300" x2="810" y2="300" stroke="#333" stroke-width="1"/>
+<text x="510" y="335" text-anchor="start" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">이득의 상한</text>
+<text x="810" y="335" text-anchor="end" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" xml:space="preserve" fill="#ffffff">1e8배</text>
+<text x="440" y="404" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e8e8e8">앞은 분산의 하한, 뒤는 표준편차 크기의 하한 — 값을 옮길 때는 식 안의 자리도 함께 본다</text>
+</svg>

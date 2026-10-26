@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="450" viewBox="0 0 880 450">
+<rect width="880" height="450" rx="12" fill="#0a0a0a"/>
+<defs><marker id="s1" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto"><path d="M 0 0 L 13 7 L 0 14 z" fill="#7ec8e3"/></marker><marker id="s2" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto"><path d="M 0 0 L 13 7 L 0 14 z" fill="#e05555"/></marker><marker id="s3" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto"><path d="M 0 0 L 13 7 L 0 14 z" fill="#55c555"/></marker></defs>
+<text x="440" y="42" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="22" font-weight="700" fill="#e8e8e8">확률적 반올림은 기댓값을 지킨다</text>
+<text x="440" y="68" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">bf16 눈금 0.99609375와 1 사이의 0.9999 — 1에서 간격(2⁻⁸)의 2.56%만큼 떨어져 있다</text>
+<text x="60" y="116" text-anchor="start" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#e8e8e8">가장 가까운 눈금</text>
+<line x1="140" y1="176" x2="740" y2="176" stroke="#888" stroke-width="1.5"/>
+<line x1="140" y1="168" x2="140" y2="184" stroke="#888" stroke-width="1.5"/>
+<line x1="740" y1="168" x2="740" y2="184" stroke="#888" stroke-width="1.5"/>
+<text x="140" y="204" text-anchor="middle" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" xml:space="preserve" fill="#e8e8e8">0.99609375</text>
+<text x="740" y="204" text-anchor="middle" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" xml:space="preserve" fill="#e8e8e8">1</text>
+<circle cx="724.6" cy="176" r="5" fill="#e8e8e8"/>
+<path d="M 724.6 170 Q 730.6 116 740 167" fill="none" stroke="#e05555" stroke-width="2" marker-end="url(#s2)"/>
+<text x="760" y="142" text-anchor="start" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e05555">100%</text>
+<text x="710.64" y="156" text-anchor="end" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" xml:space="preserve" fill="#e8e8e8">0.9999</text>
+<text x="440" y="232" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">매번 1로 돌아간다 — 1,000번 빼도 1.0에서 안 움직인다</text>
+<text x="60" y="282" text-anchor="start" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#e8e8e8">확률적 반올림</text>
+<line x1="140" y1="350" x2="740" y2="350" stroke="#888" stroke-width="1.5"/>
+<line x1="140" y1="342" x2="140" y2="358" stroke="#888" stroke-width="1.5"/>
+<line x1="740" y1="342" x2="740" y2="358" stroke="#888" stroke-width="1.5"/>
+<text x="140" y="378" text-anchor="middle" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" xml:space="preserve" fill="#e8e8e8">0.99609375</text>
+<text x="740" y="378" text-anchor="middle" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" xml:space="preserve" fill="#e8e8e8">1</text>
+<circle cx="724.6" cy="350" r="5" fill="#e8e8e8"/>
+<path d="M 724.6 344 Q 432 240 142 341" fill="none" stroke="#7ec8e3" stroke-width="2" stroke-dasharray="5,3" marker-end="url(#s1)"/>
+<text x="432" y="278" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#7ec8e3">2.56%</text>
+<path d="M 724.6 344 Q 730.6 290 740 341" fill="none" stroke="#55c555" stroke-width="2" marker-end="url(#s3)"/>
+<text x="760" y="316" text-anchor="start" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#55c555">97.44%</text>
+<text x="440" y="406" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">기댓값 0.0256 × 0.99609375 + 0.9744 × 1 = 0.9999 — 갱신이 평균으로 살아남는다</text>
+</svg>

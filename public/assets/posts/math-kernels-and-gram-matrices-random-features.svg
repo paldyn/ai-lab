@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="460" viewBox="0 0 880 460">
+<rect width="880" height="460" rx="12" fill="#0a0a0a"/>
+<text x="440" y="42" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="22" font-weight="700" fill="#e8e8e8">n × n 대신 n × D를 들고 다닌다</text>
+<rect x="80" y="90" width="220" height="220" rx="4" fill="#e05555" fill-opacity="0.14" stroke="#e05555" stroke-width="1.5"/>
+<text x="190" y="196" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="22" font-weight="700" fill="#e8e8e8">K</text>
+<text x="190" y="220" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">n × n</text>
+<text x="370" y="212" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="28" fill="#e8e8e8">≈</text>
+<rect x="420" y="90" width="40" height="220" rx="4" fill="#7ec8e3" fill-opacity="0.18" stroke="#7ec8e3" stroke-width="1.5"/>
+<text x="440" y="206" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="18" font-weight="700" fill="#e8e8e8">F</text>
+<text x="440" y="334" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">n × D</text>
+<text x="490" y="116" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="20" fill="#e8e8e8">×</text>
+<rect x="520" y="90" width="220" height="40" rx="4" fill="#7ec8e3" fill-opacity="0.18" stroke="#7ec8e3" stroke-width="1.5"/>
+<text x="630" y="116" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="18" font-weight="700" fill="#e8e8e8">Fᵀ</text>
+<text x="630" y="154" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">D × n</text>
+<text x="190" y="378" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#e05555">n = 10⁶ → 10¹² 칸</text>
+<text x="190" y="402" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">× 8바이트 = 8TB</text>
+<text x="600" y="378" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#7ec8e3">D = 1000 → 10⁹ 칸</text>
+<text x="600" y="402" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">× 8바이트 = 8GB</text>
+<text x="600" y="240" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">300점 · γ = 0.3</text>
+<text x="600" y="264" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e8e8e8">D = 1000: 상대 오차 14.8%</text>
+<text x="600" y="288" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e8e8e8">니스트룀 m = 100: 9.0%</text>
+<text x="440" y="438" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#9aa4b8">니스트룀의 C (n × m)도 같은 모양이다 — 표본 수의 제곱이 아니라 표본 수에 비례해 자란다</text>
+</svg>
