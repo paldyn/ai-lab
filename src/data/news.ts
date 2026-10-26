@@ -172,6 +172,34 @@ export const globalNewsUpdatedAt = '2026-10-20';
  */
 const entries: NewsItem[] = [
   {
+    id: 'claude-platform-october-20-2026-2',
+    source: 'Anthropic',
+    kind: 'company',
+    title: 'Claude API, 최종 고객별 사용자 프로필과 조직 웹훅 도입',
+    summary:
+      'Claude API에 요청마다 최종 고객을 밝히는 사용자 프로필이 생겨 안전 조치를 조직 전체가 아니라 고객 하나에 걸 수 있게 됐다. ' +
+      '같은 날 조직 웹훅 베타와 Console의 web fetch 차단·도메인 제한 설정이 나왔다.',
+    publishedAt: '2026-10-20',
+    collectedAt: '2026-10-27',
+    category: 'Product',
+    signal: '플랫폼 변경',
+    url: 'https://platform.claude.com/docs/en/release-notes/overview#october-20-2026-2',
+  },
+  {
+    id: 'claude-platform-october-20-2026',
+    source: 'Anthropic',
+    kind: 'company',
+    title: 'Claude Enterprise용 Claude Tag API 베타 공개',
+    summary:
+      'Claude Enterprise 조직이 베타 헤더를 붙여 Claude Tag API를 쓸 수 있게 됐다. ' +
+      'Slack 채널·워크스페이스의 Claude Tag 설정을 읽고 바꾸며 Access bundle을 붙이는 엔드포인트다.',
+    publishedAt: '2026-10-20',
+    collectedAt: '2026-10-27',
+    category: 'Product',
+    signal: '플랫폼 변경',
+    url: 'https://platform.claude.com/docs/en/release-notes/overview#october-20-2026',
+  },
+  {
     id: 'openai-to-acquire-orchestra-bio',
     source: 'OpenAI',
     kind: 'company',

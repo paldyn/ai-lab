@@ -2,6 +2,33 @@ import type { NewsDetail } from '../news';
 
 /** 2026-10 발표의 모달 본문. 목록은 news.ts에 있습니다. */
 export const details: Record<string, NewsDetail> = {
+  'claude-platform-october-20-2026-2': {
+    points: [
+      'Claude Enterprise 조직의 inference hooks가 베타를 벗어났다',
+      '사용자 프로필로 API 요청마다 어느 최종 고객의 요청인지 Anthropic에 알릴 수 있다',
+      '플랫폼·게이트웨이 운영사나 재판매사는 안전 집행이 조직 전체 대신 고객 하나에 걸릴 수 있다',
+      'SDK와 ant CLI가 새 /v1/user_profiles 엔드포인트를 지원한다',
+      'Admin API에 조직 웹훅이 베타로 추가돼 프로필 제한·차단과 그 해제를 알린다(계정 팀에 신청)',
+      '관리자가 Console Capabilities 페이지에서 web fetch를 끄면 그 도구가 든 Messages API 요청은 400 오류가 난다',
+      'web fetch를 켠 조직은 같은 페이지에서 허용·차단 도메인을 정할 수 있다',
+      'Claude Managed Agents의 web_fetch·web search도 조직 설정과 에이전트 도구 설정을 모두 통과해야 한다',
+    ],
+    commentary:
+      '사용자 프로필은 API를 재판매하는 회사에 가장 큰 변화다. 지금까지는 고객 하나의 오용이 조직 전체 차단으로 번질 수 있었는데, 이제 집행 범위를 고객 단위로 좁힐 수 있다. 대신 요청마다 고객을 식별해 보내야 하므로 게이트웨이 쪽 로깅과 개인정보 설계를 다시 봐야 한다.',
+  },
+  'claude-platform-october-20-2026': {
+    points: [
+      'Claude Tag API가 Claude Enterprise 조직 대상 베타로 나왔다',
+      '호출에는 experimental-claude-tag-2026-10-21 베타 헤더가 필요하다',
+      '/v1/organizations/claude_tag/ 엔드포인트로 Slack 채널·워크스페이스의 설정을 읽고 바꾼다',
+      '채널에 어떤 설정이 적용되는지와 각 설정이 어디서 왔는지 보여 준다',
+      'Access bundle을 채널·워크스페이스에 붙일 수 있다',
+      '기본 소유자가 claude.ai에서 read:claude_tag·write:claude_tag 범위로 만든 Admin API 키로 부른다',
+      'Claude Platform(Claude Console) 조직은 쓸 수 없다',
+    ],
+    commentary:
+      'Slack에 붙은 Claude의 설정을 화면이 아니라 코드로 관리할 수 있게 됐다. 채널이 수백 개인 조직은 권한 묶음을 손으로 맞추는 대신 기존 프로비저닝 스크립트에 넣을 수 있다. Console 조직이 빠져 있어 API 고객보다 claude.ai Enterprise 관리자를 겨냥한 도구로 읽힌다.',
+  },
   'openai-to-acquire-orchestra-bio': {
     points: [
       'Orchestra Bio는 바이오제약 팀이 신약 개발 과정을 조율하도록 돕는 플랫폼이다',
