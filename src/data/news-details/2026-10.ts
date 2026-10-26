@@ -2,6 +2,56 @@ import type { NewsDetail } from '../news';
 
 /** 2026-10 발표의 모달 본문. 목록은 news.ts에 있습니다. */
 export const details: Record<string, NewsDetail> = {
+  'claude-platform-october-22-2026': {
+    points: [
+      'Claude Models on Google Cloud(Anthropic managed)가 출시됐다',
+      'Anthropic이 운영하는 Claude API를 고객의 Google Cloud 프로젝트를 거쳐 부른다',
+      '접근 권한은 Google Cloud IAM이 관리한다',
+      '청구는 Google Cloud Marketplace가 처리한다',
+      '이 경로에서도 Claude Opus 5.5의 fast mode를 쓸 수 있다',
+    ],
+    commentary:
+      'Google Cloud 계약과 결제를 그대로 쓰면서 Anthropic이 직접 운영하는 API에 붙는 길이 생겼다. 클라우드 경유 배포는 새 기능이 늦게 붙는 일이 잦았는데, fast mode가 첫날부터 들어간 것을 보면 그 간격을 줄이려는 구성이다. 클라우드 예산 안에서 Claude를 쓰려던 기업의 조달 절차가 단순해진다.',
+  },
+  'blog-beyond-tree-cover-mapping-the-worlds-forest-types': {
+    points: [
+      '원시림·자연 재생림·조림지·플랜테이션 숲·수목 작물과 혼농임업·기타 토지로 나누며 FAO 정의를 따른다',
+      '2020년 지도는 EU 산림 파괴 방지 규정(EUDR)의 기준선으로 쓰도록 만들었다',
+      '약 170만 개 라벨 지점으로 학습했고 AlphaEarth Foundations 임베딩을 핵심 입력으로 쓴다',
+      '전 세계 9,000곳 넘는 무작위 지점 검증에서 산림 유형을 90%, 산림·비산림을 95% 맞혔다',
+      '칸마다 유형별 확률을 줘 이용자가 용도에 맞게 판정 기준을 정할 수 있다',
+      '시계열은 자연림이 조림지·농장으로 바뀐 자리처럼 나무 피복 지도로는 안 보이는 변화를 보여 준다',
+      '지도와 시계열은 Google Earth Engine에서 개방 라이선스로 무료 제공된다',
+    ],
+    commentary:
+      '나무가 있는지만 보는 지도로는 EUDR이 요구하는 산림 유형과 전환 이력을 증명하기 어려웠다. 확률 점수를 함께 주는 방식은 규제 대응 기업과 연구자가 같은 데이터를 서로 다른 엄격도로 쓰게 해 준다. 위성 임베딩 기반 모델이 규제 실무의 기준 데이터로 들어가는 사례다.',
+  },
+  'open-call-guest-investigators-life-sciences': {
+    points: [
+      '대상 분야는 인과 인간 생물학, 구조·계산 분자생물학, 의약화학, 신약 개발, 임상 과학이다',
+      '객원 연구자는 8~12주 동안 Anthropic 연구진과 직접 일하며 분석·산출물·도구를 만든다',
+      'Anthropic이 모델과 하네스를 무료로 돌려 준다',
+      '결과는 함께 공개하고 데이터·코드를 오픈소스로 내며 데이터 권리와 후속 연구 권리는 연구자에게 남는다',
+      '지원서에는 공개된 정보만 넣고 협업 중에도 데이터를 Anthropic에 넘기지 않는다',
+      '접수는 약 14일간 열리고 마감 약 14일 뒤 선정자에게 이메일로 알린다',
+      '일부 과제는 처음 기간 뒤 연장될 수 있다',
+    ],
+    commentary:
+      '크레딧을 나눠 주는 AI for Science와 달리 연구진이 직접 붙는 방식이라 Anthropic이 생명과학을 공동 발견의 장으로 키우려 한다는 점이 드러난다. 짧은 기간 안에 예비 근거를 내라는 조건은 결과를 빠르게 사례로 쌓으려는 설계로 읽힌다.',
+  },
+  'donating-agent-skills-to-the-agentic-ai-foundation': {
+    points: [
+      '스킬은 SKILL.md 파일과 필요한 스크립트·참고 자료를 담은 폴더로 에이전트에 특정 작업이나 분야를 가르친다',
+      'Claude Code 작업 중 만들어 2025년 10월 내놓았고 2025년 12월 오픈 표준으로 공개했다',
+      '지금까지 스킬 100만 개가 공개됐고 설치는 2억 8,000만 회에 가깝다',
+      '기증처 AAIF는 Anthropic이 Block·OpenAI와 공동 설립하고 MCP를 기증한 곳이다',
+      '이름·로고, GitHub 조직, agentskills.io 도메인을 넘기며 AAIF에 가입하지 않아도 표준을 쓰고 기여할 수 있다',
+      'Anthropic·Google·OpenAI 등의 엔지니어가 개인 자격으로 관리하고 David Soria Parra·Mahesh Murag가 리드 메인테이너다',
+      '첫 로드맵으로 버전 릴리스, 공식 제안 절차, 스킬 작성·설치 보안 지침을 제안했다',
+    ],
+    commentary:
+      'MCP에 이어 Agent Skills도 중립 재단으로 넘어가면서 에이전트에 도구를 붙이는 규격과 절차를 붙이는 규격이 한 지붕 아래 놓였다. 경쟁사 엔지니어가 함께 관리하는 구조라 벤더 종속 우려가 줄어든다. 설치가 2억 회를 넘은 만큼 로드맵의 보안 지침이 가장 급한 항목이다.',
+  },
   'claude-platform-october-21-2026': {
     points: [
       'API 버전 2026-10-21이 나왔고 업그레이드 안내 문서가 함께 공개됐다',

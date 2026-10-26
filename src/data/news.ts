@@ -172,6 +172,62 @@ export const globalNewsUpdatedAt = '2026-10-20';
  */
 const entries: NewsItem[] = [
   {
+    id: 'claude-platform-october-22-2026',
+    source: 'Anthropic',
+    kind: 'company',
+    title: 'Anthropic이 운영하는 Claude API, Google Cloud에서 제공 시작',
+    summary:
+      'Anthropic이 직접 운영하는 Claude API를 Google Cloud 프로젝트에서 부르는 Claude Models on Google Cloud(Anthropic managed)를 출시했다. ' +
+      '접근 권한은 Google Cloud IAM이, 결제는 Google Cloud Marketplace가 맡는다.',
+    publishedAt: '2026-10-22',
+    collectedAt: '2026-10-27',
+    category: 'Product',
+    signal: '플랫폼 배포',
+    url: 'https://platform.claude.com/docs/en/release-notes/overview#october-22-2026',
+  },
+  {
+    id: 'blog-beyond-tree-cover-mapping-the-worlds-forest-types',
+    source: 'Google DeepMind',
+    kind: 'company',
+    title: 'Google DeepMind, 전 세계 산림 유형 10m 지도 ForTy 공개',
+    summary:
+      'Google DeepMind·Google Research가 WRI·IIASA와 함께 지구 육지를 10m 칸마다 여섯 가지 산림·토지 유형으로 나눈 Forest Typology(ForTy) 2020을 공개했다. ' +
+      '2017~2025년 해마다의 변화를 담은 초기 시계열도 함께 냈다.',
+    publishedAt: '2026-10-22',
+    collectedAt: '2026-10-27',
+    category: 'Research',
+    signal: '자연 보전 AI',
+    url: 'https://deepmind.google/blog/beyond-tree-cover-mapping-the-worlds-forest-types',
+  },
+  {
+    id: 'open-call-guest-investigators-life-sciences',
+    source: 'Anthropic',
+    kind: 'company',
+    title: 'Anthropic, 생명과학 객원 연구자 공모 — 8~12주 공동 연구',
+    summary:
+      'Anthropic이 대학·비영리·정부 연구소의 생명과학 연구 책임자를 대상으로 Claude를 써서 함께 연구할 객원 연구자를 모집한다. ' +
+      '8~12주 동안 Anthropic 연구진과 일하며 모델 사용 비용은 Anthropic이 낸다.',
+    publishedAt: '2026-10-22',
+    collectedAt: '2026-10-27',
+    category: 'Product',
+    signal: '학술 연구 지원',
+    url: 'https://www.anthropic.com/news/open-call-guest-investigators-life-sciences',
+  },
+  {
+    id: 'donating-agent-skills-to-the-agentic-ai-foundation',
+    source: 'Anthropic',
+    kind: 'company',
+    title: 'Anthropic, Agent Skills 표준을 Agentic AI Foundation에 기증',
+    summary:
+      'Anthropic이 에이전트에 작업 지식을 가르치는 오픈 표준 Agent Skills를 Linux Foundation 산하 Agentic AI Foundation에 기증했다. ' +
+      '2025년 12월 표준 공개 뒤 ChatGPT·Cursor·GitHub Copilot·VS Code 등 70개 넘는 플랫폼이 도입했다.',
+    publishedAt: '2026-10-22',
+    collectedAt: '2026-10-27',
+    category: 'Corporate',
+    signal: '에이전트 표준',
+    url: 'https://www.anthropic.com/news/donating-agent-skills-to-the-agentic-ai-foundation',
+  },
+  {
     id: 'claude-platform-october-21-2026',
     source: 'Anthropic',
     kind: 'company',
