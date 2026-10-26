@@ -2,6 +2,30 @@ import type { NewsDetail } from '../news';
 
 /** 2026-10 발표의 모달 본문. 목록은 news.ts에 있습니다. */
 export const details: Record<string, NewsDetail> = {
+  'education-ai-quests-polar-peaks': {
+    points: [
+      'AI Quests는 11~14세 학생이 Google 연구자 역할로 큰 문제를 푸는 시리즈다',
+      '지금까지 퀘스트가 40만 회 넘게 완료됐고 10개 언어로 현지화됐다',
+      '앞선 두 퀘스트는 홍수 예측과 당뇨망막병증 검진을 다뤘다',
+      'Polar Peaks에서 학생은 캐릭터의 기억 상실을 풀려고 뉴런을 스캔·매핑하며 데이터 정제와 모델 검증을 한다',
+      '10년 넘는 커넥토믹스 연구에서 착안했고 마치면 초파리 전체 뇌 지도 연구자 둘의 이야기를 듣는다',
+      'Google AI Educator Series에 교사 연수 모듈을 내놓았고 3번 퀘스트 모듈은 다음 달 나온다',
+      'AI Quests는 2026 Webby Award와 ETIH Innovation Awards 수상작이다',
+    ],
+    commentary:
+      '이 시리즈는 AI를 도구 사용법이 아니라 연구 과정으로 가르친다는 점이 다르다. 데이터 정제와 사람의 검토를 게임 속 과제로 넣어 AI가 알아서 한다는 오해를 바로잡으려 한다. 새 퀘스트의 교사 연수가 한 달 늦게 나와 교실 도입은 그 뒤가 될 것이다.',
+  },
+  's1-sec': {
+    points: [
+      'Anthropic, PBC가 Class A 보통주 공모를 위한 Form S-1 등록신고서를 미국 SEC에 냈다',
+      '나스닥 글로벌 셀렉트 마켓에 티커 ANT로 상장할 계획이다',
+      '공모 주식 수와 가격 범위는 아직 정하지 않았다',
+      '공모는 투자설명서로만 하며 예비 투자설명서는 Goldman Sachs와 Morgan Stanley를 통해 받을 수 있다',
+      '등록신고서는 아직 효력이 없어 그 전에는 주식을 팔거나 매수 청약을 받을 수 없다',
+    ],
+    commentary:
+      '6월 비공개 초안 제출 뒤 넉 달 만에 공개 신고로 넘어가 상장이 가시권에 들어왔다. 공익 법인 구조와 장기 이익 신탁이 이사회 과반을 임명하는 지배구조가 공모 시장에서 어떻게 평가될지가 관건이다. 공개 신고서에는 그간 밝히지 않던 재무가 담기므로 컴퓨트 비용 부담이 처음 숫자로 검증받는다.',
+  },
   'claude-platform-october-22-2026': {
     points: [
       'Claude Models on Google Cloud(Anthropic managed)가 출시됐다',

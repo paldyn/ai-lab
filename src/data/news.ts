@@ -172,6 +172,34 @@ export const globalNewsUpdatedAt = '2026-10-20';
  */
 const entries: NewsItem[] = [
   {
+    id: 'education-ai-quests-polar-peaks',
+    source: 'Google DeepMind',
+    kind: 'company',
+    title: 'Google, 뇌 지도를 그리는 세 번째 AI Quest Polar Peaks 공개',
+    summary:
+      'Google Research와 Stanford Accelerator for Learning이 11~14세 학생용 AI 리터러시 게임 AI Quests의 세 번째 퀘스트 Polar Peaks를 내놓았다. ' +
+      '학생이 뉴런을 스캔해 뇌 지도를 그리며 데이터 정제와 모델 검증을 익힌다.',
+    publishedAt: '2026-10-26',
+    collectedAt: '2026-10-27',
+    category: 'Product',
+    signal: '교육 현장 AI',
+    url: 'https://blog.google/products-and-platforms/products/education/ai-quests-polar-peaks',
+  },
+  {
+    id: 's1-sec',
+    source: 'Anthropic',
+    kind: 'company',
+    title: 'Anthropic, 기업공개 위한 S-1 제출 — 나스닥 티커 ANT',
+    summary:
+      'Anthropic, PBC가 Class A 보통주 기업공개를 위한 S-1 등록신고서를 SEC에 제출했다. ' +
+      '나스닥 글로벌 셀렉트 마켓에 티커 ANT로 상장할 계획이며 공모 주식 수와 가격 범위는 정하지 않았다.',
+    publishedAt: '2026-10-26',
+    collectedAt: '2026-10-27',
+    category: 'Corporate',
+    signal: '상장 서류 제출',
+    url: 'https://www.anthropic.com/news/s1-sec',
+  },
+  {
     id: 'claude-platform-october-22-2026',
     source: 'Anthropic',
     kind: 'company',
