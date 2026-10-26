@@ -172,6 +172,48 @@ export const globalNewsUpdatedAt = '2026-10-20';
  */
 const entries: NewsItem[] = [
   {
+    id: 'claude-platform-october-21-2026',
+    source: 'Anthropic',
+    kind: 'company',
+    title: 'Claude API 버전 2026-10-21과 SDK 메이저 판 공개',
+    summary:
+      'Anthropic이 API 버전 2026-10-21을 내고 이를 기본으로 보내는 SDK 일곱 종과 ant CLI 새 판을 함께 냈다. ' +
+      '새 SDK·CLI는 라이선스가 MIT에서 Apache 2.0으로 바뀌었다.',
+    publishedAt: '2026-10-21',
+    collectedAt: '2026-10-27',
+    category: 'Product',
+    signal: '플랫폼 변경',
+    url: 'https://platform.claude.com/docs/en/release-notes/overview#october-21-2026',
+  },
+  {
+    id: 'google-asia-e-conomy-sea-report-2026',
+    source: 'Google DeepMind',
+    kind: 'company',
+    title: 'Google·Temasek·Bain, 동남아 디지털 경제 3,680억 달러 전망',
+    summary:
+      'Google·Temasek·Bain & Company의 11번째 e-Conomy SEA 보고서가 동남아 디지털 경제가 2026년 총거래액 3,680억 달러로 17% 성장한다고 내다봤다. ' +
+      '생성형 AI 이용자는 2억 4,300만 명으로 근로 인구의 58%다.',
+    publishedAt: '2026-10-21',
+    collectedAt: '2026-10-27',
+    category: 'Research',
+    signal: '경제 연구',
+    url: 'https://blog.google/company-news/inside-google/around-the-globe/google-asia/e-conomy-sea-report-2026',
+  },
+  {
+    id: 'christopher-stubbs-joins-long-term-benefit-trust',
+    source: 'Anthropic',
+    kind: 'company',
+    title: '물리학자 Christopher Stubbs, Anthropic 장기 이익 신탁 합류',
+    summary:
+      '하버드 이학부 학장을 지낸 실험물리학자 Christopher Stubbs가 Anthropic의 Long-Term Benefit Trust에 합류했다. ' +
+      '신탁의 첫 물리학자로 Neil Buddy Shah 의장, Richard Fontaine, Ben Bernanke와 함께한다.',
+    publishedAt: '2026-10-21',
+    collectedAt: '2026-10-27',
+    category: 'Corporate',
+    signal: 'AI 거버넌스',
+    url: 'https://www.anthropic.com/news/christopher-stubbs-joins-long-term-benefit-trust',
+  },
+  {
     id: 'claude-platform-october-20-2026-2',
     source: 'Anthropic',
     kind: 'company',

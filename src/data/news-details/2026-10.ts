@@ -2,6 +2,45 @@ import type { NewsDetail } from '../news';
 
 /** 2026-10 발표의 모달 본문. 목록은 news.ts에 있습니다. */
 export const details: Record<string, NewsDetail> = {
+  'claude-platform-october-21-2026': {
+    points: [
+      'API 버전 2026-10-21이 나왔고 업그레이드 안내 문서가 함께 공개됐다',
+      'Python 2.0.0·TypeScript 1.0.0·C# 13.0.0·Go 2.0.0·Java 3.0.0·PHP 1.0.0·Ruby 2.0.0 SDK가 이 버전을 기본으로 보낸다',
+      'ant CLI 2.0.0도 새 API 버전을 기본으로 쓴다',
+      '새 SDK·CLI에는 API 버전과 무관한 호환성 깨짐 변경도 들어 있다',
+      '새 SDK·CLI는 MIT 대신 Apache 2.0 라이선스를 쓴다',
+      '사용자 프로필에 enforcement_status·enforcement_actions 필드가 생겨 최종 고객의 제한·차단 여부를 볼 수 있다',
+      '새 enforcement_status[] 필터로 제한·차단이 걸린 프로필만 골라 볼 수 있다',
+    ],
+    commentary:
+      'SDK 메이저 판이 한꺼번에 올라와 버전을 고정하지 않은 프로젝트는 업데이트 한 번에 동작이 바뀔 수 있다. API 버전 변경과 SDK 자체 변경이 따로 있어 두 갈래를 나눠 점검해야 한다. 특허 조항이 있는 Apache 2.0으로 바뀐 것은 기업 법무 검토에서 반길 만한 변화다.',
+  },
+  'google-asia-e-conomy-sea-report-2026': {
+    points: [
+      '생성형 AI를 쓰는 동남아인은 2억 4,300만 명(근로 인구의 58%)이고 모바일 인터넷 확산보다 네 배 빠르다',
+      '2026년 디지털 경제 GMV는 17% 늘어 3,680억 달러이고 2035년에는 1조 달러를 넘을 것으로 봤다',
+      '토큰을 AI 경제의 새 지표로 삼아 2030년까지 지역 AI 사용량이 60배 늘 것으로 전망했다',
+      '전자상거래 GMV는 2,260억 달러로 18% 늘었고, 여행 계획 도구로 생성형 AI가 소셜 미디어를 제치고 2위가 됐다',
+      '응답자 75%가 AI 에이전트에 가격 비교와 결제를 맡길 의향이 있다고 답했다',
+      '62%가 1년 전보다 AI 도구를 더 신뢰한다고 했고, 바라는 장치로 개인정보 보호(44%)·기능 범위 공개(36%)·거래 되돌리기(30%)를 꼽았다',
+      '보고서는 AI 확산을 받칠 네 조건의 첫째로 에이전트 도입과 지속 가능한 운영 비용을 들었다',
+    ],
+    commentary:
+      '이 보고서는 거래액에 더해 토큰 사용량을 지역 AI 경제의 척도로 내세웠다. 에이전트 결제 의향 75%라는 숫자는 커머스 플랫폼이 에이전트용 결제·환불 흐름을 먼저 갖추라는 압박이 된다. 다만 설문으로 잰 의향과 실제 위임 사이의 간격은 아직 검증되지 않았다.',
+  },
+  'christopher-stubbs-joins-long-term-benefit-trust': {
+    points: [
+      'Stubbs는 하버드 물리학·천문학 교수로 2018~2024년 이학부 학장을 지냈다',
+      '1998년 High-Z Supernova Search Team에서 우주 가속 팽창 발견에 참여했고 팀은 Breakthrough Prize를 받았다',
+      '지금의 Vera C. Rubin Observatory 초대 프로젝트 과학자였다',
+      '미국 정부에 국방·기술을 자문하는 과학자 모임 JASON의 회원이다',
+      '신탁은 Anthropic 이사회 과반을 임명할 권한이 있고 수탁자는 경영진·투자자와 독립적이다',
+      '같은 주 Anthropic이 첫 Public Benefit Report를 냈고 평가 기준인 헌장 다섯 축을 수탁자들이 함께 정했다',
+      'Daniela Amodei 사장은 데이터를 따라간 과학적 정직성을 인선 이유로 들었다',
+    ],
+    commentary:
+      '신탁에 국가안보(Fontaine)와 경제(Bernanke)에 이어 과학자가 들어왔다. AI가 연구 방식 자체를 바꾸는 국면에서 AI 보조 연구의 재현성을 다뤄 온 사람을 고른 것은 과학 응용을 키우는 Anthropic의 방향과 맞물린다. 상장 준비 중인 회사가 지배구조의 독립성을 보여 주는 인선이기도 하다.',
+  },
   'claude-platform-october-20-2026-2': {
     points: [
       'Claude Enterprise 조직의 inference hooks가 베타를 벗어났다',
