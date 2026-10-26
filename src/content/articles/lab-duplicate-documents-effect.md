@@ -304,3 +304,5 @@ python3 dup_sweep.py
 읽어주셔서 감사합니다. 😊
 
 **지난 글:** [코퍼스가 커질 때 인덱스 빌드 시간은 몇 제곱으로 자라는가: HNSW는 1.4제곱, 문서 열 배에 빌드 스물여섯 배](/articles/lab-index-build-time-scaling)
+
+**다음 글:** [청크 겹침은 recall을 얼마에 사는가: 문단은 거의 못 사고, 답이 든 조각을 샀다](/articles/lab-chunk-overlap-recall)
