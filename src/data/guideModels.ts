@@ -295,6 +295,32 @@ const models: ModelInfo[] = [
     current: true,
     sourceUrl: 'https://developers.openai.com/api/docs/models/gpt-6.1-sol',
   },
+  /*
+    **GPT-6.1 Terra**(2026-10-27에 더했다). ChatGPT 릴리스 노트 2026-10-26 「GPT-6.1 Terra is rolling out
+    in ChatGPT Work and Codex.」, API 「All models」 Flagship 목록이 Astra · 6.1 Sol · 6.1 Terra · 6 Luna로
+    섰다. 쓰임은 Work·Codex 모델 페이지의 「GPT-6.1 Terra is a fast, efficient choice for writing, visual
+    understanding, and computer use.」(API 모델 목록 머리 문장은 Terra를 안 부른다). 등급은 모델 페이지
+    머리 「Reasoning Highest · Speed Fast」, 마크는 「All models」 카탈로그에서 이름 옆에 서는 아이콘이다.
+  */
+  {
+    id: 'gpt-6-1-terra',
+    vendorId: 'openai',
+    name: 'GPT-6.1 Terra',
+    mark: { file: 'assets/model-gpt-6-1-terra.png', tile: true },
+    apiId: 'gpt-6.1-terra',
+    useWhen: {
+      text: '글쓰기·시각 이해·컴퓨터 사용에',
+      url: 'https://learn.chatgpt.com/docs/models',
+    },
+    rating: {
+      kind: 'scale',
+      reasoning: { level: 5, label: 'Highest' },
+      speed: { level: 4, label: 'Fast' },
+      url: 'https://developers.openai.com/api/docs/models/gpt-6.1-terra',
+    },
+    current: true,
+    sourceUrl: 'https://developers.openai.com/api/docs/models/gpt-6.1-terra',
+  },
   {
     id: 'gpt-6-astra',
     vendorId: 'openai',

@@ -140,6 +140,16 @@ export const playbookClaims: Claim[] = [
     source: { label: 'GPT-6.1 Sol 모델 문서', url: 'https://developers.openai.com/api/docs/models/gpt-6.1-sol' },
   },
   {
+    id: 'gpt-6-1-terra-context',
+    subject: { kind: 'model', id: 'gpt-6-1-terra' },
+    topic: 'context',
+    statement: 'GPT-6.1 Terra의 입력 컨텍스트 창',
+    value: '1.05M 토큰',
+    tier: 'vendor',
+    volatility: 'model',
+    source: { label: 'GPT-6.1 Terra 모델 문서', url: 'https://developers.openai.com/api/docs/models/gpt-6.1-terra' },
+  },
+  {
     id: 'gpt-6-sol-context',
     subject: { kind: 'model', id: 'gpt-6-sol' },
     topic: 'context',
@@ -1773,6 +1783,24 @@ export const playbookClaims: Claim[] = [
       절반이다($0.10).
     */
     value: '$2 / $10 (272K 초과 시 $4 / $15)',
+    tier: 'vendor',
+    volatility: 'price',
+    source: {
+      label: 'OpenAI API — Pricing',
+      url: 'https://developers.openai.com/api/docs/pricing',
+    },
+  },
+  {
+    id: 'gpt-6-1-terra-token-price',
+    subject: { kind: 'model', id: 'gpt-6-1-terra' },
+    topic: 'price',
+    statement: '100만 토큰당 입력 / 출력 단가',
+    /*
+      2026-10-27에 더했다. 경계(272K)는 모델 페이지 규칙 줄 「Prompts with more than 272K input tokens
+      are priced at 2x input and cache rates and 1.5x output for the full request.」에 있고, 단가 표의
+      Long context 값($2 / $7.50)이 그 규칙과 맞는다. GPT-6.1 Sol의 절반 값이다.
+    */
+    value: '$1 / $5 (272K 초과 시 $2 / $7.50)',
     tier: 'vendor',
     volatility: 'price',
     source: {

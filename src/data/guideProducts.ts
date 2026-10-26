@@ -257,6 +257,7 @@ export const guideProducts: Product[] = [
     surfaces: ['웹', '데스크톱'],
     models: [
       'gpt-6-1-sol',
+      'gpt-6-1-terra',
       'gpt-6-astra',
       'gpt-6-sol',
       'gpt-5-6-sol',
@@ -301,6 +302,7 @@ export const guideProducts: Product[] = [
     surfaces: ['웹', '데스크톱', '터미널', 'IDE', '클라우드'],
     models: [
       'gpt-6-1-sol',
+      'gpt-6-1-terra',
       'gpt-6-astra',
       'gpt-6-sol',
       'gpt-5-6-sol',
@@ -339,6 +341,14 @@ export const guideProducts: Product[] = [
       「같으면 세대가 새것부터」에 따릅니다. 처음에는 6.1을 GPT-6과 한 세대로 보아 단가가 높은 Astra
       뒤에 뒀는데, 사람이 「6.1 Sol이 최신세대면 맨앞에 오는게 맞지않나」로 바로잡았습니다(2026-10-01).
       벤더의 카드 차례(Astra · 6.1 Sol · 6 Luna)와는 다릅니다. ChatGPT Work도 같은 차례입니다.
+
+      **GPT-6.1 Terra를 더했습니다**(2026-10-27). 변경 기록 2026-10-26 「GPT-6.1 Terra is now available in
+      ChatGPT Work and Codex on Plus, Pro, Business, Enterprise, and Edu plans.」·「Choose GPT-6.1 Terra from
+      the model list in Advanced in the ChatGPT desktop app or ChatGPT Work on the web.」, 모델 페이지
+      「To use it, run codex -m gpt-6.1-terra. In an interactive CLI session, use /model to switch models」가
+      근거입니다(Chat에는 없습니다 — 「The model isn't available in Chat」). **차례는 6.1 Sol 바로 뒤입니다** —
+      추론 등급(Highest)과 세대(6.1)가 같아 단가가 높은 6.1 Sol($2)을 앞에, Terra($1)를 뒤에 둡니다.
+      ChatGPT Work도 같은 차례입니다.
     */
     oneLine: '코드를 읽고 고치고 리뷰까지 맡는 코딩 에이전트.',
     officialUrl: 'https://chatgpt.com/codex',
