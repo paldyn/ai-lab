@@ -160,7 +160,7 @@ export interface NewsDetail {
   commentary: string;
 }
 
-export const globalNewsUpdatedAt = '2026-10-20';
+export const globalNewsUpdatedAt = '2026-10-26';
 
 /**
  * 공식 발표 한 건 = 항목 한 개. 2026년 1월부터 쌓는 아카이브이며 오래된 항목을
@@ -171,6 +171,198 @@ export const globalNewsUpdatedAt = '2026-10-20';
  * 목록에서 파생됩니다. 갱신 시 globalNewsUpdatedAt도 함께 올립니다.
  */
 const entries: NewsItem[] = [
+  {
+    id: 'introducing-gpt-6-1-terra',
+    source: 'OpenAI',
+    kind: 'model',
+    title: 'OpenAI, GPT-6.1 Terra 공개 — 컴퓨터 사용·시각 추론 강화',
+    summary:
+      'OpenAI가 GPT-5.6 Terra를 잇는 GPT-6.1 Terra를 냈다. 표준 API 단가는 GPT-5.6 Terra·GPT-6.1 Sol의 절반이고, ' +
+      'ChatGPT Work·Codex의 Plus·Pro·Enterprise·Edu 이용자와 API에 당일 열렸다.',
+    publishedAt: '2026-10-26',
+    collectedAt: '2026-10-27',
+    category: 'Frontier',
+    signal: '프런티어 모델',
+    url: 'https://openai.com/index/introducing-gpt-6-1-terra',
+    model: {
+      family: 'GPT',
+      name: 'GPT-6.1 Terra',
+      kind: '신규 모델',
+      status: '공개',
+      useCase: '컴퓨터 사용과 대량 업무 자동화',
+      headline: '절반 값으로 시각 추론과 컴퓨터 사용을 끌어올린 중간 등급이다.',
+      logo: 'assets/openai.svg',
+      tone: 'gpt',
+    },
+  },
+  {
+    id: 'chatgpt-expanding-world-of-work',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'OpenAI, 165개 업무 활동별 ChatGPT 사용 데이터 공개',
+    summary:
+      'OpenAI 경제 연구팀이 OpenAI Signals 데이터로 100개국 가까이에서 ChatGPT를 165개 업무 활동(IWA)에 어떻게 쓰는지 ' +
+      '2025년 1분기부터 2026년 3분기까지 분기별로 내려받을 수 있게 했다.',
+    publishedAt: '2026-10-26',
+    collectedAt: '2026-10-27',
+    category: 'Research',
+    signal: 'AI 노동 데이터',
+    url: 'https://openai.com/index/chatgpt-expanding-world-of-work',
+  },
+  {
+    id: 'fanatics-streamline-fan-experience',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'Fanatics, OpenAI 모델로 코디 추천 Shop the Look 개편',
+    summary:
+      'Fanatics가 OpenAI 모델로 경기용 의류 조합을 추천하는 Shop the Look을 Fanatics.com과 NFL·NBA·MLB·NHL 공식 스토어에 냈다. ' +
+      'MLB 상품 약 3만 개로 시험해 이전보다 참여가 10% 높았다.',
+    publishedAt: '2026-10-26',
+    collectedAt: '2026-10-27',
+    category: 'Product',
+    signal: '기업 도입 사례',
+    url: 'https://openai.com/index/fanatics-streamline-fan-experience',
+  },
+  {
+    id: 'securing-our-frontier-model-training-environment',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'OpenAI, 프런티어 모델 학습 환경 격리 강화와 레드팀 결과 공개',
+    summary:
+      'OpenAI가 프런티어 모델 학습을 인터넷 없이 하기로 하고 연구 환경 격리를 강화했다고 밝혔다. ' +
+      '자사 모델 에이전트로 격리를 공격하게 해 찾은 취약점을 고친 뒤 10월 1일 학습을 재개했다.',
+    publishedAt: '2026-10-23',
+    collectedAt: '2026-10-27',
+    category: 'Safety',
+    signal: '프런티어 모델 안전',
+    url: 'https://openai.com/index/securing-our-frontier-model-training-environment',
+  },
+  {
+    id: 'scaling-storage-one-billion-users-part-two',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'OpenAI, 저장 플랫폼 Habitat의 Azure Cosmos DB 확장 과정 2편',
+    summary:
+      'OpenAI가 저장 플랫폼 Habitat 연재 둘째 편에서 Azure Cosmos DB를 멀티테넌트로 되돌린 과정을 공개했다. ' +
+      '읽기 p50 지연을 올해 약 120ms에서 약 10ms로 12배 줄였다.',
+    publishedAt: '2026-10-23',
+    collectedAt: '2026-10-27',
+    category: 'Research',
+    signal: '스토리지 엔지니어링',
+    url: 'https://openai.com/index/scaling-storage-one-billion-users-part-two',
+  },
+  {
+    id: 'decisions-api',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'OpenAI, GPT-6 Luna 기반 Decisions API 정식 출시',
+    summary:
+      'OpenAI가 답이 정해진 질문에 빠르게 판정하는 Decisions API를 정식 출시했다. GPT-6 Luna로 만들었고 ' +
+      'Responses API로 Luna를 부를 때보다 최대 10배 빠르며, GPT-Live 연동과 프롬프트 캐싱을 더했다.',
+    publishedAt: '2026-10-22',
+    collectedAt: '2026-10-27',
+    category: 'Product',
+    signal: '저지연 추론',
+    url: 'https://openai.com/index/decisions-api',
+  },
+  {
+    id: 'forward-deployed-engineering-means',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'OpenAI FDE 팀장, 고객 현장 배치 엔지니어링 방식과 사례 공개',
+    summary:
+      'OpenAI의 Forward Deployed Engineering 책임자 Colin Jarvis가 팀의 일하는 방식을 소개했다. ' +
+      '반도체 검증·통신사 음성 상담·세무 자동화 사례에서 맞춤 코드를 Codex 기반으로 옮겨 확장한 과정을 적었다.',
+    publishedAt: '2026-10-22',
+    collectedAt: '2026-10-27',
+    category: 'Product',
+    signal: '기업 AI 도입',
+    url: 'https://openai.com/index/forward-deployed-engineering-means',
+  },
+  {
+    id: 'uber-chatgpt-work-rollout',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'Uber, 직원 3만 명 이상에게 ChatGPT Work 전사 배포',
+    summary:
+      'Uber가 직원 1,000명 시범 운영을 거쳐 ChatGPT Work를 전 세계 직원 3만 명 이상에게 배포한다. ' +
+      'GPT-6.1 Sol을 기본 모델로 두고 개발 조직은 Codex를 계속 쓴다.',
+    publishedAt: '2026-10-22',
+    collectedAt: '2026-10-27',
+    category: 'Product',
+    signal: '기업 도입 사례',
+    url: 'https://openai.com/index/uber-chatgpt-work-rollout',
+  },
+  {
+    id: 'broad-access-through-consistent-standards',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'OpenAI, 파트너 경유 접근에도 같은 안전 기준 적용 — 이용 정책 개정',
+    summary:
+      'OpenAI가 자사 모델을 호스팅·재판매하는 파트너도 자사와 같은 안전장치를 갖추게 하는 정책을 밝혔다. ' +
+      '11월 20일 시행되는 개정 이용 정책은 모델 라우터·AI 게이트웨이에 사전 승인을 요구한다.',
+    publishedAt: '2026-10-21',
+    collectedAt: '2026-10-27',
+    category: 'Safety',
+    signal: '이용 정책 개정',
+    url: 'https://openai.com/index/broad-access-through-consistent-standards',
+  },
+  {
+    id: 'openai-models-google-cloud',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'OpenAI 모델과 Codex, Google Cloud Model Garden에 들어간다',
+    summary:
+      'OpenAI와 Google Cloud가 OpenAI 프런티어 모델과 Codex를 Model Garden에서 제공하기로 했다. ' +
+      'Google Cloud Marketplace로 결제해 약정 사용액에서 차감할 수 있고 정식 제공은 몇 주 안에 시작한다.',
+    publishedAt: '2026-10-21',
+    collectedAt: '2026-10-27',
+    category: 'Product',
+    signal: '플랫폼 배포',
+    url: 'https://openai.com/index/openai-models-google-cloud',
+  },
+  {
+    id: 'chatgpt-ads-expands-26-new-countries',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'ChatGPT 광고, 26개국 추가해 89개국으로 확대',
+    summary:
+      'OpenAI가 ChatGPT 광고를 중남미 14개국 등 26개국에 더 열어 제공 국가를 89곳으로 늘렸다. ' +
+      '광고 시작 8개월여 만에 광고주 10만 곳 이상이 캠페인을 집행했다.',
+    publishedAt: '2026-10-21',
+    collectedAt: '2026-10-27',
+    category: 'Product',
+    signal: 'ChatGPT 광고',
+    url: 'https://openai.com/index/chatgpt-ads-expands-26-new-countries',
+  },
+  {
+    id: 'coordinated-disclosure-of-critical-vulnerabilities',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'OpenAI, PHP 치명 취약점 대응을 주도하고 공동 대응 틀 제안',
+    summary:
+      'OpenAI가 Patch the Planet으로 PHP의 치명적 취약점 대응 연합을 이끈 과정을 공개했다. ' +
+      'AI가 찾은 취약점을 다섯 단계로 처리하는 공개 대응 틀을 제안하고 보안 커뮤니티의 의견을 구했다.',
+    publishedAt: '2026-10-21',
+    collectedAt: '2026-10-27',
+    category: 'Safety',
+    signal: '오픈소스 보안',
+    url: 'https://openai.com/index/coordinated-disclosure-of-critical-vulnerabilities',
+  },
+  {
+    id: 'scaling-ai-research-for-complex-biological-data',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'OpenAI, GPT-Rosalind 에이전트 수천 개로 생쥐 뇌 CRISPR 데이터 해석',
+    summary:
+      'OpenAI·PerturbAI·Scripps Research가 GPT-Rosalind 에이전트 수천 개를 나란히 돌려 생쥐 뇌세포 수백만 개의 ' +
+      '유전자 교란 데이터를 32분 만에 해석했다. 결과는 추론 아틀라스로 공개했다.',
+    publishedAt: '2026-10-21',
+    collectedAt: '2026-10-27',
+    category: 'Research',
+    signal: '과학 에이전트',
+    url: 'https://openai.com/index/scaling-ai-research-for-complex-biological-data',
+  },
   {
     id: 'education-ai-quests-polar-peaks',
     source: 'Google DeepMind',
