@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" viewBox="0 0 880 420" style="display:block">
+  <defs>
+    <marker id="arr" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#7ec8e3"/>
+    </marker>
+  </defs>
+  <rect width="880" height="420" rx="12" fill="#0a0a0a"/>
+  <text x="440" y="44" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="22" font-weight="700" fill="#e8e8e8">동적 고해상도의 토큰 청구서</text>
+  <text x="440" y="70" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">LLaVA-NeXT식 2×2 타일 — 타일마다 336×336, 한 장에 576토큰</text>
+
+  <rect x="80" y="110" width="120" height="120" fill="#13261a" stroke="#55c555" stroke-width="1.5"/>
+  <rect x="200" y="110" width="120" height="120" fill="#13261a" stroke="#55c555" stroke-width="1.5"/>
+  <rect x="80" y="230" width="120" height="120" fill="#13261a" stroke="#55c555" stroke-width="1.5"/>
+  <rect x="200" y="230" width="120" height="120" fill="#13261a" stroke="#55c555" stroke-width="1.5"/>
+  <text x="140" y="176" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#55c555">1</text>
+  <text x="260" y="176" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#55c555">2</text>
+  <text x="140" y="296" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#55c555">3</text>
+  <text x="260" y="296" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#55c555">4</text>
+  <text x="200" y="378" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">672×672 원본을 넷으로 자른다</text>
+
+  <line x1="320" y1="185" x2="400" y2="185" stroke="#7ec8e3" stroke-width="2" marker-end="url(#arr)"/>
+
+  <rect x="400" y="150" width="70" height="70" rx="6" fill="#13261a" stroke="#55c555" stroke-width="1.5"/>
+  <rect x="482" y="150" width="70" height="70" rx="6" fill="#13261a" stroke="#55c555" stroke-width="1.5"/>
+  <rect x="564" y="150" width="70" height="70" rx="6" fill="#13261a" stroke="#55c555" stroke-width="1.5"/>
+  <rect x="646" y="150" width="70" height="70" rx="6" fill="#13261a" stroke="#55c555" stroke-width="1.5"/>
+  <rect x="728" y="150" width="70" height="70" rx="6" fill="#1a1a2e" stroke="#7777cc" stroke-width="1.5"/>
+  <text x="435" y="190" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e8e8e8">타일 1</text>
+  <text x="517" y="190" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e8e8e8">타일 2</text>
+  <text x="599" y="190" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e8e8e8">타일 3</text>
+  <text x="681" y="190" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e8e8e8">타일 4</text>
+  <text x="763" y="190" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e8e8e8">전역</text>
+  <text x="435" y="246" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#55c555">576</text>
+  <text x="517" y="246" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#55c555">576</text>
+  <text x="599" y="246" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#55c555">576</text>
+  <text x="681" y="246" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#55c555">576</text>
+  <text x="763" y="246" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#7777cc">576</text>
+  <text x="763" y="268" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">전체를 축소</text>
+
+  <text x="599" y="314" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#e8e8e8">4 × 576 + 576 = 2,880 토큰</text>
+  <text x="599" y="340" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">336×336 한 장으로 넣으면 576토큰 — 다섯 배다</text>
+</svg>

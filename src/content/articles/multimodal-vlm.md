@@ -1,255 +1,235 @@
 ---
 title: "비전-언어 모델(VLM): CLIP·BLIP2·LLaVA 완전 해설"
-description: "CLIP 대조 학습·BLIP2 Q-Former·LLaVA 비주얼 인스트럭션 튜닝 구조, 비전 인코더와 언어 모델 연결 방식, Python 실전 코드까지 완전 해설합니다."
+description: "CLIP의 대조 학습과 SigLIP의 시그모이드 손실, 인코더와 LLM을 잇는 세 방식(프로젝션·Q-Former·크로스 어텐션), 타일로 해상도를 올리는 법, 학습 단계와 158K 합성 대화, 검색·이상 탐지와 벤치마크까지 해설합니다."
 author: "PALDYN Team"
 pubDate: "2026-05-21"
 category: "domain-models"
 level: "중급"
-tags: ["VLM", "CLIP", "BLIP2", "LLaVA", "비전언어모델", "대조학습", "Q-Former", "비주얼인스트럭션튜닝"]
+tags: ["VLM", "CLIP", "SigLIP", "BLIP2", "LLaVA", "비전언어모델", "대조학습", "Q-Former", "비주얼인스트럭션튜닝"]
 featured: false
 draft: false
 ---
-[지난 글](/articles/multimodal-llm)에서 GPT-4o·Gemini·Claude 같은 멀티모달 LLM의 전체 구조를 살펴봤다. 이번 글에서는 그 근간을 이루는 **비전-언어 모델**(VLM, Vision-Language Model)의 핵심 기술들을 파고든다. CLIP이 이미지와 텍스트를 같은 공간에 정렬하는 방법, BLIP2가 Q-Former로 모달리티 간극을 메우는 방식, LLaVA가 GPT-4 생성 데이터로 비주얼 인스트럭션 튜닝을 수행하는 과정까지 — 현대 멀티모달 AI의 기술적 뼈대를 완전 해설한다.
+[지난 글](/articles/multimodal-llm)에서 멀티모달 LLM을 쓰는 자리 — 한 장이 몇 토큰이 되는가, 해상도와 청구서, 모델을 고르는 축 — 를 살폈다. 거기서 「다음 글로」 미뤄 둔 질문이 셋 있었다. 그림과 글은 어떻게 같은 공간에 놓이는가, 비전 인코더와 LLM은 무엇으로 이어지는가, 대화 능력은 어떤 데이터로 얹는가. 이 글이 그 셋을 맡는다.
 
-## CLIP: 대조 학습으로 이미지-텍스트 정렬
+**VLM**(Vision-Language Model, 비전-언어 모델)은 이미지와 텍스트를 함께 다루는 모델을 넓게 부르는 말이다. 지난 글의 멀티모달 LLM이 그 가운데 언어 모델을 몸통으로 삼은 갈래이고, 이 글에서 볼 CLIP처럼 생성은 못 하고 두 모달리티를 견주기만 하는 모델도 VLM에 든다. 흐름은 CLIP의 정렬 → SigLIP의 손실 → 인코더와 LLM을 잇는 방식 → 해상도 → 학습 단계 → 응용 → 데이터와 평가 순이다.
+
+## 대조 학습의 공동 공간
 
 ![VLM 아키텍처 진화](/assets/posts/multimodal-vlm-architecture.svg)
 
-2021년 OpenAI가 발표한 **CLIP**(Contrastive Language-Image Pre-training)은 VLM 연구의 게임 체인저였다. 핵심 아이디어는 간단하다: 이미지와 그에 대응하는 텍스트를 동일한 임베딩 공간에서 **가깝게** 만들고, 관련 없는 이미지-텍스트 쌍은 **멀게** 만드는 것이다.
+### N×N 유사도 행렬
 
-### 4억 쌍 이미지-텍스트 데이터
+2021년 OpenAI가 발표한 **CLIP**은 이미지 인코더와 텍스트 인코더 두 개를 나란히 두고, 둘이 내놓는 벡터가 같은 공간에서 만나게 학습한 모델이다. 그 공간을 **공동 임베딩 공간**이라 부른다. 고양이 사진의 벡터와 「고양이 한 마리」라는 문장의 벡터가 가까운 자리에 놓이게 만드는 것이 목표다.
 
-CLIP의 강력함은 학습 데이터 규모에서 비롯된다. OpenAI는 인터넷에서 수집한 **4억 쌍(400M)의 이미지-텍스트 쌍**으로 CLIP을 학습했다. 이 데이터는 자동으로 수집되어 별도의 어노테이션 없이도 다양한 시각 개념을 커버한다. ImageNet 같은 기존 이미지 데이터셋이 100만 장 규모인 것과 비교하면 400배에 달하는 규모다.
-
-### ViT 이미지 인코더 + 텍스트 인코더
-
-CLIP은 두 개의 인코더로 구성된다. **이미지 인코더**는 ViT(Vision Transformer) 또는 ResNet 기반으로, 이미지를 고정 차원의 벡터로 변환한다. 이미지를 N개의 패치로 분할하고 각 패치를 토큰처럼 처리해 Transformer에 입력하는 ViT 방식이 현재 주류다.
-
-**텍스트 인코더**는 Transformer 기반 언어 모델로, 텍스트를 같은 차원의 벡터로 변환한다. CLIP의 텍스트 인코더는 BERT와 유사한 구조이지만, 처음부터 이미지 대조 학습 목적으로 훈련된다.
-
-### 코사인 유사도 최대화
-
-학습 과정에서 CLIP은 **배치 내의 N개 이미지와 N개 텍스트**를 쌍으로 만들어 N×N 유사도 행렬을 계산한다. 대각선(올바른 쌍)의 유사도는 최대화하고, 나머지(틀린 쌍)의 유사도는 최소화하는 **InfoNCE 손실**을 사용한다.
+학습 한 스텝은 이렇게 돈다. 배치에서 이미지 N장과 그 짝 문장 N개를 꺼내 각각 인코딩하고, 벡터 길이를 1로 맞춘 뒤 모든 이미지와 모든 문장의 내적을 구한다. 그러면 N×N 행렬이 나오는데, 대각선의 N칸이 진짜 짝이고 나머지 N²−N칸은 짝이 아니다. 손실은 행마다 「이 이미지의 짝은 N개 문장 중 어느 것인가」를 맞히는 N지선다 분류이고, 열마다 같은 일을 문장 쪽에서 한 번 더 한다. 이 손실이 **InfoNCE**이고, 학습이 진행되면 대각선 값은 오르고 나머지는 내려간다.
 
 ```python
 import torch
 import torch.nn.functional as F
 
 def clip_loss(image_features, text_features, temperature=0.07):
-    # 정규화
     image_features = F.normalize(image_features, dim=-1)
     text_features = F.normalize(text_features, dim=-1)
-
-    # 유사도 행렬: (N, N)
-    logits = torch.matmul(image_features, text_features.T) / temperature
-
-    # 대각선이 정답 (각 이미지-텍스트 쌍)
-    N = logits.shape[0]
-    labels = torch.arange(N, device=logits.device)
-
-    # 이미지→텍스트, 텍스트→이미지 방향 모두 학습
+    logits = image_features @ text_features.T / temperature  # (N, N)
+    labels = torch.arange(logits.shape[0], device=logits.device)
     loss_i2t = F.cross_entropy(logits, labels)
     loss_t2i = F.cross_entropy(logits.T, labels)
     return (loss_i2t + loss_t2i) / 2
 ```
 
-학습 후 CLIP은 놀라운 **제로샷(zero-shot)** 분류 능력을 갖는다. "A photo of a {class}" 템플릿에 클래스명을 넣어 텍스트 임베딩을 생성하고, 이미지 임베딩과 가장 유사한 클래스를 찾는 방식으로 어떤 분류 작업도 수행할 수 있다.
+여기서 `temperature`는 유사도 차이를 얼마나 벌려 볼지 정하는 값이다. 작을수록 1등과 2등의 차이가 확률에서 크게 벌어진다. CLIP은 이 값을 고정하지 않고 학습되는 파라미터로 두었다.
 
-## BLIP2: Q-Former로 모달리티 간극 메우기
+### 제로샷 분류
 
-2023년 Salesforce가 발표한 **BLIP2**(Bootstrapping Language-Image Pre-training 2)는 사전학습된 이미지 인코더와 LLM을 효율적으로 연결하는 방법을 제시했다. 핵심 혁신은 **Q-Former**(Querying Transformer)라는 새로운 모듈이다.
+이 공간이 생기면 학습한 적 없는 분류 문제를 바로 풀 수 있다. 클래스 이름을 「A photo of a {}」 같은 틀에 넣어 문장으로 만들고, 클래스마다 문장 벡터를 하나씩 미리 구해 둔다. 새 이미지가 오면 이미지 벡터와 각 클래스 문장 벡터의 코사인 유사도를 구해 가장 큰 것을 고른다. 분류기를 학습하는 대신 클래스 이름을 글로 적는 것이 분류기를 만드는 일이 된 것이다. 이것을 **제로샷** 분류라 부른다.
 
-### Querying Transformer (Q-Former)
+틀의 문장이 성능을 바꾼다는 점도 함께 기억할 만하다. 클래스 이름만 넣는 것보다 「A photo of a」를 붙이는 편이 낫고, 「a blurry photo of a」·「a drawing of a」처럼 여러 틀로 만든 벡터를 평균하면 더 낫다. CLIP이 학습한 문장이 웹의 이미지 설명문이라, 그 말투에 가까운 문장일수록 공간의 제자리를 찾는다.
 
-Q-Former의 아이디어는 간단하다: 이미지의 모든 특징을 LLM에 전달하는 대신, **32개의 학습 가능한 쿼리 토큰**이 이미지에서 가장 언어 관련성 높은 정보를 선택적으로 추출하도록 한다.
+### 4억 쌍의 대가
 
-Q-Former는 두 개의 Transformer로 구성된다. 첫 번째는 이미지 특징과 상호작용하는 **이미지 Transformer**로, 쿼리 토큰이 Cross-Attention을 통해 ViT 출력에 접근한다. 두 번째는 텍스트를 처리하는 **텍스트 Transformer**로, Self-Attention을 통해 쿼리-텍스트 상호작용을 모델링한다.
+CLIP의 힘은 데이터에서 왔다. 인터넷에서 이미지와 그 주변 글을 짝지어 모은 4억 쌍으로 학습했고, 사람이 라벨을 단 것은 하나도 없다. ImageNet이 1,000개 클래스에 100만 장 남짓인 것과 견주면, 클래스라는 틀 자체가 없이 웹에 있는 개념을 거의 다 덮은 셈이다. 그 결과 ImageNet을 한 장도 학습하지 않고 지도 학습한 ResNet-50과 비슷한 정확도를 냈다.
+
+대가는 데이터 품질을 고를 수 없다는 것이다. 웹의 설명문은 사진과 상관없는 광고 문구이거나, 파일 이름이거나, 편향된 표현을 담고 있다. 4억 쌍을 사람이 검수할 수 없으니 모델은 그 잡음과 편향까지 그대로 배운다. 그리고 CLIP의 텍스트 인코더는 영어 웹 글로 학습했고 한 번에 77토큰까지만 읽는다. 한국어 질의나 긴 문장에 약한 이유가 여기 있고, 응용 절에서 다시 만난다.
+
+## 시그모이드 손실의 차이
+
+### 배치 안 음성 쌍
+
+InfoNCE에는 구조적인 요구가 하나 있다. 각 행이 N지선다이므로, 정답 하나를 가려내려면 **음성 쌍**, 곧 짝이 아닌 문장들이 충분히 많아야 한다. 배치가 작으면 오답 후보가 몇 개뿐이라 문제가 너무 쉬워지고, 모델이 미세한 차이를 배우지 못한다. 그래서 CLIP은 배치 32,768로 학습했다.
+
+이 큰 배치가 비싸다. 소프트맥스는 한 행 전체를 알아야 정규화할 수 있으므로, 여러 GPU에 나눠 학습할 때 모든 장치가 모든 장치의 벡터를 모아(all-gather) N×N 행렬 전체를 만들어야 한다. 배치를 늘리면 통신과 메모리가 함께 커진다.
+
+### 쌍마다 이진 분류
+
+Google이 2023년에 제안한 **SigLIP**은 문제를 바꿔 이 의존을 끊었다. N지선다 대신, 행렬의 칸 하나하나를 「이 이미지와 이 문장은 짝인가」라는 독립된 예·아니오 문제로 본다. 대각선 칸은 정답이 「예」, 나머지는 「아니오」이고, 각 칸에 시그모이드와 이진 교차 엔트로피를 건다.
 
 ```python
-# Q-Former 핵심 개념 (의사 코드)
-class QFormer:
-    def __init__(self, num_queries=32, d_model=768):
-        self.queries = nn.Parameter(
-            torch.randn(num_queries, d_model))
-        self.cross_attention = CrossAttention(d_model)
-        self.self_attention = SelfAttention(d_model)
-
-    def forward(self, image_features, text_tokens=None):
-        # 쿼리가 이미지에서 정보 추출
-        q = self.queries.expand(batch_size, -1, -1)
-        q = self.cross_attention(q, image_features)
-        # 텍스트와 쿼리 상호작용
-        if text_tokens is not None:
-            combined = concat([q, text_tokens], dim=1)
-            combined = self.self_attention(combined)
-        return q  # 32 토큰만 LLM에 전달
+def siglip_loss(image_features, text_features, t, b):
+    logits = image_features @ text_features.T * t + b
+    n = logits.shape[0]
+    labels = 2 * torch.eye(n, device=logits.device) - 1  # 대각선 +1, 나머지 -1
+    return -F.logsigmoid(labels * logits).sum() / n
 ```
 
-### 2단계 학습: 표현 학습 → 생성 학습
+칸마다 독립이니 한 행 전체를 볼 필요가 없다. 장치끼리 벡터를 조금씩 돌려 가며 부분 행렬만 계산해도 같은 손실이 나온다. 그리고 짝이 아닌 칸이 대부분이라 시작부터 손실이 「아니오」 쪽으로 쏠리는데, 학습되는 편향값 `b`를 크게 음수로 두고 시작해 이 쏠림을 상쇄한다. 논문은 작은 배치에서 SigLIP이 CLIP 손실보다 뚜렷이 낫고, 배치를 3만 2천 정도까지 키우면 둘 다 거의 포화된다고 보고했다. 같은 성능을 더 작은 장비로 얻는다는 뜻이다.
 
-BLIP2는 **두 단계**로 학습된다. 1단계는 **비전-언어 표현 학습**으로, Q-Former를 Frozen ViT에 연결해 이미지-텍스트 매칭, 이미지-텍스트 대조 학습, 이미지 기반 텍스트 생성의 세 가지 목표를 동시에 학습한다.
+### SigLIP 계열과 SO400M
 
-2단계는 **생성 언어 학습**으로, Q-Former 출력을 Frozen LLM(OPT 또는 FlanT5)에 연결해 이미지 조건부 텍스트 생성 능력을 획득한다. 두 단계 모두 ViT와 LLM을 **동결**(freeze)한 채 Q-Former만 학습하므로, 파라미터 효율이 높다. 전체 파라미터의 1~2%만 학습해도 강력한 멀티모달 능력을 달성한다.
+이 실용성 덕분에 SigLIP 계열은 지금 오픈 VLM의 비전 인코더 기본값처럼 쓰인다. Google의 PaliGemma가 SigLIP 인코더를 쓰고, 여러 오픈 VLM이 같은 선택을 했으며, 2025년에는 다국어와 위치 파악을 보강한 SigLIP 2가 나왔다.
 
-## LLaVA: 비주얼 인스트럭션 튜닝
+그중 자주 보이는 이름이 **SigLIP-SO400M**이다. SO는 shape-optimized의 약자로, 파라미터 4억 개 언저리의 예산 안에서 ViT의 너비·깊이·MLP 크기 비율을 계산 대비 성능이 가장 좋게 고른 모양이라는 뜻이다. 같은 계산으로 더 큰 ViT에 맞먹는 성능을 내므로, 인코더를 고를 일이 있으면 이 이름을 먼저 찾게 된다. 384×384 입력에 14픽셀 패치를 쓰면 27×27, 한 장이 729토큰이 된다 — 지난 글의 셈이 그대로 적용된다.
 
-2023년 위스콘신-매디슨 대학교·마이크로소프트 연구팀이 발표한 **LLaVA**(Large Language and Vision Assistant)는 놀라울 정도로 단순한 구조로 강력한 멀티모달 대화 능력을 달성했다.
+## 인코더와 LLM을 잇는 셋
 
-### CLIP ViT → 선형 프로젝션 → LLM
+### 선형·MLP 프로젝션
 
-LLaVA의 아키텍처는 세 부분으로 구성된다.
+비전 인코더가 내놓은 패치 벡터를 LLM에 넣는 가장 단순한 길은 차원만 맞춰 주는 것이다. 2023년의 **LLaVA**는 CLIP ViT-L/14의 출력에 선형 층 하나를 붙여 LLM의 임베딩 차원으로 옮기고, 그 결과를 텍스트 토큰 앞에 그대로 이어 붙였다. 패치가 256개면 이미지 토큰도 256개다. 정보를 하나도 버리지 않는 대신, 패치 수가 그대로 토큰 수가 되어 컨텍스트를 쓴다.
 
-1. **CLIP ViT 인코더**: 이미지를 패치 시퀀스로 변환 (ViT-L/14)
-2. **선형 프로젝션 행렬 W**: ViT 출력 차원 → LLM 입력 차원 (유일한 학습 파라미터)
-3. **LLaMA / Vicuna**: 텍스트 생성 담당 LLM
+LLaVA-1.5는 이 선형 층을 은닉층 하나 있는 2층 MLP로 바꿨다. 한 번의 선형 변환으로는 시각 특징을 언어 모델이 쓰기 좋은 모양으로 옮기는 데 한계가 있었고, 비선형을 하나 끼우는 것만으로 여러 벤치마크가 함께 올랐다. 비용이 거의 늘지 않는 개선이라 이후 오픈 VLM 대부분이 MLP 프로젝션을 쓴다.
 
-Q-Former의 복잡성 없이 단순 선형 변환만으로도 충분한 성능이 나온다는 것이 LLaVA의 핵심 발견이다. 이미지 패치 임베딩을 LLM의 입력 차원으로 변환하는 가중치 행렬 하나만 학습하면 된다.
+### Q-Former
+
+같은 해 Salesforce의 **BLIP-2**는 반대 방향을 택했다. 패치를 전부 넣지 말고 요약해서 넣자는 것이다. 그 요약 장치가 **Q-Former**다. 학습되는 쿼리 벡터 32개를 두고, 이 쿼리들이 크로스 어텐션으로 이미지 패치 전체를 훑어 필요한 정보를 뽑아 온다. 패치가 몇백 개든 LLM에 들어가는 것은 언제나 32개다.
+
+BLIP-2의 또 다른 특징은 얼리기다. 큰 ViT도, 큰 LLM도 가중치를 그대로 얼려 두고 Q-Former(약 1억 9천만 개 파라미터)와 그 뒤의 작은 연결 층만 학습한다. 전체 파라미터의 1~2%만 움직여 두 거대 모델을 잇는 셈이라, 적은 계산으로 강한 성능을 얻었다. 대가는 손실이다. 32개로 요약하는 순간 작은 글자나 세밀한 배치 같은 정보가 빠져, 문서·OCR 과제에서는 패치를 다 넣는 쪽에 밀렸다.
 
 ```python
-from transformers import LlavaNextProcessor, LlavaNextForConditionalGeneration
-from PIL import Image
+# Q-Former의 뼈대 (개념 코드)
+class QFormer(nn.Module):
+    def __init__(self, num_queries=32, d=768):
+        super().__init__()
+        self.queries = nn.Parameter(torch.randn(num_queries, d))
+        self.cross_attn = CrossAttention(d)
+
+    def forward(self, patch_feats):           # (B, 패치 수, d)
+        q = self.queries.expand(patch_feats.size(0), -1, -1)
+        return self.cross_attn(q, patch_feats)  # (B, 32, d)
+```
+
+### 크로스 어텐션 삽입
+
+세 번째 갈래는 이미지를 입력 줄에 넣지 않는다. 대신 LLM의 층 사이사이에 **크로스 어텐션 층**을 끼워, 텍스트 토큰이 필요할 때 이미지 특징을 참조하게 한다. DeepMind의 Flamingo가 얼린 언어 모델 사이에 게이트가 달린 크로스 어텐션 층을 넣었고, Meta의 Llama 3.2 Vision도 같은 계열의 어댑터 층을 썼다.
+
+이미지 토큰이 컨텍스트를 차지하지 않으므로 그림을 여러 장 넣어도 텍스트 길이 예산이 안 준다. 게이트를 0에서 시작하면 학습 초기에 원래 언어 모델의 동작이 그대로 보존된다는 장점도 있다. 대신 LLM 안에 새 층이 생기므로 구조가 바뀐 모델이 되고, 텍스트 전용 모델로 쓰던 서빙 경로를 그대로 쓰기 어렵다.
+
+### 고르는 축
+
+셋을 견주는 축은 세 가지다. 학습하는 파라미터의 비율(Q-Former와 크로스 어텐션은 작게 시작할 수 있고, 프로젝션은 그 자체는 작지만 뒤에서 LLM까지 여는 경우가 많다), 이미지가 쓰는 토큰 예산(프로젝션은 패치 수만큼, Q-Former는 고정 32개, 크로스 어텐션은 0), 그리고 기존 LLM을 얼마나 건드리는가(프로젝션과 Q-Former는 입력만 바꾸고, 크로스 어텐션은 몸통에 층을 더한다).
+
+현재 오픈 모델의 주류는 MLP 프로젝션이다. 정보 손실이 없어 문서·OCR에 강하고, 구조가 단순해 학습과 서빙이 쉽기 때문이다. 토큰 예산 문제는 요약 장치보다 다음 절의 해상도 전략과 패치 병합 같은 기법으로 따로 푸는 흐름이다.
+
+## 해상도를 다루는 법
+
+### 고정 입력의 한계
+
+CLIP 계열 인코더는 224나 336처럼 정해진 크기로 학습된다. 그보다 큰 이미지는 그 크기로 줄여 넣어야 하고, 1000×1400짜리 문서 사진을 336×336으로 줄이면 본문 글자 하나가 2~3픽셀이 된다. 사람도 못 읽는 크기다. 초기 VLM이 사진 설명은 잘하는데 영수증과 표에서 숫자를 지어낸 이유가 대부분 여기 있었다.
+
+인코더의 입력 크기를 그냥 키우면 될 것 같지만, ViT의 어텐션 비용은 패치 수의 제곱으로 늘고 큰 해상도로 다시 학습하는 데도 비용이 든다. 그래서 인코더는 그대로 두고 입력을 나눠 넣는 길이 나왔다.
+
+### 동적 고해상도
+
+2024년의 LLaVA-NeXT는 **동적 고해상도**를 썼다. 이미지의 가로세로 비율에 맞춰 2×2, 1×3, 3×1 같은 격자 중 하나를 고르고, 원본을 그 격자로 잘라 각 타일을 336×336으로 인코딩한다. 2×2면 672×672 해상도를 보는 셈이라 변이 두 배, 볼 수 있는 디테일은 네 배가 된다.
+
+![고해상도 이미지를 타일로 나눠 넣을 때 늘어나는 토큰](/assets/posts/multimodal-vlm-tiling.svg)
+
+대가는 토큰이다. 타일 하나가 576토큰이니 2×2 타일이면 2,304토큰이고, 아래에서 볼 전역 이미지까지 더하면 2,880토큰이 된다. 한 장에 576토큰을 쓰던 모델이 다섯 배를 쓰는 것이다. 지난 글에서 본 벤더별 「고해상도 등급」이 비싼 이유가 이 교환이고, 해상도를 질문에 맞춰 고르라는 조언도 여기서 나온다.
+
+### 전역 축소 이미지
+
+타일만 넣으면 문제가 하나 생긴다. 타일 하나하나는 선명하지만, 모델은 네 조각이 원래 어떻게 붙어 있었는지 모른다. 표의 머리글이 왼쪽 위 타일에 있고 숫자가 오른쪽 아래 타일에 있으면, 어느 숫자가 어느 열인지 잇기 어렵다.
+
+그래서 원본 전체를 336×336으로 줄인 **전역 이미지** 한 장을 타일과 함께 넣는다. 전역 이미지는 흐리지만 전체 배치를 보여 주고, 타일은 배치는 모르지만 선명하다. 모델은 둘을 함께 보며 「어디에 무엇이 있는가」와 「거기에 정확히 뭐라고 적혔는가」를 짝지운다. 이후의 오픈 VLM 대부분이 이 구성 위에서 타일 수를 이미지마다 바꾸거나, 인접 패치를 합쳐 토큰을 줄이는 방향으로 발전했다.
+
+## 동결과 학습 단계
+
+### 여는 부분과 학습 비율
+
+VLM은 이미 학습된 두 덩어리, 비전 인코더와 LLM을 잇는 일이라 「무엇을 얼리고 무엇을 여는가」가 설계의 중심이다. 셋 다 얼리고 연결 층만 학습하면 학습 파라미터가 전체의 1% 남짓이고 데이터도 수십만 쌍이면 된다. 대신 LLM은 이미지를 보고 말하는 법을 새로 익히지 못하고, 연결 층이 LLM이 원래 알아듣는 모양으로 이미지를 번역해 줘야만 한다.
+
+LLM까지 열면 학습 파라미터가 수십억 개로 뛰고, 데이터와 GPU 시간이 그만큼 늘며, 원래의 언어 능력을 잃지 않게 텍스트 데이터를 섞어 줘야 한다. 비전 인코더까지 여는 것은 그보다 드물다 — 수억 쌍으로 다듬은 정렬을 작은 데이터로 흔들 위험이 크다. 대부분의 레시피가 인코더는 얼리고, 단계에 따라 연결 층과 LLM을 차례로 연다.
+
+### 2단계 구성
+
+LLaVA가 이 차례를 가장 간결하게 보였다. 1단계는 **정렬 사전학습**이다. CC3M에서 거른 이미지-캡션 쌍 약 60만 개로, 인코더와 LLM을 모두 얼리고 프로젝션만 학습한다. 목표는 단 하나, 이미지 특징을 LLM이 읽을 수 있는 「단어」로 번역하는 법을 익히는 것이다.
+
+2단계는 **인스트럭션 튜닝**이다. 인코더는 여전히 얼리고, 프로젝션과 LLM을 함께 열어 이미지가 섞인 대화 데이터로 학습한다. 이 단계에서 모델은 그림을 단순히 묘사하는 것을 넘어 질문에 맞춰 답하고, 여러 턴을 이어 가고, 추론을 풀어 쓰는 법을 익힌다. 1단계가 어휘를 맞추는 일이라면 2단계는 대화법을 가르치는 일이다.
+
+### 158K 합성 대화
+
+2단계의 데이터가 LLaVA의 가장 독창적인 부분이다. 연구팀은 COCO 이미지마다 붙어 있던 캡션과 물체 상자 좌표를 글로 정리해 GPT-4에게 주고, 이 그림을 실제로 보는 사람이 할 법한 대화·상세 묘사·복잡한 추론 질문과 답을 지어내게 했다. 이렇게 만든 15만 8천 개가 LLaVA-Instruct-150K다.
+
+이 방식은 라벨링 비용을 거의 없앴다. 사람이 그림을 보고 질의응답을 쓰려면 한 건에 몇 분이 걸리지만, 이미 있는 캡션과 상자를 글로 바꿔 주기만 하면 됐다. 한계도 같은 자리에서 나온다. GPT-4는 그림을 보지 않았다. 캡션과 상자에 없는 것, 곧 색감·표정·글자·세밀한 위치는 데이터에 들어갈 수 없었고, GPT-4가 그럴듯하게 덧붙인 내용은 그림과 어긋날 수 있었다. 이후 그림을 직접 보는 모델로 캡션을 다시 쓰는 ShareGPT4V 같은 데이터가 나온 것도 이 빈틈을 메우려는 것이다.
+
+## 검색과 이상 탐지
+
+### 정규화와 코사인 검색
+
+CLIP 공간의 가장 직접적인 쓰임은 검색이다. 이미지마다 벡터를 미리 구해 저장하고, 질의 문장의 벡터와 가장 가까운 것을 찾는다. 이때 벡터를 L2 정규화, 곧 길이를 1로 맞춰 두면 내적이 곧 코사인 유사도가 되어 벡터 DB의 내적 인덱스를 그대로 쓸 수 있다.
+
+```python
 import torch
-
-model_id = "llava-hf/llava-v1.6-mistral-7b-hf"
-processor = LlavaNextProcessor.from_pretrained(model_id)
-model = LlavaNextForConditionalGeneration.from_pretrained(
-    model_id, torch_dtype=torch.float16, device_map="auto"
-)
-
-image = Image.open("chart.png")
-conversation = [
-    {
-        "role": "user",
-        "content": [
-            {"type": "image"},
-            {"type": "text", "text": "이 차트의 주요 트렌드는?"}
-        ],
-    }
-]
-prompt = processor.apply_chat_template(
-    conversation, add_generation_prompt=True)
-inputs = processor(images=image, text=prompt,
-                   return_tensors="pt").to(model.device)
-output = model.generate(**inputs, max_new_tokens=200)
-print(processor.decode(output[0], skip_special_tokens=True))
-```
-
-### GPT-4 생성 데이터로 인스트럭션 튜닝
-
-LLaVA의 가장 독창적인 기여는 **학습 데이터 생성 방식**이다. 연구팀은 이미지에 대한 GPT-4의 언어 전용 추론 능력을 활용해 멀티모달 인스트럭션 데이터를 만들었다.
-
-구체적으로, COCO 데이터셋 이미지의 캡션과 박스 정보(텍스트)를 GPT-4에게 제공하고, GPT-4에게 해당 이미지를 실제로 볼 때 사람이 할 법한 질문-답변 쌍을 생성하도록 요청했다. 이렇게 생성된 **158K개의 합성 대화 데이터**로 LLaVA를 학습시켰다.
-
-### LLaVA-1.5, LLaVA-NeXT 개선
-
-LLaVA-1.5는 선형 프로젝션을 **2층 MLP**로 교체하고, CLIP ViT를 더 큰 ViT-L/14@336px로 업그레이드했다. 또한 학술 벤치마크 데이터를 추가해 VQA·OCR 성능을 크게 향상시켰다.
-
-LLaVA-NeXT(LLaVA-1.6)는 **동적 고해상도 처리**를 도입했다. 이미지를 여러 타일로 분할해 각각 인코딩하고 합치는 방식으로 최대 4배 해상도까지 처리하며, 이미지 추론 능력과 OCR 성능이 크게 향상되었다.
-
-## SigLIP과 최신 비전 인코더
-
-### Sigmoid Loss (CLIP vs SigLIP)
-
-Google이 2023년 제안한 **SigLIP**(Sigmoid Loss for Language-Image Pre-Training)은 CLIP의 소프트맥스 기반 대조 손실 대신 **시그모이드 손실**을 사용한다.
-
-CLIP의 InfoNCE 손실은 배치 내의 모든 쌍을 비교하는 방식이라, 배치 크기가 커질수록 부정 샘플(negative sample)도 증가한다. 반면 SigLIP은 각 이미지-텍스트 쌍을 독립적으로 이진 분류(매칭/비매칭)하는 시그모이드 손실을 사용해 **배치 크기에 덜 민감**하고 **학습이 더 안정적**이다.
-
-```python
-def siglip_loss(image_features, text_features,
-                temperature, bias):
-    # 이진 크로스엔트로피 기반
-    logits = torch.matmul(image_features,
-                          text_features.T) * temperature + bias
-    # 대각선=1 (매칭), 나머지=0 (비매칭)
-    N = logits.shape[0]
-    labels = 2 * torch.eye(N) - 1  # +1 / -1
-    loss = -F.logsigmoid(labels * logits).mean()
-    return loss
-```
-
-Gemini, PaliGemma, InternVL 등 최신 멀티모달 모델들이 SigLIP을 비전 인코더로 채택하고 있다. SigLIP-SO400M(소믈리에 400M 파라미터)은 현재 오픈소스 최고 성능의 비전 인코더 중 하나다.
-
-## 실전 코드
-
-![CLIP 이미지-텍스트 유사도](/assets/posts/multimodal-vlm-code.svg)
-
-CLIP으로 이미지와 여러 텍스트 설명의 유사도를 계산하는 실전 예시다.
-
-```python
-import torch
-from transformers import CLIPProcessor, CLIPModel
+from transformers import CLIPModel, CLIPProcessor
 from PIL import Image
 
-model = CLIPModel.from_pretrained(
-    "openai/clip-vit-base-patch32")
-processor = CLIPProcessor.from_pretrained(
-    "openai/clip-vit-base-patch32")
+model = CLIPModel.from_pretrained("openai/clip-vit-base-patch32")
+processor = CLIPProcessor.from_pretrained("openai/clip-vit-base-patch32")
 
-image = Image.open("cat.jpg")
-texts = ["고양이 사진", "강아지 사진", "자동차 사진"]
+@torch.no_grad()
+def embed_images(paths):
+    inputs = processor(images=[Image.open(p) for p in paths], return_tensors="pt")
+    v = model.get_image_features(**inputs)
+    return torch.nn.functional.normalize(v, dim=-1)
 
-inputs = processor(text=texts, images=image,
-                   return_tensors="pt", padding=True)
-outputs = model(**inputs)
+@torch.no_grad()
+def embed_text(query):
+    inputs = processor(text=[query], return_tensors="pt", padding=True)
+    v = model.get_text_features(**inputs)
+    return torch.nn.functional.normalize(v, dim=-1)
 
-# 이미지-텍스트 유사도 점수
-logits = outputs.logits_per_image  # shape: [1, 3]
-probs = logits.softmax(dim=1)
-print(probs)  # tensor([[0.92, 0.05, 0.03]])
-
-# 가장 유사한 텍스트 찾기
-best_idx = probs.argmax(dim=1).item()
-print(f"가장 유사한 설명: {texts[best_idx]}")
+# 점수 = 내적 = 코사인 유사도
+# scores = embed_text("a red sneaker") @ image_vectors.T
 ```
 
-제로샷 이미지 검색에도 활용할 수 있다:
+인덱스 선택은 텍스트 검색과 같다. 수만 장까지는 전부 견주는 완전 탐색으로도 충분히 빠르고, 수백만 장을 넘으면 근사 최근접 이웃(ANN) 인덱스를 쓴다. 이미지 벡터는 인코더가 바뀌면 전부 다시 구해야 하므로, 어느 모델의 어느 판으로 만든 벡터인지를 색인에 함께 적어 둔다.
 
-```python
-# 텍스트 쿼리로 이미지 검색
-from pathlib import Path
+### 교차 검색의 걸림돌
 
-def search_images(query: str, image_paths: list, top_k=5):
-    images = [Image.open(p) for p in image_paths]
-    inputs = processor(
-        text=[query], images=images,
-        return_tensors="pt", padding=True
-    )
-    outputs = model(**inputs)
-    # logits_per_text: [1, num_images]
-    scores = outputs.logits_per_text.softmax(dim=1)
-    top_indices = scores[0].topk(top_k).indices
-    return [(image_paths[i], scores[0][i].item())
-            for i in top_indices]
-```
+텍스트로 상품 사진을 찾는 교차 검색을 만들어 보면 세 가지가 걸린다. 첫째는 도메인 어휘다. 「오버핏 크롭 셔츠」 같은 업계 용어는 웹 설명문에서 드물어 공간에서 제자리를 못 잡는다. 둘째는 한국어다. 원래 CLIP은 영어로 학습해 한국어 질의는 엉뚱한 곳을 가리키기 쉽다. 다국어로 학습한 인코더를 쓰거나, 질의를 번역해 넣거나, 한국어 쌍으로 파인튜닝한다.
 
-## VLM 응용
+셋째는 **모달리티 갭**이다. 대조 학습을 마친 공간을 들여다보면 이미지 벡터들과 텍스트 벡터들이 각자 다른 원뿔 모양 영역에 모여 있다. 짝끼리 가깝게 배웠어도 「이미지끼리」의 거리가 「이미지와 글」의 거리보다 늘 가깝다는 뜻이다. 그래서 텍스트 질의로 이미지를 찾는 점수는 이미지로 이미지를 찾는 점수보다 전반적으로 낮게 나오고, 두 점수를 같은 기준으로 자르면 한쪽이 늘 진다. 점수의 절댓값보다 순위로 다루는 것이 안전하다.
 
-### 이미지 캡셔닝, VQA
+### 제로샷 이상 탐지
 
-VLM의 가장 기본적인 응용은 **이미지 캡셔닝**으로, 이미지를 입력받아 자연어 설명을 생성한다. COCO Captions·Flickr30k 같은 데이터셋으로 평가하며, CIDEr·BLEU·METEOR 같은 n-gram 기반 지표와 CLIPScore 같은 임베딩 기반 지표를 사용한다.
+같은 공간으로 품질 검사도 할 수 있다. 「흠집 없는 매끈한 금속 부품」과 「긁힘이 있는 손상된 금속 부품」 같은 정상·결함 문장을 여러 개 만들고, 제품 사진이 어느 쪽 문장들에 더 가까운지로 판정한다. WinCLIP은 이미지를 여러 크기의 창으로 잘라 창마다 이 비교를 해, 결함이 어디 있는지까지 표시했다. 결함 사진을 한 장도 모으지 않고 시작할 수 있다는 것이 가장 큰 장점이다.
 
-**VQA**(Visual Question Answering)는 이미지와 질문을 함께 입력받아 답변을 생성하는 작업으로, VQAv2·GQA·TextVQA 같은 벤치마크가 있다. TextVQA는 이미지 속 텍스트를 읽어야 하는 OCR 중심 VQA로, 영수증·간판·표지 이해에 중요하다.
+되는 조건은 결함이 말로 묘사되고 눈에 보이는 크기일 때다. 긁힘·찍힘·얼룩처럼 웹 사진에도 흔한 개념이면 잘 맞는다. 안 되는 조건은 그 반대다 — 미세한 균열, 특정 공정에만 있는 결함, 정상과 불량의 차이가 색조 몇 단계뿐인 경우다. 이런 자리에서는 제로샷을 출발점 삼아 결함 후보를 모으고, 모인 사진으로 전용 모델을 학습하는 순서가 현실적이다.
 
-### 이미지 검색, 이상 탐지
+## 데이터와 벤치마크
 
-CLIP 임베딩 공간의 의미적 유사성을 이용한 **이미지 검색**은 전통적인 키워드 검색을 대체한다. "해질녘 해변가의 실루엣" 같은 추상적인 쿼리로도 관련 이미지를 찾을 수 있다. 이커머스에서는 텍스트 쿼리로 상품을 검색하는 **텍스트-이미지 교차 검색**에 활용된다.
+### 쌍 데이터와 인스트럭션 데이터
 
-**이상 탐지**(Anomaly Detection)에서는 "정상 제품"과 "결함이 있는 제품" 텍스트 프롬프트의 임베딩과 이미지 임베딩의 거리를 비교해 제조업 품질 검사를 자동화할 수 있다. WinCLIP 같은 방법은 별도 파인튜닝 없이 제로샷으로 산업 이상 탐지를 수행한다.
-
-## 학습 데이터와 벤치마크
-
-VLM 학습에 사용되는 주요 데이터셋을 정리하면 다음과 같다:
+VLM 학습에 쓰는 대표적인 데이터를 보면, 무엇을 가르치는가에 따라 두 갈래로 나뉜다.
 
 | 데이터셋 | 규모 | 유형 |
 |---|---|---|
 | LAION-5B | 58억 쌍 | 이미지-텍스트 쌍 |
 | COYO-700M | 7억 쌍 | 이미지-텍스트 쌍 |
-| LLaVA-Instruct-150K | 15만 개 | 시각 인스트럭션 |
+| LLaVA-Instruct-150K | 15만 8천 개 | 시각 인스트럭션 |
 | ShareGPT4V | 120만 개 | GPT-4V 캡션 |
 
-VLM 평가에는 다양한 벤치마크가 사용된다. **MMBench**는 총 6K개 객관식 문제로 멀티모달 능력을 평가한다. **MMMU**(Massive Multidisciplinary Multimodal Understanding)는 대학 수준 전문 지식이 필요한 문제들로 구성된다. **ScienceQA**는 초중고 과학 교과서 문제로 과학 지식 추론을 평가하고, **OCRBench**는 장면 텍스트 인식과 문서 이해를 집중 평가한다.
+위의 두 줄은 쌍 데이터라 정렬을 만든다. 규모가 수억에서 수십억이고, 웹에서 자동으로 모았으므로 품질은 거칠다. 아래 두 줄은 대화와 상세 설명을 가르친다. 규모는 수십만에서 백만 단위로 작지만 한 건 한 건이 길고 공을 들였다. 앞 절의 2단계 구성이 이 두 갈래를 차례로 쓰는 것이다. 우리 데이터로 모델을 손볼 때도 같은 질문을 먼저 던진다 — 모자란 것이 어휘(정렬)인가, 대화법(인스트럭션)인가.
 
-현재 VLM 연구의 최전선은 더 고해상도 이미지 처리, 더 긴 비디오 이해, 3D 공간 추론으로 이동하고 있다. 다음 글에서는 이러한 멀티모달 AI 모델들을 어떻게 체계적으로 평가하는지, MMBench·MMMU·VQA 벤치마크 구조와 평가 방법론을 살펴본다.
+### 벤치마크 넷
+
+모델 카드에 자주 나오는 벤치마크 넷은 재는 것이 서로 다르다. **MMBench**는 약 3천 개의 객관식 문항을 인지·추론 세부 능력별로 나눠, 같은 문제를 보기 순서를 바꿔 여러 번 물어 모두 맞혀야 정답으로 치는 방식으로 찍어서 맞힌 점수를 걷어 낸다. **MMMU**는 대학 수준의 여러 전공 문제 1만 1천여 개로, 도표·악보·화학 구조식 같은 전문 그림과 전공 지식을 함께 요구한다.
+
+**ScienceQA**는 초·중·고 과학 교과 문제 2만여 개로, 그림이 딸린 문제에서 과학적 추론을 본다. **OCRBench**는 장면 속 글자, 문서, 손글씨, 수식 인식을 모은 1,000문항으로 글자 읽기 능력만 따로 잰다. 넷을 나란히 보면 어느 모델이 「지식은 많은데 글자를 못 읽는지」, 「글자는 잘 읽는데 추론이 약한지」가 드러난다.
+
+### 객관식 점수와 우리 과제
+
+벤치마크 점수가 우리 과제 성능으로 곧장 옮겨 오지 않는 이유가 셋 있다. 객관식은 보기에서 고르는 일이라 답을 지어내야 하는 실제 과제보다 쉽다. 공개 벤치마크는 학습 데이터에 섞여 들어갈 위험이 있다. 그리고 우리 이미지 — 사내 양식, 현장 사진, 한국어 문서 — 는 벤치마크의 그림과 분포가 다르다.
+
+그래서 벤치마크는 후보를 거르는 데 쓰고, 고르는 것은 자기 자료로 만든 작은 평가 집합이 한다. 지난 글에서 말한 30~50건짜리 집합이 그것이고, 벤치마크 넷의 구분을 빌려 「글자 읽기 문항」, 「추론 문항」을 나눠 담으면 어느 쪽이 약한지 바로 보인다. 다음 글에서는 이 벤치마크들이 어떻게 만들어지고 어떤 함정을 피하려 하는지, 멀티모달 평가의 방법론을 자세히 살펴본다.
 
 ---
 

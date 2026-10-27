@@ -27,7 +27,7 @@
   <text x="80" y="178" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" xml:space="preserve"><tspan fill="#ffffff">msg = client.messages.</tspan><tspan fill="#7ec8e3" font-weight="600">create</tspan><tspan fill="#ffffff">(</tspan></text>
 
   <!-- Line 9 -->
-  <text x="80" y="196" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" xml:space="preserve"><tspan fill="#ffffff">    model=</tspan><tspan fill="#ce9178">"claude-opus-4-7"</tspan><tspan fill="#ffffff">,</tspan></text>
+  <text x="80" y="196" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" xml:space="preserve"><tspan fill="#ffffff">    model=</tspan><tspan fill="#ce9178">"claude-opus-5-5"</tspan><tspan fill="#ffffff">,</tspan></text>
 
   <!-- Line 10 -->
   <text x="80" y="214" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" xml:space="preserve"><tspan fill="#ffffff">    max_tokens=</tspan><tspan fill="#b5cea8">1024</tspan><tspan fill="#ffffff">, messages=[{</tspan><tspan fill="#ce9178">"role"</tspan><tspan fill="#ffffff">: </tspan><tspan fill="#ce9178">"user"</tspan><tspan fill="#ffffff">,</tspan></text>

@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" viewBox="0 0 880 420" style="display:block">
+  <defs>
+    <pattern id="cell" width="9" height="9" patternUnits="userSpaceOnUse" x="110" y="110">
+      <rect width="9" height="9" fill="#13261a" stroke="#55c555" stroke-width="0.6"/>
+    </pattern>
+    <pattern id="cell2" width="9" height="9" patternUnits="userSpaceOnUse" x="400" y="146">
+      <rect width="9" height="9" fill="#10202a" stroke="#7ec8e3" stroke-width="0.6"/>
+    </pattern>
+  </defs>
+  <rect width="880" height="420" rx="12" fill="#0a0a0a"/>
+  <text x="440" y="44" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="22" font-weight="700" fill="#e8e8e8">이미지 한 장의 토큰 수</text>
+  <text x="440" y="70" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">패치 한 칸이 토큰 하나 — 칸 수가 곧 토큰 수다</text>
+
+  <rect x="110" y="110" width="216" height="216" fill="url(#cell)" stroke="#55c555" stroke-width="1.5"/>
+  <text x="218" y="352" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">336×336 · 14px 패치</text>
+  <text x="218" y="374" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="15" font-weight="600" fill="#55c555">24 × 24 = 576 토큰</text>
+
+  <rect x="400" y="146" width="144" height="144" fill="url(#cell2)" stroke="#7ec8e3" stroke-width="1.5"/>
+  <text x="472" y="352" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">224×224 · 14px 패치</text>
+  <text x="472" y="374" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="15" font-weight="600" fill="#7ec8e3">16 × 16 = 256 토큰</text>
+
+  <rect x="600" y="150" width="230" height="140" rx="8" fill="#14141f" stroke="#7777cc" stroke-width="1.5"/>
+  <text x="620" y="186" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="15" font-weight="600" fill="#e8e8e8">Claude 문서의 셈</text>
+  <text x="620" y="212" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">28×28 픽셀 = 시각 토큰 1개</text>
+  <text x="620" y="238" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">1000×1000 이미지</text>
+  <text x="620" y="264" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="15" font-weight="600" fill="#7777cc">36 × 36 = 1,296 토큰</text>
+
+  <text x="440" y="404" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e8e8e8">변이 1.5배면 토큰은 2.25배 — 토큰 수는 넓이를 따라간다</text>
+</svg>
