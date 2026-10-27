@@ -478,6 +478,8 @@ export const guideProducts: Product[] = [
       Gemini 4 Argon은 2026-10-14에 더했습니다 — 표 맨 위에 서고 드롭다운에도 있습니다. 표에서는
       Ultra · Enterprise만 ✅이고, 각주가 「Not available in Antigravity IDE. Available in the
       Antigravity app, Antigravity CLI, and IDE extensions.」입니다(표면 · 요금제로 갈리는 값).
+      2026-10-28에 Google AI Pro 칸도 ✅ †가 됐습니다 — 「† Available with paid Google AI Pro plans or on
+      trial with eligible premium devices.」
 
       Claude 5.5 둘은 2026-10-06에 더했습니다 — 드롭다운에 「Claude Sonnet 5.5 (Thinking)」·
       「Claude Opus 5.5 (Thinking)」이 섰고, 표의 각주가 「** Available on Google AI Pro for
