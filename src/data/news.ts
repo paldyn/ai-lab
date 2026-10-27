@@ -160,7 +160,7 @@ export interface NewsDetail {
   commentary: string;
 }
 
-export const globalNewsUpdatedAt = '2026-10-26';
+export const globalNewsUpdatedAt = '2026-10-27';
 
 /**
  * 공식 발표 한 건 = 항목 한 개. 2026년 1월부터 쌓는 아카이브이며 오래된 항목을
@@ -171,6 +171,90 @@ export const globalNewsUpdatedAt = '2026-10-26';
  * 목록에서 파생됩니다. 갱신 시 globalNewsUpdatedAt도 함께 올립니다.
  */
 const entries: NewsItem[] = [
+  {
+    id: 'oracle-apps-in-chatgpt',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'OpenAI·Oracle, Oracle 앱을 ChatGPT로 들이는 제휴 확대',
+    summary:
+      'OpenAI와 Oracle이 Oracle 애플리케이션과 데이터를 ChatGPT에 연결하고 OpenAI 모델로 Oracle 신규 제품을 만든다고 발표했다. ' +
+      '미국 Oracle 고객은 Oracle Marketplace에서 OpenAI API·Codex·ChatGPT Work를 살 수 있다.',
+    publishedAt: '2026-10-27',
+    collectedAt: '2026-10-28',
+    category: 'Product',
+    signal: '기업용 에이전트',
+    url: 'https://openai.com/index/oracle-apps-in-chatgpt',
+  },
+  {
+    id: 'building-scientific-understanding-with-academic-communities',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'OpenAI, 수학·전산·물리 새 결과 셋을 외부 연구진과 함께 공개',
+    summary:
+      'OpenAI가 사내 모델이 낸 수학·컴퓨터과학·물리학 결과 셋을 발표하고, 외부 전문가에게 결과 해설을 맡기는 공개 방식을 시험한다고 밝혔다. ' +
+      '결과마다 공개 전략을 달리 정했다.',
+    publishedAt: '2026-10-26',
+    collectedAt: '2026-10-28',
+    category: 'Research',
+    signal: 'AI 수학 발견',
+    url: 'https://openai.com/index/building-scientific-understanding-with-academic-communities',
+  },
+  {
+    id: 'anima',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'Anima, GPT-6·GPT-Live로 진료소 전화 대기 75% 단축',
+    summary:
+      '영국 의료 플랫폼 Anima가 GPT-Live로 전화 접수 비서를, GPT-6 계열로 진료 문서 처리를 돌린다고 OpenAI가 소개했다. ' +
+      '1,000곳 넘는 진료소에서 환자 1,400만 명 넘게를 맡고 있다.',
+    publishedAt: '2026-10-23',
+    collectedAt: '2026-10-28',
+    category: 'Product',
+    signal: '기업 도입 사례',
+    url: 'https://openai.com/index/anima',
+  },
+  {
+    id: 'openai-nask-ai-safety-security-partnership',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'OpenAI, 폴란드 NASK와 AI 안전·보안 연구 협력 협약',
+    summary:
+      'OpenAI가 폴란드 국립연구소 NASK와 AI 안전·보안·기술 연구 협력을 모색하는 협약을 맺었다. ' +
+      '폴란드 AI 안전 연구소 역할을 하는 NASK AI 안전연구센터와 평가 방법과 보호 장치를 함께 연구한다.',
+    publishedAt: '2026-10-23',
+    collectedAt: '2026-10-28',
+    category: 'Corporate',
+    signal: 'AI 안전 연구 협력',
+    url: 'https://openai.com/index/openai-nask-ai-safety-security-partnership',
+  },
+  {
+    id: 'att-legal',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'AT&T 법무팀, OpenAI와 사내 법률 업무 접수 체계 구축',
+    summary:
+      'AT&T 사내 법무 조직이 AI 전담팀 LegalEdge를 바탕으로 OpenAI와 법률 지식 기반을 만든다고 OpenAI가 소개했다. ' +
+      '자연어로 요청을 받아 분류하고 선례와 잇는 접수 체계를 계획하고 있다.',
+    publishedAt: '2026-10-21',
+    collectedAt: '2026-10-28',
+    category: 'Product',
+    signal: '기업 도입 사례',
+    url: 'https://openai.com/index/att-legal',
+  },
+  {
+    id: 'empowering-cyber-defenders',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'OpenAI, 프런티어 AI 민주적 거버넌스 2부 — 사이버 방어자 지원 청사진',
+    summary:
+      'OpenAI가 사이버 방어자를 돕기 위한 정책 청사진을 공개했다. 프런티어 AI의 안전·보안 강화, 사이버보안 현대화, ' +
+      '공공기관 역량 강화 세 분야에서 정부와 업계에 구체적 제안을 내놓았다.',
+    publishedAt: '2026-10-21',
+    collectedAt: '2026-10-28',
+    category: 'Safety',
+    signal: 'AI 사이버 방어',
+    url: 'https://openai.com/index/empowering-cyber-defenders',
+  },
   {
     id: 'blog-genie-4-a-new-generation-of-world-simulation',
     source: 'Google DeepMind',
