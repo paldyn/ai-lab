@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="500" viewBox="0 0 880 500" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+<defs>
+  <marker id="arr" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+    <path d="M 0 0 L 13 7 L 0 14 z" fill="#888"/>
+  </marker>
+  <marker id="arrb" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+    <path d="M 0 0 L 13 7 L 0 14 z" fill="#7ec8e3"/>
+  </marker>
+</defs>
+<rect x="0" y="0" width="880" height="500" rx="12" fill="#0a0a0a"/>
+<text x="440" y="48" font-size="22" fill="#e8e8e8" font-weight="700" text-anchor="middle">F1 부트스트랩 값 10,000개의 분포</text>
+<text x="440" y="76" font-size="13" fill="#888" text-anchor="middle">300문항 · TP 45 · FN 15 · FP 12 · TN 228</text>
+<rect x="80.0" y="398.9" width="20.9" height="1.1" rx="1" fill="#7ec8e3" fill-opacity="0.25"/>
+<rect x="102.4" y="398.1" width="20.9" height="1.9" rx="1" fill="#7ec8e3" fill-opacity="0.25"/>
+<rect x="124.8" y="395.1" width="20.9" height="4.9" rx="1" fill="#7ec8e3" fill-opacity="0.25"/>
+<rect x="147.3" y="396.7" width="20.9" height="3.3" rx="1" fill="#7ec8e3" fill-opacity="0.25"/>
+<rect x="169.7" y="392.7" width="20.9" height="7.3" rx="1" fill="#7ec8e3" fill-opacity="0.25"/>
+<rect x="192.1" y="388.9" width="20.9" height="11.1" rx="1" fill="#7ec8e3" fill-opacity="0.25"/>
+<rect x="214.5" y="380.2" width="20.9" height="19.8" rx="1" fill="#7ec8e3" fill-opacity="0.25"/>
+<rect x="237.0" y="370.4" width="20.9" height="29.6" rx="1" fill="#7ec8e3" fill-opacity="0.25"/>
+<rect x="259.4" y="361.4" width="20.9" height="38.6" rx="1" fill="#7ec8e3" fill-opacity="0.75"/>
+<rect x="281.8" y="338.9" width="20.9" height="61.1" rx="1" fill="#7ec8e3" fill-opacity="0.75"/>
+<rect x="304.2" y="318.2" width="20.9" height="81.8" rx="1" fill="#7ec8e3" fill-opacity="0.75"/>
+<rect x="326.7" y="287.5" width="20.9" height="112.5" rx="1" fill="#7ec8e3" fill-opacity="0.75"/>
+<rect x="349.1" y="262.8" width="20.9" height="137.2" rx="1" fill="#7ec8e3" fill-opacity="0.75"/>
+<rect x="371.5" y="213.1" width="20.9" height="186.9" rx="1" fill="#7ec8e3" fill-opacity="0.75"/>
+<rect x="393.9" y="184.8" width="20.9" height="215.2" rx="1" fill="#7ec8e3" fill-opacity="0.75"/>
+<rect x="416.4" y="188.9" width="20.9" height="211.1" rx="1" fill="#7ec8e3" fill-opacity="0.75"/>
+<rect x="438.8" y="168.8" width="20.9" height="231.2" rx="1" fill="#7ec8e3" fill-opacity="0.75"/>
+<rect x="461.2" y="140.0" width="20.9" height="260.0" rx="1" fill="#7ec8e3" fill-opacity="0.75"/>
+<rect x="483.6" y="150.1" width="20.9" height="249.9" rx="1" fill="#7ec8e3" fill-opacity="0.75"/>
+<rect x="506.1" y="154.1" width="20.9" height="245.9" rx="1" fill="#7ec8e3" fill-opacity="0.75"/>
+<rect x="528.5" y="247.0" width="20.9" height="153.0" rx="1" fill="#7ec8e3" fill-opacity="0.75"/>
+<rect x="550.9" y="252.5" width="20.9" height="147.5" rx="1" fill="#7ec8e3" fill-opacity="0.75"/>
+<rect x="573.3" y="286.7" width="20.9" height="113.3" rx="1" fill="#7ec8e3" fill-opacity="0.75"/>
+<rect x="595.8" y="320.1" width="20.9" height="79.9" rx="1" fill="#7ec8e3" fill-opacity="0.75"/>
+<rect x="618.2" y="346.2" width="20.9" height="53.8" rx="1" fill="#7ec8e3" fill-opacity="0.75"/>
+<rect x="640.6" y="370.1" width="20.9" height="29.9" rx="1" fill="#7ec8e3" fill-opacity="0.25"/>
+<rect x="663.0" y="382.6" width="20.9" height="17.4" rx="1" fill="#7ec8e3" fill-opacity="0.25"/>
+<rect x="685.5" y="394.6" width="20.9" height="5.4" rx="1" fill="#7ec8e3" fill-opacity="0.25"/>
+<rect x="707.9" y="395.7" width="20.9" height="4.3" rx="1" fill="#7ec8e3" fill-opacity="0.25"/>
+<rect x="730.3" y="398.9" width="20.9" height="1.1" rx="1" fill="#7ec8e3" fill-opacity="0.25"/>
+<rect x="775.2" y="399.7" width="20.9" height="0.3" rx="1" fill="#7ec8e3" fill-opacity="0.25"/>
+<line x1="80" y1="400" x2="820" y2="400" stroke="#888" stroke-width="1.5"/>
+<line x1="80.0" y1="400" x2="80.0" y2="406" stroke="#888" stroke-width="1.5"/>
+<text x="80.0" y="424" font-size="13" fill="#888" text-anchor="middle">0.60</text>
+<line x1="192.1212121212122" y1="400" x2="192.1212121212122" y2="406" stroke="#888" stroke-width="1.5"/>
+<text x="192.1" y="424" font-size="13" fill="#888" text-anchor="middle">0.65</text>
+<line x1="304.24242424242414" y1="400" x2="304.24242424242414" y2="406" stroke="#888" stroke-width="1.5"/>
+<text x="304.2" y="424" font-size="13" fill="#888" text-anchor="middle">0.70</text>
+<line x1="416.3636363636364" y1="400" x2="416.3636363636364" y2="406" stroke="#888" stroke-width="1.5"/>
+<text x="416.4" y="424" font-size="13" fill="#888" text-anchor="middle">0.75</text>
+<line x1="528.4848484848485" y1="400" x2="528.4848484848485" y2="406" stroke="#888" stroke-width="1.5"/>
+<text x="528.5" y="424" font-size="13" fill="#888" text-anchor="middle">0.80</text>
+<line x1="640.6060606060605" y1="400" x2="640.6060606060605" y2="406" stroke="#888" stroke-width="1.5"/>
+<text x="640.6" y="424" font-size="13" fill="#888" text-anchor="middle">0.85</text>
+<line x1="752.7272727272727" y1="400" x2="752.7272727272727" y2="406" stroke="#888" stroke-width="1.5"/>
+<text x="752.7" y="424" font-size="13" fill="#888" text-anchor="middle">0.90</text>
+<line x1="254.9" y1="118" x2="254.9" y2="400" stroke="#e8e8e8" stroke-width="1.5" stroke-dasharray="4,4"/>
+<text x="254.9" y="108" font-size="13" fill="#e8e8e8" font-weight="600" text-anchor="middle">2.5% 지점 0.678</text>
+<line x1="636.1" y1="118" x2="636.1" y2="400" stroke="#e8e8e8" stroke-width="1.5" stroke-dasharray="4,4"/>
+<text x="636.1" y="108" font-size="13" fill="#e8e8e8" font-weight="600" text-anchor="middle">97.5% 지점 0.848</text>
+<line x1="459.0" y1="116" x2="459.0" y2="400" stroke="#55c555" stroke-width="2"/>
+<text x="459.0" y="108" font-size="13" fill="#55c555" font-weight="700" text-anchor="middle">F1 = 0.769</text>
+<path d="M 254.9 440 L 254.9 448 L 636.1 448 L 636.1 440" stroke="#7ec8e3" stroke-width="2" fill="none"/>
+<text x="445.5" y="472" font-size="13" fill="#7ec8e3" font-weight="600" text-anchor="middle">95% 백분위수 구간 · 가운데 9,500개</text>
+<text x="100" y="190" font-size="13" fill="#888">아래 250개</text>
+<text x="780" y="190" font-size="13" fill="#888" text-anchor="end">위 250개</text>
+</svg>

@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="440" viewBox="0 0 880 440">
+<rect width="880" height="440" rx="12" fill="#0a0a0a"/>
+<text x="440" y="42" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="22" font-weight="700" fill="#e8e8e8">행렬곱의 연산량은 세 치수를 곱하고 2를 붙인 것이다</text>
+<text x="440" y="68" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">m = 3, k = 5, n = 4 · 성분 하나를 만드는 데 곱셈 k번과 덧셈 k − 1번</text>
+<rect x="80" y="160" width="24" height="24" rx="3" fill="#1a1a1a" stroke="#444" stroke-width="1"/>
+<rect x="108" y="160" width="24" height="24" rx="3" fill="#1a1a1a" stroke="#444" stroke-width="1"/>
+<rect x="136" y="160" width="24" height="24" rx="3" fill="#1a1a1a" stroke="#444" stroke-width="1"/>
+<rect x="164" y="160" width="24" height="24" rx="3" fill="#1a1a1a" stroke="#444" stroke-width="1"/>
+<rect x="192" y="160" width="24" height="24" rx="3" fill="#1a1a1a" stroke="#444" stroke-width="1"/>
+<rect x="80" y="188" width="24" height="24" rx="3" fill="#7ec8e3" fill-opacity="0.35" stroke="#444" stroke-width="1"/>
+<rect x="108" y="188" width="24" height="24" rx="3" fill="#7ec8e3" fill-opacity="0.35" stroke="#444" stroke-width="1"/>
+<rect x="136" y="188" width="24" height="24" rx="3" fill="#7ec8e3" fill-opacity="0.35" stroke="#444" stroke-width="1"/>
+<rect x="164" y="188" width="24" height="24" rx="3" fill="#7ec8e3" fill-opacity="0.35" stroke="#444" stroke-width="1"/>
+<rect x="192" y="188" width="24" height="24" rx="3" fill="#7ec8e3" fill-opacity="0.35" stroke="#444" stroke-width="1"/>
+<rect x="80" y="216" width="24" height="24" rx="3" fill="#1a1a1a" stroke="#444" stroke-width="1"/>
+<rect x="108" y="216" width="24" height="24" rx="3" fill="#1a1a1a" stroke="#444" stroke-width="1"/>
+<rect x="136" y="216" width="24" height="24" rx="3" fill="#1a1a1a" stroke="#444" stroke-width="1"/>
+<rect x="164" y="216" width="24" height="24" rx="3" fill="#1a1a1a" stroke="#444" stroke-width="1"/>
+<rect x="192" y="216" width="24" height="24" rx="3" fill="#1a1a1a" stroke="#444" stroke-width="1"/>
+<rect x="340" y="118" width="24" height="24" rx="3" fill="#1a1a1a" stroke="#444" stroke-width="1"/>
+<rect x="368" y="118" width="24" height="24" rx="3" fill="#1a1a1a" stroke="#444" stroke-width="1"/>
+<rect x="396" y="118" width="24" height="24" rx="3" fill="#7ec8e3" fill-opacity="0.35" stroke="#444" stroke-width="1"/>
+<rect x="424" y="118" width="24" height="24" rx="3" fill="#1a1a1a" stroke="#444" stroke-width="1"/>
+<rect x="340" y="146" width="24" height="24" rx="3" fill="#1a1a1a" stroke="#444" stroke-width="1"/>
+<rect x="368" y="146" width="24" height="24" rx="3" fill="#1a1a1a" stroke="#444" stroke-width="1"/>
+<rect x="396" y="146" width="24" height="24" rx="3" fill="#7ec8e3" fill-opacity="0.35" stroke="#444" stroke-width="1"/>
+<rect x="424" y="146" width="24" height="24" rx="3" fill="#1a1a1a" stroke="#444" stroke-width="1"/>
+<rect x="340" y="174" width="24" height="24" rx="3" fill="#1a1a1a" stroke="#444" stroke-width="1"/>
+<rect x="368" y="174" width="24" height="24" rx="3" fill="#1a1a1a" stroke="#444" stroke-width="1"/>
+<rect x="396" y="174" width="24" height="24" rx="3" fill="#7ec8e3" fill-opacity="0.35" stroke="#444" stroke-width="1"/>
+<rect x="424" y="174" width="24" height="24" rx="3" fill="#1a1a1a" stroke="#444" stroke-width="1"/>
+<rect x="340" y="202" width="24" height="24" rx="3" fill="#1a1a1a" stroke="#444" stroke-width="1"/>
+<rect x="368" y="202" width="24" height="24" rx="3" fill="#1a1a1a" stroke="#444" stroke-width="1"/>
+<rect x="396" y="202" width="24" height="24" rx="3" fill="#7ec8e3" fill-opacity="0.35" stroke="#444" stroke-width="1"/>
+<rect x="424" y="202" width="24" height="24" rx="3" fill="#1a1a1a" stroke="#444" stroke-width="1"/>
+<rect x="340" y="230" width="24" height="24" rx="3" fill="#1a1a1a" stroke="#444" stroke-width="1"/>
+<rect x="368" y="230" width="24" height="24" rx="3" fill="#1a1a1a" stroke="#444" stroke-width="1"/>
+<rect x="396" y="230" width="24" height="24" rx="3" fill="#7ec8e3" fill-opacity="0.35" stroke="#444" stroke-width="1"/>
+<rect x="424" y="230" width="24" height="24" rx="3" fill="#1a1a1a" stroke="#444" stroke-width="1"/>
+<rect x="600" y="160" width="24" height="24" rx="3" fill="#1a1a1a" stroke="#444" stroke-width="1"/>
+<rect x="628" y="160" width="24" height="24" rx="3" fill="#1a1a1a" stroke="#444" stroke-width="1"/>
+<rect x="656" y="160" width="24" height="24" rx="3" fill="#1a1a1a" stroke="#444" stroke-width="1"/>
+<rect x="684" y="160" width="24" height="24" rx="3" fill="#1a1a1a" stroke="#444" stroke-width="1"/>
+<rect x="600" y="188" width="24" height="24" rx="3" fill="#1a1a1a" stroke="#444" stroke-width="1"/>
+<rect x="628" y="188" width="24" height="24" rx="3" fill="#1a1a1a" stroke="#444" stroke-width="1"/>
+<rect x="656" y="188" width="24" height="24" rx="3" fill="#7ec8e3" fill-opacity="0.35" stroke="#444" stroke-width="1"/>
+<rect x="684" y="188" width="24" height="24" rx="3" fill="#1a1a1a" stroke="#444" stroke-width="1"/>
+<rect x="600" y="216" width="24" height="24" rx="3" fill="#1a1a1a" stroke="#444" stroke-width="1"/>
+<rect x="628" y="216" width="24" height="24" rx="3" fill="#1a1a1a" stroke="#444" stroke-width="1"/>
+<rect x="656" y="216" width="24" height="24" rx="3" fill="#1a1a1a" stroke="#444" stroke-width="1"/>
+<rect x="684" y="216" width="24" height="24" rx="3" fill="#1a1a1a" stroke="#444" stroke-width="1"/>
+<text x="148.0" y="144" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#e8e8e8">A  (3 × 5)</text>
+<text x="394.0" y="102" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#e8e8e8">B  (5 × 4)</text>
+<text x="654.0" y="144" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#e8e8e8">C  (3 × 4)</text>
+<text x="248" y="206.0" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="22" fill="#e8e8e8">×</text>
+<text x="512" y="206.0" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="22" fill="#e8e8e8">=</text>
+<text x="148.0" y="270" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">행 하나: k = 5칸</text>
+<text x="394.0" y="284" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">열 하나: k = 5칸</text>
+<text x="654.0" y="270" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">성분 mn = 12개</text>
+<rect x="60" y="330" width="360" height="72" rx="8" fill="#111" stroke="#7ec8e3" stroke-width="1.5"/>
+<text x="240.0" y="358" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#e8e8e8">성분 하나 = 곱셈 5 + 덧셈 4 = 9</text>
+<text x="240.0" y="382" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">≈ 2k = 10 FLOPs</text>
+<rect x="460" y="330" width="360" height="72" rx="8" fill="#111" stroke="#7777cc" stroke-width="1.5"/>
+<text x="640.0" y="358" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#e8e8e8">전체 = 12 × 9 = 108 FLOPs</text>
+<text x="640.0" y="382" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">어림 2mkn = 120 · 차이는 mn = 12</text>
+</svg>

@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="430" viewBox="0 0 880 430">
+<rect width="880" height="430" rx="12" fill="#0a0a0a"/>
+<text x="440" y="42" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="22" font-weight="700" fill="#e8e8e8">블록 하나의 FLOPs: 토큰마다 하는 일과 토큰 쌍마다 하는 일</text>
+<text x="440" y="68" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">F(n) = 24nd² + 4n²d · 어텐션 행렬의 몫 = n / (6d + n)</text>
+<rect x="70.0" y="96" width="170" height="64" rx="8" fill="#111" stroke="#7ec8e3" stroke-width="1.5"/>
+<text x="155.0" y="123" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">투영 Q·K·V·O</text>
+<text x="155.0" y="145" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#e8e8e8">8nd²</text>
+<rect x="260.0" y="96" width="170" height="64" rx="8" fill="#111" stroke="#7ec8e3" stroke-width="1.5"/>
+<text x="345.0" y="123" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">FFN</text>
+<text x="345.0" y="145" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#e8e8e8">16nd²</text>
+<rect x="450.0" y="96" width="170" height="64" rx="8" fill="#111" stroke="#e05555" stroke-width="1.5"/>
+<text x="535.0" y="123" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">점수 QKᵀ</text>
+<text x="535.0" y="145" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#e8e8e8">2n²d</text>
+<rect x="640.0" y="96" width="170" height="64" rx="8" fill="#111" stroke="#e05555" stroke-width="1.5"/>
+<text x="725.0" y="123" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">가중합 AV</text>
+<text x="725.0" y="145" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#e8e8e8">2n²d</text>
+<text x="255" y="186" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#7ec8e3">선형 항 24nd² · n에 일차</text>
+<text x="625" y="186" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e05555">어텐션 항 4n²d · n에 이차</text>
+<text x="184" y="247" text-anchor="end" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e8e8e8">n = 4,096</text>
+<rect x="200" y="222" width="514.3" height="38" fill="#7ec8e3" fill-opacity="0.35" stroke="#7ec8e3" stroke-width="1"/>
+<rect x="714.3" y="222" width="85.7" height="38" fill="#e05555" fill-opacity="0.35" stroke="#e05555" stroke-width="1"/>
+<text x="457.14285714285717" y="246" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e8e8e8">선형 85.7%</text>
+<text x="757.1428571428571" y="246" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e8e8e8">14.3%</text>
+<text x="184" y="303" text-anchor="end" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e8e8e8">n = 24,576</text>
+<rect x="200" y="278" width="300.0" height="38" fill="#7ec8e3" fill-opacity="0.35" stroke="#7ec8e3" stroke-width="1"/>
+<rect x="500.0" y="278" width="300.0" height="38" fill="#e05555" fill-opacity="0.35" stroke="#e05555" stroke-width="1"/>
+<text x="350.0" y="302" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e8e8e8">선형 50.0%</text>
+<text x="650.0" y="302" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e8e8e8">어텐션 50.0%</text>
+<text x="184" y="359" text-anchor="end" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e8e8e8">n = 65,536</text>
+<rect x="200" y="334" width="163.6" height="38" fill="#7ec8e3" fill-opacity="0.35" stroke="#7ec8e3" stroke-width="1"/>
+<rect x="363.6" y="334" width="436.4" height="38" fill="#e05555" fill-opacity="0.35" stroke="#e05555" stroke-width="1"/>
+<text x="281.81" y="358" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e8e8e8">선형 27.3%</text>
+<text x="581.81" y="358" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e8e8e8">어텐션 72.7%</text>
+<text x="440" y="404" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">d = 4096 · 두 항은 n = 6d = 24,576에서 같아진다</text>
+</svg>

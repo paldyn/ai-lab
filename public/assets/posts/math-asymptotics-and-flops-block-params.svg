@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="406" viewBox="0 0 880 406">
+<rect width="880" height="406" rx="12" fill="#0a0a0a"/>
+<text x="440" y="42" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="22" font-weight="700" fill="#e8e8e8">블록 하나의 파라미터는 12d²이고 그중 3분의 2가 FFN이다</text>
+<text x="440" y="68" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">d = 4096 · 칸 하나가 d × d 행렬 하나 = 16,777,216개</text>
+<rect x="80" y="130" width="56" height="64" rx="6" fill="#7ec8e3" fill-opacity="0.25" stroke="#7ec8e3" stroke-width="1.5"/>
+<text x="108.0" y="167.0" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="600" fill="#e8e8e8">W<tspan baseline-shift="sub" font-size="11">Q</tspan></text>
+<rect x="140" y="130" width="56" height="64" rx="6" fill="#7ec8e3" fill-opacity="0.25" stroke="#7ec8e3" stroke-width="1.5"/>
+<text x="168.0" y="167.0" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="600" fill="#e8e8e8">W<tspan baseline-shift="sub" font-size="11">K</tspan></text>
+<rect x="200" y="130" width="56" height="64" rx="6" fill="#7ec8e3" fill-opacity="0.25" stroke="#7ec8e3" stroke-width="1.5"/>
+<text x="228.0" y="167.0" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="600" fill="#e8e8e8">W<tspan baseline-shift="sub" font-size="11">V</tspan></text>
+<rect x="260" y="130" width="56" height="64" rx="6" fill="#7ec8e3" fill-opacity="0.25" stroke="#7ec8e3" stroke-width="1.5"/>
+<text x="288.0" y="167.0" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="600" fill="#e8e8e8">W<tspan baseline-shift="sub" font-size="11">O</tspan></text>
+<rect x="320" y="130" width="236" height="64" rx="6" fill="#7777cc" fill-opacity="0.25" stroke="#7777cc" stroke-width="1.5"/>
+<text x="438.0" y="167.0" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#e8e8e8">W₁  (d × 4d)</text>
+<rect x="560" y="130" width="236" height="64" rx="6" fill="#7777cc" fill-opacity="0.25" stroke="#7777cc" stroke-width="1.5"/>
+<text x="678.0" y="167.0" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#e8e8e8">W₂  (4d × d)</text>
+<path d="M 80 206 L 80 216 L 316 216 L 316 206" fill="none" stroke="#7ec8e3" stroke-width="1.5"/>
+<text x="198.0" y="242" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#e8e8e8">어텐션 투영 4d²</text>
+<text x="198.0" y="264" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">67,108,864개 (약 6,711만)</text>
+<path d="M 320 206 L 320 216 L 796 216 L 796 206" fill="none" stroke="#7777cc" stroke-width="1.5"/>
+<text x="558.0" y="242" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#e8e8e8">FFN 8d²</text>
+<text x="558.0" y="264" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">134,217,728개 (약 1억 3,422만)</text>
+<line x1="80" y1="294" x2="796" y2="294" stroke="#444" stroke-width="1"/>
+<text x="440" y="330" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#e8e8e8">블록 하나 = 12d² = 201,326,592개 (약 2억)</text>
+<text x="440" y="354" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">편향 9d + 정규화 4d = 13d = 53,248개 → 블록의 0.026%라 버린다</text>
+<text x="440" y="378" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">32층이면 12 × 32 × d² = 6,442,450,944개</text>
+</svg>

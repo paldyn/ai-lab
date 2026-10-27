@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="440" viewBox="0 0 880 440" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+<defs><marker id="arr" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto"><path d="M 0 0 L 13 7 L 0 14 z" fill="#888"/></marker></defs>
+<rect x="0" y="0" width="880" height="440" rx="12" fill="#0a0a0a"/>
+<text x="440" y="44" text-anchor="middle" font-size="22" font-weight="700" fill="#e8e8e8">500문항에서 82%와 84%</text>
+<text x="440" y="72" text-anchor="middle" font-size="14" fill="#888">왼쪽: 각 점수의 95% 구간 · 오른쪽: 차이의 95% 구간</text>
+<line x1="120.0" y1="104.0" x2="120.0" y2="370.0" stroke="#888" stroke-width="1.5"/>
+<line x1="115.0" y1="370.0" x2="120.0" y2="370.0" stroke="#444" stroke-width="1"/>
+<text x="110.0" y="374.0" text-anchor="end" font-size="12" fill="#888">76</text>
+<line x1="115.0" y1="332.9" x2="120.0" y2="332.9" stroke="#444" stroke-width="1"/>
+<text x="110.0" y="336.9" text-anchor="end" font-size="12" fill="#888">78</text>
+<line x1="115.0" y1="295.7" x2="120.0" y2="295.7" stroke="#444" stroke-width="1"/>
+<text x="110.0" y="299.7" text-anchor="end" font-size="12" fill="#888">80</text>
+<line x1="115.0" y1="258.6" x2="120.0" y2="258.6" stroke="#444" stroke-width="1"/>
+<text x="110.0" y="262.6" text-anchor="end" font-size="12" fill="#888">82</text>
+<line x1="115.0" y1="221.4" x2="120.0" y2="221.4" stroke="#444" stroke-width="1"/>
+<text x="110.0" y="225.4" text-anchor="end" font-size="12" fill="#888">84</text>
+<line x1="115.0" y1="184.3" x2="120.0" y2="184.3" stroke="#444" stroke-width="1"/>
+<text x="110.0" y="188.3" text-anchor="end" font-size="12" fill="#888">86</text>
+<line x1="115.0" y1="147.1" x2="120.0" y2="147.1" stroke="#444" stroke-width="1"/>
+<text x="110.0" y="151.1" text-anchor="end" font-size="12" fill="#888">88</text>
+<line x1="115.0" y1="110.0" x2="120.0" y2="110.0" stroke="#444" stroke-width="1"/>
+<text x="110.0" y="114.0" text-anchor="end" font-size="12" fill="#888">90</text>
+<text x="120.0" y="94.0" text-anchor="middle" font-size="13" fill="#888">%</text>
+<line x1="220.0" y1="321.1" x2="220.0" y2="196.0" stroke="#7ec8e3" stroke-width="3"/>
+<line x1="210.0" y1="321.1" x2="230.0" y2="321.1" stroke="#7ec8e3" stroke-width="2"/>
+<line x1="210.0" y1="196.0" x2="230.0" y2="196.0" stroke="#7ec8e3" stroke-width="2"/>
+<circle cx="220" cy="258.6" r="5" fill="#e8e8e8"/>
+<text x="220.0" y="394.0" text-anchor="middle" font-size="13" fill="#e8e8e8" font-weight="600">모델 A</text>
+<text x="236.0" y="200.0" text-anchor="start" font-size="12" fill="#888">85.4</text>
+<text x="236.0" y="325.1" text-anchor="start" font-size="12" fill="#888">78.6</text>
+<text x="236.0" y="262.6" text-anchor="start" font-size="12" fill="#e8e8e8">82</text>
+<line x1="330.0" y1="281.1" x2="330.0" y2="161.8" stroke="#7ec8e3" stroke-width="3"/>
+<line x1="320.0" y1="281.1" x2="340.0" y2="281.1" stroke="#7ec8e3" stroke-width="2"/>
+<line x1="320.0" y1="161.8" x2="340.0" y2="161.8" stroke="#7ec8e3" stroke-width="2"/>
+<circle cx="330" cy="221.4" r="5" fill="#e8e8e8"/>
+<text x="330.0" y="394.0" text-anchor="middle" font-size="13" fill="#e8e8e8" font-weight="600">모델 B</text>
+<text x="346.0" y="165.8" text-anchor="start" font-size="12" fill="#888">87.2</text>
+<text x="346.0" y="285.1" text-anchor="start" font-size="12" fill="#888">80.8</text>
+<text x="346.0" y="225.4" text-anchor="start" font-size="12" fill="#e8e8e8">84</text>
+<rect x="150" y="195.4" width="250" height="85.4" fill="#7777cc" fill-opacity="0.15"/>
+<text x="275.0" y="418.0" text-anchor="middle" font-size="12" fill="#7777cc">겹치는 폭 80.8~85.4</text>
+<line x1="500.0" y1="280.0" x2="820.0" y2="280.0" stroke="#888" stroke-width="1.5"/>
+<line x1="500.0" y1="280.0" x2="500.0" y2="285.0" stroke="#444" stroke-width="1"/>
+<text x="500.0" y="302.0" text-anchor="middle" font-size="12" fill="#888">-4</text>
+<line x1="553.3" y1="280.0" x2="553.3" y2="285.0" stroke="#444" stroke-width="1"/>
+<text x="553.3" y="302.0" text-anchor="middle" font-size="12" fill="#888">-2</text>
+<line x1="606.7" y1="280.0" x2="606.7" y2="285.0" stroke="#444" stroke-width="1"/>
+<text x="606.7" y="302.0" text-anchor="middle" font-size="12" fill="#888">0</text>
+<line x1="660.0" y1="280.0" x2="660.0" y2="285.0" stroke="#444" stroke-width="1"/>
+<text x="660.0" y="302.0" text-anchor="middle" font-size="12" fill="#888">+2</text>
+<line x1="713.3" y1="280.0" x2="713.3" y2="285.0" stroke="#444" stroke-width="1"/>
+<text x="713.3" y="302.0" text-anchor="middle" font-size="12" fill="#888">+4</text>
+<line x1="766.7" y1="280.0" x2="766.7" y2="285.0" stroke="#444" stroke-width="1"/>
+<text x="766.7" y="302.0" text-anchor="middle" font-size="12" fill="#888">+6</text>
+<line x1="820.0" y1="280.0" x2="820.0" y2="285.0" stroke="#444" stroke-width="1"/>
+<text x="820.0" y="302.0" text-anchor="middle" font-size="12" fill="#888">+8</text>
+<text x="660.0" y="326.0" text-anchor="middle" font-size="13" fill="#888">B − A (%p)</text>
+<line x1="606.7" y1="130.0" x2="606.7" y2="280.0" stroke="#e05555" stroke-width="1.5" stroke-dasharray="4,4"/>
+<text x="606.7" y="120.0" text-anchor="middle" font-size="12" fill="#e05555">차이 0</text>
+<line x1="536.0" y1="240.0" x2="784.0" y2="240.0" stroke="#7ec8e3" stroke-width="3"/>
+<line x1="536.0" y1="230.0" x2="536.0" y2="250.0" stroke="#7ec8e3" stroke-width="2"/>
+<line x1="784.0" y1="230.0" x2="784.0" y2="250.0" stroke="#7ec8e3" stroke-width="2"/>
+<circle cx="660.0" cy="240" r="5" fill="#e8e8e8"/>
+<text x="660.0" y="222.0" text-anchor="middle" font-size="13" fill="#e8e8e8" font-weight="600">2.0 ± 4.65</text>
+<text x="536.0" y="266.0" text-anchor="middle" font-size="12" fill="#7ec8e3">−2.65</text>
+<text x="784.0" y="266.0" text-anchor="middle" font-size="12" fill="#7ec8e3">+6.65</text>
+<text x="660.0" y="356.0" text-anchor="middle" font-size="13" fill="#888">차이의 표준오차 2.37%p, z = 0.84</text>
+</svg>

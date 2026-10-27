@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="520" viewBox="0 0 880 520" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+<defs>
+  <marker id="arr" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+    <path d="M 0 0 L 13 7 L 0 14 z" fill="#888"/>
+  </marker>
+  <marker id="arrb" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+    <path d="M 0 0 L 13 7 L 0 14 z" fill="#7ec8e3"/>
+  </marker>
+</defs>
+<rect x="0" y="0" width="880" height="520" rx="12" fill="#0a0a0a"/>
+<text x="440" y="48" font-size="22" fill="#e8e8e8" font-weight="700" text-anchor="middle">치우친 통계량: 백분위수 구간과 BCa 구간</text>
+<text x="440" y="76" font-size="13" fill="#888" text-anchor="middle">에이전트 토큰 수 40회의 평균 · 부트스트랩 10,000번</text>
+<rect x="80.0" y="329.6" width="32.1" height="0.4" rx="1" fill="#7ec8e3" fill-opacity="0.45"/>
+<rect x="113.6" y="323.6" width="32.1" height="6.4" rx="1" fill="#7ec8e3" fill-opacity="0.45"/>
+<rect x="147.3" y="312.1" width="32.1" height="17.9" rx="1" fill="#7ec8e3" fill-opacity="0.45"/>
+<rect x="180.9" y="283.4" width="32.1" height="46.6" rx="1" fill="#7ec8e3" fill-opacity="0.45"/>
+<rect x="214.5" y="242.2" width="32.1" height="87.8" rx="1" fill="#7ec8e3" fill-opacity="0.45"/>
+<rect x="248.2" y="193.3" width="32.1" height="136.7" rx="1" fill="#7ec8e3" fill-opacity="0.45"/>
+<rect x="281.8" y="152.6" width="32.1" height="177.4" rx="1" fill="#7ec8e3" fill-opacity="0.45"/>
+<rect x="315.5" y="130.0" width="32.1" height="200.0" rx="1" fill="#7ec8e3" fill-opacity="0.45"/>
+<rect x="349.1" y="135.4" width="32.1" height="194.6" rx="1" fill="#7ec8e3" fill-opacity="0.45"/>
+<rect x="382.7" y="161.1" width="32.1" height="168.9" rx="1" fill="#7ec8e3" fill-opacity="0.45"/>
+<rect x="416.4" y="191.6" width="32.1" height="138.4" rx="1" fill="#7ec8e3" fill-opacity="0.45"/>
+<rect x="450.0" y="232.7" width="32.1" height="97.3" rx="1" fill="#7ec8e3" fill-opacity="0.45"/>
+<rect x="483.6" y="261.2" width="32.1" height="68.8" rx="1" fill="#7ec8e3" fill-opacity="0.45"/>
+<rect x="517.3" y="280.0" width="32.1" height="50.0" rx="1" fill="#7ec8e3" fill-opacity="0.45"/>
+<rect x="550.9" y="304.3" width="32.1" height="25.7" rx="1" fill="#7ec8e3" fill-opacity="0.45"/>
+<rect x="584.5" y="314.8" width="32.1" height="15.2" rx="1" fill="#7ec8e3" fill-opacity="0.45"/>
+<rect x="618.2" y="322.6" width="32.1" height="7.4" rx="1" fill="#7ec8e3" fill-opacity="0.45"/>
+<rect x="651.8" y="327.0" width="32.1" height="3.0" rx="1" fill="#7ec8e3" fill-opacity="0.45"/>
+<rect x="685.5" y="328.1" width="32.1" height="1.9" rx="1" fill="#7ec8e3" fill-opacity="0.45"/>
+<rect x="719.1" y="329.3" width="32.1" height="0.7" rx="1" fill="#7ec8e3" fill-opacity="0.45"/>
+<rect x="752.7" y="329.3" width="32.1" height="0.7" rx="1" fill="#7ec8e3" fill-opacity="0.45"/>
+<rect x="786.4" y="329.9" width="32.1" height="0.1" rx="1" fill="#7ec8e3" fill-opacity="0.45"/>
+<line x1="80" y1="330" x2="820" y2="330" stroke="#888" stroke-width="1.5"/>
+<line x1="169.7" y1="330" x2="169.7" y2="336" stroke="#888" stroke-width="1.5"/>
+<text x="169.7" y="354" font-size="13" fill="#888" text-anchor="middle">10,000</text>
+<line x1="281.8" y1="330" x2="281.8" y2="336" stroke="#888" stroke-width="1.5"/>
+<text x="281.8" y="354" font-size="13" fill="#888" text-anchor="middle">15,000</text>
+<line x1="393.9" y1="330" x2="393.9" y2="336" stroke="#888" stroke-width="1.5"/>
+<text x="393.9" y="354" font-size="13" fill="#888" text-anchor="middle">20,000</text>
+<line x1="506.1" y1="330" x2="506.1" y2="336" stroke="#888" stroke-width="1.5"/>
+<text x="506.1" y="354" font-size="13" fill="#888" text-anchor="middle">25,000</text>
+<line x1="618.2" y1="330" x2="618.2" y2="336" stroke="#888" stroke-width="1.5"/>
+<text x="618.2" y="354" font-size="13" fill="#888" text-anchor="middle">30,000</text>
+<line x1="730.3" y1="330" x2="730.3" y2="336" stroke="#888" stroke-width="1.5"/>
+<text x="730.3" y="354" font-size="13" fill="#888" text-anchor="middle">35,000</text>
+<line x1="365.9" y1="112" x2="365.9" y2="330" stroke="#e8e8e8" stroke-width="2"/>
+<text x="375.9" y="116" font-size="13" fill="#e8e8e8" font-weight="700">표본 평균 18,751</text>
+<text x="780" y="180" font-size="13" fill="#888" text-anchor="end">오른쪽 꼬리가 길다</text>
+<line x1="192.2" y1="400" x2="572.0" y2="400" stroke="#7777cc" stroke-width="4"/>
+<line x1="192.2" y1="391" x2="192.2" y2="409" stroke="#7777cc" stroke-width="2"/>
+<line x1="572.0" y1="391" x2="572.0" y2="409" stroke="#7777cc" stroke-width="2"/>
+<text x="180.2" y="405" font-size="13" fill="#7777cc" font-weight="600" text-anchor="end">11,004</text>
+<text x="584.0" y="405" font-size="13" fill="#7777cc" font-weight="600">27,940</text>
+<text x="365.9" y="384" font-size="13" fill="#e8e8e8" font-weight="600" text-anchor="middle">백분위수 · 2.5% ~ 97.5% 지점 · 포함 87.4%</text>
+<line x1="222.0" y1="470" x2="633.3" y2="470" stroke="#55c555" stroke-width="4"/>
+<line x1="222.0" y1="461" x2="222.0" y2="479" stroke="#55c555" stroke-width="2"/>
+<line x1="633.3" y1="461" x2="633.3" y2="479" stroke="#55c555" stroke-width="2"/>
+<text x="210.0" y="475" font-size="13" fill="#55c555" font-weight="600" text-anchor="end">12,331</text>
+<text x="645.3" y="475" font-size="13" fill="#55c555" font-weight="600">30,675</text>
+<text x="365.9" y="454" font-size="13" fill="#e8e8e8" font-weight="600" text-anchor="middle">BCa · 5.8% ~ 99.3% 지점 · 포함 89.1%</text>
+</svg>

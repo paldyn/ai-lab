@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="400" viewBox="0 0 880 400" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+<defs><marker id="arr" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto"><path d="M 0 0 L 13 7 L 0 14 z" fill="#888"/></marker></defs>
+<rect x="0" y="0" width="880" height="400" rx="12" fill="#0a0a0a"/>
+<text x="440" y="44" text-anchor="middle" font-size="22" font-weight="700" fill="#e8e8e8">오차막대 없는 벤치마크 표를 읽는 네 걸음</text>
+<text x="440" y="72" text-anchor="middle" font-size="14" fill="#888">예: 500문항짜리 벤치마크에서 82.0과 84.0</text>
+<rect x="60" y="120" width="170" height="150" rx="10" fill="#141a24" stroke="#3a4a6e" stroke-width="1.5"/>
+<text x="145.0" y="166.0" text-anchor="middle" font-size="16" fill="#e8e8e8" font-weight="600">① 문항 수 n</text>
+<text x="145.0" y="200.0" text-anchor="middle" font-size="12" fill="#888">논문·카드에서 찾는다</text>
+<text x="145.0" y="236.0" text-anchor="middle" font-size="15" fill="#7ec8e3" font-weight="600">n = 500</text>
+<line x1="230" y1="195.0" x2="266" y2="195.0" stroke="#888" stroke-width="2" marker-end="url(#arr)"/>
+<rect x="266" y="120" width="170" height="150" rx="10" fill="#141a24" stroke="#3a4a6e" stroke-width="1.5"/>
+<text x="351.0" y="166.0" text-anchor="middle" font-size="16" fill="#e8e8e8" font-weight="600">② 한 점수의 폭</text>
+<text x="351.0" y="200.0" text-anchor="middle" font-size="12" fill="#888">95% 반폭 ≈ 1/√n</text>
+<text x="351.0" y="236.0" text-anchor="middle" font-size="15" fill="#7ec8e3" font-weight="600">± 4.5%p</text>
+<line x1="436" y1="195.0" x2="472" y2="195.0" stroke="#888" stroke-width="2" marker-end="url(#arr)"/>
+<rect x="472" y="120" width="170" height="150" rx="10" fill="#141a24" stroke="#3a4a6e" stroke-width="1.5"/>
+<text x="557.0" y="166.0" text-anchor="middle" font-size="16" fill="#e8e8e8" font-weight="600">③ 차이의 폭</text>
+<text x="557.0" y="200.0" text-anchor="middle" font-size="12" fill="#888">한 점수 폭의 √2배</text>
+<text x="557.0" y="236.0" text-anchor="middle" font-size="15" fill="#7ec8e3" font-weight="600">± 6.3%p</text>
+<line x1="642" y1="195.0" x2="678" y2="195.0" stroke="#888" stroke-width="2" marker-end="url(#arr)"/>
+<rect x="678" y="120" width="170" height="150" rx="10" fill="#141a24" stroke="#3a4a6e" stroke-width="1.5"/>
+<text x="763.0" y="166.0" text-anchor="middle" font-size="16" fill="#e8e8e8" font-weight="600">④ 조건 확인</text>
+<text x="763.0" y="200.0" text-anchor="middle" font-size="12" fill="#888">같은 문항 · 반복 실행</text>
+<text x="763.0" y="236.0" text-anchor="middle" font-size="15" fill="#7ec8e3" font-weight="600">차이 2.0은 폭 안</text>
+<text x="440.0" y="320.0" text-anchor="middle" font-size="13" fill="#888">1/√n은 p = 0.5일 때의 가장 넓은 값(1.96 × 0.5 ≈ 1)이다</text>
+<text x="440.0" y="346.0" text-anchor="middle" font-size="13" fill="#888">p가 0.83 근처면 실제 폭은 그보다 좁다: 한 점수 ± 3.2~3.4%p, 차이 ± 4.65%p</text>
+</svg>

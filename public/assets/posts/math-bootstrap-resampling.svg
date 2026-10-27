@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="500" viewBox="0 0 880 500" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+<defs>
+  <marker id="arr" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+    <path d="M 0 0 L 13 7 L 0 14 z" fill="#888"/>
+  </marker>
+  <marker id="arrb" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+    <path d="M 0 0 L 13 7 L 0 14 z" fill="#7ec8e3"/>
+  </marker>
+</defs>
+<rect x="0" y="0" width="880" height="500" rx="12" fill="#0a0a0a"/>
+<text x="440" y="48" font-size="22" fill="#e8e8e8" font-weight="700" text-anchor="middle">부트스트랩 절차: 가진 표본에서 다시 뽑기</text>
+<rect x="60" y="150" width="190" height="180" rx="8" fill="#141414" stroke="#7777cc" stroke-width="1.5"/>
+<text x="155" y="200" font-size="16" fill="#e8e8e8" font-weight="600" text-anchor="middle">원래 표본 300건</text>
+<text x="155" y="234" font-size="13" fill="#888" text-anchor="middle">TP 45 · FN 15</text>
+<text x="155" y="258" font-size="13" fill="#888" text-anchor="middle">FP 12 · TN 228</text>
+<text x="155" y="298" font-size="15" fill="#e8e8e8" font-weight="700" text-anchor="middle">F1 = 0.769</text>
+<rect x="320" y="90" width="260" height="84" rx="8" fill="#141414" stroke="#444" stroke-width="1.5"/>
+<text x="450" y="115" font-size="13" fill="#e8e8e8" font-weight="600" text-anchor="middle">부트스트랩 표본 1 · 서로 다른 문항 189</text>
+<text x="450" y="137" font-size="13" fill="#888" text-anchor="middle">TP 49 · FN 8 · FP 11 · TN 232</text>
+<text x="450" y="159" font-size="13" fill="#7ec8e3" font-weight="700" text-anchor="middle">F1* = 0.838</text>
+<path d="M 250 200 L 320 132" stroke="#888" stroke-width="1.5" fill="none" marker-end="url(#arr)"/>
+<path d="M 580 132 L 650 200" stroke="#888" stroke-width="1.5" fill="none" marker-end="url(#arr)"/>
+<rect x="320" y="200" width="260" height="84" rx="8" fill="#141414" stroke="#444" stroke-width="1.5"/>
+<text x="450" y="225" font-size="13" fill="#e8e8e8" font-weight="600" text-anchor="middle">부트스트랩 표본 2 · 서로 다른 문항 190</text>
+<text x="450" y="247" font-size="13" fill="#888" text-anchor="middle">TP 48 · FN 13 · FP 4 · TN 235</text>
+<text x="450" y="269" font-size="13" fill="#7ec8e3" font-weight="700" text-anchor="middle">F1* = 0.850</text>
+<path d="M 250 240 L 320 242" stroke="#888" stroke-width="1.5" fill="none" marker-end="url(#arr)"/>
+<path d="M 580 242 L 650 240" stroke="#888" stroke-width="1.5" fill="none" marker-end="url(#arr)"/>
+<rect x="320" y="310" width="260" height="84" rx="8" fill="#141414" stroke="#444" stroke-width="1.5"/>
+<text x="450" y="335" font-size="13" fill="#e8e8e8" font-weight="600" text-anchor="middle">부트스트랩 표본 3 · 서로 다른 문항 186</text>
+<text x="450" y="357" font-size="13" fill="#888" text-anchor="middle">TP 34 · FN 24 · FP 11 · TN 231</text>
+<text x="450" y="379" font-size="13" fill="#7ec8e3" font-weight="700" text-anchor="middle">F1* = 0.660</text>
+<path d="M 250 280 L 320 352" stroke="#888" stroke-width="1.5" fill="none" marker-end="url(#arr)"/>
+<path d="M 580 352 L 650 280" stroke="#888" stroke-width="1.5" fill="none" marker-end="url(#arr)"/>
+<text x="450" y="420" font-size="13" fill="#888" text-anchor="middle">⋮  B = 10,000개까지 되풀이</text>
+<rect x="650" y="150" width="170" height="180" rx="8" fill="#141414" stroke="#55c555" stroke-width="1.5"/>
+<text x="735" y="190" font-size="16" fill="#e8e8e8" font-weight="600" text-anchor="middle">부트스트랩 분포</text>
+<text x="735" y="220" font-size="13" fill="#888" text-anchor="middle">F1* 값 10,000개</text>
+<text x="735" y="244" font-size="13" fill="#888" text-anchor="middle">2.5% 지점 0.678</text>
+<text x="735" y="268" font-size="13" fill="#888" text-anchor="middle">97.5% 지점 0.848</text>
+<text x="735" y="302" font-size="15" fill="#55c555" font-weight="700" text-anchor="middle">SE = 0.0437</text>
+<text x="155" y="465" font-size="13" fill="#e8e8e8" font-weight="600" text-anchor="middle">① 라벨·예측 쌍 300개</text>
+<text x="450" y="465" font-size="13" fill="#e8e8e8" font-weight="600" text-anchor="middle">② 문항 번호를 복원 추출, F1 재계산</text>
+<text x="735" y="465" font-size="13" fill="#e8e8e8" font-weight="600" text-anchor="middle">③ 분포에서 구간 읽기</text>
+</svg>

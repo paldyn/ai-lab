@@ -355,3 +355,5 @@ int8은 0.3%p만 잃고 int4는 점수가 절반 아래로 떨어졌던 장면�
 읽어주셔서 감사합니다. 😊
 
 **지난 글:** [수치적으로 안정한 계산 패턴 모음](/articles/math-numerical-stability-patterns)
+
+**다음 글:** [점근 표기와 연산량 손계산: O·Θ·Ω, 파라미터 수, 어텐션의 O(n²)](/articles/math-asymptotics-and-flops)

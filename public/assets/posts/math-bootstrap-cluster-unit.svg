@@ -1,0 +1,129 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="560" viewBox="0 0 880 560" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+<defs>
+  <marker id="arr" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+    <path d="M 0 0 L 13 7 L 0 14 z" fill="#888"/>
+  </marker>
+  <marker id="arrb" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+    <path d="M 0 0 L 13 7 L 0 14 z" fill="#7ec8e3"/>
+  </marker>
+</defs>
+<rect x="0" y="0" width="880" height="560" rx="12" fill="#0a0a0a"/>
+<text x="440" y="48" font-size="22" fill="#e8e8e8" font-weight="700" text-anchor="middle">재표집 단위: 질문인가 문서인가</text>
+<text x="440" y="76" font-size="13" fill="#888" text-anchor="middle">문서 50개 × 질문 6개 · 실제 표준오차 0.0370 · 원은 질문, 글자는 출처 문서(예시)</text>
+<text x="440" y="116" font-size="16" fill="#e8e8e8" font-weight="600" text-anchor="middle">원래 표본(일부)</text>
+<rect x="90" y="130" width="170" height="40" rx="6" fill="#141414" stroke="#444" stroke-width="1.5"/>
+<circle cx="115" cy="150" r="10" fill="#55c555" fill-opacity="0.25" stroke="#55c555" stroke-width="1.5"/>
+<text x="115" y="154" font-size="11" fill="#e8e8e8" font-weight="700" text-anchor="middle">A</text>
+<circle cx="139" cy="150" r="10" fill="#55c555" fill-opacity="0.25" stroke="#55c555" stroke-width="1.5"/>
+<text x="139" y="154" font-size="11" fill="#e8e8e8" font-weight="700" text-anchor="middle">A</text>
+<circle cx="163" cy="150" r="10" fill="#55c555" fill-opacity="0.25" stroke="#55c555" stroke-width="1.5"/>
+<text x="163" y="154" font-size="11" fill="#e8e8e8" font-weight="700" text-anchor="middle">A</text>
+<circle cx="187" cy="150" r="10" fill="#55c555" fill-opacity="0.25" stroke="#55c555" stroke-width="1.5"/>
+<text x="187" y="154" font-size="11" fill="#e8e8e8" font-weight="700" text-anchor="middle">A</text>
+<circle cx="211" cy="150" r="10" fill="#55c555" fill-opacity="0.25" stroke="#55c555" stroke-width="1.5"/>
+<text x="211" y="154" font-size="11" fill="#e8e8e8" font-weight="700" text-anchor="middle">A</text>
+<circle cx="235" cy="150" r="10" fill="#55c555" fill-opacity="0.25" stroke="#55c555" stroke-width="1.5"/>
+<text x="235" y="154" font-size="11" fill="#e8e8e8" font-weight="700" text-anchor="middle">A</text>
+<rect x="290" y="130" width="170" height="40" rx="6" fill="#141414" stroke="#444" stroke-width="1.5"/>
+<circle cx="315" cy="150" r="10" fill="#55c555" fill-opacity="0.25" stroke="#55c555" stroke-width="1.5"/>
+<text x="315" y="154" font-size="11" fill="#e8e8e8" font-weight="700" text-anchor="middle">B</text>
+<circle cx="339" cy="150" r="10" fill="#55c555" fill-opacity="0.25" stroke="#55c555" stroke-width="1.5"/>
+<text x="339" y="154" font-size="11" fill="#e8e8e8" font-weight="700" text-anchor="middle">B</text>
+<circle cx="363" cy="150" r="10" fill="#55c555" fill-opacity="0.25" stroke="#55c555" stroke-width="1.5"/>
+<text x="363" y="154" font-size="11" fill="#e8e8e8" font-weight="700" text-anchor="middle">B</text>
+<circle cx="387" cy="150" r="10" fill="#55c555" fill-opacity="0.25" stroke="#55c555" stroke-width="1.5"/>
+<text x="387" y="154" font-size="11" fill="#e8e8e8" font-weight="700" text-anchor="middle">B</text>
+<circle cx="411" cy="150" r="10" fill="#55c555" fill-opacity="0.25" stroke="#55c555" stroke-width="1.5"/>
+<text x="411" y="154" font-size="11" fill="#e8e8e8" font-weight="700" text-anchor="middle">B</text>
+<circle cx="435" cy="150" r="10" fill="#e05555" fill-opacity="0.25" stroke="#e05555" stroke-width="1.5"/>
+<text x="435" y="154" font-size="11" fill="#e8e8e8" font-weight="700" text-anchor="middle">B</text>
+<rect x="490" y="130" width="170" height="40" rx="6" fill="#141414" stroke="#444" stroke-width="1.5"/>
+<circle cx="515" cy="150" r="10" fill="#55c555" fill-opacity="0.25" stroke="#55c555" stroke-width="1.5"/>
+<text x="515" y="154" font-size="11" fill="#e8e8e8" font-weight="700" text-anchor="middle">C</text>
+<circle cx="539" cy="150" r="10" fill="#e05555" fill-opacity="0.25" stroke="#e05555" stroke-width="1.5"/>
+<text x="539" y="154" font-size="11" fill="#e8e8e8" font-weight="700" text-anchor="middle">C</text>
+<circle cx="563" cy="150" r="10" fill="#55c555" fill-opacity="0.25" stroke="#55c555" stroke-width="1.5"/>
+<text x="563" y="154" font-size="11" fill="#e8e8e8" font-weight="700" text-anchor="middle">C</text>
+<circle cx="587" cy="150" r="10" fill="#55c555" fill-opacity="0.25" stroke="#55c555" stroke-width="1.5"/>
+<text x="587" y="154" font-size="11" fill="#e8e8e8" font-weight="700" text-anchor="middle">C</text>
+<circle cx="611" cy="150" r="10" fill="#e05555" fill-opacity="0.25" stroke="#e05555" stroke-width="1.5"/>
+<text x="611" y="154" font-size="11" fill="#e8e8e8" font-weight="700" text-anchor="middle">C</text>
+<circle cx="635" cy="150" r="10" fill="#e05555" fill-opacity="0.25" stroke="#e05555" stroke-width="1.5"/>
+<text x="635" y="154" font-size="11" fill="#e8e8e8" font-weight="700" text-anchor="middle">C</text>
+<rect x="690" y="130" width="170" height="40" rx="6" fill="#141414" stroke="#444" stroke-width="1.5"/>
+<circle cx="715" cy="150" r="10" fill="#e05555" fill-opacity="0.25" stroke="#e05555" stroke-width="1.5"/>
+<text x="715" y="154" font-size="11" fill="#e8e8e8" font-weight="700" text-anchor="middle">D</text>
+<circle cx="739" cy="150" r="10" fill="#e05555" fill-opacity="0.25" stroke="#e05555" stroke-width="1.5"/>
+<text x="739" y="154" font-size="11" fill="#e8e8e8" font-weight="700" text-anchor="middle">D</text>
+<circle cx="763" cy="150" r="10" fill="#55c555" fill-opacity="0.25" stroke="#55c555" stroke-width="1.5"/>
+<text x="763" y="154" font-size="11" fill="#e8e8e8" font-weight="700" text-anchor="middle">D</text>
+<circle cx="787" cy="150" r="10" fill="#e05555" fill-opacity="0.25" stroke="#e05555" stroke-width="1.5"/>
+<text x="787" y="154" font-size="11" fill="#e8e8e8" font-weight="700" text-anchor="middle">D</text>
+<circle cx="811" cy="150" r="10" fill="#e05555" fill-opacity="0.25" stroke="#e05555" stroke-width="1.5"/>
+<text x="811" y="154" font-size="11" fill="#e8e8e8" font-weight="700" text-anchor="middle">D</text>
+<circle cx="835" cy="150" r="10" fill="#e05555" fill-opacity="0.25" stroke="#e05555" stroke-width="1.5"/>
+<text x="835" y="154" font-size="11" fill="#e8e8e8" font-weight="700" text-anchor="middle">D</text>
+<rect x="60" y="215" width="360" height="250" rx="10" fill="none" stroke="#444" stroke-width="1.5"/>
+<text x="240" y="245" font-size="16" fill="#e8e8e8" font-weight="600" text-anchor="middle">질문을 낱개로 다시 뽑기</text>
+<rect x="460" y="215" width="360" height="250" rx="10" fill="none" stroke="#444" stroke-width="1.5"/>
+<text x="640" y="245" font-size="16" fill="#e8e8e8" font-weight="600" text-anchor="middle">문서를 통째로 다시 뽑기</text>
+<path d="M 260 172 L 240 215" stroke="#888" stroke-width="1.5" fill="none" marker-end="url(#arr)"/>
+<path d="M 620 172 L 640 215" stroke="#888" stroke-width="1.5" fill="none" marker-end="url(#arr)"/>
+<circle cx="110" cy="290" r="10" fill="#55c555" fill-opacity="0.25" stroke="#55c555" stroke-width="1.5"/>
+<text x="110" y="294" font-size="11" fill="#e8e8e8" font-weight="700" text-anchor="middle">A</text>
+<circle cx="162" cy="290" r="10" fill="#e05555" fill-opacity="0.25" stroke="#e05555" stroke-width="1.5"/>
+<text x="162" y="294" font-size="11" fill="#e8e8e8" font-weight="700" text-anchor="middle">C</text>
+<circle cx="214" cy="290" r="10" fill="#e05555" fill-opacity="0.25" stroke="#e05555" stroke-width="1.5"/>
+<text x="214" y="294" font-size="11" fill="#e8e8e8" font-weight="700" text-anchor="middle">D</text>
+<circle cx="266" cy="290" r="10" fill="#55c555" fill-opacity="0.25" stroke="#55c555" stroke-width="1.5"/>
+<text x="266" y="294" font-size="11" fill="#e8e8e8" font-weight="700" text-anchor="middle">B</text>
+<circle cx="318" cy="290" r="10" fill="#55c555" fill-opacity="0.25" stroke="#55c555" stroke-width="1.5"/>
+<text x="318" y="294" font-size="11" fill="#e8e8e8" font-weight="700" text-anchor="middle">A</text>
+<circle cx="370" cy="290" r="10" fill="#55c555" fill-opacity="0.25" stroke="#55c555" stroke-width="1.5"/>
+<text x="370" y="294" font-size="11" fill="#e8e8e8" font-weight="700" text-anchor="middle">C</text>
+<circle cx="110" cy="334" r="10" fill="#55c555" fill-opacity="0.25" stroke="#55c555" stroke-width="1.5"/>
+<text x="110" y="338" font-size="11" fill="#e8e8e8" font-weight="700" text-anchor="middle">D</text>
+<circle cx="162" cy="334" r="10" fill="#55c555" fill-opacity="0.25" stroke="#55c555" stroke-width="1.5"/>
+<text x="162" y="338" font-size="11" fill="#e8e8e8" font-weight="700" text-anchor="middle">B</text>
+<circle cx="214" cy="334" r="10" fill="#e05555" fill-opacity="0.25" stroke="#e05555" stroke-width="1.5"/>
+<text x="214" y="338" font-size="11" fill="#e8e8e8" font-weight="700" text-anchor="middle">C</text>
+<circle cx="266" cy="334" r="10" fill="#55c555" fill-opacity="0.25" stroke="#55c555" stroke-width="1.5"/>
+<text x="266" y="338" font-size="11" fill="#e8e8e8" font-weight="700" text-anchor="middle">A</text>
+<circle cx="318" cy="334" r="10" fill="#e05555" fill-opacity="0.25" stroke="#e05555" stroke-width="1.5"/>
+<text x="318" y="338" font-size="11" fill="#e8e8e8" font-weight="700" text-anchor="middle">B</text>
+<circle cx="370" cy="334" r="10" fill="#e05555" fill-opacity="0.25" stroke="#e05555" stroke-width="1.5"/>
+<text x="370" y="338" font-size="11" fill="#e8e8e8" font-weight="700" text-anchor="middle">D</text>
+<text x="240" y="395" font-size="13" fill="#888" text-anchor="middle">같은 문서의 질문이 흩어진다</text>
+<text x="240" y="425" font-size="15" fill="#e05555" font-weight="700" text-anchor="middle">표준오차 0.0235</text>
+<text x="240" y="449" font-size="13" fill="#e05555" font-weight="600" text-anchor="middle">95% 구간 포함 82.3%</text>
+<rect x="505" y="270" width="270" height="40" rx="6" fill="#141414" stroke="#444" stroke-width="1.5"/>
+<circle cx="540" cy="290" r="10" fill="#55c555" fill-opacity="0.25" stroke="#55c555" stroke-width="1.5"/>
+<text x="540" y="294" font-size="11" fill="#e8e8e8" font-weight="700" text-anchor="middle">B</text>
+<circle cx="580" cy="290" r="10" fill="#55c555" fill-opacity="0.25" stroke="#55c555" stroke-width="1.5"/>
+<text x="580" y="294" font-size="11" fill="#e8e8e8" font-weight="700" text-anchor="middle">B</text>
+<circle cx="620" cy="290" r="10" fill="#55c555" fill-opacity="0.25" stroke="#55c555" stroke-width="1.5"/>
+<text x="620" y="294" font-size="11" fill="#e8e8e8" font-weight="700" text-anchor="middle">B</text>
+<circle cx="660" cy="290" r="10" fill="#55c555" fill-opacity="0.25" stroke="#55c555" stroke-width="1.5"/>
+<text x="660" y="294" font-size="11" fill="#e8e8e8" font-weight="700" text-anchor="middle">B</text>
+<circle cx="700" cy="290" r="10" fill="#55c555" fill-opacity="0.25" stroke="#55c555" stroke-width="1.5"/>
+<text x="700" y="294" font-size="11" fill="#e8e8e8" font-weight="700" text-anchor="middle">B</text>
+<circle cx="740" cy="290" r="10" fill="#e05555" fill-opacity="0.25" stroke="#e05555" stroke-width="1.5"/>
+<text x="740" y="294" font-size="11" fill="#e8e8e8" font-weight="700" text-anchor="middle">B</text>
+<rect x="505" y="320" width="270" height="40" rx="6" fill="#141414" stroke="#444" stroke-width="1.5"/>
+<circle cx="540" cy="340" r="10" fill="#e05555" fill-opacity="0.25" stroke="#e05555" stroke-width="1.5"/>
+<text x="540" y="344" font-size="11" fill="#e8e8e8" font-weight="700" text-anchor="middle">D</text>
+<circle cx="580" cy="340" r="10" fill="#e05555" fill-opacity="0.25" stroke="#e05555" stroke-width="1.5"/>
+<text x="580" y="344" font-size="11" fill="#e8e8e8" font-weight="700" text-anchor="middle">D</text>
+<circle cx="620" cy="340" r="10" fill="#55c555" fill-opacity="0.25" stroke="#55c555" stroke-width="1.5"/>
+<text x="620" y="344" font-size="11" fill="#e8e8e8" font-weight="700" text-anchor="middle">D</text>
+<circle cx="660" cy="340" r="10" fill="#e05555" fill-opacity="0.25" stroke="#e05555" stroke-width="1.5"/>
+<text x="660" y="344" font-size="11" fill="#e8e8e8" font-weight="700" text-anchor="middle">D</text>
+<circle cx="700" cy="340" r="10" fill="#e05555" fill-opacity="0.25" stroke="#e05555" stroke-width="1.5"/>
+<text x="700" y="344" font-size="11" fill="#e8e8e8" font-weight="700" text-anchor="middle">D</text>
+<circle cx="740" cy="340" r="10" fill="#e05555" fill-opacity="0.25" stroke="#e05555" stroke-width="1.5"/>
+<text x="740" y="344" font-size="11" fill="#e8e8e8" font-weight="700" text-anchor="middle">D</text>
+<text x="640" y="395" font-size="13" fill="#888" text-anchor="middle">여섯 질문이 함께 뽑힌다</text>
+<text x="640" y="425" font-size="15" fill="#55c555" font-weight="700" text-anchor="middle">표준오차 0.0396</text>
+<text x="640" y="449" font-size="13" fill="#55c555" font-weight="600" text-anchor="middle">95% 구간 포함 94.8%</text>
+<text x="440" y="510" font-size="13" fill="#888" text-anchor="middle">질문 단위 0.0235는 독립을 가정한 해석식 0.0238과 같다</text>
+</svg>

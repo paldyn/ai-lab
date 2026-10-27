@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="470" viewBox="0 0 880 470" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+<defs>
+  <marker id="arr" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+    <path d="M 0 0 L 13 7 L 0 14 z" fill="#888"/>
+  </marker>
+  <marker id="arrb" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+    <path d="M 0 0 L 13 7 L 0 14 z" fill="#7ec8e3"/>
+  </marker>
+</defs>
+<rect x="0" y="0" width="880" height="470" rx="12" fill="#0a0a0a"/>
+<text x="440" y="48" font-size="22" fill="#e8e8e8" font-weight="700" text-anchor="middle">재표집 횟수 B와 구간 끝의 흔들림</text>
+<text x="440" y="76" font-size="13" fill="#888" text-anchor="middle">같은 300문항에 부트스트랩을 300번씩 다시 돌린 95% 구간의 끝</text>
+<text x="60" y="155" font-size="16" fill="#e8e8e8" font-weight="600">B = 200</text>
+<line x1="238.9" y1="150" x2="375.3" y2="150" stroke="#7777cc" stroke-width="6" stroke-linecap="round"/>
+<circle cx="318.5" cy="150" r="5" fill="#e8e8e8"/>
+<text x="318.5" y="180" font-size="13" fill="#888" text-anchor="middle">흔들림 0.0094</text>
+<line x1="694.3" y1="150" x2="782.6" y2="150" stroke="#55c555" stroke-width="6" stroke-linecap="round"/>
+<circle cx="735.7" cy="150" r="5" fill="#e8e8e8"/>
+<text x="735.7" y="180" font-size="13" fill="#888" text-anchor="middle">흔들림 0.0065</text>
+<line x1="60" y1="202" x2="820" y2="202" stroke="#222" stroke-width="1"/>
+<text x="60" y="255" font-size="16" fill="#e8e8e8" font-weight="600">B = 1,000</text>
+<line x1="290.5" y1="250" x2="347.8" y2="250" stroke="#7777cc" stroke-width="6" stroke-linecap="round"/>
+<circle cx="315.1" cy="250" r="5" fill="#e8e8e8"/>
+<text x="315.1" y="280" font-size="13" fill="#888" text-anchor="middle">흔들림 0.0048</text>
+<line x1="714.8" y1="250" x2="763.2" y2="250" stroke="#55c555" stroke-width="6" stroke-linecap="round"/>
+<circle cx="739.2" cy="250" r="5" fill="#e8e8e8"/>
+<text x="739.2" y="280" font-size="13" fill="#888" text-anchor="middle">흔들림 0.0031</text>
+<line x1="60" y1="302" x2="820" y2="302" stroke="#222" stroke-width="1"/>
+<text x="60" y="355" font-size="16" fill="#e8e8e8" font-weight="600">B = 10,000</text>
+<line x1="305.9" y1="350" x2="323.0" y2="350" stroke="#7777cc" stroke-width="6" stroke-linecap="round"/>
+<circle cx="314.8" cy="350" r="5" fill="#e8e8e8"/>
+<text x="314.8" y="380" font-size="13" fill="#888" text-anchor="middle">흔들림 0.0021</text>
+<line x1="732.5" y1="350" x2="745.6" y2="350" stroke="#55c555" stroke-width="6" stroke-linecap="round"/>
+<circle cx="739.9" cy="350" r="5" fill="#e8e8e8"/>
+<text x="739.9" y="380" font-size="13" fill="#888" text-anchor="middle">흔들림 0.0009</text>
+<line x1="60" y1="402" x2="820" y2="402" stroke="#222" stroke-width="1"/>
+<line x1="200" y1="410" x2="820" y2="410" stroke="#888" stroke-width="1.5"/>
+<line x1="249.6" y1="410" x2="249.6" y2="416" stroke="#888" stroke-width="1.5"/>
+<text x="249.6" y="434" font-size="13" fill="#888" text-anchor="middle">0.65</text>
+<line x1="373.6" y1="410" x2="373.6" y2="416" stroke="#888" stroke-width="1.5"/>
+<text x="373.6" y="434" font-size="13" fill="#888" text-anchor="middle">0.70</text>
+<line x1="497.6" y1="410" x2="497.6" y2="416" stroke="#888" stroke-width="1.5"/>
+<text x="497.6" y="434" font-size="13" fill="#888" text-anchor="middle">0.75</text>
+<line x1="621.6" y1="410" x2="621.6" y2="416" stroke="#888" stroke-width="1.5"/>
+<text x="621.6" y="434" font-size="13" fill="#888" text-anchor="middle">0.80</text>
+<line x1="745.6" y1="410" x2="745.6" y2="416" stroke="#888" stroke-width="1.5"/>
+<text x="745.6" y="434" font-size="13" fill="#888" text-anchor="middle">0.85</text>
+<text x="304.2" y="118" font-size="13" fill="#7777cc" font-weight="600" text-anchor="middle">아래 끝</text>
+<text x="738.2" y="118" font-size="13" fill="#55c555" font-weight="600" text-anchor="middle">위 끝</text>
+<text x="820" y="458" font-size="13" fill="#888" text-anchor="end">막대: 300번 중 최소~최대 · 점: 평균</text>
+</svg>
