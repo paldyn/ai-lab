@@ -172,6 +172,20 @@ export const globalNewsUpdatedAt = '2026-10-26';
  */
 const entries: NewsItem[] = [
   {
+    id: 'blog-genie-4-a-new-generation-of-world-simulation',
+    source: 'Google DeepMind',
+    kind: 'model',
+    title: 'Google DeepMind, 오디오까지 생성하는 월드 모델 Genie 4 공개',
+    summary:
+      '구글 딥마인드가 실시간 상호작용 월드 모델 Genie 4를 연구 프리뷰로 신뢰 테스터에게 내놓았다. ' +
+      '오디오와 대화를 함께 생성하며, Project Genie의 Google AI Ultra 구독자와 Gemini API 조기 파트너에게 곧 열린다.',
+    publishedAt: '2026-10-27',
+    collectedAt: '2026-10-28',
+    category: 'Multimodal',
+    signal: '월드 모델',
+    url: 'https://deepmind.google/blog/genie-4-a-new-generation-of-world-simulation',
+  },
+  {
     id: 'introducing-gpt-6-1-terra',
     source: 'OpenAI',
     kind: 'model',

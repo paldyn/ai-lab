@@ -2,6 +2,20 @@ import type { NewsDetail } from '../news';
 
 /** 2026-10 발표의 모달 본문. 목록은 news.ts에 있습니다. */
 export const details: Record<string, NewsDetail> = {
+  'blog-genie-4-a-new-generation-of-world-simulation': {
+    points: [
+      'Genie 4는 음악·환경음·대화 같은 오디오를 세계와 함께 생성하는 네이티브 멀티모달 월드 모델이다',
+      '실시간으로 오디오를 직접 생성하는 첫 Genie 모델이며 캐릭터가 입력과 사건에 맞춰 대화한다',
+      '자연어로 날씨·카메라·새 인물이나 사물을 실시간으로 바꾸면 Gemini가 장면에 맞게 프롬프트를 조정한다',
+      'Gemini 3.8 Flash가 장면을 지켜보며 목표를 단계로 나누고 각 단계가 성공했는지 확인한다',
+      'Gemini 4 Argon과 함께 Apptronik Apollo 휴머노이드가 체커를 두는 장면을 단계별로 시뮬레이션했다',
+      '지금은 신뢰 테스터 대상 연구 프리뷰이고 Project Genie의 Google AI Ultra 구독자와 Gemini API·AI Studio 조기 파트너에게 곧 열린다',
+      '생성한 영상과 오디오에는 모두 SynthID 워터마크가 들어간다',
+      '세션이 길어지면 세부와 사물 지속성이 흔들리고 글자 렌더링·공간 정확도는 아직 연구 과제라고 밝혔다',
+    ],
+    commentary:
+      'Genie 3가 화면만 만들던 것에서 소리와 대화까지 한 번에 생성하면서, 월드 모델이 게임 엔진 앞단의 시제품 도구로 쓰일 여지가 커졌다. 더 눈여겨볼 대목은 Gemini가 루프 안에서 계획·검증을 맡는 구조로, 로봇·에이전트 학습 환경을 언어 모델과 픽셀 시뮬레이터를 엮어 만드는 방향을 구글이 공식 노선으로 삼았다는 점이다. 다만 아직 신뢰 테스터 단계라 가격과 일반 공개 시점은 정해지지 않았다.',
+  },
   'introducing-gpt-6-1-terra': {
     points: [
       'GPT-5.6 Terra를 잇는 빠르고 효율적인 모델로 시각 추론·컴퓨터 사용·글쓰기를 강화했다',
