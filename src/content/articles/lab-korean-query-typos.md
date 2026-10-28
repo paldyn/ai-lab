@@ -334,3 +334,5 @@ torch는 PyPI 휠(2.14.1)을 썼습니다. 이 컨테이너에서 `download.pyto
 읽어주셔서 감사합니다. 😊
 
 **지난 글:** [청크 겹침은 recall을 얼마에 사는가: 문단은 거의 못 사고, 답이 든 조각을 샀다](/articles/lab-chunk-overlap-recall)
+
+**다음 글:** [상위 문서로 질의를 고쳐 쓰면 오르는가: 두 코퍼스 마흔 조합 어디서도 오르지 않았다](/articles/lab-dense-pseudo-relevance-feedback)
