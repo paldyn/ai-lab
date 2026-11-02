@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="480" viewBox="0 0 880 480">
+<rect x="0" y="0" width="880" height="480" rx="12" fill="#0a0a0a"/>
+<text x="440" y="46" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="22" font-weight="700" fill="#e8e8e8">문제당 생성 수를 늘려도 바닥은 문제 수가 정한다</text>
+<line x1="130" y1="390" x2="780" y2="390" stroke="#888" stroke-width="1.5"/>
+<line x1="130" y1="90" x2="130" y2="390" stroke="#888" stroke-width="1.5"/>
+<line x1="130.0" y1="390" x2="130.0" y2="396" stroke="#444"/>
+<text x="130.0" y="414.0" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">1</text>
+<line x1="455.0" y1="390" x2="455.0" y2="396" stroke="#444"/>
+<text x="455.0" y="414.0" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">10</text>
+<line x1="780.0" y1="390" x2="780.0" y2="396" stroke="#444"/>
+<text x="780.0" y="414.0" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">100</text>
+<line x1="124" y1="372.4" x2="780" y2="372.4" stroke="#444" stroke-width="0.6" stroke-dasharray="3,4"/>
+<text x="118.0" y="376.4" text-anchor="end" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">0.025</text>
+<line x1="124" y1="284.1" x2="780" y2="284.1" stroke="#444" stroke-width="0.6" stroke-dasharray="3,4"/>
+<text x="118.0" y="288.1" text-anchor="end" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">0.030</text>
+<line x1="124" y1="195.9" x2="780" y2="195.9" stroke="#444" stroke-width="0.6" stroke-dasharray="3,4"/>
+<text x="118.0" y="199.9" text-anchor="end" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">0.035</text>
+<line x1="124" y1="107.6" x2="780" y2="107.6" stroke="#444" stroke-width="0.6" stroke-dasharray="3,4"/>
+<text x="118.0" y="111.6" text-anchor="end" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">0.040</text>
+<text x="780.0" y="434.0" text-anchor="end" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">문제당 생성 수 n (로그 눈금)</text>
+<text x="118.0" y="76.0" text-anchor="start" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">pass@1의 표준오차</text>
+<line x1="130" y1="346.0" x2="780" y2="346.0" stroke="#e05555" stroke-width="2" stroke-dasharray="5,3"/>
+<text x="780.0" y="370.0" text-anchor="end" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e05555">바닥 0.0265 — 문제 164개가 정한다</text>
+<polyline points="130.0,124.4 138.2,135.0 146.5,145.2 154.7,154.9 162.9,164.2 171.1,173.1 179.4,181.7 187.6,189.8 195.8,197.6 204.1,205.0 212.3,212.1 220.5,218.9 228.7,225.4 237.0,231.5 245.2,237.4 253.4,243.0 261.6,248.3 269.9,253.4 278.1,258.3 286.3,262.8 294.6,267.2 302.8,271.4 311.0,275.3 319.2,279.1 327.5,282.6 335.7,286.0 343.9,289.2 352.2,292.3 360.4,295.2 368.6,297.9 376.8,300.5 385.1,303.0 393.3,305.3 401.5,307.6 409.7,309.7 418.0,311.6 426.2,313.5 434.4,315.3 442.7,317.0 450.9,318.6 459.1,320.1 467.3,321.5 475.6,322.9 483.8,324.2 492.0,325.4 500.3,326.5 508.5,327.6 516.7,328.6 524.9,329.6 533.2,330.5 541.4,331.4 549.6,332.2 557.8,333.0 566.1,333.7 574.3,334.4 582.5,335.0 590.8,335.7 599.0,336.2 607.2,336.8 615.4,337.3 623.7,337.8 631.9,338.3 640.1,338.7 648.4,339.1 656.6,339.5 664.8,339.9 673.0,340.2 681.3,340.5 689.5,340.8 697.7,341.1 705.9,341.4 714.2,341.7 722.4,341.9 730.6,342.1 738.9,342.4 747.1,342.6 755.3,342.8 763.5,343.0 771.8,343.1 780.0,343.3" fill="none" stroke="#7ec8e3" stroke-width="2.5"/>
+<circle cx="130.0" cy="125.3" r="5" fill="#e8e8e8"/>
+<text x="144.0" y="113.3" text-anchor="start" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e8e8e8">n = 1: 0.0390</text>
+<circle cx="357.2" cy="294.7" r="5" fill="#e8e8e8"/>
+<text x="371.2" y="282.7" text-anchor="start" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e8e8e8">n = 5: 0.0294</text>
+<circle cx="455.0" cy="319.4" r="5" fill="#e8e8e8"/>
+<text x="469.0" y="307.4" text-anchor="start" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e8e8e8">n = 10: 0.0280</text>
+<circle cx="552.8" cy="331.8" r="5" fill="#e8e8e8"/>
+<circle cx="682.2" cy="340.6" r="5" fill="#e8e8e8"/>
+<circle cx="780.0" cy="344.1" r="5" fill="#e8e8e8"/>
+<text x="780.0" y="328.1" text-anchor="end" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e8e8e8">n = 100: 0.0266</text>
+</svg>

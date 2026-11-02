@@ -295,3 +295,5 @@ F1에서는 이것이 특히 중요합니다. F1이 문항별 점수의 평균�
 읽어주셔서 감사합니다. 😊
 
 **지난 글:** [추정량과 표준오차: eval 점수에 오차막대 붙이기](/articles/math-estimator-and-standard-error)
+
+**다음 글:** [같은 문항으로 두 모델 비교하기: 쌍체 검정, 효과 크기, 그리고 여러 번 재면 생기는 일](/articles/math-paired-test-and-multiple-comparisons)

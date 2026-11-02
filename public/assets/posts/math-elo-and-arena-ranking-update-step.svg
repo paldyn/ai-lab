@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="430" viewBox="0 0 880 430" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+<defs>
+  <marker id="arr" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+    <path d="M 0 0 L 13 7 L 0 14 z" fill="#888"/>
+  </marker>
+</defs>
+<rect x="0" y="0" width="880" height="430" rx="12" fill="#0a0a0a"/>
+<text x="440.0" y="48.0" font-size="22" fill="#e8e8e8" text-anchor="middle" font-weight="700">경기 하나가 점수를 옮기는 다섯 걸음</text>
+<text x="440.0" y="76.0" font-size="13" fill="#888" text-anchor="middle">B(1279점)와 E(1270점)가 붙고 K = 4일 때</text>
+<rect x="60" y="120" width="128" height="150" rx="10" fill="#111" stroke="#3a4a6e" stroke-width="1.5"/>
+<text x="124.0" y="160.0" font-size="15" fill="#e8e8e8" text-anchor="middle" font-weight="600">① 기대 승점</text>
+<text x="124.0" y="196.0" font-size="13" fill="#7ec8e3" text-anchor="middle">E = 0.513</text>
+<text x="124.0" y="220.0" font-size="13" fill="#bbb" text-anchor="middle">9점 앞서므로</text>
+<text x="124.0" y="244.0" font-size="13" fill="#bbb" text-anchor="middle">반보다 조금 위</text>
+<line x1="188.0" y1="195.0" x2="218.0" y2="195.0" stroke="#888" stroke-width="2" marker-end="url(#arr)"/>
+<rect x="218" y="120" width="128" height="150" rx="10" fill="#111" stroke="#3a4a6e" stroke-width="1.5"/>
+<text x="282.0" y="160.0" font-size="15" fill="#e8e8e8" text-anchor="middle" font-weight="600">② 실제 결과</text>
+<text x="282.0" y="196.0" font-size="13" fill="#7ec8e3" text-anchor="middle">이기면 S = 1</text>
+<text x="282.0" y="220.0" font-size="13" fill="#bbb" text-anchor="middle">비기면 S = 0.5</text>
+<text x="282.0" y="244.0" font-size="13" fill="#bbb" text-anchor="middle">지면 S = 0</text>
+<line x1="346.0" y1="195.0" x2="376.0" y2="195.0" stroke="#888" stroke-width="2" marker-end="url(#arr)"/>
+<rect x="376" y="120" width="128" height="150" rx="10" fill="#111" stroke="#3a4a6e" stroke-width="1.5"/>
+<text x="440.0" y="160.0" font-size="15" fill="#e8e8e8" text-anchor="middle" font-weight="600">③ 오차</text>
+<text x="440.0" y="196.0" font-size="13" fill="#7ec8e3" text-anchor="middle">S − E</text>
+<text x="440.0" y="220.0" font-size="13" fill="#bbb" text-anchor="middle">이기면 +0.487</text>
+<text x="440.0" y="244.0" font-size="13" fill="#bbb" text-anchor="middle">지면 −0.513</text>
+<line x1="504.0" y1="195.0" x2="534.0" y2="195.0" stroke="#888" stroke-width="2" marker-end="url(#arr)"/>
+<rect x="534" y="120" width="128" height="150" rx="10" fill="#111" stroke="#3a4a6e" stroke-width="1.5"/>
+<text x="598.0" y="160.0" font-size="15" fill="#e8e8e8" text-anchor="middle" font-weight="600">④ 곱하기 K</text>
+<text x="598.0" y="196.0" font-size="13" fill="#7ec8e3" text-anchor="middle">K = 4</text>
+<text x="598.0" y="220.0" font-size="13" fill="#bbb" text-anchor="middle">이기면 +1.95</text>
+<text x="598.0" y="244.0" font-size="13" fill="#bbb" text-anchor="middle">지면 −2.05</text>
+<line x1="662.0" y1="195.0" x2="692.0" y2="195.0" stroke="#888" stroke-width="2" marker-end="url(#arr)"/>
+<rect x="692" y="120" width="128" height="150" rx="10" fill="#111" stroke="#3a4a6e" stroke-width="1.5"/>
+<text x="756.0" y="160.0" font-size="15" fill="#e8e8e8" text-anchor="middle" font-weight="600">⑤ 점수 이동</text>
+<text x="756.0" y="196.0" font-size="13" fill="#7ec8e3" text-anchor="middle">B는 더하고</text>
+<text x="756.0" y="220.0" font-size="13" fill="#bbb" text-anchor="middle">E는 뺀다</text>
+<text x="756.0" y="244.0" font-size="13" fill="#bbb" text-anchor="middle">합은 그대로</text>
+<rect x="60" y="300" width="760" height="90" rx="10" fill="#111" stroke="#7777cc" stroke-width="1.5"/>
+<text x="440.0" y="334.0" font-size="14" fill="#e8e8e8" text-anchor="middle">③의 S − E에 c = ln10/400을 곱한 것이 한 경기 로그가능도의 기울기다</text>
+<text x="440.0" y="362.0" font-size="14" fill="#e8e8e8" text-anchor="middle">그러니 ⑤는 학습률 η = K / c로 오르막을 한 걸음 오른 것이다</text>
+</svg>

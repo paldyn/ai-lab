@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="520" viewBox="0 0 880 520">
+<rect x="0" y="0" width="880" height="520" rx="12" fill="#0a0a0a"/>
+<text x="440" y="46" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="22" font-weight="700" fill="#e8e8e8">오목한 곡선 위에서 갈리는 세 값 (p = 0.3)</text>
+<line x1="130" y1="450" x2="770" y2="450" stroke="#888" stroke-width="1.5"/>
+<line x1="130" y1="80" x2="130" y2="450" stroke="#888" stroke-width="1.5"/>
+<text x="118.0" y="454.0" text-anchor="end" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">0</text>
+<text x="130.0" y="474.0" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">0</text>
+<text x="118.0" y="274.0" text-anchor="end" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">0.5</text>
+<text x="440.0" y="474.0" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">0.5</text>
+<text x="118.0" y="94.0" text-anchor="end" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">1</text>
+<text x="750.0" y="474.0" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">1</text>
+<text x="770.0" y="494.0" text-anchor="end" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">p</text>
+<polyline points="130.0,450.0 135.2,435.1 140.4,420.7 145.6,406.9 150.8,393.4 156.1,380.5 161.3,367.9 166.5,355.9 171.7,344.2 176.9,333.0 182.1,322.1 187.3,311.7 192.5,301.6 197.7,291.9 202.9,282.5 208.2,273.5 213.4,264.9 218.6,256.6 223.8,248.6 229.0,240.9 234.2,233.5 239.4,226.4 244.6,219.5 249.8,213.0 255.0,206.7 260.3,200.7 265.5,194.9 270.7,189.4 275.9,184.1 281.1,179.1 286.3,174.2 291.5,169.6 296.7,165.2 301.9,161.0 307.1,156.9 312.4,153.1 317.6,149.4 322.8,145.9 328.0,142.6 333.2,139.4 338.4,136.4 343.6,133.6 348.8,130.8 354.0,128.3 359.2,125.8 364.5,123.5 369.7,121.3 374.9,119.2 380.1,117.2 385.3,115.4 390.5,113.6 395.7,111.9 400.9,110.4 406.1,108.9 411.3,107.5 416.6,106.2 421.8,105.0 427.0,103.8 432.2,102.7 437.4,101.7 442.6,100.8 447.8,99.9 453.0,99.1 458.2,98.3 463.4,97.6 468.7,96.9 473.9,96.3 479.1,95.7 484.3,95.2 489.5,94.7 494.7,94.3 499.9,93.8 505.1,93.5 510.3,93.1 515.5,92.8 520.8,92.5 526.0,92.2 531.2,92.0 536.4,91.7 541.6,91.5 546.8,91.4 552.0,91.2 557.2,91.0 562.4,90.9 567.6,90.8 572.9,90.7 578.1,90.6 583.3,90.5 588.5,90.4 593.7,90.4 598.9,90.3 604.1,90.3 609.3,90.2 614.5,90.2 619.7,90.1 625.0,90.1 630.2,90.1 635.4,90.1 640.6,90.1 645.8,90.0 651.0,90.0 656.2,90.0 661.4,90.0 666.6,90.0 671.8,90.0 677.1,90.0 682.3,90.0 687.5,90.0 692.7,90.0 697.9,90.0 703.1,90.0 708.3,90.0 713.5,90.0 718.7,90.0 723.9,90.0 729.2,90.0 734.4,90.0 739.6,90.0 744.8,90.0 750.0,90.0" fill="none" stroke="#7ec8e3" stroke-width="2.5"/>
+<polyline points="130.0,450.0 135.2,420.9 140.4,393.9 145.6,368.9 150.8,345.7 156.1,324.4 161.3,304.6 166.5,286.3 171.7,269.5 176.9,254.0 182.1,239.7 187.3,226.5 192.5,214.4 197.7,203.2 202.9,193.0 208.2,183.6 213.4,175.0 218.6,167.1 223.8,159.8 229.0,153.2 234.2,147.2 239.4,141.7 244.6,136.6 249.8,132.0 255.0,127.9 260.3,124.0 265.5,120.6 270.7,117.5 275.9,114.6 281.1,112.0 286.3,109.7 291.5,107.6 296.7,105.7 301.9,104.0 307.1,102.4 312.4,101.1 317.6,99.8 322.8,98.7 328.0,97.7 333.2,96.8 338.4,96.0 343.6,95.3 348.8,94.6 354.0,94.1 359.2,93.6 364.5,93.1 369.7,92.7 374.9,92.4 380.1,92.1 385.3,91.8 390.5,91.5 395.7,91.3 400.9,91.2 406.1,91.0 411.3,90.9 416.6,90.7 421.8,90.6 427.0,90.5 432.2,90.5 437.4,90.4 442.6,90.3 447.8,90.3 453.0,90.2 458.2,90.2 463.4,90.2 468.7,90.1 473.9,90.1 479.1,90.1 484.3,90.1 489.5,90.1 494.7,90.1 499.9,90.0 505.1,90.0 510.3,90.0 515.5,90.0 520.8,90.0 526.0,90.0 531.2,90.0 536.4,90.0 541.6,90.0 546.8,90.0 552.0,90.0 557.2,90.0 562.4,90.0 567.6,90.0 572.9,90.0 578.1,90.0 583.3,90.0 588.5,90.0 593.7,90.0 598.9,90.0 604.1,90.0 609.3,90.0 614.5,90.0 619.7,90.0 625.0,90.0 630.2,90.0 635.4,90.0 640.6,90.0 645.8,90.0 651.0,90.0 656.2,90.0 661.4,90.0 666.6,90.0 671.8,90.0 677.1,90.0 682.3,90.0 687.5,90.0 692.7,90.0 697.9,90.0 703.1,90.0 708.3,90.0 713.5,90.0 718.7,90.0 723.9,90.0 729.2,90.0 734.4,90.0 739.6,90.0 744.8,90.0 750.0,90.0" fill="none" stroke="#7777cc" stroke-width="2.5"/>
+<text x="514.4" y="162.0" text-anchor="start" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="14" fill="#7ec8e3" font-weight="600">1 − (1 − p)⁵</text>
+<text x="601.2" y="76.0" text-anchor="start" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="14" fill="#7777cc" font-weight="600">1 − (1 − p)¹⁰</text>
+<line x1="316.0" y1="450" x2="316.0" y2="100.2" stroke="#444" stroke-width="1" stroke-dasharray="4,4"/>
+<circle cx="130.0" cy="450.0" r="3.5" fill="#7ec8e3" fill-opacity="0.32"/>
+<circle cx="192.0" cy="302.6" r="3.5" fill="#7ec8e3" fill-opacity="0.55"/>
+<circle cx="254.0" cy="208.0" r="3.5" fill="#7ec8e3" fill-opacity="0.83"/>
+<circle cx="316.0" cy="150.5" r="3.5" fill="#7ec8e3" fill-opacity="0.92"/>
+<circle cx="378.0" cy="118.0" r="3.5" fill="#7ec8e3" fill-opacity="0.75"/>
+<circle cx="440.0" cy="101.2" r="3.5" fill="#7ec8e3" fill-opacity="0.51"/>
+<circle cx="502.0" cy="93.7" r="3.5" fill="#7ec8e3" fill-opacity="0.34"/>
+<circle cx="316.0" cy="150.5" r="5" fill="#e8e8e8"/>
+<circle cx="316.0" cy="176.5" r="5" fill="#e05555"/>
+<circle cx="316.0" cy="100.2" r="5" fill="#7777cc"/>
+<text x="332.0" y="80.2" text-anchor="start" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e8e8e8">10번 중 하나라도 0.972 (+0.140)</text>
+<text x="332.0" y="166.5" text-anchor="start" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e8e8e8">참값 pass@5 0.832</text>
+<text x="332.0" y="198.5" text-anchor="start" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e05555">플러그인의 평균 0.760 (−0.072)</text>
+<text x="440.0" y="426.0" text-anchor="start" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">흐린 점: p̂ = c/10 이 놓이는 자리 (진할수록 자주)</text>
+</svg>

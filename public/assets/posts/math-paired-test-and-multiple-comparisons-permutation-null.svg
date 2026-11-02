@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="500" viewBox="0 0 880 500" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+<defs>
+  <marker id="arr" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+    <path d="M 0 0 L 13 7 L 0 14 z" fill="#888"/>
+  </marker>
+</defs>
+<rect x="0" y="0" width="880" height="500" rx="12" fill="#0a0a0a"/>
+<text x="440.0" y="48.0" font-size="22" fill="#e8e8e8" text-anchor="middle" font-weight="700">순열 검정의 귀무분포</text>
+<text x="440.0" y="76.0" font-size="13" fill="#888" text-anchor="middle">문항마다 두 모델의 결과를 맞바꾼 10만 번의 정답률 차</text>
+<rect x="92.0" y="380.0" width="32.8" height="1.0" rx="1" fill="#e05555" fill-opacity="0.75"/>
+<rect x="128.8" y="379.6" width="32.8" height="1.0" rx="1" fill="#e05555" fill-opacity="0.75"/>
+<text x="145.3" y="402.0" font-size="13" fill="#888" text-anchor="middle">-3.2</text>
+<rect x="165.7" y="378.1" width="32.8" height="1.9" rx="1" fill="#e05555" fill-opacity="0.75"/>
+<rect x="202.5" y="372.5" width="32.8" height="7.5" rx="1" fill="#e05555" fill-opacity="0.75"/>
+<text x="218.9" y="402.0" font-size="13" fill="#888" text-anchor="middle">-2.4</text>
+<rect x="239.4" y="356.7" width="32.8" height="23.3" rx="1" fill="#e05555" fill-opacity="0.75"/>
+<rect x="276.2" y="324.2" width="32.8" height="55.8" rx="1" fill="#7ec8e3" fill-opacity="0.75"/>
+<text x="292.6" y="402.0" font-size="13" fill="#888" text-anchor="middle">-1.6</text>
+<rect x="313.1" y="266.6" width="32.8" height="113.4" rx="1" fill="#7ec8e3" fill-opacity="0.75"/>
+<rect x="349.9" y="197.1" width="32.8" height="182.9" rx="1" fill="#7ec8e3" fill-opacity="0.75"/>
+<text x="366.3" y="402.0" font-size="13" fill="#888" text-anchor="middle">-0.8</text>
+<rect x="386.7" y="136.0" width="32.8" height="244.0" rx="1" fill="#7ec8e3" fill-opacity="0.75"/>
+<rect x="423.6" y="110.0" width="32.8" height="270.0" rx="1" fill="#7ec8e3" fill-opacity="0.75"/>
+<text x="440.0" y="402.0" font-size="13" fill="#888" text-anchor="middle">0</text>
+<rect x="460.4" y="131.2" width="32.8" height="248.8" rx="1" fill="#7ec8e3" fill-opacity="0.75"/>
+<rect x="497.3" y="192.0" width="32.8" height="188.0" rx="1" fill="#7ec8e3" fill-opacity="0.75"/>
+<text x="513.7" y="402.0" font-size="13" fill="#888" text-anchor="middle">+0.8</text>
+<rect x="534.1" y="265.8" width="32.8" height="114.2" rx="1" fill="#7ec8e3" fill-opacity="0.75"/>
+<rect x="570.9" y="323.9" width="32.8" height="56.1" rx="1" fill="#7ec8e3" fill-opacity="0.75"/>
+<text x="587.4" y="402.0" font-size="13" fill="#888" text-anchor="middle">+1.6</text>
+<rect x="607.8" y="357.4" width="32.8" height="22.6" rx="1" fill="#e05555" fill-opacity="0.75"/>
+<rect x="644.6" y="372.6" width="32.8" height="7.4" rx="1" fill="#e05555" fill-opacity="0.75"/>
+<text x="661.1" y="402.0" font-size="13" fill="#888" text-anchor="middle">+2.4</text>
+<rect x="681.5" y="378.3" width="32.8" height="1.7" rx="1" fill="#e05555" fill-opacity="0.75"/>
+<rect x="718.3" y="379.7" width="32.8" height="1.0" rx="1" fill="#e05555" fill-opacity="0.75"/>
+<text x="734.7" y="402.0" font-size="13" fill="#888" text-anchor="middle">+3.2</text>
+<rect x="755.2" y="380.0" width="32.8" height="1.0" rx="1" fill="#e05555" fill-opacity="0.75"/>
+<line x1="90" y1="380" x2="790" y2="380" stroke="#888" stroke-width="1.5"/>
+<text x="790.0" y="424.0" font-size="13" fill="#888" text-anchor="end">정답률의 차 (%p)</text>
+<line x1="624.2" y1="130" x2="624.2" y2="380" stroke="#e8e8e8" stroke-width="2" stroke-dasharray="4,4"/>
+<text x="632.2" y="144.0" font-size="14" fill="#e8e8e8" text-anchor="start" font-weight="600">관측된 차 +2.0%p</text>
+<text x="632.2" y="168.0" font-size="13" fill="#e05555" text-anchor="start">양쪽 꼬리 합 4.24%</text>
+<text x="632.2" y="188.0" font-size="13" fill="#e05555" text-anchor="start">→ p = 0.0424</text>
+<text x="440.0" y="470.0" font-size="13" fill="#888" text-anchor="middle">엇갈린 문항 20개 중 하나를 맞바꿀 때마다 차가 0.4%p씩 움직인다</text>
+</svg>
