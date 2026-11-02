@@ -160,7 +160,7 @@ export interface NewsDetail {
   commentary: string;
 }
 
-export const globalNewsUpdatedAt = '2026-10-28';
+export const globalNewsUpdatedAt = '2026-10-29';
 
 /**
  * 공식 발표 한 건 = 항목 한 개. 2026년 1월부터 쌓는 아카이브이며 오래된 항목을
@@ -171,6 +171,20 @@ export const globalNewsUpdatedAt = '2026-10-28';
  * 목록에서 파생됩니다. 갱신 시 globalNewsUpdatedAt도 함께 올립니다.
  */
 const entries: NewsItem[] = [
+  {
+    id: 'claude-platform-october-29-2026',
+    source: 'Anthropic',
+    kind: 'company',
+    title: 'Claude 사용량·비용 분석 API 베타 — 기존 보고 API는 레거시로',
+    summary:
+      'Anthropic이 Claude Console·Claude Enterprise 조직의 토큰 사용량과 비용을 보고하는 Usage and Cost Analytics API를 베타로 냈다. ' +
+      '기존 Usage and Cost API와 Enterprise Analytics API의 사용량·비용 엔드포인트는 레거시가 됐지만 계속 지원된다.',
+    publishedAt: '2026-10-29',
+    collectedAt: '2026-11-03',
+    category: 'Product',
+    signal: '플랫폼 변경',
+    url: 'https://platform.claude.com/docs/en/release-notes/overview#october-29-2026',
+  },
   {
     id: 'ai-for-science-expands-foundations-research-institutions',
     source: 'Anthropic',

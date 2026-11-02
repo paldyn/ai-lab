@@ -2,6 +2,18 @@ import type { NewsDetail } from '../news';
 
 /** 2026-10 발표의 모달 본문. 목록은 news.ts에 있습니다. */
 export const details: Record<string, NewsDetail> = {
+  'claude-platform-october-29-2026': {
+    points: [
+      '새 API는 analytics-usage-cost-2026-08-24 베타 헤더로 부른다',
+      '/v1/organizations/analytics/usage와 /analytics/cost 두 엔드포인트가 사용량과 비용을 돌려준다',
+      'Claude Console과 Claude Enterprise 조직이 대상이다',
+      '모델·워크스페이스·API 키·요청을 보낸 사용자나 서비스 계정 기준으로 거르고 묶을 수 있다',
+      '기존 Usage and Cost API와 Enterprise Analytics API의 usage_report·cost_report 등 넷이 레거시가 됐다',
+      '레거시 API는 계속 지원되며 옮기는 방법을 담은 이전 안내서가 따로 있다',
+    ],
+    commentary:
+      'Console과 Enterprise로 갈라져 있던 사용량·비용 보고를 한 API로 모으는 첫걸음이다. 요청을 보낸 사용자나 서비스 계정 단위로 비용을 나눌 수 있어 사내 부서별 비용 배분이 쉬워진다. 레거시 API의 종료일은 아직 없지만 새로 짜는 연동은 처음부터 새 API로 가는 편이 낫다.',
+  },
   'blog-gemini-4-carbon-our-next-frontier-model': {
     points: [
       'Artificial Analysis Intelligence Index v5.0에서 59점으로 1위다',
