@@ -160,7 +160,7 @@ export interface NewsDetail {
   commentary: string;
 }
 
-export const globalNewsUpdatedAt = '2026-10-29';
+export const globalNewsUpdatedAt = '2026-10-30';
 
 /**
  * 공식 발표 한 건 = 항목 한 개. 2026년 1월부터 쌓는 아카이브이며 오래된 항목을
@@ -171,6 +171,20 @@ export const globalNewsUpdatedAt = '2026-10-29';
  * 목록에서 파생됩니다. 갱신 시 globalNewsUpdatedAt도 함께 올립니다.
  */
 const entries: NewsItem[] = [
+  {
+    id: 'blog-speeding-up-planning-decisions-with-ai',
+    source: 'Google DeepMind',
+    kind: 'company',
+    title: 'Google DeepMind 인허가 심사 도구 PlanAssist, 잉글랜드 지자체 12곳 추가',
+    summary:
+      'Google DeepMind가 영국 정부와 만든 건축 인허가 심사 보조 도구 PlanAssist를 잉글랜드 지방 계획 당국 12곳에 더 연다. ' +
+      '세 지자체 시범에서 주택 증개축 신청 심사에 담당관이 쓰는 시간을 평균 58% 줄였다.',
+    publishedAt: '2026-10-30',
+    collectedAt: '2026-11-03',
+    category: 'Product',
+    signal: '공공부문 AI',
+    url: 'https://deepmind.google/blog/speeding-up-planning-decisions-with-ai',
+  },
   {
     id: 'claude-platform-october-29-2026',
     source: 'Anthropic',

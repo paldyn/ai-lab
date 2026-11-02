@@ -2,6 +2,18 @@ import type { NewsDetail } from '../news';
 
 /** 2026-10 발표의 모달 본문. 목록은 news.ts에 있습니다. */
 export const details: Record<string, NewsDetail> = {
+  'blog-speeding-up-planning-decisions-with-ai': {
+    points: [
+      'PlanAssist는 Gemini로 만들었고 영국 정부·Google Cloud·Faculty와 함께 개발했다',
+      '신청 서류와 도면을 확인하고 보호수 같은 제약과 지역·국가 계획 정책에 비춰 검토한다',
+      '앞서 제기된 문제나 주민 이의도 확인하고 담당관이 고칠 수 있는 인용 달린 보고서 초안을 쓴다',
+      '6월부터 Barnet·Camden·Dorset에서 시범 운영했고 생성 보고서의 70% 넘게가 수정 없이 승인됐다',
+      '실제 신청으로 12개월 베타에 들어가며 세 차례에 걸쳐 12곳을 더해 모두 15곳이 된다',
+      '시험이 성공하면 영국 정부는 2027년 잉글랜드 모든 지자체에 열 계획이며 모든 결정은 담당관이 승인한다',
+    ],
+    commentary:
+      'AI가 결정을 대신하지 않고 서류 확인과 초안 작성만 맡는 구조라 공공 행정에 들이기 쉬운 모양이다. 업무의 최대 70%를 차지하는 단순 증개축 건을 겨냥해 효과가 숫자로 바로 보인다. 베타에 대도시와 농촌이 섞인 만큼 지역마다 정책 해석이 달라질 때도 정확도가 유지되는지가 전국 확대의 관건이다.',
+  },
   'claude-platform-october-29-2026': {
     points: [
       '새 API는 analytics-usage-cost-2026-08-24 베타 헤더로 부른다',
