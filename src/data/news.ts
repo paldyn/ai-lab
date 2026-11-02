@@ -160,7 +160,7 @@ export interface NewsDetail {
   commentary: string;
 }
 
-export const globalNewsUpdatedAt = '2026-10-30';
+export const globalNewsUpdatedAt = '2026-11-02';
 
 /**
  * 공식 발표 한 건 = 항목 한 개. 2026년 1월부터 쌓는 아카이브이며 오래된 항목을
@@ -171,6 +171,34 @@ export const globalNewsUpdatedAt = '2026-10-30';
  * 목록에서 파생됩니다. 갱신 시 globalNewsUpdatedAt도 함께 올립니다.
  */
 const entries: NewsItem[] = [
+  {
+    id: 'ai-google-ai-updates-october-2026',
+    source: 'Google DeepMind',
+    kind: 'company',
+    title: 'Google이 정리한 10월 AI 발표 — Gemini 4 Argon·Carbon과 Genie 4',
+    summary:
+      'Google이 10월에 내놓은 AI 발표를 한데 정리했다. ' +
+      'Gemini 4 Argon 일반 공개와 Carbon 발표, Genie 4, SynthID Detector 전 세계 확대, Android 사기 방지 강화, EmbeddingGemma 2, Project Suncatcher 위성의 첫 AI 응답이 들어갔다.',
+    publishedAt: '2026-11-02',
+    collectedAt: '2026-11-03',
+    category: 'Product',
+    signal: '월간 발표 정리',
+    url: 'https://blog.google/innovation-and-ai/technology/ai/google-ai-updates-october-2026',
+  },
+  {
+    id: 'claude-platform-november-2-2026',
+    source: 'Anthropic',
+    kind: 'company',
+    title: 'Claude Messages API에 서버 보관 메시지 스레드 베타 추가',
+    summary:
+      'Anthropic이 Messages API에 대화를 서버에 보관하는 메시지 스레드를 베타로 넣었다. ' +
+      '이후 요청은 새 메시지만 보내면 돼 긴 대화와 에이전트 루프의 요청이 작아지고 첫 토큰 지연이 줄어든다.',
+    publishedAt: '2026-11-02',
+    collectedAt: '2026-11-03',
+    category: 'Product',
+    signal: '플랫폼 변경',
+    url: 'https://platform.claude.com/docs/en/release-notes/overview#november-2-2026',
+  },
   {
     id: 'blog-speeding-up-planning-decisions-with-ai',
     source: 'Google DeepMind',
