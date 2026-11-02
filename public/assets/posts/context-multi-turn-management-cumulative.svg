@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="480" viewBox="0 0 880 480">
+<rect x="0" y="0" width="880" height="480" rx="12" fill="#0a0a0a"/>
+<text x="60" y="46" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="22" font-weight="700" fill="#e8e8e8">대화 하나의 누적 입력 토큰</text>
+<text x="60" y="74" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">턴당 2,000토큰 가정 · 접기는 이력이 20,000토큰을 넘으면 8,000으로 줄이는 경우</text>
+<line x1="110" y1="400" x2="800" y2="400" stroke="#555" stroke-width="1.5"/>
+<line x1="110" y1="400" x2="110" y2="110" stroke="#555" stroke-width="1.5"/>
+<line x1="110" y1="314.7" x2="800" y2="314.7" stroke="#222" stroke-width="1"/>
+<text x="98" y="318.7" text-anchor="end" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">0.5M</text>
+<line x1="110" y1="229.4" x2="800" y2="229.4" stroke="#222" stroke-width="1"/>
+<text x="98" y="233.4" text-anchor="end" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">1.0M</text>
+<line x1="110" y1="144.1" x2="800" y2="144.1" stroke="#222" stroke-width="1"/>
+<text x="98" y="148.1" text-anchor="end" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">1.5M</text>
+<text x="98" y="404" text-anchor="end" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">0</text>
+<text x="282.5" y="424" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">10턴</text>
+<text x="455.0" y="424" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">20턴</text>
+<text x="627.5" y="424" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">30턴</text>
+<text x="800.0" y="424" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">40턴</text>
+<path d="M 110.0 400.0 L 127.2 399.7 L 144.5 399.0 L 161.8 398.0 L 179.0 396.6 L 196.2 394.9 L 213.5 392.8 L 230.8 390.4 L 248.0 387.7 L 265.2 384.6 L 282.5 381.2 L 299.8 377.5 L 317.0 373.4 L 334.2 369.0 L 351.5 364.2 L 368.8 359.1 L 386.0 353.6 L 403.2 347.8 L 420.5 341.7 L 437.8 335.2 L 455.0 328.4 L 472.2 321.2 L 489.5 313.7 L 506.8 305.8 L 524.0 297.6 L 541.2 289.1 L 558.5 280.2 L 575.8 271.0 L 593.0 261.5 L 610.2 251.6 L 627.5 241.4 L 644.8 230.8 L 662.0 219.9 L 679.2 208.6 L 696.5 197.0 L 713.8 185.1 L 731.0 172.8 L 748.2 160.2 L 765.5 147.2 L 782.8 133.9 L 800.0 120.2" fill="none" stroke="#e05555" stroke-width="2.5"/>
+<path d="M 110.0 400.0 L 127.2 399.7 L 144.5 399.0 L 161.8 398.0 L 179.0 396.6 L 196.2 394.9 L 213.5 392.8 L 230.8 390.4 L 248.0 387.7 L 265.2 384.6 L 282.5 381.2 L 299.8 379.9 L 317.0 378.2 L 334.2 376.1 L 351.5 373.7 L 368.8 371.0 L 386.0 367.9 L 403.2 364.5 L 420.5 363.2 L 437.8 361.4 L 455.0 359.4 L 472.2 357.0 L 489.5 354.3 L 506.8 351.2 L 524.0 347.8 L 541.2 346.4 L 558.5 344.7 L 575.8 342.7 L 593.0 340.3 L 610.2 337.6 L 627.5 334.5 L 644.8 331.1 L 662.0 329.7 L 679.2 328.0 L 696.5 326.0 L 713.8 323.6 L 731.0 320.8 L 748.2 317.8 L 765.5 314.4 L 782.8 313.0 L 800.0 311.3" fill="none" stroke="#55c555" stroke-width="2.5"/>
+<circle cx="282.5" cy="381.2" r="5" fill="#e05555"/>
+<circle cx="800.0" cy="120.2" r="5" fill="#e05555"/>
+<text x="270.5" y="363.2" text-anchor="end" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e8e8e8">10턴 · 11만</text>
+<text x="786.0" y="124.2" text-anchor="end" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e8e8e8">40턴 · 164만</text>
+<circle cx="800.0" cy="311.3" r="5" fill="#55c555"/>
+<text x="786.0" y="297.3" text-anchor="end" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e8e8e8">40턴 · 52만</text>
+<line x1="160" y1="140" x2="196" y2="140" stroke="#e05555" stroke-width="2.5"/>
+<text x="206" y="145" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e8e8e8">접지 않음 — 턴 수의 제곱으로 는다</text>
+<line x1="160" y1="166" x2="196" y2="166" stroke="#55c555" stroke-width="2.5"/>
+<text x="206" y="171" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e8e8e8">예산에서 접음 — 거의 직선으로 는다</text>
+<text x="455.0" y="452" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">대화의 턴 수</text>
+</svg>

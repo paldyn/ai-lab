@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="508" viewBox="0 0 880 508" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+<defs><marker id="arr" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto"><path d="M 0 0 L 13 7 L 0 14 z" fill="#888"/></marker></defs>
+<rect width="880" height="508" rx="12" fill="#0a0a0a"/>
+<text x="440" y="54" text-anchor="middle" font-size="22" font-weight="700" fill="#e8e8e8">무중단 이관의 네 단계</text>
+<rect x="60" y="90" width="760" height="72" rx="10" fill="#141414" stroke="#7ec8e3" stroke-width="1.5"/>
+<text x="88" y="120" font-size="16" font-weight="600" fill="#e8e8e8">1  이중 쓰기</text>
+<text x="88" y="144" font-size="13" fill="#888">새로 들어오는 쓰기를 옛 DB와 새 DB 양쪽에 함께 보낸다</text>
+<line x1="440" y1="162" x2="440" y2="192" stroke="#888" stroke-width="2" marker-end="url(#arr)"/>
+<rect x="60" y="192" width="760" height="72" rx="10" fill="#141414" stroke="#7ec8e3" stroke-width="1.5"/>
+<text x="88" y="222" font-size="16" font-weight="600" fill="#e8e8e8">2  뒤채우기</text>
+<text x="88" y="246" font-size="13" fill="#888">그 전에 쌓인 데이터를 새 DB로 옮겨 채운다</text>
+<line x1="440" y1="264" x2="440" y2="294" stroke="#888" stroke-width="2" marker-end="url(#arr)"/>
+<rect x="60" y="294" width="760" height="72" rx="10" fill="#141414" stroke="#7777cc" stroke-width="1.5"/>
+<text x="88" y="324" font-size="16" font-weight="600" fill="#e8e8e8">3  비교 읽기</text>
+<text x="88" y="348" font-size="13" fill="#888">읽기 일부를 새 DB로 돌려 상위 결과를 옛 DB와 견준다</text>
+<line x1="440" y1="366" x2="440" y2="396" stroke="#888" stroke-width="2" marker-end="url(#arr)"/>
+<rect x="60" y="396" width="760" height="72" rx="10" fill="#141414" stroke="#55c555" stroke-width="1.5"/>
+<text x="88" y="426" font-size="16" font-weight="600" fill="#e8e8e8">4  읽기 전환</text>
+<text x="88" y="450" font-size="13" fill="#888">읽기를 다 옮기고, 옛 DB는 한동안 쓰기만 받으며 되돌릴 자리로 남긴다</text>
+</svg>

@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="400" viewBox="0 0 880 400">
+<defs><marker id="arr" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto"><path d="M 0 0 L 13 7 L 0 14 z" fill="#e05555"/></marker></defs>
+<rect x="0" y="0" width="880" height="400" rx="12" fill="#0a0a0a"/>
+<text x="60" y="46" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="22" font-weight="700" fill="#e8e8e8">한 요청에 실리는 층과 캐시 경계</text>
+<rect x="60" y="150" width="150" height="64" rx="6" fill="#191933" stroke="#7777cc" stroke-width="1.5"/>
+<text x="135.0" y="177" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="600" fill="#e8e8e8">시스템 프롬프트</text>
+<text x="135.0" y="197" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">고정</text>
+<rect x="216" y="150" width="120" height="64" rx="6" fill="#16202e" stroke="#7ec8e3" stroke-width="1.5"/>
+<text x="276.0" y="177" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="600" fill="#e8e8e8">접힌 요약 1</text>
+<text x="276.0" y="197" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">안 고친다</text>
+<rect x="342" y="150" width="120" height="64" rx="6" fill="#16202e" stroke="#7ec8e3" stroke-width="1.5"/>
+<text x="402.0" y="177" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="600" fill="#e8e8e8">접힌 요약 2</text>
+<text x="402.0" y="197" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">덧붙인다</text>
+<rect x="468" y="150" width="160" height="64" rx="6" fill="#16202e" stroke="#7ec8e3" stroke-width="1.5"/>
+<text x="548.0" y="177" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="600" fill="#e8e8e8">최근 턴</text>
+<text x="548.0" y="197" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">원문 그대로</text>
+<rect x="634" y="150" width="186" height="64" rx="6" fill="#2a1a12" stroke="#ce9178" stroke-width="1.5"/>
+<text x="727.0" y="177" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="600" fill="#e8e8e8">상태 블록 + 입력</text>
+<text x="727.0" y="197" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">매 턴 새로</text>
+<line x1="60" y1="118" x2="628" y2="118" stroke="#55c555" stroke-width="2"/>
+<line x1="60" y1="112" x2="60" y2="124" stroke="#55c555" stroke-width="2"/>
+<line x1="628" y1="112" x2="628" y2="124" stroke="#55c555" stroke-width="2"/>
+<text x="344" y="100" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#55c555">앞 요청과 같은 앞부분 — 캐시가 듣는다</text>
+<line x1="634" y1="118" x2="820" y2="118" stroke="#ce9178" stroke-width="2"/>
+<text x="727" y="100" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#ce9178">새로 계산</text>
+<line x1="631" y1="134" x2="631" y2="232" stroke="#e8e8e8" stroke-width="2" stroke-dasharray="4,4"/>
+<text x="631" y="254" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e8e8e8">캐시 경계</text>
+<rect x="60" y="292" width="760" height="72" rx="8" fill="#1a0f0f" stroke="#e05555" stroke-width="1.5"/>
+<text x="84" y="322" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="600" fill="#e8e8e8">요약 1을 고쳐 쓰면 경계가 요약 1 앞까지 올라간다</text>
+<text x="84" y="344" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">그 뒤의 요약 2 · 최근 턴 · 입력이 전부 다시 계산된다</text>
+<path d="M 216 292 L 216 214" fill="none" stroke="#e05555" stroke-width="2" stroke-dasharray="4,4" marker-end="url(#arr)"/>
+</svg>

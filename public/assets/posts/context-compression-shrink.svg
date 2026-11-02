@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="420" viewBox="0 0 880 420">
+  <rect x="0" y="0" width="880" height="420" rx="12" fill="#0a0a0a"/>
+  <text x="60" y="48" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="22" font-weight="700" fill="#e8e8e8">최근 셋은 전문, 그 앞은 한 줄</text>
+  <text x="60" y="74" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">도구 결과 여섯 개가 쌓인 이력. 원문은 저장소에 남고 화면에서만 내려간다</text>
+
+  <text x="60" y="114" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="600" fill="#7ec8e3">축약됨</text>
+  <rect x="60" y="126" width="760" height="40" rx="6" fill="#000000" stroke="#3a4a6e" stroke-width="1"/>
+  <text x="76" y="151" xml:space="preserve" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#9aa4b8">#1 search_issues → 12건, 상위 3건: 8812, 8790, 8754</text>
+  <rect x="60" y="174" width="760" height="40" rx="6" fill="#000000" stroke="#3a4a6e" stroke-width="1"/>
+  <text x="76" y="199" xml:space="preserve" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#9aa4b8">#2 get_issue(8812) → 상세 1건 (다시 보려면 재조회)</text>
+  <rect x="60" y="222" width="760" height="40" rx="6" fill="#000000" stroke="#3a4a6e" stroke-width="1"/>
+  <text x="76" y="247" xml:space="preserve" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#9aa4b8">#3 list_deploys → 5건, 최근: v2.4.1</text>
+
+  <text x="60" y="296" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="600" fill="#55c555">전문 유지</text>
+  <rect x="60" y="308" width="244" height="72" rx="8" fill="#14141c" stroke="#2a2a35" stroke-width="1"/>
+  <text x="80" y="340" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="600" fill="#e8e8e8">#4 get_logs</text>
+  <text x="80" y="360" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">원문 전체</text>
+  <rect x="318" y="308" width="244" height="72" rx="8" fill="#14141c" stroke="#2a2a35" stroke-width="1"/>
+  <text x="338" y="340" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="600" fill="#e8e8e8">#5 get_issue</text>
+  <text x="338" y="360" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">원문 전체</text>
+  <rect x="576" y="308" width="244" height="72" rx="8" fill="#14141c" stroke="#2a2a35" stroke-width="1"/>
+  <text x="596" y="340" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="600" fill="#e8e8e8">#6 run_tests</text>
+  <text x="596" y="360" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">원문 전체</text>
+</svg>
