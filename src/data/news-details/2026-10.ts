@@ -2,6 +2,32 @@ import type { NewsDetail } from '../news';
 
 /** 2026-10 발표의 모달 본문. 목록은 news.ts에 있습니다. */
 export const details: Record<string, NewsDetail> = {
+  'blog-gemini-4-carbon-our-next-frontier-model': {
+    points: [
+      'Artificial Analysis Intelligence Index v5.0에서 59점으로 1위다',
+      'SEC-bench Pro 88.2%, ExploitGym 54.8%, CWE-bench 71.0%로 취약점 발견·악용 검증·패치에서 앞선다',
+      '내부 벤치마크에서 안전한 코드 생성 성공률이 Argon의 2배를 넘는다',
+      'WebDev Arena에서 89점 오른 1768점으로 4위다',
+      'Terminal-Bench 4.0 부정 성공률을 0.0%로 낮췄고 근거 없는 주장은 Argon의 약 절반이다',
+      'Gray Swan 간접 프롬프트 인젝션 벤치마크에서 공격 성공률 0.0%를 기록했다',
+      '이번 주부터 사이버 방어자 일부에 열고 개발자·기업·소비자 출시 시점은 밝히지 않았다',
+      '도입 기간이 끝나면 100만 토큰당 입력 4달러·출력 20달러가 적용된다',
+    ],
+    commentary:
+      'Argon을 일반 공개한 지 두 주 만에 후속작을 낸 속도가 눈에 띈다. 같은 단계 배포를 되풀이해 사이버 역량이 강한 모델은 방어 기관부터 연다는 원칙을 굳히고 있다. 도입가가 Argon과 같아 갈아타는 부담은 없지만 정가는 두 배라 장기 비용은 도입 기간이 언제 끝나는지에 달려 있다.',
+  },
+  'ai-for-science-expands-foundations-research-institutions': {
+    points: [
+      'AI for Science는 2025년 5월 시작했고 영향이 큰 과학 프로젝트 연구자에게 무료 Claude 크레딧을 준다',
+      'Sloan 재단·Simons 재단·Schmidt Sciences·미국 NSF·CAS 등이 크레딧을 받아 연구자에게 배분한다',
+      'STScI·Wellcome Sanger·Francis Crick·EMBL·Gladstone 등 연구기관은 크레딧을 내부 연구에 쓴다',
+      'FlyWire·LEAP·AstroPath·gnomAD·Tau Ceti 같은 연구 프로젝트에도 크레딧을 직접 준다',
+      '여러 프로젝트가 공개 데이터셋·오픈소스 소프트웨어·공개 표준 같은 공공재를 만들 예정이다',
+      'HHMI Janelia와 함께 만든 실험 장비 표준 Model Hardware Standard는 연구 프리뷰 단계다',
+    ],
+    commentary:
+      '연구자 개인을 직접 고르던 방식에서 크레딧을 대신 나눠 줄 재단·학회를 끼는 방식으로 옮겨 심사 부담을 바깥에 넘겼다. 미국 NSF가 배분 창구로 들어온 것이 특히 크다. 결과물로 공공재를 내세워 공개 데이터·도구 생태계에 Claude를 기본 도구로 심으려는 포석으로 읽힌다.',
+  },
   'expanding-partnership-gsa': {
     points: [
       '정부 고객은 Claude Enterprise·Claude for Government·Claude API를 40% 할인받는다',

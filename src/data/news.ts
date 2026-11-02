@@ -160,7 +160,7 @@ export interface NewsDetail {
   commentary: string;
 }
 
-export const globalNewsUpdatedAt = '2026-10-27';
+export const globalNewsUpdatedAt = '2026-10-28';
 
 /**
  * 공식 발표 한 건 = 항목 한 개. 2026년 1월부터 쌓는 아카이브이며 오래된 항목을
@@ -171,6 +171,44 @@ export const globalNewsUpdatedAt = '2026-10-27';
  * 목록에서 파생됩니다. 갱신 시 globalNewsUpdatedAt도 함께 올립니다.
  */
 const entries: NewsItem[] = [
+  {
+    id: 'ai-for-science-expands-foundations-research-institutions',
+    source: 'Anthropic',
+    kind: 'company',
+    title: 'Anthropic, AI for Science 크레딧을 과학 재단·연구기관으로 확대',
+    summary:
+      'Anthropic이 연구자에게 무료 Claude 크레딧을 주는 AI for Science 프로그램을 과학 재단·연구기관·연구 프로젝트 20곳으로 넓혔다. ' +
+      'Sloan·Simons 재단과 미국 국립과학재단(NSF)이 크레딧을 연구자에게 나눠 주고 STScI·EMBL 등은 내부 연구에 쓴다.',
+    publishedAt: '2026-10-28',
+    collectedAt: '2026-11-03',
+    category: 'Corporate',
+    signal: '학술 연구 지원',
+    url: 'https://www.anthropic.com/news/ai-for-science-expands-foundations-research-institutions',
+  },
+  {
+    id: 'blog-gemini-4-carbon-our-next-frontier-model',
+    source: 'Google DeepMind',
+    kind: 'model',
+    title: 'Google DeepMind, Gemini 4 Carbon 공개 — 사이버 방어 기관부터 배포',
+    summary:
+      'Google DeepMind가 Argon 출시 두 주 만에 다음 프런티어 모델 Gemini 4 Carbon을 발표하고 Fairwind Program의 사이버 방어 기관 일부에 먼저 열었다. ' +
+      '도입가는 Argon과 같은 100만 토큰당 입력 2달러·출력 10달러다.',
+    publishedAt: '2026-10-28',
+    collectedAt: '2026-11-03',
+    category: 'Frontier',
+    signal: '프런티어 모델',
+    url: 'https://deepmind.google/blog/gemini-4-carbon-our-next-frontier-model',
+    model: {
+      family: 'Gemini',
+      name: 'Gemini 4 Carbon',
+      kind: '신규 모델',
+      status: '제한 공개',
+      useCase: '장기 엔지니어링·사이버 방어',
+      headline: '취약점 발견·악용 검증·패치 벤치마크를 모두 앞선 Gemini 4 세대 두 번째 모델',
+      logo: 'assets/gemini.svg',
+      tone: 'gemini',
+    },
+  },
   {
     id: 'early-progress-drug-development',
     source: 'Anthropic',
