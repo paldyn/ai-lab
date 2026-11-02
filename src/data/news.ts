@@ -172,6 +172,34 @@ export const globalNewsUpdatedAt = '2026-10-27';
  */
 const entries: NewsItem[] = [
   {
+    id: 'early-progress-drug-development',
+    source: 'Anthropic',
+    kind: 'company',
+    title: 'Anthropic, 신약 개발 파트너 6곳과의 Claude 활용 초기 성과 공개',
+    summary:
+      'Anthropic이 BMS·Generate Biomedicines 등 신약 개발 기업 6곳과 Claude로 진행한 연구 협력의 초기 결과와 기술 보고서를 공개했다. ' +
+      '근이영양증 치료제를 개발하던 1인 기업 Mithril Medicine을 인수해 자체 신약 프로그램도 시작했다.',
+    publishedAt: '2026-10-27',
+    collectedAt: '2026-11-03',
+    category: 'Research',
+    signal: '과학 AI',
+    url: 'https://www.anthropic.com/research/early-progress-drug-development',
+  },
+  {
+    id: 'expanding-partnership-gsa',
+    source: 'Anthropic',
+    kind: 'company',
+    title: 'Anthropic, 미국 조달청 협약 확대 — 정부에 Claude 40% 할인',
+    summary:
+      'Anthropic이 미국 조달청(GSA)과 새 협약을 맺어 Claude Enterprise·Claude for Government·Claude API를 정부에 40% 할인한다. ' +
+      '할인은 직접 구매와 클라우드 경유 구매에 모두 걸리고 주·지방·부족·준주 정부까지 적용된다.',
+    publishedAt: '2026-10-27',
+    collectedAt: '2026-11-03',
+    category: 'Corporate',
+    signal: '공공부문 AI',
+    url: 'https://www.anthropic.com/news/expanding-partnership-gsa',
+  },
+  {
     id: 'oracle-apps-in-chatgpt',
     source: 'OpenAI',
     kind: 'company',

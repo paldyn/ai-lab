@@ -2,6 +2,33 @@ import type { NewsDetail } from '../news';
 
 /** 2026-10 발표의 모달 본문. 목록은 news.ts에 있습니다. */
 export const details: Record<string, NewsDetail> = {
+  'expanding-partnership-gsa': {
+    points: [
+      '정부 고객은 Claude Enterprise·Claude for Government·Claude API를 40% 할인받는다',
+      '할인이 처음으로 모든 제품 표면에 걸린다 — 직접 구매는 지금, 클라우드 경유는 몇 달 안에',
+      '주·지방·부족·준주(SLTT) 정부에도 할인이 적용된다',
+      '정부 전체 절감액을 10억 달러로 추산하며 최소 지출 약정 없이 쓴 만큼 낸다',
+      '미국 정부 기관 약 500곳이 Claude를 쓰고 Claude for Government 주간 활성 사용자는 2월 이후 약 8배 늘었다',
+      '유타주 4주 시범에서 Claude Code를 받은 개발자 34명 중 71%가 20시간 이상 아꼈다고 답했다',
+      'Claude for Government는 FedRAMP High 수준으로 9월 30일 정식 출시됐고 Claude Enterprise는 Moderate 인가를 밟고 있다',
+      '기관은 GSA Multiple Award Schedule에서 OneGov 할인가로 바로 살 수 있다',
+    ],
+    commentary:
+      'OpenAI가 앞서 GSA와 맺은 사용자당 0달러 협약과 달리 Anthropic은 정가 할인에 쓴 만큼 내는 과금을 택했다. 클라우드 경유 구매까지 할인이 걸리면 이미 Bedrock·Vertex AI로 Claude를 쓰는 기관도 조달 경로를 바꾸지 않고 혜택을 받는다. 연방을 넘어 주·지방 정부까지 같은 조건을 연 점이 경쟁 구도에서 갈리는 지점이다.',
+  },
+  'early-progress-drug-development': {
+    points: [
+      '협력사는 BigHat Biosciences·Bristol Myers Squibb·Divergence Labs·Enveda·Generate Biomedicines·The Column Group이다',
+      'Generate는 Claude Code로 CAR-T 유전 지시의 한 부분을 약 70% 줄인 설계를 얻었고 수용체가 약 10배 많이 만들어졌다',
+      'Claude는 Divergence Labs의 식품 알레르기 치료제용 항체 설계 약 3만 5천 개를 한 달여 만에 대부분 자율로 만들었다',
+      'BigHat과는 변이체 약 1,010개를 10주간 만들어 시험했고 가장 나은 후보는 결합력이 10배 넘게 좋아졌다',
+      'Enveda 제조 문서 1,061쪽에서 사람이 찾은 문제 11건을 모두 잡고 7건을 더 찾았으며 검토 시간을 89% 줄였다',
+      '1인 기업 Mithril Medicine을 인수했고 이르면 2028년 말 사람 대상 임상에 들어갈 약물을 기대한다',
+      '대부분 아직 전임상 단계이며 BMS와는 2027년에 임상시험 계획 작업을 넓힐 계획이다',
+    ],
+    commentary:
+      'AI 신약 개발 이야기가 분자 설계에 쏠려 있던 것과 달리 제조 문서·규제 서류·임상 계획까지 개발 전 과정을 한꺼번에 다룬 사례 묶음이다. 회사별 기술 보고서를 함께 내 수치를 따져 볼 수 있게 한 점이 홍보 글과 다르다. 다만 거의 전부 전임상이라 실제 신약으로 이어질지는 2028년 이후에야 가려진다.',
+  },
   'oracle-apps-in-chatgpt': {
     points: [
       'Oracle은 Oracle AI Workspace를 개발해 Oracle 애플리케이션과 데이터를 ChatGPT에 연결한다',
