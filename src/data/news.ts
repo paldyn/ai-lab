@@ -172,6 +172,146 @@ export const globalNewsUpdatedAt = '2026-11-02';
  */
 const entries: NewsItem[] = [
   {
+    id: 'helping-websites-express-ai-training-preferences',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'OpenAI, robots.txt의 공통 AI 학습 선호 신호를 따르기로',
+    summary:
+      'OpenAI가 웹사이트 운영자가 생성형 AI 기초 학습에 콘텐츠를 쓸지를 robots.txt 한 곳에서 여러 사업자에게 한꺼번에 알리는 공통 신호를 따르겠다고 밝혔다. ' +
+      '적용은 앞으로 몇 달 안이며 기존 크롤러별 설정도 그대로 지킨다.',
+    publishedAt: '2026-10-30',
+    collectedAt: '2026-11-03',
+    category: 'Safety',
+    signal: '학습 데이터 선호',
+    url: 'https://openai.com/index/helping-websites-express-ai-training-preferences',
+  },
+  {
+    id: 'updated-model-spec',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'OpenAI, 다섯 가치로 다시 짠 Model Spec 개정판 공개',
+    summary:
+      'OpenAI가 모델 행동 규범인 Model Spec을 인간 의도에 대한 충실·해 최소화·정직과 투명성·인간 주체성·배려 다섯 가치로 다시 묶었다. ' +
+      '맥락·감독·주체성 지침을 더하고 세부 문체 지침 대부분을 걷어냈다.',
+    publishedAt: '2026-10-29',
+    collectedAt: '2026-11-03',
+    category: 'Safety',
+    signal: '모델 행동 규범',
+    url: 'https://openai.com/index/updated-model-spec',
+  },
+  {
+    id: 'how-we-detect-frontier-model-misalignment',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'OpenAI, 프런티어 모델 오정렬 감시 체계를 네 층 구조로 공개',
+    summary:
+      'OpenAI가 학습·평가·사내 사용·외부 배포에 걸친 오정렬 감시 체계를 공개했다. ' +
+      '활성 탐침부터 조사 에이전트까지 네 층으로 거르며, Hugging Face 사고를 다시 돌려 보니 샌드박스 탈출 약 30분 뒤에 경보가 났다.',
+    publishedAt: '2026-10-29',
+    collectedAt: '2026-11-03',
+    category: 'Safety',
+    signal: '프런티어 모델 안전',
+    url: 'https://openai.com/index/how-we-detect-frontier-model-misalignment',
+  },
+  {
+    id: 'credit-saison',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'Credit Saison, ChatGPT Enterprise 시범에서 ROI 954% 확인',
+    summary:
+      '일본 카드사 Credit Saison이 직원 315명과 한 달 남짓 ChatGPT Enterprise를 시범 운영해 ROI 954%, 1인당 월 14시간 절감을 얻었다고 OpenAI가 소개했다. ' +
+      '시범 종료 한 달 만에 전사 도입을 정했다.',
+    publishedAt: '2026-10-29',
+    collectedAt: '2026-11-03',
+    category: 'Product',
+    signal: '기업 도입 사례',
+    url: 'https://openai.com/index/credit-saison',
+  },
+  {
+    id: 'ropes-gray-ai-diligence',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'Ropes & Gray, OpenAI와 인수 거래 실사용 AI 도구 개발',
+    summary:
+      '로펌 Ropes & Gray가 OpenAI와 함께 인수 거래 실사용 AI 도구를 만들고 있다고 OpenAI가 소개했다. ' +
+      '데이터룸 문서를 주제·쟁점별로 묶고 요약과 보고서 초안을 내며, 고객에게 가기 전에 변호사가 모두 검토한다.',
+    publishedAt: '2026-10-29',
+    collectedAt: '2026-11-03',
+    category: 'Product',
+    signal: '기업 도입 사례',
+    url: 'https://openai.com/index/ropes-gray-ai-diligence',
+  },
+  {
+    id: 'openai-servicenow-partnership-expansion',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'OpenAI·ServiceNow, ChatGPT 연동과 보안·음성 공동 개발로 제휴 확대',
+    summary:
+      'OpenAI와 ServiceNow가 1월에 맺은 제휴를 넓혀 ServiceNow 업무 흐름을 ChatGPT·Codex와 잇고 OpenAI 모델을 ServiceNow 제품에 더 넣는다. ' +
+      'ServiceNow MCP 플러그인은 OpenAI 마켓플레이스에 바로 나왔다.',
+    publishedAt: '2026-10-28',
+    collectedAt: '2026-11-03',
+    category: 'Product',
+    signal: '기업용 에이전트',
+    url: 'https://openai.com/index/openai-servicenow-partnership-expansion',
+  },
+  {
+    id: 'the-future-of-the-firm',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'Intelligence Age 에세이, AI가 조직도에 들어가는 세 갈래',
+    summary:
+      'OpenAI Intelligence Age의 다음 경제 연재 두 번째 에세이로, AI가 회사 조직도의 아래·옆·사이 중 어디에 들어갈지 세 시나리오를 그렸다. ' +
+      '필자 둘의 견해이며 OpenAI의 입장이 아니라고 밝혔다.',
+    publishedAt: '2026-10-28',
+    collectedAt: '2026-11-03',
+    category: 'Research',
+    signal: '경제 에세이',
+    url: 'https://openai.com/index/the-future-of-the-firm',
+  },
+  {
+    id: 'check-point-daybreak',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'Check Point, Daybreak로 취약점 연구를 몇 시간에서 몇 분으로',
+    summary:
+      '보안 기업 Check Point가 OpenAI Daybreak로 새 취약점을 분석해 고객 보호 장치로 바꾸는 연구를 몇 시간에서 몇 분으로 줄였다고 OpenAI가 소개했다. ' +
+      'Daybreak로 에이전틱 네트워크 보안 솔루션도 개발 중이다.',
+    publishedAt: '2026-10-27',
+    collectedAt: '2026-11-03',
+    category: 'Product',
+    signal: 'AI 사이버 방어',
+    url: 'https://openai.com/index/check-point-daybreak',
+  },
+  {
+    id: 'greptile-code-review-codex-astra',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'Greptile, GPT-6 Astra 컴퓨터 사용으로 PR마다 앱 동작 시험',
+    summary:
+      '코드 리뷰 에이전트를 만드는 Greptile이 GPT-6 Astra의 컴퓨터 사용으로 풀 리퀘스트마다 앱을 띄워 사용자처럼 눌러 보는 시험을 자동화했다고 OpenAI가 소개했다. ' +
+      '보안에는 Daybreak, 코드 작성에는 Codex를 쓴다.',
+    publishedAt: '2026-10-26',
+    collectedAt: '2026-11-03',
+    category: 'Product',
+    signal: '컴퓨터 사용',
+    url: 'https://openai.com/index/greptile-code-review-codex-astra',
+  },
+  {
+    id: 'openai-cut-incident-investigation',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'OpenAI, 사내 장애·보안 사고 조사에 Codex Ultrafast를 기본으로',
+    summary:
+      'OpenAI가 사내 엔지니어들이 Codex의 고속 모드 Ultrafast로 장애와 보안 사고를 조사하는 방식을 소개했다. ' +
+      '데이터를 모아 판단하던 보안 조사가 한두 시간에서 10~15분으로 줄었다고 밝혔다.',
+    publishedAt: '2026-10-26',
+    collectedAt: '2026-11-03',
+    category: 'Product',
+    signal: '저지연 추론',
+    url: 'https://openai.com/index/openai-cut-incident-investigation',
+  },
+  {
     id: 'ai-google-ai-updates-october-2026',
     source: 'Google DeepMind',
     kind: 'company',
