@@ -311,3 +311,5 @@ elapsed=60s
 읽어주셔서 감사합니다. 😊
 
 **지난 글:** [JL 경계는 실제 임베딩에서 얼마나 헐거운가: ε=0.1에 이론 7,331차원, 실측 6,144~7,168차원으로 거의 헐겁지 않았다](/articles/paper-johnson-lindenstrauss-slack)
+
+**다음 글:** [ColBERT 축소 재현: 토큰 단위 매칭은 그 저장 비용을 버는가 — 인덱스 39배를 쓰고 1,000편에서는 MiniLM과 같은 자리였다](/articles/paper-colbert-late-interaction)
