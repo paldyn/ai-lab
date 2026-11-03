@@ -1,0 +1,83 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="520" viewBox="0 0 880 520">
+<defs><marker id="arr" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto"><path d="M 0 0 L 13 7 L 0 14 z" fill="#888"/></marker></defs>
+<rect x="0" y="0" width="880" height="520" rx="12" fill="#0a0a0a"/>
+<text x="60" y="50" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="22" font-weight="700" fill="#e8e8e8">w의 모양이 최적 배치를 정한다</text>
+<text x="60" y="76" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">왼쪽은 일곱 자리의 읽힘 가중치, 오른쪽은 그 가정에서 Ŝ를 가장 크게 만드는 순위 차례</text>
+<text x="370" y="112" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">읽힘 가중치 w (창의 앞 → 질문 직전)</text>
+<text x="723" y="112" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">최적 배치 (숫자는 순위)</text>
+<text x="60" y="172" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#e8e8e8">U자</text>
+<text x="60" y="194" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">앞뒤가 높다</text>
+<rect x="222" y="140" width="32" height="80" rx="4" fill="#7777cc" opacity="0.85"/>
+<rect x="266" y="164" width="32" height="56" rx="4" fill="#7777cc" opacity="0.85"/>
+<rect x="310" y="184" width="32" height="36" rx="4" fill="#7777cc" opacity="0.85"/>
+<rect x="354" y="192" width="32" height="28" rx="4" fill="#7777cc" opacity="0.85"/>
+<rect x="398" y="184" width="32" height="36" rx="4" fill="#7777cc" opacity="0.85"/>
+<rect x="442" y="164" width="32" height="56" rx="4" fill="#7777cc" opacity="0.85"/>
+<rect x="486" y="140" width="32" height="80" rx="4" fill="#7777cc" opacity="0.85"/>
+<line x1="530" y1="180" x2="610" y2="180" stroke="#888" stroke-width="2" marker-end="url(#arr)"/>
+<rect x="616" y="164" width="27" height="32" rx="5" fill="#7ec8e3" opacity="0.95"/>
+<text x="629.5" y="185" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="600" fill="#0a0a0a">1</text>
+<rect x="647" y="164" width="27" height="32" rx="5" fill="#7ec8e3" opacity="0.77"/>
+<text x="660.5" y="185" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="600" fill="#0a0a0a">3</text>
+<rect x="678" y="164" width="27" height="32" rx="5" fill="#7ec8e3" opacity="0.59"/>
+<text x="691.5" y="185" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="600" fill="#ffffff">5</text>
+<rect x="709" y="164" width="27" height="32" rx="5" fill="#7ec8e3" opacity="0.41"/>
+<text x="722.5" y="185" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="600" fill="#ffffff">7</text>
+<rect x="740" y="164" width="27" height="32" rx="5" fill="#7ec8e3" opacity="0.5"/>
+<text x="753.5" y="185" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="600" fill="#ffffff">6</text>
+<rect x="771" y="164" width="27" height="32" rx="5" fill="#7ec8e3" opacity="0.68"/>
+<text x="784.5" y="185" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="600" fill="#0a0a0a">4</text>
+<rect x="802" y="164" width="27" height="32" rx="5" fill="#7ec8e3" opacity="0.86"/>
+<text x="815.5" y="185" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="600" fill="#0a0a0a">2</text>
+<text x="723" y="220" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="600" fill="#55c555">샌드위치</text>
+<text x="60" y="297" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#e8e8e8">뒤로 오른다</text>
+<text x="60" y="319" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">질문 직전이 높다</text>
+<rect x="222" y="317" width="32" height="28" rx="4" fill="#7777cc" opacity="0.85"/>
+<rect x="266" y="309" width="32" height="36" rx="4" fill="#7777cc" opacity="0.85"/>
+<rect x="310" y="301" width="32" height="44" rx="4" fill="#7777cc" opacity="0.85"/>
+<rect x="354" y="293" width="32" height="52" rx="4" fill="#7777cc" opacity="0.85"/>
+<rect x="398" y="285" width="32" height="60" rx="4" fill="#7777cc" opacity="0.85"/>
+<rect x="442" y="275" width="32" height="70" rx="4" fill="#7777cc" opacity="0.85"/>
+<rect x="486" y="265" width="32" height="80" rx="4" fill="#7777cc" opacity="0.85"/>
+<line x1="530" y1="305" x2="610" y2="305" stroke="#888" stroke-width="2" marker-end="url(#arr)"/>
+<rect x="616" y="289" width="27" height="32" rx="5" fill="#7ec8e3" opacity="0.41"/>
+<text x="629.5" y="310" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="600" fill="#ffffff">7</text>
+<rect x="647" y="289" width="27" height="32" rx="5" fill="#7ec8e3" opacity="0.5"/>
+<text x="660.5" y="310" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="600" fill="#ffffff">6</text>
+<rect x="678" y="289" width="27" height="32" rx="5" fill="#7ec8e3" opacity="0.59"/>
+<text x="691.5" y="310" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="600" fill="#ffffff">5</text>
+<rect x="709" y="289" width="27" height="32" rx="5" fill="#7ec8e3" opacity="0.68"/>
+<text x="722.5" y="310" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="600" fill="#0a0a0a">4</text>
+<rect x="740" y="289" width="27" height="32" rx="5" fill="#7ec8e3" opacity="0.77"/>
+<text x="753.5" y="310" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="600" fill="#0a0a0a">3</text>
+<rect x="771" y="289" width="27" height="32" rx="5" fill="#7ec8e3" opacity="0.86"/>
+<text x="784.5" y="310" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="600" fill="#0a0a0a">2</text>
+<rect x="802" y="289" width="27" height="32" rx="5" fill="#7ec8e3" opacity="0.95"/>
+<text x="815.5" y="310" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="600" fill="#0a0a0a">1</text>
+<text x="723" y="345" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="600" fill="#55c555">역순</text>
+<text x="60" y="422" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#e8e8e8">앞으로 높다</text>
+<text x="60" y="444" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">앞머리가 높다</text>
+<rect x="222" y="390" width="32" height="80" rx="4" fill="#7777cc" opacity="0.85"/>
+<rect x="266" y="400" width="32" height="70" rx="4" fill="#7777cc" opacity="0.85"/>
+<rect x="310" y="410" width="32" height="60" rx="4" fill="#7777cc" opacity="0.85"/>
+<rect x="354" y="418" width="32" height="52" rx="4" fill="#7777cc" opacity="0.85"/>
+<rect x="398" y="426" width="32" height="44" rx="4" fill="#7777cc" opacity="0.85"/>
+<rect x="442" y="434" width="32" height="36" rx="4" fill="#7777cc" opacity="0.85"/>
+<rect x="486" y="442" width="32" height="28" rx="4" fill="#7777cc" opacity="0.85"/>
+<line x1="530" y1="430" x2="610" y2="430" stroke="#888" stroke-width="2" marker-end="url(#arr)"/>
+<rect x="616" y="414" width="27" height="32" rx="5" fill="#7ec8e3" opacity="0.95"/>
+<text x="629.5" y="435" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="600" fill="#0a0a0a">1</text>
+<rect x="647" y="414" width="27" height="32" rx="5" fill="#7ec8e3" opacity="0.86"/>
+<text x="660.5" y="435" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="600" fill="#0a0a0a">2</text>
+<rect x="678" y="414" width="27" height="32" rx="5" fill="#7ec8e3" opacity="0.77"/>
+<text x="691.5" y="435" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="600" fill="#0a0a0a">3</text>
+<rect x="709" y="414" width="27" height="32" rx="5" fill="#7ec8e3" opacity="0.68"/>
+<text x="722.5" y="435" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="600" fill="#0a0a0a">4</text>
+<rect x="740" y="414" width="27" height="32" rx="5" fill="#7ec8e3" opacity="0.59"/>
+<text x="753.5" y="435" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="600" fill="#ffffff">5</text>
+<rect x="771" y="414" width="27" height="32" rx="5" fill="#7ec8e3" opacity="0.5"/>
+<text x="784.5" y="435" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="600" fill="#ffffff">6</text>
+<rect x="802" y="414" width="27" height="32" rx="5" fill="#7ec8e3" opacity="0.41"/>
+<text x="815.5" y="435" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="600" fill="#ffffff">7</text>
+<text x="723" y="470" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="600" fill="#55c555">순위 그대로</text>
+</svg>

@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="560" viewBox="0 0 880 560">
+  <defs>
+    <marker id="arrRed" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#e05555"/>
+    </marker>
+  </defs>
+  <rect x="0" y="0" width="880" height="560" rx="12" fill="#0a0a0a"/>
+  <g font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+    <text x="60" y="46" font-size="22" font-weight="700" fill="#e8e8e8">질문 수에 따른 누적 입력 비용</text>
+    <text x="60" y="72" font-size="13" fill="#888">가정: 문서 200K 토큰 · 검색 조각 8K · 캐시 적중 단가 10% · 단위는 입력 1K 토큰 값</text>
+
+    <!-- grid -->
+    <line x1="120" y1="420" x2="800" y2="420" stroke="#555555" stroke-width="1.5"/>
+    <line x1="120" y1="100" x2="120" y2="420" stroke="#555555" stroke-width="1.5"/>
+    <line x1="120" y1="340" x2="800" y2="340" stroke="#222222" stroke-width="1"/>
+    <line x1="120" y1="260" x2="800" y2="260" stroke="#222222" stroke-width="1"/>
+    <line x1="120" y1="180" x2="800" y2="180" stroke="#222222" stroke-width="1"/>
+    <line x1="120" y1="100" x2="800" y2="100" stroke="#222222" stroke-width="1"/>
+
+    <text x="106" y="425" font-size="13" fill="#888" text-anchor="end">0</text>
+    <text x="106" y="345" font-size="13" fill="#888" text-anchor="end">100</text>
+    <text x="106" y="265" font-size="13" fill="#888" text-anchor="end">200</text>
+    <text x="106" y="185" font-size="13" fill="#888" text-anchor="end">300</text>
+    <text x="106" y="105" font-size="13" fill="#888" text-anchor="end">400</text>
+
+    <text x="120" y="446" font-size="13" fill="#888" text-anchor="middle">1</text>
+    <text x="271" y="446" font-size="13" fill="#888" text-anchor="middle">3</text>
+    <text x="422" y="446" font-size="13" fill="#888" text-anchor="middle">5</text>
+    <text x="573" y="446" font-size="13" fill="#888" text-anchor="middle">7</text>
+    <text x="724" y="446" font-size="13" fill="#888" text-anchor="middle">9</text>
+    <text x="800" y="446" font-size="13" fill="#888" text-anchor="middle">10</text>
+    <text x="460" y="474" font-size="13" fill="#888" text-anchor="middle">같은 문서에 온 질문 수 N</text>
+
+    <!-- long context: 200N, N=1 y=260, N=2 y=100 then off chart -->
+    <line x1="120" y1="260" x2="195.5" y2="110" stroke="#e05555" stroke-width="2.5" marker-end="url(#arrRed)"/>
+    <text x="210" y="128" font-size="13" fill="#e05555">긴 문맥 — N=2에서 400, N=10이면 2,000</text>
+
+    <!-- cache: 200+20(N-1), N=1 y=260 -> N=10 y=116 -->
+    <line x1="120" y1="260" x2="800" y2="116" stroke="#7ec8e3" stroke-width="2.5"/>
+    <text x="800" y="168" font-size="13" fill="#7ec8e3" text-anchor="end">긴 문맥 + 캐시 — 380</text>
+
+    <!-- retrieval: 4+8N, N=1 y=410.4 -> N=10 y=352.8 -->
+    <line x1="120" y1="410.4" x2="800" y2="352.8" stroke="#55c555" stroke-width="2.5"/>
+    <text x="800" y="336" font-size="13" fill="#55c555" text-anchor="end">검색 — 84</text>
+
+    <!-- legend / note -->
+    <rect x="60" y="494" width="760" height="44" rx="8" fill="#12161c" stroke="#555555" stroke-width="1"/>
+    <text x="440" y="521" font-size="13" fill="#e8e8e8" text-anchor="middle">N=10에서 캐시가 격차를 24배에서 4.5배로 줄인다 — 뒤집지는 못한다</text>
+  </g>
+</svg>

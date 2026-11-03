@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 540" width="880" height="540">
+  <rect width="880" height="540" fill="#0a0a0a" rx="12"/>
+  <defs>
+    <marker id="arB" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#7ec8e3"/>
+    </marker>
+    <marker id="arG" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#55c555"/>
+    </marker>
+  </defs>
+  <text x="440" y="46" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="22" font-weight="700" fill="#e8e8e8" text-anchor="middle">두 인코더와 두 단계 검색</text>
+
+  <!-- Cross encoder panel -->
+  <rect x="60" y="76" width="360" height="200" rx="10" fill="#111" stroke="#e05555" stroke-width="1.5"/>
+  <text x="240" y="104" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#e8e8e8" text-anchor="middle">크로스 인코더</text>
+  <rect x="90" y="120" width="300" height="40" rx="6" fill="#1a1a1a" stroke="#555" stroke-width="1"/>
+  <text x="240" y="145" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="14" fill="#e8e8e8" text-anchor="middle">[CLS] 질문 [SEP] 문서 [SEP]</text>
+  <line x1="240" y1="160" x2="240" y2="184" stroke="#7ec8e3" stroke-width="2" marker-end="url(#arB)"/>
+  <rect x="150" y="186" width="180" height="36" rx="6" fill="#1a1a1a" stroke="#7ec8e3" stroke-width="1"/>
+  <text x="240" y="209" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="14" fill="#7ec8e3" text-anchor="middle">BERT → 점수 하나</text>
+  <text x="240" y="248" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888" text-anchor="middle">정확하지만 미리 계산할 수 없다</text>
+  <text x="240" y="266" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e05555" text-anchor="middle">문서 100만 건 → 추론 100만 번</text>
+
+  <!-- Bi encoder panel -->
+  <rect x="460" y="76" width="360" height="200" rx="10" fill="#111" stroke="#55c555" stroke-width="1.5"/>
+  <text x="640" y="104" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#e8e8e8" text-anchor="middle">바이 인코더</text>
+  <rect x="490" y="120" width="140" height="40" rx="6" fill="#1a1a1a" stroke="#555" stroke-width="1"/>
+  <text x="560" y="145" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="14" fill="#e8e8e8" text-anchor="middle">질문 → u</text>
+  <rect x="650" y="120" width="140" height="40" rx="6" fill="#1a1a1a" stroke="#555" stroke-width="1"/>
+  <text x="720" y="145" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="14" fill="#e8e8e8" text-anchor="middle">문서 → v (미리)</text>
+  <line x1="640" y1="160" x2="640" y2="184" stroke="#7ec8e3" stroke-width="2" marker-end="url(#arB)"/>
+  <rect x="550" y="186" width="180" height="36" rx="6" fill="#1a1a1a" stroke="#7ec8e3" stroke-width="1"/>
+  <text x="640" y="209" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="14" fill="#7ec8e3" text-anchor="middle">cos(u, v)</text>
+  <text x="640" y="248" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888" text-anchor="middle">빠르지만 두 문장이 서로를 못 본다</text>
+  <text x="640" y="266" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#55c555" text-anchor="middle">인코딩 1번 + 벡터 곱셈</text>
+
+  <!-- Pipeline -->
+  <text x="440" y="324" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#e8e8e8" text-anchor="middle">두 단계 검색 — 넓게 건지고 좁게 다시 잰다</text>
+  <rect x="60" y="350" width="140" height="80" rx="8" fill="#1a1a2e" stroke="#7777cc" stroke-width="1.5"/>
+  <text x="130" y="386" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="14" fill="#e8e8e8" text-anchor="middle">질문</text>
+  <text x="130" y="406" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888" text-anchor="middle">문서 100만 건</text>
+  <line x1="200" y1="390" x2="248" y2="390" stroke="#55c555" stroke-width="2" marker-end="url(#arG)"/>
+  <rect x="250" y="350" width="180" height="80" rx="8" fill="#111" stroke="#55c555" stroke-width="1.5"/>
+  <text x="340" y="386" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="14" fill="#55c555" text-anchor="middle">1단계 바이 인코더</text>
+  <text x="340" y="406" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888" text-anchor="middle">상위 50건</text>
+  <line x1="430" y1="390" x2="478" y2="390" stroke="#55c555" stroke-width="2" marker-end="url(#arG)"/>
+  <rect x="480" y="350" width="180" height="80" rx="8" fill="#111" stroke="#e05555" stroke-width="1.5"/>
+  <text x="570" y="386" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="14" fill="#e05555" text-anchor="middle">2단계 크로스 인코더</text>
+  <text x="570" y="406" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888" text-anchor="middle">추론 50번 → 상위 5건</text>
+  <line x1="660" y1="390" x2="708" y2="390" stroke="#55c555" stroke-width="2" marker-end="url(#arG)"/>
+  <rect x="710" y="350" width="110" height="80" rx="8" fill="#1a1a2e" stroke="#7777cc" stroke-width="1.5"/>
+  <text x="765" y="386" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="14" fill="#e8e8e8" text-anchor="middle">LLM</text>
+  <text x="765" y="406" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888" text-anchor="middle">답 생성</text>
+  <text x="340" y="466" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#7ec8e3" text-anchor="middle">재현율을 맡는다</text>
+  <text x="570" y="466" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#7ec8e3" text-anchor="middle">정밀도를 맡는다</text>
+  <text x="440" y="504" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888" text-anchor="middle">1단계가 정답을 놓치면 2단계는 아무것도 못 한다</text>
+</svg>

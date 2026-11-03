@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="540" viewBox="0 0 880 540">
+<defs><marker id="arr" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto"><path d="M 0 0 L 13 7 L 0 14 z" fill="#888"/></marker></defs>
+<rect x="0" y="0" width="880" height="540" rx="12" fill="#0a0a0a"/>
+<text x="60" y="50" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="22" font-weight="700" fill="#e8e8e8">틀린 답을 두 무더기로 가르기</text>
+<text x="60" y="76" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">정답 조각의 자리를 기록해 두면 손댈 곳이 배치인지 검색인지 갈린다</text>
+<rect x="270" y="104" width="340" height="64" rx="8" fill="#141a26" stroke="#3a4a6e" stroke-width="1.5"/>
+<text x="440.0" y="133.0" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="15" font-weight="600" fill="#e8e8e8">틀린 답 모으기</text>
+<text x="440.0" y="154.0" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">배치 세 벌 각각에서 집계</text>
+<line x1="440" y1="168" x2="440" y2="204" stroke="#888" stroke-width="2" marker-end="url(#arr)"/>
+<rect x="270" y="204" width="340" height="64" rx="8" fill="#141a26" stroke="#3a4a6e" stroke-width="1.5"/>
+<text x="440.0" y="233.0" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="15" font-weight="600" fill="#e8e8e8">정답 조각의 자리 기록</text>
+<text x="440.0" y="254.0" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">창의 몇 번 조각에 있었나</text>
+<line x1="440" y1="268" x2="440" y2="304" stroke="#888" stroke-width="2" marker-end="url(#arr)"/>
+<rect x="270" y="304" width="340" height="64" rx="8" fill="#141a26" stroke="#7777cc" stroke-width="1.5"/>
+<text x="440.0" y="333.0" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="15" font-weight="600" fill="#e8e8e8">창에 넣은 조각 안에 있었나</text>
+<text x="440.0" y="354.0" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">있었다 / 없었다</text>
+<path d="M 350 368 L 350 390 L 230 390 L 230 420" fill="none" stroke="#55c555" stroke-width="2" marker-end="url(#arr)"/>
+<path d="M 530 368 L 530 390 L 650 390 L 650 420" fill="none" stroke="#e05555" stroke-width="2" marker-end="url(#arr)"/>
+<text x="200" y="384" text-anchor="end" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#55c555">있었다</text>
+<text x="680" y="384" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e05555">없었다</text>
+<rect x="60" y="420" width="340" height="64" rx="8" fill="#141a26" stroke="#55c555" stroke-width="1.5"/>
+<text x="230.0" y="449.0" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="15" font-weight="600" fill="#e8e8e8">배치·프롬프트 문제</text>
+<text x="230.0" y="470.0" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">세 배치를 비교하고 질문 자리를 본다</text>
+<rect x="480" y="420" width="340" height="64" rx="8" fill="#141a26" stroke="#e05555" stroke-width="1.5"/>
+<text x="650.0" y="449.0" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="15" font-weight="600" fill="#e8e8e8">검색·청킹 문제</text>
+<text x="650.0" y="470.0" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">배치는 손대지 않는다</text>
+</svg>

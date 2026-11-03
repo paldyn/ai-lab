@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 460" width="880" height="460">
+  <rect width="880" height="460" fill="#0a0a0a" rx="12"/>
+  <defs>
+    <marker id="arB" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#7ec8e3"/>
+    </marker>
+  </defs>
+  <text x="440" y="46" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="22" font-weight="700" fill="#e8e8e8" text-anchor="middle">대칭 검색과 비대칭 검색</text>
+
+  <rect x="60" y="76" width="360" height="300" rx="10" fill="#111" stroke="#7777cc" stroke-width="1.5"/>
+  <text x="240" y="104" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#e8e8e8" text-anchor="middle">대칭 — 같은 종류끼리</text>
+  <rect x="90" y="124" width="300" height="44" rx="6" fill="#1a1a1a" stroke="#555" stroke-width="1"/>
+  <text x="240" y="151" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="14" fill="#e8e8e8" text-anchor="middle">환불은 언제 되나요?</text>
+  <line x1="240" y1="168" x2="240" y2="204" stroke="#7ec8e3" stroke-width="2" marker-end="url(#arB)"/>
+  <rect x="90" y="206" width="300" height="44" rx="6" fill="#1a1a1a" stroke="#555" stroke-width="1"/>
+  <text x="240" y="233" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="14" fill="#e8e8e8" text-anchor="middle">환불 처리 기간이 궁금합니다</text>
+  <text x="240" y="290" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888" text-anchor="middle">길이도 말투도 비슷하다</text>
+  <text x="240" y="310" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888" text-anchor="middle">순서를 바꿔도 점수가 같아야 한다</text>
+  <text x="240" y="346" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#55c555" text-anchor="middle">중복 질문 · 비슷한 리뷰 묶기</text>
+
+  <rect x="460" y="76" width="360" height="300" rx="10" fill="#111" stroke="#7ec8e3" stroke-width="1.5"/>
+  <text x="640" y="104" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#e8e8e8" text-anchor="middle">비대칭 — 질문으로 문단 찾기</text>
+  <rect x="490" y="124" width="300" height="44" rx="6" fill="#1a1a1a" stroke="#555" stroke-width="1"/>
+  <text x="640" y="151" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="14" fill="#e8e8e8" text-anchor="middle">query: 환불은 언제 되나요?</text>
+  <line x1="640" y1="168" x2="640" y2="204" stroke="#7ec8e3" stroke-width="2" marker-end="url(#arB)"/>
+  <rect x="490" y="206" width="300" height="64" rx="6" fill="#1a1a1a" stroke="#555" stroke-width="1"/>
+  <text x="640" y="232" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="14" fill="#e8e8e8" text-anchor="middle">passage: 결제 취소 후 영업일</text>
+  <text x="640" y="252" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="14" fill="#e8e8e8" text-anchor="middle">3~5일 안에 환급됩니다 …</text>
+  <text x="640" y="300" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888" text-anchor="middle">짧은 물음 대 긴 설명</text>
+  <text x="640" y="320" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888" text-anchor="middle">질문–문단 쌍으로 학습한 모델이 맞다</text>
+  <text x="640" y="346" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#55c555" text-anchor="middle">RAG의 검색 단계</text>
+
+  <text x="440" y="416" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e05555" text-anchor="middle">대칭형 모델을 비대칭 검색에 쓰면 답 문단 대신 비슷한 다른 질문이 올라온다</text>
+</svg>
