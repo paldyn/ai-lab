@@ -160,7 +160,7 @@ export interface NewsDetail {
   commentary: string;
 }
 
-export const globalNewsUpdatedAt = '2026-11-02';
+export const globalNewsUpdatedAt = '2026-11-03';
 
 /**
  * 공식 발표 한 건 = 항목 한 개. 2026년 1월부터 쌓는 아카이브이며 오래된 항목을
@@ -171,6 +171,132 @@ export const globalNewsUpdatedAt = '2026-11-02';
  * 목록에서 파생됩니다. 갱신 시 globalNewsUpdatedAt도 함께 올립니다.
  */
 const entries: NewsItem[] = [
+  {
+    id: 'accelerating-engineering-for-the-physical-world',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'OpenAI, 물리 제품 설계에 쓰는 모델 진척과 Mazda 협력 공개',
+    summary:
+      'OpenAI가 기계·전기 설계와 시뮬레이션에 모델을 쓴 진척을 공개했다. ' +
+      'GPT-6 Astra로 시험 기기를 사람의 직접 수정 없이 설계했고, 사내 하드웨어 팀 사용량은 2월 이후 23배로 늘었으며 Mazda와 공동 연구를 시작한다.',
+    publishedAt: '2026-11-03',
+    collectedAt: '2026-11-04',
+    category: 'Research',
+    signal: '하드웨어 엔지니어링 AI',
+    url: 'https://openai.com/index/accelerating-engineering-for-the-physical-world',
+  },
+  {
+    id: 'heimstaden',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'Heimstaden, 임대 관리에 ChatGPT·Codex 도입·자산 2만 건 평가',
+    summary:
+      '유럽 주거 임대 기업 Heimstaden이 임대 과정과 환경 위험 평가에 OpenAI 도구를 쓴다고 OpenAI가 소개했다. ' +
+      '비개발자가 Codex로 자산 2만 112건을 평가했고 네덜란드의 이미지 제작비는 99% 넘게 줄었다.',
+    publishedAt: '2026-11-03',
+    collectedAt: '2026-11-04',
+    category: 'Product',
+    signal: '기업 도입 사례',
+    url: 'https://openai.com/index/heimstaden',
+  },
+  {
+    id: 'cisco-cyber',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'Cisco, Daybreak와 GPT-6 Astra로 네트워크 보안 대응 강화',
+    summary:
+      'Cisco가 네트워크 텔레메트리에 OpenAI 모델을 결합해 위협 신호를 기계 규모로 연관 분석한다고 OpenAI가 소개했다. ' +
+      'Daybreak Defense Network로 Cisco Cloud Control의 통제 적용도 함께 모색한다.',
+    publishedAt: '2026-11-03',
+    collectedAt: '2026-11-04',
+    category: 'Product',
+    signal: 'AI 사이버 방어',
+    url: 'https://openai.com/index/cisco-cyber',
+  },
+  {
+    id: 'jill-hazelbaker-chief-corporate-affairs-officer',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'OpenAI, Uber 출신 Jill Hazelbaker를 대외협력 총괄로 선임',
+    summary:
+      'OpenAI가 Uber 사장 겸 최고 대외협력책임자였던 Jill Hazelbaker를 Chief Corporate Affairs Officer로 영입한다. ' +
+      '회사의 글로벌 커뮤니케이션과 기업 포지셔닝을 이끈다.',
+    publishedAt: '2026-11-03',
+    collectedAt: '2026-11-04',
+    category: 'Corporate',
+    signal: '경영진 선임',
+    url: 'https://openai.com/index/jill-hazelbaker-chief-corporate-affairs-officer',
+  },
+  {
+    id: 'lifeval',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'OpenAI, 일상 과제 수행력을 재는 평가 LifeVal 공개',
+    summary:
+      'OpenAI가 육아·건강·가계 같은 일상 과제를 모델이 실제로 해내는지 재는 평가 LifeVal을 공개했다. ' +
+      '미국과 국제 시간 사용 조사에 새 설문 3,995명을 더해 사람들이 가장 도움받고 싶은 과제를 골랐다.',
+    publishedAt: '2026-11-02',
+    collectedAt: '2026-11-04',
+    category: 'Research',
+    signal: '일상 과제 벤치마크',
+    url: 'https://openai.com/index/lifeval',
+  },
+  {
+    id: 'preparing-our-next-security-sprint-to-harden-openai',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'OpenAI, 외부 연구진 Cathedral과 다음 사내 보안 스프린트 준비',
+    summary:
+      'OpenAI가 자사 모델로 자사 시스템을 시험하는 다음 사내 보안 스프린트를 준비한다고 밝혔다. ' +
+      'Cathedral 연구진이 OpenAI 팀과 함께 방어를 공격해 보며, 지난 스프린트에는 제품 엔지니어 25%를 투입했다.',
+    publishedAt: '2026-11-02',
+    collectedAt: '2026-11-04',
+    category: 'Safety',
+    signal: 'AI 사이버 방어',
+    url: 'https://openai.com/index/preparing-our-next-security-sprint-to-harden-openai',
+  },
+  {
+    id: 'rewarding-defenders-with-bigger-bug-bounties',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'OpenAI, 보안 버그 바운티 보상을 올리고 최대 17만 2,000달러로',
+    summary:
+      'OpenAI가 Security Bug Bounty의 중·고·치명 등급 보상 구간 중간값을 평균 네 배 넘게 올렸다. ' +
+      '핵심 제품의 치명 취약점은 최대 3만 달러, 예외적 치명 건은 보너스 포함 최대 17만 2,000달러다.',
+    publishedAt: '2026-11-02',
+    collectedAt: '2026-11-04',
+    category: 'Safety',
+    signal: '보안 버그 바운티',
+    url: 'https://openai.com/index/rewarding-defenders-with-bigger-bug-bounties',
+  },
+  {
+    id: 'grid-protectors-program',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'OpenAI, 전력 수요를 줄이는 Grid Protectors 프로그램 시작',
+    summary:
+      'OpenAI가 전력망이 빠듯할 때 캠퍼스 수요를 줄이는 합의를 전력사와 만들어 가는 Grid Protectors를 시작했다. ' +
+      'Effingham County 캠퍼스가 시범이고 Georgia Power와의 합의에 최대 1,000메가와트 수요 반응이 들어 있다.',
+    publishedAt: '2026-11-02',
+    collectedAt: '2026-11-04',
+    category: 'Infrastructure',
+    signal: '전력망 유연성',
+    url: 'https://openai.com/index/grid-protectors-program',
+  },
+  {
+    id: 'scaling-git-at-openai',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'OpenAI, 사내 모노레포용 Git 백엔드 Pando 구조 공개',
+    summary:
+      'OpenAI가 Codex로 늘어난 동시 작업을 감당하려고 만든 Git 백엔드 Pando의 구조를 공개했다. ' +
+      'Git 프로토콜과 호환되며 지금 사내 모노레포 개발 전체를 맡고, 푸시 지연 중앙값이 약 80% 줄었다.',
+    publishedAt: '2026-11-02',
+    collectedAt: '2026-11-04',
+    category: 'Research',
+    signal: '소스 관리 엔지니어링',
+    url: 'https://openai.com/index/scaling-git-at-openai',
+  },
   {
     id: 'community-safety-report-and-new-protections-for-teens',
     source: 'OpenAI',
