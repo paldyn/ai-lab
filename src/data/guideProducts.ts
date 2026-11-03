@@ -484,7 +484,8 @@ export const guideProducts: Product[] = [
       Claude 5.5 둘은 2026-10-06에 더했습니다 — 드롭다운에 「Claude Sonnet 5.5 (Thinking)」·
       「Claude Opus 5.5 (Thinking)」이 섰고, 표의 각주가 「** Available on Google AI Pro for
       non-trial subscriptions only.」입니다. 같은 날 4.6 둘과 GPT-OSS에는 「* Will be removed on
-      November 2, 2026.」이 붙었습니다 — 아직 고를 수 있어 목록에 둡니다. 4.6 둘은 이제 같은
+      November 2, 2026.」이 붙었습니다(2026-11-04에 「November 18, 2026」로 밀렸습니다) — 아직 고를 수 있어
+      목록에 둡니다. 4.6 둘은 이제 같은
       회사의 현행(5.5 둘)이 있어 화면에서 빠집니다(`shownModels`). 차례는 회사 서열을 따라
       Opus를 앞에, 구세대를 같은 등급의 현행 바로 뒤에 둡니다.
 
