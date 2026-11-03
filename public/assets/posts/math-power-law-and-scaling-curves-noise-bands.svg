@@ -1,0 +1,78 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="460" viewBox="0 0 880 460" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+<defs><marker id="arr" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto"><path d="M 0 0 L 13 7 L 0 14 z" fill="#e8e8e8"/></marker></defs>
+<rect x="0" y="0" width="880" height="460" rx="12" fill="#0a0a0a"/>
+<text x="440" y="44" text-anchor="middle" font-size="22" font-weight="700" fill="#e8e8e8">오차의 꼴이 로그 잔차의 폭을 정한다</text>
+<text x="440" y="72" text-anchor="middle" font-size="15" fill="#888">y = 3·x^(−0.3), 열 점, 로그 잔차 ln(관측/참값)</text>
+<text x="240.0" y="104.0" font-size="16" fill="#e8e8e8" text-anchor="middle" font-weight="600">곱셈 오차 (σ = 5%)</text>
+<line x1="90.0" y1="130.0" x2="90.0" y2="360.0" stroke="#444" stroke-width="1"/>
+<text x="90.0" y="380.0" font-size="13" fill="#888" text-anchor="middle">1</text>
+<line x1="190.0" y1="130.0" x2="190.0" y2="360.0" stroke="#444" stroke-width="1"/>
+<text x="190.0" y="380.0" font-size="13" fill="#888" text-anchor="middle">10</text>
+<line x1="290.0" y1="130.0" x2="290.0" y2="360.0" stroke="#444" stroke-width="1"/>
+<text x="290.0" y="380.0" font-size="13" fill="#888" text-anchor="middle">100</text>
+<line x1="390.0" y1="130.0" x2="390.0" y2="360.0" stroke="#444" stroke-width="1"/>
+<text x="390.0" y="380.0" font-size="13" fill="#888" text-anchor="middle">1000</text>
+<line x1="90.0" y1="360.0" x2="390.0" y2="360.0" stroke="#444" stroke-width="1"/>
+<text x="82.0" y="364.0" font-size="13" fill="#888" text-anchor="end">−0.3</text>
+<line x1="90.0" y1="302.5" x2="390.0" y2="302.5" stroke="#444" stroke-width="1"/>
+<text x="82.0" y="306.5" font-size="13" fill="#888" text-anchor="end">−0.15</text>
+<line x1="90.0" y1="245.0" x2="390.0" y2="245.0" stroke="#444" stroke-width="1"/>
+<text x="82.0" y="249.0" font-size="13" fill="#888" text-anchor="end">0</text>
+<line x1="90.0" y1="187.5" x2="390.0" y2="187.5" stroke="#444" stroke-width="1"/>
+<text x="82.0" y="191.5" font-size="13" fill="#888" text-anchor="end">0.15</text>
+<line x1="90.0" y1="130.0" x2="390.0" y2="130.0" stroke="#444" stroke-width="1"/>
+<text x="82.0" y="134.0" font-size="13" fill="#888" text-anchor="end">0.3</text>
+<line x1="90.0" y1="360.0" x2="390.0" y2="360.0" stroke="#888" stroke-width="1.5"/>
+<line x1="90.0" y1="130.0" x2="90.0" y2="360.0" stroke="#888" stroke-width="1.5"/>
+<text x="390.0" y="400.0" font-size="13" fill="#888" text-anchor="end">x (로그)</text>
+<text x="90.0" y="116.0" font-size="13" fill="#888" text-anchor="start"></text>
+<path d="M 90.0 206.7 L 95.1 206.7 L 100.2 206.7 L 105.3 206.7 L 110.3 206.7 L 115.4 206.7 L 120.5 206.7 L 125.6 206.7 L 130.7 206.7 L 135.8 206.7 L 140.8 206.7 L 145.9 206.7 L 151.0 206.7 L 156.1 206.7 L 161.2 206.7 L 166.3 206.7 L 171.4 206.7 L 176.4 206.7 L 181.5 206.7 L 186.6 206.7 L 191.7 206.7 L 196.8 206.7 L 201.9 206.7 L 206.9 206.7 L 212.0 206.7 L 217.1 206.7 L 222.2 206.7 L 227.3 206.7 L 232.4 206.7 L 237.5 206.7 L 242.5 206.7 L 247.6 206.7 L 252.7 206.7 L 257.8 206.7 L 262.9 206.7 L 268.0 206.7 L 273.1 206.7 L 278.1 206.7 L 283.2 206.7 L 288.3 206.7 L 293.4 206.7 L 298.5 206.7 L 303.6 206.7 L 308.6 206.7 L 313.7 206.7 L 318.8 206.7 L 323.9 206.7 L 329.0 206.7 L 334.1 206.7 L 339.2 206.7 L 344.2 206.7 L 349.3 206.7 L 354.4 206.7 L 359.5 206.7 L 364.6 206.7 L 369.7 206.7 L 374.7 206.7 L 379.8 206.7 L 384.9 206.7 L 390.0 206.7 L 390.0 283.3 L 384.9 283.3 L 379.8 283.3 L 374.7 283.3 L 369.7 283.3 L 364.6 283.3 L 359.5 283.3 L 354.4 283.3 L 349.3 283.3 L 344.2 283.3 L 339.2 283.3 L 334.1 283.3 L 329.0 283.3 L 323.9 283.3 L 318.8 283.3 L 313.7 283.3 L 308.6 283.3 L 303.6 283.3 L 298.5 283.3 L 293.4 283.3 L 288.3 283.3 L 283.2 283.3 L 278.1 283.3 L 273.1 283.3 L 268.0 283.3 L 262.9 283.3 L 257.8 283.3 L 252.7 283.3 L 247.6 283.3 L 242.5 283.3 L 237.5 283.3 L 232.4 283.3 L 227.3 283.3 L 222.2 283.3 L 217.1 283.3 L 212.0 283.3 L 206.9 283.3 L 201.9 283.3 L 196.8 283.3 L 191.7 283.3 L 186.6 283.3 L 181.5 283.3 L 176.4 283.3 L 171.4 283.3 L 166.3 283.3 L 161.2 283.3 L 156.1 283.3 L 151.0 283.3 L 145.9 283.3 L 140.8 283.3 L 135.8 283.3 L 130.7 283.3 L 125.6 283.3 L 120.5 283.3 L 115.4 283.3 L 110.3 283.3 L 105.3 283.3 L 100.2 283.3 L 95.1 283.3 L 90.0 283.3 Z" fill="#7ec8e3" fill-opacity="0.18" stroke="none"/>
+<line x1="90.0" y1="245.0" x2="390.0" y2="245.0" stroke="#7777cc" stroke-width="1.5" stroke-dasharray="4,4"/>
+<circle cx="90.0" cy="205.9" r="5" fill="#e8e8e8"/>
+<circle cx="123.3" cy="294.0" r="5" fill="#e8e8e8"/>
+<circle cx="156.7" cy="237.0" r="5" fill="#e8e8e8"/>
+<circle cx="190.0" cy="255.9" r="5" fill="#e8e8e8"/>
+<circle cx="223.3" cy="253.7" r="5" fill="#e8e8e8"/>
+<circle cx="256.7" cy="249.1" r="5" fill="#e8e8e8"/>
+<circle cx="290.0" cy="283.7" r="5" fill="#e8e8e8"/>
+<circle cx="323.3" cy="249.4" r="5" fill="#e8e8e8"/>
+<circle cx="356.7" cy="261.6" r="5" fill="#e8e8e8"/>
+<circle cx="390.0" cy="181.3" r="5" fill="#e8e8e8"/>
+<text x="680.0" y="104.0" font-size="16" fill="#e8e8e8" text-anchor="middle" font-weight="600">덧셈 오차 (σ = 0.05)</text>
+<line x1="530.0" y1="130.0" x2="530.0" y2="360.0" stroke="#444" stroke-width="1"/>
+<text x="530.0" y="380.0" font-size="13" fill="#888" text-anchor="middle">1</text>
+<line x1="630.0" y1="130.0" x2="630.0" y2="360.0" stroke="#444" stroke-width="1"/>
+<text x="630.0" y="380.0" font-size="13" fill="#888" text-anchor="middle">10</text>
+<line x1="730.0" y1="130.0" x2="730.0" y2="360.0" stroke="#444" stroke-width="1"/>
+<text x="730.0" y="380.0" font-size="13" fill="#888" text-anchor="middle">100</text>
+<line x1="830.0" y1="130.0" x2="830.0" y2="360.0" stroke="#444" stroke-width="1"/>
+<text x="830.0" y="380.0" font-size="13" fill="#888" text-anchor="middle">1000</text>
+<line x1="530.0" y1="360.0" x2="830.0" y2="360.0" stroke="#444" stroke-width="1"/>
+<text x="522.0" y="364.0" font-size="13" fill="#888" text-anchor="end">−0.3</text>
+<line x1="530.0" y1="302.5" x2="830.0" y2="302.5" stroke="#444" stroke-width="1"/>
+<text x="522.0" y="306.5" font-size="13" fill="#888" text-anchor="end">−0.15</text>
+<line x1="530.0" y1="245.0" x2="830.0" y2="245.0" stroke="#444" stroke-width="1"/>
+<text x="522.0" y="249.0" font-size="13" fill="#888" text-anchor="end">0</text>
+<line x1="530.0" y1="187.5" x2="830.0" y2="187.5" stroke="#444" stroke-width="1"/>
+<text x="522.0" y="191.5" font-size="13" fill="#888" text-anchor="end">0.15</text>
+<line x1="530.0" y1="130.0" x2="830.0" y2="130.0" stroke="#444" stroke-width="1"/>
+<text x="522.0" y="134.0" font-size="13" fill="#888" text-anchor="end">0.3</text>
+<line x1="530.0" y1="360.0" x2="830.0" y2="360.0" stroke="#888" stroke-width="1.5"/>
+<line x1="530.0" y1="130.0" x2="530.0" y2="360.0" stroke="#888" stroke-width="1.5"/>
+<text x="830.0" y="400.0" font-size="13" fill="#888" text-anchor="end">x (로그)</text>
+<text x="530.0" y="116.0" font-size="13" fill="#888" text-anchor="start"></text>
+<path d="M 530.0 232.2 L 535.1 231.8 L 540.2 231.3 L 545.3 230.8 L 550.3 230.3 L 555.4 229.8 L 560.5 229.2 L 565.6 228.7 L 570.7 228.1 L 575.8 227.5 L 580.8 226.8 L 585.9 226.2 L 591.0 225.5 L 596.1 224.8 L 601.2 224.1 L 606.3 223.4 L 611.4 222.6 L 616.4 221.8 L 621.5 221.0 L 626.6 220.1 L 631.7 219.2 L 636.8 218.3 L 641.9 217.3 L 646.9 216.3 L 652.0 215.3 L 657.1 214.3 L 662.2 213.2 L 667.3 212.0 L 672.4 210.8 L 677.5 209.6 L 682.5 208.3 L 687.6 207.0 L 692.7 205.7 L 697.8 204.3 L 702.9 202.8 L 708.0 201.3 L 713.1 199.8 L 718.1 198.1 L 723.2 196.5 L 728.3 194.7 L 733.4 192.9 L 738.5 191.1 L 743.6 189.1 L 748.6 187.1 L 753.7 185.1 L 758.8 182.9 L 763.9 180.7 L 769.0 178.4 L 774.1 176.0 L 779.2 173.6 L 784.2 171.0 L 789.3 168.4 L 794.4 165.6 L 799.5 162.8 L 804.6 159.9 L 809.7 156.8 L 814.7 153.7 L 819.8 150.4 L 824.9 147.0 L 830.0 143.5 L 830.0 346.5 L 824.9 343.0 L 819.8 339.6 L 814.7 336.3 L 809.7 333.2 L 804.6 330.1 L 799.5 327.2 L 794.4 324.4 L 789.3 321.6 L 784.2 319.0 L 779.2 316.4 L 774.1 314.0 L 769.0 311.6 L 763.9 309.3 L 758.8 307.1 L 753.7 304.9 L 748.6 302.9 L 743.6 300.9 L 738.5 298.9 L 733.4 297.1 L 728.3 295.3 L 723.2 293.5 L 718.1 291.9 L 713.1 290.2 L 708.0 288.7 L 702.9 287.2 L 697.8 285.7 L 692.7 284.3 L 687.6 283.0 L 682.5 281.7 L 677.5 280.4 L 672.4 279.2 L 667.3 278.0 L 662.2 276.8 L 657.1 275.7 L 652.0 274.7 L 646.9 273.7 L 641.9 272.7 L 636.8 271.7 L 631.7 270.8 L 626.6 269.9 L 621.5 269.0 L 616.4 268.2 L 611.4 267.4 L 606.3 266.6 L 601.2 265.9 L 596.1 265.2 L 591.0 264.5 L 585.9 263.8 L 580.8 263.2 L 575.8 262.5 L 570.7 261.9 L 565.6 261.3 L 560.5 260.8 L 555.4 260.2 L 550.3 259.7 L 545.3 259.2 L 540.2 258.7 L 535.1 258.2 L 530.0 257.8 Z" fill="#7ec8e3" fill-opacity="0.18" stroke="none"/>
+<line x1="530.0" y1="245.0" x2="830.0" y2="245.0" stroke="#7777cc" stroke-width="1.5" stroke-dasharray="4,4"/>
+<circle cx="530.0" cy="243.5" r="5" fill="#e8e8e8"/>
+<circle cx="563.3" cy="247.8" r="5" fill="#e8e8e8"/>
+<circle cx="596.7" cy="247.9" r="5" fill="#e8e8e8"/>
+<circle cx="630.0" cy="253.6" r="5" fill="#e8e8e8"/>
+<circle cx="663.3" cy="262.3" r="5" fill="#e8e8e8"/>
+<circle cx="696.7" cy="253.0" r="5" fill="#e8e8e8"/>
+<circle cx="730.0" cy="232.9" r="5" fill="#e8e8e8"/>
+<circle cx="763.3" cy="252.7" r="5" fill="#e8e8e8"/>
+<circle cx="796.7" cy="208.2" r="5" fill="#e8e8e8"/>
+<circle cx="830.0" cy="255.3" r="5" fill="#e8e8e8"/>
+<text x="240.0" y="432.0" font-size="13" fill="#888" text-anchor="middle">띠 폭이 어디서나 같다 → 로그 OLS가 맞는 짝</text>
+<text x="680.0" y="432.0" font-size="13" fill="#888" text-anchor="middle">y가 작아질수록 띠가 벌어진다</text>
+</svg>

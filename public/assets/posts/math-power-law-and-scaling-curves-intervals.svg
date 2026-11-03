@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="400" viewBox="0 0 880 400" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+<defs><marker id="arr" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto"><path d="M 0 0 L 13 7 L 0 14 z" fill="#e8e8e8"/></marker></defs>
+<rect x="0" y="0" width="880" height="400" rx="12" fill="#0a0a0a"/>
+<text x="440" y="44" text-anchor="middle" font-size="22" font-weight="700" fill="#e8e8e8">100B 예측의 95% 구간</text>
+<text x="440" y="72" text-anchor="middle" font-size="15" fill="#888">같은 다섯 run을 1,000번 다시 한 결과와, 손에 쥔 다섯 점의 부트스트랩</text>
+<line x1="347.3" y1="110.0" x2="347.3" y2="300.0" stroke="#444" stroke-width="1"/>
+<text x="347.3" y="320.0" font-size="13" fill="#888" text-anchor="middle">1.2</text>
+<line x1="441.8" y1="110.0" x2="441.8" y2="300.0" stroke="#444" stroke-width="1"/>
+<text x="441.8" y="320.0" font-size="13" fill="#888" text-anchor="middle">1.4</text>
+<line x1="536.4" y1="110.0" x2="536.4" y2="300.0" stroke="#444" stroke-width="1"/>
+<text x="536.4" y="320.0" font-size="13" fill="#888" text-anchor="middle">1.6</text>
+<line x1="630.9" y1="110.0" x2="630.9" y2="300.0" stroke="#444" stroke-width="1"/>
+<text x="630.9" y="320.0" font-size="13" fill="#888" text-anchor="middle">1.8</text>
+<line x1="725.5" y1="110.0" x2="725.5" y2="300.0" stroke="#444" stroke-width="1"/>
+<text x="725.5" y="320.0" font-size="13" fill="#888" text-anchor="middle">2.0</text>
+<line x1="820.0" y1="110.0" x2="820.0" y2="300.0" stroke="#444" stroke-width="1"/>
+<text x="820.0" y="320.0" font-size="13" fill="#888" text-anchor="middle">2.2</text>
+<line x1="300.0" y1="300.0" x2="820.0" y2="300.0" stroke="#888" stroke-width="1.5"/>
+<line x1="300.0" y1="110.0" x2="300.0" y2="300.0" stroke="#888" stroke-width="1.5"/>
+<text x="820.0" y="340.0" font-size="13" fill="#888" text-anchor="end">예측 손실</text>
+<text x="300.0" y="96.0" font-size="13" fill="#888" text-anchor="start"></text>
+<text x="280.0" y="155.0" font-size="13" fill="#e8e8e8" text-anchor="end">순수 멱법칙 · 다시 한 실험</text>
+<line x1="358.1" y1="150.0" x2="402.6" y2="150.0" stroke="#7777cc" stroke-width="4"/>
+<line x1="358.1" y1="142.0" x2="358.1" y2="158.0" stroke="#7777cc" stroke-width="2"/>
+<line x1="402.6" y1="142.0" x2="402.6" y2="158.0" stroke="#7777cc" stroke-width="2"/>
+<circle cx="380.4" cy="150.0" r="5" fill="#7777cc"/>
+<text x="280.0" y="210.0" font-size="13" fill="#e8e8e8" text-anchor="end">c 포함 · 다시 한 실험</text>
+<line x1="385.1" y1="205.0" x2="764.7" y2="205.0" stroke="#7ec8e3" stroke-width="4"/>
+<line x1="385.1" y1="197.0" x2="385.1" y2="213.0" stroke="#7ec8e3" stroke-width="2"/>
+<line x1="764.7" y1="197.0" x2="764.7" y2="213.0" stroke="#7ec8e3" stroke-width="2"/>
+<circle cx="682.0" cy="205.0" r="5" fill="#7ec8e3"/>
+<text x="280.0" y="265.0" font-size="13" fill="#e8e8e8" text-anchor="end">c 포함 · 부트스트랩</text>
+<line x1="638.0" y1="260.0" x2="682.0" y2="260.0" stroke="#e8e8e8" stroke-width="4"/>
+<line x1="638.0" y1="252.0" x2="638.0" y2="268.0" stroke="#e8e8e8" stroke-width="2"/>
+<line x1="682.0" y1="252.0" x2="682.0" y2="268.0" stroke="#e8e8e8" stroke-width="2"/>
+<circle cx="665.4" cy="260.0" r="5" fill="#e8e8e8"/>
+<line x1="692.8" y1="110.0" x2="692.8" y2="300.0" stroke="#55c555" stroke-width="2" stroke-dasharray="5,3"/>
+<text x="700.8" y="124.0" font-size="13" fill="#55c555" text-anchor="start">정답 1.931</text>
+<text x="440.0" y="370.0" font-size="13" fill="#888" text-anchor="middle">좁은 구간이 맞는 구간은 아니다 — 위아래 두 줄은 정답을 비켜 간다</text>
+</svg>

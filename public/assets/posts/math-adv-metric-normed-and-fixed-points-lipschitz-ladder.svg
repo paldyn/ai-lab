@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="470" viewBox="0 0 880 470" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+<defs><marker id="arr" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto"><path d="M 0 0 L 13 7 L 0 14 z" fill="#888"/></marker><marker id="arrb" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto"><path d="M 0 0 L 13 7 L 0 14 z" fill="#7ec8e3"/></marker></defs>
+<rect x="0" y="0" width="880" height="470" rx="12" fill="#0a0a0a"/>
+<text x="440" y="40" text-anchor="middle" font-size="22" font-weight="700" fill="#e8e8e8">연속의 네 단계</text>
+<text x="440" y="66" text-anchor="middle" font-size="14" fill="#888">오른쪽으로 갈수록 약한 조건. 거꾸로는 성립하지 않는다</text>
+<rect x="60" y="110" width="160" height="72" rx="10" fill="#111" stroke="#7ec8e3" stroke-width="1.5"/>
+<text x="140.0" y="142.0" font-size="16" fill="#e8e8e8" text-anchor="middle" font-weight="600">γ-축약</text>
+<text x="140.0" y="164.0" font-size="13" fill="#888" text-anchor="middle">γ &lt; 1</text>
+<rect x="260" y="110" width="160" height="72" rx="10" fill="#111" stroke="#7ec8e3" stroke-width="1.5"/>
+<text x="340.0" y="142.0" font-size="16" fill="#e8e8e8" text-anchor="middle" font-weight="600">립시츠</text>
+<text x="340.0" y="164.0" font-size="13" fill="#888" text-anchor="middle">상수 L</text>
+<rect x="460" y="110" width="160" height="72" rx="10" fill="#111" stroke="#7ec8e3" stroke-width="1.5"/>
+<text x="540.0" y="142.0" font-size="16" fill="#e8e8e8" text-anchor="middle" font-weight="600">균등연속</text>
+<text x="540.0" y="164.0" font-size="13" fill="#888" text-anchor="middle">δ 가 점에 무관</text>
+<rect x="660" y="110" width="160" height="72" rx="10" fill="#111" stroke="#7ec8e3" stroke-width="1.5"/>
+<text x="740.0" y="142.0" font-size="16" fill="#e8e8e8" text-anchor="middle" font-weight="600">연속</text>
+<text x="740.0" y="164.0" font-size="13" fill="#888" text-anchor="middle">δ 가 점마다</text>
+<line x1="220" y1="146.0" x2="260" y2="146.0" stroke="#888" stroke-width="2" marker-end="url(#arr)"/>
+<line x1="420" y1="146.0" x2="460" y2="146.0" stroke="#888" stroke-width="2" marker-end="url(#arr)"/>
+<line x1="620" y1="146.0" x2="660" y2="146.0" stroke="#888" stroke-width="2" marker-end="url(#arr)"/>
+<rect x="170" y="230" width="180" height="72" rx="10" fill="#111" stroke="#e05555" stroke-width="1.2" stroke-dasharray="4,4"/>
+<text x="260.0" y="262.0" font-size="13" fill="#e8e8e8" text-anchor="middle">2x</text>
+<text x="260.0" y="284.0" font-size="13" fill="#e05555" text-anchor="middle">L = 2 &gt; 1</text>
+<rect x="370" y="230" width="180" height="72" rx="10" fill="#111" stroke="#e05555" stroke-width="1.2" stroke-dasharray="4,4"/>
+<text x="460.0" y="262.0" font-size="13" fill="#e8e8e8" text-anchor="middle">√x  (구간 [0, 1])</text>
+<text x="460.0" y="284.0" font-size="13" fill="#e05555" text-anchor="middle">0 에서 기울기 ∞</text>
+<rect x="570" y="230" width="180" height="72" rx="10" fill="#111" stroke="#e05555" stroke-width="1.2" stroke-dasharray="4,4"/>
+<text x="660.0" y="262.0" font-size="13" fill="#e8e8e8" text-anchor="middle">x²  (전체 ℝ)</text>
+<text x="660.0" y="284.0" font-size="13" fill="#e05555" text-anchor="middle">멀리 갈수록 가팔라짐</text>
+<text x="440.0" y="214.0" font-size="13" fill="#888" text-anchor="middle">아래는 역이 깨지는 예 — 오른쪽 상자에는 들고 왼쪽 상자에는 못 든다</text>
+<rect x="160" y="340" width="560" height="96" rx="10" fill="#111" stroke="#7777cc" stroke-width="1.5"/>
+<text x="440.0" y="372.0" font-size="16" fill="#e8e8e8" text-anchor="middle" font-weight="600">L-매끄러움  =  ∇f 가 립시츠</text>
+<text x="440.0" y="396.0" font-size="13" fill="#888" text-anchor="middle">‖∇f(x) − ∇f(y)‖ ≤ L‖x − y‖  ⇔  (두 번 미분 가능하면) ‖∇²f(x)‖₂ ≤ L</text>
+<text x="440.0" y="418.0" font-size="13" fill="#888" text-anchor="middle">그래서 x ↦ x − η∇f(x) 가 축약인지가 L 과 η 로 정해진다</text>
+</svg>

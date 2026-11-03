@@ -517,3 +517,5 @@ $$\Delta$$ 가 분모에서 제곱으로 들어가므로 차이가 3분의 1이 
 읽어주셔서 감사합니다. 😊
 
 **지난 글:** [몬테카를로 추정과 pass@k: 샘플 n개로 무엇을 말할 수 있나](/articles/math-monte-carlo-and-passk)
+
+**다음 글:** [보정: 모델이 말하는 확률을 믿어도 되는가](/articles/math-calibration-and-ece)

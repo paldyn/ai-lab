@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="500" viewBox="0 0 880 500" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+<defs>
+  <marker id="ar" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+    <path d="M 0 0 L 13 7 L 0 14 z" fill="#e05555"/>
+  </marker>
+  <marker id="ab" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+    <path d="M 0 0 L 13 7 L 0 14 z" fill="#55c555"/>
+  </marker>
+</defs>
+<rect x="0" y="0" width="880" height="500" rx="12" fill="#0a0a0a"/>
+<text x="440.0" y="44.0" font-size="22" fill="#e8e8e8" text-anchor="middle" font-weight="700">Brier = 신뢰성 − 분해능 + 불확실성</text>
+<text x="440.0" y="70.0" font-size="13" fill="#888" text-anchor="middle">신뢰도를 0.01 단위로 반올림해 값마다 묶은 정확한 분해 · 시험 세트 5,000문항</text>
+<line x1="230.0" y1="100.0" x2="230.0" y2="410.0" stroke="#444" stroke-width="1"/>
+<text x="230.0" y="432.0" font-size="13" fill="#888" text-anchor="middle">0.15</text>
+<line x1="370.0" y1="100.0" x2="370.0" y2="410.0" stroke="#444" stroke-width="1"/>
+<text x="370.0" y="432.0" font-size="13" fill="#888" text-anchor="middle">0.175</text>
+<line x1="510.0" y1="100.0" x2="510.0" y2="410.0" stroke="#444" stroke-width="1"/>
+<text x="510.0" y="432.0" font-size="13" fill="#888" text-anchor="middle">0.2</text>
+<line x1="650.0" y1="100.0" x2="650.0" y2="410.0" stroke="#444" stroke-width="1"/>
+<text x="650.0" y="432.0" font-size="13" fill="#888" text-anchor="middle">0.225</text>
+<line x1="790.0" y1="100.0" x2="790.0" y2="410.0" stroke="#444" stroke-width="1"/>
+<text x="790.0" y="432.0" font-size="13" fill="#888" text-anchor="middle">0.25</text>
+<line x1="591.3" y1="96.0" x2="591.3" y2="410.0" stroke="#888" stroke-width="1.5" stroke-dasharray="5,3"/>
+<text x="591.3" y="92.0" font-size="13" fill="#888" text-anchor="middle">불확실성 0.2145</text>
+<text x="80.0" y="155.0" font-size="16" fill="#e8e8e8" text-anchor="start" font-weight="600">보정 전</text>
+<line x1="591.2" y1="136" x2="740.6" y2="136" stroke="#e05555" stroke-width="2.5" marker-end="url(#ar)"/>
+<text x="756.6" y="141.0" font-size="13" fill="#e05555" text-anchor="start">+ 신뢰성 0.0267</text>
+<line x1="740.6" y1="164" x2="560.3" y2="164" stroke="#55c555" stroke-width="2.5" marker-end="url(#ab)"/>
+<text x="544.3" y="169.0" font-size="13" fill="#55c555" text-anchor="end">− 분해능 0.0322</text>
+<circle cx="560.3" cy="190" r="5" fill="#e8e8e8"/>
+<text x="574.3" y="195.0" font-size="13" fill="#e8e8e8" text-anchor="start">Brier 0.2090</text>
+<text x="80.0" y="255.0" font-size="16" fill="#e8e8e8" text-anchor="start" font-weight="600">온도 보정 뒤</text>
+<line x1="591.2" y1="236" x2="604.1" y2="236" stroke="#e05555" stroke-width="2.5" marker-end="url(#ar)"/>
+<text x="620.1" y="241.0" font-size="13" fill="#e05555" text-anchor="start">+ 신뢰성 0.0023</text>
+<line x1="604.1" y1="264" x2="420.4" y2="264" stroke="#55c555" stroke-width="2.5" marker-end="url(#ab)"/>
+<text x="404.4" y="269.0" font-size="13" fill="#55c555" text-anchor="end">− 분해능 0.0328</text>
+<circle cx="420.4" cy="290" r="5" fill="#e8e8e8"/>
+<text x="434.4" y="295.0" font-size="13" fill="#e8e8e8" text-anchor="start">Brier 0.1840</text>
+<text x="80.0" y="355.0" font-size="16" fill="#e8e8e8" text-anchor="start" font-weight="600">늘 기저율</text>
+<text x="605.2" y="355.0" font-size="13" fill="#888" text-anchor="start">신뢰성 0 · 분해능 0 — 화살표가 없다</text>
+<circle cx="591.2" cy="390" r="5" fill="#e8e8e8"/>
+<text x="605.2" y="395.0" font-size="13" fill="#e8e8e8" text-anchor="start">Brier 0.2145</text>
+<text x="440.0" y="470.0" font-size="13" fill="#888" text-anchor="middle">오른쪽으로 갈수록 나쁜 점수 · 화살표 두 개가 불확실성에서 시작해 Brier에 닿는다</text>
+</svg>

@@ -1,0 +1,75 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="540" viewBox="0 0 880 540" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+<rect x="0" y="0" width="880" height="540" rx="12" fill="#0a0a0a"/>
+<text x="440.0" y="44.0" font-size="22" fill="#e8e8e8" text-anchor="middle" font-weight="700">빈 개수에 따라 달라지는 ECE</text>
+<text x="440.0" y="70.0" font-size="13" fill="#888" text-anchor="middle">같은 예측을 빈 5개부터 500개까지 나눠 잰 값 · 가로는 로그 눈금</text>
+<line x1="110.0" y1="450.0" x2="800.0" y2="450.0" stroke="#444" stroke-width="1"/>
+<text x="100.0" y="454.0" font-size="13" fill="#888" text-anchor="end">0.00</text>
+<line x1="110.0" y1="382.0" x2="800.0" y2="382.0" stroke="#444" stroke-width="1"/>
+<text x="100.0" y="386.0" font-size="13" fill="#888" text-anchor="end">0.05</text>
+<line x1="110.0" y1="314.0" x2="800.0" y2="314.0" stroke="#444" stroke-width="1"/>
+<text x="100.0" y="318.0" font-size="13" fill="#888" text-anchor="end">0.10</text>
+<line x1="110.0" y1="246.0" x2="800.0" y2="246.0" stroke="#444" stroke-width="1"/>
+<text x="100.0" y="250.0" font-size="13" fill="#888" text-anchor="end">0.15</text>
+<line x1="110.0" y1="178.0" x2="800.0" y2="178.0" stroke="#444" stroke-width="1"/>
+<text x="100.0" y="182.0" font-size="13" fill="#888" text-anchor="end">0.20</text>
+<line x1="110.0" y1="110.0" x2="800.0" y2="110.0" stroke="#444" stroke-width="1"/>
+<text x="100.0" y="114.0" font-size="13" fill="#888" text-anchor="end">0.25</text>
+<line x1="110.0" y1="450.0" x2="110.0" y2="455.0" stroke="#888" stroke-width="1"/>
+<text x="110.0" y="472.0" font-size="13" fill="#888" text-anchor="middle">5</text>
+<line x1="213.9" y1="450.0" x2="213.9" y2="455.0" stroke="#888" stroke-width="1"/>
+<text x="213.9" y="472.0" font-size="13" fill="#888" text-anchor="middle">10</text>
+<line x1="274.6" y1="450.0" x2="274.6" y2="455.0" stroke="#888" stroke-width="1"/>
+<text x="274.6" y="472.0" font-size="13" fill="#888" text-anchor="middle">15</text>
+<line x1="317.7" y1="450.0" x2="317.7" y2="455.0" stroke="#888" stroke-width="1"/>
+<text x="317.7" y="472.0" font-size="13" fill="#888" text-anchor="middle">20</text>
+<line x1="455.0" y1="450.0" x2="455.0" y2="455.0" stroke="#888" stroke-width="1"/>
+<text x="455.0" y="472.0" font-size="13" fill="#888" text-anchor="middle">50</text>
+<line x1="558.9" y1="450.0" x2="558.9" y2="455.0" stroke="#888" stroke-width="1"/>
+<text x="558.9" y="472.0" font-size="13" fill="#888" text-anchor="middle">100</text>
+<line x1="800.0" y1="450.0" x2="800.0" y2="455.0" stroke="#888" stroke-width="1"/>
+<text x="800.0" y="472.0" font-size="13" fill="#888" text-anchor="middle">500</text>
+<line x1="110.0" y1="450.0" x2="800.0" y2="450.0" stroke="#888" stroke-width="1.5"/>
+<line x1="110.0" y1="110.0" x2="110.0" y2="450.0" stroke="#888" stroke-width="1.5"/>
+<text x="455.0" y="496.0" font-size="13" fill="#888" text-anchor="middle">빈 개수 M</text>
+<text transform="rotate(-90 56 280.0)" x="56.0" y="280.0" font-size="13" fill="#888" text-anchor="middle">ECE</text>
+<polyline points="110.0,259.7 213.9,259.7 274.6,259.7 317.7,259.7 455.0,259.1 558.9,255.7 800.0,232.5" fill="none" stroke="#e05555" stroke-width="2.5"/>
+<circle cx="110.0" cy="259.7" r="4" fill="#e05555"/>
+<circle cx="213.9" cy="259.7" r="4" fill="#e05555"/>
+<circle cx="274.6" cy="259.7" r="4" fill="#e05555"/>
+<circle cx="317.7" cy="259.7" r="4" fill="#e05555"/>
+<circle cx="455.0" cy="259.1" r="4" fill="#e05555"/>
+<circle cx="558.9" cy="255.7" r="4" fill="#e05555"/>
+<circle cx="800.0" cy="232.5" r="4" fill="#e05555"/>
+<polyline points="110.0,437.0 213.9,435.5 274.6,434.0 317.7,433.3 455.0,419.7 558.9,398.7 800.0,328.6" fill="none" stroke="#7ec8e3" stroke-width="2.5"/>
+<circle cx="110.0" cy="437.0" r="4" fill="#7ec8e3"/>
+<circle cx="213.9" cy="435.5" r="4" fill="#7ec8e3"/>
+<circle cx="274.6" cy="434.0" r="4" fill="#7ec8e3"/>
+<circle cx="317.7" cy="433.3" r="4" fill="#7ec8e3"/>
+<circle cx="455.0" cy="419.7" r="4" fill="#7ec8e3"/>
+<circle cx="558.9" cy="398.7" r="4" fill="#7ec8e3"/>
+<circle cx="800.0" cy="328.6" r="4" fill="#7ec8e3"/>
+<polyline points="110.0,437.5 213.9,433.1 274.6,429.2 317.7,426.6 455.0,412.5 558.9,397.7 800.0,333.0" fill="none" stroke="#55c555" stroke-width="2.5"/>
+<circle cx="110.0" cy="437.5" r="4" fill="#55c555"/>
+<circle cx="213.9" cy="433.1" r="4" fill="#55c555"/>
+<circle cx="274.6" cy="429.2" r="4" fill="#55c555"/>
+<circle cx="317.7" cy="426.6" r="4" fill="#55c555"/>
+<circle cx="455.0" cy="412.5" r="4" fill="#55c555"/>
+<circle cx="558.9" cy="397.7" r="4" fill="#55c555"/>
+<circle cx="800.0" cy="333.0" r="4" fill="#55c555"/>
+<polyline points="110.0,413.4 213.9,397.4 274.6,385.5 317.7,374.6 455.0,333.2 558.9,285.3 800.0,121.1" fill="none" stroke="#7777cc" stroke-width="2.5"/>
+<circle cx="110.0" cy="413.4" r="4" fill="#7777cc"/>
+<circle cx="213.9" cy="397.4" r="4" fill="#7777cc"/>
+<circle cx="274.6" cy="385.5" r="4" fill="#7777cc"/>
+<circle cx="317.7" cy="374.6" r="4" fill="#7777cc"/>
+<circle cx="455.0" cy="333.2" r="4" fill="#7777cc"/>
+<circle cx="558.9" cy="285.3" r="4" fill="#7777cc"/>
+<circle cx="800.0" cy="121.1" r="4" fill="#7777cc"/>
+<line x1="140.0" y1="126.0" x2="170.0" y2="126.0" stroke="#e05555" stroke-width="2.5"/>
+<text x="180.0" y="130.0" font-size="13" fill="#e8e8e8" text-anchor="start">보정 전 모델</text>
+<line x1="140.0" y1="150.0" x2="170.0" y2="150.0" stroke="#7ec8e3" stroke-width="2.5"/>
+<text x="180.0" y="154.0" font-size="13" fill="#e8e8e8" text-anchor="start">온도 보정 뒤</text>
+<line x1="140.0" y1="174.0" x2="170.0" y2="174.0" stroke="#55c555" stroke-width="2.5"/>
+<text x="180.0" y="178.0" font-size="13" fill="#e8e8e8" text-anchor="start">완벽히 보정됨 · 5,000문항</text>
+<line x1="140.0" y1="198.0" x2="170.0" y2="198.0" stroke="#7777cc" stroke-width="2.5"/>
+<text x="180.0" y="202.0" font-size="13" fill="#e8e8e8" text-anchor="start">완벽히 보정됨 · 500문항</text>
+</svg>

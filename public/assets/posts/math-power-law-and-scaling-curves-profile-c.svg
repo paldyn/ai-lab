@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="600" viewBox="0 0 880 600" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+<defs><marker id="arr" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto"><path d="M 0 0 L 13 7 L 0 14 z" fill="#e8e8e8"/></marker></defs>
+<rect x="0" y="0" width="880" height="600" rx="12" fill="#0a0a0a"/>
+<text x="440" y="44" text-anchor="middle" font-size="22" font-weight="700" fill="#e8e8e8">c를 고정하고 다시 맞추면</text>
+<text x="440" y="72" text-anchor="middle" font-size="15" fill="#888">c마다 log(y − c)에 직선을 맞춘 잔차 제곱합과 100B 예측</text>
+<line x1="110.0" y1="120.0" x2="110.0" y2="300.0" stroke="#444" stroke-width="1"/>
+<text x="110.0" y="320.0" font-size="13" fill="#888" text-anchor="middle"></text>
+<line x1="282.5" y1="120.0" x2="282.5" y2="300.0" stroke="#444" stroke-width="1"/>
+<text x="282.5" y="320.0" font-size="13" fill="#888" text-anchor="middle"></text>
+<line x1="455.0" y1="120.0" x2="455.0" y2="300.0" stroke="#444" stroke-width="1"/>
+<text x="455.0" y="320.0" font-size="13" fill="#888" text-anchor="middle"></text>
+<line x1="627.5" y1="120.0" x2="627.5" y2="300.0" stroke="#444" stroke-width="1"/>
+<text x="627.5" y="320.0" font-size="13" fill="#888" text-anchor="middle"></text>
+<line x1="800.0" y1="120.0" x2="800.0" y2="300.0" stroke="#444" stroke-width="1"/>
+<text x="800.0" y="320.0" font-size="13" fill="#888" text-anchor="middle"></text>
+<line x1="110.0" y1="300.0" x2="800.0" y2="300.0" stroke="#444" stroke-width="1"/>
+<text x="102.0" y="304.0" font-size="13" fill="#888" text-anchor="end">0</text>
+<line x1="110.0" y1="255.0" x2="800.0" y2="255.0" stroke="#444" stroke-width="1"/>
+<text x="102.0" y="259.0" font-size="13" fill="#888" text-anchor="end">50</text>
+<line x1="110.0" y1="210.0" x2="800.0" y2="210.0" stroke="#444" stroke-width="1"/>
+<text x="102.0" y="214.0" font-size="13" fill="#888" text-anchor="end">100</text>
+<line x1="110.0" y1="165.0" x2="800.0" y2="165.0" stroke="#444" stroke-width="1"/>
+<text x="102.0" y="169.0" font-size="13" fill="#888" text-anchor="end">150</text>
+<line x1="110.0" y1="120.0" x2="800.0" y2="120.0" stroke="#444" stroke-width="1"/>
+<text x="102.0" y="124.0" font-size="13" fill="#888" text-anchor="end">200</text>
+<line x1="110.0" y1="300.0" x2="800.0" y2="300.0" stroke="#888" stroke-width="1.5"/>
+<line x1="110.0" y1="120.0" x2="110.0" y2="300.0" stroke="#888" stroke-width="1.5"/>
+<text x="800.0" y="340.0" font-size="13" fill="#888" text-anchor="end"></text>
+<text x="110.0" y="106.0" font-size="13" fill="#888" text-anchor="start">SSE ×10⁵</text>
+<line x1="110.0" y1="296.6" x2="800.0" y2="296.6" stroke="#e05555" stroke-width="1.5" stroke-dasharray="4,4"/>
+<text x="127.2" y="286.6" font-size="13" fill="#e05555" text-anchor="start">1% 잡음이 내는 크기 3.8</text>
+<path d="M 110.0 249.7 L 144.5 248.9 L 179.0 248.3 L 213.5 247.9 L 248.0 247.7 L 282.5 247.8 L 317.0 248.2 L 351.5 249.1 L 386.0 250.5 L 420.5 252.5 L 455.0 255.4 L 489.5 259.2 L 524.0 264.1 L 558.5 270.3 L 593.0 277.6 L 627.5 285.7 L 662.0 293.5 L 696.5 297.7 L 697.9 297.7 L 731.0 290.4 L 765.5 251.3 L 800.0 123.6" fill="none" stroke="#7ec8e3" stroke-width="2.5"/>
+<circle cx="697.9" cy="297.7" r="5" fill="#e8e8e8"/>
+<line x1="682.7" y1="210.0" x2="697.9" y2="292.8" stroke="#e8e8e8" stroke-width="1"/>
+<text x="679.2" y="204.6" font-size="13" fill="#e8e8e8" text-anchor="end">최소 c = 1.704</text>
+<circle cx="110.0" cy="249.7" r="5" fill="#e8e8e8"/>
+<text x="122.0" y="237.7" font-size="13" fill="#e8e8e8" text-anchor="start">c = 0: 55.9</text>
+<line x1="110.0" y1="360.0" x2="110.0" y2="530.0" stroke="#444" stroke-width="1"/>
+<text x="110.0" y="550.0" font-size="13" fill="#888" text-anchor="middle">0</text>
+<line x1="282.5" y1="360.0" x2="282.5" y2="530.0" stroke="#444" stroke-width="1"/>
+<text x="282.5" y="550.0" font-size="13" fill="#888" text-anchor="middle">0.5</text>
+<line x1="455.0" y1="360.0" x2="455.0" y2="530.0" stroke="#444" stroke-width="1"/>
+<text x="455.0" y="550.0" font-size="13" fill="#888" text-anchor="middle">1.0</text>
+<line x1="627.5" y1="360.0" x2="627.5" y2="530.0" stroke="#444" stroke-width="1"/>
+<text x="627.5" y="550.0" font-size="13" fill="#888" text-anchor="middle">1.5</text>
+<line x1="800.0" y1="360.0" x2="800.0" y2="530.0" stroke="#444" stroke-width="1"/>
+<text x="800.0" y="550.0" font-size="13" fill="#888" text-anchor="middle">2.0</text>
+<line x1="110.0" y1="530.0" x2="800.0" y2="530.0" stroke="#444" stroke-width="1"/>
+<text x="102.0" y="534.0" font-size="13" fill="#888" text-anchor="end">1.2</text>
+<line x1="110.0" y1="473.3" x2="800.0" y2="473.3" stroke="#444" stroke-width="1"/>
+<text x="102.0" y="477.3" font-size="13" fill="#888" text-anchor="end">1.5</text>
+<line x1="110.0" y1="416.7" x2="800.0" y2="416.7" stroke="#444" stroke-width="1"/>
+<text x="102.0" y="420.7" font-size="13" fill="#888" text-anchor="end">1.8</text>
+<line x1="110.0" y1="360.0" x2="800.0" y2="360.0" stroke="#444" stroke-width="1"/>
+<text x="102.0" y="364.0" font-size="13" fill="#888" text-anchor="end">2.1</text>
+<line x1="110.0" y1="530.0" x2="800.0" y2="530.0" stroke="#888" stroke-width="1.5"/>
+<line x1="110.0" y1="360.0" x2="110.0" y2="530.0" stroke="#888" stroke-width="1.5"/>
+<text x="800.0" y="570.0" font-size="13" fill="#888" text-anchor="end">고정한 c</text>
+<text x="110.0" y="346.0" font-size="13" fill="#888" text-anchor="start">100B 예측</text>
+<line x1="110.0" y1="391.9" x2="800.0" y2="391.9" stroke="#55c555" stroke-width="1.5" stroke-dasharray="5,3"/>
+<text x="127.2" y="381.9" font-size="13" fill="#55c555" text-anchor="start">정답 1.931</text>
+<path d="M 110.0 518.3 L 144.5 513.9 L 179.0 509.6 L 213.5 504.9 L 248.0 500.0 L 282.5 494.9 L 317.0 489.4 L 351.5 483.7 L 386.0 477.7 L 420.5 471.3 L 455.0 464.6 L 489.5 457.5 L 524.0 449.9 L 558.5 441.8 L 593.0 433.3 L 627.5 424.0 L 662.0 414.4 L 696.5 403.8 L 697.9 403.4 L 731.0 392.7 L 765.5 380.6 L 800.0 367.6" fill="none" stroke="#7ec8e3" stroke-width="2.5"/>
+<circle cx="697.9" cy="403.4" r="5" fill="#e8e8e8"/>
+<text x="685.9" y="425.4" font-size="13" fill="#e8e8e8" text-anchor="end">1.870</text>
+<circle cx="110.0" cy="518.3" r="5" fill="#e8e8e8"/>
+<text x="122.0" y="508.3" font-size="13" fill="#e8e8e8" text-anchor="start">1.262</text>
+</svg>
