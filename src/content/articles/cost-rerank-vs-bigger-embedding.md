@@ -255,3 +255,5 @@ bge-small-en-v1.5                          vs bge-small-en-v1.5: +0.0000 [+0.000
 읽어주셔서 감사합니다. 😊
 
 **지난 글:** [임베딩 API와 CPU 자체 호스팅의 손익분기 — 같은 e5-small을 배치 요금으로 사면 CPU는 쉬지 않고 돌려도 못 따라갔다](/articles/cost-embedding-selfhost-breakeven)
+
+**다음 글:** [출력 쪽의 한국어 팽창: 같은 답이 몇 배로 청구되는가 — 세율은 입력보다 높지 않았고, 청구서를 가른 것은 출력 단가 배수였다](/articles/cost-korean-output-token-tax)

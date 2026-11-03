@@ -248,3 +248,5 @@ SPLADE 문서 벡터의 0 아닌 칸은 문서당 평균 190.1개였고 중앙�
 읽어주셔서 감사합니다. 😊
 
 **지난 글:** [ColBERT 축소 재현: 토큰 단위 매칭은 그 저장 비용을 버는가 — 인덱스 39배를 쓰고 1,000편에서는 MiniLM과 같은 자리였다](/articles/paper-colbert-late-interaction)
+
+**다음 글:** [고차원의 허브: 몇몇 문서가 모든 질의의 이웃이 되는가 — 균등난수에서는 그랬고, 임베딩에서는 고치면 손해였다](/articles/paper-hubness-in-embeddings)
