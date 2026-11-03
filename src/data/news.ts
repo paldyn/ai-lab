@@ -172,6 +172,146 @@ export const globalNewsUpdatedAt = '2026-11-02';
  */
 const entries: NewsItem[] = [
   {
+    id: 'community-safety-report-and-new-protections-for-teens',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'OpenAI, 커뮤니티 안전 보고서 예고·청소년 무기 정보 제한 강화',
+    summary:
+      'OpenAI가 폭력 예방 등을 다루는 Community Safety Report를 2027년 초부터 반기마다 내겠다고 밝혔다. ' +
+      '청소년의 무기 관련 정보를 더 제한하고 과거 대량 공격의 재구성도 막으며, 안전장치는 몇 주 안에 적용을 시작한다.',
+    publishedAt: '2026-10-30',
+    collectedAt: '2026-11-04',
+    category: 'Safety',
+    signal: '폭력 예방 안전',
+    url: 'https://openai.com/index/community-safety-report-and-new-protections-for-teens',
+  },
+  {
+    id: 'fair-use-benefits-everyone',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'OpenAI, 뉴욕타임스 소송의 공정 이용 지지 의견서 발췌 공개',
+    summary:
+      'OpenAI가 The New York Times 소송에서 법원에 제출된 공정 이용 지지 의견서들의 발췌를 모아 공개했다. ' +
+      '미국 정부, EFF, 도서관·장애인 단체, 학자와 전직 의원 등이 포함됐고 전문은 공개 소송 기록에 있다.',
+    publishedAt: '2026-10-30',
+    collectedAt: '2026-11-04',
+    category: 'Safety',
+    signal: '저작권 소송',
+    url: 'https://openai.com/index/fair-use-benefits-everyone',
+  },
+  {
+    id: 'legora',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'Legora, OpenAI 모델로 법률 플랫폼 운영·NDA 검토 95% 감소',
+    summary:
+      '스톡홀름의 법률 AI 기업 Legora가 OpenAI 모델을 핵심 업무 흐름에 쓴다고 OpenAI가 소개했다. ' +
+      '자사 법무팀의 NDA 검토 부담이 역량의 약 20%에서 1% 미만으로 줄었고 ChatGPT용 플러그인도 있다.',
+    publishedAt: '2026-10-28',
+    collectedAt: '2026-11-04',
+    category: 'Product',
+    signal: '기업 도입 사례',
+    url: 'https://openai.com/index/legora',
+  },
+  {
+    id: 'retell-ai',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'Retell, 월 1억 건 넘는 통화의 80%에 OpenAI 모델 사용',
+    summary:
+      '콜센터용 음성 AI 플랫폼 Retell의 월간 통화가 2026년 초 3,000만 건에서 9월 1억 건 이상으로 늘었다고 OpenAI가 소개했다. ' +
+      '통화의 80%에서 OpenAI 모델이 응답을 만들고 고객 해결률은 80%를 넘는다.',
+    publishedAt: '2026-10-27',
+    collectedAt: '2026-11-04',
+    category: 'Product',
+    signal: '음성 에이전트',
+    url: 'https://openai.com/index/retell-ai',
+  },
+  {
+    id: 'gpt-6-1-sol-coderabbit-code-security',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'CodeRabbit, 보안 에이전트 주력 모델로 GPT-6.1 Sol 사용',
+    summary:
+      '코드 리뷰 서비스 CodeRabbit이 보안 에이전트의 주력 모델로 GPT-6.1 Sol을 쓴다고 OpenAI가 소개했다. ' +
+      '풀 리퀘스트 하나를 넘어 저장소 사이의 위험을 살피고, 배포할 변경은 사람이 정한다.',
+    publishedAt: '2026-10-26',
+    collectedAt: '2026-11-04',
+    category: 'Product',
+    signal: 'AI 사이버 방어',
+    url: 'https://openai.com/index/gpt-6-1-sol-coderabbit-code-security',
+  },
+  {
+    id: 'building-chatgpt-ad-stack',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'OpenAI, 답변과 분리한 LLM 기반 ChatGPT 광고 시스템 공개',
+    summary:
+      'OpenAI가 ChatGPT 광고 시스템의 구조를 공개했다. ' +
+      '사후 학습한 LLM이 도구 호출로 검색·랭킹·경매를 조율하고, 광고 선택은 답변 생성과 별도 서비스·모델로 돌아 답변에 영향을 주지 않게 했다.',
+    publishedAt: '2026-10-21',
+    collectedAt: '2026-11-04',
+    category: 'Research',
+    signal: 'ChatGPT 광고',
+    url: 'https://openai.com/index/building-chatgpt-ad-stack',
+  },
+  {
+    id: 'cloudflare-cyber',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'Cloudflare, Daybreak로 취약점 발견과 방어를 한 흐름으로',
+    summary:
+      'Cloudflare가 얼리 액세스 보안 서비스에 Daybreak로 쓰는 OpenAI 모델을 결합했다고 OpenAI가 소개했다. ' +
+      '코드 취약점을 실제 트래픽과 잇고 패치와 방화벽 규칙을 제안하며, 적용은 고객이 정한다.',
+    publishedAt: '2026-10-21',
+    collectedAt: '2026-11-04',
+    category: 'Product',
+    signal: 'AI 사이버 방어',
+    url: 'https://openai.com/index/cloudflare-cyber',
+  },
+  {
+    id: 'terminal-x',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'Terminal X, GPT-6.1 Sol 평가 에이전트로 시니어와 88.6% 일치',
+    summary:
+      '투자사용 에이전트를 만드는 Terminal X가 GPT-6.1 Sol 기반 평가 에이전트의 판단이 시니어 검토자와 88.6% 일치했다고 OpenAI가 소개했다. ' +
+      '차순위 모델은 86.4%였고 쿼리당 비용은 약 30% 낮았다.',
+    publishedAt: '2026-10-20',
+    collectedAt: '2026-11-04',
+    category: 'Product',
+    signal: '기업 도입 사례',
+    url: 'https://openai.com/index/terminal-x',
+  },
+  {
+    id: 'localiza-generative-ai',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'Localiza, 에이전트 60여 개로 Liza 운영·ChatGPT 앱 출시',
+    summary:
+      '브라질 렌터카 기업 Localiza가 생성형 AI를 중심으로 일하는 방식을 다시 짰다고 OpenAI가 소개했다. ' +
+      '대화형 도우미 Liza는 전문 에이전트 60여 개로 돌고, 2026년 3월에는 ChatGPT 안에 앱을 냈다.',
+    publishedAt: '2026-10-16',
+    collectedAt: '2026-11-04',
+    category: 'Product',
+    signal: '기업 도입 사례',
+    url: 'https://openai.com/index/localiza-generative-ai',
+  },
+  {
+    id: 'grupo-boticario',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'Grupo Boticário, 재판매인 여정에 OpenAI 기반 에이전트 30여 개',
+    summary:
+      '브라질 뷰티 기업 Grupo Boticário가 자체 에이전트 플랫폼에 OpenAI 모델을 쓴다고 OpenAI가 소개했다. ' +
+      '재판매인 지원 대화를 전부 맡아 운영 문의의 최대 80%를 자율 처리하고 프롬프트는 현업 팀이 관리한다.',
+    publishedAt: '2026-10-16',
+    collectedAt: '2026-11-04',
+    category: 'Product',
+    signal: '기업 도입 사례',
+    url: 'https://openai.com/index/grupo-boticario',
+  },
+  {
     id: 'blog-agentic-cheminformatics-with-google-antigravity',
     source: 'Google DeepMind',
     kind: 'company',
