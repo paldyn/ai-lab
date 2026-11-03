@@ -2,6 +2,20 @@ import type { NewsDetail } from '../news';
 
 /** 2026-11 발표의 모달 본문. 목록은 news.ts에 있습니다. */
 export const details: Record<string, NewsDetail> = {
+  'blog-agentic-cheminformatics-with-google-antigravity': {
+    points: [
+      'Google Antigravity용 Cheminformatics Skills를 오늘부터 쓸 수 있다',
+      'Antigravity 앱에 Science 플러그인을 설치하면 켜지고, 기업 사용자는 Google Cloud 계정으로 로그인해 쓴다',
+      '오픈소스 화학정보학 툴킷 RDKit 위에 만들고 ChEMBL·PubChem 커넥터를 붙였다',
+      '언어 모델은 작업 조율·검색·추론을 맡고 분자 계산은 결정적 화학 도구가 실행한다',
+      '폐암 치료제 crizotinib·lorlatinib 사례로 문헌에서 화합물 수천 개를 모아 정합 분자쌍 분석을 했다',
+      '에이전트가 효능 예측 모델을 학습하고 새 강직화 거대고리 후보와 합성 경로를 한 시간 만에 제안했다',
+      '제안된 설계는 가설일 뿐이며 모두 합성해 실험으로 검증해야 한다고 밝혔다',
+      '과학자 1만 명에게 Antigravity 최상위 사용 티어를 6개월 무료로 제공하며 자격·수용 범위 안에서 순차 선발한다',
+    ],
+    commentary:
+      '10월 항균 펩타이드 사례에 이어 Antigravity를 코딩 도구가 아니라 과학 작업대로 미는 두 번째 글이고, 이번에는 누구나 설치할 수 있는 플러그인이 붙었다. 수치 계산을 RDKit에 맡기고 모델은 조율만 하는 분업은 원자 하나 틀리면 다른 분자가 되는 화학에서 환각을 줄이는 현실적인 설계다. 무료 최상위 티어 1만 명은 연구 현장 선점을 노린 배포로 보인다.',
+  },
   'claude-platform-november-2-2026': {
     points: [
       'message-threads-2026-08-12 베타 헤더로 쓴다',

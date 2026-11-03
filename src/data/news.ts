@@ -172,6 +172,20 @@ export const globalNewsUpdatedAt = '2026-11-02';
  */
 const entries: NewsItem[] = [
   {
+    id: 'blog-agentic-cheminformatics-with-google-antigravity',
+    source: 'Google DeepMind',
+    kind: 'company',
+    title: 'Google Antigravity에 신약 탐색용 Cheminformatics Skills 공개',
+    summary:
+      'Google DeepMind가 Google Antigravity의 Science 플러그인으로 RDKit 기반 Cheminformatics Skills를 내놨다. ' +
+      '연구자 1만 명에게 최상위 사용 티어를 6개월 무료로 주는 신청도 열었다.',
+    publishedAt: '2026-11-03',
+    collectedAt: '2026-11-04',
+    category: 'Product',
+    signal: '과학 에이전트',
+    url: 'https://deepmind.google/blog/agentic-cheminformatics-with-google-antigravity',
+  },
+  {
     id: 'helping-websites-express-ai-training-preferences',
     source: 'OpenAI',
     kind: 'company',
