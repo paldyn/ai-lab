@@ -1388,10 +1388,13 @@ viewBox를 덜 채우면 `contain`이 그만큼 작게 그린다 — 「Codex �
 
   | 회사 | 줄(싼 것부터) | 사용량 칸의 잣대 |
   | --- | --- | --- |
-  | Anthropic | Pro $20 · Max 5x $100 · Max 20x $200 | 5시간 세션당 배수(Free 대비 · Pro 대비) |
+  | Anthropic | Pro $20 · Max $100 · Ultra $200 | Free 대비 세션당 · Pro 대비 배수(Ultra는 주간, 5시간 한도 없음) |
   | OpenAI | Go $8 · Plus $20 · Pro 100 $100 · Pro 200 $200 · Pro 500 $500 | Work·Codex의 GPT-6 Astra 5시간당 추정치(Pro는 「5시간 한도 없음」) |
   | Google | AI Plus $4.99 · AI Pro $19.99 · AI Ultra 5x $99.99 · AI Ultra 20x $199.99 | Gemini 앱 한도 배수(Free 대비 · Pro 대비) |
 
+  - **Claude Max 20x는 Ultra가 됐다**(2026-11-04) — 값은 그대로이고 사용량이 주간 Pro의 10배 · 5시간
+    한도 없음(인증 계정)으로 바뀌었다. Max는 단이 하나로 남아 5시간·주간 모두 Pro의 5배다. 주장 id는
+    지난 로그가 가리켜 그대로다. 여는 페이지가 Ultra 도움말 하나 늘었다.
   - **ChatGPT Go에는 사용량 칸이 없다** — 다른 셋이 쓰는 잣대(Astra)에 Go 열이 없고, Go 도움말의
     「Free and Go users both have unlimited everyday text chats.」는 Free와 같다는 말이라 견줄 값이
     아니다. 주장이 없으면 그 칸만 빈다(넓은 화면에서 열 자리를 지키고 좁은 화면에서는 숨는다).

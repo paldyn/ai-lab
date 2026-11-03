@@ -71,7 +71,7 @@ ls src/data/playbook-checks/
 | | `platform.claude.com/docs/en/about-claude/models/choosing-a-model` | 모델 선택표(쓰임 · Sonnet 서열 근거) |
 | | `platform.claude.com/docs/en/about-claude/models/optimizing-for-cost-and-intelligence` | 서열 문장(「From lowest to highest cost and capability …」) |
 | | `code.claude.com/docs/en/model-config` | Claude Code 별칭 해소 표 |
-| | `support.claude.com/en/articles/11049741-what-is-the-max-plan` | Max 5x · 20x 값과 사용량 |
+| | `support.claude.com/en/articles/11049741-what-is-the-max-plan` · `…/17728952-what-is-the-ultra-plan` | Max · Ultra 값과 사용량 |
 | | `claude.com/pricing` | Claude Pro 구독료 · 사용량(**현지화 주의**) |
 | OpenAI | `developers.openai.com/api/docs/models/all` | 모델 카탈로그 · 모델별 아이콘 |
 | | `developers.openai.com/api/docs/pricing.md` | 모델 단가 표 행(Standard 표만) |

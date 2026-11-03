@@ -324,7 +324,7 @@ export const playbookClaims: Claim[] = [
     subject: { kind: 'vendor', id: 'anthropic' },
     topic: 'limit',
     statement: 'Claude 사용 한도 초기화 기준',
-    value: '5시간 롤링 세션 창 · 유료 요금제는 주간 한도가 더 붙는다',
+    value: '대부분 5시간 롤링 세션 창 · 유료 요금제는 주간 한도가 더 붙는다',
     tier: 'vendor',
     volatility: 'limit',
     source: { label: 'Claude 요금제', url: 'https://claude.com/pricing' },
@@ -341,19 +341,20 @@ export const playbookClaims: Claim[] = [
     source: { label: 'Claude 요금제', url: 'https://claude.com/pricing' },
   },
   /*
-    **Claude Max는 요금제가 둘이다**(2026-09-29) — 도움말이 「The Max plan is available in two
-    tiers」라고 적고 단마다 값과 사용량을 따로 둔다. 그동안 한 카드에 「월 $100부터」 · 「Pro의
-    5배 또는 20배」로 뭉쳐 세워, 무엇이 얼마인지 카드만 보고는 몰랐다. 출처도 도움말 한 곳으로
-    모았다 — 단마다 한 줄씩(「Max 5x includes five times the Pro plan's per-session usage
-    allowance.」) 적혀 있다.
+    **Claude 개인 요금제는 Pro · Max · Ultra 셋이다**(2026-11-04). Max 5x · Max 20x 두 단이었는데
+    Anthropic이 Max 20x를 Ultra로 이름을 갈고 사용량 잣대도 바꿨다 — Ultra 도움말 「The Max 20x plan
+    is now called the Ultra plan.」. 값은 $200 그대로이고 사용량이 Pro의 20배(세션당)에서 주간 10배 ·
+    5시간 한도 없음(인증 계정)이 됐다. Max는 단이 하나가 되어 도움말이 「The Max plan」으로 적고, 5배가
+    세션만이 아니라 주간에도 걸린다. Ultra는 제 도움말이 있어 출처를 그리로 옮겼다.
+    주장 id(`claude-max-20x-…`)는 지난 확인 로그가 가리키므로 그대로 둔다.
   */
   {
     id: 'claude-max-usage',
     subject: { kind: 'vendor', id: 'anthropic' },
     topic: 'limit',
-    statement: 'Claude Max 5x 사용량(Pro 대비)',
-    value: '5시간 세션당 Pro의 5배',
-    planCell: { plan: 'Claude Max 5x', facet: 'usage' },
+    statement: 'Claude Max 사용량(Pro 대비)',
+    value: '5시간·주간 Pro의 5배',
+    planCell: { plan: 'Claude Max', facet: 'usage' },
     tier: 'vendor',
     volatility: 'limit',
     source: { label: 'Claude Max 도움말', url: 'https://support.claude.com/en/articles/11049741-what-is-the-max-plan' },
@@ -362,12 +363,12 @@ export const playbookClaims: Claim[] = [
     id: 'claude-max-20x-usage',
     subject: { kind: 'vendor', id: 'anthropic' },
     topic: 'limit',
-    statement: 'Claude Max 20x 사용량(Pro 대비)',
-    value: '5시간 세션당 Pro의 20배',
-    planCell: { plan: 'Claude Max 20x', facet: 'usage' },
+    statement: 'Claude Ultra 사용량(Pro 대비)',
+    value: '주간 Pro의 10배',
+    planCell: { plan: 'Claude Ultra', facet: 'usage', note: '5시간 한도 없음(인증 계정)' },
     tier: 'vendor',
     volatility: 'limit',
-    source: { label: 'Claude Max 도움말', url: 'https://support.claude.com/en/articles/11049741-what-is-the-max-plan' },
+    source: { label: 'Claude Ultra 도움말', url: 'https://support.claude.com/en/articles/17728952-what-is-the-ultra-plan' },
   },
   /*
     **ChatGPT 개인 요금제는 다섯이다**(2026-10-01) — 싼 것부터 Go · Plus · Pro 100 · Pro 200 · Pro 500.
@@ -568,16 +569,16 @@ export const playbookClaims: Claim[] = [
     id: 'claude-max-price',
     subject: { kind: 'vendor', id: 'anthropic' },
     topic: 'price',
-    statement: 'Claude Max 5x 월 구독료',
+    statement: 'Claude Max 월 구독료',
     /*
       **요금제 페이지 대신 도움말이 출처다**(2026-09-29). claude.com/pricing의 Max 카드는
-      「From $100」과 「Per month」가 두 조각이라 한 줄로 열 자를 못 넘고, 접속한 나라에 따라
-      값을 바꿔 그린다(한국에서 열면 부가세를 더해 「From $110」). 도움말 「What is the Max
-      plan?」이 단마다 한 줄씩 적는다 — 「Max 5x: $100 per month」, 「Max 20x: $200 per month」.
+      「$100」과 「Per month」가 두 조각이라 한 줄로 열 자를 못 넘고, 접속한 나라에 따라
+      값을 바꿔 그린다(한국에서 열면 부가세가 붙는다). 도움말이 한 줄로 적는다 — 「The Max plan is
+      available for $100 per month.」, 「The Ultra plan is available for $200 per month.」.
       웹 구독 기준이고 월 결제만 있다.
     */
     value: '월 $100',
-    planCell: { plan: 'Claude Max 5x', facet: 'fee' },
+    planCell: { plan: 'Claude Max', facet: 'fee' },
     tier: 'vendor',
     volatility: 'price',
     source: {
@@ -589,14 +590,14 @@ export const playbookClaims: Claim[] = [
     id: 'claude-max-20x-price',
     subject: { kind: 'vendor', id: 'anthropic' },
     topic: 'price',
-    statement: 'Claude Max 20x 월 구독료',
+    statement: 'Claude Ultra 월 구독료',
     value: '월 $200',
-    planCell: { plan: 'Claude Max 20x', facet: 'fee' },
+    planCell: { plan: 'Claude Ultra', facet: 'fee' },
     tier: 'vendor',
     volatility: 'price',
     source: {
-      label: 'Claude Max 도움말',
-      url: 'https://support.claude.com/en/articles/11049741-what-is-the-max-plan',
+      label: 'Claude Ultra 도움말',
+      url: 'https://support.claude.com/en/articles/17728952-what-is-the-ultra-plan',
     },
   },
   {
