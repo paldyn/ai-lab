@@ -395,5 +395,3 @@ c 포함 적합은 중앙값이 1.908로 정답에 가깝지만 95% 범위가 1.
 읽어주셔서 감사합니다. 😊
 
 **지난 글:** [보정: 모델이 말하는 확률을 믿어도 되는가](/articles/math-calibration-and-ece)
-
-**다음 글:** [거리공간·노름공간·축약사상: '수렴한다'를 정확히 말하기](/articles/math-adv-metric-normed-and-fixed-points)

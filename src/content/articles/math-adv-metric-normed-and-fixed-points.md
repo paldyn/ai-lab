@@ -394,6 +394,4 @@ print(np.abs(x * y).sum() / (np.linalg.norm(x, 3) * np.linalg.norm(y, 1.5)))   #
 
 읽어주셔서 감사합니다. 😊
 
-**지난 글:** [멱법칙과 로그-로그 직선: 스케일링 곡선 읽기와 외삽의 한계](/articles/math-power-law-and-scaling-curves)
-
 **다음 글:** [힐베르트 공간과 무한차원 스펙트럼 정리: 사영·리스 표현·고유함수 전개](/articles/math-adv-hilbert-spaces-and-spectral-theorem)
