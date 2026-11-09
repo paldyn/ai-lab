@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="430" viewBox="0 0 880 430" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+<rect x="0" y="0" width="880" height="430" rx="12" fill="#0a0a0a"/>
+<text x="440" y="44" text-anchor="middle" font-size="22" font-weight="700" fill="#e8e8e8">밀도는 기준 측도를 고른 뒤에야 정해진다</text>
+<defs><marker id="ar" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto"><path d="M 0 0 L 13 7 L 0 14 z" fill="#888"/></marker></defs>
+<rect x="50" y="80" width="240" height="150" rx="8" fill="#111" stroke="#7777cc"/>
+<text x="170.0" y="116.0" font-size="13" fill="#888" text-anchor="middle">기준 측도</text>
+<text x="170.0" y="142.0" font-size="16" fill="#e8e8e8" text-anchor="middle" font-weight="600">셈측도 #</text>
+<text x="170.0" y="168.0" font-size="13" fill="#888" text-anchor="middle">토큰·범주</text>
+<text x="170.0" y="194.0" font-size="13" fill="#7ec8e3" text-anchor="middle">p(y) = P({y})</text>
+<text x="170.0" y="216.0" font-size="13" fill="#888" text-anchor="middle">pmf</text>
+<line x1="170" y1="230" x2="320" y2="300" stroke="#888" stroke-width="2" marker-end="url(#ar)"/>
+<rect x="320" y="80" width="240" height="150" rx="8" fill="#111" stroke="#7777cc"/>
+<text x="440.0" y="116.0" font-size="13" fill="#888" text-anchor="middle">기준 측도</text>
+<text x="440.0" y="142.0" font-size="16" fill="#e8e8e8" text-anchor="middle" font-weight="600">르베그 측도 λ</text>
+<text x="440.0" y="168.0" font-size="13" fill="#888" text-anchor="middle">연속 행동</text>
+<text x="440.0" y="194.0" font-size="13" fill="#7ec8e3" text-anchor="middle">p(a) = dP/dλ</text>
+<text x="440.0" y="216.0" font-size="13" fill="#888" text-anchor="middle">pdf</text>
+<line x1="440" y1="230" x2="440" y2="300" stroke="#888" stroke-width="2" marker-end="url(#ar)"/>
+<rect x="590" y="80" width="240" height="150" rx="8" fill="#111" stroke="#7777cc"/>
+<text x="710.0" y="116.0" font-size="13" fill="#888" text-anchor="middle">기준 측도</text>
+<text x="710.0" y="142.0" font-size="16" fill="#e8e8e8" text-anchor="middle" font-weight="600">λ + δ₋₁ + δ₁</text>
+<text x="710.0" y="168.0" font-size="13" fill="#888" text-anchor="middle">잘린 행동</text>
+<text x="710.0" y="194.0" font-size="13" fill="#7ec8e3" text-anchor="middle">안쪽 pdf, 끝은 질량</text>
+<text x="710.0" y="216.0" font-size="13" fill="#888" text-anchor="middle">혼합 밀도</text>
+<line x1="710" y1="230" x2="560" y2="300" stroke="#888" stroke-width="2" marker-end="url(#ar)"/>
+<rect x="200" y="300" width="480" height="96" rx="8" fill="#111" stroke="#55c555"/>
+<text x="440.0" y="334.0" font-size="16" fill="#55c555" text-anchor="middle" font-weight="600">dP/dQ = p / q   ( q > 0 인 곳에서 )</text>
+<text x="440.0" y="360.0" font-size="13" fill="#e8e8e8" text-anchor="middle">세 기준 측도 모두 같은 비를 준다</text>
+<text x="440.0" y="382.0" font-size="13" fill="#888" text-anchor="middle">P ≪ Q 의 판정: q = 0 인 곳에 P 의 질량이 없는가</text>
+</svg>

@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="470" viewBox="0 0 880 470" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+<rect x="0" y="0" width="880" height="470" rx="12" fill="#0a0a0a"/>
+<text x="440" y="44" text-anchor="middle" font-size="22" font-weight="700" fill="#e8e8e8">Q 를 ε 만큼 P 쪽으로 섞으면 KL 은 log(1/ε) 로 자란다</text>
+<line x1="100" y1="380" x2="800" y2="380" stroke="#888" stroke-width="1.5"/>
+<line x1="100" y1="380" x2="100" y2="80" stroke="#888" stroke-width="1.5"/>
+<line x1="100.0" y1="380" x2="100.0" y2="386" stroke="#444"/>
+<text x="100.0" y="406" font-size="13" fill="#888" text-anchor="middle">10<tspan dy="-6" font-size="11">−1</tspan></text>
+<line x1="240.0" y1="380" x2="240.0" y2="386" stroke="#444"/>
+<text x="240.0" y="406" font-size="13" fill="#888" text-anchor="middle">10<tspan dy="-6" font-size="11">−2</tspan></text>
+<line x1="380.0" y1="380" x2="380.0" y2="386" stroke="#444"/>
+<text x="380.0" y="406" font-size="13" fill="#888" text-anchor="middle">10<tspan dy="-6" font-size="11">−3</tspan></text>
+<line x1="520.0" y1="380" x2="520.0" y2="386" stroke="#444"/>
+<text x="520.0" y="406" font-size="13" fill="#888" text-anchor="middle">10<tspan dy="-6" font-size="11">−4</tspan></text>
+<line x1="660.0" y1="380" x2="660.0" y2="386" stroke="#444"/>
+<text x="660.0" y="406" font-size="13" fill="#888" text-anchor="middle">10<tspan dy="-6" font-size="11">−5</tspan></text>
+<line x1="800.0" y1="380" x2="800.0" y2="386" stroke="#444"/>
+<text x="800.0" y="406" font-size="13" fill="#888" text-anchor="middle">10<tspan dy="-6" font-size="11">−6</tspan></text>
+<line x1="94" y1="380.0" x2="100" y2="380.0" stroke="#444"/>
+<text x="88.0" y="384.0" font-size="13" fill="#888" text-anchor="end">0</text>
+<line x1="94" y1="330.0" x2="100" y2="330.0" stroke="#444"/>
+<text x="88.0" y="334.0" font-size="13" fill="#888" text-anchor="end">1</text>
+<line x1="94" y1="280.0" x2="100" y2="280.0" stroke="#444"/>
+<text x="88.0" y="284.0" font-size="13" fill="#888" text-anchor="end">2</text>
+<line x1="94" y1="230.0" x2="100" y2="230.0" stroke="#444"/>
+<text x="88.0" y="234.0" font-size="13" fill="#888" text-anchor="end">3</text>
+<line x1="94" y1="180.0" x2="100" y2="180.0" stroke="#444"/>
+<text x="88.0" y="184.0" font-size="13" fill="#888" text-anchor="end">4</text>
+<line x1="94" y1="130.0" x2="100" y2="130.0" stroke="#444"/>
+<text x="88.0" y="134.0" font-size="13" fill="#888" text-anchor="end">5</text>
+<line x1="94" y1="80.0" x2="100" y2="80.0" stroke="#444"/>
+<text x="88.0" y="84.0" font-size="13" fill="#888" text-anchor="end">6</text>
+<text x="806.0" y="384.0" font-size="13" fill="#888" text-anchor="start">ε</text>
+<text x="100.0" y="68.0" font-size="13" fill="#888" text-anchor="middle">KL (nat)</text>
+<path d="M 100.0 338.4 L 111.9 334.7 L 123.7 331.1 L 135.6 327.4 L 147.5 323.8 L 159.3 320.1 L 171.2 316.5 L 183.1 312.8 L 194.9 309.1 L 206.8 305.5 L 218.6 301.8 L 230.5 298.2 L 242.4 294.5 L 254.2 290.8 L 266.1 287.2 L 278.0 283.5 L 289.8 279.8 L 301.7 276.2 L 313.6 272.5 L 325.4 268.9 L 337.3 265.2 L 349.2 261.5 L 361.0 257.9 L 372.9 254.2 L 384.7 250.6 L 396.6 246.9 L 408.5 243.2 L 420.3 239.6 L 432.2 235.9 L 444.1 232.2 L 455.9 228.6 L 467.8 224.9 L 479.7 221.3 L 491.5 217.6 L 503.4 213.9 L 515.3 210.3 L 527.1 206.6 L 539.0 202.9 L 550.8 199.3 L 562.7 195.6 L 574.6 192.0 L 586.4 188.3 L 598.3 184.6 L 610.2 181.0 L 622.0 177.3 L 633.9 173.7 L 645.8 170.0 L 657.6 166.3 L 669.5 162.7 L 681.4 159.0 L 693.2 155.3 L 705.1 151.7 L 716.9 148.0 L 728.8 144.4 L 740.7 140.7 L 752.5 137.0 L 764.4 133.4 L 776.3 129.7 L 788.1 126.0 L 800.0 122.4" stroke="#7ec8e3" stroke-width="2.5" fill="none"/>
+<path d="M 100.0 350.3 L 111.9 346.8 L 123.7 343.4 L 135.6 339.8 L 147.5 336.3 L 159.3 332.7 L 171.2 329.1 L 183.1 325.5 L 194.9 321.9 L 206.8 318.3 L 218.6 314.7 L 230.5 311.1 L 242.4 307.4 L 254.2 303.8 L 266.1 300.1 L 278.0 296.5 L 289.8 292.8 L 301.7 289.2 L 313.6 285.5 L 325.4 281.9 L 337.3 278.2 L 349.2 274.6 L 361.0 270.9 L 372.9 267.2 L 384.7 263.6 L 396.6 259.9 L 408.5 256.3 L 420.3 252.6 L 432.2 248.9 L 444.1 245.3 L 455.9 241.6 L 467.8 238.0 L 479.7 234.3 L 491.5 230.6 L 503.4 227.0 L 515.3 223.3 L 527.1 219.6 L 539.0 216.0 L 550.8 212.3 L 562.7 208.7 L 574.6 205.0 L 586.4 201.3 L 598.3 197.7 L 610.2 194.0 L 622.0 190.3 L 633.9 186.7 L 645.8 183.0 L 657.6 179.4 L 669.5 175.7 L 681.4 172.0 L 693.2 168.4 L 705.1 164.7 L 716.9 161.1 L 728.8 157.4 L 740.7 153.7 L 752.5 150.1 L 764.4 146.4 L 776.3 142.7 L 788.1 139.1 L 800.0 135.4" stroke="#7777cc" stroke-width="2.5" fill="none" stroke-dasharray="5,3"/>
+<circle cx="100.0" cy="338.4" r="5" fill="#e8e8e8"/>
+<text x="110.0" y="324.4" font-size="13" fill="#e8e8e8" text-anchor="start">0.83</text>
+<circle cx="240.0" cy="295.2" r="5" fill="#e8e8e8"/>
+<text x="238.0" y="281.2" font-size="13" fill="#e8e8e8" text-anchor="middle">1.70</text>
+<circle cx="520.0" cy="208.8" r="5" fill="#e8e8e8"/>
+<text x="518.0" y="194.8" font-size="13" fill="#e8e8e8" text-anchor="middle">3.42</text>
+<circle cx="800.0" cy="122.4" r="5" fill="#e8e8e8"/>
+<text x="798.0" y="108.4" font-size="13" fill="#e8e8e8" text-anchor="middle">5.15</text>
+<rect x="460" y="300" width="320" height="64" rx="8" fill="#111" stroke="#333"/>
+<text x="484.0" y="326.0" font-size="13" fill="#7ec8e3" text-anchor="start">— KL(P ‖ (1−ε)Q + εP)</text>
+<text x="484.0" y="348.0" font-size="13" fill="#7777cc" text-anchor="start">- - 분할 하한  0.375 · log(1/ε) + …</text>
+<text x="440.0" y="440.0" font-size="13" fill="#888" text-anchor="middle">ε → 0 이면 Q 로 돌아가고, 두 선이 함께 끝없이 오른다</text>
+</svg>

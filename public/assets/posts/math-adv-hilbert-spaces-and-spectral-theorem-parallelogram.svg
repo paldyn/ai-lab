@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="460" viewBox="0 0 880 460" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+<defs><marker id="arr" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto"><path d="M 0 0 L 13 7 L 0 14 z" fill="#888"/></marker></defs>
+<rect x="0" y="0" width="880" height="460" rx="12" fill="#0a0a0a"/>
+<text x="440.0" y="40.0" font-size="22" fill="#e8e8e8" text-anchor="middle" font-weight="700">사영 정리의 지렛대 — 평행사변형 법칙</text>
+<text x="440.0" y="66.0" font-size="14" fill="#888" text-anchor="middle">C 바깥의 x 에서 거의 가장 가까운 두 점은 서로 가까울 수밖에 없다</text>
+<clipPath id="cl"><rect x="0" y="0" width="880" height="450" rx="12"/></clipPath>
+<circle cx="260" cy="650" r="330" fill="#7ec8e3" fill-opacity="0.12" stroke="#7ec8e3" stroke-width="2" clip-path="url(#cl)"/>
+<text x="260.0" y="430.0" font-size="15" fill="#7ec8e3" text-anchor="middle" font-weight="600">C (닫힌 볼록 집합)</text>
+<line x1="260" y1="120" x2="143.4" y2="360.7" stroke="#888" stroke-width="2" stroke-dasharray="5,3"/>
+<line x1="260" y1="120" x2="376.6" y2="360.7" stroke="#888" stroke-width="2" stroke-dasharray="5,3"/>
+<line x1="260" y1="120" x2="260.0" y2="360.7" stroke="#7777cc" stroke-width="2" stroke-dasharray="5,3"/>
+<line x1="143.4" y1="360.7" x2="376.6" y2="360.7" stroke="#e05555" stroke-width="2.5"/>
+<circle cx="260.0" cy="120.0" r="5" fill="#e8e8e8"/>
+<circle cx="143.4" cy="360.7" r="5" fill="#e8e8e8"/>
+<circle cx="376.6" cy="360.7" r="5" fill="#e8e8e8"/>
+<circle cx="260.0" cy="360.7" r="5" fill="#e8e8e8"/>
+<circle cx="260" cy="320" r="5" fill="#7ec8e3"/>
+<text x="276.0" y="125.0" font-size="16" fill="#e8e8e8" font-weight="600">x</text>
+<text x="129.4" y="382.7" font-size="15" fill="#e8e8e8" text-anchor="middle" font-weight="600">yₘ</text>
+<text x="390.6" y="382.7" font-size="15" fill="#e8e8e8" text-anchor="middle" font-weight="600">yₙ</text>
+<text x="260.0" y="384.7" font-size="13" fill="#b8b8ee" text-anchor="middle">m = (yₘ + yₙ)/2</text>
+<text x="276.0" y="312.0" font-size="15" fill="#7ec8e3" font-weight="600">y</text>
+<text x="274.0" y="215.0" font-size="15" fill="#b8b8ee" font-weight="600">δ</text>
+<rect x="470" y="100" width="370" height="290" rx="10" fill="#111" stroke="#333"/>
+<text x="494.0" y="136.0" font-size="13" fill="#888">평행사변형 법칙을 x − yₘ, x − yₙ 에</text>
+<text x="494.0" y="168.0" font-size="16" fill="#e8e8e8">‖yₘ − yₙ‖²</text>
+<text x="494.0" y="200.0" font-size="15" fill="#e8e8e8">= 2‖x − yₘ‖² + 2‖x − yₙ‖² − 4‖x − m‖²</text>
+<text x="494.0" y="232.0" font-size="13" fill="#b8b8ee">C 가 볼록이라 m 도 C 안 → ‖x − m‖ ≥ δ</text>
+<text x="494.0" y="264.0" font-size="16" fill="#e8e8e8">‖yₘ − yₙ‖²</text>
+<text x="494.0" y="296.0" font-size="15" fill="#e8e8e8">≤ 2‖x − yₘ‖² + 2‖x − yₙ‖² − 4δ²</text>
+<text x="494.0" y="328.0" font-size="15" fill="#e05555">→ 2δ² + 2δ² − 4δ² = 0</text>
+<text x="494.0" y="360.0" font-size="13" fill="#7ec8e3">코시 → 완비라 극한 y, 닫혀서 y ∈ C</text>
+</svg>

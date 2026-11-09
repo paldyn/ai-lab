@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="520" viewBox="0 0 880 520" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+<defs><marker id="arr" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto"><path d="M 0 0 L 13 7 L 0 14 z" fill="#888"/></marker><marker id="arrb" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto"><path d="M 0 0 L 13 7 L 0 14 z" fill="#7ec8e3"/></marker><marker id="arrr" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto"><path d="M 0 0 L 13 7 L 0 14 z" fill="#e05555"/></marker></defs>
+<rect x="0" y="0" width="880" height="520" rx="12" fill="#0a0a0a"/>
+<text x="440.0" y="40.0" font-size="22" fill="#e8e8e8" text-anchor="middle" font-weight="700">확률변수 수렴 네 종류의 함의</text>
+<text x="440.0" y="66.0" font-size="14" fill="#888" text-anchor="middle">실선은 언제나 성립, 아래 상자는 거꾸로가 깨지는 예</text>
+<rect x="60" y="100" width="210" height="72" rx="8" fill="#111" stroke="#7ec8e3" stroke-width="1.5"/>
+<text x="165.0" y="130.0" font-size="16" fill="#e8e8e8" text-anchor="middle" font-weight="600">거의 확실히</text>
+<text x="165.0" y="152.0" font-size="13" fill="#888" text-anchor="middle">P(Xₙ → X) = 1</text>
+<rect x="60" y="280" width="210" height="72" rx="8" fill="#111" stroke="#7ec8e3" stroke-width="1.5"/>
+<text x="165.0" y="310.0" font-size="16" fill="#e8e8e8" text-anchor="middle" font-weight="600">Lᵖ 수렴</text>
+<text x="165.0" y="332.0" font-size="13" fill="#888" text-anchor="middle">E|Xₙ − X|ᵖ → 0</text>
+<rect x="340" y="190" width="210" height="72" rx="8" fill="#111" stroke="#7ec8e3" stroke-width="1.5"/>
+<text x="445.0" y="220.0" font-size="16" fill="#e8e8e8" text-anchor="middle" font-weight="600">확률 수렴</text>
+<text x="445.0" y="242.0" font-size="13" fill="#888" text-anchor="middle">P(|Xₙ − X| > ε) → 0</text>
+<rect x="620" y="190" width="200" height="72" rx="8" fill="#111" stroke="#7ec8e3" stroke-width="1.5"/>
+<text x="720.0" y="220.0" font-size="16" fill="#e8e8e8" text-anchor="middle" font-weight="600">분포 수렴</text>
+<text x="720.0" y="242.0" font-size="13" fill="#888" text-anchor="middle">Fₙ(t) → F(t)</text>
+<line x1="270.0" y1="136.0" x2="340.0" y2="208.0" stroke="#888" stroke-width="1.5" marker-end="url(#arr)"/>
+<line x1="270.0" y1="316.0" x2="340.0" y2="244.0" stroke="#888" stroke-width="1.5" marker-end="url(#arr)"/>
+<line x1="550.0" y1="226.0" x2="620.0" y2="226.0" stroke="#888" stroke-width="1.5" marker-end="url(#arr)"/>
+<text x="318.0" y="140.0" font-size="13" fill="#888" text-anchor="start">지배수렴</text>
+<text x="318.0" y="322.0" font-size="13" fill="#888" text-anchor="start">마르코프</text>
+<rect x="60" y="380" width="760" height="112" rx="8" fill="none" stroke="#e05555" stroke-width="1.2"/>
+<text x="84.0" y="412.0" font-size="13" fill="#e05555" text-anchor="start" font-weight="600">확률 ⇏ 거의 확실히</text>
+<text x="270.0" y="412.0" font-size="13" fill="#e8e8e8" text-anchor="start">타자기 수열: 폭 1/2ᵏ 의 칸이 [0,1) 을 계속 훑는다</text>
+<text x="84.0" y="442.0" font-size="13" fill="#e05555" text-anchor="start" font-weight="600">거의 확실히 ⇏ L¹</text>
+<text x="270.0" y="442.0" font-size="13" fill="#e8e8e8" text-anchor="start">Xₙ = n · 1[U &lt; 1/n]: 0 으로 가지만 E Xₙ = 1</text>
+<text x="84.0" y="472.0" font-size="13" fill="#e05555" text-anchor="start" font-weight="600">분포 ⇏ 확률</text>
+<text x="270.0" y="472.0" font-size="13" fill="#e8e8e8" text-anchor="start">X ~ N(0,1), Xₙ = −X: 분포는 같고 |Xₙ − X| = 2|X|</text>
+</svg>

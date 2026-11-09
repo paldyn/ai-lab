@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="420" viewBox="0 0 880 420" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+<defs><marker id="arr" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto"><path d="M 0 0 L 13 7 L 0 14 z" fill="#888"/></marker><marker id="arrb" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto"><path d="M 0 0 L 13 7 L 0 14 z" fill="#7ec8e3"/></marker><marker id="arrr" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto"><path d="M 0 0 L 13 7 L 0 14 z" fill="#e05555"/></marker></defs>
+<rect x="0" y="0" width="880" height="420" rx="12" fill="#0a0a0a"/>
+<text x="440.0" y="40.0" font-size="22" fill="#e8e8e8" text-anchor="middle" font-weight="700">넓이는 1 로 그대로, 높이는 치솟고 폭은 사라진다</text>
+<text x="440.0" y="66.0" font-size="14" fill="#888" text-anchor="middle">fₖ = k · 1(0, 1/k]  — 모든 x 에서 fₖ(x) → 0 인데 ∫ fₖ = 1</text>
+<rect x="80.0" y="305.0" width="140.0" height="25.0" fill="#7ec8e3" fill-opacity="0.18" stroke="#7ec8e3" stroke-width="2.5"/>
+<line x1="80.0" y1="330.0" x2="232.0" y2="330.0" stroke="#888" stroke-width="1.5" marker-end="url(#arr)"/>
+<line x1="80.0" y1="330.0" x2="80.0" y2="116.0" stroke="#888" stroke-width="1.5" marker-end="url(#arr)"/>
+<text x="80.0" y="350.0" font-size="13" fill="#888" text-anchor="middle">0</text>
+<text x="220.0" y="350.0" font-size="13" fill="#888" text-anchor="middle">1</text>
+<text x="72.0" y="309.0" font-size="13" fill="#888" text-anchor="end">1</text>
+<text x="150.0" y="380.0" font-size="16" fill="#e8e8e8" text-anchor="middle" font-weight="600">k = 1,  넓이 1</text>
+<rect x="275.0" y="280.0" width="70.0" height="50.0" fill="#7ec8e3" fill-opacity="0.18" stroke="#7ec8e3" stroke-width="2.5"/>
+<line x1="275.0" y1="330.0" x2="427.0" y2="330.0" stroke="#888" stroke-width="1.5" marker-end="url(#arr)"/>
+<line x1="275.0" y1="330.0" x2="275.0" y2="116.0" stroke="#888" stroke-width="1.5" marker-end="url(#arr)"/>
+<text x="275.0" y="350.0" font-size="13" fill="#888" text-anchor="middle">0</text>
+<text x="415.0" y="350.0" font-size="13" fill="#888" text-anchor="middle">1</text>
+<text x="267.0" y="284.0" font-size="13" fill="#888" text-anchor="end">2</text>
+<text x="345.0" y="380.0" font-size="16" fill="#e8e8e8" text-anchor="middle" font-weight="600">k = 2,  넓이 1</text>
+<rect x="470.0" y="230.0" width="35.0" height="100.0" fill="#7ec8e3" fill-opacity="0.18" stroke="#7ec8e3" stroke-width="2.5"/>
+<line x1="470.0" y1="330.0" x2="622.0" y2="330.0" stroke="#888" stroke-width="1.5" marker-end="url(#arr)"/>
+<line x1="470.0" y1="330.0" x2="470.0" y2="116.0" stroke="#888" stroke-width="1.5" marker-end="url(#arr)"/>
+<text x="470.0" y="350.0" font-size="13" fill="#888" text-anchor="middle">0</text>
+<text x="610.0" y="350.0" font-size="13" fill="#888" text-anchor="middle">1</text>
+<text x="462.0" y="234.0" font-size="13" fill="#888" text-anchor="end">4</text>
+<text x="540.0" y="380.0" font-size="16" fill="#e8e8e8" text-anchor="middle" font-weight="600">k = 4,  넓이 1</text>
+<rect x="665.0" y="130.0" width="17.5" height="200.0" fill="#7ec8e3" fill-opacity="0.18" stroke="#7ec8e3" stroke-width="2.5"/>
+<line x1="665.0" y1="330.0" x2="817.0" y2="330.0" stroke="#888" stroke-width="1.5" marker-end="url(#arr)"/>
+<line x1="665.0" y1="330.0" x2="665.0" y2="116.0" stroke="#888" stroke-width="1.5" marker-end="url(#arr)"/>
+<text x="665.0" y="350.0" font-size="13" fill="#888" text-anchor="middle">0</text>
+<text x="805.0" y="350.0" font-size="13" fill="#888" text-anchor="middle">1</text>
+<text x="657.0" y="134.0" font-size="13" fill="#888" text-anchor="end">8</text>
+<text x="735.0" y="380.0" font-size="16" fill="#e8e8e8" text-anchor="middle" font-weight="600">k = 8,  넓이 1</text>
+<text x="440.0" y="405.0" font-size="13" fill="#888" text-anchor="middle">x = 0.3 에서 값: 1, 2, 0, 0 …  — 한 점에서 보면 0 으로 간다</text>
+</svg>

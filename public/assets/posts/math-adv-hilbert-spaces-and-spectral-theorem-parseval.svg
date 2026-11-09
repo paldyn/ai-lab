@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="470" viewBox="0 0 880 470" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+<defs><marker id="arr" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto"><path d="M 0 0 L 13 7 L 0 14 z" fill="#888"/></marker></defs>
+<rect x="0" y="0" width="880" height="470" rx="12" fill="#0a0a0a"/>
+<text x="440.0" y="40.0" font-size="22" fill="#e8e8e8" text-anchor="middle" font-weight="700">f(t) = t 의 파르스발 항등식</text>
+<text x="440.0" y="66.0" font-size="14" fill="#888" text-anchor="middle">사인 기저 √2 sin(kπt) 의 계수 제곱 2/(k²π²) 를 쌓으면 ‖f‖² = 1/3 에 다가간다</text>
+<line x1="100" y1="400.0" x2="610" y2="400.0" stroke="#888" stroke-width="1.5"/>
+<line x1="100" y1="400.0" x2="100" y2="91.42857142857139" stroke="#888" stroke-width="1.5"/>
+<line x1="100" y1="314.3" x2="600" y2="314.3" stroke="#444" stroke-width="1"/>
+<text x="90.0" y="318.3" font-size="13" fill="#888" text-anchor="end">0.1</text>
+<line x1="100" y1="228.6" x2="600" y2="228.6" stroke="#444" stroke-width="1"/>
+<text x="90.0" y="232.6" font-size="13" fill="#888" text-anchor="end">0.2</text>
+<line x1="100" y1="142.9" x2="600" y2="142.9" stroke="#444" stroke-width="1"/>
+<text x="90.0" y="146.9" font-size="13" fill="#888" text-anchor="end">0.3</text>
+<text x="90.0" y="404.0" font-size="13" fill="#888" text-anchor="end">0</text>
+<line x1="100" y1="114.3" x2="600" y2="114.3" stroke="#55c555" stroke-width="2" stroke-dasharray="5,3"/>
+<text x="614.0" y="119.3" font-size="15" fill="#55c555" font-weight="600">‖f‖² = 1/3</text>
+<rect x="109.0" y="226.3" width="32" height="173.7" fill="#7ec8e3" fill-opacity="0.55"/>
+<text x="125.0" y="420.0" font-size="13" fill="#888" text-anchor="middle">1</text>
+<rect x="159.0" y="356.6" width="32" height="43.4" fill="#7ec8e3" fill-opacity="0.55"/>
+<text x="175.0" y="420.0" font-size="13" fill="#888" text-anchor="middle">2</text>
+<rect x="209.0" y="380.7" width="32" height="19.3" fill="#7ec8e3" fill-opacity="0.55"/>
+<text x="225.0" y="420.0" font-size="13" fill="#888" text-anchor="middle">3</text>
+<rect x="259.0" y="389.1" width="32" height="10.9" fill="#7ec8e3" fill-opacity="0.55"/>
+<text x="275.0" y="420.0" font-size="13" fill="#888" text-anchor="middle">4</text>
+<rect x="309.0" y="393.1" width="32" height="6.9" fill="#7ec8e3" fill-opacity="0.55"/>
+<text x="325.0" y="420.0" font-size="13" fill="#888" text-anchor="middle">5</text>
+<rect x="359.0" y="395.2" width="32" height="4.8" fill="#7ec8e3" fill-opacity="0.55"/>
+<text x="375.0" y="420.0" font-size="13" fill="#888" text-anchor="middle">6</text>
+<rect x="409.0" y="396.5" width="32" height="3.5" fill="#7ec8e3" fill-opacity="0.55"/>
+<text x="425.0" y="420.0" font-size="13" fill="#888" text-anchor="middle">7</text>
+<rect x="459.0" y="397.3" width="32" height="2.7" fill="#7ec8e3" fill-opacity="0.55"/>
+<text x="475.0" y="420.0" font-size="13" fill="#888" text-anchor="middle">8</text>
+<rect x="509.0" y="397.9" width="32" height="2.1" fill="#7ec8e3" fill-opacity="0.55"/>
+<text x="525.0" y="420.0" font-size="13" fill="#888" text-anchor="middle">9</text>
+<rect x="559.0" y="398.3" width="32" height="1.7" fill="#7ec8e3" fill-opacity="0.55"/>
+<text x="575.0" y="420.0" font-size="13" fill="#888" text-anchor="middle">10</text>
+<text x="350.0" y="442.0" font-size="13" fill="#888" text-anchor="middle">k</text>
+<polyline points="125.0,226.3 175.0,182.9 225.0,163.6 275.0,152.7 325.0,145.8 375.0,141.0 425.0,137.4 475.0,134.7 525.0,132.6 575.0,130.8" fill="none" stroke="#7777cc" stroke-width="2.5"/>
+<circle cx="125.0" cy="226.3" r="5" fill="#e8e8e8"/>
+<circle cx="175.0" cy="182.9" r="5" fill="#e8e8e8"/>
+<circle cx="225.0" cy="163.6" r="5" fill="#e8e8e8"/>
+<circle cx="275.0" cy="152.7" r="5" fill="#e8e8e8"/>
+<circle cx="325.0" cy="145.8" r="5" fill="#e8e8e8"/>
+<circle cx="375.0" cy="141.0" r="5" fill="#e8e8e8"/>
+<circle cx="425.0" cy="137.4" r="5" fill="#e8e8e8"/>
+<circle cx="475.0" cy="134.7" r="5" fill="#e8e8e8"/>
+<circle cx="525.0" cy="132.6" r="5" fill="#e8e8e8"/>
+<circle cx="575.0" cy="130.8" r="5" fill="#e8e8e8"/>
+<text x="149.0" y="231.3" font-size="13" fill="#b8b8ee">N = 1: 0.2026</text>
+<text x="325.0" y="169.8" font-size="13" fill="#b8b8ee" text-anchor="middle">N = 5: 0.2966</text>
+<text x="575.0" y="154.8" font-size="13" fill="#b8b8ee" text-anchor="middle">N = 10: 0.3140</text>
+<rect x="640" y="150" width="200" height="200" rx="10" fill="#111" stroke="#333"/>
+<rect x="664" y="174" width="18" height="14" fill="#7ec8e3" fill-opacity="0.55"/>
+<text x="692.0" y="186.0" font-size="13" fill="#888">계수 제곱</text>
+<line x1="664" y1="212" x2="682" y2="212" stroke="#7777cc" stroke-width="2.5"/>
+<text x="692.0" y="217.0" font-size="13" fill="#888">누적합</text>
+<text x="664.0" y="262.0" font-size="13" fill="#888">더 쌓으면</text>
+<text x="664.0" y="290.0" font-size="15" fill="#e8e8e8">N = 20: 0.3235</text>
+<text x="664.0" y="318.0" font-size="15" fill="#e8e8e8">N = 200: 0.3323</text>
+</svg>
