@@ -172,6 +172,86 @@ export const globalNewsUpdatedAt = '2026-11-03';
  */
 const entries: NewsItem[] = [
   {
+    id: 'claude-fable-and-mythos-5-2',
+    source: 'Anthropic',
+    kind: 'model',
+    title: 'Anthropic, Claude Fable 5.2 공개 — 단가 인하·fast mode',
+    summary:
+      'Anthropic이 같은 모델의 두 판인 Claude Fable 5.2·Mythos 5.2를 공개했다. ' +
+      '단가는 100만 토큰당 입력 8달러·출력 40달러로 5.1보다 내렸고, 출력은 최대 30% ' +
+      '빨라졌으며 생성 속도를 최대 2.5배 올리는 fast mode가 붙었다.',
+    publishedAt: '2026-11-09',
+    collectedAt: '2026-11-10',
+    category: 'Frontier',
+    signal: '프런티어 모델',
+    url: 'https://www.anthropic.com/claude-fable-and-mythos-5-2',
+    model: {
+      family: 'Claude',
+      name: 'Claude Fable 5.2',
+      kind: '신규 모델',
+      status: '공개',
+      useCase: '가장 어려운 개방형 기술 작업',
+      headline: 'Fable 5.1보다 싸고 빨라졌고 대부분의 평가에서 Opus 5.5를 앞선 최상위 모델',
+      logo: 'assets/claude.svg',
+      tone: 'claude',
+    },
+  },
+  {
+    id: 'claude-platform-november-9-2026',
+    source: 'Anthropic',
+    kind: 'company',
+    title: 'Claude Fable 5.2의 API 규칙 — 접두사 검사·computer use 도구 교체',
+    summary:
+      'Fable 5.2·Mythos 5.2는 계정 나이와 무관하게 접두사 검사를 적용하고, ' +
+      'computer use는 computer_toolset_20260801만 받는다. Claude API의 Fable 5.2 ' +
+      'fast mode는 베타 헤더 없이 speed: "fast"로 켠다.',
+    publishedAt: '2026-11-09',
+    collectedAt: '2026-11-10',
+    category: 'Product',
+    signal: '플랫폼 변경',
+    url: 'https://platform.claude.com/docs/en/release-notes/overview#november-9-2026',
+  },
+  {
+    id: 'blog-gemini-omni-12-flash-fast-and-cost-effective-with-longer-clips',
+    source: 'Google DeepMind',
+    kind: 'model',
+    title: 'Google, 15초 영상·대화형 편집 지원 Gemini Omni 1.2 Flash 공개',
+    summary:
+      '구글이 영상 생성 모델 Gemini Omni 1.2 Flash를 Gemini API와 Gemini for business에 ' +
+      '정식 공개했다. 한 번에 15초까지 만들고 여러 턴에 걸쳐 고칠 수 있으며, 값은 1.1보다 ' +
+      '30% 내린 720p 초당 0.07달러다.',
+    publishedAt: '2026-11-05',
+    collectedAt: '2026-11-10',
+    category: 'Multimodal',
+    signal: '생성형 영상',
+    url: 'https://deepmind.google/blog/gemini-omni-12-flash-fast-and-cost-effective-with-longer-clips',
+    model: {
+      family: 'Gemini',
+      name: 'Gemini Omni 1.2 Flash',
+      kind: '신규 모델',
+      status: '공개',
+      useCase: '광고·제품 영상 생성과 편집',
+      headline: '15초 클립을 대화로 고쳐 가며 만드는, 1.1보다 30% 싼 영상 생성 모델',
+      logo: 'assets/gemini.svg',
+      tone: 'gemini',
+    },
+  },
+  {
+    id: 'claude-platform-november-5-2026',
+    source: 'Anthropic',
+    kind: 'company',
+    title: 'Claude Console에 조직 IP 허용 목록 베타 추가',
+    summary:
+      'Claude Console에서 조직 단위 IP 허용 목록을 베타로 설정할 수 있게 됐다. ' +
+      '같은 날 Admin API로 Claude Enterprise 구성원을 모든 곳에서 로그아웃시키는 ' +
+      '기능도 베타로 열렸다.',
+    publishedAt: '2026-11-05',
+    collectedAt: '2026-11-10',
+    category: 'Product',
+    signal: '플랫폼 변경',
+    url: 'https://platform.claude.com/docs/en/release-notes/overview#november-5-2026',
+  },
+  {
     id: 'accelerating-engineering-for-the-physical-world',
     source: 'OpenAI',
     kind: 'company',

@@ -157,4 +157,55 @@ export const details: Record<string, NewsDetail> = {
     commentary:
       '코딩 다음의 시장으로 CAD와 시뮬레이션을 지목한 글이다. 약점을 함께 적은 점이 믿을 만한데, 제조 공차를 놓친다는 것은 설계와 양산 사이의 벽이 여전하다는 뜻이다. 0.875를 낸 모델은 미공개라 지금 쓸 수 있는 수치가 아니고, 물리 산업에서는 검증 비용이 코드보다 훨씬 크다.',
   },
+  'claude-fable-and-mythos-5-2': {
+    points: [
+      'Fable 5.2와 Mythos 5.2는 같은 모델이며, Fable에는 사이버·생물 오용을 막는 강한 안전장치가 붙어 모든 사용자에게 열린다',
+      '단가는 100만 토큰당 입력 8달러·출력 40달러로 Fable 5.1·Mythos 5.1의 10·50달러보다 낮다',
+      '출력 생성이 5.1보다 최대 30% 빠르고, 생성 속도를 최대 2.5배 올리는 fast mode는 입력 16달러·출력 80달러다',
+      'FrontierCode 2.0에서 Xhigh 강도로 49.1%를 내 Opus 5.5 45.5%·GPT-6 Astra 42.8%를 앞섰다',
+      'High 강도의 Fable 5.2가 Max 강도의 Opus 5.5와 비슷한 점수를 작업당 약 절반 비용으로 냈다',
+      '대부분의 코딩·지식 작업은 Opus 5.5로 시작하고 필요할 때 Fable·Mythos로 올리라고 권했다',
+      'AWS·Google Cloud·Azure를 포함한 모든 플랫폼에서 claude-fable-5-2로 쓸 수 있다',
+      'Mythos 5.2는 Cyber·Life Sciences Verification Program 승인 조직만 쓰며, 이번 주 유료 구독자에게 Fable 사용량을 더 준다',
+    ],
+    commentary:
+      '두 달 만의 후속인데 성능을 올리면서 단가를 20% 내렸다는 점이 크다. 그래도 입력 8달러는 Opus 5.5의 두 배라 Anthropic 스스로 기본은 Opus로 두라고 권한다. 결국 Fable은 어려운 작업에 강도를 낮춰 짧게 쓰는 모델이고, Low·Medium 강도에서 상위 모델 점수를 싸게 낸다는 비교가 실제 비용을 가를 것이다.',
+  },
+  'claude-platform-november-9-2026': {
+    points: [
+      'claude-fable-5-2와 Verification Program 승인 조직용 claude-mythos-5-2가 1M 토큰 컨텍스트, 최대 출력 128k 토큰, 상시 adaptive thinking으로 나왔다',
+      '두 모델은 계정 나이와 무관하게 접두사 검사를 적용해, system 프롬프트·tools·이전 메시지를 고친 뒤 thinking 블록을 되보내면 400 오류가 난다',
+      '다른 모델에서 Fable 5.2로 옮기면 기존 추론이 유지되고, 반대로 옮기면 API가 Fable 5.2의 thinking 블록을 버리고 요청은 성공한다',
+      'computer use는 computer_toolset_20260801로만 지원하고 이전 computer_20251124를 선언하면 400 오류가 난다',
+      '베타 advisor 도구에서 Fable 5.2·Mythos 5.2 실행자는 두 모델만 advisor로 받는다',
+      '두 모델은 30일 데이터 보존이 필요하며 Anthropic이 따로 허가하지 않으면 제로 데이터 보존에서 쓸 수 없다',
+      'Claude API의 Fable 5.2 fast mode는 베타 헤더 없이 speed: "fast"로 켜며 출력 속도가 최대 2.5배다',
+    ],
+    commentary:
+      '단가 인하에 눈이 가지만 옮기기 전에 걸리는 것은 이 규칙들이다. 접두사 검사가 모든 계정에 걸리므로 앞 기록을 요약하거나 고치는 에이전트는 그대로 바꾸면 400을 맞는다. computer use 도구 버전도 강제로 바뀌어, 모델 id만 갈아 끼우는 이전은 안 된다고 보는 편이 맞다.',
+  },
+  'blog-gemini-omni-12-flash-fast-and-cost-effective-with-longer-clips': {
+    points: [
+      'Gemini Omni 1.2 Flash를 Gemini API와 Gemini for business에 정식 출시했다',
+      '가격을 Omni 1.1보다 30% 내려 720p 영상 초당 0.07달러다',
+      '영상 길이가 1.1의 10초에서 15초로 늘었고, 3초부터 15초까지 1초 단위로 길이를 정한다',
+      '같은 클립을 여러 턴에 걸쳐 대화로 고칠 수 있고 15초 전체에 적용된다',
+      '인물·제품·스타일 이미지, 3초 이하 동작 클립, 오디오 단서를 참고 자료로 함께 넣는다',
+      '360p·720p로 초안을 만들고 고른 결과를 1080p나 4K로 올리는 흐름을 제시했다',
+      '대사의 자연스러움과 립싱크, 여러 화자 구분이 나아져 Flow·Google Vids에도 쓰인다',
+    ],
+    commentary:
+      '두 달 남짓 만의 갱신이 기능보다 가격과 편집 흐름에 무게를 뒀다. 다시 생성하지 않고 고치는 대화형 편집은 영상 생성 비용의 대부분이 버리는 시도에서 나온다는 점을 겨냥한다. 15초면 광고 한 편 길이라, 짧은 장면을 이어 붙이던 작업이 한 번 생성으로 줄어든다.',
+  },
+  'claude-platform-november-5-2026': {
+    points: [
+      'Claude Console에서 조직의 IP 허용 목록을 베타로 설정할 수 있다',
+      '목록에 없는 주소에서 오는 요청은 거부되어, 유출된 API 키를 쓸 수 있는 곳이 줄어든다',
+      'IPv4·IPv6 주소와 CIDR 범위를 조직당 최대 1,000개까지 넣는다',
+      'Admin API로 Claude Enterprise(claude.ai) 구성원을 모든 곳에서 로그아웃시키는 기능이 베타로 열렸다',
+      '로그아웃된 구성원은 조직에 그대로 남고 다시 로그인할 수 있다',
+    ],
+    commentary:
+      'API 키가 유출돼도 사무실·서버 대역 밖에서는 못 쓰게 하는 장치로, 클라우드 벤더에서는 흔하지만 Claude Console에는 없던 것이다. 원격 로그아웃과 함께 보면 기업 보안팀의 점검표를 채우는 기능들이다. 고정 IP가 없는 개발자 노트북에서 직접 부르는 구성은 허용 목록을 켜기 전에 경로를 다시 잡아야 한다.',
+  },
 };
