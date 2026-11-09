@@ -525,4 +525,4 @@ def log_inference(name: str, version: str, path: str, result: dict) -> None:
 
 **지난 글:** [프롬프트 인젝션 방어: LLM 보안의 첫 번째 전선](/articles/prompt-injection-defense)
 
-**다음 글:** [벡터 검색 완전 정복: 의미 기반 검색의 동작 원리](/articles/vector-search-basics)
+**다음 글:** [벡터 검색의 동작 원리](/articles/vector-search-basics)

@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 420" width="880" height="420">
+  <rect width="880" height="420" fill="#0a0a0a" rx="12"/>
+  <g font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+    <text x="440" y="48" text-anchor="middle" font-size="22" font-weight="700" fill="#e8e8e8">질의 하나에 드는 비교</text>
+    <text x="440" y="76" text-anchor="middle" font-size="16" font-weight="600" fill="#e8e8e8">청크 100만 개 · 1536차원</text>
+
+    <!-- left: brute force -->
+    <rect x="60" y="104" width="360" height="270" rx="10" fill="#1e0a0a" stroke="#e05555" stroke-width="2"/>
+    <text x="240" y="136" text-anchor="middle" font-size="16" font-weight="700" fill="#e05555">완전 탐색</text>
+    <text x="240" y="160" text-anchor="middle" font-size="13" fill="#888">저장된 벡터 전부와 점수를 잰다</text>
+    <rect x="96" y="180" width="288" height="22" rx="4" fill="#e05555"/>
+    <text x="240" y="226" text-anchor="middle" font-size="13" fill="#888">비교하는 벡터</text>
+    <text x="240" y="250" text-anchor="middle" font-size="16" font-weight="600" fill="#e8e8e8">1,000,000개</text>
+    <text x="240" y="282" text-anchor="middle" font-size="13" fill="#888">곱셈-덧셈</text>
+    <text x="240" y="306" text-anchor="middle" font-size="16" font-weight="600" fill="#e8e8e8">약 15억 번 · 약 6GB 읽기</text>
+    <text x="240" y="346" text-anchor="middle" font-size="13" fill="#55c555">진짜 상위 k를 찾는다 (재현율 1)</text>
+
+    <!-- right: approximate -->
+    <rect x="460" y="104" width="360" height="270" rx="10" fill="#0a1e28" stroke="#7ec8e3" stroke-width="2"/>
+    <text x="640" y="136" text-anchor="middle" font-size="16" font-weight="700" fill="#7ec8e3">근사 탐색</text>
+    <text x="640" y="160" text-anchor="middle" font-size="13" fill="#888">인덱스가 고른 후보만 잰다</text>
+    <rect x="496" y="180" width="288" height="22" rx="4" fill="#1a2a33" stroke="#3a4a6e" stroke-width="1"/>
+    <rect x="496" y="180" width="4" height="22" rx="1" fill="#7ec8e3"/>
+    <text x="640" y="226" text-anchor="middle" font-size="13" fill="#888">비교하는 벡터 (예)</text>
+    <text x="640" y="250" text-anchor="middle" font-size="16" font-weight="600" fill="#e8e8e8">2,000개</text>
+    <text x="640" y="282" text-anchor="middle" font-size="13" fill="#888">곱셈-덧셈</text>
+    <text x="640" y="306" text-anchor="middle" font-size="16" font-weight="600" fill="#e8e8e8">약 300만 번 · 약 500분의 1</text>
+    <text x="640" y="346" text-anchor="middle" font-size="13" fill="#e05555">진짜 상위 k 중 일부를 놓칠 수 있다</text>
+
+    <text x="440" y="400" text-anchor="middle" font-size="13" fill="#888">막대 길이 = 비교하는 벡터 수 (오른쪽 0.2%는 보이게 조금 굵혔다)</text>
+  </g>
+</svg>

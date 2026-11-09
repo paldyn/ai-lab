@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="450" viewBox="0 0 880 450">
+  <rect x="0" y="0" width="880" height="450" rx="12" fill="#0a0a0a"/>
+  <text x="60" y="46" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="22" font-weight="700" fill="#e8e8e8">선택률만 보면 둘째 판이 가장 좋아 보인다</text>
+  <text x="60" y="72" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">써야 할 질문 20개 · 쓰면 안 될 질문 20개로 잰 예시</text>
+
+  <rect x="60" y="94" width="12" height="12" rx="2" fill="#55c555"/>
+  <text x="80" y="105" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e8e8e8">선택률 — 써야 할 때 골랐다</text>
+  <rect x="300" y="94" width="12" height="12" rx="2" fill="#e05555"/>
+  <text x="320" y="105" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e8e8e8">오선택률 — 안 써도 될 때 골랐다</text>
+
+  <line x1="80" y1="330" x2="800" y2="330" stroke="#444" stroke-width="1"/>
+
+  <rect x="126" y="190" width="56" height="140" fill="#55c555"/>
+  <text x="154" y="182" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e8e8e8">70%</text>
+  <rect x="198" y="310" width="56" height="20" fill="#e05555"/>
+  <text x="226" y="302" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e8e8e8">10%</text>
+  <text x="190" y="356" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#e8e8e8">고치기 전</text>
+  <text x="190" y="378" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">14/20 · 2/20</text>
+
+  <rect x="376" y="140" width="56" height="190" fill="#55c555"/>
+  <text x="404" y="132" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e8e8e8">95%</text>
+  <rect x="448" y="240" width="56" height="90" fill="#e05555"/>
+  <text x="476" y="232" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e8e8e8">45%</text>
+  <text x="440" y="356" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#e05555">「적극적으로 사용」 추가</text>
+  <text x="440" y="378" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">19/20 · 9/20</text>
+
+  <rect x="626" y="160" width="56" height="170" fill="#55c555"/>
+  <text x="654" y="152" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e8e8e8">85%</text>
+  <rect x="698" y="320" width="56" height="10" fill="#e05555"/>
+  <text x="726" y="312" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e8e8e8">5%</text>
+  <text x="690" y="356" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#55c555">경계 문장 추가</text>
+  <text x="690" y="378" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">17/20 · 1/20</text>
+
+  <text x="60" y="418" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">둘째 판은 불필요한 호출이 네 배 반으로 늘었다 — 두 값이 함께 나아진 셋째 판이 고친 것이다</text>
+</svg>

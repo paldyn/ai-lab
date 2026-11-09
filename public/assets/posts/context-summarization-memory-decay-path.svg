@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="530" viewBox="0 0 880 530">
+  <rect x="0" y="0" width="880" height="530" rx="12" fill="#0a0a0a"/>
+  <defs>
+    <marker id="dp-arr" viewBox="0 0 14 14" refX="12" refY="7"
+            markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#7777cc"/>
+    </marker>
+  </defs>
+  <text x="60" y="46" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="22" font-weight="700" fill="#e8e8e8">요약을 거듭할수록 곁가지부터 떨어진다</text>
+  <text x="60" y="72" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">14번째 턴의 배포 정책 한 문장이 요약 세 번을 지나며 남는 모습</text>
+  <text x="667" y="104" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="600" fill="#e8e8e8" text-anchor="middle">규칙</text>
+  <text x="729" y="104" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="600" fill="#e8e8e8" text-anchor="middle">이유</text>
+  <text x="791" y="104" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="600" fill="#e8e8e8" text-anchor="middle">예외</text>
+  <rect x="60" y="116" width="560" height="64" rx="8" fill="#14141c" stroke="#7ec8e3" stroke-width="1.2"/>
+  <text x="84" y="142" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="600" fill="#e8e8e8">원문 · 14번째 턴</text>
+  <text x="84" y="162" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="12.5" fill="#9aa4b8">금요일 오후엔 배포 안 함. 대응 인원이 없음. 보안 패치는 예외</text>
+  <rect x="640" y="134" width="54" height="28" rx="6" fill="#0a0a0a" stroke="#55c555" stroke-width="1.2"/>
+  <text x="667" y="152" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="12" font-weight="600" fill="#55c555" text-anchor="middle">유지</text>
+  <rect x="702" y="134" width="54" height="28" rx="6" fill="#0a0a0a" stroke="#55c555" stroke-width="1.2"/>
+  <text x="729" y="152" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="12" font-weight="600" fill="#55c555" text-anchor="middle">유지</text>
+  <rect x="764" y="134" width="54" height="28" rx="6" fill="#0a0a0a" stroke="#55c555" stroke-width="1.2"/>
+  <text x="791" y="152" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="12" font-weight="600" fill="#55c555" text-anchor="middle">유지</text>
+  <rect x="60" y="216" width="560" height="64" rx="8" fill="#14141c" stroke="#2a2a35" stroke-width="1.2"/>
+  <text x="84" y="242" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="600" fill="#e8e8e8">요약 1회</text>
+  <text x="84" y="262" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="12.5" fill="#9aa4b8">금요일 오후 배포 금지(대응 인원 부족). 보안 패치 예외</text>
+  <rect x="640" y="234" width="54" height="28" rx="6" fill="#0a0a0a" stroke="#55c555" stroke-width="1.2"/>
+  <text x="667" y="252" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="12" font-weight="600" fill="#55c555" text-anchor="middle">유지</text>
+  <rect x="702" y="234" width="54" height="28" rx="6" fill="#0a0a0a" stroke="#55c555" stroke-width="1.2"/>
+  <text x="729" y="252" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="12" font-weight="600" fill="#55c555" text-anchor="middle">유지</text>
+  <rect x="764" y="234" width="54" height="28" rx="6" fill="#0a0a0a" stroke="#55c555" stroke-width="1.2"/>
+  <text x="791" y="252" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="12" font-weight="600" fill="#55c555" text-anchor="middle">유지</text>
+  <rect x="60" y="316" width="560" height="64" rx="8" fill="#14141c" stroke="#2a2a35" stroke-width="1.2"/>
+  <text x="84" y="342" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="600" fill="#e8e8e8">요약 2회</text>
+  <text x="84" y="362" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="12.5" fill="#9aa4b8">배포 일정에 제약 있음 — 금요일 배포 금지</text>
+  <rect x="640" y="334" width="54" height="28" rx="6" fill="#0a0a0a" stroke="#7777cc" stroke-width="1.2"/>
+  <text x="667" y="352" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="12" font-weight="600" fill="#7777cc" text-anchor="middle">변형</text>
+  <rect x="702" y="334" width="54" height="28" rx="6" fill="#0a0a0a" stroke="#e05555" stroke-width="1.2"/>
+  <text x="729" y="352" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="12" font-weight="600" fill="#e05555" text-anchor="middle">소실</text>
+  <rect x="764" y="334" width="54" height="28" rx="6" fill="#0a0a0a" stroke="#e05555" stroke-width="1.2"/>
+  <text x="791" y="352" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="12" font-weight="600" fill="#e05555" text-anchor="middle">소실</text>
+  <rect x="60" y="416" width="560" height="64" rx="8" fill="#14141c" stroke="#2a2a35" stroke-width="1.2"/>
+  <text x="84" y="442" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="600" fill="#e8e8e8">요약 3회</text>
+  <text x="84" y="462" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="12.5" fill="#9aa4b8">배포 시점에 관한 논의가 있었음</text>
+  <rect x="640" y="434" width="54" height="28" rx="6" fill="#0a0a0a" stroke="#e05555" stroke-width="1.2"/>
+  <text x="667" y="452" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="12" font-weight="600" fill="#e05555" text-anchor="middle">소실</text>
+  <rect x="702" y="434" width="54" height="28" rx="6" fill="#0a0a0a" stroke="#e05555" stroke-width="1.2"/>
+  <text x="729" y="452" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="12" font-weight="600" fill="#e05555" text-anchor="middle">소실</text>
+  <rect x="764" y="434" width="54" height="28" rx="6" fill="#0a0a0a" stroke="#e05555" stroke-width="1.2"/>
+  <text x="791" y="452" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="12" font-weight="600" fill="#e05555" text-anchor="middle">소실</text>
+  <line x1="340" y1="180" x2="340" y2="216" stroke="#7777cc" stroke-width="2" marker-end="url(#dp-arr)"/>
+  <line x1="340" y1="280" x2="340" y2="316" stroke="#7777cc" stroke-width="2" marker-end="url(#dp-arr)"/>
+  <line x1="340" y1="380" x2="340" y2="416" stroke="#7777cc" stroke-width="2" marker-end="url(#dp-arr)"/>
+</svg>

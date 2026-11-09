@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="500" viewBox="0 0 880 500">
+  <rect x="0" y="0" width="880" height="500" rx="12" fill="#0a0a0a"/>
+  <text x="60" y="46" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="22" font-weight="700" fill="#e8e8e8">임계를 늦게 잡으면 접는 횟수가 준다</text>
+  <text x="60" y="72" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888">점선 맨 위가 창 끝(10만 토큰) · 접은 직후 3만 토큰, 턴당 1,500토큰 · 80턴 동안의 컨텍스트 크기</text>
+  <text x="60" y="106" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#e8e8e8">임계 90% · 40턴마다 접는다</text>
+  <text x="820" y="106" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e05555" text-anchor="end">접기 2번 · 캐시 무효화 2번</text>
+  <line x1="120" y1="120" x2="800" y2="120" stroke="#3a3a45" stroke-width="1" stroke-dasharray="4,4"/>
+  <line x1="120" y1="132" x2="800" y2="132" stroke="#7777cc" stroke-width="1" stroke-dasharray="4,4"/>
+  <line x1="120" y1="240" x2="800" y2="240" stroke="#2a2a35" stroke-width="1"/>
+  <text x="110" y="136" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="12" fill="#7777cc" text-anchor="end">90K</text>
+  <text x="110" y="208" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="12" fill="#888" text-anchor="end">30K</text>
+  <polyline points="120,204 460,132 460,204 800,132" fill="none" stroke="#7ec8e3" stroke-width="2"/>
+  <circle cx="460" cy="132" r="5" fill="#e05555"/>
+  <circle cx="800" cy="132" r="5" fill="#e05555"/>
+  <text x="60" y="286" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#e8e8e8">임계 60% · 20턴마다 접는다</text>
+  <text x="820" y="286" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e05555" text-anchor="end">접기 4번 · 캐시 무효화 4번</text>
+  <line x1="120" y1="300" x2="800" y2="300" stroke="#3a3a45" stroke-width="1" stroke-dasharray="4,4"/>
+  <line x1="120" y1="348" x2="800" y2="348" stroke="#7777cc" stroke-width="1" stroke-dasharray="4,4"/>
+  <line x1="120" y1="420" x2="800" y2="420" stroke="#2a2a35" stroke-width="1"/>
+  <text x="110" y="304" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="12" fill="#888" text-anchor="end">100K</text>
+  <text x="110" y="352" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="12" fill="#7777cc" text-anchor="end">60K</text>
+  <text x="110" y="388" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="12" fill="#888" text-anchor="end">30K</text>
+  <polyline points="120,384 290,348 290,384 460,348 460,384 630,348 630,384 800,348" fill="none" stroke="#7ec8e3" stroke-width="2"/>
+  <circle cx="290" cy="348" r="5" fill="#e05555"/>
+  <circle cx="460" cy="348" r="5" fill="#e05555"/>
+  <circle cx="630" cy="348" r="5" fill="#e05555"/>
+  <circle cx="800" cy="348" r="5" fill="#e05555"/>
+  <text x="120" y="446" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="12" fill="#888" text-anchor="middle">0</text>
+  <text x="290" y="446" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="12" fill="#888" text-anchor="middle">20</text>
+  <text x="460" y="446" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="12" fill="#888" text-anchor="middle">40</text>
+  <text x="630" y="446" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="12" fill="#888" text-anchor="middle">60</text>
+  <text x="800" y="446" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="12" fill="#888" text-anchor="middle">80</text>
+  <text x="460" y="472" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#888" text-anchor="middle">턴 · 빨간 점이 요약이 들어가는 자리</text>
+</svg>

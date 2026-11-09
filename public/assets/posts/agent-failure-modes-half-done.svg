@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="500" viewBox="0 0 880 500" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <defs>
+    <marker id="arr" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#888"/>
+    </marker>
+  </defs>
+  <rect x="0" y="0" width="880" height="500" rx="12" fill="#0a0a0a"/>
+  <text x="60" y="46" font-size="22" font-weight="700" fill="#e8e8e8">「절반만 하고 끝냄」의 두 갈래</text>
+  <text x="60" y="72" font-size="13" fill="#888">같은 증상이라도 계획을 열어 보면 자리가 갈리고, 처방은 반대 방향이다.</text>
+
+  <rect x="260" y="100" width="360" height="56" rx="10" fill="#0d1117" stroke="#7777cc" stroke-width="1.5"/>
+  <text x="440" y="133" font-size="14" font-weight="600" fill="#e8e8e8" text-anchor="middle">증상: 세 지역 중 두 지역만 다룬 답</text>
+
+  <line x1="360" y1="156" x2="235" y2="200" stroke="#888" stroke-width="2" marker-end="url(#arr)"/>
+  <line x1="520" y1="156" x2="645" y2="200" stroke="#888" stroke-width="2" marker-end="url(#arr)"/>
+
+  <rect x="60" y="200" width="350" height="130" rx="10" fill="#0d1117" stroke="#2a2a2a" stroke-width="1"/>
+  <rect x="60" y="200" width="4" height="130" rx="2" fill="#e05555"/>
+  <text x="84" y="230" font-size="15" font-weight="600" fill="#e8e8e8">갈래 A · 이해와 계획</text>
+  <text x="84" y="260" font-size="13" fill="#888">계획: 서울 · 부산</text>
+  <text x="84" y="284" font-size="13" fill="#888">밟은 걸음: 서울 · 부산</text>
+  <text x="84" y="308" font-size="13" fill="#888">종료 판단은 제 일을 했다</text>
+
+  <rect x="470" y="200" width="350" height="130" rx="10" fill="#0d1117" stroke="#2a2a2a" stroke-width="1"/>
+  <rect x="470" y="200" width="4" height="130" rx="2" fill="#e05555"/>
+  <text x="494" y="230" font-size="15" font-weight="600" fill="#e8e8e8">갈래 B · 종료 판단</text>
+  <text x="494" y="260" font-size="13" fill="#888">계획: 서울 · 부산 · 대구</text>
+  <text x="494" y="284" font-size="13" fill="#888">밟은 걸음: 서울 · 부산</text>
+  <text x="494" y="308" font-size="13" fill="#888">두 곳 뒤 「충분하다」로 끝냈다</text>
+
+  <line x1="235" y1="330" x2="235" y2="362" stroke="#888" stroke-width="2" marker-end="url(#arr)"/>
+  <line x1="645" y1="330" x2="645" y2="362" stroke="#888" stroke-width="2" marker-end="url(#arr)"/>
+
+  <rect x="60" y="362" width="350" height="60" rx="10" fill="#0d1117" stroke="#55c555" stroke-width="1"/>
+  <text x="84" y="386" font-size="13" font-weight="600" fill="#55c555">처방</text>
+  <text x="84" y="406" font-size="13" fill="#e8e8e8">요청을 조건 목록으로 먼저 풀게 한다</text>
+
+  <rect x="470" y="362" width="350" height="60" rx="10" fill="#0d1117" stroke="#55c555" stroke-width="1"/>
+  <text x="494" y="386" font-size="13" font-weight="600" fill="#55c555">처방</text>
+  <text x="494" y="406" font-size="13" fill="#e8e8e8">계획 항목을 점검 목록으로, 다 지워야 답</text>
+
+  <text x="60" y="462" font-size="13" fill="#888">가르는 질문은 하나다 — 첫 걸음의 계획에 대구가 있었는가.</text>
+</svg>
