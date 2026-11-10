@@ -356,6 +356,86 @@ const entries: NewsItem[] = [
     url: 'https://platform.claude.com/docs/en/release-notes/overview#november-5-2026',
   },
   {
+    id: 'introducing-gpt-6-cyber',
+    source: 'OpenAI',
+    kind: 'model',
+    title: 'OpenAI, 사이버 보안 연구용 GPT-6 Cyber 제한 공개',
+    summary:
+      'OpenAI가 취약점 발견·수정 능력과 작업 범위 준수를 높인 GPT-6 Cyber를 승인된 Daybreak Red 고객에게 API와 Codex로 내놓았다. ' +
+      'ExploitGym 점수는 48.5%로 GPT-5.6 Cyber의 32.1%보다 높다.',
+    publishedAt: '2026-11-05',
+    collectedAt: '2026-11-11',
+    category: 'Domain',
+    signal: '사이버 방어 모델',
+    url: 'https://openai.com/index/introducing-gpt-6-cyber',
+    model: {
+      family: 'GPT',
+      name: 'GPT-6 Cyber',
+      kind: '신규 모델',
+      status: '제한 공개',
+      useCase: '승인된 방어자의 취약점 발견·익스플로잇 검증',
+      headline: '시키지 않은 표적은 99.93% 건드리지 않는다. Daybreak Red 승인 고객부터.',
+      logo: 'assets/openai.svg',
+      tone: 'gpt',
+    },
+  },
+  {
+    id: 'setting-new-standard-responsible-ai-infrastructure',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'OpenAI, 컴퓨트 캠퍼스 지역 약속과 정책 청사진 발표',
+    summary:
+      'OpenAI가 직접 소유·운영할 미국 컴퓨트 캠퍼스에 적용할 National Community Compact와 정책 제안서 Compute Campus Policy Blueprint를 냈다. ' +
+      '전기·인프라 비용을 스스로 부담하고 물·전력 사용량을 공개하겠다고 밝혔다.',
+    publishedAt: '2026-11-05',
+    collectedAt: '2026-11-11',
+    category: 'Infrastructure',
+    signal: '데이터센터 지역 협약',
+    url: 'https://openai.com/index/setting-new-standard-responsible-ai-infrastructure',
+  },
+  {
+    id: 'merge-builds-with-openai',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'Merge, GPT-6 Astra로 고객 만찬 준비를 행사당 30분으로',
+    summary:
+      '통합 API 기업 Merge가 제품 개발과 회사 운영 전반에 GPT-6 Astra와 Codex를 쓴다고 OpenAI가 소개했다. ' +
+      '임원 만찬 준비 작업은 회사 전체 수십 시간에서 행사당 약 30분으로 줄었다.',
+    publishedAt: '2026-11-05',
+    collectedAt: '2026-11-11',
+    category: 'Product',
+    signal: '기업 도입 사례',
+    url: 'https://openai.com/index/merge-builds-with-openai',
+  },
+  {
+    id: 'cultfit-builds-with-codex',
+    source: 'OpenAI',
+    kind: 'company',
+    title: '인도 cult.fit, Codex로 개발 표준화하고 비개발 팀이 앱 20개 넘게',
+    summary:
+      '인도 피트니스 기업 cult.fit이 개발을 Codex로 표준화하고 비개발 부서까지 넓혔다고 OpenAI가 소개했다. ' +
+      '비개발 팀이 사내 앱 20개 넘게 만들었고 고객 지원 비용은 50% 넘게 줄었다.',
+    publishedAt: '2026-11-05',
+    collectedAt: '2026-11-11',
+    category: 'Product',
+    signal: '기업 도입 사례',
+    url: 'https://openai.com/index/cultfit-builds-with-codex',
+  },
+  {
+    id: 'australian-universities-ai-native-graduates',
+    source: 'OpenAI',
+    kind: 'company',
+    title: '호주 대학 네 곳, OpenAI와 손잡고 ChatGPT Edu 도입 확대',
+    summary:
+      'UNSW·시드니대·La Trobe·Adelaide 대학이 OpenAI와 협력해 학생·교직원에게 ChatGPT Edu 등을 연다고 OpenAI가 소개했다. ' +
+      'OpenAI 의뢰 조사에서 호주 대학생의 81%가 AI를 주 몇 차례 쓴다고 답했다.',
+    publishedAt: '2026-11-05',
+    collectedAt: '2026-11-11',
+    category: 'Product',
+    signal: '교육 현장 AI',
+    url: 'https://openai.com/index/australian-universities-ai-native-graduates',
+  },
+  {
     id: 'openai-to-acquire-pierre',
     source: 'OpenAI',
     kind: 'company',
