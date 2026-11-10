@@ -316,6 +316,34 @@ const entries: NewsItem[] = [
     url: 'https://platform.claude.com/docs/en/release-notes/overview#november-9-2026',
   },
   {
+    id: 'partnering-with-hacktron',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'OpenAI, 보안 기업 Hacktron과 사내 시스템 취약점 공동 점검',
+    summary:
+      'OpenAI가 Hacktron과 손잡고 자사 시스템의 취약점을 함께 찾는다. ' +
+      '외부 서비스와 맞물리는 지점을 중점으로 시험하며, Hacktron의 프런티어 모델 접근을 Daybreak Red로 넓힌다.',
+    publishedAt: '2026-11-06',
+    collectedAt: '2026-11-11',
+    category: 'Safety',
+    signal: 'AI 사이버 방어',
+    url: 'https://openai.com/index/partnering-with-hacktron',
+  },
+  {
+    id: 'measuring-how-ai-agents-handle-wet-lab-science',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'OpenAI, 습식 실험 데이터 해석을 재는 BioBasicsBench 공개',
+    summary:
+      'OpenAI가 효소 설계 기업 Ligo와 함께 일상적인 습식 실험 분석을 에이전트가 얼마나 해내는지 재는 BioBasicsBench를 공개했다. ' +
+      'xhigh 설정에서 GPT-6 Astra가 66.7%, GPT-5.6 Sol이 43.8%를 얻었다.',
+    publishedAt: '2026-11-06',
+    collectedAt: '2026-11-11',
+    category: 'Research',
+    signal: '과학 AI',
+    url: 'https://openai.com/index/measuring-how-ai-agents-handle-wet-lab-science',
+  },
+  {
     id: 'blog-gemini-omni-12-flash-fast-and-cost-effective-with-longer-clips',
     source: 'Google DeepMind',
     kind: 'model',
