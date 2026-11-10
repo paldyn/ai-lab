@@ -160,7 +160,7 @@ export interface NewsDetail {
   commentary: string;
 }
 
-export const globalNewsUpdatedAt = '2026-11-03';
+export const globalNewsUpdatedAt = '2026-11-10';
 
 /**
  * 공식 발표 한 건 = 항목 한 개. 2026년 1월부터 쌓는 아카이브이며 오래된 항목을
@@ -250,6 +250,20 @@ const entries: NewsItem[] = [
       logo: 'assets/gemini.svg',
       tone: 'gemini',
     },
+  },
+  {
+    id: 'introducing-businesses-chatgpt',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'ChatGPT에 기업 프로필과 Business Agent 도입, 베타 공개',
+    summary:
+      'OpenAI가 기업이 ChatGPT 안에서 자기 정보를 관리하고 노출 통계를 보는 Businesses in ChatGPT를 베타로 냈다. ' +
+      '미국의 일부 전자상거래·온라인 서비스 기업은 고객과 대화하는 Business Agent도 쓸 수 있다.',
+    publishedAt: '2026-11-10',
+    collectedAt: '2026-11-11',
+    category: 'Product',
+    signal: '비즈니스 에이전트',
+    url: 'https://openai.com/index/introducing-businesses-chatgpt',
   },
   {
     id: 'blog-gemini-robotics-2-5-accelerates-real-world-physical-intelligence',

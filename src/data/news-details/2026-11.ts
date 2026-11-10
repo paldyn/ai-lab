@@ -2,6 +2,20 @@ import type { NewsDetail } from '../news';
 
 /** 2026-11 발표의 모달 본문. 목록은 news.ts에 있습니다. */
 export const details: Record<string, NewsDetail> = {
+  'introducing-businesses-chatgpt': {
+    points: [
+      'Business Hub에서 기업이 ChatGPT 속 자기 업체를 인증하고 정보와 가격·재고가 담긴 상품 피드를 올린다',
+      'ChatGPT가 서비스되는 곳의 자격 있는 기업이면 누구나 인증할 수 있다',
+      'Shopify 상점은 Business Hub나 Shopify 관리 화면에서 연결해 인증을 줄일 수 있다',
+      '언급 횟수·웹사이트 클릭·인용되는 대화 주제 같은 집계 통계를 준다',
+      '사용자 대화나 Business Agent 대화 내용은 기업에 넘기지 않고, 일정 수 이상일 때만 통계를 보인다',
+      'Business Agent 대화는 원래 ChatGPT 대화와 분리해 표시하고 ChatGPT의 독립 답변과 구분한다',
+      'Business Agent는 미국의 자격 있는 전자상거래·온라인 서비스 기업부터 쓸 수 있다',
+      '기업은 Business Agent를 후원해 ChatGPT 광고의 도착지로 쓸 수 있다',
+    ],
+    commentary:
+      '검색 엔진의 업체 등록과 같은 자리를 ChatGPT가 만든 셈이다. 업체 정보 관리, 노출 통계, 광고, 그리고 업체가 직접 운영하는 에이전트까지 한 묶음으로 내놨다. 답변과 업체 대화를 갈라 표시하겠다고 했지만, 광고 도착지가 같은 에이전트라는 점에서 그 경계가 사용자에게 얼마나 분명히 보이는지가 신뢰의 관건이다.',
+  },
   'kuken': {
     points: [
       '교체 부품을 찾으려면 70년에 걸친 설치 도면 기록을 뒤져야 했다',
