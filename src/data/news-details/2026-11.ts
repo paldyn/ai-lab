@@ -2,6 +2,20 @@ import type { NewsDetail } from '../news';
 
 /** 2026-11 발표의 모달 본문. 목록은 news.ts에 있습니다. */
 export const details: Record<string, NewsDetail> = {
+  'blog-gemini-robotics-2-5-accelerates-real-world-physical-intelligence': {
+    points: [
+      'Gemini Robotics 2.5는 딥마인드의 가장 뛰어난 VLA(시각·언어·행동) 모델이다',
+      '집게로 음식 담기·선물 상자 리본 묶기·피펫 작업 등 200개 과제로 평가했다',
+      '이전 기준보다 과제 유형에 따라 성공률이 30~100% 높고 수행은 20~30% 빨랐다',
+      'Apptronik Apollo 2 휴머노이드로 헝가리·독일 Mercedes-Benz 라인에서 부품 키팅을 해 96% 성공률을 냈다',
+      '추론 시점 안전 유도로 장애물 주변 안전 완수가 33%, 사람 근처에서 43% 늘었다',
+      '로봇용 탈옥 내성을 재는 오픈소스 벤치마크를 함께 공개했고 Gemini 4 Argon이 99.5%를 기록했다',
+      'Gemini 4 Argon이 실제 장면에서 모의 연습과 디지털 트윈을 만들어 개발을 앞당겼다',
+      '외부 공개 범위와 이용 방법은 밝히지 않았다',
+    ],
+    commentary:
+      '7월 Gemini Robotics 2가 전신 제어를 내세웠다면 2.5는 실제 공장 라인의 성공률로 말한다. 눈여겨볼 점은 프런티어 모델 Argon이 시뮬레이션 엔진 노릇을 해 로봇 모델 개발을 당겼다는 대목으로, 범용 모델과 로봇 모델이 한 회사 안에서 서로를 키우는 구조다. 다만 이용 경로가 없어 당분간은 파트너 시연으로만 볼 수 있다.',
+  },
   'blog-agentic-cheminformatics-with-google-antigravity': {
     points: [
       'Google Antigravity용 Cheminformatics Skills를 오늘부터 쓸 수 있다',

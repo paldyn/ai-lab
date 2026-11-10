@@ -172,6 +172,30 @@ export const globalNewsUpdatedAt = '2026-11-03';
  */
 const entries: NewsItem[] = [
   {
+    id: 'blog-gemini-robotics-2-5-accelerates-real-world-physical-intelligence',
+    source: 'Google DeepMind',
+    kind: 'model',
+    title: 'Google DeepMind, 로봇 VLA 모델 Gemini Robotics 2.5 공개',
+    summary:
+      '구글 딥마인드가 지금까지 가장 뛰어난 VLA 모델 Gemini Robotics 2.5를 공개했다. ' +
+      '200개 과제에서 이전 기준보다 성공률이 30~100% 높고 20~30% 빨랐으며, Mercedes-Benz 생산 라인 시험에서 부품 분류 성공률 96%를 냈다.',
+    publishedAt: '2026-11-09',
+    collectedAt: '2026-11-11',
+    category: 'Domain',
+    signal: '체화 AI',
+    url: 'https://deepmind.google/blog/gemini-robotics-2-5-accelerates-real-world-physical-intelligence',
+    model: {
+      family: 'Gemini',
+      name: 'Gemini Robotics 2.5',
+      kind: '신규 모델',
+      status: '제한 공개',
+      useCase: '로봇 정밀 조작·산업 현장 작업',
+      headline: '집게 배식부터 자동차 부품 키팅까지, 배우는 기술의 폭과 속도를 함께 늘린 로봇 모델',
+      logo: 'assets/gemini.svg',
+      tone: 'gemini',
+    },
+  },
+  {
     id: 'claude-fable-and-mythos-5-2',
     source: 'Anthropic',
     kind: 'model',
