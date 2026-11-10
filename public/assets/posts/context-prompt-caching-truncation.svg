@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="520" viewBox="0 0 880 520">
+  <rect x="0" y="0" width="880" height="520" rx="12" fill="#0a0a0a"/>
+  <g font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+    <text x="60" y="48" font-size="22" font-weight="700" fill="#e8e8e8">덧붙이기는 이어지고, 앞에서 자르기는 끊긴다</text>
+    <text x="60" y="74" font-size="13" fill="#888">초록은 캐시에서 읽는 구간, 빨강은 다시 계산하는 구간이다</text>
+
+    <text x="60" y="118" font-size="16" font-weight="600" fill="#e8e8e8">덧붙이기 — 다음 턴</text>
+    <rect x="60" y="134" width="150" height="52" rx="8" fill="#14261a" stroke="#55c555" stroke-width="1"/>
+    <text x="135" y="165" text-anchor="middle" font-size="13" fill="#e8e8e8">시스템 · 도구</text>
+    <rect x="216" y="134" width="110" height="52" rx="8" fill="#14261a" stroke="#55c555" stroke-width="1"/>
+    <text x="271" y="165" text-anchor="middle" font-size="13" fill="#e8e8e8">턴 1</text>
+    <rect x="332" y="134" width="110" height="52" rx="8" fill="#14261a" stroke="#55c555" stroke-width="1"/>
+    <text x="387" y="165" text-anchor="middle" font-size="13" fill="#e8e8e8">턴 2</text>
+    <rect x="448" y="134" width="110" height="52" rx="8" fill="#14261a" stroke="#55c555" stroke-width="1"/>
+    <text x="503" y="165" text-anchor="middle" font-size="13" fill="#e8e8e8">턴 3</text>
+    <rect x="564" y="134" width="110" height="52" rx="8" fill="#2a1414" stroke="#e05555" stroke-width="1"/>
+    <text x="619" y="165" text-anchor="middle" font-size="13" fill="#e8e8e8">턴 4 (새것)</text>
+    <text x="60" y="214" font-size="13" fill="#55c555">직전 턴까지 통째로 히트 — 새로 계산하는 것은 덧붙인 한 턴뿐</text>
+
+    <line x1="60" y1="246" x2="820" y2="246" stroke="#2a2a35" stroke-width="1"/>
+
+    <text x="60" y="284" font-size="16" font-weight="600" fill="#e8e8e8">앞에서 자르기 — 창이 넘친 뒤</text>
+    <text x="60" y="312" font-size="13" fill="#888">이전 요청</text>
+    <rect x="160" y="294" width="150" height="40" rx="8" fill="#14141c" stroke="#2a2a35" stroke-width="1"/>
+    <text x="235" y="319" text-anchor="middle" font-size="13" fill="#e8e8e8">시스템 · 도구</text>
+    <rect x="316" y="294" width="110" height="40" rx="8" fill="#14141c" stroke="#2a2a35" stroke-width="1"/>
+    <text x="371" y="319" text-anchor="middle" font-size="13" fill="#e8e8e8">턴 1</text>
+    <rect x="432" y="294" width="110" height="40" rx="8" fill="#14141c" stroke="#2a2a35" stroke-width="1"/>
+    <text x="487" y="319" text-anchor="middle" font-size="13" fill="#e8e8e8">턴 2</text>
+    <rect x="548" y="294" width="110" height="40" rx="8" fill="#14141c" stroke="#2a2a35" stroke-width="1"/>
+    <text x="603" y="319" text-anchor="middle" font-size="13" fill="#e8e8e8">턴 3</text>
+
+    <text x="60" y="376" font-size="13" fill="#888">이번 요청</text>
+    <rect x="160" y="358" width="150" height="40" rx="8" fill="#14261a" stroke="#55c555" stroke-width="1"/>
+    <text x="235" y="383" text-anchor="middle" font-size="13" fill="#e8e8e8">시스템 · 도구</text>
+    <rect x="316" y="358" width="110" height="40" rx="8" fill="#2a1414" stroke="#e05555" stroke-width="1"/>
+    <text x="371" y="383" text-anchor="middle" font-size="13" fill="#e8e8e8">턴 2</text>
+    <rect x="432" y="358" width="110" height="40" rx="8" fill="#2a1414" stroke="#e05555" stroke-width="1"/>
+    <text x="487" y="383" text-anchor="middle" font-size="13" fill="#e8e8e8">턴 3</text>
+    <rect x="548" y="358" width="110" height="40" rx="8" fill="#2a1414" stroke="#e05555" stroke-width="1"/>
+    <text x="603" y="383" text-anchor="middle" font-size="13" fill="#e8e8e8">턴 4 (새것)</text>
+
+    <line x1="313" y1="284" x2="313" y2="412" stroke="#e05555" stroke-width="2" stroke-dasharray="4,4"/>
+    <text x="60" y="440" font-size="13" fill="#e05555">턴 1이 빠진 자리에서 갈라져, 남은 이력 전체를 다시 프리필한다</text>
+
+    <rect x="60" y="460" width="760" height="40" rx="8" fill="#14141c" stroke="#7777cc" stroke-width="1"/>
+    <text x="440" y="485" text-anchor="middle" font-size="13" fill="#e8e8e8">한 번에 넉넉히 자르거나 잘린 자리를 요약으로 고정하면 깨지는 횟수가 준다</text>
+  </g>
+</svg>

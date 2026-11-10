@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="420" viewBox="0 0 880 420" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <rect x="0" y="0" width="880" height="420" rx="12" fill="#0a0a0a"/>
+  <text x="60" y="50" font-size="22" font-weight="700" fill="#e8e8e8">기록마다 보존 기간을 따로 잡는다</text>
+  <text x="60" y="76" font-size="13" fill="#888">무거운 전문은 짧게, 가벼운 지표는 길게. 실패한 작업은 전문도 오래 둔다.</text>
+
+  <line x1="260" y1="112" x2="820" y2="112" stroke="#2a2a2a" stroke-width="1"/>
+  <text x="260" y="104" font-size="13" fill="#888">오늘</text>
+  <text x="400" y="104" font-size="13" fill="#888">2주</text>
+  <text x="600" y="104" font-size="13" fill="#888">90일</text>
+  <text x="790" y="104" font-size="13" fill="#888">1년</text>
+
+  <text x="60" y="152" font-size="16" font-weight="600" fill="#e8e8e8">성공한 작업 전문</text>
+  <text x="60" y="172" font-size="13" fill="#888">표본만 · 마스킹 후</text>
+  <rect x="260" y="138" width="150" height="36" rx="6" fill="#101820" stroke="#7ec8e3" stroke-width="1.5"/>
+
+  <text x="60" y="222" font-size="16" font-weight="600" fill="#e8e8e8">실패한 작업 전문</text>
+  <text x="60" y="242" font-size="13" fill="#888">전량 · 마스킹 후</text>
+  <rect x="260" y="208" width="350" height="36" rx="6" fill="#2a1414" stroke="#e05555" stroke-width="1.5"/>
+
+  <text x="60" y="292" font-size="16" font-weight="600" fill="#e8e8e8">구간 속성</text>
+  <text x="60" y="312" font-size="13" fill="#888">시간 · 토큰 · 버전 · 상태</text>
+  <rect x="260" y="278" width="560" height="36" rx="6" fill="#142614" stroke="#55c555" stroke-width="1.5"/>
+
+  <text x="60" y="362" font-size="16" font-weight="600" fill="#e8e8e8">집계 지표</text>
+  <text x="60" y="382" font-size="13" fill="#888">성공률 · 95백분위 · 비용</text>
+  <rect x="260" y="348" width="560" height="36" rx="6" fill="#1a1830" stroke="#7777cc" stroke-width="1.5"/>
+</svg>
