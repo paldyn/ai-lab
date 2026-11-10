@@ -1,0 +1,105 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="500" viewBox="0 0 880 500" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+<rect x="0" y="0" width="880" height="500" rx="12" fill="#0a0a0a"/>
+<text x="440.0" y="44.0" font-size="22" fill="#e8e8e8" text-anchor="middle" font-weight="700">실제 열과 행을 골라 만드는 두 근사</text>
+<text x="212.0" y="92.0" font-size="16" fill="#e8e8e8" text-anchor="middle" font-weight="600">대칭 K, 열 둘을 고른다</text>
+<rect x="110" y="110" width="34" height="34" fill="#55c555" fill-opacity="0.55" stroke="#333"/>
+<rect x="144" y="110" width="34" height="34" fill="#151515" stroke="#333"/>
+<rect x="178" y="110" width="34" height="34" fill="#151515" stroke="#333"/>
+<rect x="212" y="110" width="34" height="34" fill="#55c555" fill-opacity="0.55" stroke="#333"/>
+<rect x="246" y="110" width="34" height="34" fill="#151515" stroke="#333"/>
+<rect x="280" y="110" width="34" height="34" fill="#151515" stroke="#333"/>
+<rect x="110" y="144" width="34" height="34" fill="#7ec8e3" fill-opacity="0.35" stroke="#333"/>
+<rect x="144" y="144" width="34" height="34" fill="#151515" stroke="#333"/>
+<rect x="178" y="144" width="34" height="34" fill="#151515" stroke="#333"/>
+<rect x="212" y="144" width="34" height="34" fill="#7ec8e3" fill-opacity="0.35" stroke="#333"/>
+<rect x="246" y="144" width="34" height="34" fill="#151515" stroke="#333"/>
+<rect x="280" y="144" width="34" height="34" fill="#151515" stroke="#333"/>
+<rect x="110" y="178" width="34" height="34" fill="#7ec8e3" fill-opacity="0.35" stroke="#333"/>
+<rect x="144" y="178" width="34" height="34" fill="#151515" stroke="#333"/>
+<rect x="178" y="178" width="34" height="34" fill="#151515" stroke="#333"/>
+<rect x="212" y="178" width="34" height="34" fill="#7ec8e3" fill-opacity="0.35" stroke="#333"/>
+<rect x="246" y="178" width="34" height="34" fill="#151515" stroke="#333"/>
+<rect x="280" y="178" width="34" height="34" fill="#151515" stroke="#333"/>
+<rect x="110" y="212" width="34" height="34" fill="#55c555" fill-opacity="0.55" stroke="#333"/>
+<rect x="144" y="212" width="34" height="34" fill="#151515" stroke="#333"/>
+<rect x="178" y="212" width="34" height="34" fill="#151515" stroke="#333"/>
+<rect x="212" y="212" width="34" height="34" fill="#55c555" fill-opacity="0.55" stroke="#333"/>
+<rect x="246" y="212" width="34" height="34" fill="#151515" stroke="#333"/>
+<rect x="280" y="212" width="34" height="34" fill="#151515" stroke="#333"/>
+<rect x="110" y="246" width="34" height="34" fill="#7ec8e3" fill-opacity="0.35" stroke="#333"/>
+<rect x="144" y="246" width="34" height="34" fill="#151515" stroke="#333"/>
+<rect x="178" y="246" width="34" height="34" fill="#151515" stroke="#333"/>
+<rect x="212" y="246" width="34" height="34" fill="#7ec8e3" fill-opacity="0.35" stroke="#333"/>
+<rect x="246" y="246" width="34" height="34" fill="#151515" stroke="#333"/>
+<rect x="280" y="246" width="34" height="34" fill="#151515" stroke="#333"/>
+<rect x="110" y="280" width="34" height="34" fill="#7ec8e3" fill-opacity="0.35" stroke="#333"/>
+<rect x="144" y="280" width="34" height="34" fill="#151515" stroke="#333"/>
+<rect x="178" y="280" width="34" height="34" fill="#151515" stroke="#333"/>
+<rect x="212" y="280" width="34" height="34" fill="#7ec8e3" fill-opacity="0.35" stroke="#333"/>
+<rect x="246" y="280" width="34" height="34" fill="#151515" stroke="#333"/>
+<rect x="280" y="280" width="34" height="34" fill="#151515" stroke="#333"/>
+<text x="212.0" y="344.0" font-size="13" fill="#888" text-anchor="middle">파란 열 = C,  초록 교차 = W</text>
+<rect x="70" y="368" width="300" height="80" rx="8" fill="#111" stroke="#7ec8e3" stroke-width="1.5"/>
+<text x="220.0" y="400.0" font-size="16" fill="#e8e8e8" text-anchor="middle" font-weight="600">K̂ = C W⁺ Cᵀ</text>
+<text x="220.0" y="424.0" font-size="13" fill="#888" text-anchor="middle">오차 = K₂₂ − K₂₁ W⁻¹ K₂₁ᵀ ⪰ 0</text>
+<text x="635.0" y="92.0" font-size="16" fill="#e8e8e8" text-anchor="middle" font-weight="600">직사각 A, 열과 행을 고른다</text>
+<rect x="500" y="110" width="30" height="30" fill="#151515" stroke="#333"/>
+<rect x="530" y="110" width="30" height="30" fill="#7ec8e3" fill-opacity="0.35" stroke="#333"/>
+<rect x="560" y="110" width="30" height="30" fill="#151515" stroke="#333"/>
+<rect x="590" y="110" width="30" height="30" fill="#151515" stroke="#333"/>
+<rect x="620" y="110" width="30" height="30" fill="#151515" stroke="#333"/>
+<rect x="650" y="110" width="30" height="30" fill="#7ec8e3" fill-opacity="0.35" stroke="#333"/>
+<rect x="680" y="110" width="30" height="30" fill="#151515" stroke="#333"/>
+<rect x="710" y="110" width="30" height="30" fill="#151515" stroke="#333"/>
+<rect x="740" y="110" width="30" height="30" fill="#151515" stroke="#333"/>
+<rect x="500" y="140" width="30" height="30" fill="#151515" stroke="#333"/>
+<rect x="530" y="140" width="30" height="30" fill="#7ec8e3" fill-opacity="0.35" stroke="#333"/>
+<rect x="560" y="140" width="30" height="30" fill="#151515" stroke="#333"/>
+<rect x="590" y="140" width="30" height="30" fill="#151515" stroke="#333"/>
+<rect x="620" y="140" width="30" height="30" fill="#151515" stroke="#333"/>
+<rect x="650" y="140" width="30" height="30" fill="#7ec8e3" fill-opacity="0.35" stroke="#333"/>
+<rect x="680" y="140" width="30" height="30" fill="#151515" stroke="#333"/>
+<rect x="710" y="140" width="30" height="30" fill="#151515" stroke="#333"/>
+<rect x="740" y="140" width="30" height="30" fill="#151515" stroke="#333"/>
+<rect x="500" y="170" width="30" height="30" fill="#7777cc" fill-opacity="0.45" stroke="#333"/>
+<rect x="530" y="170" width="30" height="30" fill="#55c555" fill-opacity="0.55" stroke="#333"/>
+<rect x="560" y="170" width="30" height="30" fill="#7777cc" fill-opacity="0.45" stroke="#333"/>
+<rect x="590" y="170" width="30" height="30" fill="#7777cc" fill-opacity="0.45" stroke="#333"/>
+<rect x="620" y="170" width="30" height="30" fill="#7777cc" fill-opacity="0.45" stroke="#333"/>
+<rect x="650" y="170" width="30" height="30" fill="#55c555" fill-opacity="0.55" stroke="#333"/>
+<rect x="680" y="170" width="30" height="30" fill="#7777cc" fill-opacity="0.45" stroke="#333"/>
+<rect x="710" y="170" width="30" height="30" fill="#7777cc" fill-opacity="0.45" stroke="#333"/>
+<rect x="740" y="170" width="30" height="30" fill="#7777cc" fill-opacity="0.45" stroke="#333"/>
+<rect x="500" y="200" width="30" height="30" fill="#151515" stroke="#333"/>
+<rect x="530" y="200" width="30" height="30" fill="#7ec8e3" fill-opacity="0.35" stroke="#333"/>
+<rect x="560" y="200" width="30" height="30" fill="#151515" stroke="#333"/>
+<rect x="590" y="200" width="30" height="30" fill="#151515" stroke="#333"/>
+<rect x="620" y="200" width="30" height="30" fill="#151515" stroke="#333"/>
+<rect x="650" y="200" width="30" height="30" fill="#7ec8e3" fill-opacity="0.35" stroke="#333"/>
+<rect x="680" y="200" width="30" height="30" fill="#151515" stroke="#333"/>
+<rect x="710" y="200" width="30" height="30" fill="#151515" stroke="#333"/>
+<rect x="740" y="200" width="30" height="30" fill="#151515" stroke="#333"/>
+<rect x="500" y="230" width="30" height="30" fill="#7777cc" fill-opacity="0.45" stroke="#333"/>
+<rect x="530" y="230" width="30" height="30" fill="#55c555" fill-opacity="0.55" stroke="#333"/>
+<rect x="560" y="230" width="30" height="30" fill="#7777cc" fill-opacity="0.45" stroke="#333"/>
+<rect x="590" y="230" width="30" height="30" fill="#7777cc" fill-opacity="0.45" stroke="#333"/>
+<rect x="620" y="230" width="30" height="30" fill="#7777cc" fill-opacity="0.45" stroke="#333"/>
+<rect x="650" y="230" width="30" height="30" fill="#55c555" fill-opacity="0.55" stroke="#333"/>
+<rect x="680" y="230" width="30" height="30" fill="#7777cc" fill-opacity="0.45" stroke="#333"/>
+<rect x="710" y="230" width="30" height="30" fill="#7777cc" fill-opacity="0.45" stroke="#333"/>
+<rect x="740" y="230" width="30" height="30" fill="#7777cc" fill-opacity="0.45" stroke="#333"/>
+<rect x="500" y="260" width="30" height="30" fill="#151515" stroke="#333"/>
+<rect x="530" y="260" width="30" height="30" fill="#7ec8e3" fill-opacity="0.35" stroke="#333"/>
+<rect x="560" y="260" width="30" height="30" fill="#151515" stroke="#333"/>
+<rect x="590" y="260" width="30" height="30" fill="#151515" stroke="#333"/>
+<rect x="620" y="260" width="30" height="30" fill="#151515" stroke="#333"/>
+<rect x="650" y="260" width="30" height="30" fill="#7ec8e3" fill-opacity="0.35" stroke="#333"/>
+<rect x="680" y="260" width="30" height="30" fill="#151515" stroke="#333"/>
+<rect x="710" y="260" width="30" height="30" fill="#151515" stroke="#333"/>
+<rect x="740" y="260" width="30" height="30" fill="#151515" stroke="#333"/>
+<text x="635.0" y="344.0" font-size="13" fill="#888" text-anchor="middle">파란 열 = C,  보라 행 = R</text>
+<rect x="490" y="368" width="300" height="80" rx="8" fill="#111" stroke="#7777cc" stroke-width="1.5"/>
+<text x="640.0" y="400.0" font-size="16" fill="#e8e8e8" text-anchor="middle" font-weight="600">A ≈ C U R</text>
+<text x="640.0" y="424.0" font-size="13" fill="#888" text-anchor="middle">U = C⁺ A R⁺</text>
+<text x="440.0" y="482.0" font-size="13" fill="#888" text-anchor="middle">어느 열을 고를지는 레버리지 점수가 정한다</text>
+</svg>

@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="500" viewBox="0 0 880 500" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+<rect x="0" y="0" width="880" height="500" rx="12" fill="#0a0a0a"/>
+<defs><marker id="arr" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto"><path d="M 0 0 L 13 7 L 0 14 z" fill="#888"/></marker></defs>
+<text x="440.0" y="44.0" font-size="22" fill="#e8e8e8" text-anchor="middle" font-weight="700">무작위 SVD: 큰 행렬에 닿는 것은 행렬곱 두 번</text>
+<rect x="60" y="90" width="220" height="90" rx="8" fill="#111" stroke="#7ec8e3" stroke-width="1.5"/>
+<text x="170.0" y="131.0" font-size="16" fill="#e8e8e8" text-anchor="middle" font-weight="600">W</text>
+<text x="170.0" y="153.0" font-size="13" fill="#888" text-anchor="middle">4096 × 11008</text>
+<text x="320.0" y="140.0" font-size="22" fill="#e8e8e8" text-anchor="middle">×</text>
+<rect x="360" y="90" width="140" height="90" rx="8" fill="#111" stroke="#7777cc" stroke-width="1.5"/>
+<text x="430.0" y="131.0" font-size="16" fill="#e8e8e8" text-anchor="middle" font-weight="600">Ω</text>
+<text x="430.0" y="153.0" font-size="13" fill="#888" text-anchor="middle">11008 × 32</text>
+<rect x="600" y="90" width="220" height="90" rx="8" fill="#111" stroke="#7ec8e3" stroke-width="1.5"/>
+<text x="710.0" y="131.0" font-size="16" fill="#e8e8e8" text-anchor="middle" font-weight="600">Y = WΩ</text>
+<text x="710.0" y="153.0" font-size="13" fill="#888" text-anchor="middle">4096 × 32</text>
+<line x1="500" y1="135" x2="600" y2="135" stroke="#888" stroke-width="2" marker-end="url(#arr)"/>
+<text x="550.0" y="118.0" font-size="13" fill="#e8e8e8" text-anchor="middle">①</text>
+<rect x="600" y="240" width="220" height="90" rx="8" fill="#111" stroke="#7ec8e3" stroke-width="1.5"/>
+<text x="710.0" y="281.0" font-size="16" fill="#e8e8e8" text-anchor="middle" font-weight="600">Q = qr(Y)</text>
+<text x="710.0" y="303.0" font-size="13" fill="#888" text-anchor="middle">4096 × 32, 정규직교</text>
+<line x1="710" y1="180" x2="710" y2="240" stroke="#888" stroke-width="2" marker-end="url(#arr)"/>
+<text x="736.0" y="215.0" font-size="13" fill="#e8e8e8" text-anchor="start">②</text>
+<rect x="300" y="240" width="240" height="90" rx="8" fill="#111" stroke="#7ec8e3" stroke-width="1.5"/>
+<text x="420.0" y="281.0" font-size="16" fill="#e8e8e8" text-anchor="middle" font-weight="600">B = QᵀW</text>
+<text x="420.0" y="303.0" font-size="13" fill="#888" text-anchor="middle">32 × 11008</text>
+<line x1="600" y1="285" x2="540" y2="285" stroke="#888" stroke-width="2" marker-end="url(#arr)"/>
+<text x="570.0" y="268.0" font-size="13" fill="#e8e8e8" text-anchor="middle">③</text>
+<rect x="60" y="240" width="180" height="90" rx="8" fill="#111" stroke="#7ec8e3" stroke-width="1.5"/>
+<text x="150.0" y="281.0" font-size="16" fill="#e8e8e8" text-anchor="middle" font-weight="600">B = ŨΣVᵀ</text>
+<text x="150.0" y="303.0" font-size="13" fill="#888" text-anchor="middle">작은 SVD</text>
+<line x1="300" y1="285" x2="240" y2="285" stroke="#888" stroke-width="2" marker-end="url(#arr)"/>
+<text x="270.0" y="268.0" font-size="13" fill="#e8e8e8" text-anchor="middle">④</text>
+<rect x="60" y="380" width="760" height="70" rx="8" fill="#111" stroke="#55c555" stroke-width="1.5"/>
+<text x="440.0" y="411.0" font-size="16" fill="#e8e8e8" text-anchor="middle" font-weight="600">U = QŨ 의 앞 16열, Σ 의 앞 16개, Vᵀ 의 앞 16행</text>
+<text x="440.0" y="433.0" font-size="13" fill="#888" text-anchor="middle">⑤ 상위 k = 16 을 자른다</text>
+<line x1="150" y1="330" x2="150" y2="380" stroke="#888" stroke-width="2" marker-end="url(#arr)"/>
+<text x="440.0" y="480.0" font-size="13" fill="#888" text-anchor="middle">①과 ③이 각각 2mnℓ ≈ 2.9×10⁹ 연산이고, 나머지는 ℓ = 32 짜리 작은 계산이다</text>
+</svg>

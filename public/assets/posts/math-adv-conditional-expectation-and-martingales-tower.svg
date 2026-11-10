@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="520" viewBox="0 0 880 520" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+<rect x="0" y="0" width="880" height="520" rx="12" fill="#0a0a0a"/>
+<text x="440.0" y="44.0" font-size="22" fill="#e8e8e8" text-anchor="middle" font-weight="700">거친 칸으로 다시 평균해도 처음부터 거친 칸의 평균과 같다</text>
+<text x="60.0" y="105.0" font-size="13" fill="#888" text-anchor="start">X = ω²</text>
+<rect x="115" y="80" width="100" height="60" rx="6" fill="#111" stroke="#555" stroke-width="1.5"/>
+<text x="165.0" y="104.0" font-size="16" fill="#e8e8e8" text-anchor="middle" font-weight="600">1</text>
+<text x="165.0" y="124.0" font-size="13" fill="#888" text-anchor="middle">ω = 1</text>
+<rect x="225" y="80" width="100" height="60" rx="6" fill="#111" stroke="#555" stroke-width="1.5"/>
+<text x="275.0" y="104.0" font-size="16" fill="#e8e8e8" text-anchor="middle" font-weight="600">4</text>
+<text x="275.0" y="124.0" font-size="13" fill="#888" text-anchor="middle">ω = 2</text>
+<rect x="335" y="80" width="100" height="60" rx="6" fill="#111" stroke="#555" stroke-width="1.5"/>
+<text x="385.0" y="104.0" font-size="16" fill="#e8e8e8" text-anchor="middle" font-weight="600">9</text>
+<text x="385.0" y="124.0" font-size="13" fill="#888" text-anchor="middle">ω = 3</text>
+<rect x="445" y="80" width="100" height="60" rx="6" fill="#111" stroke="#555" stroke-width="1.5"/>
+<text x="495.0" y="104.0" font-size="16" fill="#e8e8e8" text-anchor="middle" font-weight="600">16</text>
+<text x="495.0" y="124.0" font-size="13" fill="#888" text-anchor="middle">ω = 4</text>
+<rect x="555" y="80" width="100" height="60" rx="6" fill="#111" stroke="#555" stroke-width="1.5"/>
+<text x="605.0" y="104.0" font-size="16" fill="#e8e8e8" text-anchor="middle" font-weight="600">25</text>
+<text x="605.0" y="124.0" font-size="13" fill="#888" text-anchor="middle">ω = 5</text>
+<rect x="665" y="80" width="100" height="60" rx="6" fill="#111" stroke="#555" stroke-width="1.5"/>
+<text x="715.0" y="104.0" font-size="16" fill="#e8e8e8" text-anchor="middle" font-weight="600">36</text>
+<text x="715.0" y="124.0" font-size="13" fill="#888" text-anchor="middle">ω = 6</text>
+<text x="60.0" y="195.0" font-size="13" fill="#7ec8e3" text-anchor="start">G</text>
+<rect x="115" y="170" width="210" height="60" rx="6" fill="#111" stroke="#7ec8e3" stroke-width="1.5"/>
+<text x="220.0" y="194.0" font-size="16" fill="#e8e8e8" text-anchor="middle" font-weight="600">2.5</text>
+<text x="220.0" y="214.0" font-size="13" fill="#888" text-anchor="middle">{1, 2}</text>
+<rect x="335" y="170" width="210" height="60" rx="6" fill="#111" stroke="#7ec8e3" stroke-width="1.5"/>
+<text x="440.0" y="194.0" font-size="16" fill="#e8e8e8" text-anchor="middle" font-weight="600">12.5</text>
+<text x="440.0" y="214.0" font-size="13" fill="#888" text-anchor="middle">{3, 4}</text>
+<rect x="555" y="170" width="210" height="60" rx="6" fill="#111" stroke="#7ec8e3" stroke-width="1.5"/>
+<text x="660.0" y="194.0" font-size="16" fill="#e8e8e8" text-anchor="middle" font-weight="600">30.5</text>
+<text x="660.0" y="214.0" font-size="13" fill="#888" text-anchor="middle">{5, 6}</text>
+<text x="60.0" y="285.0" font-size="13" fill="#7777cc" text-anchor="start">H</text>
+<rect x="115" y="260" width="430" height="60" rx="6" fill="#111" stroke="#7777cc" stroke-width="1.5"/>
+<text x="330.0" y="284.0" font-size="16" fill="#e8e8e8" text-anchor="middle" font-weight="600">7.5</text>
+<text x="330.0" y="304.0" font-size="13" fill="#888" text-anchor="middle">{1, 2, 3, 4}  :  (2.5 + 12.5) / 2 = (1+4+9+16) / 4</text>
+<rect x="555" y="260" width="210" height="60" rx="6" fill="#111" stroke="#7777cc" stroke-width="1.5"/>
+<text x="660.0" y="284.0" font-size="16" fill="#e8e8e8" text-anchor="middle" font-weight="600">30.5</text>
+<text x="660.0" y="304.0" font-size="13" fill="#888" text-anchor="middle">{5, 6}</text>
+<text x="60.0" y="375.0" font-size="13" fill="#888" text-anchor="start">{∅, Ω}</text>
+<rect x="115" y="350" width="650" height="60" rx="6" fill="#111" stroke="#888" stroke-width="1.5"/>
+<text x="440.0" y="374.0" font-size="16" fill="#e8e8e8" text-anchor="middle" font-weight="600">15.17</text>
+<text x="440.0" y="394.0" font-size="13" fill="#888" text-anchor="middle">(4 · 7.5 + 2 · 30.5) / 6 = 91 / 6</text>
+<text x="440.0" y="452.0" font-size="16" fill="#e8e8e8" text-anchor="middle" font-weight="600">E[ E[X | G] | H ] = E[X | H],   E[ E[X | G] ] = E[X]</text>
+<text x="440.0" y="482.0" font-size="13" fill="#888" text-anchor="middle">H ⊂ G : H 의 칸은 G 의 칸을 합친 것이다</text>
+</svg>

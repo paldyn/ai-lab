@@ -328,3 +328,5 @@ pdf를 그대로 나눈 무게는 평균이 0.94에 머물고 평균 행동을 0
 읽어주셔서 감사합니다. 😊
 
 **지난 글:** [측도와 르베그 적분: ∇와 E를 언제 바꿔 써도 되는가](/articles/math-adv-lebesgue-integral-and-convergence)
+
+**다음 글:** [조건부 기댓값은 사영이다, 그리고 마팅게일](/articles/math-adv-conditional-expectation-and-martingales)

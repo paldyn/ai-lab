@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="470" viewBox="0 0 880 470" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+<rect x="0" y="0" width="880" height="470" rx="12" fill="#0a0a0a"/>
+<defs><marker id="arr" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto"><path d="M 0 0 L 13 7 L 0 14 z" fill="#7ec8e3"/></marker><marker id="arr2" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto"><path d="M 0 0 L 13 7 L 0 14 z" fill="#e05555"/></marker></defs>
+<text x="440.0" y="44.0" font-size="22" fill="#e8e8e8" text-anchor="middle" font-weight="700">조건부 기댓값은 L²(G) 위로 떨어뜨린 수선의 발이다</text>
+<polygon points="120,360 560,360 760,250 320,250" fill="#7ec8e3" fill-opacity="0.10" stroke="#7777cc" stroke-width="1.5"/>
+<text x="700.0" y="385.0" font-size="13" fill="#7777cc" text-anchor="middle">L²(G) : y 의 함수들</text>
+<line x1="230" y1="330" x2="440" y2="114" stroke="#7ec8e3" stroke-width="2.5" marker-end="url(#arr)"/>
+<line x1="230" y1="330" x2="436" y2="301" stroke="#55c555" stroke-width="2.5"/>
+<line x1="440" y1="110" x2="440" y2="298" stroke="#e05555" stroke-width="2" stroke-dasharray="5,3" marker-end="url(#arr2)"/>
+<polyline points="440,284 456,282 456,298" fill="none" stroke="#e8e8e8" stroke-width="1.2"/>
+<line x1="440" y1="110" x2="330" y2="312" stroke="#888" stroke-width="1.2" stroke-dasharray="4,4"/>
+<circle cx="330" cy="312" r="5" fill="#e8e8e8"/>
+<line x1="440" y1="110" x2="620" y2="290" stroke="#888" stroke-width="1.2" stroke-dasharray="4,4"/>
+<circle cx="620" cy="290" r="5" fill="#e8e8e8"/>
+<text x="324.0" y="338.0" font-size="13" fill="#e8e8e8" text-anchor="middle">y/2</text>
+<text x="630.0" y="316.0" font-size="13" fill="#e8e8e8" text-anchor="middle">3차식</text>
+<circle cx="440" cy="300" r="5" fill="#55c555"/>
+<circle cx="440" cy="110" r="5" fill="#e8e8e8"/>
+<text x="440.0" y="94.0" font-size="13" fill="#e8e8e8" text-anchor="middle">X = x₀</text>
+<text x="444.0" y="328.0" font-size="13" fill="#55c555" text-anchor="middle">E[X | G] = tanh(y)</text>
+<text x="216.0" y="350.0" font-size="13" fill="#888" text-anchor="middle">0</text>
+<text x="452.0" y="232.0" font-size="13" fill="#e05555" text-anchor="start">X − E[X | G]</text>
+<rect x="600" y="88" width="230" height="112" rx="8" fill="#111" stroke="#333"/>
+<text x="624.0" y="116.0" font-size="13" fill="#e8e8e8" text-anchor="start" font-weight="600">거리 제곱 = 평균 제곱오차</text>
+<text x="624.0" y="140.0" font-size="13" fill="#888" text-anchor="start">y/2 까지  0.500</text>
+<text x="624.0" y="162.0" font-size="13" fill="#888" text-anchor="start">3차식까지  0.462</text>
+<text x="624.0" y="184.0" font-size="13" fill="#55c555" text-anchor="start">발까지  0.450 (가장 짧다)</text>
+<text x="440.0" y="430.0" font-size="13" fill="#888" text-anchor="middle">잔차는 평면의 모든 원소와 직교하고, 다른 점까지의 거리 제곱은 0.450 + (발에서 그 점까지)²</text>
+</svg>

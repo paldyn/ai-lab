@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="430" viewBox="0 0 880 430" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+<rect x="0" y="0" width="880" height="430" rx="12" fill="#0a0a0a"/>
+<text x="440.0" y="44.0" font-size="22" fill="#e8e8e8" text-anchor="middle" font-weight="700">같은 400행 스케치, SU 의 특잇값이 놓이는 구간</text>
+<rect x="364.0" y="90" width="77.4" height="260" fill="#7ec8e3" fill-opacity="0.12"/>
+<line x1="402.7" y1="90" x2="402.7" y2="350" stroke="#555" stroke-dasharray="4,4"/>
+<text x="402.7" y="78.0" font-size="13" fill="#7ec8e3" text-anchor="middle">1 ± √(d/s) = [0.776, 1.224]</text>
+<line x1="230" y1="350" x2="800" y2="350" stroke="#888" stroke-width="1.5"/>
+<line x1="230.0" y1="350" x2="230.0" y2="356" stroke="#444"/>
+<text x="230.0" y="374.0" font-size="13" fill="#888" text-anchor="middle">0</text>
+<line x1="316.4" y1="350" x2="316.4" y2="356" stroke="#444"/>
+<text x="316.4" y="374.0" font-size="13" fill="#888" text-anchor="middle">0.5</text>
+<line x1="402.7" y1="350" x2="402.7" y2="356" stroke="#444"/>
+<text x="402.7" y="374.0" font-size="13" fill="#888" text-anchor="middle">1</text>
+<line x1="489.1" y1="350" x2="489.1" y2="356" stroke="#444"/>
+<text x="489.1" y="374.0" font-size="13" fill="#888" text-anchor="middle">1.5</text>
+<line x1="575.5" y1="350" x2="575.5" y2="356" stroke="#444"/>
+<text x="575.5" y="374.0" font-size="13" fill="#888" text-anchor="middle">2</text>
+<line x1="661.8" y1="350" x2="661.8" y2="356" stroke="#444"/>
+<text x="661.8" y="374.0" font-size="13" fill="#888" text-anchor="middle">2.5</text>
+<line x1="748.2" y1="350" x2="748.2" y2="356" stroke="#444"/>
+<text x="748.2" y="374.0" font-size="13" fill="#888" text-anchor="middle">3</text>
+<text x="814.0" y="354.0" font-size="13" fill="#888" text-anchor="start">특잇값</text>
+<text x="206.0" y="135.0" font-size="16" fill="#e8e8e8" text-anchor="end" font-weight="600">가우스</text>
+<line x1="368.9" y1="130" x2="434.9" y2="130" stroke="#55c555" stroke-width="6" stroke-linecap="round"/>
+<text x="452.9" y="135.0" font-size="13" fill="#e8e8e8" text-anchor="start">[0.804, 1.186]</text>
+<text x="206.0" y="193.0" font-size="16" fill="#e8e8e8" text-anchor="end" font-weight="600">카운트 스케치</text>
+<line x1="399.4" y1="188" x2="406.5" y2="188" stroke="#55c555" stroke-width="6" stroke-linecap="round"/>
+<text x="424.5" y="193.0" font-size="13" fill="#e8e8e8" text-anchor="start">[0.981, 1.022]</text>
+<text x="206.0" y="251.0" font-size="16" fill="#e8e8e8" text-anchor="end" font-weight="600">SRHT</text>
+<line x1="360.8" y1="246" x2="440.2" y2="246" stroke="#55c555" stroke-width="6" stroke-linecap="round"/>
+<text x="458.2" y="251.0" font-size="13" fill="#e8e8e8" text-anchor="start">[0.757, 1.217]</text>
+<text x="206.0" y="309.0" font-size="16" fill="#e8e8e8" text-anchor="end" font-weight="600">고른 행 추출</text>
+<line x1="239.3" y1="304" x2="781.7" y2="304" stroke="#e05555" stroke-width="6" stroke-linecap="round"/>
+<text x="523.6" y="290.0" font-size="13" fill="#e8e8e8" text-anchor="middle">[0.054, 3.194]</text>
+<text x="440.0" y="396.0" font-size="13" fill="#888" text-anchor="middle">최대 레버리지 0.996 인 4096×20 기저. 고른 행 추출은 HD 로 섞은 뒤(SRHT)에만 버틴다</text>
+</svg>

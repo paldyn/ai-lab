@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="520" viewBox="0 0 880 520" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+<rect x="0" y="0" width="880" height="520" rx="12" fill="#0a0a0a"/>
+<text x="440.0" y="44.0" font-size="22" fill="#e8e8e8" text-anchor="middle" font-weight="700">한 잡음 경로 위의 디노이저 출력 M_k = tanh(Y_k / σ_k²)</text>
+<line x1="110" y1="410" x2="800" y2="410" stroke="#888" stroke-width="1.5"/>
+<line x1="110" y1="410" x2="110" y2="80" stroke="#888" stroke-width="1.5"/>
+<line x1="110.0" y1="410" x2="110.0" y2="416" stroke="#444"/>
+<text x="110.0" y="434.0" font-size="13" fill="#888" text-anchor="middle">4</text>
+<line x1="205.7" y1="410" x2="205.7" y2="416" stroke="#444"/>
+<text x="205.7" y="434.0" font-size="13" fill="#888" text-anchor="middle">2</text>
+<line x1="301.4" y1="410" x2="301.4" y2="416" stroke="#444"/>
+<text x="301.4" y="434.0" font-size="13" fill="#888" text-anchor="middle">1</text>
+<line x1="397.1" y1="410" x2="397.1" y2="416" stroke="#444"/>
+<text x="397.1" y="434.0" font-size="13" fill="#888" text-anchor="middle">1/2</text>
+<line x1="492.9" y1="410" x2="492.9" y2="416" stroke="#444"/>
+<text x="492.9" y="434.0" font-size="13" fill="#888" text-anchor="middle">1/4</text>
+<line x1="588.6" y1="410" x2="588.6" y2="416" stroke="#444"/>
+<text x="588.6" y="434.0" font-size="13" fill="#888" text-anchor="middle">1/8</text>
+<line x1="684.3" y1="410" x2="684.3" y2="416" stroke="#444"/>
+<text x="684.3" y="434.0" font-size="13" fill="#888" text-anchor="middle">1/16</text>
+<line x1="780.0" y1="410" x2="780.0" y2="416" stroke="#444"/>
+<text x="780.0" y="434.0" font-size="13" fill="#888" text-anchor="middle">1/32</text>
+<text x="810.0" y="414.0" font-size="13" fill="#888" text-anchor="start">σ²</text>
+<line x1="104" y1="410.0" x2="110" y2="410.0" stroke="#444"/>
+<text x="98.0" y="414.0" font-size="13" fill="#888" text-anchor="end">−1</text>
+<line x1="104" y1="330.0" x2="110" y2="330.0" stroke="#444"/>
+<text x="98.0" y="334.0" font-size="13" fill="#888" text-anchor="end">−0.5</text>
+<line x1="104" y1="250.0" x2="110" y2="250.0" stroke="#444"/>
+<text x="98.0" y="254.0" font-size="13" fill="#888" text-anchor="end">0</text>
+<line x1="104" y1="170.0" x2="110" y2="170.0" stroke="#444"/>
+<text x="98.0" y="174.0" font-size="13" fill="#888" text-anchor="end">0.5</text>
+<line x1="104" y1="90.0" x2="110" y2="90.0" stroke="#444"/>
+<text x="98.0" y="94.0" font-size="13" fill="#888" text-anchor="end">1</text>
+<line x1="110" y1="106.0" x2="780" y2="106.0" stroke="#888" stroke-width="1.2" stroke-dasharray="4,4"/>
+<line x1="110" y1="394.0" x2="780" y2="394.0" stroke="#888" stroke-width="1.2" stroke-dasharray="4,4"/>
+<text x="788.0" y="110.0" font-size="13" fill="#888" text-anchor="start">+0.9</text>
+<text x="788.0" y="398.0" font-size="13" fill="#888" text-anchor="start">−0.9</text>
+<line x1="110" y1="250.0" x2="780" y2="250.0" stroke="#333" stroke-width="1"/>
+<polyline points="110.0,242.3 205.7,148.1 301.4,108.2 397.1,93.2 492.9,90.2 588.6,90.0 684.3,90.0 780.0,90.0" fill="none" stroke="#7ec8e3" stroke-width="2.5"/>
+<circle cx="397.1" cy="93.2" r="6" fill="#0a0a0a" stroke="#7ec8e3" stroke-width="2.5"/>
+<polyline points="110.0,360.9 205.7,395.9 301.4,385.4 397.1,342.6 492.9,92.2 588.6,90.0 684.3,90.0 780.0,90.0" fill="none" stroke="#e05555" stroke-width="2.5"/>
+<circle cx="205.7" cy="395.9" r="6" fill="#0a0a0a" stroke="#e05555" stroke-width="2.5"/>
+<polyline points="110.0,200.1 205.7,246.6 301.4,238.2 397.1,112.6 492.9,181.5 588.6,90.5 684.3,90.0 780.0,90.0" fill="none" stroke="#55c555" stroke-width="2.5"/>
+<circle cx="588.6" cy="90.5" r="6" fill="#0a0a0a" stroke="#55c555" stroke-width="2.5"/>
+<polyline points="110.0,341.2 205.7,350.0 301.4,272.6 397.1,403.1 492.9,410.0 588.6,410.0 684.3,410.0 780.0,410.0" fill="none" stroke="#7777cc" stroke-width="2.5"/>
+<circle cx="397.1" cy="403.1" r="6" fill="#0a0a0a" stroke="#7777cc" stroke-width="2.5"/>
+<polyline points="110.0,208.9 205.7,284.4 301.4,265.5 397.1,380.2 492.9,406.3 588.6,410.0 684.3,410.0 780.0,410.0" fill="none" stroke="#e0b055" stroke-width="2.5"/>
+<circle cx="492.9" cy="406.3" r="6" fill="#0a0a0a" stroke="#e0b055" stroke-width="2.5"/>
+<text x="440.0" y="486.0" font-size="13" fill="#e05555" text-anchor="middle">빨간 경로는 σ² = 2 에서 −0.912 로 멈췄지만 답은 +1 이다</text>
+<text x="70.0" y="70.0" font-size="13" fill="#888" text-anchor="start">M_k</text>
+<text x="440.0" y="460.0" font-size="13" fill="#888" text-anchor="middle">○ = |M_k| ≥ 0.9 에 처음 닿은 정지 시각 τ.  평균에는 방향이 없고(E[M_k] = 0), 끝에서 ±1 로 간다</text>
+</svg>
