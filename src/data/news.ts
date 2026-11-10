@@ -356,6 +356,86 @@ const entries: NewsItem[] = [
     url: 'https://platform.claude.com/docs/en/release-notes/overview#november-5-2026',
   },
   {
+    id: 'openai-to-acquire-pierre',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'OpenAI, Codex에 쓰는 코드 리뷰 도구 개발사 Pierre 인수',
+    summary:
+      'OpenAI가 Code Storage와 오픈소스 개발 도구를 만든 Pierre Computer Company를 인수한다. ' +
+      'Codex 앱의 파일 탐색과 변경 보기에 이미 Pierre의 Trees·Diffs 라이브러리가 쓰인다.',
+    publishedAt: '2026-11-04',
+    collectedAt: '2026-11-11',
+    category: 'Corporate',
+    signal: '개발 도구 인수',
+    url: 'https://openai.com/index/openai-to-acquire-pierre',
+  },
+  {
+    id: 'daybreak-red-aws-govcloud',
+    source: 'OpenAI',
+    kind: 'model',
+    title: 'GPT-5.6 Cyber, AWS GovCloud에서 Daybreak Red로 제공',
+    summary:
+      'OpenAI가 승인된 고객에게 AWS GovCloud(US-East)에서 Daybreak Red로 GPT-5.6 Cyber를 열었다. ' +
+      '정부 보안팀이 기존 AWS 환경 안에서 취약점 연구와 익스플로잇 검증에 쓸 수 있다.',
+    publishedAt: '2026-11-04',
+    collectedAt: '2026-11-11',
+    category: 'Domain',
+    signal: '플랫폼 배포',
+    url: 'https://openai.com/index/daybreak-red-aws-govcloud',
+  },
+  {
+    id: 'a-thousand-fewer-paths-to-root',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'OpenAI, 리눅스 커널에서 권한 상승 익스플로잇 948건 확보',
+    summary:
+      'OpenAI가 차기 사이버 모델로 리눅스 커널 취약점 발견부터 패치 생성까지 돌린 파이프라인 결과를 공개했다. ' +
+      '후보 2,308건 중 1,724건을 재현했고 서로 다른 로컬 권한 상승 948건의 익스플로잇과 패치를 만들었다.',
+    publishedAt: '2026-11-04',
+    collectedAt: '2026-11-11',
+    category: 'Research',
+    signal: 'AI 사이버 방어',
+    url: 'https://openai.com/index/a-thousand-fewer-paths-to-root',
+  },
+  {
+    id: 'introducing-images-2-6',
+    source: 'OpenAI',
+    kind: 'model',
+    title: 'OpenAI, GIF 생성을 더한 이미지 모델 Images 2.6 공개',
+    summary:
+      'OpenAI가 ChatGPT·Codex·API에 Images 2.6을 내놓았다. ' +
+      '생성 속도가 50% 빨라졌고 움직이는 GIF를 만들 수 있으며, API에는 GPT-Image-2.6 Flare와 Sunburst가 올라간다.',
+    publishedAt: '2026-11-04',
+    collectedAt: '2026-11-11',
+    category: 'Multimodal',
+    signal: '이미지 모델',
+    url: 'https://openai.com/index/introducing-images-2-6',
+    model: {
+      family: 'GPT',
+      name: 'Images 2.6',
+      kind: '신규 모델',
+      status: '공개',
+      useCase: 'GIF 애니메이션과 정밀 이미지 편집',
+      headline: '생성은 50% 빨라지고, 정지 이미지를 움직이는 GIF로 만든다.',
+      logo: 'assets/openai.svg',
+      tone: 'gpt',
+    },
+  },
+  {
+    id: 'devrev-enterprise-self-service',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'DevRev, GPT-6.1 Sol로 고객·직원 셀프서비스 에이전트 구축',
+    summary:
+      'DevRev가 서비스·운영팀용 에이전트 Computer와 Operator의 추론·계획·도구 선택을 OpenAI 모델로 돌린다고 OpenAI가 소개했다. ' +
+      '엔지니어 전원이 Codex로 옮기고 Cursor 라이선스를 끊었다.',
+    publishedAt: '2026-11-04',
+    collectedAt: '2026-11-11',
+    category: 'Product',
+    signal: '기업 도입 사례',
+    url: 'https://openai.com/index/devrev-enterprise-self-service',
+  },
+  {
     id: 'accelerating-engineering-for-the-physical-world',
     source: 'OpenAI',
     kind: 'company',
