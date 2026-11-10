@@ -316,6 +316,62 @@ const entries: NewsItem[] = [
     url: 'https://platform.claude.com/docs/en/release-notes/overview#november-9-2026',
   },
   {
+    id: 'chatgpt-enterprise-aws-marketplace',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'ChatGPT Enterprise, AWS Marketplace에서 구매 가능',
+    summary:
+      'OpenAI가 ChatGPT Enterprise를 AWS Marketplace에 올렸다. ' +
+      '기업은 기존 AWS 구매·청구 관계로 사고 관리할 수 있고, 해당 지출을 AWS 약정에 반영할 수 있다.',
+    publishedAt: '2026-11-09',
+    collectedAt: '2026-11-11',
+    category: 'Product',
+    signal: '기업 조달',
+    url: 'https://openai.com/index/chatgpt-enterprise-aws-marketplace',
+  },
+  {
+    id: 'control-room',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'OpenAI, 연구용 모델 작업을 35초 안에 멈추는 Control Room 공개',
+    summary:
+      'OpenAI가 연구 인프라의 모델 작업을 한곳에서 추적하고 안전·보안 문제가 생기면 멈추는 Control Room을 공개했다. ' +
+      '멈춤 지시를 받은 뒤 35초 안에 모델 출력이 끊긴다.',
+    publishedAt: '2026-11-09',
+    collectedAt: '2026-11-11',
+    category: 'Safety',
+    signal: '프런티어 모델 안전',
+    url: 'https://openai.com/index/control-room',
+  },
+  {
+    id: 'coderabbit-codex-daybreak',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'CodeRabbit, Codex로 같은 인력에 출시량 20배·Daybreak로 보안 점검',
+    summary:
+      'AI 코드 리뷰 기업 CodeRabbit이 Codex로 같은 엔지니어링 팀에서 지난 6개월 동안 약 20배 많은 소프트웨어를 냈다고 OpenAI가 소개했다. ' +
+      '새 제품 CodeRabbit Secure는 Daybreak와 Codex 모델로 취약점을 찾는다.',
+    publishedAt: '2026-11-09',
+    collectedAt: '2026-11-11',
+    category: 'Product',
+    signal: '기업 도입 사례',
+    url: 'https://openai.com/index/coderabbit-codex-daybreak',
+  },
+  {
+    id: 'kuken',
+    source: 'OpenAI',
+    kind: 'company',
+    title: '일본 냉각탑 제조사 Kuken, 70년 도면 검색에 OpenAI API 활용',
+    summary:
+      '일본 냉각탑 시장 점유율이 높은 Kuken Industries가 OpenAI 파트너 Recursive와 함께 70년 치 도면을 찾는 검색 앱을 만들었다고 OpenAI가 소개했다. ' +
+      '도면 검색에 드는 시간을 1년에 약 90% 줄일 것으로 본다.',
+    publishedAt: '2026-11-09',
+    collectedAt: '2026-11-11',
+    category: 'Product',
+    signal: '기업 도입 사례',
+    url: 'https://openai.com/index/kuken',
+  },
+  {
     id: 'partnering-with-hacktron',
     source: 'OpenAI',
     kind: 'company',
