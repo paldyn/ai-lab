@@ -2,6 +2,31 @@ import type { NewsDetail } from '../news';
 
 /** 2026-11 발표의 모달 본문. 목록은 news.ts에 있습니다. */
 export const details: Record<string, NewsDetail> = {
+  'qodo-codex-plugin': {
+    points: [
+      'Qodo는 GPT-6 Astra 등 OpenAI 모델로 엔지니어링 지식 수집·코드 리뷰·품질 감시를 한다',
+      '고객 환경은 저장소가 1만 개를 넘기도 해 한 곳의 변경이 하위 서비스를 깨뜨릴 수 있다',
+      'Codex 마켓플레이스 플러그인이 코드베이스 지식·조직 규칙·독립 리뷰를 Codex에 넘긴다',
+      '작성 전에는 규칙과 PR 이력을 불러오고, 작성 뒤에는 같은 세션에서 리뷰 결과를 돌려준다',
+      '서로 다른 Git 제공자의 저장소나 Kafka로 이어진 서비스 사이의 의존성도 따진다',
+      '새 Decisions API로 규칙 200개 중 검사할 것을 먼저 고른 뒤 언어 모델이 추론하는 방안을 든다',
+      '사내에서는 GPT-6 Astra의 Extra High·Ultra 강도로 주간 업무 보고 등을 자동화한다',
+    ],
+    commentary:
+      '코딩 에이전트가 늘수록 병목이 작성에서 검증으로 옮겨 간다는 이야기를 리뷰 도구 쪽에서 한 사례다. 작성과 리뷰를 다른 에이전트로 가르고 같은 세션 안에서 주고받게 한 것이 핵심이다. 규칙 선택처럼 언어 모델이 필요 없는 판단을 Decisions API로 빼는 구상은 비용 구조를 바꿀 수 있는 대목이다.',
+  },
+  'dan-driscoll-joins-openai': {
+    points: [
+      '직함은 Senior Counselor for National Security Modernization이고 이번에 새로 만든 자리다',
+      '경영진·외부 파트너와 함께 첨단 AI가 국가·사이버 안보를 강화하는 방법을 자문한다',
+      '특히 미국 동맹국과 함께 AI의 책임 있는 활용을 넓히는 데 초점을 둔다',
+      '각국 국가안보 기관의 운영상 필요를 사내 팀에 이해시키는 일도 맡는다',
+      '육군장관 시절 현역·주방위군·예비군 약 100만 명과 군무원 26만 5천여 명을 관할했다',
+      '이번 선임이 Daybreak 프로그램 아래 동맹·파트너와의 사이버 회복력 작업을 잇는다고 밝혔다',
+    ],
+    commentary:
+      'Daybreak로 정부 보안 시장을 넓혀 온 OpenAI가 군 최고위 출신을 직접 들였다. 조달·획득 개혁을 이끈 이력이라 기술 자문보다 각국 국방 조직에 모델을 들이는 길을 트는 역할에 가깝다. 동맹국 협력을 앞세운 만큼 미국 밖 국방 기관과의 계약이 뒤따르는지 볼 만하다.',
+  },
   'blog-gemini-4-carbon-is-now-available': {
     points: [
       '두 주 전 Fairwind Program 사이버 방어자에게만 열었던 Carbon을 개발자·기업·과학자·일반 사용자에게 공개했다',

@@ -482,6 +482,34 @@ const entries: NewsItem[] = [
     url: 'https://openai.com/index/scaling-git-at-openai',
   },
   {
+    id: 'dan-driscoll-joins-openai',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'OpenAI, 전 미 육군장관 Dan Driscoll을 국가안보 고문으로 영입',
+    summary:
+      'OpenAI가 제26대 미 육군장관 Dan Driscoll을 새로 만든 국가안보 현대화 선임 고문 자리에 앉힌다. ' +
+      '정부·업계·동맹 기관과 함께 AI로 국가·사이버 안보를 강화하는 방안을 자문한다.',
+    publishedAt: '2026-11-02',
+    collectedAt: '2026-11-11',
+    category: 'Corporate',
+    signal: '고문 선임',
+    url: 'https://openai.com/index/dan-driscoll-joins-openai',
+  },
+  {
+    id: 'qodo-codex-plugin',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'Qodo, Codex 플러그인으로 코드 리뷰에 조직 맥락 연결',
+    summary:
+      '코드 리뷰 도구 기업 Qodo가 Codex 마켓플레이스 플러그인으로 코드베이스 규칙과 독립 리뷰를 코딩 세션에 넣었다고 OpenAI가 소개했다. ' +
+      'GPT-6 Astra 등 OpenAI 모델로 지식을 모으고 리뷰한다.',
+    publishedAt: '2026-11-02',
+    collectedAt: '2026-11-11',
+    category: 'Product',
+    signal: '기업 도입 사례',
+    url: 'https://openai.com/index/qodo-codex-plugin',
+  },
+  {
     id: 'community-safety-report-and-new-protections-for-teens',
     source: 'OpenAI',
     kind: 'company',
@@ -522,6 +550,20 @@ const entries: NewsItem[] = [
     category: 'Product',
     signal: '기업 도입 사례',
     url: 'https://openai.com/index/legora',
+  },
+  {
+    id: 'customers-evernote',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'Evernote, ChatGPT 광고로 무료 체험의 유료 전환율 개선',
+    summary:
+      'OpenAI가 Evernote의 ChatGPT 광고 집행 결과를 소개했다. ' +
+      '기능 하나에 맞춘 핵심 캠페인에서 데스크톱 방문의 약 25%가 신규 가입으로 이어졌고, 체험의 유료 전환율은 기존 유료 채널 평균보다 약 10~20% 높았다.',
+    publishedAt: '2026-10-28',
+    collectedAt: '2026-11-11',
+    category: 'Product',
+    signal: 'ChatGPT 광고',
+    url: 'https://openai.com/ads/customers/evernote',
   },
   {
     id: 'retell-ai',
