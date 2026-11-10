@@ -96,6 +96,7 @@ export const guideProducts: Product[] = [
     role: '챗',
     surfaces: ['웹', '데스크톱', '모바일'],
     models: [
+      'claude-fable-5-2',
       'claude-fable-5-1',
       'claude-fable-5',
       'claude-opus-5-5',
@@ -112,8 +113,8 @@ export const guideProducts: Product[] = [
       적고, 바로 앞 문장이 「the model picker stays on Sonnet 5 for the rest of the chat」입니다 —
       고르는 동작 자체를 적은 문장이라 Opus 둘과 같은 근거입니다.
 
-      support.claude.com/en/articles/15424964 — 「select "Fable 5" or "Fable 5.1"
-      from the model picker」. **고르는 동작 자체를 적은 문장**이라 근거가 됩니다.
+      support.claude.com/en/articles/15424964 — 「select “Fable 5.2,” "Fable 5.1," or “Fable 5”
+      from the model picker」(2026-11-11에 Fable 5.2가 더해졌습니다). **고르는 동작 자체를 적은 문장**이라 근거가 됩니다.
 
       Opus 둘은 2026-09-28에 더했습니다. support.claude.com/en/articles/16049681이
       대화 안의 자동 전환을 풀면서 「You can switch back to Opus 5 or Opus 5.5 anytime
@@ -175,6 +176,7 @@ export const guideProducts: Product[] = [
     */
     surfaces: ['웹', '데스크톱', '모바일', '터미널', 'IDE', '클라우드'],
     models: [
+      'claude-fable-5-2',
       'claude-fable-5-1',
       'claude-fable-5',
       'claude-opus-5-5',
@@ -188,6 +190,9 @@ export const guideProducts: Product[] = [
       code.claude.com/docs/en/model-config 의 별칭 해소 표
       (「| Anthropic API | Opus 5.5 | Sonnet 5 |」)와 「run `/model claude-fable-5`」 같은
       선택 지시입니다.
+
+      **2026-11-11 — Fable 5.2를 더했습니다.** 「**Fable 5.2**: run `/model fable`, or launch with
+      `claude --model fable`.」 `fable` 별칭이 Fable 5.2로 풀리고, 5.1 · 5는 「select it by model ID」입니다.
 
       **2026-09-28에 열어 보니 `opus`가 Opus 5.5로 풀립니다**(표 아래 「Before v2.1.280,
       `opus` resolved to Opus 5 on the Anthropic API, …」). Opus 5는 별칭에서 빠졌지만
@@ -389,7 +394,7 @@ export const guideProducts: Product[] = [
     name: 'Gemini app',
     role: '챗',
     surfaces: ['웹', '데스크톱', '모바일'],
-    models: ['gemini-app-argon', 'gemini-app-pro', 'gemini-app-flash', 'gemini-app-flash-lite'],
+    models: ['gemini-app-carbon', 'gemini-app-argon', 'gemini-app-pro', 'gemini-app-flash', 'gemini-app-flash-lite'],
     /*
       support.google.com/gemini/answer/18648722(「About Gemini models」) — 「Overview of Gemini
       models」에 넷이 한 줄씩 서고, 「Manually switch models」 절이 「Click the model you want to
@@ -398,7 +403,10 @@ export const guideProducts: Product[] = [
 
       2026-10-14 전에는 「Use Gemini Apps」(13275745)의 「Gemini has the following available
       models:」 셋이 근거였는데, 그 문서에서 목록이 빠지고 위 문서로 옮겨 갔습니다. Argon은 그날
-      더했습니다(차례는 성능 서열을 따라 맨 앞).
+      더했습니다(차례는 성능 서열을 따라 맨 앞). Carbon은 2026-11-11에 더했습니다 — 「Overview of
+      Gemini models」의 「Gemini 4 Carbon: Our strongest model …」 줄이고 표에서는 Ultra 칸에만 섭니다.
+      「Our strongest model」이라 Argon 앞에 둡니다. 같은 표에서 Ultra 칸에 Pro가 빠졌습니다(Plus ·
+      Pro 칸에는 있어 목록은 그대로입니다).
 
       **번호를 안 붙입니다.** 같은 회사 요금제 페이지는 같은 자리를 「Gemini 3.6
       Flash」·「Gemini 3.1 Pro」로 적지만 **원문이 그 둘을 잇지 않습니다** — 번호를
@@ -459,6 +467,7 @@ export const guideProducts: Product[] = [
     */
     surfaces: ['데스크톱', '터미널', 'IDE', 'SDK'],
     models: [
+      'gemini-4-carbon',
       'gemini-4-argon',
       'gemini-3-8-flash',
       'gemini-3-7-flash',
@@ -474,6 +483,9 @@ export const guideProducts: Product[] = [
       **셋 중 유일하게 모델 선택기 목록 자체로 확인한 것입니다.**
       antigravity.google/docs/models 의 Reasoning Model 표와 그 아래 드롭다운 목록
       양쪽에 이 열이 그대로 있습니다(선택기 표기는 「GPT-OSS 120B (Medium)」).
+
+      Gemini 4 Carbon은 2026-11-11에 더했습니다 — 표 맨 위에 「Gemini 4 Carbon ❌ ❌ ✅ ✅」로 섭니다
+      (Google AI Ultra · 엔터프라이즈).
 
       Gemini 4 Argon은 2026-10-14에 더했습니다 — 표 맨 위에 서고 드롭다운에도 있습니다. 표에서는
       Ultra · Enterprise만 ✅이고, 각주가 「Not available in Antigravity IDE. Available in the

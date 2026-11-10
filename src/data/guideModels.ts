@@ -43,6 +43,43 @@ const models: ModelInfo[] = [
     앱 선택기는 「Fable 5.1」처럼 회사 이름을 떼고 적지만, 등록부에는 **만든 회사의
     공식 표기**를 씁니다 — 이름을 화면마다 다르게 두면 같은 모델이 둘로 보입니다.
   */
+  /*
+    **2026-11-11에 넣었습니다**(2026-11-09 출시). 모델 개요 비교표의 첫 열이 Fable 5.2가 됐고
+    (「Claude API ID | `claude-fable-5-2`」), 서열 문장이 「From lowest to highest cost and
+    capability, the current models are Claude Haiku 5.5, Claude Sonnet 5.5, Claude Opus 5.5, and
+    Claude Fable 5.2 (the frontier model)」입니다. Comparative latency는 「Moderate」입니다(5.1은
+    「Slower」였습니다). 쓰임은 비교표 Description 행 「For demanding reasoning and long-horizon
+    agentic work」, 마크는 문서 첫 화면의 Fable 5.2 카드가 짝지어 둔 `head.svg` + `--cds-blue-300`
+    판입니다(5.1과 같습니다).
+  */
+  {
+    id: 'claude-fable-5-2',
+    vendorId: 'anthropic',
+    name: 'Claude Fable 5.2',
+    mark: { file: 'assets/model-fable.svg', plate: '#6DA7EC' },
+    apiId: 'claude-fable-5-2',
+    useWhen: {
+      text: '까다로운 추론과 긴 호흡의 에이전트 작업에',
+      url: 'https://platform.claude.com/docs/en/models/overview',
+    },
+    rating: {
+      kind: 'order',
+      rank: 1,
+      of: 4,
+      url: 'https://platform.claude.com/docs/en/about-claude/models/optimizing-for-cost-and-intelligence',
+      speed: 'Moderate',
+      speedUrl: 'https://platform.claude.com/docs/en/models/overview',
+    },
+    current: true,
+    sourceUrl: 'https://platform.claude.com/docs/en/models/fable-5-2/overview',
+  },
+  /*
+    **2026-11-11에 구세대로 내렸습니다.** 모델 개요가 「Legacy models (still available)」 줄에
+    세우고, 제 모델 문서가 「**Legacy.** Released September 1, 2026.」으로 시작해 「Claude Fable
+    5.1 is a legacy model, and Claude Fable 5.2 is the current Fable model.」이라고 적습니다.
+    서열 칩은 현행에만 서므로 걷었습니다. 쓰임 문장은 제 모델 문서에 그대로 남아 있어 출처만
+    그 문서로 옮겼습니다.
+  */
   {
     id: 'claude-fable-5-1',
     vendorId: 'anthropic',
@@ -51,19 +88,10 @@ const models: ModelInfo[] = [
     apiId: 'claude-fable-5-1',
     useWhen: {
       text: '까다로운 추론과 긴 호흡의 에이전트 작업에',
-      url: 'https://platform.claude.com/docs/en/about-claude/models/overview',
+      url: 'https://platform.claude.com/docs/en/models/fable-5-1/overview',
     },
-    rating: {
-      kind: 'order',
-      rank: 1,
-      of: 4,
-      url: 'https://platform.claude.com/docs/en/about-claude/models/choosing-a-model',
-      speed: 'Slower',
-      speedUrl: 'https://platform.claude.com/docs/en/models/overview',
-    },
-    current: true,
-    sourceUrl:
-      'https://platform.claude.com/docs/en/about-claude/models/overview',
+    current: false,
+    sourceUrl: 'https://platform.claude.com/docs/en/models/fable-5-1/overview',
   },
   {
     id: 'claude-fable-5',
@@ -500,6 +528,29 @@ const models: ModelInfo[] = [
     Ultra). Gemini Pro의 「가장 앞선 모델」 구절도 함께 사라졌습니다 — 지금 Pro는 「An advanced
     reasoning model」이고 최상급은 Argon의 「the highest performance」입니다.
   */
+  /*
+    **Carbon은 2026-11-11에 더했습니다**(11-10 일반 공개). 「Overview of Gemini models」의 다섯째 줄
+    「Gemini 4 Carbon: Our strongest model designed to reason deeply through your hardest, long-horizon
+    problems.」이고, 「Model availability」 표에서는 Google AI Ultra 칸에만 섭니다. 선택기 표기는 표와
+    「Manually switch models」 절을 따라 번호 없이 「Carbon」이라, 이름도 Argon과 같은 꼴로 둡니다.
+
+    **같은 날 Argon의 등급 칩을 걷었습니다.** Argon 줄이 「Top-tier intelligence, dynamic deep
+    reasoning, and high performance for complex workflows.」로 바뀌어 최상급(「the highest
+    performance」)이 사라졌고, 그 자리는 Carbon의 「Our strongest model」이 가져갔습니다.
+  */
+  {
+    id: 'gemini-app-carbon',
+    vendorId: 'google',
+    name: 'Gemini Carbon',
+    apiId: null,
+    useWhen: {
+      text: '가장 어렵고 긴 호흡의 문제를 깊이 추론할 때에',
+      url: 'https://support.google.com/gemini/answer/18648722',
+    },
+    rating: { kind: 'phrase', text: '가장 강력한 모델', url: 'https://support.google.com/gemini/answer/18648722' },
+    current: true,
+    sourceUrl: 'https://support.google.com/gemini/answer/18648722',
+  },
   {
     id: 'gemini-app-argon',
     vendorId: 'google',
@@ -509,7 +560,6 @@ const models: ModelInfo[] = [
       text: '깊은 추론이 필요한 복잡한 워크플로에',
       url: 'https://support.google.com/gemini/answer/18648722',
     },
-    rating: { kind: 'phrase', text: '가장 높은 성능', url: 'https://support.google.com/gemini/answer/18648722' },
     current: true,
     sourceUrl: 'https://support.google.com/gemini/answer/18648722',
   },
@@ -583,6 +633,27 @@ const models: ModelInfo[] = [
     rating: { kind: 'phrase', text: '가격 대비 성능이 가장 좋은 모델', url: 'https://ai.google.dev/gemini-api/docs/models' },
     current: true,
     sourceUrl: 'https://ai.google.dev/gemini-api/docs/models',
+  },
+  /*
+    **2026-11-11에 더했습니다**(11-10 정식 제공). 모델 목록의 Gemini 4 카드가 「Our strongest reasoning
+    model, built for complex software engineering, multimodal knowledge work, scientific reasoning, and
+    cybersecurity defense.」 — 최상급이라 등급 칩을 답니다. 쓰임은 모델 페이지 「is our most capable
+    reasoning model, built for complex software engineering, mathematical and scientific problem solving,
+    high factual accuracy, autonomous multi-step agents, and long decode up to 1M tokens.」입니다.
+    Antigravity 표 맨 위에 섭니다(Google AI Ultra · 엔터프라이즈 ✅).
+  */
+  {
+    id: 'gemini-4-carbon',
+    vendorId: 'google',
+    name: 'Gemini 4 Carbon',
+    apiId: 'gemini-4-carbon',
+    useWhen: {
+      text: '복잡한 소프트웨어 엔지니어링과 수학·과학 문제 풀이에',
+      url: 'https://ai.google.dev/gemini-api/docs/models/gemini-4-carbon',
+    },
+    rating: { kind: 'phrase', text: '가장 강력한 추론 모델', url: 'https://ai.google.dev/gemini-api/docs/models' },
+    current: true,
+    sourceUrl: 'https://ai.google.dev/gemini-api/docs/models/gemini-4-carbon',
   },
   {
     id: 'gemini-4-argon',

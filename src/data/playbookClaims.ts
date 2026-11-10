@@ -80,6 +80,16 @@ export const playbookClaims: Claim[] = [
     source: { label: 'Claude Sonnet 5 모델 문서', url: 'https://platform.claude.com/docs/en/models/sonnet-5/overview' },
   },
   {
+    id: 'claude-fable-5-2-context',
+    subject: { kind: 'model', id: 'claude-fable-5-2' },
+    topic: 'context',
+    statement: 'Claude Fable 5.2의 입력 컨텍스트 창',
+    value: '1M 토큰',
+    tier: 'vendor',
+    volatility: 'model',
+    source: { label: 'Claude Fable 5.2 모델 문서', url: 'https://platform.claude.com/docs/en/models/fable-5-2/overview' },
+  },
+  {
     id: 'claude-fable-5-1-context',
     subject: { kind: 'model', id: 'claude-fable-5-1' },
     topic: 'context',
@@ -223,6 +233,17 @@ export const playbookClaims: Claim[] = [
     tier: 'vendor',
     volatility: 'model',
     source: { label: 'GPT-5.5 모델 문서', url: 'https://developers.openai.com/api/docs/models/gpt-5.5' },
+  },
+  {
+    id: 'gemini-4-carbon-context',
+    subject: { kind: 'model', id: 'gemini-4-carbon' },
+    topic: 'context',
+    /* 입력과 출력을 합친 한도다 — 「Context window (unified input and output token limit)」. Argon과 같다. */
+    statement: 'Gemini 4 Carbon의 컨텍스트 창(입력·출력 합산)',
+    value: '1M 토큰',
+    tier: 'vendor',
+    volatility: 'model',
+    source: { label: 'Gemini 4 Carbon 모델 문서', url: 'https://ai.google.dev/gemini-api/docs/models/gemini-4-carbon' },
   },
   {
     id: 'gemini-4-argon-context',
@@ -1640,6 +1661,20 @@ export const playbookClaims: Claim[] = [
      줄이되 뜻을 안 버립니다.
      ───────────────────────────────────────────────────────────────── */
   {
+    id: 'gemini-4-carbon-token-price',
+    subject: { kind: 'model', id: 'gemini-4-carbon' },
+    topic: 'price',
+    statement: '100만 토큰당 입력 / 출력 단가',
+    /* Argon과 같은 도입가다 — 2026-12-01부터 두 배(「$4.00 starting December 1, 2026.」 · 「$20.00 starting December 1, 2026.」). */
+    value: '$2 / $10 (2026-12-01부터 $4 / $20)',
+    tier: 'vendor',
+    volatility: 'price',
+    source: {
+      label: 'Gemini API — Pricing',
+      url: 'https://ai.google.dev/gemini-api/docs/pricing',
+    },
+  },
+  {
     id: 'gemini-4-argon-token-price',
     subject: { kind: 'model', id: 'gemini-4-argon' },
     topic: 'price',
@@ -1904,6 +1939,19 @@ export const playbookClaims: Claim[] = [
     source: {
       label: 'OpenAI API — Pricing',
       url: 'https://developers.openai.com/api/docs/pricing',
+    },
+  },
+  {
+    id: 'claude-fable-5-2-token-price',
+    subject: { kind: 'model', id: 'claude-fable-5-2' },
+    topic: 'price',
+    statement: '100만 토큰당 입력 / 출력 단가',
+    value: '$8 / $40',
+    tier: 'vendor',
+    volatility: 'price',
+    source: {
+      label: 'Claude Docs — Pricing',
+      url: 'https://platform.claude.com/docs/en/about-claude/pricing',
     },
   },
   {
