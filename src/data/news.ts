@@ -172,6 +172,86 @@ export const globalNewsUpdatedAt = '2026-11-03';
  */
 const entries: NewsItem[] = [
   {
+    id: 'android-gemini-intelligence-november-features-devices',
+    source: 'Google DeepMind',
+    kind: 'company',
+    title: 'Gemini Intelligence, 위젯 만들기·기기 도움 기능 추가와 지원 기기 확대',
+    summary:
+      '구글이 Android용 Gemini Intelligence에 설명만으로 홈 화면 위젯을 만드는 Create My Widget과 기기 설정을 대신 바꾸는 Device Assistance를 더했다. ' +
+      'motorola signature 27과 Pixel 10 계열로 지원 기기도 넓혔다.',
+    publishedAt: '2026-11-10',
+    collectedAt: '2026-11-11',
+    category: 'Product',
+    signal: '소비자 AI',
+    url: 'https://blog.google/products-and-platforms/platforms/android/gemini-intelligence-november-features-devices',
+  },
+  {
+    id: 'company-announcements-adobe-google-partnership-integration',
+    source: 'Google DeepMind',
+    kind: 'company',
+    title: 'Google·Adobe 제휴 확대 — Gmail·Drive·Gemini에 Adobe 도구 연결',
+    summary:
+      '구글이 Adobe MAX에서 Adobe와의 제휴 확대를 발표했다. Gmail·Drive에서 Acrobat으로 바로 가는 경로와 Gemini·Gemini Enterprise의 Adobe 커넥터가 생기고, ' +
+      'Adobe 앱에는 구글의 프런티어 모델이 들어간다.',
+    publishedAt: '2026-11-10',
+    collectedAt: '2026-11-11',
+    category: 'Product',
+    signal: '창작 도구 제휴',
+    url: 'https://blog.google/company-news/inside-google/company-announcements/adobe-google-partnership-integration',
+  },
+  {
+    id: 'roadshow-launch',
+    source: 'Anthropic',
+    kind: 'company',
+    title: 'Anthropic, 기업공개 로드쇼 시작 — 공모가 주당 70~78달러',
+    summary:
+      'Anthropic, PBC가 Class A 보통주 기업공개 로드쇼를 시작했다. 공모 주식은 8억 2,500만 주이고 예상 공모가는 주당 70~78달러이며, ' +
+      '나스닥 글로벌 셀렉트 마켓에 티커 ANT로 상장을 신청했다.',
+    publishedAt: '2026-11-10',
+    collectedAt: '2026-11-11',
+    category: 'Corporate',
+    signal: '상장 로드쇼',
+    url: 'https://www.anthropic.com/news/roadshow-launch',
+  },
+  {
+    id: 'blog-introducing-alphaproof-code',
+    source: 'Google DeepMind',
+    kind: 'company',
+    title: 'Google DeepMind, AlphaProof Code로 Signal 프로토콜 구현 코드 형식 검증',
+    summary:
+      '구글 딥마인드가 사람과 AI 에이전트가 나눠 맡는 형식 검증 프레임워크 AlphaProof Code를 공개했다. ' +
+      'Signal 프로토콜의 실제 구현 코드가 핵심 보안 속성을 지킨다는 것을 Lean 증명 600만 줄 이상으로 4주 만에 입증했다.',
+    publishedAt: '2026-11-10',
+    collectedAt: '2026-11-11',
+    category: 'Research',
+    signal: 'AI 보안 연구',
+    url: 'https://deepmind.google/blog/introducing-alphaproof-code',
+  },
+  {
+    id: 'blog-gemini-4-carbon-is-now-available',
+    source: 'Google DeepMind',
+    kind: 'model',
+    title: 'Gemini 4 Carbon 정식 제공 — Gemini API·Gemini 앱·Antigravity',
+    summary:
+      '구글이 Fairwind Program 사이버 방어자에게만 열었던 Gemini 4 Carbon을 개발자·기업·일반 사용자에게 공개했다. ' +
+      '유료 API 개발자는 Argon과 같은 100만 토큰당 입력 2달러·출력 10달러로 쓰고, Google AI Ultra 구독자는 Gemini 앱·AI Mode·Antigravity에서 쓴다.',
+    publishedAt: '2026-11-10',
+    collectedAt: '2026-11-11',
+    category: 'Frontier',
+    signal: '프런티어 모델',
+    url: 'https://deepmind.google/blog/gemini-4-carbon-is-now-available',
+    model: {
+      family: 'Gemini',
+      name: 'Gemini 4 Carbon',
+      kind: '모델 패밀리',
+      status: '공개',
+      useCase: '복잡한 다단계 코딩·과학 연구',
+      headline: '사이버 방어자 한정에서 유료 API와 AI Ultra 구독자 전체로 열린 Gemini 4 세대 최상위 모델',
+      logo: 'assets/gemini.svg',
+      tone: 'gemini',
+    },
+  },
+  {
     id: 'blog-gemini-robotics-2-5-accelerates-real-world-physical-intelligence',
     source: 'Google DeepMind',
     kind: 'model',

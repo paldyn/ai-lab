@@ -2,6 +2,72 @@ import type { NewsDetail } from '../news';
 
 /** 2026-11 발표의 모달 본문. 목록은 news.ts에 있습니다. */
 export const details: Record<string, NewsDetail> = {
+  'blog-gemini-4-carbon-is-now-available': {
+    points: [
+      '두 주 전 Fairwind Program 사이버 방어자에게만 열었던 Carbon을 개발자·기업·과학자·일반 사용자에게 공개했다',
+      'Google AI Studio와 Gemini for business의 유료 개발자·기업은 API로 쓰며 도입가는 Argon과 같은 입력 2달러·출력 10달러(100만 토큰당)다',
+      'Google AI Ultra 구독자에게 Antigravity·Gemini 앱·검색 AI Mode로 순차 제공한다',
+      'Argon은 대부분의 작업에 맞고 Carbon은 토큰을 더 써서 깊이 추론하는 어려운 다단계 작업용이라고 구분했다',
+      'CursorBench 4.0·Perplexity WANDR·Zapier AutomationBench 1위이고 과제당 비용은 다음 외부 모델의 절반 이하라고 밝혔다',
+      'Antigravity에 프롬프트 하나를 여러 에이전트 팀으로 나눠 돌리는 /swarm을 프리뷰로 넣었다',
+      '모의 사이버 공격 시험에서 시도당 침투율이 0.8%로 Argon의 3.1%보다 낮았다',
+      'Argon을 무료로 쓰는 과학자 지원 프로그램 참여자에게 Carbon 접근을 넓혔다',
+    ],
+    commentary:
+      '10월 28일 항목이 제한 공개였다면 이번에는 값을 매기고 앱까지 연 사실상의 출시다. Argon과 단가를 똑같이 둔 것이 눈에 띄는데, 모델을 고르는 기준을 값이 아니라 작업의 난이도와 토큰 소모로 옮겨 놓은 셈이다. 앱 쪽은 Ultra 구독자 한정이라 일반 사용자 대부분에게는 아직 Argon이 기본이다.',
+  },
+  'blog-introducing-alphaproof-code': {
+    points: [
+      'AlphaProof Code는 사람 전문가와 여러 LLM 에이전트가 일을 나누는 형식 검증 프레임워크다',
+      '연구진이 모델들과 함께 Signal의 보안 목표를 수학 명세로 옮겼고 명세는 전부 사람이 검토했다',
+      '에이전트가 Lean 증명을 600만 줄 넘게 만들었고 사람이 다시 볼 곳은 코드의 1%로 추렸다',
+      '설계가 아니라 기기에서 도는 실제 구현 코드가 보안 속성을 지킨다는 것을 4주 만에 증명했다',
+      '널리 쓰이는 프로토콜의 구현을 방법을 불문하고 형식 검증한 것은 처음이라고 밝혔다',
+      '이미 고친 실제 버그 둘을 격리본에 되살렸을 때 두 경우 모두 안전하지 않다는 기계 검증 증명이 나왔다',
+      '코드를 오픈소스로 공개한다',
+    ],
+    commentary:
+      'Carbon 출시 글이 사례로 든 작업을 따로 풀어 쓴 연구 발표다. 수학 증명에 쓰던 AlphaProof 계열을 소프트웨어로 옮겨, 생성한 코드를 Lean이 검사하니 모델의 환각이 결과에 섞이지 않는다는 점이 핵심이다. 사람 검토를 1%로 줄였다는 수치가 다른 보안 핵심 코드에도 재현되는지가 다음 관건이다.',
+  },
+  'roadshow-launch': {
+    points: [
+      'Anthropic, PBC가 Class A 보통주 기업공개 로드쇼를 시작했다',
+      '공모 주식은 8억 2,500만 주이고 그중 8억 135만 1,354주를 회사가, 2,364만 8,646주를 기존 주주가 판다',
+      '기존 주주 매각분의 대금은 회사가 받지 않는다',
+      '인수단에 30일 안에 1억 2,375만 주를 추가로 살 수 있는 선택권을 줄 예정이다',
+      '예상 공모가는 주당 70~78달러다',
+      '나스닥 글로벌 셀렉트 마켓에 티커 ANT로 상장을 신청했다',
+      '증권신고서는 SEC에 제출했지만 아직 효력이 발생하지 않았다',
+    ],
+    commentary:
+      '10월 말 S-1 공개 제출 때 비어 있던 공모 주식 수와 가격 범위가 이번에 채워졌다. 범위 상단으로 단순 계산하면 추가 배정분을 빼고도 공모 규모가 600억 달러를 넘는다. 공익 법인(PBC) 구조와 장기 이익 신탁이 상장 뒤 주주 압력 아래에서 어떻게 작동할지가 관전 지점이다.',
+  },
+  'company-announcements-adobe-google-partnership-integration': {
+    points: [
+      'Adobe MAX에서 Adobe와의 제휴 확대를 발표했다',
+      'Google Drive·Gmail에서 Adobe Acrobat을 추천 앱으로 띄우고 파일 미리보기에 「Edit with」 진입점을 둔다',
+      'Adobe가 Gemini·Gemini Enterprise의 커넥터에 Acrobat과 다른 크리에이티브 도구를 더한다',
+      'Adobe 크리에이티브 도구를 검색의 AI Mode에도 들인다',
+      '기업은 Gemini Enterprise에서 Adobe의 CX Enterprise Coworker 에이전트를 쓸 수 있게 된다',
+      'Adobe와 Google DeepMind가 Photoshop에서 거의 실시간 편집을 노리는 이미지 모델을 함께 탐색한다',
+      '구글의 프런티어 모델을 Adobe 앱에 들인다',
+    ],
+    commentary:
+      '양쪽 다 상대 앱 안에 자기 창구를 내는 맞교환 제휴다. 구글은 Gemini Enterprise의 커넥터·에이전트 목록을 늘리고, Adobe는 Workspace 사용자에게 Acrobat 진입점을 얻는다. 대부분 「곧」·「탐색한다」 단계라 일정이 없고, Photoshop용 이미지 모델이 실제 제품으로 나오는지가 가장 구체적인 확인 지점이다.',
+  },
+  'android-gemini-intelligence-november-features-devices': {
+    points: [
+      'Motorola의 첫 Gemini Intelligence 기기 motorola signature 27이 11월 19일 미국에서 사전 주문을 받는다',
+      'Pixel 10·Pixel 10 Pro XL·Pixel 10 Pro Fold가 최신 Gemini Intelligence 기능을 받는다',
+      '말을 정리된 글로 바꾸는 Rambler를 Pixel 10 계열과 motorola signature 27로 넓혔다',
+      'Create My Widget은 설명만으로 Gmail·캘린더·검색 정보를 담은 홈 화면 위젯을 만들며 몇 주에 걸쳐 배포된다',
+      'Device Assistance는 저장 공간 정리·위치 권한 확인 같은 기기 설정을 요청만으로 처리한다',
+      'Pixel의 Gemini Intelligence가 곧 Android Auto에서 앱을 넘나드는 제안을 띄운다',
+      'Create My Widget은 앞으로 몇 주 안에 Pixel Watch에도 온다',
+    ],
+    commentary:
+      '모델 발표가 아니라 Android 기기에 묶인 Gemini 기능을 넓히는 소식이다. 휴대폰·노트북·차·시계로 같은 이름을 밀어 Gemini를 앱이 아니라 기기 층으로 만드는 방향이 분명하다. 기능마다 국가·언어·기기 제약이 각주로 붙어 있어 국내 사용자가 실제로 받는 시점은 따로 확인해야 한다.',
+  },
   'blog-gemini-robotics-2-5-accelerates-real-world-physical-intelligence': {
     points: [
       'Gemini Robotics 2.5는 딥마인드의 가장 뛰어난 VLA(시각·언어·행동) 모델이다',
