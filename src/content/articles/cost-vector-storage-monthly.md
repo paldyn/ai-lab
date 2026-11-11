@@ -269,3 +269,5 @@ fp16은 공짜입니다. 앞 글에서 nDCG가 넷째 자리까지 같았고 메
 읽어주셔서 감사합니다. 😊
 
 **지난 글:** [한국어 띄어쓰기 교정기 실측: BM25 앞에 붙일 값이 있는가 — 어절 15%가 틀려야 본전이었고, 두 글자씩 자르는 편이 늘 더 쌌다](/articles/bench-korean-spacing-correction)
+
+**다음 글:** [모델 카드는 학습 데이터를 밝히는가: 평가셋 겹침을 배제할 수 있는 모델 — SciFact 점수를 내건 아홉 중 데이터를 다 적은 둘은 SciFact의 원천 말뭉치로 학습했다](/articles/spec-embedding-model-cards)
