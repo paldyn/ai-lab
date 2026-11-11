@@ -160,7 +160,7 @@ export interface NewsDetail {
   commentary: string;
 }
 
-export const globalNewsUpdatedAt = '2026-11-10';
+export const globalNewsUpdatedAt = '2026-11-11';
 
 /**
  * 공식 발표 한 건 = 항목 한 개. 2026년 1월부터 쌓는 아카이브이며 오래된 항목을
@@ -171,6 +171,104 @@ export const globalNewsUpdatedAt = '2026-11-10';
  * 목록에서 파생됩니다. 갱신 시 globalNewsUpdatedAt도 함께 올립니다.
  */
 const entries: NewsItem[] = [
+  {
+    id: 'jiostar-vijay-seshadri',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'JioStar, OpenAI API로 8주 만에 음성 대화형 콘텐츠 탐색 구축',
+    summary:
+      'OpenAI가 JioStar 수석 아키텍트 Vijay Seshadri와의 대담을 실었다. JioHotstar에 영상·크리켓 통계를 말로 찾는 ' +
+      '대화형 탐색 도우미를 OpenAI API로 넣었고, 15개 넘는 언어로 약 8주 만에 만들었다.',
+    publishedAt: '2026-11-11',
+    collectedAt: '2026-11-12',
+    category: 'Product',
+    signal: '기업 도입 사례',
+    url: 'https://openai.com/index/jiostar-vijay-seshadri',
+  },
+  {
+    id: 'cogent-security',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'Cogent, OpenAI 모델 기반 에이전트로 취약점 조치 시간 75% 단축',
+    summary:
+      'OpenAI가 보안 스타트업 Cogent의 사례를 소개했다. GPT-6.1 Sol·GPT-6 Astra·GPT-5.6과 기업 맥락을 묶은 에이전트가 ' +
+      '조사부터 검증된 조치까지 맡아, 한 고객은 치명적 취약점의 평균 조치 시간을 75% 줄였다.',
+    publishedAt: '2026-11-10',
+    collectedAt: '2026-11-12',
+    category: 'Product',
+    signal: 'AI 사이버 방어',
+    url: 'https://openai.com/index/cogent-security',
+  },
+  {
+    id: 'singapore-airlines-travel-work',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'Singapore Airlines, OpenAI API로 고객 챗봇 Kris 만족도 두 배',
+    summary:
+      'OpenAI가 Singapore Airlines의 도입 사례를 소개했다. 고객 챗봇 Kris를 OpenAI API 기반 대화형으로 바꿔 ' +
+      '고객 만족도가 두 배가 됐고, 상담원의 평균 처리 시간은 약 10% 줄었다.',
+    publishedAt: '2026-11-10',
+    collectedAt: '2026-11-12',
+    category: 'Product',
+    signal: '기업 도입 사례',
+    url: 'https://openai.com/index/singapore-airlines-travel-work',
+  },
+  {
+    id: 'ai-effect-on-freelance-work',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'OpenAI·Upwork, AI가 프리랜서 일감의 구성을 바꾼다는 보고서',
+    summary:
+      'OpenAI가 Upwork와 함께 프리랜서 시장을 분석한 Work at the Frontier 보고서를 냈다. 63개 업무 범주 중 43개에서 ' +
+      'ChatGPT에서 흔한 활동이 Upwork 비중을 잃었고, AI 관련 프로젝트는 예산과 작업 시간이 더 컸다.',
+    publishedAt: '2026-11-10',
+    collectedAt: '2026-11-12',
+    category: 'Research',
+    signal: '경제 연구',
+    url: 'https://openai.com/index/ai-effect-on-freelance-work',
+  },
+  {
+    id: 'closing-ai-guidance-gap-education',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'OpenAI, 학생의 AI 사용과 지도 사이의 격차를 다룬 교육 보고서',
+    summary:
+      'OpenAI가 EMEA 교육 파트너십의 교훈과 ThinkYoung 조사를 묶은 보고서를 냈다. 조사한 학생의 79%가 과제에 AI를 썼지만 ' +
+      '사용법을 배웠다는 학생은 47%에 그쳤다.',
+    publishedAt: '2026-11-10',
+    collectedAt: '2026-11-12',
+    category: 'Research',
+    signal: '교육 현장 AI',
+    url: 'https://openai.com/index/closing-ai-guidance-gap-education',
+  },
+  {
+    id: 'franklin-templeton',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'Franklin Templeton, Codex 등으로 투자 리서치 워크플로 개발',
+    summary:
+      'OpenAI가 자산운용사 Franklin Templeton의 사례를 소개했다. 주식 리서치부터 시작해 Codex 등으로 데이터의 의미를 담은 ' +
+      '연결 계층을 만들고, 포트폴리오 매니저가 여러 견해와 리스크를 비교하도록 돕는다.',
+    publishedAt: '2026-11-05',
+    collectedAt: '2026-11-12',
+    category: 'Product',
+    signal: '기업 도입 사례',
+    url: 'https://openai.com/index/franklin-templeton',
+  },
+  {
+    id: 'customers-flipsnack',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'Flipsnack, ChatGPT 광고 전환 최적화로 가입당 비용 약 75% 절감',
+    summary:
+      'OpenAI가 Flipsnack의 ChatGPT 광고 집행 결과를 소개했다. 클릭 목표·고정 입찰이던 미국 캠페인 다섯을 전환 목표로 ' +
+      '바꾸자 가입은 약 310% 늘고 가입당 비용은 약 75% 줄었다.',
+    publishedAt: '2026-11-05',
+    collectedAt: '2026-11-12',
+    category: 'Product',
+    signal: 'ChatGPT 광고',
+    url: 'https://openai.com/ads/customers/flipsnack',
+  },
   {
     id: 'developers-tools-gemini-decisions-api',
     source: 'Google DeepMind',
