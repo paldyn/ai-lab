@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="560" viewBox="0 0 880 560" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+<defs><marker id="arr" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto"><path d="M 0 0 L 13 7 L 0 14 z" fill="#e8e8e8"/></marker>
+<marker id="arrb" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto"><path d="M 0 0 L 13 7 L 0 14 z" fill="#7ec8e3"/></marker>
+<marker id="arrp" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto"><path d="M 0 0 L 13 7 L 0 14 z" fill="#7777cc"/></marker></defs>
+<rect x="0" y="0" width="880" height="560" rx="12" fill="#0a0a0a"/>
+<text x="440" y="44" text-anchor="middle" font-size="22" font-weight="700" fill="#e8e8e8">최소노름 해: 원점에서 해 집합에 내린 수선의 발</text>
+<line x1="164.0" y1="400.0" x2="710.0" y2="400.0" stroke="#888" stroke-width="1.5"/>
+<line x1="262.0" y1="505.0" x2="262.0" y2="148.0" stroke="#888" stroke-width="1.5"/>
+<text x="718.0" y="405.0" font-size="13" fill="#888" text-anchor="start">w₁</text>
+<text x="256.0" y="140.0" font-size="13" fill="#888" text-anchor="end">w₂</text>
+<line x1="332.0" y1="396.0" x2="332.0" y2="404.0" stroke="#444" stroke-width="1"/>
+<text x="332.0" y="420.0" font-size="13" fill="#888" text-anchor="middle">1</text>
+<line x1="402.0" y1="396.0" x2="402.0" y2="404.0" stroke="#444" stroke-width="1"/>
+<text x="402.0" y="420.0" font-size="13" fill="#888" text-anchor="middle">2</text>
+<line x1="472.0" y1="396.0" x2="472.0" y2="404.0" stroke="#444" stroke-width="1"/>
+<text x="472.0" y="420.0" font-size="13" fill="#888" text-anchor="middle">3</text>
+<line x1="542.0" y1="396.0" x2="542.0" y2="404.0" stroke="#444" stroke-width="1"/>
+<text x="542.0" y="420.0" font-size="13" fill="#888" text-anchor="middle">4</text>
+<line x1="612.0" y1="396.0" x2="612.0" y2="404.0" stroke="#444" stroke-width="1"/>
+<text x="612.0" y="420.0" font-size="13" fill="#888" text-anchor="middle">5</text>
+<line x1="258.0" y1="330.0" x2="266.0" y2="330.0" stroke="#444" stroke-width="1"/>
+<text x="252.0" y="335.0" font-size="13" fill="#888" text-anchor="end">1</text>
+<line x1="258.0" y1="260.0" x2="266.0" y2="260.0" stroke="#444" stroke-width="1"/>
+<text x="252.0" y="265.0" font-size="13" fill="#888" text-anchor="end">2</text>
+<line x1="258.0" y1="190.0" x2="266.0" y2="190.0" stroke="#444" stroke-width="1"/>
+<text x="252.0" y="195.0" font-size="13" fill="#888" text-anchor="end">3</text>
+<line x1="178.0" y1="183.0" x2="696.0" y2="442.0" stroke="#7ec8e3" stroke-width="2.5"/>
+<line x1="213.0" y1="498.0" x2="384.5" y2="155.0" stroke="#7777cc" stroke-width="2" stroke-dasharray="5,3"/>
+<circle cx="262" cy="400" r="156.5" fill="none" stroke="#55c555" stroke-width="2"/>
+<circle cx="262" cy="400" r="221.4" fill="none" stroke="#888" stroke-width="2" stroke-dasharray="4,4"/>
+<circle cx="332.0" cy="260.0" r="6" fill="#55c555"/>
+<circle cx="472.0" cy="330.0" r="5" fill="#e8e8e8"/>
+<path d="M 343.3 265.6 L 337.6 276.9 L 326.4 271.3" fill="none" stroke="#e8e8e8" stroke-width="1.5"/>
+<text x="423.0" y="205.4" font-size="14" fill="#55c555" text-anchor="start" font-weight="600">최소노름 해 w* = (1, 2)</text>
+<text x="423.0" y="225.0" font-size="13" fill="#55c555" text-anchor="start">‖w*‖ = √5 ≈ 2.24</text>
+<line x1="417.4" y1="216.6" x2="339.0" y2="254.4" stroke="#55c555" stroke-width="1.5"/>
+<text x="486.0" y="308.0" font-size="13" fill="#e8e8e8" text-anchor="start">다른 보간 해 (3, 1)</text>
+<text x="486.0" y="325.0" font-size="13" fill="#888" text-anchor="start">‖w‖ = √10 ≈ 3.16</text>
+<text x="584.0" y="456.0" font-size="13" fill="#7ec8e3" text-anchor="start">해 집합 { w : w₁ + 2w₂ = 5 }</text>
+<text x="206.0" y="488.0" font-size="13" fill="#7777cc" text-anchor="end">행공간 span{x}</text>
+<text x="157.0" y="515.5" font-size="13" fill="#888" text-anchor="start"></text>
+<rect x="600" y="92" width="250" height="96" rx="8" fill="#111" stroke="#333"/>
+<text x="618.0" y="120.0" font-size="13" fill="#e8e8e8" text-anchor="start">표본 하나: x = (1, 2), y = 5</text>
+<text x="618.0" y="144.0" font-size="13" fill="#888" text-anchor="start">w* = xᵀ(x xᵀ)⁻¹ y = (1, 2)·5/5</text>
+<text x="618.0" y="166.0" font-size="13" fill="#888" text-anchor="start">원이 해 집합에 처음 닿는 점</text>
+</svg>

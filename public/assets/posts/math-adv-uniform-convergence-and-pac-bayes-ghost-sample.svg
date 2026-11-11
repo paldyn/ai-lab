@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="440" viewBox="0 0 880 440" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+<rect x="0" y="0" width="880" height="440" rx="12" fill="#0a0a0a"/>
+<text x="440" y="44" text-anchor="middle" font-size="22" font-weight="700" fill="#e8e8e8">대칭화: 고스트 표본과 부호 σᵢ</text>
+<text x="440" y="72" text-anchor="middle" font-size="16" font-weight="600" fill="#e8e8e8">실제위험을 표본 둘의 차이로 바꾸는 세 걸음</text>
+<defs><marker id="ah" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto-start-reverse"><path d="M 0 0 L 13 7 L 0 14 z" fill="#7ec8e3"/></marker></defs>
+<text x="60.0" y="136.0" text-anchor="start" font-size="13" fill="#e8e8e8">표본 S</text>
+<text x="60.0" y="356.0" text-anchor="start" font-size="13" fill="#e8e8e8">고스트 S′</text>
+<rect x="80" y="150" width="60" height="48" rx="6" fill="#111" stroke="#7ec8e3" stroke-width="1.5"/><text x="110.0" y="179.0" text-anchor="middle" font-size="16" fill="#e8e8e8">z₁</text>
+<rect x="80" y="290" width="60" height="48" rx="6" fill="#111" stroke="#7777cc" stroke-width="1.5"/><text x="110.0" y="319.0" text-anchor="middle" font-size="16" fill="#e8e8e8">z′₁</text>
+<line x1="110" y1="198" x2="110" y2="290" stroke="#7ec8e3" stroke-width="2" marker-start="url(#ah)" marker-end="url(#ah)"/>
+<text x="120.0" y="249.0" text-anchor="start" font-size="13" fill="#7ec8e3">σ₁</text>
+<rect x="160" y="150" width="60" height="48" rx="6" fill="#111" stroke="#7ec8e3" stroke-width="1.5"/><text x="190.0" y="179.0" text-anchor="middle" font-size="16" fill="#e8e8e8">z₂</text>
+<rect x="160" y="290" width="60" height="48" rx="6" fill="#111" stroke="#7777cc" stroke-width="1.5"/><text x="190.0" y="319.0" text-anchor="middle" font-size="16" fill="#e8e8e8">z′₂</text>
+<line x1="190" y1="198" x2="190" y2="290" stroke="#7ec8e3" stroke-width="2" marker-start="url(#ah)" marker-end="url(#ah)"/>
+<text x="200.0" y="249.0" text-anchor="start" font-size="13" fill="#7ec8e3">σ₂</text>
+<rect x="240" y="150" width="60" height="48" rx="6" fill="#111" stroke="#7ec8e3" stroke-width="1.5"/><text x="270.0" y="179.0" text-anchor="middle" font-size="16" fill="#e8e8e8">z₃</text>
+<rect x="240" y="290" width="60" height="48" rx="6" fill="#111" stroke="#7777cc" stroke-width="1.5"/><text x="270.0" y="319.0" text-anchor="middle" font-size="16" fill="#e8e8e8">z′₃</text>
+<line x1="270" y1="198" x2="270" y2="290" stroke="#7ec8e3" stroke-width="2" marker-start="url(#ah)" marker-end="url(#ah)"/>
+<text x="280.0" y="249.0" text-anchor="start" font-size="13" fill="#7ec8e3">σ₃</text>
+<rect x="340" y="150" width="60" height="48" rx="6" fill="#111" stroke="#7ec8e3" stroke-width="1.5"/><text x="370.0" y="179.0" text-anchor="middle" font-size="16" fill="#e8e8e8">zₙ</text>
+<rect x="340" y="290" width="60" height="48" rx="6" fill="#111" stroke="#7777cc" stroke-width="1.5"/><text x="370.0" y="319.0" text-anchor="middle" font-size="16" fill="#e8e8e8">z′ₙ</text>
+<line x1="370" y1="198" x2="370" y2="290" stroke="#7ec8e3" stroke-width="2" marker-start="url(#ah)" marker-end="url(#ah)"/>
+<text x="380.0" y="249.0" text-anchor="start" font-size="13" fill="#7ec8e3">σₙ</text>
+<text x="320.0" y="179.0" text-anchor="middle" font-size="16" fill="#888">…</text>
+<text x="320.0" y="319.0" text-anchor="middle" font-size="16" fill="#888">…</text>
+<rect x="460" y="120" width="360" height="72" rx="8" fill="#111" stroke="#3a3a3a" stroke-width="1"/>
+<circle cx="494" cy="156" r="14" fill="#7ec8e3"/><text x="494.0" y="161.0" text-anchor="middle" font-size="13" fill="#0a0a0a" font-weight="700">1</text>
+<text x="524.0" y="151.0" text-anchor="start" font-size="14" fill="#e8e8e8" font-weight="600">R(f)를 S′의 평균으로 바꾼다</text>
+<text x="524.0" y="173.0" text-anchor="start" font-size="13" fill="#888">sup 𝔼 ≤ 𝔼 sup</text>
+<rect x="460" y="216" width="360" height="72" rx="8" fill="#111" stroke="#3a3a3a" stroke-width="1"/>
+<circle cx="494" cy="252" r="14" fill="#7ec8e3"/><text x="494.0" y="257.0" text-anchor="middle" font-size="13" fill="#0a0a0a" font-weight="700">2</text>
+<text x="524.0" y="247.0" text-anchor="start" font-size="14" fill="#e8e8e8" font-weight="600">짝을 바꿔도 분포가 같다</text>
+<text x="524.0" y="269.0" text-anchor="start" font-size="13" fill="#888">차이마다 σᵢ를 곱한다</text>
+<rect x="460" y="312" width="360" height="72" rx="8" fill="#111" stroke="#3a3a3a" stroke-width="1"/>
+<circle cx="494" cy="348" r="14" fill="#7ec8e3"/><text x="494.0" y="353.0" text-anchor="middle" font-size="13" fill="#0a0a0a" font-weight="700">3</text>
+<text x="524.0" y="343.0" text-anchor="start" font-size="14" fill="#e8e8e8" font-weight="600">합의 상한을 둘로 가른다</text>
+<text x="524.0" y="365.0" text-anchor="start" font-size="13" fill="#888">≤ 2 · Rademacher 복잡도</text>
+</svg>

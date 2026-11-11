@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="540" viewBox="0 0 880 540" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+<defs><marker id="arr" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto"><path d="M 0 0 L 13 7 L 0 14 z" fill="#e8e8e8"/></marker>
+<marker id="arrb" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto"><path d="M 0 0 L 13 7 L 0 14 z" fill="#7ec8e3"/></marker>
+<marker id="arrp" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto"><path d="M 0 0 L 13 7 L 0 14 z" fill="#7777cc"/></marker></defs>
+<rect x="0" y="0" width="880" height="540" rx="12" fill="#0a0a0a"/>
+<text x="440" y="44" text-anchor="middle" font-size="22" font-weight="700" fill="#e8e8e8">양성 과적합의 스펙트럼: 신호를 싣는 스파이크와 잡음을 받는 긴 꼬리</text>
+<line x1="120" y1="420" x2="640" y2="420" stroke="#888" stroke-width="1.5"/>
+<line x1="120" y1="420" x2="120" y2="92" stroke="#888" stroke-width="1.5"/>
+<line x1="120.0" y1="420" x2="120.0" y2="425" stroke="#444"/>
+<text x="120.0" y="442.0" font-size="13" fill="#888" text-anchor="middle">1</text>
+<line x1="224.0" y1="420" x2="224.0" y2="425" stroke="#444"/>
+<text x="224.0" y="442.0" font-size="13" fill="#888" text-anchor="middle">10</text>
+<line x1="328.0" y1="420" x2="328.0" y2="425" stroke="#444"/>
+<text x="328.0" y="442.0" font-size="13" fill="#888" text-anchor="middle">100</text>
+<line x1="432.0" y1="420" x2="432.0" y2="425" stroke="#444"/>
+<text x="432.0" y="442.0" font-size="13" fill="#888" text-anchor="middle">1,000</text>
+<line x1="536.0" y1="420" x2="536.0" y2="425" stroke="#444"/>
+<text x="536.0" y="442.0" font-size="13" fill="#888" text-anchor="middle">10⁴</text>
+<line x1="640.0" y1="420" x2="640.0" y2="425" stroke="#444"/>
+<text x="640.0" y="442.0" font-size="13" fill="#888" text-anchor="middle">10⁵</text>
+<line x1="115" y1="122.3" x2="120" y2="122.3" stroke="#444"/>
+<text x="111.0" y="127.3" font-size="13" fill="#888" text-anchor="end">1</text>
+<line x1="115" y1="196.7" x2="120" y2="196.7" stroke="#444"/>
+<text x="111.0" y="201.7" font-size="13" fill="#888" text-anchor="end">0.1</text>
+<line x1="115" y1="271.2" x2="120" y2="271.2" stroke="#444"/>
+<text x="111.0" y="276.2" font-size="13" fill="#888" text-anchor="end">0.01</text>
+<line x1="115" y1="345.6" x2="120" y2="345.6" stroke="#444"/>
+<text x="111.0" y="350.6" font-size="13" fill="#888" text-anchor="end">0.001</text>
+<line x1="115" y1="420.0" x2="120" y2="420.0" stroke="#444"/>
+<text x="111.0" y="425.0" font-size="13" fill="#888" text-anchor="end">10⁻⁴</text>
+<text x="640.0" y="464.0" font-size="13" fill="#888" text-anchor="end">고윳값 순번 i (로그)</text>
+<text x="106.0" y="80.0" font-size="13" fill="#888" text-anchor="start">고윳값 λᵢ (로그)</text>
+<path d="M 120.0 122.3 L 224.0 122.3 L 224.0 375.2 L 608.7 375.2" fill="none" stroke="#7ec8e3" stroke-width="2.5"/>
+<path d="M 120.0 420 L 224.0 420 L 224.0 375.2 L 608.7 375.2 L 608.7 420 Z" fill="#7777cc" fill-opacity="0.18"/>
+<text x="172.0" y="108.3" font-size="13" fill="#7ec8e3" text-anchor="middle" font-weight="600">스파이크 k = 10, λ = 1</text>
+<text x="432.0" y="359.2" font-size="13" fill="#7777cc" text-anchor="middle" font-weight="600">꼬리 m = 50,000, τ = 0.0004</text>
+<line x1="359.3" y1="420" x2="359.3" y2="92" stroke="#e05555" stroke-width="1.5" stroke-dasharray="5,3"/>
+<text x="365.3" y="140.0" font-size="13" fill="#e05555" text-anchor="start">n = 200</text>
+<rect x="672" y="110" width="186" height="86" rx="8" fill="#111" stroke="#333"/>
+<text x="688.0" y="136.0" font-size="13" fill="#e8e8e8" text-anchor="start" font-weight="600">스파이크</text>
+<text x="688.0" y="160.0" font-size="13" fill="#888" text-anchor="start">신호 β가 사는 곳</text>
+<text x="688.0" y="180.0" font-size="13" fill="#888" text-anchor="start">꼬리가 릿지 λ ≈ c 노릇</text>
+<rect x="672" y="220" width="186" height="86" rx="8" fill="#111" stroke="#333"/>
+<text x="688.0" y="246.0" font-size="13" fill="#e8e8e8" text-anchor="start" font-weight="600">꼬리 합 c = mτ = 20</text>
+<text x="688.0" y="270.0" font-size="13" fill="#888" text-anchor="start">편향 ≈ (c/(n+c))²</text>
+<text x="688.0" y="290.0" font-size="13" fill="#888" text-anchor="start">c ≪ n 이면 작다</text>
+<rect x="672" y="330" width="186" height="86" rx="8" fill="#111" stroke="#333"/>
+<text x="688.0" y="356.0" font-size="13" fill="#e8e8e8" text-anchor="start" font-weight="600">r₁₀ = R₁₀ = m</text>
+<text x="688.0" y="380.0" font-size="13" fill="#888" text-anchor="start">꼬리 분산 ≈ σ²(n−k)/m</text>
+<text x="688.0" y="400.0" font-size="13" fill="#888" text-anchor="start">m ≫ n 이면 작다</text>
+<text x="380.0" y="488.0" font-size="13" fill="#888" text-anchor="middle">n = 200 개 표본을 보간해도 시험 위험 0.05 — 잡음 분산 1, 아무것도 안 배운 예측은 1</text>
+</svg>

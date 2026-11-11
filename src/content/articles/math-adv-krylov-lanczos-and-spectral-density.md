@@ -367,3 +367,5 @@ print(np.round(ev[::-1][:4], 4), round(ev[0], 4), round((1 - np.sqrt(g)) ** 2 / 
 읽어주셔서 감사합니다. 😊
 
 **지난 글:** [스케치와 행렬 집중부등식: 큰 행렬을 줄여도 스펙트럼이 남는 이유](/articles/math-adv-sketching-and-matrix-concentration)
+
+**다음 글:** [집중부등식: 표본 하나가 기댓값에서 얼마나 벗어나는가](/articles/math-adv-concentration-inequalities)

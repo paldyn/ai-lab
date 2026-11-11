@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="560" viewBox="0 0 880 560" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+<rect x="0" y="0" width="880" height="560" rx="12" fill="#0a0a0a"/>
+<text x="440" y="44" text-anchor="middle" font-size="22" font-weight="700" fill="#e8e8e8">꼬리의 위계: 안쪽일수록 꼬리가 가볍다</text>
+<rect x="60" y="80" width="760" height="440" rx="10" fill="#888" fill-opacity="0.06" stroke="#888" stroke-width="1.5"/>
+<text x="84" y="110" font-size="16" font-weight="600" fill="#888">분산이 유한</text>
+<text x="84" y="134" font-size="13" fill="#e8e8e8">꼬리 t⁻² · 쓸 수 있는 것은 체비쇼프</text>
+<text x="84" y="156" font-size="13" fill="#888">예: 자유도 3인 t분포</text>
+<text x="796" y="110" text-anchor="end" font-size="13" fill="#888">n ∝ 1/δ</text>
+<rect x="90" y="180" width="700" height="325" rx="10" fill="#7777cc" fill-opacity="0.06" stroke="#7777cc" stroke-width="1.5"/>
+<text x="114" y="210" font-size="16" font-weight="600" fill="#7777cc">서브지수</text>
+<text x="114" y="234" font-size="13" fill="#e8e8e8">ψ₁ 노름 · 꼬리 e^(−t/K)</text>
+<text x="114" y="256" font-size="13" fill="#888">예: 지수분포, χ², 서브가우시안의 곱</text>
+<text x="766" y="210" text-anchor="end" font-size="13" fill="#7777cc">베른슈타인</text>
+<rect x="120" y="280" width="640" height="210" rx="10" fill="#7ec8e3" fill-opacity="0.06" stroke="#7ec8e3" stroke-width="1.5"/>
+<text x="144" y="310" font-size="16" font-weight="600" fill="#7ec8e3">서브가우시안</text>
+<text x="144" y="334" font-size="13" fill="#e8e8e8">ψ₂ 노름 · 꼬리 e^(−t²/K²)</text>
+<text x="144" y="356" font-size="13" fill="#888">예: 정규분포, 유계 변수 n개의 평균</text>
+<text x="736" y="310" text-anchor="end" font-size="13" fill="#7ec8e3">최댓값 √(2σ² log n)</text>
+<rect x="150" y="380" width="580" height="95" rx="10" fill="#55c555" fill-opacity="0.06" stroke="#55c555" stroke-width="1.5"/>
+<text x="174" y="410" font-size="16" font-weight="600" fill="#55c555">유계</text>
+<text x="174" y="434" font-size="13" fill="#e8e8e8">값이 [a, b] 안 · 분산 프록시 (b − a)²/4</text>
+<text x="174" y="456" font-size="13" fill="#888">예: 정답 여부 0/1, 라데마허 ±1</text>
+<text x="706" y="410" text-anchor="end" font-size="13" fill="#55c555">회프딩 보조정리</text>
+</svg>
