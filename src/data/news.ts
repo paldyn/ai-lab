@@ -172,6 +172,76 @@ export const globalNewsUpdatedAt = '2026-11-10';
  */
 const entries: NewsItem[] = [
   {
+    id: 'developers-tools-gemini-decisions-api',
+    source: 'Google DeepMind',
+    kind: 'company',
+    title: 'Google, 닫힌 선택지 판정용 Gemini Decisions API 공개',
+    summary:
+      '구글이 예/아니오·객관식·루브릭 점수 질문을 한 번에 판정하는 Gemini Decisions API를 내놨다. 새 모델 Gemini Decision 1이 ' +
+      '답을 생성하지 않고 후보에 확률을 매기며, 입력 100만 토큰당 0.10달러에 출력 토큰은 받지 않는다.',
+    publishedAt: '2026-11-11',
+    collectedAt: '2026-11-12',
+    category: 'Product',
+    signal: '저지연 추론',
+    url: 'https://blog.google/innovation-and-ai/technology/developers-tools/gemini-decisions-api',
+  },
+  {
+    id: 'google-labs-tabletop',
+    source: 'Google DeepMind',
+    kind: 'company',
+    title: 'Google Labs, 그룹이 함께 쓰는 협업 공간 실험 Tabletop 공개',
+    summary:
+      'Google Labs가 링크·파일·아이디어를 넣고 @tabletop에 요청하면 여행 일정표·투표·비용 나누기 같은 대화형 공간을 만들어 주는 ' +
+      '실험 Tabletop을 내놨다. 초대 링크로 여럿이 동시에 쓰며, 미국 18세 이상에게 대기자 명단으로 열린다.',
+    publishedAt: '2026-11-11',
+    collectedAt: '2026-11-12',
+    category: 'Product',
+    signal: '소비자 AI',
+    url: 'https://blog.google/innovation-and-ai/models-and-research/google-labs/tabletop',
+  },
+  {
+    id: 'blog-alphagenome-2-deciphering-how-cells-read-dna-to-better-understand-disease',
+    source: 'Google DeepMind',
+    kind: 'model',
+    title: 'Google DeepMind, 세포 유형별 변이 효과를 예측하는 AlphaGenome 2 공개',
+    summary:
+      'Google DeepMind가 DNA 변이가 특정 세포 유형의 유전자 발현에 주는 영향을 예측하는 AlphaGenome 2를 공개했다. ' +
+      '1억 개 넘는 단일 세포 프로필로 학습했고, 비상업 연구용 AlphaGenome API로 오늘부터 쓸 수 있다.',
+    publishedAt: '2026-11-11',
+    collectedAt: '2026-11-12',
+    category: 'Domain',
+    signal: '생명과학 모델',
+    url: 'https://deepmind.google/blog/alphagenome-2-deciphering-how-cells-read-dna-to-better-understand-disease',
+  },
+  {
+    id: 'arts-culture-esther-mahlangu',
+    source: 'Google DeepMind',
+    kind: 'company',
+    title: 'Google Arts & Culture, 화가 Esther Mahlangu 첫 온라인 회고전 공개',
+    summary:
+      'Google Arts & Culture가 남아프리카공화국 화가 Esther Mahlangu의 첫 온라인 회고전을 열었다. 기록이 없던 1980년 이전 ' +
+      '시절은 본인 구술을 바탕으로 이미지를 만들고 Veo로 영상화해 되살렸다.',
+    publishedAt: '2026-11-11',
+    collectedAt: '2026-11-12',
+    category: 'Product',
+    signal: '문화유산 AI',
+    url: 'https://blog.google/company-news/outreach-and-initiatives/arts-culture/esther-mahlangu',
+  },
+  {
+    id: 'google-cloud-gemini-for-healthcare',
+    source: 'Google DeepMind',
+    kind: 'company',
+    title: 'Google Cloud, 의료 기관용 Gemini for healthcare 프리뷰 출시',
+    summary:
+      'Google Cloud가 전자의무기록·청구·임상 지침·Medicare 데이터를 묶어 의무기록 종합·사전 승인 검토 같은 여러 단계 업무를 ' +
+      '처리하는 Gemini for healthcare를 발표했다. HCA Healthcare 등 출시 파트너와 프리뷰로 시작한다.',
+    publishedAt: '2026-11-10',
+    collectedAt: '2026-11-12',
+    category: 'Product',
+    signal: '보건 의료 AI',
+    url: 'https://blog.google/innovation-and-ai/infrastructure-and-cloud/google-cloud/gemini-for-healthcare',
+  },
+  {
     id: 'android-gemini-intelligence-november-features-devices',
     source: 'Google DeepMind',
     kind: 'company',
