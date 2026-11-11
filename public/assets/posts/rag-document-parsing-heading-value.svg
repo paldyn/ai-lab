@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="400" viewBox="0 0 880 400" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <defs>
+    <marker id="arrHV" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#7ec8e3"/>
+    </marker>
+  </defs>
+
+  <rect x="0" y="0" width="880" height="400" rx="12" fill="#0a0a0a"/>
+
+  <text x="60" y="46" font-size="22" font-weight="700" fill="#e8e8e8">헤딩이 남으면 따라오는 셋</text>
+  <text x="60" y="72" font-size="13" fill="#888">셋 다 모델 호출 없이 얻는다 — 헤딩이 문단으로 내려앉으면 셋이 한꺼번에 사라진다.</text>
+
+  <rect x="60" y="104" width="340" height="236" rx="8" fill="#101418" stroke="#7777cc" stroke-width="1.5"/>
+  <text x="84" y="136" font-size="13" fill="#888">파서가 남긴 헤딩의 층</text>
+  <text x="84" y="176" font-size="15" font-weight="700" fill="#e8e8e8"># 2026년 2분기 실적 보고서</text>
+  <text x="108" y="214" font-size="15" font-weight="600" fill="#e8e8e8">## 3. 구독 부문</text>
+  <text x="132" y="252" font-size="15" font-weight="600" fill="#7ec8e3">### 3.2 환불 규정</text>
+  <text x="132" y="290" font-size="13" fill="#888">이번 분기 매출은 전년 대비</text>
+  <text x="132" y="312" font-size="13" fill="#888">3% 늘었습니다.</text>
+
+  <line x1="400" y1="160" x2="460" y2="140" stroke="#7ec8e3" stroke-width="2" marker-end="url(#arrHV)"/>
+  <line x1="400" y1="222" x2="460" y2="222" stroke="#7ec8e3" stroke-width="2" marker-end="url(#arrHV)"/>
+  <line x1="400" y1="284" x2="460" y2="304" stroke="#7ec8e3" stroke-width="2" marker-end="url(#arrHV)"/>
+
+  <rect x="460" y="104" width="360" height="72" rx="8" fill="#101418" stroke="#7ec8e3" stroke-width="1.5"/>
+  <text x="484" y="134" font-size="15" font-weight="600" fill="#e8e8e8">절 단위 청킹</text>
+  <text x="484" y="157" font-size="13" fill="#888">헤딩이 경계가 되고 긴 절만 다시 나눈다</text>
+
+  <rect x="460" y="186" width="360" height="72" rx="8" fill="#101418" stroke="#7ec8e3" stroke-width="1.5"/>
+  <text x="484" y="216" font-size="15" font-weight="600" fill="#e8e8e8">헤딩 경로</text>
+  <text x="484" y="239" font-size="13" fill="#888">보고서 &gt; 3. 구독 부문 &gt; 3.2 환불 규정</text>
+
+  <rect x="460" y="268" width="360" height="72" rx="8" fill="#101418" stroke="#7ec8e3" stroke-width="1.5"/>
+  <text x="484" y="298" font-size="15" font-weight="600" fill="#e8e8e8">메타데이터 필터</text>
+  <text x="484" y="321" font-size="13" fill="#888">「3장에서만 찾아라」로 후보를 좁힌다</text>
+</svg>
