@@ -2,6 +2,31 @@ import type { NewsDetail } from '../news';
 
 /** 2026-11 발표의 모달 본문. 목록은 news.ts에 있습니다. */
 export const details: Record<string, NewsDetail> = {
+  'blog-introducing-gemini-4-hydrogen': {
+    points: [
+      'Carbon·Argon이 길고 깊은 추론을 맡고 Hydrogen은 다양한 에이전트 작업의 빠른 실행용이라고 구분했다',
+      'AI Studio·Gemini API·Gemini for business·Gemini 앱·검색 전 티어와 Antigravity 유료 구독자에게 연다',
+      '100만 토큰 컨텍스트 전 구간에서 100만 토큰당 입력 1.5달러·출력 7.5달러로 값이 같다',
+      'Artificial Analysis Intelligence Index가 기본 high 51로 Argon(50)을 넘고 xhigh에서는 54다',
+      'Gemini 3.8 Flash보다 작업을 2.5배 빨리 끝내고 Terminal-Bench 4.1은 57%(3.8 Flash 18.2%)다',
+      '사고 수준은 low·medium·high(기본)·새 xhigh 넷이고 출력은 최대 100만 토큰이다',
+      'Antigravity에 세션 안에서 Carbon·Hydrogen을 오가는 Orchestrator를 넣었고 Carbon 수준 성공률에 할당량 24%를 덜 썼다',
+      'Gemini 앱 무료 사용자는 자동 모델 선택으로 적절할 때 Hydrogen을 쓰게 된다',
+    ],
+    commentary:
+      'Flash 이름을 버리고 Gemini 4 세대의 보급형 자리를 새 이름으로 채웠다. 단가가 Carbon·Argon(입력 2달러·출력 10달러)과 크게 벌어지지 않는데도 지수에서 Argon을 넘었다고 내세워, 같은 세대 안에서 비싼 모델을 고를 이유를 설계·디버깅 같은 깊은 판단으로 좁혀 놓았다. Orchestrator는 그 분업을 사람이 고르지 않아도 되게 만드는 장치다.',
+  },
+  'claude-platform-november-12-2026': {
+    points: [
+      'Claude Managed Agents를 셀프 호스팅으로 쓸 수 있게 됐다',
+      '셀프 호스팅 샌드박스만이 아니라 Managed Agents 서비스 전체를 자기 인프라에서 돌린다',
+      '에이전트·세션·세션 기록을 자기 인프라에 저장한다',
+      '서버는 사용자가 고른 제공자로 모델 요청을 보내며 기본값은 Anthropic이다',
+      '접근은 Anthropic 계정 팀에 연락해 요청한다',
+    ],
+    commentary:
+      '지금까지 Managed Agents의 셀프 호스팅은 코드가 도는 샌드박스까지였고 세션 상태는 Anthropic 쪽에 남았다. 이번에는 상태 저장까지 고객 쪽으로 옮겨, 데이터 보관 위치 때문에 관리형 에이전트를 못 쓰던 규제 산업이 주 대상이다. 모델 제공자를 고를 수 있게 둔 점은 클라우드 경유 Claude를 쓰는 기업을 염두에 둔 것으로 보이나, 계정 팀을 거치는 제한 공개라 일반 개발자가 바로 쓸 길은 아니다.',
+  },
   'jiostar-vijay-seshadri': {
     points: [
       'JioStar 플랫폼 이용자는 5억 명 이상, 라이브 스포츠 동시 시청은 최대 7,250만 명이다',

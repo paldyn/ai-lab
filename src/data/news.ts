@@ -172,6 +172,44 @@ export const globalNewsUpdatedAt = '2026-11-11';
  */
 const entries: NewsItem[] = [
   {
+    id: 'blog-introducing-gemini-4-hydrogen',
+    source: 'Google DeepMind',
+    kind: 'model',
+    title: 'Google DeepMind, 빠른 실행용 Gemini 4 Hydrogen 공개',
+    summary:
+      '구글 딥마인드가 일상 코딩과 에이전트 작업의 빠른 실행에 맞춘 Gemini 4 Hydrogen을 내놓고 Gemini API·Gemini 앱·검색 등 전 티어에 열었다. ' +
+      '100만 토큰 컨텍스트 전 구간에서 100만 토큰당 입력 1.5달러·출력 7.5달러로 값이 같다.',
+    publishedAt: '2026-11-12',
+    collectedAt: '2026-11-13',
+    category: 'Frontier',
+    signal: '프런티어 모델',
+    url: 'https://deepmind.google/blog/introducing-gemini-4-hydrogen',
+    model: {
+      family: 'Gemini',
+      name: 'Gemini 4 Hydrogen',
+      kind: '신규 모델',
+      status: '공개',
+      useCase: '일상 코딩·에이전트 실행',
+      headline: 'Carbon·Argon이 설계를 맡고 Hydrogen이 코드 작성과 검증을 빠르게 돌리는 Gemini 4 세대의 실행 모델',
+      logo: 'assets/gemini.svg',
+      tone: 'gemini',
+    },
+  },
+  {
+    id: 'claude-platform-november-12-2026',
+    source: 'Anthropic',
+    kind: 'company',
+    title: 'Claude Managed Agents, 서비스 전체를 자체 인프라에서 돌리는 셀프 호스팅 출시',
+    summary:
+      'Anthropic이 Claude Managed Agents를 셀프 호스팅으로도 내놓았다. 샌드박스만이 아니라 서비스 전체를 자기 인프라에서 돌리고 ' +
+      '에이전트·세션·세션 기록도 그곳에 저장하며, 접근은 Anthropic 계정 팀에 요청한다.',
+    publishedAt: '2026-11-12',
+    collectedAt: '2026-11-13',
+    category: 'Product',
+    signal: '관리형 에이전트',
+    url: 'https://platform.claude.com/docs/en/release-notes/overview#november-12-2026',
+  },
+  {
     id: 'jiostar-vijay-seshadri',
     source: 'OpenAI',
     kind: 'company',
