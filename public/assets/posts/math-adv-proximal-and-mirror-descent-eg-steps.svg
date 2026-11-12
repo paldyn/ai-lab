@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="500" viewBox="0 0 880 500" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+<defs><marker id="arr" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto"><path d="M 0 0 L 13 7 L 0 14 z" fill="#e8e8e8"/></marker><marker id="arrb" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto"><path d="M 0 0 L 13 7 L 0 14 z" fill="#7ec8e3"/></marker></defs>
+<rect x="0" y="0" width="880" height="500" rx="12" fill="#0a0a0a"/>
+<text x="440.0" y="44.0" font-size="22" fill="#e8e8e8" text-anchor="middle" font-weight="700">단체 위 지수가중 갱신 세 걸음 (η = 2, 균등 분포에서 출발)</text>
+<line x1="100" y1="400" x2="800" y2="400" stroke="#888" stroke-width="1.5"/>
+<line x1="100" y1="400" x2="100" y2="86.0" stroke="#888" stroke-width="1.5"/>
+<line x1="96" y1="324.0" x2="104" y2="324.0" stroke="#444" stroke-width="1"/>
+<text x="90.0" y="329.0" font-size="13" fill="#888" text-anchor="end">0.2</text>
+<line x1="96" y1="248.0" x2="104" y2="248.0" stroke="#444" stroke-width="1"/>
+<text x="90.0" y="253.0" font-size="13" fill="#888" text-anchor="end">0.4</text>
+<line x1="96" y1="172.0" x2="104" y2="172.0" stroke="#444" stroke-width="1"/>
+<text x="90.0" y="177.0" font-size="13" fill="#888" text-anchor="end">0.6</text>
+<line x1="96" y1="96.0" x2="104" y2="96.0" stroke="#444" stroke-width="1"/>
+<text x="90.0" y="101.0" font-size="13" fill="#888" text-anchor="end">0.8</text>
+<rect x="120.0" y="305.0" width="30" height="95.0" fill="#444"/>
+<text x="135.0" y="297.0" font-size="13" fill="#e8e8e8" text-anchor="middle">.250</text>
+<rect x="156.0" y="294.8" width="30" height="105.2" fill="#7777cc"/>
+<text x="171.0" y="286.8" font-size="13" fill="#e8e8e8" text-anchor="middle">.277</text>
+<rect x="192.0" y="302.0" width="30" height="98.0" fill="#5aa0c0"/>
+<text x="207.0" y="294.0" font-size="13" fill="#e8e8e8" text-anchor="middle">.258</text>
+<rect x="228.0" y="319.4" width="30" height="80.6" fill="#7ec8e3"/>
+<text x="243.0" y="311.4" font-size="13" fill="#e8e8e8" text-anchor="middle">.212</text>
+<text x="189.0" y="422.0" font-size="13" fill="#e8e8e8" text-anchor="middle">좌표 1</text>
+<text x="189.0" y="442.0" font-size="13" fill="#888" text-anchor="middle">c = 0.3</text>
+<rect x="290.0" y="305.0" width="30" height="95.0" fill="#444"/>
+<text x="305.0" y="297.0" font-size="13" fill="#e8e8e8" text-anchor="middle">.250</text>
+<rect x="326.0" y="329.5" width="30" height="70.5" fill="#7777cc"/>
+<text x="341.0" y="321.5" font-size="13" fill="#e8e8e8" text-anchor="middle">.186</text>
+<rect x="362.0" y="356.0" width="30" height="44.0" fill="#5aa0c0"/>
+<text x="377.0" y="348.0" font-size="13" fill="#e8e8e8" text-anchor="middle">.116</text>
+<rect x="398.0" y="375.7" width="30" height="24.3" fill="#7ec8e3"/>
+<text x="413.0" y="367.7" font-size="13" fill="#e8e8e8" text-anchor="middle">.064</text>
+<text x="359.0" y="422.0" font-size="13" fill="#e8e8e8" text-anchor="middle">좌표 2</text>
+<text x="359.0" y="442.0" font-size="13" fill="#888" text-anchor="middle">c = 0.5</text>
+<rect x="460.0" y="305.0" width="30" height="95.0" fill="#444"/>
+<text x="475.0" y="297.0" font-size="13" fill="#e8e8e8" text-anchor="middle">.250</text>
+<rect x="496.0" y="243.0" width="30" height="157.0" fill="#7777cc"/>
+<text x="511.0" y="235.0" font-size="13" fill="#e8e8e8" text-anchor="middle">.413</text>
+<rect x="532.0" y="181.9" width="30" height="218.1" fill="#5aa0c0"/>
+<text x="547.0" y="173.9" font-size="13" fill="#e8e8e8" text-anchor="middle">.574</text>
+<rect x="568.0" y="132.3" width="30" height="267.7" fill="#7ec8e3"/>
+<text x="583.0" y="124.3" font-size="13" fill="#e8e8e8" text-anchor="middle">.705</text>
+<text x="529.0" y="422.0" font-size="13" fill="#e8e8e8" text-anchor="middle">좌표 3</text>
+<text x="529.0" y="442.0" font-size="13" fill="#888" text-anchor="middle">c = 0.1</text>
+<rect x="630.0" y="305.0" width="30" height="95.0" fill="#444"/>
+<text x="645.0" y="297.0" font-size="13" fill="#e8e8e8" text-anchor="middle">.250</text>
+<rect x="666.0" y="352.7" width="30" height="47.3" fill="#7777cc"/>
+<text x="681.0" y="344.7" font-size="13" fill="#e8e8e8" text-anchor="middle">.124</text>
+<rect x="702.0" y="380.2" width="30" height="19.8" fill="#5aa0c0"/>
+<text x="717.0" y="372.2" font-size="13" fill="#e8e8e8" text-anchor="middle">.052</text>
+<rect x="738.0" y="392.7" width="30" height="7.3" fill="#7ec8e3"/>
+<text x="753.0" y="384.7" font-size="13" fill="#e8e8e8" text-anchor="middle">.019</text>
+<text x="699.0" y="422.0" font-size="13" fill="#e8e8e8" text-anchor="middle">좌표 4</text>
+<text x="699.0" y="442.0" font-size="13" fill="#888" text-anchor="middle">c = 0.7</text>
+<rect x="560" y="86" width="14" height="14" fill="#444"/>
+<text x="580.0" y="98.0" font-size="13" fill="#888" text-anchor="start">걸음 0</text>
+<rect x="620" y="86" width="14" height="14" fill="#7777cc"/>
+<text x="640.0" y="98.0" font-size="13" fill="#888" text-anchor="start">걸음 1</text>
+<rect x="680" y="86" width="14" height="14" fill="#5aa0c0"/>
+<text x="700.0" y="98.0" font-size="13" fill="#888" text-anchor="start">걸음 2</text>
+<rect x="740" y="86" width="14" height="14" fill="#7ec8e3"/>
+<text x="760.0" y="98.0" font-size="13" fill="#888" text-anchor="start">걸음 3</text>
+</svg>

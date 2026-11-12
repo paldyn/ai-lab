@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="520" viewBox="0 0 880 520" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+<defs><marker id="arr" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto"><path d="M 0 0 L 13 7 L 0 14 z" fill="#888"/></marker></defs>
+<rect x="0" y="0" width="880" height="520" rx="12" fill="#0a0a0a"/>
+<text x="440.0" y="44.0" font-size="22" fill="#e8e8e8" text-anchor="middle" font-weight="700">0 ∈ ∂f(w): (w − a) + ∂|w| 가 0을 지나는 자리</text>
+<line x1="232.0" y1="240.0" x2="776.0" y2="240.0" stroke="#888" stroke-width="1.5" marker-end="url(#arr)"/>
+<line x1="440.0" y1="424.8" x2="440.0" y2="88.8" stroke="#888" stroke-width="1.5" marker-end="url(#arr)"/>
+<text x="784.0" y="245.0" font-size="13" fill="#888" text-anchor="start">w</text>
+<text x="432.0" y="92.8" font-size="13" fill="#888" text-anchor="end">∂f</text>
+<line x1="280.0" y1="236.0" x2="280.0" y2="244.0" stroke="#444"/>
+<text x="280.0" y="260.0" font-size="13" fill="#888" text-anchor="middle">−2</text>
+<line x1="360.0" y1="236.0" x2="360.0" y2="244.0" stroke="#444"/>
+<text x="360.0" y="260.0" font-size="13" fill="#888" text-anchor="middle">−1</text>
+<line x1="520.0" y1="236.0" x2="520.0" y2="244.0" stroke="#444"/>
+<text x="520.0" y="260.0" font-size="13" fill="#888" text-anchor="middle">1</text>
+<line x1="600.0" y1="236.0" x2="600.0" y2="244.0" stroke="#444"/>
+<text x="600.0" y="260.0" font-size="13" fill="#888" text-anchor="middle">2</text>
+<line x1="680.0" y1="236.0" x2="680.0" y2="244.0" stroke="#444"/>
+<text x="680.0" y="260.0" font-size="13" fill="#888" text-anchor="middle">3</text>
+<line x1="436.0" y1="184.0" x2="444.0" y2="184.0" stroke="#444"/>
+<text x="430.0" y="189.0" font-size="13" fill="#888" text-anchor="end">2</text>
+<line x1="436.0" y1="128.0" x2="444.0" y2="128.0" stroke="#444"/>
+<text x="430.0" y="133.0" font-size="13" fill="#888" text-anchor="end">4</text>
+<line x1="436.0" y1="296.0" x2="444.0" y2="296.0" stroke="#444"/>
+<text x="450.0" y="301.0" font-size="13" fill="#888" text-anchor="start">−2</text>
+<line x1="436.0" y1="352.0" x2="444.0" y2="352.0" stroke="#444"/>
+<text x="450.0" y="357.0" font-size="13" fill="#888" text-anchor="start">−4</text>
+<line x1="436.0" y1="408.0" x2="444.0" y2="408.0" stroke="#444"/>
+<text x="450.0" y="413.0" font-size="13" fill="#888" text-anchor="start">−6</text>
+<path d="M 264.0 413.6 L 440.0 352.0 L 440.0 296.0 L 744.0 189.6" stroke="#7ec8e3" stroke-width="2.5" fill="none"/>
+<text x="738.0" y="179.6" font-size="13" fill="#7ec8e3" text-anchor="end">a = 3</text>
+<path d="M 264.0 346.4 L 440.0 284.8 L 440.0 228.8 L 744.0 122.4" stroke="#55c555" stroke-width="2.5" fill="none"/>
+<text x="738.0" y="112.4" font-size="13" fill="#55c555" text-anchor="end">a = 0.6</text>
+<circle cx="600.0" cy="240.0" r="5" fill="#7ec8e3"/>
+<text x="610.0" y="262.0" font-size="13" fill="#7ec8e3" text-anchor="start">w* = 2</text>
+<circle cx="440.0" cy="240.0" r="5" fill="#55c555"/>
+<text x="428.0" y="228.0" font-size="13" fill="#55c555" text-anchor="end">w* = 0</text>
+<text x="400.0" y="156.0" font-size="13" fill="#888" text-anchor="end">a = 0.6 의 세로 선분 [−1.6, 0.4] 가 0을 품는다</text>
+<text x="440.0" y="496.0" font-size="13" fill="#888" text-anchor="middle">λ = 1. |a| ≤ λ 이면 점프 구간이 0을 품어 해가 정확히 0에 선다</text>
+</svg>

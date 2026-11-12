@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="470" viewBox="0 0 880 470" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+<defs>
+<marker id="arr" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto"><path d="M 0 0 L 13 7 L 0 14 z" fill="#888"/></marker>
+<marker id="arrb" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto"><path d="M 0 0 L 13 7 L 0 14 z" fill="#7ec8e3"/></marker>
+<marker id="arrg" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto"><path d="M 0 0 L 13 7 L 0 14 z" fill="#55c555"/></marker>
+<marker id="arrr" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto"><path d="M 0 0 L 13 7 L 0 14 z" fill="#e05555"/></marker>
+</defs>
+<rect width="880" height="470" rx="12" fill="#0a0a0a"/>
+<text x="440" y="44" text-anchor="middle" font-size="22" font-weight="700" fill="#e8e8e8">음의 엔트로피와 log-sum-exp: 기울기가 서로의 역</text>
+
+<rect x="60" y="150" width="300" height="100" rx="10" fill="#111" stroke="#7ec8e3" stroke-width="2"/><text x="210.0" y="194.0" text-anchor="middle" font-size="16" fill="#e8e8e8" font-weight="600">확률 p (단체 위)</text><text x="210.0" y="218.0" text-anchor="middle" font-size="13" fill="#888">h(p) = Σ pᵢ log pᵢ</text>
+<rect x="520" y="150" width="300" height="100" rx="10" fill="#111" stroke="#7777cc" stroke-width="2"/><text x="670.0" y="194.0" text-anchor="middle" font-size="16" fill="#e8e8e8" font-weight="600">점수 y (실수 벡터)</text><text x="670.0" y="218.0" text-anchor="middle" font-size="13" fill="#888">h*(y) = log Σ exp(yᵢ)</text>
+<path d="M 360 175 L 520 175" stroke="#7ec8e3" stroke-width="2.5" fill="none" marker-end="url(#arrb)"/>
+<text x="440.0" y="130.0" text-anchor="middle" font-size="13" fill="#7ec8e3">∇h(p) = log p + 1</text>
+<path d="M 520 225 L 360 225" stroke="#55c555" stroke-width="2.5" fill="none" marker-end="url(#arrg)"/>
+<text x="440.0" y="280.0" text-anchor="middle" font-size="13" fill="#55c555" font-weight="600">∇h*(y) = softmax(y)</text>
+<rect x="140" y="320" width="600" height="90" rx="10" fill="#111" stroke="#444" stroke-width="1.5"/>
+<text x="440.0" y="355.0" text-anchor="middle" font-size="16" fill="#e8e8e8" font-weight="600">y = (2, 1, 0) → p = (0.665, 0.245, 0.090)</text>
+<text x="440.0" y="383.0" text-anchor="middle" font-size="13" fill="#888">⟨p, y⟩ − h(p) = 2.4076 = log(e² + e + 1)  (펜첼–영의 등호)</text>
+</svg>

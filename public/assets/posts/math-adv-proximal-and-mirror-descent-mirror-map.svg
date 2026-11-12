@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="470" viewBox="0 0 880 470" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+<defs><marker id="arr" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto"><path d="M 0 0 L 13 7 L 0 14 z" fill="#e8e8e8"/></marker><marker id="arrb" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto"><path d="M 0 0 L 13 7 L 0 14 z" fill="#7ec8e3"/></marker></defs>
+<rect x="0" y="0" width="880" height="470" rx="12" fill="#0a0a0a"/>
+<text x="440.0" y="44.0" font-size="22" fill="#e8e8e8" text-anchor="middle" font-weight="700">거울 하강: 쌍대 공간에서 한 걸음 걷고 돌아온다</text>
+<text x="220.0" y="96.0" font-size="13" fill="#888" text-anchor="middle">원래 공간</text>
+<text x="660.0" y="96.0" font-size="13" fill="#888" text-anchor="middle">쌍대 공간</text>
+<rect x="90" y="110" width="260" height="70" rx="8" fill="#111" stroke="#7ec8e3" stroke-width="1.5"/>
+<text x="220.0" y="140.0" font-size="16" fill="#e8e8e8" text-anchor="middle" font-weight="600">x_k</text>
+<text x="220.0" y="162.0" font-size="13" fill="#888" text-anchor="middle">현재 점</text>
+<rect x="530" y="110" width="260" height="70" rx="8" fill="#111" stroke="#7ec8e3" stroke-width="1.5"/>
+<text x="660.0" y="140.0" font-size="16" fill="#e8e8e8" text-anchor="middle" font-weight="600">θ_k = ∇φ(x_k)</text>
+<text x="660.0" y="162.0" font-size="13" fill="#888" text-anchor="middle">거울에 비친 점</text>
+<rect x="530" y="270" width="260" height="70" rx="8" fill="#111" stroke="#7ec8e3" stroke-width="1.5"/>
+<text x="660.0" y="300.0" font-size="16" fill="#e8e8e8" text-anchor="middle" font-weight="600">θ_k − η g_k</text>
+<text x="660.0" y="322.0" font-size="13" fill="#888" text-anchor="middle">경사 한 걸음</text>
+<rect x="90" y="270" width="260" height="70" rx="8" fill="#111" stroke="#7ec8e3" stroke-width="1.5"/>
+<text x="220.0" y="300.0" font-size="16" fill="#e8e8e8" text-anchor="middle" font-weight="600">x_{k+1} = ∇φ*(θ_k − η g_k)</text>
+<text x="220.0" y="322.0" font-size="13" fill="#888" text-anchor="middle">돌아온 점</text>
+<line x1="350" y1="145" x2="530" y2="145" stroke="#e8e8e8" stroke-width="2" marker-end="url(#arr)"/>
+<text x="440.0" y="129.0" font-size="13" fill="#e8e8e8" text-anchor="middle">∇φ</text>
+<line x1="660" y1="180" x2="660" y2="270" stroke="#7ec8e3" stroke-width="2" marker-end="url(#arrb)"/>
+<text x="676.0" y="230.0" font-size="13" fill="#7ec8e3" text-anchor="start">− η g_k</text>
+<line x1="530" y1="305" x2="350" y2="305" stroke="#e8e8e8" stroke-width="2" marker-end="url(#arr)"/>
+<text x="440.0" y="289.0" font-size="13" fill="#e8e8e8" text-anchor="middle">∇φ*</text>
+<rect x="90" y="372" width="700" height="66" rx="8" fill="#111" stroke="#444" stroke-width="1"/>
+<text x="440.0" y="399.0" font-size="13" fill="#e8e8e8" text-anchor="middle">φ = ½‖x‖² 이면 두 사상이 항등 → 경사하강</text>
+<text x="440.0" y="421.0" font-size="13" fill="#e8e8e8" text-anchor="middle">φ = Σ x log x 이면 ∇φ = log, 돌아오는 사상 = softmax → 지수가중 갱신</text>
+</svg>

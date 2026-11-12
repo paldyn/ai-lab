@@ -407,3 +407,5 @@ True 0.0 0.0
 읽어주셔서 감사합니다. 😊
 
 **지난 글:** [일반화 경계: 고전 이론이 공허해지는 자리와 PAC-Bayes](/articles/math-adv-uniform-convergence-and-pac-bayes)
+
+**다음 글:** [볼록해석: 하위기울기, 강볼록성, 매끄러움의 쌍대](/articles/math-adv-convex-analysis-and-subgradients)
