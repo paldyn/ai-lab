@@ -260,6 +260,17 @@ export const playbookClaims: Claim[] = [
     source: { label: 'Gemini 4 Argon 모델 문서', url: 'https://ai.google.dev/gemini-api/docs/models/gemini-4-argon' },
   },
   {
+    id: 'gemini-4-hydrogen-context',
+    subject: { kind: 'model', id: 'gemini-4-hydrogen' },
+    topic: 'context',
+    /* 입력과 출력을 합친 한도다 — 「Context window (unified input and output token limit)」. */
+    statement: 'Gemini 4 Hydrogen의 컨텍스트 창(입력·출력 합산)',
+    value: '1M 토큰',
+    tier: 'vendor',
+    volatility: 'model',
+    source: { label: 'Gemini 4 Hydrogen 모델 문서', url: 'https://ai.google.dev/gemini-api/docs/models/gemini-4-hydrogen' },
+  },
+  {
     id: 'gemini-3-8-flash-context',
     subject: { kind: 'model', id: 'gemini-3-8-flash' },
     topic: 'context',
@@ -1686,6 +1697,24 @@ export const playbookClaims: Claim[] = [
     source: {
       label: 'Gemini API — Pricing',
       url: 'https://ai.google.dev/gemini-api/docs/pricing',
+    },
+  },
+  {
+    id: 'gemini-4-hydrogen-token-price',
+    subject: { kind: 'model', id: 'gemini-4-hydrogen' },
+    topic: 'price',
+    statement: '100만 토큰당 입력 / 출력 단가',
+    /*
+      구간 없는 정가다 — 「uses flat standard pricing on the paid tier across the full 1M context window」.
+      단가 표(`…/pricing`)에도 같은 값($1.50 · $7.50)이 서지만 칸마다 한 줄이라 원문 한 줄이 열 자를
+      못 넘어, 값이 한 행에 함께 실린 「What's new in Gemini 4 Hydrogen」의 모델 표를 출처로 둔다.
+    */
+    value: '$1.50 / $7.50',
+    tier: 'vendor',
+    volatility: 'price',
+    source: {
+      label: "Gemini API — What's new in Gemini 4 Hydrogen",
+      url: 'https://ai.google.dev/gemini-api/docs/whats-new-gemini-4-hydrogen',
     },
   },
   {

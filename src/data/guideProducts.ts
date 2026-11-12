@@ -394,7 +394,7 @@ export const guideProducts: Product[] = [
     name: 'Gemini app',
     role: '챗',
     surfaces: ['웹', '데스크톱', '모바일'],
-    models: ['gemini-app-carbon', 'gemini-app-argon', 'gemini-app-pro', 'gemini-app-flash', 'gemini-app-flash-lite'],
+    models: ['gemini-app-carbon', 'gemini-app-argon', 'gemini-app-pro', 'gemini-app-hydrogen', 'gemini-app-flash-lite'],
     /*
       support.google.com/gemini/answer/18648722(「About Gemini models」) — 「Overview of Gemini
       models」에 넷이 한 줄씩 서고, 「Manually switch models」 절이 「Click the model you want to
@@ -407,6 +407,9 @@ export const guideProducts: Product[] = [
       Gemini models」의 「Gemini 4 Carbon: Our strongest model …」 줄이고 표에서는 Ultra 칸에만 섭니다.
       「Our strongest model」이라 Argon 앞에 둡니다. 같은 표에서 Ultra 칸에 Pro가 빠졌습니다(Plus ·
       Pro 칸에는 있어 목록은 그대로입니다).
+
+      2026-11-13 — Gemini Flash 줄이 「Gemini 4 Hydrogen: A high-speed, capable model …」로 바뀌고
+      표의 Plus · Pro · Ultra 칸이 「Hydrogen」을 적어 Flash 자리에 Hydrogen을 둡니다(차례는 그대로).
 
       **번호를 안 붙입니다.** 같은 회사 요금제 페이지는 같은 자리를 「Gemini 3.6
       Flash」·「Gemini 3.1 Pro」로 적지만 **원문이 그 둘을 잇지 않습니다** — 번호를
@@ -469,6 +472,7 @@ export const guideProducts: Product[] = [
     models: [
       'gemini-4-carbon',
       'gemini-4-argon',
+      'gemini-4-hydrogen',
       'gemini-3-8-flash',
       'gemini-3-7-flash',
       'gemini-3-6-flash',
@@ -486,6 +490,10 @@ export const guideProducts: Product[] = [
 
       Gemini 4 Carbon은 2026-11-11에 더했습니다 — 표 맨 위에 「Gemini 4 Carbon ❌ ❌ ✅ ✅」로 섭니다
       (Google AI Ultra · 엔터프라이즈).
+
+      Gemini 4 Hydrogen은 2026-11-13에 더했습니다 — 표에서 Argon 아래 「Gemini 4 Hydrogen ✅ ✅ ✅ ✅」로
+      서고, 선택기 예시 맨 위에도 「Gemini 4 Hydrogen」이 있습니다. 같은 표의 「Orchestrator」(Carbon이
+      계획하고 Hydrogen이 실행하는 짝)는 모델이 아니라 선택지라 목록에 안 넣었습니다.
 
       Gemini 4 Argon은 2026-10-14에 더했습니다 — 표 맨 위에 서고 드롭다운에도 있습니다. 표에서는
       Ultra · Enterprise만 ✅이고, 각주가 「Not available in Antigravity IDE. Available in the

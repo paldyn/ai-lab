@@ -575,10 +575,18 @@ const models: ModelInfo[] = [
     current: true,
     sourceUrl: 'https://support.google.com/gemini/answer/18648722',
   },
+  /*
+    **2026-11-13에 Gemini Flash 자리를 Hydrogen이 받았습니다.** 「Overview of Gemini models」의 둘째 줄이
+    「Gemini Flash:」에서 「Gemini 4 Hydrogen: A high-speed, capable model that balances performance and
+    responsiveness across standard chat and task modes.」로 바뀌었고(설명은 Flash 때와 같습니다),
+    「Model availability」 표의 Plus · Pro · Ultra 칸이 「Hydrogen」을 적습니다. 선택기 표기를 따라
+    Carbon · Argon과 같은 꼴로 번호 없이 둡니다. Gemini Flash는 어느 제품에도 안 서고 주장도 로그도
+    없어 등록부에서 걷었습니다.
+  */
   {
-    id: 'gemini-app-flash',
+    id: 'gemini-app-hydrogen',
     vendorId: 'google',
-    name: 'Gemini Flash',
+    name: 'Gemini Hydrogen',
     apiId: null,
     useWhen: {
       text: '성능과 반응 속도를 함께 챙길 일반 채팅·작업에',
@@ -674,6 +682,33 @@ const models: ModelInfo[] = [
     current: true,
     sourceUrl: 'https://ai.google.dev/gemini-api/docs/models/gemini-4-argon',
   },
+  /*
+    **2026-11-13에 더했습니다**(11-12 공개). 모델 목록의 Gemini 4 카드 셋째가 「Brings cutting-edge
+    intelligence to everyone, with speed and efficiency for everyday coding and agentic workflows, …」이고
+    최상급이 없어 등급 칩을 안 답니다. 쓰임은 모델 페이지 「Gemini 4 Hydrogen (`gemini-4-hydrogen`)
+    brings cutting-edge intelligence to everyone, with speed and efficiency for everyday coding and
+    agentic workflows, …」입니다. Antigravity 표에서 Argon 바로 아래 「Gemini 4 Hydrogen ✅ ✅ ✅ ✅」로
+    섭니다.
+  */
+  {
+    id: 'gemini-4-hydrogen',
+    vendorId: 'google',
+    name: 'Gemini 4 Hydrogen',
+    apiId: 'gemini-4-hydrogen',
+    useWhen: {
+      text: '일상 코딩과 에이전트 워크플로를 빠르고 효율적으로 돌릴 때에',
+      url: 'https://ai.google.dev/gemini-api/docs/models/gemini-4-hydrogen',
+    },
+    current: true,
+    sourceUrl: 'https://ai.google.dev/gemini-api/docs/models/gemini-4-hydrogen',
+  },
+  /*
+    **2026-11-13에 구세대로 내렸습니다.** 모델 목록의 카드가 「Our previous-generation Flash model for
+    software engineering, autonomous agents, and complex enterprise workflows.」로 바뀌었습니다(Hydrogen
+    공개와 같은 때입니다). 최상급(「most intelligent Flash」)이 목록에서 사라져 등급 칩도 걷었습니다.
+    쓰임은 모델 페이지에 「engineered for long-horizon software engineering, autonomous agents, and
+    complex enterprise workflows」로 남아 있어 출처를 그 페이지로 옮겼습니다.
+  */
   {
     id: 'gemini-3-8-flash',
     vendorId: 'google',
@@ -681,10 +716,9 @@ const models: ModelInfo[] = [
     apiId: 'gemini-3.8-flash',
     useWhen: {
       text: '긴 호흡의 소프트웨어 엔지니어링과 자율 에이전트에',
-      url: 'https://ai.google.dev/gemini-api/docs/models?hl=en',
+      url: 'https://ai.google.dev/gemini-api/docs/models/gemini-3.8-flash',
     },
-    rating: { kind: 'phrase', text: '가장 똑똑한 Flash', url: 'https://ai.google.dev/gemini-api/docs/models' },
-    current: true,
+    current: false,
     sourceUrl: 'https://ai.google.dev/gemini-api/docs/models/gemini-3.8-flash',
   },
   {
