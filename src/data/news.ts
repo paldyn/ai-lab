@@ -160,7 +160,7 @@ export interface NewsDetail {
   commentary: string;
 }
 
-export const globalNewsUpdatedAt = '2026-11-11';
+export const globalNewsUpdatedAt = '2026-11-12';
 
 /**
  * 공식 발표 한 건 = 항목 한 개. 2026년 1월부터 쌓는 아카이브이며 오래된 항목을
@@ -171,6 +171,48 @@ export const globalNewsUpdatedAt = '2026-11-11';
  * 목록에서 파생됩니다. 갱신 시 globalNewsUpdatedAt도 함께 올립니다.
  */
 const entries: NewsItem[] = [
+  {
+    id: 'children-first-declaration',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'OpenAI, 아동 안전 AI 헌장 서명하고 국제 연구망에 200만 달러 지원',
+    summary:
+      'OpenAI가 파리 평화 포럼에서 아동을 위한 더 안전한 AI 참여 헌장에 서명하고, AI 시대 아동 권리·보호 연합의 과학 연구망에 ' +
+      '200만 달러를 약정했다. 지원금은 AI가 아동에게 주는 위험과 기회를 재는 공동 측정 도구 개발에 쓰인다.',
+    publishedAt: '2026-11-12',
+    collectedAt: '2026-11-13',
+    category: 'Corporate',
+    signal: '청소년 연구 지원',
+    url: 'https://openai.com/index/children-first-declaration',
+  },
+  {
+    id: 'customer-stories-holidays-extras-codex',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'Holiday Extras, Codex로 앱을 2주 만에 다시 만들어 예약 전환율 32.5% 상승',
+    summary:
+      'OpenAI가 여행 예약 기업 Holiday Extras의 도입 사례를 소개했다. Codex로 6개월 넘게 걸렸을 주 앱 재구축을 2주 만에 마쳤고, ' +
+      '재구축 뒤 열람-예약 전환율이 32.5% 올랐으며 오류율은 19%에서 9%로 내려갔다.',
+    publishedAt: '2026-11-12',
+    collectedAt: '2026-11-13',
+    category: 'Product',
+    signal: '기업 도입 사례',
+    url: 'https://openai.com/business/customer-stories/holidays-extras-codex',
+  },
+  {
+    id: 'chatgpt-plus-for-veterans',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'OpenAI, 참전용사·전역 예정 군인 2만여 명에 ChatGPT Plus 1년 무료 제공',
+    summary:
+      'OpenAI가 지난 1년간 전역 예정 군인과 참전용사 2만 명 넘게 ChatGPT Plus 1년 무료 이용권을 받았다고 밝혔다. ' +
+      'OpenAI Academy와 협력 단체가 군 공동체 약 1,000명에게 십여 차례 교육을 열었고 연말까지 일곱 번을 더 연다.',
+    publishedAt: '2026-11-11',
+    collectedAt: '2026-11-13',
+    category: 'Corporate',
+    signal: '참전용사 AI 지원',
+    url: 'https://openai.com/index/chatgpt-plus-for-veterans',
+  },
   {
     id: 'blog-introducing-gemini-4-hydrogen',
     source: 'Google DeepMind',
