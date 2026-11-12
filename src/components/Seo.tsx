@@ -19,7 +19,7 @@ interface SeoProps {
   canonical?: string;
 }
 
-const SITE_NAME = 'Paldyn AI Lab';
+const SITE_NAME = 'PALDYN AI Lab';
 
 export function Seo({
   title,

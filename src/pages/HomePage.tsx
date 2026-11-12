@@ -165,8 +165,8 @@ export function HomePage() {
   return (
     <>
       <Seo
-        title="Paldyn AI Lab"
-        description="글로벌 AI 뉴스와 모델, 수학, 논문, 실험을 한곳에서 탐구하는 Paldyn AI Lab입니다."
+        title="PALDYN AI Lab"
+        description="글로벌 AI 뉴스와 모델, 수학, 논문, 실험을 한곳에서 탐구하는 PALDYN AI Lab입니다."
         path="/"
       />
 

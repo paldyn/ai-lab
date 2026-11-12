@@ -109,7 +109,7 @@ function LearnView({ picked }: { picked?: Picked }) {
           track
             ? `${track.category.name} ${track.name} 트랙 ${shownCount}편을 순서대로 모았습니다.`
             : active
-              ? `${active.description} Paldyn AI Lab이 정리한 ${active.name} 글 모음입니다.`
+              ? `${active.description} PALDYN AI Lab이 정리한 ${active.name} 글 모음입니다.`
               : (tabPage?.description ??
                 'AI가 어떻게 작동하는지 개념부터 수학, 에이전트와 모델 운영까지 순서대로 정리합니다.')
         }
