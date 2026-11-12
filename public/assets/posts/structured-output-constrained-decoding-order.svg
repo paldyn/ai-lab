@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="500" viewBox="0 0 880 500" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+<rect x="0" y="0" width="880" height="500" rx="12" fill="#0a0a0a"/>
+<text x="440" y="48" text-anchor="middle" font-size="22" font-weight="700" fill="#e8e8e8">top-p와 마스크, 어느 쪽이 먼저인가</text>
+<text x="440" y="74" text-anchor="middle" font-size="13" fill="#888">{"amount": 다음 토큰 — 스키마는 숫자만 허용한다</text>
+<rect x="60" y="100" width="350" height="360" rx="10" fill="none" stroke="#333" stroke-width="1"/>
+<text x="235" y="134" text-anchor="middle" font-size="16" font-weight="600" fill="#e8e8e8">top-p 0.8 먼저 → 마스크</text>
+<rect x="470" y="100" width="350" height="360" rx="10" fill="none" stroke="#333" stroke-width="1"/>
+<text x="645" y="134" text-anchor="middle" font-size="16" font-weight="600" fill="#e8e8e8">마스크 먼저 → top-p 0.8</text>
+<text x="84" y="173" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#e8e8e8">&quot;없</text>
+<rect x="130" y="160" width="110.0" height="16" rx="3" fill="#7777cc"/>
+<text x="130" y="196" font-size="13" fill="#888">0.55</text>
+<text x="386" y="173" text-anchor="end" font-size="13" fill="#e05555">마스크로 지움</text>
+<text x="84" y="221" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#e8e8e8">&quot;N</text>
+<rect x="130" y="208" width="50.0" height="16" rx="3" fill="#7777cc"/>
+<text x="130" y="244" font-size="13" fill="#888">0.25</text>
+<text x="386" y="221" text-anchor="end" font-size="13" fill="#e05555">마스크로 지움</text>
+<text x="84" y="269" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#888">12</text>
+<rect x="130" y="256" width="16.0" height="16" rx="3" fill="#555"/>
+<text x="130" y="292" font-size="13" fill="#888">0.08</text>
+<text x="386" y="269" text-anchor="end" font-size="13" fill="#888">잘림(top-p)</text>
+<text x="84" y="317" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#888">3</text>
+<rect x="130" y="304" width="10.0" height="16" rx="3" fill="#555"/>
+<text x="130" y="340" font-size="13" fill="#888">0.05</text>
+<text x="386" y="317" text-anchor="end" font-size="13" fill="#888">잘림(top-p)</text>
+<text x="494" y="173" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#888">&quot;없</text>
+<rect x="540" y="160" width="110.0" height="16" rx="3" fill="#555"/>
+<text x="540" y="196" font-size="13" fill="#888">0.55</text>
+<text x="796" y="173" text-anchor="end" font-size="13" fill="#888">마스크로 지움</text>
+<text x="494" y="221" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#888">&quot;N</text>
+<rect x="540" y="208" width="50.0" height="16" rx="3" fill="#555"/>
+<text x="540" y="244" font-size="13" fill="#888">0.25</text>
+<text x="796" y="221" text-anchor="end" font-size="13" fill="#888">마스크로 지움</text>
+<text x="494" y="269" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#e8e8e8">12</text>
+<rect x="540" y="256" width="123.1" height="16" rx="3" fill="#55c555"/>
+<text x="540" y="292" font-size="13" fill="#888">0.08 → 0.62</text>
+<text x="796" y="269" text-anchor="end" font-size="13" fill="#55c555">남음</text>
+<text x="494" y="317" font-family="'JetBrains Mono','Menlo','Consolas',monospace" font-size="13" fill="#e8e8e8">3</text>
+<rect x="540" y="304" width="76.9" height="16" rx="3" fill="#55c555"/>
+<text x="540" y="340" font-size="13" fill="#888">0.05 → 0.38</text>
+<text x="796" y="317" text-anchor="end" font-size="13" fill="#55c555">남음</text>
+<text x="235" y="400" text-anchor="middle" font-size="16" font-weight="600" fill="#e05555">남은 후보 0개</text>
+<text x="235" y="424" text-anchor="middle" font-size="13" fill="#888">허용 집합이 비어 샘플링할 것이 없다</text>
+<text x="645" y="400" text-anchor="middle" font-size="16" font-weight="600" fill="#55c555">12 또는 3을 뽑는다</text>
+<text x="645" y="424" text-anchor="middle" font-size="13" fill="#888">재정규화로 허용 후보의 확률이 커진다</text>
+</svg>
