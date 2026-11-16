@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="440" viewBox="0 0 880 440" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+<defs><marker id="arr" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto"><path d="M 0 0 L 13 7 L 0 14 z" fill="#888"/></marker></defs>
+<rect x="0" y="0" width="880" height="440" rx="12" fill="#0a0a0a"/>
+<text x="440" y="48" text-anchor="middle" font-size="22" font-weight="700" fill="#e8e8e8">대기열 하나와 고객사별 대기열</text>
+<text x="440" y="74" text-anchor="middle" font-size="13" fill="#888">A사가 문서를 대량으로 올린 직후, B사와 C사가 한 건씩 올렸다</text>
+<text x="230" y="116" text-anchor="middle" font-size="16" font-weight="600" fill="#e8e8e8">대기열 하나</text>
+<rect x="60" y="136" width="340" height="56" rx="8" fill="#111" stroke="#555" stroke-width="1.5"/>
+<rect x="74" y="150" width="24" height="28" rx="3" fill="#e05555"/>
+<rect x="104" y="150" width="24" height="28" rx="3" fill="#e05555"/>
+<rect x="134" y="150" width="24" height="28" rx="3" fill="#e05555"/>
+<rect x="164" y="150" width="24" height="28" rx="3" fill="#e05555"/>
+<rect x="194" y="150" width="24" height="28" rx="3" fill="#e05555"/>
+<rect x="224" y="150" width="24" height="28" rx="3" fill="#e05555"/>
+<rect x="254" y="150" width="24" height="28" rx="3" fill="#e05555"/>
+<rect x="284" y="150" width="24" height="28" rx="3" fill="#e05555"/>
+<rect x="314" y="150" width="24" height="28" rx="3" fill="#e05555"/>
+<rect x="344" y="150" width="24" height="28" rx="3" fill="#7ec8e3"/>
+<rect x="374" y="150" width="24" height="28" rx="3" fill="#55c555"/>
+<text x="230" y="222" text-anchor="middle" font-size="13" fill="#888">B사·C사의 한 건은 A사 전부의 뒤에 선다</text>
+<text x="230" y="246" text-anchor="middle" font-size="13" fill="#e05555">A사가 백만 건이면 몇 시간 뒤</text>
+<text x="650" y="116" text-anchor="middle" font-size="16" font-weight="600" fill="#e8e8e8">고객사별 대기열</text>
+<text x="490" y="160" font-size="13" fill="#888">A사</text>
+<rect x="526" y="136" width="244" height="38" rx="8" fill="#111" stroke="#555" stroke-width="1.5"/>
+<rect x="538" y="144" width="22" height="22" rx="3" fill="#e05555"/>
+<rect x="566" y="144" width="22" height="22" rx="3" fill="#e05555"/>
+<rect x="594" y="144" width="22" height="22" rx="3" fill="#e05555"/>
+<rect x="622" y="144" width="22" height="22" rx="3" fill="#e05555"/>
+<rect x="650" y="144" width="22" height="22" rx="3" fill="#e05555"/>
+<rect x="678" y="144" width="22" height="22" rx="3" fill="#e05555"/>
+<rect x="706" y="144" width="22" height="22" rx="3" fill="#e05555"/>
+<text x="490" y="210" font-size="13" fill="#888">B사</text>
+<rect x="526" y="186" width="244" height="38" rx="8" fill="#111" stroke="#555" stroke-width="1.5"/>
+<rect x="538" y="194" width="22" height="22" rx="3" fill="#7ec8e3"/>
+<text x="490" y="260" font-size="13" fill="#888">C사</text>
+<rect x="526" y="236" width="244" height="38" rx="8" fill="#111" stroke="#555" stroke-width="1.5"/>
+<rect x="538" y="244" width="22" height="22" rx="3" fill="#55c555"/>
+<path d="M 790 155 L 810 155 L 810 255 L 790 255" fill="none" stroke="#888" stroke-width="2"/>
+<text x="650" y="300" text-anchor="middle" font-size="13" fill="#888">줄마다 하나씩 돌아가며 꺼낸다</text>
+<text x="650" y="324" text-anchor="middle" font-size="13" fill="#55c555">B사·C사의 한 건은 한 바퀴 뒤에 처리된다</text>
+<text x="60" y="372" font-size="13" fill="#888">처리 순서</text>
+<rect x="140" y="356" width="22" height="22" rx="3" fill="#e05555"/>
+<rect x="170" y="356" width="22" height="22" rx="3" fill="#7ec8e3"/>
+<rect x="200" y="356" width="22" height="22" rx="3" fill="#55c555"/>
+<rect x="230" y="356" width="22" height="22" rx="3" fill="#e05555"/>
+<rect x="260" y="356" width="22" height="22" rx="3" fill="#e05555"/>
+<rect x="290" y="356" width="22" height="22" rx="3" fill="#e05555"/>
+<text x="326" y="372" font-size="13" fill="#888">… 남은 A사 문서는 B사·C사의 줄이 빈 뒤 이어서</text>
+<line x1="440" y1="100" x2="440" y2="330" stroke="#222" stroke-width="1"/>
+</svg>

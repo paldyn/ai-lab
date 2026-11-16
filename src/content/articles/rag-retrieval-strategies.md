@@ -9,394 +9,299 @@ tags: ["RAG검색", "BM25", "하이브리드검색", "Dense검색", "Sparse검�
 featured: false
 draft: false
 ---
-[지난 글](/articles/rag-embedding-models)에서 RAG 시스템의 검색 품질을 결정하는 임베딩 모델을 완전히 비교했다. 좋은 임베딩 모델을 골랐다면, 다음으로 중요한 것은 **어떻게 검색하느냐**다. 같은 벡터 인덱스를 사용하더라도 검색 전략에 따라 결과가 크게 달라진다. 이번 글에서는 RAG에서 사용되는 세 가지 검색 패러다임, BM25 희소 검색, 벡터 밀집 검색, 그리고 두 가지를 결합한 하이브리드 검색을 완전히 이해하고 구현한다.
+[지난 글](/articles/rag-embedding-models)에서 RAG 시스템의 검색 품질을 결정하는 임베딩 모델을 비교했다. 좋은 임베딩 모델을 골랐다면, 다음으로 중요한 것은 **어떻게 검색하느냐**다. 같은 문서 더미와 같은 임베딩을 쓰더라도 검색 전략에 따라 상위 다섯 건이 통째로 달라진다. 이 글에서는 RAG에서 쓰는 세 가지 검색 방식 — 낱말을 세는 BM25, 벡터로 뜻을 견주는 밀집 검색, 그리고 두 결과를 합치는 하이브리드 검색 — 이 각각 무엇을 재고 어디서 빈손으로 돌아오는지를 따라간다.
 
-## 검색의 두 가지 철학: 정확 매칭 vs 의미 이해
+미리 말해 두면, 셋 중 하나가 나머지를 이기는 이야기가 아니다. 두 검색기는 서로 다른 질문에 강하고, 하이브리드는 그 차이를 그대로 인정하고 합치는 방법이다. 그래서 합치는 방식을 이해하려면 먼저 각자가 무엇을 놓치는지를 알아야 한다.
 
-정보 검색 역사는 두 가지 철학의 경쟁이었다.
+## 두 갈래의 검색
 
-**정확 매칭(Exact Match)**: 사용자가 입력한 키워드가 문서에 정확히 있어야 검색된다. 구글 검색 초기, 도서관 카탈로그, 전통적인 전문 검색 엔진이 이 방식이다.
-
-**의미 검색(Semantic Search)**: 사용자의 의도와 문서의 의미를 이해해 관련 있으면 검색된다. "자동차"를 검색해도 "승용차", "차량"이 포함된 문서가 나온다.
-
-각각의 방식은 강점과 약점이 명확하고, 현대 RAG 시스템은 두 방식을 결합한 하이브리드 검색을 표준으로 채택하고 있다.
+정보 검색의 역사는 두 생각의 경쟁이었다. 하나는 「사용자가 적은 낱말이 문서에 있어야 한다」이고, 다른 하나는 「사용자가 뜻한 것과 문서의 뜻이 가까우면 된다」이다.
 
 ![RAG 검색 전략 비교](/assets/posts/rag-retrieval-strategies-comparison.svg)
 
-## BM25: 희소 검색의 원리
+### 정확 매칭
 
-BM25(Best Match 25)는 TF-IDF를 개선한 확률론적 검색 알고리즘으로, 1990년대에 개발됐지만 2024년 현재도 정확 매칭 검색의 기준으로 사용된다.
+**정확 매칭**은 질의에 든 낱말이 문서에 글자 그대로 있어야 그 문서를 찾는 방식이다. 도서관 카탈로그와 초기 검색 엔진, 지금도 쓰는 전문 검색 엔진이 다 이쪽이다. 이 방식이 압도적인 자리가 분명히 있다. 제품 코드 `KX-2100`, 법률 조항 번호 「제60조 제2항」, 오류 메시지 `ERR_CONNECTION_RESET`처럼 **글자 하나가 다르면 다른 것**인 질의다. 이런 낱말은 의미로 보면 비슷한 것이 수없이 많지만, 사용자가 원하는 것은 정확히 그 글자가 적힌 문서 하나다.
 
-BM25 점수 공식:
+반대로 못 하는 자리도 분명하다. 「연차」를 묻는 사람에게 「유급 휴가」라고 적힌 규정은 안 보인다. 동의어를 모르기 때문이다. 「배송 안 된 주문」처럼 부정이 든 의도는 「배송」과 「주문」이라는 낱말만 남기고 뜻을 잃는다. 오타 하나, 띄어쓰기 하나에도 결과가 바뀐다.
 
-```
-score(D, Q) = Σ IDF(qᵢ) · [TF(qᵢ,D) · (k₁+1)] / [TF(qᵢ,D) + k₁·(1-b+b·|D|/avgdl)]
-```
+### 의미 검색
 
-- **TF(qᵢ, D)**: 문서 D에서 쿼리 단어 qᵢ의 출현 빈도
-- **IDF(qᵢ)**: 전체 문서에서 qᵢ가 드물수록 높아지는 역문서 빈도
-- **|D|/avgdl**: 문서 길이 정규화 (긴 문서 불이익)
-- **k₁, b**: 튜닝 파라미터 (보통 k₁=1.5, b=0.75)
+**의미 검색**은 질의와 문서를 각각 숫자 벡터로 바꾸고 그 벡터가 가까운 문서를 찾는다. 벡터를 만드는 것이 지난 글에서 고른 임베딩 모델이다. 그 모델은 학습하는 동안 「자동차」와 「승용차」가 비슷한 문맥에 나온다는 것을 보았으므로 둘을 가까운 자리에 놓는다. 그래서 질의에 없는 낱말로 적힌 문서도 찾아온다.
 
-BM25의 핵심 특징은 **희소 벡터**(Sparse Vector)를 사용한다는 점이다. 어휘 크기(V)의 벡터에서 문서에 실제로 등장한 단어 위치만 0이 아닌 값을 가진다. 10만 개의 어휘 중 실제 등장 단어가 50개라면 벡터의 99.95%가 0이다. 이 희소성 덕분에 역색인(Inverted Index)을 통해 매우 빠른 검색이 가능하다.
+대가는 정확 매칭의 강점을 그대로 잃는다는 것이다. `KX-2100`과 `KX-2010`은 임베딩 공간에서 거의 같은 자리에 놓인다. 모델 입장에서는 둘 다 「알파벳 둘과 숫자 넷으로 된 제품 코드」이기 때문이다. 그리고 왜 그 문서가 나왔는지를 낱말 단위로 설명할 수 없다. 1,024개의 숫자가 서로 가깝다는 것 말고는 근거가 없다.
+
+### 빈손 질의
+
+두 방식이 각각 빈손으로 돌아오는 질의를 짝지어 놓으면 하이브리드가 왜 필요한지가 바로 보인다.
+
+| 질의 | 정확 매칭 | 의미 검색 |
+| --- | --- | --- |
+| 「연차는 며칠인가요」(문서에는 「유급 휴가 15일」) | 못 찾는다 — 낱말이 다르다 | 찾는다 |
+| 「KX-2100 펌웨어 업데이트」 | 찾는다 | KX-2010 문서를 섞어 온다 |
+| 「제60조 제2항」 | 찾는다 | 근로기준법 아무 조항이나 온다 |
+| 「배송이 왜 이렇게 늦어요」 | 「배송」이 든 문서를 다 가져온다 | 지연 안내 문서를 찾는다 |
+
+사내 문서 RAG에 들어오는 질의는 이 넷이 섞여 들어온다. 한쪽만 쓰면 어느 한 줄이 늘 빈손이다.
+
+## BM25
+
+정확 매칭 쪽의 표준이 **BM25**다. 낱말이 나온 횟수를 세어 점수를 매기는 확률 모형으로, 1990년대에 나온 식이 지금도 어휘 검색의 기준선으로 쓰인다. 학습이 필요 없고 계산이 가볍기 때문이다.
+
+$$
+\text{score}(D, Q) = \sum_{q_i \in Q} \text{IDF}(q_i) \cdot \frac{f(q_i, D)\,(k_1 + 1)}{f(q_i, D) + k_1\left(1 - b + b\,\frac{|D|}{\text{avgdl}}\right)}
+$$
+
+### 세 항
+
+식은 길어 보이지만 하는 일은 셋이다. $$f(q_i, D)$$ 는 질의 낱말 $$q_i$$ 가 문서 $$D$$ 에 나온 횟수, 곧 **TF**(term frequency)다. 많이 나올수록 그 문서가 그 낱말에 관한 것일 가능성이 높다. $$\text{IDF}(q_i)$$ 는 그 낱말이 전체 문서 중 몇 곳에 나오는지의 역수 쪽 값이다. 「회사」처럼 거의 모든 문서에 있는 낱말은 IDF가 0에 가까워 점수에 기여하지 못하고, 「KX-2100」처럼 세 문서에만 있는 낱말은 크게 기여한다. 마지막으로 $$|D|/\text{avgdl}$$ 는 그 문서 길이를 평균 길이로 나눈 값이다. 긴 문서는 아무 낱말이나 많이 들고 있으므로 같은 횟수라도 덜 쳐 준다.
+
+세 항이 각각 누르는 것이 다르다. TF는 「한 번 스친 문서」를 누르고, IDF는 「흔한 낱말」을 누르고, 길이 정규화는 「길어서 덕을 본 문서」를 누른다.
+
+### k₁과 b
+
+두 상수가 그 누르는 세기를 정한다. $$k_1$$ 은 횟수가 늘 때 점수가 **포화**하는 속도다. 포화는 입력을 늘려도 출력이 어느 값 이상 안 오르는 것을 말한다. 위 식에서 길이가 평균인 문서라면 TF 항은 $$f(k_1+1)/(f+k_1)$$ 이 되고, 횟수 $$f$$ 를 아무리 늘려도 $$k_1+1$$ 을 못 넘는다.
+
+![BM25 TF 항의 포화](/assets/posts/rag-retrieval-strategies-saturation.svg)
+
+$$k_1=1.2$$ 이면 한 번 나온 낱말이 1.0점, 두 번이면 1.38점, 열 번이면 1.96점이다. 열 번 나왔다고 열 배가 아니라 두 배가 채 안 된다. 같은 낱말을 일부러 반복해 넣은 문서가 상위를 차지하지 못하는 것이 이 포화 덕분이다. $$k_1$$ 을 3으로 키우면 열 번이 3.08점까지 올라가 반복을 더 쳐 주고, 0.5로 줄이면 한 번이나 열 번이나 거의 같아진다.
+
+$$b$$ 는 길이 벌점의 세기다. 0이면 길이를 아예 안 보고, 1이면 길이에 정비례해 깎는다. 흔한 기본값은 $$k_1$$ 이 1.2~2.0, $$b$$ 가 0.75다. 문서 길이가 고르게 짧은 FAQ 모음이면 $$b$$ 가 큰 의미가 없고, 두 쪽짜리 공지와 백 쪽짜리 규정이 섞인 저장소에서는 $$b$$ 가 순위를 크게 바꾼다.
+
+### 희소 벡터와 역색인
+
+BM25를 벡터로 보면 어휘 크기만 한 길이에 문서에 나온 낱말 자리만 값이 있는 **희소 벡터**다. 어휘가 10만 개이고 한 청크에 나온 낱말이 50개라면 벡터의 99.95%가 0이다. 이 희소성이 빠른 검색을 만든다. 낱말마다 「이 낱말이 나온 문서 목록」을 미리 만들어 두는 **역색인**을 쓰면, 질의 낱말 다섯 개의 목록만 열어 보면 되기 때문이다. 나머지 99,995개 낱말의 목록은 건드리지도 않는다.
+
+그리고 점수의 근거가 낱말 단위로 남는다. 「이 문서가 1위인 것은 KX-2100이 네 번, 펌웨어가 두 번 나왔기 때문」이라고 설명할 수 있다. 검색 결과가 이상할 때 원인을 찾아갈 수 있다는 것은 운영에서 작지 않은 이점이다.
 
 ```python
 from rank_bm25 import BM25Okapi
 import re
 
 def tokenize_korean(text: str) -> list[str]:
-    """
-    한국어 BM25를 위한 토크나이저.
-    형태소 분석기(Mecab, Kkma)를 쓰면 더 정확하다.
-    """
-    # 기본: 공백 분리 + 특수문자 제거
+    """공백 분리 + 특수문자 제거. 실무에서는 형태소 분석기를 쓴다."""
     tokens = re.sub(r"[^\w\s]", "", text).split()
     return [t for t in tokens if len(t) > 1]
 
-# 코퍼스 준비
 corpus_texts = [c.page_content for c in chunks]
-tokenized_corpus = [tokenize_korean(t) for t in corpus_texts]
+bm25 = BM25Okapi([tokenize_korean(t) for t in corpus_texts], k1=1.2, b=0.75)
 
-# BM25 인덱스 생성
-bm25 = BM25Okapi(tokenized_corpus)
-
-# 검색
-query = "연차 휴가는 며칠인가요"
-tokenized_query = tokenize_korean(query)
-scores = bm25.get_scores(tokenized_query)
-
-# Top-5 검색 결과
-top_k = 5
-top_indices = scores.argsort()[::-1][:top_k]
-for idx in top_indices:
-    print(f"점수: {scores[idx]:.4f}")
-    print(f"청크: {corpus_texts[idx][:80]}...")
-    print()
+scores = bm25.get_scores(tokenize_korean("연차 휴가는 며칠인가요"))
+for idx in scores.argsort()[::-1][:5]:
+    print(f"{scores[idx]:.4f}  {corpus_texts[idx][:80]}")
 ```
 
-**BM25의 강점**:
-- 고유명사, 제품 코드, 법률 조항 번호처럼 **정확한 용어 매칭**이 중요할 때 압도적
-- 역색인 기반이라 **검색 속도**가 매우 빠름
-- 모델 학습이 불필요하며 **해석이 명확**함
+한국어에서는 토크나이저가 BM25의 절반이다. 공백으로만 자르면 「휴가는」과 「휴가를」이 다른 낱말이 되어 서로를 못 찾는다. 조사를 떼어 주는 형태소 분석기를 쓰거나, 글자를 두세 개씩 겹쳐 자르는 n-gram으로 색인하는 것이 보통이다.
 
-**BM25의 한계**:
-- "연차"와 "유급 휴가"가 다른 단어이므로 동의어를 모름
-- "I don't like it"의 부정 의도를 이해하지 못함
-- 오타나 표현 변형에 취약함
+## Dense 검색
 
-## Dense 검색: 벡터 유사도 검색의 원리
+밀집 검색은 임베딩 모델이 만든 1,024~3,072차원 벡터를 쓴다. BM25의 희소 벡터와 달리 모든 차원에 값이 있어서 **밀집 벡터**라 부른다. 차원 하나하나에 사람이 읽을 수 있는 뜻은 없고, 벡터 전체의 방향이 뜻을 싣는다.
 
-Dense 검색(밀집 벡터 검색)은 임베딩 모델이 생성한 1024~3072차원의 밀집 벡터(Dense Vector)를 사용한다. 모든 차원이 의미를 가진다.
+### 유사도 척도
 
-핵심 유사도 측정 방법:
+두 벡터가 가까운지를 재는 방법은 셋이다. 코사인 유사도는 두 벡터 사이 각도만 보고 길이는 무시한다. 내적은 각도와 길이를 함께 본다. L2 거리는 두 끝점 사이 직선 거리다.
 
 ```python
 import numpy as np
 
 def cosine_similarity(v1: np.ndarray, v2: np.ndarray) -> float:
-    """코사인 유사도: 벡터 방향의 유사성 (크기 무관)"""
     return np.dot(v1, v2) / (np.linalg.norm(v1) * np.linalg.norm(v2))
 
-def dot_product(v1: np.ndarray, v2: np.ndarray) -> float:
-    """내적: L2 정규화된 벡터에서 코사인과 동일"""
-    return np.dot(v1, v2)
-
-# L2 정규화된 벡터라면 내적 = 코사인 유사도
-v1 = np.array([0.3, 0.7, -0.5, 0.2])
-v1_norm = v1 / np.linalg.norm(v1)  # L2 정규화
-
-# pgvector나 FAISS는 정규화된 벡터의 내적 계산이 더 빠름
+v = np.array([0.3, 0.7, -0.5, 0.2])
+v_unit = v / np.linalg.norm(v)   # 길이를 1로 맞추면 내적 = 코사인
 ```
 
-실제 대규모 RAG 시스템에서는 정확한 최근접 이웃 탐색이 아니라 **ANN(Approximate Nearest Neighbor)** 알고리즘을 사용한다.
+길이를 1로 맞춘 벡터끼리는 셋이 같은 순위를 낸다. 내적이 곧 코사인이 되고, L2 거리의 제곱이 $$2 - 2\cos\theta$$ 가 되기 때문이다. 요즘 임베딩 API 대부분이 이미 정규화된 벡터를 돌려주므로 실무에서 셋이 갈리는 일은 드물다. 갈리는 것은 정규화하지 않은 벡터를 내적으로 비교할 때다. 그때는 길이가 긴 벡터, 흔히 긴 문서의 벡터가 덮어놓고 상위로 올라온다.
 
-**HNSW (Hierarchical Navigable Small World)**: pgvector와 Qdrant의 기본 인덱스로, 계층적 그래프 구조를 사용해 O(log n) 복잡도로 근사 검색한다. 검색 속도와 정확도의 균형이 탁월하다.
+### 근사 최근접 탐색
 
-**IVF-PQ (Inverted File + Product Quantization)**: FAISS에서 많이 쓰이며, 벡터를 양자화해 메모리를 크게 절약한다.
+청크가 천 건이면 질의 벡터와 천 번 내적을 계산하고 정렬하면 끝이다. 백만 건이면 질의 하나에 1,536차원 곱셈 백만 번이고, 초당 질의가 수십 건 들어오면 그것만으로 서버가 찬다. 그래서 대규모에서는 가장 가까운 것을 반드시 찾는 대신 **거의 확실히 가까운 것**을 빨리 찾는다. 이것을 근사 최근접 이웃 탐색(ANN)이라 부른다. 정확도를 조금 내주고 속도를 수백 배 사는 거래다. 내준 정확도는 재현율로 잰다 — 진짜 상위 10건 중 근사 탐색이 몇 건을 찾았는가.
+
+### HNSW와 IVF-PQ
+
+가장 널리 쓰는 근사 탐색이 **HNSW**다. 벡터마다 가까운 이웃 몇 개를 간선으로 잇는 그래프를 여러 층으로 쌓는다. 위층은 듬성듬성해서 멀리 한 번에 뛰고, 아래층으로 내려올수록 촘촘해져 가까운 곳을 세밀하게 훑는다. 지하철 급행으로 근처 역까지 가서 완행으로 갈아타는 것과 같다. 층마다 몇 걸음만 걸으면 되므로 탐색 비용이 대략 $$O(\log n)$$ 으로 는다. pgvector와 Qdrant의 기본 색인이 이것이다.
+
+**IVF-PQ**는 다른 쪽을 아낀다. 먼저 벡터를 수천 개 묶음으로 나눠 질의와 가까운 묶음 몇 개만 열어 보고(IVF), 벡터 자체도 짧은 부호로 압축해 둔다(PQ). 1,536차원 실수 벡터가 6KB인데 수십 바이트로 줄어든다. 메모리가 수십 분의 1이 되는 대신 압축에서 잃은 정밀도만큼 재현율이 떨어진다. 벡터가 수억 건이라 메모리에 안 들어갈 때 꺼내는 방법이다.
 
 ```python
 import faiss
 import numpy as np
 
-def build_hnsw_index(
-    vectors: np.ndarray,
-    M: int = 32,         # 연결 수 (클수록 정확, 메모리 증가)
-    ef_construction: int = 200,
-) -> faiss.IndexHNSWFlat:
-    """HNSW 인덱스를 구축한다."""
-    dim = vectors.shape[1]
-    index = faiss.IndexHNSWFlat(dim, M)
+def build_hnsw_index(vectors: np.ndarray, M: int = 32, ef_construction: int = 200):
+    index = faiss.IndexHNSWFlat(vectors.shape[1], M)   # M: 노드당 간선 수
     index.hnsw.efConstruction = ef_construction
     index.add(vectors.astype(np.float32))
     return index
 
-def search_hnsw(
-    index: faiss.IndexHNSWFlat,
-    query_vector: np.ndarray,
-    k: int = 5,
-    ef_search: int = 50,  # 클수록 정확, 느림
-) -> tuple[np.ndarray, np.ndarray]:
-    """HNSW로 Top-K 검색"""
-    index.hnsw.efSearch = ef_search
-    distances, indices = index.search(
-        query_vector.reshape(1, -1).astype(np.float32), k
-    )
-    return distances[0], indices[0]
-
-# 실제 사용
-all_vectors = np.array(chunk_vectors)  # (N, 1536)
-hnsw_index = build_hnsw_index(all_vectors)
-
-query_vec = np.array(query_vector)
-distances, indices = search_hnsw(hnsw_index, query_vec, k=5)
-for dist, idx in zip(distances, indices):
-    print(f"유사도: {1 - dist:.4f}")  # L2 거리 → 유사도 변환
-    print(f"청크: {corpus_texts[idx][:80]}")
+def search_hnsw(index, query_vector: np.ndarray, k: int = 5, ef_search: int = 50):
+    index.hnsw.efSearch = ef_search                     # 클수록 정확하고 느리다
+    distances, indices = index.search(query_vector.reshape(1, -1).astype(np.float32), k)
+    return distances[0], indices[0]   # 기본 척도는 L2 거리 — 작을수록 가깝다
 ```
 
-## Hybrid 검색과 RRF 융합 알고리즘
+HNSW에서 손대는 값은 둘이다. `M`은 노드마다 잇는 간선 수로, 키우면 재현율이 오르고 메모리가 는다. `efSearch`는 탐색 중에 들고 다니는 후보 수로, 키우면 재현율이 오르고 지연이 는다. 앞의 것은 색인을 만들 때 정하고, 뒤의 것은 질의마다 바꿀 수 있다.
 
-하이브리드 검색은 BM25와 Dense 검색의 결과를 합쳐 각 방식의 강점을 취한다. 두 결과를 어떻게 합치느냐가 핵심인데, 가장 효과적인 방법이 **RRF**(Reciprocal Rank Fusion)다.
+## RRF 융합
+
+하이브리드 검색은 BM25와 밀집 검색을 각각 돌리고 그 결과를 하나의 순위로 합친다. 합치는 방법으로 가장 널리 쓰는 것이 **RRF**(Reciprocal Rank Fusion)다.
 
 ![하이브리드 검색 아키텍처](/assets/posts/rag-retrieval-strategies-hybrid.svg)
 
-### RRF 알고리즘 원리
+### 점수 스케일
 
-RRF는 각 검색 방법에서의 순위(rank)를 역수로 변환해 합산한다.
+가장 먼저 떠오르는 방법은 두 점수를 더하는 것이다. 그런데 BM25 점수는 질의 낱말 수와 IDF에 따라 0에서 20을 넘나들고, 코사인 유사도는 −1에서 1 사이이며 실제로는 0.6~0.9에 몰려 있다. 그대로 더하면 BM25가 순위를 독차지한다. 코사인 0.92와 0.79의 차이 0.13은 BM25 8.3과 7.1의 차이 1.2 앞에서 아무것도 아니다.
 
-```
-RRF_score(d) = Σ 1 / (k + rank_i(d))
-```
+최솟값·최댓값으로 0~1에 맞추는 정규화도 생각할 수 있지만 질의마다 분포가 달라 불안정하다. BM25 상위 다섯 건의 점수가 8.3, 8.2, 8.2, 8.1, 8.0인 질의에서는 0.1 차이가 0~1 전체로 부풀려진다.
 
-- `k`: 상수 (보통 60), 높은 순위에 지나치게 큰 가중치를 주는 것을 방지
-- `rank_i(d)`: 검색 방법 i에서 문서 d의 순위 (1이 최고)
+RRF는 점수를 아예 버리고 **순위만** 쓴다.
 
-직접 점수를 합산하는 것보다 RRF가 좋은 이유는 **점수 스케일 정규화** 때문이다. BM25 점수는 0~20 범위, 코사인 유사도는 0~1 범위로 서로 다른 스케일이라 직접 합산이 불공평하다. RRF는 순위만 사용하므로 스케일 차이가 없다.
+$$
+\text{RRF}(d) = \sum_{i} \frac{1}{k + \text{rank}_i(d)}
+$$
+
+검색기 $$i$$ 에서 문서 $$d$$ 가 몇 위였는지만 보고, 그 역수를 더한다. 1위는 어느 검색기에서든 1위이므로 스케일 차이가 원천적으로 사라진다. 이 방법의 장점은 그것이 전부이고, 그것으로 충분하다.
+
+### 상수 k
+
+$$k$$ 는 보통 60이다. 이 값이 없으면, 곧 $$k=0$$ 이면 1위는 1점, 2위는 0.5점, 10위는 0.1점이다. 1위가 2위의 두 배라 한쪽 검색기의 1위가 다른 쪽의 판단을 압도한다. $$k=60$$ 이면 1위가 1/61, 2위가 1/62, 10위가 1/70이다. 1위와 10위의 차이가 15%밖에 안 된다. 상위 순위를 과하게 쳐 주지 않으니, 한쪽에서만 1위인 문서보다 **양쪽에서 고르게 상위인 문서**가 위로 올라온다.
+
+### 손 계산
+
+네 건씩 돌려받은 예로 따라가 보자.
+
+| 청크 | BM25 순위 | 밀집 순위 | RRF |
+| --- | ---: | ---: | ---: |
+| chunk_045 | 2 | 1 | 1/62 + 1/61 = 0.0325 |
+| chunk_001 | 1 | 4 | 1/61 + 1/64 = 0.0320 |
+| chunk_089 | 4 | 2 | 1/64 + 1/62 = 0.0318 |
+| chunk_012 | 3 | — | 1/63 = 0.0159 |
+| chunk_003 | — | 3 | 1/63 = 0.0159 |
+
+BM25 1위인 chunk_001이 아니라 양쪽에서 2위·1위인 chunk_045가 맨 위에 선다. 그리고 한쪽에만 나온 chunk_012와 chunk_003은 3위였는데도 점수가 앞의 셋의 절반이다. 극단적으로 보면, 한쪽에서만 1위인 문서(1/61 = 0.0164)는 양쪽에서 10위인 문서(2/70 = 0.0286)를 못 이긴다. RRF가 「두 검색기가 함께 동의하는 문서」를 올리는 장치라는 것이 이 계산에서 드러난다.
 
 ```python
 from collections import defaultdict
-from typing import Any
 
-def reciprocal_rank_fusion(
-    result_lists: list[list[tuple[str, float]]],
-    k: int = 60,
-) -> list[tuple[str, float]]:
-    """
-    여러 검색 결과를 RRF로 융합한다.
-    
-    Args:
-        result_lists: [(doc_id, score)] 리스트의 리스트
-        k: RRF 상수 (보통 60)
-    
-    Returns:
-        [(doc_id, rrf_score)] 정렬된 융합 결과
-    """
-    rrf_scores: dict[str, float] = defaultdict(float)
-
+def reciprocal_rank_fusion(result_lists, k: int = 60):
+    """result_lists: 검색기마다 [(doc_id, score)]. 점수는 정렬에만 쓰고 버린다."""
+    rrf = defaultdict(float)
     for results in result_lists:
-        # 점수 기준 내림차순 정렬 후 순위 부여
-        sorted_results = sorted(
-            results, key=lambda x: x[1], reverse=True
-        )
-        for rank, (doc_id, _) in enumerate(sorted_results, start=1):
-            rrf_scores[doc_id] += 1.0 / (k + rank)
+        ranked = sorted(results, key=lambda x: x[1], reverse=True)
+        for rank, (doc_id, _) in enumerate(ranked, start=1):
+            rrf[doc_id] += 1.0 / (k + rank)
+    return sorted(rrf.items(), key=lambda x: x[1], reverse=True)
 
-    # RRF 점수 기준 내림차순 정렬
-    return sorted(rrf_scores.items(), key=lambda x: x[1], reverse=True)
+bm25_results  = [("chunk_001", 8.3), ("chunk_045", 7.1), ("chunk_012", 5.2), ("chunk_089", 4.8)]
+dense_results = [("chunk_045", 0.92), ("chunk_089", 0.88), ("chunk_003", 0.81), ("chunk_001", 0.79)]
 
-# 실제 사용 예시
-bm25_results = [
-    ("chunk_001", 8.3),
-    ("chunk_045", 7.1),
-    ("chunk_012", 5.2),
-    ("chunk_089", 4.8),
-]
-
-dense_results = [
-    ("chunk_045", 0.92),
-    ("chunk_089", 0.88),
-    ("chunk_003", 0.81),
-    ("chunk_001", 0.79),
-]
-
-fused = reciprocal_rank_fusion([bm25_results, dense_results])
-print("RRF 융합 결과:")
-for doc_id, score in fused[:5]:
-    print(f"  {doc_id}: {score:.4f}")
-# chunk_045: 0.0328  (두 방법 모두 상위권)
-# chunk_001: 0.0309  (BM25 1위, Dense 4위)
-# chunk_089: 0.0306  (BM25 4위, Dense 2위)
+for doc_id, score in reciprocal_rank_fusion([bm25_results, dense_results]):
+    print(f"{doc_id}: {score:.4f}")
+# chunk_045: 0.0325 / chunk_001: 0.0320 / chunk_089: 0.0318 / chunk_012: 0.0159 / chunk_003: 0.0159
 ```
 
-`chunk_045`가 1위인 이유는 BM25(2위)와 Dense(1위) 양쪽에서 모두 상위권이기 때문이다. 이것이 하이브리드 검색의 핵심 이점이다.
+## 하이브리드 구현
 
-## LangChain으로 하이브리드 검색 구현
+식은 몇 줄이지만 실제로 붙이면 식에 안 나오는 결정이 몇 개 생긴다.
 
-```python
-from langchain_community.retrievers import BM25Retriever
-from langchain.retrievers import EnsembleRetriever
-from langchain_openai import OpenAIEmbeddings
-from langchain_community.vectorstores import Qdrant
-from qdrant_client import QdrantClient
+### 후보 수와 빈 결과
 
-# Dense 검색용 Qdrant 설정
-qdrant_client = QdrantClient(url="http://localhost:6333")
-embeddings = OpenAIEmbeddings(model="text-embedding-3-small")
+먼저 각 검색기가 몇 건씩 내놓을지다. 최종으로 다섯 건을 쓸 거라고 각자 다섯 건씩 받으면 융합할 거리가 없다. BM25 6위인데 밀집 2위인 문서는 BM25 목록에 없으니 한쪽 점수만 받는다. 보통 최종 개수의 네 배쯤, 다섯 건을 쓸 거면 각자 20건을 받는다.
 
-vectorstore = Qdrant(
-    client=qdrant_client,
-    collection_name="company_docs",
-    embeddings=embeddings,
-)
-dense_retriever = vectorstore.as_retriever(
-    search_type="similarity",
-    search_kwargs={"k": 10},  # 더 많이 가져와서 RRF로 재정렬
-)
+다음은 한쪽이 아무것도 못 찾은 질의다. BM25는 질의 낱말이 하나도 문서에 없으면 빈 목록을 돌려준다. 오타가 난 질의가 그렇다. 밀집 검색은 거의 언제나 무언가를 돌려준다. 가장 가까운 것이 얼마나 먼지와 상관없이 상위 20건은 있기 때문이다. RRF는 빈 목록을 그냥 0으로 치므로 결과가 밀집 검색 순위 그대로가 된다. 이것 자체는 맞는 동작이지만, 밀집 쪽 1위의 코사인이 0.3밖에 안 되면 그 결과는 「관련 문서」가 아니라 「그나마 덜 먼 문서」다. 융합 전에 각 검색기의 최소 점수 기준을 따로 두어야 하는 이유다.
 
-# Sparse 검색용 BM25
-bm25_retriever = BM25Retriever.from_documents(chunks)
-bm25_retriever.k = 10
+### 저장소 안 융합과 밖 융합
 
-# 앙상블 (내부적으로 RRF 사용)
-ensemble_retriever = EnsembleRetriever(
-    retrievers=[bm25_retriever, dense_retriever],
-    weights=[0.5, 0.5],  # 동등 가중치 (도메인에 따라 조정)
-)
-
-# 최종 질의
-results = ensemble_retriever.invoke("연차 휴가 기간은?")
-for doc in results[:3]:
-    print(f"출처: {doc.metadata.get('source', '?')}")
-    print(f"내용: {doc.page_content[:100]}\n")
-```
-
-가중치 조정 가이드:
-- 키워드 검색이 중요한 도메인 (법률, 기술 문서): BM25 비중 높임 (0.6:0.4)
-- 의미 검색이 중요한 도메인 (FAQ, 일반 문의): Dense 비중 높임 (0.3:0.7)
-- 확신이 없을 때: 동등 (0.5:0.5)
-
-## pgvector로 하이브리드 검색 구현
-
-pgvector 0.7+부터 내장 하이브리드 검색을 지원한다.
+융합을 어디서 하느냐도 갈린다. 한 저장소가 두 검색을 다 할 수 있으면 질의 한 번에 끝낼 수 있다. PostgreSQL이라면 pgvector로 벡터 검색을, 내장 전문 검색으로 어휘 검색을 하고 SQL 한 덩이에서 RRF까지 계산한다.
 
 ```sql
--- pgvector + pg_trgm 하이브리드 검색
--- 1. Dense 벡터 검색 결과 (CTE)
 WITH dense AS (
-    SELECT
-        id,
-        content,
-        metadata,
-        ROW_NUMBER() OVER (
-            ORDER BY embedding <=> $1::vector
-        ) AS dense_rank
-    FROM documents
-    ORDER BY embedding <=> $1::vector
-    LIMIT 20
+    SELECT id, ROW_NUMBER() OVER (ORDER BY embedding <=> $1::vector) AS r
+    FROM documents ORDER BY embedding <=> $1::vector LIMIT 20
 ),
--- 2. BM25 전문 검색 결과 (CTE)
 sparse AS (
-    SELECT
-        id,
-        content,
-        metadata,
-        ROW_NUMBER() OVER (
-            ORDER BY ts_rank(
-                to_tsvector('korean', content),
-                plainto_tsquery('korean', $2)
-            ) DESC
-        ) AS sparse_rank
-    FROM documents
-    WHERE to_tsvector('korean', content)
-          @@ plainto_tsquery('korean', $2)
-    LIMIT 20
-),
--- 3. RRF 융합
-rrf AS (
-    SELECT
-        COALESCE(d.id, s.id) AS id,
-        COALESCE(d.content, s.content) AS content,
-        COALESCE(d.metadata, s.metadata) AS metadata,
-        COALESCE(1.0/(60 + d.dense_rank), 0) +
-        COALESCE(1.0/(60 + s.sparse_rank), 0) AS rrf_score
-    FROM dense d
-    FULL OUTER JOIN sparse s ON d.id = s.id
+    SELECT id, ROW_NUMBER() OVER (
+             ORDER BY ts_rank(tsv, plainto_tsquery('simple', $2)) DESC) AS r
+    FROM documents WHERE tsv @@ plainto_tsquery('simple', $2) LIMIT 20
 )
-SELECT id, content, metadata, rrf_score
-FROM rrf
-ORDER BY rrf_score DESC
-LIMIT 5;
+SELECT COALESCE(d.id, s.id) AS id,
+       COALESCE(1.0 / (60 + d.r), 0) + COALESCE(1.0 / (60 + s.r), 0) AS rrf
+FROM dense d FULL OUTER JOIN sparse s ON d.id = s.id
+ORDER BY rrf DESC LIMIT 5;
 ```
 
-파라미터: `$1` = 쿼리 임베딩 벡터, `$2` = 쿼리 텍스트
+여기에는 짚어 둘 것이 둘 있다. PostgreSQL의 `ts_rank`는 BM25가 아니다 — 낱말 빈도를 보지만 IDF가 없다. 그리고 PostgreSQL에는 한국어 형태소 분석이 기본으로 들어 있지 않아, 위처럼 `simple` 설정으로 공백만 자르거나 한국어 분석 확장을 따로 붙여야 한다. 둘 다 정확 매칭 쪽 품질을 깎는다. 그래도 저장소가 하나면 문서가 바뀔 때 두 색인이 어긋날 일이 없다는 이점이 크다.
 
-## 검색 품질 향상을 위한 추가 기법
+밖에서 합치는 쪽은 Elasticsearch로 BM25를, 벡터 DB로 밀집 검색을 따로 돌려 애플리케이션이 두 결과를 받아 합친다. 각자 제일 잘하는 도구를 쓸 수 있지만 같은 문서를 두 곳에 적재해야 하고, 한쪽에만 반영된 문서가 생기는 시간 창이 있다. LangChain의 앙상블 검색기가 이 방식을 감싸 둔 것이다.
 
-### 재순위 (Reranking)
+```python
+from langchain_classic.retrievers import EnsembleRetriever
+from langchain_community.retrievers import BM25Retriever
 
-BM25 + Dense 하이브리드로 Top-20을 가져온 후, Cross-encoder 모델로 최종 Top-5를 선정한다. Cross-encoder는 쿼리와 문서를 동시에 입력받아 관련도를 정밀하게 평가한다.
+bm25_retriever = BM25Retriever.from_documents(chunks)
+bm25_retriever.k = 20
+dense_retriever = vectorstore.as_retriever(search_kwargs={"k": 20})
+
+ensemble = EnsembleRetriever(
+    retrievers=[bm25_retriever, dense_retriever],
+    weights=[0.5, 0.5],      # 순위 역수에 곱하는 가중치 — 가중 RRF
+)
+results = ensemble.invoke("연차 휴가 기간은?")
+```
+
+### 가중치 출발점
+
+앙상블의 `weights`는 각 검색기의 순위 역수에 곱하는 값이다. 한쪽 검색기를 더 믿고 싶을 때 쓴다. 출발점은 도메인이 정한다. 법률·기술 문서처럼 조항 번호와 제품 코드가 질의의 핵심인 곳은 BM25 쪽을 높여 0.6:0.4, FAQ·일반 문의처럼 사용자가 자기 말로 묻는 곳은 밀집 쪽을 높여 0.3:0.7, 확신이 없으면 0.5:0.5다.
+
+다만 이 값은 출발점일 뿐이다. 실제 질의 백 개쯤에 정답 청크를 달아 두고 가중치를 0.1씩 옮겨 가며 재 보면, 기대와 다른 곳이 최적인 경우가 흔하다. 재 보지 않은 가중치는 「감」이라는 이름의 상수다.
+
+## 재순위
+
+하이브리드로 후보를 모은 뒤 한 단계를 더 얹는 구성이 많다. 상위 20건을 다시 정밀하게 매겨 다섯 건만 남기는 **재순위**다.
+
+### 교차 인코더
+
+지금까지의 검색기는 질의와 문서를 따로 처리했다. 밀집 검색은 문서 벡터를 미리 만들어 두고 질의 벡터만 새로 만들어 비교한다. 빠른 대신 질의와 문서가 서로를 보지 못한다. **교차 인코더**는 질의와 문서를 한 입력으로 붙여 모델에 넣고 관련도 점수 하나를 받는다. 모델이 「이 질문의 '연차'가 이 문단의 '유급 휴가 15일'과 같은 것을 묻는다」는 관계를 직접 본다. 그래서 정밀하다.
 
 ```python
 from sentence_transformers import CrossEncoder
 
-# Cross-encoder 재순위 모델
-reranker = CrossEncoder(
-    "cross-encoder/ms-marco-MiniLM-L-6-v2",
-    max_length=512,
-)
+reranker = CrossEncoder("cross-encoder/ms-marco-MiniLM-L-6-v2", max_length=512)
 
-def rerank_results(
-    query: str,
-    docs: list,
-    top_n: int = 5,
-) -> list:
-    """
-    Cross-encoder로 검색 결과를 재순위한다.
-    초기 검색보다 정밀도가 크게 향상된다.
-    """
+def rerank(query: str, docs: list, top_n: int = 5) -> list:
     if not docs:
         return []
+    scores = reranker.predict([[query, d.page_content] for d in docs])
+    ranked = sorted(zip(docs, scores), key=lambda x: x[1], reverse=True)
+    return [d for d, _ in ranked[:top_n]]
 
-    pairs = [[query, doc.page_content] for doc in docs]
-    scores = reranker.predict(pairs)
-
-    # 점수 기준 내림차순 정렬
-    ranked = sorted(
-        zip(docs, scores),
-        key=lambda x: x[1],
-        reverse=True,
-    )
-    return [doc for doc, _ in ranked[:top_n]]
-
-# 파이프라인: 하이브리드 검색(Top-20) → 재순위(Top-5)
-initial_results = ensemble_retriever.invoke("연차 정책")
-final_results = rerank_results(
-    "연차 정책", initial_results, top_n=5
-)
+final = rerank("연차 정책", ensemble.invoke("연차 정책"), top_n=5)
 ```
 
-Cross-encoder 재순위의 효과: 검색 정밀도(Precision@5)가 평균 15~25% 향상되는 것으로 보고된다.
+위 모델은 영어 데이터로 학습한 것이라, 한국어 문서에서는 다국어 재순위 모델을 고른다.
 
-## 검색 전략 성능 비교 요약
+### 후보 수와 지연
 
-| 전략 | 구현 복잡도 | 검색 정밀도 | 키워드 강점 | 의미 이해 | 추천 환경 |
-|------|-----------|------------|------------|----------|----------|
-| BM25만 | 낮음 | 중간 | 최고 | 없음 | 레거시 시스템 |
-| Dense만 | 중간 | 중간 | 낮음 | 최고 | 일반 QA |
-| Hybrid (RRF) | 중간 | 높음 | 높음 | 높음 | **프로덕션 기본** |
-| Hybrid + Rerank | 높음 | 최고 | 높음 | 최고 | 고품질 요구 |
+대가는 미리 계산해 둘 수가 없다는 것이다. 질의가 올 때마다 후보 하나하나를 질의와 붙여 모델에 넣어야 하므로 비용이 후보 수에 비례한다. 후보 20건이면 모델 호출 20번어치고, 100건이면 100번어치다. 배치로 묶어도 GPU 없이 돌리면 수백 밀리초가 금방 붙는다. 그래서 재순위는 「1차 검색 → 20건 → 재순위 → 5건」처럼 앞에서 크게 거르고 뒤에서 조금만 다듬는 모양으로 쓴다. 지연이 문제면 후보 수부터 줄인다. 20건을 10건으로 줄이면 지연이 거의 절반이 되고, 품질이 얼마나 떨어지는지는 1차 검색 11~20위에서 최종 다섯 건으로 올라오는 문서가 몇 건인지가 정한다. 그 수를 실제 질의로 한 번 세어 보면 후보 수를 몇으로 둘지가 감이 아니라 숫자로 정해진다.
 
-## 마치며
+### 재순위의 한계
 
-지금까지 RAG에 대해 다룬 내용을 정리하면 다음과 같다.
+재순위가 못 고치는 것이 하나 있다. **1차 검색이 후보에 안 넣은 문서는 순위를 고칠 대상 자체가 아니다.** 정답 청크가 하이브리드 상위 20건에 없으면, 재순위 모델이 아무리 정밀해도 그 청크를 데려올 수 없다. 그래서 재순위 전후로 재야 할 지표가 다르다. 1차 검색은 「상위 20건 안에 정답이 있는가」(재현율)로 재고, 재순위는 「그중 정답이 상위 다섯에 오는가」(정밀도)로 잰다. 최종 결과가 나쁠 때 어느 단계 탓인지를 이 둘로 가른다. 재현율이 낮은데 재순위 모델을 바꾸는 것은 엉뚱한 곳을 고치는 일이다. 재순위 자체는 [다음 글](/articles/rag-reranking)에서 따로 다룬다.
 
-1. **RAG 기초**: LLM의 한계와 RAG의 동작 원리
-2. **RAG 아키텍처**: Naive → Advanced → Modular RAG 발전 단계
-3. **청킹 전략**: 고정 크기, 재귀적, 시맨틱, 구조 기반 청킹
-4. **임베딩 모델**: OpenAI, BGE-M3, E5, 한국어 특화 모델 비교
-5. **검색 전략**: BM25, Dense, Hybrid 검색과 RRF 융합 (이번 글)
+## 정리
 
-RAG 시스템의 품질을 결정하는 핵심은 세 가지다. **좋은 청킹**(의미를 보존하면서 적절한 크기로), **적합한 임베딩 모델**(도메인과 언어에 맞는), **강력한 검색 전략**(하이브리드 + 재순위). 이 세 가지를 잘 갖추고, `ragas`로 지속적으로 품질을 측정하며 개선해 나간다면 실무에서 탁월한 RAG 시스템을 구축할 수 있다.
+| 전략 | 구현 난도 | 정확 매칭 | 의미 이해 | 쓰는 자리 |
+| --- | --- | --- | --- | --- |
+| BM25만 | 낮음 | 강함 | 없음 | 코드·조항 번호가 질의의 대부분 |
+| 밀집 검색만 | 중간 | 약함 | 강함 | 자연어 질문이 대부분 |
+| 하이브리드(RRF) | 중간 | 강함 | 강함 | 대부분의 RAG의 기본값 |
+| 하이브리드 + 재순위 | 높음 | 강함 | 가장 정밀 | 상위 몇 건의 정확도가 중요할 때 |
+
+- 정확 매칭은 글자 하나가 다르면 다른 것인 질의에, 의미 검색은 자기 말로 묻는 질의에 강하다. 한쪽만 쓰면 어느 한 종류가 늘 빈손이다
+- BM25는 TF·IDF·길이 정규화 세 항으로 점수를 매기고, $$k_1$$ 이 반복을 얼마나 쳐 줄지, $$b$$ 가 긴 문서를 얼마나 깎을지 정한다
+- 밀집 검색은 정규화된 벡터에서 코사인·내적·L2가 같은 순위를 낸다. 대규모에서는 HNSW로 속도를, IVF-PQ로 메모리를 산다
+- RRF는 점수를 버리고 순위만 써서 스케일 문제를 없앤다. $$k=60$$ 이 양쪽에서 고르게 상위인 문서를 올린다
+- 각 검색기는 최종 개수의 몇 배를 받아 오고, 한쪽이 빈손일 때의 최소 점수 기준을 따로 둔다
+- 재순위는 1차 검색이 데려온 후보 안에서만 순위를 고친다. 재현율과 정밀도를 단계별로 나눠 잰다
 
 ---
 
