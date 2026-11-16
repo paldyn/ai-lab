@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { ArrowLeft, ArrowRight } from 'lucide-react';
 import { Link, Navigate, useParams } from 'react-router';
+import { ArticleAsk } from '../components/ArticleAsk';
 import { ArticleTitleBar } from '../components/ArticleTitleBar';
 import { ImageLightbox } from '../components/ImageLightbox';
 import { Seo } from '../components/Seo';
@@ -133,6 +134,13 @@ function CertPrepView({ cert, note }: { cert: Cert; note: CertPrepNote }) {
 
           <ImageLightbox image={zoomed} onClose={() => setZoomed(null)} />
 
+          <ArticleAsk
+            title={`${note.title} — ${cert.nameKo} 시험 노트`}
+            fallbackContext={note.summary}
+            proseRef={proseRef}
+            ready={Boolean(body)}
+          />
+
           {/*
             앞뒤는 사슬이 아니라 파일 번호가 정합니다. 시험 노트는 순서대로 읽는
             것이라 원고에 「지난 글」을 적을 필요가 없습니다.
@@ -183,5 +191,5 @@ export function CertPrepPage() {
 
   if (!cert || !note) return <Navigate to="/learn/certs" replace />;
 
-  return <CertPrepView cert={cert} note={note} />;
+  return <CertPrepView key={`${note.certId}/${note.slug}`} cert={cert} note={note} />;
 }

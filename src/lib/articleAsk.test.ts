@@ -1,6 +1,9 @@
 import { afterEach, describe, expect, it, vi } from 'vitest';
 import {
   buildArticleConversationContext,
+  buildArticleQuestionContext,
+  buildArticleSelectionContext,
+  collectDomBlocks,
   combineArticleSelections,
   pickPastedImages,
   readImageAttachment,
@@ -366,5 +369,169 @@ describe('한도가 풀리기까지 기다리기', () => {
   it('남은 초를 세어 문구에 넣고, 다 세면 초를 뺀다', () => {
     expect(articleAskWaitMessage(9)).toBe('질문이 잠시 몰렸어요. 9초 뒤에 다시 시도해 주세요.');
     expect(articleAskWaitMessage(0)).toBe('질문이 잠시 몰렸어요. 다시 시도해 주세요.');
+  });
+});
+
+class FakeDomElement {
+  readonly nodeType = 1;
+  readonly tagName: string;
+  readonly classList: { contains: (token: string) => boolean };
+  readonly childNodes: Array<FakeDomElement | { nodeType: number; textContent: string }>;
+  readonly children: FakeDomElement[];
+  private readonly attrs: Record<string, string>;
+  private readonly classes: Set<string>;
+  private readonly rawText?: string;
+  private readonly rect: { top: number; bottom: number };
+
+  constructor(
+    tagName: string,
+    options: {
+      attrs?: Record<string, string>;
+      classes?: string[];
+      children?: Array<FakeDomElement | { nodeType: number; textContent: string }>;
+      text?: string;
+      rect?: { top: number; bottom: number };
+    } = {},
+  ) {
+    this.tagName = tagName.toUpperCase();
+    this.attrs = options.attrs ?? {};
+    this.classes = new Set(options.classes ?? []);
+    this.classList = { contains: (token: string) => this.classes.has(token) };
+    this.childNodes = options.children ?? (options.text ? [{ nodeType: 3, textContent: options.text }] : []);
+    this.children = this.childNodes.filter((node): node is FakeDomElement => node instanceof FakeDomElement);
+    this.rawText = options.text;
+    this.rect = options.rect ?? { top: 0, bottom: 0 };
+  }
+
+  get textContent(): string {
+    if (this.rawText !== undefined && this.children.length === 0) return this.rawText;
+    return this.childNodes.map((node) => node.textContent).join('');
+  }
+
+  hasAttribute(name: string): boolean {
+    return Object.prototype.hasOwnProperty.call(this.attrs, name);
+  }
+
+  getAttribute(name: string): string | null {
+    return this.hasAttribute(name) ? this.attrs[name] : null;
+  }
+
+  matches(selector: string): boolean {
+    if (!selector.includes('hidden')) return false;
+    return (
+      this.tagName === 'SCRIPT' ||
+      this.tagName === 'STYLE' ||
+      this.hasAttribute('hidden') ||
+      this.getAttribute('aria-hidden') === 'true'
+    );
+  }
+
+  getBoundingClientRect(): DOMRect {
+    return this.rect as DOMRect;
+  }
+}
+
+function el(
+  tagName: string,
+  options?: ConstructorParameters<typeof FakeDomElement>[1],
+): FakeDomElement {
+  return new FakeDomElement(tagName, options);
+}
+
+describe('시험 노트와 문제 목록 context', () => {
+  it('한 자리 문항 번호도 버리지 않고 목록 번호 꼴로 남긴다', () => {
+    expect(articleQuestionTokens('3번 문제 왜 2번이 답인가요?')).toEqual(
+      expect.arrayContaining(['3.', '2.', '문제']),
+    );
+    expect(articleQuestionTokens('3번째 문단 설명해줘')).not.toContain('3.');
+  });
+
+  it('문항 번호 3.은 13.이나 3.5와 섞이지 않고 3번 문항만 짚는다', () => {
+    const examBlocks: ArticleContextBlock[] = [
+      { text: '1. 첫 번째 문항입니다.', heading: '모의고사', kind: 'body' },
+      { text: '2. 두 번째 문항입니다.', heading: '모의고사', kind: 'body' },
+      { text: '3. 세 번째 문항입니다.', heading: '모의고사', kind: 'body' },
+      { text: '4. 네 번째 문항입니다.', heading: '모의고사', kind: 'body' },
+      { text: '5. 다섯 번째 문항입니다.', heading: '모의고사', kind: 'body' },
+      { text: '6. 여섯 번째 문항입니다.', heading: '모의고사', kind: 'body' },
+      { text: '7. 일곱 번째 문항입니다.', heading: '모의고사', kind: 'body' },
+      { text: '10. 열 번째 문항입니다. 기준값은 3.5입니다.', heading: '모의고사', kind: 'body' },
+      { text: '13. 열세 번째 문항입니다.', heading: '모의고사', kind: 'body' },
+    ];
+
+    const context = selectRelevantArticleContext(examBlocks, '3번 문제 설명해줘', 6);
+    expect(context).toContain('3. 세 번째 문항');
+    expect(context).not.toContain('기준값은 3.5');
+    expect(context).not.toContain('열세 번째 문항');
+  });
+
+  it('답 토글이 든 문제 목록은 문항마다 나누고 번호와 답 표시를 붙인다', () => {
+    vi.stubGlobal('HTMLElement', FakeDomElement);
+    vi.stubGlobal('window', { innerHeight: 900 });
+
+    const shortList = el('ul', {
+      children: [el('li', { text: '짧은 항목 하나' }), el('li', { text: '짧은 항목 둘' })],
+    });
+    const questions = Array.from({ length: 10 }, (_, index) => {
+      const number = 9 + index;
+      return el('li', {
+        rect: { top: index * 180, bottom: index * 180 + 160 },
+        children: [
+          el('details', {
+            classes: ['answer'],
+            children: [
+              el('summary', {
+                classes: ['answer-ask'],
+                children: [
+                  { nodeType: 3, textContent: `다음 중 옳지 않은 것은? 문항 ${number} 본문 ${'설명 '.repeat(40)} ④ 선택지` },
+                  el('span', { classes: ['answer-chip'], attrs: { 'aria-hidden': 'true' } }),
+                ],
+              }),
+              el('div', {
+                classes: ['answer-body'],
+                text: `④. 문항 ${number} 해설입니다.`,
+              }),
+            ],
+          }),
+        ],
+      });
+    });
+    const mockExamList = el('ol', { attrs: { start: '9' }, children: questions });
+    const root = el('div', {
+      children: [
+        el('h2', { text: '3과목 데이터 분석' }),
+        shortList,
+        mockExamList,
+      ],
+    });
+
+    const collected = collectDomBlocks(root as unknown as HTMLElement);
+    // 답 토글 없는 짧은 목록은 1블록으로 남고, 9~18번 문항은 각각 따로 나뉜다.
+    expect(collected).toHaveLength(12);
+    expect(collected[1].text).toBe('짧은 항목 하나짧은 항목 둘');
+    expect(collected[2].text).toContain('9. 다음 중 옳지 않은 것은? 문항 9 본문');
+    expect(collected[2].text).toContain('④ 선택지 답. ④. 문항 9 해설입니다.');
+    expect(collected[11].text).toContain('18. 다음 중 옳지 않은 것은? 문항 18 본문');
+
+    // 전체 길이가 1,600자를 훌쩍 넘어도 17번 질문을 찾으면 9번에서 잘리지 않고 17번을 싣는다.
+    const questionContext = buildArticleQuestionContext(
+      root as unknown as HTMLElement,
+      '17번 문제 풀이 설명해줘',
+    );
+    expect(questionContext).toContain('17. 다음 중 옳지 않은 것은? 문항 17 본문');
+    expect(questionContext).toContain('답. ④. 문항 17 해설입니다.');
+
+    // 공통 문구를 드래그해도 앞 문항(9번)이 아니라 실제로 선택한 16번 문항을 짚는다.
+    const targetItem = questions[7];
+    const range = {
+      intersectsNode: (node: unknown) => node === targetItem,
+    } as unknown as Range;
+    const selectionContext = buildArticleSelectionContext(
+      root as unknown as HTMLElement,
+      range,
+      '다음 중 옳지 않은 것은?',
+    );
+    expect(selectionContext).toContain('16. 다음 중 옳지 않은 것은? 문항 16 본문');
+    expect(selectionContext).not.toContain('9. 다음 중 옳지 않은 것은?');
   });
 });

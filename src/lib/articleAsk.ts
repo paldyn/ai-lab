@@ -179,21 +179,33 @@ function stemKoreanToken(token: string): string {
 
 export function articleQuestionTokens(value: string): string[] {
   const normalized = value.normalize('NFKC').toLocaleLowerCase('ko-KR');
-  const matches = normalized.match(/[가-힣]{2,}|[a-z0-9][a-z0-9.+#/_-]*/g) ?? [];
+  const matches = normalized.match(/\d+번(?!째)|[가-힣]{2,}|[a-z0-9][a-z0-9.+#/_-]*/g) ?? [];
   const tokens = matches
-    .map((token) => (/^[가-힣]+$/.test(token) ? stemKoreanToken(token) : token))
+    .map((token) => {
+      if (/^\d+번$/.test(token)) return `${token.slice(0, -1)}.`;
+      return /^[가-힣]+$/.test(token) ? stemKoreanToken(token) : token;
+    })
     .filter((token) => token.length >= 2 && !STOP_WORDS.has(token));
 
   return [...new Set(tokens)].slice(0, 16);
 }
 
 function occurrenceCount(haystack: string, needle: string): number {
+  const numericMarker = /^\d+\.$/.test(needle);
   let count = 0;
   let from = 0;
 
   while (count < 4) {
     const at = haystack.indexOf(needle, from);
     if (at < 0) break;
+    if (numericMarker) {
+      const before = at > 0 ? haystack[at - 1] : '';
+      const after = at + needle.length < haystack.length ? haystack[at + needle.length] : '';
+      if (/[0-9]/.test(before) || /[0-9]/.test(after)) {
+        from = at + needle.length;
+        continue;
+      }
+    }
     count += 1;
     from = at + needle.length;
   }
@@ -362,17 +374,140 @@ export function selectSurroundingArticleContext(
   );
 }
 
-function collectDomBlocks(root: HTMLElement): DomContextBlock[] {
+const HIDDEN_BLOCK_SELECTOR = 'script, style, [hidden], [aria-hidden="true"]';
+
+function isVisibleDomElement(node: unknown): node is HTMLElement {
+  return (
+    typeof HTMLElement !== 'undefined' &&
+    node instanceof HTMLElement &&
+    !node.matches(HIDDEN_BLOCK_SELECTOR)
+  );
+}
+
+function findAnswerDetails(item: Element): HTMLElement | null {
+  for (const child of item.children) {
+    if (child.tagName === 'DETAILS' && child.classList.contains('answer') && isVisibleDomElement(child)) {
+      return child;
+    }
+  }
+  return null;
+}
+
+function extractDetailsAnswerText(details: Element): string {
+  let summary: Element | null = null;
+  const answerParts: string[] = [];
+
+  for (const child of details.children) {
+    if (!summary && child.tagName === 'SUMMARY') {
+      summary = child;
+    } else if (isVisibleDomElement(child)) {
+      const part = normalizeArticleText(child.textContent ?? '');
+      if (part) answerParts.push(part);
+    }
+  }
+
+  const askText = normalizeArticleText(summary?.textContent ?? '');
+  const answerText = answerParts.join(' ');
+  if (askText && answerText) return `${askText} 답. ${answerText}`;
+  return askText || answerText;
+}
+
+function extractListItemText(item: Element, numberPrefix = ''): string {
+  const details = findAnswerDetails(item);
+  let body = '';
+
+  if (details) {
+    const parts: string[] = [];
+    for (const node of item.childNodes) {
+      if (node === details) {
+        const text = extractDetailsAnswerText(details);
+        if (text) parts.push(text);
+      } else if (node.nodeType === 1) {
+        if (isVisibleDomElement(node)) {
+          const text = normalizeArticleText(node.textContent ?? '');
+          if (text) parts.push(text);
+        }
+      } else {
+        const text = normalizeArticleText(node.textContent ?? '');
+        if (text) parts.push(text);
+      }
+    }
+    body = parts.join(' ');
+  } else {
+    body = normalizeArticleText(item.textContent ?? '');
+  }
+
+  if (!body) return '';
+  if (!numberPrefix || body === numberPrefix || body.startsWith(`${numberPrefix} `)) return body;
+  return `${numberPrefix} ${body}`;
+}
+
+/**
+ * 모의고사나 연습 문제 목록(`<ol>`)은 한 덩어리로 두면 1,600자 상한에서 뒤쪽
+ * 문항이 통째로 잘리고 문제 번호도 DOM 텍스트에 남지 않는다. 답 토글이 들었거나
+ * 한 블록 상한을 넘는 목록은 문항(`<li>`)마다 따로 끊어 둔다.
+ */
+function expandListBlocks(
+  list: HTMLElement,
+  heading: string,
+  listText: string,
+): DomContextBlock[] | null {
+  const items = Array.from(list.children).filter(
+    (child): child is HTMLElement => isVisibleDomElement(child) && child.tagName === 'LI',
+  );
+  if (items.length === 0) return null;
+
+  const hasAnswer = items.some((item) => findAnswerDetails(item) !== null);
+  if (!hasAnswer && listText.length <= MAX_BLOCK_CHARS) return null;
+
+  const isOrdered = list.tagName === 'OL';
+  const reversed = isOrdered && list.hasAttribute('reversed');
+  const startAttr = isOrdered ? Number.parseInt(list.getAttribute('start') ?? '', 10) : Number.NaN;
+  let currentNumber = Number.isFinite(startAttr) ? startAttr : (reversed ? items.length : 1);
+
+  const blocks: DomContextBlock[] = [];
+  for (const item of items) {
+    let prefix = '';
+    if (isOrdered) {
+      const valueAttr = item.getAttribute('value');
+      const explicitValue = valueAttr ? Number.parseInt(valueAttr, 10) : Number.NaN;
+      if (Number.isFinite(explicitValue)) currentNumber = explicitValue;
+      prefix = `${currentNumber}.`;
+      currentNumber += reversed ? -1 : 1;
+    }
+
+    const text = extractListItemText(item, prefix);
+    if (!text) continue;
+    blocks.push({
+      element: item,
+      heading,
+      kind: 'body',
+      text,
+    });
+  }
+
+  return blocks.length > 0 ? blocks : null;
+}
+
+export function collectDomBlocks(root: HTMLElement): DomContextBlock[] {
   const blocks: DomContextBlock[] = [];
   let heading = '';
 
   for (const child of root.children) {
-    if (!(child instanceof HTMLElement) || child.matches('script, style, [hidden], [aria-hidden="true"]')) continue;
+    if (!isVisibleDomElement(child)) continue;
     const text = normalizeArticleText(child.textContent ?? '');
     if (!text) continue;
 
     const isHeading = /^H[2-4]$/.test(child.tagName);
     if (isHeading) heading = text;
+
+    if (child.tagName === 'OL' || child.tagName === 'UL') {
+      const expanded = expandListBlocks(child, heading, text);
+      if (expanded) {
+        blocks.push(...expanded);
+        continue;
+      }
+    }
 
     blocks.push({
       element: child,
