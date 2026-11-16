@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="520" viewBox="0 0 880 520" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+<defs><marker id="arr0" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto"><path d="M 0 0 L 13 7 L 0 14 z" fill="#888"/></marker></defs>
+<rect x="0" y="0" width="880" height="520" rx="12" fill="#0a0a0a"/>
+<text x="440" y="46" text-anchor="middle" font-size="22" fill="#e8e8e8" font-weight="700">곡률 행렬 넷과 그것을 근사하는 옵티마이저</text>
+<rect x="60" y="96" width="170" height="62" rx="8" fill="#7777cc" fill-opacity="0.10" stroke="#7777cc" stroke-width="1.5"/>
+<text x="145.0" y="123.0" text-anchor="middle" font-size="15" fill="#e8e8e8" font-weight="600">헤세 H</text>
+<text x="145.0" y="145.0" text-anchor="middle" font-size="13" fill="#888">∇²L 그대로</text>
+<rect x="260" y="96" width="170" height="62" rx="8" fill="#7777cc" fill-opacity="0.10" stroke="#7777cc" stroke-width="1.5"/>
+<text x="345.0" y="123.0" text-anchor="middle" font-size="15" fill="#e8e8e8" font-weight="600">가우스–뉴턴 G</text>
+<text x="345.0" y="145.0" text-anchor="middle" font-size="13" fill="#888">Jᵀ H_ℓ J</text>
+<rect x="460" y="96" width="170" height="62" rx="8" fill="#7777cc" fill-opacity="0.10" stroke="#7777cc" stroke-width="1.5"/>
+<text x="545.0" y="123.0" text-anchor="middle" font-size="15" fill="#e8e8e8" font-weight="600">피셔 F</text>
+<text x="545.0" y="145.0" text-anchor="middle" font-size="13" fill="#888">라벨을 모델에서 뽑음</text>
+<rect x="660" y="96" width="170" height="62" rx="8" fill="#7777cc" fill-opacity="0.10" stroke="#7777cc" stroke-width="1.5"/>
+<text x="745.0" y="123.0" text-anchor="middle" font-size="15" fill="#e8e8e8" font-weight="600">경험적 피셔</text>
+<text x="745.0" y="145.0" text-anchor="middle" font-size="13" fill="#888">라벨을 데이터에서 씀</text>
+<line x1="230" y1="127.0" x2="260" y2="127.0" stroke="#888" stroke-width="1.5" marker-end="url(#arr0)"/>
+<line x1="430" y1="127.0" x2="460" y2="127.0" stroke="#888" stroke-width="1.5" marker-end="url(#arr0)"/>
+<line x1="630" y1="127.0" x2="660" y2="127.0" stroke="#888" stroke-width="1.5" marker-end="url(#arr0)"/>
+<text x="245" y="188" text-anchor="middle" font-size="13" fill="#888">잔차 항을 뺀다</text>
+<text x="445" y="188" text-anchor="middle" font-size="13" fill="#888">지수족 + 정준 연결</text>
+<text x="645" y="188" text-anchor="middle" font-size="13" fill="#888">라벨의 출처를 바꾼다</text>
+<text x="440" y="236" text-anchor="middle" font-size="16" fill="#e8e8e8" font-weight="600">구조를 덜어 내는 근사 — 어느 곡률 행렬에서 출발하든 같은 틀에 끼운다</text>
+<rect x="60" y="290" width="170" height="78" rx="8" fill="#7ec8e3" fill-opacity="0.10" stroke="#7ec8e3" stroke-width="1.5"/>
+<text x="145.0" y="325.0" text-anchor="middle" font-size="15" fill="#e8e8e8" font-weight="600">대각 + 제곱근</text>
+<text x="145.0" y="347.0" text-anchor="middle" font-size="13" fill="#888">Adam · Adagrad</text>
+<rect x="260" y="290" width="170" height="78" rx="8" fill="#7ec8e3" fill-opacity="0.10" stroke="#7ec8e3" stroke-width="1.5"/>
+<text x="345.0" y="325.0" text-anchor="middle" font-size="15" fill="#e8e8e8" font-weight="600">층별 크로네커</text>
+<text x="345.0" y="347.0" text-anchor="middle" font-size="13" fill="#888">K-FAC</text>
+<rect x="460" y="290" width="170" height="78" rx="8" fill="#7ec8e3" fill-opacity="0.10" stroke="#7ec8e3" stroke-width="1.5"/>
+<text x="545.0" y="325.0" text-anchor="middle" font-size="15" fill="#e8e8e8" font-weight="600">행 · 열 인자</text>
+<text x="545.0" y="347.0" text-anchor="middle" font-size="13" fill="#888">Shampoo · SOAP</text>
+<rect x="660" y="290" width="170" height="78" rx="8" fill="#7ec8e3" fill-opacity="0.10" stroke="#7ec8e3" stroke-width="1.5"/>
+<text x="745.0" y="325.0" text-anchor="middle" font-size="15" fill="#e8e8e8" font-weight="600">누적 없는 행 · 열</text>
+<text x="745.0" y="347.0" text-anchor="middle" font-size="13" fill="#888">Muon</text>
+<rect x="60" y="410" width="770" height="70" rx="8" fill="none" stroke="#444" stroke-width="1"/>
+<text x="445" y="438" text-anchor="middle" font-size="13" fill="#e8e8e8">갱신은 언제나 Δθ = −η P⁻¹ ∇L — P 를 무엇으로 고르고 얼마나 덜어 내는지만 다르다</text>
+<text x="445" y="462" text-anchor="middle" font-size="13" fill="#888">Adam 의 P 는 경험적 피셔의 대각, K-FAC 은 피셔의 크로네커 근사, Muon 은 그 기울기 하나로 만든 행 · 열 인자다</text>
+</svg>

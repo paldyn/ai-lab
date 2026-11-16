@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="360" viewBox="0 0 880 360" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+<defs><marker id="arr" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto"><path d="M 0 0 L 13 7 L 0 14 z" fill="#888"/></marker></defs>
+<rect x="0" y="0" width="880" height="360" rx="12" fill="#0a0a0a"/>
+<text x="440" y="48" text-anchor="middle" font-size="22" font-weight="700" fill="#e8e8e8">η_t = c / t^a 에서 지수 a가 정하는 것</text>
+<line x1="90" y1="250" x2="810" y2="250" stroke="#888" stroke-width="1.5" marker-end="url(#arr)"/>
+<text x="814" y="255" font-size="13" fill="#888">a</text>
+<line x1="90.0" y1="244" x2="90.0" y2="256" stroke="#888" stroke-width="1.5"/>
+<text x="90.0" y="276" text-anchor="middle" font-size="13" fill="#888">0</text>
+<line x1="308.8" y1="244" x2="308.8" y2="256" stroke="#888" stroke-width="1.5"/>
+<text x="308.8" y="276" text-anchor="middle" font-size="13" fill="#888">0.5</text>
+<line x1="527.5" y1="244" x2="527.5" y2="256" stroke="#888" stroke-width="1.5"/>
+<text x="527.5" y="276" text-anchor="middle" font-size="13" fill="#888">1</text>
+<line x1="746.2" y1="244" x2="746.2" y2="256" stroke="#888" stroke-width="1.5"/>
+<text x="746.2" y="276" text-anchor="middle" font-size="13" fill="#888">1.5</text>
+<rect x="96.0" y="88" width="206.8" height="110" rx="8" fill="#e05555" fill-opacity="0.10" stroke="#e05555" stroke-width="1.5"/>
+<text x="199.4" y="124" text-anchor="middle" font-size="16" font-weight="600" fill="#e8e8e8">Σ η² = ∞</text>
+<text x="199.4" y="152" text-anchor="middle" font-size="13" fill="#e8e8e8">잡음 합이 안 모인다</text>
+<text x="199.4" y="176" text-anchor="middle" font-size="13" fill="#888">줄어들되 느리다</text>
+<rect x="314.8" y="88" width="206.8" height="110" rx="8" fill="#55c555" fill-opacity="0.10" stroke="#55c555" stroke-width="1.5"/>
+<text x="418.1" y="124" text-anchor="middle" font-size="16" font-weight="600" fill="#e8e8e8">Σ η = ∞, Σ η² &lt; ∞</text>
+<text x="418.1" y="152" text-anchor="middle" font-size="13" fill="#e8e8e8">로빈스–먼로 조건</text>
+<text x="418.1" y="176" text-anchor="middle" font-size="13" fill="#888">거의 확실한 수렴</text>
+<rect x="533.5" y="88" width="250.5" height="110" rx="8" fill="#e05555" fill-opacity="0.10" stroke="#e05555" stroke-width="1.5"/>
+<text x="658.8" y="124" text-anchor="middle" font-size="16" font-weight="600" fill="#e8e8e8">Σ η &lt; ∞</text>
+<text x="658.8" y="152" text-anchor="middle" font-size="13" fill="#e8e8e8">움직일 거리가 유한</text>
+<text x="658.8" y="176" text-anchor="middle" font-size="13" fill="#888">멀면 못 닿는다</text>
+<line x1="311.8" y1="250" x2="527.5" y2="250" stroke="#55c555" stroke-width="5"/>
+<circle cx="308.8" cy="250" r="5" fill="#0a0a0a" stroke="#55c555" stroke-width="2"/>
+<circle cx="527.5" cy="250" r="5" fill="#55c555"/>
+<text x="440" y="318" text-anchor="middle" font-size="13" fill="#888">1/2 는 빠지고(빈 점) 1 은 든다(찬 점). 이 글의 실험: a = 0.3 · 0.75 · 1.0 · 1.5</text>
+</svg>

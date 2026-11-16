@@ -1,0 +1,103 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="470" viewBox="0 0 880 470" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+<defs><marker id="arr0" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto"><path d="M 0 0 L 13 7 L 0 14 z" fill="#888"/></marker></defs>
+<rect x="0" y="0" width="880" height="470" rx="12" fill="#0a0a0a"/>
+<text x="440" y="44" text-anchor="middle" font-size="22" fill="#e8e8e8" font-weight="700">선형층의 피셔 블록을 크로네커 곱 하나로 접기</text>
+<text x="200" y="92" text-anchor="middle" font-size="16" fill="#e8e8e8" font-weight="600">정확한 블록  E[(aaᵀ) <tspan font-family="serif">⊗</tspan> (ggᵀ)]</text>
+<rect x="110" y="116" width="28" height="28" fill="#7ec8e3" fill-opacity="0.85"/>
+<rect x="140" y="116" width="28" height="28" fill="#7ec8e3" fill-opacity="0.06"/>
+<rect x="170" y="116" width="28" height="28" fill="#7ec8e3" fill-opacity="0.25"/>
+<rect x="200" y="116" width="28" height="28" fill="#7ec8e3" fill-opacity="0.16"/>
+<rect x="230" y="116" width="28" height="28" fill="#7ec8e3" fill-opacity="0.09"/>
+<rect x="260" y="116" width="28" height="28" fill="#7ec8e3" fill-opacity="0.06"/>
+<rect x="110" y="146" width="28" height="28" fill="#7ec8e3" fill-opacity="0.06"/>
+<rect x="140" y="146" width="28" height="28" fill="#7ec8e3" fill-opacity="0.36"/>
+<rect x="170" y="146" width="28" height="28" fill="#7ec8e3" fill-opacity="0.11"/>
+<rect x="200" y="146" width="28" height="28" fill="#7ec8e3" fill-opacity="0.31"/>
+<rect x="230" y="146" width="28" height="28" fill="#7ec8e3" fill-opacity="0.07"/>
+<rect x="260" y="146" width="28" height="28" fill="#7ec8e3" fill-opacity="0.07"/>
+<rect x="110" y="176" width="28" height="28" fill="#7ec8e3" fill-opacity="0.25"/>
+<rect x="140" y="176" width="28" height="28" fill="#7ec8e3" fill-opacity="0.11"/>
+<rect x="170" y="176" width="28" height="28" fill="#7ec8e3" fill-opacity="0.22"/>
+<rect x="200" y="176" width="28" height="28" fill="#7ec8e3" fill-opacity="0.19"/>
+<rect x="230" y="176" width="28" height="28" fill="#7ec8e3" fill-opacity="0.07"/>
+<rect x="260" y="176" width="28" height="28" fill="#7ec8e3" fill-opacity="0.06"/>
+<rect x="110" y="206" width="28" height="28" fill="#7ec8e3" fill-opacity="0.16"/>
+<rect x="140" y="206" width="28" height="28" fill="#7ec8e3" fill-opacity="0.31"/>
+<rect x="170" y="206" width="28" height="28" fill="#7ec8e3" fill-opacity="0.19"/>
+<rect x="200" y="206" width="28" height="28" fill="#7ec8e3" fill-opacity="0.43"/>
+<rect x="230" y="206" width="28" height="28" fill="#7ec8e3" fill-opacity="0.06"/>
+<rect x="260" y="206" width="28" height="28" fill="#7ec8e3" fill-opacity="0.06"/>
+<rect x="110" y="236" width="28" height="28" fill="#7ec8e3" fill-opacity="0.09"/>
+<rect x="140" y="236" width="28" height="28" fill="#7ec8e3" fill-opacity="0.07"/>
+<rect x="170" y="236" width="28" height="28" fill="#7ec8e3" fill-opacity="0.07"/>
+<rect x="200" y="236" width="28" height="28" fill="#7ec8e3" fill-opacity="0.06"/>
+<rect x="230" y="236" width="28" height="28" fill="#7ec8e3" fill-opacity="0.18"/>
+<rect x="260" y="236" width="28" height="28" fill="#7ec8e3" fill-opacity="0.14"/>
+<rect x="110" y="266" width="28" height="28" fill="#7ec8e3" fill-opacity="0.06"/>
+<rect x="140" y="266" width="28" height="28" fill="#7ec8e3" fill-opacity="0.07"/>
+<rect x="170" y="266" width="28" height="28" fill="#7ec8e3" fill-opacity="0.06"/>
+<rect x="200" y="266" width="28" height="28" fill="#7ec8e3" fill-opacity="0.06"/>
+<rect x="230" y="266" width="28" height="28" fill="#7ec8e3" fill-opacity="0.14"/>
+<rect x="260" y="266" width="28" height="28" fill="#7ec8e3" fill-opacity="0.20"/>
+<line x1="109" y1="115" x2="109" y2="295" stroke="#888" stroke-width="1.5"/>
+<line x1="109" y1="115" x2="289" y2="115" stroke="#888" stroke-width="1.5"/>
+<line x1="169" y1="115" x2="169" y2="295" stroke="#888" stroke-width="1.5"/>
+<line x1="109" y1="175" x2="289" y2="175" stroke="#888" stroke-width="1.5"/>
+<line x1="229" y1="115" x2="229" y2="295" stroke="#888" stroke-width="1.5"/>
+<line x1="109" y1="235" x2="289" y2="235" stroke="#888" stroke-width="1.5"/>
+<line x1="289" y1="115" x2="289" y2="295" stroke="#888" stroke-width="1.5"/>
+<line x1="109" y1="295" x2="289" y2="295" stroke="#888" stroke-width="1.5"/>
+<text x="680" y="92" text-anchor="middle" font-size="16" fill="#e8e8e8" font-weight="600">K-FAC  E[aaᵀ] <tspan font-family="serif">⊗</tspan> E[ggᵀ] = A <tspan font-family="serif">⊗</tspan> G</text>
+<rect x="590" y="116" width="28" height="28" fill="#7ec8e3" fill-opacity="0.85"/>
+<rect x="620" y="116" width="28" height="28" fill="#7ec8e3" fill-opacity="0.51"/>
+<rect x="650" y="116" width="28" height="28" fill="#7ec8e3" fill-opacity="0.42"/>
+<rect x="680" y="116" width="28" height="28" fill="#7ec8e3" fill-opacity="0.26"/>
+<rect x="710" y="116" width="28" height="28" fill="#7ec8e3" fill-opacity="0.17"/>
+<rect x="740" y="116" width="28" height="28" fill="#7ec8e3" fill-opacity="0.10"/>
+<rect x="590" y="146" width="28" height="28" fill="#7ec8e3" fill-opacity="0.51"/>
+<rect x="620" y="146" width="28" height="28" fill="#7ec8e3" fill-opacity="0.68"/>
+<rect x="650" y="146" width="28" height="28" fill="#7ec8e3" fill-opacity="0.26"/>
+<rect x="680" y="146" width="28" height="28" fill="#7ec8e3" fill-opacity="0.34"/>
+<rect x="710" y="146" width="28" height="28" fill="#7ec8e3" fill-opacity="0.10"/>
+<rect x="740" y="146" width="28" height="28" fill="#7ec8e3" fill-opacity="0.14"/>
+<rect x="590" y="176" width="28" height="28" fill="#7ec8e3" fill-opacity="0.42"/>
+<rect x="620" y="176" width="28" height="28" fill="#7ec8e3" fill-opacity="0.26"/>
+<rect x="650" y="176" width="28" height="28" fill="#7ec8e3" fill-opacity="0.59"/>
+<rect x="680" y="176" width="28" height="28" fill="#7ec8e3" fill-opacity="0.36"/>
+<rect x="710" y="176" width="28" height="28" fill="#7ec8e3" fill-opacity="0.09"/>
+<rect x="740" y="176" width="28" height="28" fill="#7ec8e3" fill-opacity="0.06"/>
+<rect x="590" y="206" width="28" height="28" fill="#7ec8e3" fill-opacity="0.26"/>
+<rect x="620" y="206" width="28" height="28" fill="#7ec8e3" fill-opacity="0.34"/>
+<rect x="650" y="206" width="28" height="28" fill="#7ec8e3" fill-opacity="0.36"/>
+<rect x="680" y="206" width="28" height="28" fill="#7ec8e3" fill-opacity="0.48"/>
+<rect x="710" y="206" width="28" height="28" fill="#7ec8e3" fill-opacity="0.06"/>
+<rect x="740" y="206" width="28" height="28" fill="#7ec8e3" fill-opacity="0.07"/>
+<rect x="590" y="236" width="28" height="28" fill="#7ec8e3" fill-opacity="0.17"/>
+<rect x="620" y="236" width="28" height="28" fill="#7ec8e3" fill-opacity="0.10"/>
+<rect x="650" y="236" width="28" height="28" fill="#7ec8e3" fill-opacity="0.09"/>
+<rect x="680" y="236" width="28" height="28" fill="#7ec8e3" fill-opacity="0.06"/>
+<rect x="710" y="236" width="28" height="28" fill="#7ec8e3" fill-opacity="0.34"/>
+<rect x="740" y="236" width="28" height="28" fill="#7ec8e3" fill-opacity="0.20"/>
+<rect x="590" y="266" width="28" height="28" fill="#7ec8e3" fill-opacity="0.10"/>
+<rect x="620" y="266" width="28" height="28" fill="#7ec8e3" fill-opacity="0.14"/>
+<rect x="650" y="266" width="28" height="28" fill="#7ec8e3" fill-opacity="0.06"/>
+<rect x="680" y="266" width="28" height="28" fill="#7ec8e3" fill-opacity="0.07"/>
+<rect x="710" y="266" width="28" height="28" fill="#7ec8e3" fill-opacity="0.20"/>
+<rect x="740" y="266" width="28" height="28" fill="#7ec8e3" fill-opacity="0.27"/>
+<line x1="589" y1="115" x2="589" y2="295" stroke="#888" stroke-width="1.5"/>
+<line x1="589" y1="115" x2="769" y2="115" stroke="#888" stroke-width="1.5"/>
+<line x1="649" y1="115" x2="649" y2="295" stroke="#888" stroke-width="1.5"/>
+<line x1="589" y1="175" x2="769" y2="175" stroke="#888" stroke-width="1.5"/>
+<line x1="709" y1="115" x2="709" y2="295" stroke="#888" stroke-width="1.5"/>
+<line x1="589" y1="235" x2="769" y2="235" stroke="#888" stroke-width="1.5"/>
+<line x1="769" y1="115" x2="769" y2="295" stroke="#888" stroke-width="1.5"/>
+<line x1="589" y1="295" x2="769" y2="295" stroke="#888" stroke-width="1.5"/>
+<line x1="310" y1="206" x2="570" y2="206" stroke="#888" stroke-width="1.5" marker-end="url(#arr0)"/>
+<text x="440" y="190" text-anchor="middle" font-size="13" fill="#e8e8e8">a 와 g 가 독립이면 같다</text>
+<text x="440" y="230" text-anchor="middle" font-size="13" fill="#888">기댓값을 두 인자로 나눈다</text>
+<text x="200" y="320" text-anchor="middle" font-size="13" fill="#888">(mn)² 칸 · 역행렬 O(m³n³)</text>
+<text x="680" y="320" text-anchor="middle" font-size="13" fill="#888">n² + m² 칸 · 역행렬 O(n³ + m³)</text>
+<rect x="90" y="350" width="700" height="86" rx="8" fill="none" stroke="#444" stroke-width="1"/>
+<text x="440" y="380" text-anchor="middle" font-size="13" fill="#e8e8e8">굵은 칸 하나가 입력 쌍 (i, j) 의 블록이고 그 안이 출력 쪽 m × m 이다. 크로네커 곱에서는 블록마다 A_ij · G</text>
+<text x="440" y="408" text-anchor="middle" font-size="13" fill="#888">그 역행렬을 기울기에 걸면 vec(G⁻¹ ∇W A⁻¹) — 큰 역행렬 하나 대신 작은 역행렬 둘</text>
+</svg>
