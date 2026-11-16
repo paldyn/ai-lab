@@ -172,6 +172,48 @@ export const globalNewsUpdatedAt = '2026-11-12';
  */
 const entries: NewsItem[] = [
   {
+    id: 'coordinated-vulnerability-disclosure-timelines',
+    source: 'Anthropic',
+    kind: 'company',
+    title: 'Anthropic, 취약점 공개 기한을 90일에서 30·45일로 단축',
+    summary:
+      'Anthropic이 조율된 취약점 공개(CVD) 정책의 공개 기한을 고위험·치명 등급은 30일, 나머지는 45일로 줄였다. ' +
+      '2027년 1월 1일 이후 벤더에 알리는 취약점부터 적용하며, AI가 같은 버그를 다시 찾는 일이 늘어난 것을 이유로 들었다.',
+    publishedAt: '2026-11-16',
+    collectedAt: '2026-11-17',
+    category: 'Safety',
+    signal: '취약점 공개 정책',
+    url: 'https://www.anthropic.com/research/coordinated-vulnerability-disclosure-timelines',
+  },
+  {
+    id: 'maps-ask-maps-holiday-travel-features-2026',
+    source: 'Google DeepMind',
+    kind: 'company',
+    title: 'Google 지도 Ask Maps, 여행 일정 짜기·예약 찾기·저장 목록 검색 추가',
+    summary:
+      '구글이 Ask Maps에 여러 날짜 여행 일정 만들기, 경로의 사전 안내, 미용·반려동물·수리 예약 찾기, 저장 목록 검색을 더했다. ' +
+      '같은 날 유럽 30개국으로 넓혀 Ask Maps가 200개 넘는 국가·지역에서 쓰인다.',
+    publishedAt: '2026-11-16',
+    collectedAt: '2026-11-17',
+    category: 'Product',
+    signal: '소비자 AI',
+    url: 'https://blog.google/products-and-platforms/products/maps/ask-maps-holiday-travel-features-2026',
+  },
+  {
+    id: 'building-strong-safety-evaluations',
+    source: 'Anthropic',
+    kind: 'company',
+    title: 'Anthropic, AI 안전성 평가를 설계·실행·보고하는 권고안 공개',
+    summary:
+      'Anthropic이 시스템 카드의 사례를 들어 안전성 평가를 만드는 권고를 정리했다. ' +
+      '측정 구성 개념 정하기, 채점 모델의 사람 라벨 대조, 사전 등록, 신뢰구간 보고를 핵심으로 꼽았다.',
+    publishedAt: '2026-11-13',
+    collectedAt: '2026-11-17',
+    category: 'Research',
+    signal: '안전성 평가',
+    url: 'https://www.anthropic.com/research/building-strong-safety-evaluations',
+  },
+  {
     id: 'children-first-declaration',
     source: 'OpenAI',
     kind: 'company',
