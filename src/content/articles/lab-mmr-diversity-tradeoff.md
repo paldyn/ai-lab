@@ -325,3 +325,5 @@ mean change %p: l=0.9 +1.25 (+0.84~+1.52)  l=0.8 +0.60 (+0.09~+0.92)  l=0.7 -0.6
 읽어주셔서 감사합니다. 😊
 
 **지난 글:** [상위 문서로 질의를 고쳐 쓰면 오르는가: 두 코퍼스 마흔 조합 어디서도 오르지 않았다](/articles/lab-dense-pseudo-relevance-feedback)
+
+**다음 글:** [사람이 내는 오타로 다시 재면: 의존명사 띄어쓰기는 R@1을 하나도 안 깎았고, 이웃 키 오타는 무작위보다 dense를 더 깎았다](/articles/lab-realistic-korean-typos)
