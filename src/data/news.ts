@@ -160,7 +160,7 @@ export interface NewsDetail {
   commentary: string;
 }
 
-export const globalNewsUpdatedAt = '2026-11-12';
+export const globalNewsUpdatedAt = '2026-11-16';
 
 /**
  * 공식 발표 한 건 = 항목 한 개. 2026년 1월부터 쌓는 아카이브이며 오래된 항목을
@@ -171,6 +171,202 @@ export const globalNewsUpdatedAt = '2026-11-12';
  * 목록에서 파생됩니다. 갱신 시 globalNewsUpdatedAt도 함께 올립니다.
  */
 const entries: NewsItem[] = [
+  {
+    id: 'blog-opening-the-datasets-behind-our-ai-weather-models',
+    source: 'Google DeepMind',
+    kind: 'company',
+    title: 'Google DeepMind, 기상 AI 데이터셋 SatWeave·PARDIG 공개',
+    summary:
+      'Google DeepMind가 WeatherNext 3 학습과 예보에 쓴 데이터셋 둘을 공개했다. SatWeave는 정지궤도 위성 영상을 한 시간마다 합친 지구 모자이크이고, ' +
+      'PARDIG는 AI로 만든 15분·약 10km 해상도의 전 지구 강수 데이터다.',
+    publishedAt: '2026-11-10',
+    collectedAt: '2026-11-17',
+    category: 'Research',
+    signal: '기상 데이터셋',
+    url: 'https://deepmind.google/blog/opening-the-datasets-behind-our-ai-weather-models',
+  },
+  {
+    id: 'the-kings-trust-and-openai',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'OpenAI, The King’s Trust에 100만 파운드 기부해 영국 청년 AI 교육',
+    summary:
+      'OpenAI가 영국 청년 자선단체 The King’s Trust에 100만 파운드를 기부했다. ' +
+      '교육·고용·훈련 밖에 있는 청년을 앞세워 앞으로 18개월 동안 최대 2만 5,000명에게 일에 쓰는 AI 기술을 가르친다.',
+    publishedAt: '2026-11-16',
+    collectedAt: '2026-11-17',
+    category: 'Corporate',
+    signal: 'AI 교육',
+    url: 'https://openai.com/index/the-kings-trust-and-openai',
+  },
+  {
+    id: 'customer-stories-holiday-extras-dots',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'Holiday Extras 임원들, dots로 출시 보고서·출근길 회의 준비 맡겨',
+    summary:
+      'OpenAI가 Holiday Extras 임원 두 명의 dots 활용 사례를 소개했다. 새 기능 출시 다음 날 묻지 않아도 BigQuery에서 성과 보고서를 뽑아 왔고, ' +
+      '며칠 걸릴 3D 캐릭터 애니메이션을 약 10분에 끝냈다고 한다.',
+    publishedAt: '2026-11-16',
+    collectedAt: '2026-11-17',
+    category: 'Product',
+    signal: '기업 도입 사례',
+    url: 'https://openai.com/business/customer-stories/holiday-extras-dots',
+  },
+  {
+    id: 'advancing-computer-use-for-healthcare-teams',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'OpenAI, 의료 행정·임상 업무에서 컴퓨터 사용 에이전트 평가 결과 공개',
+    summary:
+      'OpenAI가 의료 현장의 컴퓨터 사용 에이전트 평가와 파트너 사례를 공개했다. GPT-6 Astra는 EHR 받은편지함 과제 325건의 99%가 안전하다는 평가를 받았고, ' +
+      'HealthAdminBench에서 루브릭 점수의 94.3%를 얻었다.',
+    publishedAt: '2026-11-16',
+    collectedAt: '2026-11-17',
+    category: 'Research',
+    signal: '컴퓨터 사용',
+    url: 'https://openai.com/index/advancing-computer-use-for-healthcare-teams',
+  },
+  {
+    id: 'more-ways-to-move-care-forward-with-chatgpt-for-healthcare',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'ChatGPT for Healthcare에 컴퓨터 사용 에이전트·의료 플러그인 추가',
+    summary:
+      'OpenAI가 ChatGPT for Healthcare에 의료 소프트웨어를 직접 다루는 컴퓨터 사용 에이전트, 개선한 임상 근거 검색, 새 의료 플러그인 20여 종을 더했다. ' +
+      '에이전트와 검색은 ChatGPT Work·Codex에서 이날부터 쓸 수 있다.',
+    publishedAt: '2026-11-16',
+    collectedAt: '2026-11-17',
+    category: 'Product',
+    signal: '보건 의료 AI',
+    url: 'https://openai.com/index/more-ways-to-move-care-forward-with-chatgpt-for-healthcare',
+  },
+  {
+    id: 'our-first-phase-of-embedded-assessments',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'OpenAI, 외부 기관 네 곳과 사내 상주 독립 평가 1단계 착수',
+    summary:
+      'OpenAI가 외부 평가 기관 네 곳과 상주 평가 1단계 계약을 맺었다. 평가자는 체크포인트·소스 코드·학습 데이터·모니터링 시스템에 접근해 ' +
+      '학습 중·사내 사용 모델의 정렬과 안전장치를 독립적으로 살핀다.',
+    publishedAt: '2026-11-16',
+    collectedAt: '2026-11-17',
+    category: 'Safety',
+    signal: '독립 평가 파트너십',
+    url: 'https://openai.com/index/our-first-phase-of-embedded-assessments',
+  },
+  {
+    id: 'step-toward-defining-the-standard-model',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'GPT-6 Astra가 증명 주도한 표준모형 격자 정의 후보 공개',
+    summary:
+      'OpenAI 과학 블로그 첫 기고에서 UCSB의 Nathaniel Craig가 GPT-6 Astra와 함께 표준모형의 비섭동 격자 정의 후보를 만든 과정을 소개했다. ' +
+      '아이디어는 Craig가 냈고 세부 증명은 Astra가 주도했다.',
+    publishedAt: '2026-11-15',
+    collectedAt: '2026-11-17',
+    category: 'Research',
+    signal: '과학 AI',
+    url: 'https://openai.com/index/step-toward-defining-the-standard-model',
+  },
+  {
+    id: 'our-new-blog-for-science',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'OpenAI, 연구자들이 AI로 한 과학 작업을 싣는 과학 블로그 개설',
+    summary:
+      'OpenAI가 과학자와 학계 연구자가 AI로 알아낸 것과 작업 방법을 싣는 과학 블로그를 열었다. ' +
+      '연구 성과, 모델 활용 방법과 실무 안내, 연구 현장의 경험담 세 갈래를 다룬다.',
+    publishedAt: '2026-11-15',
+    collectedAt: '2026-11-17',
+    category: 'Corporate',
+    signal: '과학 AI',
+    url: 'https://openai.com/index/our-new-blog-for-science',
+  },
+  {
+    id: 'introducing-chatgpt-wallet',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'OpenAI, 에이전트가 카드 정보 없이 결제하는 ChatGPT Wallet 출시',
+    summary:
+      'OpenAI가 American Express·Mastercard·Visa와 함께 ChatGPT Wallet을 내놓았다. 에이전트는 실제 카드 정보 대신 결제 토큰으로 값을 치르고 ' +
+      '구매마다 생체 인증을 거치며, 미국 ChatGPT Pro 이용자에게 dots에서 먼저 연다.',
+    publishedAt: '2026-11-13',
+    collectedAt: '2026-11-17',
+    category: 'Product',
+    signal: '에이전틱 커머스',
+    url: 'https://openai.com/index/introducing-chatgpt-wallet',
+  },
+  {
+    id: 'customer-stories-shield',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'Shield, GPT-6 Astra로 API 없는 옛 IT 포털 작업을 에이전트에',
+    summary:
+      'OpenAI가 IT 서비스 플랫폼 Forge를 만드는 Shield의 사례를 소개했다. GPT-6 Astra 기반 컴퓨터 사용 에이전트가 API 없는 옛 포털을 다루며 ' +
+      '월 수천 건을 처리하고, 이전 모델보다 평균 35~40% 빨랐다.',
+    publishedAt: '2026-11-13',
+    collectedAt: '2026-11-17',
+    category: 'Product',
+    signal: '기업 도입 사례',
+    url: 'https://openai.com/business/customer-stories/shield',
+  },
+  {
+    id: 'customer-stories-amplitude',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'Amplitude, 제품 에이전트 Wave로 개선 출시를 한 달에서 1~2일로',
+    summary:
+      'OpenAI가 Amplitude의 제품 에이전트 Wave 사례를 소개했다. Wave는 약 80%를 OpenAI 모델로 돌리며 개선 과제를 찾아 코딩 에이전트에 넘기고, ' +
+      '출시까지 한 달쯤 걸리던 것을 1~2일로 줄였다고 Amplitude는 추산한다.',
+    publishedAt: '2026-11-12',
+    collectedAt: '2026-11-17',
+    category: 'Product',
+    signal: '기업 도입 사례',
+    url: 'https://openai.com/business/customer-stories/amplitude',
+  },
+  {
+    id: 'customer-stories-gondola',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'Gondola, 인원 그대로 Codex로 개발 산출 25% 늘리고 매출 두 배',
+    summary:
+      'OpenAI가 창작자 크레딧 플랫폼 Gondola의 사례를 소개했다. Codex 도입 뒤 엔지니어 수는 그대로인 채 월간 개발 산출이 25%, ' +
+      '수석 엔지니어는 50% 늘었고 회사 매출은 1년 새 두 배가 넘었다.',
+    publishedAt: '2026-11-12',
+    collectedAt: '2026-11-17',
+    category: 'Product',
+    signal: '중소기업 도입',
+    url: 'https://openai.com/business/customer-stories/gondola',
+  },
+  {
+    id: 'gilbert-tobin-sam-nickless',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'Gilbert + Tobin CEO 대담, 강제 없이 ChatGPT 활성 사용률 87%',
+    summary:
+      'OpenAI가 호주 로펌 Gilbert + Tobin의 CEO Sam Nickless와 나눈 대담을 실었다. 사용 목표를 강제하지 않고도 활성 사용률 87%에 이르렀고, ' +
+      '파트너 120명의 연례 평가 자료를 ChatGPT Work로 몇 분 만에 묶었다.',
+    publishedAt: '2026-11-12',
+    collectedAt: '2026-11-17',
+    category: 'Product',
+    signal: '기업 도입 사례',
+    url: 'https://openai.com/index/gilbert-tobin-sam-nickless',
+  },
+  {
+    id: 'helping-caregivers-use-ai-in-everyday-life',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'OpenAI Academy, 미국 5개 도시에서 돌봄 제공자 무료 AI 워크숍',
+    summary:
+      'OpenAI Academy가 11월 10일 미국 다섯 도시에서 돌봄 제공자를 위한 무료 대면 워크숍 AI Skills Jam을 연다. ' +
+      'Caregiver Action Network·Alzheimer’s Association·American Diabetes Association과 함께한다.',
+    publishedAt: '2026-11-10',
+    collectedAt: '2026-11-17',
+    category: 'Corporate',
+    signal: 'AI 교육',
+    url: 'https://openai.com/index/helping-caregivers-use-ai-in-everyday-life',
+  },
   {
     id: 'coordinated-vulnerability-disclosure-timelines',
     source: 'Anthropic',
