@@ -2,6 +2,73 @@ import type { NewsDetail } from '../news';
 
 /** 2026-11 발표의 모달 본문. 목록은 news.ts에 있습니다. */
 export const details: Record<string, NewsDetail> = {
+  'introducing-gpt-6-2-astra-sol': {
+    points: [
+      'GPT-6.2 Astra는 어려운 프로젝트용 프런티어 모델, GPT-6.2 Sol은 일상 업무용 효율 모델이다',
+      'Agents\' Last Exam에서 Astra가 GPT-6 Astra보다 5.2점 높았고 비용은 3분의 1이 안 됐다고 밝혔다',
+      '내부 GDPval v2에서 Astra는 GPT-6 Astra보다 6.2%p 올랐고 출력 토큰은 22% 적게 썼다',
+      'Astra API 단가는 100만 토큰당 입력 8달러, 캐시 입력 0.40달러, 출력 40달러다',
+      'Sol은 GPT-6.1 Sol 단가(입력 2달러, 캐시 입력 0.10달러, 출력 10달러)를 그대로 쓴다',
+      'Plus·Pro·Enterprise·Edu 사용자는 당일부터 ChatGPT Work·Codex에서 쓰고, Pro 200에도 Sol부터 Ultrafast가 열린다',
+      '두 모델 모두 Preparedness Framework에서 사이버 Critical, 생물·화학 High 임계에 닿았다',
+      'Astra는 AI 자기 개선 항목에서 High 임계에 닿은 첫 외부 공개 모델이다',
+    ],
+    commentary:
+      '단가를 내리면서 출력 토큰까지 줄였다는 주장은 같은 일을 하는 데 드는 실제 비용이 표의 20%보다 더 크게 내려간다는 뜻이라, 전문 문서 작업을 대량으로 돌리는 기업에 직접 닿는다. 한편 AI 자기 개선 High를 외부 모델로 처음 공개하면서 사이버 안전장치를 더 조였다고 스스로 밝혀, 성능 경쟁과 보안 연구자 이용 제한 사이의 줄다리기가 한 단계 더 팽팽해졌다.',
+  },
+  'astra-law-6-2': {
+    points: [
+      'Astra for Law는 GPT-6.2 Astra에 확장한 법률 검색 색인과 조사·판단·작성 지시를 얹은 모델 구성이다',
+      'Artificial Analysis의 Harvey LAB-AA 120개 과제에서 20.8%를 만점으로 풀어 1위를 했고 GPT-6.2 Astra는 15.0%였다',
+      '과제당 출력 토큰은 평균 약 6만 4,000개로, 2위권 외부 모델 Muse Wonder Full의 13만 9,000개보다 54% 적었다',
+      '과제당 중대한 환각은 평균 0.03건으로, 외부 모델 중 가장 낮은 Claude Opus 5.5의 0.59건보다 적었다',
+      'Vals AI Legal Research Bench의 만점 비율은 9월 약 46%에서 11월 16일 53.8%(208문항 중 112)로 올랐다',
+      '법률 검색 색인은 9월 이후 34% 늘어 3억 1,000만 개 넘는 URL을 담는다',
+      '모든 ChatGPT Enterprise 고객이 API를 포함해 Trusted Access Program으로 접근을 신청할 수 있다',
+    ],
+    commentary:
+      '법률을 별도 모델이 아니라 최신 프런티어 모델 위의 구성으로 두는 방식은 기반 모델이 바뀔 때마다 곧바로 갈아탈 수 있다는 점에서 유리하다. 비교 대상으로 Claude Opus 5.5를 이름까지 들어 환각 수를 견준 것은 법률 시장을 둘러싼 경쟁이 노골화했다는 표시다. 다만 수치 다수가 OpenAI 자신이 고른 평가 구성이라 로펌들의 실제 도입 결과를 함께 봐야 한다.',
+  },
+  'introducing-chatgpt-for-sales': {
+    points: [
+      'OpenAI의 새 Sales 플러그인은 계정 선정·통화 준비·후속 메일 작성 같은 영업 흐름을 담은 스킬을 제공한다',
+      '30개가 넘는 새·확장 파트너 플러그인을 함께 냈다',
+      'CRM으로는 Salesforce·HubSpot·Close CRM·monday CRM, 통화 기록으로는 Gong·Otter.ai·Granola를 연결한다',
+      '견적·계약은 Docusign·Ironclad·PandaDoc·ServiceNow CPQ로 준비한다',
+      '상시 에이전트 dot에 맡겨 회의 브리핑과 거래 변동 추적을 이어서 하게 할 수 있다',
+      'Business·Enterprise 관리자는 관리 콘솔의 Plugins에서 팀에 켜거나 기본 설치할 수 있다',
+      '파트너 플러그인과 기능의 제공 여부는 요금제·지역·워크스페이스 설정에 따라 다르다',
+    ],
+    commentary:
+      'Healthcare에 이어 Sales까지, OpenAI가 직무별 묶음을 플러그인 꾸러미로 내는 흐름이 굳어지고 있다. 모델이 아니라 연결된 SaaS의 수가 경쟁력이 되는 판이라 Salesforce 같은 기존 영업 플랫폼의 자체 에이전트와 정면으로 겹친다. 영업 데이터가 ChatGPT를 거쳐 오가는 만큼 관리자가 플러그인별 권한을 어떻게 묶는지가 실제 도입의 관건이다.',
+  },
+  'strengthening-nato-allied-cyber-defences-ai': {
+    points: [
+      'NATO 통신정보국(NCIA)과 함께 NATO 핵심 기관에 고급 사이버 보안 모델을 제공한다',
+      'NATO는 이 작업에서 월 최대 3,000억 개의 원시 입출력 토큰을 썼다',
+      'NATO CCDCOE의 2026 Crossed Swords 훈련에 참가자가 Daybreak로 사이버 작전용 에이전트를 만드는 과정이 들어갔다',
+      'EU의 ENISA와 프랑스 ANSSI, 독일·폴란드의 국가 사이버 기관에 모델 접근을 제공했다',
+      'ENISA는 EU 기관이 쓰는 소프트웨어에서 취약점 넷을 찾았고 넷 모두 수정판이 나왔다',
+      'ENISA·CERT-EU 공동 보고서에서 관리자가 검토한 잠재 문제 88건의 95%가 실제 문제로 확인됐다',
+      'CERT Polska는 MikroTik RouterOS 취약점 여섯 개를 찾아 제조사와 공개를 조율했다',
+    ],
+    commentary:
+      'Daybreak가 기업 보안 제품을 넘어 동맹국 정부의 방어 인프라로 들어가고 있음을 보여 주는 정리다. 월 3,000억 토큰이라는 사용량 공개와 NCIA 측의 「경쟁 솔루션 평가·조달 판단」 언급은 이 시장이 이미 조달 경쟁 단계라는 뜻이다. 같은 날 공개한 GPT-6.2가 사이버 Critical 임계에 닿아 있는 만큼, 정부 방어자에게 얼마나 빨리 새 모델을 열어 주는지가 다음 관전점이다.',
+  },
+  'gemini-app-tasks-in-gemini-free-new-features': {
+    points: [
+      'Gemini 앱에서 채팅을 작업(Task)으로 바꾸거나 문자를 보내거나 gemini@google.com으로 메일을 전달해 일을 맡긴다',
+      '새 Gemini 4 Hydrogen 모델로 미국·일본·한국·캐나다·호주·인도의 수억 명에게 무료로 배포한다',
+      '정비소 두 곳에 동시에 전화해 예약을 잡고 캘린더에 넣는 식으로 전화를 대신 걸며, 상대에게 AI임을 먼저 밝힌다',
+      '구매는 Agent Payments Protocol(AP2)로 하고 Mastercard·Visa와 협력하며 American Express는 곧 붙는다',
+      '사용자가 지출 상한을 정할 수 있고 영수증과 배송 정보는 iOS로도 넓어진 Google Wallet에 쌓인다',
+      '60개 넘는 앱과 연결되며 개발자는 Connected Apps Platform 참여를 신청할 수 있다',
+      '작업은 계정마다 따로 둔 하드웨어 격리 가상 머신(Agent Compute Engine)에서 돈다',
+      '구매처럼 중요한 단계 전에는 확인을 받고 반복 작업은 「항상 허용」으로 둘 수 있다',
+    ],
+    commentary:
+      '메일·캘린더·결제 수단이 이미 Google 안에 있다는 점을 앞세워 개인 비서 에이전트를 무료 층에 바로 푼 것은 유료 구독 위주인 경쟁 서비스와 갈리는 지점이다. 실제 가게에 전화를 거는 기능을 대규모로 여는 만큼, 상대 업체의 거부권과 AI 고지 같은 운영 규칙이 제대로 지켜지는지가 신뢰를 가를 것이다. 한국이 첫 배포국에 든 점도 눈여겨볼 만하다.',
+  },
   'expanding-chatgpt-for-academic-researchers': {
     points: [
       '7월 시범으로 시작한 뒤 33개국 연구자 2만 명이 참여했다',

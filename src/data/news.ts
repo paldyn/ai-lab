@@ -172,6 +172,96 @@ export const globalNewsUpdatedAt = '2026-11-16';
  */
 const entries: NewsItem[] = [
   {
+    id: 'introducing-gpt-6-2-astra-sol',
+    source: 'OpenAI',
+    kind: 'model',
+    title: 'OpenAI, GPT-6.2 Astra·Sol 공개 — Astra 단가 20% 인하',
+    summary:
+      'OpenAI가 프런티어 모델 GPT-6.2 Astra와 일상 업무용 GPT-6.2 Sol을 냈다. Plus·Pro·Enterprise·Edu의 ChatGPT Work·Codex와 API에 당일 열렸고, ' +
+      'Astra의 API 단가는 GPT-6 Astra보다 입력·출력 20%, 캐시 입력 60% 내렸다.',
+    publishedAt: '2026-11-17',
+    collectedAt: '2026-11-24',
+    category: 'Frontier',
+    signal: '프런티어 모델',
+    url: 'https://openai.com/index/introducing-gpt-6-2-astra-sol',
+    model: {
+      family: 'GPT',
+      name: 'GPT-6.2 Astra',
+      kind: '신규 모델',
+      status: '공개',
+      useCase: '전문 문서 작업과 에이전틱 코딩',
+      headline: '더 적은 출력 토큰으로 GPT-6 Astra를 넘는 값싼 후속작이다.',
+      logo: 'assets/openai.svg',
+      tone: 'gpt',
+    },
+  },
+  {
+    id: 'astra-law-6-2',
+    source: 'OpenAI',
+    kind: 'model',
+    title: 'GPT-6.2 Astra 기반 Astra for Law 개정, 모든 Enterprise 고객이 신청 가능',
+    summary:
+      'OpenAI가 법률용 모델 구성 Astra for Law를 GPT-6.2 Astra 기반으로 갱신했다. Harvey LAB-AA에서 과제의 20.8%를 만점으로 풀어 1위를 했고, ' +
+      '이제 모든 ChatGPT Enterprise 고객이 API를 포함해 Trusted Access Program으로 접근을 신청할 수 있다.',
+    publishedAt: '2026-11-17',
+    collectedAt: '2026-11-24',
+    category: 'Domain',
+    signal: '법률 AI 도구',
+    url: 'https://openai.com/index/astra-law-6-2',
+    model: {
+      family: 'GPT',
+      name: 'Astra for Law',
+      kind: '모델 패밀리',
+      status: '제한 공개',
+      useCase: '법률 리서치와 문서 작성',
+      headline: 'GPT-6.2 Astra에 법률 검색 색인과 지시를 얹은 구성이다.',
+      logo: 'assets/openai.svg',
+      tone: 'gpt',
+    },
+  },
+  {
+    id: 'introducing-chatgpt-for-sales',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'OpenAI, Sales 플러그인과 파트너 플러그인 30여 종 담은 ChatGPT for Sales 출시',
+    summary:
+      'OpenAI가 영업 업무용 ChatGPT for Sales를 내놓았다. 영업 전용 스킬을 담은 Sales 플러그인과 Salesforce·HubSpot·Gong 등 ' +
+      '30개 넘는 새·확장 파트너 플러그인으로 계정 선정부터 통화 준비, 후속 조치까지 ChatGPT 안에서 처리한다.',
+    publishedAt: '2026-11-17',
+    collectedAt: '2026-11-24',
+    category: 'Product',
+    signal: '기업용 에이전트',
+    url: 'https://openai.com/index/introducing-chatgpt-for-sales',
+  },
+  {
+    id: 'strengthening-nato-allied-cyber-defences-ai',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'OpenAI, NATO·유럽 사이버 기관에 Daybreak로 보안 모델 제공',
+    summary:
+      'OpenAI가 NATO 통신정보국(NCIA)과 함께 NATO 핵심 기관에 사이버 보안 모델을 제공하고 있으며 월 최대 3,000억 토큰이 쓰였다고 밝혔다. ' +
+      'ENISA·프랑스 ANSSI·독일·폴란드 기관과 우크라이나 디지털전환부도 Daybreak로 쓰고 있다.',
+    publishedAt: '2026-11-17',
+    collectedAt: '2026-11-24',
+    category: 'Corporate',
+    signal: 'AI 사이버 방어',
+    url: 'https://openai.com/index/strengthening-nato-allied-cyber-defences-ai',
+  },
+  {
+    id: 'gemini-app-tasks-in-gemini-free-new-features',
+    source: 'Google DeepMind',
+    kind: 'company',
+    title: 'Gemini 앱에 전화·결제까지 대신하는 작업 모드, 6개국 무료 배포',
+    summary:
+      'Google이 Gemini 앱에 예약 전화, 요금 고지서 분석, 장보기 결제 같은 일을 맡기는 작업 기능을 더했다. ' +
+      '새 Gemini 4 Hydrogen 모델로 미국·일본·한국·캐나다·호주·인도에 무료로 배포하며, 고급 기능은 미국부터 연다.',
+    publishedAt: '2026-11-17',
+    collectedAt: '2026-11-24',
+    category: 'Product',
+    signal: '소비자 AI',
+    url: 'https://blog.google/innovation-and-ai/products/gemini-app/tasks-in-gemini-free-new-features',
+  },
+  {
     id: 'expanding-chatgpt-for-academic-researchers',
     source: 'OpenAI',
     kind: 'company',
