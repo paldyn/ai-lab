@@ -172,6 +172,86 @@ export const globalNewsUpdatedAt = '2026-11-16';
  */
 const entries: NewsItem[] = [
   {
+    id: 'blog-introducing-gemini-4-neon',
+    source: 'Google DeepMind',
+    kind: 'model',
+    title: 'Google DeepMind, Carbon과 Hydrogen 사이의 Gemini 4 Neon 공개',
+    summary:
+      'Google DeepMind가 빠른 처리와 프런티어급 추론을 함께 노린 Gemini 4 Neon을 냈다. 100만 토큰 컨텍스트에 100만 토큰당 입력 3달러·출력 15달러이고, ' +
+      'Gemini API·Gemini for business·Antigravity와 Pro·Ultra 구독자의 Gemini 앱에 당일부터 배포된다.',
+    publishedAt: '2026-11-18',
+    collectedAt: '2026-11-24',
+    category: 'Frontier',
+    signal: '프런티어 모델',
+    url: 'https://deepmind.google/blog/introducing-gemini-4-neon',
+    model: {
+      family: 'Gemini',
+      name: 'Gemini 4 Neon',
+      kind: '신규 모델',
+      status: '공개',
+      useCase: '복잡한 코딩과 기업 업무 흐름',
+      headline: 'Carbon보다 싸고 빠르게 프런티어급 추론을 내는 중간 등급이다.',
+      logo: 'assets/gemini.svg',
+      tone: 'gemini',
+    },
+  },
+  {
+    id: 'blog-genie-4-is-now-available',
+    source: 'Google DeepMind',
+    kind: 'model',
+    title: 'Project Genie에서 Genie 4 사용 시작 — Google AI Ultra 구독자 대상',
+    summary:
+      'Google이 월드 모델 Genie 4를 Project Genie에서 자격을 갖춘 Google AI Ultra 구독자에게 열었다. ' +
+      '세션 중 프롬프트로 세계를 바꾸고 실시간 오디오가 붙으며, 세계를 만드는 에이전트와 커뮤니티 갤러리도 함께 나왔다.',
+    publishedAt: '2026-11-18',
+    collectedAt: '2026-11-24',
+    category: 'Multimodal',
+    signal: '월드 모델',
+    url: 'https://deepmind.google/blog/genie-4-is-now-available',
+  },
+  {
+    id: 'anthropic-prices-initial-public-offering',
+    source: 'Anthropic',
+    kind: 'company',
+    title: 'Anthropic, 주당 83달러로 IPO 공모가 확정 — 나스닥 「ANT」',
+    summary:
+      'Anthropic, PBC가 A종 보통주 9억 8,000만 주의 기업공개 공모가를 주당 83달러로 정했다. ' +
+      '나스닥 글로벌 셀렉트 마켓에서 11월 19일 「ANT」로 거래를 시작하고 공모는 11월 20일 마감할 예정이다.',
+    publishedAt: '2026-11-18',
+    collectedAt: '2026-11-24',
+    category: 'Corporate',
+    signal: '상장 공모가',
+    url: 'https://www.anthropic.com/news/anthropic-prices-initial-public-offering',
+  },
+  {
+    id: 'managing-frontier-ai-risk',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'OpenAI, 학습부터 배포까지 프런티어 모델 위험 관리 체계 공개',
+    summary:
+      'OpenAI가 연구·사내 배포·외부 배포 단계마다 프런티어 모델의 위험을 어떻게 다루는지 정리했다. ' +
+      '7월 Hugging Face 사고 뒤 학습은 인터넷 없는 환경에서 하고, 도구를 쓰는 사내 배포는 전부 모니터링한다고 밝혔다.',
+    publishedAt: '2026-11-18',
+    collectedAt: '2026-11-24',
+    category: 'Safety',
+    signal: '프런티어 모델 안전',
+    url: 'https://openai.com/index/managing-frontier-ai-risk',
+  },
+  {
+    id: 'advancing-chip-design-with-our-models',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'OpenAI, 자사 모델로 Jalapeño·AMD 칩 설계 개선한 결과 공개',
+    summary:
+      'OpenAI가 자체 추론 칩 Jalapeño 설계에서 모델이 제안한 변경으로 표준 셀 면적을 벡터 유닛 약 13%, 행렬 유닛 10% 줄였다고 밝혔다. ' +
+      'AMD 플래그십 GPU IP에서는 최적화된 기준 대비 최대 14% 개선을 얻었다.',
+    publishedAt: '2026-11-18',
+    collectedAt: '2026-11-24',
+    category: 'Research',
+    signal: 'AI 칩',
+    url: 'https://openai.com/index/advancing-chip-design-with-our-models',
+  },
+  {
     id: 'introducing-gpt-6-2-astra-sol',
     source: 'OpenAI',
     kind: 'model',
