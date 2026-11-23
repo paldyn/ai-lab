@@ -288,3 +288,5 @@ torch는 PyPI 휠(2.15.0)을 CPU로만 썼습니다. `download.pytorch.org`의 C
 읽어주셔서 감사합니다. 😊
 
 **지난 글:** [사람이 내는 오타로 다시 재면: 의존명사 띄어쓰기는 R@1을 하나도 안 깎았고, 이웃 키 오타는 무작위보다 dense를 더 깎았다](/articles/lab-realistic-korean-typos)
+
+**다음 글:** [같은 한글이 다른 바이트일 때: NFC·NFD가 어긋나면 세 검색기 모두 R@1의 8할 안팎을 잃었고, dense는 양쪽이 다 NFD여도 무너졌다](/articles/lab-unicode-normalization-korean)
