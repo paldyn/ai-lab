@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="320" viewBox="0 0 880 320" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <rect x="0" y="0" width="880" height="320" rx="12" fill="#0a0a0a"/>
+  <text x="60" y="46" font-size="22" font-weight="700" fill="#e8e8e8">작업 수로는 5%, 비용으로는 34%</text>
+  <text x="60" y="72" font-size="13" fill="#888">작업 100건, 평균 6걸음. 첫 입력 5,000토큰, 걸음마다 도구 결과 2,000토큰.</text>
+
+  <text x="60" y="128" font-size="15" font-weight="600" fill="#e8e8e8">작업 수</text>
+  <rect x="180" y="106" width="608" height="36" rx="4" fill="#1a2a3a" stroke="#7ec8e3" stroke-width="1.5"/>
+  <rect x="788" y="106" width="32" height="36" rx="4" fill="#3a1a1a" stroke="#e05555" stroke-width="1.5"/>
+  <text x="484" y="129" font-size="13" fill="#e8e8e8" text-anchor="middle">5걸음 남짓 95건</text>
+
+  <text x="60" y="208" font-size="15" font-weight="600" fill="#e8e8e8">입력 토큰</text>
+  <rect x="180" y="186" width="422" height="36" rx="4" fill="#1a2a3a" stroke="#7ec8e3" stroke-width="1.5"/>
+  <rect x="602" y="186" width="218" height="36" rx="4" fill="#3a1a1a" stroke="#e05555" stroke-width="1.5"/>
+  <text x="391" y="209" font-size="13" fill="#e8e8e8" text-anchor="middle">66% · 건당 약 49,000</text>
+  <text x="711" y="209" font-size="13" fill="#e8e8e8" text-anchor="middle">34% · 건당 480,000</text>
+
+  <text x="804" y="166" font-size="13" fill="#e05555" text-anchor="end">20걸음 5건</text>
+
+  <text x="60" y="280" font-size="13" fill="#7ec8e3">입력이 걸음 수의 제곱으로 늘어서, 평균으로 곱한 예측은 꼬리를 놓친다.</text>
+</svg>

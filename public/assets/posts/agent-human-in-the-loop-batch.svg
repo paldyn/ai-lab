@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="380" viewBox="0 0 880 380" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <defs>
+    <marker id="ba" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#7ec8e3"/>
+    </marker>
+    <marker id="br" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#e05555"/>
+    </marker>
+  </defs>
+  <rect x="0" y="0" width="880" height="380" rx="12" fill="#0a0a0a"/>
+  <text x="60" y="46" font-size="22" font-weight="700" fill="#e8e8e8">묶음 안의 이상치를 따로 묻는다</text>
+  <text x="60" y="72" font-size="13" fill="#888">기준선은 같은 걸음의 지난 30일 금액 중 95번째 값이다.</text>
+
+  <rect x="60" y="150" width="200" height="96" rx="10" fill="#0d1117" stroke="#7777cc" stroke-width="1.5"/>
+  <text x="160" y="186" font-size="16" font-weight="600" fill="#e8e8e8" text-anchor="middle">환불 요청 30건</text>
+  <text x="160" y="212" font-size="13" fill="#888" text-anchor="middle">기준선과 견준다</text>
+
+  <path d="M 260 178 L 300 178 L 300 140 L 338 140" fill="none" stroke="#7ec8e3" stroke-width="2" marker-end="url(#ba)"/>
+  <path d="M 260 218 L 300 218 L 300 280 L 338 280" fill="none" stroke="#e05555" stroke-width="2" marker-end="url(#br)"/>
+
+  <rect x="340" y="100" width="220" height="80" rx="10" fill="#0d1117" stroke="#7ec8e3" stroke-width="1.5"/>
+  <text x="450" y="134" font-size="15" font-weight="600" fill="#e8e8e8" text-anchor="middle">기준선 안 29건</text>
+  <text x="450" y="158" font-size="13" fill="#888" text-anchor="middle">3만 원 안팎</text>
+
+  <rect x="340" y="240" width="220" height="80" rx="10" fill="#0d1117" stroke="#e05555" stroke-width="1.5"/>
+  <text x="450" y="274" font-size="15" font-weight="600" fill="#e8e8e8" text-anchor="middle">기준선 밖 1건</text>
+  <text x="450" y="298" font-size="13" fill="#888" text-anchor="middle">300만 원</text>
+
+  <line x1="560" y1="140" x2="618" y2="140" stroke="#7ec8e3" stroke-width="2" marker-end="url(#ba)"/>
+  <line x1="560" y1="280" x2="618" y2="280" stroke="#e05555" stroke-width="2" marker-end="url(#br)"/>
+
+  <rect x="620" y="100" width="200" height="80" rx="10" fill="#0d1117" stroke="#7ec8e3" stroke-width="1.5"/>
+  <text x="720" y="134" font-size="15" font-weight="600" fill="#e8e8e8" text-anchor="middle">묶음 승인</text>
+  <text x="720" y="158" font-size="13" fill="#888" text-anchor="middle">요약 한 줄로 판단</text>
+
+  <rect x="620" y="240" width="200" height="80" rx="10" fill="#0d1117" stroke="#e05555" stroke-width="1.5"/>
+  <text x="720" y="274" font-size="15" font-weight="600" fill="#e8e8e8" text-anchor="middle">개별 요청</text>
+  <text x="720" y="298" font-size="13" fill="#888" text-anchor="middle">다섯 칸을 다 보인다</text>
+
+  <text x="60" y="356" font-size="13" fill="#7ec8e3">요약 예: 「29건, 합계 87만 원, 최대 4만 2천 원」</text>
+</svg>
