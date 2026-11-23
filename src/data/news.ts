@@ -172,6 +172,48 @@ export const globalNewsUpdatedAt = '2026-11-16';
  */
 const entries: NewsItem[] = [
   {
+    id: 'ipo-close',
+    source: 'Anthropic',
+    kind: 'company',
+    title: 'Anthropic IPO 마감 — 공모와 사모 배정 합쳐 약 1,195억 달러 조달',
+    summary:
+      'Anthropic이 추가 배정 옵션까지 모두 행사된 기업공개를 주당 83달러, 11억 2,700만 주로 마감했다. ' +
+      '같은 값에 AMD·Broadcom·Google·Microsoft·NVIDIA 등에 N종 보통주를 사모로 팔아 총 조달액이 약 1,195억 달러가 됐다.',
+    publishedAt: '2026-11-20',
+    collectedAt: '2026-11-24',
+    category: 'Corporate',
+    signal: '상장 공모가',
+    url: 'https://www.anthropic.com/news/ipo-close',
+  },
+  {
+    id: 'combatting-adversarial-distillation',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'OpenAI, 적대적 증류 대응 공개 — 추론 추출 공격 성공률 54%에서 0.2%로',
+    summary:
+      'OpenAI가 무단 증류로 안전장치 없는 복제 모델이 생기는 위험과 그 대응을 정리했다. ' +
+      'GPT-6.2 Astra는 앞선 요청의 보호된 추론을 빼내는 공격 성공률이 GPT-6 Astra의 54.0%에서 0.2%로 내려갔다고 밝혔다.',
+    publishedAt: '2026-11-20',
+    collectedAt: '2026-11-24',
+    category: 'Safety',
+    signal: '모델 보안',
+    url: 'https://openai.com/index/combatting-adversarial-distillation',
+  },
+  {
+    id: 'introducing-medchembench',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'OpenAI, 의약화학 추론을 재는 벤치마크 MedChemBench 공개',
+    summary:
+      'OpenAI가 분자 구조를 읽고 실험 결과를 해석해 다음에 시험할 화합물을 고르는 능력을 재는 MedChemBench를 냈다. ' +
+      '논문·특허 117건에서 뽑은 99문제로, xhigh 설정의 GPT-6.2 Astra가 배점의 84.5%를 얻었다.',
+    publishedAt: '2026-11-20',
+    collectedAt: '2026-11-24',
+    category: 'Research',
+    signal: '과학 AI',
+    url: 'https://openai.com/index/introducing-medchembench',
+  },
+  {
     id: 'developers-tools-gemini-api-tool-retrieval',
     source: 'Google DeepMind',
     kind: 'company',
