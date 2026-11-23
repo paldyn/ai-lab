@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="500" viewBox="0 0 880 500" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+<defs><marker id="arr" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto"><path d="M 0 0 L 13 7 L 0 14 z" fill="#e8e8e8"/></marker></defs>
+<rect x="0" y="0" width="880" height="500" rx="12" fill="#0a0a0a"/>
+<text x="440.0" y="44.0" font-size="22" fill="#e8e8e8" text-anchor="middle" font-weight="700">랜덤 푸리에 특징의 오차 (가우스 커널, d = 5, 쌍 44,850개)</text>
+<line x1="120.0" y1="90.0" x2="720.0" y2="90.0" stroke="#444" stroke-width="1"/>
+<text x="108.0" y="94.0" font-size="13" fill="#888" text-anchor="end">0.5</text>
+<line x1="120.0" y1="221.7" x2="720.0" y2="221.7" stroke="#444" stroke-width="1"/>
+<text x="108.0" y="225.7" font-size="13" fill="#888" text-anchor="end">0.1</text>
+<line x1="120.0" y1="278.3" x2="720.0" y2="278.3" stroke="#444" stroke-width="1"/>
+<text x="108.0" y="282.3" font-size="13" fill="#888" text-anchor="end">0.05</text>
+<line x1="120.0" y1="410.0" x2="720.0" y2="410.0" stroke="#444" stroke-width="1"/>
+<text x="108.0" y="414.0" font-size="13" fill="#888" text-anchor="end">0.01</text>
+<line x1="120.0" y1="410.0" x2="740.0" y2="410.0" stroke="#888" stroke-width="1.5"/>
+<line x1="120.0" y1="410.0" x2="120.0" y2="80.0" stroke="#888" stroke-width="1.5"/>
+<text x="120.0" y="432.0" font-size="13" fill="#888" text-anchor="middle">64</text>
+<text x="320.0" y="432.0" font-size="13" fill="#888" text-anchor="middle">256</text>
+<text x="520.0" y="432.0" font-size="13" fill="#888" text-anchor="middle">1,024</text>
+<text x="720.0" y="432.0" font-size="13" fill="#888" text-anchor="middle">4,096</text>
+<text x="750.0" y="414.0" font-size="13" fill="#888" text-anchor="start">m</text>
+<text x="120.0" y="68.0" font-size="13" fill="#888" text-anchor="middle">|오차| (로그 눈금)</text>
+<polyline points="120.0,121.7 320.0,178.4 520.0,235.1 720.0,291.8" fill="none" stroke="#e8e8e8" stroke-width="2" stroke-dasharray="5,3"/>
+<polyline points="120.0,127.7 320.0,182.1 520.0,237.6 720.0,298.9" fill="none" stroke="#7777cc" stroke-width="2.5"/>
+<polyline points="120.0,184.8 320.0,238.1 520.0,296.6 720.0,351.3" fill="none" stroke="#7ec8e3" stroke-width="2.5"/>
+<circle cx="120.0" cy="127.7" r="5" fill="#7777cc"/>
+<circle cx="320.0" cy="182.1" r="5" fill="#7777cc"/>
+<circle cx="520.0" cy="237.6" r="5" fill="#7777cc"/>
+<circle cx="720.0" cy="298.9" r="5" fill="#7777cc"/>
+<circle cx="120.0" cy="184.8" r="5" fill="#7ec8e3"/>
+<circle cx="320.0" cy="238.1" r="5" fill="#7ec8e3"/>
+<circle cx="520.0" cy="296.6" r="5" fill="#7ec8e3"/>
+<circle cx="720.0" cy="351.3" r="5" fill="#7ec8e3"/>
+<line x1="740.0" y1="150.0" x2="764.0" y2="150.0" stroke="#e8e8e8" stroke-width="2" stroke-dasharray="5,3"/>
+<text x="740.0" y="175.0" font-size="13" fill="#e8e8e8" text-anchor="start">회프딩 95% 폭</text>
+<line x1="740.0" y1="215.0" x2="764.0" y2="215.0" stroke="#7777cc" stroke-width="2.5"/>
+<text x="740.0" y="240.0" font-size="13" fill="#7777cc" text-anchor="start">최댓값</text>
+<line x1="740.0" y1="280.0" x2="764.0" y2="280.0" stroke="#7ec8e3" stroke-width="2.5"/>
+<text x="740.0" y="305.0" font-size="13" fill="#7ec8e3" text-anchor="start">95% 분위</text>
+<text x="520.0" y="322.6" font-size="13" fill="#7ec8e3" text-anchor="middle">0.040</text>
+<text x="520.0" y="211.0" font-size="13" fill="#e8e8e8" text-anchor="middle">0.082 · 0.085</text>
+<text x="440.0" y="465.0" font-size="13" fill="#888" text-anchor="middle">세 선 모두 기울기 −1/2: m 을 네 배 늘릴 때마다 오차가 절반이 된다</text>
+</svg>

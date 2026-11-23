@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="560" viewBox="0 0 880 560" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+<defs><marker id="arr" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto"><path d="M 0 0 L 13 7 L 0 14 z" fill="#e8e8e8"/></marker></defs>
+<rect x="0" y="0" width="880" height="560" rx="12" fill="#0a0a0a"/>
+<text x="440.0" y="46.0" font-size="22" fill="#e8e8e8" text-anchor="middle" font-weight="700">Mercer 정리의 증명 개요</text>
+<rect x="80" y="80" width="720" height="86" rx="8" fill="#111" stroke="#3a4a6e" stroke-width="1.5"/>
+<text x="440.0" y="116.0" font-size="16" fill="#e8e8e8" text-anchor="middle" font-weight="600">① 고유함수는 연속이다</text>
+<text x="440.0" y="142.0" font-size="13" fill="#888" text-anchor="middle">φᵢ = T_k φᵢ / λᵢ 이고, T_k 는 어떤 L² 함수든 연속 함수로 보낸다</text>
+<line x1="440.0" y1="166.0" x2="440.0" y2="200.0" stroke="#e8e8e8" stroke-width="2" marker-end="url(#arr)"/>
+<rect x="80" y="200" width="720" height="86" rx="8" fill="#111" stroke="#3a4a6e" stroke-width="1.5"/>
+<text x="440.0" y="236.0" font-size="16" fill="#e8e8e8" text-anchor="middle" font-weight="600">② 나머지 커널의 대각선은 음수가 아니다</text>
+<text x="440.0" y="262.0" font-size="13" fill="#888" text-anchor="middle">k_N(x, x) ≥ 0 이므로 앞 N 항의 합 Σ λᵢ φᵢ(x)² ≤ k(x, x) ≤ max k</text>
+<line x1="440.0" y1="286.0" x2="440.0" y2="320.0" stroke="#e8e8e8" stroke-width="2" marker-end="url(#arr)"/>
+<rect x="80" y="320" width="720" height="86" rx="8" fill="#111" stroke="#3a4a6e" stroke-width="1.5"/>
+<text x="440.0" y="356.0" font-size="16" fill="#e8e8e8" text-anchor="middle" font-weight="600">③ 코시–슈바르츠로 꼬리를 누른다</text>
+<text x="440.0" y="382.0" font-size="13" fill="#888" text-anchor="middle">x 를 고정하면 y 에 대해 균등수렴하고, 그 극한은 k(x, ·) 와 같다</text>
+<line x1="440.0" y1="406.0" x2="440.0" y2="440.0" stroke="#e8e8e8" stroke-width="2" marker-end="url(#arr)"/>
+<rect x="80" y="440" width="720" height="86" rx="8" fill="#111" stroke="#3a4a6e" stroke-width="1.5"/>
+<text x="440.0" y="476.0" font-size="16" fill="#e8e8e8" text-anchor="middle" font-weight="600">④ 디니 정리</text>
+<text x="440.0" y="502.0" font-size="13" fill="#888" text-anchor="middle">대각선의 단조 수열 Σ λᵢ φᵢ(x)² 가 k(x, x) 로 균등수렴 → 전체가 균등수렴</text>
+</svg>

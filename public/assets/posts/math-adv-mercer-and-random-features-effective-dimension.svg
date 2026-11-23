@@ -1,0 +1,91 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="500" viewBox="0 0 880 500" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+<defs><marker id="arr" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto"><path d="M 0 0 L 13 7 L 0 14 z" fill="#e8e8e8"/></marker></defs>
+<rect x="0" y="0" width="880" height="500" rx="12" fill="#0a0a0a"/>
+<text x="440.0" y="44.0" font-size="22" fill="#e8e8e8" text-anchor="middle" font-weight="700">유효 차원 = 고윳값의 부드러운 개수 (λᵢ = i⁻², λ = 0.01)</text>
+<rect x="105.8" y="103.2" width="10.7" height="316.8" fill="#7ec8e3" fill-opacity="0.18"/>
+<rect x="117.5" y="112.3" width="10.7" height="307.7" fill="#7ec8e3" fill-opacity="0.18"/>
+<rect x="129.2" y="126.4" width="10.7" height="293.6" fill="#7ec8e3" fill-opacity="0.18"/>
+<rect x="140.8" y="144.1" width="10.7" height="275.9" fill="#7ec8e3" fill-opacity="0.18"/>
+<rect x="152.5" y="164.0" width="10.7" height="256.0" fill="#7ec8e3" fill-opacity="0.18"/>
+<rect x="164.2" y="184.7" width="10.7" height="235.3" fill="#7ec8e3" fill-opacity="0.18"/>
+<rect x="175.8" y="205.2" width="10.7" height="214.8" fill="#7ec8e3" fill-opacity="0.18"/>
+<rect x="187.5" y="224.9" width="10.7" height="195.1" fill="#7ec8e3" fill-opacity="0.18"/>
+<rect x="199.2" y="243.2" width="10.7" height="176.8" fill="#7ec8e3" fill-opacity="0.18"/>
+<rect x="210.8" y="260.0" width="10.7" height="160.0" fill="#7ec8e3" fill-opacity="0.18"/>
+<rect x="222.5" y="275.2" width="10.7" height="144.8" fill="#7ec8e3" fill-opacity="0.18"/>
+<rect x="234.2" y="288.9" width="10.7" height="131.1" fill="#7ec8e3" fill-opacity="0.18"/>
+<rect x="245.8" y="301.0" width="10.7" height="119.0" fill="#7ec8e3" fill-opacity="0.18"/>
+<rect x="257.5" y="311.9" width="10.7" height="108.1" fill="#7ec8e3" fill-opacity="0.18"/>
+<rect x="269.2" y="321.5" width="10.7" height="98.5" fill="#7ec8e3" fill-opacity="0.18"/>
+<rect x="280.8" y="330.1" width="10.7" height="89.9" fill="#7ec8e3" fill-opacity="0.18"/>
+<rect x="292.5" y="337.7" width="10.7" height="82.3" fill="#7ec8e3" fill-opacity="0.18"/>
+<rect x="304.2" y="344.5" width="10.7" height="75.5" fill="#7ec8e3" fill-opacity="0.18"/>
+<rect x="315.8" y="350.6" width="10.7" height="69.4" fill="#7ec8e3" fill-opacity="0.18"/>
+<rect x="327.5" y="356.0" width="10.7" height="64.0" fill="#7ec8e3" fill-opacity="0.18"/>
+<rect x="339.2" y="360.9" width="10.7" height="59.1" fill="#7ec8e3" fill-opacity="0.18"/>
+<rect x="350.8" y="365.2" width="10.7" height="54.8" fill="#7ec8e3" fill-opacity="0.18"/>
+<rect x="362.5" y="369.1" width="10.7" height="50.9" fill="#7ec8e3" fill-opacity="0.18"/>
+<rect x="374.2" y="372.7" width="10.7" height="47.3" fill="#7ec8e3" fill-opacity="0.18"/>
+<rect x="385.8" y="375.9" width="10.7" height="44.1" fill="#7ec8e3" fill-opacity="0.18"/>
+<rect x="397.5" y="378.8" width="10.7" height="41.2" fill="#7ec8e3" fill-opacity="0.18"/>
+<rect x="409.2" y="381.4" width="10.7" height="38.6" fill="#7ec8e3" fill-opacity="0.18"/>
+<rect x="420.8" y="383.8" width="10.7" height="36.2" fill="#7ec8e3" fill-opacity="0.18"/>
+<rect x="432.5" y="386.0" width="10.7" height="34.0" fill="#7ec8e3" fill-opacity="0.18"/>
+<rect x="444.2" y="388.0" width="10.7" height="32.0" fill="#7ec8e3" fill-opacity="0.18"/>
+<rect x="455.8" y="389.8" width="10.7" height="30.2" fill="#7ec8e3" fill-opacity="0.18"/>
+<rect x="467.5" y="391.5" width="10.7" height="28.5" fill="#7ec8e3" fill-opacity="0.18"/>
+<rect x="479.2" y="393.1" width="10.7" height="26.9" fill="#7ec8e3" fill-opacity="0.18"/>
+<rect x="490.8" y="394.5" width="10.7" height="25.5" fill="#7ec8e3" fill-opacity="0.18"/>
+<rect x="502.5" y="395.8" width="10.7" height="24.2" fill="#7ec8e3" fill-opacity="0.18"/>
+<rect x="514.2" y="397.1" width="10.7" height="22.9" fill="#7ec8e3" fill-opacity="0.18"/>
+<rect x="525.8" y="398.2" width="10.7" height="21.8" fill="#7ec8e3" fill-opacity="0.18"/>
+<rect x="537.5" y="399.3" width="10.7" height="20.7" fill="#7ec8e3" fill-opacity="0.18"/>
+<rect x="549.2" y="400.3" width="10.7" height="19.7" fill="#7ec8e3" fill-opacity="0.18"/>
+<rect x="560.8" y="401.2" width="10.7" height="18.8" fill="#7ec8e3" fill-opacity="0.18"/>
+<rect x="572.5" y="402.0" width="10.7" height="18.0" fill="#7ec8e3" fill-opacity="0.18"/>
+<rect x="584.2" y="402.8" width="10.7" height="17.2" fill="#7ec8e3" fill-opacity="0.18"/>
+<rect x="595.8" y="403.6" width="10.7" height="16.4" fill="#7ec8e3" fill-opacity="0.18"/>
+<rect x="607.5" y="404.3" width="10.7" height="15.7" fill="#7ec8e3" fill-opacity="0.18"/>
+<rect x="619.2" y="404.9" width="10.7" height="15.1" fill="#7ec8e3" fill-opacity="0.18"/>
+<rect x="630.8" y="405.6" width="10.7" height="14.4" fill="#7ec8e3" fill-opacity="0.18"/>
+<rect x="642.5" y="406.1" width="10.7" height="13.9" fill="#7ec8e3" fill-opacity="0.18"/>
+<rect x="654.2" y="406.7" width="10.7" height="13.3" fill="#7ec8e3" fill-opacity="0.18"/>
+<rect x="665.8" y="407.2" width="10.7" height="12.8" fill="#7ec8e3" fill-opacity="0.18"/>
+<rect x="677.5" y="407.7" width="10.7" height="12.3" fill="#7ec8e3" fill-opacity="0.18"/>
+<rect x="689.2" y="408.2" width="10.7" height="11.8" fill="#7ec8e3" fill-opacity="0.18"/>
+<rect x="700.8" y="408.6" width="10.7" height="11.4" fill="#7ec8e3" fill-opacity="0.18"/>
+<rect x="712.5" y="409.0" width="10.7" height="11.0" fill="#7ec8e3" fill-opacity="0.18"/>
+<rect x="724.2" y="409.4" width="10.7" height="10.6" fill="#7ec8e3" fill-opacity="0.18"/>
+<rect x="735.8" y="409.8" width="10.7" height="10.2" fill="#7ec8e3" fill-opacity="0.18"/>
+<rect x="747.5" y="410.1" width="10.7" height="9.9" fill="#7ec8e3" fill-opacity="0.18"/>
+<rect x="759.2" y="410.4" width="10.7" height="9.6" fill="#7ec8e3" fill-opacity="0.18"/>
+<rect x="770.8" y="410.8" width="10.7" height="9.2" fill="#7ec8e3" fill-opacity="0.18"/>
+<rect x="782.5" y="411.1" width="10.7" height="8.9" fill="#7ec8e3" fill-opacity="0.18"/>
+<rect x="794.2" y="411.4" width="10.7" height="8.6" fill="#7ec8e3" fill-opacity="0.18"/>
+<line x1="100.0" y1="260.0" x2="800.0" y2="260.0" stroke="#444" stroke-width="1"/>
+<line x1="100.0" y1="100.0" x2="800.0" y2="100.0" stroke="#444" stroke-width="1"/>
+<line x1="100.0" y1="420.0" x2="820.0" y2="420.0" stroke="#888" stroke-width="1.5"/>
+<line x1="100.0" y1="420.0" x2="100.0" y2="80.0" stroke="#888" stroke-width="1.5"/>
+<text x="88.0" y="424.0" font-size="13" fill="#888" text-anchor="end">0</text>
+<text x="88.0" y="264.0" font-size="13" fill="#888" text-anchor="end">0.5</text>
+<text x="88.0" y="104.0" font-size="13" fill="#888" text-anchor="end">1</text>
+<text x="100.0" y="442.0" font-size="13" fill="#888" text-anchor="middle">0</text>
+<text x="216.7" y="442.0" font-size="13" fill="#888" text-anchor="middle">10</text>
+<text x="333.3" y="442.0" font-size="13" fill="#888" text-anchor="middle">20</text>
+<text x="450.0" y="442.0" font-size="13" fill="#888" text-anchor="middle">30</text>
+<text x="566.7" y="442.0" font-size="13" fill="#888" text-anchor="middle">40</text>
+<text x="683.3" y="442.0" font-size="13" fill="#888" text-anchor="middle">50</text>
+<text x="800.0" y="442.0" font-size="13" fill="#888" text-anchor="middle">60</text>
+<text x="830.0" y="424.0" font-size="13" fill="#888" text-anchor="start">i</text>
+<text x="100.0" y="70.0" font-size="13" fill="#888" text-anchor="middle">가중치 λᵢ/(λᵢ+λ)</text>
+<polyline points="100.0,100.0 102.9,100.2 105.8,100.8 108.8,101.8 111.7,103.2 114.6,104.9 117.5,107.0 120.4,109.5 123.3,112.3 126.2,115.4 129.2,118.8 132.1,122.5 135.0,126.4 137.9,130.6 140.8,134.9 143.8,139.5 146.7,144.1 149.6,149.0 152.5,153.9 155.4,158.9 158.3,164.0 161.2,169.1 164.2,174.3 167.1,179.5 170.0,184.7 172.9,189.9 175.8,195.0 178.8,200.2 181.7,205.2 184.6,210.2 187.5,215.2 190.4,220.1 193.3,224.9 196.2,229.6 199.2,234.2 202.1,238.8 205.0,243.2 207.9,247.6 210.8,251.8 213.8,256.0 216.7,260.0 219.6,264.0 222.5,267.8 225.4,271.6 228.3,275.2 231.2,278.8 234.2,282.2 237.1,285.6 240.0,288.9 242.9,292.0 245.8,295.1 248.8,298.1 251.7,301.0 254.6,303.9 257.5,306.6 260.4,309.3 263.3,311.9 266.2,314.4 269.2,316.9 272.1,319.2 275.0,321.5 277.9,323.8 280.8,326.0 283.8,328.1 286.7,330.1 289.6,332.1 292.5,334.0 295.4,335.9 298.3,337.7 301.2,339.5 304.2,341.2 307.1,342.9 310.0,344.5 312.9,346.1 315.8,347.6 318.8,349.1 321.7,350.6 324.6,352.0 327.5,353.4 330.4,354.7 333.3,356.0 336.2,357.3 339.2,358.5 342.1,359.7 345.0,360.9 347.9,362.0 350.8,363.1 353.8,364.2 356.7,365.2 359.6,366.2 362.5,367.2 365.4,368.2 368.3,369.1 371.2,370.0 374.2,370.9 377.1,371.8 380.0,372.7 382.9,373.5 385.8,374.3 388.8,375.1 391.7,375.9 394.6,376.6 397.5,377.3 400.4,378.1 403.3,378.8 406.2,379.4 409.2,380.1 412.1,380.8 415.0,381.4 417.9,382.0 420.8,382.6 423.8,383.2 426.7,383.8 429.6,384.4 432.5,384.9 435.4,385.5 438.3,386.0 441.2,386.5 444.2,387.0 447.1,387.5 450.0,388.0 452.9,388.5 455.8,388.9 458.7,389.4 461.7,389.8 464.6,390.3 467.5,390.7 470.4,391.1 473.3,391.5 476.2,391.9 479.2,392.3 482.1,392.7 485.0,393.1 487.9,393.5 490.8,393.8 493.8,394.2 496.7,394.5 499.6,394.9 502.5,395.2 505.4,395.5 508.3,395.8 511.2,396.2 514.2,396.5 517.1,396.8 520.0,397.1 522.9,397.4 525.8,397.7 528.8,397.9 531.7,398.2 534.6,398.5 537.5,398.8 540.4,399.0 543.3,399.3 546.2,399.5 549.2,399.8 552.1,400.0 555.0,400.3 557.9,400.5 560.8,400.7 563.8,401.0 566.7,401.2 569.6,401.4 572.5,401.6 575.4,401.8 578.3,402.0 581.2,402.2 584.2,402.4 587.1,402.6 590.0,402.8 592.9,403.0 595.8,403.2 598.8,403.4 601.7,403.6 604.6,403.8 607.5,403.9 610.4,404.1 613.3,404.3 616.2,404.5 619.2,404.6 622.1,404.8 625.0,404.9 627.9,405.1 630.8,405.3 633.8,405.4 636.7,405.6 639.6,405.7 642.5,405.9 645.4,406.0 648.3,406.1 651.2,406.3 654.2,406.4 657.1,406.6 660.0,406.7 662.9,406.8 665.8,407.0 668.8,407.1 671.7,407.2 674.6,407.3 677.5,407.5 680.4,407.6 683.3,407.7 686.2,407.8 689.2,407.9 692.1,408.0 695.0,408.2 697.9,408.3 700.8,408.4 703.8,408.5 706.7,408.6 709.6,408.7 712.5,408.8 715.4,408.9 718.3,409.0 721.2,409.1 724.2,409.2 727.1,409.3 730.0,409.4 732.9,409.5 735.8,409.6 738.8,409.7 741.7,409.8 744.6,409.8 747.5,409.9 750.4,410.0 753.3,410.1 756.2,410.2 759.2,410.3 762.1,410.4 765.0,410.4 767.9,410.5 770.8,410.6 773.8,410.7 776.7,410.8 779.6,410.8 782.5,410.9 785.4,411.0 788.3,411.1 791.2,411.1 794.2,411.2 797.1,411.3 800.0,411.4" fill="none" stroke="#7ec8e3" stroke-width="2.5"/>
+<polyline points="105.8,100.0 222.5,100.0 222.5,420.0 800.0,420.0" fill="none" stroke="#7777cc" stroke-width="2" stroke-dasharray="5,3"/>
+<line x1="216.7" y1="420.0" x2="216.7" y2="260.0" stroke="#e05555" stroke-width="1.5" stroke-dasharray="4,4"/>
+<circle cx="216.7" cy="260.0" r="5" fill="#e8e8e8"/>
+<text x="232.7" y="246.0" font-size="13" fill="#e8e8e8" text-anchor="start">i = 10 에서 λᵢ = λ, 가중치 1/2</text>
+<rect x="470" y="150" width="300" height="96" rx="8" fill="#111" stroke="#3a4a6e" stroke-width="1.5"/>
+<text x="620.0" y="186.0" font-size="16" fill="#7ec8e3" text-anchor="middle" font-weight="600">부드러운 개수 N(λ) = 15.21</text>
+<text x="620.0" y="214.0" font-size="13" fill="#888" text-anchor="middle">단단한 개수 #{λᵢ > λ} = 10 (보라 점선)</text>
+<text x="620.0" y="234.0" font-size="13" fill="#888" text-anchor="middle">칠한 막대의 넓이를 끝까지 더한 것이 N(λ)</text>
+<text x="440.0" y="470.0" font-size="13" fill="#888" text-anchor="middle">근사식 π/(2√λ) − 1/2 = 15.21 과 실제 합이 같다</text>
+</svg>

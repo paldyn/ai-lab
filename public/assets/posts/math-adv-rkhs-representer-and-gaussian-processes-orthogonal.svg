@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="440" viewBox="0 0 880 440" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+<defs><marker id="arr0" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto"><path d="M 0 0 L 13 7 L 0 14 z" fill="#888"/></marker><marker id="arr1" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto"><path d="M 0 0 L 13 7 L 0 14 z" fill="#7ec8e3"/></marker><marker id="arr2" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto"><path d="M 0 0 L 13 7 L 0 14 z" fill="#e05555"/></marker><marker id="arr3" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto"><path d="M 0 0 L 13 7 L 0 14 z" fill="#55c555"/></marker></defs>
+<rect x="0" y="0" width="880" height="440" rx="12" fill="#0a0a0a"/>
+<text x="440" y="44" text-anchor="middle" font-size="22" fill="#e8e8e8" font-weight="700">표현자 정리의 직교 분해</text>
+<polygon points="90,330 330,380 520,280 280,230" fill="#7777cc" fill-opacity="0.18" stroke="#7777cc" stroke-width="1.5"/>
+<text x="120.0" y="400.0" text-anchor="start" font-size="13" fill="#9999dd">데이터 점이 펼치는 공간  span{k(x₁,·), …, k(xₙ,·)}</text>
+<line x1="200" y1="320" x2="430" y2="120" stroke="#7ec8e3" stroke-width="2.5" marker-end="url(#arr1)"/>
+<line x1="200" y1="320" x2="430" y2="285" stroke="#55c555" stroke-width="2.5" marker-end="url(#arr3)"/>
+<line x1="430" y1="285" x2="430" y2="122" stroke="#e05555" stroke-width="2.5" stroke-dasharray="5,3" marker-end="url(#arr2)"/>
+<polyline points="418,287 418,273 430,271" fill="none" stroke="#888" stroke-width="1.2"/>
+<circle cx="200" cy="320" r="4" fill="#e8e8e8"/>
+<text x="186.0" y="324.0" text-anchor="end" font-size="13" fill="#e8e8e8">0</text>
+<text x="290.0" y="196.0" text-anchor="middle" font-size="16" fill="#7ec8e3" font-weight="700">f</text>
+<text x="318.0" y="334.0" text-anchor="middle" font-size="16" fill="#55c555" font-weight="700">f∥</text>
+<text x="448.0" y="210.0" text-anchor="start" font-size="16" fill="#e05555" font-weight="700">f⊥</text>
+<rect x="560" y="96" width="270" height="214" rx="10" fill="#111a22" stroke="#444" stroke-width="1"/>
+<text x="582.0" y="128.0" text-anchor="start" font-size="14" fill="#e8e8e8" font-weight="600">데이터 점에서의 값</text>
+<text x="582.0" y="152.0" text-anchor="start" font-size="13" fill="#aaa">f(xᵢ) = ⟨f∥ + f⊥, k(xᵢ,·)⟩</text>
+<text x="582.0" y="172.0" text-anchor="start" font-size="13" fill="#aaa">     = f∥(xᵢ)   (f⊥ 는 수직)</text>
+<text x="582.0" y="208.0" text-anchor="start" font-size="14" fill="#e8e8e8" font-weight="600">노름</text>
+<text x="582.0" y="232.0" text-anchor="start" font-size="13" fill="#aaa">‖f‖² = ‖f∥‖² + ‖f⊥‖² ≥ ‖f∥‖²</text>
+<text x="582.0" y="268.0" text-anchor="start" font-size="13" fill="#55c555">f⊥ 를 버리면 손실은 그대로,</text>
+<text x="582.0" y="288.0" text-anchor="start" font-size="13" fill="#55c555">벌점은 줄거나 같다</text>
+</svg>

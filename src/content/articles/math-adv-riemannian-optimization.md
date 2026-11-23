@@ -374,3 +374,5 @@ float32 곱 10000번: 직교 오차 1.7e-04
 읽어주셔서 감사합니다. 😊
 
 **지난 글:** [프리컨디셔닝의 이론: Adam에서 K-FAC·Shampoo·Muon까지 한 줄로](/articles/math-adv-preconditioning-and-second-order-theory)
+
+**다음 글:** [손실 지형의 이론: 대칭, 모드 연결, 날카로움, 그리고 안장점](/articles/math-adv-loss-landscape-and-mode-connectivity)

@@ -1,0 +1,75 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="520" viewBox="0 0 880 520" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+<defs><marker id="arr" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto"><path d="M 0 0 L 13 7 L 0 14 z" fill="#e8e8e8"/></marker></defs>
+<rect x="0" y="0" width="880" height="520" rx="12" fill="#0a0a0a"/>
+<text x="440.0" y="44.0" font-size="22" fill="#e8e8e8" text-anchor="middle" font-weight="700">그람 행렬 K/n 의 고윳값 (x ~ N(0, 1), n = 2000)</text>
+<line x1="110.0" y1="90.0" x2="780.0" y2="90.0" stroke="#444" stroke-width="1"/>
+<text x="98.0" y="94.0" font-size="13" fill="#888" text-anchor="end">1</text>
+<line x1="110.0" y1="128.9" x2="780.0" y2="128.9" stroke="#444" stroke-width="1"/>
+<text x="98.0" y="132.9" font-size="13" fill="#888" text-anchor="end">10⁻¹</text>
+<line x1="110.0" y1="167.8" x2="780.0" y2="167.8" stroke="#444" stroke-width="1"/>
+<text x="98.0" y="171.8" font-size="13" fill="#888" text-anchor="end">10⁻²</text>
+<line x1="110.0" y1="206.7" x2="780.0" y2="206.7" stroke="#444" stroke-width="1"/>
+<text x="98.0" y="210.7" font-size="13" fill="#888" text-anchor="end">10⁻³</text>
+<line x1="110.0" y1="245.6" x2="780.0" y2="245.6" stroke="#444" stroke-width="1"/>
+<text x="98.0" y="249.6" font-size="13" fill="#888" text-anchor="end">10⁻⁴</text>
+<line x1="110.0" y1="284.4" x2="780.0" y2="284.4" stroke="#444" stroke-width="1"/>
+<text x="98.0" y="288.4" font-size="13" fill="#888" text-anchor="end">10⁻⁵</text>
+<line x1="110.0" y1="323.3" x2="780.0" y2="323.3" stroke="#444" stroke-width="1"/>
+<text x="98.0" y="327.3" font-size="13" fill="#888" text-anchor="end">10⁻⁶</text>
+<line x1="110.0" y1="362.2" x2="780.0" y2="362.2" stroke="#444" stroke-width="1"/>
+<text x="98.0" y="366.2" font-size="13" fill="#888" text-anchor="end">10⁻⁷</text>
+<line x1="110.0" y1="401.1" x2="780.0" y2="401.1" stroke="#444" stroke-width="1"/>
+<text x="98.0" y="405.1" font-size="13" fill="#888" text-anchor="end">10⁻⁸</text>
+<line x1="110.0" y1="440.0" x2="780.0" y2="440.0" stroke="#444" stroke-width="1"/>
+<text x="98.0" y="444.0" font-size="13" fill="#888" text-anchor="end">10⁻⁹</text>
+<line x1="110.0" y1="440.0" x2="800.0" y2="440.0" stroke="#888" stroke-width="1.5"/>
+<line x1="110.0" y1="440.0" x2="110.0" y2="80.0" stroke="#888" stroke-width="1.5"/>
+<text x="110.0" y="462.0" font-size="13" fill="#888" text-anchor="middle">1</text>
+<text x="251.1" y="462.0" font-size="13" fill="#888" text-anchor="middle">5</text>
+<text x="427.4" y="462.0" font-size="13" fill="#888" text-anchor="middle">10</text>
+<text x="603.7" y="462.0" font-size="13" fill="#888" text-anchor="middle">15</text>
+<text x="780.0" y="462.0" font-size="13" fill="#888" text-anchor="middle">20</text>
+<text x="810.0" y="444.0" font-size="13" fill="#888" text-anchor="start">i</text>
+<text x="110.0" y="68.0" font-size="13" fill="#888" text-anchor="middle">λᵢ (로그 눈금)</text>
+<polyline points="110.0,98.1 145.3,114.4 180.5,130.6 215.8,146.9 251.1,163.1 286.3,179.4 321.6,195.7 356.8,211.9 392.1,228.2 427.4,244.4 462.6,260.7 497.9,276.9 533.2,293.2 568.4,309.4 603.7,325.7 638.9,341.9 674.2,358.2 709.5,374.5 744.7,390.7 780.0,407.0" fill="none" stroke="#7ec8e3" stroke-width="2.5"/>
+<polyline points="110.0,103.3 145.3,118.9 180.5,130.1 215.8,138.7 251.1,146.1 286.3,151.6 321.6,156.6 356.8,160.4 392.1,164.6 427.4,168.5 462.6,171.2 497.9,174.2 533.2,176.4 568.4,178.9 603.7,180.8 638.9,183.1 674.2,185.5 709.5,187.6 744.7,189.1 780.0,191.5" fill="none" stroke="#7777cc" stroke-width="2.5"/>
+<circle cx="110.0" cy="98.2" r="4" fill="#7ec8e3"/>
+<circle cx="145.3" cy="114.2" r="4" fill="#7ec8e3"/>
+<circle cx="180.5" cy="130.8" r="4" fill="#7ec8e3"/>
+<circle cx="215.8" cy="147.5" r="4" fill="#7ec8e3"/>
+<circle cx="251.1" cy="163.4" r="4" fill="#7ec8e3"/>
+<circle cx="286.3" cy="178.7" r="4" fill="#7ec8e3"/>
+<circle cx="321.6" cy="194.4" r="4" fill="#7ec8e3"/>
+<circle cx="356.8" cy="210.4" r="4" fill="#7ec8e3"/>
+<circle cx="392.1" cy="226.6" r="4" fill="#7ec8e3"/>
+<circle cx="427.4" cy="245.1" r="4" fill="#7ec8e3"/>
+<circle cx="110.0" cy="103.3" r="4" fill="#7777cc"/>
+<circle cx="145.3" cy="118.9" r="4" fill="#7777cc"/>
+<circle cx="180.5" cy="130.1" r="4" fill="#7777cc"/>
+<circle cx="215.8" cy="138.7" r="4" fill="#7777cc"/>
+<circle cx="251.1" cy="146.1" r="4" fill="#7777cc"/>
+<circle cx="286.3" cy="151.6" r="4" fill="#7777cc"/>
+<circle cx="321.6" cy="156.6" r="4" fill="#7777cc"/>
+<circle cx="356.8" cy="160.4" r="4" fill="#7777cc"/>
+<circle cx="392.1" cy="164.6" r="4" fill="#7777cc"/>
+<circle cx="427.4" cy="168.5" r="4" fill="#7777cc"/>
+<circle cx="462.6" cy="171.2" r="4" fill="#7777cc"/>
+<circle cx="497.9" cy="174.2" r="4" fill="#7777cc"/>
+<circle cx="533.2" cy="176.4" r="4" fill="#7777cc"/>
+<circle cx="568.4" cy="178.9" r="4" fill="#7777cc"/>
+<circle cx="603.7" cy="180.8" r="4" fill="#7777cc"/>
+<circle cx="638.9" cy="183.1" r="4" fill="#7777cc"/>
+<circle cx="674.2" cy="185.5" r="4" fill="#7777cc"/>
+<circle cx="709.5" cy="187.6" r="4" fill="#7777cc"/>
+<circle cx="744.7" cy="189.1" r="4" fill="#7777cc"/>
+<circle cx="780.0" cy="191.5" r="4" fill="#7777cc"/>
+<circle cx="427.4" cy="245.1" r="5" fill="#e8e8e8"/>
+<circle cx="427.4" cy="168.5" r="5" fill="#e8e8e8"/>
+<text x="441.4" y="263.1" font-size="13" fill="#e8e8e8" text-anchor="start">λ₁₀ = 1.0 × 10⁻⁴</text>
+<text x="441.4" y="154.5" font-size="13" fill="#e8e8e8" text-anchor="start">λ₁₀ = 9.6 × 10⁻³</text>
+<text x="603.7" y="295.7" font-size="16" fill="#7ec8e3" text-anchor="start" font-weight="600">가우스 exp(−(x−y)²/2)</text>
+<text x="603.7" y="315.7" font-size="13" fill="#888" text-anchor="start">공비 0.382 인 등비수열</text>
+<text x="568.4" y="113.4" font-size="16" fill="#7777cc" text-anchor="start" font-weight="600">라플라스 exp(−|x−y|)</text>
+<text x="568.4" y="133.4" font-size="13" fill="#888" text-anchor="start">i⁻² 로 감쇠</text>
+<text x="440.0" y="495.0" font-size="13" fill="#888" text-anchor="middle">가우스의 선은 닫힌 꼴 0.618 × 0.382^(i−1), 점은 2,000개 점의 그람 행렬에서 잰 값</text>
+</svg>

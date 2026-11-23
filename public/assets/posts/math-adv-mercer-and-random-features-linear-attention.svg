@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="520" viewBox="0 0 880 520" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+<defs><marker id="arr" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto"><path d="M 0 0 L 13 7 L 0 14 z" fill="#e8e8e8"/></marker></defs>
+<rect x="0" y="0" width="880" height="520" rx="12" fill="#0a0a0a"/>
+<text x="440.0" y="44.0" font-size="22" fill="#e8e8e8" text-anchor="middle" font-weight="700">어텐션의 두 계산 순서 (n = 8192, d = 64, m = 256)</text>
+<text x="70.0" y="98.0" font-size="16" fill="#7ec8e3" text-anchor="start" font-weight="600">정확한 softmax</text>
+<rect x="70" y="120" width="150" height="70" rx="8" fill="#111" stroke="#3a4a6e" stroke-width="1.5"/>
+<text x="145.0" y="151.0" font-size="16" fill="#e8e8e8" text-anchor="middle" font-weight="600">Q, K</text>
+<text x="145.0" y="173.0" font-size="13" fill="#888" text-anchor="middle">n × d</text>
+<rect x="300" y="120" width="200" height="70" rx="8" fill="#111" stroke="#e05555" stroke-width="1.5"/>
+<text x="400.0" y="151.0" font-size="16" fill="#e8e8e8" text-anchor="middle" font-weight="600">exp(QKᵀ)</text>
+<text x="400.0" y="173.0" font-size="13" fill="#888" text-anchor="middle">n × n 점수 행렬</text>
+<rect x="580" y="120" width="230" height="70" rx="8" fill="#111" stroke="#3a4a6e" stroke-width="1.5"/>
+<text x="695.0" y="151.0" font-size="16" fill="#e8e8e8" text-anchor="middle" font-weight="600">(가중치) · V</text>
+<text x="695.0" y="173.0" font-size="13" fill="#888" text-anchor="middle">n × d 출력</text>
+<line x1="220.0" y1="155.0" x2="300.0" y2="155.0" stroke="#e8e8e8" stroke-width="2" marker-end="url(#arr)"/>
+<line x1="500.0" y1="155.0" x2="580.0" y2="155.0" stroke="#e8e8e8" stroke-width="2" marker-end="url(#arr)"/>
+<text x="440.0" y="222.0" font-size="13" fill="#e05555" text-anchor="middle">곱셈 n²d ≈ 4.3 × 10⁹ 번, 메모리 n² ≈ 6,700만 칸</text>
+<line x1="70.0" y1="252.0" x2="810.0" y2="252.0" stroke="#444" stroke-width="1" stroke-dasharray="4,4"/>
+<text x="70.0" y="290.0" font-size="16" fill="#7ec8e3" text-anchor="start" font-weight="600">양수 랜덤 특징 (FAVOR+)</text>
+<rect x="70" y="312" width="150" height="70" rx="8" fill="#111" stroke="#3a4a6e" stroke-width="1.5"/>
+<text x="145.0" y="343.0" font-size="16" fill="#e8e8e8" text-anchor="middle" font-weight="600">φ(K), V</text>
+<text x="145.0" y="365.0" font-size="13" fill="#888" text-anchor="middle">n × m, n × d</text>
+<rect x="300" y="312" width="200" height="70" rx="8" fill="#111" stroke="#55c555" stroke-width="1.5"/>
+<text x="400.0" y="343.0" font-size="16" fill="#e8e8e8" text-anchor="middle" font-weight="600">φ(K)ᵀ V</text>
+<text x="400.0" y="365.0" font-size="13" fill="#888" text-anchor="middle">m × d 로 먼저 묶기</text>
+<rect x="580" y="312" width="230" height="70" rx="8" fill="#111" stroke="#3a4a6e" stroke-width="1.5"/>
+<text x="695.0" y="343.0" font-size="16" fill="#e8e8e8" text-anchor="middle" font-weight="600">φ(Q) · (φ(K)ᵀ V)</text>
+<text x="695.0" y="365.0" font-size="13" fill="#888" text-anchor="middle">n × d 출력</text>
+<line x1="220.0" y1="347.0" x2="300.0" y2="347.0" stroke="#e8e8e8" stroke-width="2" marker-end="url(#arr)"/>
+<line x1="500.0" y1="347.0" x2="580.0" y2="347.0" stroke="#e8e8e8" stroke-width="2" marker-end="url(#arr)"/>
+<text x="440.0" y="414.0" font-size="13" fill="#55c555" text-anchor="middle">곱셈 2nmd ≈ 2.7 × 10⁸ 번, n × n 행렬은 만들지 않는다</text>
+<text x="440.0" y="456.0" font-size="13" fill="#888" text-anchor="middle">φ(x) = exp(wⱼᵀx − ‖x‖²/2)/√m 은 모든 성분이 양수라</text>
+<text x="440.0" y="478.0" font-size="13" fill="#888" text-anchor="middle">행마다 나누는 분모 φ(qᵢ)ᵀ Σⱼ φ(kⱼ) 가 음수가 될 수 없다</text>
+</svg>
