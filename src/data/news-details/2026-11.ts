@@ -2,6 +2,33 @@ import type { NewsDetail } from '../news';
 
 /** 2026-11 발표의 모달 본문. 목록은 news.ts에 있습니다. */
 export const details: Record<string, NewsDetail> = {
+  'developers-tools-gemini-api-tool-retrieval': {
+    points: [
+      'Tool Retrieval은 Gemini Interactions API에서 프리뷰로 제공된다',
+      '요청에 tool_search 도구를 넣고 미룰 도구에 defer_loading: true를 달면 켜진다',
+      '모델은 미룬 도구의 이름과 설명은 보고, 필요할 때 이름으로 요청하면 API가 전체 스키마를 같은 요청 안에서 불러온다',
+      '검색은 Gemini가 서버에서 돌려 따로 색인을 만들거나 호스팅할 필요가 없다',
+      'mcp_server 도구에 defer_loading을 켜면 그 MCP 서버의 도구 전부가 필요할 때 불러와진다',
+      '자체 도구 목록을 쓰려면 "execution": "client"로 클라이언트 쪽 검색을 둘 수 있고 검색마다 왕복이 하나 는다',
+      '별도 요금은 없고, 불러온 스키마는 이후 대화 내내 입력 토큰으로 청구된다',
+      'Gemini 3.6 이후 모델과 모든 Gemini 4 모델에서 동작한다',
+    ],
+    commentary:
+      '도구가 수백 개로 늘어난 에이전트에서 스키마를 다 싣는 비용은 이미 업계 공통의 문제였고, 비슷한 지연 로딩 방식을 경쟁 API들도 갖추고 있다. 불러온 스키마를 대화 뒤쪽에 붙여 캐시된 접두부를 지키게 한 설계는 비용 절감을 실제로 내기 위한 세부다. 토큰이 줄어드는지는 트래픽마다 다르다고 Google 스스로 밝힌 만큼 도입 전에 직접 재 봐야 한다.',
+  },
+  'how-openai-performance-factory-keeps-chatgpt-fast': {
+    points: [
+      'Performance Factory는 성능 문제의 조사와 해결을 자동화해 클라우드에서 도는 사내 시스템이다',
+      '첫 워크플로인 Regression Workflow는 성능 알림이 울리면 작업을 열고 에이전트가 조사·수정안 제안·배포 후 회복 확인까지 맡는다',
+      '수정안은 엔지니어가 검토한다',
+      '석 달 남짓 동안 1,700건 넘는 조사를 추적하고 600건 넘게 근본 원인을 찾았으며 하루 17건꼴이다',
+      '성능팀의 조사 절차를 perf-forensics라는 공유 스킬로 담았고 과거 회귀 사례로 만든 평가로 다듬었다',
+      '구성은 작업 서비스, 준비된 일을 에이전트에 배정하는 디스패치 루프, 클라우드 Codex 실행 API, 이벤트 구독 넷이다',
+      '에이전트는 서비스 신원으로 돌아 권한을 좁히고 어떤 작업이 에이전트에서 나왔는지 구분한다',
+    ],
+    commentary:
+      '알림이 울리면 엔지니어가 Codex에 붙여 넣던 「사람 중계」 단계를 걷어 낸 과정이 구체적으로 적혀 있어, 에이전트 도입이 도구 → 스킬 → 상주 워크플로로 옮겨 가는 경로를 보여 주는 사례다. 상태를 에이전트 문맥 밖의 작업 기록에 두고 리뷰·배포 이벤트로 깨우는 구조는 다른 운영 업무에도 그대로 옮길 수 있는 설계다.',
+  },
   'blog-introducing-gemini-4-neon': {
     points: [
       'Neon은 가장 어려운 작업용 Carbon과 빠른 일상 처리용 Hydrogen 사이에 놓인 Gemini 4 모델이다',

@@ -172,6 +172,34 @@ export const globalNewsUpdatedAt = '2026-11-16';
  */
 const entries: NewsItem[] = [
   {
+    id: 'developers-tools-gemini-api-tool-retrieval',
+    source: 'Google DeepMind',
+    kind: 'company',
+    title: 'Gemini API에 도구 스키마를 필요할 때만 불러오는 Tool Retrieval 프리뷰',
+    summary:
+      'Google이 Gemini Interactions API에 Tool Retrieval을 프리뷰로 내놓았다. tool_search 도구를 넣고 도구에 defer_loading을 켜면 ' +
+      '모델이 필요한 도구의 매개변수 스키마만 요청 안에서 불러와, 큰 도구 목록의 입력 토큰을 줄인다.',
+    publishedAt: '2026-11-19',
+    collectedAt: '2026-11-24',
+    category: 'Product',
+    signal: '에이전트 도구',
+    url: 'https://blog.google/innovation-and-ai/technology/developers-tools/gemini-api-tool-retrieval',
+  },
+  {
+    id: 'how-openai-performance-factory-keeps-chatgpt-fast',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'OpenAI, Codex 에이전트로 성능 저하를 찾고 고치는 Performance Factory 공개',
+    summary:
+      'OpenAI가 ChatGPT의 성능 저하를 Codex 에이전트가 조사·수정·검증까지 맡는 사내 시스템 Performance Factory를 소개했다. ' +
+      '첫 워크플로는 석 달 남짓 동안 1,700건 넘는 조사를 추적했고 600건 넘게 근본 원인을 찾았다.',
+    publishedAt: '2026-11-19',
+    collectedAt: '2026-11-24',
+    category: 'Research',
+    signal: '에이전틱 워크플로',
+    url: 'https://openai.com/index/how-openai-performance-factory-keeps-chatgpt-fast',
+  },
+  {
     id: 'blog-introducing-gemini-4-neon',
     source: 'Google DeepMind',
     kind: 'model',
