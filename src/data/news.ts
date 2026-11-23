@@ -172,6 +172,76 @@ export const globalNewsUpdatedAt = '2026-11-16';
  */
 const entries: NewsItem[] = [
   {
+    id: 'expanding-chatgpt-for-academic-researchers',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'OpenAI, 연구자 무료 ChatGPT 프로그램을 최대 20만 명으로 확대',
+    summary:
+      'OpenAI가 ChatGPT for Academic Researchers를 넓혀 전 세계 연구자 최대 20만 명에게 ChatGPT를 무료로 준다. ' +
+      '다음 회차는 11월 23일 신청을 받아 선착순 5만 건을 지급하며, 한 건은 본인과 공동 연구자 두 명의 ChatGPT Plus를 덮는다.',
+    publishedAt: '2026-11-16',
+    collectedAt: '2026-11-24',
+    category: 'Corporate',
+    signal: '학술 연구 지원',
+    url: 'https://openai.com/index/expanding-chatgpt-for-academic-researchers',
+  },
+  {
+    id: 'strengthening-online-child-safety',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'OpenAI, AI 생성 여부까지 가리는 CSAM 분류기를 무료로 공개',
+    summary:
+      'OpenAI가 AI 생성물을 포함한 아동 성착취물(CSAM)을 찾는 이미지 분류기를 검증된 기관에 API로 무료 제공한다. ' +
+      'ChatGPT에는 착취물을 찾는 시도를 끊는 경고를 넣고, 개발자용 지침과 수사기관용 도구·교육도 함께 내놓았다.',
+    publishedAt: '2026-11-16',
+    collectedAt: '2026-11-24',
+    category: 'Safety',
+    signal: '아동 보호 정책',
+    url: 'https://openai.com/index/strengthening-online-child-safety',
+  },
+  {
+    id: 'science-at-the-frontier',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'OpenAI, 과학자 1,819명의 ChatGPT 사용을 분석한 보고서 공개',
+    summary:
+      'OpenAI 경제연구팀이 연구자 프로그램 여름 시범에 참여한 과학자 1,819명의 메시지 58만여 건과 251명 설문을 분석했다. ' +
+      '응답자들은 AI 없이 같은 품질의 일을 하려면 1.9배 걸렸을 것으로 추정했다.',
+    publishedAt: '2026-11-16',
+    collectedAt: '2026-11-24',
+    category: 'Research',
+    signal: '경제 연구',
+    url: 'https://openai.com/index/science-at-the-frontier',
+  },
+  {
+    id: 'lvmh-media-division-partnership',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'LVMH 미디어 부문, OpenAI와 전략 제휴로 ChatGPT Enterprise 도입',
+    summary:
+      'Les Echos·Le Parisien 등을 거느린 LVMH 미디어 부문이 OpenAI와 전략 제휴를 맺었다. ' +
+      '전 매체 팀에 ChatGPT Enterprise를 배포하고, 기사 요약·발췌를 출처 링크와 함께 ChatGPT 답변에 싣는다.',
+    publishedAt: '2026-11-16',
+    collectedAt: '2026-11-24',
+    category: 'Product',
+    signal: '미디어 라이선스',
+    url: 'https://openai.com/index/lvmh-media-division-partnership',
+  },
+  {
+    id: 'claude-platform-november-16-2026',
+    source: 'Anthropic',
+    kind: 'company',
+    title: 'Claude 4.x 구형 모델 출력에 텍스트 워터마크 적용',
+    summary:
+      'Anthropic이 Claude Opus 4.6·Opus 4.5·Sonnet 4.5·Haiku 4.5가 만든 텍스트에 자사 텍스트 워터마크를 넣는다고 밝혔다. ' +
+      '같은 날 조직 웹훅에 고객 관리 암호화 키의 실패·복구 이벤트 두 가지를 더했다.',
+    publishedAt: '2026-11-16',
+    collectedAt: '2026-11-24',
+    category: 'Safety',
+    signal: '플랫폼 변경',
+    url: 'https://platform.claude.com/docs/en/release-notes/overview#november-16-2026',
+  },
+  {
     id: 'blog-opening-the-datasets-behind-our-ai-weather-models',
     source: 'Google DeepMind',
     kind: 'company',
