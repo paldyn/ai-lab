@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="470" viewBox="0 0 880 470" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+<defs>
+  <marker id="arr" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+    <path d="M 0 0 L 13 7 L 0 14 z" fill="#7ec8e3"/>
+  </marker>
+</defs>
+<rect x="0" y="0" width="880" height="470" rx="12" fill="#0a0a0a"/>
+<text x="440" y="44" text-anchor="middle" font-size="22" font-weight="700" fill="#e8e8e8">NNGP 커널 재귀식: 한 층이 커널 하나를 다음 커널로</text>
+<rect x="60" y="90" width="220" height="110" rx="10" fill="#111" stroke="#7777cc" stroke-width="1.5"/>
+<text x="170" y="124" text-anchor="middle" font-size="16" font-weight="600" fill="#e8e8e8">첫 층</text>
+<text x="170" y="150" text-anchor="middle" font-size="14" fill="#e8e8e8">K⁰(x, x′) = σ_b² + σ_w² xᵀx′/d</text>
+<text x="170" y="174" text-anchor="middle" font-size="13" fill="#888">입력의 내적만 쓴다</text>
+<rect x="330" y="90" width="220" height="110" rx="10" fill="#111" stroke="#7ec8e3" stroke-width="1.5"/>
+<text x="440" y="124" text-anchor="middle" font-size="16" font-weight="600" fill="#e8e8e8">l층</text>
+<text x="440" y="150" text-anchor="middle" font-size="14" fill="#e8e8e8">Kˡ = σ_b² + σ_w² E[φ(u)φ(v)]</text>
+<text x="440" y="174" text-anchor="middle" font-size="13" fill="#888">(u, v) ~ N(0, Kˡ⁻¹)</text>
+<rect x="600" y="90" width="220" height="110" rx="10" fill="#111" stroke="#55c555" stroke-width="1.5"/>
+<text x="710" y="124" text-anchor="middle" font-size="16" font-weight="600" fill="#e8e8e8">출력</text>
+<text x="710" y="150" text-anchor="middle" font-size="14" fill="#e8e8e8">f ~ GP(0, Kᴸ)</text>
+<text x="710" y="174" text-anchor="middle" font-size="13" fill="#888">폭 → ∞ 극한의 사전분포</text>
+<line x1="280" y1="145" x2="330" y2="145" stroke="#7ec8e3" stroke-width="2" marker-end="url(#arr)"/>
+<line x1="550" y1="145" x2="600" y2="145" stroke="#7ec8e3" stroke-width="2" marker-end="url(#arr)"/>
+<path d="M 400 200 C 400 250, 480 250, 480 200" fill="none" stroke="#7ec8e3" stroke-width="2" marker-end="url(#arr)"/>
+<text x="440" y="270" text-anchor="middle" font-size="13" fill="#888">L번 되풀이</text>
+<rect x="60" y="300" width="370" height="130" rx="10" fill="#111" stroke="#444" stroke-width="1"/>
+<text x="245" y="332" text-anchor="middle" font-size="16" font-weight="600" fill="#e8e8e8">윗층을 고정하면</text>
+<text x="245" y="360" text-anchor="middle" font-size="14" fill="#e8e8e8">hˡ은 정확히 가우스, 공분산은</text>
+<text x="245" y="384" text-anchor="middle" font-size="14" fill="#e8e8e8">σ_b² + σ_w² · (1/N) Σⱼ φ(hⱼ(x)) φ(hⱼ(x′))</text>
+<text x="245" y="408" text-anchor="middle" font-size="13" fill="#888">가중치의 행이 독립인 정규분포라서</text>
+<rect x="450" y="300" width="370" height="130" rx="10" fill="#111" stroke="#444" stroke-width="1"/>
+<text x="635" y="332" text-anchor="middle" font-size="16" font-weight="600" fill="#e8e8e8">폭 N → ∞이면</text>
+<text x="635" y="360" text-anchor="middle" font-size="14" fill="#e8e8e8">경험 평균 (1/N) Σⱼ이 기댓값으로</text>
+<text x="635" y="384" text-anchor="middle" font-size="14" fill="#e8e8e8">무작위 공분산이 결정적 Kˡ로</text>
+<text x="635" y="408" text-anchor="middle" font-size="13" fill="#888">큰 수의 법칙, 층마다 귀납</text>
+</svg>

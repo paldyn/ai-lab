@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="560" viewBox="0 0 880 560" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+<rect x="0" y="0" width="880" height="560" rx="12" fill="#0a0a0a"/>
+<text x="440" y="44" text-anchor="middle" font-size="22" font-weight="700" fill="#e8e8e8">임계선 위 끝에서 끝 야코비안의 특잇값 (L = 100, 폭 512)</text>
+<line x1="100" y1="270.0" x2="820" y2="270.0" stroke="#444" stroke-width="1"/>
+<text x="90.0" y="274.0" text-anchor="end" font-size="13" fill="#888">0</text>
+<line x1="100" y1="234.4" x2="820" y2="234.4" stroke="#444" stroke-width="1"/>
+<text x="90.0" y="238.4" text-anchor="end" font-size="13" fill="#888">100</text>
+<line x1="100" y1="198.9" x2="820" y2="198.9" stroke="#444" stroke-width="1"/>
+<text x="90.0" y="202.9" text-anchor="end" font-size="13" fill="#888">200</text>
+<line x1="100" y1="163.3" x2="820" y2="163.3" stroke="#444" stroke-width="1"/>
+<text x="90.0" y="167.3" text-anchor="end" font-size="13" fill="#888">300</text>
+<line x1="100" y1="127.8" x2="820" y2="127.8" stroke="#444" stroke-width="1"/>
+<text x="90.0" y="131.8" text-anchor="end" font-size="13" fill="#888">400</text>
+<rect x="101.0" y="118.9" width="30.7" height="151.1" fill="#e05555" fill-opacity="0.75"/>
+<rect x="133.7" y="268.2" width="30.7" height="1.8" fill="#e05555" fill-opacity="0.75"/>
+<rect x="166.5" y="268.2" width="30.7" height="1.8" fill="#e05555" fill-opacity="0.75"/>
+<rect x="199.2" y="268.6" width="30.7" height="1.4" fill="#e05555" fill-opacity="0.75"/>
+<rect x="231.9" y="267.9" width="30.7" height="2.1" fill="#e05555" fill-opacity="0.75"/>
+<rect x="264.6" y="267.9" width="30.7" height="2.1" fill="#e05555" fill-opacity="0.75"/>
+<rect x="297.4" y="268.6" width="30.7" height="1.4" fill="#e05555" fill-opacity="0.75"/>
+<rect x="330.1" y="268.2" width="30.7" height="1.8" fill="#e05555" fill-opacity="0.75"/>
+<rect x="362.8" y="268.2" width="30.7" height="1.8" fill="#e05555" fill-opacity="0.75"/>
+<rect x="395.5" y="268.6" width="30.7" height="1.4" fill="#e05555" fill-opacity="0.75"/>
+<rect x="428.3" y="268.6" width="30.7" height="1.4" fill="#e05555" fill-opacity="0.75"/>
+<rect x="461.0" y="268.2" width="30.7" height="1.8" fill="#e05555" fill-opacity="0.75"/>
+<rect x="493.7" y="268.6" width="30.7" height="1.4" fill="#e05555" fill-opacity="0.75"/>
+<rect x="526.5" y="267.9" width="30.7" height="2.1" fill="#e05555" fill-opacity="0.75"/>
+<rect x="559.2" y="268.9" width="30.7" height="1.1" fill="#e05555" fill-opacity="0.75"/>
+<rect x="591.9" y="268.2" width="30.7" height="1.8" fill="#e05555" fill-opacity="0.75"/>
+<rect x="624.6" y="268.2" width="30.7" height="1.8" fill="#e05555" fill-opacity="0.75"/>
+<rect x="657.4" y="268.9" width="30.7" height="1.1" fill="#e05555" fill-opacity="0.75"/>
+<rect x="690.1" y="268.9" width="30.7" height="1.1" fill="#e05555" fill-opacity="0.75"/>
+<rect x="722.8" y="268.6" width="30.7" height="1.4" fill="#e05555" fill-opacity="0.75"/>
+<rect x="755.5" y="269.6" width="30.7" height="0.4" fill="#e05555" fill-opacity="0.75"/>
+<line x1="100" y1="270" x2="820" y2="270" stroke="#888" stroke-width="1.5"/>
+<line x1="100" y1="270" x2="100" y2="90" stroke="#888" stroke-width="1.5"/>
+<text x="178.5" y="104.0" text-anchor="start" font-size="14" fill="#e8e8e8" font-weight="600">가우스 가중치: 82%가 10⁻⁴배 아래</text>
+<line x1="623.6" y1="270" x2="623.6" y2="90" stroke="#888" stroke-width="1.5" stroke-dasharray="4,4"/>
+<line x1="100" y1="490.0" x2="820" y2="490.0" stroke="#444" stroke-width="1"/>
+<text x="90.0" y="494.0" text-anchor="end" font-size="13" fill="#888">0</text>
+<line x1="100" y1="440.0" x2="820" y2="440.0" stroke="#444" stroke-width="1"/>
+<text x="90.0" y="444.0" text-anchor="end" font-size="13" fill="#888">50</text>
+<line x1="100" y1="390.0" x2="820" y2="390.0" stroke="#444" stroke-width="1"/>
+<text x="90.0" y="394.0" text-anchor="end" font-size="13" fill="#888">100</text>
+<line x1="100" y1="340.0" x2="820" y2="340.0" stroke="#444" stroke-width="1"/>
+<text x="90.0" y="344.0" text-anchor="end" font-size="13" fill="#888">150</text>
+<rect x="101.0" y="489.0" width="30.7" height="1.0" fill="#7ec8e3" fill-opacity="0.75"/>
+<rect x="493.7" y="484.0" width="30.7" height="6.0" fill="#7ec8e3" fill-opacity="0.75"/>
+<rect x="526.5" y="425.0" width="30.7" height="65.0" fill="#7ec8e3" fill-opacity="0.75"/>
+<rect x="559.2" y="378.0" width="30.7" height="112.0" fill="#7ec8e3" fill-opacity="0.75"/>
+<rect x="591.9" y="343.0" width="30.7" height="147.0" fill="#7ec8e3" fill-opacity="0.75"/>
+<rect x="624.6" y="341.0" width="30.7" height="149.0" fill="#7ec8e3" fill-opacity="0.75"/>
+<rect x="657.4" y="458.0" width="30.7" height="32.0" fill="#7ec8e3" fill-opacity="0.75"/>
+<line x1="100" y1="490" x2="820" y2="490" stroke="#888" stroke-width="1.5"/>
+<line x1="100" y1="490" x2="100" y2="310" stroke="#888" stroke-width="1.5"/>
+<text x="126.2" y="324.0" text-anchor="start" font-size="14" fill="#e8e8e8" font-weight="600">직교 가중치: 67%가 1/2~2배 안</text>
+<line x1="623.6" y1="490" x2="623.6" y2="310" stroke="#888" stroke-width="1.5" stroke-dasharray="4,4"/>
+<text x="118.0" y="510.0" text-anchor="middle" font-size="13" fill="#888">≤10⁻⁴</text>
+<text x="230.9" y="510.0" text-anchor="middle" font-size="13" fill="#888">10⁻³</text>
+<text x="361.8" y="510.0" text-anchor="middle" font-size="13" fill="#888">10⁻²</text>
+<text x="492.7" y="510.0" text-anchor="middle" font-size="13" fill="#888">10⁻¹</text>
+<text x="623.6" y="510.0" text-anchor="middle" font-size="13" fill="#888">1</text>
+<text x="754.5" y="510.0" text-anchor="middle" font-size="13" fill="#888">10</text>
+<text x="460.0" y="536.0" text-anchor="middle" font-size="13" fill="#888">특잇값 ÷ √(특잇값 제곱의 평균), 로그 눈금</text>
+<text x="100.0" y="80.0" text-anchor="middle" font-size="13" fill="#888">개수</text>
+</svg>

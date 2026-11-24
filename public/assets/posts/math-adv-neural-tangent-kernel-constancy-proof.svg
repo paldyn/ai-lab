@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="560" viewBox="0 0 880 560" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+<defs><marker id="arr" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto"><path d="M 0 0 L 13 7 L 0 14 z" fill="#e8e8e8"/></marker><marker id="arrb" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto"><path d="M 0 0 L 13 7 L 0 14 z" fill="#7ec8e3"/></marker></defs>
+<rect x="0" y="0" width="880" height="560" rx="12" fill="#0a0a0a"/>
+<text x="440" y="44" font-size="22" fill="#e8e8e8" text-anchor="middle" font-weight="700">접커널 상수성의 증명 개요</text>
+<rect x="120" y="80" width="600" height="72" rx="10" fill="#111a22" stroke="#7ec8e3" stroke-width="1.5"/>
+<text x="144.0" y="110.0" font-size="16" fill="#e8e8e8" text-anchor="start" font-weight="600">① 초기 커널</text>
+<text x="144.0" y="134.0" font-size="13" fill="#e8e8e8" text-anchor="start">λ_min(Θ₀) ≥ λ₀/2 — 큰 수의 법칙, 흔들림은 1/√n</text>
+<rect x="120" y="192" width="600" height="72" rx="10" fill="#111a22" stroke="#7ec8e3" stroke-width="1.5"/>
+<text x="144.0" y="222.0" font-size="16" fill="#e8e8e8" text-anchor="start" font-weight="600">② 잔차의 지수 감소</text>
+<text x="144.0" y="246.0" font-size="13" fill="#e8e8e8" text-anchor="start">λ_min(Θₜ) ≥ λ₀/2 인 동안 ‖rₜ‖ ≤ exp(−ηλ₀t / 2N)·‖r₀‖</text>
+<rect x="120" y="304" width="600" height="72" rx="10" fill="#111a22" stroke="#7ec8e3" stroke-width="1.5"/>
+<text x="144.0" y="334.0" font-size="16" fill="#e8e8e8" text-anchor="start" font-weight="600">③ 이동 거리의 상한</text>
+<text x="144.0" y="358.0" font-size="13" fill="#e8e8e8" text-anchor="start">‖θₜ − θ₀‖ ≤ R = 2‖J‖‖r₀‖ / λ₀ — 폭과 무관한 크기</text>
+<rect x="120" y="416" width="600" height="72" rx="10" fill="#111a22" stroke="#7ec8e3" stroke-width="1.5"/>
+<text x="144.0" y="446.0" font-size="16" fill="#e8e8e8" text-anchor="start" font-weight="600">④ 헤세 보조정리</text>
+<text x="144.0" y="470.0" font-size="13" fill="#e8e8e8" text-anchor="start">반지름 R의 공 안에서 ‖H‖ = O(1/√n) → ‖Θₜ − Θ₀‖ = O(1/√n) &lt; λ₀/4</text>
+<line x1="420.0" y1="152" x2="420.0" y2="192" stroke="#e8e8e8" stroke-width="2" marker-end="url(#arr)"/>
+<line x1="420.0" y1="264" x2="420.0" y2="304" stroke="#e8e8e8" stroke-width="2" marker-end="url(#arr)"/>
+<line x1="420.0" y1="376" x2="420.0" y2="416" stroke="#e8e8e8" stroke-width="2" marker-end="url(#arr)"/>
+<path d="M 720 452 C 810 452, 810 228, 720 228" stroke="#7ec8e3" stroke-width="2" fill="none" stroke-dasharray="5,3" marker-end="url(#arrb)"/>
+<text x="794.0" y="334.0" font-size="13" fill="#7ec8e3" text-anchor="start">가정이</text>
+<text x="794.0" y="352.0" font-size="13" fill="#7ec8e3" text-anchor="start">유지된다</text>
+<text x="440.0" y="528.0" font-size="13" fill="#888" text-anchor="middle">④의 커널 변화가 λ₀/4보다 작으면 ②의 가정이 처음 깨지는 시각이 있을 수 없다 — 연속성 논증</text>
+</svg>

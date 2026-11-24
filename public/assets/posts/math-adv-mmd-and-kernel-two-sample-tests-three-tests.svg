@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="420" viewBox="0 0 880 420" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+<rect width="880" height="420" rx="12" fill="#0a0a0a"/>
+<text x="440" y="44" text-anchor="middle" font-size="22" font-weight="700" fill="#e8e8e8">커널 검정 셋</text>
+<rect x="60" y="80" width="236" height="290" rx="10" fill="#111827" stroke="#7ec8e3" stroke-width="1.5"/>
+<text x="178" y="118" text-anchor="middle" font-size="16" font-weight="600" fill="#e8e8e8">두 표본 검정</text>
+<text x="178" y="146" text-anchor="middle" font-size="16" font-weight="600" fill="#7ec8e3">MMD</text>
+<text x="178" y="190" text-anchor="middle" font-size="14" fill="#e8e8e8">P = Q ?</text>
+<line x1="84" y1="214" x2="272" y2="214" stroke="#444" stroke-width="1"/>
+<text x="178" y="252" text-anchor="middle" font-size="13" fill="#bbbbbb">μ_P 와 μ_Q 의 거리</text>
+<text x="178" y="288" text-anchor="middle" font-size="13" fill="#bbbbbb">표본: X 1,000개 · Y 1,000개</text>
+<text x="178" y="324" text-anchor="middle" font-size="13" fill="#bbbbbb">임계값: 이름표 섞기</text>
+<rect x="322" y="80" width="236" height="290" rx="10" fill="#111827" stroke="#55c555" stroke-width="1.5"/>
+<text x="440" y="118" text-anchor="middle" font-size="16" font-weight="600" fill="#e8e8e8">독립성 검정</text>
+<text x="440" y="146" text-anchor="middle" font-size="16" font-weight="600" fill="#55c555">HSIC</text>
+<text x="440" y="190" text-anchor="middle" font-size="14" fill="#e8e8e8">P_XY = P_X ⊗ P_Y ?</text>
+<line x1="346" y1="214" x2="534" y2="214" stroke="#444" stroke-width="1"/>
+<text x="440" y="252" text-anchor="middle" font-size="13" fill="#bbbbbb">결합과 곱의 임베딩 거리</text>
+<text x="440" y="288" text-anchor="middle" font-size="13" fill="#bbbbbb">표본: (X, Y) 쌍 300개</text>
+<text x="440" y="324" text-anchor="middle" font-size="13" fill="#bbbbbb">임계값: Y만 섞기</text>
+<rect x="584" y="80" width="236" height="290" rx="10" fill="#111827" stroke="#7777cc" stroke-width="1.5"/>
+<text x="702" y="118" text-anchor="middle" font-size="16" font-weight="600" fill="#e8e8e8">적합도 검정</text>
+<text x="702" y="146" text-anchor="middle" font-size="16" font-weight="600" fill="#7777cc">KSD</text>
+<text x="702" y="190" text-anchor="middle" font-size="14" fill="#e8e8e8">q = p ?</text>
+<line x1="608" y1="214" x2="796" y2="214" stroke="#444" stroke-width="1"/>
+<text x="702" y="252" text-anchor="middle" font-size="13" fill="#bbbbbb">스타인 연산자를 지난 평균</text>
+<text x="702" y="288" text-anchor="middle" font-size="13" fill="#bbbbbb">표본: q 500개 + p의 스코어</text>
+<text x="702" y="324" text-anchor="middle" font-size="13" fill="#bbbbbb">임계값: 와일드 부트스트랩</text>
+</svg>

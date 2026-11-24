@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="560" viewBox="0 0 880 560" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+<defs><marker id="arr" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto"><path d="M 0 0 L 13 7 L 0 14 z" fill="#e8e8e8"/></marker><marker id="arrb" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto"><path d="M 0 0 L 13 7 L 0 14 z" fill="#7ec8e3"/></marker></defs>
+<rect x="0" y="0" width="880" height="560" rx="12" fill="#0a0a0a"/>
+<text x="440" y="44" font-size="22" fill="#e8e8e8" text-anchor="middle" font-weight="700">두 영역: 커널이 고정되는가, 움직이는가</text>
+<rect x="50" y="76" width="360" height="56" rx="10" fill="#111a22" stroke="#7ec8e3" stroke-width="2"/>
+<text x="230.0" y="110.0" font-size="16" fill="#7ec8e3" text-anchor="middle" font-weight="600">게으른 영역</text>
+<rect x="50" y="150" width="360" height="56" rx="8" fill="#141414" stroke="#444" stroke-width="1"/>
+<text x="74.0" y="183.0" font-size="13" fill="#e8e8e8" text-anchor="start">커널 Θₜ ≈ Θ₀, 학습 내내 고정</text>
+<rect x="50" y="222" width="360" height="56" rx="8" fill="#141414" stroke="#444" stroke-width="1"/>
+<text x="74.0" y="255.0" font-size="13" fill="#e8e8e8" text-anchor="start">파라미터 상대 이동 1/√n</text>
+<rect x="50" y="294" width="360" height="56" rx="8" fill="#141414" stroke="#444" stroke-width="1"/>
+<text x="74.0" y="327.0" font-size="13" fill="#e8e8e8" text-anchor="start">은닉 특징은 초기화 그대로</text>
+<rect x="50" y="366" width="360" height="56" rx="8" fill="#141414" stroke="#444" stroke-width="1"/>
+<text x="74.0" y="399.0" font-size="13" fill="#e8e8e8" text-anchor="start">결과: 고정된 RKHS의 커널 회귀</text>
+<rect x="50" y="438" width="360" height="56" rx="8" fill="#141414" stroke="#444" stroke-width="1"/>
+<text x="74.0" y="471.0" font-size="13" fill="#e8e8e8" text-anchor="start">NTK 파라미터화의 무한폭, 출력 배율 α → ∞</text>
+<rect x="470" y="76" width="360" height="56" rx="10" fill="#111a22" stroke="#55c555" stroke-width="2"/>
+<text x="650.0" y="110.0" font-size="16" fill="#55c555" text-anchor="middle" font-weight="600">특징 학습 영역</text>
+<rect x="470" y="150" width="360" height="56" rx="8" fill="#141414" stroke="#444" stroke-width="1"/>
+<text x="494.0" y="183.0" font-size="13" fill="#e8e8e8" text-anchor="start">커널이 데이터에 맞춰 움직인다</text>
+<rect x="470" y="222" width="360" height="56" rx="8" fill="#141414" stroke="#444" stroke-width="1"/>
+<text x="494.0" y="255.0" font-size="13" fill="#e8e8e8" text-anchor="start">뉴런마다 O(1) 만큼 이동</text>
+<rect x="470" y="294" width="360" height="56" rx="8" fill="#141414" stroke="#444" stroke-width="1"/>
+<text x="494.0" y="327.0" font-size="13" fill="#e8e8e8" text-anchor="start">은닉 특징이 바뀐다</text>
+<rect x="470" y="366" width="360" height="56" rx="8" fill="#141414" stroke="#444" stroke-width="1"/>
+<text x="494.0" y="399.0" font-size="13" fill="#e8e8e8" text-anchor="start">결과: 고윳값의 순서를 다시 매긴다</text>
+<rect x="470" y="438" width="360" height="56" rx="8" fill="#141414" stroke="#444" stroke-width="1"/>
+<text x="494.0" y="471.0" font-size="13" fill="#e8e8e8" text-anchor="start">평균장 극한, 실제 폭의 망, muP</text>
+<text x="440.0" y="528.0" font-size="13" fill="#888" text-anchor="middle">아래 두 줄이 각 영역의 결과와 예 — 실제 딥러닝의 힘은 오른쪽 열의 움직임에 있다</text>
+</svg>

@@ -448,3 +448,5 @@ m = 400: RFF 11.15%   니스트룀  0.09%   최적 랭크 m  0.00%
 읽어주셔서 감사합니다. 😊
 
 **지난 글:** [RKHS와 표현자 정리, 그리고 그 베이즈 쌍둥이인 가우시안 과정](/articles/math-adv-rkhs-representer-and-gaussian-processes)
+
+**다음 글:** [MMD와 커널 두 표본 검정: 두 분포가 다른지 표본만으로 판정하기](/articles/math-adv-mmd-and-kernel-two-sample-tests)
