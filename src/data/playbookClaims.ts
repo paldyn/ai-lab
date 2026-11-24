@@ -130,6 +130,26 @@ export const playbookClaims: Claim[] = [
     source: { label: 'Claude Opus 4.6 모델 문서', url: 'https://platform.claude.com/docs/en/models/opus-4-6/overview' },
   },
   {
+    id: 'gpt-6-2-astra-context',
+    subject: { kind: 'model', id: 'gpt-6-2-astra' },
+    topic: 'context',
+    statement: 'GPT-6.2 Astra의 입력 컨텍스트 창',
+    value: '1.05M 토큰',
+    tier: 'vendor',
+    volatility: 'model',
+    source: { label: 'GPT-6.2 Astra 모델 문서', url: 'https://developers.openai.com/api/docs/models/gpt-6.2-astra' },
+  },
+  {
+    id: 'gpt-6-2-sol-context',
+    subject: { kind: 'model', id: 'gpt-6-2-sol' },
+    topic: 'context',
+    statement: 'GPT-6.2 Sol의 입력 컨텍스트 창',
+    value: '1.05M 토큰',
+    tier: 'vendor',
+    volatility: 'model',
+    source: { label: 'GPT-6.2 Sol 모델 문서', url: 'https://developers.openai.com/api/docs/models/gpt-6.2-sol' },
+  },
+  {
     id: 'gpt-6-astra-context',
     subject: { kind: 'model', id: 'gpt-6-astra' },
     topic: 'context',
@@ -244,6 +264,17 @@ export const playbookClaims: Claim[] = [
     tier: 'vendor',
     volatility: 'model',
     source: { label: 'Gemini 4 Carbon 모델 문서', url: 'https://ai.google.dev/gemini-api/docs/models/gemini-4-carbon' },
+  },
+  {
+    id: 'gemini-4-neon-context',
+    subject: { kind: 'model', id: 'gemini-4-neon' },
+    topic: 'context',
+    /* 입력과 출력을 합친 한도다 — 「Context window (unified input and output token limit)」. Antigravity 안에서는 「Up to 512K tokens」다. */
+    statement: 'Gemini 4 Neon의 컨텍스트 창(입력·출력 합산)',
+    value: '1M 토큰',
+    tier: 'vendor',
+    volatility: 'model',
+    source: { label: 'Gemini 4 Neon 모델 문서', url: 'https://ai.google.dev/gemini-api/docs/models/gemini-4-neon' },
   },
   {
     id: 'gemini-4-argon-context',
@@ -1686,6 +1717,20 @@ export const playbookClaims: Claim[] = [
     },
   },
   {
+    id: 'gemini-4-neon-token-price',
+    subject: { kind: 'model', id: 'gemini-4-neon' },
+    topic: 'price',
+    statement: '100만 토큰당 입력 / 출력 단가',
+    /* 구간도 도입가도 없는 정가다. 출처를 단가 표가 아닌 이 페이지로 둔 까닭은 Hydrogen과 같다(아래). */
+    value: '$3 / $15',
+    tier: 'vendor',
+    volatility: 'price',
+    source: {
+      label: 'Gemini API — Latest Gemini models',
+      url: 'https://ai.google.dev/gemini-api/docs/latest-model',
+    },
+  },
+  {
     id: 'gemini-4-argon-token-price',
     subject: { kind: 'model', id: 'gemini-4-argon' },
     topic: 'price',
@@ -1707,14 +1752,16 @@ export const playbookClaims: Claim[] = [
     /*
       구간 없는 정가다 — 「uses flat standard pricing on the paid tier across the full 1M context window」.
       단가 표(`…/pricing`)에도 같은 값($1.50 · $7.50)이 서지만 칸마다 한 줄이라 원문 한 줄이 열 자를
-      못 넘어, 값이 한 행에 함께 실린 「What's new in Gemini 4 Hydrogen」의 모델 표를 출처로 둔다.
+      못 넘어, 값이 한 행에 함께 실린 페이지를 출처로 둔다. 2026-11-24에 「What's new in Gemini 4
+      Hydrogen」에서 그 행이 사라져(표가 칸마다 한 줄로 갈렸다) 「Latest Gemini models」로 옮겼다 — 모델
+      카드마다 「Price (1M)」 한 줄에 입력 / 출력이 함께 선다. Neon도 같은 페이지라 여는 페이지 수는 그대로다.
     */
     value: '$1.50 / $7.50',
     tier: 'vendor',
     volatility: 'price',
     source: {
-      label: "Gemini API — What's new in Gemini 4 Hydrogen",
-      url: 'https://ai.google.dev/gemini-api/docs/whats-new-gemini-4-hydrogen',
+      label: 'Gemini API — Latest Gemini models',
+      url: 'https://ai.google.dev/gemini-api/docs/latest-model',
     },
   },
   {
@@ -1807,6 +1854,37 @@ export const playbookClaims: Claim[] = [
     source: {
       label: 'Gemini API — Pricing',
       url: 'https://ai.google.dev/gemini-api/docs/pricing',
+    },
+  },
+  {
+    id: 'gpt-6-2-astra-token-price',
+    subject: { kind: 'model', id: 'gpt-6-2-astra' },
+    topic: 'price',
+    statement: '100만 토큰당 입력 / 출력 단가',
+    /*
+      2026-11-24에 더했다. 경계(272K)는 모델 페이지 규칙 줄 「For requests with more than 272K input tokens,
+      input and cache rates double and output costs 1.5 times the short-context rate for the full request.」에
+      있고, 단가 표의 Long context 값이 그 규칙과 맞는다. GPT-6.2 Sol도 같다.
+    */
+    value: '$8 / $40 (272K 초과 시 $16 / $60)',
+    tier: 'vendor',
+    volatility: 'price',
+    source: {
+      label: 'OpenAI API — Pricing',
+      url: 'https://developers.openai.com/api/docs/pricing',
+    },
+  },
+  {
+    id: 'gpt-6-2-sol-token-price',
+    subject: { kind: 'model', id: 'gpt-6-2-sol' },
+    topic: 'price',
+    statement: '100만 토큰당 입력 / 출력 단가',
+    value: '$2 / $10 (272K 초과 시 $4 / $15)',
+    tier: 'vendor',
+    volatility: 'price',
+    source: {
+      label: 'OpenAI API — Pricing',
+      url: 'https://developers.openai.com/api/docs/pricing',
     },
   },
   {

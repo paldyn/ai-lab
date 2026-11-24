@@ -77,8 +77,8 @@ const models: ModelInfo[] = [
     **2026-11-11에 구세대로 내렸습니다.** 모델 개요가 「Legacy models (still available)」 줄에
     세우고, 제 모델 문서가 「**Legacy.** Released September 1, 2026.」으로 시작해 「Claude Fable
     5.1 is a legacy model, and Claude Fable 5.2 is the current Fable model.」이라고 적습니다.
-    서열 칩은 현행에만 서므로 걷었습니다. 쓰임 문장은 제 모델 문서에 그대로 남아 있어 출처만
-    그 문서로 옮겼습니다.
+    서열 칩은 현행에만 서므로 걷었습니다. 쓰임은 2026-11-24에 `null`로 내렸습니다 — 제 모델 문서에서
+    그 문장이 사라지고 Legacy 표기와 이관 안내만 남았습니다(Opus 5 · Sonnet 5와 같은 자리).
   */
   {
     id: 'claude-fable-5-1',
@@ -86,10 +86,7 @@ const models: ModelInfo[] = [
     name: 'Claude Fable 5.1',
     mark: { file: 'assets/model-fable.svg', plate: '#6DA7EC' },
     apiId: 'claude-fable-5-1',
-    useWhen: {
-      text: '까다로운 추론과 긴 호흡의 에이전트 작업에',
-      url: 'https://platform.claude.com/docs/en/models/fable-5-1/overview',
-    },
+    useWhen: null,
     current: false,
     sourceUrl: 'https://platform.claude.com/docs/en/models/fable-5-1/overview',
   },
@@ -298,11 +295,61 @@ const models: ModelInfo[] = [
 
   /* ── OpenAI ── */
   /*
+    **GPT-6.2 Astra · GPT-6.2 Sol**(2026-11-24에 더했다, 2026-11-17 출시). ChatGPT 릴리스 노트 2026-11-17
+    「We’re introducing GPT-6.2 Astra and GPT-6.2 Sol in ChatGPT Work and Codex.」, API 「All models」 Flagship
+    목록이 6.2 Astra · 6.2 Sol · 6.1 Terra · 6 Luna로 섰다(GPT-6 Astra · 6.1 Sol은 「More models」로 내려갔다).
+    쓰임은 API 모델 목록 머리 문장 「use GPT-6.2 Astra, our flagship model for complex reasoning and coding.
+    Choose GPT-6.2 Sol to balance intelligence and cost, or GPT-6 Luna for cost-sensitive, high-volume
+    workloads.」 등급은 둘 다 모델 페이지 머리 「Reasoning Highest · Speed Fast」, 마크는 카탈로그에서 이름
+    옆에 서는 아이콘이다.
+  */
+  {
+    id: 'gpt-6-2-astra',
+    vendorId: 'openai',
+    name: 'GPT-6.2 Astra',
+    mark: { file: 'assets/model-gpt-6-2-astra.png', tile: true },
+    apiId: 'gpt-6.2-astra',
+    useWhen: {
+      text: '복잡한 추론·코딩에(대표 모델)',
+      url: 'https://developers.openai.com/api/docs/models',
+    },
+    rating: {
+      kind: 'scale',
+      reasoning: { level: 5, label: 'Highest' },
+      speed: { level: 4, label: 'Fast' },
+      url: 'https://developers.openai.com/api/docs/models/gpt-6.2-astra',
+    },
+    current: true,
+    sourceUrl: 'https://developers.openai.com/api/docs/models/gpt-6.2-astra',
+  },
+  {
+    id: 'gpt-6-2-sol',
+    vendorId: 'openai',
+    name: 'GPT-6.2 Sol',
+    mark: { file: 'assets/model-gpt-6-2-sol.png', tile: true },
+    apiId: 'gpt-6.2-sol',
+    useWhen: {
+      text: '지능과 비용의 균형이 필요한 일에',
+      url: 'https://developers.openai.com/api/docs/models',
+    },
+    rating: {
+      kind: 'scale',
+      reasoning: { level: 5, label: 'Highest' },
+      speed: { level: 4, label: 'Fast' },
+      url: 'https://developers.openai.com/api/docs/models/gpt-6.2-sol',
+    },
+    current: true,
+    sourceUrl: 'https://developers.openai.com/api/docs/models/gpt-6.2-sol',
+  },
+  /*
     **GPT-6.1 Sol**(2026-10-01에 더했다). ChatGPT 릴리스 노트 2026-09-29 「GPT-6.1 Sol improves on
     GPT-6 Sol in agentic coding, computer use, and professional work.」 API 모델 목록 머리의 문장이
     GPT-6 Sol에서 이 모델로 바뀌었다 — 「Choose GPT-6.1 Sol to balance intelligence and cost, or GPT-6
     Luna for cost-sensitive, high-volume workloads.」 등급은 모델 페이지 머리 「Reasoning Highest ·
     Speed Fast」, 마크는 「All models」 카탈로그에서 이름 옆에 서는 아이콘이다.
+
+    **2026-11-24에 쓰임을 갈았다.** 그 문장이 GPT-6.2 Sol을 부르게 바뀌어, 모델 페이지 머리의 「Use GPT-6.1
+    Sol for complex coding, computer use, and professional work.」를 쓴다.
   */
   {
     id: 'gpt-6-1-sol',
@@ -311,8 +358,8 @@ const models: ModelInfo[] = [
     mark: { file: 'assets/model-gpt-6-1-sol.png', tile: true },
     apiId: 'gpt-6.1-sol',
     useWhen: {
-      text: '지능과 비용의 균형이 필요한 일에',
-      url: 'https://developers.openai.com/api/docs/models',
+      text: '복잡한 코딩과 컴퓨터 사용, 전문 업무에',
+      url: 'https://developers.openai.com/api/docs/models/gpt-6.1-sol',
     },
     rating: {
       kind: 'scale',
@@ -349,6 +396,12 @@ const models: ModelInfo[] = [
     current: true,
     sourceUrl: 'https://developers.openai.com/api/docs/models/gpt-6.1-terra',
   },
+  /*
+    **2026-11-24에 쓰임을 갈았다.** 「our flagship model for complex reasoning and coding」이 GPT-6.2 Astra로
+    옮겨 가, 모델 페이지 머리의 「Use GPT-6 Astra for complex reasoning, coding, computer use, research, and
+    document creation.」을 쓴다. legacy · previous-generation · Retires from이라는 말은 없어 `current`는
+    그대로 둔다(Work·Codex에서도 고를 수 있다 — 「GPT-6.2 Astra or GPT-6 Astra」).
+  */
   {
     id: 'gpt-6-astra',
     vendorId: 'openai',
@@ -356,8 +409,8 @@ const models: ModelInfo[] = [
     mark: { file: 'assets/model-gpt-6-astra.png', tile: true },
     apiId: 'gpt-6-astra',
     useWhen: {
-      text: '복잡한 추론·코딩에(대표 모델)',
-      url: 'https://developers.openai.com/api/docs/models',
+      text: '복잡한 추론·코딩과 컴퓨터 사용, 조사·문서 작성에',
+      url: 'https://developers.openai.com/api/docs/models/gpt-6-astra',
     },
     rating: {
       kind: 'scale',
@@ -419,6 +472,11 @@ const models: ModelInfo[] = [
     current: true,
     sourceUrl: 'https://developers.openai.com/api/docs/models/gpt-6-luna',
   },
+  /*
+    **GPT-5.6 Sol · Terra의 쓰임을 2026-11-24에 갈았다.** `learn.chatgpt.com/docs/models`가 개편돼 5.6의
+    쓰임 문장이 사라졌다. API 모델 목록의 한 줄(「GPT-5.6 flagship model for complex professional work」 ·
+    「GPT-5.6 model that balances intelligence and cost」)을 쓴다.
+  */
   {
     id: 'gpt-5-6-sol',
     vendorId: 'openai',
@@ -426,8 +484,8 @@ const models: ModelInfo[] = [
     mark: { file: 'assets/model-gpt-5-6-sol.png', tile: true },
     apiId: 'gpt-5.6-sol',
     useWhen: {
-      text: '판단과 다듬기가 필요한 복잡한 코드 변경·심층 조사에',
-      url: 'https://learn.chatgpt.com/codex/models',
+      text: '복잡한 전문 업무에(5.6의 대표 모델)',
+      url: 'https://developers.openai.com/api/docs/models',
     },
     rating: {
       kind: 'scale',
@@ -445,8 +503,8 @@ const models: ModelInfo[] = [
     mark: { file: 'assets/model-gpt-5-6-terra.png', tile: true },
     apiId: 'gpt-5.6-terra',
     useWhen: {
-      text: 'GPT-5.6 Sol만큼 깊지 않아도 되는 일상 작업에',
-      url: 'https://learn.chatgpt.com/codex/models',
+      text: '지능과 비용의 균형이 필요한 일에',
+      url: 'https://developers.openai.com/api/docs/models',
     },
     rating: {
       kind: 'scale',
@@ -537,6 +595,12 @@ const models: ModelInfo[] = [
     **같은 날 Argon의 등급 칩을 걷었습니다.** Argon 줄이 「Top-tier intelligence, dynamic deep
     reasoning, and high performance for complex workflows.」로 바뀌어 최상급(「the highest
     performance」)이 사라졌고, 그 자리는 Carbon의 「Our strongest model」이 가져갔습니다.
+
+    **2026-11-24에 줄이 셋으로 줄었습니다**(Gemini 4 Neon 공개). 「Overview of Gemini models」가 Hydrogen ·
+    Neon · Carbon 셋만 적고, 「Model availability」 표도 이 셋과 Auto뿐입니다. Argon · Pro · Flash-Lite는
+    줄도 표도 없어(가벼운 모델은 Auto가 고르는 「a fast, lightweight model」로만 남았습니다) 등록부에서
+    걷었습니다 — 주장도 로그도 없던 항목입니다. Carbon의 쓰임은 「Our strongest model designed for advanced
+    coding and your hardest, long-horizon problems」로 바뀌었습니다.
   */
   {
     id: 'gemini-app-carbon',
@@ -544,32 +608,25 @@ const models: ModelInfo[] = [
     name: 'Gemini Carbon',
     apiId: null,
     useWhen: {
-      text: '가장 어렵고 긴 호흡의 문제를 깊이 추론할 때에',
+      text: '고급 코딩과 가장 어렵고 긴 호흡의 문제에',
       url: 'https://support.google.com/gemini/answer/18648722',
     },
     rating: { kind: 'phrase', text: '가장 강력한 모델', url: 'https://support.google.com/gemini/answer/18648722' },
     current: true,
     sourceUrl: 'https://support.google.com/gemini/answer/18648722',
   },
+  /*
+    **2026-11-24에 더했습니다.** 「Gemini 4 Neon: Frontier-level intelligence, with high performance for deeper
+    analysis and complex workflows.」이고 표에서는 Google AI Pro · Ultra 칸에 섭니다. 최상급이 없어 등급
+    칩을 안 답니다.
+  */
   {
-    id: 'gemini-app-argon',
+    id: 'gemini-app-neon',
     vendorId: 'google',
-    name: 'Gemini Argon',
+    name: 'Gemini Neon',
     apiId: null,
     useWhen: {
-      text: '깊은 추론이 필요한 복잡한 워크플로에',
-      url: 'https://support.google.com/gemini/answer/18648722',
-    },
-    current: true,
-    sourceUrl: 'https://support.google.com/gemini/answer/18648722',
-  },
-  {
-    id: 'gemini-app-pro',
-    vendorId: 'google',
-    name: 'Gemini Pro',
-    apiId: null,
-    useWhen: {
-      text: '복잡한 프롬프트와 정교한 코딩, 깊이 있는 문제 풀이에',
+      text: '더 깊은 분석과 복잡한 워크플로에',
       url: 'https://support.google.com/gemini/answer/18648722',
     },
     current: true,
@@ -590,18 +647,6 @@ const models: ModelInfo[] = [
     apiId: null,
     useWhen: {
       text: '성능과 반응 속도를 함께 챙길 일반 채팅·작업에',
-      url: 'https://support.google.com/gemini/answer/18648722',
-    },
-    current: true,
-    sourceUrl: 'https://support.google.com/gemini/answer/18648722',
-  },
-  {
-    id: 'gemini-app-flash-lite',
-    vendorId: 'google',
-    name: 'Gemini Flash-Lite',
-    apiId: null,
-    useWhen: {
-      text: '일상 질문의 빠른 답과 가벼운 작업에',
       url: 'https://support.google.com/gemini/answer/18648722',
     },
     current: true,
@@ -663,6 +708,24 @@ const models: ModelInfo[] = [
     current: true,
     sourceUrl: 'https://ai.google.dev/gemini-api/docs/models/gemini-4-carbon',
   },
+  /*
+    **2026-11-24에 더했습니다.** 모델 목록의 Gemini 4 카드 둘째가 「Frontier-level intelligence with fast
+    end-to-end task completion across complex software engineering, knowledge work, and science
+    workflows.」이고 최상급이 없어 등급 칩을 안 답니다. 쓰임은 모델 페이지의 같은 문장입니다. Antigravity
+    표 맨 위에 「Gemini 4 Neon ❌ ✅† ✅ ✅」로 섭니다.
+  */
+  {
+    id: 'gemini-4-neon',
+    vendorId: 'google',
+    name: 'Gemini 4 Neon',
+    apiId: 'gemini-4-neon',
+    useWhen: {
+      text: '복잡한 소프트웨어 엔지니어링과 지식 업무, 과학 워크플로에',
+      url: 'https://ai.google.dev/gemini-api/docs/models/gemini-4-neon',
+    },
+    current: true,
+    sourceUrl: 'https://ai.google.dev/gemini-api/docs/models/gemini-4-neon',
+  },
   {
     id: 'gemini-4-argon',
     vendorId: 'google',
@@ -673,10 +736,15 @@ const models: ModelInfo[] = [
       unified 1M context window and long decodes up to 1M tokens.」 — 「flagship」은 최상급이 아니라
       등급 칩을 안 답니다. 쓰임은 모델 페이지 「built for complex software engineering, deep
       mathematical and scientific problem solving, autonomous multi-step agents, and long decode up
-      to 1M tokens.」입니다.
+      to 1M tokens.」이었습니다.
+
+      2026-11-24에 쓰임을 갈았습니다 — 카드와 모델 페이지가 「our efficient Gemini 4 frontier reasoning
+      model. It delivers Gemini 4 intelligence with faster responses and lower token spend per turn compared
+      to Gemini 4 Carbon across complex coding, agentic, math, and science tasks.」로 바뀌었습니다. 카드 차례는
+      Carbon · Neon · Hydrogen 뒤로 밀렸지만 legacy · previous-generation이라는 말은 없어 `current`는 그대로입니다.
     */
     useWhen: {
-      text: '복잡한 소프트웨어 엔지니어링과 깊은 수학·과학 문제 풀이에',
+      text: '복잡한 코딩·에이전트·수학·과학 작업에(Carbon보다 빠르고 토큰을 덜 쓴다)',
       url: 'https://ai.google.dev/gemini-api/docs/models/gemini-4-argon',
     },
     current: true,
@@ -743,14 +811,19 @@ const models: ModelInfo[] = [
     current: false,
     sourceUrl: 'https://ai.google.dev/gemini-api/docs/models',
   },
+  /*
+    **2026-11-24에 쓰임을 갈았습니다.** 모델 목록에서 3.1 Pro 카드가 사라지고 표의 줄만 남아, 모델 페이지의
+    「It's optimized for software engineering behavior and usability, as well as agentic workflows requiring
+    precise tool usage and reliable multi-step execution across real-world domains.」를 씁니다.
+  */
   {
     id: 'gemini-3-1-pro',
     vendorId: 'google',
     name: 'Gemini 3.1 Pro',
     apiId: 'gemini-3.1-pro-preview',
     useWhen: {
-      text: '복잡한 문제 풀이와 에이전트·바이브 코딩에',
-      url: 'https://ai.google.dev/gemini-api/docs/models?hl=en',
+      text: '소프트웨어 엔지니어링과 정밀한 도구 사용이 필요한 에이전트 워크플로에',
+      url: 'https://ai.google.dev/gemini-api/docs/models/gemini-3.1-pro-preview',
     },
     current: true,
     sourceUrl: 'https://ai.google.dev/gemini-api/docs/models',

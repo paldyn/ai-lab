@@ -261,6 +261,8 @@ export const guideProducts: Product[] = [
     role: '업무',
     surfaces: ['웹', '데스크톱'],
     models: [
+      'gpt-6-2-astra',
+      'gpt-6-2-sol',
       'gpt-6-1-sol',
       'gpt-6-1-terra',
       'gpt-6-astra',
@@ -306,6 +308,8 @@ export const guideProducts: Product[] = [
     */
     surfaces: ['웹', '데스크톱', '터미널', 'IDE', '클라우드'],
     models: [
+      'gpt-6-2-astra',
+      'gpt-6-2-sol',
       'gpt-6-1-sol',
       'gpt-6-1-terra',
       'gpt-6-astra',
@@ -354,6 +358,15 @@ export const guideProducts: Product[] = [
       근거입니다(Chat에는 없습니다 — 「The model isn't available in Chat」). **차례는 6.1 Sol 바로 뒤입니다** —
       추론 등급(Highest)과 세대(6.1)가 같아 단가가 높은 6.1 Sol($2)을 앞에, Terra($1)를 뒤에 둡니다.
       ChatGPT Work도 같은 차례입니다.
+
+      **GPT-6.2 Astra · GPT-6.2 Sol을 더했습니다**(2026-11-24). 릴리스 노트 2026-11-17 「On Plus or Pro, choose
+      either model in the Work model picker or the Codex model selector.」와 도움말(20001275) 「Open the Work
+      model picker or the Codex model selector to choose GPT-6.2 Astra or GPT-6.2 Sol.」이 근거입니다. 등급이
+      같은 Highest이고 세대가 가장 새것이라 맨 앞이고, 그 안에서는 단가가 높은 Astra($8)가 앞입니다. 같은
+      도움말이 「You may also see GPT-6.1 Sol, GPT-6.1 Terra, GPT-6 Sol or GPT-6 Luna in Work and Codex」라
+      적고, GPT-6 Astra는 「GPT-6.2 Astra or GPT-6 Astra」(모델 페이지)로, GPT-5.6 셋은 도움말(20001354)
+      「Existing availability in Work and Codex is unchanged.」와 그 아래 표(「Work in ChatGPT | Sol, Terra, and
+      Luna for Plus, Pro, Business, and Enterprise」)로 남아 있어 그대로 둡니다. ChatGPT Work도 같습니다.
     */
     oneLine: '코드를 읽고 고치고 리뷰까지 맡는 코딩 에이전트.',
     officialUrl: 'https://chatgpt.com/codex',
@@ -394,7 +407,7 @@ export const guideProducts: Product[] = [
     name: 'Gemini app',
     role: '챗',
     surfaces: ['웹', '데스크톱', '모바일'],
-    models: ['gemini-app-carbon', 'gemini-app-argon', 'gemini-app-pro', 'gemini-app-hydrogen', 'gemini-app-flash-lite'],
+    models: ['gemini-app-carbon', 'gemini-app-neon', 'gemini-app-hydrogen'],
     /*
       support.google.com/gemini/answer/18648722(「About Gemini models」) — 「Overview of Gemini
       models」에 넷이 한 줄씩 서고, 「Manually switch models」 절이 「Click the model you want to
@@ -410,6 +423,10 @@ export const guideProducts: Product[] = [
 
       2026-11-13 — Gemini Flash 줄이 「Gemini 4 Hydrogen: A high-speed, capable model …」로 바뀌고
       표의 Plus · Pro · Ultra 칸이 「Hydrogen」을 적어 Flash 자리에 Hydrogen을 둡니다(차례는 그대로).
+
+      2026-11-24 — 줄이 Hydrogen · Neon · Carbon 셋으로 줄었습니다. Neon을 더하고 줄도 표도 사라진 Argon ·
+      Pro · Flash-Lite를 뺐습니다(표는 Pro 칸 「Auto · Hydrogen · Neon」, Ultra 칸 「Auto · Hydrogen · Neon ·
+      Carbon」). Auto는 모델이 아니라 고르는 방식이라 안 넣습니다.
 
       **번호를 안 붙입니다.** 같은 회사 요금제 페이지는 같은 자리를 「Gemini 3.6
       Flash」·「Gemini 3.1 Pro」로 적지만 **원문이 그 둘을 잇지 않습니다** — 번호를
@@ -471,6 +488,7 @@ export const guideProducts: Product[] = [
     surfaces: ['데스크톱', '터미널', 'IDE', 'SDK'],
     models: [
       'gemini-4-carbon',
+      'gemini-4-neon',
       'gemini-4-argon',
       'gemini-4-hydrogen',
       'gemini-3-8-flash',
@@ -494,6 +512,11 @@ export const guideProducts: Product[] = [
       Gemini 4 Hydrogen은 2026-11-13에 더했습니다 — 표에서 Argon 아래 「Gemini 4 Hydrogen ✅ ✅ ✅ ✅」로
       서고, 선택기 예시 맨 위에도 「Gemini 4 Hydrogen」이 있습니다. 같은 표의 「Orchestrator」(Carbon이
       계획하고 Hydrogen이 실행하는 짝)는 모델이 아니라 선택지라 목록에 안 넣었습니다.
+
+      Gemini 4 Neon은 2026-11-24에 더했습니다 — 표 맨 위에 「Gemini 4 Neon ❌ ✅† ✅ ✅」로 서고 선택기 맨
+      위에도 있습니다. 차례는 「Our strongest reasoning model」인 Carbon 뒤입니다. 같은 날 표의 「*」 각주가
+      「Will be removed on November 30, 2026.」으로 다시 밀렸고, Argon · 3.8 Flash에도 붙었습니다(Claude 4.6
+      둘 · GPT-OSS와 함께) — 아직 고를 수 있어 목록에 둡니다. 3.7 · 3.6 Flash와 3.1 Pro는 Enterprise만 ✅입니다.
 
       Gemini 4 Argon은 2026-10-14에 더했습니다 — 표 맨 위에 서고 드롭다운에도 있습니다. 표에서는
       Ultra · Enterprise만 ✅이고, 각주가 「Not available in Antigravity IDE. Available in the
