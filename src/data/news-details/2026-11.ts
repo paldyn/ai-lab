@@ -2,6 +2,60 @@ import type { NewsDetail } from '../news';
 
 /** 2026-11 발표의 모달 본문. 목록은 news.ts에 있습니다. */
 export const details: Record<string, NewsDetail> = {
+  'gemini-gemini-golden-state': {
+    points: [
+      'Gemini가 Warriors·Valkyries·Chase Center의 공식 AI 어시스턴트 파트너가 된다',
+      '공식 생성형 AI·기업용 LLM 파트너 지위도 함께 맡는다',
+      'Chase Center 안에서는 전광판의 대화형 기능으로 경기 당일 경험을 바꾼다',
+      '집에서 보는 팬을 위해 디지털 채널 전반에도 Gemini를 넣는다',
+      '구단은 Gemini for business로 맞춤 AI 에이전트를 만들어 사업·농구 운영에 쓴다',
+      'Google은 2019년부터 Chase Center의 창립 파트너였고 이번 발표는 그 연장이다',
+      '계약 기간과 금액은 밝히지 않았다',
+    ],
+    commentary:
+      '스포츠 구단 제휴는 소비자 앞에서 브랜드를 노출하는 일과 기업용 제품을 파는 일을 한 번에 묶는 형식이다. 이번에도 전광판 기능은 홍보에 가깝고, 실제로 무게가 있는 쪽은 구단 내부 업무에 Gemini for business 에이전트를 까는 부분이다. 다만 어떤 업무를 얼마나 자동화했는지는 공개되지 않아 도입 사례로서의 정보량은 적다.',
+  },
+  'search-google-search-personal-intelligence-apps': {
+    points: [
+      'AI 모드의 Personal Intelligence에 Google Wallet 연결을 오늘부터 차례로 연다',
+      'Drive와 Gemini 앱 연결은 몇 주 안에 이어지며, 기존 Gmail·캘린더·포토에 더해진다',
+      'Wallet을 연결하면 지출을 짚고 연결한 카드의 캐시백·여행 혜택·포인트를 맞춰 쓰는 답을 준다',
+      'AI 모드는 Wallet 계정 정보를 읽기만 하며 돈을 옮기거나 관리·투자하지 못한다',
+      'Gemini 앱과 AI 모드가 서로의 대화 맥락을 이어받게 된다',
+      '연결은 검색 개인화 설정의 Connected Apps에서 고르고 언제든 끌 수 있다',
+      '맞춤 답 아래 아이콘으로 AI 모드가 쓴 맥락을 보는 기능도 곧 나온다',
+      'AI 개요와 AI 모드가 최근 검색 맥락에 맞춰 이어지는 답을 보여 준다',
+    ],
+    commentary:
+      'Personal Intelligence가 Gemini 앱에서 시작해 검색으로 넘어오면서, 개인 데이터를 쥔 쪽이 검색 답의 질을 가른다는 구도가 더 짙어졌다. 결제 수단과 문서까지 붙이는 만큼 읽기 전용이라는 선과 사용한 맥락을 보여 주는 장치가 신뢰의 관건이다. 앱 사이 맥락 공유가 실제로 어디까지 넘어가는지는 출시 뒤에 확인할 일이다.',
+  },
+  'blog-finding-faster-quantum-algorithms-with-agents-and-formal-verification': {
+    points: [
+      '문제마다 서로 독립된 Gemini 4 에이전트 팀이 양자 알고리즘 개선안을 찾았다',
+      '아이디어는 Lean으로 검증된 뒤 공유 노트에 올랐고, 팀들은 네 시간마다 가상 회의에서 생각을 주고받았다',
+      '관성 가둠 핵융합 계산 회로의 비용을 11.8배 줄이고 오류 정정 큐비트를 5,650개에서 4,338개로 낮췄다',
+      '빛에 민감한 분자 시뮬레이션은 8배 싸졌고, Cytochrome P450은 2.5배 개선에 큐비트를 481개에서 333개로 줄였다',
+      'Grover 알고리즘의 특정 구현은 2.57배, arcsin 루틴은 290배 빨라졌다',
+      '그래도 초기 오류 정정 양자 컴퓨터가 감당할 자원보다는 여전히 많이 든다고 밝혔다',
+      '양자 알고리즘용 Lean 라이브러리와 문제 명세, 검증된 풀이를 GitHub에 공개했다',
+      'Google DeepMind와 Google Quantum AI의 공동 연구다',
+    ],
+    commentary:
+      '고전 컴퓨터로 돌려 볼 수 없는 회로를 다루는 분야라 「맞는지」를 증명으로 대신해야 하고, 형식 검증과 에이전트 탐색이 가장 잘 맞물리는 자리다. 숫자보다 눈여겨볼 것은 사람이 문제를 고르고 에이전트가 증명된 개선만 쌓는 분업 구조다. 다만 개선 폭이 커도 실제 하드웨어에서 돌릴 수준에는 아직 못 미친다는 점은 원문도 인정한다.',
+  },
+  'claude-platform-november-23-2026': {
+    points: [
+      'Claude Opus 4.5(claude-opus-4-5-20251101, claude-opus-4-5)의 지원 종료를 알렸다',
+      'Claude API에서의 퇴역은 2027년 1월 22일로 잡혔다',
+      'Claude Opus 5.5로 옮기라고 권하며, 다른 플랫폼의 날짜는 모델 지원 종료 문서에서 따로 본다',
+      'Enterprise Frontier Safeguards(EFS)를 Claude Platform, Claude Platform on AWS, Google Cloud의 Claude 모델에서 베타로 열었다',
+      'EFS는 가장 성능 높은 모델을 쓰는 자격 있는 조직용 제로 데이터 보존이며, 암호화 사본은 고객 클라우드 버킷에 둔다',
+      'Anthropic 관리 스토리지를 쓰는 워크스페이스는 EFS에 들지 않는다',
+      '베타인 조직 웹훅에 external_storage.failed와 external_storage.recovered 이벤트를 더했다',
+    ],
+    commentary:
+      'Opus 4.5는 출시 1년여 만에 퇴역 일정이 잡혔고, 두 달 남짓한 이전 기간은 고정 모델 id에 묶인 운영 시스템에게 넉넉하지 않다. 같은 날 EFS가 9월 발표 뒤 실제 베타로 열리면서 고객 스토리지 점검 웹훅도 함께 붙었는데, 데이터를 고객 쪽에 두는 구조라 버킷 장애를 바로 알아채는 장치가 필수가 된다.',
+  },
   'introducing-shirudo': {
     points: [
       '「실드」라 부르는 임시 방어막을 서비스가 도는 상태에서 배포한다',

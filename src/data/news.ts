@@ -172,6 +172,62 @@ export const globalNewsUpdatedAt = '2026-11-23';
  */
 const entries: NewsItem[] = [
   {
+    id: 'gemini-gemini-golden-state',
+    source: 'Google DeepMind',
+    kind: 'company',
+    title: 'Google, Golden State Warriors와 Gemini 공식 AI 파트너십 확대',
+    summary:
+      'Google이 Golden State와의 제휴를 넓혀 Gemini를 Warriors·Valkyries·Chase Center의 공식 AI 어시스턴트 파트너로 세웠다. ' +
+      '경기장 전광판과 디지털 채널에 Gemini를 넣고, 구단은 Gemini for business로 맞춤 에이전트를 만든다.',
+    publishedAt: '2026-11-24',
+    collectedAt: '2026-11-25',
+    category: 'Product',
+    signal: '스포츠 제휴',
+    url: 'https://blog.google/products-and-platforms/products/gemini/gemini-golden-state/',
+  },
+  {
+    id: 'search-google-search-personal-intelligence-apps',
+    source: 'Google DeepMind',
+    kind: 'company',
+    title: 'Google 검색 AI 모드 Personal Intelligence에 Wallet·Drive·Gemini 앱 연결',
+    summary:
+      'Google이 검색 AI 모드의 Personal Intelligence에 Google Wallet 연결을 열기 시작했고, Drive와 Gemini 앱은 몇 주 안에 더한다. ' +
+      'AI 개요와 AI 모드는 최근 검색 맥락에 맞춘 답도 보여 준다.',
+    publishedAt: '2026-11-23',
+    collectedAt: '2026-11-25',
+    category: 'Product',
+    signal: '개인 컨텍스트',
+    url: 'https://blog.google/products-and-platforms/products/search/google-search-personal-intelligence-apps/',
+  },
+  {
+    id: 'blog-finding-faster-quantum-algorithms-with-agents-and-formal-verification',
+    source: 'Google DeepMind',
+    kind: 'company',
+    title: 'Google DeepMind, Gemini 4 에이전트 팀과 Lean 검증으로 양자 알고리즘 개선',
+    summary:
+      'Google DeepMind가 Gemini 4 에이전트 팀으로 양자 알고리즘을 개선하고 각 결과를 Lean으로 증명했다. ' +
+      '핵융합 계산 비용을 11.8배 줄이는 등의 회로를 찾았고 Lean 라이브러리와 검증된 풀이를 공개했다.',
+    publishedAt: '2026-11-23',
+    collectedAt: '2026-11-25',
+    category: 'Research',
+    signal: '과학 AI',
+    url: 'https://deepmind.google/blog/finding-faster-quantum-algorithms-with-agents-and-formal-verification/',
+  },
+  {
+    id: 'claude-platform-november-23-2026',
+    source: 'Anthropic',
+    kind: 'model',
+    title: 'Claude Opus 4.5 지원 종료 예고 — API에서 2027년 1월 22일 퇴역',
+    summary:
+      'Anthropic이 Claude Opus 4.5의 지원 종료를 알리고 Claude API 퇴역일을 2027년 1월 22일로 잡았다. ' +
+      '같은 날 Enterprise Frontier Safeguards를 베타로 열고 조직 웹훅에 외부 스토리지 이벤트 둘을 더했다.',
+    publishedAt: '2026-11-23',
+    collectedAt: '2026-11-25',
+    category: 'Frontier',
+    signal: '플랫폼 변경',
+    url: 'https://platform.claude.com/docs/en/release-notes/overview#november-23-2026',
+  },
+  {
     id: 'introducing-shirudo',
     source: 'OpenAI',
     kind: 'company',
