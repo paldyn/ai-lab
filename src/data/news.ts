@@ -160,7 +160,7 @@ export interface NewsDetail {
   commentary: string;
 }
 
-export const globalNewsUpdatedAt = '2026-11-16';
+export const globalNewsUpdatedAt = '2026-11-23';
 
 /**
  * 공식 발표 한 건 = 항목 한 개. 2026년 1월부터 쌓는 아카이브이며 오래된 항목을
@@ -171,6 +171,202 @@ export const globalNewsUpdatedAt = '2026-11-16';
  * 목록에서 파생됩니다. 갱신 시 globalNewsUpdatedAt도 함께 올립니다.
  */
 const entries: NewsItem[] = [
+  {
+    id: 'introducing-shirudo',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'OpenAI·Cisco, 패치 전 Linux를 지키는 런타임 Shirudo 공개',
+    summary:
+      'OpenAI와 Cisco가 패치를 배포하는 동안 실행 중인 Linux 시스템을 보호하는 오픈소스 런타임 Shirudo를 냈다. ' +
+      '통제된 시험에서 Codex가 만든 방어막이 Elasticsearch를 재시작하지 않고 Java4Shell 공격 시도를 막았다.',
+    publishedAt: '2026-11-23',
+    collectedAt: '2026-11-24',
+    category: 'Product',
+    signal: '오픈소스 보안',
+    url: 'https://openai.com/index/introducing-shirudo',
+  },
+  {
+    id: 'customer-stories-richpanel-ai-customer-support',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'Richpanel, GPT-6 계열로 고객 상담 절반을 30일 안에 자동화',
+    summary:
+      'Richpanel이 상담 에이전트에게 도구와 절차를 갖춰 주는 관리 에이전트를 GPT-6 Astra와 GPT-6.1 Sol로 만들었다. ' +
+      '고객과의 대화는 GPT-6 Luna 등에 맡기며, 첫 30일 안에 자동화율 50%를 보장한다.',
+    publishedAt: '2026-11-23',
+    collectedAt: '2026-11-24',
+    category: 'Product',
+    signal: '기업 도입 사례',
+    url: 'https://openai.com/business/customer-stories/richpanel-ai-customer-support',
+  },
+  {
+    id: 'perplexity-and-intelligence',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'OpenAI 수석과학자, 사전학습 퍼플렉시티를 업계 공동 지표로 제안',
+    summary:
+      'Jakub Pachocki OpenAI 수석과학자가 GPT-3.5부터 이어 온 사내 퍼플렉시티 측정값을 공개했다. ' +
+      '회사끼리 견줄 수 있는 지표로 삼고, 감시 능력을 갖출 때까지 넘지 않을 공동 한계를 두자고 제안했다.',
+    publishedAt: '2026-11-22',
+    collectedAt: '2026-11-24',
+    category: 'Safety',
+    signal: '학습 속도 조절',
+    url: 'https://openai.com/index/perplexity-and-intelligence',
+  },
+  {
+    id: 'customer-stories-hebbia',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'Hebbia, GPT-6 Astra로 금융 리서치 출처와 발표 자료 개선',
+    summary:
+      '금융 리서치 도구를 만드는 Hebbia가 GPT-6 Astra를 출처 찾기와 발표 자료 작성 두 작업에서 시험했다. ' +
+      '필요한 유형의 출처를 인용하는 항목에서 시험한 차선 모델보다 13.6%포인트 높았다.',
+    publishedAt: '2026-11-20',
+    collectedAt: '2026-11-24',
+    category: 'Product',
+    signal: '기업 도입 사례',
+    url: 'https://openai.com/business/customer-stories/hebbia',
+  },
+  {
+    id: 'inside-the-codex-sandbox',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'OpenAI, 세 운영체제에서 Codex 샌드박스가 동작하는 방식 공개',
+    summary:
+      'OpenAI가 Codex가 사용자 컴퓨터에서 명령을 실행할 때 파일·네트워크 접근을 제한하는 샌드박스의 설계를 설명했다. ' +
+      'macOS는 Seatbelt, Linux는 bubblewrap과 seccomp를 쓰고 Windows는 MXC로 옮겨 가는 중이다.',
+    publishedAt: '2026-11-18',
+    collectedAt: '2026-11-24',
+    category: 'Research',
+    signal: '에이전트 샌드박스',
+    url: 'https://openai.com/index/inside-the-codex-sandbox',
+  },
+  {
+    id: 'research-acceleration-jagged-frontier',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'OpenAI, 2~4시간짜리 연구 과제 46%를 에이전트 혼자 완수했다고 보고',
+    summary:
+      'OpenAI가 사내 AI 연구가 코딩 에이전트로 얼마나 빨라졌는지 재는 두 번째 보고서를 냈다. ' +
+      '사람이 2~4시간 걸릴 과제의 무개입 성공률 추정치가 3월 23%에서 10월 46%로 올랐지만 작업 종류별 편차가 컸다.',
+    publishedAt: '2026-11-18',
+    collectedAt: '2026-11-24',
+    category: 'Research',
+    signal: '연구 자동화 진척',
+    url: 'https://openai.com/index/research-acceleration-jagged-frontier',
+  },
+  {
+    id: 'the-silent-consensus',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'OpenAI Dean Ball, 인간 주도권 포기론에 반대하는 에세이',
+    summary:
+      'Dean Ball이 AI가 앞서면 인간이 세상의 주도권을 내주게 된다는 암묵적 전제를 「침묵의 합의」라 부르고 반대했다. ' +
+      '하버드대 강연을 옮긴 글로, 저자 개인의 견해라고 밝혔다.',
+    publishedAt: '2026-11-18',
+    collectedAt: '2026-11-24',
+    category: 'Safety',
+    signal: 'AI 거버넌스',
+    url: 'https://openai.com/index/the-silent-consensus',
+  },
+  {
+    id: 'le-groupe-figaro-and-openai-announce-partnership',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'OpenAI·Le Figaro 제휴, ChatGPT에 기사 요약과 링크 제공',
+    summary:
+      'Le Figaro 그룹과 OpenAI가 전략 제휴를 맺어 Le Figaro의 기사를 ChatGPT에서 찾을 수 있게 한다. ' +
+      '기사는 요약과 발췌, 원문 링크로 제공되며 Le Figaro는 여러 팀에 ChatGPT Enterprise도 들일 계획이다.',
+    publishedAt: '2026-11-18',
+    collectedAt: '2026-11-24',
+    category: 'Product',
+    signal: '미디어 라이선스',
+    url: 'https://openai.com/index/le-groupe-figaro-and-openai-announce-partnership',
+  },
+  {
+    id: 'gemini-app-gemini-lower-memory-devices',
+    source: 'Google DeepMind',
+    kind: 'company',
+    title: 'Gemini 앱, 메모리가 적은 Android Go 에디션 기기에서도 사용 가능',
+    summary:
+      'Google이 Gemini 앱을 요건에 맞는 Android Go 에디션 기기로 넓혔다. ' +
+      '메모리가 적은 하드웨어에서도 핵심 기능이 매끄럽게 돌도록 앱 구조를 다시 짰으며, 그동안 이런 기기에서는 기본 음성 명령만 쓸 수 있었다.',
+    publishedAt: '2026-11-18',
+    collectedAt: '2026-11-24',
+    category: 'Product',
+    signal: '소비자 AI',
+    url: 'https://blog.google/innovation-and-ai/products/gemini-app/gemini-lower-memory-devices/',
+  },
+  {
+    id: 'introducing-openai-for-chile',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'OpenAI, 칠레 정부와 MOU 맺고 「OpenAI for Chile」 시작',
+    summary:
+      'OpenAI가 칠레 과학기술지식혁신부와 양해각서를 맺고 공공 행정의 AI 도입을 돕는 협력을 시작했다. ' +
+      '공무원 역량 교육과 현지 스타트업의 AI 애플리케이션 개발 지원도 함께 검토한다.',
+    publishedAt: '2026-11-17',
+    collectedAt: '2026-11-24',
+    category: 'Corporate',
+    signal: '국가 AI 파트너십',
+    url: 'https://openai.com/index/introducing-openai-for-chile',
+  },
+  {
+    id: 'claude-platform-linked-billing',
+    source: 'Anthropic',
+    kind: 'company',
+    title: 'Claude 앱 고객이 사용료를 직접 내는 Linked billing 베타',
+    summary:
+      'Anthropic이 앱 안에서 쓴 Claude 사용료를 앱의 고객이 자기 조직 계정으로 내게 하는 Linked billing을 베타로 냈다. ' +
+      '개발자는 요청마다 billing_policy로 누가 낼지 정한다.',
+    publishedAt: '2026-11-17',
+    collectedAt: '2026-11-24',
+    category: 'Product',
+    signal: '플랫폼 변경',
+    url: 'https://platform.claude.com/docs/en/release-notes/overview#linked-billing',
+  },
+  {
+    id: 'customer-stories-revolut',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'Revolut, Codex로 코딩 시간 30~60% 줄이고 금융 범죄 조사 확장',
+    summary:
+      'Revolut이 OpenAI 모델로 금융 범죄 조사 에이전트를 돌리고 개발에 Codex를 쓴다. ' +
+      '작업 시작부터 기능 병합까지의 코딩 시간이 30~60% 줄었고, 조사 인력을 같은 비율로 늘리지 않고 더 많은 거래를 심사한다고 밝혔다.',
+    publishedAt: '2026-11-16',
+    collectedAt: '2026-11-24',
+    category: 'Product',
+    signal: '기업 도입 사례',
+    url: 'https://openai.com/business/customer-stories/revolut',
+  },
+  {
+    id: 'blog-chatgpt-ads-increases-its-market-presence',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'ChatGPT 광고, 44개국에서 Aleph를 통한 현지 계약·결제 지원',
+    summary:
+      'OpenAI가 Aleph를 ChatGPT 광고의 독점 리셀러로 정해 44개국 광고주가 현지에서 계약하고 결제할 수 있게 했다. ' +
+      'Ads Manager 직접 구매와 글로벌 기술 파트너를 통한 구매는 그대로 유지된다.',
+    publishedAt: '2026-11-12',
+    collectedAt: '2026-11-24',
+    category: 'Product',
+    signal: 'ChatGPT 광고',
+    url: 'https://openai.com/ads/blog/chatgpt-ads-increases-its-market-presence',
+  },
+  {
+    id: 'customers-vistaprint',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'VistaPrint, ChatGPT 광고 전환 최적화로 주문당 비용 약 90% 절감',
+    summary:
+      'OpenAI가 VistaPrint의 ChatGPT 광고 집행 결과를 소개했다. ' +
+      '인기 상품군 하나의 미국 캠페인을 클릭 목표에서 전환 목표로 바꾸자 주문당 비용이 약 90% 낮아졌고 광고비 대비 매출은 5.9배였다.',
+    publishedAt: '2026-11-09',
+    collectedAt: '2026-11-24',
+    category: 'Product',
+    signal: 'ChatGPT 광고',
+    url: 'https://openai.com/ads/customers/vistaprint',
+  },
   {
     id: 'ipo-close',
     source: 'Anthropic',
