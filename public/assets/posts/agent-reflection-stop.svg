@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="530" viewBox="0 0 880 530">
+  <defs>
+    <marker id="arr" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#7ec8e3"/>
+    </marker>
+    <marker id="arr-g" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#55c555"/>
+    </marker>
+    <marker id="arr-r" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#e05555"/>
+    </marker>
+  </defs>
+  <rect width="880" height="530" fill="#0a0a0a" rx="12"/>
+  <text x="440" y="42" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="22" font-weight="700" fill="#e8e8e8">멈출지 정하는 세 조건</text>
+  <text x="440" y="68" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="16" font-weight="600" fill="#e8e8e8">위에서부터 물어 하나라도 「예」면 루프를 끝낸다</text>
+
+  <rect x="60" y="100" width="180" height="60" rx="8" fill="#0f0f0f" stroke="#7ec8e3" stroke-width="1.5"/>
+  <text x="150" y="124" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="700" fill="#e8e8e8">Critic 채점</text>
+  <text x="150" y="144" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="11" fill="#888">점수와 이슈를 JSON으로</text>
+
+  <rect x="300" y="100" width="260" height="60" rx="8" fill="#0f0f0f" stroke="#333" stroke-width="1"/>
+  <text x="430" y="124" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="700" fill="#e8e8e8">① 임계 점수를 넘었나</text>
+  <text x="430" y="144" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="11" fill="#888">approved 또는 score ≥ 8.5</text>
+
+  <rect x="300" y="210" width="260" height="60" rx="8" fill="#0f0f0f" stroke="#333" stroke-width="1"/>
+  <text x="430" y="234" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="700" fill="#e8e8e8">② 개선 폭이 δ보다 작나</text>
+  <text x="430" y="254" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="11" fill="#888">지난 판보다 거의 안 올랐다</text>
+
+  <rect x="300" y="320" width="260" height="60" rx="8" fill="#0f0f0f" stroke="#333" stroke-width="1"/>
+  <text x="430" y="344" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="700" fill="#e8e8e8">③ 반복이 상한에 닿았나</text>
+  <text x="430" y="364" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="11" fill="#888">상한 N이 곧 예산이다</text>
+
+  <rect x="300" y="430" width="260" height="60" rx="8" fill="#0f0f0f" stroke="#e05555" stroke-width="1.5"/>
+  <text x="430" y="454" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="700" fill="#e8e8e8">Reviser 호출</text>
+  <text x="430" y="474" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="11" fill="#888">지적된 곳만 고쳐 다음 판을 낸다</text>
+
+  <rect x="620" y="100" width="200" height="60" rx="8" fill="#0f0f0f" stroke="#55c555" stroke-width="1.5"/>
+  <text x="720" y="124" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="700" fill="#55c555">종료</text>
+  <text x="720" y="144" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="11" fill="#888">이번 판을 낸다</text>
+
+  <rect x="620" y="210" width="200" height="60" rx="8" fill="#0f0f0f" stroke="#55c555" stroke-width="1.5"/>
+  <text x="720" y="234" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="700" fill="#55c555">종료</text>
+  <text x="720" y="254" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="11" fill="#888">가장 점수가 높았던 판을 낸다</text>
+
+  <rect x="620" y="320" width="200" height="60" rx="8" fill="#0f0f0f" stroke="#55c555" stroke-width="1.5"/>
+  <text x="720" y="344" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" font-weight="700" fill="#55c555">종료</text>
+  <text x="720" y="364" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="11" fill="#888">최고 판을 내고 사람 검토로</text>
+
+  <line x1="240" y1="130" x2="300" y2="130" stroke="#7ec8e3" stroke-width="2" marker-end="url(#arr)"/>
+  <line x1="560" y1="130" x2="620" y2="130" stroke="#55c555" stroke-width="2" marker-end="url(#arr-g)"/>
+  <line x1="560" y1="240" x2="620" y2="240" stroke="#55c555" stroke-width="2" marker-end="url(#arr-g)"/>
+  <line x1="560" y1="350" x2="620" y2="350" stroke="#55c555" stroke-width="2" marker-end="url(#arr-g)"/>
+  <text x="590" y="114" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#55c555">예</text>
+  <text x="590" y="224" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#55c555">예</text>
+  <text x="590" y="334" text-anchor="middle" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#55c555">예</text>
+
+  <line x1="430" y1="160" x2="430" y2="210" stroke="#e05555" stroke-width="2" marker-end="url(#arr-r)"/>
+  <line x1="430" y1="270" x2="430" y2="320" stroke="#e05555" stroke-width="2" marker-end="url(#arr-r)"/>
+  <line x1="430" y1="380" x2="430" y2="430" stroke="#e05555" stroke-width="2" marker-end="url(#arr-r)"/>
+  <text x="446" y="190" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e05555">아니오</text>
+  <text x="446" y="300" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e05555">아니오</text>
+  <text x="446" y="410" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#e05555">아니오</text>
+
+  <path d="M 300 460 L 150 460 L 150 160" fill="none" stroke="#7ec8e3" stroke-width="2" stroke-dasharray="4,4" marker-end="url(#arr)"/>
+  <text x="185" y="320" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif" font-size="13" fill="#7ec8e3">다시 채점</text>
+</svg>
