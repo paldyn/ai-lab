@@ -370,3 +370,5 @@ python3 hub_fix.py
 읽어주셔서 감사합니다. 😊
 
 **지난 글:** [SPLADE 축소 재현: 학습한 희소 벡터는 BM25를 어디서 이기는가 — 질의 낱말이 정답에 덜 겹치는 3분의 1에서만 이겼다](/articles/paper-splade-learned-sparse)
+
+**다음 글:** [Contriever 축소 재현: 정답 쌍 없이 학습한 검색기는 BM25에 닿는가 — 상위 10개에서는 닿았고 넘지는 못했다, 상위 100개에서 앞섰다](/articles/paper-contriever-unsupervised)
