@@ -311,4 +311,4 @@ torch는 PyPI 휠(2.15.0)을 썼고 GPU 없이 CPU로만 돌았습니다. kiwipi
 
 **지난 글:** [재순위는 헷갈리는 질의에만 걸면 얼마를 아끼는가: 질의 40%에 걸어 이득을 다 냈고, 확신한 질의에는 안 거는 편이 나았다](/articles/lab-selective-reranking)
 
-**다음 글:** [근사 중복을 색인 전에 거르면: MinHash 0.4~0.7은 원본을 하나도 안 지우고 R@10을 원래대로 돌려놓았고, 0.9에서는 사본 절반이 빠져나갔다](/articles/lab-near-duplicate-filtering)
+**다음 글:** [근사 중복을 색인 전에 거르면: MinHash 0.4~0.5는 원본을 하나도 안 지우고 R@10을 원래대로 돌려놓았고, 0.9에서는 사본 절반이 빠져나갔다](/articles/lab-near-duplicate-filtering)
