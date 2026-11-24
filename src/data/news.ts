@@ -160,7 +160,7 @@ export interface NewsDetail {
   commentary: string;
 }
 
-export const globalNewsUpdatedAt = '2026-11-23';
+export const globalNewsUpdatedAt = '2026-11-24';
 
 /**
  * 공식 발표 한 건 = 항목 한 개. 2026년 1월부터 쌓는 아카이브이며 오래된 항목을
@@ -171,6 +171,76 @@ export const globalNewsUpdatedAt = '2026-11-23';
  * 목록에서 파생됩니다. 갱신 시 globalNewsUpdatedAt도 함께 올립니다.
  */
 const entries: NewsItem[] = [
+  {
+    id: 'gpt-6-models-demonstrate-intrinsic-protein-design-capabilities',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'OpenAI, GPT-6 계열이 특화 모델 없이 단백질을 설계한다는 결과 공개',
+    summary:
+      'OpenAI가 GPT-6 계열이 추론과 범용 코딩 도구만으로 새 단백질 구조와 서열을 설계한다는 프리프린트를 냈다. ' +
+      'Onava와의 실험에서 GPT-6.2 설계를 바탕으로 만든 단백질이 표적 다섯 모두에서 결합 신호를 보였고, 서열 제안·후보 선별은 특화 모델이 도왔다.',
+    publishedAt: '2026-11-24',
+    collectedAt: '2026-11-25',
+    category: 'Research',
+    signal: '과학 AI',
+    url: 'https://openai.com/index/gpt-6-models-demonstrate-intrinsic-protein-design-capabilities',
+  },
+  {
+    id: 'searching-for-distant-planets-with-astra',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'OpenAI, Astra·Codex로 외계행성 후보를 찾은 아마추어 사례 소개',
+    summary:
+      'OpenAI가 Codex와 Astra로 공개 망원경 데이터를 뒤져 외계행성 후보를 찾은 두 사람의 탐색을 소개했다. ' +
+      'OpenAI 엔지니어 Kevin Bond는 Kepler의 별 약 10만 개를, 창업자 Ethan Byrd는 약 1,900만 개의 별 데이터를 살폈다.',
+    publishedAt: '2026-11-24',
+    collectedAt: '2026-11-25',
+    category: 'Research',
+    signal: '과학 AI',
+    url: 'https://openai.com/index/searching-for-distant-planets-with-astra',
+  },
+  {
+    id: 'customer-stories-ifood',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'iFood, GPT-5.6 Luna 원격 에이전트를 저장소 1만 5,000개에 적용',
+    summary:
+      'iFood가 코딩 작업을 API로 맡기면 격리된 샌드박스에서 처리해 병합 요청으로 돌려주는 원격 에이전트 플랫폼을 만들었다. ' +
+      '모든 실행에 GPT-5.6 Luna를 쓰며, 실행당 평균 0.04달러로 2만 5,000건 넘는 작업을 마쳤다고 밝혔다.',
+    publishedAt: '2026-11-24',
+    collectedAt: '2026-11-25',
+    category: 'Product',
+    signal: '기업 도입 사례',
+    url: 'https://openai.com/business/customer-stories/ifood',
+  },
+  {
+    id: 'customer-stories-intentful-dots',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'Intentful, dots로 사이트맵 300개를 훑어 제안서 작성을 몇 시간으로 단축',
+    summary:
+      'OpenAI가 마케팅 기업 Intentful의 CEO Marina Petrova가 dots를 쓰는 방식을 소개했다. ' +
+      '웹사이트 약 300곳의 사이트맵을 살피고 지난 계약의 가격을 모아, 며칠 걸리던 제안서를 몇 시간에 만들었다고 한다.',
+    publishedAt: '2026-11-24',
+    collectedAt: '2026-11-25',
+    category: 'Product',
+    signal: '기업 도입 사례',
+    url: 'https://openai.com/business/customer-stories/intentful-dots',
+  },
+  {
+    id: 'customer-stories-sumitomo-life',
+    source: 'OpenAI',
+    kind: 'company',
+    title: '스미토모생명, 임원이 먼저 쓰며 ChatGPT Enterprise 도입 확대',
+    summary:
+      '일본 스미토모생명이 시범 사용을 거쳐 2026년 6월 ChatGPT Enterprise로 옮긴 과정을 OpenAI가 소개했다. ' +
+      '주간 사용률은 80%를 넘고, 직원이 보고한 절감 시간으로 추정한 전체 투자 수익률은 203%다.',
+    publishedAt: '2026-11-18',
+    collectedAt: '2026-11-25',
+    category: 'Product',
+    signal: '기업 도입 사례',
+    url: 'https://openai.com/business/customer-stories/sumitomo-life',
+  },
   {
     id: 'gemini-gemini-golden-state',
     source: 'Google DeepMind',
