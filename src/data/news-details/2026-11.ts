@@ -2,6 +2,34 @@ import type { NewsDetail } from '../news';
 
 /** 2026-11 발표의 모달 본문. 목록은 news.ts에 있습니다. */
 export const details: Record<string, NewsDetail> = {
+  'blog-interpreting-mass-spectra-with-google-antigravity': {
+    points: [
+      '참고 스펙트럼 대조로는 측정한 스펙트럼의 평균 약 5%, 사람 시료는 10%만 주석이 달린다고 적었다',
+      'matchms·SIRIUS·MAGMa·MetFrag·RDKit 같은 공개 도구와 GNPS·MoNA·PubChem 조회를 스킬로 묶었다',
+      '자연어 한 번의 요청으로 원시 스펙트럼에서 후보 구조와 검토용 보고서까지 이어 갈 수 있다',
+      'MoNA의 Enamine REAL 화합물 100개로 평가했고, 인터넷·스킬이 없으면 세 모델 모두 정확도가 4% 아래였다',
+      '스킬을 더하면 Gemini 3.8 Flash·Gemini 4 Argon·Gemini 4 Carbon이 모두 약 97%로 정확한 분자를 찾았다',
+      '시도당 생성 토큰이 Flash는 거의 4분의 1로, Argon은 절반으로 줄었고 Carbon은 약 5분의 1 줄었다',
+      '거울상 분자나 일부 이성질체는 LC-MS/MS만으로 가를 수 없고 새 분자는 구조를 확정하지 못한다고 밝혔다',
+      'Antigravity 앱에서 Mass Spec 플러그인으로 바로 쓸 수 있고, 과학자 1만 명에게 최상위 티어 6개월 무료 신청을 받는다',
+    ],
+    commentary:
+      '이달 초 Cheminformatics Skills에 이어 Antigravity의 과학 플러그인이 분석화학까지 넓어졌다. 눈여겨볼 대목은 검증된 도구를 스킬로 쥐여 주자 가벼운 Flash가 프런티어 모델과 같은 정확도에 토큰은 덜 썼다는 점으로, 도메인 작업에서는 모델 크기보다 도구 설계가 비용을 가른다는 근거가 된다. 다만 평가가 이미 라이브러리에 있는 화합물 100개라 정말 미지의 대사체에서 얼마나 통하는지는 따로 봐야 한다.',
+  },
+  'customer-stories-clay-plugins-openai': {
+    points: [
+      'Clay는 회사·인물 목록을 만들고 에이전트로 기록을 보강해 영업 전략에 쓰는 플랫폼이다',
+      'Codex 통합으로 빌더는 Codex 안에서 영업 전략 흐름을 만들고 돌릴 수 있다',
+      'ChatGPT 플러그인은 같은 고객 데이터를 ChatGPT 안으로 가져와 영업 담당자가 잠재 고객을 조사하게 한다',
+      'Claygent의 조사·자격 판정·보강·신호 감지와 흐름 구성 에이전트를 OpenAI 모델이 맡는다',
+      'GPT-6 Sol이 주 모델이고, 어려운 작업은 GPT-6 Astra, 비용에 민감한 작업은 GPT-6 Luna가 맡는다',
+      '가격대가 다른 모델을 같은 Responses API로 부를 수 있다는 점을 장점으로 꼽았다',
+      'Clay의 AI 책임자는 GPT-6 Astra가 코드 작성부터 테스트 실행·기록·PR 업로드까지 맡는다고 말했다',
+      '음성용 GPT-Live-1과 Decisions API를 활용한 인바운드 영업 기능을 준비하고 있다',
+    ],
+    commentary:
+      '도입 사례지만 요점은 배포 경로다. 자사 데이터를 Codex와 ChatGPT 플러그인으로 내보내 영업 담당자가 이미 쓰는 도구 안에서 일하게 했다는 점에서, 플러그인이 SaaS 기업의 유통 채널로 쓰이는 모습을 보여 준다. 모델 셋을 난이도와 비용으로 나눠 한 API로 부르는 구성도 여러 고객 사례에서 되풀이되는 패턴이다. 성과 수치는 제시하지 않았다.',
+  },
   'gpt-6-models-demonstrate-intrinsic-protein-design-capabilities': {
     points: [
       'GPT-6.2의 입체 구조 설계로 만든 미니바인더 322개 중 35개(10.9%)가 표적에 결합했다',

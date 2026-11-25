@@ -172,6 +172,34 @@ export const globalNewsUpdatedAt = '2026-11-24';
  */
 const entries: NewsItem[] = [
   {
+    id: 'blog-interpreting-mass-spectra-with-google-antigravity',
+    source: 'Google DeepMind',
+    kind: 'company',
+    title: 'Google Antigravity에 질량 스펙트럼 해석용 Mass Spec Skills 공개',
+    summary:
+      'Google DeepMind가 탠덤 질량 스펙트럼에서 분자 구조를 좁혀 가는 Mass Spec Skills를 Google Antigravity에 내놨다. ' +
+      '공개 도구와 화학 데이터베이스를 대신 돌리며, 평가에서 Gemini 3.8 Flash도 프런티어 모델과 같은 약 97% 정확도를 냈다고 밝혔다.',
+    publishedAt: '2026-11-24',
+    collectedAt: '2026-11-26',
+    category: 'Product',
+    signal: '과학 에이전트',
+    url: 'https://deepmind.google/blog/interpreting-mass-spectra-with-google-antigravity',
+  },
+  {
+    id: 'customer-stories-clay-plugins-openai',
+    source: 'OpenAI',
+    kind: 'company',
+    title: 'Clay, Codex·ChatGPT 플러그인으로 영업 데이터를 작업 도구에 연결',
+    summary:
+      'OpenAI가 영업 플랫폼 Clay가 Codex와 ChatGPT용 플러그인으로 고객 데이터와 영업 전략 흐름을 옮겨 온 사례를 소개했다. ' +
+      'Clay는 GPT-6 Sol을 주 모델로, 어려운 작업에 GPT-6 Astra를, 비용에 민감한 작업에 GPT-6 Luna를 쓴다.',
+    publishedAt: '2026-11-24',
+    collectedAt: '2026-11-26',
+    category: 'Product',
+    signal: '기업 도입 사례',
+    url: 'https://openai.com/business/customer-stories/clay-plugins-openai',
+  },
+  {
     id: 'gpt-6-models-demonstrate-intrinsic-protein-design-capabilities',
     source: 'OpenAI',
     kind: 'company',
