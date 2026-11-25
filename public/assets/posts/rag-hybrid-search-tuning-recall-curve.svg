@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="420" viewBox="0 0 880 420" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <rect x="0" y="0" width="880" height="420" rx="12" fill="#0a0a0a"/>
+
+  <text x="60" y="46" font-size="22" font-weight="700" fill="#e8e8e8">후보 깊이 N을 늘리면 재현율은 평평해지고 비용은 계속 오른다</text>
+  <text x="60" y="72" font-size="13" fill="#888">예시 곡선이다. 질의·정답 쌍 200개로 N을 바꿔 가며 recall@N을 잰 모양을 그렸다.</text>
+
+  <rect x="333" y="100" width="234" height="210" fill="#55c555" fill-opacity="0.08"/>
+  <text x="450" y="120" font-size="13" fill="#55c555" text-anchor="middle">멈출 자리 · 대개 100~200</text>
+
+  <line x1="100" y1="310" x2="820" y2="310" stroke="#3a4a6e" stroke-width="1"/>
+  <line x1="100" y1="100" x2="100" y2="310" stroke="#3a4a6e" stroke-width="1"/>
+  <line x1="100" y1="210" x2="820" y2="210" stroke="#222a38" stroke-width="1" stroke-dasharray="4,4"/>
+
+  <text x="88" y="114" font-size="12" fill="#888" text-anchor="end">1.0</text>
+  <text x="88" y="214" font-size="12" fill="#888" text-anchor="end">0.75</text>
+  <text x="88" y="314" font-size="12" fill="#888" text-anchor="end">0.5</text>
+
+  <text x="217" y="334" font-size="12" fill="#888" text-anchor="middle">50</text>
+  <text x="333" y="334" font-size="12" fill="#888" text-anchor="middle">100</text>
+  <text x="450" y="334" font-size="12" fill="#888" text-anchor="middle">150</text>
+  <text x="567" y="334" font-size="12" fill="#888" text-anchor="middle">200</text>
+  <text x="800" y="334" font-size="12" fill="#888" text-anchor="middle">300</text>
+  <text x="460" y="356" font-size="13" fill="#888" text-anchor="middle">후보 깊이 N (검색기마다 내놓는 문서 수)</text>
+
+  <path d="M 100 300 L 800 160" fill="none" stroke="#e05555" stroke-width="2" stroke-dasharray="4,4"/>
+  <path d="M 123 262 L 158 214 L 217 178 L 333 150 L 450 138 L 567 134 L 800 132" fill="none" stroke="#7ec8e3" stroke-width="2.5"/>
+  <circle cx="217" cy="178" r="4" fill="#7ec8e3"/>
+  <circle cx="333" cy="150" r="4" fill="#7ec8e3"/>
+  <circle cx="567" cy="134" r="4" fill="#7ec8e3"/>
+
+  <text x="596" y="110" font-size="13" fill="#7ec8e3">recall@N — 0.94 언저리에서 멈춘다</text>
+  <text x="640" y="228" font-size="13" fill="#e05555">융합·리랭킹 비용 — 계속 는다</text>
+
+  <text x="60" y="390" font-size="13" fill="#888">200에서도 곡선이 계속 오르면 깊이가 아니라 검색기(토크나이저·임베딩)가 문제다.</text>
+</svg>

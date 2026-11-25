@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="400" viewBox="0 0 880 400" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+  <defs>
+    <marker id="arrTS" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M 0 0 L 13 7 L 0 14 z" fill="#7777cc"/>
+    </marker>
+  </defs>
+
+  <rect x="0" y="0" width="880" height="400" rx="12" fill="#0a0a0a"/>
+
+  <text x="60" y="46" font-size="22" font-weight="700" fill="#e8e8e8">중심점으로 좁히고, 남은 것만 정확히</text>
+  <text x="60" y="72" font-size="13" fill="#888">앞의 두 걸음은 중심점 번호만 다룬다 — 잔차를 풀고 MaxSim을 하는 것은 마지막 걸음뿐이다.</text>
+
+  <rect x="60" y="110" width="220" height="110" rx="8" fill="#101418" stroke="#7ec8e3" stroke-width="1.5"/>
+  <text x="170" y="146" font-size="15" font-weight="600" fill="#e8e8e8" text-anchor="middle">① 후보 모으기</text>
+  <text x="170" y="172" font-size="12" fill="#888" text-anchor="middle">질의 토큰마다 가까운</text>
+  <text x="170" y="192" font-size="12" fill="#888" text-anchor="middle">중심점 → 그 문서들</text>
+
+  <rect x="330" y="110" width="220" height="110" rx="8" fill="#101418" stroke="#7777cc" stroke-width="1.5"/>
+  <text x="440" y="146" font-size="15" font-weight="600" fill="#e8e8e8" text-anchor="middle">② 대략 채점</text>
+  <text x="440" y="172" font-size="12" fill="#888" text-anchor="middle">중심점만으로 점수를 내</text>
+  <text x="440" y="192" font-size="12" fill="#888" text-anchor="middle">약한 후보를 쳐낸다</text>
+
+  <rect x="600" y="110" width="220" height="110" rx="8" fill="#101418" stroke="#55c555" stroke-width="1.5"/>
+  <text x="710" y="146" font-size="15" font-weight="600" fill="#e8e8e8" text-anchor="middle">③ 정밀 채점</text>
+  <text x="710" y="172" font-size="12" fill="#888" text-anchor="middle">잔차를 풀어 벡터를</text>
+  <text x="710" y="192" font-size="12" fill="#888" text-anchor="middle">되살리고 MaxSim</text>
+
+  <line x1="280" y1="165" x2="330" y2="165" stroke="#7777cc" stroke-width="2" marker-end="url(#arrTS)"/>
+  <line x1="550" y1="165" x2="600" y2="165" stroke="#7777cc" stroke-width="2" marker-end="url(#arrTS)"/>
+
+  <text x="170" y="256" font-size="13" fill="#7ec8e3" text-anchor="middle">수천 건</text>
+  <text x="440" y="256" font-size="13" fill="#7777cc" text-anchor="middle">수백 건</text>
+  <text x="710" y="256" font-size="13" fill="#55c555" text-anchor="middle">상위 수십 건</text>
+
+  <rect x="60" y="290" width="760" height="70" rx="8" fill="#101418" stroke="#3a3a3a" stroke-width="1"/>
+  <text x="440" y="320" font-size="13" fill="#e8e8e8" text-anchor="middle">손잡이 — ① 찾는 중심점 수(재현율) · ② 남기는 후보 수(정답 탈락) · ③ 돌려주는 수(리랭커 입력)</text>
+  <text x="440" y="340" font-size="12" fill="#888" text-anchor="middle">건수는 규모를 보이려는 어림이고, 실제 값은 데이터와 손잡이가 정한다</text>
+</svg>

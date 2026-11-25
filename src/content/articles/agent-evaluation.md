@@ -1,6 +1,6 @@
 ---
 title: "에이전트 평가: 성능 측정과 벤치마킹 방법론"
-description: "AI 에이전트의 Task Success Rate, Trajectory Quality, LLM-as-Judge, 비용 평가와 LangSmith 기반 자동화 평가 파이프라인을 완전 해설합니다."
+description: "에이전트를 태스크 성공률·궤적·LLM 평가자·비용과 지연으로 나눠 재는 법과, 실제 실패에서 회귀 세트를 만들고 평가 파이프라인을 두 주기로 돌리는 법을 다룹니다."
 author: "PALDYN Team"
 pubDate: "2026-05-19"
 category: "agents-rag"
@@ -9,406 +9,240 @@ tags: ["에이전트평가", "LLM-as-Judge", "LangSmith", "벤치마킹", "Task 
 featured: false
 draft: false
 ---
-[지난 글](/articles/agent-reflection)에서 에이전트가 자신의 결과를 개선하는 리플렉션 패턴을 살펴봤다. 이번 글에서는 **에이전트 시스템 전체의 성능을 어떻게 측정하고 개선하는지**, 즉 평가 방법론을 다룬다. "좋은 에이전트"를 수치로 표현하지 못하면 개선 방향을 잡기 어렵다.
+[지난 글](/articles/agent-reflection)에서 에이전트가 자신의 결과를 개선하는 리플렉션 패턴을 살펴봤다. 이번 글에서는 에이전트 시스템 전체의 성능을 어떻게 측정하고 개선하는지, 즉 평가 방법론을 다룬다. "좋은 에이전트"를 수치로 표현하지 못하면 개선 방향을 잡기 어렵다. 리플렉션을 붙였더니 나아졌는지조차, 재는 장치가 없으면 「그런 것 같다」로 끝난다.
 
-## 왜 에이전트 평가가 어려운가
+여기서 **에이전트**는 LLM이 다음에 무엇을 할지 스스로 정하면서 도구를 여러 번 부르는 프로그램이고, 한 번의 실행에서 그 도구 호출이 차례로 쌓인 기록을 **궤적**(trajectory)이라 부른다. 평가는 이 궤적의 끝(최종 답)만 볼 수도 있고, 궤적 전체를 볼 수도 있다. 아래 절들은 그 두 시선과, 거기에 값(비용·시간)이라는 셋째 축을 어떻게 한 자리에 놓는지를 차례로 다룬다.
 
-에이전트 평가는 일반 LLM 평가보다 훨씬 복잡하다:
+## 평가의 어려움
 
-- **비결정적 실행**: 같은 입력에도 매번 다른 도구 호출 순서와 결과
-- **중간 과정 평가**: 최종 답 외에 도구 선택·순서·횟수도 중요
-- **장기 지평**: 수십 스텝에 걸친 목표 달성 여부
-- **비용 고려**: 정확성과 비용의 트레이드오프
+### 비결정성
+
+일반 LLM 평가는 질문 하나에 답 하나다. 같은 질문을 다시 넣어도 답이 크게 달라지지 않는 경우가 많고, 달라져도 한 번의 생성 안에서 끝난다. 에이전트는 다르다. 첫 걸음에서 검색 도구를 부를지 계산 도구를 부를지가 갈리면 그 뒤 스무 걸음이 통째로 다른 길이 된다. 같은 입력, 같은 모델, 같은 프롬프트로 다섯 번 돌려 세 번 성공하고 두 번 실패하는 일이 흔하다.
+
+그래서 한 번 돌린 결과로는 아무것도 판단할 수 없다. 프롬프트 한 줄을 고치고 한 번 돌려서 성공했다면, 그것은 고친 덕일 수도 있고 원래 60% 확률로 되던 것이 이번에 된 것일 수도 있다. 에이전트 평가의 첫 규칙은 같은 케이스를 여러 번 돌리고 그 비율을 보는 것이다 — 아래 성공률 절이 그 숫자를 어떻게 다루는지 적는다.
+
+### 결과와 과정
+
+최종 답이 맞았다고 다 같은 성공이 아니다. 세 걸음에 정답에 닿은 실행과, 같은 검색을 네 번 되풀이하고 엉뚱한 파일을 두 번 열어 본 끝에 스무 걸음 만에 닿은 실행은 점수표에서 똑같이 「성공」으로 찍힌다. 그런데 앞의 것은 다음 입력에서도 비슷하게 갈 가능성이 크고, 뒤의 것은 운이 좋았을 가능성이 크다.
+
+과정이 나쁜 성공은 두 가지를 숨긴다. 하나는 비용이다 — 스무 걸음은 세 걸음보다 토큰도 시간도 여러 배 든다. 다른 하나는 취약성이다. 돌아서 온 길은 대개 어딘가에서 잘못 판단하고 그것을 우연히 바로잡은 길이라, 입력이 조금만 달라지면 바로잡는 걸음이 안 나오고 무너진다. 그래서 결과와 과정을 따로 잰다.
+
+### 성공의 경계
+
+수십 걸음짜리 일에서는 「어디까지 해야 성공인가」부터 정해야 한다. 「이번 분기 매출 보고서를 만들어 팀 채널에 올려라」라는 일에서, 보고서는 만들었는데 숫자 하나가 틀렸으면 실패인가, 다 맞는데 채널을 잘못 골랐으면 실패인가. 정하지 않으면 채점하는 사람마다, 같은 사람도 날마다 다르게 매긴다.
+
+현실적인 답은 일을 하위 목표 몇 개로 쪼개고 목표마다 통과·실패를 따로 적는 것이다. 보고서 파일이 생겼는가, 핵심 숫자 세 개가 원본과 맞는가, 올린 곳이 맞는 채널인가. 그러면 「셋 다 통과」를 성공으로 두고도, 어느 단계에서 주로 무너지는지가 함께 보인다. 부분 점수를 주는 방식은 진척을 보는 데 쓰고, 출시 판단은 전부 통과 여부로 하는 편이 덜 헷갈린다.
+
+### 결과·과정·값
+
+정확도와 비용은 서로 맞바뀐다. 더 큰 모델, 더 많은 검증 걸음, 더 긴 컨텍스트는 대개 성공률을 올리고 값도 올린다. 그러니 지표 하나로 에이전트를 줄 세울 수 없다. 이 글은 셋을 갈라 잰다 — 최종 결과(성공률), 과정(궤적), 값(토큰·걸음 수·시간).
 
 ![에이전트 평가 프레임워크](/assets/posts/agent-evaluation-framework.svg)
 
-## ① Task Success Rate: 태스크 성공률
+그림 아래쪽의 가중 종합 점수는 대시보드에 한 줄로 띄워 추세를 보는 데는 쓸 만하다. 다만 결정을 그 숫자로 내리면 안 된다. 성공률이 5%p 떨어지고 비용이 절반이 된 변경과, 성공률이 그대로이고 비용이 조금 준 변경이 같은 종합 점수를 받을 수 있다. 두 변경은 전혀 다른 결정이다.
+
+## 태스크 성공률
+
+### 판정 조건
+
+**태스크 성공률**은 케이스 중 「됐다」로 판정된 비율이다. 숫자 자체는 단순한데, 「됐다」를 코드로 판정할 수 있게 만드는 일이 평가 설계의 절반을 차지한다. 사람이 결과를 하나씩 읽어 보고 매기는 평가는 서른 건까지는 되지만, 프롬프트를 고칠 때마다 다시 하라고 하면 아무도 안 한다.
+
+판정 조건은 결과물의 모양에서 찾는다. 계산 문제면 숫자 하나, 정보 추출이면 필드 몇 개, 코드 작성이면 테스트 통과 여부, 파일 조작이면 실행 뒤 파일 시스템의 상태다. 특히 마지막 것이 에이전트 평가에서 강하다. 답 문장을 읽는 대신 「이 경로에 이 파일이 있고 안에 이 줄이 있는가」를 보면, 에이전트가 「완료했습니다」라고 말만 하고 실제로는 안 한 경우가 그대로 잡힌다.
+
+### 채점 방식
+
+채점 방식은 크게 셋이고 각각이 놓치는 것이 다르다.
+
+- 정확 일치 — 기대값과 출력이 같은지 본다. 가장 엄격해서 「28657」을 「28,657」로 쓴 답을 떨어뜨린다.
+- 포함 여부 — 기대값이 출력 어딘가에 들어 있는지 본다. 관대한 대신 「답은 28657이 아니라 46368입니다」를 통과시킨다.
+- 구조화 필드 대조 — 출력을 JSON 같은 정해진 꼴로 받게 하고 필드별로 비교한다. 가장 믿을 만하지만 에이전트가 그 꼴을 지키게 만드는 일이 먼저다.
+
+실무에서는 출력 끝에 구조화된 최종 답 칸을 따로 두게 하고, 그 칸만 정규화(공백·쉼표·대소문자 정리)한 뒤 정확 일치로 본다. 포함 여부는 빠르게 훑는 용도로만 쓰는 편이 안전하다.
 
 ```python
-from typing import Callable, Any
-import time
+def normalize(s: str) -> str:
+    return s.strip().lower().replace(",", "").replace(" ", "")
+
+def run_case(agent_fn, case: dict, runs: int = 5) -> dict:
+    """같은 케이스를 여러 번 돌려 성공 비율을 본다"""
+    passed = 0
+    for _ in range(runs):
+        out = agent_fn(case["input"])          # {"final_answer": ..., ...}
+        if normalize(out["final_answer"]) == normalize(case["expected"]):
+            passed += 1
+    return {"id": case["id"], "pass_rate": passed / runs,
+            "all_passed": passed == runs}
+```
+
+### 반복 실행
+
+비결정성 때문에 케이스마다 여러 번 돌린다. 이때 두 숫자가 나온다. 하나는 반복 전체에서의 성공 비율이고, 다른 하나는 모든 반복에서 성공했는가다. 앞의 것은 「평균적으로 얼마나 되는가」이고, 뒤의 것은 「믿고 맡길 수 있는가」다. 고객 문의를 받는 에이전트라면 뒤의 것이 훨씬 중요하다 — 같은 질문을 한 손님에게는 맞게, 다른 손님에게는 틀리게 답하는 것이 제품의 실제 실패이기 때문이다. τ-bench가 이 차이를 지표(pass^k)로 세운 뒤로 많이 쓰인다.
+
+몇 번이면 충분한가. 한 케이스의 성공 확률이 0.6이라면 세 번 돌려서는 0/3부터 3/3까지 다 나올 수 있다. 다섯 번이면 대개 2~4번 사이에 머문다. 비용이 허락하면 다섯 번, 빠르게 돌리는 세트라면 세 번에서 시작해 값이 흔들리는 케이스만 더 돌리는 식이 현실적이다.
+
+### 케이스 수
+
+케이스가 적으면 한 건이 몇 %p를 흔든다. 50건이면 한 건이 2%p다. 성공률 80%짜리 에이전트를 50건으로 재면 95% 신뢰 구간이 대략 ±11%p라, 프롬프트를 고쳐 76%에서 84%로 「올랐다」는 것은 사실상 아무 말도 안 한 것이다. 200건이면 같은 구간이 ±5.5%p 남짓으로 줄어든다.
+
+그래서 변경의 효과를 말할 때는 성공률 두 개를 나란히 적는 대신, 같은 케이스에서 결과가 바뀐 건을 센다. 200건 중 이전에 실패하다 성공으로 바뀐 것이 14건, 반대로 성공하다 실패로 바뀐 것이 3건이면 그 변경은 나아진 것이다. 순증 숫자만 보면 놓치는 것도 이 방식은 보여 준다 — 새로 실패한 3건이 무엇인지 읽어 보면 고친 자리가 다른 데를 건드렸는지 알 수 있다.
+
+## 궤적 평가
+
+### 세 축
+
+**궤적 평가**는 최종 답이 아니라 거기까지 간 길을 본다. 보는 축은 셋이다.
+
+1. 도구 선택 — 걸음마다 맞는 도구를 골랐는가. 날씨를 물었는데 웹 검색 대신 사내 문서 검색을 불렀다면 답이 우연히 맞아도 틀린 선택이다.
+2. 순서 — 앞뒤가 맞는가. 주문을 조회하기 전에 환불을 실행했다면 결과가 같아도 위험한 순서다.
+3. 불필요한 호출 — 하지 않아도 됐던 호출이 몇 번인가. 같은 도구를 같은 인자로 또 부른 것, 이미 받은 정보를 다시 찾은 것이 여기 든다.
+
+세 축은 따로 센다. 하나의 「궤적 점수」로 뭉치면 도구는 잘 골랐는데 순서가 틀린 실행과, 순서는 맞는데 군더더기가 많은 실행이 같은 점수가 되어 무엇을 고쳐야 하는지가 사라진다.
+
+### 정답 궤적과 대안
+
+가장 엄격한 방법은 사람이 케이스마다 정답 궤적을 적어 두고 실제 궤적과 대조하는 것이다. 도구 이름의 순서가 같은지, 정답에 있는 호출이 빠짐없이 들어 있는지를 본다. 단, 정답 궤적이 하나뿐이라는 가정은 자주 틀린다. 정보 두 개를 모으는 일이라면 어느 쪽을 먼저 가져와도 된다. 그래서 순서가 정말 중요한 쌍만 「A가 B보다 먼저」로 적고 나머지는 집합으로 비교하는 편이 덜 깐깐하고 더 정확하다.
+
+정답 궤적을 만들 수 없는 일도 많다. 열린 조사 작업은 길이 수십 가지다. 이때는 궤적 전체 대신 경계를 적는다 — 이 케이스에서 절대 부르면 안 되는 도구(삭제·발송), 반드시 한 번은 불러야 하는 도구(권한 확인), 넘으면 안 되는 호출 수 상한. 경계 세 줄은 정답 궤적보다 훨씬 쓰기 쉽고, 실제로 사고가 나는 자리를 정확히 겨눈다.
+
+### 루프 탐지
+
+에이전트 실패의 흔한 모양은 같은 도구를 같은 인자로 계속 부르는 것이다. 검색 결과가 마음에 안 들자 같은 검색어로 또 검색하고, 또 검색한다. 이건 사람이 궤적을 읽어야 찾는 것이 아니라 코드가 바로 잡을 수 있다.
+
+```python
 import json
-from anthropic import Anthropic
 
-client = Anthropic()
-
-# 평가 데이터셋 구조
-EVAL_DATASET = [
-    {
-        "id": "math-001",
-        "input": "23의 피보나치 수를 구하세요",
-        "expected": "28657",
-        "category": "math",
-    },
-    {
-        "id": "code-001",
-        "input": "Python으로 버블 정렬을 구현하고 [3,1,4,1,5]를 정렬하세요",
-        "expected": "[1, 1, 3, 4, 5]",
-        "category": "code",
-    },
-    {
-        "id": "qa-001",
-        "input": "LangGraph와 LangChain의 핵심 차이점은?",
-        "expected": None,  # 정답 없음 → LLM 평가 필요
-        "category": "open_qa",
-    },
-]
-
-def exact_match_evaluator(expected: str, actual: str) -> bool:
-    """정확히 일치하는지 확인"""
-    return expected.strip().lower() in actual.lower()
-
-def contains_evaluator(expected: str, actual: str) -> bool:
-    """정답이 포함되어 있는지 확인"""
-    return expected.strip() in actual
-
-def run_evaluation(
-    agent_fn: Callable[[str], str],
-    dataset: list[dict],
-    evaluators: dict[str, Callable],
-) -> dict:
-    """에이전트 평가 실행"""
-    results = []
-    total_tokens = 0
-    total_time = 0
-
-    for item in dataset:
-        start = time.time()
-        try:
-            output = agent_fn(item["input"])
-            success = False
-            if item.get("expected"):
-                evaluator = evaluators.get(item["category"], exact_match_evaluator)
-                success = evaluator(item["expected"], output)
-            elapsed = time.time() - start
-
-            results.append({
-                "id": item["id"],
-                "category": item["category"],
-                "success": success,
-                "output": output[:200],
-                "latency_sec": elapsed,
-            })
-        except Exception as e:
-            results.append({
-                "id": item["id"],
-                "category": item["category"],
-                "success": False,
-                "error": str(e),
-                "latency_sec": time.time() - start,
-            })
-
-    # 집계
-    total = len(results)
-    successes = sum(1 for r in results if r.get("success"))
-    avg_latency = sum(r.get("latency_sec", 0) for r in results) / total
-
-    return {
-        "total_tasks": total,
-        "success_rate": successes / total * 100,
-        "avg_latency_sec": avg_latency,
-        "by_category": {
-            cat: {
-                "success_rate": sum(1 for r in results
-                                    if r["category"] == cat and r.get("success")) /
-                                max(1, sum(1 for r in results if r["category"] == cat)) * 100
-            }
-            for cat in set(r["category"] for r in results)
-        },
-        "results": results,
-    }
+def count_repeats(tool_calls: list[dict]) -> dict:
+    """같은 도구+같은 인자 반복과 연속 반복을 센다"""
+    seen, repeats, streak, max_streak, prev = set(), 0, 0, 0, None
+    for c in tool_calls:
+        key = (c["name"], json.dumps(c["args"], sort_keys=True))
+        repeats += key in seen
+        seen.add(key)
+        streak = streak + 1 if key == prev else 1
+        max_streak, prev = max(max_streak, streak), key
+    return {"repeats": repeats, "max_streak": max_streak}
 ```
 
-## ② Trajectory Quality: 과정 평가
+연속 반복이 셋을 넘으면 그 실행은 성공했더라도 따로 표시해 둔다. 이 숫자는 운영 중에도 그대로 쓸 수 있다 — 같은 함수를 실행 도중에 돌려 셋째 반복에서 멈추게 하면 평가 지표가 곧 안전장치가 된다.
+
+### 과정이 나쁜 성공
+
+결과와 궤적을 함께 놓으면 네 칸이 생긴다. 결과도 과정도 좋은 것, 둘 다 나쁜 것은 해석이 쉽다. 눈여겨볼 칸은 「결과는 맞고 과정이 나쁜」 쪽이다. 지금은 성공으로 세지지만, 앞 절에서 말한 대로 이 실행들은 다음 입력에서 무너질 후보다. 프롬프트나 모델을 바꾼 뒤 성공률은 그대로인데 이 칸이 늘었다면 그 변경은 나빠진 것이다.
+
+반대편 칸, 「과정은 좋은데 결과가 틀린」 쪽은 대개 에이전트가 아니라 도구나 데이터의 문제다. 맞는 도구를 맞는 순서로 불렀는데 틀렸다면, 도구가 틀린 값을 돌려줬거나 케이스의 기대값이 낡은 것이다. 이 칸을 따로 보면 에이전트를 고칠 일과 다른 데를 고칠 일이 갈린다.
+
+## LLM 평가자
+
+### 두 방식
+
+정답이 한 줄로 안 떨어지는 열린 질문은 코드로 채점할 수 없다. 이때 다른 LLM에게 채점을 맡기는 것을 **LLM 평가자**(LLM-as-Judge)라 한다. 방식은 둘이다. 레퍼런스 비교는 사람이 써 둔 모범 답과 에이전트 답을 나란히 주고 얼마나 가까운지 묻는다. 절대 점수는 모범 답 없이 기준만 주고 점수를 매기게 한다.
+
+레퍼런스가 있으면 평가자가 훨씬 안정적이다. 무엇이 맞는 답인지를 평가자가 스스로 판단하지 않아도 되기 때문이다. 모범 답을 쓸 수 없을 만큼 열린 일에서만 절대 점수를 쓰고, 그때도 두 답 중 어느 쪽이 나은지 묻는 쌍비교가 1~5점을 매기게 하는 것보다 흔들림이 적다. 사람도 「이 답은 몇 점인가」보다 「둘 중 어느 쪽이 나은가」에 더 일관되게 답한다.
+
+### 채점 기준
+
+「정확성, 완결성, 명확성을 1~5점으로」라고만 주면 점수가 길이와 문체에 끌린다. 길고 정돈된 답이 짧고 정확한 답보다 높게 나오는 것이 가장 흔한 편향이다. 막는 방법은 기준을 「예·아니오」로 답할 수 있는 항목으로 쪼개는 것이다.
 
 ```python
-from dataclasses import dataclass
-from typing import Optional
-
-@dataclass
-class ToolCall:
-    tool_name: str
-    tool_input: dict
-    tool_output: str
-    timestamp: float
-
-@dataclass
-class AgentTrajectory:
-    task: str
-    tool_calls: list[ToolCall]
-    final_answer: str
-    success: bool
-    total_tokens: int
-
-def evaluate_trajectory(trajectory: AgentTrajectory, optimal_steps: int) -> dict:
-    """에이전트 실행 경로의 효율성 평가"""
-    actual_steps = len(trajectory.tool_calls)
-
-    # 도구 선택 분포
-    tool_usage = {}
-    for call in trajectory.tool_calls:
-        tool_usage[call.tool_name] = tool_usage.get(call.tool_name, 0) + 1
-
-    # 중복 호출 감지 (동일 도구+입력 반복)
-    seen_calls = set()
-    redundant_calls = 0
-    for call in trajectory.tool_calls:
-        key = f"{call.tool_name}:{json.dumps(call.tool_input, sort_keys=True)}"
-        if key in seen_calls:
-            redundant_calls += 1
-        seen_calls.add(key)
-
-    efficiency_ratio = optimal_steps / max(1, actual_steps)
-
-    return {
-        "actual_steps": actual_steps,
-        "optimal_steps": optimal_steps,
-        "efficiency_ratio": min(1.0, efficiency_ratio),
-        "redundant_calls": redundant_calls,
-        "tool_usage": tool_usage,
-        "step_score": max(0, 1 - (actual_steps - optimal_steps) / max(1, optimal_steps)),
-    }
-
-# 실제 사용 예시
-def instrument_agent(agent_executor, task: str) -> AgentTrajectory:
-    """에이전트 실행을 인스트루멘테이션해 트레이스 수집"""
-    tool_calls = []
-
-    # LangChain 콜백으로 도구 호출 추적
-    from langchain_core.callbacks import BaseCallbackHandler
-
-    class TrajectoryCollector(BaseCallbackHandler):
-        def on_tool_start(self, serialized, input_str, **kwargs):
-            self._start_time = time.time()
-            self._tool_name = serialized.get("name", "unknown")
-            self._tool_input = input_str
-
-        def on_tool_end(self, output, **kwargs):
-            tool_calls.append(ToolCall(
-                tool_name=self._tool_name,
-                tool_input={"input": self._tool_input},
-                tool_output=str(output)[:200],
-                timestamp=time.time() - self._start_time,
-            ))
-
-    collector = TrajectoryCollector()
-    result = agent_executor.invoke(
-        {"input": task},
-        config={"callbacks": [collector]},
-    )
-
-    return AgentTrajectory(
-        task=task,
-        tool_calls=tool_calls,
-        final_answer=result.get("output", ""),
-        success=True,
-        total_tokens=0,
-    )
+RUBRIC = """다음 항목마다 yes/no와 근거 한 줄을 JSON으로 답하라.
+1. 질문이 요구한 두 대상을 모두 다뤘는가
+2. 사실 주장 중 레퍼런스와 어긋나는 것이 없는가
+3. 레퍼런스에 없는 새 주장이 있다면 출처를 밝혔는가
+4. 질문에 없는 내용을 덧붙이지 않았는가
+길이와 문체는 판단에 넣지 않는다."""
 ```
 
-## ③ LLM-as-Judge: AI 평가자
+항목 넷의 yes 개수를 점수로 쓰면, 점수가 낮을 때 어느 항목에서 떨어졌는지가 함께 남는다. 「3점」이라는 숫자 하나보다 「2번 항목에서 사실 오류」가 훨씬 고치기 쉽다. 평가자에게 근거를 먼저 쓰고 판정을 나중에 쓰게 하는 것도 도움이 된다 — 판정부터 쓰면 근거가 그 판정을 꾸미는 문장이 된다.
 
-정답이 없는 열린 질문은 강력한 LLM이 평가한다.
+### 자기 선호 편향
 
-![LangSmith 평가 파이프라인](/assets/posts/agent-evaluation-tools.svg)
+평가자와 피평가자가 같은 모델이면 평가자가 자기 문체를 더 높게 쳐 주는 경향이 여러 연구에서 보고됐다. 쌍비교에서는 먼저 보여 준 답을 더 고르는 **위치 편향**도 있다. 둘 다 없애기는 어렵고 줄이는 방법이 정해져 있다.
 
-```python
-from anthropic import Anthropic
+- 평가자는 피평가자와 다른 계열의 모델로 둔다.
+- 쌍비교는 A·B 순서를 바꿔 두 번 묻고, 두 번 다 같은 쪽을 고른 경우만 승패로 센다. 엇갈리면 무승부다.
+- 평가자 모델과 프롬프트를 고정하고 버전을 기록한다. 평가자를 바꾸면 이전 점수와 견줄 수 없다.
 
-judge_client = Anthropic()
+### 평가자 검증
 
-def llm_judge_evaluate(
-    question: str,
-    agent_answer: str,
-    reference_answer: Optional[str] = None,
-    rubric: Optional[str] = None,
-) -> dict:
-    """LLM-as-Judge 평가"""
+평가자도 하나의 모델이라 틀린다. 그래서 평가자를 쓰기 전에 평가자를 먼저 잰다. 사람이 직접 판정한 표본 50건쯤을 만들고, 같은 50건을 평가자에게 매기게 해서 일치율을 본다. 일치가 낮으면 평가자의 점수로 무엇을 결정해도 그 결정은 평가자의 버릇을 따른 것이다.
 
-    if reference_answer:
-        prompt = f"""당신은 AI 시스템 평가 전문가입니다.
-아래 에이전트 응답을 레퍼런스 답변과 비교 평가하세요.
+어긋난 건을 하나씩 읽어 보면 평가자가 어디서 틀리는지가 보이고, 대개 채점 기준의 문구를 고쳐 맞출 수 있다. 사람끼리도 일치가 낮은 항목이 있다면 그건 평가자가 아니라 기준이 모호한 것이다. 사람 둘이 같은 50건을 따로 매겨 서로의 일치율을 함께 보면 평가자에게 기대할 수 있는 상한이 나온다.
 
-질문: {question}
+## 비용과 지연
 
-레퍼런스 답변:
-{reference_answer}
+### 한 표에 놓기
 
-에이전트 답변:
-{agent_answer}
+작업 하나를 끝내는 데 든 토큰, 걸음 수, 벽시계 시간을 성공률과 같은 표에 둔다. 따로 두면 성공률이 오른 소식만 보이고, 그 대가로 비용이 두 배가 된 사실은 청구서가 올 때 알게 된다. 케이스마다 이 셋을 남기는 일은 어렵지 않다 — 모델 응답에 사용 토큰이 실려 오고, 도구 호출은 이미 궤적으로 세고 있으며, 시간은 앞뒤로 시계를 읽으면 된다.
 
-다음 기준으로 1-5점 평가:
-1점: 완전히 틀림/관련없음
-3점: 부분적으로 정확
-5점: 레퍼런스와 동등하거나 더 나음
+| 변경 | 성공률 | 작업당 토큰 | 평균 걸음 | p95 시간 |
+| --- | ---: | ---: | ---: | ---: |
+| 기준 | 78% | 18,000 | 6.1 | 41초 |
+| 검증 걸음 추가 | 83% | 27,000 | 8.4 | 63초 |
+| 작은 모델로 교체 | 74% | 15,000 | 7.9 | 29초 |
 
-JSON 반환: {{"score": X, "reasoning": "평가 이유", "approved": true/false}}
-approved: score >= 4이면 true"""
+표의 값은 설명을 위해 지어낸 것이다. 요점은 세 줄이 서로 다른 교환이라는 점이다. 검증 걸음은 5%p를 사는 데 토큰 1.5배와 꼬리 지연 22초를 쓴다. 작은 모델은 싸지만 걸음이 늘었다 — 판단이 약해져 돌아가는 길이 길어진 것이다.
 
-    else:
-        rubric_text = rubric or "정확성, 완결성, 명확성"
-        prompt = f"""당신은 AI 평가 전문가입니다.
+### 교환 판단
 
-질문: {question}
+성공률 2%p를 위해 비용이 두 배가 되는 변경을 받아들일지는 평가가 답할 수 없다. 평가는 2%p와 두 배라는 숫자를 정확히 내놓는 데까지가 일이고, 받아들일지는 그 실패 한 건이 얼마짜리인지가 정한다. 실패하면 사람이 대신 처리하는 상담 업무라면 상담원 한 명의 몇 분과 토큰값을 견주면 된다. 실패가 잘못된 송금으로 이어지는 일이라면 2%p는 거의 어떤 값으로도 살 만하다.
 
-에이전트 답변:
-{agent_answer}
+그래서 평가 표 옆에 「실패 한 건의 값」을 한 줄 적어 두면 회의가 짧아진다. 그 줄이 없으면 각자 머릿속의 다른 값으로 같은 표를 읽는다.
 
-평가 기준: {rubric_text}
+### 꼬리 지연
 
-1-5점으로 평가하고 JSON 반환:
-{{"score": X, "reasoning": "이유", "strengths": ["강점"], "weaknesses": ["약점"]}}"""
+평균 시간은 제품을 설명하지 못한다. 평균 20초인 에이전트가 열에 한 번 2분을 넘긴다면 사용자는 그 2분을 기억한다. 그래서 시간은 p95(가장 느린 5%가 시작되는 값)로 본다. 에이전트의 꼬리는 대개 걸음 수에서 온다 — 루프에 빠지거나 재시도가 겹친 실행이 꼬리를 만든다. 앞 절의 연속 반복 숫자와 p95를 나란히 보면 꼬리의 원인이 바로 갈린다.
 
-    response = judge_client.messages.create(
-        model="claude-opus-4-7",  # 강력한 모델을 Judge로
-        max_tokens=512,
-        messages=[{"role": "user", "content": prompt}],
-    )
+## 회귀 세트
 
-    try:
-        text = response.content[0].text
-        if "```json" in text:
-            text = text.split("```json")[1].split("```")[0]
-        return json.loads(text.strip())
-    except Exception:
-        return {"score": 3, "reasoning": "파싱 실패"}
+### 실패에서 온 케이스
 
-# 쌍비교 (Pairwise): 어느 에이전트가 더 나은가
-def pairwise_comparison(
-    question: str,
-    answer_a: str,
-    answer_b: str,
-) -> dict:
-    """두 에이전트 응답을 직접 비교"""
-    prompt = f"""다음 두 AI 응답을 비교하고 어느 쪽이 더 나은지 판단하세요.
+**회귀 세트**는 변경할 때마다 다시 돌려 이전보다 나빠지지 않았는지 보는 케이스 묶음이다. 좋은 회귀 세트의 재료는 실제 실패다. 운영에서 사용자가 불만을 남긴 대화, 사람이 넘겨받아야 했던 작업, 루프 탐지에 걸린 실행이 그대로 케이스가 된다. 이런 케이스는 에이전트가 실제로 약한 자리를 정확히 겨누고 있다.
 
-질문: {question}
+합성 케이스, 곧 LLM에게 「이런 질문 100개를 만들어라」고 해서 얻은 것은 양을 채우기는 쉽지만 고르게 무난하다. 실제 사용자는 오타를 내고, 두 가지를 한 문장에 묻고, 앞 대화를 전제로 말한다. 합성 케이스는 범위를 넓히는 데 쓰고, 세트의 중심은 실제 실패에 둔다.
 
-응답 A:
-{answer_a}
+### 쉬운 케이스의 함정
 
-응답 B:
-{answer_b}
+잘 되는 케이스만 모으면 어떤 변경을 해도 점수가 안 움직인다. 98%에서 시작한 세트는 좋아진 변경과 나빠진 변경을 가르지 못한다. 세트를 만들 때 지금 에이전트가 절반쯤 실패하는 케이스를 일부러 넣어 두어야 개선이 숫자로 보인다.
 
-JSON 반환: {{"winner": "A" or "B" or "tie", "reasoning": "이유", "scores": {{"A": X, "B": X}}}}"""
+반대로 너무 어려운 케이스만 있어도 같은 문제가 생긴다. 어떤 변경을 해도 0%면 역시 안 움직인다. 쉬운 것·중간·어려운 것을 대략 섞고, 종류별 성공률을 따로 보면 어느 층이 움직였는지 알 수 있다.
 
-    response = judge_client.messages.create(
-        model="claude-opus-4-7",
-        max_tokens=512,
-        messages=[{"role": "user", "content": prompt}],
-    )
-    try:
-        text = response.content[0].text
-        if "```" in text:
-            text = text.split("```json")[1].split("```")[0] if "```json" in text else text
-        return json.loads(text.strip())
-    except Exception:
-        return {"winner": "tie", "reasoning": "파싱 실패"}
-```
+### 케이스의 노화
 
-## LangSmith 통합 평가
+케이스는 낡는다. 도구의 스키마가 바뀌면 정답 궤적의 인자 이름이 틀려지고, 원본 데이터가 바뀌면 기대값이 틀려진다. 「이번 달 매출」을 묻는 케이스는 다음 달이면 기대값이 거짓이 된다. 낡은 케이스는 에이전트가 맞게 했는데 실패로 찍혀, 고칠 필요가 없는 곳을 고치게 만든다.
 
-```python
-from langsmith import Client, evaluate
-from langsmith.evaluation import LangChainStringEvaluator
-import os
+막는 방법은 둘이다. 날짜·데이터에 기대는 케이스는 기대값을 고정된 스냅샷 데이터에서 계산하게 하고, 케이스마다 마지막으로 사람이 확인한 날을 적어 둔다. 그리고 앞 절의 「과정은 좋은데 결과가 틀린」 칸을 주기적으로 읽는다 — 그 칸에 모이는 것의 상당수가 낡은 케이스다.
 
-os.environ["LANGCHAIN_TRACING_V2"] = "true"
-os.environ["LANGCHAIN_API_KEY"] = "ls__..."
+### 세트의 크기
 
-ls_client = Client()
+처음부터 수백 건을 만들 필요는 없다. 30~50건으로 시작해 매주 운영 실패에서 몇 건씩 더한다. 늘릴 신호는 두 가지다. 같은 변경을 두 번 평가했을 때 결과가 다르게 나오면 케이스가 모자란 것이고(앞의 신뢰 구간 이야기다), 운영에서 새로운 모양의 실패가 나왔는데 세트에 그런 케이스가 없으면 범위가 모자란 것이다.
 
-# 1. 데이터셋 생성
-dataset = ls_client.create_dataset(
-    "agent-benchmark-v1",
-    description="에이전트 성능 벤치마크",
-)
-examples = [
-    {"inputs": {"question": "서울의 인구는?"}, "outputs": {"answer": "약 960만 명"}},
-    {"inputs": {"question": "Python list comprehension 예제"}, "outputs": {"answer": "[x**2 for x in range(10)]"}},
-]
-ls_client.create_examples(inputs=[e["inputs"] for e in examples],
-                           outputs=[e["outputs"] for e in examples],
-                           dataset_id=dataset.id)
+## 평가 파이프라인
 
-# 2. 커스텀 평가자
-def correctness_evaluator(run, example) -> dict:
-    """정답 포함 여부 평가"""
-    output = run.outputs.get("answer", "")
-    expected = example.outputs.get("answer", "")
-    score = 1.0 if expected.lower() in output.lower() else 0.0
-    return {"key": "correctness", "score": score}
+### 네 부품
 
-def trajectory_evaluator(run, example) -> dict:
-    """도구 호출 수 평가 (적을수록 좋음)"""
-    tool_calls = len(run.child_runs)
-    score = max(0, 1 - (tool_calls - 1) * 0.1)  # 최적=1, 각 추가 호출마다 -0.1
-    return {"key": "tool_efficiency", "score": score}
+평가를 돌리는 장치는 네 부품으로 나뉜다. 데이터셋(케이스와 기대값), 실행(에이전트를 케이스마다 돌리고 궤적을 남기는 것), 채점(코드 판정·궤적 지표·LLM 평가자), 대시보드(실행 결과를 이전 실행과 나란히 보여 주는 화면). LangSmith 같은 도구가 이 넷을 한곳에 묶어 주고, 앞 절의 그림이 그 사용 모양이다. 직접 만들어도 된다 — 케이스는 JSON 파일, 실행은 스크립트, 결과는 표 하나면 처음 몇 달은 충분하다.
 
-# 3. 평가 실행
-def agent_wrapper(inputs: dict) -> dict:
-    result = executor.invoke({"input": inputs["question"]})
-    return {"answer": result["output"]}
+어느 쪽이든 중요한 것은 실행마다 무엇으로 돌렸는지가 남는 것이다. 모델 이름, 프롬프트 버전, 도구 정의, 평가자 버전을 결과와 함께 묶어 두지 않으면 지난주의 82%와 오늘의 79%를 견줄 수 없다.
 
-results = evaluate(
-    agent_wrapper,
-    data="agent-benchmark-v1",
-    evaluators=[correctness_evaluator, trajectory_evaluator],
-    experiment_prefix="claude-sonnet-4-6",
-    max_concurrency=5,
-    num_repetitions=3,  # 3회 반복해 분산 측정
-)
-print(f"평균 정확도: {results.aggregate_feedback['correctness']:.2%}")
-print(f"평균 도구 효율: {results.aggregate_feedback['tool_efficiency']:.2f}")
-```
+![평가의 두 주기](/assets/posts/agent-evaluation-two-loops.svg)
 
-## 평가 메트릭 종합 대시보드
+### 두 주기
 
-```python
-def compute_agent_scorecard(
-    eval_results: dict,
-    trajectory_results: list[dict],
-    judge_scores: list[dict],
-    cost_data: dict,
-) -> dict:
-    """에이전트 성적표 종합"""
+모든 평가를 매번 돌릴 필요는 없다. 프롬프트를 고칠 때마다 도는 빠른 세트와, 배포 전에만 도는 전체 세트를 가른다. 빠른 세트는 코드 판정만 쓰는 수십 건에 반복 세 번 정도라 몇 분 안에 끝나야 한다. 오래 걸리면 개발자가 안 돌린다. 전체 세트는 LLM 평가자와 반복 다섯 번을 다 쓰고 한 시간이 걸려도 된다.
 
-    # 가중 종합 점수
-    task_success = eval_results.get("success_rate", 0) / 100
-    traj_efficiency = sum(t.get("efficiency_ratio", 0) for t in trajectory_results) / max(1, len(trajectory_results))
-    llm_quality = sum(j.get("score", 0) for j in judge_scores) / max(5, len(judge_scores))
-    cost_penalty = min(1.0, cost_data.get("cost_per_task_usd", 0) * 10)
+이렇게 가르면 비싼 평가는 확인된 변경에만 쓴다. 빠른 세트에서 나빠진 변경은 거기서 걸러지고, 통과한 것만 전체 세트로 올라간다.
 
-    composite_score = (
-        0.40 * task_success
-        + 0.20 * traj_efficiency
-        + 0.30 * llm_quality
-        - 0.10 * cost_penalty
-    )
+### 운영 로그의 고리
 
-    return {
-        "composite_score": round(composite_score * 100, 1),
-        "breakdown": {
-            "task_success_rate": f"{task_success * 100:.1f}%",
-            "trajectory_efficiency": f"{traj_efficiency * 100:.1f}%",
-            "llm_judge_avg": f"{llm_quality:.1f}/5.0",
-            "cost_per_task": f"${cost_data.get('cost_per_task_usd', 0):.4f}",
-        },
-        "grade": "A" if composite_score > 0.85 else "B" if composite_score > 0.70 else "C",
-    }
-```
+운영에서 실패한 실행이 자동으로 회귀 세트 후보에 들어가는 고리를 만든다. 사용자가 「싫어요」를 누른 대화, 사람에게 넘어간 작업, 루프 탐지에 걸린 실행을 모아 두고, 사람이 일주일에 한 번 훑어 기대값을 붙여 세트에 넣는다. 기대값을 붙이는 일만은 사람이 한다 — 실패한 실행에서 무엇이 정답이었는지를 에이전트에게 다시 묻는 것은 같은 실수를 정답으로 굳힐 위험이 있다.
 
-## 정리
+이 고리가 돌면 세트가 저절로 지금 제품의 약점을 따라간다. 지난달의 실패 모양이 이번 달 세트에 들어 있으므로, 같은 실패가 되살아나는 변경은 배포 전에 걸린다.
 
-에이전트 평가는 **단일 메트릭이 아닌 다차원 측정**이 필수다:
+### 시작하는 때
 
-- **Task Success Rate**: 최종 결과의 정확성, 가장 직관적인 지표
-- **Trajectory Quality**: 도구 선택의 효율성, 불필요한 루프 감지
-- **LLM-as-Judge**: 열린 질문의 품질 평가, 레퍼런스 비교와 절대 점수 두 방식
-- **비용·레이턴시**: 정확성과 비용의 트레이드오프, 프로덕션 배포 기준
-- **LangSmith**: 데이터셋·실행·평가·대시보드를 통합한 자동화 파이프라인
+평가 파이프라인은 에이전트를 만들기 시작한 첫 주에 만드는 것이 가장 싸다. 케이스 스무 건과 판정 함수 하나면 된다. 나중에 만들면 「지금까지 무엇이 좋아졌는지 모르는」 상태에서 출발한다. 석 달 동안 프롬프트를 마흔 번 고쳤는데 그중 어느 것이 효과가 있었고 어느 것이 다른 데를 망가뜨렸는지 되짚을 방법이 없다.
 
-평가 없이 개선할 수 없다. 에이전트 개발 초기부터 평가 파이프라인을 함께 구축하는 것이 핵심이다.
+정리하면, 에이전트 평가는 한 숫자가 아니라 세 갈래다 — 결과는 반복 실행한 성공률로, 과정은 궤적의 세 축으로, 값은 토큰·걸음·꼬리 지연으로 잰다. 열린 질문은 쪼갠 기준과 검증한 평가자로 채점하고, 케이스는 실제 실패에서 가져와 낡지 않게 돌본다. 다음 글에서는 이렇게 재 보면 반복해서 드러나는 설계 실수, 곧 에이전트의 안티패턴을 모아 본다.
 
 ---
 
