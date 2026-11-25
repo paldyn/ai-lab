@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="500" viewBox="0 0 880 500" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+<rect x="0" y="0" width="880" height="500" rx="12" fill="#0a0a0a"/>
+<defs><marker id="arr" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto"><path d="M 0 0 L 13 7 L 0 14 z" fill="#888"/></marker><marker id="arrb" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto"><path d="M 0 0 L 13 7 L 0 14 z" fill="#7ec8e3"/></marker><marker id="arrr" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto"><path d="M 0 0 L 13 7 L 0 14 z" fill="#e05555"/></marker><marker id="arrg" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto"><path d="M 0 0 L 13 7 L 0 14 z" fill="#55c555"/></marker></defs>
+<text x="440" y="40" text-anchor="middle" font-size="22" font-weight="700" fill="#e8e8e8">폭이 커질 때 학습이 갈리는 네 갈래</text>
+<text x="440" y="66" text-anchor="middle" font-size="13" fill="#888">위에서부터 묻고 처음 「예」가 나온 곳에서 멈춘다</text>
+<rect x="70" y="100" width="360" height="64" rx="8" fill="#141a24" stroke="#3a4a6e" stroke-width="1.5"/>
+<text x="250.0" y="138.0" text-anchor="middle" font-size="15" fill="#e8e8e8" font-weight="600">출력 Δf가 폭과 함께 커지나</text>
+<line x1="430.0" y1="132.0" x2="518.0" y2="132.0" stroke="#e05555" stroke-width="2" marker-end="url(#arrr)"/>
+<text x="474.0" y="122.0" text-anchor="middle" font-size="13" fill="#e05555">예</text>
+<rect x="520" y="100" width="300" height="64" rx="8" fill="#0f131a" stroke="#e05555" stroke-width="1.5"/>
+<text x="670.0" y="138.0" text-anchor="middle" font-size="15" fill="#e8e8e8">불안정 — 넓을수록 발산</text>
+<line x1="250.0" y1="164.0" x2="250.0" y2="208.0" stroke="#888" stroke-width="2" marker-end="url(#arr)"/>
+<text x="266.0" y="190.0" text-anchor="start" font-size="13" fill="#888">아니오</text>
+<rect x="70" y="210" width="360" height="64" rx="8" fill="#141a24" stroke="#3a4a6e" stroke-width="1.5"/>
+<text x="250.0" y="248.0" text-anchor="middle" font-size="15" fill="#e8e8e8" font-weight="600">은닉 Δh가 Θ(1)로 남나</text>
+<line x1="430.0" y1="242.0" x2="518.0" y2="242.0" stroke="#55c555" stroke-width="2" marker-end="url(#arrg)"/>
+<text x="474.0" y="232.0" text-anchor="middle" font-size="13" fill="#55c555">예</text>
+<rect x="520" y="210" width="300" height="64" rx="8" fill="#0f131a" stroke="#55c555" stroke-width="1.5"/>
+<text x="670.0" y="248.0" text-anchor="middle" font-size="15" fill="#e8e8e8">특징 학습 영역 — muP</text>
+<line x1="250.0" y1="274.0" x2="250.0" y2="318.0" stroke="#888" stroke-width="2" marker-end="url(#arr)"/>
+<text x="266.0" y="300.0" text-anchor="start" font-size="13" fill="#888">아니오</text>
+<rect x="70" y="320" width="360" height="64" rx="8" fill="#141a24" stroke="#3a4a6e" stroke-width="1.5"/>
+<text x="250.0" y="358.0" text-anchor="middle" font-size="15" fill="#e8e8e8" font-weight="600">출력 Δf는 Θ(1)로 남나</text>
+<line x1="430.0" y1="352.0" x2="518.0" y2="352.0" stroke="#7ec8e3" stroke-width="2" marker-end="url(#arrb)"/>
+<text x="474.0" y="342.0" text-anchor="middle" font-size="13" fill="#7ec8e3">예</text>
+<rect x="520" y="320" width="300" height="64" rx="8" fill="#0f131a" stroke="#7ec8e3" stroke-width="1.5"/>
+<text x="670.0" y="358.0" text-anchor="middle" font-size="15" fill="#e8e8e8">커널 영역 — 게으른 학습</text>
+<line x1="250.0" y1="384.0" x2="250.0" y2="428.0" stroke="#888" stroke-width="2" marker-end="url(#arr)"/>
+<text x="266.0" y="410.0" text-anchor="start" font-size="13" fill="#888">아니오</text>
+<rect x="70" y="430" width="360" height="50" rx="8" fill="#0f131a" stroke="#888" stroke-width="1.5"/>
+<text x="250.0" y="461.0" text-anchor="middle" font-size="15" fill="#e8e8e8">자명 — 넓을수록 아무것도 안 배움</text>
+</svg>

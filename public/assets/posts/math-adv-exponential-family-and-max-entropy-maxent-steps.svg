@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="600" viewBox="0 0 880 600" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+<defs>
+<marker id="arr" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto"><path d="M 0 0 L 13 7 L 0 14 z" fill="#7ec8e3"/></marker>
+<marker id="arrb" viewBox="0 0 14 14" refX="2" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto"><path d="M 14 0 L 1 7 L 14 14 z" fill="#7777cc"/></marker>
+<marker id="arrg" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto"><path d="M 0 0 L 13 7 L 0 14 z" fill="#888"/></marker>
+</defs>
+<rect x="0" y="0" width="880" height="600" rx="12" fill="#0a0a0a"/>
+<text x="440.0" y="44.0" font-size="22" fill="#e8e8e8" text-anchor="middle" font-weight="700">최대엔트로피 해를 얻는 네 걸음</text>
+<rect x="130" y="74" width="620" height="64" rx="8" fill="#111827" stroke="#7ec8e3" stroke-width="1.5"/>
+<text x="154.0" y="101.0" font-size="16" fill="#e8e8e8" text-anchor="start" font-weight="600">1 · 모멘트 제약 문제</text>
+<text x="154.0" y="123.0" font-size="13" fill="#888" text-anchor="start">max H_h(p) = −∫ p log(p/h)    s.t.  ∫ p = 1,  E_p[T] = c</text>
+<path d="M 440.0 138.0 L 440.0 168.0" stroke="#7ec8e3" stroke-width="2" fill="none" marker-end="url(#arr)"/>
+<rect x="130" y="168" width="620" height="64" rx="8" fill="#111827" stroke="#7ec8e3" stroke-width="1.5"/>
+<text x="154.0" y="195.0" font-size="16" fill="#e8e8e8" text-anchor="start" font-weight="600">2 · 라그랑지안</text>
+<text x="154.0" y="217.0" font-size="13" fill="#888" text-anchor="start">L = H_h(p) + α(∫ p − 1) + ηᵀ(E_p[T] − c)</text>
+<path d="M 440.0 232.0 L 440.0 262.0" stroke="#7ec8e3" stroke-width="2" fill="none" marker-end="url(#arr)"/>
+<rect x="130" y="262" width="620" height="64" rx="8" fill="#111827" stroke="#7ec8e3" stroke-width="1.5"/>
+<text x="154.0" y="289.0" font-size="16" fill="#e8e8e8" text-anchor="start" font-weight="600">3 · 정상점</text>
+<text x="154.0" y="311.0" font-size="13" fill="#888" text-anchor="start">−log(p/h) − 1 + α + ηᵀT = 0   →   p* = h · exp(ηᵀT − A(η))</text>
+<path d="M 440.0 326.0 L 440.0 356.0" stroke="#7ec8e3" stroke-width="2" fill="none" marker-end="url(#arr)"/>
+<rect x="130" y="356" width="620" height="64" rx="8" fill="#111827" stroke="#7ec8e3" stroke-width="1.5"/>
+<text x="154.0" y="383.0" font-size="16" fill="#e8e8e8" text-anchor="start" font-weight="600">4 · 승수의 결정</text>
+<text x="154.0" y="405.0" font-size="13" fill="#888" text-anchor="start">∇A(η) = c   ⇔   min A(η) − ηᵀc   (최대우도의 쌍대)</text>
+<path d="M 440.0 420.0 L 440.0 454.0" stroke="#7ec8e3" stroke-width="2" fill="none" marker-end="url(#arr)"/>
+<rect x="130" y="454" width="620" height="84" rx="8" fill="#0f1f12" stroke="#55c555" stroke-width="1.5"/>
+<text x="154.0" y="482.0" font-size="16" fill="#55c555" text-anchor="start" font-weight="600">최적성 · 깁스 부등식</text>
+<text x="154.0" y="504.0" font-size="13" fill="#e8e8e8" text-anchor="start">제약을 지키는 모든 q 에서  H_h(q) = H_h(p*) − KL(q‖p*)</text>
+<text x="154.0" y="524.0" font-size="13" fill="#888" text-anchor="start">KL ≥ 0 이고 q = p* 일 때만 0 이라 p* 가 유일한 최대점</text>
+</svg>

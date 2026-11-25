@@ -1,0 +1,82 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="470" viewBox="0 0 880 470" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+<rect x="0" y="0" width="880" height="470" rx="12" fill="#0a0a0a"/>
+<defs><marker id="arr" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto"><path d="M 0 0 L 13 7 L 0 14 z" fill="#888"/></marker><marker id="arrb" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto"><path d="M 0 0 L 13 7 L 0 14 z" fill="#7ec8e3"/></marker><marker id="arrr" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto"><path d="M 0 0 L 13 7 L 0 14 z" fill="#e05555"/></marker><marker id="arrg" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto"><path d="M 0 0 L 13 7 L 0 14 z" fill="#55c555"/></marker></defs>
+<text x="440" y="40" text-anchor="middle" font-size="22" font-weight="700" fill="#e8e8e8">좌표 검사 — 한 걸음 뒤 좌표 평균 변화</text>
+<text x="440" y="66" text-anchor="middle" font-size="13" fill="#888">가로: 폭 n (로그) · 세로: 변화량 (로그)</text>
+<text x="255.0" y="98.0" text-anchor="middle" font-size="16" fill="#e8e8e8" font-weight="600">출력 Δf</text>
+<line x1="90.0" y1="380.0" x2="420.0" y2="380.0" stroke="#888" stroke-width="1.5" />
+<line x1="90.0" y1="110.0" x2="90.0" y2="380.0" stroke="#888" stroke-width="1.5" />
+<line x1="90.0" y1="380.0" x2="420.0" y2="380.0" stroke="#444" stroke-width="1" stroke-dasharray="4,4"/>
+<text x="82.0" y="384.0" text-anchor="end" font-size="12" fill="#888">1e-4</text>
+<line x1="90.0" y1="326.0" x2="420.0" y2="326.0" stroke="#444" stroke-width="1" stroke-dasharray="4,4"/>
+<text x="82.0" y="330.0" text-anchor="end" font-size="12" fill="#888">1e-3</text>
+<line x1="90.0" y1="272.0" x2="420.0" y2="272.0" stroke="#444" stroke-width="1" stroke-dasharray="4,4"/>
+<text x="82.0" y="276.0" text-anchor="end" font-size="12" fill="#888">1e-2</text>
+<line x1="90.0" y1="218.0" x2="420.0" y2="218.0" stroke="#444" stroke-width="1" stroke-dasharray="4,4"/>
+<text x="82.0" y="222.0" text-anchor="end" font-size="12" fill="#888">1e-1</text>
+<line x1="90.0" y1="164.0" x2="420.0" y2="164.0" stroke="#444" stroke-width="1" stroke-dasharray="4,4"/>
+<text x="82.0" y="168.0" text-anchor="end" font-size="12" fill="#888">1e0</text>
+<line x1="90.0" y1="110.0" x2="420.0" y2="110.0" stroke="#444" stroke-width="1" stroke-dasharray="4,4"/>
+<text x="82.0" y="114.0" text-anchor="end" font-size="12" fill="#888">1e1</text>
+<text x="110.0" y="400.0" text-anchor="middle" font-size="12" fill="#888">128</text>
+<text x="206.7" y="400.0" text-anchor="middle" font-size="12" fill="#888">512</text>
+<text x="303.3" y="400.0" text-anchor="middle" font-size="12" fill="#888">2048</text>
+<text x="400.0" y="400.0" text-anchor="middle" font-size="12" fill="#888">8192</text>
+<text x="420.0" y="418.0" text-anchor="end" font-size="13" fill="#888">n</text>
+<polyline points="110.0,230.0 206.7,195.6 303.3,129.8 400.0,119.7" fill="none" stroke="#e05555" stroke-width="2.5" />
+<circle cx="110.0" cy="230.0" r="4" fill="#e05555"/>
+<circle cx="206.7" cy="195.6" r="4" fill="#e05555"/>
+<circle cx="303.3" cy="129.8" r="4" fill="#e05555"/>
+<circle cx="400.0" cy="119.7" r="4" fill="#e05555"/>
+<polyline points="110.0,230.0 206.7,228.1 303.3,194.7 400.0,218.0" fill="none" stroke="#7777cc" stroke-width="2.5" />
+<circle cx="110.0" cy="230.0" r="4" fill="#7777cc"/>
+<circle cx="206.7" cy="228.1" r="4" fill="#7777cc"/>
+<circle cx="303.3" cy="194.7" r="4" fill="#7777cc"/>
+<circle cx="400.0" cy="218.0" r="4" fill="#7777cc"/>
+<polyline points="110.0,331.2 206.7,329.8 303.3,330.4 400.0,329.8" fill="none" stroke="#55c555" stroke-width="2.5" />
+<circle cx="110.0" cy="331.2" r="4" fill="#55c555"/>
+<circle cx="206.7" cy="329.8" r="4" fill="#55c555"/>
+<circle cx="303.3" cy="330.4" r="4" fill="#55c555"/>
+<circle cx="400.0" cy="329.8" r="4" fill="#55c555"/>
+<text x="665.0" y="98.0" text-anchor="middle" font-size="16" fill="#e8e8e8" font-weight="600">첫 층 Δh1</text>
+<line x1="500.0" y1="380.0" x2="830.0" y2="380.0" stroke="#888" stroke-width="1.5" />
+<line x1="500.0" y1="110.0" x2="500.0" y2="380.0" stroke="#888" stroke-width="1.5" />
+<line x1="500.0" y1="380.0" x2="830.0" y2="380.0" stroke="#444" stroke-width="1" stroke-dasharray="4,4"/>
+<text x="492.0" y="384.0" text-anchor="end" font-size="12" fill="#888">1e-7</text>
+<line x1="500.0" y1="326.0" x2="830.0" y2="326.0" stroke="#444" stroke-width="1" stroke-dasharray="4,4"/>
+<text x="492.0" y="330.0" text-anchor="end" font-size="12" fill="#888">1e-6</text>
+<line x1="500.0" y1="272.0" x2="830.0" y2="272.0" stroke="#444" stroke-width="1" stroke-dasharray="4,4"/>
+<text x="492.0" y="276.0" text-anchor="end" font-size="12" fill="#888">1e-5</text>
+<line x1="500.0" y1="218.0" x2="830.0" y2="218.0" stroke="#444" stroke-width="1" stroke-dasharray="4,4"/>
+<text x="492.0" y="222.0" text-anchor="end" font-size="12" fill="#888">1e-4</text>
+<line x1="500.0" y1="164.0" x2="830.0" y2="164.0" stroke="#444" stroke-width="1" stroke-dasharray="4,4"/>
+<text x="492.0" y="168.0" text-anchor="end" font-size="12" fill="#888">1e-3</text>
+<line x1="500.0" y1="110.0" x2="830.0" y2="110.0" stroke="#444" stroke-width="1" stroke-dasharray="4,4"/>
+<text x="492.0" y="114.0" text-anchor="end" font-size="12" fill="#888">1e-2</text>
+<text x="520.0" y="400.0" text-anchor="middle" font-size="12" fill="#888">128</text>
+<text x="616.7" y="400.0" text-anchor="middle" font-size="12" fill="#888">512</text>
+<text x="713.3" y="400.0" text-anchor="middle" font-size="12" fill="#888">2048</text>
+<text x="810.0" y="400.0" text-anchor="middle" font-size="12" fill="#888">8192</text>
+<text x="830.0" y="418.0" text-anchor="end" font-size="13" fill="#888">n</text>
+<polyline points="520.0,204.2 616.7,226.7 713.3,232.9 810.0,252.5" fill="none" stroke="#e05555" stroke-width="2.5" />
+<circle cx="520.0" cy="204.2" r="4" fill="#e05555"/>
+<circle cx="616.7" cy="226.7" r="4" fill="#e05555"/>
+<circle cx="713.3" cy="232.9" r="4" fill="#e05555"/>
+<circle cx="810.0" cy="252.5" r="4" fill="#e05555"/>
+<polyline points="520.0,204.2 616.7,259.6 713.3,298.0 810.0,350.6" fill="none" stroke="#7777cc" stroke-width="2.5" />
+<circle cx="520.0" cy="204.2" r="4" fill="#7777cc"/>
+<circle cx="616.7" cy="259.6" r="4" fill="#7777cc"/>
+<circle cx="713.3" cy="298.0" r="4" fill="#7777cc"/>
+<circle cx="810.0" cy="350.6" r="4" fill="#7777cc"/>
+<polyline points="520.0,157.8 616.7,156.1 713.3,156.1 810.0,156.1" fill="none" stroke="#55c555" stroke-width="2.5" />
+<circle cx="520.0" cy="157.8" r="4" fill="#55c555"/>
+<circle cx="616.7" cy="156.1" r="4" fill="#55c555"/>
+<circle cx="713.3" cy="156.1" r="4" fill="#55c555"/>
+<circle cx="810.0" cy="156.1" r="4" fill="#55c555"/>
+<line x1="150.0" y1="446.0" x2="178.0" y2="446.0" stroke="#e05555" stroke-width="2.5" />
+<text x="186.0" y="450.0" text-anchor="start" font-size="13" fill="#e8e8e8">표준 · η 고정</text>
+<line x1="370.0" y1="446.0" x2="398.0" y2="446.0" stroke="#7777cc" stroke-width="2.5" />
+<text x="406.0" y="450.0" text-anchor="start" font-size="13" fill="#e8e8e8">표준 · η ∝ 1/n</text>
+<line x1="590.0" y1="446.0" x2="618.0" y2="446.0" stroke="#55c555" stroke-width="2.5" />
+<text x="626.0" y="450.0" text-anchor="start" font-size="13" fill="#e8e8e8">muP · η 고정</text>
+</svg>

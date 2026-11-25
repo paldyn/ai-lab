@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="600" viewBox="0 0 880 600" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+<defs><marker id="arr" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto"><path d="M 0 0 L 13 7 L 0 14 z" fill="#888"/></marker></defs>
+<rect x="0" y="0" width="880" height="600" rx="12" fill="#0a0a0a"/>
+<text x="440" y="44" text-anchor="middle" font-size="22" font-weight="700" fill="#e8e8e8">하나의 KL, 세 하한: 같은 판별자에서의 순서</text>
+<rect x="110" y="90" width="500" height="76" rx="10" fill="#111a22" stroke="#7ec8e3" stroke-width="1.5"/>
+<text x="134.0" y="122.0" font-size="16" fill="#e8e8e8" text-anchor="start" font-weight="600">KL(P‖Q)</text>
+<text x="134.0" y="146.0" font-size="13" fill="#888" text-anchor="start">참값. 판별자 T = log dP/dQ (+ 상수) 에서 DV 와 같아진다</text>
+<line x1="360.0" y1="210" x2="360.0" y2="166" stroke="#888" stroke-width="2" marker-end="url(#arr)"/>
+<text x="376.0" y="193.0" font-size="16" fill="#e8e8e8" text-anchor="start" font-weight="700">≤</text>
+<rect x="110" y="210" width="500" height="76" rx="10" fill="#111a22" stroke="#7ec8e3" stroke-width="1.5"/>
+<text x="134.0" y="242.0" font-size="16" fill="#e8e8e8" text-anchor="start" font-weight="600">DV:  E_P[T] − log E_Q[e^T]</text>
+<text x="134.0" y="266.0" font-size="13" fill="#888" text-anchor="start">상수 이동에 불변. 깁스 측도 G 로 KL(P‖G) ≥ 0</text>
+<line x1="360.0" y1="330" x2="360.0" y2="286" stroke="#888" stroke-width="2" marker-end="url(#arr)"/>
+<text x="376.0" y="313.0" font-size="16" fill="#e8e8e8" text-anchor="start" font-weight="700">≤</text>
+<rect x="110" y="330" width="500" height="76" rx="10" fill="#111a22" stroke="#7ec8e3" stroke-width="1.5"/>
+<text x="134.0" y="362.0" font-size="16" fill="#e8e8e8" text-anchor="start" font-weight="600">NWJ:  E_P[T] − E_Q[e^(T−1)]</text>
+<text x="134.0" y="386.0" font-size="13" fill="#888" text-anchor="start">KL 의 f-표현. 상수 c 로 최대화하면 DV 와 같다</text>
+<line x1="360.0" y1="450" x2="360.0" y2="406" stroke="#888" stroke-width="2" marker-end="url(#arr)"/>
+<text x="376.0" y="433.0" font-size="16" fill="#e8e8e8" text-anchor="start" font-weight="700">≤</text>
+<rect x="110" y="450" width="500" height="76" rx="10" fill="#111a22" stroke="#7ec8e3" stroke-width="1.5"/>
+<text x="134.0" y="482.0" font-size="16" fill="#e8e8e8" text-anchor="start" font-weight="600">InfoNCE:  E[ log e^f(x,y₁) / ((1/N) Σⱼ e^f(x,yⱼ)) ]</text>
+<text x="134.0" y="506.0" font-size="13" fill="#888" text-anchor="start">늘린 공간의 NWJ. 판별자가 1 + log N 이하로 묶인다</text>
+<text x="650.0" y="242.0" font-size="13" fill="#e0b155" text-anchor="start">log y ≤ y/e 라서</text>
+<text x="650.0" y="264.0" font-size="13" fill="#888" text-anchor="start">같은 T 에서 DV ≥ NWJ</text>
+<text x="650.0" y="362.0" font-size="13" fill="#e0b155" text-anchor="start">천장이 없다</text>
+<text x="650.0" y="384.0" font-size="13" fill="#888" text-anchor="start">분산은 χ² 를 따른다</text>
+<text x="650.0" y="482.0" font-size="13" fill="#e0b155" text-anchor="start">천장 log N</text>
+<text x="650.0" y="504.0" font-size="13" fill="#888" text-anchor="start">분산이 작다</text>
+<text x="440.0" y="568.0" font-size="13" fill="#888" text-anchor="middle">화살표는 「아래의 값 ≤ 위의 값」. 위 셋은 같은 판별자 T, 맨 아래는 다표본 판별자 f 로 잰다</text>
+</svg>

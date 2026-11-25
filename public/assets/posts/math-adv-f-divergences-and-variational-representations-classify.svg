@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="430" viewBox="0 0 880 430" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+<defs><marker id="arr" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto"><path d="M 0 0 L 13 7 L 0 14 z" fill="#888"/></marker></defs>
+<rect x="0" y="0" width="880" height="430" rx="12" fill="#0a0a0a"/>
+<text x="440" y="44" text-anchor="middle" font-size="22" font-weight="700" fill="#e8e8e8">새 발산을 쓴 논문을 읽는 다섯 걸음</text>
+<rect x="60" y="80" width="230" height="120" rx="10" fill="#111a22" stroke="#7ec8e3" stroke-width="1.5"/>
+<text x="84.0" y="116.0" font-size="16" fill="#e8e8e8" text-anchor="start" font-weight="600">1  두 분포</text>
+<text x="84.0" y="146.0" font-size="13" fill="#e8e8e8" text-anchor="start">P 와 Q 가 무엇인가</text>
+<text x="84.0" y="170.0" font-size="13" fill="#888" text-anchor="start">데이터·모델 / 결합·곱 / 정책·참조</text>
+<rect x="325" y="80" width="230" height="120" rx="10" fill="#111a22" stroke="#7ec8e3" stroke-width="1.5"/>
+<text x="349.0" y="116.0" font-size="16" fill="#e8e8e8" text-anchor="start" font-weight="600">2  생성함수</text>
+<text x="349.0" y="146.0" font-size="13" fill="#e8e8e8" text-anchor="start">f 를 바꿨나, 방향을 바꿨나</text>
+<text x="349.0" y="170.0" font-size="13" fill="#888" text-anchor="start">볼록·f(1) = 0 이면 DPI 유지</text>
+<rect x="590" y="80" width="230" height="120" rx="10" fill="#111a22" stroke="#7ec8e3" stroke-width="1.5"/>
+<text x="614.0" y="116.0" font-size="16" fill="#e8e8e8" text-anchor="start" font-weight="600">3  표현</text>
+<text x="614.0" y="146.0" font-size="13" fill="#e8e8e8" text-anchor="start">f-표현 / DV / 다표본</text>
+<text x="614.0" y="170.0" font-size="13" fill="#888" text-anchor="start">천장과 이동 불변성이 갈림</text>
+<rect x="192" y="250" width="230" height="120" rx="10" fill="#111a22" stroke="#7ec8e3" stroke-width="1.5"/>
+<text x="216.0" y="286.0" font-size="16" fill="#e8e8e8" text-anchor="start" font-weight="600">4  판별자</text>
+<text x="216.0" y="316.0" font-size="13" fill="#e8e8e8" text-anchor="start">함수족과 출력 활성함수</text>
+<text x="216.0" y="340.0" font-size="13" fill="#888" text-anchor="start">간극 = 못 담은 최적 판별자</text>
+<rect x="457" y="250" width="230" height="120" rx="10" fill="#111a22" stroke="#7ec8e3" stroke-width="1.5"/>
+<text x="481.0" y="286.0" font-size="16" fill="#e8e8e8" text-anchor="start" font-weight="600">5  추정과 쓰임</text>
+<text x="481.0" y="316.0" font-size="13" fill="#e8e8e8" text-anchor="start">배치 평균·이동 평균·자르기</text>
+<text x="481.0" y="340.0" font-size="13" fill="#888" text-anchor="start">값을 재나, 기울기만 쓰나</text>
+<line x1="290" y1="140" x2="325" y2="140" stroke="#888" stroke-width="2" marker-end="url(#arr)"/>
+<line x1="555" y1="140" x2="590" y2="140" stroke="#888" stroke-width="2" marker-end="url(#arr)"/>
+<path d="M 705.0 200 L 705.0 225 L 307.0 225 L 307.0 250" fill="none" stroke="#888" stroke-width="2" marker-end="url(#arr)"/>
+<line x1="422" y1="310" x2="457" y2="310" stroke="#888" stroke-width="2" marker-end="url(#arr)"/>
+<text x="440.0" y="406.0" font-size="13" fill="#888" text-anchor="middle">2·3 이 f-발산의 틀 안에 있는지를 정하고, 4·5 가 숫자의 편향과 분산을 정한다</text>
+</svg>

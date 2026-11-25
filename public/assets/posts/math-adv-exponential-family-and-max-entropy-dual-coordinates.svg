@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="490" viewBox="0 0 880 490" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+<defs>
+<marker id="arr" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto"><path d="M 0 0 L 13 7 L 0 14 z" fill="#7ec8e3"/></marker>
+<marker id="arrb" viewBox="0 0 14 14" refX="2" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto"><path d="M 14 0 L 1 7 L 14 14 z" fill="#7777cc"/></marker>
+<marker id="arrg" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto"><path d="M 0 0 L 13 7 L 0 14 z" fill="#888"/></marker>
+</defs>
+<rect x="0" y="0" width="880" height="490" rx="12" fill="#0a0a0a"/>
+<text x="440.0" y="44.0" font-size="22" fill="#e8e8e8" text-anchor="middle" font-weight="700">자연 좌표와 평균 좌표</text>
+<text x="120.0" y="92.0" font-size="16" fill="#e8e8e8" text-anchor="start" font-weight="600">자연 파라미터 η ∈ ℝ</text>
+<path d="M 100.0 140.0 L 780.0 140.0" stroke="#888" stroke-width="1.5" fill="none"/>
+<path d="M 120.0 136.0 L 120.0 144.0" stroke="#444" stroke-width="1.5"/>
+<path d="M 200.0 136.0 L 200.0 144.0" stroke="#444" stroke-width="1.5"/>
+<path d="M 280.0 136.0 L 280.0 144.0" stroke="#444" stroke-width="1.5"/>
+<path d="M 360.0 136.0 L 360.0 144.0" stroke="#444" stroke-width="1.5"/>
+<path d="M 440.0 136.0 L 440.0 144.0" stroke="#444" stroke-width="1.5"/>
+<path d="M 520.0 136.0 L 520.0 144.0" stroke="#444" stroke-width="1.5"/>
+<path d="M 600.0 136.0 L 600.0 144.0" stroke="#444" stroke-width="1.5"/>
+<path d="M 680.0 136.0 L 680.0 144.0" stroke="#444" stroke-width="1.5"/>
+<path d="M 760.0 136.0 L 760.0 144.0" stroke="#444" stroke-width="1.5"/>
+<text x="120.0" y="122.0" font-size="13" fill="#888" text-anchor="middle">−4</text>
+<text x="760.0" y="122.0" font-size="13" fill="#888" text-anchor="middle">4</text>
+<text x="120.0" y="400.0" font-size="16" fill="#e8e8e8" text-anchor="start" font-weight="600">평균 파라미터 μ ∈ (0, 1)</text>
+<path d="M 120.0 330.0 L 760.0 330.0" stroke="#888" stroke-width="1.5" fill="none"/>
+<circle cx="120.0" cy="330" r="5" fill="#0a0a0a" stroke="#888" stroke-width="1.5"/>
+<circle cx="760.0" cy="330" r="5" fill="#0a0a0a" stroke="#888" stroke-width="1.5"/>
+<text x="120.0" y="314.0" font-size="13" fill="#888" text-anchor="middle">0</text>
+<text x="760.0" y="314.0" font-size="13" fill="#888" text-anchor="middle">1</text>
+<path d="M 280.0 146.0 L 196.3 324.0" stroke="#7ec8e3" stroke-width="2" fill="none" marker-end="url(#arr)" marker-start="url(#arrb)"/>
+<circle cx="280.0" cy="140" r="5" fill="#e8e8e8"/>
+<circle cx="196.3" cy="330" r="5" fill="#e8e8e8"/>
+<text x="280.0" y="122.0" font-size="13" fill="#e8e8e8" text-anchor="middle">η = −2</text>
+<text x="196.3" y="360.0" font-size="13" fill="#e8e8e8" text-anchor="middle">μ = 0.119</text>
+<path d="M 440.0 146.0 L 440.0 324.0" stroke="#7ec8e3" stroke-width="2" fill="none" marker-end="url(#arr)" marker-start="url(#arrb)"/>
+<circle cx="440.0" cy="140" r="5" fill="#e8e8e8"/>
+<circle cx="440.0" cy="330" r="5" fill="#e8e8e8"/>
+<text x="440.0" y="122.0" font-size="13" fill="#e8e8e8" text-anchor="middle">η = 0</text>
+<text x="440.0" y="360.0" font-size="13" fill="#e8e8e8" text-anchor="middle">μ = 0.5</text>
+<path d="M 520.0 146.0 L 587.9 324.0" stroke="#7ec8e3" stroke-width="2" fill="none" marker-end="url(#arr)" marker-start="url(#arrb)"/>
+<circle cx="520.0" cy="140" r="5" fill="#e8e8e8"/>
+<circle cx="587.9" cy="330" r="5" fill="#e8e8e8"/>
+<text x="520.0" y="122.0" font-size="13" fill="#e8e8e8" text-anchor="middle">η = 1</text>
+<text x="587.9" y="360.0" font-size="13" fill="#e8e8e8" text-anchor="middle">μ = 0.731</text>
+<path d="M 680.0 146.0 L 729.6 324.0" stroke="#7ec8e3" stroke-width="2" fill="none" marker-end="url(#arr)" marker-start="url(#arrb)"/>
+<circle cx="680.0" cy="140" r="5" fill="#e8e8e8"/>
+<circle cx="729.6" cy="330" r="5" fill="#e8e8e8"/>
+<text x="680.0" y="122.0" font-size="13" fill="#e8e8e8" text-anchor="middle">η = 3</text>
+<text x="729.6" y="360.0" font-size="13" fill="#e8e8e8" text-anchor="middle">μ = 0.953</text>
+<text x="470.0" y="400.0" font-size="13" fill="#7ec8e3" text-anchor="start">아래로  ∇A(η) = σ(η)</text>
+<text x="470.0" y="420.0" font-size="13" fill="#7777cc" text-anchor="start">위로  ∇A*(μ) = log(μ / (1 − μ))</text>
+<text x="440.0" y="462.0" font-size="13" fill="#888" text-anchor="middle">η → ±∞ 는 μ = 0, 1 쪽으로 몰리고, 끝점의 점질량은 가족 밖이다</text>
+</svg>

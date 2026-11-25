@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="420" viewBox="0 0 880 420" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+<rect x="0" y="0" width="880" height="420" rx="12" fill="#0a0a0a"/>
+<defs><marker id="arr" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto"><path d="M 0 0 L 13 7 L 0 14 z" fill="#888"/></marker><marker id="arrb" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto"><path d="M 0 0 L 13 7 L 0 14 z" fill="#7ec8e3"/></marker><marker id="arrr" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto"><path d="M 0 0 L 13 7 L 0 14 z" fill="#e05555"/></marker><marker id="arrg" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto"><path d="M 0 0 L 13 7 L 0 14 z" fill="#55c555"/></marker></defs>
+<text x="440" y="40" text-anchor="middle" font-size="22" font-weight="700" fill="#e8e8e8">무작위 합과 정렬된 합</text>
+<text x="440" y="66" text-anchor="middle" font-size="13" fill="#888">같은 크기의 칸 16개를 더한다 — 부호가 제각각이면 길이 √n, 한 방향이면 길이 n</text>
+<rect x="60" y="90" width="370" height="300" rx="8" fill="#0f131a" stroke="#2a3140" stroke-width="1.5"/>
+<text x="245.0" y="120.0" text-anchor="middle" font-size="16" fill="#e8e8e8" font-weight="600">초기화 W x — 부호가 제각각</text>
+<polyline points="235.0,245.0 221.3,238.9 207.7,245.2 220.2,253.6 211.5,265.8 200.7,255.4 215.5,257.5 226.1,246.8 235.2,234.9 249.6,239.0 254.5,224.9 260.5,238.6 255.4,224.5 263.9,236.9 258.5,222.9 273.0,219.0 287.9,217.6" fill="none" stroke="#7777cc" stroke-width="2" />
+<circle cx="221.3" cy="238.9" r="3" fill="#7777cc"/>
+<circle cx="207.7" cy="245.2" r="3" fill="#7777cc"/>
+<circle cx="220.2" cy="253.6" r="3" fill="#7777cc"/>
+<circle cx="211.5" cy="265.8" r="3" fill="#7777cc"/>
+<circle cx="200.7" cy="255.4" r="3" fill="#7777cc"/>
+<circle cx="215.5" cy="257.5" r="3" fill="#7777cc"/>
+<circle cx="226.1" cy="246.8" r="3" fill="#7777cc"/>
+<circle cx="235.2" cy="234.9" r="3" fill="#7777cc"/>
+<circle cx="249.6" cy="239.0" r="3" fill="#7777cc"/>
+<circle cx="254.5" cy="224.9" r="3" fill="#7777cc"/>
+<circle cx="260.5" cy="238.6" r="3" fill="#7777cc"/>
+<circle cx="255.4" cy="224.5" r="3" fill="#7777cc"/>
+<circle cx="263.9" cy="236.9" r="3" fill="#7777cc"/>
+<circle cx="258.5" cy="222.9" r="3" fill="#7777cc"/>
+<circle cx="273.0" cy="219.0" r="3" fill="#7777cc"/>
+<circle cx="235.0" cy="245.0" r="5" fill="#e8e8e8"/>
+<line x1="235.0" y1="245.0" x2="287.9" y2="217.6" stroke="#e8e8e8" stroke-width="2" stroke-dasharray="5,3" marker-end="url(#arr)"/>
+<text x="245.0" y="368.0" text-anchor="middle" font-size="13" fill="#888">끝점까지 거리 ≈ 15·√16 = 60</text>
+<rect x="450" y="90" width="370" height="300" rx="8" fill="#0f131a" stroke="#2a3140" stroke-width="1.5"/>
+<text x="635.0" y="120.0" text-anchor="middle" font-size="16" fill="#e8e8e8" font-weight="600">갱신 ΔW x — x와 한 방향</text>
+<polyline points="510.0,330.0 522.0,321.0 534.0,312.0 546.0,303.0 558.0,294.0 570.0,285.0 582.0,276.0 594.0,267.0 606.0,258.0 618.0,249.0 630.0,240.0 642.0,231.0 654.0,222.0 666.0,213.0 678.0,204.0 690.0,195.0 702.0,186.0" fill="none" stroke="#7ec8e3" stroke-width="2" />
+<circle cx="522.0" cy="321.0" r="3" fill="#7ec8e3"/>
+<circle cx="534.0" cy="312.0" r="3" fill="#7ec8e3"/>
+<circle cx="546.0" cy="303.0" r="3" fill="#7ec8e3"/>
+<circle cx="558.0" cy="294.0" r="3" fill="#7ec8e3"/>
+<circle cx="570.0" cy="285.0" r="3" fill="#7ec8e3"/>
+<circle cx="582.0" cy="276.0" r="3" fill="#7ec8e3"/>
+<circle cx="594.0" cy="267.0" r="3" fill="#7ec8e3"/>
+<circle cx="606.0" cy="258.0" r="3" fill="#7ec8e3"/>
+<circle cx="618.0" cy="249.0" r="3" fill="#7ec8e3"/>
+<circle cx="630.0" cy="240.0" r="3" fill="#7ec8e3"/>
+<circle cx="642.0" cy="231.0" r="3" fill="#7ec8e3"/>
+<circle cx="654.0" cy="222.0" r="3" fill="#7ec8e3"/>
+<circle cx="666.0" cy="213.0" r="3" fill="#7ec8e3"/>
+<circle cx="678.0" cy="204.0" r="3" fill="#7ec8e3"/>
+<circle cx="690.0" cy="195.0" r="3" fill="#7ec8e3"/>
+<circle cx="510.0" cy="330.0" r="5" fill="#e8e8e8"/>
+<line x1="510.0" y1="330.0" x2="702.0" y2="186.0" stroke="#e8e8e8" stroke-width="2" stroke-dasharray="5,3" marker-end="url(#arrb)"/>
+<text x="635.0" y="368.0" text-anchor="middle" font-size="13" fill="#888">끝점까지 거리 = 15·16 = 240</text>
+</svg>

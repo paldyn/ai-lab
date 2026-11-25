@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="470" viewBox="0 0 880 470" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+<rect x="0" y="0" width="880" height="470" rx="12" fill="#0a0a0a"/>
+<defs><marker id="arr" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto"><path d="M 0 0 L 13 7 L 0 14 z" fill="#888"/></marker><marker id="arrb" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto"><path d="M 0 0 L 13 7 L 0 14 z" fill="#7ec8e3"/></marker><marker id="arrr" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto"><path d="M 0 0 L 13 7 L 0 14 z" fill="#e05555"/></marker><marker id="arrg" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto"><path d="M 0 0 L 13 7 L 0 14 z" fill="#55c555"/></marker></defs>
+<text x="440" y="40" text-anchor="middle" font-size="22" font-weight="700" fill="#e8e8e8">학습률 훑기 — 200걸음 뒤 손실</text>
+<text x="440" y="66" text-anchor="middle" font-size="13" fill="#888">가로: log₂ η · 세로: 손실 · 끊긴 자리는 발산</text>
+<text x="255.0" y="98.0" text-anchor="middle" font-size="16" fill="#e8e8e8" font-weight="600">표준 파라미터화</text>
+<line x1="90.0" y1="380.0" x2="420.0" y2="380.0" stroke="#888" stroke-width="1.5" />
+<line x1="90.0" y1="110.0" x2="90.0" y2="380.0" stroke="#888" stroke-width="1.5" />
+<line x1="90.0" y1="380.0" x2="420.0" y2="380.0" stroke="#444" stroke-width="1" stroke-dasharray="4,4"/>
+<text x="82.0" y="384.0" text-anchor="end" font-size="12" fill="#888">0.0</text>
+<line x1="90.0" y1="283.6" x2="420.0" y2="283.6" stroke="#444" stroke-width="1" stroke-dasharray="4,4"/>
+<text x="82.0" y="287.6" text-anchor="end" font-size="12" fill="#888">0.1</text>
+<line x1="90.0" y1="187.1" x2="420.0" y2="187.1" stroke="#444" stroke-width="1" stroke-dasharray="4,4"/>
+<text x="82.0" y="191.1" text-anchor="end" font-size="12" fill="#888">0.2</text>
+<text x="105.0" y="400.0" text-anchor="middle" font-size="12" fill="#888">-10</text>
+<text x="205.0" y="400.0" text-anchor="middle" font-size="12" fill="#888">-6</text>
+<text x="305.0" y="400.0" text-anchor="middle" font-size="12" fill="#888">-2</text>
+<text x="405.0" y="400.0" text-anchor="middle" font-size="12" fill="#888">+2</text>
+<polyline points="105.0,126.7 130.0,149.5 155.0,172.9 180.0,196.6 205.0,226.8 230.0,272.4 255.0,293.2 280.0,360.5 305.0,341.6 330.0,231.4 355.0,243.3 380.0,140.3" fill="none" stroke="#7777cc" stroke-width="2.5" />
+<circle cx="280.0" cy="360.5" r="6" fill="#7777cc"/>
+<polyline points="105.0,193.0 130.0,229.6 155.0,275.1 180.0,321.9 205.0,344.0 230.0,305.9 255.0,357.3 280.0,363.8 305.0,145.2 330.0,140.3" fill="none" stroke="#7ec8e3" stroke-width="2.5" />
+<circle cx="280.0" cy="363.8" r="6" fill="#7ec8e3"/>
+<text x="665.0" y="98.0" text-anchor="middle" font-size="16" fill="#e8e8e8" font-weight="600">muP</text>
+<line x1="500.0" y1="380.0" x2="830.0" y2="380.0" stroke="#888" stroke-width="1.5" />
+<line x1="500.0" y1="110.0" x2="500.0" y2="380.0" stroke="#888" stroke-width="1.5" />
+<line x1="500.0" y1="380.0" x2="830.0" y2="380.0" stroke="#444" stroke-width="1" stroke-dasharray="4,4"/>
+<text x="492.0" y="384.0" text-anchor="end" font-size="12" fill="#888">0.0</text>
+<line x1="500.0" y1="283.6" x2="830.0" y2="283.6" stroke="#444" stroke-width="1" stroke-dasharray="4,4"/>
+<text x="492.0" y="287.6" text-anchor="end" font-size="12" fill="#888">0.1</text>
+<line x1="500.0" y1="187.1" x2="830.0" y2="187.1" stroke="#444" stroke-width="1" stroke-dasharray="4,4"/>
+<text x="492.0" y="191.1" text-anchor="end" font-size="12" fill="#888">0.2</text>
+<text x="515.0" y="400.0" text-anchor="middle" font-size="12" fill="#888">-10</text>
+<text x="615.0" y="400.0" text-anchor="middle" font-size="12" fill="#888">-6</text>
+<text x="715.0" y="400.0" text-anchor="middle" font-size="12" fill="#888">-2</text>
+<text x="815.0" y="400.0" text-anchor="middle" font-size="12" fill="#888">+2</text>
+<polyline points="515.0,143.5 540.0,145.6 565.0,149.5 590.0,157.2 615.0,171.2 640.0,196.1 665.0,234.5 690.0,301.3 715.0,368.1 740.0,366.3 765.0,372.1 790.0,377.1 815.0,271.8" fill="none" stroke="#7777cc" stroke-width="2.5" />
+<circle cx="790.0" cy="377.1" r="6" fill="#7777cc"/>
+<polyline points="515.0,141.8 540.0,144.2 565.0,148.7 590.0,156.7 615.0,171.2 640.0,197.0 665.0,238.3 690.0,311.7 715.0,371.1 740.0,372.3 765.0,377.1 790.0,379.7 815.0,371.1" fill="none" stroke="#7ec8e3" stroke-width="2.5" />
+<circle cx="790.0" cy="379.7" r="6" fill="#7ec8e3"/>
+<line x1="300.0" y1="446.0" x2="328.0" y2="446.0" stroke="#7777cc" stroke-width="2.5" />
+<text x="336.0" y="450.0" text-anchor="start" font-size="13" fill="#e8e8e8">폭 128</text>
+<line x1="470.0" y1="446.0" x2="498.0" y2="446.0" stroke="#7ec8e3" stroke-width="2.5" />
+<text x="506.0" y="450.0" text-anchor="start" font-size="13" fill="#e8e8e8">폭 1024</text>
+</svg>

@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="500" viewBox="0 0 880 500" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+<defs><marker id="arr" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto"><path d="M 0 0 L 13 7 L 0 14 z" fill="#888"/></marker></defs>
+<rect x="0" y="0" width="880" height="500" rx="12" fill="#0a0a0a"/>
+<text x="440" y="44" text-anchor="middle" font-size="22" font-weight="700" fill="#e8e8e8">InfoNCE 는 log N 아래에 붙는다</text>
+<line x1="110" y1="410" x2="780" y2="410" stroke="#888" stroke-width="1.5" marker-end="url(#arr)"/>
+<line x1="110" y1="410" x2="110" y2="74" stroke="#888" stroke-width="1.5" marker-end="url(#arr)"/>
+<text x="786.0" y="415.0" font-size="13" fill="#888" text-anchor="start">N</text>
+<text x="110.0" y="66.0" font-size="13" fill="#888" text-anchor="middle">내트</text>
+<line x1="110.0" y1="406" x2="110.0" y2="414" stroke="#444"/>
+<text x="110.0" y="432.0" font-size="13" fill="#888" text-anchor="middle">16</text>
+<line x1="272.5" y1="406" x2="272.5" y2="414" stroke="#444"/>
+<text x="272.5" y="432.0" font-size="13" fill="#888" text-anchor="middle">64</text>
+<line x1="435.0" y1="406" x2="435.0" y2="414" stroke="#444"/>
+<text x="435.0" y="432.0" font-size="13" fill="#888" text-anchor="middle">256</text>
+<line x1="597.5" y1="406" x2="597.5" y2="414" stroke="#444"/>
+<text x="597.5" y="432.0" font-size="13" fill="#888" text-anchor="middle">1024</text>
+<line x1="760.0" y1="406" x2="760.0" y2="414" stroke="#444"/>
+<text x="760.0" y="432.0" font-size="13" fill="#888" text-anchor="middle">4096</text>
+<line x1="106" y1="351.8" x2="114" y2="351.8" stroke="#444"/>
+<text x="100.0" y="355.8" font-size="13" fill="#888" text-anchor="end">2</text>
+<line x1="106" y1="293.6" x2="114" y2="293.6" stroke="#444"/>
+<text x="100.0" y="297.6" font-size="13" fill="#888" text-anchor="end">4</text>
+<line x1="106" y1="235.5" x2="114" y2="235.5" stroke="#444"/>
+<text x="100.0" y="239.5" font-size="13" fill="#888" text-anchor="end">6</text>
+<line x1="106" y1="177.3" x2="114" y2="177.3" stroke="#444"/>
+<text x="100.0" y="181.3" font-size="13" fill="#888" text-anchor="end">8</text>
+<line x1="106" y1="119.1" x2="114" y2="119.1" stroke="#444"/>
+<text x="100.0" y="123.1" font-size="13" fill="#888" text-anchor="end">10</text>
+<line x1="110" y1="112.8" x2="760" y2="112.8" stroke="#55c555" stroke-width="2" stroke-dasharray="5,3"/>
+<text x="760.0" y="100.8" font-size="13" fill="#55c555" text-anchor="end">참값 I = 10.22</text>
+<polyline points="110.0,329.3 760.0,168.0" fill="none" stroke="#e05555" stroke-width="2" stroke-dasharray="5,3"/>
+<text x="770.0" y="172.0" font-size="13" fill="#e05555" text-anchor="start">log N</text>
+<polyline points="110.0,329.6 272.5,290.0 435.0,251.5 597.5,215.8 760.0,185.1" fill="none" stroke="#7ec8e3" stroke-width="2.5"/>
+<circle cx="110.0" cy="329.6" r="5" fill="#e8e8e8"/>
+<circle cx="272.5" cy="290.0" r="5" fill="#e8e8e8"/>
+<circle cx="435.0" cy="251.5" r="5" fill="#e8e8e8"/>
+<circle cx="597.5" cy="215.8" r="5" fill="#e8e8e8"/>
+<circle cx="760.0" cy="185.1" r="5" fill="#e8e8e8"/>
+<text x="126.0" y="353.6" font-size="13" fill="#e8e8e8" text-anchor="start">2.76</text>
+<text x="274.5" y="314.0" font-size="13" fill="#e8e8e8" text-anchor="middle">4.13</text>
+<text x="437.0" y="275.5" font-size="13" fill="#e8e8e8" text-anchor="middle">5.45</text>
+<text x="599.5" y="239.8" font-size="13" fill="#e8e8e8" text-anchor="middle">6.68</text>
+<text x="762.0" y="209.1" font-size="13" fill="#e8e8e8" text-anchor="middle">7.73</text>
+<text x="730.0" y="143.3" font-size="13" fill="#e0b155" text-anchor="end">격차 0.59</text>
+<text x="440.0" y="460.0" font-size="13" fill="#888" text-anchor="middle">같은 정확한 판별자. 배치가 커질수록 log N 과의 격차는 커지지만 천장 자체가 1 비트(0.69 내트)씩 오른다</text>
+<text x="440.0" y="482.0" font-size="13" fill="#888" text-anchor="middle">참값에 닿으려면 log N 이 10.22 를 넘어야 한다: N 이 e^10.22 ≈ 27,000 보다 커야 한다</text>
+</svg>

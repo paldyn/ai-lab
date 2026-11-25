@@ -385,3 +385,5 @@ t = 300: 남은 진폭 k=1,2,4  망 0.000 0.011 0.487   예측 0.000 0.001 0.443
 읽어주셔서 감사합니다. 😊
 
 **지난 글:** [평균장 신호 전파와 NNGP: 깊이 방향의 질서–혼돈 경계](/articles/math-adv-signal-propagation-and-nngp)
+
+**다음 글:** [특징 학습 영역과 muP: 폭에 따라 무엇을 어떻게 스케일하나](/articles/math-adv-feature-learning-and-mup)

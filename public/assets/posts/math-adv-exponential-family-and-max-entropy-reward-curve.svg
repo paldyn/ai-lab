@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="500" viewBox="0 0 880 500" font-family="'Wanted Sans Variable','Wanted Sans',-apple-system,sans-serif">
+<defs>
+<marker id="arr" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto"><path d="M 0 0 L 13 7 L 0 14 z" fill="#7ec8e3"/></marker>
+<marker id="arrb" viewBox="0 0 14 14" refX="2" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto"><path d="M 14 0 L 1 7 L 14 14 z" fill="#7777cc"/></marker>
+<marker id="arrg" viewBox="0 0 14 14" refX="12" refY="7" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto"><path d="M 0 0 L 13 7 L 0 14 z" fill="#888"/></marker>
+</defs>
+<rect x="0" y="0" width="880" height="500" rx="12" fill="#0a0a0a"/>
+<text x="440.0" y="44.0" font-size="22" fill="#e8e8e8" text-anchor="middle" font-weight="700">평균 보상 A′(η) 와 그 기울기</text>
+<path d="M 110.0 430.0 L 800.0 430.0" stroke="#888" stroke-width="1.5" fill="none" marker-end="url(#arrg)"/>
+<path d="M 120.0 440.0 L 120.0 100.0" stroke="#888" stroke-width="1.5" fill="none" marker-end="url(#arrg)"/>
+<text x="120.0" y="452.0" font-size="13" fill="#888" text-anchor="middle">0</text>
+<path d="M 266.7 426.0 L 266.7 434.0" stroke="#444" stroke-width="1.5"/>
+<text x="266.7" y="452.0" font-size="13" fill="#888" text-anchor="middle">1</text>
+<path d="M 413.3 426.0 L 413.3 434.0" stroke="#444" stroke-width="1.5"/>
+<text x="413.3" y="452.0" font-size="13" fill="#888" text-anchor="middle">2</text>
+<path d="M 560.0 426.0 L 560.0 434.0" stroke="#444" stroke-width="1.5"/>
+<text x="560.0" y="452.0" font-size="13" fill="#888" text-anchor="middle">3</text>
+<path d="M 706.7 426.0 L 706.7 434.0" stroke="#444" stroke-width="1.5"/>
+<text x="706.7" y="452.0" font-size="13" fill="#888" text-anchor="middle">4</text>
+<path d="M 116.0 337.7 L 124.0 337.7" stroke="#444" stroke-width="1.5"/>
+<text x="108.0" y="341.7" font-size="13" fill="#888" text-anchor="end">0.6</text>
+<path d="M 116.0 245.4 L 124.0 245.4" stroke="#444" stroke-width="1.5"/>
+<text x="108.0" y="249.4" font-size="13" fill="#888" text-anchor="end">0.8</text>
+<path d="M 116.0 153.1 L 124.0 153.1" stroke="#444" stroke-width="1.5"/>
+<text x="108.0" y="157.1" font-size="13" fill="#888" text-anchor="end">1.0</text>
+<text x="108.0" y="434.0" font-size="13" fill="#888" text-anchor="end">0.4</text>
+<text x="812.0" y="435.0" font-size="13" fill="#888" text-anchor="start">η = 1/β</text>
+<text x="132.0" y="106.0" font-size="13" fill="#888" text-anchor="start">E_η[r] = A′(η)</text>
+<path d="M 124.0 153.1 L 780.0 153.1" stroke="#7777cc" stroke-width="2" fill="none" stroke-dasharray="4,4"/>
+<text x="780.0" y="141.1" font-size="13" fill="#7777cc" text-anchor="end">최대 보상 1.0</text>
+<path d="M 120.0 406.9 L 123.7 402.7 L 127.3 398.5 L 131.0 394.4 L 134.7 390.3 L 138.3 386.3 L 142.0 382.4 L 145.7 378.6 L 149.3 374.9 L 153.0 371.2 L 156.7 367.5 L 160.3 364.0 L 164.0 360.5 L 167.7 357.1 L 171.3 353.7 L 175.0 350.4 L 178.7 347.2 L 182.3 344.0 L 186.0 340.9 L 189.7 337.8 L 193.3 334.8 L 197.0 331.8 L 200.7 329.0 L 204.3 326.1 L 208.0 323.3 L 211.7 320.6 L 215.3 317.9 L 219.0 315.3 L 222.7 312.7 L 226.3 310.2 L 230.0 307.7 L 233.7 305.3 L 237.3 302.9 L 241.0 300.5 L 244.7 298.2 L 248.3 296.0 L 252.0 293.7 L 255.7 291.6 L 259.3 289.4 L 263.0 287.3 L 266.7 285.3 L 270.3 283.3 L 274.0 281.3 L 277.7 279.3 L 281.3 277.4 L 285.0 275.5 L 288.7 273.7 L 292.3 271.9 L 296.0 270.1 L 299.7 268.3 L 303.3 266.6 L 307.0 264.9 L 310.7 263.3 L 314.3 261.6 L 318.0 260.0 L 321.7 258.5 L 325.3 256.9 L 329.0 255.4 L 332.7 253.9 L 336.3 252.4 L 340.0 251.0 L 343.7 249.6 L 347.3 248.2 L 351.0 246.8 L 354.7 245.5 L 358.3 244.1 L 362.0 242.8 L 365.7 241.5 L 369.3 240.3 L 373.0 239.0 L 376.7 237.8 L 380.3 236.6 L 384.0 235.4 L 387.7 234.3 L 391.3 233.1 L 395.0 232.0 L 398.7 230.9 L 402.3 229.8 L 406.0 228.7 L 409.7 227.7 L 413.3 226.6 L 417.0 225.6 L 420.7 224.6 L 424.3 223.6 L 428.0 222.6 L 431.7 221.7 L 435.3 220.7 L 439.0 219.8 L 442.7 218.8 L 446.3 217.9 L 450.0 217.1 L 453.7 216.2 L 457.3 215.3 L 461.0 214.5 L 464.7 213.6 L 468.3 212.8 L 472.0 212.0 L 475.7 211.2 L 479.3 210.4 L 483.0 209.6 L 486.7 208.8 L 490.3 208.1 L 494.0 207.3 L 497.7 206.6 L 501.3 205.9 L 505.0 205.1 L 508.7 204.4 L 512.3 203.7 L 516.0 203.1 L 519.7 202.4 L 523.3 201.7 L 527.0 201.1 L 530.7 200.4 L 534.3 199.8 L 538.0 199.2 L 541.7 198.5 L 545.3 197.9 L 549.0 197.3 L 552.7 196.7 L 556.3 196.2 L 560.0 195.6 L 563.7 195.0 L 567.3 194.5 L 571.0 193.9 L 574.7 193.4 L 578.3 192.8 L 582.0 192.3 L 585.7 191.8 L 589.3 191.3 L 593.0 190.8 L 596.7 190.3 L 600.3 189.8 L 604.0 189.3 L 607.7 188.8 L 611.3 188.3 L 615.0 187.9 L 618.7 187.4 L 622.3 186.9 L 626.0 186.5 L 629.7 186.1 L 633.3 185.6 L 637.0 185.2 L 640.7 184.8 L 644.3 184.3 L 648.0 183.9 L 651.7 183.5 L 655.3 183.1 L 659.0 182.7 L 662.7 182.3 L 666.3 182.0 L 670.0 181.6 L 673.7 181.2 L 677.3 180.8 L 681.0 180.5 L 684.7 180.1 L 688.3 179.8 L 692.0 179.4 L 695.7 179.1 L 699.3 178.7 L 703.0 178.4 L 706.7 178.1 L 710.3 177.7 L 714.0 177.4 L 717.7 177.1 L 721.3 176.8 L 725.0 176.5 L 728.7 176.2 L 732.3 175.9 L 736.0 175.6 L 739.7 175.3 L 743.3 175.0 L 747.0 174.7 L 750.7 174.4 L 754.3 174.1 L 758.0 173.9 L 761.7 173.6 L 765.3 173.3 L 769.0 173.1 L 772.7 172.8 L 776.3 172.6 L 780.0 172.3" stroke="#7ec8e3" stroke-width="2.5" fill="none"/>
+<path d="M 266.7 268.0 L 618.7 168.7" stroke="#e8e8e8" stroke-width="2" fill="none" stroke-dasharray="5,3"/>
+<circle cx="120.0" cy="406.9" r="5" fill="#e8e8e8"/>
+<circle cx="189.8" cy="337.7" r="5" fill="#e8e8e8"/>
+<circle cx="413.3" cy="226.6" r="5" fill="#e8e8e8"/>
+<text x="140.0" y="420.9" font-size="13" fill="#e8e8e8" text-anchor="start">η = 0 : 참조 모델의 평균 0.45</text>
+<text x="211.8" y="361.7" font-size="13" fill="#e8e8e8" text-anchor="start">η = 0.476 (β = 2.10) : 평균 0.6</text>
+<text x="431.3" y="266.6" font-size="13" fill="#e8e8e8" text-anchor="start">η = 2 (β = 0.5) : 평균 0.841</text>
+<text x="431.3" y="286.6" font-size="13" fill="#e8e8e8" text-anchor="start">접선 기울기 A″(2) = 보상의 분산 0.0896</text>
+<text x="440.0" y="488.0" font-size="13" fill="#888" text-anchor="middle">η 를 0.1 올리면 평균이 0.0090 오를 것으로 읽히고, 실제로는 0.0087 오른다</text>
+</svg>
