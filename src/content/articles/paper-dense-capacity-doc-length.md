@@ -246,3 +246,5 @@ total 239s
 읽어주셔서 감사합니다. 😊
 
 **지난 글:** [Contriever 축소 재현: 정답 쌍 없이 학습한 검색기는 BM25에 닿는가 — 상위 10개에서는 닿았고 넘지는 못했다, 상위 100개에서는 1,000편에서만 앞섰다](/articles/paper-contriever-unsupervised)
+
+**다음 글:** [정렬과 균일성: 두 숫자로 임베딩 모델의 검색 순위를 맞힐 수 있는가 — 정렬은 같은 방향이었지만 모델 여덟으로는 우연과 갈리지 않았고, 균일성은 거꾸로 섰다](/articles/paper-alignment-uniformity)
